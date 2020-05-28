@@ -1,0 +1,2850 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2012-12-20 07:34\n"
+"PO-Revision-Date: 2012-12-20 07:34\n"
+"Last-Translator: Somebody <your.email@address.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: dxgettext 1.2.2\n"
+
+#. layouts_form..Caption
+#: FGUILayoutEditor.dfm:7
+msgid "GUI Layout Editor"
+msgstr ""
+
+#. layouts_form..Font.Name
+#: FGUILayoutEditor.dfm:14
+#. layouts_form..Panel2..elements_grid..Font.Name
+#: FGUILayoutEditor.dfm:551
+#. LibMaterialPicker..Font.Name
+#: FLibMaterialPicker.dfm:12
+#. MaterialEditorForm..Font.Name
+#: FMaterialEditorForm.dfm:12
+#. VectorEditorForm..Font.Name
+#: FVectorEditor.dfm:12
+#. XCollectionEditor..Font.Name
+#: FXCollectionEditor.dfm:11
+#. GUISkinEditor..Font.Name
+#: GuiSkinEditorFormUnit.dfm:11
+#. GUISkinEditor..panImageProperties..Panel3..Button3..Font.Name
+#: GuiSkinEditorFormUnit.dfm:193
+#. GUISkinEditor..panImageProperties..Panel3..Button4..Font.Name
+#: GuiSkinEditorFormUnit.dfm:208
+#. GUISkinEditor..panElements..Label3..Font.Name
+#: GuiSkinEditorFormUnit.dfm:271
+#. GUISkinEditor..panElements..btnAdd..Font.Name
+#: GuiSkinEditorFormUnit.dfm:357
+#. GUISkinEditor..panElements..btnDelete..Font.Name
+#: GuiSkinEditorFormUnit.dfm:373
+#. InfoForm..Font.Name
+#: Info.dfm:14
+#. InfoForm..PageControl..TabSheet1..VersionLbl..Font.Name
+#: Info.dfm:2702
+#. InfoForm..PageControl..TabSheet1..Label30..Font.Name
+#: Info.dfm:2719
+#. InfoForm..PageControl..TabSheet2..WebsiteLbl..Font.Name
+#: Info.dfm:2740
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label31..Font.Name
+#: Info.dfm:3042
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label32..Font.Name
+#: Info.dfm:3060
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label33..Font.Name
+#: Info.dfm:3562
+#. PlugInManagerPropForm..Font.Name
+#: PlugInManagerPropEditor.dfm:13
+#. PlugInManagerPropForm..DateLabel..Font.Name
+#: PlugInManagerPropEditor.dfm:166
+#. PlugInManagerPropForm..SizeLabel..Font.Name
+#: PlugInManagerPropEditor.dfm:180
+#. PlugInManagerPropForm..GroupBox..DescriptionMemo..Font.Name
+#: PlugInManagerPropEditor.dfm:225
+msgid "MS Sans Serif"
+msgstr ""
+
+#. layouts_form..Panel1..x_label..Caption
+#: FGUILayoutEditor.dfm:37
+msgid "X: "
+msgstr ""
+
+#. layouts_form..Panel1..y_label..Caption
+#: FGUILayoutEditor.dfm:47
+msgid "Y: "
+msgstr ""
+
+#. layouts_form..Panel1..open_image_button..Caption
+#: FGUILayoutEditor.dfm:56
+msgid "Load skin"
+msgstr ""
+
+#. layouts_form..Panel1..open_button..Caption
+#: FGUILayoutEditor.dfm:108
+msgid "Open"
+msgstr ""
+
+#. layouts_form..Panel1..save_button..Caption
+#: FGUILayoutEditor.dfm:144
+msgid "Save"
+msgstr ""
+
+#. layouts_form..Panel1..BitBtn1..Caption
+#: FGUILayoutEditor.dfm:306
+#. ShaderUniformEditor..Button1..Caption
+#: FRUniformEditor.dfm:183
+msgid "Done"
+msgstr ""
+
+#. layouts_form..Panel2..Label1..Caption
+#: FGUILayoutEditor.dfm:364
+msgid "X:"
+msgstr ""
+
+#. layouts_form..Panel2..Label2..Caption
+#: FGUILayoutEditor.dfm:373
+msgid "Y:"
+msgstr ""
+
+#. layouts_form..Panel2..Label3..Caption
+#: FGUILayoutEditor.dfm:382
+msgid "Height:"
+msgstr ""
+
+#. layouts_form..Panel2..Label4..Caption
+#: FGUILayoutEditor.dfm:391
+msgid "Width:"
+msgstr ""
+
+#. layouts_form..Panel2..Label5..Caption
+#: FGUILayoutEditor.dfm:400
+#. XCollectionEditor..ListView......Caption
+#: FXCollectionEditor.dfm:28
+#. GLSceneEditorForm..PABehaviours..BehavioursListView......Caption
+#: GLSceneEdit.dfm:353
+#. GLSceneEditorForm..PABehaviours..EffectsListView......Caption
+#: GLSceneEdit.dfm:376
+msgid "Name"
+msgstr ""
+
+#. layouts_form..Panel2..delete_item_button..Caption
+#: FGUILayoutEditor.dfm:418
+msgid "Delete"
+msgstr ""
+
+#. layouts_form..Panel2..add_button..Caption
+#: FGUILayoutEditor.dfm:454
+msgid "Add"
+msgstr ""
+
+#. layouts_form..OpenDialog1..DefaultExt
+#: FGUILayoutEditor.dfm:601
+#. layouts_form..SaveDialog1..DefaultExt
+#: FGUILayoutEditor.dfm:608
+msgid ".layout"
+msgstr ""
+
+#. layouts_form..OpenDialog1..Filter
+#: FGUILayoutEditor.dfm:602
+#. layouts_form..SaveDialog1..Filter
+#: FGUILayoutEditor.dfm:609
+msgid "File with ext (*.layout)|*.layout"
+msgstr ""
+
+#. LibMaterialPicker..Caption
+#: FLibMaterialPicker.dfm:5
+msgid "LibMaterial Picker"
+msgstr ""
+
+#. LibMaterialPicker..Label1..Caption
+#: FLibMaterialPicker.dfm:22
+#. MaterialEditorForm..GroupBox1..Caption
+#: FMaterialEditorForm.dfm:95
+msgid "Material Preview"
+msgstr ""
+
+#. LibMaterialPicker..Label2..Caption
+#: FLibMaterialPicker.dfm:29
+msgid "Available Materials"
+msgstr ""
+
+#. MaterialEditorForm..Caption
+#: FMaterialEditorForm.dfm:5
+msgid "Material Editor"
+msgstr ""
+
+#. MaterialEditorForm..Label1..Caption
+#: FMaterialEditorForm.dfm:23
+msgid "Blending Mode"
+msgstr ""
+
+#. MaterialEditorForm..Label2..Caption
+#: FMaterialEditorForm.dfm:30
+msgid "Polygon Mode"
+msgstr ""
+
+#. MaterialEditorForm..PageControl1..TSFront..Caption
+#: FMaterialEditorForm.dfm:41
+msgid "Front"
+msgstr ""
+
+#. MaterialEditorForm..PageControl1..TSBack..Caption
+#: FMaterialEditorForm.dfm:55
+msgid "Back"
+msgstr ""
+
+#. MaterialEditorForm..PageControl1..TSTexture..Caption
+#: FMaterialEditorForm.dfm:67
+msgid "Texture"
+msgstr ""
+
+#. MaterialEditorForm..BBOk..Caption
+#: FMaterialEditorForm.dfm:136
+#. GLShaderEditor..Panel1..OKButton..Caption
+#: FShaderMemo.dfm:264
+#. GUISkinEditor..panBottom..Button5..Caption
+#: GuiSkinEditorFormUnit.dfm:62
+msgid "OK"
+msgstr ""
+
+#. RColorEditor..Label1..Caption
+#: FRColorEditor.dfm:15
+msgid "Red"
+msgstr ""
+
+#. RColorEditor..Label1..Font.Name
+#: FRColorEditor.dfm:19
+#. RColorEditor..Label2..Font.Name
+#: FRColorEditor.dfm:32
+#. RColorEditor..Label3..Font.Name
+#: FRColorEditor.dfm:45
+#. RColorEditor..Label4..Font.Name
+#: FRColorEditor.dfm:58
+#. RColorEditor..RedEdit..Font.Name
+#: FRColorEditor.dfm:106
+#. RColorEditor..GreenEdit..Font.Name
+#: FRColorEditor.dfm:121
+#. RColorEditor..BlueEdit..Font.Name
+#: FRColorEditor.dfm:136
+#. RColorEditor..AlphaEdit..Font.Name
+#: FRColorEditor.dfm:151
+#. VectorEditorForm..Label1..Font.Name
+#: FVectorEditor.dfm:26
+#. VectorEditorForm..Label2..Font.Name
+#: FVectorEditor.dfm:39
+#. VectorEditorForm..Label3..Font.Name
+#: FVectorEditor.dfm:52
+#. GLSceneEditorForm..Font.Name
+#: GLSceneEdit.dfm:12
+msgid "Arial"
+msgstr ""
+
+#. RColorEditor..Label2..Caption
+#: FRColorEditor.dfm:28
+msgid "Green"
+msgstr ""
+
+#. RColorEditor..Label3..Caption
+#: FRColorEditor.dfm:41
+msgid "Blue"
+msgstr ""
+
+#. RColorEditor..Label4..Caption
+#: FRColorEditor.dfm:54
+msgid "Alpha"
+msgstr ""
+
+#. RColorEditor..PAPreview..Hint
+#: FRColorEditor.dfm:78
+msgid "Double-click to select with Windows color "
+"picker"
+msgstr ""
+
+#. RColorEditor..Panel1..Caption
+#: FRColorEditor.dfm:94
+msgid "                Color edit frame"
+msgstr ""
+
+#. RFaceEditor..Label1..Caption
+#: FRFaceEditor.dfm:13
+msgid "Shininess"
+msgstr ""
+
+#. RFaceEditor..PageControl..TSAmbient..Caption
+#: FRFaceEditor.dfm:26
+msgid "Ambient"
+msgstr ""
+
+#. RFaceEditor..PageControl..TSDiffuse..Caption
+#: FRFaceEditor.dfm:38
+msgid "Diffuse"
+msgstr ""
+
+#. RFaceEditor..PageControl..TSEmission..Caption
+#: FRFaceEditor.dfm:51
+msgid "Emission"
+msgstr ""
+
+#. RFaceEditor..PageControl..TSSpecular..Caption
+#: FRFaceEditor.dfm:64
+msgid "Specular"
+msgstr ""
+
+#. RMaterialPreview..CBObject....Items.Strings
+#: FRMaterialPreview.dfm:17
+msgid "Cube"
+msgstr ""
+
+#. RMaterialPreview..CBObject....Items.Strings
+#: FRMaterialPreview.dfm:18
+msgid "Sphere"
+msgstr ""
+
+#. RMaterialPreview..CBObject....Items.Strings
+#: FRMaterialPreview.dfm:19
+msgid "Cone"
+msgstr ""
+
+#. RMaterialPreview..CBObject....Items.Strings
+#: FRMaterialPreview.dfm:20
+msgid "Teapot"
+msgstr ""
+
+#. RMaterialPreview..CBBackground....Items.Strings
+#: FRMaterialPreview.dfm:31
+msgid "on a pattern background"
+msgstr ""
+
+#. RMaterialPreview..CBBackground....Items.Strings
+#: FRMaterialPreview.dfm:32
+msgid "on a white background"
+msgstr ""
+
+#. RMaterialPreview..CBBackground....Items.Strings
+#: FRMaterialPreview.dfm:33
+msgid "on a black background"
+msgstr ""
+
+#. RMaterialPreview..CBBackground....Items.Strings
+#: FRMaterialPreview.dfm:34
+msgid "on a blue background"
+msgstr ""
+
+#. RMaterialPreview..CBBackground....Items.Strings
+#: FRMaterialPreview.dfm:35
+msgid "on a red background"
+msgstr ""
+
+#. RMaterialPreview..CBBackground....Items.Strings
+#: FRMaterialPreview.dfm:36
+msgid "on a green background"
+msgstr ""
+
+#. RTextureEdit..Label2..Caption
+#: FRTextureEdit.dfm:17
+msgid "Image"
+msgstr ""
+
+#. RTextureEdit..SBEditImage..Hint
+#: FRTextureEdit.dfm:24
+msgid "Edit image"
+msgstr ""
+
+#. RTextureEdit..SBEditImage..Caption
+#: FRTextureEdit.dfm:26
+msgid "..."
+msgstr ""
+
+#. RTextureEdit..Label3..Caption
+#: FRTextureEdit.dfm:34
+msgid "MagFilter"
+msgstr ""
+
+#. RTextureEdit..Label4..Caption
+#: FRTextureEdit.dfm:41
+msgid "MinFilter"
+msgstr ""
+
+#. RTextureEdit..Label1..Caption
+#: FRTextureEdit.dfm:48
+msgid "Texture Mode"
+msgstr ""
+
+#. RTextureEdit..Label5..Caption
+#: FRTextureEdit.dfm:55
+msgid "Texture Wrap"
+msgstr ""
+
+#. RTextureEdit..Label6..Caption
+#: FRTextureEdit.dfm:62
+msgid "ImageAlpha"
+msgstr ""
+
+#. RTextureEdit..Label7..Caption
+#: FRTextureEdit.dfm:69
+msgid "Filtering Quality"
+msgstr ""
+
+#. RTextureEdit..CBDisabled..Caption
+#: FRTextureEdit.dfm:116
+msgid "Disabled"
+msgstr ""
+
+#. ShaderUniformEditor..Caption
+#: FRUniformEditor.dfm:5
+msgid "Autofill of uniforms"
+msgstr ""
+
+#. ShaderUniformEditor..Font.Name
+#: FRUniformEditor.dfm:12
+#. GLShaderEditor..Font.Name
+#: FShaderMemo.dfm:14
+#. GLSCUDAEditorForm..Font.Name
+#: GLSCUDAEditor.dfm:11
+msgid "Tahoma"
+msgstr ""
+
+#. ShaderUniformEditor..Labe1..Caption
+#: FRUniformEditor.dfm:24
+msgid "Available Uniforms"
+msgstr ""
+
+#. ShaderUniformEditor..Label1..Caption
+#: FRUniformEditor.dfm:31
+msgid "Avaiblable Value"
+msgstr ""
+
+#. ShaderUniformEditor..Label2..Caption
+#: FRUniformEditor.dfm:38
+msgid "Texture Sampler"
+msgstr ""
+
+#. ShaderUniformEditor..Label3..Caption
+#: FRUniformEditor.dfm:45
+msgid "Swizzle of texture color components "
+msgstr ""
+
+#. ShaderUniformEditor..Label4..Caption
+#: FRUniformEditor.dfm:52
+msgid "Texture Image/Attachment"
+msgstr ""
+
+#. ShaderUniformEditor..Panel1..RedGroup..Caption
+#: FRUniformEditor.dfm:96
+msgid "RED"
+msgstr ""
+
+#. ShaderUniformEditor..Panel1..RedGroup....Items.Strings
+#: FRUniformEditor.dfm:99
+#. ShaderUniformEditor..Panel1..GreenGroup....Items.Strings
+#: FRUniformEditor.dfm:118
+#. ShaderUniformEditor..Panel1..BlueGroup....Items.Strings
+#: FRUniformEditor.dfm:137
+#. ShaderUniformEditor..Panel1..AlphaGroup....Items.Strings
+#: FRUniformEditor.dfm:156
+msgid "R"
+msgstr ""
+
+#. ShaderUniformEditor..Panel1..RedGroup....Items.Strings
+#: FRUniformEditor.dfm:100
+#. ShaderUniformEditor..Panel1..GreenGroup....Items.Strings
+#: FRUniformEditor.dfm:119
+#. ShaderUniformEditor..Panel1..BlueGroup....Items.Strings
+#: FRUniformEditor.dfm:138
+#. ShaderUniformEditor..Panel1..AlphaGroup....Items.Strings
+#: FRUniformEditor.dfm:157
+msgid "G"
+msgstr ""
+
+#. ShaderUniformEditor..Panel1..RedGroup....Items.Strings
+#: FRUniformEditor.dfm:101
+#. ShaderUniformEditor..Panel1..GreenGroup....Items.Strings
+#: FRUniformEditor.dfm:120
+#. ShaderUniformEditor..Panel1..BlueGroup....Items.Strings
+#: FRUniformEditor.dfm:139
+#. ShaderUniformEditor..Panel1..AlphaGroup....Items.Strings
+#: FRUniformEditor.dfm:158
+msgid "B"
+msgstr ""
+
+#. ShaderUniformEditor..Panel1..RedGroup....Items.Strings
+#: FRUniformEditor.dfm:102
+#. ShaderUniformEditor..Panel1..GreenGroup....Items.Strings
+#: FRUniformEditor.dfm:121
+#. ShaderUniformEditor..Panel1..BlueGroup....Items.Strings
+#: FRUniformEditor.dfm:140
+#. ShaderUniformEditor..Panel1..AlphaGroup....Items.Strings
+#: FRUniformEditor.dfm:159
+msgid "A"
+msgstr ""
+
+#. ShaderUniformEditor..Panel1..GreenGroup..Caption
+#: FRUniformEditor.dfm:115
+msgid "GREEN"
+msgstr ""
+
+#. ShaderUniformEditor..Panel1..BlueGroup..Caption
+#: FRUniformEditor.dfm:134
+msgid "BLUE"
+msgstr ""
+
+#. ShaderUniformEditor..Panel1..AlphaGroup..Caption
+#: FRUniformEditor.dfm:153
+msgid "ALPHA"
+msgstr ""
+
+#. GLShaderEditor..Caption
+#: FShaderMemo.dfm:5
+msgid "GLSL Shader Source Editor"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..Caption
+#: FShaderMemo.dfm:40
+#. GLSceneEditorForm..ToolBar..Caption
+#: GLSceneEdit.dfm:187
+msgid "ToolBar"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBOpen..Hint
+#: FShaderMemo.dfm:48
+msgid "Open from text file"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBSave..Hint
+#: FShaderMemo.dfm:55
+msgid "Save to file"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBStayOnTop..Hint
+#: FShaderMemo.dfm:62
+#. GLSceneEditorForm..ToolBar..TBStayOnTop..Hint
+#: GLSceneEdit.dfm:214
+#. GLSceneEditorForm..ActionList..ACStayOnTop..Caption
+#: GLSceneEdit.dfm:567
+msgid "Stay on top"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBHelp..Hint
+#: FShaderMemo.dfm:70
+msgid "Help"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..ToolButton2..Caption
+#: FShaderMemo.dfm:77
+#. GLSceneEditorForm..ToolBar..ToolButton2..Caption
+#: GLSceneEdit.dfm:227
+msgid "ToolButton2"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBUndo..Hint
+#: FShaderMemo.dfm:84
+msgid "Undo"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBUndo..Caption
+#: FShaderMemo.dfm:85
+msgid "TBUndo"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBRedo..Hint
+#: FShaderMemo.dfm:93
+msgid "Redu"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBRedo..Caption
+#: FShaderMemo.dfm:94
+msgid "TBRedo"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..ToolButton4..Caption
+#: FShaderMemo.dfm:103
+msgid "ToolButton4"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBCopy..Hint
+#: FShaderMemo.dfm:110
+msgid "Copy to clipboard"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBPaste..Hint
+#: FShaderMemo.dfm:117
+msgid "Paste from clipboard"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBCut..Hint
+#: FShaderMemo.dfm:124
+msgid "Cut to clipboard"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..ToolButton1..Caption
+#: FShaderMemo.dfm:132
+msgid "ToolButton1"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBIncIndent..Hint
+#: FShaderMemo.dfm:139
+msgid "Increase indent"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBIncIndent..Caption
+#: FShaderMemo.dfm:140
+msgid "TBIncIndent"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBDecIndent..Hint
+#: FShaderMemo.dfm:147
+msgid "Decrease indent"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBDecIndent..Caption
+#: FShaderMemo.dfm:148
+msgid "TBDecIndent"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBComment..Hint
+#: FShaderMemo.dfm:155
+msgid "Comment selected lines"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBComment..Caption
+#: FShaderMemo.dfm:156
+msgid "TBComment"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBUncoment..Hint
+#: FShaderMemo.dfm:163
+msgid "Uncoment selected lines"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBUncoment..Caption
+#: FShaderMemo.dfm:164
+msgid "TBUncoment"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..ToolButton10..Caption
+#: FShaderMemo.dfm:172
+#. GLSceneEditorForm..ToolBar..ToolButton10..Caption
+#: GLSceneEdit.dfm:294
+msgid "ToolButton10"
+msgstr ""
+
+#. GLShaderEditor..ToolBar..TBTemplate..Hint
+#: FShaderMemo.dfm:179
+msgid "Insert template"
+msgstr ""
+
+#. GLShaderEditor..GLSLMemo..Font.Name
+#: FShaderMemo.dfm:201
+msgid "Courier New"
+msgstr ""
+
+#. GLShaderEditor..Panel1..CancelButton..Caption
+#: FShaderMemo.dfm:254
+#. GUISkinEditor..panBottom..Button6..Caption
+#: GuiSkinEditorFormUnit.dfm:72
+msgid "Cancel"
+msgstr ""
+
+#. GLShaderEditor..Panel1..CheckButton..Caption
+#: FShaderMemo.dfm:274
+msgid "Check"
+msgstr ""
+
+#. GLShaderEditor..OpenDialog..DefaultExt
+#: FShaderMemo.dfm:819
+#. GLShaderEditor..SaveDialog..DefaultExt
+#: FShaderMemo.dfm:826
+msgid "glsl"
+msgstr ""
+
+#. GLShaderEditor..OpenDialog..Filter
+#: FShaderMemo.dfm:820
+#. GLShaderEditor..SaveDialog..Filter
+#: FShaderMemo.dfm:827
+msgid "GLSL file (*.glsl)|*.glsl|All files "
+"(*.*)|*.*"
+msgstr ""
+
+#. GLShaderEditor..TemplateMenu..GLSL120..Caption
+#: FShaderMemo.dfm:836
+msgid "GLSL 120"
+msgstr ""
+
+#. GLShaderEditor..TemplateMenu..N1..Caption
+#: FShaderMemo.dfm:839
+#. GLShaderEditor..TemplateMenu..N2..Caption
+#: FShaderMemo.dfm:845
+#. XCollectionEditor..PMListView..N1..Caption
+#: FXCollectionEditor.dfm:104
+#. XCollectionEditor..PMListView..N2..Caption
+#: FXCollectionEditor.dfm:110
+#. GLSceneEditorForm..PopupMenu..MIBehaviourSeparator..Caption
+#: GLSceneEdit.dfm:437
+#. GLSceneEditorForm..PopupMenu..N1..Caption
+#: GLSceneEdit.dfm:451
+#. GLSceneEditorForm..PopupMenu..N2..Caption
+#: GLSceneEdit.dfm:466
+#. GLSceneEditorForm..BehavioursPopupMenu..N4..Caption
+#: GLSceneEdit.dfm:1152
+#. GUISkinEditor..panImageProperties..Panel3..Button4..Caption
+#: GuiSkinEditorFormUnit.dfm:204
+#. GUISkinEditor..panElements..btnDelete..Caption
+#: GuiSkinEditorFormUnit.dfm:369
+#. GUISkinEditor..popElements..N1..Caption
+#: GuiSkinEditorFormUnit.dfm:558
+#. GUISkinEditor..popElements..N2..Caption
+#: GuiSkinEditorFormUnit.dfm:565
+msgid "-"
+msgstr ""
+
+#. GLShaderEditor..TemplateMenu..GLSL330..Caption
+#: FShaderMemo.dfm:842
+msgid "GLSL 330"
+msgstr ""
+
+#. GLShaderEditor..TemplateMenu..GLSL400..Caption
+#: FShaderMemo.dfm:848
+msgid "GLSL 400"
+msgstr ""
+
+#. VectorEditorForm..Caption
+#: FVectorEditor.dfm:5
+msgid "XYZ editor"
+msgstr ""
+
+#. VectorEditorForm..Label1..Caption
+#: FVectorEditor.dfm:22
+msgid "X axis"
+msgstr ""
+
+#. VectorEditorForm..Label2..Caption
+#: FVectorEditor.dfm:35
+msgid "Y axis"
+msgstr ""
+
+#. VectorEditorForm..Label3..Caption
+#: FVectorEditor.dfm:48
+msgid "Z axis"
+msgstr ""
+
+#. VectorEditorForm..SpeedButton1..Caption
+#: FVectorEditor.dfm:127
+msgid "+ X"
+msgstr ""
+
+#. VectorEditorForm..SBmX..Caption
+#: FVectorEditor.dfm:137
+msgid "- X"
+msgstr ""
+
+#. VectorEditorForm..SpeedButton3..Caption
+#: FVectorEditor.dfm:147
+msgid "+ Y"
+msgstr ""
+
+#. VectorEditorForm..SBmY..Caption
+#: FVectorEditor.dfm:157
+msgid "- Y"
+msgstr ""
+
+#. VectorEditorForm..SpeedButton5..Caption
+#: FVectorEditor.dfm:167
+msgid "+ Z"
+msgstr ""
+
+#. VectorEditorForm..SBmZ..Caption
+#: FVectorEditor.dfm:177
+msgid "- Z"
+msgstr ""
+
+#. VectorEditorForm..SpeedButton7..Caption
+#: FVectorEditor.dfm:187
+msgid "0; 0; 0"
+msgstr ""
+
+#. VectorEditorForm..SBUnit..Caption
+#: FVectorEditor.dfm:197
+msgid "1; 1; 1"
+msgstr ""
+
+#. VectorEditorForm..SpeedButton9..Caption
+#: FVectorEditor.dfm:207
+msgid "Normalize"
+msgstr ""
+
+#. VectorEditorForm..SBInvert..Caption
+#: FVectorEditor.dfm:224
+msgid "Invert"
+msgstr ""
+
+#. XCollectionEditor..Caption
+#: FXCollectionEditor.dfm:6
+msgid "XCollectionEditor"
+msgstr ""
+
+#. XCollectionEditor..ListView......Caption
+#: FXCollectionEditor.dfm:32
+#. GLSceneEditorForm..PABehaviours..BehavioursListView......Caption
+#: GLSceneEdit.dfm:357
+#. GLSceneEditorForm..PABehaviours..EffectsListView......Caption
+#: GLSceneEdit.dfm:380
+msgid "Type"
+msgstr ""
+
+#. XCollectionEditor..ToolBar1..Caption
+#: FXCollectionEditor.dfm:48
+#. GLSceneEditorForm..PABehaviours..ToolBar1..Caption
+#: GLSceneEdit.dfm:397
+#. GLSCUDAEditorForm..ToolBar1..Caption
+#: GLSCUDAEditor.dfm:24
+msgid "ToolBar1"
+msgstr ""
+
+#. XCollectionEditor..ToolBar1..TBAdd..Hint
+#: FXCollectionEditor.dfm:55
+#. XCollectionEditor..PMListView..MIAdd..Caption
+#: FXCollectionEditor.dfm:100
+msgid "Add..."
+msgstr ""
+
+#. XCollectionEditor..ToolBar1..TBAdd..Caption
+#: FXCollectionEditor.dfm:56
+msgid "TBAdd"
+msgstr ""
+
+#. XCollectionEditor..ToolBar1..ToolButton5..Caption
+#: FXCollectionEditor.dfm:66
+msgid "ToolButton5"
+msgstr ""
+
+#. XCollectionEditor..ToolBar1..ToolButton6..Caption
+#: FXCollectionEditor.dfm:79
+#. GLSceneEditorForm..ToolBar..ToolButton6..Caption
+#: GLSceneEdit.dfm:266
+msgid "ToolButton6"
+msgstr ""
+
+#. XCollectionEditor..ActionList..ACRemove..Caption
+#: FXCollectionEditor.dfm:124
+#. XCollectionEditor..ActionList..ACRemove..Hint
+#: FXCollectionEditor.dfm:125
+msgid "Remove item"
+msgstr ""
+
+#. XCollectionEditor..ActionList..ACMoveUp..Caption
+#: FXCollectionEditor.dfm:130
+#. XCollectionEditor..ActionList..ACMoveUp..Hint
+#: FXCollectionEditor.dfm:131
+#. GLSceneEditorForm..BehavioursPopupMenu..MoveUp1..Caption
+#: GLSceneEdit.dfm:1156
+msgid "Move up"
+msgstr ""
+
+#. XCollectionEditor..ActionList..ACMoveDown..Caption
+#: FXCollectionEditor.dfm:136
+#. XCollectionEditor..ActionList..ACMoveDown..Hint
+#: FXCollectionEditor.dfm:137
+#. GLSceneEditorForm..BehavioursPopupMenu..MoveDown1..Caption
+#: GLSceneEdit.dfm:1160
+msgid "Move down"
+msgstr ""
+
+#. GLSceneEditorForm..Caption
+#: GLSceneEdit.dfm:7
+msgid "GLScene editor"
+msgstr ""
+
+#. GLSceneEditorForm..ToolBar..TBEffectsPanel..Hint
+#: GLSceneEdit.dfm:205
+#. GLSceneEditorForm..ToolBar..TBEffectsPanel..Caption
+#: GLSceneEdit.dfm:206
+msgid "Show Behaviours/Effects"
+msgstr ""
+
+#. GLSceneEditorForm..ToolBar..ToolButton3..Caption
+#: GLSceneEdit.dfm:247
+msgid "ToolButton3"
+msgstr ""
+
+#. GLSceneEditorForm..PABehaviours..Caption
+#: GLSceneEdit.dfm:315
+msgid "PABehaviours"
+msgstr ""
+
+#. GLSceneEditorForm..PABehaviours..Label1..Caption
+#: GLSceneEdit.dfm:334
+#. GLSceneEditorForm..PABehaviours..ToolBar1..TBAddBehaviours..Caption
+#: GLSceneEdit.dfm:406
+msgid "Behaviours"
+msgstr ""
+
+#. GLSceneEditorForm..PABehaviours..Label2..Caption
+#: GLSceneEdit.dfm:343
+#. GLSceneEditorForm..PABehaviours..ToolBar1..TBAddEffects..Caption
+#: GLSceneEdit.dfm:417
+msgid "Effects"
+msgstr ""
+
+#. GLSceneEditorForm..PABehaviours..ToolBar1..TBAddEffects..Hint
+#: GLSceneEdit.dfm:415
+#. GLSceneEditorForm..PopupMenu..MIAddEffect..Caption
+#: GLSceneEdit.dfm:446
+#. GLSceneEditorForm..PopupMenu..MIAddEffect..Hint
+#: GLSceneEdit.dfm:447
+msgid "Add effect"
+msgstr ""
+
+#. GLSceneEditorForm..PopupMenu..MIAddBehaviour..Caption
+#: GLSceneEdit.dfm:441
+#. GLSceneEditorForm..ActionList..ACAddBehaviour..Hint
+#: GLSceneEdit.dfm:493
+msgid "Add behaviour"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACAddCamera..Caption
+#: GLSceneEdit.dfm:480
+#. GLSceneEditorForm..ActionList..ACAddCamera..Hint
+#: GLSceneEdit.dfm:481
+msgid "Add camera"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACAddObject..Caption
+#: GLSceneEdit.dfm:486
+#. GLSceneEditorForm..ActionList..ACAddObject..Hint
+#: GLSceneEdit.dfm:487
+msgid "Add object"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACAddBehaviour..Caption
+#: GLSceneEdit.dfm:492
+msgid "ACAddBehaviour"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACAddEffect..Caption
+#: GLSceneEdit.dfm:498
+msgid "ACAddEffect"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACDeleteObject..Caption
+#: GLSceneEdit.dfm:503
+#. GLSceneEditorForm..ActionList..ACDeleteObject..Hint
+#: GLSceneEdit.dfm:504
+msgid "Delete object"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACDeleteBehaviour..Caption
+#: GLSceneEdit.dfm:509
+msgid "ACDeleteBehaviour"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACDeleteBehaviour..Hint
+#: GLSceneEdit.dfm:510
+msgid "Delete behaviour"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACMoveUp..Caption
+#: GLSceneEdit.dfm:514
+#. GLSceneEditorForm..ActionList..ACMoveUp..Hint
+#: GLSceneEdit.dfm:515
+msgid "Move object up"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACMoveDown..Caption
+#: GLSceneEdit.dfm:521
+#. GLSceneEditorForm..ActionList..ACMoveDown..Hint
+#: GLSceneEdit.dfm:522
+msgid "Move object down"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACSaveScene..Caption
+#: GLSceneEdit.dfm:528
+msgid "ACSaveScene"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACSaveScene..Hint
+#: GLSceneEdit.dfm:529
+msgid "Save whole scene"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACLoadScene..Caption
+#: GLSceneEdit.dfm:534
+msgid "ACLoadScene"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACLoadScene..Hint
+#: GLSceneEdit.dfm:535
+msgid "Load whole scene"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACInfo..Caption
+#: GLSceneEdit.dfm:540
+msgid "ACInfo"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACInfo..Hint
+#: GLSceneEdit.dfm:541
+msgid "OpenGL Info"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACCopy..Caption
+#: GLSceneEdit.dfm:546
+#. GLSceneEditorForm..ActionList..ACCopy..Hint
+#: GLSceneEdit.dfm:547
+msgid "Copy"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACCut..Caption
+#: GLSceneEdit.dfm:553
+#. GLSceneEditorForm..ActionList..ACCut..Hint
+#: GLSceneEdit.dfm:554
+msgid "Cut"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACPaste..Caption
+#: GLSceneEdit.dfm:560
+#. GLSceneEditorForm..ActionList..ACPaste..Hint
+#: GLSceneEdit.dfm:561
+msgid "Paste"
+msgstr ""
+
+#. GLSceneEditorForm..ActionList..ACColapse..Caption
+#: GLSceneEdit.dfm:576
+msgid "ACColapse"
+msgstr ""
+
+#. GLSceneEditorForm..OpenDialog..DefaultExt
+#: GLSceneEdit.dfm:1125
+#. GLSceneEditorForm..SaveDialog..DefaultExt
+#: GLSceneEdit.dfm:1132
+msgid "gls"
+msgstr ""
+
+#. GLSceneEditorForm..OpenDialog..Filter
+#: GLSceneEdit.dfm:1126
+#. GLSceneEditorForm..SaveDialog..Filter
+#: GLSceneEdit.dfm:1133
+msgid "GLScene file (*.gls)|*.gls|All files "
+"(*.*)|*.*"
+msgstr ""
+
+#. GLSCUDAEditorForm..ToolBar1..AddModuleButton..Hint
+#: GLSCUDAEditor.dfm:30
+#. GLSCUDAEditorForm..ToolBar1..AddModuleButton..Caption
+#: GLSCUDAEditor.dfm:31
+msgid "Add Module"
+msgstr ""
+
+#. GLSCUDAEditorForm..ToolBar1..AddMemDataButton..Hint
+#: GLSCUDAEditor.dfm:40
+#. GLSCUDAEditorForm..ToolBar1..AddMemDataButton..Caption
+#: GLSCUDAEditor.dfm:41
+msgid "Add MemData"
+msgstr ""
+
+#. GLSCUDAEditorForm..ToolBar1..AddFFTPlanButton..Hint
+#: GLSCUDAEditor.dfm:50
+#. GLSCUDAEditorForm..ToolBar1..AddFFTPlanButton..Caption
+#: GLSCUDAEditor.dfm:51
+msgid "Add FFTPlan"
+msgstr ""
+
+#. GLSCUDAEditorForm..ToolBar1..AddGeometryResButton..Caption
+#: GLSCUDAEditor.dfm:60
+msgid "Add OpenGL Geometry Resource"
+msgstr ""
+
+#. GLSCUDAEditorForm..ToolBar1..AddImageResButton..Caption
+#: GLSCUDAEditor.dfm:67
+msgid "Add OpenGL Image Resource"
+msgstr ""
+
+#. GLSCUDAEditorForm..ToolBar1..DeleteButton..Hint
+#: GLSCUDAEditor.dfm:74
+#. GLSCUDAEditorForm..ToolBar1..DeleteButton..Caption
+#: GLSCUDAEditor.dfm:75
+msgid "Delete Item"
+msgstr ""
+
+#. GUISkinEditor..Caption
+#: GuiSkinEditorFormUnit.dfm:6
+msgid "Skin Editor"
+msgstr ""
+
+#. GUISkinEditor..StatusBar......Text
+#: GuiSkinEditorFormUnit.dfm:26
+msgid "x:"
+msgstr ""
+
+#. GUISkinEditor..StatusBar......Text
+#: GuiSkinEditorFormUnit.dfm:30
+msgid "y:"
+msgstr ""
+
+#. GUISkinEditor..StatusBar......Text
+#: GuiSkinEditorFormUnit.dfm:34
+msgid "dx:"
+msgstr ""
+
+#. GUISkinEditor..StatusBar......Text
+#: GuiSkinEditorFormUnit.dfm:38
+msgid "dy:"
+msgstr ""
+
+#. GUISkinEditor..panImageProperties..Label5..Caption
+#: GuiSkinEditorFormUnit.dfm:136
+msgid "Width"
+msgstr ""
+
+#. GUISkinEditor..panImageProperties..Label6..Caption
+#: GuiSkinEditorFormUnit.dfm:143
+msgid "Height"
+msgstr ""
+
+#. GUISkinEditor..panImageProperties..Panel3..Label2..Caption
+#: GuiSkinEditorFormUnit.dfm:175
+msgid "1.0"
+msgstr ""
+
+#. GUISkinEditor..panImageProperties..Panel3..Label1..Caption
+#: GuiSkinEditorFormUnit.dfm:182
+msgid "Zoom:"
+msgstr ""
+
+#. GUISkinEditor..panImageProperties..Panel3..Button3..Caption
+#: GuiSkinEditorFormUnit.dfm:189
+#. GUISkinEditor..panElements..btnAdd..Caption
+#: GuiSkinEditorFormUnit.dfm:353
+msgid "+"
+msgstr ""
+
+#. GUISkinEditor..panImageProperties..CheckBox1..Caption
+#: GuiSkinEditorFormUnit.dfm:220
+msgid "Show Preview"
+msgstr ""
+
+#. GUISkinEditor..panElements..Label3..Caption
+#: GuiSkinEditorFormUnit.dfm:267
+msgid "Skin Elements"
+msgstr ""
+
+#. GUISkinEditor..panElements..Label4..Caption
+#: GuiSkinEditorFormUnit.dfm:282
+msgid "Skin Part"
+msgstr ""
+
+#. GUISkinEditor..panElements..Label11..Caption
+#: GuiSkinEditorFormUnit.dfm:291
+#. GUISkinEditor..panElements..ComboBox1....Items.Strings
+#: GuiSkinEditorFormUnit.dfm:393
+#. GUISkinEditor..popElements..mnuLeft..Caption
+#: GuiSkinEditorFormUnit.dfm:529
+msgid "Left"
+msgstr ""
+
+#. GUISkinEditor..panElements..Label12..Caption
+#: GuiSkinEditorFormUnit.dfm:300
+#. GUISkinEditor..panElements..ComboBox1....Items.Strings
+#: GuiSkinEditorFormUnit.dfm:391
+#. GUISkinEditor..popElements..mnuTop..Caption
+#: GuiSkinEditorFormUnit.dfm:519
+msgid "Top"
+msgstr ""
+
+#. GUISkinEditor..panElements..Label13..Caption
+#: GuiSkinEditorFormUnit.dfm:309
+#. GUISkinEditor..panElements..ComboBox1....Items.Strings
+#: GuiSkinEditorFormUnit.dfm:395
+#. GUISkinEditor..popElements..mnuRight..Caption
+#: GuiSkinEditorFormUnit.dfm:539
+msgid "Right"
+msgstr ""
+
+#. GUISkinEditor..panElements..Label9..Caption
+#: GuiSkinEditorFormUnit.dfm:318
+msgid "Scale X"
+msgstr ""
+
+#. GUISkinEditor..panElements..Label10..Caption
+#: GuiSkinEditorFormUnit.dfm:327
+msgid "Scale Y"
+msgstr ""
+
+#. GUISkinEditor..panElements..Label14..Caption
+#: GuiSkinEditorFormUnit.dfm:336
+#. GUISkinEditor..panElements..ComboBox1....Items.Strings
+#: GuiSkinEditorFormUnit.dfm:397
+#. GUISkinEditor..popElements..mnuBottom..Caption
+#: GuiSkinEditorFormUnit.dfm:549
+msgid "Bottom"
+msgstr ""
+
+#. GUISkinEditor..panElements..ComboBox1....Items.Strings
+#: GuiSkinEditorFormUnit.dfm:390
+#. GUISkinEditor..popElements..mnuTopLeft..Caption
+#: GuiSkinEditorFormUnit.dfm:514
+msgid "TopLeft"
+msgstr ""
+
+#. GUISkinEditor..panElements..ComboBox1....Items.Strings
+#: GuiSkinEditorFormUnit.dfm:392
+#. GUISkinEditor..popElements..mnuTopRight..Caption
+#: GuiSkinEditorFormUnit.dfm:524
+msgid "TopRight"
+msgstr ""
+
+#. GUISkinEditor..panElements..ComboBox1....Items.Strings
+#: GuiSkinEditorFormUnit.dfm:394
+#. GUISkinEditor..popElements..mnuCenter..Caption
+#: GuiSkinEditorFormUnit.dfm:534
+msgid "Center"
+msgstr ""
+
+#. GUISkinEditor..panElements..ComboBox1....Items.Strings
+#: GuiSkinEditorFormUnit.dfm:396
+#. GUISkinEditor..popElements..mnuBottomLeft..Caption
+#: GuiSkinEditorFormUnit.dfm:544
+msgid "BottomLeft"
+msgstr ""
+
+#. GUISkinEditor..panElements..ComboBox1....Items.Strings
+#: GuiSkinEditorFormUnit.dfm:398
+#. GUISkinEditor..popElements..mnuBottomRight..Caption
+#: GuiSkinEditorFormUnit.dfm:554
+msgid "BottomRight"
+msgstr ""
+
+#. GUISkinEditor..popElements..mnuAddAll..Caption
+#: GuiSkinEditorFormUnit.dfm:561
+msgid "Add all"
+msgstr ""
+
+#. GUISkinEditor..popElements..mnuAllTop..Caption
+#: GuiSkinEditorFormUnit.dfm:568
+msgid "All Top"
+msgstr ""
+
+#. GUISkinEditor..popElements..mnuAllMiddle..Caption
+#: GuiSkinEditorFormUnit.dfm:572
+msgid "All Middle"
+msgstr ""
+
+#. GUISkinEditor..popElements..mnuAllBottom..Caption
+#: GuiSkinEditorFormUnit.dfm:576
+msgid "All Bottom"
+msgstr ""
+
+#. InfoForm..Caption
+#: Info.dfm:7
+msgid "OpenGL Driver Info"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet1..Caption
+#: Info.dfm:37
+msgid "GLScene"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet1..VersionLbl..Caption
+#: Info.dfm:2697
+msgid "versionNo"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet1..Label30..Caption
+#: Info.dfm:2714
+msgid "Version:"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet2..Caption
+#: Info.dfm:2728
+msgid "About"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet2..WebsiteLbl..Caption
+#: Info.dfm:2735
+msgid "http://glscene.org"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet2..Label34..Caption
+#: Info.dfm:2751
+msgid "Official:"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet2..Memo1....Lines.Strings
+#: Info.dfm:2762
+msgid "License: MPL"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet2..Memo1......Lines.Strings
+#: Info.dfm:2766
+msgid "GLScene is an OpenGL based 3D library for Delphi and Lazarus. It "
+"provides visual "
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet2..Memo1....Lines.Strings
+#: Info.dfm:2767
+msgid "components and "
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet2..Memo1......Lines.Strings
+#: Info.dfm:2770
+msgid "objects allowing description and rendering of 3D scenes in an easy, "
+"no-hassle, yet powerful "
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet2..Memo1......Lines.Strings
+#: Info.dfm:2773
+msgid "manner. GLScene runs on Windows, Linux, Mac OS X, FreeBSD and "
+"more."
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet2..Memo1....Lines.Strings
+#: Info.dfm:2775
+msgid "As GLScene is growing we need more developers."
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Caption
+#: Info.dfm:2780
+msgid "Contributors"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2790
+msgid "Aaron Hochwimmer"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2791
+msgid "Adirex"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2792
+msgid "Airatz"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2793
+msgid "Alan Rose"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2794
+msgid "Alejandro Leon Escalera"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2795
+msgid "Alexandre Hirzel"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2796
+msgid "Arvydas Juskevicius"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2797
+msgid "Ast"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2798
+msgid "Brian Johns"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2799
+msgid "Burkhard Carstens"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2800
+msgid "C4"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2801
+msgid "Da Stranger"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2802
+msgid "Daniel Bartlett"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2803
+msgid "Dave Kerr"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2804
+msgid "Degiovani"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2805
+msgid "Eric Grange"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2806
+msgid "Eric Pascual"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2807
+msgid "Erick Schuitema"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2808
+msgid "fig"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2809
+msgid "filippo"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2810
+msgid "J.Delauney"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2811
+msgid "Joen A. Joensen"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2812
+msgid "Joen Joensen"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2813
+msgid "Kapitan"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2814
+msgid "Kenneth Poulter"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2815
+msgid "Lionel Reynaud"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2816
+msgid "Lord Crc"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2817
+msgid "Lukasz Sokol"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2818
+msgid "mal"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2819
+msgid "Marcus Oblak"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2820
+msgid "Matheus Degiovani"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2821
+msgid "Mattias Fagerlund"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2822
+msgid "mif"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2823
+msgid "Mike Lischke"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2824
+msgid "Nelson Chu"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2825
+msgid "overkrik"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2826
+msgid "Paul van Dinther"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2827
+msgid "Peirick"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2828
+msgid "Phil Scadden"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2829
+msgid "Philipp Pammler"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2830
+msgid "Pierre Lemerle"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2831
+msgid "Piotr Szturmaj"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2832
+msgid "Rene Lindsay"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2833
+msgid "Roshal Sasha"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2834
+msgid "Rustam Asmandiarov"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2835
+msgid "Sandor Domokos"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2836
+msgid "Solerman Kaplon"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2837
+msgid "Sternas Stefanos"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2838
+msgid "Stuart Gooding"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2839
+msgid "Uwe"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2840
+msgid "Uwe Raabe"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2841
+msgid "YarUnderoaker"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet3..Contributors....Lines.Strings
+#: Info.dfm:2842
+msgid "Zsolt Laky"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..Caption
+#: Info.dfm:2849
+msgid "Information"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label1..Caption
+#: Info.dfm:2863
+msgid "OpenGL vendor :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label2..Caption
+#: Info.dfm:2872
+msgid "Acceleration :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label3..Caption
+#: Info.dfm:2882
+msgid "Version Info :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label5..Caption
+#: Info.dfm:2891
+msgid "Double buffered :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label6..Caption
+#: Info.dfm:2900
+msgid "Buffer switch mode :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..VendorLabel..Caption
+#: Info.dfm:2910
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..AccLabel..Caption
+#: Info.dfm:2925
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..VersionLabel..Caption
+#: Info.dfm:2941
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..CopyLabel..Caption
+#: Info.dfm:2956
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..DoubleLabel..Caption
+#: Info.dfm:2972
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..StereoLabel..Caption
+#: Info.dfm:2996
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..RendererLabel..Caption
+#: Info.dfm:3020
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..ColorLabel..Caption
+#: Info.dfm:3116
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..DepthLabel..Caption
+#: Info.dfm:3131
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..StencilLabel..Caption
+#: Info.dfm:3146
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..AuxLabel..Caption
+#: Info.dfm:3161
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..AccumLabel..Caption
+#: Info.dfm:3176
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..SubLabel..Caption
+#: Info.dfm:3191
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..OverlayLabel..Caption
+#: Info.dfm:3225
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..UnderlayLabel..Caption
+#: Info.dfm:3241
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..ClipLabel..Caption
+#: Info.dfm:3303
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..EvalLabel..Caption
+#: Info.dfm:3318
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..ListLabel..Caption
+#: Info.dfm:3333
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..LightLabel..Caption
+#: Info.dfm:3348
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..ModelLabel..Caption
+#: Info.dfm:3372
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..NameLabel..Caption
+#: Info.dfm:3432
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..PixelLabel..Caption
+#: Info.dfm:3447
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..ProjLabel..Caption
+#: Info.dfm:3462
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..TexStackLabel..Caption
+#: Info.dfm:3477
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..TexSizeLabel..Caption
+#: Info.dfm:3492
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..ViewLabel..Caption
+#: Info.dfm:3516
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..TexUnitsLabel..Caption
+#: Info.dfm:3540
+#. PlugInManagerPropForm..DateLabel..Caption
+#: PlugInManagerPropEditor.dfm:161
+#. PlugInManagerPropForm..SizeLabel..Caption
+#: PlugInManagerPropEditor.dfm:175
+msgid "???"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..VendorLabel..Font.Name
+#: Info.dfm:2915
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..AccLabel..Font.Name
+#: Info.dfm:2930
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..VersionLabel..Font.Name
+#: Info.dfm:2946
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..CopyLabel..Font.Name
+#: Info.dfm:2961
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..DoubleLabel..Font.Name
+#: Info.dfm:2977
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..StereoLabel..Font.Name
+#: Info.dfm:3001
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..RendererLabel..Font.Name
+#: Info.dfm:3025
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..ColorLabel..Font.Name
+#: Info.dfm:3121
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..DepthLabel..Font.Name
+#: Info.dfm:3136
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..StencilLabel..Font.Name
+#: Info.dfm:3151
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..AuxLabel..Font.Name
+#: Info.dfm:3166
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..AccumLabel..Font.Name
+#: Info.dfm:3181
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..SubLabel..Font.Name
+#: Info.dfm:3196
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..OverlayLabel..Font.Name
+#: Info.dfm:3230
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..UnderlayLabel..Font.Name
+#: Info.dfm:3246
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..ClipLabel..Font.Name
+#: Info.dfm:3308
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..EvalLabel..Font.Name
+#: Info.dfm:3323
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..ListLabel..Font.Name
+#: Info.dfm:3338
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..LightLabel..Font.Name
+#: Info.dfm:3353
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..ModelLabel..Font.Name
+#: Info.dfm:3377
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..NameLabel..Font.Name
+#: Info.dfm:3437
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..PixelLabel..Font.Name
+#: Info.dfm:3452
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..ProjLabel..Font.Name
+#: Info.dfm:3467
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..TexStackLabel..Font.Name
+#: Info.dfm:3482
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..TexSizeLabel..Font.Name
+#: Info.dfm:3497
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..ViewLabel..Font.Name
+#: Info.dfm:3521
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..TexUnitsLabel..Font.Name
+#: Info.dfm:3545
+#. InfoForm..PageControl..TabSheet5..Extensions..Font.Name
+#: Info.dfm:3587
+msgid "Verdana"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label7..Caption
+#: Info.dfm:2987
+msgid "Stereo enabled :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label13..Caption
+#: Info.dfm:3011
+msgid "Renderer :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label31..Caption
+#: Info.dfm:3037
+msgid "Common"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label32..Caption
+#: Info.dfm:3055
+msgid "Buffer and pixel depths"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label8..Caption
+#: Info.dfm:3071
+msgid "Color buffer :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label9..Caption
+#: Info.dfm:3080
+msgid "Depth buffer :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label10..Caption
+#: Info.dfm:3089
+msgid "Stencil buffer :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label11..Caption
+#: Info.dfm:3098
+msgid "Accumulation buffer :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label12..Caption
+#: Info.dfm:3107
+msgid "Auxilliary buffers :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label37..Caption
+#: Info.dfm:3206
+msgid "Subpixels :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label18..Caption
+#: Info.dfm:3215
+msgid "supported overlays :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label20..Caption
+#: Info.dfm:3257
+msgid "supported underlays :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label14..Caption
+#: Info.dfm:3267
+msgid "Clip planes :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label15..Caption
+#: Info.dfm:3276
+msgid "Evaluation order :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label16..Caption
+#: Info.dfm:3285
+msgid "Light sources :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label17..Caption
+#: Info.dfm:3294
+msgid "List nesting :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label23..Caption
+#: Info.dfm:3363
+msgid "Modelview stack :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label25..Caption
+#: Info.dfm:3387
+msgid "Name stack :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label26..Caption
+#: Info.dfm:3396
+msgid "Pixel map table:"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label27..Caption
+#: Info.dfm:3405
+msgid "Projection stack :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label28..Caption
+#: Info.dfm:3414
+msgid "Texture size:"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label29..Caption
+#: Info.dfm:3423
+msgid "Texture stack :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label35..Caption
+#: Info.dfm:3507
+msgid "Viewport Dimensions :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label4..Caption
+#: Info.dfm:3531
+msgid "Texture units :"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet4..ScrollBox1..Label33..Caption
+#: Info.dfm:3557
+msgid "Maximum values"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet5..Caption
+#: Info.dfm:3571
+msgid "Supported extensions"
+msgstr ""
+
+#. InfoForm..PageControl..TabSheet5..Extensions....Hint
+#: Info.dfm:3580
+msgid "Double-click and extension to go to its OpenGL Extension registry "
+"page"
+msgstr ""
+
+#. InfoForm..CloseButton..Caption
+#: Info.dfm:3604
+#. PlugInManagerPropForm..OKButton..Caption
+#: PlugInManagerPropEditor.dfm:75
+msgid "&Close"
+msgstr ""
+
+#. InfoForm..PMWebLink..MIRegistryLink..Caption
+#: Info.dfm:3612
+msgid "MIRegistryLink"
+msgstr ""
+
+#. InfoForm..PMWebLink..MIDelphi3D..Caption
+#: Info.dfm:3616
+msgid "MIDelphi3D"
+msgstr ""
+
+#. PlugInManagerPropForm..Caption
+#: PlugInManagerPropEditor.dfm:6
+msgid "Plug-in registration :"
+msgstr ""
+
+#. PlugInManagerPropForm..Label1..Caption
+#: PlugInManagerPropEditor.dfm:68
+msgid "registered Plug-ins :"
+msgstr ""
+
+#. PlugInManagerPropForm..LoadButton..Caption
+#: PlugInManagerPropEditor.dfm:99
+msgid "&Load plug-in"
+msgstr ""
+
+#. PlugInManagerPropForm..UnloadButton..Caption
+#: PlugInManagerPropEditor.dfm:123
+msgid "&Unload plug-in"
+msgstr ""
+
+#. PlugInManagerPropForm..Label2..Caption
+#: PlugInManagerPropEditor.dfm:147
+msgid "Ceation date :"
+msgstr ""
+
+#. PlugInManagerPropForm..Label3..Caption
+#: PlugInManagerPropEditor.dfm:154
+msgid "File size :"
+msgstr ""
+
+#. PlugInManagerPropForm..Label4..Caption
+#: PlugInManagerPropEditor.dfm:189
+msgid "Services :"
+msgstr ""
+
+#. PlugInManagerPropForm..Label5..Caption
+#: PlugInManagerPropEditor.dfm:196
+msgid "Names:"
+msgstr ""
+
+#. PlugInManagerPropForm..GroupBox..Caption
+#: PlugInManagerPropEditor.dfm:214
+msgid "Description : "
+msgstr ""
+
+#. PlugInManagerPropForm..OpenDialog..Filter
+#: PlugInManagerPropEditor.dfm:257
+msgid "GLScene plug-ins (*.DLL)|*.DLL|all files "
+"(*.*)|*.*"
+msgstr ""
+
+#. error messages
+#. Programmer's name for it: Error3DS_NO_MEM
+#: Const3DS.pas:19
+msgid "Not enough memory to complete operation."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_INVALID_ARG
+#: Const3DS.pas:21
+msgid "The argument passed to the function is invalid.Usually caused by a "
+"nil pointer or an out of range numeric "
+"argument."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_INVALID_DATA
+#: Const3DS.pas:23
+msgid "The structure passed as an argument to the function hasinvalid or out "
+"of range data in its fields."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_INVALID_CHUNK
+#: Const3DS.pas:25
+msgid "An invalid Chunk structure was encountered while readingthe database. "
+"Usually caused by a corrupt database or "
+"file."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_INVALID_DATABASE
+#: Const3DS.pas:26
+msgid "The database passed as an argument has not be created "
+"yet."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_WRONG_DATABASE
+#: Const3DS.pas:28
+msgid "The database passed as an argument is the wrong kind ofdatabase for "
+"this function."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_UNFOUND_CHUNK
+#: Const3DS.pas:30
+msgid "The database is missing important file chunks needed tofill out the "
+"requested structure. Usually caused by a corrupt database or "
+"file."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_WRONG_OBJECT
+#: Const3DS.pas:32
+msgid "The Name passed to the functions exists but is not the type of object "
+"asked for.For example asking for a mesh object with the "
+"GetCameraByName3DS function."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_NO_SUCH_FILE
+#: Const3DS.pas:33
+msgid "The FileName passed as an argument for reading does not "
+"exist."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_INIT_FAILED
+#: Const3DS.pas:34
+msgid "Failed to initialize structure passed as an "
+"argument."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_OPENING_FILE
+#: Const3DS.pas:35
+msgid "Could not open requested file."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_CLOSING_FILE
+#: Const3DS.pas:36
+msgid "Could not close requested file."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_READING_FILE
+#: Const3DS.pas:37
+msgid "Error occured while reading file."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_CREATING_DATABASE
+#: Const3DS.pas:38
+msgid "Error occured while creating database."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_READING_DATABASE
+#: Const3DS.pas:39
+msgid "Error occured while reading database."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_WRITING_DATABASE
+#: Const3DS.pas:40
+msgid "Error occured while writing database."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_WRITING_FILE
+#: Const3DS.pas:41
+msgid "Error occured while writing file."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_STRING_TOO_LONG
+#: Const3DS.pas:43
+msgid "String encountered in file structure or as an argument was longer "
+"than expected.Possibly caused by an uninitialed pointer corrupt file "
+"or database."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_GET_FAIL
+#: Const3DS.pas:44
+msgid "Failed to get new data from database."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_PUT_FAIL
+#: Const3DS.pas:45
+msgid "Failed to add new data to the database."
+msgstr ""
+
+#. Programmer's name for it: Error3DS_INVALID_INDEX
+#: Const3DS.pas:46
+msgid "Invalid index %d."
+msgstr ""
+
+#. Programmer's name for it: cXCollectionEditor
+#: FXCollectionEditor.pas:112
+#. Programmer's name for it: cXCollectionEditor
+#: FXCollectionEditorLCL.pas:91
+msgid "GLXCollection editor"
+msgstr ""
+
+#. Programmer's name for it: cIncompatibleContexts
+#: GLCarbonContext.pas:95
+#. Programmer's name for it: cIncompatibleContexts
+#: GLContext.pas:1301
+msgid "Incompatible contexts"
+msgstr ""
+
+#. Programmer's name for it: cDeleteContextFailed
+#: GLCarbonContext.pas:96
+#. Programmer's name for it: cDeleteContextFailed
+#: GLContext.pas:1302
+msgid "Delete context failed"
+msgstr ""
+
+#. Programmer's name for it: cContextActivationFailed
+#: GLCarbonContext.pas:97
+#. Programmer's name for it: cContextActivationFailed
+#: GLContext.pas:1303
+msgid "Context activation failed: %X, %s"
+msgstr ""
+
+#. Programmer's name for it: cContextDeactivationFailed
+#: GLCarbonContext.pas:98
+#. Programmer's name for it: cContextDeactivationFailed
+#: GLContext.pas:1304
+msgid "Context deactivation failed"
+msgstr ""
+
+#. Programmer's name for it: cUnableToCreateLegacyContext
+#: GLCarbonContext.pas:99
+#. Programmer's name for it: cUnableToCreateLegacyContext
+#: GLContext.pas:1305
+msgid "Unable to create legacy context"
+msgstr ""
+
+#. Programmer's name for it: cNoActiveRC
+#: GLContext.pas:1306
+msgid "No active rendering context"
+msgstr ""
+
+#. Programmer's name for it: glsFailedToShare
+#: GLContext.pas:1307
+msgid "DoCreateContext - Failed to share contexts"
+msgstr ""
+
+#. Programmer's name for it: cCannotAlterAnActiveContext
+#: GLContext.pas:1331
+msgid "Cannot alter an active context"
+msgstr ""
+
+#. Programmer's name for it: cInvalidContextRegistration
+#: GLContext.pas:1332
+msgid "Invalid context registration"
+msgstr ""
+
+#. Programmer's name for it: cInvalidNotificationRemoval
+#: GLContext.pas:1333
+msgid "Invalid notification removal"
+msgstr ""
+
+#. Programmer's name for it: cContextAlreadyCreated
+#: GLContext.pas:1334
+msgid "Context already created"
+msgstr ""
+
+#. Programmer's name for it: cContextNotCreated
+#: GLContext.pas:1335
+msgid "Context not created"
+msgstr ""
+
+#. Programmer's name for it: cUnbalancedContexActivations
+#: GLContext.pas:1336
+msgid "Unbalanced context activations"
+msgstr ""
+
+#. Programmer's name for it: gls3DSMapNotFound
+#: GLFile3DS.pas:363
+msgid "Loading %s map texture failed: %s in "
+"%s"
+msgstr ""
+
+#. Programmer's name for it: cCUTILFailed
+#: GLFilePGM.pas:45
+msgid "Can not initialize cutil32.dll"
+msgstr ""
+
+#. Programmer's name for it: sLIBPNGerror
+#: GLFilePNG.pas:58
+msgid "LIBPNG error"
+msgstr ""
+
+#. Programmer's name for it: cForwardContextFailed
+#: GLGLXContext.pas:111
+msgid "Can not create OpenGL 3.x Forward Context"
+msgstr ""
+
+#. Programmer's name for it: glsCantConvertImg
+#: GLGraphics.pas:512
+msgid "%s: can't convert image to RGBA8 format"
+msgstr ""
+
+#. Programmer's name for it: strCyclicRefMat
+#: GLMaterial.pas:853
+msgid "Cyclic reference detected in material "
+"\"%s\""
+msgstr ""
+
+#. Programmer's name for it: cudasFuncRetErr
+#: GLS_CUDA_API.pas:1432
+#. Programmer's name for it: cudasFFTFuncRetErr
+#: GLS_CUDA_FourierTransform.pas:255
+msgid "%s return error: %s"
+msgstr ""
+
+#. Programmer's name for it: cGLSceneEditor
+#: GLSceneEdit.pas:292
+#. Programmer's name for it: cGLSceneEditor
+#: GLSceneEditLCL.pas:248
+msgid "GLScene Editor"
+msgstr ""
+
+#. -------------------------Projects------------------------------------------
+#. Programmer's name for it: rBaseProjectLocalizedName
+#: GLSceneFormDesign.pas:335
+msgid "GLScene Base Application"
+msgstr ""
+
+#. Щ в¬®нЎ‡LScene Р°й¬®з¦­йї  GLSceneForm
+#. Programmer's name for it: rBaseProjectLocalizedDescription
+#: GLSceneFormDesign.pas:337
+msgid "Template of GLScene Base Application with "
+"TGLSceneForm"
+msgstr ""
+
+#. Programmer's name for it: rSimpleProjectLocalizedName
+#: GLSceneFormDesign.pas:339
+msgid "GLScene Simple Application"
+msgstr ""
+
+#. Щ в¬®нЎ‡LScene Р°й¬®з¦­йї  GLSceneForm
+#. Programmer's name for it: rSimpleProjectLocalizedDescription
+#: GLSceneFormDesign.pas:341
+msgid "Template of GLScene Simple Application with "
+"TGLSceneForm"
+msgstr ""
+
+#. Programmer's name for it: rExtendedProjectLocalizedName
+#: GLSceneFormDesign.pas:343
+msgid "GLScene Extended Application"
+msgstr ""
+
+#. Щ в¬®нЎ‡LScene Р°й¬®з¦­йї  GLSceneForm
+#. Programmer's name for it: rExtendedProjectLocalizedDescription
+#: GLSceneFormDesign.pas:345
+msgid "Template of GLScene Extended Application with "
+"TGLSceneForm"
+msgstr ""
+
+#. Base
+#. Programmer's name for it: rBaseFormLocalizedName
+#: GLSceneFormDesign.pas:349
+msgid "GLSBaseForm"
+msgstr ""
+
+#. гЅѕг¦°аЎЁ пў»оЇ© п±¬ иЎЇпЁўп¬їжІ а±®йЁўпҐЁ ж®¤ж±ЁоЈ о¦ЇпІ°жҐ±г¦­о® вЎ®л®® а±ЁмЇ¦ж®Ё
+#. Programmer's name for it: rBaseFormLocalizedDescription
+#: GLSceneFormDesign.pas:355
+msgid "GLSceneForm - a special form, which combines the properties of the "
+"viewer and the normal form and allows you to render directly into the "
+"application window"
+msgstr ""
+
+#. Simple
+#. Programmer's name for it: rSimpleFormLocalizedName
+#: GLSceneFormDesign.pas:357
+msgid "GLSSimpleForm"
+msgstr ""
+
+#. гЅѕг¦°аЎЁ пў»оЇ© п±¬ иЎ±пҐҐзјІ вЎ§пЈ»йЎ­бў® лЇ¬аЇ­ж®Іпў е¬ї пЁ¤б®Ё а±®п¤® а±ЁмЇ¦ж®Ё.
+#. Programmer's name for it: rSimpleFormLocalizedDescription
+#: GLSceneFormDesign.pas:363
+msgid "GLSSimpleForm - a special form, which combines the properties viewer "
+"and the usual form and contains the basic set of components to create "
+"a simple application."
+msgstr ""
+
+#. Extended
+#. Programmer's name for it: rExtendedFormLocalizedName
+#: GLSceneFormDesign.pas:365
+msgid "GLSExtendedForm"
+msgstr ""
+
+#. Programmer's name for it: rExtendedFormLocalizedDescription
+#: GLSceneFormDesign.pas:370
+msgid "GLSExtendedForm - a special form, which combines the properties "
+"viewer and the usual form, and contains an expanded set of components "
+"needed to create more complex applications."
+msgstr ""
+
+#. Programmer's name for it: sOpenGLCategoryName
+#: GLSceneRegister.pas:499
+msgid "OpenGL"
+msgstr ""
+
+#. Programmer's name for it: sOpenGLCategoryDescription
+#: GLSceneRegister.pas:501
+msgid "Properties dealing with OpenGL graphics"
+msgstr ""
+
+#. Programmer's name for it: cudasModuleAbsent
+#: GLSCUDA.pas:516
+msgid "Module is absent."
+msgstr ""
+
+#. Programmer's name for it: cudasInvalidParamType
+#: GLSCUDA.pas:517
+msgid "Invalid parameter type."
+msgstr ""
+
+#. Programmer's name for it: cudasOnlyHostData
+#: GLSCUDA.pas:518
+msgid "Only host data or mapped device or array data can "
+"writen/readen"
+msgstr ""
+
+#. Programmer's name for it: cudasOutOfRange
+#: GLSCUDA.pas:519
+msgid "Indexes out of range"
+msgstr ""
+
+#. Programmer's name for it: cudasInvalidValue
+#: GLSCUDA.pas:520
+msgid "Invalid value"
+msgstr ""
+
+#. Programmer's name for it: cudasInvalidValue
+#: GLSCUDA.pas:522
+msgid "Function's parameters must be sutup in OnParameterSetup "
+"event"
+msgstr ""
+
+#. Programmer's name for it: cudasLaunchFailed
+#: GLSCUDA.pas:523
+msgid "Kernel function \"%s\" launch failed."
+msgstr ""
+
+#. Programmer's name for it: cudasFuncNotConnected
+#: GLSCUDA.pas:524
+msgid "%s.Launch: Kernel function not connected"
+msgstr ""
+
+#. Programmer's name for it: cudasFailMap
+#: GLSCUDA.pas:525
+msgid "Unable to map %s - already mapped"
+msgstr ""
+
+#. Programmer's name for it: cudasFailUnmap
+#: GLSCUDA.pas:526
+msgid "Unable to unmap %s - not mapped."
+msgstr ""
+
+#. Programmer's name for it: cudasSourceFileNotFound
+#: GLSCUDACompiler.pas:148
+msgid "Source file not found"
+msgstr ""
+
+#. Programmer's name for it: cudasSuccessCompilation
+#: GLSCUDACompiler.pas:149
+msgid "Successful compilation:\n"
+"%s"
+msgstr ""
+
+#. Programmer's name for it: cudasFailCompilation
+#: GLSCUDACompiler.pas:150
+msgid "NVCC failed to compile:\n"
+"%s"
+msgstr ""
+
+#. Programmer's name for it: cudasFailCreatePipe
+#: GLSCUDACompiler.pas:151
+msgid "Unable to create Pipe"
+msgstr ""
+
+#. Programmer's name for it: cudasFailRunNVCC
+#: GLSCUDACompiler.pas:152
+msgid "Unable to run process (NVCC)"
+msgstr ""
+
+#. Programmer's name for it: cudasInvalidContextReg
+#: GLSCUDAContext.pas:225
+msgid "Invalid context registration."
+msgstr ""
+
+#. Programmer's name for it: cudasContextNotInit
+#: GLSCUDAContext.pas:226
+msgid "Context not initialized"
+msgstr ""
+
+#. Programmer's name for it: cudasNoDeviceToCreate
+#: GLSCUDAContext.pas:227
+msgid "No device to create CUDA context"
+msgstr ""
+
+#. Programmer's name for it: cudasNoDeviceToCreate
+#: GLSCUDAContext.pas:229
+msgid "Unable to create CUDA context - thread is busy by another "
+"context"
+msgstr ""
+
+#. Programmer's name for it: cudasMakeFloatingFail
+#: GLSCUDAContext.pas:230
+msgid "Unable to make context floating after "
+"creation"
+msgstr ""
+
+#. Programmer's name for it: cudasUnbalansedUsage
+#: GLSCUDAContext.pas:231
+msgid "Unbalansed CUDA context usage"
+msgstr ""
+
+#. Programmer's name for it: cudasInvalidGLContext
+#: GLSCUDAContext.pas:233
+msgid "Unable to create CUDA context with OpenGL interop - OpenGL context "
+"not ready"
+msgstr ""
+
+#. Programmer's name for it: cudasSizeMismatch
+#: GLSCUDADataAccess.pas:64
+msgid "Element size mismatch"
+msgstr ""
+
+#. Programmer's name for it: cCUDAEditor
+#: GLSCUDAEditor.pas:72
+msgid "GLScene CUDA Component Editor"
+msgstr ""
+
+#. Programmer's name for it: cudasRequireFreeThread
+#: GLSCUDAFFTPlan.pas:81
+msgid "CUFFT functions require context-free "
+"thread"
+msgstr ""
+
+#. Programmer's name for it: cudasBadPlanSize
+#: GLSCUDAFFTPlan.pas:82
+msgid "MemData size less then Plan size."
+msgstr ""
+
+#. Programmer's name for it: cudasFailToBindArrayToTex
+#: GLSCUDAGraphics.pas:274
+msgid "Unable to bind CUDA array to OpenGL unmaped "
+"texture"
+msgstr ""
+
+#. Programmer's name for it: cudasOutOfAttribSize
+#: GLSCUDAGraphics.pas:276
+msgid "The amount of device's data less then size of attribute's "
+"data."
+msgstr ""
+
+#. Programmer's name for it: cudasOutOfElementSize
+#: GLSCUDAGraphics.pas:278
+msgid "The amount of device's data less then size of indexes "
+"data."
+msgstr ""
+
+#. Programmer's name for it: sJPEGError
+#: GLSJPG.pas:777
+msgid "JPEG error #%d"
+msgstr ""
+
+#. Programmer's name for it: rstrNothing
+#: GLSLParameter.pas:257
+msgid "*nothing*"
+msgstr ""
+
+#. Programmer's name for it: SObjectsNotSupported
+#: GLSMemo.pas:886
+msgid "Linked object not supported"
+msgstr ""
+
+#. Programmer's name for it: glsStateCashMissing
+#: GLState.pas:1253
+msgid "States cash missing: "
+msgstr ""
+
+#. General
+#. Programmer's name for it: glsDot
+#: GLStrings.pas:24
+msgid "."
+msgstr ""
+
+#. Programmer's name for it: glsError
+#: GLStrings.pas:25
+msgid "Error!"
+msgstr ""
+
+#. Programmer's name for it: glsErrorEx
+#: GLStrings.pas:26
+msgid "Error: "
+msgstr ""
+
+#. SceneViewer
+#. Programmer's name for it: glsNoRenderingContext
+#: GLStrings.pas:29
+msgid "Could not create a rendering context"
+msgstr ""
+
+#. Programmer's name for it: glsWrongVersion
+#: GLStrings.pas:30
+msgid "Need at least OpenGL version 1.1"
+msgstr ""
+
+#. Programmer's name for it: glsTooManyLights
+#: GLStrings.pas:31
+msgid "Too many lights in the scene"
+msgstr ""
+
+#. Programmer's name for it: glsDisplayList
+#: GLStrings.pas:32
+msgid "Failed to create a new display list for object "
+"'%s'"
+msgstr ""
+
+#. Programmer's name for it: glsWrongBitmapCanvas
+#: GLStrings.pas:33
+msgid "Couldn't create a rendering context for the given "
+"bitmap"
+msgstr ""
+
+#. Programmer's name for it: glsWrongPrinter
+#: GLStrings.pas:34
+msgid "Couldn't render to printer"
+msgstr ""
+
+#. Programmer's name for it: glsAlreadyRendering
+#: GLStrings.pas:35
+msgid "Already rendering"
+msgstr ""
+
+#. Programmer's name for it: glsSceneViewerNotDefined
+#: GLStrings.pas:36
+msgid "SceneViewer not defined!"
+msgstr ""
+
+#. GLCadencer
+#. Programmer's name for it: glsCadencerNotDefined
+#: GLStrings.pas:39
+msgid "Cadencer not defined!"
+msgstr ""
+
+#. Programmer's name for it: glsCadencerNotDefinedEx
+#: GLStrings.pas:40
+msgid "Cadencer not defined for  the '%s' component"
+msgstr ""
+
+#. Shaders
+#. Programmer's name for it: glsShaderNeedsAtLeastOneLightSource
+#: GLStrings.pas:43
+msgid "This shader needs at least one LightSource!"
+msgstr ""
+
+#. Programmer's name for it: glsShaderNeedsAtLeastOneLightSourceEx
+#: GLStrings.pas:44
+msgid "Shader '%s' needs at least one LightSource!"
+msgstr ""
+
+#. GLTree
+#. Programmer's name for it: glsSceneRoot
+#: GLStrings.pas:47
+msgid "Scene root"
+msgstr ""
+
+#. Programmer's name for it: glsObjectRoot
+#: GLStrings.pas:48
+msgid "Scene objects"
+msgstr ""
+
+#. Programmer's name for it: glsCameraRoot
+#: GLStrings.pas:49
+msgid "Cameras"
+msgstr ""
+
+#. Programmer's name for it: glsCamera
+#: GLStrings.pas:50
+msgid "Camera"
+msgstr ""
+
+#. GLTexture
+#. Programmer's name for it: glsImageInvalid
+#: GLStrings.pas:53
+msgid "Could not load texture, image is invalid"
+msgstr ""
+
+#. Programmer's name for it: glsNoNewTexture
+#: GLStrings.pas:54
+msgid "Could not get new texture name"
+msgstr ""
+
+#. GLMaterials
+#. Programmer's name for it: glsMatLibNotDefined
+#: GLStrings.pas:57
+msgid "Material Library not defined!"
+msgstr ""
+
+#. Programmer's name for it: glsMaterialNotFoundInMatlib
+#: GLStrings.pas:58
+msgid "Material not found in current Material "
+"Library!"
+msgstr ""
+
+#. Programmer's name for it: glsMaterialNotFoundInMatlibEx
+#: GLStrings.pas:59
+msgid "Material \"%s\" not found in current Material "
+"Library!"
+msgstr ""
+
+#. GLObjects
+#. Programmer's name for it: glsSphereTopBottom
+#: GLStrings.pas:62
+msgid "The top angle must be higher than the bottom "
+"angle"
+msgstr ""
+
+#. Programmer's name for it: glsSphereStartStop
+#: GLStrings.pas:63
+msgid "The start angle must be smaller than then stop "
+"angle"
+msgstr ""
+
+#. Programmer's name for it: glsMaterialNotFound
+#: GLStrings.pas:64
+msgid "Loading failed: could not find material "
+"%s"
+msgstr ""
+
+#. Programmer's name for it: glsInterleaveNotSupported
+#: GLStrings.pas:65
+msgid "Interleaved Array format not supported yet. "
+"Sorry."
+msgstr ""
+
+#. common messages
+#. Programmer's name for it: glsUnknownArchive
+#: GLStrings.pas:68
+msgid "%s : unknown archive version %d"
+msgstr ""
+
+#. Programmer's name for it: glsOutOfMemory
+#: GLStrings.pas:69
+msgid "Fatal: Out of memory"
+msgstr ""
+
+#. Programmer's name for it: glsFileNotFound
+#: GLStrings.pas:70
+msgid "File %s not found"
+msgstr ""
+
+#. Programmer's name for it: glsFailedOpenFile
+#: GLStrings.pas:71
+msgid "Could not open file: %s"
+msgstr ""
+
+#. Programmer's name for it: glsFailedOpenFileFromCurrentDir
+#: GLStrings.pas:72
+msgid "Could not open file: %s\n"
+"(Current directory is %s)"
+msgstr ""
+
+#. Programmer's name for it: glsNoDescriptionAvailable
+#: GLStrings.pas:73
+msgid "No description available"
+msgstr ""
+
+#. Programmer's name for it: glsUnBalancedBeginEndUpdate
+#: GLStrings.pas:74
+msgid "Unbalanced Begin/EndUpdate"
+msgstr ""
+
+#. Programmer's name for it: glsUnknownExtension
+#: GLStrings.pas:76
+msgid "Unknown file extension (%s), maybe you forgot to add the support unit "
+"to your uses? (%s?)"
+msgstr ""
+
+#. Programmer's name for it: glsMissingResource
+#: GLStrings.pas:77
+msgid "Missing application resource: %s: %s"
+msgstr ""
+
+#. Programmer's name for it: glsIncompatibleTypes
+#: GLStrings.pas:79
+msgid "Incompatible types!"
+msgstr ""
+
+#. Programmer's name for it: glsUnknownType
+#: GLStrings.pas:80
+msgid "Unknown type!"
+msgstr ""
+
+#. Programmer's name for it: glsUnsupportedType
+#: GLStrings.pas:81
+msgid "Unsupported type!"
+msgstr ""
+
+#. object categories
+#. Programmer's name for it: glsOCBasicGeometry
+#: GLStrings.pas:84
+msgid "Basic geometry"
+msgstr ""
+
+#. Programmer's name for it: glsOCAdvancedGeometry
+#: GLStrings.pas:85
+msgid "Advanced geometry"
+msgstr ""
+
+#. Programmer's name for it: glsOCMeshObjects
+#: GLStrings.pas:86
+msgid "Mesh objects"
+msgstr ""
+
+#. Programmer's name for it: glsOCParticleSystems
+#: GLStrings.pas:87
+msgid "Particle systems"
+msgstr ""
+
+#. Programmer's name for it: glsOCEnvironmentObjects
+#: GLStrings.pas:88
+msgid "Environment objects"
+msgstr ""
+
+#. Programmer's name for it: glsOCSpecialObjects
+#: GLStrings.pas:89
+msgid "Special objects"
+msgstr ""
+
+#. Programmer's name for it: glsOCGraphPlottingObjects
+#: GLStrings.pas:90
+msgid "Graph-plotting objects"
+msgstr ""
+
+#. Programmer's name for it: glsOCDoodad
+#: GLStrings.pas:91
+msgid "Doodad objects"
+msgstr ""
+
+#. Programmer's name for it: glsOCHUDObjects
+#: GLStrings.pas:92
+msgid "HUD objects"
+msgstr ""
+
+#. Programmer's name for it: glsOCGuiObjects
+#: GLStrings.pas:93
+msgid "GUI objects"
+msgstr ""
+
+#. Programmer's name for it: glsOCProxyObjects
+#: GLStrings.pas:94
+msgid "Proxy objects"
+msgstr ""
+
+#. Programmer's name for it: glsOCExperimental
+#: GLStrings.pas:95
+msgid "Experimental objects"
+msgstr ""
+
+#. Programmer's name for it: glsOCExperimental
+#: GLStrings.pas:98
+msgid "Unknown %s \"%s\" for \"%s\" or program not in "
+"use"
+msgstr ""
+
+#. Programmer's name for it: gluInvalidColor
+#: GLUtils.pas:143
+msgid "'%s' is not a valid color format!"
+msgstr ""
+
+#. Programmer's name for it: cForwardContextFailed
+#: GLWin32Context.pas:169
+msgid "Can not create forward compatible context: #%X, "
+"%s"
+msgstr ""
+
+#. Programmer's name for it: cBackwardContextFailed
+#: GLWin32Context.pas:170
+msgid "Can not create backward compatible context: #%X, "
+"%s"
+msgstr ""
+
+#. Programmer's name for it: cFailHWRC
+#: GLWin32Context.pas:171
+msgid "Unable to create rendering context with hardware acceleration - down "
+"to software"
+msgstr ""
+
+#. Programmer's name for it: glsTmpRC_Created
+#: GLWin32Context.pas:172
+msgid "Temporary rendering context created"
+msgstr ""
+
+#. Programmer's name for it: glsDriverNotSupportFRC
+#: GLWin32Context.pas:173
+msgid "Driver not support creating of forward "
+"context"
+msgstr ""
+
+#. Programmer's name for it: glsDriverNotSupportOESRC
+#: GLWin32Context.pas:174
+msgid "Driver not support creating of OpenGL ES 2.0 "
+"context"
+msgstr ""
+
+#. Programmer's name for it: glsDriverNotSupportDebugRC
+#: GLWin32Context.pas:175
+msgid "Driver not support creating of debug "
+"context"
+msgstr ""
+
+#. Programmer's name for it: glsOESvsForwardRC
+#: GLWin32Context.pas:176
+msgid "OpenGL ES 2.0 context incompatible with Forward context - flag "
+"ignored"
+msgstr ""
+
+#. Programmer's name for it: glsFRC_created
+#: GLWin32Context.pas:177
+msgid "Forward core context seccussfuly created"
+msgstr ""
+
+#. Programmer's name for it: glsOESRC_created
+#: GLWin32Context.pas:178
+msgid "OpenGL ES 2.0 context seccussfuly created"
+msgstr ""
+
+#. Programmer's name for it: glsPBufferRC_created
+#: GLWin32Context.pas:179
+msgid "Backward compatible core PBuffer context successfully "
+"created"
+msgstr ""
+
+#. Programmer's name for it: strInvalidType
+#: ImageUtils.pas:97
+msgid "Invalid data type"
+msgstr ""
+
+#. Programmer's name for it: glsNoJoystickDriver
+#: Joystick.pas:122
+msgid "There's no joystick driver present"
+msgstr ""
+
+#. Programmer's name for it: glsConnectJoystick
+#: Joystick.pas:123
+msgid "Joystick is not connected to your system"
+msgstr ""
+
+#. Programmer's name for it: glsJoystickError
+#: Joystick.pas:124
+msgid "Your system reports a joystick error, can't do anything about "
+"it"
+msgstr ""
+
+#. Programmer's name for it: rstrOpenGLError
+#: OpenGLAdapter.pas:3347
+msgid "OpenGL error - %s"
+msgstr ""
+
+#. Programmer's name for it: cInvalidFileSignature
+#: PersistentClasses.pas:486
+msgid "Invalid file signature"
+msgstr ""
+
+#. Programmer's name for it: cUnknownArchiveVersion
+#: PersistentClasses.pas:487
+msgid " : unknown archive version "
+msgstr ""
+
+#. Programmer's name for it: cBrokenObjectListArchive
+#: PersistentClasses.pas:488
+msgid "Broken ObjectList archive"
+msgstr ""
+
+#. Programmer's name for it: cListIndexError
+#: PersistentClasses.pas:489
+msgid "Invalid list index"
+msgstr ""
+
+#. Programmer's name for it: cUnknownArchiveVersion
+#: GLXCollection.pas:192
+msgid "Unknown archive version : "
+msgstr ""
+

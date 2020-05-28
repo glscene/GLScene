@@ -1,0 +1,50 @@
+{
+Material{
+   Name=TestMat
+   Shader=
+   Texture2Name=
+   TextureOffset=(1;2;3)
+   TextureScale=(1;1;1)
+   BlendingMode=bmOpaque
+   FaceCulling=fcBufferDefault
+   LibMaterialName=
+   MaterialLibrary=
+   MaterialOptions=[false;false]
+   Texture{
+      Compression=tcDefault
+      EnvColor=(0;0;0;0)
+      FilteringQuality=tfIsotropic
+      ImageAlpha=tiaDefault
+      ImageBrightness=1
+      ImageClassName=PicFile Image{
+         PictureFilename=..\..\..\..\media\GLScene.bmp
+         }
+      ImageGamma=1
+      MagFilter=maLinear
+      MappingMode=tmmUser
+      MappingSCoordinates=(0;1;0;0)
+      MappingTCoordinates=(0;1;0;0)
+      MinFilter=miLinearMipmapLinear
+      NormalMapScale=0.125
+      TextureFormat=tfDefault
+      TextureMode=tmDecal
+      TextureWrap=twBoth
+      }
+   BackProperties{
+      Ambient=(1;0.2;0.2;0.2)
+      Diffuse=(1;0.8;0.8;0.8)
+      Emission=(1;0;0;0)
+      PolygonMode=pmFill
+      Shininess=0
+      Specular=(1;0;0;0)
+   }
+   FrontProperties{
+      Ambient=(1;0.2;0.2;0.2)
+      Diffuse=(1;0.8;0.8;0.8)
+      Emission=(1;0;0;0)
+      PolygonMode=pmFill
+      Shininess=0
+      Specular=(1;0;0;0)
+   }
+}
+}

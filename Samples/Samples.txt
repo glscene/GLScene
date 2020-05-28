@@ -1,0 +1,15 @@
+The Samples/Demos for GLScene to use with Delphi, C++Builder and Lazarus
+
+It's supposed that for all this demos there are next directories:   
+- sample projects in $(GLSCENE)\Samples\
+- media files in $(GLSCENE)\Samples\media\
+- CPP header files in $(GLSCENE)\include\$(Platform)
+- CPP lib/bpi files in $(GLSCENE)\lib\$(Platform)
+
+Additional Dynamic libraries, dll with Setup.bat are in the folder ..\GLScene\external\
+
+All demos are released under Mozilla PL (MPL).
+GLScene is an open-source graphic engine.
+
+http://glscene.org
+http://sourceforge.net/projects/glscene

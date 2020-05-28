@@ -1,0 +1,43 @@
+: W A S T E :
+
+Author: 	Jeff M. Garstecki, better known as "Stecki"
+Email:		stecki@frag.com or stecki@playstation.sony.com
+Web:		http://www.frag.com/deconstruct
+Host:		http://www.frag.com
+
+
+: What Waste is :
+
+Waste is my first player model for quake2.  It was an experiment for me in every respect.  I've never animated a character before, much less 198 frames of it.  It's also my first character skin as well.  I doubt I will clean up or fix the problem spots (never build a stock on your gun model, it's a nightmare...), as I'm already starting my second player model based on what I learned here.
+
+Waste wasn't meant to be a character that lives in the q2 world.  He's basically a post-apocolyptic headhunter.  His main weapon in my sketches was actually to be a beheader's sword and a fletchet styled cannon, but...
+
+
+: How to use Waste :
+
+Unzip this stuff into quake2/baseq2/players/waste, otherwise, it doesn't work.  you should have the following placed in said dir:
+
+tris.md2	the big guy himself
+weapon.md2	his gun model
+waste_i.pcx	the multiplayer select icon
+waste.pcx	skin
+weapon.pcx  	gun skin
+waste.txt	this file
+
+Once in quake2, you should be able to select Waste as a model in the multiplayer submenu.  if not, something has gone very, very wrong.  
+
+If you play as Waste, the only other people who will see you as Waste will be others who have downloaded this file as well (unless you rename some folders, heh heh heh).
+
+there aren't any bugs except creative criticism (stecki, that arm should be lower in frame stand21) cause this model works okay on my setup, and I'm not tech support.
+
+: the Legal Stuff :
+
+Um, distribute freely, mutilate freely, reskin freely.  However, if your making money off Waste or a sick mutilation, buy me a Renault Alpine 110A eh?  I'd kill for that car...  What?!  you don't know what that is?  sigh...
+
+good luck, and I hope you enjoy Waste...
+
+stecki
+
+also, I think it would be cool if you clans out there got your own, distinct player models, and not just the skins...
+
+To those who helped out, my thanks...

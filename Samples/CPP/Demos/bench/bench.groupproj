@@ -1,0 +1,96 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{503B7578-1619-4BE5-ABDF-7CA291825FFD}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="canvas\Canvas.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="megacube\MegaCube.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="megaglasscube\MegaGlassCube.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="smoking\Smoking.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="volcano\Volcano.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="whirlwind\Whirlwind.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Canvas">
+        <MSBuild Projects="canvas\Canvas.cbproj"/>
+    </Target>
+    <Target Name="Canvas:Clean">
+        <MSBuild Projects="canvas\Canvas.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Canvas:Make">
+        <MSBuild Projects="canvas\Canvas.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MegaCube">
+        <MSBuild Projects="megacube\MegaCube.cbproj"/>
+    </Target>
+    <Target Name="MegaCube:Clean">
+        <MSBuild Projects="megacube\MegaCube.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MegaCube:Make">
+        <MSBuild Projects="megacube\MegaCube.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MegaGlassCube">
+        <MSBuild Projects="megaglasscube\MegaGlassCube.cbproj"/>
+    </Target>
+    <Target Name="MegaGlassCube:Clean">
+        <MSBuild Projects="megaglasscube\MegaGlassCube.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MegaGlassCube:Make">
+        <MSBuild Projects="megaglasscube\MegaGlassCube.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Smoking">
+        <MSBuild Projects="smoking\Smoking.cbproj"/>
+    </Target>
+    <Target Name="Smoking:Clean">
+        <MSBuild Projects="smoking\Smoking.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Smoking:Make">
+        <MSBuild Projects="smoking\Smoking.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Volcano">
+        <MSBuild Projects="volcano\Volcano.cbproj"/>
+    </Target>
+    <Target Name="Volcano:Clean">
+        <MSBuild Projects="volcano\Volcano.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Volcano:Make">
+        <MSBuild Projects="volcano\Volcano.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Whirlwind">
+        <MSBuild Projects="whirlwind\Whirlwind.cbproj"/>
+    </Target>
+    <Target Name="Whirlwind:Clean">
+        <MSBuild Projects="whirlwind\Whirlwind.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Whirlwind:Make">
+        <MSBuild Projects="whirlwind\Whirlwind.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Canvas;MegaCube;MegaGlassCube;Smoking;Volcano;Whirlwind"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Canvas:Clean;MegaCube:Clean;MegaGlassCube:Clean;Smoking:Clean;Volcano:Clean;Whirlwind:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Canvas:Make;MegaCube:Make;MegaGlassCube:Make;Smoking:Make;Volcano:Make;Whirlwind:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

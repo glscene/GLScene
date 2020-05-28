@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{42939014-896A-4EC3-A943-FC10829CCD36}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="fontgen\fontgen.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="recorder\Recorder.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ScreenSaver\ScreenSaver.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="fontgen">
+        <MSBuild Projects="fontgen\fontgen.cbproj"/>
+    </Target>
+    <Target Name="fontgen:Clean">
+        <MSBuild Projects="fontgen\fontgen.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="fontgen:Make">
+        <MSBuild Projects="fontgen\fontgen.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Recorder">
+        <MSBuild Projects="recorder\Recorder.cbproj"/>
+    </Target>
+    <Target Name="Recorder:Clean">
+        <MSBuild Projects="recorder\Recorder.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Recorder:Make">
+        <MSBuild Projects="recorder\Recorder.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="ScreenSaver">
+        <MSBuild Projects="ScreenSaver\ScreenSaver.cbproj"/>
+    </Target>
+    <Target Name="ScreenSaver:Clean">
+        <MSBuild Projects="ScreenSaver\ScreenSaver.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ScreenSaver:Make">
+        <MSBuild Projects="ScreenSaver\ScreenSaver.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="fontgen;Recorder;ScreenSaver"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="fontgen:Clean;Recorder:Clean;ScreenSaver:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="fontgen:Make;Recorder:Make;ScreenSaver:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -1,0 +1,4 @@
+"IceCrater" Skybox Texture set is based on a set
+from "Primordial Soup"
+
+http://www.telefragged.com/soup/

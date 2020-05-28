@@ -1,0 +1,96 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{4C2A9536-A78A-4C3B-BD8F-687FEEC63D71}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="BumpShader\BumpShader.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DiffuseSpecularShader\DiffuseSpecularShader.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLSLShaderComponent\ShaderComponent.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ocean\Ocean.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PostShaders\PostShader.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ShadersLab\ShadersLab.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BumpShader">
+        <MSBuild Projects="BumpShader\BumpShader.dproj"/>
+    </Target>
+    <Target Name="BumpShader:Clean">
+        <MSBuild Projects="BumpShader\BumpShader.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BumpShader:Make">
+        <MSBuild Projects="BumpShader\BumpShader.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DiffuseSpecularShader">
+        <MSBuild Projects="DiffuseSpecularShader\DiffuseSpecularShader.dproj"/>
+    </Target>
+    <Target Name="DiffuseSpecularShader:Clean">
+        <MSBuild Projects="DiffuseSpecularShader\DiffuseSpecularShader.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DiffuseSpecularShader:Make">
+        <MSBuild Projects="DiffuseSpecularShader\DiffuseSpecularShader.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ShaderComponent">
+        <MSBuild Projects="GLSLShaderComponent\ShaderComponent.dproj"/>
+    </Target>
+    <Target Name="ShaderComponent:Clean">
+        <MSBuild Projects="GLSLShaderComponent\ShaderComponent.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ShaderComponent:Make">
+        <MSBuild Projects="GLSLShaderComponent\ShaderComponent.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Ocean">
+        <MSBuild Projects="ocean\Ocean.dproj"/>
+    </Target>
+    <Target Name="Ocean:Clean">
+        <MSBuild Projects="ocean\Ocean.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Ocean:Make">
+        <MSBuild Projects="ocean\Ocean.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PostShader">
+        <MSBuild Projects="PostShaders\PostShader.dproj"/>
+    </Target>
+    <Target Name="PostShader:Clean">
+        <MSBuild Projects="PostShaders\PostShader.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PostShader:Make">
+        <MSBuild Projects="PostShaders\PostShader.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ShadersLab">
+        <MSBuild Projects="ShadersLab\ShadersLab.dproj"/>
+    </Target>
+    <Target Name="ShadersLab:Clean">
+        <MSBuild Projects="ShadersLab\ShadersLab.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ShadersLab:Make">
+        <MSBuild Projects="ShadersLab\ShadersLab.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BumpShader;DiffuseSpecularShader;ShaderComponent;Ocean;PostShader;ShadersLab"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BumpShader:Clean;DiffuseSpecularShader:Clean;ShaderComponent:Clean;Ocean:Clean;PostShader:Clean;ShadersLab:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BumpShader:Make;DiffuseSpecularShader:Make;ShaderComponent:Make;Ocean:Make;PostShader:Make;ShadersLab:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

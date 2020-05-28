@@ -1,0 +1,252 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{94992228-6C4B-4053-9F29-E7A25E3BB86D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Blur\Blur.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="BlurAdvanced\BlurAdvanced.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="bunnybump\bunnybump.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="celshading\celshading.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="culling\culling.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="fog\fog.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="fullscreen\fullscreen.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="invariance\invariance.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="lining\lining.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="memviewer\memviewer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="multiproxy\multiproxy.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="multisampletexture\MultiSampleTextures.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OctreeDemo\OctreeDemo.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="phong\phong.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="quadtreevisculling\QuadtreeVisCulling.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="RenderToTexture\RenderToTexture.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SkyBox\SkyBox.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="tobitmap\tobitmap.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="basicsdl\basicsdl.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Blur">
+        <MSBuild Projects="Blur\Blur.dproj"/>
+    </Target>
+    <Target Name="Blur:Clean">
+        <MSBuild Projects="Blur\Blur.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Blur:Make">
+        <MSBuild Projects="Blur\Blur.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="BlurAdvanced">
+        <MSBuild Projects="BlurAdvanced\BlurAdvanced.dproj"/>
+    </Target>
+    <Target Name="BlurAdvanced:Clean">
+        <MSBuild Projects="BlurAdvanced\BlurAdvanced.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BlurAdvanced:Make">
+        <MSBuild Projects="BlurAdvanced\BlurAdvanced.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="bunnybump">
+        <MSBuild Projects="bunnybump\bunnybump.dproj"/>
+    </Target>
+    <Target Name="bunnybump:Clean">
+        <MSBuild Projects="bunnybump\bunnybump.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="bunnybump:Make">
+        <MSBuild Projects="bunnybump\bunnybump.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="celshading">
+        <MSBuild Projects="celshading\celshading.dproj"/>
+    </Target>
+    <Target Name="celshading:Clean">
+        <MSBuild Projects="celshading\celshading.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="celshading:Make">
+        <MSBuild Projects="celshading\celshading.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="culling">
+        <MSBuild Projects="culling\culling.dproj"/>
+    </Target>
+    <Target Name="culling:Clean">
+        <MSBuild Projects="culling\culling.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="culling:Make">
+        <MSBuild Projects="culling\culling.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="fog">
+        <MSBuild Projects="fog\fog.dproj"/>
+    </Target>
+    <Target Name="fog:Clean">
+        <MSBuild Projects="fog\fog.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="fog:Make">
+        <MSBuild Projects="fog\fog.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="fullscreen">
+        <MSBuild Projects="fullscreen\fullscreen.dproj"/>
+    </Target>
+    <Target Name="fullscreen:Clean">
+        <MSBuild Projects="fullscreen\fullscreen.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="fullscreen:Make">
+        <MSBuild Projects="fullscreen\fullscreen.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="invariance">
+        <MSBuild Projects="invariance\invariance.dproj"/>
+    </Target>
+    <Target Name="invariance:Clean">
+        <MSBuild Projects="invariance\invariance.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="invariance:Make">
+        <MSBuild Projects="invariance\invariance.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="lining">
+        <MSBuild Projects="lining\lining.dproj"/>
+    </Target>
+    <Target Name="lining:Clean">
+        <MSBuild Projects="lining\lining.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="lining:Make">
+        <MSBuild Projects="lining\lining.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="memviewer">
+        <MSBuild Projects="memviewer\memviewer.dproj"/>
+    </Target>
+    <Target Name="memviewer:Clean">
+        <MSBuild Projects="memviewer\memviewer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="memviewer:Make">
+        <MSBuild Projects="memviewer\memviewer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="multiproxy">
+        <MSBuild Projects="multiproxy\multiproxy.dproj"/>
+    </Target>
+    <Target Name="multiproxy:Clean">
+        <MSBuild Projects="multiproxy\multiproxy.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="multiproxy:Make">
+        <MSBuild Projects="multiproxy\multiproxy.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MultiSampleTextures">
+        <MSBuild Projects="multisampletexture\MultiSampleTextures.dproj"/>
+    </Target>
+    <Target Name="MultiSampleTextures:Clean">
+        <MSBuild Projects="multisampletexture\MultiSampleTextures.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MultiSampleTextures:Make">
+        <MSBuild Projects="multisampletexture\MultiSampleTextures.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OctreeDemo">
+        <MSBuild Projects="OctreeDemo\OctreeDemo.dproj"/>
+    </Target>
+    <Target Name="OctreeDemo:Clean">
+        <MSBuild Projects="OctreeDemo\OctreeDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OctreeDemo:Make">
+        <MSBuild Projects="OctreeDemo\OctreeDemo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="phong">
+        <MSBuild Projects="phong\phong.dproj"/>
+    </Target>
+    <Target Name="phong:Clean">
+        <MSBuild Projects="phong\phong.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="phong:Make">
+        <MSBuild Projects="phong\phong.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="QuadtreeVisCulling">
+        <MSBuild Projects="quadtreevisculling\QuadtreeVisCulling.dproj"/>
+    </Target>
+    <Target Name="QuadtreeVisCulling:Clean">
+        <MSBuild Projects="quadtreevisculling\QuadtreeVisCulling.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="QuadtreeVisCulling:Make">
+        <MSBuild Projects="quadtreevisculling\QuadtreeVisCulling.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="RenderToTexture">
+        <MSBuild Projects="RenderToTexture\RenderToTexture.dproj"/>
+    </Target>
+    <Target Name="RenderToTexture:Clean">
+        <MSBuild Projects="RenderToTexture\RenderToTexture.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RenderToTexture:Make">
+        <MSBuild Projects="RenderToTexture\RenderToTexture.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SkyBox">
+        <MSBuild Projects="SkyBox\SkyBox.dproj"/>
+    </Target>
+    <Target Name="SkyBox:Clean">
+        <MSBuild Projects="SkyBox\SkyBox.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SkyBox:Make">
+        <MSBuild Projects="SkyBox\SkyBox.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="tobitmap">
+        <MSBuild Projects="tobitmap\tobitmap.dproj"/>
+    </Target>
+    <Target Name="tobitmap:Clean">
+        <MSBuild Projects="tobitmap\tobitmap.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="tobitmap:Make">
+        <MSBuild Projects="tobitmap\tobitmap.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="basicsdl">
+        <MSBuild Projects="basicsdl\basicsdl.dproj"/>
+    </Target>
+    <Target Name="basicsdl:Clean">
+        <MSBuild Projects="basicsdl\basicsdl.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="basicsdl:Make">
+        <MSBuild Projects="basicsdl\basicsdl.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Blur;BlurAdvanced;bunnybump;celshading;culling;fog;fullscreen;invariance;lining;memviewer;multiproxy;MultiSampleTextures;OctreeDemo;phong;QuadtreeVisCulling;RenderToTexture;SkyBox;tobitmap;basicsdl"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Blur:Clean;BlurAdvanced:Clean;bunnybump:Clean;celshading:Clean;culling:Clean;fog:Clean;fullscreen:Clean;invariance:Clean;lining:Clean;memviewer:Clean;multiproxy:Clean;MultiSampleTextures:Clean;OctreeDemo:Clean;phong:Clean;QuadtreeVisCulling:Clean;RenderToTexture:Clean;SkyBox:Clean;tobitmap:Clean;basicsdl:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Blur:Make;BlurAdvanced:Make;bunnybump:Make;celshading:Make;culling:Make;fog:Make;fullscreen:Make;invariance:Make;lining:Make;memviewer:Make;multiproxy:Make;MultiSampleTextures:Make;OctreeDemo:Make;phong:Make;QuadtreeVisCulling:Make;RenderToTexture:Make;SkyBox:Make;tobitmap:Make;basicsdl:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

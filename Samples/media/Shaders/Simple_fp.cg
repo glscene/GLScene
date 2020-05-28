@@ -1,0 +1,23 @@
+//
+// Simple Fragment Program
+//
+// - Just do a simple remap of RGBA
+//
+// Note: For OUT.color.a < 1 to work, you need
+// to set the blending mode of the material
+// that uses the shader to bmTransparency so
+// that blending is switched on.
+
+struct FragOut {
+  float4 color : COLOR;
+};
+
+FragOut main(float4 color : COLOR)
+{
+  FragOut OUT;
+
+  OUT.color.rg = color.gg;       // Red, Green channels <- Green value
+  OUT.color.ba = float2(0.3, 1); // Blue <- 0.3; Alpha <- 1
+
+  return OUT;
+}

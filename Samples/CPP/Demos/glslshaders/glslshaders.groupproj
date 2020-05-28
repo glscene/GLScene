@@ -1,0 +1,96 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{9B780FAA-D85C-4EC7-867D-81ACBBFB2E47}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="BumpShader\BumpShader.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DiffuseSpecularShader\DiffuseSpecularShader.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Ocean\Ocean.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PostShader\Postshader.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLSLShaderComponent\Shadercomponent.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SimpleGLSL\SimpleGLSL.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BumpShader">
+        <MSBuild Projects="BumpShader\BumpShader.cbproj"/>
+    </Target>
+    <Target Name="BumpShader:Clean">
+        <MSBuild Projects="BumpShader\BumpShader.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BumpShader:Make">
+        <MSBuild Projects="BumpShader\BumpShader.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="DiffuseSpecularShader">
+        <MSBuild Projects="DiffuseSpecularShader\DiffuseSpecularShader.cbproj"/>
+    </Target>
+    <Target Name="DiffuseSpecularShader:Clean">
+        <MSBuild Projects="DiffuseSpecularShader\DiffuseSpecularShader.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DiffuseSpecularShader:Make">
+        <MSBuild Projects="DiffuseSpecularShader\DiffuseSpecularShader.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Ocean">
+        <MSBuild Projects="Ocean\Ocean.cbproj"/>
+    </Target>
+    <Target Name="Ocean:Clean">
+        <MSBuild Projects="Ocean\Ocean.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Ocean:Make">
+        <MSBuild Projects="Ocean\Ocean.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Postshader">
+        <MSBuild Projects="PostShader\Postshader.cbproj"/>
+    </Target>
+    <Target Name="Postshader:Clean">
+        <MSBuild Projects="PostShader\Postshader.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Postshader:Make">
+        <MSBuild Projects="PostShader\Postshader.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Shadercomponent">
+        <MSBuild Projects="GLSLShaderComponent\Shadercomponent.cbproj"/>
+    </Target>
+    <Target Name="Shadercomponent:Clean">
+        <MSBuild Projects="GLSLShaderComponent\Shadercomponent.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Shadercomponent:Make">
+        <MSBuild Projects="GLSLShaderComponent\Shadercomponent.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="SimpleGLSL">
+        <MSBuild Projects="SimpleGLSL\SimpleGLSL.cbproj"/>
+    </Target>
+    <Target Name="SimpleGLSL:Clean">
+        <MSBuild Projects="SimpleGLSL\SimpleGLSL.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SimpleGLSL:Make">
+        <MSBuild Projects="SimpleGLSL\SimpleGLSL.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BumpShader;DiffuseSpecularShader;Ocean;Postshader;Shadercomponent;SimpleGLSL"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BumpShader:Clean;DiffuseSpecularShader:Clean;Ocean:Clean;Postshader:Clean;Shadercomponent:Clean;SimpleGLSL:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BumpShader:Make;DiffuseSpecularShader:Make;Ocean:Make;Postshader:Make;Shadercomponent:Make;SimpleGLSL:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

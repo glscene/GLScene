@@ -1,0 +1,54 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>Benchmarks</title>
+</head>
+
+<body bgcolor="#FFFFFF" link="#0000FF" vlink="#800080" lang="FR"
+style="tab-interval:35.4pt">
+
+<p class="MsoPlainText"><font size="4" face="Courier New"><b>Benchmarks&nbsp;:</b></font></p>
+
+<ul>
+    <li><a href="megacube/megacube.dpr"><b>megacube</b></a><b>&nbsp;:</b><ul>
+            <li>a high number of shaded cubes arranged in a cubic
+                array</li>
+            <li>allows benchmarking raw geometrical and T&amp;L
+                power (no texturing here)</li>
+        </ul>
+    </li>
+    <li><a href="megaglasscube/megaglasscube.dpr"><b>megaglasscube</b></a><b>&nbsp;:</b><ul>
+            <li>a high number of shaded transparent cubes arranged in a cubic
+                array</li>
+            <li>same use as megacube but with emphasis on transparency and depth sorting</li>
+        </ul>
+    </li>
+    <li><a href="volcano/volcano.dpr"><b>volcano</b></a><b>&nbsp;:</b><ul>
+            <li>volcano-like particle systems using ParticleFX</li>
+            <li>benchmarking of PFX and depth sorting (PFX is a scene-wide blended particles system)</li>
+        </ul>
+    </li>
+    <li><a href="smoking/smoking.dpr"><b>smoking</b></a><b>&nbsp;:</b><ul>
+            <li>several heavily smoking fire PFXs</li>
+            <li>benchmarking of PFX sprites, depth sorting and intertwined additive/transparently blended PFXs</li>
+        </ul>
+    </li>
+    <li><a href="whirlwind/whirlwind.dpr"><b>whirlwind</b></a><b>&nbsp;:</b><ul>
+            <li>a whirlwind-shaped particle systems (via TGLParticles, looks ugly)</li>
+            <li>allows benchmarking particle systems and GLScene
+                object management (not even shading is used here)</li>
+        </ul>
+    </li>
+    <li><a href="canvas/canvas.dpr"><b>canvas</b></a><b>&nbsp;:</b><ul>
+            <li>drawing 2D with TGLCanvas in a scene viewer</li>
+            <li>allows benchmarking TGLCanvas performance vs GDI (hardware-acceleration on both sides if available)</li>
+        </ul>
+    </li>
+</ul>
+
+<a href="..\demos.htm">Back</a></p>
+</body>
+</html>

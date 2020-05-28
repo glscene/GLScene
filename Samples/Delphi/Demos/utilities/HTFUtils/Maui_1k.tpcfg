@@ -1,0 +1,7 @@
+HTFName=F:\HTF\maui_1k.htf
+WorldSizeX=1024
+WorldSizeY=1024
+TileSize=128
+DefaultZ=0
+DEMPath=F:\DEM
+DEMs="maui_1k.bt,""0,0"",1025x1025,""VTP's BT (single)"""

@@ -1,0 +1,46 @@
+19th June 2000
+
+================================================================
+
+Accessory's Name	: Q3a Sick Puppy Plasma Gun
+
+Installation directory  : quake3/baseq3/
+
+Author                  : Tim Evison
+
+Email Address           : timevison@hotamil.com
+
+
+Description		: Replacement for the plasma gun including LOD and new sounds.
+                                                         
+
+Acknowledgments		:All those at Polycount especially Harlequin (Who I plagered this file from), Skullbox, rube, fairybane, especially Cleanerwolf (Who helped with and provided some of the sounds), and all the others there that have encoraged me to get into this type of thing.
+
+================================================================
+
+Constructed in Lightwave/Milkshape textured in Photoshop 5
+
+
+Known Bugs     : Please tell me if you find them.
+
+
+================================================================
+
+Installation
+
+Unzip wep-plasmagun.pk3 into the baseQ3 directory
+
+Uninstallation 
+
+Remove wep-plasmagun.pk3 from the baseQ3 directory
+
+
+.
+
+* Copyright / Permissions *
+
+Doom(R), QUAKE(R) and QUAKE III Arena(R) are registered trademarks of id Software, Inc.
+
+Please, if you use this weapon mod for any distributable file (including as a base), let me know and give me credit for the work I've put in.
+
+

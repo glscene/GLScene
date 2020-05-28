@@ -1,0 +1,65 @@
+//
+// Simple Vertex Program
+//
+// - Calculates simple diffuse and specular
+//
+
+// Define 'vendor-specific' diffuse color ;)
+float3 diffuseColor = float3(0.8, 1, 0.1); // NVidia
+//float3 diffuseColor = float3(1.0, 0.0, 0.0); // ATI
+
+// Define white specular color
+float3 specularColor = float3(1.0, 1.0, 1.0);
+
+// Define inputs from application
+struct appin
+{
+    float4 Position  : POSITION;
+    float4 Normal    : NORMAL;
+};
+
+// Define outputs from vertex shader
+struct vertout
+{
+    float4 HPosition : POSITION;
+    float4 Color     : COLOR;
+};
+
+vertout main(appin IN,
+             uniform float4x4 ModelViewProj,
+             uniform float4x4 ModelViewIT,
+             uniform float4 LightVec)
+{
+  vertout OUT;
+
+  // Transform vertex position into homogenous clip-space.
+  OUT.HPosition = mul(ModelViewProj, IN.Position);
+
+  // Transform normal from model-space to view-space.
+  float3 normalVec = normalize(mul(ModelViewIT, IN.Normal).xyz);
+
+  // Store normalized light vector.
+  float3 lightVec = normalize(LightVec.xyz);
+
+  // Calculate half angle vector.
+  float3 eyeVec = float3(0.0, 0.0, 1.0);
+  float3 halfVec = normalize(lightVec + eyeVec);
+
+  // Calculate diffuse component.
+  float diffuse = dot(normalVec, lightVec);
+
+  // Calculate specular component.
+  float specular = dot(normalVec, halfVec);
+
+  // Use the lit function to compute lighting vector from
+  // diffuse and specular values.
+  float4 lighting = lit(diffuse, specular, 32);
+
+  // Combine diffuse and specular contributions and
+  // output final vertex color.
+  OUT.Color.rgb = lighting.y * diffuseColor +
+                  lighting.z * specularColor;
+  OUT.Color.a = 1.0;
+
+  return OUT;
+}

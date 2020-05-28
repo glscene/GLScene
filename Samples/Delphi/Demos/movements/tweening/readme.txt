@@ -1,0 +1,1 @@
+todo: Create a basic example for each Ease functions from AnimationUtils.pas (Yann Papouin)

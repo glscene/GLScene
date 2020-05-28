@@ -1,0 +1,78 @@
+
+[Setup]
+AllowNoIcons=0
+AlwaysRestart=0
+AppCopyright=GLScene Demos
+AppName=Archipelago
+AppVerName=Archipelago v1.01
+BackColor=clBlue
+BackSolid=0
+Bits=32
+DefaultDirName=GLScene\Archipelago
+DefaultGroupName=GLScene Demos
+InfoAfterFile=
+InfoBeforeFile=D:\GLScene\Samples\Delphi\AdvDemos\Archipelago\Readme.txt
+InstallToProgramFiles=1
+LicenseFile=
+UseSetupLdr=1
+Uninstallable=1
+AlwaysCreateUninstallIcon=1
+DisableProgramGroupPage=0
+CreateAppDir=1
+DisableDirPage=0
+OverwriteUninstRegEntries=1
+UninstallIconName=Uninstall Archipelago
+WindowsVersion=4,3.51
+DisableStartupPrompt=0
+DiskSpanning=0
+DiskSize=1457664
+DiskClusterSize=512
+ReserveBytes=0
+
+[Files]
+"Archipelago.dpr", "{app}\Archipelago.dpr", copy_normal, 
+"Archipelago.exe", "{app}\Archipelago.exe", copy_normal, 
+"Archipelago.res", "{app}\Archipelago.res", copy_normal, 
+"Data\035eau.jpg", "{app}\Data\035eau.jpg", copy_normal, 
+"Data\detail.jpg", "{app}\Data\detail.jpg", copy_normal, 
+"Data\Islands.htf", "{app}\Data\Islands.htf", copy_normal, 
+"Data\sailboat.glml", "{app}\Data\sailboat.glml", copy_normal, 
+"Data\sailboat.glsm", "{app}\Data\sailboat.glsm", copy_normal, 
+"Data\Splitter.exe", "{app}\Data\Splitter.exe", copy_normal, 
+"Data\TextureMap.jpg", "{app}\Data\TextureMap.jpg", copy_normal, 
+"Data\wake.bmp", "{app}\Data\wake.bmp", copy_normal, 
+"Readme.txt", "{app}\Readme.txt", copy_normal, 
+"Unit1.dfm", "{app}\Unit1.dfm", copy_normal, 
+"Unit1.pas", "{app}\Unit1.pas", copy_normal, 
+
+[Icons]
+"{group}\Archipelago", "{app}\Archipelago.exe", "", "", "", 
+
+[INI]
+
+[Registry]
+
+[Dirs]
+"{app}\Data", 
+
+[DeleteFiles]
+{app}\Data
+{app}\Data\tex_0_0.bmp
+{app}\Data\tex_0_1.bmp
+{app}\Data\tex_0_2.bmp
+{app}\Data\tex_0_3.bmp
+{app}\Data\tex_1_0.bmp
+{app}\Data\tex_1_1.bmp
+{app}\Data\tex_1_2.bmp
+{app}\Data\tex_1_3.bmp
+{app}\Data\tex_2_0.bmp
+{app}\Data\tex_2_1.bmp
+{app}\Data\tex_2_2.bmp
+{app}\Data\tex_2_3.bmp
+{app}\Data\tex_3_0.bmp
+{app}\Data\tex_3_1.bmp
+{app}\Data\tex_3_2.bmp
+{app}\Data\tex_3_3.bmp
+
+[Run]
+"{app}\Data\Splitter.exe", "", 

@@ -1,0 +1,7 @@
+HTFName=F:\HTF\tbase.htf
+WorldSizeX=4320
+WorldSizeY=2160
+TileSize=128
+DefaultZ=0
+DEMPath=F:\DEM
+DEMs="tbase.bin,""0,0"",4320x2160,""16 bits (Intel)"""

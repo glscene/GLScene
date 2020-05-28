@@ -1,0 +1,120 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{79002EEE-FFA5-4556-A1C3-0B886D3A0008}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="column\Column.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="events\Events.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="hierarch\Hierarch.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="manual\Manual.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="objmove\Objmove.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="pointto\pointto.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="pong\Pong.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SmoothNavigator\SmoothNavigator.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Column">
+        <MSBuild Projects="column\Column.cbproj"/>
+    </Target>
+    <Target Name="Column:Clean">
+        <MSBuild Projects="column\Column.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Column:Make">
+        <MSBuild Projects="column\Column.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Events">
+        <MSBuild Projects="events\Events.cbproj"/>
+    </Target>
+    <Target Name="Events:Clean">
+        <MSBuild Projects="events\Events.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Events:Make">
+        <MSBuild Projects="events\Events.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Hierarch">
+        <MSBuild Projects="hierarch\Hierarch.cbproj"/>
+    </Target>
+    <Target Name="Hierarch:Clean">
+        <MSBuild Projects="hierarch\Hierarch.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Hierarch:Make">
+        <MSBuild Projects="hierarch\Hierarch.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Manual">
+        <MSBuild Projects="manual\Manual.cbproj"/>
+    </Target>
+    <Target Name="Manual:Clean">
+        <MSBuild Projects="manual\Manual.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Manual:Make">
+        <MSBuild Projects="manual\Manual.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Objmove">
+        <MSBuild Projects="objmove\Objmove.cbproj"/>
+    </Target>
+    <Target Name="Objmove:Clean">
+        <MSBuild Projects="objmove\Objmove.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Objmove:Make">
+        <MSBuild Projects="objmove\Objmove.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="pointto">
+        <MSBuild Projects="pointto\pointto.cbproj"/>
+    </Target>
+    <Target Name="pointto:Clean">
+        <MSBuild Projects="pointto\pointto.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pointto:Make">
+        <MSBuild Projects="pointto\pointto.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Pong">
+        <MSBuild Projects="pong\Pong.cbproj"/>
+    </Target>
+    <Target Name="Pong:Clean">
+        <MSBuild Projects="pong\Pong.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Pong:Make">
+        <MSBuild Projects="pong\Pong.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="SmoothNavigator">
+        <MSBuild Projects="SmoothNavigator\SmoothNavigator.cbproj"/>
+    </Target>
+    <Target Name="SmoothNavigator:Clean">
+        <MSBuild Projects="SmoothNavigator\SmoothNavigator.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SmoothNavigator:Make">
+        <MSBuild Projects="SmoothNavigator\SmoothNavigator.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Column;Events;Hierarch;Manual;Objmove;pointto;Pong;SmoothNavigator"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Column:Clean;Events:Clean;Hierarch:Clean;Manual:Clean;Objmove:Clean;pointto:Clean;Pong:Clean;SmoothNavigator:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Column:Make;Events:Make;Hierarch:Make;Manual:Make;Objmove:Make;pointto:Make;Pong:Make;SmoothNavigator:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

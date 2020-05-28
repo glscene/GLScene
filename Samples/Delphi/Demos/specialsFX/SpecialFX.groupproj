@@ -1,0 +1,288 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{CAA3621A-2A22-4CA4-B83A-457DFB36FC73}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Atmosphere\Atmosphere.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="beer\beer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="boom\boom.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="candles\candles.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="fire\fire.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLSLProjectedTexture\GLSLProjectedTexture.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="meshexplosion\meshexplosion.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="motionblur\motionblur.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="motionblur2\motionblur2.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ParticleMasking\ParticleMasking.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PFXGallery\PFXGallery.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="posteffect\posteffect.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="projtextures\ProjTextures.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ShadowmappingFBO\ShadowmappingFBO.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="shadowplane\shadowplane.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="shadows\Shadows.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="shadowvolumes\shadowvolumes.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="spiral\spiral.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="thor\Thor.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Trail\TrailDemo.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="warping\warping.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="waterplane\waterplane.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Atmosphere">
+        <MSBuild Projects="Atmosphere\Atmosphere.dproj"/>
+    </Target>
+    <Target Name="Atmosphere:Clean">
+        <MSBuild Projects="Atmosphere\Atmosphere.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Atmosphere:Make">
+        <MSBuild Projects="Atmosphere\Atmosphere.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="beer">
+        <MSBuild Projects="beer\beer.dproj"/>
+    </Target>
+    <Target Name="beer:Clean">
+        <MSBuild Projects="beer\beer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="beer:Make">
+        <MSBuild Projects="beer\beer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="boom">
+        <MSBuild Projects="boom\boom.dproj"/>
+    </Target>
+    <Target Name="boom:Clean">
+        <MSBuild Projects="boom\boom.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="boom:Make">
+        <MSBuild Projects="boom\boom.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="candles">
+        <MSBuild Projects="candles\candles.dproj"/>
+    </Target>
+    <Target Name="candles:Clean">
+        <MSBuild Projects="candles\candles.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="candles:Make">
+        <MSBuild Projects="candles\candles.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="fire">
+        <MSBuild Projects="fire\fire.dproj"/>
+    </Target>
+    <Target Name="fire:Clean">
+        <MSBuild Projects="fire\fire.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="fire:Make">
+        <MSBuild Projects="fire\fire.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLSLProjectedTexture">
+        <MSBuild Projects="GLSLProjectedTexture\GLSLProjectedTexture.dproj"/>
+    </Target>
+    <Target Name="GLSLProjectedTexture:Clean">
+        <MSBuild Projects="GLSLProjectedTexture\GLSLProjectedTexture.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLSLProjectedTexture:Make">
+        <MSBuild Projects="GLSLProjectedTexture\GLSLProjectedTexture.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="meshexplosion">
+        <MSBuild Projects="meshexplosion\meshexplosion.dproj"/>
+    </Target>
+    <Target Name="meshexplosion:Clean">
+        <MSBuild Projects="meshexplosion\meshexplosion.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="meshexplosion:Make">
+        <MSBuild Projects="meshexplosion\meshexplosion.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="motionblur">
+        <MSBuild Projects="motionblur\motionblur.dproj"/>
+    </Target>
+    <Target Name="motionblur:Clean">
+        <MSBuild Projects="motionblur\motionblur.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="motionblur:Make">
+        <MSBuild Projects="motionblur\motionblur.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="motionblur2">
+        <MSBuild Projects="motionblur2\motionblur2.dproj"/>
+    </Target>
+    <Target Name="motionblur2:Clean">
+        <MSBuild Projects="motionblur2\motionblur2.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="motionblur2:Make">
+        <MSBuild Projects="motionblur2\motionblur2.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ParticleMasking">
+        <MSBuild Projects="ParticleMasking\ParticleMasking.dproj"/>
+    </Target>
+    <Target Name="ParticleMasking:Clean">
+        <MSBuild Projects="ParticleMasking\ParticleMasking.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ParticleMasking:Make">
+        <MSBuild Projects="ParticleMasking\ParticleMasking.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PFXGallery">
+        <MSBuild Projects="PFXGallery\PFXGallery.dproj"/>
+    </Target>
+    <Target Name="PFXGallery:Clean">
+        <MSBuild Projects="PFXGallery\PFXGallery.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PFXGallery:Make">
+        <MSBuild Projects="PFXGallery\PFXGallery.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="posteffect">
+        <MSBuild Projects="posteffect\posteffect.dproj"/>
+    </Target>
+    <Target Name="posteffect:Clean">
+        <MSBuild Projects="posteffect\posteffect.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="posteffect:Make">
+        <MSBuild Projects="posteffect\posteffect.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ProjTextures">
+        <MSBuild Projects="projtextures\ProjTextures.dproj"/>
+    </Target>
+    <Target Name="ProjTextures:Clean">
+        <MSBuild Projects="projtextures\ProjTextures.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProjTextures:Make">
+        <MSBuild Projects="projtextures\ProjTextures.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ShadowmappingFBO">
+        <MSBuild Projects="ShadowmappingFBO\ShadowmappingFBO.dproj"/>
+    </Target>
+    <Target Name="ShadowmappingFBO:Clean">
+        <MSBuild Projects="ShadowmappingFBO\ShadowmappingFBO.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ShadowmappingFBO:Make">
+        <MSBuild Projects="ShadowmappingFBO\ShadowmappingFBO.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="shadowplane">
+        <MSBuild Projects="shadowplane\shadowplane.dproj"/>
+    </Target>
+    <Target Name="shadowplane:Clean">
+        <MSBuild Projects="shadowplane\shadowplane.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="shadowplane:Make">
+        <MSBuild Projects="shadowplane\shadowplane.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Shadows">
+        <MSBuild Projects="shadows\Shadows.dproj"/>
+    </Target>
+    <Target Name="Shadows:Clean">
+        <MSBuild Projects="shadows\Shadows.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Shadows:Make">
+        <MSBuild Projects="shadows\Shadows.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="shadowvolumes">
+        <MSBuild Projects="shadowvolumes\shadowvolumes.dproj"/>
+    </Target>
+    <Target Name="shadowvolumes:Clean">
+        <MSBuild Projects="shadowvolumes\shadowvolumes.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="shadowvolumes:Make">
+        <MSBuild Projects="shadowvolumes\shadowvolumes.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="spiral">
+        <MSBuild Projects="spiral\spiral.dproj"/>
+    </Target>
+    <Target Name="spiral:Clean">
+        <MSBuild Projects="spiral\spiral.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="spiral:Make">
+        <MSBuild Projects="spiral\spiral.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Thor">
+        <MSBuild Projects="thor\Thor.dproj"/>
+    </Target>
+    <Target Name="Thor:Clean">
+        <MSBuild Projects="thor\Thor.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Thor:Make">
+        <MSBuild Projects="thor\Thor.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TrailDemo">
+        <MSBuild Projects="Trail\TrailDemo.dproj"/>
+    </Target>
+    <Target Name="TrailDemo:Clean">
+        <MSBuild Projects="Trail\TrailDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TrailDemo:Make">
+        <MSBuild Projects="Trail\TrailDemo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="warping">
+        <MSBuild Projects="warping\warping.dproj"/>
+    </Target>
+    <Target Name="warping:Clean">
+        <MSBuild Projects="warping\warping.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="warping:Make">
+        <MSBuild Projects="warping\warping.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="waterplane">
+        <MSBuild Projects="waterplane\waterplane.dproj"/>
+    </Target>
+    <Target Name="waterplane:Clean">
+        <MSBuild Projects="waterplane\waterplane.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="waterplane:Make">
+        <MSBuild Projects="waterplane\waterplane.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Atmosphere;beer;boom;candles;fire;GLSLProjectedTexture;meshexplosion;motionblur;motionblur2;ParticleMasking;PFXGallery;posteffect;ProjTextures;ShadowmappingFBO;shadowplane;Shadows;shadowvolumes;spiral;Thor;TrailDemo;warping;waterplane"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Atmosphere:Clean;beer:Clean;boom:Clean;candles:Clean;fire:Clean;GLSLProjectedTexture:Clean;meshexplosion:Clean;motionblur:Clean;motionblur2:Clean;ParticleMasking:Clean;PFXGallery:Clean;posteffect:Clean;ProjTextures:Clean;ShadowmappingFBO:Clean;shadowplane:Clean;Shadows:Clean;shadowvolumes:Clean;spiral:Clean;Thor:Clean;TrailDemo:Clean;warping:Clean;waterplane:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Atmosphere:Make;beer:Make;boom:Make;candles:Make;fire:Make;GLSLProjectedTexture:Make;meshexplosion:Make;motionblur:Make;motionblur2:Make;ParticleMasking:Make;PFXGallery:Make;posteffect:Make;ProjTextures:Make;ShadowmappingFBO:Make;shadowplane:Make;Shadows:Make;shadowvolumes:Make;spiral:Make;Thor:Make;TrailDemo:Make;warping:Make;waterplane:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

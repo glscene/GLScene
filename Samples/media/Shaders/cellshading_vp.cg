@@ -1,0 +1,42 @@
+// Data structure for data passed from the application to the
+// vertex program.
+struct app2vert
+{
+  float4 Position : POSITION;
+  float4 Normal : NORMAL;
+  float3 TexCoord : TEXCOORD0;
+};
+
+// Data passed out of the vertex program and into the fragment
+// program.
+struct vert2frag
+{
+  float4 HPosition : POSITION;
+  float3 TexCoord : TEXCOORD0;
+};
+
+// Main vertex processing code
+vert2frag main(app2vert IN,
+  uniform float4x4 ModelViewProj,
+  uniform float4x4 ModelViewIT,
+  uniform float4 LightDir)
+{
+  // Define out output
+  vert2frag OUT;
+
+  // Pass the texture coords straight to the fragment program
+  OUT.TexCoord = IN.TexCoord;
+
+  // Transform the vertex position
+  OUT.HPosition = mul(ModelViewProj, IN.Position);
+
+  // Transform vertex normal
+  float3 normalVec = normalize(mul(ModelViewIT, IN.Normal).xyz);
+
+  // Output the light intensity as the 3rd element of the texture 
+  // coordinate. This saves having to use another data stream.
+  OUT.TexCoord.z = dot(normalVec, LightDir.xyz);
+
+  // Return the vertex processing result for rasterizing
+  return OUT;
+}

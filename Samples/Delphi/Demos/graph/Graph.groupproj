@@ -1,0 +1,84 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{ED996C50-D207-4B11-800F-BB5A16405B64}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="fxy\fxy.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="heightfield\heightfield.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="points\points.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="projection\projection.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="splines\splines.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="fxy">
+        <MSBuild Projects="fxy\fxy.dproj"/>
+    </Target>
+    <Target Name="fxy:Clean">
+        <MSBuild Projects="fxy\fxy.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="fxy:Make">
+        <MSBuild Projects="fxy\fxy.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="heightfield">
+        <MSBuild Projects="heightfield\heightfield.dproj"/>
+    </Target>
+    <Target Name="heightfield:Clean">
+        <MSBuild Projects="heightfield\heightfield.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="heightfield:Make">
+        <MSBuild Projects="heightfield\heightfield.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="points">
+        <MSBuild Projects="points\points.dproj"/>
+    </Target>
+    <Target Name="points:Clean">
+        <MSBuild Projects="points\points.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="points:Make">
+        <MSBuild Projects="points\points.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="projection">
+        <MSBuild Projects="projection\projection.dproj"/>
+    </Target>
+    <Target Name="projection:Clean">
+        <MSBuild Projects="projection\projection.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="projection:Make">
+        <MSBuild Projects="projection\projection.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="splines">
+        <MSBuild Projects="splines\splines.dproj"/>
+    </Target>
+    <Target Name="splines:Clean">
+        <MSBuild Projects="splines\splines.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="splines:Make">
+        <MSBuild Projects="splines\splines.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="fxy;heightfield;points;projection;splines"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="fxy:Clean;heightfield:Clean;points:Clean;projection:Clean;splines:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="fxy:Make;heightfield:Make;points:Make;projection:Make;splines:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

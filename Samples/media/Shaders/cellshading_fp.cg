@@ -1,0 +1,44 @@
+// Data structure passed from the vertex program to the fragement
+// program
+struct vert2frag
+{
+  float4 HPosition : POSITION;
+  float3 TexCoord : TEXCOORD0;
+};
+
+// Output from the fragment program
+struct fragoutput
+{
+  float4 Color : COLOR;
+};
+
+// Main fragment processing
+fragoutput main(
+  vert2frag IN,
+  uniform sampler2D Map0)
+{
+  // Declare the frament program output
+  fragoutput OUT;
+
+  // Read the intensity from the 3rd element of the texture coordinate
+  float i = IN.TexCoord.z;
+
+  // Clamp intensities to specific values based on intensity range.
+  // Change or add to these ranges to effect the cells
+  if (i >0.9) { i = 1.0; } 
+  else if (i >0.6) { i = 0.9; } 
+  else if (i >0.2) { i = 0.6; } 
+  else { i = 0.0; }
+
+  // Get the color from the texture map using the input texture 
+  // coordinate and assign to the output color
+  OUT.Color.rgb = f3tex2D(Map0, IN.TexCoord.xy);
+
+  // Multiply output by the clamped intensity value
+  OUT.Color.rgb *= i;
+
+  OUT.Color.a = 1.0;
+
+  // Return the fragment processing result
+  return OUT;
+}

@@ -1,0 +1,13 @@
+#define IDH_Introduction 0
+#define IDH_Basement 1000
+#define IDH_DesignTime 2000
+#define IDH_FileFormats 3000
+#define IDH_Geometry 4000
+#define IDH_Physics 5000
+#define IDH_Scripting 6000
+#define IDH_Shaders 7000
+#define IDH_Sounds 8000
+#define IDH_Help 9000
+#define IDH_HelpContents 9001
+#define IDH_HelpGlossary 9002
+#define IDH_HelpAbout 9009

@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{18365A3F-D138-4D4B-BF35-F39B0AAA8663}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="celshading\Celshading.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="CGBombShader\CGBombShader.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="simple\CgSimple.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="texturing\Texturing.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Celshading">
+        <MSBuild Projects="celshading\Celshading.cbproj"/>
+    </Target>
+    <Target Name="Celshading:Clean">
+        <MSBuild Projects="celshading\Celshading.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Celshading:Make">
+        <MSBuild Projects="celshading\Celshading.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="CGBombShader">
+        <MSBuild Projects="CGBombShader\CGBombShader.cbproj"/>
+    </Target>
+    <Target Name="CGBombShader:Clean">
+        <MSBuild Projects="CGBombShader\CGBombShader.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CGBombShader:Make">
+        <MSBuild Projects="CGBombShader\CGBombShader.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="CgSimple">
+        <MSBuild Projects="simple\CgSimple.cbproj"/>
+    </Target>
+    <Target Name="CgSimple:Clean">
+        <MSBuild Projects="simple\CgSimple.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CgSimple:Make">
+        <MSBuild Projects="simple\CgSimple.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Texturing">
+        <MSBuild Projects="texturing\Texturing.cbproj"/>
+    </Target>
+    <Target Name="Texturing:Clean">
+        <MSBuild Projects="texturing\Texturing.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Texturing:Make">
+        <MSBuild Projects="texturing\Texturing.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Celshading;CGBombShader;CgSimple;Texturing"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Celshading:Clean;CGBombShader:Clean;CgSimple:Clean;Texturing:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Celshading:Make;CGBombShader:Make;CgSimple:Make;Texturing:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
