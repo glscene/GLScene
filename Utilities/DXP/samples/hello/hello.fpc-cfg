@@ -1,0 +1,6 @@
+#
+# DXP Config File
+#
+
+FPCcfg-00.01
+-Op3,-Og,-O2,-Or,-Sa,-Ci,-Sg,-Sh,,-Xs,-XX,-vew

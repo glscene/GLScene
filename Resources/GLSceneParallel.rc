@@ -1,0 +1,4 @@
+TGLSCUDA BITMAP vcl\TGLSCUDA.bmp
+TGLSCUDADevice BITMAP vcl\TGLSCUDADevice.bmp
+TGLSCUDACompiler BITMAP vcl\TGLSCUDACompiler.bmp
+TGLFeedBackMesh BITMAP objects\TGLFeedBackMesh.bmp

@@ -1,0 +1,114 @@
+gls_camera BITMAP objects\gls_camera.bmp
+gls_lights BITMAP objects\gls_lights.bmp
+gls_objects BITMAP objects\gls_objects.bmp
+gls_root BITMAP objects\gls_root.bmp
+gls_cross BITMAP objects\gls_cross.bmp
+
+TGLCamera BITMAP objects\TGLCamera.bmp
+TGLDirectOpenGL BITMAP objects\TGLDirectOpenGL.bmp
+TGLDummyCube BITMAP objects\TGLDummyCube.bmp
+TGLLightSource BITMAP objects\TGLLightSource.bmp
+
+TGLFeedback BITMAP objects\TGLFeedback.bmp
+TGLImposter BITMAP objects\TGLImposter.bmp
+TGLRenderPoint BITMAP objects\TGLRenderPoint.bmp
+TGLFBORenderer BITMAP objects\TGLFBORenderer.bmp
+
+TGLHUDSprite BITMAP objects\TGLHUDSprite.bmp
+TGLHUDText BITMAP objects\TGLHUDText.bmp
+TGLResolutionIndependantHUDText BITMAP objects\TGLResolutionIndependantHUDText.bmp
+TGLAbsoluteHUDText BITMAP objects\TGLAbsoluteHUDText.bmp
+TGLConsole BITMAP objects\TGLConsole.bmp
+TGLGameMenu BITMAP objects\TGLGameMenu.bmp
+
+TGLAdvancedLabel BITMAP objects\TGLAdvancedLabel.bmp
+TGLBaseControl BITMAP objects\TGLBaseControl.bmp
+TGLButton BITMAP objects\TGLButton.bmp
+TGLCheckBox BITMAP objects\TGLCheckBox.bmp
+TGLCustomControl BITMAP objects\TGLCustomControl.bmp
+TGLEdit BITMAP objects\TGLEdit.bmp
+TGLForm BITMAP objects\TGLForm.bmp
+TGLLabel BITMAP objects\TGLLabel.bmp
+TGLPanel BITMAP objects\TGLPanel.bmp
+TGLPopupMenu BITMAP objects\TGLPopupMenu.bmp
+TGLScrollBar BITMAP objects\TGLScrollBar.bmp
+TGLStringGrid BITMAP objects\TGLStringGrid.bmp
+
+TGLCone BITMAP objects\TGLCone.bmp
+TGLCube BITMAP objects\TGLCube.bmp
+TGLCylinder BITMAP objects\TGLCylinder.bmp
+TGLDisk BITMAP objects\TGLDisk.bmp
+TGLDodecahedron BITMAP objects\TGLDodecahedron.bmp
+TGLFrustrum BITMAP objects\TGLFrustrum.bmp
+TGLHexahedron BITMAP objects\TGLHexahedron.bmp
+TGLIcosahedron BITMAP objects\TGLIcosahedron.bmp
+TGLTetrahedron BITMAP objects\TGLTetrahedron.bmp
+TGLOctahedron BITMAP objects\TGLOctahedron.bmp
+TGLLines BITMAP objects\TGLLines.bmp
+TGLPlane BITMAP objects\TGLPlane.bmp
+TGLPoints BITMAP objects\TGLPoints.bmp
+TGLPolygon BITMAP objects\TGLPolygon.bmp
+TGLSphere BITMAP objects\TGLSphere.bmp
+TGLSprite BITMAP objects\TGLSprite.bmp
+TGLCapsule BITMAP objects\TGLCapsule.bmp
+TGLSuperellipsoid BITMAP objects\TGLSuperellipsoid.bmp
+
+TGLAnimatedSprite BITMAP objects\TGLAnimatedSprite.bmp
+TGLAnnulus BITMAP objects\TGLAnnulus.bmp
+TGLArrowLine BITMAP objects\TGLArrowLine.bmp
+TGLArrowArc BITMAP objects\TGLArrowArc.bmp
+TGLExtrusionSolid BITMAP objects\TGLExtrusionSolid.bmp
+TGLMultiPolygon BITMAP objects\TGLMultiPolygon.bmp
+TGLPipe BITMAP objects\TGLPipe.bmp
+TGLRevolutionSolid BITMAP objects\TGLRevolutionSolid.bmp
+TGLTorus BITMAP objects\TGLTorus.bmp
+TGLGeoSphere BITMAP objects\TGLGeoSphere.bmp
+
+TGLActor BITMAP objects\TGLActor.bmp
+TGLFreeForm BITMAP objects\TGLFreeForm.bmp
+TGLMesh BITMAP objects\TGLMesh.bmp
+TGLPortal BITMAP objects\TGLPortal.bmp
+TGLTerrainRenderer BITMAP objects\TGLTerrainRenderer.bmp
+TGLTilePlane BITMAP objects\TGLTilePlane.bmp
+
+TGLFlatText BITMAP objects\TGLFlatText.bmp
+TGLHeightfield BITMAP objects\TGLHeightfield.bmp
+TGLXYZGrid BITMAP objects\TGLXYZGrid.bmp
+
+TGLParticleFXRenderer BITMAP objects\TGLParticleFXRenderer.bmp
+TGLParticles BITMAP objects\TGLParticles.bmp
+
+TGLEarthSkyDome BITMAP objects\TGLEarthSkyDome.bmp
+TGLSkyDome BITMAP objects\TGLSkyDome.bmp
+TGLAtmosphere BITMAP objects\TGLAtmosphere.bmp
+TGLSkyBox BITMAP objects\TGLSkyBox.bmp
+
+TGLSpaceText BITMAP objects\TGLSpaceText.bmp
+TGLTeapot BITMAP objects\TGLTeapot.bmp
+TGLTree BITMAP objects\TGLTree.bmp
+TGLWaterplane BITMAP objects\TGLWaterplane.bmp
+
+TGLBlur BITMAP objects\TGLBlur.bmp
+TGLMotionBlur BITMAP objects\TGLMotionBlur.bmp
+TGLLensflare BITMAP objects\TGLLensflare.bmp
+TGLMirror BITMAP objects\TGLMirror.bmp
+TGLShadowPlane BITMAP objects\TGLShadowPlane.bmp
+TGLShadowVolume BITMAP objects\TGLShadowVolume.bmp
+TGLZShadows BITMAP objects\TGLZShadows.bmp
+TGLTrail BITMAP objects\TGLTrail.bmp
+TGLTextureLensFlare BITMAP objects\TGLTextureLensFlare.bmp
+TGLTextureEmitter BITMAP objects\TGLTextureEmitter.bmp
+TGLSLTextureEmitter BITMAP objects\TGLSLTextureEmitter.bmp
+TGLProjectedTextures BITMAP objects\TGLProjectedTextures.bmp
+TGLSLProjectedTextures BITMAP objects\TGLSLProjectedTextures.bmp
+TGLPostShaderHolder BITMAP objects\TGLPostShaderHolder.bmp
+TGLPostEffect BITMAP objects\TGLPostEffect.bmp
+
+TGLActorProxy BITMAP objects\TGLActorProxy.bmp
+TGLColorProxy BITMAP objects\TGLColorProxy.bmp
+TGLFreeFormProxy BITMAP objects\TGLFreeFormProxy.bmp
+TGLMaterialProxy BITMAP objects\TGLMaterialProxy.bmp
+TGLMaterialMultiProxy BITMAP objects\TGLMaterialMultiProxy.bmp
+TGLMultiProxy BITMAP objects\TGLMultiProxy.bmp
+TGLProxyObject BITMAP objects\TGLProxyObject.bmp
+
