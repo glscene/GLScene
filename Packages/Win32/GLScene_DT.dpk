@@ -1,0 +1,66 @@
+package GLScene_DT;
+
+{$R *.res}
+{$R 'GLSceneObjects.res'}
+{$R 'GLScene.res'}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS OFF}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'GLScene Engine'}
+{$DESIGNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  designide,
+  vclimg,
+  vcl,
+  VclSmp,
+  GLScene_RT;
+
+contains
+  FRFaceEditor in '..\..\Source\FRFaceEditor.pas' {RFaceEditor: TFrame},
+  FRMaterialPreview in '..\..\Source\FRMaterialPreview.pas' {RMaterialPreview: TFrame},
+  FRColorEditor in '..\..\Source\FRColorEditor.pas' {RColorEditor: TFrame},
+  FRTextureEdit in '..\..\Source\FRTextureEdit.pas' {RTextureEdit: TFrame},
+  FRTrackBarEdit in '..\..\Source\FRTrackBarEdit.pas' {RTrackBarEdit: TFrame},
+  FLibMaterialPicker in '..\..\Source\FLibMaterialPicker.pas' {GLLibMaterialPicker},
+  FMaterialEditorForm in '..\..\Source\FMaterialEditorForm.pas' {GLMaterialEditorForm},
+  FGUILayoutEditor in '..\..\Source\FGUILayoutEditor.pas' {GLLayoutEditorForm},
+  FGuiSkinEditor in '..\..\Source\FGuiSkinEditor.pas' {GLSkinEditorForm},
+  FShaderMemo in '..\..\Source\FShaderMemo.pas' {ShaderMemoForm},
+  FShaderUniformEditor in '..\..\Source\FShaderUniformEditor.pas' {GLShaderUniformEditor},
+  FVectorEditor in '..\..\Source\FVectorEditor.pas' {GLVectorEditorForm},
+  FSceneEditor in '..\..\Source\FSceneEditor.pas' {GLSceneEditorForm},
+  FPlugInManagerEditor in '..\..\Source\FPlugInManagerEditor.pas' {GLPlugInManagerEditorForm},
+  FXCollectionEditor in '..\..\Source\FXCollectionEditor.pas' {GLXCollectionEditorForm},
+  FInfo in '..\..\Source\FInfo.pas' {GLInfoForm},
+  GLSceneFormDesign in '..\..\Source\GLSceneFormDesign.pas',
+  XCollectionRegister in '..\..\Source\XCollectionRegister.pas',
+  GLSceneRegister in '..\..\Source\GLSceneRegister.pas';
+
+end.
+
+
+

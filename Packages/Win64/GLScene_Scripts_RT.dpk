@@ -1,0 +1,46 @@
+package GLScene_Scripts_RT;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'GLScene DWS'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  GLScene_RT,
+  dwsRuntime;
+
+contains
+  dwsHelperFunc in '..\..\Source\ScriptingAPIs\dwsHelperFunc.pas',
+  dwsClasses in '..\..\Source\ScriptingAPIs\dwsClasses.pas',
+  dwsVectorGeometry in '..\..\Source\ScriptingAPIs\dwsVectorGeometry.pas',
+  dwsGLScene in '..\..\Source\ScriptingAPIs\dwsGLScene.pas',
+  dwsOpenGLAdapter in '..\..\Source\ScriptingAPIs\dwsOpenGLAdapter.pas',
+  GLScriptPython in '..\..\Source\ScriptingAPIs\GLScriptPython.pas';
+
+end.
