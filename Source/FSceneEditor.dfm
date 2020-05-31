@@ -374,8 +374,6 @@ object GLSceneEditorForm: TGLSceneEditorForm
         OnEnter = BehavioursListViewEnter
         OnKeyDown = TreeKeyDown
         OnSelectItem = BehavioursListViewSelectItem
-        ExplicitLeft = -2
-        ExplicitTop = 27
       end
     end
     object PAEffects: TPanel

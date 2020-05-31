@@ -165,7 +165,6 @@
         <DCCReference Include="..\..\Source\FInfo.pas">
             <Form>GLInfoForm</Form>
         </DCCReference>
-        <DCCReference Include="..\..\Source\GLSceneFormDesign.pas"/>
         <DCCReference Include="..\..\Source\XCollectionRegister.pas"/>
         <DCCReference Include="..\..\Source\GLSceneRegister.pas"/>
         <RcCompile Include="..\..\Resources\GLScene.rc">

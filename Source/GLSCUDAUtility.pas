@@ -15,8 +15,6 @@ uses
 {$ENDIF}
 
 
-{$I cuda.inc}
-
 const
 {$IFDEF WIN64}
   CUTILDLL = 'cutil64.dll';

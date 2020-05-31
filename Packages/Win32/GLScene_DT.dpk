@@ -56,7 +56,6 @@ contains
   FPlugInManagerEditor in '..\..\Source\FPlugInManagerEditor.pas' {GLPlugInManagerEditorForm},
   FXCollectionEditor in '..\..\Source\FXCollectionEditor.pas' {GLXCollectionEditorForm},
   FInfo in '..\..\Source\FInfo.pas' {GLInfoForm},
-  GLSceneFormDesign in '..\..\Source\GLSceneFormDesign.pas',
   XCollectionRegister in '..\..\Source\XCollectionRegister.pas',
   GLSceneRegister in '..\..\Source\GLSceneRegister.pas';
 

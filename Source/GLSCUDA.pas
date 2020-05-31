@@ -1,20 +1,20 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   CUDA routines implementation 
-}
+(*
+   CUDA routines implementation
+*)
 unit GLSCUDA;
 
 interface
 
-{$I cuda.inc}
+{$I GLScene.inc}
 
 uses
   System.Types,
   System.Classes,
   System.SysUtils,
-  
+
   GLPersistentClasses,
   GLBaseClasses,
   GLCrossPlatform,
@@ -31,8 +31,8 @@ uses
   GLSCUDAFourierTransform,
   GLSCUDACompiler,
   GLSCUDAContext,
-  GLSCUDADataAccess,
-  GLSLog;
+  GLSCUDADataAccess
+  {$IFDEF USE_LOGGING},GLSLog;{$ELSE};{$ENDIF}
 
 type
   TCUDAChange = (cuchDevice, cuchContext, cuchSize, cuchAddresMode, cuchFlag,
@@ -87,7 +87,7 @@ type
     property Items[const i: Integer]: TCUDAComponent read GetItem;
     property ItemsCount: Integer read GetItemsCount;
     property Status: TCUresult read FStatus;
-    {Return true if handle is allocated (i.e. component has device object) }
+    // Return true if handle is allocated (i.e. component has device object)
     property IsAllocated: Boolean read GetIsAllocated;
   end;
 
@@ -140,11 +140,9 @@ type
 
   TGLResourceType = (rtTexture, rtBuffer);
 
-  {  Abstract class of graphic resources. }
-
+  //  Abstract class of graphic resources.
   TCUDAGraphicResource = class(TCUDAComponent)
   protected
-    { Protected declaration }
     FHandle: array [0 .. 7] of PCUgraphicsResource;
     FMapping: TCUDAMapping;
     FResourceType: TGLResourceType;
@@ -205,7 +203,6 @@ type
     function GetData: TCUdeviceptr;
     function GetArrayHandle: PCUarray;
   protected
-    { Protected declaration }
     procedure AllocateHandles; override;
     procedure DestroyHandles; override;
     function GetIsAllocated: Boolean; override;
@@ -213,17 +210,17 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure CuNotifyChange(AChange: TCUDAChange); override;
-    {Map device and array memory to host or host memory to device.
+    (* Map device and array memory to host or host memory to device.
        Mapping is necessary for modifying device data.
        When mapped host memory - it can be accessed in device side
-       via MappedHostAddress. }
+       via MappedHostAddress. *)
     procedure Map(const AFlags: TCUDAMemMapFlags = []);
-    {Done mapping operation. }
+    // Done mapping operation.
     procedure UnMap;
     function Data<EType>(X: Integer): GCUDAHostElementAccess<EType>; overload;
     function Data<EType>(X, Y: Integer): GCUDAHostElementAccess<EType>; overload;
     function Data<EType>(X, Y, Z: Integer): GCUDAHostElementAccess<EType>; overload;
-    {  Fill device data }
+    //  Fill device data
     procedure FillMem(const Value);
     procedure CopyTo(const ADstMemData: TCUDAMemData); overload;
     procedure CopyTo(const AGLImage: TGLImage); overload;
@@ -700,7 +697,9 @@ begin
   else
   begin
     Result := nil;
-    GLSLogger.LogErrorFmt('Invalid master of module "%s"', [Name]);
+    {$IFDEF USE_LOGGING}
+      LogErrorFmt('Invalid master of module "%s"', [Name]);
+    {$ENDIF}
     Abort;
   end;
 end;
@@ -887,12 +886,14 @@ begin
       AllocateHandles;
     end
     else
-      GLSLogger.LogErrorFmt
-        ('%s.LoadFromFile: file extension must be ptx or cubin',
-        [Self.ClassName]);
+      {$IFDEF USE_LOGGING}
+        LogErrorFmt('%s.LoadFromFile: file extension must be ptx or cubin', [Self.ClassName]);
+     {$ENDIF}
   end
   else
-    GLSLogger.LogErrorFmt(strFailedOpenFile, [AFilename]);
+   {$IFDEF USE_LOGGING}
+    LogErrorFmt(strFailedOpenFile, [AFilename]);
+   {$ENDIF}
 end;
 
 procedure TCUDAModule.LoadFromSource;
@@ -1184,7 +1185,9 @@ begin
 
   if not(FMaster is TCUDAModule) then
   begin
-    GLSLogger.LogError(strModuleAbsent);
+    {$IFDEF USE_LOGGING}
+      LogError(strModuleAbsent);
+    {$ENDIF}
     Abort;
   end;
 
@@ -1259,7 +1262,9 @@ procedure TCUDAFunction.SetParam(Value: Integer);
 begin
   if not FLaunching then
   begin
-    GLSLogger.LogError(strWrongParamSetup);
+   {$IFDEF USE_LOGGING}
+     LogError(strWrongParamSetup);
+   {$ENDIF}
     Abort;
   end;
   FStatus := cuParamSeti(FHandle, ParamOffset, PCardinal(@Value)^);
@@ -1272,7 +1277,9 @@ procedure TCUDAFunction.SetParam(Value: Cardinal);
 begin
   if not FLaunching then
   begin
-    GLSLogger.LogError(strWrongParamSetup);
+    {$IFDEF USE_LOGGING}
+     LogError(strWrongParamSetup);
+   {$ENDIF}
     Abort;
   end;
   FStatus := cuParamSeti(FHandle, ParamOffset, Value);
@@ -1285,7 +1292,9 @@ procedure TCUDAFunction.SetParam(Value: Single);
 begin
   if not FLaunching then
   begin
-    GLSLogger.LogError(strWrongParamSetup);
+   {$IFDEF USE_LOGGING}
+     LogError(strWrongParamSetup);
+   {$ENDIF}
     Abort;
   end;
   FStatus := cuParamSetf(FHandle, ParamOffset, Value);
@@ -1298,7 +1307,9 @@ procedure TCUDAFunction.SetParam(Value: TVector2i);
 begin
   if not FLaunching then
   begin
-    GLSLogger.LogError(strWrongParamSetup);
+    {$IFDEF USE_LOGGING}
+      LogError(strWrongParamSetup);
+    {$ENDIF}
     Abort;
   end;
   FStatus := cuParamSetv(FHandle, ParamOffset, Value, SizeOf(TVector2i));
@@ -1311,7 +1322,9 @@ procedure TCUDAFunction.SetParam(Value: TVector3i);
 begin
   if not FLaunching then
   begin
-    GLSLogger.LogError(strWrongParamSetup);
+    {$IFDEF USE_LOGGING}
+      LogError(strWrongParamSetup);
+    {$ENDIF}
     Abort;
   end;
   FStatus := cuParamSetv(FHandle, ParamOffset, Value, SizeOf(TVector3i));
@@ -1324,7 +1337,9 @@ procedure TCUDAFunction.SetParam(Value: TVector4i);
 begin
   if not FLaunching then
   begin
-    GLSLogger.LogError(strWrongParamSetup);
+    {$IFDEF USE_LOGGING}
+      LogError(strWrongParamSetup);
+    {$ENDIF}
     Abort;
   end;
   FStatus := cuParamSetv(FHandle, ParamOffset, Value, SizeOf(TVector4i));
@@ -1337,7 +1352,9 @@ procedure TCUDAFunction.SetParam(Value: TVector2f);
 begin
   if not FLaunching then
   begin
-    GLSLogger.LogError(strWrongParamSetup);
+    {$IFDEF USE_LOGGING}
+      LogError(strWrongParamSetup);
+    {$ENDIF}
     Abort;
   end;
   FStatus := cuParamSetv(FHandle, ParamOffset, Value, SizeOf(TVector2f));
@@ -1350,7 +1367,9 @@ procedure TCUDAFunction.SetParam(Value: TVector3f);
 begin
   if not FLaunching then
   begin
-    GLSLogger.LogError(strWrongParamSetup);
+    {$IFDEF USE_LOGGING}
+      LogError(strWrongParamSetup);
+    {$ENDIF}
     Abort;
   end;
   FStatus := cuParamSetv(FHandle, ParamOffset, Value, SizeOf(TVector3f));
@@ -1363,7 +1382,9 @@ procedure TCUDAFunction.SetParam(Value: TVector4f);
 begin
   if not FLaunching then
   begin
-    GLSLogger.LogError(strWrongParamSetup);
+    {$IFDEF USE_LOGGING}
+      LogError(strWrongParamSetup);
+    {$ENDIF}
     Abort;
   end;
   FStatus := cuParamSetv(FHandle, ParamOffset, Value, SizeOf(TVector4f));
@@ -1376,7 +1397,9 @@ procedure TCUDAFunction.SetParam(MemData: TCUDAMemData);
 begin
   if not FLaunching then
   begin
-    GLSLogger.LogError(strWrongParamSetup);
+    {$IFDEF USE_LOGGING}
+      LogError(strWrongParamSetup);
+    {$ENDIF}
     Abort;
   end;
   FStatus := cuParamSeti(FHandle, ParamOffset, Cardinal(MemData.RawData));
@@ -1391,7 +1414,9 @@ var
 begin
   if not FLaunching then
   begin
-    GLSLogger.LogError(strWrongParamSetup);
+    {$IFDEF USE_LOGGING}
+      LogError(strWrongParamSetup);
+    {$ENDIF}
     Abort;
   end;
   HTexRef := TexRef.Handle;
@@ -1404,7 +1429,9 @@ procedure TCUDAFunction.SetParam(Ptr: Pointer);
 begin
   if not FLaunching then
   begin
-    GLSLogger.LogError(strWrongParamSetup);
+    {$IFDEF USE_LOGGING}
+      LogError(strWrongParamSetup);
+    {$ENDIF}
     Abort;
   end;
   FStatus := cuParamSeti(FHandle, ParamOffset, Cardinal(Ptr));
@@ -1417,13 +1444,17 @@ procedure TCUDAFunction.Launch(Grided: Boolean = true);
 begin
   if not(FMaster is TCUDAModule) then
   begin
-    GLSLogger.LogError(strModuleAbsent);
+    {$IFDEF USE_LOGGING}
+      LogError(strModuleAbsent);
+    {$ENDIF}
     Abort;
   end;
 
   if not Assigned(FHandle) then
   begin
-    GLSLogger.LogErrorFmt(strFuncNotConnected, [Self.ClassName]);
+    {$IFDEF USE_LOGGING}
+      LogErrorFmt(strFuncNotConnected, [Self.ClassName]);
+    {$ENDIF}
     Abort;
   end;
 
@@ -1462,7 +1493,9 @@ begin
 
   if FStatus <> CUDA_SUCCESS then
   begin
-    GLSLogger.LogErrorFmt(strLaunchFailed, [Self.Name]);
+    {$IFDEF USE_LOGGING}
+      LogErrorFmt(strLaunchFailed, [Self.Name]);
+    {$ENDIF}
     Abort;
   end;
 end;
@@ -1588,7 +1621,9 @@ var
 begin
   if (FMemoryType <> mtHost) and not FMapping then
   begin
-    GLSLogger.LogError(strOnlyHostData);
+    {$IFDEF USE_LOGGING}
+      LogError(strOnlyHostData);
+    {$ENDIF}
     Abort;
   end;
 
@@ -1599,7 +1634,9 @@ begin
   size := ElementSize * X;
   if size > DataSize then
   begin
-    GLSLogger.LogError(strOutOfRange);
+    {$IFDEF USE_LOGGING}
+      LogError(strOutOfRange);
+    {$ENDIF}
     Abort;
   end;
   Inc(ptr, size);
@@ -1613,7 +1650,9 @@ var
 begin
   if (FMemoryType <> mtHost) and not FMapping then
   begin
-    GLSLogger.LogError(strOnlyHostData);
+    {$IFDEF USE_LOGGING}
+      LogError(strOnlyHostData);
+    {$ENDIF}
     Abort;
   end;
 
@@ -1624,7 +1663,9 @@ begin
   size := ElementSize * (X + fWidth*Y);
   if size > DataSize then
   begin
-    GLSLogger.LogError(strOutOfRange);
+    {$IFDEF USE_LOGGING}
+      LogError(strOutOfRange);
+    {$ENDIF}
     Abort;
   end;
   Inc(ptr, size);
@@ -1638,7 +1679,9 @@ var
 begin
   if (FMemoryType <> mtHost) and not FMapping then
   begin
-    GLSLogger.LogError(strOnlyHostData);
+    {$IFDEF USE_LOGGING}
+      LogError(strOnlyHostData);
+    {$ENDIF}
     Abort;
   end;
 
@@ -1649,7 +1692,9 @@ begin
   size := ElementSize * (X + fWidth*(Y  + Z * fHeight));
   if size > DataSize then
   begin
-    GLSLogger.LogError(strOutOfRange);
+    {$IFDEF USE_LOGGING}
+      LogError(strOutOfRange);
+    {$ENDIF}
     Abort;
   end;
   Inc(ptr, size);
@@ -1696,7 +1741,9 @@ procedure TCUDAMemData.UnMap;
 begin
   if not FMapping then
   begin
-    GLSLogger.LogErrorFmt(strFailUnmap, [Name]);
+    {$IFDEF USE_LOGGING}
+      LogErrorFmt(strFailUnmap, [Name]);
+    {$ENDIF}
     Abort;
   end;
 
@@ -2354,7 +2401,9 @@ var
 begin
   if FMapping then
   begin
-    GLSLogger.LogErrorFmt(strFailMap, [Name]);
+    {$IFDEF USE_LOGGING}
+      LogErrorFmt(strFailMap, [Name]);
+    {$ENDIF}
     Abort;
   end;
 
@@ -2417,8 +2466,6 @@ begin
   fChannelNum := cnOne;
 end;
 
- 
-//
 
 destructor TCUDATexture.Destroy;
 begin
@@ -2451,7 +2498,9 @@ var
 begin
   if not(FMaster is TCUDAModule) then
   begin
-    GLSLogger.LogError(strModuleAbsent);
+    {$IFDEF USE_LOGGING}
+      LogError(strModuleAbsent);
+    {$ENDIF}
     Abort;
   end;
 
@@ -2825,7 +2874,9 @@ var
 begin
   if not(FMaster is TCUDAModule) then
   begin
-    GLSLogger.LogError(strModuleAbsent);
+    {$IFDEF USE_LOGGING}
+      LogError(strModuleAbsent);
+    {$ENDIF}
     Abort;
   end;
 

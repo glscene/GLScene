@@ -1,9 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{ 
-   CUDA Fourier Transform 
-}
+(*
+   CUDA Fourier Transform
+*)
 
 /// *
 // * Copyright 1993-2009 NVIDIA Corporation.  All rights reserved.
@@ -45,15 +45,14 @@ unit GLSCUDAFourierTransform;
 interface
 
 {$I GLScene.inc}
-{$I Cuda.inc}
 
 uses
-  {$IFDEF MSWINDOWS} Windows, {$ENDIF}
+  Winapi.Windows,
   GLVectorTypes, 
   GLSCUDAApi, 
   GLSCUDARunTime, 
-  GLStrings,
-  GLSLog;
+  GLStrings
+  {$IFDEF USE_LOGGING},GLSLog;{$ELSE};{$ENDIF}
 
 
 const
@@ -485,7 +484,10 @@ begin
   cufftSetCompatibilityMode_ := CUFFTGetProcAddress(cufftSetCompatibilityModeName);
   cufftSetCompatibilityMode := cufftSetCompatibilityModeShell;
 {$ENDIF}
-  GLSLogger.LogInfoFmt('%s loaded...', [LibName]);
+
+ {$IFDEF USE_LOGGING}
+  LogInfoFmt('%s loaded...', [LibName]);
+ {$ENDIF}
   Result := True;
 end;
 

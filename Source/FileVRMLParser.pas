@@ -1,5 +1,5 @@
 //
-// The unit is part of XRScene Engine
+// The unit is part of the GLScene Engine, http://glscene.org
 //
 (*
   VRML file format parser.
@@ -13,6 +13,8 @@ interface
 uses
   System.Classes,
   System.SysUtils,
+
+  GLVectorGeometry,
   GLVectorTypes,
   GLVectorLists,
   GLUtils;
@@ -383,7 +385,7 @@ begin
   if AllowUnknownNodes then
   begin
     FCurrentNode := TVRMLNode.CreateOwned(FCurrentNode);
-    FCurrentNode.Name := 'Unknown heirachy';
+    FCurrentNode.Name := 'Unknown hierarchy';
   end;
   repeat
     token := ReadToken;

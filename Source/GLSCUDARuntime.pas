@@ -45,7 +45,6 @@ unit GLSCUDARunTime;
 interface
 
 {$I GLScene.inc}
-{$I Cuda.inc}
 
 uses
   Winapi.Windows,

@@ -140,9 +140,9 @@
         <DCCReference Include="..\..\Source\GLSCUDA.pas"/>
         <DCCReference Include="..\..\Source\GLSCUDAApi.pas"/>
         <DCCReference Include="..\..\Source\GLFilePGM.pas"/>
-        <DCCReference Include="..\..\Source\CL.pas"/>
-        <DCCReference Include="..\..\Source\CL_GL.pas"/>
-        <DCCReference Include="..\..\Source\CL_Platform.pas"/>
+        <DCCReference Include="..\..\Source\OpenCL.pas"/>
+        <DCCReference Include="..\..\Source\OpenCL_GL.pas"/>
+        <DCCReference Include="..\..\Source\OpenCL_Platform.pas"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

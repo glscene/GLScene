@@ -24,6 +24,7 @@ uses
   VCL.Graphics,
   VCL.Imaging.Pngimage,
   VCL.Consts,
+
   {$IFDEF USE_GRAPHICS32} GR32, {$ENDIF}
 
   OpenGLTokens,

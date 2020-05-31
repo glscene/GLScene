@@ -40,11 +40,11 @@ unit GLSCUDAApi;
 
 interface
 
-{$I cuda.inc}
+{$I GLScene.inc}
 
 uses
-  Winapi.Windows,
-  GLSLog;
+  Winapi.Windows
+  {$IFDEF USE_LOGGING},GLSLog;{$ELSE};{$ENDIF}
 
 const
   CUDAAPIDLL = 'nvcuda.dll';
@@ -1312,7 +1312,7 @@ var
   cuGLUnmapBufferObjectAsync_: TcuGLUnmapBufferObjectAsync;
 
 function cuInitShell(Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuInit_(Flags);
   if Result <> CUDA_SUCCESS then
@@ -1321,7 +1321,7 @@ begin
 end;
 
 function cuDriverGetVersionShell(out driverVersion: Integer): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuDriverGetVersion_(driverVersion);
   if Result <> CUDA_SUCCESS then
@@ -1330,7 +1330,7 @@ begin
 end;
 
 function cuDeviceGetShell(var device: TCUdevice; ordinal: Integer): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuDeviceGet_(device, ordinal);
   if Result <> CUDA_SUCCESS then
@@ -1339,7 +1339,7 @@ begin
 end;
 
 function cuDeviceGetCountShell(var count: Integer): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuDeviceGetCount_(count);
   if Result <> CUDA_SUCCESS then
@@ -1349,7 +1349,7 @@ end;
 
 function cuDeviceGetNameShell(name: PAnsiChar; len: Integer; dev: TCUdevice)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuDeviceGetName_(name, len, dev);
   if Result <> CUDA_SUCCESS then
@@ -1359,7 +1359,7 @@ end;
 
 function cuDeviceComputeCapabilityShell(var major: Integer; var minor: Integer;
   dev: TCUdevice): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuDeviceComputeCapability_(major, minor, dev);
   if Result <> CUDA_SUCCESS then
@@ -1368,7 +1368,7 @@ begin
 end;
 
 function cuDeviceTotalMemShell(bytes: PSize_t; dev: TCUdevice): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuDeviceTotalMem_(bytes, dev);
   if Result <> CUDA_SUCCESS then
@@ -1378,7 +1378,7 @@ end;
 
 function cuDeviceGetPropertiesShell(var prop: TCUdevprop; dev: TCUdevice)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuDeviceGetProperties_(prop, dev);
   if Result <> CUDA_SUCCESS then
@@ -1388,7 +1388,7 @@ end;
 
 function cuDeviceGetAttributeShell(pi: PSize_t; attrib: TCUdevice_attribute;
   dev: TCUdevice): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuDeviceGetAttribute_(pi, attrib, dev);
   if Result <> CUDA_SUCCESS then
@@ -1398,7 +1398,7 @@ end;
 
 function cuCtxCreateShell(var pctx: PCUcontext; Flags: Cardinal; dev: TCUdevice)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuCtxCreate_(pctx, Flags, dev);
   if Result <> CUDA_SUCCESS then
@@ -1407,7 +1407,7 @@ begin
 end;
 
 function cuCtxDestroyShell(ctx: PCUcontext): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuCtxDestroy_(ctx);
   if Result <> CUDA_SUCCESS then
@@ -1416,7 +1416,7 @@ begin
 end;
 
 function cuCtxAttachShell(var pctx: PCUcontext; Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuCtxAttach_(pctx, Flags);
   if Result <> CUDA_SUCCESS then
@@ -1425,7 +1425,7 @@ begin
 end;
 
 function cuCtxDetachShell(ctx: PCUcontext): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuCtxDetach_(ctx);
   if Result <> CUDA_SUCCESS then
@@ -1434,7 +1434,7 @@ begin
 end;
 
 function cuCtxPushCurrentShell(ctx: PCUcontext): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuCtxPushCurrent_(ctx);
   if Result <> CUDA_SUCCESS then
@@ -1443,7 +1443,7 @@ begin
 end;
 
 function cuCtxPopCurrentShell(var pctx: PCUcontext): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuCtxPopCurrent_(pctx);
   if Result <> CUDA_SUCCESS then
@@ -1452,7 +1452,7 @@ begin
 end;
 
 function cuCtxGetDeviceShell(var device: TCUdevice): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuCtxGetDevice_(device);
   if Result <> CUDA_SUCCESS then
@@ -1461,7 +1461,7 @@ begin
 end;
 
 function cuCtxSynchronizeShell: TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuCtxSynchronize_;
   if Result <> CUDA_SUCCESS then
@@ -1471,7 +1471,7 @@ end;
 
 function cuModuleLoadShell(var module: PCUmodule; const fname: PAnsiChar)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuModuleLoad_(module, fname);
   if Result <> CUDA_SUCCESS then
@@ -1481,7 +1481,7 @@ end;
 
 function cuModuleLoadDataShell(var module: PCUmodule; const image: PAnsiChar)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuModuleLoadData_(module, image);
   if Result <> CUDA_SUCCESS then
@@ -1492,7 +1492,7 @@ end;
 function cuModuleLoadDataExShell(var module: PCUmodule; var image;
   numOptions: Cardinal; var options: TCUjit_option; var optionValues)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuModuleLoadDataEx_(module, image, numOptions, options,
     optionValues);
@@ -1503,7 +1503,7 @@ end;
 
 function cuModuleLoadFatBinaryShell(var module: PCUmodule; var fatCubin)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuModuleLoadFatBinary_(module, fatCubin);
   if Result <> CUDA_SUCCESS then
@@ -1512,7 +1512,7 @@ begin
 end;
 
 function cuModuleUnloadShell(hmod: PCUmodule): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuModuleUnload_(hmod);
   if Result <> CUDA_SUCCESS then
@@ -1522,7 +1522,7 @@ end;
 
 function cuModuleGetFunctionShell(out hfunc: PCUfunction; hmod: PCUmodule;
   const name: PAnsiChar): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuModuleGetFunction_(hfunc, hmod, name);
   if Result <> CUDA_SUCCESS then
@@ -1532,7 +1532,7 @@ end;
 
 function cuModuleGetGlobalShell(out dptr: TCUdeviceptr; var bytes: Cardinal;
   hmod: PCUmodule; const name: PAnsiChar): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuModuleGetGlobal_(dptr, bytes, hmod, name);
   if Result <> CUDA_SUCCESS then
@@ -1542,7 +1542,7 @@ end;
 
 function cuModuleGetTexRefShell(out pTexRef: PCUtexref; hmod: PCUmodule;
   const name: PAnsiChar): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuModuleGetTexRef_(pTexRef, hmod, name);
   if Result <> CUDA_SUCCESS then
@@ -1551,7 +1551,7 @@ begin
 end;
 
 function cuMemGetInfoShell(var free: Cardinal; var total: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemGetInfo_(free, total);
   if Result <> CUDA_SUCCESS then
@@ -1560,7 +1560,7 @@ begin
 end;
 
 function cuMemAllocShell(var dptr: TCUdeviceptr; bytesize: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemAlloc_(dptr, bytesize);
   if Result <> CUDA_SUCCESS then
@@ -1571,7 +1571,7 @@ end;
 function cuMemAllocPitchShell(var dptr: TCUdeviceptr; var pPitch: Cardinal;
   WidthInBytes: Cardinal; Height: Cardinal; ElementSizeBytes: Cardinal)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemAllocPitch_(dptr, pPitch, WidthInBytes, Height,
     ElementSizeBytes);
@@ -1581,7 +1581,7 @@ begin
 end;
 
 function cuMemFreeShell(dptr: TCUdeviceptr): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemFree_(dptr);
   if Result <> CUDA_SUCCESS then
@@ -1591,7 +1591,7 @@ end;
 
 function cuMemGetAddressRangeShell(var pbase: TCUdeviceptr; var psize: Cardinal;
   dptr: TCUdeviceptr): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemGetAddressRange_(pbase, psize, dptr);
   if Result <> CUDA_SUCCESS then
@@ -1600,7 +1600,7 @@ begin
 end;
 
 function cuMemAllocHostShell(var pp; bytesize: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemAllocHost_(pp, bytesize);
   if Result <> CUDA_SUCCESS then
@@ -1609,7 +1609,7 @@ begin
 end;
 
 function cuMemFreeHostShell(p: Pointer): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemFreeHost_(p);
   if Result <> CUDA_SUCCESS then
@@ -1619,7 +1619,7 @@ end;
 
 function cuMemHostAllocShell(var pp: Pointer; bytesize: Cardinal; Flags: Cardinal)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemHostAlloc_(pp, bytesize, Flags);
   if Result <> CUDA_SUCCESS then
@@ -1629,7 +1629,7 @@ end;
 
 function cuMemHostGetDevicePointerShell(var pdptr: TCUdeviceptr; p: Pointer;
   Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemHostGetDevicePointer_(pdptr, p, Flags);
   if Result <> CUDA_SUCCESS then
@@ -1638,7 +1638,7 @@ begin
 end;
 
 function cuMemHostGetFlagsShell(var pFlags: Cardinal; var p): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemHostGetFlags_(pFlags, p);
   if Result <> CUDA_SUCCESS then
@@ -1648,7 +1648,7 @@ end;
 
 function cuMemcpyHtoDShell(dstDevice: TCUdeviceptr; const srcHost: Pointer;
   ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpyHtoD_(dstDevice, srcHost, ByteCount);
   if Result <> CUDA_SUCCESS then
@@ -1658,7 +1658,7 @@ end;
 
 function cuMemcpyDtoHShell(const dstHost: Pointer; srcDevice: TCUdeviceptr;
   ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpyDtoH_(dstHost, srcDevice, ByteCount);
   if Result <> CUDA_SUCCESS then
@@ -1668,7 +1668,7 @@ end;
 
 function cuMemcpyDtoDShell(dstDevice: TCUdeviceptr; srcDevice: TCUdeviceptr;
   ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpyDtoD_(dstDevice, srcDevice, ByteCount);
   if Result <> CUDA_SUCCESS then
@@ -1678,7 +1678,7 @@ end;
 
 function cuMemcpyDtoDAsyncShell(dstDevice: TCUdeviceptr;
   srcDevice: TCUdeviceptr; ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall; {$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall; {$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpyDtoDAsync_(dstDevice, srcDevice, ByteCount, hStream);
   if Result <> CUDA_SUCCESS then
@@ -1688,7 +1688,7 @@ end;
 
 function cuMemcpyDtoAShell(dstArray: PCUarray; dstIndex: Cardinal;
   srcDevice: TCUdeviceptr; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpyDtoA_(dstArray, dstIndex, srcDevice, ByteCount);
   if Result <> CUDA_SUCCESS then
@@ -1698,7 +1698,7 @@ end;
 
 function cuMemcpyAtoDShell(dstDevice: TCUdeviceptr; hSrc: PCUarray;
   SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpyAtoD_(dstDevice, hSrc, SrcIndex, ByteCount);
   if Result <> CUDA_SUCCESS then
@@ -1708,7 +1708,7 @@ end;
 
 function cuMemcpyHtoAShell(dstArray: PCUarray; dstIndex: Cardinal;
   pSrc: Pointer; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpyHtoA_(dstArray, dstIndex, pSrc, ByteCount);
   if Result <> CUDA_SUCCESS then
@@ -1718,7 +1718,7 @@ end;
 
 function cuMemcpyAtoHShell(dstHost: Pointer; srcArray: PCUarray;
   SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpyAtoH_(dstHost, srcArray, SrcIndex, ByteCount);
   if Result <> CUDA_SUCCESS then
@@ -1728,7 +1728,7 @@ end;
 
 function cuMemcpyAtoAShell(dstArray: PCUarray; dstIndex: Cardinal;
   srcArray: PCUarray; SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpyAtoA_(dstArray, dstIndex, srcArray, SrcIndex, ByteCount);
   if Result <> CUDA_SUCCESS then
@@ -1737,7 +1737,7 @@ begin
 end;
 
 function cuMemcpy2DShell(const pCopy: PCUDA_MEMCPY2D): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpy2D_(pCopy);
   if Result <> CUDA_SUCCESS then
@@ -1746,7 +1746,7 @@ begin
 end;
 
 function cuMemcpy2DUnalignedShell(var pCopy: TCUDA_MEMCPY2D): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpy2DUnaligned_(pCopy);
   if Result <> CUDA_SUCCESS then
@@ -1755,7 +1755,7 @@ begin
 end;
 
 function cuMemcpy3DShell(var pCopy: TCUDA_MEMCPY3D): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpy3D_(pCopy);
   if Result <> CUDA_SUCCESS then
@@ -1765,7 +1765,7 @@ end;
 
 function cuMemcpyHtoDAsyncShell(dstDevice: TCUdeviceptr; var srcHost;
   ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpyHtoDAsync_(dstDevice, srcHost, ByteCount, hStream);
   if Result <> CUDA_SUCCESS then
@@ -1775,7 +1775,7 @@ end;
 
 function cuMemcpyDtoHAsyncShell(var dstHost; srcDevice: TCUdeviceptr;
   ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpyDtoHAsync_(dstHost, srcDevice, ByteCount, hStream);
   if Result <> CUDA_SUCCESS then
@@ -1785,7 +1785,7 @@ end;
 
 function cuMemcpyHtoAAsyncShell(dstArray: PCUarray; dstIndex: Cardinal;
   var pSrc; ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpyHtoAAsync_(dstArray, dstIndex, pSrc, ByteCount, hStream);
   if Result <> CUDA_SUCCESS then
@@ -1795,7 +1795,7 @@ end;
 
 function cuMemcpyAtoHAsyncShell(var dstHost; srcArray: PCUstream;
   SrcIndex: Cardinal; ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpyAtoHAsync_(dstHost, srcArray, SrcIndex, ByteCount, hStream);
   if Result <> CUDA_SUCCESS then
@@ -1805,7 +1805,7 @@ end;
 
 function cuMemcpy2DAsyncShell(var pCopy: TCUDA_MEMCPY2D; hStream: PCUstream)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpy2DAsync_(pCopy, hStream);
   if Result <> CUDA_SUCCESS then
@@ -1815,7 +1815,7 @@ end;
 
 function cuMemcpy3DAsyncShell(var pCopy: TCUDA_MEMCPY3D; hStream: PCUstream)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemcpy3DAsync_(pCopy, hStream);
   if Result <> CUDA_SUCCESS then
@@ -1825,7 +1825,7 @@ end;
 
 function cuMemsetD8Shell(dstDevice: TCUdeviceptr; ub: Byte; N: Cardinal)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemsetD8_(dstDevice, ub, N);
   if Result <> CUDA_SUCCESS then
@@ -1835,7 +1835,7 @@ end;
 
 function cuMemsetD16Shell(dstDevice: TCUdeviceptr; uw: Word; N: Cardinal)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemsetD16_(dstDevice, uw, N);
   if Result <> CUDA_SUCCESS then
@@ -1845,7 +1845,7 @@ end;
 
 function cuMemsetD32Shell(dstDevice: TCUdeviceptr; ui: Cardinal; N: Cardinal)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemsetD32_(dstDevice, ui, N);
   if Result <> CUDA_SUCCESS then
@@ -1855,7 +1855,7 @@ end;
 
 function cuMemsetD2D8Shell(dstDevice: TCUdeviceptr; dstPitch: Cardinal;
   ub: Byte; Width: Cardinal; Height: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemsetD2D8_(dstDevice, dstPitch, ub, Width, Height);
   if Result <> CUDA_SUCCESS then
@@ -1865,7 +1865,7 @@ end;
 
 function cuMemsetD2D16Shell(dstDevice: TCUdeviceptr; dstPitch: Cardinal;
   uw: Word; Width: Cardinal; Height: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemsetD2D16_(dstDevice, dstPitch, uw, Width, Height);
   if Result <> CUDA_SUCCESS then
@@ -1875,7 +1875,7 @@ end;
 
 function cuMemsetD2D32Shell(dstDevice: TCUdeviceptr; dstPitch: Cardinal;
   ui: Cardinal; Width: Cardinal; Height: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuMemsetD2D32_(dstDevice, dstPitch, ui, Width, Height);
   if Result <> CUDA_SUCCESS then
@@ -1885,7 +1885,7 @@ end;
 
 function cuFuncSetBlockShapeShell(hfunc: PCUfunction; x: Integer; y: Integer;
   z: Integer): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuFuncSetBlockShape_(hfunc, x, y, z);
   if Result <> CUDA_SUCCESS then
@@ -1895,7 +1895,7 @@ end;
 
 function cuFuncSetSharedSizeShell(hfunc: PCUfunction; bytes: Cardinal)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuFuncSetSharedSize_(hfunc, bytes);
   if Result <> CUDA_SUCCESS then
@@ -1905,7 +1905,7 @@ end;
 
 function cuFuncGetAttributeShell(var pi: Integer; attrib: TCUfunction_attribute;
   hfunc: PCUfunction): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuFuncGetAttribute_(pi, attrib, hfunc);
   if Result <> CUDA_SUCCESS then
@@ -1915,7 +1915,7 @@ end;
 
 function cuArrayCreateShell(var pHandle: PCUarray;
   var pAllocateArray: TCUDA_ARRAY_DESCRIPTOR): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuArrayCreate_(pHandle, pAllocateArray);
   if Result <> CUDA_SUCCESS then
@@ -1925,7 +1925,7 @@ end;
 
 function cuArrayGetDescriptorShell(var pArrayDescriptor: TCUDA_ARRAY_DESCRIPTOR;
   hArray: PCUarray): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuArrayGetDescriptor_(pArrayDescriptor, hArray);
   if Result <> CUDA_SUCCESS then
@@ -1934,7 +1934,7 @@ begin
 end;
 
 function cuArrayDestroyShell(hArray: PCUarray): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuArrayDestroy_(hArray);
   if Result <> CUDA_SUCCESS then
@@ -1944,7 +1944,7 @@ end;
 
 function cuArray3DCreateShell(var pHandle: PCUarray;
   var pAllocateArray: TCUDA_ARRAY3D_DESCRIPTOR): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuArray3DCreate_(pHandle, pAllocateArray);
   if Result <> CUDA_SUCCESS then
@@ -1954,7 +1954,7 @@ end;
 
 function cuArray3DGetDescriptorShell(var pArrayDescriptor
   : TCUDA_ARRAY3D_DESCRIPTOR; hArray: PCUarray): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuArray3DGetDescriptor_(pArrayDescriptor, hArray);
   if Result <> CUDA_SUCCESS then
@@ -1964,7 +1964,7 @@ end;
 
 function cuTexRefCreateShell(var pTexRef: PCUtexref): TCUresult;
 {$IFDEF MSWINDOWS} stdcall;
-{$ENDIF}{$IFDEF UNIX} cdecl;
+{$ELSE}cdecl;
 {$ENDIF}
 begin
   Result := cuTexRefCreate_(pTexRef);
@@ -1974,7 +1974,7 @@ begin
 end;
 
 function cuTexRefDestroyShell(hTexRef: PCUtexref): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuTexRefDestroy_(hTexRef);
   if Result <> CUDA_SUCCESS then
@@ -1984,7 +1984,7 @@ end;
 
 function cuTexRefSetArrayShell(hTexRef: PCUtexref; hArray: PCUarray;
   Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuTexRefSetArray_(hTexRef, hArray, Flags);
   if Result <> CUDA_SUCCESS then
@@ -1994,7 +1994,7 @@ end;
 
 function cuTexRefSetAddressShell(var ByteOffset: Cardinal; hTexRef: PCUtexref;
   dptr: TCUdeviceptr; bytes: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuTexRefSetAddress_(ByteOffset, hTexRef, dptr, bytes);
   if Result <> CUDA_SUCCESS then
@@ -2005,7 +2005,7 @@ end;
 function cuTexRefSetAddress2DShell(hTexRef: PCUtexref;
   var desc: TCUDA_ARRAY_DESCRIPTOR; dptr: TCUdeviceptr; Pitch: Cardinal)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuTexRefSetAddress2D_(hTexRef, desc, dptr, Pitch);
   if Result <> CUDA_SUCCESS then
@@ -2015,7 +2015,7 @@ end;
 
 function cuTexRefSetFormatShell(hTexRef: PCUtexref; fmt: TCUarray_format;
   NumPackedComponents: Integer): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuTexRefSetFormat_(hTexRef, fmt, NumPackedComponents);
   if Result <> CUDA_SUCCESS then
@@ -2025,7 +2025,7 @@ end;
 
 function cuTexRefSetAddressModeShell(hTexRef: PCUtexref; dim: Integer;
   am: TCUaddress_mode): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuTexRefSetAddressMode_(hTexRef, dim, am);
   if Result <> CUDA_SUCCESS then
@@ -2035,7 +2035,7 @@ end;
 
 function cuTexRefSetFilterModeShell(hTexRef: PCUtexref; fm: TCUfilter_mode)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuTexRefSetFilterMode_(hTexRef, fm);
   if Result <> CUDA_SUCCESS then
@@ -2044,7 +2044,7 @@ begin
 end;
 
 function cuTexRefSetFlagsShell(hTexRef: PCUtexref; Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuTexRefSetFlags_(hTexRef, Flags);
   if Result <> CUDA_SUCCESS then
@@ -2054,7 +2054,7 @@ end;
 
 function cuTexRefGetAddressShell(var pdptr: TCUdeviceptr; hTexRef: PCUtexref)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuTexRefGetAddress_(pdptr, hTexRef);
   if Result <> CUDA_SUCCESS then
@@ -2064,7 +2064,7 @@ end;
 
 function cuTexRefGetArrayShell(var phArray: PCUarray; hTexRef: PCUtexref)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuTexRefGetArray_(phArray, hTexRef);
   if Result <> CUDA_SUCCESS then
@@ -2074,7 +2074,7 @@ end;
 
 function cuTexRefGetAddressModeShell(var pam: TCUaddress_mode;
   hTexRef: PCUtexref; dim: Integer): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuTexRefGetAddressMode_(pam, hTexRef, dim);
   if Result <> CUDA_SUCCESS then
@@ -2084,7 +2084,7 @@ end;
 
 function cuTexRefGetFilterModeShell(var pfm: TCUfilter_mode; hTexRef: PCUtexref)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuTexRefGetFilterMode_(pfm, hTexRef);
   if Result <> CUDA_SUCCESS then
@@ -2094,7 +2094,7 @@ end;
 
 function cuTexRefGetFormatShell(var pFormat: TCUarray_format;
   var pNumChannels: Integer; hTexRef: PCUtexref): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuTexRefGetFormat_(pFormat, pNumChannels, hTexRef);
   if Result <> CUDA_SUCCESS then
@@ -2104,7 +2104,7 @@ end;
 
 function cuTexRefGetFlagsShell(var pFlags: Cardinal; hTexRef: PCUtexref)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuTexRefGetFlags_(pFlags, hTexRef);
   if Result <> CUDA_SUCCESS then
@@ -2113,7 +2113,7 @@ begin
 end;
 
 function cuParamSetSizeShell(hfunc: PCUfunction; numbytes: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuParamSetSize_(hfunc, numbytes);
   if Result <> CUDA_SUCCESS then
@@ -2123,7 +2123,7 @@ end;
 
 function cuParamSetiShell(hfunc: PCUfunction; offset: Integer; value: Cardinal)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuParamSeti_(hfunc, offset, value);
   if Result <> CUDA_SUCCESS then
@@ -2133,7 +2133,7 @@ end;
 
 function cuParamSetfShell(hfunc: PCUfunction; offset: Integer; value: Single)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuParamSetf_(hfunc, offset, value);
   if Result <> CUDA_SUCCESS then
@@ -2143,7 +2143,7 @@ end;
 
 function cuParamSetvShell(hfunc: PCUfunction; offset: Integer; var ptr;
   numbytes: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuParamSetv_(hfunc, offset, ptr, numbytes);
   if Result <> CUDA_SUCCESS then
@@ -2153,7 +2153,7 @@ end;
 
 function cuParamSetTexRefShell(hfunc: PCUfunction; texunit: Integer;
   hTexRef: PCUtexref): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuParamSetTexRef_(hfunc, texunit, hTexRef);
   if Result <> CUDA_SUCCESS then
@@ -2162,7 +2162,7 @@ begin
 end;
 
 function cuLaunchShell(f: PCUfunction): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuLaunch_(f);
   if Result <> CUDA_SUCCESS then
@@ -2172,7 +2172,7 @@ end;
 
 function cuLaunchGridShell(f: PCUfunction; grid_width: Integer;
   grid_height: Integer): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuLaunchGrid_(f, grid_width, grid_height);
   if Result <> CUDA_SUCCESS then
@@ -2182,7 +2182,7 @@ end;
 
 function cuLaunchGridAsyncShell(f: PCUfunction; grid_width: Integer;
   grid_height: Integer; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuLaunchGridAsync_(f, grid_width, grid_height, hStream);
   if Result <> CUDA_SUCCESS then
@@ -2191,7 +2191,7 @@ begin
 end;
 
 function cuEventCreateShell(var phEvent: PCUevent; Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuEventCreate_(phEvent, Flags);
   if Result <> CUDA_SUCCESS then
@@ -2200,7 +2200,7 @@ begin
 end;
 
 function cuEventRecordShell(hEvent: PCUevent; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuEventRecord_(hEvent, hStream);
   if Result <> CUDA_SUCCESS then
@@ -2209,7 +2209,7 @@ begin
 end;
 
 function cuEventQueryShell(hEvent: PCUevent): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuEventQuery_(hEvent);
   if Result <> CUDA_SUCCESS then
@@ -2218,7 +2218,7 @@ begin
 end;
 
 function cuEventSynchronizeShell(hEvent: PCUevent): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuEventSynchronize_(hEvent);
   if Result <> CUDA_SUCCESS then
@@ -2227,7 +2227,7 @@ begin
 end;
 
 function cuEventDestroyShell(hEvent: PCUevent): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuEventDestroy_(hEvent);
   if Result <> CUDA_SUCCESS then
@@ -2237,7 +2237,7 @@ end;
 
 function cuEventElapsedTimeShell(var pMilliseconds: Single; hStart: PCUevent;
   hEnd: PCUevent): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuEventElapsedTime_(pMilliseconds, hStart, hEnd);
   if Result <> CUDA_SUCCESS then
@@ -2247,7 +2247,7 @@ end;
 
 function cuStreamCreateShell(var phStream: PCUstream; Flags: Cardinal)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuStreamCreate_(phStream, Flags);
   if Result <> CUDA_SUCCESS then
@@ -2256,7 +2256,7 @@ begin
 end;
 
 function cuStreamQueryShell(hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuStreamQuery_(hStream);
   if Result <> CUDA_SUCCESS then
@@ -2265,7 +2265,7 @@ begin
 end;
 
 function cuStreamSynchronizeShell(hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuStreamSynchronize_(hStream);
   if Result <> CUDA_SUCCESS then
@@ -2274,7 +2274,7 @@ begin
 end;
 
 function cuStreamDestroyShell(hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuStreamDestroy_(hStream);
   if Result <> CUDA_SUCCESS then
@@ -2284,7 +2284,7 @@ end;
 
 function cuGLCtxCreateShell(var pctx: PCUcontext; Flags: Cardinal;
   device: TCUdevice): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuGLCtxCreate_(pctx, Flags, device);
   if Result <> CUDA_SUCCESS then
@@ -2294,7 +2294,7 @@ end;
 
 function cuGraphicsGLRegisterBufferShell(var pCudaResource: PCUgraphicsResource;
   buffer: Cardinal; Flags: TCUgraphicsMapResourceFlags): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuGraphicsGLRegisterBuffer_(pCudaResource, buffer, Flags);
   if Result <> CUDA_SUCCESS then
@@ -2304,7 +2304,7 @@ end;
 
 function cuGraphicsGLRegisterImageShell(var pCudaResource: PCUgraphicsResource;
   image, target: Cardinal; Flags: TCUgraphicsMapResourceFlags): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuGraphicsGLRegisterImage_(pCudaResource, image, target, Flags);
   if Result <> CUDA_SUCCESS then
@@ -2313,7 +2313,7 @@ begin
 end;
 
 function cuWGLGetDeviceShell(var pDevice: TCUdevice; hGpu: HGPUNV): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuWGLGetDevice_(pDevice, hGpu);
   if Result <> CUDA_SUCCESS then
@@ -2323,7 +2323,7 @@ end;
 
 function cuGraphicsUnregisterResourceShell(resource: PCUgraphicsResource)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuGraphicsUnregisterResource_(resource);
   if Result <> CUDA_SUCCESS then
@@ -2334,7 +2334,7 @@ end;
 function cuGraphicsSubResourceGetMappedArrayShell(var pArray: PCUarray;
   resource: PCUgraphicsResource; arrayIndex: Cardinal; mipLevel: Cardinal)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuGraphicsSubResourceGetMappedArray_(pArray, resource, arrayIndex,
     mipLevel);
@@ -2346,7 +2346,7 @@ end;
 
 function cuGraphicsResourceGetMappedPointerShell(var pDevPtr: TCUdeviceptr;
   out psize: Cardinal; resource: PCUgraphicsResource): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuGraphicsResourceGetMappedPointer_(pDevPtr, psize, resource);
   if Result <> CUDA_SUCCESS then
@@ -2357,7 +2357,7 @@ end;
 
 function cuGraphicsResourceSetMapFlagsShell(resource: PCUgraphicsResource;
   Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuGraphicsResourceSetMapFlags_(resource, Flags);
   if Result <> CUDA_SUCCESS then
@@ -2367,7 +2367,7 @@ end;
 
 function cuGraphicsMapResourcesShell(count: Cardinal;
   resources: PPCUgraphicsResource; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuGraphicsMapResources_(count, resources, hStream);
   if Result <> CUDA_SUCCESS then
@@ -2377,7 +2377,7 @@ end;
 
 function cuGraphicsUnmapResourcesShell(count: Cardinal;
   resources: PPCUgraphicsResource; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuGraphicsUnmapResources_(count, resources, hStream);
   if Result <> CUDA_SUCCESS then
@@ -2386,7 +2386,7 @@ begin
 end;
 
 function cuGLRegisterBufferObjectShell(buffer: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuGLRegisterBufferObject_(buffer);
   if Result <> CUDA_SUCCESS then
@@ -2396,7 +2396,7 @@ end;
 
 function cuGLMapBufferObjectShell(var dptr: TCUdeviceptr; var size: Cardinal;
   buffer: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuGLMapBufferObject_(dptr, size, buffer);
   if Result <> CUDA_SUCCESS then
@@ -2405,7 +2405,7 @@ begin
 end;
 
 function cuGLUnmapBufferObjectShell(buffer: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuGLUnmapBufferObject_(buffer);
   if Result <> CUDA_SUCCESS then
@@ -2414,7 +2414,7 @@ begin
 end;
 
 function cuGLUnregisterBufferObjectShell(buffer: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuGLUnregisterBufferObject_(buffer);
   if Result <> CUDA_SUCCESS then
@@ -2424,7 +2424,7 @@ end;
 
 function cuGLSetBufferObjectMapFlagsShell(buffer: Cardinal; Flags: Cardinal)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuGLSetBufferObjectMapFlags_(buffer, Flags);
   if Result <> CUDA_SUCCESS then
@@ -2434,7 +2434,7 @@ end;
 
 function cuGLMapBufferObjectAsyncShell(var dptr: TCUdeviceptr;
   var size: Cardinal; buffer: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuGLMapBufferObjectAsync_(dptr, size, buffer, hStream);
   if Result <> CUDA_SUCCESS then
@@ -2444,7 +2444,7 @@ end;
 
 function cuGLUnmapBufferObjectAsyncShell(buffer: Cardinal; hStream: PCUstream)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ENDIF}{$IFDEF UNIX} cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS} stdcall;{$ELSE}cdecl;{$ENDIF}
 begin
   Result := cuGLUnmapBufferObjectAsync_(buffer, hStream);
   if Result <> CUDA_SUCCESS then
@@ -2873,7 +2873,9 @@ begin
   cuGLUnmapBufferObjectAsync := cuGLUnmapBufferObjectAsyncShell;
 {$ENDIF GLS_CUDA_DEBUG_MODE}
   cuDriverGetVersion(V);
-  GLSLogger.LogInfoFmt('%s version %d is loaded', [CUDAAPIDLL, V]);
+  {$IFDEF USE_LOGGING}
+    LogInfoFmt('%s version %d is loaded', [CUDAAPIDLL, V]);
+  {$ENDIF}
   Result := True;
 end;
 

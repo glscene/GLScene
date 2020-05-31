@@ -1,16 +1,16 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+(*
   Component allows to compile the CUDA-source (*.cu) file.
   in design- and runtime.
   To work requires the presence of CUDA Toolkit 3.X and MS Visual Studio C++.
-}
+*)
 unit GLSCUDACompiler;
 
 interface
 
-{$I cuda.inc}
+{$I GLScene.inc}
 
 uses
   Winapi.Windows,
@@ -22,8 +22,8 @@ uses
   VCL.Dialogs,
   GLStrings,
   GLSCUDAParser,
-  GLApplicationFileIO,
-  GLSLog;
+  GLApplicationFileIO
+  {$IFDEF USE_LOGGING},GLSLog;{$ELSE};{$ENDIF}
 
 
 type
@@ -213,8 +213,10 @@ begin
     if csDesigning in ComponentState then
       MessageDlg(strSourceFileNotFound, TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], 0)
     else
-      GLSLogger.LogError(strSourceFileNotFound);
-    exit(false);
+     {$IFDEF USE_LOGGING}
+       LogError(strSourceFileNotFound);
+     {$ENDIF}
+      exit(false);
   end;
   CodeSource := TStringList.Create;
   CodeSource.LoadFromFile(FSourceCodeFile);
@@ -334,7 +336,9 @@ begin
         if csDesigning in ComponentState then
           MessageDlg(strFailRunNVCC, TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], 0)
         else
-          GLSLogger.LogError(strFailRunNVCC);
+         {$IFDEF USE_LOGGING}
+            LogError(strFailRunNVCC);
+         {$ENDIF}
       end;
 
       pathfile := tempFile + '.' + tempFileExt;
@@ -352,7 +356,9 @@ begin
         if csDesigning in ComponentState then
           MessageDlg(msg, TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0)
         else
-          GLSLogger.LogInfo(msg);
+         {$IFDEF USE_LOGGING}
+           LogInfo(msg);
+         {$ENDIF}
       end
       else
       begin
@@ -360,7 +366,9 @@ begin
         if csDesigning in ComponentState then
           MessageDlg(msg, TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], 0)
         else
-          GLSLogger.LogError(msg);
+          {$IFDEF USE_LOGGING}
+            LogError(msg);
+          {$ENDIF}
       end;
       FreeMem(Buffer);
       CloseHandle(ProcessInfo.hProcess);
@@ -373,7 +381,9 @@ begin
       if csDesigning in ComponentState then
         MessageDlg(strFailCreatePipe, TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], 0)
       else
+       {$IFDEF USE_LOGGING}
         GLSLogger.LogError(strFailCreatePipe);
+       {$ENDIF}
     end;
 
     pathfile := tempFile + '.cu';

@@ -1,15 +1,15 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   CUDA Parallel Primitives 
-}
+(*
+   CUDA Parallel Primitives
+*)
 
 // -------------------------------------------------------------
 // cuDPP -- CUDA Data Parallel Primitives library
 // -------------------------------------------------------------
-// $Revision: 4562 $
-// $Date: 2010-01-29 00:21:42 +0300 (Fri, 29 Jan 2010) $
+// $Revision: 4567 $
+// $Date: 2020-05-17
 // -------------------------------------------------------------
 // This source code is distributed under the terms of license.txt in
 // the root directory of this source distribution.
@@ -21,8 +21,6 @@ interface
 
 uses
   CL;
-
-{$I cuda.inc}
 
 const
   CUDPPDLL = 'cudpp32.dll';
@@ -105,18 +103,10 @@ function cudppPlan(var planHandle: TCUDPPHandle;
   n: NativeUInt;
   rows: NativeUInt;
   rowPitch: NativeUInt): TCUDPPResult;
-{$IFDEF CUDA_STDCALL}stdcall;
-{$ENDIF}
-{$IFDEF CUDA_CDECL}cdecl;
-{$ENDIF}
-external CUDPPDLL;
+{$IFDEF CUDA_STDCALL}stdcall;{$ELSE}cdecl;{$ENDIF}external CUDPPDLL;
 
 function cudppDestroyPlan(plan: TCUDPPHandle): TCUDPPResult;
-{$IFDEF CUDA_STDCALL}stdcall;
-{$ENDIF}
-{$IFDEF CUDA_CDECL}cdecl;
-{$ENDIF}
-external CUDPPDLL;
+{$IFDEF CUDA_STDCALL}stdcall;{$ELSE}cdecl;{$ENDIF}external CUDPPDLL;
 
 // Scan and sort algorithms
 
@@ -124,33 +114,21 @@ function cudppScan(planHandle: TCUDPPHandle;
   var d_out;
   var d_in,
   numElements: NativeUInt): TCUDPPResult;
-{$IFDEF CUDA_STDCALL}stdcall;
-{$ENDIF}
-{$IFDEF CUDA_CDECL}cdecl;
-{$ENDIF}
-external CUDPPDLL;
+{$IFDEF CUDA_STDCALL}stdcall;{$ELSE}cdecl;{$ENDIF}external CUDPPDLL;
 
 function cudppMultiScan(planHandle: TCUDPPHandle;
   var d_out;
   var d_in;
   numElements: NativeUInt;
   numRows: NativeUInt): TCUDPPResult;
-{$IFDEF CUDA_STDCALL}stdcall;
-{$ENDIF}
-{$IFDEF CUDA_CDECL}cdecl;
-{$ENDIF}
-external CUDPPDLL;
+{$IFDEF CUDA_STDCALL}stdcall;{$ELSE}cdecl;{$ENDIF}external CUDPPDLL;
 
 function cudppSegmentedScan(planHandle: TCUDPPHandle;
   var d_out;
   var d_idata;
   const d_iflags: PCardinal;
   numElements: NativeUInt): TCUDPPResult;
-{$IFDEF CUDA_STDCALL}stdcall;
-{$ENDIF}
-{$IFDEF CUDA_CDECL}cdecl;
-{$ENDIF}
-external CUDPPDLL;
+{$IFDEF CUDA_STDCALL}stdcall;{$ELSE}cdecl;{$ENDIF}external CUDPPDLL;
 
 function cudppCompact(planHandle: TCUDPPHandle;
   var d_out;
@@ -158,22 +136,14 @@ function cudppCompact(planHandle: TCUDPPHandle;
   var d_in;
   const d_isValid: PCardinal;
   numElements: NativeUInt): TCUDPPResult;
-{$IFDEF CUDA_STDCALL}stdcall;
-{$ENDIF}
-{$IFDEF CUDA_CDECL}cdecl;
-{$ENDIF}
-external CUDPPDLL;
+{$IFDEF CUDA_STDCALL}stdcall;{$ELSE}cdecl;{$ENDIF}external CUDPPDLL;
 
 function cudppSort(planHandle: TCUDPPHandle;
   var d_keys;
   var d_values;
   keybits: Integer;
   numElements: NativeUInt): TCUDPPResult;
-{$IFDEF CUDA_STDCALL}stdcall;
-{$ENDIF}
-{$IFDEF CUDA_CDECL}cdecl;
-{$ENDIF}
-external CUDPPDLL;
+{$IFDEF CUDA_STDCALL}stdcall;{$ELSE}cdecl;{$ENDIF}external CUDPPDLL;
 
 // Sparse matrix allocation
 
@@ -184,48 +154,28 @@ function cudppSparseMatrix(var sparseMatrixHandle: TCUDPPHandle;
   var A;
   const h_rowIndices: PCardinal;
   const h_indices: PCardinal): TCUDPPResult;
-{$IFDEF CUDA_STDCALL}stdcall;
-{$ENDIF}
-{$IFDEF CUDA_CDECL}cdecl;
-{$ENDIF}
-external CUDPPDLL;
+{$IFDEF CUDA_STDCALL}stdcall;{$ELSE}cdecl;{$ENDIF}external CUDPPDLL;
 
 function cudppDestroySparseMatrix(sparseMatrixHandle: TCUDPPHandle):
   TCUDPPResult;
-{$IFDEF CUDA_STDCALL}stdcall;
-{$ENDIF}
-{$IFDEF CUDA_CDECL}cdecl;
-{$ENDIF}
-external CUDPPDLL;
+{$IFDEF CUDA_STDCALL}stdcall;{$ELSE}cdecl;{$ENDIF}external CUDPPDLL;
 
 // Sparse matrix-vector algorithms
 
 function cudppSparseMatrixVectorMultiply(sparseMatrixHandle: TCUDPPHandle;
   var d_y;
   var d_x): TCUDPPResult;
-{$IFDEF CUDA_STDCALL}stdcall;
-{$ENDIF}
-{$IFDEF CUDA_CDECL}cdecl;
-{$ENDIF}
-external CUDPPDLL;
+{$IFDEF CUDA_STDCALL}stdcall;{$ELSE}cdecl;{$ENDIF}external CUDPPDLL;
 
 // random number generation algorithms
 function cudppRand(planHandle: TCUDPPHandle;
   var d_out;
   numElements: NativeUInt): TCUDPPResult;
-{$IFDEF CUDA_STDCALL}stdcall;
-{$ENDIF}
-{$IFDEF CUDA_CDECL}cdecl;
-{$ENDIF}
-external CUDPPDLL;
+{$IFDEF CUDA_STDCALL}stdcall;{$ELSE}cdecl;{$ENDIF}external CUDPPDLL;
 
 function cudppRandSeed(const planHandle: TCUDPPHandle;
   seed: Cardinal): TCUDPPResult;
-{$IFDEF CUDA_STDCALL}stdcall;
-{$ENDIF}
-{$IFDEF CUDA_CDECL}cdecl;
-{$ENDIF}
-external CUDPPDLL;
+{$IFDEF CUDA_STDCALL}stdcall;{$ELSE}cdecl;{$ENDIF}external CUDPPDLL;
 
 implementation
 

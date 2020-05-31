@@ -49,10 +49,10 @@ contains
   GLSCUDA in '..\..\Source\GLSCUDA.pas',
   GLSCUDAApi in '..\..\Source\GLSCUDAApi.pas',
   GLFilePGM in '..\..\Source\GLFilePGM.pas',
-  CL in '..\..\Source\CL.pas',
-  CL_GL in '..\..\Source\CL_GL.pas',
-  CL_Platform in '..\..\Source\CL_Platform.pas',
-  GLSCUDAUtility in '..\..\Source\GLSCUDAUtility.pas';
+  GLSCUDAUtility in '..\..\Source\GLSCUDAUtility.pas',
+  OpenCL in '..\..\Source\OpenCL.pas',
+  OpenCL_GL in '..\..\Source\OpenCL_GL.pas',
+  OpenCL_Platform in '..\..\Source\OpenCL_Platform.pas';
 
 end.
 

@@ -1,21 +1,22 @@
 ﻿//
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+(*
    CUDA Graphics for GLScene
-}
+*)
 
 unit GLSCUDAGraphics;
 
 interface
 
-{$I cuda.inc}
+{$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.Classes,
   System.SysUtils,
-  
-  OpenGLTokens,
+
   GLSCUDAApi,
   GLSCUDA,
   GLContext,
@@ -28,7 +29,9 @@ uses
   GLTexture,
   GLSLShader,
   GLSLParameter,
+  {$IFDEF USE_LOGGING} GLSLog, {$ENDIF}
   GLRenderContextInfo;
+
 
 type
   TGLVertexAttribute = class;
@@ -105,30 +108,27 @@ type
     procedure LaunchKernels;
   protected
     property Attributes: TGLVertexAttributes read FAttributes write SetAttributes;
-    { GLSL shader as material. If it absent or disabled - nothing be drawen. }
+    // GLSL shader as material. If it absent or disabled - nothing be drawen.
     property Shader: TGLSLShader read FShader write SetShader;
-    { Primitive type. }
+    // Primitive type.
     property PrimitiveType: TFeedBackMeshPrimitive read FPrimitiveType
       write SetPrimitiveType default fbmpPoint;
-    { Number of vertexes in array buffer. }
+    // Number of vertexes in array buffer.
     property VertexNumber: Integer read FVertexNumber
       write SetVertexNumber default 1;
-    { Number of indexes in element buffer. Zero to disable. }
+    // Number of indexes in element buffer. Zero to disable.
     property ElementNumber: Integer read FElementNumber
       write SetElementNumber default 0;
-    {Used for all attributes and elements if Launching = fblCommon
-       otherwise used own attribute function and this for elements. }
+    (* Used for all attributes and elements if Launching = fblCommon
+       otherwise used own attribute function and this for elements. *)
     property CommonKernelFunction: TCUDAFunction read FCommonFunc
       write SetCommonFunc;
-    {Define mode of manufacturer launching:
-      fblCommon - single launch for all,
-      flOnePerAtttribute - one launch per attribute and elements }
+    (* Define mode of manufacturer launching:
+       fblCommon - single launch for all,
+       flOnePerAtttribute - one launch per attribute and elements *)
     property Launching: TFeedBackMeshLaunching read FLaunching
       write FLaunching default fblCommon;
-    {Defines if the object uses blending for object
-       sorting purposes. }
-    {Defines if the object uses blending for object
-       sorting purposes. }
+    //Defines if the object uses blending for object sorting purposes.
     property Blend: Boolean read FBlend write FBlend default False;
   public
     constructor Create(AOwner: TComponent); override;
@@ -201,8 +201,7 @@ type
   protected
     procedure AllocateHandles; override;
     procedure DestroyHandles; override;
-    procedure Notification(AComponent: TComponent;
-      Operation: TOperation); override;
+    procedure Notification(AComponent: TComponent; Operation: TOperation); override;
     function GetAttributeArraySize(const AName: string): LongWord; override;
     function GetAttributeArrayAddress(const AName: string): Pointer; override;
     function GetElementArrayDataSize: LongWord; override;
@@ -227,9 +226,6 @@ type
 //---------------------------------------------------------------------------
 implementation
 //---------------------------------------------------------------------------
-
-uses
-  {$IFDEF USE_LOGGING} GLSLog {$ENDIF};
 
 // ------------------
 // ------------------ TCUDAGLImageResource ------------------
@@ -390,7 +386,9 @@ var
 begin
   if FMapCounter = 0 then
   begin
-    GLSLogger.LogError(strFailToBindArrayToTex);
+   {$IFDEF USE_LOGGING}
+    LogError(strFailToBindArrayToTex);
+   {$ENDIF}
     Abort;
   end;
 
@@ -653,7 +651,9 @@ begin
 
   if Cardinal(Result) + GetAttribArraySize(LAttr) > Size then
   begin
-    GLSLogger.LogError(strOutOfAttribSize);
+    {$IFDEF USE_LOGGING}
+    LogError(strOutOfAttribSize);
+   {$ENDIF}
     Abort;
   end;
 
@@ -684,7 +684,9 @@ begin
 
   if GetElementArrayDataSize > Size then
   begin
-    GLSLogger.LogError(strOutOfElementSize);
+    {$IFDEF USE_LOGGING}
+    LogError(strOutOfElementSize);
+    {$ENDIF}
     Abort;
   end;
 
