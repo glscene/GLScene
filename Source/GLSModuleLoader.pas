@@ -33,8 +33,6 @@ unit GLSModuleLoader;
 
 interface
 
-{$I pascaldefines.inc}
-
 {$WEAKPACKAGEUNIT ON}
 
 // each OS gets its own IFDEFed complete code block to make reading easier
