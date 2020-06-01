@@ -20,7 +20,7 @@ unit GLSCUDAParallelPrimitives;
 interface
 
 uses
-  CL;
+  OpenCL;
 
 const
   CUDPPDLL = 'cudpp32.dll';

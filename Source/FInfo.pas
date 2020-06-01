@@ -131,7 +131,6 @@ implementation
 //======================================================================
 
 {$R *.dfm}
-{$R FInfo.res}
 
 procedure ShowInfoForm(aSceneBuffer: TGLSceneBuffer; Modal: boolean);
 var
