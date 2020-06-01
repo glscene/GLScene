@@ -1,11 +1,11 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{ 
-  Activate USE_LOGGING in "GLSCene.inc" to turn on inner GLScene logger. 
-  You may have only one instance of TGLSLogger 
-  To obtain it, call UserLog() function from any unit. 
-}
+(*
+  Activate USE_LOGGING in "GLSCene.inc" to turn on inner GLScene logger.
+  You may have only one instance of TGLSLogger
+  To obtain it, call UserLog() function from any unit.
+*)
 
 unit GLSLog;
 
@@ -25,12 +25,12 @@ uses
   VCL.Controls;
 
 type
-  {  Levels of importance of log messages }
+  //  Levels of importance of log messages
   TLogLevel = (lkDebug, lkInfo, lkNotice, lkWarning, lkError, lkFatalError);
-  {  Log level setting type }
+  //  Log level setting type
   TLogLevels = set of TLogLevel;
 
-  {What to do when number of messages exceeds message limit. }
+  //What to do when number of messages exceeds message limit.
   TLogMessageLimitAction = (mlaContinue, mlaStopLogging, mlaHalt);
 
 var
@@ -46,21 +46,21 @@ const
   llMin: TLogLevels = [lkError, lkFatalError];
 
 type
-  {  Log date and time setting type }
+  //  Log date and time setting type
   TLogTimeFormat = (
-    {  doesn't output any time information }
+    //  doesn't output any time information
     lfNone,
-    {  include date in the log }
+    //  include date in the log
     lfDate,
-    {  include time in the log }
+    //  include time in the log
     lfTime,
-    {  include time in the log, including milliseconds }
+    //  include time in the log, including milliseconds
     lfTimeExact,
-    {  include date and time in the log }
+    //  include date and time in the log
     lfDateTime,
-    {  include time elapsed since startup in the log }
+    //  include time elapsed since startup in the log
     lfElapsed);
-  {How log is buffered. }
+  // How log is buffered.
   TLogBufferingMode =
   (
    lbmWriteEmidiatly,
@@ -68,11 +68,11 @@ type
    lbmWriteInTheEnd
   );
 
-  {  Class reference to log session class }
+  // Class reference to log session class
   CLogSession = class of TGLLogSession;
   TGLLogSession = class;
 
-  {Thread that periodically flushes the buffer to disk. }
+  // Thread that periodically flushes the buffer to disk.
   TLogBufferFlushThread = class(TThread)
   private
     FParent: TGLLogSession;
@@ -82,7 +82,7 @@ type
     constructor Create(const AParent: TGLLogSession);
   end;
 
-  {Thread that checks file size and splits the file if nessesary. }
+  // Thread that checks file size and splits the file if nessesary.
   TLogCheckSizeThread = class(TThread)
   private
     FParent: TGLLogSession;
@@ -92,7 +92,7 @@ type
     constructor Create(const AParent: TGLLogSession);
   end;
 
-  {Abstract Logger class }
+  // Abstract Logger class
   TGLLogSession = class(TPersistent)
   private
     FBuffer: TStringList;
@@ -115,9 +115,9 @@ type
     FLogKindCount: array [TLogLevel] of Integer;
     FLogThreadId: Boolean;
     FMessageLimitAction: TLogMessageLimitAction;
-    {  Determines which date or time to include in the log }
+    // Determines which date or time to include in the log
     FTimeFormat: TLogTimeFormat;
-    {  Startup timestamp in milliseconds }
+    // Startup timestamp in milliseconds
     FStartedMs: Cardinal;
     FLogFileMaxSize: Integer;
     FCheckFileSizePeriod: Integer;
@@ -139,35 +139,29 @@ type
     procedure ClearLogsInTheSameDir();
     procedure BackUpOldLogs(const ACurrentLogFileName: string);
     procedure CreateNewLogFileIfNeeded();
-
-    {  Appends a string to log. Thread-safe. }
+    // Appends a string to log. Thread-safe.
     procedure AppendLog(const AString: string; const ALevel: TLogLevel; const ALogTime: Boolean = True);
-
-    {Writes string to log. Returns True if everything went ok.}
+    // Writes string to log. Returns True if everything went ok.
     function DoWriteToLog(const AString: string): Boolean;
-
-    {Writes FBuffer to log. Returns True if everything went ok.}
+    // Writes FBuffer to log. Returns True if everything went ok.
     function DoWriteBufferToLog(): Boolean;
-
-    {Resets log. Returns True if everything went ok.}
+    // Resets log. Returns True if everything went ok.
     function DoResetLog: Boolean;
   public
-    { Initializes a log session with the specified log file name, time and level settings }
+    // Initializes a log session with the specified log file name, time and level settings
     constructor Init(const AFileName: string;
       const ATimeFormat: TLogTimeFormat; const ALevels: TLogLevels;
       const ALogThreadId: Boolean = True; const ABuffered: Boolean = False;
       const AMaxSize: Integer = 0; const ABackUpOldLogs: Boolean = False;
       const AClearOldLogs: Boolean = True; const AWriteInternalMessages: Boolean = True); virtual;
-
     destructor Destroy; override;
-    {  General Logging procedures }
+    // General Logging procedures
     procedure Log(const Desc: string; const Level: TLogLevel = lkInfo);
     procedure LogAdv(const args: array of const; const ALevel: TLogLevel = lkError);
     procedure LogException(const E: Exception; const aFunctionName: string;
       const args: array of const; const ALevel: TLogLevel = lkError);
-
-    {  Logs a string  Desc  if  Level
-      matches current USE_LOGGING level (see @Link(LogLevels)) }
+    (*  Logs a string  Desc  if  Level
+      matches current USE_LOGGING level (see @Link(LogLevels)) *)
     procedure LogDebug(const Desc: string);
     procedure LogInfo(const Desc: string);
     procedure LogNotice(const Desc: string);
@@ -175,20 +169,17 @@ type
     procedure LogError(const Desc: string);
     procedure LogFatalError(const Desc: string);
     procedure LogEmtryLine();
-
-    {  Logs a formatted string assembled from a format string and an array of arguments. }
+    // Logs a formatted string assembled from a format string and an array of arguments.
     procedure LogDebugFmt(const Desc: string; const Args: array of const );
     procedure LogInfoFmt(const Desc: string; const Args: array of const );
     procedure LogNoticeFmt(const Desc: string; const Args: array of const );
     procedure LogWarningFmt(const Desc: string; const Args: array of const );
     procedure LogErrorFmt(const Desc: string; const Args: array of const );
     procedure LogFatalErrorFmt(const Desc: string; const Args: array of const );
-
-    {  Mics procedures. }
+    // Mics procedures.
     procedure DisplayLog();
     procedure FlushBuffer(); // If log is buffered, calling this will flush the buffer.
-
-    {  Set of levels which to include in the log }
+    // Set of levels which to include in the log
     property LogLevels: TLogLevels read FLogLevels write SetMode
       default [lkDebug, lkInfo, lkNotice, lkWarning, lkError, lkFatalError];
     property Enabled: Boolean read FEnabled write SetEnabled default True;
@@ -198,21 +189,18 @@ type
     property DisplayErrorDialogs: Boolean read FDisplayErrorDialogs write FDisplayErrorDialogs default True;
     property MessageLimitAction: TLogMessageLimitAction read FMessageLimitAction write FMessageLimitAction default mlaHalt;
     property WriteInternalMessages: Boolean read FWriteInternalMessages write FWriteInternalMessages default True;
-
-    {To always display log, put all log types. To never display log, leave this empty. }
+    // To always display log, put all log types. To never display log, leave this empty.
     property DisplayLogOnExitIfItContains: TLogLevels read FDisplayLogOnExitIfItContains write FDisplayLogOnExitIfItContains
       default [lkDebug, lkInfo, lkNotice, lkWarning, lkError, lkFatalError];
-
-
-    {If LogFileMaxSize is not 0, then:
+    (* If LogFileMaxSize is not 0, then:
        1) At start, all logs with the same extention will be deleted.
        2) All logs wil be periodically cheked for FileSize.
-          New log file will be created when this size exceeds limit. }
+          New log file will be created when this size exceeds limit. *)
     property LogFileMaxSize: Integer  read FLogFileMaxSize  write SetLogFileMaxSize default 0; // In bytes, limited to 2Gb.
     property CheckFileSizePeriod: Integer read FCheckFileSizePeriod write FCheckFileSizePeriod default 4000; // In ms.
   end;
 
-  {  Abstract class for control loging.  }
+  // Abstract class for control loging.
   TGLSLogger = class(TComponent)
   private
     FReplaceAssertion: Boolean;
@@ -239,21 +227,20 @@ type
 
   TIDELogProc = procedure(const AMsg: string);
 
-{  Return logger wich created by TGLSLogger component }
+// Return logger wich created by TGLSLogger component
 function UserLog: TGLLogSession;
 function SkipBeforeSTR(var TextFile: Text; const SkipSTR: string): Boolean;
 function ReadLine(var TextFile: Text): string;
 
-{  GLScene inner logger.
-    DaStr: Converted to a function, because in case of a DLL and main app using this module,
+(*  Inner logger.
+    Converted to a function, because in case of a DLL and main app using this module,
     log is written to the same file on initialization and finalization,
     which is not what one might want. This also allows to create a GLSLogger with
     custom parameters for user's application, for example a different log path
     (Often the EXE application directory is read-only).
- }
+*)
 function GLSLogger(): TGLLogSession;
 procedure UseCustomGLSLogger(const ALogger: TGLLogSession);
-
 function ConstArrayToString(const Elements: array of const): String;
 
 var
@@ -268,7 +255,7 @@ var
   vAssertErrorHandler: TAssertErrorProc;
   vCurrentLogger: TGLSLogger;
 
-{  GLScene inner logger. Create on first use, not in unit initialization. }
+// Inner logger. Create on first use, not in unit initialization. }
 function GLSLogger(): TGLLogSession;
 begin
   if v_GLSLogger = nil then
@@ -304,20 +291,20 @@ const
                   'WideString  : ', 'Int64       : ', '#HLType     : ');
 
 {Function from HotLog by Olivier Touzot "QnnO".}
-Function GetOriginalValue(const s:String):String;
+function GetOriginalValue(const s:String):String;
 //  Called to remove the false 'AnsiString :' assertion, for pointers and objects
-Begin
+begin
   result := RightStr(s,Length(s)-19);
-End;
+end;
 
 {Function from HotLog by Olivier Touzot "QnnO".}
-Function VarRecToStr(const vr:TVarRec):String;
+function VarRecToStr(const vr:TVarRec):String;
 // See D6PE help topic "TVarRec"
-Begin
+begin
   Result := vTypeAsSring[vr.VType] + ' ';
-  TRY
-    With vr Do
-    Case VType of
+  try
+    with vr do
+    case VType of
        vtInteger:    result := result + IntToStr(VInteger);
        vtBoolean:    result := result + BoolToStr(VBoolean, True);
        vtChar:       Result := Result + string(VChar);
@@ -327,10 +314,10 @@ Begin
        vtPointer:    result := result + '^(' +  Format('%P', [(addr(VPointer)) ]) +')';
        vtPChar:      result := Result + string(VPChar);
 // ...
-       vtObject:     Begin
-                       If VObject = Nil Then result := result + '^(NIL)'
-                       Else result := result + VObject.classname;
-                     End;
+       vtObject:     begin
+                       if VObject = Nil Then result := result + '^(NIL)'
+                       else result := result + VObject.classname;
+                     end;
 // ...
        vtClass:      result := result + VClass.classname;
        vtWideChar:   Result := Result + string(VWideChar);
@@ -343,33 +330,35 @@ Begin
        vtInt64:      Result := Result + IntToStr(VInt64^);
        else          result := result + Format('[#HLvrType(%d)]',       // "Else" not possible...
                                [ integer(vr.VType) ]);                  // ...with D6, but laters ?
-    End;{case}
+    end;{case}
   EXCEPT
       result := result + Format('[#HLvrValue(%s)]', [vTypeDesc[vr.VType]]);
-  END;
+  end;
 end;
 
-{Function from HotLog by Olivier Touzot "QnnO".}
-Function GetBasicValue(const s:String; vKind:Byte):String;
+// Function from HotLog by Olivier Touzot "QnnO".
+function GetBasicValue(const s:String; vKind:Byte):String;
 var iTmp : Integer;
     wasTObject: Boolean;
-Begin
+begin
   Result := s;
-  If s = '' Then exit;
-  TRY
+  If s = '' then exit;
+  try
     iTmp := Pos('$_H_',s);
     wasTObject := (Pos('$_H_TObject',s) > 0);
-    If (iTmp > 0 ) Then Result := GetOriginalValue(s);           // converts fake strings back to original
+    if (iTmp > 0 ) then Result := GetOriginalValue(s);           // converts fake strings back to original
     Result := RightStr(Result, length(result)-15);               // From now on, works on "result"
-    If (vKind In [vtString,vtAnsiString,vtWideString,vtPChar,vtWideChar,vtPWideChar])
-    And Not(wasTObject) Then Exit
-    Else Begin
+    if (vKind In [vtString,vtAnsiString,vtWideString,vtPChar,vtWideChar,vtPWideChar])
+    And Not(wasTObject) then Exit
+    else
+    begin
            iTmp   := Pos(' ',Result);
-           If ( iTmp > 0 ) And (iTmp < Length(result))
-              Then result := LeftStr(result, iTmp);
-         End;
-  EXCEPT; END;
-End;
+           If ( iTmp > 0 ) and (iTmp < Length(result))
+              then result := LeftStr(result, iTmp);
+    end;
+  EXCEPT;
+  end;
+end;
 
 {Function from HotLog by Olivier Touzot "QnnO".}
 function ConstArrayToString(const Elements: array of const): String;
@@ -387,16 +376,16 @@ Begin
 
     Result := '(';
     sep := '; ';
-    For i:= Low(Elements) to High(Elements) do
-    Begin
+    for i:= Low(Elements) to High(Elements) do
+    begin
       s := VarRecToStr(Elements[I]);
       Result := Result + GetBasicValue(s,Elements[i].VType) + sep;
-    End;
+    end;
     Result := LeftStr(Result, length(result)-2) + ');' ;      // replaces last ", " by final ");".
 
-  EXCEPT result := '[#HLvrConvert]';
-  END;
-End;
+  except result := '[#HLvrConvert]';
+  eND;
+end;
 
 
 function UserLog: TGLLogSession;
@@ -1187,7 +1176,7 @@ begin
     end;
 end;
 
-{ TLogBufferFlushThread }
+// TLogBufferFlushThread
 
 constructor TLogBufferFlushThread.Create(const AParent: TGLLogSession);
 begin
@@ -1204,7 +1193,7 @@ begin
   end;
 end;
 
-{ TLogCheckSizeThread }
+// TLogCheckSizeThread
 
 constructor TLogCheckSizeThread.Create(const AParent: TGLLogSession);
 begin

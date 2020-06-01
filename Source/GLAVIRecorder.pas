@@ -22,9 +22,10 @@ uses
   VCL.Graphics, 
   VCL.Dialogs,
    
-  GLGraphics, 
-  GLSVfw, 
-  GLScene, 
+  FileVFW,
+
+  GLGraphics,
+  GLScene,
   GLWin32Viewer;
 
 type

@@ -337,7 +337,6 @@
         <DCCReference Include="..\..\Source\GLSMemo.pas"/>
         <DCCReference Include="..\..\Source\GLSRGBE.pas"/>
         <DCCReference Include="..\..\Source\GLSRedBlackTree.pas"/>
-        <DCCReference Include="..\..\Source\GLSVfw.pas"/>
         <DCCReference Include="..\..\Source\GLScene.pas"/>
         <DCCReference Include="..\..\Source\GLSceneForm.pas"/>
         <DCCReference Include="..\..\Source\GLScreen.pas"/>
@@ -399,6 +398,7 @@
         <DCCReference Include="..\..\Source\OpenGLTokens.pas"/>
         <DCCReference Include="..\..\Source\XCollection.pas"/>
         <DCCReference Include="..\..\Source\XOpenGL.pas"/>
+        <DCCReference Include="..\..\Source\FileVFW.pas"/>
         <None Include="..\..\Source\GLScene.inc"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>

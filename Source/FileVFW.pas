@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+(*
    Video for windows
-}
-unit GLSVfw;
+*)
+unit FileVFW;
 
 interface
 
@@ -87,8 +87,7 @@ uses
     Winapi.MMSystem,
     Winapi.Messages,
     Winapi.CommDlg,
-    Winapi.ActiveX,
-    VCL.Dialogs;
+    Winapi.ActiveX;
 
 (****************************************************************************
  *

@@ -1,9 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+(*
    GLScene RGBE
-}
+*)
 unit GLSRGBE;
 
 interface

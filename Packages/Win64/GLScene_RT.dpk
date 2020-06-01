@@ -230,7 +230,6 @@ contains
   GLSMemo in '..\..\Source\GLSMemo.pas',
   GLSRGBE in '..\..\Source\GLSRGBE.pas',
   GLSRedBlackTree in '..\..\Source\GLSRedBlackTree.pas',
-  GLSVfw in '..\..\Source\GLSVfw.pas',
   GLScene in '..\..\Source\GLScene.pas',
   GLSceneForm in '..\..\Source\GLSceneForm.pas',
   GLScreen in '..\..\Source\GLScreen.pas',
@@ -291,7 +290,8 @@ contains
   OpenGLAdapter in '..\..\Source\OpenGLAdapter.pas',
   OpenGLTokens in '..\..\Source\OpenGLTokens.pas',
   XCollection in '..\..\Source\XCollection.pas',
-  XOpenGL in '..\..\Source\XOpenGL.pas';
+  XOpenGL in '..\..\Source\XOpenGL.pas',
+  FileVFW in '..\..\Source\FileVFW.pas';
 
 end.
 
