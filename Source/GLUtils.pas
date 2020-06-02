@@ -626,7 +626,7 @@ var
 begin
    path := ParamStr(0);
    path := LowerCase(ExtractFilePath(path));
-   p := Pos('samples', path);
+   p := Pos('demos', path);
    Delete(path, p+7, Length(path));
    path := IncludeTrailingPathDelimiter(path) + 'media';
    SetCurrentDir(path);

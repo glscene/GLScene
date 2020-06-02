@@ -1,25 +1,24 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+(*
    Defines base vector types for use in GLVectorGeometry.pas.
    The sole aim of this unit is to limit dependency between the GLVectorGeometry
    and OpenGL units by introducing the base compatibility types
-   (and only the *base* types). 
+   (and only the *base* types).
 
-   Conventions: 
+   Conventions:
         d  is used for Double precision floating points values (64 bits)
         f  is used for Single precision floating points values (32 bits)
         i  is used for 32 bits signed integers (longint)
         s  is uses for 16 bits signed integers (smallint)
-   Note : D3D types untested. 
-}
+   Note : D3D types untested.
+*)
 unit GLVectorTypes;
 
 interface
 
 {$I GLScene.inc}
-
 
 type
   //2

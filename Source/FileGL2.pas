@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+(*
 	Ghoul2 (GLM/GLA) file format loading structures 
 	Note: Also referred to as MDX (MDXM/MDXA) format in C source. 
-}
+*)
 unit FileGL2;
 
 interface

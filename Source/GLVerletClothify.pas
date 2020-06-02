@@ -1,9 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+(*
    Methods for turning a TGLBaseMesh into a Verlet cloth / jelly
-}
+*)
 
 unit GLVerletClothify;
 
@@ -269,7 +269,7 @@ begin
 end;
 
 //------------------
-{ TFaceList }
+// TFaceList 
 //------------------
 
 function TFaceList.GetItems(i: integer): TFace;
@@ -283,7 +283,7 @@ begin
 end;
 
 //------------------
-{ TEdgeList }
+// TEdgeList 
 //------------------
 
 function TEdgeList.GetItems(i: integer): TEdge;
@@ -353,7 +353,7 @@ begin
 end;
 
 //--------------------------
-{ TEdgeDetector }
+// TEdgeDetector 
 //--------------------------
 
 procedure TEdgeDetector.Clear;
