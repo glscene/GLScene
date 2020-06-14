@@ -1,13 +1,15 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLShadowPlane;
+
 (*
    Implements a basic shadow plane.
 
    It is strongly recommended to read and understand the explanations in the
    materials/mirror demo before using this component.
 *)
-unit GLShadowPlane;
 
 interface
 
@@ -15,8 +17,8 @@ interface
 
 uses
   System.Classes,
-  System.Types,  
-  
+  System.Types,
+
   OpenGLTokens,
   GLPersistentClasses,
   GLPipelineTransformation,

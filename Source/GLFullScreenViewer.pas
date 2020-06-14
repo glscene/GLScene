@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  A Platform specific full-screen viewer.
-*)
+
 unit GLFullScreenViewer;
+
+(* A Platform specific full-screen viewer *)
 
 interface
 
@@ -105,17 +105,17 @@ type
 
     procedure Render(baseObject: TGLBaseSceneObject = nil); override;
 
-    {  Adjusts property so that current resolution will be used. 
-      Call this method if you want to make sure video mode isn't switched. }
+    (*  Adjusts property so that current resolution will be used. 
+      Call this method if you want to make sure video mode isn't switched. *)
     procedure UseCurrentResolution;
     procedure BeginUpdate;
     procedure EndUpdate;
-    {  Activates/deactivates full screen mode.  }
+    //  Activates/deactivates full screen mode.  
     property Active: Boolean read FActive write SetActive;
     procedure ReActivate;
-    {  Read access to the underlying form handle. 
+    (*  Read access to the underlying form handle. 
       Returns 0 (zero) if the viewer is not active or has not yet
-      instantiated its form. }
+      instantiated its form. *)
     property Handle: HWND read GetHandle;
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
     function LastFrameTime: Single;
@@ -128,25 +128,25 @@ type
     property ManualRendering: Boolean read FManualRendering write SetManualRendering;
     // It is not used in UNIX.  Requested ScreenDepth. 
     property ScreenDepth: TGLScreenDepth read FScreenDepth write SetScreenDepth default sd32bits;
-    {  Specifies if the underlying form is "fsStayOnTop". 
+    (*  Specifies if the underlying form is "fsStayOnTop". 
       The benefit of StayOnTop is that it hides the windows bar and
       other background windows. The "fsStayOnTop" is automatically
       switched off/on when the underlying form loses/gains focus.
       It is recommended not to use StayOnTop while running in the IDE
-      or during the debugging phase.  }
+      or during the debugging phase.  *)
     property StayOnTop: Boolean read FStayOnTop write SetStayOnTop default False;
-    {  Specifies if the refresh should be synchronized with the VSync signal. 
+    (*  Specifies if the refresh should be synchronized with the VSync signal. 
       If the underlying OpenGL ICD does not support the WGL_EXT_swap_control
-      extension, this property is ignored. }
+      extension, this property is ignored. *)
     property VSync: TGLVSyncMode read FVSync write FVSync default vsmSync;
-    {  Screen refresh rate. 
+    (*  Screen refresh rate. 
       Use zero for system default. This property allows you to work around
       the winxp bug that limits uses a refresh rate of 60hz when changeing
       resolution. it is however suggested to give the user the opportunity
       to adjust it instead of having a fixed value (expecially beyond
       75hz or for resolutions beyond 1024x768). 
       the value will be automatically clamped to the highest value
-      *reported* compatible with the monitor. }
+      *reported* compatible with the monitor. *)
     property RefreshRate: Integer read FRefreshRate write FRefreshRate;
     property Cursor: TCursor read FCursor write SetCursor default crDefault;
     property PopupMenu: TPopupMenu read FPopupMenu write SetPopupMenu;

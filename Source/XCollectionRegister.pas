@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Register TXCollection property editor 
-}
+
 unit XCollectionRegister;
+
+(* Register TXCollection property editor *)
 
 interface
 

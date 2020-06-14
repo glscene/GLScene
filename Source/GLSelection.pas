@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Picking and selection of objects. 
-}
+
 unit GLSelection;
+
+(* Picking and selection of objects *)
 
 interface
 
@@ -37,8 +37,8 @@ type
 
   TPickSortType = (psDefault, psName, psMinDepth, psMaxDepth);
 
-  {List class for object picking. 
-     This list is used to store the results of a PickObjects call. }
+  (* List class for object picking.
+     This list is used to store the results of a PickObjects call. *)
   TGLPickList = class(TPersistentObjectList)
   private
     function GetFar(aValue: Integer): Single;
@@ -119,7 +119,6 @@ begin
     Result := TGLSelectRenderModeTechnique;
 end;
 
-// ------------------------------ TGLPickList 
 // ------------------
 // ------------------ TGLPickList ------------------
 // ------------------
@@ -226,9 +225,8 @@ function TGLPickList.GetSubObjects(aValue: Integer): TPickSubobjects;
 begin
   Result := TPickRecord(Items[AValue]).SubObjects;
 end;
- 
 
-// ------------------------------ TGLSelectRenderModeTechnique 
+
 // ------------------
 // ------------------ TGLSelectRenderModeTechnique ------------------
 // ------------------

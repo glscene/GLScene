@@ -1,11 +1,11 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+(*
    Movement path behaviour by Roger Cao
    Note: It is recommended to set TGLMovementPath.RotationMode = rmUpDirection,
    but the default value is rmTurnPitchRoll for backwards compatibility.
-}
+*)
 
 unit GLMovement;
 

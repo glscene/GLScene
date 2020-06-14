@@ -1,16 +1,18 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLParticleFX;
+
+(*
    Base classes for scene-wide blended particles FX.
 
    These provide a mechanism to render heterogenous particles systems with per
    particle depth-sorting (allowing correct rendering of interwoven separate
    fire and smoke particle systems for instance).
 
-}
+*)
 
-unit GLParticleFX;
 
 interface
 

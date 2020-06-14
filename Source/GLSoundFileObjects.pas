@@ -1,12 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLSoundFileObjects;
+
+(*
    Support classes for loading various fileformats.
    These classes work together like vector file formats or Delphi's TGraphic classes.
 
-}
-unit GLSoundFileObjects;
+*)
 
 interface
 
@@ -124,8 +126,6 @@ begin
 	GetGLSoundFileFormats.Add(AExtension, ADescription, 0, AClass);
 end;
 
-// UnregisterSoundFileClass
-//
 procedure UnregisterSoundFileClass(AClass: TGLSoundFileClass);
 begin
 	if Assigned(vSoundFileFormats) then

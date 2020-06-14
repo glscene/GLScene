@@ -1,13 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLWaterPlane;
+
+(*
    A plane simulating animated water
    The Original Code is part of Cosmos4D
    http://users.hol.gr/~sternas/
-
-}
-unit GLWaterPlane;
+*)
 
 interface
 

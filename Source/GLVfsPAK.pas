@@ -1,29 +1,26 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Support-code for loading files from Quake II PAK Files. 
+(*
+   Support-code for loading files from Quake II PAK Files.
    When instance is created all LoadFromFile methods using
-   GLApplicationFileIO mechanism will be pointed into PAK file. 
-   You can change current PAK file by ActivePak variable. 
+   GLApplicationFileIO mechanism will be pointed into PAK file.
+   You can change current PAK file by ActivePak variable.
 
-}
+*)
 unit GLVfsPAK;
 
 {$I GLScene.inc}
-// Activate support for LZRW1 compression. This line could be moved to GLScene.inc file.
-// Remove the "." characted in order to activate compression features.
-{.$DEFINE USE_LZRW_SUPPORT}
 
 interface
 
 uses
-  System.Classes, 
-  System.Contnrs, 
+  System.Classes,
+  System.Contnrs,
   System.SysUtils,
-   
-  GLApplicationFileIO
-{$IFDEF USE_LZRW_SUPPORT},LZRW1{$ENDIF};
+
+  GLStrings,
+  GLApplicationFileIO;
 
 const
    SIGN = 'PACK'; //Signature for uncompressed - raw pak.
@@ -37,9 +34,6 @@ type
       Signature: array[0..3] of AnsiChar;
       DirOffset: integer;
       DirLength: integer;
-{$IFDEF USE_LZRW_SUPPORT}
-      CbrMode: TZCompressedMode;
-{$ENDIF}
    end;
 
    TFileSection = record
@@ -51,65 +45,48 @@ type
    TGLVfsPAK = class (TComponent)
    private
       FPakFiles: TStringList;
-
       FHeader: TPakHeader;
       FHeaderList: array of TPakHeader;
       FStream: TFileStream;
       FStreamList: TObjectList;
       FFiles: TStrings;
       FFilesLists: TObjectList;
-
       FFileName: string;
-{$IFDEF USE_LZRW_SUPPORT}
-      FCompressor: Tlzrw1;
-{$ENDIF}
       FCompressionLevel: TZCompressedMode;
       FCompressed: Boolean;
-
       function GetFileCount: integer;
       procedure MakeFileList;
-
       function GetStreamNumber: integer;
       procedure SetStreamNumber(i:integer);
-
    public
       property PakFiles: TStringList read FPakFiles;
       property Files: TStrings read FFiles;
       property ActivePakNum: integer read GetStreamNumber write SetStreamNumber;
       property FileCount: integer Read GetFileCount;
       property PakFileName: string Read FFileName;
-
       property Compressed: Boolean read FCompressed;
       property CompressionLevel: TZCompressedMode read FCompressionLevel;
       constructor Create(AOwner : TComponent); overload; override;
       constructor Create(AOwner : TComponent; const CbrMode: TZCompressedMode); reintroduce; overload;
       destructor Destroy; override;
-
       // for Mode value search Delphi Help for "File open mode constants"
       procedure LoadFromFile(const FileName: string; Mode: word);
       procedure ClearPakFiles;
-
       function FileExists(const FileName: string): boolean;
-
       function GetFile(index: integer): TStream; overload;
       function GetFile(const FileName: string): TStream; overload;
-
       function GetFileSize(index: integer): integer; overload;
       function GetFileSize(const FileName: string): integer; overload;
-
       procedure AddFromStream(const FileName, Path: string; F: TStream);
       procedure AddFromFile(const FileName, Path: string);
       procedure AddEmptyFile(const FileName, Path: string);
-
       procedure RemoveFile(index: integer); overload;
       procedure RemoveFile(const FileName: string); overload;
-
       procedure Extract(index: integer; const NewName: string); overload;
       procedure Extract(const FileName, NewName: string); overload;
-
    end;
 
-// GLApplicationFileIO
+// for GLApplicationFileIO unit
 function PAKCreateFileStream(const fileName: string; mode: word): TStream;
 function PAKFileStreamExists(const fileName: string): boolean;
 
@@ -168,7 +145,6 @@ begin
       Result := TFileStream.Create(FileName, fmCreate or fmShareDenyWrite);
       Exit;
    end;
-   
    Result:=nil;
 end;
 
@@ -186,7 +162,10 @@ begin
    end;
    Result := FileExists(fileName);
 end;
-// GLApplicationFileIO end
+
+//--------------------------
+// TGLVfsPAK
+//--------------------------
 
 function TGLVfsPAK.GetStreamNumber: integer;
 begin
@@ -214,19 +193,10 @@ end;
 constructor TGLVfsPAK.Create(AOwner : TComponent; const CbrMode: TZCompressedMode);
 begin
    Self.Create(AOwner);
-{$IFDEF USE_LZRW_SUPPORT}
-   FCompressor := Tlzrw1.Create(nil);
-   FCompressor.UseStream := True;
-   FCompressor.Visible := False; //DONT remove this, it will cause probs!!!!
-   FCompressionLevel := CbrMode;
-{$ELSE}
    FCompressionLevel := None;
-{$ENDIF}
    FCompressed := FCompressionLevel <> None;
 end;
 
-// TGLVfsPAK.Destroy
-//
 destructor TGLVfsPAK.Destroy;
 begin
    vAFIOCreateFileStream := nil;
@@ -237,10 +207,6 @@ begin
    FStreamList.Free;
    FFilesLists.Free;
    ActiveVfsPAK := nil;
-{$IFDEF USE_LZRW_SUPPORT}
-   FCompressor.Free;
-   FCompressor := nil; //I'm not surre if FreeAndNil function exists in Delphi version<7
-{$ENDIF}
    inherited Destroy;
 end;
 
@@ -279,16 +245,11 @@ begin
       FHeader.Signature := SIGN;
     FHeader.DirOffset := SizeOf(TPakHeader);
     FHeader.DirLength := 0;
-{$IFDEF USE_LZRW_SUPPORT}
-    if FHeader.Signature = SIGN_COMPRESSED then
-      FHeader.CbrMode := FCompressionLevel;
-{$ELSE}
     if FHeader.Signature = SIGN_COMPRESSED then begin
      FStream.Free;
      raise Exception.Create(FileName + ' - This is a compressed PAK file. This version of software does not support Compressed Pak files.');
      Exit;
     end;
-{$ENDIF}
     FStream.WriteBuffer(FHeader, SizeOf(TPakHeader));
     FStream.Position := 0;
    end;
@@ -302,23 +263,11 @@ begin
 
    //Set the compression flag property.
    FCompressed := FHeader.Signature = SIGN_COMPRESSED;
-{$IFDEF USE_LZRW_SUPPORT}
-   FCompressionLevel := FHeader.CbrMode;
-   if FCompressed then
-    if not Assigned(FCompressor) then begin
-      FCompressor := Tlzrw1.Create(nil);
-      FCompressor.UseStream := True;
-      FCompressor.Visible := False; //DONT remove this, it will cause probs!!!!
-      FCompressionLevel := FCompressionLevel;
-    end;
-{$ELSE}
    if FCompressed then begin
     FStream.Free;
     raise Exception.Create(FileName + ' - This is a compressed PAK file. This version of software does not support Compressed Pak files.');
     Exit;
    end;
-{$ENDIF}
-
    if FileCount <> 0 then
       MakeFileList;
    l:=Length(FHeaderList);
@@ -339,34 +288,13 @@ begin
 end;
 
 function TGLVfsPAK.GetFile(index: integer): TStream;
-{$IFDEF USE_LZRW_SUPPORT}var tempStream: TMemoryStream;{$ENDIF}
 begin
    FStream.Seek(FHeader.DirOffset + SizeOf(TFileSection) * index, soFromBeginning);
    FStream.Read(Dir, SizeOf(TFileSection));
    FStream.Seek(Dir.FilePos, soFromBeginning);
-{$IFDEF USE_LZRW_SUPPORT}
-   if FHeader.Signature = SIGN_COMPRESSED then begin //Compressed stream.
-     tempStream := TMemoryStream.Create;
-     tempStream.CopyFrom(FStream, Dir.FileLength);
-     tempStream.Position := 0;
-     Result := TMemoryStream.Create;
-     FCompressor.InputStream := tempStream;
-     FCompressor.OutputStream := Result;
-     FCompressor.Decompress;
-     FHeader.CbrMode := TZCompressedMode(FCompressor.CompressMode);
-     Result.Position := 0;
-     tempStream.Free;
-   end
-   else begin //Uncompressed stream.
-     Result := TMemoryStream.Create;
-     Result.CopyFrom(FStream, Dir.FileLength);
-     Result.Position := 0;
-   end;
-{$ELSE}
    Result := TMemoryStream.Create;
    Result.CopyFrom(FStream, Dir.FileLength);
    Result.Position := 0;
-{$ENDIF}
 end;
 
 function TGLVfsPAK.FileExists(const FileName: string): boolean;
@@ -398,7 +326,7 @@ end;
 {$WARNINGS OFF}
 procedure TGLVfsPAK.AddFromStream(const FileName, Path: string; F: TStream);
 var
-   Temp{$IFDEF USE_LZRW_SUPPORT}, compressed{$ENDIF}: TMemoryStream;
+   Temp: TMemoryStream;
 begin
    FStream.Position := FHeader.DirOffset;
    if FHeader.DirLength > 0 then
@@ -410,26 +338,8 @@ begin
    end;
    Dir.FilePos    := FHeader.DirOffset;
 
-{$IFDEF USE_LZRW_SUPPORT}
-   if (FHeader.Signature = SIGN_COMPRESSED) and (FCompressionLevel <> None)then begin
-     compressed := TMemoryStream.Create;
-     FCompressor.InputStream := F;
-     FCompressor.OutputStream := compressed;
-     FCompressor.CompressMode := TCompressMode(FCompressionLevel);
-     Dir.FileLength := FCompressor.Compress;
-     FStream.CopyFrom(compressed, 0);
-     Dir.FileLength := compressed.Size;
-     compressed.Free;
-   end
-   else begin
-     Dir.FileLength := F.Size;
-     FStream.CopyFrom(F, 0);
-   end;
-{$ELSE}
    Dir.FileLength := F.Size;
    FStream.CopyFrom(F, 0);
-{$ENDIF}
-
    FHeader.DirOffset := FStream.Position;
    if FHeader.DirLength > 0 then
    begin

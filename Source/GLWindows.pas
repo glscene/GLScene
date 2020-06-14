@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  OpenGL windows management classes and structures
-*)
 
 unit GLWindows;
+
+(* OpenGL windows management classes and structures *)
 
 interface
 

@@ -18,7 +18,7 @@ uses
   System.Types,
   GLStrings,
   GLPersistentClasses
-  {$IFDEF DEBUG_XCOLLECTION}, TypInfo {$ENDIF};
+  {$IFDEF DEBUG_XCOLLECTION}, System.TypInfo {$ENDIF};
 
 type
   TXCollection = class;

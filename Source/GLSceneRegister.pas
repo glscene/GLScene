@@ -1,12 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLSceneRegister;
+
 (*
   Registration unit for GLScene library components, property editors and
   IDE experts.
 *)
-
-unit GLSceneRegister;
 
 interface
 

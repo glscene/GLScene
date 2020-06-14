@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Handles all texture stuff.
-}
+
 unit GLTexture;
+
+(* Handles all texture stuff *)
 
 interface
 

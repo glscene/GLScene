@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   CUDA routines implementation
-*)
+
 unit GLSCUDA;
+
+(* CUDA routines implementation *)
 
 interface
 
@@ -17,7 +17,6 @@ uses
 
   GLPersistentClasses,
   GLBaseClasses,
-  GLCrossPlatform,
   GLContext,
   GLVectorGeometry,
   GLVectorTypes,

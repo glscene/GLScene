@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Routines to interact with the screen/desktop.
-}
 
 unit GLScreen;
+
+(* Routines to interact with the screen/desktop *)
 
 interface
 

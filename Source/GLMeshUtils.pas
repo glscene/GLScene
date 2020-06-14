@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   General utilities for mesh manipulations.
-}
+
 unit GLMeshUtils;
+
+(* General utilities for mesh manipulations *)
 
 interface
 

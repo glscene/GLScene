@@ -1,10 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Stores contextual info useful during rendering methods. 
-}
 unit GLRenderContextInfo;
+
+(* Stores contextual info useful during rendering methods *)
 
 interface
 
@@ -26,18 +25,18 @@ type
     cy: Longint;
   end;
 
-  { Determines if objects are sorted, and how. Sorting is done level by level (and not for all entities), values are :
+  (* Determines if objects are sorted, and how. Sorting is done level by level (and not for all entities), values are :
    osInherited : use inherited sorting mode, defaults to osRenderFarthestFirst
    osNone : do not sort objects.
    osRenderFarthestFirst : render objects whose Position is the farthest from the camera first.
    osRenderBlendedLast : opaque objects are not sorted and rendered first, blended ones are rendered afterwards and depth sorted.
-   osRenderNearestFirst : render objects whose Position is the nearest to the camera first.  }
+   osRenderNearestFirst : render objects whose Position is the nearest to the camera first.  *)
   TGLObjectsSorting = (osInherited, osNone,
     osRenderFarthestFirst, osRenderBlendedLast,
     osRenderNearestFirst);
 
-  (*Determines the visibility culling mode.
-   Culling is done level by level, allowed values are:
+  (* Determines the visibility culling mode.
+     Culling is done level by level, allowed values are:
       vcInherited : use inherited culling value, if selected for the root level, defaults to vcNone
       vcNone : no visibility culling is performed
       vcObjectBased : culling is done on a per-object basis, each object may
@@ -61,7 +60,7 @@ type
     frustum: TFrustum;
   end;
 
-  {Stores contextual info useful during rendering methods. }
+  // Stores contextual info useful during rendering methods.
   TGLRenderContextInfo = record
     scene: TObject; //usually TGLScene
     buffer: TObject; //usually TGLSceneBuffer

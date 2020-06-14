@@ -1,9 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  Tools for managing an application-side cache of OpenGL state.
-*)
+
+unit GLState;
+
+(*  Tools for managing an application-side cache of OpenGL state. *)
 
 (*
  TODO: Proper client-side pushing + popping of state, in OpenGL 3+ contexts,
@@ -19,8 +20,6 @@
  DONE: remove stTexture1D, 2D, etc from TGLState if possible, since they are
  per texture-unit + also deprecated in OpenGL 3+
  *)
-
-unit GLState;
 
 interface
 

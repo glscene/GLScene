@@ -1,13 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLSLanguage;
+
+(*
   Language created to localize your application.
   In Delphi, the text is encoded using Ansi cp1251 and can not be encoded \ decoding.
   In Lazarus has the ability to upload text from any encoding.
-}
-
-unit GLSLanguage;
+*)
 
 interface
 
@@ -27,8 +28,8 @@ type
 
   TGLLanguageEntryArray = array of TGLLanguageEntry;
 
-  { Class TGLLanguage is used only for downloading and translation,
-    as in the final product it's no need for the text processing}
+  (* Class TGLLanguage is used only for downloading and translation,
+    as in the final product it's no need for the text processing *)
   TGLLanguage = class
   private
     FCurrentLanguageFile: String;

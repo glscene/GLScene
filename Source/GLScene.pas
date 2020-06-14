@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   Base classes and structures
-*)
+
 unit GLScene;
+
+(* Base classes and structures *)
 
 interface
 
@@ -19,9 +19,9 @@ uses
   Vcl.Graphics,
   Vcl.Controls,
 
+  OpenGLTokens,
   XOpenGL,
   XCollection,
-  OpenGLTokens,
   GLStrings,
   GLContext,
   GLVectorGeometry,
@@ -55,8 +55,8 @@ type
 
 const
   cDefaultProxyOptions = [pooEffects, pooObjects, pooTransformation];
-  GLSCENE_REVISION = '$Revision: 0506$';
-  GLSCENE_VERSION = '1.9 %s';
+  GLSCENE_REVISION = '$Revision: 0707$';
+  GLSCENE_VERSION = '2020 %s';
 
 type
 

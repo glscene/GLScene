@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLPolynomials;
+
+(*
   Utility functions for manipulationg and solving polynomials.
 
   Direct solving is supported for polynoms up to the 4th degree.
@@ -15,9 +18,7 @@
   I also made some changes for certain limit cases that (seemingly) weren't
   properly handled, these are marked by comments in the code.
   Note: in progress - limited precision.
-
-}
-unit GLPolynomials;
+*)
 
 interface
 
@@ -33,29 +34,29 @@ type
 function EvalPolynom(const poly: TDoubleArray; const x: Double): Double;
 // Calculates the polynom's derivative
 function DerivatedPolynom(const poly: TDoubleArray): TDoubleArray;
-{ Finds a root between min and max with a precision of epsilon.
-  The evaluation of min/max must be of opposit sign }
+(* Finds a root between min and max with a precision of epsilon.
+  The evaluation of min/max must be of opposit sign *)
 function FindRoot(const poly: TDoubleArray; min, max, epsilon: Double): Double;
-{ Finds the minimum positive coef in the array in aMin.
-  Returns true if such an item was found. }
+(* Finds the minimum positive coef in the array in aMin.
+  Returns true if such an item was found. *)
 function MinPositiveCoef(const coefs: TDoubleArray; var aMin: Double): Boolean;
 
-{ Calculates the cube root of its parameter. }
+// Calculates the cube root of its parameter.
 function cbrt(const x: Double): Double;
 
-{ Computes the real roots of a real polynomial of the 2nd degree.
+(* Computes the real roots of a real polynomial of the 2nd degree.
   The polynomial is of the form:
-  A(0) + A(1)*Z + A(2)*Z**2 }
+  A(0) + A(1)*Z + A(2)*Z**2 *)
 function SolveQuadric(const c: PDoubleArray): TDoubleArray;
 
-{ Computes the real roots of a real polynomial of the 3rd degree.
+(* Computes the real roots of a real polynomial of the 3rd degree.
   The polynomial is of the form:
-  A(0) + A(1)*Z + A(2)*Z**2 + A(3)*Z**3 }
+  A(0) + A(1)*Z + A(2)*Z**2 + A(3)*Z**3 *)
 function SolveCubic(const c: PDoubleArray): TDoubleArray;
 
-{ Computes the real roots of a real polynomial of the 4th degree.
+(* Computes the real roots of a real polynomial of the 4th degree.
   The polynomial is of the form:
-  A(0) + A(1)*Z + ... + A(4)*Z**4 }
+  A(0) + A(1)*Z + ... + A(4)*Z**4 *)
 function SolveQuartic(const c: PDoubleArray): TDoubleArray;
 
 // --------------------------------------------------------------

@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   GLScene RGBE
-*)
+
 unit GLSRGBE;
+
+(* GLScene RGBE utils *)
 
 interface
 
@@ -14,7 +14,7 @@ uses
   System.Classes,
   System.SysUtils,
   System.Math,
-  
+
   GLVectorTypes,
   GLVectorGeometry;
 

@@ -1,12 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLFileOCT;
+
+(*
    Support-code to load OCT Files into TGLFreeForm-Components in GLScene.
    (OCT being the format output from FSRad, http://www.fluidstudios.com/fsrad.html).
-
-}
-unit GLFileOCT;
+*)
 
 interface
 

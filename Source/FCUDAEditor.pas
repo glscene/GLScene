@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-    Editor of TGLSCUDA. 
-}
+
 unit FCUDAEditor;
+
+(* Editor of TGLSCUDA *)
 
 interface
 
@@ -93,7 +93,6 @@ begin
     vGLSCUDAEditorForm := nil;
   end;
 end;
-
 
 function ReadRegistryInteger(reg: TRegistry; const name: string;
   defaultValue: Integer): Integer;
