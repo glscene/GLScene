@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-      Loading methods for MD2 file format
-}
+
 unit FileMD2;
+
+(* Loading methods for MD2 file format *)
 
 interface
 

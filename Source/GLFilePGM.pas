@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   PGM image loader
-}
+
 unit GLFilePGM;
+
+(* PGM image loader *)
 
 {$I GLScene.inc}
 
@@ -20,8 +20,8 @@ uses
   GLTextureFormat,
   GLStrings,
   GLApplicationFileIO,
-  //CUDA
-  GLSCUDAUtility;
+
+  GLS.CUDAUtility;
 
 
 type
@@ -181,7 +181,6 @@ end;
 initialization
 //------------------------------------------------
 
-{ Register this Fileformat-Handler with GLScene }
 RegisterRasterFormat('pgm', 'Portable Graymap', TGLPGMImage);
 
 end.

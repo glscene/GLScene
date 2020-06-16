@@ -125,7 +125,7 @@
         <DCCReference Include="..\..\Source\FCUDAEditor.pas">
             <Form>GLSCUDAEditorForm</Form>
         </DCCReference>
-        <DCCReference Include="..\..\Source\GLSParallelRegister.pas"/>
+        <DCCReference Include="..\..\Source\GLS.ParallelRegister.pas"/>
         <RcCompile Include="..\..\Resources\GLSceneParallel.rc">
             <Form>GLSceneParallel.res</Form>
         </RcCompile>

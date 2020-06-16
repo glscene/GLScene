@@ -1,18 +1,20 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   A scene object encapsulating the OpenGL feedback buffer. 
+
+unit GLFeedback;
+
+(*
+   A scene object encapsulating the OpenGL feedback buffer.
    This object, when Active, will render it's children using
    the GL_FEEDBACK render mode. This will render the children
-   into the feedback Buffer rather than into the frame buffer. 
+   into the feedback Buffer rather than into the frame buffer.
 
    Mesh data can be extracted from the buffer using the
    BuildMeshFromBuffer procedure. For custom parsing of the
    buffer use the Buffer SingleList. The Buffered property
-   will indicate if there is valid data in the buffer. 
-}
-unit GLFeedback;
+   will indicate if there is valid data in the buffer.
+*)
 
 interface
 
@@ -39,7 +41,7 @@ uses
 type
   TglFeedbackMode = (fm2D, fm3D, fm3DColor, fm3DColorTexture, fm4DColorTexture);
 
-  {An object encapsulating the OpenGL feedback rendering mode. }
+  // An object encapsulating the OpenGL feedback rendering mode.
   TglFeedback = class(TGLBaseSceneObject)
   private
     FActive: Boolean;
@@ -56,8 +58,8 @@ type
     destructor Destroy; override;
     procedure DoRender(var ARci: TGLRenderContextInfo;
       ARenderSelf, ARenderChildren: Boolean); override;
-    {Parse the the feedback buffer for polygon data and build
-       a mesh into the assigned lists. }
+    (* Parse the the feedback buffer for polygon data and build
+       a mesh into the assigned lists. *)
     procedure BuildMeshFromBuffer(
       Vertices: TAffineVectorList = nil;
       Normals: TAffineVectorList = nil;
@@ -68,8 +70,8 @@ type
     property Buffered: Boolean read FBuffered;
     // The feedback buffer
     property Buffer: TSingleList read FBuffer;
-    {Vertex positions in the buffer needs to be scaled by
-       CorrectionScaling to get correct coordinates. }
+    (* Vertex positions in the buffer needs to be scaled by
+       CorrectionScaling to get correct coordinates. *)
     property CorrectionScaling: Single read FCorrectionScaling;
   published
     // Maximum size allocated for the feedback buffer
@@ -339,4 +341,5 @@ initialization
   RegisterClasses([TglFeedback]);
 
 end.
+
 

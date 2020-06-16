@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  Base classes
-*)
 
 unit GLBaseClasses;
+
+(* Base classes *)
 
 interface
 
@@ -13,9 +12,9 @@ uses
   System.Classes,
   System.SysUtils,
 
+  GLCrossPlatform,
   GLStrings,
-  GLPersistentClasses,
-  GLCrossPlatform;
+  GLPersistentClasses;
 
 type
 
@@ -63,7 +62,7 @@ type
     procedure DoProgress(const progressTime: TGLProgressTimes); virtual;
   end;
 
-  { A base class describing the "update" interface.  }
+  // A base class describing the "update" interface.  
   TGLUpdateAbleComponent = class(TGLCadenceAbleComponent, IGLNotifyAble)
   public
     procedure NotifyChange(Sender: TObject); virtual;

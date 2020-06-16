@@ -1,23 +1,24 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{  
-   Fast Fourier Transform for CUDA  
-}
 
-unit GLSCUDAFFTPlan;
+unit GLS.CUDAFFTPlan;
+
+(*  Fast Fourier Transform for CUDA *)
 
 interface
 
 {$I GLScene.inc}
 
 uses
-  System.Classes, 
+  System.Classes,
   System.SysUtils,
-  GLSCUDAContext,
-  GLSCUDA,
-  GLSCUDAApi,
-  GLSCUDAFourierTransform,
+
+  GLS.CUDAContext,
+  GLS.CUDA,
+  GLS.CUDAApi,
+  GLS.CUDAFourierTransform,
+
   GLStrings,
   GLSLog;
 

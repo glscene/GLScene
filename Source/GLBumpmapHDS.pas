@@ -1,12 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLBumpmapHDS;
+
+(*
   Implements a HDS that automatically generates an elevation bumpmap.
   The object-space elevation bumpmap can be used for dynamic terrain lighting.
   A bumpmap texture is generated for each terrain tile, and placed into a TGLMaterialLibrary.
-}
-unit GLBumpmapHDS;
+*)
 
 interface
 
@@ -33,9 +35,9 @@ type
   TNewTilePreparedEvent = procedure(Sender: TGLBumpmapHDS;
     heightData: TGLHeightData; normalMapMaterial: TGLLibMaterial) of object;
 
-  {  An Height Data Source that generates elevation bumpmaps automatically. 
+  (*  An Height Data Source that generates elevation bumpmaps automatically.
     The HDS must be connected to another HDS, which will provide the elevation
-    data, and to a MaterialLibrary where bumpmaps will be placed. }
+    data, and to a MaterialLibrary where bumpmaps will be placed. *)
   TGLBumpmapHDS = class(TGLHeightDataSourceFilter)
   private
     // FElevationHDS : TGLHeightDataSource;
@@ -73,16 +75,16 @@ type
       write FOnNewTilePrepared;
     property BumpScale: Single read FBumpScale write SetBumpScale
       stored StoreBumpScale;
-    { Specifies the amount of subsampling for the bump texture. 
+    (* Specifies the amount of subsampling for the bump texture.
       This value must be a power of 2, and is used to divide the height
       tile resolution to determine the bump texture resolution (f.i.
       a tile size of 128 with a subsampling of 4 will result in textures
       of a resolution of 32x32. SubSampling won't allow texture resolution
-      to get below 16x16 (minimal bumpmap resolution). }
+      to get below 16x16 (minimal bumpmap resolution). *)
     property SubSampling: Integer read FSubSampling write SetSubSampling
       default 1;
     property MaxPoolSize;
-    {  If MaxTextures>0 then the Bumpmap library is trimmed down to size whenever
+    (* If MaxTextures>0 then the Bumpmap library is trimmed down to size whenever
       the texture count is larger than MaxTextures. The oldest, unused texture is trimmed first.
       However, if you used TGLHeightData.MaterialName, instead of TGLHeightData.LibMaterial,
       then the TGLHeightData component does not register the texture as being used.
@@ -90,7 +92,7 @@ type
       If MaxTextures=0 or if treads(GLAsyncHDS) are used, then the texture cache
       is NOT trimmed automatically.
       You will have to manually trim the cache from the main thread, by
-      calling 'TrimTextureCache'. (GLAsyncHDS.OnIdle is a good place.) }
+      calling 'TrimTextureCache'. (GLAsyncHDS.OnIdle is a good place.) *)
     property MaxTextures: Integer read FMaxTextures write FMaxTextures;
     property OnSourceDataFetched;
   end;
@@ -322,7 +324,6 @@ end;
 initialization
 // ------------------------------------------------------------------
 
-// class registrations
 RegisterClass(TGLBumpmapHDS);
 
 end.

@@ -2,7 +2,7 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLSCUDA;
+unit GLS.CUDA;
 
 (* CUDA routines implementation *)
 
@@ -24,13 +24,15 @@ uses
   GLGraphics,
   GLStrings,
   GLUtils,
-  GLSCUDAApi,
-  GLSCUDARunTime,
-  GLSCUDAParser,
-  GLSCUDAFourierTransform,
-  GLSCUDACompiler,
-  GLSCUDAContext,
-  GLSCUDADataAccess
+  GLCrossPlatform,
+
+  GLS.CUDAApi,
+  GLS.CUDARunTime,
+  GLS.CUDAParser,
+  GLS.CUDAFourierTransform,
+  GLS.CUDACompiler,
+  GLS.CUDAContext,
+  GLS.CUDADataAccess
   {$IFDEF USE_LOGGING},GLSLog;{$ELSE};{$ENDIF}
 
 type

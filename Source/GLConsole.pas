@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLConsole;
+
+(*
    The console is a popdown window that appears on a game for text output/input.
 
    What is different compared to the original component?
@@ -32,9 +35,7 @@
       Blinking cursor, "Delete" key support
       Allow long lines to continue on the next line
       May be SceneViewer should be a TControl to support the FullScreenViewer...
-}
-
-unit GLConsole;
+*)
 
 interface
 

@@ -1,12 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLDynamicTexture;
+
 (*
   Adds a dynamic texture image, which allows for easy updating of
   texture data.
 *)
-
-unit GLDynamicTexture;
 
 interface
 

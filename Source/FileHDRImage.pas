@@ -1,12 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit FileHDRImage;
+
 (*
     Good for preview picture in OpenDialog,
     so you may include both HDRImage (preview) and GLFileHDR (loading)
 *)
 
-unit FileHDRImage;
 
 interface
 

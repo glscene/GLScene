@@ -2,7 +2,7 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLSCUDADataAccess;
+unit GLS.CUDADataAccess;
 
 (* CUDA data access implementation *)
 
@@ -12,9 +12,10 @@ interface
 
 uses
   System.SysUtils,
-  GLStrings,
   GLUtils,
-  GLSLog;
+  GLSLog,
+  GLStrings,
+  GLCrossPlatform;
 
 type
 

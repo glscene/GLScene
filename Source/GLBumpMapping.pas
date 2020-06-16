@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Some useful methods for setting up bump maps.
-}
+
 unit GLBumpMapping;
+
+(*  Some useful methods for setting up bump maps. *)
 
 interface
 

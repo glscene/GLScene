@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  Component to make it easy to record GLScene frames into an AVI file 
-*)
+
 unit GLAVIRecorder;
+
+(* Component to make it easy to record GLScene frames into an AVI file *)
 
 interface
 

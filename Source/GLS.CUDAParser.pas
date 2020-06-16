@@ -1,18 +1,20 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Helper unit for parsing CU modules and get information about. 
-   kernel's functions, textures, shared and constants memory. 
-}
-unit GLSCUDAParser;
+
+unit GLS.CUDAParser;
+
+(*
+   Helper unit for parsing CU modules and get information about.
+   kernel's functions, textures, shared and constants memory.
+*)
 
 interface
 
 uses
   System.Classes,
   System.SysUtils,
-  GLSCUDARunTime;
+  GLS.CUDARunTime;
 
 type
 

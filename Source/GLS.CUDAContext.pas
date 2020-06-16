@@ -1,12 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{  
-   CUDA context
-   
-}
 
-unit GLSCUDAContext;
+unit GLS.CUDAContext;
+
+(* CUDA context *)
 
 interface
 
@@ -20,8 +18,9 @@ uses
   GLContext,
   GLSGenerics,
   GLSLog,
-  GLSCUDARunTime,
-  GLSCUDAApi;
+
+  GLS.CUDARunTime,
+  GLS.CUDAApi;
 
 type
 
@@ -160,7 +159,7 @@ type
     class function GetThreadStack: TCUDAContextList;
     class function GetContext(i: Integer): TCUDAContext;
   public
-    {  Managment. }
+    //  Management
     class procedure Init;
     class procedure Done;
     class procedure CreateContext(aContext: TCUDAContext);
@@ -169,19 +168,19 @@ type
     class procedure DestroyContextOf(ADevice: TCUDADevice);
     class procedure PushContext(aContext: TCUDAContext);
     class function PopContext: TCUDAContext;
-    {  Fill unused device list to show its in property. }
+    //  Fill unused device list to show its in property.
     class procedure FillUnusedDeviceList(var AList: TStringList);
-    {  Return device by name. }
+    //  Return device by name.
     class function GetDeviceByName(const AName: string): TCUDADevice;
-    {  Returns the number of CUDA compatiable devices. }
+    //  Returns the number of CUDA compatiable devices.
     class function DeviceCount: Integer;
-    {  Access to devices list. }
+    //  Access to devices list.
     property Devices[i: Integer]: TCUDADevice read GetDevice;
-    {  Returns a device that has a maximum Giga flops. }
+    //  Returns a device that has a maximum Giga flops.
     class function GetMaxGflopsDevice: TCUDADevice;
-    {  Returns the number of TCUDAcontext object. }
+    //  Returns the number of TCUDAcontext object.
     class function ContextCount: Integer;
-    {  Return CUDA context of current thread. }
+    //  Return CUDA context of current thread.
     class function GetCurrentThreadContext: TCUDAContext;
     {  Access to contexts list. }
     property Contexts[i: Integer]: TCUDAContext read GetContext;

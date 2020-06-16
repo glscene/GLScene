@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Applies a blur effect over the viewport.
-}
+
 unit GLBlur;
+
+(* Applies a blur effect over the viewport *)
 
 interface
 

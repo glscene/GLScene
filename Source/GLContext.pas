@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  Prototypes and base implementation of TGLContext.
-*)
+
 unit GLContext;
+
+(* Prototypes and base implementation of TGLContext *)
 
 interface
 
@@ -1009,7 +1009,7 @@ begin
   if not Assigned(Result) then
   begin
 {$IFDEF USE_LOGGING}
-    GLSLogger.LogError(strNoActiveRC);
+    LogError(strNoActiveRC);
 {$ENDIF}
     Abort;
   end;
@@ -1902,7 +1902,9 @@ begin
   Result := False;
 end;
 
-{ TGLVirtualHandleTransf }
+// ------------------
+// TGLVirtualHandleTransf
+// ------------------
 
 class function TGLVirtualHandleTransf.Transferable: Boolean;
 begin
@@ -1967,7 +1969,7 @@ begin
   if not vContextActivationFailureOccurred then
   begin
     gl.GetError;
-    { Unbind identifier from all image selectors. }
+    // Unbind identifier from all image selectors.
     if gl.ARB_multitexture then
     begin
       with GetContext.GLStates do

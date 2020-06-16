@@ -1,6 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit FileLWObjects;
+
 (*-------------------------------------------------------------------------------
  Unit Name:  Lightwave
  Author:     Brian Johns brianjohns1@hotmail.com
@@ -14,7 +17,6 @@
              Lightwave3D is a registered trademark of Newtek Incorporated.
 
 -------------------------------------------------------------------------------*)
-unit FileLWObjects;
 
 interface
 

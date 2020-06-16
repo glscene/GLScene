@@ -40,6 +40,6 @@ requires
 
 contains
   FCUDAEditor in '..\..\Source\FCUDAEditor.pas' {GLSCUDAEditorForm},
-  GLSParallelRegister in '..\..\Source\GLSParallelRegister.pas';
+  GLS.ParallelRegister in '..\..\Source\GLS.ParallelRegister.pas';
 
 end.

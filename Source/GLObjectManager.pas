@@ -1,6 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLObjectManager;
+
 (*
    The object manager is used for registering classes together with a category,
    description + icon, so that they can be displayed visually.  This can then
@@ -10,8 +13,6 @@
    TODO: add some notification code, so that when a scene object is registered/
    unregistered, any editor that is using the object manager can be notified.
 *)
-
-unit GLObjectManager;
 
 interface
 

@@ -4,7 +4,7 @@
 {
    Registration unit for GLScene GPU Computing package. 
 }
-unit GLSParallelRegister;
+unit GLS.ParallelRegister;
 
 interface
 
@@ -66,13 +66,13 @@ implementation
 //--------------------------------------------------------------------
 
 uses
-  GLSCUDARunTime,
-  GLSCUDAContext,
-  GLSCUDA,
-  GLSCUDACompiler,
-  GLSCUDAFFTPlan,
-  GLSCUDAGraphics,
-  GLSCUDAParser,
+  GLS.CUDARunTime,
+  GLS.CUDAContext,
+  GLS.CUDA,
+  GLS.CUDACompiler,
+  GLS.CUDAFFTPlan,
+  GLS.CUDAGraphics,
+  GLS.CUDAParser,
   FCUDAEditor;
 
 function FindCuFile(var AModuleName: string): Boolean;

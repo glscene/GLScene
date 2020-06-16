@@ -29,9 +29,9 @@ uses
   DesignIntf,
   VCLEditors,
   GLStrings,
-  GLSCUDA, 
-  GLSCUDAFFTPlan, 
-  GLSCUDAGraphics;
+  GLS.CUDA,
+  GLS.CUDAFFTPlan,
+  GLS.CUDAGraphics;
 
 type
   TGLSCUDAEditorForm = class(TForm)

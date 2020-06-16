@@ -1,17 +1,19 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLS.CUDAUtility;
+
+(*
     GLScene CUDA Utility
     Wraper of cutil.
-}
-unit GLSCUDAUtility;
+*)
 
 interface
 
 {$IFDEF MSWINDOWS}
 uses
-  Windows;
+  Winapi.Windows;
 {$ENDIF}
 
 
@@ -24,68 +26,68 @@ const
 
 var
   cutFindFilePath: function(const filename: PAnsiChar; const executablePath: PAnsiChar): PAnsiChar;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutLoadPGMf: function(const filename: PAnsiChar; var data: System.PSingle; var w: Integer; var h: Integer): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutSavePGMf: function(const filename: PAnsiChar; data: System.PSingle; w: Integer; h: Integer): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutLoadPGMub: function(const filename: PAnsiChar; var data: PByte; var w: Integer; var h: Integer): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutLoadPPMub: function(const filename: PAnsiChar; var data: PByte; var w: Integer; var h: Integer): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutLoadPPM4ub: function(const filename: PAnsiChar; var data: PByte; var w: Integer; var h: Integer): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutLoadPGMi: function(const filename: PAnsiChar; var data: PInteger; var w: Integer; var h: Integer): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutLoadPGMs: function(const filename: PAnsiChar; var data: PWord; var w: Integer; var h: Integer): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutSavePGMub: function(const filename: PAnsiChar; data: PByte; w: Integer; h: Integer): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutSavePPMub: function(const filename: PAnsiChar; data: PByte; w: Integer; h: Integer): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutSavePPM4ub: function(const filename: PAnsiChar; data: PByte; w: Integer; h: Integer): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutSavePGMi: function(const filename: PAnsiChar; data: PInteger; w: Integer; h: Integer): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutSavePGMs: function(const filename: PAnsiChar; data: PWord; w: Integer; h: Integer): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutComparef: function(const reference: PSingle; const data: PSingle; const len: Cardinal): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutComparei: function(const reference: PInteger; const data: PInteger; const len: Cardinal): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutCompareuit: function(const reference: PInteger; const data: PInteger; const len: Cardinal; const epsilon: Single;
     const threshold: Single): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutCompareub: function(const reference: PByte; const data: PByte; const len: Cardinal): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutCompareubt: function(const reference: PByte; const data: PByte; const len: Cardinal; const epsilon: Single;
     const threshold: Single): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutCompareube: function(const reference: PByte; const data: PByte; const len: Cardinal; const epsilon: Single): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutComparefe: function(const reference: PSingle; const data: PSingle; const len: Cardinal; const epsilon: Single): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutComparefet: function(const reference: PSingle; const data: PSingle; const len: Cardinal; const epsilon: Single;
     const threshold: Single): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutCompareL2fe: function(const reference: PSingle; const data: PSingle; const len: Cardinal; const epsilon: Single): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutCreateTimer: function(var name: Cardinal): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutStartTimer: function(const name: Cardinal): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutStopTimer: function(const name: Cardinal): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutResetTimer: function(const name: Cardinal): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutDeleteTimer: function(const name: Cardinal): Boolean;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutGetTimerValue: function(const name: Cardinal): Single;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutGetAverageTimerValue: function(const name: Cardinal): Single;
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutFree: procedure(ptr: Pointer);
-{$IFDEF CUDA_STDCALL}stdcall; {$ELSE}cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
 function InitCUTIL: Boolean;
 procedure CloseCUTIL;
 function InitCUTILFromLibrary(const LibName: WideString): Boolean;
@@ -98,15 +100,12 @@ implementation
 const
   INVALID_MODULEHANDLE = 0;
 
-  // ************** Windows specific ********************
 {$IFDEF MSWINDOWS}
-
+// ************** Windows specific ********************
 var
   CUTILHandle: HINST = INVALID_MODULEHANDLE;
-{$ENDIF}
-  // ************** UNIX specific ********************
-{$IFDEF UNIX}
-
+{$ELSE}
+// ************** UNIX specific ********************
 var
   CUTILHandle: TLibHandle = INVALID_MODULEHANDLE;
 {$ENDIF}

@@ -330,7 +330,6 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     procedure Close;
-
     procedure NotifyShow; override;
     procedure NotifyHide; override;
     function MouseUp(Sender: TObject; Button: TMouseButton; Shift:
@@ -590,10 +589,8 @@ implementation
 //--------------------------------------------------------------------------
 
 function UnpressGroup(CurrentObject: TGLBaseSceneObject; AGroupID: Integer): Boolean;
-
 var
   XC: Integer;
-
 begin
   Result := False;
   if CurrentObject is TGLButton then
@@ -631,7 +628,6 @@ begin
 end;
 
 procedure TGLBaseComponent.SetGUIRedraw(value: Boolean);
-
 begin
   FGUIRedraw := Value;
   if Value then
@@ -647,7 +643,6 @@ begin
 end;
 
 procedure TGLBaseComponent.BlockRender;
-
 begin
   while BlockedCount <> 0 do
     Sleep(1);
@@ -657,14 +652,12 @@ begin
 end;
 
 procedure TGLBaseComponent.UnBlockRender;
-
 begin
   BlockRendering := False;
 end;
 
 procedure TGLBaseComponent.RenderHeader(var rci: TGLRenderContextInfo; renderSelf,
   renderChildren: Boolean);
-
 var
   f: Single;
 begin
@@ -692,7 +685,6 @@ begin
 end;
 
 procedure TGLBaseComponent.RenderFooter(var rci: TGLRenderContextInfo; renderSelf, renderChildren: Boolean);
-
 begin
   gl.PopMatrix;
   gl.MatrixMode(GL_MODELVIEW);
@@ -701,7 +693,6 @@ begin
 end;
 
 procedure TGLBaseComponent.SetGuiLayout(NewGui: TGLGuiLayout);
-
 begin
   if FGuiLayout <> NewGui then
   begin
@@ -718,7 +709,6 @@ begin
     // in effect this code have been moved...
     if Assigned(FGuiLayout) then
       FGuiLayout.AddGuiComponent(Self);
-
     NotifyChange(Self);
   end;
 end;
@@ -740,7 +730,6 @@ begin
 end;
 
 procedure TGLBaseComponent.Notification(AComponent: TComponent; Operation: TOperation);
-
 begin
   if Operation = opRemove then
   begin
@@ -871,7 +860,6 @@ begin
 end;
 
 constructor TGLBaseComponent.Create(AOwner: TComponent);
-
 begin
   inherited;
   FGuiLayout := nil;
@@ -887,7 +875,6 @@ begin
 end;
 
 destructor TGLBaseComponent.Destroy;
-
 begin
   GuiDestroying := True;
   while RenderingCount > 0 do
@@ -898,7 +885,6 @@ begin
 end;
 
 procedure TGLBaseComponent.NotifyChange(Sender: TObject);
-
 begin
   if Sender = FGuiLayout then
   begin
@@ -928,7 +914,6 @@ begin
 end;
 
 procedure TGLBaseComponent.MoveGUI(XRel, YRel: Single);
-
 var
   XC: Integer;
 
@@ -969,7 +954,6 @@ begin
 end;
 
 procedure TGLBaseComponent.DoChanges;
-
 var
   XC: Integer;
 
@@ -1007,7 +991,6 @@ end;
 
 procedure TGLBaseComponent.InternalRender(var rci: TGLRenderContextInfo;
   renderSelf, renderChildren: Boolean);
-
 begin
   if Assigned(FGuiComponent) then
   begin
@@ -1024,7 +1007,6 @@ end;
 
 procedure TGLBaseComponent.DoRender(var rci: TGLRenderContextInfo; renderSelf,
   renderChildren: Boolean);
-
 var
   B: Boolean;
 begin
@@ -1037,19 +1019,15 @@ begin
       sleep(1);
     Dec(BlockedCount);
   end;
-
   if not GuiDestroying then
     if RenderSelf then
       if FGuiLayout <> nil then
       begin
         RenderHeader(rci, renderSelf, renderChildren);
-
         InternalRender(rci, RenderSelf, RenderChildren);
-
         RenderFooter(rci, renderSelf, renderChildren);
         FReBuildGui := False;
       end;
-
   if renderChildren then
     if Count > 0 then
       Self.RenderChildren(0, Count - 1, rci);
@@ -1058,7 +1036,6 @@ end;
 
 procedure TGLBaseControl.InternalMouseDown(Shift: TShiftState; Button:
   TMouseButton; X, Y: Integer);
-
 begin
   if Assigned(FOnMouseDown) then
     FOnMouseDown(Self, Button, Shift, X, Y);
@@ -1066,27 +1043,23 @@ end;
 
 procedure TGLBaseControl.InternalMouseUp(Shift: TShiftState; Button:
   TMouseButton; X, Y: Integer);
-
 begin
   if Assigned(FOnMouseUp) then
     FOnMouseUp(Self, Button, Shift, X, Y);
 end;
 
 procedure TGLBaseControl.InternalMouseMove(Shift: TShiftState; X, Y: Integer);
-
 begin
   if Assigned(FOnMouseMove) then
     FOnMouseMove(Self, Shift, X, Y);
 end;
 
 procedure TGLBaseControl.SetActiveControl(NewControl: TGLBaseControl);
-
 begin
   FActiveControl := NewControl;
 end;
 
 procedure TGLBaseControl.SetFocusedControl(NewControl: TGLFocusControl);
-
 begin
   if NewControl <> FFocusedControl then
   begin
@@ -1099,14 +1072,11 @@ begin
 end;
 
 function TGLBaseControl.FindFirstGui: TGLBaseControl;
-
 var
   tmpFirst: TGLBaseControl;
   TmpRoot: TGLBaseSceneObject;
-
 begin
   tmpFirst := Self;
-
   TmpRoot := Self;
   while (TmpRoot is TGLBaseComponent) do
   begin
@@ -1147,16 +1117,13 @@ function TGLBaseControl.MouseDown(Sender: TObject; Button: TMouseButton;
 var
   Xc: Integer;
   AcceptMouseEvent: Boolean;
-
 begin
   Result := False;
-
   AcceptMouseEvent := RecursiveVisible and ((Position.X <= X) and (Position.X +
     Width > X) and (Position.Y <= Y) and (Position.Y + Height > Y));
   if Assigned(OnAcceptMouseQuery) then
     OnAcceptMouseQuery(Self, shift, ma_mousedown, Button, X, Y,
       AcceptMouseEvent);
-
   if AcceptMouseEvent then
   begin
     Result := True;
@@ -1165,7 +1132,6 @@ begin
       if Assigned(FActiveControl) then
         if FActiveControl.MouseDown(Sender, Button, Shift, X, Y) then
           Exit;
-
       for XC := count - 1 downto 0 do
         if FActiveControl <> Children[XC] then
         begin
@@ -1186,15 +1152,12 @@ function TGLBaseControl.MouseUp(Sender: TObject; Button: TMouseButton; Shift:
 var
   Xc: Integer;
   AcceptMouseEvent: Boolean;
-
 begin
   Result := False;
-
   AcceptMouseEvent := RecursiveVisible and ((Position.X <= X) and (Position.X +
     Width > X) and (Position.Y <= Y) and (Position.Y + Height > Y));
   if Assigned(OnAcceptMouseQuery) then
     OnAcceptMouseQuery(Self, shift, ma_mouseup, Button, X, Y, AcceptMouseEvent);
-
   if AcceptMouseEvent then
   begin
     Result := True;
@@ -1224,16 +1187,13 @@ function TGLBaseControl.MouseMove(Sender: TObject; Shift: TShiftState; X, Y:
 var
   Xc: Integer;
   AcceptMouseEvent: Boolean;
-
 begin
   Result := False;
-
   AcceptMouseEvent := RecursiveVisible and ((Position.X <= X) and (Position.X +
     Width > X) and (Position.Y <= Y) and (Position.Y + Height > Y));
   if Assigned(OnAcceptMouseQuery) then
     OnAcceptMouseQuery(Self, shift, ma_mousemove, mbMiddle, X, Y,
       AcceptMouseEvent);
-
   if AcceptMouseEvent then
   begin
     Result := True;
@@ -1242,7 +1202,6 @@ begin
       if Assigned(FActiveControl) then
         if FActiveControl.MouseMove(Sender, shift, x, y) then
           Exit;
-
       for XC := count - 1 downto 0 do
         if FActiveControl <> Children[XC] then
         begin
@@ -1257,27 +1216,22 @@ begin
                 begin
                   FEnteredControl.DoMouseLeave;
                 end;
-
                 FEnteredControl := (Children[XC] as TGLBaseControl);
-
                 if FEnteredControl <> nil then
                 begin
                   FEnteredControl.DoMouseEnter;
                 end;
               end;
-
               Exit;
             end;
           end;
         end;
     end;
-
     if FEnteredControl <> nil then
     begin
       FEnteredControl.DoMouseLeave;
       FEnteredControl := nil;
     end;
-
     InternalMouseMove(Shift, X, Y);
   end;
 end;
@@ -1301,7 +1255,6 @@ begin
 end;
 
 procedure TGLBaseControl.KeyPress(Sender: TObject; var Key: Char);
-
 begin
   if Assigned(FFocusedControl) then
   begin
@@ -1356,7 +1309,6 @@ begin
 end;
 
 function TGLFocusControl.GetRootControl: TGLBaseControl;
-
 begin
   if not Assigned(FRootControl) then
   begin
@@ -1366,7 +1318,6 @@ begin
 end;
 
 procedure TGLFocusControl.NotifyHide;
-
 begin
   inherited;
   if (RootControl.FFocusedControl = Self) and (self.focused) then
@@ -1376,38 +1327,32 @@ begin
 end;
 
 procedure TGLFocusControl.ReGetRootControl;
-
 begin
   FRootControl := FindFirstGui;
 end;
 
 function TGLFocusControl.GetFocusedColor: TColor;
-
 begin
   Result := ConvertColorVector(FFocusedColor);
 end;
 
 procedure TGLFocusControl.SetFocusedColor(const Val: TColor);
-
 begin
   FFocusedColor := ConvertWinColor(val);
   GUIRedraw := True;
 end;
 
 procedure TGLFocusControl.SetFocus;
-
 begin
   RootControl.FocusedControl := Self;
 end;
 
 procedure TGLFocusControl.NextControl;
-
 var
   Host: TGLBaseComponent;
   Index: Integer;
   IndexedChild: TGLBaseComponent;
   RestartedLoop: Boolean;
-
 begin
   RestartedLoop := False;
   if Parent is TGLBaseComponent then
@@ -1428,7 +1373,6 @@ begin
         Exit;
       end;
     end;
-
     while true do
     begin
       if Index > 0 then
@@ -1479,13 +1423,11 @@ begin
 end;
 
 procedure TGLFocusControl.PrevControl;
-
 var
   Host: TGLBaseComponent;
   Index: Integer;
   IndexedChild: TGLBaseComponent;
   RestartedLoop: Boolean;
-
 begin
   RestartedLoop := False;
   if Parent is TGLBaseComponent then
@@ -1556,7 +1498,6 @@ begin
 end;
 
 procedure TGLFocusControl.KeyPress(Sender: TObject; var Key: Char);
-
 begin
   InternalKeyPress(Key);
   if Key = #9 then
@@ -1610,11 +1551,10 @@ begin
 end;
 
 //------------------------
-{ base font control }
+// base font control 
 //------------------------
 
 constructor TGLBaseFontControl.Create(AOwner: TComponent);
-
 begin
   inherited;
   FBitmapFont := nil;
@@ -1628,7 +1568,6 @@ begin
 end;
 
 procedure TGLBaseFontControl.SetBitmapFont(NewFont: TGLCustomBitmapFont);
-
 begin
   if NewFont <> FBitmapFont then
   begin
@@ -1648,7 +1587,6 @@ begin
 end;
 
 function TGLBaseFontControl.GetBitmapFont: TGLCustomBitmapFont;
-
 begin
   Result := nil;
   if Assigned(FBitmapFont) then
@@ -1670,13 +1608,11 @@ begin
 end;
 
 function TGLBaseFontControl.GetDefaultColor: TColor;
-
 begin
   Result := ConvertColorVector(FDefaultColor);
 end;
 
 procedure TGLBaseFontControl.SetDefaultColor(value: TColor);
-
 begin
   FDefaultColor := ConvertWinColor(value);
   GUIRedraw := True;
@@ -1695,7 +1631,9 @@ begin
   inherited;
 end;
 
-{ GLWindow }
+//----------------------------------
+// GLBaseTextControl 
+//----------------------------------
 
 procedure TGLBaseTextControl.SetCaption(const NewCaption: UnicodeString);
 
@@ -1736,7 +1674,6 @@ begin
 end;
 
 function TGLBaseFontControl.GetFontHeight: Integer;
-
 begin
   if Assigned(BitmapFont) then
     if BitmapFont is TGLWindowsBitmapFont then
@@ -1747,8 +1684,11 @@ begin
     Result := -1;
 end;
 
-constructor TGLCustomControl.Create(AOwner: TComponent);
+//----------------------------------
+// GLBaseCustomControl 
+//----------------------------------
 
+constructor TGLCustomControl.Create(AOwner: TComponent);
 begin
   inherited;
   FMaterial := TGLMaterial.create(Self);
@@ -1756,7 +1696,6 @@ begin
   FBitmap.OnChange := OnBitmapChanged;
   FInternalBitmap := nil;
   FInvalidRenderCount := 0;
-
   FXTexCoord := 1;
   FYTexCoord := 1;
 end;
@@ -1787,21 +1726,17 @@ end;
 
 procedure TGLCustomControl.InternalRender(var rci: TGLRenderContextInfo;
   renderSelf, renderChildren: Boolean);
-
 var
   X1, X2, Y1, Y2: Single;
-
 begin
   if Assigned(OnRender) then
     OnRender(self, FBitmap);
-
   if FBitmapChanged then
     if FInvalidRenderCount >= FMaxInvalidRenderCount then
     begin
       FInvalidRenderCount := 0;
       if not Assigned(FInternalBitmap) then
         FInternalBitmap := TBitmap.Create;
-
       FInternalBitmap.PixelFormat := FBitmap.PixelFormat;
       FInternalBitmap.Width := RoundUpToPowerOf2(FBitmap.Width);
       FInternalBitmap.Height := RoundUpToPowerOf2(FBitmap.Height);
@@ -1818,7 +1753,6 @@ begin
     end
     else
       Inc(FInvalidRenderCount);
-
   if Assigned(FGuiComponent) then
   begin
     try
@@ -1855,23 +1789,18 @@ begin
       Y1 := 0;
     end;
   end;
-
   GuiLayout.Material.UnApply(rci);
   Material.Apply(rci);
+  
   gl.Begin_(GL_QUADS);
-
   gl.TexCoord2f(FXTexCoord, -FYTexCoord);
   gl.Vertex2f(X2, Y2);
-
   gl.TexCoord2f(FXTexCoord, 0);
   gl.Vertex2f(X2, Y1);
-
   gl.TexCoord2f(0, 0);
   gl.Vertex2f(X1, Y1);
-
   gl.TexCoord2f(0, -FYTexCoord);
   gl.Vertex2f(X1, Y2);
-
   gl.End_();
 
   Material.UnApply(rci);
@@ -1879,13 +1808,15 @@ begin
 end;
 
 procedure TGLCustomControl.SetMaterial(AMaterial: TGLMaterial);
-
 begin
   FMaterial.Assign(AMaterial);
 end;
 
-procedure TGLPopupMenu.SetFocused(Value: Boolean);
+//----------------------------------
+// GLPopupMenu 
+//----------------------------------
 
+procedure TGLPopupMenu.SetFocused(Value: Boolean);
 begin
   inherited;
   if not (csDesigning in ComponentState) then
@@ -1894,7 +1825,6 @@ begin
 end;
 
 procedure TGLPopupMenu.SetMenuItems(Value: TStrings);
-
 begin
   FMenuItems.Assign(Value);
   NotifyChange(Self);
@@ -1911,7 +1841,6 @@ begin
 end;
 
 procedure TGLPopupMenu.SetSelIndex(const val: Integer);
-
 begin
   if FSelIndex <> val then
   begin
@@ -1961,7 +1890,6 @@ begin
 end;
 
 procedure TGLPopupMenu.OnStringListChange(Sender: TObject);
-
 var
   CenterHeight: Single;
   TextHeight: Single;
@@ -2009,7 +1937,6 @@ end;
 
 procedure TGLPopupMenu.InternalRender(var rci: TGLRenderContextInfo; renderSelf,
   renderChildren: Boolean);
-
 var
   CenterHeight: Single;
   TextHeight: Single;
@@ -2066,7 +1993,6 @@ end;
 
 procedure TGLPopupMenu.DoRender(var rci: TGLRenderContextInfo; renderSelf,
   renderChildren: Boolean);
-
 begin
   inherited;
   // to avoid gui render-block deadlock!
@@ -2089,23 +2015,25 @@ begin
   end;
 end;
 
+//----------------------------------
+// GLForm 
+//----------------------------------
+
 procedure TGLForm.InternalMouseDown(Shift: TShiftState; Button: TMouseButton;
   X, Y: Integer);
-
 var
   CanMove: Boolean;
   YHere: TGLFloat;
-
 begin
   YHere := Y - Position.Y;
   if YHere < FRenderStatus[GLALTop].Y2 then
   begin
     if Button = mbLeft then
     begin
-      {      If contains(Width-22,Width-6,XHere) and contains(8,24,YHere) then
-            Begin
-              Close;
-            End else{}
+      (*  If contains(Width-22,Width-6,XHere) and contains(8,24,YHere) then
+          Begin
+            Close;
+          End else(**)
       begin
         CanMove := True;
         if Assigned(FOnCanMove) then
@@ -2127,7 +2055,6 @@ end;
 
 procedure TGLForm.InternalMouseUp(Shift: TShiftState; Button: TMouseButton; X,
   Y: Integer);
-
 begin
   if (Button = mbLeft) and Moving then
   begin
@@ -2145,7 +2072,6 @@ begin
 end;
 
 procedure TGLForm.InternalMouseMove(Shift: TShiftState; X, Y: Integer);
-
 var
   XRel, YRel: Single;
 
@@ -2163,46 +2089,39 @@ begin
         OnMoving(Self, XRel, YRel);
       XRel := XRel - Position.X;
       YRel := YRel - Position.Y;
-
       MoveGUI(XRel, YRel);
       OldX := X;
       OldY := Y;
-
     end;
   end
   else if Y - Position.Y < 27 then
   begin
-
+    //
   end
   else
     inherited;
 end;
 
 function TGLForm.GetTitleColor: TColor;
-
 begin
   Result := ConvertColorVector(FTitleColor);
 end;
 
 procedure TGLForm.SetTitleColor(value: TColor);
-
 begin
   FTitleColor := ConvertWinColor(value);
   GUIRedraw := True;
 end;
 
 constructor TGLForm.Create(AOwner: TComponent);
-
 begin
   inherited;
   FTitleOffset := 2;
 end;
 
 procedure TGLForm.Close;
-
 var
   HowClose: TGLFormCloseOptions;
-
 begin
   HowClose := co_hide;
   if Assigned(FOnCanClose) then
@@ -2215,7 +2134,6 @@ begin
 end;
 
 procedure TGLForm.NotifyShow;
-
 begin
   inherited;
   if Assigned(FOnShow) then
@@ -2223,7 +2141,6 @@ begin
 end;
 
 procedure TGLForm.NotifyHide;
-
 begin
   inherited;
   if Assigned(FOnHide) then
@@ -2232,7 +2149,6 @@ end;
 
 function TGLForm.MouseUp(Sender: TObject; Button: TMouseButton; Shift:
   TShiftState; X, Y: Integer): Boolean;
-
 begin
   if (Button = mbLeft) and (Moving) then
   begin
@@ -2245,7 +2161,6 @@ end;
 
 function TGLForm.MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer):
   Boolean;
-
 begin
   if (Moving) then
   begin
@@ -2276,7 +2191,6 @@ begin
 end;
 
 procedure TGLCheckBox.SetChecked(NewChecked: Boolean);
-
 begin
   if NewChecked <> FChecked then
   begin
@@ -2285,12 +2199,10 @@ begin
       if NewChecked then
         if Group >= 0 then
           UnpressGroup(FindFirstGui, Group);
-
       FChecked := NewChecked;
     finally
       UnBlockRender;
     end;
-
     NotifyChange(Self);
     if Assigned(FOnChange) then
       FOnChange(Self);
@@ -2306,13 +2218,11 @@ end;
 
 procedure TGLCheckBox.InternalMouseUp(Shift: TShiftState; Button:
   TMouseButton; X, Y: Integer);
-
 begin
   inherited;
 end;
 
 procedure TGLCheckBox.SetGuiLayoutNameChecked(const newName: TGLGuiComponentName);
-
 begin
   if FGuiLayoutNameChecked <> NewName then
   begin
@@ -2329,7 +2239,6 @@ begin
 end;
 
 procedure TGLCheckBox.SetGuiLayout(NewGui: TGLGuiLayout);
-
 begin
   FGuiCheckedComponent := nil;
   inherited;
@@ -2343,7 +2252,6 @@ begin
 end;
 
 procedure TGLCheckBox.SetGroup(const val: Integer);
-
 begin
   FGroup := val;
   if Checked then
@@ -2357,7 +2265,6 @@ begin
 end;
 
 constructor TGLCheckBox.Create(AOwner: TComponent);
-
 begin
   inherited;
   FChecked := False;
@@ -2386,7 +2293,6 @@ begin
 end;
 
 procedure TGLCheckBox.NotifyChange(Sender: TObject);
-
 begin
   if Sender = FGuiLayout then
   begin
@@ -2412,7 +2318,6 @@ begin
 end;
 
 procedure TGLButton.SetPressed(NewPressed: Boolean);
-
 begin
   if FPressed <> NewPressed then
   begin
@@ -2426,11 +2331,9 @@ begin
     finally
       UnBlockRender;
     end;
-
     if FPressed then
       if Assigned(FOnButtonClick) then
         FOnButtonClick(Self);
-
     NotifyChange(Self);
   end;
 end;
@@ -2449,7 +2352,6 @@ end;
 
 procedure TGLButton.InternalMouseUp(Shift: TShiftState; Button: TMouseButton;
   X, Y: Integer);
-
 begin
   if (Button = mbLeft) and (Group < 0) then
     Pressed := False;
@@ -2457,7 +2359,6 @@ begin
 end;
 
 procedure TGLButton.InternalKeyDown(var Key: Word; Shift: TShiftState);
-
 begin
   inherited;
   if Key = VK_SPACE then
@@ -2471,7 +2372,6 @@ begin
 end;
 
 procedure TGLButton.InternalKeyUp(var Key: Word; Shift: TShiftState);
-
 begin
   if ((Key = VK_SPACE) or (Key = VK_RETURN)) and (Group < 0) then
   begin
@@ -2488,7 +2388,6 @@ begin
 end;
 
 procedure TGLButton.SetGuiLayoutNamePressed(const newName: TGLGuiComponentName);
-
 begin
   if FGuiLayoutNamePressed <> NewName then
   begin
@@ -2505,7 +2404,6 @@ begin
 end;
 
 procedure TGLButton.SetGuiLayout(NewGui: TGLGuiLayout);
-
 begin
   FGuiPressedComponent := nil;
   inherited;
@@ -2519,7 +2417,6 @@ begin
 end;
 
 procedure TGLButton.SetBitBtn(AValue: TGLMaterial);
-
 begin
   FBitBtn.Assign(AValue);
   NotifyChange(Self);
@@ -2532,7 +2429,6 @@ begin
 end;
 
 procedure TGLButton.SetGroup(const val: Integer);
-
 begin
   FGroup := val;
   if Pressed then
@@ -2546,28 +2442,24 @@ begin
 end;
 
 procedure TGLButton.SetLogicWidth(const val: single);
-
 begin
   FLogicWidth := val;
   NotifyChange(Self);
 end;
 
 procedure TGLButton.SetLogicHeight(const val: single);
-
 begin
   FLogicHeight := val;
   NotifyChange(Self);
 end;
 
 procedure TGLButton.SetXOffset(const val: single);
-
 begin
   FXOffSet := val;
   NotifyChange(Self);
 end;
 
 procedure TGLButton.SetYOffset(const val: single);
-
 begin
   FYOffSet := val;
   NotifyChange(Self);
@@ -2589,7 +2481,6 @@ end;
 
 procedure TGLButton.InternalRender(var rci: TGLRenderContextInfo; renderSelf,
   renderChildren: Boolean);
-
 var
   B: Boolean;
   TexWidth: Integer;
@@ -2597,7 +2488,6 @@ var
   Material: TGLMaterial;
   LibMaterial: TGLLibMaterial;
   TextColor: TColorVector;
-
 begin
   if Pressed then
   begin
@@ -2615,7 +2505,6 @@ begin
         FReBuildGui);
     end;
   end;
-
   B := not BitBtn.Texture.Disabled;
   Material := nil;
   if not B then
@@ -2623,7 +2512,6 @@ begin
     if (BitBtn.MaterialLibrary <> nil) and (BitBtn.MaterialLibrary is
       TGLMaterialLibrary) then
     begin
-
       LibMaterial :=
         TGLMaterialLibrary(BitBtn.MaterialLibrary).Materials.GetLibMaterialByName(BitBtn.LibMaterialName);
       if LibMaterial <> nil then
@@ -2637,45 +2525,36 @@ begin
   begin
     Material := BitBtn;
   end;
-
   if B then
     with FRenderStatus[GLAlCenter] do
     begin
       GuiLayout.Material.UnApply(rci);
       BitBtn.Apply(rci);
-
       TexWidth := Material.Texture.TexWidth;
       if TexWidth = 0 then
         TexWidth := Material.Texture.Image.Width;
-
       TexHeight := Material.Texture.TexHeight;
       if TexHeight = 0 then
         TexHeight := Material.Texture.Image.Height;
-
+		
       gl.Begin_(GL_QUADS);
-
       gl.TexCoord2f(0, 0);
       gl.Vertex2f(X1 - XOffSet, -Y1 + YOffSet);
-
       gl.TexCoord2f(0, -(LogicHeight - 1) / TexHeight);
       gl.Vertex2f(X1 - XOffSet, -Y1 + YOffset - LogicHeight + 1);
-
       gl.TexCoord2f((LogicWidth - 1) / TexWidth, -(LogicHeight - 1) /
         TexHeight);
       gl.Vertex2f(X1 - XOffSet + LogicWidth - 1, -Y1 + YOffset - LogicHeight +
         1);
-
       gl.TexCoord2f((LogicWidth - 1) / TexWidth, 0);
       gl.Vertex2f(X1 - XOffSet + LogicWidth - 1, -Y1 + YOffSet);
-
       gl.End_();
+	  
       BitBtn.UnApply(rci);
       GuiLayout.Material.Apply(rci);
     end;
-
   if Assigned(BitmapFont) then
   begin
-
     if FFocused then
     begin
       TextColor := FFocusedColor;
@@ -2685,7 +2564,6 @@ begin
       TextColor := FDefaultColor;
     end;
     TextColor.W := AlphaChannel;
-
     WriteTextAt(rci, FRenderStatus[GLALCenter].X1,
       FRenderStatus[GLALCenter].Y1,
       FRenderStatus[GLALCenter].X2,
@@ -2777,17 +2655,14 @@ begin
         end;
       end;
   end;
-
 end;
 
 procedure TGLEdit.InternalKeyUp(var Key: Word; Shift: TShiftState);
-
 begin
   inherited;
 end;
 
 procedure TGLEdit.SetFocused(Value: Boolean);
-
 begin
   inherited;
   if Value then
@@ -2795,21 +2670,18 @@ begin
 end;
 
 procedure TGLEdit.SetSelStart(const Value: Integer);
-
 begin
   FSelStart := Value;
   GUIRedraw := True;
 end;
 
 procedure TGLEdit.SetEditChar(const Value: string);
-
 begin
   FEditChar := Value;
   GUIRedraw := True;
 end;
 
 constructor TGLEdit.Create(AOwner: TComponent);
-
 begin
   inherited;
   FEditChar := '*';
@@ -2899,7 +2771,6 @@ end;
 
 procedure TGLLabel.InternalRender(var rci: TGLRenderContextInfo; renderSelf,
   renderChildren: Boolean);
-
 var
   TekstPos: TVector;
   Tekst: UnicodeString;
@@ -2941,10 +2812,8 @@ begin
     TekstPos.W := 0;
 
     Tekst := Caption;
-
     TextColor := FDefaultColor;
     TextColor.W := AlphaChannel;
-
     BitmapFont.RenderString(rci, Tekst, FAlignment, FTextLayout, TextColor,
       @TekstPos);
   end;
@@ -2970,7 +2839,6 @@ end;
 
 procedure TGLAdvancedLabel.InternalRender(var rci: TGLRenderContextInfo;
   renderSelf, renderChildren: Boolean);
-
 begin
   if Assigned(BitmapFont) then
   begin
@@ -3040,7 +2908,6 @@ begin
 end;
 
 procedure TGLScrollbar.SetHorizontal(const val: Boolean);
-
 begin
   if FHorizontal <> val then
   begin
@@ -3050,7 +2917,6 @@ begin
 end;
 
 procedure TGLScrollbar.SetGuiLayoutKnobName(const newName: TGLGuiComponentName);
-
 begin
   if newName <> FGuiLayoutKnobName then
   begin
@@ -3067,7 +2933,6 @@ begin
 end;
 
 procedure TGLScrollbar.SetGuiLayout(NewGui: TGLGuiLayout);
-
 begin
   FGuiKnobComponent := nil;
   inherited;
@@ -3113,7 +2978,6 @@ end;
 
 procedure TGLScrollbar.InternalMouseDown(Shift: TShiftState; Button:
   TMouseButton; X, Y: Integer);
-
 var
   Tx, Ty: Single;
 
@@ -3185,12 +3049,10 @@ begin
     fScrolling := False;
     RootControl.ActiveControl := nil;
   end;
-
   inherited;
 end;
 
 procedure TGLScrollbar.InternalMouseMove(Shift: TShiftState; X, Y: Integer);
-
 var
   Tx: Single;
   Ty: Single;
@@ -3206,12 +3068,10 @@ begin
       Ty := GetYScrollPos(y - Position.Y) - FScrollOffs;
       Pos := Round(Ty);
     end;
-
   inherited;
 end;
 
 constructor TGLScrollbar.Create(AOwner: TComponent);
-
 begin
   inherited;
   FGuiKnobComponent := nil;
@@ -3228,7 +3088,6 @@ begin
 end;
 
 procedure TGLScrollbar.StepUp;
-
 begin
   Pos := Pos - FStep;
 end;
@@ -3250,7 +3109,6 @@ end;
 
 function TGLScrollbar.MouseUp(Sender: TObject; Button: TMouseButton; Shift:
   TShiftState; X, Y: Integer): Boolean;
-
 begin
   if (Button = mbLeft) and (FScrolling) then
   begin
@@ -3263,7 +3121,6 @@ end;
 
 function TGLScrollbar.MouseMove(Sender: TObject; Shift: TShiftState; X, Y:
   Integer): Boolean;
-
 begin
   if (FScrolling) then
   begin
@@ -3276,7 +3133,6 @@ end;
 
 procedure TGLScrollbar.InternalRender(var rci: TGLRenderContextInfo; renderSelf,
   renderChildren: Boolean);
-
 var
   Start, Size: Integer;
 begin
@@ -3331,13 +3187,11 @@ begin
 end;
 
 function TGLStringGrid.GetCell(X, Y: Integer; out oCol, oRow: Integer): Boolean;
-
 var
   ClientRect: TRectangle;
   XPos: Integer;
   YPos: Integer;
   XC, YC: Integer;
-
 begin
   Result := False;
   if Assigned(BitmapFont) then
@@ -3366,16 +3220,12 @@ begin
       Exit;
     if x < XPos then
       Exit;
-
     XPos := XPos + MarginSize;
-
     for XC := 0 to Columns.Count - 1 do
     begin
       XPos := XPos + Integer(Columns.Objects[XC]);
-
       if x > XPos then
         continue;
-
       for YC := 0 to RowCount - 1 do
       begin
         YPos := YPos + RowHeight;
@@ -3386,7 +3236,6 @@ begin
             oRow := YC + Round(Scrollbar.Pos) - 1
           else
             oRow := YC;
-
           oCol := XC;
           Exit;
         end;
@@ -3397,7 +3246,6 @@ end;
 
 procedure TGLStringGrid.InternalMouseDown(Shift: TShiftState; Button:
   TMouseButton; X, Y: Integer);
-
 var
   tRow, tCol: Integer;
 begin
@@ -3435,28 +3283,23 @@ begin
 end;
 
 procedure TGLStringGrid.SetRow(index: Integer; const val: TStringList);
-
 begin
   if (index >= 0) then
   begin
     if (index >= RowCount) then
       RowCount := index + 1;
-
     TStringList(FRows[index]).Assign(val);
   end;
 end;
 
 function TGLStringGrid.GetRowCount: Integer;
-
 begin
   Result := FRows.count;
 end;
 
 procedure TGLStringGrid.SetRowCount(const val: Integer);
-
 var
   XC: Integer;
-
 begin
   XC := FRows.count;
   if val <> XC then
@@ -3509,27 +3352,23 @@ begin
 end;
 
 procedure TGLStringGrid.SetDrawHeader(const val: Boolean);
-
 begin
   FDrawHeader := Val;
   NotifyChange(Self);
 end;
 
 function TGLStringGrid.GetHeaderColor: TColor;
-
 begin
   Result := ConvertColorVector(FHeaderColor);
 end;
 
 procedure TGLStringGrid.SetHeaderColor(const val: TColor);
-
 begin
   FHeaderColor := ConvertWinColor(val);
   GUIRedraw := True;
 end;
 
 procedure TGLStringGrid.SetMarginSize(const val: Integer);
-
 begin
   if FMarginSize <> val then
   begin
@@ -3539,10 +3378,8 @@ begin
 end;
 
 procedure TGLStringGrid.SetColumnSize(const val: Integer);
-
 var
   XC: Integer;
-
 begin
   if FColumnSize <> val then
   begin
@@ -3554,7 +3391,6 @@ begin
 end;
 
 procedure TGLStringGrid.SetRowHeight(const val: Integer);
-
 begin
   if FRowHeight <> val then
   begin
@@ -3564,7 +3400,6 @@ begin
 end;
 
 procedure TGLStringGrid.SetScrollbar(const val: TGLScrollbar);
-
 begin
   if FScrollbar <> Val then
   begin
@@ -3577,7 +3412,6 @@ begin
 end;
 
 procedure TGLStringGrid.SetGuiLayout(NewGui: TGLGuiLayout);
-
 begin
   inherited;
   if Assigned(Scrollbar) then
@@ -3586,7 +3420,6 @@ begin
 end;
 
 constructor TGLStringGrid.Create(AOwner: TComponent);
-
 begin
   inherited;
   FRows := TList.Create;
@@ -3600,7 +3433,6 @@ begin
 end;
 
 destructor TGLStringGrid.Destroy;
-
 begin
   Scrollbar := nil;
   inherited;
@@ -3610,14 +3442,12 @@ begin
 end;
 
 procedure TGLStringGrid.Clear;
-
 begin
   RowCount := 0;
 end;
 
 procedure TGLStringGrid.Notification(AComponent: TComponent; Operation:
   TOperation);
-
 begin
   if (AComponent = FScrollbar) and (Operation = opRemove) then
   begin
@@ -3627,7 +3457,6 @@ begin
 end;
 
 procedure TGLStringGrid.NotifyChange(Sender: TObject);
-
 begin
   if Sender = Scrollbar then
   begin
@@ -3639,7 +3468,6 @@ end;
 
 procedure TGLStringGrid.InternalRender(var rci: TGLRenderContextInfo; renderSelf,
   renderChildren: Boolean);
-
   function CellSelected(X, Y: Integer): Boolean;
   begin
     if (RowSelect and ColSelect) then
@@ -3653,7 +3481,6 @@ procedure TGLStringGrid.InternalRender(var rci: TGLRenderContextInfo; renderSelf
   end;
 
   function CellText(X, Y: Integer): string;
-
   begin
     with Row[y] do
       if (X >= 0) and (X < Count) then
@@ -3661,14 +3488,13 @@ procedure TGLStringGrid.InternalRender(var rci: TGLRenderContextInfo; renderSelf
       else
         Result := '';
   end;
-
+  
 var
   ClientRect: TRectangle;
   XPos: Integer;
   YPos: Integer;
   XC, YC: Integer;
   From, Till: Integer;
-
 begin
   if Assigned(FGuiComponent) then
   begin
@@ -3744,7 +3570,6 @@ begin
 end;
 
 procedure TGLStringGrid.OnStringListChange(Sender: TObject);
-
 begin
   NotifyChange(Self);
 end;
@@ -3770,7 +3595,6 @@ begin
 end;
 
 procedure TGLStringGrid.SetText(Data: string);
-
 var
   Posi: Integer;
 begin
@@ -3803,7 +3627,6 @@ begin
   inherited;
   if FDoChangesOnProgress then
     DoChanges;
-
 end;
 
 procedure TGLBaseComponent.SetDoChangesOnProgress(const Value: Boolean);
@@ -3817,7 +3640,10 @@ begin
   ReGetRootControl;
 end;
 
+//--------------------------------------------
 initialization
+//--------------------------------------------
+
   RegisterClasses([TGLBaseControl, TGLPopupMenu, TGLForm, TGLPanel, TGLButton,
     TGLCheckBox, TGLEdit, TGLLabel, TGLAdvancedLabel, TGLScrollbar, TGLStringGrid,
     TGLCustomControl]);

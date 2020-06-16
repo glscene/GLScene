@@ -1,10 +1,7 @@
 ﻿//
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(* 
-  Conversion of OpenCL header file: cl_platform.h to CL_Platform.pas,
-  from http://www.khronos.org/registry/cl/.
-*)
+
 (****************************************************************************
  * Copyright (c) 2008-2020 The Khronos Group Inc.
  *
@@ -33,7 +30,12 @@
  * MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
  **************************************************************************)
 
-unit OpenCL_Platform;
+unit GLS.OpenCL_Platform;
+
+(*
+  Conversion of OpenCL header file: cl_platform.h to CL_Platform.pas,
+  from http://www.khronos.org/registry/cl/.
+*)
 
 interface
 

@@ -36,7 +36,7 @@
 // * the above Disclaimer and U.S. Government End Users Notice.
 // */
 
-unit GLSCUDAApi;
+unit GLS.CUDAApi;
 
 interface
 
@@ -243,14 +243,14 @@ type
   // Function properties
   TCUfunction_attribute = (
 
-    { * The number of threads beyond which a launch of the function would fail.
-      * This number depends on both the function and the device on which the
-      * function is currently loaded. }
+    (* The number of threads beyond which a launch of the function would fail.
+     * This number depends on both the function and the device on which the
+     * function is currently loaded. *)
     CU_FUNC_ATTRIBUTE_MAX_THREADS_PER_BLOCK = 0,
 
-    { * The size in bytes of statically-allocated shared memory required by
-      * this function. This does not include dynamically-allocated shared
-      * memory requested by the user at runtime. }
+    (* The size in bytes of statically-allocated shared memory required by
+     * this function. This does not include dynamically-allocated shared
+     * memory requested by the user at runtime. *)
     CU_FUNC_ATTRIBUTE_SHARED_SIZE_BYTES = 1,
 
     { * The size in bytes of user-allocated constant memory required by this

@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  Miscellaneous support utilities & classes. 
-*)
+
 unit GLUtils;
+
+(* Miscellaneous support utilities & classes *)
 
 interface
 

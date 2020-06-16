@@ -1,7 +1,7 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+(*
   Dynamic Collision Engine
   How to use:
   - Add a DCEManager to you form and configure its properties
@@ -19,7 +19,7 @@
   - UseGravity: You can disable the gravity for that object
   - SlideOrBounce: The object can bounce like a ball or slide like an FPS
   - BounceFactor: Restituition factor, 1 means that it will bounce forever
-}
+*)
 
 unit GLDCE;
 
@@ -28,29 +28,30 @@ interface
 {$I GLScene.inc}
 
 uses
-  System.Classes, 
-  System.SysUtils, 
+  System.Classes,
+  System.SysUtils,
   System.Types,
-   
-  GLScene, 
+
+  GLScene,
   XCollection,
-  GLVectorGeometry, 
-  GLVectorLists, 
+  GLVectorGeometry,
+  GLVectorLists,
   GLVectorFileObjects,
   GLDCEMisc,
   GLEllipseCollision,
-  GLTerrainRenderer, 
-  GLCoordinates, 
+  GLTerrainRenderer,
+  GLCoordinates,
   GLBaseClasses,
-  GLManager, 
-  GLVectorTypes;
+  GLManager,
+  GLVectorTypes,
+  GLStrings;
 
 type
-  {Only csEllipsoid can have dynamic behaviour}
+  //Only csEllipsoid can have dynamic behaviour
   TDCEShape = (csEllipsoid, csBox, csFreeform, csTerrain);
 
-  {Indicates which type of layer comparison is made when trying to detect
-     collisions between 2 bodies (A and B). Possible values are: 
+  (*Indicates which type of layer comparison is made when trying to detect
+     collisions between 2 bodies (A and B). Possible values are:
 	 ccsDCEStandard: Collides bodies if A.layer <= B.layer
 	 ccsCollisionStandard: Collides bodies if either A or B have
 		 layer equal to zero or if their layers are different.
@@ -58,16 +59,16 @@ type
 	     checks would pass (i.e. if the layer of either body  is
 		 equal to 0 or if A.layer <= B.layer) *and* if both
 		 layers are positive (that is, turns off collision
-		 for bodies whose layer is < 0) }
-  TDCECollisionSelection = (ccsDCEStandard, ccsCollisionStandard, ccsHybrid); // gak:20041119
+		 for bodies whose layer is < 0) *)
+  TDCECollisionSelection = (ccsDCEStandard, ccsCollisionStandard, ccsHybrid); 
 
   TDCECollision = record
     Position: TAffineVector;
     Normal: TAffineVector; //Surface normal
     Bounce: TAffineVector; //Surface reflection
     Nearest: Boolean;
-    RootCollision:boolean;//gak:20041119
-    Distance:single;//gak:20041119
+    RootCollision:boolean;
+    Distance:single;
   end;
 
   TGLDCEStatic = class;
@@ -113,7 +114,7 @@ type
     property WorldDirection : TGLCoordinates read FWorldDirection write SetWorldDirection;
     property WorldScale : Single read FWorldScale write SetWorldScale;
     property MovimentScale : Single read FMovimentScale write FMovimentScale;
-    Property StandardiseLayers: TDCECollisionSelection read FStandardiseLayers write FStandardiseLayers; //gak:20041119
+    Property StandardiseLayers: TDCECollisionSelection read FStandardiseLayers write FStandardiseLayers;
     Property ManualStep: Boolean read FManualStep write FManualStep;
     property OnCollision : TDCECollisionEvent read FOnCollision write FOnCollision;
   end;
@@ -124,8 +125,10 @@ type
     FManagerName : String; // NOT persistent, temporarily used for persistence
     FActive: Boolean;
     FShape: TDCEShape;
-    FLayer: Integer; //Collides only with lower or equal layers
-    FSolid: Boolean; //Collide and slide if true, otherwise it "walk thru walls"
+    //Collides only with lower or equal layers
+    FLayer: Integer; 
+    //Collide and slide if true, otherwise it "walk thru walls"
+    FSolid: Boolean; 
     FFriction: Single; //0 (no friction); 100 (no movement)
     FBounceFactor: Single; //0 (don't bounce); 1 (bounce forever)
     FSize: TGLCoordinates;
@@ -171,7 +174,8 @@ type
     FFriction: Single; //0 (no friction); 100 (no movement)
     FBounceFactor: Single; //0 (don't bounce); 1 (bounce forever)
     FSize: TGLCoordinates;
-    FMaxRecursionDepth:byte;//gak20041119 //Number of iterations of the collision method
+	//Number of iterations of the collision method
+    FMaxRecursionDepth:byte; 
     FSlideOrBounce:TDCESlideOrBounce;//gak20041122
     //Movement
     FAccel: TAffineVector; //Current acceleration
@@ -208,13 +212,13 @@ type
     procedure StopAbsAccel;
     procedure Jump(jHeight, jSpeed: Single);
     procedure Move(deltaS: TAffineVector; deltaTime: Double);
-    procedure MoveTo(Position: TAffineVector; Amount: Single); // gak:20041119
+    procedure MoveTo(Position: TAffineVector; Amount: Single); 
     procedure DoMove(deltaTime: Double);
     procedure DoProgress(const progressTime : TGLProgressTimes); override;
     //Runtime only
     property Speed : TAffineVector read FSpeed write FSpeed;
     property InGround : Boolean read FInGround;
-    property MaxRecursionDepth:byte read FMaxRecursionDepth write FMaxRecursionDepth;//gak20041119
+    property MaxRecursionDepth:byte read FMaxRecursionDepth write FMaxRecursionDepth;
     property OnCollision : TDCEObjectCollisionEvent read FOnCollision write FOnCollision;
   published
     property Active : Boolean read FActive write FActive;
@@ -225,7 +229,7 @@ type
     property Friction : Single read FFriction write SetFriction;
     property BounceFactor : Single read FBounceFactor write SetBounceFactor;
     property Size : TGLCoordinates read FSize write SetSize;
-    property SlideOrBounce:TDCESlideOrBounce read FSlideOrBounce write FSlideOrBounce;//gak20041122
+    property SlideOrBounce:TDCESlideOrBounce read FSlideOrBounce write FSlideOrBounce;
   end;
 
 function GetOrCreateDCEStatic(behaviours : TGLBehaviours) : TGLDCEStatic; overload;
@@ -280,7 +284,8 @@ begin
   result := FStatics.Count;
 end;
 
-function TGLDCEManager.MoveByDistance(var Body: TGLDCEDynamic; deltaS, deltaAbsS: TAffineVector): Single;
+function TGLDCEManager.MoveByDistance(var Body: TGLDCEDynamic; 
+  deltaS, deltaAbsS: TAffineVector): Single;
 var
     //Friction and bounce
     TotalFriction, bounce,f,m,restitution: Single;
@@ -290,7 +295,7 @@ var
     tObject: TGLBaseSceneObject;
     //Collision results
     ColInfo: TDCECollision;
-    lastobj:integer;//gak:20041119
+    lastobj:integer;
     i, oi: Integer;
     MP: TECMovePack;
     CanCollide,GravCollided: boolean;
@@ -305,7 +310,7 @@ begin
   MP.Gravity := deltaAbsS;
   MP.ObjectInfo.Solid := Body.Solid;
   MP.UnitScale := FWorldScale;
-  MP.MaxRecursionDepth := Body.MaxRecursionDepth; //gak://20041119
+  MP.MaxRecursionDepth := Body.MaxRecursionDepth; 
   //Get collision range, if it is too big separate into small pieces
   ECSetCollisionRange(MP);
   ColRange := MP.CollisionRange;
@@ -314,13 +319,17 @@ begin
   SetLength(MP.Contacts,0);
   GravCollided := False; //Is colliding with the ground
   Body.FGroundNormal := NullVector;
-  while deltaCR>0 do begin
-    if deltaCR>MaxRange then begin
-      dCR:=MaxRange;
-      deltaCR:=deltaCR-MaxRange;
-    end else begin
-      dCR:=deltaCR;
-      deltaCR:=0;
+  while deltaCR > 0 do
+  begin
+    if deltaCR > MaxRange then
+    begin
+      dCR := MaxRange;
+      deltaCR := deltaCR - MaxRange;
+    end
+    else
+    begin
+      dCR := deltaCR;
+      deltaCR := 0;
     end;
     dT := dCR / ColRange;
     MP.Velocity := VectorScale(deltaS,dT);
@@ -389,7 +398,7 @@ begin
   Body.FInGround := GravCollided;
 
   //Generate events and calculate average friction
-  lastobj := -1;//gak:20041119
+  lastobj := -1;
   TotalFriction := Body.Friction;
   ContactList := TIntegerList.Create;
 
@@ -460,12 +469,10 @@ begin
 
     end;
 
-    //gak:20041119 start
     colinfo.RootCollision := (lastobj <> oi);
     colInfo.Distance := Contacts[i].Distance;
     lastobj := oi;
-    //gak:20041119 end
-
+    
     if Assigned(FOnCollision) then
         FOnCollision(Self,Body.OwnerBaseSceneObject,tObject,ColInfo);
     if Assigned(Body.FOnCollision) then
@@ -558,7 +565,9 @@ begin
    FDynamics.Clear;
 end;
 
-{ TGLDCEStatic }
+//---------------------
+// TGLDCEStatic 
+//---------------------
 
 procedure TGLDCEStatic.Assign(Source: TPersistent);
 begin
@@ -751,8 +760,8 @@ begin
   FSolid := True;
   FFriction := 1;
   FBounceFactor := 0;
-  FMaxRecursionDepth := 5;  //gak:20041119
-  FSlideOrBounce := csbSlide; // gak:20041122
+  FMaxRecursionDepth := 5;  
+  FSlideOrBounce := csbSlide;
   FInGround := False;
 
   FAccel := NullVector;
@@ -938,10 +947,8 @@ begin
       WriteBoolean(FUseGravity);
       WriteSingle(FFriction);
       WriteSingle(FBounceFactor);
-      //gak:20041122 - start
       writeinteger(FMaxRecursionDepth);
       writeinteger(ord(FSlideOrBounce));
-      //gak:20041122 - end
       FSize.WriteToFiler(writer);
    end;
 end;
@@ -963,10 +970,8 @@ begin
       FUseGravity := ReadBoolean;
       FFriction := ReadSingle;
       FBounceFactor := ReadSingle;
-      //gak:20041122 - start
       FMaxRecursionDepth := readinteger;
       FSlideOrBounce := TDCESlideOrBounce(readinteger);
-      //gak:20041122 - end
       FSize.ReadFromFiler(reader);
    end;
 end;

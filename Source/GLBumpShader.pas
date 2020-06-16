@@ -1,13 +1,16 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   A shader that applies bump mapping. 
+
+unit GLBumpShader;
+
+(*
+   A shader that applies bump mapping.
    Notes:
-   The normal map is expected to be the primary texture. 
+   The normal map is expected to be the primary texture.
 
    The secondary texture is used for the diffuse texture,
-   to enable set boDiffuseTexture2 in the BumpOptions property. 
+   to enable set boDiffuseTexture2 in the BumpOptions property.
 
    The tertiary texture is used for the specular texture,
    to enable set boSpecularTexture3 in the BumpOptions property.
@@ -22,8 +25,7 @@
    the secondary texture coordinates for the diffuse and specular
    texture lookups.
 
-}
-unit GLBumpShader;
+*)
 
 interface
 
@@ -61,7 +63,7 @@ type
 
   TSpecularMode = (smOff, smBlinn, smPhong);
 
-  {A generic bump shader.  }
+  // A generic bump shader.
   TGLBumpShader = class(TGLShader)
   private
     FVertexProgramHandle: TGLARBVertexProgramHandle;

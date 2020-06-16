@@ -1,11 +1,10 @@
 ﻿//
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   CUDA Graphics for GLScene
-*)
 
-unit GLSCUDAGraphics;
+unit GLS.CUDAGraphics;
+
+(* CUDA Graphics for GLScene *)
 
 interface
 
@@ -17,8 +16,9 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLSCUDAApi,
-  GLSCUDA,
+  GLS.CUDAApi,
+  GLS.CUDA,
+
   GLContext,
   GLState,
   GLScene,
@@ -29,6 +29,7 @@ uses
   GLTexture,
   GLSLShader,
   GLSLParameter,
+  GLPersistentClasses,
   {$IFDEF USE_LOGGING} GLSLog, {$ENDIF}
   GLRenderContextInfo;
 

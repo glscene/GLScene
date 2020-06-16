@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  DelphiWebScript symbol creation for GLVectorGeometry types and functions.
-*)
+
 unit dwsVectorGeometry;
+
+(* DelphiWebScript symbol creation for GLVectorGeometry types and functions *)
 
 interface
 
@@ -28,7 +28,6 @@ procedure Register;
 
 // =========================================================
 implementation
-
 // =========================================================
 
 type

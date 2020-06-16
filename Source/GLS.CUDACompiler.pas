@@ -1,12 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLS.CUDACompiler;
+
 (*
   Component allows to compile the CUDA-source (*.cu) file.
   in design- and runtime.
   To work requires the presence of CUDA Toolkit 3.X and MS Visual Studio C++.
 *)
-unit GLSCUDACompiler;
 
 interface
 
@@ -16,12 +18,15 @@ uses
   Winapi.Windows,
   Winapi.ShellAPI,
   Winapi.TlHelp32,
+  System.UITypes,
   System.SysUtils,
   System.Classes,
   Vcl.Forms,
   VCL.Dialogs,
   GLStrings,
-  GLSCUDAParser,
+
+  GLS.CUDAParser,
+
   GLApplicationFileIO
   {$IFDEF USE_LOGGING},GLSLog;{$ELSE};{$ENDIF}
 

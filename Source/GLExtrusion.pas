@@ -1,17 +1,17 @@
 ﻿//
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLExtrusion;
+
+(*
    Extrusion objects for GLScene. Extrusion objects are solids defined by the
    surface described by a moving curve.
-}
-{  TODO
-   ur:
-     Suggestion:
+  TODO  ur: Suggestion:
        All extrusion objects use actually the same kind of "parts",
        one common type should do.
-}
-unit GLExtrusion;
+*)
+
 
 interface
 

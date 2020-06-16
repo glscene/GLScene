@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  File loading methods for the MD3 file format
-}
+
 unit FileMD3;
+
+(* File loading methods for the MD3 file format *)
 
 interface
 

@@ -1,10 +1,7 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   Conversion of OpenCL cl.h header file into CL.pas
-   from http://www.khronos.org/registry/cl/.
-*)
+
 (****************************************************************************
  * Copyright (c) 2008-2020 The Khronos Group Inc.
  *
@@ -33,13 +30,18 @@
  * MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
  **************************************************************************)
 
-unit OpenCL;
+unit GLS.OpenCL;
+
+(*
+   Conversion of OpenCL cl.h header file into CL.pas
+   from http://www.khronos.org/registry/cl/.
+*)
 
 interface
 
 uses
   Winapi.Windows,
-  OpenCL_Platform;
+  GLS.OpenCL_Platform;
 
 const
   {$IFDEF MSWINDOWS}

@@ -1,10 +1,7 @@
 ﻿//
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   Conversion of OpenCL header file: cl_gl.h to CL_GL.pas,
-   from http://www.khronos.org/registry/cl/.
-*)
+
 ///*****************************************************************************
 // * Copyright (c) 2008-2020 The Khronos Group Inc.
 // *
@@ -28,13 +25,18 @@
 // * MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 // ****************************************************************************/
 
-unit OpenCL_GL;
+unit GLS.OpenCL_GL;
+
+(*
+   Conversion of OpenCL header file: cl_gl.h to CL_GL.pas,
+   from http://www.khronos.org/registry/cl/.
+*)
 
 interface
 
 uses
-  OpenCL,
-  OpenCL_Platform;
+  GLS.OpenCL,
+  GLS.OpenCL_Platform;
 
 type
   PGLuint = ^Cardinal;

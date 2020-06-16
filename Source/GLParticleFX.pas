@@ -10,9 +10,7 @@ unit GLParticleFX;
    These provide a mechanism to render heterogenous particles systems with per
    particle depth-sorting (allowing correct rendering of interwoven separate
    fire and smoke particle systems for instance).
-
 *)
-
 
 interface
 

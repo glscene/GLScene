@@ -1,12 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Binary Space Partion mesh support for GLScene. 
-  The classes of this unit are designed to operate within a TGLBaseMesh. 
-}
 
 unit GLBSP;
+
+(*
+  Binary Space Partion mesh support for GLScene.
+  The classes of this unit are designed to operate within a TGLBaseMesh.
+*)
 
 interface
 
@@ -33,7 +34,7 @@ type
   end;
 
   TBSPRenderContextInfo = record
-    { Local coordinates of the camera (can be a vector or point) }
+    // Local coordinates of the camera (can be a vector or point)
     cameraLocal: TVector;
     rci: PRenderContextInfo;
     faceGroups: TList;
@@ -74,29 +75,29 @@ type
     constructor CreateOwned(AOwner: TGLMeshObjectList);
     destructor Destroy; override;
     procedure BuildList(var mrci: TGLRenderContextInfo); override;
-    {  Drops all unused nodes from the facegroups list. 
-      An unused node is a node that renders nothing and whose children
-      render nothing. Indices are remapped in the process. }
+    (* Drops all unused nodes from the facegroups list.
+       An unused node is a node that renders nothing and whose children
+       render nothing. Indices are remapped in the process. *)
     procedure CleanupUnusedNodes;
-    {  Returns the average BSP tree depth of end nodes.
+    (*  Returns the average BSP tree depth of end nodes.
       Sums up the depth each end node (starting at 1 for root node),
       divides by the number of end nodes. This is a simple estimator
-      of tree balancing (structurally speaking, not polygon-wise). }
+      of tree balancing (structurally speaking, not polygon-wise). *)
     function AverageDepth: Single;
-    {  Traverses the tree to the given point and returns the node index. }
+    // Traverses the tree to the given point and returns the node index.
     function FindNodeByPoint(const aPoint: TVector): TFGBSPNode;
-    {  Rendering sort mode. 
+    (*  Rendering sort mode.
       This sort mode can currently *not* blend with the sort by materials
       flag, default mode is rsBackToFront.
       Note that in rsNone mode, the hierarchical nature of the tree is
-      still honoured (positive subnode, self, then negative subnode). }
+      still honoured (positive subnode, self, then negative subnode). *)
     property RenderSort: TBSPRenderSort read FRenderSort write FRenderSort;
-    {  Cluster visibility. 
-      A property for defining node cluster-cluster visibility potential. }
+    (*  Cluster visibility.
+      A property for defining node cluster-cluster visibility potential. *)
     property ClusterVisibility: TBSPClusterVisibility read FClusterVisibility;
-    {  Use cluster visibility. 
+    (*  Use cluster visibility.
       Toggles the use of the visibility set for culling clusters of nodes
-      when rendering. }
+      when rendering. *)
     property UseClusterVisibility: Boolean read FUseClusterVisibility
       write FUseClusterVisibility;
   end;
@@ -121,42 +122,40 @@ type
     procedure CollectNoSort(var bsprci: TBSPRenderContextInfo);
     procedure CollectFrontToBack(var bsprci: TBSPRenderContextInfo);
     procedure CollectBackToFront(var bsprci: TBSPRenderContextInfo);
-    {  Try to find a 'decent' split plane for the node. 
+    (*  Try to find a 'decent' split plane for the node.
       Use this function to build a BSP tree, on leafy nodes. The split
       plane is chosen among the polygon planes, the coefficient are used
       to determine what a 'good' split plane is by assigning a cost
-      to splitted triangles (cut by the split plane) and tree imbalance. }
+      to splitted triangles (cut by the split plane) and tree imbalance. *)
     function FindSplitPlane(triangleSplitCost: Single = 1;
       triangleImbalanceCost: Single = 0.5): THmgPlane;
-    {  Evaluates a split plane. 
+    (* Evaluates a split plane.
       Used by FindSplitPlane. For splitted triangles, the extra spawned
-      triangles required are accounted for in the nbXxxTriangles values. }
+      triangles required are accounted for in the nbXxxTriangles values. *)
     procedure EvaluateSplitPlane(const splitPlane: THmgPlane;
       var nbTriangleSplit: Integer; var nbPositiveTriangles: Integer;
       var nbNegativeTriangles: Integer);
-    {  Splits a leafy node along the specified plane. 
+    (*  Splits a leafy node along the specified plane.
       Will trigger an exception if the node already has subnodes. Currently
-      also changes the mode from strips/fan to list. }
+      also changes the mode from strips/fan to list. *)
     procedure PerformSplit(const splitPlane: THmgPlane;
       const maxTrianglesPerLeaf: Integer = MaxInt);
-    {  Goes through all triangle edges, looking for tjunctions. 
-      The candidates are indices of points to lookup a tjunction vertices. }
+    (*  Goes through all triangle edges, looking for tjunctions.
+      The candidates are indices of points to lookup a tjunction vertices. *)
     procedure FixTJunctions(const tJunctionsCandidates: TIntegerList);
-    {  BSP node split plane. 
+    (*  BSP node split plane.
       Divides space between positive and negative half-space, positive
       half-space being the one were the evaluation of an homogeneous
-      vector against the plane is positive. }
+      vector against the plane is positive. *)
     property splitPlane: THmgPlane read FSplitPlane write FSplitPlane;
-    {  Index of the positive sub-node index in the list. 
-      Zero if empty. }
+    // Index of the positive sub-node index in the list. Zero if empty.
     property PositiveSubNodeIndex: Integer read FPositiveSubNodeIndex
       write FPositiveSubNodeIndex;
-    {  Index of the negative sub-node index in the list. 
-      Zero if empty. }
+    // Index of the negative sub-node index in the list. Zero if empty.
     property NegativeSubNodeIndex: Integer read FNegativeSubNodeIndex
       write FNegativeSubNodeIndex;
-    {  The index of the cluster that this node belongs to.
-      Used for visibility determination. }
+    (*  The index of the cluster that this node belongs to.
+      Used for visibility determination. *)
     property Cluster: Integer read FCluster write FCluster;
   end;
 
@@ -169,7 +168,7 @@ const
   cTJunctionEpsilon = 1E-4;
 
 // ---------------------------------------
-{ TBSPClusterVisibility }
+// TBSPClusterVisibility
 // ---------------------------------------
 constructor TBSPClusterVisibility.Create;
 begin
