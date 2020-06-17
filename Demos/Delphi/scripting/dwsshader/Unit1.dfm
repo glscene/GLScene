@@ -97,7 +97,7 @@ object Form1: TForm1
       Material.TextureEx = <>
     end
   end
-  object dws2OpenGL1xUnit1: Tdws2OpenGL1xUnit
+  object dws2OpenGLxUnit1: Tdws2OpenGLxUnit
     Script = GLDelphiWebScriptII1
     Left = 182
     Top = 8

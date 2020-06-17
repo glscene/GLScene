@@ -9,7 +9,7 @@
 #include <ExtCtrls.hpp>
 #include <Forms.hpp>
 
-#include "OpenGL1x.hpp"
+#include "OpenGLx.hpp"
 #include "GLBaseClasses.hpp"
 #include "GLCadencer.hpp"
 #include "GLCoordinates.hpp"

@@ -27,7 +27,7 @@
 #include "GLState.hpp"
 #include "GLContext.hpp"
 #include "GLKeyboard.hpp"
-#include "OpenGL1x.hpp"
+#include "OpenGLx.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

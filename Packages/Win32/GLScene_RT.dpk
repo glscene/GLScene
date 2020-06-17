@@ -289,11 +289,11 @@ contains
   XCollection in '..\..\Source\XCollection.pas',
   GLzBuffer in '..\..\Source\GLzBuffer.pas',
   FileHDRImage in '..\..\Source\FileHDRImage.pas',
-  OpenGL1x in '..\..\Source\OpenGL1x.pas',
   OpenGLAdapter in '..\..\Source\OpenGLAdapter.pas',
   OpenGLTokens in '..\..\Source\OpenGLTokens.pas',
   OpenGLVCL in '..\..\Source\OpenGLVCL.pas',
-  XOpenGL in '..\..\Source\XOpenGL.pas';
+  XOpenGL in '..\..\Source\XOpenGL.pas',
+  GLS.OpenGLx in '..\..\Source\GLS.OpenGLx.pas';
 
 end.
 

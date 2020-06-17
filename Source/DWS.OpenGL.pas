@@ -1,11 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit DWS.OpenGL;
+
+(*
    DelphiWebScript symbol creation for OpenGL procedures and functions.
    This unit is still under development.
-}
-unit dwsOpenGL;
+*)
 
 interface
 
@@ -15,14 +17,14 @@ uses
   System.Classes,
   System.Variants,
   
-  OpenGL1x,
+  GLS.OpenGLx,
   GLContext,
   GLVectorGeometry,
   
-  dwsExprs,
-  dwsSymbols,
-  dwsComp,
-  dwsFunctions;
+  DWS.Exprs,
+  DWS.Symbols,
+  DWS.Comp,
+  DWS.Functions;
 
 type
   TdwsOpenGLUnit = class(TdwsUnitComponent)
@@ -2024,7 +2026,7 @@ end;
 constructor TdwsOpenGLUnit.Create(AOwner: TComponent);
 begin
   inherited;
-  FUnitName := 'OpenGL1x';
+  FUnitName := 'OpenGLx';
   FDependencies.Add('GLContext');
   FDependencies.Add('GLVectorGeometry');
 end;

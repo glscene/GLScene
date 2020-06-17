@@ -23,7 +23,7 @@
 #include "GLVectorFileObjects.hpp"
 #include "GLWin32Viewer.hpp"
 #include "OpenGLAdapter.hpp"
-#include "OpenGL1x.hpp"
+#include "OpenGLx.hpp"
 #include "JPeg.hpp"
 #include "GLAsyncTimer.hpp"
 

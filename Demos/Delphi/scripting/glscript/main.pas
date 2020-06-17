@@ -37,7 +37,7 @@ uses
 type
   TForm1 = class(TForm)
     GLDelphiWebScriptII1: TGLDelphiWebScript;
-    dws2OpenGL1xUnit1: TdwsOpenGL1xUnit;
+    dws2OpenGLxUnit1: TdwsOpenGLxUnit;
     GLScene1: TGLScene;
     GLSceneViewer1: TGLSceneViewer;
     GLCamera1: TGLCamera;
@@ -80,7 +80,7 @@ implementation
 
 {$R *.dfm}
 
-uses OpenGL1x, GLContext;
+uses OpenGLx, GLContext;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin

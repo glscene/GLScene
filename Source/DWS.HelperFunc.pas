@@ -1,19 +1,21 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit DWS.HelperFunc;
+
 (*
   Helper functions for creating class, properties and
   method symbols in DelphiWebScript
 *)
-unit dwsHelperFunc;
 
 interface
 
 uses
   System.Classes,
   System.SysUtils,
-  dwsSymbols,
-  dwsCompStrings;
+  DWS.Symbols,
+  DWS.CompStrings;
 
 procedure AddForwardDeclaration(ClassName: String; SymbolTable: TSymbolTable);
 function AddClassSymbol(SymbolTable: TSymbolTable;

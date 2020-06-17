@@ -39,7 +39,7 @@ requires
   GLScene_SDL_RT;
 
 contains
-  GLSDLContext in '..\..\Source\GLSDLContext.pas';
+  GLS.SDLContext in '..\..\Source\GLS.SDLContext.pas';
 
 end.
 

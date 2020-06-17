@@ -1,35 +1,25 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  OpenGL 1.x import unit for GLScene. Unit remains "general purpose", but with
-  This Source Code Form is subject to the terms of the Mozilla Public License,
-  v. 2.0. If a copy of the MPL was not distributed with this file,
-  You can obtain one at http://mozilla.org/MPL/2.0/.
+unit GLS.OpenGLx;
 
-  Software distributed under the License is distributed on an
-  "AS IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
-  implied. See the License for the specific language governing
-  rights and limitations under the License.
-}
+(* -------------------------------------------------------------
+ Copyright 1991-1993, Silicon Graphics, Inc.
+ All Rights Reserved.
 
-// -------------------------------------------------------------
-// Copyright 1991-1993, Silicon Graphics, Inc.
-// All Rights Reserved.
-//
-// This is UNPUBLISHED PROPRIETARY SOURCE CODE of Silicon Graphics, Inc.;
-// the contents of this file may not be disclosed to third parties, copied or
-// duplicated in any form, in whole or in part, without the prior written
-// permission of Silicon Graphics, Inc.
-//
-// RESTRICTED RIGHTS LEGEND:
-// Use, duplication or disclosure by the Government is subject to restrictions
-// as set forth in subdivision (c)(1)(ii) of the Rights in Technical Data
-// and Computer Software clause at DFARS 252.227-7013, and/or in similar or
-// successor clauses in the FAR, DOD or NASA FAR Supplement. Unpublished -
-// rights reserved under the Copyright Laws of the United States.
-// -------------------------------------------------------------
-unit OpenGL1x;
+ This is UNPUBLISHED PROPRIETARY SOURCE CODE of Silicon Graphics, Inc.;
+ the contents of this file may not be disclosed to third parties, copied or
+ duplicated in any form, in whole or in part, without the prior written
+ permission of Silicon Graphics, Inc.
+
+ RESTRICTED RIGHTS LEGEND:
+ Use, duplication or disclosure by the Government is subject to restrictions
+ as set forth in subdivision (c)(1)(ii) of the Rights in Technical Data
+ and Computer Software clause at DFARS 252.227-7013, and/or in similar or
+ successor clauses in the FAR, DOD or NASA FAR Supplement. Unpublished -
+ rights reserved under the Copyright Laws of the United States.
+ ------------------------------------------------------------- *)
+
 
 interface
 
@@ -183,15 +173,14 @@ type
    // Linux type
    {$IFDEF LINUX}
    GLXContext    = Pointer;
+   GLXPixmap     = XID;
    GLXDrawable   = XID;
 
    GLXFBConfig   = Pointer;
    GLXFBConfigID = XID;
    GLXContextID  = XID;
+   GLXWindow     = XID;
    GLXPbuffer    = XID;
-   GLXPixmap     = XID;
-   GLXPixmap     = XID;
-
    {$ENDIF}
 
    HPBUFFERARB = Integer;
@@ -845,9 +834,9 @@ const
   GL_DEPTH_BUFFER_BIT = $00000100;
   GL_STENCIL_BUFFER_BIT = $00000400;
   GL_COLOR_BUFFER_BIT = $00004000;
-  GL_FALSE = 0;
   GL_TRUE = 1;
-  { BeginMode }
+  GL_FALSE = 0;
+  // BeginMode 
   GL_POINTS = $0000;
   GL_LINES = $0001;
   GL_LINE_LOOP = $0002;
@@ -7600,29 +7589,6 @@ var
    //            extensions integrated into OpenGL 3.0 Core
    //  ###########################################################
 
-
-   // promoted to core v3.0 from GL_EXT_texture_integer
-   //glClearColorIi: procedure(r: TGLint; g: TGLint; b: TGLint; a: TGLint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-   //glClearColorIui: procedure(r: TGLuint; g: TGLuint; b: TGLuint; a: TGLuint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-
-   // promoted to core v3.0 from GL_EXT_draw_buffers2
-   glColorMaski: procedure(index: TGLuint; r: TGLboolean; g: TGLboolean; b: TGLboolean; a: TGLboolean);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-   glGetBooleani_v: procedure(target: TGLenum; index: TGLuint; data: PGLboolean);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-   glGetIntegeri_v: procedure(target: TGLenum; index: TGLuint; data: PGLint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-   glEnablei: procedure(target: TGLenum; index: TGLuint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-   glDisablei: procedure(target: TGLenum; index: TGLuint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-   glIsEnabledi: function(target: TGLenum; index: TGLuint): TGLboolean;{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-
-   //promoted to core v3.0 from GL_EXT_transform_feedback
-   glBeginTransformFeedback: procedure(primitiveMode: TGLenum);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-   glEndTransformFeedback: procedure();{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-   glBindBufferRange: procedure(target: TGLenum; index: TGLuint; buffer: TGLuint; offset: TGLintptr; size: TGLsizeiptr);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-   glBindBufferBase: procedure(target: TGLenum; index: TGLuint; buffer: TGLuint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-   glTransformFeedbackVaryings: procedure(_program: TGLuint; count: TGLsizei; const varyings: PGLPCharArray; bufferMode: TGLenum);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-   glGetTransformFeedbackVarying: procedure(_program: TGLuint; index: TGLuint; bufSize: TGLsizei; length: PGLsizei; size: PGLsizei; _type: PGLenum; name: PGLChar);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-   glClampColor: procedure (target: TGLenum; clamp: TGLenum); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-   glBeginConditionalRender: procedure(id: TGLuint; mode: TGLenum);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-   glEndConditionalRender: procedure();{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
    glVertexAttribI1i: procedure(index: TGLuint; x: TGLint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
    glVertexAttribI2i: procedure(index: TGLuint; x: TGLint; y: TGLint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
    glVertexAttribI3i: procedure(index: TGLuint; x: TGLint; y: TGLint; z: TGLint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
@@ -7643,7 +7609,8 @@ var
    glVertexAttribI4sv: procedure(index: TGLuint; v:PGLshort);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
    glVertexAttribI4ubv: procedure(index: TGLuint; v: PGLUbyte);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
    glVertexAttribI4usv: procedure(index: TGLuint; v: PGLushort);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-   glVertexAttribIPointer: procedure(index: TGLuint; size: TGLint; _type: TGLenum; stride: TGLsizei; _pointer: pointer);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+   glVertexAttribIPointer: procedure(index: TGLuint; size: TGLint; _type: TGLenum;
+                                stride: TGLsizei; _pointer: pointer);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
    glGetVertexAttribIiv: procedure(index: TGLuint; pname: TGLenum; params: PGLint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
    glGetVertexAttribIuiv: procedure(index: TGLuint; pname: TGLenum; params: PGLuint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
    glUniform1ui: procedure(location: TGLInt; v0: TGLuint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
@@ -7658,11 +7625,38 @@ var
    glBindFragDataLocation: procedure(_program: TGLuint; colorNumber: TGLuint; name: PGLChar);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
    glGetFragDataLocation: function(_program: TGLuint; name: PGLChar): TGLint;{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
 
+   glBeginConditionalRender: procedure(id: TGLuint; mode: TGLenum);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+   glEndConditionalRender: procedure();{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+
+   glClampColor: procedure (target: TGLenum; clamp: TGLenum); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+
+   // promoted to core v3.0 from GL_EXT_texture_integer
+   //glClearColorIi: procedure(r: TGLint; g: TGLint; b: TGLint; a: TGLint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+   //glClearColorIui: procedure(r: TGLuint; g: TGLuint; b: TGLuint; a: TGLuint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
    glTexParameterIiv: procedure(target: TGLenum; pname: TGLenum; params: PGLint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
    glTexParameterIuiv: procedure(target: TGLenum; pname: TGLenum; params: PGLuint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
    glGetTexParameterIiv: procedure(target: TGLenum; pname: TGLenum; params: PGLint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
    glGetTexParameterIuiv: procedure(target: TGLenum; pname: TGLenum; params: PGLuint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
 
+   // promoted to core v3.0 from GL_EXT_draw_buffers2
+   glColorMaski: procedure(index: TGLuint; r: TGLboolean; g: TGLboolean;
+                            b: TGLboolean; a: TGLboolean);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+   glGetBooleani_v: procedure(target: TGLenum; index: TGLuint; data: PGLboolean);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+   glGetIntegeri_v: procedure(target: TGLenum; index: TGLuint; data: PGLint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+   glEnablei: procedure(target: TGLenum; index: TGLuint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+   glDisablei: procedure(target: TGLenum; index: TGLuint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+   glIsEnabledi: function(target: TGLenum; index: TGLuint): TGLboolean;{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+
+   //promoted to core v3.0 from GL_EXT_transform_feedback
+   glBindBufferRange: procedure(target: TGLenum; index: TGLuint; buffer: TGLuint;
+                            offset: TGLintptr; size: TGLsizeiptr);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+   glBindBufferBase: procedure(target: TGLenum; index: TGLuint; buffer: TGLuint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+   glBeginTransformFeedback: procedure(primitiveMode: TGLenum);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+   glEndTransformFeedback: procedure();{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+   glTransformFeedbackVaryings: procedure(_program: TGLuint; count: TGLsizei;
+                                      const varyings: PGLPCharArray; bufferMode: TGLenum);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+   glGetTransformFeedbackVarying: procedure(_program: TGLuint; index: TGLuint;
+     bufSize: TGLsizei; length: PGLsizei; size: PGLsizei; _type: PGLenum; name: PGLChar);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
 
    // New commands in OpenGL 3.0
    glClearBufferiv: procedure(buffer: TGLenum; drawbuffer: TGLint; value: PGLint);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
@@ -7706,7 +7700,7 @@ var
 
    // OpenGL 3.3 reuses entry points from these extensions:
    // GL_ARB_blend_func_extended (ARB #78)
-  { ARB_sampler_objects }
+   (* ARB_sampler_objects *)
    // GL_ARB_explicit_attrib_location (ARB #79) (none)
    // GL_ARB_occlusion_query2 (ARB #80)
    // GL_ARB_sampler_objects (ARB #81)
@@ -7722,7 +7716,7 @@ var
    //  ###########################################################
 
    // OpenGL 4.0 uses entry points from these extensions:
-  { ARB_texture_query_lod (no entry points) }
+  (* ARB_texture_query_lod (no entry points) *)
    // GL_ARB_draw_indirect (ARB #87)
    // GL_ARB_gpu_shader5 (ARB #88) (none)
    // GL_ARB_gpu_shader_fp64 (ARB #89)
@@ -10562,8 +10556,6 @@ begin
 end;
 
 {$IFDEF SUPPORT_WGL}
-// ReadWGLImplementationProperties
-//
 procedure ReadWGLImplementationProperties;
 var
    Buffer: string;

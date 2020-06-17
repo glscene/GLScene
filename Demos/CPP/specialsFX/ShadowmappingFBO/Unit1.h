@@ -23,7 +23,7 @@
 #include "GLSLShader.hpp"
 #include "GLVectorFileObjects.hpp"
 #include "GLWin32Viewer.hpp"
-#include "OpenGL1x.hpp"
+#include "OpenGLx.hpp"
 #include "DDSImage.hpp"
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------

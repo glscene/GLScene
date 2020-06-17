@@ -37,7 +37,7 @@
 #pragma link "GLCrossPlatform"
 #pragma link "GLMaterial"
 #include "OpenGLTokens.hpp"
-#include "OpenGL1x.hpp"
+#include "OpenGLx.hpp"
 
 #pragma resource "*.dfm"
 TForm1 *Form1;

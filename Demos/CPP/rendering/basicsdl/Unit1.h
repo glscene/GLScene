@@ -12,7 +12,7 @@
 #include "GLContext.hpp"
 #include "GLUtils.hpp"
 #include "GLTeapot.hpp"
-#include "OpenGL1x.hpp"
+#include "OpenGLx.hpp"
 #include "GLSDLContext.hpp"
 #include <Vcl.Imaging.jpeg.hpp>
 

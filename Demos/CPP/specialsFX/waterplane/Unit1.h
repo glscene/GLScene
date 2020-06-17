@@ -25,7 +25,7 @@
 
 #pragma hdrstop
 
-#include "OpenGL1x.hpp"
+#include "OpenGLx.hpp"
 
 
 //---------------------------------------------------------------------------

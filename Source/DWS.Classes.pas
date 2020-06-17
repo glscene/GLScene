@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  DelphiWebScript symbol creation for base Delphi classes.
-*)
-unit dwsClasses;
+
+unit DWS.Classes;
+
+(* DelphiWebScript symbol creation for base Delphi classes. *)
 
 interface
 
@@ -12,13 +12,13 @@ uses
   System.Classes,
   System.SysUtils,
 
-  dwsExprs,
-  dwsSymbols,
-  dwsComp,
-  dwsCompStrings,
-  dwsStack,
-  dwsFunctions,
-  dwsHelperFunc;
+  DWS.Exprs,
+  DWS.Symbols,
+  DWS.Comp,
+  DWS.CompStrings,
+  DWS.Stack,
+  DWS.Functions,
+  DWS.HelperFunc;
 
 type
   TdwsClassesUnit = class(TdwsUnitComponent)
@@ -35,7 +35,6 @@ procedure Register;
 
 // ===============================================================
 implementation
-
 // ===============================================================
 
 // ----------
@@ -134,9 +133,9 @@ type
   end;
 
 
-  // ----------
-  // ---------- Internal class method execute procedures ----------
-  // ----------
+// ----------
+// ---------- Internal class method execute procedures ----------
+// ----------
 
 procedure TPersistentAssignMethod.Execute(var ExternalObject: TObject);
 var

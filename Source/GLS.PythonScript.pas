@@ -2,7 +2,7 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLScriptPython;
+unit GLS.PythonScript;
 
 (*
   Python implementation for the GLScene scripting layer.

@@ -2,7 +2,7 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit dwsVectorGeometry;
+unit DWS.VectorGeometry;
 
 (* DelphiWebScript symbol creation for GLVectorGeometry types and functions *)
 
@@ -10,10 +10,10 @@ interface
 
 uses
   System.Classes,
-  dwsExprs,
-  dwsSymbols,
-  dwsComp,
-  dwsFunctions,
+  DWS.Exprs,
+  DWS.Symbols,
+  DWS.Comp,
+  DWS.Functions,
   GLVectorGeometry;
 
 type

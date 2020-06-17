@@ -3,11 +3,25 @@ unit uDemo;
 interface
 
 uses
-  System.SysUtils, System.Variants, System.Classes,
-  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
-  
-  GLUtils,GLSCUDAContext, GLSCUDA, GLSCUDACompiler,  GLFilePGM,
-  GLSCUDAUtility, GLGraphics, GLTextureFormat;
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
+
+  GLUtils,
+  GLFilePGM,
+
+  GLS.CUDAContext,
+  GLS.CUDA,
+  GLS.CUDACompiler,
+  GLS.CUDAUtility,
+
+  GLGraphics,
+  GLTextureFormat;
 
 type
   TForm1 = class(TForm)

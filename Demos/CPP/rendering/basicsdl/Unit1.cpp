@@ -12,7 +12,7 @@
 #pragma link "GLCrossPlatform"
 #pragma link "GLScene"
 #pragma link "GLTeapot"
-#pragma link "OpenGL1x"
+#pragma link "OpenGLx"
 
 #pragma resource "*.dfm"
 TDataModule1 *DataModule1;

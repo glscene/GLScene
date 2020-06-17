@@ -38,6 +38,6 @@ requires
   GLScene_Sounds_RT;
 
 contains
-  GLSoundRegister in '..\..\Source\SoundVideoAPIs\GLSoundRegister.pas';
+  GLSoundRegister in '..\..\Source\GLSoundRegister.pas';
 
 end.

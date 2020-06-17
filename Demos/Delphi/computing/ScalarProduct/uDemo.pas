@@ -3,10 +3,19 @@ unit uDemo;
 interface
 
 uses
-  System.SysUtils, System.Variants, System.Classes,
-  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
-  //CUDA
-  GLSCUDACompiler, GLSCUDAContext, GLSCUDA, GLSCUDAUtility;
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
+
+  GLS.CUDACompiler,
+  GLS.CUDAContext,
+  GLS.CUDA,
+  GLS.CUDAUtility;
 
 
 type
@@ -32,10 +41,6 @@ type
     _Z13scalarProdGPUPfS_S_ii_elementN: TCUDAFuncParam;
     procedure Button1Click(Sender: TObject);
     procedure scalarProdGPUParameterSetup(Sender: TObject);
-  private
-     
-  public
-     
   end;
 
 var
@@ -46,11 +51,11 @@ implementation
 {$R *.dfm}
 
 const
-  {: Total number of input vector pairs; arbitrary }
+  // Total number of input vector pairs; arbitrary
   VECTOR_N = 256;
-  {: Number of elements per vector; arbitrary,
+  (* Number of elements per vector; arbitrary,
      but strongly preferred to be a multiple of warp size
-     to meet memory coalescing constraints }
+     to meet memory coalescing constraints *)
   ELEMENT_N = 4096;
 
 procedure scalarProdCPU(hC, hA, hB: TCUDAMemData; vectorN, elementN: Integer);

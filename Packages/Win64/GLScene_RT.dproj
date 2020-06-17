@@ -160,6 +160,7 @@
         <DCCReference Include="..\..\Source\FileQ3BSP.pas"/>
         <DCCReference Include="..\..\Source\FileQ3MD3.pas"/>
         <DCCReference Include="..\..\Source\FileTGA.pas"/>
+        <DCCReference Include="..\..\Source\FileVFW.pas"/>
         <DCCReference Include="..\..\Source\FileVRMLParser.pas"/>
         <DCCReference Include="..\..\Source\FileX.pas"/>
         <DCCReference Include="..\..\Source\GLAVIRecorder.pas"/>
@@ -393,13 +394,11 @@
         <DCCReference Include="..\..\Source\GLWindows.pas"/>
         <DCCReference Include="..\..\Source\GLWindowsFont.pas"/>
         <DCCReference Include="..\..\Source\GLzBuffer.pas"/>
-        <DCCReference Include="..\..\Source\OpenGL1x.pas"/>
         <DCCReference Include="..\..\Source\OpenGLAdapter.pas"/>
         <DCCReference Include="..\..\Source\OpenGLTokens.pas"/>
+        <DCCReference Include="..\..\Source\GLS.OpenGLx.pas"/>
         <DCCReference Include="..\..\Source\XCollection.pas"/>
         <DCCReference Include="..\..\Source\XOpenGL.pas"/>
-        <DCCReference Include="..\..\Source\FileVFW.pas"/>
-        <None Include="..\..\Source\GLScene.inc"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

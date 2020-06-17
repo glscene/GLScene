@@ -23,10 +23,12 @@ uses
   GLObjects,
   GLCoordinates,
   GLContext,
-  GLSCUDA,
-  GLSCUDACompiler,
-  GLSCUDAContext,
-  GLSCUDAGraphics,
+
+  GLS.CUDA,
+  GLS.CUDACompiler,
+  GLS.CUDAContext,
+  GLS.CUDAGraphics,
+
   GLMaterial,
   GLCustomShader,
   GLSLShader;

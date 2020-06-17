@@ -11,7 +11,7 @@
 #include <ExtCtrls.hpp>
 
 
-#include "OpenGL1x.hpp"
+#include "OpenGLx.hpp"
 #include "GLTexCombineShader.hpp"
 #include "GLBumpmapHDS.hpp"
 #include "GLLensFlare.hpp"

@@ -27,7 +27,7 @@
 #pragma link "GLKeyboard"
 #pragma link "GLContext"
 #pragma link "GLFile3DS"
-#pragma link "OpenGL1x"
+#pragma link "OpenGLx"
 
 #pragma link "GLBaseClasses"
 #pragma link "GLCoordinates"

@@ -1,6 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit DWS.GLScene;
+
 (*
   DelphiWebScript symbol creation for base GLScene classes.
 
@@ -8,7 +11,6 @@
   These components must be associated with the same compiler
   for the GLScene classes to inherit from.
 *)
-unit dwsGLScene;
 
 interface
 
@@ -19,13 +21,13 @@ uses
   GLScene,
   GLVectorGeometry,
   GLCoordinates,
-  dwsExprs,
-  dwsSymbols,
-  dwsComp,
-  dwsCompStrings,
-  dwsStack,
-  dwsFunctions,
-  dwsHelperFunc;
+  DWS.Exprs,
+  DWS.Symbols,
+  DWS.Comp,
+  DWS.CompStrings,
+  DWS.Stack,
+  DWS.Functions,
+  DWS.HelperFunc;
 
 type
   TdwsGLSceneUnit = class(TdwsUnitComponent)
@@ -50,9 +52,9 @@ implementation
 
 type
 
-  // --------------------------
-  // -------- TGLCoordinates
-  // --------------------------
+// --------------------------
+// -------- TGLCoordinates
+// --------------------------
 
   TGLCoordinatesSetXMethod = class(TInternalMethod)
   public

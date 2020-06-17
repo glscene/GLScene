@@ -20,13 +20,13 @@ uses
   GLUtils,
   GLFilePGM,
   GLGraphics,
-  GLSCUDAUtility,
-  GLSCUDADataAccess,
+  GLS.CUDAUtility,
+  GLS.CUDADataAccess,
   GLVectorTypes,
   CPUFFT,
-  GLSCUDAFFTPlan,
-  GLSCUDA,
-  GLSCUDAContext;
+  GLS.CUDAFFTPlan,
+  GLS.CUDA,
+  GLS.CUDAContext;
 
 type
   TDemoMode = (dmNone, dm1D, dm2D, dmLena);

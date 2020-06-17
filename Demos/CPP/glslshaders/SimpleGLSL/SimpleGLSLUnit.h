@@ -23,7 +23,7 @@
 #include "GLMaterial.hpp"
 //#include "OpenGLTokens.hpp"
 #include "GLContext.hpp"
-//#include "OpenGL1x.hpp"
+//#include "OpenGLx.hpp"
 #include <gl\gl.h>
 #include <gl\glu.h>
 

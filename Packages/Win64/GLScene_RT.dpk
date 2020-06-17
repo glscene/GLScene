@@ -53,6 +53,7 @@ contains
   FileQ3BSP in '..\..\Source\FileQ3BSP.pas',
   FileQ3MD3 in '..\..\Source\FileQ3MD3.pas',
   FileTGA in '..\..\Source\FileTGA.pas',
+  FileVFW in '..\..\Source\FileVFW.pas',
   FileVRMLParser in '..\..\Source\FileVRMLParser.pas',
   FileX in '..\..\Source\FileX.pas',
   GLAVIRecorder in '..\..\Source\GLAVIRecorder.pas',
@@ -286,12 +287,11 @@ contains
   GLWindows in '..\..\Source\GLWindows.pas',
   GLWindowsFont in '..\..\Source\GLWindowsFont.pas',
   GLzBuffer in '..\..\Source\GLzBuffer.pas',
-  OpenGL1x in '..\..\Source\OpenGL1x.pas',
   OpenGLAdapter in '..\..\Source\OpenGLAdapter.pas',
   OpenGLTokens in '..\..\Source\OpenGLTokens.pas',
+  GLS.OpenGLx in '..\..\Source\GLS.OpenGLx.pas',
   XCollection in '..\..\Source\XCollection.pas',
-  XOpenGL in '..\..\Source\XOpenGL.pas',
-  FileVFW in '..\..\Source\FileVFW.pas';
+  XOpenGL in '..\..\Source\XOpenGL.pas';
 
 end.
 

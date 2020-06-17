@@ -1,6 +1,6 @@
 {:
   06 June 2009
-  This FFT demo uses Borland Delpi 7 on Windows XP. 
+  This FFT demo uses Delpi on Windows.
   Code from http://www.vssoft.bg.
   Contact at vstoykov@consultant.bg.
 }
@@ -9,7 +9,9 @@ unit CPUFFT;
 interface
 
 uses
-  SysUtils, Types, Math;
+  System.SysUtils,
+  System.Types,
+  System.Math;
 
 type
   TProcessMode = (module, phase, real, imag);

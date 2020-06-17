@@ -2,7 +2,7 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLScriptDWS;
+unit GLS.DWSScript;
 
 (* DelphiWebScript implementation for the GLScene scripting layer *)
 

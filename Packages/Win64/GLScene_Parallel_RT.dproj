@@ -133,22 +133,22 @@
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="xmlrtl.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
-        <DCCReference Include="..\..\Source\GLSCUDARuntime.pas"/>
-        <DCCReference Include="..\..\Source\GLSCUDAFourierTransform.pas"/>
-        <DCCReference Include="..\..\Source\GLSCUDACompiler.pas"/>
-        <DCCReference Include="..\..\Source\GLSCUDAContext.pas"/>
-        <DCCReference Include="..\..\Source\GLSCUDAFFTPlan.pas"/>
-        <DCCReference Include="..\..\Source\GLSCUDAGraphics.pas"/>
-        <DCCReference Include="..\..\Source\GLSCUDAParser.pas"/>
-        <DCCReference Include="..\..\Source\GLSCUDADataAccess.pas"/>
-        <DCCReference Include="..\..\Source\GLSCUDAParallelPrimitives.pas"/>
-        <DCCReference Include="..\..\Source\GLSCUDA.pas"/>
-        <DCCReference Include="..\..\Source\GLSCUDAApi.pas"/>
+        <DCCReference Include="..\..\Source\GLS.CUDARuntime.pas"/>
+        <DCCReference Include="..\..\Source\GLS.CUDAFourierTransform.pas"/>
+        <DCCReference Include="..\..\Source\GLS.CUDACompiler.pas"/>
+        <DCCReference Include="..\..\Source\GLS.CUDAContext.pas"/>
+        <DCCReference Include="..\..\Source\GLS.CUDAFFTPlan.pas"/>
+        <DCCReference Include="..\..\Source\GLS.CUDAGraphics.pas"/>
+        <DCCReference Include="..\..\Source\GLS.CUDAParser.pas"/>
+        <DCCReference Include="..\..\Source\GLS.CUDADataAccess.pas"/>
+        <DCCReference Include="..\..\Source\GLS.CUDAParallelPrimitives.pas"/>
+        <DCCReference Include="..\..\Source\GLS.CUDA.pas"/>
+        <DCCReference Include="..\..\Source\GLS.CUDAApi.pas"/>
         <DCCReference Include="..\..\Source\GLFilePGM.pas"/>
-        <DCCReference Include="..\..\Source\GLSCUDAUtility.pas"/>
-        <DCCReference Include="..\..\Source\OpenCL.pas"/>
-        <DCCReference Include="..\..\Source\OpenCL_GL.pas"/>
-        <DCCReference Include="..\..\Source\OpenCL_Platform.pas"/>
+        <DCCReference Include="..\..\Source\GLS.CUDAUtility.pas"/>
+        <DCCReference Include="..\..\Source\GLS.OpenCL.pas"/>
+        <DCCReference Include="..\..\Source\GLS.OpenCL_GL.pas"/>
+        <DCCReference Include="..\..\Source\GLS.OpenCL_Platform.pas"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

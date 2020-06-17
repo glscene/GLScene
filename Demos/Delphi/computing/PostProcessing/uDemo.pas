@@ -12,6 +12,7 @@ uses
   Vcl.Dialogs,
   Vcl.ComCtrls,
 
+  OpenGLTokens,
   GLScene,
   GLTeapot,
   GLCoordinates,
@@ -25,17 +26,18 @@ uses
   GLBaseClasses,
   GLFBORenderer,
   GLHUDObjects,
-  GLSCUDA,
-  GLSCUDAGraphics,
-  GLSCUDACompiler,
-  GLSCUDAContext,
+
+  GLS.CUDA,
+  GLS.CUDAGraphics,
+  GLS.CUDACompiler,
+  GLS.CUDAContext,
+
   GLState,
   GLRenderContextInfo,
   GLContext,
   GLCustomShader,
   GLSLShader,
-  GLTexture,
-  OpenGLTokens;
+  GLTexture;
 
 type
   TForm1 = class(TForm)

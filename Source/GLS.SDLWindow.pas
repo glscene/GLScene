@@ -1,6 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLS.SDLWindow;
+
 (*
   Non visual wrapper around basic SDL window features.
   Notes:
@@ -9,7 +12,6 @@
   SDL-specifics should also be avoided in the "interface" section.
   This component uses a header conversion for SDL from http://libsdl.org
 *)
-unit GLSDLWindow;
 
 interface
 

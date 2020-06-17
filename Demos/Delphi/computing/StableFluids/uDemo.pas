@@ -3,35 +3,37 @@ unit uDemo;
 interface
 
 uses
-  System.SysUtils, 
+  System.SysUtils,
   System.Classes,
-  Vcl.Controls, 
-  Vcl.Forms, 
-  Vcl.StdCtrls, 
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.StdCtrls,
   Vcl.Graphics,
-  
-  GLScene, 
-  GLCadencer, 
-  GLWin32Viewer, 
-  GLCrossPlatform, 
+
+  GLScene,
+  GLVectorGeometry,
+  GLVectorTypes,
+  GLCadencer,
+  GLWin32Viewer,
   GLBaseClasses,
-  GLCoordinates, 
-  GLContext, 
-  GLGui, 
-  GLBitmapFont, 
-  GLWindowsFont, 
+  GLCoordinates,
+  GLContext,
+  GLGui,
+  GLBitmapFont,
+  GLWindowsFont,
   GLCustomShader,
-  GLRenderContextInfo, 
-  GLState, 
-  GLMaterial, 
-  GLSLShader, 
+  GLRenderContextInfo,
+  GLState,
+  GLMaterial,
+  GLSLShader,
   GLWindows,
-  
-  GLSCUDAContext, 
-  GLSCUDA, 
-  GLSCUDACompiler, 
-  GLSCUDAFFTPlan, 
-  GLSCUDAGraphics;
+
+  GLS.CUDAContext,
+  GLS.CUDA,
+  GLS.CUDACompiler,
+  GLS.CUDAFFTPlan,
+  GLS.CUDAGraphics,
+  GLS.CUDADataAccess;
 
 type
   TForm1 = class(TForm)
@@ -122,21 +124,17 @@ type
       Sender: TGLVertexAttribute);
     procedure GLSCUDA1OpenGLInteropInit(out Context: TGLContext);
   private
-     
     clicked: Boolean;
     lastx: Integer;
     lasty: Integer;
-
     ComplexPadWidth: Integer;
     RealPadWidth: Integer;
     PaddedDomainSize: Integer;
-
     SpeedX: Integer;
     SpeedY: Integer;
     ForceX: Single;
     ForceY: Single;
   public
-     
     ParticlesDim: Integer;
     DeltaTime: Single;
     ViscosityConst: Single;
@@ -151,9 +149,6 @@ var
 implementation
 
 {$R *.dfm}
-
-uses
-  GLVectorGeometry, GLVectorTypes, GLSCUDADataAccess;
 
 var
   InitPosition : Boolean = False;
@@ -216,7 +211,7 @@ begin
   lastX := X;
   lastY := Y;
   clicked := true;
-  ResetButton.MouseDown(Sender, TGLMouseButton(Button), Shift, X, Y);
+  ResetButton.MouseDown(Sender, TMouseButton(Button), Shift, X, Y);
 end;
 
 procedure TForm1.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState; X,
@@ -254,7 +249,7 @@ procedure TForm1.GLSceneViewer1MouseUp(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
   clicked := false;
-  ResetButton.MouseUp(Sender, TGLMouseButton(Button), Shift, X, Y);
+  ResetButton.MouseUp(Sender, TMouseButton(Button), Shift, X, Y);
 end;
 
 procedure TForm1.GLSCUDA1OpenGLInteropInit(out Context: TGLContext);

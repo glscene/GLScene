@@ -97,7 +97,6 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
-        <DCC_DcuOutput>...\..\lib\Win32</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
@@ -118,9 +117,6 @@
         <DCC_ObjOutput>..\..\lib\Win32</DCC_ObjOutput>
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
-        <DCC_UnitSearchPath>..\..\Source</DCC_UnitSearchPath>
-        <DCC_DcpOutput>..\..\dcp\Win32</DCC_DcpOutput>
-        <DCC_BplOutput>..\..\bpl\Win32</DCC_BplOutput>
         <DCC_Description>GLScene Engine</DCC_Description>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
@@ -387,11 +383,11 @@
         <DCCReference Include="..\..\Source\XCollection.pas"/>
         <DCCReference Include="..\..\Source\GLzBuffer.pas"/>
         <DCCReference Include="..\..\Source\FileHDRImage.pas"/>
-        <DCCReference Include="..\..\Source\OpenGL1x.pas"/>
         <DCCReference Include="..\..\Source\OpenGLAdapter.pas"/>
         <DCCReference Include="..\..\Source\OpenGLTokens.pas"/>
         <DCCReference Include="..\..\Source\OpenGLVCL.pas"/>
         <DCCReference Include="..\..\Source\XOpenGL.pas"/>
+        <DCCReference Include="..\..\Source\GLS.OpenGLx.pas"/>
         <RcCompile Include="..\..\Resources\GLSceneRunTime.rc">
             <Form>GLSceneRunTime.res</Form>
         </RcCompile>
@@ -417,10 +413,12 @@
                     <Source Name="MainSource">GLScene_RT.dpk</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k260.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp260.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k260.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp260.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="D:\GLScene\bpl\Win32\GLScene_Sounds_DT.bpl">File D:\GLScene\bpl\Win32\GLScene_Sounds_DT.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="D:\GLScene\bpl\Win32\GLScene_Physics_DT.bpl">File D:\GLScene\bpl\Win32\GLScene_Physics_DT.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k270.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp270.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k270.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp270.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Platforms>
@@ -428,7 +426,7 @@
                 <Platform value="Win64">False</Platform>
             </Platforms>
             <Deployment Version="3">
-                <DeployFile LocalName="..\..\bpl\Win32\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\21.0\Bpl\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>GLScene_RT.bpl</RemoteName>
                         <Overwrite>true</Overwrite>

@@ -1,6 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLS.SDLContext;
+
 (*
    SDL specific Context and Viewer.
    NOTA: SDL notifies use of context destruction *after* it happened, this prevents
@@ -9,7 +12,6 @@
          leaking memory (depending on hardware drivers willingness to perform
          automatic releases)
 *)
-unit GLSDLContext;
 
 interface
 
@@ -18,12 +20,13 @@ uses
   System.Classes,
   System.SysUtils,
 
-  OpenGL1x,
   XOpenGL,
   GLContext,
-  GLSDLWindow,
   GLScene,
   GLCrossPlatform,
+
+  GLS.OpenGLx,
+  GLS.SDLWindow,
   SDL2;
 
 type

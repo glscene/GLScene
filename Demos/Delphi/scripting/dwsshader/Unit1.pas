@@ -27,7 +27,7 @@ type
     GLScene1: TGLScene;
     GLSceneViewer1: TGLSceneViewer;
     Panel1: TPanel;
-    dwsOpenGL1xUnit1: TdwsOpenGL1xUnit;
+    dwsOpenGLxUnit1: TdwsOpenGLxUnit;
     GLUserShader1: TGLUserShader;
     ShaderScript: TMemo;
     Recompile: TButton;

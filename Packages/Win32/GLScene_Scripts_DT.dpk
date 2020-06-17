@@ -33,13 +33,13 @@ package GLScene_Scripts_DT;
 requires
   rtl,
   vcl,
-  dwsRuntime,
+  DWS.Runtime,
   GLScene_RT,
   GLScene_Scripts_RT;
 
 contains
-  GLScriptDWS in '..\..\Source\GLScriptDWS.pas',
-  GLDWSObjects in '..\..\Source\GLDWSObjects.pas',
-  GLScriptPython in '..\..\Source\GLScriptPython.pas';
+  GLS.DWSScript in '..\..\Source\GLS.DWSScript.pas',
+  GLS.DWSObjects in '..\..\Source\GLS.DWSObjects.pas',
+  GLS.PythonScript in '..\..\Source\GLS.PythonScript.pas';
 
 end.

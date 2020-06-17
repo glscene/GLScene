@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  Manages a basic game menu UI
-*)
+
 unit GLGameMenu;
+
+(* Manages a basic game menu UI *)
 
 interface
 
@@ -14,7 +14,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  OpenGL1x,
+  GLS.OpenGLx,
   GLVectorTypes,
   GLScene,
   GLCoordinates,
