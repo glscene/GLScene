@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLExplosionFx;
+
+(*
   Description: this effect explodes a mesh object into triangles
   that fly over. You can define a default direction, in wich case
   the pieces of the mesh will follow that direction, only rotating,
@@ -15,8 +18,7 @@
   Also, the structure of the mesh is lost after the caching of information,
   so if you'll need the mesh after exploding it, you'll have to save the
   MeshObjects property of the mesh, OR load it again.
-}
-unit GLExplosionFx;
+*)
 
 interface
 
@@ -67,8 +69,8 @@ type
     constructor Create(aOwner : TXCollection); override;
     destructor Destroy; override;
     procedure Render(var rci : TGLRenderContextInfo); override;
-    { resets the behaviour, so the information can be re-cached and
-      the mesh can be exploded again }
+    (* Resets the behaviour, so the information can be re-cached and
+      the mesh can be exploded again *)
     procedure Reset;
     class function FriendlyName : String; override;
     class function FriendlyDescription : String; override;
@@ -274,8 +276,10 @@ begin
   end;
 end;
 
+//-------------------------------
 initialization
-	// class registrations
+//-------------------------------
+	
 	RegisterXCollectionItemClass(TGLBExplosionFX);
 
 finalization
