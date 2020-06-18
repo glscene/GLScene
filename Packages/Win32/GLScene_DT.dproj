@@ -202,8 +202,6 @@
                     <Source Name="MainSource">GLScene_DT.dpk</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="D:\GLScene\bpl\Win32\GLScene_Sounds_DT.bpl">File D:\GLScene\bpl\Win32\GLScene_Sounds_DT.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="D:\GLScene\bpl\Win32\GLScene_Physics_DT.bpl">File D:\GLScene\bpl\Win32\GLScene_Physics_DT.bpl not found</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k270.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp270.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k270.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>

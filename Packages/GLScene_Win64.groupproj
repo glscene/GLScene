@@ -18,9 +18,6 @@
         <Projects Include="Win64\GLScene_Cg_RT.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Win64\GLScene_SDL_RT.dproj">
-            <Dependencies/>
-        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -74,23 +71,14 @@
     <Target Name="GLScene_Cg_RT:Make">
         <MSBuild Projects="Win64\GLScene_Cg_RT.dproj" Targets="Make"/>
     </Target>
-    <Target Name="GLScene_SDL_RT">
-        <MSBuild Projects="Win64\GLScene_SDL_RT.dproj"/>
-    </Target>
-    <Target Name="GLScene_SDL_RT:Clean">
-        <MSBuild Projects="Win64\GLScene_SDL_RT.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="GLScene_SDL_RT:Make">
-        <MSBuild Projects="Win64\GLScene_SDL_RT.dproj" Targets="Make"/>
-    </Target>
     <Target Name="Build">
-        <CallTarget Targets="GLScene_RT;GLScene_Sounds_RT;GLScene_Physics_RT;GLScene_Parallel_RT;GLScene_Cg_RT;GLScene_SDL_RT"/>
+        <CallTarget Targets="GLScene_RT;GLScene_Sounds_RT;GLScene_Physics_RT;GLScene_Parallel_RT;GLScene_Cg_RT"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="GLScene_RT:Clean;GLScene_Sounds_RT:Clean;GLScene_Physics_RT:Clean;GLScene_Parallel_RT:Clean;GLScene_Cg_RT:Clean;GLScene_SDL_RT:Clean"/>
+        <CallTarget Targets="GLScene_RT:Clean;GLScene_Sounds_RT:Clean;GLScene_Physics_RT:Clean;GLScene_Parallel_RT:Clean;GLScene_Cg_RT:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="GLScene_RT:Make;GLScene_Sounds_RT:Make;GLScene_Physics_RT:Make;GLScene_Parallel_RT:Make;GLScene_Cg_RT:Make;GLScene_SDL_RT:Make"/>
+        <CallTarget Targets="GLScene_RT:Make;GLScene_Sounds_RT:Make;GLScene_Physics_RT:Make;GLScene_Parallel_RT:Make;GLScene_Cg_RT:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

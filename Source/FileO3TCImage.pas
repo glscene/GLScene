@@ -1,12 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit FileO3TCImage;
+
 (*
     Good to preview pictures in OpenDialog,
     so you may include both O3TCImage (preview) and GLFileO3TC (loading)
 *)
-
-unit FileO3TCImage;
 
 interface
 

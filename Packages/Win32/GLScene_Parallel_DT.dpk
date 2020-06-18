@@ -39,7 +39,7 @@ requires
   GLScene_Parallel_RT;
 
 contains
-  FCUDAEditor in '..\..\Source\FCUDAEditor.pas',
+  FCUDAEditor in '..\..\Source\FCUDAEditor.pas' {GLSCUDAEditorForm},
   GLS.ParallelRegister in '..\..\Source\GLS.ParallelRegister.pas';
 
 end.

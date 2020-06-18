@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-	Loader for FSRad OCT files. 
-}
+
 unit FileOCT;
+
+(* Loader for FSRad OCT files *)
 
 interface
 

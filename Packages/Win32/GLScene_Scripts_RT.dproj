@@ -13,11 +13,6 @@
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Android64' and '$(Base)'=='true') or '$(Base_Android64)'!=''">
-        <Base_Android64>true</Base_Android64>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
         <Base_Win32>true</Base_Win32>
         <CfgParent>Base</CfgParent>
@@ -60,14 +55,6 @@
         <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Locale>1049</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=;CFBundleName=</VerInfo_Keys>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_Android64)'!=''">
-        <Base_Android>true</Base_Android>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-        <VerInfo_Keys>package=com.embarcadero.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=1;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
-        <BT_BuildType>Debug</BT_BuildType>
-        <EnabledSysJars>android-support-v4.dex.jar;cloud-messaging.dex.jar;fmx.dex.jar;google-analytics-v2.dex.jar;google-play-billing.dex.jar;google-play-licensing.dex.jar;google-play-services.dex.jar</EnabledSysJars>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
@@ -115,11 +102,13 @@
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
         <DCCReference Include="DWS_RT.dcp"/>
-        <DCCReference Include="..\..\Source\DWS.HelperFunc.pas"/>
-        <DCCReference Include="..\..\Source\DWS.Classes.pas"/>
-        <DCCReference Include="..\..\Source\DWS.VectorGeometry.pas"/>
-        <DCCReference Include="..\..\Source\DWS.GLScene.pas"/>
-        <DCCReference Include="..\..\Source\DWS.OpenGL.pas"/>
+        <DCCReference Include="..\..\Source\GLS.PythonScript.pas"/>
+        <DCCReference Include="..\..\Source\GLS.dwsClasses.pas"/>
+        <DCCReference Include="..\..\Source\GLS.dwsHelperFunc.pas"/>
+        <DCCReference Include="..\..\Source\GLS.dwsObjects.pas"/>
+        <DCCReference Include="..\..\Source\GLS.dwsOpenGL.pas"/>
+        <DCCReference Include="..\..\Source\GLS.dwsScript.pas"/>
+        <DCCReference Include="..\..\Source\GLS.dwsVectorGeometry.pas"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -150,7 +139,6 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Platforms>
-                <Platform value="Android64">False</Platform>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
             </Platforms>

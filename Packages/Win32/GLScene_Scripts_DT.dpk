@@ -38,8 +38,6 @@ requires
   GLScene_Scripts_RT;
 
 contains
-  GLS.DWSScript in '..\..\Source\GLS.DWSScript.pas',
-  GLS.DWSObjects in '..\..\Source\GLS.DWSObjects.pas',
-  GLS.PythonScript in '..\..\Source\GLS.PythonScript.pas';
+  GLS.dwsScene in '..\..\Source\GLS.dwsScene.pas';
 
 end.
