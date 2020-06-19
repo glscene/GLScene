@@ -34,11 +34,12 @@ uses
 
   GLScene,
   GLWin32Viewer,
-  GLSceneRegister,
   GLStrings,
   FInfo,
   XCollection,
-  GLCrossPlatform;
+  GLCrossPlatform,
+
+  GLS.SceneRegister;
 
 const
   SCENE_SELECTED = 0;

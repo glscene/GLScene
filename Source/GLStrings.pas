@@ -1,13 +1,32 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   String constants that are used in many GLScene units
-}
 
 unit GLStrings;
 
+(*
+  String constants that are used for internationalization
+
+  To build your project with a single language's translations in the executable
+  itself, define one of the next languages
+
+Language             $DEFINE    2-character locale id
+  -------------------  ---------- ---------------------
+  English              LANG_EN    en
+  French               LANG_FR    fr
+  German               LANG_DE    de
+  Italian              LANG_IT    it
+  Japanese             LANG_JP    jp
+  Russian              LANG_RU    ru
+  Spanish              LANG_ES    es
+*)
+
 interface
+
+{$DEFINE LANG_EN}
+
+var
+  Language: Integer;
 
 resourcestring
 
@@ -227,14 +246,10 @@ resourcestring
   strSuccessCompilation = 'Successful compilation:' + #10#13 + '%s';
 
 
-
-//---------------------------------------------------------
-//---------------------------------------------------------
 //---------------------------------------------------------
 implementation
 //---------------------------------------------------------
-//---------------------------------------------------------
-//---------------------------------------------------------
+
 
 end.
 

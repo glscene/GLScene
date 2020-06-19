@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Registration unit for CG shader.
-}
+
 unit GLCgRegister;
+
+(*  Registration unit for CG shader *)
 
 interface
 
@@ -16,7 +16,8 @@ uses
   DesignEditors,
   VCLEditors,
   GLMaterial,
-  GLSceneRegister,
+
+  GLS.SceneRegister,
   Cg,
   CgGL,
   GLCgShader,

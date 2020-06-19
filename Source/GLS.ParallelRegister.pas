@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Registration unit for GLScene GPU Computing package. 
-}
+
 unit GLS.ParallelRegister;
+
+(*  Registration unit for GLScene GPU Computing package *)
 
 interface
 
@@ -16,7 +16,7 @@ uses
   StrEdit,
   ToolsAPI,
    
-  GLSceneRegister;
+  GLS.SceneRegister;
 
 procedure Register;
 
