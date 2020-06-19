@@ -43,9 +43,9 @@ const
 
   {$IFDEF MSWINDOWS}
    {$IFDEF WIN64}
-     SDL_LibName = 'sdl264.dll';
+     SDL_LibName = 'sdl2_64.dll';
    {$ELSE}
-     SDL_LibName = 'sdl2.dll';
+     SDL_LibName = 'sdl2_32.dll';
    {$ENDIF}
   {$ENDIF}
 
