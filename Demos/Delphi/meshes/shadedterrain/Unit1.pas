@@ -4,7 +4,6 @@ interface
 
 uses
   Winapi.Windows,
-  Winapi.OpenGL,
   System.SysUtils,
   System.UITypes,
   System.Classes,
@@ -16,7 +15,8 @@ uses
   Vcl.ExtCtrls,
   Vcl.ComCtrls,
   Vcl.StdCtrls,
-  
+
+  GLS.OpenGLx,
   GLScene,
   GLObjects,
   GLKeyboard,

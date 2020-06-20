@@ -29,6 +29,7 @@ object PostShaderDemoForm: TPostShaderDemoForm
     Buffer.DepthPrecision = dp24bits
     Buffer.ColorDepth = cd24bits
     FieldOfView = 162.090408325195300000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end

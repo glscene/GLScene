@@ -526,7 +526,7 @@ begin
   gizmo.viewerMouseUp(X, Y);
 
 
-  if TGLMouseButton(Button)=mbRight then
+  if TMouseButton(Button)=mbRight then
   begin
     if gizmo.CursorSelectingRegion then
     begin

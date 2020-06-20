@@ -388,9 +388,6 @@
         <DCCReference Include="..\..\Source\OpenGLVCL.pas"/>
         <DCCReference Include="..\..\Source\XOpenGL.pas"/>
         <DCCReference Include="..\..\Source\GLS.OpenGLx.pas"/>
-        <RcCompile Include="..\..\Resources\GLSceneRunTime.rc">
-            <Form>GLSceneRunTime.res</Form>
-        </RcCompile>
         <None Include="..\..\Source\GLScene.inc"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>

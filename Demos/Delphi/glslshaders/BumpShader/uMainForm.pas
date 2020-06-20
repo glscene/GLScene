@@ -33,7 +33,7 @@ uses
   GLUtils,
   GLFileMS3D,
   GLFile3DS,
-  DDSImage,
+  FileDDSImage,
   GLFileMD2,
   GLFileSMD,
   GLCrossPlatform;

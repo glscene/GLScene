@@ -92,7 +92,7 @@ unit cgGL;
 interface
 
 uses
-  {$IFDEF MSWINDOWS} Winapi.Windows,{$ENDIF}
+  Winapi.Windows,
   cg;
 
 const

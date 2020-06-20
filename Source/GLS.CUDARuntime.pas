@@ -2,40 +2,40 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-/// *
-// * Copyright 1993-2016 NVIDIA Corporation.  All rights reserved.
-// *
-// * NOTICE TO USER:
-// *
-// * This source code is subject to NVIDIA ownership rights under U.S. and
-// * international Copyright laws.  Users and possessors of this source code
-// * are hereby granted a nonexclusive, royalty-free license to use this code
-// * in individual and commercial software.
-// *
-// * NVIDIA MAKES NO REPRESENTATION ABOUT THE SUITABILITY OF THIS SOURCE
-// * CODE FOR ANY PURPOSE.  IT IS PROVIDED "AS IS" WITHOUT EXPRESS OR
-// * IMPLIED WARRANTY OF ANY KIND.  NVIDIA DISCLAIMS ALL WARRANTIES WITH
-// * REGARD TO THIS SOURCE CODE, INCLUDING ALL IMPLIED WARRANTIES OF
-// * MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE.
-// * IN NO EVENT SHALL NVIDIA BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL,
-// * OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
-// * OF USE, DATA OR PROFITS,  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
-// * OR OTHER TORTIOUS ACTION,  ARISING OUT OF OR IN CONNECTION WITH THE USE
-// * OR PERFORMANCE OF THIS SOURCE CODE.
-// *
-// * U.S. Government End Users.   This source code is a "commercial item" as
-// * that term is defined at  48 C.F.R. 2.101 (OCT 1995), consisting  of
-// * "commercial computer  software"  and "commercial computer software
-// * documentation" as such terms are  used in 48 C.F.R. 12.212 (SEPT 1995)
-// * and is provided to the U.S. Government only as a commercial end item.
-// * Consistent with 48 C.F.R.12.212 and 48 C.F.R. 227.7202-1 through
-// * 227.7202-4 (JUNE 1995), all U.S. Government End Users acquire the
-// * source code with only those rights set forth herein.
-// *
-// * Any use of this source code in individual and commercial software must
-// * include, in the user documentation and internal comments to the code,
-// * the above Disclaimer and U.S. Government End Users Notice.
-// */
+(*
+ * Copyright 1993-2020 NVIDIA Corporation.  All rights reserved.
+ *
+ * NOTICE TO USER:
+ *
+ * This source code is subject to NVIDIA ownership rights under U.S. and
+ * international Copyright laws.  Users and possessors of this source code
+ * are hereby granted a nonexclusive, royalty-free license to use this code
+ * in individual and commercial software.
+ *
+ * NVIDIA MAKES NO REPRESENTATION ABOUT THE SUITABILITY OF THIS SOURCE
+ * CODE FOR ANY PURPOSE.  IT IS PROVIDED "AS IS" WITHOUT EXPRESS OR
+ * IMPLIED WARRANTY OF ANY KIND.  NVIDIA DISCLAIMS ALL WARRANTIES WITH
+ * REGARD TO THIS SOURCE CODE, INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE.
+ * IN NO EVENT SHALL NVIDIA BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL,
+ * OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
+ * OF USE, DATA OR PROFITS,  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
+ * OR OTHER TORTIOUS ACTION,  ARISING OUT OF OR IN CONNECTION WITH THE USE
+ * OR PERFORMANCE OF THIS SOURCE CODE.
+ *
+ * U.S. Government End Users.   This source code is a "commercial item" as
+ * that term is defined at  48 C.F.R. 2.101 (OCT 1995), consisting  of
+ * "commercial computer  software"  and "commercial computer software
+ * documentation" as such terms are  used in 48 C.F.R. 12.212 (SEPT 1995)
+ * and is provided to the U.S. Government only as a commercial end item.
+ * Consistent with 48 C.F.R.12.212 and 48 C.F.R. 227.7202-1 through
+ * 227.7202-4 (JUNE 1995), all U.S. Government End Users acquire the
+ * source code with only those rights set forth herein.
+ *
+ * Any use of this source code in individual and commercial software must
+ * include, in the user documentation and internal comments to the code,
+ * the above Disclaimer and U.S. Government End Users Notice.
+ *)
 
 unit GLS.CUDARuntime;
 
@@ -202,7 +202,7 @@ type
     z: Integer;
     w: Integer;
     f: TCudaChannelFormatKind;
-  end { cudaChannelFormatDesc };
+  end;
 
   { +//DEVICE_BUILTIN*/ }
   TcudaArray = record
@@ -218,21 +218,21 @@ type
     pitch: NativeUInt;
     xsize: NativeUInt;
     ysize: NativeUInt;
-  end { cudaPitchedPtr };
+  end;
 
   { +//DEVICE_BUILTIN*/ }
   TcudaExtent = record
     width: NativeUInt;
     height: NativeUInt;
     depth: NativeUInt;
-  end { cudaExtent };
+  end;
 
   { +//DEVICE_BUILTIN*/ }
   TcudaPos = record
     x: NativeUInt;
     y: NativeUInt;
     z: NativeUInt;
-  end { cudaPos };
+  end;
 
   { +//DEVICE_BUILTIN*/ }
   TcudaMemcpy3DParms = record
@@ -244,7 +244,7 @@ type
     dstPtr: TcudaPitchedPtr;
     extent: TcudaExtent;
     kind: TcudaMemcpyKind;
-  end { cudaMemcpy3DParms };
+  end;
 
   { +//DEVICE_BUILTIN*/ }
   PCudaDeviceProp = ^TCudaDeviceProp;
@@ -320,6 +320,7 @@ type
   { -* SHORTHAND TYPE DEFINITION USED BY RUNTIME API* }
   { -** }
   { =*******************************************************************************/ }
+
   { +//DEVICE_BUILTIN*/ }
   cudaError_t = TcudaError;
   { +//DEVICE_BUILTIN*/ }
@@ -327,531 +328,289 @@ type
   { +//DEVICE_BUILTIN*/ }
   cudaEvent_t = Integer;
 
-  { +//****************************************************************************** }
-  { -** }
-  { -** }
-  { -** }
-  { =****************************************************************************** }
+(*******************************************************************************)
 
 var
 
-  cudaBindTexture: function(var offset: NativeUInt; const texref: PTextureReference;
-    var devPtr: Pointer; var desc: TCudaChannelFormatDesc; size: NativeUInt)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaBindTexture2D: function(var offset: NativeUInt;
-    const texref: PTextureReference; const devPtr: Pointer;
-    var desc: TCudaChannelFormatDesc; width, height, pitch: NativeUInt)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaBindTextureToArray: function(const texref: PTextureReference;
-    const cudaArray: PcudaArray): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaUnbindTexture: function(const texref: PTextureReference): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGetTextureAlignmentOffset: function(offset: NativeUInt;
-    const texref: PTextureReference): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGetTextureReference: function(const texref: PTextureReference;
-    const symbol: PAnsiChar): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGetChannelDesc: function(var desc: TCudaChannelFormatDesc;
-    const array_: Pointer): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaCreateChannelDesc: function(x, y, z, w: Integer;
-    f: TCudaChannelFormatKind): TCudaChannelFormatDesc;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  (* ******************************************************************************
-    *                                                                              *
-    *                                                                              *
-    *                                                                              *
-    ****************************************************************************** *)
+cudaBindTexture: function(var offset: NativeUInt; const texref: PTextureReference;
+    var devPtr: Pointer; var desc: TCudaChannelFormatDesc; size: NativeUInt): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaBindTexture2D: function(var offset: NativeUInt; const texref: PTextureReference; const devPtr: Pointer;
+    var desc: TCudaChannelFormatDesc; width, height, pitch: NativeUInt): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaBindTextureToArray: function(const texref: PTextureReference; const cudaArray: PcudaArray): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaUnbindTexture: function(const texref: PTextureReference): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGetTextureAlignmentOffset: function(offset: NativeUInt; const texref: PTextureReference): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGetTextureReference: function(const texref: PTextureReference; const symbol: PAnsiChar): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGetChannelDesc: function(var desc: TCudaChannelFormatDesc; const array_: Pointer): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaCreateChannelDesc: function(x, y, z, w: Integer; f: TCudaChannelFormatKind): TCudaChannelFormatDesc;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+(* ******************************************************************************
+  *                                                                              *
+  *                                                                              *
+  *                                                                              *
+  ****************************************************************************** *)
 
-  cudaMalloc3D: function(var pitchedDevPtr: TcudaPitchedPtr;
-    extent: TcudaExtent): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMalloc3DArray: function(var arrayPtr: PcudaArray;
-    const desc: TCudaChannelFormatDesc; extent: TcudaExtent; flags: Cardinal)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemset3D: function(pitchedDevPtr: TcudaPitchedPtr; value: Integer;
-    extent: TcudaExtent): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpy3D: function(const p: TcudaMemcpy3DParms): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpy3DAsync: function(const p: TcudaMemcpy3DParms; stream: cudaStream_t)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMalloc: function(var devPtr; size: NativeUInt): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMallocHost: function(var ptr: Pointer; size: NativeUInt): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMallocPitch: function(var devPtr; var pitch: NativeUInt; width: NativeUInt;
-    height: NativeUInt): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMallocArray: function(var aarray: Pointer;
-    var desc: TCudaChannelFormatDesc; width: NativeUInt; height: NativeUInt)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaFree: function(devPtr: Pointer): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaFreeHost: function(ptr: Pointer): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaFreeArray: function(const aarray: Pointer): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaHostAlloc: function(var pHost: Pointer; bytes: NativeUInt; flags: Cardinal)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaHostGetDevicePointer: function(var pDevice: Pointer; pHost: Pointer;
-    flags: Cardinal): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaHostGetFlags: function(var pFlags: Cardinal; pHost: Pointer): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemGetInfo: function(var free: NativeUInt; var total: NativeUInt): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpy: function(dst: Pointer; src: Pointer; count: NativeUInt;
-    kind: TcudaMemcpyKind): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpyToArray: function(var dst: PcudaArray; wOffset: NativeUInt;
-    hOffset: NativeUInt; var src; count: NativeUInt; kind: TcudaMemcpyKind)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpyFromArray: function(var dst; const src: PcudaArray; wOffset: NativeUInt;
-    hOffset: NativeUInt; count: NativeUInt; kind: TcudaMemcpyKind): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpyArrayToArray: function(dst: PcudaArray; wOffsetDst: NativeUInt;
-    hOffsetDst: NativeUInt; const src: PcudaArray; wOffsetSrc: NativeUInt;
-    hOffsetSrc: NativeUInt; count: NativeUInt;
-    const kind: TcudaMemcpyKind = cudaMemcpyDeviceToDevice): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpy2D: function(var dst; dpitch: NativeUInt; var src; spitch: NativeUInt;
+cudaMalloc3D: function(var pitchedDevPtr: TcudaPitchedPtr; extent: TcudaExtent): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMalloc3DArray: function(var arrayPtr: PcudaArray; const desc: TCudaChannelFormatDesc; extent: TcudaExtent; flags: Cardinal): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemset3D: function(pitchedDevPtr: TcudaPitchedPtr; value: Integer; extent: TcudaExtent): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpy3D: function(const p: TcudaMemcpy3DParms): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpy3DAsync: function(const p: TcudaMemcpy3DParms; stream: cudaStream_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMalloc: function(var devPtr; size: NativeUInt): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMallocHost: function(var ptr: Pointer; size: NativeUInt): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+  cudaMallocPitch: function(var devPtr; var pitch: NativeUInt; width: NativeUInt; height: NativeUInt): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMallocArray: function(var aarray: Pointer; var desc: TCudaChannelFormatDesc; width: NativeUInt; height: NativeUInt): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaFree: function(devPtr: Pointer): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaFreeHost: function(ptr: Pointer): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaFreeArray: function(const aarray: Pointer): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaHostAlloc: function(var pHost: Pointer; bytes: NativeUInt; flags: Cardinal): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaHostGetDevicePointer: function(var pDevice: Pointer; pHost: Pointer; flags: Cardinal): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaHostGetFlags: function(var pFlags: Cardinal; pHost: Pointer): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemGetInfo: function(var free: NativeUInt; var total: NativeUInt): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpy: function(dst: Pointer; src: Pointer; count: NativeUInt; kind: TcudaMemcpyKind): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpyToArray: function(var dst: PcudaArray; wOffset: NativeUInt; hOffset: NativeUInt; var src; count: NativeUInt; kind: TcudaMemcpyKind): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpyFromArray: function(var dst; const src: PcudaArray; wOffset: NativeUInt; hOffset: NativeUInt; count: NativeUInt; kind: TcudaMemcpyKind): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpyArrayToArray: function(dst: PcudaArray; wOffsetDst: NativeUInt; hOffsetDst: NativeUInt; const src: PcudaArray; wOffsetSrc: NativeUInt;
+    hOffsetSrc: NativeUInt; count: NativeUInt; const kind: TcudaMemcpyKind = cudaMemcpyDeviceToDevice): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpy2D: function(var dst; dpitch: NativeUInt; var src; spitch: NativeUInt;
     width: NativeUInt; height: NativeUInt; kind: TcudaMemcpyKind): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpy2DToArray: function(dst: PcudaArray; wOffset: NativeUInt;
-    hOffset: NativeUInt; var src; spitch: NativeUInt; width: NativeUInt; height: NativeUInt;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpy2DToArray: function(dst: PcudaArray; wOffset: NativeUInt;
+  hOffset: NativeUInt; var src; spitch: NativeUInt; width: NativeUInt; height: NativeUInt; kind: TcudaMemcpyKind): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpy2DFromArray: function(var dst; dpitch: NativeUInt; src: PcudaArray; wOffset: NativeUInt; hOffset: NativeUInt; width: NativeUInt; height: NativeUInt;
     kind: TcudaMemcpyKind): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpy2DFromArray: function(var dst; dpitch: NativeUInt; src: PcudaArray;
-    wOffset: NativeUInt; hOffset: NativeUInt; width: NativeUInt; height: NativeUInt;
-    kind: TcudaMemcpyKind): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpy2DArrayToArray: function(dst: PcudaArray; wOffsetDst: NativeUInt;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpy2DArrayToArray: function(dst: PcudaArray; wOffsetDst: NativeUInt;
     hOffsetDst: NativeUInt; src: PcudaArray; wOffsetSrc: NativeUInt; hOffsetSrc: NativeUInt;
-    width: NativeUInt; height: NativeUInt;
-    const kind: TcudaMemcpyKind = cudaMemcpyDeviceToDevice): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpyToSymbol: function(symbol: PAnsiChar; var src; count: NativeUInt;
-    const offset: NativeUInt = 0;
+    width: NativeUInt; height: NativeUInt; const kind: TcudaMemcpyKind = cudaMemcpyDeviceToDevice): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpyToSymbol: function(symbol: PAnsiChar; var src; count: NativeUInt; const offset: NativeUInt = 0;
     const kind: TcudaMemcpyKind = cudaMemcpyHostToDevice): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpyFromSymbol: function(var dst; symbol: PAnsiChar; count: NativeUInt;
-    const offset: NativeUInt = 0;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpyFromSymbol: function(var dst; symbol: PAnsiChar; count: NativeUInt; const offset: NativeUInt = 0;
     const kind: TcudaMemcpyKind = cudaMemcpyDeviceToHost): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  { +//*************************************************************************** }
-  { -** }
-  { -** }
-  { -** }
-  { =***************************************************************************** }
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
 
-  cudaMemcpyAsync: function(var dst; const src; count: NativeUInt;
-    kind: TcudaMemcpyKind; stream: cudaStream_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpyToArrayAsync: function(dst: PcudaArray; wOffset: NativeUInt;
-    hOffset: NativeUInt; const src; count: NativeUInt; kind: TcudaMemcpyKind;
+{ +//*************************************************************************** }
+{ -** }
+{ -** }
+{ -** }
+{ =***************************************************************************** }
+
+cudaMemcpyAsync: function(var dst; const src; count: NativeUInt; kind: TcudaMemcpyKind; stream: cudaStream_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpyToArrayAsync: function(dst: PcudaArray; wOffset: NativeUInt; hOffset: NativeUInt; const src; count: NativeUInt; kind: TcudaMemcpyKind;
     stream: cudaStream_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpyFromArrayAsync: function(var dst; const src: PcudaArray;
-    wOffset: NativeUInt; hOffset: NativeUInt; count: NativeUInt; kind: TcudaMemcpyKind;
-    stream: cudaStream_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpy2DAsync: function(var dst; dpitch: NativeUInt; const src;
-    spitch: NativeUInt; width: NativeUInt; height: NativeUInt; kind: TcudaMemcpyKind;
-    stream: cudaStream_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpy2DToArrayAsync: function(dst: PcudaArray; wOffset: NativeUInt;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpyFromArrayAsync: function(var dst; const src: PcudaArray;
+    wOffset: NativeUInt; hOffset: NativeUInt; count: NativeUInt; kind: TcudaMemcpyKind; stream: cudaStream_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpy2DAsync: function(var dst; dpitch: NativeUInt; const src;
+    spitch: NativeUInt; width: NativeUInt; height: NativeUInt; kind: TcudaMemcpyKind; stream: cudaStream_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpy2DToArrayAsync: function(dst: PcudaArray; wOffset: NativeUInt;
     hOffset: NativeUInt; const src; spitch: NativeUInt; width: NativeUInt; height: NativeUInt;
     kind: TcudaMemcpyKind; stream: cudaStream_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpy2DFromArrayAsync: function(var dst; dpitch: NativeUInt;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpy2DFromArrayAsync: function(var dst; dpitch: NativeUInt;
     const src: PcudaArray; wOffset: NativeUInt; hOffset: NativeUInt; width: NativeUInt;
     height: NativeUInt; kind: TcudaMemcpyKind; stream: cudaStream_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpyToSymbolAsync: function(const symbol: PAnsiChar; const src;
-    count: NativeUInt; offset: NativeUInt; kind: TcudaMemcpyKind; stream: cudaStream_t)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemcpyFromSymbolAsync: function(var dst; const symbol: PAnsiChar;
-    count: NativeUInt; offset: NativeUInt; kind: TcudaMemcpyKind; stream: cudaStream_t)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  /// *****************************************************************************
-  // *                                                                            *
-  // *                                                                            *
-  // *                                                                            *
-  // *****************************************************************************/
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpyToSymbolAsync: function(const symbol: PAnsiChar; const src;
+    count: NativeUInt; offset: NativeUInt; kind: TcudaMemcpyKind; stream: cudaStream_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemcpyFromSymbolAsync: function(var dst; const symbol: PAnsiChar;
+  count: NativeUInt; offset: NativeUInt; kind: TcudaMemcpyKind; stream: cudaStream_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
 
-  cudaMemset: function(var devPtr; value: Integer; count: NativeUInt): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaMemset2D: function(var devPtr; pitch: NativeUInt; value: Integer;
+(******************************************************************************
+ *                                                                            *
+ *                                                                            *
+ *                                                                            *
+ *****************************************************************************)
+
+cudaMemset: function(var devPtr; value: Integer; count: NativeUInt): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaMemset2D: function(var devPtr; pitch: NativeUInt; value: Integer;
     width: NativeUInt; height: NativeUInt): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  /// *****************************************************************************
-  // *                                                                            *
-  // *                                                                            *
-  // *                                                                            *
-  // *****************************************************************************/
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+(*****************************************************************************
+ *                                                                           *
+ *                                                                           *
+ *                                                                           *
+ *****************************************************************************)
 
-  cudaGetSymbolAddress: function(var devPtr: Pointer; const symbol: PAnsiChar)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGetSymbolSize: function(var size: NativeUInt; const symbol: PAnsiChar)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  { +//*************************************************************************** }
-  { -** }
-  { -** }
-  { -** }
-  { =***************************************************************************** }
+cudaGetSymbolAddress: function(var devPtr: Pointer; const symbol: PAnsiChar): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGetSymbolSize: function(var size: NativeUInt; const symbol: PAnsiChar): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
 
-  cudaGetDeviceCount: function(var count: Integer): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGetDeviceProperties: function(var prop: TCudaDeviceProp; device: Integer)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaChooseDevice: function(var device: Integer; const prop: PCudaDeviceProp)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaSetDevice: function(device: Integer): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGetDevice: function(var device: Integer): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaSetDeviceFlags: function(flags: Integer): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaSetValidDevices: function(device_arr: PInteger; len: Integer)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
+{ +//*************************************************************************** }
+{ -** }
+{ -** }
+{ -** }
+{ =***************************************************************************** }
+
+cudaGetDeviceCount: function(var count: Integer): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGetDeviceProperties: function(var prop: TCudaDeviceProp; device: Integer): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaChooseDevice: function(var device: Integer; const prop: PCudaDeviceProp): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaSetDevice: function(device: Integer): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGetDevice: function(var device: Integer): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaSetDeviceFlags: function(flags: Integer): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaSetValidDevices: function(device_arr: PInteger; len: Integer): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+(******************************************************************************
+ *
+ *
+ *
+ *****************************************************************************)
+
+cudaConfigureCall: function(gridDim, blockDim: TDim3; sharedMem: NativeUInt; stream: cudaStream_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaSetupArgument: function(const arg: Pointer; size: NativeUInt; offset: NativeUInt): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaFuncSetCacheConfig: function(const func: PAnsiChar; cacheConfig: TcudaFuncCache): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaLaunch: function(const entry: PAnsiChar): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaFuncGetAttributes: function(var attr: TcudaFuncAttributes; const func: PAnsiChar): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   { +//****************************************************************************** }
   { -** }
   { -** }
   { -** }
   { =*******************************************************************************/ }
 
-  cudaConfigureCall: function(gridDim, blockDim: TDim3; sharedMem: NativeUInt;
-    stream: cudaStream_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaSetupArgument: function(const arg: Pointer; size: NativeUInt; offset: NativeUInt)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaFuncSetCacheConfig: function(const func: PAnsiChar;
-    cacheConfig: TcudaFuncCache): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaLaunch: function(const entry: PAnsiChar): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaFuncGetAttributes: function(var attr: TcudaFuncAttributes;
-    const func: PAnsiChar): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
+cudaGetLastError: function: cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   { +//****************************************************************************** }
   { -** }
   { -** }
   { -** }
   { =*******************************************************************************/ }
-
-  cudaGetLastError: function: cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  { +//****************************************************************************** }
-  { -** }
-  { -** }
-  { -** }
-  { =*******************************************************************************/ }
-  cudaGLSetGLDevice: function(device: Integer): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGLRegisterBufferObject: function(bufObj: Cardinal): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGraphicsGLRegisterImage: function(const resource: PCUgraphicsResource;
-    image: Cardinal; target: Cardinal; flags: Cardinal): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGraphicsGLRegisterBuffer: function(const resource: PCUgraphicsResource;
-    buffer: Cardinal; flags: Cardinal): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGLMapBufferObject: function(devPtr: Pointer; bufObj: Cardinal): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGLUnmapBufferObject: function(bufObj: Cardinal): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGLUnregisterBufferObject: function(bufObj: Cardinal): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGLSetBufferObjectMapFlags: function(bufObj: Cardinal;
-    flags: TCudaGLMapFlags): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGLMapBufferObjectAsync: function(var devPtr: Pointer; bufObj: Cardinal;
-    stream: cudaStream_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGLUnmapBufferObjectAsync: function(bufObj: Cardinal; stream: cudaStream_t)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGraphicsUnregisterResource: function(resource: PCUgraphicsResource)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGraphicsResourceSetMapFlags: function(resource: PCUgraphicsResource;
-    flags: Cardinal): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGraphicsMapResources: function(count: Integer;
-    const resources: PCUgraphicsResource; stream: cudaStream_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGraphicsUnmapResources: function(count: Integer;
-    const resources: PCUgraphicsResource; stream: cudaStream_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGraphicsResourceGetMappedPointer: function(var pDevPtr: TCUdeviceptr;
+cudaGLSetGLDevice: function(device: Integer): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGLRegisterBufferObject: function(bufObj: Cardinal): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGraphicsGLRegisterImage: function(const resource: PCUgraphicsResource; image: Cardinal; target: Cardinal; flags: Cardinal): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGraphicsGLRegisterBuffer: function(const resource: PCUgraphicsResource; buffer: Cardinal; flags: Cardinal): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGLMapBufferObject: function(devPtr: Pointer; bufObj: Cardinal): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGLUnmapBufferObject: function(bufObj: Cardinal): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGLUnregisterBufferObject: function(bufObj: Cardinal): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGLSetBufferObjectMapFlags: function(bufObj: Cardinal; flags: TCudaGLMapFlags): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGLMapBufferObjectAsync: function(var devPtr: Pointer; bufObj: Cardinal; stream: cudaStream_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGLUnmapBufferObjectAsync: function(bufObj: Cardinal; stream: cudaStream_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGraphicsUnregisterResource: function(resource: PCUgraphicsResource): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGraphicsResourceSetMapFlags: function(resource: PCUgraphicsResource; flags: Cardinal): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGraphicsMapResources: function(count: Integer; const resources: PCUgraphicsResource; stream: cudaStream_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGraphicsUnmapResources: function(count: Integer; const resources: PCUgraphicsResource; stream: cudaStream_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGraphicsResourceGetMappedPointer: function(var pDevPtr: TCUdeviceptr;
     var pSize: Cardinal; resource: PCUgraphicsResource): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGraphicsSubResourceGetMappedArray: function(var pArray: PCUarray;
-    resource: PCUgraphicsResource; arrayIndex: Cardinal; mipLevel: Cardinal)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaGetErrorString: function(error: cudaError_t): PAnsiChar;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaDriverGetVersion: function(out driverVersion: Integer): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaRuntimeGetVersion: function(out runtimeVersion: Integer): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  (* ******************************************************************************
-    *                                                                              *
-    *                                                                              *
-    *                                                                              *
-    ****************************************************************************** *)
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGraphicsSubResourceGetMappedArray: function(var pArray: PCUarray;
+    resource: PCUgraphicsResource; arrayIndex: Cardinal; mipLevel: Cardinal): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaGetErrorString: function(error: cudaError_t): PAnsiChar;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaDriverGetVersion: function(out driverVersion: Integer): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaRuntimeGetVersion: function(out runtimeVersion: Integer): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+(* ******************************************************************************
+ *                                                                              *
+ *                                                                              *
+ *                                                                              *
+ ****************************************************************************** *)
 
-  cudaSetDoubleForDevice: function(var d: Double): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaSetDoubleForHost: function(var d: Double): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  (* ******************************************************************************
-    *                                                                              *
-    *                                                                              *
-    *                                                                              *
-    ****************************************************************************** *)
+cudaSetDoubleForDevice: function(var d: Double): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaSetDoubleForHost: function(var d: Double): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+(* ******************************************************************************
+ *                                                                              *
+ *                                                                              *
+ *                                                                              *
+ ****************************************************************************** *)
 
-  cudaStreamCreate: function(var pStream: cudaStream_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaStreamDestroy: function(stream: cudaStream_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaStreamSynchronize: function(stream: cudaStream_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaStreamQuery: function(stream: cudaStream_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  (* ******************************************************************************
-    *                                                                              *
-    *                                                                              *
-    *                                                                              *
-    ****************************************************************************** *)
+cudaStreamCreate: function(var pStream: cudaStream_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaStreamDestroy: function(stream: cudaStream_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaStreamSynchronize: function(stream: cudaStream_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaStreamQuery: function(stream: cudaStream_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+(* ******************************************************************************
+ *                                                                              *
+ *                                                                              *
+ *                                                                              *
+ ****************************************************************************** *)
 
-  cudaEventCreate: function(var event: cudaEvent_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaEventCreateWithFlags: function(var event: cudaEvent_t; flags: Integer)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaEventRecord: function(event: cudaEvent_t; stream: cudaStream_t)
-    : cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaEventQuery: function(event: cudaEvent_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaEventSynchronize: function(event: cudaEvent_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaEventDestroy: function(event: cudaEvent_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaEventElapsedTime: function(var ms: Single; start: cudaEvent_t;
-    ending: cudaEvent_t): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  cudaWGLGetDevice: function(var device: Integer; hGpu: HGPUNV): cudaError_t;
-{$IFDEF MSWINDOWS}stdcall;
-{$ELSE}cdecl;
-{$ENDIF}
-  (* ******************************************************************************
-    *                                                                              *
-    *                                                                              *
-    *                                                                              *
-    ****************************************************************************** *)
+cudaEventCreate: function(var event: cudaEvent_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaEventCreateWithFlags: function(var event: cudaEvent_t; flags: Integer): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaEventRecord: function(event: cudaEvent_t; stream: cudaStream_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaEventQuery: function(event: cudaEvent_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaEventSynchronize: function(event: cudaEvent_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaEventDestroy: function(event: cudaEvent_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaEventElapsedTime: function(var ms: Single; start: cudaEvent_t; ending: cudaEvent_t): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+cudaWGLGetDevice: function(var device: Integer; hGpu: HGPUNV): cudaError_t;
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+(* ******************************************************************************
+ *                                                                              *
+ *                                                                              *
+ *                                                                              *
+ ****************************************************************************** *)
 
 cudaThreadExit: function(): cudaError_t;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
 cudaThreadSynchronize: function(): cudaError_t;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}

@@ -129,9 +129,9 @@
         <DCCReference Include="GLScene_RT.dcp"/>
         <DCCReference Include="..\..\Source\cgGL.pas"/>
         <DCCReference Include="..\..\Source\cg.pas"/>
-        <DCCReference Include="..\..\Source\GLCgShader.pas"/>
-        <DCCReference Include="..\..\Source\GLCgBombShader.pas"/>
-        <DCCReference Include="..\..\Source\GLcgPostTransformationShader.pas"/>
+        <DCCReference Include="..\..\Source\GLS.cgBombShader.pas"/>
+        <DCCReference Include="..\..\Source\GLS.cgPostTransformationShader.pas"/>
+        <DCCReference Include="..\..\Source\GLS.cgShader.pas"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -170,7 +170,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\Win64\GLScene_Cg_RT.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\21.0\Bpl\Win64\GLScene_Cg_RT.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win64">
                         <RemoteName>GLScene_Cg_RT.bpl</RemoteName>
                         <Overwrite>true</Overwrite>

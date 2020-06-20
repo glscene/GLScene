@@ -3,7 +3,6 @@ unit Unit1;
 interface
 
 uses
-  Winapi.OpenGL,
   System.SysUtils,
   System.Classes,
   Vcl.Graphics,
@@ -12,14 +11,16 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
 
-  CgGL,
+  GLS.OpenGLx,
+  cgGL,
+  GLS.cgShader,
+
   GLScene,
   GLVectorTypes,
   GLVectorGeometry,
   GLObjects,
   GLCadencer,
   GLTexture,
-  GLCgShader,
   GLWin32Viewer,
   GLVectorFileObjects,
   GLAsyncTimer,

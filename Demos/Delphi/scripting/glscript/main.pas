@@ -17,12 +17,6 @@ uses
   GLObjects,
   GLWin32Viewer,
   GLScene,
-  GLScriptDWS,
-  dwsComp,
-  dwsOpenGLAdapter,
-  GLDWSObjects,
-  dwsExprs,
-  dwsVectorGeometry,
   GLTexture,
   GLCadencer,
   GLAsyncTimer,
@@ -32,7 +26,15 @@ uses
   GLCoordinates,
   GLCrossPlatform,
   GLBaseClasses,
-  GLRenderContextInfo;
+  GLRenderContextInfo,
+
+  GLS.dwsSript,
+  GLS.dwsOpenGL,
+  GLS.dwsObjects,
+  GLS.dwsVectorGeometry,
+  DWS.Exprs,
+  DWS.Comp
+;
 
 type
   TForm1 = class(TForm)

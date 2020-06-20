@@ -19,15 +19,16 @@ uses
   GLCadencer,
   GLWin32Viewer,
   GLAsyncTimer,
-  dwsClasses,
-  dwsVectorGeometry,
-  dwsGLScene,
-  GLDWSObjects,
-  dwsComp,
-  GLScriptDWS,
   GLCoordinates,
   GLCrossPlatform,
-  GLBaseClasses;
+  GLBaseClasses,
+
+  GLS.dwsClasses,
+  GLS.dwsVectorGeometry,
+  GLS.dwsGLScene,
+  GLS.dwsObjects,
+  GLS.dwsScript,
+  DWS.Comp;
 
 type
   TForm1 = class(TForm)
@@ -54,10 +55,6 @@ type
     procedure Button3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure AsyncTimer1Timer(Sender: TObject);
-  private
-     
-  public
-     
   end;
 
 var

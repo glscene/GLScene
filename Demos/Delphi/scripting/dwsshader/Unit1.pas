@@ -14,13 +14,24 @@ uses
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
   
-  GLCadencer, GLTexture, GLUserShader, GLWin32Viewer,
-  GLScene, GLObjects, GLAsyncTimer, GLScriptBase,
-  GLScriptDWS,
-  dwsOpenGLAdapter,
-  dwsVectorGeometry,
-  dwsComp, GLMaterial, GLCoordinates,
-  GLCrossPlatform, GLBaseClasses, GLRenderContextInfo;
+  GLCadencer,
+  GLTexture,
+  GLUserShader,
+  GLWin32Viewer,
+  GLScene,
+  GLObjects,
+  GLAsyncTimer,
+  GLMaterial,
+  GLCoordinates,
+  GLCrossPlatform,
+  GLBaseClasses,
+  GLRenderContextInfo,
+  GLScriptBase,
+
+  GLS.dwsScript,
+  GLS.dwsOpenGL,
+  GLS.dwsVectorGeometry,
+  DWS.Comp;
 
 type
   TForm1 = class(TForm)
@@ -58,7 +69,7 @@ type
     procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
       X, Y: Integer);
   private
-     
+
   public
      
     mx, my : Integer;

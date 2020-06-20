@@ -61,7 +61,7 @@ void __fastcall TForm1::WindowsFont1Click(TObject *Sender)
 void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y)
 {
-  GLForm1->MouseDown(Sender,TGLMouseButton(Button),Shift,X,Y);
+  GLForm1->MouseDown(Sender,TMouseButton(Button),Shift,X,Y);
 }
 //---------------------------------------------------------------------------
 
@@ -75,7 +75,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
 void __fastcall TForm1::GLSceneViewer1MouseUp(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y)
 {
-  GLForm1->MouseUp(Sender,TGLMouseButton(Button),Shift,X,Y);
+  GLForm1->MouseUp(Sender,TMouseButton(Button),Shift,X,Y);
 }
 //---------------------------------------------------------------------------
 

@@ -10,7 +10,6 @@ uses
 
   GLScene,
   GLObjects,
-  GLSDLContext,
   GLTeapot,
   GLCrossPlatform,
   GLCoordinates,
@@ -20,6 +19,7 @@ uses
   GLTexture,
   GLUtils,
 
+  GLS.SDLContext,
   SDL2;
 
 type

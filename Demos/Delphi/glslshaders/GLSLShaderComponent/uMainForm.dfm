@@ -29,6 +29,7 @@ object GLSLTestForm: TGLSLTestForm
     Buffer.DepthPrecision = dp24bits
     Buffer.ColorDepth = cd24bits
     FieldOfView = 141.760543823242200000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end

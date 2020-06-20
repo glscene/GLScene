@@ -1,40 +1,40 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-/// *
-// * Copyright 1993-2017 NVIDIA Corporation.  All rights reserved.
-// *
-// * NOTICE TO USER:
-// *
-// * This source code is subject to NVIDIA ownership rights under U.S. and
-// * international Copyright laws.  Users and possessors of this source code
-// * are hereby granted a nonexclusive, royalty-free license to use this code
-// * in individual and commercial software.
-// *
-// * NVIDIA MAKES NO REPRESENTATION ABOUT THE SUITABILITY OF THIS SOURCE
-// * CODE FOR ANY PURPOSE.  IT IS PROVIDED "AS IS" WITHOUT EXPRESS OR
-// * IMPLIED WARRANTY OF ANY KIND.  NVIDIA DISCLAIMS ALL WARRANTIES WITH
-// * REGARD TO THIS SOURCE CODE, INCLUDING ALL IMPLIED WARRANTIES OF
-// * MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE.
-// * IN NO EVENT SHALL NVIDIA BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL,
-// * OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
-// * OF USE, DATA OR PROFITS,  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
-// * OR OTHER TORTIOUS ACTION,  ARISING OUT OF OR IN CONNECTION WITH THE USE
-// * OR PERFORMANCE OF THIS SOURCE CODE.
-// *
-// * U.S. Government End Users.   This source code is a "commercial item" as
-// * that term is defined at  48 C.F.R. 2.101 (OCT 1995), consisting  of
-// * "commercial computer  software"  and "commercial computer software
-// * documentation" as such terms are  used in 48 C.F.R. 12.212 (SEPT 1995)
-// * and is provided to the U.S. Government only as a commercial end item.
-// * Consistent with 48 C.F.R.12.212 and 48 C.F.R. 227.7202-1 through
-// * 227.7202-4 (JUNE 1995), all U.S. Government End Users acquire the
-// * source code with only those rights set forth herein.
-// *
-// * Any use of this source code in individual and commercial software must
-// * include, in the user documentation and internal comments to the code,
-// * the above Disclaimer and U.S. Government End Users Notice.
-// */
+(*
+ * Copyright 1993-2020 NVIDIA Corporation.  All rights reserved.
+ *
+ * NOTICE TO USER:
+ *
+ * This source code is subject to NVIDIA ownership rights under U.S. and
+ * international Copyright laws.  Users and possessors of this source code
+ * are hereby granted a nonexclusive, royalty-free license to use this code
+ * in individual and commercial software.
+ *
+ * NVIDIA MAKES NO REPRESENTATION ABOUT THE SUITABILITY OF THIS SOURCE
+ * CODE FOR ANY PURPOSE.  IT IS PROVIDED "AS IS" WITHOUT EXPRESS OR
+ * IMPLIED WARRANTY OF ANY KIND.  NVIDIA DISCLAIMS ALL WARRANTIES WITH
+ * REGARD TO THIS SOURCE CODE, INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE.
+ * IN NO EVENT SHALL NVIDIA BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL,
+ * OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
+ * OF USE, DATA OR PROFITS,  WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
+ * OR OTHER TORTIOUS ACTION,  ARISING OUT OF OR IN CONNECTION WITH THE USE
+ * OR PERFORMANCE OF THIS SOURCE CODE.
+ *
+ * U.S. Government End Users.   This source code is a "commercial item" as
+ * that term is defined at  48 C.F.R. 2.101 (OCT 1995), consisting  of
+ * "commercial computer  software"  and "commercial computer software
+ * documentation" as such terms are  used in 48 C.F.R. 12.212 (SEPT 1995)
+ * and is provided to the U.S. Government only as a commercial end item.
+ * Consistent with 48 C.F.R.12.212 and 48 C.F.R. 227.7202-1 through
+ * 227.7202-4 (JUNE 1995), all U.S. Government End Users acquire the
+ * source code with only those rights set forth herein.
+ *
+ * Any use of this source code in individual and commercial software must
+ * include, in the user documentation and internal comments to the code,
+ * the above Disclaimer and U.S. Government End Users Notice.
+ *)
 
 unit GLS.CUDAApi;
 
@@ -603,322 +603,322 @@ type
 
 type
   TcuInit = function(Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuDriverGetVersion = function(out driverVersion: Integer): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuDeviceGet = function(var device: TCUdevice; ordinal: Integer): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuDeviceGetCount = function(var count: Integer): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuDeviceGetName = function(name: PAnsiChar; len: Integer; dev: TCUdevice): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuDeviceComputeCapability = function(var major: Integer; var minor: Integer;
     dev: TCUdevice): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuDeviceTotalMem = function(bytes: PSize_t; dev: TCUdevice): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuDeviceGetProperties = function(var prop: TCUdevprop; dev: TCUdevice)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuDeviceGetAttribute = function(pi: PSize_t; attrib: TCUdevice_attribute;
     dev: TCUdevice): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuCtxCreate = function(var pctx: PCUcontext; Flags: Cardinal; dev: TCUdevice)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuCtxDestroy = function(ctx: PCUcontext): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuCtxAttach = function(var pctx: PCUcontext; Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuCtxDetach = function(ctx: PCUcontext): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuCtxPushCurrent = function(ctx: PCUcontext): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuCtxPopCurrent = function(var pctx: PCUcontext): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuCtxGetDevice = function(var device: TCUdevice): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuCtxSynchronize = function: TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuModuleLoad = function(var module: PCUmodule; const fname: PAnsiChar)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuModuleLoadData = function(var module: PCUmodule; const image: PAnsiChar)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuModuleLoadDataEx = function(var module: PCUmodule; var image;
     numOptions: Cardinal; var options: TCUjit_option; var optionValues)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuModuleLoadFatBinary = function(var module: PCUmodule; var fatCubin)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuModuleUnload = function(hmod: PCUmodule): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuModuleGetFunction = function(out hfunc: PCUfunction; hmod: PCUmodule;
     const name: PAnsiChar): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuModuleGetGlobal = function(out dptr: TCUdeviceptr; var bytes: Cardinal;
     hmod: PCUmodule; const name: PAnsiChar): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuModuleGetTexRef = function(out pTexRef: PCUtexref; hmod: PCUmodule;
     const name: PAnsiChar): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemGetInfo = function(var free: Cardinal; var total: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemAlloc = function(var dptr: TCUdeviceptr; bytesize: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemAllocPitch = function(var dptr: TCUdeviceptr; var pPitch: Cardinal;
     WidthInBytes: Cardinal; Height: Cardinal; ElementSizeBytes: Cardinal)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemFree = function(dptr: TCUdeviceptr): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemGetAddressRange = function(var pbase: TCUdeviceptr; var psize: Cardinal;
     dptr: TCUdeviceptr): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemAllocHost = function(var pp; bytesize: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemFreeHost = function(p: Pointer): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemHostAlloc = function(var pp: Pointer; bytesize: Cardinal; Flags: Cardinal)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemHostGetDevicePointer = function(var pdptr: TCUdeviceptr; p: Pointer;
     Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemHostGetFlags = function(var pFlags: Cardinal; var p): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpyHtoD = function(dstDevice: TCUdeviceptr; const srcHost: Pointer;
     ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpyDtoH = function(const dstHost: Pointer; srcDevice: TCUdeviceptr;
     ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpyDtoD = function(dstDevice: TCUdeviceptr; srcDevice: TCUdeviceptr;
     ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpyDtoDAsync = function(dstDevice: TCUdeviceptr;
     srcDevice: TCUdeviceptr; ByteCount: Cardinal; hStream: PCUstream)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpyDtoA = function(dstArray: PCUarray; dstIndex: Cardinal;
     srcDevice: TCUdeviceptr; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpyAtoD = function(dstDevice: TCUdeviceptr; hSrc: PCUarray;
     SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpyHtoA = function(dstArray: PCUarray; dstIndex: Cardinal;
     pSrc: Pointer; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpyAtoH = function(dstHost: Pointer; srcArray: PCUarray;
     SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpyAtoA = function(dstArray: PCUarray; dstIndex: Cardinal;
     srcArray: PCUarray; SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpy2D = function(const pCopy: PCUDA_MEMCPY2D): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpy2DUnaligned = function(var pCopy: TCUDA_MEMCPY2D): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpy3D = function(var pCopy: TCUDA_MEMCPY3D): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpyHtoDAsync = function(dstDevice: TCUdeviceptr; var srcHost;
     ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpyDtoHAsync = function(var dstHost; srcDevice: TCUdeviceptr;
     ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpyHtoAAsync = function(dstArray: PCUarray; dstIndex: Cardinal;
     var pSrc; ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpyAtoHAsync = function(var dstHost; srcArray: PCUstream;
     SrcIndex: Cardinal; ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpy2DAsync = function(var pCopy: TCUDA_MEMCPY2D; hStream: PCUstream)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemcpy3DAsync = function(var pCopy: TCUDA_MEMCPY3D; hStream: PCUstream)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemsetD8 = function(dstDevice: TCUdeviceptr; ub: Byte; N: Cardinal)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemsetD16 = function(dstDevice: TCUdeviceptr; uw: Word; N: Cardinal)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemsetD32 = function(dstDevice: TCUdeviceptr; ui: Cardinal; N: Cardinal)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemsetD2D8 = function(dstDevice: TCUdeviceptr; dstPitch: Cardinal;
     ub: Byte; Width: Cardinal; Height: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemsetD2D16 = function(dstDevice: TCUdeviceptr; dstPitch: Cardinal;
     uw: Word; Width: Cardinal; Height: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuMemsetD2D32 = function(dstDevice: TCUdeviceptr; dstPitch: Cardinal;
     ui: Cardinal; Width: Cardinal; Height: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuFuncSetBlockShape = function(hfunc: PCUfunction; x: Integer; y: Integer;
     z: Integer): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuFuncSetSharedSize = function(hfunc: PCUfunction; bytes: Cardinal)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuFuncGetAttribute = function(var pi: Integer; attrib: TCUfunction_attribute;
     hfunc: PCUfunction): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuArrayCreate = function(var pHandle: PCUarray;
     var pAllocateArray: TCUDA_ARRAY_DESCRIPTOR): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuArrayGetDescriptor = function(var pArrayDescriptor: TCUDA_ARRAY_DESCRIPTOR;
     hArray: PCUarray): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuArrayDestroy = function(hArray: PCUarray): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuArray3DCreate = function(var pHandle: PCUarray;
     var pAllocateArray: TCUDA_ARRAY3D_DESCRIPTOR): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuArray3DGetDescriptor = function(var pArrayDescriptor
     : TCUDA_ARRAY3D_DESCRIPTOR; hArray: PCUarray): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuTexRefCreate = function(var pTexRef: PCUtexref): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuTexRefDestroy = function(hTexRef: PCUtexref): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuTexRefSetArray = function(hTexRef: PCUtexref; hArray: PCUarray;
     Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuTexRefSetAddress = function(var ByteOffset: Cardinal; hTexRef: PCUtexref;
     dptr: TCUdeviceptr; bytes: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuTexRefSetAddress2D = function(hTexRef: PCUtexref;
     var desc: TCUDA_ARRAY_DESCRIPTOR; dptr: TCUdeviceptr; Pitch: Cardinal)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuTexRefSetFormat = function(hTexRef: PCUtexref; fmt: TCUarray_format;
     NumPackedComponents: Integer): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuTexRefSetAddressMode = function(hTexRef: PCUtexref; dim: Integer;
     am: TCUaddress_mode): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuTexRefSetFilterMode = function(hTexRef: PCUtexref; fm: TCUfilter_mode)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuTexRefSetFlags = function(hTexRef: PCUtexref; Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuTexRefGetAddress = function(var pdptr: TCUdeviceptr; hTexRef: PCUtexref)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuTexRefGetArray = function(var phArray: PCUarray; hTexRef: PCUtexref)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuTexRefGetAddressMode = function(var pam: TCUaddress_mode;
     hTexRef: PCUtexref; dim: Integer): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuTexRefGetFilterMode = function(var pfm: TCUfilter_mode; hTexRef: PCUtexref)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuTexRefGetFormat = function(var pFormat: TCUarray_format;
     var pNumChannels: Integer; hTexRef: PCUtexref): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuTexRefGetFlags = function(var pFlags: Cardinal; hTexRef: PCUtexref)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuParamSetSize = function(hfunc: PCUfunction; numbytes: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuParamSeti = function(hfunc: PCUfunction; offset: Integer; value: Cardinal)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuParamSetf = function(hfunc: PCUfunction; offset: Integer; value: Single)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuParamSetv = function(hfunc: PCUfunction; offset: Integer; var ptr;
     numbytes: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuParamSetTexRef = function(hfunc: PCUfunction; texunit: Integer;
     hTexRef: PCUtexref): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuLaunch = function(f: PCUfunction): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuLaunchGrid = function(f: PCUfunction; grid_width: Integer;
     grid_height: Integer): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuLaunchGridAsync = function(f: PCUfunction; grid_width: Integer;
     grid_height: Integer; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuEventCreate = function(var phEvent: PCUevent; Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuEventRecord = function(hEvent: PCUevent; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuEventQuery = function(hEvent: PCUevent): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuEventSynchronize = function(hEvent: PCUevent): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuEventDestroy = function(hEvent: PCUevent): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuEventElapsedTime = function(var pMilliseconds: Single; hStart: PCUevent;
     hEnd: PCUevent): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuStreamCreate = function(var phStream: PCUstream; Flags: Cardinal)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuStreamQuery = function(hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuStreamSynchronize = function(hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuStreamDestroy = function(hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuGLCtxCreate = function(var pctx: PCUcontext; Flags: Cardinal;
     device: TCUdevice): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuGraphicsGLRegisterBuffer = function(var pCudaResource: PCUgraphicsResource;
     buffer: Cardinal; Flags: TCUgraphicsMapResourceFlags): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuGraphicsGLRegisterImage = function(var pCudaResource: PCUgraphicsResource;
     image, target: Cardinal; Flags: TCUgraphicsMapResourceFlags): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuWGLGetDevice = function(var pDevice: TCUdevice; hGpu: HGPUNV): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuGraphicsUnregisterResource = function(resource: PCUgraphicsResource)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuGraphicsSubResourceGetMappedArray = function(var pArray: PCUarray;
     resource: PCUgraphicsResource; arrayIndex: Cardinal; mipLevel: Cardinal)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuGraphicsResourceGetMappedPointer = function(var pDevPtr: TCUdeviceptr;
     out psize: Cardinal; resource: PCUgraphicsResource): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuGraphicsResourceSetMapFlags = function(resource: PCUgraphicsResource;
     Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuGraphicsMapResources = function(count: Cardinal;
     resources: PPCUgraphicsResource; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuGraphicsUnmapResources = function(count: Cardinal;
     resources: PPCUgraphicsResource; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuGLInit = procedure();
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuGLRegisterBufferObject = function(buffer: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuGLMapBufferObject = function(var dptr: TCUdeviceptr; var size: Cardinal;
     buffer: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuGLUnmapBufferObject = function(buffer: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuGLUnregisterBufferObject = function(buffer: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuGLSetBufferObjectMapFlags = function(buffer: Cardinal; Flags: Cardinal)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuGLMapBufferObjectAsync = function(var dptr: TCUdeviceptr;
     var size: Cardinal; buffer: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
   TcuGLUnmapBufferObjectAsync = function(buffer: Cardinal; hStream: PCUstream)
     : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
 
 var
   cuInit: TcuInit;

@@ -37,7 +37,7 @@ uses
   GLFileMD2,
   GLFileMS3D,
   GLFile3DS, 
-  DDSImage;
+  FileDDSImage;
 
 type
   TGLSLTestForm = class(TForm)

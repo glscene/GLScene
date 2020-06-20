@@ -28,7 +28,7 @@
 #include "GLFileSMD.hpp"
 #include "GLFileMD2.hpp"
 #include "GLFile3DS.hpp"
-#include "DDSImage.hpp"
+#include "FileDDSImage.hpp"
 #include "GLFileMS3D.hpp"
 #include "GLUtils.hpp"
 

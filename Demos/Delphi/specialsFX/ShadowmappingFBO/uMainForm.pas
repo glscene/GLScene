@@ -39,7 +39,7 @@ uses
   GLVectorFileObjects,
   GLPipelineTransformation,
   GLFileMD2,
-  DDSImage,
+  FileDDSImage,
   GLFileObj,
   GLGraphics,
   GLState,

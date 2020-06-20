@@ -32,7 +32,8 @@ uses
   GLMaterial,
   GLBaseClasses,
   GLSLPostShaders,
-  GLcgPostTransformationShader,
+
+  GLS.cgPostTransformationShader,
   GLFileMD2,
   GLFileMS3D,
   GLFile3DS;

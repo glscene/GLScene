@@ -92,7 +92,7 @@ object Form1: TForm1
     object LabelContInterval: TLabel
       Left = 703
       Top = 35
-      Width = 67
+      Width = 70
       Height = 13
       Caption = 'LAContInterval'
     end
@@ -108,7 +108,6 @@ object Form1: TForm1
       TabStop = False
       ThumbLength = 10
       TickMarks = tmBoth
-
     end
     object TBIntensity: TTrackBar
       Left = 125

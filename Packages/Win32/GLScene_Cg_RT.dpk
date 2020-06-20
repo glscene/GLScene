@@ -38,8 +38,8 @@ requires
 contains
   cgGL in '..\..\Source\cgGL.pas',
   cg in '..\..\Source\cg.pas',
-  GLCgShader in '..\..\Source\GLCgShader.pas',
-  GLCgBombShader in '..\..\Source\GLCgBombShader.pas',
-  GLcgPostTransformationShader in '..\..\Source\GLcgPostTransformationShader.pas';
+  GLS.cgShader in '..\..\Source\GLS.cgShader.pas',
+  GLS.cgBombShader in '..\..\Source\GLS.cgBombShader.pas',
+  GLS.cgPostTransformationShader in '..\..\Source\GLS.cgPostTransformationShader.pas';
 
 end.

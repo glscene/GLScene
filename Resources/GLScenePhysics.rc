@@ -1,4 +1,4 @@
-TGLODEJointlist BITMAP vcl\TGLODEJointlist.bmp
-TGLODEManager BITMAP vcl\TGLODEManager.bmp
-TGLNGDJointlist BITMAP vcl\TGLNGDJointlist.bmp
-TGLNGDManager BITMAP vcl\TGLNGDManager.bmp
+TGLODEJointlist BITMAP components\TGLODEJointlist.bmp
+TGLODEManager BITMAP components\TGLODEManager.bmp
+TGLNGDJointlist BITMAP components\TGLNGDJointlist.bmp
+TGLNGDManager BITMAP components\TGLNGDManager.bmp

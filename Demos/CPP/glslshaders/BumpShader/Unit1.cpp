@@ -25,7 +25,7 @@
 #pragma link "GLFileSMD"
 #pragma link "GLFileMD2"
 #pragma link "GLFile3DS"
-#pragma link "DDSImage"
+#pragma link "FileDDSImage"
 #pragma link "GLFileMS3D"
 #pragma link "GLBaseClasses"
 #pragma link "GLSLBumpShader"

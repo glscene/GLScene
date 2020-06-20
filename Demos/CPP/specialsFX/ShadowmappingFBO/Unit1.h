@@ -24,7 +24,7 @@
 #include "GLVectorFileObjects.hpp"
 #include "GLWin32Viewer.hpp"
 #include "OpenGLx.hpp"
-#include "DDSImage.hpp"
+#include "FileDDSImage.hpp"
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
