@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLTree;
+
+(*
   Dynamic tree generation in GLScene
   This code was adapted from the nVidia Tree Demo:
   http://developer.nvidia.com/object/Procedural_Tree.html
@@ -16,8 +19,7 @@
   "AutoRebuild" flag -
   Rebuild tree after property change.
   Default: True
-}
-unit GLTree;
+*)
 
 interface
 
@@ -1283,7 +1285,7 @@ procedure TGLTree.LoadFromFile(const aFileName: String);
 var
   stream: TStream;
 begin
-  stream := CreateFileStream(aFileName);
+  stream := TFileStream.Create(aFileName, fmOpenRead);
   try
     LoadFromStream(stream);
   finally
@@ -1295,7 +1297,7 @@ procedure TGLTree.SaveToFile(const aFileName: String);
 var
   stream: TStream;
 begin
-  stream := CreateFileStream(aFileName, fmCreate);
+  stream := TFileStream.Create(aFileName, fmCreate);
   try
     SaveToStream(stream);
   finally

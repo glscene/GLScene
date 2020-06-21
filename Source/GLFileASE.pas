@@ -1,19 +1,19 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   ASE (ASCI Scene Export) file format support for GLScene 
-}
+
 unit GLFileASE;
+
+(*  ASE (ASCI Scene Export) file format support *)
 
 interface
 
 {$I GLScene.inc}
 
 uses
-  System.Classes, 
+  System.Classes,
   System.SysUtils,
-  GLVectorFileObjects, 
+  GLVectorFileObjects,
   GLApplicationFileIO,
   GLVectorTypes, 
   GLVectorGeometry, 

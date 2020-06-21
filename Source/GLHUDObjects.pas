@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  GLScene objects that get rendered in 2D coordinates
-}
+
 unit GLHUDObjects;
+
+(* GLScene objects that get rendered in 2D coordinates *)
 
 interface
 
@@ -14,6 +14,7 @@ uses
   System.Classes,
   Vcl.StdCtrls,
 
+  Winapi.OpenGL,
   GLScene,
   GLVectorTypes,
   GLCoordinates,
@@ -66,10 +67,10 @@ type
     property Height stored StoreHeight;
   end;
 
-  {  A 2D text displayed and positionned in 2D coordinates.
+  (* A 2D text displayed and positionned in 2D coordinates.
     The HUDText uses a character font defined and stored by a TGLBitmapFont
     component. The text can be scaled and rotated (2D), the layout and
-    alignment can also be controled. }
+    alignment can also be controled. *)
   TGLHUDText = class(TGLImmaterialSceneObject)
   private
     FBitmapFont: TGLCustomBitmapFont;
@@ -95,41 +96,41 @@ type
     procedure DoRender(var rci: TGLRenderContextInfo;
       renderSelf, renderChildren: Boolean); override;
   published
-    {  Refers the bitmap font to use.
+    (* Refers the bitmap font to use.
       The referred bitmap font component stores and allows access to
-      individual character bitmaps. }
+      individual character bitmaps. *)
     property BitmapFont: TGLCustomBitmapFont read FBitmapFont
       write SetBitmapFont;
-    {  Text to render.
+    (* Text to render.
       Be aware that only the characters available in the bitmap font will
-      be rendered. CR LF sequences are allowed. }
+      be rendered. CR LF sequences are allowed. *)
     property Text: UnicodeString read FText write SetText;
-    {  Rotation angle in degrees (2d). }
+    // Rotation angle in degrees (2d).
     property Rotation: Single read FRotation write SetRotation;
-    {  Controls the text alignment (horizontal).
-      Possible values : taLeftJustify, taRightJustify, taCenter }
+    (* Controls the text alignment (horizontal).
+      Possible values : taLeftJustify, taRightJustify, taCenter *)
     property Alignment: TAlignment read FAlignment write SetAlignment
       default taLeftJustify;
-    {  Controls the text layout (vertical).
-      Possible values : tlTop, tlCenter, tlBottom }
+    (* Controls the text layout (vertical).
+      Possible values : tlTop, tlCenter, tlBottom *)
     property Layout: TTextLayout read FLayout write SetLayout default tlTop;
-    {  Color modulation, can be used for fade in/out too. }
+    // Color modulation, can be used for fade in/out too.
     property ModulateColor: TGLColor read FModulateColor write SetModulateColor;
   end;
 
-  {  Position (X, Y and X) is in absolute coordinates. This component converts
-    them to screen coordinates and renderes text there. }
+  (* Position (X, Y and X) is in absolute coordinates. This component converts
+    them to screen coordinates and renderes text there. *)
   TGLAbsoluteHUDText = class(TGLHUDText)
   public
     procedure DoRender(var rci: TGLRenderContextInfo;
       renderSelf, renderChildren: Boolean); override;
   end;
 
-  {  Position (X and Y) is expected in a [0..1] range (from Screen size)
+  (* Position (X and Y) is expected in a [0..1] range (from Screen size)
     This component converts this position to the actual screen position and
     renders the text there. This way a HUD text always appears to be in the
     the same place, regardless of the currect screen resolution.
-    Note: this still does not solve the font scaling problem. }
+    Note: this still does not solve the font scaling problem. *)
   TGLResolutionIndependantHUDText = class(TGLHUDText)
   public
     procedure DoRender(var rci: TGLRenderContextInfo;
@@ -142,7 +143,6 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  OpenGLTokens,
   GLContext,
   GLState,
   XOpenGL;

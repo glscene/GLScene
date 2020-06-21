@@ -14,7 +14,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLx,
+  Winapi.OpenGL,
   GLVectorTypes,
   GLScene,
   GLCoordinates,

@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Imposter building and rendering implementation for GLScene.
-}
 
 unit GLImposter;
+
+(* Imposter building and rendering implementation for GLScene *)
 
 interface
 
@@ -16,7 +15,7 @@ uses
   System.Classes,
   System.SysUtils,
   System.Math,
-  
+
   OpenGLTokens,
   GLScene,
   GLContext,
@@ -34,7 +33,7 @@ uses
   GLUtils;
 
 type
-  {Imposter rendering options.
+  (* Imposter rendering options.
      Following options are supported:
       impoBlended : the imposters are transparently blended during renders,
      this will smooth their edges but requires them to be rendered sorted
@@ -46,7 +45,7 @@ type
       impoPerspectiveCorrection : activates a special imposter rendering
      projection suitable for distorting the sprites when seen from a level
      angle of view with a wide focal camera (think trees/grass when walking
-     in a forest), if not active, the imposter sprites are camera-facing }
+     in a forest), if not active, the imposter sprites are camera-facing *)
   TImposterOption = (impoBlended, impoAlphaTest, impoNearestFiltering,
     impoPerspectiveCorrection);
   TImposterOptions = set of TImposterOption;
@@ -57,12 +56,12 @@ const
 type
   TGLImposterBuilder = class;
 
-  {Base class for imposters manipulation and handling.
+  (* Base class for imposters manipulation and handling.
      Rendering imposters is performed by three methods, BeginRender must
      be invoked first, then Render for each of the impostr
      This class assumes a single impostor per texture.
 
-     Note: Remeber to enable Destination Alpha on your viewer.}
+     Note: Remeber to enable Destination Alpha on your viewer.*)
   TImposter = class(TObject)
   private
     FRequestCount: Integer;
@@ -97,7 +96,7 @@ type
     property Modulated: Boolean read FModulated write FModulated;
   end;
 
-   { Imposter loading events }
+   // Imposter loading events
    TLoadingImposterEvent = function (Sender : TObject; impostoredObject :
      TGLBaseSceneObject; destImposter : TImposter) : TGLBitmap32 of object;
    {$NODEFINE TLoadingImposterEvent}
@@ -110,7 +109,7 @@ type
 
   TImposterReference = (irCenter, irTop, irBottom);
 
-  {Abstract ImposterBuilder class. }
+  // Abstract ImposterBuilder class.
   TGLImposterBuilder = class(TGLUpdateAbleComponent)
   private
     FBackColor: TGLColor;
@@ -170,7 +169,7 @@ type
     {Imposter rendering options. }
     property ImposterOptions: TImposterOptions read FImposterOptions write
       FImposterOptions default cDefaultImposterOptions;
-    {Determines how the imposter are handled. 
+    {Determines how the imposter are handled.
        This is the reference point for imposters, impostor'ed objects that
        are centered should use irCenter, those whose bottom is the origin
        should use irBottom, etc. }
@@ -337,8 +336,8 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    {         procedure DoRender(var rci : TGLRenderContextInfo;
-                                renderSelf, renderChildren : Boolean); override; }
+    { procedure DoRender(var rci : TGLRenderContextInfo;
+                         renderSelf, renderChildren : Boolean); override; }
   published
     property MinTexSize: Integer read FMinTexSize write FMinTexSize;
     property MaxTexSize: Integer read FMaxTexSize write FMaxTexSize;

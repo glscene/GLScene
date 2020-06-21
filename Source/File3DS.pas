@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit File3DS;
+
+(*
   Implementation of an universal 3DS file reader (and writer). This is the main file of the
   3DS import library. Currently only loading of 3DS files (Mesh files  * .3ds, Project files  * .prj
   and Material files  * .mli) is supported.
@@ -11,8 +14,7 @@
   LoadFromStream does not make a copy of the passed stream, but keeps a reference
   which must stay valid either during the entire lifetime of TFile3DS or at least
   'til all chunks have been read (by accessing them all once).
-}
-unit File3DS;
+*)
 
 interface
 
@@ -240,8 +242,7 @@ implementation
 
 uses 
   File3DSConst,
-  File3DSUtils,
-  GLApplicationFileIO;
+  File3DSUtils;
 
 function StrPasFree(P: PChar3DS): String;
 begin
@@ -738,7 +739,7 @@ constructor TFile3DS.CreateFromFile(const FileName: String);
 begin
   Create;
   FFileName := FileName;
-  FStream := CreateFileStream(FileName, fmOpenRead or fmShareDenyWrite);
+  FStream := TFileStream.Create(FileName, fmOpenRead or fmShareDenyWrite);
   InitDatabase;
   CreateDatabase;
 end;
@@ -1111,8 +1112,6 @@ begin
   end;
 end;
 
-// ReleaseStream
-//
 procedure TFile3DS.ReleaseStream;
 begin
   if FOwnStream then
@@ -1178,21 +1177,17 @@ begin
   ReleaseDatabase;
 end;
 
- 
-//
 procedure TFile3DS.LoadFromFile(const FileName: String);
 begin
   ClearLists;
   ReleaseStream;
   FFileName := FileName;
-  FStream := CreateFileStream(FileName, fmOpenRead or fmShareDenyWrite);
+  FStream := TFileStream.Create(FileName, fmOpenRead or fmShareDenyWrite);
   FOwnStream := True;
   InitDatabase;
   CreateDatabase;
 end;
 
-// LoadFromStream
-//
 procedure TFile3DS.LoadFromStream(const aStream: TStream);
 begin
   ReleaseStream;

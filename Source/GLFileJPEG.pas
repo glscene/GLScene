@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Methods for loading Jpeg images
-}
+
 unit GLFileJPEG;
+
+(* Methods for loading Jpeg images *)
 
 interface
 
@@ -40,13 +40,12 @@ type
     procedure SaveToFile(const filename: string); override;
     procedure LoadFromStream(AStream: TStream); override;
     procedure SaveToStream(AStream: TStream); override;
-    {Assigns from any Texture.}
+    // Assigns from any Texture.
     procedure AssignFromTexture(textureContext: TGLContext;
       const textureHandle: Cardinal;
       textureTarget: TGLTextureTarget;
       const CurrentFormat: Boolean;
       const intFormat: TGLInternalFormat); reintroduce;
-
     property DivScale: longword read FDivScale write FDivScale;
     property Dither: boolean read FDither write FDither;
     property Smoothing: boolean read FSmoothing write SetSmoothing;
@@ -96,7 +95,7 @@ var
 begin
   if FileStreamExists(fileName) then
   begin
-    fs := CreateFileStream(fileName, fmOpenRead);
+    fs := TFileStream.Create(fileName, fmOpenRead);
     try
       LoadFromStream(fs);
     finally
@@ -112,7 +111,7 @@ procedure TGLJPEGImage.SaveToFile(const filename: string);
 var
   fs: TStream;
 begin
-  fs := CreateFileStream(fileName, fmOpenWrite or fmCreate);
+  fs := TFileStream.Create(fileName, fmOpenWrite or fmCreate);
   try
     SaveToStream(fs);
   finally

@@ -1,6 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLPersistentClasses;
+
 (*
    Base persistence classes.
 
@@ -9,7 +12,6 @@
    allowing for object-level versioning (100% backward compatibility) and full
    polymorphic persistence.
 *)
-unit GLPersistentClasses;
 
 interface
 
@@ -303,9 +305,6 @@ function UTF8ToWideString(const s: AnsiString): WideString;
 implementation
 // ------------------------------------------------------------------
 
-uses
-  GLApplicationFileIO;
-
 const
   cDefaultListGrowthDelta = 64;
   cVTInteger = 'Int';
@@ -326,7 +325,6 @@ begin
 end;
 
 function UTF8ToWideString(const s: AnsiString): WideString;
-// Based on Mike Lischke's function (Unicode.pas unit, http://www.delphi-gems.com)
 const
   bytesFromUTF8: packed array[0..255] of Byte = (
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -614,7 +612,7 @@ var
 begin
   if writerClass = nil then
     writerClass := FileVirtualWriter;
-  fs := CreateFileStream(fileName, fmCreate);
+  fs := TFileStream.Create(fileName, fmCreate);
   try
     SaveToStream(fs, writerClass);
   finally
@@ -628,7 +626,7 @@ var
 begin
   if readerClass = nil then
     readerClass := FileVirtualReader;
-  fs := CreateFileStream(fileName, fmOpenRead + fmShareDenyWrite);
+  fs := TFileStream.Create(fileName, fmOpenRead + fmShareDenyWrite);
   try
     LoadFromStream(fs, readerClass);
   finally

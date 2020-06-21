@@ -11,7 +11,7 @@ uses
   System.SysUtils,
   Vcl.Dialogs,
 
-  GLS.OpenGLx,
+  Winapi.OpenGL,
   XCollection,
   GLScene,
   GLVectorGeometry,

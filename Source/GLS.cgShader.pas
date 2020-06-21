@@ -12,7 +12,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLx,
+  Winapi.OpenGL,
   GLVectorGeometry,
   GLVectorLists,
   GLVectorTypes,

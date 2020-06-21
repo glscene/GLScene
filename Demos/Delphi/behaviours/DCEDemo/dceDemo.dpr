@@ -1,4 +1,4 @@
-{: This is a basic use for the Dynamic Collision Engine (DCE) by Lucas Goraieb.
+(* This is a basic use for the Dynamic Collision Engine (DCE) by Lucas Goraieb.
 
      The engine pretty much works by creating a TGLDCEManager, and several
      TGLDCEDynamic and TGLDCEStatic behaviours on the objects that should
@@ -9,14 +9,9 @@
      is keep loading object files into freeForms and letting DCE do the trick
      for you. The only "real" code in this demo is inside the onProgress event
      of the cadencer, that takes care of input.
-}
+*)
 program dceDemo;
 uses
-  madExcept,
-  madLinkDisAsm,
-  madListHardware,
-  madListProcesses,
-  madListModules,
   Forms,
   Unit1 in 'Unit1.pas' {Form1};
 

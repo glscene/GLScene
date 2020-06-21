@@ -801,7 +801,7 @@ begin
     begin
       Result := graphicClass.Create;
       try
-        fs := CreateFileStream(fileName, fmOpenRead);
+        fs := TFileStream.Create(fileName, fmOpenRead);
         try
           Result.LoadFromStream(fs);
         finally

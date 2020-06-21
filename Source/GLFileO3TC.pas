@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  O3TC file loading
-}
+
 unit GLFileO3TC;
+
+(* O3TC file loading *)
 
 interface
 
@@ -93,16 +93,13 @@ type
   // ------------------ TGLO3TCImage ------------------
   // ------------------
 
-   
-  //
-
 procedure TGLO3TCImage.LoadFromFile(const filename: string);
 var
   fs: TStream;
 begin
   if FileStreamExists(fileName) then
   begin
-    fs := CreateFileStream(fileName, fmOpenRead);
+    fs := TFileStream.Create(fileName, fmOpenRead);
     try
       LoadFromStream(fs);
     finally
@@ -114,14 +111,11 @@ begin
     raise EInvalidRasterFile.CreateFmt('File %s not found.', [filename]);
 end;
 
-// SaveToFile
-//
-
 procedure TGLO3TCImage.SaveToFile(const filename: string);
 var
   fs: TStream;
 begin
-  fs := CreateFileStream(fileName, fmOpenWrite or fmCreate);
+  fs := TFileStream.Create(fileName, fmOpenWrite or fmCreate);
   try
     SaveToStream(fs);
   finally
@@ -129,9 +123,6 @@ begin
   end;
   ResourceName := filename;
 end;
-
-// LoadFromStream
-//
 
 procedure TGLO3TCImage.LoadFromStream(stream: TStream);
 type
@@ -203,9 +194,6 @@ begin
   stream.Read(fData^, ChunkHeader.Size);
 end;
 
-// SaveFromStream
-//
-
 procedure TGLO3TCImage.SaveToStream(stream: TStream);
 const
   Magic: array[0..3] of AnsiChar = 'O3TC';
@@ -255,9 +243,6 @@ begin
   stream.Write(ChunkHeader, Sizeof(TO3TC_ChunkHeader));
   stream.Write(fData[0], ChunkHeader.Size);
 end;
-
-// AssignFromTexture
-//
 
 procedure TGLO3TCImage.AssignFromTexture(textureContext: TGLContext;
   const textureHandle: Cardinal;
@@ -412,16 +397,15 @@ begin
   end;
 end;
 
-// Capabilities
-//
-
 class function TGLO3TCImage.Capabilities: TGLDataFileCapabilities;
 begin
   Result := [dfcRead, dfcWrite];
 end;
 
+//--------------------------------------------
 initialization
-  { Register this Fileformat-Handler with GLScene }
+//--------------------------------------------
+
   RegisterRasterFormat('o3tc', 'oZone3D Texture Compression', TGLO3TCImage);
 
 end.

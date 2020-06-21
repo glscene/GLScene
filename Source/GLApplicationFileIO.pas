@@ -1,11 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   Components and functions that abstract file I/O access for an application.
-   Allows re-routing file reads to reads from a single archive file f.i.
-*)
+
 unit GLApplicationFileIO;
+
+(*
+  Components and functions that abstract file I/O access for an application.
+  Allows re-routing file reads to reads from a single archive file f.i.
+*)
 
 interface
 
@@ -17,6 +19,7 @@ uses
   System.SysUtils,
 
   GLBaseClasses,
+  GLStrings,
   GLSLog;
 
 const
@@ -27,19 +30,15 @@ const
 
 type
 
-  TGLApplicationResource = (
-    aresNone,
-    aresSplash,
-    aresTexture,
-    aresMaterial,
-    aresSampler,
-    aresFont,
-    aresMesh);
+  TGLApplicationResource = (aresNone, aresSplash, aresTexture, aresMaterial,
+    aresSampler, aresFont, aresMesh);
 
   TAFIOCreateFileStream = function(const fileName: string; mode: Word): TStream;
   TAFIOFileStreamExists = function(const fileName: string): Boolean;
-  TAFIOFileStreamEvent = procedure (const fileName : String; mode : Word; var Stream : TStream) of object;
-  TAFIOFileStreamExistsEvent = function(const fileName:string): Boolean of object;
+  TAFIOFileStreamEvent = procedure(const fileName: String; mode: Word;
+    var Stream: TStream) of object;
+  TAFIOFileStreamExistsEvent = function(const fileName: string)
+    : Boolean of object;
 
   (* Allows specifying a custom behaviour for CreateFileStream.
     The component should be considered a helper only, you can directly specify
@@ -58,9 +57,11 @@ type
       Destruction of the stream is at the discretion of the code that
       invoked CreateFileStream. Return nil to let the default mechanism
       take place (ie. attempt a regular file system access). *)
-    property OnFileStream: TAFIOFileStreamEvent read FOnFileStream write FOnFileStream;
+    property OnFileStream: TAFIOFileStreamEvent read FOnFileStream
+      write FOnFileStream;
     // Event that allows you to specify if a stream for the file exists.
-    property OnFileStreamExists: TAFIOFileStreamExistsEvent read FOnFileStreamExists write FOnFileStreamExists;
+    property OnFileStreamExists: TAFIOFileStreamExistsEvent
+      read FOnFileStreamExists write FOnFileStreamExists;
   end;
 
   TGLDataFileCapability = (dfcRead, dfcWrite);
@@ -84,13 +85,13 @@ type
     function CreateCopy(AOwner: TPersistent): TGLDataFile; virtual;
     procedure LoadFromFile(const fileName: string); virtual;
     procedure SaveToFile(const fileName: string); virtual;
-    procedure LoadFromStream(stream: TStream); virtual;
-    procedure SaveToStream(stream: TStream); virtual;
+    procedure LoadFromStream(Stream: TStream); virtual;
+    procedure SaveToStream(Stream: TStream); virtual;
     procedure Initialize; virtual;
-    { Optionnal resource name. 
-       When using LoadFromFile/SaveToFile, the filename is placed in it,
-       when using the Stream variants, the caller may place the resource
-       name in it for parser use. }
+    (* Optionnal resource name.
+      When using LoadFromFile/SaveToFile, the filename is placed in it,
+      when using the Stream variants, the caller may place the resource
+      name in it for parser use. *)
     property ResourceName: string read FResourceName write SetResourceName;
   end;
 
@@ -99,15 +100,10 @@ type
 
 // Returns true if an ApplicationFileIO has been defined
 function ApplicationFileIODefined: Boolean;
-(*Creates a file stream corresponding to the fileName.
-   If the file does not exists, an exception will be triggered.
-   Default mechanism creates a regular TFileStream, the 'mode' parameter
-   is similar to the one for TFileStream. *)
-function CreateFileStream(const fileName: string;
-  mode: Word = fmOpenRead + fmShareDenyNone): TStream;
 // Queries is a file stream corresponding to the fileName exists.
 function FileStreamExists(const fileName: string): Boolean;
-function CreateResourceStream(const ResName: string; ResType: PChar): TGLResourceStream;
+function CreateResourceStream(const ResName: string; ResType: PChar)
+  : TGLResourceStream;
 function StrToGLSResType(const AStrRes: string): TGLApplicationResource;
 
 var
@@ -123,29 +119,8 @@ var
 
 function ApplicationFileIODefined: Boolean;
 begin
-  Result := (Assigned(vAFIOCreateFileStream) and Assigned(vAFIOFileStreamExists))
-    or Assigned(vAFIO);
-end;
-
-function CreateFileStream(const fileName: string;
-  mode: Word = fmOpenRead + fmShareDenyNone): TStream;
-begin
-  if Assigned(vAFIOCreateFileStream) then
-    Result := vAFIOCreateFileStream(fileName, mode)
-  else
-  begin
-      Result:=nil;
-      if Assigned(vAFIO) and Assigned(vAFIO.FOnFileStream) then
-         vAFIO.FOnFileStream(fileName, mode, Result);
-      if not Assigned(Result) then
-	  begin
-         if ((mode and fmCreate)=fmCreate) or FileExists(fileName) then
-            Result := TFileStream.Create(fileName, mode)
-         else
-         raise
-           Exception.Create('File not found: "'+fileName+'"');
-      end;
-   end;
+  Result := (Assigned(vAFIOCreateFileStream) and Assigned(vAFIOFileStreamExists)
+    ) or Assigned(vAFIO);
 end;
 
 function FileStreamExists(const fileName: string): Boolean;
@@ -161,7 +136,8 @@ begin
   end;
 end;
 
-function CreateResourceStream(const ResName: string; ResType: PChar): TGLResourceStream;
+function CreateResourceStream(const ResName: string; ResType: PChar)
+  : TGLResourceStream;
 var
   InfoBlock: HRSRC;
 begin
@@ -170,7 +146,8 @@ begin
   if InfoBlock <> 0 then
     Result := TResourceStream.Create(HInstance, ResName, ResType)
   else
-    GLSLogger.LogError(Format('Can''t create stream of application resource "%s"', [ResName]));
+    GLSLogger.LogError
+      (Format('Can''t create stream of application resource "%s"', [ResName]));
 end;
 
 // ------------------
@@ -211,7 +188,7 @@ var
   fs: TStream;
 begin
   ResourceName := ExtractFileName(fileName);
-  fs := CreateFileStream(fileName, fmOpenRead + fmShareDenyNone);
+  fs := TFileStream.Create(fileName, fmOpenRead + fmShareDenyNone);
   try
     LoadFromStream(fs);
   finally
@@ -224,7 +201,7 @@ var
   fs: TStream;
 begin
   ResourceName := ExtractFileName(fileName);
-  fs := CreateFileStream(fileName, fmCreate);
+  fs := TFileStream.Create(fileName, fmCreate);
   try
     SaveToStream(fs);
   finally
@@ -232,14 +209,16 @@ begin
   end;
 end;
 
-procedure TGLDataFile.LoadFromStream(stream: TStream);
+procedure TGLDataFile.LoadFromStream(Stream: TStream);
 begin
-  Assert(False, 'Import for ' + ClassName + ' to ' + stream.ClassName + ' not available.');
+  Assert(False, 'Import for ' + ClassName + ' to ' + Stream.ClassName +
+    ' not available.');
 end;
 
-procedure TGLDataFile.SaveToStream(stream: TStream);
+procedure TGLDataFile.SaveToStream(Stream: TStream);
 begin
-  Assert(False, 'Export for ' + ClassName + ' to ' + stream.ClassName + ' not available.');
+  Assert(False, 'Export for ' + ClassName + ' to ' + Stream.ClassName +
+    ' not available.');
 end;
 
 procedure TGLDataFile.Initialize;
@@ -282,4 +261,3 @@ begin
 end;
 
 end.
-

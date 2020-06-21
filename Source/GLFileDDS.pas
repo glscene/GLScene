@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  DDS File support for GLScene.
-}
+
 unit GLFileDDS;
+
+(* DDS File support *)
 
 interface
 
@@ -16,13 +16,13 @@ uses
   System.Math,
 
   OpenGLTokens,
-  glContext,
-  glGraphics,
-  glTextureFormat,
-  glsRGBE,
-  glApplicationFileIO,
-  glVectorGeometry,
-  glStrings;
+  GLContext,
+  GLGraphics,
+  GLTextureFormat,
+  GLSRGBE,
+  GLApplicationFileIO,
+  GLVectorGeometry,
+  GLStrings;
 
 type
 
@@ -46,10 +46,10 @@ type
   end;
 
 var
-  {Variable determines which resolution to use textures,
+  (* Variable determines which resolution to use textures,
      high - it loads all levels,
      midle - skipped the first level,
-     low - skipped the first two levels. }
+     low - skipped the first two levels. *)
   vDDSDetailLevel: TGLDDSDetailLevels = ddsHighDet;
 
 //----------------------------------------------------------------------
@@ -68,7 +68,7 @@ var
 begin
   if FileStreamExists(fileName) then
   begin
-    fs := CreateFileStream(fileName, fmOpenRead);
+    fs := TFileStream.Create(fileName, fmOpenRead);
     try
       LoadFromStream(fs);
     finally
@@ -84,7 +84,7 @@ procedure TGLDDSImage.SaveToFile(const filename: string);
 var
   fs: TStream;
 begin
-  fs := CreateFileStream(fileName, fmOpenWrite or fmCreate);
+  fs := TFileStream.Create(fileName, fmOpenWrite or fmCreate);
   try
     SaveToStream(fs);
   finally

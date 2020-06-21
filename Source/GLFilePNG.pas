@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  PNG files loading implementation
-}
 
 unit GLFilePNG;
+
+(* PNG files loading implementation *)
 
 interface
 
@@ -15,12 +14,13 @@ uses
   System.Classes,
   System.SysUtils,
   VCL.Imaging.pngimage,
+
+  Winapi.OpenGL,
   GLStrings,
-  OpenGLTokens,
   GLContext,
   GLGraphics,
-  GLTextureFormat,
-  GLApplicationFileIO;
+  GLApplicationFileIO,
+  GLTextureFormat;
 
 type
 
@@ -32,29 +32,28 @@ type
     procedure SaveToFile(const filename: string); override;
     procedure LoadFromStream(AStream: TStream); override;
     procedure SaveToStream(AStream: TStream); override;
-    {Assigns from any Texture.}
-    procedure AssignFromTexture(textureContext: TGLContext; const textureHandle: Cardinal;
-      textureTarget: TGLTextureTarget;
-      const CurrentFormat: Boolean;
-      const intFormat: TGLInternalFormat); reintroduce;
+    // Assigns from any Texture.
+    procedure AssignFromTexture(textureContext: TGLContext;
+      const textureHandle: Cardinal; textureTarget: TGLTextureTarget;
+      const CurrentFormat: Boolean; const intFormat: TGLInternalFormat);
+      reintroduce;
   end;
 
-//--------------------------------------------------------------
+// --------------------------------------------------------------
 implementation
-//--------------------------------------------------------------
+// --------------------------------------------------------------
 
 // ------------------
 // ------------------ TGLPNGImage ------------------
 // ------------------
 
-
 procedure TGLPNGImage.LoadFromFile(const filename: string);
 var
   fs: TStream;
 begin
-  if FileStreamExists(fileName) then
+  if FileStreamExists(filename) then
   begin
-    fs := CreateFileStream(fileName, fmOpenRead);
+    fs := TFileStream.Create(filename, fmOpenRead);
     try
       LoadFromStream(fs);
     finally
@@ -66,12 +65,11 @@ begin
     raise EInvalidRasterFile.CreateFmt('File %s not found', [filename]);
 end;
 
-
 procedure TGLPNGImage.SaveToFile(const filename: string);
 var
   fs: TStream;
 begin
-  fs := CreateFileStream(fileName, fmOpenWrite or fmCreate);
+  fs := TFileStream.Create(filename, fmOpenWrite or fmCreate);
   try
     SaveToStream(fs);
   finally
@@ -80,43 +78,36 @@ begin
   ResourceName := filename;
 end;
 
-
 procedure TGLPNGImage.LoadFromStream(AStream: TStream);
 var
-  PngImage: TPngImage;
+  pngimage: TPngImage;
   rowBytes: Cardinal;
-
 begin
   try
-    PngImage := TPngImage.Create;
-    PngImage.LoadFromStream(AStream);
-
+    pngimage := TPngImage.Create;
+    pngimage.LoadFromStream(AStream);
     UpdateLevelsInfo;
     ReallocMem(fData, rowBytes * Cardinal(GetHeight));
-
   finally
-    PngImage.Free;
+    pngimage.Free;
   end;
 end;
 
 procedure TGLPNGImage.SaveToStream(AStream: TStream);
 var
-  PngImage: TPngImage;
+  pngimage: TPngImage;
 begin
   try
-    PngImage := TPngImage.Create;
-    PngImage.SaveToStream(AStream);
+    pngimage := TPngImage.Create;
+    pngimage.SaveToStream(AStream);
   finally
-    PngImage.Free;
+    pngimage.Free;
   end;
 end;
 
-
 procedure TGLPNGImage.AssignFromTexture(textureContext: TGLContext;
-  const textureHandle: Cardinal;
-  textureTarget: TGLTextureTarget;
-  const CurrentFormat: Boolean;
-  const intFormat: TGLInternalFormat);
+  const textureHandle: Cardinal; textureTarget: TGLTextureTarget;
+  const CurrentFormat: Boolean; const intFormat: TGLInternalFormat);
 var
   oldContext: TGLContext;
   contextActivate: Boolean;
@@ -124,10 +115,8 @@ var
   residentFormat: TGLInternalFormat;
   glTarget: Cardinal;
 begin
-  if not ((textureTarget = ttTexture2D)
-    or (textureTarget = ttTextureRect)) then
+  if not((textureTarget = ttTexture2D) or (textureTarget = ttTextureRect)) then
     Exit;
-
   oldContext := CurrentGLContext;
   contextActivate := (oldContext <> textureContext);
   if contextActivate then
@@ -137,7 +126,6 @@ begin
     textureContext.Activate;
   end;
   glTarget := DecodeTextureTarget(textureTarget);
-
   try
     textureContext.GLStates.TextureBinding[0, textureTarget] := textureHandle;
     fLevelCount := 0;
@@ -149,7 +137,8 @@ begin
     if texFormat > 1 then
     begin
       gl.GetTexLevelParameteriv(glTarget, 0, GL_TEXTURE_WIDTH, @FLOD[0].Width);
-      gl.GetTexLevelParameteriv(glTarget, 0, GL_TEXTURE_HEIGHT, @FLOD[0].Height);
+      gl.GetTexLevelParameteriv(glTarget, 0, GL_TEXTURE_HEIGHT,
+        @FLOD[0].Height);
       FLOD[0].Depth := 0;
       residentFormat := OpenGLFormatToInternalFormat(texFormat);
       if CurrentFormat then
@@ -162,7 +151,7 @@ begin
     if fLevelCount > 0 then
     begin
       fElementSize := GetTextureElementSize(fColorFormat, fDataType);
-      ReallocMem(FData, DataSize);
+      ReallocMem(fData, DataSize);
       gl.GetTexImage(glTarget, 0, fColorFormat, fDataType, fData);
     end
     else
@@ -178,16 +167,15 @@ begin
   end;
 end;
 
-
 class function TGLPNGImage.Capabilities: TGLDataFileCapabilities;
 begin
   Result := [dfcRead, dfcWrite];
 end;
 
-//---------------------------------------------------
+// ---------------------------------------------------
 initialization
-//---------------------------------------------------
+// ---------------------------------------------------
 
-  RegisterRasterFormat('png', 'Portable Network Graphic', TGLPNGImage);
+RegisterRasterFormat('png', 'Portable Network Graphic', TGLPNGImage);
 
 end.

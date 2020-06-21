@@ -1,12 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   3D PDF converter of GLScene's models
-}
-
 
 unit GLFile3DPDF;
+
+(* 3D PDF converter of GLScene's models *)
 
 interface
 
@@ -26,8 +24,8 @@ uses
   GLUtils;
 
 type
-  {  The IDTF vector file (Intermediate Data Text File).
-    Used for converting to IDTF -> U3D -> 3D PDF}
+  (* The IDTF vector file (Intermediate Data Text File).
+     Used for converting to IDTF -> U3D -> 3D PDF *)
   TGLIDTFVectorFile = class(TGLVectorFile)
   private
     procedure BuildNormals(m: TMeshObject);
@@ -36,7 +34,7 @@ type
     procedure SaveToStream(aStream: TStream); override;
   end;
 
-  {  The U3D vector file (using IDTF and U3DConverter).}
+  // The U3D vector file (using IDTF and U3DConverter).
   TGLU3DVectorFile = class(TGLIDTFVectorFile)
   public
     class function Capabilities: TGLDataFileCapabilities; override;
@@ -47,9 +45,9 @@ var
   // global variable for accing the IDTF->U3D converter
   IDTFConverterFileName: string;
 
-//=========================================================  
+//=========================================================
 implementation
-//=========================================================  
+//=========================================================
 
 const
   ConstIDTFTemplate =

@@ -37,11 +37,12 @@ requires
 
 contains
   File3DSConst in '..\..\Source\File3DSConst.pas',
+  File3DSTypes in '..\..\Source\File3DSTypes.pas',
+  File3DSUtils in '..\..\Source\File3DSUtils.pas',
   FileDDSImage in '..\..\Source\FileDDSImage.pas',
   FileDXTC in '..\..\Source\FileDXTC.pas',
   File3DS in '..\..\Source\File3DS.pas',
-  File3DSTypes in '..\..\Source\File3DSTypes.pas',
-  File3DSUtils in '..\..\Source\File3DSUtils.pas',
+  FileHDRImage in '..\..\Source\FileHDRImage.pas',
   FileQ3BSP in '..\..\Source\FileQ3BSP.pas',
   FileQ3MD3 in '..\..\Source\FileQ3MD3.pas',
   FileB3D in '..\..\Source\FileB3D.pas',
@@ -53,6 +54,7 @@ contains
   FileOCT in '..\..\Source\FileOCT.pas',
   FileTGA in '..\..\Source\FileTGA.pas',
   FileX in '..\..\Source\FileX.pas',
+  FileVFW in '..\..\Source\FileVFW.pas',
   FileVRMLParser in '..\..\Source\FileVRMLParser.pas',
   GLAVIRecorder in '..\..\Source\GLAVIRecorder.pas',
   GLAnimatedSprite in '..\..\Source\GLAnimatedSprite.pas',
@@ -95,9 +97,9 @@ contains
   GLFBORenderer in '..\..\Source\GLFBORenderer.pas',
   GLFPSMovement in '..\..\Source\GLFPSMovement.pas',
   GLFeedback in '..\..\Source\GLFeedback.pas',
-  GLFile3DPDF in '..\..\Source\GLFile3DPDF.pas',
   GLFile3DS in '..\..\Source\GLFile3DS.pas',
   GLFile3DSSceneObjects in '..\..\Source\GLFile3DSSceneObjects.pas',
+  GLFile3DPDF in '..\..\Source\GLFile3DPDF.pas',
   GLFileASE in '..\..\Source\GLFileASE.pas',
   GLFileB3D in '..\..\Source\GLFileB3D.pas',
   GLFileBMP in '..\..\Source\GLFileBMP.pas',
@@ -230,7 +232,6 @@ contains
   GLSMemo in '..\..\Source\GLSMemo.pas',
   GLSRGBE in '..\..\Source\GLSRGBE.pas',
   GLSRedBlackTree in '..\..\Source\GLSRedBlackTree.pas',
-  FileVFW in '..\..\Source\FileVFW.pas',
   GLScene in '..\..\Source\GLScene.pas',
   GLSceneForm in '..\..\Source\GLSceneForm.pas',
   GLScreen in '..\..\Source\GLScreen.pas',
@@ -253,6 +254,8 @@ contains
   GLSpline in '..\..\Source\GLSpline.pas',
   GLState in '..\..\Source\GLState.pas',
   GLStrings in '..\..\Source\GLStrings.pas',
+  GLS.OpenGLx in '..\..\Source\GLS.OpenGLx.pas',
+  GLS.vclOpenGL in '..\..\Source\GLS.vclOpenGL.pas',
   GLTeapot in '..\..\Source\GLTeapot.pas',
   GLTerrainRenderer in '..\..\Source\GLTerrainRenderer.pas',
   GLTexCombineShader in '..\..\Source\GLTexCombineShader.pas',
@@ -288,12 +291,9 @@ contains
   GLWindowsFont in '..\..\Source\GLWindowsFont.pas',
   XCollection in '..\..\Source\XCollection.pas',
   GLzBuffer in '..\..\Source\GLzBuffer.pas',
-  FileHDRImage in '..\..\Source\FileHDRImage.pas',
   OpenGLAdapter in '..\..\Source\OpenGLAdapter.pas',
   OpenGLTokens in '..\..\Source\OpenGLTokens.pas',
-  OpenGLVCL in '..\..\Source\OpenGLVCL.pas',
-  XOpenGL in '..\..\Source\XOpenGL.pas',
-  GLS.OpenGLx in '..\..\Source\GLS.OpenGLx.pas';
+  XOpenGL in '..\..\Source\XOpenGL.pas';
 
 end.
 

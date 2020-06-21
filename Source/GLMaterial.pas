@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Handles all the material + material library stuff.
-}
+
 unit GLMaterial;
+
+(* Handles all the material + material library stuff *)
 
 interface
 
@@ -16,8 +16,8 @@ uses
   System.Types,
   Vcl.Graphics,
 
-  GLCrossPlatform,
   OpenGLTokens,
+  GLCrossPlatform,
   GLVectorTypes,
   GLRenderContextInfo,
   GLBaseClasses,
@@ -2795,7 +2795,7 @@ procedure TGLMaterialLibrary.SaveToFile(const fileName: string);
 var
   fs: TStream;
 begin
-  fs := CreateFileStream(fileName, fmCreate);
+  fs := TFileStream.Create(fileName, fmCreate);
   try
     SaveToStream(fs);
   finally
@@ -2807,7 +2807,7 @@ procedure TGLMaterialLibrary.LoadFromFile(const fileName: string);
 var
   fs: TStream;
 begin
-  fs := CreateFileStream(fileName, fmOpenRead + fmShareDenyNone);
+  fs := TFileStream.Create(fileName, fmOpenRead + fmShareDenyNone);
   try
     LoadFromStream(fs);
   finally
@@ -2819,7 +2819,7 @@ procedure TGLMaterialLibrary.AddMaterialsFromFile(const fileName: string);
 var
   fs: TStream;
 begin
-  fs := CreateFileStream(fileName, fmOpenRead + fmShareDenyNone);
+  fs := TFileStream.Create(fileName, fmOpenRead + fmShareDenyNone);
   try
     AddMaterialsFromStream(fs);
   finally

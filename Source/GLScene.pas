@@ -55,8 +55,8 @@ type
 
 const
   cDefaultProxyOptions = [pooEffects, pooObjects, pooTransformation];
-  GLSCENE_REVISION = '$Revision: 0707$';
-  GLSCENE_VERSION = '2020 %s';
+  GLSCENE_REVISION = '$Revision: 0777$';
+  GLSCENE_VERSION = 'v1.9 %s';
 
 type
 
@@ -5872,7 +5872,7 @@ procedure TGLScene.SaveToFile(const fileName: string);
 var
   stream: TStream;
 begin
-  stream := CreateFileStream(fileName, fmCreate);
+  stream := TFileStream.Create(fileName, fmCreate);
   try
     SaveToStream(stream);
   finally
@@ -5896,7 +5896,7 @@ procedure TGLScene.LoadFromFile(const fileName: string);
 var
   stream: TStream;
 begin
-  stream := CreateFileStream(fileName, fmOpenRead);
+  stream := TFileStream.Create(fileName, fmOpenRead);
   try
     CheckResFileStream(stream);
     LoadFromStream(stream);
@@ -5911,7 +5911,7 @@ var
   fil: TStream;
 begin
   mem := TMemoryStream.Create;
-  fil := CreateFileStream(fileName, fmCreate);
+  fil := TFileStream.Create(fileName, fmCreate);
   try
     SaveToStream(mem);
     mem.Position := 0;
@@ -5928,7 +5928,7 @@ var
   Fil: TStream;
 begin
   Mem := TMemoryStream.Create;
-  Fil := CreateFileStream(fileName, fmOpenRead);
+  Fil := TFileStream.Create(fileName, fmOpenRead);
   try
     ObjectTextToBinary(Fil, Mem);
     Mem.Position := 0;

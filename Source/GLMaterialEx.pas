@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLMaterialEx;
+
+(*
   Handles extended material and it components:
   textures, samplers, combiners, shaders and etc.
 
@@ -12,9 +15,7 @@
    - direct state access can be used for uniforms setting.
    - economy mode for texture binding to active units,
      i.e. if textures less than maximum units may be not one binding occur per frame.
-}
-
-unit GLMaterialEx;
+*)
 
 interface
 
@@ -2102,7 +2103,7 @@ begin
             ReallocMem(TFriendlyImage(FImage).fData, FImage.DataSize);
             for level := FImage.LevelCount - 1 downto 0 do
             begin
-              LStream := CreateFileStream(filename + IntToHex(level, 2), fmOpenRead);
+              LStream := TFileStream.Create(filename + IntToHex(level, 2), fmOpenRead);
               ptr := PByte(TFriendlyImage(FImage).GetLevelAddress(level));
               LStream.Read(ptr^, FImage.LevelSizeInByte[level]);
               LStream.Destroy;
@@ -2219,7 +2220,7 @@ begin
             TFriendlyImage(FImage).SaveHeader;
             for level := FImage.LevelCount - 1 downto 0 do
             begin
-              LStream := CreateFileStream(filename + IntToHex(level, 2),
+              LStream := TFileStream.Create(filename + IntToHex(level, 2),
                 fmOpenWrite or fmCreate);
               ptr := PByte(TFriendlyImage(FImage).GetLevelAddress(level));
               LStream.Write(ptr^, FImage.LevelSizeInByte[level]);

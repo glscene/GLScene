@@ -1,16 +1,17 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLShaderCombiner;
+
+(*
    Allows to combine shaders in different sequences.
    Note, that can't just take 2 random shaders and combine them, because
    shaders often override the objects material and vertex data with a total
    disregard to what existed before it. But in some cases, especially with
    multipass shaders, this unit does magic and allows to reuse and upgrade
-   previously written shaders. 
-
-}
-unit GLShaderCombiner;
+   previously written shaders.
+*)
 
 interface
 
@@ -18,15 +19,16 @@ interface
 
 uses
   System.Classes,
-   
-  GLMaterial, 
-  GLScene, 
-  GLVectorGeometry, 
-  GLStrings, 
+
+  GLMaterial,
+  GLScene,
+  GLVectorGeometry,
+  GLStrings,
   GLRenderContextInfo;
 
 type
-  {MP - multipass, SP-singlepass, AP - anypass (single or multi)
+  (*
+   MP - multipass, SP-singlepass, AP - anypass (single or multi)
      One-Two or Two-One determines the order of how the shaders should be applied
      For example, sctTwoMPOneSP means that first one will be applied Shader Two,
      which can be a multipass shader, then Shader One is applied, which should be
@@ -39,10 +41,9 @@ type
 
      By the way, I admit - the names do look stupid, and if someone gives them
      proper names, I will be only glad.
-  }
+  *)
   TGLShaderCombinerType = (sctOneSPTwoAP, sctTwoSPOneAP,
-                           sctOneMPTwoSP, sctTwoMPOneSP
-                           );
+                           sctOneMPTwoSP, sctTwoMPOneSP);
 
   TGLCustomShaderCombiner = class(TGLShader)
   private
@@ -78,8 +79,9 @@ type
 implementation
 //---------------------------------------------
 
-
-{ TGLCustomShaderCombiner }
+//-----------------------------
+// TGLCustomShaderCombiner
+//-----------------------------
 
 procedure TGLCustomShaderCombiner.Assign(Source: TPersistent);
 begin

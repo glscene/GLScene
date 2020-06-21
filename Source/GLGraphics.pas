@@ -1,15 +1,17 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLGraphics;
+
+(*
    Utility class and functions to manipulate a bitmap in OpenGL's default
    byte order (GL_RGBA vs TBitmap's GL_BGRA)
 
    Note: TGLBitmap32 = TGLImage has support for Alex Denissov's Graphics32 library
    (http://www.g32.org), just make sure the USE_GRAPHICS32 conditionnal
    is active in GLScene.inc and recompile.
-}
-unit GLGraphics;
+*)
 
 interface
 
@@ -211,7 +213,7 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    {Accepts TGLImage and TGraphic subclasses. }
+    // Accepts TGLImage and TGraphic subclasses.
     procedure Assign(Source: TPersistent); override;
     {Assigns from a 24 bits bitmap without swapping RGB.
       This is faster than a regular assignment, but R and B channels
@@ -237,10 +239,10 @@ type
     property Depth: Integer read GetDepth write SetDepth;
     {OpenGL color format }
     property ColorFormat: Cardinal read fColorFormat;
-    {Recommended texture internal format }
+    // Recommended texture internal format
     property InternalFormat: TGLInternalFormat read FInternalFormat write
       FInternalFormat;
-    {OpenGL data type }
+    // OpenGL data type
     property DataType: Cardinal read fDataType;
     {Size in bytes of pixel or block }
     property ElementSize: Integer read fElementSize;
@@ -1896,7 +1898,7 @@ begin
   Temp := 0;
   LStream := nil;
   try
-    LStream := CreateFileStream(ResourceName, fmOpenWrite or fmCreate);
+    LStream := TFileStream.Create(ResourceName, fmOpenWrite or fmCreate);
     with LStream do
     begin
       Write(Temp, SizeOf(Integer)); // Version
@@ -1926,7 +1928,7 @@ var
 begin
   LStream := nil;
   try
-    LStream := CreateFileStream(ResourceName, fmOpenRead);
+    LStream := TFileStream.Create(ResourceName, fmOpenRead);
     with LStream do
     begin
       Read(Temp, SizeOf(Integer)); // Version
@@ -2011,7 +2013,7 @@ begin
 
     if FSourceStream = nil then
     begin
-      FSourceStream := CreateFileStream(ResourceName + IntToHex(FStreamLevel, 2));
+      FSourceStream := TFileStream.Create(ResourceName + IntToHex(FStreamLevel, 2));
     end;
 
     // Move to position of next piece and read it

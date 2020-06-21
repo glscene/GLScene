@@ -1,10 +1,10 @@
 ﻿//
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Vector File related objects
-}
+
 unit GLVectorFileObjects;
+
+(* Vector File related objects *)
 
 interface
 
@@ -5947,7 +5947,7 @@ begin
   FLastLoadedFilename := '';
   if fileName <> '' then
   begin
-    fs := CreateFileStream(fileName, fmOpenRead + fmShareDenyWrite);
+    fs := TFileStream.Create(fileName, fmOpenRead + fmShareDenyWrite);
     try
       LoadFromStream(fileName, fs);
       FLastLoadedFilename := filename;
@@ -5996,7 +5996,7 @@ var
 begin
   if fileName <> '' then
   begin
-    fs := CreateFileStream(fileName, fmCreate);
+    fs := TFileStream.Create(fileName, fmCreate);
     try
       SaveToStream(fileName, fs);
     finally
@@ -6030,7 +6030,7 @@ var
 begin
   if fileName <> '' then
   begin
-    fs := CreateFileStream(fileName, fmOpenRead + fmShareDenyWrite);
+    fs := TFileStream.Create(fileName, fmOpenRead + fmShareDenyWrite);
     try
       AddDataFromStream(fileName, fs);
     finally
@@ -6904,7 +6904,7 @@ procedure TGLActorAnimations.SaveToFile(const fileName: string);
 var
   fs: TStream;
 begin
-  fs := CreateFileStream(fileName, fmCreate);
+  fs := TFileStream.Create(fileName, fmCreate);
   try
     SaveToStream(fs);
   finally
@@ -6916,7 +6916,7 @@ procedure TGLActorAnimations.LoadFromFile(const fileName: string);
 var
   fs: TStream;
 begin
-  fs := CreateFileStream(fileName, fmOpenRead + fmShareDenyWrite);
+  fs := TFileStream.Create(fileName, fmOpenRead + fmShareDenyWrite);
   try
     LoadFromStream(fs);
   finally

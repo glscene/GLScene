@@ -25,7 +25,7 @@ uses
   GLScene,
   GLCrossPlatform,
 
-  GLS.OpenGLx,
+  Winapi.OpenGL,
   GLS.SDLWindow,
   SDL2;
 

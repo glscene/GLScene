@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Class and routines to output isolines.
-}
+
 unit GLIsolines;
+
+(* Class and routines to output isolines *)
 
 interface
 
@@ -15,6 +15,7 @@ uses
   System.Classes, 
   System.Math,
   System.Generics.Collections,
+
   GLVectorGeometry, 
   GLVectorLists, 
   GLObjects, 
@@ -61,7 +62,7 @@ type
     constructor Create(AOwner: TComponent); virtual;
     destructor Destroy; override;
 
-  {  CONREC is a contouring routine for rectangular spaced data or regular 2D grids
+  (* CONREC is a contouring routine for rectangular spaced data or regular 2D grids
     It takes each rectangle of adjacent data points and splits it
     into 4 triangles after choosing the height at the centre of the rectangle.
     For each of the triangles the line segment resulting from the intersection
@@ -84,7 +85,7 @@ type
     HgtL - values of cut levels
     Z_Kfix -
     res3Dmin -
-  }
+  *)
    procedure Conrec(PlaneSFindex:Integer; PlaneSF: TGLFreeForm; Data: TMatrixArr; ilb, iub, jlb, jub: Integer;
          X: TVectorArr; Y: TVectorArr; NC: Integer; HgtL: TVectorArr; Z_Kfix: Single; res3Dmax, res3Dmin: Single);
    private
@@ -98,7 +99,7 @@ procedure Initialize_Contouring(var DataGrid: TMatrixArr;
 procedure Release_Memory_Isoline;
 function GetNextIsoline(var Isoline: TGLIsoline): Boolean;
 
-{Defines contouring segments inside a triangle using elevations }
+// Defines contouring segments inside a triangle using elevations
 procedure TriangleElevationSegments(const p1, p2, p3: TAffineVector;
   ElevationDelta: Single; Segments: TAffineVectorList);
 
@@ -316,9 +317,9 @@ begin
   // Have finished loop
 end;
 
-{ LineX and LineY are (pointers to) zero-offset vectors, to which
+(* LineX and LineY are (pointers to) zero-offset vectors, to which
   sufficient space has been allocated to store the coordinates of
-  any feasible Isoline }
+  any feasible Isoline *)
 function GetNextIsoline(var Isoline: TGLIsoline): Boolean;
 var
   OffGrid: boolean;

@@ -1,18 +1,21 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLFileOBJ;
+
+(*
     Support-Code to load Wavefront OBJ Files into TGLFreeForm-Components
     in GLScene.
     Note that you must manually add this unit to one of your project's uses
     to enable support for OBJ & OBJF at run-time.
-}
-unit GLFileOBJ;
-
-{$I GLScene.inc}
-{.$DEFINE STATS}{ Define to display statistics after loading. }
+*)
 
 interface
+
+{$I GLScene.inc}
+
+{.$DEFINE STATS} // Define to display statistics after loading.
 
 uses
   System.Classes,
@@ -119,9 +122,8 @@ begin
   Result := copy(s, Count, Length(s) - Count + 1);
 end;
 
+// Return the next Delimiter-delimited Token from the string s and remove it from s
 function NextToken(var s: string; delimiter: Char): string;
-{ Return the next Delimiter-delimited Token from the string s and
-  remove it from s }
 var
   p: Integer;
 begin
@@ -138,19 +140,16 @@ begin
   end;
 end;
 
-{ ** TOBJFGVertexNormalTexIndexList ****************************************** }
-{ - based on TFGVertexNormalTexIndexList (GLVectorFileObjects.pas)
+(* ** TOBJFGVertexNormalTexIndexList ******************************************
+  - based on TFGVertexNormalTexIndexList (GLVectorFileObjects.pas)
   - adds support for polygons and for "missing" normals and
     texture-coordinates. Pass -1 to Add for the index of a missing object.
   - Polygons are defined by counting off the number of vertices added to the
     PolygonVertices-property. So a PolygonVertices-List of
-
       [3,4,6]
-
     says "Vertex indices 0,1 and 2 make up a triangle, 3,4,5 and 6 a quad and
     7,8,9,10,11 and 12 a hexagon".
-
-}
+*)
 
 type
   TOBJFGMode = (objfgmmPolygons, objfgmmTriangleStrip);
@@ -162,15 +161,15 @@ type
     FPolygonVertices: TIntegerList;
     FCurrentVertexCount: integer;
     FShowNormals: boolean;
-    procedure PolygonComplete; { Current polygon completed. Adds FCurrentVertexCount
-                                 to FPolygonVertices and sets the variable to 0 }
+    procedure PolygonComplete; (* Current polygon completed. Adds FCurrentVertexCount
+                                 to FPolygonVertices and sets the variable to 0 *)
     procedure SetMode(aMode: TOBJFGMode);
   public
     procedure Assign(Source: TPersistent); override;
     constructor CreateOwned(aOwner: TglFaceGroups); override;
     destructor Destroy; override;
     procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;    
+    procedure ReadFromFiler(reader: TVirtualReader); override;
     procedure Add(VertexIdx, NormalIdx, TexCoordIdx: Integer);
     procedure BuildList(var mrci: TGLRenderContextInfo); override;
     procedure AddToTriangles(aList: TAffineVectorList;
@@ -237,14 +236,14 @@ var
     Polygon, Index, j, idx: Integer;
     N: TAffineVector;
   begin
-    { Build it. Ignoring texture-coordinates and normals that are missing. }
-    Index := 0; { Current index into the Index-Lists. }
-    { For every Polygon }
+    // Build it. Ignoring texture-coordinates and normals that are missing.
+    Index := 0; // Current index into the Index-Lists.
+    // For every Polygon
     for Polygon := 0 to FPolygonVertices.Count - 1 do
     begin
       gl.Begin_(GL_POLYGON);
       try
-        { For every Vertex in the current Polygon }
+        // For every Vertex in the current Polygon
         for j := 0 to FPolygonVertices[Polygon] - 1 do
         begin
           Assert(NormalIndices.List <> nil);
@@ -281,13 +280,13 @@ var
       end;
     end;
 
-    { Visible normals, rather moronic and mainly for debugging. }
+    // Visible normals, rather moronic and mainly for debugging.
     if FShowNormals then
     begin
       Index := 0;
       for Polygon := 0 to FPolygonVertices.Count - 1 do
       begin
-        { For every Vertex in the current Polygon }
+        // For every Vertex in the current Polygon
         for j := 0 to FPolygonVertices[Polygon] - 1 do
         begin
           idx := NormalIndices.List^[Index];
@@ -319,7 +318,7 @@ var
   var
     Index, idx: Integer;
   begin
-    { Build it. Ignoring texture-coordinates and normals that are missing. }
+    // Build it. Ignoring texture-coordinates and normals that are missing.
     gl.Begin_(GL_TRIANGLE_STRIP);
     try
       for Index := 0 to VertexIndices.Count - 1 do
@@ -347,7 +346,7 @@ begin
     and (VertexIndices.Count <= NormalIndices.Count),
     'Number of Vertices does not match number of Normals or Texture coordinates.');
 
-  { Shorthand notations. }
+  // Shorthand notations.
   VertexPool := Owner.Owner.Vertices.List;
   NormalPool := Owner.Owner.Normals.List;
   ColorPool := Owner.Owner.Colors.List;
@@ -572,21 +571,20 @@ var
   begin
     with FG do
     begin
-      { Walk the polygons and calculate normals for those vertices that
-        are missing. }
-      Index := 0; { Current index into the Index-List of this Facegroup. }
+      // Walk the polygons and calculate normals for those vertices that are missing
+      Index := 0; // Current index into the Index-List of this Facegroup.
 
-      { For every Polygon }
+      // For every Polygon
       for Polygon := 0 to FPolygonVertices.Count - 1 do
       begin
-        { Init }
+        // Init
         FirstVertexIndex := Index;
         FillChar(p, SizeOf(p), 0);
-        { Last Vertex in this polygon }
+        // Last Vertex in this polygon
         p[2] := @VertexPool^[VertexIndices.List^[Index + FPolygonVertices[Polygon] - 1]];
-        { First Vertex in this polygon }
+        // First Vertex in this polygon
         p[3] := @VertexPool^[VertexIndices.List^[Index]];
-        { For every Vertex in the current Polygon but the last. }
+        // For every Vertex in the current Polygon but the last.
         for j := 0 to FPolygonVertices[Polygon] - 2 do
         begin
           Move(p[2], p[1], 2 * SizeOf(PAffineVector));
@@ -595,13 +593,13 @@ var
           Inc(Index);
         end;
 
-        { For the last vertex use the first as partner to span the plane. }
+        // For the last vertex use the first as partner to span the plane.
         Move(p[2], p[1], 2 * SizeOf(PAffineVector));
         p[3] := @VertexPool^[VertexIndices.List^[FirstVertexIndex]];
         DoCalcNormal;
         inc(Index);
-      end; { of for FPolygonVertices }
-    end; { of with Facegroup }
+      end; // of for FPolygonVertices
+    end; // of with Facegroup
   end;
 
   procedure CalcForTriangleStrip;
@@ -609,7 +607,7 @@ var
   end;
 
 begin
-  { Shorthand notations. }
+  // Shorthand notations.
   VertexPool := Mesh.Vertices.List;
 
   for Face := 0 to Mesh.FaceGroups.Count - 1 do
@@ -630,8 +628,8 @@ var
   faceGroup: TOBJFGVertexNormalTexIndexList;
   faceGroupNames: TStringList;
 
+  // Read a vector with a maximum of 4 elements from the current line.
   procedure ReadHomogeneousVector;
-    { Read a vector with a maximum of 4 elements from the current line. }
   var
     i, c: Integer;
     f: string;
@@ -648,8 +646,8 @@ var
     end;
   end;
 
+  // Read a vector with a maximum of 3 elements from the current line.
   procedure ReadAffineVector;
-    { Read a vector with a maximum of 3 elements from the current line. }
   var
     i, c: integer;
     f: string;
@@ -700,7 +698,6 @@ var
   end;
 
   procedure AddFaceVertex(faceVertices: string);
-
     function GetIndex(Count: Integer): Integer;
     var
       s: string;
@@ -711,12 +708,12 @@ var
         Result := -1 // Missing
       else if Result < 0 then
       begin
-        { Relative, make absolute. "-1" means last, "-2" second last. }
+        // Relative, make absolute. "-1" means last, "-2" second last.
         Result := Count + Result
       end
       else
       begin
-        { Absolute, correct for zero-base. }
+        // Absolute, correct for zero-base.
         Dec(Result);
       end;
     end;
@@ -766,10 +763,10 @@ var
 
   procedure ReadTriangleStrip;
   begin
-    { Start a new Facegroup, mode=triangle strip }
+    // Start a new Facegroup, mode=triangle strip
     faceGroup := TOBJFGVertexNormalTexIndexList.CreateOwned(Mesh.FaceGroups);
     faceGroup.Mode := objfgmmTriangleStrip;
-    { The rest is the same as for continuation of a strip. }
+    // The rest is the same as for continuation of a strip.
     ReadTriangleStripContinued;
   end;
 
@@ -803,7 +800,7 @@ var
             libFilename := IncludeTrailingPathDelimiter(matLib.TexturePaths) + libName;
 
           try
-            fs := CreateFileStream(libFilename);
+            fs := TFileStream.Create(libFilename,fmOpenRead);
           except
             fs := nil;
           end;

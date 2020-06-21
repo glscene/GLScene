@@ -1,14 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   HDR File support for GLScene.
-}
+
 unit GLFileHDR;
 
-{$I GLScene.inc}
+(* HDR File support *)
 
 interface
+
+{$I GLScene.inc}
 
 uses
   System.Classes,
@@ -39,16 +39,11 @@ type
     fProgramType: string[16];
   public
     class function Capabilities: TGLDataFileCapabilities; override;
-
     procedure LoadFromFile(const filename: string); override;
     procedure LoadFromStream(stream: TStream); override;
-
-    procedure AssignFromTexture(textureContext: TGLContext;
-      const textureHandle: Cardinal;
-      textureTarget: TGLTextureTarget;
-      const CurrentFormat: Boolean;
+    procedure AssignFromTexture(textureContext: TGLContext; const textureHandle: Cardinal;
+      textureTarget: TGLTextureTarget; const CurrentFormat: Boolean;
       const intFormat: TGLInternalFormat); reintroduce;
-
     property Gamma: Single read fGamma;
     property Exposure: Single read fExposure;
     property ProgramType: Ansistring read GetProgramType write SetProgramType;
@@ -68,7 +63,7 @@ var
 begin
   if FileStreamExists(fileName) then
   begin
-    fs := CreateFileStream(fileName, fmOpenRead);
+    fs := TFileStream.Create(fileName, fmOpenRead);
     try
       LoadFromStream(fs);
     finally

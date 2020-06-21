@@ -1,21 +1,21 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLFileSTL;
+
+(*
   Support-code to load STL Files into TGLFreeForm-Components in GLScene.
   Note that you must manually add this unit to one of your project's uses
   to enable support for STL files at run-time.
-  
+
   The STL vector file (stereolithography format).
   It is a list of the triangular surfaces that describe a computer generated solid model.
   This is the standard input for most rapid prototyping machines.
   There are two flavors of STL, the "text" and the "binary".
   This class reads both, but exports only the "binary" version.
   Original Binary importer code by Paul M. Bearne, Text importer by Adem.
-
-}
-
-unit GLFileSTL;
+*)
 
 interface
 
@@ -72,7 +72,7 @@ const
   cFULL_HEADER_LEN = 84;
 
 // ------------------
-// ------------------ TglSTLVectorFile ------------------
+// ------------------ TGLSTLVectorFile ------------------
 // ------------------
 
 class function TglSTLVectorFile.Capabilities: TglDataFileCapabilities;
@@ -276,9 +276,7 @@ begin
       end;
    except
       on E: Exception do
-      begin
          Mesh.Free;
-      end;
    end;
 end;
 
@@ -289,7 +287,7 @@ var
   Header: TSTLHeader;
   List: TAffineVectorList;
 const
-  cHeaderTag = 'GLScene STL export';
+  cHeaderTag = 'STL export';
 begin
    List := Owner.MeshObjects.ExtractTriangles;
    try

@@ -11,12 +11,12 @@ interface
 {$I GLScene.inc}
 
 uses
-  System.Classes, 
-  System.SysUtils, 
+  System.Classes,
+  System.SysUtils,
   System.UITypes,
-  VCL.Graphics, 
-  VCL.Controls, 
-  VCL.Dialogs, 
+  VCL.Graphics,
+  VCL.Controls,
+  VCL.Dialogs,
   VCL.ExtDlgs,
   GLCrossPlatform,
   GLStrings,
@@ -101,9 +101,6 @@ procedure SetGLSceneMediaDir();
 //------------------------------------------------------
 implementation
 //------------------------------------------------------
-
-uses
-  GLApplicationFileIO;
 
 
 var
@@ -413,7 +410,7 @@ var
   n: Cardinal;
   fs: TStream;
 begin
-  fs := CreateFileStream(fileName, fmCreate);
+  fs := TFileStream.Create(fileName, fmCreate);
   try
     n := Length(data);
     if n > 0 then
@@ -430,7 +427,7 @@ var
 begin
   if FileExists(fileName) then
   begin
-    fs := CreateFileStream(fileName, fmOpenRead + fmShareDenyNone);
+    fs := TFileStream.Create(fileName, fmOpenRead + fmShareDenyNone);
     try
       n := fs.Size;
       SetLength(Result, n);
@@ -449,7 +446,7 @@ var
   n: Cardinal;
   fs: TStream;
 begin
-  fs := CreateFileStream(fileName, fmCreate);
+  fs := TFileStream.Create(fileName, fmCreate);
   try
     n := Length(data);
     if n > 0 then
@@ -466,7 +463,7 @@ var
 begin
   if FileExists(fileName) then
   begin
-    fs := CreateFileStream(fileName, fmOpenRead + fmShareDenyNone);
+    fs := TFileStream.Create(fileName, fmOpenRead + fmShareDenyNone);
     try
       n := fs.Size;
       SetLength(Result, n);
@@ -486,7 +483,7 @@ var
   Stream: TStream;
   MemStream: TMemoryStream;
 begin
-  Stream := CreateFileStream(FileName, fmCreate);
+  Stream := TFileStream.Create(FileName, fmCreate);
   try
     if AsText then
     begin
@@ -511,7 +508,7 @@ var
   Stream: TStream;
   MemStream: TMemoryStream;
 begin
-  Stream := CreateFileStream(FileName, fmOpenRead);
+  Stream := TFileStream.Create(FileName, fmOpenRead);
   try
     if AsText then
     begin
@@ -537,7 +534,7 @@ var
 begin
   if FileExists(fileName) then
   begin
-    fs := CreateFileStream(fileName, fmOpenRead + fmShareDenyNone);
+    fs := TFileStream.Create(fileName, fmOpenRead + fmShareDenyNone);
     try
       Result := fs.Size;
     finally

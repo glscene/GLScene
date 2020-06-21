@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  PLY (Stanford Triangle Format) vector file format implementation.
-}
+
 unit GLFilePLY;
+
+(* PLY (Stanford Triangle Format) vector file format implementation *)
 
 interface
 
@@ -17,7 +17,8 @@ uses
   GLVectorGeometry,
   GLVectorLists,
   GLVectorFileObjects,
-  GLApplicationFileIO;
+  GLApplicationFileIO,
+  GLUtils;
 
 type
   (* The PLY vector file aka Stanford Triangle Format.
@@ -34,9 +35,6 @@ type
 // ------------------------------------------------------------------
 implementation
 // ------------------------------------------------------------------
-
-uses
-  GLUtils;
 
 // ------------------
 // ------------------ TGLPLYVectorFile ------------------

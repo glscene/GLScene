@@ -1,9 +1,11 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Access to large tiled height data files.
 
+unit GLHeightTileFile;
+
+(*
+  Access to large tiled height data files.
   Performance vs Raw file accesses (for perfect tile match):
   Cached data:
   "Smooth" terrain   1:2 to 1:10
@@ -12,15 +14,14 @@
   Non-cached data:
   "Smooth" terrain   1:100 to 1:1000
   Random terrain     1:100
-}
-unit GLHeightTileFile;
+*)
 
 interface
 
 {$I GLScene.inc}
 
 uses
-  System.Classes, 
+  System.Classes,
   System.SysUtils,
 
   GLApplicationFileIO;
@@ -71,7 +72,7 @@ const
 
 type
 
-  { Interfaces a Tiled file }
+  // Interfaces a Tiled file
   TGLHeightTileFile = class(TObject)
   private
     FFile: TStream;
@@ -92,31 +93,30 @@ type
     procedure UnPackTile(source: PShortIntArray);
     property TileIndexOffset: Int64 read FHeader.TileIndexOffset write FHeader.TileIndexOffset;
   public
-    { Creates a new HTF file.
-      Read and data access methods are not available when creating. }
+    (* Creates a new HTF file.
+      Read and data access methods are not available when creating. *)
     constructor CreateNew(const fileName: String; aSizeX, aSizeY, aTileSize: Integer);
     constructor Create(const fileName: String);
 	destructor Destroy; override;
-    { Returns tile index for corresponding left/top. }
+    // Returns tile index for corresponding left/top.
     function GetTileIndex(aLeft, aTop: Integer): Integer;
-    { Returns tile of corresponding left/top. }
+    // Returns tile of corresponding left/top.
     function GetTile(aLeft, aTop: Integer; pTileInfo: PPHeightTileInfo = nil): PHeightTile;
-    { Stores and compresses give tile data.
+    (* Stores and compresses give tile data.
       aLeft and top MUST be a multiple of TileSize, aWidth and aHeight
-      MUST be lower or equal to TileSize. }
+      MUST be lower or equal to TileSize. *)
     procedure CompressTile(aLeft, aTop, aWidth, aHeight: Integer; aData: PSmallIntArray);
-    { Extract a single row from the HTF file.
+    (* Extract a single row from the HTF file.
       This is NOT the fastest way to access HTF data.
-      All of the row must be contained in the world, otherwise result
-      is undefined. }
+      All of the row must be contained in the world, otherwise result is undefined. *)
     procedure ExtractRow(x, y, len: Integer; dest: PSmallIntArray);
-    { Returns the tile that contains x and y. }
+    // Returns the tile that contains x and y.
     function XYTileInfo(anX, anY: Integer): PHeightTileInfo;
-    { Returns the height at given coordinates.
+    (* Returns the height at given coordinates.
       This is definetely NOT the fastest way to access HTF data and should
-      only be used as utility function. }
+      only be used as utility function. *)
     function XYHeight(anX, anY: Integer): SmallInt;
-    { Clears the list then add all tiles that overlap the rectangular area. }
+    // Clears the list then add all tiles that overlap the rectangular area.
     procedure TilesInRect(aLeft, aTop, aRight, aBottom: Integer; destList: TList);
     function TileCount: Integer;
     property Tiles[index: Integer]: PHeightTileInfo read GetTiles;
@@ -124,8 +124,8 @@ type
     function TileCompressedSize(tileIndex: Integer): Integer;
     property SizeX: Integer read FHeader.SizeX;
     property SizeY: Integer read FHeader.SizeY;
-    { Maximum width and height for a tile.
-      Actual tiles may not be square, can assume random layouts, and may overlap. }
+    (* Maximum width and height for a tile.
+      Actual tiles may not be square, can assume random layouts, and may overlap. *)
     property TileSize: Integer read FHeader.TileSize;
     property DefaultZ: SmallInt read FHeader.DefaultZ write FHeader.DefaultZ;
   end;
@@ -162,7 +162,7 @@ begin
     SizeY := aSizeY;
     TileSize := aTileSize;
   end;
-  FFile := CreateFileStream(fileName, fmCreate);
+  FFile := TFileStream.Create(fileName, fmCreate);
   FFile.Write(FHeader, SizeOf(FHeader));
   FCreating := True;
   SetLength(FHeightTile.data, aTileSize * aTileSize);
@@ -172,7 +172,7 @@ constructor TGLHeightTileFile.Create(const fileName: String);
 var
   n, I, key, qx, qy: Integer;
 begin
-  FFile := CreateFileStream(fileName, fmOpenRead + fmShareDenyNone);
+  FFile := TFileStream.Create(fileName, fmOpenRead + fmShareDenyNone);
   // Read Header
   FFile.Read(FHeader, SizeOf(FHeader));
   if FHeader.FileVersion <> cFileVersion then

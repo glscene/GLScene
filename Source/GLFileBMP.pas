@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Graphic engine friendly loading of BMP image.
-}
 
 unit GLFileBMP;
+
+(* Graphic engine friendly loading of BMP image *)
 
 interface
 
@@ -14,12 +13,12 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-   
+
   OpenGLTokens,
   GLContext,
   GLGraphics,
-  GLTextureFormat,
-  GLApplicationFileIO;
+  GLApplicationFileIO,
+  GLTextureFormat;
 
 type
 
@@ -115,7 +114,7 @@ var
 begin
   if FileStreamExists(fileName) then
   begin
-    fs := CreateFileStream(fileName, fmOpenRead);
+    fs := TFileStream.Create(fileName, fmOpenRead);
     try
       LoadFromStream(fs);
     finally
@@ -131,7 +130,7 @@ procedure TGLBMPImage.SaveToFile(const filename: string);
 var
   fs: TStream;
 begin
-  fs := CreateFileStream(fileName, fmOpenWrite or fmCreate);
+  fs := TFileStream.Create(fileName, fmOpenWrite or fmCreate);
   try
     SaveToStream(fs);
   finally

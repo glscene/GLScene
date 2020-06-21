@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLIsosurface;
+
+(*
   Polygonising a scalar field by construction of isosurfaces
   Algorithms
   ----------
@@ -23,17 +26,15 @@
   Overall
   - Simple Data Structures to store Mesh. Vertices are calculated and stored twice
   or even more often.
-}
-
-unit GLIsosurface;
-
-// uncomment next line to memorize vertex Density value to further use
-// (i.e. mesh color generation)
-{.$Define UseDensity}
+*)
 
 interface
 
 {$I GLScene.inc}
+
+// uncomment next line to memorize vertex Density value to further use
+// (i.e. mesh color generation)
+{.$Define UseDensity}
 
 uses
   GLVectorGeometry,
@@ -42,7 +43,6 @@ uses
   GLVectorFileObjects,
   GLVectorTypes,
   GLTypes;
-
 
 const
   ALLOC_SIZE = 65536;
@@ -140,13 +140,13 @@ type
     // TODO SetIsoValue to Run
   end;
 
-  { 3D isosurface extractor class. This class allows to calculate and exctract
-    isosurfaces from scalar field voxel models using a given isovalue }
+  (* 3D isosurface extractor class. This class allows to calculate and exctract
+    isosurfaces from scalar field voxel models using a given isovalue *)
   TIsoSurfaceExtractor = class(TObject)
   private
     Data: TSingle3DArray;
     Dimensions: array ['x' .. 'z'] of Integer;
-    { Build Index depending on whether the edges are outside or inside the surface }
+    // Build Index depending on whether the edges are outside or inside the surface
     function BuildIndex(var ADatavals: array of Single; Isovalue: Single): word;
     function Interpolate(const V0, V1: TAffineVector;
       var Val0, Val1, Isovalue: Single; isPolished: boolean): TVertex;
@@ -192,11 +192,7 @@ const
   (ScalarField: SFDoubleTorus; IsoValue: 0.015));
 
 // -------------------------------------------------------------------------
-// -------------------------------------------------------------------------
-// -------------------------------------------------------------------------
 implementation
-// -------------------------------------------------------------------------
-// -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
 
 const
@@ -478,14 +474,11 @@ const
 
 
 // Marching Cube EdgeTable
-//
 const
-
   MC_EDGETABLE: array [0 .. 11, 0 .. 1] of Integer = ((0, 1), (1, 2), (2, 3),
     (3, 0), (4, 5), (5, 6), (6, 7), (7, 4), (0, 4), (1, 5), (2, 6), (3, 7));
 
   // Marching Tetrahedra TriTable
-  //
   (*
         + 0
          /|\
@@ -513,18 +506,14 @@ const
     (0, 3, 2, -1, -1, -1, -1), (-1, -1, -1, -1, -1, -1, -1));
 
   // Marching Tetrahedra EdgeTable
-  //
   MT_EDGETABLE: array [0 .. 5, 0 .. 1] of Integer = ((0, 1), (1, 2), (2, 0),
     (0, 3), (1, 3), (2, 3));
 
   // Marching Tetrahedra CubeSplit
-  //
   MT_CUBESPLIT: array [0 .. 5, 0 .. 3] of Integer = ((0, 5, 1, 6), (0, 1, 2, 6),
     (0, 2, 3, 6), (0, 3, 7, 6), (0, 7, 4, 6), (0, 4, 5, 6));
 
 // Test surface functions
-//
-
 function SFSphere(X, Y, Z: Single): TxScalarValue;
 begin
   Result := sqr(X) + sqr(Y) + sqr(Z)
@@ -601,10 +590,10 @@ begin
     (sqr(X) - sqr(Y) - sqr(Z));
 end;
 
-  { -------------------------------------------------------------------------
-    Class IsoSurfaceExtractor
-    Purpose: Extract an Isosurface from volume dataset for given Isovalue
-    ------------------------------------------------------------------------- }
+(* -------------------------------------------------------------------------
+   Class IsoSurfaceExtractor
+   Purpose: Extract an Isosurface from volume dataset for given Isovalue
+   ------------------------------------------------------------------------- *)
 
 function TIsoSurfaceExtractor.BuildIndex(var ADatavals: array of Single;
   Isovalue: Single): word;
@@ -623,7 +612,6 @@ begin
 end;
 
 // Compute intersection point of edge and surface by linear interpolation
-//
 function InterpolateRugged(V0, V1: TAffineVector;
   var Val0, Val1, Isovalue: Single): TVertex;
 var
@@ -715,7 +703,6 @@ var
   end;
 
 // Split Cube in 6 Tetrahedrons and process each tetrahedron
-//
   procedure SplitCube();
   var
     i, j: Integer;
@@ -1364,9 +1351,7 @@ begin
     add_triangle(MC_TRITABLE[_lut_entry], nt);
     Exit;
   end;
-  {
-    TODO complete algorithm with various tiling...
-  }
+  /// TODO complete algorithm with various tiling...
 end;
 
 procedure TGLMarchingCube.Run;
@@ -1546,12 +1531,14 @@ var
   function GetColor(H: TxScalarValue): TVector;
   begin
     Result := VectorMake(0.890, 0.855, 0.788, Alpha)
-    { if H <= 10 then Result:= VectorMake(0.922, 0.957, 0.980, 1.000)  //<=10
+    (*
+      if H <= 10 then Result:= VectorMake(0.922, 0.957, 0.980, 1.000)  //<=10
       else if H <= 50 then Result:= VectorMake(0.541, 0.027, 0.027, 1.000) // 10..50
       else if H <= 300 then Result:= VectorMake(0.941, 0.910, 0.859, 1.000) //50..300
       else if H <= 2000 then Result:= VectorMake(0.965, 0.969, 0.973, 1.000) //350.. 2000
       else if H <= 4000 then Result:= VectorMake(0.890, 0.855, 0.788, 1.000) //2000..4000
-      else Result:= VectorMake(0.9, 0.9, 0.6, 1.0) }
+      else Result:= VectorMake(0.9, 0.9, 0.6, 1.0)
+    *)
   end;
 
 begin

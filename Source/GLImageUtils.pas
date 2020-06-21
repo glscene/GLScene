@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  Main purpose is as a fallback in cases where there is no other way to process images. 
-*)
 
 unit GLImageUtils;
+
+(* Main purpose is as a fallback in cases where there is no other way to process images *)
 
 // TODO: Complite InfToXXX
 // TODO: BPTC decompression

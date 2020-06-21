@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  3DStudio 3DS vector file format implementation.
-}
 
 unit GLFile3DS;
+
+(* 3DStudio 3DS vector file format implementation *)
 
 interface
 
@@ -38,7 +37,7 @@ type
 
   EGLFile3DS = class(Exception);
 
-  { A record that holds all the information that is used during 3ds animation. }
+  // A record that holds all the information that is used during 3ds animation.
   TGLFile3DSAnimationData = packed record
     ModelMatrix: TMatrix;
     Color: TVector; // Omni Light.
@@ -48,7 +47,7 @@ type
     Roll: Single;
   end;
 
-  { An abstract class that describes how to interpolate animation keys. }
+  // An abstract class that describes how to interpolate animation keys.
   TGLFile3DSAnimationKeys = class(TPersistentObject)
   private
     FNumKeys: Integer;
@@ -169,10 +168,10 @@ type
     destructor Destroy; override;
   end;
 
-  { Used only for serialization. There probably is a more efficient way to do it. }
+  // Used only for serialization. There probably is a more efficient way to do it.
   TGLFile3DSAnimKeysClassType = (ctScale, ctRot, ctPos, ctCol, ctTPos, ctFall, ctHot, ctRoll);
 
-  { A 3ds-specific TGLMorphableMeshObject. }
+  // A 3ds-specific TGLMorphableMeshObject.
   TGLFile3DSDummyObject = class(TGLMorphableMeshObject)
   private
     FAnimList: TGLFile3DSAnimationKeyList;
@@ -202,14 +201,14 @@ type
     property RefrenceTransf: TGLFile3DSAnimationData read FRefTranf write FRefTranf;
   end;
 
-  { A 3ds-specific mesh object. }
+  // A 3ds-specific mesh object.
   TGLFile3DSMeshObject = class(TGLFile3DSDummyObject)
   public
     procedure LoadAnimation(const AData: Pointer); override;
     procedure BuildList(var ARci: TGLRenderContextInfo); override;
   end;
 
-  { A 3ds-specific omni light. }
+  // A 3ds-specific omni light.
   TGLFile3DSOmniLightObject = class(TGLFile3DSDummyObject)
   private
     FLightSrc: TGLFile3DSLight;
@@ -225,7 +224,7 @@ type
     destructor Destroy; override;
   end;
 
-  { TGLFile3DSSpotLightObject. A 3ds-specific spot light. }
+  // A 3ds-specific spot light.
   TGLFile3DSSpotLightObject = class(TGLFile3DSOmniLightObject)
   public
     procedure LoadData(const AOwner: TGLBaseMesh; const AData: PLight3DS); override;
@@ -233,7 +232,7 @@ type
     procedure SetFrame(const AFrame: real); override;
   end;
 
-  { A 3ds-specific camera. }
+  // A 3ds-specific camera.
   TGLFile3DSCameraObject = class(TGLFile3DSDummyObject)
   private
     FTargetObj: TGLDummyCube;
@@ -249,10 +248,10 @@ type
     destructor Destroy; override;
   end;
 
-  { The 3DStudio vector file.
+  (* The 3DStudio vector file.
     Uses an upgraded version if a 3DS import library by Mike Lischke.
     (http://www.lishcke-online.de). A 3DS file may contain material
-    information and require textures when loading. }
+    information and require textures when loading. *)
   TGL3DSVectorFile = class(TGLVectorFile)
   public
     class function Capabilities: TGLDataFileCapabilities; override;
@@ -260,38 +259,34 @@ type
   end;
 
 var
-  { If enabled, advanced parameters will be loaded from a 3ds file
+  (* If enabled, advanced parameters will be loaded from a 3ds file
     (TextureScale, TextureOffset), but it might break backwards compatibility.
     If disabled, it won't break anything, but some parameters will not be
     loaded correctly from a 3ds file.
     Also there is a significant drop in FPS when this option is on
-    (for unknown reasons), so it is off by default. }
+    (for unknown reasons), so it is off by default. *)
   vGLFile3DS_UseTextureEx: Boolean = False;
 
-  { If enabled, allows 3ds animation and fixes loading of some 3ds models,
+  (* If enabled, allows 3ds animation and fixes loading of some 3ds models,
     but has a few bugs:
     - TGLFreeForm.AutoCentering does now work correctly.
     - TMeshObject.vertices return values different from
-    TMeshObject.ExtractTriangles()
-  }
+    TMeshObject.ExtractTriangles() *)
   vGLFile3DS_EnableAnimation: Boolean = False;
 
-  { If enabled, a -90 degrees (-PI/2) rotation will occured on X Axis.
+  (* If enabled, a -90 degrees (-PI/2) rotation will occured on X Axis.
     By design 3dsmax has a Z Up-Axis, after the rotation the Up axis will
-    be Y. (Note: you need vGLFile3DS_EnableAnimation = true)
-  }
+    be Y. (Note: you need vGLFile3DS_EnableAnimation = true) *)
   vGLFile3DS_FixDefaultUpAxisY: Boolean = False;
 
-  { If >= 0, then the vertices list will be updated with selected frame
+  (* If >= 0, then the vertices list will be updated with selected frame
     animation data. (Note: you need vGLFile3DS_EnableAnimation = true).
     Be aware that in that case animation will not be usable, it is made
-    to be used with a static mesh like GLFreeForm.
-  }
+    to be used with a static mesh like GLFreeForm. *)
   vGLFile3DS_LoadedStaticFrame: Integer = -1;
 
 // ------------------------------------------------------------------
 implementation
-
 // ------------------------------------------------------------------
 
 const

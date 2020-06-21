@@ -1,20 +1,22 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{  
-  Classes for height data access. 
+
+unit GLHeightData;
+
+(*
+  Classes for height data access.
 
   The components and classes in the unit are the core data providers for
   height-based objects (terrain rendering mainly), they are independant
-  from the rendering stage. 
+  from the rendering stage.
 
   In short: access to raw height data is performed by a TGLHeightDataSource
   subclass, that must take care of performing all necessary data access,
   cacheing and manipulation to provide TGLHeightData objects. A TGLHeightData
   is basicly a square, power of two dimensionned raster heightfield, and
-  holds the data a renderer needs. 
-}
-unit GLHeightData;
+  holds the data a renderer needs.
+*)
 
 interface
 
@@ -49,23 +51,23 @@ type
   TGLHeightData = class;
   TGLHeightDataClass = class of TGLHeightData;
 
-  {  Determines the type of data stored in a TGLHeightData. 
-    There are 3 data types (8 bits unsigned, signed 16 bits and 32 bits). 
-    Conversions: (128*(ByteValue-128)) = SmallIntValue = Round(SingleValue). 
+  (* Determines the type of data stored in a TGLHeightData.
+    There are 3 data types (8 bits unsigned, signed 16 bits and 32 bits).
+    Conversions: (128*(ByteValue-128)) = SmallIntValue = Round(SingleValue).
     The 'hdtDefault' type is used for request only, and specifies that the
-    default type for the source should be used. }
+    default type for the source should be used. *)
   TGLHeightDataType = (hdtByte, hdtSmallInt, hdtSingle, hdtDefault);
 
-  {  Base class for height datasources. 
+  (* Base class for height datasources.
     This class is abstract and presents the standard interfaces for height
     data retrieval (TGLHeightData objects). The class offers the following
     features (that a subclass may decide to implement or not, what follow
     is the complete feature set, check subclass doc to see what is actually
-    supported): 
+    supported):
      Pooling / Cacheing (return a TGLHeightData with its "Release" method)
      Pre-loading : specify a list of TGLHeightData you want to preload
      Multi-threaded preload/queueing : specified list can be loaded in
-    a background task. }
+    a background task. *)
 
   TGLHeightDataSource = class(TComponent)
   private
@@ -80,25 +82,25 @@ type
   protected
     procedure SetMaxThreads(const Val: Integer);
     function HashKey(XLeft, YTop: Integer): Integer;
-    {  Adjust this property in you subclasses. }
+    // Adjust this property in you subclasses.
     property HeightDataClass: TGLHeightDataClass read FHeightDataClass
       write FHeightDataClass;
-    {  Looks up the list and returns the matching TGLHeightData, if any. }
+    // Looks up the list and returns the matching TGLHeightData, if any.
     function FindMatchInList(XLeft, YTop, size: Integer;
       DataType: TGLHeightDataType): TGLHeightData;
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    {  Access to currently pooled TGLHeightData objects, and Thread locking }
+    // Access to currently pooled TGLHeightData objects, and Thread locking
     property Data: TThreadList read FData;
-    {  Empties the Data list, terminating thread if necessary. 
+    (* Empties the Data list, terminating thread if necessary.
       If some TGLHeightData are hdsInUse, triggers an exception and does
-      nothing. }
+      nothing. *)
     procedure Clear;
-    {  Removes less used TDataHeight objects from the pool. 
+    (* Removes less used TDataHeight objects from the pool.
       Only removes objects whose state is hdsReady and UseCounter is zero,
       starting from the end of the list until total data size gets below
-      MaxPoolSize (or nothing can be removed). }
+      MaxPoolSize (or nothing can be removed). *)
     procedure CleanUp;
     {  Base TGLHeightData requester method. 
       Returns (by rebuilding it or from the cache) a TGLHeightData
@@ -128,7 +130,7 @@ type
       If 1, basic multithreading and queueing gets enabled,
       ie. StartPreparingData will be called from a thread, but from one
       thread only (ie. there is no need to implement a TGLHeightDataThread,
-      just make sure StartPreparingData code is thread-safe). 
+      just make sure StartPreparingData code is thread-safe).
       Other values (2 and more) are relevant only if you implement
       a TGLHeightDataThread subclass and fire it in StartPreparingData. }
     property MaxThreads: Integer read FMaxThreads write SetMaxThreads;
@@ -188,7 +190,7 @@ type
     height data (and the most unsecure).
     Secure (with range checking) data access is provided by specialized
     methods (f.i. "ByteHeight"), in which coordinates (x & y) are always
-    considered relative (like in raster access). 
+    considered relative (like in raster access).
     The class offers conversion facility between the types (as a whole data
     conversion), but in any case, the TGLHeightData should be directly requested
     from the TGLHeightDataSource with the appropriate format. 
@@ -285,7 +287,7 @@ type
     property Dirty: boolean read FDirty write FDirty;
     {  Memory Size of the raw data in bytes. }
     property DataSize: Integer read FDataSize;
-    {  Access to data as a byte array (n = y*Size+x). 
+    {  Access to data as a byte array (n = y*Size+x).
       If TGLHeightData is not of type hdtByte, this value is nil. }
     property ByteData: PByteArray read FByteData;
     {  Access to data as a byte raster (y, x). 
@@ -338,7 +340,7 @@ type
     property HeightMax: Single read GetHeightMax write FHeightMax;
     {  Returns the height as a single, whatever the DataType (slow). }
     function Height(x, y: Integer): Single;
-    {  Calculates and returns the normal for vertex point x, y. 
+    {  Calculates and returns the normal for vertex point x, y.
       Sub classes may provide normal cacheing, the default implementation
       being rather blunt. }
     function Normal(x, y: Integer; const scale: TAffineVector): TAffineVector;
@@ -398,7 +400,7 @@ type
     function Width: Integer; override;
     function Height: Integer; override;
   published
-    {  The picture serving as Height field data reference. 
+    {  The picture serving as Height field data reference.
       The picture is (if not already) internally converted to a 8 bit
       bitmap (grayscale). For better performance and to save memory,
       feed it this format! }
@@ -1831,7 +1833,7 @@ var
 begin
   if not FileExists('tbase.bin') then
     Exit;
-  fs := CreateFileStream('tbase.bin', fmOpenRead + fmShareDenyNone);
+  fs := TFileStream.Create('tbase.bin', fmOpenRead + fmShareDenyNone);
   try
     // retrieve data
     with HeightData do

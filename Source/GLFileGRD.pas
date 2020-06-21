@@ -1,30 +1,30 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   GRD (Grid Text Format) vector file format implementation. 
-}
+
 unit GLFileGRD;
+
+(* GRD (Grid Text Format) vector file format implementation *)
 
 interface
 
 {$I GLScene.inc}
 
 uses
-  System.Classes, 
+  System.Classes,
   System.SysUtils,
 
-  GLVectorGeometry, 
-  GLVectorTypes, 
+  GLVectorGeometry,
+  GLVectorTypes,
   GLVectorFileObjects,
-  GLApplicationFileIO, 
+  GLApplicationFileIO,
   GLGraph;
 
 type
-  {  The GRD file represents ascii grid formats in 2D/3D. 
+  (* The GRD file represents ascii grid formats in 2D/3D.
     This is a format for storing regular grid values as a
     matrices of cell centers. The format supports variations and
-    subformats. This importer works for Sutfer, ArcInfo and GMS formats }
+    subformats. This importer works for Sutfer, ArcInfo and GMS formats *)
   TGLGRDVectorFile = class(TGLVectorFile)
   public
     GLHeightField: TGLHeightField;

@@ -131,11 +131,12 @@
         <DCCReference Include="vclimg.dcp"/>
         <DCCReference Include="xmlrtl.dcp"/>
         <DCCReference Include="..\..\Source\File3DSConst.pas"/>
+        <DCCReference Include="..\..\Source\File3DSTypes.pas"/>
+        <DCCReference Include="..\..\Source\File3DSUtils.pas"/>
         <DCCReference Include="..\..\Source\FileDDSImage.pas"/>
         <DCCReference Include="..\..\Source\FileDXTC.pas"/>
         <DCCReference Include="..\..\Source\File3DS.pas"/>
-        <DCCReference Include="..\..\Source\File3DSTypes.pas"/>
-        <DCCReference Include="..\..\Source\File3DSUtils.pas"/>
+        <DCCReference Include="..\..\Source\FileHDRImage.pas"/>
         <DCCReference Include="..\..\Source\FileQ3BSP.pas"/>
         <DCCReference Include="..\..\Source\FileQ3MD3.pas"/>
         <DCCReference Include="..\..\Source\FileB3D.pas"/>
@@ -147,6 +148,7 @@
         <DCCReference Include="..\..\Source\FileOCT.pas"/>
         <DCCReference Include="..\..\Source\FileTGA.pas"/>
         <DCCReference Include="..\..\Source\FileX.pas"/>
+        <DCCReference Include="..\..\Source\FileVFW.pas"/>
         <DCCReference Include="..\..\Source\FileVRMLParser.pas"/>
         <DCCReference Include="..\..\Source\GLAVIRecorder.pas"/>
         <DCCReference Include="..\..\Source\GLAnimatedSprite.pas"/>
@@ -189,9 +191,9 @@
         <DCCReference Include="..\..\Source\GLFBORenderer.pas"/>
         <DCCReference Include="..\..\Source\GLFPSMovement.pas"/>
         <DCCReference Include="..\..\Source\GLFeedback.pas"/>
-        <DCCReference Include="..\..\Source\GLFile3DPDF.pas"/>
         <DCCReference Include="..\..\Source\GLFile3DS.pas"/>
         <DCCReference Include="..\..\Source\GLFile3DSSceneObjects.pas"/>
+        <DCCReference Include="..\..\Source\GLFile3DPDF.pas"/>
         <DCCReference Include="..\..\Source\GLFileASE.pas"/>
         <DCCReference Include="..\..\Source\GLFileB3D.pas"/>
         <DCCReference Include="..\..\Source\GLFileBMP.pas"/>
@@ -324,7 +326,6 @@
         <DCCReference Include="..\..\Source\GLSMemo.pas"/>
         <DCCReference Include="..\..\Source\GLSRGBE.pas"/>
         <DCCReference Include="..\..\Source\GLSRedBlackTree.pas"/>
-        <DCCReference Include="..\..\Source\FileVFW.pas"/>
         <DCCReference Include="..\..\Source\GLScene.pas"/>
         <DCCReference Include="..\..\Source\GLSceneForm.pas"/>
         <DCCReference Include="..\..\Source\GLScreen.pas"/>
@@ -347,6 +348,8 @@
         <DCCReference Include="..\..\Source\GLSpline.pas"/>
         <DCCReference Include="..\..\Source\GLState.pas"/>
         <DCCReference Include="..\..\Source\GLStrings.pas"/>
+        <DCCReference Include="..\..\Source\GLS.OpenGLx.pas"/>
+        <DCCReference Include="..\..\Source\GLS.vclOpenGL.pas"/>
         <DCCReference Include="..\..\Source\GLTeapot.pas"/>
         <DCCReference Include="..\..\Source\GLTerrainRenderer.pas"/>
         <DCCReference Include="..\..\Source\GLTexCombineShader.pas"/>
@@ -382,13 +385,9 @@
         <DCCReference Include="..\..\Source\GLWindowsFont.pas"/>
         <DCCReference Include="..\..\Source\XCollection.pas"/>
         <DCCReference Include="..\..\Source\GLzBuffer.pas"/>
-        <DCCReference Include="..\..\Source\FileHDRImage.pas"/>
         <DCCReference Include="..\..\Source\OpenGLAdapter.pas"/>
         <DCCReference Include="..\..\Source\OpenGLTokens.pas"/>
-        <DCCReference Include="..\..\Source\OpenGLVCL.pas"/>
         <DCCReference Include="..\..\Source\XOpenGL.pas"/>
-        <DCCReference Include="..\..\Source\GLS.OpenGLx.pas"/>
-        <None Include="..\..\Source\GLScene.inc"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
