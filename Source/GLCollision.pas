@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  Collision-detection management
-*)
+
 unit GLCollision;
+
+(* Collision-detection management *)
 
 interface
 
@@ -958,7 +958,6 @@ end;
 initialization
 // ------------------------------------------------------------------
 
-// class registrations
 RegisterXCollectionItemClass(TGLBCollision);
 
 finalization
@@ -966,3 +965,4 @@ finalization
 UnregisterXCollectionItemClass(TGLBCollision);
 
 end.
+

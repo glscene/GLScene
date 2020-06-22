@@ -38,7 +38,7 @@ uses
   GLRenderContextInfo,
   GLCoordinates,
   GLBaseClasses,
-  GLTypes,
+  GLVectorRecTypes,
   GLTextureFormat;
 
 type

@@ -1,14 +1,15 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Shader code editor. 
-// TODO: need to decide how to load templates from external file
-//       and update it without package recompilation
-}
-
 
 unit FShaderMemo;
+
+(*
+  Shader code editor.
+// TODO: need to decide how to load templates from external file
+//       and update it without package recompilation
+
+*)
 
 interface
 
@@ -33,7 +34,7 @@ uses
   VCL.StdCtrls,
   VCL.Graphics,
    
-  GLSMemo;
+  GLS.Memo;
 
 type
 

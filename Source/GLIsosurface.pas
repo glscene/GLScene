@@ -42,7 +42,7 @@ uses
   GLMesh,
   GLVectorFileObjects,
   GLVectorTypes,
-  GLTypes;
+  GLVectorRecTypes;
 
 const
   ALLOC_SIZE = 65536;

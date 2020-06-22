@@ -4,7 +4,7 @@
 
 unit GLS.ParallelRegister;
 
-(*  Registration unit for GLScene GPU Computing package *)
+(*  Registration unit for GPU Computing package *)
 
 interface
 

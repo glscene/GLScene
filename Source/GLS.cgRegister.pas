@@ -4,7 +4,7 @@
 
 unit GLS.cgRegister;
 
-(*  Registration unit for CG shader *)
+(*  Registration unit for CG shader package *)
 
 interface
 

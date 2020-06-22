@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Cross XML routines
-}
 
 unit GLSCrossXML;
+
+(* Cross XML routines *)
 
 interface
 

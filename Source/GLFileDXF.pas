@@ -1,17 +1,16 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Support-Code to load DXF (Drawing eXchange Files) TGLFreeForm or
-  TGLActor Components in GLScene. 
-
-  Note that you must manually add this unit to one of your project's uses
-  to enable support for DXF at run-time. 
-
-  Turn on TwoSideLighting in your Buffer! DXF-Faces have no defined winding order
-}
 
 unit GLFileDXF;
+
+(*
+  Support-Code to load DXF (Drawing eXchange Files) TGLFreeForm or
+  TGLActor Components in GLScene.
+  Note that you must manually add this unit to one of your project's uses
+  to enable support for DXF at run-time.
+  Turn on TwoSideLighting in your Buffer! DXF-Faces have no defined winding order
+*)
 
 interface
 

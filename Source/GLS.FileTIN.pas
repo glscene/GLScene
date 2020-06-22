@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   TIN (Triangular Irregular Network) vector file format implementation. 
-}
-unit GLFileTIN;
+
+unit GLS.FileTIN;
+
+(* TIN (Triangular Irregular Network) vector file format implementation *)
 
 interface
 
@@ -19,7 +19,7 @@ uses
   GLApplicationFileIO,
   GLVectorGeometry,
   GLUtils,
-  GLTypes;
+  GLVectorRecTypes;
 
 
 type

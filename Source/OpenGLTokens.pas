@@ -1,18 +1,18 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   OpenGL tokens
-*)
+
 unit OpenGLTokens;
+
+(* OpenGL tokens *)
 
 interface
 
 {$I GLScene.inc}
 
 uses
-  System.SysUtils,
   Winapi.Windows,
+  System.SysUtils,
   GLVectorTypes;
 
 type

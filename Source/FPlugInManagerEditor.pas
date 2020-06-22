@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Need a short description of what it does here. 
-}
+
 unit FPlugInManagerEditor;
+
+(* Need a short description of what it does here *)
 
 interface
 
@@ -24,8 +24,7 @@ uses
   Vcl.ComCtrls, 
   Vcl.ToolWin,
    
-  GLPlugInIntf, 
-  GLPlugInManager;
+  GLS.PlugInManager;
 
 type
   TGLPlugInManagerEditorForm = class(TForm)

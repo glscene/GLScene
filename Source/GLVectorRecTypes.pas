@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Defines common vector types as advanced records.
-}
-unit GLTypes;
+
+unit GLVectorRecTypes;
+
+(* Defines common vector types as advanced records *)
 
 interface
 
@@ -325,14 +325,14 @@ type
 type
   TxPolyhedron = array of TxPolygon3D;
 
-{
+(*
   TxPolyhedron = record
     Facets: array of TxPolygon3D;
     function NetLength;
     function Area;
     function Volume;
   end;
-}
+*)
 
 //--------------------------
 // Mesh simple record types
@@ -775,7 +775,9 @@ begin
 end;
 
 
-{ TxVector }
+//-----------------------------
+// TxVector
+//-----------------------------
 
 constructor TxVector.Create(V: TAbstractVector);
 begin
@@ -986,7 +988,9 @@ begin
   end;
 end;
 
-{ TxQuatHelper }
+//-----------------------------
+// TxQuatHelper
+//-----------------------------
 
 function TxQuatHelper.ToMatrix: TxMatrix;
 begin
@@ -1002,7 +1006,9 @@ begin
   Result[3, 3] := Sqr(FData[0]) - Sqr(FData[1]) - Sqr(FData[2]) + Sqr(FData[3]);
 end;
 
-{ TxVecHelper }
+//-----------------------------
+// TxVecHelper
+//-----------------------------
 
 function TxVecHelper.ToDiagMatrix: TxMatrix;
 var
@@ -1079,7 +1085,9 @@ begin
   end;
 end;
 
-{ TxDim }
+//-----------------------------
+// TxDim
+//-----------------------------
 
 constructor TxDim.Create(ARowCount: Integer; AColCount: Integer = 0);
 begin
@@ -1088,7 +1096,9 @@ begin
 end;
 
 
-{ TxPoint2D }
+//-----------------------------
+// TxPoint2D
+//-----------------------------
 
 function TxPoint2D.Create(X, Y : Single): TxPoint2D;
 begin
@@ -1129,7 +1139,9 @@ begin
   Result := Point.Distance(Center) <= Radius;
 end;
 
-{ TxPoint3D }
+//-----------------------------
+// TxPoint3D
+//-----------------------------
 
 function TxPoint3D.Create(X, Y, Z: Single): TxPoint3D;
 begin
@@ -1169,7 +1181,9 @@ begin
   Self.Z := Z;
 end;
 
-{ TxVector2D }
+//-----------------------------
+// TxVector2D
+//-----------------------------
 
 function TxVector2D.Create(const AX, AY, AW: Single): TxVector2D;
 begin
@@ -1226,7 +1240,7 @@ begin
 end;
 
 //---------------------------------
-{ TxVector3D }
+// TxVector3D
 //---------------------------------
 function TxVector3D.Create(const AX, AY, AZ, AW: Single): TxVector3D;
 begin
@@ -1287,7 +1301,7 @@ begin
 end;
 
 //---------------------------------
-{ TxQuaternion }
+// TxQuaternion
 //---------------------------------
 
 function TxQuaternion.GetElement(Index: Byte): Extended;

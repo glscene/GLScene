@@ -21,7 +21,7 @@ uses
   GLObjects, 
   GLMultiPolygon,  
   GLCoordinates,
-  GLTypes, 
+  GLVectorRecTypes,
   GLColor, 
   GLSpline, 
   GLspaceText, 

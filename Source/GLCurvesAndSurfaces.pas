@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Bezier and B-Spline Curve and Surface Routines.
-}
 
 unit GLCurvesAndSurfaces;
+
+(* Bezier and B-Spline Curve and Surface Routines *)
 
 interface
 
