@@ -197,7 +197,6 @@ contains
   GLPictureRegisteredFormats in '..\..\Source\GLPictureRegisteredFormats.pas',
   GLPipelineTransformation in '..\..\Source\GLPipelineTransformation.pas',
   GLS.PlugInManager in '..\..\Source\GLS.PlugInManager.pas',
-  GLPluginIntf in '..\..\Source\GLPluginIntf.pas',
   GLPolyhedron in '..\..\Source\GLPolyhedron.pas',
   GLPolynomials in '..\..\Source\GLPolynomials.pas',
   GLPortal in '..\..\Source\GLPortal.pas',

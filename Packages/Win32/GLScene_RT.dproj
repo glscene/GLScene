@@ -291,7 +291,6 @@
         <DCCReference Include="..\..\Source\GLPictureRegisteredFormats.pas"/>
         <DCCReference Include="..\..\Source\GLPipelineTransformation.pas"/>
         <DCCReference Include="..\..\Source\GLS.PlugInManager.pas"/>
-        <DCCReference Include="..\..\Source\GLPluginIntf.pas"/>
         <DCCReference Include="..\..\Source\GLPolyhedron.pas"/>
         <DCCReference Include="..\..\Source\GLPolynomials.pas"/>
         <DCCReference Include="..\..\Source\GLPortal.pas"/>
