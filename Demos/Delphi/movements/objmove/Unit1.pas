@@ -22,7 +22,7 @@ uses
   GLVectorTypes,
   GLVectorGeometry, 
   GLVectorFileObjects, 
-  GLWin32Viewer,
+  GLSceneViewer,
   GLSpaceText, 
   GLGeomObjects, 
   GLColor, 

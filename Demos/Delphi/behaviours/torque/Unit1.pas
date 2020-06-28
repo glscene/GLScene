@@ -17,7 +17,7 @@ uses
   GLScene,
   GLPersistentClasses,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLPolyhedron,
   GLCrossPlatform,
   GLCoordinates,

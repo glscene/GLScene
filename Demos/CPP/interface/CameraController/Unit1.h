@@ -19,7 +19,7 @@
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
 #include "GLSmoothNavigator.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Graphics.hpp>
 //---------------------------------------------------------------------------

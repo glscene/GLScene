@@ -19,7 +19,7 @@ uses
   GLScene,
   GLContext,
   GLScreen,
-  GLWin32Viewer;
+  GLSceneViewer;
 
 const
   lcl_major = 0;

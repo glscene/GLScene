@@ -19,7 +19,7 @@
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
 #include "GLShadowPlane.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLUtils.hpp"
 #include "JPeg.hpp"
 

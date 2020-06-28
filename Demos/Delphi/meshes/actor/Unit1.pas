@@ -22,7 +22,7 @@ uses
   GLScene,
   GLObjects,
   GLVectorGeometry,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLFileMD2,
   GLGeomObjects,
   GLCrossPlatform,

@@ -21,7 +21,7 @@
 #include "GLMaterial.hpp"
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLContext.hpp"
 #include "GLState.hpp"
 #include "GLUtils.hpp"

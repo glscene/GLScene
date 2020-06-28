@@ -16,7 +16,7 @@ uses
   
   GLTexture,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLScene,
   GLObjects,
   GLPolyhedron,

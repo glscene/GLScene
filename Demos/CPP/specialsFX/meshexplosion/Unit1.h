@@ -13,7 +13,7 @@
 
 #include "GLScene.hpp"
 #include "GLCadencer.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLCoordinates.hpp"
 #include "GLBaseClasses.hpp"
 #include "GLCrossPlatform.hpp"

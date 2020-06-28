@@ -13,7 +13,7 @@ uses
 
   
   GLScene, GLScreenSaver, GLObjects, GLBehaviours, GLCadencer,
-  GLWin32Viewer, GLGeomObjects, GLCrossPlatform, GLCoordinates, GLBaseClasses;
+  GLSceneViewer, GLGeomObjects, GLCrossPlatform, GLCoordinates, GLBaseClasses;
 
 type
   TForm1 = class(TForm)

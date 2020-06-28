@@ -21,7 +21,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLStrings;
+  GLS.Strings;
 
 type
 

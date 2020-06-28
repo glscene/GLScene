@@ -21,7 +21,7 @@ uses
   GLCadencer,
   GLNGDManager,
   GLSimpleNavigation,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLBaseClasses,
   GLVectorFileObjects,

@@ -22,7 +22,7 @@
 #pragma link "GLScene"
 #pragma link "GLSimpleNavigation"
 #pragma link "GLSLShader"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLWindowsFont"
 #pragma link "GLMultisampleImage"
 

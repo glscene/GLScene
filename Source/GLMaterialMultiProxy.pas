@@ -34,7 +34,7 @@ uses
   GLTexture,
   GLMaterial,
   GLSilhouette,
-  GLStrings,
+  GLS.Strings,
   GLCrossPlatform,
   GLPersistentClasses,
   GLRenderContextInfo,

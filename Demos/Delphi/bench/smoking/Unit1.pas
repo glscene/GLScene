@@ -14,7 +14,7 @@ uses
 
   
   GLCadencer, GLParticleFX, GLPerlinPFX, GLScene, GLObjects,
-  GLWin32Viewer, GLCrossPlatform, GLCoordinates, GLSimpleNavigation, GLBaseClasses;
+  GLSceneViewer, GLCrossPlatform, GLCoordinates, GLSimpleNavigation, GLBaseClasses;
 
 type
   TForm1 = class(TForm)

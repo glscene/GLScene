@@ -19,7 +19,7 @@
 #include "GLSimpleNavigation.hpp"
 #include "GLUserShader.hpp"
 #include "GLWaterPlane.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLObjects.hpp"
 #include "GLUtils.hpp"
 

@@ -22,7 +22,7 @@ uses
   GLTexture,
   GLVectorLists,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLSimpleNavigation,
   GLPostEffects,
   GLCrossPlatform,

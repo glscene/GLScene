@@ -20,7 +20,7 @@
 #include "GLGraph.hpp"
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLSmoothNavigator.hpp"
 #include "GLKeyboard.hpp"
 #include "GLUtils.hpp"

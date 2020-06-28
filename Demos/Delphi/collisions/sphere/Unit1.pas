@@ -18,7 +18,7 @@ uses
   GLVectorTypes,
   GLObjects,
   GLCollision,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLCoordinates,
   GLBaseClasses;

@@ -22,7 +22,7 @@
 #include "GLScene.hpp"
 #include "GLSimpleNavigation.hpp"
 #include "GLSLShader.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLWindowsFont.hpp"
 #include "GLState.hpp"
 #include "GLContext.hpp"

@@ -22,7 +22,7 @@ uses
   GLScene,
   GLPersistentClasses,
   GLVectorGeometry,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLParticles,
   GLCadencer,
   GLObjects,

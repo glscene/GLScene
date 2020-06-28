@@ -21,7 +21,7 @@ uses
   GLPersistentClasses,
   GLTexture,
   GLGraphics,
-  GLStrings,
+  GLS.Strings,
   GLCustomShader,
   GLVectorGeometry,
   GLRenderContextInfo,

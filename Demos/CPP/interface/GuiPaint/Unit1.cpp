@@ -15,7 +15,7 @@
 #pragma link "GLGui"
 #pragma link "GLMaterial"
 #pragma link "GLScene"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLWindows"
 #pragma link "GLWindowsFont"
 #pragma resource "*.dfm"

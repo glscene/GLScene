@@ -22,7 +22,7 @@ uses
   GLVectorTypes,
   GLVectorLists,
   GLGraphics,
-  GLStrings,
+  GLS.Strings,
   GLUtils,
   GLCrossPlatform,
 
@@ -33,7 +33,7 @@ uses
   GLS.CUDACompiler,
   GLS.CUDAContext,
   GLS.CUDADataAccess
-  {$IFDEF USE_LOGGING},GLSLog;{$ELSE};{$ENDIF}
+  {$IFDEF USE_LOGGING},GLS.Logger;{$ELSE};{$ENDIF}
 
 type
   TCUDAChange = (cuchDevice, cuchContext, cuchSize, cuchAddresMode, cuchFlag,

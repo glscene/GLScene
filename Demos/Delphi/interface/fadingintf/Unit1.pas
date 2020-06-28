@@ -16,7 +16,7 @@ uses
   GLObjects,
   GLTexture,
   GLVectorGeometry,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLVectorTypes,
   GLGeomObjects,
   GLColor,

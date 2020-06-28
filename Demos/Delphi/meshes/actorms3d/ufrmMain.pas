@@ -18,7 +18,7 @@ uses
   GLPipelineTransformation,
   GLVectorLists,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLBaseClasses,
   GLScene,

@@ -44,7 +44,7 @@ uses
   GLGeometryBB,
   GLContext,
   GLRenderContextInfo,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLPersistentClasses,
   GLState;
 

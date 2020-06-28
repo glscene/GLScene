@@ -17,7 +17,7 @@
 #include "GLMaterial.hpp"
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLCgShader.hpp"
 #include "JPeg.hpp"
 #include "GLUtils.hpp"

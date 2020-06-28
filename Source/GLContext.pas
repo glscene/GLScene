@@ -23,11 +23,11 @@ uses
 {$IFDEF USE_SERVICE_CONTEXT}
   GLSGenerics,
 {$ENDIF}
-  GLSLog,
+  GLS.Logger,
   OpenGLTokens,
   OpenGLAdapter,
   GLVectorGeometry,
-  GLStrings,
+  GLS.Strings,
   GLVectorTypes,
   GLState,
   XOpenGL,

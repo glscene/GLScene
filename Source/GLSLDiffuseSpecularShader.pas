@@ -32,7 +32,7 @@ uses
   GLScene,
   GLPersistentClasses,
   GLVectorGeometry,
-  GLStrings,
+  GLS.Strings,
   GLCustomShader,
   GLSLShader,
   GLColor,

@@ -20,7 +20,7 @@ uses
   GLPersistentClasses,
   GLCadencer,
   GLVectorTypes,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLCoordinates,
   GLBaseClasses,

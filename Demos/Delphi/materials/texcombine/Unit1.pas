@@ -17,7 +17,7 @@ uses
   GLScene,
   GLTexture,
   GLObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLTexCombineShader,
   GLHUDObjects,
   GLMaterial,

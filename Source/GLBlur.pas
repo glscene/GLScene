@@ -166,7 +166,7 @@ implementation
 uses
   GLCoordinates,
   GLPersistentClasses,
-  GLStrings,
+  GLS.Strings,
   GLVectorTypes,
   OpenGLAdapter;
 

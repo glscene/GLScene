@@ -20,7 +20,7 @@ uses
   GLSound,
   GLSMFMOD,
   GLSMBASS,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLGeomObjects,
   GLSMOpenAL,
   GLCrossPlatform,

@@ -14,7 +14,7 @@
 #include "GLCrossPlatform.hpp"
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

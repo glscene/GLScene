@@ -20,7 +20,7 @@ uses
   GLObjects,
   GLGraph,
   GLScene,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLVectorGeometry,
   GLTilePlane,
   GLTexture,

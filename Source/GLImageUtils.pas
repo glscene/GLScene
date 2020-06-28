@@ -24,7 +24,7 @@ uses
   System.Math,
 
   OpenGLTokens,
-  GLStrings,
+  GLS.Strings,
   GLCrossPlatform,
   GLTextureFormat,
   GLVectorGeometry;

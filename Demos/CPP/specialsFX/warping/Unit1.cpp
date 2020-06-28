@@ -13,7 +13,7 @@
 #pragma package(smart_init)
 #pragma link "GLGraph"
 #pragma link "GLScene"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLCoordinates"
 #pragma link "GLCrossPlatform"
 #pragma resource "*.dfm"

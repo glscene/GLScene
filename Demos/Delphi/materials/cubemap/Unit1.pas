@@ -13,7 +13,7 @@ uses
   Vcl.StdCtrls,
 
   GLScene,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLObjects,
   GLTeapot,
   GLCrossPlatform,

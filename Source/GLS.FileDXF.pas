@@ -902,3 +902,4 @@ initialization
 RegisterVectorFileFormat('dxf', 'AutoCAD Exchange Format', TGLDXFVectorFile);
 
 end.
+

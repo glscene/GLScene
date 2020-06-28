@@ -13,7 +13,7 @@
 #include <GLCrossPlatform.hpp>  // Pascal unit
 #include <GLVectorGeometry.hpp>   // Pascal unit
 #include <GLBehaviours.hpp>     // Pascal unit
-#include <GLWin32Viewer.hpp>    // Pascal unit
+#include <GLSceneViewer.hpp>    // Pascal unit
 #include <GLObjects.hpp>        // Pascal unit
 #include <GLScene.hpp>          // Pascal unit
 #include <GLCadencer.hpp>       // Pascal unit
@@ -21,7 +21,7 @@
 #include "GLBaseClasses.hpp"
 #include "GLCoordinates.hpp"
 #include "GLFullScreenViewer.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLKeyboard.hpp"
 
 //---------------------------------------------------------------------------

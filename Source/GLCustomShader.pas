@@ -25,7 +25,7 @@ uses
   GLCadencer,
   OpenGLTokens,
   GLScene,
-  GLStrings,
+  GLS.Strings,
   GLContext,
   GLRenderContextInfo,
   GLMaterial,

@@ -16,7 +16,7 @@ uses
 
   GLScene,
   GLObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCadencer,
   ODEImport,
   GLShadowPlane,

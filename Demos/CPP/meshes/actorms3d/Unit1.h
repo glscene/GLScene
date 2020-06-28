@@ -24,7 +24,7 @@
 #include "GLSimpleNavigation.hpp"
 #include "GLSLShader.hpp"
 #include "GLVectorFileObjects.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLFileMS3D.hpp"
 #include "GLFileJPEG.hpp"
 #include "GLFilePNG.hpp"

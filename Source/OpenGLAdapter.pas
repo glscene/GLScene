@@ -19,8 +19,8 @@ uses
   Winapi.Windows,
   System.SysUtils,
 
-  GLStrings,
-  GLSLog,
+  GLS.Strings,
+  GLS.Logger,
   OpenGLTokens,
   GLVectorGeometry,
   GLVectorTypes;

@@ -12,7 +12,7 @@
 #pragma link "GLCrossPlatform"
 #pragma link "GLGraph"
 #pragma link "GLScene"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 TColor grid[11][11];

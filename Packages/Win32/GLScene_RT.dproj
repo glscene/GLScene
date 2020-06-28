@@ -198,7 +198,6 @@
         <DCCReference Include="..\..\Source\GLFileB3D.pas"/>
         <DCCReference Include="..\..\Source\GLFileBMP.pas"/>
         <DCCReference Include="..\..\Source\GLFileDDS.pas"/>
-        <DCCReference Include="..\..\Source\GLS.FileDXF.pas"/>
         <DCCReference Include="..\..\Source\GLFileGL2.pas"/>
         <DCCReference Include="..\..\Source\GLFileGLB.pas"/>
         <DCCReference Include="..\..\Source\GLFileGLTF.pas"/>
@@ -226,7 +225,7 @@
         <DCCReference Include="..\..\Source\GLFileSMD.pas"/>
         <DCCReference Include="..\..\Source\GLFileSTL.pas"/>
         <DCCReference Include="..\..\Source\GLFileTGA.pas"/>
-        <DCCReference Include="..\..\Source\GLS.FileTIN.pas"/>
+        <DCCReference Include="..\..\Source\GLFileVfsPAK.pas"/>
         <DCCReference Include="..\..\Source\GLFileVRML.pas"/>
         <DCCReference Include="..\..\Source\GLFileWAV.pas"/>
         <DCCReference Include="..\..\Source\GLFileX.pas"/>
@@ -290,7 +289,6 @@
         <DCCReference Include="..\..\Source\GLPhongShader.pas"/>
         <DCCReference Include="..\..\Source\GLPictureRegisteredFormats.pas"/>
         <DCCReference Include="..\..\Source\GLPipelineTransformation.pas"/>
-        <DCCReference Include="..\..\Source\GLS.PlugInManager.pas"/>
         <DCCReference Include="..\..\Source\GLPolyhedron.pas"/>
         <DCCReference Include="..\..\Source\GLPolynomials.pas"/>
         <DCCReference Include="..\..\Source\GLPortal.pas"/>
@@ -321,9 +319,8 @@
         <DCCReference Include="..\..\Source\GLSLToonShader.pas"/>
         <DCCReference Include="..\..\Source\GLSLVertexDisplacementShader.pas"/>
         <DCCReference Include="..\..\Source\GLSLanguage.pas"/>
-        <DCCReference Include="..\..\Source\GLSLog.pas"/>
-        <DCCReference Include="..\..\Source\GLS.Memo.pas"/>
-        <DCCReference Include="..\..\Source\GLSRGBE.pas"/>
+        <DCCReference Include="..\..\Source\GLS.Logger.pas"/>
+        <DCCReference Include="..\..\Source\GLS.RGBE.pas"/>
         <DCCReference Include="..\..\Source\GLSRedBlackTree.pas"/>
         <DCCReference Include="..\..\Source\GLScene.pas"/>
         <DCCReference Include="..\..\Source\GLSceneForm.pas"/>
@@ -346,7 +343,11 @@
         <DCCReference Include="..\..\Source\GLSpaceText.pas"/>
         <DCCReference Include="..\..\Source\GLSpline.pas"/>
         <DCCReference Include="..\..\Source\GLState.pas"/>
-        <DCCReference Include="..\..\Source\GLStrings.pas"/>
+        <DCCReference Include="..\..\Source\GLS.Strings.pas"/>
+        <DCCReference Include="..\..\Source\GLS.FileDXF.pas"/>
+        <DCCReference Include="..\..\Source\GLS.FileTIN.pas"/>
+        <DCCReference Include="..\..\Source\GLS.Memo.pas"/>
+        <DCCReference Include="..\..\Source\GLS.PlugInManager.pas"/>
         <DCCReference Include="..\..\Source\GLS.OpenGLx.pas"/>
         <DCCReference Include="..\..\Source\GLS.vclOpenGL.pas"/>
         <DCCReference Include="..\..\Source\GLTeapot.pas"/>
@@ -377,8 +378,7 @@
         <DCCReference Include="..\..\Source\GLVerletSkeletonColliders.pas"/>
         <DCCReference Include="..\..\Source\GLVerletTypes.pas"/>
         <DCCReference Include="..\..\Source\GLWaterPlane.pas"/>
-        <DCCReference Include="..\..\Source\GLWin32Context.pas"/>
-        <DCCReference Include="..\..\Source\GLWin32Viewer.pas"/>
+        <DCCReference Include="..\..\Source\GLSceneViewer.pas"/>
         <DCCReference Include="..\..\Source\GLWindows.pas"/>
         <DCCReference Include="..\..\Source\GLWindowsFont.pas"/>
         <DCCReference Include="..\..\Source\XCollection.pas"/>
@@ -386,7 +386,7 @@
         <DCCReference Include="..\..\Source\OpenGLAdapter.pas"/>
         <DCCReference Include="..\..\Source\OpenGLTokens.pas"/>
         <DCCReference Include="..\..\Source\XOpenGL.pas"/>
-        <DCCReference Include="..\..\Source\GLFileVfsPAK.pas"/>
+        <DCCReference Include="..\..\Source\GLWindowsContext.pas"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

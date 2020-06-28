@@ -23,7 +23,7 @@
 #include "GLSimpleNavigation.hpp"
 #include "GLSkydome.hpp"
 #include "GLThorFX.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLUtils.hpp"
 #include "JPeg.hpp"
 

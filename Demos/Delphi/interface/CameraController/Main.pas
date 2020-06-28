@@ -20,7 +20,7 @@ uses
   
   GLScene,
   GLObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLVectorFileObjects,
   GLCameraController,
   GLFile3ds,

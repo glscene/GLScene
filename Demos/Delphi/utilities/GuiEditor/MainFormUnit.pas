@@ -14,7 +14,7 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtDlgs,
   
-  GLGui, GLScene, GLWin32Viewer,
+  GLGui, GLScene, GLSceneViewer,
   GLObjects, GLHUDObjects, GLWindows, GLBitmapFont, GLWindowsFont,
   GLTexture, FGuiSkinEditor, GLCrossPlatform, GLMaterial, GLCoordinates,
   GLBaseClasses;

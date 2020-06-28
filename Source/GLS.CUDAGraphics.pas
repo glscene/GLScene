@@ -24,13 +24,13 @@ uses
   GLScene,
   GLGraphics,
   GLMaterial,
-  GLStrings,
+  GLS.Strings,
   GLTextureFormat,
   GLTexture,
   GLSLShader,
   GLSLParameter,
   GLPersistentClasses,
-  {$IFDEF USE_LOGGING} GLSLog, {$ENDIF}
+  {$IFDEF USE_LOGGING} GLS.Logger, {$ENDIF}
   GLRenderContextInfo;
 
 

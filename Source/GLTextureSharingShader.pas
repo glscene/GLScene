@@ -26,7 +26,7 @@ uses
   GLVectorGeometry,
   GlColor,
   GLMaterial, 
-  GLStrings,
+  GLS.Strings,
   GLVectorFileObjects, 
   XOpenGL, 
   GLState, 

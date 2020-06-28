@@ -8,7 +8,7 @@
 #pragma package(smart_init)
 #pragma link "GLGeomObjects"
 #pragma link "GLCadencer"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLObjects"
 #pragma link "GLVectorFileObjects"
 #pragma link "GLScene"

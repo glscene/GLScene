@@ -18,7 +18,7 @@
 #include "GLScene.hpp"
 #include "GLSimpleNavigation.hpp"
 #include "GLSkyBox.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLKeyBoard.hpp"
 #include "JPeg.hpp"
 #include "GLFileJPEG.hpp"

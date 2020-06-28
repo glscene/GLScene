@@ -19,7 +19,7 @@ uses
   VCL.Dialogs,
   VCL.ExtDlgs,
   GLCrossPlatform,
-  GLStrings,
+  GLS.Strings,
   GLVectorGeometry;
 
 type

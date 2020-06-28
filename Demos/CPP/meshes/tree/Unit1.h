@@ -19,7 +19,7 @@
 #include <GLVectorFileObjects.hpp>
 #include <GLTexture.hpp>
 #include <GLTree.hpp>
-#include <GLWin32Viewer.hpp>
+#include <GLSceneViewer.hpp>
 #include <GLObjects.hpp>
 #include <GLScene.hpp>
 #include <ComCtrls.hpp>

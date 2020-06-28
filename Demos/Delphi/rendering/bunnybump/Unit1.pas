@@ -22,7 +22,7 @@ uses
   GLBumpShader,
   GLVectorFileObjects,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLAsyncTimer,
   GLCrossPlatform,
   GLMaterial,

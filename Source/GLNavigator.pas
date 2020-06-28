@@ -35,7 +35,7 @@ uses
   GLMaterial,
   GLTexture,
   GLTextureFormat,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLRenderContextInfo;
 
 type

@@ -12,7 +12,7 @@
 #pragma link "GLMesh"
 #pragma link "GLObjects"
 #pragma link "GLScene"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 

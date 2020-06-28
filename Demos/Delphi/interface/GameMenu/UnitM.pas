@@ -19,7 +19,7 @@ uses
   GLScene,
   GLObjects,
   GLVectorTypes,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLGeomObjects,
   GLBitmapFont,
   GLWindowsFont,

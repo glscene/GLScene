@@ -19,7 +19,7 @@
 #pragma link "GLScene"
 #pragma link "GLSimpleNavigation"
 #pragma link "GLVectorFileObjects"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLFileMD2"
 #pragma link "GLFileMS3D"
 #pragma link "GLFile3DS"

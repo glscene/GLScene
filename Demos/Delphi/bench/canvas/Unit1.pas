@@ -17,7 +17,7 @@ uses
 
   
   GLScene,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLBitmapFont,
   GLWindowsFont,
   GLCoordinates,

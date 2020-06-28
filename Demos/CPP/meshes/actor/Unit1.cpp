@@ -14,7 +14,7 @@
 #pragma link "GLObjects"
 #pragma link "GLScene"
 #pragma link "GLVectorFileObjects"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLFileMD2"
 #pragma resource "*.dfm"
 TForm1 *Form1;

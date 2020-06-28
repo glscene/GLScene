@@ -14,7 +14,7 @@
 #include "GLObjects.hpp"
 #include "GLCadencer.hpp"
 #include "GLLensFlare.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLTexture.hpp"
 #include "GLSkydome.hpp"
 #include "GLVectorGeometry.hpp"

@@ -19,7 +19,7 @@ uses
   GLObjects,
   GLSound,
   GLSMBASS,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLGeomObjects,
   GLCrossPlatform,
   GLCoordinates,

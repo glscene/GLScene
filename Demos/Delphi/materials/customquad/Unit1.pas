@@ -17,7 +17,7 @@ uses
   GLObjects,
   GLTexture,
   GLBehaviours,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLGeomObjects,
   GLColor,
   GLCrossPlatform,

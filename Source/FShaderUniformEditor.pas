@@ -22,7 +22,7 @@ uses
   VCL.StdCtrls,
   VCL.ExtCtrls,
   VCL.Buttons,
-  GLStrings,
+  GLS.Strings,
   GLSLParameter,
   GLTextureFormat,
   GLVectorGeometry;

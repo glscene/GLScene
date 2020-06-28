@@ -103,7 +103,7 @@ implementation
 
 uses
   GLVectorTypes,
-  GLStrings,
+  GLS.Strings,
   OpenGLTokens,
   XOpenGL,
   GLContext,

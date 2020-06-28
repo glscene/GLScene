@@ -10,7 +10,7 @@ unit GLTextureFormat;
 interface
 
 uses
-  GLStrings,
+  GLS.Strings,
   OpenGLTokens;
 
 type

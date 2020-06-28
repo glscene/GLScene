@@ -16,7 +16,7 @@
 #include "GLScene.hpp"
 #include "GLTeapot.hpp"
 #include "GLTimeEventsMgr.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLUtils.hpp"
 
 //---------------------------------------------------------------------------

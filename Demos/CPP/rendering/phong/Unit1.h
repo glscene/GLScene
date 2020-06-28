@@ -14,7 +14,7 @@
 #include "GLScene.hpp"
 #include "GLTeapot.hpp"
 #include "GLTexture.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLBaseClasses.hpp"
 #include "GLAsmShader.hpp"
 #include "GLCoordinates.hpp"

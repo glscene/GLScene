@@ -6,7 +6,7 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLAVIRecorder"
 #pragma link "GLCadencer"
 #pragma link "GLAsyncTimer"

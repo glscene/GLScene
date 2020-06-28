@@ -7,7 +7,7 @@
 #include "GLCrossPlatform.hpp"
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLKeyboard.hpp"
 #include <System.Classes.hpp>
 #include <Vcl.ComCtrls.hpp>

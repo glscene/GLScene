@@ -12,7 +12,7 @@ uses
   Vcl.Dialogs,
   Vcl.Imaging.Jpeg,
   
-  GLScene, GLObjects, GLWin32Viewer, GLTexture,
+  GLScene, GLObjects, GLSceneViewer, GLTexture,
   GLGeomObjects, GLCrossPlatform, GLMaterial, GLCoordinates, GLBaseClasses,
   GLUtils;
 

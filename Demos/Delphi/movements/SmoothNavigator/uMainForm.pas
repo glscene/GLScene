@@ -13,7 +13,7 @@ uses
   Vcl.StdCtrls,
 
   GLCadencer, 
-  GLWin32Viewer, 
+  GLSceneViewer, 
   GLKeyboard, 
   GLVectorGeometry, 
   GLGeomObjects,

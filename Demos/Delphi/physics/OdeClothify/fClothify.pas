@@ -22,7 +22,7 @@ uses
   GLScene,
   GLPersistentClasses,
   GLVectorFileObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLFileMS3D,
   GLVerletTypes, GLVerletClothify,
   GLVectorTypes,

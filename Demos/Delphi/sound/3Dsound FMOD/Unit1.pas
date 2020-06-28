@@ -18,7 +18,7 @@ uses
   GLObjects,
   GLSound,
   GLSMFMOD,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLGeomObjects,
   GLCrossPlatform,
   GLCoordinates,

@@ -15,7 +15,7 @@
 #pragma link "GLObjects"
 #pragma link "GLScene"
 #pragma link "GLSpaceText"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 
 #pragma resource "*.dfm"
 TForm2 *Form2;

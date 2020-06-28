@@ -17,7 +17,7 @@ uses
   Vcl.Buttons,
 
   
-  GLScene, GLObjects, GLTexture, GLHUDObjects, GLCadencer, GLWin32Viewer,
+  GLScene, GLObjects, GLTexture, GLHUDObjects, GLCadencer, GLSceneViewer,
   GLProcTextures, GLCrossPlatform, GLCoordinates, GLBaseClasses;
 
 type

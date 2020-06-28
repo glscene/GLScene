@@ -10,7 +10,7 @@
 #include <ExtCtrls.hpp>
 #include <ComCtrls.hpp>
 #include "GLScene.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLObjects.hpp"
 #include "GLVectorFileObjects.hpp"
 #include "GLBaseClasses.hpp"

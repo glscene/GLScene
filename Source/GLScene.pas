@@ -22,7 +22,7 @@ uses
   OpenGLTokens,
   XOpenGL,
   XCollection,
-  GLStrings,
+  GLS.Strings,
   GLContext,
   GLVectorGeometry,
   GLSilhouette,
@@ -44,7 +44,7 @@ uses
   GLVectorTypes,
   GLApplicationFileIO,
   GLUtils,
-  GLSLog;
+  GLS.Logger;
 
 type
   //Defines which features are taken from the master object.

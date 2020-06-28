@@ -19,7 +19,7 @@ uses
   GLVectorGeometry,
   GLSound,
   GLSMWaveOut,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLGeomObjects,
   GLCrossPlatform,
   GLCoordinates,

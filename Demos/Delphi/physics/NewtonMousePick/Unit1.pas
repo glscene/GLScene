@@ -17,7 +17,7 @@ uses
   GLNGDManager,
   GLCoordinates,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLBaseClasses,
   GLVectorGeometry;

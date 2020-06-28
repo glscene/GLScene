@@ -14,7 +14,7 @@
 #pragma link "GLVectorGeometry"
 #pragma link "GLSMBASS"
 #pragma link "GLSound"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLSkydome"
 #pragma link "GLBitmapFont"
 #pragma link "GLHUDObjects"

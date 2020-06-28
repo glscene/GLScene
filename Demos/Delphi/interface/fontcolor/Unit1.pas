@@ -11,7 +11,7 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
   
-  GLWin32Viewer,
+  GLSceneViewer,
   GLScene,
   GLObjects,
   GLHUDObjects,

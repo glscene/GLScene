@@ -15,7 +15,7 @@
 #pragma link "GLObjects"
 #pragma link "GLScene"
 #pragma link "GLVectorFileObjects"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLFileSMD"
 
 #pragma resource "*.dfm"

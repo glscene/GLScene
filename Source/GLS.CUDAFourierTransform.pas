@@ -49,7 +49,7 @@ uses
   Winapi.Windows,
 
   GLVectorTypes,
-  GLStrings,
+  GLS.Strings,
 
   GLS.CUDAApi,
   GLS.CUDARunTime

@@ -20,7 +20,7 @@ uses
   GLExtrusion,
   GLCadencer,
   GLFireFX,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLGeomObjects,
   GLCrossPlatform,
   GLCoordinates,

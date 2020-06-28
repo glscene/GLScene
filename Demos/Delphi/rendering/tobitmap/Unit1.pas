@@ -17,7 +17,7 @@ uses
   GLVectorTypes,
   GLCadencer,
   GLObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLHUDObjects,
   GLSpaceText,
   GLCrossPlatform,

@@ -19,7 +19,7 @@
 #pragma link "GLObjects"
 #pragma link "GLParticleFX"
 #pragma link "GLScene"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLWindowsFont"
 #pragma link "GLAsyncTimer"
 #pragma resource "*.dfm"

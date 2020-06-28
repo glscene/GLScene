@@ -23,7 +23,7 @@
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
 #include "GLTeapot.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLzBuffer.hpp"
 #include "JPeg.hpp"
 

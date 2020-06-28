@@ -32,7 +32,7 @@ uses
   GLTextureFormat,
   GLApplicationFileIO,
   GLUtils,
-  GLStrings;
+  GLS.Strings;
 
 const
   cDefaultNormalMapScale = 0.125;

@@ -17,7 +17,7 @@ uses
   GLTexture,
   GLCadencer,
   GLVectorTypes,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLColor,
   GLCrossPlatform,
   GLCoordinates,

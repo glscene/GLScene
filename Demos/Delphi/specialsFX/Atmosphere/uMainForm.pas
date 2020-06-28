@@ -15,7 +15,7 @@ uses
   GLObjects,
   GLCadencer,
   GLLensFlare,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLTexture,
   GLSkydome,
   GLVectorGeometry,

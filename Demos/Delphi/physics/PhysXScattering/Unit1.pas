@@ -9,7 +9,7 @@ uses
   Vcl.StdCtrls,
   
   GLScene, GLObjects, GLCoordinates, GLCadencer,  GLVectorTypes,
-  GLWin32Viewer, GLColor,  GLCrossPlatform, GLPhysX, GLKeyboard,
+  GLSceneViewer, GLColor,  GLCrossPlatform, GLPhysX, GLKeyboard,
   GLBaseClasses, GLVectorGeometry, GLGeomObjects, GLGui, GLWindows;
 
 type

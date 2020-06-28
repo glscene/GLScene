@@ -24,7 +24,7 @@ uses
   GLCrossPlatform,
   GLContext,
   GLScene,
-  GLWin32Viewer;
+  GLSceneViewer;
 
 type
 
@@ -175,7 +175,7 @@ implementation
 
 uses
   GLScreen, 
-  GLWin32Context;
+  GLWindowsContext;
 
 const
   cScreenDepthToBPP: array [sd8bits .. sd32bits] of Integer = (8, 16, 24, 32);

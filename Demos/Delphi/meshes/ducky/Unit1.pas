@@ -20,7 +20,7 @@ uses
   GLPersistentClasses,
   GLVectorFileObjects,
   GLObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLParametricSurfaces,
   GLVectorGeometry,
   GLVectorLists,

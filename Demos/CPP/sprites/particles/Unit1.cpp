@@ -7,7 +7,7 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLVectorGeometry"
 #pragma link "GLBehaviours"
 #pragma link "GLCadencer"
@@ -17,8 +17,8 @@
 #pragma link "GLBaseClasses"
 #pragma link "GLCoordinates"
 #pragma link "GLCrossPlatform"
-#pragma link "GLWin32Viewer"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
+#pragma link "GLSceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 

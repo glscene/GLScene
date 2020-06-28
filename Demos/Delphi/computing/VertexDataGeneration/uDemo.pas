@@ -16,7 +16,7 @@ uses
   GLVectorGeometry,
   GLPipelineTransformation,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLBaseClasses,
   GLSimpleNavigation,

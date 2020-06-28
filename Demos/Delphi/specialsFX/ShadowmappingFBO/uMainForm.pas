@@ -23,7 +23,7 @@ uses
   GLHUDObjects,
   GLMaterial,
   GLTexture,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLGeomObjects,
   GLFBORenderer,
   GLCadencer,

@@ -25,7 +25,7 @@
 #include "GLScene.hpp"
 #include "GLSkydome.hpp"
 #include "GLTerrainRenderer.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLUtils.hpp"
 #include "JPeg.hpp"
 #include "GLKeyBoard.hpp"

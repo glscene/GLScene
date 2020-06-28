@@ -22,7 +22,7 @@ uses
   GLWindowsFont,
   GLTexture,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLParticleFX,
   GLVectorGeometry,
   GLVectorTypes,

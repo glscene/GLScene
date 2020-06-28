@@ -16,7 +16,7 @@
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
 #include "GLTilePlane.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include <Vcl.Imaging.jpeg.hpp>
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------

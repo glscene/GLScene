@@ -20,7 +20,7 @@ uses
   GLTexture,
   GLHUDObjects,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCoordinates,
   GLCrossPlatform,
   GLBaseClasses;

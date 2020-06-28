@@ -17,7 +17,7 @@
 #include "GLScene.hpp"
 #include "GLSimpleNavigation.hpp"
 #include "GLVectorFileObjects.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 class TMainForm : public TForm

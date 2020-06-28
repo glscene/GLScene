@@ -15,7 +15,7 @@
 #include <GLVectorGeometry.hpp>
 #include <GLSMBASS.hpp>
 #include <GLSound.hpp>
-#include <GLWin32Viewer.hpp>
+#include <GLSceneViewer.hpp>
 #include <GLSkydome.hpp>
 #include <GLBitmapFont.hpp>
 #include <GLHUDObjects.hpp>

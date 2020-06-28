@@ -19,7 +19,7 @@ uses
   GLParticleFX,
   GLCadencer,
   GLBehaviours,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLCoordinates,
   GLBaseClasses;

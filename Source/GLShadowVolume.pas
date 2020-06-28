@@ -20,7 +20,6 @@ uses
 
   OpenGLTokens,
   GLScene,
-  GLSLog,
   GLVectorGeometry,
   GLContext,
   GLSilhouette,
@@ -33,7 +32,8 @@ uses
   GLRenderContextInfo,
   GLVectorLists,
   GLState,
-  GLVectorTypes;
+  GLVectorTypes,
+  GLS.Logger;
 
 
 type

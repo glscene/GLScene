@@ -21,7 +21,7 @@
 #include "GLSMFMOD.hpp"
 #include "GLSMOpenAL.hpp"
 #include "GLSound.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLUtils.hpp"
 #include "GLFileWAV.hpp"
 #include "GLFileMP3.hpp"

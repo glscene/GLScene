@@ -16,7 +16,7 @@ uses
 
   GLShadowPlane,
   GLScene,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLObjects,
   GLCadencer,
   GLVectorGeometry,

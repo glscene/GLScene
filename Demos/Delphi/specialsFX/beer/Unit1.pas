@@ -12,7 +12,7 @@ uses
   Vcl.Forms,
 
   
-  GLScene, GLVectorFileObjects, GLObjects, GLWin32Viewer,
+  GLScene, GLVectorFileObjects, GLObjects, GLSceneViewer,
   GLFile3ds, GLCadencer, GLGeomObjects, GLVectorGeometry,
   GLShadowPlane, GLParticleFX, GLPerlinPFX, GLCrossPlatform, GLCoordinates,
   GLBaseClasses, GLUtils;

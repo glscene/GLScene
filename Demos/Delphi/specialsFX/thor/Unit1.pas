@@ -17,7 +17,7 @@ uses
 
   
   GLFireFX, GLCadencer, GLScene, GLObjects, GLBehaviours, GLVectorGeometry,
-  GLThorFX, GLSkydome, GLGraph, GLVectorTypes, GLWin32Viewer, GLCrossPlatform,
+  GLThorFX, GLSkydome, GLGraph, GLVectorTypes, GLSceneViewer, GLCrossPlatform,
   GLCoordinates, GLBaseClasses, GLSimpleNavigation, GLUtils;
 
 type

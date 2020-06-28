@@ -19,7 +19,7 @@ uses
   GLObjects,
   GLCadencer,
   GLBitmapFont,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLWindowsFont,
   GLWindows,
   GLGui,

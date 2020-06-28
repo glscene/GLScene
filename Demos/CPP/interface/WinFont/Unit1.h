@@ -18,7 +18,7 @@
 #include "GLHUDObjects.hpp"
 #include "GLScene.hpp"
 #include "GLTeapot.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLWindowsFont.hpp"
 #include "Unit2.h"
 //---------------------------------------------------------------------------

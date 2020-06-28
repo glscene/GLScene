@@ -12,7 +12,7 @@ uses
   GLScene,
   GLObjects,
   GLTexture,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLGeomObjects,
   GLColor,
   GLCrossPlatform,

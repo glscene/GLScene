@@ -20,7 +20,7 @@
 #pragma link "GLSimpleNavigation"
 #pragma link "GLSLShader"
 #pragma link "GLVectorFileObjects"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLFileSMD"
 #pragma link "GLFileMD2"
 #pragma link "GLFile3DS"

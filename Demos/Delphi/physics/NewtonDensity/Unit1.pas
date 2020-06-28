@@ -22,7 +22,7 @@ uses
   GLCoordinates,
   GLSimpleNavigation,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLBaseClasses,
   GLVectorGeometry,

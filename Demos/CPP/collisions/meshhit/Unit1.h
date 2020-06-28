@@ -14,7 +14,7 @@
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
 #include "GLVectorFileObjects.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLFile3DS.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

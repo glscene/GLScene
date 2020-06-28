@@ -18,7 +18,7 @@ uses
   GLVectorTypes,
   GLParticleFX,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLBehaviours,
   GLVectorGeometry,
   GLCrossPlatform,

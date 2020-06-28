@@ -17,7 +17,7 @@
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
 #include "GLTimeEventsMgr.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

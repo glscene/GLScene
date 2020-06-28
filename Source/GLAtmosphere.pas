@@ -23,7 +23,7 @@ uses
   GLCadencer,
   GLVectorGeometry,
   GLContext,
-  GLStrings,
+  GLS.Strings,
   GLColor,
   GLRenderContextInfo,
   GLState,

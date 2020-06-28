@@ -19,7 +19,7 @@ uses
   GLScene,
   GLVectorTypes,
   GLPersistentClasses,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLSkydome,
   GLObjects,
   GLKeyboard,

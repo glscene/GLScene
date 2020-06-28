@@ -11,7 +11,7 @@ uses
   Vcl.StdCtrls,
 
   
-  GLScene, GLVectorFileObjects, GLObjects, GLWin32Viewer, GLVectorTypes,
+  GLScene, GLVectorFileObjects, GLObjects, GLSceneViewer, GLVectorTypes,
   GLVectorGeometry, GLGeomObjects, GLCrossPlatform, GLCoordinates,
   GLBaseClasses, GLFile3DS, GLUtils;
 

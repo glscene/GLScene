@@ -15,7 +15,7 @@
 #include "GLCadencer.hpp"
 #include "GLVectorGeometry.hpp"
 #include "GLTexture.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLColor.hpp"
 #include "GLCrossPlatform.hpp"
 #include "GLCoordinates.hpp"

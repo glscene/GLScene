@@ -21,7 +21,7 @@ uses
   GLSArchiveManager,
   GLFilePAK,
   GLFileZLIB,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLBaseClasses,
   GLScene,

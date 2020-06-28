@@ -39,8 +39,8 @@ uses
   GLColor,
   GLTextureFormat,
   GLVectorGeometry,
-  GLStrings,
-  GLSLog;
+  GLS.Strings,
+  GLS.Logger;
 
 type
 

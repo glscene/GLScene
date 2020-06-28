@@ -16,7 +16,7 @@ uses
   Vcl.ExtCtrls,
   
   GLScene, GLGraph, GLObjects, GLTexture, GLCadencer,
-  GLVectorGeometry, GLVectorTypes, GLWin32Viewer, GLColor,
+  GLVectorGeometry, GLVectorTypes, GLSceneViewer, GLColor,
   GLCrossPlatform, GLCoordinates, GLBaseClasses;
 
 type

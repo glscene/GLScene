@@ -8,7 +8,7 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLScene.hpp"
 #include "GLCadencer.hpp"
 #include "GLMirror.hpp"

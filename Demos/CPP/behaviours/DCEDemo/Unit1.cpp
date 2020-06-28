@@ -24,7 +24,7 @@
 #pragma link "GLScene"
 #pragma link "GLTerrainRenderer"
 #pragma link "GLVectorFileObjects"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLWindowsFont"
 #pragma resource "*.dfm"
 TForm1 *Form1;

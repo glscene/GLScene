@@ -21,7 +21,7 @@ uses
   GLTexture,
   GLCadencer,
   GLMesh,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLState,
   GLColor,
   GLCrossPlatform,

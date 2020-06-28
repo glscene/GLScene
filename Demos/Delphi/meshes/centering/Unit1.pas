@@ -16,7 +16,7 @@ uses
 
   
   GLScene, GLVectorFileObjects, GLObjects,
-  GLWin32Viewer, GLFile3DS, GLCrossPlatform, GLCoordinates,
+  GLSceneViewer, GLFile3DS, GLCrossPlatform, GLCoordinates,
   GLBaseClasses, GLUtils;
 
 type

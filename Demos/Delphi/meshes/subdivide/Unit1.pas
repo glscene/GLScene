@@ -18,7 +18,7 @@ uses
   GLPersistentClasses,
   GLObjects,
   GLTexture,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLMeshUtils,
   GLVectorGeometry,
   GLVectorLists,

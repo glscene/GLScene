@@ -18,7 +18,7 @@ uses
   
   GLScene,
   GLVectorTypes,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLVectorFileObjects,
   GLObjects,
   GLProxyObjects,

@@ -18,7 +18,7 @@
 #pragma link "GLSimpleNavigation"
 #pragma link "GLSkydome"
 #pragma link "GLUserShader"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "OpenGLTokens"
 #pragma link "OpenGLAdapter"
 

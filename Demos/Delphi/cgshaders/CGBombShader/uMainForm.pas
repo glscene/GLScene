@@ -17,7 +17,7 @@ uses
   
   GLScene,
   GLObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLTexture,
   GLCadencer,
   GLSimpleNavigation,

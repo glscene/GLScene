@@ -21,7 +21,7 @@ uses
 
   OpenGLTokens,
   GLPersistentClasses,
-  GLStrings,
+  GLS.Strings,
   GLCoordinates,
   GLVectorTypes,
   GLObjects,

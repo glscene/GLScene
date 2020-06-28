@@ -29,7 +29,7 @@ uses
   GLBitmapFont,
   GLKeyboard,
   GLSkydome,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLSound,
   GLSMBASS,
   GLVectorGeometry,

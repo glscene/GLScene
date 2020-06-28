@@ -20,7 +20,7 @@ uses
   GLVectorFileObjects,
   GLVectorTypes,
   GLObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCadencer,
   GLNavigator,
   GLGeomObjects,

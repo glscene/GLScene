@@ -15,7 +15,7 @@
 #pragma link "GLGraph"
 #pragma link "GLObjects"
 #pragma link "GLScene"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLBaseClasses"
 
 #pragma resource "*.dfm"

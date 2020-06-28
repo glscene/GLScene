@@ -19,7 +19,7 @@ uses
   
   GLScene,
   GLObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLTree,
   GLTexture,
   GLVectorFileObjects,

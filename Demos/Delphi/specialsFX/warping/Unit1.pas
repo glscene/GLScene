@@ -16,7 +16,7 @@ uses
 
   
   GLScene, GLGraphics, GLGraph, GLObjects, GLVectorGeometry, GLVectorTypes,
-  GLWin32Viewer, GLCrossPlatform, GLCoordinates, GLBaseClasses;
+  GLSceneViewer, GLCrossPlatform, GLCoordinates, GLBaseClasses;
 
 type
   TForm1 = class(TForm)

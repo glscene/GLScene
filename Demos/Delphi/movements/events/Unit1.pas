@@ -16,7 +16,7 @@ uses
   GLObjects,
   GLTexture,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLTimeEventsMgr,
   GLCrossPlatform,
   GLCoordinates,

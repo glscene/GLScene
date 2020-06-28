@@ -23,7 +23,7 @@ uses
   GLMaterial,
   GLScene,
   GLVectorGeometry,
-  GLStrings,
+  GLS.Strings,
   GLRenderContextInfo;
 
 type

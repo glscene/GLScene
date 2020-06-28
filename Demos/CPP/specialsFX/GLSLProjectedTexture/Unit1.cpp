@@ -16,7 +16,7 @@
 #pragma link "GLScene"
 #pragma link "GLSLProjectedTextures"
 #pragma link "GLVectorFileObjects"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLFileLMTS"
 #pragma link "GLFileTGA"
 

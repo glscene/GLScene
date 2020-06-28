@@ -12,7 +12,7 @@ uses
   Vcl.Dialogs,
   
   GLScene, GLObjects, GLGeomObjects, GLTexture, GLMultiPolygon,
-  GLVectorGeometry,  GLWin32Viewer, GLCrossPlatform, GLMaterial,
+  GLVectorGeometry,  GLSceneViewer, GLCrossPlatform, GLMaterial,
   GLCoordinates, GLBaseClasses, GLVectorTypes;
 
 type

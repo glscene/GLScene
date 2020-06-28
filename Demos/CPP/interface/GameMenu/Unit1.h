@@ -17,7 +17,7 @@
 
 #include "GLScene.hpp"
 #include "GLObjects.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLGeomObjects.hpp"
 #include "GLBitmapFont.hpp"
 #include "GLWindowsFont.hpp"

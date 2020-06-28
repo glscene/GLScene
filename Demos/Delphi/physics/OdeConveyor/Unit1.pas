@@ -25,7 +25,7 @@ uses
   GLCoordinates,
   GLCrossPlatform,
   GLBaseClasses,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLVectorGeometry,
   GLKeyBoard,
   GLSimpleNavigation;

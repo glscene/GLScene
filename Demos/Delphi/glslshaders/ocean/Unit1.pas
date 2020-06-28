@@ -14,7 +14,7 @@ uses
   Vcl.ComCtrls,
 
   OpenGLTokens,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLScene,
   GLTexture,
   GLObjects,

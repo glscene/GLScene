@@ -22,7 +22,7 @@ uses
   GLGraph,
   GLMovement,
   GLVectorTypes,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLCoordinates,
   GLBaseClasses,

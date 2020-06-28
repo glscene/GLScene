@@ -16,7 +16,7 @@ uses
   VCL.Imaging.pngimage,
 
   Winapi.OpenGL,
-  GLStrings,
+  GLS.Strings,
   GLContext,
   GLGraphics,
   GLApplicationFileIO,

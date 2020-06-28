@@ -22,7 +22,7 @@
 #pragma link "GLPerlinPFX"
 #pragma link "GLScene"
 #pragma link "GLSpaceText"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #include "GLKeyboard.hpp"
 
 #pragma resource "*.dfm"

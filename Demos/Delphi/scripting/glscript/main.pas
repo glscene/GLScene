@@ -15,7 +15,7 @@ uses
   Vcl.ExtCtrls,
   
   GLObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLScene,
   GLTexture,
   GLCadencer,

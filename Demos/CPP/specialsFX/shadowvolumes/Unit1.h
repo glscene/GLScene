@@ -18,7 +18,7 @@
 #include "GLScene.hpp"
 #include "GLShadowVolume.hpp"
 #include "GLVectorFileObjects.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 
 #pragma hdrstop
 

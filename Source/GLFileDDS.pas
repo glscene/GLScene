@@ -19,10 +19,10 @@ uses
   GLContext,
   GLGraphics,
   GLTextureFormat,
-  GLSRGBE,
+  GLS.RGBE,
   GLApplicationFileIO,
   GLVectorGeometry,
-  GLStrings;
+  GLS.Strings;
 
 type
 

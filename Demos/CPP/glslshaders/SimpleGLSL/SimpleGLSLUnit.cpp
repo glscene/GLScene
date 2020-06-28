@@ -22,7 +22,7 @@
 #pragma link "GLTexture"
 #pragma link "GLUserShader"
 #pragma link "GLVectorFileObjects"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLWindowsFont"
 #pragma link "GLKeyboard"
 #pragma link "GLContext"

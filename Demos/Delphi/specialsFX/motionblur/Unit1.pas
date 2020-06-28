@@ -14,7 +14,7 @@ uses
   GLScene,
   GLVectorTypes,
   GLContext,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCadencer,
   GLObjects,
   GLTexture,

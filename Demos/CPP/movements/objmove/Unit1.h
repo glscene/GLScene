@@ -19,7 +19,7 @@
 #include "GLTexture.hpp"
 #include "GLVectorGeometry.hpp"
 #include "GLVectorFileObjects.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLSpaceText.hpp"
 #include "GLGeomObjects.hpp"
 #include "GLColor.hpp"

@@ -19,7 +19,7 @@ uses
   GLGraphics,
   GLTextureFormat,
   GLApplicationFileIO,
-  GLSRGBE,
+  GLS.RGBE,
   GLVectorTypes,
   GLVectorGeometry;
 

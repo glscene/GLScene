@@ -11,7 +11,7 @@
 
 #include "GLScene.hpp"
 #include "GLObjects.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLTexture.hpp"
 #include "GLVectorGeometry.hpp"
 #include "GLCadencer.hpp"

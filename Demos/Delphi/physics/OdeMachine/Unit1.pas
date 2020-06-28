@@ -13,7 +13,7 @@ uses
 
   GLScene,
   GLObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLODEManager,
   GLVectorGeometry,
   GLCadencer,

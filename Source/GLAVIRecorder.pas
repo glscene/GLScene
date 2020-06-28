@@ -26,7 +26,7 @@ uses
 
   GLGraphics,
   GLScene,
-  GLWin32Viewer;
+  GLSceneViewer;
 
 type
   TAVICompressor = (acDefault, acShowDialog, acDivX);

@@ -36,7 +36,7 @@ uses
   GLVectorGeometry,
   GLVectorTypes,
   GLCadencer,
-  GLStrings,
+  GLS.Strings,
   OpenGLTokens,
   GLSLShader,
   GLCustomShader,

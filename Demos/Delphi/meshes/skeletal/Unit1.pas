@@ -20,7 +20,7 @@ uses
   GLObjects,
   GLTexture,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLGraph,
   GLFileSMD,
   GLCrossPlatform,

@@ -19,7 +19,7 @@ uses
   GLExtrusion,
   GLVectorGeometry,
   GLMultiPolygon,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLCoordinates,
   GLBaseClasses;

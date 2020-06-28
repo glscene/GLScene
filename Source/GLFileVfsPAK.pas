@@ -21,7 +21,7 @@ uses
   System.Contnrs,
   System.SysUtils,
 
-  GLStrings,
+  GLS.Strings,
   GLApplicationFileIO;
 
 const

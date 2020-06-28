@@ -17,7 +17,7 @@ uses
   GLVectorTypes,
   GLObjects,
   GLTexture,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCadencer,
   GLVectorFileObjects,
   GLShadowVolume,

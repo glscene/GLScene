@@ -21,7 +21,7 @@ uses
   GLVectorFileObjects,
   GLBSP,
   GLMeshCSG,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLObjects,
   GLTexture,
   GLFile3DS,

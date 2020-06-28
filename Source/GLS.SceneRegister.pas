@@ -34,7 +34,7 @@ uses
   GLColor,
   GLCrossPlatform,
   GLObjectManager,
-  GLStrings;
+  GLS.Strings;
 
 type
   TGLLibMaterialNameProperty = class(TStringProperty)
@@ -387,7 +387,7 @@ uses
   GLUserShader,
   GLUtils,
   GLVectorFileObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLWaterPlane,
   GLWindows,
   GLWindowsFont,
@@ -441,7 +441,7 @@ uses
   GLJoystick,
   GLScreenSaver,
   GLFullScreenViewer,
-  GLSLog;
+  GLS.Logger;
 
 var
   vObjectManager: TGLObjectManager;

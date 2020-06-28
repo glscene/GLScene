@@ -13,7 +13,7 @@ uses
   Vcl.StdCtrls,
   
   GLScene, GLObjects, GLTeapot, GLTexture, GLPhongShader,
-  GLWin32Viewer, GLAsyncTimer, GLCadencer, GLCustomShader,
+  GLSceneViewer, GLAsyncTimer, GLCadencer, GLCustomShader,
   GLAsmShader, GLCrossPlatform, GLMaterial, GLCoordinates, GLBaseClasses;
 
 type

@@ -24,7 +24,7 @@ uses
   GLMesh,
   GLObjects,
   GLMaterial,
-  GLStrings,
+  GLS.Strings,
   GLBaseClasses;
 
 

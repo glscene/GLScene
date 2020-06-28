@@ -16,7 +16,7 @@ uses
   GLJoystick,
   GLGeomObjects,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLCoordinates,
   GLBaseClasses;

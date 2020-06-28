@@ -15,7 +15,7 @@
 #include "GLGeomObjects.hpp"
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLVectorGeometry.hpp"
 #include "GLPolynomials.hpp"
 

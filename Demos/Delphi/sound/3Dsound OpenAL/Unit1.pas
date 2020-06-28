@@ -17,7 +17,7 @@ uses
   GLVectorTypes,
   GLObjects,
   GLSound,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLGeomObjects,
   GLSMOpenAL,
   GLCrossPlatform,

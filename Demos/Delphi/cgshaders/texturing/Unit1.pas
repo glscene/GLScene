@@ -23,7 +23,7 @@ uses
   GLScene,
   GLVectorTypes,
   GLObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLTexture,
   GLVectorGeometry,
   GLCadencer,

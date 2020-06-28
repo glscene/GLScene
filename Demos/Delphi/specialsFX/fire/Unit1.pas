@@ -20,7 +20,7 @@ uses
   GLCadencer,
   GLBehaviours,
   GLVectorGeometry,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLGeomObjects,
   GLCrossPlatform,
   GLCoordinates,

@@ -21,7 +21,7 @@ uses
   GLTeapot,
   GLPolyhedron,
   GLGeomObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLMaterial,
   GLCoordinates,

@@ -14,7 +14,7 @@
 #include <GLCelShader.hpp>      // Pascal unit
 #include <GLAsyncTimer.hpp>       // Pascal unit
 #include <GLVectorFileObjects.hpp>      // Pascal unit
-#include <GLWin32Viewer.hpp>    // Pascal unit
+#include <GLSceneViewer.hpp>    // Pascal unit
 #include <GLCadencer.hpp>       // Pascal unit
 #include <GLScene.hpp>
 #include "GLBaseClasses.hpp"

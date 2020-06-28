@@ -18,7 +18,7 @@ uses
   GLCrossPlatform,
   GLScene,
   GLObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLWaterPlane,
   GLCadencer,
   GLTexture,

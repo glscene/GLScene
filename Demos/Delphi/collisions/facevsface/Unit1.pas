@@ -20,7 +20,7 @@ uses
   GLVectorTypes,
   GLScene,
   GLObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLVectorGeometry,
   GLSpaceText,
   GLCollision,

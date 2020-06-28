@@ -18,7 +18,7 @@
 #include "GLTexture.hpp"
 #include "GLCadencer.hpp"
 #include "GLMesh.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLState.hpp"
 #include "GLColor.hpp"
 #include "GLCrossPlatform.hpp"

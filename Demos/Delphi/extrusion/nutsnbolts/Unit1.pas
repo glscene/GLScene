@@ -18,7 +18,7 @@ uses
   GLScene,
   GLObjects,
   GLExtrusion,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLVectorGeometry,
   GLGeomObjects,
   GLCrossPlatform,

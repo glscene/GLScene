@@ -24,7 +24,7 @@ uses
   GLObjects,
   GLTexture,
   GLHUDObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLTeapot,
   GLGeomObjects,
   GLColor,

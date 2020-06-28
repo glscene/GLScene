@@ -21,7 +21,7 @@ uses
   GLVectorTypes,
   GLObjects,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLTexture,
   GLCrossPlatform,
   GLMaterial,

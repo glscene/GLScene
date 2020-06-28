@@ -17,7 +17,7 @@
 #include "GLScene.hpp"
 #include "GLSpaceText.hpp"
 #include "GLVectorFileObjects.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLUtils.hpp"
 #include "GLFile3DS.hpp"
 

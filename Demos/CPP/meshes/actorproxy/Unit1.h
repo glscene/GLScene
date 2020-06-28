@@ -14,7 +14,7 @@
 #include <Vcl.Imaging.jpeg.hpp>
 
 #include "GLScene.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLVectorFileObjects.hpp"
 #include "GLObjects.hpp"
 #include "GLGeomObjects.hpp"

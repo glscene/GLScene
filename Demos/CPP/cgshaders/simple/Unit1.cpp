@@ -12,7 +12,7 @@
 #pragma link "GLCrossPlatform"
 #pragma link "GLMaterial"
 #pragma link "GLScene"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLCadencer"
 #pragma link "GLCoordinates"
 #pragma link "GLGraph"

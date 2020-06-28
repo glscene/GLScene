@@ -19,7 +19,7 @@ uses
   VCL.StdCtrls,
   VCL.Controls,
   VCL.Buttons,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLState,
   GLMaterial,
   GLTexture,

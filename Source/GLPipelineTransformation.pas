@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Pipeline transformations
-}
 
 unit GLPipelineTransformation;
+
+(* Pipeline transformations *)
 
 interface
 
@@ -16,7 +15,7 @@ uses
   OpenGLAdapter,
   GLVectorGeometry,
   GLVectorTypes,
-  GLSLog;
+  GLS.Logger;
 
 const
   MAX_MATRIX_STACK_DEPTH = 128;

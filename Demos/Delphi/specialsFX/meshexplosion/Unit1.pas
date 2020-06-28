@@ -15,7 +15,7 @@ uses
   Vcl.ExtCtrls,
 
   
-  GLScene, GLVectorFileObjects, GLWin32Viewer,
+  GLScene, GLVectorFileObjects, GLSceneViewer,
   GLCadencer, GLExplosionFx, GLFile3DS, GLCrossPlatform,
   GLCoordinates, GLUtils, GLBaseClasses;
 

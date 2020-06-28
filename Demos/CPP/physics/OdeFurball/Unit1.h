@@ -12,7 +12,7 @@
 
 
 #include "GLScene.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLCadencer.hpp"
 
 #include <GLNavigator.hpp>

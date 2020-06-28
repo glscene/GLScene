@@ -15,7 +15,7 @@ uses
   Vcl.ComCtrls,
   
   GLScene, GLObjects, GLVectorGeometry, GLTexture, GLCadencer, GLVectorTypes,
-  GLWin32Viewer, GLGeomObjects, GLColor, GLCrossPlatform,
+  GLSceneViewer, GLGeomObjects, GLColor, GLCrossPlatform,
   GLCoordinates, GLBaseClasses, GLPolynomials;
 
 type

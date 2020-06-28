@@ -14,7 +14,7 @@
 #include <Vcl.ExtCtrls.hpp>
 
 #include "GLGraph.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLCadencer.hpp"
 #include "GLBaseClasses.hpp"
 #include "GLCoordinates.hpp"

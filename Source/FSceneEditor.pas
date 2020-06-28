@@ -33,8 +33,8 @@ uses
   VCLEditors,
 
   GLScene,
-  GLWin32Viewer,
-  GLStrings,
+  GLSceneViewer,
+  GLS.Strings,
   FInfo,
   XCollection,
   GLCrossPlatform,

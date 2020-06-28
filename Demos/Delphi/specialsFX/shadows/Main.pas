@@ -18,7 +18,7 @@ uses
   
   GLScene, GLGraph, GLObjects, GLTexture,
   GLGraphics, GLVectorTypes, GLVectorGeometry, GLHUDObjects,
-  GLzBuffer, GLCadencer, GLAsyncTimer, GLWin32Viewer, GLTeapot,
+  GLzBuffer, GLCadencer, GLAsyncTimer, GLSceneViewer, GLTeapot,
   GLGeomObjects, GLCrossPlatform, GLMaterial, GLCoordinates, GLBaseClasses,
   GLBehaviours, GLUtils;
 

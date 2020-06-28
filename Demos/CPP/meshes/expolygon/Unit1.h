@@ -17,7 +17,7 @@
 #include "GLTexture.hpp"
 #include "GLMultiPolygon.hpp"
 #include "GlvectorGeometry.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLCrossPlatform.hpp"
 #include "GLMaterial.hpp"
 #include "GLCoordinates.hpp"

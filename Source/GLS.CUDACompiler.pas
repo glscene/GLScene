@@ -23,7 +23,7 @@ uses
   System.Classes,
   Vcl.Forms,
   VCL.Dialogs,
-  GLStrings,
+  GLS.Strings,
 
   GLS.CUDAParser,
 

@@ -13,7 +13,7 @@ uses
   
   GLScene, GLObjects, GLVectorFileObjects, GLMaterial, GLCadencer,
   GLSArchiveManager, GLBaseClasses, GLVectorGeometry, GLFileMS3D,
-  GLFileTGA, GLFileZLIB, GLCoordinates, GLCrossPlatform, GLWin32Viewer,
+  GLFileTGA, GLFileZLIB, GLCoordinates, GLCrossPlatform, GLSceneViewer,
   GLVectorTypes, GLUtils;
 
 type

@@ -18,7 +18,7 @@ uses
   GLBitmapFont,
   GLWindowsFont,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLBaseClasses,
   GLObjects;

@@ -19,7 +19,7 @@
 #include "GLScene.hpp"
 #include "GLShadowVolume.hpp"
 #include "GLSpaceText.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

@@ -17,7 +17,7 @@
 #pragma link "GLScene"
 #pragma link "GLShadowPlane"
 #pragma link "GLVectorFileObjects"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLFile3DS"
 #pragma link "GLFileJPEG"
 

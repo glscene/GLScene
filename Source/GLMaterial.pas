@@ -29,12 +29,12 @@ uses
   GLPersistentClasses,
   GLState,
   GLTextureFormat, 
-  GLStrings, 
+  GLS.Strings, 
   XOpenGL,
   GLApplicationFileIO, 
   GLGraphics, 
   GLUtils,
-  GLSLog;
+  GLS.Logger;
 
 {$UNDEF USE_MULTITHREAD}
 type

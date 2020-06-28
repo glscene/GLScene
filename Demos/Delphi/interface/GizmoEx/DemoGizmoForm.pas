@@ -21,7 +21,7 @@ uses
   GLCadencer,
   GLObjects,
   GLVectorTypes,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLKeyboard,
   GLGizmoEx,
   GLCrossPlatform,

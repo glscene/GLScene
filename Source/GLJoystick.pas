@@ -19,7 +19,7 @@ uses
   System.Classes,
   VCL.Forms,
   VCL.Controls,
-  GLStrings;
+  GLS.Strings;
 
 type
 

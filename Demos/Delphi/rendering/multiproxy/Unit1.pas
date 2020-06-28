@@ -19,7 +19,7 @@ uses
   GLVectorTypes,
   GLObjects,
   GLParticles,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLColor,
   GLMultiProxy,
   GLTexture,

@@ -19,7 +19,7 @@
 #include "GLScene.hpp"
 #include "GLSimpleNavigation.hpp"
 #include "GLTeapot.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

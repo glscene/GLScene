@@ -24,7 +24,7 @@ uses
   GLFileTGA,
   GLMaterial, 
   GLScene, 
-  GLWin32Viewer, 
+  GLSceneViewer, 
   GLVectorFileObjects, 
   GLObjects,
   GLVectorGeometry, 

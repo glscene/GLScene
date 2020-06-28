@@ -21,7 +21,7 @@
 #include "GLScene.hpp"
 #include "GLShadowPlane.hpp"
 #include "GLVectorFileObjects.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLWindowsFont.hpp"
 #include "ODEUtils.hpp"
 #include "ODEImport.hpp"

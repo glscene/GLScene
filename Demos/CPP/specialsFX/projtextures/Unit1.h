@@ -14,7 +14,7 @@
 #include "GLProjectedTextures.hpp"
 #include "GLScene.hpp"
 #include "GLTexture.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLBaseClasses.hpp"
 #include "GLCoordinates.hpp"
 #include "GLCrossPlatform.hpp"

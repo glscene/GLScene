@@ -18,7 +18,7 @@
 #include "GLSkydome.hpp"
 #include "GLTeapot.hpp"
 ///#include "GLImposter.hpp"   ///don't work properly - pw
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

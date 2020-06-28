@@ -15,7 +15,7 @@
 #include "GLTexture.hpp"
 #include "GLUserShader.hpp"
 #include "GLVectorFileObjects.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLWindowsFont.hpp"
 #include "GLBaseClasses.hpp"
 #include "GLCoordinates.hpp"

@@ -17,7 +17,7 @@
 #pragma link "GLSMFMOD"
 #pragma link "GLSMOpenAL"
 #pragma link "GLSound"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLFileWAV"
 #pragma link "GLFileMP3"
 

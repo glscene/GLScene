@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  Implements FBO support for GLScene.
-*)
 
 unit GLFBORenderer;
+
+(* Implements FBO support *)
 
 interface
 
@@ -30,7 +29,7 @@ uses
   GLVectorTypes,
   GLMultisampleImage,
   GLFBO,
-  GLSLog;
+  GLS.Logger;
 
 type
   TGLEnabledRenderBuffer = (erbDepth, erbStencil);
@@ -127,17 +126,17 @@ type
     destructor Destroy; override;
     procedure DoRender(var ARci: TGLRenderContextInfo; ARenderSelf: Boolean;
       ARenderChildren: Boolean); override;
-    {  Layer (also cube map face) is activated only on
+    (*  Layer (also cube map face) is activated only on
       the volume textures, texture array and cube map.
-      You can select the layer during the drawing to. }
+      You can select the layer during the drawing to. *)
     property Layer: Integer read GetLayer write SetLayer;
-    {  Mipmap Level where will be rendering }
+    //  Mipmap Level where will be rendering
     property Level: Integer read GetLevel write SetLevel;
   published
     property Active: Boolean read GetVisible write SetVisible default True;
     property PickableTarget: Boolean read GetPickable write SetPickable default False;
-    {  force texture dimensions when initializing
-      only works with TGLBlankImage and TGLFloatDataImage, otherwise does nothing }
+    (* Force texture dimensions when initializing
+      only works with TGLBlankImage and TGLFloatDataImage, otherwise does nothing *)
     property ForceTextureDimensions: Boolean read FForceTextureDimensions
       write SetForceTextureDimentions default True;
     property Width: Integer read FWidth write SetWidth default 256;
@@ -152,50 +151,50 @@ type
     property BackgroundColor: TGLColor read FBackgroundColor write SetBackgroundColor;
     property ClearOptions: TGLFBOClearOptions read FClearOptions
       write FClearOptions;
-    {  camera used for rendering to the FBO
-      if not assigned, use the active view's camera }
+    (* Camera used for rendering to the FBO
+      if not assigned, use the active view's camera *)
     property Camera: TGLCamera read FCamera write SetCamera;
-    {  adjust the scene scale of the camera so that the rendering
+    (* Adjust the scene scale of the camera so that the rendering
       becomes independent of the width of the fbo renderer
-      0 = disabled }
+      0 = disabled *)
     property SceneScaleFactor: Single read FSceneScaleFactor
       write FSceneScaleFactor stored StoreSceneScaleFactor;
-    {  root object used when rendering to the FBO
-      if not assigned, uses itself as root and renders the child objects to the FBO }
+    (* Root object used when rendering to the FBO
+      if not assigned, uses itself as root and renders the child objects to the FBO *)
     property RootObject: TGLBaseSceneObject read FRootObject
       write SetRootObject;
-    {  determines if target is rendered to FBO only or rendered normally
+    (* Determines if target is rendered to FBO only or rendered normally
       in FBO only mode, if RootObject is assigned, the RootObject's Visible flag is modified
       in default mode, if RootObject is not assigned, children are rendered normally after being
-      rendered to the FBO }
+      rendered to the FBO *)
     property TargetVisibility: TGLFBOTargetVisibility read FTargetVisibility
       write SetTargetVisibility default tvDefault;
-    {  Enables the use of a render buffer if a texture is not assigned }
+    //  Enables the use of a render buffer if a texture is not assigned
     property EnabledRenderBuffers: TGLEnabledRenderBuffers
       read FEnabledRenderBuffers write SetEnabledRenderBuffers;
-    {  use stencil buffer }
+    //  use stencil buffer
     property StencilPrecision: TGLStencilPrecision read FStencilPrecision
       write SetStencilPrecision default spDefault;
-    {  called before rendering to the FBO }
+    //  called before rendering to the FBO
     property BeforeRender: TGLDirectRenderEvent read FBeforeRender write FBeforeRender;
-    {  called after the rendering to the FBO }
+    //  called after the rendering to the FBO
     property AfterRender: TGLDirectRenderEvent read FAfterRender write FAfterRender;
-    {  Called before the FBO is initialized
-      the FBO is bound before calling this event }
+    (*  Called before the FBO is initialized
+      the FBO is bound before calling this event *)
     property PreInitialize: TNotifyEvent read FPreInitialize write FPreInitialize;
-    {  Called after the FBO is initialized, but before any rendering
-      the FBO is bound before calling this event }
+    (*  Called after the FBO is initialized, but before any rendering
+      the FBO is bound before calling this event *)
     property PostInitialize: TNotifyEvent read FPostInitialize write FPostInitialize;
     property UseLibraryAsMultiTarget: Boolean read FUseLibraryAsMultiTarget
       write SetUseLibraryAsMultiTarget default False;
-    {  Control mipmap generation after rendering
-      texture must have MinFilter with mipmaping }
+    (*  Control mipmap generation after rendering
+      texture must have MinFilter with mipmaping *)
     property PostGenerateMipmap: Boolean read FPostGenerateMipmap
       write SetPostGenerateMipmap default True;
-    {  Allows multiTargeting to different texture sources instead of all coming
+    (* Allows multiTargeting to different texture sources instead of all coming
       from one single MatLib with UseLibraryAsMultiTarget. OnSetTextureTargets
       overrides the other method of setting target textures via the MaterialLibrary,
-      ColorTextureName and DepthTextureName propertes }
+      ColorTextureName and DepthTextureName propertes *)
     property OnSetTextureTargets: TSetTextureTargetsEvent read FOnSetTextureTargets
       write FOnSetTextureTargets;
   end;

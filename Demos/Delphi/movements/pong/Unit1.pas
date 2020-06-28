@@ -18,7 +18,7 @@ uses
   GLTexture,
   GLVectorGeometry,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLSpaceText,
   GLShadowPlane,
   GLShadowVolume,

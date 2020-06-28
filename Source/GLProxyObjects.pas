@@ -21,7 +21,7 @@ uses
   GLVectorGeometry,
   GLTexture,
   GLVectorFileObjects,
-  GLStrings,
+  GLS.Strings,
   GLRenderContextInfo,
   GLBaseClasses,
   GLMaterial,

@@ -18,7 +18,7 @@ uses
   GLFileJPEG,
   GLSimpleNavigation,
   GLMaterial,
-  GLCadencer, GLCrossPlatform, GLBaseClasses, GLWin32Viewer, GLCustomShader,
+  GLCadencer, GLCrossPlatform, GLBaseClasses, GLSceneViewer, GLCustomShader,
   GLSLShader, GLTexture, GLFBORenderer, GLRenderContextInfo, GLGeomObjects,
   GLMesh, GLHUDObjects, GLBitmapFont, GLWindowsFont, GLVectorGeometry,
   GLVectorTypes, GLContext, GLState,

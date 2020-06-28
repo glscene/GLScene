@@ -17,7 +17,7 @@
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
 #include "GLVectorgeometry.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLSpline.hpp"
 
 //---------------------------------------------------------------------------

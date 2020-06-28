@@ -19,7 +19,7 @@
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
 #include "GLTeapot.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "Jpeg.hpp"
 #include "GLColor.hpp"
 #include "GLContext.hpp"

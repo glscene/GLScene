@@ -44,7 +44,7 @@ uses
   GLBaseClasses,
   GLManager,
   GLVectorTypes,
-  GLStrings;
+  GLS.Strings;
 
 type
   //Only csEllipsoid can have dynamic behaviour

@@ -33,7 +33,7 @@ uses
   GLTexture,
   GLContext,
   GLVectorGeometry,
-  GLStrings,
+  GLS.Strings,
   GLRenderContextInfo,
   GLState;
 

@@ -25,7 +25,7 @@ uses
   GLCadencer,
   GLTexture,
   GLSkydome,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLVectorGeometry,
   GLLensFlare,
   GLBumpmapHDS,

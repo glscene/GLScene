@@ -23,7 +23,7 @@ uses
   StdCtrls,
   Graphics,
   GLSkydome,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLNavigator,
   GLFileMD2,
   GLFile3DS,

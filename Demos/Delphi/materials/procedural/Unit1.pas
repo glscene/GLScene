@@ -22,7 +22,7 @@ uses
   GLHUDObjects,
   GLTextureFormat,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLProcTextures,
   GLCoordinates,
   GLCrossPlatform,

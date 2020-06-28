@@ -14,7 +14,7 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
   
-  GLWin32Viewer,
+  GLSceneViewer,
   GLScene,
   GLObjects,
   GLTexture,

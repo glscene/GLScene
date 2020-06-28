@@ -22,7 +22,7 @@ uses
   GLFPSMovement,
   GLKeyboard,
   GLState,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLObjects,
   GLCollision,
   GLVectorFileObjects,

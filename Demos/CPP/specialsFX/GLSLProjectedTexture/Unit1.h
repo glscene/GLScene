@@ -21,7 +21,7 @@
 #include "GLScene.hpp"
 #include "GLSLProjectedTextures.hpp"
 #include "GLVectorFileObjects.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

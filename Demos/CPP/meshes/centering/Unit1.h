@@ -13,7 +13,7 @@
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
 #include "GLVectorFileObjects.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------

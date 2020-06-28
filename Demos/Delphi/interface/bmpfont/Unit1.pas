@@ -23,7 +23,7 @@ uses
   GLCoordinates,
   GLBaseClasses,
   GLUtils,
-  GLWin32Viewer;
+  GLSceneViewer;
 
 type
   TForm1 = class(TForm)

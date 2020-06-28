@@ -54,13 +54,13 @@ uses
   GLCoordinates,
   GLObjects,
   GLHUDObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLBitmapFont,
   GLPersistentClasses,
   GLContext,
   GLTexture,
   GLUtils,
-  GLStrings,
+  GLS.Strings,
   GLMaterial,
   GLVectorTypes;
 

@@ -15,7 +15,7 @@
 #include <GLGeomObjects.hpp>
 #include <GLNavigator.hpp>
 #include <GLCadencer.hpp>
-#include <GLWin32Viewer.hpp>
+#include <GLSceneViewer.hpp>
 #include <GLObjects.hpp>
 #include <GLVectorFileObjects.hpp>
 #include "GLCoordinates.hpp"

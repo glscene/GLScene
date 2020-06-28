@@ -18,7 +18,7 @@
 #include "GLGraph.hpp"
 #include "GLObjects.hpp"
 #include "GLGeomObjects.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLODECustomColliders.hpp"
 #include "GLODEManager.hpp"
 

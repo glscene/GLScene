@@ -19,7 +19,7 @@ uses
   GLObjects,
   GLScene,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLVectorGeometry,
   GLVectorTypes,
   GLGeometryBB,

@@ -15,7 +15,7 @@
 #pragma link "GLObjects"
 #pragma link "GLScene"
 #pragma link "GLTerrainRenderer"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 
 #pragma link "GLHeightData"
 #pragma link "GLHeightData"

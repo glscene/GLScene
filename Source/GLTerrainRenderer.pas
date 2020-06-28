@@ -1,12 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLTerrainRenderer;
+
 (*
   Brute-force terrain renderer.
   NOTA : multi-materials terrain support is not yet optimized to minimize
   texture switches (in case of resued tile textures).
 *)
-unit GLTerrainRenderer;
 
 interface
 

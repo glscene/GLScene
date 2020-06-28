@@ -16,7 +16,7 @@
 #include "GLBumpmapHDS.hpp"
 #include "GLLensFlare.hpp"
 #include "GLVectorGeometry.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLSkydome.hpp"
 #include "GLTexture.hpp"
 #include "GLCadencer.hpp"

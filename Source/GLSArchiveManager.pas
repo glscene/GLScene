@@ -193,7 +193,7 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLStrings;
+  GLS.Strings;
 
 var
   vArchiveFileFormats: TGLArchiveFileFormatsList;

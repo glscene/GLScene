@@ -15,7 +15,7 @@
 #include "GLGui.hpp"
 #include "GLMaterial.hpp"
 #include "GLScene.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLWindows.hpp"
 #include "GLWindowsFont.hpp"
 #include <Vcl.Dialogs.hpp>

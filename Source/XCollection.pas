@@ -16,7 +16,7 @@ uses
   System.Classes,
   System.SysUtils,
   System.Types,
-  GLStrings,
+  GLS.Strings,
   GLPersistentClasses
   {$IFDEF DEBUG_XCOLLECTION}, System.TypInfo {$ENDIF};
 

@@ -16,7 +16,7 @@ uses
   GLObjects,
   GLScene,
   GLVectorTypes,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLSkydome,
   GLCadencer,
   GLTeapot,

@@ -16,7 +16,7 @@ uses
   System.Math,
 
   OpenGLTokens,
-  GLStrings,
+  GLS.Strings,
   GLScene,
   GLObjects,
   GLVectorFileObjects,

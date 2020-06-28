@@ -25,7 +25,7 @@ uses
   GLObjects,
   GLCadencer,
   GLPortal,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLMaterial,
   GLCoordinates,

@@ -16,7 +16,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GLScene"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLObjects"
 #pragma link "GLBaseClasses"
 #pragma link "GLCoordinates"

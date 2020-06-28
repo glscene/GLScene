@@ -15,7 +15,7 @@
 #pragma link "GLCadencer"
 #pragma link "GLObjects"
 #pragma link "GLScene"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLKeyboard"
 #pragma link "GLVerletTypes"
 #pragma link "GLVerletClasses"

@@ -25,7 +25,7 @@ uses
   GLMaterial,
   GLColor,
   GLState,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLVectorGeometry,
   GLGraph,
   GLGeomObjects,

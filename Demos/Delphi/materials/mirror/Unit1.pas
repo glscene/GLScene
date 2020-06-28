@@ -18,7 +18,7 @@ uses
   GLExtrusion, 
   GLMirror,
   GLCadencer, 
-  GLWin32Viewer, 
+  GLSceneViewer, 
   GLTeapot, 
   GLGeomObjects,
   GLCoordinates, 

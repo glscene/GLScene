@@ -15,7 +15,7 @@ uses
   
   GLScene,
   GLObjects,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLTexture,
   GLGeomObjects,
   GLHiddenLineShader,

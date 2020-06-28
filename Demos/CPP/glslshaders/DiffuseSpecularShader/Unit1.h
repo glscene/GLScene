@@ -23,7 +23,7 @@
 #include "GLSLDiffuseSpecularShader.hpp"
 #include "GLSLShader.hpp"
 #include "GLVectorFileObjects.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLFileTGA.hpp"
 #include "GLFileSMD.hpp"
 #include "GLFileMD2.hpp"

@@ -16,7 +16,7 @@ uses
   Vcl.Imaging.JPeg,
 
   
-  GLScene, GLObjects, GLTexture, GLExtrusion, GLWin32Viewer,
+  GLScene, GLObjects, GLTexture, GLExtrusion, GLSceneViewer,
   GLCrossPlatform, GLCoordinates, GLBaseClasses, GLUtils;
 
 type

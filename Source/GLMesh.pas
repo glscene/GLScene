@@ -18,7 +18,7 @@ uses
 
   OpenGLTokens,
   OpenGLAdapter,
-  GLStrings,
+  GLS.Strings,
   XOpenGL,
   GLContext,
   GLScene,

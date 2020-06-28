@@ -13,7 +13,7 @@
 #pragma link "GLExplosionFx"
 #pragma link "GLScene"
 #pragma link "GLVectorFileObjects"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLFile3DS"
 
 

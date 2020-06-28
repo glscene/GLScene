@@ -28,7 +28,7 @@ uses
   Vcl.ToolWin,
   DesignIntf,
   VCLEditors,
-  GLStrings,
+  GLS.Strings,
   GLS.CUDA,
   GLS.CUDAFFTPlan,
   GLS.CUDAGraphics;

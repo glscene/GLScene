@@ -22,7 +22,7 @@
 #include "GLSimpleNavigation.hpp"
 #include "GLSLShader.hpp"
 #include "GLVectorFileObjects.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "OpenGLx.hpp"
 #include "FileDDSImage.hpp"
 #include <Vcl.ExtCtrls.hpp>

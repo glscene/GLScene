@@ -228,6 +228,7 @@
         <DCCReference Include="..\..\Source\GLFileOBJ.pas"/>
         <DCCReference Include="..\..\Source\GLFileOCT.pas"/>
         <DCCReference Include="..\..\Source\GLFilePAK.pas"/>
+        <DCCReference Include="..\..\Source\GLFileVfsPAK.pas"/>
         <DCCReference Include="..\..\Source\GLFilePLY.pas"/>
         <DCCReference Include="..\..\Source\GLFilePNG.pas"/>
         <DCCReference Include="..\..\Source\GLFileQ3BSP.pas"/>
@@ -328,9 +329,7 @@
         <DCCReference Include="..\..\Source\GLSLShader.pas"/>
         <DCCReference Include="..\..\Source\GLSLToonShader.pas"/>
         <DCCReference Include="..\..\Source\GLSLanguage.pas"/>
-        <DCCReference Include="..\..\Source\GLSLog.pas"/>
         <DCCReference Include="..\..\Source\GLS.Memo.pas"/>
-        <DCCReference Include="..\..\Source\GLSRGBE.pas"/>
         <DCCReference Include="..\..\Source\GLSRedBlackTree.pas"/>
         <DCCReference Include="..\..\Source\GLScene.pas"/>
         <DCCReference Include="..\..\Source\GLSceneForm.pas"/>
@@ -353,7 +352,7 @@
         <DCCReference Include="..\..\Source\GLSpaceText.pas"/>
         <DCCReference Include="..\..\Source\GLSpline.pas"/>
         <DCCReference Include="..\..\Source\GLState.pas"/>
-        <DCCReference Include="..\..\Source\GLStrings.pas"/>
+        <DCCReference Include="..\..\Source\GLS.Strings.pas"/>
         <DCCReference Include="..\..\Source\GLTeapot.pas"/>
         <DCCReference Include="..\..\Source\GLTerrainRenderer.pas"/>
         <DCCReference Include="..\..\Source\GLTexCombineShader.pas"/>
@@ -382,8 +381,8 @@
         <DCCReference Include="..\..\Source\GLVerletSkeletonColliders.pas"/>
         <DCCReference Include="..\..\Source\GLVerletTypes.pas"/>
         <DCCReference Include="..\..\Source\GLWaterPlane.pas"/>
-        <DCCReference Include="..\..\Source\GLWin32Context.pas"/>
-        <DCCReference Include="..\..\Source\GLWin32Viewer.pas"/>
+        <DCCReference Include="..\..\Source\GLWindowsContext.pas"/>
+        <DCCReference Include="..\..\Source\GLSceneViewer.pas"/>
         <DCCReference Include="..\..\Source\GLWindows.pas"/>
         <DCCReference Include="..\..\Source\GLWindowsFont.pas"/>
         <DCCReference Include="..\..\Source\GLzBuffer.pas"/>
@@ -392,7 +391,8 @@
         <DCCReference Include="..\..\Source\GLS.OpenGLx.pas"/>
         <DCCReference Include="..\..\Source\XCollection.pas"/>
         <DCCReference Include="..\..\Source\XOpenGL.pas"/>
-        <DCCReference Include="..\..\Source\GLFileVfsPAK.pas"/>
+        <DCCReference Include="..\..\Source\GLS.Logger.pas"/>
+        <DCCReference Include="..\..\Source\GLS.RGBE.pas"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

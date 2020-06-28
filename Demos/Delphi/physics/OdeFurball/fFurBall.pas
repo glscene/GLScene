@@ -17,7 +17,7 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLVectorTypes,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLScene,
   GLObjects,
   GLCadencer,

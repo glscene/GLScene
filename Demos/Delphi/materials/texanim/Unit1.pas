@@ -15,7 +15,7 @@ uses
 
   
   GLCadencer, GLScene, GLObjects, GLTexture,
-  GLWin32Viewer, GLMaterial, GLCoordinates, GLCrossPlatform, GLBaseClasses;
+  GLSceneViewer, GLMaterial, GLCoordinates, GLCrossPlatform, GLBaseClasses;
 
 type
   TForm1 = class(TForm)

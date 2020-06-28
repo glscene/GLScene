@@ -29,7 +29,7 @@ uses
   GLObjects, 
   GLWindows, 
   GLHUDObjects,
-  GLWin32Viewer, 
+  GLSceneViewer, 
   GLGui, 
   GLGraphics, 
   GLUtils,  

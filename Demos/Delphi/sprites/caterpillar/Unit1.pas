@@ -19,7 +19,7 @@ uses
   GLTexture,
   GLVectorGeometry,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLMaterial,
   GLCoordinates,

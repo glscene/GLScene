@@ -26,8 +26,8 @@ uses
   GLSceneForm,
   GLVectorGeometry,
   GLScene,
-  GLWin32Viewer,
-  GLStrings;
+  GLSceneViewer,
+  GLS.Strings;
 
 type
 

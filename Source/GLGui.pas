@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  In GL windows management classes and structures
-*)
+
 unit GLGui;
+
+(* Windows management classes and structures *)
 
 interface
 

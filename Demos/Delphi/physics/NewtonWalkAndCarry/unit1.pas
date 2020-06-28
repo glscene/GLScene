@@ -21,7 +21,7 @@ uses
   GLNGDManager,
   GLMaterial,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLBaseClasses,
   GLGeomObjects,

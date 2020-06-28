@@ -8,7 +8,7 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <GLGeomObjects.hpp>
-#include <GLWin32Viewer.hpp>
+#include <GLSceneViewer.hpp>
 #include <GLCadencer.hpp>
 #include <GLVectorGeometry.hpp>
 #include <GLScene.hpp>

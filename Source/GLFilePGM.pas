@@ -18,7 +18,7 @@ uses
   GLContext,
   GLGraphics,
   GLTextureFormat,
-  GLStrings,
+  GLS.Strings,
   GLApplicationFileIO,
 
   GLS.CUDAUtility;

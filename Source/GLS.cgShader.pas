@@ -17,7 +17,7 @@ uses
   GLVectorLists,
   GLVectorTypes,
   GLTexture,
-  GLStrings,
+  GLS.Strings,
   GLCadencer,
   GLContext,
   GLBaseClasses,

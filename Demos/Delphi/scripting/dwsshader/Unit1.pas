@@ -17,7 +17,7 @@ uses
   GLCadencer,
   GLTexture,
   GLUserShader,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLScene,
   GLObjects,
   GLAsyncTimer,

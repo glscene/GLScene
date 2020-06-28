@@ -23,7 +23,7 @@ uses
   GLVectorGeometry,
   GLCadencer,
   GLContext,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform;
 
 type

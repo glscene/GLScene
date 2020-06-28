@@ -21,7 +21,7 @@
 #include "GLMaterial.hpp"
 #include "GLScene.hpp"
 #include "GLVectorFileObjects.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 
 #include "GLMeshUtils.hpp"
 #include "GLVectorGeometry.hpp"

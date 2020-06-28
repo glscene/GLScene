@@ -20,7 +20,7 @@ uses
   GLFireFX,
   GLBehaviours,
   GLVectorGeometry,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLCrossPlatform,
   GLCoordinates,
   GLBaseClasses;

@@ -80,7 +80,7 @@ implementation
 
 uses
   GLCrossPlatform,
-  GLSLog;
+  GLS.Logger;
 
 { TGLLanguage }
 

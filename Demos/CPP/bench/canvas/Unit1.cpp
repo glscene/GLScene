@@ -12,7 +12,7 @@
 #pragma link "GLCoordinates"
 #pragma link "GLCrossPlatform"
 #pragma link "GLScene"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLWindowsFont"
 
 #pragma resource "*.dfm"

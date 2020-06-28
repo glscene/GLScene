@@ -16,7 +16,7 @@
 #pragma link "GLSimpleNavigation"
 #pragma link "GLSkydome"
 #pragma link "GLThorFX"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------

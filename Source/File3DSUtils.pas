@@ -18,7 +18,7 @@ uses
   System.SysUtils,
   File3DS,
   File3DSTypes,
-  GLStrings;
+  GLS.Strings;
 
 // functions to retrieve global settings of a specific 3DS database
 function GetAtmosphere(const Source: TFile3DS; var DB: TDatabase3DS): TAtmosphere3DS;

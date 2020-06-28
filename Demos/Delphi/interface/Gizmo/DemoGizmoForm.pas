@@ -20,7 +20,7 @@ uses
   GLObjects,
   GLSpaceText,
   GLPolyhedron,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLBitmapFont,
   GLWindowsFont,
   GLHUDObjects,

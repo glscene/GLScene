@@ -17,7 +17,7 @@ uses
   GLCoordinates,
   GLSimpleNavigation,
   GLCadencer,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLColor,
   GLCrossPlatform,
   GLBaseClasses,

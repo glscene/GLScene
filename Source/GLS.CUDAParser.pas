@@ -132,7 +132,7 @@ implementation
 //-------------------------------------------
 
 uses
-  GLStrings;
+  GLS.Strings;
 
 const
   WordDelimiters: set of AnsiChar = [#0..#255] - ['a'..'z','A'..'Z','1'..'9','0','_'];

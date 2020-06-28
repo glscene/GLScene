@@ -14,7 +14,7 @@ uses
   Vcl.StdCtrls,
 
   GLScene,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLFeedback,
   GLPolyhedron,
   GLCrossPlatform,

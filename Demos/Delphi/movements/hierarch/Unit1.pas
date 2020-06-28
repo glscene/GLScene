@@ -7,7 +7,7 @@ uses
   Vcl.Forms, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Controls,
   
   GLScene, GLObjects,
-  GLCadencer, GLAsyncTimer, GLWin32Viewer, GLCrossPlatform,
+  GLCadencer, GLAsyncTimer, GLSceneViewer, GLCrossPlatform,
   GLCoordinates, GLBaseClasses;
 
 type

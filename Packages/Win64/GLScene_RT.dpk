@@ -126,6 +126,7 @@ contains
   GLFileOBJ in '..\..\Source\GLFileOBJ.pas',
   GLFileOCT in '..\..\Source\GLFileOCT.pas',
   GLFilePAK in '..\..\Source\GLFilePAK.pas',
+  GLFileVfsPAK in '..\..\Source\GLFileVfsPAK.pas',
   GLFilePLY in '..\..\Source\GLFilePLY.pas',
   GLFilePNG in '..\..\Source\GLFilePNG.pas',
   GLFileQ3BSP in '..\..\Source\GLFileQ3BSP.pas',
@@ -226,9 +227,7 @@ contains
   GLSLShader in '..\..\Source\GLSLShader.pas',
   GLSLToonShader in '..\..\Source\GLSLToonShader.pas',
   GLSLanguage in '..\..\Source\GLSLanguage.pas',
-  GLSLog in '..\..\Source\GLSLog.pas',
   GLS.Memo in '..\..\Source\GLS.Memo.pas',
-  GLSRGBE in '..\..\Source\GLSRGBE.pas',
   GLSRedBlackTree in '..\..\Source\GLSRedBlackTree.pas',
   GLScene in '..\..\Source\GLScene.pas',
   GLSceneForm in '..\..\Source\GLSceneForm.pas',
@@ -251,7 +250,7 @@ contains
   GLSpaceText in '..\..\Source\GLSpaceText.pas',
   GLSpline in '..\..\Source\GLSpline.pas',
   GLState in '..\..\Source\GLState.pas',
-  GLStrings in '..\..\Source\GLStrings.pas',
+  GLS.Strings in '..\..\Source\GLS.Strings.pas',
   GLTeapot in '..\..\Source\GLTeapot.pas',
   GLTerrainRenderer in '..\..\Source\GLTerrainRenderer.pas',
   GLTexCombineShader in '..\..\Source\GLTexCombineShader.pas',
@@ -280,8 +279,8 @@ contains
   GLVerletSkeletonColliders in '..\..\Source\GLVerletSkeletonColliders.pas',
   GLVerletTypes in '..\..\Source\GLVerletTypes.pas',
   GLWaterPlane in '..\..\Source\GLWaterPlane.pas',
-  GLWin32Context in '..\..\Source\GLWin32Context.pas',
-  GLWin32Viewer in '..\..\Source\GLWin32Viewer.pas',
+  GLWindowsContext in '..\..\Source\GLWindowsContext.pas',
+  GLSceneViewer in '..\..\Source\GLSceneViewer.pas',
   GLWindows in '..\..\Source\GLWindows.pas',
   GLWindowsFont in '..\..\Source\GLWindowsFont.pas',
   GLzBuffer in '..\..\Source\GLzBuffer.pas',
@@ -290,7 +289,8 @@ contains
   GLS.OpenGLx in '..\..\Source\GLS.OpenGLx.pas',
   XCollection in '..\..\Source\XCollection.pas',
   XOpenGL in '..\..\Source\XOpenGL.pas',
-  GLFileVfsPAK in '..\..\Source\GLFileVfsPAK.pas';
+  GLS.Logger in '..\..\Source\GLS.Logger.pas',
+  GLS.RGBE in '..\..\Source\GLS.RGBE.pas';
 
 end.
 

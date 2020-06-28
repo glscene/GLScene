@@ -49,7 +49,7 @@ uses
   Winapi.Windows,
 
   GLS.CUDAApi,
-  GLSLog;
+  GLS.Logger;
 
 const
 {$IFDEF WIN32}

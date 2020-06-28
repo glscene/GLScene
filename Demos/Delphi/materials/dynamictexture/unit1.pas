@@ -11,7 +11,7 @@ uses
   Vcl.Forms,
   Vcl.ExtCtrls,
   
-  GLScene, GLWin32Viewer, GLObjects, GLTexture, GLCadencer,
+  GLScene, GLSceneViewer, GLObjects, GLTexture, GLCadencer,
   GLCrossPlatform, GLMaterial, GLCoordinates, GLBaseClasses,
   GLRenderContextInfo, GLContext, GLDynamicTexture, GLUtils;
 

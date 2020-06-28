@@ -47,11 +47,11 @@ uses
   GLTextureCombiners,
   GLSLParameter,
   GLApplicationFileIO,
-  GLStrings,
+  GLS.Strings,
   GLImageUtils,
   GLUtils,
   XOpenGL,
-  GLSLog;
+  GLS.Logger;
 
 type
 

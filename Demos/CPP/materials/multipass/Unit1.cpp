@@ -31,7 +31,7 @@
 #pragma link "GLObjects"
 #pragma link "GLScene"
 #pragma link "GLTexture"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLBaseClasses"
 #pragma link "GLCoordinates"
 #pragma link "GLCrossPlatform"

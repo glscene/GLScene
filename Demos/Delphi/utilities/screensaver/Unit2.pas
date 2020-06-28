@@ -24,7 +24,7 @@ uses
   Vcl.Forms,
   Vcl.StdCtrls,
   
-  GLScene, GLObjects, GLTexture, GLCadencer, GLWin32Viewer, GLSpaceText,
+  GLScene, GLObjects, GLTexture, GLCadencer, GLSceneViewer, GLSpaceText,
   GLGeomObjects, GLCoordinates, GLCrossPlatform, GLBaseClasses, GLBehaviours;
 
 type

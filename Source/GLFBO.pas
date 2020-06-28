@@ -1,12 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLFBO;
+
+(*
    Implements FBO support for GLScene.
    Original author of the unit is Riz.
    Modified by DaStr, C4 and YarUnderoaker.
-}
-unit GLFBO;
+*)
 
 interface
 
@@ -26,7 +28,7 @@ uses
   GLGraphics,
   GLTextureFormat,
   GLVectorTypes,
-  GLSLog;
+  GLS.Logger;
 
 
 const
@@ -50,9 +52,9 @@ type
     destructor Destroy; override;
     procedure Bind;
     procedure Unbind;
-    {Handle to the OpenGL render buffer object.
+    (* Handle to the OpenGL render buffer object.
       If the handle hasn't already been allocated, it will be allocated
-      by this call (ie. do not use if no OpenGL context is active!) }
+      by this call (ie. do not use if no OpenGL context is active!) *)
     property Handle: Cardinal read GetHandle;
     property Width: Integer read FWidth write SetWidth;
     property Height: Integer read FHeight write SetHeight;

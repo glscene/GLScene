@@ -16,7 +16,7 @@ uses
 
   
   GLScene, GLObjects, GLCadencer, GLVectorFileObjects,
-  GLWin32Viewer, GLTexture, GLCrossPlatform, GLMaterial,
+  GLSceneViewer, GLTexture, GLCrossPlatform, GLMaterial,
   GLCoordinates, GLBaseClasses, GLRenderContextInfo, GLFileMD2;
 
 type

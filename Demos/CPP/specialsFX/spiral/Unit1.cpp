@@ -6,11 +6,11 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLCrossPlatform"
 #pragma link "GLVectorGeometry"
 #pragma link "GLBehaviours"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLObjects"
 #pragma link "GLScene"
 #pragma link "GLCadencer"

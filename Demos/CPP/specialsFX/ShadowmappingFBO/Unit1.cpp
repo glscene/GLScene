@@ -22,7 +22,7 @@
 #pragma link "GLSimpleNavigation"
 #pragma link "GLSLShader"
 #pragma link "GLVectorFileObjects"
-#pragma link "GLWin32Viewer"
+#pragma link "GLSceneViewer"
 #pragma link "GLFileDDS"
 #pragma link "GLFileMD2"
 #pragma resource "*.dfm"

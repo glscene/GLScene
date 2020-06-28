@@ -26,7 +26,7 @@ uses
   GLSpline,
   GLObjects,
   GLCrossPlatform,
-  GLStrings,
+  GLS.Strings,
   GLBaseClasses;
 
 type

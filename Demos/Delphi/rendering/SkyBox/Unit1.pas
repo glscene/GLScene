@@ -21,7 +21,7 @@ uses
   GLCrossPlatform,
   GLCadencer,
   GLNavigator,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLKeyboard,
   GLLensFlare,
   GLObjects,

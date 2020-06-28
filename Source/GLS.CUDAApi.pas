@@ -44,7 +44,7 @@ interface
 
 uses
   Winapi.Windows
-  {$IFDEF USE_LOGGING},GLSLog;{$ELSE};{$ENDIF}
+  {$IFDEF USE_LOGGING},GLS.Logger;{$ELSE};{$ENDIF}
 
 const
   CUDAAPIDLL = 'nvcuda.dll';

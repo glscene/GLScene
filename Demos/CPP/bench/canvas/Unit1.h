@@ -13,7 +13,7 @@
 #include "GLCoordinates.hpp"
 #include "GLCrossPlatform.hpp"
 #include "GLScene.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLCanvas.hpp"
 #include "GLRenderContextInfo.hpp"
 #include "GLBitmapFont.hpp"

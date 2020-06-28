@@ -21,7 +21,7 @@ uses
   GLBehaviours,
   GLTexture,
   GLVectorGeometry,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLGeomObjects,
   GLCoordinates,
   GLCrossPlatform,

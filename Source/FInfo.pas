@@ -26,7 +26,7 @@ uses
   Vcl.Imaging.jpeg,
   
   GLScene,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLContext,
   GLCrossPlatform;
 

@@ -38,7 +38,7 @@ uses
   GLGraphics,
   GLObjects,
   GLContext,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLColor,
   GLRenderContextInfo,
   GLState,

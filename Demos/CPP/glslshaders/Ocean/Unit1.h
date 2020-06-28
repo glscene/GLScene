@@ -19,7 +19,7 @@
 #include "GLSimpleNavigation.hpp"
 #include "GLSkydome.hpp"
 #include "GLUserShader.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLTextureFormat.hpp"
 #include "GLColor.hpp"
 #include "OpenGLTokens.hpp"

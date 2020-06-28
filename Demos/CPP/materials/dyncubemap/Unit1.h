@@ -24,7 +24,7 @@
 #include "GLScene.hpp"
 #include "GLSkydome.hpp"
 #include "GLTeapot.hpp"
-#include "GLWin32Viewer.hpp"
+#include "GLSceneViewer.hpp"
 #include "GLTexture.hpp"
 
 //---------------------------------------------------------------------------

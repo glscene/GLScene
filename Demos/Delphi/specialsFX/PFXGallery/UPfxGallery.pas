@@ -15,7 +15,7 @@ uses
   Vcl.Imaging.Jpeg,
 
   
-  GLVectorGeometry, GLWin32Viewer, GLScene, GLHUDObjects, GLParticleFX,
+  GLVectorGeometry, GLSceneViewer, GLScene, GLHUDObjects, GLParticleFX,
   GLVectorFileObjects, GLVectorTypes, GLObjects, GLBitmapFont,
   GLUtils,GLCadencer,  GLTexture, GLNavigator,
    GLGeomObjects, GLKeyboard, GLSpaceText, GLBehaviours,GLPerlinPFX, GLBlur,

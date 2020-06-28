@@ -13,7 +13,7 @@ uses
   System.SysUtils,
 
   GLCrossPlatform,
-  GLStrings,
+  GLS.Strings,
   GLPersistentClasses;
 
 type

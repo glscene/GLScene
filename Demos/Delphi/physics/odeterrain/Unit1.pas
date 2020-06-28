@@ -27,7 +27,7 @@ uses
   GLHUDObjects,
   GLBitmapFont,
   GLSkydome,
-  GLWin32Viewer,
+  GLSceneViewer,
   GLVectorGeometry,
   GLLensFlare,
   GLODEManager,
