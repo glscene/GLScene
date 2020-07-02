@@ -23,16 +23,16 @@ uses
 {$IFDEF USE_SERVICE_CONTEXT}
   GLSGenerics,
 {$ENDIF}
-  GLS.Logger,
   OpenGLTokens,
   OpenGLAdapter,
+  XOpenGL,
   GLVectorGeometry,
   GLS.Strings,
   GLVectorTypes,
   GLState,
-  XOpenGL,
   GLPipelineTransformation,
-  GLTextureFormat;
+  GLTextureFormat,
+  GLS.Logger;
 
 // Buffer ID's for Multiple-Render-Targets (using GL_ATI_draw_buffers)
 const

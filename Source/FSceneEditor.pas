@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   Scene Editor, for adding + removing scene objects within the Delphi IDE.
-*)
+
 unit FSceneEditor;
+
+(* Scene Editor, for adding + removing scene objects *)
 
 interface
 

@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   RGB+Alpha color editor.
-*)
+
 unit FRColorEditor;
+
+(* RGB+Alpha color editor. *)
 
 interface
 
@@ -111,7 +111,7 @@ const
 
 procedure TRColorEditor.TBEChange(Sender: TObject);
 begin
-   PAPreview.Color:=RGB(RedValue, GreenValue, BlueValue);
+   PAPreview.Color := RGB(RedValue, GreenValue, BlueValue);
    if (not updating) and Assigned(FOnChange) then FOnChange(Self);
 end;
 
@@ -133,7 +133,7 @@ end;
 
 procedure TRColorEditor.PAPreviewDblClick(Sender: TObject);
 begin
-   ColorDialog.Color:=PAPreview.Color;
+   ColorDialog.Color := PAPreview.Color;
    if ColorDialog.Execute then
       SetColor(ConvertWinColor(ColorDialog.Color));
 end;

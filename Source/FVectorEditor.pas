@@ -1,29 +1,29 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Editor for a vector. 
-}
+
 unit FVectorEditor;
+
+(* Editor for a vector *)
 
 interface
 
 {$I GLScene.inc}
 
 uses
-  System.Classes, 
+  System.Classes,
   System.SysUtils,
-  VCL.Forms, 
-  VCL.ComCtrls, 
-  VCL.StdCtrls, 
+  VCL.Forms,
+  VCL.ComCtrls,
+  VCL.StdCtrls,
   VCL.ToolWin,
-  VCL.ExtCtrls, 
-  VCL.Buttons, 
-  VCL.Graphics, 
+  VCL.ExtCtrls,
+  VCL.Buttons,
+  VCL.Graphics,
   VCL.Controls,
-   
-  GLVectorGeometry, 
-  GLUtils, 
+
+  GLVectorGeometry,
+  GLUtils,
   GLVectorTypes;
 
 type
@@ -212,7 +212,7 @@ initialization
 
 finalization
 
-   ReleaseVectorEditorForm;
+ ReleaseVectorEditorForm;
 
 end.
 

@@ -282,7 +282,7 @@ implementation
 uses
   FLibMaterialPicker,
   FGUILayoutEditor,
-  FMaterialEditorForm,
+  FMaterialEditor,
   FShaderMemo,
   FShaderUniformEditor,
   FVectorEditor,
@@ -851,7 +851,7 @@ end;
 
 procedure TGLMaterialProperty.Edit;
 begin
-  if FMaterialEditorForm.GLMaterialEditorForm.Execute(TGLMaterial(GetOrdValue))
+  if FMaterialEditor.GLMaterialEditorForm.Execute(TGLMaterial(GetOrdValue))
   then
     Modified;
 end;
@@ -994,7 +994,7 @@ begin
   end;
   if not Assigned(ml) then
     ShowMessage('Select the material library first.')
-  else if GLLibMaterialPicker.Execute(buf, ml) then
+  else if GLLibMaterialPickerForm.Execute(buf, ml) then
     SetStrValue(buf);
 end;
 

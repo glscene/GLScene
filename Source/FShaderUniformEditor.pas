@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Uniform editor for shaders
-}
 
 unit FShaderUniformEditor;
+
+(* Uniform editor for shaders *)
 
 interface
 
@@ -90,7 +89,9 @@ begin
   end;
 end;
 
-{ TShaderUniformEditor }
+//-----------------------------
+// TShaderUniformEditor
+//-----------------------------
 
 procedure TGLShaderUniformEditor.AddUniform(AValue: IShaderParameter);
 begin
@@ -243,7 +244,9 @@ begin
   SamplerBox.Items.Add(S);
 end;
 
+//---------------------------------
 initialization
+//---------------------------------
 
 finalization
   ReleaseShaderUniformEditor;

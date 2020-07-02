@@ -26,7 +26,8 @@ uses
   
   GLCrossPlatform,
   GLBaseClasses,
-  GLGui;
+  GLGui,
+  GLS.Strings;
 
 type
   TGLLayoutEditorForm = class(TForm)
@@ -99,7 +100,7 @@ type
   end;
 
 function GUILayoutEditorForm: TGLLayoutEditorForm;
-procedure ReleaseGUILayoutEditor;
+procedure ReleaseGUILayoutEditorForm;
 
 //-------------------------------------------------
 implementation
@@ -110,24 +111,24 @@ implementation
 uses GLUtils;
 
 var
-  vGUILayoutEditor: TGLLayoutEditorForm;
+  vGUILayoutEditorForm: TGLLayoutEditorForm;
   rect_point1, rect_point2: TPoint;
   zoom: integer = 1;
   sorted_elements: array[0..9] of TGLGuiElement;
 
 function GUILayoutEditorForm: TGLLayoutEditorForm;
 begin
-  if not Assigned(vGUILayoutEditor) then
-    vGUILayoutEditor := TGLLayoutEditorForm.Create(nil);
-  Result := vGUILayoutEditor;
+  if not Assigned(vGUILayoutEditorForm) then
+    vGUILayoutEditorForm := TGLLayoutEditorForm.Create(nil);
+  Result := vGUILayoutEditorForm;
 end;
 
-procedure ReleaseGUILayoutEditor;
+procedure ReleaseGUILayoutEditorForm;
 begin
-  if Assigned(vGUILayoutEditor) then
+  if Assigned(vGUILayoutEditorForm) then
   begin
-    vGUILayoutEditor.Free;
-    vGUILayoutEditor := nil;
+    vGUILayoutEditorForm.Free;
+    vGUILayoutEditorForm := nil;
   end;
 end;
 
@@ -531,11 +532,13 @@ begin
     AGUILayout.Assign(GLGuiLayout1);
 end;
 
+//-------------------------------------
 initialization
+//-------------------------------------
 
 finalization
 
-  ReleaseGUILayoutEditor;
+  ReleaseGUILayoutEditorForm;
 
 end.
 

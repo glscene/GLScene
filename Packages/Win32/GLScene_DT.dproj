@@ -141,9 +141,9 @@
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="..\..\Source\FLibMaterialPicker.pas">
-            <Form>GLLibMaterialPicker</Form>
+            <Form>GLLibMaterialPickerForm</Form>
         </DCCReference>
-        <DCCReference Include="..\..\Source\FMaterialEditorForm.pas">
+        <DCCReference Include="..\..\Source\FMaterialEditor.pas">
             <Form>GLMaterialEditorForm</Form>
         </DCCReference>
         <DCCReference Include="..\..\Source\FGUILayoutEditor.pas">

@@ -1,17 +1,17 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
- Allows choosing a material in a material library 
-}
+
 unit FLibMaterialPicker;
+
+(* Allows choosing a material in a material library *)
 
 interface
 
 {$I GLScene.inc}
 
 uses
-  System.Classes, 
+  System.Classes,
   VCL.Forms,
   VCL.StdCtrls,
   VCL.Buttons,
@@ -21,7 +21,7 @@ uses
   FRMaterialPreview;
 
 type
-  TGLLibMaterialPicker = class(TForm)
+  TGLLibMaterialPickerForm = class(TForm)
     LBMaterials: TListBox;
     Label1: TLabel;
     Label2: TLabel;
@@ -37,8 +37,8 @@ type
       materialLibrary: TGLAbstractMaterialLibrary): Boolean;
   end;
 
-function GLLibMaterialPicker: TGLLibMaterialPicker;
-procedure ReleaseLibMaterialPicker;
+function GLLibMaterialPickerForm: TGLLibMaterialPickerForm;
+procedure ReleaseLibMaterialPickerForm;
 
 //-------------------------------------------------
 implementation
@@ -47,26 +47,26 @@ implementation
 {$R *.dfm}
 
 var
-  vGLLibMaterialPicker: TGLLibMaterialPicker;
+  vGLLibMaterialPickerForm: TGLLibMaterialPickerForm;
 
-function GLLibMaterialPicker: TGLLibMaterialPicker;
+function GLLibMaterialPickerForm: TGLLibMaterialPickerForm;
 begin
-  if not Assigned(vGLLibMaterialPicker) then
-    vGLLibMaterialPicker := TGLLibMaterialPicker.Create(nil);
-  Result := vGLLibMaterialPicker;
+  if not Assigned(vGLLibMaterialPickerForm) then
+    vGLLibMaterialPickerForm := TGLLibMaterialPickerForm.Create(nil);
+  Result := vGLLibMaterialPickerForm;
 end;
 
-procedure ReleaseLibMaterialPicker;
+procedure ReleaseLibMaterialPickerForm;
 begin
-  if Assigned(vGLLibMaterialPicker) then
+  if Assigned(vGLLibMaterialPickerForm) then
   begin
-    vGLLibMaterialPicker.Free;
-    vGLLibMaterialPicker := nil;
+    vGLLibMaterialPickerForm.Free;
+    vGLLibMaterialPickerForm := nil;
   end;
 end;
 
 
-function TGLLibMaterialPicker.Execute(var materialName: TGLLibMaterialName;
+function TGLLibMaterialPickerForm.Execute(var materialName: TGLLibMaterialName;
   materialLibrary: TGLAbstractMaterialLibrary): Boolean;
 begin
   with LBMaterials do
@@ -89,20 +89,20 @@ begin
   end;
 end;
 
-procedure TGLLibMaterialPicker.LBMaterialsClick(Sender: TObject);
+procedure TGLLibMaterialPickerForm.LBMaterialsClick(Sender: TObject);
 begin
   with LBMaterials do
     if ItemIndex >= 0 then
       MPPreview.LibMaterial := TGLAbstractLibMaterial(Items.Objects[ItemIndex]);
 end;
 
-procedure TGLLibMaterialPicker.LBMaterialsKeyPress(Sender: TObject;
+procedure TGLLibMaterialPickerForm.LBMaterialsKeyPress(Sender: TObject;
   var Key: Char);
 begin
   LBMaterialsClick(Sender);
 end;
 
-procedure TGLLibMaterialPicker.LBMaterialsDblClick(Sender: TObject);
+procedure TGLLibMaterialPickerForm.LBMaterialsDblClick(Sender: TObject);
 begin
   BBOk.Click;
 end;
@@ -112,7 +112,8 @@ initialization
 //-----------------------------------------------------------------
 
 finalization
-  ReleaseLibMaterialPicker;
+
+ ReleaseLibMaterialPickerForm;
 
 end.
 
