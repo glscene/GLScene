@@ -3167,13 +3167,13 @@ begin
   // convert absolute to local and adjust object
   if Parent <> nil then
   begin
+    FUp.AsVector := Parent.AbsoluteToLocal(absUp);  
     FDirection.AsVector := Parent.AbsoluteToLocal(absDir);
-    FUp.AsVector := Parent.AbsoluteToLocal(absUp);
   end
   else
   begin
+    FUp.AsVector := absUp;  
     FDirection.AsVector := absDir;
-    FUp.AsVector := absUp;
   end;
   TransformationChanged
 end;
