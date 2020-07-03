@@ -5947,8 +5947,8 @@ begin
   FLastLoadedFilename := '';
   if fileName <> '' then
   begin
-    fs := TFileStream.Create(fileName, fmOpenRead + fmShareDenyWrite);
     try
+      fs := TFileStream.Create(fileName, fmOpenRead + fmShareDenyWrite);
       LoadFromStream(fileName, fs);
       FLastLoadedFilename := filename;
     finally
@@ -5996,8 +5996,8 @@ var
 begin
   if fileName <> '' then
   begin
-    fs := TFileStream.Create(fileName, fmCreate);
     try
+      fs := TFileStream.Create(fileName, fmCreate);
       SaveToStream(fileName, fs);
     finally
       fs.Free;
@@ -6916,9 +6916,8 @@ procedure TGLActorAnimations.LoadFromFile(const fileName: string);
 var
   fs: TStream;
 begin
-  fs := TFileStream.Create(fileName, fmOpenRead + fmShareDenyWrite);
   try
-    LoadFromStream(fs);
+    fs := TFileStream.Create(fileName, fmOpenRead + fmShareDenyWrite);
   finally
     fs.Free;
   end;
