@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLFileMDC;
+
+(*
   Code for loading animated MDC files into GLScene FreeForms
   and Actors.
   This file format uses in Return To Castle Wolfenstein instead
@@ -9,8 +12,7 @@
   plus very small data!
 
   Original code by Osman Turan (osmanturancom@yahoo.com)
-}
-unit GLFileMDC;
+*)
 
 interface
 

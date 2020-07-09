@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLSRedBlackTree;
+
+(*
   Black tree routines
   USAGE
   The TRedBlackTree generic class behaves somewhat like a TList:
@@ -28,10 +31,7 @@
   given a _Key_, NextKey replace it with the smallest key that
   is larger than _Key_, PrevKey returns the largest key that is
   smaller than _Key_. For Last and First key result not returned.
-
-}
-
-unit GLSRedBlackTree;
+*)
 
 interface
 

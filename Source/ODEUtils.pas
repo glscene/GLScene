@@ -1,17 +1,16 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  Open Dynamic Engine Utils for GLScene
-*)
-(*
-  Here is the collection of random functions and procedures that useful when
-  integrating ODE into GLScene. If you don't use GLScene, this unit won't be
-  very useful to you. The unit is not intended as a sorted toolbox, but more
-  as a place to put stuff until we figure out how to organize the integration.
-*)
 
 unit ODEUtils;
+
+(* Open Dynamic Engine Utils 
+
+   Here is the collection of random functions and procedures that useful when
+   integrating ODE into GLScene. If you don't use GLScene, this unit won't be
+   very useful to you. The unit is not intended as a sorted toolbox, but more
+   as a place to put stuff until we figure out how to organize the integration.
+*)
 
 interface
 

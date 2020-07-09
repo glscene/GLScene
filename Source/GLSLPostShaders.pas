@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-    Post shaders that simulate shader visions for a mask or the entire scene. 
-}
+
 unit GLSLPostShaders;
+
+(* Post shaders that simulate shader visions for a mask or the entire scene. *)
 
 interface
 

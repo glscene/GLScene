@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLSMOpenAL;
+
+(*
   OpenAL based sound-manager (http://www.openal.org).
   OpenAL drivers can be download from the OpenAL site or your soundcard
   manufacturer's website.
@@ -14,8 +17,7 @@
   CPUUsagePercent
   No system in place to limit number of sources playing simultaneously,
   can crash if too playing at once.
-}
-unit GLSMOpenAL;
+*)
 
 interface
 

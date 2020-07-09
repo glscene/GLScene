@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLOutlineShader;
+
+(*
    A simple shader that adds an outline to an object.  
    Limitations: 
        1. Object can be transparent (color alpha < 1) if it doesn't
@@ -9,9 +12,7 @@
        2. Doesn't work with objects (e.g. TGLFreeForm) having it's own
                    color array.
        3. Doesn't Works with visible backfaces. 
-
-}
-unit GLOutlineShader;
+*)
 
 interface
 

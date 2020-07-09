@@ -31,9 +31,10 @@ type
     RungeKutta2, ***RungeKutta4***, RungKutta4Adaptive
     State Variables:  Position,  Velocity
 
-    Verlet
+    Verlet 
     State Variables:  Position, Old Position
   *)
+
   // need to have state array(s) seperate from inertias to allow for implicit & explicit methods
   TDESolver = class(TObject)
   public

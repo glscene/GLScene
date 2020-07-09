@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   An ARBvp1.0 + ARBfp1.0 shader that implements phong shading. 
-}
+
 unit GLPhongShader;
+
+(*  An ARBvp1.0 + ARBfp1.0 shader that implements phong shading. *)
 
 interface
 
@@ -36,7 +36,6 @@ type
     procedure DoLightPass(lightID: Cardinal); virtual;
     procedure DoAmbientPass(var rci: TGLRenderContextInfo); virtual;
     procedure UnApplyLights(var rci: TGLRenderContextInfo); virtual;
-
     procedure DoApply(var rci: TGLRenderContextInfo; Sender: TObject); override;
     function DoUnApply(var rci: TGLRenderContextInfo): Boolean; override;
     procedure DoInitialize(var rci : TGLRenderContextInfo; Sender : TObject); override;

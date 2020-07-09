@@ -1,14 +1,16 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLShadowVolume;
+
+(*
    Implements basic shadow volumes support.
 
    Be aware that only objects that support silhouette determination have a chance
    to cast correct shadows. Transparent/blended/shader objects among the receivers
    or the casters will be rendered incorrectly.
-}
-unit GLShadowVolume;
+*)
 
 interface
 

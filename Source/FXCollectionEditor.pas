@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  Edits a TXCollection
-*)
+
 unit FXCollectionEditor;
+
+(* Edits a TXCollection *)
 
 interface
 

@@ -14,8 +14,8 @@ uses
   GLScene,
   GLVectorGeometry,
   GLBehaviours,
-  GLCoordinates
-  {, GLSceneRegister};
+  // GLSceneRegister,
+  GLCoordinates;
 
 type
   TGLForce = class;

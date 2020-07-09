@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Ellipsoid collision functions (mainly used by DCE).
-}
+
 unit GLEllipseCollision;
+
+(* Ellipsoid collision functions (mainly used by DCE). *)
 
 interface
 

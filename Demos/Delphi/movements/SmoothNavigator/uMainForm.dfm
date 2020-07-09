@@ -23,8 +23,9 @@ object Form1: TForm1
     Width = 642
     Height = 463
     Camera = GLCamera1
-    Buffer.BackgroundColor = clBackground
+    Buffer.BackgroundColor = clNavy
     FieldOfView = 155.624618530273400000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
@@ -141,9 +142,12 @@ object Form1: TForm1
         Radius = 10.000000000000000000
       end
       object GLArrowLine1: TGLArrowLine
+        Material.BackProperties.Specular.Color = {0000003F0000003F0000003F0000803F}
+        Material.MaterialOptions = [moNoLighting]
         Direction.Coordinates = {000000000000803F0000000000000000}
         Position.Coordinates = {0000000000004843000000000000803F}
         Scale.Coordinates = {0000C8420000C8420000C84200000000}
+        ShowAxes = True
         Up.Coordinates = {0000000000000000000080BF00000000}
         BottomRadius = 0.100000001490116100
         Height = 1.000000000000000000

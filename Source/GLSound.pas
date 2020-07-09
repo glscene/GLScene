@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   Base classes and interface for GLScene Sound System
-*)
+
 unit GLSound;
+
+(* Base classes and interface for Sound System *)
 
 interface
 

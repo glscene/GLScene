@@ -1,13 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLAtmosphere;
+
 (*
    This unit contains classes that imitate an atmosphere around a planet.
       1) Eats a lot of CPU (reduces FPS from 1240 to 520 on my PC with cSlices=100)
       2) Alpha in LowAtmColor, HighAtmColor is ignored.
 *)
-
-unit GLAtmosphere;
 
 interface
 

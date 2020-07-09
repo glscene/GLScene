@@ -1,12 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLSLErosionShader;
+
+(*
    Erosion shader Erode surface object and render with Anisotropic Specular Reflection 
    At this time one light source is supported
-
-}
-unit GLSLErosionShader;
+*)
 
 interface
 

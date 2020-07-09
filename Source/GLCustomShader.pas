@@ -1,15 +1,17 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLCustomShader;
+
+(*
     A collection of pure abstract classes - descendants of TGLShader, which are
     used for purpose of not having to write the same stuff all over and over
     again in your own shader classes.
     It also contains a procedures and function that can be used in all shaders.
     The whole history is logged in a former GLS version of the unit.
 
-}
-unit GLCustomShader;
+*)
 
 interface
 

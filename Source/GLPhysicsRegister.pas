@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  DesignTime registration code for the Physics Managers
-*)
 
 unit GLPhysicsRegister;
+
+(* DesignTime registration code for the Physics Managers *)
 
 interface
 

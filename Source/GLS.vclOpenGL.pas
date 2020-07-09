@@ -3,6 +3,7 @@
 //
 
 unit GLS.vclOpenGL;
+
 (*
   OpenGL for Vcl
   Adapted from https://github.com/LUXOPHIA

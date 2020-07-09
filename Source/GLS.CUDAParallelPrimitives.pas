@@ -2,6 +2,10 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
+unit GLS.CUDAParallelPrimitives;
+
+(* CUDA Parallel Primitives *)
+
 // -------------------------------------------------------------
 // cuDPP -- CUDA Data Parallel Primitives library
 // -------------------------------------------------------------
@@ -12,14 +16,7 @@
 // the root directory of this source distribution.
 // -------------------------------------------------------------
 
-unit GLS.CUDAParallelPrimitives;
-
-(* CUDA Parallel Primitives *)
-
 interface
-
-
-// uses OpenCL;
 
 const
   CUDPPDLL = 'cudpp32.dll';

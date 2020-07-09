@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Support for MP3 format. 
-}
+
 unit GLFileMP3;
+
+(* Support for MP3 format. *)
 
 interface
 
@@ -17,8 +17,8 @@ uses
 
 type
 
-   {Support for MP3 format. 
-      *Partial* support only, access to PCMData is NOT supported. }
+   (* Support for MP3 format. 
+      *Partial* support only, access to PCMData is NOT supported. *)
    TGLMP3File = class (TGLSoundFile)
       private
          data : array of Byte; // used to store MP3 bitstream

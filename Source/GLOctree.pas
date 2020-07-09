@@ -1,11 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLOctree;
+
 (*
   Octree management classes and structures.
   TODO: move the many public vars/fields to private/protected
 *)
-unit GLOctree;
+
 
 interface
 

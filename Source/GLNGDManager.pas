@@ -1,14 +1,15 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLNGDManager;
+
 (*
   A Newton Game Dynamics Manager.
    Newton Game Dynamics Engine               (http://newtondynamics.com)
   Notes:
   This code is still being developed so any part of it may change at anytime.
 *)
-
-unit GLNGDManager;
 
 interface
 

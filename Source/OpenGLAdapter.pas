@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  OpenGL adapter
-}
 
 unit OpenGLAdapter;
+
+(* OpenGL adapter *)
 
 interface
 

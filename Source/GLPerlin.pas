@@ -1,13 +1,16 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Classes for generating perlin noise. 
+
+unit GLPerlin;
+
+(*
+  Classes and functions for generating perlin noise.
 
   The components and classes in the unit are a base to generate textures and heightmaps from,
-  A Perlin Height Data Source have been included as an example. Use this combined with a terrain renderer for an infinite random landscape  
-}
-unit GLPerlin;
+  A Perlin Height Data Source have been included as an example.
+  Use this combined with a terrain renderer for an infinite random landscape
+*)
 
 interface
 
@@ -20,10 +23,13 @@ uses
   Vcl.Graphics,
 
   GLVectorGeometry,
-  GLPerlinBase,
   GLHeightData;
 
 type
+
+  T1DPerlinArray = array of Double;
+  T2DPerlinArray = array of T1DPerlinArray;
+
   TGLPerlinInterpolation = (pi_none, pi_simple, pi_linear, pi_Smoothed,
     pi_Cosine, pi_cubic);
 
@@ -40,7 +46,7 @@ type
     property Smoothing: TGLPerlinInterpolation read FSmoothing write FSmoothing;
     property Amplitude: Double read FAmplitude write FAmplitude;
     property Scale: Double read FScale write FScale;
-  End;
+  end;
 
   TGLPerlinOctav = class of TGLBasePerlinOctav;
 
@@ -69,12 +75,12 @@ type
     property Persistence: Double read FPersistence write SetPersistence;
     property Number_Of_Octaves: Integer read FNumber_Of_Octaves
       write Set_Number_Of_Octaves;
-  End;
+  end;
 
   TGL1DPerlin = class(TGLBasePerlin)
     Function GetPerlinValue_1D(x: Double): Double;
   published
-  End;
+  end;
 
   TGL2DPerlinOctav = class(TGLBasePerlinOctav)
   public
@@ -93,7 +99,7 @@ type
     Procedure Generate_CubicInterpolate;
     Procedure Generate_SmoothInterpolate;
     Procedure Generate_NonInterpolated;
-  End;
+  end;
 
   TGL2DPerlin = class(TGLBasePerlin)
   private
@@ -136,7 +142,7 @@ type
     property MaxPoolSize;
     property XStart: Integer read FXStart write FXStart;
     property YStart: Integer read FYStart write FYStart;
-  End;
+  end;
 
   TGLPerlinHDSThread = class(TGLHeightDataThread)
     Perlin: TGL2DPerlin;
@@ -145,12 +151,222 @@ type
     Procedure Execute; override;
   end;
 
+
+// Useless for final output! Usefull for after interpolation, as its FAST!
+function Linear_Interpolate(const a, b, x: Double): Double;
+// does a cubic interpolation
+function Cubic_Interpolate(v0, v1, v2, v3, x: Double): Double;
+// does a cosine interpolation
+function Cosine_Interpolate(const a, b, x: Double): Double;
+// just a random controlled by X
+function Perlin_Random1(x: Integer): Double;
+// just a random controlled by X,Y
+function Perlin_Random2(Const x, Y: Integer): Double;
+// generates a random strip
+procedure Perlin_Random1DStrip(x, Width, Step: Integer; Amp: Double; Res: T1DPerlinArray);
+// cubic interpolate 4 strips into one...
+procedure Cubic_Interpolate_Strip(B1, B2, B3, B4, Res: T1DPerlinArray; Width: Integer);
+// smooth interpolate 3 strips into one...
+procedure Smooth_Interpolate_Strip(B1, B2, B3, Res: T1DPerlinArray; Width: Integer);
+
+(* The function returning some integer based on the root^exponant concept,
+ result is crap and is only for "random" usage... eg perlin. *)
+function ExponateCrap(root, exponant: Integer): Integer;
+
 //----------------------------------------------------------------
 implementation
 //----------------------------------------------------------------
 
-function TGLBasePerlin.PerlinNoise_1D(x: Double): Double;
+function ExponateCrap(root, exponant: Integer): Integer;
+var
+  D: Extended;
+begin
+  if root <= 0 then
+    Result := 0
+  else
+  begin
+    D := exp(ln(root) * exponant);
+    If D >= 1E30 then // = Infinity then
+      D := root * exponant;
+    // if you got a better(faster) way of carving some integer value out of a double let me know!
+    if D > maxInt then
+      Result := maxInt
+    else
+      Result := Round(D);
+  end;
+end;
 
+function Perlin_Random1(x: Integer): Double;
+begin
+  x := ExponateCrap((x shl 13) + (x shr 9), x);
+  // mess up the number real good!
+
+  // X        X          X       those three number can be played with, primes are incouraged!
+  x := ((x * (x * x * 15731 + 789221) + 1376312589) And $7FFFFFFF);
+
+  Result := 1.0 - x / 1073741824.0 // make it a [-1;1] affair!
+end;
+
+function Perlin_Random2(const x, Y: Integer): Double;
+begin
+  // it works! I guess any prime will do!
+  Result := Perlin_Random1(x + Y * 57);
+end;
+
+procedure Perlin_Random1DStrip(x, Width, Step: Integer; Amp: Double;
+  Res: T1DPerlinArray);
+var
+  Posi: PDouble;
+  XC: Integer;
+begin
+  Posi := @Res[0];
+  For XC := 0 to Width - 1 do
+  begin
+    Posi^ := Perlin_Random1(x) * Amp;
+    inc(Posi);
+    inc(x, Step);
+  end;
+end;
+
+procedure Smooth_Interpolate_Strip(B1, B2, B3, Res: T1DPerlinArray;
+  Width: Integer);
+var
+  Posi: PDouble;
+  T1: PDouble;
+  T2: PDouble;
+  T3: PDouble;
+
+  C1: PDouble;
+  C2: PDouble;
+  C3: PDouble;
+
+  L1: PDouble;
+  L2: PDouble;
+  L3: PDouble;
+
+  XC: Integer;
+begin
+  Posi := @Res[0];
+  T1 := @B1[0];
+  C1 := @B2[0];
+  L1 := @B3[0];
+
+  T2 := Pointer(Cardinal(T1) + SizeOf(Double));
+  C2 := Pointer(Cardinal(C1) + SizeOf(Double));
+  L2 := Pointer(Cardinal(L1) + SizeOf(Double));
+
+  T3 := Pointer(Cardinal(T2) + SizeOf(Double));
+  C3 := Pointer(Cardinal(C2) + SizeOf(Double));
+  L3 := Pointer(Cardinal(L2) + SizeOf(Double));
+
+  for XC := 0 to Width - 1 do
+  begin
+    Posi^ := (T1^ + T3^ + L1^ + L3^) / 16 + (T2^ + C1^ + C3^ + L2^) / 8
+      + C2^ / 4;
+    inc(Posi);
+
+    T1 := T2;
+    C1 := C2;
+    L1 := L2;
+
+    T2 := T3;
+    C2 := C3;
+    L2 := L3;
+
+    inc(T3);
+    inc(C3);
+    inc(L3);
+  end;
+end;
+
+procedure Cubic_Interpolate_Strip(B1, B2, B3, B4, Res: T1DPerlinArray;
+  Width: Integer);
+var
+  Posi: PDouble;
+  v1: PDouble;
+  v2: PDouble;
+  v3: PDouble;
+  V4: PDouble;
+
+  H1: PDouble;
+  H2: PDouble;
+  H3: PDouble;
+  H4: PDouble;
+
+  XC: Integer;
+begin
+  Posi := @Res[0];
+  v1 := @B1[1];
+  v2 := @B2[1];
+  v3 := @B3[1];
+  V4 := @B4[1];
+
+  H1 := @B2[0];
+  H2 := @B2[1];
+  H3 := @B2[2];
+  H4 := @B2[3];
+
+  for XC := 0 to Width - 1 do
+  begin
+    Posi^ := Cubic_Interpolate(v1^, v2^, v3^, V4^, 0.5) / 2 +
+      Cubic_Interpolate(H1^, H2^, H3^, H4^, 0.5) / 2;
+    inc(Posi);
+
+    H1 := H2;
+    H2 := H3;
+    H3 := H4;
+    inc(H4);
+
+    inc(v1);
+    inc(v2);
+    inc(v3);
+    inc(V4);
+  end;
+end;
+
+function Linear_Interpolate(const a, b, x: Double): Double;
+begin
+  Result := a * (1 - x) + b * x
+end;
+
+function Cosine_Interpolate(const a, b, x: Double): Double;
+var
+  ft: Double;
+  f: Double;
+
+begin
+  ft := x * pi;
+  f := (1 - cos(ft)) * 0.5;
+
+  Result := a * (1 - f) + b * f;
+end;
+
+function Cubic_Interpolate(v0, v1, v2, v3, x: Double): Double;
+var
+  P, Q, R, S: Double;
+
+begin
+  (* Result := Cosine_Interpolate(v1,v2,x);
+    Exit;
+    v0 := -0.5;
+    v1 := 0;
+    v2 := 0;
+    v3 := -0.5; *)
+  P := (v3 - v2) - (v0 - v1);
+  Q := (v0 - v1) - P;
+  R := v2 - v0;
+  S := v1;
+
+  Result := (P * x * x * x + Q * x * x + R * x + S);
+  // If (Abs(Result) > 1) then
+  // Raise exception.create('Cubic_Interpolate result to high, '+FloatToStr(Result)+' values ['+FloatToStr(v0)+';'+FloatToStr(v1)+';'+FloatToStr(v2)+';'+FloatToStr(v3)+']');{}
+end;
+
+//-----------------------------------
+// TGLBasePerlin
+//-----------------------------------
+
+function TGLBasePerlin.PerlinNoise_1D(x: Double): Double;
 var
   int_x: Integer;
   frac_x: Double;
@@ -176,8 +392,8 @@ begin
   else
     raise exception.Create
       ('TGLBasePerlin.PerlinNoise_1D, Interpolation not implemented!');
-  End;
-End;
+  end;
+end;
 
 function TGLBasePerlin.PerlinNoise_2D(x, y: Double): Double;
 Var
@@ -185,7 +401,7 @@ Var
   // frac_y,
   frac_x: Double;
 
-Begin
+begin
   int_x := Round(Int(x));
   int_y := Round(Int(y));
   frac_x := x - int_x;
@@ -208,26 +424,25 @@ Begin
   else
     raise exception.Create
       ('TGLBasePerlin.PerlinNoise_1D, Interpolation not implemented!');
-  End;
-End;
+  end;
+end;
 
 function TGLBasePerlin.GetOctave(index: Integer): TGLBasePerlinOctav;
-Begin
+begin
   Result := TGLBasePerlinOctav(FOctaves[index]);
-End;
+end;
 
-Procedure TGLBasePerlin.Set_Number_Of_Octaves(val: Integer);
-
-Var
+procedure TGLBasePerlin.Set_Number_Of_Octaves(val: Integer);
+var
   XC: Integer;
   NewScale: Integer;
   Octav: TGLBasePerlinOctav;
-Begin
+begin
   If val <> FNumber_Of_Octaves then
-  Begin
+  begin
     FNumber_Of_Octaves := val;
     For XC := FOctaves.Count to FNumber_Of_Octaves - 1 do
-    Begin
+    begin
       Octav := FOctavClass.Create;
       If FPersistence = 0 then
         Octav.FAmplitude := 0
@@ -236,60 +451,60 @@ Begin
       Octav.FInterpolation := Interpolation;
       Octav.FSmoothing := Smoothing;
       FOctaves.Add(Octav);
-    End;
+    end;
     For XC := FOctaves.Count - 1 downto FNumber_Of_Octaves do
-    Begin
+    begin
       Octav := Octaves[XC];
       FOctaves.Delete(XC);
       Octav.Free;
-    End;
+    end;
 
     NewScale := 1;
     For XC := FOctaves.Count - 1 downto 0 do
-    Begin
+    begin
       Octaves[XC].Scale := NewScale;
       NewScale := NewScale shl 1;
-    End;
+    end;
 
-  End;
+  end;
 end;
 
-Procedure TGLBasePerlin.SetPersistence(val: Double);
+procedure TGLBasePerlin.SetPersistence(val: Double);
 
-Var
+var
   XC: Integer;
-Begin
+begin
   If FPersistence <> val then
-  Begin
+  begin
     FPersistence := val;
     For XC := FOctaves.Count to FNumber_Of_Octaves - 1 do
-    Begin
+    begin
       Octaves[XC].FAmplitude := exp(ln(FPersistence) * XC);
-    End;
-  End;
-End;
+    end;
+  end;
+end;
 
 Constructor TGLBasePerlin.Create(AOwner: TComponent);
 
-Begin
+begin
   inherited;
   FOctaves := TList.Create;
   FNumber_Of_Octaves := 0;
   FInterpolation := pi_Cosine;
   FSmoothing := pi_cubic;
-End;
+end;
 
-Function TGL1DPerlin.GetPerlinValue_1D(x: Double): Double;
-Var
+function TGL1DPerlin.GetPerlinValue_1D(x: Double): Double;
+var
   total, p, frequency, Amplitude: Double;
   n, i: Integer;
-Begin
+begin
   total := 0;
   p := Persistence;
   n := Number_Of_Octaves - 1;
 
   For i := 0 to n do
-  Begin
+  begin
 
     frequency := 2 * i;
     Amplitude := p * i;
@@ -299,63 +514,63 @@ Begin
   end;
 
   Result := total;
-End;
+end;
 
-Procedure TGL2DPerlinOctav.Generate;
+procedure TGL2DPerlinOctav.Generate;
 
-Var
+var
   YC: Integer;
 
-Begin
+begin
   SetLength(Data, Height + 3); // needed for smoothing
   For YC := 0 to Height + 2 do
     SetLength(Data[YC], Width + 3); // needed for smoothing
   case Smoothing of
     pi_cubic:
-      Begin
+      begin
         Generate_CubicInterpolate;
-      End;
+      end;
     pi_Smoothed:
-      Begin
+      begin
         Generate_SmoothInterpolate;
-      End;
+      end;
     pi_none:
       ;
     pi_simple:
-      Begin
+      begin
         Generate_NonInterpolated;
-      End;
-  End;
-End;
+      end;
+  end;
+end;
 
-Function TGL2DPerlinOctav.GetPerling(x, y: Double): Double;
+function TGL2DPerlinOctav.GetPerling(x, y: Double): Double;
 
-Begin
+begin
   Result := 0;
   case Interpolation of
     pi_cubic:
-      Begin
+      begin
         Result := GetCubic(x, y);
-      End;
+      end;
     pi_Smoothed:
-      Begin
-      End;
+      begin
+      end;
     pi_Cosine:
-      Begin
+      begin
         Result := GetCosine(x, y);
-      End;
-  End;
-End;
+      end;
+  end;
+end;
 
-Procedure TGL2DPerlinOctav.Generate_CubicInterpolate;
+procedure TGL2DPerlinOctav.Generate_CubicInterpolate;
 
-Var
+var
   B1, B2, B3, B4, T1: T1DPerlinArray;
   StripWidth: Integer;
   Offset: Integer;
   YC: Integer;
 
-Begin
+begin
   T1 := Nil;
   StripWidth := Width + 6;
   SetLength(B1, StripWidth);
@@ -370,7 +585,7 @@ Begin
   Perlin_Random1DStrip(Offset, StripWidth, XStep, FAmplitude, B3);
   inc(Offset, YRate * YStep);
   For YC := 0 to Height + 2 do
-  Begin
+  begin
     Perlin_Random1DStrip(Offset, StripWidth, XStep, FAmplitude, B4);
     inc(Offset, YRate * YStep);
     Cubic_Interpolate_Strip(B1, B2, B3, B4, Data[YC], Width + 3);
@@ -379,22 +594,22 @@ Begin
     B2 := B3;
     B3 := B4;
     B4 := T1;
-  End;
+  end;
   SetLength(B1, 0);
   SetLength(B2, 0);
   SetLength(B3, 0);
   SetLength(B4, 0);
-End;
+end;
 
-Procedure TGL2DPerlinOctav.Generate_SmoothInterpolate;
+procedure TGL2DPerlinOctav.Generate_SmoothInterpolate;
 
-Var
+var
   B1, B2, B3, T1: T1DPerlinArray;
   StripWidth: Integer;
   Offset: Integer;
   YC: Integer;
 
-Begin
+begin
   T1 := Nil;
   StripWidth := Width + 5;
   SetLength(B1, StripWidth);
@@ -406,7 +621,7 @@ Begin
   Perlin_Random1DStrip(Offset, StripWidth, XStep, FAmplitude, B2);
   inc(Offset, YRate * YStep);
   For YC := 0 to Height + 2 do
-  Begin
+  begin
     Perlin_Random1DStrip(Offset, StripWidth, XStep, FAmplitude, B3);
     inc(Offset, YRate * YStep);
     Smooth_Interpolate_Strip(B1, B2, B3, Data[YC], Width + 3);
@@ -414,41 +629,41 @@ Begin
     B1 := B2;
     B2 := B3;
     B3 := T1;
-  End;
+  end;
   SetLength(B1, 0);
   SetLength(B2, 0);
   SetLength(B3, 0);
-End;
+end;
 
-Procedure TGL2DPerlinOctav.Generate_NonInterpolated;
+procedure TGL2DPerlinOctav.Generate_NonInterpolated;
 
-Var
+var
   Offset: Integer;
   YC: Integer;
 
-Begin
+begin
   Offset := XStart + YStart * YStep * YRate;
   For YC := 0 to Height + 2 do
-  Begin
+  begin
     Perlin_Random1DStrip(Offset, Width + 3, XStep, FAmplitude, Data[YC]);
     inc(Offset, YRate * YStep);
 
-  End;
-End;
+  end;
+end;
 
-Function TGL2DPerlinOctav.GetDataSmoothed(x, y: Integer): Double;
+function TGL2DPerlinOctav.GetDataSmoothed(x, y: Integer): Double;
 
-Begin
+begin
   Result := (Data[y][x] + Data[y][x + 2] + Data[y + 2][x] + Data[y + 2][x + 2])
     / 16 + (Data[y + 1][x] + Data[y + 1][x + 2] + Data[y][x + 1] + Data[y + 2]
     [x + 1]) / 8 + Data[y + 1][x + 1] / 4; { }
-End;
+end;
 
 Function TGL2DPerlinOctav.GetData(x, y: Integer): Double;
 
-Begin
+begin
   Result := Data[y][x];
-End;
+end;
 
 Function TGL2DPerlinOctav.GetCubic(x, y: Double): Double;
 
@@ -457,7 +672,7 @@ Var
   Y_Int: Integer;
   X_Frac, Y_Frac: Double;
 
-Begin
+begin
   X_Int := Round(Int(x));
   Y_Int := Round(Int(y));
   X_Frac := x - X_Int;
@@ -468,16 +683,16 @@ Begin
     X_Frac) + Cubic_Interpolate(GetData(X_Int + 1, Y_Int), GetData(X_Int + 1,
     Y_Int + 1), GetData(X_Int + 1, Y_Int + 2), GetData(X_Int + 1, Y_Int + 3),
     Y_Frac)) / 2;
-End;
+end;
 
 function TGL2DPerlinOctav.GetCosine(x, y: Double): Double;
 
-Var
+var
   X_Int: Integer;
   Y_Int: Integer;
   X_Frac, Y_Frac: Double;
 
-Begin
+begin
   X_Int := Round(Int(x));
   Y_Int := Round(Int(y));
   X_Frac := x - X_Int;
@@ -487,11 +702,11 @@ Begin
     GetData(X_Int + 1, Y_Int), X_Frac),
     Cosine_Interpolate(GetData(X_Int, Y_Int + 1), GetData(X_Int + 1, Y_Int + 1),
     X_Frac), Y_Frac);
-End;
+end;
 
 Constructor TGL2DPerlin.Create(AOwner: TComponent);
 
-Begin
+begin
   inherited;
   Width := 256;
   Height := 256;
@@ -500,17 +715,17 @@ Begin
   XStep := 1;
   YStep := 1;
   FOctavClass := TGL2DPerlinOctav;
-End;
+end;
 
-Procedure TGL2DPerlin.Generate;
+procedure TGL2DPerlin.Generate;
 
-Var
+var
   i: Integer;
 
-Begin
+begin
   For i := 0 to Number_Of_Octaves - 1 do
     With TGL2DPerlinOctav(Octaves[i]) do
-    Begin
+    begin
       Width := Round(Ceil(self.Width / Scale));
       Height := Round(Ceil(self.Height / Scale));
       XStart := Round(self.XStart / Scale);
@@ -520,16 +735,16 @@ Begin
       YRate := 243 * 57 * 57;
       Generate;
     end;
-End;
+end;
 
 function TGL2DPerlin.GetPerlinValue_2D(x, y: Double): Double;
-Var
+var
   total, frequency, Amplitude: Double;
   i: Integer;
-Begin
+begin
   total := 0;
   For i := 0 to Number_Of_Octaves - 1 do
-  Begin
+  begin
 
     frequency := 2 * i;
     Amplitude := Persistence * i;
@@ -539,7 +754,7 @@ Begin
   end;
 
   Result := total;
-End;
+end;
 
 procedure TGL2DPerlin.MakeBitmap(Param: TBitmap);
 
@@ -551,7 +766,7 @@ Var
   Value: Double;
   S: String;
 
-Begin
+begin
 
   MaxValue := -1;
   MinValue := 100;
@@ -560,10 +775,10 @@ Begin
   Param.Height := Height;
 
   For YC := 0 to Height - 1 do
-  Begin
+  begin
     Posi := Param.ScanLine[YC];
     For XC := 0 to Width - 1 do
-    Begin
+    begin
       Value := 0;
       For Octaver := 0 to FNumber_Of_Octaves - 1 do
         With TGL2DPerlinOctav(Octaves[Octaver]) do
@@ -577,32 +792,32 @@ Begin
         MinValue := Value;
 
       If Value > 1.0 then
-      Begin
+      begin
         S := '';
         For Octaver := 0 to FNumber_Of_Octaves - 1 do
           With TGL2DPerlinOctav(Octaves[Octaver]) do
             S := S + FloatToStr(GetPerling(XC / Scale, YC / Scale)) + ' ,';
         Delete(S, Length(S) - 1, 2);
         // raise Exception.create('In Cubic_Interpolate_Strip a value greater than 1 occured! value = '+FloatToStr(Value)+' values=['+S+']');
-      End;
+      end;
 
       B := Round(Value * $FF) and $FF;
       Posi^ := B;
       inc(Posi);
-    End;
-  End;
-End;
+    end;
+  end;
+end;
 
 procedure TGL2DPerlin.SetHeightData(heightData: TGLHeightData);
 
-Var
+var
   XC, YC: Integer;
   Octaver: Integer;
   Posi: PSmallInt;
   Value: Double;
   S: String;
 
-Begin
+begin
 
   MaxValue := -1;
   MinValue := 100;
@@ -611,9 +826,9 @@ Begin
 
   Posi := @heightData.SmallIntData^[0];
   For YC := 0 to Height - 1 do
-  Begin
+  begin
     For XC := 0 to Width - 1 do
-    Begin
+    begin
       Value := 0;
       For Octaver := 0 to FNumber_Of_Octaves - 1 do
         With TGL2DPerlinOctav(Octaves[Octaver]) do
@@ -630,19 +845,19 @@ Begin
         MinValue := Value;
 
       If Value > 1.0 then
-      Begin
+      begin
         S := '';
         For Octaver := 0 to FNumber_Of_Octaves - 1 do
           With TGL2DPerlinOctav(Octaves[Octaver]) do
             S := S + FloatToStr(GetPerling(XC / Scale, YC / Scale)) + ' ,';
         Delete(S, Length(S) - 1, 2);
         // raise Exception.create('In Cubic_Interpolate_Strip a value greater than 1 occured! value = '+FloatToStr(Value)+' values=['+S+']');
-      End;
+      end;
 
       inc(Posi);
-    End;
-  End;
-End;
+    end;
+  end;
+end;
 
 constructor TGLPerlinHDS.Create(AOwner: TComponent);
 
@@ -656,11 +871,11 @@ begin
   MaxValue := -MaxInt;
   MinValue := MaxInt;
   MaxThreads := 1;
-End;
+end;
 
 procedure TGLPerlinHDS.StartPreparingData(heightData: TGLHeightData);
 
-Var
+var
   Perlin: TGL2DPerlin;
   Thread: TGLPerlinHDSThread;
 
@@ -681,7 +896,7 @@ begin
   Perlin.Number_Of_Octaves := Number_Of_Octaves;
 
   If MaxThreads > 1 then
-  Begin
+  begin
     Thread := TGLPerlinHDSThread.Create(True);
     Thread.FreeOnTerminate := True;
     heightData.Thread := Thread;
@@ -691,7 +906,7 @@ begin
     Thread.Start;
   End
   else
-  Begin
+  begin
     Perlin.Generate;
     Perlin.SetHeightData(heightData);
     heightData.DataState := hdsReady;
@@ -707,34 +922,34 @@ begin
   Lines.Add('Prepared Perlin (' + IntToStr(Perlin.XStart) + ',' +
     IntToStr(Perlin.YStart) + ') size ' + IntToStr(Perlin.Width));
   LinesChanged := True;
-End;
+end;
 
 procedure TGLPerlinHDS.WaitFor;
 
-Var
+var
   HDList: TList;
   HD: TGLHeightData;
   XC: Integer;
-Begin
-  Repeat
+begin
+  repeat
     HDList := Data.LockList;
     try
       HD := Nil;
       For XC := 0 to HDList.Count - 1 do
-      Begin
+      begin
         HD := TGLHeightData(HDList[XC]);
         If HD.DataState <> hdsReady then
           Break;
-      End;
+      end;
       If Assigned(HD) then
         If HD.DataState = hdsReady then
           Break;
     finally
       Data.UnlockList;
-    End;
+    end;
     Sleep(10);
-  Until False;
-End;
+  until False;
+end;
 
 procedure TGLPerlinHDSThread.Execute;
 

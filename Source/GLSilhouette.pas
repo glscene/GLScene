@@ -1,15 +1,15 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Enhanced silhouette classes.
 
+unit GLSilhouette;
+
+(*
+  Enhanced silhouette classes.
   Introduces more evolved/specific silhouette generation and management
   classes.
-
   CAUTION : both connectivity classes leak memory.
-}
-unit GLSilhouette;
+*)
 
 interface
 
@@ -26,20 +26,20 @@ uses
 type
   TGLSilhouetteStyle = (ssOmni, ssParallel);
 
-  { Silouhette generation parameters.
-    SeenFrom and LightDirection are expected in local coordinates. }
+  (* Silouhette generation parameters.
+    SeenFrom and LightDirection are expected in local coordinates. *)
   TGLSilhouetteParameters = packed record
     SeenFrom, LightDirection: TAffineVector;
     Style: TGLSilhouetteStyle;
     CappingRequired: Boolean;
   end;
 
-  { Base class storing a volume silhouette.
+  (* Base class storing a volume silhouette.
     Made of a set of indexed vertices defining an outline, and another set
     of indexed vertices defining a capping volume. Coordinates system
     is the object's unscaled local coordinates system.
     This is the base class, you can use the TGLSilhouette subclass if you
-    need some helper methods for generating the indexed sets. }
+    need some helper methods for generating the indexed sets. *)
   TGLSilhouette = class
   private
     FVertices: TVectorList;
@@ -60,17 +60,17 @@ type
     procedure Flush; virtual;
     procedure Clear; inline;
     procedure ExtrudeVerticesToInfinity(const origin: TAffineVector);
-    { Adds an edge (two vertices) to the silhouette.
+    (* Adds an edge (two vertices) to the silhouette.
       If TightButSlow is true, no vertices will be doubled in the
       silhouette list. This should only be used when creating re-usable
-      silhouettes, because it's much slower. }
+      silhouettes, because it's much slower. *)
     procedure AddEdgeToSilhouette(const v0, v1: TAffineVector; tightButSlow: Boolean); inline;
     procedure AddIndexedEdgeToSilhouette(const Vi0, Vi1: integer); inline;
 
-    { Adds a capping triangle to the silhouette.
+    (* Adds a capping triangle to the silhouette.
       If TightButSlow is true, no vertices will be doubled in the
       silhouette list. This should only be used when creating re-usable
-      silhouettes, because it's much slower. }
+      silhouettes, because it's much slower. *)
     procedure AddCapToSilhouette(const v0, v1, v2: TAffineVector; tightButSlow: Boolean); inline;
     procedure AddIndexedCapToSilhouette(const Vi0, Vi1, vi2: integer); inline;
   end;
@@ -91,10 +91,10 @@ type
 
   TConnectivity = class(TBaseConnectivity)
   protected
-    { All storage of faces and adges are cut up into tiny pieces for a reason,
+    (* All storage of faces and adges are cut up into tiny pieces for a reason,
       it'd be nicer with Structs or classes, but it's actually faster this way.
       The reason it's faster is because of less cache overwrites when we only
-      access a tiny bit of a triangle (for instance), not all data. }
+      access a tiny bit of a triangle (for instance), not all data. *)
     FEdgeVertices: TIntegerList;
     FEdgeFaces: TIntegerList;
     FFaceVisible: TByteList;
@@ -106,7 +106,7 @@ type
     function GetFaceCount: integer;
     function ReuseOrFindVertexID(const SeenFrom: TAffineVector; ASilhouette: TGLSilhouette; index: integer): integer;
   public
-    { Clears out all connectivity information. }
+    // Clears out all connectivity information. 
     procedure Clear; virtual;
     procedure CreateSilhouette(const silhouetteParameters: TGLSilhouetteParameters; var ASilhouette: TGLSilhouette;
       AddToSilhouette: Boolean);

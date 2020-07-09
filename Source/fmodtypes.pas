@@ -1,10 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{================================================================================================ }
-{ FMOD Types header file. Copyright (c), Firelight Technologies Pty, Ltd. 1999-2004.              }
-{ =============================================================================================== }
-{
+
+unit fmodtypes;
+
+(*=============================================================================================== 
+  FMOD Types header file. Copyright (c), Firelight Technologies Pty, Ltd. 1999-2004.              
+  =============================================================================================== 
+
   NOTE: For the demos to run you must have either fmod.dll (in Windows)
   or libfmod-3.75.so (in Linux) installed.
 
@@ -19,8 +22,8 @@
   a symbolic link between libfmod-3.75.so and libfmod.so. This is done with
   the following command (assuming you are in /usr/lib/)...
   ln -s libfmod-3.75.so libfmod.so.
-}
-unit fmodtypes;
+*)
+
 
 interface
 
@@ -29,21 +32,22 @@ uses
   Windows;
 {$ENDIF}
 
-{ =============================================================================================== }
-{ DEFINITIONS                                                                                     }
-{ =============================================================================================== }
+(*=============================================================================================== 
+  DEFINITIONS                                                                                     
+ ===============================================================================================*) 
 
-{
+(*
   Force four-byte enums
-}
+*)
+
 {$Z4}
 
 const
   FMOD_VERSION: Single = 3.75;
 
-{
+(*
   FMOD defined types
-}
+*)
 
 type
   PFSoundSample = Pointer;
@@ -59,9 +63,9 @@ type
     z: Single;
   end;
 
-  {
+ (*
     Callback types
-  }
+ *)
 
   TFSoundStreamCallback   = function (Stream: PFSoundStream; Buff: Pointer; Length, Param: Integer): ByteBool;  {$IFDEF UNIX} cdecl {$ELSE} stdcall {$ENDIF};
   TFSoundDSPCallback      = function (OriginalBuffer: Pointer; NewBuffer: Pointer; Length, Param: Integer): Pointer;  {$IFDEF UNIX} cdecl {$ELSE} stdcall {$ENDIF};
@@ -79,7 +83,7 @@ type
 
   TFMetaDataCallback      = function(Name: PChar; Value: PChar; userdata: Integer): ByteBool;  {$IFDEF UNIX} cdecl {$ELSE} stdcall {$ENDIF};
 
-{
+(*
 [ENUM]
 [
   [DESCRIPTION]
@@ -88,7 +92,7 @@ type
   [SEE_ALSO]
   FSOUND_GetError
 ]
-}
+*)
 
 type
   TFModErrors = (
@@ -114,7 +118,7 @@ type
     FMOD_ERR_CDDEVICE          // An error occured trying to open the specified CD device
   );
 
-{
+(*
 [ENUM]
 [
     [DESCRIPTION]
@@ -129,7 +133,7 @@ type
     FSOUND_SetOutput
     FSOUND_GetOutput
 ]
-}
+*)
 
 type
   TFSoundOutputTypes = (
@@ -153,7 +157,7 @@ type
   );
 
 
-{
+(*
 [ENUM]
 [
   [DESCRIPTION]
@@ -165,7 +169,8 @@ type
   FSOUND_SetMixer
   FSOUND_GetMixer
 ]
-}
+*)
+
 type
   TFSoundMixerTypes = (
     FSOUND_MIXER_AUTODETECT,        // CE/PS2/GC Only - Non interpolating/low quality mixer.
@@ -185,7 +190,7 @@ type
   );
 
 
-{
+(*
 [ENUM]
 [
   [DESCRIPTION]
@@ -194,7 +199,8 @@ type
   [SEE_ALSO]
   FMUSIC_GetType
 ]
-}
+*)
+
 type
   TFMusicTypes = (
     FMUSIC_TYPE_NONE,
@@ -207,7 +213,7 @@ type
   );
 
 
-{
+(*
 [DEFINE_START]
 [
   [NAME]
@@ -224,7 +230,8 @@ type
   FSOUND_DSP_SetPriority
   FSOUND_DSP_GetSpectrum
 ]
-}
+*)
+
 const
   FSOUND_DSP_DEFAULTPRIORITY_CLEARUNIT        = 0;    // DSP CLEAR unit - done first
   FSOUND_DSP_DEFAULTPRIORITY_SFXUNIT          = 100;  // DSP SFX unit - done second
@@ -235,7 +242,7 @@ const
 // [DEFINE_END]
 
 
-{
+(*
 [DEFINE_START]
 [
   [NAME]
@@ -250,7 +257,8 @@ const
   FSOUND_GetDriverCaps
   FSOUND_OUTPUTTYPES
 ]
-}
+*)
+
 const
   FSOUND_CAPS_HARDWARE              = $1;  // This driver supports hardware accelerated 3d sound.
   FSOUND_CAPS_EAX2                  = $2;  // This driver supports EAX 2 reverb
@@ -258,7 +266,7 @@ const
 // [DEFINE_END]
 
 
-{
+(*
 [DEFINE_START]
 [
     [NAME]
@@ -280,7 +288,8 @@ const
 
     See flag descriptions for what these do.
 ]
-}
+*)
+
 const
   FSOUND_LOOP_OFF      = $00000001;  // For non looping samples.
   FSOUND_LOOP_NORMAL   = $00000002;  // For forward looping samples.
@@ -318,7 +327,7 @@ const
 // [DEFINE_END]
 
 
-{
+(*
 [DEFINE_START]
 [
     [NAME]
@@ -331,7 +340,8 @@ const
     FSOUND_CD_SetPlayMode  
     FSOUND_CD_Play
 ]
-}
+*)
+
 const
   FSOUND_CD_PLAYCONTINUOUS = 0;   // Starts from the current track and plays to end of CD.
   FSOUND_CD_PLAYONCE = 1;         // Plays the specified track then stops.
@@ -340,7 +350,7 @@ const
 // [DEFINE_END]
 
 
-{
+(*
 [DEFINE_START]
 [
   [NAME]
@@ -356,7 +366,8 @@ const
   FSOUND_Sample_Load
   FSOUND_SetPan
 ]
-}
+*)
+
 const
   FSOUND_FREE           = -1;     // value to play on any free channel, or to allocate a sample in a free sample slot.
   FSOUND_UNMANAGED      = -2;     // value to allocate a sample that is NOT managed by FSOUND or placed in a sample slot.
@@ -367,7 +378,7 @@ const
 // [DEFINE_END]
 
 
-{
+(*
 [STRUCT_START]
 [
     [NAME]
@@ -398,7 +409,8 @@ const
     FSOUND_REVERB_PRESETS
     FSOUND_REVERB_FLAGS
 ]
-}
+*)
+
 type
   TFSoundReverbProperties = record          // MIN     MAX    DEFAULT DESCRIPTION
     Environment: Cardinal;                  // 0       25     0       sets all listener properties (win32 only)
@@ -431,7 +443,7 @@ type
 // [STRUCT_END]
 
 
-{
+(*
 [DEFINE_START]
 [
     [NAME]
@@ -443,7 +455,8 @@ type
     [SEE_ALSO]
     FSOUND_REVERB_PROPERTIES
 ]
-}
+*)
+
 const
   FSOUND_REVERBFLAGS_DECAYTIMESCALE         = $00000001;  // EnvironmentSize affects reverberation decay time
   FSOUND_REVERBFLAGS_REFLECTIONSSCALE       = $00000002;  // EnvironmentSize affects reflection level
@@ -462,7 +475,7 @@ const
 // [DEFINE_END]
 
 
-{
+(*
 [DEFINE_START]
 [
     [NAME]
@@ -477,8 +490,8 @@ const
     [SEE_ALSO]
     FSOUND_Reverb_SetProperties
 ]
-}
-{
+*)
+(*
 const
 //                                 Env  Size    Diffus  Room   RoomHF  RmLF DecTm   DecHF  DecLF   Refl  RefDel  RefPan           Revb  RevDel  ReverbPan       EchoTm  EchDp  ModTm  ModDp  AirAbs  HFRef    LFRef  RRlOff Diffus  Densty  FLAGS 
   FSOUND_PRESET_OFF              = 0,	7.5f,	1.00f, -10000, -10000, 0,   1.00f,  1.00f, 1.0f,  -2602, 0.007f, 0.0f,0.0f,0.0f,   200, 0.011f, 0.0f,0.0f,0.0f, 0.250f, 0.00f, 0.25f, 0.000f, -5.0f, 5000.0f, 250.0f, 0.0f,   0.0f,   0.0f, 0x3f ;
@@ -511,11 +524,11 @@ const
   FSOUND_PRESET_DRUGGED          = 23,	1.9f,	0.50f, -1000,  0,      0,   8.39f,  1.39f, 1.0f,  -115,  0.002f, 0.0f,0.0f,0.0f,   985, 0.030f, 0.0f,0.0f,0.0f, 0.250f, 0.00f, 0.25f, 1.000f, -5.0f, 5000.0f, 250.0f, 0.0f, 100.0f, 100.0f, 0x1f ;
   FSOUND_PRESET_DIZZY            = 24,	1.8f,	0.60f, -1000,  -400,   0,   17.23f, 0.56f, 1.0f,  -1713, 0.020f, 0.0f,0.0f,0.0f,  -613, 0.030f, 0.0f,0.0f,0.0f, 0.250f, 1.00f, 0.81f, 0.310f, -5.0f, 5000.0f, 250.0f, 0.0f, 100.0f, 100.0f, 0x1f ;
   FSOUND_PRESET_PSYCHOTIC        = 25,	1.0f,	0.50f, -1000,  -151,   0,   7.56f,  0.91f, 1.0f,  -626,  0.020f, 0.0f,0.0f,0.0f,   774, 0.030f, 0.0f,0.0f,0.0f, 0.250f, 0.00f, 4.00f, 1.000f, -5.0f, 5000.0f, 250.0f, 0.0f, 100.0f, 100.0f, 0x1f ;
-}
+*)
 // [DEFINE_END]
 
 
-{
+(*
 [STRUCTURE] 
 [
     [DESCRIPTION]
@@ -541,7 +554,7 @@ const
     FSOUND_Reverb_GetChannelProperties
     FSOUND_REVERB_CHANNELFLAGS
 ]
-}
+*)
 type
   TFSoundReverbChannelProperties = record   // MIN     MAX    DEFAULT
     Direct: Integer;                        // -10000  1000   0       direct path level (at low and mid frequencies) (win32/xbox)
@@ -565,7 +578,7 @@ type
   end;
 // [STRUCT_END]
 
-{
+(*
 [DEFINE_START] 
 [
     [NAME] 
@@ -577,7 +590,7 @@ type
     [SEE_ALSO]
     FSOUND_REVERB_CHANNELPROPERTIES
 ]
-}
+*)
 const
   FSOUND_REVERB_CHANNELFLAGS_DIRECTHFAUTO  = $01;  // Automatic setting of 'Direct'  due to distance from listener
   FSOUND_REVERB_CHANNELFLAGS_ROOMAUTO      = $02;  // Automatic setting of 'Room'  due to distance from listener
@@ -588,7 +601,7 @@ const
 // [DEFINE_END]
 
 
-{
+(*
 [ENUM] 
 [
 	[DESCRIPTION]
@@ -607,7 +620,7 @@ const
     FSOUND_FX_SetParamEQ
     FSOUND_FX_SetWavesReverb
 ]
-}
+*)
 
 type
   TFSoundFXModes = (
@@ -625,7 +638,7 @@ type
 // [DEFINE_END]
 
 
-{
+(*
 [ENUM]
 [
 	[DESCRIPTION]
@@ -642,7 +655,7 @@ type
 
     Using either DolbyDigital or DTS will use whatever 5.1 digital mode is available if destination hardware is unsure.
 ]
-}
+*)
 type
   TFSoundSpeakerModes =
   (
@@ -657,7 +670,7 @@ type
   FSOUND_SPEAKERMODES = TFSoundSpeakerModes;
 
 
-{
+(*
 [DEFINE_START]
 [
     [NAME] 
@@ -674,7 +687,7 @@ type
     [SEE_ALSO]
     FSOUND_Init
 ]
-}
+*)
 const
   FSOUND_INIT_USEDEFAULTMIDISYNTH     = $01;  // Causes MIDI playback to force software decoding.
   FSOUND_INIT_GLOBALFOCUS             = $02;  // For DirectSound output - sound is not muted when window is out of focus.
@@ -761,7 +774,7 @@ const
   FSOUND_FORMAT_OGGVORBIS   = $00020000;
 (* [DEFINE_END] *)
 
-{
+(*
 [STRUCTURE] 
 [
     [DESCRIPTION]
@@ -773,7 +786,7 @@ const
     FSOUND_Stream_Open
     FSOUND_Stream_FindTagField
 ]
-}
+*)
 type
   TFSoundTOCTag = record
     Name: array [0..3] of AnsiChar;             // The string "TOC" (4th character is 0), just in case this structure is accidentally treated as a string.
@@ -784,6 +797,8 @@ type
   end;
 // [STRUCT_END]
 
+//----------------------------------------------
 implementation
+//----------------------------------------------
 
 end.

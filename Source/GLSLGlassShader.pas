@@ -1,12 +1,14 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+ 
+unit GLSLGlassShader;
+
+(*
    Glass shader : Environment mapping with an
    equirectangular 2D texture and refraction mapping
    with a background texture blended together using the Fresnel terms 
+*)
 
-}
-unit GLSLGlassShader;
 interface
 
 {$I GLScene.inc}
@@ -31,8 +33,8 @@ uses
   GLSLShader,
   GLCustomShader;
 
-{Custom class for GLSLGlassShader.
-  Glass shader : Environment mapping and refraction mapping using the fresnel terms }
+(* Custom class for GLSLGlassShader.
+  Glass shader : Environment mapping and refraction mapping using the fresnel terms *)
 Type
   TGLCustomGLSLGlassShader = class(TGLCustomGLSLShader)
   private

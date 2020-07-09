@@ -1,10 +1,11 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Parametric surface implementation (like Bezier and BSpline surfaces)
-   for GLScene. 
 
+unit GLParametricSurfaces;
+
+(*
+   Parametric surface implementation (like Bezier and BSpline surfaces)
    Notes:
    The MOParametricSurface is a TMeshObject descendant that can be used
    to render parametric surfaces. The Renderer property defines if the
@@ -23,8 +24,7 @@
    The MinU, MaxU, MinV and MaxV properties allow for drawing specific
    parts of the bezier surface, which can be used to blend a patch with
    other patches. 
-}
-unit GLParametricSurfaces;
+*)
 
 interface
 

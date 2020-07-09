@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLTextureSharingShader;
+
+(*
     This shader allows to apply multiple textures, gathering them from existing materials.
     This allows saving resources, since you can reference the textures of any material in
     any materialLibrary.
@@ -9,9 +12,7 @@
     it uses that material's texture. The referenced material settings will be ignored,
     but the texture's settings (like TextureMode, ImageGamma, ImageBrightness) will be used.
     Instead the local material settings (listed in the collection) will be used.
-}
-
-unit GLTextureSharingShader;
+*)
 
 interface
 

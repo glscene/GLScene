@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Doom3 MD5 mesh and animation vector file format implementation. 
-}
+
 unit GLFileMD5;
+
+(* Doom3 MD5 mesh and animation vector file format implementation. *)
 
 interface
 

@@ -2,6 +2,8 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
+unit ODEImport;
+
 (*************************************************************************
  *                                                                       *
  * Open Dynamics Engine, Copyright (C) 2001,2020 Russell L. Smith.       *
@@ -24,7 +26,6 @@
  *                                                                       *
  *************************************************************************)
 
-unit ODEImport;
 
  (*************************************************************************
   Some notes;

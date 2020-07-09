@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Basic sound manager based on WinMM
-}
+
 unit GLSMWaveOut;
+
+(* Basic sound manager based on WinMM *)
 
 interface
 
@@ -20,13 +20,13 @@ uses
 
 type
 
-  { Basic sound manager based on WinMM <i>waveOut</i> function.
+  (* Basic sound manager based on WinMM waveOut function.
     This manager has NO 3D miximing capacity, this is merely a default manager
     that should work on any windows based system, and help showcasing/testing
     basic GLSS core functionality.
     Apart from 3D, mute, pause, priority and volume are ignored too, and only
     sampling conversions supported by the windows ACM driver are supported
-    (ie. no 4bits samples playback etc.). }
+    (ie. no 4bits samples playback etc.). *)
   TGLSMWaveOut = class(TGLSoundManager)
   protected
     function DoActivate: Boolean; override;

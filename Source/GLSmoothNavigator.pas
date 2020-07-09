@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLSmoothNavigator;
+
+(*
    An extention of TGLNavigator, which allows to move objects with inertia
    Note: it is not completely FPS-independant. Only Moving code is, but
    MoveAroundTarget, Turn[Vertical/Horizontal] and AdjustDistanceTo[..] is not.
@@ -15,9 +18,7 @@
       1) Scale "Old values" too, when callin the Scale parameter procedure to
          avoid the temporary "freeze" of controls.
       2) AddImpulse procedures.
-}
-
-unit GLSmoothNavigator;
+*)
 
 interface
 

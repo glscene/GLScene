@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  A collection of components that generate post effects.
-}
+
 unit GLPostEffects;
+
+(* A collection of components that generate post effects *)
 
 interface
 
@@ -58,9 +58,9 @@ type
     property Items[const Index: Integer]: TGLPostShaderCollectionItem read GetItems write SetItems; default;
   end;
 
-  {A class that allows several post-shaders to be applied to the scene,
+  (* A class that allows several post-shaders to be applied to the scene,
     one after another. It does not provide any optimizations related to
-    multi-shader rendering, just a convenient interface. }
+    multi-shader rendering, just a convenient interface. *)
   TGLPostShaderHolder = class(TGLBaseSCeneObject)
   private
     FShaders: TGLPostShaderCollection;
@@ -93,7 +93,7 @@ type
 
   TGLOnCustomPostEffectEvent = procedure(Sender: TObject; var rci : TGLRenderContextInfo; var Buffer: TGLPostEffectBuffer) of object;
 
-  {Some presets for TGLPostEffect:
+  (* Some presets for TGLPostEffect:
        pepNone - does nothing.
        pepGray - makes picture gray.
        pepNegative - inverts all colors.
@@ -101,13 +101,12 @@ type
        pepNoise - just adds random niose.
        pepNightVision - simulates nightvision goggles.
        pepBlur - blurs the scene.
-       pepCustom - calls the OnCustomEffect event.
-  }
+       pepCustom - calls the OnCustomEffect event. *)
   TGLPostEffectPreset = (pepNone, pepGray, pepNegative, pepDistort, pepNoise,
                          pepNightVision, pepBlur, pepCustom);
 
-  {Provides a simple way to producing post-effects without shaders. 
-     It is slow as hell, but it's worth it in some cases.}
+  (* Provides a simple way to producing post-effects without shaders. 
+     It is slow as hell, but it's worth it in some cases.*)
   TGLPostEffect = class(TGLBaseSCeneObject)
   private
     FOnCustomEffect: TGLOnCustomPostEffectEvent;

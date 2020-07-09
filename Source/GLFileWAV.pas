@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Support for Windows WAV format. 
-}
+
 unit GLFileWAV;
+
+(* Support for Windows WAV format. *)
 
 interface
 
@@ -18,7 +18,7 @@ uses
 
 type
 
-   {Support for Windows WAV format. }
+   // Support for Windows WAV format. 
    TGLWAVFile = class (TGLSoundFile)
       private
          {$IFDEF MSWINDOWS}

@@ -1,6 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit FileDDSImage;
+
 (*
     Alternative for DDS unit with more supported formats of flat image:
     Alpha8, Luminance8, R3G3B2, RGB5A1, RGBA4, Alpha8Luminance8, Luminance16, R5G6B5,
@@ -11,8 +14,6 @@
     Good for preview picture in OpenDialog,
     so you may include both DDSImage (preview) and GLFileDDS (loading)
 *)
-
-unit FileDDSImage;
 
 interface
 

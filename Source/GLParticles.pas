@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  Particle systems for GLScene, based on replication of full-featured scene objects.
-*)
+
 unit GLParticles;
+
+(* Particle systems, based on replication of full-featured scene objects. *)
 
 interface
 

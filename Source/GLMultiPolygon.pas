@@ -1,20 +1,19 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Object with support for complex polygons.
-}
-(*
-  When the tesselator finds an intersection of edges it wants us to give him some storage
-  for this new vertex, and he wants a pointer (see tessCombine). The pointers taken from
-  TAffineVectorList become invalid after enlarging the capacity (makes a ReAllocMem), which
-  can happen implicitly while adding. The TGLVectorPool keeps all pointers valid until the
-  destruction itself.
-  Reactivated the TGLVectorPool object. The GLVectorLists are not suitable for this job.
-  If anyone feels responsible: it would be fine to have a method ImportFromFile (dxf?) in
-  the TGLContour and TGLMultiPolygonBase objects...
-*)
+
 unit GLMultiPolygon;
+
+(* Object with support for complex polygons. 
+   When the tesselator finds an intersection of edges it wants us to give him some storage
+   for this new vertex, and he wants a pointer (see tessCombine). The pointers taken from
+   TAffineVectorList become invalid after enlarging the capacity (makes a ReAllocMem), which
+   can happen implicitly while adding. The TGLVectorPool keeps all pointers valid until the
+   destruction itself.
+   Reactivated the TGLVectorPool object. The GLVectorLists are not suitable for this job.
+   If anyone feels responsible: it would be fine to have a method ImportFromFile (dxf?) in
+   the TGLContour and TGLMultiPolygonBase objects...
+*)
 
 interface
 

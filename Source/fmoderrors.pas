@@ -1,10 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{ =============================================================================================== }
-{ FMOD Main header file. Copyright (c), Firelight Technologies Pty, Ltd. 1999-2004.               }
-{ =============================================================================================== }
-{
+
+unit fmoderrors;
+
+(* =============================================================================================== 
+  FMOD Main header file. Copyright (c), Firelight Technologies Pty, Ltd. 1999-2004.               
+  =============================================================================================== 
+
   NOTE: For the demos to run you must have either fmod.dll (in Windows)
   or libfmod-3.75.so (in Linux) installed.
 
@@ -19,24 +22,26 @@
   a symbolic link between libfmod-3.75.so and libfmod.so. This is done with
   the following command (assuming you are in /usr/lib/)...
   ln -s libfmod-3.75.so libfmod.so.
-}
-unit fmoderrors;
+*)
 
 interface
 
 uses
   fmodtypes;
 
-{
+(*
   Disable warning for unsafe types in Delphi 7
-}
+*)
+
 {$IFDEF VER150}
 {$WARN UNSAFE_TYPE OFF}
 {$ENDIF}
 
 function FMOD_ErrorString(ErrorCode: TFModErrors): PChar;
 
+//---------------------------------------
 implementation
+//---------------------------------------
 
 function FMOD_ErrorString(ErrorCode: TFModErrors): PChar;
 begin

@@ -1,11 +1,11 @@
-{
+(*
   ================================================================================
   ==                                                                            ==
   ==  ATTENTION: DO NOT LOAD ALL GRAPHICS ON CREATE OR ON SHOW BECAUSE THE      ==
   ==  COMPONENT SDL2FRAME IS NOT YET COMPLETED                                  ==
   ==                                                                            ==
   ================================================================================
-}
+*)
 unit SDL2_Frame;
 
 interface
@@ -37,7 +37,9 @@ type
 
 procedure Register;
 
+//------------------------------------
 implementation
+//------------------------------------
 
 uses
   forms;

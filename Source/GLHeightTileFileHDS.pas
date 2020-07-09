@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   HeightDataSource for the HTF (HeightTileFile) format. 
-}
+
 unit GLHeightTileFileHDS;
+
+(* HeightDataSource for the HTF (HeightTileFile) format *)
 
 interface
 
@@ -19,7 +19,7 @@ uses
 
 type
 
-   {An Height Data Source for the HTF format.  }
+   // An Height Data Source for the HTF format.  
 	TGLHeightTileFileHDS = class (TGLHeightDataSource)
 	   private
          FInfiniteWrap : Boolean;

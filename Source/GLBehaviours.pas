@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   Standard TGLBehaviour subclasses
-*)
+
 unit GLBehaviours;
+
+(* Standard TGLBehaviour subclasses *)
 
 interface
 
@@ -22,13 +22,13 @@ uses
   GLCoordinates;
 
 type
-  (*Holds parameters for TGLScene basic damping model.
-    Damping is modelled by calculating a force from the speed, this force
-    can then be transformed to an acceleration is you know the object's mass.
-    Formulas:
+  (* Holds parameters for TGLScene basic damping model.
+     Damping is modelled by calculating a force from the speed, this force
+     can then be transformed to an acceleration is you know the object's mass.
+     Formulas:
      damping = constant + linear * Speed + quadratic * Speed^2
      accel = damping / Mass
-    That's just basic physics. A note on the components:
+     That's just basic physics. A note on the components:
      constant: use it for solid friction (will stop abruptly an object after decreasing its speed.
      linear: linear friction damping.
      quadratic: expresses viscosity *)
@@ -152,8 +152,7 @@ function GetOrCreateInertia(obj: TGLBaseSceneObject): TGLBInertia; overload;
 
 (* Returns or creates the TGLBAcceleration within the given behaviours. 
    This helper function is convenient way to access a TGLBAcceleration. *)
-function GetOrCreateAcceleration(behaviours: TGLBehaviours): TGLBAcceleration;
-  overload;
+function GetOrCreateAcceleration(behaviours: TGLBehaviours): TGLBAcceleration; overload;
 function GetOrCreateAcceleration(obj: TGLBaseSceneObject): TGLBAcceleration; overload;
 
 // ------------------------------------------------------------------

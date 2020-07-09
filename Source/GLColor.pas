@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  All color types, constants and utilities should go here
-}
+
 unit GLColor;
+
+(* All color types, constants and utilities should go here *)
 
 interface
 
@@ -30,7 +30,7 @@ type
   PRGBColor = ^TRGBColor;
   TRGBColor = TVector3b;
 
-  { Wraps an OpenGL color. }
+  // Wraps an OpenGL color. 
   TGLColor = class(TGLUpdateAbleObject)
   private
     FColor: TColorVector;
@@ -95,7 +95,7 @@ type
     procedure RemoveColor(const aName: String);
   end;
 
-{Builds a TColor from Red Green Blue components. }
+// Builds a TColor from Red Green Blue components. 
 function RGB2Color(const r, g, b: Byte): TColor; inline;
 function ColorManager: TGLColorManager;
 procedure RegisterColor(const aName: String; const aColor: TColorVector);
@@ -104,12 +104,12 @@ function GetRValue(rgb: DWORD): Byte; {$NODEFINE GetRValue}
 function GetGValue(rgb: DWORD): Byte; {$NODEFINE GetGValue}
 function GetBValue(rgb: DWORD): Byte; {$NODEFINE GetBValue}
 procedure InitGLSceneColors;
-{ Converts a delphi color into its RGB fragments and correct range. }
+// Converts a delphi color into its RGB fragments and correct range. 
 function ConvertWinColor(aColor: TColor; Alpha: Single = 1): TColorVector;
 // Converts a color vector (containing float values)
 function ConvertColorVector(const aColor: TColorVector): TColor; overload;
-{ Converts a color vector (containing float values) and alter intensity.
-  intensity is in [0..1] }
+(* Converts a color vector (containing float values) and alter intensity.
+  intensity is in [0..1] *)
 function ConvertColorVector(const aColor: TColorVector; intensity: Single): TColor; overload;
 // Converts RGB components into a color vector with correct range
 function ConvertRGBColor(const aColor: array of Byte): TColorVector;
@@ -132,12 +132,12 @@ const
   clHighlight = TColor(-13);
   clHighlightedText = TColor(-14);
 
-  { Mapped role offsets }
+  // Mapped role offsets 
   cloNormal = 32;
   cloDisabled = 64;
   cloActive = 96;
 
-  { Normal, mapped, pseudo, rgb values }
+  // Normal, mapped, pseudo, rgb values 
   clNormalForeground = TColor(clForeground - cloNormal);
   clNormalButton = TColor(clButton - cloNormal);
   clNormalLight = TColor(clLight - cloNormal);
@@ -153,7 +153,7 @@ const
   clNormalHighlight = TColor(clHighlight - cloNormal);
   clNormalHighlightedText = TColor(clHighlightedText - cloNormal);
 
-  { Disabled, mapped, pseudo, rgb values }
+  // Disabled, mapped, pseudo, rgb values 
   clDisabledForeground = TColor(clForeground - cloDisabled);
   clDisabledButton = TColor(clButton - cloDisabled);
   clDisabledLight = TColor(clLight - cloDisabled);
@@ -169,7 +169,7 @@ const
   clDisabledHighlight = TColor(clHighlight - cloDisabled);
   clDisabledHighlightedText = TColor(clHighlightedText - cloDisabled);
 
-  { Active, mapped, pseudo, rgb values }
+  // Active, mapped, pseudo, rgb values 
   clActiveForeground = TColor(clForeground - cloActive);
   clActiveButton = TColor(clButton - cloActive);
   clActiveLight = TColor(clLight - cloActive);

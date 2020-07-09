@@ -88,6 +88,7 @@ var
 {$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
   cutFree: procedure(ptr: Pointer);
 {$IFDEF MSWINDOWS}stdcall; {$ELSE}cdecl; {$ENDIF}
+
 function InitCUTIL: Boolean;
 procedure CloseCUTIL;
 function InitCUTILFromLibrary(const LibName: WideString): Boolean;

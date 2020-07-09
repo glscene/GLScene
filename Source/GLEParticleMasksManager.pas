@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLEParticleMasksManager;
+
+(*
    A pretty particle mask effect manager.
    This unit is part of GLE - GLScene Game Utilities Engine set by Kenneth Poulter difacane@telkomsa.net
    Module Number: 37
@@ -18,9 +21,7 @@
 
    Licenses: Removed. Donated to GLScene's Code Base as long as the author (Kenneth Poulter) is not altered in this file.
              Theft of code also is not allowed, although alterations are allowed.
-}
-
-unit GLEParticleMasksManager;
+*)
 
 interface
 

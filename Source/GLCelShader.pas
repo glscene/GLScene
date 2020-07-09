@@ -1,11 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLCelShader;
+
+(*
    A shader that applies cel shading through a vertex program
    and shade definition texture. 
-}
-unit GLCelShader;
+*)
 
 interface
 

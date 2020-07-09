@@ -1,6 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLVerletTypes;
+
 (*
   Base Verlet modelling/simulation classes.
   This unit is generic, GLScene-specific sub-classes are in GLVerletClasses.
@@ -9,7 +12,6 @@
   the edge uniformly - it should push the closer node more for correct physics.
   It's a matter of leverage.
 *)
-unit GLVerletTypes;
 
 interface
 

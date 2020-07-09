@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  An ODE Manager for GLScene.
-*)
 
 unit GLODEManager;
+
+(*  An ODE Manager *)
 
 interface
 

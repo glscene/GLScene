@@ -1,15 +1,17 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit XOpenGL;
+
+(*
    "Alternate" OpenGL functions to handle multi-texturing.
 
    Using this functions allows specifying none/one/multiple ARB multi-texture
    coordinates with standard texture specification call.
    Before using any of the xglTexCoordXxxx fonctions, call one of the
    xglMapTexCoordToXxxx functions to establish the redirectors.
-}
-unit XOpenGL;
+*)
 
 interface
 

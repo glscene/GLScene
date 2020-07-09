@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   Classes and methods for triangulation of scatter points.
-*)
 
 unit GLTriangulation;
+
+(* Classes and methods for triangulation of scatter points. *)
 
 interface
 

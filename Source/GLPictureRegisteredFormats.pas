@@ -1,9 +1,7 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Hacks into the VCL to access the list of TPicture registered TGraphic formats 
-}
+(*  Hacks to access the list of TPicture registered TGraphic formats *)
 unit GLPictureRegisteredFormats;
 
 interface

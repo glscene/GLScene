@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   File loader for MTS
-}
+
 unit GLFileLMTS;
+
+(* File loader for MTS *)
 
 interface
 

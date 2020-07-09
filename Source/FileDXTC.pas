@@ -1,12 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit FileDXTC;
+
 (*
    DXTC (also S3TC) decoding.
    Adapted from DevIL image library (http://openil.sourceforge.net)
 *)
-
-unit FileDXTC;
 
 interface
 

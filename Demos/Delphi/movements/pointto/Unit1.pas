@@ -43,9 +43,6 @@ type
     procedure GLCadencer1Progress(Sender: TObject; const deltaTime,
       newTime: Double);
   private
-     
-  public
-     
   end;
 
 var
@@ -60,7 +57,7 @@ procedure TForm1.GLCadencer1Progress(Sender: TObject; const deltaTime,
 begin
    // Make the blue sphere turn and ride a sin
    DCSphere.Turn(deltaTime*30);
-   Sphere.Position.Y:=Sin(DegToRad(newTime*50))*3;
+   Sphere.Position.Y := Sin(DegToRad(newTime*50))*3;
 
    // Make the arrow turn
    DCArrow.Turn(-deltaTime*15);

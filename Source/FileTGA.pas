@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Graphic engine friendly loading of TGA image.
-}
 
 unit FileTGA;
+
+(* Graphic engine friendly loading of TGA image. *)
 
 interface
 

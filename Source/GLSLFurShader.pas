@@ -1,12 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLSLFurShader;
+
+(*
    Fur shader that simulate Fur / Hair / Grass. 
    At this time only one light source is supported
-
-}
-unit GLSLFurShader;
+*)
 
 interface
 

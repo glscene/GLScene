@@ -282,8 +282,6 @@
         <DCCReference Include="..\..\Source\GLParticleFX.pas"/>
         <DCCReference Include="..\..\Source\GLParticles.pas"/>
         <DCCReference Include="..\..\Source\GLPerlin.pas"/>
-        <DCCReference Include="..\..\Source\GLPerlinBase.pas"/>
-        <DCCReference Include="..\..\Source\GLPerlinNoise3D.pas"/>
         <DCCReference Include="..\..\Source\GLPerlinPFX.pas"/>
         <DCCReference Include="..\..\Source\GLPersistentClasses.pas"/>
         <DCCReference Include="..\..\Source\GLPhongShader.pas"/>

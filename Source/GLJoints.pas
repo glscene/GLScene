@@ -1,11 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLJoints;
+
 (*
   This unit isn't used at all at the moment, just putting down some ideas
   for serial-link manipulators
 *)
-unit GLJoints;
 
 interface
 

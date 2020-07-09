@@ -1,12 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Ivory shader simulate Ivory material. 
-   At this time only one light source is supported
-}
 
 unit GLSLIvoryShader;
+
+(*
+   Ivory shader simulate Ivory material. 
+   At this time only one light source is supported
+*)
 
 interface
 

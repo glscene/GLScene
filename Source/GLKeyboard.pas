@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLKeyboard;
+
+(*
   Provides on demand state of any key on the keyboard as well as a set of
   utility functions for working with virtual key codes.
 
@@ -9,9 +12,7 @@
   can use the functions/classes in this unit to check mouse buttons too.
   See "Virtual-Key Codes" in the Win32 programmers references for a list of
   key code constants (VK_* constants are declared in the "Windows" unit).
-}
-
-unit GLKeyboard;
+*)
 
 interface
 
@@ -29,38 +30,38 @@ const
   VK_MOUSEWHEELUP = VK_F23;
   VK_MOUSEWHEELDOWN = VK_F24;
 
-  { Check if the key corresponding to the given Char is down.
+  (* Check if the key corresponding to the given Char is down.
     The character is mapped to the <i>main keyboard</i> only, and not to the
     numeric keypad.
     The Shift/Ctrl/Alt state combinations that may be required to type the
     character are ignored (ie. 'a' is equivalent to 'A', and on my french
-    keyboard, '5' = '(' = '[' since they all share the same physical key). }
+    keyboard, '5' = '(' = '[' since they all share the same physical key). *)
 function IsKeyDown(c: Char): Boolean; overload;
-  { Check if the given virtual key is down.
-  This function is just a wrapper for GetAsyncKeyState. }
+  (* Check if the given virtual key is down.
+  This function is just a wrapper for GetAsyncKeyState. *)
 function IsKeyDown(vk: TVirtualKeyCode): Boolean; overload;
-  { Returns the first pressed key whose virtual key code is >= to minVkCode.
+  (* Returns the first pressed key whose virtual key code is >= to minVkCode.
   If no key is pressed, the return value is -1, this function does NOT
   wait for user input.
-  If you don't care about multiple key presses, just don't use the parameter. }
+  If you don't care about multiple key presses, just don't use the parameter. *)
 function KeyPressed(minVkCode: TVirtualKeyCode = 0): TVirtualKeyCode;
 
-  { Converts a virtual key code to its name.
-  The name is expressed using the locale windows options. }
+  (* Converts a virtual key code to its name.
+  The name is expressed using the locale windows options. *)
 function VirtualKeyCodeToKeyName(vk: TVirtualKeyCode): String;
-  { Converts a key name to its virtual key code.
+  (* Converts a key name to its virtual key code.
   The comparison is **NOT** case-sensitive, if no match is found, returns -1.
   The name is expressed using the locale windows options, except for mouse
-  buttons which are translated to 'LBUTTON', 'MBUTTON' and 'RBUTTON'. }
+  buttons which are translated to 'LBUTTON', 'MBUTTON' and 'RBUTTON'. *)
 function KeyNameToVirtualKeyCode(const keyName: String): TVirtualKeyCode;
-  { Returns the virtual keycode corresponding to the given char.
+  (* Returns the virtual keycode corresponding to the given char.
   The returned code is untranslated, f.i. 'a' and 'A' will give the same
   result. A return value of -1 means that the characted cannot be entered
-  using the keyboard. }
+  using the keyboard. *)
 function CharToVirtualKeyCode(c: Char): TVirtualKeyCode;
 
-  { Use this procedure to notify a wheel movement and have it resurfaced as key stroke.
-  Honoured by IsKeyDown and KeyPressed }
+  (* Use this procedure to notify a wheel movement and have it resurfaced as key stroke.
+  Honoured by IsKeyDown and KeyPressed *)
 procedure KeyboardNotifyWheelMoved(wheelDelta: Integer);
 
 var

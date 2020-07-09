@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Implements projected textures through a GLScene object.
-}
+
 unit GLProjectedTextures;
+
+(* Implements projected textures through an object. *)
 
 interface
 
@@ -37,9 +37,9 @@ type
 
   TGLProjectedTextures = class;
 
-  {A projected texture emmiter. 
+  (* A projected texture emmiter. 
      It's material property will be used as the projected texture.
-     Can be places anywhere in the scene. }
+     Can be places anywhere in the scene. *)
   TGLTextureEmitter = class(TGLSceneObject)
   private
     FFOVy: single;
@@ -51,14 +51,14 @@ type
   public
     constructor Create(AOwner: TComponent); override;
   published
-    {Indicates the field-of-view of the projection frustum.}
+    // Indicates the field-of-view of the projection frustum.
     property FOVy: single read FFOVy write FFOVy;
-    {x/y ratio. For no distortion, this should be set to
-       texture.width/texture.height.}
+    (* x/y ratio. For no distortion, this should be set to
+       texture.width/texture.height.*)
     property Aspect: single read FAspect write FAspect;
   end;
 
-  {Specifies an item on the TGLTextureEmitters collection. }
+  // Specifies an item on the TGLTextureEmitters collection. 
   TGLTextureEmitterItem = class(TCollectionItem)
   private
     FEmitter: TGLTextureEmitter;
@@ -73,7 +73,7 @@ type
     property Emitter: TGLTextureEmitter read FEmitter write SetEmitter;
   end;
 
-  {Collection of TGLTextureEmitter. }
+  // Collection of TGLTextureEmitter. 
   TGLTextureEmitters = class(TCollection)
   private
     FOwner: TGLProjectedTextures;
@@ -86,9 +86,9 @@ type
     property Items[index: Integer]: TGLTextureEmitterItem read GetItems; default;
   end;
 
-  {Projected Textures Manager. 
+  (* Projected Textures Manager. 
      Specifies active texture Emitters (whose texture will be projected)
-     and receivers (children of this object). }
+     and receivers (children of this object). *)
   TGLProjectedTextures = class(TGLImmaterialSceneObject)
   private
     FEmitters: TGLTextureEmitters;
@@ -99,9 +99,9 @@ type
     procedure DoRender(var ARci: TGLRenderContextInfo;
       ARenderSelf, ARenderChildren: Boolean); override;
   published
-    {List of texture emitters. }
+    // List of texture emitters. 
     property Emitters: TGLTextureEmitters read FEmitters write FEmitters;
-    {Indicates the style of the projected textures. }
+    // Indicates the style of the projected textures. 
     property Style: TGLProjectedTexturesStyle read FStyle write FStyle;
   end;
 
@@ -350,7 +350,9 @@ begin
   end;
 end;
 
+//----------------------------------
 initialization
+//----------------------------------
 
   RegisterClasses([TGLTextureEmitter, TGLProjectedTextures]);
 

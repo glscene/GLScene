@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  Texture formats and functions
-*)
 
 unit GLTextureFormat;
+
+(* Texture formats and functions *)
 
 interface
 

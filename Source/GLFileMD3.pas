@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Code for loading animated MD3 files into GLScene
-              FreeForms and Actors.
-}
+
 unit GLFileMD3;
+
+(* Code for loading animated MD3 files into FreeForms and Actors. *)
 
 interface
 

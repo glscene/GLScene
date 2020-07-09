@@ -1,13 +1,15 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLFileNMF;
+
+(*
   NormalMapper loading into GLScene FreeForms/Actors
 
   Notes:
   NormalMapper can be found at http://www.ati.com/developer/tools.html
-}
-unit GLFileNMF;
+*)
 
 interface
 

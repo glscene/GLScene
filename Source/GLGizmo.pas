@@ -1,10 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLGizmo;
+
+(*
   Invisible component for helping to Move, Rotate and Scale an Object
   under GLScene (usefull for an Editor). 
-}
+*)
 //
 // Original Header:
 //
@@ -47,8 +50,6 @@
 // -  DaStr: Bounding Box is not always drawn correctly because it does not
 // use objects' BarryCenter. For Example, if you select Space Text.
 // ------------------------------------------------------------------------------
-
-unit GLGizmo;
 
 interface
 

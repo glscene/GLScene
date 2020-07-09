@@ -1,12 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit File3DSUtils;
+
+(*
    Utility functions for the universal 3DS file reader and writer (TFile3DS).
    Essentially, the functions here are the heart of the import library as
    they deal actually with the database and chunks.
-}
-unit File3DSUtils;
+*)
 
 interface
 

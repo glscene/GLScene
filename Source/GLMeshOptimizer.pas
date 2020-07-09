@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Mesh optimization for GLScene.
-}
+
 unit GLMeshOptimizer;
+
+(* Mesh optimization unit *)
 
 interface
 

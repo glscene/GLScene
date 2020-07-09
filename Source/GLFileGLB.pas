@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   GLB binary file for glTF format implementation. 
-}
+
 unit GLFileGLB;
+
+(* GLB binary file for glTF format implementation. *)
 
 interface
 
@@ -23,8 +23,8 @@ uses
   GLPersistentClasses;
 
 type
-   {The GLB binary glTF format is a runtime asset delivery format 
-      for GL APIs: WebGL, OpenGL ES OpenGL and Vulkan. }
+   (* The GLB binary glTF format is a runtime asset delivery format 
+      for GL APIs: WebGL, OpenGL ES OpenGL and Vulkan. *)
    TGLBVectorFile = class(TGLVectorFile)
       public
          class function Capabilities : TGLDataFileCapabilities; override;

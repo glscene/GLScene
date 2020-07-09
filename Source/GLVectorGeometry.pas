@@ -1,6 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLVectorGeometry;
+
 (*
   Base classes and structures.
 
@@ -20,7 +23,6 @@
   (the single-based functions have been optimized and are up to 100% faster,
   than extended-based ones from "Math").
 *)
-unit GLVectorGeometry;
 
 interface
 

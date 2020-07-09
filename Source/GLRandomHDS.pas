@@ -1,7 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
 unit GLRandomHDS;
+
 (*
   This unit provides tools and objects to generate random Height Data Sources
   that can be used with TGLTerrainRenderer. General properties are defined in
@@ -340,12 +342,12 @@ type
     property Size: integer read FSize;
     // A height rescaled between 0 and 1000 for
     function StandardisedHeight(const x, y: integer): single;
-    { When long computations are running, this property contains the operation
-      beeing processed. }
+    (* When long computations are running, this property contains the operation
+      beeing processed. *)
     property Task: string read FTask;
-    { A value between 0 and 100 indicating the percentage of completion }
+    // A value between 0 and 100 indicating the percentage of completion 
     property TaskProgress: integer read FTaskProgress;
-    { Use these boundaries with non-cyclic landscapes to constrain camera movements. }
+    // Use these boundaries with non-cyclic landscapes to constrain camera movements. 
     function XMoveBoundary: single;
     function ZMoveBoundary: single;
     // tTerrainRender event handler
@@ -389,7 +391,7 @@ type
   TIsDefaultTile =  function(X, Z: integer): boolean of object;
   TGLTiledRndLandscape = class(TGLBaseRandomHDS)
   private 
-	FLandTileComputing: boolean; // Is a landtile being computed?
+    FLandTileComputing: boolean; // Is a landtile being computed?
     FExtentX: integer;
     FExtentZ: integer;
     FExtentXhalf: integer;
@@ -442,7 +444,7 @@ type
     procedure SetSize(const aSize: integer);
     function fSortLandscapes(Item1, Item2: Pointer): integer;
     // procedure PrepareLandTileData(HeightData:tHeightData; LandTile:tLandTile);
-    { tTerrainRender event handler }
+    (* tTerrainRender event handler *)
     procedure SetTerrainRenderer(const Value: TGLTerrainRenderer); override;
   public
     procedure ApplyLighting(var aLandTile: TGLLandTile);
@@ -458,31 +460,31 @@ type
     procedure ConstrainCoordinates(var x, z: integer); overload;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    { Compute the landtile containing (x,z) }
+    // Compute the landtile containing (x,z) 
     procedure FindLandTile(const x, z: single; var TileX, TileZ: integer);
-    { Build the first landtile and position the camera. Must be called first. }
+    // Build the first landtile and position the camera. Must be called first. 
     procedure Initialize(const aX, aZ: single); virtual;
-    { User-supplied function determining if this landtile will be built by the
-      OnCreateDefaultTile or if a landscape will be generated. }
+    (* User-supplied function determining if this landtile will be built by the
+      OnCreateDefaultTile or if a landscape will be generated. *)
     property IsDefaultTile: TIsDefaultTile read FIsDefaultTile write SetIsDefaultTile;
-    { Number of landtile in memory }
+    // Number of landtile in memory 
     function LandtileCount: integer;
-    { Size of a landtile. Must be a power of two }
+    // Size of a landtile. Must be a power of two 
     property LandTileSize: integer read fLandTileSize;
-    { User-specified event handler containing the particular code for tile generation }
+    (* User-specified event handler containing the particular code for tile generation *)
     property OnCreateLandTile: TOnCreateLandTile read fOnCreateLandTile write SetOnCreateLandTile;
-    { When long computations are running, this property contains the operation
-      beeing processed. }
+    (* When long computations are running, this property contains the operation
+      beeing processed. *)
     property Task: string read GetTask;
-    { A value between 0 and 100 indicating the percentage of completion }
+    // A value between 0 and 100 indicating the percentage of completion 
     property TaskProgress: integer read GetTaskProgress;
-    { Distance between two landtiles }
+    // Distance between two landtiles 
     function TileDistance(const x1, z1, x2, z2: integer): single;
-    { Square of distance between two landtiles. Use this function to compare
-      two distances. }
+    (* Square of distance between two landtiles. Use this function to compare
+      two distances. *)
     function TileDistanceSquared(const x1, z1, x2, z2: integer): integer;
-    { This procedure check which landtiles must be generated or destroyed as a
-      function of camera position. This is let to the descendent classes. }
+    (* This procedure check which landtiles must be generated or destroyed as a
+      function of camera position. This is let to the descendent classes. *)
     procedure Update;
     property MapUpdating: boolean read fMapUpdating;
     // Use these boundaries with non-cyclic landscapes to constrain camera movements.
@@ -492,9 +494,9 @@ type
   published
     property Camera: TGLCamera read FCamera write SetCamera;
     property Cyclic: boolean read FCyclic write SetCyclic;
-    { Dimensions of the "infinite" landscape. Can be set very high. These parameters
+    (* Dimensions of the "infinite" landscape. Can be set very high. These parameters
       have neither memory nor speed consequence. They are mainly used to compute
-      a unique seed for each landtile }
+      a unique seed for each landtile *)
     property ExtentX: integer read FExtentX write SetExtentX;
     property ExtentZ: integer read FExtentZ write SetExtentZ;
     { Distance at which a new landtile begin to be built. Increasing this value
@@ -502,7 +504,7 @@ type
     property GenerationRadius: integer read FGenerationRadius write SetGenerationRadius;
     // Number of landtile to keep in memory. Should not be modified.
     property LandTileCapacity: integer read FLandTileCapacity write SetLandTileCapacity;
-    { Probability that a given landtile is non-default }
+    // Probability that a given landtile is non-default 
     property LandTileDensity: single read FLandTileDensity write SetLandTileDensity;
     // Base seed for the entire archipelago
     property Seed: integer read FSeed write SetSeed;
@@ -522,11 +524,10 @@ type
     FWaveAmplitude: single;
     FWaveSpeed: single;
     function GetIslandDensity: single;
-    { PostRender event handler drawing a static water plane between islands
-      Code borrowed from Eric's Archipelago GLScene advanced demo }
+    (* PostRender event handler drawing a static water plane between islands
+      Code borrowed from Eric's Archipelago GLScene advanced demo *)
     procedure FPostRenderSeaStatic(var rci: TGLRenderContextInfo; var HeightDatas: TList);
-    { Sea with waves.
-      Borrowed from Eric's Archipelago GLScene advanced demo }
+    // Sea with waves. Borrowed from GLS Archipelago advanced demo 
     procedure FPostRenderSeaDynamic(var rci: TGLRenderContextInfo; var HeightDatas: TList);
     procedure SetIslandDensity(const Value: single);
     procedure SetDepth(const Value: integer);
@@ -554,15 +555,15 @@ type
     (* A wrapper for LandtileDensity. This is the probabilty for a landtile to
       contain an island. *)
     property IslandDensity: single read GetIslandDensity write SetIslandDensity;
-    { Ranges for the roughness parameter in the fractal algorithm }
+    // Ranges for the roughness parameter in the fractal algorithm 
     property RoughnessMax: single read FRoughnessMax write SetRoughnessMax;
     property RoughnessMin: single read FRoughnessMin write SetRoughnessMin;
-    { If true, the sea will show dynamic waves. Slow. }
+    // If true, the sea will show dynamic waves. Slow. 
     property SeaDynamic: boolean read FSeaDynamic write SetSeaDynamic;
-    { Reference to a material in the TerrainRenderer's material library. This
-      material will be used to drape the water plane. }
+    (* Reference to a material in the TerrainRenderer's material library. This
+      material will be used to drape the water plane. *)
     property SeaMaterialName: string read FSeaMaterialName write SetSeaMaterialName;
-    { Size of the waves }
+    // Size of the waves 
     property WaveAmplitude: single read FWaveAmplitude write SetWaveAmplitude;
     property WaveSpeed: single read FWaveSpeed write SetWaveSpeed;
   end;
@@ -594,7 +595,7 @@ const
 implementation
 // ==========================================================================
 
-const { Neighbourhood vectors and weight }
+const // Neighbourhood vectors and weight 
   NeighX: array [0 .. 8] of integer = (-1, 0, 1, 1, 1, 0, -1, -1, 0);
   NeighY: array [0 .. 8] of integer = (-1, -1, -1, 0, 1, 1, 1, 0, 0);
   NeighW: array [0 .. 8] of single = (1 / 1.4142, 1, 1 / 1.4142, 1, 1 / 1.4142, 1, 1 / 1.4142, 1, 2);
@@ -671,9 +672,9 @@ begin
     random; // Pre-heat the generator
 end;
 
-//
+//-----------------------------------
 // TGLBaseRandomHDS
-//
+//-----------------------------------
 constructor TGLBaseRandomHDS.Create(AOwner: TComponent);
 begin
   inherited;

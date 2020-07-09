@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Frame combining a TrackBar and an Edit. 
-}
+
 unit FRTrackBarEdit;
+
+(* Frame combining a TrackBar and an Edit. *)
 
 interface
 

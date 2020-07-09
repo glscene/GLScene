@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Nurbs surfaces vector file loading. 
-}
+
 unit GLFileNurbs;
+
+(* Nurbs surfaces vector file loading. *)
 
 interface
 

@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Vector file object loading of Ghoul2 model and animation 
-   files into GLScene. 
-}
+
 unit GLFileGL2;
+
+(* Vector file object loading of Ghoul2 model and animation files *)
 
 interface
 

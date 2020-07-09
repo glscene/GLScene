@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   Fire special effect
-*)
+
 unit GLFireFX;
+
+(*  Fire special effect *)
 
 interface
 

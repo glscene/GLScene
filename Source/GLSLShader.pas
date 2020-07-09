@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   TGLSLShader is a wrapper for GLS shaders.
-}
+
 unit GLSLShader;
+
+(* TGLSLShader is a wrapper for GLS shaders. *)
 
 interface
 

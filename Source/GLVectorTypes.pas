@@ -1,6 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLVectorTypes;
+
 (*
    Defines base vector types for use in GLVectorGeometry.pas.
    The sole aim of this unit is to limit dependency between the GLVectorGeometry
@@ -14,7 +17,6 @@
         s  is uses for 16 bits signed integers (smallint)
    Note : D3D types untested.
 *)
-unit GLVectorTypes;
 
 interface
 

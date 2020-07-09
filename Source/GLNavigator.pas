@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-    Unit for navigating GLBaseObjects and GLSceneViewer.
-}
+
 unit GLNavigator;
+
+(*  Unit for navigating GLBaseObjects and GLSceneViewer. *)
 
 interface
 
@@ -39,7 +39,7 @@ uses
   GLRenderContextInfo;
 
 type
-	(* TGLNavigator is the component for moving a TGLBaseSceneObject, and all Classes based on it,
+  (* TGLNavigator is the component for moving a TGLBaseSceneObject, and all Classes based on it,
      this includes all the objects from the Scene Editor.
      The four calls to get you started is
      TurnHorisontal : it turns left and right.

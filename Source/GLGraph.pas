@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{  
-  Graph plotting objects for GLScene 
-}
+
 unit GLGraph;
+
+(* Graph plotting objects for GLScene *)
 
 interface
 

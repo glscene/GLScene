@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  A sprite that uses a scrolling texture for animation. 
-}
+
 unit GLAnimatedSprite;
+
+(* A sprite that uses a scrolling texture for animation. *)
 
 interface
 
@@ -34,8 +34,8 @@ type
   TGLSpriteAnimationList = class;
   TGLAnimatedSprite = class;
 
-  { Used by the SpriteAnimation when Dimensions are set manual. The animation
-    will use the offsets, width and height to determine the texture coodinates for this frame. }
+  (* Used by the SpriteAnimation when Dimensions are set manual. The animation
+    will use the offsets, width and height to determine the texture coodinates for this frame. *)
   TGLSpriteAnimFrame = class(TXCollectionItem)
   private
     FOffsetX,
@@ -66,14 +66,14 @@ type
     class function ItemsClass: TXCollectionItemClass; override;
   end;
 
-  {Determines if the texture coordinates are Automatically generated
+  (* Determines if the texture coordinates are Automatically generated
      from the Animations properties or if they are Manually set through
-     the Frames collection. }
+     the Frames collection. *)
   TGLSpriteFrameDimensions = (sfdAuto, sfdManual);
 
-  { Used to mask the auto generated frames. The Left, Top, Right and
+  (* Used to mask the auto generated frames. The Left, Top, Right and
     Bottom properties determines the number of pixels to be cropped
-    from each corresponding side of the frame. Only applicable to auto dimensions. }
+    from each corresponding side of the frame. Only applicable to auto dimensions. *)
   TGLSpriteAnimMargins = class(TPersistent)
   private
     FOwner: TGLSpriteAnimation;
@@ -94,7 +94,7 @@ type
     property Bottom: Integer read FBottom write SetBottom;
   end;
 
-  {Animations define how the texture coordinates for each offset are to be determined. }
+  // Animations define how the texture coordinates for each offset are to be determined. 
   TGLSpriteAnimation = class(TXCollectionItem, IGLMaterialLibrarySupported)
   private
     FCurrentFrame,
@@ -140,48 +140,48 @@ type
     property FrameWidth: Integer read FFrameWidth write SetFrameWidth;
     // Height of each frame in an auto dimension animation.
     property FrameHeight: Integer read FFrameHeight write SetFrameHeight;
-    {The name of the lib material the sprites associated material library
-       for this animation. }
+    (* The name of the lib material the sprites associated material library
+       for this animation. *)
     property LibMaterialName: TGLLibMaterialName read FLibMaterialName write
       SetLibMaterialName;
-    {Manual dimension animation frames. Stores the offsets and dimensions
-       for each frame in the animation. }
+    (* Manual dimension animation frames. Stores the offsets and dimensions
+       for each frame in the animation. *)
     property Frames: TGLSpriteAnimFrameList read FFrames;
     // Automatic or manual texture coordinate generation.
     property Dimensions: TGLSpriteFrameDimensions read FDimensions write
       SetDimensions;
-    {The number of milliseconds between each frame in the animation.
+    (* The number of milliseconds between each frame in the animation.
        Will automatically calculate the FrameRate value when set.
-       Will override the TGLAnimatedSprite Interval is greater than zero. }
+       Will override the TGLAnimatedSprite Interval is greater than zero. *)
     property Interval: Integer read FInterval write SetInterval;
-    {The number of frames per second for the animation.
+    (* The number of frames per second for the animation.
        Will automatically calculate the Interval value when set.
-       Precision will depend on Interval since Interval has priority. }
+       Precision will depend on Interval since Interval has priority. *)
     property FrameRate: Single read GetFrameRate write SetFrameRate;
     // Sets cropping margins for auto dimension animations.
     property Margins: TGLSpriteAnimMargins read FMargins;
   end;
 
-  {A collection for storing SpriteAnimation objects. }
+  // A collection for storing SpriteAnimation objects. 
   TGLSpriteAnimationList = class(TXCollection)
   public
     constructor Create(aOwner: TPersistent); override;
     class function ItemsClass: TXCollectionItemClass; override;
   end;
 
-  {Sets the current animation playback mode:
-      samNone - No playback, the animation does not progress.
-      samPlayOnce - Plays the animation once then switches to samNone.
-      samLoop - Play the animation forward in a continuous loop.
-      samLoopBackward - Same as samLoop but reversed direction.
-      samBounceForward - Plays forward and switches to samBounceBackward
-        when EndFrame is reached.
-      samBounceBackward - Plays backward and switches to samBounceForward
-        when StartFrame is reached. }
+  (* Sets the current animation playback mode:
+     samNone - No playback, the animation does not progress.
+     samPlayOnce - Plays the animation once then switches to samNone.
+     samLoop - Play the animation forward in a continuous loop.
+     samLoopBackward - Same as samLoop but reversed direction.
+     samBounceForward - Plays forward and switches to samBounceBackward
+       when EndFrame is reached.
+     samBounceBackward - Plays backward and switches to samBounceForward
+       when StartFrame is reached. *)
   TGLSpriteAnimationMode = (samNone, samPlayOnce, samLoop, samBounceForward,
     samBounceBackward, samLoopBackward);
 
-  {An animated version for using offset texture coordinate animation. }
+  // An animated version for using offset texture coordinate animation. 
   TGLAnimatedSprite = class(TGLBaseSceneObject)
   private
     FAnimations: TGLSpriteAnimationList;
@@ -201,8 +201,7 @@ type
     procedure DefineProperties(Filer: TFiler); override;
     procedure WriteAnimations(Stream: TStream);
     procedure ReadAnimations(Stream: TStream);
-    procedure Notification(AComponent: TComponent; Operation: TOperation);
-      override;
+    procedure Notification(AComponent: TComponent; Operation: TOperation); override;
     procedure SetInterval(const val: Integer);
     procedure SetAnimationIndex(const val: Integer);
     procedure SetAnimationMode(const val: TGLSpriteAnimationMode);
@@ -221,15 +220,14 @@ type
     // Steps the current animation to the next frame
     procedure NextFrame;
   published
-    { A collection of animations. Stores the settings for animating
-       then sprite. }
+    // A collection of animations. Stores the settings for animating then sprite. 
     property Animations: TGLSpriteAnimationList read FAnimations;
     // The material library that stores the lib materials for the animations.
     property MaterialLibrary: TGLMaterialLibrary read FMaterialLibrary write
       SetMaterialLibrary;
-    {Sets the number of milliseconds between each frame. Will recalculate
+    (* Sets the number of milliseconds between each frame. Will recalculate
        the Framerate when set. Will be overridden by the TGLSpriteAnimation
-       Interval if it is greater than zero. }
+       Interval if it is greater than zero. *)
     property Interval: Integer read FInterval write SetInterval;
     // Index of the sprite animation to be used.
     property AnimationIndex: Integer read FAnimationIndex write
@@ -237,11 +235,11 @@ type
     // Playback mode for the current animation.
     property AnimationMode: TGLSpriteAnimationMode read FAnimationMode write
       SetAnimationMode;
-    { Used to automatically calculate the width and height of a sprite based
+    (* Used to automatically calculate the width and height of a sprite based
        on the size of the frame it is showing. For example, if PixelRatio is
        set to 100 and the current animation frame is 100 pixels wide it will
        set the width of the sprite to 1. If the frame is 50 pixels width the
-       sprite will be 0.5 wide. }
+       sprite will be 0.5 wide. *)
     property PixelRatio: Integer read FPixelRatio write SetPixelRatio;
     // Rotates the sprite (in degrees).
     property Rotation: Integer read FRotation write SetRotation;
@@ -249,9 +247,9 @@ type
     property MirrorU: Boolean read FMirrorU write SetMirrorU;
     // Mirror the generated texture coords in the V axis.
     property MirrorV: Boolean read FMirrorV write SetMirrorV;
-    { Sets the frames per second for the current animation. Automatically
+    (* Sets the frames per second for the current animation. Automatically
        calculates the Interval. Precision will be restricted to the values
-       of Interval since Interval takes priority. }
+       of Interval since Interval takes priority. *)
     property FrameRate: Single read GetFrameRate write SetFrameRate;
     property Position;
     property Scale;

@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Informations on OpenGL driver and contributions
-}
+
 unit FInfo;
+
+(* Informations on OpenGL driver and contributions *)
 
 interface
 

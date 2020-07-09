@@ -1,13 +1,15 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLFileTGA;
+
 (*
   Simple TGA formats supports.
   Currently supports only 24 and 32 bits RGB formats
   (uncompressed and RLE compressed).
   Based on David McDuffee's document from www.wotsit.org
 *)
-unit GLFileTGA;
 
 interface
 

@@ -188,8 +188,6 @@ contains
   GLParticleFX in '..\..\Source\GLParticleFX.pas',
   GLParticles in '..\..\Source\GLParticles.pas',
   GLPerlin in '..\..\Source\GLPerlin.pas',
-  GLPerlinBase in '..\..\Source\GLPerlinBase.pas',
-  GLPerlinNoise3D in '..\..\Source\GLPerlinNoise3D.pas',
   GLPerlinPFX in '..\..\Source\GLPerlinPFX.pas',
   GLPersistentClasses in '..\..\Source\GLPersistentClasses.pas',
   GLPhongShader in '..\..\Source\GLPhongShader.pas',

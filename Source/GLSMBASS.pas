@@ -1,14 +1,16 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLSMBASS;
+
+(*
   BASS based sound-manager (http://www.un4seen.com/music/, free for freeware).
   Unsupported feature(s) :
   sound source velocity
   looping (sounds are played either once or forever)
   source priorities (not relevant, channels are not limited)
-}
-unit GLSMBASS;
+*)
 
 interface
 

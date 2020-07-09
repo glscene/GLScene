@@ -1,15 +1,16 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+(*
    VertexDisplacement shader : Basic Vertex Displacement with Perlin Noise
    You can Improved it :
    The vertex displacement can be done by reading a 2D or 3D texture.
    It can be done along the normal or the tangent.
    It can be scaled, twisted, modulated, inverted... 
-    Converted from : https://www.clicktorelease.com/blog/vertex-displacement-noise-3d-webgl-glsl-three-js 
+   Converted from : https://www.clicktorelease.com/blog/vertex-displacement-noise-3d-webgl-glsl-three-js 
    At this time only one light source is supported
-}
+*)
 
 
 unit GLSLVertexDisplacementShader;

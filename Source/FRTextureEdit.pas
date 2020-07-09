@@ -1,11 +1,11 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Basic editing frame for TGLTexture 
-}
-{ TODO : Replace STImageClass with a dropdown (polymorphism) }
+
 unit FRTextureEdit;
+
+(* Basic editing frame for TGLTexture *)
+// TODO : Replace STImageClass with a dropdown (polymorphism) 
 
 interface
 

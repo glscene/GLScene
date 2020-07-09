@@ -1,6 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLDCE;
+
 (*
   Dynamic Collision Engine
   How to use:
@@ -20,8 +23,6 @@
   - SlideOrBounce: The object can bounce like a ball or slide like an FPS
   - BounceFactor: Restituition factor, 1 means that it will bounce forever
 *)
-
-unit GLDCE;
 
 interface
 

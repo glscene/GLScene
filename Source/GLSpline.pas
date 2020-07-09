@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Cubic spline interpolation functions
-}
+
 unit GLSpline;
+
+(* Cubic spline interpolation functions *)
 
 interface
 
@@ -17,67 +17,67 @@ type
 
   TCubicSplineMatrix = array of array [0 .. 3] of Single;
 
-  { 3D cubic spline handler class.
+  (* 3D cubic spline handler class.
     This class allows to describe and calculate values of a time-based,
     three-dimensionnal cubic spline.
     Cubic spline pass through all given points and tangent on point N is
     given by the (N-1) to (N+1) vector.
-    Note : X, Y & Z are actually interpolated independently. }
+    Note : X, Y & Z are actually interpolated independently. *)
   TCubicSpline = class(TObject)
   private
     matX, matY, matZ, matW: TCubicSplineMatrix;
     FNb: Integer;
   public
-    { Creates the spline and declares interpolation points.
+    (* Creates the spline and declares interpolation points.
       Time references go from 0 (first point) to nb-1 (last point), the
       first and last reference matrices respectively are used when T is
       used beyond this range.
       Note : "nil" single arrays are accepted, in this case the axis is
-      disabled and calculus will return 0 (zero) for this component. }
+      disabled and calculus will return 0 (zero) for this component. *)
     constructor Create(const X, Y, Z, W: PFloatArray; const nb: Integer);
-    {$IFDEF CLR}unsafe; {$ENDIF}
+    {$IFDEF CLR} unsafe; {$ENDIF}
     destructor Destroy; override;
-    { Calculates X component at time t. }
+    // Calculates X component at time t. 
     function SplineX(const t: Single): Single;
-    { Calculates Y component at time t. }
+    // Calculates Y component at time t. 
     function SplineY(const t: Single): Single;
-    { Calculates Z component at time t. }
+    // Calculates Z component at time t. 
     function SplineZ(const t: Single): Single;
-    { Calculates W component at time t. }
+    // Calculates W component at time t. 
     function SplineW(const t: Single): Single;
-    { Calculates X and Y components at time t. }
+    // Calculates X and Y components at time t. 
     procedure SplineXY(const t: Single; out X, Y: Single);
-    { Calculates X, Y and Z components at time t. }
+    // Calculates X, Y and Z components at time t. 
     procedure SplineXYZ(const t: Single; out X, Y, Z: Single);
-    { Calculates X, Y, Z and W components at time t. }
+    // Calculates X, Y, Z and W components at time t. 
     procedure SplineXYZW(const t: Single; out X, Y, Z, W: Single);
-    { Calculates affine vector at time t. }
+    // Calculates affine vector at time t. 
     function SplineAffineVector(const t: Single): TAffineVector; overload;
-    { Calculates affine vector at time t. }
+    // Calculates affine vector at time t. 
     procedure SplineAffineVector(const t: Single;
       var vector: TAffineVector); overload;
-    { Calculates vector at time t. }
+    // Calculates vector at time t. 
     function SplineVector(const t: Single): TVector; overload;
-    { Calculates vector at time t. }
+    // Calculates vector at time t. 
     procedure SplineVector(const t: Single; var vector: TVector); overload;
-    { Calculates X component slope at time t. }
+    // Calculates X component slope at time t. 
     function SplineSlopeX(const t: Single): Single;
-    { Calculates Y component slope at time t. }
+    // Calculates Y component slope at time t. 
     function SplineSlopeY(const t: Single): Single;
-    { Calculates Z component slope at time t. }
+    // Calculates Z component slope at time t. 
     function SplineSlopeZ(const t: Single): Single;
-    { Calculates W component slope at time t. }
+    // Calculates W component slope at time t. 
     function SplineSlopeW(const t: Single): Single;
-    { Calculates the spline slope at time t. }
+    // Calculates the spline slope at time t. 
     function SplineSlopeVector(const t: Single): TAffineVector; overload;
-    { Calculates the intersection of the spline with the YZ plane.
-      Returns True if an intersection was found. }
+    (* Calculates the intersection of the spline with the YZ plane.
+      Returns True if an intersection was found. *)
     function SplineIntersecYZ(X: Single; var Y, Z: Single): Boolean;
-    { Calculates the intersection of the spline with the XZ plane.
-      Returns True if an intersection was found. }
+    (* Calculates the intersection of the spline with the XZ plane.
+      Returns True if an intersection was found. *)
     function SplineIntersecXZ(Y: Single; var X, Z: Single): Boolean;
-    { Calculates the intersection of the spline with the XY plane.
-      Returns True if an intersection was found. }
+    (* Calculates the intersection of the spline with the XY plane.
+      Returns True if an intersection was found. *)
     function SplineIntersecXY(Z: Single; var X, Y: Single): Boolean;
   end;
 

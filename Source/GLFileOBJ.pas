@@ -33,20 +33,21 @@ uses
   GLMaterial;
 
 const
-  BufSize = 10240; { Load input data in chunks of BufSize Bytes. }
-  LineLen = 100; { Allocate memory for the current line in chunks
-  of LineLen Bytes. }
+  // Load input data in chunks of BufSize Bytes. 
+  BufSize = 10240;
+  // Allocate memory for the current line in chunks of LineLen Bytes.  
+  LineLen = 100; 
 
 type
 
   TGLOBJVectorFile = class(TGLVectorFile)
   private
-    FSourceStream: TStream; { Load from this stream }
-    FBuffer: AnsiString; { Buffer }
-    FLine: string; { current line }
-    FLineNo: Integer; { current Line number - for error messages }
-    FEof: Boolean; { Stream done? }
-    FBufPos: Integer; { Position in the buffer }
+    FSourceStream: TStream; // Load from this stream 
+    FBuffer: AnsiString; // Buffer 
+    FLine: string; // current line 
+    FLineNo: Integer; // current Line number - for error messages 
+    FEof: Boolean; // Stream done? 
+    FBufPos: Integer; // Position in the buffer 
   protected
     // Read a single line of text from the source stream, set FEof to true when done.
     procedure ReadLine;

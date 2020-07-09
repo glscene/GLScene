@@ -1,13 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLMirror;
+
+(*
    Implements a basic, stencil-based mirror (as in Mark Kilgard's demo). 
    It is strongly recommended to read and understand the explanations in the
    materials/mirror demo before using this component. 
-}
-
-unit GLMirror;
+*)
 
 interface
 
@@ -44,14 +45,14 @@ type
 
   TMirrorShapes = (msRect, msDisk);
 
-  {A simple plane mirror. 
+  (* A simple plane mirror. 
      This mirror requires a stencil buffer for optimal rendering! 
      The object is a mix between a plane and a proxy object, in that the plane
      defines the mirror's surface, while the proxy part is used to reference
      the objects that should be mirrored (it is legal to self-mirror, but no
      self-mirror visuals will be rendered). 
      It is strongly recommended to read and understand the explanations in the
-     materials/mirror demo before using this component. }
+     materials/mirror demo before using this component. *)
   TGLMirror = class(TGLSceneObject)
   private
     FRendering: Boolean;
@@ -59,7 +60,6 @@ type
     FWidth, FHeight: Single;
     FMirrorOptions: TGLMirrorOptions;
     FOnBeginRenderingMirrors, FOnEndRenderingMirrors: TNotifyEvent;
-
     FShape: TMirrorShapes; //ORL
     FRadius: Single; //ORL
     FSlices: Integer; //ORL
@@ -83,10 +83,10 @@ type
     procedure Assign(Source: TPersistent); override;
     function AxisAlignedDimensionsUnscaled: TVector; override;
   published
-    { Selects the object to mirror. If nil, the whole scene is mirrored. }
+    // Selects the object to mirror. If nil, the whole scene is mirrored 
     property MirrorObject: TGLBaseSceneObject read FMirrorObject write
       SetMirrorObject;
-    {Controls rendering options. 
+    (* Controls rendering options. 
         moUseStencil: mirror area is stenciled, prevents reflected
           objects to be visible on the sides of the mirror (stencil buffer
           must be active in the viewer)
@@ -96,15 +96,15 @@ type
         moClearZBuffer: mirror area's ZBuffer is cleared so that background
           objects don't interfere with reflected objects (reflected objects
           must be rendered AFTER the mirror in the hierarchy). Works only
-          along with stenciling. }
+          along with stenciling. *)
     property MirrorOptions: TGLMirrorOptions read FMirrorOptions write
       SetMirrorOptions default cDefaultMirrorOptions;
     property Height: Single read FHeight write SetHeight;
     property Width: Single read FWidth write SetWidth;
-    {Fired before the object's mirror images are rendered. }
+    // Fired before the object's mirror images are rendered. 
     property OnBeginRenderingMirrors: TNotifyEvent read FOnBeginRenderingMirrors
       write FOnBeginRenderingMirrors;
-    {Fired after the object's mirror images are rendered. }
+    // Fired after the object's mirror images are rendered. 
     property OnEndRenderingMirrors: TNotifyEvent read FOnEndRenderingMirrors
       write FOnEndRenderingMirrors;
     property Radius: Single read FRadius write SetRadius; //ORL

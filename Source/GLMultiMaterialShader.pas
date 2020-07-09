@@ -1,12 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLMultiMaterialShader;
+
+(*
    A shader that applies a render pass for each material in
    its assigned MaterialLibrary. 
-
-}
-unit GLMultiMaterialShader;
+*)
 
 interface
 

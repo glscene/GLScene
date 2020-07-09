@@ -1,11 +1,12 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Implements projected textures through a GLScene object via GLSL.
-}
 
-{  Known bugs/limitations
+unit GLSLProjectedTextures;
+
+(* Implements projected textures through a GLScene object via GLSL. 
+
+  Known bugs/limitations
 
 1. Only 1 texture can be used for all emitters
 2. Only up to 6 Emitters can be used (more on better cards)
@@ -16,9 +17,7 @@
    anything, or set the brightness to 0. (?)
 4. All children of the ProjectedTextures must have use a texture.
    The shader can't be changed between rendering each seperate object..
-}
-
-unit GLSLProjectedTextures;
+*)
 
 interface
 

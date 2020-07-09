@@ -1,6 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit NGDImport;
+
 (* Copyright (c) <2003-2014> <Julio Jerez, Newton Game Dynamics>
 *
 * This software is provided 'as-is', without any express or implied
@@ -21,8 +24,6 @@
 *
 * 3. This notice may not be removed or altered from any source distribution.
 *)
-
-unit NGDImport;
 
 {.$DEFINE NEWTON_DOUBLE_PRECISION} 
 

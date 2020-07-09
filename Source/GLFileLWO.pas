@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-    Support-code to load Lightwave LWO Files (v6.0+, partial support).
-*)
+
 unit GLFileLWO;
+
+(*  Support-code to load Lightwave LWO Files (v6.0+, partial support).*)
 
 interface
 

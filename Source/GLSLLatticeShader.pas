@@ -1,14 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Lattice shader that simulate Lattice. 
-   At this time only one light source is supported
-
-}
-
 
 unit GLSLLatticeShader;
+
+(*
+   Lattice shader that simulate Lattice. 
+   At this time only one light source is supported
+*)
 
 interface
 

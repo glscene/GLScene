@@ -1,15 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Methods for PAK Archiving
-}
 
 unit GLFilePAK;
 
-{$I GLScene.inc}
+(* Methods for PAK Archiving *)
 
 interface
+
+{$I GLScene.inc}
 
 uses
   System.Classes,
@@ -19,7 +18,7 @@ uses
 const
    SIGN = 'PACK';
 
-Type
+type
 
    TPakHeader = record
       Signature: array[0..3] of AnsiChar;
@@ -73,7 +72,9 @@ implementation
 var
    Dir: TFileSection;
 
-{ TPAKArchive }
+//-------------------------------
+// TPAKArchive 
+//-------------------------------
 
 function TPAKArchive.GetContentCount: integer;
 begin
@@ -98,7 +99,6 @@ begin
   aValue := clNone;
   inherited SetCompressionLevel(aValue);
 end;
-
 
 procedure TPAKArchive.LoadFromFile(const FileName: string);
 begin

@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLSpaceText;
+
+(*
   3D Text component.
 
   Note: You can get valid extents (including AABB's) of this component only
@@ -9,8 +12,7 @@
   extents during / after its creation, you will get zeros.
 
   Also extents are valid only when SpaceText has one line.
-}
-unit GLSpaceText;
+*)
 
 interface
 

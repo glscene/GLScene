@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   TGLRagdoll extended using Open Dynamics Engine (ODE).
-*)
 
 unit GLODERagdoll;
+
+(* TGLRagdoll extended using Open Dynamics Engine (ODE). *)
 
 interface
 

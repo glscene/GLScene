@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   Misc. lists of vectors and entities
-*)
+
 unit GLVectorLists;
+
+(*  Misc. lists of vectors and entities *)
 
 interface
 

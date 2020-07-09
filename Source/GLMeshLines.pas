@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Line implementation by means of a Triangle strip. 
-}
 
 unit GLMeshLines;
+
+(* Line implementation by means of a Triangle strip. *)
 
 interface
 

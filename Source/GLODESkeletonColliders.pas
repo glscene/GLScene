@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   Skeleton colliders for defining and controlling ODE geoms.
-*)
+
 unit GLODESkeletonColliders;
+
+(* Skeleton colliders for defining and controlling ODE geoms. *)
 
 interface
 

@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   A shader that allows texture combiner setup. 
-}
 
 unit GLTexCombineShader;
+
+(* A shader that allows texture combiner setup. *)
 
 interface
 
@@ -28,7 +27,7 @@ uses
 
 type
 
-  {A shader that can setup the texture combiner.  }
+  // A shader that can setup the texture combiner.  
   TGLTexCombineShader = class(TGLShader)
   private
     FCombiners: TStringList;

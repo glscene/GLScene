@@ -2,6 +2,13 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
+unit GLS.OpenCL;
+
+(*
+   Conversion of OpenCL cl.h header file into CL.pas
+   from http://www.khronos.org/registry/cl/.
+*)
+
 (****************************************************************************
  * Copyright (c) 2008-2020 The Khronos Group Inc.
  *
@@ -29,13 +36,6 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
  **************************************************************************)
-
-unit GLS.OpenCL;
-
-(*
-   Conversion of OpenCL cl.h header file into CL.pas
-   from http://www.khronos.org/registry/cl/.
-*)
 
 interface
 

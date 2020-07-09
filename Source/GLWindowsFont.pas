@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  TFont Import into a BitmapFont using variable width...
-}
+
 unit GLWindowsFont;
+
+(* TFont Import into a BitmapFont using variable width...*)
 
 interface
 
@@ -33,7 +33,7 @@ uses
 
 type
 
-  {A bitmap font automatically built from a TFont. 
+  (* A bitmap font automatically built from a TFont. 
      It works like a TGLBitmapfont, you set ranges and which chars are assigned
      to which indexes, however here you also set the Font property to any TFont
      available to the system and it renders in GLScene as close to that font
@@ -41,7 +41,7 @@ type
      in spacing can occur at most 1 pixel per char on some char combinations. 
      Ranges must be sorted in ascending ASCII order and should not overlap.
      As the font texture is automatically layed out, the Ranges StartGlyphIdx
-     property is ignored and replaced appropriately. }
+     property is ignored and replaced appropriately. *)
   TGLWindowsBitmapFont = class(TGLCustomBitmapFont)
   private
     FFont: TFont;
@@ -63,8 +63,8 @@ type
     procedure EnsureChars(const AStart, AEnd: widechar);
     property Glyphs;
   published
-   {The font used to prepare the texture. 
-     Note: the font color is ignored. }
+   (* The font used to prepare the texture. 
+     Note: the font color is ignored. *)
     property Font: TFont read FFont write SetFont;
     property HSpace;
     property VSpace;

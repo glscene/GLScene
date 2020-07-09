@@ -20,7 +20,6 @@ unit GLS.OpenGLx;
  rights reserved under the Copyright Laws of the United States.
  ------------------------------------------------------------- *)
 
-
 interface
 
 {$I GLScene.inc}

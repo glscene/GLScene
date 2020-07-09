@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   Methods for turning a TGLBaseMesh into a Verlet cloth / jelly
-*)
 
 unit GLVerletClothify;
+
+(* Methods for turning a TGLBaseMesh into a Verlet cloth / jelly *)
 
 interface
 

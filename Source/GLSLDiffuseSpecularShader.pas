@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLSLDiffuseSpecularShader;
+
+(*
    This is a collection of GLSL diffuse-specular shaders
    (to know what these suffixes and prefixes mean see GLCustomShader.pas):
       - TGLSLDiffuseSpecularShader
@@ -16,8 +19,7 @@
      2) TGLSLDiffuseSpecularShader takes all Light parameters directly
       from OpenGL (that includes TGLLightSource's)
 
-}
-unit GLSLDiffuseSpecularShader;
+*)
 
 interface
 

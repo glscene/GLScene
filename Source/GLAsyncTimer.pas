@@ -1,11 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{  
+
+unit GLAsyncTimer;
+
+(*  
    Asynchronous timer component (actual 1 ms resolution). 
    This component is based on ThreadedTimer by Carlos Barbosa. 
-}
-unit GLAsyncTimer;
+*)
 
 interface
 

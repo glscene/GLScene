@@ -1,13 +1,15 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLScriptBase;
+
 (*
   An abstract scripting interface for GLScene
   This unit provides the base methods for compiling and executing scripts as
   well as calling scripted functions. No scripting APIs are implemented here,
   only abstracted functions.
 *)
-unit GLScriptBase;
 
 interface
 

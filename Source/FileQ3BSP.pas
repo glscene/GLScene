@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  Simple Quake III BSP file loader.
-*)
+
 unit FileQ3BSP;
+
+(* Simple Quake III BSP file loader. *)
 
 interface
 

@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  Geometric objects.
-*)
+
 unit GLGeomObjects;
+
+(* Geometric objects. *)
 
 interface
 

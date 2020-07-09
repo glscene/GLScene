@@ -1,11 +1,10 @@
 ﻿//
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Archive manager -  the class to work with archives
-}
 
 unit GLSArchiveManager;
+
+(* Archive manager -  the class to work with archives *)
 
 {$I GLScene.inc}
 

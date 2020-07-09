@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Procedural textures. 
-}
+
 unit GLProcTextures;
+
+(* Procedural textures *)
 
 interface
 

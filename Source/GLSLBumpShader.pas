@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLSLBumpShader;
+
+(*
    A GLSL shader that applies bump mapping.
 
     This is a collection of GLSL Bump shaders, comes in these variaties
@@ -21,8 +24,7 @@
 
     TODO:
       1) Implement IGLShaderDescription in all shaders.
-}
-unit GLSLBumpShader;
+*)
 
 interface
 

@@ -2,6 +2,10 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
+unit GLS.CUDARuntime;
+
+(* GLScene CUDA Runtime *)
+
 (*
  * Copyright 1993-2020 NVIDIA Corporation.  All rights reserved.
  *
@@ -36,10 +40,6 @@
  * include, in the user documentation and internal comments to the code,
  * the above Disclaimer and U.S. Government End Users Notice.
  *)
-
-unit GLS.CUDARuntime;
-
-(* GLScene CUDA Runtime *)
 
 interface
 

@@ -1,6 +1,9 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLSLSemShader;
+
+(*
    SEM shader : Spherical Environment Mapping
    The main idea of SEM is to get the UV coordinates (which are used to lookup the matCap texture)
    from the normal vector on the fragment instead of the original texture coordinates from the object. 
@@ -9,10 +12,7 @@
    It doesn't work that well on a cube, for instance. And does absolutely nothing on a sphere:
    SEM on a sphere is exactly the same as a planar projection of the matCap texture. 
    At this time only one light source is supported
-}
-
-
-unit GLSLSemShader;
+*)
 
 interface
 

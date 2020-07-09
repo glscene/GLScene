@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Editor frame for a TGLFaceProperties. 
-}
+
 unit FRFaceEditor;
+
+(* Editor frame for a TGLFaceProperties. *)
 
 interface
 

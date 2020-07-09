@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Material Script Batch loader for TGLMaterialLibrary for runtime.
-}
 
 unit GLMaterialScript;
+
+(* Material Script Batch loader for TGLMaterialLibrary for runtime. *)
 
 interface
 

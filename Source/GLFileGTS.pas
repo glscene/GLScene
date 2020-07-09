@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-    GTS (GNU Triangulated Surface) vector file format implementation. 
-}
+
 unit GLFileGTS;
+
+(* GTS (GNU Triangulated Surface) vector file format implementation. *)
 
 interface
 
@@ -19,13 +19,13 @@ uses
   GLApplicationFileIO;
 
 type
-   {The GTS vector file (GNU Triangulated Surface library).
+   (* The GTS vector file (GNU Triangulated Surface library).
       It is a simple text format, with indexed vertices. The first line contains
       the number of vertices, the number of edges and the number of faces separated
       by spaces.
       Following lines contain the x/y/z coordinates of vertices, then the edges
       (two indices) and the faces (three indices).
-      http://gts.sourceforge.net/ }
+      http://gts.sourceforge.net/ *)
    TGLGTSVectorFile = class(TGLVectorFile)
       public
          

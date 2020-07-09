@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Texture combiners setup utility functions. 
-}
+
 unit GLTextureCombiners;
+
+(* Texture combiners setup utility functions. *)
 
 interface
 
@@ -29,7 +29,7 @@ type
 
   ETextureCombinerError = class(Exception);
 
-  { Parses a TC text description and setups combiners accordingly. 
+  (* Parses a TC text description and setups combiners accordingly. 
     *experimental*
     Knowledge of texture combiners is a requirement
     Syntax: pascal-like, one instruction per line, use '//' for comment. 
@@ -42,7 +42,6 @@ type
       Tex1:=Tex0+Tex1-0.5; // signed additive blending between textures 0 and 1
       Tex1:=Interpolate(Tex0, Tex1, PrimaryColor); // interpolation between textures 0 and 1 using primary color as factor
       Tex1:=Dot3(Tex0, Tex1); // dot3 product between textures 0 and 1
-      
 
      Accepted tokens: 
       Tex0, Tex1, etc. : texture unit
@@ -52,7 +51,7 @@ type
      Tokens can be qualified with '.a' or '.alpha' to specify the alpha channel
      explicitly, and '.rgb' to specify color channels (default). You cannot mix
      alpha and rgb tokens in the same line.
-  }
+  *)
 function GetTextureCombiners(const tcCode: TStringList): TCombinerCache;
 
 // ------------------------------------------------------------------

@@ -1,15 +1,16 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLUserShader;
+
+(*
    A shader that passes control of the DoApply and DoUnApply
    methods through published events. This component is 
    designed to make it a little easier to implement a 
    customized shader. Be sure to keep the shader balanced
    by returning the OpenGL state to how you found it. 
-
-}
-unit GLUserShader;
+*)
 
 interface
 

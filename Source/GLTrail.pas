@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Creates a trail-like mesh.
-}
 
 unit GLTrail;
+
+(* Creates a trail-like mesh. *)
 
 interface
 
@@ -14,7 +13,6 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-
   
   GLScene,
   GLVectorTypes,

@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Texture-based Lens flare object. 
-}
+
 unit GLTexLensFlare;
+
+(* Texture-based Lens flare object. *)
 
 interface
 

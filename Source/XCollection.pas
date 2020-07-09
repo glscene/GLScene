@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  A polymorphism-enabled TCollection-like set of classes 
-*)
+
 unit XCollection;
+
+(* A polymorphism-enabled TCollection-like set of classes *)
 
 {.$DEFINE DEBUG_XCOLLECTION }  // on define the most apps will not work
 

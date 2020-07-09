@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Silhouette classes for GLBaseMesh and FaceGroups.
-}
 
 unit GLBaseMeshSilhouette;
+
+(* Silhouette classes for GLBaseMesh and FaceGroups. *)
 
 interface
 

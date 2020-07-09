@@ -1,6 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLObjects;
+
 (*
   Implementation of basic scene objects plus some management routines.
 
@@ -11,7 +14,6 @@
   units where they can grow and prosper untammed. "Generic" geometrical
   objects can be found GLGeomObjects.
 *)
-unit GLObjects;
 
 interface
 

@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Base abstract ragdoll class. Should be extended to use any physics system.  
-}
 
 unit GLRagdoll;
+
+(* Base abstract ragdoll class. Should be extended to use any physics system. *)
 
 interface
 
@@ -107,7 +106,7 @@ type
     property Owner : TGLBaseMesh read FOwner;
     property RootBone : TGLRagdolBone read FRootBone;
     property Enabled : Boolean read FEnabled;
-	end;
+ end;
 
 //------------------------------------------------------------------------	
 implementation

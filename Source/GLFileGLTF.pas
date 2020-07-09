@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   GLTF file embedded glTF format implementation. 
-}
+
 unit GLFileGLTF;
+
+(* GLB binary file for glTF format implementation. *)
 
 interface
 

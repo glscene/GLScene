@@ -1,15 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Component for handling joystick messages 
-}
+
 unit GLJoystick;
+
+(* Component for handling joystick messages *)
 
 interface
 
 {$I GLScene.inc}
-{$IFDEF UNIX}{$Message Error 'Unit not supported'} {$ENDIF}
 
 uses
   Winapi.Windows,

@@ -1,11 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLzBuffer;
+
+(*
    ZBuffer retrieval and computations. 
    See readme.txt in the Demos/SpecialsFX/Shadows directory.
    By René Lindsay. 
-}
+*)
 
    //--------These formulas are the key to making use of the z-Buffer--------
    //
@@ -19,8 +22,6 @@
    //z  :=(1-np/d)/(1-np/fp);  //calc from frustrum depth to z-buffer value
    //------------------------  z:=1-(fp/d-1)/(fp/np-1); //old FtoZ
    //------------------------------------------------------------------------
-
-unit GLzBuffer;
 
 interface
 

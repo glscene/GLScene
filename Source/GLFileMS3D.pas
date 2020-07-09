@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Support for MS3D file format.
-}
+
 unit GLFileMS3D;
+
+(* Support for MS3D file format. *)
 
 interface
 
@@ -35,13 +35,13 @@ const
 
 type
   // typedef struct
-  // {
+  // (*
   //     byte            flags;                              // SELECTED | HIDDEN
   //     char            name[32];                           //
   //     word            numtriangles;                       //
   //     word            triangleIndices[numtriangles];      // the groups group the triangles
   //     char            materialIndex;                      // -1 = no material
-  // } ms3d_group_t;
+  // *) ms3d_group_t;
   TMS3DGroup = class
   public
     Flags: byte;
@@ -54,10 +54,10 @@ type
   end;
 
   // typdef struct
-  // {
+  // (*
   //    char    id[10];                                     // always "MS3D000000"
   //    int     version;                                    // 4
-  // } ms3d_header_t;
+  // *) ms3d_header_t;
   {$A-}
 
   TMS3DHeader = record
@@ -67,12 +67,12 @@ type
 
 
   // typedef struct
-  // {
+  // (*
   //     byte    flags;                                      // SELECTED | SELECTED2 | HIDDEN
   //     float   vertex[3];                                  //
   //     char    boneId;                                     // -1 = no bone
   //     byte    referenceCount;
-  // } ms3d_vertex_t;
+  // *) ms3d_vertex_t;
 
   TMS3DVertex = record
     Flags: byte;
@@ -85,7 +85,7 @@ type
   TMS3DVertexArray = array[0..MAX_MS3D_VERTICES - 1] of TMS3DVertex;
 
   // typedef struct
-  // {
+  // (*
   //     word    flags;                                      // SELECTED | SELECTED2 | HIDDEN
   //     word    vertexIndices[3];                           //
   //     float   vertexNormals[3][3];                        //
@@ -93,7 +93,7 @@ type
   //     float   t[3];                                       //
   //     byte    smoothingGroup;                             // 1 - 32
   //     byte    groupIndex;                                 //
-  // } ms3d_triangle_t;
+  // *) ms3d_triangle_t;
 
   TMS3DTriangle = record
     Flags: word;
@@ -108,8 +108,8 @@ type
   PMS3DTriangleArray = ^TMS3DTriangleArray;
   TMS3DTriangleArray = array[0..MAX_MS3D_TRIANGLES - 1] of TMS3DTriangle;
 
-   // typedef struct
-  // {
+  // typedef struct
+  // (*
   //     char            name[32];                           //
   //     float           ambient[4];                         //
   //     float           diffuse[4];                         //
@@ -120,7 +120,7 @@ type
   //     char            mode;                               // 0, 1, 2 is unused now
   //     char            texture[128];                        // texture.bmp
   //     char            alphamap[128];                       // alpha.bmp
-  // } ms3d_material_t;
+  // *) ms3d_material_t;
   TMS3DMaterial = record
     Name: array[0..31] of AnsiChar;
     Ambient: TColorVector;
@@ -136,10 +136,10 @@ type
 
 
   // typedef struct
-  // {
+  // (*
   //     float           time;                               // time in seconds
   //     float           rotation[3];                        // x, y, z angles
-  // } ms3d_keyframe_rot_t;
+  // *) ms3d_keyframe_rot_t;
   TMS3DKeyframeRotation = record
     Time: single;
     Rotation: TD3DVector;
@@ -149,10 +149,10 @@ type
   TMS3DKeyframeRotationArray = array[0..MAX_MS3D_KEYFRAMES - 1] of TMS3DKeyframeRotation;
 
   // typedef struct
-  // {
+  // (*
   //     float           time;                               // time in seconds
   //     float           position[3];                        // local position
-  // } ms3d_keyframe_pos_t;
+  // *) ms3d_keyframe_pos_t;
   TMS3DKeyframePosition = record
     Time: single;
     Position: TD3DVector;
@@ -162,7 +162,7 @@ type
   TMS3DKeyframePositionArray = array[0..MAX_MS3D_KEYFRAMES - 1] of TMS3DKeyframePosition;
 
   // typedef struct
-  // {
+  // (*
   //     byte            flags;                              // SELECTED | DIRTY
   //     char            name[32];                           //
   //     char            parentName[32];                     //
@@ -174,7 +174,7 @@ type
   //
   //     ms3d_keyframe_rot_t keyFramesRot[numKeyFramesRot];      // local animation matrices
   //     ms3d_keyframe_pos_t keyFramesTrans[numKeyFramesTrans];  // local animation matrices
-  // } ms3d_joint_t;
+  // *) ms3d_joint_t;
 
   TMS3DJointBase = record
     Flags: byte;
@@ -194,8 +194,6 @@ type
 
   PMS3DJointArray = ^TMS3DJointArray;
   TMS3DJointArray = array[0..MAX_MS3D_JOINTS - 1] of TMS3DJoint;
-
-
 
   TMS3DComment=record
       index: Integer;
@@ -233,14 +231,11 @@ type
     destructor Destroy; override;
     property Weight[idx: Integer]: pMS3D_vertex_ex_t read GetWeight;
     property subVersion: Integer read FsubVersion write SetsubVersion;
-
   end;
 
-
-
 type
-  { The MilkShape vector file.
-     By Mattias Fagerlund, mattias@cambrianlabs.com. Yada yada. Eric rules! }
+  (* The MilkShape vector file.
+     By Mattias Fagerlund, mattias@cambrianlabs.com. Yada yada. Eric rules! *)
   TGLMS3DVectorFile = class(TGLVectorFile)
   public
     class function Capabilities: TGLDataFileCapabilities; override;
@@ -252,8 +247,12 @@ type
 
 // ------------------------------------------------------------------
 implementation
+// ------------------------------------------------------------------
 
-{ TMS3DGroup }
+
+// -------------------------
+//  TMS3DGroup 
+// -------------------------
 
 constructor TMS3DGroup.Create;
 begin
@@ -266,7 +265,9 @@ begin
   inherited;
 end;
 
-{ TMS3DCommentList }
+// -------------------------
+//  TMS3DCommentList 
+// -------------------------
 
 destructor TMS3DCommentList.destroy;
 var
@@ -287,7 +288,9 @@ begin
     add(result);
 end;
 
-{ TVertexWeightList }
+// -------------------------
+// TVertexWeightList 
+// -------------------------
 
 procedure TVertexWeightList.clear;
 var
@@ -623,7 +626,8 @@ begin
       end
       else
       begin
-        Exception.Create(ResourceName + ' has materials but there is no material library assigned to the object loading this MS3D file.' + #10#13 + 'If this is what you want,  then you can safely ignore this exception.');
+        Exception.Create(ResourceName + ' has materials but there is no material library assigned to the object loading this MS3D file.' + #10#13 + 
+          'If this is what you want,  then you can safely ignore this exception.');
       end;
     end;
 

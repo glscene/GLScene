@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  FPS-like movement behaviour and manager.
-*)
 
 unit GLFPSMovement;
+
+(* FPS-like movement behaviour and manager. *)
 
 interface
 

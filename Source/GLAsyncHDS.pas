@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLAsyncHDS;
+
+(*
    Implements a HDS Filter that generates HeightData tiles in a seperate thread.
 
    This component is a TGLHeightDataSourceFilter, which uses a TGLHeightDataSourceThread,
@@ -12,9 +15,7 @@
    being prepared.  Although this keeps the framerate up, it may cause holes in the
    terrain to show, if the HeightDataThreads cant keep up with the TerrainRenderer's
    requests for new tiles.
-}
-
-unit GLAsyncHDS;
+*)
 
 interface
 

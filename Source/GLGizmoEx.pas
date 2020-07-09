@@ -1,12 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLGizmoEx;
+
+(*
    Invisible component for helping to Move, Rotate and Scale an Object
    under GLScene (usefull for an Editor).
    This is an enhanced version of TGLGizmo
-}
-unit GLGizmoEx;
+*)
 
 interface
 

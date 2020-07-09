@@ -1,13 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLHiddenLineShader;
+
+(*
    A shader that renders hidden (back-faced) lines differently from visible
    (front) lines. Polygon offset is used to displace fragments depths a little
    so that there is no z-fighting in rendering the same geometry multiple times. 
-
-}
-unit GLHiddenLineShader;
+*)
 
 interface
 

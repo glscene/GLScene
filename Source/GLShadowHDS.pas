@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLShadowHDS;
+
+(*
   Implements an HDS that automatically generates a terrain lightmap texture.
 
   Issues:1:Ambient and Diffuse light properties can not be set to 0, to avoid what
@@ -18,9 +21,7 @@
 
   PS. The RayCastShadowHeight function returns the height of the shadow at a point
   on the terrain. This, and the LightVector may come in handy for implementing shadow volumes?
-}
-
-unit GLShadowHDS;
+*)
 
 interface
 

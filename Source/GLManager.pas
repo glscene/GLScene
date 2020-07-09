@@ -1,13 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLManager;
+
+(*
    Managers are used to manage many different kinds of clients in GLScene.
    They are registered so that when clients are loaded, the client can
    look up the manager + register themselves with it.
-}
-
-unit GLManager;
+*)
 
 interface
 

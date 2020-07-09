@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  ThorFX  for GLScene
-}
+
 unit GLThorFX;
+
+(* ThorFX  for GLScene *)
 
 interface
 

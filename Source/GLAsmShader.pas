@@ -1,12 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLAsmShader;
+
+(*
     TGLAsmShader is a wrapper for all ARB shaders 
     This component is only a template and has to be replaced with a
     proper version by someone who uses ARB shaders more then me.
-}
-unit GLAsmShader;
+*)
 
 interface
 

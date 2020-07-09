@@ -1,12 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLSLToonShader;
+
+(*
    Toon shader : Toon shading also called Cell Shading 
    At this time only one light source is supported
-
-}
-unit GLSLToonShader;
+*)
 
 interface
 

@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-   Video for windows
-*)
+
 unit FileVFW;
+
+(*  Video for windows *)
 
 interface
 

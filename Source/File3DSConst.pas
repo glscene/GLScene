@@ -1,14 +1,15 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit File3DSConst;
+
 (*
  All 3DS constant definitions used by the various routines (mainly in Utils3DS.pas). About one thousand
  defined constants herein. The guys at Autodesk must be crazy...
  Last Change - 03. October 1999
  (c) Copyright 1999, Dipl. Ing. Mike Lischke (public@lischke-online.de)
 *)
-
-unit File3DSConst;
 
 interface
 

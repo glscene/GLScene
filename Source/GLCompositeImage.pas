@@ -1,12 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  This class is required for loading images such classes as TGLDDSImage,
-  TGLO3TCImage, TGLHDRImage etc.
-}
 
 unit GLCompositeImage;
+
+(*
+  This class is required for loading images such classes as TGLDDSImage,
+  TGLO3TCImage, TGLHDRImage etc.
+*)
 
 interface
 

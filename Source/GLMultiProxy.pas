@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Implements a multi-proxy objects, useful for discreet LOD. 
-}
+
 unit GLMultiProxy;
+
+(* Implements a multi-proxy objects, useful for discreet LOD. *)
 
 interface
 

@@ -1,7 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
+
+unit GLMaterialMultiProxy;
+
+(*
    Implements a multi-proxy object, useful for discreet LOD. 
    Allows assign a unique material for each proxy master. 
 
@@ -17,9 +20,7 @@
       (they are connected on assigning, not while rendering; full persistency support;
        allows to assign directly to TGLLibMaterial)
     9) VCL-style code formating
-}
-
-unit GLMaterialMultiProxy;
+*)
 
 interface
 

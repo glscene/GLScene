@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Quake2 MD2 vector file format implementation.
-}
 
 unit GLFileMD2;
+
+(* Quake2 MD2 vector file format implementation. *)
 
 interface
 
@@ -19,11 +18,11 @@ uses
   FileMD2;
 
 type
-   {The MD2 vector file (Quake2 actor file).
+   (* The MD2 vector file (Quake2 actor file).
       Stores a set of "frames" describing the different postures of the actor,
       it may be animated by TGLActor. The "Skin" must be loaded indepentendly
       (the whole mesh uses a single texture bitmap).
-      Based on code by Roger Cao. }
+      Based on code by Roger Cao. *)
    TGLMD2VectorFile = class(TGLVectorFile)
       public
         class function Capabilities : TGLDataFileCapabilities; override;

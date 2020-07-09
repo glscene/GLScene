@@ -1,18 +1,16 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Implements the standard Teapot, build from evaluators. 
-}
+
+unit File3DSTypes;
+
+(* Implements the standard Teapot, build from evaluators. *)
 
 // This unit contains all of the data types used by the core routines. Most of these are only used
 // with the internal database, created when a file is loaded.
-//
-// Last change - 03. October 1999
-//
+// Initial developer
 // (c) Copyright 1999, Dipl. Ing. Mike Lischke (public@lischke-online.de)
 
-unit File3DSTypes;
 
 {$ALIGN ON}
 {$MINENUMSIZE 4}

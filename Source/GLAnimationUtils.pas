@@ -1,12 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Main purpose is to give an easy way to create an interpolation. 
-}
 
 unit GLAnimationUtils;
 
+(* Main purpose is to give an easy way to create an interpolation. *)
 
 interface
 

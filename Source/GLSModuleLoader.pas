@@ -1,6 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLSModuleLoader;
+
 {******************************************************************}
 {                                                                  }
 {       Project JEDI                                               }
@@ -29,7 +32,6 @@
 { rights and limitations under the License.                        }
 {                                                                  }
 {******************************************************************}
-unit GLSModuleLoader;
 
 interface
 

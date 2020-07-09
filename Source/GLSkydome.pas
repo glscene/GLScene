@@ -1,10 +1,10 @@
 ﻿//
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Skydome object
-}
+
 unit GLSkydome;
+
+(* Skydome object *)
 
 interface
 

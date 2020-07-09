@@ -1,16 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Methods for archiving using ZLib 
-   .
-}
 
 unit GLFileZLIB;
 
-{$I GLScene.inc}
+(* Methods for archiving using ZLib *)
 
 interface
+
+{$I GLScene.inc}
 
 uses
   System.Classes, 
@@ -36,37 +34,27 @@ Type
       CbrMode: TCompressionLevel;
    end;
 
-  { TZLibArchive }
-
-  TZLibArchive=class(TGLBaseArchive)
+  TZLibArchive = class(TGLBaseArchive)
     private
       FHeader: TZLibHeader;
       FStream: TFileStream;
-
       function GetContentCount: integer;
       procedure MakeContentList;
     public
       property ContentCount: integer Read GetContentCount;
       destructor Destroy; override;
-
       procedure LoadFromFile(const FileName: string); override;
-
       procedure Clear; override;
       function ContentExists(ContentName: string): boolean;override;
-
       function GetContent(aStream: TStream; index: integer): TStream; override;
       function GetContent(index: integer): TStream; override;
       function GetContent(ContentName: string): TStream; override;
-
       function GetContentSize(index: integer): integer; override;
       function GetContentSize(ContentName: string): integer; override;
-
       procedure AddFromStream(ContentName, Path: string; FS: TStream);override;
       procedure AddFromFile(FileName, Path: string); override;
-
       procedure RemoveContent(index: integer); overload; override;
       procedure RemoveContent(ContentName: string); overload;override;
-
       procedure Extract(index: integer; NewName: string); override;
       procedure Extract(ContentName, NewName: string); override;
   end;
@@ -78,8 +66,9 @@ implementation
 var
    Dir: TFileSection;
 
-{ TZLibArchive }
-
+//-----------------------------
+//  TZLibArchive 
+//-----------------------------
 
 function TZLibArchive.GetContentCount: integer;
 begin
@@ -340,7 +329,10 @@ begin
       Extract(FContentList.IndexOf(ContentName), NewName);
 end;
 
+//-----------------------------
 initialization
+//-----------------------------
+
   RegisterArchiveFormat('zlib', 'GLScene file uses the zlib compression algorithm', TZLibArchive);
 
 end.

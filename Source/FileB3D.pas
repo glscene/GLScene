@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-    File streaming class for the B3D loader
-}
+
 unit FileB3D;
+
+(* File streaming class for the B3D loader *)
 
 interface
 

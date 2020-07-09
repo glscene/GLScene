@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Standard polyhedrons
-}
+
 unit GLPolyhedron;
+
+(* Standard polyhedrons *)
 
 interface
 
@@ -23,36 +23,36 @@ uses
 
 type
 
-  { The tetrahedron has no texture coordinates defined, ie. without using
-    a texture generation mode, no texture will be mapped. }
+  (* The tetrahedron has no texture coordinates defined, ie. without using
+    a texture generation mode, no texture will be mapped. *)
   TGLTetrahedron = class(TGLBaseMesh)
   public
     procedure BuildList(var rci: TGLRenderContextInfo); override;
   end;
 
-  {The octahedron has no texture coordinates defined, ie. without using
-    a texture generation mode, no texture will be mapped. }
+  (* The octahedron has no texture coordinates defined, ie. without using
+    a texture generation mode, no texture will be mapped. *)
   TGLOctahedron = class(TGLBaseMesh)
   public
     procedure BuildList(var rci: TGLRenderContextInfo); override;
   end;
 
-  {The hexahedron has no texture coordinates defined, ie. without using
-    a texture generation mode, no texture will be mapped. }
+  (* The hexahedron has no texture coordinates defined, ie. without using
+    a texture generation mode, no texture will be mapped. *)
   TGLHexahedron = class(TGLBaseMesh)
   public
     procedure BuildList(var rci: TGLRenderContextInfo); override;
   end;
 
-  {The dodecahedron has no texture coordinates defined, ie. without using
-   a texture generation mode, no texture will be mapped. }
+  (* The dodecahedron has no texture coordinates defined, ie. without using
+   a texture generation mode, no texture will be mapped. *)
   TGLDodecahedron = class(TGLBaseMesh)
   public
     procedure BuildList(var rci: TGLRenderContextInfo); override;
   end;
 
-  {The icosahedron has no texture coordinates defined, ie. without using
-     a texture generation mode, no texture will be mapped. }
+  (* The icosahedron has no texture coordinates defined, ie. without using
+     a texture generation mode, no texture will be mapped. *)
   TGLIcosahedron = class(TGLBaseMesh)
   public
     procedure BuildList(var rci: TGLRenderContextInfo); override;

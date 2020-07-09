@@ -1,12 +1,13 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-   Time based events mannager using the Cadencer 
-   can be useful to make animations with GlScene 
-}
 
 unit GLTimeEventsMgr;
+
+(*
+   Time based events mannager using the Cadencer 
+   can be useful to make animations with GlScene 
+*)
 
 interface
 
@@ -91,7 +92,9 @@ type
          property Enabled : Boolean read FEnabled write SetEnabled  default True;
     end;
 
+//--------------------------------------------
 implementation
+//--------------------------------------------
 
 // ------------------
 // ------------------ TGLTimeEventsMGR ------------------

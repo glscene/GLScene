@@ -32,7 +32,7 @@ uses
 
 type
 
-  {The OCT vector file (FSRad output).  }
+  // The OCT vector file (FSRad output).  
   TGLOCTGLVectorFile = class(TGLVectorFile)
   public
     class function Capabilities: TGLDataFileCapabilities; override;

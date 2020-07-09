@@ -1,10 +1,10 @@
 //
 // The unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  VRML file format parser.
-*)
+
 unit FileVRMLParser;
+
+(*  VRML file format parser. *)
 
 interface
 

@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Standard texture image editors for standard texture image classes.
-}
+
 unit GLTextureImageEditors;
+
+(* Standard texture image editors for standard texture image classes. *)
 
 interface
 
@@ -21,9 +21,9 @@ type
 
   TGLTextureImageEditor = class(TObject)
   public
-    { Request to edit a textureImage.
+    (* Request to edit a textureImage.
       Returns True if changes have been made.
-      This method may be invoked from the IDE or at run-time. }
+      This method may be invoked from the IDE or at run-time. *)
     class function Edit(aTexImage: TGLTextureImage): Boolean; virtual;
   end;
 
@@ -49,7 +49,7 @@ type
     class function Edit(aTexImage: TGLTextureImage): Boolean; override;
   end;
 
-  // Invokes the editor for the given TGLTextureImage
+// Invokes the editor for the given TGLTextureImage
 function EditGLTextureImage(aTexImage: TGLTextureImage): Boolean;
 procedure RegisterGLTextureImageEditor(aTexImageClass: TGLTextureImageClass; 
   texImageEditor: TGLTextureImageEditorClass);

@@ -1,6 +1,9 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLSpacePartition;
+
 (*
   Space Partition speeds up geometrical queries, like what objects does an overlap.
   Note that the class TOctreeSpacePartition is optimized for dynamic scenes with
@@ -23,8 +26,6 @@
   3 coordinates (x,y,z); each of which are flagged separately. Also note that these
   flags are based on the Y vector being the up vector.
 *)
-
-unit GLSpacePartition;
 
 interface
 

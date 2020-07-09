@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  Lens flare object. 
-}
+
 unit GLLensFlare;
+
+(* Lens flare object. *)
 
 interface
 
@@ -35,9 +35,9 @@ type
   TFlareElement = (feGlow, feRing, feStreaks, feRays, feSecondaries);
   TFlareElements = set of TFlareElement;
 
-  {The actual gradients between two colors are, of course, calculated by OpenGL. 
+  (* The actual gradients between two colors are, of course, calculated by OpenGL. 
      The start and end colors of a gradient are stored to represent the color of
-     lens flare elements. }
+     lens flare elements. *)
   TGLFlareGradient = class(TGLUpdateAbleObject)
   private
     FFromColor: TGLColor;
@@ -108,9 +108,9 @@ type
     procedure SetPreRenderPoint(const val: TGLRenderPoint);
     procedure PreRenderEvent(Sender: TObject; var rci: TGLRenderContextInfo);
     procedure PreRenderPointFreed(Sender: TObject);
-    { These are quite unusual in that they don't use an RCI, since
+    (* These are quite unusual in that they don't use an RCI, since
      PreRender is done before proper rendering starts, but we do know
-     which RC is being used, so we can use this state cache}
+     which RC is being used, so we can use this state cache *)
     procedure SetupRenderingOptions(StateCache: TGLStateCache);
     procedure RenderRays(StateCache: TGLStateCache; const size: Single);
     procedure RenderStreaks(StateCache: TGLStateCache);
@@ -122,16 +122,16 @@ type
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
     procedure DoProgress(const progressTime: TGLProgressTimes); override;
-    {Prepares pre-rendered texture to speed up actual rendering.
+    (* Prepares pre-rendered texture to speed up actual rendering.
        Will use the currently active context as scratch space, and will
        automatically do nothing if things have already been prepared,
        thus you can invoke it systematically in a Viewer.BeforeRender
-       event f.i. }
+       event f.i. *)
     procedure PreRender(activeBuffer: TGLSceneBuffer);
-    {Access to the Flare's current size.
+    (* Access to the Flare's current size.
        Flares decay or grow back over several frames, depending on their
        occlusion status, and this property allows to track or manually
-       alter this instantaneous size. }
+       alter this instantaneous size. *)
     property FlareInstantaneousSize: Single read FCurrSize write FCurrSize;
   published
     property GlowGradient: TGLFlareGradient read FGlowGradient write SetGlowGradient;
@@ -168,16 +168,16 @@ type
     // Which elements should be rendered?
     property Elements: TFlareElements read FElements write SetElements default
       cDefaultFlareElements;
-    {Is the flare size adjusted dynamically?
+    (* Is the flare size adjusted dynamically?
        If true, the flare size will be grown and reduced over a few frames
        when it switches between occluded and non-occluded states. This
        requires animation to be active, but results in a smoother appearance.
        When false, flare will either be at full size or hidden.
-       The flare is always considered non-dynamic at design-time. }
+       The flare is always considered non-dynamic at design-time. *)
     property Dynamic: Boolean read FDynamic write FDynamic default True;
 
-    {PreRender point for pre-rendered flare textures. 
-       See PreRender method for more details. }
+    (* PreRender point for pre-rendered flare textures. 
+       See PreRender method for more details. *)
     property PreRenderPoint: TGLRenderPoint read FPreRenderPoint write
       SetPreRenderPoint;
     property ObjectsSorting;

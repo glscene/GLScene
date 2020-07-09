@@ -1,11 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-{
-  GLScene cross IDE generic classes collection. 
-}
 
 unit GLSGenerics;
+
+(* Cross IDE generic classes collection. *)
 
 interface
 

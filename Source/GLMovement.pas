@@ -1,13 +1,14 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
+
+unit GLMovement;
+
 (*
    Movement path behaviour by Roger Cao
    Note: It is recommended to set TGLMovementPath.RotationMode = rmUpDirection,
    but the default value is rmTurnPitchRoll for backwards compatibility.
 *)
-
-unit GLMovement;
 
 interface
 
@@ -218,10 +219,10 @@ type
     FOnAllPathTravelledOver: TNotifyEvent;
     FOnPathTravelStart: TPathTravelStartEvent;
     FOnPathTravelStop: TPathTravelStopEvent;
-    {
+    (*
     function GetMovementPath(Index: integer): TGLMovementPath;
     procedure SetMovementPath(Index: integer; AValue: TGLMovementPath);
-    }
+    *)
     function GetPathCount: integer;
     procedure SetActivePathIndex(Value: integer);
 
@@ -237,14 +238,14 @@ type
     constructor Create(aOwner: TXCollection); override;
     destructor Destroy; override;
 
-      //add an empty path;
+    //add an empty path;
     function AddPath: TGLMovementPath; overload;
     //add an path with one node, and the node is based on aObject
     function AddPath(aObject: TGLBaseSceneObject): TGLMovementPath; overload;
     //add one path to the new one
     function AddPath(Path: TGLMovementPath): TGLMovementPath; overload;
     procedure ClearPaths;
-      //Result is current path
+    //Result is current path
     function DeletePath(Path: TGLMovementPath): TGLMovementPath; overload;
     function DeletePath(Index: integer): TGLMovementPath; overload;
     function DeletePath: TGLMovementPath; overload;
@@ -261,7 +262,7 @@ type
     function PrevPath: integer;
     function FirstPath: integer;
     function LastPath: integer;
-      //property Paths[index: Integer]: TGLMovementPath read GetMovementPath write SetMovementPath;
+    //property Paths[index: Integer]: TGLMovementPath read GetMovementPath write SetMovementPath;
     property PathCount: integer Read GetPathCount;
     //why do these property can't be saved in IDE ?
     property OnAllPathTravelledOver: TNotifyEvent Read FOnAllPathTravelledOver Write FOnAllPathTravelledOver;

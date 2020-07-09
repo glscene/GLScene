@@ -1,10 +1,10 @@
 //
 // This unit is part of the GLScene Engine, http://glscene.org
 //
-(*
-  Nodes are used to describe lines, polygons + more.
-*)
+
 unit GLNodes;
+
+(* Nodes are used to describe lines, polygons + more. *)
 
 interface
 
