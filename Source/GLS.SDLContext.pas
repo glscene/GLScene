@@ -16,6 +16,7 @@ unit GLS.SDLContext;
 interface
 
 uses
+  Winapi.OpenGL,
   Winapi.Windows,
   System.Classes,
   System.SysUtils,
@@ -25,7 +26,7 @@ uses
   GLScene,
   GLCrossPlatform,
 
-  Winapi.OpenGL,
+  GLS.OpenGLx,
   GLS.SDLWindow,
   SDL2;
 

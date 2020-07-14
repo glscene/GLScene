@@ -17,7 +17,6 @@ uses
   OpenGLTokens,
   GLParticleFX,
   GLGraphics,
-//  GLPerlinNoise3D,
   GLVectorGeometry;
 
 
@@ -78,8 +77,7 @@ type
     (* Amplitude applied to the perlin noise (intensity).
       This value represent the percentage of the sprite luminance affected by
       the perlin texture. *)
-    property NoiseAmplitude: Integer read FNoiseAmplitude
-      write SetNoiseAmplitude default 50;
+    property NoiseAmplitude: Integer read FNoiseAmplitude write SetNoiseAmplitude default 50;
     property ColorMode default scmInner;
     property SpritesPerTexture default sptFour;
     property ParticleSize;
@@ -204,8 +202,7 @@ begin
   end;
 end;
 
-procedure TGLPerlinPFXManager.PrepareImage(bmp32: TGLBitmap32;
-  var texFormat: Integer);
+procedure TGLPerlinPFXManager.PrepareImage(bmp32: TGLBitmap32; var texFormat: Integer);
 
   procedure PrepareSubImage(dx, dy, s: Integer; noise: TGLPerlin3DNoise);
   var

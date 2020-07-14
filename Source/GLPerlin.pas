@@ -391,7 +391,7 @@ begin
         Perlin_Random1(int_x + 1), frac_x);
   else
     raise exception.Create
-      ('TGLBasePerlin.PerlinNoise_1D, Interpolation not implemented!');
+      ('PerlinNoise_1D, Interpolation not implemented!');
   end;
 end;
 
@@ -423,7 +423,7 @@ begin
         Perlin_Random1(int_x + 1), frac_x);
   else
     raise exception.Create
-      ('TGLBasePerlin.PerlinNoise_1D, Interpolation not implemented!');
+      ('PerlinNoise_1D, Interpolation not implemented!');
   end;
 end;
 
@@ -465,12 +465,10 @@ begin
       Octaves[XC].Scale := NewScale;
       NewScale := NewScale shl 1;
     end;
-
   end;
 end;
 
 procedure TGLBasePerlin.SetPersistence(val: Double);
-
 var
   XC: Integer;
 begin
@@ -484,7 +482,7 @@ begin
   end;
 end;
 
-Constructor TGLBasePerlin.Create(AOwner: TComponent);
+constructor TGLBasePerlin.Create(AOwner: TComponent);
 
 begin
   inherited;
@@ -659,13 +657,13 @@ begin
     [x + 1]) / 8 + Data[y + 1][x + 1] / 4; { }
 end;
 
-Function TGL2DPerlinOctav.GetData(x, y: Integer): Double;
+function TGL2DPerlinOctav.GetData(x, y: Integer): Double;
 
 begin
   Result := Data[y][x];
 end;
 
-Function TGL2DPerlinOctav.GetCubic(x, y: Double): Double;
+function TGL2DPerlinOctav.GetCubic(x, y: Double): Double;
 
 Var
   X_Int: Integer;
@@ -704,7 +702,7 @@ begin
     X_Frac), Y_Frac);
 end;
 
-Constructor TGL2DPerlin.Create(AOwner: TComponent);
+constructor TGL2DPerlin.Create(AOwner: TComponent);
 
 begin
   inherited;
@@ -774,7 +772,7 @@ begin
   Param.Width := Width;
   Param.Height := Height;
 
-  For YC := 0 to Height - 1 do
+  for YC := 0 to Height - 1 do
   begin
     Posi := Param.ScanLine[YC];
     For XC := 0 to Width - 1 do
@@ -967,11 +965,12 @@ begin
 end;
 
 procedure TGLPerlinHDSThread.OpdateOutSide;
-
 begin
 end;
 
+//-----------------------------------------------
 initialization
+//-----------------------------------------------
 
 RegisterClasses([TGLPerlinHDS]);
 

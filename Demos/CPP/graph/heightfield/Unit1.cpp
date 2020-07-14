@@ -1,6 +1,7 @@
 //---------------------------------------------------------------------------
 
 #include <vcl.h>
+#include <System.Math.hpp>
 #pragma hdrstop
 
 #include "Unit1.h"
@@ -56,7 +57,7 @@ void __fastcall TForm1::Formula3(const float x, const float y, float &z,
 {
    // 3rd formula, dynamic
    z = 1/(1+VectorNorm(Sphere1->Position->X-x,Sphere1->Position->Y-y));
-   if (((Round(x*4)+Round(y*4)) && 1)==1)
+   if (((ceil(x*4)+ceil(y*4)) && 1)==1)
 	  color = clrBlue;
    else
 	  color=clrYellow;

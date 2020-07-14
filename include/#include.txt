@@ -1,0 +1,1 @@
+The directory for auto-generated C++ HPP files
