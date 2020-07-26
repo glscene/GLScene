@@ -162,8 +162,16 @@ begin
 end;
 
 var
-  vUtilWindowClass: TWndClass = (style: 0; lpfnWndProc: @DefWindowProc; cbClsExtra: 0; cbWndExtra: 0; hInstance: 0; hIcon: 0;
-    hCursor: 0; hbrBackground: 0; lpszMenuName: nil; lpszClassName: 'GLSUtilWindow');
+  vUtilWindowClass: TWndClass = (style: 0; 
+    lpfnWndProc: @DefWindowProc; 
+	cbClsExtra: 0; 
+	cbWndExtra: 0; 
+	hInstance: 0; 
+	hIcon: 0;
+    hCursor: 0; 
+	hbrBackground: 0; 
+	lpszMenuName: nil; 
+	lpszClassName: 'GLSUtilWindow');
 
 function CreateTempWnd: NativeUInt;
 var
@@ -174,7 +182,8 @@ begin
   classRegistered := GetClassInfo(hInstance, vUtilWindowClass.lpszClassName, tempClass);
   if not classRegistered then
     Winapi.Windows.RegisterClass(vUtilWindowClass);
-  Result := CreateWindowEx(WS_EX_TOOLWINDOW, vUtilWindowClass.lpszClassName, '', WS_POPUP, 0, 0, 0, 0, 0, 0, hInstance, nil);
+  Result := CreateWindowEx(WS_EX_TOOLWINDOW, vUtilWindowClass.lpszClassName, 
+    '', WS_POPUP, 0, 0, 0, 0, 0, 0, hInstance, nil);
 end;
 
 // ------------------
@@ -311,7 +320,8 @@ const
 
   procedure ChoosePixelFormat;
   begin
-    if not FGL.WChoosePixelFormatARB(DC, @FiAttribs[0], @FfAttribs[0], 32, PGLint(piFormats), @nNumFormats) then
+    if not FGL.WChoosePixelFormatARB(DC, @FiAttribs[0], @FfAttribs[0], 
+	  32, PGLint(piFormats), @nNumFormats) then
       nNumFormats := 0;
   end;
 

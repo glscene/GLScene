@@ -24,7 +24,8 @@ uses
   Vcl.Graphics,
   Vcl.Menus,
   Vcl.Imaging.jpeg,
-  
+
+  GLS.OpenGLx,
   GLScene,
   GLSceneViewer,
   GLContext,
@@ -187,8 +188,8 @@ begin
     with aSceneBuffer do
     begin
       // common properties
-      VendorLabel.Caption := String(gl.GetString(GL_VENDOR));
-      RendererLabel.Caption := String(gl.GetString(GL_RENDERER));
+      VendorLabel.Caption := String(glGetString(GL_VENDOR));
+      RendererLabel.Caption := String(glGetString(GL_RENDERER));
       dc := wglGetCurrentDC();
       pixelFormat := GetPixelFormat(dc);
       DescribePixelFormat(dc, pixelFormat, SizeOf(pfd), pfd);
@@ -199,8 +200,8 @@ begin
         AccLabel.Caption := 'Mini-Client Driver'
       else if (DRIVER_MASK and pfd.dwFlags) = PFD_GENERIC_FORMAT then
         AccLabel.Caption := 'Generic Software Driver';
-      VersionLabel.Caption := String(gl.GetString(GL_VERSION));
-      ExtStr := String(gl.GetString(GL_EXTENSIONS));
+      VersionLabel.Caption := String(glGetString(GL_VERSION));
+      ExtStr := String(glGetString(GL_EXTENSIONS));
       ListBoxExtensions.Clear;
       while Length(ExtStr) > 0 do
       begin
@@ -222,9 +223,9 @@ begin
         StereoLabel.Caption := 'no';
 
       // Include WGL extensions
-      if GL.W_ARB_extensions_string then
+      if WGL_ARB_extensions_string then
       begin
-        ExtStr := String(gl.WGetExtensionsStringARB(dc));
+        ExtStr := String(wglGetExtensionsStringARB(dc));
         while Length(ExtStr) > 0 do
         begin
           i := Pos(' ', ExtStr);
@@ -292,14 +293,14 @@ begin
 end;
 
 // -------------------------------------------------------------------
-//
+
 procedure TGLInfoForm.CloseButtonClick(Sender: TObject);
 begin
   Close;
 end;
 
 // -------------------------------------------------------------------
-//
+
 procedure TGLInfoForm.FormKeyPress(Sender: TObject; var Key: Char);
 
 begin
@@ -308,14 +309,14 @@ begin
 end;
 
 // -------------------------------------------------------------------
-//
+
 procedure TGLInfoForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Release;
 end;
 
 // -------------------------------------------------------------------
-//
+
 procedure TGLInfoForm.ListBoxExtensionsDblClick(Sender: TObject);
 var
   p: Integer;
@@ -340,7 +341,7 @@ begin
 end;
 
 // -------------------------------------------------------------------
-//
+
 procedure TGLInfoForm.MIDelphi3DClick(Sender: TObject);
 var
   url: String;
@@ -356,7 +357,7 @@ begin
 end;
 
 // -------------------------------------------------------------------
-//
+
 procedure TGLInfoForm.ListBoxExtensionsClick(Sender: TObject);
 var
   extName: String;
@@ -378,13 +379,13 @@ begin
 end;
 
 // -------------------------------------------------------------------
-//
+
 procedure TGLInfoForm.LoadContributors;
  var
    ContributorsFileName: string;
    ContrPath: TFileName;
 begin
-{
+(*
    ContrPath := ExtractFilePath(ParamStr(0));
    ContributorsFileName := ContrPath + '\Contributors.txt';
 
@@ -394,11 +395,11 @@ begin
     else
       MemoContributors.Lines.Text := 'Cannot find contributors list.';
     MemoContributors.Lines.Add(ContributorsFileName);
-}
+*)
 end;
 
 // -------------------------------------------------------------------
-//
+
 function TGLInfoForm.GetSceneVersion: string;
 var
   FExePath, FGLSceneRevision: string;
@@ -422,6 +423,7 @@ begin
 end;
 
 // ------------------------------------------------------------------------------
+
 procedure TGLInfoForm.WebsiteLblClick(Sender: TObject);
 begin
   ShowHTMLUrl(WebsiteLbl.Caption);

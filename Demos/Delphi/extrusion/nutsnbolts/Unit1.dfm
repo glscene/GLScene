@@ -3,8 +3,8 @@ object Form1: TForm1
   Top = 77
   BorderWidth = 3
   Caption = 'Nut and Bolt'
-  ClientHeight = 279
-  ClientWidth = 431
+  ClientHeight = 415
+  ClientWidth = 564
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,23 +12,24 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  WindowState = wsMaximized
   OnMouseWheel = FormMouseWheel
   PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 431
-    Height = 279
+    Width = 564
+    Height = 415
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 140.562316894531300000
+    FieldOfView = 152.904129028320300000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 425
+    ExplicitHeight = 273
   end
   object GLScene1: TGLScene
     Left = 8

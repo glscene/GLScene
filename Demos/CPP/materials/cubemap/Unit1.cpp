@@ -24,7 +24,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLSceneViewer1BeforeRender(TObject *Sender)
 {
-  CubmapSupported = !GL_ARB_texture_cube_map;
+  //CubmapSupported = !GL_ARB_texture_cube_map;
   GLSceneViewer1->BeforeRender = NULL;
 
 }
@@ -35,11 +35,14 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
   // If you don't check and turn off cube maps yourself in your apps when
   // cube maps aren't supported, GLScene will just turn off texturing
   // (ie. no error generated, just a different output)
+
+  /*
   if (!CubmapSupported)
   {
 	ShowMessage("Your graphics board does not support cube maps...");
 	exit;
   }
+  */
   // Our cube map images are here
   SetGLSceneMediaDir();
 	// We need a CubeMapImage, which unlike the "regular Images" stores

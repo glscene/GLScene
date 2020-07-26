@@ -15,10 +15,9 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
   System.Classes,
   
-  OpenGLTokens,
-  OpenGLAdapter,
   GLScene,
   GLVectorGeometry,
   GLContext,
@@ -286,7 +285,7 @@ end;
 procedure TGLMirror.BuildList(var ARci: TGLRenderContextInfo);
 var
   hw, hh: Single;
-  quadric: PGLUquadricObj;
+  quadric: GLUquadricObj;
 begin
   if msRect = FShape then
   begin

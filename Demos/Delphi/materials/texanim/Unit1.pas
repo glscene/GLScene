@@ -13,9 +13,15 @@ uses
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
 
-  
-  GLCadencer, GLScene, GLObjects, GLTexture,
-  GLSceneViewer, GLMaterial, GLCoordinates, GLCrossPlatform, GLBaseClasses;
+  GLCadencer,
+  GLScene,
+  GLObjects,
+  GLTexture,
+  GLSceneViewer,
+  GLMaterial,
+  GLCoordinates,
+  GLCrossPlatform,
+  GLBaseClasses;
 
 type
   TForm1 = class(TForm)
@@ -36,10 +42,7 @@ type
       newTime: Double);
     procedure Button1Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-  private
-     
   public
-     
     timeToNextFrame : Double;
   end;
 
@@ -95,7 +98,7 @@ begin
             GLMaterialLibrary1.Tag:=(GLMaterialLibrary1.Tag+1) mod 10;
          end;
          // then, we update the material reference
-         Cube1.Material.LibMaterialName:='IMG'+IntToStr(GLMaterialLibrary1.Tag);
+         Cube1.Material.LibMaterialName := 'IMG'+IntToStr(GLMaterialLibrary1.Tag);
       end;
    end;
 end;

@@ -170,7 +170,6 @@ implementation
 // ------------------------------------------------------------------
 
 procedure SetupVSync(const AVSyncMode : TGLVSyncMode);
-{$IFDEF MSWINDOWS}
 var
   I: Integer;
 begin
@@ -185,38 +184,6 @@ begin
     end;
   end;
 end;
-{$ENDIF}
-{$IFDEF Linux}
-begin
-  if gl.X_SGI_swap_control then
-  begin
-    case AVSyncMode of
-      vsmSync  : gl.XSwapIntervalSGI(GL_True);
-      vsmNoSync: gl.XSwapIntervalSGI(GL_False);
-    else
-       Assert(False);
-    end;
-  end;
-end;
-{$ENDIF}
-{$IFDEF DARWIN}
-var ctx: TAGLContext;
-const ISync: Integer = 0;
-      INoSync: Integer = 1;
-begin
-  if Assigned(GL) then
-  begin
-    ctx := gl.aGetCurrentContext();
-    if Assigned(ctx) then
-      case AVSyncMode of
-        vsmSync  : gl.aSetInteger(ctx, AGL_SWAP_INTERVAL, @ISync);
-        vsmNoSync: gl.aSetInteger(ctx, AGL_SWAP_INTERVAL, @INoSync);
-      else
-         Assert(False);
-      end;
-  end;
-end;
-{$ENDIF}
 
 // ------------------
 // ------------------ TGLSceneViewer ------------------
@@ -547,7 +514,8 @@ function TGLSceneViewer.GetFieldOfView: single;
 begin
   if not Assigned(Camera) then
     result := 0
-  else if Width < Height then
+  else 
+  if Width < Height then
     result := Camera.GetFieldOfView(Width)
   else
     result := Camera.GetFieldOfView(Height);

@@ -215,7 +215,6 @@ type
   strict private
     FWidth, FHeight: Integer;
     FFullScreen: Boolean;
-  protected
   public
     property width: Integer read FWidth write FWidth;
     property height: Integer read FHeight write FHeight;
@@ -476,7 +475,7 @@ type
     property BufferSize: Integer read FSize;
   end;
 
-  (* Manages a handle to an Vertex Buffer Object.
+  (* Manages a handle to an Vertex Buffer Object, VBO.
     Does *NOT* check for extension availability, this is assumed to have been
     checked by the user.
     Do not use this class directly, use one of its subclasses instead. *)
@@ -829,7 +828,8 @@ type
     constructor Create; override;
     (* Compile and attach a new shader.
       Raises an EGLShader exception in case of failure. *)
-    procedure AddShader(ShaderType: TGLShaderHandleClass; const ShaderSource: string; treatWarningsAsErrors: Boolean = False);
+    procedure AddShader(ShaderType: TGLShaderHandleClass; const ShaderSource: string; 
+	   treatWarningsAsErrors: Boolean = False);
     procedure AttachObject(shader: TGLShaderHandle);
     procedure DetachAllObject;
     procedure BindAttribLocation(index: Integer; const aName: string);

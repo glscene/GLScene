@@ -17,7 +17,7 @@ uses
   System.Classes,
   System.Variants,
   
-  Winapi.OpenGL,
+  GLS.OpenGLx,
   GLContext,
   GLVectorGeometry,
   

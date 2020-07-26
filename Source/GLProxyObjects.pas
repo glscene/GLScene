@@ -702,9 +702,6 @@ begin
   end;
 end;
 
-// SetAnimation
-//
-
 procedure TGLActorProxy.SetAnimation(const Value: TGLActorAnimationName);
 var
   anAnimation: TGLActorAnimation;

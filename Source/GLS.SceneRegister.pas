@@ -104,14 +104,14 @@ type
     procedure SetValue(const Value: string); override;
   end;
 
-  TSoundFileProperty = class(TClassProperty)
+  TGLSoundFileProperty = class(TClassProperty)
   public
     function GetAttributes: TPropertyAttributes; override;
     function GetValue: string; override;
     procedure Edit; override;
   end;
 
-  TSoundNameProperty = class(TStringProperty)
+  TGLSoundNameProperty = class(TStringProperty)
   public
     function GetAttributes: TPropertyAttributes; override;
     procedure GetValues(Proc: TGetStrProc); override;
@@ -144,7 +144,7 @@ type
     here for the same reason...), the "protected" wasn't meant just to lure
     programmers into code they can't reuse... Arrr! and he did that again
     in D6! Grrr... *)
-  TReuseableDefaultEditor = class(TComponentEditor, IDefaultEditor)
+  TGLReuseableDefaultEditor = class(TComponentEditor, IDefaultEditor)
   protected
     FFirst: IProperty;
     FBest: IProperty;
@@ -156,7 +156,7 @@ type
   end;
 
   //  Editor for material library.
-  TGLMaterialLibraryEditor = class(TReuseableDefaultEditor, IDefaultEditor)
+  TGLMaterialLibraryEditor = class(TGLReuseableDefaultEditor, IDefaultEditor)
   protected
     procedure EditProperty(const Prop: IProperty; var Continue: Boolean); override;
   public
@@ -188,7 +188,7 @@ type
   end;
 
   // Editor for GLScene Archive Manager.  
-  TGLSArchiveManagerEditor = class(TReuseableDefaultEditor, IDefaultEditor)
+  TGLSArchiveManagerEditor = class(TGLReuseableDefaultEditor, IDefaultEditor)
   protected
     procedure EditProperty(const Prop: IProperty; var Continue: Boolean); override;
   public
@@ -454,6 +454,7 @@ begin
 end;
 
 //----------------- TGLSceneViewerEditor ---------------------------------------
+
 procedure TGLSceneViewerEditor.ExecuteVerb(Index: Integer);
 var
   source: TGLSceneViewer;
@@ -507,6 +508,7 @@ begin
 end;
 
 //----------------- TGLResolutionProperty ----------------------------------------
+
 function TGLResolutionProperty.GetAttributes: TPropertyAttributes;
 begin
   Result := [paValueList];
@@ -762,13 +764,13 @@ begin
   DefaultPropertyDrawName(Self, ACanvas, ARect);
 end;
 
-//----------------- TSoundFileProperty -----------------------------------------
-function TSoundFileProperty.GetAttributes: TPropertyAttributes;
+//----------------- TGLSoundFileProperty -----------------------------------------
+function TGLSoundFileProperty.GetAttributes: TPropertyAttributes;
 begin
   Result := [paDialog];
 end;
 
-function TSoundFileProperty.GetValue: string;
+function TGLSoundFileProperty.GetValue: string;
 var
   sample: TGLSoundSample;
 begin
@@ -779,7 +781,7 @@ begin
     Result := '(empty)';
 end;
 
-procedure TSoundFileProperty.Edit;
+procedure TGLSoundFileProperty.Edit;
 var
   ODialog: TOpenDialog;
   sample: TGLSoundSample;
@@ -800,14 +802,14 @@ begin
   end;
 end;
 
-//----------------- TSoundNameProperty -----------------------------------------
+//----------------- TGLSoundNameProperty -----------------------------------------
 
-function TSoundNameProperty.GetAttributes: TPropertyAttributes;
+function TGLSoundNameProperty.GetAttributes: TPropertyAttributes;
 begin
   Result := [paValueList];
 end;
 
-procedure TSoundNameProperty.GetValues(Proc: TGetStrProc);
+procedure TGLSoundNameProperty.GetValues(Proc: TGetStrProc);
 var
   i: Integer;
   source: TGLBaseSoundSource;
@@ -881,13 +883,13 @@ begin
   Result := 1;
 end;
 
-procedure TReuseableDefaultEditor.CheckEdit(const Prop: IProperty);
+procedure TGLReuseableDefaultEditor.CheckEdit(const Prop: IProperty);
 begin
   if FContinue then
     EditProperty(Prop, FContinue);
 end;
 
-procedure TReuseableDefaultEditor.EditProperty(const Prop: IProperty;
+procedure TGLReuseableDefaultEditor.EditProperty(const Prop: IProperty;
   var Continue: Boolean);
 var
   PropName: string;
@@ -919,7 +921,7 @@ begin
         ReplaceBest;
 end;
 
-procedure TReuseableDefaultEditor.Edit;
+procedure TGLReuseableDefaultEditor.Edit;
 var
   Components: IDesignerSelections;
 begin
@@ -941,7 +943,8 @@ begin
   end;
 end;
 
-//----------------- TGLMaterialLibraryEditor --------------------------------------------------------------------------------
+//----------------- TGLMaterialLibraryEditor ----------------------------------
+
 procedure TGLMaterialLibraryEditor.EditProperty(const Prop: IProperty; var Continue: Boolean);
 begin
   if CompareText(Prop.GetName, 'MATERIALS') = 0 then
@@ -1023,6 +1026,7 @@ begin
       end;
   end;
 end;
+
 //---------------- TGLBaseSceneObjectSelectionEditor -----------------------
 
 procedure TGLBaseSceneObjectSelectionEditor.RequiresUnits(Proc: TGetStrProc);
@@ -1089,8 +1093,7 @@ end;
 function TGLSArchiveManagerEditor.GetVerb(Index: Integer): string;
 begin
   case Index of
-    0:
-      Result := 'Show Archive Manager Editor';
+    0: Result := 'Show Archive Manager Editor';
   end;
 end;
 
@@ -1323,7 +1326,7 @@ end;
 // ******************************************************
 // Register Properties
 //*******************************************************
-procedure GLRegisterPropertiesInCategories;
+procedure RegisterPropertiesInCategories;
 begin
   // property types
   // ScreenDepth in Win32FullScreenViewer
@@ -1332,7 +1335,6 @@ begin
      TypeInfo(TGLVSyncMode), TypeInfo(TGLScreenDepth)]);
   // SceneViewer
   RegisterPropertiesInCategory(strOpenGLCategoryName, TGLSceneViewer, ['*Render']);
-
   // Scene
   RegisterPropertiesInCategory(strOpenGLCategoryName,
     [TypeInfo(TGLObjectsSorting), TypeInfo(TGLProgressEvent),
@@ -1398,28 +1400,21 @@ begin
 
   // MultiPolygon
   RegisterPropertiesInCategory(strVisualCategoryName, TGLContour, ['Division']);
-  RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLContourNodes),
-    TypeInfo(TGLContours)]);
+  RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLContourNodes), TypeInfo(TGLContours)]);
 
   // Extrusion
   RegisterPropertiesInCategory(strVisualCategoryName, TGLExtrusionSolid, ['Stacks']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLPipeNode, ['RadiusFactor']);
-  RegisterPropertiesInCategory(strVisualCategoryName, TGLPipe,
-    ['Division', 'Radius', 'Slices']);
-  RegisterPropertiesInCategory(strVisualCategoryName,
-    [TypeInfo(TGLNodes), TypeInfo(TPipeNodesColorMode)]);
-  RegisterPropertiesInCategory(strVisualCategoryName, TGLRevolutionSolid,
-    ['Division', 'Slices', 'YOffsetPerTurn']);
+  RegisterPropertiesInCategory(strVisualCategoryName, TGLPipe, ['Division', 'Radius', 'Slices']);
+  RegisterPropertiesInCategory(strVisualCategoryName, [TypeInfo(TGLNodes), TypeInfo(TPipeNodesColorMode)]);
+  RegisterPropertiesInCategory(strVisualCategoryName, TGLRevolutionSolid, ['Division', 'Slices', 'YOffsetPerTurn']);
 
   // VectorFileObjects
-  RegisterPropertiesInCategory(strOpenGLCategoryName,
-    [TypeInfo(TGLActorAnimationMode), TypeInfo(TGLActorAnimations),
+  RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLActorAnimationMode), TypeInfo(TGLActorAnimations),
     TypeInfo(TGLMeshAutoCenterings), TypeInfo(TGLActorFrameInterpolation),
     TypeInfo(TGLActorAnimationReference), TypeInfo(TGLActor)]);
-  RegisterPropertiesInCategory(strLayoutCategoryName,
-    [TypeInfo(TGLMeshNormalsOrientation)]);
-  RegisterPropertiesInCategory(strVisualCategoryName,
-    [TypeInfo(TGLMeshAutoCenterings), TypeInfo(TGLActorAnimationReference),
+  RegisterPropertiesInCategory(strLayoutCategoryName, [TypeInfo(TGLMeshNormalsOrientation)]);
+  RegisterPropertiesInCategory(strVisualCategoryName, [TypeInfo(TGLMeshAutoCenterings), TypeInfo(TGLActorAnimationReference),
     TypeInfo(TGLMeshNormalsOrientation)]);
   RegisterPropertiesInCategory(strOpenGLCategoryName, TGLFreeForm, ['UseMeshmaterials']);
   RegisterPropertiesInCategory(strOpenGLCategoryName, TGLAnimationControler, ['AnimationName']);
@@ -1430,14 +1425,11 @@ begin
   RegisterPropertiesInCategory(strVisualCategoryName, TGLActor,  ['OverlaySkeleton']);
 
   // Mesh
-  RegisterPropertiesInCategory(strOpenGLCategoryName,
-    [TypeInfo(TGLMeshMode), TypeInfo(TGLVertexMode)]);
+  RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLMeshMode), TypeInfo(TGLVertexMode)]);
 
   // Graph
-  RegisterPropertiesInCategory(strOpenGLCategoryName,
-    [TypeInfo(TGLHeightFieldOptions)]);
-  RegisterPropertiesInCategory(strVisualCategoryName,
-    [TypeInfo(TGLHeightFieldColorMode), TypeInfo(TGLSamplingScale),
+  RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLHeightFieldOptions)]);
+  RegisterPropertiesInCategory(strVisualCategoryName, [TypeInfo(TGLHeightFieldColorMode), TypeInfo(TGLSamplingScale),
     TypeInfo(TGLXYZGridLinesStyle), TypeInfo(TGLXYZGridParts)]);
   RegisterPropertiesInCategory(strOpenGLCategoryName, TGLXYZGrid, ['Antialiased']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLXYZGrid, ['Antialiased', 'Line*']);
@@ -1472,15 +1464,13 @@ begin
 
   // TerrainRenderer
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLHeightDataSource)]);
-  RegisterPropertiesInCategory(strVisualCategoryName, TGLTerrainRenderer,
-    ['*CLOD*', 'QualityDistance', 'Tile*']);
+  RegisterPropertiesInCategory(strVisualCategoryName, TGLTerrainRenderer, ['*CLOD*', 'QualityDistance', 'Tile*']);
 
   // zBuffer
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLMemoryViewer),
     TypeInfo(TGLSceneViewer), TypeInfo(TOptimise)]);
   RegisterPropertiesInCategory(strVisualCategoryName, [TypeInfo(TOptimise)]);
-  RegisterPropertiesInCategory(strVisualCategoryName, TGLZShadows,
-    ['DepthFade', '*Shadow', 'Soft', 'Tolerance']);
+  RegisterPropertiesInCategory(strVisualCategoryName, TGLZShadows, ['DepthFade', '*Shadow', 'Soft', 'Tolerance']);
 
   // HUDObjects
   RegisterPropertiesInCategory(strLayoutCategoryName, [TypeInfo(TTextLayout)]);
@@ -1488,8 +1478,7 @@ begin
   RegisterPropertiesInCategory(strLocalizableCategoryName,[TypeInfo(TGLBitmapFont)]);
 
   // Texture
-  RegisterPropertiesInCategory(strOpenGLCategoryName,
-    [TypeInfo(TGLMaterial), TypeInfo(TGLMaterialLibrary),
+  RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLMaterial), TypeInfo(TGLMaterialLibrary),
     TypeInfo(TGLLibMaterials), TypeInfo(TGLTextureNeededEvent)]);
   RegisterPropertiesInCategory(strOpenGLCategoryName, TGLLibMaterial, ['Texture2Name']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLLibMaterial, ['TextureOffset', 'TextureScale']);
@@ -1572,54 +1561,34 @@ begin
   RegisterComponentEditor(TGLMaterialLibraryEx, TGLMaterialLibraryEditor);
   RegisterComponentEditor(TGLSArchiveManager, TGLSArchiveManagerEditor);
 
-  GLRegisterPropertiesInCategories;
+  RegisterPropertiesInCategories;
 
   RegisterPropertyEditor(TypeInfo(TResolution), nil, '', TGLResolutionProperty);
-  RegisterPropertyEditor(TypeInfo(TGLTexture), TGLMaterial, '',
-    TGLTextureProperty);
-  RegisterPropertyEditor(TypeInfo(TGLTextureImage), TGLTexture, '',
-    TGLTextureImageProperty);
-  RegisterPropertyEditor(TypeInfo(string), TGLTexture, 'ImageClassName',
-    TGLImageClassProperty);
-
-  RegisterPropertyEditor(TypeInfo(TGLSoundFile), TGLSoundSample, '', TSoundFileProperty);
-  RegisterPropertyEditor(TypeInfo(string), TGLBaseSoundSource, 'SoundName', TSoundNameProperty);
-
+  RegisterPropertyEditor(TypeInfo(TGLTexture), TGLMaterial, '', TGLTextureProperty);
+  RegisterPropertyEditor(TypeInfo(TGLTextureImage), TGLTexture, '', TGLTextureImageProperty);
+  RegisterPropertyEditor(TypeInfo(string), TGLTexture, 'ImageClassName', TGLImageClassProperty);
+  RegisterPropertyEditor(TypeInfo(TGLSoundFile), TGLSoundSample, '', TGLSoundFileProperty);
+  RegisterPropertyEditor(TypeInfo(string), TGLBaseSoundSource, 'SoundName', TGLSoundNameProperty);
   RegisterPropertyEditor(TypeInfo(TGLCoordinates), nil, '', TGLCoordinatesProperty);
-
   RegisterPropertyEditor(TypeInfo(TGLColor), nil, '', TGLColorProperty);
   RegisterPropertyEditor(TypeInfo(TGLMaterial), nil, '', TGLMaterialProperty);
   RegisterComponentEditor(TGLGuiLayout, TGLGUILayoutEditor);
 
-  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLMaterial, '',
+  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLMaterial, '', TGLLibMaterialNameProperty);
+  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLLibMaterial, 'Texture2Name', TGLLibMaterialNameProperty);
+  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLSkyBox, '', TGLLibMaterialNameProperty);
+  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLEParticleMask, '', TGLLibMaterialNameProperty);
+  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLGameMenu, '', TGLLibMaterialNameProperty);
+  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLMaterialMultiProxyMaster, '', TGLLibMaterialNameProperty);
+  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLSLBumpShader, '', TGLLibMaterialNameProperty);
+  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLSpriteAnimation, '', TGLLibMaterialNameProperty);
+  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLMaterialProxy, '', TGLLibMaterialNameProperty);
+  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLActorProxy, '', TGLLibMaterialNameProperty);
+  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLFBORenderer, '', TGLLibMaterialNameProperty);
+  RegisterPropertyEditor(TypeInfo(TGLActorAnimationName), TGLAnimationControler, '', TGLAnimationNameProperty);
+  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLTextureSharingShaderMaterial, 'LibMaterialName',
     TGLLibMaterialNameProperty);
-  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLLibMaterial,
-    'Texture2Name', TGLLibMaterialNameProperty);
-  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLSkyBox, '',
-    TGLLibMaterialNameProperty);
-  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLEParticleMask, '',
-    TGLLibMaterialNameProperty);
-  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLGameMenu, '',
-    TGLLibMaterialNameProperty);
-  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName),
-    TGLMaterialMultiProxyMaster, '', TGLLibMaterialNameProperty);
-  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLSLBumpShader, '',
-    TGLLibMaterialNameProperty);
-  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLSpriteAnimation, '',
-    TGLLibMaterialNameProperty);
-  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLMaterialProxy, '',
-    TGLLibMaterialNameProperty);
-  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLActorProxy, '',
-    TGLLibMaterialNameProperty);
-  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLFBORenderer, '',
-    TGLLibMaterialNameProperty);
-  RegisterPropertyEditor(TypeInfo(TGLActorAnimationName), TGLAnimationControler,
-    '', TGLAnimationNameProperty);
-  RegisterPropertyEditor(TypeInfo(TGLLibMaterialName),
-    TGLTextureSharingShaderMaterial, 'LibMaterialName',
-    TGLLibMaterialNameProperty);
-  RegisterSelectionEditor(TGLBaseSceneObject,
-    TGLBaseSceneObjectSelectionEditor);
+  RegisterSelectionEditor(TGLBaseSceneObject, TGLBaseSceneObjectSelectionEditor);
   RegisterSelectionEditor(TGLSoundLibrary, TGLSoundLibrarySelectionEditor);
   RegisterPropertyEditor(TypeInfo(TGLLibMaterialName), TGLLibMaterialProperty,
     'NextPass', TGLLibMaterialNameProperty);
@@ -1655,7 +1624,6 @@ begin
   RegisterPropertyEditor(TypeInfo(string), TGLTextureImageEx, 'SourceFile', TPictureFileProperty);
   RegisterPropertyEditor(TypeInfo(string), TGLShaderEx, 'SourceFile', TShaderFileProperty);
   RegisterPropertyEditor(TypeInfo(string), TGLASMVertexProgram, 'SourceFile', TAsmProgFileProperty);
-
   RegisterPropertyEditor(TypeInfo(Boolean), TGLBaseShaderModel, 'AutoFillOfUniforms', TUniformAutoSetProperty);
   RegisterPropertyEditor(TypeInfo(TStringList), TGLShaderEx, 'Source', TGLShaderEditorProperty);
 end;

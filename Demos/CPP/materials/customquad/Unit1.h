@@ -5,8 +5,6 @@
 //---------------------------------------------------------------------------
 #include <vcl.h>
 #include <tchar.h>
-#include <gl.h>
-#include <glext.h>
 //---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include <Vcl.Controls.hpp>

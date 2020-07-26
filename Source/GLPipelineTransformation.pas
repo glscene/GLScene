@@ -11,8 +11,8 @@ interface
 {$I GLScene.inc}
 
 uses
-  OpenGLTokens,
-  OpenGLAdapter,
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   GLVectorGeometry,
   GLVectorTypes,
   GLS.Logger;
@@ -116,9 +116,9 @@ end;
 
 procedure TGLTransformation.LoadProjectionMatrix;
 begin
-  gl.MatrixMode(GL_PROJECTION);
-  gl.LoadMatrixf(PGLFloat(@FStack[FStackPos].FProjectionMatrix));
-  gl.MatrixMode(GL_MODELVIEW);
+  glMatrixMode(GL_PROJECTION);
+  glLoadMatrixf(PGLFloat(@FStack[FStackPos].FProjectionMatrix));
+  glMatrixMode(GL_MODELVIEW);
 end;
 
 function TGLTransformation.GetModelViewMatrix: PMatrix;
@@ -134,7 +134,7 @@ end;
 
 procedure TGLTransformation.LoadModelViewMatrix;
 begin
-  gl.LoadMatrixf(PGLFloat(GetModelViewMatrix));
+  glLoadMatrixf(PGLFloat(GetModelViewMatrix));
 end;
 
 procedure TGLTransformation.IdentityAll;

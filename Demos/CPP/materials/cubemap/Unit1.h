@@ -3,10 +3,9 @@
 #ifndef Unit1H
 #define Unit1H
 //---------------------------------------------------------------------------
+
 #include <vcl.h>
 #include <tchar.h>
-#include <gl.h>
-#include <glext.h>
 
 //---------------------------------------------------------------------------
 #include <System.Classes.hpp>

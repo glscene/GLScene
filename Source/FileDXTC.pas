@@ -69,9 +69,9 @@ type
       dwFlags,
       dwHeight,
       dwWidth,
-      dwPitchOrLinearSize, {The number of bytes per scan line in an
+      dwPitchOrLinearSize, (*The number of bytes per scan line in an
                             uncompressed texture; the total number of bytes
-                            in the top level texture for a compressed texture.}
+                            in the top level texture for a compressed texture.*)
       dwDepth,
       dwMipMapCount : Cardinal;
       dwReserved1 : array[0..10] of Cardinal;
@@ -293,7 +293,7 @@ type
     ColorFlag: Cardinal;
     RBits, GBits, BBits, ABits: Cardinal;
     colorFormat: Cardinal;
-    TexFormat: TGLInternalFormat;
+    TexFormat: TGLinternalFormat;
     dType: Cardinal;
   end;
 

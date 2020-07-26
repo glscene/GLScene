@@ -9,10 +9,6 @@ unit OpenGLAdapter;
 interface
 
 {$I GLScene.inc}
-{$IFDEF DARWIN}
-{$LINKFRAMEWORK OpenGL}
-{$LINKFRAMEWORK AGL}
-{$ENDIF}
 
 uses
   Winapi.Windows,
@@ -27,8 +23,6 @@ uses
 const
   opengl32 = 'OpenGL32.dll';
   glu32 = 'GLU32.dll';
-  libEGL = 'libEGL.dll';
-  libGLES2 = 'libGLESv2.dll';
 
 type
   EOpenGLError = class(Exception);
@@ -43,14 +37,6 @@ type
 {$IFDEF SUPPORT_WGL}
     procedure ReadWGLExtensions;
     procedure ReadWGLImplementationProperties;
-{$ENDIF}
-{$IFDEF SUPPORT_GLX}
-    procedure ReadGLXExtensions;
-    procedure ReadGLXImplementationProperties;
-{$ENDIF}
-{$IFDEF EGL_SUPPORT}
-    procedure ReadEGLExtensions;
-    procedure ReadEGLImplementationProperties;
 {$ENDIF}
     function GetAddress(const ProcName: string): Pointer;
     function GetAddressNoSuffixes(const ProcName: string): Pointer;
@@ -5250,269 +5236,6 @@ end;
 
 {$ENDIF}
 
-{$IFDEF SUPPORT_GLX}
-// ReadGLXImplementationProperties
-
-procedure TGLExtensionsAndEntryPoints.ReadGLXImplementationProperties;
-var
-  MajorVersion, MinorVersion: integer;
-  dpy: PDisplay;
-begin
-  dpy := glXGetCurrentDisplay();
-  FBuffer := string(glXQueryServerString(dpy, XDefaultScreen(dpy),
-    GLX_VERSION));
-  TrimAndSplitVersionString(FBuffer, MajorVersion, MinorVersion);
-  X_VERSION_1_1 := IsVersionMet(1, 1, MajorVersion, MinorVersion);
-  X_VERSION_1_2 := IsVersionMet(1, 2, MajorVersion, MinorVersion);
-  X_VERSION_1_3 := IsVersionMet(1, 3, MajorVersion, MinorVersion);
-  X_VERSION_1_4 := IsVersionMet(1, 4, MajorVersion, MinorVersion);
-
-  // This procedure will probably need changing, as totally untested
-  // This might only work if GLX functions/procedures are loaded dynamically
-  if Assigned(glXQueryExtensionsString) then
-    FBuffer := glXQueryExtensionsString(dpy, 0) // guess at a valid screen
-  else
-    FBuffer := '';
-  X_ARB_create_context := CheckExtension('GLX_ARB_create_context');
-  X_ARB_create_context_profile :=
-    CheckExtension('GLX_ARB_create_context_profile');
-  X_ARB_framebuffer_sRGB := CheckExtension('GLX_ARB_framebuffer_sRGB');
-  X_EXT_framebuffer_sRGB := CheckExtension('GLX_EXT_framebuffer_sRGB');
-  X_EXT_fbconfig_packed_float :=
-    CheckExtension('GLX_EXT_fbconfig_packed_float');
-  X_SGI_swap_control := CheckExtension('GLX_SGI_swap_control');
-  X_ARB_multisample := CheckExtension('GLX_ARB_multisample');
-
-  X_SGIS_multisample := CheckExtension('GLX_SGIS_multisample');
-  X_EXT_visual_info := CheckExtension('GLX_EXT_visual_info');
-  X_SGI_video_sync := CheckExtension('GLX_SGI_video_sync');
-  X_SGI_make_current_read := CheckExtension('GLX_SGI_make_current_read');
-  X_SGIX_video_source := CheckExtension('GLX_SGIX_video_source');
-  X_EXT_visual_rating := CheckExtension('GLX_EXT_visual_rating');
-  X_EXT_import_context := CheckExtension('GLX_EXT_import_context');
-  X_SGIX_fbconfig := CheckExtension('GLX_SGIX_fbconfig');
-  X_SGIX_pbuffer := CheckExtension('GLX_SGIX_pbuffer');
-  X_SGI_cushion := CheckExtension('GLX_SGI_cushion');
-  X_SGIX_video_resize := CheckExtension('GLX_SGIX_video_resize');
-  X_SGIX_dmbuffer := CheckExtension('GLX_SGIX_dmbuffer');
-  X_SGIX_swap_group := CheckExtension('GLX_SGIX_swap_group');
-  X_SGIX_swap_barrier := CheckExtension('GLX_SGIX_swap_barrier');
-  X_SGIS_blended_overlay := CheckExtension('GLX_SGIS_blended_overlay');
-  X_SGIS_shared_multisample := CheckExtension('GLX_SGIS_shared_multisample');
-  X_SUN_get_transparent_index :=
-    CheckExtension('GLX_SUN_get_transparent_index');
-  X_3DFX_multisample := CheckExtension('GLX_3DFX_multisample');
-  X_MESA_copy_sub_buffer := CheckExtension('GLX_MESA_copy_sub_buffer');
-  X_MESA_pixmap_colormap := CheckExtension('GLX_MESA_pixmap_colormap');
-  X_MESA_release_buffers := CheckExtension('GLX_MESA_release_buffers');
-  X_MESA_set_3dfx_mode := CheckExtension('GLX_MESA_set_3dfx_mode');
-  X_SGIX_visual_select_group := CheckExtension('GLX_SGIX_visual_select_group');
-  X_SGIX_hyperpipe := CheckExtension('GLX_SGIX_hyperpipe');
-  X_NV_multisample_coverage := CheckExtension('GLX_NV_multisample_coverage');
-end;
-
-procedure TGLExtensionsAndEntryPoints.ReadGLXExtensions;
-begin
-  // ARB glx extensions
-
-  // ###########################################################
-  // locating functions and procedures for
-  // ARB approved GLX extensions
-  // ###########################################################
-
-  // GLX 1.3 and later
-  XChooseFBConfig := GetProcAddressGLS('glXChooseFBConfig');
-  XGetFBConfigAttrib := GetProcAddressGLS('glXGetFBConfigAttrib');
-  XGetFBConfigs := GetProcAddressGLS('glXGetFBConfigs');
-  XGetVisualFromFBConfig := GetProcAddressGLS('glXGetVisualFromFBConfig');
-  XCreateWindow := GetProcAddressGLS('glXCreateWindow');
-  XDestroyWindow := GetProcAddressGLS('glXDestroyWindow');
-  XCreatePixmap := GetProcAddressGLS('glXCreatePixmap');
-  XDestroyPixmap := GetProcAddressGLS('glXDestroyPixmap');
-  XCreatePbuffer := GetProcAddressGLS('glXCreatePbuffer');
-  XDestroyPbuffer := GetProcAddressGLS('glXDestroyPbuffer');
-  XQueryDrawable := GetProcAddressGLS('glXQueryDrawable');
-  XCreateNewContext := GetProcAddressGLS('glXCreateNewContext');
-  XMakeContextCurrent := GetProcAddressGLS('glXMakeContextCurrent');
-  XGetCurrentReadDrawable := GetProcAddressGLS('glXGetCurrentReadDrawable');
-  XQueryContext := GetProcAddressGLS('glXQueryContext');
-  XSelectEvent := GetProcAddressGLS('glXSelectEvent');
-  XGetSelectedEvent := GetProcAddressGLS('glXGetSelectedEvent');
-  XBindTexImageARB := GetProcAddressGLS('glXBindTexImageARB');
-  XReleaseTexImageARB := GetProcAddressGLS('glXReleaseTexImageARB');
-  XDrawableAttribARB := GetProcAddressGLS('glxDrawableAttribARB');
-
-  // GLX 1.4
-  // GLX_ARB_create_context (EXT #56)
-  XCreateContextAttribsARB := GetProcAddressGLS('glXCreateContextAttribsARB');
-
-  // ###########################################################
-  // locating functions and procedures for
-  // Vendor/EXT WGL extensions
-  // ###########################################################
-
-  // WGL_EXT_swap_control (EXT #172)
-  XSwapIntervalSGI := GetProcAddressGLS('glXSwapIntervalSGI');
-  XGetVideoSyncSGI := GetProcAddressGLS('glXGetVideoSyncSGI');
-  XWaitVideoSyncSGI := GetProcAddressGLS('glXWaitVideoSyncSGI');
-  XFreeContextEXT := GetProcAddressGLS('glXFreeContextEXT');
-  XGetContextIDEXT := GetProcAddressGLS('glXGetContextIDEXT');
-  XGetCurrentDisplayEXT := GetProcAddressGLS('glXGetCurrentDisplayEXT');
-  XImportContextEXT := GetProcAddressGLS('glXImportContextEXT');
-  XQueryContextInfoEXT := GetProcAddressGLS('glXQueryContextInfoEXT');
-  XCopySubBufferMESA := GetProcAddressGLS('glXCopySubBufferMESA');
-  XCreateGLXPixmapMESA := GetProcAddressGLS('glXCreateGLXPixmapMESA');
-  XReleaseBuffersMESA := GetProcAddressGLS('glXReleaseBuffersMESA');
-  XSet3DfxModeMESA := GetProcAddressGLS('glXSet3DfxModeMESA');
-
-  XBindTexImageEXT := GetProcAddressGLS('glXBindTexImageEXT');
-  XReleaseTexImageEXT := GetProcAddressGLS('glXReleaseTexImageEXT');
-
-  // GLX 1.4
-  XMakeCurrentReadSGI := GetProcAddressGLS('glXMakeCurrentReadSGI');
-  XGetCurrentReadDrawableSGI :=
-    GetProcAddressGLS('glXGetCurrentReadDrawableSGI');
-  XGetFBConfigAttribSGIX := GetProcAddressGLS('glXGetFBConfigAttribSGIX');
-  XChooseFBConfigSGIX := GetProcAddressGLS('glXChooseFBConfigSGIX');
-  XCreateGLXPixmapWithConfigSGIX :=
-    GetProcAddressGLS('glXCreateGLXPixmapWithConfigSGIX');
-  XCreateContextWithConfigSGIX :=
-    GetProcAddressGLS('glXCreateContextWithConfigSGIX');
-  XGetVisualFromFBConfigSGIX :=
-    GetProcAddressGLS('glXGetVisualFromFBConfigSGIX');
-  XGetFBConfigFromVisualSGIX :=
-    GetProcAddressGLS('glXGetFBConfigFromVisualSGIX');
-  XCreateGLXPbufferSGIX := GetProcAddressGLS('glXCreateGLXPbufferSGIX');
-  XDestroyGLXPbufferSGIX := GetProcAddressGLS('glXDestroyGLXPbufferSGIX');
-  XQueryGLXPbufferSGIX := GetProcAddressGLS('glXQueryGLXPbufferSGIX');
-  XSelectEventSGIX := GetProcAddressGLS('glXSelectEventSGIX');
-  XGetSelectedEventSGIX := GetProcAddressGLS('glXGetSelectedEventSGIX');
-  XCushionSGI := GetProcAddressGLS('glXCushionSGI');
-  XBindChannelToWindowSGIX := GetProcAddressGLS('glXBindChannelToWindowSGIX');
-  XChannelRectSGIX := GetProcAddressGLS('glXChannelRectSGIX');
-  XQueryChannelRectSGIX := GetProcAddressGLS('glXQueryChannelRectSGIX');
-  XQueryChannelDeltasSGIX := GetProcAddressGLS('glXQueryChannelDeltasSGIX');
-  XChannelRectSyncSGIX := GetProcAddressGLS('glXChannelRectSyncSGIX');
-  XJoinSwapGroupSGIX := GetProcAddressGLS('glXJoinSwapGroupSGIX');
-  XBindSwapBarrierSGIX := GetProcAddressGLS('glXBindSwapBarrierSGIX');
-  XQueryMaxSwapBarriersSGIX := GetProcAddressGLS('glXQueryMaxSwapBarriersSGIX');
-  XQueryHyperpipeNetworkSGIX :=
-    GetProcAddressGLS('glXQueryHyperpipeNetworkSGIX');
-
-  XHyperpipeConfigSGIX := GetProcAddressGLS('glXHyperpipeConfigSGIX');
-  XQueryHyperpipeConfigSGIX := GetProcAddressGLS('glXQueryHyperpipeConfigSGIX');
-  XDestroyHyperpipeConfigSGIX :=
-    GetProcAddressGLS('glXDestroyHyperpipeConfigSGIX');
-  XBindHyperpipeSGIX := GetProcAddressGLS('glXBindHyperpipeSGIX');
-  XQueryHyperpipeBestAttribSGIX :=
-    GetProcAddressGLS('glXQueryHyperpipeBestAttribSGIX');
-  XHyperpipeAttribSGIX := GetProcAddressGLS('glXHyperpipeAttribSGIX');
-  XQueryHyperpipeAttribSGIX := GetProcAddressGLS('glXQueryHyperpipeAttribSGIX');
-  XGetAGPOffsetMESA := GetProcAddressGLS('glXGetAGPOffsetMESA');
-  XEnumerateVideoDevicesNV := GetProcAddressGLS('glXEnumerateVideoDevicesNV');
-  XBindVideoDeviceNV := GetProcAddressGLS('glXBindVideoDeviceNV');
-  XGetVideoDeviceNV := GetProcAddressGLS('glXGetVideoDeviceNV');
-  XCopySubBufferMESA := GetProcAddressGLS('glXCopySubBufferMESA');
-  XReleaseBuffersMESA := GetProcAddressGLS('glXReleaseBuffersMESA');
-  XCreateGLXPixmapMESA := GetProcAddressGLS('glXCreateGLXPixmapMESA');
-  XSet3DfxModeMESA := GetProcAddressGLS('glXSet3DfxModeMESA');
-
-  XAllocateMemoryNV := GetProcAddressGLS('glXAllocateMemoryNV');
-  XFreeMemoryNV := GetProcAddressGLS('glXFreeMemoryNV');
-
-  XReleaseVideoDeviceNV := GetProcAddressGLS('glXReleaseVideoDeviceNV');
-  XBindVideoImageNV := GetProcAddressGLS('glXBindVideoImageNV');
-  XReleaseVideoImageNV := GetProcAddressGLS('glXReleaseVideoImageNV');
-  XSendPbufferToVideoNV := GetProcAddressGLS('glXSendPbufferToVideoNV');
-  XGetVideoInfoNV := GetProcAddressGLS('glXGetVideoInfoNV');
-  XJoinSwapGroupNV := GetProcAddressGLS('glXJoinSwapGroupNV');
-  XBindSwapBarrierNV := GetProcAddressGLS('glXBindSwapBarrierNV');
-  XQuerySwapGroupNV := GetProcAddressGLS('glXQuerySwapGroupNV');
-  XQueryMaxSwapGroupsNV := GetProcAddressGLS('glXQueryMaxSwapGroupsNV');
-  XQueryFrameCountNV := GetProcAddressGLS('glXQueryFrameCountNV');
-  XResetFrameCountNV := GetProcAddressGLS('glXResetFrameCountNV');
-  XBindVideoCaptureDeviceNV := GetProcAddressGLS('glXBindVideoCaptureDeviceNV');
-  XEnumerateVideoCaptureDevicesNV :=
-    GetProcAddressGLS('glXEnumerateVideoCaptureDevicesNV');
-  XLockVideoCaptureDeviceNV := GetProcAddressGLS('glxLockVideoCaptureDeviceNV');
-  XQueryVideoCaptureDeviceNV :=
-    GetProcAddressGLS('glXQueryVideoCaptureDeviceNV');
-  XReleaseVideoCaptureDeviceNV :=
-    GetProcAddressGLS('glXReleaseVideoCaptureDeviceNV');
-  XSwapIntervalEXT := GetProcAddressGLS('glXSwapIntervalEXT');
-  XCopyImageSubDataNV := GetProcAddressGLS('glXCopyImageSubDataNV');
-end;
-
-{$ENDIF}
-
-{$IFDEF EGL_SUPPORT}
-procedure TGLExtensionsAndEntryPoints.ReadEGLImplementationProperties;
-var
-  MajorVersion, MinorVersion: integer;
-begin
-  if Assigned(GetString) then
-    FBuffer := string(GetString(GL_EXTENSIONS))
-  else
-    FBuffer := '';
-
-  OES_depth24 := CheckExtension('GL_OES_depth24');
-  OES_depth32 := CheckExtension('GL_OES_depth32');
-  OES_depth_texture := CheckExtension('GL_OES_depth_texture');
-  OES_element_index_uint := CheckExtension('GL_OES_element_index_uint');
-  OES_fbo_render_mipmap := CheckExtension('GL_OES_fbo_render_mipmap');
-  OES_get_program_binary := CheckExtension('GL_OES_get_program_binary');
-  OES_mapbuffer := CheckExtension('GL_OES_mapbuffer');
-  OES_packed_depth_stencil := CheckExtension('GL_OES_packed_depth_stencil');
-  OES_rgb8_rgba8 := CheckExtension('GL_OES_rgb8_rgba8');
-  OES_standard_derivatives := CheckExtension('GL_OES_standard_derivatives');
-  OES_texture_3D := CheckExtension('GL_OES_texture_3D');
-  OES_texture_float := CheckExtension('GL_OES_texture_float');
-  OES_texture_float_linear := CheckExtension('GL_OES_texture_float_linear');
-  OES_texture_half_float := CheckExtension('GL_OES_texture_half_float');
-  OES_texture_half_float_linear :=
-    CheckExtension('GL_OES_texture_half_float_linear');
-  OES_texture_npot := CheckExtension('GL_OES_texture_npot');
-  OES_vertex_array_object := CheckExtension('GL_OES_vertex_array_object');
-  OES_vertex_half_float := CheckExtension('GL_OES_vertex_half_float');
-end;
-
-procedure TGLExtensionsAndEntryPoints.ReadEGLExtensions;
-begin
-  eglGetError := GetProcAddressEGL('eglGetError');
-  eglGetDisplay := GetProcAddressEGL('eglGetDisplay');
-  eglInitialize := GetProcAddressEGL('eglInitialize');
-  eglTerminate := GetProcAddressEGL('eglTerminate');
-  eglQueryString := GetProcAddressEGL('eglQueryString');
-  eglGetConfigs := GetProcAddressEGL('eglGetConfigs');
-  eglChooseConfig := GetProcAddressEGL('eglChooseConfig');
-  eglGetConfigAttrib := GetProcAddressEGL('eglGetConfigAttrib');
-  eglCreatePixmapSurface := GetProcAddressEGL('eglCreatePixmapSurface');
-  eglDestroySurface := GetProcAddressEGL('eglDestroySurface');
-  eglQuerySurface := GetProcAddressEGL('eglQuerySurface');
-  eglBindAPI := GetProcAddressEGL('eglBindAPI');
-  eglQueryAPI := GetProcAddressEGL('eglQueryAPI');
-  eglWaitClient := GetProcAddressEGL('eglWaitClient');
-  eglReleaseThread := GetProcAddressEGL('eglReleaseThread');
-  eglCreatePbufferFromClientBuffer :=
-    GetProcAddressEGL('eglCreatePbufferFromClientBuffer');
-  eglSurfaceAttrib := GetProcAddressEGL('eglSurfaceAttrib');
-  eglBindTexImage := GetProcAddressEGL('eglBindTexImage');
-  eglReleaseTexImage := GetProcAddressEGL('eglReleaseTexImage');
-  eglSwapInterval := GetProcAddressEGL('eglSwapInterval');
-  eglCreateContext := GetProcAddressEGL('eglCreateContext');
-  eglDestroyContext := GetProcAddressEGL('eglDestroyContext');
-  eglMakeCurrent := GetProcAddressEGL('eglMakeCurrent');
-  eglGetCurrentContext := GetProcAddressEGL('eglGetCurrentContext');
-  eglGetCurrentSurface := GetProcAddressEGL('eglGetCurrentSurface');
-  eglGetCurrentDisplay := GetProcAddressEGL('eglGetCurrentDisplay');
-  eglQueryContext := GetProcAddressEGL('eglQueryContext');
-  eglWaitGL := GetProcAddressEGL('eglWaitGL');
-  eglWaitNative := GetProcAddressEGL('eglWaitNative');
-  eglSwapBuffers := GetProcAddressEGL('eglSwapBuffers');
-  eglCopyBuffers := GetProcAddressEGL('eglCopyBuffers');
-end;
-{$ENDIF}
-
 procedure TrimAndSplitVersionString(buffer: string; var max, min: integer);
 // Peels out the X.Y form from the given Buffer which must contain a version string like "text Minor.Major.Build text"
 // at least however "Major.Minor".
@@ -5565,22 +5288,11 @@ end;
 
 function InitOpenGL: boolean;
 begin
-{$IFNDEF EGL_SUPPORT}
   if (GLHandle = INVALID_MODULEHANDLE) or (GLUHandle = INVALID_MODULEHANDLE)
   then
     Result := InitOpenGLFromLibrary(opengl32, glu32)
   else
     Result := True;
-{$ELSE}
-  CloseOpenGL;
-  Result := True;
-{$IFNDEF DARWIN}
-  EGLHandle := LoadLibrary(pchar(libEGL));
-  Result := EGLHandle <> INVALID_MODULEHANDLE;
-{$ENDIF}
-  EGL2Handle := LoadLibrary(pchar(libGLES2));
-  Result := Result and (EGL2Handle <> INVALID_MODULEHANDLE);
-{$ENDIF}
 end;
 
 function InitOpenGLFromLibrary(const GLName, GLUName: string): boolean;
@@ -5601,38 +5313,21 @@ end;
 
 function IsOpenGLInitialized: boolean;
 begin
-  Result := {$IFNDEF EGL_SUPPORT}(GLHandle <> INVALID_MODULEHANDLE){$ELSE}(EGL2Handle <> INVALID_MODULEHANDLE){$ENDIF};
+  Result := (GLHandle <> INVALID_MODULEHANDLE);
 end;
 
 procedure CloseOpenGL;
 begin
-{$IFNDEF EGL_SUPPORT}
   if GLHandle <> INVALID_MODULEHANDLE then
   begin
     FreeLibrary(GLHandle);
     GLHandle := INVALID_MODULEHANDLE;
   end;
-
   if GLUHandle <> INVALID_MODULEHANDLE then
   begin
     FreeLibrary(GLUHandle);
     GLUHandle := INVALID_MODULEHANDLE;
   end;
-
-{$ELSE}
-{$IFNDEF DARWIN}
-  if EGLHandle <> INVALID_MODULEHANDLE then
-  begin
-    FreeLibrary(EGLHandle);
-    EGLHandle := INVALID_MODULEHANDLE;
-  end;
-{$ENDIF}
-  if EGL2Handle <> INVALID_MODULEHANDLE then
-  begin
-    FreeLibrary(EGL2Handle);
-    EGL2Handle := INVALID_MODULEHANDLE;
-  end;
-{$ENDIF}
 end;
 
 procedure UnloadOpenGL;
@@ -5660,7 +5355,9 @@ begin
   Result := GetProcAddressGLS('glResizeBuffersMESA') <> nil;
 end;
 
+//--------------------------------------
 initialization
+//--------------------------------------
 
 Set8087CW($133F);
 

@@ -3487,6 +3487,10 @@ object GLInfoForm: TGLInfoForm
     end
     object TabSheetContributors: TTabSheet
       Caption = 'Contributors'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object MemoContributors: TMemo
         Left = 0
         Top = 0

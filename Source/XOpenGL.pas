@@ -29,7 +29,6 @@ type
   private
     FMapTexCoordMode: TMapTexCoordMode;
     FSecondTextureUnitForbidden: Boolean;
-
     FUpdCount: Integer;
     FUpdNewMode: TMapTexCoordMode;
     FStateStack: array of TMapTexCoordMode;
@@ -54,47 +53,40 @@ type
     TexCoordPointer: procedure(size: TGLint; atype: Cardinal; stride: TGLsizei; data: pointer);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
     EnableClientState: procedure(aarray: Cardinal);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
     DisableClientState: procedure(aarray: Cardinal);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-
     // Misc
     Enable: procedure(cap: Cardinal);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
     Disable: procedure(cap: Cardinal);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-
     constructor Create;
-
-    {TexCoord functions will be ignored. }
+    // TexCoord functions will be ignored.
     procedure MapTexCoordToNull;
-    {TexCoord functions will define the main texture coordinates. }
+    // TexCoord functions will define the main texture coordinates.
     procedure MapTexCoordToMain;
-    {TexCoord functions will define the second texture unit coordinates. }
+    // TexCoord functions will define the second texture unit coordinates.
     procedure MapTexCoordToSecond;
-    {TexCoord functions will define the two first texture units coordinates. }
+    // TexCoord functions will define the two first texture units coordinates.
     procedure MapTexCoordToDual;
-    {TexCoord functions will define the specified texture units coordinates. }
+    // TexCoord functions will define the specified texture units coordinates.
     procedure MapTexCoordToArbitrary(const units: array of Cardinal); overload;
     procedure MapTexCoordToArbitrary(const bitWiseUnits: Cardinal); overload;
     procedure MapTexCoordToArbitraryAdd(const bitWiseUnits: Cardinal);
-
-    {Defers Map calls execution until EndUpdate is met. 
-       Calls to Begin/EndUpdate may be nested. }
+    (* Defers Map calls execution until EndUpdate is met.
+       Calls to Begin/EndUpdate may be nested. *)
     procedure BeginUpdate; inline;
-    {Applies Map calls if there were any since BeginUpdate was invoked.
-       Calls to Begin/EndUpdate may be nested. }
+    (* Applies Map calls if there were any since BeginUpdate was invoked.
+       Calls to Begin/EndUpdate may be nested. *)
     procedure EndUpdate; inline;
-
-    {Saves XOpenGL State on the stack. }
+    // Saves XOpenGL State on the stack.
     procedure PushState;
-    {Restores XOpenGL State from the stack. }
+    // Restores XOpenGL State from the stack.
     procedure PopState;
-
-    {Whenever called, 2nd texture units changes will be forbidden to . 
+    (* Whenever called, 2nd texture units changes will be forbidden to .
        Use this function when you're using the 2nd texture unit for your own
-       purposes and don't want XOpenGL to alter it. }
+       purposes and don't want XOpenGL to alter it. *)
     procedure ForbidSecondTextureUnit;
-    {Allow XOpenGL to use the second texture unit again. }
+    // Allow XOpenGL to use the second texture unit again.
     procedure AllowSecondTextureUnit;
-    {Returns the complex mapping in bitwise form. }
+    // Returns the complex mapping in bitwise form.
     function GetBitWiseMapping: Cardinal;
-
     property MapTexCoordMode: TMapTexCoordMode read FMapTexCoordMode write FMapTexCoordMode;
     property SecondTextureUnitForbidden: Boolean read FSecondTextureUnitForbidden;
   end;
@@ -105,7 +97,6 @@ implementation
 
 uses
   GLContext;
-
 
 // ------------------------------------------------------------------
 // Multitexturing coordinates duplication functions
