@@ -17,7 +17,6 @@ uses
   System.Math,
   Vcl.Graphics,
 
-  OpenGLAdapter,
   OpenGLTokens,
   GLScene,
   GLContext,

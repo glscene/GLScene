@@ -253,7 +253,6 @@ contains
   GLS.Memo in '..\Source\GLS.Memo.pas',
   GLS.PlugInManager in '..\Source\GLS.PlugInManager.pas',
   GLS.OpenGLx in '..\Source\GLS.OpenGLx.pas',
-  GLS.vclOpenGL in '..\Source\GLS.vclOpenGL.pas',
   GLTeapot in '..\Source\GLTeapot.pas',
   GLTerrainRenderer in '..\Source\GLTerrainRenderer.pas',
   GLTexCombineShader in '..\Source\GLTexCombineShader.pas',

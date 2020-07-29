@@ -9,8 +9,8 @@ unit GLTextureFormat;
 interface
 
 uses
-  GLS.Strings,
-  OpenGLTokens;
+  OpenGLTokens,
+  GLS.Strings;
 
 type
   // Texture addressing rules
@@ -223,7 +223,7 @@ function GetTextureElementSize(colorFormat: Cardinal; dataType: Cardinal):
   Integer; overload;
 // Give compatible openGL image format and data type
 procedure FindCompatibleDataFormat(intFormat: TGLInternalFormat; out dFormat:
-  Cardinal; out dType: Cardinal);
+  TGLuint; out dType: TGLUint);
 (* Give a compressed openGL texture format from GLScene texture format
   if format is have not compression than return same openGL format *)
 function CompressedInternalFormatToOpenGL(intFormat: TGLInternalFormat):

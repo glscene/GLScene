@@ -2556,7 +2556,7 @@ var
 begin
   Result := AABBToBB(AxisAlignedBoundingBox(AIncludeChilden));
 
-  // DaStr: code not tested...
+  // code not tested...
   if AUseBaryCenter then
   begin
     CurrentBaryOffset :=
@@ -2574,7 +2574,7 @@ var
 begin
   Result := AABBToBB(AxisAlignedBoundingBoxUnscaled(AIncludeChilden));
 
-  // DaStr: code not tested...
+  // code not tested...
   if AUseBaryCenter then
   begin
     CurrentBaryOffset :=

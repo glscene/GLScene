@@ -65,8 +65,8 @@ type
   TGLclampd = Double;
   PGLclampd = System.PDouble;
 
-  GLhandleARB = Cardinal;
-  PGLhandleARB = ^GLhandleARB;
+  TGLhandleARB = Cardinal;
+  PGLhandleARB = ^TGLhandleARB;
 
   PGLPCharArray = ^PAnsiChar;
 
@@ -76,18 +76,26 @@ type
   // GL_ARB_cl_event
   (* These incomplete types are declare types compatible with OpenCL's
     cl_context and cl_event *)
-  _cl_context = record end;
-  _cl_event = record end;
-  p_cl_context = ^_cl_context;
-  p_cl_event = ^_cl_event;
+  T_cl_context = record end;
+  P_cl_context = ^T_cl_context;
+  T_cl_event = record end;
+  P_cl_event = ^T_cl_event;
 
   // the size of these depend on platform (32bit or 64bit)
-  GLintptr = NativeInt;
   TGLintptr = NativeInt;
-  GLsizeiptr = NativeInt;
+  PGLintptr = ^TGLintptr;
+
   TGLsizeiptr = NativeInt;
-  GLsync = NativeInt;
+  PGLsizeiptr = ^TGLsizeiptr;
+
   TGLsync = NativeInt;
+  PGLsync = ^TGLsync;
+
+  TGLchar = Byte;
+  PGLchar = MarshaledAString;
+
+  TGLhalf = WORD;
+  PGLhalf = ^TGLhalf;
 
   // Windows types
   PWGLswap = ^TWGLswap;
@@ -95,6 +103,7 @@ type
     hdc: HDC;
     uiFlags: UINT;
   end;
+
   TWGLswap = _WGLSWAP;
   WGLSWAP = _WGLSWAP;
   HPBUFFERARB = Integer;
@@ -133,7 +142,7 @@ type
     message: PAnsiChar;
     userParam: Pointer); {$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
 
-  TGLvdpauSurfaceNV = GLintptr;
+  TGLvdpauSurfaceNV = TGLintptr;
   PGLvdpauSurfaceNV = ^TGLvdpauSurfaceNV;
 
 //------------------- OpenGL Utility (GLU) types ----------------
@@ -5583,17 +5592,17 @@ const
   PFNGLGETQUERYOBJECTUIVARBPROC = procedure(id: Cardinal; pname: Cardinal; params: PGLuint); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
 
   // GL_ARB_shader_objects (ARB #30)
-  PFNGLDELETEOBJECTARBPROC = procedure(obj: GLhandleARB); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLGETHANDLEARBPROC = function(pname: Cardinal): GLhandleARB; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLDETACHOBJECTARBPROC = procedure(containerObj: GLhandleARB; attachedObj: GLhandleARB); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLCREATESHADEROBJECTARBPROC = function(shaderType: Cardinal): GLhandleARB; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLSHADERSOURCEARBPROC = procedure(shaderObj: GLhandleARB; count: TGLsizei; const _string: PGLPCharArray; const length: PGLint); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLCOMPILESHADERARBPROC = procedure(shaderObj: GLhandleARB); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLCREATEPROGRAMOBJECTARBPROC = function(): GLhandleARB; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLATTACHOBJECTARBPROC = procedure(containerObj: GLhandleARB; obj: GLhandleARB); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLLINKPROGRAMARBPROC = procedure(programObj: GLhandleARB); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLUSEPROGRAMOBJECTARBPROC = procedure(programObj: GLhandleARB); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLVALIDATEPROGRAMARBPROC = procedure(programObj: GLhandleARB); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLDELETEOBJECTARBPROC = procedure(obj: TGLhandleARB); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLGETHANDLEARBPROC = function(pname: Cardinal): TGLhandleARB; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLDETACHOBJECTARBPROC = procedure(containerObj: TGLhandleARB; attachedObj: TGLhandleARB); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLCREATESHADEROBJECTARBPROC = function(shaderType: Cardinal): TGLhandleARB; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLSHADERSOURCEARBPROC = procedure(shaderObj: TGLhandleARB; count: TGLsizei; const _string: PGLPCharArray; const length: PGLint); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLCOMPILESHADERARBPROC = procedure(shaderObj: TGLhandleARB); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLCREATEPROGRAMOBJECTARBPROC = function(): TGLhandleARB; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLATTACHOBJECTARBPROC = procedure(containerObj: TGLhandleARB; obj: TGLhandleARB); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLLINKPROGRAMARBPROC = procedure(programObj: TGLhandleARB); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLUSEPROGRAMOBJECTARBPROC = procedure(programObj: TGLhandleARB); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLVALIDATEPROGRAMARBPROC = procedure(programObj: TGLhandleARB); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLUNIFORM1FARBPROC = procedure(location: TGLint; v0: TGLfloat); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLUNIFORM2FARBPROC = procedure(location: TGLint; v0: TGLfloat; v1: TGLfloat); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLUNIFORM3FARBPROC = procedure(location: TGLint; v0: TGLfloat; v1: TGLfloat; v2: TGLfloat); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
@@ -5613,20 +5622,20 @@ const
   PFNGLUNIFORMMATRIX2FVARBPROC = procedure(location: TGLint; count: TGLsizei; transpose: TGLboolean; value: PGLfloat); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLUNIFORMMATRIX3FVARBPROC = procedure(location: TGLint; count: TGLsizei; transpose: TGLboolean; value: PGLfloat); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLUNIFORMMATRIX4FVARBPROC = procedure(location: TGLint; count: TGLsizei; transpose: TGLboolean; value: PGLfloat); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLGETOBJECTPARAMETERFVARBPROC = procedure(obj: GLhandleARB; pname: Cardinal; params: PGLfloat); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLGETOBJECTPARAMETERIVARBPROC = procedure(obj: GLhandleARB; pname: Cardinal; params: PGLint); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLGETINFOLOGARBPROC = procedure(obj: GLhandleARB; maxLength: TGLsizei; length: PGLsizei; infoLog: PAnsiChar); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLGETATTACHEDOBJECTSARBPROC = procedure(containerObj: GLhandleARB; maxCount: TGLsizei; count: PGLsizei; obj: PGLhandleARB); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLGETUNIFORMLOCATIONARBPROC = function(programObj: GLhandleARB; const name: PAnsiChar): TGLint; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLGETACTIVEUNIFORMARBPROC = procedure(programObj: GLhandleARB; index: Cardinal; maxLength: TGLsizei; length: PGLsizei; size: PGLint; _type: PCardinal; name: PAnsiChar); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLGETUNIFORMFVARBPROC = procedure(programObj: GLhandleARB; location: TGLint; params: PGLfloat); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLGETUNIFORMIVARBPROC = procedure(programObj: GLhandleARB; location: TGLint; params: PGLint); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLGETSHADERSOURCEARBPROC = procedure(obj: GLhandleARB; maxLength: TGLsizei; length: PGLsizei; source: PAnsiChar); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLGETOBJECTPARAMETERFVARBPROC = procedure(obj: TGLhandleARB; pname: Cardinal; params: PGLfloat); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLGETOBJECTPARAMETERIVARBPROC = procedure(obj: TGLhandleARB; pname: Cardinal; params: PGLint); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLGETINFOLOGARBPROC = procedure(obj: TGLhandleARB; maxLength: TGLsizei; length: PGLsizei; infoLog: PAnsiChar); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLGETATTACHEDOBJECTSARBPROC = procedure(containerObj: TGLhandleARB; maxCount: TGLsizei; count: PGLsizei; obj: PGLhandleARB); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLGETUNIFORMLOCATIONARBPROC = function(programObj: TGLhandleARB; const name: PAnsiChar): TGLint; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLGETACTIVEUNIFORMARBPROC = procedure(programObj: TGLhandleARB; index: Cardinal; maxLength: TGLsizei; length: PGLsizei; size: PGLint; _type: PCardinal; name: PAnsiChar); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLGETUNIFORMFVARBPROC = procedure(programObj: TGLhandleARB; location: TGLint; params: PGLfloat); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLGETUNIFORMIVARBPROC = procedure(programObj: TGLhandleARB; location: TGLint; params: PGLint); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLGETSHADERSOURCEARBPROC = procedure(obj: TGLhandleARB; maxLength: TGLsizei; length: PGLsizei; source: PAnsiChar); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
 
   // GL_ARB_vertex_shader (ARB #31)
-  PFNGLBINDATTRIBLOCATIONARBPROC = procedure(programObj: GLhandleARB; index: Cardinal; const name: PAnsiChar); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLGETACTIVEATTRIBARBPROC = procedure(programObj: GLhandleARB; index: Cardinal; maxLength: TGLsizei; length: PGLsizei; size: PGLint; _type: PCardinal; name: PAnsiChar); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLGETATTRIBLOCATIONARBPROC = function(programObj: GLhandleARB; const name: PAnsiChar): TGLint; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLBINDATTRIBLOCATIONARBPROC = procedure(programObj: TGLhandleARB; index: Cardinal; const name: PAnsiChar); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLGETACTIVEATTRIBARBPROC = procedure(programObj: TGLhandleARB; index: Cardinal; maxLength: TGLsizei; length: PGLsizei; size: PGLint; _type: PCardinal; name: PAnsiChar); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLGETATTRIBLOCATIONARBPROC = function(programObj: TGLhandleARB; const name: PAnsiChar): TGLint; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
 
   // GL_ARB_DrawBuffers (ARB #37)
   PFNGLDRAWBUFFERSARBPROC = procedure (n: TGLsizei; const bufs: PCardinal); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
@@ -5964,15 +5973,15 @@ const
   PFNGLGETMULTITEXPARAMETERIIVEXTPROC = procedure(texture: Cardinal; target: Cardinal; pname: Cardinal; params: PGLint); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLGETMULTITEXPARAMETERIUIVEXTPROC = procedure(texture: Cardinal; target: Cardinal; pname: Cardinal; params: PGLuint); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLNAMEDBUFFERDATAEXTPROC = procedure(buffer: Cardinal; size: TGLsizei; const data: PGLvoid; usage: Cardinal); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLNAMEDBUFFERSUBDATAEXTPROC = procedure(buffer: Cardinal; offset: GLintptr; size: GLsizeiptr; const data: PGLvoid); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLNAMEDBUFFERSUBDATAEXTPROC = procedure(buffer: Cardinal; offset: TGLintptr; size: TGLsizeiptr; const data: PGLvoid); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLMAPNAMEDBUFFEREXTPROC = function(buffer: Cardinal; access: Cardinal): PGLvoid; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLUNMAPNAMEDBUFFEREXTPROC = function(buffer: Cardinal): TGLboolean; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLMAPNAMEDBUFFERRANGEEXTPROC = function(buffer: Cardinal; offset: GLintptr; length: GLsizeiptr; access: TGLbitfield): PGLvoid; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLFLUSHMAPPEDNAMEDBUFFERRANGEEXTPROC = procedure(buffer: Cardinal; offset: GLintptr; length: GLsizeiptr); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLNAMEDCOPYBUFFERSUBDATAEXTPROC = procedure(readBuffer: Cardinal; writeBuffer: Cardinal; readOffset: GLintptr; writeOffset: GLintptr; size: GLsizeiptr); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLMAPNAMEDBUFFERRANGEEXTPROC = function(buffer: Cardinal; offset: TGLintptr; length: TGLsizeiptr; access: TGLbitfield): PGLvoid; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLFLUSHMAPPEDNAMEDBUFFERRANGEEXTPROC = procedure(buffer: Cardinal; offset: TGLintptr; length: TGLsizeiptr); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLNAMEDCOPYBUFFERSUBDATAEXTPROC = procedure(readBuffer: Cardinal; writeBuffer: Cardinal; readOffset: TGLintptr; writeOffset: TGLintptr; size: TGLsizeiptr); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLGETNAMEDBUFFERPARAMETERIVEXTPROC = procedure(buffer: Cardinal; pname: Cardinal; params: PGLint); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLGETNAMEDBUFFERPOINTERVEXTPROC = procedure(buffer: Cardinal; pname: Cardinal; params: PGLvoid); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLGETNAMEDBUFFERSUBDATAEXTPROC = procedure(buffer: Cardinal; offset: GLintptr; size: GLsizeiptr; data: PGLvoid); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLGETNAMEDBUFFERSUBDATAEXTPROC = procedure(buffer: Cardinal; offset: TGLintptr; size: TGLsizeiptr; data: PGLvoid); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLTEXTUREBUFFEREXTPROC = procedure(texture: Cardinal; target: Cardinal; internalformat: Cardinal; buffer: Cardinal); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLMULTITEXBUFFEREXTPROC = procedure(texunit: Cardinal; target: Cardinal; interformat: Cardinal; buffer: Cardinal); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLNAMEDRENDERBUFFERSTORAGEEXTPROC = procedure(renderbuffer: Cardinal; interformat: Cardinal; width: TGLsizei; height: TGLsizei); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
@@ -6191,13 +6200,13 @@ const
 
   // GL_ARB_clear_buffer_object (ARB #121)
   PFNGLClearBufferData = procedure(target : Cardinal; internalformat : Cardinal; format : Cardinal; type_ : Cardinal; const data : Pointer); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLClearBufferSubData = procedure(target : Cardinal; internalformat : Cardinal; offset : GLintptr; size : GLsizeiptr; format : Cardinal; type_ : Cardinal; const data : Pointer); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLClearBufferSubData = procedure(target : Cardinal; internalformat : Cardinal; offset : TGLintptr; size : TGLsizeiptr; format : Cardinal; type_ : Cardinal; const data : Pointer); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLClearNamedBufferData = procedure(buffer : Cardinal; internalformat : Cardinal; format : Cardinal; type_ : Cardinal; const data : Pointer); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLClearNamedBufferSubData = procedure(buffer : Cardinal; internalformat : Cardinal; format : Cardinal; type_ : Cardinal; offset : GLsizeiptr; size : GLsizeiptr; const data : Pointer); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLClearNamedBufferSubData = procedure(buffer : Cardinal; internalformat : Cardinal; format : Cardinal; type_ : Cardinal; offset : TGLsizeiptr; size : TGLsizeiptr; const data : Pointer); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
 
   // GL_ARB_compute_shader (ARB #122)
   PFNGLDispatchCompute = procedure(num_groups_x : Cardinal; num_groups_y : Cardinal; num_groups_z : Cardinal); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLDispatchComputeIndirect = procedure(indirect : GLintptr); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLDispatchComputeIndirect = procedure(indirect : TGLintptr); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
 
   // GL_ARB_copy_image (ARB #123)
   PFNGLCopyImageSubData = procedure(srcName : Cardinal; srcTarget : Cardinal; srcLevel : TGLint; srcX : TGLint; srcY : TGLint; srcZ : TGLint; dstName : Cardinal; dstTarget : Cardinal; dstLevel : TGLint; dstX : TGLint; dstY : TGLint; dstZ : TGLint; srcWidth : TGLsizei; srcHeight : TGLsizei; srcDepth : TGLsizei); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
@@ -6228,7 +6237,7 @@ const
   // GL_ARB_invalidate_subdata (ARB #132)
   PFNGLInvalidateTexSubImage = procedure(texture : Cardinal; level : TGLint; xoffset : TGLint; yoffset : TGLint; zoffset : TGLint; width : TGLsizei; height : TGLsizei; depth : TGLsizei); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLInvalidateTexImage = procedure(texture : Cardinal; level : TGLint); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLInvalidateBufferSubData = procedure(buffer : Cardinal; offset : GLintptr; length : GLsizeiptr); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLInvalidateBufferSubData = procedure(buffer : Cardinal; offset : TGLintptr; length : TGLsizeiptr); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLInvalidateBufferData = procedure(buffer : Cardinal); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLInvalidateFramebuffer = procedure(target : Cardinal; numAttachments : TGLsizei; const attachments : PCardinal); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLInvalidateSubFramebuffer = procedure(target : Cardinal; numAttachments : TGLsizei; const attachments : PCardinal; x : TGLint; y : TGLint; width : TGLsizei; height : TGLsizei); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
@@ -6258,8 +6267,8 @@ const
   // (no entry points)
 
   // GL_ARB_texture_buffer_range (ARB #139)
-  PFNGLTexBufferRange = procedure(target : Cardinal; internalformat : Cardinal; buffer : Cardinal; offset :GLintptr; size : GLsizeiptr); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLTextureBufferRange = procedure(texture : Cardinal; target : Cardinal; internalformat : Cardinal; buffer : Cardinal; offset : GLintptr; size : GLsizeiptr); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLTexBufferRange = procedure(target : Cardinal; internalformat : Cardinal; buffer : Cardinal; offset: TGLintptr; size : TGLsizeiptr); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLTextureBufferRange = procedure(texture : Cardinal; target : Cardinal; internalformat : Cardinal; buffer : Cardinal; offset : TGLintptr; size : TGLsizeiptr); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
 
   // GL_ARB_texture_query_levels (ARB #140)
   // (no entry points)
@@ -6270,27 +6279,27 @@ const
   PFNGLTextureStorage2DMultisample = procedure(texture : Cardinal; target : Cardinal; samples : TGLsizei; internalformat : Cardinal; width : TGLsizei; height : TGLsizei; fixedsamplelocations : TGLboolean); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLTextureStorage3DMultisample = procedure(texture : Cardinal; target : Cardinal; samples : TGLsizei; internalformat : Cardinal; width : TGLsizei; height : TGLsizei; depth : TGLsizei; fixedsamplelocations : TGLboolean); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
 
-  PFNGLBufferStorage = procedure(target : Cardinal; size : GLsizeiptr; const data : pointer; flags : TGLbitfield); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLBufferStorage = procedure(target : Cardinal; size : TGLsizeiptr; const data : pointer; flags : TGLbitfield); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLClearTexImage = procedure(texture : Cardinal; level : TGLint; format : Cardinal; _type : Cardinal; const data : Pointer); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLClearTexSubImage = procedure(texture : Cardinal; level : TGLint; xoffset : TGLint; yoffset : TGLint; zoffset : TGLint; width : TGLsizei; height : TGLsizei; depth : TGLsizei; format : Cardinal; _type : Cardinal; const Data : Pointer); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLBindBuffersBase = procedure(target : Cardinal; first : Cardinal; count : TGLsizei; const buffers : PGLUint); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLBindBuffersRange = procedure(target : Cardinal; first : Cardinal; count : TGLsizei; const buffers : PGLuint; const offsets : GLintptr; const sizes : GLsizeiptr); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLBindBuffersRange = procedure(target : Cardinal; first : Cardinal; count : TGLsizei; const buffers : PGLuint; const offsets : TGLintptr; const sizes : TGLsizeiptr); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLBindTextures = procedure(first : Cardinal; count : TGLsizei; const textures : PGLuint); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLBindSamplers = procedure(first : Cardinal; count : TGLsizei; const samplers : PGLuint); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLBindImageTextures = procedure(first : Cardinal; count : TGLsizei; const textures : PGLuint); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLBindVertexBuffers = procedure(first : Cardinal; count : TGLsizei; const buffers : Cardinal; const offsets : GLintptr; const strides : PGLsizei); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLBindVertexBuffers = procedure(first : Cardinal; count : TGLsizei; const buffers : Cardinal; const offsets : TGLintptr; const strides : PGLsizei); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
 
   // GL_ARB_texture_view (ARB #124)
   PFNGLTextureView = procedure(texture : Cardinal; target : Cardinal; origtexture : Cardinal; internalformat : Cardinal; minlevel : Cardinal; numlevels : Cardinal; minlayer : Cardinal; numlayers : Cardinal); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
 
   // GL_ARB_vertex_attrib_binding (ARB #125)
-  PFNGLBindVertexBuffer = procedure(bindingindex : Cardinal; buffer : Cardinal; offset : GLintptr; stride : TGLsizei); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLBindVertexBuffer = procedure(bindingindex : Cardinal; buffer : Cardinal; offset : TGLintptr; stride : TGLsizei); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLVertexAttribFormat = procedure(attribindex : Cardinal; size : TGLint; type_ : Cardinal; normalized : TGLboolean; relativeoffset : Cardinal); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLVertexAttribIFormat = procedure(attribindex : Cardinal; size : TGLint; type_ : Cardinal; relativeoffset : Cardinal); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLVertexAttribLFormat = procedure(attribindex : Cardinal; size : TGLint; type_ : Cardinal; relativeoffset : Cardinal); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLVertexAttribBinding = procedure(attribindex : Cardinal; bindingindex : Cardinal); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLVertexBindingDivisor = procedure(bindingindex : Cardinal; divisor : Cardinal); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-  PFNGLVertexArrayBindVertexBuffer = procedure(vaobj : Cardinal; bindingindex : Cardinal; buffer : Cardinal; offset : GLintptr; stride : TGLsizei); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLVertexArrayBindVertexBuffer = procedure(vaobj : Cardinal; bindingindex : Cardinal; buffer : Cardinal; offset : TGLintptr; stride : TGLsizei); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLVertexArrayVertexAttribFormat = procedure(vaobj : Cardinal; attribindex : Cardinal; size : TGLint; type_ : Cardinal; normalized : TGLboolean; relativeoffset : Cardinal); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLVertexArrayVertexAttribIFormat = procedure(vaobj : Cardinal; attribindex : Cardinal; size : TGLint; type_ : Cardinal; relativeoffset : Cardinal); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
   PFNGLVertexArrayVertexAttribLFormat = procedure(vaobj : Cardinal; attribindex : Cardinal; size : TGLint; type_ : Cardinal; relativeoffset : Cardinal); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
@@ -6301,7 +6310,7 @@ const
   // (no entry points)
 
   // GL_ARB_cl_event (ARB #103)
-  PFNGLCreateSyncFromCLevent = function(context: p_cl_context; event: p_cl_event; flags: TGLbitfield): GLsync; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+  PFNGLCreateSyncFromCLevent = function(context: p_cl_context; event: p_cl_event; flags: TGLbitfield): TGLsync; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
 
   // EXT/Vendor extensions
 

@@ -19,7 +19,6 @@ uses
   System.UITypes,
   VCL.Graphics,
 
-   
   GLScene,
   GLTexture,
   GLBitmapFont,

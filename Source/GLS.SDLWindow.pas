@@ -22,7 +22,7 @@ uses
   System.SysUtils,
   System.SyncObjs,
 
-  OpenGLAdapter,
+  OpenGLTokens,
   GLVectorTypes,
   GLState,
   GLContext,
@@ -42,13 +42,13 @@ type
     voResizable: window should be resizable
     voFullScreen: requires a full screen "window" (screen resolution may be changed)
     voStencilBuffer: requires a stencil buffer (8bits, use along voOpenGL) *)
-  TSDLWindowOption = (voDoubleBuffer, voOpenGL, voResizable, voFullScreen,
-    voStencilBuffer);
+  TSDLWindowOption = (voDoubleBuffer, voHardwareAccel, voOpenGL, voResizable, 
+    voFullScreen,  voStencilBuffer);
   TSDLWindowOptions = set of TSDLWindowOption;
   TSDLEvent = procedure(sender: TObject; const event: TSDL_Event) of object;
 
 const
-  cDefaultSDLWindowOptions = [voDoubleBuffer, voOpenGL, voResizable];
+  cDefaultSDLWindowOptions = [voDoubleBuffer, voHardwareAccel, voOpenGL, voResizable];
 
 type
   (* A basic SDL-based window (non-visual component).

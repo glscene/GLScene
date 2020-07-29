@@ -32,12 +32,11 @@ interface
 {$I GLScene.inc}
 
 uses
-  Winapi.OpenGL,
-
   System.Classes,
   System.SysUtils,
   System.Math,
 
+  OpenGLTokens,
   GLScene,
   GLCoordinates,
   GLVectorTypes,

@@ -20,7 +20,6 @@ uses
   VCL.Menus,
 
   OpenGLTokens,
-  OpenGLAdapter,
   GLCrossPlatform,
   GLContext,
   GLScene,

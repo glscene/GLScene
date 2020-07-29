@@ -64,6 +64,7 @@ var
 begin
   sl := TStringList.Create;
   tl := TStringList.Create;
+  i := 0;
   try
     sl.LoadFromStream(aStream);
     mesh      := TMeshObject.CreateOwned(Owner.MeshObjects);

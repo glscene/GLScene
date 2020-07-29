@@ -15,6 +15,7 @@ uses
   System.Classes,
   System.SysUtils,
 
+  OpenGLTokens,
   GLScene,
   XCollection,
   GLBaseClasses,

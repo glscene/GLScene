@@ -72,92 +72,93 @@ type
       const baseTransform: TMatrix); overload;
     constructor Create(bufferSizeX, bufferSizeY: Integer); overload;
     destructor Destroy; override;
-    { Stops the current internal primitive.
+    (* Stops the current internal primitive.
       This function is invoked automatically by TGLCanvas when changeing
       primitives, you should directly call if you want to render your
       own stuff intertwined with TGLCanvas drawings. In that case, call
-      it before your own OpenGL calls. }
+      it before your own OpenGL calls. *)
     procedure StopPrimitive;
-    { Inverts the orientation of the Y Axis.
+    (* Inverts the orientation of the Y Axis.
       If (0, 0) was in the top left corner, it will move to the bottom
-      left corner or vice-versa. }
+      left corner or vice-versa. *)
     procedure InvertYAxis;
     property CanvasSizeX: Integer read FBufferSizeX;
     property CanvasSizeY: Integer read FBufferSizeY;
-    {Current Pen Color. }
+    // Current Pen Color. 
     property PenColor: TColor read FPenColor write SetPenColor;
-    {Current Pen Alpha channel (from 0.0 to 1.0) }
+    // Current Pen Alpha channel (from 0.0 to 1.0) 
     property PenAlpha : Single read GetPenAlpha write SetPenAlpha;
-    {Current Pen Width. }
+    // Current Pen Width. 
     property PenWidth: Integer read FPenWidth write SetPenWidth;
-    {Updates the current position (absolute coords). }
+    // Updates the current position (absolute coords). 
     procedure MoveTo(const x, y: Integer); overload;
     procedure MoveTo(const x, y: Single); overload;
-    {Updates the current position (relative coords). }
+    // Updates the current position (relative coords). 
     procedure MoveToRel(const x, y: Integer); overload;
     procedure MoveToRel(const x, y: Single); overload;
-    {Draws a line from current position to given coordinate.
-     Current position is updated. }
+    (* Draws a line from current position to given coordinate.
+     Current position is updated. *)
     procedure LineTo(const x, y: Integer); overload;
     procedure LineTo(const x, y: Single); overload;
     procedure LineToRel(const x, y: Integer); overload;
     procedure LineToRel(const x, y: Single); overload;
-    {Draws a line from (x1, y1) to (x2, y2).
-     The current position is NOT updated. }
+    (* Draws a line from (x1, y1) to (x2, y2).
+     The current position is NOT updated. *)
     procedure Line(const x1, y1, x2, y2: Integer); overload;
     procedure Line(const x1, y1, x2, y2: Single); overload;
-    {Draws the set of lines defined by connecting the points.
+    (* Draws the set of lines defined by connecting the points.
        Similar to invoking MoveTo on the first point, then LineTo
-       on all the following points. }
+       on all the following points. *)
     procedure Polyline(const points: array of TPoint);
-    {Similar to Polyline but also connects the last point to the first. }
+    // Similar to Polyline but also connects the last point to the first. 
     procedure Polygon(const points: array of TPoint);
-    {Plots a pixel at given coordinate. PenWidth affects pixel size.
-     The current position is NOT updated. }
+    (* Plots a pixel at given coordinate. PenWidth affects pixel size.
+     The current position is NOT updated. *)
     procedure PlotPixel(const x, y: Integer); overload;
     procedure PlotPixel(const x, y: Single); overload;
-    {Draw the (x1,y1)-(x2, y2) rectangle's frame (border). }
+    // Draw the (x1,y1)-(x2, y2) rectangle's frame (border). 
     procedure FrameRect(const x1, y1, x2, y2: Integer); overload;
     procedure FrameRect(const x1, y1, x2, y2: Single); overload;
-    {Draw the (x1,y1)-(x2, y2) rectangle (filled with PenColor). }
+    // Draw the (x1,y1)-(x2, y2) rectangle (filled with PenColor). 
     procedure FillRect(const x1, y1, x2, y2: Integer); overload;
     procedure FillRect(const x1, y1, x2, y2: Single); overload;
-    {Draw the (x1,y1)-(x2, y2) rectangle (filled with given gradient's color). }
+    // Draw the (x1,y1)-(x2, y2) rectangle (filled with given gradient's color). 
     procedure FillRectGradient(const x1, y1, x2, y2: Single;
       const x1y1Color, x2y1Color, x2y2Color, x1y2Color: TColorVector); overload;
     procedure FillRectGradient(const x1, y1, x2, y2: Integer;
       const x1y1Color, x2y1Color, x2y2Color, x1y2Color: TColorVector); overload;
-    {Draws an ellipse with (x1,y1)-(x2, y2) bounding rectangle. }
+    // Draws an ellipse with (x1,y1)-(x2, y2) bounding rectangle. 
     procedure EllipseBB(const x1, y1, x2, y2: Integer); overload;
     procedure EllipseBB(const x1, y1, x2, y2: Single); overload;
-    {Draws and ellipse centered at (x, y) with given radiuses. }
+    // Draws and ellipse centered at (x, y) with given radiuses. 
     procedure Ellipse(const x, y: Integer; const xRadius, yRadius: Single); overload;
     procedure Ellipse(const x, y: Single; const xRadius, yRadius: Single); overload;
     procedure Ellipse(const x, y: Single; const Radius: Single); overload;
-    {Draw a filled ellipse. }
+    // Draw a filled ellipse. 
     procedure FillEllipse(const x, y: Integer; const xRadius, yRadius: Single); overload;
     procedure FillEllipse(const x, y: Single; const xRadius, yRadius: Single); overload;
     procedure FillEllipse(const x, y: Single; const Radius: Single); overload;
-    {Draw a filled gradient ellipse.
-    OpenGL will use the last PenColor and PenAlpha as the center color and do gradient to edge of ellipse using the edgeColor parameter. }
+    (* Draw a filled gradient ellipse.
+    OpenGL will use the last PenColor and PenAlpha as the center color and do gradient 
+	to edge of ellipse using the edgeColor parameter. *)
     procedure FillEllipseGradient(const x, y, xRadius, yRadius: Single;
       const edgeColor: TColorVector); overload;
     procedure FillEllipseGradient(const x, y: Integer;
       const xRadius, yRadius: Integer; const edgeColor: TColorVector); overload;
     procedure FillEllipseGradient(const x, y, Radius: Single;
       const edgeColor: TColorVector); overload;
-    {Draw an elliptical arc.
+    (* Draw an elliptical arc.
        The points (x1, y1) and (x2, y2) specify the bounding rectangle.
        An ellipse formed by the specified bounding rectangle defines the curve of the arc.
        The arc extends in the current drawing direction from the point where it intersects the radial from the center of the bounding rectangle to the (x3, y3) point.
        The arc ends where it intersects the radial from the center of the bounding rectangle to the (x4, y4) point.
        If the starting point and ending point are the same, a complete ellipse is drawn.
        Use the ArcDirection property to get and set the current drawing direction for a device context.
-       The default drawing direction is counterclockwise. }
+       The default drawing direction is counterclockwise. *)
     procedure Arc(const x1, y1, x2, y2, x3, y3, x4, y4: Integer); overload;
     procedure Arc(const x1, y1, x2, y2, x3, y3, x4, y4: Single); overload;
     procedure Arc(const x1, y1, x2, y2: Single; AngleBegin, AngleEnd: Single); overload;
-    {Same as Arc but update the current position. }
+    // Same as Arc but update the current position. 
     procedure ArcTo(const x1, y1, x2, y2, x3, y3, x4, y4: Integer); overload;
     procedure ArcTo(const x1, y1, x2, y2, x3, y3, x4, y4: Single); overload;
     procedure ArcTo(const x1, y1, x2, y2: Single; AngleBegin, AngleEnd: Single); overload;

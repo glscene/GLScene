@@ -11,11 +11,10 @@ interface
 {$I GLScene.inc}
 
 uses
-  Winapi.OpenGL,
-  Winapi.OpenGLext,
   System.Classes,
   System.SysUtils,
 
+  OpenGLTokens,
   GLS.CUDAApi,
   GLS.CUDA,
 

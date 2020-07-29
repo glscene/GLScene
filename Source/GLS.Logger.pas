@@ -251,9 +251,8 @@ type
 
   TIDELogProc = procedure(const AMsg: string);
 
-  // Return logger wich created by TGLSLogger component
+// Return logger wich created by TGLSLogger component
 function UserLog: TLogSession;
-function SkipBeforeSTR(var TextFile: Text; const SkipSTR: string): Boolean;
 function ReadLine(var TextFile: Text): string;
 
 (* Inner logger.
@@ -279,7 +278,7 @@ var
   vAssertErrorHandler: TAssertErrorProc;
   vCurrentLogger: TGLSLogger;
 
-  // Inner logger. Create on first use, not in unit initialization. }
+// Inner logger. Create on first use, not in unit initialization. }
 function GLSLogger(): TLogSession;
 begin
   if v_GLSLogger = nil then
@@ -292,7 +291,6 @@ begin
     v_GLSLogger := TLogSession.OnlyCreate;
 {$ENDIF}
   end;
-
   Result := v_GLSLogger;
 end;
 
@@ -330,21 +328,14 @@ begin
   try
     with vr do
       case VType of
-        vtInteger:
-          Result := Result + IntToStr(VInteger);
-        vtBoolean:
-          Result := Result + BoolToStr(VBoolean, True);
-        vtChar:
-          Result := Result + string(VChar);
-        vtExtended:
-          Result := Result + FloatToStr(VExtended^);
-        vtString:
-          Result := Result + string(VString^);
+        vtInteger:  Result := Result + IntToStr(VInteger);
+        vtBoolean:  Result := Result + BoolToStr(VBoolean, True);
+        vtChar:     Result := Result + string(VChar);
+        vtExtended: Result := Result + FloatToStr(VExtended^);
+        vtString:   Result := Result + string(VString^);
         // maintened in case of future need, but will actually not arrive.
-        vtPointer:
-          Result := Result + '^(' + Format('%P', [(addr(VPointer))]) + ')';
-        vtPChar:
-          Result := Result + string(VPChar);
+        vtPointer:  Result := Result + '^(' + Format('%P', [(addr(VPointer))]) + ')';
+        vtPChar:    Result := Result + string(VPChar);
         // ...
         vtObject:
           begin
@@ -354,24 +345,15 @@ begin
               Result := Result + VObject.classname;
           end;
         // ...
-        vtClass:
-          Result := Result + VClass.classname;
-        vtWideChar:
-          Result := Result + string(VWideChar);
-        vtPWideChar:
-          Result := Result + VPWideChar;
-        vtAnsiString:
-          Result := Result + string(VAnsiString);
-        vtCurrency:
-          Result := Result + CurrToStr(VCurrency^);
-        vtVariant:
-          Result := Result + string(VVariant^);
-        vtInterface:
-          Result := Result + '(Interfaced object)';
-        vtWideString:
-          Result := Result + string(VWideString^);
-        vtInt64:
-          Result := Result + IntToStr(VInt64^);
+        vtClass:      Result := Result + VClass.classname;
+        vtWideChar:   Result := Result + string(VWideChar);
+        vtPWideChar:  Result := Result + VPWideChar;
+        vtAnsiString: Result := Result + string(VAnsiString);
+        vtCurrency:   Result := Result + CurrToStr(VCurrency^);
+        vtVariant:    Result := Result + string(VVariant^);
+        vtInterface:  Result := Result + '(Interfaced object)';
+        vtWideString: Result := Result + string(VWideString^);
+        vtInt64:      Result := Result + IntToStr(VInt64^);
       else
         Result := Result + Format('[#HLvrType(%d)]', // "Else" not possible...
           [Integer(vr.VType)]); // ...with D6, but laters ?
@@ -415,7 +397,7 @@ end;
 function ConstArrayToString(const Elements: array of const): String;
 // -2-> Returns à string, surrounded by parenthesis : '(elts[0]; ...; elts[n-1]);'
 // ("Basic infos" only.)
-Var
+var
   i: Integer;
   s, sep: String;
 Begin
@@ -476,21 +458,6 @@ begin
   end
   else
     Result := -1;
-end;
-
-function SkipBeforeSTR(var TextFile: Text; const SkipSTR: string): Boolean;
-var
-  s: string;
-begin
-  repeat
-    readln(TextFile, s);
-    if s = SkipSTR then
-    begin
-      Result := True;
-      exit;
-    end;
-  until False;
-  Result := False;
 end;
 
 function ReadLine(var TextFile: Text): string;
@@ -660,7 +627,7 @@ begin
   begin
     FCheckLogSizeThread.Terminate();
 
-    // DaStr: Not really safe because we can wait forever.
+    // Not really safe because we can wait forever.
     // But other methods known to me are platform-dependant.
     FCheckLogSizeThread.WaitFor();
 
@@ -915,7 +882,7 @@ begin
   begin
     FBufferProcessingThread.Terminate();
 
-    // DaStr: Not really safe because we can wait forever.
+    // Not really safe because we can wait forever.
     // But other methods known to me are platform-dependant.
     FBufferProcessingThread.WaitFor();
 
@@ -1214,7 +1181,7 @@ begin
   inc(FLogKindCount[ALevel]);
   if llMessageLimit[ALevel] < FLogKindCount[ALevel] then
     case FMessageLimitAction of
-      mlaContinue: { Do nothing. }
+      mlaContinue: // Do nothing.
         ;
 
       mlaStopLogging:
@@ -1252,8 +1219,9 @@ begin
   end;
 end;
 
+//-------------------------------
 // TLogCheckSizeThread
-
+//-------------------------------
 constructor TLogCheckSizeThread.Create(const AParent: TLogSession);
 begin
   FParent := AParent;

@@ -23,6 +23,7 @@ uses
 {$IFDEF USE_SERVICE_CONTEXT}
   GLSGenerics,
 {$ENDIF}
+
   OpenGLTokens,
   OpenGLAdapter,
   XOpenGL,
@@ -36,7 +37,7 @@ uses
 
 // Buffer ID's for Multiple-Render-Targets (using GL_ATI_draw_buffers)
 const
-  MRT_BUFFERS: array [0 .. 3] of Cardinal = (GL_FRONT_LEFT, GL_AUX0, GL_AUX1, GL_AUX2);
+  MRT_BUFFERS: array [0 .. 3] of TGLuint = (GL_FRONT_LEFT, GL_AUX0, GL_AUX1, GL_AUX2);
 
 type
   TGLRCOption = (rcoDoubleBuffered, rcoStereo, rcoDebug, rcoOGL_ES);
@@ -107,8 +108,8 @@ type
     procedure SetActive(const aActive: Boolean); inline;
     procedure SetLayer(const Value: TGLContextLayer); inline;
   protected
-    FGL: TGLExtensionsAndEntryPoints;
-    FXGL: TGLMultitextureCoordinator;
+    Fgl: TGLExtensionsAndEntryPoints;
+    Fxgl: TGLMultitextureCoordinator;
     FGLStates: TGLStateCache;
     FTransformation: TGLTransformation;
     FAcceleration: TGLContextAcceleration;
@@ -198,8 +199,8 @@ type
     procedure DestroyAllHandles;
     function RenderOutputDevice: Pointer; virtual; abstract;
     // Access to OpenGL command and extension
-    property GL: TGLExtensionsAndEntryPoints read FGL;
-    property MultitextureCoordinator: TGLMultitextureCoordinator read FXGL;
+    property GL: TGLExtensionsAndEntryPoints read Fgl;
+    property MultitextureCoordinator: TGLMultitextureCoordinator read Fxgl;
     property IsPraparationNeed: Boolean read FIsPraparationNeed;
   end;
 
@@ -216,15 +217,15 @@ type
     FWidth, FHeight: Integer;
     FFullScreen: Boolean;
   public
-    property width: Integer read FWidth write FWidth;
-    property height: Integer read FHeight write FHeight;
+    property Width: Integer read FWidth write FWidth;
+    property Height: Integer read FHeight write FHeight;
     property FullScreen: Boolean read FFullScreen write FFullScreen;
   end;
 
   PGLRCHandle = ^TGLRCHandle;
   TGLRCHandle = record
     FRenderingContext: TGLContext;
-    FHandle: Cardinal;
+    FHandle: TGLuint;
     FChanged: Boolean;
   end;
 
@@ -239,7 +240,7 @@ type
     FHandles: TList;
     FLastHandle: PGLRCHandle;
     FOnPrepare: TOnPrepareHandleData;
-    function GetHandle: Cardinal; inline;
+    function GetHandle: TGLuint; inline;
     function GetContext: TGLContext;
     function SearchRC(aContext: TGLContext): PGLRCHandle;
     function RCItem(AIndex: Integer): PGLRCHandle; inline;
@@ -249,15 +250,15 @@ type
     procedure ContextDestroying;
     // Specifies if the handle can be transfered across shared contexts
     class function Transferable: Boolean; virtual;
-    class function IsValid(const ID: Cardinal): Boolean; virtual;
-    function DoAllocateHandle: Cardinal; virtual; abstract;
-    procedure DoDestroyHandle(var AHandle: Cardinal); virtual; abstract;
+    class function IsValid(const ID: TGLuint): Boolean; virtual;
+    function DoAllocateHandle: TGLuint; virtual; abstract;
+    procedure DoDestroyHandle(var AHandle: TGLuint); virtual; abstract;
   public
     constructor Create; virtual;
     constructor CreateAndAllocate(failIfAllocationFailed: Boolean = True);
     destructor Destroy; override;
     // Return OpenGL identifier in current context
-    property Handle: Cardinal read GetHandle;
+    property Handle: TGLuint read GetHandle;
     (* Return current rendering context if handle is allocated in it
       or first context where handle is allocated. *)
     property RenderingContext: TGLContext read GetContext;
@@ -273,13 +274,13 @@ type
     class function IsSupported: Boolean; virtual;
     function IsAllocatedForContext(aContext: TGLContext = nil): Boolean;
     function IsShared: Boolean;
-    function AllocateHandle: Cardinal;
+    function AllocateHandle: TGLuint;
     procedure DestroyHandle;
     property OnPrapare: TOnPrepareHandleData read FOnPrepare write FOnPrepare;
   end;
 
   TGLVirtualHandle = class;
-  TGLVirtualHandleEvent = procedure(Sender: TGLVirtualHandle; var Handle: Cardinal) of object;
+  TGLVirtualHandleEvent = procedure(Sender: TGLVirtualHandle; var Handle: TGLuint) of object;
 
   // A context handle with event-based handle allocation and destruction
   TGLVirtualHandle = class(TGLContextHandle)
@@ -287,8 +288,8 @@ type
     FOnAllocate, FOnDestroy: TGLVirtualHandleEvent;
     FTag: Integer;
   protected
-    function DoAllocateHandle: Cardinal; override;
-    procedure DoDestroyHandle(var AHandle: Cardinal); override;
+    function DoAllocateHandle: TGLuint; override;
+    procedure DoDestroyHandle(var AHandle: TGLuint); override;
     class function Transferable: Boolean; override;
   public
     property OnAllocate: TGLVirtualHandleEvent read FOnAllocate write FOnAllocate;
@@ -305,11 +306,11 @@ type
   // Manages a handle to a display list
   TGLListHandle = class(TGLContextHandle)
   protected
-    function DoAllocateHandle: Cardinal; override;
-    procedure DoDestroyHandle(var AHandle: Cardinal); override;
-    class function IsValid(const ID: Cardinal): Boolean; override;
+    function DoAllocateHandle: TGLuint; override;
+    procedure DoDestroyHandle(var AHandle: TGLuint); override;
+    class function IsValid(const ID: TGLuint): Boolean; override;
   public
-    procedure NewList(mode: Cardinal); inline;
+    procedure NewList(mode: TGLuint); inline;
     procedure EndList; inline;
     procedure CallList; inline;
   end;
@@ -320,9 +321,9 @@ type
     FTarget: TGLTextureTarget;
     procedure SetTarget(ATarget: TGLTextureTarget);
   protected
-    function DoAllocateHandle: Cardinal; override;
-    procedure DoDestroyHandle(var AHandle: Cardinal); override;
-    class function IsValid(const ID: Cardinal): Boolean; override;
+    function DoAllocateHandle: TGLuint; override;
+    procedure DoDestroyHandle(var AHandle: TGLuint); override;
+    class function IsValid(const ID: TGLuint): Boolean; override;
   public
     property Target: TGLTextureTarget read FTarget write SetTarget;
   end;
@@ -330,9 +331,9 @@ type
   // Manages a handle to a sampler
   TGLSamplerHandle = class(TGLContextHandle)
   protected
-    function DoAllocateHandle: Cardinal; override;
-    procedure DoDestroyHandle(var AHandle: Cardinal); override;
-    class function IsValid(const ID: Cardinal): Boolean; override;
+    function DoAllocateHandle: TGLuint; override;
+    procedure DoDestroyHandle(var AHandle: TGLuint); override;
+    class function IsValid(const ID: TGLuint): Boolean; override;
   public
 
     class function IsSupported: Boolean; override;
@@ -345,11 +346,11 @@ type
     FActive: Boolean;
   protected
     class function Transferable: Boolean; override;
-    function DoAllocateHandle: Cardinal; override;
-    procedure DoDestroyHandle(var AHandle: Cardinal); override;
-    function GetTarget: Cardinal; virtual; abstract;
+    function DoAllocateHandle: TGLuint; override;
+    procedure DoDestroyHandle(var AHandle: TGLuint); override;
+    function GetTarget: TGLuint; virtual; abstract;
     function GetQueryType: TGLQueryType; virtual; abstract;
-    class function IsValid(const ID: Cardinal): Boolean; override;
+    class function IsValid(const ID: TGLuint): Boolean; override;
   public
     procedure BeginQuery;
     procedure EndQuery;
@@ -359,12 +360,12 @@ type
     // Number of bits used to store the query result. eg. 32/64 bit
     function CounterBits: Integer;
     // Retrieve query result, may cause a stall if the result is not available yet
-    function QueryResultInt: TGLInt;
-    function QueryResultUInt: Cardinal;
+    function QueryResultInt: TGLint;
+    function QueryResultUInt: TGLUInt;
     function QueryResultInt64: TGLint64EXT;
     function QueryResultUInt64: TGLuint64EXT;
     function QueryResultBool: TGLboolean;
-    property Target: Cardinal read GetTarget;
+    property Target: TGLuint read GetTarget;
     property QueryType: TGLQueryType read GetQueryType;
     // True if within a Begin/EndQuery.
     property Active: Boolean read FActive;
@@ -376,7 +377,7 @@ type
     checked by the user. *)
   TGLOcclusionQueryHandle = class(TGLQueryHandle)
   protected
-    function GetTarget: Cardinal; override;
+    function GetTarget: TGLuint; override;
     function GetQueryType: TGLQueryType; override;
   public
     class function IsSupported: Boolean; override;
@@ -387,7 +388,7 @@ type
 
   TGLBooleanOcclusionQueryHandle = class(TGLQueryHandle)
   protected
-    function GetTarget: Cardinal; override;
+    function GetTarget: TGLuint; override;
     function GetQueryType: TGLQueryType; override;
   public
     class function IsSupported: Boolean; override;
@@ -399,7 +400,7 @@ type
     checked by the user. *)
   TGLTimerQueryHandle = class(TGLQueryHandle)
   protected
-    function GetTarget: Cardinal; override;
+    function GetTarget: TGLuint; override;
     function GetQueryType: TGLQueryType; override;
   public
     class function IsSupported: Boolean; override;
@@ -415,7 +416,7 @@ type
     checked by the user. *)
   TGLPrimitiveQueryHandle = class(TGLQueryHandle)
   protected
-    function GetTarget: Cardinal; override;
+    function GetTarget: TGLuint; override;
     function GetQueryType: TGLQueryType; override;
   public
     class function IsSupported: Boolean; override;
@@ -431,30 +432,30 @@ type
   private
     FSize: Integer;
   protected
-    function DoAllocateHandle: Cardinal; override;
-    procedure DoDestroyHandle(var AHandle: Cardinal); override;
-    function GetTarget: Cardinal; virtual; abstract;
-    class function IsValid(const ID: Cardinal): Boolean; override;
+    function DoAllocateHandle: TGLuint; override;
+    procedure DoDestroyHandle(var AHandle: TGLuint); override;
+    function GetTarget: TGLuint; virtual; abstract;
+    class function IsValid(const ID: TGLuint): Boolean; override;
   public
     // Creates the buffer object buffer and initializes it.
-    constructor CreateFromData(p: Pointer; size: Integer; bufferUsage: Cardinal);
+    constructor CreateFromData(p: Pointer; size: Integer; bufferUsage: TGLuint);
     procedure Bind; virtual; abstract;
     // Note that it is not necessary to UnBind before Binding another buffer.
     procedure UnBind; virtual; abstract;
     (* Bind a buffer object to an indexed target, used by transform feedback
       buffer objects and uniform buffer objects. (OpenGL 3.0+) *)
-    procedure BindRange(index: Cardinal; offset: TGLintptr; size: TGLsizeiptr); virtual;
+    procedure BindRange(index: TGLuint; offset: TGLintptr; size: TGLsizeiptr); virtual;
     // Equivalent to calling BindRange with offset = 0, and size = the size of buffer.
-    procedure BindBase(index: Cardinal); virtual;
-    procedure UnBindBase(index: Cardinal); virtual;
+    procedure BindBase(index: TGLuint); virtual;
+    procedure UnBindBase(index: TGLuint); virtual;
     (* Specifies buffer content.
       Common bufferUsage values are GL_STATIC_DRAW_ARB for data that will
       change rarely, but be used often, GL_STREAM_DRAW_ARB for data specified
       once but used only a few times, and GL_DYNAMIC_DRAW_ARB for data
       that is re-specified very often. Valid only if the buffer has been bound. *)
-    procedure BufferData(p: Pointer; size: Integer; bufferUsage: Cardinal);
+    procedure BufferData(p: Pointer; size: Integer; bufferUsage: TGLuint);
     // Invokes Bind then BufferData
-    procedure BindBufferData(p: Pointer; size: Integer; bufferUsage: Cardinal);
+    procedure BindBufferData(p: Pointer; size: Integer; bufferUsage: TGLuint);
     (* Updates part of an already existing buffer.
       offset and size indicate which part of the data in the buffer is
       to bo modified and p where the data should be taken from. *)
@@ -464,14 +465,14 @@ type
       GL_READ_WRITE_ARB.
       Valid only if the buffer has been bound, must be followed by
       an UnmapBuffer, only one buffer may be mapped at a time. *)
-    function MapBuffer(access: Cardinal): Pointer;
-    function MapBufferRange(offset: TGLInt; len: TGLsizei; access: TGLbitfield): Pointer;
-    procedure Flush(offset: TGLInt; len: TGLsizei);
+    function MapBuffer(access: TGLuint): Pointer;
+    function MapBufferRange(offset: TGLint; len: TGLsizei; access: TGLbitfield): Pointer;
+    procedure Flush(offset: TGLint; len: TGLsizei);
     (* Unmap buffer content from memory.
       Must follow a MapBuffer, and happen before the buffer is unbound. *)
     function UnmapBuffer: Boolean;
     class function IsSupported: Boolean; override;
-    property Target: Cardinal read GetTarget;
+    property Target: TGLuint read GetTarget;
     property BufferSize: Integer read FSize;
   end;
 
@@ -481,15 +482,15 @@ type
     Do not use this class directly, use one of its subclasses instead. *)
   TGLVBOHandle = class(TGLBufferObjectHandle)
   private
-    function GetVBOTarget: Cardinal;
+    function GetVBOTarget: TGLuint;
   public
-    property VBOTarget: Cardinal read GetVBOTarget;
+    property VBOTarget: TGLuint read GetVBOTarget;
   end;
 
   // Manages a handle to VBO Array Buffer. Typically used to store vertices, normals, texcoords, etc.
   TGLVBOArrayBufferHandle = class(TGLVBOHandle)
   protected
-    function GetTarget: Cardinal; override;
+    function GetTarget: TGLuint; override;
   public
     procedure Bind; override;
     procedure UnBind; override;
@@ -498,7 +499,7 @@ type
   // Manages a handle to VBO Element Array Buffer. Typically used to store vertex indices.
   TGLVBOElementArrayHandle = class(TGLVBOHandle)
   protected
-    function GetTarget: Cardinal; override;
+    function GetTarget: TGLuint; override;
   public
     procedure Bind; override;
     procedure UnBind; override;
@@ -508,7 +509,7 @@ type
     When bound, commands such as ReadPixels write their data into a buffer object. *)
   TGLPackPBOHandle = class(TGLBufferObjectHandle)
   protected
-    function GetTarget: Cardinal; override;
+    function GetTarget: TGLuint; override;
   public
     procedure Bind; override;
     procedure UnBind; override;
@@ -520,7 +521,7 @@ type
     their data from a buffer object *)
   TGLUnpackPBOHandle = class(TGLBufferObjectHandle)
   protected
-    function GetTarget: Cardinal; override;
+    function GetTarget: TGLuint; override;
   public
     procedure Bind; override;
     procedure UnBind; override;
@@ -536,15 +537,15 @@ type
     // FTransformFeedbackBufferStart: array[0..15] of TGLuint64; // (0, 0, 0, ...)
     // FTransformFeedbackBufferSize: array[0..15] of TGLuint64; // (0, 0, 0, ...)
   protected
-    function GetTarget: Cardinal; override;
+    function GetTarget: TGLuint; override;
   public
     procedure Bind; override;
     procedure UnBind; override;
-    procedure BeginTransformFeedback(primitiveMode: Cardinal);
+    procedure BeginTransformFeedback(primitiveMode: TGLuint);
     procedure EndTransformFeedback();
-    procedure BindRange(index: Cardinal; offset: TGLintptr; size: TGLsizeiptr); override;
-    procedure BindBase(index: Cardinal); override;
-    procedure UnBindBase(index: Cardinal); override;
+    procedure BindRange(index: TGLuint; offset: TGLintptr; size: TGLsizeiptr); override;
+    procedure BindBase(index: TGLuint); override;
+    procedure UnBindBase(index: TGLuint); override;
 
     class function IsSupported: Boolean; override;
   end;
@@ -552,7 +553,7 @@ type
   // Manages a handle to a Buffer Texture. (TBO)
   TGLTextureBufferHandle = class(TGLBufferObjectHandle)
   protected
-    function GetTarget: Cardinal; override;
+    function GetTarget: TGLuint; override;
   public
     procedure Bind; override;
     procedure UnBind; override;
@@ -563,17 +564,17 @@ type
     Uniform buffer objects store "uniform blocks"; groups of uniforms
     that can be passed as a group into a GLSL program *)
   TGLUniformBufferHandle = class(TGLBufferObjectHandle)
-    /// FUniformBufferBuffer: array[0..15] of Cardinal; // (0, 0, 0, ...)
+    /// FUniformBufferBuffer: array[0..15] of GLuint; // (0, 0, 0, ...)
     /// FUniformBufferStart: array[0..15] of TGLuint64; // (0, 0, 0, ...)
     /// FUniformBufferSize: array[0..15] of TGLuint64; // (0, 0, 0, ...)
   protected
-    function GetTarget: Cardinal; override;
+    function GetTarget: TGLuint; override;
   public
     procedure Bind; override;
     procedure UnBind; override;
-    procedure BindRange(index: Cardinal; offset: TGLintptr; size: TGLsizeiptr); override;
-    procedure BindBase(index: Cardinal); override;
-    procedure UnBindBase(index: Cardinal); override;
+    procedure BindRange(index: TGLuint; offset: TGLintptr; size: TGLsizeiptr); override;
+    procedure BindBase(index: TGLuint); override;
+    procedure UnBindBase(index: TGLuint); override;
     class function IsSupported: Boolean; override;
   end;
 
@@ -582,9 +583,9 @@ type
   TGLVertexArrayHandle = class(TGLContextHandle)
   protected
     class function Transferable: Boolean; override;
-    function DoAllocateHandle: Cardinal; override;
-    procedure DoDestroyHandle(var AHandle: Cardinal); override;
-    class function IsValid(const ID: Cardinal): Boolean; override;
+    function DoAllocateHandle: TGLuint; override;
+    procedure DoDestroyHandle(var AHandle: TGLuint); override;
+    class function IsValid(const ID: TGLuint): Boolean; override;
   public
     procedure Bind;
     procedure UnBind;
@@ -614,9 +615,9 @@ type
   TGLFramebufferHandle = class(TGLContextHandle)
   protected
     class function Transferable: Boolean; override;
-    function DoAllocateHandle: Cardinal; override;
-    procedure DoDestroyHandle(var AHandle: Cardinal); override;
-    class function IsValid(const ID: Cardinal): Boolean; override;
+    function DoAllocateHandle: TGLuint; override;
+    procedure DoDestroyHandle(var AHandle: TGLuint); override;
+    class function IsValid(const ID: TGLuint): Boolean; override;
   public
     // Bind framebuffer for both drawing + reading
     procedure Bind;
@@ -630,23 +631,22 @@ type
     procedure UnBindForReading;
     // target = GL_DRAW_FRAMEBUFFER, GL_READ_FRAMEBUFFER, GL_FRAMEBUFFER (attach to both READ + DRAW)
     // attachment = COLOR_ATTACHMENTi, DEPTH_ATTACHMENT, STENCIL_ATTACHMENT, DEPTH_STENCIL_ATTACHMENT
-    procedure Attach1DTexture(Target: Cardinal; attachment: Cardinal; textarget: Cardinal; texture: Cardinal; level: TGLInt);
-    procedure Attach2DTexture(Target: Cardinal; attachment: Cardinal; textarget: Cardinal; texture: Cardinal; level: TGLInt);
-    procedure Attach3DTexture(Target: Cardinal; attachment: Cardinal; textarget: Cardinal; texture: Cardinal; level: TGLInt;
-      Layer: TGLInt);
-    procedure AttachLayer(Target: Cardinal; attachment: Cardinal; texture: Cardinal; level: TGLInt; Layer: TGLInt);
-    procedure AttachRenderBuffer(Target: Cardinal; attachment: Cardinal; renderbuffertarget: Cardinal; renderbuffer: Cardinal);
+    procedure Attach1DTexture(Target: TGLuint; attachment: TGLuint; textarget: TGLuint; texture: TGLuint; level: TGLint);
+    procedure Attach2DTexture(Target: TGLuint; attachment: TGLuint; textarget: TGLuint; texture: TGLuint; level: TGLint);
+    procedure Attach3DTexture(Target: TGLuint; attachment: TGLuint; textarget: TGLuint; texture: TGLuint; level: TGLint; Layer: TGLint);
+    procedure AttachLayer(Target: TGLuint; attachment: TGLuint; texture: TGLuint; level: TGLint; Layer: TGLint);
+    procedure AttachRenderBuffer(Target: TGLuint; attachment: TGLuint; renderbuffertarget: TGLuint; renderbuffer: TGLuint);
     (* OpenGL 3.2+ only.
      If texture is the name of a three-dimensional texture, cube map texture, one-or
      two-dimensional array texture, or two-dimensional multisample array texture, the
      texture level attached to the framebuffer attachment point is an array of images,
      and the framebuffer attachment is considered layered *)
-    procedure AttachTexture(Target: Cardinal; attachment: Cardinal; texture: Cardinal; level: TGLInt);
+    procedure AttachTexture(Target: TGLuint; attachment: TGLuint; texture: TGLuint; level: TGLint);
     // OpenGL 3.2+ only
-    procedure AttachTextureLayer(Target: Cardinal; attachment: Cardinal; texture: Cardinal; level: TGLInt; Layer: TGLInt);
+    procedure AttachTextureLayer(Target: TGLuint; attachment: TGLuint; texture: TGLuint; level: TGLint; Layer: TGLint);
     // copy rect from bound read framebuffer to bound draw framebuffer
-    procedure Blit(srcX0: TGLInt; srcY0: TGLInt; srcX1: TGLInt; srcY1: TGLInt; dstX0: TGLInt; dstY0: TGLInt; dstX1: TGLInt;
-      dstY1: TGLInt; mask: TGLbitfield; filter: Cardinal);
+    procedure Blit(srcX0: TGLint; srcY0: TGLint; srcX1: TGLint; srcY1: TGLint; dstX0: TGLint; dstY0: TGLint; dstX1: TGLint;
+      dstY1: TGLint; mask: TGLbitfield; filter: TGLuint);
     (* target = GL_DRAW_FRAMEBUFFER, GL_READ_FRAMEBUFFER, GL_FRAMEBUFFER (equivalent to GL_DRAW_FRAMEBUFFER)
      If default framebuffer (0) is bound:
      attachment = GL_FRONT_LEFT, GL_FRONT_RIGHT, GL_BACK_LEFT, or GL_BACK_RIGHT, GL_DEPTH, GL_STENCIL
@@ -655,12 +655,12 @@ type
      param = GL_FRAMEBUFFER_ATTACHMENT_(OBJECT_TYPE, OBJECT_NAME,
      RED_SIZE, GREEN_SIZE, BLUE_SIZE, ALPHA_SIZE, DEPTH_SIZE, STENCIL_SIZE,
      COMPONENT_TYPE, COLOR_ENCODING, TEXTURE_LEVEL, LAYERED, TEXTURE_CUBE_MAP_FACE, TEXTURE_LAYER *)
-    function GetAttachmentParameter(Target: Cardinal; attachment: Cardinal; pname: Cardinal): TGLInt;
+    function GetAttachmentParameter(Target: TGLuint; attachment: TGLuint; pname: TGLuint): TGLint;
     (* Returns the type of object bound to attachment point:
      GL_NONE, GL_FRAMEBUFFER_DEFAULT, GL_TEXTURE, or GL_RENDERBUFFER *)
-    function GetAttachmentObjectType(Target: Cardinal; attachment: Cardinal): TGLInt;
+    function GetAttachmentObjectType(Target: TGLuint; attachment: TGLuint): TGLint;
     // Returns the name (ID) of the texture or renderbuffer attached to attachment point
-    function GetAttachmentObjectName(Target: Cardinal; attachment: Cardinal): TGLInt;
+    function GetAttachmentObjectName(Target: TGLuint; attachment: TGLuint): TGLint;
     function GetStatus: TGLFramebufferStatus;
     function GetStringStatus(out clarification: string): TGLFramebufferStatus;
     class function IsSupported: Boolean; override;
@@ -672,14 +672,14 @@ type
     buffer types which have no corresponding texture format (stencil, accum, etc). *)
   TGLRenderbufferHandle = class(TGLContextHandle)
   protected
-    function DoAllocateHandle: Cardinal; override;
-    procedure DoDestroyHandle(var AHandle: Cardinal); override;
-    class function IsValid(const ID: Cardinal): Boolean; override;
+    function DoAllocateHandle: TGLuint; override;
+    procedure DoDestroyHandle(var AHandle: TGLuint); override;
+    class function IsValid(const ID: TGLuint): Boolean; override;
   public
     procedure Bind;
     procedure UnBind;
-    procedure SetStorage(internalformat: Cardinal; width, height: TGLsizei);
-    procedure SetStorageMultisample(internalformat: Cardinal; samples: TGLsizei; width, height: TGLsizei);
+    procedure SetStorage(internalformat: TGLuint; width, height: TGLsizei);
+    procedure SetStorageMultisample(internalformat: TGLuint; samples: TGLsizei; width, height: TGLsizei);
     class function IsSupported: Boolean; override;
   end;
 
@@ -688,10 +688,10 @@ type
     FReady: Boolean;
     FInfoLog: string;
   protected
-    function DoAllocateHandle: Cardinal; override;
-    procedure DoDestroyHandle(var AHandle: Cardinal); override;
-    class function IsValid(const ID: Cardinal): Boolean; override;
-    class function GetTarget: Cardinal; virtual; abstract;
+    function DoAllocateHandle: TGLuint; override;
+    procedure DoDestroyHandle(var AHandle: TGLuint); override;
+    class function IsValid(const ID: TGLuint): Boolean; override;
+    class function GetTarget: TGLuint; virtual; abstract;
   public
     procedure LoadARBProgram(const AText: string);
     procedure Enable;
@@ -703,21 +703,21 @@ type
 
   TGLARBVertexProgramHandle = class(TGLARBProgramHandle)
   protected
-    class function GetTarget: Cardinal; override;
+    class function GetTarget: TGLuint; override;
   public
     class function IsSupported: Boolean; override;
   end;
 
   TGLARBFragmentProgramHandle = class(TGLARBProgramHandle)
   protected
-    class function GetTarget: Cardinal; override;
+    class function GetTarget: TGLuint; override;
   public
     class function IsSupported: Boolean; override;
   end;
 
   TGLARBGeometryProgramHandle = class(TGLARBProgramHandle)
   protected
-    class function GetTarget: Cardinal; override;
+    class function GetTarget: TGLuint; override;
   public
     class function IsSupported: Boolean; override;
   end;
@@ -726,7 +726,7 @@ type
     Do not use this class directly, use one of its subclasses instead *)
   TGLSLHandle = class(TGLContextHandle)
   protected
-    procedure DoDestroyHandle(var AHandle: Cardinal); override;
+    procedure DoDestroyHandle(var AHandle: TGLuint); override;
   public
     function InfoLog: string;
     class function IsSupported: Boolean; override;
@@ -738,15 +738,15 @@ type
     Do not use this class directly, use one of its subclasses instead *)
   TGLShaderHandle = class(TGLSLHandle)
   private
-    FShaderType: Cardinal;
+    FShaderType: TGLuint;
   protected
-    function DoAllocateHandle: Cardinal; override;
-    class function IsValid(const ID: Cardinal): Boolean; override;
+    function DoAllocateHandle: TGLuint; override;
+    class function IsValid(const ID: TGLuint): Boolean; override;
   public
     procedure ShaderSource(const source: AnsiString); overload;
     // Returns True if compilation sucessful
     function CompileShader: Boolean;
-    property ShaderType: Cardinal read FShaderType;
+    property ShaderType: TGLuint read FShaderType;
   end;
 
   TGLShaderHandleClass = class of TGLShaderHandle;
@@ -791,7 +791,7 @@ type
     checked by the user *)
   TGLProgramHandle = class(TGLSLHandle)
   public
-    class function IsValid(const ID: Cardinal): Boolean; override;
+    class function IsValid(const ID: TGLuint): Boolean; override;
   private
     FName: string;
     function GetUniform1i(const index: string): Integer;
@@ -817,12 +817,12 @@ type
     function GetUniformMatrix4fv(const index: string): TMatrix;
     procedure SetUniformMatrix4fv(const index: string; const val: TMatrix);
     function GetUniformTextureHandle(const Index: string; const TextureIndex: Integer; const TextureTarget: TGLTextureTarget)
-      : Cardinal;
+      : TGLuint;
     procedure SetUniformTextureHandle(const Index: string; const TextureIndex: Integer; const TextureTarget: TGLTextureTarget;
-      const Value: Cardinal);
+      const Value: TGLuint);
     procedure SetUniformBuffer(const Index: string; Value: TGLUniformBufferHandle);
   protected
-    function DoAllocateHandle: Cardinal; override;
+    function DoAllocateHandle: TGLuint; override;
   public
     property Name: string read FName write FName;
     constructor Create; override;
@@ -868,7 +868,7 @@ type
     property UniformMatrix3fv[const index: string]: TMatrix3f read GetUniformMatrix3fv write SetUniformMatrix3fv;
     property UniformMatrix4fv[const index: string]: TMatrix read GetUniformMatrix4fv write SetUniformMatrix4fv;
     property UniformTextureHandle[const index: string; const TextureIndex: Integer; const TextureTarget: TGLTextureTarget]
-      : Cardinal read GetUniformTextureHandle write SetUniformTextureHandle;
+      : TGLuint read GetUniformTextureHandle write SetUniformTextureHandle;
     property UniformBuffer[const index: string]: TGLUniformBufferHandle write SetUniformBuffer;
   end;
 
@@ -957,13 +957,12 @@ var
   vIgnoreOpenGLErrors: Boolean = False;
   vContextActivationFailureOccurred: Boolean = False;
 
-{$IFNDEF USE_MULTITHREAD}
-
-var
-{$ELSE}
+{$IFDEF USE_MULTITHREAD}
   threadvar
+{$ELSE}
+  var
 {$ENDIF}
-    vCurrentGLContext: TGLContext;
+  vCurrentGLContext: TGLContext;
   GL: TGLExtensionsAndEntryPoints;
   xgl: TGLMultitextureCoordinator;
   vMainThread: Boolean;
@@ -2343,7 +2342,7 @@ begin
   vCurrentGLContext.GLStates.ElementBufferBinding := 0;
 end;
 
-function TGLVBOElementArrayHandle.GetTarget: Cardinal;
+function TGLVBOElementArrayHandle.GetTarget: TGLuint;
 begin
   Result := GL_ELEMENT_ARRAY_BUFFER;
 end;
@@ -2362,14 +2361,14 @@ begin
   vCurrentGLContext.GLStates.PixelPackBufferBinding := 0;
 end;
 
-function TGLPackPBOHandle.GetTarget: Cardinal;
+function TGLPackPBOHandle.GetTarget: TGLuint;
 begin
   Result := GL_PIXEL_PACK_BUFFER;
 end;
 
 class function TGLPackPBOHandle.IsSupported: Boolean;
 begin
-  Result := gl.ARB_pixel_buffer_object;
+  Result := GL.ARB_pixel_buffer_object;
 end;
 
 // ------------------
@@ -2410,13 +2409,13 @@ begin
   vCurrentGLContext.GLStates.TransformFeedbackBufferBinding := 0;
 end;
 
-function TGLTransformFeedbackBufferHandle.GetTarget: Cardinal;
+function TGLTransformFeedbackBufferHandle.GetTarget: TGLuint;
 begin
   Result := GL_TRANSFORM_FEEDBACK_BUFFER;
 end;
 
 procedure TGLTransformFeedbackBufferHandle.BeginTransformFeedback
-  (primitiveMode: Cardinal);
+  (primitiveMode: TGLuint);
 begin
   gl.BeginTransformFeedback(primitiveMode);
 end;
@@ -2443,7 +2442,7 @@ end;
 
 class function TGLTransformFeedbackBufferHandle.IsSupported: Boolean;
 begin
-  Result := gl.EXT_transform_feedback or gl.VERSION_3_0;
+  Result := GL.EXT_transform_feedback;
 end;
 
 // ------------------
@@ -2681,7 +2680,7 @@ end;
 
 function TGLFramebufferHandle.GetStatus: TGLFramebufferStatus;
 var
-  Status: Cardinal;
+  Status: TGLuint;
 begin
   Status := gl.CheckFramebufferStatus(GL_FRAMEBUFFER);
 

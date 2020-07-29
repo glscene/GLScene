@@ -16,17 +16,16 @@ unit GLS.SDLContext;
 interface
 
 uses
-  Winapi.OpenGL,
   Winapi.Windows,
   System.Classes,
   System.SysUtils,
 
+  OpenGLTokens,
   XOpenGL,
   GLContext,
   GLScene,
   GLCrossPlatform,
 
-  GLS.OpenGLx,
   GLS.SDLWindow,
   SDL2;
 
@@ -236,7 +235,7 @@ begin
   else
     FSDLWin.PixelDepth := vpd16bits;
 
-  sdlOpt := [voOpenGL];
+  sdlOpt := [voOpenGL, voHardwareAccel];
   if FullScreen then
     sdlOpt := sdlOpt + [voFullScreen]
   else
@@ -250,10 +249,8 @@ begin
   if not FSDLWin.Active then
     raise Exception.Create('SDLWindow open failed.');
 
-   xgl.MapTexCoordToNull;
-   ReadExtensions;
-   ReadImplementationProperties;
-   xgl.MapTexCoordToMain;
+  FGL.Initialize;
+  MakeGLCurrent;
 end;
 
 procedure TSDLContext.DoCreateMemoryContext(outputDevice: HWND; width, height: Integer; BufferCount: integer);
@@ -269,13 +266,15 @@ end;
 
 procedure TSDLContext.DoDestroyContext;
 begin
-   // Beware, SDL will also terminate the application
-   FSDLWin.Close;
+  // Beware, SDL will also terminate the application
+  FGL.Close;
+  FSDLWin.Close;
 end;
 
 procedure TSDLContext.DoActivate;
 begin
-   // nothing particular (only one context, always active)
+  if not FGL.IsInitialized then
+    FGL.Initialize;
 end;
 
 procedure TSDLContext.DoDeactivate;

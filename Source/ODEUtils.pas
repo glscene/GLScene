@@ -15,12 +15,13 @@ unit ODEUtils;
 interface
 
 uses
-  Winapi.OpenGL,
   System.SysUtils,
   System.Classes,
+
+  ODEImport,
+  OpenGLTokens,
   GLContext,
   GLVectorGeometry,
-  ODEImport,
   GLScene,
   GLPersistentClasses,
   GLCoordinates,
@@ -126,40 +127,40 @@ begin
   lz := Sides[2] * 0.5;
 
   // sides
-  glBegin(GL_TRIANGLE_STRIP);
-  glNormal3f(-1, 0, 0);
-  glVertex3f(-lx, -ly, -lz);
-  glVertex3f(-lx, -ly, lz);
-  glVertex3f(-lx, ly, -lz);
-  glVertex3f(-lx, ly, lz);
-  glNormal3f(0, 1, 0);
-  glVertex3f(lx, ly, -lz);
-  glVertex3f(lx, ly, lz);
-  glNormal3f(1, 0, 0);
-  glVertex3f(lx, -ly, -lz);
-  glVertex3f(lx, -ly, lz);
-  glNormal3f(0, -1, 0);
-  glVertex3f(-lx, -ly, -lz);
-  glVertex3f(-lx, -ly, lz);
-  glEnd();
+  gl.Begin_(GL_TRIANGLE_STRIP);
+  gl.Normal3f(-1, 0, 0);
+  gl.Vertex3f(-lx, -ly, -lz);
+  gl.Vertex3f(-lx, -ly, lz);
+  gl.Vertex3f(-lx, ly, -lz);
+  gl.Vertex3f(-lx, ly, lz);
+  gl.Normal3f(0, 1, 0);
+  gl.Vertex3f(lx, ly, -lz);
+  gl.Vertex3f(lx, ly, lz);
+  gl.Normal3f(1, 0, 0);
+  gl.Vertex3f(lx, -ly, -lz);
+  gl.Vertex3f(lx, -ly, lz);
+  gl.Normal3f(0, -1, 0);
+  gl.Vertex3f(-lx, -ly, -lz);
+  gl.Vertex3f(-lx, -ly, lz);
+  gl.End_();
 
   // top face
-  glBegin(GL_TRIANGLE_FAN);
-  glNormal3f(0, 0, 1);
-  glVertex3f(-lx, -ly, lz);
-  glVertex3f(lx, -ly, lz);
-  glVertex3f(lx, ly, lz);
-  glVertex3f(-lx, ly, lz);
-  glEnd();
+  gl.Begin_(GL_TRIANGLE_FAN);
+  gl.Normal3f(0, 0, 1);
+  gl.Vertex3f(-lx, -ly, lz);
+  gl.Vertex3f(lx, -ly, lz);
+  gl.Vertex3f(lx, ly, lz);
+  gl.Vertex3f(-lx, ly, lz);
+  gl.End_();
 
   // bottom face
-  glBegin(GL_TRIANGLE_FAN);
-  glNormal3f(0, 0, -1);
-  glVertex3f(-lx, -ly, -lz);
-  glVertex3f(-lx, ly, -lz);
-  glVertex3f(lx, ly, -lz);
-  glVertex3f(lx, -ly, -lz);
-  glEnd();
+  gl.Begin_(GL_TRIANGLE_FAN);
+  gl.Normal3f(0, 0, -1);
+  gl.Vertex3f(-lx, -ly, -lz);
+  gl.Vertex3f(-lx, ly, -lz);
+  gl.Vertex3f(lx, ly, -lz);
+  gl.Vertex3f(lx, -ly, -lz);
+  gl.End_();
 end;
 
 function GLSceneMatrixToODER(m: TMatrix): TdMatrix3;
@@ -185,7 +186,7 @@ procedure dsDrawBox(pos: TdVector3; R: TdMatrix3; Sides: TdVector3);
 begin
   setTransform(pos, R);
   drawBox(sides);
-  glPopMatrix();
+  gl.PopMatrix();
 end;
 
 procedure setTransform(pos: TdVector3; R: TdMatrix3);
@@ -208,8 +209,8 @@ begin
   matrix[13] := pos[1];
   matrix[14] := pos[2];
   matrix[15] := 1;
-  glPushMatrix();
-  glMultMatrixf(@matrix);
+  gl.PushMatrix();
+  gl.MultMatrixf(@matrix);
 end;
 
 (*$WARNINGS OFF*)

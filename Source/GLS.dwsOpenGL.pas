@@ -17,7 +17,7 @@ uses
   System.Classes,
   System.Variants,
   
-  GLS.OpenGLx,
+  OpenGLTokens,
   GLContext,
   GLVectorGeometry,
   
