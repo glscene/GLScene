@@ -35,12 +35,12 @@ uses
   System.Classes,
   System.SysUtils,
 
+  OpenGLTokens,
   GLVectorTypes,
   GLVectorGeometry,
   GLMaterial,
   GLGraphics,
   GLUtils,
-  OpenGLTokens,
   GLContext,
   GLVectorLists,
   GLColor,

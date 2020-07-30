@@ -356,6 +356,7 @@
         <DCCReference Include="..\Source\GLS.Memo.pas"/>
         <DCCReference Include="..\Source\GLS.PlugInManager.pas"/>
         <DCCReference Include="..\Source\GLS.OpenGLx.pas"/>
+        <DCCReference Include="..\Source\GLS.vclOpenGL.pas"/>
         <DCCReference Include="..\Source\GLTeapot.pas"/>
         <DCCReference Include="..\Source\GLTerrainRenderer.pas"/>
         <DCCReference Include="..\Source\GLTexCombineShader.pas"/>
@@ -386,13 +387,13 @@
         <DCCReference Include="..\Source\GLWaterPlane.pas"/>
         <DCCReference Include="..\Source\GLSceneViewer.pas"/>
         <DCCReference Include="..\Source\GLWindows.pas"/>
+        <DCCReference Include="..\Source\GLWindowsContext.pas"/>
         <DCCReference Include="..\Source\GLWindowsFont.pas"/>
         <DCCReference Include="..\Source\XCollection.pas"/>
         <DCCReference Include="..\Source\GLzBuffer.pas"/>
         <DCCReference Include="..\Source\OpenGLAdapter.pas"/>
         <DCCReference Include="..\Source\OpenGLTokens.pas"/>
         <DCCReference Include="..\Source\XOpenGL.pas"/>
-        <DCCReference Include="..\Source\GLWindowsContext.pas"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -425,14 +426,14 @@
                 <Platform value="Win64">True</Platform>
             </Platforms>
             <Deployment Version="3">
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\17.0\Bpl\Win64\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win64">
                         <RemoteName>GLScene_RT.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\17.0\Bpl\Win64\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win64">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
                         <RemoteName>GLScene_RT.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>

@@ -11,10 +11,11 @@ interface
 {$I GLScene.inc}
 
 uses
-  Winapi.OpenGL,
   System.Classes,
 
+  OpenGLTokens,
   GLScene,
+  GLContext,
   GLVectorGeometry,
   GLObjects,
   GLVectorFileObjects,
@@ -90,11 +91,11 @@ begin
     faceIndices := @triangles[i, 0];
     n := CalcPlaneNormal(vertices[faceIndices^[0]], vertices[faceIndices^[1]],
       vertices[faceIndices^[2]]);
-    glNormal3fv(@n);
-    glBegin(GL_TRIANGLES);
+    gl.Normal3fv(@n);
+    gl.Begin_(GL_TRIANGLES);
       for j := 0 to 2 do
-        glVertex3fv(@vertices[faceIndices^[j]]);
-    glEnd;
+        gl.Vertex3fv(@vertices[faceIndices^[j]]);
+    gl.End_();
   end;
 end;
 
@@ -132,11 +133,11 @@ begin
 
     n := CalcPlaneNormal(vertices[faceIndices^[0]], vertices[faceIndices^[1]],
       vertices[faceIndices^[2]]);
-    glNormal3fv(@n);
-    glBegin(GL_TRIANGLES);
+    gl.Normal3fv(@n);
+    gl.Begin_(GL_TRIANGLES);
     for j := 0 to 2 do
-      glVertex3fv(@vertices[faceIndices^[j]]);
-    glEnd;
+      gl.Vertex3fv(@vertices[faceIndices^[j]]);
+    gl.End_();
   end;
 end;
 
@@ -172,11 +173,11 @@ begin
   begin
     faceIndices := @Quadrangles[i, 0];
     n := CalcPlaneNormal(vertices[faceIndices^[0]], vertices[faceIndices^[1]], vertices[faceIndices^[2]]);
-    glNormal3fv(@n);
-    glBegin(GL_QUADS);
+    gl.Normal3fv(@n);
+    gl.Begin_(GL_QUADS);
       for j := 0 to 7 do
-      glVertex3fv(@vertices[faceIndices^[j]]);
-    glEnd;
+      gl.Vertex3fv(@vertices[faceIndices^[j]]);
+    gl.End_();
   end;
 end;
 
@@ -214,21 +215,21 @@ begin
     faceIndices := @polygons[i, 0];
     n := CalcPlaneNormal(vertices[faceIndices^[0]], vertices[faceIndices^[1]],
       vertices[faceIndices^[2]]);
-    glNormal3fv(@n);
+    gl.Normal3fv(@n);
 
-//    glBegin(GL_TRIANGLE_FAN);
+//    gl.Begin_(GL_TRIANGLE_FAN);
 //    for j := 0 to 4 do
-//      glVertex3fv(@vertices[faceIndices^[j]]);
-//    glEnd;
+//      gl.Vertex3fv(@vertices[faceIndices^[j]]);
+//    gl.End_();
 
-    glBegin(GL_TRIANGLES);
+    gl.Begin_(GL_TRIANGLES);
     for j := 1 to 3 do
     begin
-      glVertex3fv(@vertices[faceIndices^[0]]);
-      glVertex3fv(@vertices[faceIndices^[j]]);
-      glVertex3fv(@vertices[faceIndices^[j+1]]);
+      gl.Vertex3fv(@vertices[faceIndices^[0]]);
+      gl.Vertex3fv(@vertices[faceIndices^[j]]);
+      gl.Vertex3fv(@vertices[faceIndices^[j+1]]);
     end;
-    glEnd;
+    gl.End_();
   end;
 end;
 
@@ -263,12 +264,12 @@ begin
 
     n := CalcPlaneNormal(vertices[faceIndices^[0]], vertices[faceIndices^[1]],
       vertices[faceIndices^[2]]);
-    glNormal3fv(@n);
+    gl.Normal3fv(@n);
 
-    glBegin(GL_TRIANGLES);
+    gl.Begin_(GL_TRIANGLES);
     for j := 0 to 2 do
-      glVertex3fv(@vertices[faceIndices^[j]]);
-    glEnd;
+      gl.Vertex3fv(@vertices[faceIndices^[j]]);
+    gl.End_();
   end;
 end;
 

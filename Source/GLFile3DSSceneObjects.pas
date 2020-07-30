@@ -15,9 +15,9 @@ uses
   System.SysUtils,
   System.Math,
   
+  OpenGLTokens,
   OpenGLAdapter,
   GLVectorGeometry,
-  OpenGLTokens,
   GLContext,
   GLScene,
   GLVectorFileObjects,

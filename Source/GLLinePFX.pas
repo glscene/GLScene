@@ -14,7 +14,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  Winapi.OpenGL,
+  OpenGLTokens,
   GLPersistentClasses,
   GLVectorGeometry,
   GLParticleFX,

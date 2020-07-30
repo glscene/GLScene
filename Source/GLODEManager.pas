@@ -11,12 +11,12 @@ interface
 {$I GLScene.inc}
 
 uses
-  Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
   System.Math,
   System.Types,
 
+  OpenGLTokens,
   GLScene,
   GLContext,
   GLVectorGeometry,
@@ -1589,20 +1589,20 @@ begin
   if not(csDesigning in ComponentState) then
     if not VisibleAtRunTime then
       Exit;
-  glPushAttrib(GL_ENABLE_BIT + GL_CURRENT_BIT + GL_POLYGON_BIT);
-  glDisable(GL_LIGHTING);
-  glEnable(GL_POLYGON_OFFSET_LINE);
-  glPolygonOffset(1, 2);
+  gl.PushAttrib(GL_ENABLE_BIT + GL_CURRENT_BIT + GL_POLYGON_BIT);
+  gl.Disable(GL_LIGHTING);
+  gl.Enable(GL_POLYGON_OFFSET_LINE);
+  gl.PolygonOffset(1, 2);
 
   for i := 0 to FODEBehaviours.Count - 1 do
   begin
     if ODEBehaviours[i] is TGLODEDynamic then
       if TGLODEDynamic(ODEBehaviours[i]).GetEnabled then
-        glColor4fv(PGLFloat(GeomColorDynE.AsAddress))
+        gl.Color4fv(PGLFloat(GeomColorDynE.AsAddress))
       else
-        glColor4fv(PGLFloat(GeomColorDynD.AsAddress))
+        gl.Color4fv(PGLFloat(GeomColorDynD.AsAddress))
     else
-      glColor4fv(PGLFloat(GeomColorStat.AsAddress));
+      gl.Color4fv(PGLFloat(GeomColorStat.AsAddress));
 
     ODEBehaviours[i].Render(rci);
   end;
@@ -5206,14 +5206,14 @@ var
 begin
   if FRenderContacts and (FContactRenderPoints.Count>0) then
   begin
-    glPushAttrib(GL_CURRENT_BIT);
-    glColor3fv(PGLfloat(FContactColor.AsAddress));
-    glPointSize(FPointSize);
-    glBegin(GL_POINTS);
+    gl.PushAttrib(GL_CURRENT_BIT);
+    gl.Color3fv(PGLfloat(FContactColor.AsAddress));
+    gl.PointSize(FPointSize);
+    gl.Begin_(GL_POINTS);
     for i := 0 to FContactRenderPoints.Count - 1 do
-      glVertex3fv(@FContactRenderPoints.List[i]);
-    glEnd;
-    glPopAttrib;
+      gl.Vertex3fv(@FContactRenderPoints.List[i]);
+    gl.End_;
+    gl.PopAttrib;
   end;
   FContactRenderPoints.Clear;
 end;

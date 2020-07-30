@@ -20,16 +20,16 @@ interface
 {$I GLScene.inc}
 
 uses
-  Winapi.OpenGL,
   System.Types,
   System.Classes,
   System.SysUtils,
   System.Math,
+
+  OpenGLTokens,
+  OpenGLAdapter,
   GLVectorGeometry,
   GLVectorTypes,
   GLScene,
-  OpenGLAdapter,
-  OpenGLTokens,
   GLVectorLists,
   GLPipelineTransformation,
   GLContext,

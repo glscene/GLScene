@@ -55,8 +55,13 @@ type
     procedure SaveToStream(aStream: TStream); override;
   end;
 
-  threadvar STLUseEmbeddedColors: Boolean;
-
+{$IFDEF USE_MULTITHREAD}
+  threadvar
+{$ELSE}
+  var
+{$ENDIF}
+  STLUseEmbeddedColors: Boolean;
+  
 // ------------------------------------------------------------------
 implementation
 // ------------------------------------------------------------------

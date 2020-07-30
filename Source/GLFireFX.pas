@@ -33,7 +33,6 @@ uses
   GLTextureFormat;
 
 type
-
   PFireParticle = ^TFireParticle;
   TFireParticle = record
     Position: TVector;
@@ -46,9 +45,9 @@ type
 
   TGLBFireFX = class;
 
-  { Fire special effect manager.
+  (* Fire special effect manager.
     Defines the looks and behaviour of a particle system that can be made
-    to look fire-like. }
+    to look fire-like. *)
   TGLFireFXManager = class(TGLCadenceAbleComponent)
   private
     FClients: TList;
@@ -83,76 +82,76 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    {Reinitializes the fire. }
+    // Reinitializes the fire.
     procedure FireInit;
-    {Spawns a large quantity of particles to simulate an isotropic explosion. 
+    (* Spawns a large quantity of particles to simulate an isotropic explosion.
        This method generates an isotropic explosion, i.e. there is no
-       privilegied direction in the initial vector. }
+       privilegied direction in the initial vector. *)
     procedure IsotropicExplosion(minInitialSpeed, maxInitialSpeed, lifeBoostFactor: Single;
       nbParticles: Integer = -1);
-    {Spawns a large quantity of particles to simulate a ring explosion. 
+    (* Spawns a large quantity of particles to simulate a ring explosion.
        This method generates a ring explosion. The plane of the ring is described
        by ringVectorX/Y, which should be of unit length (but you may not
-       make them of unit length if you want "elliptic" rings). }
+       make them of unit length if you want "elliptic" rings). *)
     procedure RingExplosion(minInitialSpeed, maxInitialSpeed, lifeBoostFactor: Single;
       const ringVectorX, ringVectorY: TAffineVector;
       nbParticles: Integer = -1);
-    {Current Nb of particles. }
+    // Current Nb of particles.
     property ParticleCount: Integer read NP;
     procedure DoProgress(const progressTime: TGLProgressTimes); override;
   published
-    {Adjusts the acceleration direction (abs coordinates). }
+    // Adjusts the acceleration direction (abs coordinates).
     property FireDir: TGLCoordinates read FFireDir write SetFireDir;
-    {Adjusts the initial direction (abs coordinates). }
+    // Adjusts the initial direction (abs coordinates).
     property InitialDir: TGLCoordinates read FInitialDir write SetInitialDir;
-    {The cadencer that will "drive" the animation of the system. }
+    // The cadencer that will "drive" the animation of the system.
     property Cadencer: TGLCadencer read FCadencer write SetCadencer;
-    {Maximum number of simultaneous particles in the system. }
+    // Maximum number of simultaneous particles in the system.
     property MaxParticles: Integer read FMaxParticles write SetMaxParticles default 256;
-    {Size of the particle, in absolute units. }
+    // Size of the particle, in absolute units.
     property ParticleSize: Single read FParticleSize write FParticleSize stored StoreParticleSize;
-    {Inner color of a particle. }
+    // Inner color of a particle.
     property InnerColor: TGLcolor read FInnerColor write SetInnerColor;
-    {Outer color of a particle. }
+    // Outer color of a particle.
     property OuterColor: TGLcolor read FOuterColor write SetOuterColor; // default clrWhite;
     property FireDensity: Single read FFireDensity write FFireDensity;
     property FireEvaporation: Single read FFireEvaporation write FFireEvaporation;
-    {Adjust a crown (circular) radius on which particles are spawned. 
+    (* Adjust a crown (circular) radius on which particles are spawned.
        With a value of zero, the particles are spawned in the FireRadius
        cube around the origin, with a non zero value, they appear in
-       a torus of major radius FireCrown, and minor radius FireRadius*1.73. }
+       a torus of major radius FireCrown, and minor radius FireRadius*1.73. *)
     property FireCrown: Single read FFireCrown write FFireCrown;
-    {Life length of particle. }
+    // Life length of particle.
     property ParticleLife: Integer read FParticleLife write FParticleLife default 3;
     property FireBurst: Single read FFireBurst write FFireBurst;
-    {Adjusts the random birth radius for particles (actually a birth cube). }
+    // Adjusts the random birth radius for particles (actually a birth cube).
     property FireRadius: Single read FFireRadius write FFireRadius;
-    {If true, no new particles are spawn. 
-       But current ones continue to live and die. }
+    (* If true, no new particles are spawn.
+       But current ones continue to live and die. *)
     property Disabled: Boolean read FDisabled write FDisabled;
-    {When paused, the fire animation is freezed. }
+    // When paused, the fire animation is freezed.
     property Paused: Boolean read FPaused write FPaused;
-    {Interval between particles births (in sec). 
-       The interval may not be honoured if MawParticles is reached. }
+    (* Interval between particles births (in sec).
+       The interval may not be honoured if MawParticles is reached. *)
     property ParticleInterval: Single read FParticleInterval write FParticleInterval;
-    {Enable/disable use of ParticleInterval. 
+    (* Enable/disable use of ParticleInterval.
        If true ParticleInterval is used, if False, the system will attempt
        to maintain a particle count of MaxParticles, by spawning new
-       particles to replace the dead ones ASAP. }
+       particles to replace the dead ones ASAP. *)
     property UseInterval: Boolean read FUseInterval write FUseInterval;
-    {Particle's render won't write to Z-Buffer }
+    // Particle's render won't write to Z-Buffer
     property NoZWrite: Boolean read FNoZWrite write FNoZWrite default True;
-    {Specifies an optional object whose position to use as reference.
+    (* Specifies an optional object whose position to use as reference.
        This property allows switching between static/shared fires (for
        fireplaces or static torches) and dynamic fire trails.
        The absolute position of the reference object is 'central' spawning
        point for new particles, usually, the object will be the one and only
-       one on which the effect is applied. }
+       one on which the effect is applied. *)
     property Reference: TGLBaseSceneObject read FReference write SetReference;
   end;
 
-  { Fire special effect.
-    This effect works as a client of TFireFXManager }
+  (* Fire special effect.
+    This effect works as a client of TFireFXManager *)
   TGLBFireFX = class(TGLObjectPostEffect)
   private
     FManager: TGLFireFXManager;
@@ -170,21 +169,20 @@ type
     class function FriendlyDescription: string; override;
     procedure Render(var rci: TGLRenderContextInfo); override;
   published
-   {Refers the collision manager. }
+   // Refers the collision manager.
     property Manager: TGLFireFXManager read FManager write SetManager;
   end;
 
-  {Returns or creates the TGLBFireFX within the given behaviours. 
-   This helper function is convenient way to access a TGLBFireFX. }
+(* Returns or creates the TGLBFireFX within the given behaviours.
+   This helper function is convenient way to access a TGLBFireFX. *)
 function GetOrCreateFireFX(effects: TGLEffects): TGLBFireFX; overload;
-{Returns or creates the TGLBFireFX within the given object's behaviours. 
- This helper function is convenient way to access a TGLBFireFX. }
+(* Returns or creates the TGLBFireFX within the given object's behaviours.
+   This helper function is convenient way to access a TGLBFireFX. *)
 function GetOrCreateFireFX(obj: TGLBaseSceneObject): TGLBFireFX; overload;
 
 // ------------------------------------------------------------------
 implementation
 // ------------------------------------------------------------------
-
 
 function GetOrCreateFireFX(effects: TGLEffects): TGLBFireFX;
 var
@@ -196,7 +194,6 @@ begin
   else
     Result := TGLBFireFX.Create(effects);
 end;
-
 
 function GetOrCreateFireFX(obj: TGLBaseSceneObject): TGLBFireFX;
 begin
@@ -464,7 +461,6 @@ begin
   end;
 end;
 
-
 procedure TGLFireFXManager.CalcFire(deltaTime: Double;
   particleInterval, particleLife: Single; fireAlpha: Single);
 var
@@ -529,7 +525,6 @@ begin
   end;
 end;
 
-
 procedure TGLFireFXManager.AffParticle3d(Color2: TColorVector; const mat: TMatrix);
 var
   vx, vy: TVector;
@@ -568,13 +563,11 @@ end;
 // ------------------ TGLBFireFX ------------------
 // ------------------
 
-
 constructor TGLBFireFX.Create(aOwner: TXCollection);
 begin
   inherited Create(aOwner);
 end;
 
- 
 destructor TGLBFireFX.Destroy;
 begin
   Manager := nil;
@@ -587,12 +580,10 @@ begin
   Result := 'FireFX';
 end;
 
-
 class function TGLBFireFX.FriendlyDescription: string;
 begin
   Result := 'Fire FX';
 end;
-
 
 procedure TGLBFireFX.WriteToFiler(writer: TWriter);
 begin
@@ -623,7 +614,6 @@ begin
   end;
 end;
 
-
 procedure TGLBFireFX.Loaded;
 var
   mng: TComponent;
@@ -637,7 +627,6 @@ begin
     FManagerName := '';
   end;
 end;
-
 
 procedure TGLBFireFX.Assign(Source: TPersistent);
 begin

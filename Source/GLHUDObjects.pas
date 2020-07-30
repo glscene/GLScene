@@ -14,7 +14,7 @@ uses
   System.Classes,
   Vcl.StdCtrls,
 
-  Winapi.OpenGL,
+  OpenGLTokens,
   GLScene,
   GLVectorTypes,
   GLCoordinates,

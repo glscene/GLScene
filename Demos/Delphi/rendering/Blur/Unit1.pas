@@ -76,7 +76,7 @@ var
   I : Integer;
 
 begin
- //SetGLSceneMediaDir();
+  SetGLSceneMediaDir();
   MediaPath := ExtractFilePath(ParamStr(0));
   I := Pos('Samples', MediaPath);
   if (I <> 0) then

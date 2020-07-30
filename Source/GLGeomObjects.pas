@@ -13,6 +13,7 @@ interface
 uses
   System.Math,
   System.Classes,
+  
   OpenGLTokens,
   OpenGLAdapter,
   GLScene,
@@ -453,7 +454,6 @@ end;
 procedure TGLDisk.BuildList(var rci: TGLRenderContextInfo);
 var
   quadric: PGLUquadric;
-//  quadric: GLUquadricObj;  from Winapi.OpenGL
 
 begin
   quadric := gluNewQuadric();

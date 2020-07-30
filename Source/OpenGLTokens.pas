@@ -16,7 +16,7 @@ uses
   GLVectorTypes;
 
 type
-  TGLboolean = BYTEBOOL;  //GLBoolean = byte in Winapi.OpenGL
+  TGLboolean = BYTEBOOL; 
   PGLboolean = ^TGLboolean;
 
   TGLbitfield = UINT;

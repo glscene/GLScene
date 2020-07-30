@@ -14,7 +14,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  Winapi.OpenGL,
+  OpenGLTokens,
   GLVectorTypes,
   GLScene,
   GLCoordinates,
@@ -222,16 +222,16 @@ begin
         begin
           libMat.Apply(rci);
           repeat
-            glBegin(GL_QUADS);
-            glTexCoord2f(0, 0);
-            glVertex2f(Position.X - TitleWidth div 2, Y + TitleHeight);
-            glTexCoord2f(1, 0);
-            glVertex2f(Position.X + TitleWidth div 2, Y + TitleHeight);
-            glTexCoord2f(1, 1);
-            glVertex2f(Position.X + TitleWidth div 2, Y);
-            glTexCoord2f(0, 1);
-            glVertex2f(Position.X - TitleWidth div 2, Y);
-            glEnd;
+            gl.Begin_(GL_QUADS);
+            gl.TexCoord2f(0, 0);
+            gl.Vertex2f(Position.X - TitleWidth div 2, Y + TitleHeight);
+            gl.TexCoord2f(1, 0);
+            gl.Vertex2f(Position.X + TitleWidth div 2, Y + TitleHeight);
+            gl.TexCoord2f(1, 1);
+            gl.Vertex2f(Position.X + TitleWidth div 2, Y);
+            gl.TexCoord2f(0, 1);
+            gl.Vertex2f(Position.X - TitleWidth div 2, Y);
+            gl.End_;
           until (not libMat.UnApply(rci));
         end;
       end;

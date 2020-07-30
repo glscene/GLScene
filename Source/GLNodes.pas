@@ -11,9 +11,10 @@ interface
 {$I GLScene.inc}
 
 uses
-  Winapi.OpenGL,
   System.Classes,
 
+  OpenGLTokens,
+  OpenGLAdapter,
   GLVectorTypes,
   GLVectorGeometry,
   GLContext,
@@ -29,8 +30,8 @@ type
     procedure SetAsVector(const Value: TVector);
     procedure SetAsAffineVector(const Value: TAffineVector);
     function GetAsAffineVector: TAffineVector;
-    procedure SetCoordinate(AIndex: Integer; AValue: GLFloat);
-    function GetCoordinate(const Index: Integer): GLFloat;
+    procedure SetCoordinate(AIndex: Integer; AValue: TGLFloat);
+    function GetCoordinate(const Index: Integer): TGLFloat;
   protected
     function StoreCoordinate(AIndex: Integer): Boolean;
     function GetDisplayName: string; override;
@@ -48,12 +49,12 @@ type
       if you don't want so, use DirectVector instead.
       The W component is automatically adjustes depending on style. *)
     property AsAffineVector: TAffineVector read GetAsAffineVector write SetAsAffineVector;
-    property W: GLFloat index 3 read GetCoordinate write SetCoordinate stored StoreCoordinate;
+    property W: TGLFloat index 3 read GetCoordinate write SetCoordinate stored StoreCoordinate;
     property TagObject: TObject read FTagObject write FTagObject;
   published
-    property X: GLFloat index 0 read GetCoordinate write SetCoordinate stored StoreCoordinate;
-    property Y: GLFloat index 1 read GetCoordinate write SetCoordinate stored StoreCoordinate;
-    property Z: GLFloat index 2 read GetCoordinate write SetCoordinate stored StoreCoordinate;
+    property X: TGLFloat index 0 read GetCoordinate write SetCoordinate stored StoreCoordinate;
+    property Y: TGLFloat index 1 read GetCoordinate write SetCoordinate stored StoreCoordinate;
+    property Z: TGLFloat index 2 read GetCoordinate write SetCoordinate stored StoreCoordinate;
   end;
 
   TGLNodes = class(TOwnedCollection)
@@ -73,7 +74,7 @@ type
     procedure EndUpdate; override;
     // AddNode (TGLCustomCoordinates)
     procedure AddNode(const Coords: TGLCustomCoordinates); overload;
-    procedure AddNode(const X, Y, Z: GLfloat); overload;
+    procedure AddNode(const X, Y, Z: TGLfloat); overload;
     procedure AddNode(const Value: TVector); overload;
     procedure AddNode(const Value: TAffineVector); overload;
     procedure AddXYArc(XRadius, YRadius: Single; StartAngle, StopAngle: Single; NbSegments: Integer;
@@ -168,12 +169,12 @@ begin
   SetVector(Result, FCoords);
 end;
 
-function TGLNode.GetCoordinate(const Index: Integer): GLFloat;
+function TGLNode.GetCoordinate(const Index: Integer): TGLFloat;
 begin
   Result := FCoords.V[Index];
 end;
 
-procedure TGLNode.SetCoordinate(AIndex: Integer; AValue: GLFloat);
+procedure TGLNode.SetCoordinate(AIndex: Integer; AValue: TGLFloat);
 begin
   FCoords.V[AIndex] := AValue;
   (Collection as TGLNodes).NotifyChange;
@@ -500,9 +501,9 @@ var
   I: Integer;
   Xa, Ya, Za: PFloatArray;
 begin
-  GetMem(Xa, SizeOf(GLFloat) * Count);
-  GetMem(Ya, SizeOf(GLFloat) * Count);
-  GetMem(Za, SizeOf(GLFloat) * Count);
+  GetMem(Xa, SizeOf(TGLFloat) * Count);
+  GetMem(Ya, SizeOf(TGLFloat) * Count);
+  GetMem(Za, SizeOf(TGLFloat) * Count);
   for I := 0 to Count - 1 do
     with Items[I] do
     begin
@@ -527,7 +528,7 @@ begin
   Result := @NewVertices[NbExtraVertices - 1];
 end;
 
-procedure TessError(Errno: Cardinal);
+procedure TessError(Errno: TGLuint);
 {$IFDEF WINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
 begin
   Assert(False, IntToStr(Errno) + ': ' + string(GluErrorString(Errno)));
@@ -537,7 +538,7 @@ procedure TessIssueVertex(VertexData: Pointer);
 {$IFDEF WINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
 begin
   xgl.TexCoord2fv(VertexData);
-  glVertex3fv(VertexData);
+  gl.Vertex3fv(VertexData);
 end;
 
 procedure TessCombine(Coords: PDoubleVector; Vertex_data: Pointer; Weight: PGLFloat; var OutData: Pointer);
@@ -551,7 +552,7 @@ procedure TGLNodes.RenderTesselatedPolygon(ATextured: Boolean; ANormal: PAffineV
   AInvertNormals: Boolean = False);
 var
   I: Integer;
-  Tess: GLUTesselator;
+  Tess: PGLUTesselator;
   DblVector: TAffineDblVector;
   Spline: TCubicSpline;
   SplinePos: PAffineVector;
@@ -562,19 +563,19 @@ begin
   begin
     // Creates and initialize the GLU tesselator
     Tess := gluNewTess;
-    gluTessCallback(Tess, GLU_TESS_BEGIN, @glBegin);
+    gluTessCallback(Tess, GLU_TESS_BEGIN, @gl.Begin_);
     if ATextured then
       gluTessCallback(Tess, GLU_TESS_VERTEX, @TessIssueVertex)
     else
-      gluTessCallback(Tess, GLU_TESS_VERTEX, @glVertex3fv);
-    gluTessCallback(Tess, GLU_TESS_END, @glEnd);
+      gluTessCallback(Tess, GLU_TESS_VERTEX, @gl.Vertex3fv);
+    gluTessCallback(Tess, GLU_TESS_END, @gl.End_);
     gluTessCallback(Tess, GLU_TESS_ERROR, @TessError);
     gluTessCallback(Tess, GLU_TESS_COMBINE, @TessCombine);
     NbExtraVertices := 0;
     // Issue normal
     if Assigned(ANormal) then
     begin
-      glNormal3fv(PGLFloat(ANormal));
+      gl.Normal3fv(PGLFloat(ANormal));
       gluTessNormal(Tess, ANormal^.X, ANormal^.Y, ANormal^.Z);
     end;
     // Issue polygon
@@ -589,7 +590,7 @@ begin
         for I := Count - 1 downto 0 do
         begin
           SetVector(DblVector, PAffineVector(Items[I].AsAddress)^);
-          gluTessVertex(Tess, @DblVector, Items[I].AsAddress);
+          gluTessVertex(Tess, DblVector, Items[I].AsAddress);
         end;
       end
       else
@@ -597,7 +598,7 @@ begin
         for I := 0 to Count - 1 do
         begin
           SetVector(DblVector, PAffineVector(Items[I].AsAddress)^);
-          gluTessVertex(Tess, @DblVector, Items[I].AsAddress);
+          gluTessVertex(Tess, DblVector, Items[I].AsAddress);
         end;
       end;
     end
@@ -614,7 +615,7 @@ begin
           SplinePos := AllocNewVertex;
           Spline.SplineAffineVector(I * F, SplinePos^);
           SetVector(DblVector, SplinePos^);
-          gluTessVertex(Tess, @DblVector, SplinePos);
+          gluTessVertex(Tess, DblVector, SplinePos);
         end;
       end
       else
@@ -624,7 +625,7 @@ begin
           SplinePos := AllocNewVertex;
           Spline.SplineAffineVector(I * F, SplinePos^);
           SetVector(DblVector, SplinePos^);
-          gluTessVertex(Tess, @DblVector, SplinePos);
+          gluTessVertex(Tess, DblVector, SplinePos);
         end;
       end;
       Spline.Free;

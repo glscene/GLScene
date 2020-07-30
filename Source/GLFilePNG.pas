@@ -15,7 +15,7 @@ uses
   System.SysUtils,
   VCL.Imaging.pngimage,
 
-  Winapi.OpenGL,
+  OpenGLTokens,
   GLS.Strings,
   GLContext,
   GLGraphics,

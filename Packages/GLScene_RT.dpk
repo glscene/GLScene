@@ -253,6 +253,7 @@ contains
   GLS.Memo in '..\Source\GLS.Memo.pas',
   GLS.PlugInManager in '..\Source\GLS.PlugInManager.pas',
   GLS.OpenGLx in '..\Source\GLS.OpenGLx.pas',
+  GLS.vclOpenGL in '..\Source\GLS.vclOpenGL.pas',
   GLTeapot in '..\Source\GLTeapot.pas',
   GLTerrainRenderer in '..\Source\GLTerrainRenderer.pas',
   GLTexCombineShader in '..\Source\GLTexCombineShader.pas',
@@ -283,13 +284,13 @@ contains
   GLWaterPlane in '..\Source\GLWaterPlane.pas',
   GLSceneViewer in '..\Source\GLSceneViewer.pas',
   GLWindows in '..\Source\GLWindows.pas',
+  GLWindowsContext in '..\Source\GLWindowsContext.pas',
   GLWindowsFont in '..\Source\GLWindowsFont.pas',
   XCollection in '..\Source\XCollection.pas',
   GLzBuffer in '..\Source\GLzBuffer.pas',
   OpenGLAdapter in '..\Source\OpenGLAdapter.pas',
   OpenGLTokens in '..\Source\OpenGLTokens.pas',
-  XOpenGL in '..\Source\XOpenGL.pas',
-  GLWindowsContext in '..\Source\GLWindowsContext.pas';
+  XOpenGL in '..\Source\XOpenGL.pas';
 
 end.
 

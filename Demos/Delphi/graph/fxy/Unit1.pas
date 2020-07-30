@@ -3,7 +3,6 @@ unit Unit1;
 interface
 
 uses
-  Winapi.OpenGL,
   System.SysUtils,
   System.Classes,
   System.Math,
@@ -57,17 +56,16 @@ type
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure HeightField1GetHeight(const x, y: Single; var z: Single;
       var Color: TVector4f; var TexPoint: TTexPoint);
-  private
-     
   public
-     
     mx, my : Integer;
   end;
 
 var
   Form1: TForm1;
 
+//----------------------------------
 implementation
+//----------------------------------
 
 {$R *.DFM}
 

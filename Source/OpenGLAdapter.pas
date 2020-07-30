@@ -44,743 +44,470 @@ type
     function GetCapAddress: Pointer;
   public
     VERSION_1_0, VERSION_1_1, VERSION_1_2, VERSION_1_3, VERSION_1_4,
-    VERSION_1_5, VERSION_2_0, VERSION_2_1, VERSION_3_0, VERSION_3_1,
-    VERSION_3_2, VERSION_3_3, VERSION_4_0, VERSION_4_1, VERSION_4_2,
-    ARB_blend_func_extended, ARB_color_buffer_float, ARB_compatibility,
-    ARB_copy_buffer, ARB_depth_buffer_float, ARB_depth_clamp,
-    ARB_depth_texture, ARB_draw_buffers, ARB_draw_buffers_blend,
-    ARB_draw_elements_base_vertex, ARB_draw_indirect, ARB_draw_instanced,
-    ARB_explicit_attrib_location, ARB_fragment_coord_conventions,
-    ARB_fragment_program, ARB_fragment_program_shadow, ARB_fragment_shader,
-    ARB_framebuffer_object, ARB_framebuffer_sRGB, ARB_geometry_shader4,
-    ARB_gpu_shader_fp64, ARB_gpu_shader5, ARB_half_float_pixel,
-    ARB_half_float_vertex, ARB_imaging, ARB_instanced_arrays,
-    ARB_map_buffer_range, ARB_matrix_palette, ARB_multisample,
-    ARB_multitexture, ARB_occlusion_query, ARB_occlusion_query2,
-    ARB_pixel_buffer_object, ARB_point_parameters, ARB_point_sprite,
-    ARB_provoking_vertex, ARB_sample_shading, ARB_sampler_objects,
-    ARB_seamless_cube_map, ARB_shader_bit_encoding, ARB_shader_subroutine,
-    ARB_shader_texture_lod, ARB_shading_language_100, ARB_shadow,
-    ARB_shadow_ambient, ARB_shader_objects, ARB_sync, ARB_tessellation_shader,
-    ARB_texture_border_clamp, ARB_texture_buffer_object,
-    ARB_texture_buffer_object_rgb32, ARB_texture_compression,
-    ARB_texture_compression_rgtc, ARB_texture_cube_map,
-    ARB_texture_cube_map_array, ARB_texture_env_add, ARB_texture_env_combine,
-    ARB_texture_env_crossbar, ARB_texture_env_dot3, ARB_texture_float,
-    ARB_texture_gather, ARB_texture_mirrored_repeat, ARB_texture_multisample,
-    ARB_texture_non_power_of_two, ARB_texture_query_lod,
-    ARB_texture_rectangle, ARB_texture_rg, ARB_texture_rgb10_a2ui,
-    ARB_texture_swizzle, ARB_timer_query, ARB_transform_feedback2,
-    ARB_transform_feedback3, ARB_transpose_matrix, ARB_uniform_buffer_object,
-    ARB_vertex_array_bgra, ARB_vertex_array_object, ARB_vertex_blend,
-    ARB_vertex_buffer_object, ARB_vertex_program, ARB_vertex_shader,
-    ARB_vertex_type_2_10_10_10_rev, ARB_window_pos,
-    ARB_texture_compression_bptc, ARB_get_program_binary,
-    ARB_separate_shader_objects, ARB_shader_stencil_export, KHR_debug,
-    ARB_clear_buffer_object, ARB_compute_shader, ARB_copy_image,
-    ARB_debug_group, ARB_debug_label, ARB_debug_output2,
-    ARB_ES3_compatibility, ARB_explicit_uniform_location,
-    ARB_fragment_layer_viewport, ARB_framebuffer_no_attachments,
-    ARB_internalformat_query2, ARB_invalidate_subdata,
-    ARB_multi_draw_indirect, ARB_program_interface_query,
-    ARB_shader_image_size, ARB_shader_storage_buffer_object,
-    ARB_stencil_texturing, ARB_texture_buffer_range, ARB_texture_query_levels,
-    ARB_texture_storage_multisample, ARB_texture_view,
-    ARB_vertex_attrib_binding, ARB_robustness_isolation, ARB_cl_event,
-    _3DFX_multisample, _3DFX_tbuffer, _3DFX_texture_compression_FXT1,
-    ATI_draw_buffers, ATI_texture_compression_3dc, ATI_texture_float,
-    ATI_texture_mirror_once, S3_s3tc, EXT_abgr, EXT_bgra,
-    EXT_bindable_uniform, EXT_blend_color, EXT_blend_equation_separate,
-    EXT_blend_func_separate, EXT_blend_logic_op, EXT_blend_minmax,
-    EXT_blend_subtract, EXT_Cg_shader, EXT_clip_volume_hint,
-    EXT_compiled_vertex_array, EXT_copy_texture, EXT_depth_bounds_test,
-    EXT_draw_buffers2, EXT_draw_instanced, EXT_draw_range_elements,
-    EXT_fog_coord, EXT_framebuffer_blit, EXT_framebuffer_multisample,
-    EXT_framebuffer_object, EXT_framebuffer_sRGB, EXT_geometry_shader4,
-    EXT_gpu_program_parameters, EXT_gpu_shader4, EXT_multi_draw_arrays,
-    EXT_multisample, EXT_packed_depth_stencil, EXT_packed_float,
-    EXT_packed_pixels, EXT_paletted_texture, EXT_pixel_buffer_object,
-    EXT_polygon_offset, EXT_rescale_normal, EXT_secondary_color,
-    EXT_separate_specular_color, EXT_shadow_funcs, EXT_shared_texture_palette,
-    EXT_stencil_clear_tag, EXT_stencil_two_side, EXT_stencil_wrap,
-    EXT_texture3D, EXT_texture_array, EXT_texture_buffer_object,
-    EXT_texture_compression_latc, EXT_texture_compression_rgtc,
-    EXT_texture_compression_s3tc, EXT_texture_cube_map,
-    EXT_texture_edge_clamp, EXT_texture_env_add, EXT_texture_env_combine,
-    EXT_texture_env_dot3, EXT_texture_filter_anisotropic, EXT_texture_integer,
-    EXT_texture_lod, EXT_texture_lod_bias, EXT_texture_mirror_clamp,
-    EXT_texture_object, EXT_texture_rectangle, EXT_texture_sRGB,
-    EXT_texture_shared_exponent, EXT_timer_query, EXT_transform_feedback,
-    EXT_vertex_array, EXT_texture_sRGB_decode, EXT_direct_state_access,
-    EXT_texture_swizzle, HP_occlusion_test, IBM_rasterpos_clip,
-    KTX_buffer_region, MESA_resize_buffers, NV_blend_square,
-    NV_conditional_render, NV_copy_image, NV_depth_buffer_float, NV_fence,
-    NV_float_buffer, NV_fog_distance, NV_geometry_program4,
-    NV_light_max_exponent, NV_multisample_filter_hint, NV_occlusion_query,
-    NV_point_sprite, NV_primitive_restart, NV_register_combiners,
-    NV_shader_buffer_load, NV_texgen_reflection, NV_texture_compression_vtc,
-    NV_texture_env_combine4, NV_texture_rectangle, NV_texture_shader,
-    NV_texture_shader2, NV_texture_shader3, NV_transform_feedback,
-    NV_vertex_array_range, NV_vertex_array_range2,
-    NV_vertex_buffer_unified_memory, NV_vertex_program, SGI_color_matrix,
-    SGIS_generate_mipmap, SGIS_multisample, SGIS_texture_border_clamp,
-    SGIS_texture_color_mask, SGIS_texture_edge_clamp, SGIS_texture_lod,
-    SGIX_depth_texture, SGIX_shadow, SGIX_shadow_ambient,
-    AMD_vertex_shader_tessellator, WIN_swap_hint, ATI_meminfo,
-    NVX_gpu_memory_info, NV_vdpau_interop, NV_path_rendering,
-    GREMEDY_frame_terminator, GREMEDY_string_marker, AMDX_debug_output,
-    ARB_debug_output: boolean;
+      VERSION_1_5, VERSION_2_0, VERSION_2_1, VERSION_3_0, VERSION_3_1,
+      VERSION_3_2, VERSION_3_3, VERSION_4_0, VERSION_4_1, VERSION_4_2,
+      ARB_blend_func_extended, ARB_color_buffer_float, ARB_compatibility,
+      ARB_copy_buffer, ARB_depth_buffer_float, ARB_depth_clamp,
+      ARB_depth_texture, ARB_draw_buffers, ARB_draw_buffers_blend,
+      ARB_draw_elements_base_vertex, ARB_draw_indirect, ARB_draw_instanced,
+      ARB_explicit_attrib_location, ARB_fragment_coord_conventions,
+      ARB_fragment_program, ARB_fragment_program_shadow, ARB_fragment_shader,
+      ARB_framebuffer_object, ARB_framebuffer_sRGB, ARB_geometry_shader4,
+      ARB_gpu_shader_fp64, ARB_gpu_shader5, ARB_half_float_pixel,
+      ARB_half_float_vertex, ARB_imaging, ARB_instanced_arrays,
+      ARB_map_buffer_range, ARB_matrix_palette, ARB_multisample,
+      ARB_multitexture, ARB_occlusion_query, ARB_occlusion_query2,
+      ARB_pixel_buffer_object, ARB_point_parameters, ARB_point_sprite,
+      ARB_provoking_vertex, ARB_sample_shading, ARB_sampler_objects,
+      ARB_seamless_cube_map, ARB_shader_bit_encoding, ARB_shader_subroutine,
+      ARB_shader_texture_lod, ARB_shading_language_100, ARB_shadow,
+      ARB_shadow_ambient, ARB_shader_objects, ARB_sync, ARB_tessellation_shader,
+      ARB_texture_border_clamp, ARB_texture_buffer_object,
+      ARB_texture_buffer_object_rgb32, ARB_texture_compression,
+      ARB_texture_compression_rgtc, ARB_texture_cube_map,
+      ARB_texture_cube_map_array, ARB_texture_env_add, ARB_texture_env_combine,
+      ARB_texture_env_crossbar, ARB_texture_env_dot3, ARB_texture_float,
+      ARB_texture_gather, ARB_texture_mirrored_repeat, ARB_texture_multisample,
+      ARB_texture_non_power_of_two, ARB_texture_query_lod,
+      ARB_texture_rectangle, ARB_texture_rg, ARB_texture_rgb10_a2ui,
+      ARB_texture_swizzle, ARB_timer_query, ARB_transform_feedback2,
+      ARB_transform_feedback3, ARB_transpose_matrix, ARB_uniform_buffer_object,
+      ARB_vertex_array_bgra, ARB_vertex_array_object, ARB_vertex_blend,
+      ARB_vertex_buffer_object, ARB_vertex_program, ARB_vertex_shader,
+      ARB_vertex_type_2_10_10_10_rev, ARB_window_pos,
+      ARB_texture_compression_bptc, ARB_get_program_binary,
+      ARB_separate_shader_objects, ARB_shader_stencil_export, KHR_debug,
+      ARB_clear_buffer_object, ARB_compute_shader, ARB_copy_image,
+      ARB_debug_group, ARB_debug_label, ARB_debug_output2,
+      ARB_ES3_compatibility, ARB_explicit_uniform_location,
+      ARB_fragment_layer_viewport, ARB_framebuffer_no_attachments,
+      ARB_internalformat_query2, ARB_invalidate_subdata,
+      ARB_multi_draw_indirect, ARB_program_interface_query,
+      ARB_shader_image_size, ARB_shader_storage_buffer_object,
+      ARB_stencil_texturing, ARB_texture_buffer_range, ARB_texture_query_levels,
+      ARB_texture_storage_multisample, ARB_texture_view,
+      ARB_vertex_attrib_binding, ARB_robustness_isolation, ARB_cl_event,
+      _3DFX_multisample, _3DFX_tbuffer, _3DFX_texture_compression_FXT1,
+      ATI_draw_buffers, ATI_texture_compression_3dc, ATI_texture_float,
+      ATI_texture_mirror_once, S3_s3tc, EXT_abgr, EXT_bgra,
+      EXT_bindable_uniform, EXT_blend_color, EXT_blend_equation_separate,
+      EXT_blend_func_separate, EXT_blend_logic_op, EXT_blend_minmax,
+      EXT_blend_subtract, EXT_Cg_shader, EXT_clip_volume_hint,
+      EXT_compiled_vertex_array, EXT_copy_texture, EXT_depth_bounds_test,
+      EXT_draw_buffers2, EXT_draw_instanced, EXT_draw_range_elements,
+      EXT_fog_coord, EXT_framebuffer_blit, EXT_framebuffer_multisample,
+      EXT_framebuffer_object, EXT_framebuffer_sRGB, EXT_geometry_shader4,
+      EXT_gpu_program_parameters, EXT_gpu_shader4, EXT_multi_draw_arrays,
+      EXT_multisample, EXT_packed_depth_stencil, EXT_packed_float,
+      EXT_packed_pixels, EXT_paletted_texture, EXT_pixel_buffer_object,
+      EXT_polygon_offset, EXT_rescale_normal, EXT_secondary_color,
+      EXT_separate_specular_color, EXT_shadow_funcs, EXT_shared_texture_palette,
+      EXT_stencil_clear_tag, EXT_stencil_two_side, EXT_stencil_wrap,
+      EXT_texture3D, EXT_texture_array, EXT_texture_buffer_object,
+      EXT_texture_compression_latc, EXT_texture_compression_rgtc,
+      EXT_texture_compression_s3tc, EXT_texture_cube_map,
+      EXT_texture_edge_clamp, EXT_texture_env_add, EXT_texture_env_combine,
+      EXT_texture_env_dot3, EXT_texture_filter_anisotropic, EXT_texture_integer,
+      EXT_texture_lod, EXT_texture_lod_bias, EXT_texture_mirror_clamp,
+      EXT_texture_object, EXT_texture_rectangle, EXT_texture_sRGB,
+      EXT_texture_shared_exponent, EXT_timer_query, EXT_transform_feedback,
+      EXT_vertex_array, EXT_texture_sRGB_decode, EXT_direct_state_access,
+      EXT_texture_swizzle, HP_occlusion_test, IBM_rasterpos_clip,
+      KTX_buffer_region, MESA_resize_buffers, NV_blend_square,
+      NV_conditional_render, NV_copy_image, NV_depth_buffer_float, NV_fence,
+      NV_float_buffer, NV_fog_distance, NV_geometry_program4,
+      NV_light_max_exponent, NV_multisample_filter_hint, NV_occlusion_query,
+      NV_point_sprite, NV_primitive_restart, NV_register_combiners,
+      NV_shader_buffer_load, NV_texgen_reflection, NV_texture_compression_vtc,
+      NV_texture_env_combine4, NV_texture_rectangle, NV_texture_shader,
+      NV_texture_shader2, NV_texture_shader3, NV_transform_feedback,
+      NV_vertex_array_range, NV_vertex_array_range2,
+      NV_vertex_buffer_unified_memory, NV_vertex_program, SGI_color_matrix,
+      SGIS_generate_mipmap, SGIS_multisample, SGIS_texture_border_clamp,
+      SGIS_texture_color_mask, SGIS_texture_edge_clamp, SGIS_texture_lod,
+      SGIX_depth_texture, SGIX_shadow, SGIX_shadow_ambient,
+      AMD_vertex_shader_tessellator, WIN_swap_hint, ATI_meminfo,
+      NVX_gpu_memory_info, NV_vdpau_interop, NV_path_rendering,
+      GREMEDY_frame_terminator, GREMEDY_string_marker, AMDX_debug_output,
+      ARB_debug_output: boolean;
 
-// OpenGL 1.1 core functions and procedures
-    BindTexture: procedure(target: Cardinal; texture: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    BlendFunc: procedure(sfactor: Cardinal; dfactor: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Clear: procedure(mask: TGLbitfield);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    ClearColor: procedure(red, green, blue, alpha: Single);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    ClearDepth: procedure(depth: TGLclampd);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    ClearStencil: procedure(s: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    ColorMask: procedure(red, green, blue, alpha: TGLboolean);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    // OpenGL 1.1 core functions and procedures
+    BindTexture: procedure(target: Cardinal; texture: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    BlendFunc: procedure(sfactor: Cardinal; dfactor: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Clear: procedure(mask: TGLbitfield);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    ClearColor: procedure(red, green, blue, alpha: Single);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    ClearDepth: procedure(depth: TGLclampd);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    ClearStencil: procedure(s: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    ColorMask: procedure(red, green, blue, alpha: TGLboolean);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     CopyTexImage1D: procedure(target: Cardinal; level: TGLint;
-      internalFormat: Cardinal; X, y: TGLint; Width: TGLsizei; border: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      internalFormat: Cardinal; X, y: TGLint; Width: TGLsizei; border: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     CopyTexImage2D: procedure(target: Cardinal; level: TGLint;
       internalFormat: Cardinal; X, y: TGLint; Width, Height: TGLsizei;
-      border: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      border: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     CopyTexSubImage1D: procedure(target: Cardinal; level, xoffset, X, y: TGLint;
-      Width: TGLsizei);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      Width: TGLsizei);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     CopyTexSubImage2D: procedure(target: Cardinal;
-      level, xoffset, yoffset, X, y: TGLint; Width, Height: TGLsizei);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    CullFace: procedure(mode: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    DeleteTextures: procedure(n: TGLsizei; textures: PGLuint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    DepthFunc: procedure(func: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    DepthMask: procedure(flag: TGLboolean);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    DepthRange: procedure(zNear, zFar: TGLclampd);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Disable: procedure(cap: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    DrawArrays: procedure(mode: Cardinal; First: TGLint; Count: TGLsizei);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    DrawBuffer: procedure(mode: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      level, xoffset, yoffset, X, y: TGLint; Width, Height: TGLsizei);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    CullFace: procedure(mode: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    DeleteTextures: procedure(n: TGLsizei; textures: PGLuint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    DepthFunc: procedure(func: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    DepthMask: procedure(flag: TGLboolean);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    DepthRange: procedure(zNear, zFar: TGLclampd);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Disable: procedure(cap: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    DrawArrays: procedure(mode: Cardinal; First: TGLint; Count: TGLsizei);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    DrawBuffer: procedure(mode: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     DrawElements: procedure(mode: Cardinal; Count: TGLsizei; atype: Cardinal;
-      indices: Pointer);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Enable: procedure(cap: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Finish: procedure();
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Flush: procedure();
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    FrontFace: procedure(mode: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GenTextures: procedure(n: TGLsizei; textures: PGLuint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetBooleanv: procedure(pname: Cardinal; params: PGLboolean);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetDoublev: procedure(pname: Cardinal; params: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetError: function: Cardinal;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetFloatv: procedure(pname: Cardinal; params: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetIntegerv: procedure(pname: Cardinal; params: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetPointerv: procedure(pname: Cardinal; var params);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetString: function(Name: Cardinal): PAnsiChar;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      indices: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Enable: procedure(cap: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Finish: procedure();{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Flush: procedure();{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    FrontFace: procedure(mode: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GenTextures: procedure(n: TGLsizei; textures: PGLuint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetBooleanv: procedure(pname: Cardinal; params: PGLboolean);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetDoublev: procedure(pname: Cardinal; params: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetError: function: Cardinal;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetFloatv: procedure(pname: Cardinal; params: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetIntegerv: procedure(pname: Cardinal; params: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetPointerv: procedure(pname: Cardinal; var params);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetString: function(Name: Cardinal): PAnsiChar;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     GetTexImage: procedure(target: Cardinal; level: TGLint;
-      format, atype: Cardinal; pixels: Pointer);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      format, atype: Cardinal; pixels: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     GetTexLevelParameterfv: procedure(target: Cardinal; level: TGLint;
-      pname: Cardinal; params: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      pname: Cardinal; params: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     GetTexLevelParameteriv: procedure(target: Cardinal; level: TGLint;
-      pname: Cardinal; params: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetTexParameterfv: procedure(target, pname: Cardinal; params: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetTexParameteriv: procedure(target, pname: Cardinal; params: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Hint: procedure(target, mode: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    IsEnabled: function(cap: Cardinal): TGLboolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    IsTexture: function(texture: Cardinal): TGLboolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    LineWidth: procedure(Width: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    LogicOp: procedure(opcode: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PixelStoref: procedure(pname: Cardinal; param: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PixelStorei: procedure(pname: Cardinal; param: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PointSize: procedure(size: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PolygonMode: procedure(face, mode: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PolygonOffset: procedure(factor, units: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    ReadBuffer: procedure(mode: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      pname: Cardinal; params: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetTexParameterfv: procedure(target, pname: Cardinal; params: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetTexParameteriv: procedure(target, pname: Cardinal; params: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Hint: procedure(target, mode: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    IsEnabled: function(cap: Cardinal): TGLboolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    IsTexture: function(texture: Cardinal): TGLboolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    LineWidth: procedure(Width: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    LogicOp: procedure(opcode: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PixelStoref: procedure(pname: Cardinal; param: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PixelStorei: procedure(pname: Cardinal; param: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PointSize: procedure(size: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PolygonMode: procedure(face, mode: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PolygonOffset: procedure(factor, units: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    ReadBuffer: procedure(mode: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     ReadPixels: procedure(X, y: TGLint; Width, Height: TGLsizei;
-      format, atype: Cardinal; pixels: Pointer);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Scissor: procedure(X, y: TGLint; Width, Height: TGLsizei);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    StencilFunc: procedure(func: Cardinal; ref: TGLint; mask: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    StencilMask: procedure(mask: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    StencilOp: procedure(fail, zfail, zpass: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      format, atype: Cardinal; pixels: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Scissor: procedure(X, y: TGLint; Width, Height: TGLsizei);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    StencilFunc: procedure(func: Cardinal; ref: TGLint; mask: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    StencilMask: procedure(mask: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    StencilOp: procedure(fail, zfail, zpass: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     TexImage1D: procedure(target: Cardinal; level, internalFormat: TGLint;
-      Width: TGLsizei; border: TGLint; format, atype: Cardinal; pixels: Pointer);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      Width: TGLsizei; border: TGLint; format, atype: Cardinal;
+      pixels: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     TexImage2D: procedure(target: Cardinal; level, internalFormat: TGLint;
       Width, Height: TGLsizei; border: TGLint; format, atype: Cardinal;
-      pixels: Pointer);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexParameterf: procedure(target, pname: Cardinal; param: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexParameterfv: procedure(target, pname: Cardinal; params: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexParameteri: procedure(target, pname: Cardinal; param: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexParameteriv: procedure(target, pname: Cardinal; params: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      pixels: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexParameterf: procedure(target, pname: Cardinal; param: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexParameterfv: procedure(target, pname: Cardinal; params: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexParameteri: procedure(target, pname: Cardinal; param: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexParameteriv: procedure(target, pname: Cardinal; params: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     TexSubImage1D: procedure(target: Cardinal; level, xoffset: TGLint;
-      Width: TGLsizei; format, atype: Cardinal; pixels: Pointer);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      Width: TGLsizei; format, atype: Cardinal; pixels: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     TexSubImage2D: procedure(target: Cardinal; level, xoffset, yoffset: TGLint;
-      Width, Height: TGLsizei; format, atype: Cardinal; pixels: Pointer);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Viewport: procedure(X, y: TGLint; Width, Height: TGLsizei);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      Width, Height: TGLsizei; format, atype: Cardinal; pixels: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Viewport: procedure(X, y: TGLint; Width, Height: TGLsizei);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
 
-// ------------------------------ OpenGL 1.1 deprecated 
+    // ------------------------------ OpenGL 1.1 deprecated
     Accum: procedure(op: Cardinal; Value: TGLfloat); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    AlphaFunc: procedure(func: Cardinal; ref: Single);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    AreTexturesResident: function(n: TGLsizei; textures: PGLuint; residences: PGLboolean): TGLboolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    ArrayElement: procedure(i: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Begin_: procedure(mode: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    AlphaFunc: procedure(func: Cardinal; ref: Single); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    AreTexturesResident: function(n: TGLsizei; textures: PGLuint;
+      residences: PGLboolean): TGLboolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    ArrayElement: procedure(i: TGLint); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Begin_: procedure(mode: Cardinal); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     Bitmap: procedure(Width: TGLsizei; Height: TGLsizei; xorig, yorig: TGLfloat;
-      xmove: TGLfloat; ymove: TGLfloat; Bitmap: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    CallList: procedure(list: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      xmove: TGLfloat; ymove: TGLfloat; Bitmap: Pointer); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    CallList: procedure(list: Cardinal); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     CallLists: procedure(n: TGLsizei; atype: Cardinal; lists: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    ClearAccum: procedure(red, green, blue, alpha: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    ClearIndex: procedure(c: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    ClearAccum: procedure(red, green, blue, alpha: TGLfloat); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    ClearIndex: procedure(c: TGLfloat); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     ClipPlane: procedure(plane: Cardinal; equation: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color3b: procedure(red, green, blue: TGLbyte);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color3bv: procedure(v: PGLbyte);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color3d: procedure(red, green, blue: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color3dv: procedure(v: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color3f: procedure(red, green, blue: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color3fv: procedure(v: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color3i: procedure(red, green, blue: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color3iv: procedure(v: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color3s: procedure(red, green, blue: TGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color3sv: procedure(v: PGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color3ub: procedure(red, green, blue: TGLubyte);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color3ubv: procedure(v: PGLubyte);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color3ui: procedure(red, green, blue: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color3uiv: procedure(v: PGLuint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color3us: procedure(red, green, blue: TGLushort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color3usv: procedure(v: PGLushort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color4b: procedure(red, green, blue, alpha: TGLbyte);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color4bv: procedure(v: PGLbyte);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color4d: procedure(red, green, blue, alpha: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color4dv: procedure(v: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color4f: procedure(red, green, blue, alpha: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color4fv: procedure(v: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color4i: procedure(red, green, blue, alpha: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color4iv: procedure(v: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color4s: procedure(red, green, blue, alpha: TGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color4sv: procedure(v: TGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color4ub: procedure(red, green, blue, alpha: TGLubyte);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color4ubv: procedure(v: PGLubyte);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color4ui: procedure(red, green, blue, alpha: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color4uiv: procedure(v: PGLuint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color4us: procedure(red, green, blue, alpha: TGLushort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Color4usv: procedure(v: PGLushort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    ColorMaterial: procedure(face: Cardinal; mode: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    ColorPointer: procedure(size: TGLint; atype: Cardinal; stride: TGLsizei; Data: Pointer);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    CopyPixels: procedure(X, y: TGLint; Width, Height: TGLsizei; atype: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    DeleteLists: procedure(list: Cardinal; range: TGLsizei);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    DisableClientState: procedure(aarray: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    DrawPixels: procedure(Width, Height: TGLsizei; format, atype: Cardinal; pixels: Pointer);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EdgeFlag: procedure(flag: TGLboolean);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EdgeFlagPointer: procedure(stride: TGLsizei; Data: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EdgeFlagv: procedure(flag: PGLboolean);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EnableClientState: procedure(aarray: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    End_: procedure();{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EndList: procedure();{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EvalCoord1d: procedure(u: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EvalCoord1dv: procedure(u: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EvalCoord1f: procedure(u: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EvalCoord1fv: procedure(u: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EvalCoord2d: procedure(u: TGLdouble; v: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EvalCoord2dv: procedure(u: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EvalCoord2f: procedure(u, v: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EvalCoord2fv: procedure(u: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EvalMesh1: procedure(mode: Cardinal; i1, i2: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EvalMesh2: procedure(mode: Cardinal; i1, i2, j1, j2: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EvalPoint1: procedure(i: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EvalPoint2: procedure(i, j: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    FeedbackBuffer: procedure(size: TGLsizei; atype: Cardinal; buffer: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Fogf: procedure(pname: Cardinal; param: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Fogfv: procedure(pname: Cardinal; params: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Fogi: procedure(pname: Cardinal; param: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Fogiv: procedure(pname: Cardinal; params: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Frustum: procedure(left, right, bottom, top, zNear, zFar: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GenLists: function(range: TGLsizei): Cardinal;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetClipPlane: procedure(plane: Cardinal; equation: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetLightfv: procedure(light, pname: Cardinal; params: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetLightiv: procedure(light, pname: Cardinal; params: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetMapdv: procedure(target, query: Cardinal; v: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetMapfv: procedure(target, query: Cardinal; v: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetMapiv: procedure(target, query: Cardinal; v: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetMaterialfv: procedure(face, pname: Cardinal; params: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetMaterialiv: procedure(face, pname: Cardinal; params: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetPixelMapfv: procedure(map: Cardinal; values: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetPixelMapuiv: procedure(map: Cardinal; values: PGLuint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetPixelMapusv: procedure(map: Cardinal; values: PGLushort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetPolygonStipple: procedure(mask: PGLubyte);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetTexEnvfv: procedure(target, pname: Cardinal; params: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetTexEnviv: procedure(target, pname: Cardinal; params: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetTexGendv: procedure(coord, pname: Cardinal; params: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetTexGenfv: procedure(coord, pname: Cardinal; params: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    GetTexGeniv: procedure(coord, pname: Cardinal; params: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    IndexMask: procedure(mask: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    IndexPointer: procedure(atype: Cardinal; stride: TGLsizei; Data: Pointer);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Indexd: procedure(c: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Indexdv: procedure(c: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Indexf: procedure(c: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Indexfv: procedure(c: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Indexi: procedure(c: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Indexiv: procedure(c: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Indexs: procedure(c: TGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Indexsv: procedure(c: PGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Indexub: procedure(c: TGLubyte);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Indexubv: procedure(c: PGLubyte);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    InitNames: procedure();
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color3b: procedure(red, green, blue: TGLbyte); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color3bv: procedure(v: PGLbyte); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color3d: procedure(red, green, blue: TGLdouble); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color3dv: procedure(v: PGLdouble); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color3f: procedure(red, green, blue: TGLfloat); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color3fv: procedure(v: PGLfloat); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color3i: procedure(red, green, blue: TGLint); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color3iv: procedure(v: PGLint); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color3s: procedure(red, green, blue: TGLshort); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color3sv: procedure(v: PGLshort); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color3ub: procedure(red, green, blue: TGLubyte); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color3ubv: procedure(v: PGLubyte); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color3ui: procedure(red, green, blue: Cardinal); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color3uiv: procedure(v: PGLuint); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color3us: procedure(red, green, blue: TGLushort); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color3usv: procedure(v: PGLushort); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color4b: procedure(red, green, blue, alpha: TGLbyte); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color4bv: procedure(v: PGLbyte); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color4d: procedure(red, green, blue, alpha: TGLdouble); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color4dv: procedure(v: PGLdouble); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color4f: procedure(red, green, blue, alpha: TGLfloat); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color4fv: procedure(v: PGLfloat); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color4i: procedure(red, green, blue, alpha: TGLint); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color4iv: procedure(v: PGLint); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color4s: procedure(red, green, blue, alpha: TGLshort); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color4sv: procedure(v: TGLshort); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color4ub: procedure(red, green, blue, alpha: TGLubyte); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color4ubv: procedure(v: PGLubyte); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color4ui: procedure(red, green, blue, alpha: Cardinal); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color4uiv: procedure(v: PGLuint); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color4us: procedure(red, green, blue, alpha: TGLushort); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Color4usv: procedure(v: PGLushort); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    ColorMaterial: procedure(face: Cardinal; mode: Cardinal); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    ColorPointer: procedure(size: TGLint; atype: Cardinal; stride: TGLsizei;
+      Data: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    CopyPixels: procedure(X, y: TGLint; Width, Height: TGLsizei;
+      atype: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    DeleteLists: procedure(list: Cardinal; range: TGLsizei); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    DisableClientState: procedure(aarray: Cardinal); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    DrawPixels: procedure(Width, Height: TGLsizei; format, atype: Cardinal;
+      pixels: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EdgeFlag: procedure(flag: TGLboolean); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EdgeFlagPointer: procedure(stride: TGLsizei; Data: Pointer);    {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EdgeFlagv: procedure(flag: PGLboolean); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EnableClientState: procedure(aarray: Cardinal); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    End_: procedure(); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EndList: procedure(); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EvalCoord1d: procedure(u: TGLdouble); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EvalCoord1dv: procedure(u: PGLdouble); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EvalCoord1f: procedure(u: TGLfloat); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EvalCoord1fv: procedure(u: PGLfloat); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EvalCoord2d: procedure(u: TGLdouble; v: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EvalCoord2dv: procedure(u: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EvalCoord2f: procedure(u, v: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EvalCoord2fv: procedure(u: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EvalMesh1: procedure(mode: Cardinal; i1, i2: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EvalMesh2: procedure(mode: Cardinal; i1, i2, j1, j2: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EvalPoint1: procedure(i: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EvalPoint2: procedure(i, j: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    FeedbackBuffer: procedure(size: TGLsizei; atype: Cardinal;
+      buffer: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Fogf: procedure(pname: Cardinal; param: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Fogfv: procedure(pname: Cardinal; params: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Fogi: procedure(pname: Cardinal; param: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Fogiv: procedure(pname: Cardinal; params: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Frustum: procedure(left, right, bottom, top, zNear, zFar: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GenLists: function(range: TGLsizei): Cardinal;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetClipPlane: procedure(plane: Cardinal; equation: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetLightfv: procedure(light, pname: Cardinal; params: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetLightiv: procedure(light, pname: Cardinal; params: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetMapdv: procedure(target, query: Cardinal; v: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetMapfv: procedure(target, query: Cardinal; v: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetMapiv: procedure(target, query: Cardinal; v: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetMaterialfv: procedure(face, pname: Cardinal; params: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetMaterialiv: procedure(face, pname: Cardinal; params: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetPixelMapfv: procedure(map: Cardinal; values: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetPixelMapuiv: procedure(map: Cardinal; values: PGLuint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetPixelMapusv: procedure(map: Cardinal; values: PGLushort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetPolygonStipple: procedure(mask: PGLubyte);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetTexEnvfv: procedure(target, pname: Cardinal; params: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetTexEnviv: procedure(target, pname: Cardinal; params: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetTexGendv: procedure(coord, pname: Cardinal; params: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetTexGenfv: procedure(coord, pname: Cardinal; params: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    GetTexGeniv: procedure(coord, pname: Cardinal; params: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    IndexMask: procedure(mask: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    IndexPointer: procedure(atype: Cardinal; stride: TGLsizei; Data: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Indexd: procedure(c: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Indexdv: procedure(c: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Indexf: procedure(c: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Indexfv: procedure(c: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Indexi: procedure(c: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Indexiv: procedure(c: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Indexs: procedure(c: TGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Indexsv: procedure(c: PGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Indexub: procedure(c: TGLubyte);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Indexubv: procedure(c: PGLubyte);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    InitNames: procedure();{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     InterleavedArrays: procedure(format: Cardinal; stride: TGLsizei;
-      Data: Pointer);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    IsList: function(list: Cardinal): TGLboolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    LightModelf: procedure(pname: Cardinal; param: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    LightModelfv: procedure(pname: Cardinal; params: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    LightModeli: procedure(pname: Cardinal; param: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    LightModeliv: procedure(pname: Cardinal; params: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Lightf: procedure(light, pname: Cardinal; param: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Lightfv: procedure(light, pname: Cardinal; params: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Lighti: procedure(light, pname: Cardinal; param: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Lightiv: procedure(light, pname: Cardinal; params: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    LineStipple: procedure(factor: TGLint; pattern: TGLushort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    ListBase: procedure(base: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    LoadIdentity: procedure();
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    LoadMatrixd: procedure(m: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    LoadMatrixf: procedure(m: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    LoadName: procedure(Name: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      Data: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    IsList: function(list: Cardinal): TGLboolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    LightModelf: procedure(pname: Cardinal; param: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    LightModelfv: procedure(pname: Cardinal; params: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    LightModeli: procedure(pname: Cardinal; param: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    LightModeliv: procedure(pname: Cardinal; params: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Lightf: procedure(light, pname: Cardinal; param: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Lightfv: procedure(light, pname: Cardinal; params: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Lighti: procedure(light, pname: Cardinal; param: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Lightiv: procedure(light, pname: Cardinal; params: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    LineStipple: procedure(factor: TGLint; pattern: TGLushort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    ListBase: procedure(base: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    LoadIdentity: procedure();{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    LoadMatrixd: procedure(m: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    LoadMatrixf: procedure(m: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    LoadName: procedure(Name: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     Map1d: procedure(target: Cardinal; u1, u2: TGLdouble; stride, order: TGLint;
-      points: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      points: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     Map1f: procedure(target: Cardinal; u1, u2: TGLfloat; stride, order: TGLint;
-      points: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      points: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     Map2d: procedure(target: Cardinal; u1, u2: TGLdouble;
       ustride, uorder: TGLint; v1, v2: TGLdouble; vstride, vorder: TGLint;
-      points: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Map2f: procedure(target: Cardinal; u1, u2: TGLfloat; ustride, uorder: TGLint;
-      v1, v2: TGLfloat; vstride, vorder: TGLint; points: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    MapGrid1d: procedure(un: TGLint; u1, u2: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    MapGrid1f: procedure(un: TGLint; u1, u2: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      points: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Map2f: procedure(target: Cardinal; u1, u2: TGLfloat;
+      ustride, uorder: TGLint; v1, v2: TGLfloat; vstride, vorder: TGLint;
+      points: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    MapGrid1d: procedure(un: TGLint; u1, u2: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    MapGrid1f: procedure(un: TGLint; u1, u2: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     MapGrid2d: procedure(un: TGLint; u1, u2: TGLdouble; vn: TGLint;
-      v1, v2: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      v1, v2: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     MapGrid2f: procedure(un: TGLint; u1, u2: TGLfloat; vn: TGLint;
-      v1, v2: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Materialf: procedure(face, pname: Cardinal; param: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Materialfv: procedure(face, pname: Cardinal; params: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Materiali: procedure(face, pname: Cardinal; param: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Materialiv: procedure(face, pname: Cardinal; params: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    MatrixMode: procedure(mode: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    MultMatrixd: procedure(m: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    MultMatrixf: procedure(m: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    NewList: procedure(list: Cardinal; mode: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Normal3b: procedure(nx, ny, nz: TGLbyte);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Normal3bv: procedure(v: PGLbyte);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Normal3d: procedure(nx, ny, nz: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Normal3dv: procedure(v: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Normal3f: procedure(nx, ny, nz: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Normal3fv: procedure(v: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Normal3i: procedure(nx, ny, nz: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Normal3iv: procedure(v: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Normal3s: procedure(nx, ny, nz: TGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Normal3sv: procedure(v: PGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    NormalPointer: procedure(atype: Cardinal; stride: TGLsizei; Data: Pointer);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Ortho: procedure(left, right, bottom, top, zNear, zFar: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PassThrough: procedure(token: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PixelMapfv: procedure(map: Cardinal; mapsize: TGLsizei; values: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PixelMapuiv: procedure(map: Cardinal; mapsize: TGLsizei; values: PGLuint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PixelMapusv: procedure(map: Cardinal; mapsize: TGLsizei; values: PGLushort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PixelTransferf: procedure(pname: Cardinal; param: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PixelTransferi: procedure(pname: Cardinal; param: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PixelZoom: procedure(xfactor, yfactor: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PolygonStipple: procedure(mask: PGLubyte);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PopAttrib: procedure();
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PopClientAttrib: procedure();
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PopMatrix: procedure();
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PopName: procedure();
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      v1, v2: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Materialf: procedure(face, pname: Cardinal; param: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Materialfv: procedure(face, pname: Cardinal; params: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Materiali: procedure(face, pname: Cardinal; param: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Materialiv: procedure(face, pname: Cardinal; params: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    MatrixMode: procedure(mode: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    MultMatrixd: procedure(m: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    MultMatrixf: procedure(m: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    NewList: procedure(list: Cardinal; mode: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Normal3b: procedure(nx, ny, nz: TGLbyte);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Normal3bv: procedure(v: PGLbyte);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Normal3d: procedure(nx, ny, nz: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Normal3dv: procedure(v: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Normal3f: procedure(nx, ny, nz: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Normal3fv: procedure(v: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Normal3i: procedure(nx, ny, nz: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Normal3iv: procedure(v: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Normal3s: procedure(nx, ny, nz: TGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Normal3sv: procedure(v: PGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    NormalPointer: procedure(atype: Cardinal; stride: TGLsizei; Data: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Ortho: procedure(left, right, bottom, top, zNear, zFar: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PassThrough: procedure(token: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PixelMapfv: procedure(map: Cardinal; mapsize: TGLsizei; values: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PixelMapuiv: procedure(map: Cardinal; mapsize: TGLsizei; values: PGLuint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PixelMapusv: procedure(map: Cardinal; mapsize: TGLsizei; values: PGLushort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PixelTransferf: procedure(pname: Cardinal; param: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PixelTransferi: procedure(pname: Cardinal; param: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PixelZoom: procedure(xfactor, yfactor: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PolygonStipple: procedure(mask: PGLubyte);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PopAttrib: procedure();{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PopClientAttrib: procedure();{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PopMatrix: procedure();{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PopName: procedure();{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     PrioritizeTextures: procedure(n: TGLsizei; textures: PGLuint;
-      priorities: PSingle);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PushAttrib: procedure(mask: TGLbitfield);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PushClientAttrib: procedure(mask: TGLbitfield);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PushMatrix: procedure();
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    PushName: procedure(Name: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos2d: procedure(X, y: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos2dv: procedure(v: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos2f: procedure(X, y: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos2fv: procedure(v: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos2i: procedure(X, y: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos2iv: procedure(v: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos2s: procedure(X, y: PGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos2sv: procedure(v: PGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos3d: procedure(X, y, z: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos3dv: procedure(v: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos3f: procedure(X, y, z: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos3fv: procedure(v: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos3i: procedure(X, y, z: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos3iv: procedure(v: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos3s: procedure(X, y, z: TGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos3sv: procedure(v: PGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos4d: procedure(X, y, z, w: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos4dv: procedure(v: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos4f: procedure(X, y, z, w: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos4fv: procedure(v: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos4i: procedure(X, y, z, w: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos4iv: procedure(v: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos4s: procedure(X, y, z, w: TGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RasterPos4sv: procedure(v: PGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Rectd: procedure(x1, y1, x2, y2: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Rectdv: procedure(v1, v2: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Rectf: procedure(x1, y1, x2, y2: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Rectfv: procedure(v1, v2: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Recti: procedure(x1, y1, x2, y2: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Rectiv: procedure(v1, v2: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Rects: procedure(x1, y1, x2, y2: TGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Rectsv: procedure(v1, v2: PGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    RenderMode: function(mode: Cardinal): TGLint;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Rotated: procedure(ane, X, y, z: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Rotatef: procedure(ane, X, y, z: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Scaled: procedure(X, y, z: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Scalef: procedure(X, y, z: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    SelectBuffer: procedure(size: TGLsizei; buffer: PGLuint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    ShadeModel: procedure(mode: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord1d: procedure(s: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord1dv: procedure(v: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord1f: procedure(s: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord1fv: procedure(v: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord1i: procedure(s: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord1iv: procedure(v: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord1s: procedure(s: TGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord1sv: procedure(v: PGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord2d: procedure(s, t: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord2dv: procedure(v: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord2f: procedure(s, t: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord2fv: procedure(v: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord2i: procedure(s, t: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord2iv: procedure(v: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord2s: procedure(s, t: TGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord2sv: procedure(v: PGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord3d: procedure(s, t, r: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord3dv: procedure(v: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord3f: procedure(s, t, r: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord3fv: procedure(v: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord3i: procedure(s, t, r: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord3iv: procedure(v: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord3s: procedure(s, t, r: TGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord3sv: procedure(v: PGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord4d: procedure(s, t, r, q: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord4dv: procedure(v: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord4f: procedure(s, t, r, q: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord4fv: procedure(v: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord4i: procedure(s, t, r, q: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord4iv: procedure(v: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord4s: procedure(s, t, r, q: TGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoord4sv: procedure(v: PGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexCoordPointer: procedure(size: TGLint; atype: Cardinal; stride: TGLsizei;
-      Data: Pointer);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexEnvf: procedure(target, pname: Cardinal; param: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexEnvfv: procedure(target, pname: Cardinal; params: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexEnvi: procedure(target, pname: Cardinal; param: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexEnviv: procedure(target, pname: Cardinal; params: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexGend: procedure(coord, pname: Cardinal; param: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexGendv: procedure(coord, pname: Cardinal; params: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexGenf: procedure(coord, pname: Cardinal; param: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexGenfv: procedure(coord, pname: Cardinal; params: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexGeni: procedure(coord, pname: Cardinal; param: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    TexGeniv: procedure(coord, pname: Cardinal; params: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Translated: procedure(X, y, z: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Translatef: procedure(X, y, z: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex2d: procedure(X, y: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex2dv: procedure(v: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex2f: procedure(X, y: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex2fv: procedure(v: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex2i: procedure(X, y: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex2iv: procedure(v: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex2s: procedure(X, y: TGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex2sv: procedure(v: PGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex3d: procedure(X, y, z: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex3dv: procedure(v: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex3f: procedure(X, y, z: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex3fv: procedure(v: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex3i: procedure(X, y, z: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex3iv: procedure(v: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex3s: procedure(X, y, z: TGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex3sv: procedure(v: PGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex4d: procedure(X, y, z, w: TGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex4dv: procedure(v: PGLdouble);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex4f: procedure(X, y, z, w: TGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex4fv: procedure(v: PGLfloat);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex4i: procedure(X, y, z, w: TGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex4iv: procedure(v: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex4s: procedure(X, y, z, w: TGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    Vertex4sv: procedure(v: PGLshort);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      priorities: PSingle);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PushAttrib: procedure(mask: TGLbitfield);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PushClientAttrib: procedure(mask: TGLbitfield);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PushMatrix: procedure();{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    PushName: procedure(Name: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos2d: procedure(X, y: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos2dv: procedure(v: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos2f: procedure(X, y: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos2fv: procedure(v: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos2i: procedure(X, y: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos2iv: procedure(v: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos2s: procedure(X, y: PGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos2sv: procedure(v: PGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos3d: procedure(X, y, z: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos3dv: procedure(v: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos3f: procedure(X, y, z: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos3fv: procedure(v: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos3i: procedure(X, y, z: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos3iv: procedure(v: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos3s: procedure(X, y, z: TGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos3sv: procedure(v: PGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos4d: procedure(X, y, z, w: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos4dv: procedure(v: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos4f: procedure(X, y, z, w: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos4fv: procedure(v: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos4i: procedure(X, y, z, w: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos4iv: procedure(v: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos4s: procedure(X, y, z, w: TGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RasterPos4sv: procedure(v: PGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Rectd: procedure(x1, y1, x2, y2: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Rectdv: procedure(v1, v2: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Rectf: procedure(x1, y1, x2, y2: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Rectfv: procedure(v1, v2: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Recti: procedure(x1, y1, x2, y2: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Rectiv: procedure(v1, v2: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Rects: procedure(x1, y1, x2, y2: TGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Rectsv: procedure(v1, v2: PGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    RenderMode: function(mode: Cardinal): TGLint;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Rotated: procedure(ane, X, y, z: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Rotatef: procedure(ane, X, y, z: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Scaled: procedure(X, y, z: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Scalef: procedure(X, y, z: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    SelectBuffer: procedure(size: TGLsizei; buffer: PGLuint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    ShadeModel: procedure(mode: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord1d: procedure(s: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord1dv: procedure(v: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord1f: procedure(s: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord1fv: procedure(v: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord1i: procedure(s: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord1iv: procedure(v: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord1s: procedure(s: TGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord1sv: procedure(v: PGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord2d: procedure(s, t: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord2dv: procedure(v: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord2f: procedure(s, t: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord2fv: procedure(v: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord2i: procedure(s, t: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord2iv: procedure(v: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord2s: procedure(s, t: TGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord2sv: procedure(v: PGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord3d: procedure(s, t, r: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord3dv: procedure(v: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord3f: procedure(s, t, r: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord3fv: procedure(v: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord3i: procedure(s, t, r: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord3iv: procedure(v: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord3s: procedure(s, t, r: TGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord3sv: procedure(v: PGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord4d: procedure(s, t, r, q: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord4dv: procedure(v: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord4f: procedure(s, t, r, q: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord4fv: procedure(v: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord4i: procedure(s, t, r, q: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord4iv: procedure(v: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord4s: procedure(s, t, r, q: TGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoord4sv: procedure(v: PGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexCoordPointer: procedure(size: TGLint; atype: Cardinal; stride: TGLsizei; Data: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexEnvf: procedure(target, pname: Cardinal; param: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexEnvfv: procedure(target, pname: Cardinal; params: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexEnvi: procedure(target, pname: Cardinal; param: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexEnviv: procedure(target, pname: Cardinal; params: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexGend: procedure(coord, pname: Cardinal; param: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexGendv: procedure(coord, pname: Cardinal; params: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexGenf: procedure(coord, pname: Cardinal; param: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexGenfv: procedure(coord, pname: Cardinal; params: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexGeni: procedure(coord, pname: Cardinal; param: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    TexGeniv: procedure(coord, pname: Cardinal; params: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Translated: procedure(X, y, z: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Translatef: procedure(X, y, z: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex2d: procedure(X, y: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex2dv: procedure(v: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex2f: procedure(X, y: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex2fv: procedure(v: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex2i: procedure(X, y: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex2iv: procedure(v: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex2s: procedure(X, y: TGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex2sv: procedure(v: PGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex3d: procedure(X, y, z: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex3dv: procedure(v: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex3f: procedure(X, y, z: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex3fv: procedure(v: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex3i: procedure(X, y, z: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex3iv: procedure(v: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex3s: procedure(X, y, z: TGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex3sv: procedure(v: PGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex4d: procedure(X, y, z, w: TGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex4dv: procedure(v: PGLdouble);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex4f: procedure(X, y, z, w: TGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex4fv: procedure(v: PGLfloat);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex4i: procedure(X, y, z, w: TGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex4iv: procedure(v: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex4s: procedure(X, y, z, w: TGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    Vertex4sv: procedure(v: PGLshort);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     VertexPointer: procedure(size: TGLint; atype: Cardinal; stride: TGLsizei;
-      Data: Pointer);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      Data: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
 
+    //*****************************************************************
+    // --------- New core function/procedure definitions in OpenGL 1.2'}
+    //*****************************************************************
 
-// --------- New core function/procedure definitions in OpenGL 1.2'}
     BlendColor: PFNGLBLENDCOLORPROC;
     BlendEquation: PFNGLBLENDEQUATIONPROC;
     DrawRangeElements: PFNGLDRAWRANGEELEMENTSPROC;
@@ -788,7 +515,7 @@ type
     TexSubImage3D: PFNGLTEXSUBIMAGE3DPROC;
     CopyTexSubImage3D: PFNGLCOPYTEXSUBIMAGE3DPROC;
 
-// -------- New core function/procedure definitions in OpenGL 1.4'}
+    // -------- New core function/procedure definitions in OpenGL 1.4'}
     BlendFuncSeparate: PFNGLBLENDFUNCSEPARATEPROC;
     MultiDrawArrays: PFNGLMULTIDRAWARRAYSPROC;
     MultiDrawElements: PFNGLMULTIDRAWELEMENTSPROC;
@@ -796,15 +523,15 @@ type
     PointParameterfv: PFNGLPOINTPARAMETERFVPROC;
     PointParameteri: PFNGLPOINTPARAMETERIPROC;
     PointParameteriv: PFNGLPOINTPARAMETERIVPROC;
- 
-// ------------- New core function/procedure definitions in OpenGL 2.0'}
+
+    // ------------- New core function/procedure definitions in OpenGL 2.0'}
     BlendEquationSeparate: PFNGLBLENDEQUATIONSEPARATEPROC;
     DrawBuffers: PFNGLDRAWBUFFERSPROC;
     StencilOpSeparate: PFNGLSTENCILOPSEPARATEPROC;
     StencilFuncSeparate: PFNGLSTENCILFUNCSEPARATEPROC;
     StencilMaskSeparate: PFNGLSTENCILMASKSEPARATEPROC;
 
-// ---------------- Buffer objects
+    // ---------------- Buffer objects
     LockArrays: PFNGLLOCKARRAYSEXTPROC; // EXT only
     UnlockArrays: PFNGLUNLOCKARRAYSEXTPROC; // EXT only
     BindBuffer: PFNGLBINDBUFFERPROC;
@@ -824,7 +551,8 @@ type
     BindBufferOffset: PFNGLBINDBUFFEROFFSETEXTPROC; // EXT + NV only
     BindBufferBase: PFNGLBINDBUFFERBASEPROC;
     TransformFeedbackAttribs: PFNGLTRANSFORMFEEDBACKATTRIBSNVPROC; // NV only
-    TransformFeedbackVaryingsNV: PFNGLTRANSFORMFEEDBACKVARYINGSNVPROC; // NV only
+    TransformFeedbackVaryingsNV: PFNGLTRANSFORMFEEDBACKVARYINGSNVPROC;
+    // NV only
     TransformFeedbackVaryings: PFNGLTRANSFORMFEEDBACKVARYINGSPROC;
     GetTransformFeedbackVarying: PFNGLGETTRANSFORMFEEDBACKVARYINGPROC;
     BeginTransformFeedback: PFNGLBEGINTRANSFORMFEEDBACKPROC;
@@ -998,15 +726,17 @@ type
     VertexArrayVertexAttribLFormat: PFNGLVertexArrayVertexAttribLFormat;
     VertexArrayVertexAttribBinding: PFNGLVertexArrayVertexAttribBinding;
     VertexArrayVertexBindingDivisor: PFNGLVertexArrayVertexBindingDivisor;
- 
-// ------------------------------ Shader object 
+
+    // ------------------------------ Shader object
     DeleteObject: PFNGLDELETEOBJECTARBPROC; // ARB only
     GetHandle: PFNGLGETHANDLEARBPROC; // ARB only
     DetachShader: PFNGLDETACHSHADERPROC;
     CreateShader: PFNGLCREATESHADERPROC;
+    DeleteShader: PFNGLDELETESHADERPROC;
     ShaderSource: PFNGLSHADERSOURCEPROC;
     CompileShader: PFNGLCOMPILESHADERPROC;
     CreateProgram: PFNGLCREATEPROGRAMPROC;
+    DeleteProgram: PFNGLDELETEPROGRAMPROC;
     AttachShader: PFNGLATTACHSHADERPROC;
     LinkProgram: PFNGLLINKPROGRAMPROC;
     UseProgram: PFNGLUSEPROGRAMPROC;
@@ -1123,8 +853,8 @@ type
     DispatchCompute: PFNGLDispatchCompute;
     DispatchComputeIndirect: PFNGLDispatchComputeIndirect;
     ShaderStorageBlockBinding: PFNGLShaderStorageBlockBinding;
- 
-// ------------------------------ Framebuffer object 
+
+    // ------------------------------ Framebuffer object
     IsRenderbuffer: PFNGLISRENDERBUFFERPROC;
     BindRenderbuffer: PFNGLBINDRENDERBUFFERPROC;
     DeleteRenderbuffers: PFNGLDELETERENDERBUFFERSPROC;
@@ -1152,8 +882,7 @@ type
     NamedFramebufferParameteri: PFNGLNamedFramebufferParameteri;
     GetNamedFramebufferParameteriv: PFNGLGetNamedFramebufferParameteriv;
 
- 
-// ------------------------------ Queries object 
+    // ------------------------------ Queries object
     GenQueries: PFNGLGENQUERIESPROC;
     DeleteQueries: PFNGLDELETEQUERIESPROC;
     IsQuery: PFNGLISQUERYPROC;
@@ -1173,8 +902,7 @@ type
     GetProgramResourceLocation: PFNGLGetProgramResourceLocation;
     GetProgramResourceLocationIndex: PFNGLGetProgramResourceLocationIndex;
 
- 
-// ------------------------------ Texture & Sampler object 
+    // ------------------------------ Texture & Sampler object
     // promoted to core v1.3 from GL_ARB_multitexture (#1)
     ActiveTexture: PFNGLACTIVETEXTUREPROC;
     SampleCoverage: PFNGLSAMPLECOVERAGEPROC;
@@ -1289,7 +1017,6 @@ type
     BindVertexBuffers: PFNGLBindVertexBuffers;
     TextureView: PFNGLTextureView;
 
-     
     // ------------------------------ Direct access
     ClientAttribDefault: PFNGLCLIENTATTRIBDEFAULTEXTPROC;
     PushClientAttribDefault: PFNGLPUSHCLIENTATTRIBDEFAULTEXTPROC;
@@ -1392,19 +1119,26 @@ type
     NamedProgramLocalParameter4dv: PFNGLNAMEDPROGRAMLOCALPARAMETER4DVEXTPROC;
     NamedProgramLocalParameter4f: PFNGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC;
     NamedProgramLocalParameter4fv: PFNGLNAMEDPROGRAMLOCALPARAMETER4FVEXTPROC;
-    GetNamedProgramLocalParameterdv : PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC;
-    GetNamedProgramLocalParameterfv : PFNGLGETNAMEDPROGRAMLOCALPARAMETERFVEXTPROC;
+    GetNamedProgramLocalParameterdv
+      : PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC;
+    GetNamedProgramLocalParameterfv
+      : PFNGLGETNAMEDPROGRAMLOCALPARAMETERFVEXTPROC;
     GetNamedProgramiv: PFNGLGETNAMEDPROGRAMIVEXTPROC;
     GetNamedProgramString: PFNGLGETNAMEDPROGRAMSTRINGEXTPROC;
     NamedProgramLocalParameters4fv: PFNGLNAMEDPROGRAMLOCALPARAMETERS4FVEXTPROC;
     NamedProgramLocalParameterI4i: PFNGLNAMEDPROGRAMLOCALPARAMETERI4IEXTPROC;
     NamedProgramLocalParameterI4iv: PFNGLNAMEDPROGRAMLOCALPARAMETERI4IVEXTPROC;
-    NamedProgramLocalParametersI4iv : PFNGLNAMEDPROGRAMLOCALPARAMETERSI4IVEXTPROC;
+    NamedProgramLocalParametersI4iv
+      : PFNGLNAMEDPROGRAMLOCALPARAMETERSI4IVEXTPROC;
     NamedProgramLocalParameterI4ui: PFNGLNAMEDPROGRAMLOCALPARAMETERI4UIEXTPROC;
-    NamedProgramLocalParameterI4uiv: PFNGLNAMEDPROGRAMLOCALPARAMETERI4UIVEXTPROC;
-    NamedProgramLocalParametersI4uiv: PFNGLNAMEDPROGRAMLOCALPARAMETERSI4UIVEXTPROC;
-    GetNamedProgramLocalParameterIiv: PFNGLGETNAMEDPROGRAMLOCALPARAMETERIIVEXTPROC;
-    GetNamedProgramLocalParameterIuiv: PFNGLGETNAMEDPROGRAMLOCALPARAMETERIUIVEXTPROC;
+    NamedProgramLocalParameterI4uiv
+      : PFNGLNAMEDPROGRAMLOCALPARAMETERI4UIVEXTPROC;
+    NamedProgramLocalParametersI4uiv
+      : PFNGLNAMEDPROGRAMLOCALPARAMETERSI4UIVEXTPROC;
+    GetNamedProgramLocalParameterIiv
+      : PFNGLGETNAMEDPROGRAMLOCALPARAMETERIIVEXTPROC;
+    GetNamedProgramLocalParameterIuiv
+      : PFNGLGETNAMEDPROGRAMLOCALPARAMETERIUIVEXTPROC;
     TextureParameterIiv: PFNGLTEXTUREPARAMETERIIVEXTPROC;
     TextureParameterIuiv: PFNGLTEXTUREPARAMETERIUIVEXTPROC;
     GetTextureParameterIiv: PFNGLGETTEXTUREPARAMETERIIVEXTPROC;
@@ -1451,7 +1185,7 @@ type
     TextureRenderbuffer: PFNGLTEXTURERENDERBUFFEREXTPROC;
     MultiTexRenderbuffer: PFNGLMULTITEXRENDERBUFFEREXTPROC;
 
-   // ------------------------------ Debugging
+    // ------------------------------ Debugging
     // Special Gremedy debugger extension
     FrameTerminatorGREMEDY: PFNGLFRAMETERMINATORGREMEDYPROC;
     StringMarkerGREMEDY: PFNGLSTRINGMARKERGREMEDYPROC;
@@ -1464,51 +1198,52 @@ type
     GetObjectLabel: PFNGLGetObjectLabel;
     ObjectPtrLabel: PFNGLObjectPtrLabel;
     GetObjectPtrLabel: PFNGLGetObjectPtrLabel;
-    DebugMessageCallbackAMDX: procedure(callback: TDebugProcAMD; userParam: Pointer);
-   {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+    DebugMessageCallbackAMDX: procedure(callback: TDebugProcAMD;
+      userParam: Pointer);
+{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
     DebugMessageControl: procedure(type_: Cardinal; Source: Cardinal;
       severity: Cardinal; Count: TGLsizei; var ids: Cardinal; Enabled: boolean);
-   {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-    DebugMessageInsert: procedure(Source: Cardinal; severity: Cardinal; id: Cardinal;
-      length: TGLsizei; const buf: PAnsiChar);
-   {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+    DebugMessageInsert: procedure(Source: Cardinal; severity: Cardinal;
+      id: Cardinal; length: TGLsizei; const buf: PAnsiChar);
+{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
     DebugMessageCallback: procedure(callback: TDebugProc; userParam: Pointer);
-   {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
     GetDebugMessageLog: function(Count: Cardinal; bufSize: TGLsizei;
       var severity: Cardinal; var severities: Cardinal; var ids: Cardinal;
       var lengths: TGLsizei; messageLog: PAnsiChar): Cardinal;
-   {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-
-   // ------------------------------ Interrop
+{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+    // ------------------------------ Interrop
     CreateSyncFromCLevent: PFNGLCreateSyncFromCLevent;
-    VDPAUInitNV: procedure(const vdpDevice: Pointer; const getProcAddress: Pointer); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    VDPAUInitNV: procedure(const vdpDevice: Pointer;
+      const getProcAddress: Pointer); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     VDPAUFiniNV: procedure(); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     VDPAURegisterVideoSurfaceNV: function(const vdpSurface: Pointer;
       target: Cardinal; numTextureNames: TGLsizei; const textureNames: PGLuint)
       : TGLvdpauSurfaceNV;
-   {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     VDPAURegisterOutputSurfaceNV: function(const vdpSurface: Pointer;
       target: Cardinal; numTextureNames: TGLsizei; const textureNames: PGLuint)
       : TGLvdpauSurfaceNV;
-   {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     VDPAUIsSurfaceNV: procedure(surface: TGLvdpauSurfaceNV);
-   {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     VDPAUUnregisterSurfaceNV: procedure(surface: TGLvdpauSurfaceNV);
-   {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     VDPAUGetSurfaceivNV: procedure(surface: TGLvdpauSurfaceNV; pname: Cardinal;
       bufSize: TGLsizei; length: PGLsizei; values: PGLint);
-   {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     VDPAUSurfaceAccessNV: procedure(surface: TGLvdpauSurfaceNV;
       access: Cardinal);
-   {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     VDPAUMapSurfacesNV: procedure(numSurfaces: TGLsizei;
       const surfaces: PGLvdpauSurfaceNV);
-   {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     VDPAUUnmapSurfacesNV: procedure(numSurface: TGLsizei;
       const surfaces: PGLvdpauSurfaceNV);
-   {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
 
-   // ------------------------------ Path rendering
+    // ------------------------------ Path rendering
     GenPathsNV: PFNGLGENPATHSNVPROC;
     DeletePathsNV: PFNGLDELETEPATHSNVPROC;
     IsPathNV: PFNGLISPATHNVPROC;
@@ -1557,8 +1292,8 @@ type
     PointAlongPathNV: PFNGLPOINTALONGPATHNVPROC;
     PathStencilDepthOffsetNV: PFNGLPATHSTENCILDEPTHOFFSETNVPROC;
     PathCoverDepthFuncNV: PFNGLPATHCOVERDEPTHFUNCNVPROC;
-   
-  {$IFDEF SUPPORT_WGL}
+
+{$IFDEF SUPPORT_WGL}
     // ###########################################################
     // function and procedure definitions for
     // ARB approved WGL extensions
@@ -1624,9 +1359,8 @@ type
     WDXObjectAccessNV: PFNWGLDXOBJECTACCESSPROC;
     WDXLockObjectsNV: PFNWGLDXLOCKOBJECTSPROC;
     WDXUnlockObjectsNV: PFNWGLDXUNLOCKOBJECTSNVPROC;
-   {$ENDIF}
-
-   {$IFDEF SUPPORT_WGL}
+{$ENDIF}
+{$IFDEF SUPPORT_WGL}
     // ###########################################################
     // function and procedure definitions for
     // Vendor/EXT WGL extensions
@@ -1640,8 +1374,7 @@ type
     WAllocateMemoryNV: PFNWGLALLOCATEMEMORYNVPROC;
     WFreeMemoryNV: PFNWGLFREEMEMORYNVPROC;
 {$ENDIF}
- 
-// ------- GLX function/procedure definitions for ARB approved extensions'}
+    // ------- GLX function/procedure definitions for ARB approved extensions'}
 
 {$IFDEF SUPPORT_GLX}
     // ###########################################################
@@ -1689,10 +1422,10 @@ type
     // GLX 1.4
     // X_ARB_create_context (EXT #56)
     XCreateContextAttribsARB: PFNGLXCREATECONTEXTATTRIBSARBPROC;
-  {$ENDIF}
-   
-  // ------------- GLX function/procedure definitions for Vendor/EXT extensions'}
-  {$IFDEF SUPPORT_GLX}
+{$ENDIF}
+
+    // ------------- GLX function/procedure definitions for Vendor/EXT extensions'}
+{$IFDEF SUPPORT_GLX}
     // ###########################################################
     // function and procedure definitions for
     // Vendor/EXT GLX extensions
@@ -1772,10 +1505,10 @@ type
     XReleaseVideoCaptureDeviceNV: PFNGLXRELEASEVIDEOCAPTUREDEVICENVPROC;
     XSwapIntervalEXT: PFNGLXSWAPINTERVALEXTPROC;
     XCopyImageSubDataNV: PFNGLXCOPYIMAGESUBDATANVPROC;
-  {$ENDIF}
-   
-  // ------------------------------ AGL function/procedure 
-  {$IFDEF DARWIN}
+{$ENDIF}
+
+    // ------------------------------ AGL function/procedure
+{$IFDEF DARWIN}
     // AGL extension checks
     A_aux_depth_stencil, A_client_storage, A_element_array, A_fence,
       A_float_pixels, A_flush_buffer_range, A_flush_render, A_object_purgeable,
@@ -1783,28 +1516,38 @@ type
       A_texture_range, A_transform_hint, A_vertex_array_object,
       A_vertex_array_range, A_vertex_program_evaluators, A_ycbcr_422: boolean;
 
-    ACreatePixelFormat: function(gdevs: PAGLDevice; ndev: GLint; attribs: PGLint): TAGLPixelFormat; cdecl;
-    AChoosePixelFormat: function(gdevs: PAGLDevice; ndev: GLint; attribs: PGLint): TAGLPixelFormat; cdecl;
+    ACreatePixelFormat: function(gdevs: PAGLDevice; ndev: GLint;
+      attribs: PGLint): TAGLPixelFormat; cdecl;
+    AChoosePixelFormat: function(gdevs: PAGLDevice; ndev: GLint;
+      attribs: PGLint): TAGLPixelFormat; cdecl;
     ADestroyPixelFormat: procedure(pix: TAGLPixelFormat); cdecl;
-    ADescribePixelFormat: function(pix: TAGLPixelFormat; attrib: TGLint; Value: PGLint): TGLboolean; cdecl;
-    AGetCGLPixelFormat: function(pix: TAGLPixelFormat; cgl_pix: Pointer): TGLboolean; cdecl;
-    ADisplaysOfPixelFormat: function(pix: TAGLPixelFormat; ndevs: PGLint): CGDirectDisplayID; cdecl;
+    ADescribePixelFormat: function(pix: TAGLPixelFormat; attrib: TGLint;
+      Value: PGLint): TGLboolean; cdecl;
+    AGetCGLPixelFormat: function(pix: TAGLPixelFormat; cgl_pix: Pointer)
+      : TGLboolean; cdecl;
+    ADisplaysOfPixelFormat: function(pix: TAGLPixelFormat; ndevs: PGLint)
+      : CGDirectDisplayID; cdecl;
     ANextPixelFormat: function(pix: TAGLPixelFormat): TAGLPixelFormat; cdecl;
     // Managing context
-    ACreateContext: function(pix: TAGLPixelFormat; share: TAGLContext): TAGLContext; cdecl;
-    ACopyContext: function(src: TAGLContext; dst: TAGLContext; mask: Cardinal): TGLboolean; cdecl;
+    ACreateContext: function(pix: TAGLPixelFormat; share: TAGLContext)
+      : TAGLContext; cdecl;
+    ACopyContext: function(src: TAGLContext; dst: TAGLContext; mask: Cardinal)
+      : TGLboolean; cdecl;
     ADestroyContext: function(ctx: TAGLContext): GLboolean; cdecl;
     AUpdateContext: function(ctx: TAGLContext): GLboolean; cdecl;
     ASetCurrentContext: function(ctx: TAGLContext): GLboolean; cdecl;
-    AGetCGLContext: function(ctx: TAGLContext; cgl_ctx: Pointer): GLboolean; cdecl;
+    AGetCGLContext: function(ctx: TAGLContext; cgl_ctx: Pointer)
+      : GLboolean; cdecl;
     AGetCurrentContext: function(): TAGLContext; cdecl;
     ASwapBuffers: procedure(ctx: TAGLContext); cdecl;
     // Managing Pixel Buffers
     ACreatePBuffer: function(Width: GLint; Height: GLint; target: GLenum;
-      internalFormat: GLenum; max_level: longint; pbuffer: PAGLPbuffer): GLboolean; cdecl;
+      internalFormat: GLenum; max_level: longint; pbuffer: PAGLPbuffer)
+      : GLboolean; cdecl;
     ADestroyPBuffer: function(pbuffer: TAGLPbuffer): GLboolean; cdecl;
     ADescribePBuffer: function(pbuffer: TAGLPbuffer; Width, Height: PGLint;
-      target: PGLenum; internalFormat: PGLenum; max_level: PGLint): TGLboolean; cdecl;
+      target: PGLenum; internalFormat: PGLenum; max_level: PGLint)
+      : TGLboolean; cdecl;
     AGetPBuffer: function(ctx: TAGLContext; out pbuffer: TAGLPbuffer;
       face, level, screen: PGLint): GLboolean; cdecl;
     ASetPBuffer: function(ctx: TAGLContext; pbuffer: TAGLPbuffer; face: GLint;
@@ -1812,43 +1555,50 @@ type
     ATexImagePBuffer: function(ctx: TAGLContext; pbuffer: TAGLPbuffer;
       Source: GLint): TGLboolean; cdecl;
     // Managing Drawable Objects
-    ASetDrawable: function(ctx: TAGLContext; draw: TAGLDrawable): GLboolean; cdecl; // deprecated
+    ASetDrawable: function(ctx: TAGLContext; draw: TAGLDrawable): GLboolean;
+      cdecl; // deprecated
     AGetDrawable: function(ctx: TAGLContext): TAGLDrawable; cdecl; // deprecated
-    ASetFullScreen: function(ctx: TAGLContext; Width: TGLsizei; Height: TGLsizei;
-      freq: TGLsizei; device: GLint): GLboolean; cdecl;
+    ASetFullScreen: function(ctx: TAGLContext; Width: TGLsizei;
+      Height: TGLsizei; freq: TGLsizei; device: GLint): GLboolean; cdecl;
     ASetOffScreen: function(ctx: TAGLContext; Width, Height, rowbytes: TGLsizei;
       out baseaddr: Pointer): GLboolean; cdecl;
     // Getting and Setting Context Options
     AEnable: function(ctx: TAGLContext; pname: Cardinal): GLboolean; cdecl;
     ADisable: function(ctx: TAGLContext; pname: Cardinal): GLboolean; cdecl;
     AIsEnabled: function(ctx: TAGLContext; pname: Cardinal): GLboolean; cdecl;
-    ASetInteger: function(ctx: TAGLContext; pname: GLenum; params: PGLint): GLboolean; cdecl;
-    AGetInteger: function(ctx: TAGLContext; pname: GLenum; params: PGLint): GLboolean; cdecl;
+    ASetInteger: function(ctx: TAGLContext; pname: GLenum; params: PGLint)
+      : GLboolean; cdecl;
+    AGetInteger: function(ctx: TAGLContext; pname: GLenum; params: PGLint)
+      : GLboolean; cdecl;
     // Getting and Setting Global Information
     AConfigure: function(pname: Cardinal; param: Cardinal): TGLboolean; cdecl;
     AGetVersion: procedure(major: PGLint; minor: PGLint); cdecl;
     AResetLibrary: procedure(); cdecl;
     // Getting Renderer Information
-    ADescribeRenderer: function(rend: TAGLRendererInfo; prop: GLint; Value: PGLint): GLboolean; cdecl;
+    ADescribeRenderer: function(rend: TAGLRendererInfo; prop: GLint;
+      Value: PGLint): GLboolean; cdecl;
     ADestroyRendererInfo: procedure(rend: TAGLRendererInfo); cdecl;
-    ANextRendererInfo: function(rend: TAGLRendererInfo): TAGLRendererInfo; cdecl;
+    ANextRendererInfo: function(rend: TAGLRendererInfo)
+      : TAGLRendererInfo; cdecl;
     AQueryRendererInfoForCGDirectDisplayIDs: function(dspIDs: CGDirectDisplayID;
       ndev: TGLint): TAGLRendererInfo; cdecl;
     // Managing Virtual Screens
     AGetVirtualScreen: function(ctx: TAGLContext): GLint; cdecl;
-    ASetVirtualScreen: function(ctx: TAGLContext; screen: TGLint): TGLboolean; cdecl;
+    ASetVirtualScreen: function(ctx: TAGLContext; screen: TGLint)
+      : TGLboolean; cdecl;
     // Getting and Setting Windows
-    ASetWindowRef: function(ctx: TAGLContext; window: WindowRef): TGLboolean; cdecl;
+    ASetWindowRef: function(ctx: TAGLContext; window: WindowRef)
+      : TGLboolean; cdecl;
     AGetWindowRef: function(ctx: TAGLContext): TGLint; cdecl;
     // Getting and Setting HIView Objects
-    ASetHIViewRef: function(ctx: TAGLContext; hiview: HIViewRef): TGLboolean; cdecl;
+    ASetHIViewRef: function(ctx: TAGLContext; hiview: HIViewRef)
+      : TGLboolean; cdecl;
     AGetHIViewRef: function(ctx: TAGLContext): HIViewRef; cdecl;
     // Getting Error Information
     AGetError: function(): Cardinal; cdecl;
     AErrorString: function(code: Cardinal): PAnsiChar; cdecl;
 {$ENDIF}
-
-// ------------------------------ EGL function/procedure
+    // ------------------------------ EGL function/procedure
 {$IFDEF EGL_SUPPORT}
     OES_depth24, OES_depth32, OES_depth_texture, OES_element_index_uint,
       OES_fbo_render_mipmap, OES_get_program_binary, OES_mapbuffer,
@@ -1861,7 +1611,8 @@ type
 {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     EGetDisplay: function(display_id: EGLNativeDisplayType): EGLDisplay;
 {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EInitialize: function(dpy: EGLDisplay; major: pEGLint; minor: pEGLint): EGLBoolean;
+    EInitialize: function(dpy: EGLDisplay; major: pEGLint; minor: pEGLint)
+      : EGLBoolean;
 {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     ETerminate: function(dpy: EGLDisplay): EGLBoolean;
 {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
@@ -1871,7 +1622,8 @@ type
       config_size: EGLint; num_config: pEGLint): EGLBoolean;
 {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     EChooseConfig: function(dpy: EGLDisplay; attrib_list: pEGLint;
-    configs: pEGLConfig; config_size: EGLint; num_config: pEGLint): EGLBoolean;
+      configs: pEGLConfig; config_size: EGLint; num_config: pEGLint)
+      : EGLBoolean;
 {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     EGetConfigAttrib: function(dpy: EGLDisplay; config: EGLConfig;
       attribute: EGLint; Value: pEGLint): EGLBoolean;
@@ -1899,7 +1651,8 @@ type
     EReleaseThread: function: EGLBoolean;
 {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     ECreatePbufferFromClientBuffer: function(dpy: EGLDisplay; buftype: EGLenum;
-    buffer: EGLClientBuffer; config: EGLConfig; attrib_list: pEGLint): EGLSurface;
+      buffer: EGLClientBuffer; config: EGLConfig; attrib_list: pEGLint)
+      : EGLSurface;
 {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     ESurfaceAttrib: function(dpy: EGLDisplay; surface: EGLSurface;
       attribute: EGLint; Value: EGLint): EGLBoolean;
@@ -1939,8 +1692,7 @@ type
       target: EGLNativePixmapType): EGLBoolean;
 {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
 {$ENDIF EGL_SUPPORT}
- 
-// ------------------------------ locate functions/procedures for OpenGL Utility (GLU) extensions'} {$ENDIF}
+    // ------------------------------ locate functions/procedures for OpenGL Utility (GLU) extensions'} {$ENDIF}
 
     // ###########################################################
     // locate functions and procedures for
@@ -1960,7 +1712,7 @@ type
     procedure ClearError;
     property IsInitialized: boolean read FInitialized;
     property DebugMode: boolean read FDebug write FDebug;
-  end;
+  end; // TGLExtensionsAndEntryPoints
 
 // ------------------------------ Windows OpenGL (WGL) support functions
 
@@ -1991,9 +1743,11 @@ function wglUseFontOutlines(p1: HDC; p2, p3, p4: DWORD; p5, p6: single;
   p7: integer; p8: PGlyphMetricsFloat): BOOL; stdcall; external opengl32 Name 'wglUseFontOutlinesA';
 {$ENDIF}
 
- 
-// ------------- OpenGL Extension to the X Window System (GLX) support functions'}
+
 {$IFDEF SUPPORT_GLX}
+
+// ------------- OpenGL Extension to the X Window System (GLX) support functions'}
+
 // GLX 1.0
 function glXGetProcAddress(const Name: PAnsiChar): Pointer; cdecl; external opengl32;
 function glXGetProcAddressARB(const Name: PAnsiChar): Pointer; cdecl; external opengl32;
@@ -2031,19 +1785,23 @@ function glXGetClientString(dpy: PDisplay; Name: TGLint): PAnsiChar; cdecl;
 
 // GLX 1.2 and later
 function glXGetCurrentDisplay: PDisplay; cdecl; external opengl32;
-{$ENDIF}
- 
-// ------------- OpenGL Extension to the Apple System (AGL) support functions'}
+
+{$ENDIF} // GLX
+
 {$IFDEF DARWIN}
+
+// ------------- OpenGL Extension to the Apple System (AGL) support functions'}
+
 function aglChoosePixelFormat(gdevs: PAGLDevice; ndev: GLint; attribs: PGLint): TAGLPixelFormat; cdecl; external libAGL;
 procedure aglDestroyPixelFormat(pix: TAGLPixelFormat); cdecl; external libAGL;
-
 function aglCreateContext(pix: TAGLPixelFormat; share: TAGLContext): TAGLContext; cdecl; external libAGL;
 function aglDestroyContext(ctx: TAGLContext): GLboolean; cdecl; external libAGL;
 function aglSetCurrentContext(ctx: TAGLContext): GLboolean; cdecl; external libAGL;
-function aglSetDrawable(ctx: TAGLContext; draw: TAGLDrawable): GLboolean; cdecl; external libAGL;{$ENDIF}
+function aglSetDrawable(ctx: TAGLContext; draw: TAGLDrawable): GLboolean; cdecl; external libAGL;
 
- 
+{$ENDIF} // DARWIN
+
+
 function gluErrorString(errCode: Cardinal): PAnsiChar; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
 function gluGetString(Name: Cardinal): PAnsiChar; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
 procedure gluOrtho2D(left, right, bottom, top: TGLdouble);
@@ -2055,12 +1813,10 @@ procedure gluLookAt(eyex, eyey, eyez, centerx, centery, centerz, upx, upy, upz: 
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl;{$ENDIF} external glu32;
 function gluProject(objx, objy, objz: TGLdouble; const modelMatrix: TMatrix4d;
   const projMatrix: TMatrix4d; const Viewport: TVector4i;
-  winx, winy, winz: PGLdouble): TGLint; 
-{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
+  winx, winy, winz: PGLdouble): TGLint;{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
 function gluUnProject(winx, winy, winz: TGLdouble; const modelMatrix: TMatrix4d;
   const projMatrix: TMatrix4d; const Viewport: TVector4i;
-  objx, objy, objz: PGLdouble): TGLint; 
-{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
+  objx, objy, objz: PGLdouble): TGLint;{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
 function gluScaleImage(format: Cardinal; widthin, heightin: TGLint;
   typein: Cardinal; datain: Pointer; widthout, heightout: TGLint;
   typeout: Cardinal; dataout: Pointer): TGLint; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
@@ -2069,10 +1825,8 @@ function gluBuild1DMipmaps(target: Cardinal; Components, Width: TGLint;
 function gluBuild2DMipmaps(target: Cardinal; Components, Width, Height: TGLint;
   format, atype: Cardinal; Data: Pointer): TGLint; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
 function gluNewQuadric: PGLUquadric; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
-procedure gluDeleteQuadric(state: PGLUquadric); 
-{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
-procedure gluQuadricNormals(quadObject: PGLUquadric; normals: Cardinal);
-{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl;{$ENDIF} external glu32;
+procedure gluDeleteQuadric(state: PGLUquadric);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
+procedure gluQuadricNormals(quadObject: PGLUquadric; normals: Cardinal);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl;{$ENDIF} external glu32;
 procedure gluQuadricTexture(quadObject: PGLUquadric; textureCoords: TGLboolean);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl;{$ENDIF} external glu32;
 procedure gluQuadricOrientation(quadObject: PGLUquadric; orientation: Cardinal);
@@ -2083,7 +1837,7 @@ procedure gluCylinder(quadObject: PGLUquadric;
   baseRadius, topRadius, Height: TGLdouble; slices, stacks: TGLint);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl;{$ENDIF} external glu32;
 procedure gluDisk(quadObject: PGLUquadric; innerRadius, outerRadius: TGLdouble;
-  slices, loops: TGLint); 
+  slices, loops: TGLint);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl;{$ENDIF} external glu32;
 procedure gluPartialDisk(quadObject: PGLUquadric;
   innerRadius, outerRadius: TGLdouble; slices, loops: TGLint;
@@ -2096,7 +1850,7 @@ procedure gluQuadricCallback(quadObject: PGLUquadric; which: Cardinal;
   fn: TGLUQuadricErrorProc); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl;
 {$ENDIF} external glu32;
 function gluNewTess: PGLUtesselator; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
-procedure gluDeleteTess(tess: PGLUtesselator); 
+procedure gluDeleteTess(tess: PGLUtesselator);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
 procedure gluTessBeginPolygon(tess: PGLUtesselator; polygon_data: Pointer);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl;
@@ -2109,28 +1863,25 @@ procedure gluTessEndContour(tess: PGLUtesselator); {$IFDEF MSWINDOWS} stdcall; {
 procedure gluTessEndPolygon(tess: PGLUtesselator);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
 procedure gluTessProperty(tess: PGLUtesselator; which: Cardinal;
-  Value: TGLdouble);
-{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl;{$ENDIF} external glu32;
-procedure gluTessNormal(tess: PGLUtesselator; X, y, z: TGLdouble);
-{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl;{$ENDIF} external glu32;
-procedure gluTessCallback(tess: PGLUtesselator; which: Cardinal; fn: Pointer);
-{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl;{$ENDIF} external glu32;
+  Value: TGLdouble);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl;{$ENDIF} external glu32;
+procedure gluTessNormal(tess: PGLUtesselator; X, y, z: TGLdouble);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl;{$ENDIF} external glu32;
+procedure gluTessCallback(tess: PGLUtesselator; which: Cardinal; fn: Pointer);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl;{$ENDIF} external glu32;
 procedure gluGetTessProperty(tess: PGLUtesselator; which: Cardinal; Value: PGLdouble);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl;{$ENDIF} external glu32;
 function gluNewNurbsRenderer: PGLUnurbs; {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
-procedure gluDeleteNurbsRenderer(nobj: PGLUnurbs); 
+procedure gluDeleteNurbsRenderer(nobj: PGLUnurbs);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
-procedure gluBeginSurface(nobj: PGLUnurbs); 
+procedure gluBeginSurface(nobj: PGLUnurbs);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
-procedure gluBeginCurve(nobj: PGLUnurbs); 
+procedure gluBeginCurve(nobj: PGLUnurbs);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
-procedure gluEndCurve(nobj: PGLUnurbs); 
+procedure gluEndCurve(nobj: PGLUnurbs);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
-procedure gluEndSurface(nobj: PGLUnurbs); 
+procedure gluEndSurface(nobj: PGLUnurbs);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
-procedure gluBeginTrim(nobj: PGLUnurbs); 
+procedure gluBeginTrim(nobj: PGLUnurbs);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
-procedure gluEndTrim(nobj: PGLUnurbs); 
+procedure gluEndTrim(nobj: PGLUnurbs);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
 procedure gluPwlCurve(nobj: PGLUnurbs; Count: TGLint; points: PGLfloat; stride: TGLint; atype: Cardinal);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
@@ -2151,11 +1902,11 @@ procedure gluGetNurbsProperty(nobj: PGLUnurbs; aproperty: Cardinal; Value: PGLfl
 procedure gluNurbsCallback(nobj: PGLUnurbs; which: Cardinal;
   fn: TGLUNurbsErrorProc);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl;{$ENDIF} external glu32;
-procedure gluBeginPolygon(tess: PGLUtesselator); 
+procedure gluBeginPolygon(tess: PGLUtesselator);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
 procedure gluNextContour(tess: PGLUtesselator; atype: Cardinal);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl;{$ENDIF} external glu32;
-procedure gluEndPolygon(tess: PGLUtesselator); 
+procedure gluEndPolygon(tess: PGLUtesselator);
 {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF} external glu32;
 
 function GetProcAddressGLLib(ProcName: PAnsiChar): Pointer;

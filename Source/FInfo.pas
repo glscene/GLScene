@@ -12,7 +12,6 @@ interface
 
 uses
   Winapi.Windows,
-  Winapi.OpenGL,
   System.SysUtils,
   System.Classes,
   Vcl.Forms,
@@ -25,7 +24,8 @@ uses
   Vcl.Menus,
   Vcl.Imaging.jpeg,
 
-  GLS.OpenGLx,
+  OpenGLTokens,
+  OpenGLAdapter,
   GLScene,
   GLSceneViewer,
   GLContext,
@@ -188,8 +188,8 @@ begin
     with aSceneBuffer do
     begin
       // common properties
-      VendorLabel.Caption := String(glGetString(GL_VENDOR));
-      RendererLabel.Caption := String(glGetString(GL_RENDERER));
+      VendorLabel.Caption := String(gl.GetString(GL_VENDOR));
+      RendererLabel.Caption := String(gl.GetString(GL_RENDERER));
       dc := wglGetCurrentDC();
       pixelFormat := GetPixelFormat(dc);
       DescribePixelFormat(dc, pixelFormat, SizeOf(pfd), pfd);
@@ -200,8 +200,8 @@ begin
         AccLabel.Caption := 'Mini-Client Driver'
       else if (DRIVER_MASK and pfd.dwFlags) = PFD_GENERIC_FORMAT then
         AccLabel.Caption := 'Generic Software Driver';
-      VersionLabel.Caption := String(glGetString(GL_VERSION));
-      ExtStr := String(glGetString(GL_EXTENSIONS));
+      VersionLabel.Caption := String(gl.GetString(GL_VERSION));
+      ExtStr := String(gl.GetString(GL_EXTENSIONS));
       ListBoxExtensions.Clear;
       while Length(ExtStr) > 0 do
       begin
@@ -223,9 +223,9 @@ begin
         StereoLabel.Caption := 'no';
 
       // Include WGL extensions
-      if WGL_ARB_extensions_string then
+      if GL.W_ARB_extensions_string then
       begin
-        ExtStr := String(wglGetExtensionsStringARB(dc));
+        ExtStr := String(gl.WGetExtensionsStringARB(dc));
         while Length(ExtStr) > 0 do
         begin
           i := Pos(' ', ExtStr);

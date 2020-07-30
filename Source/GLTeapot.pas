@@ -10,9 +10,9 @@ interface
 {$I GLScene.inc}
 
 uses
-  Winapi.OpenGL,
   System.Classes,
 
+  OpenGLTokens,
   GLScene,
   GLPersistentClasses,
   GLState,
@@ -113,9 +113,9 @@ begin
   GRD := FGrid;
 
   rci.GLStates.InvertGLFrontFace;
-  glEnable(GL_AUTO_NORMAL);
-  glEnable(GL_MAP2_VERTEX_3);
-  glEnable(GL_MAP2_TEXTURE_COORD_2);
+  gl.Enable(GL_AUTO_NORMAL);
+  gl.Enable(GL_MAP2_VERTEX_3);
+  gl.Enable(GL_MAP2_TEXTURE_COORD_2);
   for I := 0 to 9 do
   begin
     for J := 0 to 3 do
@@ -140,23 +140,23 @@ begin
         end;
       end;
     end;
-    glMapGrid2f(GRD, 0, 1, GRD, 0, 1);
-    glMap2f(GL_MAP2_TEXTURE_COORD_2, 0, 1, 2, 2, 0, 1, 4, 2, @Tex[0, 0, 0]);
-    glMap2f(GL_MAP2_VERTEX_3, 0, 1, 3, 4, 0, 1, 12, 4, @P[0, 0, 0]);
-    glEvalMesh2(GL_FILL, 0, GRD, 0, GRD);
-    glMap2f(GL_MAP2_VERTEX_3, 0, 1, 3, 4, 0, 1, 12, 4, @Q[0, 0, 0]);
-    glEvalMesh2(GL_FILL, 0, GRD, 0, GRD);
+    gl.MapGrid2f(GRD, 0, 1, GRD, 0, 1);
+    gl.Map2f(GL_MAP2_TEXTURE_COORD_2, 0, 1, 2, 2, 0, 1, 4, 2, @Tex[0, 0, 0]);
+    gl.Map2f(GL_MAP2_VERTEX_3, 0, 1, 3, 4, 0, 1, 12, 4, @P[0, 0, 0]);
+    gl.EvalMesh2(GL_FILL, 0, GRD, 0, GRD);
+    gl.Map2f(GL_MAP2_VERTEX_3, 0, 1, 3, 4, 0, 1, 12, 4, @Q[0, 0, 0]);
+    gl.EvalMesh2(GL_FILL, 0, GRD, 0, GRD);
     if I < 6 then
     begin
-      glMap2f(GL_MAP2_VERTEX_3, 0, 1, 3, 4, 0, 1, 12, 4, @R[0, 0, 0]);
-      glEvalMesh2(GL_FILL, 0, GRD, 0, GRD);
-      glMap2f(GL_MAP2_VERTEX_3, 0, 1, 3, 4, 0, 1, 12, 4, @S[0, 0, 0]);
-      glEvalMesh2(GL_FILL, 0, GRD, 0, GRD);
+      gl.Map2f(GL_MAP2_VERTEX_3, 0, 1, 3, 4, 0, 1, 12, 4, @R[0, 0, 0]);
+      gl.EvalMesh2(GL_FILL, 0, GRD, 0, GRD);
+      gl.Map2f(GL_MAP2_VERTEX_3, 0, 1, 3, 4, 0, 1, 12, 4, @S[0, 0, 0]);
+      gl.EvalMesh2(GL_FILL, 0, GRD, 0, GRD);
     end;
   end;
-  glDisable(GL_AUTO_NORMAL);
-  glDisable(GL_MAP2_VERTEX_3);
-  glDisable(GL_MAP2_TEXTURE_COORD_2);
+  gl.Disable(GL_AUTO_NORMAL);
+  gl.Disable(GL_MAP2_VERTEX_3);
+  gl.Disable(GL_MAP2_TEXTURE_COORD_2);
   rci.GLStates.InvertGLFrontFace;
 end;
 

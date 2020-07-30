@@ -46,7 +46,6 @@ unit GLRandomHDS;
 interface
 
 uses
-  Winapi.OpenGL,
   Winapi.Windows,
   System.Classes,
   System.Math,
@@ -57,6 +56,7 @@ uses
   Vcl.Imaging.jpeg,
   Vcl.Forms,
 
+  OpenGLTokens,
   GLScene,
   GLVectorTypes,
   GLVectorGeometry,
@@ -2685,9 +2685,9 @@ const
     end;
     SinCos(WaterPhase(px, py) * FWaveSpeed, sa, ca);
     colorRatio := 1 - alpha * 0.1;
-    glColor4f(r * colorRatio, g * colorRatio, b, alpha);
-    glTexCoord2f(px * 0.01 + 0.002 * sa, py * 0.01 + 0.0022 * ca - t * 0.01);
-    glVertex3f(px, py, FSeaLevel + FWaveAmplitude * sa * VSF);
+    gl.Color4f(r * colorRatio, g * colorRatio, b, alpha);
+    gl.TexCoord2f(px * 0.01 + 0.002 * sa, py * 0.01 + 0.0022 * ca - t * 0.01);
+    gl.Vertex3f(px, py, FSeaLevel + FWaveAmplitude * sa * VSF);
   end;
 
 begin
@@ -2696,16 +2696,16 @@ begin
   FTerrainRenderer.MaterialLibrary.ApplyMaterial(FSeaMaterialName, rci);
   repeat
     // if not WasAboveWater then InverTGLFrontFace;
-    glPushAttrib(GL_ENABLE_BIT);
+    gl.PushAttrib(GL_ENABLE_BIT);
 
-    glDisable(GL_LIGHTING);
-    glDisable(GL_NORMALIZE);
+    gl.Disable(GL_LIGHTING);
+    gl.Disable(GL_NORMALIZE);
 
-    glStencilFunc(GL_ALWAYS, 1, 255);
-    glStencilMask(255);
-    glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
-    glEnable(GL_STENCIL_TEST);
-    glNormal3f(0, 0, 1);
+    gl.StencilFunc(GL_ALWAYS, 1, 255);
+    gl.StencilMask(255);
+    gl.StencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+    gl.Enable(GL_STENCIL_TEST);
+    gl.Normal3f(0, 0, 1);
 
     for i := 0 to HeightDatas.Count - 1 do
     begin
@@ -2729,8 +2729,8 @@ begin
       IssuePoint(0, 0);
       gl.End_;
     end;
-    glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
-    glPopAttrib;
+    gl.StencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+    gl.PopAttrib;
     // if not WasAboveWater then InverTGLFrontFace;
     // WaterPolyCount:=heightDatas.Count*8;
   until not FTerrainRenderer.MaterialLibrary.UnApplyMaterial(rci);
@@ -2763,9 +2763,9 @@ const
       alpha := ClampValue(alpha, 0.5, 1);
     end;
     colorRatio := 1 - alpha * 0.1;
-    glColor4f(r * colorRatio, g * colorRatio, b, alpha);
-    glTexCoord2f(px * 0.01, py * 0.01 + t);
-    glVertex3f(px, py, FSeaLevel);
+    gl.Color4f(r * colorRatio, g * colorRatio, b, alpha);
+    gl.TexCoord2f(px * 0.01, py * 0.01 + t);
+    gl.Vertex3f(px, py, FSeaLevel);
   end;
 
 begin
@@ -2774,16 +2774,16 @@ begin
   FTerrainRenderer.MaterialLibrary.ApplyMaterial(FSeaMaterialName, rci);
   repeat
     // if not WasAboveWater then InverTGLFrontFace;
-    glPushAttrib(GL_ENABLE_BIT);
+    gl.PushAttrib(GL_ENABLE_BIT);
 
-    glDisable(GL_LIGHTING);
-    glDisable(GL_NORMALIZE);
+    gl.Disable(GL_LIGHTING);
+    gl.Disable(GL_NORMALIZE);
 
-    glStencilFunc(GL_ALWAYS, 1, 255);
-    glStencilMask(255);
-    glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
-    glEnable(GL_STENCIL_TEST);
-    glNormal3f(0, 0, 1);
+    gl.StencilFunc(GL_ALWAYS, 1, 255);
+    gl.StencilMask(255);
+    gl.StencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+    gl.Enable(GL_STENCIL_TEST);
+    gl.Normal3f(0, 0, 1);
 
     for i := 0 to HeightDatas.Count - 1 do
     begin
@@ -2807,8 +2807,8 @@ begin
       IssuePoint(0, 0);
       gl.End_;
     end;
-    glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
-    glPopAttrib;
+    gl.StencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+    gl.PopAttrib;
     // if not WasAboveWater then InverTGLFrontFace;
     // WaterPolyCount:=heightDatas.Count*8;
   until not FTerrainRenderer.MaterialLibrary.UnApplyMaterial(rci);
