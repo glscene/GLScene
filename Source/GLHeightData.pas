@@ -23,14 +23,14 @@ interface
 {$I GLScene.inc}
 
 uses
-  Winapi.Windows, // for CreateMonochromeBitmap
+  Winapi.Windows, // to CreateMonochromeBitmap
   System.Classes,
   System.SysUtils,
   System.Types,
   Vcl.Graphics,
 
   GLApplicationFileIO,
-  GLUtils,
+  GLS.Utils,
   GLVectorGeometry,
   GLCrossPlatform,
   GLMaterial,

@@ -29,6 +29,7 @@ object Form1: TForm1
     Buffer.DepthPrecision = dp24bits
     Buffer.ColorDepth = cd24bits
     FieldOfView = 144.242599487304700000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end

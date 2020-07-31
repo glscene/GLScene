@@ -17,7 +17,7 @@ uses
   Vcl.ExtCtrls,
 
 
-  GLUtils,
+  GLS.Utils,
   GLFilePGM,
   GLGraphics,
   GLS.CUDAUtility,

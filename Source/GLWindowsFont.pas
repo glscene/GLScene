@@ -11,6 +11,7 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
   Winapi.Windows,
   System.Classes,
   System.Math,
@@ -24,7 +25,7 @@ uses
   GLBitmapFont,
   GLRenderContextInfo,
   GLVectorLists,
-  GLUtils,
+  GLS.Utils,
   GLVectorGeometry,
   OpenGLTokens,
   GLApplicationFileIO,

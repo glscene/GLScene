@@ -14,7 +14,7 @@ uses
   GLScene, GLObjects, GLVectorFileObjects, GLMaterial, GLCadencer,
   GLSArchiveManager, GLBaseClasses, GLVectorGeometry, GLFileMS3D,
   GLFileTGA, GLFileZLIB, GLCoordinates, GLCrossPlatform, GLSceneViewer,
-  GLVectorTypes, GLUtils;
+  GLVectorTypes, GLS.Utils;
 
 type
 

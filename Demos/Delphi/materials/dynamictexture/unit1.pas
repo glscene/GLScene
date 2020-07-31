@@ -13,7 +13,7 @@ uses
   
   GLScene, GLSceneViewer, GLObjects, GLTexture, GLCadencer,
   GLCrossPlatform, GLMaterial, GLCoordinates, GLBaseClasses,
-  GLRenderContextInfo, GLContext, GLDynamicTexture, GLUtils;
+  GLRenderContextInfo, GLContext, GLDynamicTexture, GLS.Utils;
 
 type
   TForm1 = class(TForm)

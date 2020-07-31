@@ -15,6 +15,8 @@ interface
   {$Z4}  // Minimum enum size = dword
 
 uses
+   Winapi.OpenGL,
+   Winapi.OpenGLext,
    System.SysUtils,
    
    OpenGLTokens,

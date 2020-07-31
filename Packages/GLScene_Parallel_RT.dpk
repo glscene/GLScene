@@ -50,9 +50,9 @@ contains
   GLS.CUDA in '..\Source\GLS.CUDA.pas',
   GLS.CUDAApi in '..\Source\GLS.CUDAApi.pas',
   GLFilePGM in '..\Source\GLFilePGM.pas',
-  GLS.OpenCL in '..\Source\GLS.OpenCL.pas',
-  GLS.OpenCL_GL in '..\Source\GLS.OpenCL_GL.pas',
-  GLS.OpenCL_Platform in '..\Source\GLS.OpenCL_Platform.pas';
+  Import.OpenCL in '..\Source\Import.OpenCL.pas',
+  Import.OpenCL_GL in '..\Source\Import.OpenCL_GL.pas',
+  Import.OpenCL_Platform in '..\Source\Import.OpenCL_Platform.pas';
 
 end.
 

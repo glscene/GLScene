@@ -36,10 +36,10 @@ requires
   GLScene_RT;
 
 contains
-  cgGL in '..\Source\cgGL.pas',
-  cg in '..\Source\cg.pas',
+  Import.cgGL in '..\Source\Import.cgGL.pas',
+  Import.cg in '..\Source\Import.cg.pas',
   GLS.cgShader in '..\Source\GLS.cgShader.pas',
-  GLS.cgBombShader in '..\Source\GLS.cgBombShader.pas',
-  GLS.cgPostTransformationShader in '..\Source\GLS.cgPostTransformationShader.pas';
+  GLS.cgShaderBomb in '..\Source\GLS.cgShaderBomb.pas',
+  GLS.cgShaderPostTransformation in '..\Source\GLS.cgShaderPostTransformation.pas';
 
 end.

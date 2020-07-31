@@ -17,7 +17,7 @@ uses
   GLVectorGeometry,
   GLVectorTypes,
   GLVectorLists,
-  GLUtils;
+  GLS.Utils;
 
 type
   TVRMLNode = class
@@ -414,7 +414,7 @@ end;
 
 function TVRMLParser.ReadSingle: Single;
 begin
-  Result := GLUtils.StrToFloatDef(ReadToken, 0);
+  Result := GLS.Utils.StrToFloatDef(ReadToken, 0);
 end;
 
 function TVRMLParser.ReadVector3f: TVector3f;
@@ -451,7 +451,7 @@ begin
       exit
     else if token <> ']' then
       TVRMLSingleArray(FCurrentNode)
-        .Values.Add(GLUtils.StrToFloatDef(token, 0));
+        .Values.Add(GLS.Utils.StrToFloatDef(token, 0));
   until token = ']';
 
   FCurrentNode := FCurrentNode.Parent;

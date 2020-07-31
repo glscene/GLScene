@@ -20,6 +20,8 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.Types,
   System.Classes,
   System.SysUtils,
@@ -1474,7 +1476,7 @@ begin
     gl.PointParameterf(GL_POINT_SIZE_MIN_ARB, FMinSize);
     gl.PointParameterf(GL_POINT_SIZE_MAX_ARB, FMaxSize);
     gl.PointParameterf(GL_POINT_FADE_THRESHOLD_SIZE_ARB, FFadeTresholdSize);
-    gl.PointParameterfv(GL_DISTANCE_ATTENUATION_ARB,
+    gl.PointParameterfv(GL_DISTANCE_ATTENUATION_EXT,
       FDistanceAttenuation.AsAddress);
   end;
 end;
@@ -1486,7 +1488,7 @@ begin
     gl.PointParameterf(GL_POINT_SIZE_MIN_ARB, 0);
     gl.PointParameterf(GL_POINT_SIZE_MAX_ARB, 128);
     gl.PointParameterf(GL_POINT_FADE_THRESHOLD_SIZE_ARB, 1);
-    gl.PointParameterfv(GL_DISTANCE_ATTENUATION_ARB, @XVector);
+    gl.PointParameterfv(GL_DISTANCE_ATTENUATION_EXT, @XVector);
   end;
 end;
 

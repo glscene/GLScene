@@ -19,7 +19,7 @@ uses
   GLCrossPlatform,
   GLTexture,
   GLContext,
-  GLUtils,
+  GLS.Utils,
   GLCoordinates,
   GLBaseClasses,
   GLGeomObjects;

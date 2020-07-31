@@ -25,7 +25,7 @@ uses
   GLCoordinates,
   GLCrossPlatform,
   GLBaseClasses,
-  GLUtils;
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)

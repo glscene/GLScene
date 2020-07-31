@@ -28,7 +28,7 @@
 #include "GLCrossPlatform.hpp"
 #include "GLMaterial.hpp"
 #include "GLFileTGA.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 
 
 //---------------------------------------------------------------------------

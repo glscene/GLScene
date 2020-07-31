@@ -11,6 +11,8 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.Classes,
   System.SysUtils,
   Vcl.Graphics,
@@ -31,7 +33,7 @@ uses
   GLPipelineTransformation,
   GLTextureFormat,
   GLApplicationFileIO,
-  GLUtils,
+  GLS.Utils,
   GLS.Strings;
 
 const

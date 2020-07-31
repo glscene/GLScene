@@ -22,7 +22,7 @@
 #include "GLKeyBoard.hpp"
 #include "JPeg.hpp"
 #include "GLFileJPEG.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 #include <System.Classes.hpp>
 
 //---------------------------------------------------------------------------

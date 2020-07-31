@@ -17,18 +17,19 @@ uses
   GLObjects,
   GLCadencer,
   GLVectorGeometry,
-  GLSound,
-  GLSMFMOD,
-  GLSMBASS,
   GLSceneViewer,
   GLGeomObjects,
-  GLSMOpenAL,
+  GLSound,
+  GLSM.FMOD,
+  GLSM.BASS,
+  GLSM.OpenAL,
+  GLSM.WaveOut,
   GLCrossPlatform,
   GLCoordinates,
   GLBaseClasses,
   GLFileWAV,
   GLFileMP3,
-  GLUtils;
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)

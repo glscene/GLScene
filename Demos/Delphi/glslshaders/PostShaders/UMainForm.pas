@@ -20,7 +20,7 @@ uses
   GLScene,
   GLPostEffects,
   GLGraph,
-  GLUtils,
+  GLS.Utils,
   GLContext,
   GLVectorGeometry,
   GLGeomObjects,
@@ -31,7 +31,7 @@ uses
   GLCrossPlatform,
   GLMaterial,
   GLBaseClasses,
-  GLSLPostShaders,
+  GLSL.ShaderPosts,
 
   GLS.cgPostTransformationShader,
   GLFileMD2,

@@ -16,7 +16,7 @@ uses
   
   GLScene,
   GLVectorTypes,
-  GLNGDManager,
+  GLS.NGDManager,
   GLObjects,
   GLPersistentClasses,
   GLCoordinates,
@@ -29,7 +29,7 @@ uses
   GLHUDObjects,
   GLBitmapFont,
   GLWindowsFont,
-  NGDImport,
+  Import.NGD,
   GLGeomObjects;
 
 type

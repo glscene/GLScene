@@ -31,7 +31,7 @@ uses
   GLCrossPlatform,
   GLCoordinates,
   GLBaseClasses,
-  GLUtils,
+  GLS.Utils,
   GLVectorGeometry,
   GLKeyboard,
   GLPersistentClasses;

@@ -252,6 +252,7 @@ object Form1: TForm1
       Camera = GLCamera1
       Buffer.AntiAliasing = aa4x
       FieldOfView = 148.451522827148400000
+      PenAsTouch = False
       Align = alClient
       TabOrder = 0
     end

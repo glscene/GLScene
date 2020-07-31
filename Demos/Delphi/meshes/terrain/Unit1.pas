@@ -31,7 +31,7 @@ uses
   GLSkydome,
   GLSceneViewer,
   GLSound,
-  GLSMBASS,
+  GLSM.BASS,
   GLVectorGeometry,
   GLLensFlare,
   GLMaterial,
@@ -39,7 +39,7 @@ uses
   GLBaseClasses,
   GLState,
   GLFileMP3,
-  GLUtils,
+  GLS.Utils,
   GLCrossPlatform,
   GLHUDObjects;
 

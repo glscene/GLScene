@@ -13,8 +13,8 @@ package GLScene_Physics_RT;
 {$LONGSTRINGS ON}
 {$OPENSTRINGS ON}
 {$OPTIMIZATION OFF}
-{$OVERFLOWCHECKS OFF}
-{$RANGECHECKS OFF}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
 {$REFERENCEINFO ON}
 {$SAFEDIVIDE OFF}
 {$STACKFRAMES ON}
@@ -25,7 +25,7 @@ package GLScene_Physics_RT;
 {$IMAGEBASE $400000}
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'GLScene NGD Manager'}
+{$DESCRIPTION 'GLScene Physics Managers'}
 {$RUNONLY}
 {$IMPLICITBUILD ON}
 
@@ -35,21 +35,21 @@ requires
   GLScene_RT;
 
 contains
-  GLODEManager in '..\Source\GLODEManager.pas',
-  GLODESkeletonColliders in '..\Source\GLODESkeletonColliders.pas',
-  ODEImport in '..\Source\ODEImport.pas',
-  ODEUtils in '..\Source\ODEUtils.pas',
-  GLODERagdoll in '..\Source\GLODERagdoll.pas',
-  GLSModuleLoader in '..\Source\GLSModuleLoader.pas',
-  GLNGDManager in '..\Source\GLNGDManager.pas',
-  NGDImport in '..\Source\NGDImport.pas',
-  GLPhysX in '..\Source\GLPhysX.pas',
-  NGDImport_Joints in '..\Source\NGDImport_Joints.pas',
-  GLForceFields in '..\Source\GLForceFields.pas',
-  GLForces in '..\Source\GLForces.pas',
-  GLInertias in '..\Source\GLInertias.pas',
-  GLJoints in '..\Source\GLJoints.pas',
-  GLPhysics in '..\Source\GLPhysics.pas';
+  Import.NGD in '..\Source\Import.NGD.pas',
+  Import.ODE in '..\Source\Import.ODE.pas',
+  Import.NGD_Joints in '..\Source\Import.NGD_Joints.pas',
+  Import.PhysX in '..\Source\Import.PhysX.pas',
+  GLS.ModuleLoader in '..\Source\GLS.ModuleLoader.pas',
+  GLS.ODEManager in '..\Source\GLS.ODEManager.pas',
+  GLS.ODERagdoll in '..\Source\GLS.ODERagdoll.pas',
+  GLS.ODESkeletonColliders in '..\Source\GLS.ODESkeletonColliders.pas',
+  GLS.ODEUtils in '..\Source\GLS.ODEUtils.pas',
+  GLS.NGDManager in '..\Source\GLS.NGDManager.pas',
+  GLS.PhysicsFields in '..\Source\GLS.PhysicsFields.pas',
+  GLS.PhysicsForces in '..\Source\GLS.PhysicsForces.pas',
+  GLS.PhysicsInertias in '..\Source\GLS.PhysicsInertias.pas',
+  GLS.PhysicsJoints in '..\Source\GLS.PhysicsJoints.pas',
+  GLS.PhysicsManager in '..\Source\GLS.PhysicsManager.pas';
 
 end.
 

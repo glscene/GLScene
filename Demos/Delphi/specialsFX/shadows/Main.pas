@@ -20,7 +20,7 @@ uses
   GLGraphics, GLVectorTypes, GLVectorGeometry, GLHUDObjects,
   GLzBuffer, GLCadencer, GLAsyncTimer, GLSceneViewer, GLTeapot,
   GLGeomObjects, GLCrossPlatform, GLMaterial, GLCoordinates, GLBaseClasses,
-  GLBehaviours, GLUtils;
+  GLBehaviours, GLS.Utils;
 
 type
   TMainFm = class(TForm)

@@ -25,6 +25,8 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
+
   OpenGLTokens,
   GLVectorGeometry,
   GLScene,
@@ -84,7 +86,9 @@ type
 implementation
 //-------------------------------------------------------------------------
 
-{ TGLBExplosionFx }
+//----------------------------------
+// TGLBExplosionFx
+//----------------------------------
 
 constructor TGLBExplosionFx.Create(aOwner: TXCollection);
 begin

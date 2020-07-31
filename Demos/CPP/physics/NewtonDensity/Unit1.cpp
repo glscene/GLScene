@@ -19,7 +19,7 @@
 #pragma link "GLScene"
 #pragma link "GLSimpleNavigation"
 #pragma link "GLSceneViewer"
-#pragma link "NGDImport"
+#pragma link "Import.NGD"
 
 #pragma link "GLBitmapFont"
 #pragma resource "*.dfm"

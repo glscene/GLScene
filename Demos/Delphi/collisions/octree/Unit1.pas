@@ -21,7 +21,7 @@ uses
   GLGeomObjects,
   GLCrossPlatform,
   GLCoordinates,
-  GLUtils,
+  GLS.Utils,
   GLBaseClasses,
   GLVectorGeometry,
   GLVectorLists,

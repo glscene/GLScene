@@ -18,7 +18,7 @@ uses
   
   GLFireFX, GLCadencer, GLScene, GLObjects, GLBehaviours, GLVectorGeometry,
   GLThorFX, GLSkydome, GLGraph, GLVectorTypes, GLSceneViewer, GLCrossPlatform,
-  GLCoordinates, GLBaseClasses, GLSimpleNavigation, GLUtils;
+  GLCoordinates, GLBaseClasses, GLSimpleNavigation, GLS.Utils;
 
 type
   TForm1 = class(TForm)

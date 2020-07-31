@@ -9,7 +9,8 @@ unit GLMeshLines;
 interface
 
 uses
-  System.Classes, 
+  Winapi.OpenGL,
+  System.Classes,
   System.SysUtils,
   OpenGLTokens, 
    
@@ -46,7 +47,6 @@ type
    {Specialized collection for Nodes in TGLMeshLines objects. Stores TLineNode items. }
    TLineNodes = class(TGLNodes)
    public
-     
      constructor Create(AOwner : TComponent); overload;
      destructor Destroy; override;
      procedure NotifyChange; override;

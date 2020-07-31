@@ -26,7 +26,7 @@ uses
   GLCrossPlatform,
   GLCoordinates,
   GLBaseClasses,
-  GLUtils,
+  GLS.Utils,
   GLSimpleNavigation;
 
 type

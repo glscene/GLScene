@@ -27,7 +27,7 @@ uses
   GLConsole,
   GLCoordinates,
   GLSimpleNavigation,
-  GLUtils;
+  GLS.Utils;
 
 type
   TMainForm = class(TForm)

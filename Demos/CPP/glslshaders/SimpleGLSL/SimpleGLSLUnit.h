@@ -13,7 +13,7 @@
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
 #include "GLTexture.hpp"
-#include "GLUserShader.hpp"
+#include "GLS.ShaderUser.hpp"
 #include "GLVectorFileObjects.hpp"
 #include "GLSceneViewer.hpp"
 #include "GLWindowsFont.hpp"
@@ -21,11 +21,7 @@
 #include "GLCoordinates.hpp"
 #include "GLCrossPlatform.hpp"
 #include "GLMaterial.hpp"
-//#include "OpenGLTokens.hpp"
 #include "GLContext.hpp"
-//#include "OpenGLx.hpp"
-#include <gl\gl.h>
-#include <gl\glu.h>
 
 //---------------------------------------------------------------------------
 

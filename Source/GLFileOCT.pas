@@ -23,7 +23,7 @@ uses
   GLGraphics,
   GLCrossPlatform,
   GLState,
-  GLUtils,
+  GLS.Utils,
   GLTextureFormat,
   GLVectorFileObjects,
   GLVectorGeometry,

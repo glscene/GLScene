@@ -32,7 +32,7 @@ uses
   GLCoordinates,
   GLBaseClasses,
   GLRenderContextInfo,
-  GLUtils,
+  GLS.Utils,
   GLFileMD2,
   GLFileTGA,
   GLFileObj,

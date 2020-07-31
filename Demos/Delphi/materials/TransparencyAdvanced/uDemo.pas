@@ -18,15 +18,15 @@ uses
   GLFileJPEG,
   GLSimpleNavigation,
   GLMaterial,
-  GLCadencer, GLCrossPlatform, GLBaseClasses, GLSceneViewer, GLCustomShader,
-  GLSLShader, GLTexture, GLFBORenderer, GLRenderContextInfo, GLGeomObjects,
+  GLCadencer, GLCrossPlatform, GLBaseClasses, GLSceneViewer, GLS.ShaderCustom,
+  GLSL.Shader, GLTexture, GLFBORenderer, GLRenderContextInfo, GLGeomObjects,
   GLMesh, GLHUDObjects, GLBitmapFont, GLWindowsFont, GLVectorGeometry,
   GLVectorTypes, GLContext, GLState,
   GLColor,
   GLKeyBoard,
   GLCompositeImage,
 
-  GLUtils;
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)

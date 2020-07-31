@@ -19,24 +19,26 @@ uses
   GLObjects, 
   GLGraph,
   GLVectorTypes, 
-  GLUserShader, 
-  GLContext, 
-  GLVectorGeometry, 
+  GLContext,
+  GLVectorGeometry,
   GLGeomObjects,
   GLVectorFileObjects,
-  GLSLDiffuseSpecularShader,
-  GLSLShader,
-  GLCustomShader,
+
+  GLSL.Shader,
+  GLSL.ShaderDiffuseSpecular,
+  GLS.ShaderCustom,
+  GLS.ShaderUser,
+
   GLSimpleNavigation,
   GLCrossPlatform,
   GLMaterial,
   GLCoordinates,
   GLBaseClasses,
-  GLUtils,
+  GLS.Utils,
 
   GLFileMD2,
   GLFileMS3D,
-  GLFile3DS, 
+  GLFile3DS,
   FileDDSImage;
 
 type

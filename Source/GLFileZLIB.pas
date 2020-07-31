@@ -15,7 +15,7 @@ uses
   System.SysUtils, 
   System.ZLib,
   
-  GLSArchiveManager;
+  GLS.ArchiveManager;
 
 const
    SIGN = 'ZLIB'; //Signature for compressed zlib.

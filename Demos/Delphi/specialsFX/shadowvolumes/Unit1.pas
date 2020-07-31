@@ -32,7 +32,7 @@ uses
   GLCrossPlatform,
   GLSimpleNavigation,
   GLBaseClasses,
-  GLUtils;
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)

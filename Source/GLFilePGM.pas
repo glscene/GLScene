@@ -11,6 +11,7 @@ unit GLFilePGM;
 interface
 
 uses
+  Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
   
@@ -33,7 +34,6 @@ type
     procedure SaveToFile(const filename: string); override;
     procedure LoadFromStream(stream: TStream); override;
     procedure SaveToStream(stream: TStream); override;
-
     procedure AssignFromTexture(textureContext: TGLContext;
       const textureHandle: Cardinal; textureTarget: TGLTextureTarget;
       const CurrentFormat: Boolean; const intFormat: TGLInternalFormat);

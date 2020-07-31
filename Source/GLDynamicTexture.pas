@@ -14,6 +14,8 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.Types,
   System.Classes,
   System.SysUtils,
@@ -79,7 +81,9 @@ implementation
 uses
   GLVectorGeometry;
 
-{ TGLDynamicTextureImage }
+//----------------------------------
+// TGLDynamicTextureImage
+//----------------------------------
 
 procedure TGLDynamicTextureImage.BeginUpdate;
 var
@@ -165,12 +169,9 @@ var
   LTarget: TGLTextureTarget;
 begin
   Assert(FUpdating > 0, 'Unbalanced begin/end update');
-
   FUpdating:= FUpdating - 1;
-
   if FUpdating > 0 then
     exit;
-
   if assigned(FPBO) then
   begin
     FPBO.UnmapBuffer;
@@ -306,7 +307,10 @@ begin
   end;
 end;
 
+//----------------------------------
 initialization
+//----------------------------------
+
   RegisterGLTextureImageClass(TGLDynamicTextureImage);
 
 end.

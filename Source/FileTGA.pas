@@ -11,6 +11,8 @@ interface
 {.$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.Classes,
   System.SysUtils,
   OpenGLTokens,
@@ -29,10 +31,9 @@ type
     procedure SaveToStream(stream: TStream); override;
     class function Capabilities: TGLDataFileCapabilities; override;
     procedure AssignFromTexture(textureContext: TGLContext;
-      const textureHandle: Cardinal;
-      textureTarget: TGLTextureTarget;
-      const CurrentFormat: boolean;
-      const intFormat: TGLInternalFormat); reintroduce;
+      const textureHandle: Cardinal; textureTarget: TGLTextureTarget;
+      const CurrentFormat: boolean; const intFormat: TGLInternalFormat);
+      reintroduce;
   end;
 
 //===============================================================
@@ -283,4 +284,3 @@ initialization
   RegisterRasterFormat('tga', 'TARGA Image File', TGLTGAImage);
 
 end.
-

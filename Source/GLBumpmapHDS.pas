@@ -26,7 +26,7 @@ uses
   GLVectorGeometry,
   GLTexture,
   GLMaterial,
-  GLUtils,
+  GLS.Utils,
   GLVectorTypes;
 
 type

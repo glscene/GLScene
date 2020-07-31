@@ -27,8 +27,7 @@ uses
   GLVectorTypes,
   GLVectorGeometry,
   GLVectorLists,
-  GLVectorFileObjects,
-  GLUtils;
+  GLVectorFileObjects;
 
 type
   TSTLHeader = packed record
@@ -96,9 +95,9 @@ var
       raise Exception.Create('Invalid Normal')
     else
     begin
-      aNormal.X := GLUtils.StrToFloatDef(Sl[2], 0);
-      aNormal.Y := GLUtils.StrToFloatDef(Sl[3], 0);
-      aNormal.Z := GLUtils.StrToFloatDef(Sl[4], 0);
+      aNormal.X := StrToFloatDef(Sl[2], 0);
+      aNormal.Y := StrToFloatDef(Sl[3], 0);
+      aNormal.Z := StrToFloatDef(Sl[4], 0);
     end;
   end;
 

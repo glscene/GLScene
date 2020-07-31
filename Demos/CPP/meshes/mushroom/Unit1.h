@@ -21,7 +21,7 @@
 #include "GLVectorFileObjects.hpp"
 #include "GLSceneViewer.hpp"
 #include "GLTexture.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 #include "JPeg.hpp"
 
 //---------------------------------------------------------------------------

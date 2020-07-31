@@ -27,7 +27,7 @@
 #include "GLCrossPlatform.hpp"
 #include "GLBaseClasses.hpp"
 #include "GLFileSMD.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 #include "GLBaseClasses.hpp"
 
 //---------------------------------------------------------------------------

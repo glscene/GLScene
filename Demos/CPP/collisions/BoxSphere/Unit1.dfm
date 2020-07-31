@@ -25,6 +25,7 @@ object Form1: TForm1
     Camera = GLCamera1
     Buffer.BackgroundColor = clTeal
     FieldOfView = 149.907211303710900000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = ViewerMouseDown
     OnMouseMove = ViewerMouseMove
@@ -339,7 +340,6 @@ object Form1: TForm1
     end
     object GLCube1: TGLCube
       Material.FrontProperties.Diffuse.Color = {0000803F00000000000000000000803F}
-      Direction.Coordinates = {00000000000000800000803F00000000}
     end
     object DCCube1: TGLDummyCube
       CubeSize = 1.000000000000000000

@@ -29,7 +29,7 @@ uses
   GLVectorLists,
   GLFile3DS,
   GLCoordinates,
-  GLUtils,
+  GLS.Utils,
   GLBaseClasses;
 
 type

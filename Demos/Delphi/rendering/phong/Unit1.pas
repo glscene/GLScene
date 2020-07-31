@@ -12,9 +12,18 @@ uses
   Vcl.Dialogs,
   Vcl.StdCtrls,
   
-  GLScene, GLObjects, GLTeapot, GLTexture, GLPhongShader,
-  GLSceneViewer, GLAsyncTimer, GLCadencer, GLCustomShader,
-  GLAsmShader, GLCrossPlatform, GLMaterial, GLCoordinates, GLBaseClasses;
+  GLScene, GLObjects,
+  GLTeapot,
+  GLTexture,
+  GLS.ShaderPhong,
+  GLSceneViewer,
+  GLAsyncTimer, GLCadencer,
+  GLS.ShaderCustom,
+  GLCrossPlatform,
+  GLMaterial, GLCoordinates,
+  GLBaseClasses,
+  GLS.ShaderAsm,
+  GLS.ShaderPhong;
 
 type
   TForm1 = class(TForm)

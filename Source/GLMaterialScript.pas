@@ -19,7 +19,7 @@ uses
   GLTexture,
   GLTextureFormat,
   GLGraphics,
-  GLUtils,
+  GLS.Utils,
   GLColor,
   GLCoordinates,
   GLMaterial,
@@ -397,13 +397,13 @@ begin
    val := Extractvalue;
    if pos('(',val) > 0 then
    begin
-      tmpcolor.Alpha := GLUtils.StrToFloatDef(copy(val, pos('(',val) + 1, pos(';',val) - 2));
+      tmpcolor.Alpha := GLS.Utils.StrToFloatDef(copy(val, pos('(',val) + 1, pos(';',val) - 2));
       delete(val,1,pos(';',val));
-      tmpcolor.Red := GLUtils.StrToFloatDef(copy(val, 1, pos(';',val) - 1));
+      tmpcolor.Red := GLS.Utils.StrToFloatDef(copy(val, 1, pos(';',val) - 1));
       delete(val,1,pos(';',val));
-      tmpcolor.Green := GLUtils.StrToFloatDef(copy(val, 1, pos(';',val) - 1));
+      tmpcolor.Green := GLS.Utils.StrToFloatDef(copy(val, 1, pos(';',val) - 1));
       delete(val,1,pos(';',val));
-      tmpcolor.Blue := GLUtils.StrToFloatDef(copy(val, 1, pos(')',val) - 1));
+      tmpcolor.Blue := GLS.Utils.StrToFloatDef(copy(val, 1, pos(')',val) - 1));
    end;
 end;
 
@@ -413,11 +413,11 @@ begin
    val := Extractvalue;
    if pos('(',val) > 0 then
    begin
-      tmpcoords.X := GLUtils.StrToFloatDef(copy(val, pos('(',val) + 1, pos(';',val) - 2));
+      tmpcoords.X := GLS.Utils.StrToFloatDef(copy(val, pos('(',val) + 1, pos(';',val) - 2));
       delete(val,1,pos(';',val));
-      tmpcoords.Y := GLUtils.StrToFloatDef(copy(val, 1, pos(';',val) - 1));
+      tmpcoords.Y := GLS.Utils.StrToFloatDef(copy(val, 1, pos(';',val) - 1));
       delete(val,1,pos(';',val));
-      tmpcoords.Z := GLUtils.StrToFloatDef(copy(val, 1, pos(')',val) - 1));
+      tmpcoords.Z := GLS.Utils.StrToFloatDef(copy(val, 1, pos(')',val) - 1));
    end;
 end;
 
@@ -427,13 +427,13 @@ begin
    val := Extractvalue;
    if pos('(',val) > 0 then
    begin
-      tmpcoords4.W := GLUtils.StrToFloatDef(copy(val, pos('(',val) + 1, pos(';',val) - 2));
+      tmpcoords4.W := GLS.Utils.StrToFloatDef(copy(val, pos('(',val) + 1, pos(';',val) - 2));
       delete(val,1,pos(';',val));
-      tmpcoords4.X := GLUtils.StrToFloatDef(copy(val, 1, pos(';',val) - 1));
+      tmpcoords4.X := GLS.Utils.StrToFloatDef(copy(val, 1, pos(';',val) - 1));
       delete(val,1,pos(';',val));
-      tmpcoords4.Y := GLUtils.StrToFloatDef(copy(val, 1, pos(';',val) - 1));
+      tmpcoords4.Y := GLS.Utils.StrToFloatDef(copy(val, 1, pos(';',val) - 1));
       delete(val,1,pos(';',val));
-      tmpcoords4.Z := GLUtils.StrToFloatDef(copy(val, 1, pos(')',val) - 1));
+      tmpcoords4.Z := GLS.Utils.StrToFloatDef(copy(val, 1, pos(')',val) - 1));
    end;
 end;
 
@@ -806,7 +806,7 @@ procedure TGLMaterialScripter.XImageBrightness;
 begin
    if classexists('imagebrightness') then
    if extractvalue <> '' then
-      NewMat.Material.Texture.ImageBrightness := GLUtils.StrToFloatDef(extractvalue);
+      NewMat.Material.Texture.ImageBrightness := GLS.Utils.StrToFloatDef(extractvalue);
 end;
 
 
@@ -814,7 +814,7 @@ procedure TGLMaterialScripter.XImageGamma;
 begin
    if classexists('imagegamma') then
    if extractvalue <> '' then
-      NewMat.Material.Texture.ImageGamma := GLUtils.StrToFloatDef(extractvalue);
+      NewMat.Material.Texture.ImageGamma := GLS.Utils.StrToFloatDef(extractvalue);
 end;
 
 procedure TGLMaterialScripter.XLibMaterialName;
@@ -916,7 +916,7 @@ procedure TGLMaterialScripter.XNormalMapScale;
 begin
    if classexists('normalmapscale') then
    if extractvalue <> '' then
-      NewMat.Material.Texture.NormalMapScale := GLUtils.StrToFloatDef(extractvalue);
+      NewMat.Material.Texture.NormalMapScale := GLS.Utils.StrToFloatDef(extractvalue);
 end;
 
 

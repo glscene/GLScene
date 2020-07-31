@@ -29,7 +29,7 @@ uses
   GLTexture,
   GLGraphics,
   GLState,
-  GLUtils,
+  GLS.Utils,
   GLMaterial,
   GLTextureFormat;
 

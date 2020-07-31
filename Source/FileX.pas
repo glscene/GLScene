@@ -18,7 +18,7 @@ uses
   GLVectorGeometry, 
   GLVectorLists, 
   GLPersistentClasses, 
-  GLUtils;
+  GLS.Utils;
 
 type
   TDXNode = class;

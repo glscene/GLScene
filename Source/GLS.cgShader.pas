@@ -9,6 +9,7 @@ unit GLS.cgShader;
 interface
 
 uses
+  Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
 
@@ -25,15 +26,15 @@ uses
   GLMaterial,
   GLTextureFormat,
 
-  cg,
-  cgGL;
+  Import.cg,
+  Import.cgGL;
 
 {$I GLScene.inc}
+
 { .$DEFINE OutputCompilerWarnings }
 
-{ Define OutputCompilerWarnings to output Cg compiler warnings to a file. Useful
-  for detecting bugs caused by using uninitialized value, implicit type cast, etc. }
-
+(* Define OutputCompilerWarnings to output Cg compiler warnings to a file. Useful
+  for detecting bugs caused by using uninitialized value, implicit type cast, etc. *)
 type
   ECgShaderException = class(EGLShaderException);
 
@@ -49,13 +50,12 @@ type
 
   // Available vertex program profile
   TCgVPProfile = (vpDetectLatest, vp20, vp30, vp40, arbvp1);
-
   // Available fragment program profile
   TCgFPProfile = (fpDetectLatest, fp20, fp30, fp40, arbfp1);
 
   TPrecisionSetting = (psFull, psFast);
 
-  { Wrapper around a Cg program. }
+  // Wrapper around a Cg program.
   TCgProgram = class(TGLUpdateAbleObject)
   private
     FCgContext: PcgContext;
@@ -66,7 +66,6 @@ type
     FOnApply: TCgApplyEvent;
     FOnUnApply: TCgUnApplyEvent;
     FOnProgramChanged: TNotifyEvent;
-
     FEnabled: boolean;
     FDetectProfile: boolean;
     FPrecision: TPrecisionSetting;
@@ -80,10 +79,10 @@ type
     procedure SetProgramName(const val: String);
     function GetParam(index: String): TCgParameter;
     procedure AddParamsItem(const Param: PCGParameter);
-    { Build a list of parameters used in the shader code.
+    (* Build a list of parameters used in the shader code.
       Iteratively queries all parameters so that we can manage and access them
       easily. Currently only collects leaf parameters i.e. data structure is
-      not retrieved. }
+      not retrieved. *)
     procedure BuildParamsList;
     procedure ClearParamsList;
   public
@@ -94,10 +93,10 @@ type
     procedure Finalize;
     procedure Apply(var rci: TGLRenderContextInfo; Sender: TObject);
     procedure UnApply(var rci: TGLRenderContextInfo);
-    { ParamByName returns CgParameter; returns nil if not found. }
+    // ParamByName returns CgParameter; returns nil if not found.
     function ParamByName(const name: String): TCgParameter;
-    { Use Param instead of ParamByName if you want implicit check for the
-      existence of your requested parameter. }
+    (* Use Param instead of ParamByName if you want implicit check for the
+      existence of your requested parameter. *)
     property Param[index: String]: TCgParameter read GetParam;
     property Params: TList read FParams;
     // Returns a handle to a Cg parameter
@@ -119,30 +118,30 @@ type
     procedure SetTexture(ParamName: string; TextureID: Cardinal);
     // retruns ShaderName.[program type].ProgramName
     function LongName: string;
-    { Direct access to the profile.
+    (* Direct access to the profile.
       Set Profile of the sub-classes to any but DetectLatest if you want to
-      specify the profile directly. }
+      specify the profile directly. *)
     property DirectProfile: TcgProfile read FProfile write FProfile;
-    { DaStr: Seams, that this event is never called. Probably should be deleted... }
+    // Seams, that this event is never called. Probably should be deleted...
     property OnProgramChanged: TNotifyEvent read FOnProgramChanged
       write FOnProgramChanged;
-    { If True, that shader is not reset when TCgProgram' parameters change. }
+    // If True, that shader is not reset when TCgProgram' parameters change.
     property ManualNotification: boolean read GetManualNotification
       write SetManualNotification default False;
   published
     property Code: TStrings read FCode write SetCode;
     property ProgramName: String read FProgramName write SetProgramName;
     property Enabled: boolean read FEnabled write FEnabled default True;
-    { Precision controls data precision of GPU operation.
+    (* Precision controls data precision of GPU operation.
       Possible options are 16-bit (psFast) or 32-bit (psFull). 16-bit operation
-      is generally faster. }
+      is generally faster. *)
     property Precision: TPrecisionSetting read FPrecision write SetPrecision
       default psFull;
     property OnApply: TCgApplyEvent read FOnApply write FOnApply;
     property OnUnApply: TCgUnApplyEvent read FOnUnApply write FOnUnApply;
   end;
 
-  { Wrapper around a Cg parameter of the main program. }
+  // Wrapper around a Cg parameter of the main program.
   TCgParameter = class(TObject)
   private
     FOwner: TCgProgram;
@@ -166,20 +165,20 @@ type
   public
     constructor Create; virtual;
     destructor Destroy; override;
-    { Procedures for setting uniform pamareters.
-      Implicitly check for data type. }
+    (* Procedures for setting uniform pamareters.
+      Implicitly check for data type. *)
     procedure SetAsScalar(const val: Single); overload;
     procedure SetAsScalar(const val: boolean); overload;
     procedure SetAsVector(const val: TVector2f); overload;
     procedure SetAsVector(const val: TVector3f); overload;
     procedure SetAsVector(const val: TVector4f); overload;
-    { This overloaded SetAsVector accepts open array as input. e.g.
-      SetAsVector([0.1, 0.2]). Array length must between 1-4. }
+    (* This overloaded SetAsVector accepts open array as input. e.g.
+      SetAsVector([0.1, 0.2]). Array length must between 1-4. *)
     procedure SetAsVector(const val: array of Single); overload;
     procedure SetAsStateMatrix(matrix, Transform: Cardinal);
     procedure SetAsMatrix(const val: TMatrix4f);
 
-    { Procedures for dealing with texture pamareters. }
+    (* Procedures for dealing with texture pamareters. *)
     // SetAsTexture checks for all texture types
     procedure SetAsTexture(TextureID: Cardinal);
     // SetAsTexture* check for specific type
@@ -188,16 +187,16 @@ type
     procedure SetAsTexture3D(TextureID: Cardinal);
     procedure SetAsTextureCUBE(TextureID: Cardinal);
     procedure SetAsTextureRECT(TextureID: Cardinal);
-    { SetToTextureOf determines texture type on-the-fly. }
+    // SetToTextureOf determines texture type on-the-fly.
     procedure SetToTextureOf(LibMaterial: TGLLibMaterial);
     procedure EnableTexture;
     procedure DisableTexture;
-    { Procedures for setting varying parameters with an array of values. }
+    // Procedures for setting varying parameters with an array of values.
     procedure SetParameterPointer(Values: TVectorList); overload;
     procedure SetParameterPointer(Values: TAffineVectorList); overload;
     procedure EnableClientState;
     procedure DisableClientState;
-    { LongName retruns ShaderName.[program type].ProgramName.ParamName. }
+    // LongName retruns ShaderName.[program type].ProgramName.ParamName.
     function LongName: string;
     property Owner: TCgProgram read FOwner;
     property Name: String read FName;
@@ -272,11 +271,11 @@ type
     // IsProfileSupported to be obsoleted by global function IsCgProfileSupported
     function IsProfileSupported(Profile: TcgProfile): boolean;
 
-    { Everything is moved here from the public and protected sections
+    (* Everything is moved here from the public and protected sections
       because I would like to shield end-users of descendant shader
       classes from all this stuff. Those who want direct access
       to shader events and parameters should use the TCgShader class,
-      where everything is published. }
+      where everything is published. *)
     property OnApplyVP: TCgApplyEvent read GetOnApplyVertexProgram
       write SetOnApplyVertexProgram;
     property OnApplyFP: TCgApplyEvent read GetOnApplyFragmentProgram
@@ -301,7 +300,7 @@ type
     function ShaderSupported: boolean; override;
   end;
 
-  { Allows to use a Cadencer, which is used for noise generation in many shaders. }
+  // Allows to use a Cadencer, which is used for noise generation in many shaders.
   TCadencableCustomCgShader = class(TCustomCgShader)
   private
     FCadencer: TGLCadencer;
@@ -331,13 +330,13 @@ type
 
   // global variables/functions
 var
-  { Set IncludeFilePath to indicate where to find your include file for your
+  (* Set IncludeFilePath to indicate where to find your include file for your
     Cg source files. This avoids error from the Cg Compiler when the current
-    directory is not the right path as the shader is being compiled. }
+    directory is not the right path as the shader is being compiled. *)
   IncludeFilePath: string;
 {$IFDEF OutputCompilerWarnings}
-  { Edit the string WarningFilePath for the output filename. Default
-    WarningFilePath is set to application path. }
+  (* Edit the string WarningFilePath for the output filename. Default
+    WarningFilePath is set to application path. *)
   WarningFilePath: string;
 {$ENDIF}
   // Misc. global functions
@@ -410,8 +409,6 @@ begin
   FCode.Assign(val);
 end;
 
- 
-//
 procedure TCgProgram.LoadFromFile(const fileName: String);
 begin
   Code.LoadFromFile(fileName);
@@ -592,7 +589,6 @@ begin
     Exit;
   if not FEnabled then
     Exit;
-
   if Assigned(FOnUnApply) then
     FOnUnApply(Self);
 
@@ -904,9 +900,7 @@ begin
       TexType := CG_SAMPLER2D; // to subpress compilation warning
     end;
   end;
-
   CheckValueType(TexType);
-
   cgGLSetTextureParameter(FHandle, LibMaterial.Material.Texture.Handle);
 end;
 

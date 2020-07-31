@@ -13,7 +13,7 @@ uses
   
   GLScene, GLVectorFileObjects, GLObjects, GLSceneViewer, GLVectorTypes,
   GLVectorGeometry, GLGeomObjects, GLCrossPlatform, GLCoordinates,
-  GLBaseClasses, GLFile3DS, GLUtils;
+  GLBaseClasses, GLFile3DS, GLS.Utils;
 
 type
   TForm1 = class(TForm)

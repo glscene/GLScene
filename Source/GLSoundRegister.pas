@@ -10,10 +10,10 @@ interface
 
 uses
   System.Classes,
-  GLSMBASS,
-  GLSMFMOD,
-  GLSMOpenAL,
-  GLSMWaveOut;
+  GLSM.BASS,
+  GLSM.FMOD,
+  GLSM.OpenAL,
+  GLSM.WaveOut;
 
 procedure Register;
 

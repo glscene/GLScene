@@ -31,6 +31,8 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
+
   OpenGLTokens,
   OpenGLAdapter,
   GLVectorTypes,
@@ -46,16 +48,16 @@ uses
 
 type
 
-  {psrGLScene tells the surface to render using GLScene code to build
+  (* psrGLScene tells the surface to render using GLScene code to build
      the mesh, whereas, psrOpenGL uses glEvalMesh2 or gluNurbsRenderer
-     calls to render the surface. }
+     calls to render the surface. *)
   TParametricSurfaceRenderer = (psrGLScene, psrOpenGL);
 
-  {psbBezier indicates building the surface with Bernstein basis
+  (* psbBezier indicates building the surface with Bernstein basis
      functions, no knot or order properties are used.
      psbBSpline indicates building the surface using BSpline basis
      functions, these require orders and knot vectors to define the
-     control point influences on the surface. }
+     control point influences on the surface. *)
   TParametricSurfaceBasis = (psbBezier, psbBSpline);
 
   TMOParametricSurface = class(TMeshObject)
@@ -88,54 +90,54 @@ type
     procedure BuildList(var mrci: TGLRenderContextInfo); override;
     procedure Prepare; override;
     procedure Clear; override;
-    {Generates a mesh approximation of the surface defined by the
+    (* Generates a mesh approximation of the surface defined by the
        properties below. This is used to construct the mesh when using
        Renderer = psrGLScene. If you want to render using OpenGL calls
        but would like to obtain the mesh data also use this call to
-       generate the mesh data. Fills in Vertices, Normals, etc. }
+       generate the mesh data. Fills in Vertices, Normals, etc. *)
     procedure GenerateMesh;
     // Control points define the parametric surface.
     property ControlPoints: TAffineVectorList read FControlPoints write SetControlPoints;
-    {KnotsU and KnotsV are the knot vectors in the U and V direction. Knots
+    (* KnotsU and KnotsV are the knot vectors in the U and V direction. Knots
        define the continuity of curves and how control points influence the
-       parametric values to build the surface. }
+       parametric values to build the surface. *)
     property KnotsU: TSingleList read FKnotsU write SetKnotsU;
     property KnotsV: TSingleList read FKnotsV write SetKnotsV;
-    {Weights define how much a control point effects the surface. }
+    // Weights define how much a control point effects the surface.
     property Weights: TSingleList read FWeights write SetWeights;
     // OrderU and OrderV defines the curve order in the U and V direction
     property OrderU: Integer read FOrderU write FOrderU;
     property OrderV: Integer read FOrderV write FOrderV;
-    {CountU and CountV describe the number of control points in the
+    (* CountU and CountV describe the number of control points in the
        U and V direciton. Basically a control point width and height
-       in (u,v) space. }
+       in (u,v) space. *)
     property CountU: Integer read FCountU write FCountU;
     property CountV: Integer read FCountV write FCountV;
-    {Defines how fine the resultant mesh will be. Higher values create
+    (* Defines how fine the resultant mesh will be. Higher values create
        finer meshes. Resolution = 50 would produce a 50x50 mesh.
        The GLU Nurbs rendering uses resolution as the U_STEP and V_STEP
        using the sampling method GLU_DOMAIN_DISTANCE, so the resolution
-       works a little differently there. }
+       works a little differently there. *)
     property Resolution: Integer read FResolution write FResolution;
-    {Automatically generate the knot vectors based on the Continuity.
-       Only applies to BSpline surfaces. }
+    (* Automatically generate the knot vectors based on the Continuity.
+       Only applies to BSpline surfaces. *)
     property AutoKnots: Boolean read FAutoKnots write FAutoKnots;
     property Continuity: TBSplineContinuity read FContinuity write FContinuity;
-    {Determines whether to use OpenGL calls (psrOpenGL) or the GLScene
-       mesh objects (psrGLScene) to render the surface. }
+    (* Determines whether to use OpenGL calls (psrOpenGL) or the GLScene
+       mesh objects (psrGLScene) to render the surface. *)
     property Renderer: TParametricSurfaceRenderer read FRenderer write SetRenderer;
     // Basis determines the style of curve, psbBezier or psbBSpline
     property Basis: TParametricSurfaceBasis read FBasis write SetBasis;
   end;
 
-  {A 3d bezier surface implemented through facegroups. The ControlPointIndices
+  (* A 3d bezier surface implemented through facegroups. The ControlPointIndices
      is an index to control points stored in the MeshObject.Vertices affine
      vector list. Similarly the TexCoordIndices point to the owner
      MeshObject.TexCoords, one for each control point.
      CountU and CountV define the width and height of the surface.
      Resolution sets the detail level of the mesh evaluation.
      MinU, MaxU, MinV and MaxV define the region of the surface to be rendered,
-     this is especially useful for blending with neighbouring patches. }
+     this is especially useful for blending with neighbouring patches. *)
   TFGBezierSurface = class(TGLFaceGroup)
   private
     FCountU, FCountV: Integer;
@@ -156,7 +158,6 @@ type
     procedure ReadFromFiler(reader: TVirtualReader); override;
     procedure BuildList(var mrci: TGLRenderContextInfo); override;
     procedure Prepare; override;
-
     property CountU: Integer read FCountU write FCountU;
     property CountV: Integer read FCountV write FCountV;
     property Resolution: Integer read FResolution write FResolution;

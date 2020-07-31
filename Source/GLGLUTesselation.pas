@@ -11,6 +11,7 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
   System.SysUtils,
   
   OpenGLAdapter,

@@ -18,7 +18,7 @@ uses
   GLCadencer,
   GLObjects,
   GLSound,
-  GLSMBASS,
+  GLSM.BASS,
   GLSceneViewer,
   GLGeomObjects,
   GLCrossPlatform,
@@ -26,7 +26,7 @@ uses
   GLBaseClasses,
   GLFileWAV,
   GLFileMP3,
-  GLUtils;
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)

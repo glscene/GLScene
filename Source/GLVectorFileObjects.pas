@@ -11,6 +11,8 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.Classes,
   System.SysUtils,
   System.Types,
@@ -49,8 +51,8 @@ type
   TGLMeshAutoCenterings = set of TGLMeshAutoCentering;
   TGLMeshObjectMode = (momTriangles, momTriangleStrip, momFaceGroups);
 
-  { A base class for mesh objects. The class introduces a set of vertices and
-    normals for the object but does no rendering of its own }
+  (* A base class for mesh objects. The class introduces a set of vertices and
+    normals for the object but does no rendering of its own *)
   TGLBaseMeshObject = class(TPersistentObject)
   private
     FName: string;
@@ -67,11 +69,11 @@ type
     procedure Assign(Source: TPersistent); override;
     procedure WriteToFiler(writer: TVirtualWriter); override;
     procedure ReadFromFiler(reader: TVirtualReader); override;
-    { Clears all mesh object data, submeshes, facegroups, etc. }
+    // Clears all mesh object data, submeshes, facegroups, etc.
     procedure Clear; virtual;
-    { Translates all the vertices by the given delta. }
+    // Translates all the vertices by the given delta.
     procedure Translate(const delta: TAffineVector); virtual;
-    { Builds (smoothed) normals for the vertex list.
+    (* Builds (smoothed) normals for the vertex list.
       If normalIndices is nil, the method assumes a bijection between
       vertices and normals sets, and when performed, Normals and Vertices
       list will have the same number of items (whatever previously was in
@@ -80,18 +82,18 @@ type
       their indices will be added to normalIndices. Already defined
       normals and indices are preserved.
       The only valid modes are currently momTriangles and momTriangleStrip
-      (ie. momFaceGroups not supported). }
+      (ie. momFaceGroups not supported). *)
     procedure BuildNormals(vertexIndices: TIntegerList; mode: TGLMeshObjectMode;
 	  NormalIndices: TIntegerList = nil);
-    { Builds normals faster without index calculations for the stripe mode}
+    // Builds normals faster without index calculations for the stripe mode
     procedure GenericOrderedBuildNormals (mode: TGLMeshObjectMode);
-    { Extracts all mesh triangles as a triangles list.
+    (* Extracts all mesh triangles as a triangles list.
       The resulting list size is a multiple of 3, each group of 3 vertices
       making up and independant triangle.
       The returned list can be used independantly from the mesh object
       (all data is duplicated) and should be freed by caller.
       If texCoords is specified, per vertex texture coordinates will be
-      placed there, when available. }
+      placed there, when available. *)
     function ExtractTriangles(texCoords: TAffineVectorList = nil;
 	  Normals: TAffineVectorList = nil): TAffineVectorList; virtual;
     property Name: string read FName write FName;
@@ -103,10 +105,10 @@ type
   TGLSkeletonFrameList = class;
   TGLSkeletonFrameTransform = (sftRotation, sftQuaternion);
 
-  { Stores position and rotation for skeleton joints.
+  (* Stores position and rotation for skeleton joints.
     If you directly alter some values, make sure to call FlushLocalMatrixList
     so that the local matrices will be recalculated (the call to Flush does
-    not recalculate the matrices, but marks the current ones as dirty) }
+    not recalculate the matrices, but marks the current ones as dirty) *)
   TGLSkeletonFrame = class(TPersistentObject)
   private
     FOwner: TGLSkeletonFrameList;
@@ -128,30 +130,30 @@ type
     procedure ReadFromFiler(reader: TVirtualReader); override;
     property Owner: TGLSkeletonFrameList read FOwner;
     property Name: string read FName write FName;
-    { Position values for the joints. }
+    // Position values for the joints.
     property Position: TAffineVectorList read FPosition write SetPosition;
-    { Rotation values for the joints. }
+    // Rotation values for the joints.
     property Rotation: TAffineVectorList read FRotation write SetRotation;
-    { Quaternions are an alternative to Euler rotations to build the
-      global matrices for the skeleton bones. }
+    (* Quaternions are an alternative to Euler rotations to build the
+      global matrices for the skeleton bones. *)
     property Quaternion: TQuaternionList read FQuaternion write SetQuaternion;
-    { TransformMode indicates whether to use Rotation or Quaternion to build
-      the local transform matrices. }
+    (* TransformMode indicates whether to use Rotation or Quaternion to build
+      the local transform matrices. *)
     property TransformMode: TGLSkeletonFrameTransform read FTransformMode write FTransformMode;
-    { Calculate or retrieves an array of local bone matrices.
+    (* Calculate or retrieves an array of local bone matrices.
       This array is calculated on the first call after creation, and the
       first call following a FlushLocalMatrixList. Subsequent calls return
-      the same arrays. }
+      the same arrays. *)
     function LocalMatrixList: PMatrixArray;
-    { Flushes (frees) then LocalMatrixList data.
-      Call this function to allow a recalculation of local matrices. }
+    (* Flushes (frees) then LocalMatrixList data.
+      Call this function to allow a recalculation of local matrices. *)
     procedure FlushLocalMatrixList;
     // As the name states; Convert Quaternions to Rotations or vice-versa.
     procedure ConvertQuaternionsToRotations(KeepQuaternions: Boolean = True);
     procedure ConvertRotationsToQuaternions(KeepRotations: Boolean = True);
   end;
 
-  { A list of TGLSkeletonFrame objects }
+  // A list of TGLSkeletonFrame objects
   TGLSkeletonFrameList = class(TPersistentObjectList)
   private
     FOwner: TPersistent;
@@ -172,7 +174,7 @@ type
   TGLSkeleton = class;
   TGLSkeletonBone = class;
 
-  { A list of skeleton bones }
+  // A list of skeleton bones
   TGLSkeletonBoneList = class(TPersistentObjectList)
   private
     FSkeleton: TGLSkeleton; // not persistent
@@ -188,18 +190,18 @@ type
     procedure ReadFromFiler(reader: TVirtualReader); override;
     property Skeleton: TGLSkeleton read FSkeleton;
     property Items[Index: Integer]: TGLSkeletonBone read GetSkeletonBone; default;
-    { Returns a bone by its BoneID, nil if not found. }
+    // Returns a bone by its BoneID, nil if not found.
     function BoneByID(anID: Integer): TGLSkeletonBone; virtual;
-    { Returns a bone by its Name, nil if not found. }
+    // Returns a bone by its Name, nil if not found.
     function BoneByName(const aName: string): TGLSkeletonBone; virtual;
-    { Number of bones (including all children and self). }
+    // Number of bones (including all children and self).
     function BoneCount: Integer;
     // Render skeleton wireframe
     procedure BuildList(var mrci: TGLRenderContextInfo); virtual; abstract;
     procedure PrepareGlobalMatrices; virtual;
   end;
 
-  { This list store skeleton root bones exclusively }
+  // This list store skeleton root bones exclusively
   TGLSkeletonRootBoneList = class(TGLSkeletonBoneList)
   public
     procedure WriteToFiler(writer: TVirtualWriter); override;
@@ -209,10 +211,10 @@ type
     property GlobalMatrix: TMatrix read FGlobalMatrix write FGlobalMatrix;
   end;
 
-  { A skeleton bone or node and its children.
+  (* A skeleton bone or node and its children.
     This class is the base item of the bones hierarchy in a skeletal model.
     The joint values are stored in a TGLSkeletonFrame, but the calculated bone
-    matrices are stored here. }
+    matrices are stored here. *)
   TGLSkeletonBone = class(TGLSkeletonBoneList)
   private
     FOwner: TGLSkeletonBoneList; // indirectly persistent
@@ -235,21 +237,21 @@ type
     property BoneID: Integer read FBoneID write FBoneID;
     property Color: Cardinal read FColor write SetColor;
     property Items[Index: Integer]: TGLSkeletonBone read GetSkeletonBone; default;
-    { Returns a bone by its BoneID, nil if not found. }
+    // Returns a bone by its BoneID, nil if not found.
     function BoneByID(anID: Integer): TGLSkeletonBone; override;
     function BoneByName(const aName: string): TGLSkeletonBone; override;
-    { Set the bone's matrix. Becareful using this. }
+    // Set the bone's matrix. Becareful using this.
     procedure SetGlobalMatrix(const Matrix: TMatrix); // Ragdoll
-    { Set the bone's GlobalMatrix. Used for Ragdoll. }
+    // Set the bone's GlobalMatrix. Used for Ragdoll.
     procedure SetGlobalMatrixForRagDoll(const RagDollMatrix: TMatrix); // Ragdoll
-    { Calculates the global matrix for the bone and its sub-bone.
-      Call this function directly only the RootBone. }
+    (* Calculates the global matrix for the bone and its sub-bone.
+      Call this function directly only the RootBone. *)
     procedure PrepareGlobalMatrices; override;
-    { Global Matrix for the bone in the current frame.
+    (* Global Matrix for the bone in the current frame.
       Global matrices must be prepared by invoking PrepareGlobalMatrices
-      on the root bone. }
+      on the root bone. *)
     property GlobalMatrix: TMatrix read FGlobalMatrix;
-    { Free all sub bones and reset BoneID and Name. }
+    // Free all sub bones and reset BoneID and Name.
     procedure Clean; override;
   end;
 
@@ -281,7 +283,7 @@ type
     property Owner: TGLSkeletonColliderList read FOwner;
     // The bone that this collider associates with.
     property Bone: TGLSkeletonBone read FBone write SetBone;
-    // Offset and orientation of the collider in the associated bone's space. 
+    // Offset and orientation of the collider in the associated bone's space.
     property LocalMatrix: TMatrix read FLocalMatrix write SetLocalMatrix;
     (* Global offset and orientation of the collider.
       This gets set in the AlignCollider method. *)
@@ -289,7 +291,7 @@ type
     property AutoUpdate: Boolean read FAutoUpdate write FAutoUpdate;
   end;
 
-  // List class for storing TGLSkeletonCollider objects 
+  // List class for storing TGLSkeletonCollider objects
   TGLSkeletonColliderList = class(TPersistentObjectList)
   private
     FOwner: TPersistent;
@@ -300,7 +302,7 @@ type
     destructor Destroy; override;
     procedure ReadFromFiler(reader: TVirtualReader); override;
     procedure Clear; override;
-    // Calls AlignCollider for each collider in the list. 
+    // Calls AlignCollider for each collider in the list.
     procedure AlignColliders;
     property Owner: TPersistent read FOwner;
     property Items[Index: Integer]: TGLSkeletonCollider read GetSkeletonCollider; default;
@@ -308,7 +310,7 @@ type
 
   TGLBaseMesh = class;
 
-  // Small structure to store a weighted lerp for use in blending 
+  // Small structure to store a weighted lerp for use in blending
   TGLBlendedLerpInfo = record
     FrameIndex1, frameIndex2: Integer;
     LerpFactor: Single;
@@ -356,11 +358,11 @@ type
     procedure MorphTo(frame: TGLSkeletonFrame); overload;
     procedure Lerp(frameIndex1, frameIndex2: Integer; lerpFactor: Single);
     procedure BlendedLerps(const lerpInfos: array of TGLBlendedLerpInfo);
-    { Linearly removes the translation component between skeletal frames.
+    (* Linearly removes the translation component between skeletal frames.
       This function will compute the translation of the first bone (index 0)
       and linearly subtract this translation in all frames between startFrame
       and endFrame. Its purpose is essentially to remove the 'slide' that
-      exists in some animation formats (f.i. SMD). }
+      exists in some animation formats (f.i. SMD). *)
     procedure MakeSkeletalTranslationStatic(startFrame, endFrame: Integer);
     (* Removes the absolute rotation component of the skeletal frames.
       Some formats will store frames with absolute rotation information,
@@ -368,16 +370,16 @@ type
       This function removes that absolute information, making the animation
       frames suitable for blending purposes. *)
     procedure MakeSkeletalRotationDelta(startFrame, endFrame: Integer);
-    // Applies current frame to morph all mesh objects. 
+    // Applies current frame to morph all mesh objects.
     procedure MorphMesh(normalize: Boolean);
-    // Copy bone rotations from reference skeleton. 
+    // Copy bone rotations from reference skeleton.
     procedure Synchronize(reference: TGLSkeleton);
-    // Release bones and frames info. 
+    // Release bones and frames info.
     procedure Clear;
-    // Backup and prepare the BoneMatrixInvertedMeshes to use with ragdolls 
-    procedure StartRagdoll; 
-    // Restore the BoneMatrixInvertedMeshes to stop the ragdoll 
-    procedure StopRagdoll; 
+    // Backup and prepare the BoneMatrixInvertedMeshes to use with ragdolls
+    procedure StartRagdoll;
+    // Restore the BoneMatrixInvertedMeshes to stop the ragdoll
+    procedure StopRagdoll;
     (* Turning this option off (by default) allows to increase FPS,
       but may break backwards-compatibility, because some may choose to
       attach other objects to invisible parts. *)
@@ -443,7 +445,7 @@ type
     procedure SetTangentsTexCoordIndex(const val: Integer);
     property ValidBuffers: TGLVBOBuffers read FValidBuffers write SetValidBuffers;
   public
-    {Creates, assigns Owner and adds to list. }
+    // Creates, assigns Owner and adds to list.
     constructor CreateOwned(AOwner: TGLMeshObjectList);
     constructor Create; override;
     destructor Destroy; override;
@@ -453,7 +455,7 @@ type
     procedure Clear; override;
     function ExtractTriangles(texCoords: TAffineVectorList = nil;
 	  Normals: TAffineVectorList = nil): TAffineVectorList; override;
-    // Returns number of triangles in the mesh object. 
+    // Returns number of triangles in the mesh object.
     function TriangleCount: Integer; virtual;
     procedure PrepareMaterialLibraryCache(matLib: TGLMaterialLibrary);
     procedure DropMaterialLibraryCache;
@@ -476,8 +478,8 @@ type
     // Sets the triangle data of a given triangle
     procedure SetTriangleData(tri: Integer; list: TAffineVectorList; const v0, v1, v2: TAffineVector); overload;
     procedure SetTriangleData(tri: Integer; list: TVectorList; const v0, v1, v2: TVector); overload;
-    { Build the tangent space from the mesh object's vertex, normal
-      and texcoord data, filling the binormals and tangents where specified. }
+    (* Build the tangent space from the mesh object's vertex, normal
+      and texcoord data, filling the binormals and tangents where specified. *)
     procedure BuildTangentSpace(buildBinormals: Boolean = True; buildTangents: Boolean = True);
     property Owner: TGLMeshObjectList read FOwner;
     property Mode: TGLMeshObjectMode read FMode write FMode;
@@ -486,7 +488,7 @@ type
     property Colors: TVectorList read FColors write SetColors;
     property FaceGroups: TGLFaceGroups read FFaceGroups;
     property RenderingOptions: TGLMeshObjectRenderingOptions read FRenderingOptions write FRenderingOptions;
-    // If set, rendering will use VBO's instead of vertex arrays. 
+    // If set, rendering will use VBO's instead of vertex arrays.
     property UseVBO: Boolean read FUseVBO write SetUseVBO;
     (* The TexCoords Extension is a list of vector lists that are used
       to extend the vertex data applied during rendering.
@@ -497,9 +499,9 @@ type
       TexCoordsEx[4] it will create the list up to and including 4.
       The extensions are only applied to the texture environment if they contain data. *)
     property TexCoordsEx[index: Integer]: TVectorList read GetTexCoordsEx write SetTexCoordsEx;
-    // A TexCoordsEx list wrapper for binormals usage, returns TexCoordsEx[BinormalsTexCoordIndex]. 
+    // A TexCoordsEx list wrapper for binormals usage, returns TexCoordsEx[BinormalsTexCoordIndex].
     property Binormals: TVectorList read GetBinormals write SetBinormals;
-    // A TexCoordsEx list wrapper for tangents usage, returns TexCoordsEx[BinormalsTexCoordIndex]. 
+    // A TexCoordsEx list wrapper for tangents usage, returns TexCoordsEx[BinormalsTexCoordIndex].
     property Tangents: TVectorList read GetTangents write SetTangents;
     // Specify the texcoord extension index for binormals (default = 2)
     property BinormalsTexCoordIndex: Integer read FBinormalsTexCoordIndex write SetBinormalsTexCoordIndex;
@@ -507,11 +509,11 @@ type
     property TangentsTexCoordIndex: Integer read FTangentsTexCoordIndex write SetTangentsTexCoordIndex;
   end;
 
-  // A list of TGLMeshObject objects. 
+  // A list of TGLMeshObject objects.
   TGLMeshObjectList = class(TPersistentObjectList)
   private
     FOwner: TGLBaseMesh;
-    // Resturns True if all its MeshObjects use VBOs. 
+    // Resturns True if all its MeshObjects use VBOs.
     function GetUseVBO: Boolean;
     procedure SetUseVBO(const Value: Boolean);
   protected
@@ -522,8 +524,8 @@ type
     procedure ReadFromFiler(reader: TVirtualReader); override;
     procedure PrepareMaterialLibraryCache(matLib: TGLMaterialLibrary);
     procedure DropMaterialLibraryCache;
-    { Prepare the texture and materials before rendering.
-      Invoked once, before building the list and NOT while building the list. }
+    (* Prepare the texture and materials before rendering.
+      Invoked once, before building the list and NOT while building the list. *)
     procedure PrepareBuildList(var mrci: TGLRenderContextInfo); virtual;
     // Similar to regular scene object's BuildList method
     procedure BuildList(var mrci: TGLRenderContextInfo); virtual;
@@ -533,11 +535,11 @@ type
     procedure GetExtents(out min, max: TAffineVector);
     procedure Translate(const delta: TAffineVector);
     function ExtractTriangles(texCoords: TAffineVectorList = nil; normals: TAffineVectorList = nil): TAffineVectorList;
-    // Returns number of triangles in the meshes of the list. 
+    // Returns number of triangles in the meshes of the list.
     function TriangleCount: Integer;
-    // Returns the total Area of meshes in the list. 
+    // Returns the total Area of meshes in the list.
     function Area: Single;
-    // Returns the total volume of meshes in the list. 
+    // Returns the total volume of meshes in the list.
     function Volume: Single;
     (* Build the tangent space from the mesh object's vertex, normal
       and texcoord data, filling the binormals and tangents where specified. *)
@@ -913,7 +915,7 @@ type
     property Skeleton: TGLSkeleton read FSkeleton;
     // Computes the extents of the mesh. 
     procedure GetExtents(out min, max: TAffineVector);
-    // Computes the barycenter of the mesh. 
+    // Computes the barycenter of the mesh.
     function GetBarycenter: TAffineVector;
     (* Invoked after a mesh has been loaded.
       Should auto-center according to the AutoCentering property. *)
@@ -943,7 +945,7 @@ type
       The VectorFile importer must be able to handle addition of data
       flawlessly. *)
     procedure AddDataFromFile(const filename: string); virtual;
-    // Loads additionnal data from stream. See AddDataFromFile. 
+    // Loads additionnal data from stream. See AddDataFromFile.
     procedure AddDataFromStream(const filename: string; aStream: TStream); virtual;
     (* Returns the filename of the last loaded file, or a blank string if not
       file was loaded (or if the mesh was dinamically built). This does not
@@ -1243,7 +1245,7 @@ type
     property Options: TGLActorOptions read FOptions write SetOptions default cDefaultGLActorOptions;
     // Triggered after each CurrentFrame change. 
     property OnFrameChanged: TNotifyEvent read FOnFrameChanged write FOnFrameChanged;
-    // Triggered after EndFrame has been reached by progression or "nextframe" 
+    // Triggered after EndFrame has been reached by progression or "nextframe"
     property OnEndFrameReached: TNotifyEvent read FOnEndFrameReached write FOnEndFrameReached;
     // Triggered after StartFrame has been reached by progression or "nextframe" 
     property OnStartFrameReached: TNotifyEvent read FOnStartFrameReached write FOnStartFrameReached;
@@ -1309,7 +1311,8 @@ implementation
 uses
   XOpenGL,
   GLMeshUtils,
-  GLState, GLUtils,
+  GLState,
+  GLS.Utils,
   GLBaseMeshSilhouette,
   GLVectorTypes;
 

@@ -28,7 +28,7 @@ uses
   GLCoordinates,
   GLBaseClasses,
   GLVectorGeometry,
-  GLUtils;
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)

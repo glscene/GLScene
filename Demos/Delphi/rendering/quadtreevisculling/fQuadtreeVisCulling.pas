@@ -4,7 +4,6 @@ interface
 
 uses
   Winapi.Windows,
-  Winapi.OpenGL,
   System.SysUtils,
   System.Classes,
   Vcl.Graphics,
@@ -39,7 +38,7 @@ uses
   GLCoordinates,
   GLBaseClasses,
   GLRenderContextInfo,
-  GLUtils;
+  GLS.Utils;
 
 type
   TfrmQuadtreeVisCulling = class(TForm)

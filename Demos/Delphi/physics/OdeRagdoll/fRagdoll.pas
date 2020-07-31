@@ -18,7 +18,7 @@ uses
   GLObjects,
   GLSceneViewer,
   GLCadencer,
-  ODEImport,
+  Import.ODE,
   GLShadowPlane,
   GLVectorGeometry,
   GLGeomObjects,
@@ -34,10 +34,10 @@ uses
   GLCoordinates,
   GLCrossPlatform,
   GLBaseClasses,
-  GLODERagdoll,
+  GLS.ODERagdoll,
   GLFileSMD,
-  ODEUtils,
-  GLUtils;
+  GLS.ODEUtils,
+  GLS.Utils;
 
 
 //Physic World ODE

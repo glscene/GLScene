@@ -22,7 +22,7 @@
 #include "GLSceneViewer.hpp"
 #include "GLContext.hpp"
 #include "GLState.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 #include "JPeg.hpp"
 
 //---------------------------------------------------------------------------

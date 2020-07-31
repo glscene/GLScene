@@ -23,7 +23,7 @@ uses
   GLVectorLists,
   GLGraphics,
   GLS.Strings,
-  GLUtils,
+  GLS.Utils,
   GLCrossPlatform,
 
   GLS.CUDAApi,

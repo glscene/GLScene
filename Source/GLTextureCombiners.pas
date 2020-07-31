@@ -11,7 +11,9 @@ interface
 {$I GLScene.inc}
 
 uses
-  System.SysUtils, 
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
+  System.SysUtils,
   System.Classes,
    
   OpenGLTokens,
@@ -145,7 +147,7 @@ begin
   else if (arg = 'col') or (arg = 'col0') or (arg = 'primarycolor') then
     sourceValue := GL_PRIMARY_COLOR_ARB
   else if (arg = 'envcol') or (arg = 'constcol') or (arg = 'constantcolor') then
-    sourceValue := GL_CONSTANT_COLOR_ARB
+    sourceValue := GL_CONSTANT_COLOR_EXT
   else if Copy(arg, 1, 3) = 'tex' then
   begin
     TCAssertCheck(GL.ARB_texture_env_crossbar or GL.NV_texture_env_combine4,

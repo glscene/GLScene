@@ -11,6 +11,7 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
   System.Classes,
   
   OpenGLTokens,
@@ -45,8 +46,8 @@ type
     FFOVy: single;
     FAspect: single;
   protected
-    {Sets up the base texture matrix for this emitter 
-       Should be called whenever a change on its properties is made.}
+    (* Sets up the base texture matrix for this emitter
+       Should be called whenever a change on its properties is made.*)
     procedure SetupTexMatrix(var ARci: TGLRenderContextInfo);
   public
     constructor Create(AOwner: TComponent); override;
@@ -58,7 +59,7 @@ type
     property Aspect: single read FAspect write FAspect;
   end;
 
-  // Specifies an item on the TGLTextureEmitters collection. 
+  // Specifies an item on the TGLTextureEmitters collection.
   TGLTextureEmitterItem = class(TCollectionItem)
   private
     FEmitter: TGLTextureEmitter;

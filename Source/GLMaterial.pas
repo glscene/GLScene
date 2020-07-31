@@ -32,7 +32,7 @@ uses
   XOpenGL,
   GLApplicationFileIO,
   GLGraphics,
-  GLUtils,
+  GLS.Utils,
   GLS.Strings,
   GLS.Logger;
 

@@ -22,7 +22,7 @@
 #include "GLFileMD2.hpp"
 #include <Jpeg.hpp>
 #include "GLFileMD2.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

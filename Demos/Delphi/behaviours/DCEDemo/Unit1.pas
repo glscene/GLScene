@@ -39,7 +39,7 @@ uses
   GLKeyboard,
   GLProxyObjects,
   GLState,
-  GLUtils,
+  GLS.Utils,
   GLBaseClasses,
   GLVectorTypes;
 

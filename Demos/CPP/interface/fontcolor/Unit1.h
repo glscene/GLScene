@@ -17,7 +17,7 @@
 #include "GLTeapot.hpp"
 #include "GLTimeEventsMgr.hpp"
 #include "GLSceneViewer.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

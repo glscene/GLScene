@@ -30,7 +30,7 @@ uses
   GLCoordinates,
   GLCrossPlatform,
   GLBaseClasses,
-  GLUtils,
+  GLS.Utils,
   GLFileSMD;
 
 type

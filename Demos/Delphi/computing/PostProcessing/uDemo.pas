@@ -35,8 +35,8 @@ uses
   GLState,
   GLRenderContextInfo,
   GLContext,
-  GLCustomShader,
-  GLSLShader,
+  GLS.ShaderCustom,
+  GLSL.Shader,
   GLTexture;
 
 type

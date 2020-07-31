@@ -38,7 +38,7 @@
 #include "GLVectorGeometry.hpp"
 #include "GLContext.hpp"
 #include "GLEllipseCollision.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 
 
 //---------------------------------------------------------------------------

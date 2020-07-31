@@ -26,7 +26,7 @@ uses
   GLCrossPlatform,
   GLMaterial,
   GLCoordinates,
-  GLUtils,
+  GLS.Utils,
   GLBaseClasses;
 
 type

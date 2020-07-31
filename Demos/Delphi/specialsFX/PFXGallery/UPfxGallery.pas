@@ -17,7 +17,7 @@ uses
   
   GLVectorGeometry, GLSceneViewer, GLScene, GLHUDObjects, GLParticleFX,
   GLVectorFileObjects, GLVectorTypes, GLObjects, GLBitmapFont,
-  GLUtils,GLCadencer,  GLTexture, GLNavigator,
+  GLS.Utils,GLCadencer,  GLTexture, GLNavigator,
    GLGeomObjects, GLKeyboard, GLSpaceText, GLBehaviours,GLPerlinPFX, GLBlur,
    GLCrossPlatform, GLCoordinates, GLBaseClasses;
 

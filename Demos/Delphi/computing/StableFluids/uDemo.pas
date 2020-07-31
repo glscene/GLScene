@@ -21,11 +21,11 @@ uses
   GLGui,
   GLBitmapFont,
   GLWindowsFont,
-  GLCustomShader,
+  GLS.ShaderCustom,
   GLRenderContextInfo,
   GLState,
   GLMaterial,
-  GLSLShader,
+  GLSL.Shader,
   GLWindows,
 
   GLS.CUDAContext,

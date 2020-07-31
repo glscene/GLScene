@@ -19,7 +19,7 @@
 #include "GLScene.hpp"
 #include "GLSimpleNavigation.hpp"
 #include "GLSceneViewer.hpp"
-#include "NGDImport.hpp"
+#include "Import.NGD.hpp"
 #include "GLBitmapFont.hpp";
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

@@ -23,6 +23,7 @@ object Form1: TForm1
     BeforeRender = GLSceneViewer1BeforeRender
     Buffer.BackgroundColor = clBackground
     FieldOfView = 152.326324462890600000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end

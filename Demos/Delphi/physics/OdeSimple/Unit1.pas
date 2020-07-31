@@ -24,7 +24,7 @@ uses
   GLCoordinates,
   GLBaseClasses,
 
-  GLODEManager;
+  GLS.ODEManager;
 
 type
   TForm1 = class(TForm)

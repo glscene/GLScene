@@ -21,7 +21,7 @@ uses
   GLSceneViewer,
   GLVectorFileObjects,
   GLAsyncTimer,
-  GLCelShader,
+  GLS.ShaderCel,
   GLGeomObjects,
   GLTexture,
   GLObjects,
@@ -31,7 +31,7 @@ uses
   GLBaseClasses,
   GLFileMD2,
   GLKeyboard,
-  GLUtils;
+  GLS.Uti, GLS.ShaderCells;
 
 type
   TForm1 = class(TForm)

@@ -16,7 +16,7 @@
 #include "GLSceneViewer.hpp"
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.ExtCtrls.hpp>
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 #include "Jpeg.hpp"
 
 //---------------------------------------------------------------------------

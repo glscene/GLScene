@@ -11,6 +11,8 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.Classes,
   System.SysUtils,
   VCL.Graphics,
@@ -143,7 +145,7 @@ type
     procedure DoOnAddedToParent; override;
     procedure InitializeObject(ASender: TObject; const ARci: TGLRenderContextInfo); virtual;
   public
-    {This function is only valid AFTER OpenGL has been initialized. }
+    // This function is only valid AFTER OpenGL has been initialized.
     function SupportsRequiredExtensions: Boolean;
     procedure DoRender(var ARci: TGLRenderContextInfo; ARenderSelf, ARenderChildren: Boolean); override;
     constructor Create(aOwner: TComponent); override;

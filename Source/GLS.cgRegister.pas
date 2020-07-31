@@ -18,8 +18,8 @@ uses
 
   GLMaterial,
 
-  Cg,
-  CgGL,
+  Import.Cg,
+  Import.CgGL,
   GLS.SceneRegister,
   GLS.cgShader,
   GLS.cgBombShader;

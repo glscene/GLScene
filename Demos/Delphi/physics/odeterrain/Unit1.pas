@@ -30,7 +30,7 @@ uses
   GLSceneViewer,
   GLVectorGeometry,
   GLLensFlare,
-  GLODEManager,
+  GLS.ODEManager,
   GLNavigator,
   GLGeomObjects,
   GLColor,
@@ -39,7 +39,7 @@ uses
   GLCoordinates,
   GLBaseClasses,
   GLState,
-  GLUtils;
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)

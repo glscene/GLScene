@@ -32,7 +32,7 @@
 #include "GLFileMD2.hpp"
 #include "GLFileSMD.hpp"
 
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 #include "GLMeshUtils.hpp"
 
 

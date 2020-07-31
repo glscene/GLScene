@@ -21,7 +21,7 @@ uses
   GLColor,
   GLCrossPlatform,
   GLBaseClasses,
-  GLNGDManager,
+  GLS.NGDManager,
   GLGeomObjects,
   GLBitmapFont,
   GLWindowsFont,

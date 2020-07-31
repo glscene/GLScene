@@ -22,7 +22,7 @@ uses
   GLCrossPlatform,
   GLCoordinates,
   GLBaseClasses,
-  GLUtils,
+  GLS.Utils,
   GLSceneViewer;
 
 type

@@ -17,7 +17,7 @@ uses
   GLColor,
   GLContext,
   GLTexture,
-  GLUtils,
+  GLS.Utils,
 
   GLS.SDLContext,
   SDL2;

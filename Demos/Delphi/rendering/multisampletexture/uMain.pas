@@ -23,8 +23,8 @@ uses
   GLBitmapFont,
   GLWindowsFont,
   GLMaterial,
-  GLCustomShader,
-  GLSLShader,
+  GLS.ShaderCustom,
+  GLSL.Shader,
   GLCadencer,
   GLHUDObjects,
   GLGeomObjects,
@@ -36,7 +36,7 @@ uses
   GLState,
   GLContext,
   GLKeyboard,
-  GLMultisampleImage;
+  GLMultisampleIm, GLS.ShaderCustom, GLSL.Shaderage;
 
 type
   TGLDemoForm = class(TForm)

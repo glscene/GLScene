@@ -21,7 +21,7 @@ uses
   GLHUDObjects,
   GLPolyhedron,
   GLGeomObjects,
-  GLUtils,
+  GLS.Utils,
   GLCrossPlatform,
   GLCoordinates,
   GLBaseClasses, GLVectorFileObjects;

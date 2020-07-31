@@ -26,7 +26,7 @@ uses
   GLGeomObjects,
   GLCrossPlatform,
   GLCoordinates,
-  GLUtils,
+  GLS.Utils,
   GLBaseClasses,
   GLFile3DS;
 

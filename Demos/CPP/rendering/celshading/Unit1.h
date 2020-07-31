@@ -23,7 +23,7 @@
 #include "GLMaterial.hpp"          // Pascal unit
 #include "GLKeyboard.hpp"
 #include "GLFileMD2.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 
 
 

@@ -40,9 +40,6 @@ type
 implementation
 // ------------------------------------------------------------------
 
-uses
-  GLUtils;
-
 // ------------------
 // ------------------ TGLSMDVectorFile ------------------
 // ------------------
@@ -164,10 +161,10 @@ begin
           frame.Position.Add(NullVector);
           frame.Rotation.Add(NullVector);
         end;
-        frame.Position.Add(GLUtils.StrToFloatDef(tl[1]),
-          GLUtils.StrToFloatDef(tl[2]), GLUtils.StrToFloatDef(tl[3]));
-        v := AffineVectorMake(GLUtils.StrToFloatDef(tl[4]),
-          GLUtils.StrToFloatDef(tl[5]), GLUtils.StrToFloatDef(tl[6]));
+        frame.Position.Add(StrToFloatDef(tl[1],0),
+          StrToFloatDef(tl[2],0), StrToFloatDef(tl[3],0));
+        v := AffineVectorMake(StrToFloatDef(tl[4],0),
+          StrToFloatDef(tl[5],0), StrToFloatDef(tl[6],0));
         frame.Rotation.Add(v);
         Inc(i);
       end;
@@ -224,17 +221,17 @@ begin
               for j := 0 to weightCount - 1 do
               begin
                 boneIDs[j].boneID := StrToInt(tl[10 + j * 2]);
-                boneIDs[j].Weight := GLUtils.StrToFloatDef(tl[11 + j * 2]);
+                boneIDs[j].Weight := StrToFloatDef(tl[11 + j * 2],0);
               end;
 
               nVert := FindOrAdd(boneIDs,
-                AffineVectorMake(GLUtils.StrToFloatDef(tl[1]),
-                GLUtils.StrToFloatDef(tl[2]), GLUtils.StrToFloatDef(tl[3])),
-                AffineVectorMake(GLUtils.StrToFloatDef(tl[4]),
-                GLUtils.StrToFloatDef(tl[5]), GLUtils.StrToFloatDef(tl[6])));
+                AffineVectorMake(StrToFloatDef(tl[1],0),
+                StrToFloatDef(tl[2],0), StrToFloatDef(tl[3],0)),
+                AffineVectorMake(StrToFloatDef(tl[4],0),
+                StrToFloatDef(tl[5],0), StrToFloatDef(tl[6],0)));
               nTex := TexCoords.FindOrAdd
-                (AffineVectorMake(GLUtils.StrToFloatDef(tl[7]),
-                GLUtils.StrToFloatDef(tl[8]), 0));
+                (AffineVectorMake(StrToFloatDef(tl[7],0),
+                StrToFloatDef(tl[8],0), 0));
               faceGroup.Add(nVert, nVert, nTex);
               Inc(i);
             end
@@ -243,13 +240,13 @@ begin
               // Half-Life 1 simple format
               boneID := StrToInt(tl[0]);
               nVert := FindOrAdd(boneID,
-                AffineVectorMake(GLUtils.StrToFloatDef(tl[1]),
-                GLUtils.StrToFloatDef(tl[2]), GLUtils.StrToFloatDef(tl[3])),
-                AffineVectorMake(GLUtils.StrToFloatDef(tl[4]),
-                GLUtils.StrToFloatDef(tl[5]), GLUtils.StrToFloatDef(tl[6])));
+                AffineVectorMake(StrToFloatDef(tl[1],0),
+                StrToFloatDef(tl[2],0), StrToFloatDef(tl[3],0)),
+                AffineVectorMake(StrToFloatDef(tl[4],0),
+                StrToFloatDef(tl[5],0), StrToFloatDef(tl[6],0)));
               nTex := TexCoords.FindOrAdd
-                (AffineVectorMake(GLUtils.StrToFloatDef(tl[7]),
-                GLUtils.StrToFloatDef(tl[8]), 0));
+                (AffineVectorMake(StrToFloatDef(tl[7],0),
+                StrToFloatDef(tl[8],0), 0));
               faceGroup.Add(nVert, nVert, nTex);
               Inc(i);
             end;

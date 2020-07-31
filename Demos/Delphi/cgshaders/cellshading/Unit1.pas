@@ -12,7 +12,7 @@ uses
   Vcl.Dialogs,
 
   GLS.OpenGLx,
-  cgGL,
+  Import.cgGL,
   GLS.cgShader,
 
   GLScene,
@@ -28,7 +28,7 @@ uses
   GLMaterial,
   GLCoordinates,
   GLBaseClasses,
-  GLUtils,
+  GLS.Utils,
   GLFileMD2;
 
 type

@@ -13,7 +13,7 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-  GLSArchiveManager;
+  GLS.ArchiveManager;
 
 const
    SIGN = 'PACK';

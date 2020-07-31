@@ -27,6 +27,8 @@ interface
 { .$DEFINE USE_CACHE_MISS_CHECK }
 
 uses
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.Classes,
   System.SysUtils,
 

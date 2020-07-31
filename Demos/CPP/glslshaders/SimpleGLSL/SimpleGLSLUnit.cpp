@@ -20,20 +20,21 @@
 #pragma link "GLObjects"
 #pragma link "GLScene"
 #pragma link "GLTexture"
-#pragma link "GLUserShader"
+#pragma link "GLS.ShaderUser"
+#pragma link "OpenGLTokens"
 #pragma link "GLVectorFileObjects"
 #pragma link "GLSceneViewer"
 #pragma link "GLWindowsFont"
 #pragma link "GLKeyboard"
 #pragma link "GLContext"
 #pragma link "GLFile3DS"
-#pragma link "OpenGLx"
 
 #pragma link "GLBaseClasses"
 #pragma link "GLCoordinates"
 #pragma link "GLCrossPlatform"
 #pragma link "GLMaterial"
 #pragma resource "*.dfm"
+
 TForm1 *Form1;
 int CurrShad = 0;
 AnsiString CurrShadName = "Blinn";
@@ -217,6 +218,7 @@ void __fastcall TForm1::GLDOInitializeRender(TObject *Sender,
   bool Continue;
   if (! ShaderActived)  /// Should be (! ShaderActived)
   {
+
 	if (! ((GL_SHADER_OBJECT_ARB) &&
 			(GL_VERTEX_PROGRAM_ARB) &&
 			(GL_VERTEX_SHADER_ARB) &&
@@ -273,7 +275,7 @@ void __fastcall TForm1::GLDOInitializeRender(TObject *Sender,
 	  if (! GLSLProg[i]->ValidateProgram())
 		throw Exception(GLSLProg[i]->InfoLog());
 	}
-	CheckOpenGLError();
+	glGetError();
 	ShaderActived = true;
   }
   else

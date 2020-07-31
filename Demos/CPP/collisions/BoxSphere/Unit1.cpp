@@ -130,11 +130,11 @@ void __fastcall TForm1::Edit1Change(TObject *Sender)
   }
   DCCamTarget->Visible = Res1;
   // Draw GLCube1 and GLSphere1.
-  GLCube1->Matrix = BoxMatrix;
+  *GLCube1->Matrix = BoxMatrix;
   GLCube1->CubeWidth = BoxScale.X;
   GLCube1->CubeHeight = BoxScale.Y;
   GLCube1->CubeDepth = BoxScale.Z;
-  DCCube1->Matrix = GLCube1->Matrix;
+  *DCCube1->Matrix = *GLCube1->Matrix;
   DCCube1->Scale->SetVector(BoxScale);
   GLSphere1->Position->SetPoint(SpherePos);
   GLSphere1->Radius = SphereRadius;

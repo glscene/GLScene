@@ -22,7 +22,7 @@ uses
   GLVectorFileObjects,
   GLShadowVolume,
   GLGeomObjects,
-  GLUtils,
+  GLS.Utils,
   GLFileLMTS,
   GLContext,
   GLVectorGeometry,

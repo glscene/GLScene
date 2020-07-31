@@ -205,7 +205,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
 void __fastcall TForm1::FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
           TPoint &MousePos, bool &Handled)
 {
-	if (Glcrossplatform::PtInRect(ClientRect, ScreenToClient(MousePos)))
+	if (PtInRect(ClientRect, ScreenToClient(MousePos)))
 	{
 	  GLCamera1->SceneScale = GLCamera1->SceneScale * (1000 - WheelDelta) / 1000;
 	  Handled = true;

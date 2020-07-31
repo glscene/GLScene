@@ -108,7 +108,8 @@ implementation
 
 {$R *.dfm}
 
-uses GLUtils;
+uses
+  GLS.Utils;
 
 var
   vGUILayoutEditorForm: TGLLayoutEditorForm;

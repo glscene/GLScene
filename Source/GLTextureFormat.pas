@@ -9,6 +9,8 @@ unit GLTextureFormat;
 interface
 
 uses
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   OpenGLTokens,
   GLS.Strings;
 

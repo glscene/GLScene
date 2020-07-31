@@ -34,7 +34,7 @@ uses
   GLCoordinates,
   GLCrossPlatform,
   GLState,
-  GLUtils,
+  GLS.Utils,
   GLBaseClasses,
   GLVectorTypes;
 

@@ -10,7 +10,7 @@
 #include "GLCrossPlatform.hpp"
 #include "GLScene.hpp"
 #include "GLContext.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 #include "GLTeapot.hpp"
 #include "OpenGLx.hpp"
 #include "GLSDLContext.hpp"

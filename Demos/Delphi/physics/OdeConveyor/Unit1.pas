@@ -16,11 +16,11 @@ uses
   Vcl.ComCtrls,
   Vcl.ExtCtrls,
 
+  Import.ODE,
+  GLS.ODEManager,
   GLScene,
   GLVectorTypes,
   GLObjects,
-  GLODEManager,
-  Odeimport,
   GLCadencer,
   GLCoordinates,
   GLCrossPlatform,

@@ -20,7 +20,7 @@
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
 #include "GLSceneViewer.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 #include "GLContext.hpp"
 #include "GLDynamicTexture.hpp"
 

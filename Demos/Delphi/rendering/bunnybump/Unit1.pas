@@ -19,7 +19,7 @@ uses
   GLVectorTypes,
   GLObjects,
   GLTexture,
-  GLBumpShader,
+  GLS.ShaderBump,
   GLVectorFileObjects,
   GLCadencer,
   GLSceneViewer,
@@ -31,7 +31,7 @@ uses
   GLVectorGeometry,
   GLContext,
   GLFileOBJ,
-  GLUtils;
+  GLS.Uti, GLS.ShaderBumpls;
 
 type
   TForm1 = class(TForm)

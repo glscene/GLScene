@@ -17,7 +17,7 @@ uses
   
   GLScene, GLVectorFileObjects, GLObjects,
   GLSceneViewer, GLFile3DS, GLCrossPlatform, GLCoordinates,
-  GLBaseClasses, GLUtils;
+  GLBaseClasses, GLS.Utils;
 
 type
   TForm1 = class(TForm)

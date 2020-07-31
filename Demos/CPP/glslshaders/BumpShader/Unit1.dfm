@@ -29,6 +29,7 @@ object Form1: TForm1
     Buffer.DepthPrecision = dp24bits
     Buffer.ColorDepth = cd24bits
     FieldOfView = 142.863815307617200000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = ViewerMouseDown
     OnMouseMove = ViewerMouseMove

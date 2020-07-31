@@ -11,12 +11,14 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   Winapi.Windows,
   System.SysUtils,
 
+  OpenGLTokens,
   GLS.Strings,
   GLS.Logger,
-  OpenGLTokens,
   GLVectorGeometry,
   GLVectorTypes;
 
@@ -874,8 +876,7 @@ type
     FramebufferTextureLayer: PFNGLFRAMEBUFFERTEXTURELAYERPROC;
     FramebufferTextureFace: PFNGLFRAMEBUFFERTEXTUREFACEARBPROC; // ARB only
     FramebufferRenderbuffer: PFNGLFRAMEBUFFERRENDERBUFFERPROC;
-    GetFramebufferAttachmentParameteriv
-      : PFNGLGETFRAMEBUFFERATTACHMENTPARAMETERIVPROC;
+    GetFramebufferAttachmentParameteriv: PFNGLGETFRAMEBUFFERATTACHMENTPARAMETERIVPROC;
     BlitFramebuffer: PFNGLBLITFRAMEBUFFERPROC;
     GenerateMipmap: PFNGLGENERATEMIPMAPPROC;
     FramebufferParameteri: PFNGLFramebufferParameteri;
@@ -1119,26 +1120,19 @@ type
     NamedProgramLocalParameter4dv: PFNGLNAMEDPROGRAMLOCALPARAMETER4DVEXTPROC;
     NamedProgramLocalParameter4f: PFNGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC;
     NamedProgramLocalParameter4fv: PFNGLNAMEDPROGRAMLOCALPARAMETER4FVEXTPROC;
-    GetNamedProgramLocalParameterdv
-      : PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC;
-    GetNamedProgramLocalParameterfv
-      : PFNGLGETNAMEDPROGRAMLOCALPARAMETERFVEXTPROC;
+    GetNamedProgramLocalParameterdv: PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC;
+    GetNamedProgramLocalParameterfv: PFNGLGETNAMEDPROGRAMLOCALPARAMETERFVEXTPROC;
     GetNamedProgramiv: PFNGLGETNAMEDPROGRAMIVEXTPROC;
     GetNamedProgramString: PFNGLGETNAMEDPROGRAMSTRINGEXTPROC;
     NamedProgramLocalParameters4fv: PFNGLNAMEDPROGRAMLOCALPARAMETERS4FVEXTPROC;
     NamedProgramLocalParameterI4i: PFNGLNAMEDPROGRAMLOCALPARAMETERI4IEXTPROC;
     NamedProgramLocalParameterI4iv: PFNGLNAMEDPROGRAMLOCALPARAMETERI4IVEXTPROC;
-    NamedProgramLocalParametersI4iv
-      : PFNGLNAMEDPROGRAMLOCALPARAMETERSI4IVEXTPROC;
+    NamedProgramLocalParametersI4iv: PFNGLNAMEDPROGRAMLOCALPARAMETERSI4IVEXTPROC;
     NamedProgramLocalParameterI4ui: PFNGLNAMEDPROGRAMLOCALPARAMETERI4UIEXTPROC;
-    NamedProgramLocalParameterI4uiv
-      : PFNGLNAMEDPROGRAMLOCALPARAMETERI4UIVEXTPROC;
-    NamedProgramLocalParametersI4uiv
-      : PFNGLNAMEDPROGRAMLOCALPARAMETERSI4UIVEXTPROC;
-    GetNamedProgramLocalParameterIiv
-      : PFNGLGETNAMEDPROGRAMLOCALPARAMETERIIVEXTPROC;
-    GetNamedProgramLocalParameterIuiv
-      : PFNGLGETNAMEDPROGRAMLOCALPARAMETERIUIVEXTPROC;
+    NamedProgramLocalParameterI4uiv: PFNGLNAMEDPROGRAMLOCALPARAMETERI4UIVEXTPROC;
+    NamedProgramLocalParametersI4uiv: PFNGLNAMEDPROGRAMLOCALPARAMETERSI4UIVEXTPROC;
+    GetNamedProgramLocalParameterIiv: PFNGLGETNAMEDPROGRAMLOCALPARAMETERIIVEXTPROC;
+    GetNamedProgramLocalParameterIuiv: PFNGLGETNAMEDPROGRAMLOCALPARAMETERIUIVEXTPROC;
     TextureParameterIiv: PFNGLTEXTUREPARAMETERIIVEXTPROC;
     TextureParameterIuiv: PFNGLTEXTUREPARAMETERIUIVEXTPROC;
     GetTextureParameterIiv: PFNGLGETTEXTUREPARAMETERIIVEXTPROC;
@@ -1160,25 +1154,21 @@ type
     TextureBuffer: PFNGLTEXTUREBUFFEREXTPROC;
     MultiTexBuffer: PFNGLMULTITEXBUFFEREXTPROC;
     NamedRenderbufferStorage: PFNGLNAMEDRENDERBUFFERSTORAGEEXTPROC;
-    GetNamedRenderbufferParameteriv
-      : PFNGLGETNAMEDRENDERBUFFERPARAMETERIVEXTPROC;
+    GetNamedRenderbufferParameteriv: PFNGLGETNAMEDRENDERBUFFERPARAMETERIVEXTPROC;
     CheckNamedFramebufferStatus: PFNGLCHECKNAMEDFRAMEBUFFERSTATUSEXTPROC;
     NamedFramebufferTexture1D: PFNGLNAMEDFRAMEBUFFERTEXTURE1DEXTPROC;
     NamedFramebufferTexture2D: PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC;
     NamedFramebufferTexture3D: PFNGLNAMEDFRAMEBUFFERTEXTURE3DEXTPROC;
     NamedFramebufferRenderbuffer: PFNGLNAMEDFRAMEBUFFERRENDERBUFFEREXTPROC;
-    GetNamedFramebufferAttachmentParameteriv
-      : PFNGLGETNAMEDFRAMEBUFFERATTACHMENTPARAMETERIVEXTPROC;
+    GetNamedFramebufferAttachmentParameteriv: PFNGLGETNAMEDFRAMEBUFFERATTACHMENTPARAMETERIVEXTPROC;
     GenerateTextureMipmap: PFNGLGENERATETEXTUREMIPMAPEXTPROC;
     GenerateMultiTexMipmap: PFNGLGENERATEMULTITEXMIPMAPEXTPROC;
     FramebufferDrawBuffer: PFNGLFRAMEBUFFERDRAWBUFFEREXTPROC;
     FramebufferDrawBuffers: PFNGLFRAMEBUFFERDRAWBUFFERSEXTPROC;
     FramebufferReadBuffer: PFNGLFRAMEBUFFERREADBUFFEREXTPROC;
     GetFramebufferParameteriv: PFNGLGETFRAMEBUFFERPARAMETERIVEXTPROC;
-    NamedRenderbufferStorageMultisample
-      : PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC;
-    NamedRenderbufferStorageMultisampleCoverage
-      : PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLECOVERAGEEXTPROC;
+    NamedRenderbufferStorageMultisample: PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC;
+    NamedRenderbufferStorageMultisampleCoverage: PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLECOVERAGEEXTPROC;
     NamedFramebufferTexture: PFNGLNAMEDFRAMEBUFFERTEXTUREEXTPROC;
     NamedFramebufferTextureLayer: PFNGLNAMEDFRAMEBUFFERTEXTURELAYEREXTPROC;
     NamedFramebufferTextureFace: PFNGLNAMEDFRAMEBUFFERTEXTUREFACEEXTPROC;
@@ -1199,20 +1189,15 @@ type
     ObjectPtrLabel: PFNGLObjectPtrLabel;
     GetObjectPtrLabel: PFNGLGetObjectPtrLabel;
     DebugMessageCallbackAMDX: procedure(callback: TDebugProcAMD;
-      userParam: Pointer);
-{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+      userParam: Pointer);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
     DebugMessageControl: procedure(type_: Cardinal; Source: Cardinal;
-      severity: Cardinal; Count: TGLsizei; var ids: Cardinal; Enabled: boolean);
-{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+      severity: Cardinal; Count: TGLsizei; var ids: Cardinal; Enabled: boolean);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
     DebugMessageInsert: procedure(Source: Cardinal; severity: Cardinal;
-      id: Cardinal; length: TGLsizei; const buf: PAnsiChar);
-{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
-    DebugMessageCallback: procedure(callback: TDebugProc; userParam: Pointer);
-{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+      id: Cardinal; length: TGLsizei; const buf: PAnsiChar);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+    DebugMessageCallback: procedure(callback: TDebugProc; userParam: Pointer);{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
     GetDebugMessageLog: function(Count: Cardinal; bufSize: TGLsizei;
       var severity: Cardinal; var severities: Cardinal; var ids: Cardinal;
-      var lengths: TGLsizei; messageLog: PAnsiChar): Cardinal;
-{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
+      var lengths: TGLsizei; messageLog: PAnsiChar): Cardinal;{$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
     // ------------------------------ Interrop
     CreateSyncFromCLevent: PFNGLCreateSyncFromCLevent;
     VDPAUInitNV: procedure(const vdpDevice: Pointer;
@@ -1220,28 +1205,20 @@ type
     VDPAUFiniNV: procedure(); {$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     VDPAURegisterVideoSurfaceNV: function(const vdpSurface: Pointer;
       target: Cardinal; numTextureNames: TGLsizei; const textureNames: PGLuint)
-      : TGLvdpauSurfaceNV;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      : TGLvdpauSurfaceNV;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     VDPAURegisterOutputSurfaceNV: function(const vdpSurface: Pointer;
       target: Cardinal; numTextureNames: TGLsizei; const textureNames: PGLuint)
-      : TGLvdpauSurfaceNV;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    VDPAUIsSurfaceNV: procedure(surface: TGLvdpauSurfaceNV);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    VDPAUUnregisterSurfaceNV: procedure(surface: TGLvdpauSurfaceNV);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      : TGLvdpauSurfaceNV;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    VDPAUIsSurfaceNV: procedure(surface: TGLvdpauSurfaceNV);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    VDPAUUnregisterSurfaceNV: procedure(surface: TGLvdpauSurfaceNV);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     VDPAUGetSurfaceivNV: procedure(surface: TGLvdpauSurfaceNV; pname: Cardinal;
-      bufSize: TGLsizei; length: PGLsizei; values: PGLint);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      bufSize: TGLsizei; length: PGLsizei; values: PGLint);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     VDPAUSurfaceAccessNV: procedure(surface: TGLvdpauSurfaceNV;
-      access: Cardinal);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      access: Cardinal);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     VDPAUMapSurfacesNV: procedure(numSurfaces: TGLsizei;
-      const surfaces: PGLvdpauSurfaceNV);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      const surfaces: PGLvdpauSurfaceNV);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     VDPAUUnmapSurfacesNV: procedure(numSurface: TGLsizei;
-      const surfaces: PGLvdpauSurfaceNV);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      const surfaces: PGLvdpauSurfaceNV);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
 
     // ------------------------------ Path rendering
     GenPathsNV: PFNGLGENPATHSNVPROC;
@@ -1294,6 +1271,7 @@ type
     PathCoverDepthFuncNV: PFNGLPATHCOVERDEPTHFUNCNVPROC;
 
 {$IFDEF SUPPORT_WGL}
+
     // ###########################################################
     // function and procedure definitions for
     // ARB approved WGL extensions
@@ -1359,8 +1337,7 @@ type
     WDXObjectAccessNV: PFNWGLDXOBJECTACCESSPROC;
     WDXLockObjectsNV: PFNWGLDXLOCKOBJECTSPROC;
     WDXUnlockObjectsNV: PFNWGLDXUNLOCKOBJECTSNVPROC;
-{$ENDIF}
-{$IFDEF SUPPORT_WGL}
+
     // ###########################################################
     // function and procedure definitions for
     // Vendor/EXT WGL extensions
@@ -1373,7 +1350,9 @@ type
     // GL_NV_vertex_array_range (EXT #190)
     WAllocateMemoryNV: PFNWGLALLOCATEMEMORYNVPROC;
     WFreeMemoryNV: PFNWGLFREEMEMORYNVPROC;
-{$ENDIF}
+
+{$ENDIF SUPPORT_WGL}
+
     // ------- GLX function/procedure definitions for ARB approved extensions'}
 
 {$IFDEF SUPPORT_GLX}
@@ -1422,6 +1401,7 @@ type
     // GLX 1.4
     // X_ARB_create_context (EXT #56)
     XCreateContextAttribsARB: PFNGLXCREATECONTEXTATTRIBSARBPROC;
+
 {$ENDIF}
 
     // ------------- GLX function/procedure definitions for Vendor/EXT extensions'}
@@ -1444,7 +1424,6 @@ type
     XCreateGLXPixmapMESA: PFNGLXCREATEGLXPIXMAPMESAPROC;
     XReleaseBuffersMESA: PFNGLXRELEASEBUFFERSMESAPROC;
     XSet3DfxModeMESA: PFNGLXSET3DFXMODEMESAPROC;
-
     XBindTexImageEXT: PFNGLXBINDTEXIMAGEEXTPROC;
     XReleaseTexImageEXT: PFNGLXRELEASETEXIMAGEEXTPROC;
 
@@ -1505,10 +1484,13 @@ type
     XReleaseVideoCaptureDeviceNV: PFNGLXRELEASEVIDEOCAPTUREDEVICENVPROC;
     XSwapIntervalEXT: PFNGLXSWAPINTERVALEXTPROC;
     XCopyImageSubDataNV: PFNGLXCOPYIMAGESUBDATANVPROC;
-{$ENDIF}
+
+{$ENDIF SUPPORT_GLX}
+
+{$IFDEF DARWIN}
 
     // ------------------------------ AGL function/procedure
-{$IFDEF DARWIN}
+
     // AGL extension checks
     A_aux_depth_stencil, A_client_storage, A_element_array, A_fence,
       A_float_pixels, A_flush_buffer_range, A_flush_render, A_object_purgeable,
@@ -1516,38 +1498,28 @@ type
       A_texture_range, A_transform_hint, A_vertex_array_object,
       A_vertex_array_range, A_vertex_program_evaluators, A_ycbcr_422: boolean;
 
-    ACreatePixelFormat: function(gdevs: PAGLDevice; ndev: GLint;
-      attribs: PGLint): TAGLPixelFormat; cdecl;
-    AChoosePixelFormat: function(gdevs: PAGLDevice; ndev: GLint;
-      attribs: PGLint): TAGLPixelFormat; cdecl;
+    ACreatePixelFormat: function(gdevs: PAGLDevice; ndev: GLint; attribs: PGLint): TAGLPixelFormat; cdecl;
+    AChoosePixelFormat: function(gdevs: PAGLDevice; ndev: GLint; attribs: PGLint): TAGLPixelFormat; cdecl;
     ADestroyPixelFormat: procedure(pix: TAGLPixelFormat); cdecl;
-    ADescribePixelFormat: function(pix: TAGLPixelFormat; attrib: TGLint;
-      Value: PGLint): TGLboolean; cdecl;
-    AGetCGLPixelFormat: function(pix: TAGLPixelFormat; cgl_pix: Pointer)
-      : TGLboolean; cdecl;
-    ADisplaysOfPixelFormat: function(pix: TAGLPixelFormat; ndevs: PGLint)
-      : CGDirectDisplayID; cdecl;
+    ADescribePixelFormat: function(pix: TAGLPixelFormat; attrib: TGLint; Value: PGLint): TGLboolean; cdecl;
+    AGetCGLPixelFormat: function(pix: TAGLPixelFormat; cgl_pix: Pointer): TGLboolean; cdecl;
+    ADisplaysOfPixelFormat: function(pix: TAGLPixelFormat; ndevs: PGLint): CGDirectDisplayID; cdecl;
     ANextPixelFormat: function(pix: TAGLPixelFormat): TAGLPixelFormat; cdecl;
     // Managing context
-    ACreateContext: function(pix: TAGLPixelFormat; share: TAGLContext)
-      : TAGLContext; cdecl;
-    ACopyContext: function(src: TAGLContext; dst: TAGLContext; mask: Cardinal)
-      : TGLboolean; cdecl;
+    ACreateContext: function(pix: TAGLPixelFormat; share: TAGLContext): TAGLContext; cdecl;
+    ACopyContext: function(src: TAGLContext; dst: TAGLContext; mask: Cardinal): TGLboolean; cdecl;
     ADestroyContext: function(ctx: TAGLContext): GLboolean; cdecl;
     AUpdateContext: function(ctx: TAGLContext): GLboolean; cdecl;
     ASetCurrentContext: function(ctx: TAGLContext): GLboolean; cdecl;
-    AGetCGLContext: function(ctx: TAGLContext; cgl_ctx: Pointer)
-      : GLboolean; cdecl;
+    AGetCGLContext: function(ctx: TAGLContext; cgl_ctx: Pointer): GLboolean; cdecl;
     AGetCurrentContext: function(): TAGLContext; cdecl;
     ASwapBuffers: procedure(ctx: TAGLContext); cdecl;
     // Managing Pixel Buffers
     ACreatePBuffer: function(Width: GLint; Height: GLint; target: GLenum;
-      internalFormat: GLenum; max_level: longint; pbuffer: PAGLPbuffer)
-      : GLboolean; cdecl;
+      internalFormat: GLenum; max_level: longint; pbuffer: PAGLPbuffer): GLboolean; cdecl;
     ADestroyPBuffer: function(pbuffer: TAGLPbuffer): GLboolean; cdecl;
     ADescribePBuffer: function(pbuffer: TAGLPbuffer; Width, Height: PGLint;
-      target: PGLenum; internalFormat: PGLenum; max_level: PGLint)
-      : TGLboolean; cdecl;
+      target: PGLenum; internalFormat: PGLenum; max_level: PGLint): TGLboolean; cdecl;
     AGetPBuffer: function(ctx: TAGLContext; out pbuffer: TAGLPbuffer;
       face, level, screen: PGLint): GLboolean; cdecl;
     ASetPBuffer: function(ctx: TAGLContext; pbuffer: TAGLPbuffer; face: GLint;
@@ -1555,8 +1527,7 @@ type
     ATexImagePBuffer: function(ctx: TAGLContext; pbuffer: TAGLPbuffer;
       Source: GLint): TGLboolean; cdecl;
     // Managing Drawable Objects
-    ASetDrawable: function(ctx: TAGLContext; draw: TAGLDrawable): GLboolean;
-      cdecl; // deprecated
+    ASetDrawable: function(ctx: TAGLContext; draw: TAGLDrawable): GLboolean; cdecl; // deprecated
     AGetDrawable: function(ctx: TAGLContext): TAGLDrawable; cdecl; // deprecated
     ASetFullScreen: function(ctx: TAGLContext; Width: TGLsizei;
       Height: TGLsizei; freq: TGLsizei; device: GLint): GLboolean; cdecl;
@@ -1566,10 +1537,8 @@ type
     AEnable: function(ctx: TAGLContext; pname: Cardinal): GLboolean; cdecl;
     ADisable: function(ctx: TAGLContext; pname: Cardinal): GLboolean; cdecl;
     AIsEnabled: function(ctx: TAGLContext; pname: Cardinal): GLboolean; cdecl;
-    ASetInteger: function(ctx: TAGLContext; pname: GLenum; params: PGLint)
-      : GLboolean; cdecl;
-    AGetInteger: function(ctx: TAGLContext; pname: GLenum; params: PGLint)
-      : GLboolean; cdecl;
+    ASetInteger: function(ctx: TAGLContext; pname: GLenum; params: PGLint): GLboolean; cdecl;
+    AGetInteger: function(ctx: TAGLContext; pname: GLenum; params: PGLint): GLboolean; cdecl;
     // Getting and Setting Global Information
     AConfigure: function(pname: Cardinal; param: Cardinal): TGLboolean; cdecl;
     AGetVersion: procedure(major: PGLint; minor: PGLint); cdecl;
@@ -1578,28 +1547,28 @@ type
     ADescribeRenderer: function(rend: TAGLRendererInfo; prop: GLint;
       Value: PGLint): GLboolean; cdecl;
     ADestroyRendererInfo: procedure(rend: TAGLRendererInfo); cdecl;
-    ANextRendererInfo: function(rend: TAGLRendererInfo)
-      : TAGLRendererInfo; cdecl;
+    ANextRendererInfo: function(rend: TAGLRendererInfo): TAGLRendererInfo; cdecl;
     AQueryRendererInfoForCGDirectDisplayIDs: function(dspIDs: CGDirectDisplayID;
       ndev: TGLint): TAGLRendererInfo; cdecl;
     // Managing Virtual Screens
     AGetVirtualScreen: function(ctx: TAGLContext): GLint; cdecl;
-    ASetVirtualScreen: function(ctx: TAGLContext; screen: TGLint)
-      : TGLboolean; cdecl;
+    ASetVirtualScreen: function(ctx: TAGLContext; screen: TGLint): TGLboolean; cdecl;
     // Getting and Setting Windows
-    ASetWindowRef: function(ctx: TAGLContext; window: WindowRef)
-      : TGLboolean; cdecl;
+    ASetWindowRef: function(ctx: TAGLContext; window: WindowRef): TGLboolean; cdecl;
     AGetWindowRef: function(ctx: TAGLContext): TGLint; cdecl;
     // Getting and Setting HIView Objects
-    ASetHIViewRef: function(ctx: TAGLContext; hiview: HIViewRef)
-      : TGLboolean; cdecl;
+    ASetHIViewRef: function(ctx: TAGLContext; hiview: HIViewRef): TGLboolean; cdecl;
     AGetHIViewRef: function(ctx: TAGLContext): HIViewRef; cdecl;
     // Getting Error Information
     AGetError: function(): Cardinal; cdecl;
     AErrorString: function(code: Cardinal): PAnsiChar; cdecl;
-{$ENDIF}
+
+{$ENDIF DARWIN}
+
     // ------------------------------ EGL function/procedure
+
 {$IFDEF EGL_SUPPORT}
+
     OES_depth24, OES_depth32, OES_depth_texture, OES_element_index_uint,
       OES_fbo_render_mipmap, OES_get_program_binary, OES_mapbuffer,
       OES_packed_depth_stencil, OES_rgb8_rgba8, OES_standard_derivatives,
@@ -1607,91 +1576,59 @@ type
       OES_texture_half_float, OES_texture_half_float_linear, OES_texture_npot,
       OES_vertex_array_object, OES_vertex_half_float: boolean;
 
-    EGetError: function: EGLint;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EGetDisplay: function(display_id: EGLNativeDisplayType): EGLDisplay;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EGetError: function: EGLint;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EGetDisplay: function(display_id: EGLNativeDisplayType): EGLDisplay;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     EInitialize: function(dpy: EGLDisplay; major: pEGLint; minor: pEGLint)
-      : EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    ETerminate: function(dpy: EGLDisplay): EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EQueryString: function(dpy: EGLDisplay; name: EGLint): pchar;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      : EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    ETerminate: function(dpy: EGLDisplay): EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EQueryString: function(dpy: EGLDisplay; name: EGLint): pchar;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     EGetConfigs: function(dpy: EGLDisplay; configs: pEGLConfig;
-      config_size: EGLint; num_config: pEGLint): EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      config_size: EGLint; num_config: pEGLint): EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     EChooseConfig: function(dpy: EGLDisplay; attrib_list: pEGLint;
       configs: pEGLConfig; config_size: EGLint; num_config: pEGLint)
-      : EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      : EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     EGetConfigAttrib: function(dpy: EGLDisplay; config: EGLConfig;
-      attribute: EGLint; Value: pEGLint): EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      attribute: EGLint; Value: pEGLint): EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     ECreateWindowSurface: function(dpy: EGLDisplay; config: EGLConfig;
-      win: EGLNativeWindowType; attrib_list: pEGLint): EGLSurface;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      win: EGLNativeWindowType; attrib_list: pEGLint): EGLSurface;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     ECreatePbufferSurface: function(dpy: EGLDisplay; config: EGLConfig;
-      attrib_list: pEGLint): EGLSurface;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      attrib_list: pEGLint): EGLSurface;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     ECreatePixmapSurface: function(dpy: EGLDisplay; config: EGLConfig;
-      pixmap: EGLNativePixmapType; attrib_list: pEGLint): EGLSurface;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EDestroySurface: function(dpy: EGLDisplay; surface: EGLSurface): EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      pixmap: EGLNativePixmapType; attrib_list: pEGLint): EGLSurface;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EDestroySurface: function(dpy: EGLDisplay; surface: EGLSurface): EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     EQuerySurface: function(dpy: EGLDisplay; surface: EGLSurface;
-      attribute: EGLint; Value: pEGLint): EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EBindAPI: function(api: EGLenum): EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EQueryAPI: function: EGLenum;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EWaitClient: function: EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EReleaseThread: function: EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      attribute: EGLint; Value: pEGLint): EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EBindAPI: function(api: EGLenum): EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EQueryAPI: function: EGLenum;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EWaitClient: function: EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EReleaseThread: function: EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     ECreatePbufferFromClientBuffer: function(dpy: EGLDisplay; buftype: EGLenum;
       buffer: EGLClientBuffer; config: EGLConfig; attrib_list: pEGLint)
-      : EGLSurface;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      : EGLSurface;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     ESurfaceAttrib: function(dpy: EGLDisplay; surface: EGLSurface;
-      attribute: EGLint; Value: EGLint): EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EBindTexImage: function(dpy: EGLDisplay; surface: EGLSurface;
-      buffer: EGLint): EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      attribute: EGLint; Value: EGLint): EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};    EBindTexImage: function(dpy: EGLDisplay; surface: EGLSurface;
+      buffer: EGLint): EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     EReleaseTexImage: function(dpy: EGLDisplay; surface: EGLSurface;
-      buffer: EGLint): EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    ESwapInterval: function(dpy: EGLDisplay; interval: EGLint): EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      buffer: EGLint): EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    ESwapInterval: function(dpy: EGLDisplay; interval: EGLint): EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     ECreateContext: function(dpy: EGLDisplay; config: EGLConfig;
-      share_context: EGLContext; attrib_list: pEGLint): EGLContext;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EDestroyContext: function(dpy: EGLDisplay; ctx: EGLContext): EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      share_context: EGLContext; attrib_list: pEGLint): EGLContext;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EDestroyContext: function(dpy: EGLDisplay; ctx: EGLContext): EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     EMakeCurrent: function(dpy: EGLDisplay; draw: EGLSurface; read: EGLSurface;
-      ctx: EGLContext): EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EGetCurrentContext: function: EGLContext;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EGetCurrentSurface: function(readdraw: EGLint): EGLSurface;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EGetCurrentDisplay: function: EGLDisplay;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      ctx: EGLContext): EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EGetCurrentContext: function: EGLContext;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EGetCurrentSurface: function(readdraw: EGLint): EGLSurface;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EGetCurrentDisplay: function: EGLDisplay;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     EQueryContext: function(dpy: EGLDisplay; ctx: EGLContext; attribute: EGLint;
-      Value: pEGLint): EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EWaitGL: function: EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    EWaitNative: function(engine: EGLint): EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    ESwapBuffers: function(dpy: EGLDisplay; surface: EGLSurface): EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      Value: pEGLint): EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EWaitGL: function: EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    EWaitNative: function(engine: EGLint): EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    ESwapBuffers: function(dpy: EGLDisplay; surface: EGLSurface): EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     ECopyBuffers: function(dpy: EGLDisplay; surface: EGLSurface;
-      target: EGLNativePixmapType): EGLBoolean;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+      target: EGLNativePixmapType): EGLBoolean;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+
 {$ENDIF EGL_SUPPORT}
+
     // ------------------------------ locate functions/procedures for OpenGL Utility (GLU) extensions'} {$ENDIF}
 
     // ###########################################################
@@ -1699,12 +1636,9 @@ type
     // GLU extensions
     // ###########################################################
 
-    UNurbsCallbackDataEXT: procedure(nurb: PGLUnurbs; userData: Pointer);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    UNewNurbsTessellatorEXT: function: PGLUnurbs;
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
-    UDeleteNurbsTessellatorEXT: procedure(nurb: PGLUnurbs);
-{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    UNurbsCallbackDataEXT: procedure(nurb: PGLUnurbs; userData: Pointer);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    UNewNurbsTessellatorEXT: function: PGLUnurbs;{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
+    UDeleteNurbsTessellatorEXT: procedure(nurb: PGLUnurbs);{$IFDEF MSWINDOWS}stdcall{$ELSE} cdecl{$ENDIF};
     constructor Create;
     procedure Initialize(ATemporary: boolean = False);
     procedure Close;
@@ -1716,8 +1650,8 @@ type
 
 // ------------------------------ Windows OpenGL (WGL) support functions
 
-{$IFDEF SUPPORT_WGL}
-function wglGetProcAddress(ProcName: PAnsiChar): Pointer; stdcall; external opengl32;
+{$IFDEF MSWINDOWS} // {$IFDEF SUPPORT_WGL}
+//function wglGetProcAddress(ProcName: PAnsiChar): Pointer; stdcall; external opengl32;
 function wglCopyContext(p1: HGLRC; p2: HGLRC; p3: cardinal): BOOL; stdcall; external opengl32;
 function wglCreateContext(DC: HDC): HGLRC; stdcall; external opengl32;
 function wglCreateLayerContext(p1: HDC; p2: integer): HGLRC; stdcall; external opengl32;
@@ -1935,8 +1869,10 @@ implementation
 const
   glPrefix = 'gl';
 
-  // ************** Windows specific ********************
+
 {$IFDEF MSWINDOWS}
+
+// ************** Windows specific ********************
 
 const
   INVALID_MODULEHANDLE = 0;
@@ -1964,7 +1900,8 @@ begin
   Result := getProcAddress(EGLHandle, ProcName);
 end;
 {$ENDIF}
-{$ENDIF}
+
+{$ENDIF} //MSWINDOWS
 
 function GetProcAddressGLLib(ProcName: PAnsiChar): Pointer;
 begin

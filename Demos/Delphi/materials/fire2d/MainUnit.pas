@@ -32,7 +32,7 @@ uses
   GLBaseClasses,
   GLMaterial,
   GLFileJPEG,
-  GLUtils;
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)

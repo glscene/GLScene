@@ -25,7 +25,7 @@ package GLScene_Sounds_RT;
 {$IMAGEBASE $400000}
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'GLScene FMOD Manager'}
+{$DESCRIPTION 'GLScene Sound Managers'}
 {$RUNONLY}
 {$IMPLICITBUILD ON}
 
@@ -35,15 +35,15 @@ requires
   GLScene_RT;
 
 contains
-  Bass in '..\Source\Bass.pas',
-  fmod in '..\Source\fmod.pas',
-  fmodpresets in '..\Source\fmodpresets.pas',
-  fmodtypes in '..\Source\fmodtypes.pas',
-  fmoderrors in '..\Source\fmoderrors.pas',
-  openal in '..\Source\openal.pas',
-  GLSMBASS in '..\Source\GLSMBASS.pas',
-  GLSMFMOD in '..\Source\GLSMFMOD.pas',
-  GLSMOpenAL in '..\Source\GLSMOpenAL.pas',
-  GLSMWaveOut in '..\Source\GLSMWaveOut.pas';
+  Import.FMOD in '..\Source\Import.FMOD.pas',
+  Import.FMODpresets in '..\Source\Import.FMODpresets.pas',
+  Import.FMODtypes in '..\Source\Import.FMODtypes.pas',
+  Import.FMODerrors in '..\Source\Import.FMODerrors.pas',
+  Import.OpenAL in '..\Source\Import.OpenAL.pas',
+  GLSM.BASS in '..\Source\GLSM.BASS.pas',
+  GLSM.FMOD in '..\Source\GLSM.FMOD.pas',
+  GLSM.OpenAL in '..\Source\GLSM.OpenAL.pas',
+  GLSM.WaveOut in '..\Source\GLSM.WaveOut.pas',
+  Import.BASS in '..\Source\Import.BASS.pas';
 
 end.

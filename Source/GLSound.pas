@@ -20,7 +20,7 @@ uses
   GLVectorGeometry,
   GLCadencer,
   GLBaseClasses,
-  GLUtils;
+  GLS.Utils;
 
 {$I GLScene.inc}
 

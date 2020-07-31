@@ -21,13 +21,14 @@ uses
   System.SysUtils,
 
   OpenGLTokens,
+  OpenGLAdapter,
   XOpenGL,
   GLContext,
   GLScene,
   GLCrossPlatform,
 
   GLS.SDLWindow,
-  SDL2;
+  Import.SDL2;
 
 type
   (* A viewer using SDL.

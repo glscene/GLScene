@@ -21,7 +21,7 @@ uses
   GLVectorLists,
   GLVectorFileObjects,
   GLApplicationFileIO,
-  GLUtils;
+  GLS.Utils;
 
 type
   (* The IDTF vector file (Intermediate Data Text File).

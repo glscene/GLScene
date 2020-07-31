@@ -16,12 +16,13 @@ uses
   Vcl.ComCtrls,
   Vcl.Imaging.Jpeg,
 
+  Import.ODE,
+  GLS.ODEUtils,
   GLVectorTypes,
   GLSceneViewer,
   GLScene,
   GLObjects,
   GLCadencer,
-  ODEImport,
   GLTexture,
   GLExtrusion,
   GLVectorGeometry,
@@ -33,8 +34,7 @@ uses
   GLColor,
   GLCrossPlatform,
   GLCoordinates,
-  GLBaseClasses,
-  ODEUtils;
+  GLBaseClasses;
 
 const
   cMaxWindMag = 8;

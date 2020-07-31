@@ -23,11 +23,12 @@ uses
   System.SyncObjs,
 
   OpenGLTokens,
+  OpenGLAdapter,
   GLVectorTypes,
   GLState,
   GLContext,
   GLVectorGeometry,
-  SDL2;
+  Import.SDL2;
 
 type
   (* Pixel Depth options.

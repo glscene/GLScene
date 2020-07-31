@@ -14,8 +14,8 @@ uses
   Vcl.ExtCtrls,
   Vcl.ComCtrls,
 
-  cg,
-  cgGL,
+  Import.cg,
+  Import.cgGL,
   GLS.cgShader,
 
   GLScene,
@@ -33,7 +33,7 @@ uses
   GLMaterial,
   GLCoordinates,
   GLBaseClasses,
-  GLUtils;
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)

@@ -45,21 +45,21 @@ uses
   GLPersistentClasses, 
   GLMeshUtils, 
   GLVectorTypes, 
-  GLUtils, 
+  GLS.Utils, 
   GLGeomObjects,
   GLSimpleNavigation, 
   GLHUDObjects,
 
-  GLSLFurShader,
-  GLSLLatticeShader,
-  GLSLIvoryShader,
-  GLSLGoochShader,
-  GLSLErosionShader,
-  GLSLSemShader,
-  GLSLVertexDisplacementShader,
-  GLSLGlassShader,
-  GLCustomShader,
-  GLSLToonShader;
+  GLS.ShaderCustom,
+  GLSL.ShaderFur,
+  GLSL.ShaderLattice,
+  GLSL.ShaderIvory,
+  GLSL.ShaderGooch,
+  GLSL.ShaderErosion,
+  GLSL.ShaderSem,
+  GLSL.ShaderVertexDisplacement,
+  GLSL.ShaderGlass,
+  GLSL.ShaderToon;
 
 type
   TMainForm = class(TForm)
@@ -474,7 +474,7 @@ implementation
 uses Math,
   GLFileOBJ, GLFileSTL, GLFileLWO, GLFileQ3BSP, GLFileOCT, GLFileMS3D,
   GLFileNMF, GLFileMD3, GLFile3DS, GLFileMD2, GLFileSMD, GLFilePLY, GLFileGTS,
-  GLFileVRML, GLFileMD5, GLFileTIN, GLFileDXF, GLFileGRD;
+  GLFileVRML, GLFileMD5, GLS.FileTIN, GLFileDXF, GLS.FileGRD;
 
 procedure TMainForm.Button10Click(Sender: TObject);
 begin

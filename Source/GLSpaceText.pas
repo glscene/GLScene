@@ -20,6 +20,7 @@ interface
 {$IFDEF UNIX}{$MESSAGE Error 'Unit not supported'} {$ENDIF}
 
 uses
+  Winapi.OpenGL,
   WinApi.Windows,
   WinApi.Messages,
   System.Classes,
@@ -120,8 +121,8 @@ type
     function TextWidth(const str: WideString = ''): Single;
     function TextMaxHeight(const str: WideString = ''): Single;
     function TextMaxUnder(const str: WideString = ''): Single;
-    {  Note: this fuction is valid only after text has been rendered
-      the first time. Before that it returns zeros. }
+    (* Note: this fuction is valid only after text has been rendered
+      the first time. Before that it returns zeros. *)
     procedure TextMetrics(const str: WideString; out width, maxHeight, maxUnder: Single);
     procedure NotifyFontChanged;
     procedure NotifyChange(sender: TObject); override;
@@ -129,18 +130,18 @@ type
     function AxisAlignedDimensionsUnscaled: TVector; override;
     function BarycenterAbsolutePosition: TVector; override;
   published
-    {  Adjusts the 3D font extrusion. 
+    (* Adjusts the 3D font extrusion.
       If Extrusion=0, the characters will be flat (2D), values >0 will
-      give them a third dimension. }
+      give them a third dimension. *)
     property Extrusion: Single read FExtrusion write SetExtrusion;
     property Font: TFont read FFont write SetFont;
     property Text: WideString read GetText write SetText stored False;
     property Lines: TStringList read FLines write SetLines;
-    {  Quality related, see Win32 help for wglUseFontOutlines }
+    // Quality related, see Win32 help for wglUseFontOutlines
     property allowedDeviation: Single read FAllowedDeviation
       write SetAllowedDeviation;
-    {  Character range to convert. 
-      Converting less characters saves time and memory... }
+    (* Character range to convert.
+      Converting less characters saves time and memory... *)
     property CharacterRange: TGLSpaceTextCharRange read FCharacterRange
       write SetCharacterRange default stcrDefault;
     property AspectRatio: Single read FAspectRatio write SetAspectRatio;
@@ -149,7 +150,7 @@ type
     property Adjust: TGLTextAdjust read FAdjust write SetAdjust;
   end;
 
-  {  Manages a list of fonts for which display lists were created. }
+  // Manages a list of fonts for which display lists were created.
   TFontManager = class(TList)
   private
     FCurrentBase: Integer;

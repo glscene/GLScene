@@ -26,7 +26,7 @@
 #include "JPeg.hpp"
 #include "GLFileMD2.hpp"
 #include "GLFile3DS.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 
 
 //---------------------------------------------------------------------------

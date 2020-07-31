@@ -31,7 +31,7 @@
 #include "GLMaterial.hpp"
 #include "GLFileMP3.hpp"
 #include "Jpeg.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 //---------------------------------------------------------------------------
 class TForm1:public TForm
 {

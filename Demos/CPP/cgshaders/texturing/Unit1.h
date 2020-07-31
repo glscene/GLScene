@@ -18,9 +18,9 @@
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
 #include "GLSceneViewer.hpp"
-#include "GLCgShader.hpp"
+#include "GLS.CgShader.hpp"
 #include "JPeg.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

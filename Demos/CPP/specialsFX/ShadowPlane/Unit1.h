@@ -20,7 +20,7 @@
 #include "GLScene.hpp"
 #include "GLShadowPlane.hpp"
 #include "GLSceneViewer.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 #include "JPeg.hpp"
 
 //---------------------------------------------------------------------------

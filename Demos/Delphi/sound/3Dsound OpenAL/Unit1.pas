@@ -25,7 +25,7 @@ uses
   GLBaseClasses,
   GLFileWAV,
   GLFileMP3,
-  GLUtils;
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)

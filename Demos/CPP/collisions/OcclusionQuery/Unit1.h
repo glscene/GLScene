@@ -16,7 +16,6 @@
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
 #include "GLSceneViewer.hpp"
-#include "OpenGLx.hpp"
 #include "GLContext.hpp"
 #include "GLRenderContextInfo.hpp"
 

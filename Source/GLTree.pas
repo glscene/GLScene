@@ -26,6 +26,7 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
   System.Math,
@@ -213,40 +214,39 @@ type
     property Branches: TGLTreeBranches read FBranches;
     property Noise: TGLTreeBranchNoise read FNoise;
   published
-    { The depth of tree branch recursion. }
+    // The depth of tree branch recursion.
     property Depth: Integer read FDepth write SetDepth;
-    { The number of facets for each branch in the tree. }
+    // The number of facets for each branch in the tree.
     property BranchFacets: Integer read FBranchFacets write SetBranchFacets;
-    { Leaf size modifier. Leaf size is also influenced by branch recursion scale. }
+    // Leaf size modifier. Leaf size is also influenced by branch recursion scale.
     property LeafSize: Single read FLeafSize write SetLeafSize;
-    { Branch length modifier. }
+    // Branch length modifier.
     property BranchSize: Single read FBranchSize write SetBranchSize;
-    { Overall branch noise influence. Relates to the 'fullness' of the tree. }
+    // Overall branch noise influence. Relates to the 'fullness' of the tree.
     property branchNoise: Single read FBranchNoise write SetBranchNoise;
-    { Effects the habit of the tree. Values from 0 to 1 refer to Upright to
-      Spreading respectively. }
-    property BranchAngleBias: Single read FBranchAngleBias
-      write SetBranchAngleBias;
-    { Effects the balance of the tree. }
+    (* Effects the habit of the tree. Values from 0 to 1 refer to Upright to
+      Spreading respectively. *)
+    property BranchAngleBias: Single read FBranchAngleBias write SetBranchAngleBias;
+    // Effects the balance of the tree.
     property BranchAngle: Single read FBranchAngle write SetBranchAngle;
-    { Effects the rotation of each sub branch in recursion. }
+    // Effects the rotation of each sub branch in recursion.
     property BranchTwist: Single read FBranchTwist write SetBranchTwist;
-    { Effects the thickness of the branches. }
+    // Effects the thickness of the branches.
     property BranchRadius: Single read FBranchRadius write SetBranchRadius;
-    { Determines how thin a branch can get before a leaf is substituted. }
+    // Determines how thin a branch can get before a leaf is substituted.
     property LeafThreshold: Single read FLeafThreshold write SetLeafThreshold;
-    { Determines how BranchAngle effects the central leader (CentralLeader must = True). }
+    // Determines how BranchAngle effects the central leader (CentralLeader must = True).
     property CentralLeaderBias: Single read FCentralLeaderBias
       write SetCentralLeaderBias;
-    { Does this tree have a central leader? }
+    // Does this tree have a central leader?
     property CentralLeader: Boolean read FCentralLeader write SetCentralLeader;
     property Seed: Integer read FSeed write SetSeed;
-    { Automatically center the tree's vertices after building them. }
+    // Automatically center the tree's vertices after building them.
     property AutoCenter: Boolean read FAutoCenter write SetAutoCenter;
-    { Automatically rebuild the tree after changing the settings }
+    // Automatically rebuild the tree after changing the settings
     property AutoRebuild: Boolean read FAutoRebuild write SetAutoRebuild;
-    { Central branch can be thinner(lower values)/thicker(->1) depending on this constant.
-      The effect also depends on the BranchAngle variable. }
+    (* Central branch can be thinner(lower values)/thicker(->1) depending on this constant.
+      The effect also depends on the BranchAngle variable. *)
     property CenterBranchConstant: Single read FCenterBranchConstant
       write SetCenterBranchConstant;
     property MaterialLibrary: TGLMaterialLibrary read FMaterialLibrary

@@ -23,7 +23,7 @@ uses
   GLTeapot,
   GLCrossPlatform,
   GLCoordinates,
-  GLUtils,
+  GLS.Utils,
   GLBaseClasses;
 
 type

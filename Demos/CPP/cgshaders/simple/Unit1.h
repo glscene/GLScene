@@ -11,7 +11,6 @@
 #include <Vcl.ExtCtrls.hpp>
 
 #include "GLBaseClasses.hpp"
-#include "GLCgShader.hpp"
 #include "GLCrossPlatform.hpp"
 #include "GLMaterial.hpp"
 #include "GLScene.hpp"
@@ -21,10 +20,10 @@
 #include "GLGraph.hpp"
 #include "GLObjects.hpp"
 #include "GLVectorFileObjects.hpp"
-#include "GLCgShader.hpp"
+#include "GLS.CgShader.hpp"
 #include "GLFile3DS.hpp"
-#include "Cg.hpp"
-#include "CgGL.hpp"
+#include "Import.Cg.hpp"
+#include "Import.CgGL.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

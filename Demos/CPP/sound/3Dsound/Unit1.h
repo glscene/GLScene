@@ -22,7 +22,7 @@
 #include "GLSMOpenAL.hpp"
 #include "GLSound.hpp"
 #include "GLSceneViewer.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 #include "GLFileWAV.hpp"
 #include "GLFileMP3.hpp"
 #include "BASS.hpp"

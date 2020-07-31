@@ -26,6 +26,7 @@ object GLDemoForm: TGLDemoForm
     Buffer.FogEnvironment.FogEnd = 100.000000000000000000
     Buffer.BackgroundColor = clGray
     FieldOfView = 123.784454345703100000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end

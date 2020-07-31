@@ -16,7 +16,7 @@ uses
   GLS.Strings,
   GLBaseClasses,
   GLContext,
-  GLSGenerics,
+  GLS.Generics,
 
   GLS.Logger,
   GLS.CUDARunTime,

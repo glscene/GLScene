@@ -27,7 +27,7 @@
         <Projects Include="invariance\invariance.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="lining\LiningShaders.dproj">
+        <Projects Include="LiningShaders\LiningShaders.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="memviewer\memviewer.dproj">
@@ -141,13 +141,13 @@
         <MSBuild Projects="invariance\invariance.dproj" Targets="Make"/>
     </Target>
     <Target Name="LiningShaders">
-        <MSBuild Projects="lining\LiningShaders.dproj"/>
+        <MSBuild Projects="LiningShaders\LiningShaders.dproj"/>
     </Target>
     <Target Name="LiningShaders:Clean">
-        <MSBuild Projects="lining\LiningShaders.dproj" Targets="Clean"/>
+        <MSBuild Projects="LiningShaders\LiningShaders.dproj" Targets="Clean"/>
     </Target>
     <Target Name="LiningShaders:Make">
-        <MSBuild Projects="lining\LiningShaders.dproj" Targets="Make"/>
+        <MSBuild Projects="LiningShaders\LiningShaders.dproj" Targets="Make"/>
     </Target>
     <Target Name="memviewer">
         <MSBuild Projects="memviewer\memviewer.dproj"/>

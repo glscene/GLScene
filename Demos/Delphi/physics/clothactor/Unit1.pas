@@ -36,7 +36,7 @@ uses
   GLBaseClasses,
   GLRenderContextInfo,
   GLContext,
-  GLUtils,
+  GLS.Utils,
   GLCoordinates,
   GLPersistentClasses;
 

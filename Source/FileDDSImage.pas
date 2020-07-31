@@ -24,10 +24,10 @@ uses
   System.Classes,
   System.SysUtils,
   Vcl.Graphics,
-   
+
+  OpenGLTokens,
   GLVectorGeometry,
   GLGraphics,
-  OpenGLTokens,
   GLContext;
 
 type

@@ -12,7 +12,7 @@ uses
   Vcl.Dialogs,
   Vcl.StdCtrls,
 
-  GLUtils,
+  GLS.Utils,
   GLFilePGM,
 
   GLS.CUDAContext,

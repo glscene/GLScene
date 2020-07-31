@@ -13,17 +13,17 @@
 #include "GLCadencer.hpp"
 #include "GLCoordinates.hpp"
 #include "GLCrossPlatform.hpp"
-#include "GLCustomShader.hpp"
+#include "GLS.ShaderCustom.hpp"
 #include "GLGeomObjects.hpp"
 #include "GLGraph.hpp"
 #include "GLMaterial.hpp"
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
 #include "GLSimpleNavigation.hpp"
-#include "GLSLShader.hpp"
+#include "GLSL.Shader.hpp"
 #include "GLVectorFileObjects.hpp"
 #include "GLSceneViewer.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

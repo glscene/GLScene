@@ -55,7 +55,7 @@ implementation
 uses
   GLContext,
   GLState,
-  GLUtils;
+  GLS.Utils;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin

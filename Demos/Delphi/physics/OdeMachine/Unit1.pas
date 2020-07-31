@@ -10,11 +10,10 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
 
-
   GLScene,
   GLObjects,
   GLSceneViewer,
-  GLODEManager,
+  GLS.ODEManager,
   GLVectorGeometry,
   GLCadencer,
   GLGeomObjects,
@@ -24,8 +23,7 @@ uses
   GLCrossPlatform,
   GLCoordinates,
   GLBaseClasses,
-
-  odeimport;
+  Import.ODE;
 
 type
   TForm1 = class(TForm)

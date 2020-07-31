@@ -31,7 +31,7 @@ uses
   GLBaseClasses,
   GLState,
   GLVectorGeometry,
-  GLUtils;
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)

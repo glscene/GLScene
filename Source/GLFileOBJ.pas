@@ -18,6 +18,8 @@ interface
 {.$DEFINE STATS} // Define to display statistics after loading.
 
 uses
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.Classes,
   System.SysUtils,
 
@@ -93,9 +95,7 @@ type
   end;
 
 var
-  {If enabled, main mesh will be splitted into multiple mesh from facegroup
-     data.}
-
+  (* If enabled, main mesh will be splitted into multiple mesh from facegroup data.*)
   vGLFileOBJ_SplitMesh: boolean = False;
 
 // ------------------------------------------------------------------
@@ -108,17 +108,16 @@ uses
   OpenGLTokens,
   XOpenGL,
   GLContext,
-  GLMeshUtils,
-  GLUtils;
+  GLMeshUtils;
 
 function StreamEOF(S: TStream): Boolean;
 begin
-  { Is the stream at its end? }
+  // Is the stream at its end?
   Result := (S.Position >= S.Size);
 end;
 
 function Rest(const s: string; Count: integer): string;
-{ Return the right part of s including s[Count]. }
+// Return the right part of s including s[Count].
 begin
   Result := copy(s, Count, Length(s) - Count + 1);
 end;
@@ -816,7 +815,7 @@ var
               begin
                 Ambient.Color := objMtl.MaterialVectorProperty(matName, 'Ka', clrGray20);
                 Diffuse.Color := objMtl.MaterialVectorProperty(matName, 'Kd', clrGray80);
-                Diffuse.Alpha := GLUtils.StrToFloatDef(objMtl.MaterialStringProperty(matName, 'd'), 1);
+                Diffuse.Alpha := StrToFloatDef(objMtl.MaterialStringProperty(matName, 'd'), 1);
                 if Diffuse.Alpha < 1 then
                   libMat.Material.BlendingMode := bmTransparency;
                 case StrToIntDef(objMtl.MaterialStringProperty(matName, 'illum'), 1) of
@@ -1368,7 +1367,7 @@ begin
       Result := NullHmgVector;
       for i := 0 to 3 do
         if sl.Count > i then
-          Result.V[i] := GLUtils.StrToFloatDef(sl[i], 0)
+          Result.V[i] := StrToFloatDef(sl[i], 0)
         else
           Break;
     end

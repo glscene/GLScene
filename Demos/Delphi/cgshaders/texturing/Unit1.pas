@@ -16,8 +16,8 @@ uses
   Vcl.ComCtrls,
 
   GLS.OpenGLx,
-  Cg,
-  cgGL,
+  Import.Cg,
+  Import.cgGL,
   GLS.cgShader,
 
   GLScene,
@@ -31,7 +31,7 @@ uses
   GLCrossPlatform,
   GLMaterial,
   GLCoordinates,
-  GLUtils,
+  GLS.Utils,
   GLBaseClasses;
 
 type

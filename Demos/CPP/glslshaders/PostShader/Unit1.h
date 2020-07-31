@@ -23,10 +23,10 @@
 #include "GLSimpleNavigation.hpp"
 #include "GLVectorFileObjects.hpp"
 #include "GLSceneViewer.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 
-#include "GLSLPostShaders.hpp"
-#include "GLCGPostTransformationShader.hpp"
+#include "GLSL.ShaderPosts.hpp"
+#include "GLS.CGPostTransformationShader.hpp"
 
 // FileFormats
 #include "GLFileTGA.hpp"

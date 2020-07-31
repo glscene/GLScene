@@ -11,6 +11,8 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   Winapi.Windows,
   Winapi.Messages,
   System.SysUtils,
@@ -536,7 +538,7 @@ begin
   try
     ClearIAttribs;
     // Initialize forward context
-    if False { GLStates.ForwardContext } then
+    if False (* GLStates.ForwardContext *) then
     begin
       if FGL.VERSION_4_2 then
       begin
@@ -623,7 +625,7 @@ begin
       FRC := FGL.WCreateContextAttribsARB(aDC, 0, @FiAttribs[0]);
       if FRC = 0 then
       begin
-        if False { GLStates.ForwardContext } then
+        if False (* GLStates.ForwardContext *) then
           GLSLogger.LogErrorFmt(strForwardContextFailed, [GetLastError, SysErrorMessage(GetLastError)])
         else
           GLSLogger.LogErrorFmt(strBackwardContextFailed, [GetLastError, SysErrorMessage(GetLastError)]);

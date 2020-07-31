@@ -32,7 +32,7 @@ uses
   GLSceneViewer, 
   GLGui, 
   GLGraphics, 
-  GLUtils,  
+  GLS.Utils,
   GLCrossPlatform,
   GLCoordinates, 
   GLBaseClasses, 
@@ -655,7 +655,7 @@ var
 begin
   if Assigned(SelectedElement) then
   begin
-    res := GLUtils.StrToFloatDef(ScaleXEdit.Text, 0);
+    res := GLS.Utils.StrToFloatDef(ScaleXEdit.Text, 0);
     if res > 0 then
     begin
       SelectedElement.Scale.X := Res;
@@ -672,7 +672,7 @@ var
 begin
   if Assigned(SelectedElement) then
   begin
-    res := GLUtils.StrToFloatDef(ScaleYEdit.Text, 0);
+    res := GLS.Utils.StrToFloatDef(ScaleYEdit.Text, 0);
     if res > 0 then
     begin
       SelectedElement.Scale.Y := Res;
@@ -691,7 +691,7 @@ begin
   begin
     GLPanel1.BlockRender;
     try
-      res := GLUtils.StrToFloatDef(LeftEdit.Text, -1);
+      res := GLS.Utils.StrToFloatDef(LeftEdit.Text, -1);
       if res >= 0 then
       begin
         SelectedElement.TopLeft.X := Res;
@@ -713,7 +713,7 @@ begin
   begin
     GLPanel1.BlockRender;
     try
-      res := GLUtils.StrToFloatDef(TopEdit.Text, -1);
+      res := GLS.Utils.StrToFloatDef(TopEdit.Text, -1);
       if res >= 0 then
       begin
         SelectedElement.TopLeft.Y := Res;
@@ -735,7 +735,7 @@ begin
   begin
     GLPanel1.BlockRender;
     try
-      res := GLUtils.StrToFloatDef(RightEdit.Text, -1);
+      res := GLS.Utils.StrToFloatDef(RightEdit.Text, -1);
       if res >= 0 then
       begin
         SelectedElement.BottomRight.X := Res;
@@ -757,7 +757,7 @@ begin
   begin
     GLPanel1.BlockRender;
     try
-      res := GLUtils.StrToFloatDef(BottomEdit.Text, -1);
+      res := GLS.Utils.StrToFloatDef(BottomEdit.Text, -1);
       if res >= 0 then
       begin
         SelectedElement.BottomRight.Y := Res;

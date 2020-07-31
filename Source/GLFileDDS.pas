@@ -11,6 +11,8 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.Classes,
   System.SysUtils,
   System.Math,
@@ -37,7 +39,7 @@ type
     procedure SaveToFile(const filename: string); override;
     procedure LoadFromStream(stream: TStream); override;
     procedure SaveToStream(stream: TStream); override;
-    {Assigns from any Texture.}
+    // Assigns from any Texture.
     procedure AssignFromTexture(textureContext: TGLContext;
       const textureHandle: Cardinal;
       textureTarget: TGLTextureTarget;
@@ -138,8 +140,8 @@ begin
 
   with header.SurfaceFormat do
   begin
-    {There are flags that are supposed to mark these fields as valid,
-       but some dds files don't set them properly }
+    (* There are flags that are supposed to mark these fields as valid,
+       but some dds files don't set them properly *)
     UnMipmap;
     FLOD[0].Width := dwWidth;
     FLOD[0].Height := dwHeight;

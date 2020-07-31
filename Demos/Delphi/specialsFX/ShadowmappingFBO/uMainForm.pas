@@ -27,8 +27,8 @@ uses
   GLGeomObjects,
   GLFBORenderer,
   GLCadencer,
-  GLCustomShader,
-  GLSLShader,
+  GLS.ShaderCustom,
+  GLSL.Shader,
   GLVectorGeometry,
   GLPolyhedron,
   GLCoordinates,
@@ -43,7 +43,7 @@ uses
   GLFileObj,
   GLGraphics,
   GLState,
-  GLUtils;
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)

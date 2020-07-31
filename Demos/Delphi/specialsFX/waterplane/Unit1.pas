@@ -33,7 +33,7 @@ uses
   GLRenderContextInfo,
   GLSimpleNavigation,
   GLColor,
-  GLUtils,
+  GLS.Utils,
   GLBaseClasses;
 
 type

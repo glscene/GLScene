@@ -29,7 +29,7 @@ uses
   GLMaterial,
   GLCoordinates,
   GLBaseClasses,
-  GLUtils,
+  GLS.Utils,
   GLFileTGA;
 
 type

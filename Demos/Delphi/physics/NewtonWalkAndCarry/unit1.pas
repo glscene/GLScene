@@ -18,7 +18,7 @@ uses
 
   GLScene,
   GLPersistentClasses,
-  GLNGDManager,
+  GLS.NGDManager,
   GLMaterial,
   GLCadencer,
   GLSceneViewer,
@@ -38,7 +38,7 @@ uses
   GLColor,
   GLHUDObjects,
   GLTexture,
-  GLUtils;
+  GLS.Utils;
 
 type
 

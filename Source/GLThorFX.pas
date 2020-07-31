@@ -11,6 +11,7 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
   System.Types,
@@ -49,7 +50,7 @@ type
   TCalcPointEvent = procedure(Sender: TObject; PointNo: integer; var x: single;
     var y: single; var z: single) of object;
 
-  {  Thor special effect manager. }
+  // Thor special effect manager.
   TGLThorFXManager = class(TGLCadenceAbleComponent)
   private
     FClients: TList;
@@ -101,7 +102,7 @@ type
     property OnCalcPoint: TCalcPointEvent read FOnCalcPoint write FOnCalcPoint;
   end;
 
-  {  Thor special effect }
+  //  Thor special effect
   TGLBThorFX = class(TGLObjectPostEffect)
   private
     FManager: TGLThorFXManager;
@@ -121,11 +122,11 @@ type
     class function FriendlyDescription: String; override;
     procedure Render(var rci: TGLRenderContextInfo); override;
   published
-    {  Refers the collision manager. }
+    //  Refers the collision manager.
     property Manager: TGLThorFXManager read FManager write SetManager;
   end;
 
-  {  Returns or creates the TGLBThorFX within the given object's effects.  }
+// Returns or creates the TGLBThorFX within the given object's effects.
 function GetOrCreateThorFX(obj: TGLBaseSceneObject; const name: String = ''): TGLBThorFX;
 
 // ------------------------------------------------------------------

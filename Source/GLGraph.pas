@@ -11,6 +11,7 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
   
@@ -45,11 +46,11 @@ type
     constructor Create(AOwner: TPersistent); override;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
-    {  Returns the Base value for Step browsing. 
+    (* Returns the Base value for Step browsing.
       ie. the lowest value (superior to Min) that verifies
-      Frac((Origin-StepBase)/Step)=0.0, this value may be superior to Max. }
+      Frac((Origin-StepBase)/Step)=0.0, this value may be superior to Max. *)
     function StepBase: Single;
-    {  Maximum number of steps that can occur between Min and Max. }
+    //  Maximum number of steps that can occur between Min and Max.
     function MaxStepCount: Integer;
     function IsValid: Boolean;
     procedure SetBaseStepMaxToVars(var Base, Step, Max: Single;
@@ -70,14 +71,14 @@ type
   TGLHeightFieldOptions = set of TGLHeightFieldOption;
   TGLHeightFieldColorMode = (hfcmNone, hfcmEmission, hfcmAmbient, hfcmDiffuse,
     hfcmAmbientAndDiffuse);
-  {  Renders a sampled height-field. 
+  (* Renders a sampled height-field.
     HeightFields are used to materialize z=f(x, y) surfaces, you can use it to
     render anything from math formulas to statistics. Most important properties
     of an height field are its sampling scales (X & Y) that determine the extents
-    and the resolution of the base grid. 
+    and the resolution of the base grid.
     The component will then invoke it OnGetHeight event to retrieve Z values for
     all of the grid points (values are retrieved only once for each point). Each
-    point may have an additionnal color and texture coordinate. }
+    point may have an additionnal color and texture coordinate. *)
   TGLHeightField = class(TGLSceneObject)
   private
     FOnGetHeight: TGLHeightFieldGetHeightEvent;
@@ -110,17 +111,17 @@ type
       write SetXSamplingScale;
     property YSamplingScale: TGLSamplingScale read FYSamplingScale
       write SetYSamplingScale;
-    {  Define if and how per vertex color is used. }
+    // Define if and how per vertex color is used.
     property ColorMode: TGLHeightFieldColorMode read FColorMode write SetColorMode
       default hfcmNone;
     property Options: TGLHeightFieldOptions read FOptions write SetOptions
       default [hfoTwoSided];
-    {  Primary event to return heights. }
+    // Primary event to return heights.
     property OnGetHeight: TGLHeightFieldGetHeightEvent read FOnGetHeight
       write SetOnGetHeight;
-    {  Alternate this event to return heights.
+    (* Alternate this event to return heights.
       This events passes an extra "Sender" parameter, it will be invoked
-      only if OnGetHeight isn't defined. }
+      only if OnGetHeight isn't defined. *)
     property OnGetHeight2: TGLHeightFieldGetHeight2Event read FOnGetHeight2
       write SetOnGetHeight2;
   end;
@@ -128,15 +129,14 @@ type
   TGLXYZGridPart = (gpX, gpY, gpZ);
   TGLXYZGridParts = set of TGLXYZGridPart;
 
-  {  Rendering Style for grid lines.
+  (* Rendering Style for grid lines.
     - glsLine : a single line is used for each grid line (from Min to Max),
     this provides the fastest rendering
     - glsSegments : line segments are used between each node of the grid,
     this enhances perspective and quality, at the expense of computing
-    power. }
+    power. *)
   TGLXYZGridLinesStyle = (glsLine, glsSegments);
-  {  An XYZ Grid object.
-    Renders an XYZ grid using lines. }
+  // An XYZ Grid object. Renders an XYZ grid using lines
   TGLXYZGrid = class(TGLLineBase)
   private
     FXSamplingScale: TGLSamplingScale;
@@ -167,8 +167,8 @@ type
     property Parts: TGLXYZGridParts read FParts write SetParts default [gpX, gpY];
     property LinesStyle: TGLXYZGridLinesStyle read FLinesStyle write SetLinesStyle
       default glsSegments;
-    {  Adjusts lines smoothing (or antialiasing).
-      Obsolete, now maps to Antialiased property. }
+    (* Adjusts lines smoothing (or antialiasing).
+      Obsolete, now maps to Antialiased property. *)
     property LinesSmoothing: Boolean write SetLinesSmoothing stored False;
   end;
 

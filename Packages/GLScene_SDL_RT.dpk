@@ -35,7 +35,7 @@ requires
   GLScene_RT;
 
 contains
-  SDL2 in '..\Source\SDL2.pas',
+  Import.SDL2 in '..\Source\Import.SDL2.pas',
   GLS.SDLWindow in '..\Source\GLS.SDLWindow.pas';
 
 end.

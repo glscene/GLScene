@@ -12,7 +12,7 @@ interface
 
 uses
   System.SysUtils,
-  GLUtils,
+  GLS.Utils,
   GLS.Logger,
   GLS.Strings,
   GLCrossPlatform;

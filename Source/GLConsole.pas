@@ -59,7 +59,7 @@ uses
   GLPersistentClasses,
   GLContext,
   GLTexture,
-  GLUtils,
+  GLS.Utils,
   GLS.Strings,
   GLMaterial,
   GLVectorTypes;

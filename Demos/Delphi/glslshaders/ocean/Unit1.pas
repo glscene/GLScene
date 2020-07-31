@@ -4,6 +4,7 @@ interface
 
 uses
   Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.SysUtils,
   System.Classes,
   Vcl.Graphics,
@@ -18,12 +19,12 @@ uses
   GLScene,
   GLTexture,
   GLObjects,
-  GLUtils,
   GLContext,
   GLVectorGeometry,
   GLGeomObjects,
   GLCadencer,
-  GLUserShader,
+  GLS.ShaderUser,
+  GLS.Utils,
   GLGraph,
   GLVectorTypes,
   GLSkydome,

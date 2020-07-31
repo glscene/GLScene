@@ -11,6 +11,7 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
   System.UITypes,
@@ -120,30 +121,30 @@ type
     property Items[index: Integer]: TGLSkyDomeStar read GetItems write SetItems;
     default;
     procedure BuildList(var rci: TGLRenderContextInfo; twinkle: Boolean);
-    {Adds nb random stars of the given color. 
-       Stars are homogenously scattered on the complete sphere, not only the band defined or visible dome. }
+    (* Adds nb random stars of the given color.
+      Stars are homogenously scattered on the complete sphere, not only the band defined or visible dome. *)
     procedure AddRandomStars(const nb: Integer; const color: TColor; const limitToTopDome: Boolean = False); overload;
     procedure AddRandomStars(const nb: Integer; const ColorMin, ColorMax:TVector3b; const Magnitude_min, Magnitude_max: Single;const limitToTopDome: Boolean = False); overload;
-    {Load a 'stars' file, which is made of TGLStarRecord. 
-       Not that '.stars' files should already be sorted by magnitude and color. }
+    (* Load a 'stars' file, which is made of TGLStarRecord.
+       Not that '.stars' files should already be sorted by magnitude and color. *)
     procedure LoadStarsFile(const starsFileName: string);
   end;
 
   TGLSkyDomeOption = (sdoTwinkle);
   TGLSkyDomeOptions = set of TGLSkyDomeOption;
 
-  (*Renders a sky dome always centered on the camera. 
-       If you use this object make sure it is rendered *first*, as it ignores
-       depth buffering and overwrites everything. All children of a skydome
-       are rendered in the skydome's coordinate system. 
-       The skydome is described by "bands", each "band" is an horizontal cut
-       of a sphere, and you can have as many bands as you wish. 
-       Estimated CPU cost (K7-500, GeForce SDR, default bands): 
-        800x600 fullscreen filled: 4.5 ms (220 FPS, worst case)
-        Geometry cost (0% fill): 0.7 ms (1300 FPS, best case) *)
+  (* Renders a sky dome always centered on the camera.
+     If you use this object make sure it is rendered *first*, as it ignores
+     depth buffering and overwrites everything. All children of a skydome
+     are rendered in the skydome's coordinate system.
+     The skydome is described by "bands", each "band" is an horizontal cut
+     of a sphere, and you can have as many bands as you wish.
+     Estimated CPU cost (K7-500, GeForce SDR, default bands):
+     800x600 fullscreen filled: 4.5 ms (220 FPS, worst case)
+      Geometry cost (0% fill): 0.7 ms (1300 FPS, best case) *)
   TGLSkyDome = class(TGLCameraInvariantObject)
   private
-     
+
     FOptions: TGLSkyDomeOptions;
     FBands: TGLSkyDomeBands;
     FStars: TGLSkyDomeStars;
@@ -165,14 +166,14 @@ type
   TEarthSkydomeOption = (esoFadeStarsWithSun, esoRotateOnTwelveHours, esoDepthTest);
   TEarthSkydomeOptions = set of TEarthSkydomeOption;
 
-  {Render a skydome like what can be seen on earth. 
+  (* Render a skydome like what can be seen on earth.
      Color is based on sun position and turbidity, to "mimic" atmospheric
      Rayleigh and Mie scatterings. The colors can be adjusted to render
-     weird/extra-terrestrial atmospheres too. 
+     weird/extra-terrestrial atmospheres too.
      The default slices/stacks values make for an average quality rendering,
      for a very clean rendering, use 64/64 (more is overkill in most cases).
      The complexity is quite high though, making a T&L 3D board a necessity
-     for using TGLEarthSkyDome. }
+     for using TGLEarthSkyDome. *)
   TGLEarthSkyDome = class(TGLSkyDome)
   private
     FSunElevation: Single;
@@ -211,9 +212,9 @@ type
     procedure BuildList(var rci: TGLRenderContextInfo); override;
     procedure SetSunAtTime(HH, MM: Single);
   published
-      {Elevation of the sun, measured in degrees. }
+    // Elevation of the sun, measured in degrees
     property SunElevation: Single read FSunElevation write SetSunElevation;
-    {Expresses the purity of air.  Value range is from 1 (pure athmosphere) to 120 (very nebulous) }
+    // Expresses the purity of air.  Value range is from 1 (pure athmosphere) to 120 (very nebulous)
     property Turbidity: Single read FTurbidity write SetTurbidity;
     property SunZenithColor: TGLColor read FSunZenithColor write SetSunZenithColor;
     property SunDawnColor: TGLColor read FSunDawnColor write SetSunDawnColor;
@@ -226,13 +227,12 @@ type
     property Stacks: Integer read FStacks write SetStacks default 48;
   end;
 
-{ Computes position on the unit sphere of a star record (Z=up). }
-function StarRecordPositionZUp(const starRecord : TGLStarRecord) : TAffineVector;
-{ Computes position on the unit sphere of a star record (Y=up). }
-function StarRecordPositionYUp(const starRecord : TGLStarRecord) : TAffineVector;
-{ Computes star color from BV index (RGB) and magnitude (alpha). }
-function StarRecordColor(const starRecord : TGLStarRecord; bias : Single) : TVector;
-
+// Computes position on the unit sphere of a star record (Z=up)
+function StarRecordPositionZUp(const starRecord: TGLStarRecord): TAffineVector;
+// Computes position on the unit sphere of a star record (Y=up)
+function StarRecordPositionYUp(const starRecord: TGLStarRecord): TAffineVector;
+// Computes star color from BV index (RGB) and magnitude (alpha)
+function StarRecordColor(const starRecord: TGLStarRecord; bias: Single): TVector;
 
 // ------------------------------------------------------------------
 implementation

@@ -11,6 +11,8 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.Classes,
   System.SysUtils,
 
@@ -26,8 +28,8 @@ uses
   GLS.Strings,
   GLTextureFormat,
   GLTexture,
-  GLSLShader,
-  GLSLParameter,
+  GLSL.Shader,
+  GLSL.ShaderParameter,
   GLPersistentClasses,
   {$IFDEF USE_LOGGING} GLS.Logger, {$ENDIF}
   GLRenderContextInfo;

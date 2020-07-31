@@ -11,6 +11,8 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.Types,
   System.Classes,
   System.SysUtils,
@@ -30,7 +32,7 @@ uses
   GLBaseClasses,
   GLState,
   GLTextureFormat,
-  GLUtils;
+  GLS.Utils;
 
 type
   (* Imposter rendering options.
@@ -146,52 +148,52 @@ type
     procedure Notification(AComponent: TComponent; Operation: TOperation);
       override;
     procedure NotifyChange(Sender: TObject); override;
-    {Returns a valid imposter for the specified object.
+    (* Returns a valid imposter for the specified object.
        Imposter must have been requested first, and the builder given
-       an opportunity to prepare it before it can be available. }
+       an opportunity to prepare it before it can be available. *)
     function ImposterFor(impostoredObject: TGLBaseSceneObject): TImposter;
-    {Request an imposter to be prepared for the specified object. }
+    // Request an imposter to be prepared for the specified object.
     procedure RequestImposterFor(impostoredObject: TGLBaseSceneObject);
-    {Tells the imposter for the specified object is no longer needed. }
+    // Tells the imposter for the specified object is no longer needed.
     procedure UnRequestImposterFor(impostoredObject: TGLBaseSceneObject);
   published
-    {Specifies the render point at which the impostor texture(s) can be prepared.
+    (* Specifies the render point at which the impostor texture(s) can be prepared.
      For best result, the render point should happen in viewer that has
-     a destination alpha (otherwise, impostors will be opaque). }
+     a destination alpha (otherwise, impostors will be opaque). *)
     property RenderPoint: TGLRenderPoint read FRenderPoint write SetRenderPoint;
-    {Background color for impostor rendering.
+    (* Background color for impostor rendering.
        Typically, you'll want to leave the alpha channel to zero, and pick
-       as RGB as color that matches the impostor'ed objects edge colors most.}
+       as RGB as color that matches the impostor'ed objects edge colors most.*)
     property BackColor: TGLColor read FBackColor write SetBackColor;
-    {Offset applied to the impostor'ed object during imposter construction.
-       Can be used to manually tune the centering of objects. }
+    (* Offset applied to the impostor'ed object during imposter construction.
+       Can be used to manually tune the centering of objects. *)
     property BuildOffset: TGLCoordinates read FBuildOffset write SetBuildOffset;
-    {Imposter rendering options. }
+    // Imposter rendering options.
     property ImposterOptions: TImposterOptions read FImposterOptions write
       FImposterOptions default cDefaultImposterOptions;
-    {Determines how the imposter are handled.
+    (* Determines how the imposter are handled.
        This is the reference point for imposters, impostor'ed objects that
        are centered should use irCenter, those whose bottom is the origin
-       should use irBottom, etc. }
+       should use irBottom, etc. *)
     property ImposterReference: TImposterReference read FImposterReference write
       SetImposterReference default irCenter;
-    {Alpha testing teshold.  }
+    // Alpha testing teshold.
     property AlphaTreshold: Single read FAlphaTreshold write FAlphaTreshold;
-    {Event fired before preparing/loading an imposter.
+    (* Event fired before preparing/loading an imposter.
        If an already prepared version of the importer is available, place
        it in the TGLBitmap32 the event shall return (the bitmap will be
        freed by the imposter builder). If a bitmap is specified, it will
-       be used in place of what automatic generation could have generated. }
+       be used in place of what automatic generation could have generated. *)
     property OnLoadingImposter: TLoadingImposterEvent read FOnLoadingImposter
       write FOnLoadingImposter;
-    {Event fired after preparing/loading an imposter.
+    (* Event fired after preparing/loading an imposter.
        This events gives an opportunity to save the imposter after it has
-       been loaded or prepared. }
+       been loaded or prepared. *)
     property OnImposterLoaded: TImposterLoadedEvent read FOnImposterLoaded write
       FOnImposterLoaded;
   end;
 
-  {Describes a set of orientation in a corona fashion. }
+  // Describes a set of orientation in a corona fashion.
   TGLStaticImposterBuilderCorona = class(TCollectionItem)
   private
     FSamples: Integer;
@@ -239,7 +241,7 @@ type
     procedure EndUpdate; override;
   end;
 
-  {Imposter class whose texture contains several views from different angles. }
+  // Imposter class whose texture contains several views from different angles.
   TStaticImposter = class(TImposter)
   public
     procedure Render(var rci: TGLRenderContextInfo;
@@ -249,7 +251,7 @@ type
 
   TSIBLigthing = (siblNoLighting, siblStaticLighting, siblLocalLighting);
 
-  {Builds imposters whose texture is a catalog of prerendered views. }
+  // Builds imposters whose texture is a catalog of prerendered views.
   TGLStaticImposterBuilder = class(TGLImposterBuilder)
   private
     FCoronas: TGLStaticImposterBuilderCoronas;
@@ -270,7 +272,7 @@ type
     function StoreSamplesAlphaScale: Boolean;
     function GetTextureSizeInfo: string;
     procedure SetTextureSizeInfo(const texSize: string);
-    {Computes the optimal texture size that would be able to hold all samples. }
+    // Computes the optimal texture size that would be able to hold all samples.
     function ComputeOptimalTextureSize: TPoint;
     function CreateNewImposter: TImposter; override;
     procedure DoPrepareImposter(var rci: TGLRenderContextInfo;
@@ -284,44 +286,44 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    {Render imposter texture.
-       Buffer and object must be compatible, RC must have been activated. }
+    (* Render imposter texture.
+       Buffer and object must be compatible, RC must have been activated. *)
     procedure Render(var rci: TGLRenderContextInfo;
       impostoredObject: TGLBaseSceneObject;
       destImposter: TImposter);
-    {Ratio (0..1) of the texture that will be used by samples.
+    (* Ratio (0..1) of the texture that will be used by samples.
        If this value is below 1, you're wasting texture space and may
-       as well increase the number of samples. }
+       as well increase the number of samples. *)
     function TextureFillRatio: Single;
-    {Meaningful only after imposter texture has been prepared. }
+    // Meaningful only after imposter texture has been prepared.
     property TextureSize: TPoint read FTextureSize;
     property SamplesPerAxis: TPoint read FSamplesPerAxis;
   published
-    {Description of the samples looking orientations. }
+    // Description of the samples looking orientations.
     property Coronas: TGLStaticImposterBuilderCoronas read FCoronas write
       SetCoronas;
-    {Size of the imposter samples (square). }
+    // Size of the imposter samples (square).
     property SampleSize: Integer read FSampleSize write SetSampleSize default 32;
-    {Size ratio applied to the impostor'ed objects during sampling.
+    (* Size ratio applied to the impostor'ed objects during sampling.
        Values greater than one can be used to "fill" the samples more
        by scaling up the object. This is especially useful when the impostor'ed
        object doesn't fill its bounding sphere, and/or if the outer details
-       are not relevant for impostoring. }
+       are not relevant for impostoring. *)
     property SamplingRatioBias: Single read FSamplingRatioBias write
       SetSamplingRatioBias stored StoreSamplingRatioBias;
-    {Scale factor apply to the sample alpha channel.
+    (* Scale factor apply to the sample alpha channel.
        Main use is to saturate the samples alpha channel, and make fully
        opaque what would have been partially transparent, while leaving
-       fully transparent what was fully transparent. }
+       fully transparent what was fully transparent. *)
     property SamplesAlphaScale: Single read FSamplesAlphaScale write
       SetSamplesAlphaScale stored StoreSamplesAlphaScale;
-    {Lighting mode to apply during samples construction. }
+    // Lighting mode to apply during samples construction.
     property Lighting: TSIBLigthing read FLighting write FLighting default
       siblStaticLighting;
-    {Dummy property that returns the size of the imposter texture. 
+    (* Dummy property that returns the size of the imposter texture.
        This property is essentially here as a helper at design time,
        to give you the requirements your coronas and samplesize parameters
-       imply. }
+       imply. *)
     property TextureSizeInfo: string read GetTextureSizeInfo write
       SetTextureSizeInfo stored False;
   end;
@@ -336,8 +338,7 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    { procedure DoRender(var rci : TGLRenderContextInfo;
-                         renderSelf, renderChildren : Boolean); override; }
+/// procedure DoRender(var rci : TGLRenderContextInfo; renderSelf, renderChildren : Boolean); override;
   published
     property MinTexSize: Integer read FMinTexSize write FMinTexSize;
     property MaxTexSize: Integer read FMaxTexSize write FMaxTexSize;

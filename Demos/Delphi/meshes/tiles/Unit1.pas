@@ -33,7 +33,7 @@ uses
   GLRenderContextInfo,
   GLTextureFormat,
   GLKeyboard,
-  GLUtils;
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)

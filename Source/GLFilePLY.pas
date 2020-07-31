@@ -18,7 +18,7 @@ uses
   GLVectorLists,
   GLVectorFileObjects,
   GLApplicationFileIO,
-  GLUtils;
+  GLS.Utils;
 
 type
   (* The PLY vector file aka Stanford Triangle Format.

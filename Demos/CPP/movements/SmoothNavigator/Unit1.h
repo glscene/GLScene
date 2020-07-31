@@ -23,7 +23,7 @@
 #include "GLSceneViewer.hpp"
 #include "GLSmoothNavigator.hpp"
 #include "GLKeyboard.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 
 
 //---------------------------------------------------------------------------

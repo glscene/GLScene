@@ -3,7 +3,6 @@ unit Unit1;
 interface
 
 uses
-  Winapi.OpenGL,
   System.SysUtils,
   System.Classes,
   Vcl.Graphics,
@@ -26,7 +25,7 @@ uses
   GLMaterial,
   GLCoordinates,
   GLBaseClasses,
-  GLUtils;
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)

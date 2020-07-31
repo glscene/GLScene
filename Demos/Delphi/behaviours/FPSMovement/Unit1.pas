@@ -37,7 +37,7 @@ uses
   GLCoordinates,
   GLSimpleNavigation,
   GLBaseClasses,
-  GLUtils;
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)

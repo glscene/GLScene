@@ -14,7 +14,7 @@ uses
   GLSimpleNavigation,
   GLScene,
   GLCoordinates,
-  GLNGDManager,
+  GLS.NGDManager,
   GLBitmapFont,
   GLWindowsFont,
   GLCadencer,

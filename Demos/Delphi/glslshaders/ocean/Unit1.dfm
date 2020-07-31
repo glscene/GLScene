@@ -25,6 +25,7 @@ object Form1: TForm1
     Buffer.FaceCulling = False
     Buffer.Lighting = False
     FieldOfView = 161.330001831054700000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end

@@ -17,7 +17,7 @@ uses
   GLVectorTypes,
   GLObjects,
   GLSound,
-  GLSMFMOD,
+  GLSM.FMOD,
   GLSceneViewer,
   GLGeomObjects,
   GLCrossPlatform,
@@ -26,7 +26,7 @@ uses
   GLFileWAV,
   GLFileMP3,
   GLVectorGeometry,
-  GLUtils;
+  GLS.Utils;
 
 
 type

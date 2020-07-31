@@ -18,7 +18,7 @@
 #include "GLScene.hpp"
 #include "GLSimpleNavigation.hpp"
 #include "GLSkydome.hpp"
-#include "GLUserShader.hpp"
+#include "GLS.ShaderUser.hpp"
 #include "GLSceneViewer.hpp"
 #include "GLTextureFormat.hpp"
 #include "GLColor.hpp"
@@ -27,7 +27,7 @@
 #include "GLContext.hpp"
 #include "GLRenderContextInfo.hpp"
 #include "GLState.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 #include "GLFileTGA.hpp"
 
 

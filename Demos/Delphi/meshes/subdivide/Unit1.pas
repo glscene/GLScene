@@ -28,7 +28,7 @@ uses
   GLCoordinates,
   GLState,
   GLBaseClasses,
-  GLUtils,
+  GLS.Utils,
   GLFile3DS,
   GLFileMD2,
   GLFileSMD;

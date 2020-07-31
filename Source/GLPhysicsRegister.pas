@@ -10,9 +10,9 @@ interface
 
 uses
   System.Classes,
-  GLODEManager,
-  GLNGDManager,
-  GLPhysics;
+  GLS.ODEManager,
+  GLS.NGDManager,
+  GLS.PhysicsManager;
 
 procedure Register;
 

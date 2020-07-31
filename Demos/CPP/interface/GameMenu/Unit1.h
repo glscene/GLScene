@@ -29,7 +29,7 @@
 #include "GLMaterial.hpp"
 #include "GLCoordinates.hpp"
 #include "GLBaseClasses.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

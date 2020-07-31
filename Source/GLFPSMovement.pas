@@ -11,6 +11,7 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
   Winapi.Windows,
   System.Classes,
   System.Types,
@@ -65,10 +66,10 @@ type
     class function FriendlyName: String; override;
   published
      property Map: TGLFreeForm read FMap write setMap;
-     {  Indicates the collision group of this map. A Collision Group
+     (* Indicates the collision group of this map. A Collision Group
       is a set of logical maps and movers that can collide between
       themselves (i.e. a Behaviour with group 1 can only collide with
-      maps that are also on group 1). }
+      maps that are also on group 1). *)
     property CollisionGroup: integer read FCollisionGroup write FCollisionGroup;
   end;
 
@@ -117,7 +118,7 @@ type
     property Maps: TGLMapCollection read FMaps write FMaps;
     property Navigator: TGLNavigator read FNavigator write SetNavigator;
     property Scene: TGLScene read FScene write setScene;
-    {  Display Time for the arrow lines. }
+    // Display Time for the arrow lines.
     property DisplayTime: integer read FDisplayTime write FDisplayTime;
     property MovementScale: single read FMovementScale write FMovementScale;
   end;

@@ -24,7 +24,7 @@
 #include "GLSkydome.hpp"
 #include "GLThorFX.hpp"
 #include "GLSceneViewer.hpp"
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 #include "JPeg.hpp"
 
 //---------------------------------------------------------------------------

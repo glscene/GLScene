@@ -29,7 +29,7 @@ uses
   GLTeapot,
   GLGeomObjects,
   GLRenderContextInfo,
-  GLUtils,
+  GLS.Utils,
   GLMesh,
   GLVectorFileObjects;
 

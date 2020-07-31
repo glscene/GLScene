@@ -16,6 +16,8 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.Classes,
   
   OpenGLTokens,
@@ -55,9 +57,9 @@ type
     class function FriendlyDescription: string; override;
     property NativeTextureTarget;
   published
-    {Width of the blank image (for memory allocation). }
+    // Width of the blank image (for memory allocation).
     property Width: Integer read GetWidth write SetWidth default 256;
-    {Width of the blank image (for memory allocation). }
+    // Width of the blank image (for memory allocation).
     property Height: Integer read GetHeight write SetHeight default 256;
     property Depth: Integer read GetDepth write SetDepth default 0;
     property SamplesCount: Integer read FSamplesCount write SetSamplesCount
@@ -66,7 +68,9 @@ type
       SetFixedSamplesLocation;
   end;
 
+//----------------------------------
 implementation
+//----------------------------------
 
 // ------------------
 // ------------------ TGLMultisampleImage ------------------

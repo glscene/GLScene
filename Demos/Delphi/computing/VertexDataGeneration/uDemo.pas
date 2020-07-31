@@ -30,7 +30,7 @@ uses
   GLS.CUDAGraphics,
 
   GLMaterial,
-  GLCustomShader,
+  GLS.ShaderCustom,
   GLSLShader;
 
 type

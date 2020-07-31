@@ -11,6 +11,8 @@ interface
 {$I GLScene.inc}
 
 uses
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.Classes,
   System.SysUtils,
   Vcl.Graphics,
@@ -177,9 +179,10 @@ begin
   Result := [dfcRead {, dfcWrite}];
 end;
 
+//-----------------------------------
 initialization
+//-----------------------------------
 
-  { Register this Fileformat-Handler with GLScene }
   RegisterRasterFormat('jpg', 'Joint Photographic Experts Group Image',
     TGLJPEGImage);
   RegisterRasterFormat('jpeg', 'Joint Photographic Experts Group Image',

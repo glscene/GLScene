@@ -23,7 +23,7 @@
 #include "GLBSP.hpp"
 #include "GLMeshCSG.hpp"
 
-#include "GLUtils.hpp"
+#include "GLS.Utils.hpp"
 
 
 

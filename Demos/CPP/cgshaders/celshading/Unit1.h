@@ -11,7 +11,6 @@
 #include "GLAsyncTimer.hpp"
 #include "GLBaseClasses.hpp"
 #include "GLCadencer.hpp"
-#include "GLCgShader.hpp"
 #include "GLCoordinates.hpp"
 #include "GLCrossPlatform.hpp"
 #include "GLMaterial.hpp"
@@ -20,8 +19,9 @@
 #include "GLVectorFileObjects.hpp"
 #include "GLSceneViewer.hpp"
 #include "GLFileMD2.hpp"
-#include "GLUtils.hpp"
-#include "CgGL.hpp"
+#include "GLS.Utils.hpp"
+#include "Import.CgGL.hpp"
+#include "GLS.cgShader.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

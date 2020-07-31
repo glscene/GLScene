@@ -14,7 +14,7 @@ uses
   GLScene,
   GLVectorTypes,
   GLObjects,
-  GLNGDManager,
+  GLS.NGDManager,
   GLCoordinates,
   GLCadencer,
   GLSceneViewer,

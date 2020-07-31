@@ -25,7 +25,7 @@ uses
   GLMaterial,
   GLCoordinates,
   GLCrossPlatform,
-  GLUtils,
+  GLS.Utils,
   GLBaseClasses,
   GLSimpleNavigation;
 

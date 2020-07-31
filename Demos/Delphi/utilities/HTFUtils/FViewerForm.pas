@@ -24,7 +24,7 @@ uses
 
   GLHeightTileFile,
   GLVectorGeometry,
-  GLUtils;
+  GLS.Utils;
 
 type
   TViewerForm = class(TForm)

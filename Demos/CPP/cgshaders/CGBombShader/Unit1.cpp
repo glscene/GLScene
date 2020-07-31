@@ -33,15 +33,15 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 void __fastcall TForm1::ResetPositions()
 {
-  TrackBar1->Position = Round(InterpolateCombinedSafe(0.01, 10, MyShader->Displacement, 0, 100, 1, itLinear));
-  TrackBar2->Position = Round(InterpolateCombinedSafe(-0.13, 10, MyShader->Sharpness, 0, 100, 1, itLinear));
-  TrackBar3->Position = Round(InterpolateCombinedSafe(0.01, 6, MyShader->ColorSharpness, 0, 100, 1, itLinear));
-  TrackBar4->Position = Round(InterpolateCombinedSafe(0.1, 1, MyShader->Speed, 0, 100, 1, itLinear));
-  TrackBar5->Position = Round(InterpolateCombinedSafe(0.01, 8, MyShader->TurbDensity, 0, 100, 1, itLinear));
-  TrackBar6->Position = Round(InterpolateCombinedSafe(-0.5, 0.5, MyShader->ColorRange, 0, 100, 1, itLinear));
-  TrackBar7->Position = Round(InterpolateCombinedSafe(0, 1, MyShader->Alpha, 0, 100, 1, itLinear));
-  TrackBar8->Position = Round(InterpolateCombinedSafe(0, 2, MyShader->MainTextureShare, 0, 100, 1, itLinear));
-  TrackBar9->Position = Round(InterpolateCombinedSafe(0, 2, MyShader->GradientTextureShare, 0, 100, 1, itLinear));
+  TrackBar1->Position = InterpolateCombinedSafe(0.01, 10, MyShader->Displacement, 0, 100, 1, itLinear);
+  TrackBar2->Position = InterpolateCombinedSafe(-0.13, 10, MyShader->Sharpness, 0, 100, 1, itLinear);
+  TrackBar3->Position = InterpolateCombinedSafe(0.01, 6, MyShader->ColorSharpness, 0, 100, 1, itLinear);
+  TrackBar4->Position = InterpolateCombinedSafe(0.1, 1, MyShader->Speed, 0, 100, 1, itLinear);
+  TrackBar5->Position = InterpolateCombinedSafe(0.01, 8, MyShader->TurbDensity, 0, 100, 1, itLinear);
+  TrackBar6->Position = InterpolateCombinedSafe(-0.5, 0.5, MyShader->ColorRange, 0, 100, 1, itLinear);
+  TrackBar7->Position = InterpolateCombinedSafe(0, 1, MyShader->Alpha, 0, 100, 1, itLinear);
+  TrackBar8->Position = InterpolateCombinedSafe(0, 2, MyShader->MainTextureShare, 0, 100, 1, itLinear);
+  TrackBar9->Position = InterpolateCombinedSafe(0, 2, MyShader->GradientTextureShare, 0, 100, 1, itLinear);
 
 }
 //---------------------------------------------------------------------------

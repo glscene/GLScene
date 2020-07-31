@@ -19,7 +19,7 @@ uses
   GLObjects,
   GLCoordinates,
   GLCadencer,
-  GLNGDManager,
+  GLS.NGDManager,
   GLSimpleNavigation,
   GLSceneViewer,
   GLCrossPlatform,
@@ -31,7 +31,7 @@ uses
   GLVectorGeometry,
   GlMaterial,
   GLKeyboard,
-  GLUtils;
+  GLS.Utils;
 
 
 type
