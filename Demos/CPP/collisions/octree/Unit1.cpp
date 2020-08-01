@@ -49,7 +49,7 @@ void __fastcall TForm1::GLSceneViewer2MouseDown(TObject * Sender,
 												TMouseButton Button,
 												TShiftState Shift, int X, int Y)
 {
-  Glvectorgeometry::TVector rayStart, rayVector, iPoint, iNormal;
+  Scene.VectorGeometry::TVector rayStart, rayVector, iPoint, iNormal;
   __int64 t;
 
   SetVector(rayStart, GLCamera2->AbsolutePosition);

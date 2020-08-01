@@ -13,14 +13,14 @@ uses
   System.SysUtils,
 
   GLVectorFileObjects,
-  GLVectorLists,
+  Scene.VectorLists,
   GLTexture,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLApplicationFileIO,
-  GLVectorTypes,
-  GLVectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
   GLMaterial,
-  GLS.Strings;
+  Scene.Strings;
 
 type
   (* The SMD vector file is Half-life's skeleton format.

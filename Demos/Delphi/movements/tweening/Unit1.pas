@@ -18,7 +18,7 @@ uses
   Vcl.Samples.Spin,
   
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLObjects,
   GLCoordinates,
   GLSceneViewer,
@@ -26,7 +26,7 @@ uses
   GLBaseClasses,
   GLCadencer,
   GLAnimationUtils,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLBitmapFont,
   GLWindowsFont;
 

@@ -22,9 +22,9 @@ uses
   
   GLScene,
   GLVectorFileObjects,
-  GLVectorTypes,
-  GLVectorGeometry,
-  GLVectorLists;
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
+  Scene.VectorLists;
 
 procedure BuildCube(Mesh : TMeshObject; const Position, Scale : TAffineVector);
 procedure BuildCylinder(Mesh : TMeshObject; const Position, Scale : TAffineVector; Slices : Integer);

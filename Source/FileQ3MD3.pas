@@ -12,11 +12,11 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLVectorFileObjects,
-  GLVectorLists,
+  Scene.VectorLists,
   GLMaterial,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   FileMD3;
 
 type

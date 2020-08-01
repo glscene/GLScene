@@ -30,9 +30,9 @@ uses
   GLMaterial,
   GLCoordinates,
   GLCrossPlatform,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLBaseClasses,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLNavigator,
   GLSmoothNavigator,
   GLGraph;

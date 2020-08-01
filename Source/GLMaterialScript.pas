@@ -15,7 +15,7 @@ uses
   System.Classes,
   VCL.StdCtrls,
 
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLTexture,
   GLTextureFormat,
   GLGraphics,

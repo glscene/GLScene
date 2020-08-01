@@ -29,8 +29,8 @@ uses
   GLMultisampleImage,
   GLGraphics,
   GLTextureFormat,
-  GLVectorTypes,
-  GLS.Logger;
+  Scene.VectorTypes,
+  Scene.Logger;
 
 
 const

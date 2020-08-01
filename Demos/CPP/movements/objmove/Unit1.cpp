@@ -35,10 +35,10 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   UpdateHudText();
 }
 //---------------------------------------------------------------------------
-Glvectorgeometry::TVector __fastcall TForm1::MouseWorldPos(int X, int Y)
+Scene.VectorGeometry::TVector __fastcall TForm1::MouseWorldPos(int X, int Y)
 {
-  Glvectorgeometry::TVector v;
-  Glvectorgeometry::TVector Result;
+  Scene.VectorGeometry::TVector v;
+  Scene.VectorGeometry::TVector Result;
 
   Y = Scn->Height - Y;
   if (CurrentPick)
@@ -131,7 +131,7 @@ void __fastcall TForm1::ScnMouseDown(TObject *Sender, TMouseButton Button, TShif
 void __fastcall TForm1::ScnMouseMove(TObject *Sender, TShiftState Shift, int X, int Y)
 
 {
-  Glvectorgeometry::TVector newPos;
+  Scene.VectorGeometry::TVector newPos;
 
   ScnMouseMoveCnt++;
 ////not translated  Assert(ScnMouseMoveCnt < 2);

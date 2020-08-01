@@ -18,12 +18,12 @@ uses
   OpenGLTokens,
   GLScene,
   XCollection,
-  GLVectorGeometry,
-  GLVectorLists,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
   GLVectorFileObjects,
   GLGeometryBB,
   GLManager,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
 

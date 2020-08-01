@@ -26,10 +26,10 @@ uses
   System.SysUtils,
 
   OpenGLTokens,
-  GLVectorGeometry,
-  GLPersistentClasses,
+  Scene.VectorGeometry,
+  Scene.PersistentClasses,
   GLPipelineTransformation,
-  GLVectorLists,
+  Scene.VectorLists,
   GLScene,
   GLVectorFileObjects,
   GLTexture,
@@ -37,7 +37,7 @@ uses
   GLContext,
   GLState,
   GLMeshUtils,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
   TglFeedbackMode = (fm2D, fm3D, fm3DColor, fm3DColorTexture, fm4DColorTexture);

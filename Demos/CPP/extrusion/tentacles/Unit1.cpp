@@ -69,7 +69,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
 		 pipe->Nodes->BeginUpdate();
 		 for (i=0; i<pipe->Nodes->Count-1; i++)
 		 {
-			t1 =  -t+i*0.1+k*(2*M_PI)/5;   // Glvectorgeometry::c2PI
+			t1 =  -t+i*0.1+k*(2*M_PI)/5;   // Scene.VectorGeometry::c2PI
 			r =  (Sin(3*t+k)+2)*0.5*((2*i+pipe->Nodes->Count)/pipe->Nodes->Count);
 			pipe->Nodes->Items[i]->X = Cos(t1)*r;
 			pipe->Nodes->Items[i]->Z = Sin(t1)*r;

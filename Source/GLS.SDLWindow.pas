@@ -24,10 +24,10 @@ uses
 
   OpenGLTokens,
   OpenGLAdapter,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLState,
   GLContext,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   Import.SDL2;
 
 type

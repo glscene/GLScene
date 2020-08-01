@@ -27,7 +27,7 @@ uses
   GLCrossPlatform,
   GLBaseClasses,
   GLGui,
-  GLS.Strings;
+  Scene.Strings;
 
 type
   TGLLayoutEditorForm = class(TForm)

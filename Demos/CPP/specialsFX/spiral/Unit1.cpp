@@ -8,7 +8,7 @@
 #pragma package(smart_init)
 #pragma link "GLSceneViewer"
 #pragma link "GLCrossPlatform"
-#pragma link "GLVectorGeometry"
+#pragma link "Scene.VectorGeometry"
 #pragma link "GLBehaviours"
 #pragma link "GLSceneViewer"
 #pragma link "GLObjects"

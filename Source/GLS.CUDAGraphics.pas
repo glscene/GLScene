@@ -25,13 +25,13 @@ uses
   GLScene,
   GLGraphics,
   GLMaterial,
-  GLS.Strings,
+  Scene.Strings,
   GLTextureFormat,
   GLTexture,
   GLSL.Shader,
   GLSL.ShaderParameter,
-  GLPersistentClasses,
-  {$IFDEF USE_LOGGING} GLS.Logger, {$ENDIF}
+  Scene.PersistentClasses,
+  {$IFDEF USE_LOGGING} Scene.Logger, {$ENDIF}
   GLRenderContextInfo;
 
 

@@ -19,7 +19,7 @@ uses
   GLSceneViewer,
   GLObjects,
   GLCadencer,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLTexture,
   GLGeomObjects,
   GLCrossPlatform,

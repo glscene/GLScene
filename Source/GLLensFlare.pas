@@ -19,16 +19,16 @@ uses
   
   OpenGLTokens,
   GLScene,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLPipelineTransformation,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLObjects,
   GLContext,
   GLColor,
   GLBaseClasses,
   GLRenderContextInfo,
   GLState,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLS.Utils,
   GLTextureFormat;
 

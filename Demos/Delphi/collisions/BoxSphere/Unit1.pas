@@ -19,13 +19,13 @@ uses
 
   
   GLScene,
-  GLPersistentClasses,
-  GLVectorTypes,
+  Scene.PersistentClasses,
+  Scene.VectorTypes,
   GLObjects,
   GLCadencer,
   GLVectorFileObjects,
   GLSceneViewer,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLGraph,
   GLGeomObjects,
   GLCrossPlatform,

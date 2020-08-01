@@ -133,12 +133,12 @@ private:	// User declarations
 	TGLNavigatorSmoothChangeVector *FCameraSmoothAnimator_AbsPos;
 	TGLNavigatorSmoothChangeVector *FCameraSmoothAnimator_RelPos;
 	void __fastcall GetInput(TButton *Sender);
-	Glvectortypes::TVector4f __fastcall (__closure *TGLNavigatorSmoothChangeVectorGetEvent)
+	Scene.VectorTypes::TVector4f __fastcall (__closure *TGLNavigatorSmoothChangeVectorGetEvent)
 		(TGLNavigatorSmoothChangeVector* const ASender);
-	Glvectorgeometry::TVector __fastcall OnGetCameraPosition(
+	Scene.VectorGeometry::TVector __fastcall OnGetCameraPosition(
 					   TGLNavigatorSmoothChangeVector* const ASender);
 	void __fastcall OnSetCameraPosition(TGLNavigatorSmoothChangeVector* const ASender,
-					   const Glvectortypes::TVector4f &AValue);
+					   const Scene.VectorTypes::TVector4f &AValue);
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
 };

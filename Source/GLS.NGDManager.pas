@@ -24,11 +24,11 @@ uses
   Import.NGD,
   Import.NGD_Joints,
 
-  GLVectorGeometry, // PVector TVector TMatrix PMatrix NullHmgVector...
-  GLVectorLists,    // TAffineVectorList for Tree
+  Scene.VectorGeometry, // PVector TVector TMatrix PMatrix NullHmgVector...
+  Scene.VectorLists,    // TAffineVectorList for Tree
   XCollection,    // TXCollection file function
   GLBaseClasses,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLScene,
   GLManager,
   GLCoordinates,
@@ -37,7 +37,7 @@ uses
   GLVectorFileObjects, // cube cone freeform...
   GLColor,
   GLGeometryBB, // For show debug
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
   NGDFloat = Import.NGD.dFloat;

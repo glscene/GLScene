@@ -15,7 +15,7 @@ uses
   GLCadencer, 
   GLSceneViewer, 
   GLKeyboard, 
-  GLVectorGeometry, 
+  Scene.VectorGeometry, 
   GLGeomObjects,
   GLScene, 
   GLObjects, 

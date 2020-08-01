@@ -14,8 +14,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLVectorGeometry,
-  GLVectorTypes,
+  Scene.VectorGeometry,
+  Scene.VectorTypes,
   OpenGLTokens,
   GLBaseClasses;
 
@@ -345,12 +345,12 @@ end;
 
 function TGLCustomCoordinates.VectorLength: TGLFloat;
 begin
-  Result := GLVectorGeometry.VectorLength(FCoords);
+  Result := Scene.VectorGeometry.VectorLength(FCoords);
 end;
 
 function TGLCustomCoordinates.VectorNorm: TGLFloat;
 begin
-  Result := GLVectorGeometry.VectorNorm(FCoords);
+  Result := Scene.VectorGeometry.VectorNorm(FCoords);
 end;
 
 function TGLCustomCoordinates.MaxXYZ: Single;
@@ -366,28 +366,28 @@ end;
 procedure TGLCustomCoordinates.SetVector(const X, Y: Single; Z: Single = 0);
 begin
   Assert(FStyle = csVector, csVectorHelp);
-  GLVectorGeometry.SetVector(FCoords, X, Y, Z);
+  Scene.VectorGeometry.SetVector(FCoords, X, Y, Z);
   NotifyChange(Self);
 end;
 
 procedure TGLCustomCoordinates.SetVector(const V: TAffineVector);
 begin
   Assert(FStyle = csVector, csVectorHelp);
-  GLVectorGeometry.SetVector(FCoords, V);
+  Scene.VectorGeometry.SetVector(FCoords, V);
   NotifyChange(Self);
 end;
 
 procedure TGLCustomCoordinates.SetVector(const V: TVector);
 begin
   Assert(FStyle = csVector, csVectorHelp);
-  GLVectorGeometry.SetVector(FCoords, V);
+  Scene.VectorGeometry.SetVector(FCoords, V);
   NotifyChange(Self);
 end;
 
 procedure TGLCustomCoordinates.SetVector(const X, Y, Z, W: Single);
 begin
   Assert(FStyle = csVector, csVectorHelp);
-  GLVectorGeometry.SetVector(FCoords, X, Y, Z, W);
+  Scene.VectorGeometry.SetVector(FCoords, X, Y, Z, W);
   NotifyChange(Self);
 end;
 
@@ -441,7 +441,7 @@ end;
 procedure TGLCustomCoordinates.SetPoint2D(const X, Y: Single);
 begin
   Assert(FStyle = CsPoint2D, CsPoint2DHelp);
-  GLVectorGeometry.MakeVector(FCoords, X, Y, 0);
+  Scene.VectorGeometry.MakeVector(FCoords, X, Y, 0);
   NotifyChange(Self);
 end;
 
@@ -523,7 +523,7 @@ end;
 
 function TGLCustomCoordinates.GetAsAffineVector: TAffineVector;
 begin
-  GLVectorGeometry.SetVector(Result, FCoords);
+  Scene.VectorGeometry.SetVector(Result, FCoords);
 end;
 
 function TGLCustomCoordinates.GetAsPoint2D: TVector2f;

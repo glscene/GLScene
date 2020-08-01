@@ -15,14 +15,14 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLBaseClasses,
   GLContext,
-  GLVectorGeometry,
-  GLVectorTypes,
-  GLVectorLists,
+  Scene.VectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorLists,
   GLGraphics,
-  GLS.Strings,
+  Scene.Strings,
   GLS.Utils,
   GLCrossPlatform,
 
@@ -33,7 +33,7 @@ uses
   GLS.CUDACompiler,
   GLS.CUDAContext,
   GLS.CUDADataAccess
-  {$IFDEF USE_LOGGING},GLS.Logger;{$ELSE};{$ENDIF}
+  {$IFDEF USE_LOGGING},Scene.Logger;{$ELSE};{$ENDIF}
 
 type
   TCUDAChange = (cuchDevice, cuchContext, cuchSize, cuchAddresMode, cuchFlag,

@@ -18,9 +18,9 @@ uses
   Vcl.Dialogs,
   Vcl.Graphics,
 
-  GLVectorTypes,
-  GLVectorGeometry,
-  GLPersistentClasses,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
+  Scene.PersistentClasses,
   GLBaseClasses;
 
 type

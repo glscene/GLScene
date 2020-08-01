@@ -29,10 +29,10 @@ uses
   System.Classes,
   
   GLScene,
-  GLPersistentClasses,
-  GLVectorTypes, 
+  Scene.PersistentClasses,
+  Scene.VectorTypes, 
   GLNavigator, 
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLCoordinates,
   GLScreen, 
   XCollection;
@@ -756,7 +756,7 @@ begin
 
     if (Abs(FinalPitch) > FCutOff) or (Abs(FinalTurn) > FCutOff) then
     begin
-      MovingObject.AbsolutePosition := GLVectorGeometry.MoveObjectAround(
+      MovingObject.AbsolutePosition := Scene.VectorGeometry.MoveObjectAround(
         MovingObject.AbsolutePosition, lUp, AObject.AbsolutePosition, FinalPitch, FinalTurn);
       Result := True;
     end;

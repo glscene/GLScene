@@ -12,14 +12,14 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLVectorFileObjects,
   GLApplicationFileIO,
   GLMaterial,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   FileGL2,
-  GLVectorTypes,
-  GLVectorLists;
+  Scene.VectorTypes,
+  Scene.VectorLists;
 
 type
 

@@ -15,10 +15,10 @@ uses
   System.SysUtils,
   System.StrUtils,
 
-  GLVectorTypes,
-  GLPersistentClasses,
-  GLVectorGeometry,
-  GLVectorLists,
+  Scene.VectorTypes,
+  Scene.PersistentClasses,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
   GLVectorFileObjects,
   GLApplicationFileIO,
   GLS.Utils;

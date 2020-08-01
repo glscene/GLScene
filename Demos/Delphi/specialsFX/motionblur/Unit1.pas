@@ -12,7 +12,7 @@ uses
   Vcl.Controls,
 
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLContext,
   GLSceneViewer,
   GLCadencer,

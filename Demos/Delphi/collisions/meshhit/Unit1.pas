@@ -11,8 +11,8 @@ uses
   Vcl.StdCtrls,
 
   
-  GLScene, GLVectorFileObjects, GLObjects, GLSceneViewer, GLVectorTypes,
-  GLVectorGeometry, GLGeomObjects, GLCrossPlatform, GLCoordinates,
+  GLScene, GLVectorFileObjects, GLObjects, GLSceneViewer, Scene.VectorTypes,
+  Scene.VectorGeometry, GLGeomObjects, GLCrossPlatform, GLCoordinates,
   GLBaseClasses, GLFile3DS, GLS.Utils;
 
 type

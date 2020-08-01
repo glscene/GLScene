@@ -16,16 +16,16 @@ uses
   System.Math,
   System.Generics.Collections,
 
-  GLVectorGeometry, 
-  GLVectorLists, 
+  Scene.VectorGeometry, 
+  Scene.VectorLists, 
   GLObjects, 
   GLMultiPolygon,  
   GLCoordinates,
-  GLVectorRecTypes,
+  Scene.VectorRecTypes,
   GLColor, 
-  GLSpline, 
-  GLspaceText, 
-  GLVectorTypes,
+  Scene.Spline, 
+  GLS.SpaceText, 
+  Scene.VectorTypes,
   GLVectorFileObjects;
 
 type

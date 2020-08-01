@@ -17,10 +17,10 @@ uses
   System.SysUtils,
 
   OpenGLTokens,
-  GLS.Strings,
-  GLS.Logger,
-  GLVectorGeometry,
-  GLVectorTypes;
+  Scene.Strings,
+  Scene.Logger,
+  Scene.VectorGeometry,
+  Scene.VectorTypes;
 
 const
   opengl32 = 'OpenGL32.dll';

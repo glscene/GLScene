@@ -17,7 +17,7 @@
 #include "GLGraph.hpp"
 #include "GLCollision.hpp"
 #include "GLTexture.hpp"
-#include "GLVectorGeometry.hpp"
+#include "Scene.VectorGeometry.hpp"
 #include "GLVectorFileObjects.hpp"
 #include "GLSceneViewer.hpp"
 #include "GLSpaceText.hpp"
@@ -71,11 +71,11 @@ __published:	// IDE-managed Components
 	void __fastcall FormKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
 
 private:	// User declarations
-	Glvectorgeometry::TVector lastMouseWorldPos;
+	Scene.VectorGeometry::TVector lastMouseWorldPos;
 	bool movingOnZ;
 	TGLCustomSceneObject *CurrentPick;
 	int ScnMouseMoveCnt;
-	Glvectorgeometry::TVector __fastcall MouseWorldPos(int X, int Y);
+	Scene.VectorGeometry::TVector __fastcall MouseWorldPos(int X, int Y);
 	void __fastcall UpdateHudText();
 	void __fastcall ProcessPick(TGLBaseSceneObject* pick);
 public:		// User declarations

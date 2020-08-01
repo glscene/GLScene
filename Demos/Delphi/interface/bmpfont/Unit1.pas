@@ -13,7 +13,7 @@ uses
   Vcl.ExtCtrls,
   
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLHUDObjects,
   GLObjects,
   GLCadencer,

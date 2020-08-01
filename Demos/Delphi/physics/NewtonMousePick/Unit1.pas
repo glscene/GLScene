@@ -12,7 +12,7 @@ uses
   Vcl.Dialogs,
 
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLObjects,
   GLS.NGDManager,
   GLCoordinates,
@@ -20,7 +20,7 @@ uses
   GLSceneViewer,
   GLCrossPlatform,
   GLBaseClasses,
-  GLVectorGeometry;
+  Scene.VectorGeometry;
 
 type
   TForm1 = class(TForm)

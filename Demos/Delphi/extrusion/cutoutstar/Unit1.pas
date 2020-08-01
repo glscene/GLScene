@@ -17,7 +17,7 @@ uses
   GLCadencer,
   GLScene,
   GLExtrusion,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLMultiPolygon,
   GLSceneViewer,
   GLCrossPlatform,

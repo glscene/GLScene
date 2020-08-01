@@ -2,7 +2,7 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLS.RGBE;
+unit Scene.RGBE;
 
 (* GLScene RGBE utils *)
 
@@ -13,8 +13,8 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLVectorTypes,
-  GLVectorGeometry;
+  Scene.VectorTypes,
+  Scene.VectorGeometry;
 
 procedure Float2rgbe(var RGBE: TVector4b; const Red, Green, Blue: Single);
 procedure Rgbe2float(var Red, Green, Blue: Single; const RGBE: TVector4b);

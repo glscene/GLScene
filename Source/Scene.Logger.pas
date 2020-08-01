@@ -2,7 +2,7 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLS.Logger;
+unit Scene.Logger;
 
 (*
   Activate USE_LOGGING in "GLSCene.inc" to turn on inner GLScene logger.
@@ -22,8 +22,7 @@ uses
   System.Classes,
   System.SysUtils,
   System.UITypes,
-  System.SyncObjs,
-  VCL.Dialogs;
+  System.SyncObjs;
 
 type
   // Levels of importance of log messages
@@ -557,11 +556,12 @@ var
       while not RenameFile(lLogOriginalDir + sRec.Name,
         lLogSaveDir + sRec.Name) do
       begin
-        if MessageDlg(Format(lErrorMessage, [lLogOriginalDir + sRec.Name,
-          GetLastError]), mtWarning, [mbNo], 0) = mrNo then
-          Break;
+        Log(lErrorMessage + '(' + FModeTitles[lkError] + ' = ' + IntToStr(FLogKindCount[lkError]) + ')');
+        SetBuffered(False);
+
         AssignFile(lFile, lLogOriginalDir + sRec.Name);
         CloseFile(lFile);
+        Halt;
       end;
     end;
   end;
@@ -1194,8 +1194,7 @@ begin
       mlaHalt:
         begin
           Log('Application halted due to reaching log message limit (' +
-            FModeTitles[ALevel] + ' = ' +
-            IntToStr(FLogKindCount[ALevel]) + ')');
+            FModeTitles[ALevel] + ' = ' + IntToStr(FLogKindCount[ALevel]) + ')');
           SetBuffered(False);
           Halt;
         end;

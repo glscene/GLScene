@@ -15,10 +15,10 @@ uses
   System.SysUtils,
   System.Math,
   
-  GLPersistentClasses,
-  GLVectorLists,
-  GLVectorGeometry,
-  GLVectorTypes;
+  Scene.PersistentClasses,
+  Scene.VectorLists,
+  Scene.VectorGeometry,
+  Scene.VectorTypes;
 
 {Converts a triangle strips into a triangle list. 
    Vertices are added to list, based on the content of strip. Both non-indexed

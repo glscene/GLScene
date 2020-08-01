@@ -15,7 +15,7 @@ uses
   
   GLObjects,
   GLScene,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLCadencer,
   GLSceneViewer,
   GLPolyhedron,

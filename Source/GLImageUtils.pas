@@ -26,10 +26,10 @@ uses
   System.Math,
 
   OpenGLTokens,
-  GLS.Strings,
+  Scene.Strings,
   GLCrossPlatform,
   GLTextureFormat,
-  GLVectorGeometry;
+  Scene.VectorGeometry;
 
 var
   vImageScaleFilterWidth: Integer = 5; // Relative sample radius for filtering

@@ -26,8 +26,8 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::BUCastClick(TObject *Sender)
 {
-   Glvectorgeometry::TVector o, v, vLight, light, iPoint, iNormal;
-   Glvectorgeometry::TVector up, right, dir;
+   Scene.VectorGeometry::TVector o, v, vLight, light, iPoint, iNormal;
+   Scene.VectorGeometry::TVector up, right, dir;
    int x, y, dx, dy;
    float f, d;
    TColor color;

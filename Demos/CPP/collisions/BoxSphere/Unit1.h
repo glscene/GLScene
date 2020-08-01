@@ -83,7 +83,7 @@ __published:	// IDE-managed Components
 private:	// User declarations
 	int mdx, mdy;
 	TAffineVector intersPoint, ResNormal, BoxScale, SpherePos;
-	Glvectorgeometry::TMatrix BoxMatrix;
+	Scene.VectorGeometry::TMatrix BoxMatrix;
 	float SphereRadius;
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

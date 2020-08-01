@@ -29,7 +29,7 @@ uses
   GLState,
   GLContext,
   GLRenderContextInfo,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLCoordinates,
   GLTextureFormat,
   GLColor,

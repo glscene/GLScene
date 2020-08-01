@@ -15,7 +15,7 @@ uses
   Vcl.ExtCtrls,
   
   GLCadencer, GLScene, GLObjects, GLGeomObjects,
-  GLSceneViewer,GLTrail,GLTexture, GLVectorgeometry, GLMesh, GLVectorTypes,
+  GLSceneViewer,GLTrail,GLTexture, Scene.VectorGeometry, GLMesh, Scene.VectorTypes,
   GLCrossPlatform, GLCoordinates, GLBaseClasses;
 
 type

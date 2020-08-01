@@ -31,7 +31,7 @@ uses
 
   GLApplicationFileIO,
   GLS.Utils,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLCrossPlatform,
   GLMaterial,
   GLBaseClasses;

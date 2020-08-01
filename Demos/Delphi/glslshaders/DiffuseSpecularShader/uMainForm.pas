@@ -18,9 +18,9 @@ uses
   GLScene, 
   GLObjects, 
   GLGraph,
-  GLVectorTypes, 
+  Scene.VectorTypes, 
   GLContext,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLGeomObjects,
   GLVectorFileObjects,
 

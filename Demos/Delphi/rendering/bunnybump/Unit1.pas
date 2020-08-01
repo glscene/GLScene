@@ -16,7 +16,7 @@ uses
   Vcl.Imaging.Jpeg,
   
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLObjects,
   GLTexture,
   GLS.ShaderBump,
@@ -28,7 +28,7 @@ uses
   GLMaterial,
   GLCoordinates,
   GLBaseClasses,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLContext,
   GLFileOBJ,
   GLS.Uti, GLS.ShaderBumpls;

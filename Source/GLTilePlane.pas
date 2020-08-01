@@ -17,12 +17,12 @@ uses
   OpenGLTokens,
   GLScene,
   GLState,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLContext,
   GLMaterial,
   GLObjects,
-  GLPersistentClasses,
-  GLVectorLists,
+  Scene.PersistentClasses,
+  Scene.VectorLists,
   GLRenderContextInfo,
   XOpenGL;
 

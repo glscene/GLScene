@@ -33,7 +33,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
    const int
 	  cSteps = 16;
    const int
-	  c2 = Glvectorgeometry::c2PI;
+	  c2 = Scene.VectorGeometry::c2PI;
       new TGLExtrusionSolid(ExtrusionSolid);
    // a small star contour
 	  for (i=0; i<cSteps; i++)

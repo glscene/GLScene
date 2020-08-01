@@ -79,7 +79,7 @@ implementation
 //---------------------------------------------------------  
 
 uses
-  GLVectorGeometry;
+  Scene.VectorGeometry;
 
 //----------------------------------
 // TGLDynamicTextureImage

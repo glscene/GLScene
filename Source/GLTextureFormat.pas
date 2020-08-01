@@ -12,7 +12,7 @@ uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
   OpenGLTokens,
-  GLS.Strings;
+  Scene.Strings;
 
 type
   // Texture addressing rules

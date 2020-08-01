@@ -16,7 +16,7 @@ uses
   
   GLCadencer,
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLObjects,
   GLParticles,
   GLSceneViewer,
@@ -26,7 +26,7 @@ uses
   GLCrossPlatform,
   GLCoordinates,
   GLBaseClasses,
-  GLVectorGeometry;
+  Scene.VectorGeometry;
 
 type
   TForm1 = class(TForm)

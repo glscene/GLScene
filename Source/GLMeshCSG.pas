@@ -21,11 +21,11 @@ uses
   System.Math,
 
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLVectorFileObjects,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLBSP,
-  GLVectorLists;
+  Scene.VectorLists;
 
 type
   TCSGOperation = (CSG_Union, CSG_Subtraction, CSG_Intersection);

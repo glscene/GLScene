@@ -23,7 +23,7 @@ uses
   GR32,
 
   GLHeightTileFile,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLS.Utils;
 
 type

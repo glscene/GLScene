@@ -10,11 +10,11 @@ interface
 
 uses
   System.Classes,
-  GLPersistentClasses,
-  GLVectorGeometry,
+  Scene.PersistentClasses,
+  Scene.VectorGeometry,
   GLVectorFileObjects,
   GLVerletTypes,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
 

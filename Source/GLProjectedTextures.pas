@@ -16,10 +16,10 @@ uses
   
   OpenGLTokens,
   GLScene,
-  GLPersistentClasses,
-  GLVectorTypes,
+  Scene.PersistentClasses,
+  Scene.VectorTypes,
   GLTexture,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLRenderContextInfo,
   GLState,
   GLMaterial;

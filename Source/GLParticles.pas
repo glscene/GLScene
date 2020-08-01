@@ -17,8 +17,8 @@ uses
 
   GLScene,
   XCollection,
-  GLPersistentClasses,
-  GLVectorGeometry,
+  Scene.PersistentClasses,
+  Scene.VectorGeometry,
   OpenGLTokens,
   GLContext,
   GLColor,

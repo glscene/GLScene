@@ -19,15 +19,15 @@ uses
   OpenGLTokens,
   GLContext,
   XOpenGL,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLMaterial,
   GLObjects,
-  GLVectorLists,
+  Scene.VectorLists,
   GLColor,
   GLBaseClasses,
   GLRenderContextInfo,
   GLState,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
 

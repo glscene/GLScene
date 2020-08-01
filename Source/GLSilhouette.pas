@@ -19,9 +19,9 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLVectorTypes,
-  GLVectorGeometry,
-  GLVectorLists;
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
+  Scene.VectorLists;
 
 type
   TGLSilhouetteStyle = (ssOmni, ssParallel);

@@ -18,12 +18,12 @@ uses
   
   OpenGLTokens,
   OpenGLAdapter,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLContext,
   GLScene,
   GLVectorFileObjects,
-  GLVectorTypes,
-  GLPersistentClasses,
+  Scene.VectorTypes,
+  Scene.PersistentClasses,
   GLCoordinates,
   GLRenderContextInfo,
   GLState;

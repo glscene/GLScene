@@ -64,7 +64,7 @@ implementation
 // ---------------------------------------------------------------------
 
 uses
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   Import.OpenAL {al, alut, alTypes};
 
 // checks for an error and raises an exception if necessary

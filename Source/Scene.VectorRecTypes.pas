@@ -2,7 +2,7 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLVectorRecTypes;
+unit Scene.VectorRecTypes;
 
 (* Defines common vector types as advanced records *)
 
@@ -16,7 +16,7 @@ uses
   System.Rtti,
   System.Math,
   System.Math.Vectors,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 
 type

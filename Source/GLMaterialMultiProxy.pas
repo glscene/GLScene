@@ -31,17 +31,17 @@ uses
   System.SysUtils,
   
   GLScene,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLTexture,
   GLMaterial,
   GLSilhouette,
-  GLS.Strings,
+  Scene.Strings,
   GLCrossPlatform,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLRenderContextInfo,
   GLBaseClasses,
   GLContext,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLPipeLineTransformation;
 
 type

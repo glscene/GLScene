@@ -9,7 +9,7 @@
 
 #pragma link "GLNavigator"
 #pragma link "GLShadowPlane"
-#pragma link "GLVectorGeometry"
+#pragma link "Scene.VectorGeometry"
 #pragma link "GLExtrusion"
 #pragma link "GLTexture"
 #pragma link "GLCadencer"

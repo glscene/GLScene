@@ -24,9 +24,9 @@ uses
   System.SysUtils,
   GLApplicationFileIO,
 
-  GLVectorTypes,
-  GLVectorGeometry,
-  GLVectorLists,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
   GLVectorFileObjects;
 
 type

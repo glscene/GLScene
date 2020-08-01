@@ -12,11 +12,11 @@ uses
   Import.ODE,
   GLS.ODEUtils,
 
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLRagdoll,
   GLScene,
   GLObjects,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLTexture,
   GLVectorFileObjects;
 

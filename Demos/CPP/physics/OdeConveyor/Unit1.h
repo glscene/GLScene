@@ -61,8 +61,8 @@ __published:	// IDE-managed Components
 	void __fastcall FrictionChange(TObject *Sender);
 
 private:	// User declarations
-	Glvectorgeometry::TVector FUserDirection;
-	Glvectorgeometry::TVector FDirectionVector;
+	Scene.VectorGeometry::TVector FUserDirection;
+	Scene.VectorGeometry::TVector FDirectionVector;
 
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

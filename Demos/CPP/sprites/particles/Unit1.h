@@ -8,7 +8,7 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <GLSceneViewer.hpp>    // Pascal unit
-#include <GLVectorGeometry.hpp>   // Pascal unit
+#include <Scene.VectorGeometry.hpp>   // Pascal unit
 #include <GLBehaviours.hpp>     // Pascal unit
 #include <GLCadencer.hpp>       // Pascal unit
 #include <GLParticles.hpp>      // Pascal unit

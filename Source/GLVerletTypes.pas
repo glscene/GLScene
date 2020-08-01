@@ -25,11 +25,11 @@ uses
   GLObjects,
   GLScene,
   GLCoordinates,
-  GLVectorGeometry,
-  GLVectorLists,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
   GLSpacePartition,
   GLGeometryBB,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 const
   G_DRAG = 0.0001;

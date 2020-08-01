@@ -13,7 +13,7 @@
 #include "GLObjects.hpp"
 #include "GLExtrusion.hpp"
 #include "GLCadencer.hpp"
-#include "GLVectorGeometry.hpp"
+#include "Scene.VectorGeometry.hpp"
 #include "GLTexture.hpp"
 #include "GLSceneViewer.hpp"
 #include "GLColor.hpp"

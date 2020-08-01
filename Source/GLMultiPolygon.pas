@@ -10,7 +10,7 @@ unit GLMultiPolygon;
    TAffineVectorList become invalid after enlarging the capacity (makes a ReAllocMem), which
    can happen implicitly while adding. The TGLVectorPool keeps all pointers valid until the
    destruction itself.
-   Reactivated the TGLVectorPool object. The GLVectorLists are not suitable for this job.
+   Reactivated the TGLVectorPool object. The Scene.VectorLists are not suitable for this job.
    If anyone feels responsible: it would be fine to have a method ImportFromFile (dxf?) in
    the TGLContour and TGLMultiPolygonBase objects...
 *)
@@ -27,13 +27,13 @@ uses
 
   OpenGLTokens,
   OpenGLAdapter,
-  GLSpline,
+  Scene.Spline,
   XOpenGL,
   GLContext,
-  GLVectorTypes,
-  GLVectorGeometry,
-  GLVectorLists,
-  GLPersistentClasses,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
+  Scene.PersistentClasses,
   GLScene,
   GLObjects,
   GLGeomObjects,
@@ -115,7 +115,7 @@ type
      TGLMultiPolygonBase will take the input contours and let the tesselator
      make an outline from it (this is done in RetreiveOutline). This outline is
      used for Rendering. Only when there are changes in the contours, the
-     outline will be recalculated. The ouline in fact is a list of GLVectorLists. *)
+     outline will be recalculated. The ouline in fact is a list of Scene.VectorLists. *)
   TGLMultiPolygonBase = class(TGLSceneObject)
   private
     FContours: TGLContours;
@@ -177,7 +177,7 @@ type
     FPageSize: Integer; // number of entries per page
     FArrSize: Integer; // size of one page
     FUsedEntries: Integer; // used entries in actual page
-    FAktArray: GLVectorGeometry.PByteArray; // pointer to actual page
+    FAktArray: Scene.VectorGeometry.PByteArray; // pointer to actual page
     procedure CreatePage; // creates new page
   public
     constructor Create(APageSize, AEntrySize: Integer);

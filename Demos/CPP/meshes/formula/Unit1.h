@@ -14,7 +14,7 @@
 
 #include "GLScene.hpp"
 #include "GLObjects.hpp"
-#include "GLVectorGeometry.hpp"
+#include "Scene.VectorGeometry.hpp"
 #include "GLTexture.hpp"
 #include "GLCadencer.hpp"
 #include "GLMesh.hpp"

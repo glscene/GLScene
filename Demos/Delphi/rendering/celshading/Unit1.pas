@@ -15,8 +15,8 @@ uses
   Vcl.Imaging.Jpeg,
   
   GLScene,
-  GLVectorTypes,
-  GLVectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
   GLCadencer,
   GLSceneViewer,
   GLVectorFileObjects,

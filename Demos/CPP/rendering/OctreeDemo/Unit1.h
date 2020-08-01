@@ -20,7 +20,7 @@
 
 #include "GLSpacePartition.hpp"
 #include "GLContext.hpp"
-#include "GLVectorgeometry.hpp"
+#include "Scene.VectorGeometry.hpp"
 #include "OpenGLTokens.hpp"
 
 

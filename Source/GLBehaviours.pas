@@ -14,9 +14,9 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLScene,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   XCollection,
   GLBaseClasses,
   GLCoordinates;

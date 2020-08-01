@@ -24,9 +24,9 @@ uses
   GLPipelineTransformation,
   GLContext,
   GLState,
-  GLS.Logger,
-  GLS.Strings,
-  GLVectorGeometry;
+  Scene.Logger,
+  Scene.Strings,
+  Scene.VectorGeometry;
 
 type
   // A context driver for standard Windows OpenGL (via MS OpenGL).

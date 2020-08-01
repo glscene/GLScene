@@ -18,7 +18,7 @@ uses
   System.Classes,
   VCL.Forms,
   VCL.Controls,
-  GLS.Strings;
+  Scene.Strings;
 
 type
 

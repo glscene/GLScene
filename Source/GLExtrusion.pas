@@ -29,11 +29,11 @@ uses
   GLScene,
   GLMultiPolygon,
   GLColor,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLRenderContextInfo,
   GLNodes,
   GLState,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
 
@@ -252,8 +252,8 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLSpline,
-  GLVectorLists,
+  Scene.Spline,
+  Scene.VectorLists,
   XOpenGL;
 
 // ------------------

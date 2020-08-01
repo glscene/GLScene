@@ -22,19 +22,19 @@ uses
   OpenGLTokens,
   GLCrossPlatform,
   GLBaseClasses,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLGraphics,
   GLContext,
   GLState,
   GLColor,
   GLCoordinates,
   GLRenderContextInfo,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLPipelineTransformation,
   GLTextureFormat,
   GLApplicationFileIO,
   GLS.Utils,
-  GLS.Strings;
+  Scene.Strings;
 
 const
   cDefaultNormalMapScale = 0.125;
@@ -695,7 +695,7 @@ uses
   GLScene, // TODO: remove dependancy on GLScene.pas unit (related to tmmCubeMapLight0)
   XOpenGL,
   GLPictureRegisteredFormats,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 const
   cTextureMode: array[tmDecal..tmAdd] of Cardinal =

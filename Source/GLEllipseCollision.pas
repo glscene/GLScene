@@ -11,10 +11,10 @@ interface
 {$I GLScene.inc}
 
 uses
-  GLVectorGeometry, 
+  Scene.VectorGeometry, 
   GLOctree, 
-  GLVectorLists, 
-  GLVectorTypes;
+  Scene.VectorLists, 
+  Scene.VectorTypes;
 
 type
   TECPlane = class

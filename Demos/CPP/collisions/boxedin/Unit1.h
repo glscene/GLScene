@@ -9,7 +9,7 @@
 #include <Forms.hpp>
 #include <ComCtrls.hpp>
 #include <ExtCtrls.hpp>
-#include "GLVectorGeometry.hpp"
+#include "Scene.VectorGeometry.hpp"
 #include "GLScene.hpp"
 #include "GLBaseClasses.hpp"
 #include <GLGeomObjects.hpp>
@@ -55,7 +55,7 @@ __published:                   // IDE-managed Components
 private:                       // User declarations
   float colTotalTime;           // for timing collision detection
   int colCount;
-  void AddToTrail(const Glvectorgeometry::TVector & p);
+  void AddToTrail(const Scene.VectorGeometry::TVector & p);
 public:                        // User declarations
     __fastcall TForm1(TComponent * Owner);
   int mousex, mousey;

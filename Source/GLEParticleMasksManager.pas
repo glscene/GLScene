@@ -37,8 +37,8 @@ uses
   GLTexture,
   GLMaterial,
   GLScene,
-  GLVectorGeometry,
-  GLVectorTypes,
+  Scene.VectorGeometry,
+  Scene.VectorTypes,
   GLParticleFX,
   GLCoordinates;
 

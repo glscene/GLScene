@@ -16,8 +16,8 @@ uses
   Vcl.Imaging.Jpeg,
 
   
-  GLFireFX, GLCadencer, GLScene, GLObjects, GLBehaviours, GLVectorGeometry,
-  GLThorFX, GLSkydome, GLGraph, GLVectorTypes, GLSceneViewer, GLCrossPlatform,
+  GLFireFX, GLCadencer, GLScene, GLObjects, GLBehaviours, Scene.VectorGeometry,
+  GLThorFX, GLSkydome, GLGraph, Scene.VectorTypes, GLSceneViewer, GLCrossPlatform,
   GLCoordinates, GLBaseClasses, GLSimpleNavigation, GLS.Utils;
 
 type

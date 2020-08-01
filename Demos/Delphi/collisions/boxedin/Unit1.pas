@@ -15,10 +15,10 @@ uses
 
   
   GLKeyboard,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLScene,
   GLVectorFileObjects,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLObjects,
   GLSceneViewer,
   GLCadencer,

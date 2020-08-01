@@ -16,7 +16,7 @@ uses
   Vcl.StdCtrls,
   Vcl.Imaging.Jpeg,
 
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLScene,
   GLTerrainRenderer,
   GLObjects,
@@ -28,7 +28,7 @@ uses
   GLBitmapFont,
   GLSkydome,
   GLSceneViewer,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLLensFlare,
   GLS.ODEManager,
   GLNavigator,

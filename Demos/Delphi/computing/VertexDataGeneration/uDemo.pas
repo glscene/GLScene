@@ -12,8 +12,8 @@ uses
   Vcl.Dialogs,
 
   GLScene,
-  GLVectorTypes,
-  GLVectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
   GLPipelineTransformation,
   GLCadencer,
   GLSceneViewer,

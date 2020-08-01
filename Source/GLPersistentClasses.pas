@@ -2,7 +2,7 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLPersistentClasses;
+unit Scene.PersistentClasses;
 
 (*
    Base persistence classes.
@@ -21,7 +21,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.Strings;
+  Scene.Strings;
 
 type
 

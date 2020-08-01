@@ -34,15 +34,15 @@ uses
   OpenGLTokens,
   GLState,
   GLApplicationFileIO,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLContext,
   GLImageUtils,
   GLColor,
   GLTextureFormat,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLS.Utils,
-  GLS.Strings,
-  GLS.Logger;
+  Scene.Strings,
+  Scene.Logger;
 
 type
 

@@ -16,11 +16,11 @@ interface
 uses
   System.Classes,
 
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLVectorFileObjects,
-  GLPersistentClasses,
-  GLVectorGeometry,
-  GLVectorLists,
+  Scene.PersistentClasses,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
   GLApplicationFileIO;
 
 const

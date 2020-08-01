@@ -14,9 +14,9 @@ uses
   System.UITypes,
   Vcl.Graphics,
   GLColor,
-  GLVectorGeometry,
-  GLVectorLists,
-  GLVectorTypes;
+  Scene.VectorGeometry,
+  Scene.VectorLists,
+  Scene.VectorTypes;
 
 type
   TNormalMapSpace = (nmsObject, nmsTangent);

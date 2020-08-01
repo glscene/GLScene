@@ -26,7 +26,7 @@ uses
   GLGraph,
   GLS.cgBombShader,
   GLMaterial,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
 
   // Formats
   GLFileMD2,

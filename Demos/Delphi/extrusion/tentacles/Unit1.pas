@@ -13,12 +13,12 @@ uses
 
   
   GLScene,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLObjects,
   GLExtrusion,
   GLCadencer,
-  GLVectorGeometry,
-  GLVectorTypes,
+  Scene.VectorGeometry,
+  Scene.VectorTypes,
   GLTexture,
   GLSceneViewer,
   GLColor,

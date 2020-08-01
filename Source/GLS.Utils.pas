@@ -19,8 +19,8 @@ uses
   VCL.Dialogs,
   VCL.ExtDlgs,
   GLCrossPlatform,
-  GLS.Strings,
-  GLVectorGeometry;
+  Scene.Strings,
+  Scene.VectorGeometry;
 
 type
   EGLUtilsException = class(Exception);

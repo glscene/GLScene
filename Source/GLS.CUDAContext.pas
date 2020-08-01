@@ -13,12 +13,12 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-  GLS.Strings,
+  Scene.Strings,
   GLBaseClasses,
   GLContext,
   GLS.Generics,
 
-  GLS.Logger,
+  Scene.Logger,
   GLS.CUDARunTime,
   GLS.CUDAApi;
 

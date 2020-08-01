@@ -39,9 +39,9 @@ void __fastcall TForm1::DirectOpenGLRender(TObject *Sender, TGLRenderContextInfo
 
 {
    int i;
-   Glvectorgeometry::TMatrix mat;
-   Glvectorgeometry::TVector p, pProj;
-   Glvectorgeometry::TVector planePoint, planeNormal;
+   Scene.VectorGeometry::TMatrix mat;
+   Scene.VectorGeometry::TVector p, pProj;
+   Scene.VectorGeometry::TVector planePoint, planeNormal;
    THmgPlane plane;
 
    // Here we recover our plane point and normal...

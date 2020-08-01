@@ -17,8 +17,8 @@ uses
   System.SysUtils,
   
   OpenGLTokens,
-  GLVectorGeometry,
-  GLPersistentClasses,
+  Scene.VectorGeometry,
+  Scene.PersistentClasses,
   GLPipelineTransformation,
   GLScene,
   GLTexture,
@@ -28,10 +28,10 @@ uses
   GLRenderContextInfo,
   GLState,
   GLTextureFormat,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLMultisampleImage,
   GLFBO,
-  GLS.Logger;
+  Scene.Logger;
 
 type
   TGLEnabledRenderBuffer = (erbDepth, erbStencil);

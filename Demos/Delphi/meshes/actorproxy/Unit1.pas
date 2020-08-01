@@ -17,13 +17,13 @@ uses
 
   
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLSceneViewer,
   GLVectorFileObjects,
   GLObjects,
   GLProxyObjects,
   GLGeomObjects,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLCadencer,
   GLTexture,
   GLMaterial,

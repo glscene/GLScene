@@ -17,7 +17,7 @@ uses
 
   
   GLScene,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLVectorFileObjects,
   GLBSP,
   GLMeshCSG,
@@ -30,7 +30,7 @@ uses
   GLCoordinates,
   GLBaseClasses,
   GLState,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLS.Utils;
 
 type

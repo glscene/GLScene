@@ -13,11 +13,11 @@ uses
   System.SysUtils,
   System.Types,
 
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLSoundFileObjects,
   GLScene,
   XCollection,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLCadencer,
   GLBaseClasses,
   GLS.Utils;

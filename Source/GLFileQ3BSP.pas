@@ -21,9 +21,9 @@ uses
 
   GLVectorFileObjects,
   GLApplicationFileIO,
-  GLVectorGeometry,
-  GLVectorTypes,
-  GLVectorLists,
+  Scene.VectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorLists,
   FileQ3BSP,
   GLBSP,
   GLTexture,

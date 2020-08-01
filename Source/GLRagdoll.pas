@@ -12,10 +12,10 @@ interface
 
 uses
   GLScene,
-  GLPersistentClasses, 
-  GLVectorGeometry, 
+  Scene.PersistentClasses, 
+  Scene.VectorGeometry, 
   GLVectorFileObjects,
-  GLVectorLists,
+  Scene.VectorLists,
   GLObjects;
 
 type
@@ -113,7 +113,7 @@ implementation
 //------------------------------------------------------------------------	
 
 uses
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 { TGLRagdolBoneList }
 

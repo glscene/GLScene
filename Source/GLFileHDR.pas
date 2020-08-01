@@ -21,9 +21,9 @@ uses
   GLGraphics,
   GLTextureFormat,
   GLApplicationFileIO,
-  GLS.RGBE,
-  GLVectorTypes,
-  GLVectorGeometry;
+  Scene.RGBE,
+  Scene.VectorTypes,
+  Scene.VectorGeometry;
 
 
 type

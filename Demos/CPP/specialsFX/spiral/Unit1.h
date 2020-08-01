@@ -11,7 +11,7 @@
 #include <ExtCtrls.hpp>
 
 #include <GLCrossPlatform.hpp>  // Pascal unit
-#include <GLVectorGeometry.hpp>   // Pascal unit
+#include <Scene.VectorGeometry.hpp>   // Pascal unit
 #include <GLBehaviours.hpp>     // Pascal unit
 #include <GLSceneViewer.hpp>    // Pascal unit
 #include <GLObjects.hpp>        // Pascal unit

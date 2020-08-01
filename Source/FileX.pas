@@ -14,10 +14,10 @@ uses
   System.Classes, 
   System.SysUtils,
   
-  GLVectorTypes, 
-  GLVectorGeometry, 
-  GLVectorLists, 
-  GLPersistentClasses, 
+  Scene.VectorTypes, 
+  Scene.VectorGeometry, 
+  Scene.VectorLists, 
+  Scene.PersistentClasses, 
   GLS.Utils;
 
 type

@@ -34,7 +34,7 @@ uses
 
   GLScene,
   GLSceneViewer,
-  GLS.Strings,
+  Scene.Strings,
   FInfo,
   XCollection,
   GLCrossPlatform,

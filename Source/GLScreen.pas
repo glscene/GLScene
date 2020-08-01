@@ -14,7 +14,7 @@ uses
   System.SysUtils,
   VCL.Forms,
 
-  GLVectorGeometry;
+  Scene.VectorGeometry;
 
 const
   MaxVideoModes = 200;

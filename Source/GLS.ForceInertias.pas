@@ -14,8 +14,8 @@ uses
   XCollection,
   GLScene,
   GLBaseClasses,
-  GLVectorGeometry,
-  GLVectorTypes,
+  Scene.VectorGeometry,
+  Scene.VectorTypes,
   GLS.ForcePhysics,
   GLCoordinates,
   GLBehaviours;
@@ -999,7 +999,7 @@ procedure TGLRigidBodyInertia.DoProgress(const progressTime : TProgressTimes);
   begin
   UndampedLinearMomentum:=VectorLength(LinearMomentum);
   DampedLinearMomentum:=TranslationDamping.Calculate(UndampedLinearMomentum,deltaTime);
-  {   if GLVectorGeometry.vSIMD=1 then
+  {   if Scene.VectorGeometry.vSIMD=1 then
   //  RigidBody.LinearMomentum:=VectorScale(VectorNormalize(RigidBody.LinearMomentum),DampedLinearMomentum)
   else
   }        begin

@@ -25,14 +25,14 @@ uses
   GLCoordinates,
   GLHeightData,
   GLMaterial,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLContext,
   GLROAMPatch,
-  GLVectorLists,
+  Scene.VectorLists,
   GLRenderContextInfo,
   XOpenGL,
   GLS.Utils,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLTexture;
 
 const

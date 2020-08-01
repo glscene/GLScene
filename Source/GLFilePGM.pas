@@ -19,7 +19,7 @@ uses
   GLContext,
   GLGraphics,
   GLTextureFormat,
-  GLS.Strings,
+  Scene.Strings,
   GLApplicationFileIO,
 
   GLS.CUDAUtility;

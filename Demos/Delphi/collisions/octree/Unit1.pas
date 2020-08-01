@@ -16,15 +16,15 @@ uses
   GLVectorFileObjects,
   GLObjects,
   GLSceneViewer,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLCadencer,
   GLGeomObjects,
   GLCrossPlatform,
   GLCoordinates,
   GLS.Utils,
   GLBaseClasses,
-  GLVectorGeometry,
-  GLVectorLists,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
   GLFile3DS;
 
 type

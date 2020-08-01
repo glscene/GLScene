@@ -12,7 +12,7 @@ uses
 
   GLScene,
   GLObjects,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLJoystick,
   GLGeomObjects,
   GLCadencer,

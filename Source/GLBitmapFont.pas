@@ -20,7 +20,7 @@ uses
   
   OpenGLTokens,
   GLScene,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLContext,
   GLCrossPlatform,
   GLTexture,
@@ -31,8 +31,8 @@ uses
   GLBaseClasses,
   GLRenderContextInfo,
   GLTextureFormat,
-  GLVectorTypes,
-  GLPersistentClasses;
+  Scene.VectorTypes,
+  Scene.PersistentClasses;
 
 type
 

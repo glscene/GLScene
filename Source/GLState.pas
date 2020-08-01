@@ -34,8 +34,8 @@ uses
 
   OpenGLTokens,
   GLCrossPlatform,
-  GLVectorTypes,
-  GLVectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
   GLTextureFormat;
 
 const

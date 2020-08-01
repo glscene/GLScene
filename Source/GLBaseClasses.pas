@@ -13,8 +13,8 @@ uses
   System.SysUtils,
 
   GLCrossPlatform,
-  GLS.Strings,
-  GLPersistentClasses;
+  Scene.Strings,
+  Scene.PersistentClasses;
 
 type
 

@@ -36,7 +36,7 @@ uses
   OpenGLTokens,
   XOpenGL,
   GLScene,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLGraphics,
   GLObjects,
   GLContext,
@@ -45,9 +45,9 @@ uses
   GLRenderContextInfo,
   GLState,
   GLTextureFormat,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLCoordinates,
-  GLPersistentClasses;
+  Scene.PersistentClasses;
 
 
 type

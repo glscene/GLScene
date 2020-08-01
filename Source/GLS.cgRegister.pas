@@ -22,7 +22,7 @@ uses
   Import.CgGL,
   GLS.SceneRegister,
   GLS.cgShader,
-  GLS.cgBombShader;
+  GLS.cgShaderBomb;
 
 procedure Register;
 

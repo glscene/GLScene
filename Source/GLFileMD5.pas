@@ -15,12 +15,12 @@ uses
   System.SysUtils,
 
   GLVectorFileObjects,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLS.Utils,
   GLApplicationFileIO,
-  GLVectorTypes,
-  GLVectorGeometry,
-  GLVectorLists;
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
+  Scene.VectorLists;
 
 type
 

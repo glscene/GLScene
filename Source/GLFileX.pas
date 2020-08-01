@@ -14,12 +14,12 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLVectorFileObjects,
   GLApplicationFileIO,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLTexture,
-  GLVectorLists,
+  Scene.VectorLists,
   GLMaterial,
 
   // Misc

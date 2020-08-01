@@ -125,7 +125,7 @@ void TForm1::AddMushrooms()
 {
   int i;
   TGLFreeFormProxy *Proxy;
-  Glvectorgeometry::TVector s;
+  Scene.VectorGeometry::TVector s;
   float f;
 
   // spawn some more mushrooms using proxy objects

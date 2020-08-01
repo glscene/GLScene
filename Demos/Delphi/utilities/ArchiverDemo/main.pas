@@ -12,9 +12,9 @@ uses
   Vcl.Dialogs,
   
   GLScene, GLObjects, GLVectorFileObjects, GLMaterial, GLCadencer,
-  GLSArchiveManager, GLBaseClasses, GLVectorGeometry, GLFileMS3D,
+  GLSArchiveManager, GLBaseClasses, Scene.VectorGeometry, GLFileMS3D,
   GLFileTGA, GLFileZLIB, GLCoordinates, GLCrossPlatform, GLSceneViewer,
-  GLVectorTypes, GLS.Utils;
+  Scene.VectorTypes, GLS.Utils;
 
 type
 

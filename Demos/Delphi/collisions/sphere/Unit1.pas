@@ -15,7 +15,7 @@ uses
 
   
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLObjects,
   GLCollision,
   GLSceneViewer,

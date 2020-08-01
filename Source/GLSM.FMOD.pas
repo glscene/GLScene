@@ -22,8 +22,8 @@ uses
 
   GLSound,
   GLScene,
-  GLVectorTypes,
-  GLVectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
 
   Import.FMOD,
   Import.FMODTypes,

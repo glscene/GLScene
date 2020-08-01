@@ -17,7 +17,7 @@
 #include "GLSceneViewer.hpp"
 #include "GLTexture.hpp"
 #include "GLSkydome.hpp"
-#include "GLVectorGeometry.hpp"
+#include "Scene.VectorGeometry.hpp"
 #include "GLCrossPlatform.hpp"
 #include "GLAtmosphere.hpp"
 #include "GLSimpleNavigation.hpp"

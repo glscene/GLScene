@@ -13,8 +13,8 @@ uses
   Vcl.StdCtrls,
 
   GLScene,
-  GLVectorTypes,
-  GLVectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
   GLCadencer,
   GLObjects,
   GLSound,

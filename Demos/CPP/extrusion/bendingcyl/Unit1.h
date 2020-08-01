@@ -16,7 +16,7 @@
 #include "GLExtrusion.hpp"
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
-#include "GLVectorgeometry.hpp"
+#include "Scene.VectorGeometry.hpp"
 #include "GLSceneViewer.hpp"
 #include "GLSpline.hpp"
 

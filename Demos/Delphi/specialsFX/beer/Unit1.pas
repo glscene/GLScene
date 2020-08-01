@@ -13,7 +13,7 @@ uses
 
   
   GLScene, GLVectorFileObjects, GLObjects, GLSceneViewer,
-  GLFile3ds, GLCadencer, GLGeomObjects, GLVectorGeometry,
+  GLFile3ds, GLCadencer, GLGeomObjects, Scene.VectorGeometry,
   GLShadowPlane, GLParticleFX, GLPerlinPFX, GLCrossPlatform, GLCoordinates,
   GLBaseClasses, GLS.Utils;
 

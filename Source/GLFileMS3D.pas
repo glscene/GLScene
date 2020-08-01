@@ -16,12 +16,12 @@ uses
   System.SysUtils, 
    
   GLVectorFileObjects,
-  GLVectorTypes, 
+  Scene.VectorTypes, 
   GLMaterial, 
   GLColor, 
   GLTexture,
-  GLVectorGeometry, 
-  GLVectorLists, 
+  Scene.VectorGeometry, 
+  Scene.VectorLists, 
   GLApplicationFileIO;
   
 

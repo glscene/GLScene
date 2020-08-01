@@ -16,14 +16,14 @@ uses
   System.SysUtils,
 
   OpenGLTokens,
-  GLPersistentClasses,
-  GLVectorGeometry,
+  Scene.PersistentClasses,
+  Scene.VectorGeometry,
   GLParticleFX,
   GLTexture,
   GLColor,
   GLRenderContextInfo,
   GLContext,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
 

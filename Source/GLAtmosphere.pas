@@ -23,13 +23,13 @@ uses
   GLScene,
   GLObjects,
   GLCadencer,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLContext,
-  GLS.Strings,
+  Scene.Strings,
   GLColor,
   GLRenderContextInfo,
   GLState,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
    EGLAtmosphereException = class(Exception);

@@ -12,7 +12,7 @@
 #include <GIFImg.hpp>
 
 #include <GLLensFlare.hpp>
-#include <GLVectorGeometry.hpp>
+#include <Scene.VectorGeometry.hpp>
 #include <GLSMBASS.hpp>
 #include <GLSound.hpp>
 #include <GLSceneViewer.hpp>

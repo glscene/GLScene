@@ -31,12 +31,12 @@ uses
   System.Math,
 
   OpenGLTokens,
-  GLVectorLists,
+  Scene.VectorLists,
   GLHeightData,
   GLGraphics,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLTexture,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLCoordinates,
   GLMaterial;
 

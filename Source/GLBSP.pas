@@ -20,11 +20,11 @@ uses
 
   GLVectorFileObjects,
   GLMaterial,
-  GLVectorGeometry,
-  GLVectorLists,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
   GLColor,
   GLRenderContextInfo,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
 

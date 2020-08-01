@@ -22,11 +22,11 @@ uses
   Vcl.Graphics,
   
   OpenGLTokens,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLColor,
   GLCrossPlatform,
   GLContext,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLState;
 
 type

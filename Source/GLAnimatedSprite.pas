@@ -18,10 +18,10 @@ uses
    
   OpenGLTokens,
   GLScene,
-  GLVectorTypes,
-  GLVectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
   GLMaterial,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   XCollection,
   GLRenderContextInfo,
   GLBaseClasses, 

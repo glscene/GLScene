@@ -17,9 +17,9 @@ uses
   GLTexture, 
   GLTextureFormat,
   GLMaterial, 
-  GLVectorTypes, 
-  GLVectorGeometry, 
-  GLVectorLists,
+  Scene.VectorTypes, 
+  Scene.VectorGeometry, 
+  Scene.VectorLists,
   FileB3D;
 
 type

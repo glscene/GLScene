@@ -16,7 +16,7 @@
 #include "GLGeomObjects.hpp"
 #include "GLTexture.hpp"
 #include "GLMultiPolygon.hpp"
-#include "GlvectorGeometry.hpp"
+#include "Scene.VectorGeometry.hpp"
 #include "GLSceneViewer.hpp"
 #include "GLCrossPlatform.hpp"
 #include "GLMaterial.hpp"

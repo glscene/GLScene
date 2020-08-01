@@ -20,7 +20,7 @@ uses
   
   OpenGLTokens,
   GLScene,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLObjects,
   GLBitmapFont,
   GLTexture,
@@ -167,9 +167,9 @@ implementation
 
 uses
   GLCoordinates,
-  GLPersistentClasses,
-  GLS.Strings,
-  GLVectorTypes,
+  Scene.PersistentClasses,
+  Scene.Strings,
+  Scene.VectorTypes,
   OpenGLAdapter;
 
 const

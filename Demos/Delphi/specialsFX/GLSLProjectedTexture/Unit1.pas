@@ -14,7 +14,7 @@ uses
   Vcl.ExtCtrls,
 
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLObjects,
   GLTexture,
   GLSceneViewer,
@@ -25,7 +25,7 @@ uses
   GLS.Utils,
   GLFileLMTS,
   GLContext,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLPipelineTransformation,
   GLSLProjectedTextures,
   GLCrossPlatform,

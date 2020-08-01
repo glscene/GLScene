@@ -18,7 +18,7 @@ uses
   
   GLScene,
   GLObjects,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLSceneViewer,
   GLGeomObjects,
   GLBitmapFont,

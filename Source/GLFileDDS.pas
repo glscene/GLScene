@@ -21,10 +21,10 @@ uses
   GLContext,
   GLGraphics,
   GLTextureFormat,
-  GLS.RGBE,
+  Scene.RGBE,
   GLApplicationFileIO,
-  GLVectorGeometry,
-  GLS.Strings;
+  Scene.VectorGeometry,
+  Scene.Strings;
 
 type
 

@@ -17,10 +17,10 @@ uses
    
   OpenGLTokens, 
   GLContext, 
-  GLVectorLists, 
-  GLVectorGeometry,
+  Scene.VectorLists, 
+  Scene.VectorGeometry,
   GLBaseClasses, 
-  GLPersistentClasses;
+  Scene.PersistentClasses;
 
  const
   MAX_OBJECT_STACK_DEPTH = 512;

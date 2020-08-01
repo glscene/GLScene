@@ -15,7 +15,7 @@ uses
   System.SysUtils,
   System.Math,
   GLVectorFileObjects,
-  GLVectorLists,
+  Scene.VectorLists,
   FileLWObjects;
 
 type
@@ -37,10 +37,10 @@ implementation
 //============================================
 
 uses
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLTexture,
   GLMaterial,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
   PVector3f = ^TVector3f;

@@ -13,9 +13,9 @@ uses
   Vcl.Dialogs,
 
   GLScene,
-  GLVectorTypes,
-  GLVectorLists,
-  GLPersistentClasses,
+  Scene.VectorTypes,
+  Scene.VectorLists,
+  Scene.PersistentClasses,
   GLObjects,
   GLCoordinates,
   GLCadencer,
@@ -28,7 +28,7 @@ uses
   GLGeomObjects,
   GLHUDObjects,
   GLFile3ds,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GlMaterial,
   GLKeyboard,
   GLS.Utils;

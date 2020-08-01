@@ -22,9 +22,9 @@ uses
   VCL.Graphics,
   VCL.Controls,
 
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLS.Utils,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
   TGLVectorEditorForm = class(TForm)

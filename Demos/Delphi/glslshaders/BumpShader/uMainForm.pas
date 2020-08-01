@@ -23,7 +23,7 @@ uses
   GLVectorFileObjects,
   GLGraph,
   GLGeomObjects,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLSL.ShaderBump,
   GLS.ShaderCustom,
   GLSL.Shader,

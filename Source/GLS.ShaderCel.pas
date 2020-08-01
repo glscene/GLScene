@@ -24,7 +24,7 @@ uses
   GLContext, 
   GLGraphics, 
   GLS.Utils,
-  GLVectorGeometry, 
+  Scene.VectorGeometry, 
   GLColor, 
   GLRenderContextInfo,
   GLMaterial, 

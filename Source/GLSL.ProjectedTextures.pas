@@ -29,14 +29,14 @@ uses
 
   GLPipelineTransformation,
   GLScene,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLTexture,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLContext,
   GLColor,
   GLRenderContextInfo,
   GLTextureFormat,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
   TGLSLProjectedTexturesStyle = (ptsLight, ptsShadow);

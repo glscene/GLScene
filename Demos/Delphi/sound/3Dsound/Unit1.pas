@@ -13,10 +13,10 @@ uses
   Vcl.StdCtrls,
 
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLObjects,
   GLCadencer,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLSceneViewer,
   GLGeomObjects,
   GLSound,

@@ -63,7 +63,7 @@ void __fastcall TForm1::GetInput(TButton *Sender)
   }
 }
 //---------------------------------------------------------------------------
-Glvectorgeometry::TVector __fastcall TForm1::OnGetCameraPosition(
+Scene.VectorGeometry::TVector __fastcall TForm1::OnGetCameraPosition(
 					   TGLNavigatorSmoothChangeVector* const ASender)
 {
   if (ASender == FCameraSmoothAnimator_AbsPos)
@@ -73,7 +73,7 @@ Glvectorgeometry::TVector __fastcall TForm1::OnGetCameraPosition(
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::OnSetCameraPosition(TGLNavigatorSmoothChangeVector* const ASender,
-					   const Glvectortypes::TVector4f &AValue)
+					   const Scene.VectorTypes::TVector4f &AValue)
 {
   if (ASender == FCameraSmoothAnimator_AbsPos)
 	GLCamera->AbsolutePosition = AValue;
@@ -119,7 +119,7 @@ void __fastcall TForm1::btnZoomToDistanceClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::btnOrbitToPosClick(TObject *Sender)
 {
-  Glvectorgeometry::TVector lTargetPosition;
+  Scene.VectorGeometry::TVector lTargetPosition;
 
   GetInput(btnOrbitToPos);
   lTargetPosition = dcSphere->LocalToAbsolute(PointMake(DextX, DextY, DextZ));
@@ -147,7 +147,7 @@ void __fastcall TForm1::btSmoothOrbitClick(TObject *Sender)
   float lAngle; // In radians.
   float lTime;
   bool lNeedToRecalculateZoom;
-  Glvectorgeometry::TVector lTargetPosition;
+  Scene.VectorGeometry::TVector lTargetPosition;
 
   GetInput(btSmoothOrbit);
   lTargetPosition = dcSphere->LocalToAbsolute(PointMake(DextX, DextY, DextZ));
@@ -178,7 +178,7 @@ void __fastcall TForm1::btSmoothOrbitToPosAdvClick(TObject *Sender)
 {
   float lAngle; // In radians.
   float lTime;
-  Glvectorgeometry::TVector lTargetPosition;
+  Scene.VectorGeometry::TVector lTargetPosition;
 
   GetInput(btSmoothOrbitToPosAdv);
 
@@ -199,7 +199,7 @@ void __fastcall TForm1::btSmoothOrbitToPosAdvClick(TObject *Sender)
 
 void __fastcall TForm1::btnOrbitToPosAdvClick(TObject *Sender)
 {
-  Glvectorgeometry::TVector lTargetPosition;
+  Scene.VectorGeometry::TVector lTargetPosition;
 
   GetInput(btnOrbitToPosAdv);
   lTargetPosition = dcSphere->LocalToAbsolute(PointMake(DextX, DextY, DextZ));

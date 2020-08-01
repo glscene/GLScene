@@ -15,13 +15,13 @@ uses
   System.SysUtils,
   Vcl.Graphics,
 
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLVectorFileObjects,
   GLApplicationFileIO,
-  GLVectorLists,
-  GLVectorGeometry,
+  Scene.VectorLists,
+  Scene.VectorGeometry,
   GLTexture,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLGraphics,
   GLMaterial;
 

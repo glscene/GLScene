@@ -26,7 +26,7 @@ uses
 
   DesignIntf,
 
-  GLS.Strings,
+  Scene.Strings,
   GLScene,
   GLBehaviours,
   GLMaterialEx,

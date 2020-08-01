@@ -23,20 +23,20 @@ uses
 
   OpenGLTokens,
   GLScene,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLContext,
   GLSilhouette,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLCoordinates,
   GLPipelineTransformation,
   GLGeometryBB,
   GLColor,
   GLSelection,
   GLRenderContextInfo,
-  GLVectorLists,
+  Scene.VectorLists,
   GLState,
-  GLVectorTypes,
-  GLS.Logger;
+  Scene.VectorTypes,
+  Scene.Logger;
 
 
 type

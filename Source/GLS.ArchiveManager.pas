@@ -14,7 +14,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLApplicationFileIO;
 
 type
@@ -188,7 +188,7 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLS.Strings;
+  Scene.Strings;
 
 var
   vArchiveFileFormats: TGLArchiveFileFormatsList;

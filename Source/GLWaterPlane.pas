@@ -20,15 +20,15 @@ uses
   Vcl.Graphics,
 
   OpenGLTokens,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLScene,
-  GLVectorLists,
+  Scene.VectorLists,
   GLCrossPlatform,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLBaseClasses,
   GLContext,
   GLRenderContextInfo,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
    TGLWaterPlaneOption = (wpoTextured);

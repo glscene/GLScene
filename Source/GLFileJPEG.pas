@@ -23,7 +23,7 @@ uses
   GLGraphics,
   GLTextureFormat,
   GLApplicationFileIO,
-  GLVectorGeometry;
+  Scene.VectorGeometry;
 
 
 type

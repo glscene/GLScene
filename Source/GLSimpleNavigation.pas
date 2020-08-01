@@ -25,10 +25,10 @@ uses
   VCL.Controls,
   VCL.ExtCtrls,
   GLSceneForm,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLScene,
   GLSceneViewer,
-  GLS.Strings;
+  Scene.Strings;
 
 type
 

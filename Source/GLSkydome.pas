@@ -22,9 +22,9 @@ uses
   GLScene,
   GLContext,
   GLState,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLGraphics,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLColor,
   GLRenderContextInfo;
 

@@ -12,13 +12,13 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLVectorFileObjects,
   GLTexture,
   GLApplicationFileIO,
-  GLVectorTypes,
-  GLVectorLists,
-  GLVectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorLists,
+  Scene.VectorGeometry,
   GLMaterial;
 
 type

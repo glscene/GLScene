@@ -22,7 +22,7 @@ uses
   GLGraphics,
   GLS.CUDAUtility,
   GLS.CUDADataAccess,
-  GLVectorTypes,
+  Scene.VectorTypes,
   CPUFFT,
   GLS.CUDAFFTPlan,
   GLS.CUDA,

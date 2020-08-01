@@ -14,7 +14,7 @@ uses
   Winapi.OpenGLext,
   Winapi.Windows,
   System.SysUtils,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
   TGLboolean = BYTEBOOL; 

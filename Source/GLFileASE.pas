@@ -15,9 +15,9 @@ uses
   System.SysUtils,
   GLVectorFileObjects,
   GLApplicationFileIO,
-  GLVectorTypes, 
-  GLVectorGeometry, 
-  GLVectorLists,
+  Scene.VectorTypes, 
+  Scene.VectorGeometry, 
+  Scene.VectorLists,
   GLTexture,
   GLMaterial;
 

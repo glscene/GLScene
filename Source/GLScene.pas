@@ -24,17 +24,17 @@ uses
   OpenGLTokens,
   XOpenGL,
   XCollection,
-  GLS.Strings,
+  Scene.Strings,
   GLContext,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLSilhouette,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLPipeLineTransformation,
   GLState,
   GLGraphics,
   GLGeometryBB,
   GLCrossPlatform,
-  GLVectorLists,
+  Scene.VectorLists,
   GLTexture,
   GLColor,
   GLBaseClasses,
@@ -43,10 +43,10 @@ uses
   GLMaterial,
   GLTextureFormat,
   GLSelection,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLApplicationFileIO,
   GLS.Utils,
-  GLS.Logger;
+  Scene.Logger;
 
 type
   //Defines which features are taken from the master object.

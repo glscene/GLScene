@@ -16,7 +16,7 @@
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
 #include "GLSceneViewer.hpp"
-#include "GLVectorGeometry.hpp"
+#include "Scene.VectorGeometry.hpp"
 #include "GLPolynomials.hpp"
 
 //---------------------------------------------------------------------------

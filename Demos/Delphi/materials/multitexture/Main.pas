@@ -17,7 +17,7 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLObjects,
   GLTexture,
   GLSceneViewer,

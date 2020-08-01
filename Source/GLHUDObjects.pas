@@ -17,10 +17,10 @@ uses
 
   OpenGLTokens,
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLCoordinates,
-  GLPersistentClasses,
-  GLVectorGeometry,
+  Scene.PersistentClasses,
+  Scene.VectorGeometry,
   GLObjects,
   GLBitmapFont,
   GLCrossPlatform,

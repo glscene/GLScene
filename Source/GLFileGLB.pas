@@ -15,12 +15,12 @@ uses
   GLVectorFileObjects,
   GLTexture,
   GLApplicationFileIO,
-  GLVectorTypes,
-  GLVectorLists,
-  GLVectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorLists,
+  Scene.VectorGeometry,
   GLMaterial,
   GLS.Utils,
-  GLPersistentClasses;
+  Scene.PersistentClasses;
 
 type
   (* The GLB binary glTF format is a runtime asset delivery format

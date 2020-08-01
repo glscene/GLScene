@@ -23,8 +23,8 @@ uses
 
   GLSound,
   GLScene,
-  GLVectorTypes,
-  GLVectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
 
   Import.BASS;
 

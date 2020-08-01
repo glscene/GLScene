@@ -21,13 +21,13 @@ uses
 
   OpenGLTokens,
   GLScene,
-  GLPersistentClasses,
-  GLVectorGeometry,
+  Scene.PersistentClasses,
+  Scene.VectorGeometry,
   XCollection,
-  GLSpline,
+  Scene.Spline,
   GLObjects,
   GLCrossPlatform,
-  GLS.Strings,
+  Scene.Strings,
   GLBaseClasses;
 
 type
@@ -286,7 +286,7 @@ procedure StopAllMovements(const Scene: TGLScene; const StopCamerasMove, StopObj
 implementation
 // ------------------------------------------------------------------
 uses
-  GLVectorTypes;
+  Scene.VectorTypes;
 
  //----------------------------- TGLPathNode ------------------------------------
 constructor TGLPathNode.Create(Collection: TCollection);

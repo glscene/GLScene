@@ -19,8 +19,8 @@ uses
   System.SysUtils,
 
   GLBaseClasses,
-  GLS.Strings,
-  GLS.Logger;
+  Scene.Strings,
+  Scene.Logger;
 
 const
   GLS_RC_DDS_Type = RT_RCDATA;

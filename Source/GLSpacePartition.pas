@@ -40,13 +40,13 @@ uses
   OpenGLTokens,
   GLScene,
   GLCoordinates,
-  GLVectorTypes,
-  GLVectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
   GLGeometryBB,
   GLContext,
   GLRenderContextInfo,
   GLSceneViewer,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLState;
 
 const

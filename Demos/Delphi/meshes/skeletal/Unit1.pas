@@ -27,7 +27,7 @@ uses
   GLMaterial,
   GLCoordinates,
   GLBaseClasses,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLS.Utils;
 
 type

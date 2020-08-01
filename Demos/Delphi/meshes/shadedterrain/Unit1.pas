@@ -26,7 +26,7 @@ uses
   GLTexture,
   GLSkydome,
   GLSceneViewer,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLLensFlare,
   GLBumpmapHDS,
   GLTexCombineShader,
@@ -36,7 +36,7 @@ uses
   GLState,
   GLS.Utils,
   GLBaseClasses,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
   TForm1 = class(TForm)

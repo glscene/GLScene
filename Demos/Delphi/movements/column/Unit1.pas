@@ -11,17 +11,17 @@ uses
   Vcl.StdCtrls,
 
   GLScene,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLObjects,
   GLTexture,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLCadencer,
   GLSceneViewer,
   GLColor,
   GLCrossPlatform,
   GLCoordinates,
   GLBaseClasses,
-  GLVectorGeometry;
+  Scene.VectorGeometry;
 
 type
   TForm1 = class(TForm)

@@ -15,7 +15,7 @@ uses
   Vcl.Imaging.Jpeg,
   
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLTexture,
   GLSkyBox,
   GLCrossPlatform,

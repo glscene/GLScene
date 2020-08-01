@@ -13,7 +13,7 @@ interface
 
 uses
   GLScene,
-  GLVectorGeometry;
+  Scene.VectorGeometry;
 
 type
 

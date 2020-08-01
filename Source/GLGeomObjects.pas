@@ -18,17 +18,17 @@ uses
   OpenGLTokens,
   OpenGLAdapter,
   GLScene,
-  GLPersistentClasses,
-  GLVectorGeometry,
-  GLVectorLists,
+  Scene.PersistentClasses,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
   GLContext,
   GLObjects,
   GLSilhouette,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLGeometryBB,
   GLRenderContextInfo,
   XOpenGL,
-  GLPolynomials;
+  Scene.Polynomials;
 
 
 type

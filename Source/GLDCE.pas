@@ -35,8 +35,8 @@ uses
 
   GLScene,
   XCollection,
-  GLVectorGeometry,
-  GLVectorLists,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
   GLVectorFileObjects,
   GLDCEMisc,
   GLEllipseCollision,
@@ -44,8 +44,8 @@ uses
   GLCoordinates,
   GLBaseClasses,
   GLManager,
-  GLVectorTypes,
-  GLS.Strings;
+  Scene.VectorTypes,
+  Scene.Strings;
 
 type
   //Only csEllipsoid can have dynamic behaviour

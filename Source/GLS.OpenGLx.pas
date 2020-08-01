@@ -31,7 +31,7 @@ uses
      Winapi.Windows,
   {$ENDIF}
   {$IFDEF LINUX} X, XLib, XUtil, {$ENDIF}
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 const
 {$IFDEF MSWINDOWS}

@@ -26,7 +26,7 @@
 #include "GLSkydome.hpp"
 #include "GLVectorFileObjects.hpp"
 #include "GLKeyboard.hpp"
-#include "GLVectorGeometry.hpp"
+#include "Scene.VectorGeometry.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

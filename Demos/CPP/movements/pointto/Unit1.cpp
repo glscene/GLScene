@@ -10,7 +10,7 @@
 #pragma link "GLGeomObjects"
 #pragma link "GLSceneViewer"
 #pragma link "GLCadencer"
-#pragma link "GLVectorGeometry"
+#pragma link "Scene.VectorGeometry"
 #pragma link "GLScene"
 #pragma link "GLObjects"
 #pragma link "GLBaseClasses"

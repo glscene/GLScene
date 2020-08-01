@@ -13,7 +13,7 @@
 #include "GLObjects.hpp"
 #include "GLSceneViewer.hpp"
 #include "GLTexture.hpp"
-#include "GLVectorGeometry.hpp"
+#include "Scene.VectorGeometry.hpp"
 #include "GLCadencer.hpp"
 #include "GLMultiMaterialShader.hpp"
 #include "GLTexCombineShader.hpp"

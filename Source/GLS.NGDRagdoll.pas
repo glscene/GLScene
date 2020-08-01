@@ -5,8 +5,8 @@ interface
 uses
   System.Classes, 
   System.SysUtils,
-  GLVectorGeometry, 
-  GLVectorTypes,
+  Scene.VectorGeometry, 
+  Scene.VectorTypes,
   GLVectorFileObjects, 
   Import.NGD;
 

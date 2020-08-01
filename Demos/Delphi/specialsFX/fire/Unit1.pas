@@ -19,7 +19,7 @@ uses
   GLFireFX,
   GLCadencer,
   GLBehaviours,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLSceneViewer,
   GLGeomObjects,
   GLCrossPlatform,

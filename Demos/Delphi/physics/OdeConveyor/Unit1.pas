@@ -19,14 +19,14 @@ uses
   Import.ODE,
   GLS.ODEManager,
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLObjects,
   GLCadencer,
   GLCoordinates,
   GLCrossPlatform,
   GLBaseClasses,
   GLSceneViewer,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLKeyBoard,
   GLSimpleNavigation;
 

@@ -16,11 +16,11 @@ uses
 
   OpenGLTokens,
   OpenGLAdapter,
-  GLVectorTypes,
-  GLVectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
   GLContext,
   GLBaseClasses,
-  GLSpline,
+  Scene.Spline,
   GLCoordinates;
 
 type

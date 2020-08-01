@@ -21,10 +21,10 @@ uses
   VCL.StdCtrls,
   VCL.ExtCtrls,
   VCL.Buttons,
-  GLS.Strings,
+  Scene.Strings,
   GLSL.ShaderParameter,
   GLTextureFormat,
-  GLVectorGeometry;
+  Scene.VectorGeometry;
 
 type
   TGLShaderUniformEditor = class(TForm)

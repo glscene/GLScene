@@ -14,7 +14,7 @@ uses
 
   GLCadencer,
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLObjects,
   GLSound,
   GLSceneViewer,
@@ -74,7 +74,7 @@ implementation
 {$R *.DFM}
 
 uses
-  GLVectorGeometry;
+  Scene.VectorGeometry;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin

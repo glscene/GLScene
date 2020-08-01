@@ -13,9 +13,9 @@ interface
 uses
   Winapi.OpenGL,
   OpenGLTokens,
-  GLVectorGeometry,
-  GLVectorTypes,
-  GLS.Logger;
+  Scene.VectorGeometry,
+  Scene.VectorTypes,
+  Scene.Logger;
 
 const
   MAX_MATRIX_STACK_DEPTH = 128;

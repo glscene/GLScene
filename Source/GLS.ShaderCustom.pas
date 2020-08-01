@@ -23,17 +23,17 @@ uses
   System.Classes,
   System.SysUtils,
   
-  GLVectorGeometry,
-  GLVectorTypes,
+  Scene.VectorGeometry,
+  Scene.VectorTypes,
   GLTexture,
   GLCadencer,
   OpenGLTokens,
   GLScene,
-  GLS.Strings,
+  Scene.Strings,
   GLContext,
   GLRenderContextInfo,
   GLMaterial,
-  GLVectorLists,
+  Scene.VectorLists,
   GLTextureFormat,
   GLSL.ShaderParameter;
 

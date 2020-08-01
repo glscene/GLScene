@@ -12,8 +12,8 @@ interface
 
 uses
   System.Classes, 
-  GLVectorGeometry, 
-  GLVectorLists, 
+  Scene.VectorGeometry, 
+  Scene.VectorLists, 
   GLVectorFileObjects, 
   GLSilhouette;
 

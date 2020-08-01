@@ -2,7 +2,7 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLS.Strings;
+unit Scene.Strings;
 
 (*
   String constants that are used for internationalization

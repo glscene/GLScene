@@ -37,12 +37,12 @@ interface
 {.$Define UseDensity}
 
 uses
-  GLVectorGeometry,
-  GLVectorLists,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
   GLMesh,
   GLVectorFileObjects,
-  GLVectorTypes,
-  GLVectorRecTypes;
+  Scene.VectorTypes,
+  Scene.VectorRecTypes;
 
 const
   ALLOC_SIZE = 65536;

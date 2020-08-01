@@ -35,15 +35,15 @@ uses
   GLScene,
   GLState,
   GLMaterial,
-  GLVectorGeometry,
-  GLVectorLists,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
   GLVectorFileObjects,
   GLApplicationFileIO,
   GLRenderContextInfo,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   XOpenGL,
   GLContext,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
   TGLTree = class;

@@ -20,7 +20,7 @@ uses
   Vcl.Controls,
 
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLObjects,
   GLTexture,
   GLHUDObjects,

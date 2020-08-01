@@ -17,9 +17,9 @@ interface
 uses
   System.Math,
   System.Classes,
-  GLVectorTypes,
-  GLVectorGeometry,
-  GLVectorLists,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
   GLGeometryBB,
   GLContext;
 

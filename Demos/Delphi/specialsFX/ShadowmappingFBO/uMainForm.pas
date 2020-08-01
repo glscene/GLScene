@@ -17,7 +17,7 @@ uses
 
   OpenGLTokens,
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLContext,
   GLObjects,
   GLHUDObjects,
@@ -29,7 +29,7 @@ uses
   GLCadencer,
   GLS.ShaderCustom,
   GLSL.Shader,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLPolyhedron,
   GLCoordinates,
   GLCrossPlatform,

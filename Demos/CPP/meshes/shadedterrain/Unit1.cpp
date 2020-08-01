@@ -56,7 +56,7 @@ void __fastcall TForm1::GLBumpmapHDS1NewTilePrepared(TGLBumpmapHDS * Sender,
 													 TGLLibMaterial *
 													 normalMapMaterial)
 {
-  Glvectorgeometry::TVector n;
+  Scene.VectorGeometry::TVector n;
 
   heightData->MaterialName = normalMapMaterial->Name;
   normalMapMaterial->Texture2Name = "contrast";

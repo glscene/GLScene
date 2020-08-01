@@ -22,8 +22,8 @@ uses
 
   GLMaterial,
   GLScene,
-  GLVectorGeometry,
-  GLS.Strings,
+  Scene.VectorGeometry,
+  Scene.Strings,
   GLRenderContextInfo;
 
 type

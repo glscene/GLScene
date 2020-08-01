@@ -18,12 +18,12 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLPersistentClasses,
-  GLVectorTypes,
+  Scene.PersistentClasses,
+  Scene.VectorTypes,
   GLVectorFileObjects,
   GLScene,
   GLMaterial,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLRenderContextInfo;
 
 type

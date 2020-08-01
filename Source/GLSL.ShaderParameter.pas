@@ -15,9 +15,9 @@ uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
   System.Classes,
-  GLS.Strings,
+  Scene.Strings,
   OpenGLTokens,
-  GLVectorTypes, 
+  Scene.VectorTypes, 
   GLTextureFormat, 
   GLRenderContextInfo;
 

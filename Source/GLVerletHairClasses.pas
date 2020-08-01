@@ -17,9 +17,9 @@ uses
   System.Classes, 
   System.SysUtils,
   GLVerletTypes, 
-  GLVectorTypes, 
-  GLVectorLists, 
-  GLVectorGeometry;
+  Scene.VectorTypes, 
+  Scene.VectorLists, 
+  Scene.VectorGeometry;
 
 type
   TVHStiffness = (vhsFull, vhsSkip1Node, vhsSkip2Node, vhsSkip3Node,

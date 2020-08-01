@@ -14,7 +14,7 @@ uses
   GLObjects,
   GLSceneViewer,
   GLS.ODEManager,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLCadencer,
   GLGeomObjects,
   GLHUDObjects,

@@ -35,7 +35,7 @@
 #include "GLRenderContextInfo.hpp"
 #include "GLKeyBoard.hpp"
 #include "GLState.hpp"
-#include "GLVectorGeometry.hpp"
+#include "Scene.VectorGeometry.hpp"
 #include "GLContext.hpp"
 #include "GLEllipseCollision.hpp"
 #include "GLS.Utils.hpp"

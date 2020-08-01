@@ -16,8 +16,8 @@ uses
   
   GLScene,
   GLObjects,
-  GLVectorTypes,
-  GLVectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
   GLTexture,
   GLCadencer,
   GLMesh,

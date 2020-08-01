@@ -18,11 +18,11 @@ uses
   System.Classes,
   GLScene,
   GLMaterial,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   OpenGLTokens,
   XOpenGL,
   GLRenderContextInfo,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
 

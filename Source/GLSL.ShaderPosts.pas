@@ -17,14 +17,14 @@ uses
   GLTexture,
   GLScene,
   GLState,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLContext,
   GLMaterial,
   GLSL.Shader,
   GLS.ShaderCustom,
   GLRenderContextInfo,
   GLTextureFormat,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
   // Custom class for GLSLPostBlurShader. A shader that blurs the entire scene
@@ -106,12 +106,12 @@ type
     FMaterialLibrary: TGLAbstractMaterialLibrary;
     FLuminanceThreshold: Single;
     FColorAmplification:Single;
-    FElapsedTime : Single;
-    FUseMask : Integer;
-    FNoiseTex : TGLTexture;
-    FMaskTex : TGLTexture;
-    FNoiseTexName  : TGLLibMaterialName;
-    FMaskTexName        : TGLLibMaterialName;
+    FElapsedTime: Single;
+    FUseMask: Integer;
+    FNoiseTex: TGLTexture;
+    FMaskTex: TGLTexture;
+    FNoiseTexName: TGLLibMaterialName;
+    FMaskTexName: TGLLibMaterialName;
     // Implementing IGLPostShader.
     procedure DoUseTempTexture(const TempTexture: TGLTextureHandle;TextureTarget: TGLTextureTarget);
     function GetTextureTarget: TGLTextureTarget;
@@ -237,9 +237,9 @@ type
    the effects will be very different *)
   TGLCustomGLSLPostTroubleShader = class(TGLCustomGLSLShader, IGLPostShader)
   private
-    FPixelX  : Single;
-    FPixelY : Single;
-    FFreq   : Single;
+    FPixelX: Single;
+    FPixelY: Single;
+    FFreq: Single;
     FMaterialLibrary: TGLAbstractMaterialLibrary;
     FNoiseTex : TGLTexture;
     FNoiseTexName  : TGLLibMaterialName;

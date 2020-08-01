@@ -15,7 +15,7 @@ uses
   Vcl.Menus,
 
   
-  GLScene, GLGraphics, GLGraph, GLObjects, GLVectorGeometry, GLVectorTypes,
+  GLScene, GLGraphics, GLGraph, GLObjects, Scene.VectorGeometry, Scene.VectorTypes,
   GLSceneViewer, GLCrossPlatform, GLCoordinates, GLBaseClasses;
 
 type

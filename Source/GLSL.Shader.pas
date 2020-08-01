@@ -17,8 +17,8 @@ uses
   System.SysUtils,
   
   OpenGLTokens,
-  GLVectorGeometry,
-  GLVectorTypes,
+  Scene.VectorGeometry,
+  Scene.VectorTypes,
   GLTexture,
   GLContext,
   GLS.ShaderCustom,

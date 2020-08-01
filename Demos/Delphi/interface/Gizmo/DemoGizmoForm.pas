@@ -16,9 +16,9 @@ uses
   
   GLScene,
   GLCadencer,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLObjects,
-  GLSpaceText,
+  GLS.SpaceText,
   GLPolyhedron,
   GLSceneViewer,
   GLBitmapFont,

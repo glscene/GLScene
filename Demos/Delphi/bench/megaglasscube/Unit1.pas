@@ -13,10 +13,10 @@ uses
   
   GLScene,
   GLObjects,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLTexture,
   GLCadencer,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLSceneViewer,
   GLColor,
   GLCrossPlatform,

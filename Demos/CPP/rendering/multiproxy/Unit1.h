@@ -18,7 +18,7 @@
 #include "GLScene.hpp"
 #include "GLSceneViewer.hpp"
 #include "GLTexture.hpp"
-#include "GLVectorgeometry.hpp"
+#include "Scene.VectorGeometry.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

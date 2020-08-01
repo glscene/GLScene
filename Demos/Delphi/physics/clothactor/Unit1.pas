@@ -15,7 +15,7 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLVectorFileObjects,
   GLObjects,
   GLCadencer,
@@ -28,7 +28,7 @@ uses
   GLVerletSkeletonColliders,
   GLShadowVolume,
   GLKeyboard,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLGeometryBB,
   GLSpacePartition,
   GLCrossPlatform,
@@ -38,7 +38,7 @@ uses
   GLContext,
   GLS.Utils,
   GLCoordinates,
-  GLPersistentClasses;
+  Scene.PersistentClasses;
 
 type
   TForm1 = class(TForm)

@@ -15,14 +15,14 @@ uses
   System.SysUtils,
   
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLMeshUtils,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLVectorFileObjects,
   GLMesh,
   GLObjects,
   GLMaterial,
-  GLS.Strings,
+  Scene.Strings,
   GLBaseClasses;
 
 

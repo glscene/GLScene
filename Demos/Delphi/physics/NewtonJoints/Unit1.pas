@@ -13,7 +13,7 @@ uses
   Vcl.Controls,
 
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLS.NGDManager,
   GLObjects,
   GLCoordinates,
@@ -21,7 +21,7 @@ uses
   GLSceneViewer,
   GLCrossPlatform,
   GLBaseClasses,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLSimpleNavigation,
   GLKeyboard,
   GLGeomObjects,

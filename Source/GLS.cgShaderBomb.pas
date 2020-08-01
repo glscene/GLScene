@@ -17,7 +17,7 @@ uses
   GLTexture,
   GLCadencer,
   GLContext,
-  GLS.Strings,
+  Scene.Strings,
   GLMaterial,
   GLRenderContextInfo,
   GLTextureFormat,

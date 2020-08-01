@@ -18,10 +18,10 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLTexture,
   GLVectorFileObjects,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLObjects,
   GLCadencer,
   GLPortal,

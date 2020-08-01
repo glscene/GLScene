@@ -17,7 +17,7 @@ uses
 
   
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLGeomObjects,
   GLObjects,
   GLCadencer,

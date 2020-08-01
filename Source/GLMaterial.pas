@@ -18,23 +18,23 @@ uses
 
   OpenGLTokens,
   GLCrossPlatform,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLRenderContextInfo,
   GLBaseClasses,
   GLContext,
   GLTexture,
   GLColor,
   GLCoordinates,
-  GLVectorGeometry,
-  GLPersistentClasses,
+  Scene.VectorGeometry,
+  Scene.PersistentClasses,
   GLState,
   GLTextureFormat, 
   XOpenGL,
   GLApplicationFileIO,
   GLGraphics,
   GLS.Utils,
-  GLS.Strings,
-  GLS.Logger;
+  Scene.Strings,
+  Scene.Logger;
 
 {$UNDEF USE_MULTITHREAD}
 type

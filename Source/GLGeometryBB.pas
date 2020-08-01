@@ -13,9 +13,9 @@ interface
 uses
   System.SysUtils,
 
-  GLVectorGeometry,
-  GLVectorLists,
-  GLVectorTypes;
+  Scene.VectorGeometry,
+  Scene.VectorLists,
+  Scene.VectorTypes;
 
 type
   //  Structure for storing Bounding Boxes 

@@ -23,11 +23,11 @@ uses
   VCL.Controls, 
   VCL.Graphics,
    
-  GLVectorGeometry, 
+  Scene.VectorGeometry, 
   GLColor, 
   GLTexture, 
   GLCrossPlatform, 
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
   TRColorEditor = class(TFrame)

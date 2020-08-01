@@ -15,7 +15,7 @@
 #include "GLTexCombineShader.hpp"
 #include "GLBumpmapHDS.hpp"
 #include "GLLensFlare.hpp"
-#include "GLVectorGeometry.hpp"
+#include "Scene.VectorGeometry.hpp"
 #include "GLSceneViewer.hpp"
 #include "GLSkydome.hpp"
 #include "GLTexture.hpp"

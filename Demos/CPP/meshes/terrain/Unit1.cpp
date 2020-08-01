@@ -11,7 +11,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GLLensFlare"
-#pragma link "GLVectorGeometry"
+#pragma link "Scene.VectorGeometry"
 #pragma link "GLSMBASS"
 #pragma link "GLSound"
 #pragma link "GLSceneViewer"
@@ -267,7 +267,7 @@ void __fastcall TForm1::FormKeyPress(TObject * Sender, char &Key)
 
 void __fastcall TForm1::TISoundTimer(TObject * Sender)
 {
-  Glvectorgeometry::TVector wolfPos;
+  Scene.VectorGeometry::TVector wolfPos;
   float c, s;
   TGLBSoundEmitter *be;
 
@@ -286,7 +286,7 @@ void __fastcall TForm1::TISoundTimer(TObject * Sender)
   {
     // wolf howl at some distance, at ground level
     wolfPos = GLCamera1->AbsolutePosition;
-    SinCosine(random() * Glvectorgeometry::c2PI, 100 + random(1000), s, c);
+    SinCosine(random() * Scene.VectorGeometry::c2PI, 100 + random(1000), s, c);
 	wolfPos.X = wolfPos.X + c;
 	wolfPos.Z = wolfPos.Z + s;
 	wolfPos.Y = TerrainRenderer1->InterpolatedHeight(wolfPos);

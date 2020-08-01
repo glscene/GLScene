@@ -18,7 +18,7 @@ uses
   GLObjects,
   GLSceneViewer,
   GLTexture,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLCadencer,
   GLMultiMaterialShader,
   GLTexCombineShader,

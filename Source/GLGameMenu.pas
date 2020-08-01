@@ -16,7 +16,7 @@ uses
   System.SysUtils,
 
   OpenGLTokens,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLScene,
   GLCoordinates,
   GLMaterial,

@@ -13,7 +13,7 @@ uses
 
   XCollection,
   GLScene,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLBehaviours,
   GLS.PhysicsForces;
 

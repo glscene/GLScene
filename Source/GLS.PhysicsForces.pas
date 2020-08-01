@@ -12,10 +12,10 @@ uses
 
   XCollection,
   GLScene,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLBehaviours,
   GLCoordinates,
-  GLS.Strings;
+  Scene.Strings;
 
 type
   TGLForce = class;

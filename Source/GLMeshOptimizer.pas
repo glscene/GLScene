@@ -12,8 +12,8 @@ uses
   System.Classes,
   System.Sysutils,
 
-  GLVectorTypes,
-  GLVectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
   GLVectorFileObjects;
 
 type
@@ -42,8 +42,8 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLPersistentClasses, 
-  GLVectorLists, 
+  Scene.PersistentClasses, 
+  Scene.VectorLists, 
   GLMeshUtils;
 
 procedure OptimizeMesh(aList: TGLMeshObjectList);

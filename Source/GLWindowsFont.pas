@@ -24,12 +24,12 @@ uses
   GLTexture,
   GLBitmapFont,
   GLRenderContextInfo,
-  GLVectorLists,
+  Scene.VectorLists,
   GLS.Utils,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   OpenGLTokens,
   GLApplicationFileIO,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
 

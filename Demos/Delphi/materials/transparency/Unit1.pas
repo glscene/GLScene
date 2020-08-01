@@ -20,7 +20,7 @@ uses
   GLCadencer,
   GLBehaviours,
   GLTexture,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLSceneViewer,
   GLGeomObjects,
   GLCoordinates,

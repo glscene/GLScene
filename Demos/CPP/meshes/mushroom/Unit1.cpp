@@ -49,7 +49,7 @@ void __fastcall TForm1::AddMushRooms()
 {
    int i;
    TGLProxyObject *proxy;
-   Glvectorgeometry::TVector s;
+   Scene.VectorGeometry::TVector s;
    float f;
 
    // spawn some more mushrooms using proxy objects

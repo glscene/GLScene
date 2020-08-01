@@ -21,7 +21,7 @@ uses
   GLVectorFileObjects,
   GLScene,
   GLObjects,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLSceneViewer,
   GLFileMD2,
   GLGeomObjects,

@@ -19,7 +19,7 @@
 #pragma link "GLVectorFileObjects"
 #pragma link "GLScene"
 #pragma link "GLFile3DS"
-#pragma link "GLVectorGeometry"
+#pragma link "Scene.VectorGeometry"
 #pragma link "GLKeyboard"
 #pragma link "GLCoordinates"
 #pragma link "GLCrossPlatform"
@@ -57,10 +57,10 @@ void __fastcall TForm1::GLCadencer1Progress(TObject * Sender,
 											const double deltaTime,
 											const double newTime)
 {
-  Glvectorgeometry::TVector rayStart, rayVector;
+  Scene.VectorGeometry::TVector rayStart, rayVector;
   float velocity;
-  Glvectorgeometry::TVector pPoint;
-  Glvectorgeometry::TVector pNormal;
+  Scene.VectorGeometry::TVector pPoint;
+  Scene.VectorGeometry::TVector pNormal;
   __int64 t;
 
   if(IsKeyDown(VK_ESCAPE))
@@ -109,7 +109,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject * Sender,
 
 //---------------------------------------------------------------------------
 
-void TForm1::AddToTrail(const Glvectorgeometry::TVector & p)
+void TForm1::AddToTrail(const Scene.VectorGeometry::TVector & p)
 {
   int i, k;
   Lines1->Nodes->Last()->AsVector = p;

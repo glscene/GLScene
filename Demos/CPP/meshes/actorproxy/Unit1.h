@@ -19,7 +19,7 @@
 #include "GLObjects.hpp"
 #include "GLGeomObjects.hpp"
 #include "GLProxyObjects.hpp"
-#include "GLVectorGeometry.hpp"
+#include "Scene.VectorGeometry.hpp"
 #include "GLCadencer.hpp"
 #include "GLTexture.hpp"
 #include "GLMaterial.hpp"

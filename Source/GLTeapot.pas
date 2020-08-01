@@ -15,13 +15,13 @@ uses
 
   OpenGLTokens,
   GLScene,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLState,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLPipelineTransformation,
   GLContext,
   GLRenderContextInfo,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLMaterial,
   GLTexture;
 

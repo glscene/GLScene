@@ -18,13 +18,13 @@ uses
   OpenGLTokens,
   GLVectorFileObjects,
   GLVerletTypes,
-  GLVectorTypes,
-  GLVectorLists,
-  GLVectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorLists,
+  Scene.VectorGeometry,
   GLTexture,
   GLRenderContextInfo,
   GLState,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLContext;
 
 

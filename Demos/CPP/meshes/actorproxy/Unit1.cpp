@@ -69,7 +69,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
 
 void __fastcall TForm1::DoRaycastStuff()
 {
-   Glvectorgeometry::TVector rayStart, rayVector, iPoint, iNormal;
+   Scene.VectorGeometry::TVector rayStart, rayVector, iPoint, iNormal;
 
    SetVector(rayStart, GLCamera1->AbsolutePosition);
    SetVector(rayVector, GLSceneViewer1->Buffer->ScreenToVector(

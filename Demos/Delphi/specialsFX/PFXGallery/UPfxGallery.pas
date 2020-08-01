@@ -15,10 +15,10 @@ uses
   Vcl.Imaging.Jpeg,
 
   
-  GLVectorGeometry, GLSceneViewer, GLScene, GLHUDObjects, GLParticleFX,
-  GLVectorFileObjects, GLVectorTypes, GLObjects, GLBitmapFont,
+  Scene.VectorGeometry, GLSceneViewer, GLScene, GLHUDObjects, GLParticleFX,
+  GLVectorFileObjects, Scene.VectorTypes, GLObjects, GLBitmapFont,
   GLS.Utils,GLCadencer,  GLTexture, GLNavigator,
-   GLGeomObjects, GLKeyboard, GLSpaceText, GLBehaviours,GLPerlinPFX, GLBlur,
+   GLGeomObjects, GLKeyboard, GLS.SpaceText, GLBehaviours,GLPerlinPFX, GLBlur,
    GLCrossPlatform, GLCoordinates, GLBaseClasses;
 
 const

@@ -17,13 +17,13 @@ uses
   
   OpenGLTokens, 
   XOpenGL, 
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLHeightData, 
-  GLVectorLists, 
+  Scene.VectorLists, 
   GLContext,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLIsolines,
-  GLS.Strings;
+  Scene.Strings;
 
 type
 

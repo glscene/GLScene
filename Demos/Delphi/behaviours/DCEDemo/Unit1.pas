@@ -16,7 +16,7 @@ uses
 
   GLScene,
   GLObjects,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLCadencer,
   GLSceneViewer,
   GLDCE,
@@ -30,7 +30,7 @@ uses
   GLHUDObjects,
   GLCrossPlatform,
   GLCoordinates,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLFileMD2,
   GLFile3DS,
   GLContext,
@@ -41,7 +41,7 @@ uses
   GLState,
   GLS.Utils,
   GLBaseClasses,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
   TForm1 = class(TForm)

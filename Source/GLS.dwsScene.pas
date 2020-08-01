@@ -19,7 +19,7 @@ uses
   System.SysUtils,
 
   GLScene,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLCoordinates,
   DWS.Exprs,
   DWS.Symbols,
@@ -825,7 +825,7 @@ begin
   with FDependencies do
   begin
     Add('Classes');
-    Add('GLVectorGeometry');
+    Add('Scene.VectorGeometry');
   end;
 end;
 

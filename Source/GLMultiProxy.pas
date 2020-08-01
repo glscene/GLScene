@@ -15,14 +15,14 @@ uses
   System.SysUtils,
 
   OpenGLTokens,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLContext,
   GLScene,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLSilhouette,
   GLRenderContextInfo,
   GLBaseClasses,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
 

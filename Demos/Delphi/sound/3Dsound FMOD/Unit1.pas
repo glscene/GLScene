@@ -14,7 +14,7 @@ uses
 
   GLCadencer,
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLObjects,
   GLSound,
   GLSM.FMOD,
@@ -25,7 +25,7 @@ uses
   GLBaseClasses,
   GLFileWAV,
   GLFileMP3,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLS.Utils;
 
 

@@ -16,11 +16,11 @@ uses
   
   OpenGLAdapter,
   OpenGLTokens,
-  GLPersistentClasses,
-  GLVectorTypes,
+  Scene.PersistentClasses,
+  Scene.VectorTypes,
   GLVectorFileObjects,
-  GLVectorLists,
-  GLVectorGeometry;
+  Scene.VectorLists,
+  Scene.VectorGeometry;
 
 (* Tesselates the polygon outlined by the Vertexes. And addeds them to the first facegroup of the Mesh. *)
 procedure DoTesselate(Vertexes: TAffineVectorList; Mesh: TGLBaseMesh; 

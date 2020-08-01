@@ -24,7 +24,7 @@
 #include "GLSceneViewer.hpp"
 
 #include "GLMeshUtils.hpp"
-#include "GLVectorGeometry.hpp"
+#include "Scene.VectorGeometry.hpp"
 
 #include "GLFileTGA.hpp"
 #include "GLFileObj.hpp"

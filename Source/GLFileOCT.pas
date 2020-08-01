@@ -26,7 +26,7 @@ uses
   GLS.Utils,
   GLTextureFormat,
   GLVectorFileObjects,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLApplicationFileIO,
   FileOCT;
 

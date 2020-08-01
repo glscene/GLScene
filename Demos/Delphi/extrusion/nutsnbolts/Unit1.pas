@@ -19,7 +19,7 @@ uses
   GLObjects,
   GLExtrusion,
   GLSceneViewer,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLGeomObjects,
   GLCrossPlatform,
   GLCoordinates,

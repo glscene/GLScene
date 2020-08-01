@@ -19,7 +19,7 @@ uses
   
   OpenGLTokens,
   GLContext,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   
   DWS.Exprs,
   DWS.Symbols,
@@ -2028,7 +2028,7 @@ begin
   inherited;
   FUnitName := 'OpenGLx';
   FDependencies.Add('GLContext');
-  FDependencies.Add('GLVectorGeometry');
+  FDependencies.Add('Scene.VectorGeometry');
 end;
 
 procedure TGLPushAttrib.Execute;

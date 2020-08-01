@@ -21,10 +21,10 @@ uses
 
   GLScene,
   GLCoordinates,
-  GLPersistentClasses,
-  GLVectorGeometry,
+  Scene.PersistentClasses,
+  Scene.VectorGeometry,
   GLSmoothNavigator,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
 

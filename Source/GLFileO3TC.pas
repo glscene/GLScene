@@ -43,7 +43,7 @@ implementation
 //----------------------------------------------------------
 
 uses
-  GLVectorGeometry;
+  Scene.VectorGeometry;
 
 const
   O3_TC_RGB_S3TC_DXT1 = 1;

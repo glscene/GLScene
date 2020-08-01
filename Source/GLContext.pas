@@ -29,13 +29,13 @@ uses
   OpenGLTokens,
   OpenGLAdapter,
   XOpenGL,
-  GLVectorGeometry,
-  GLS.Strings,
-  GLVectorTypes,
+  Scene.VectorGeometry,
+  Scene.Strings,
+  Scene.VectorTypes,
   GLState,
   GLPipelineTransformation,
   GLTextureFormat,
-  GLS.Logger;
+  Scene.Logger;
 
 // Buffer ID's for Multiple-Render-Targets (using GL_ATI_draw_buffers)
 const

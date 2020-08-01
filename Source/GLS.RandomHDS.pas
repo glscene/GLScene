@@ -59,8 +59,8 @@ uses
 
   OpenGLTokens,
   GLScene,
-  GLVectorTypes,
-  GLVectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
   GLHeightData,
   GLTerrainRenderer,
   GLTexture,
@@ -2589,7 +2589,7 @@ end;
 procedure TGLFractalArchipelago.fOnCreateDefaultTile(heightData: TGLHeightData);
 var
   x, y: integer;
-  rasterLine: GLVectorGeometry.PSingleArray;
+  rasterLine: Scene.VectorGeometry.PSingleArray;
   oldType: TGLHeightDataType;
 begin
   with heightData do

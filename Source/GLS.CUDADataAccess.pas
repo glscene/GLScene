@@ -13,8 +13,8 @@ interface
 uses
   System.SysUtils,
   GLS.Utils,
-  GLS.Logger,
-  GLS.Strings,
+  Scene.Logger,
+  Scene.Strings,
   GLCrossPlatform;
 
 type

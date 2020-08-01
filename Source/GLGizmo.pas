@@ -61,12 +61,12 @@ uses
   Vcl.StdCtrls,
 
   GLScene,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLColor,
   GLObjects,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLMaterial,
-  GLS.Strings,
+  Scene.Strings,
   GLGeomObjects,
   GLBitmapFont,
   GLSceneViewer,
@@ -75,7 +75,7 @@ uses
   GLRenderContextInfo,
   GLState,
   GLSelection,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
   TGLGizmoUndoCollection = class;

@@ -25,7 +25,7 @@ uses
   GLVectorFileObjects, 
   GLMaterial, 
   GLApplicationFileIO,
-  GLVectorGeometry;
+  Scene.VectorGeometry;
 
 const
   MDCFILE_IDENTITY = 'IDPC';

@@ -22,7 +22,7 @@ uses
   System.Math,
   Vcl.Graphics,
 
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLHeightData;
 
 type

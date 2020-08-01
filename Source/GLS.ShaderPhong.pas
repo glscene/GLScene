@@ -17,9 +17,9 @@ uses
   System.SysUtils,
 
   GLTexture,
-  GLVectorTypes,
-  GLVectorGeometry,
-  GLVectorLists,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
   OpenGLTokens,
   GLContext,
   GLS.ShaderAsm,

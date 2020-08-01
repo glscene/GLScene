@@ -18,9 +18,9 @@ uses
   GLVectorFileObjects,
   GLMaterial,
   GLApplicationFileIO,
-  GLVectorTypes,
-  GLVectorGeometry,
-  GLVectorLists,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
   FileVRMLParser,
   GLMeshUtils;
 

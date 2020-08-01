@@ -18,7 +18,7 @@ uses
   GLSceneViewer,
   GLTexture,
   GLSkydome,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLCrossPlatform,
   GLAtmosphere,
   GLSimpleNavigation,

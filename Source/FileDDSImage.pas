@@ -26,7 +26,7 @@ uses
   Vcl.Graphics,
 
   OpenGLTokens,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLGraphics,
   GLContext;
 

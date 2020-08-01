@@ -12,10 +12,10 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLVectorFileObjects,
-  GLVectorGeometry,
-  GLVectorLists,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
   GLApplicationFileIO,
   GLParametricSurfaces;
 

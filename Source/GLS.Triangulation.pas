@@ -14,7 +14,7 @@ uses
   Vcl.Dialogs,
   Vcl.Graphics,
   
-  GLVectorGeometry;
+  Scene.VectorGeometry;
 
 // Set these as applicable
 const

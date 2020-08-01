@@ -22,7 +22,7 @@ uses
   GLGraph,
   GLS.Utils,
   GLContext,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLGeomObjects,
   GLCoordinates,
   GLObjects,

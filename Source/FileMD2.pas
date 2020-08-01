@@ -15,8 +15,8 @@ uses
   System.Classes,
   System.SysUtils,
    
-  GLVectorGeometry, 
-  GLVectorTypes;
+  Scene.VectorGeometry, 
+  Scene.VectorTypes;
 
 const
   MAX_MD2_TRIANGLES = 4096;

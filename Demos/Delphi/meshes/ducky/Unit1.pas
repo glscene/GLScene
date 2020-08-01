@@ -16,14 +16,14 @@ uses
 
   
   GLScene,
-  GLVectorTypes,
-  GLPersistentClasses,
+  Scene.VectorTypes,
+  Scene.PersistentClasses,
   GLVectorFileObjects,
   GLObjects,
   GLSceneViewer,
   GLParametricSurfaces,
-  GLVectorGeometry,
-  GLVectorLists,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
   GLTexture,
   GLCrossPlatform,
   GLCoordinates,

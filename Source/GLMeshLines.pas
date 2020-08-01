@@ -23,10 +23,10 @@ uses
   GLColor, 
   GLState, 
   GLNodes, 
-  GLVectorGeometry, 
-  GLSpline,
-  GLVectorTypes, 
-  GLVectorLists,
+  Scene.VectorGeometry, 
+  Scene.Spline,
+  Scene.VectorTypes, 
+  Scene.VectorLists,
   GLVectorFileObjects,
   GLRenderContextInfo;
 

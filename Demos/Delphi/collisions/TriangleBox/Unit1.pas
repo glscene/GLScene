@@ -16,8 +16,8 @@ uses
   Vcl.StdCtrls,
 
 
-  GLVectorTypes,
-  GLVectorLists,
+  Scene.VectorTypes,
+  Scene.VectorLists,
   GLScene,
   GLObjects,
   GLCadencer,
@@ -26,7 +26,7 @@ uses
   GLColor,
   GLState,
   GLSceneViewer,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLGraph,
   GLGeomObjects,
   GLCrossPlatform,

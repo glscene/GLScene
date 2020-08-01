@@ -18,7 +18,7 @@ uses
   OpenGLTokens,
   GLParticleFX,
   GLGraphics,
-  GLVectorGeometry;
+  Scene.VectorGeometry;
 
 
 const

@@ -34,14 +34,14 @@ uses
   GLPipelineTransformation,
   GLBaseClasses,
   GLContext,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLMaterial,
   GLTexture,
   GLColor,
   GLCoordinates,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLGraphics,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLCrossPlatform,
   GLState,
   GLTextureFormat,
@@ -49,11 +49,11 @@ uses
   GLTextureCombiners,
   GLSL.ShaderParameter,
   GLApplicationFileIO,
-  GLS.Strings,
+  Scene.Strings,
   GLImageUtils,
   GLS.Utils,
   XOpenGL,
-  GLS.Logger;
+  Scene.Logger;
 
 type
 

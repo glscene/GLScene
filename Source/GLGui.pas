@@ -17,14 +17,14 @@ uses
   System.Types,
 
   OpenGLTokens,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLScene,
   GLBitmapFont,
   GLMaterial,
   GLCrossPlatform,
   GLContext,
-  GLPersistentClasses,
-  GLVectorGeometry,
+  Scene.PersistentClasses,
+  Scene.VectorGeometry,
   GLCoordinates,
   GLBaseClasses;
 

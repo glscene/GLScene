@@ -21,11 +21,11 @@ uses
   GLS.cgShader,
 
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLObjects,
   GLSceneViewer,
   GLTexture,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLCadencer,
   GLGraph,
   GLCrossPlatform,

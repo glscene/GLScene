@@ -15,8 +15,8 @@ uses
   System.Classes,
   
   GLScene,
-  GLPersistentClasses,
-  GLVectorGeometry,
+  Scene.PersistentClasses,
+  Scene.VectorGeometry,
   GLObjects,
   GLTexture,
   OpenGLTokens,
@@ -24,7 +24,7 @@ uses
   GLRenderContextInfo,
   GLBaseClasses,
   GLState,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
 

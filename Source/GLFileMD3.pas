@@ -14,7 +14,7 @@ uses
   GLVectorFileObjects, 
   GLMaterial, 
   GLApplicationFileIO,
-  GLVectorGeometry, 
+  Scene.VectorGeometry, 
   FileMD3, 
   GLTexture;
 

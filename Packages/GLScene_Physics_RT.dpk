@@ -39,7 +39,7 @@ contains
   Import.ODE in '..\Source\Import.ODE.pas',
   Import.NGD_Joints in '..\Source\Import.NGD_Joints.pas',
   Import.PhysX in '..\Source\Import.PhysX.pas',
-  GLS.ModuleLoader in '..\Source\GLS.ModuleLoader.pas',
+  Scene.ModuleLoader in '..\Source\Scene.ModuleLoader.pas',
   GLS.ODEManager in '..\Source\GLS.ODEManager.pas',
   GLS.ODERagdoll in '..\Source\GLS.ODERagdoll.pas',
   GLS.ODESkeletonColliders in '..\Source\GLS.ODESkeletonColliders.pas',

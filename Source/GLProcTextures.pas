@@ -16,7 +16,7 @@ uses
   GLTexture,
   GLGraphics,
   GLTextureFormat,
-  GLVectorGeometry;
+  Scene.VectorGeometry;
 
 const
   GRADIENT_TABLE_SIZE = 256;

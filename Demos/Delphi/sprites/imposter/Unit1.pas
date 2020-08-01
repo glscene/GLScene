@@ -15,11 +15,11 @@ uses
   
   GLScene,
   GLContext,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLTeapot,
   GLObjects,
   GLSceneViewer,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLTexture,
   GLCadencer,
   GLImposter,

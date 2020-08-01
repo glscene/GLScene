@@ -56,13 +56,13 @@ uses
   GLHUDObjects,
   GLSceneViewer,
   GLBitmapFont,
-  GLPersistentClasses,
+  Scene.PersistentClasses,
   GLContext,
   GLTexture,
   GLS.Utils,
-  GLS.Strings,
+  Scene.Strings,
   GLMaterial,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 const
   CONSOLE_MAX_COMMANDS = 120;

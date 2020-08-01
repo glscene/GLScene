@@ -21,16 +21,16 @@ uses
 
   OpenGLTokens,
   OpenGLAdapter,
-  GLS.Strings,
+  Scene.Strings,
   XOpenGL,
   GLContext,
   GLScene,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLState,
   GLColor,
   GLBaseClasses,
   GLRenderContextInfo,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
   TGLMeshMode = (mmTriangleStrip, mmTriangleFan, mmTriangles, mmQuadStrip,

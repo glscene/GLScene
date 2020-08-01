@@ -17,7 +17,7 @@ uses
   OpenGLTokens,
   GLScene,
   GLContext,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLObjects,
   GLVectorFileObjects,
   GLMesh,

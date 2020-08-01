@@ -8,7 +8,7 @@ interface
 
 uses
   System.Classes,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   XCollection,
   GLScene,
   GLCoordinates,

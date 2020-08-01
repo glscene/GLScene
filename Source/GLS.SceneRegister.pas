@@ -34,7 +34,7 @@ uses
   GLColor,
   GLCrossPlatform,
   GLObjectManager,
-  GLS.Strings;
+  Scene.Strings;
 
 type
   TGLLibMaterialNameProperty = class(TStringProperty)
@@ -393,8 +393,8 @@ uses
   GLWindows,
   GLWindowsFont,
   GLzBuffer,
-  GLVectorTypes,
-  GLVectorGeometry,
+  Scene.VectorTypes,
+  Scene.VectorGeometry,
 //----------------- File formats
   GLFileVfsPAK,
   FileDDSImage,
@@ -437,11 +437,11 @@ uses
 
   GLSound,
   GLSoundFileObjects,
-  GLSpaceText,
+  GLS.SpaceText,
   GLJoystick,
   GLScreenSaver,
   GLFullScreenViewer,
-  GLS.Logger;
+  Scene.Logger;
 
 var
   vObjectManager: TGLObjectManager;

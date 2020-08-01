@@ -57,7 +57,7 @@ void __fastcall TForm1::RadioGroup2Click(TObject *Sender)
 void __fastcall TForm1::GLCamera1CustomPerspective(const TRectangle &viewport, int width,
           int height, int DPI, float &viewPortRadius)
 {
-  Glvectorgeometry::TMatrix Mat;
+  Scene.VectorGeometry::TMatrix Mat;
 
   Mat =  CreatePerspectiveMatrix(GLCamera1->GetFieldOfView(Width)/4,
 	Width / Height, GLCamera1->NearPlaneBias, GLCamera1->DepthOfView);
@@ -85,7 +85,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
           int X, int Y)
 {
 	int dx, dy;
-	Glvectorgeometry::TVector v;
+	Scene.VectorGeometry::TVector v;
 
 	// calculate delta since last move or last mousedown
 	dx = mdx-X; dy = mdy-Y;

@@ -23,11 +23,11 @@ uses
   GLCoordinates,
   GLHeightData,
   GLGraphics,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLTexture,
   GLMaterial,
   GLS.Utils,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 type
   TGLBumpmapHDS = class;

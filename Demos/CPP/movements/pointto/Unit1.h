@@ -10,7 +10,7 @@
 #include <GLGeomObjects.hpp>
 #include <GLSceneViewer.hpp>
 #include <GLCadencer.hpp>
-#include <GLVectorGeometry.hpp>
+#include <Scene.VectorGeometry.hpp>
 #include <GLScene.hpp>
 #include <GLObjects.hpp>
 #include "GLBaseClasses.hpp"

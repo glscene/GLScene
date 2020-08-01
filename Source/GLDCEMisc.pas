@@ -16,12 +16,12 @@ uses
   GLCoordinates,
   GLVectorFileObjects,
   GLEllipseCollision,
-  GLVectorGeometry,
-  GLVectorLists,
+  Scene.VectorGeometry,
+  Scene.VectorLists,
   GLTerrainRenderer,
   GLProxyObjects,
   GLMultiProxy,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 //Calculate and set the collision range
 procedure ECSetCollisionRange(var MovePack: TECMovePack);

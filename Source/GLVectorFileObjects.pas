@@ -21,26 +21,26 @@ uses
 
   OpenGLTokens,
   GLScene,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLTexture,
   GLMaterial,
   GLMesh,
-  GLS.Logger,
-  GLVectorLists,
-  GLPersistentClasses,
+  Scene.Logger,
+  Scene.VectorLists,
+  Scene.PersistentClasses,
   GLOctree,
   GLGeometryBB,
   GLApplicationFileIO,
   GLSilhouette,
   GLContext,
-  GLS.Strings,
+  Scene.Strings,
   GLColor,
   GLPipelineTransformation,
   GLSelection,
   GLRenderContextInfo,
   GLCoordinates,
   GLBaseClasses,
-  GLVectorRecTypes,
+  Scene.VectorRecTypes,
   GLTextureFormat;
 
 type
@@ -1314,7 +1314,7 @@ uses
   GLState,
   GLS.Utils,
   GLBaseMeshSilhouette,
-  GLVectorTypes;
+  Scene.VectorTypes;
 
 var
   vVectorFileFormats: TGLVectorFileFormatsList;

@@ -10,8 +10,8 @@ interface
 
 uses
   System.Classes,
-  GLPersistentClasses,
-  GLVectorGeometry,
+  Scene.PersistentClasses,
+  Scene.VectorGeometry,
   GLVectorFileObjects,
   Import.ODE;
 

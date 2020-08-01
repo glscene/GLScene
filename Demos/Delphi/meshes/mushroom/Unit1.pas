@@ -14,7 +14,7 @@ uses
   Vcl.ExtCtrls,
 
   GLS.OpenGLx,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLTexture,
   GLScene,
   GLVectorFileObjects,

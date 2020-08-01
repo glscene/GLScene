@@ -19,7 +19,7 @@ uses
 
   
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLObjects,
   GLTerrainRenderer,
   GLHeightData,
@@ -32,7 +32,7 @@ uses
   GLSceneViewer,
   GLSound,
   GLSM.BASS,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLLensFlare,
   GLMaterial,
   GLCoordinates,

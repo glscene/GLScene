@@ -17,7 +17,7 @@ uses
   VCL.Imaging.pngimage,
 
   OpenGLTokens,
-  GLS.Strings,
+  Scene.Strings,
   GLContext,
   GLGraphics,
   GLApplicationFileIO,

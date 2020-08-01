@@ -16,7 +16,7 @@ uses
   Vcl.Forms,
 
   GLScene,
-  GLVectorTypes,
+  Scene.VectorTypes,
   GLObjects,
   GLCadencer,
   GLVectorFileObjects,
@@ -32,9 +32,9 @@ uses
   GLCoordinates,
   GLBaseClasses,
   GLS.Utils,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLKeyboard,
-  GLPersistentClasses;
+  Scene.PersistentClasses;
 
 
 type

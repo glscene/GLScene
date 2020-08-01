@@ -10,8 +10,8 @@ interface
 {$I GLScene.inc}
 
 uses
-  GLPersistentClasses,
-  GLVectorGeometry,
+  Scene.PersistentClasses,
+  Scene.VectorGeometry,
   GLState,
   GLPipelineTransformation,
   GLColor;

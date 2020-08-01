@@ -33,7 +33,7 @@ uses
 {$IFDEF MSWINDOWS}
   Winapi.Windows,
 {$ENDIF}
-  GLS.Logger,
+  Scene.Logger,
   Import.FMODtypes;
 
 (*===============================================================================================

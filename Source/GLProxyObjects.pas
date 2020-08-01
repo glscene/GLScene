@@ -18,16 +18,16 @@ uses
   GLScene,
   XCollection,
   GLPipelineTransformation,
-  GLVectorGeometry,
+  Scene.VectorGeometry,
   GLTexture,
   GLVectorFileObjects,
-  GLS.Strings,
+  Scene.Strings,
   GLRenderContextInfo,
   GLBaseClasses,
   GLMaterial,
   GLContext,
-  GLPersistentClasses,
-  GLVectorTypes;
+  Scene.PersistentClasses,
+  Scene.VectorTypes;
 
 type
   EGLProxyException = class(Exception);

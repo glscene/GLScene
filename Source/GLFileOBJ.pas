@@ -24,11 +24,11 @@ uses
   System.SysUtils,
 
   GLApplicationFileIO,
-  GLPersistentClasses,
-  GLVectorGeometry,
+  Scene.PersistentClasses,
+  Scene.VectorGeometry,
   GLScene,  
   GLVectorFileObjects, 
-  GLVectorLists,  
+  Scene.VectorLists,  
   GLTexture,  
   GLColor,
   GLRenderContextInfo, 
@@ -103,8 +103,8 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLVectorTypes,
-  GLS.Strings,
+  Scene.VectorTypes,
+  Scene.Strings,
   OpenGLTokens,
   XOpenGL,
   GLContext,
