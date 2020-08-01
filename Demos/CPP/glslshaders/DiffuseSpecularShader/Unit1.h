@@ -13,7 +13,7 @@
 #include "GLCadencer.hpp"
 #include "GLCoordinates.hpp"
 #include "GLCrossPlatform.hpp"
-#include "GLS.ShaderCustom.hpp"
+#include "GLSL.CustomShader.hpp"
 #include "GLGeomObjects.hpp"
 #include "GLGraph.hpp"
 #include "GLMaterial.hpp"
@@ -30,7 +30,7 @@
 #include "FileDDSImage.hpp"
 #include "GLFileMS3D.hpp"
 #include "GLS.Utils.hpp"
-#include "GLSL.ShaderDiffuseSpecular.hpp"
+#include "GLSL.DiffuseSpecularShader.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

@@ -29,7 +29,7 @@ uses
   GLTexture,
   GLMaterial,
   GLSL.Shader,
-  GLS.ShaderCustom;
+  GLSL.CustomShader;
 
 (* Custom class for GLSLSimpleLatticeShader.
  A shader that simulate Lattice *)

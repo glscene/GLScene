@@ -23,7 +23,7 @@ uses
   GLMaterial,
 
   // Misc
-  FileX;
+  Formats.FileX;
 
 type
   TGLXVectorFile = class(TGLVectorFile)

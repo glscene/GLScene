@@ -21,7 +21,7 @@ uses
   Scene.VectorTypes,
   GLTexture,
   GLContext,
-  GLS.ShaderCustom,
+  GLSL.CustomShader,
   GLRenderContextInfo,
   GLTextureFormat,
   GLSL.ShaderParameter,
@@ -97,7 +97,7 @@ type
     property TransformFeedBackMode: TGLTransformFeedBackMode read FTransformFeedBackMode write SetTransformFeedBackMode default tfbmInterleaved;
   end;
 
-  {Wrapper around a parameter of a GLSL program. }
+  // Wrapper around a parameter of a GLSL program.
   TGLSLShaderParameter = class(TGLCustomShaderParameter)
   private
     FGLSLProg: TGLProgramHandle;
@@ -163,7 +163,9 @@ type
 implementation
 //------------------------------------------------------------------------
 
-{ TGLCustomGLSLShader }
+//----------------------------------
+// TGLCustomGLSLShader
+//----------------------------------
 
 procedure TGLCustomGLSLShader.DoApply(var rci: TGLRenderContextInfo; Sender: TObject);
 begin
@@ -274,7 +276,6 @@ begin
   end;
 end;
 
-
 function TGLCustomGLSLShader.DoUnApply(var rci: TGLRenderContextInfo): Boolean;
 begin
   Result := False;
@@ -283,7 +284,6 @@ begin
   if not Result then
     FGLSLProg.EndUseProgramObject;
 end;
-
 
 function TGLCustomGLSLShader.ShaderSupported: Boolean;
 begin

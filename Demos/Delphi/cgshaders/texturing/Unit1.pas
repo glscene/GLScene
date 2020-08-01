@@ -18,7 +18,7 @@ uses
   GLS.OpenGLx,
   Import.Cg,
   Import.cgGL,
-  GLS.cgShader,
+  GLSL.CgShader,
 
   GLScene,
   Scene.VectorTypes,

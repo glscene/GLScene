@@ -12,7 +12,7 @@
 #pragma link "GLCadencer"
 #pragma link "GLCoordinates"
 #pragma link "GLCrossPlatform"
-#pragma link "GLS.ShaderCustom"
+#pragma link "GLSL.CustomShader"
 #pragma link "GLGeomObjects"
 #pragma link "GLGraph"
 #pragma link "GLMaterial"
@@ -29,7 +29,7 @@
 #pragma link "GLFileMS3D"
 #pragma link "GLBaseClasses"
 #pragma link "GLSL.Shader"
-#pragma link "GLSL.ShaderBump"
+#pragma link "GLSL.BumpShaders"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------

@@ -39,6 +39,7 @@ object MainForm: TMainForm
       Height = 496
       ActivePage = TabSheet1
       Align = alTop
+      MultiLine = True
       TabOrder = 0
       object TabSheet1: TTabSheet
         Caption = 'Fur'
@@ -368,9 +369,9 @@ object MainForm: TMainForm
         Caption = 'Lattice'
         ImageIndex = 1
         ExplicitLeft = 0
-        ExplicitTop = 0
+        ExplicitTop = 24
         ExplicitWidth = 0
-        ExplicitHeight = 0
+        ExplicitHeight = 468
         object lblLatticeScaleX: TLabel
           Left = 291
           Top = 41
@@ -603,9 +604,9 @@ object MainForm: TMainForm
         Caption = 'Erosion'
         ImageIndex = 2
         ExplicitLeft = 0
-        ExplicitTop = 0
+        ExplicitTop = 24
         ExplicitWidth = 0
-        ExplicitHeight = 0
+        ExplicitHeight = 468
         object Label1: TLabel
           Left = 8
           Top = 46
@@ -915,9 +916,9 @@ object MainForm: TMainForm
         Caption = 'Ivory'
         ImageIndex = 3
         ExplicitLeft = 0
-        ExplicitTop = 0
+        ExplicitTop = 24
         ExplicitWidth = 0
-        ExplicitHeight = 0
+        ExplicitHeight = 468
         object chkIvoryShader: TCheckBox
           Left = 16
           Top = 16
@@ -932,9 +933,9 @@ object MainForm: TMainForm
         Caption = 'Gootch'
         ImageIndex = 4
         ExplicitLeft = 0
-        ExplicitTop = 0
+        ExplicitTop = 24
         ExplicitWidth = 0
-        ExplicitHeight = 0
+        ExplicitHeight = 468
         object Label13: TLabel
           Left = 16
           Top = 47
@@ -1217,9 +1218,9 @@ object MainForm: TMainForm
         Caption = 'S.E.M'
         ImageIndex = 5
         ExplicitLeft = 0
-        ExplicitTop = 0
+        ExplicitTop = 24
         ExplicitWidth = 0
-        ExplicitHeight = 0
+        ExplicitHeight = 468
         object Label19: TLabel
           Left = 16
           Top = 44
@@ -1354,9 +1355,9 @@ object MainForm: TMainForm
         Caption = 'Displacement'
         ImageIndex = 6
         ExplicitLeft = 0
-        ExplicitTop = 0
+        ExplicitTop = 24
         ExplicitWidth = 0
-        ExplicitHeight = 0
+        ExplicitHeight = 468
         object Label21: TLabel
           Left = 24
           Top = 52
@@ -1670,9 +1671,9 @@ object MainForm: TMainForm
         Caption = 'Glass'
         ImageIndex = 7
         ExplicitLeft = 0
-        ExplicitTop = 0
+        ExplicitTop = 24
         ExplicitWidth = 0
-        ExplicitHeight = 0
+        ExplicitHeight = 468
         object Label56: TLabel
           Left = 11
           Top = 36
@@ -1860,9 +1861,9 @@ object MainForm: TMainForm
         Caption = 'Toon'
         ImageIndex = 8
         ExplicitLeft = 0
-        ExplicitTop = 0
+        ExplicitTop = 24
         ExplicitWidth = 0
-        ExplicitHeight = 0
+        ExplicitHeight = 468
         object Label64: TLabel
           Left = 7
           Top = 51

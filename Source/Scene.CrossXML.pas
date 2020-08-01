@@ -2,7 +2,7 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLS.CrossXML;
+unit Scene.CrossXML;
 
 (* Cross XML routines *)
 

@@ -15,15 +15,15 @@ uses
   GLScene, GLObjects,
   GLTeapot,
   GLTexture,
-  GLS.ShaderPhong,
+  GLSL.AsmShader,
   GLSceneViewer,
   GLAsyncTimer, GLCadencer,
   GLS.ShaderCustom,
   GLCrossPlatform,
   GLMaterial, GLCoordinates,
   GLBaseClasses,
-  GLS.ShaderAsm,
-  GLS.ShaderPhong;
+  GLSL.AsmShader,
+  GLSL.AsmShader;
 
 type
   TForm1 = class(TForm)

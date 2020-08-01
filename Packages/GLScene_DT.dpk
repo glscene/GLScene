@@ -56,10 +56,11 @@ contains
   FPlugInManagerEditor in '..\Source\FPlugInManagerEditor.pas' {GLPlugInManagerEditorForm},
   FXCollectionEditor in '..\Source\FXCollectionEditor.pas' {GLXCollectionEditorForm},
   FInfo in '..\Source\FInfo.pas' {GLInfoForm},
-  XCollectionRegister in '..\Source\XCollectionRegister.pas',
-  GLS.SceneRegister in '..\Source\GLS.SceneRegister.pas';
+  GLS.SceneRegister in '..\Source\GLS.SceneRegister.pas',
+  XCollectionRegister in '..\Source\XCollectionRegister.pas';
 
 end.
+
 
 
 

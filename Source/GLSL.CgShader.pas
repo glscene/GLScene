@@ -2,7 +2,7 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLS.cgShader;
+unit GLSL.CgShader;
 
 (* Base Cg shader classes *)
 
@@ -284,7 +284,8 @@ type
       write SetOnUnApplyVertexProgram;
     property OnUnApplyFP: TCgUnApplyEvent read GetOnUnApplyFragmentProgram
       write SetOnUnApplyFragmentProgram;
-    { OnInitialize can be use to set parameters that need to be set once only. See demo "Cg Texture" for example. }
+    (* OnInitialize can be use to set parameters that need to be set once only.
+      See demo "Cg Texture" for example. *)
     property OnInitialize: TCgShaderEvent read GetOnInitialize
       write SetOnInitialize;
     property DesignEnable: boolean read FDesignEnable write FDesignEnable

@@ -24,7 +24,7 @@ uses
   GLVectorFileObjects,
   GLFile3DS,
   GLGraph,
-  GLS.cgBombShader,
+  GLSL.cgBombShader,
   GLMaterial,
   Scene.VectorGeometry,
 

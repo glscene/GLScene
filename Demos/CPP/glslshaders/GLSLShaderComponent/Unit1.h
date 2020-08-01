@@ -13,7 +13,7 @@
 #include "GLCadencer.hpp"
 #include "GLCoordinates.hpp"
 #include "GLCrossPlatform.hpp"
-#include "GLS.ShaderCustom.hpp"
+#include "GLSL.CustomShader.hpp"
 #include "GLGeomObjects.hpp"
 #include "GLGraph.hpp"
 #include "GLMaterial.hpp"

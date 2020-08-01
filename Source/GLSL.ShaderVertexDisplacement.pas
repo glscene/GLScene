@@ -36,7 +36,7 @@ uses
   GLTexture,
   GLMaterial,
   GLSL.Shader,
-  GLS.ShaderCustom;
+  GLSL.CustomShader;
 
 type
   (* Custom class for GLSLVertexDisplacementShader.

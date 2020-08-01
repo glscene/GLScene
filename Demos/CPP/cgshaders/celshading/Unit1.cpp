@@ -10,7 +10,7 @@
 #pragma link "GLAsyncTimer"
 #pragma link "GLBaseClasses"
 #pragma link "GLCadencer"
-#pragma link "GLS.cgShader"
+#pragma link "GLSL.cgShader"
 #pragma link "GLCoordinates"
 #pragma link "GLCrossPlatform"
 #pragma link "GLMaterial"
@@ -20,7 +20,7 @@
 #pragma link "GLSceneViewer"
 #pragma link "GLFileMD2"
 
-#pragma link "GLS.cgShader"
+#pragma link "GLSL.cgShader"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------

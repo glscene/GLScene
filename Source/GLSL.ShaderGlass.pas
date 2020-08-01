@@ -33,7 +33,7 @@ uses
   Scene.PersistentClasses,
   GLGraphics,
   GLSL.Shader,
-  GLS.ShaderCustom;
+  GLSL.CustomShader;
 
 (* Custom class for GLSLGlassShader.
   Glass shader : Environment mapping and refraction mapping using the fresnel terms *)

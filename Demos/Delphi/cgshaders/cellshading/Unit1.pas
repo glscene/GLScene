@@ -13,7 +13,7 @@ uses
 
   GLS.OpenGLx,
   Import.cgGL,
-  GLS.cgShader,
+  GLSL.CgShader,
 
   GLScene,
   Scene.VectorTypes,

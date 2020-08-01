@@ -50,7 +50,7 @@ uses
   GLSimpleNavigation, 
   GLHUDObjects,
 
-  GLS.ShaderCustom,
+  GLSL.CustomShader,
   GLSL.ShaderFur,
   GLSL.ShaderLattice,
   GLSL.ShaderIvory,

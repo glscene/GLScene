@@ -13,7 +13,7 @@
 #include "GLCadencer.hpp"
 #include "GLCoordinates.hpp"
 #include "GLCrossPlatform.hpp"
-#include "GLS.ShaderCustom.hpp"
+#include "GLSL.CustomShader.hpp"
 #include "GLGeomObjects.hpp"
 #include "GLGraph.hpp"
 #include "GLMaterial.hpp"
@@ -32,7 +32,7 @@
 #include "GLS.Utils.hpp"
 #include "GLBaseClasses.hpp"
 #include "GLSL.Shader.hpp"
-#include "GLSL.ShaderBump.hpp"
+#include "GLSL.BumpShaders.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

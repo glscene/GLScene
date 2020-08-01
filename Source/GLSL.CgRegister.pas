@@ -2,9 +2,9 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLS.cgRegister;
+unit GLSL.CgRegister;
 
-(*  Registration unit for CG shader package *)
+(*  Registration unit for Cg shader package *)
 
 interface
 
@@ -20,9 +20,9 @@ uses
 
   Import.Cg,
   Import.CgGL,
-  GLS.SceneRegister,
-  GLS.cgShader,
-  GLS.cgShaderBomb;
+  GLS.SceneRegister,  //?
+  GLSL.CgShader,
+  GLSL.CgBombShader;
 
 procedure Register;
 

@@ -2,7 +2,7 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLS.cgShaderBomb;
+unit GLSL.CgBombShader;
 
 (*  Just a good looking shader *)
 
@@ -23,7 +23,7 @@ uses
   GLTextureFormat,
 
   Import.cgGL,
-  GLS.cgShader;
+  GLSL.CgShader;
 
 type
   ECgBombShaderException = class(ECgShaderException);

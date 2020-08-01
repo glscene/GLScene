@@ -11,7 +11,7 @@
 #pragma link "GLCadencer"
 #pragma link "GLCoordinates"
 #pragma link "GLCrossPlatform"
-#pragma link "GLS.ShaderCustom"
+#pragma link "GLSL.CustomShader"
 #pragma link "GLGeomObjects"
 #pragma link "GLGraph"
 #pragma link "GLMaterial"

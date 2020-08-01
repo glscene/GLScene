@@ -2,7 +2,7 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLS.cgShaderPostTransformation;
+unit GLSL.CgPostTransformationShader;
 
 (*
    A shader that uses a texture to distort the view by adjusting texture
@@ -22,13 +22,13 @@ uses
   GLCadencer, 
   GLContext, 
   GLScene, 
-  GLS.ShaderCustom,
-  GLRenderContextInfo, 
+  GLRenderContextInfo,
   GLTextureFormat,
 
   Import.Cg,
   Import.CgGL,
-  GLS.cgShader;
+  GLSL.CustomShader,
+  GLSL.CgShader;
 
 type
 

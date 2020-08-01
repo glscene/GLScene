@@ -2,9 +2,19 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLSL.ShaderPosts;
+unit GLSL.PostShaders;
 
-(* Post shaders that simulate shader visions for a mask or the entire scene. *)
+(*
+  Post shaders that simulate shader visions for a mask or the entire scene:
+    - TLSLPostBlurShader;
+    - TGLSLPostThermalVisionShader;
+    - TGLSLPostDreamVisionShader;
+    - TGLSLPostNightVisionShader;
+    - TGLSLPostPixelateShader;
+    - TGLSLPostPosterizeShader
+    - TGLSLPostFrostShader;
+    - TGLSLPostTroubleShader;
+*)
 
 interface
 
@@ -12,18 +22,18 @@ interface
 
 uses
   System.Classes,
-  
+
   OpenGLTokens,
   GLTexture,
   GLScene,
   GLState,
   Scene.VectorGeometry,
+  GLRenderContextInfo,
+  GLTextureFormat,
   GLContext,
   GLMaterial,
   GLSL.Shader,
-  GLS.ShaderCustom,
-  GLRenderContextInfo,
-  GLTextureFormat,
+  GLSL.CustomShader,
   Scene.VectorTypes;
 
 type

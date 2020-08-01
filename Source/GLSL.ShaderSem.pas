@@ -35,7 +35,7 @@ uses
   GLTexture,
   GLMaterial,
   GLSL.Shader,
-  GLS.ShaderCustom;
+  GLSL.CustomShader;
 
 Type
 

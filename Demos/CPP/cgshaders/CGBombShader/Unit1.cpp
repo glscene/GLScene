@@ -20,7 +20,7 @@
 #pragma link "GLFileMD2"
 #pragma link "GLFile3DS"
 
-#pragma link "GLS.cgBombShader"
+#pragma link "GLSL.cgBombShader"
 
 #pragma resource "*.dfm"
 TForm1 *Form1;

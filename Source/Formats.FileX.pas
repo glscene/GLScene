@@ -2,7 +2,7 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit FileX;
+unit Formats.FileX;
 
 (* Simple X format support for Delphi (Microsoft's favorite format) *)
 

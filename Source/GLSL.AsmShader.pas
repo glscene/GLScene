@@ -2,12 +2,12 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLS.ShaderAsm;
+unit GLSL.AsmShader;
 
 (*
     TGLAsmShader is a wrapper for all ARB shaders 
     This component is only a template and has to be replaced with a
-    proper version by someone who uses ARB shaders more then me.
+    proper version by someone who uses ARB shaders.
 *)
 
 interface
@@ -23,7 +23,7 @@ uses
   Scene.VectorTypes,
   GLTexture,
   GLContext,
-  GLS.ShaderCustom,
+  GLSL.CustomShader,
   GLRenderContextInfo;
 
 type

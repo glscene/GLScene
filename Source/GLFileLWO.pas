@@ -16,7 +16,7 @@ uses
   System.Math,
   GLVectorFileObjects,
   Scene.VectorLists,
-  FileLWObjects;
+  Formats.FileLWObjects;
 
 type
   TGLLWOVectorFile = class(TGLVectorFile)

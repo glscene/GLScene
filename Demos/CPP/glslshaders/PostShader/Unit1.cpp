@@ -15,7 +15,6 @@
 #pragma link "GLGraph"
 #pragma link "GLMaterial"
 #pragma link "GLObjects"
-#pragma link "GLPostEffects"
 #pragma link "GLScene"
 #pragma link "GLSimpleNavigation"
 #pragma link "GLVectorFileObjects"
@@ -24,6 +23,7 @@
 #pragma link "GLFileMS3D"
 #pragma link "GLFile3DS"
 
+#pragma link "GLSL.PostEffects"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------

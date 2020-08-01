@@ -14,8 +14,9 @@ uses
   System.Classes,
   System.SysUtils,
 
+  GLApplicationFileIO,
   Scene.PersistentClasses,
-  GLApplicationFileIO;
+  Scene.Strings;
 
 type
 
@@ -186,9 +187,6 @@ function ArcFileStreamExists(const FileName: string): boolean;
 // ------------------------------------------------------------------
 implementation
 // ------------------------------------------------------------------
-
-uses
-  Scene.Strings;
 
 var
   vArchiveFileFormats: TGLArchiveFileFormatsList;

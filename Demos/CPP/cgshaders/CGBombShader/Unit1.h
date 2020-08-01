@@ -22,7 +22,7 @@
 #include "GLSimpleNavigation.hpp"
 #include "GLVectorFileObjects.hpp"
 #include "GLSceneViewer.hpp"
-#include "GLS.cgBombShader.hpp"
+#include "GLSL.cgBombShader.hpp"
 #include "JPeg.hpp"
 #include "GLFileMD2.hpp"
 #include "GLFile3DS.hpp"

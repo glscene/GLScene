@@ -38,9 +38,6 @@ type
 
      TODO: Add more modes here, including sctOneAPTwoAP, which should be the
            default one.
-
-     By the way, I admit - the names do look stupid, and if someone gives them
-     proper names, I will be only glad.
   *)
   TGLShaderCombinerType = (sctOneSPTwoAP, sctTwoSPOneAP,
                            sctOneMPTwoSP, sctTwoMPOneSP);

@@ -18,21 +18,21 @@
 #include "GLGraph.hpp"
 #include "GLMaterial.hpp"
 #include "GLObjects.hpp"
-#include "GLPostEffects.hpp"
 #include "GLScene.hpp"
 #include "GLSimpleNavigation.hpp"
 #include "GLVectorFileObjects.hpp"
 #include "GLSceneViewer.hpp"
 #include "GLS.Utils.hpp"
 
-#include "GLSL.ShaderPosts.hpp"
-#include "GLS.CGPostTransformationShader.hpp"
+#include "GLSL.PostShaders.hpp"
+#include "GLSL.CGPostTransformationShader.hpp"
 
 // FileFormats
 #include "GLFileTGA.hpp"
 #include "GLFileMD2.hpp"
 #include "GLFileMS3D.hpp"
 #include "GLFile3DS.hpp"
+#include "GLSL.PostEffects.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

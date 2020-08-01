@@ -2,7 +2,7 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLS.ShaderCustom;
+unit GLSL.CustomShader;
 
 (*
     A collection of pure abstract classes - descendants of TGLShader, which are

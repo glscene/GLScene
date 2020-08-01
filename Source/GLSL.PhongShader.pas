@@ -2,7 +2,7 @@
 // This unit is part of the GLScene Engine, http://glscene.org
 //
 
-unit GLS.ShaderPhong;
+unit GLSL.PhongShader;
 
 (*  An ARBvp1.0 + ARBfp1.0 shader that implements phong shading. *)
 
@@ -22,9 +22,9 @@ uses
   Scene.VectorLists,
   OpenGLTokens,
   GLContext,
-  GLS.ShaderAsm,
+  GLSL.AsmShader,
   GLRenderContextInfo,
-  GLS.ShaderCustom,
+  GLSL.CustomShader,
   GLState;
 
 type

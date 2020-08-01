@@ -62,7 +62,7 @@ type
     procedure DoProgress(const progressTime: TGLProgressTimes); virtual;
   end;
 
-  // A base class describing the "update" interface.  
+  // A base class describing the "update" interface.
   TGLUpdateAbleComponent = class(TGLCadenceAbleComponent, IGLNotifyAble)
   public
     procedure NotifyChange(Sender: TObject); virtual;
@@ -169,4 +169,5 @@ begin
 end;
 
 end.
+
 

@@ -24,9 +24,6 @@ uses
   GLGraph,
   GLGeomObjects,
   Scene.VectorGeometry,
-  GLSL.ShaderBump,
-  GLS.ShaderCustom,
-  GLSL.Shader,
   GLMaterial,
   GLCoordinates,
   GLBaseClasses,
@@ -36,7 +33,10 @@ uses
   FileDDSImage,
   GLFileMD2,
   GLFileSMD,
-  GLCrossPlatform;
+  GLCrossPlatform,
+  GLSL.Shader,
+  GLSL.CustomShader,
+  GLSL.BumpShaders;
 
 type
   TGLSLTestForm = class(TForm)

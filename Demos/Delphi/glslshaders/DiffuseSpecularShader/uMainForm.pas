@@ -25,8 +25,8 @@ uses
   GLVectorFileObjects,
 
   GLSL.Shader,
-  GLSL.ShaderDiffuseSpecular,
-  GLS.ShaderCustom,
+  GLSL.DiffuseSpecularShader,
+  GLSL.CustomShader,
   GLS.ShaderUser,
 
   GLSimpleNavigation,

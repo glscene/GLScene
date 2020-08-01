@@ -11,13 +11,12 @@ interface
 {$I GLScene.inc}
 
 uses
-  Windows,
+  Winapi.Windows,
 
   System.Types,
   System.Classes,
   System.SysUtils,
   System.StrUtils,
-  VCL.Consts,
   VCL.Graphics,
   VCL.Controls,
   VCL.Forms,
@@ -288,12 +287,12 @@ end;
 
 procedure QueryPerformanceCounter(out val: Int64);
 begin
-  Windows.QueryPerformanceCounter(val);
+  Winapi.Windows.QueryPerformanceCounter(val);
 end;
 
 function QueryPerformanceFrequency(out val: Int64): Boolean;
 begin
-  Result := Boolean(Windows.QueryPerformanceFrequency(val));
+  Result := Boolean(Winapi.Windows.QueryPerformanceFrequency(val));
 end;
 
 function StartPrecisionTimer: Int64;

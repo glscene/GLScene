@@ -23,7 +23,7 @@ uses
   GLGeomObjects,
   GLVectorFileObjects,
   GLSimpleNavigation,
-  GLS.ShaderCustom,
+  GLSL.CustomShader,
   GLCrossPlatform,
   GLMaterial,
   GLCoordinates,

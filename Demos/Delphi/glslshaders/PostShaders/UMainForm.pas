@@ -18,7 +18,7 @@ uses
   GLCadencer,
   GLSceneViewer,
   GLScene,
-  GLPostEffects,
+  GLSL.PostEffects,
   GLGraph,
   GLS.Utils,
   GLContext,
@@ -31,9 +31,9 @@ uses
   GLCrossPlatform,
   GLMaterial,
   GLBaseClasses,
-  GLSL.ShaderPosts,
+  GLSL.PostShaders,
 
-  GLS.cgPostTransformationShader,
+  GLSL.CgPostTransformationShader,
   GLFileMD2,
   GLFileMS3D,
   GLFile3DS;

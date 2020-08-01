@@ -118,7 +118,7 @@
         <DCCReference Include="VclSmp.dcp"/>
         <DCCReference Include="GLScene_DT.dcp"/>
         <DCCReference Include="GLScene_Cg_RT.dcp"/>
-        <DCCReference Include="..\Source\GLS.cgRegister.pas"/>
+        <DCCReference Include="..\Source\GLSL.CgRegister.pas"/>
         <RcCompile Include="..\Resources\GLSceneShaders.rc">
             <Form>GLSceneShaders.res</Form>
         </RcCompile>

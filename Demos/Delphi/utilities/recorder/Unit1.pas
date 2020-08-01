@@ -3,12 +3,25 @@ unit Unit1;
 interface
 
 uses
-  System.Classes, System.SysUtils, System.Math,
-  Vcl.Forms, Vcl.Graphics, Vcl.Controls,
-  Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.StdCtrls,
+  System.Classes, 
+  System.SysUtils, 
+  System.Math,
+  Vcl.Forms, 
+  Vcl.Graphics, 
+  Vcl.Controls,
+  Vcl.ComCtrls, 
+  Vcl.ExtCtrls, 
+  Vcl.StdCtrls,
   
-  GLScene, GLObjects, GLAsyncTimer,  GLCadencer, GLAVIRecorder, GLSceneViewer,
-  GLCrossPlatform, GLCoordinates, GLBaseClasses;
+  GLScene, 
+  GLObjects, 
+  GLAsyncTimer,  
+  GLCadencer, 
+  GLS.AVIRecorder, 
+  GLSceneViewer,
+  GLCrossPlatform, 
+  GLCoordinates, 
+  GLBaseClasses;
 
 type
   TForm1 = class(TForm)
@@ -33,16 +46,16 @@ type
     procedure AVIRecorder1PostProcessEvent(Sender: TObject;
       frame: TBitmap);
   private
-     
-     UserAbort : boolean;
-  public
-     
+      UserAbort : boolean;
   end;
 
 var
   Form1: TForm1;
 
+//-------------------------------------  
 implementation
+ public
+ 
 
 {$R *.DFM}
 
@@ -85,19 +98,14 @@ begin
    StaticText1.Visible:=false; // the FPS shown is not correct now,
                                // so just hide it for the time being.
    i:=0;
-
    Button1.enabled:=false;
    TrackBar.enabled:=false;
-
    try
       while (i<360) and not UserAbort do begin
          TrackBar.Position:=i;
          TrackBarChange(self);
-
          AVIRecorder1.AddAVIFrame;
-
          // you might want to update your progress bar here.
-
          Application.ProcessMessages; // so that our app. is not freezed,
                                       // and will accept user abort.
          inc(i);
@@ -110,7 +118,6 @@ begin
       Button1.enabled:=true;
       TrackBar.enabled:=true;
    end;
-
 end;
 
 procedure TForm1.AVIRecorder1PostProcessEvent(Sender: TObject;
@@ -118,7 +125,8 @@ procedure TForm1.AVIRecorder1PostProcessEvent(Sender: TObject;
 begin
    // PostProcess event is used to add a "watermark"
    // that will be in the AVI, but isn't visible on-screen
-   with frame.Canvas do begin
+   with frame.Canvas do 
+   begin
       Font.Color:=clAqua;
       Font.Name:='Courrier New';
       Font.Size:=24;

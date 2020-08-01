@@ -21,7 +21,7 @@
 #include "GLFileMD2.hpp"
 #include "GLS.Utils.hpp"
 #include "Import.CgGL.hpp"
-#include "GLS.cgShader.hpp"
+#include "GLSL.cgShader.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

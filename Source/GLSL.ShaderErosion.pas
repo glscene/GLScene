@@ -30,7 +30,7 @@ uses
   GLTexture,
   GLMaterial,
   GLSL.Shader,
-  GLS.ShaderCustom;
+  GLSL.CustomShader;
 
 (* Custom class for GLSLSimpleErosionShader.
  A shader that Erode surface object *)

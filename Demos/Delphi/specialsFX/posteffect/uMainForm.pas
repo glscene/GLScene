@@ -24,7 +24,7 @@ uses
   GLCadencer,
   GLSceneViewer,
   GLSimpleNavigation,
-  GLPostEffects,
+  GLSL.PostEffects,
   GLCrossPlatform,
   GLMeshUtils,
   Scene.VectorGeometry,

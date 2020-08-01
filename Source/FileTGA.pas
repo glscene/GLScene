@@ -280,7 +280,6 @@ end;
 initialization
 //-------------------------------------------
 
-  { Register this Fileformat-Handler with GLScene }
   RegisterRasterFormat('tga', 'TARGA Image File', TGLTGAImage);
 
 end.

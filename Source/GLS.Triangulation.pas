@@ -12,8 +12,7 @@ uses
   System.Classes,
   System.Types,
   Vcl.Dialogs,
-  Vcl.Graphics,
-  
+
   Scene.VectorGeometry;
 
 // Set these as applicable

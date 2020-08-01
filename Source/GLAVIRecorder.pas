@@ -12,7 +12,7 @@ interface
 
 uses
   Winapi.Windows, 
-  WinApi.Messages,
+  Winapi.Messages,
   System.Classes, 
   System.SysUtils, 
   System.UITypes,

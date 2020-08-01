@@ -11,14 +11,14 @@
 #pragma link "GLCadencer"
 #pragma link "GLCoordinates"
 #pragma link "GLCrossPlatform"
-#pragma link "GLS.ShaderCustom"
+#pragma link "GLSL.CustomShader"
 #pragma link "GLGeomObjects"
 #pragma link "GLGraph"
 #pragma link "GLMaterial"
 #pragma link "GLObjects"
 #pragma link "GLScene"
 #pragma link "GLSimpleNavigation"
-#pragma link "GLSL.ShaderDiffuseSpecular"
+#pragma link "GLSL.DiffuseSpecularShader"
 #pragma link "GLSL.Shader"
 #pragma link "GLVectorFileObjects"
 #pragma link "GLSceneViewer"
@@ -28,8 +28,8 @@
 #pragma link "FileDDSImage"
 #pragma link "GLFileMS3D"
 
-#pragma link "GLSL.ShaderDiffuseSpecular"
 #pragma resource "*.dfm"
+
 TForm1 *Form1;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)

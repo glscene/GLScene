@@ -32,7 +32,7 @@ uses
   GLTexture,
   GLMaterial,
   GLSL.Shader,
-  GLS.ShaderCustom;
+  GLSL.CustomShader;
 
 type
   TGLCustomGLSLFurShader = class(TGLCustomGLSLShader)
