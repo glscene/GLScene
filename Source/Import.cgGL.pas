@@ -85,7 +85,7 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *)
-unit Import.cgGL;
+unit Import.CgGL;
 
 {$I GLScene.inc}
 
@@ -93,7 +93,7 @@ interface
 
 uses
   Winapi.Windows,
-  Import.cg;
+  Import.Cg;
 
 const
   {$IFDEF MSWINDOWS}

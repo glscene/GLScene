@@ -22,7 +22,7 @@ uses
   GLWaterPlane,
   GLCadencer,
   GLTexture,
-  GLUserShader,
+  GLSL.UserShader,
   GLContext,
   Scene.VectorGeometry,
   GLGraph,

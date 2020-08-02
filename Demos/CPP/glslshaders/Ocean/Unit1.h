@@ -18,7 +18,7 @@
 #include "GLScene.hpp"
 #include "GLSimpleNavigation.hpp"
 #include "GLSkydome.hpp"
-#include "GLS.ShaderUser.hpp"
+#include "GLSL.UserShader.hpp"
 #include "GLSceneViewer.hpp"
 #include "GLTextureFormat.hpp"
 #include "GLColor.hpp"

@@ -31,9 +31,9 @@ float random(void)
 __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
 {
   String MediaPath = ExtractFilePath(ParamStr(0));
-  int I = MediaPath.Pos("Samples");
+  int I = MediaPath.Pos("Demos");
   if (I != 0) {
-	MediaPath.Delete(I+8,MediaPath.Length()-I);
+	MediaPath.Delete(I+5,MediaPath.Length()-(I+5));
 	MediaPath += "Media\\";
 	SetCurrentDir(MediaPath);
   }

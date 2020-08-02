@@ -15,13 +15,7 @@ int mx, my;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
 {
-  String MediaPath = ExtractFilePath(ParamStr(0));
-  int I = MediaPath.Pos("Samples");
-  if (I != 0) {
-	MediaPath.Delete(I+8,MediaPath.Length()-I);
-	MediaPath += "Media\\";
-	SetCurrentDir(MediaPath);
-  }
+  SetGLSceneMediaDir();
   // Load the nurbs data
   GLActor1->LoadFromFile("duck1.nurbs");
   GLActor1->AddDataFromFile("duck2.nurbs");

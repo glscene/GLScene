@@ -45,7 +45,7 @@ type
       Tex1:=Interpolate(Tex0, Tex1, PrimaryColor); // interpolation between textures 0 and 1 using primary color as factor
       Tex1:=Dot3(Tex0, Tex1); // dot3 product between textures 0 and 1
 
-     Accepted tokens: 
+     Accepted tokens:
       Tex0, Tex1, etc. : texture unit
       PrimaryColor, Col : the primary color
       ConstantColor, EnvCol : texture environment constant color

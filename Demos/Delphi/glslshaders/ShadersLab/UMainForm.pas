@@ -51,15 +51,7 @@ uses
   GLHUDObjects,
 
   GLSL.CustomShader,
-  GLSL.ShaderFur,
-  GLSL.ShaderLattice,
-  GLSL.ShaderIvory,
-  GLSL.ShaderGooch,
-  GLSL.ShaderErosion,
-  GLSL.ShaderSem,
-  GLSL.ShaderVertexDisplacement,
-  GLSL.ShaderGlass,
-  GLSL.ShaderToon;
+  GLSL.ShapeShaders;
 
 type
   TMainForm = class(TForm)

@@ -18,6 +18,7 @@ uses
   OpenGLTokens,
   GLParticleFX,
   GLGraphics,
+  Scene.VectorTypes,
   Scene.VectorGeometry;
 
 

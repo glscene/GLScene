@@ -27,7 +27,7 @@ uses
   GLSL.Shader,
   GLSL.DiffuseSpecularShader,
   GLSL.CustomShader,
-  GLS.ShaderUser,
+  GLSL.UserShader,
 
   GLSimpleNavigation,
   GLCrossPlatform,

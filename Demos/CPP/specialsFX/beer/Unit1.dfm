@@ -28,6 +28,7 @@ object Form1: TForm1
     Buffer.AntiAliasing = aa2x
     Buffer.ShadeModel = smSmooth
     FieldOfView = 150.951690673828100000
+    PenAsTouch = False
     Align = alClient
     OnDblClick = GLSceneViewer1DblClick
     OnMouseMove = GLSceneViewer1MouseMove

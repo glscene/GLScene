@@ -17,7 +17,7 @@
 #pragma link "GLScene"
 #pragma link "GLSimpleNavigation"
 #pragma link "GLSkydome"
-#pragma link "GLS.ShaderUser"
+#pragma link "GLSL.UserShader"
 #pragma link "GLSceneViewer"
 #pragma link "OpenGLTokens"
 #pragma link "OpenGLAdapter"

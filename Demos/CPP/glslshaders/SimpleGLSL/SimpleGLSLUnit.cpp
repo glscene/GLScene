@@ -13,6 +13,7 @@
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+#pragma link "OpenGLAdapter"
 #pragma link "GLBitmapFont"
 #pragma link "GLCadencer"
 #pragma link "GLGeomObjects"
@@ -20,7 +21,7 @@
 #pragma link "GLObjects"
 #pragma link "GLScene"
 #pragma link "GLTexture"
-#pragma link "GLS.ShaderUser"
+#pragma link "GLSL.UserShader"
 #pragma link "OpenGLTokens"
 #pragma link "GLVectorFileObjects"
 #pragma link "GLSceneViewer"

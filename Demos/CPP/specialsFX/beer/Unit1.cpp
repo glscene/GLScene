@@ -20,6 +20,7 @@
 #pragma link "GLSceneViewer"
 #pragma link "GLFile3DS"
 #pragma link "GLFileJPEG"
+#pragma link "GLS.Utils"
 
 #pragma resource "*.dfm"
 TForm1 *Form1;
@@ -32,19 +33,12 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormActivate(TObject *Sender)
 {
-   String MediaPath = ExtractFilePath(ParamStr(0));
-   int I = MediaPath.Pos("Samples");
-   if (I != 0) {
-	MediaPath.Delete(I+8,MediaPath.Length()-I);
-	MediaPath += "Media\\";
-	SetCurrentDir(MediaPath);
-  }
+   SetGLSceneMediaDir();
    GLFreeForm1->LoadFromFile("beer.3ds");
 
    GLFreeForm1->Material->Texture->Image->LoadFromFile("clouds.jpg");
    GLShadowPlane1->Material->Texture->Image->LoadFromFile("ashwood.jpg");
    GetOrCreateSourcePFX(GLDummyCube3)->Burst(0, 150);
-
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLSceneViewer1DblClick(TObject *Sender)

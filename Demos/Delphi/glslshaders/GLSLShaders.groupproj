@@ -9,13 +9,16 @@
         <Projects Include="DiffuseSpecularShader\DiffuseSpecularShader.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="GLSLShaderComponent\ShaderComponent.dproj">
+        <Projects Include="LiningShaders\LiningShaders.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="ocean\Ocean.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="PostShaders\PostShader.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLSLShaderComponent\ShaderComponent.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="ShadersLab\ShadersLab.dproj">
@@ -47,14 +50,14 @@
     <Target Name="DiffuseSpecularShader:Make">
         <MSBuild Projects="DiffuseSpecularShader\DiffuseSpecularShader.dproj" Targets="Make"/>
     </Target>
-    <Target Name="ShaderComponent">
-        <MSBuild Projects="GLSLShaderComponent\ShaderComponent.dproj"/>
+    <Target Name="LiningShaders">
+        <MSBuild Projects="LiningShaders\LiningShaders.dproj"/>
     </Target>
-    <Target Name="ShaderComponent:Clean">
-        <MSBuild Projects="GLSLShaderComponent\ShaderComponent.dproj" Targets="Clean"/>
+    <Target Name="LiningShaders:Clean">
+        <MSBuild Projects="LiningShaders\LiningShaders.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="ShaderComponent:Make">
-        <MSBuild Projects="GLSLShaderComponent\ShaderComponent.dproj" Targets="Make"/>
+    <Target Name="LiningShaders:Make">
+        <MSBuild Projects="LiningShaders\LiningShaders.dproj" Targets="Make"/>
     </Target>
     <Target Name="Ocean">
         <MSBuild Projects="ocean\Ocean.dproj"/>
@@ -74,6 +77,15 @@
     <Target Name="PostShader:Make">
         <MSBuild Projects="PostShaders\PostShader.dproj" Targets="Make"/>
     </Target>
+    <Target Name="ShaderComponent">
+        <MSBuild Projects="GLSLShaderComponent\ShaderComponent.dproj"/>
+    </Target>
+    <Target Name="ShaderComponent:Clean">
+        <MSBuild Projects="GLSLShaderComponent\ShaderComponent.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ShaderComponent:Make">
+        <MSBuild Projects="GLSLShaderComponent\ShaderComponent.dproj" Targets="Make"/>
+    </Target>
     <Target Name="ShadersLab">
         <MSBuild Projects="ShadersLab\ShadersLab.dproj"/>
     </Target>
@@ -84,13 +96,13 @@
         <MSBuild Projects="ShadersLab\ShadersLab.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="BumpShader;DiffuseSpecularShader;ShaderComponent;Ocean;PostShader;ShadersLab"/>
+        <CallTarget Targets="BumpShader;DiffuseSpecularShader;LiningShaders;Ocean;PostShader;ShaderComponent;ShadersLab"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="BumpShader:Clean;DiffuseSpecularShader:Clean;ShaderComponent:Clean;Ocean:Clean;PostShader:Clean;ShadersLab:Clean"/>
+        <CallTarget Targets="BumpShader:Clean;DiffuseSpecularShader:Clean;LiningShaders:Clean;Ocean:Clean;PostShader:Clean;ShaderComponent:Clean;ShadersLab:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="BumpShader:Make;DiffuseSpecularShader:Make;ShaderComponent:Make;Ocean:Make;PostShader:Make;ShadersLab:Make"/>
+        <CallTarget Targets="BumpShader:Make;DiffuseSpecularShader:Make;LiningShaders:Make;Ocean:Make;PostShader:Make;ShaderComponent:Make;ShadersLab:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

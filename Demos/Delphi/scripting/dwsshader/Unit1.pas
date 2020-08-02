@@ -16,7 +16,7 @@ uses
   
   GLCadencer,
   GLTexture,
-  GLUserShader,
+  GLSL.UserShader,
   GLSceneViewer,
   GLScene,
   GLObjects,

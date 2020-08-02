@@ -22,6 +22,8 @@
 #include "GLFile3DS.hpp"
 #include "GLFileJPEG.hpp"
 #include "Jpeg.hpp"
+#include "GLS.Utils.hpp"
+
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

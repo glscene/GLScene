@@ -38,12 +38,7 @@ bool WireFrame;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
 {
-  String MediaPath = ExtractFilePath(ParamStr(0));
-  int I = MediaPath.Pos("Samples");
-  if (I != 0) {
-	MediaPath.Delete(I+8,MediaPath.Length()-I);
-	SetCurrentDir(MediaPath+"Media\\");
-  }
+  SetGLSceneMediaDir();
   Map1->LoadFromFile("map.3ds");
   Map1->BuildOctree(3);
   Map1->Up->SetVector(0, 1, 0);

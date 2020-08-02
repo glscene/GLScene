@@ -43,10 +43,6 @@ object MainForm: TMainForm
       TabOrder = 0
       object TabSheet1: TTabSheet
         Caption = 'Fur'
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object lblFurDistance: TLabel
           Left = 3
           Top = 53

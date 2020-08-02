@@ -6,6 +6,7 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
+#include "OpenGLAdapter.hpp"
 #include "GLBitmapFont.hpp"
 #include "GLCadencer.hpp"
 #include "GLGeomObjects.hpp"
@@ -13,7 +14,7 @@
 #include "GLObjects.hpp"
 #include "GLScene.hpp"
 #include "GLTexture.hpp"
-#include "GLS.ShaderUser.hpp"
+#include "GLSL.UserShader.hpp"
 #include "GLVectorFileObjects.hpp"
 #include "GLSceneViewer.hpp"
 #include "GLWindowsFont.hpp"

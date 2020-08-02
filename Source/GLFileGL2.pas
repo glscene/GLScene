@@ -17,7 +17,7 @@ uses
   GLApplicationFileIO,
   GLMaterial,
   Scene.VectorGeometry,
-  FileGL2,
+  Formats.FileGL2,
   Scene.VectorTypes,
   Scene.VectorLists;
 

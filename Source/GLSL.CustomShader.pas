@@ -262,7 +262,6 @@ type
     property AsUniformBuffer: Cardinal read GetAsUniformBuffer write SetAsUniformBuffer;
   end;
 
-
   (* Adds two more blending modes to standard ones.
     Not sure how to name them or if they should be included in TBlending mode,
     so I created a new type here. *)
@@ -366,12 +365,10 @@ begin
   gl.MatrixMode(GL_PROJECTION);
     gl.PushMatrix;
     gl.LoadIdentity;
-
     // drawing rectangle over screen
     gl.Disable(GL_DEPTH_TEST);
     DrawTexturedScreenQuad3;
     gl.Enable(GL_DEPTH_TEST);
-
   gl.PopMatrix;
   gl.MatrixMode(GL_MODELVIEW);
   gl.PopMatrix;
@@ -479,7 +476,9 @@ begin
   gl.CopyTexImage2D(glTarget, 0, GL_RGBA8, 0, 0, TextureSize.cx, TextureSize.cy, 0);
 end;
 
-{ TGLShaderProgram }
+//---------------------------------------------
+// TGLShaderProgram
+//---------------------------------------------
 
 procedure TGLShaderProgram.Apply;
 begin
@@ -516,7 +515,6 @@ begin
   FCode.Destroy;
 end;
 
-
 function TGLShaderProgram.GetOwner: TPersistent;
 begin
   Result := FParent;
@@ -552,8 +550,9 @@ begin
     FParent.FinalizeShader;
 end;
 
-
-{ TGLCustomShader }
+//---------------------------------------------
+// TGLCustomShader
+//---------------------------------------------
 
 procedure TGLCustomShader.Assign(Source: TPersistent);
 begin
@@ -638,7 +637,9 @@ begin
   Result := FVertexProgram.Enabled or (FVertexProgram.Code.Text <> '')
 end;
 
-{ TGLCustomShaderParameter }
+//---------------------------------------------
+// TGLCustomShaderParameter
+//---------------------------------------------
 
 procedure TGLCustomShaderParameter.SetAsTexture(
   const TextureIndex: Integer; const Value: TGLTexture);
@@ -747,7 +748,10 @@ begin
   end;
 end;
 
+//---------------------------------------------
 initialization
+//---------------------------------------------
+
   RegisterClasses([TGLCustomShader, TGLShaderProgram,
                    TGLVertexProgram, TGLFragmentProgram, TGLGeometryProgram]);
 

@@ -23,7 +23,7 @@ uses
   Scene.VectorGeometry,
   GLGeomObjects,
   GLCadencer,
-  GLS.ShaderUser,
+  GLSL.UserShader,
   GLS.Utils,
   GLGraph,
   Scene.VectorTypes,
@@ -131,23 +131,18 @@ begin
 
   programObject.AddShader(TGLVertexShaderHandle, String(LoadAnsiStringFromFile('Shaders\ocean_vp.glsl')), True);
   programObject.AddShader(TGLFragmentShaderHandle, String(LoadAnsiStringFromFile('Shaders\ocean_fp.glsl')), True);
-
   if not programObject.LinkProgram then
     raise Exception.Create(programObject.InfoLog);
-
   programObject.UseProgramObject;
   programObject.Uniform1i['NormalMap'] := 0;
   programObject.Uniform1i['EnvironmentMap'] := 1;
   programObject.EndUseProgramObject;
-
   // initialize the heightmap
   with MatLib.LibMaterialByName('water') do
     rci.GLStates.TextureBinding[0, ttTexture2D] := Material.Texture.Handle;
-
   // initialize the heightmap
   with MatLib.LibMaterialByName('cubeMap') do
     rci.GLStates.TextureBinding[1, ttTextureCube] := Material.Texture.Handle;
-
   if not programObject.ValidateProgram then
     raise Exception.Create(programObject.InfoLog);
 end;
@@ -216,11 +211,9 @@ var
 begin
   GLUserShader1DoApply(Self, rci);
   gl.EnableClientState(GL_VERTEX_ARRAY);
-
   if not Assigned(vbo) then
   begin
     v := TTexPointList.Create;
-
     v.Capacity := Sqr(cExtent + 1);
     y := -cExtent;
     while y < cExtent do
@@ -236,29 +229,22 @@ begin
       v.Add(y, cExtent);
       v.Add(y, -cExtent);
     end;
-
     vbo := TGLVBOArrayBufferHandle.CreateAndAllocate();
     vbo.Bind;
     vbo.BufferData(v.List, v.DataSize, GL_STATIC_DRAW_ARB);
     nbVerts := v.Count;
-
     gl.VertexPointer(2, GL_FLOAT, 0, nil);
     gl.DrawArrays(GL_QUAD_STRIP, 0, nbVerts);
-
     vbo.UnBind;
-
     v.Free;
   end
   else
   begin
     vbo.Bind;
-
     gl.VertexPointer(2, GL_FLOAT, 0, nil);
     gl.DrawArrays(GL_TRIANGLE_STRIP, 0, nbVerts);
-
     vbo.UnBind;
   end;
-
   gl.DisableClientState(GL_VERTEX_ARRAY);
   GLUserShader1DoUnApply(Self, 0, rci, cont);
 end;

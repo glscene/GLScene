@@ -25,6 +25,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = clBlack
     Buffer.DepthTest = False
     FieldOfView = 145.189712524414100000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
