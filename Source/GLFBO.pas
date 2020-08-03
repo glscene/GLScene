@@ -4,11 +4,7 @@
 
 unit GLFBO;
 
-(*
-   Implements FBO support for GLScene.
-   Original author of the unit is Riz.
-   Modified by DaStr, C4 and YarUnderoaker.
-*)
+(* Implements Frame Buffer OpenGL support *)
 
 interface
 

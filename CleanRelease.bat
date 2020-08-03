@@ -56,7 +56,7 @@ attrib +R "AdvDemos/Q3Demo/Model/animation.cfg"
 rem del *.cfg /s  - there are quake's animations
 attrib -R "AdvDemos/Q3Demo/Model/animation.cfg"
 
-rem del *.res /s
+del *.res /s
 rem del *.ico /s  - some projects have own icos
 rem del *.cur /s  - cursors
 rem del *.obj /s  - obj models in media and resources for lazarus

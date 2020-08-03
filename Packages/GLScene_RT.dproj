@@ -148,13 +148,13 @@
         <DCCReference Include="..\Source\FileHDRImage.pas"/>
         <DCCReference Include="..\Source\FileQ3BSP.pas"/>
         <DCCReference Include="..\Source\FileQ3MD3.pas"/>
-        <DCCReference Include="..\Source\FileB3D.pas"/>
+        <DCCReference Include="..\Source\Formats.FileB3D.pas"/>
         <DCCReference Include="..\Source\Formats.FileGL2.pas"/>
         <DCCReference Include="..\Source\Formats.FileLWObjects.pas"/>
         <DCCReference Include="..\Source\FileMD2.pas"/>
         <DCCReference Include="..\Source\FileMD3.pas"/>
         <DCCReference Include="..\Source\FileO3TCImage.pas"/>
-        <DCCReference Include="..\Source\FileOCT.pas"/>
+        <DCCReference Include="..\Source\Formats.FileOCT.pas"/>
         <DCCReference Include="..\Source\FileTGA.pas"/>
         <DCCReference Include="..\Source\Formats.FileX.pas"/>
         <DCCReference Include="..\Source\Formats.FileVFW.pas"/>

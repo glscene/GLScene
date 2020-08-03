@@ -9,6 +9,7 @@ uses
   System.SysUtils,
   System.Variants,
   System.Classes,
+  System.Math,
   Vcl.Graphics,
   Vcl.Controls,
   Vcl.Forms,
@@ -463,10 +464,25 @@ implementation
 
 {$R *.dfm}
 
-uses Math,
-  GLFileOBJ, GLFileSTL, GLFileLWO, GLFileQ3BSP, GLFileOCT, GLFileMS3D,
-  GLFileNMF, GLFileMD3, GLFile3DS, GLFileMD2, GLFileSMD, GLFilePLY, GLFileGTS,
-  GLFileVRML, GLFileMD5, GLS.FileTIN, GLFileDXF, GLS.FileGRD;
+uses 
+  GLFileOBJ, 
+  GLFileSTL, 
+  GLFileLWO, 
+  GLFileQ3BSP, 
+  GLFileOCT, 
+  GLFileMS3D,
+  GLFileNMF, 
+  GLFileMD3, 
+  GLFile3DS, 
+  GLFileMD2, 
+  GLFileSMD, 
+  GLFilePLY, 
+  GLFileGTS,
+  GLFileVRML, 
+  GLFileMD5, 
+  GLS.FileTIN, 
+  GLFileDXF, 
+  GLS.FileGRD;
 
 procedure TMainForm.Button10Click(Sender: TObject);
 begin

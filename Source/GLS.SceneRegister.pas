@@ -359,7 +359,7 @@ uses
   GLS.Utils,
   GLSL.AsmShader,
   GLSL.BumpShaders,
-  GLSL.CelShader,
+  GLSL.ShapeShaders,
   GLSL.LineShaders,
   GLSL.ShaderCombiner,
   GLSL.PhongShader,

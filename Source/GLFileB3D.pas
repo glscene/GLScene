@@ -20,7 +20,7 @@ uses
   Scene.VectorTypes, 
   Scene.VectorGeometry, 
   Scene.VectorLists,
-  FileB3D;
+  Formats.FileB3D;
 
 type
   TGLB3DVectorFile = class(TGLVectorFile)
@@ -86,7 +86,6 @@ var
             TexName := ATex.GetTextureName
           else
             TexName := '';
-
           if not FileExists(TexName) then
             TexName := ExtractFileName(TexName);
           if TexName <> '' then
@@ -97,7 +96,6 @@ var
             LibMat := MatLib.Materials.Add;
             LibMat.Name := Result + IntToStr(MaterialNum);
           end;
-
           Libmat.Material.FrontProperties.Diffuse.Red := AMat.MaterialData.Red;
           Libmat.Material.FrontProperties.Diffuse.Green :=
             AMat.MaterialData.Green;
@@ -108,37 +106,30 @@ var
           Libmat.Material.FrontProperties.Shininess :=
             Round(AMat.MaterialData.Shininess * 100.0);
           Libmat.Material.MaterialOptions := [MoNoLighting];
-
           if AMat.MaterialData.Alpha <> 1 then
           begin
             Libmat.Material.FaceCulling := FcNoCull;
             Libmat.Material.BlendingMode := BmTransparency;
           end;
-
           if Assigned(ATex) then
           begin
-
             LibMat.TextureOffset.AsAffineVector :=
               AffineVectorMake(ATex.TextureData.X_pos,
               ATex.TextureData.Y_pos, 0);
-
             LibMat.TextureScale.AsAffineVector :=
               AffineVectorMake(ATex.TextureData.X_scale,
               ATex.TextureData.Y_scale, 1);
-
             if ATex.TextureData.Flags = 2 then
             begin
               Libmat.Material.FaceCulling := FcNoCull;
               Libmat.Material.BlendingMode := BmTransparency;
             end;
-
             if AMat.MaterialData.Alpha <> 1 then
             begin
               Libmat.Material.Texture.ImageAlpha := TiaAlphaFromIntensity;
               Libmat.Material.Texture.TextureFormat := TfRGBA;
               Libmat.Material.Texture.TextureMode := TmModulate;
             end;
-
           end;
         end;
         // add lightmap material
@@ -302,15 +293,14 @@ begin
           FaceGroup.Reverse;
 
         end;
-
         RotQuat := QuaternionMake([Node^.Rotation.Z, Node^.Rotation.Y,
           Node^.Rotation.W], Node^.Rotation.X);
         RotMat := QuaternionToMatrix(RotQuat);
         Mo.Vertices.TransformAsVectors(RotMat);
-
-        { mo.SetPosition( Node^.Position[1], Node^.Position[0], Node^.Position[2]);
+        (*
+          mo.SetPosition( Node^.Position[1], Node^.Position[0], Node^.Position[2]);
           mo.SetScale( Node^.Scale[1], Node^.Scale[0], Node^.Scale[2]);
-        }
+        *)
         if Pos('ENT_', UpperCase(Mo.Name)) = 0 then
           V := AffineVectorMake(Node^.Position.Y,
             Node^.Position.X, Node^.Position.Z)
@@ -318,7 +308,6 @@ begin
         begin
           V := AffineVectorMake(0.0, 0.0, 0.0);
         end;
-
         V1 := AffineVectorMake(Node^.Scale.Y, Node^.Scale.X, Node^.Scale.Z);
         Matrix := CreateScaleAndTranslationMatrix(VectorMake(V1), VectorMake(V));
         Mo.Vertices.TransformAsPoints(Matrix);
