@@ -16,7 +16,7 @@
 #include "Scene.VectorGeometry.hpp"
 #include "GLCadencer.hpp"
 #include "GLMultiMaterialShader.hpp"
-#include "GLTexCombineShader.hpp"
+#include "GLSL.TexureCombineShader.hpp"
 #include "GLMaterial.hpp"
 #include "GLCoordinates.hpp"
 #include "GLCrossPlatform.hpp"

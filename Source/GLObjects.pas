@@ -35,7 +35,7 @@ uses
   Scene.VectorLists,
   GLPipelineTransformation,
   GLContext,
-  GLSilhouette,
+  Scene.Silhouette,
   GLColor,
   GLRenderContextInfo,
   Scene.PersistentClasses,

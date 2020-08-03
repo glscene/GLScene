@@ -14,7 +14,7 @@
 #pragma link "GLMultiMaterialShader"
 #pragma link "GLObjects"
 #pragma link "GLScene"
-#pragma link "GLTexCombineShader"
+#pragma link "GLTS.TextureCombineShader"
 #pragma link "GLSceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;

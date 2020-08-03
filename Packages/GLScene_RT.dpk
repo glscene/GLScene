@@ -227,7 +227,7 @@ contains
   GLShadowHDS in '..\Source\GLShadowHDS.pas',
   GLShadowPlane in '..\Source\GLShadowPlane.pas',
   GLShadowVolume in '..\Source\GLShadowVolume.pas',
-  GLSilhouette in '..\Source\GLSilhouette.pas',
+  Scene.Silhouette in '..\Source\Scene.Silhouette.pas',
   GLSimpleNavigation in '..\Source\GLSimpleNavigation.pas',
   GLSkyBox in '..\Source\GLSkyBox.pas',
   GLSkydome in '..\Source\GLSkydome.pas',

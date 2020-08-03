@@ -15,7 +15,7 @@ uses
   Scene.VectorGeometry, 
   Scene.VectorLists, 
   GLVectorFileObjects, 
-  GLSilhouette;
+  Scene.Silhouette;
 
 type
   TGLFaceGroupConnectivity = class(TConnectivity)
@@ -25,7 +25,7 @@ type
     procedure SetMeshObject(const Value: TMeshObject);
   public
     procedure Clear; override;
-    { Builds the connectivity information. }
+    // Builds the connectivity information.
     procedure RebuildEdgeList;
     property MeshObject: TMeshObject read FMeshObject write SetMeshObject;
     constructor Create(APrecomputeFaceNormal: boolean); override;
@@ -48,9 +48,9 @@ type
     property FaceGroupConnectivity[i: integer]: TGLFaceGroupConnectivity read GetFaceGroupConnectivity;
     property BaseMesh: TGLBaseMesh read FBaseMesh write SetBaseMesh;
     procedure Clear(SaveFaceGroupConnectivity: boolean);
-    { Builds the connectivity information. }
+    // Builds the connectivity information.
     procedure RebuildEdgeList;
-    procedure CreateSilhouette(const silhouetteParameters: TGLSilhouetteParameters; var aSilhouette: TGLSilhouette; 
+    procedure CreateSilhouette(const silhouetteParameters: TGLSilhouetteParameters; var aSilhouette: TGLSilhouette;
 	  AddToSilhouette: boolean);
     constructor Create(APrecomputeFaceNormal: boolean); override;
     constructor CreateFromMesh(aBaseMesh: TGLBaseMesh);
@@ -93,23 +93,17 @@ constructor TGLFaceGroupConnectivity.Create(APrecomputeFaceNormal: boolean);
 procedure TGLFaceGroupConnectivity.SetMeshObject(const Value: TMeshObject);
   begin
     Clear;
-
     FMeshObject := Value;
-
     if FOwnsVertices then
       FVertices.Free;
-
     FVertices := FMeshObject.Vertices;
-
     FOwnsVertices := false;
-
     RebuildEdgeList;
   end;
 
 constructor TGLFaceGroupConnectivity.CreateFromMesh(aMeshObject: TMeshObject; APrecomputeFaceNormal: boolean);
   begin
     Create(APrecomputeFaceNormal);
-
     MeshObject := aMeshObject;
   end;
 
@@ -117,7 +111,6 @@ destructor TGLFaceGroupConnectivity.Destroy;
   begin
     if FOwnsVertices then
       FVertices.Free;
-
     FVertices := nil;
     inherited;
   end;
@@ -130,13 +123,11 @@ procedure TGLFaceGroupConnectivity.RebuildEdgeList;
   begin
     // Make sure that the connectivity information is empty
     Clear;
-
     // Create a list of edges for the meshobject
     for iFaceGroup := 0 to FMeshObject.FaceGroups.Count - 1 do
     begin
       Assert(FMeshObject.FaceGroups[iFaceGroup] is TFGVertexIndexList, 'Method only works for descendants of TFGVertexIndexList.');
       FaceGroup := TFGVertexIndexList(FMeshObject.FaceGroups[iFaceGroup]);
-
       case FaceGroup.Mode of
         fgmmTriangles, fgmmFlatTriangles:
           begin
@@ -220,21 +211,16 @@ procedure TGLBaseMeshConnectivity.SetBaseMesh(const Value: TGLBaseMesh);
     Connectivity: TGLFaceGroupConnectivity;
   begin
     Clear(false);
-
     FBaseMesh := Value;
-
     // Only precompute normals if the basemesh isn't an actor (because they change)
     FPrecomputeFaceNormal := not(Value is TGLActor);
     FBaseMesh := Value;
-
     for i := 0 to Value.MeshObjects.Count - 1 do
     begin
       MO := Value.MeshObjects[i];
-
       if MO.Visible then
       begin
         Connectivity := TGLFaceGroupConnectivity.CreateFromMesh(MO, FPrecomputeFaceNormal);
-
         FFaceGroupConnectivityList.Add(Connectivity);
       end;
     end;
@@ -248,7 +234,6 @@ begin
     aSilhouette := TGLSilhouette.Create
   else
     aSilhouette.Flush;
-
   for i := 0 to ConnectivityCount - 1 do
     FaceGroupConnectivity[i].CreateSilhouette(silhouetteParameters, aSilhouette, true);
 end;
@@ -257,7 +242,6 @@ destructor TGLBaseMeshConnectivity.Destroy;
   begin
     Clear(false);
     FFaceGroupConnectivityList.Free;
-
     inherited;
   end;
 

@@ -19,7 +19,7 @@ uses
   GLContext,
   GLScene,
   Scene.VectorGeometry,
-  GLSilhouette,
+  Scene.Silhouette,
   GLRenderContextInfo,
   GLBaseClasses,
   Scene.VectorTypes;

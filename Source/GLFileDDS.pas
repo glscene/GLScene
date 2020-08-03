@@ -17,7 +17,6 @@ uses
   System.SysUtils,
   System.Math,
 
-  OpenGLTokens,
   GLContext,
   GLGraphics,
   GLTextureFormat,
@@ -602,8 +601,10 @@ begin
   Result := [dfcRead, dfcWrite];
 end;
 
+//----------------------------------------------
 initialization
-  { Register this Fileformat-Handler with GLScene }
+//----------------------------------------------
+
   RegisterRasterFormat('dds', 'Direct Draw Surface', TGLDDSImage);
 
 end.

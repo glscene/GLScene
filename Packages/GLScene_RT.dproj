@@ -330,7 +330,7 @@
         <DCCReference Include="..\Source\GLShadowHDS.pas"/>
         <DCCReference Include="..\Source\GLShadowPlane.pas"/>
         <DCCReference Include="..\Source\GLShadowVolume.pas"/>
-        <DCCReference Include="..\Source\GLSilhouette.pas"/>
+        <DCCReference Include="..\Source\Scene.Silhouette.pas"/>
         <DCCReference Include="..\Source\GLSimpleNavigation.pas"/>
         <DCCReference Include="..\Source\GLSkyBox.pas"/>
         <DCCReference Include="..\Source\GLSkydome.pas"/>

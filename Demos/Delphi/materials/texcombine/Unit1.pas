@@ -18,13 +18,12 @@ uses
   GLTexture,
   GLObjects,
   GLSceneViewer,
-  GLTexCombineShader,
+  GLSL.TextureShaders,
   GLHUDObjects,
   GLMaterial,
   GLCoordinates,
   GLCrossPlatform,
   GLBaseClasses,
-  GLTextureCombiners,
   GLS.Utils;
 
 type

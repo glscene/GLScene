@@ -1543,7 +1543,7 @@ begin
     TGLHeightTileFileHDS, TGLBumpmapHDS, TGLPerlinHDS, TGLTexturedHDS,
     TGLAsyncHDS, TGLShadowHDS]);
 
-  RegisterComponents('GLScene Shaders', [TGLTextureCombineShader, TGLPhongShader,
+  RegisterComponents('GLScene Shaders', [TGLTexCombineShader, TGLPhongShader,
     TGLUserShader, TGLHiddenLineShader, TGLCelShader, TGLOutlineShader,
     TGLMultiMaterialShader, TGLBumpShader, TGLSLShader,
     TGLSLDiffuseSpecularShader, TGLSLBumpShader, TGLAsmShader,

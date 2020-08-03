@@ -16,8 +16,8 @@ uses
   Vcl.ComCtrls,
   Vcl.StdCtrls,
 
-  GLS.OpenGLx,
   GLScene,
+  GLBaseClasses,
   GLObjects,
   GLKeyboard,
   GLTerrainRenderer,
@@ -26,17 +26,16 @@ uses
   GLTexture,
   GLSkydome,
   GLSceneViewer,
+  Scene.VectorTypes,
   Scene.VectorGeometry,
   GLLensFlare,
   GLBumpmapHDS,
-  GLTexCombineShader,
   GLMaterial,
   GLCoordinates,
   GLCrossPlatform,
   GLState,
   GLS.Utils,
-  GLBaseClasses,
-  Scene.VectorTypes;
+  GLSL.TextureShaders;
 
 type
   TForm1 = class(TForm)

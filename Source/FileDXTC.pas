@@ -19,7 +19,6 @@ uses
    Winapi.OpenGLext,
    System.SysUtils,
    
-   OpenGLTokens,
    GLTextureFormat;
 
 const

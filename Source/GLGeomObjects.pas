@@ -23,7 +23,7 @@ uses
   Scene.VectorLists,
   GLContext,
   GLObjects,
-  GLSilhouette,
+  Scene.Silhouette,
   Scene.VectorTypes,
   GLGeometryBB,
   GLRenderContextInfo,

@@ -87,6 +87,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = clGray
     Buffer.Lighting = False
     FieldOfView = 121.890792846679700000
+    PenAsTouch = False
     TabOrder = 0
   end
   object BUApply: TButton

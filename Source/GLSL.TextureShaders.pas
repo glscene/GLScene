@@ -132,7 +132,7 @@ type
 (* A shader that allows texture combiner setup. *)
 
   // A shader that can setup the texture combiner.
-  TGLTextureCombineShader = class(TGLShader)
+  TGLTexCombineShader = class(TGLShader)
   private
     FCombiners: TStringList;
     FCommandCache: TCombinerCache;
@@ -649,10 +649,10 @@ begin
 end;
 
 // ------------------
-// ------------------ TGLTextureCombineShader ------------------
+// ------------------ TGLTexCombineShader ------------------
 // ------------------
 
-constructor TGLTextureCombineShader.Create(AOwner: TComponent);
+constructor TGLTexCombineShader.Create(AOwner: TComponent);
 begin
   inherited;
   ShaderStyle := ssLowLevel;
@@ -662,7 +662,7 @@ begin
   FCommandCache := nil;
 end;
 
-destructor TGLTextureCombineShader.Destroy;
+destructor TGLTexCombineShader.Destroy;
 begin
   if Assigned(currentLibMaterial3) then
     currentLibMaterial3.UnregisterUser(Self);
@@ -672,7 +672,7 @@ begin
   FCombiners.Free;
 end;
 
-procedure TGLTextureCombineShader.Notification(AComponent: TComponent; Operation: TOperation);
+procedure TGLTexCombineShader.Notification(AComponent: TComponent; Operation: TOperation);
 begin
   if (FMaterialLibrary = AComponent) and (Operation = opRemove) then
   begin
@@ -683,7 +683,7 @@ begin
   inherited;
 end;
 
-procedure TGLTextureCombineShader.NotifyChange(Sender: TObject);
+procedure TGLTexCombineShader.NotifyChange(Sender: TObject);
 begin
   FCombinerIsValid := True;
   FCommandCache := nil;
@@ -691,21 +691,21 @@ begin
 end;
 
 
-procedure TGLTextureCombineShader.NotifyLibMaterial3Destruction;
+procedure TGLTexCombineShader.NotifyLibMaterial3Destruction;
 begin
   FLibMaterial3Name := '';
   currentLibMaterial3 := nil;
 end;
 
 
-procedure TGLTextureCombineShader.NotifyLibMaterial4Destruction;
+procedure TGLTexCombineShader.NotifyLibMaterial4Destruction;
 begin
   FLibMaterial4Name := '';
   currentLibMaterial4 := nil;
 end;
 
 
-procedure TGLTextureCombineShader.SetMaterialLibrary(const val: TGLMaterialLibrary);
+procedure TGLTexCombineShader.SetMaterialLibrary(const val: TGLMaterialLibrary);
 begin
   FMaterialLibrary := val;
   SetLibMaterial3Name(LibMaterial3Name);
@@ -713,7 +713,7 @@ begin
 end;
 
 
-procedure TGLTextureCombineShader.SetLibMaterial3Name(const val: TGLLibMaterialName);
+procedure TGLTexCombineShader.SetLibMaterial3Name(const val: TGLLibMaterialName);
 var
   newLibMaterial: TGLLibMaterial;
 begin
@@ -738,7 +738,7 @@ begin
 end;
 
 
-procedure TGLTextureCombineShader.SetLibMaterial4Name(const val: TGLLibMaterialName);
+procedure TGLTexCombineShader.SetLibMaterial4Name(const val: TGLLibMaterialName);
 var
   newLibMaterial: TGLLibMaterial;
 begin
@@ -763,12 +763,12 @@ begin
 end;
 
 
-procedure TGLTextureCombineShader.DoInitialize(var rci: TGLRenderContextInfo; Sender: TObject);
+procedure TGLTexCombineShader.DoInitialize(var rci: TGLRenderContextInfo; Sender: TObject);
 begin
 end;
 
 
-procedure TGLTextureCombineShader.DoApply(var rci: TGLRenderContextInfo; Sender: TObject);
+procedure TGLTexCombineShader.DoApply(var rci: TGLRenderContextInfo; Sender: TObject);
 var
   n, units: Integer;
 begin
@@ -838,7 +838,7 @@ begin
   end;
 end;
 
-function TGLTextureCombineShader.DoUnApply(var rci: TGLRenderContextInfo): Boolean;
+function TGLTexCombineShader.DoUnApply(var rci: TGLRenderContextInfo): Boolean;
 begin
   if FApplied3 then
     with currentLibMaterial3.Material.Texture do
@@ -850,12 +850,12 @@ begin
 end;
 
 
-procedure TGLTextureCombineShader.DoFinalize;
+procedure TGLTexCombineShader.DoFinalize;
 begin
 end;
 
 
-procedure TGLTextureCombineShader.SetCombiners(const val: TStringList);
+procedure TGLTexCombineShader.SetCombiners(const val: TStringList);
 begin
   if val <> FCombiners then
   begin
@@ -865,7 +865,7 @@ begin
 end;
 
 
-procedure TGLTextureCombineShader.SetDesignTimeEnabled(const val: Boolean);
+procedure TGLTexCombineShader.SetDesignTimeEnabled(const val: Boolean);
 begin
   if val <> FDesignTimeEnabled then
   begin
@@ -880,6 +880,6 @@ initialization
 //================================================
 
   RegisterClasses([TGLTextureSharingShader, TGLTextureSharingShaderMaterials,
-                   TGLTextureSharingShaderMaterial, TGLTextureCombineShader]);
+                   TGLTextureSharingShaderMaterial, TGLTexCombineShader]);
 
 end.

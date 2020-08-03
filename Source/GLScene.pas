@@ -27,7 +27,7 @@ uses
   Scene.Strings,
   GLContext,
   Scene.VectorGeometry,
-  GLSilhouette,
+  Scene.Silhouette,
   Scene.PersistentClasses,
   GLPipeLineTransformation,
   GLState,

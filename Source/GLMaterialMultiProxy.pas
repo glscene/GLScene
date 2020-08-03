@@ -34,7 +34,7 @@ uses
   Scene.VectorGeometry,
   GLTexture,
   GLMaterial,
-  GLSilhouette,
+  Scene.Silhouette,
   Scene.Strings,
   GLCrossPlatform,
   Scene.PersistentClasses,

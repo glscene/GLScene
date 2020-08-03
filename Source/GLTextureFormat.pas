@@ -262,6 +262,7 @@ implementation
 uses
   GLContext;
 
+
 type
 
   TFormatDesc = record
