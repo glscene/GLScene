@@ -7,15 +7,15 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLGeomObjects"
-#pragma link "GLSceneViewer"
-#pragma link "GLCadencer"
-#pragma link "Scene.VectorGeometry"
-#pragma link "GLScene"
-#pragma link "GLObjects"
-#pragma link "GLBaseClasses"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.VectorGeometry"
+#pragma link "GLS.Scene"
+#pragma link "GLS.Objects"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------

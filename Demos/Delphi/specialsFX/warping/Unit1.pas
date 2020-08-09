@@ -15,8 +15,8 @@ uses
   Vcl.Menus,
 
   
-  GLScene, GLGraphics, GLGraph, GLObjects, Scene.VectorGeometry, Scene.VectorTypes,
-  GLSceneViewer, GLCrossPlatform, GLCoordinates, GLBaseClasses;
+  GLS.Scene, GLS.Graphics, GLS.Graph, GLS.Objects, GLS.VectorGeometry, GLS.VectorTypes,
+  GLS.SceneViewer, GLS.Coordinates, GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

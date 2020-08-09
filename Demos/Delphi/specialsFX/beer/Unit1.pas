@@ -12,10 +12,10 @@ uses
   Vcl.Forms,
 
   
-  GLScene, GLVectorFileObjects, GLObjects, GLSceneViewer,
-  GLFile3ds, GLCadencer, GLGeomObjects, Scene.VectorGeometry,
-  GLShadowPlane, GLParticleFX, GLPerlinPFX, GLCrossPlatform, GLCoordinates,
-  GLBaseClasses, GLS.Utils;
+  GLS.Scene, GLS.VectorFileObjects, GLS.Objects, GLS.SceneViewer,
+  GLS.File3DS, GLS.Cadencer, GLS.GeomObjects, GLS.VectorGeometry,
+  GLS.ShadowPlane, GLS.ParticleFX, GLS.PerlinPFX, GLS.Coordinates,
+  GLS.BaseClasses, GLS.Utils;
 
 type
   TForm1 = class(TForm)

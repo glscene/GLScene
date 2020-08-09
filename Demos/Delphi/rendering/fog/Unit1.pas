@@ -17,17 +17,17 @@ uses
   Vcl.StdCtrls,
 
   
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  GLCadencer,
-  GLSceneViewer,
-  GLTexture,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  GLS.Texture,
+ 
+  GLS.Material,
+  GLS.Coordinates,
   GLS.Utils,
-  GLBaseClasses;
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

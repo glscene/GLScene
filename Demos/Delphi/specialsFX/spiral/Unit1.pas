@@ -13,18 +13,18 @@ uses
   Vcl.Dialogs,
   Vcl.ExtCtrls,
   
-  GLScene,
-  GLObjects,
-  Scene.VectorTypes,
-  GLParticleFX,
-  GLCadencer,
-  GLSceneViewer,
-  GLBehaviours,
-  Scene.VectorGeometry,
-  GLCrossPlatform,
-  GLFullScreenViewer,
-  GLCoordinates,
-  GLBaseClasses;
+  GLS.Scene,
+  GLS.Objects,
+  GLS.VectorTypes,
+  GLS.ParticleFX,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  GLS.Behaviours,
+  GLS.VectorGeometry,
+ 
+  GLS.FullScreenViewer,
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

@@ -23,9 +23,9 @@ uses
 
   FRTrackBarEdit,
   FRColorEditor,
-  GLTexture,
-  GLMaterial,
-  GLState;
+  GLS.Texture,
+  GLS.Material,
+  GLS.State;
 
 type
   TRFaceEditor = class(TFrame)

@@ -433,7 +433,7 @@ begin
     TCUDAFFTPlan, TCUDAImageResource, TCUDAGeometryResource, TCUDAConstant,
     TCUDAFuncParam]);
 
-  ObjectManager.RegisterSceneObject(TGLFeedBackMesh, 'GPU generated mesh', 'GPU Computing', HInstance);
+  ObjectManager.RegisterSceneObject(TGLFeedbackMesh, 'GPU generated mesh', 'GPU Computing', HInstance);
 end;
 
 

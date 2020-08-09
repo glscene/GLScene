@@ -13,7 +13,8 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
   
-  GLBitmapFont, GLWindowsFont;
+  GLS.BitmapFont,
+  GLS.WindowsFont;
 
 type
   TfrmMain = class(TForm)

@@ -9,15 +9,15 @@ uses
   Vcl.Dialogs,
   Vcl.Forms,
   
-  GLScene,
-  GLObjects,
-  GLTexture,
-  GLSceneViewer,
-  GLGeomObjects,
-  GLColor,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses;
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Texture,
+  GLS.SceneViewer,
+  GLS.GeomObjects,
+  GLS.Color,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

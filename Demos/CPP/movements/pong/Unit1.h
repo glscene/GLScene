@@ -10,16 +10,16 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLMaterial.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLShadowVolume.hpp"
-#include "GLSpaceText.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Material.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.ShadowVolume.hpp"
+#include "GLS.SpaceText.hpp"
+#include "GLS.SceneViewer.hpp"
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
@@ -27,7 +27,7 @@ class TForm1 : public TForm
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
 	TGLScene *GLScene1;
-	TGLShadowVolume *GLShadowVolume;
+	TGLShadowVolume *GLS.ShadowVolume;
 	TGLPlane *Plane1;
 	TGLCube *Cube1;
 	TGLCube *Cube2;

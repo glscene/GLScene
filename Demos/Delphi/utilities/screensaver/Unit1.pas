@@ -12,8 +12,8 @@ uses
   Vcl.Dialogs,
 
   
-  GLScene, GLScreenSaver, GLObjects, GLBehaviours, GLCadencer,
-  GLSceneViewer, GLGeomObjects, GLCrossPlatform, GLCoordinates, GLBaseClasses;
+  GLS.Scene, GLS.ScreenSaver, GLS.Objects, GLS.Behaviours, GLS.Cadencer,
+  GLS.SceneViewer, GLS.GeomObjects, GLS.Coordinates, GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

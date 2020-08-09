@@ -10,22 +10,22 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "GLScene.hpp"
-#include "GLObjects.hpp"
-#include "GLCadencer.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Cadencer.hpp"
 #include "GLLensFlare.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLTexture.hpp"
-#include "GLSkydome.hpp"
-#include "Scene.VectorGeometry.hpp"
-#include "GLCrossPlatform.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Texture.hpp"
+#include "GLS.SkyDome.hpp"
+#include "GLS.VectorGeometry.hpp"
+
 #include "GLAtmosphere.hpp"
-#include "GLSimpleNavigation.hpp"
-#include "GLBehaviours.hpp"
+#include "GLS.SimpleNavigation.hpp"
+#include "GLS.Behaviours.hpp"
 #include "JPeg.hpp"
-#include "GLCoordinates.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLColor.hpp"
+#include "GLS.Coordinates.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Color.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

@@ -4,6 +4,7 @@ interface
 
 uses
   Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.SysUtils,
   System.Classes,
   Vcl.Graphics,
@@ -14,27 +15,27 @@ uses
   Vcl.Imaging.Jpeg,
 
 
-  OpenGLTokens,
-  GLCrossPlatform,
-  GLScene,
-  GLObjects,
-  GLSceneViewer,
-  GLWaterPlane,
-  GLCadencer,
-  GLTexture,
+  GLS.OpenGLTokens,
+ 
+  GLS.Scene,
+  GLS.Objects,
+  GLS.SceneViewer,
+  GLS.WaterPlane,
+  GLS.Cadencer,
+  GLS.Texture,
   GLSL.UserShader,
-  GLContext,
-  Scene.VectorGeometry,
-  GLGraph,
-  Scene.VectorTypes,
-  GLState,
-  GLMaterial,
-  GLCoordinates,
-  GLRenderContextInfo,
-  GLSimpleNavigation,
-  GLColor,
+  GLS.Context,
+  GLS.VectorGeometry,
+  GLS.Graph,
+  GLS.VectorTypes,
+  GLS.State,
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.RenderContextInfo,
+  GLS.SimpleNavigation,
+  GLS.Color,
   GLS.Utils,
-  GLBaseClasses;
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

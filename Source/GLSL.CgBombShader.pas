@@ -14,13 +14,13 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLTexture,
-  GLCadencer,
-  GLContext,
-  Scene.Strings,
-  GLMaterial,
-  GLRenderContextInfo,
-  GLTextureFormat,
+  GLS.Texture,
+  GLS.Cadencer,
+  GLS.Context,
+  GLS.Strings,
+  GLS.Material,
+  GLS.RenderContextInfo,
+  GLS.TextureFormat,
 
   Import.cgGL,
   GLSL.CgShader;

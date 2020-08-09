@@ -26,6 +26,7 @@ object Form1: TForm1
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aa4xHQ
     FieldOfView = 140.033782958984400000
+    PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
@@ -139,7 +140,6 @@ object Form1: TForm1
     Left = 40
     Top = 128
     object DC_LightHolder: TGLDummyCube
-      Up.Coordinates = {000000000000803F0000008000000000}
       OnProgress = DC_LightHolderProgress
       CubeSize = 1.000000000000000000
       object GLLightSource1: TGLLightSource

@@ -12,19 +12,19 @@ uses
   Vcl.Dialogs,
   Vcl.Imaging.Jpeg,
   
-  GLCadencer,
-  GLScene,
-  GLObjects,
-  GLTexture,
-  GLBehaviours,
-  GLSceneViewer,
-  GLGeomObjects,
-  GLColor,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses,
-  GLRenderContextInfo;
+  GLS.Cadencer,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Texture,
+  GLS.Behaviours,
+  GLS.SceneViewer,
+  GLS.GeomObjects,
+  GLS.Color,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.RenderContextInfo;
 
 type
   TForm1 = class(TForm)
@@ -53,8 +53,8 @@ implementation
 {$R *.DFM}
 
 uses
-  GLContext,
-  GLState,
+  GLS.Context,
+  GLS.State,
   GLS.Utils;
 
 procedure TForm1.FormCreate(Sender: TObject);

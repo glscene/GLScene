@@ -16,21 +16,21 @@ uses
   Vcl.StdCtrls,
 
   
-  GLScene,
-  Scene.PersistentClasses,
-  GLVectorFileObjects,
-  GLBSP,
-  GLMeshCSG,
-  GLSceneViewer,
-  GLObjects,
-  GLTexture,
-  GLFile3DS,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses,
-  GLState,
-  Scene.VectorGeometry,
+  GLS.Scene,
+  GLS.PersistentClasses,
+  GLS.VectorFileObjects,
+  GLS.MeshBSP,
+  GLS.MeshCSG,
+  GLS.SceneViewer,
+  GLS.Objects,
+  GLS.Texture,
+  GLS.File3DS,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.State,
+  GLS.VectorGeometry,
   GLS.Utils;
 
 type

@@ -30,6 +30,7 @@ object Form1: TForm1
     Buffer.FogEnable = True
     Buffer.Lighting = False
     FieldOfView = 152.260620117187500000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove

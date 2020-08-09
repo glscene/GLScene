@@ -11,25 +11,24 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
 
-  GLS.OpenGLx,
   Import.cgGL,
   GLSL.CgShader,
 
-  GLScene,
-  Scene.VectorTypes,
-  Scene.VectorGeometry,
-  GLObjects,
-  GLCadencer,
-  GLTexture,
-  GLSceneViewer,
-  GLVectorFileObjects,
-  GLAsyncTimer,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.VectorGeometry,
+  GLS.Objects,
+  GLS.Cadencer,
+  GLS.Texture,
+  GLS.SceneViewer,
+  GLS.VectorFileObjects,
+  GLS.AsyncTimer,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.Utils,
-  GLFileMD2;
+  GLS.FileMD2;
 
 type
   TForm1 = class(TForm)

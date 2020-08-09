@@ -11,25 +11,25 @@
 #include <ExtCtrls.hpp>
 #include <GIFImg.hpp>
 
-#include <GLLensFlare.hpp>
-#include <Scene.VectorGeometry.hpp>
-#include <GLSMBASS.hpp>
-#include <GLSound.hpp>
-#include <GLSceneViewer.hpp>
-#include <GLSkydome.hpp>
-#include <GLBitmapFont.hpp>
-#include <GLHUDObjects.hpp>
-#include <GLTexture.hpp>
-#include <GLCadencer.hpp>
-#include <GLHeightData.hpp>
-#include <GLObjects.hpp>
-#include <GLTerrainRenderer.hpp>
-#include <GLScene.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLMaterial.hpp"
-#include "GLFileMP3.hpp"
+#include "GLLensFlare.hpp"
+#include "GLS.VectorGeometry.hpp"
+#include "GLSM.BASS.hpp"
+#include "GLS.Sound.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.SkyDome.hpp"
+#include "GLS.BitmapFont.hpp"
+#include "GLS.HUDObjects.hpp"
+#include "GLS.Texture.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.HeightData.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.TerrainRenderer.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Material.hpp"
+#include "GLS.FileMP3.hpp"
 #include "Jpeg.hpp"
 #include "GLS.Utils.hpp"
 //---------------------------------------------------------------------------

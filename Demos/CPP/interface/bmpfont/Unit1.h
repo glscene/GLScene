@@ -8,16 +8,16 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLBitmapFont.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLHUDObjects.hpp"
-#include "GLScene.hpp"
-#include "GLObjects.hpp"
-#include "GLTeapot.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.BitmapFont.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.HUDObjects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.GeomObjects.hpp"
+#include "GLS.SceneViewer.hpp"
 #include "GLS.Utils.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

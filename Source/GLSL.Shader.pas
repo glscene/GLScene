@@ -16,17 +16,17 @@ uses
   System.Classes,
   System.SysUtils,
   
-  OpenGLTokens,
-  Scene.VectorGeometry,
-  Scene.VectorTypes,
-  GLTexture,
-  GLContext,
+  GLS.OpenGLTokens,
+  GLS.VectorGeometry,
+  GLS.VectorTypes,
+  GLS.Texture,
+  GLS.Context,
   GLSL.CustomShader,
-  GLRenderContextInfo,
-  GLTextureFormat,
+  GLS.RenderContextInfo,
+  GLS.TextureFormat,
   GLSL.ShaderParameter,
-  GLMaterial,
-  GLState;
+  GLS.Material,
+  GLS.State;
 
 
 type

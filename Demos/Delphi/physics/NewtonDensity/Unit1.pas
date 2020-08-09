@@ -14,23 +14,23 @@ uses
   Vcl.StdCtrls,
   Vcl.Samples.Spin,
   
-  GLScene,
-  Scene.VectorTypes,
-  GLS.NGDManager,
-  GLObjects,
-  Scene.PersistentClasses,
-  GLCoordinates,
-  GLSimpleNavigation,
-  GLCadencer,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLBaseClasses,
-  Scene.VectorGeometry,
-  GLHUDObjects,
-  GLBitmapFont,
-  GLWindowsFont,
+  GLS.Scene,
+  GLS.VectorTypes,
+  Physics.NGDManager,
+  GLS.Objects,
+  GLS.PersistentClasses,
+  GLS.Coordinates,
+  GLS.SimpleNavigation,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+ 
+  GLS.BaseClasses,
+  GLS.VectorGeometry,
+  GLS.HUDObjects,
+  GLS.BitmapFont,
+  GLS.WindowsFont,
   Import.NGD,
-  GLGeomObjects;
+  GLS.GeomObjects;
 
 type
   TForm1 = class(TForm)

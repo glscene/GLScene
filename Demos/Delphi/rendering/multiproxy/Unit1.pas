@@ -14,19 +14,19 @@ uses
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
   
-  GLCadencer,
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  GLParticles,
-  GLSceneViewer,
-  GLColor,
-  GLMultiProxy,
-  GLTexture,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses,
-  Scene.VectorGeometry;
+  GLS.Cadencer,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.Particles,
+  GLS.SceneViewer,
+  GLS.Color,
+  GLS.MultiProxy,
+  GLS.Texture,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.VectorGeometry;
 
 type
   TForm1 = class(TForm)

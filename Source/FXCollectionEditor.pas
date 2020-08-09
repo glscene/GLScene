@@ -26,11 +26,11 @@ uses
 
   DesignIntf,
 
-  Scene.Strings,
-  GLScene,
-  GLBehaviours,
-  GLMaterialEx,
-  XCollection;
+  GLS.Strings,
+  GLS.Scene,
+  GLS.Behaviours,
+  GLS.MaterialEx,
+  GLS.XCollection;
 
 type
   TXCollectionEditorForm = class(TForm)

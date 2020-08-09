@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Path Control'
-  ClientHeight = 378
-  ClientWidth = 497
+  ClientHeight = 480
+  ClientWidth = 705
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,20 +11,22 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  WindowState = wsMaximized
   OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 497
-    Height = 378
+    Width = 705
+    Height = 480
     Camera = GLCamera1
     Buffer.BackgroundColor = clAppWorkSpace
-    FieldOfView = 150.363708496093800000
+    FieldOfView = 156.463424682617200000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 497
+    ExplicitHeight = 378
   end
   object MoveBtn: TBitBtn
     Left = 0

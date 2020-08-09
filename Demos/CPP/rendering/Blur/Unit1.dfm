@@ -26,6 +26,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = clBackground
     Buffer.AmbientColor.Color = {0000000000000000000000000000803F}
     FieldOfView = 151.377914428710900000
+    PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
@@ -153,7 +154,7 @@ object Form1: TForm1
         Material.MaterialLibrary = GLMaterialLibrary1
         Material.LibMaterialName = 'marbletiles'
       end>
-    TexturePaths = '..\\..\\..\\..\\media\\'
+    TexturePaths = '..\\..\\..\\media\\'
     Left = 140
     Top = 64
   end

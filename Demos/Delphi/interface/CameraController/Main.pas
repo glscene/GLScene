@@ -18,24 +18,24 @@ uses
   Vcl.ComCtrls,
 
   
-  GLScene,
-  GLObjects,
-  GLSceneViewer,
-  GLVectorFileObjects,
-  GLCameraController,
-  GLFile3ds,
-  GLGeomObjects,
-  GLTexture,
-  GLCadencer,
-  GLMaterial,
-  GLCoordinates,
-  GLCrossPlatform,
-  Scene.VectorTypes,
-  GLBaseClasses,
-  Scene.VectorGeometry,
-  GLNavigator,
-  GLSmoothNavigator,
-  GLGraph;
+  GLS.Scene,
+  GLS.Objects,
+  GLS.SceneViewer,
+  GLS.VectorFileObjects,
+  GLS.CameraController,
+  GLS.File3DS,
+  GLS.GeomObjects,
+  GLS.Texture,
+  GLS.Cadencer,
+  GLS.Material,
+  GLS.Coordinates,
+ 
+  GLS.VectorTypes,
+  GLS.BaseClasses,
+  GLS.VectorGeometry,
+  GLS.Navigator,
+  GLS.SmoothNavigator,
+  GLS.Graph;
 
 type
   TForm1 = class(TForm)         
@@ -140,7 +140,6 @@ type
     procedure btSmoothOrbitClick(Sender: TObject);
     procedure btSmoothOrbitAndZoomClick(Sender: TObject);
   private
-     
     FGLCameraController : TGLCameraController;
     DextX, DextY, DextZ, Time, ZoomDistance: double;
     mx, my : Integer;
@@ -150,8 +149,7 @@ type
     function OnGetCameraPosition(const ASender: TGLNavigatorSmoothChangeVector): TVector;
     procedure OnSetCameraPosition(const ASender: TGLNavigatorSmoothChangeVector; const AValue: TVector);
   public
-     
-  end;
+end;
 
 var
   Form1: TForm1;

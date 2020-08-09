@@ -14,29 +14,29 @@ uses
   Vcl.StdCtrls,
   Vcl.ComCtrls,
 
-  GLTexture,
-  GLCadencer,
-  GLSceneViewer,
-  GLScene,
+  GLS.Texture,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  GLS.Scene,
   GLSL.PostEffects,
-  GLGraph,
+  GLS.Graph,
   GLS.Utils,
-  GLContext,
-  Scene.VectorGeometry,
-  GLGeomObjects,
-  GLCoordinates,
-  GLObjects,
-  GLVectorFileObjects,
-  GLSimpleNavigation,
-  GLCrossPlatform,
-  GLMaterial,
-  GLBaseClasses,
+  GLS.Context,
+  GLS.VectorGeometry,
+  GLS.GeomObjects,
+  GLS.Coordinates,
+  GLS.Objects,
+  GLS.VectorFileObjects,
+  GLS.SimpleNavigation,
+ 
+  GLS.Material,
+  GLS.BaseClasses,
   GLSL.PostShaders,
 
   GLSL.CgPostTransformationShader,
-  GLFileMD2,
-  GLFileMS3D,
-  GLFile3DS;
+  GLS.FileMD2,
+  GLS.FileMS3D,
+  GLS.File3DS;
 
 type
   TPostShaderDemoForm = class(TForm)

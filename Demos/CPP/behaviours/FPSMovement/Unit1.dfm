@@ -26,6 +26,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = clBlack
     Buffer.ShadeModel = smSmooth
     FieldOfView = 153.874877929687500000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end

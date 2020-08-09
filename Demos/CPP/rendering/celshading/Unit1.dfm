@@ -21,6 +21,7 @@ object Form1: TForm1
     Height = 420
     Camera = GLCamera1
     FieldOfView = 153.215011596679700000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
@@ -37,7 +38,6 @@ object Form1: TForm1
         TargetObject = GLDummyCube1
         Position.Coordinates = {00000000000000400000A0400000803F}
         Direction.Coordinates = {00000000000000000000803F00000000}
-        Up.Coordinates = {000000000000803F0000008000000000}
         object GLLightSource1: TGLLightSource
           ConstAttenuation = 1.000000000000000000
           LightStyle = lsOmni

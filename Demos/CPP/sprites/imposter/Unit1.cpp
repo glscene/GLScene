@@ -8,16 +8,16 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLSkydome"
-#pragma link "GLTeapot"
-#pragma link "GLSceneViewer"
-#pragma link "GLImposter"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SkyDome"
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.Imposter"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
@@ -96,8 +96,8 @@ void __fastcall TForm1::GLDirectOpenGL1Render(TObject *Sender, TGLRenderContextI
 
 {
    int x, y;
-   Scene.VectorGeometry::TVector camPos;
-   Scene.VectorGeometry::TVector pos;
+   Gls::Vectorgeometry::TVector camPos;
+   Gls::Vectorgeometry::TVector pos;
 
 /*   to do
    TImposter *imp;

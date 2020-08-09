@@ -14,20 +14,20 @@ uses
   Vcl.Dialogs,
   Vcl.Imaging.Jpeg,
 
-  GLScene,
-  GLObjects,
-  GLSceneViewer,
-  GLTexture,
-  Scene.VectorGeometry,
-  GLCadencer,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.SceneViewer,
+  GLS.Texture,
+  GLS.VectorGeometry,
+  GLS.Cadencer,
   GLSL.MultiMaterialShader,
   GLSL.TextureShaders,
-  GLMaterial,
-  GLCoordinates,
-  GLCrossPlatform,
+  GLS.Material,
+  GLS.Coordinates,
+ 
   GLS.Utils,
-  GLBaseClasses,
-  GLSimpleNavigation;
+  GLS.BaseClasses,
+  GLS.SimpleNavigation;
 
 type
   TForm1 = class(TForm)

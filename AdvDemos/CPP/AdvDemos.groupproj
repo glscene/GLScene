@@ -1,0 +1,84 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{2112950E-56B5-4A45-8B33-4FB1A4A107A1}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Archipelago\Splitter\Splitter.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Archipelago\Archipelago.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Christmas\Christmas.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="IntensityMesh\IntensityMesh.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PanoramViewer\PanoViewer.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Splitter">
+        <MSBuild Projects="Archipelago\Splitter\Splitter.cbproj"/>
+    </Target>
+    <Target Name="Splitter:Clean">
+        <MSBuild Projects="Archipelago\Splitter\Splitter.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Splitter:Make">
+        <MSBuild Projects="Archipelago\Splitter\Splitter.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Archipelago">
+        <MSBuild Projects="Archipelago\Archipelago.cbproj"/>
+    </Target>
+    <Target Name="Archipelago:Clean">
+        <MSBuild Projects="Archipelago\Archipelago.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Archipelago:Make">
+        <MSBuild Projects="Archipelago\Archipelago.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Christmas">
+        <MSBuild Projects="Christmas\Christmas.cbproj"/>
+    </Target>
+    <Target Name="Christmas:Clean">
+        <MSBuild Projects="Christmas\Christmas.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Christmas:Make">
+        <MSBuild Projects="Christmas\Christmas.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="IntensityMesh">
+        <MSBuild Projects="IntensityMesh\IntensityMesh.cbproj"/>
+    </Target>
+    <Target Name="IntensityMesh:Clean">
+        <MSBuild Projects="IntensityMesh\IntensityMesh.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="IntensityMesh:Make">
+        <MSBuild Projects="IntensityMesh\IntensityMesh.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="PanoViewer">
+        <MSBuild Projects="PanoramViewer\PanoViewer.cbproj"/>
+    </Target>
+    <Target Name="PanoViewer:Clean">
+        <MSBuild Projects="PanoramViewer\PanoViewer.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PanoViewer:Make">
+        <MSBuild Projects="PanoramViewer\PanoViewer.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Splitter;Archipelago;Christmas;IntensityMesh;PanoViewer"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Splitter:Clean;Archipelago:Clean;Christmas:Clean;IntensityMesh:Clean;PanoViewer:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Splitter:Make;Archipelago:Make;Christmas:Make;IntensityMesh:Make;PanoViewer:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

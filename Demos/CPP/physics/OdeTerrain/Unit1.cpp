@@ -8,23 +8,22 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLBitmapFont"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLHeightData"
-#pragma link "GLHUDObjects"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.BitmapFont"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.HeightData"
+#pragma link "GLS.HUDObjects"
 #pragma link "GLLensFlare"
-#pragma link "GLMaterial"
-#pragma link "GLNavigator"
-#pragma link "GLObjects"
-#pragma link "GLODECustomColliders"
-#pragma link "GLODEManager"
-#pragma link "GLScene"
-#pragma link "GLSkydome"
-#pragma link "GLTerrainRenderer"
-#pragma link "GLSceneViewer"
+#pragma link "GLS.Material"
+#pragma link "GLS.Navigator"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SkyDome"
+#pragma link "GLS.TerrainRenderer"
+#pragma link "GLS.SceneViewer"
+#pragma link "Physics.ODEManager"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -104,12 +103,12 @@ void __fastcall TForm1::FormKeyPress(TObject *Sender, System::WideChar &Key)
 
   TGLBaseSceneObject *dummy;
   TGLODEDynamic *dyn;
-  TODEElementClass *anElementClass;
+  TGLODEElementClass *anElementClass;
 
-  TODEElementSphere *elSphere;
-  TODEElementBox *elBox;
-  TODEElementCapsule *elCapsule;
-  TODEElementCylinder *elCylinder;
+  TGLODEElementSphere *elSphere;
+  TGLODEElementBox *elBox;
+  TGLODEElementCapsule *elCapsule;
+  TGLODEElementCylinder *elCylinder;
 
 
   dummy = ODEObjects->AddNewChild(__classid(TGLDummyCube));
@@ -147,22 +146,22 @@ void __fastcall TForm1::FormKeyPress(TObject *Sender, System::WideChar &Key)
   case '*':
     if(TerrainRenderer1->CLODPrecision > 20)
       TerrainRenderer1->CLODPrecision =
-		Round(TerrainRenderer1->CLODPrecision * 0.8);
-    break;
+		RoundInt(TerrainRenderer1->CLODPrecision * 0.8);
+	break;
   case '/':
 	if(TerrainRenderer1->CLODPrecision < 1000)
-      TerrainRenderer1->CLODPrecision =
-        Round(TerrainRenderer1->CLODPrecision * 1.2);
-    break;
+	  TerrainRenderer1->CLODPrecision =
+		RoundInt(TerrainRenderer1->CLODPrecision * 1.2);
+	break;
   case '8':
-    if(TerrainRenderer1->QualityDistance > 40)
+	if(TerrainRenderer1->QualityDistance > 40)
 	  TerrainRenderer1->QualityDistance =
-		Round(TerrainRenderer1->QualityDistance * 0.8);
+		RoundInt(TerrainRenderer1->QualityDistance * 0.8);
 	break;
   case '9':
     if(TerrainRenderer1->QualityDistance < 1000)
       TerrainRenderer1->QualityDistance =
-        Round(TerrainRenderer1->QualityDistance * 1.2);
+        RoundInt(TerrainRenderer1->QualityDistance * 1.2);
 	break;
   case 'n':
   case 'N':
@@ -218,16 +217,16 @@ void __fastcall TForm1::FormKeyPress(TObject *Sender, System::WideChar &Key)
   case 'l':	GLLensFlare->Visible = (!GLLensFlare->Visible) && SPSun->Visible;
 	break;
   case  '1' :
-	elSphere = (TODEElementSphere *) dyn->AddNewElement(__classid(TODEElementSphere));
+	elSphere = (TGLODEElementSphere *) dyn->AddNewElement(__classid(TGLODEElementSphere));
   break;
   case  '2' :
-	elBox = (TODEElementBox *) dyn->AddNewElement(__classid(TODEElementBox));
+	elBox = (TGLODEElementBox *) dyn->AddNewElement(__classid(TGLODEElementBox));
   break;
   case  '3' :
-	elCapsule = (TODEElementCapsule *) dyn->AddNewElement(__classid(TODEElementCapsule));
+	elCapsule = (TGLODEElementCapsule *) dyn->AddNewElement(__classid(TGLODEElementCapsule));
 	break;
   case  '4' :
-	elCylinder = (TODEElementCylinder *) dyn->AddNewElement(__classid(TODEElementCylinder));
+	elCylinder = (TGLODEElementCylinder *) dyn->AddNewElement(__classid(TGLODEElementCylinder));
 	break;
   }
   dyn->Manager = GLODEManager1;

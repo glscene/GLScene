@@ -8,17 +8,17 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLMultiProxy.hpp"
-#include "GLObjects.hpp"
-#include "GLParticles.hpp"
-#include "GLScene.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLTexture.hpp"
-#include "Scene.VectorGeometry.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.MultiProxy.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Particles.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Texture.hpp"
+#include "GLS.VectorGeometry.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
@@ -33,7 +33,7 @@ __published:	// IDE-managed Components
 	TRadioButton *RBLowRes;
 	TGLScene *GLScene;
 	TGLDummyCube *DCTarget;
-	TGLParticles *GLParticles;
+	TGLParticles *GLS.Particles;
 	TGLMultiProxy *MPSphere;
 	TGLDummyCube *DCReferences;
 	TGLSphere *SPHighRes;

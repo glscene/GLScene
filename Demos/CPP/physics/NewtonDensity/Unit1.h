@@ -8,19 +8,18 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 #include <Vcl.Samples.Spin.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLHUDObjects.hpp"
-#include "GLNGDManager.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLSimpleNavigation.hpp"
-#include "GLSceneViewer.hpp"
-#include "Import.NGD.hpp"
-#include "GLBitmapFont.hpp";
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.GeomObjects.hpp"
+#include "GLS.HUDObjects.hpp"
+#include "GLS.NGDManager.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SimpleNavigation.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.BitmapFont.hpp";
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

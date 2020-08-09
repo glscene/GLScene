@@ -24,10 +24,9 @@ uses
   Vcl.Samples.Spin,
   Vcl.Grids,
   
-  GLCrossPlatform,
-  GLBaseClasses,
-  GLGui,
-  Scene.Strings;
+  GLS.BaseClasses,
+  GLS.Gui,
+  GLS.Strings;
 
 type
   TGLLayoutEditorForm = class(TForm)

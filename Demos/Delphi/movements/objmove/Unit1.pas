@@ -14,25 +14,25 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
   
-  GLScene, 
-  GLObjects, 
-  GLGraph, 
-  GLCollision, 
-  GLTexture, 
-  Scene.VectorTypes,
-  Scene.VectorGeometry, 
-  GLVectorFileObjects, 
-  GLSceneViewer,
+  GLS.Scene, 
+  GLS.Objects, 
+  GLS.Graph, 
+  GLS.Collision, 
+  GLS.Texture, 
+  GLS.VectorTypes,
+  GLS.VectorGeometry, 
+  GLS.VectorFileObjects, 
+  GLS.SceneViewer,
   GLS.SpaceText, 
-  GLGeomObjects, 
-  GLColor, 
-  GLCrossPlatform,
-  GLCoordinates, 
-  GLBaseClasses, 
-  GLBitmapFont, 
-  GLWindowsFont,
-  GLHUDObjects, 
-  GLSimpleNavigation;
+  GLS.GeomObjects, 
+  GLS.Color, 
+ 
+  GLS.Coordinates, 
+  GLS.BaseClasses, 
+  GLS.BitmapFont, 
+  GLS.WindowsFont,
+  GLS.HUDObjects, 
+  GLS.SimpleNavigation;
 
 type
   TForm1 = class(TForm)

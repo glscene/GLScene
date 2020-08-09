@@ -7,15 +7,15 @@
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
-#include "GLGeomObjects.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLTexture.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLMaterial.hpp"
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.Texture.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Material.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

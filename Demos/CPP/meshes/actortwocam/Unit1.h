@@ -14,19 +14,19 @@
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Imaging.Jpeg.hpp>
 
-#include "GLScene.hpp"
-#include "GLCadencer.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLObjects.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLNavigator.hpp"
-#include "GLSkydome.hpp"
-#include "GLVectorFileObjects.hpp"
-#include "GLKeyboard.hpp"
-#include "Scene.VectorGeometry.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.GeomObjects.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Navigator.hpp"
+#include "GLS.SkyDome.hpp"
+#include "GLS.VectorFileObjects.hpp"
+#include "GLS.Keyboard.hpp"
+#include "GLS.VectorGeometry.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

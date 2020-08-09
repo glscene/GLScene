@@ -12,10 +12,10 @@ interface
 
 uses
   System.SysUtils,
-  GLS.Utils,
-  Scene.Logger,
-  Scene.Strings,
-  GLCrossPlatform;
+
+  GLS.Logger,
+  GLS.Strings,
+  GLS.Utils;
 
 type
 

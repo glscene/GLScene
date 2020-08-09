@@ -131,6 +131,7 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <LinkPackageStatics>GLScene_RT.lib;fmx.lib;xmlrtl.lib;vclimg.lib</LinkPackageStatics>
         <LinkPackageImports>rtl.bpi;vcl.bpi</LinkPackageImports>
+        <BT_BuildType>Debug</BT_BuildType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <Defines>DEBUG;$(Defines)</Defines>

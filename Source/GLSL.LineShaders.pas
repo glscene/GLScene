@@ -18,14 +18,14 @@ uses
   Winapi.OpenGL,
   System.Classes,
    
-  OpenGLTokens,
-  GLScene,
-  GLColor,
-  GLMaterial,
-  GLBaseClasses,
-  GLRenderContextInfo, 
-  GLState, 
-  GLContext;
+  GLS.OpenGLTokens,
+  GLS.Scene,
+  GLS.Color,
+  GLS.Material,
+  GLS.BaseClasses,
+  GLS.RenderContextInfo, 
+  GLS.State, 
+  GLS.Context;
 
 type
   TGLLineSettings = class(TGLUpdateAbleObject)
@@ -120,7 +120,7 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLTextureFormat;
+  GLS.TextureFormat;
 
 // ------------------
 // ------------------ TGLLineSettings ------------------

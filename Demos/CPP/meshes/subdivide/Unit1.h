@@ -14,26 +14,26 @@
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Imaging.jpeg.hpp>
 
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLMaterial.hpp"
-#include "GLScene.hpp"
-#include "GLVectorFileObjects.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
 
-#include "GLMeshUtils.hpp"
-#include "Scene.VectorGeometry.hpp"
+#include "GLS.Material.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.VectorFileObjects.hpp"
+#include "GLS.SceneViewer.hpp"
 
-#include "GLFileTGA.hpp"
-#include "GLFileObj.hpp"
-#include "GLFile3DS.hpp"
-#include "GLFileMD2.hpp"
-#include "GLFileSMD.hpp"
+#include "GLS.MeshUtils.hpp"
+#include "GLS.VectorGeometry.hpp"
+
+#include "GLS.FileTGA.hpp"
+#include "GLS.FileObj.hpp"
+#include "GLS.File3DS.hpp"
+#include "GLS.FileMD2.hpp"
+#include "GLS.FileSMD.hpp"
 
 #include "GLS.Utils.hpp"
-#include "GLMeshUtils.hpp"
+#include "GLS.MeshUtils.hpp"
 
 
 //---------------------------------------------------------------------------

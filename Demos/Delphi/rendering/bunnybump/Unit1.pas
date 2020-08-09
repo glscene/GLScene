@@ -15,23 +15,23 @@ uses
   Vcl.StdCtrls,
   Vcl.Imaging.Jpeg,
   
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  GLTexture,
-  GLS.ShaderBump,
-  GLVectorFileObjects,
-  GLCadencer,
-  GLSceneViewer,
-  GLAsyncTimer,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses,
-  Scene.VectorGeometry,
-  GLContext,
-  GLFileOBJ,
-  GLS.Uti, GLS.ShaderBumpls;
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.Texture,
+  GLS.VectorFileObjects,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  GLS.AsyncTimer,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.VectorGeometry,
+  GLS.Context,
+  GLS.FileOBJ,
+  GLS.Utils,
+  GLSL.BumpShaders;
 
 type
   TForm1 = class(TForm)

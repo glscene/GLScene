@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 176
   Caption = 'Camera Controller'
   ClientHeight = 591
-  ClientWidth = 738
+  ClientWidth = 1005
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,19 +11,19 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  WindowState = wsMaximized
   OnClose = FormClose
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
-    Left = 292
+    Left = 559
     Top = 0
     Width = 446
     Height = 556
     Align = alRight
     TabOrder = 0
+    ExplicitLeft = 292
     object Panel2: TPanel
       Left = 6
       Top = 9
@@ -521,11 +521,11 @@ object Form1: TForm1
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 292
+    Width = 559
     Height = 556
     Camera = GLCamera
     VSync = vsmSync
-    FieldOfView = 101.165214538574200000
+    FieldOfView = 133.304656982421900000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -615,11 +615,12 @@ object Form1: TForm1
   object Panel6: TPanel
     Left = 0
     Top = 556
-    Width = 738
+    Width = 1005
     Height = 35
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 3
+    ExplicitWidth = 738
     object Label15: TLabel
       Left = 4
       Top = 6

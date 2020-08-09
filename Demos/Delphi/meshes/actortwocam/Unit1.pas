@@ -15,26 +15,26 @@ uses
   Vcl.ComCtrls,
   Vcl.Forms,
 
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  GLCadencer,
-  GLVectorFileObjects,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.Cadencer,
+  GLS.VectorFileObjects,
   StdCtrls,
   Graphics,
-  GLSkydome,
-  GLSceneViewer,
-  GLNavigator,
-  GLFileMD2,
-  GLFile3DS,
-  GLGeomObjects,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses,
+  GLS.SkyDome,
+  GLS.SceneViewer,
+  GLS.Navigator,
+  GLS.FileMD2,
+  GLS.File3DS,
+  GLS.GeomObjects,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.Utils,
-  Scene.VectorGeometry,
-  GLKeyboard,
-  Scene.PersistentClasses;
+  GLS.VectorGeometry,
+  GLS.Keyboard,
+  GLS.PersistentClasses;
 
 
 type

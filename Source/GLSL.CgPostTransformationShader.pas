@@ -18,12 +18,12 @@ uses
   System.Classes,
   System.SysUtils,
   
-  GLTexture,
-  GLCadencer, 
-  GLContext, 
-  GLScene, 
-  GLRenderContextInfo,
-  GLTextureFormat,
+  GLS.Texture,
+  GLS.Cadencer, 
+  GLS.Context, 
+  GLS.Scene, 
+  GLS.RenderContextInfo,
+  GLS.TextureFormat,
 
   Import.Cg,
   Import.CgGL,

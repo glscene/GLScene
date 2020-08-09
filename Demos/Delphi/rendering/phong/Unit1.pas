@@ -12,18 +12,20 @@ uses
   Vcl.Dialogs,
   Vcl.StdCtrls,
   
-  GLScene, GLObjects,
-  GLTeapot,
-  GLTexture,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.GeomObjects,
+  GLS.Texture,
+  GLS.SceneViewer,
+  GLS.AsyncTimer,
+  GLS.Cadencer,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLSL.AsmShader,
-  GLSceneViewer,
-  GLAsyncTimer, GLCadencer,
-  GLS.ShaderCustom,
-  GLCrossPlatform,
-  GLMaterial, GLCoordinates,
-  GLBaseClasses,
-  GLSL.AsmShader,
-  GLSL.AsmShader;
+  GLSL.CustomShader,
+  GLSL.PhongShader;
 
 type
   TForm1 = class(TForm)
@@ -47,9 +49,7 @@ type
     procedure GLCadencer1Progress(Sender: TObject; const deltaTime,
       newTime: Double);
   private
-     
   public
-     
     mx, my : Integer;
   end;
 

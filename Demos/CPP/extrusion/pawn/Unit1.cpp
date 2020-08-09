@@ -7,13 +7,13 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLExtrusion"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLSceneViewer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Extrusion"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------

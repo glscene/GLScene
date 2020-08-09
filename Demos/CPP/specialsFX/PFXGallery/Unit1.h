@@ -9,21 +9,21 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Graphics.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLBehaviours.hpp"
-#include "GLBitmapFont.hpp"
-#include "GLBlur.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLHUDObjects.hpp"
-#include "GLNavigator.hpp"
-#include "GLObjects.hpp"
-#include "GLParticleFX.hpp"
-#include "GLPerlinPFX.hpp"
-#include "GLScene.hpp"
-#include "GLSpaceText.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Behaviours.hpp"
+#include "GLS.BitmapFont.hpp"
+#include "GLS.Blur.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.HUDObjects.hpp"
+#include "GLS.Navigator.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.ParticleFX.hpp"
+#include "GLS.PerlinPFX.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SpaceText.hpp"
+#include "GLS.SceneViewer.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

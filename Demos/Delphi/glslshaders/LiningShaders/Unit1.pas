@@ -12,16 +12,16 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
 
-  GLScene,
-  GLObjects,
-  GLSceneViewer,
-  GLTexture,
-  GLGeomObjects,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.SceneViewer,
+  GLS.Texture,
+  GLS.GeomObjects,
   GLSL.LineShaders,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses;
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

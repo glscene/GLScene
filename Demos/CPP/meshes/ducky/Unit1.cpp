@@ -4,11 +4,11 @@
 #pragma hdrstop
 
 #include "Unit1.h"
-#include "GLParametricSurfaces.hpp"
+#include "GLS.ParametricSurfaces.hpp"
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLFileNURBS"
+#pragma link "GLS.FileNURBS"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 int mx, my;

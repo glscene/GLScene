@@ -8,20 +8,19 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLGeomObjects"
-#pragma link "GLHUDObjects"
-#pragma link "GLNGDManager"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLSimpleNavigation"
-#pragma link "GLSceneViewer"
-#pragma link "Import.NGD"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
 
-#pragma link "GLBitmapFont"
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.HUDObjects"
+#pragma link "GLS.NGDManager"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SimpleNavigation"
+#pragma link "GLS.SceneViewer"
+
+#pragma link "GLS.BitmapFont"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
@@ -30,9 +29,9 @@ TForm1 *Form1;
 int __cdecl BuoyancyPlaneCallback(const int collisionID, void *context,
   const PNGDFloat globalSpaceMatrix, PNGDFloat globalSpacePlane)
 {
-  Scene.VectorGeometry::TMatrix *BodyMatrix;
-  Scene.VectorGeometry::TVector PlaneEquation;
-  PVector pv;
+  Gls::Vectorgeometry::TMatrix *BodyMatrix;
+  Gls::Vectorgeometry::TVector PlaneEquation;
+  Gls::Vectorgeometry::PVector pv;
   TForm1 *MyForm;
 
   // Get the matrix of the actual body
@@ -100,7 +99,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
 void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y)
 {
-  if (Button = TMouseButton(Glcrossplatform::mbMiddle))
+  if (Button = TMouseButton(mbMiddle))
 	Shoot();
 }
 //---------------------------------------------------------------------------
@@ -108,7 +107,7 @@ void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Bu
 void TForm1::MyForceAndTorqueDensity(const PNewtonBody cbody,
 	  NGDFloat timestep, int threadIndex)
 {
-  Scene.VectorGeometry::TVector worldGravity;
+  Gls::Vectorgeometry::TVector worldGravity;
   TGLNGDDynamic  *NGDDyn;
   float fluidDensity, fluidLinearViscosity, fluidAngularViscosity;
 

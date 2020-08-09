@@ -10,18 +10,18 @@
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "GLBaseClasses.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLMaterial.hpp"
-#include "GLScene.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLGraph.hpp"
-#include "GLObjects.hpp"
-#include "GLVectorFileObjects.hpp"
-#include "GLS.CgShader.hpp"
-#include "GLFile3DS.hpp"
+#include "GLS.BaseClasses.hpp"
+
+#include "GLS.Material.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+#include "GLS.Graph.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.VectorFileObjects.hpp"
+#include "GLSL.CgShader.hpp"
+#include "GLS.File3DS.hpp"
 #include "Import.Cg.hpp"
 #include "Import.CgGL.hpp"
 

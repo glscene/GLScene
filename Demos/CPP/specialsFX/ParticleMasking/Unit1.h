@@ -8,21 +8,22 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
-#include "GLAsyncTimer.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLBitmapFont.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLEParticleMasksManager.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLMaterial.hpp"
-#include "GLObjects.hpp"
-#include "GLParticleFX.hpp"
-#include "GLScene.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLWindowsFont.hpp"
-#include "GLAsyncTimer.hpp"
+
+#include "GLS.AsyncTimer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.BitmapFont.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.EParticleMasksManager.hpp"
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Material.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.ParticleFX.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.WindowsFont.hpp"
+
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

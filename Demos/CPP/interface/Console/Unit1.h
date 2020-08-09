@@ -9,19 +9,19 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "GLScene.hpp"
-#include "GLObjects.hpp"
-#include "GLCadencer.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLTexture.hpp"
-#include "GLBitmapFont.hpp"
-#include "GLWindowsFont.hpp"
-#include "GLBehaviours.hpp"
-#include "GLConsole.hpp"
-#include "GLCoordinates.hpp"
-#include "GLSimpleNavigation.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+
+#include "GLS.Texture.hpp"
+#include "GLS.BitmapFont.hpp"
+#include "GLS.WindowsFont.hpp"
+#include "GLS.Behaviours.hpp"
+#include "GLS.Console.hpp"
+#include "GLS.Coordinates.hpp"
+#include "GLS.SimpleNavigation.hpp"
 #include "GLS.Utils.hpp"
 
 //---------------------------------------------------------------------------

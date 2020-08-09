@@ -12,20 +12,20 @@ uses
   Vcl.Dialogs,
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
-  GLScene,
-  GLObjects,
-  GLCoordinates,
-  GLSimpleNavigation,
-  GLCadencer,
-  GLSceneViewer,
-  GLColor,
-  GLCrossPlatform,
-  GLBaseClasses,
-  GLS.NGDManager,
-  GLGeomObjects,
-  GLBitmapFont,
-  GLWindowsFont,
-  GLHUDObjects;
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Coordinates,
+  GLS.SimpleNavigation,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  GLS.Color,
+ 
+  GLS.BaseClasses,
+  Physics.NGDManager,
+  GLS.GeomObjects,
+  GLS.BitmapFont,
+  GLS.WindowsFont,
+  GLS.HUDObjects;
 
 type
   TForm1 = class(TForm)

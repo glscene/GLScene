@@ -30,6 +30,7 @@ object Form1: TForm1
     Buffer.FogEnable = True
     Buffer.Lighting = False
     FieldOfView = 149.276763916015600000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
@@ -61,6 +62,7 @@ object Form1: TForm1
       TilesPerTexture = 1.000000000000000000
       QualityDistance = 50.000000000000000000
       CLODPrecision = 20
+      ContourWidth = 0
     end
   end
   object Timer1: TTimer

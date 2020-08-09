@@ -16,8 +16,8 @@ uses
   VCL.StdCtrls,
   VCL.Buttons,
   VCL.Controls,
-  GLSceneViewer,
-  GLMaterial,
+  GLS.SceneViewer,
+  GLS.Material,
   FRMaterialPreview;
 
 type

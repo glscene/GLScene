@@ -29,6 +29,7 @@ object Form1: TForm1
     Buffer.AntiAliasing = aa4xHQ
     Buffer.ShadeModel = smSmooth
     FieldOfView = 137.490020751953100000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end

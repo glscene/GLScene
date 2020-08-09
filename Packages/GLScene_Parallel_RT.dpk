@@ -49,7 +49,7 @@ contains
   GLS.CUDAParallelPrimitives in '..\Source\GLS.CUDAParallelPrimitives.pas',
   GLS.CUDA in '..\Source\GLS.CUDA.pas',
   GLS.CUDAApi in '..\Source\GLS.CUDAApi.pas',
-  GLFilePGM in '..\Source\GLFilePGM.pas',
+  GLS.FilePGM in '..\Source\GLS.FilePGM.pas',
   Import.OpenCL in '..\Source\Import.OpenCL.pas',
   Import.OpenCL_GL in '..\Source\Import.OpenCL_GL.pas',
   Import.OpenCL_Platform in '..\Source\Import.OpenCL_Platform.pas';

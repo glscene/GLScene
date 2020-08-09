@@ -15,16 +15,16 @@
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Imaging.jpeg.hpp>
 
-#include "GLScene.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLObjects.hpp"
-#include "GLVectorFileObjects.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLFileMD2.hpp"
-#include "GLBaseClasses.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.VectorFileObjects.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.FileMD2.hpp"
+#include "GLS.BaseClasses.hpp"
 #include "GLS.Utils.hpp"
 
 //---------------------------------------------------------------------------

@@ -13,20 +13,19 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
 
-  
-  GLScene,
-  GLObjects,
-  GLCadencer,
-  GLSceneViewer,
-  GLBaseClasses,
-  GLCrossPlatform,
-  GLTexture,
-  GLBitmapFont,
-  GLWindowsFont,
-  GLBehaviours,
-  GLConsole,
-  GLCoordinates,
-  GLSimpleNavigation,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  GLS.BaseClasses,
+ 
+  GLS.Texture,
+  GLS.BitmapFont,
+  GLS.WindowsFont,
+  GLS.Behaviours,
+  GLS.Console,
+  GLS.Coordinates,
+  GLS.SimpleNavigation,
   GLS.Utils;
 
 type

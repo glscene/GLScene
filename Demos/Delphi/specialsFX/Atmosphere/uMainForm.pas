@@ -11,21 +11,21 @@ uses
   Vcl.ExtCtrls,
   Vcl.Imaging.Jpeg,
 
-  GLScene,
-  GLObjects,
-  GLCadencer,
-  GLLensFlare,
-  GLSceneViewer,
-  GLTexture,
-  GLSkydome,
-  Scene.VectorGeometry,
-  GLCrossPlatform,
-  GLAtmosphere,
-  GLSimpleNavigation,
-  GLBehaviours,
-  GLCoordinates,
-  GLBaseClasses,
-  GLColor;
+  GLS.VectorGeometry,
+  GLS.BaseClasses,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Cadencer,
+  GLS.LensFlare,
+  GLS.SceneViewer,
+  GLS.Texture,
+  GLS.Skydome,
+ 
+  GLS.Atmosphere,
+  GLS.SimpleNavigation,
+  GLS.Behaviours,
+  GLS.Coordinates,
+  GLS.Color, GLS.SimpleNavigation, GLLensFlare;
 
 type
   TMainForm = class(TForm)

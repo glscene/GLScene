@@ -22,6 +22,7 @@ object Form1: TForm1
     Camera = GLCamera1
     Buffer.BackgroundColor = clSilver
     FieldOfView = 51.048950195312500000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
@@ -186,7 +187,7 @@ object Form1: TForm1
       end
       object Disk1: TGLDisk
         Material.Texture.ImageClassName = 'TGLPicFileImage'
-        Material.Texture.Image.PictureFileName = '..\\..\\..\\..\\media\\clover.jpg'
+        Material.Texture.Image.PictureFileName = '..\\..\\..\\media\\clover.jpg'
         Material.Texture.MinFilter = miLinear
         Material.Texture.Disabled = False
         Position.Coordinates = {0000000000000000000080BF0000803F}

@@ -25,12 +25,12 @@ uses
   Vcl.Menus,
   Vcl.Imaging.jpeg,
 
-  OpenGLTokens,
-  OpenGLAdapter,
-  GLScene,
-  GLSceneViewer,
-  GLContext,
-  GLCrossPlatform;
+  GLS.OpenGLTokens,
+  GLS.OpenGLAdapter,
+  GLS.Scene,
+  GLS.SceneViewer,
+  GLS.Context,
+  GLS.Utils;
 
 type
 

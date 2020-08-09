@@ -14,10 +14,18 @@ uses
   Vcl.StdCtrls,
   Vcl.Imaging.Jpeg,
 
-  
-  GLScene, GLObjects, GLCadencer, GLVectorFileObjects,
-  GLSceneViewer, GLTexture, GLCrossPlatform, GLMaterial,
-  GLCoordinates, GLBaseClasses, GLRenderContextInfo, GLFileMD2;
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Cadencer,
+  GLS.VectorFileObjects,
+  GLS.SceneViewer,
+  GLS.Texture,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.RenderContextInfo,
+  GLS.FileMD2;
 
 type
   TForm1 = class(TForm)
@@ -67,10 +75,10 @@ var
   MediaPath : String;
 begin
   MediaPath := ExtractFilePath(ParamStr(0));
-  I := Pos(UpperCase('Samples'), UpperCase(MediaPath));
+  I := Pos(UpperCase('Demos'), UpperCase(MediaPath));
   if (I <> 0) then
   begin
-    Delete(MediaPath, I+8, Length(MediaPath)-I);
+    Delete(MediaPath, I+5, Length(MediaPath)-(I+5));
     MediaPath := MediaPath+'Media\';
     SetCurrentDir(MediaPath);
   end;

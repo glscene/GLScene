@@ -16,18 +16,18 @@
 #include <ExtDlgs.hpp>
 #include <Menus.hpp>
 
-#include <GLVectorFileObjects.hpp>
-#include <GLTexture.hpp>
-#include <GLTree.hpp>
-#include <GLSceneViewer.hpp>
-#include <GLObjects.hpp>
-#include <GLScene.hpp>
-#include <ComCtrls.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLMaterial.hpp"
-#include "GLFileTGA.hpp"
+#include "GLS.VectorFileObjects.hpp"
+#include "GLS.Texture.hpp"
+#include "GLS.Tree.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "ComCtrls.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Material.hpp"
+#include "GLS.FileTGA.hpp"
 #include "GLS.Utils.hpp"
 
 

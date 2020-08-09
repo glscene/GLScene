@@ -12,21 +12,21 @@ uses
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
 
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  Scene.PersistentClasses,
-  GLTexture,
-  Scene.VectorGeometry,
-  GLCadencer,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses,
-  GLSimpleNavigation,
-  GLProcTextures,
-  GLS.Utils;
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.PersistentClasses,
+  GLS.Texture,
+  GLS.VectorGeometry,
+
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.ProcTextures,
+  GLS.Utils,
+  GLS.SimpleNavigation,
+  GLS.Cadencer,
+  GLS.SceneViewer;
 
 type
   TForm1 = class(TForm)
@@ -49,7 +49,9 @@ type
 var
   Form1: TForm1;
 
+//--------------------------------
 implementation
+//--------------------------------
 
 {$R *.DFM}
 

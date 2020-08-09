@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{1E479A87-445A-42C1-BACF-6850D23FDA21}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Splitter\Splitter.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Archipelago.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Splitter">
+        <MSBuild Projects="Splitter\Splitter.dproj"/>
+    </Target>
+    <Target Name="Splitter:Clean">
+        <MSBuild Projects="Splitter\Splitter.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Splitter:Make">
+        <MSBuild Projects="Splitter\Splitter.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Archipelago">
+        <MSBuild Projects="Archipelago.dproj"/>
+    </Target>
+    <Target Name="Archipelago:Clean">
+        <MSBuild Projects="Archipelago.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Archipelago:Make">
+        <MSBuild Projects="Archipelago.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Splitter;Archipelago"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Splitter:Clean;Archipelago:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Splitter:Make;Archipelago:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

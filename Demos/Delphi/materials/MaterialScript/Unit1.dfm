@@ -93,6 +93,7 @@ object Form1: TForm1
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
     FieldOfView = 152.061691284179700000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 1
   end

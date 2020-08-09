@@ -11,9 +11,16 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
   
-  GLScene, GLObjects, GLGeomObjects, GLTexture, GLMultiPolygon,
-  Scene.VectorGeometry,  GLSceneViewer, GLCrossPlatform, GLMaterial,
-  GLCoordinates, GLBaseClasses, Scene.VectorTypes;
+  GLS.VectorTypes,
+  GLS.BaseClasses, 
+  GLS.VectorGeometry,
+  GLS.Scene, GLS.Objects, 
+  GLS.GeomObjects, 
+  GLS.Texture, 
+  GLS.MultiPolygon,
+  GLS.SceneViewer, 
+  GLS.Material,
+  GLS.Coordinates,;
 
 type
   TVektor = record

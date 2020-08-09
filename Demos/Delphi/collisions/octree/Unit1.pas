@@ -12,20 +12,20 @@ uses
   Vcl.StdCtrls,
 
   
-  GLScene,
-  GLVectorFileObjects,
-  GLObjects,
-  GLSceneViewer,
-  Scene.VectorTypes,
-  GLCadencer,
-  GLGeomObjects,
-  GLCrossPlatform,
-  GLCoordinates,
+  GLS.Scene,
+  GLS.VectorFileObjects,
+  GLS.Objects,
+  GLS.SceneViewer,
+  GLS.VectorTypes,
+  GLS.Cadencer,
+  GLS.GeomObjects,
+ 
+  GLS.Coordinates,
   GLS.Utils,
-  GLBaseClasses,
-  Scene.VectorGeometry,
-  Scene.VectorLists,
-  GLFile3DS;
+  GLS.BaseClasses,
+  GLS.VectorGeometry,
+  GLS.VectorLists,
+  GLS.File3DS;
 
 type
   TForm1 = class(TForm)

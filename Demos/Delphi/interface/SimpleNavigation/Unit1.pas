@@ -13,14 +13,14 @@ uses
   Vcl.Dialogs,
 
   
-  GLScene,
-  GLObjects,
-  GLSceneViewer,
-  GLCadencer,
-  GLSimpleNavigation,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses;
+  GLS.Scene,
+  GLS.Objects,
+  GLS.SceneViewer,
+  GLS.Cadencer,
+  GLS.SimpleNavigation,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

@@ -16,15 +16,15 @@ uses
   Vcl.ExtDlgs,
   Vcl.Imaging.Jpeg,
 
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  GLTexture,
-  GLSceneViewer,
-  GLMaterial,
-  GLCoordinates,
-  GLCrossPlatform,
-  GLBaseClasses,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.Texture,
+  GLS.SceneViewer,
+  GLS.Material,
+  GLS.Coordinates,
+ 
+  GLS.BaseClasses,
   GLS.Utils;
 
 type

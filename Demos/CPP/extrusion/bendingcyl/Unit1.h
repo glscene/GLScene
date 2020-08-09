@@ -9,16 +9,16 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLExtrusion.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "Scene.VectorGeometry.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLSpline.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Extrusion.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.VectorGeometry.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Spline.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

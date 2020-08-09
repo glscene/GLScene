@@ -17,8 +17,15 @@ uses
   Vcl.Buttons,
 
   
-  GLScene, GLObjects, GLTexture, GLHUDObjects, GLCadencer, GLSceneViewer,
-  GLProcTextures, GLCrossPlatform, GLCoordinates, GLBaseClasses;
+  GLS.Scene, 
+  GLS.Objects, 
+  GLS.Texture, 
+  GLS.HUDObjects, 
+  GLS.Cadencer, 
+  GLS.SceneViewer,
+  GLS.ProcTextures, 
+  GLS.Coordinates, 
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)
@@ -80,7 +87,7 @@ implementation
 
 {$R *.DFM}
 
-uses Jpeg, GLTextureFormat;
+uses Jpeg, GLS.TextureFormat;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin

@@ -12,17 +12,17 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLTeapot.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.GeomObjects.hpp"
+#include "GLS.SceneViewer.hpp"
 #include "Jpeg.hpp"
-#include "GLColor.hpp"
-#include "GLContext.hpp"
-#include "GLTexture.hpp"
+#include "GLS.Color.hpp"
+#include "GLS.Context.hpp"
+#include "GLS.Texture.hpp"
 
 
 //---------------------------------------------------------------------------

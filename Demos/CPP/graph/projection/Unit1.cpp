@@ -8,15 +8,15 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLGeomObjects"
-#pragma link "GLGraph"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLSceneViewer"
-#pragma link "GLBaseClasses"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.Graph"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.BaseClasses"
 
 #pragma resource "*.dfm"
 TForm1 *Form1;
@@ -39,9 +39,9 @@ void __fastcall TForm1::DirectOpenGLRender(TObject *Sender, TGLRenderContextInfo
 
 {
    int i;
-   Scene.VectorGeometry::TMatrix mat;
-   Scene.VectorGeometry::TVector p, pProj;
-   Scene.VectorGeometry::TVector planePoint, planeNormal;
+   Gls::Vectorgeometry::TMatrix mat;
+   Gls::Vectorgeometry::TVector p, pProj;
+   Gls::Vectorgeometry::TVector planePoint, planeNormal;
    THmgPlane plane;
 
    // Here we recover our plane point and normal...

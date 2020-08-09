@@ -6,19 +6,19 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLGeomObjects"
-#pragma link "GLMaterial"
-#pragma link "GLObjects"
-#pragma link "GLProxyObjects"
-#pragma link "GLScene"
-#pragma link "GLVectorFileObjects"
-#pragma link "GLSceneViewer"
-#pragma link "GLFileSMD"
-#pragma link "GLBaseClasses"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.Material"
+#pragma link "GLS.Objects"
+#pragma link "GLS.ProxyObjects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.VectorFileObjects"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.FileSMD"
+#pragma link "GLS.BaseClasses"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -69,7 +69,10 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
 
 void __fastcall TForm1::DoRaycastStuff()
 {
-   Scene.VectorGeometry::TVector rayStart, rayVector, iPoint, iNormal;
+   Gls::Vectorgeometry::TVector rayStart;
+   Gls::Vectorgeometry::TVector rayVector;
+   Gls::Vectorgeometry::TVector iPoint;
+   Gls::Vectorgeometry::TVector iNormal;
 
    SetVector(rayStart, GLCamera1->AbsolutePosition);
    SetVector(rayVector, GLSceneViewer1->Buffer->ScreenToVector(
@@ -102,8 +105,8 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
 		  const double newTime)
 {
 	 // Align object to hand
-	 GLArrowLine1->Matrix  = GLActorProxy1->BoneMatrix("Bip01 R Finger1");
-	 GLArrowLine2->Matrix  = GLActorProxy2->BoneMatrix("Bip01 R Finger1");
+	 * GLArrowLine1->Matrix  = GLActorProxy1->BoneMatrix("Bip01 R Finger1");
+	 * GLArrowLine2->Matrix  = GLActorProxy2->BoneMatrix("Bip01 R Finger1");
 
 	 // turn actors
 	 if (cbActorsAreTurning->Checked)

@@ -11,20 +11,19 @@ uses
   Vcl.ExtCtrls,
   Vcl.Controls,
 
-  GLScene,
-  Scene.VectorTypes,
-  GLContext,
-  GLSceneViewer,
-  GLCadencer,
-  GLObjects,
-  GLTexture,
-  GLHUDObjects,
-  GLPolyhedron,
-  GLGeomObjects,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Context,
+  GLS.SceneViewer,
+  GLS.Cadencer,
+  GLS.Objects,
+  GLS.Texture,
+  GLS.HUDObjects,
+  GLS.GeomObjects,
   GLS.Utils,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses, GLVectorFileObjects;
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses, GLS.VectorFileObjects;
 
 type
   TForm1 = class(TForm)

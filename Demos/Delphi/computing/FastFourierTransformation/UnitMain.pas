@@ -18,11 +18,11 @@ uses
 
 
   GLS.Utils,
-  GLFilePGM,
-  GLGraphics,
+  GLS.FilePGM,
+  GLS.Graphics,
   GLS.CUDAUtility,
   GLS.CUDADataAccess,
-  Scene.VectorTypes,
+  GLS.VectorTypes,
   CPUFFT,
   GLS.CUDAFFTPlan,
   GLS.CUDA,

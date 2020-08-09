@@ -13,9 +13,16 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
   Vcl.Imaging.Jpeg,
-  
-  GLTexture, GLScene, GLObjects, GLSceneViewer, GLMaterialScript, GLCadencer,
-  GLMaterial, GLCoordinates, GLCrossPlatform, GLBaseClasses;
+
+  GLS.Texture,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.SceneViewer,
+  GLS.MaterialScript,
+  GLS.Cadencer,
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)
@@ -42,17 +49,27 @@ type
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
-     
+
   public
-     
+
   end;
 
 var
   Form1: TForm1;
 
+//---------------------------------
 implementation
+//---------------------------------
 
 {$R *.dfm}
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+   SetCurrentDir(ExtractFilePath(ParamStr(0)));
+   GLMaterialScripter1.DebugMemo := Memo2;;
+   GLCube1.Material.MaterialLibrary := GLMaterialLibrary1;
+end;
+
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
@@ -70,13 +87,5 @@ begin
    GLMaterialScripter1.CompileScript;
    GLCube1.Material.LibMaterialName := 'TestMat';
 end;
-
-procedure TForm1.FormCreate(Sender: TObject);
-begin
-   GLMaterialScripter1.DebugMemo := Memo2;;
-   GLCube1.Material.MaterialLibrary := GLMaterialLibrary1;
-   SetCurrentDir(ExtractFilePath(ParamStr(0)));
-end;
-
 
 end.

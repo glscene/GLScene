@@ -7,28 +7,31 @@
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include <GLFileZLIB.hpp>
+#include <GLS.FileZLIB.hpp>
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLCustomShader.hpp"
-#include "GLFBORenderer.hpp"
-#include "GLMaterial.hpp"
-#include "GLObjects.hpp"
-#include "GLSArchiveManager.hpp"
-#include "GLScene.hpp"
-#include "GLSimpleNavigation.hpp"
-#include "GLSLShader.hpp"
-#include "GLVectorFileObjects.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLFileMS3D.hpp"
-#include "GLFileJPEG.hpp"
-#include "GLFilePNG.hpp"
-#include "GLCompositeImage.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.FBORenderer.hpp"
+#include "GLS.Material.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.ArchiveManager.hpp"
+#include "GLS.Scene.hpp"
+
+#include "GLS.VectorGeometry.hpp"
+
+#include "GLS.SimpleNavigation.hpp"
+#include "GLS.VectorFileObjects.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.FileMS3D.hpp"
+#include "GLS.FileJPEG.hpp"
+#include "GLS.FilePNG.hpp"
+#include "GLS.CompositeImage.hpp"
+#include "GLSL.CustomShader.hpp"
+#include "GLSL.Shader.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

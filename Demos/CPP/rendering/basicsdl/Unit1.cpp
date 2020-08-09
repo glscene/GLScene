@@ -7,12 +7,11 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma classgroup "System.Classes.TPersistent"
-#pragma link "GLBaseClasses"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLScene"
-#pragma link "GLTeapot"
-#pragma link "OpenGLx"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Scene"
+#pragma link "GLS.GeomObjects"
 
 #pragma resource "*.dfm"
 TDataModule1 *DataModule1;

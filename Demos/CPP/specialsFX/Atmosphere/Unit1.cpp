@@ -6,16 +6,16 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLScene"
-#pragma link "GLObjects"
-#pragma link "GLCadencer"
-#pragma link "GLSceneViewer"
-#pragma link "GLBaseClasses"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
+#pragma link "GLS.Scene"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+
 #pragma link "GLLensFlare"
-#pragma link "GLSimpleNavigation"
-#pragma link "GLSkydome"
+#pragma link "GLS.SimpleNavigation"
+#pragma link "GLS.SkyDome"
 #pragma link "GLAtmosphere"
 #pragma link "GLLensFlare"
 

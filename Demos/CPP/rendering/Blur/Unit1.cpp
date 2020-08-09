@@ -6,14 +6,14 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLMaterial"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLSceneViewer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Material"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -25,7 +25,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
   SetGLSceneMediaDir();
-  // Add GLBlur to scene
+  // Add GLS.Blur to scene
   B = new TGLBlur(this);
   GLCube1->AddChild(B);
   B->TargetObject = GLCube1;
@@ -61,7 +61,7 @@ void __fastcall TForm1::ComboBox2Change(TObject *Sender)
 
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
-  LabelFPS->Caption = FloatToStr(Trunc((float)GLSceneViewer1->FramesPerSecond()))+ " FPS";
+  LabelFPS->Caption = FloatToStr(RoundInt((float)GLSceneViewer1->FramesPerSecond()))+ " FPS";
   GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------

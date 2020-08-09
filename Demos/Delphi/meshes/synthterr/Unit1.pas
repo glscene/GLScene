@@ -16,20 +16,20 @@ uses
   Vcl.StdCtrls,
   Vcl.Imaging.Jpeg,
 
-  GLScene,
-  GLObjects,
-  GLTerrainRenderer,
-  GLHeightData,
-  GLCadencer,
-  Scene.VectorTypes,
-  GLTexture,
-  GLSceneViewer,
-  Scene.VectorGeometry,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses,
-  GLKeyboard;
+  GLS.Scene,
+  GLS.Objects,
+  GLS.TerrainRenderer,
+  GLS.HeightData,
+  GLS.Cadencer,
+  GLS.VectorTypes,
+  GLS.Texture,
+  GLS.SceneViewer,
+  GLS.VectorGeometry,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.Keyboard;
 
 type
   TForm1 = class(TForm)

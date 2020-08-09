@@ -17,20 +17,20 @@ uses
   Vcl.Grids,
 
 
-  Scene.VectorTypes,
-  GLScene,
-  GLObjects,
-  GLSceneViewer,
-  Scene.VectorGeometry,
+  GLS.VectorTypes,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.SceneViewer,
+  GLS.VectorGeometry,
   GLS.SpaceText,
-  GLCollision,
-  GLVectorFileObjects,
-  GLCrossPlatform,
-  Scene.VectorLists,
-  GLFile3DS,
-  GLCoordinates,
+  GLS.Collision,
+  GLS.VectorFileObjects,
+ 
+  GLS.VectorLists,
+  GLS.File3DS,
+  GLS.Coordinates,
   GLS.Utils,
-  GLBaseClasses;
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

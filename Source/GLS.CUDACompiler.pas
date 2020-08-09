@@ -23,11 +23,11 @@ uses
   System.Classes,
   Vcl.Forms,
   VCL.Dialogs,
-  Scene.Strings,
+  GLS.Strings,
 
   GLS.CUDAParser,
 
-  GLApplicationFileIO
+  GLS.ApplicationFileIO
   {$IFDEF USE_LOGGING},GLSLog;{$ELSE};{$ENDIF}
 
 

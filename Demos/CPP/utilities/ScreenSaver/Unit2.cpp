@@ -6,16 +6,16 @@
 #include "Unit2.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLBehaviours"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLGeomObjects"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLSpaceText"
-#pragma link "GLSceneViewer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Behaviours"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SpaceText"
+#pragma link "GLS.SceneViewer"
 
 #pragma resource "*.dfm"
 TForm2 *Form2;

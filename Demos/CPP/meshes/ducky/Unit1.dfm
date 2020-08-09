@@ -58,6 +58,7 @@ object Form1: TForm1
     Camera = GLCamera1
     Buffer.AntiAliasing = aa4xHQ
     FieldOfView = 153.215011596679700000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove

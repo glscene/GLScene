@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 112
   Caption = 'Cg Multi Texturing'
   ClientHeight = 395
-  ClientWidth = 654
+  ClientWidth = 942
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -384,10 +384,6 @@ object Form1: TForm1
       object TabSheet3: TTabSheet
         Caption = 'Controls'
         ImageIndex = 2
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         DesignSize = (
           301
           363)
@@ -661,7 +657,7 @@ object Form1: TForm1
   object Panel9: TPanel
     Left = 316
     Top = 0
-    Width = 338
+    Width = 626
     Height = 395
     Align = alClient
     Font.Charset = ANSI_CHARSET
@@ -671,10 +667,11 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 1
+    ExplicitWidth = 338
     object PanelFPS: TPanel
       Left = 1
       Top = 1
-      Width = 336
+      Width = 624
       Height = 48
       Align = alTop
       Caption = 'FPS'
@@ -685,21 +682,23 @@ object Form1: TForm1
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      ExplicitWidth = 336
     end
     object GLSceneViewer1: TGLSceneViewer
       Left = 1
       Top = 49
-      Width = 336
+      Width = 624
       Height = 345
       Camera = GLCamera1
       Buffer.Lighting = False
       Buffer.AntiAliasing = aa4xHQ
-      FieldOfView = 146.851989746093800000
+      FieldOfView = 147.671005249023400000
       PenAsTouch = False
       Align = alClient
       OnMouseDown = GLSceneViewer1MouseDown
       OnMouseMove = GLSceneViewer1MouseMove
       TabOrder = 1
+      ExplicitWidth = 336
     end
   end
   object GLScene1: TGLScene
@@ -777,7 +776,7 @@ object Form1: TForm1
         Name = 'LibMaterial3'
         Tag = 0
       end>
-    TexturePaths = '..\..\..\..\media\'
+    TexturePaths = '..\..\..\Media\'
     Left = 105
     Top = 80
   end

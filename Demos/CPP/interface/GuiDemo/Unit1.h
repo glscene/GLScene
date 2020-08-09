@@ -11,17 +11,17 @@
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Menus.hpp>
 
-#include "GLBaseClasses.hpp"
-#include "GLBitmapFont.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLGui.hpp"
-#include "GLMaterial.hpp"
-#include "GLScene.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLWindows.hpp"
-#include "GLWindowsFont.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.BitmapFont.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Gui.hpp"
+#include "GLS.Material.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Windows.hpp"
+#include "GLS.WindowsFont.hpp"
 #include "GLS.Utils.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

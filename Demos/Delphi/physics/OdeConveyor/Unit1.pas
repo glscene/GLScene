@@ -17,18 +17,18 @@ uses
   Vcl.ExtCtrls,
 
   Import.ODE,
-  GLS.ODEManager,
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  GLCadencer,
-  GLCoordinates,
-  GLCrossPlatform,
-  GLBaseClasses,
-  GLSceneViewer,
-  Scene.VectorGeometry,
-  GLKeyBoard,
-  GLSimpleNavigation;
+  Physics.ODEManager,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.Cadencer,
+  GLS.Coordinates,
+ 
+  GLS.BaseClasses,
+  GLS.SceneViewer,
+  GLS.VectorGeometry,
+  GLS.Keyboard,
+  GLS.SimpleNavigation;
 
 type
   TForm1 = class(TForm)

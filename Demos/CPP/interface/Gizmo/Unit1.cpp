@@ -6,17 +6,18 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLBitmapFont"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLGeomObjects"
-#pragma link "GLObjects"
-#pragma link "GLPolyhedron"
-#pragma link "GLScene"
-#pragma link "GLSceneViewer"
-#pragma link "GLWindowsFont"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.BitmapFont"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.WindowsFont"
+#pragma link "GLS.VectorFileObjects"
+
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------

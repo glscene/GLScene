@@ -15,20 +15,20 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Imaging.jpeg.hpp>
 
-#include "GLScene.hpp"
-#include "GLObjects.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLBitmapFont.hpp"
-#include "GLWindowsFont.hpp"
-#include "GLGameMenu.hpp"
-#include "GLCadencer.hpp"
-#include "GLTexture.hpp"
-#include "GLKeyboard.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLMaterial.hpp"
-#include "GLCoordinates.hpp"
-#include "GLBaseClasses.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.GeomObjects.hpp"
+#include "GLS.BitmapFont.hpp"
+#include "GLS.WindowsFont.hpp"
+#include "GLS.GameMenu.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Texture.hpp"
+#include "GLS.Keyboard.hpp"
+
+#include "GLS.Material.hpp"
+#include "GLS.Coordinates.hpp"
+#include "GLS.BaseClasses.hpp"
 #include "GLS.Utils.hpp"
 
 //---------------------------------------------------------------------------

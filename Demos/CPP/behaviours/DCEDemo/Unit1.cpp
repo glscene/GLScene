@@ -7,25 +7,25 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
-#pragma link "GLFile3DS"
-#pragma link "GLFileMD2"
-#pragma link "GLProxyObjects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.File3DS"
+#pragma link "GLS.FileMD2"
+#pragma link "GLS.ProxyObjects"
 
-#pragma link "GLBaseClasses"
-#pragma link "GLBitmapFont"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLDCE"
-#pragma link "GLHeightData"
-#pragma link "GLHUDObjects"
-#pragma link "GLMaterial"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLTerrainRenderer"
-#pragma link "GLVectorFileObjects"
-#pragma link "GLSceneViewer"
-#pragma link "GLWindowsFont"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.BitmapFont"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.HeightData"
+#pragma link "GLS.HUDObjects"
+#pragma link "GLS.Material"
+#pragma link "GLS.Objects"
+#pragma link "GLS.TerrainRenderer"
+#pragma link "GLS.VectorFileObjects"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.WindowsFont"
+
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
@@ -125,7 +125,7 @@ void TForm1::AddMushrooms()
 {
   int i;
   TGLFreeFormProxy *Proxy;
-  Scene.VectorGeometry::TVector s;
+  TVector4f s;
   float f;
 
   // spawn some more mushrooms using proxy objects
@@ -334,23 +334,23 @@ void __fastcall TForm1::GLDirectOpenGL1Render(TObject *Sender, TGLRenderContextI
 
   //To use this you will need to enable the debug define in the
   //GLEllipseCollision.pas, if you do, don't forget to clear the
-  //triangle list! -> SetLength(debug_tri,0);
+  //triangle list! -> SetLength(Debug_Tri,0);
 
   rci.GLStates->PointSize = 5.0;
   glColor3f(0.0, 1.0, 0.0);
 
-  for (i = 0; i < debug_tri.High; i++) {
+  for (i = 0; i < Debug_Tri.High; i++) {
 	glColor3f(0.0, 0.0, 0.0);
 	glBegin(GL_LINE_STRIP);
-	glVertex3f(debug_tri[i].p1.X, debug_tri[i].p1.Y, debug_tri[i].p1.Z);
-	glVertex3f(debug_tri[i].p2.X, debug_tri[i].p2.Y, debug_tri[i].p2.Z);
-	glVertex3f(debug_tri[i].p3.X, debug_tri[i].p3.Y, debug_tri[i].p3.Z);
+	glVertex3f(Debug_Tri[i].p1.X, Debug_Tri[i].p1.Y, Debug_Tri[i].p1.Z);
+	glVertex3f(Debug_Tri[i].p2.X, Debug_Tri[i].p2.Y, Debug_Tri[i].p2.Z);
+	glVertex3f(Debug_Tri[i].p3.X, Debug_Tri[i].p3.Y, Debug_Tri[i].p3.Z);
 	glEnd;
-	CalcPlaneNormal(debug_tri[i].p1, debug_tri[i].p2, debug_tri[i].p3, n);
+	CalcPlaneNormal(Debug_Tri[i].p1, Debug_Tri[i].p2, Debug_Tri[i].p3, n);
 	ScaleVector(n, 0.25);
-	p.X = (debug_tri[i].p1.X + debug_tri[i].p2.X + debug_tri[i].p3.X) / 3.0;
-	p.Y = (debug_tri[i].p1.Y + debug_tri[i].p2.Y + debug_tri[i].p3.Y) / 3.0;
-	p.Z = (debug_tri[i].p1.Z + debug_tri[i].p2.Z + debug_tri[i].p3.Z) / 3.0;
+	p.X = (Debug_Tri[i].p1.X + Debug_Tri[i].p2.X + Debug_Tri[i].p3.X) / 3.0;
+	p.Y = (Debug_Tri[i].p1.Y + Debug_Tri[i].p2.Y + Debug_Tri[i].p3.Y) / 3.0;
+	p.Z = (Debug_Tri[i].p1.Z + Debug_Tri[i].p2.Z + Debug_Tri[i].p3.Z) / 3.0;
 	glColor3f(0.0, 0.0, 1.0);
 	glBegin(GL_LINE_STRIP);
 	glVertex3f(p.X, p.Y, p.Z);
@@ -360,7 +360,7 @@ void __fastcall TForm1::GLDirectOpenGL1Render(TObject *Sender, TGLRenderContextI
 	glVertex3f(p.X + n.X, p.Y + n.Y, p.Z + n.Z);
 	glEnd;
 	}
-  debug_tri.Length = 0.0;
+  Debug_Tri.Length = 0.0;
 }
 //---------------------------------------------------------------------------
 

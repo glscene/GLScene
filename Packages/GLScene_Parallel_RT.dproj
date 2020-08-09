@@ -145,7 +145,7 @@
         <DCCReference Include="..\Source\GLS.CUDAParallelPrimitives.pas"/>
         <DCCReference Include="..\Source\GLS.CUDA.pas"/>
         <DCCReference Include="..\Source\GLS.CUDAApi.pas"/>
-        <DCCReference Include="..\Source\GLFilePGM.pas"/>
+        <DCCReference Include="..\Source\GLS.FilePGM.pas"/>
         <DCCReference Include="..\Source\Import.OpenCL.pas"/>
         <DCCReference Include="..\Source\Import.OpenCL_GL.pas"/>
         <DCCReference Include="..\Source\Import.OpenCL_Platform.pas"/>

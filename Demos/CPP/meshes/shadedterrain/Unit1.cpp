@@ -7,8 +7,9 @@
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLMaterial"
+#pragma link "GLS.Material"
 
+#pragma link "GLSL.TextureShaders"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
@@ -56,7 +57,7 @@ void __fastcall TForm1::GLBumpmapHDS1NewTilePrepared(TGLBumpmapHDS * Sender,
 													 TGLLibMaterial *
 													 normalMapMaterial)
 {
-  Scene.VectorGeometry::TVector n;
+  Gls::Vectorgeometry::TVector n;
 
   heightData->MaterialName = normalMapMaterial->Name;
   normalMapMaterial->Texture2Name = "contrast";
@@ -176,12 +177,12 @@ void __fastcall TForm1::FormKeyPress(TObject * Sender, char &Key)
   case '*':
 	if(TerrainRenderer1->CLODPrecision > 10)
       TerrainRenderer1->CLODPrecision =
-        Round(TerrainRenderer1->CLODPrecision * 0.8);
+        RoundInt(TerrainRenderer1->CLODPrecision * 0.8);
     break;
   case '/':
     if(TerrainRenderer1->CLODPrecision < 1000)
       TerrainRenderer1->CLODPrecision =
-        Round(TerrainRenderer1->CLODPrecision * 1.2);
+        RoundInt(TerrainRenderer1->CLODPrecision * 1.2);
     break;
   case 'l':
     GLLensFlare->Visible = (!GLLensFlare->Visible) && SPSun->Visible;

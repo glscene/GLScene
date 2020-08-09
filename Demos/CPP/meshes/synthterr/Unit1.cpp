@@ -6,19 +6,19 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLHeightData"
-#pragma link "GLMaterial"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLTerrainRenderer"
-#pragma link "GLSceneViewer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
 
-#pragma link "GLHeightData"
-#pragma link "GLHeightData"
+#pragma link "GLS.HeightData"
+#pragma link "GLS.Material"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.TerrainRenderer"
+#pragma link "GLS.SceneViewer"
+
+#pragma link "GLS.HeightData"
+#pragma link "GLS.HeightData"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -104,7 +104,7 @@ void __fastcall TForm1::GLCustomHDSStartPreparingData(TGLHeightData *HeightData)
 	 for (x = HeightData->XLeft; x < HeightData->XLeft+HeightData->Size-1; x++)
 	 {
 		d = sqrt(x*x+dy);
-		b->data[0,0,0] = (float) Round(128+128*Sin(d*0.2)/(d*0.1+1));
+		b->data[0,0,0] = (float) RoundInt(128+128*Sin(d*0.2)/(d*0.1+1));
 		rasterLine[x-HeightData->XLeft] = b;
 	 }
 	}
@@ -168,16 +168,16 @@ void __fastcall TForm1::FormKeyPress(TObject *Sender, System::WideChar &Key)
 		   GLSceneViewer1->Buffer->FogEnvironment->FogStart/1.2;
 		 } break;
    case  '*' : if (TerrainRenderer1->CLODPrecision > 5)
-	   TerrainRenderer1->CLODPrecision = Round(TerrainRenderer1->CLODPrecision*0.8);
+	   TerrainRenderer1->CLODPrecision = RoundInt(TerrainRenderer1->CLODPrecision*0.8);
 	   break;
    case  '/' : if (TerrainRenderer1->CLODPrecision<500)
-		 TerrainRenderer1->CLODPrecision = Round(TerrainRenderer1->CLODPrecision*1.2);
+		 TerrainRenderer1->CLODPrecision = RoundInt(TerrainRenderer1->CLODPrecision*1.2);
 		 break;
    case  '8' : if (TerrainRenderer1->QualityDistance>40)
-		 TerrainRenderer1->QualityDistance = Round(TerrainRenderer1->QualityDistance*0.8);
+		 TerrainRenderer1->QualityDistance = RoundInt(TerrainRenderer1->QualityDistance*0.8);
 		 break;
    case  '9' : if (TerrainRenderer1->QualityDistance<1000)
-		 TerrainRenderer1->QualityDistance = Round(TerrainRenderer1->QualityDistance*1.2);
+		 TerrainRenderer1->QualityDistance = RoundInt(TerrainRenderer1->QualityDistance*1.2);
 		 break;
    default:
 	   ;

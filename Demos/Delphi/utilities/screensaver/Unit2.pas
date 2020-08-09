@@ -24,8 +24,8 @@ uses
   Vcl.Forms,
   Vcl.StdCtrls,
   
-  GLScene, GLObjects, GLTexture, GLCadencer, GLSceneViewer, GLS.SpaceText,
-  GLGeomObjects, GLCoordinates, GLCrossPlatform, GLBaseClasses, GLBehaviours;
+  GLS.Scene, GLS.Objects, GLS.Texture, GLS.Cadencer, GLS.SceneViewer, GLS.SpaceText,
+  GLS.GeomObjects, GLS.Coordinates, GLS.BaseClasses, GLS.Behaviours;
 
 type
   TForm2 = class(TForm)
@@ -67,7 +67,7 @@ implementation
 
 uses
   Registry,
-  GLScreenSaver;
+  GLS.ScreenSaver;
 
 const
   cSaverRegistryKey = 'Software\GLScene\Samples\Delphi\Demos\ScreenSaver';

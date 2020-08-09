@@ -16,21 +16,21 @@ uses
   Vcl.Imaging.Jpeg,
 
   
-  GLScene,
-  GLObjects,
-  Scene.VectorTypes,
-  GLSceneViewer,
-  GLGeomObjects,
-  GLBitmapFont,
-  GLWindowsFont,
-  GLGameMenu,
-  GLCadencer,
-  GLTexture,
-  GLKeyboard,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.VectorTypes,
+  GLS.SceneViewer,
+  GLS.GeomObjects,
+  GLS.BitmapFont,
+  GLS.WindowsFont,
+  GLS.GameMenu,
+  GLS.Cadencer,
+  GLS.Texture,
+  GLS.Keyboard,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.Utils;
 
 type

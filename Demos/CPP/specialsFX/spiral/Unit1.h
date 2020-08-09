@@ -10,19 +10,19 @@
 #include <Buttons.hpp>
 #include <ExtCtrls.hpp>
 
-#include <GLCrossPlatform.hpp>  // Pascal unit
-#include <Scene.VectorGeometry.hpp>   // Pascal unit
-#include <GLBehaviours.hpp>     // Pascal unit
-#include <GLSceneViewer.hpp>    // Pascal unit
-#include <GLObjects.hpp>        // Pascal unit
-#include <GLScene.hpp>          // Pascal unit
-#include <GLCadencer.hpp>       // Pascal unit
-#include <GLParticleFX.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
+#include <GLS.CrossPlatform.hpp>  // Pascal unit
+#include <GLS.VectorGeometry.hpp>   // Pascal unit
+#include <GLS.Behaviours.hpp>     // Pascal unit
+#include <GLS.SceneViewer.hpp>    // Pascal unit
+#include <GLS.Objects.hpp>        // Pascal unit
+#include <GLS.Scene.hpp>          // Pascal unit
+#include <GLS.Cadencer.hpp>       // Pascal unit
+#include <GLS.ParticleFX.hpp>
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
 #include "GLFullScreenViewer.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLKeyboard.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Keyboard.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1:public TForm

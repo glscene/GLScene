@@ -23,10 +23,9 @@ object Form1: TForm1
     Camera = GLCamera1
     Buffer.BackgroundColor = 12040119
     FieldOfView = 156.746032714843700000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 449
-    ExplicitHeight = 419
   end
   object Panel2: TPanel
     Left = 504
@@ -35,8 +34,6 @@ object Form1: TForm1
     Height = 486
     Align = alRight
     TabOrder = 1
-    ExplicitLeft = 449
-    ExplicitHeight = 419
     DesignSize = (
       132
       486)

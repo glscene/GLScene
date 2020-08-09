@@ -16,18 +16,18 @@ uses
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
   
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  GLCadencer,
-  GLVectorFileObjects,
-  GLSceneViewer,
-  GLTexture,
-  Scene.VectorGeometry,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses;
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.Cadencer,
+  GLS.VectorFileObjects,
+  GLS.SceneViewer,
+  GLS.Texture,
+  GLS.VectorGeometry,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

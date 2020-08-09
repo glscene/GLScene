@@ -17,18 +17,18 @@ uses
   Vcl.ExtCtrls,
   Vcl.Samples.Spin,
   
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  GLCoordinates,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLBaseClasses,
-  GLCadencer,
-  GLAnimationUtils,
-  Scene.VectorGeometry,
-  GLBitmapFont,
-  GLWindowsFont;
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.Coordinates,
+  GLS.SceneViewer,
+ 
+  GLS.BaseClasses,
+  GLS.Cadencer,
+  GLS.AnimationUtils,
+  GLS.VectorGeometry,
+  GLS.BitmapFont,
+  GLS.WindowsFont;
 
 type
 

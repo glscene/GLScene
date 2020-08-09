@@ -57,7 +57,7 @@ contains
   FXCollectionEditor in '..\Source\FXCollectionEditor.pas' {GLXCollectionEditorForm},
   FInfo in '..\Source\FInfo.pas' {GLInfoForm},
   GLS.SceneRegister in '..\Source\GLS.SceneRegister.pas',
-  XCollectionRegister in '..\Source\XCollectionRegister.pas';
+  GLS.XCollectionRegister in '..\Source\GLS.XCollectionRegister.pas';
 
 end.
 

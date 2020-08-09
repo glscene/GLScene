@@ -13,15 +13,15 @@ uses
   Vcl.ExtCtrls, 
   Vcl.StdCtrls,
   
-  GLScene, 
-  GLObjects, 
-  GLAsyncTimer,  
-  GLCadencer, 
+  GLS.Scene, 
+  GLS.Objects, 
+  GLS.AsyncTimer,  
+  GLS.Cadencer, 
   GLS.AVIRecorder, 
-  GLSceneViewer,
-  GLCrossPlatform, 
-  GLCoordinates, 
-  GLBaseClasses;
+  GLS.SceneViewer,
+  
+  GLS.Coordinates, 
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)
@@ -54,8 +54,6 @@ var
 
 //-------------------------------------  
 implementation
- public
- 
 
 {$R *.DFM}
 

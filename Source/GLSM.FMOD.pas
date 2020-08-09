@@ -20,10 +20,10 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLSound,
-  GLScene,
-  Scene.VectorTypes,
-  Scene.VectorGeometry,
+  GLS.Sound,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.VectorGeometry,
 
   Import.FMOD,
   Import.FMODTypes,

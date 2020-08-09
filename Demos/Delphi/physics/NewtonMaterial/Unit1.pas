@@ -11,17 +11,17 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
 
-  GLSimpleNavigation,
-  GLScene,
-  GLCoordinates,
-  GLS.NGDManager,
-  GLBitmapFont,
-  GLWindowsFont,
-  GLCadencer,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLBaseClasses,
-  GLObjects;
+  GLS.SimpleNavigation,
+  GLS.Scene,
+  GLS.Coordinates,
+  Physics.NGDManager,
+  GLS.BitmapFont,
+  GLS.WindowsFont,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+ 
+  GLS.BaseClasses,
+  GLS.Objects;
 
 type
   TForm1 = class(TForm)

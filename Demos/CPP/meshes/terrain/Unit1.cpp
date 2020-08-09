@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 
 #include <vcl.h>
-#include <GLKeyboard.hpp>
+#include <GLS.Keyboard.hpp>
 #include <stdlib.h>
 
 #pragma hdrstop
@@ -11,25 +11,25 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GLLensFlare"
-#pragma link "Scene.VectorGeometry"
-#pragma link "GLSMBASS"
-#pragma link "GLSound"
-#pragma link "GLSceneViewer"
-#pragma link "GLSkydome"
-#pragma link "GLBitmapFont"
-#pragma link "GLHUDObjects"
-#pragma link "GLTexture"
-#pragma link "GLCadencer"
-#pragma link "GLHeightData"
-#pragma link "GLObjects"
-#pragma link "GLTerrainRenderer"
-#pragma link "GLScene"
-#pragma link "GLKeyboard"
-#pragma link "GLBaseClasses"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLMaterial"
-#pragma link "GLFileMP3"
+#pragma link "GLS.VectorGeometry"
+#pragma link "GLSM.BASS"
+#pragma link "GLS.Sound"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.SkyDome"
+#pragma link "GLS.BitmapFont"
+#pragma link "GLS.HUDObjects"
+#pragma link "GLS.Texture"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.HeightData"
+#pragma link "GLS.Objects"
+#pragma link "GLS.TerrainRenderer"
+#pragma link "GLS.Scene"
+#pragma link "GLS.Keyboard"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Material"
+#pragma link "GLS.FileMP3"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
@@ -182,22 +182,22 @@ void __fastcall TForm1::FormKeyPress(TObject * Sender, char &Key)
   case '*':
 	if(TerrainRenderer1->CLODPrecision > 20)
 	  TerrainRenderer1->CLODPrecision =
-		Round(TerrainRenderer1->CLODPrecision * 0.8);
+		RoundInt(TerrainRenderer1->CLODPrecision * 0.8);
 	break;
   case '/':
 	if(TerrainRenderer1->CLODPrecision < 1000)
 	  TerrainRenderer1->CLODPrecision =
-		Round(TerrainRenderer1->CLODPrecision * 1.2);
+		RoundInt(TerrainRenderer1->CLODPrecision * 1.2);
 	break;
   case '8':
 	if(TerrainRenderer1->QualityDistance > 40)
 	  TerrainRenderer1->QualityDistance =
-		Round(TerrainRenderer1->QualityDistance * 0.8);
+		RoundInt(TerrainRenderer1->QualityDistance * 0.8);
 	break;
   case '9':
 	if(TerrainRenderer1->QualityDistance < 1000)
 	  TerrainRenderer1->QualityDistance =
-		Round(TerrainRenderer1->QualityDistance * 1.2);
+		RoundInt(TerrainRenderer1->QualityDistance * 1.2);
 	break;
   case 'n':
   case 'N':
@@ -267,7 +267,7 @@ void __fastcall TForm1::FormKeyPress(TObject * Sender, char &Key)
 
 void __fastcall TForm1::TISoundTimer(TObject * Sender)
 {
-  Scene.VectorGeometry::TVector wolfPos;
+  Gls::Vectorgeometry::TVector wolfPos;
   float c, s;
   TGLBSoundEmitter *be;
 
@@ -286,7 +286,7 @@ void __fastcall TForm1::TISoundTimer(TObject * Sender)
   {
     // wolf howl at some distance, at ground level
     wolfPos = GLCamera1->AbsolutePosition;
-    SinCosine(random() * Scene.VectorGeometry::c2PI, 100 + random(1000), s, c);
+	SinCosine(random() * Gls::Vectorgeometry::c2PI, 100 + random(1000), s, c);
 	wolfPos.X = wolfPos.X + c;
 	wolfPos.Z = wolfPos.Z + s;
 	wolfPos.Y = TerrainRenderer1->InterpolatedHeight(wolfPos);

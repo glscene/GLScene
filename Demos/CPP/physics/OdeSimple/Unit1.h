@@ -10,17 +10,16 @@
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "GLScene.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLGraph.hpp"
-#include "GLObjects.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLODECustomColliders.hpp"
-#include "GLODEManager.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Graph.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.GeomObjects.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "Physics.ODEManager.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

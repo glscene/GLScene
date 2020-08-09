@@ -13,25 +13,23 @@ uses
   Vcl.Dialogs,
   Vcl.Imaging.jpeg,
   
-  GLObjects,
-  GLScene,
-  Scene.PersistentClasses,
-  GLCadencer,
-  GLSceneViewer,
-  GLPolyhedron,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses,
-  GLBehaviours,
-  GLHUDObjects,
-  GLColor,
-  GLBitmapFont,
-  GLTeapot,
-  GLGeomObjects,
-  GLRenderContextInfo,
+  GLS.Objects,
+  GLS.Scene,
+  GLS.PersistentClasses,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.Behaviours,
+  GLS.HUDObjects,
+  GLS.Color,
+  GLS.BitmapFont,
+  GLS.GeomObjects,
+  GLS.RenderContextInfo,
   GLS.Utils,
-  GLMesh,
-  GLVectorFileObjects;
+  GLS.Mesh,
+  GLS.VectorFileObjects;
 
 type
   TForm1 = class(TForm)

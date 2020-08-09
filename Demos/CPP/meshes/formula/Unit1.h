@@ -12,18 +12,18 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "GLScene.hpp"
-#include "GLObjects.hpp"
-#include "Scene.VectorGeometry.hpp"
-#include "GLTexture.hpp"
-#include "GLCadencer.hpp"
-#include "GLMesh.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLState.hpp"
-#include "GLColor.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.VectorGeometry.hpp"
+#include "GLS.Texture.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Mesh.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.State.hpp"
+#include "GLS.Color.hpp"
+
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
 
 
 //---------------------------------------------------------------------------

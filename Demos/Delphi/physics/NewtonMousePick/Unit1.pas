@@ -11,16 +11,16 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
 
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  GLS.NGDManager,
-  GLCoordinates,
-  GLCadencer,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLBaseClasses,
-  Scene.VectorGeometry;
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  Physics.NGDManager,
+  GLS.Coordinates,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+ 
+  GLS.BaseClasses,
+  GLS.VectorGeometry;
 
 type
   TForm1 = class(TForm)

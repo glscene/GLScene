@@ -7,21 +7,18 @@
 
 #include "Unit1.h"
 
-#pragma link "GLNavigator"
-#pragma link "GLShadowPlane"
-#pragma link "Scene.VectorGeometry"
-#pragma link "GLExtrusion"
-#pragma link "GLTexture"
-#pragma link "GLCadencer"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLSceneViewer"
-#pragma link "GLKeyboard"
-#pragma link "GLVerletTypes"
-#pragma link "GLVerletClasses"
-#pragma link "GLODECustomColliders"
-#pragma link "ODEUtils"
-#pragma link "GLODEManager"
+#pragma link "Physics.ODEUtils"
+#pragma link "GLS.Navigator"
+#pragma link "GLS.ShadowPlane"
+#pragma link "GLS.VectorGeometry"
+#pragma link "GLS.Extrusion"
+#pragma link "GLS.Texture"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.Keyboard"
+#pragma link "GLS.VerletTypes"
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -102,7 +99,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   CreateODEPlaneFromGLPlane(GLShadowPlane_Wall3, space);
   // dCreatePlane (space,0,0,1,0);
 
-  VerletWorld = new TVerletWorld;
+  VerletWorld = new TGLVerletWorld;
   VerletWorld->Iterations = 2;
   VerletWorld->VerletNodeClass = __classid(TGLVerletNode);
 
@@ -141,7 +138,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
 
   int i, j;
   float Delta;
-  TVerletHair *Hair;
+  TGLVerletHair *Hair;
   TGLLines *GLLines;
 
   Delta = deltaTime;
@@ -184,7 +181,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
 
   for(i = 0; i <= HairList->Count - 1; i++)
   {
-	Hair = (TVerletHair *) HairList->Items[i];
+	Hair = (TGLVerletHair *) HairList->Items[i];
 	GLLines = (TGLLines *) Hair->Data;
 	for(j = 1; j <= Hair->NodeList->Count - 1; j++)
 	  GLLines->Nodes->Items[j - 1]->AsAffineVector =
@@ -220,7 +217,7 @@ void __fastcall TForm1::CreateRandomHair()
 {
   int i;
   TAffineVector Dir;
-  TVerletHair *Hair;
+  TGLVerletHair *Hair;
   TGLLines *GLLines;
 
   Dir = AffineVectorMake(random() - 0.5, random() - 0.5, random() - 0.5);
@@ -229,7 +226,7 @@ void __fastcall TForm1::CreateRandomHair()
   TVHStiffnessSet vhs;
   vhs << vhsSkip1Node;
   Hair =
-	new TVerletHair(VerletWorld, FurBall->Radius * cRootDepth,
+	new TGLVerletHair(VerletWorld, FurBall->Radius * cRootDepth,
 					FurBall->Radius * cRadiusMultiplier, cSegmentCount,
 					VectorAdd(AffineVectorMake(FurBall->AbsolutePosition),
 							  VectorScale(Dir, FurBall->Radius)), Dir, vhs);
@@ -260,12 +257,12 @@ void __fastcall TForm1::CreateRandomHair()
 
 void __fastcall TForm1::CreateFur()
 {
-  TVerletHair *Hair;
+  TGLVerletHair *Hair;
   int i;
 
   for(i = 0; i <= HairList->Count - 1; i++)
   {
-	Hair = ((TVerletHair *) HairList->Items[i]);
+	Hair = ((TGLVerletHair *) HairList->Items[i]);
 	delete((TGLLines *) Hair->Data);
 	delete Hair;
   }
@@ -352,7 +349,7 @@ void __fastcall TForm1::CheckBox_BaldClick(TObject *Sender)
 {
   for(int i = 0; i <= HairList->Count - 1; i++)
   {
-	TVerletHair *h = (TVerletHair *) (HairList->Items[i]);
+	TGLVerletHair *h = (TGLVerletHair *) (HairList->Items[i]);
 	{
 	  h->Anchor->NailedDown = !CheckBox_Bald->Checked;
 	  h->Anchor->OldLocation = h->Anchor->Location;

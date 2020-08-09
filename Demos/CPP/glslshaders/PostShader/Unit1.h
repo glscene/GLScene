@@ -10,28 +10,28 @@
 #include <Vcl.CheckLst.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Imaging.jpeg.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLGraph.hpp"
-#include "GLMaterial.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLSimpleNavigation.hpp"
-#include "GLVectorFileObjects.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Graph.hpp"
+#include "GLS.Material.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SimpleNavigation.hpp"
+#include "GLS.VectorFileObjects.hpp"
+#include "GLS.SceneViewer.hpp"
 #include "GLS.Utils.hpp"
 
 #include "GLSL.PostShaders.hpp"
 #include "GLSL.CGPostTransformationShader.hpp"
 
 // FileFormats
-#include "GLFileTGA.hpp"
-#include "GLFileMD2.hpp"
-#include "GLFileMS3D.hpp"
-#include "GLFile3DS.hpp"
+#include "GLS.FileTGA.hpp"
+#include "GLS.FileMD2.hpp"
+#include "GLS.FileMS3D.hpp"
+#include "GLS.File3DS.hpp"
 #include "GLSL.PostEffects.hpp"
 
 //---------------------------------------------------------------------------

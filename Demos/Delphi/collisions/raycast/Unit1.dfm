@@ -39,6 +39,7 @@ object Form1: TForm1
     Height = 193
     Camera = GLCamera1
     FieldOfView = 125.219512939453100000
+    PenAsTouch = False
     TabOrder = 0
   end
   object BUCast: TButton

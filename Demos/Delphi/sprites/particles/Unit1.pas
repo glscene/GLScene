@@ -12,18 +12,18 @@ uses
   Vcl.Controls,
 
   
-  GLScene,
-  GLObjects,
-  GLParticles,
-  GLBehaviours,
-  Scene.VectorGeometry,
-  Scene.PersistentClasses,
-  GLCadencer,
-  Scene.VectorTypes,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Particles,
+  GLS.Behaviours,
+  GLS.VectorGeometry,
+  GLS.PersistentClasses,
+  GLS.Cadencer,
+  GLS.VectorTypes,
+  GLS.SceneViewer,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.Utils;
 
 type

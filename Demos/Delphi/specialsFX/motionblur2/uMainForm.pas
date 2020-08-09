@@ -10,22 +10,20 @@ uses
   Vcl.StdCtrls,
   Vcl.Controls,
   
-  GLObjects,
-  GLScene,
-  Scene.VectorTypes,
-  GLBlur,
-  GLSimpleNavigation,
-  GLTexture,
-  GLCadencer,
-  Scene.VectorGeometry,
-  GLTeapot,
-  GLPolyhedron,
-  GLGeomObjects,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses, GLVectorFileObjects;
+  GLS.Objects,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Blur,
+  GLS.SimpleNavigation,
+  GLS.Texture,
+  GLS.Cadencer,
+  GLS.VectorGeometry,
+  GLS.GeomObjects,
+  GLS.SceneViewer,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses, GLS.VectorFileObjects;
 
 type
   TForm1 = class(TForm)

@@ -8,14 +8,14 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLGraph"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLSceneViewer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Graph"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -44,10 +44,10 @@ void __fastcall TForm1::CheckBox04Click(TObject *Sender)
 //---------------------------------------------------------------------------
 
 // Generates random rotation for matrix. It remains a scale.
-Scene.VectorGeometry::TMatrix RandomRotation(Scene.VectorGeometry::TMatrix const &aMatrix)
+Gls::Vectorgeometry::TMatrix RandomRotation(Gls::Vectorgeometry::TMatrix const &aMatrix)
 {
   TAffineVector aScale;
-  Scene.VectorGeometry::TMatrix mat;
+  Gls::Vectorgeometry::TMatrix mat;
   int I;
 
   // Save scale.

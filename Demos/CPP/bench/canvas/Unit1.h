@@ -10,15 +10,15 @@
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Graphics.hpp>
 
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLScene.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLCanvas.hpp"
-#include "GLRenderContextInfo.hpp"
-#include "GLBitmapFont.hpp"
-#include "GLWindowsFont.hpp"
-#include "GLBaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Scene.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Canvas.hpp"
+#include "GLS.RenderContextInfo.hpp"
+#include "GLS.BitmapFont.hpp"
+#include "GLS.WindowsFont.hpp"
+#include "GLS.BaseClasses.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

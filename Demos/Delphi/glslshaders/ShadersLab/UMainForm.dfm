@@ -239,14 +239,6 @@ object MainForm: TMainForm
             'CONSTANT ALPHA'
             'ONE MINUS CONSTATNT ALPHA')
         end
-        object chkAnimateFur: TCheckBox
-          Left = 72
-          Top = 3
-          Width = 75
-          Height = 17
-          Caption = 'Animate Fur'
-          TabOrder = 4
-        end
         object tbFurPassCount: TTrackBar
           Left = 65
           Top = 24
@@ -257,7 +249,7 @@ object MainForm: TMainForm
           PageSize = 10
           Frequency = 8
           Position = 16
-          TabOrder = 5
+          TabOrder = 4
           TickStyle = tsNone
           OnChange = tbFurPassCountChange
         end
@@ -271,7 +263,7 @@ object MainForm: TMainForm
           PageSize = 10
           Frequency = 10
           Position = 300
-          TabOrder = 6
+          TabOrder = 5
           TickStyle = tsNone
           OnChange = tbFurMaxLengthChange
         end
@@ -281,7 +273,7 @@ object MainForm: TMainForm
           Width = 201
           Height = 17
           Caption = 'Random Fur Length'
-          TabOrder = 7
+          TabOrder = 6
           OnClick = chkFurRandomLengthClick
         end
         object tbFurDensity: TTrackBar
@@ -294,7 +286,7 @@ object MainForm: TMainForm
           PageSize = 10
           Frequency = 10
           Position = 100
-          TabOrder = 8
+          TabOrder = 7
           TickStyle = tsNone
           OnChange = tbFurDensityChange
         end
@@ -308,7 +300,7 @@ object MainForm: TMainForm
           PageSize = 10
           Frequency = 10
           Position = 250
-          TabOrder = 9
+          TabOrder = 8
           TickStyle = tsNone
           OnChange = tbFurLightPowerChange
         end
@@ -318,7 +310,7 @@ object MainForm: TMainForm
           Width = 184
           Height = 25
           Caption = 'Load Main Texture'
-          TabOrder = 10
+          TabOrder = 9
           OnClick = Button8Click
         end
         object Button9: TButton
@@ -327,7 +319,7 @@ object MainForm: TMainForm
           Width = 184
           Height = 25
           Caption = 'Load Noise Texture'
-          TabOrder = 11
+          TabOrder = 10
           OnClick = Button9Click
         end
         object edtFurGravityX: TEdit
@@ -335,7 +327,7 @@ object MainForm: TMainForm
           Top = 124
           Width = 57
           Height = 21
-          TabOrder = 12
+          TabOrder = 11
           Text = '0.0'
           OnChange = edtFurGravityXChange
           OnKeyPress = EditFloatKeyPress
@@ -345,7 +337,7 @@ object MainForm: TMainForm
           Top = 124
           Width = 57
           Height = 21
-          TabOrder = 13
+          TabOrder = 12
           Text = '-2.0'
           OnChange = edtFurGravityYChange
           OnKeyPress = EditFloatKeyPress
@@ -355,7 +347,7 @@ object MainForm: TMainForm
           Top = 124
           Width = 57
           Height = 21
-          TabOrder = 14
+          TabOrder = 13
           Text = '0.0'
           OnChange = edtFurGravityZChange
           OnKeyPress = EditFloatKeyPress
@@ -364,10 +356,6 @@ object MainForm: TMainForm
       object TabSheet2: TTabSheet
         Caption = 'Lattice'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 24
-        ExplicitWidth = 0
-        ExplicitHeight = 468
         object lblLatticeScaleX: TLabel
           Left = 291
           Top = 41
@@ -599,10 +587,6 @@ object MainForm: TMainForm
       object TabSheet3: TTabSheet
         Caption = 'Erosion'
         ImageIndex = 2
-        ExplicitLeft = 0
-        ExplicitTop = 24
-        ExplicitWidth = 0
-        ExplicitHeight = 468
         object Label1: TLabel
           Left = 8
           Top = 46
@@ -911,10 +895,6 @@ object MainForm: TMainForm
       object TabSheet4: TTabSheet
         Caption = 'Ivory'
         ImageIndex = 3
-        ExplicitLeft = 0
-        ExplicitTop = 24
-        ExplicitWidth = 0
-        ExplicitHeight = 468
         object chkIvoryShader: TCheckBox
           Left = 16
           Top = 16
@@ -928,10 +908,6 @@ object MainForm: TMainForm
       object TabSheet5: TTabSheet
         Caption = 'Gootch'
         ImageIndex = 4
-        ExplicitLeft = 0
-        ExplicitTop = 24
-        ExplicitWidth = 0
-        ExplicitHeight = 468
         object Label13: TLabel
           Left = 16
           Top = 47
@@ -1213,10 +1189,6 @@ object MainForm: TMainForm
       object TabSheet6: TTabSheet
         Caption = 'S.E.M'
         ImageIndex = 5
-        ExplicitLeft = 0
-        ExplicitTop = 24
-        ExplicitWidth = 0
-        ExplicitHeight = 468
         object Label19: TLabel
           Left = 16
           Top = 44
@@ -1350,10 +1322,6 @@ object MainForm: TMainForm
       object Displacement: TTabSheet
         Caption = 'Displacement'
         ImageIndex = 6
-        ExplicitLeft = 0
-        ExplicitTop = 24
-        ExplicitWidth = 0
-        ExplicitHeight = 468
         object Label21: TLabel
           Left = 24
           Top = 52
@@ -1666,10 +1634,6 @@ object MainForm: TMainForm
       object TabSheet7: TTabSheet
         Caption = 'Glass'
         ImageIndex = 7
-        ExplicitLeft = 0
-        ExplicitTop = 24
-        ExplicitWidth = 0
-        ExplicitHeight = 468
         object Label56: TLabel
           Left = 11
           Top = 36
@@ -1856,10 +1820,6 @@ object MainForm: TMainForm
       object TabSheet8: TTabSheet
         Caption = 'Toon'
         ImageIndex = 8
-        ExplicitLeft = 0
-        ExplicitTop = 24
-        ExplicitWidth = 0
-        ExplicitHeight = 468
         object Label64: TLabel
           Left = 7
           Top = 51

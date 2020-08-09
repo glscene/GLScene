@@ -24,6 +24,9 @@
         <Projects Include="ShadersLab\ShadersLab.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="SkyBoxShader\SkyBoxShader.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -95,14 +98,23 @@
     <Target Name="ShadersLab:Make">
         <MSBuild Projects="ShadersLab\ShadersLab.dproj" Targets="Make"/>
     </Target>
+    <Target Name="SkyBoxShader">
+        <MSBuild Projects="SkyBoxShader\SkyBoxShader.dproj"/>
+    </Target>
+    <Target Name="SkyBoxShader:Clean">
+        <MSBuild Projects="SkyBoxShader\SkyBoxShader.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SkyBoxShader:Make">
+        <MSBuild Projects="SkyBoxShader\SkyBoxShader.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="BumpShader;DiffuseSpecularShader;LiningShaders;Ocean;PostShader;ShaderComponent;ShadersLab"/>
+        <CallTarget Targets="BumpShader;DiffuseSpecularShader;LiningShaders;Ocean;PostShader;ShaderComponent;ShadersLab;SkyBoxShader"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="BumpShader:Clean;DiffuseSpecularShader:Clean;LiningShaders:Clean;Ocean:Clean;PostShader:Clean;ShaderComponent:Clean;ShadersLab:Clean"/>
+        <CallTarget Targets="BumpShader:Clean;DiffuseSpecularShader:Clean;LiningShaders:Clean;Ocean:Clean;PostShader:Clean;ShaderComponent:Clean;ShadersLab:Clean;SkyBoxShader:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="BumpShader:Make;DiffuseSpecularShader:Make;LiningShaders:Make;Ocean:Make;PostShader:Make;ShaderComponent:Make;ShadersLab:Make"/>
+        <CallTarget Targets="BumpShader:Make;DiffuseSpecularShader:Make;LiningShaders:Make;Ocean:Make;PostShader:Make;ShaderComponent:Make;ShadersLab:Make;SkyBoxShader:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

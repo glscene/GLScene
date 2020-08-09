@@ -13,17 +13,17 @@
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLGraph.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLSimpleNavigation.hpp"
-#include "GLSkydome.hpp"
-#include "GLThorFX.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Graph.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SimpleNavigation.hpp"
+#include "GLS.SkyDome.hpp"
+#include "GLS.ThorFX.hpp"
+#include "GLS.SceneViewer.hpp"
 #include "GLS.Utils.hpp"
 #include "JPeg.hpp"
 

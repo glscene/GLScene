@@ -19,19 +19,17 @@ uses
   VCL.ComCtrls,
   Vcl.Controls,
 
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  GLTexture,
-  GLHUDObjects,
-  GLSceneViewer,
-  GLTeapot,
-  GLGeomObjects,
-  GLColor,
-  GLCoordinates,
-  GLCrossPlatform,
-  GLBaseClasses,
-  GLMaterial;
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.Texture,
+  GLS.HudObjects,
+  GLS.SceneViewer,
+  GLS.GeomObjects,
+  GLS.Color,
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.Material;
 
 
 type

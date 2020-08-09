@@ -1,14 +1,14 @@
 //---------------------------------------------------------------------------
 #include "vfw_BCB.h"
 #include "GLAVIRecorder.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLKeyboard.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Keyboard.hpp"
 #include <System.Classes.hpp>
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.Controls.hpp>

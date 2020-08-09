@@ -7,16 +7,17 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLFeedback.hpp"
-#include "GLObjects.hpp"
-#include "GLPolyhedron.hpp"
-#include "GLScene.hpp"
-#include "GLVectorFileObjects.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLMesh.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Feedback.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.VectorFileObjects.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Mesh.hpp"
+#include "GLS.Feedback.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -28,7 +29,7 @@ __published:	// IDE-managed Components
 	TGLCamera *GLCamera1;
 	TGLLightSource *GLLightSource1;
 	TGLFreeForm *GLFreeForm1;
-	TGLFeedback *GLFeedback1;
+	TGLFeedback *GLS.Feedback1;
 	TGLDummyCube *MeshObject1;
 	TGLCube *GLCube1;
 	TGLDodecahedron *GLDodecahedron1;
@@ -41,7 +42,7 @@ __published:	// IDE-managed Components
 	void __fastcall GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift, int X,
 		  int Y);
 private:	// User declarations
-    int mx, my;
+	int mx, my;
 
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

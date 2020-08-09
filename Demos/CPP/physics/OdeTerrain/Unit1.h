@@ -9,26 +9,26 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "GLBaseClasses.hpp"
-#include "GLBitmapFont.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLHeightData.hpp"
-#include "GLHUDObjects.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.BitmapFont.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.HeightData.hpp"
+#include "GLS.HUDObjects.hpp"
 #include "GLLensFlare.hpp"
-#include "GLMaterial.hpp"
-#include "GLNavigator.hpp"
-#include "GLObjects.hpp"
-#include "GLODECustomColliders.hpp"
-#include "GLODEManager.hpp"
-#include "GLScene.hpp"
-#include "GLSkydome.hpp"
-#include "GLTerrainRenderer.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.Material.hpp"
+#include "GLS.Navigator.hpp"
+#include "GLS.Objects.hpp"
+#include "Physics.ODEManager.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SkyDome.hpp"
+#include "GLS.TerrainRenderer.hpp"
+#include "GLS.SceneViewer.hpp"
 #include "GLS.Utils.hpp"
 #include "JPeg.hpp"
-#include "GLKeyBoard.hpp"
+#include "GLS.Keyboard.hpp"
+#include "Physics.ODEManager.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

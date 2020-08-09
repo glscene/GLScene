@@ -11,16 +11,16 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLVectorFileObjects.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLTexture.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.VectorFileObjects.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Texture.hpp"
 #include "GLS.Utils.hpp"
 #include "JPeg.hpp"
 

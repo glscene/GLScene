@@ -14,17 +14,16 @@ uses
   System.Classes, 
   System.SysUtils, 
   System.ImageList,
-  VCL.Forms, 
-  VCL.Dialogs, 
+  VCL.Forms,
+  VCL.Dialogs,
   VCL.StdCtrls,
-  VCL.Controls, 
-  VCL.Buttons, 
-  Vcl.ExtCtrls, 
-  Vcl.ImgList, 
-  Vcl.ComCtrls, 
+  VCL.Controls,
+  VCL.Buttons,
+  Vcl.ExtCtrls,
+  Vcl.ImgList,
+  Vcl.ComCtrls,
   Vcl.ToolWin,
-   
-  GLS.PlugInManager;
+  GLS.PluginManager;
 
 type
   TGLPlugInManagerEditorForm = class(TForm)
@@ -52,7 +51,6 @@ type
     procedure UnloadButtonClick(Sender: TObject);
     procedure ServiceBoxChange(Sender: TObject);
   private
-     
     FManager: TGLPlugInManager;
   public
     

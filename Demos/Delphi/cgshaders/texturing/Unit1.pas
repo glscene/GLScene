@@ -15,24 +15,23 @@ uses
   Vcl.ExtCtrls,
   Vcl.ComCtrls,
 
-  GLS.OpenGLx,
   Import.Cg,
   Import.cgGL,
   GLSL.CgShader,
 
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  GLSceneViewer,
-  GLTexture,
-  Scene.VectorGeometry,
-  GLCadencer,
-  GLGraph,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.SceneViewer,
+  GLS.Texture,
+  GLS.VectorGeometry,
+  GLS.Cadencer,
+  GLS.Graph,
+ 
+  GLS.Material,
+  GLS.Coordinates,
   GLS.Utils,
-  GLBaseClasses;
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)
@@ -108,12 +107,12 @@ type
     Label17: TLabel;
     Label18: TLabel;
     CheckBox2: TCheckBox;
-    procedure GLSceneViewer1MouseDown(Sender: TObject;
-      Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+    procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
     procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
       X, Y: Integer);
-    procedure GLCadencer1Progress(Sender: TObject; const deltaTime,
-      newTime: Double);
+    procedure GLCadencer1Progress(Sender: TObject;
+      const deltaTime, newTime: Double);
     procedure FormMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure FormCreate(Sender: TObject);
@@ -134,17 +133,16 @@ type
     procedure CgShader1UnApplyFP(CgProgram: TCgProgram);
     procedure CgShader1Initialize(CgShader: TCustomCgShader);
     procedure CheckBox2Click(Sender: TObject);
-  private
-
   public
-
-    mx, my : Integer;
+    mx, my: Integer;
   end;
 
 var
   Form1: TForm1;
 
+//------------------------------------
 implementation
+//------------------------------------
 
 {$R *.dfm}
 
@@ -152,7 +150,8 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
   SetGLSceneMediaDir();
   // load Cg proggy from project dir
-  with CgShader1 do begin
+  with CgShader1 do
+  begin
     VertexProgram.LoadFromFile('Shaders\cg_texture_vp.cg');
     MemoVertCode.Lines.Assign(VertexProgram.Code);
 
@@ -162,7 +161,8 @@ begin
 
   // Load images from media dir
   SetGLSceneMediaDir();
-  with GLMatLib do begin
+  with GLMatLib do
+  begin
     Materials[0].Material.Texture.Image.LoadFromFile('moon.bmp');
     Materials[1].Material.Texture.Image.LoadFromFile('clover.jpg');
     Materials[2].Material.Texture.Image.LoadFromFile('marbletiles.jpg');
@@ -174,7 +174,8 @@ procedure TForm1.CgShader1Initialize(CgShader: TCustomCgShader);
 begin
   // Due to parameter shadowing (ref. Cg Manual), parameters that doesn't change
   // once set can be assigned for once in the OnInitialize event.
-  with CgShader1.FragmentProgram, GLMatLib do begin
+  with CgShader1.FragmentProgram, GLMatLib do
+  begin
     ParamByName('Map0').SetToTextureOf(Materials[0]);
     ParamByName('Map1').SetToTextureOf(Materials[1]);
     ParamByName('Map2').SetToTextureOf(Materials[2]);
@@ -185,19 +186,23 @@ begin
   end;
 
   // Display profiles used
-  LabelVertProfile.Caption:='Using profile: ' + CgShader1.VertexProgram.GetProfileStringA;
-  LabelFragProfile.Caption:='Using profile: ' + CgShader1.FragmentProgram.GetProfileStringA;
+  LabelVertProfile.Caption := 'Using profile: ' +
+    CgShader1.VertexProgram.GetProfileStringA;
+  LabelFragProfile.Caption := 'Using profile: ' +
+    CgShader1.FragmentProgram.GetProfileStringA;
 end;
 
 procedure TForm1.CgShader1ApplyVP(CgProgram: TCgProgram; Sender: TObject);
 
-var v : TVector;
+var
+  v: TVector;
 
-  function conv(TrackBar : TTrackBar): single;
-  var half : integer;
+  function conv(TrackBar: TTrackBar): single;
+  var
+    half: Integer;
   begin
-    half:=TrackBar.Max div 2;
-    result:= (TrackBar.Position-half) / half;
+    half := TrackBar.Max div 2;
+    result := (TrackBar.Position - half) / half;
   end;
 
 begin
@@ -213,31 +218,36 @@ begin
 end;
 
 procedure TForm1.CgShader1ApplyFP(CgProgram: TCgProgram; Sender: TObject);
-var v : TVector;
+var
+  v: TVector;
 
-  function conv(TrackBar : TTrackBar): single;
-  var half : integer;
+  function conv(TrackBar: TTrackBar): single;
+  var
+    half: Integer;
   begin
-    half:=TrackBar.Max div 2;
-    result:= (TrackBar.Position-half) / half;
+    half := TrackBar.Max div 2;
+    result := (TrackBar.Position - half) / half;
   end;
 
 begin
-  with CgProgram do begin
+  with CgProgram do
+  begin
     ParamByName('Map0').EnableTexture;
     ParamByName('Map1').EnableTexture;
     ParamByName('Map2').EnableTexture;
     ParamByName('Map3').EnableTexture;
   end;
 
-  v:= vectormake( conv(TrackBar5), conv(TrackBar6), conv(TrackBar7), conv(TrackBar8) );
+  v := vectormake(conv(TrackBar5), conv(TrackBar6), conv(TrackBar7),
+    conv(TrackBar8));
 
   CgProgram.ParamByName('weights').SetAsVector(v);
 end;
 
 procedure TForm1.CgShader1UnApplyFP(CgProgram: TCgProgram);
 begin
-  with CgProgram do begin
+  with CgProgram do
+  begin
     ParamByName('Map0').DisableTexture;
     ParamByName('Map1').DisableTexture;
     ParamByName('Map2').DisableTexture;
@@ -249,34 +259,34 @@ end;
 
 procedure TForm1.CBVertexProgramClick(Sender: TObject);
 begin
-   CgShader1.VertexProgram.Enabled:=(Sender as TCheckBox).checked;
+  CgShader1.VertexProgram.Enabled := (Sender as TCheckBox).checked;
 end;
 
 procedure TForm1.CBFragmentProgramClick(Sender: TObject);
 begin
-   CgShader1.FragmentProgram.Enabled:=(Sender as TCheckBox).checked;
+  CgShader1.FragmentProgram.Enabled := (Sender as TCheckBox).checked;
 end;
 
 procedure TForm1.ButtonApplyFPClick(Sender: TObject);
 begin
-  CgShader1.FragmentProgram.Code:=MemoFragCode.Lines;
-  (Sender as TButton).Enabled:=false;
+  CgShader1.FragmentProgram.Code := MemoFragCode.Lines;
+  (Sender as TButton).Enabled := false;
 end;
 
 procedure TForm1.ButtonApplyVPClick(Sender: TObject);
 begin
-  CgShader1.VertexProgram.Code:=MemoVertCode.Lines;
-  (Sender as TButton).Enabled:=false;
+  CgShader1.VertexProgram.Code := MemoVertCode.Lines;
+  (Sender as TButton).Enabled := false;
 end;
 
 procedure TForm1.MemoFragCodeChange(Sender: TObject);
 begin
-  ButtonApplyFP.Enabled:=true;
+  ButtonApplyFP.Enabled := true;
 end;
 
 procedure TForm1.MemoVertCodeChange(Sender: TObject);
 begin
-  ButtonApplyVP.Enabled:=true;
+  ButtonApplyVP.Enabled := true;
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -299,25 +309,26 @@ begin
   CgShader1.VertexProgram.ListCompilation(Memo1.Lines);
 end;
 
-procedure TForm1.GLSceneViewer1MouseDown(Sender: TObject;
-  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
-begin
-   mx:=X;
-   my:=Y;
-end;
-
-procedure TForm1.GLSceneViewer1MouseMove(Sender: TObject;
+procedure TForm1.GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-   if Shift<>[] then begin
-      GLCamera1.MoveAroundTarget(my-Y, mx-X);
-      mx:=X;
-      my:=Y;
-   end;
+  mx := X;
+  my := Y;
 end;
 
-procedure TForm1.GLCadencer1Progress(Sender: TObject; const deltaTime,
-  newTime: Double);
+procedure TForm1.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
+  X, Y: Integer);
+begin
+  if Shift <> [] then
+  begin
+    GLCamera1.MoveAroundTarget(my - Y, mx - X);
+    mx := X;
+    my := Y;
+  end;
+end;
+
+procedure TForm1.GLCadencer1Progress(Sender: TObject;
+  const deltaTime, newTime: Double);
 begin
   GLSceneViewer1.Invalidate;
 end;
@@ -326,28 +337,31 @@ procedure TForm1.FormMouseWheel(Sender: TObject; Shift: TShiftState;
   WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
 begin
   with GLSceneViewer1 do
-    if PtInRect(ClientRect, ScreenToClient(MousePos)) then begin
-      GLCamera1.SceneScale:=GLCamera1.SceneScale * (1000 - WheelDelta) / 1000;
-      Handled:=true;
+    if PtInRect(ClientRect, ScreenToClient(MousePos)) then
+    begin
+      GLCamera1.SceneScale := GLCamera1.SceneScale * (1000 - WheelDelta) / 1000;
+      Handled := true;
     end;
 end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);
 begin
-  with GLSceneViewer1 do begin
-    PanelFPS.Caption:=Format('%.1f fps', [FramesPerSecond]);
+  with GLSceneViewer1 do
+  begin
+    PanelFPS.Caption := Format('%.1f fps', [FramesPerSecond]);
     ResetPerformanceMonitor;
   end;
 end;
 
 procedure TForm1.FormKeyPress(Sender: TObject; var Key: Char);
 begin
-  if key=#27 then close;
+  if Key = #27 then
+    close;
 end;
 
 procedure TForm1.CheckBox2Click(Sender: TObject);
 begin
-  CgShader1.Enabled:=CheckBox2.Checked;
+  CgShader1.Enabled := CheckBox2.checked;
 end;
 
 end.

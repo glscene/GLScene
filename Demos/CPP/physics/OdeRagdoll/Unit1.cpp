@@ -5,19 +5,19 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLBitmapFont"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLHUDObjects"
-#pragma link "GLMaterial"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLShadowPlane"
-#pragma link "GLVectorFileObjects"
-#pragma link "GLSceneViewer"
-#pragma link "GLWindowsFont"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.BitmapFont"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.HUDObjects"
+#pragma link "GLS.Material"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.ShadowPlane"
+#pragma link "GLS.VectorFileObjects"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.WindowsFont"
 
 #pragma resource "*.dfm"
 

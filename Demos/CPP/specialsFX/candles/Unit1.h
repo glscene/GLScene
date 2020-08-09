@@ -7,16 +7,16 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLExtrusion.hpp"
-#include "GLFireFX.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Extrusion.hpp"
+#include "GLS.FireFX.hpp"
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SceneViewer.hpp"
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------

@@ -11,7 +11,6 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  WindowState = wsMaximized
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13

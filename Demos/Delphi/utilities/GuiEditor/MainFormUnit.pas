@@ -14,10 +14,10 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtDlgs,
   
-  GLGui, GLScene, GLSceneViewer,
-  GLObjects, GLHUDObjects, GLWindows, GLBitmapFont, GLWindowsFont,
-  GLTexture, FGuiSkinEditor, GLCrossPlatform, GLMaterial, GLCoordinates,
-  GLBaseClasses;
+  GLS.Gui, GLS.Scene, GLS.SceneViewer,
+  GLS.Objects, GLS.HUDObjects, GLS.Windows, GLS.BitmapFont, GLS.WindowsFont,
+  GLS.Texture, FGuiSkinEditor, GLS.Material, GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

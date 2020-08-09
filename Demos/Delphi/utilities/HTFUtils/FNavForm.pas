@@ -13,7 +13,7 @@ uses
   GR32_Image,
   GR32,
   GR32_Layers,
-  GLHeightTileFile;
+  GLS.HeightTileFileHDS;
 
 type
   TNavForm = class(TForm)

@@ -6,7 +6,7 @@
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <FrameworkType>VCL</FrameworkType>
-        <ProjectVersion>18.1</ProjectVersion>
+        <ProjectVersion>18.7</ProjectVersion>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -98,12 +98,16 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
+        <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
+        <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <TASM_Defines>_DEBUG;$(TASM_Defines)</TASM_Defines>
         <BRCC_Defines>_DEBUG;$(BRCC_Defines)</BRCC_Defines>
         <Icon_MainIcon>fog_Icon.ico</Icon_MainIcon>
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
+        <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
+        <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <ILINK_LibraryPath>$(BDS)\lib\debug;$(ILINK_LibraryPath);$(ILINK_LibraryPath)</ILINK_LibraryPath>
@@ -124,6 +128,7 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <LinkPackageStatics>GLScene_RT.lib;fmx.lib;xmlrtl.lib;vclimg.lib</LinkPackageStatics>
         <LinkPackageImports>rtl.bpi;vcl.bpi</LinkPackageImports>
+        <BT_BuildType>Debug</BT_BuildType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <BCC_Defines>_DEBUG;$(BCC_Defines);$(BCC_Defines)</BCC_Defines>

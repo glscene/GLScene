@@ -4,12 +4,25 @@ interface
 
 uses
   Winapi.Windows,
-  System.SysUtils, System.Classes, System.Actions, System.Math,
-  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ValEdit, 
-  Vcl.Grids, Vcl.Menus, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ToolWin, 
-  Vcl.ExtCtrls, Vcl.ActnList, Vcl.ImgList,
+  System.SysUtils, 
+  System.Classes, 
+  System.Actions, 
+  System.Math,
+  Vcl.Graphics, 
+  Vcl.Controls, 
+  Vcl.Forms, 
+  Vcl.Dialogs, 
+  ValEdit, 
+  Vcl.Grids, 
+  Vcl.Menus, 
+  Vcl.StdCtrls, 
+  Vcl.ComCtrls, 
+  Vcl.ToolWin, 
+  Vcl.ExtCtrls, 
+  Vcl.ActnList, 
+  Vcl.ImgList,
   
-  GLHeightTileFile;
+  GLS.HeightTileFileHDS;
 
 type
    TSrc = record

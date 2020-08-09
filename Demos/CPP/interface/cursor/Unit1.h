@@ -13,16 +13,16 @@
 #include <Vcl.ExtDlgs.hpp>
 #include <Vcl.Menus.hpp>
 #include <Vcl.Imaging.jpeg.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLHUDObjects.hpp"
-#include "GLMaterial.hpp"
-#include "GLObjects.hpp"
-#include "GLParticles.hpp"
-#include "GLScene.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.HUDObjects.hpp"
+#include "GLS.Material.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Particles.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SceneViewer.hpp"
 #include "GLS.Utils.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

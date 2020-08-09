@@ -12,22 +12,22 @@ uses
   Vcl.Dialogs,
   Vcl.Controls,
 
-  GLScene,
-  Scene.VectorTypes,
-  GLS.NGDManager,
-  GLObjects,
-  GLCoordinates,
-  GLCadencer,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLBaseClasses,
-  Scene.VectorGeometry,
-  GLSimpleNavigation,
-  GLKeyboard,
-  GLGeomObjects,
-  GLHUDObjects,
-  GLBitmapFont,
-  GLWindowsFont;
+  GLS.Scene,
+  GLS.VectorTypes,
+  Physics.NGDManager,
+  GLS.Objects,
+  GLS.Coordinates,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+ 
+  GLS.BaseClasses,
+  GLS.VectorGeometry,
+  GLS.SimpleNavigation,
+  GLS.Keyboard,
+  GLS.GeomObjects,
+  GLS.HUDObjects,
+  GLS.BitmapFont,
+  GLS.WindowsFont;
 
 type
   TForm1 = class(TForm)

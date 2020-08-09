@@ -10,22 +10,22 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLBitmapFont.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLHUDObjects.hpp"
-#include "GLMaterial.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLShadowPlane.hpp"
-#include "GLVectorFileObjects.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLWindowsFont.hpp"
-#include "ODEUtils.hpp"
-#include "ODEImport.hpp"
-#include "GLODERagdoll.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.BitmapFont.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.HUDObjects.hpp"
+#include "GLS.Material.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.ShadowPlane.hpp"
+#include "GLS.VectorFileObjects.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.WindowsFont.hpp"
+#include "Physics.ODEUtils.hpp"
+#include "Import.ODE.hpp"
+#include "Physics.ODERagdoll.hpp"
 
 //---------------------------------------------------------------------------
 //Physic World ODE

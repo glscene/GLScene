@@ -10,11 +10,21 @@ uses
   Vcl.Controls,
   Vcl.Graphics,
   Vcl.Dialogs,
-  
-  GLScene, GLObjects, GLVectorFileObjects, GLMaterial, GLCadencer,
-  GLSArchiveManager, GLBaseClasses, Scene.VectorGeometry, GLFileMS3D,
-  GLFileTGA, GLFileZLIB, GLCoordinates, GLCrossPlatform, GLSceneViewer,
-  Scene.VectorTypes, GLS.Utils;
+
+  GLS.VectorTypes,
+  GLS.VectorGeometry,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.VectorFileObjects,
+  GLS.Material, GLS.Cadencer,
+  GLS.ArchiveManager,
+  GLS.BaseClasses,
+  GLS.FileMS3D,
+  GLS.FileTGA,
+  GLS.FileZLIB,
+  GLS.Coordinates,
+  GLS.SceneViewer,
+  GLS.Utils;
 
 type
 
@@ -36,18 +46,16 @@ type
     procedure GLCadencer1Progress(Sender: TObject;
       const deltaTime, newTime: Double);
   private
-     
-  public
-     
   end;
 
 var
   Form1: TForm1;
 
+//--------------------------------------------
 implementation
+//--------------------------------------------
 
 {$R *.dfm}
-{ TForm1 }
 
 procedure TForm1.GLCadencer1Progress(Sender: TObject;
   const deltaTime, newTime: Double);
@@ -56,18 +64,21 @@ begin
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
+var
+  FileName: TFileName;
 begin
-  SetGLSceneMediaDir();
+  ///SetGLSceneMediaDir();
+  FileName := GetSceneMediaPath();
   GLMaterialLibrary1.TexturePaths := GetCurrentDir();
   with GLSArchiveManager1.Archives[0] do
   begin
     LoadFromFile('Chair.zlib');
     if FileName = '' then
       ShowMessage('Archive Can not be Loaded');
-    { Automatic loading from archive.
-      If file is not in archive, then it's loaded from harddrive. }
+    (* Automatic loading from archive.
+      If file is not in archive, then it's loaded from harddrive. *)
     GLFreeForm.LoadFromFile('Chair.ms3d');
-    { Direct loading from archive }
+    // Direct loading from archive
     GLFreeForm1.LoadFromStream('Chair.ms3d', GetContent('Chair.ms3d'));
   end;
   GLPlane1.Material.Texture.Image.LoadFromFile('GLScene.bmp');

@@ -15,16 +15,15 @@ uses
   System.Classes,
   System.SysUtils,
 
-  Scene.PersistentClasses,
-  GLBaseClasses,
-  GLContext,
-  Scene.VectorGeometry,
-  Scene.VectorTypes,
-  Scene.VectorLists,
-  GLGraphics,
-  Scene.Strings,
+  GLS.PersistentClasses,
+  GLS.BaseClasses,
+  GLS.Context,
+  GLS.VectorGeometry,
+  GLS.VectorTypes,
+  GLS.VectorLists,
+  GLS.Graphics,
+  GLS.Strings,
   GLS.Utils,
-  GLCrossPlatform,
 
   GLS.CUDAApi,
   GLS.CUDARunTime,
@@ -33,7 +32,7 @@ uses
   GLS.CUDACompiler,
   GLS.CUDAContext,
   GLS.CUDADataAccess
-  {$IFDEF USE_LOGGING},Scene.Logger;{$ELSE};{$ENDIF}
+  {$IFDEF USE_LOGGING},GLS.Logger;{$ELSE};{$ENDIF}
 
 type
   TCUDAChange = (cuchDevice, cuchContext, cuchSize, cuchAddresMode, cuchFlag,
@@ -225,7 +224,7 @@ type
     procedure FillMem(const Value);
     procedure CopyTo(const ADstMemData: TCUDAMemData); overload;
     procedure CopyTo(const AGLImage: TGLImage); overload;
-    {  Copy data to Graphic resource. }
+    //  Copy data to Graphic resource.
     procedure CopyTo(const AGLGraphic: TCUDAGraphicResource;
       aAttr: string = ''); overload;
     procedure CopyFrom(const ASrcMemData: TCUDAMemData); overload;
@@ -335,7 +334,6 @@ type
     function GetNumRegisters: Integer;
     function GetParameter(const AName: string): TCUDAFuncParam;
   protected
-    { Protected declaration }
     procedure AllocateHandles; override;
     procedure DestroyHandles; override;
     function GetIsAllocated: Boolean; override;
@@ -395,7 +393,6 @@ type
     procedure SetArray(Value: TCUDAMemData);
     function GetHandle: PCUtexref;
   protected
-    { Protected declaration }
     procedure AllocateHandles; override;
     procedure DestroyHandles; override;
     function GetIsAllocated: Boolean; override;
@@ -452,11 +449,7 @@ procedure RegisterCUDAComponentNameChangeEvent(ANotifyEvent: TNotifyEvent);
 procedure DeRegisterCUDAComponentNameChangeEvent;
 
 //-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
 implementation
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
 //-----------------------------------------------------------------
 
 
@@ -525,14 +518,10 @@ begin
       oFormat := ctFloat;
   end;
   case nCh of
-    1:
-      oNum := cnOne;
-    2:
-      oNum := cnTwo;
-    3:
-      oNum := cnThree;
-    4:
-      oNum := cnFour;
+    1: oNum := cnOne;
+    2: oNum := cnTwo;
+    3: oNum := cnThree;
+    4: oNum := cnFour;
   end;
 end;
 

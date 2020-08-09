@@ -13,15 +13,14 @@ uses
   Vcl.Dialogs,
   Vcl.StdCtrls,
 
-  GLScene,
-  GLSceneViewer,
-  GLFeedback,
-  GLPolyhedron,
-  GLCrossPlatform,
-  GLVectorFileObjects,
-  GLCoordinates,
-  GLBaseClasses,
-  GLObjects;
+  GLS.Scene,
+  GLS.SceneViewer,
+  GLS.Feedback,
+  GLS.GeomObjects,
+  GLS.VectorFileObjects,
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.Objects;
 
 type
   TForm1 = class(TForm)
@@ -33,7 +32,7 @@ type
     GLCube1: TGLCube;
     GLFreeForm1: TGLFreeForm;
     Button1: TButton;
-    GLFeedback1: TGLFeedback;
+    GLS.Feedback1: TGLS.Feedback;
     GLDodecahedron1: TGLDodecahedron;
     MeshObject1: TGLDummyCube;
     MeshObject2: TGLDummyCube;
@@ -64,7 +63,7 @@ begin
 
   // Set feedback to active, will feedback render child
   // objects into it's buffer
-  GLFeedback1.Active := True;
+  GLS.Feedback1.Active := True;
 
   // Process the first mesh object (GLCube and GLDodecahedron)
 
@@ -73,7 +72,7 @@ begin
 
   // Render the feedback object to buffer it's child object
   // that are visible
-  GLSceneViewer1.Buffer.Render(GLFeedback1);
+  GLSceneViewer1.Buffer.Render(GLS.Feedback1);
 
   // Hide the child objects we rendered
   MeshObject1.Visible := False;
@@ -86,13 +85,13 @@ begin
   // and build a mesh (normals are recalculated
   // since feedback only yields position and
   // texcoords)
-  GLFeedback1.BuildMeshFromBuffer(
+  GLS.Feedback1.BuildMeshFromBuffer(
     mo.Vertices, mo.Normals, mo.Colors, mo.TexCoords, nil);
 
   // Process the second mesh object (GLSphere)
   // (comments from first mesh object apply here also)
   MeshObject2.Visible := True;
-  GLSceneViewer1.Buffer.Render(GLFeedback1);
+  GLSceneViewer1.Buffer.Render(GLS.Feedback1);
   MeshObject2.Visible := False;
 
   // Vertex indices are required for smooth normals
@@ -100,10 +99,10 @@ begin
   mo.Mode := momFaceGroups;
   fg := TFGIndexTexCoordList.CreateOwned(mo.FaceGroups);
   fg.Mode := fgmmTriangles;
-  GLFeedback1.BuildMeshFromBuffer(mo.Vertices, mo.Normals, nil, fg.TexCoords, fg.VertexIndices);
+  GLS.Feedback1.BuildMeshFromBuffer(mo.Vertices, mo.Normals, nil, fg.TexCoords, fg.VertexIndices);
 
   // Deactivate the feedback object
-  GLFeedback1.Active := False;
+  GLS.Feedback1.Active := False;
 
   GLFreeForm1.StructureChanged;
 end;

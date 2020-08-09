@@ -23,8 +23,9 @@ object Form1: TForm1
     Width = 625
     Height = 375
     Camera = GLCamera1
-    Buffer.BackgroundColor = clBackground
+    Buffer.BackgroundColor = clTeal
     FieldOfView = 150.137161254882800000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
@@ -38,8 +39,6 @@ object Form1: TForm1
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitTop = 397
-    ExplicitWidth = 578
     object MouseLookCheckBox: TCheckBox
       Left = 8
       Top = 6
@@ -140,6 +139,9 @@ object Form1: TForm1
         Radius = 10.000000000000000000
       end
       object GLArrowLine1: TGLArrowLine
+        Material.FrontProperties.Ambient.Color = {0000803FF8FEFE3E000000000000803F}
+        Material.FrontProperties.Diffuse.Color = {0000803FF8FEFE3E000000000000803F}
+        Material.FrontProperties.Emission.Color = {0000803FF8FEFE3E000000000000803F}
         Direction.Coordinates = {000000000000803F0000000000000000}
         Position.Coordinates = {0000000000004843000000000000803F}
         Scale.Coordinates = {0000C8420000C8420000C84200000000}

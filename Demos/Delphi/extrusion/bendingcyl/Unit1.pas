@@ -13,15 +13,15 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
   
-  GLScene,
-  GLObjects,
-  GLExtrusion,
-  GLCadencer,
-  Scene.VectorGeometry,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses;
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Extrusion,
+  GLS.Cadencer,
+  GLS.VectorGeometry,
+  GLS.SceneViewer,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

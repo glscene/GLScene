@@ -30,9 +30,6 @@
         <Projects Include="multitexture\Multitexture.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="procedural\procedural.dproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="proceduralclouds\ProceduralClouds.dproj">
             <Dependencies/>
         </Projects>
@@ -143,15 +140,6 @@
     <Target Name="Multitexture:Make">
         <MSBuild Projects="multitexture\Multitexture.dproj" Targets="Make"/>
     </Target>
-    <Target Name="procedural">
-        <MSBuild Projects="procedural\procedural.dproj"/>
-    </Target>
-    <Target Name="procedural:Clean">
-        <MSBuild Projects="procedural\procedural.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="procedural:Make">
-        <MSBuild Projects="procedural\procedural.dproj" Targets="Make"/>
-    </Target>
     <Target Name="ProceduralClouds">
         <MSBuild Projects="proceduralclouds\ProceduralClouds.dproj"/>
     </Target>
@@ -216,13 +204,13 @@
         <MSBuild Projects="fire2d\Fire2D.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="cubemap;customquad;dynamictexture;dyncubemap;matscript;mirror;multimaterial;multipass;Multitexture;procedural;ProceduralClouds;texanim;texcombine;texformat;Transparency;TransparencyAdvanced;Fire2D"/>
+        <CallTarget Targets="cubemap;customquad;dynamictexture;dyncubemap;matscript;mirror;multimaterial;multipass;Multitexture;ProceduralClouds;texanim;texcombine;texformat;Transparency;TransparencyAdvanced;Fire2D"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="cubemap:Clean;customquad:Clean;dynamictexture:Clean;dyncubemap:Clean;matscript:Clean;mirror:Clean;multimaterial:Clean;multipass:Clean;Multitexture:Clean;procedural:Clean;ProceduralClouds:Clean;texanim:Clean;texcombine:Clean;texformat:Clean;Transparency:Clean;TransparencyAdvanced:Clean;Fire2D:Clean"/>
+        <CallTarget Targets="cubemap:Clean;customquad:Clean;dynamictexture:Clean;dyncubemap:Clean;matscript:Clean;mirror:Clean;multimaterial:Clean;multipass:Clean;Multitexture:Clean;ProceduralClouds:Clean;texanim:Clean;texcombine:Clean;texformat:Clean;Transparency:Clean;TransparencyAdvanced:Clean;Fire2D:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="cubemap:Make;customquad:Make;dynamictexture:Make;dyncubemap:Make;matscript:Make;mirror:Make;multimaterial:Make;multipass:Make;Multitexture:Make;procedural:Make;ProceduralClouds:Make;texanim:Make;texcombine:Make;texformat:Make;Transparency:Make;TransparencyAdvanced:Make;Fire2D:Make"/>
+        <CallTarget Targets="cubemap:Make;customquad:Make;dynamictexture:Make;dyncubemap:Make;matscript:Make;mirror:Make;multimaterial:Make;multipass:Make;Multitexture:Make;ProceduralClouds:Make;texanim:Make;texcombine:Make;texformat:Make;Transparency:Make;TransparencyAdvanced:Make;Fire2D:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

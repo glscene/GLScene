@@ -22,8 +22,8 @@ uses
   GR32_Image,
   GR32,
 
-  GLHeightTileFile,
-  Scene.VectorGeometry,
+  GLS.HeightTileFileHDS,
+  GLS.VectorGeometry,
   GLS.Utils;
 
 type

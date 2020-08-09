@@ -6,56 +6,57 @@
 #include "Unit1.h"
 // ---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLCustomShader"
-#pragma link "GLFBORenderer"
-#pragma link "GLMaterial"
-#pragma link "GLObjects"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
 
-#pragma link "GLUtils"
-#pragma link "GLGeomObjects"
-#pragma link "GLCameraController"
+#pragma link "GLSL.CustomShader"
+#pragma link "GLS.FBORenderer"
+#pragma link "GLS.Material"
+#pragma link "GLS.Objects"
+
+#pragma link "GLS.Utils"
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.CameraController"
 #pragma link "GLGraphics"
-#pragma link "GLFileTGA"
-#pragma link "Scene.VectorTypes"
-#pragma link "GLRenderContextInfo"
-#pragma link "GLShadowPlane"
-#pragma link "Scene.VectorGeometry"
-#pragma link "GLMesh"
-#pragma link "GLGui"
-#pragma link "GLWindows"
-#pragma link "GLState"
-#pragma link "OpenGLTokens"
-#pragma link "GLContext"
+#pragma link "GLS.FileTGA"
+#pragma link "GLS.VectorTypes"
+#pragma link "GLS.RenderContextInfo"
+#pragma link "GLS.ShadowPlane"
+#pragma link "GLS.VectorGeometry"
+#pragma link "GLS.Mesh"
+#pragma link "GLS.Gui"
+#pragma link "GLS.Windows"
+#pragma link "GLS.State"
+#pragma link "GLS.OpenGLTokens"
+#pragma link "GLS.Context"
 
-#pragma link "GLSArchiveManager"
-#pragma link "GLScene"
-#pragma link "GLSimpleNavigation"
-#pragma link "GLSLShader"
-#pragma link "GLVectorFileObjects"
-#pragma link "GLSceneViewer"
-#pragma link "GLCompositeImage"
-#pragma link "GLFileMS3D"
-#pragma link "GLFileJPEG"
-#pragma link "GLFilePNG"
-#pragma link "GLFileZLIB"
+#pragma link "GLS.ArchiveManager"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SimpleNavigation"
+#pragma link "GLS.VectorFileObjects"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.CompositeImage"
+#pragma link "GLS.FileMS3D"
+#pragma link "GLS.FileJPEG"
+#pragma link "GLS.FilePNG"
+#pragma link "GLS.FileZLIB"
+#pragma link "GLSL.CustomShader"
+#pragma link "GLSL.Shader"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
 int mdx, mdy;
-TMatrix FBiasMatrix;
-TMatrix FLightModelViewMatrix;
-TMatrix FLightProjMatrix;
-TMatrix FInvCameraMatrix;
-TMatrix FEyeToLightMatrix;
+Gls::Vectorgeometry::TMatrix4f FBiasMatrix;
+Gls::Vectorgeometry::TMatrix4f FLightModelViewMatrix;
+Gls::Vectorgeometry::TMatrix4f FLightProjMatrix;
+Gls::VectorGeometry::TMatrix FInvCameraMatrix;
+Gls::Vectorgeometry::TMatrix4f FEyeToLightMatrix;
 
-TMatrix FLightModelViewMatrix2;
-TMatrix FLightProjMatrix2;
-TMatrix FInvCameraMatrix2;
-TMatrix FEyeToLightMatrix2;
+Gls::Vectorgeometry::TMatrix4f FLightModelViewMatrix2;
+Gls::Vectorgeometry::TMatrix4f FLightProjMatrix2;
+Gls::Vectorgeometry::TMatrix4f FInvCameraMatrix2;
+Gls::Vectorgeometry::TMatrix4f FEyeToLightMatrix2;
 
 // ---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {

@@ -57,18 +57,18 @@ uses
   Vcl.Imaging.jpeg,
   Vcl.Forms,
 
-  OpenGLTokens,
-  GLScene,
-  Scene.VectorTypes,
-  Scene.VectorGeometry,
-  GLHeightData,
-  GLTerrainRenderer,
-  GLTexture,
-  GLColor,
-  GLCoordinates,
-  GLRenderContextInfo,
-  GLMaterial,
-  GLContext;
+  GLS.OpenGLTokens,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.VectorGeometry,
+  GLS.HeightData,
+  GLS.TerrainRenderer,
+  GLS.Texture,
+  GLS.Color,
+  GLS.Coordinates,
+  GLS.RenderContextInfo,
+  GLS.Material,
+  GLS.Context;
 
 type
   TSeaErosion = record
@@ -1780,7 +1780,7 @@ begin
   r := FSize;
 end;
 
-// Copied from GLHeightData.InterpolatedHeight
+// Copied from GLS.HeightData.InterpolatedHeight
 function TGLCustomRandomHDS.Interpolate(x, y: single): single;
 var
   ix, iy: integer;
@@ -1905,7 +1905,7 @@ end;
 procedure TGLCustomRandomHDS.StartPreparingData(heightData: TGLHeightData);
 var
   x, y, x0, y0: integer;
-  rasterLine: GLHeightData.PSmallIntArray;
+  rasterLine: GLS.HeightData.PSmallIntArray;
   oldType: TGLHeightDataType;
 begin
   with heightData do
@@ -2299,7 +2299,7 @@ end;
   LandTile: tLandTile);
   var
   x,y,x0,y0	:integer;
-  rasterLine	:GLHeightData.PSingleArray;
+  rasterLine	:GLS.HeightData.PSingleArray;
   oldType 	:THeightDataType;
   begin
   with HeightData do begin
@@ -2589,7 +2589,7 @@ end;
 procedure TGLFractalArchipelago.fOnCreateDefaultTile(heightData: TGLHeightData);
 var
   x, y: integer;
-  rasterLine: Scene.VectorGeometry.PSingleArray;
+  rasterLine: GLS.VectorGeometry.PSingleArray;
   oldType: TGLHeightDataType;
 begin
   with heightData do

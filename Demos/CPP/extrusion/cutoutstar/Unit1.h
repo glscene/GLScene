@@ -8,15 +8,15 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLScene.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLExtrusion.hpp"
-#include "GLMultiPolygon.hpp"
-#include "GLNodes.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Scene.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Extrusion.hpp"
+#include "GLS.MultiPolygon.hpp"
+#include "GLS.Nodes.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

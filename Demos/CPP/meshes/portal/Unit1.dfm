@@ -69,6 +69,7 @@ object Form1: TForm1
     Buffer.FogEnvironment.FogEnd = 10.000000000000000000
     Buffer.BackgroundColor = clNavy
     FieldOfView = 155.261871337890600000
+    PenAsTouch = False
     Anchors = [akLeft, akTop, akRight, akBottom]
     TabOrder = 0
   end
@@ -161,7 +162,6 @@ object Form1: TForm1
         DepthOfView = 100.000000000000000000
         FocalLength = 50.000000000000000000
         Position.Coordinates = {000000000000003F000000000000803F}
-        Up.Coordinates = {000000800000803F0000000000000000}
         Left = 264
         Top = 144
       end

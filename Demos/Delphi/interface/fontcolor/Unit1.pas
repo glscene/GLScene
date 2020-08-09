@@ -11,20 +11,20 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
   
-  GLSceneViewer,
-  GLScene,
-  GLObjects,
-  GLHUDObjects,
-  Scene.VectorGeometry,
-  Scene.VectorTypes,
-  GLBitmapFont,
-  GLCadencer,
-  GLTimeEventsMgr,
-  GLTeapot,
-  GLCrossPlatform,
-  GLCoordinates,
+  GLS.SceneViewer,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.HUDObjects,
+  GLS.VectorGeometry,
+  GLS.VectorTypes,
+  GLS.BitmapFont,
+  GLS.Cadencer,
+  GLS.TimeEventsMgr,
+  GLS.GeomObjects,
+ 
+  GLS.Coordinates,
   GLS.Utils,
-  GLBaseClasses;
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

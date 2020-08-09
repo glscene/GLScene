@@ -21,35 +21,34 @@ uses
   // Picture FileFormats
   Vcl.Imaging.Jpeg,
   Vcl.Imaging.PngImage,
-  
-  GLFileTGA,
-  GLMaterial, 
-  GLScene, 
-  GLSceneViewer, 
-  GLVectorFileObjects, 
-  GLObjects,
-  Scene.VectorGeometry, 
-  GLTexture,
-  GLContext,
-  Scene.VectorLists,
-  GLCadencer,
-  GLCoordinates, 
-  GLCrossPlatform, 
-  GLBaseClasses, 
-  GLMeshOptimizer, 
-  GLState,
-  GLRenderContextInfo, 
-  GLTextureFormat, 
-  GLColor, 
-  GLKeyBoard, 
-  GLGraphics,
-  Scene.PersistentClasses, 
-  GLMeshUtils, 
-  Scene.VectorTypes, 
-  GLS.Utils, 
-  GLGeomObjects,
-  GLSimpleNavigation, 
-  GLHUDObjects,
+
+  GLS.VectorTypes,
+  GLS.VectorLists,
+  GLS.VectorGeometry,
+  GLS.BaseClasses,
+  GLS.PersistentClasses,
+  GLS.Keyboard,
+
+  GLS.Material,
+  GLS.Scene,
+  GLS.SceneViewer,
+  GLS.VectorFileObjects,
+  GLS.Objects,
+  GLS.Texture,
+  GLS.Context,
+  GLS.Cadencer,
+  GLS.Coordinates,
+
+  GLS.State,
+  GLS.RenderContextInfo,
+  GLS.TextureFormat,
+  GLS.Color,
+  GLS.Graphics,
+  GLS.MeshUtils,
+  GLS.Utils,
+  GLS.GeomObjects,
+  GLS.SimpleNavigation, 
+  GLS.HUDObjects,
 
   GLSL.CustomShader,
   GLSL.ShapeShaders;
@@ -94,7 +93,6 @@ type
     cbxFurBlendSrc: TComboBox;
     cbxFurBlendDest: TComboBox;
     Objects: TGLDummyCube;
-    chkAnimateFur: TCheckBox;
     lblFurPassCount1: TLabel;
     tbFurPassCount: TTrackBar;
     Label4: TLabel;
@@ -313,7 +311,6 @@ type
       const deltaTime, newTime: Double);
     procedure LightCubeProgress(Sender: TObject;
       const deltaTime, newTime: Double);
-
     procedure tbFurLengthChange(Sender: TObject);
     procedure tbLatticeScaleXChange(Sender: TObject);
     procedure chkLatticeShaderClick(Sender: TObject);
@@ -325,7 +322,6 @@ type
       const deltaTime, newTime: Double);
     procedure cbxFurBlendDestChange(Sender: TObject);
     procedure cbxFurBlendSrcChange(Sender: TObject);
-
     procedure tbFurPassCountChange(Sender: TObject);
     procedure chkGoochShaderClick(Sender: TObject);
     procedure tbFurMaxLengthChange(Sender: TObject);
@@ -460,28 +456,31 @@ var
   i, j: Integer;
   v: Single;
 
+//----------------------------------------
 implementation
+//----------------------------------------
 
 {$R *.dfm}
 
-uses 
-  GLFileOBJ, 
-  GLFileSTL, 
-  GLFileLWO, 
-  GLFileQ3BSP, 
-  GLFileOCT, 
-  GLFileMS3D,
-  GLFileNMF, 
-  GLFileMD3, 
-  GLFile3DS, 
-  GLFileMD2, 
-  GLFileSMD, 
-  GLFilePLY, 
-  GLFileGTS,
-  GLFileVRML, 
-  GLFileMD5, 
-  GLS.FileTIN, 
-  GLFileDXF, 
+uses
+  GLS.FileTGA,
+  GLS.FileOBJ,
+  GLS.FileSTL,
+  GLS.FileLWO,
+  GLS.FileQ3BSP,
+  GLS.FileOCT,
+  GLS.FileMS3D,
+  GLS.FileNMF,
+  GLS.FileMD3,
+  GLS.File3DS,
+  GLS.FileMD2,
+  GLS.FileSMD,
+  GLS.FilePLY,
+  GLS.FileGTS,
+  GLS.FileVRML,
+  GLS.FileMD5,
+  GLS.FileTIN,
+  GLS.FileDXF,
   GLS.FileGRD;
 
 procedure TMainForm.Button10Click(Sender: TObject);
@@ -582,7 +581,7 @@ begin
     Objects.Roll(40 * deltaTime);
   end;
 
-  if chkAnimateFur.Checked then
+  if TabSheet1.Enabled then //Fur
   begin
     if (i <= 10) and (j >= 0) then
     begin

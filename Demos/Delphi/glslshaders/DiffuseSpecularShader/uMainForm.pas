@@ -12,34 +12,34 @@ uses
   Vcl.ExtCtrls, 
   Vcl.StdCtrls, 
 
-  GLTexture, 
-  GLCadencer, 
-  GLSceneViewer, 
-  GLScene, 
-  GLObjects, 
-  GLGraph,
-  Scene.VectorTypes, 
-  GLContext,
-  Scene.VectorGeometry,
-  GLGeomObjects,
-  GLVectorFileObjects,
+  GLS.Texture, 
+  GLS.Cadencer, 
+  GLS.SceneViewer, 
+  GLS.Scene, 
+  GLS.Objects, 
+  GLS.Graph,
+  GLS.VectorTypes, 
+  GLS.Context,
+  GLS.VectorGeometry,
+  GLS.GeomObjects,
+  GLS.VectorFileObjects,
 
   GLSL.Shader,
   GLSL.DiffuseSpecularShader,
   GLSL.CustomShader,
   GLSL.UserShader,
 
-  GLSimpleNavigation,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses,
+  GLS.SimpleNavigation,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.Utils,
 
-  GLFileMD2,
-  GLFileMS3D,
-  GLFile3DS,
-  FileDDSImage;
+  GLS.FileMD2,
+  GLS.FileMS3D,
+  GLS.File3DS,
+  FormatDDSImage;
 
 type
   TGLSLTestForm = class(TForm)

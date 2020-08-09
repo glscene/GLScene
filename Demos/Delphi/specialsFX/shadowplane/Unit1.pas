@@ -14,18 +14,18 @@ uses
   Vcl.ExtCtrls,
   Vcl.Imaging.Jpeg,
 
-  GLShadowPlane,
-  GLScene,
-  GLSceneViewer,
-  GLObjects,
-  GLCadencer,
-  Scene.VectorGeometry,
-  GLTexture,
-  GLGeomObjects,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses,
+  GLS.ShadowPlane,
+  GLS.Scene,
+  GLS.SceneViewer,
+  GLS.Objects,
+  GLS.Cadencer,
+  GLS.VectorGeometry,
+  GLS.Texture,
+  GLS.GeomObjects,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.Utils;
 
 type

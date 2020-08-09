@@ -10,19 +10,19 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
 
-  GLScene,
-  GLObjects,
-  GLSceneViewer,
-  GLS.ODEManager,
-  Scene.VectorGeometry,
-  GLCadencer,
-  GLGeomObjects,
-  GLHUDObjects,
-  GLBitmapFont,
-  GLWindowsFont,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.SceneViewer,
+  Physics.ODEManager,
+  GLS.VectorGeometry,
+  GLS.Cadencer,
+  GLS.GeomObjects,
+  GLS.HUDObjects,
+  GLS.BitmapFont,
+  GLS.WindowsFont,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses,
   Import.ODE;
 
 type

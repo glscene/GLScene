@@ -18,13 +18,13 @@ uses
   System.Classes,
   System.SysUtils,
   
-  OpenGLTokens,
-  Scene.VectorGeometry,
-  Scene.VectorTypes,
-  GLTexture,
-  GLContext,
+  GLS.OpenGLTokens,
+  GLS.VectorGeometry,
+  GLS.VectorTypes,
+  GLS.Texture,
+  GLS.Context,
   GLSL.CustomShader,
-  GLRenderContextInfo;
+  GLS.RenderContextInfo;
 
 type
   TGLCustomAsmShader = class;

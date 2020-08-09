@@ -125,6 +125,7 @@
         <LinkPackageImports>rtl.bpi;vcl.bpi;GLScene_RT.bpi;fmx.bpi;xmlrtl.bpi;vclimg.bpi</LinkPackageImports>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <BT_BuildType>Debug</BT_BuildType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <Defines>_DEBUG;$(Defines)</Defines>

@@ -4,27 +4,29 @@
 #include <tchar.h>
 
 #include <stdlib.h>
-#include <GLKeyboard.hpp>
+#include <GLS.Keyboard.hpp>
 #pragma hdrstop
 
 #include "Unit1.h"
-#include "GLFPSMovement.hpp"
+#include "GLS.FPSMovement.hpp"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLGeomObjects"
-#pragma link "GLNavigator"
-#pragma link "GLCadencer"
-#pragma link "GLSceneViewer"
-#pragma link "GLObjects"
-#pragma link "GLVectorFileObjects"
-#pragma link "GLScene"
-#pragma link "GLFile3DS"
-#pragma link "Scene.VectorGeometry"
-#pragma link "GLKeyboard"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLBaseClasses"
-#pragma link "GLCoordinates"
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.Navigator"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.Objects"
+#pragma link "GLS.VectorFileObjects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.File3DS"
+#pragma link "GLS.VectorGeometry"
+#pragma link "GLS.Keyboard"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
@@ -57,10 +59,10 @@ void __fastcall TForm1::GLCadencer1Progress(TObject * Sender,
 											const double deltaTime,
 											const double newTime)
 {
-  Scene.VectorGeometry::TVector rayStart, rayVector;
+  Gls::Vectorgeometry::TVector rayStart, rayVector;
   float velocity;
-  Scene.VectorGeometry::TVector pPoint;
-  Scene.VectorGeometry::TVector pNormal;
+  Gls::Vectorgeometry::TVector pPoint;
+  Gls::Vectorgeometry::TVector pNormal;
   __int64 t;
 
   if(IsKeyDown(VK_ESCAPE))
@@ -109,7 +111,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject * Sender,
 
 //---------------------------------------------------------------------------
 
-void TForm1::AddToTrail(const Scene.VectorGeometry::TVector & p)
+void TForm1::AddToTrail(const Gls::Vectorgeometry::TVector & p)
 {
   int i, k;
   Lines1->Nodes->Last()->AsVector = p;

@@ -5,14 +5,14 @@
 #include <math.h>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLCadencer"
-#pragma link "GLGeomObjects"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLSceneViewer"
-#pragma link "GLBaseClasses"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------

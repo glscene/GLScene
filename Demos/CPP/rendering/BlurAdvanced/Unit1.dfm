@@ -22,6 +22,7 @@ object Form1: TForm1
     Camera = GLCamera1
     Buffer.BackgroundColor = 4333056
     FieldOfView = 157.939117431640600000
+    PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
@@ -787,7 +788,7 @@ object Form1: TForm1
         Material.Texture.TextureMode = tmModulate
         Material.Texture.Disabled = False
       end>
-    TexturePaths = '..\\..\\..\\..\\media'
+    TexturePaths = '..\\..\\..\\media'
     Left = 224
     Top = 32
   end

@@ -14,17 +14,17 @@ uses
   Vcl.ExtCtrls,
 
   
-  GLScene,
-  GLGraph,
-  GLSceneViewer,
-  Scene.VectorGeometry,
-  Scene.VectorTypes,
-  GLTexture,
-  GLObjects,
-  GLColor,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses;
+  GLS.Scene,
+  GLS.Graph,
+  GLS.SceneViewer,
+  GLS.VectorGeometry,
+  GLS.VectorTypes,
+  GLS.Texture,
+  GLS.Objects,
+  GLS.Color,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

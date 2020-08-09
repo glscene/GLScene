@@ -13,15 +13,15 @@ uses
   Vcl.StdCtrls,
 
   GLS.Utils,
-  GLFilePGM,
+  GLS.FilePGM,
 
   GLS.CUDAContext,
   GLS.CUDA,
   GLS.CUDACompiler,
   GLS.CUDAUtility,
 
-  GLGraphics,
-  GLTextureFormat;
+  GLS.Graphics,
+  GLS.TextureFormat;
 
 type
   TForm1 = class(TForm)
@@ -39,10 +39,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-  private
-     
   public
-     
     pgm: TGLPGMImage;
   end;
 
@@ -50,7 +47,9 @@ var
   Form1: TForm1;
   Angle : Single = 0.5;    // angle to rotate image by (in radians)
 
+//-----------------------------------------
 implementation
+//-----------------------------------------
 
 {$R *.dfm}
 

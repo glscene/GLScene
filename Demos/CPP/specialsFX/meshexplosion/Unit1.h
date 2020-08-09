@@ -11,14 +11,14 @@
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "GLScene.hpp"
-#include "GLCadencer.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLExplosionFx.hpp"
-#include "GLVectorFileObjects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Coordinates.hpp"
+#include "GLS.BaseClasses.hpp"
+
+#include "GLS.ExplosionFx.hpp"
+#include "GLS.VectorFileObjects.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

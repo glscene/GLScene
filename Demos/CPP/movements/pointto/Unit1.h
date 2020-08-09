@@ -7,15 +7,15 @@
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
-#include <GLGeomObjects.hpp>
-#include <GLSceneViewer.hpp>
-#include <GLCadencer.hpp>
-#include <Scene.VectorGeometry.hpp>
-#include <GLScene.hpp>
-#include <GLObjects.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"        // Pascal unit
+#include <GLS.GeomObjects.hpp>
+#include <GLS.SceneViewer.hpp>
+#include <GLS.Cadencer.hpp>
+#include <GLS.VectorGeometry.hpp>
+#include <GLS.Scene.hpp>
+#include <GLS.Objects.hpp>
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+        // Pascal unit
 //---------------------------------------------------------------------------
 class TForm1:public TForm
 {

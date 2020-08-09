@@ -9,18 +9,18 @@
 #include <ExtCtrls.hpp>
 #include <Forms.hpp>
 #include <Jpeg.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLGraph.hpp"
-#include "GLMaterial.hpp"
-#include "GLScene.hpp"
-#include "GLSimpleNavigation.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Graph.hpp"
+#include "GLS.Material.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SimpleNavigation.hpp"
 #include "GLUserShader.hpp"
-#include "GLWaterPlane.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLObjects.hpp"
+#include "GLS.WaterPlane.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Objects.hpp"
 #include "GLS.Utils.hpp"
 
 #pragma hdrstop

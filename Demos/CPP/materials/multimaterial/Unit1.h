@@ -9,18 +9,18 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.Imaging.Jpeg.hpp>
 
-#include "GLScene.hpp"
-#include "GLObjects.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLTexture.hpp"
-#include "Scene.VectorGeometry.hpp"
-#include "GLCadencer.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Texture.hpp"
+#include "GLS.VectorGeometry.hpp"
+#include "GLS.Cadencer.hpp"
 #include "GLMultiMaterialShader.hpp"
 #include "GLSL.TexureCombineShader.hpp"
-#include "GLMaterial.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLBaseClasses.hpp"
+#include "GLS.Material.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.BaseClasses.hpp"
 #include "GLS.Utils.hpp"
 
 //---------------------------------------------------------------------------

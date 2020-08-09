@@ -15,16 +15,16 @@ uses
   Vcl.ExtCtrls,
 
   
-  GLScene,
-  GLObjects,
-  GLCadencer,
-  GLTexture,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses,
-  GLContext,
-  OpenGLAdapter;
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Cadencer,
+  GLS.Texture,
+  GLS.SceneViewer,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.Context,
+  GLS.OpenGLAdapter;
 
 
 type

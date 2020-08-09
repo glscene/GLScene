@@ -16,9 +16,9 @@ uses
   Vcl.Imaging.Jpeg,
 
   
-  GLFireFX, GLCadencer, GLScene, GLObjects, GLBehaviours, Scene.VectorGeometry,
-  GLThorFX, GLSkydome, GLGraph, Scene.VectorTypes, GLSceneViewer, GLCrossPlatform,
-  GLCoordinates, GLBaseClasses, GLSimpleNavigation, GLS.Utils;
+  GLS.FireFX, GLS.Cadencer, GLS.Scene, GLS.Objects, GLS.Behaviours, GLS.VectorGeometry,
+  GLS.ThorFX, GLS.SkyDome, GLS.Graph, GLS.VectorTypes, GLS.SceneViewer,
+  GLS.Coordinates, GLS.BaseClasses, GLS.SimpleNavigation, GLS.Utils;
 
 type
   TForm1 = class(TForm)

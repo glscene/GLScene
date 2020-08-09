@@ -12,8 +12,8 @@ uses
   Vcl.Dialogs,
   Vcl.Imaging.Jpeg,
   
-  GLScene, GLObjects, GLSceneViewer, GLTexture,
-  GLGeomObjects, GLCrossPlatform, GLMaterial, GLCoordinates, GLBaseClasses,
+  GLS.Scene, GLS.Objects, GLS.SceneViewer, GLS.Texture,
+  GLS.GeomObjects, GLS.Material, GLS.Coordinates, GLS.BaseClasses,
   GLS.Utils;
 
 type

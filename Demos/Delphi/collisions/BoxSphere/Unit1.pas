@@ -18,19 +18,19 @@ uses
   Vcl.Samples.Spin,
 
   
-  GLScene,
-  Scene.PersistentClasses,
-  Scene.VectorTypes,
-  GLObjects,
-  GLCadencer,
-  GLVectorFileObjects,
-  GLSceneViewer,
-  Scene.VectorGeometry,
-  GLGraph,
-  GLGeomObjects,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses;
+  GLS.Scene,
+  GLS.PersistentClasses,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.Cadencer,
+  GLS.VectorFileObjects,
+  GLS.SceneViewer,
+  GLS.VectorGeometry,
+  GLS.Graph,
+  GLS.GeomObjects,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

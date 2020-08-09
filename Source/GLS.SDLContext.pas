@@ -20,14 +20,13 @@ uses
   System.Classes,
   System.SysUtils,
 
-  OpenGLTokens,
-  OpenGLAdapter,
-  XOpenGL,
-  GLContext,
-  GLScene,
-  GLCrossPlatform,
+  GLS.OpenGLTokens,
+  GLS.OpenGLAdapter,
+  GLS.XOpenGL,
+  GLS.Context,
+  GLS.Scene,
 
-  GLS.SDLWindow,
+  SDL.Window,
   Import.SDL2;
 
 type

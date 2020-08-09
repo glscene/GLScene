@@ -21,11 +21,11 @@ uses
   VCL.Graphics, 
   VCL.Dialogs,
    
-  Formats.FileVFW,
+  FormatVFW,
 
-  GLGraphics,
-  GLScene,
-  GLSceneViewer;
+  GLS.Graphics,
+  GLS.Scene,
+  GLS.SceneViewer;
 
 type
   TAVICompressor = (acDefault, acShowDialog, acDivX);
@@ -83,7 +83,7 @@ type
   protected
     // Maybe we should make a generic TGLAVIRecorder, and then use sub-class of it 
     FGLSceneViewer: TGLSceneViewer;
-    // FGLNonVisualViewer accepts GLNonVisualViewer and GLFullScreenViewer
+    // FGLNonVisualViewer accepts GLNonVisualViewer and GLS.FullScreenViewer
     FGLNonVisualViewer: TGLNonVisualViewer;
     (* FCompressor determines if the user is to choose a compressor via a dialog box, or
       just use a default compressor without showing a dialog box. *)

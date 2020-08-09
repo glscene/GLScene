@@ -16,18 +16,17 @@ uses
   Vcl.ComCtrls,
   Vcl.Forms,
 
-  
-  GLCadencer,
-  GLVectorFileObjects,
-  GLScene,
-  GLObjects,
-  Scene.VectorGeometry,
-  GLSceneViewer,
-  GLFileMD2,
-  GLGeomObjects,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses,
+  GLS.Cadencer,
+  GLS.VectorFileObjects,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.VectorGeometry,
+  GLS.SceneViewer,
+  GLS.FileMD2,
+  GLS.GeomObjects,
+
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.Utils;
 
 type
@@ -70,7 +69,6 @@ type
     procedure GLCadencer1Progress(Sender: TObject;
       const deltaTime, newTime: Double);
   private
-     
     mdx, mdy: Integer;
   public
      
@@ -80,14 +78,16 @@ var
   Form1: TForm1;
   i: Integer;
 
+//--------------------------------------
 implementation
+//--------------------------------------
 
 {$R *.DFM}
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   SetGLSceneMediaDir();
-   // Load Texture for ground disk
+  // Load Texture for ground disk
   Disk1.Material.Texture.Image.LoadFromFile('clover.jpg');
 
   // Load Actor into GLScene
@@ -108,7 +108,6 @@ begin
   // Force state to stand (first in list)
   CBAnimations.ItemIndex := 0;
   CBAnimationsChange(Self);
-
 end;
 
 procedure TForm1.SBPlayClick(Sender: TObject);

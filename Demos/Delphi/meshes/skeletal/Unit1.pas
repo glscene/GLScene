@@ -15,19 +15,19 @@ uses
   Vcl.ComCtrls,
   Vcl.ExtCtrls,
 
-  GLVectorFileObjects,
-  GLScene,
-  GLObjects,
-  GLTexture,
-  GLCadencer,
-  GLSceneViewer,
-  GLGraph,
-  GLFileSMD,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses,
-  Scene.VectorGeometry,
+  GLS.VectorFileObjects,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Texture,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  GLS.Graph,
+  GLS.FileSMD,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.VectorGeometry,
   GLS.Utils;
 
 type

@@ -24,6 +24,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = clSilver
     Buffer.Lighting = False
     FieldOfView = 151.447769165039100000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
@@ -184,7 +185,6 @@ object Form1: TForm1
       TargetObject = DummyCube1
       Position.Coordinates = {000048420000A0410000A0400000803F}
       Direction.Coordinates = {00000000000000000000803F00000000}
-      Up.Coordinates = {000000000000803F0000008000000000}
       Left = 224
       Top = 160
     end

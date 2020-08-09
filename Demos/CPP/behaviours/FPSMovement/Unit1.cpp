@@ -6,27 +6,24 @@
 #pragma package(smart_init)
 
 #include "Unit1.h"
-#pragma link "GLFile3DS"
-#pragma link "GLFileJPEG"
-
-
 //---------------------------------------------------------------------------
-#pragma link "GLSimpleNavigation"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLFPSMovement"
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLFPSMovement"
-#pragma link "GLMaterial"
-#pragma link "GLNavigator"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLSimpleNavigation"
-#pragma link "GLVectorFileObjects"
-#pragma link "GLSceneViewer"
+#pragma link "GLS.File3DS"
+#pragma link "GLS.FileJPEG"
+#pragma link "GLS.SimpleNavigation"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.FPSMovement"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+
+#pragma link "GLS.FPSMovement"
+#pragma link "GLS.Material"
+#pragma link "GLS.Navigator"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SimpleNavigation"
+#pragma link "GLS.VectorFileObjects"
+#pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
@@ -47,7 +44,7 @@ __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
   Map2->BuildOctree(3);
 
   ShowCursor(false);
-  SetCursorPos(Screen->Width / 2, Screen->Height / 2);
+  SetCursorPos(Vcl::Forms::Screen->Width / 2, Vcl::Forms::Screen->Height / 2);
 
   behav = GetFPSMovement(Player);
   behav2 = GetFPSMovement(Bot);
@@ -145,9 +142,9 @@ void __fastcall TForm1::GLCadencer1Progress(TObject * Sender,
 	behav->TurnVertical(70 * deltaTime);
 
   //update mouse view
-  xangle = Mouse->CursorPos.x - Screen->Width / 2;
-  yangle = Mouse->CursorPos.y - Screen->Height / 2;
-  SetCursorPos(Screen->Width / 2, Screen->Height / 2);
+  xangle = Mouse->CursorPos.x - Vcl::Forms::Screen->Width / 2;
+  yangle = Mouse->CursorPos.y - Vcl::Forms::Screen->Height / 2;
+  SetCursorPos(Vcl::Forms::Screen->Width / 2, Vcl::Forms::Screen->Height / 2);
   behav->TurnHorizontal(xangle * 40 * deltaTime);
   behav->TurnVertical(-yangle * 20 * deltaTime);
 

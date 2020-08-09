@@ -6,6 +6,8 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+#pragma link "GLSL.AsmShader"
+#pragma link "GLSL.PhongShader"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------

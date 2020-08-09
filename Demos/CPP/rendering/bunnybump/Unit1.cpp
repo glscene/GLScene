@@ -6,18 +6,18 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLAsyncTimer"
-#pragma link "GLBaseClasses"
-#pragma link "GLBumpShader"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLMaterial"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLVectorFileObjects"
-#pragma link "GLSceneViewer"
-#pragma link "GLAsyncTimer"
+#pragma link "GLS.AsyncTimer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLSL.BumpShaders"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Material"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.VectorFileObjects"
+#pragma link "GLS.SceneViewer"
+
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------

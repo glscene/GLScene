@@ -29,9 +29,9 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
 
-  GLScene,
-  GLSound,
-  GLSoundFileObjects;
+  GLS.Scene,
+  GLS.Sound,
+  GLS.SoundFileObjects;
 
 type
 
@@ -64,7 +64,7 @@ implementation
 // ---------------------------------------------------------------------
 
 uses
-  Scene.VectorGeometry,
+  GLS.VectorGeometry,
   Import.OpenAL {al, alut, alTypes};
 
 // checks for an error and raises an exception if necessary

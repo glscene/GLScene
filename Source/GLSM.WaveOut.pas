@@ -15,8 +15,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLSound,
-  GLSoundFileObjects;
+  GLS.Sound,
+  GLS.SoundFileObjects;
 
 type
 

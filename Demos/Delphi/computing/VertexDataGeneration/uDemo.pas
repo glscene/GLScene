@@ -11,27 +11,27 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
 
-  GLScene,
-  Scene.VectorTypes,
-  Scene.VectorGeometry,
-  GLPipelineTransformation,
-  GLCadencer,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLBaseClasses,
-  GLSimpleNavigation,
-  GLObjects,
-  GLCoordinates,
-  GLContext,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.VectorGeometry,
+  GLS.PipelineTransformation,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+ 
+  GLS.BaseClasses,
+  GLS.SimpleNavigation,
+  GLS.Objects,
+  GLS.Coordinates,
+  GLS.Context,
 
   GLS.CUDA,
   GLS.CUDACompiler,
   GLS.CUDAContext,
   GLS.CUDAGraphics,
 
-  GLMaterial,
-  GLS.ShaderCustom,
-  GLSLShader;
+  GLS.Material,
+  GLSL.CustomShader,
+  GLSL.Shader;
 
 type
   TForm1 = class(TForm)
@@ -48,7 +48,7 @@ type
     DotFieldMapper: TCUDAGeometryResource;
     GLSLShader1: TGLSLShader;
     MakeDotField: TCUDAFunction;
-    GLFeedBackMesh1: TGLFeedBackMesh;
+    GLS.FeedbackMesh1: TGLS.FeedbackMesh;
     procedure GLCadencer1Progress(Sender: TObject;
       const deltaTime, newTime: Double);
     procedure MakeVertexBufferParameterSetup(Sender: TObject);
@@ -74,8 +74,8 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
   FieldWidth := 256;
   FieldHeight := 256;
-  GLFeedBackMesh1.VertexNumber := FieldWidth * FieldHeight;
-  GLFeedBackMesh1.Visible := True;
+  GLS.FeedbackMesh1.VertexNumber := FieldWidth * FieldHeight;
+  GLS.FeedbackMesh1.Visible := True;
   MakeDotField.Grid.SizeX := FieldWidth div MakeDotField.BlockShape.SizeX;
   MakeDotField.Grid.SizeY := FieldWidth div MakeDotField.BlockShape.SizeY;
 end;
@@ -96,7 +96,7 @@ procedure TForm1.MakeVertexBufferParameterSetup(Sender: TObject);
 begin
   with MakeDotField do
   begin
-    SetParam(DotFieldMapper.AttributeDataAddress[GLFeedBackMesh1.Attributes[0].Name]);
+    SetParam(DotFieldMapper.AttributeDataAddress[GLS.FeedbackMesh1.Attributes[0].Name]);
     SetParam(FieldWidth);
     SetParam(FieldHeight);
     SetParam(GLCadencer1.CurrentTime);

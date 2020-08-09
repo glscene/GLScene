@@ -24,6 +24,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = 7168
     Buffer.AmbientColor.Color = {0000803F0000803F0000803F0000803F}
     FieldOfView = 160.268386840820300000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
@@ -63,7 +64,6 @@ object Form1: TForm1
       end
     end
     object GLSkyBox2: TGLSkyBox
-      Direction.Coordinates = {00000000000000800000803F00000000}
       MaterialLibrary = GLMaterialLibrary1
       MatNameClouds = 'Clouds'
       CloudsPlaneOffset = 0.100000001490116100

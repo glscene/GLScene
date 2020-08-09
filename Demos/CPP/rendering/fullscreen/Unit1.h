@@ -5,14 +5,14 @@
 //---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include "System.SysUtils.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLFullScreenViewer.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLTeapot.hpp"
-#include "GLCanvas.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.FullScreenViewer.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Canvas.hpp"
 
 //---------------------------------------------------------------------------
 class TDataModule1 : public TDataModule

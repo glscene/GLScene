@@ -8,15 +8,15 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLGeomObjects"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLVectorFileObjects"
-#pragma link "GLSceneViewer"
-#pragma link "GLFile3DS"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.VectorFileObjects"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.File3DS"
 
 #pragma resource "*.dfm"
 TForm1 *Form1;
@@ -36,7 +36,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y)
 {
-   Scene.VectorGeometry::TVector rayStart, rayVector, iPoint, iNormal;
+   Gls::Vectorgeometry::TVector rayStart, rayVector, iPoint, iNormal;
    // retrieve raycasting data:
    //    rayStart is obtained for camera and screen position
    //    rayVector is the camera direction (i.e direction to target since our camera is targeted)
@@ -71,7 +71,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
 void __fastcall TForm1::GLSceneViewer2MouseDown(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y)
 {
-   Scene.VectorGeometry::TVector rayStart, rayVector, iPoint, iNormal;
+   Gls::Vectorgeometry::TVector rayStart, rayVector, iPoint, iNormal;
    // retrieve raycasting data:
    //    rayStart is the eye (camera) position
    //    rayVector is computed from screen position

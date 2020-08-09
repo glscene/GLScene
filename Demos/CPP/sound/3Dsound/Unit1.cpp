@@ -6,20 +6,20 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLGeomObjects"
-#pragma link "GLObjects"
-#pragma link "GLScene"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
 #pragma link "GLSMBASS"
 #pragma link "GLSMFMOD"
 #pragma link "GLSMOpenAL"
-#pragma link "GLSound"
-#pragma link "GLSceneViewer"
-#pragma link "GLFileWAV"
-#pragma link "GLFileMP3"
+#pragma link "GLS.Sound"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.FileWAV"
+#pragma link "GLS.FileMP3"
 
 #pragma resource "*.dfm"
 TForm1 *Form1;

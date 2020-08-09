@@ -14,16 +14,16 @@ uses
   Vcl.Imaging.Jpeg,
   Vcl.ExtCtrls,
   
-  GLScene,
-  GLTexture,
-  GLObjects,
-  GLSceneViewer,
+  GLS.Scene,
+  GLS.Texture,
+  GLS.Objects,
+  GLS.SceneViewer,
   GLSL.TextureShaders,
-  GLHUDObjects,
-  GLMaterial,
-  GLCoordinates,
-  GLCrossPlatform,
-  GLBaseClasses,
+  GLS.HUDObjects,
+  GLS.Material,
+  GLS.Coordinates,
+ 
+  GLS.BaseClasses,
   GLS.Utils;
 
 type

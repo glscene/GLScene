@@ -27,6 +27,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = clBlack
     Buffer.FogEnable = True
     FieldOfView = 151.517288208007800000
+    PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0

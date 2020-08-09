@@ -16,23 +16,23 @@ uses
   Vcl.StdCtrls,
   Vcl.ComCtrls,
   
-  GLObjects,
-  GLScene,
-  GLCadencer,
-  GLSceneViewer,
-  Scene.VectorGeometry,
-  Scene.VectorTypes,
-  GLGeometryBB,
-  GLTexture,
-  GLSpacePartition,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLRenderContextInfo,
-  GLState,
-  GLSimpleNavigation,
-  GLMaterial,
-  GLContext,
-  GLBaseClasses;
+  GLS.Objects,
+  GLS.Scene,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  GLS.VectorGeometry,
+  GLS.VectorTypes,
+  GLS.GeometryBB,
+  GLS.Texture,
+  GLS.SpacePartition,
+ 
+  GLS.Coordinates,
+  GLS.RenderContextInfo,
+  GLS.State,
+  GLS.SimpleNavigation,
+  GLS.Material,
+  GLS.Context,
+  GLS.BaseClasses;
 
 const
   cBOX_SIZE = 14.2;

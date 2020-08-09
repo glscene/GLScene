@@ -15,9 +15,9 @@ uses
   Vcl.ExtCtrls,
 
   
-  GLScene, GLVectorFileObjects, GLSceneViewer,
-  GLCadencer, GLExplosionFx, GLFile3DS, GLCrossPlatform,
-  GLCoordinates, GLS.Utils, GLBaseClasses;
+  GLS.Scene, GLS.VectorFileObjects, GLS.SceneViewer,
+  GLS.Cadencer, GLS.ExplosionFx, GLS.File3DS,
+  GLS.Coordinates, GLS.Utils, GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

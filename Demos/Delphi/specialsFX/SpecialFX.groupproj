@@ -18,9 +18,6 @@
         <Projects Include="fire\fire.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="GLSLProjectedTexture\GLSLProjectedTexture.dproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="meshexplosion\meshexplosion.dproj">
             <Dependencies/>
         </Projects>
@@ -121,15 +118,6 @@
     </Target>
     <Target Name="fire:Make">
         <MSBuild Projects="fire\fire.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="GLSLProjectedTexture">
-        <MSBuild Projects="GLSLProjectedTexture\GLSLProjectedTexture.dproj"/>
-    </Target>
-    <Target Name="GLSLProjectedTexture:Clean">
-        <MSBuild Projects="GLSLProjectedTexture\GLSLProjectedTexture.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="GLSLProjectedTexture:Make">
-        <MSBuild Projects="GLSLProjectedTexture\GLSLProjectedTexture.dproj" Targets="Make"/>
     </Target>
     <Target Name="meshexplosion">
         <MSBuild Projects="meshexplosion\meshexplosion.dproj"/>
@@ -276,13 +264,13 @@
         <MSBuild Projects="waterplane\waterplane.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="Atmosphere;beer;boom;candles;fire;GLSLProjectedTexture;meshexplosion;motionblur;motionblur2;ParticleMasking;PFXGallery;posteffect;ProjTextures;ShadowmappingFBO;shadowplane;Shadows;shadowvolumes;spiral;Thor;TrailDemo;warping;waterplane"/>
+        <CallTarget Targets="Atmosphere;beer;boom;candles;fire;meshexplosion;motionblur;motionblur2;ParticleMasking;PFXGallery;posteffect;ProjTextures;ShadowmappingFBO;shadowplane;Shadows;shadowvolumes;spiral;Thor;TrailDemo;warping;waterplane"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Atmosphere:Clean;beer:Clean;boom:Clean;candles:Clean;fire:Clean;GLSLProjectedTexture:Clean;meshexplosion:Clean;motionblur:Clean;motionblur2:Clean;ParticleMasking:Clean;PFXGallery:Clean;posteffect:Clean;ProjTextures:Clean;ShadowmappingFBO:Clean;shadowplane:Clean;Shadows:Clean;shadowvolumes:Clean;spiral:Clean;Thor:Clean;TrailDemo:Clean;warping:Clean;waterplane:Clean"/>
+        <CallTarget Targets="Atmosphere:Clean;beer:Clean;boom:Clean;candles:Clean;fire:Clean;meshexplosion:Clean;motionblur:Clean;motionblur2:Clean;ParticleMasking:Clean;PFXGallery:Clean;posteffect:Clean;ProjTextures:Clean;ShadowmappingFBO:Clean;shadowplane:Clean;Shadows:Clean;shadowvolumes:Clean;spiral:Clean;Thor:Clean;TrailDemo:Clean;warping:Clean;waterplane:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Atmosphere:Make;beer:Make;boom:Make;candles:Make;fire:Make;GLSLProjectedTexture:Make;meshexplosion:Make;motionblur:Make;motionblur2:Make;ParticleMasking:Make;PFXGallery:Make;posteffect:Make;ProjTextures:Make;ShadowmappingFBO:Make;shadowplane:Make;Shadows:Make;shadowvolumes:Make;spiral:Make;Thor:Make;TrailDemo:Make;warping:Make;waterplane:Make"/>
+        <CallTarget Targets="Atmosphere:Make;beer:Make;boom:Make;candles:Make;fire:Make;meshexplosion:Make;motionblur:Make;motionblur2:Make;ParticleMasking:Make;PFXGallery:Make;posteffect:Make;ProjTextures:Make;ShadowmappingFBO:Make;shadowplane:Make;Shadows:Make;shadowvolumes:Make;spiral:Make;Thor:Make;TrailDemo:Make;warping:Make;waterplane:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

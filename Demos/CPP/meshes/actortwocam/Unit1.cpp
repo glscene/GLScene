@@ -6,19 +6,19 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLGeomObjects"
-#pragma link "GLNavigator"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLSkydome"
-#pragma link "GLVectorFileObjects"
-#pragma link "GLSceneViewer"
-#pragma link "GLFile3DS"
-#pragma link "GLFileMD2"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.Navigator"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SkyDome"
+#pragma link "GLS.VectorFileObjects"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.File3DS"
+#pragma link "GLS.FileMD2"
 
 #pragma resource "*.dfm"
 TForm1 *Form1;
@@ -47,7 +47,7 @@ void __fastcall TForm1::AddMushrooms()
 {
    int i;
    TGLProxyObject *proxy;
-   Scene.VectorGeometry::TVector s;
+   Gls::Vectorgeometry::TVector s;
    float f;
 
    // spawn some more mushrooms using proxy objects

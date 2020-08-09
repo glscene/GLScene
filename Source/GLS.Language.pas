@@ -17,7 +17,8 @@ interface
 uses
   System.Classes, 
   System.IniFiles, 
-  System.SysUtils;
+  System.SysUtils,
+  GLS.Utils;
 
 type
 
@@ -79,8 +80,7 @@ implementation
 //-----------------------------------------------------------------------
 
 uses
-  GLCrossPlatform,
-  Scene.Logger;
+  GLS.Logger;
 
 //----------------------------
 // TGLLanguage

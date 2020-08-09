@@ -6,16 +6,16 @@
 #include "Unit1.h"
 #include "math.h"
 #include "GLGraphics.hpp"
-#include "GLTexture.hpp"
+#include "GLS.Texture.hpp"
 #include "jpeg.hpp"
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLGraph"
-#pragma link "GLScene"
-#pragma link "GLSceneViewer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
+#pragma link "GLS.Graph"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.Coordinates"
+
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------

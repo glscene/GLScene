@@ -12,20 +12,20 @@ uses
   Vcl.Controls,
   Vcl.Dialogs,
   
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  GLTexture,
-  Scene.VectorGeometry,
-  GLCadencer,
-  GLSceneViewer,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.Texture,
+  GLS.VectorGeometry,
+  GLS.Cadencer,
+  GLS.SceneViewer,
   GLS.SpaceText,
-  GLShadowPlane,
-  GLShadowVolume,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses;
+  GLS.ShadowPlane,
+  GLS.ShadowVolume,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)
@@ -44,7 +44,7 @@ type
     SpaceText1: TGLSpaceText;
     Timer1: TTimer;
     GLCadencer1: TGLCadencer;
-    GLShadowVolume: TGLShadowVolume;
+    GLS.ShadowVolume: TGLShadowVolume;
     procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
       X, Y: Integer);
     procedure FormCreate(Sender: TObject);

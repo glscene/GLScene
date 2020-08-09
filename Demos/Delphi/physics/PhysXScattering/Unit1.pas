@@ -8,9 +8,9 @@ uses
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls,
   Vcl.StdCtrls,
   
-  GLScene, GLObjects, GLCoordinates, GLCadencer,  Scene.VectorTypes,
-  GLSceneViewer, GLColor,  GLCrossPlatform, GLPhysX, GLKeyboard,
-  GLBaseClasses, Scene.VectorGeometry, GLGeomObjects, GLGui, GLWindows;
+  GLS.Scene, GLS.Objects, GLS.Coordinates, GLS.Cadencer,  GLS.VectorTypes,
+  GLS.SceneViewer, GLS.Color,  GLPhysX, GLS.Keyboard,
+  GLS.BaseClasses, GLS.VectorGeometry, GLS.GeomObjects, GLS.Gui, GLS.Windows;
 
 type
   TMainForm = class(TForm)

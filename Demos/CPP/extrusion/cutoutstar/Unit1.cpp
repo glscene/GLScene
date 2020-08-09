@@ -7,15 +7,15 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLScene"
-#pragma link "GLSceneViewer"
-#pragma link "GLExtrusion"
-#pragma link "GLMultiPolygon"
-#pragma link "GLNodes"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Scene"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.Extrusion"
+#pragma link "GLS.MultiPolygon"
+#pragma link "GLS.Nodes"
 
 
 #pragma resource "*.dfm"
@@ -33,13 +33,13 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
    const int
 	  cSteps = 16;
    const int
-	  c2 = Scene.VectorGeometry::c2PI;
-      new TGLExtrusionSolid(ExtrusionSolid);
+      c2 = Gls::Vectorgeometry::c2PI;
+   new TGLExtrusionSolid(ExtrusionSolid);
    // a small star contour
-	  for (i=0; i<cSteps; i++)
+   for (i=0; i<cSteps; i++)
 	  {
 		 r =2+(i && 1)*2; //r :=2+(i and 1)*2;
-		 SinCosine(i*(float)c2/cSteps, y, x);
+		 SinCosine(i*c2/cSteps, y, x);
 		 ExtrusionSolid->Contours->Add()->Nodes->AddNode(x*r, y*r, 0);
 	  }
 	  // add an empty contour for the square cutout (see progress event)

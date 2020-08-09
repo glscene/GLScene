@@ -18,29 +18,24 @@ uses
   System.Classes,
   System.SysUtils,
 
-  Scene.VectorTypes,
-  Scene.PersistentClasses,
-  GLApplicationFileIO,
-  Scene.VectorGeometry,
-  Scene.VectorLists,
-  GLScene,
-  GLTexture,
-  GLVectorFileObjects,
-  GLMaterial;
+  GLS.VectorTypes,
+  GLS.PersistentClasses,
+  GLS.ApplicationFileIO,
+  GLS.VectorGeometry,
+  GLS.VectorLists,
+  GLS.Scene,
+  GLS.Texture,
+  GLS.VectorFileObjects,
+  GLS.Material;
 
 type
   TGLDXFVectorFile = class(TGLVectorFile)
   private
-    // Load from this stream
-    FSourceStream: TStream;
-    // Buffer and current line
-    FBuffer: String;
-    // Line number - for error messages
-    FLineNo: Integer;
-    // Stream done?
-    FEof: Boolean;
-    // Position in the buffer
-    FBufPos: Integer;
+    FSourceStream: TStream; { Load from this stream }
+    FBuffer: String; { Buffer and current line }
+    FLineNo: Integer; { current Line number - for error messages }
+    FEof: Boolean; { Stream done? }
+    FBufPos: Integer; { Position in the buffer }
     HasPushedCode: Boolean;
     PushedCode: Integer;
     FLayers: TStringList;
@@ -117,8 +112,8 @@ const
     $989898, $BBBBBB, $DDDDDD, $FFFFFF);
 
 const
-  BufSize = 65536; // Load input data in chunks of BufSize Bytes.
-  LineLen = 100; // Allocate memory for the current line in chunks
+  BufSize = 65536; { Load input data in chunks of BufSize Bytes. }
+  LineLen = 100; { Allocate memory for the current line in chunks }
 
   function RGB2BGR(bgr: LONGINT): LONGINT;
   begin
@@ -127,7 +122,7 @@ const
   end;
 
   function StreamEOF(S: TStream): Boolean;
-  begin // Is the stream at its end?
+  begin { Is the stream at its end? }
     result := (S.Position >= S.Size);
   end;
 
@@ -203,7 +198,7 @@ const
     ReadLine := Trim(FLine);
   end;
 
-(*
+{
   procedure TGLDXFVectorFile.DoProgress (Stage: TGLProgressStage; PercentDone: single; RedrawNow: Boolean; const Msg: string);
   var perc:BYTE;
   begin
@@ -216,7 +211,7 @@ const
   Flastpercentdone:=perc;
   end;
   end;
-*)
+}
   procedure TGLDXFVectorFile.PushCode(code: Integer);
   begin
     PushedCode := code;
@@ -895,11 +890,8 @@ const
       /// DoProgress (psEnding,100,false,'');
     end;
 
-//----------------------------------------------
 initialization
-//----------------------------------------------
 
 RegisterVectorFileFormat('dxf', 'AutoCAD Exchange Format', TGLDXFVectorFile);
 
 end.
-

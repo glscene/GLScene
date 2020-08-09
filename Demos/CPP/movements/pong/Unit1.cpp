@@ -6,16 +6,16 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLMaterial"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLShadowVolume"
-#pragma link "GLSpaceText"
-#pragma link "GLSceneViewer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Material"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.ShadowVolume"
+#pragma link "GLS.SpaceText"
+#pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -67,7 +67,7 @@ const float
 void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
 		  const double newTime)
 {
-	Scene.VectorGeometry::TVector newBallPos;
+	Gls::Vectorgeometry::TVector newBallPos;
 	// gameOver is True as soon as the ball is behind the pad, but we don't end
 	// the game immediately so the user can realize he has lost
 	if ((!gameOver) && (deltaTime>0))

@@ -22,9 +22,9 @@ uses
   VCL.Graphics,
   VCL.Controls,
 
-  Scene.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.Utils,
-  Scene.VectorTypes;
+  GLS.VectorTypes;
 
 type
   TGLVectorEditorForm = class(TForm)
@@ -207,8 +207,8 @@ procedure TGLVectorEditorForm.SpeedButton9Click(Sender: TObject);
 var
   v: TAffineVector;
 begin
-  SetVector(v, GLS.Utils.StrToFloatDef(EDx.Text, 0),
-    GLS.Utils.StrToFloatDef(EDy.Text, 0), GLS.Utils.StrToFloatDef(EDz.Text, 0));
+  SetVector(v, StrToFloatDef(EDx.Text, 0),
+    StrToFloatDef(EDy.Text, 0), StrToFloatDef(EDz.Text, 0));
   if VectorLength(v) = 0 then
     v := NullVector
   else
@@ -222,8 +222,8 @@ procedure TGLVectorEditorForm.SBInvertClick(Sender: TObject);
 var
   v: TAffineVector;
 begin
-  SetVector(v, GLS.Utils.StrToFloatDef(EDx.Text, 0),
-    GLS.Utils.StrToFloatDef(EDy.Text, 0), GLS.Utils.StrToFloatDef(EDz.Text, 0));
+  SetVector(v, StrToFloatDef(EDx.Text, 0),
+    StrToFloatDef(EDy.Text, 0), StrToFloatDef(EDz.Text, 0));
   NegateVector(v);
   EDx.Text := FloatToStr(v.x);
   EDy.Text := FloatToStr(v.y);

@@ -9,15 +9,15 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.Buttons.hpp>
 
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLSimpleNavigation.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLMovement.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SimpleNavigation.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Movement.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

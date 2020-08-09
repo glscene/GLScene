@@ -6,23 +6,23 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
-#include "OpenGLAdapter.hpp"
-#include "GLBitmapFont.hpp"
-#include "GLCadencer.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLHUDObjects.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLTexture.hpp"
+#include "GLS.OpenGLAdapter.hpp"
+#include "GLS.BitmapFont.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.GeomObjects.hpp"
+#include "GLS.HUDObjects.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.Texture.hpp"
 #include "GLSL.UserShader.hpp"
-#include "GLVectorFileObjects.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLWindowsFont.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLMaterial.hpp"
-#include "GLContext.hpp"
+#include "GLS.VectorFileObjects.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.WindowsFont.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Material.hpp"
+#include "GLS.Context.hpp"
 
 //---------------------------------------------------------------------------
 

@@ -6,13 +6,13 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma classgroup "Vcl.Controls.TControl"
-#pragma link "GLBaseClasses"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+
 #pragma link "GLFullScreenViewer"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLTeapot"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.GeomObjects"
 #pragma resource "*.dfm"
 TDataModule1 *DataModule1;
 //---------------------------------------------------------------------------
@@ -35,8 +35,8 @@ void __fastcall TDataModule1::DataModuleCreate(TObject *Sender)
 	  // Relinquish some of that CPU time
 	  Sleep(1);
 	  // Slowly rotate the teapot and the blue light
-	  Teapot1->TurnAngle = 4*Frac(24*(Now()))*3600;
-	  DCBlueLight->RollAngle = 32*Frac(24*(Now()))*3600;
+	  Teapot1->TurnAngle = 4*Frac(float(24*(Now())))*3600;
+	  DCBlueLight->RollAngle = 32*Frac(float(24*(Now())))*3600;
    }
 }
 //---------------------------------------------------------------------------

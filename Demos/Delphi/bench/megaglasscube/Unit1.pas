@@ -11,19 +11,19 @@ uses
   Vcl.Forms,
   Vcl.ExtCtrls,
   
-  GLScene,
-  GLObjects,
-  Scene.VectorGeometry,
-  GLTexture,
-  GLCadencer,
-  Scene.VectorTypes,
-  GLSceneViewer,
-  GLColor,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLMaterial,
-  GLSimpleNavigation,
-  GLBaseClasses;
+  GLS.Scene,
+  GLS.Objects,
+  GLS.VectorGeometry,
+  GLS.Texture,
+  GLS.Cadencer,
+  GLS.VectorTypes,
+  GLS.SceneViewer,
+  GLS.Color,
+ 
+  GLS.Coordinates,
+  GLS.Material,
+  GLS.SimpleNavigation,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

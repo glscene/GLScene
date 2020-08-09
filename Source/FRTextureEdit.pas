@@ -19,11 +19,11 @@ uses
   VCL.StdCtrls,
   VCL.Buttons, 
   VCL.Controls,
-  GLGraphics, 
-  GLTextureFormat, 
-  GLTexture, 
-  GLState, 
-  GLTextureImageEditors;
+  GLS.Graphics, 
+  GLS.TextureFormat, 
+  GLS.Texture, 
+  GLS.State, 
+  GLS.TextureImageEditors;
 
 type
   TRTextureEdit = class(TFrame)

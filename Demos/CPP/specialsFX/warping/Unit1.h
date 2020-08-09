@@ -27,13 +27,13 @@
 #include <ExtDlgs.hpp>
 #include <Menus.hpp>
 
-#include "GLGraph.hpp"
-#include "GLScene.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLFileJPEG.hpp"
+#include "GLS.Graph.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.FileJPEG.hpp"
 #include "jpeg.hpp"
 
 //---------------------------------------------------------------------------

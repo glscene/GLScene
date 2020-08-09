@@ -16,23 +16,23 @@ uses
   Vcl.ComCtrls,
   Vcl.StdCtrls,
 
-  GLScene,
-  GLObjects,
-  GLBitmapFont,
-  GLWindowsFont,
-  GLTexture,
-  GLCadencer,
-  GLSceneViewer,
-  GLParticleFX,
-  Scene.VectorGeometry,
-  Scene.VectorTypes,
-  GLEParticleMasksManager,
-  GLGeomObjects,
-  GLAsyncTimer,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses;
+  GLS.Scene,
+  GLS.Objects,
+  GLS.BitmapFont,
+  GLS.WindowsFont,
+  GLS.Texture,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  GLS.ParticleFX,
+  GLS.VectorGeometry,
+  GLS.VectorTypes,
+  GLS.EParticleMasksManager,
+  GLS.GeomObjects,
+  GLS.AsyncTimer,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 const
 

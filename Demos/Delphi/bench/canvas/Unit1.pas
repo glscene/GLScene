@@ -16,16 +16,17 @@ uses
   Vcl.StdCtrls,
 
   
-  GLScene,
-  GLSceneViewer,
-  GLBitmapFont,
-  GLWindowsFont,
-  GLCoordinates,
-  GLCrossPlatform,
-  GLBaseClasses,
-  GLCanvas,
-  GLTexture,
-  GLRenderContextInfo;
+  GLS.Scene,
+  GLS.SceneViewer,
+  GLS.BitmapFont,
+  GLS.WindowsFont,
+  GLS.Coordinates,
+ 
+  GLS.BaseClasses,
+  GLS.Canvas,
+  GLS.Texture,
+  GLS.RenderContextInfo,
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)

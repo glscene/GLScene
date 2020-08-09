@@ -102,6 +102,7 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <ILINK_LibraryPath>$(BDSCOMMONDIR)\Dcp;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <LinkPackageImports>rtl.bpi;vcl.bpi;GLScene_RT.bpi;xmlrtl.bpi;vclimg.bpi</LinkPackageImports>
+        <BT_BuildType>Debug</BT_BuildType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>

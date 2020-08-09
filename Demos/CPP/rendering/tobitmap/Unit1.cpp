@@ -8,15 +8,15 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLHUDObjects"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLSpaceText"
-#pragma link "GLSceneViewer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.HUDObjects"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SpaceText"
+#pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
 
 TForm1 *Form1;
@@ -43,8 +43,8 @@ void TForm1::ViewBitmap(TBitmap *aBitmap, String caption)
    }
    else
    {
-	  f->ClientWidth = Round(Screen->Width*0.75);
-	  f->ClientHeight = Round(Screen->Height*0.75);
+	  f->ClientWidth = RoundInt(Screen->Width*0.75);
+	  f->ClientHeight = RoundInt(Screen->Height*0.75);
    }
    f->Image1->Picture->Bitmap = aBitmap;
    f->Caption = caption;
@@ -66,13 +66,13 @@ void TForm1::RenderToBitmap(Single scale)
    // Don't forget to specify a PixelFormat, or current screen pixel format
    // will be used, which may not suit your purposes!
    bmp->PixelFormat = pf24bit;
-   bmp->Width = Round(GLSceneViewer1->Width*scale);
-   bmp->Height = Round(GLSceneViewer1->Height*scale);
+   bmp->Width = RoundInt(GLSceneViewer1->Width*scale);
+   bmp->Height = RoundInt(GLSceneViewer1->Height*scale);
    // Here we just request a render
    // The second parameter specifies DPI (Dots Per Inch), which is
    // linked to the bitmap's scaling
    // "96" is the "magic" DPI scale of the screen under windows
-   GLSceneViewer1->Buffer->RenderToBitmap(bmp, Round(96*scale));
+   GLSceneViewer1->Buffer->RenderToBitmap(bmp, RoundInt(96*scale));
    delta = StopPrecisionTimer(pt);
    ViewBitmap(bmp, Format("RenderToBitmap %dx%d - %.3f ms",
 	   ARRAYOFCONST((bmp->Width, bmp->Height, delta*1000))));

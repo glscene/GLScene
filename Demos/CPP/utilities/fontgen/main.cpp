@@ -6,7 +6,7 @@
 #include "main.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLWindowsFont"
+#pragma link "GLS.WindowsFont"
 #pragma resource "*.dfm"
 TfrmMain *frmMain;
 //---------------------------------------------------------------------------

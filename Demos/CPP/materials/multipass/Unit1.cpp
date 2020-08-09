@@ -27,16 +27,16 @@
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLGeomObjects"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLTexture"
-#pragma link "GLSceneViewer"
-#pragma link "GLBaseClasses"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLMaterial"
-#include "OpenGLTokens.hpp"
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.Texture"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Material"
+#include "GLS.OpenGLTokens.hpp"
 #include "OpenGLx.hpp"
 
 #pragma resource "*.dfm"

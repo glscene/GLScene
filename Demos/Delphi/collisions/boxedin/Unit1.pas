@@ -14,21 +14,21 @@ uses
   Vcl.ComCtrls,
 
   
-  GLKeyboard,
-  Scene.VectorGeometry,
-  GLScene,
-  GLVectorFileObjects,
-  Scene.VectorTypes,
-  GLObjects,
-  GLSceneViewer,
-  GLCadencer,
-  GLNavigator,
-  GLGeomObjects,
-  GLCrossPlatform,
-  GLCoordinates,
+  GLS.Keyboard,
+  GLS.VectorGeometry,
+  GLS.Scene,
+  GLS.VectorFileObjects,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.SceneViewer,
+  GLS.Cadencer,
+  GLS.Navigator,
+  GLS.GeomObjects,
+ 
+  GLS.Coordinates,
   GLS.Utils,
-  GLBaseClasses,
-  GLFile3DS;
+  GLS.BaseClasses,
+  GLS.File3DS;
 
 type
   TForm1 = class(TForm)

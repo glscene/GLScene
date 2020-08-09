@@ -16,9 +16,9 @@ uses
   Winapi.OpenGLext,
   Winapi.Windows,
 
-  OpenGLTokens,
-  OpenGLAdapter,
-  GLContext,
+  GLS.OpenGLTokens,
+  GLS.OpenGLAdapter,
+  GLS.Context,
   Vcl.Forms;
 
 type

@@ -126,6 +126,7 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <LinkPackageStatics>rtl.lib;vcl.lib;GLScene_RT.lib;xmlrtl.lib;vclimg.lib;fmx.lib;VclSmp.lib;vclx.lib;vclactnband.lib</LinkPackageStatics>
+        <BT_BuildType>Debug</BT_BuildType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <BCC_Defines>_DEBUG;$(BCC_Defines);$(BCC_Defines)</BCC_Defines>

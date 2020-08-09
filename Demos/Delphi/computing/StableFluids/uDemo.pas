@@ -10,23 +10,23 @@ uses
   Vcl.StdCtrls,
   Vcl.Graphics,
 
-  GLScene,
-  Scene.VectorGeometry,
-  Scene.VectorTypes,
-  GLCadencer,
-  GLSceneViewer,
-  GLBaseClasses,
-  GLCoordinates,
-  GLContext,
-  GLGui,
-  GLBitmapFont,
-  GLWindowsFont,
-  GLS.ShaderCustom,
-  GLRenderContextInfo,
-  GLState,
-  GLMaterial,
+  GLS.Scene,
+  GLS.VectorGeometry,
+  GLS.VectorTypes,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  GLS.BaseClasses,
+  GLS.Coordinates,
+  GLS.Context,
+  GLS.Gui,
+  GLS.BitmapFont,
+  GLS.WindowsFont,
+  GLSL.CustomShader,
+  GLS.RenderContextInfo,
+  GLS.State,
+  GLS.Material,
   GLSL.Shader,
-  GLWindows,
+  GLS.Windows,
 
   GLS.CUDAContext,
   GLS.CUDA,
@@ -59,7 +59,7 @@ type
     ResetButton: TGLButton;
     GLWindowsBitmapFont1: TGLWindowsBitmapFont;
     GLGuiLayout1: TGLGuiLayout;
-    ParticleRenderer: TGLFeedBackMesh;
+    ParticleRenderer: TGLS.FeedbackMesh;
     addForces: TCUDAFunction;
     advectVelocity: TCUDAFunction;
     diffuseProject: TCUDAFunction;

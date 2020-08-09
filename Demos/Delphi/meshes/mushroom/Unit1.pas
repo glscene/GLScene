@@ -13,20 +13,19 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
 
-  GLS.OpenGLx,
-  Scene.VectorGeometry,
-  GLTexture,
-  GLScene,
-  GLVectorFileObjects,
-  GLObjects,
-  GLBehaviours,
-  GLCadencer,
-  GLSceneViewer,
-  GLGeomObjects,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses,
-  GLFile3DS,
+  GLS.VectorGeometry,
+  GLS.Texture,
+  GLS.Scene,
+  GLS.VectorFileObjects,
+  GLS.Objects,
+  GLS.Behaviours,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  GLS.GeomObjects,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.File3DS,
   GLS.Utils;
 
 type

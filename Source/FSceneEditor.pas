@@ -32,13 +32,13 @@ uses
   DesignIntf,
   VCLEditors,
 
-  GLScene,
-  GLSceneViewer,
-  Scene.Strings,
+  GLS.Scene,
+  GLS.SceneViewer,
+  GLS.Strings,
   FInfo,
-  XCollection,
-  GLCrossPlatform,
+  GLS.XCollection,
 
+  GLS.Utils,
   GLS.SceneRegister;
 
 const

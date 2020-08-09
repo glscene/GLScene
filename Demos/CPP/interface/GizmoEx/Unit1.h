@@ -13,20 +13,19 @@
 #include <Vcl.Buttons.hpp>
 #include <Vcl.ComCtrls.hpp>
 
-#include "GLBaseClasses.hpp"
-#include "GLBitmapFont.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLGraph.hpp"
-#include "GLObjects.hpp"
-#include "GLPolyhedron.hpp"
-#include "GLScene.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLWindowsFont.hpp"
-#include "GLKeyboard.hpp"
-#include "GLGizmoEx.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.BitmapFont.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Graph.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.WindowsFont.hpp"
+#include "GLS.Keyboard.hpp"
+#include "GLS.GizmoEx.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
@@ -143,9 +142,9 @@ __published:	// IDE-managed Components
 
 private:	// User declarations
 	int mx, my;
-	Scene.VectorGeometry::TVector MousePos,LostMousePos;
+	Gls::Vectorgeometry::TVector MousePos,LostMousePos;
 	bool MouseMoving;
-	Scene.VectorGeometry::TVector pos;
+	Gls::Vectorgeometry::TVector pos;
 	TGLBaseSceneObject *FObj;
 	TGLGizmoEx *Gizmo;
 	float FVectorLength;

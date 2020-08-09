@@ -14,14 +14,14 @@ uses
   Vcl.StdCtrls,
 
 
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  GLCadencer,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses;
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

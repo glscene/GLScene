@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 145
   Top = 99
   Caption = 'Actor'
-  ClientHeight = 397
-  ClientWidth = 587
+  ClientHeight = 487
+  ClientWidth = 683
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,7 +12,6 @@ object Form1: TForm1
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  WindowState = wsMaximized
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
   PixelsPerInch = 96
@@ -20,35 +19,40 @@ object Form1: TForm1
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 38
-    Width = 587
-    Height = 340
+    Width = 683
+    Height = 430
     Camera = GLCamera1
     Buffer.BackgroundColor = clSilver
-    FieldOfView = 46.050983428955080000
+    FieldOfView = 56.516059875488280000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 587
+    ExplicitHeight = 340
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 378
-    Width = 587
+    Top = 468
+    Width = 683
     Height = 19
     Panels = <
       item
         Width = 200
       end>
+    ExplicitTop = 378
+    ExplicitWidth = 587
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 587
+    Width = 683
     Height = 38
     Align = alTop
     BevelOuter = bvLowered
     TabOrder = 2
+    ExplicitWidth = 587
     object SBPlay: TSpeedButton
       Left = 188
       Top = 8

@@ -6,9 +6,9 @@ uses
   System.Classes, System.SysUtils, System.Math,
   Vcl.Forms, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Controls,
   
-  GLScene, GLObjects,
-  GLCadencer, GLAsyncTimer, GLSceneViewer, GLCrossPlatform,
-  GLCoordinates, GLBaseClasses;
+  GLS.Scene, GLS.Objects,
+  GLS.Cadencer, GLS.AsyncTimer, GLS.SceneViewer,
+  GLS.Coordinates, GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

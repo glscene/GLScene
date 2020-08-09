@@ -16,17 +16,17 @@ uses
   Vcl.ExtCtrls,
 
   
-  GLScene,
-  Scene.VectorTypes,
-  GLGeomObjects,
-  GLObjects,
-  GLCadencer,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses,
-  GLRenderContextInfo,
-  GLContext;
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.GeomObjects,
+  GLS.Objects,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.RenderContextInfo,
+  GLS.Context;
 
 type
   TForm1 = class(TForm)

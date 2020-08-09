@@ -16,16 +16,16 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLTexture,
-  Scene.VectorTypes,
-  Scene.VectorGeometry,
-  Scene.VectorLists,
-  OpenGLTokens,
-  GLContext,
+  GLS.Texture,
+  GLS.VectorTypes,
+  GLS.VectorGeometry,
+  GLS.VectorLists,
+  GLS.OpenGLTokens,
+  GLS.Context,
   GLSL.AsmShader,
-  GLRenderContextInfo,
+  GLS.RenderContextInfo,
   GLSL.CustomShader,
-  GLState;
+  GLS.State;
 
 type
   TGLPhongShader = class(TGLCustomAsmShader)

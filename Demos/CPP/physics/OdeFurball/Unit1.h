@@ -11,26 +11,23 @@
 #include <ExtCtrls.hpp>
 
 
-#include "GLScene.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLCadencer.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Cadencer.hpp"
 
-#include <GLNavigator.hpp>
-#include <GLShadowPlane.hpp>
-#include <GLExtrusion.hpp>
-#include "GLTexture.hpp"
-#include "GLObjects.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLKeyboard.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLVerletHairClasses.hpp"
-#include "GLVerletTypes.hpp"
-#include "GLVerletClasses.hpp"
-#include "ODEImport.hpp"
-#include "ODEUtils.hpp"
-#include "GLODECustomColliders.hpp"
-#include "GLODEManager.hpp"
+#include "Import.ODE.hpp"
+#include "Physics.ODEUtils.hpp"
+#include <GLS.Navigator.hpp>
+#include <GLS.ShadowPlane.hpp>
+#include <GLS.Extrusion.hpp>
+#include "GLS.Texture.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Keyboard.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.VerletHairClasses.hpp"
+#include "GLS.VerletTypes.hpp"
 
 
 //---------------------------------------------------------------------------
@@ -92,7 +89,7 @@ public:		// User declarations
   PdxSpace space;
   TdJointGroupID contactgroup;
 
-  TVerletWorld *VerletWorld;
+  TGLVerletWorld *VerletWorld;
   TList *HairList;
   TVCSphere *VCSphere;
   float PhysicsTime;

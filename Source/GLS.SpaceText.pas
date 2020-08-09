@@ -31,14 +31,14 @@ uses
   VCL.Graphics,
   VCL.Controls,
 
-  OpenGLTokens,
-  GLScene,
-  GLTexture,
-  GLContext,
-  Scene.VectorGeometry,
-  Scene.Strings,
-  GLRenderContextInfo,
-  GLState;
+  GLS.OpenGLTokens,
+  GLS.Scene,
+  GLS.Texture,
+  GLS.Context,
+  GLS.VectorGeometry,
+  GLS.Strings,
+  GLS.RenderContextInfo,
+  GLS.State;
 
 type
 

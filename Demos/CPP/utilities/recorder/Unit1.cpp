@@ -6,17 +6,17 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLSceneViewer"
+#pragma link "GLS.SceneViewer"
 #pragma link "GLAVIRecorder"
-#pragma link "GLCadencer"
-#pragma link "GLAsyncTimer"
-#pragma link "GLObjects"
-#pragma link "GLScene"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.AsyncTimer"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
 #pragma link "GLAVIRecorder"
-#pragma link "GLKeyboard"
-#pragma link "GLBaseClasses"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
+#pragma link "GLS.Keyboard"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+
 
 #pragma resource "*.dfm"
 TForm1 *Form1;

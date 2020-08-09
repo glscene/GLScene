@@ -12,21 +12,21 @@ uses
   Vcl.Controls,
   Vcl.StdCtrls,
 
-  GLCadencer,
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  GLSound,
+  GLS.Cadencer,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.Sound,
   GLSM.FMOD,
-  GLSceneViewer,
-  GLGeomObjects,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses,
-  GLFileWAV,
-  GLFileMP3,
-  Scene.VectorGeometry,
-  GLS.Utils;
+  GLS.SceneViewer,
+  GLS.GeomObjects,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.FileWAV,
+  GLS.FileMP3,
+  GLS.VectorGeometry,
+  GLS.U, GLS.GeomObjectstils;
 
 
 type

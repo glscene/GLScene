@@ -6,17 +6,17 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLBitmapFont"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLGeomObjects"
-#pragma link "GLHUDObjects"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLSpaceText"
-#pragma link "GLSceneViewer"
-#pragma link "GLWindowsFont"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.BitmapFont"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.HUDObjects"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SpaceText"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.WindowsFont"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
@@ -35,10 +35,10 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   UpdateHudText();
 }
 //---------------------------------------------------------------------------
-Scene.VectorGeometry::TVector __fastcall TForm1::MouseWorldPos(int X, int Y)
+Gls::Vectorgeometry::TVector __fastcall TForm1::MouseWorldPos(int X, int Y)
 {
-  Scene.VectorGeometry::TVector v;
-  Scene.VectorGeometry::TVector Result;
+  Gls::Vectorgeometry::TVector v;
+  Gls::Vectorgeometry::TVector Result;
 
   Y = Scn->Height - Y;
   if (CurrentPick)
@@ -131,7 +131,7 @@ void __fastcall TForm1::ScnMouseDown(TObject *Sender, TMouseButton Button, TShif
 void __fastcall TForm1::ScnMouseMove(TObject *Sender, TShiftState Shift, int X, int Y)
 
 {
-  Scene.VectorGeometry::TVector newPos;
+  Gls::Vectorgeometry::TVector newPos;
 
   ScnMouseMoveCnt++;
 ////not translated  Assert(ScnMouseMoveCnt < 2);

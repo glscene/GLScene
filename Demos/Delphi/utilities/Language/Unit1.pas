@@ -3,16 +3,21 @@ unit Unit1;
 interface
 
 uses
-  System.Classes, System.SysUtils,
-  Vcl.Forms, Vcl.Controls, Vcl.Graphics, Vcl.Dialogs, Vcl.Menus,
-  Vcl.StdCtrls, Vcl.ExtCtrls,
+  System.Classes,
+  System.SysUtils,
+  Vcl.Forms,
+  Vcl.Controls,
+  Vcl.Graphics,
+  Vcl.Dialogs,
+  Vcl.Menus,
+  Vcl.StdCtrls,
+  Vcl.ExtCtrls,
 
-  
-  GLScene, GLObjects, GLSLanguage;
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Language;
 
 type
-
-  { TForm1 }
 
   TForm1 = class(TForm)
     Button: TButton;
@@ -33,12 +38,9 @@ type
     procedure mRussianClick(Sender: TObject);
     procedure mDeutschClick(Sender: TObject);
   private
-     
     procedure SetLanguage(const AFile: string);
   public
-     
   end;
-
 
 var
   Form1 :TForm1;
@@ -46,8 +48,6 @@ var
 implementation
 
 {$R *.dfm}
-
-{ TForm1 }
 
 procedure TForm1.SetLanguage(const AFile: string);
 begin

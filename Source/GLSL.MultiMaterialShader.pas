@@ -14,10 +14,10 @@ interface
 uses
   System.Classes,
 
-  GLMaterial,
-  GLContext,
-  GLRenderContextInfo,
-  GLState;
+  GLS.Material,
+  GLS.Context,
+  GLS.RenderContextInfo,
+  GLS.State;
 
 type
   TGLMultiMaterialShader = class(TGLShader)

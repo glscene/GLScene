@@ -15,15 +15,15 @@ uses
   Vcl.ExtCtrls,
 
 
-  GLObjects,
-  GLGraph,
-  GLScene,
-  Scene.VectorGeometry,
-  Scene.VectorTypes,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses;
+  GLS.Objects,
+  GLS.Graph,
+  GLS.Scene,
+  GLS.VectorGeometry,
+  GLS.VectorTypes,
+  GLS.SceneViewer,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

@@ -4,7 +4,7 @@
 
 unit GLSL.ProjectedTextures;
 
-(* Implements projected textures through a GLScene object via GLSL. 
+(* Implements projected textures via GLSL. 
 
   Known bugs/limitations
 
@@ -27,16 +27,16 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLPipelineTransformation,
-  GLScene,
-  Scene.PersistentClasses,
-  GLTexture,
-  Scene.VectorGeometry,
-  GLContext,
-  GLColor,
-  GLRenderContextInfo,
-  GLTextureFormat,
-  Scene.VectorTypes;
+  GLS.PipelineTransformation,
+  GLS.Scene,
+  GLS.PersistentClasses,
+  GLS.Texture,
+  GLS.VectorGeometry,
+  GLS.Context,
+  GLS.Color,
+  GLS.RenderContextInfo,
+  GLS.TextureFormat,
+  GLS.VectorTypes;
 
 type
   TGLSLProjectedTexturesStyle = (ptsLight, ptsShadow);

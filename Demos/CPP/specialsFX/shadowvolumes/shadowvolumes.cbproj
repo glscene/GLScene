@@ -128,6 +128,7 @@
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <LinkPackageStatics>GLScene_RT.lib;xmlrtl.lib;vclimg.lib;fmx.lib</LinkPackageStatics>
         <LinkPackageImports>rtl.bpi;vcl.bpi</LinkPackageImports>
+        <BT_BuildType>Debug</BT_BuildType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <BCC_Defines>_DEBUG;$(BCC_Defines);$(BCC_Defines)</BCC_Defines>

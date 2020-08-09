@@ -8,21 +8,21 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 
-#include <GLObjects.hpp>        // Pascal unit
-#include <GLTexture.hpp>        // Pascal unit
-#include <GLGeomObjects.hpp>    // Pascal unit
-#include <GLCelShader.hpp>      // Pascal unit
-#include <GLAsyncTimer.hpp>       // Pascal unit
-#include <GLVectorFileObjects.hpp>      // Pascal unit
-#include <GLSceneViewer.hpp>    // Pascal unit
-#include <GLCadencer.hpp>       // Pascal unit
-#include <GLScene.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLMaterial.hpp"          // Pascal unit
-#include "GLKeyboard.hpp"
-#include "GLFileMD2.hpp"
+#include <GLS.Objects.hpp>        // Pascal unit
+#include <GLS.Texture.hpp>        // Pascal unit
+#include <GLS.GeomObjects.hpp>    // Pascal unit
+#include <GLSL.ShapeShaders.hpp>      // Pascal unit
+#include <GLS.AsyncTimer.hpp>       // Pascal unit
+#include <GLS.VectorFileObjects.hpp>      // Pascal unit
+#include <GLS.SceneViewer.hpp>    // Pascal unit
+#include <GLS.Cadencer.hpp>       // Pascal unit
+#include <GLS.Scene.hpp>
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Material.hpp"          // Pascal unit
+#include "GLS.Keyboard.hpp"
+#include "GLS.FileMD2.hpp"
 #include "GLS.Utils.hpp"
 
 

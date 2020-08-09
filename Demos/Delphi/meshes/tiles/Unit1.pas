@@ -16,23 +16,23 @@ uses
   Vcl.Imaging.Jpeg,
   Vcl.StdCtrls,
 
-  Scene.VectorTypes,
-  GLObjects,
-  GLGraph,
-  GLScene,
-  GLSceneViewer,
-  Scene.VectorGeometry,
-  GLTilePlane,
-  GLTexture,
-  GLCadencer,
-  GLContext,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses,
-  GLRenderContextInfo,
-  GLTextureFormat,
-  GLKeyboard,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.Graph,
+  GLS.Scene,
+  GLS.SceneViewer,
+  GLS.VectorGeometry,
+  GLS.TilePlane,
+  GLS.Texture,
+  GLS.Cadencer,
+  GLS.Context,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.RenderContextInfo,
+  GLS.TextureFormat,
+  GLS.Keyboard,
   GLS.Utils;
 
 type
@@ -49,7 +49,7 @@ type
     GLCadencer1: TGLCadencer;
     Label1: TLabel;
     CBMaterial: TComboBox;
-    GLTilePlane: TGLTilePlane;
+    GLS.TilePlane: TGLTilePlane;
     GLDirectOpenGL: TGLDirectOpenGL;
     DCSelection: TGLDummyCube;
     GLLines1: TGLLines;
@@ -101,7 +101,7 @@ begin
   RandSeed := 0;
   for i := -20 to 20 do
     for j := -20 to 20 do
-      GLTilePlane.Tiles[i, j] :=
+      GLS.TilePlane.Tiles[i, j] :=
         Random(GLMaterialLibrary.Materials.Count - 1) + 1;
 
   // set all tile materials to anisotropic,
@@ -122,13 +122,13 @@ begin
   my := Y;
   if Shift = [ssLeft] then
   begin
-    GLTilePlane.Tiles[tileX, tileY] := CBMaterial.ItemIndex;
-    GLTilePlane.StructureChanged;
+    GLS.TilePlane.Tiles[tileX, tileY] := CBMaterial.ItemIndex;
+    GLS.TilePlane.StructureChanged;
   end
   else if Shift = [ssRight] then
   begin
-    GLTilePlane.Tiles[tileX, tileY] := 0;
-    GLTilePlane.StructureChanged;
+    GLS.TilePlane.Tiles[tileX, tileY] := 0;
+    GLS.TilePlane.StructureChanged;
   end;
 end;
 
@@ -186,13 +186,13 @@ begin
       translating := False;
       if IsKeyDown(VK_LBUTTON) then
       begin
-        GLTilePlane.Tiles[tileX, tileY] := CBMaterial.ItemIndex;
-        GLTilePlane.StructureChanged;
+        GLS.TilePlane.Tiles[tileX, tileY] := CBMaterial.ItemIndex;
+        GLS.TilePlane.StructureChanged;
       end;
       if IsKeyDown(VK_RBUTTON) then
       begin
-        GLTilePlane.Tiles[tileX, tileY] := 0;
-        GLTilePlane.StructureChanged;
+        GLS.TilePlane.Tiles[tileX, tileY] := 0;
+        GLS.TilePlane.StructureChanged;
       end;
     end;
     mx := mp.X;
@@ -213,7 +213,7 @@ end;
 procedure TForm1.BUPackClick(Sender: TObject);
 begin
   // packing a tile area removes unused area from the in-memory structures
-  GLTilePlane.Tiles.Pack;
+  GLS.TilePlane.Tiles.Pack;
 end;
 
 procedure TForm1.CBShowGridClick(Sender: TObject);
@@ -223,7 +223,7 @@ end;
 
 procedure TForm1.CBSortByMaterialsClick(Sender: TObject);
 begin
-  GLTilePlane.SortByMaterials := CBSortByMaterials.Checked;
+  GLS.TilePlane.SortByMaterials := CBSortByMaterials.Checked;
 end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);

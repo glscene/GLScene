@@ -6,16 +6,17 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLGeomObjects"
-#pragma link "GLCadencer"
-#pragma link "GLSceneViewer"
-#pragma link "GLObjects"
-#pragma link "GLVectorFileObjects"
-#pragma link "GLScene"
-#pragma link "GLFile3DS"
-#pragma link "GLBaseClasses"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.Objects"
+#pragma link "GLS.VectorFileObjects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.File3DS"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Scene"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -49,7 +50,7 @@ void __fastcall TForm1::GLSceneViewer2MouseDown(TObject * Sender,
 												TMouseButton Button,
 												TShiftState Shift, int X, int Y)
 {
-  Scene.VectorGeometry::TVector rayStart, rayVector, iPoint, iNormal;
+  Gls::Vectorgeometry::TVector rayStart, rayVector, iPoint, iNormal;
   __int64 t;
 
   SetVector(rayStart, GLCamera2->AbsolutePosition);

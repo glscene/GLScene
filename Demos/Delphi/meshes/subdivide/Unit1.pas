@@ -13,25 +13,25 @@ uses
   Vcl.ComCtrls,
   Vcl.ExtCtrls,
 
-  GLScene,
-  GLVectorFileObjects,
-  Scene.PersistentClasses,
-  GLObjects,
-  GLTexture,
-  GLSceneViewer,
-  GLMeshUtils,
-  Scene.VectorGeometry,
-  Scene.VectorLists,
-  GLCadencer,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLState,
-  GLBaseClasses,
+  GLS.Scene,
+  GLS.VectorFileObjects,
+  GLS.PersistentClasses,
+  GLS.Objects,
+  GLS.Texture,
+  GLS.SceneViewer,
+  GLS.MeshUtils,
+  GLS.VectorGeometry,
+  GLS.VectorLists,
+  GLS.Cadencer,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.State,
+  GLS.BaseClasses,
   GLS.Utils,
-  GLFile3DS,
-  GLFileMD2,
-  GLFileSMD;
+  GLS.File3DS,
+  GLS.FileMD2,
+  GLS.FileSMD;
 
 type
   TForm1 = class(TForm)
@@ -170,7 +170,7 @@ begin
         bufRemap.Assign(firstRemap);
         RemapAndCleanupReferences(morphTris, bufRemap);
 
-        morphNorms := GLMeshUtils.BuildNormals(morphTris, bufRemap);
+        morphNorms := GLS.MeshUtils.BuildNormals(morphTris, bufRemap);
 
         SubdivideTriangles(TrackBar1.Position * 0.1, morphTris, bufRemap,
           morphNorms);

@@ -6,18 +6,17 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLSceneViewer"
-#pragma link "GLScene"
-#pragma link "GLCadencer"
-#pragma link "GLMirror"
-#pragma link "GLObjects"
-#pragma link "GLGeomObjects"
-#pragma link "GLExtrusion"
-#pragma link "GLMultiPolygon"
-#pragma link "GLTeapot"
-#pragma link "GLBaseClasses"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.Scene"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Mirror"
+#pragma link "GLS.Objects"
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.Extrusion"
+#pragma link "GLS.MultiPolygon"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+
 #pragma resource "*.dfm"
 TForm1 *Form1;
 int mx, my;

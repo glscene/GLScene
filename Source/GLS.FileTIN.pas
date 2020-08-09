@@ -14,11 +14,11 @@ uses
   System.Classes,
   System.SysUtils,
 
-  Scene.VectorTypes,
-  GLVectorFileObjects,
-  GLApplicationFileIO,
-  Scene.VectorGeometry,
-  Scene.VectorRecTypes;
+  GLS.VectorTypes,
+  GLS.VectorFileObjects,
+  GLS.ApplicationFileIO,
+  GLS.VectorGeometry,
+  GLS.VectorRecTypes;
 
 
 type

@@ -14,20 +14,20 @@ uses
   Vcl.Buttons,
 
   
-  GLScene,
-  GLObjects,
-  Scene.VectorGeometry,
-  GLCadencer,
-  GLBehaviours,
-  GLGraph,
-  GLMovement,
-  Scene.VectorTypes,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.VectorGeometry,
+  GLS.Cadencer,
+  GLS.Behaviours,
+  GLS.Graph,
+  GLS.Movement,
+  GLS.VectorTypes,
+  GLS.SceneViewer,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.Utils,
-  GLSimpleNavigation;
+  GLS.SimpleNavigation;
 
 type
   TForm1 = class(TForm)

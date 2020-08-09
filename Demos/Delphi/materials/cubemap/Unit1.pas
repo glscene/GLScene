@@ -12,17 +12,15 @@ uses
   Vcl.Dialogs,
   Vcl.StdCtrls,
 
-  GLScene,
-  GLSceneViewer,
-  GLObjects,
-  GLTeapot,
-  GLCrossPlatform,
-  GLTexture,
-  GLContext,
+  GLS.Scene,
+  GLS.SceneViewer,
+  GLS.Objects,
+  GLS.Texture,
+  GLS.Context,
   GLS.Utils,
-  GLCoordinates,
-  GLBaseClasses,
-  GLGeomObjects;
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.GeomObjects;
 
 type
   TForm1 = class(TForm)

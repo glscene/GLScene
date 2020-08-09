@@ -12,19 +12,19 @@ uses
   Vcl.Controls,
   Vcl.StdCtrls,
 
-  GLCadencer,
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  GLSound,
-  GLSceneViewer,
-  GLGeomObjects,
-  GLSMOpenAL,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses,
-  GLFileWAV,
-  GLFileMP3,
+  GLS.Cadencer,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.Sound,
+  GLS.SceneViewer,
+  GLS.GeomObjects,
+  GLSM.OpenAL,
+
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.FileWAV,
+  GLS.FileMP3,
   GLS.Utils;
 
 type
@@ -74,7 +74,7 @@ implementation
 {$R *.DFM}
 
 uses
-  Scene.VectorGeometry;
+  GLS.VectorGeometry;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin

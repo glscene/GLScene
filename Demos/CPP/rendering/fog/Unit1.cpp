@@ -6,15 +6,15 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLCadencer"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLTexture"
-#pragma link "GLSceneViewer"
-#pragma link "GLBaseClasses"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLMaterial"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.Texture"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Material"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
@@ -30,7 +30,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
   TGLCube *Cube;
 
   SetGLSceneMediaDir();
-  GLMaterialLibrary1->AddTextureMaterial("glscene", "glscene.bmp",true);
+  GLMaterialLibrary1->AddTextureMaterial("glscene", "GLS.Scene.bmp",true);
   for (X=-cNb; X<cNb; X++)
 	for (Y=-cNb; Y<cNb; Y++)
 	  for (Z=-cNb; Z<cNb; Z++)
@@ -38,7 +38,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 		{
 		  Cube = (TGLCube *) GLDummyCube1->AddNewChild(__classid(TGLCube));
 		  Cube->Material->MaterialLibrary = GLMaterialLibrary1;
-          Cube->Material->LibMaterialName = "glscene";
+          Cube->Material->LibMaterialName = "GLS.Scene";
           Cube->Position->SetPoint(X * cSpacing, Y * cSpacing, Z * cSpacing);
           Cube->CubeWidth = cEdgeLength;
           Cube->CubeHeight = cEdgeLength;

@@ -14,16 +14,16 @@ uses
   Vcl.ExtCtrls,
   Vcl.Imaging.Jpeg,
   
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  GLTexture,
-  GLHUDObjects,
-  GLCadencer,
-  GLSceneViewer,
-  GLCoordinates,
-  GLCrossPlatform,
-  GLBaseClasses;
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.Texture,
+  GLS.HUDObjects,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  GLS.Coordinates,
+ 
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)
@@ -65,7 +65,7 @@ implementation
 {$R *.DFM}
 
 uses
-  GLTextureFormat, GLS.Utils;
+  GLS.TextureFormat, GLS.Utils;
 
 procedure TForm1.FormCreate(Sender: TObject);
 var

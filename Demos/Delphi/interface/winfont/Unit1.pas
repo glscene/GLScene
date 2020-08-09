@@ -14,18 +14,18 @@ uses
   Vcl.Menus,
 
   
-  GLScene,
-  Scene.VectorTypes,
-  GLHUDObjects,
-  GLObjects,
-  GLCadencer,
-  GLSceneViewer,
-  GLWindowsFont,
-  GLTeapot,
-  GLCoordinates,
-  GLCrossPlatform,
-  GLBaseClasses,
-  GLBitmapFont;
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.HUDObjects,
+  GLS.Objects,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  GLS.WindowsFont,
+  GLS.GeomObjects,
+  GLS.Coordinates,
+ 
+  GLS.BaseClasses,
+  GLS.BitmapFont;
 
 type
   TForm1 = class(TForm)

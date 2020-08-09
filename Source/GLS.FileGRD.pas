@@ -14,11 +14,11 @@ uses
   System.Classes,
   System.SysUtils,
 
-  Scene.VectorGeometry,
-  Scene.VectorTypes,
-  GLVectorFileObjects,
-  GLApplicationFileIO,
-  GLGraph;
+  GLS.VectorGeometry,
+  GLS.VectorTypes,
+  GLS.VectorFileObjects,
+  GLS.ApplicationFileIO,
+  GLS.Graph;
 
 type
   (* The GRD file represents ascii grid formats in 2D/3D.
@@ -109,7 +109,7 @@ procedure TGLGRDVectorFile.LoadFromStream(aStream: TStream);
 var
   I, J, K: Integer;
   N: Integer; // N => counter to increment through file
-  Sl, Tl: TStringList;
+  SL, TL: TStringList;
 
   Nx, Ny: Integer;
   Dx, Dy: Single;
@@ -117,18 +117,18 @@ var
   NBlanks: Integer; // Number of blank nodes
   BlankVal, NoData: Double;
 
-  { sub } function ReadLine: string;
-begin
-  Result := Sl[N];
-  Inc(N);
-end;
+  function ReadLine: string;
+  begin
+    Result := SL[N];
+    Inc(N);
+  end;
 
 begin
-  Sl := TStringList.Create;
-  Tl := TStringList.Create;
+  SL := TStringList.Create;
+  TL := TStringList.Create;
   try
-    Sl.LoadFromStream(aStream);
-    if (Copy(Sl[0], 1, 4) <> 'DSAA') and (Copy(Sl[0], 1, 5) <> 'ncols') then
+    SL.LoadFromStream(aStream);
+    if (Copy(SL[0], 1, 4) <> 'DSAA') and (Copy(SL[0], 1, 5) <> 'ncols') then
     begin
       raise Exception.Create('Not a valid grd file !');
       Exit;
@@ -138,23 +138,23 @@ begin
 
     Zo := 3 * 10E38; // Low
     Ze := -3 * 10E38; // High
-    Tl.DelimitedText := Copy(ReadLine, 1, 4);
+    TL.DelimitedText := Copy(ReadLine, 1, 4);
 
-    if (Tl[0] = 'DSAA') then // Surfer ASCII grid
+    if (TL[0] = 'DSAA') then // Surfer ASCII grid
     begin
-      Tl.DelimitedText := ReadLine;
+      TL.DelimitedText := ReadLine;
       Nx := StrToInt(Tl[0]);
       Ny := StrToInt(Tl[1]);
 
-      Tl.DelimitedText := ReadLine;
+      TL.DelimitedText := ReadLine;
       Xo := StrToFloat(Tl[0]);
       Xe := StrToFloat(Tl[1]);
 
-      Tl.DelimitedText := ReadLine;
+      TL.DelimitedText := ReadLine;
       Yo := StrToFloat(Tl[0]);
       Ye := StrToFloat(Tl[1]);
 
-      Tl.DelimitedText := ReadLine;
+      TL.DelimitedText := ReadLine;
       Zo := StrToFloat(Tl[0]);
       Ze := StrToFloat(Tl[1]);
 
@@ -197,29 +197,29 @@ begin
     end
     else // ArcInfo ASCII grid
     begin
-      Tl.DelimitedText := Sl[0];
-      Ny := StrToInt(Tl[1]); // ncols
-      Tl.DelimitedText := Sl[1];
-      Nx := StrToInt(Tl[1]); // nrows
-      Tl.DelimitedText := Sl[2];
+      TL.DelimitedText := Sl[0];
+      Ny := StrToInt(TL[1]); // ncols
+      TL.DelimitedText := SL[1];
+      Nx := StrToInt(TL[1]); // nrows
+      TL.DelimitedText := SL[2];
       Xo := StrToFloat(Tl[1]); // xllcorner
-      Tl.DelimitedText := Sl[3];
-      Yo := StrToFloat(Tl[1]); // yllcorner
-      Tl.DelimitedText := Sl[4];
-      Dx := StrToFloat(Tl[1]);
+      TL.DelimitedText := SL[3];
+      Yo := StrToFloat(TL[1]); // yllcorner
+      TL.DelimitedText := Sl[4];
+      Dx := StrToFloat(TL[1]);
       Dy := Dx; // cellsize
-      Tl.DelimitedText := Sl[5];
-      NoData := StrToFloat(Tl[1]); // NoData value
+      TL.DelimitedText := SL[5];
+      NoData := StrToFloat(TL[1]); // NoData value
 
       MaxZ := -3 * 10E38;
       SetLength(Nodes, Nx, Ny);
 
       for I := 0 to Nx - 1 do
       begin
-        Tl.DelimitedText := Sl[I + 6];
+        TL.DelimitedText := SL[I + 6];
         for J := 0 to Ny - 1 do
         begin
-          StrVal := Tl[J];
+          StrVal := TL[J];
           Nodes[I, J] := StrToFloat(StrVal);
           if Nodes[I, J] > MaxZ then
             MaxZ := Nodes[I, J];
@@ -233,8 +233,8 @@ begin
     GLHeightField.YSamplingScale.Max := (Ny div 2);
 
   finally
-    Tl.Free;
-    Sl.Free;
+    TL.Free;
+    SL.Free;
   end;
 end;
 

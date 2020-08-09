@@ -18,32 +18,33 @@ uses
   Vcl.ComCtrls,
   Vcl.Imaging.Jpeg,
 
-  GLSArchiveManager,
-  GLFilePAK,
-  GLFileZLIB,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLBaseClasses,
-  GLScene,
-  GLSimpleNavigation,
-  GLMaterial,
-  GLVectorFileObjects,
-  GLObjects,
-  GLCoordinates,
-  GLGraphics,
-  GLState,
-  GLCompositeImage,
+  GLS.ArchiveManager,
+  GLS.FilePAK,
+  GLS.FileZLIB,
+  GLS.SceneViewer,
+ 
+  GLS.BaseClasses,
+  GLS.Scene,
+  GLS.SimpleNavigation,
+  GLS.Material,
+  GLS.VectorFileObjects,
+  GLS.Objects,
+  GLS.Coordinates,
+  GLS.Graphics,
+  GLS.State,
+  GLS.CompositeImage,
   // FileFormats 3D
-  GLFileMS3D,
-  GLFile3DS,
-  GLFileMD2,
-  GLFileMD3,
+  GLS.FileMS3D,
+  GLS.File3DS,
+  GLS.FileMD2,
+  GLS.FileMD3,
   GLFileLMTS,
-  GLFileOBJ,
-  GLFileSMD,
-  GLFileTGA,
-  GLFilePNG,
-  GLFileDDS;
+  GLS.FileOBJ,
+  GLS.FileSMD,
+  GLS.FileTGA,
+  GLS,FilePNG,
+  GLS.FileDDS, GLS.SimpleNavigation, GLS.Material, GLS.Objects, GLS.Scene,
+  GLS.VectorFileObjects, GLS.BaseClasses, GLS.SceneViewer;
 
 type
   TForm1 = class(TForm)
@@ -123,9 +124,13 @@ var
   Archive: TLibArchive;
   vMenu: TMenuItem;
 
+//-------------------------------------
 implementation
+//-------------------------------------
 
-uses FolderDialog, FolderSelect;
+uses 
+  FolderDialog, 
+  FolderSelect;
 
 {$R *.dfm}
 {.$R icons.res}

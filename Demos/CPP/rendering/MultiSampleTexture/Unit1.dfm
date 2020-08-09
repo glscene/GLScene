@@ -26,6 +26,7 @@ object Form1: TForm1
     Buffer.FogEnvironment.FogEnd = 100.000000000000000000
     Buffer.BackgroundColor = clGray
     FieldOfView = 133.503829956054700000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end

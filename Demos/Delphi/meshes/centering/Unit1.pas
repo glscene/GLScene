@@ -15,9 +15,9 @@ uses
   Vcl.StdCtrls,
 
   
-  GLScene, GLVectorFileObjects, GLObjects,
-  GLSceneViewer, GLFile3DS, GLCrossPlatform, GLCoordinates,
-  GLBaseClasses, GLS.Utils;
+  GLS.Scene, GLS.VectorFileObjects, GLS.Objects,
+  GLS.SceneViewer, GLS.File3DS, GLS.Coordinates,
+  GLS.BaseClasses, GLS.Utils;
 
 type
   TForm1 = class(TForm)

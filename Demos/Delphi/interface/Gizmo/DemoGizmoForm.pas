@@ -14,21 +14,20 @@ uses
   Vcl.ExtCtrls,
 
   
-  GLScene,
-  GLCadencer,
-  Scene.PersistentClasses,
-  GLObjects,
+  GLS.Scene,
+  GLS.Cadencer,
+  GLS.PersistentClasses,
+  GLS.Objects,
   GLS.SpaceText,
-  GLPolyhedron,
-  GLSceneViewer,
-  GLBitmapFont,
-  GLWindowsFont,
-  GLHUDObjects,
-  GLGeomObjects,
-  GLGizmo,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses, GLVectorFileObjects;
+  GLS.SceneViewer,
+  GLS.BitmapFont,
+  GLS.WindowsFont,
+  GLS.HUDObjects,
+  GLS.GeomObjects,
+  GLS.Gizmo,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses, GLS.VectorFileObjects;
 
 type
   TForm1 = class(TForm)

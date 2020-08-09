@@ -14,14 +14,14 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
   
-  GLScene,
-  GLObjects,
-  GLCadencer,
-  GLSceneViewer,
-  GLAsyncTimer,
-  GLCoordinates,
-  GLCrossPlatform,
-  GLBaseClasses,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  GLS.AsyncTimer,
+  GLS.Coordinates,
+ 
+  GLS.BaseClasses,
 
   GLS.dwsClasses,
   GLS.dwsVectorGeometry,

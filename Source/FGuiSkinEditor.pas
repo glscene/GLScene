@@ -24,19 +24,18 @@ uses
   VCL.ExtCtrls, 
   VCL.Menus,
 
-  GLTexture, 
-  GLScene, 
-  GLObjects, 
-  GLWindows, 
-  GLHUDObjects,
-  GLSceneViewer, 
-  GLGui, 
-  GLGraphics, 
+  GLS.Texture, 
+  GLS.Scene, 
+  GLS.Objects, 
+  GLS.Windows, 
+  GLS.HudObjects,
+  GLS.SceneViewer, 
+  GLS.Gui, 
+  GLS.Graphics, 
   GLS.Utils,
-  GLCrossPlatform,
-  GLCoordinates, 
-  GLBaseClasses, 
-  GLMaterial;
+  GLS.Coordinates,
+  GLS.BaseClasses, 
+  GLS.Material;
 
 type
   TGLSkinEditorForm = class(TForm)
@@ -655,7 +654,7 @@ var
 begin
   if Assigned(SelectedElement) then
   begin
-    res := GLS.Utils.StrToFloatDef(ScaleXEdit.Text, 0);
+    res := StrToFloatDef(ScaleXEdit.Text, 0);
     if res > 0 then
     begin
       SelectedElement.Scale.X := Res;
@@ -672,7 +671,7 @@ var
 begin
   if Assigned(SelectedElement) then
   begin
-    res := GLS.Utils.StrToFloatDef(ScaleYEdit.Text, 0);
+    res := StrToFloatDef(ScaleYEdit.Text, 0);
     if res > 0 then
     begin
       SelectedElement.Scale.Y := Res;
@@ -691,7 +690,7 @@ begin
   begin
     GLPanel1.BlockRender;
     try
-      res := GLS.Utils.StrToFloatDef(LeftEdit.Text, -1);
+      res := StrToFloatDef(LeftEdit.Text, -1);
       if res >= 0 then
       begin
         SelectedElement.TopLeft.X := Res;
@@ -713,7 +712,7 @@ begin
   begin
     GLPanel1.BlockRender;
     try
-      res := GLS.Utils.StrToFloatDef(TopEdit.Text, -1);
+      res := StrToFloatDef(TopEdit.Text, -1);
       if res >= 0 then
       begin
         SelectedElement.TopLeft.Y := Res;
@@ -735,7 +734,7 @@ begin
   begin
     GLPanel1.BlockRender;
     try
-      res := GLS.Utils.StrToFloatDef(RightEdit.Text, -1);
+      res := StrToFloatDef(RightEdit.Text, -1);
       if res >= 0 then
       begin
         SelectedElement.BottomRight.X := Res;
@@ -757,7 +756,7 @@ begin
   begin
     GLPanel1.BlockRender;
     try
-      res := GLS.Utils.StrToFloatDef(BottomEdit.Text, -1);
+      res := StrToFloatDef(BottomEdit.Text, -1);
       if res >= 0 then
       begin
         SelectedElement.BottomRight.Y := Res;

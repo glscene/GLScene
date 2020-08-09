@@ -11,14 +11,14 @@ uses
   Vcl.Controls,
 
   
-  GLScene,
-  GLObjects,
-  GLTeapot,
-  GLCanvas,
-  GLCoordinates,
-  GLCrossPlatform,
-  GLBaseClasses,
-  GLFullScreenViewer;
+  GLS.Scene,
+  GLS.Objects,
+  GLS.GeomObjects,
+  GLS.Canvas,
+  GLS.Coordinates,
+ 
+  GLS.BaseClasses,
+  GLS.FullScreenViewer;
 
 type
   TDataModule1 = class(TDataModule)

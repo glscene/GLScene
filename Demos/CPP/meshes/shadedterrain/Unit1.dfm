@@ -36,6 +36,7 @@ object Form1: TForm1
     Buffer.FogEnable = True
     Buffer.Lighting = False
     FieldOfView = 150.060897827148400000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
@@ -202,6 +203,7 @@ object Form1: TForm1
       TileSize = 128
       TilesPerTexture = 1.000000000000000000
       CLODPrecision = 30
+      ContourWidth = 0
     end
     object GLLensFlare: TGLLensFlare
       Size = 100

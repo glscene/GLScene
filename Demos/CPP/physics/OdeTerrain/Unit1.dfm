@@ -31,6 +31,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = clGray
     Buffer.FogEnable = True
     FieldOfView = 159.279708862304700000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
@@ -50,7 +51,6 @@ object Form1: TForm1
       SpotDirection.Coordinates = {00000000F4FD34BFF4FD343F00000000}
     end
     object SkyDome1: TGLSkyDome
-      Up.Coordinates = {000000000000803F0000008000000000}
       Bands = <
         item
           StartAngle = -5.000000000000000000
@@ -108,6 +108,7 @@ object Form1: TForm1
       TileSize = 32
       TilesPerTexture = 1.000000000000000000
       QualityDistance = 150.000000000000000000
+      ContourWidth = 0
       BehavioursData = {
         0458434F4C02010201061154474C4F44454865696768744669656C6402001200
         00000002000200120000000002000500000000006F1283F53F08000005000000

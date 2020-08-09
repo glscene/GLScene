@@ -27,6 +27,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = clBlack
     Buffer.ShadeModel = smSmooth
     FieldOfView = 150.733886718750000000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
@@ -77,7 +78,7 @@ object Form1: TForm1
         object BotSphere: TGLSphere
           Material.MaterialOptions = [moNoLighting]
           Material.FaceCulling = fcNoCull
-          Radius = 0.400000005960464400
+          Radius = 0.400000005960464500
         end
       end
       object GLLight: TGLLightSource

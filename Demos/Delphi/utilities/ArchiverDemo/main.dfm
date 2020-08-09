@@ -23,6 +23,7 @@ object Form1: TForm1
     VSync = vsmSync
     Buffer.AntiAliasing = aa4xHQ
     FieldOfView = 156.605575561523400000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end

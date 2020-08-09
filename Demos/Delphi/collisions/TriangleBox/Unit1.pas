@@ -15,23 +15,22 @@ uses
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
 
-
-  Scene.VectorTypes,
-  Scene.VectorLists,
-  GLScene,
-  GLObjects,
-  GLCadencer,
-  GLVectorFileObjects,
-  GLMaterial,
-  GLColor,
-  GLState,
-  GLSceneViewer,
-  Scene.VectorGeometry,
-  GLGraph,
-  GLGeomObjects,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses;
+  GLS.VectorTypes,
+  GLS.VectorLists,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Cadencer,
+  GLS.VectorFileObjects,
+  GLS.Material,
+  GLS.Color,
+  GLS.State,
+  GLS.SceneViewer,
+  GLS.VectorGeometry,
+  GLS.Graph,
+  GLS.GeomObjects,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

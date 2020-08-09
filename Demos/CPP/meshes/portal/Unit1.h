@@ -10,17 +10,17 @@
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Grids.hpp>
 
-#include "GLScene.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLMaterial.hpp"
-#include "GLObjects.hpp"
-#include "GLPortal.hpp"
-#include "GLVectorFileObjects.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLKeyboard.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Material.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Portal.hpp"
+#include "GLS.VectorFileObjects.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Keyboard.hpp"
 #include "JPeg.hpp"
 
 //---------------------------------------------------------------------------

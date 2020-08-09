@@ -20,11 +20,11 @@ interface
 uses
   System.Classes,
 
-  GLMaterial,
-  GLScene,
-  Scene.VectorGeometry,
-  Scene.Strings,
-  GLRenderContextInfo;
+  GLS.Material,
+  GLS.Scene,
+  GLS.VectorGeometry,
+  GLS.Strings,
+  GLS.RenderContextInfo;
 
 type
   (*

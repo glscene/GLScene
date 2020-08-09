@@ -168,7 +168,7 @@
             <Form>GLInfoForm</Form>
         </DCCReference>
         <DCCReference Include="..\Source\GLS.SceneRegister.pas"/>
-        <DCCReference Include="..\Source\XCollectionRegister.pas"/>
+        <DCCReference Include="..\Source\GLS.XCollectionRegister.pas"/>
         <RcCompile Include="..\Resources\GLScene.rc">
             <Form>GLScene.res</Form>
         </RcCompile>

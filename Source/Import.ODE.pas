@@ -56,7 +56,7 @@ interface
 
 uses
   System.Classes,
-  Scene.ModuleLoader;
+  Import.ModuleLoader;
 
 const
 

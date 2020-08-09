@@ -11,26 +11,25 @@
 #include <ExtCtrls.hpp>
 
 
-#include "OpenGLx.hpp"
-#include "GLTexCombineShader.hpp"
-#include "GLBumpmapHDS.hpp"
+#include "GLS.BumpMapHDS.hpp"
 #include "GLLensFlare.hpp"
-#include "Scene.VectorGeometry.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLSkydome.hpp"
-#include "GLTexture.hpp"
-#include "GLCadencer.hpp"
-#include "GLHeightData.hpp"
-#include "GLObjects.hpp"
-#include "GLTerrainRenderer.hpp"
-#include "GLScene.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLMaterial.hpp"
+#include "GLS.VectorGeometry.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.SkyDome.hpp"
+#include "GLS.Texture.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.HeightData.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.TerrainRenderer.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
 
-#include "GLKeyBoard.hpp"
-#include <jpeg.hpp>             // Pascal unit
+#include "GLS.Material.hpp"
+
+#include "GLS.Keyboard.hpp"
+#include <jpeg.hpp>
+#include "GLSL.TextureShaders.hpp"             // Pascal unit
 
 //---------------------------------------------------------------------------
 class TForm1:public TForm

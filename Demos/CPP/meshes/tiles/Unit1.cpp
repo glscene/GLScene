@@ -7,16 +7,16 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLGraph"
-#pragma link "GLMaterial"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLTilePlane"
-#pragma link "GLSceneViewer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Graph"
+#pragma link "GLS.Material"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.TilePlane"
+#pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -34,7 +34,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 /*
    for (i=-20;i<=20;i++)
 	 for (j=-20;j<=20;j++)
-	  GLTilePlane->Tiles[i,j] = Random(GLMaterialLibrary->Materials->Count-1)+1;
+	  GLS.TilePlane->Tiles[i,j] = Random(GLMaterialLibrary->Materials->Count-1)+1;
 */
    // set all tile materials to anisotropic,
    // add them to the material selection combo

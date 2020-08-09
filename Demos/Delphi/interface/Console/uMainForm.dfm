@@ -38,6 +38,7 @@ object MainForm: TMainForm
     Buffer.BackgroundColor = clMoneyGreen
     Buffer.AmbientColor.Color = {9A99993E9A99993E9A99993E0000803F}
     FieldOfView = 153.029327392578100000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = ViewerMouseDown
     TabOrder = 0

@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 0
   Caption = 'Cg Simple Shader'
   ClientHeight = 422
-  ClientWidth = 589
+  ClientWidth = 845
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -50,10 +50,6 @@ object Form1: TForm1
       TabOrder = 0
       object TabSheet1: TTabSheet
         Caption = 'Vertex Program'
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Splitter3: TSplitter
           Left = 0
           Top = 283
@@ -218,10 +214,6 @@ object Form1: TForm1
       object TabSheet2: TTabSheet
         Caption = 'Fragment Program'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Splitter2: TSplitter
           Left = 0
           Top = 283
@@ -382,7 +374,7 @@ object Form1: TForm1
   object Panel9: TPanel
     Left = 372
     Top = 0
-    Width = 217
+    Width = 473
     Height = 422
     Align = alClient
     Font.Charset = ANSI_CHARSET
@@ -392,10 +384,11 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 1
+    ExplicitWidth = 217
     object PanelFPS: TPanel
       Left = 1
       Top = 1
-      Width = 215
+      Width = 471
       Height = 48
       Align = alTop
       Caption = 'FPS'
@@ -406,20 +399,22 @@ object Form1: TForm1
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      ExplicitWidth = 215
     end
     object GLSceneViewer1: TGLSceneViewer
       Left = 1
       Top = 49
-      Width = 215
+      Width = 471
       Height = 372
       Camera = GLCamera1
       Buffer.AntiAliasing = aa4x
-      FieldOfView = 130.112182617187500000
+      FieldOfView = 149.907211303710900000
       PenAsTouch = False
       Align = alClient
       OnMouseDown = GLSceneViewer1MouseDown
       OnMouseMove = GLSceneViewer1MouseMove
       TabOrder = 1
+      ExplicitWidth = 215
     end
   end
   object GLScene1: TGLScene

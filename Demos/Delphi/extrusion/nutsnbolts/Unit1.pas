@@ -15,15 +15,15 @@ uses
   Vcl.Imaging.Jpeg,
 
   
-  GLScene,
-  GLObjects,
-  GLExtrusion,
-  GLSceneViewer,
-  Scene.VectorGeometry,
-  GLGeomObjects,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses;
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Extrusion,
+  GLS.SceneViewer,
+  GLS.VectorGeometry,
+  GLS.GeomObjects,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

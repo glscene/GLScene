@@ -7,16 +7,16 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLGraph"
-#pragma link "GLMaterial"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLSceneViewer"
-#pragma link "GLVectorFileObjects"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Graph"
+#pragma link "GLS.Material"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.VectorFileObjects"
 
 #pragma resource "*.dfm"
 TForm1 *Form1;
@@ -72,7 +72,7 @@ void __fastcall TForm1::CgShader1Initialize(TCustomCgShader *CgShader)
 
 void __fastcall TForm1::CgShader1ApplyVP(TCgProgram *CgProgram, TObject *Sender)
 {
-  Scene.VectorGeometry::TVector v;
+  Gls::Vectorgeometry::TVector v;
   CgProgram->ParamByName("ModelViewProj")->SetAsStateMatrix(CG_GL_MODELVIEW_PROJECTION_MATRIX, CG_GL_MATRIX_IDENTITY);
 // Alternatively, you can set it using:
 // CgProgram->SetStateMatrix("ModelViewProj", CG_GL_MODELVIEW_PROJECTION_MATRIX, CG_GL_MATRIX_IDENTITY);
@@ -91,7 +91,7 @@ void __fastcall TForm1::CgShader1ApplyVP(TCgProgram *CgProgram, TObject *Sender)
 
 void __fastcall TForm1::CgShader1ApplyFP(TCgProgram *CgProgram, TObject *Sender)
 {
-  Scene.VectorGeometry::TVector v;
+  Gls::Vectorgeometry::TVector v;
   CgProgram->ParamByName("Map0")->EnableTexture();
   CgProgram->ParamByName("Map1")->EnableTexture();
   CgProgram->ParamByName("Map2")->EnableTexture();

@@ -48,8 +48,8 @@ interface
 uses
   Winapi.Windows,
 
-  Scene.VectorTypes,
-  Scene.Strings,
+  GLS.VectorTypes,
+  GLS.Strings,
 
   GLS.CUDAApi,
   GLS.CUDARunTime

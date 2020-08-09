@@ -8,14 +8,14 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLTeapot"
-#pragma link "GLSceneViewer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -57,7 +57,7 @@ void __fastcall TForm1::RadioGroup2Click(TObject *Sender)
 void __fastcall TForm1::GLCamera1CustomPerspective(const TRectangle &viewport, int width,
           int height, int DPI, float &viewPortRadius)
 {
-  Scene.VectorGeometry::TMatrix Mat;
+  Gls::Vectorgeometry::TMatrix Mat;
 
   Mat =  CreatePerspectiveMatrix(GLCamera1->GetFieldOfView(Width)/4,
 	Width / Height, GLCamera1->NearPlaneBias, GLCamera1->DepthOfView);
@@ -85,7 +85,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
           int X, int Y)
 {
 	int dx, dy;
-	Scene.VectorGeometry::TVector v;
+	Gls::Vectorgeometry::TVector v;
 
 	// calculate delta since last move or last mousedown
 	dx = mdx-X; dy = mdy-Y;

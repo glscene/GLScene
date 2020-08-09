@@ -7,18 +7,18 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLSceneViewer"
-#pragma link "Scene.VectorGeometry"
-#pragma link "GLBehaviours"
-#pragma link "GLCadencer"
-#pragma link "GLParticles"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLBaseClasses"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLSceneViewer"
-#pragma link "GLSceneViewer"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.VectorGeometry"
+#pragma link "GLS.Behaviours"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Particles"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
@@ -90,7 +90,7 @@ void __fastcall TForm1::Timer1Timer(TObject * Sender)
   c->Z = 3 * (random() - 0.5);
 
   // infos for the user
-  Caption = "GLScene Particles - "+
+  Caption = "GLS.Scene Particles - "+
 	Format("%d particles, %.1f FPS", ARRAYOFCONST((GLParticles1->Count - 1,
 			GLSceneViewer1->FramesPerSecond())));
   GLSceneViewer1->ResetPerformanceMonitor();

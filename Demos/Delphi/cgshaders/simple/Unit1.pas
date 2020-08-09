@@ -18,21 +18,21 @@ uses
   Import.cgGL,
   GLSL.CgShader,
 
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  GLSceneViewer,
-  GLTexture,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.SceneViewer,
+  GLS.Texture,
 
-  Scene.VectorGeometry,
-  GLCadencer,
-  GLVectorFileObjects,
-  GLFile3DS,
-  GLGraph,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses,
+  GLS.VectorGeometry,
+  GLS.Cadencer,
+  GLS.VectorFileObjects,
+  GLS.File3DS,
+  GLS.Graph,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.Utils;
 
 type

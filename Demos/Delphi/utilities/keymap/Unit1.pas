@@ -7,7 +7,7 @@ uses
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons,
   
-  GLKeyboard;
+  GLS.Keyboard;
 
 type
   TForm1 = class(TForm)

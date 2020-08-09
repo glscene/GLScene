@@ -13,22 +13,22 @@
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Imaging.jpeg.hpp>
 
-#include "GLScene.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLVectorFileObjects.hpp"
-#include "GLObjects.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLProxyObjects.hpp"
-#include "Scene.VectorGeometry.hpp"
-#include "GLCadencer.hpp"
-#include "GLTexture.hpp"
-#include "GLMaterial.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLFileSMD.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.VectorFileObjects.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.GeomObjects.hpp"
+#include "GLS.ProxyObjects.hpp"
+#include "GLS.VectorGeometry.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Texture.hpp"
+#include "GLS.Material.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.BaseClasses.hpp"
+#include "GLS.FileSMD.hpp"
 #include "GLS.Utils.hpp"
-#include "GLBaseClasses.hpp"
+#include "GLS.BaseClasses.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

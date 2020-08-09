@@ -17,24 +17,24 @@ uses
   Vcl.Imaging.Jpeg,
 
   Import.ODE,
-  GLS.ODEUtils,
-  Scene.VectorTypes,
-  GLSceneViewer,
-  GLScene,
-  GLObjects,
-  GLCadencer,
-  GLTexture,
-  GLExtrusion,
-  Scene.VectorGeometry,
-  GLShadowPlane,
-  GLNavigator,
-  GLVerletTypes,
-  GLVerletHairClasses,
-  GLKeyboard,
-  GLColor,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses;
+  Physics.ODEUtils,
+  GLS.VectorTypes,
+  GLS.SceneViewer,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Cadencer,
+  GLS.Texture,
+  GLS.Extrusion,
+  GLS.VectorGeometry,
+  GLS.ShadowPlane,
+  GLS.Navigator,
+  GLS.VerletTypes,
+  GLS.VerletHairClasses,
+  GLS.Keyboard,
+  GLS.Color,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 const
   cMaxWindMag = 8;
@@ -84,26 +84,18 @@ type
     procedure CheckBox_ShadowsClick(Sender: TObject);
     procedure CheckBox_InertiaClick(Sender: TObject);
     procedure TrackBar_WindForceChange(Sender: TObject);
-  private
-     
   public
-     
-
     odeFurBallBody : PdxBody;
     odeFurBallGeom : PdxGeom;
-
     world : PdxWorld;
     space : PdxSpace;
     contactgroup : TdJointGroupID;
-
     VerletWorld : TGLVerletWorld;
     HairList : TList;
     VCSphere : TVCSphere;
     PhysicsTime : single;
-
     Gravity : TVFGravity;
     AirResistance : TVFAirResistance;
-
     procedure CreateBall;
     procedure CreateFur;
   end;
@@ -111,8 +103,9 @@ type
 var
   frmFurBall: TfrmFurBall;
 
-
+//-----------------------------------------
 implementation
+//-----------------------------------------
 
 {$R *.dfm}
 

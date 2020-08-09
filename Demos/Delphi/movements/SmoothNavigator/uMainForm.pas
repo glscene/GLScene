@@ -12,19 +12,19 @@ uses
   Vcl.ExtCtrls, 
   Vcl.StdCtrls,
 
-  GLCadencer, 
-  GLSceneViewer, 
-  GLKeyboard, 
-  Scene.VectorGeometry, 
-  GLGeomObjects,
-  GLScene, 
-  GLObjects, 
-  GLGraph, 
-  GLCrossPlatform, 
-  GLSmoothNavigator,
-  GLCoordinates, 
-  GLBaseClasses, 
-  GLScreen;
+  GLS.Cadencer, 
+  GLS.SceneViewer, 
+  GLS.Keyboard, 
+  GLS.VectorGeometry, 
+  GLS.GeomObjects,
+  GLS.Scene, 
+  GLS.Objects, 
+  GLS.Graph, 
+  
+  GLS.SmoothNavigator,
+  GLS.Coordinates, 
+  GLS.BaseClasses, 
+  GLS.Screen;
 
 type
   TForm1 = class(TForm)
@@ -63,17 +63,14 @@ type
     procedure FormMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
   private
-     
     UI:  TGLSmoothUserInterface;
     Navigator: TGLSmoothNavigator;
     //  RealPos: TPoint;
-
     ShiftState: TShiftState;
     xx, yy: Integer;
     NewXX, NewYY: Integer;
     procedure CheckControls(DeltaTime, newTime: Double);
   public
-     
   end;
 
 var
@@ -93,15 +90,12 @@ begin
   Navigator.UseVirtualUp := True;
   Navigator.VirtualUp.AsAffineVector := YVector;
   Navigator.MovingObject := GLCamera1;
-
   Navigator.InertiaParams.MovementAcceleration := 7;
   Navigator.InertiaParams.MovementInertia := 200;
   Navigator.InertiaParams.MovementSpeed := 200;
-
   Navigator.InertiaParams.TurnInertia := 150;
   Navigator.InertiaParams.TurnSpeed := 40;
   Navigator.InertiaParams.TurnMaxAngle := 0.5;
-
   Navigator.MoveAroundParams.TargetObject := GLArrowLine1;
 
   UI := TGLSmoothUserInterface.Create(Self);
@@ -114,7 +108,6 @@ var
   NeedToAccelerate: Boolean;
 begin
   NeedToAccelerate := isKeyDown(VK_SHIFT);
-
   Navigator.StrafeVertical(isKeyDown('F'), isKeyDown('R'), DeltaTime, NeedToAccelerate);
   Navigator.MoveForward(isKeyDown('W'), isKeyDown('S'), DeltaTime, NeedToAccelerate);
   Navigator.StrafeHorizontal(isKeyDown('D'), isKeyDown('A'), DeltaTime, NeedToAccelerate);
@@ -129,8 +122,6 @@ end;
 procedure TForm1.GLCadencer1Progress(Sender: TObject; const DeltaTime, newTime: Double);
 begin
   GLSceneViewer1.Invalidate;
-
-
   if UI.MouseLookActive then
     CheckControls(DeltaTime, newtime)
   else
@@ -156,14 +147,12 @@ begin
   end;
 end;
 
-
 procedure TForm1.FPSTimerTimer(Sender: TObject);
 begin
   Caption := 'Smooth Navigator  -  ' + GLSceneViewer1.FramesPerSecondText;
   Navigator.AutoScaleParameters(GLSceneViewer1.FramesPerSecond);
   GLSceneViewer1.ResetPerformanceMonitor;
 end;
-
 
 procedure TForm1.MouseLookCheckBoxClick(Sender: TObject);
 begin
@@ -195,7 +184,6 @@ begin
     Close;
 end;
 
-
 procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   GLSceneViewer1.Enabled := False;
@@ -206,7 +194,6 @@ begin
   FreeAndNil(Navigator);
   GLShowCursor(True);
 end;
-
 
 procedure TForm1.RadioButton6Click(Sender: TObject);
 begin

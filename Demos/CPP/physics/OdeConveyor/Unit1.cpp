@@ -8,15 +8,16 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLObjects"
-#pragma link "GLODEManager"
-#pragma link "GLScene"
-#pragma link "GLSimpleNavigation"
-#pragma link "GLSceneViewer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Objects"
+#pragma link "Physics.ODEManager"
+#pragma link "GLS.Scene"
+#pragma link "GLS.Utils"
+#pragma link "GLS.SimpleNavigation"
+#pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -28,7 +29,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
   // Initialize default values from the one of DesignTime;
-  TrackBarMotionSpeed->Position = Round(GetOrCreateOdeStatic(ConveyorBelt1)->Surface->Motion1);
+  TrackBarMotionSpeed->Position = RoundInt(GetOrCreateOdeStatic(ConveyorBelt1)->Surface->Motion1);
   Friction->Text = FloatToStr(GetOrCreateOdeStatic(ConveyorBelt1)->Surface->Mu);
 
   FDirX->Text = "0";
@@ -77,7 +78,7 @@ void __fastcall TForm1::FrictionChange(TObject *Sender)
   TGLODEStatic *AODEStatic;
   AODEStatic = (TGLODEStatic*)(ConveyorBelt1->Behaviours->Items[0]);
   AODEStatic->Surface->Mu =
-  	Glutils::StrToFloatDef(Friction->Text, GetOrCreateOdeStatic(ConveyorBelt1)->Surface->Mu);
+  	Gls::Utils::StrToFloatDef(Friction->Text, GetOrCreateOdeStatic(ConveyorBelt1)->Surface->Mu);
   FrictionFeedback->Caption = Format("µs = %.2f", ARRAYOFCONST((GetOrCreateOdeStatic(ConveyorBelt1)->Surface->Mu)));
 }
 
@@ -87,7 +88,7 @@ void __fastcall TForm1::AddODECubeClick(TObject *Sender)
 {
   TGLCube *ACube;
   TGLODEDynamic *AODEDynamic;
-  TODEElementBox *AODEElementBox;
+  TGLODEElementBox *AODEElementBox;
 
   // Create a new GLScene cube and add it to the current GLScene1
   ACube = (TGLCube *)(SpawnPoint->AddNewChild(__classid(TGLCube)));
@@ -103,7 +104,7 @@ void __fastcall TForm1::AddODECubeClick(TObject *Sender)
   AODEDynamic->Surface->Mu = 1;
 
   // Finally create physical data in this behaviour
-  AODEElementBox = (TODEElementBox *) AODEDynamic->AddNewElement(__classid(TODEElementBox));
+  AODEElementBox = (TGLODEElementBox *) AODEDynamic->AddNewElement(__classid(TGLODEElementBox));
   if (AODEElementBox)
   {
 	AODEElementBox->BoxWidth = ACube->CubeWidth;

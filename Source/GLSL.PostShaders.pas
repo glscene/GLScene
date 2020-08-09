@@ -23,18 +23,18 @@ interface
 uses
   System.Classes,
 
-  OpenGLTokens,
-  GLTexture,
-  GLScene,
-  GLState,
-  Scene.VectorGeometry,
-  GLRenderContextInfo,
-  GLTextureFormat,
-  GLContext,
-  GLMaterial,
+  GLS.OpenGLTokens,
+  GLS.Texture,
+  GLS.Scene,
+  GLS.State,
+  GLS.VectorGeometry,
+  GLS.RenderContextInfo,
+  GLS.TextureFormat,
+  GLS.Context,
+  GLS.Material,
   GLSL.Shader,
   GLSL.CustomShader,
-  Scene.VectorTypes;
+  GLS.VectorTypes;
 
 type
   // Custom class for GLSLPostBlurShader. A shader that blurs the entire scene

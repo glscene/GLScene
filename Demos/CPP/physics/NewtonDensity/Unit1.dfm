@@ -21,6 +21,7 @@ object Form1: TForm1
     Height = 383
     Camera = GLCamera1
     FieldOfView = 150.733886718750000000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     TabOrder = 0
@@ -139,7 +140,6 @@ object Form1: TForm1
       object GLLeadSphere: TGLSphere
         Material.FrontProperties.Diffuse.Color = {3D0A173F85EBD13E52B89E3E0000803F}
         Position.Coordinates = {000080C00000803F000040C00000803F}
-        Up.Coordinates = {000000000000803F0000008000000000}
         Radius = 2.000000000000000000
         BehavioursData = {
           0458434F4C02010201060D54474C4E474444796E616D69630200060C68696768
@@ -151,7 +151,6 @@ object Form1: TForm1
       object GLPaperSphere: TGLSphere
         Material.FrontProperties.Diffuse.Color = {0000803F0000803F0000803F0000803F}
         Position.Coordinates = {000080C00000A0C0000000000000803F}
-        Up.Coordinates = {000000000000803F0000008000000000}
         Radius = 2.000000000000000000
         BehavioursData = {
           0458434F4C02010201060D54474C4E474444796E616D69630200060B6C6F7720
@@ -175,7 +174,6 @@ object Form1: TForm1
     end
     object GLCube1: TGLCube
       Position.Coordinates = {00000000000020C1000000000000803F}
-      Up.Coordinates = {000000000000803F0000008000000000}
       BehavioursData = {
         0458434F4C02010201060C54474C4E4744537461746963020006067365616265
         640200020112000000000800090500000000000AD7A3F83F1200000000}

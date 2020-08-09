@@ -16,8 +16,8 @@ uses
   Vcl.Imaging.JPeg,
 
   
-  GLScene, GLObjects, GLTexture, GLExtrusion, GLSceneViewer,
-  GLCrossPlatform, GLCoordinates, GLBaseClasses, GLS.Utils;
+  GLS.Scene, GLS.Objects, GLS.Texture, GLS.Extrusion, GLS.SceneViewer,
+  GLS.Coordinates, GLS.BaseClasses, GLS.Utils;
 
 type
   TForm1 = class(TForm)

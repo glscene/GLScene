@@ -16,18 +16,18 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
 
-  GLSceneViewer,
-  GLScene,
-  GLObjects,
-  GLHUDObjects,
-  GLGeomObjects,
-  GLCadencer,
-  GLBlur,
-  GLTexture,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses,
+  GLS.SceneViewer,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.HUDObjects,
+  GLS.GeomObjects,
+  GLS.Cadencer,
+  GLS.Blur,
+  GLS.Texture,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.Utils;
 
 type

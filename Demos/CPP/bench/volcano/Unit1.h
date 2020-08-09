@@ -7,15 +7,15 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLBehaviours.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLObjects.hpp"
-#include "GLParticleFX.hpp"
-#include "GLScene.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Behaviours.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Objects.hpp"
+#include "GLS.ParticleFX.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SceneViewer.hpp"
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

@@ -9,17 +9,17 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Grids.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCollision.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLSpaceText.hpp"
-#include "GLVectorFileObjects.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Collision.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SpaceText.hpp"
+#include "GLS.VectorFileObjects.hpp"
+#include "GLS.SceneViewer.hpp"
 #include "GLS.Utils.hpp"
-#include "GLFile3DS.hpp"
+#include "GLS.File3DS.hpp"
 
 
 //---------------------------------------------------------------------------

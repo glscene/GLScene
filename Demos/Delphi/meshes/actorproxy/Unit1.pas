@@ -16,22 +16,22 @@ uses
   Vcl.Imaging.Jpeg,
 
   
-  GLScene,
-  Scene.VectorTypes,
-  GLSceneViewer,
-  GLVectorFileObjects,
-  GLObjects,
-  GLProxyObjects,
-  GLGeomObjects,
-  Scene.VectorGeometry,
-  GLCadencer,
-  GLTexture,
-  GLMaterial,
-  GLCoordinates,
-  GLCrossPlatform,
-  GLBaseClasses,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.SceneViewer,
+  GLS.VectorFileObjects,
+  GLS.Objects,
+  GLS.ProxyObjects,
+  GLS.GeomObjects,
+  GLS.VectorGeometry,
+  GLS.Cadencer,
+  GLS.Texture,
+  GLS.Material,
+  GLS.Coordinates,
+ 
+  GLS.BaseClasses,
   GLS.Utils,
-  GLFileSMD;
+  GLS.FileSMD;
 
 type
   TForm1 = class(TForm)

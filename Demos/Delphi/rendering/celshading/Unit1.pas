@@ -14,24 +14,24 @@ uses
   Vcl.Dialogs,
   Vcl.Imaging.Jpeg,
   
-  GLScene,
-  Scene.VectorTypes,
-  Scene.VectorGeometry,
-  GLCadencer,
-  GLSceneViewer,
-  GLVectorFileObjects,
-  GLAsyncTimer,
-  GLS.ShaderCel,
-  GLGeomObjects,
-  GLTexture,
-  GLObjects,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses,
-  GLFileMD2,
-  GLKeyboard,
-  GLS.Uti, GLS.ShaderCells;
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.VectorGeometry,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  GLS.VectorFileObjects,
+  GLS.AsyncTimer,
+  GLS.GeomObjects,
+  GLS.Texture,
+  GLS.Objects,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.FileMD2,
+  GLS.Keyboard,
+  GLS.Utils,
+  GLSL.ShapeShaders;
 
 type
   TForm1 = class(TForm)

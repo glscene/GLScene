@@ -11,21 +11,20 @@
 #include <Vcl.Dialogs.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "GLAsyncTimer.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLBumpShader.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLMaterial.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLVectorFileObjects.hpp"
-#include "GLSceneViewer.hpp"
-#include "OpenGLAdapter.hpp"
-#include "OpenGLx.hpp"
+#include "GLS.AsyncTimer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLSL.BumpShaders.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Material.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.VectorFileObjects.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.OpenGLAdapter.hpp"
 #include "JPeg.hpp"
-#include "GLAsyncTimer.hpp"
+#include "GLS.AsyncTimer.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

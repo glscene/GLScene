@@ -16,25 +16,26 @@ uses
   Vcl.ComCtrls,
 
   
-  GLScene,
-  Scene.PersistentClasses,
-  GLCadencer,
-  GLObjects,
-  Scene.VectorTypes,
-  GLSceneViewer,
-  GLKeyboard,
-  GLGizmoEx,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses,
-  Scene.VectorGeometry,
-  GLGeomObjects,
-  GLBitmapFont,
-  GLWindowsFont,
-  GLPolyhedron,
-  GLHUDObjects,
-  GLGraph,
-  GLVectorFileObjects;
+  GLS.Scene,
+  GLS.PersistentClasses,
+  GLS.Cadencer,
+  GLS.Objects,
+  GLS.VectorTypes,
+  GLS.SceneViewer,
+  GLS.Keyboard,
+
+  GLS.Utils,
+  GLS.GizmoEx,
+
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.VectorGeometry,
+  GLS.GeomObjects,
+  GLS.BitmapFont,
+  GLS.WindowsFont,
+  GLS.HUDObjects,
+  GLS.Graph,
+  GLS.VectorFileObjects;
 
 type
   TForm1 = class(TForm)
@@ -658,10 +659,9 @@ end;
 
 procedure TForm1.edtGizmoThicknessChange(Sender: TObject);
 var
-  value: single;
+  value: Extended;
 begin
-
-  tryStrToFloat((Sender as TEdit).Text, value);
+  TryStrToFloat((Sender as TEdit).Text, value);
   if value > 0 then
   case (Sender as TEdit).Tag of
     1: Gizmo.GizmoThickness := value;

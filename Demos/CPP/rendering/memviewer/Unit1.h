@@ -10,15 +10,15 @@
 #include <Vcl.ExtCtrls.hpp>
 #include <signal.h>
 
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLContext.hpp"
-#include "OpenGLAdapter.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Context.hpp"
+#include "GLS.OpenGLAdapter.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

@@ -9,14 +9,14 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Dialogs.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "Scene.VectorGeometry.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.VectorGeometry.hpp"
+#include "GLS.SceneViewer.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

@@ -23,6 +23,7 @@ object Form1: TForm1
     Height = 503
     Camera = GLCamera1
     FieldOfView = 157.511596679687500000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove

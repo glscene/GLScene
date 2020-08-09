@@ -13,8 +13,15 @@ uses
   Vcl.ExtCtrls,
 
   
-  GLCadencer, GLParticleFX, GLPerlinPFX, GLScene, GLObjects,
-  GLSceneViewer, GLCrossPlatform, GLCoordinates, GLSimpleNavigation, GLBaseClasses;
+  GLS.Cadencer, 
+  GLS.ParticleFX, 
+  GLS.PerlinPFX, 
+  GLS.Scene, 
+  GLS.Objects,
+  GLS.SceneViewer, 
+  GLS.Coordinates, 
+  GLS.SimpleNavigation, 
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

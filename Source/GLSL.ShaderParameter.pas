@@ -15,11 +15,11 @@ uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
   System.Classes,
-  Scene.Strings,
-  OpenGLTokens,
-  Scene.VectorTypes, 
-  GLTextureFormat, 
-  GLRenderContextInfo;
+  GLS.Strings,
+  GLS.OpenGLTokens,
+  GLS.VectorTypes, 
+  GLS.TextureFormat, 
+  GLS.RenderContextInfo;
 
 type
 

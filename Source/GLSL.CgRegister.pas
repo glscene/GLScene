@@ -16,7 +16,7 @@ uses
   DesignEditors,
   VCLEditors,
 
-  GLMaterial,
+  GLS.Material,
 
   Import.Cg,
   Import.CgGL,

@@ -30,6 +30,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = 13487565
     Buffer.FogEnable = True
     FieldOfView = 145.893371582031300000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove

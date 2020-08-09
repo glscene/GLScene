@@ -15,19 +15,19 @@ uses
   System.Classes,
   System.SysUtils,
 
-  OpenGLTokens,
-  GLScene,
-  GLState,
-  GLContext,
-  Scene.PersistentClasses,
-  GLTexture,
-  GLGraphics,
-  Scene.Strings,
+  GLS.OpenGLTokens,
+  GLS.Scene,
+  GLS.State,
+  GLS.Context,
+  GLS.PersistentClasses,
+  GLS.Texture,
+  GLS.Graphics,
+  GLS.Strings,
   GLSL.CustomShader,
-  Scene.VectorGeometry,
-  GLRenderContextInfo,
-  GLMaterial,
-  GLTextureFormat;
+  GLS.VectorGeometry,
+  GLS.RenderContextInfo,
+  GLS.Material,
+  GLS.TextureFormat;
 
 type
   EGLPostShaderHolderException = class(Exception);

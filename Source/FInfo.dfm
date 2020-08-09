@@ -3572,10 +3572,10 @@ object GLInfoForm: TGLInfoForm
       object WebsiteLbl: TLabel
         Left = 57
         Top = 274
-        Width = 86
+        Width = 94
         Height = 13
         Cursor = crHandPoint
-        Caption = 'http://glscene.org'
+        Caption = 'http://GLScene.org'
         Color = clBtnFace
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlue

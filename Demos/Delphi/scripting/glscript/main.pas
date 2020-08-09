@@ -14,19 +14,19 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
   
-  GLObjects,
-  GLSceneViewer,
-  GLScene,
-  GLTexture,
-  GLCadencer,
-  GLAsyncTimer,
-  GLBitmapFont,
-  GLWindowsFont,
-  GLHUDObjects,
-  GLCoordinates,
-  GLCrossPlatform,
-  GLBaseClasses,
-  GLRenderContextInfo,
+  GLS.Objects,
+  GLS.SceneViewer,
+  GLS.Scene,
+  GLS.Texture,
+  GLS.Cadencer,
+  GLS.AsyncTimer,
+  GLS.BitmapFont,
+  GLS.WindowsFont,
+  GLS.HUDObjects,
+  GLS.Coordinates,
+ 
+  GLS.BaseClasses,
+  GLS.RenderContextInfo,
 
   GLS.dwsSript,
   GLS.dwsOpenGL,
@@ -82,7 +82,7 @@ implementation
 
 {$R *.dfm}
 
-uses OpenGLx, GLContext;
+uses OpenGLx, GLS.Context;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin

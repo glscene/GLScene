@@ -12,19 +12,19 @@ uses
   Vcl.StdCtrls,
   Vcl.ComCtrls, 
   Vcl.ExtCtrls,
-  GLScene,
-  GLObjects,
-  GLGeomObjects,
-  GLCadencer,
-  GLSceneViewer,
-  GLShadowPlane,
-  GLGraph, Scene.VectorTypes,
-  Scene.VectorGeometry,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.GeomObjects,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  GLS.ShadowPlane,
+  GLS.Graph, GLS.VectorTypes,
+  GLS.VectorGeometry,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses,
 
-  GLS.ODEManager;
+  Physics.ODEManager;
 
 type
   TForm1 = class(TForm)

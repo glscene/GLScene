@@ -19,8 +19,8 @@ uses
   GLS.CUDAApi,
   GLS.CUDAFourierTransform,
 
-  Scene.Strings,
-  Scene.Logger;
+  GLS.Strings,
+  GLS.Logger;
 
 type
 

@@ -11,13 +11,13 @@
 #include <Vcl.Dialogs.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.ExtDlgs.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLMaterial.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Material.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SceneViewer.hpp"
 #include "Jpeg.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

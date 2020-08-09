@@ -13,7 +13,7 @@ uses
   System.Types,
   Vcl.Dialogs,
 
-  Scene.VectorGeometry;
+  GLS.VectorGeometry;
 
 // Set these as applicable
 const

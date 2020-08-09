@@ -6,15 +6,15 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLMultiProxy"
-#pragma link "GLObjects"
-#pragma link "GLParticles"
-#pragma link "GLScene"
-#pragma link "GLSceneViewer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.MultiProxy"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Particles"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -30,7 +30,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
    RBUseLODsClick(Sender); //MPSphere
    // replicate the multiproxy via a TGLParticles object
    for (i = 0; i < 35; i++) {
-	  GLParticles->CreateParticle()->TagFloat = DegToRad((float)i*10);
+	  GLS.Particles->CreateParticle()->TagFloat = DegToRad((float)i*10);
    }
 }
 //---------------------------------------------------------------------------
@@ -91,8 +91,8 @@ void __fastcall TForm1::MPSphereProgress(TObject *Sender, const double deltaTime
 		  const double newTime)
 {
    // this is invoked for each of our MultiProxys, it makes them loop an ellipse
-	  GLParticles->Position->X = Sin(newTime+GLParticles->TagFloat)*80-60;
-	  GLParticles->Position->Z = Cos(newTime+GLParticles->TagFloat)*7;
+	  GLS.Particles->Position->X = Sin(newTime+GLS.Particles->TagFloat)*80-60;
+	  GLS.Particles->Position->Z = Cos(newTime+GLS.Particles->TagFloat)*7;
 }
 //---------------------------------------------------------------------------
 

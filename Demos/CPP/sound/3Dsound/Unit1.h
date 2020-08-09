@@ -10,21 +10,21 @@
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
 #include "GLSMBASS.hpp"
 #include "GLSMFMOD.hpp"
 #include "GLSMOpenAL.hpp"
-#include "GLSound.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.Sound.hpp"
+#include "GLS.SceneViewer.hpp"
 #include "GLS.Utils.hpp"
-#include "GLFileWAV.hpp"
-#include "GLFileMP3.hpp"
+#include "GLS.FileWAV.hpp"
+#include "GLS.FileMP3.hpp"
 #include "BASS.hpp"
 
 //---------------------------------------------------------------------------

@@ -8,19 +8,18 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
 
-  GLScene,
-  GLObjects,
-  GLTeapot,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses,
-  GLColor,
-  GLContext,
-  GLTexture,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.GeomObjects,
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.Color,
+  GLS.Context,
+  GLS.Texture,
   GLS.Utils,
 
   GLS.SDLContext,
-  SDL2;
+  Import.SDL2;
 
 type
   TDataModule1 = class(TDataModule)

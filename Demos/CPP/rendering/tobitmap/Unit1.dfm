@@ -24,6 +24,7 @@ object Form1: TForm1
     Buffer.ContextOptions = [roDoubleBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aaNone
     FieldOfView = 150.213058471679700000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end

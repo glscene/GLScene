@@ -16,23 +16,23 @@ uses
   System.Classes,
   System.SysUtils,
 
-  OpenGLTokens,
+  GLS.OpenGLTokens,
   GLS.CUDAApi,
   GLS.CUDA,
 
-  GLContext,
-  GLState,
-  GLScene,
-  GLGraphics,
-  GLMaterial,
-  Scene.Strings,
-  GLTextureFormat,
-  GLTexture,
+  GLS.Context,
+  GLS.State,
+  GLS.Scene,
+  GLS.Graphics,
+  GLS.Material,
+  GLS.Strings,
+  GLS.TextureFormat,
+  GLS.Texture,
   GLSL.Shader,
   GLSL.ShaderParameter,
-  Scene.PersistentClasses,
-  {$IFDEF USE_LOGGING} Scene.Logger, {$ENDIF}
-  GLRenderContextInfo;
+  GLS.PersistentClasses,
+  {$IFDEF USE_LOGGING} GLS.Logger, {$ENDIF}
+  GLS.RenderContextInfo;
 
 
 type
@@ -141,7 +141,7 @@ type
     property ElementArrayHandle: TGLVBOElementArrayHandle read FEBO;
   end;
 
-  TGLFeedBackMesh = class(TGLCustomFeedBackMesh)
+  TGLFeedbackMesh = class(TGLCustomFeedBackMesh)
   published
     property Attributes;
     property Shader;
@@ -1135,7 +1135,7 @@ end;
 initialization
 
   RegisterClasses([TCUDAImageResource, TCUDAGeometryResource,
-    TGLCustomFeedBackMesh, TGLFeedBackMesh]);
+    TGLCustomFeedBackMesh, TGLFeedbackMesh]);
 
 end.
 

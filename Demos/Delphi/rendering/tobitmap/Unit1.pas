@@ -13,18 +13,18 @@ uses
   Vcl.StdCtrls,
   Vcl.Imaging.Jpeg,
 
-  GLScene,
-  Scene.VectorTypes,
-  GLCadencer,
-  GLObjects,
-  GLSceneViewer,
-  GLHUDObjects,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Cadencer,
+  GLS.Objects,
+  GLS.SceneViewer,
+  GLS.HUDObjects,
   GLS.SpaceText,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLGraphics,
+ 
+  GLS.Coordinates,
+  GLS.Graphics,
   GLS.Utils,
-  GLBaseClasses;
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

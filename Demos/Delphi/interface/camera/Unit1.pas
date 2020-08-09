@@ -11,20 +11,18 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
 
-  GLS.OpenGLx,
-  GLScene,
-  Scene.VectorTypes,
-  GLObjects,
-  Scene.PersistentClasses,
-  GLPipelineTransformation,
-  GLTeapot,
-  GLCoordinates,
-  GLBaseClasses,
-  Scene.VectorGeometry,
-  GLCadencer,
-  GLContext,
-  GLSceneViewer,
-  GLCrossPlatform;
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.Objects,
+  GLS.PersistentClasses,
+  GLS.PipelineTransformation,
+  GLS.GeomObjects,
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.VectorGeometry,
+  GLS.Cadencer,
+  GLS.Context,
+  GLS.SceneViewer;
 
 type
   TForm1 = class(TForm)

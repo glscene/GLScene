@@ -14,9 +14,9 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLApplicationFileIO,
-  Scene.PersistentClasses,
-  Scene.Strings;
+  GLS.ApplicationFileIO,
+  GLS.PersistentClasses,
+  GLS.Strings;
 
 type
 
@@ -177,7 +177,7 @@ procedure UnregisterArchiveFormat(AClass: TGLBaseArchiveClass);
 // Caution!!! Work for one archive manager only
 function GetArchiveManager: TGLSArchiveManager;
 
-// GLApplicationFileIO
+// GLS.ApplicationFileIO
 // These functions are used to automate loading
 // User enters LoadFromFile and through these functions gets the result
 

@@ -13,21 +13,21 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
   
-  GLScene,
-  GLContext,
-  Scene.VectorTypes,
-  GLTeapot,
-  GLObjects,
-  GLSceneViewer,
-  Scene.VectorGeometry,
-  GLTexture,
-  GLCadencer,
-  GLImposter,
-  GLSkydome,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses,
-  GLRenderContextInfo;
+  GLS.Scene,
+  GLS.Context,
+  GLS.VectorTypes,
+  GLS.GeomObjects,
+  GLS.Objects,
+  GLS.SceneViewer,
+  GLS.VectorGeometry,
+  GLS.Texture,
+  GLS.Cadencer,
+  GLS.Imposter,
+  GLS.SkyDome,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.RenderContextInfo;
 
 type
   TForm1 = class(TForm)

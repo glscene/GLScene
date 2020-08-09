@@ -29,17 +29,17 @@ uses
   System.Classes,
   System.SysUtils,
   
-  OpenGLTokens,
-  GLTexture,
-  GLScene,
-  Scene.PersistentClasses,
-  Scene.VectorGeometry,
-  Scene.Strings,
+  GLS.OpenGLTokens,
+  GLS.Texture,
+  GLS.Scene,
+  GLS.PersistentClasses,
+  GLS.VectorGeometry,
+  GLS.Strings,
   GLSL.Shader,
   GLSL.CustomShader,
-  GLColor,
-  GLRenderContextInfo,
-  GLMaterial;
+  GLS.Color,
+  GLS.RenderContextInfo,
+  GLS.Material;
 
 type
   EGLSLDiffuseSpecularShaderException = class(EGLSLShaderException);

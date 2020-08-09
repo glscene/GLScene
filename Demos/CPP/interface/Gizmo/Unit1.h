@@ -15,20 +15,20 @@
 #include <Vcl.Dialogs.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "GLBaseClasses.hpp"
-#include "GLBitmapFont.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLObjects.hpp"
-#include "GLPolyhedron.hpp"
-#include "GLScene.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLWindowsFont.hpp"
-#include "GLSpaceText.hpp"
-#include "GLHUDObjects.hpp"
-#include "GLGizmo.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.BitmapFont.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.WindowsFont.hpp"
+#include "GLS.SpaceText.hpp"
+#include "GLS.HUDObjects.hpp"
+#include "GLS.Gizmo.hpp"
+#include "GLS.VectorFileObjects.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

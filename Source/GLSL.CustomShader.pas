@@ -23,18 +23,18 @@ uses
   System.Classes,
   System.SysUtils,
   
-  Scene.VectorGeometry,
-  Scene.VectorTypes,
-  GLTexture,
-  GLCadencer,
-  OpenGLTokens,
-  GLScene,
-  Scene.Strings,
-  GLContext,
-  GLRenderContextInfo,
-  GLMaterial,
-  Scene.VectorLists,
-  GLTextureFormat,
+  GLS.VectorGeometry,
+  GLS.VectorTypes,
+  GLS.Texture,
+  GLS.Cadencer,
+  GLS.OpenGLTokens,
+  GLS.Scene,
+  GLS.Strings,
+  GLS.Context,
+  GLS.RenderContextInfo,
+  GLS.Material,
+  GLS.VectorLists,
+  GLS.TextureFormat,
   GLSL.ShaderParameter;
 
 const
@@ -293,7 +293,7 @@ implementation
 //------------------------------------------
 
 uses
-  GLState;
+  GLS.State;
 
 procedure GetActiveLightsList(const ALightIDs: TIntegerList);
 var

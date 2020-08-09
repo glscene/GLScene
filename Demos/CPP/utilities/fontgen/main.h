@@ -9,7 +9,7 @@
 #include <Forms.hpp>                   
 #include <Dialogs.hpp>
 #include <ExtCtrls.hpp>
-#include "GLWindowsFont.hpp"
+#include "GLS.WindowsFont.hpp"
 //---------------------------------------------------------------------------
 class TfrmMain : public TForm
 {

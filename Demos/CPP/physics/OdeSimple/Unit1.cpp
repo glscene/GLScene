@@ -6,16 +6,15 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLGraph"
-#pragma link "GLObjects"
-#pragma link "GLODECustomColliders"
-#pragma link "GLODEManager"
-#pragma link "GLScene"
-#pragma link "GLSceneViewer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Graph"
+#pragma link "GLS.Objects"
+#pragma link "Physics.ODEManager"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
@@ -86,14 +85,14 @@ void TForm1::DoSphere(void)
   sphere->Material->FrontProperties->Ambient->Color = clrRed;
   dyn = new TGLODEDynamic(sphere->Behaviours);
   dyn->Manager = GLODEManager1;
-  ((TODEElementSphere *)(dyn->AddNewElement(__classid(TODEElementSphere))))->Radius = sphere->Radius;
+  ((TGLODEElementSphere *)(dyn->AddNewElement(__classid(TGLODEElementSphere))))->Radius = sphere->Radius;
 }
 
 void TForm1::DoBox(void)
 {
   TGLCube *cube;
   TGLODEDynamic *dyn;
-  TODEElementBox *elem;
+  TGLODEElementBox *elem;
 
   cube = (TGLCube *)(ODEObjects->AddNewChild(__classid(TGLCube)));
   cube->Position->SetPoint(5*Random()-2.5,2,5*Random()-2.5);
@@ -103,7 +102,7 @@ void TForm1::DoBox(void)
   cube->Material->FrontProperties->Ambient->Color = clrGreen;
   dyn = new TGLODEDynamic(cube->Behaviours);
   dyn->Manager = GLODEManager1;
-  elem = (TODEElementBox *) dyn->AddNewElement(__classid(TODEElementBox));
+  elem = (TGLODEElementBox *) dyn->AddNewElement(__classid(TGLODEElementBox));
   elem->BoxWidth = cube->CubeWidth;
   elem->BoxHeight = cube->CubeHeight;
   elem->BoxDepth = cube->CubeDepth;
@@ -114,7 +113,7 @@ void TForm1::DoCapsule(void)
   TGLCylinder *capsule;
   TGLODEDynamic *dyn;
   TGLSphere *sphere;
-  TODEElementCapsule *elem;
+  TGLODEElementCapsule *elem;
 
   capsule = (TGLCylinder *)(ODEObjects->AddNewChild(__classid(TGLCylinder)));
   capsule->Position->SetPoint(5*Random()-2.5,2,5*Random()-2.5);
@@ -136,7 +135,7 @@ void TForm1::DoCapsule(void)
 
   dyn = new TGLODEDynamic(capsule->Behaviours);
   dyn->Manager = GLODEManager1;
-  elem = (TODEElementCapsule *) dyn->AddNewElement(__classid(TODEElementCapsule));
+  elem = (TGLODEElementCapsule *) dyn->AddNewElement(__classid(TGLODEElementCapsule));
   elem->Radius = capsule->BottomRadius;
   elem->Length = capsule->Height;
   elem->Direction->SetVector(0,1,0);
@@ -147,7 +146,7 @@ void TForm1::DoCylinder(void)
 {
   TGLCylinder *cylinder;
   TGLODEDynamic *dyn;
-  TODEElementCylinder *elem;
+  TGLODEElementCylinder *elem;
 
   cylinder = (TGLCylinder *)(ODEObjects->AddNewChild(__classid(TGLCylinder)));
   cylinder->Position->SetPoint(5*Random()-2.5,2,5*Random()-2.5);
@@ -158,7 +157,7 @@ void TForm1::DoCylinder(void)
 
   dyn = new TGLODEDynamic(cylinder->Behaviours);
   dyn->Manager = GLODEManager1;
-  elem = (TODEElementCylinder *) dyn->AddNewElement(__classid(TODEElementCylinder));
+  elem = (TGLODEElementCylinder *) dyn->AddNewElement(__classid(TGLODEElementCylinder));
   elem->Radius = cylinder->BottomRadius;
   elem->Length = cylinder->Height;
 }
@@ -249,7 +248,7 @@ void __fastcall TForm1::ComboBox2Change(TObject *Sender)
 
 void __fastcall TForm1::TrackBar1Change(TObject *Sender)
 {
-  ((TODEHeightField *)(GLHeightField1->Behaviours->Behaviour[0]))->ContactResolution =
+  ((TGLODEHeightField *)(GLHeightField1->Behaviours->Behaviour[0]))->ContactResolution =
 		0.25+(float)(10-TrackBar1->Position)/20;
 }
 

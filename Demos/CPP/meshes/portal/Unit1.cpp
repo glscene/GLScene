@@ -6,16 +6,16 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLMaterial"
-#pragma link "GLObjects"
-#pragma link "GLPortal"
-#pragma link "GLScene"
-#pragma link "GLVectorFileObjects"
-#pragma link "GLSceneViewer"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Material"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Portal"
+#pragma link "GLS.Scene"
+#pragma link "GLS.VectorFileObjects"
+#pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -42,7 +42,7 @@ void __fastcall TForm1::BBProcessClick(TObject *Sender)
 {
    int x, y, n;
    float h;
-   TSectorMeshObject *Sector;
+   TGLSectorMeshObject *Sector;
    TFGPolygon *Poly;
 
    h=3;
@@ -52,8 +52,8 @@ void __fastcall TForm1::BBProcessClick(TObject *Sender)
    for (x = -7; x < 8; x++)
 	 for (y = -7; y < 8; y++)
 	 {
-	  Sector = new TSectorMeshObject;
-	  Sector = (TSectorMeshObject*)(Portal1->MeshObjects);
+	  Sector = new TGLSectorMeshObject;
+	  Sector = (TGLSectorMeshObject*)(Portal1->MeshObjects);
 	  n = Sector->Vertices->Count;
 	  Sector->Vertices->Add(x, 0, y);     Sector->Vertices->Add(x+1, 0, y);
 	  Sector->Vertices->Add(x+1, 0, y+1); Sector->Vertices->Add(x, 0, y+1);

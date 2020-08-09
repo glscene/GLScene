@@ -7,33 +7,33 @@
 
 #include "SimpleGLSLUnit.h"
 
-#include "GLKeyboard.hpp"
-#include "GLContext.hpp"
-#include "GLFile3DS.hpp"
+#include "GLS.Keyboard.hpp"
+#include "GLS.Context.hpp"
+#include "GLS.File3DS.hpp"
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "OpenGLAdapter"
-#pragma link "GLBitmapFont"
-#pragma link "GLCadencer"
-#pragma link "GLGeomObjects"
-#pragma link "GLHUDObjects"
-#pragma link "GLObjects"
-#pragma link "GLScene"
-#pragma link "GLTexture"
+#pragma link "GLS.OpenGLAdapter"
+#pragma link "GLS.BitmapFont"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.GeomObjects"
+#pragma link "GLS.HUDObjects"
+#pragma link "GLS.Objects"
+#pragma link "GLS.Scene"
+#pragma link "GLS.Texture"
 #pragma link "GLSL.UserShader"
-#pragma link "OpenGLTokens"
-#pragma link "GLVectorFileObjects"
-#pragma link "GLSceneViewer"
-#pragma link "GLWindowsFont"
-#pragma link "GLKeyboard"
-#pragma link "GLContext"
-#pragma link "GLFile3DS"
+#pragma link "GLS.OpenGLTokens"
+#pragma link "GLS.VectorFileObjects"
+#pragma link "GLS.SceneViewer"
+#pragma link "GLS.WindowsFont"
+#pragma link "GLS.Keyboard"
+#pragma link "GLS.Context"
+#pragma link "GLS.File3DS"
 
-#pragma link "GLBaseClasses"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLMaterial"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Material"
 #pragma resource "*.dfm"
 
 TForm1 *Form1;
@@ -175,7 +175,7 @@ void __fastcall TForm1::GLUserShader1DoUnApply(TObject *Sender, int Pass,
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
   Caption=Format("Simple GLSL Shader [%.2f FPS]", ARRAYOFCONST((GLSceneViewer1->FramesPerSecond())));
-  GLHUDText1->Text= "GLKeyboard [1,2,3,4,5,6,7,8,9,0 ] Current Shader: "+CurrShadName;
+  GLHUDText1->Text= "GLS.Keyboard [1,2,3,4,5,6,7,8,9,0 ] Current Shader: "+CurrShadName;
   GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------

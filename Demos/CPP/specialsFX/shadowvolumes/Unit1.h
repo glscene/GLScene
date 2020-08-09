@@ -8,17 +8,17 @@
 #include <StdCtrls.hpp>
 #include <ExtCtrls.hpp>
 #include <Forms.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLMaterial.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLShadowVolume.hpp"
-#include "GLVectorFileObjects.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Material.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.ShadowVolume.hpp"
+#include "GLS.VectorFileObjects.hpp"
+#include "GLS.SceneViewer.hpp"
 
 #pragma hdrstop
 
@@ -32,7 +32,7 @@ __published:                   // IDE-managed Components
   TGLCamera *GLCamera;
   TGLDummyCube *DCCamera;
   TGLLightSource *GLLightSource1;
-  TGLShadowVolume *GLShadowVolume;
+  TGLShadowVolume *GLS.ShadowVolume;
   TGLSphere *GLSphere1;
   TGLDummyCube *DCLight1Turn;
   TGLDummyCube *DCLight1Pitch;

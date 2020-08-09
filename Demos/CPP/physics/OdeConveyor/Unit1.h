@@ -10,15 +10,16 @@
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLObjects.hpp"
-#include "GLODEManager.hpp"
-#include "GLScene.hpp"
-#include "GLSimpleNavigation.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Objects.hpp"
+#include "Physics.ODEManager.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.Utils.hpp"
+#include "GLS.SimpleNavigation.hpp"
+#include "GLS.SceneViewer.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -61,8 +62,8 @@ __published:	// IDE-managed Components
 	void __fastcall FrictionChange(TObject *Sender);
 
 private:	// User declarations
-	Scene.VectorGeometry::TVector FUserDirection;
-	Scene.VectorGeometry::TVector FDirectionVector;
+	Gls::Vectorgeometry::TVector FUserDirection;
+	Gls::Vectorgeometry::TVector FDirectionVector;
 
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

@@ -12,23 +12,23 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "GLScene.hpp"
-#include "GLObjects.hpp"
-#include "GLGraph.hpp"
-#include "GLCollision.hpp"
-#include "GLTexture.hpp"
-#include "Scene.VectorGeometry.hpp"
-#include "GLVectorFileObjects.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLSpaceText.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLColor.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLCoordinates.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLBitmapFont.hpp"
-#include "GLWindowsFont.hpp"
-#include "GLHUDObjects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Graph.hpp"
+#include "GLS.Collision.hpp"
+#include "GLS.Texture.hpp"
+#include "GLS.VectorGeometry.hpp"
+#include "GLS.VectorFileObjects.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.SpaceText.hpp"
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Color.hpp"
+
+#include "GLS.Coordinates.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.BitmapFont.hpp"
+#include "GLS.WindowsFont.hpp"
+#include "GLS.HUDObjects.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
@@ -71,11 +71,11 @@ __published:	// IDE-managed Components
 	void __fastcall FormKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
 
 private:	// User declarations
-	Scene.VectorGeometry::TVector lastMouseWorldPos;
+	Gls::Vectorgeometry::TVector lastMouseWorldPos;
 	bool movingOnZ;
 	TGLCustomSceneObject *CurrentPick;
 	int ScnMouseMoveCnt;
-	Scene.VectorGeometry::TVector __fastcall MouseWorldPos(int X, int Y);
+	Gls::Vectorgeometry::TVector __fastcall MouseWorldPos(int X, int Y);
 	void __fastcall UpdateHudText();
 	void __fastcall ProcessPick(TGLBaseSceneObject* pick);
 public:		// User declarations

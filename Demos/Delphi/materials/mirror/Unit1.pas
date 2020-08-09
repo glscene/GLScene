@@ -11,19 +11,18 @@ uses
   Vcl.ExtCtrls, 
   Vcl.StdCtrls,
   
-  GLCrossPlatform, 
-  GLBaseClasses, 
-  GLScene, 
-  GLObjects, 
-  GLExtrusion, 
-  GLMirror,
-  GLCadencer, 
-  GLSceneViewer, 
-  GLTeapot, 
-  GLGeomObjects,
-  GLCoordinates, 
+  
+  GLS.BaseClasses, 
+  GLS.Scene, 
+  GLS.Objects, 
+  GLS.Extrusion, 
+  GLS.Mirror,
+  GLS.Cadencer, 
+  GLS.SceneViewer, 
+  GLS.GeomObjects,
+  GLS.Coordinates, 
  
-  GLMultiPolygon;
+  GLS.MultiPolygon;
 
 type
   TForm1 = class(TForm)

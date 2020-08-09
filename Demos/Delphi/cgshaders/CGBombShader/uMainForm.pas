@@ -15,24 +15,24 @@ uses
   Vcl.Imaging.Jpeg,
 
   
-  GLScene,
-  GLObjects,
-  GLSceneViewer,
-  GLTexture,
-  GLCadencer,
-  GLSimpleNavigation,
-  GLVectorFileObjects,
-  GLFile3DS,
-  GLGraph,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.SceneViewer,
+  GLS.Texture,
+  GLS.Cadencer,
+  GLS.SimpleNavigation,
+  GLS.VectorFileObjects,
+  GLS.File3DS,
+  GLS.Graph,
   GLSL.cgBombShader,
-  GLMaterial,
-  Scene.VectorGeometry,
+  GLS.Material,
+  GLS.VectorGeometry,
 
   // Formats
-  GLFileMD2,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses,
+  GLS.FileMD2,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.Utils;
 
 type

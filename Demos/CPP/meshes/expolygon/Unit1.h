@@ -11,17 +11,17 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 
-#include "GLScene.hpp"
-#include "GLObjects.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLTexture.hpp"
-#include "GLMultiPolygon.hpp"
-#include "Scene.VectorGeometry.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLMaterial.hpp"
-#include "GLCoordinates.hpp"
-#include "GLBaseClasses.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Texture.hpp"
+#include "GLS.MultiPolygon.hpp"
+#include "GLS.VectorGeometry.hpp"
+#include "GLS.SceneViewer.hpp"
+
+#include "GLS.Material.hpp"
+#include "GLS.Coordinates.hpp"
+#include "GLS.BaseClasses.hpp"
 
 
 //---------------------------------------------------------------------------

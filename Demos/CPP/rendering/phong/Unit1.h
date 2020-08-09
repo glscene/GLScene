@@ -7,20 +7,20 @@
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
-#include "GLAsyncTimer.hpp"
-#include "GLCadencer.hpp"
-#include "GLObjects.hpp"
-#include "GLPhongShader.hpp"
-#include "GLScene.hpp"
-#include "GLTeapot.hpp"
-#include "GLTexture.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLAsmShader.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLCustomShader.hpp"
-#include "GLMaterial.hpp"
+#include "GLS.AsyncTimer.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Texture.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLSL.CustomShader.hpp"
+#include "GLS.Material.hpp"
+#include "GLSL.AsmShader.hpp"
+#include "GLSL.PhongShader.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

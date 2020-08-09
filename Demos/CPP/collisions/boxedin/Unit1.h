@@ -9,18 +9,20 @@
 #include <Forms.hpp>
 #include <ComCtrls.hpp>
 #include <ExtCtrls.hpp>
-#include "Scene.VectorGeometry.hpp"
-#include "GLScene.hpp"
-#include "GLBaseClasses.hpp"
-#include <GLGeomObjects.hpp>
-#include <GLNavigator.hpp>
-#include <GLCadencer.hpp>
-#include <GLSceneViewer.hpp>
-#include <GLObjects.hpp>
-#include <GLVectorFileObjects.hpp>
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLS.Utils.hpp"
+#include "GLS.VectorGeometry.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.BaseClasses.hpp"
+#include <GLS.GeomObjects.hpp>
+#include <GLS.Navigator.hpp>
+#include <GLS.Cadencer.hpp>
+#include <GLS.SceneViewer.hpp>
+#include <GLS.Objects.hpp>
+#include <GLS.VectorFileObjects.hpp>
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Utils.
+#include "GLS.Cadencer.hpp"
+#include "GLS.SceneViewer.hpp"hpp"
 
 //---------------------------------------------------------------------------
 class TForm1:public TForm
@@ -55,7 +57,7 @@ __published:                   // IDE-managed Components
 private:                       // User declarations
   float colTotalTime;           // for timing collision detection
   int colCount;
-  void AddToTrail(const Scene.VectorGeometry::TVector & p);
+  void AddToTrail(const Gls::Vectorgeometry::TVector & p);
 public:                        // User declarations
     __fastcall TForm1(TComponent * Owner);
   int mousex, mousey;

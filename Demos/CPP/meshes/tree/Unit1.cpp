@@ -5,13 +5,12 @@
 #pragma hdrstop
 
 #include "Unit1.h"
-#include "tga.hpp"
+#include "GLS.FileTGA.hpp"
 #include "jpeg.hpp"
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLMaterial"
-#pragma link "tga"
+#pragma link "GLS.Material"
 
 #pragma resource "*.dfm"
 TForm1 *Form1;
@@ -20,18 +19,18 @@ TForm1 *Form1;
 void TForm1::AlignControlsToTree()
 {
   TrackBar1->Position = GLTree1->Depth;
-  TrackBar2->Position = Round(GLTree1->BranchTwist);
-  TrackBar3->Position = Round(GLTree1->BranchAngle * 100);
-  TrackBar4->Position = Round(GLTree1->BranchAngleBias * 100);
-  TrackBar5->Position = Round(GLTree1->BranchSize * 10);
-  TrackBar6->Position = Round(GLTree1->BranchRadius * 25);
-  TrackBar7->Position = Round(GLTree1->BranchNoise * 100);
-  TrackBar8->Position = Round(GLTree1->LeafSize * 100);
-  TrackBar9->Position = Round(GLTree1->LeafThreshold * 100);
+  TrackBar2->Position = RoundInt(GLTree1->BranchTwist);
+  TrackBar3->Position = RoundInt(GLTree1->BranchAngle * 100);
+  TrackBar4->Position = RoundInt(GLTree1->BranchAngleBias * 100);
+  TrackBar5->Position = RoundInt(GLTree1->BranchSize * 10);
+  TrackBar6->Position = RoundInt(GLTree1->BranchRadius * 25);
+  TrackBar7->Position = RoundInt(GLTree1->BranchNoise * 100);
+  TrackBar8->Position = RoundInt(GLTree1->LeafSize * 100);
+  TrackBar9->Position = RoundInt(GLTree1->LeafThreshold * 100);
   TrackBar10->Position = GLTree1->BranchFacets;
   Edit1->Text = IntToStr(GLTree1->Seed);
   CheckBox1->Checked = GLTree1->CentralLeader;
-  TrackBar11->Position = Round(GLTree1->CentralLeaderBias * 100);
+  TrackBar11->Position = RoundInt(GLTree1->CentralLeaderBias * 100);
 }
 
 void TForm1::NewTree()
@@ -49,7 +48,7 @@ void TForm1::NewTree()
   GLTree1->BranchNoise = 0.5;
 
   Randomize();
-  GLTree1->Seed = Round((2 * Random() - 1) * (MaxInt - 1));
+  GLTree1->Seed = RoundInt((2 * Random() - 1) * (MaxInt - 1));
 
   AlignControlsToTree();
 }

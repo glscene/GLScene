@@ -1,0 +1,95 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2013-01-05 15:45\n"
+"PO-Revision-Date: 2013-01-05 16:25+0300\n"
+"Last-Translator: Pal Wassail <geoblock@mail.ru>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: dxgettext 1.2.2\n"
+
+msgid "About..."
+msgstr "О программе..."
+
+msgid "Collisions"
+msgstr "Столкновения"
+
+msgid "Depth"
+msgstr "Глубина"
+
+msgid "Deutsch"
+msgstr "Немецкий"
+
+msgid "Double Mass"
+msgstr "Двойная масса"
+
+msgid "English"
+msgstr "Английский"
+
+msgid "Fire"
+msgstr "Огонь"
+
+msgid "Forces"
+msgstr "Сила"
+
+msgid "GLScene Caterpillar"
+msgstr "GLScene Гусеница"
+
+msgid "GLScene Cel Shading"
+msgstr "GLScene Клеточное затенение"
+
+msgid "GLScene Culling"
+msgstr "GLScene Выбраковка"
+
+msgid "Import..."
+msgstr "Импорт..."
+
+msgid "Megacube"
+msgstr "Мегакуб"
+
+msgid "Objects"
+msgstr "Объекты"
+
+msgid "Objects:"
+msgstr "Объекты:"
+
+msgid "Ok"
+msgstr "ОК"
+
+msgid "Path Control"
+msgstr "Контроль маршрута"
+
+msgid "Quadtree"
+msgstr "Квадродерево"
+
+msgid "Russian"
+msgstr "Русский"
+
+msgid "Shaded Terrain"
+msgstr "Шейдер террейн"
+
+msgid "Shader"
+msgstr "Шейдер"
+
+msgid "Sphere"
+msgstr "Сфера"
+
+msgid "Start Movement"
+msgstr "Начало движения"
+
+msgid "TeePot"
+msgstr "Чайник"
+
+msgid "Texture size"
+msgstr "Размер текстуры"
+
+msgid "The Sphere:"
+msgstr "Сфера:"
+
+msgid "Volcano"
+msgstr "Вулкан"
+
+msgid "Whirlwind"
+msgstr "Вихрь"

@@ -5,14 +5,13 @@
 //---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include <Forms.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLScene.hpp"
-#include "GLContext.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.Scene.hpp"
+#include "GLS.Context.hpp"
 #include "GLS.Utils.hpp"
-#include "GLTeapot.hpp"
-#include "OpenGLx.hpp"
+#include "GLS.GeomObjects.hpp"
 #include "GLSDLContext.hpp"
 #include <Vcl.Imaging.jpeg.hpp>
 

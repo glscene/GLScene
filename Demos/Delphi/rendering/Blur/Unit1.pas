@@ -12,20 +12,19 @@ uses
   Vcl.Dialogs,
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
-  
-  GLSceneViewer,
-  GLScene,
-  GLObjects,
-  GLTexture,
-  GLHudObjects,
-  GLCompositeImage,
-  GLCadencer,
-  GLBlur,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses,
-  GLS.Utils;
+
+  GLS.SceneViewer,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Texture,
+  GLS.HUDObjects,
+  GLS.CompositeImage,
+  GLS.Cadencer,
+  GLS.Blur,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)
@@ -54,12 +53,9 @@ type
     procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
       X, Y: Integer);
   private
-     
     oldx, oldy: integer;
   public
-     
     B: TGLBlur;
-
   end;
 
 var
@@ -75,17 +71,16 @@ var
   I : Integer;
 
 begin
-  SetGLSceneMediaDir();
   MediaPath := ExtractFilePath(ParamStr(0));
-  I := Pos('Samples', MediaPath);
+  I := Pos('Demos', MediaPath);
   if (I <> 0) then
   begin
-    Delete(MediaPath, I+8, Length(MediaPath)-I);
+    Delete(MediaPath, I+5, Length(MediaPath)-(I+5));
     SetCurrentDir(MediaPath+'Media\');
   end;
   MediaPath := MediaPath+'Media\';
   GLMaterialLibrary1.TexturePaths := MediaPath;
-  // Add GLBlur to scene
+  // Add GLS.Blur to scene
   B := TGLBlur.Create(self);
   GLCube1.AddChild(B);
   B.TargetObject := GLCube1;

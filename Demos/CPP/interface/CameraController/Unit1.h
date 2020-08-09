@@ -7,19 +7,19 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCameraController.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLGraph.hpp"
-#include "GLMaterial.hpp"
-#include "GLNavigator.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLSmoothNavigator.hpp"
-#include "GLSceneViewer.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.CameraController.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Graph.hpp"
+#include "GLS.Material.hpp"
+#include "GLS.Navigator.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SmoothNavigator.hpp"
+#include "GLS.SceneViewer.hpp"
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Graphics.hpp>
 //---------------------------------------------------------------------------
@@ -133,12 +133,12 @@ private:	// User declarations
 	TGLNavigatorSmoothChangeVector *FCameraSmoothAnimator_AbsPos;
 	TGLNavigatorSmoothChangeVector *FCameraSmoothAnimator_RelPos;
 	void __fastcall GetInput(TButton *Sender);
-	Scene.VectorTypes::TVector4f __fastcall (__closure *TGLNavigatorSmoothChangeVectorGetEvent)
+	TVector4f __fastcall(__closure *TGLNavigatorSmoothChangeVectorGetEvent)
 		(TGLNavigatorSmoothChangeVector* const ASender);
-	Scene.VectorGeometry::TVector __fastcall OnGetCameraPosition(
+	Gls::Vectorgeometry::TVector __fastcall OnGetCameraPosition(
 					   TGLNavigatorSmoothChangeVector* const ASender);
 	void __fastcall OnSetCameraPosition(TGLNavigatorSmoothChangeVector* const ASender,
-					   const Scene.VectorTypes::TVector4f &AValue);
+					   const TVector4f &AValue);
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
 };

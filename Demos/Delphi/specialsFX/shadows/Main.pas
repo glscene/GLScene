@@ -16,11 +16,24 @@ uses
   Vcl.Imaging.JPeg,
 
   
-  GLScene, GLGraph, GLObjects, GLTexture,
-  GLGraphics, Scene.VectorTypes, Scene.VectorGeometry, GLHUDObjects,
-  GLzBuffer, GLCadencer, GLAsyncTimer, GLSceneViewer, GLTeapot,
-  GLGeomObjects, GLCrossPlatform, GLMaterial, GLCoordinates, GLBaseClasses,
-  GLBehaviours, GLS.Utils;
+  GLS.VectorTypes, 
+  GLS.VectorGeometry, 
+  GLS.BaseClasses,
+  GLS.Scene, 
+  GLS.Graph, 
+  GLS.Objects, 
+  GLS.Texture,
+  GLS.Graphics, 
+  GLS.HUDObjects,
+  GLS.zBuffer, 
+  GLS.Cadencer, 
+  GLS.AsyncTimer, 
+  GLS.SceneViewer, 
+  GLS.GeomObjects,
+  GLS.Material, 
+  GLS.Coordinates, 
+  GLS.Behaviours, 
+  GLS.Utils;
 
 type
   TMainFm = class(TForm)

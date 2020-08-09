@@ -14,9 +14,9 @@ uses
   Vcl.ComCtrls,
   Vcl.ExtCtrls,
   
-  GLCadencer, GLScene, GLObjects, GLGeomObjects,
-  GLSceneViewer,GLTrail,GLTexture, Scene.VectorGeometry, GLMesh, Scene.VectorTypes,
-  GLCrossPlatform, GLCoordinates, GLBaseClasses;
+  GLS.Cadencer, GLS.Scene, GLS.Objects, GLS.GeomObjects,
+  GLS.SceneViewer,GLS.Trail,GLS.Texture, GLS.VectorGeometry, GLS.Mesh, GLS.VectorTypes,
+  GLS.Coordinates, GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

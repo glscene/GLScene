@@ -7,21 +7,21 @@
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
-#include <GLSceneViewer.hpp>    // Pascal unit
-#include <Scene.VectorGeometry.hpp>   // Pascal unit
-#include <GLBehaviours.hpp>     // Pascal unit
-#include <GLCadencer.hpp>       // Pascal unit
-#include <GLParticles.hpp>      // Pascal unit
-#include <GLObjects.hpp>        // Pascal unit
-#include <GLScene.hpp>
+#include <GLS.SceneViewer.hpp>    // Pascal unit
+#include <GLS.VectorGeometry.hpp>   // Pascal unit
+#include <GLS.Behaviours.hpp>     // Pascal unit
+#include <GLS.Cadencer.hpp>       // Pascal unit
+#include <GLS.Particles.hpp>      // Pascal unit
+#include <GLS.Objects.hpp>        // Pascal unit
+#include <GLS.Scene.hpp>
 #include <ExtCtrls.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLSceneViewer.hpp"         // Pascal unit
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.SceneViewer.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.SceneViewer.hpp"         // Pascal unit
 //---------------------------------------------------------------------------
 class TForm1:public TForm
 {

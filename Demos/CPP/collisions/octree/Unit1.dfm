@@ -23,6 +23,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = 8404992
     Buffer.ShadeModel = smSmooth
     FieldOfView = 146.851989746093800000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer2MouseDown
     OnMouseMove = GLSceneViewer2MouseMove

@@ -17,19 +17,19 @@ uses
   Vcl.ExtCtrls,
   Vcl.Imaging.Jpeg,
 
-  GLScene,
-  GLObjects,
-  Scene.VectorTypes,
-  Scene.PersistentClasses,
-  GLParticles,
-  GLTexture,
-  GLCadencer,
-  GLHudObjects,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLMaterial,
-  GLCoordinates,
-  GLBaseClasses,
+  GLS.Scene,
+  GLS.Objects,
+  GLS.VectorTypes,
+  GLS.PersistentClasses,
+  GLS.Particles,
+  GLS.Texture,
+  GLS.Cadencer,
+  GLS.HUDObjects,
+  GLS.SceneViewer,
+ 
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.Utils;
 
 type

@@ -22,12 +22,12 @@ uses
   System.SysUtils,
   System.SyncObjs,
 
-  OpenGLTokens,
-  OpenGLAdapter,
-  Scene.VectorTypes,
-  GLState,
-  GLContext,
-  Scene.VectorGeometry,
+  GLS.OpenGLTokens,
+  GLS.OpenGLAdapter,
+  GLS.VectorTypes,
+  GLS.State,
+  GLS.Context,
+  GLS.VectorGeometry,
   Import.SDL2;
 
 type

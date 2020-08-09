@@ -8,18 +8,17 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
-#include "GLSceneViewer.hpp"
-#include "GLScene.hpp"
-#include "GLCadencer.hpp"
-#include "GLMirror.hpp"
-#include "GLObjects.hpp"
-#include "GLGeomObjects.hpp"
-#include "GLExtrusion.hpp"
-#include "GLMultiPolygon.hpp"
-#include "GLTeapot.hpp"
-#include "GLBaseClasses.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Mirror.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.GeomObjects.hpp"
+#include "GLS.Extrusion.hpp"
+#include "GLS.MultiPolygon.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+
 //---------------------------------------------------------------------------
 class TForm1:public TForm
 {

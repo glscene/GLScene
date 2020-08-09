@@ -21,10 +21,10 @@ uses
   System.SysUtils,
   Vcl.Forms,
 
-  GLSound,
-  GLScene,
-  Scene.VectorTypes,
-  Scene.VectorGeometry,
+  GLS.Sound,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.VectorGeometry,
 
   Import.BASS;
 

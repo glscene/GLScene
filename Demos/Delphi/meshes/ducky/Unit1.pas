@@ -15,22 +15,22 @@ uses
   Vcl.StdCtrls,
 
   
-  GLScene,
-  Scene.VectorTypes,
-  Scene.PersistentClasses,
-  GLVectorFileObjects,
-  GLObjects,
-  GLSceneViewer,
-  GLParametricSurfaces,
-  Scene.VectorGeometry,
-  Scene.VectorLists,
-  GLTexture,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLMaterial,
-  GLState,
-  GLBaseClasses,
-  GLFileNurbs,
+  GLS.Scene,
+  GLS.VectorTypes,
+  GLS.PersistentClasses,
+  GLS.VectorFileObjects,
+  GLS.Objects,
+  GLS.SceneViewer,
+  GLS.ParametricSurfaces,
+  GLS.VectorGeometry,
+  GLS.VectorLists,
+  GLS.Texture,
+ 
+  GLS.Coordinates,
+  GLS.Material,
+  GLS.State,
+  GLS.BaseClasses,
+  GLS.FileNurbs,
   GLS.Utils;
 
 type

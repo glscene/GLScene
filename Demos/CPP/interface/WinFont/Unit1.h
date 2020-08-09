@@ -10,16 +10,16 @@
 #include <Vcl.Dialogs.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Menus.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLBitmapFont.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
-#include "GLHUDObjects.hpp"
-#include "GLScene.hpp"
-#include "GLTeapot.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLWindowsFont.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.BitmapFont.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
+#include "GLS.HUDObjects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.GeomObjects.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.WindowsFont.hpp"
 #include "Unit2.h"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

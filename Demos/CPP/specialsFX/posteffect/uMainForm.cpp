@@ -8,16 +8,16 @@
 #include "uMainForm.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLBaseClasses"
-#pragma link "GLCadencer"
-#pragma link "GLCoordinates"
-#pragma link "GLCrossPlatform"
-#pragma link "GLMaterial"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Cadencer"
+#pragma link "GLS.Coordinates"
+
+#pragma link "GLS.Material"
 #pragma link "GLPostEffects"
-#pragma link "GLScene"
-#pragma link "GLSimpleNavigation"
-#pragma link "GLVectorFileObjects"
-#pragma link "GLSceneViewer"
+#pragma link "GLS.Scene"
+#pragma link "GLS.SimpleNavigation"
+#pragma link "GLS.VectorFileObjects"
+#pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 //---------------------------------------------------------------------------

@@ -17,8 +17,8 @@ interface
 uses
   System.Classes,
    
-  GLMaterial, 
-  GLRenderContextInfo;
+  GLS.Material, 
+  GLS.RenderContextInfo;
 
 type
   TOnDoApplyEvent = procedure (Sender : TObject; var rci : TGLRenderContextInfo) of Object;

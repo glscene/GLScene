@@ -5,7 +5,7 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLFileSMD"
+#pragma link "GLS.FileSMD"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -39,12 +39,12 @@ __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
 		  sphere = (TGLSphere *) DCSpheres->AddNewChild(__classid(TGLSphere));
 		  sphere->Position->SetPoint(x * cSpacing, y * cSpacing, z * cSpacing);
 		  sphere->Radius = cRadius;
-		  GLShadowVolume->Occluders->AddCaster(sphere, 0, scmParentVisible);
+		  GLS.ShadowVolume->Occluders->AddCaster(sphere, 0, scmParentVisible);
         }
-  DCSpheres->MoveTo(GLShadowVolume);
+  DCSpheres->MoveTo(GLS.ShadowVolume);
   GLFreeForm->LoadFromFile("trinityrage.smd");
   GLFreeForm->BuildSilhouetteConnectivityData();
-  GLShadowVolume->Occluders->AddCaster(GLFreeForm,0,scmRecursivelyVisible);
+  GLS.ShadowVolume->Occluders->AddCaster(GLFreeForm,0,scmRecursivelyVisible);
 }
 
 //---------------------------------------------------------------------------
@@ -62,9 +62,9 @@ void __fastcall TForm1::GLCadencer1Progress(TObject * Sender,
 void __fastcall TForm1::CBShowVolumesClick(TObject * Sender)
 {
   if(CBShowVolumes->Checked)
-    GLShadowVolume->Options = GLShadowVolume->Options << svoShowVolumes;
+    GLS.ShadowVolume->Options = GLS.ShadowVolume->Options << svoShowVolumes;
   else
-    GLShadowVolume->Options = GLShadowVolume->Options >> svoShowVolumes;
+    GLS.ShadowVolume->Options = GLS.ShadowVolume->Options >> svoShowVolumes;
 }
 
 //---------------------------------------------------------------------------
@@ -72,16 +72,16 @@ void __fastcall TForm1::RBZFailClick(TObject * Sender)
 {
 // this event handles all the radio buttons
   if(RBDarkening->Checked)
-    GLShadowVolume->Mode = svmDarkening;
+    GLS.ShadowVolume->Mode = svmDarkening;
   else if(RBNoShadows->Checked)
-    GLShadowVolume->Mode = svmOff;
+    GLS.ShadowVolume->Mode = svmOff;
   else
   {
-    GLShadowVolume->Mode = svmAccurate;
+    GLS.ShadowVolume->Mode = svmAccurate;
     if(RBZFail->Checked)
-      GLShadowVolume->Capping = svcAlways;
+      GLS.ShadowVolume->Capping = svcAlways;
     else
-      GLShadowVolume->Capping = svcNever;
+      GLS.ShadowVolume->Capping = svcNever;
   }
 }
 
@@ -150,7 +150,7 @@ void __fastcall TForm1::ScrollBar_ShadowResolutionChange(TObject * Sender)
 {
   GLSphere_Shadow->Stacks = ScrollBar_ShadowResolution->Position;
   GLSphere_Shadow->Slices = ScrollBar_ShadowResolution->Position;
-  GLShadowVolume->FlushSilhouetteCache();
+  GLS.ShadowVolume->FlushSilhouetteCache();
 }
 
 //---------------------------------------------------------------------------

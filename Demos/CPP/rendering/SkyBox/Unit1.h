@@ -3,27 +3,26 @@
 #ifndef Unit1H
 #define Unit1H
 //---------------------------------------------------------------------------
-//#include <System.Classes.hpp>
+#include <System.Classes.hpp>
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
-#include "GLBaseClasses.hpp"
-#include "GLCadencer.hpp"
-#include "GLCoordinates.hpp"
-#include "GLCrossPlatform.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.Coordinates.hpp"
+
 #include "GLLensFlare.hpp"
-#include "GLMaterial.hpp"
-#include "GLNavigator.hpp"
-#include "GLObjects.hpp"
-#include "GLScene.hpp"
-#include "GLSimpleNavigation.hpp"
-#include "GLSkyBox.hpp"
-#include "GLSceneViewer.hpp"
-#include "GLKeyBoard.hpp"
+#include "GLS.Material.hpp"
+#include "GLS.Navigator.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Scene.hpp"
+#include "GLS.SimpleNavigation.hpp"
+#include "GLS.SkyDome.hpp"
+#include "GLS.SceneViewer.hpp"
+#include "GLS.Keyboard.hpp"
 #include "JPeg.hpp"
-#include "GLFileJPEG.hpp"
+#include "GLS.FileJPEG.hpp"
 #include "GLS.Utils.hpp"
-#include <System.Classes.hpp>
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

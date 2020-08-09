@@ -14,15 +14,15 @@ uses
   Vcl.StdCtrls,
 
   
-  GLScene,
-  GLObjects,
-  GLParticleFX,
-  GLCadencer,
-  GLBehaviours,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses;
+  GLS.Scene,
+  GLS.Objects,
+  GLS.ParticleFX,
+  GLS.Cadencer,
+  GLS.Behaviours,
+  GLS.SceneViewer,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

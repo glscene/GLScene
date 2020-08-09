@@ -10,16 +10,16 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
 
-  GLScene,
-  GLObjects,
-  Scene.PersistentClasses,
-  GLJoystick,
-  GLGeomObjects,
-  GLCadencer,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses;
+  GLS.Scene,
+  GLS.Objects,
+  GLS.PersistentClasses,
+  GLS.Joystick,
+  GLS.GeomObjects,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+ 
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

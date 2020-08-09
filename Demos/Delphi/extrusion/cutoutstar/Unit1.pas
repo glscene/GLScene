@@ -14,15 +14,15 @@ uses
   Vcl.ExtCtrls,
 
 
-  GLCadencer,
-  GLScene,
-  GLExtrusion,
-  Scene.VectorGeometry,
-  GLMultiPolygon,
-  GLSceneViewer,
-  GLCrossPlatform,
-  GLCoordinates,
-  GLBaseClasses;
+  GLS.Cadencer,
+  GLS.Scene,
+  GLS.Extrusion,
+  GLS.VectorGeometry,
+  GLS.MultiPolygon,
+  GLS.SceneViewer,
+ 
+  GLS.Coordinates, GLS.BaseClasses,,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)
