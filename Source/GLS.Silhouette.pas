@@ -75,7 +75,7 @@ type
     procedure AddIndexedCapToSilhouette(const Vi0, Vi1, vi2: integer); inline;
   end;
 
-  TBaseConnectivity = class
+  TGLBaseConnectivity = class
   protected
     FPrecomputeFaceNormal: Boolean;
     function GetEdgeCount: integer; virtual;
@@ -89,7 +89,7 @@ type
     constructor Create(APrecomputeFaceNormal: Boolean); virtual;
   end;
 
-  TConnectivity = class(TBaseConnectivity)
+  TGLConnectivity = class(TGLBaseConnectivity)
   protected
     (* All storage of faces and adges are cut up into tiny pieces for a reason,
       it'd be nicer with Structs or classes, but it's actually faster this way.
@@ -247,35 +247,35 @@ begin
 end;
 
 // ------------------
-// ------------------ TBaseConnectivity ------------------
+// ------------------ TGLBaseConnectivity ------------------
 // ------------------
 
-constructor TBaseConnectivity.Create(APrecomputeFaceNormal: Boolean);
+constructor TGLBaseConnectivity.Create(APrecomputeFaceNormal: Boolean);
 begin
   FPrecomputeFaceNormal := APrecomputeFaceNormal;
 end;
 
-procedure TBaseConnectivity.CreateSilhouette(const ASilhouetteParameters: TGLSilhouetteParameters;
+procedure TGLBaseConnectivity.CreateSilhouette(const ASilhouetteParameters: TGLSilhouetteParameters;
   var ASilhouette: TGLSilhouette; AddToSilhouette: Boolean);
 begin
   // Purely virtual!
 end;
 
 // ------------------
-// ------------------ TConnectivity ------------------
+// ------------------ TGLConnectivity ------------------
 // ------------------
 
-function TBaseConnectivity.GetEdgeCount: integer;
+function TGLBaseConnectivity.GetEdgeCount: integer;
 begin
   result := 0;
 end;
 
-function TBaseConnectivity.GetFaceCount: integer;
+function TGLBaseConnectivity.GetFaceCount: integer;
 begin
   result := 0;
 end;
 
-constructor TConnectivity.Create(APrecomputeFaceNormal: Boolean);
+constructor TGLConnectivity.Create(APrecomputeFaceNormal: Boolean);
 begin
   FFaceVisible := TByteList.Create;
 
@@ -290,7 +290,7 @@ begin
   FVertices := TAffineVectorList.Create;
 end;
 
-destructor TConnectivity.Destroy;
+destructor TGLConnectivity.Destroy;
 begin
   Clear;
 
@@ -309,7 +309,7 @@ begin
   inherited;
 end;
 
-procedure TConnectivity.Clear;
+procedure TGLConnectivity.Clear;
 begin
   FEdgeVertices.Clear;
   FEdgeFaces.Clear;
@@ -322,7 +322,7 @@ begin
     FVertices.Clear;
 end;
 
-procedure TConnectivity.CreateSilhouette(const silhouetteParameters: TGLSilhouetteParameters; var ASilhouette: TGLSilhouette;
+procedure TGLConnectivity.CreateSilhouette(const silhouetteParameters: TGLSilhouetteParameters; var ASilhouette: TGLSilhouette;
   AddToSilhouette: Boolean);
 var
   i: integer;
@@ -391,17 +391,17 @@ begin
   end;
 end;
 
-function TConnectivity.GetEdgeCount: integer;
+function TGLConnectivity.GetEdgeCount: integer;
 begin
   result := FEdgeVertices.Count div 2;
 end;
 
-function TConnectivity.GetFaceCount: integer;
+function TGLConnectivity.GetFaceCount: integer;
 begin
   result := FFaceVisible.Count;
 end;
 
-function TConnectivity.ReuseOrFindVertexID(const SeenFrom: TAffineVector; ASilhouette: TGLSilhouette; index: integer): integer;
+function TGLConnectivity.ReuseOrFindVertexID(const SeenFrom: TAffineVector; ASilhouette: TGLSilhouette; index: integer): integer;
 var
   pMemIndex: PInteger;
   memIndex, i: integer;
@@ -431,7 +431,7 @@ begin
     result := pMemIndex^;
 end;
 
-function TConnectivity.AddIndexedEdge(vertexIndex0, vertexIndex1: integer; FaceID: integer): integer;
+function TGLConnectivity.AddIndexedEdge(vertexIndex0, vertexIndex1: integer; FaceID: integer): integer;
 var
   i: integer;
   edgesVertices: PIntegerArray;
@@ -460,7 +460,7 @@ begin
   result := EdgeCount - 1;
 end;
 
-function TConnectivity.AddIndexedFace(Vi0, Vi1, vi2: integer): integer;
+function TGLConnectivity.AddIndexedFace(Vi0, Vi1, vi2: integer): integer;
 var
   FaceID: integer;
 begin
@@ -476,7 +476,7 @@ begin
   result := FaceID;
 end;
 
-function TConnectivity.AddFace(const vertex0, vertex1, vertex2: TAffineVector): integer;
+function TGLConnectivity.AddFace(const vertex0, vertex1, vertex2: TAffineVector): integer;
 var
   Vi0, Vi1, vi2: integer;
 begin
@@ -487,7 +487,7 @@ begin
   result := AddIndexedFace(Vi0, Vi1, vi2);
 end;
 
-function TConnectivity.AddQuad(const vertex0, vertex1, vertex2, vertex3: TAffineVector): integer;
+function TGLConnectivity.AddQuad(const vertex0, vertex1, vertex2, vertex3: TAffineVector): integer;
 var
   Vi0, Vi1, vi2, Vi3: integer;
 begin

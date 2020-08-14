@@ -23,7 +23,7 @@ uses
   GLS.Navigator,
   GLS.SceneViewer,
   GLS.Keyboard,
-  GLLensFlare,
+  GLS.LensFlare,
   GLS.Objects,
   GLS.Material,
   GLS.Coordinates,

@@ -1,4 +1,4 @@
-package GLScene_Parallel_RT;
+package GLScene_GPU_RT;
 
 {$R *.res}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
@@ -37,22 +37,23 @@ requires
   GLScene_RT;
 
 contains
-  GLS.CUDARuntime in '..\Source\GLS.CUDARuntime.pas',
-  GLS.CUDAFourierTransform in '..\Source\GLS.CUDAFourierTransform.pas',
-  GLS.CUDAUtility in '..\Source\GLS.CUDAUtility.pas',
-  GLS.CUDACompiler in '..\Source\GLS.CUDACompiler.pas',
-  GLS.CUDAContext in '..\Source\GLS.CUDAContext.pas',
-  GLS.CUDAFFTPlan in '..\Source\GLS.CUDAFFTPlan.pas',
-  GLS.CUDAGraphics in '..\Source\GLS.CUDAGraphics.pas',
-  GLS.CUDAParser in '..\Source\GLS.CUDAParser.pas',
-  GLS.CUDADataAccess in '..\Source\GLS.CUDADataAccess.pas',
-  GLS.CUDAParallelPrimitives in '..\Source\GLS.CUDAParallelPrimitives.pas',
-  GLS.CUDA in '..\Source\GLS.CUDA.pas',
-  GLS.CUDAApi in '..\Source\GLS.CUDAApi.pas',
+  Import.CUDAApi in '..\Source\Import.CUDAApi.pas',
+  Import.CUDAUtility in '..\Source\Import.CUDAUtility.pas',
+  Import.CUDAParallelPrimitives in '..\Source\Import.CUDAParallelPrimitives.pas',
+  GPU.CUDARuntime in '..\Source\GPU.CUDARuntime.pas',
+  GPU.CUDAFourierTransform in '..\Source\GPU.CUDAFourierTransform.pas',
+  GPU.CUDACompiler in '..\Source\GPU.CUDACompiler.pas',
+  GPU.CUDAContext in '..\Source\GPU.CUDAContext.pas',
+  GPU.CUDAFFTPlan in '..\Source\GPU.CUDAFFTPlan.pas',
+  GPU.CUDAGraphics in '..\Source\GPU.CUDAGraphics.pas',
+  GPU.CUDAParser in '..\Source\GPU.CUDAParser.pas',
+  GPU.CUDADataAccess in '..\Source\GPU.CUDADataAccess.pas',
+  GPU.CUDA in '..\Source\GPU.CUDA.pas',
   GLS.FilePGM in '..\Source\GLS.FilePGM.pas',
   Import.OpenCL in '..\Source\Import.OpenCL.pas',
   Import.OpenCL_GL in '..\Source\Import.OpenCL_GL.pas',
   Import.OpenCL_Platform in '..\Source\Import.OpenCL_Platform.pas';
 
 end.
+
 

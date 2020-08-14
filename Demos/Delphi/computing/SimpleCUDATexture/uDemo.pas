@@ -15,19 +15,19 @@ uses
   GLS.Utils,
   GLS.FilePGM,
 
-  GLS.CUDAContext,
-  GLS.CUDA,
-  GLS.CUDACompiler,
-  GLS.CUDAUtility,
+  GPU.CUDAContext,
+  GPU.CUDA,
+  GPU.CUDACompiler,
+  GPU.CUDAUtility,
 
   GLS.Graphics,
   GLS.TextureFormat;
 
 type
   TForm1 = class(TForm)
-    GLSCUDACompiler1: TGLSCUDACompiler;
-    GLSCUDA1: TGLSCUDA;
-    GLSCUDADevice1: TGLSCUDADevice;
+    GLSCUDACompiler1: TGLCUDACompiler;
+    GLSCUDA1: TGLCUDA;
+    GLSCUDADevice1: TGLCUDADevice;
     MainModule: TCUDAModule;
     Button1: TButton;
     Memo1: TMemo;

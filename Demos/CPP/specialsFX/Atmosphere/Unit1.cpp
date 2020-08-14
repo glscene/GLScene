@@ -13,11 +13,11 @@
 #pragma link "GLS.BaseClasses"
 #pragma link "GLS.Coordinates"
 
-#pragma link "GLLensFlare"
+#pragma link "GLS.LensFlare"
 #pragma link "GLS.SimpleNavigation"
 #pragma link "GLS.SkyDome"
-#pragma link "GLAtmosphere"
-#pragma link "GLLensFlare"
+#pragma link "GLS.Atmosphere"
+
 
 #pragma resource "*.dfm"
 TForm1 *Form1;

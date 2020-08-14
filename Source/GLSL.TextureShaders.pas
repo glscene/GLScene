@@ -880,6 +880,6 @@ initialization
 //================================================
 
   RegisterClasses([TGLTextureSharingShader, TGLTextureSharingShaderMaterials,
-                   TGLTextureSharingShaderMaterial, TGLTexCombineShader]);
+                   TGLTextureSharingShaderMaterial]);
 
 end.

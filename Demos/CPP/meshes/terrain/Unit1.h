@@ -11,7 +11,7 @@
 #include <ExtCtrls.hpp>
 #include <GIFImg.hpp>
 
-#include "GLLensFlare.hpp"
+#include "GLS.LensFlare.hpp"
 #include "GLS.VectorGeometry.hpp"
 #include "GLSM.BASS.hpp"
 #include "GLS.Sound.hpp"

@@ -179,7 +179,7 @@ procedure DrawContours(Vertices: TAffineVectorList; VertexIndices: TIntegerList;
   ContourInterval: Integer; ContourWidth: Integer; DecVal: Integer);
 var
   i: Integer;
-  Contours: TAffineVectorList;
+  Isolines: TAffineVectorList;
   CurColor: TVector;
 
 begin
@@ -188,12 +188,12 @@ begin
     gl.PolygonOffset(1, 1);
     gl.Enable(GL_POLYGON_OFFSET_FILL);
     i := VertexIndices.Count - 3;
-    Contours := TAffineVectorList.Create;
+    Isolines := TAffineVectorList.Create;
     while i >= 0 do
     begin
       TriangleElevationSegments(Vertices[VertexIndices[i]],
         Vertices[VertexIndices[i + 1]], Vertices[VertexIndices[i + 2]],
-        ContourInterval, Contours);
+        ContourInterval, Isolines);
       Dec(i, DecVal);
     end;
     gl.PushAttrib(GL_ENABLE_BIT or GL_CURRENT_BIT);
@@ -202,12 +202,12 @@ begin
     gl.GetFloatv(GL_CURRENT_COLOR, @CurColor);
     gl.Color4f(0, 0, 0, 1);
     gl.Begin_(GL_LINES);
-     for i := 0 to Contours.Count - 1 do
-       gl.Vertex3fv(@Contours.List[i]);
+     for i := 0 to Isolines.Count - 1 do
+       gl.Vertex3fv(@Isolines.List[i]);
     gl.End_;
     gl.Color4fv(@CurColor);
     gl.PopAttrib;
-    Contours.Free;
+    Isolines.Free;
   end;
 end;
 

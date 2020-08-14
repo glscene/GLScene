@@ -4,7 +4,9 @@
 
 unit GLS.VectorRecTypes;
 
-(* Defines common vector types as advanced records *)
+(* Defines common vector types as advanced records using
+   BigIntegers and BigDecimals by Rudy Velthuis:
+   https://github.com/rvelthuis *)
 
 interface
 
@@ -20,8 +22,8 @@ uses
 
 
 type
-  TAbstractVector = array of Extended;
-  TAbstractMatrix = array of array of Extended;
+  TxBigMatrix = array of Extended; // replace with BigDecimals
+  T_BigMatrix = array of array of Extended;  // replace with BigDecimals
 
   TxQuaternion = record
   private
@@ -29,11 +31,11 @@ type
     procedure SetElement(Index: Byte; Value: Extended);
     function GetElement(Index: Byte): Extended;
   public
-    constructor Create(Q: TAbstractVector);
+    constructor Create(Q: TxBigMatrix);
     class operator Multiply(Q1, Q2: TxQuaternion): TxQuaternion;
     class operator Multiply(Q: TxQuaternion; Sc: Extended): TxQuaternion;
     class operator Multiply(Scalar: Extended; Q: TxQuaternion): TxQuaternion;
-    class operator Implicit(V: TAbstractVector): TxQuaternion;
+    class operator Implicit(V: TxBigMatrix): TxQuaternion;
     function Inv: TxQuaternion;
     function TruncateSTI: TxQuaternion;
     property Element[index: Byte]: Extended read GetElement
@@ -43,14 +45,14 @@ type
   PxVector = ^TxVector;
   TxVector = record
   private
-    FData: TAbstractVector;
+    FData: TxBigMatrix;
     FCount: Word;
     procedure SetElement(Index: Word; Value: Extended);
     function GetElement(Index: Word): Extended;
     procedure CheckUnique;
   public
     constructor Create(ElementsCount: Word); overload;
-    constructor Create(V: TAbstractVector); overload;
+    constructor Create(V: TxBigMatrix); overload;
     class operator Add(V1, V2: TxVector): TxVector;
     class operator Add(V: TxVector; Scalar: Extended): TxVector;
     class operator Add(Scalar: Extended; V: TxVector): TxVector;
@@ -62,7 +64,7 @@ type
     class operator Multiply(Scalar: Extended; V: TxVector): TxVector;
     class operator Divide(V: TxVector; Scalar: Extended): TxVector;
     class operator Divide(V1, V2: TxVector): TxVector;
-    class operator Implicit(V: TAbstractVector): TxVector;
+    class operator Implicit(V: TxBigMatrix): TxVector;
     function Norm: Extended;
     function SumOfSquares: Extended;
     function SumOfElments: Extended;
@@ -78,7 +80,7 @@ type
   PxMatrix = ^TxMatrix;
   TxMatrix = record
   private
-    FData: TAbstractMatrix;
+    FData: T_BigMatrix;
     FRowsCount: Word;
     FColsCount: Word;
     procedure SetElement(Row, Col: Word; Value: Extended);
@@ -93,7 +95,7 @@ type
   public
     constructor Create(RowsCount, ColsCount: Word); overload;
     constructor CreateDiag(Dim: Word; Value: Extended = 1.0);
-    constructor Create(M: TAbstractMatrix); overload;
+    constructor Create(M: T_BigMatrix); overload;
     class operator Add(M1, M2: TxMatrix): TxMatrix;
     class operator Subtract(M1, M2: TxMatrix): TxMatrix;
     class operator Multiply(M1, M2: TxMatrix): TxMatrix;
@@ -102,7 +104,7 @@ type
     class operator Multiply(M: TxMatrix; Scalar: Extended): TxMatrix;
     class operator Multiply(Scalar: Extended; M: TxMatrix): TxMatrix;
     class operator Multiply(M: TxMatrix; Q: TxQuaternion): TxQuaternion;
-    class operator Implicit(M: TAbstractMatrix): TxMatrix;
+    class operator Implicit(M: T_BigMatrix): TxMatrix;
     function Transp: TxMatrix;
     function Inv: TxMatrix;
     function ToQuat: TxQuaternion;
@@ -136,10 +138,9 @@ type
     property ColCount: Integer read FColCount;
   end;
 
-  function TxVec(V: TAbstractVector): TxVector;
-  function TxMat(M: TAbstractMatrix): TxMatrix;
-  function TxQuat(Q: TAbstractVector): TxQuaternion;
-
+  function TxVec(V: TxBigMatrix): TxVector;
+  function TxMat(M: T_BigMatrix): TxMatrix;
+  function TxQuat(Q: TxBigMatrix): TxQuaternion;
   procedure Init(Obj, TypeInfoOfObj: Pointer; Offset: Integer = 0);
 
 
@@ -147,15 +148,15 @@ type
 // Point types
 //-----------------------
 type
-  TxScalarValue = Single;
-  TxScalarField = function(X, Y, Z: Single): TxScalarValue;
+  TxScalarValue = Extended;  // replaced with BigDecimals
+  TxScalarField = function(X, Y, Z: Extended): TxScalarValue;
 
-  // If data are made on integer XYZ index
+  // If data are made on integer XYZ index replaced with BigIntegers
   TxScalarFieldInt = function(iX, iY, iZ: Integer): TxScalarValue of object;
 
   TxVertex = record
     P, N: TVector3f;  //Point and Normal
-    Density: Single;
+    Density: Extended;
   end;
 
   TxFace = record
@@ -165,34 +166,34 @@ type
     V3: TVector3f; // vertex 3
     Padding: array [0 .. 1] of Byte;
   end;
-  
+
   PxPoint2D = ^TxPoint2D;
   TxPoint2D = record
-    X: Single;
-    Y: Single;
+    X: Extended;
+    Y: Extended;
     public
-      function Create(X, Y : Single): TxPoint2D;
-      procedure SetPosition(const X, Y : Single);
+      function Create(X, Y: Extended): TxPoint2D;
+      procedure SetPosition(const X, Y : Extended);
       function Add(const APoint2D: TxPoint2D): TxPoint2D;
-      function Length: Single; //distance to origin
-      function Distance(const APoint2D : TxPoint2D) : Single;
+      function Length: Extended; //distance to origin
+      function Distance(const APoint2D : TxPoint2D) : Extended;
       class function PointInCircle(const Point, Center: TxPoint2D;
         const Radius: Integer):Boolean; static; inline;
-      procedure Offset(const ADeltaX, ADeltaY : Single);
+      procedure Offset(const ADeltaX, ADeltaY : Extended);
   end;
 
   PxPoint3D = ^TxPoint3D;
   TxPoint3D = record
-    X: Single;
-    Y: Single;
-    Z: Single;
+    X: Extended;
+    Y: Extended;
+    Z: Extended;
     public
-      function Create(X, Y, Z: Single): TxPoint3D;
-      procedure SetPosition(const X, Y, Z : Single);
+      function Create(X, Y, Z: Extended): TxPoint3D;
+      procedure SetPosition(const X, Y, Z: Extended);
       function Add(const AGLPoint3D: TxPoint3D): TxPoint3D;
       function Length: Single; //distance to origin
-      function Distance(const APoint3D : TxPoint3D) : Single;
-      procedure Offset(const ADeltaX, ADeltaY, ADeltaZ : Single);
+      function Distance(const APoint3D : TxPoint3D) : Extended;
+      procedure Offset(const ADeltaX, ADeltaY, ADeltaZ : Extended);
   end;
 
 
@@ -217,22 +218,22 @@ type
 // Vector types
 //-----------------------
 
-  TxVector2DType = array [0..1] of Single;
-  TxVector3DType = array [0..2] of Single;
+  TxVector2DType = array [0..1] of Extended;
+  TxVector3DType = array [0..2] of Extended;
 
   TxVector2D = record
       function Create(const AX, AY, AW : Single): TxVector2D;
       function Add(const AVector2D: TxVector2D): TxVector2D;
-      function Length: Single;
-      function Norm: Single;
+      function Length: Extended;
+      function Norm: Extended;
       function Normalize: TxVector2D;
       function CrossProduct(const AVector: TxVector2D): TxVector2D;
-      function DotProduct(const AVector: TxVector2D): Single;
+      function DotProduct(const AVector: TxVector2D): Extended;
     case Integer of
       0: (V: TxVector2DType;);
-      1: (X: Single;
-          Y: Single;
-          W: Single;)
+      1: (X: Extended;
+          Y: Extended;
+          W: Extended;)
   end;
 
   TxVector3D = record
@@ -245,10 +246,10 @@ type
       function DotProduct(const AVector3D: TVector3D): Single; inline;
     case Integer of
       0: (V: TxVector3DType;);
-      1: (X: Single;
-          Y: Single;
-          Z: Single;
-          W: Single;)
+      1: (X: Extended;
+          Y: Extended;
+          Z: Extended;
+          W: Extended;)
   end;
 
 // Vector Arrays
@@ -382,17 +383,17 @@ implementation
 //---------------------------------------------------------------
 
 
-function TxVec(V: TAbstractVector): TxVector;
+function TxVec(V: TxBigMatrix): TxVector;
 begin
   Result.Create(V);
 end;
 
-function TxMat(M: TAbstractMatrix): TxMatrix;
+function TxMat(M: T_BigMatrix): TxMatrix;
 begin
   Result.Create(M);
 end;
 
-function TxQuat(Q: TAbstractVector): TxQuaternion;
+function TxQuat(Q: TxBigMatrix): TxQuaternion;
 begin
   Result.Create(Q);
 end;
@@ -467,7 +468,7 @@ begin
   SetLength(FData, FRowsCount, FColsCount);
 end;
 
-constructor TxMatrix.Create(M: TAbstractMatrix);
+constructor TxMatrix.Create(M: T_BigMatrix);
 var
   I: Integer;
 begin
@@ -542,7 +543,7 @@ begin
     Result.FData[I] := FData[Row - 1, I];
 end;
 
-class operator TxMatrix.Implicit(M: TAbstractMatrix): TxMatrix;
+class operator TxMatrix.Implicit(M: T_BigMatrix): TxMatrix;
 begin
   Result.Create(M);
 end;
@@ -779,7 +780,7 @@ end;
 // TxVector
 //-----------------------------
 
-constructor TxVector.Create(V: TAbstractVector);
+constructor TxVector.Create(V: TxBigMatrix);
 begin
   FCount := Length(V);
   FData := Copy(V);
@@ -839,7 +840,7 @@ begin
   Result := V * (1 / Scalar);
 end;
 
-class operator TxVector.Implicit(V: TAbstractVector): TxVector;
+class operator TxVector.Implicit(V: TxBigMatrix): TxVector;
 begin
   Result.Create(V);
 end;
@@ -1100,19 +1101,19 @@ end;
 // TxPoint2D
 //-----------------------------
 
-function TxPoint2D.Create(X, Y : Single): TxPoint2D;
+function TxPoint2D.Create(X, Y : Extended): TxPoint2D;
 begin
   Result.X := X;
   Result.Y := Y;
 end;
 
-procedure TxPoint2D.SetPosition(const X, Y: Single);
+procedure TxPoint2D.SetPosition(const X, Y: Extended);
 begin
   Self.X := X;
   Self.Y := Y;
 end;
 
-function TxPoint2D.Length: Single;
+function TxPoint2D.Length: Extended;
 begin
   Result := Sqrt(Self.X * Self.X + Self.Y * Self.Y);
 end;
@@ -1122,12 +1123,12 @@ begin
   Result.SetPosition(Self.X + APoint2D.X, Self.Y + APoint2D.Y);
 end;
 
-function TxPoint2D.Distance(const APoint2D: TxPoint2D): Single;
+function TxPoint2D.Distance(const APoint2D: TxPoint2D): Extended;
 begin
   Result := Sqrt(Sqr(Self.X - APoint2D.X) +  Sqr(Self.Y - APoint2D.Y));
 end;
 
-procedure TxPoint2D.Offset(const ADeltaX, ADeltaY: Single);
+procedure TxPoint2D.Offset(const ADeltaX, ADeltaY: Extended);
 begin
   Self.X := Self.X + ADeltaX;
   Self.Y := Self.Y + ADeltaY;
@@ -1143,7 +1144,7 @@ end;
 // TxPoint3D
 //-----------------------------
 
-function TxPoint3D.Create(X, Y, Z: Single): TxPoint3D;
+function TxPoint3D.Create(X, Y, Z: Extended): TxPoint3D;
 begin
   Result.X := X;
   Result.Y := Y;
@@ -1157,7 +1158,7 @@ begin
   Result.Z := Self.Z + AGLPoint3D.Z;
 end;
 
-function TxPoint3D.Distance(const APoint3D: TxPoint3D): Single;
+function TxPoint3D.Distance(const APoint3D: TxPoint3D): Extended;
 begin
   Result := Self.Length - APoint3D.Length;
 end;
@@ -1167,14 +1168,14 @@ begin
   Result := Sqrt(Self.X * Self.X + Self.Y * Self.Y + Self.Z * Self.Z);
 end;
 
-procedure TxPoint3D.Offset(const ADeltaX, ADeltaY, ADeltaZ: Single);
+procedure TxPoint3D.Offset(const ADeltaX, ADeltaY, ADeltaZ: Extended);
 begin
   Self.X := Self.X + ADeltaX;
   Self.Y := Self.Y + ADeltaY;
   Self.Z := Self.Z + ADeltaZ;
 end;
 
-procedure TxPoint3D.SetPosition(const X, Y, Z: Single);
+procedure TxPoint3D.SetPosition(const X, Y, Z: Extended);
 begin
   Self.X := X;
   Self.Y := Y;
@@ -1199,7 +1200,7 @@ begin
   Result.W := (Self.X * AVector.Y) - (Self.Y * AVector.X);
 end;
 
-function TxVector2D.DotProduct(const AVector: TxVector2D): Single;
+function TxVector2D.DotProduct(const AVector: TxVector2D): Extended;
 begin
   Result := (Self.X * AVector.X) + (Self.Y * AVector.Y) + (Self.W * AVector.W);
 end;
@@ -1211,12 +1212,12 @@ begin
   Result.W := 1.0;
 end;
 
-function TxVector2D.Length: Single;
+function TxVector2D.Length: Extended;
 begin
   Result := Sqrt((Self.X * Self.X) + (Self.Y * Self.Y));
 end;
 
-function TxVector2D.Norm: Single;
+function TxVector2D.Norm: Extended;
 begin
   Result := Sqr(Self.X) + Sqr(Self.Y);
 end;
@@ -1311,7 +1312,7 @@ begin
   Result := FData[Index];
 end;
 
-class operator TxQuaternion.Implicit(V: TAbstractVector): TxQuaternion;
+class operator TxQuaternion.Implicit(V: TxBigMatrix): TxQuaternion;
 begin
   if (Length(V) <> 4) then
     raise EMathError.Create(sWRONG_SIZE);
@@ -1344,7 +1345,7 @@ begin
   Result := Mat * Q2;
 end;
 
-constructor TxQuaternion.Create(Q: TAbstractVector);
+constructor TxQuaternion.Create(Q: TxBigMatrix);
 begin
   if Length(Q) <> 4 then
     raise EMathError.Create(sWRONG_SIZE);

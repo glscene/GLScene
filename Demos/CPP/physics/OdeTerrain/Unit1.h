@@ -16,7 +16,7 @@
 
 #include "GLS.HeightData.hpp"
 #include "GLS.HUDObjects.hpp"
-#include "GLLensFlare.hpp"
+#include "GLS.LensFlare.hpp"
 #include "GLS.Material.hpp"
 #include "GLS.Navigator.hpp"
 #include "GLS.Objects.hpp"

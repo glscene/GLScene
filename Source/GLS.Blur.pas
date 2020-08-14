@@ -845,7 +845,6 @@ end;
 initialization
 // ------------------------------------------------------------------
 
-     // class registrations
   RegisterClass(TGLBlur);
   RegisterClass(TGLMotionBlur);
 

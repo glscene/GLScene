@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 165
   Top = 146
   Caption = 'Shaded Terrain'
-  ClientHeight = 408
-  ClientWidth = 788
+  ClientHeight = 585
+  ClientWidth = 1024
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,8 +21,8 @@ object Form1: TForm1
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 65
-    Width = 788
-    Height = 343
+    Width = 1024
+    Height = 520
     Camera = GLCamera1
     BeforeRender = GLSceneViewer1BeforeRender
     Buffer.FogEnvironment.FogColor.Color = {0000803F0000803F0000803F0000803F}
@@ -32,7 +32,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = clGray
     Buffer.FogEnable = True
     Buffer.Lighting = False
-    FieldOfView = 147.492416381835900000
+    FieldOfView = 158.228942871093800000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -42,7 +42,7 @@ object Form1: TForm1
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 788
+    Width = 1024
     Height = 65
     Align = alTop
     BevelOuter = bvLowered
@@ -108,6 +108,7 @@ object Form1: TForm1
       TabStop = False
       ThumbLength = 10
       TickMarks = tmBoth
+      OnChange = TBSubSamplingChange
     end
     object TBIntensity: TTrackBar
       Left = 125
@@ -138,7 +139,6 @@ object Form1: TForm1
       TabStop = False
       ThumbLength = 10
       TickMarks = tmBoth
-      OnChange = TBContourIntervalChange
     end
     object TBScaleZ: TTrackBar
       Left = 520
@@ -284,6 +284,7 @@ object Form1: TForm1
         Material.Texture.Compression = tcStandard
         Material.Texture.Disabled = False
         TextureScale.Coordinates = {00000042000000420000004200000000}
+        Texture2Name = 'ground'
       end
       item
         Name = 'texture'
@@ -491,6 +492,7 @@ object Form1: TForm1
         Material.Texture.MappingTCoordinates.Coordinates = {00000000000000000000000000000000}
         Material.Texture.Disabled = False
         TextureOffset.Coordinates = {0000003F000000000000000000000000}
+        Texture2Name = 'contrast'
       end
       item
         Name = 'contrast'
@@ -500,6 +502,7 @@ object Form1: TForm1
         Material.Texture.TextureMode = tmReplace
         Material.Texture.EnvColor.Color = {0000003F0000003F0000003F0000003F}
         Material.Texture.Disabled = False
+        Texture2Name = 'details'
       end>
     Left = 104
     Top = 144

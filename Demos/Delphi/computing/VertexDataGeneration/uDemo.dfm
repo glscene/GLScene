@@ -37,7 +37,7 @@ object Form1: TForm1
     object GLDummyCube1: TGLDummyCube
       CubeSize = 2.000000000000000000
       VisibleAtRunTime = True
-      object GLFeedBackMesh1: TGLFeedBackMesh
+      object GLFeedBackMesh1: TCUDAFeedBackMesh
         Attributes = <
           item
             Name = 'Position'
@@ -75,13 +75,13 @@ object Form1: TForm1
     Left = 24
     Top = 72
   end
-  object GLSCUDADevice1: TGLSCUDADevice
+  object GLSCUDADevice1: TGLCUDADevice
     SelectDevice = 'GeForce GTX 260 (1)'
     Left = 448
     Top = 16
   end
-  object GLSCUDA1: TGLSCUDA
-    ComputingDevice = GLSCUDADevice1
+  object GLSCUDA1: TGLCUDA
+    ComputingDevice = GLCUDADevice1
     OnOpenGLInteropInit = GLSCUDA1OpenGLInteropInit
     Left = 448
     Top = 72
@@ -745,14 +745,14 @@ object Form1: TForm1
         OnParameterSetup = MakeVertexBufferParameterSetup
       end
     end
-    object DotFieldMapper: TCUDAGLGeometryResource
+    object DotFieldMapper: TCUDAGeometryResource
       FeedBackMesh = GLFeedBackMesh1
       Mapping = grmWriteDiscard
       Left = 248
       Top = 264
     end
   end
-  object GLSCUDACompiler1: TGLSCUDACompiler
+  object GLSCUDACompiler1: TGLCUDACompiler
     NVCCPath = 'C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v3.2\bin\'
     CppCompilerPath = 'C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\'
     ProjectModule = 'Simple kernel.cu'

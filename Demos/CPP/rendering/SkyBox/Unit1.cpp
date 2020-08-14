@@ -10,7 +10,7 @@
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Coordinates"
 
-#pragma link "GLLensFlare"
+#pragma link "GLS.LensFlare"
 #pragma link "GLS.Material"
 #pragma link "GLS.Navigator"
 #pragma link "GLS.Objects"

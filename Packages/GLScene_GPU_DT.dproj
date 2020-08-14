@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <ProjectGuid>{AFDCEE2E-E581-458A-A3FE-13C7AC5A6891}</ProjectGuid>
-        <MainSource>GLScene_Parallel_DT.dpk</MainSource>
+        <MainSource>GLScene_GPU_DT.dpk</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <TargetedPlatforms>1</TargetedPlatforms>
@@ -54,7 +54,7 @@
     <PropertyGroup Condition="'$(Base)'!=''">
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <GenPackage>true</GenPackage>
-        <SanitizedProjectName>GLScene_Parallel_DT</SanitizedProjectName>
+        <SanitizedProjectName>GLScene_GPU_DT</SanitizedProjectName>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <DCC_K>false</DCC_K>
         <GenDll>true</GenDll>
@@ -70,7 +70,7 @@
         <DCC_ImageBase>00400000</DCC_ImageBase>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_UsePackage>rtl;vcl;GLScene_Parallel_RT;VclSmp;GLScene_RT;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>rtl;vcl;GLScene_Parallel_RT;VclSmp;GLScene_RT;GLScene_GPU_RT;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_Namespace>Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
         <DCC_DcuOutput>..\lib\$(Platform)</DCC_DcuOutput>
         <DCC_BpiOutput>..\lib\$(Platform)</DCC_BpiOutput>
@@ -80,7 +80,7 @@
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <DCC_Namespace>Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-        <DCC_UsePackage>rtl;vcl;GLScene_Parallel_RT;VclSmp;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>rtl;vcl;GLScene_Parallel_RT;VclSmp;GLScene_GPU_RT;$(DCC_UsePackage)</DCC_UsePackage>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -112,19 +112,20 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="GLSceneParallel.res"/>
+        <DCCReference Include="GLSceneGPU.res"/>
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="designide.dcp"/>
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="VclSmp.dcp"/>
         <DCCReference Include="GLScene_DT.dcp"/>
-        <DCCReference Include="GLScene_Parallel_RT.dcp"/>
+        <DCCReference Include="GLScene_GPU_RT.dcp"/>
         <DCCReference Include="..\Source\FCUDAEditor.pas">
             <Form>GLSCUDAEditorForm</Form>
         </DCCReference>
-        <DCCReference Include="..\Source\GLS.ParallelRegister.pas"/>
-        <RcCompile Include="..\Resources\GLSceneParallel.rc">
-            <Form>GLSceneParallel.res</Form>
+        <DCCReference Include="..\Source\GPU.CUDAPropEditors.pas"/>
+        <DCCReference Include="..\Source\GPU.CUDARegister.pas"/>
+        <RcCompile Include="..\Resources\GLSceneGPU.rc">
+            <Form>GLSceneGPU.res</Form>
         </RcCompile>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
@@ -144,13 +145,13 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">GLScene_Parallel_DT.dpk</Source>
+                    <Source Name="MainSource">GLScene_GPU_DT.dpk</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k270.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp270.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k270.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp270.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k260.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp260.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k260.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp260.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Platforms>
@@ -158,9 +159,9 @@
                 <Platform value="Win64">False</Platform>
             </Platforms>
             <Deployment Version="3">
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\21.0\Bpl\GLScene_Parallel_DT.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\GLScene_GPU_DT.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>GLScene_Parallel_DT.bpl</RemoteName>
+                        <RemoteName>GLScene_GPU_DT.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

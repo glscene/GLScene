@@ -94,8 +94,8 @@ type
     FStepZ: Single;
     VoxelData: PxVoxelData;
     procedure Process_cube;
-    { function test_face(face:byte):Boolean;
-      function test_interior(s:Byte):boolean }
+    (* function test_face(face:byte):Boolean;
+      function test_interior(s:Byte):boolean *)
     procedure Compute_Intersection_Points;
     procedure Add_Triangle(trig: array of Integer; N: Byte; v12: Integer = -1);
     function Add_x_vertex: Integer;
@@ -115,7 +115,7 @@ type
     procedure SetVoxelValue(i, j, k: Integer; HfValue: TxScalarValue);
     function GetVoxelData(i, j, k: Integer): TxVoxel;
     function Voxel(i, j, k: Integer): PxVoxel;
-    function calc_u(v1, v2: Single): Single; virtual;
+    function calc_u(v1, v2: Single): Extended; virtual;
   public
     ScalarField: TxScalarField;
     constructor Create; overload; virtual;
@@ -165,19 +165,19 @@ type
   end;
 
 // Sphere surface
-function SFSphere(X, Y, Z: Single): TxScalarValue;
+function SFSphere(X, Y, Z: Extended): TxScalarValue;
 // Minkowski space (http://mathworld.wolfram.com)
-function SFMinkowski(X, Y, Z: Single): TxScalarValue;
+function SFMinkowski(X, Y, Z: Extended): TxScalarValue;
 // Klein Bottle (http://mathworld.wolfram.com)
-function SFKleinBottle(X, Y, Z: Single): TxScalarValue;
+function SFKleinBottle(X, Y, Z: Extended): TxScalarValue;
 // Chmutov-surface-1 (http://mathworld.wolfram.com)
-function SFChmutov1(X, Y, Z: Single): TxScalarValue;
+function SFChmutov1(X, Y, Z: Extended): TxScalarValue;
 // Chmutov-surface-2 (http://mathworld.wolfram.com)
-function SFChmutov2(X, Y, Z: Single): TxScalarValue;
+function SFChmutov2(X, Y, Z: Extended): TxScalarValue;
 // Toroidal surface (phantasy!)
-function SFToroidal(X, Y, Z: Single): TxScalarValue;
+function SFToroidal(X, Y, Z: Extended): TxScalarValue;
 // Double torus Surface (phantasy!)
-function SFDoubleTorus(X, Y, Z: Single): TxScalarValue;
+function SFDoubleTorus(X, Y, Z: Extended): TxScalarValue;
 
 const
   DemoScalarField: array [0 .. 6] of
@@ -514,12 +514,12 @@ const
     (0, 2, 3, 6), (0, 3, 7, 6), (0, 7, 4, 6), (0, 4, 5, 6));
 
 // Test surface functions
-function SFSphere(X, Y, Z: Single): TxScalarValue;
+function SFSphere(X, Y, Z: Extended): TxScalarValue;
 begin
   Result := sqr(X) + sqr(Y) + sqr(Z)
 end;
 
-function SFToroidal(X, Y, Z: Single): TxScalarValue;
+function SFToroidal(X, Y, Z: Extended): TxScalarValue;
 const
   FScale = 7;
   a = 2.5;
@@ -532,7 +532,7 @@ begin
     (sqr(sqrt(sqr(Z) + sqr(X)) - a) + sqr(Y));
 end;
 
-function SFDoubleTorus(X, Y, Z: Single): TxScalarValue;
+function SFDoubleTorus(X, Y, Z: Extended): TxScalarValue;
 const
   FScale = 2.25;
 begin
@@ -544,7 +544,7 @@ begin
     PowerInteger(Y, 4) + sqr(Z)
 end;
 
-function SFChmutov1(X, Y, Z: Single): TxScalarValue;
+function SFChmutov1(X, Y, Z: Extended): TxScalarValue;
 const
   FScale = 2.5;
 begin
@@ -555,7 +555,7 @@ begin
     (PowerInteger(X, 4) + PowerInteger(Y, 4) + PowerInteger(Z, 4));
 end;
 
-function SFChmutov2(X, Y, Z: Single): TxScalarValue;
+function SFChmutov2(X, Y, Z: Extended): TxScalarValue;
 const
   FScale = 2.5;
 begin
@@ -566,7 +566,7 @@ begin
     sqr(Z) * sqr(3 - 4 * sqr(Z)));
 end;
 
-function SFKleinBottle(X, Y, Z: Single): TxScalarValue;
+function SFKleinBottle(X, Y, Z: Extended): TxScalarValue;
 const
   FScale = 7.5;
 begin
@@ -578,7 +578,7 @@ begin
     (sqr(X) + sqr(Y) + sqr(Z) - 2 * Y - 1);
 end;
 
-function SFMinkowski(X, Y, Z: Single): TxScalarValue;
+function SFMinkowski(X, Y, Z: Extended): TxScalarValue;
 const
   FScale = 7;
 begin
@@ -990,7 +990,7 @@ begin
   end
 end;
 
-function TGLMarchingCube.calc_u(v1, v2: Single): Single;
+function TGLMarchingCube.calc_u(v1, v2: Single): Extended;
 begin
   if (abs(FIsoValue - v1) >= 0.00001) then
     Result := 1

@@ -1,7 +1,7 @@
-package GLScene_Parallel_DT;
+package GLScene_GPU_DT;
 
 {$R *.res}
-{$R 'GLSceneParallel.res'}
+{$R 'GLSceneGPU.res'}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
 {$ALIGN 8}
 {$ASSERTIONS ON}
@@ -36,10 +36,11 @@ requires
   vcl,
   VclSmp,
   GLScene_DT,
-  GLScene_Parallel_RT;
+  GLScene_GPU_RT;
 
 contains
   FCUDAEditor in '..\Source\FCUDAEditor.pas' {GLSCUDAEditorForm},
-  GLS.ParallelRegister in '..\Source\GLS.ParallelRegister.pas';
+  GPU.CUDAPropEditors in '..\Source\GPU.CUDAPropEditors.pas',
+  GPU.CUDARegister in '..\Source\GPU.CUDARegister.pas';
 
 end.

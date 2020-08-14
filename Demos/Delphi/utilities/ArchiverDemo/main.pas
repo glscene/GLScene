@@ -64,11 +64,8 @@ begin
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
-var
-  FileName: TFileName;
 begin
-  ///SetGLSceneMediaDir();
-  FileName := GetSceneMediaPath();
+  SetGLSceneMediaDir();
   GLMaterialLibrary1.TexturePaths := GetCurrentDir();
   with GLSArchiveManager1.Archives[0] do
   begin

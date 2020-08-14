@@ -33,6 +33,7 @@ uses
   GLS.VectorTypes,
   GLS.GeometryBB,
   GLS.VectorFileObjects,
+  GLS.PipelineTransformation,
 
   GLS.Context,
   GLS.Objects,
@@ -164,20 +165,20 @@ type
       default [coSides, coBottom];
   end;
 
-  TCylinderPart = (cySides, cyBottom, cyTop);
-  TCylinderParts = set of TCylinderPart;
-  TCylinderAlignment = (caCenter, caTop, caBottom);
+  TGLCylinderPart = (cySides, cyBottom, cyTop);
+  TGLCylinderParts = set of TGLCylinderPart;
+  TGLCylinderAlignment = (caCenter, caTop, caBottom);
 
   //  Cylinder object, can also be used to make truncated cones
   TGLCylinder = class(TGLCylinderBase)
   private
-    FParts: TCylinderParts;
+    FParts: TGLCylinderParts;
     FTopRadius: Single;
-    FAlignment: TCylinderAlignment;
+    FAlignment: TGLCylinderAlignment;
   protected
     procedure SetTopRadius(const aValue: Single);
-    procedure SetParts(aValue: TCylinderParts);
-    procedure SetAlignment(val: TCylinderAlignment);
+    procedure SetParts(aValue: TGLCylinderParts);
+    procedure SetAlignment(val: TGLCylinderAlignment);
     function GetTopRadius: Single; override;
   public
     constructor Create(AOwner: TComponent); override;
@@ -192,28 +193,28 @@ type
     procedure Align(const startPoint, endPoint: TAffineVector); overload;
   published
     property TopRadius: Single read FTopRadius write SetTopRadius;
-    property Parts: TCylinderParts read FParts write SetParts
+    property Parts: TGLCylinderParts read FParts write SetParts
       default [cySides, cyBottom, cyTop];
-    property Alignment: TCylinderAlignment read FAlignment write SetAlignment
+    property Alignment: TGLCylinderAlignment read FAlignment write SetAlignment
       default caCenter;
   end;
 
   //  Capsule object, can also be used to make truncated cones 
   TGLCapsule = class(TGLSceneObject)
   private
-    FParts: TCylinderParts;
+    FParts: TGLCylinderParts;
     FRadius: Single;
     FSlices: Integer;
     FStacks: Integer;
     FHeight: Single;
-    FAlignment: TCylinderAlignment;
+    FAlignment: TGLCylinderAlignment;
   protected
     procedure SetHeight(const aValue: Single);
     procedure SetRadius(const aValue: Single);
     procedure SetSlices(const aValue: integer);
     procedure SetStacks(const aValue: integer);
-    procedure SetParts(aValue: TCylinderParts);
-    procedure SetAlignment(val: TCylinderAlignment);
+    procedure SetParts(aValue: TGLCylinderParts);
+    procedure SetAlignment(val: TGLCylinderAlignment);
   public
     constructor Create(AOwner: TComponent); override;
     procedure Assign(Source: TPersistent); override;
@@ -230,19 +231,19 @@ type
     property Slices: Integer read FSlices write SetSlices;
     property Stacks: Integer read FStacks write SetStacks;
     property Radius: Single read FRadius write SetRadius;
-    property Parts: TCylinderParts read FParts write SetParts
+    property Parts: TGLCylinderParts read FParts write SetParts
       default [cySides, cyBottom, cyTop];
-    property Alignment: TCylinderAlignment read FAlignment write SetAlignment
+    property Alignment: TGLCylinderAlignment read FAlignment write SetAlignment
       default caCenter;
   end;
 
-  TAnnulusPart = (anInnerSides, anOuterSides, anBottom, anTop);
-  TAnnulusParts = set of TAnnulusPart;
+  TGLAnnulusPart = (anInnerSides, anOuterSides, anBottom, anTop);
+  TGLAnnulusParts = set of TGLAnnulusPart;
 
   //  An annulus is a cylinder that can be made hollow (pipe-like) 
   TGLAnnulus = class(TGLCylinderBase)
   private
-    FParts: TAnnulusParts;
+    FParts: TGLAnnulusParts;
     FBottomInnerRadius: Single;
     FTopInnerRadius: Single;
     FTopRadius: Single;
@@ -250,7 +251,7 @@ type
     procedure SetTopRadius(const aValue: Single);
     procedure SetTopInnerRadius(const aValue: Single);
     procedure SetBottomInnerRadius(const aValue: Single);
-    procedure SetParts(aValue: TAnnulusParts);
+    procedure SetParts(aValue: TGLAnnulusParts);
   public
     constructor Create(AOwner: TComponent); override;
     procedure Assign(Source: TPersistent); override;
@@ -265,21 +266,21 @@ type
     property TopInnerRadius: Single read FTopInnerRadius
       write SetTopInnerRadius;
     property TopRadius: Single read FTopRadius write SetTopRadius;
-    property Parts: TAnnulusParts read FParts write SetParts
+    property Parts: TGLAnnulusParts read FParts write SetParts
       default [anInnerSides, anOuterSides, anBottom, anTop];
   end;
 
-  TTorusPart = (toSides, toStartDisk, toStopDisk);
-  TTorusParts = set of TTorusPart;
+  TGLTorusPart = (toSides, toStartDisk, toStopDisk);
+  TGLTorusParts = set of TGLTorusPart;
 
   //  A Torus object 
   TGLTorus = class(TGLSceneObject)
   private
-    FParts: TTorusParts;
+    FParts: TGLTorusParts;
     FRings, FSides: Cardinal;
     FStartAngle, FStopAngle: Single;
     FMinorRadius, FMajorRadius: Single;
-    FMesh: array of array of TVertexRec;
+    FMesh: array of array of TGLVertexRec;
   protected
     procedure SetMajorRadius(const aValue: Single);
     procedure SetMinorRadius(const aValue: Single);
@@ -287,7 +288,7 @@ type
     procedure SetSides(aValue: Cardinal);
     procedure SetStartAngle(const aValue: Single);
     procedure SetStopAngle(const aValue: Single);
-    procedure SetParts(aValue: TTorusParts);
+    procedure SetParts(aValue: TGLTorusParts);
   public
     constructor Create(AOwner: TComponent); override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
@@ -301,11 +302,11 @@ type
     property Sides: Cardinal read FSides write SetSides default 15;
     property StartAngle: Single read FStartAngle write SetStartAngle;
     property StopAngle: Single read FStopAngle write SetStopAngle;
-    property Parts: TTorusParts read FParts write SetParts default [toSides];
+    property Parts: TGLTorusParts read FParts write SetParts default [toSides];
   end;
 
-  TArrowLinePart = (alLine, alTopArrow, alBottomArrow);
-  TArrowLineParts = set of TArrowLinePart;
+  TGLArrowLinePart = (alLine, alTopArrow, alBottomArrow);
+  TGLArrowLineParts = set of TGLArrowLinePart;
 
   TGLArrowHeadStyle = (ahssStacked, ahssCentered, ahssIncluded);
 
@@ -317,7 +318,7 @@ type
     By default the bottom arrow is off *)
   TGLArrowLine = class(TGLCylinderBase)
   private
-    FParts: TArrowLineParts;
+    FParts: TGLArrowLineParts;
     FTopRadius: Single;
     fTopArrowHeadHeight: Single;
     fTopArrowHeadRadius: Single;
@@ -330,7 +331,7 @@ type
     procedure SetTopArrowHeadRadius(const aValue: Single);
     procedure SetBottomArrowHeadHeight(const aValue: Single);
     procedure SetBottomArrowHeadRadius(const aValue: Single);
-    procedure SetParts(aValue: TArrowLineParts);
+    procedure SetParts(aValue: TGLArrowLineParts);
     procedure SetHeadStackingStyle(const val: TGLArrowHeadStyle);
   public
     constructor Create(AOwner: TComponent); override;
@@ -340,7 +341,7 @@ type
     property TopRadius: Single read FTopRadius write SetTopRadius;
     property HeadStackingStyle: TGLArrowHeadStyle read FHeadStackingStyle
       write SetHeadStackingStyle default ahssStacked;
-    property Parts: TArrowLineParts read FParts write SetParts
+    property Parts: TGLArrowLineParts read FParts write SetParts
       default [alLine, alTopArrow];
     property TopArrowHeadHeight: Single read fTopArrowHeadHeight
       write SetTopArrowHeadHeight;
@@ -373,7 +374,7 @@ type
     fBottomArrowHeadHeight: Single;
     fBottomArrowHeadRadius: Single;
     FHeadStackingStyle: TGLArrowHeadStyle;
-    FMesh: array of array of TVertexRec;
+    FMesh: array of array of TGLVertexRec;
   protected
     procedure SetArcRadius(const aValue: Single);
     procedure SetStartAngle(const aValue: Single);
@@ -408,8 +409,8 @@ type
       write SetBottomArrowHeadRadius;
   end;
 
-  TPolygonPart = (ppTop, ppBottom);
-  TGLPolygonParts = set of TPolygonPart;
+  TGLPolygonPart = (ppTop, ppBottom);
+  TGLPolygonParts = set of TGLPolygonPart;
 
   (* A basic polygon object.
     The curve is described by the Nodes and SplineMode properties, should be
@@ -434,8 +435,8 @@ type
     property Parts: TGLPolygonParts read FParts write SetParts default [ppTop, ppBottom];
   end;
 
-  TFrustrumPart = (fpTop, fpBottom, fpFront, fpBack, fpLeft, fpRight);
-  TFrustrumParts = set of TFrustrumPart;
+  TGLFrustrumPart = (fpTop, fpBottom, fpFront, fpBack, fpLeft, fpRight);
+  TGLFrustrumParts = set of TGLFrustrumPart;
 
 const
   cAllFrustrumParts = [fpTop, fpBottom, fpFront, fpBack, fpLeft, fpRight];
@@ -449,13 +450,13 @@ type
   TGLFrustrum = class(TGLSceneObject)
   private
     FApexHeight, FBaseDepth, FBaseWidth, FHeight: Single;
-    FParts: TFrustrumParts;
+    FParts: TGLFrustrumParts;
     FNormalDirection: TGLNormalDirection;
     procedure SetApexHeight(const aValue: Single);
     procedure SetBaseDepth(const aValue: Single);
     procedure SetBaseWidth(const aValue: Single);
     procedure SetHeight(const aValue: Single);
-    procedure SetParts(aValue: TFrustrumParts);
+    procedure SetParts(aValue: TGLFrustrumParts);
     procedure SetNormalDirection(aValue: TGLNormalDirection);
   protected
     procedure DefineProperties(Filer: TFiler); override;
@@ -476,7 +477,7 @@ type
     property Height: Single read FHeight write SetHeight stored False;
     property NormalDirection: TGLNormalDirection read FNormalDirection
       write SetNormalDirection default ndOutside;
-    property Parts: TFrustrumParts read FParts write SetParts default cAllFrustrumParts;
+    property Parts: TGLFrustrumParts read FParts write SetParts default cAllFrustrumParts;
   end;
 
 //--------------------- TGLTeapot -------------------------
@@ -927,11 +928,10 @@ begin
   inherited Assign(Source);
 end;
 
-
 function TGLCylinderBase.GenerateSilhouette(const silhouetteParameters
   : TGLSilhouetteParameters): TGLSilhouette;
 var
-  connectivity: TConnectivity;
+  Connectivity: TGLConnectivity;
   sil: TGLSilhouette;
   ShadowSlices: integer;
   i: integer;
@@ -943,7 +943,7 @@ var
   HalfHeight: Single;
   ShadowTopRadius: Single;
 begin
-  connectivity := TConnectivity.Create(true);
+  Connectivity := TGLConnectivity.Create(true);
   ShadowSlices := FSlices div 1;
   if FSlices < 5 then
     FSlices := 5;
@@ -974,17 +974,17 @@ begin
     // This should be optimized to use AddIndexedFace, because this method
     // searches for each of the vertices and adds them or re-uses them.
     // Skin
-    connectivity.AddFace(p[2], p[1], p[0]);
-    connectivity.AddFace(p[3], p[2], p[0]);
+    Connectivity.AddFace(p[2], p[1], p[0]);
+    Connectivity.AddFace(p[3], p[2], p[0]);
     // Sides / caps
-    connectivity.AddFace(c1, p[0], p[1]);
-    connectivity.AddFace(p[2], p[3], c2);
+    Connectivity.AddFace(c1, p[0], p[1]);
+    Connectivity.AddFace(p[2], p[3], c2);
     a1 := a1 + PiDivSlices;
   end;
   sil := nil;
-  connectivity.CreateSilhouette(silhouetteParameters, sil, False);
+  Connectivity.CreateSilhouette(silhouetteParameters, sil, False);
   Result := sil;
-  connectivity.Free;
+  Connectivity.Free;
 end;
 
 // ------------------
@@ -1180,7 +1180,7 @@ begin
   Result := FTopRadius;
 end;
 
-procedure TGLCylinder.SetParts(aValue: TCylinderParts);
+procedure TGLCylinder.SetParts(aValue: TGLCylinderParts);
 begin
   if aValue <> FParts then
   begin
@@ -1189,7 +1189,7 @@ begin
   end;
 end;
 
-procedure TGLCylinder.SetAlignment(val: TCylinderAlignment);
+procedure TGLCylinder.SetAlignment(val: TGLCylinderAlignment);
 begin
   if val <> FAlignment then
   begin
@@ -1537,7 +1537,7 @@ begin
   end;
 end;
 
-procedure TGLCapsule.SetParts(aValue: TCylinderParts);
+procedure TGLCapsule.SetParts(aValue: TGLCylinderParts);
 begin
   if aValue <> FParts then
   begin
@@ -1546,7 +1546,7 @@ begin
   end;
 end;
 
-procedure TGLCapsule.SetAlignment(val: TCylinderAlignment);
+procedure TGLCapsule.SetAlignment(val: TGLCylinderAlignment);
 begin
   if val <> FAlignment then
   begin
@@ -1760,7 +1760,7 @@ begin
   end;
 end;
 
-procedure TGLAnnulus.SetParts(aValue: TAnnulusParts);
+procedure TGLAnnulus.SetParts(aValue: TGLAnnulusParts);
 begin
   if aValue <> FParts then
   begin
@@ -2015,7 +2015,7 @@ end;
 
 procedure TGLTorus.BuildList(var rci: TGLRenderContextInfo);
 
-  procedure EmitVertex(ptr: PVertexRec; L1, L2: integer);
+  procedure EmitVertex(ptr: PGLVertexRec; L1, L2: integer);
   begin
     XGL.TexCoord2fv(@ptr^.TexCoord);
     begin
@@ -2035,11 +2035,11 @@ var
   ringDelta, sideDelta: Single;
   ringDir: TAffineVector;
   iFact, jFact: Single;
-  pVertex: PVertexRec;
+  pVertex: PGLVertexRec;
   TanLoc, BinLoc: Integer;
   MeshSize: integer;
   MeshIndex: integer;
-  Vertex: TVertexRec;
+  Vertex: TGLVertexRec;
 begin
   if FMesh = nil then
   begin
@@ -2307,7 +2307,7 @@ begin
   end;
 end;
 
-procedure TGLTorus.SetParts(aValue: TTorusParts);
+procedure TGLTorus.SetParts(aValue: TGLTorusParts);
 begin
   if aValue <> FParts then
   begin
@@ -2449,7 +2449,7 @@ begin
   end;
 end;
 
-procedure TGLArrowLine.SetParts(aValue: TArrowLineParts);
+procedure TGLArrowLine.SetParts(aValue: TGLArrowLineParts);
 begin
   if aValue <> FParts then
   begin
@@ -2684,7 +2684,7 @@ begin
 end;
 
 procedure TGLArrowArc.BuildList(var rci: TGLRenderContextInfo);
-  procedure EmitVertex(ptr: PVertexRec; L1, L2: integer);
+  procedure EmitVertex(ptr: PGLVertexRec; L1, L2: integer);
   begin
     XGL.TexCoord2fv(@ptr^.TexCoord);
     gl.Normal3fv(@ptr^.Normal);
@@ -2702,11 +2702,11 @@ var
   ringDelta, sideDelta: Single;
   ringDir: TAffineVector;
   iFact, jFact: Single;
-  pVertex: PVertexRec;
+  pVertex: PGLVertexRec;
   TanLoc, BinLoc: Integer;
   MeshSize: integer;
   MeshIndex: integer;
-  ConeCenter: TVertexRec;
+  ConeCenter: TGLVertexRec;
   StartOffset, StopOffset: Single;
 begin
   if FMesh = nil then
@@ -3295,7 +3295,7 @@ begin
   end;
 end;
 
-procedure TGLFrustrum.SetParts(aValue: TFrustrumParts);
+procedure TGLFrustrum.SetParts(aValue: TGLFrustrumParts);
 begin
   if aValue <> FParts then
   begin

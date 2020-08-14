@@ -40,8 +40,7 @@ const
 
 type
   TGetTerrainBoundsEvent = procedure(var l, t, r, b: Single) of object;
-  TPatchPostRenderEvent = procedure(var rci: TGLRenderContextInfo;
-    const patches: TList) of object;
+  TPatchPostRenderEvent = procedure(var rci: TGLRenderContextInfo; const patches: TList) of object;
   TGLHeightDataPostRenderEvent = procedure(var rci: TGLRenderContextInfo;
     var HeightDatas: TList) of object;
   TMaxCLODTrianglesReachedEvent = procedure(var rci: TGLRenderContextInfo)
@@ -87,8 +86,8 @@ type
     procedure MarkAllTilesAsUnused;
     procedure ReleaseAllUnusedTiles;
     procedure MarkHashedTileAsUsed(const tilePos: TAffineVector);
-    function HashedTile(const tilePos: TAffineVector;
-      canAllocate: Boolean = True): TGLHeightData; overload;
+    function HashedTile(const tilePos: TAffineVector; canAllocate: Boolean = True)
+	  : TGLHeightData; overload;
     function HashedTile(const xLeft, yTop: Integer; canAllocate: Boolean = True)
       : TGLHeightData; overload;
     procedure SetHeightDataSource(const val: TGLHeightDataSource);
@@ -127,21 +126,18 @@ type
     //  Size of the terrain tiles. Must be a power of two.
     property TileSize: Integer read FTileSize write SetTileSize default 16;
     // Number of tiles required for a full texture map.
-    property TilesPerTexture: Single read FTilesPerTexture
-      write SetTilesPerTexture;
+    property TilesPerTexture: Single read FTilesPerTexture write SetTilesPerTexture;
     (* Link to the material library holding terrain materials.
       If unspecified, and for all terrain tiles with unspecified material,
       the terrain renderer's material is used. *)
-    property MaterialLibrary: TGLMaterialLibrary read FMaterialLibrary
-      write SetMaterialLibrary;
+    property MaterialLibrary: TGLMaterialLibrary read FMaterialLibrary write SetMaterialLibrary;
     (* Quality distance hint.
       This parameter gives an hint to the terrain renderer at which distance
       the terrain quality can be degraded to favor speed. The distance is
       expressed in absolute coordinates units.
       All tiles closer than this distance are rendered according to
       QualityStyle and with a static resolution. *)
-    property QualityDistance: Single read FQualityDistance
-      write FQualityDistance;
+    property QualityDistance: Single read FQualityDistance write FQualityDistance;
     (* Determines how high-res tiles (closer than QualityDistance) are rendered.
       hrsFullGeometry (default value) means that the high-res tiles are rendered
       with full-geometry, and no LOD of any kind, while hrsTesselated means
@@ -159,8 +155,7 @@ type
       The lower the value, the higher the precision and triangle count.
       Large values will result in coarse terrain.
       high-resolution tiles (closer than QualityDistance) ignore this setting. *)
-    property CLODPrecision: Integer read FCLODPrecision write SetCLODPrecision
-      default 100;
+    property CLODPrecision: Integer read FCLODPrecision write SetCLODPrecision default 100;
     (* Numbers of frames to skip for a tile when occlusion testing found it invisible.
       Occlusion testing can help reduce CPU, T&L and fillrate requirements
       when tiles are occluded, either by the terrain itself (tiles behind
@@ -187,8 +182,7 @@ type
       (this will mean increasing your triangle count though, so you'll
       trade CPU power against T&L power). *)
     property OcclusionTesselate: TTerrainOcclusionTesselate
-      read FOcclusionTesselate write FOcclusionTesselate
-      default totTesselateIfVisible;
+      read FOcclusionTesselate write FOcclusionTesselate default totTesselateIfVisible;
     (* Allows to specify terrain bounds.
       Default rendering bounds will reach depth of view in all direction,
       with this event you can chose to specify a smaller rendered terrain area *)
@@ -1064,7 +1058,6 @@ end;
 initialization
 // ------------------------------------------------------------------
 
-// class registrations
 RegisterClass(TGLTerrainRenderer);
 
 end.

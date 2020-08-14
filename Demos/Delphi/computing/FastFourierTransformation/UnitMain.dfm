@@ -207,7 +207,7 @@ object Form1: TForm1
       Height = 257
     end
   end
-  object GLSCUDA1: TGLSCUDA
+  object GLSCUDA1: TGLCUDA
     Left = 24
     Top = 104
     object Signal1D: TCUDAMemData
@@ -242,7 +242,7 @@ object Form1: TForm1
       Transform = fftDoubleComplexToDoubleComplex
     end
   end
-  object GLSCUDADevice1: TGLSCUDADevice
+  object GLSCUDADevice1: TGLCUDADevice
     SelectDevice = 'GeForce GT 630M (1)'
     Left = 24
     Top = 56

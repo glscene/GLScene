@@ -33,7 +33,7 @@ uses
   GLS.Sound,
   GLSM.BASS,
   GLS.VectorGeometry,
-  GLLensFlare,
+  GLS.LensFlare,
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,

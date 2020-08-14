@@ -35,14 +35,14 @@ object Form1: TForm1
     ScrollBars = ssVertical
     TabOrder = 1
   end
-  object GLSCUDACompiler1: TGLSCUDACompiler
+  object GLSCUDACompiler1: TGLCUDACompiler
     NVCCPath = 'C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v3.2\\bin\'
     CppCompilerPath = 'C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\'
     ProjectModule = 'simpleTexture_kernel.cu'
     Left = 80
     Top = 256
   end
-  object GLSCUDA1: TGLSCUDA
+  object GLSCUDA1: TGLCUDA
     ComputingDevice = GLSCUDADevice1
     Left = 48
     Top = 256
@@ -1154,7 +1154,7 @@ object Form1: TForm1
       ChannelsType = ctFloat
     end
   end
-  object GLSCUDADevice1: TGLSCUDADevice
+  object GLSCUDADevice1: TGLCUDADevice
     SelectDevice = 'GeForce GTX 260 (1)'
     Left = 16
     Top = 256

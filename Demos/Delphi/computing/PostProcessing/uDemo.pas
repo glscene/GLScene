@@ -28,10 +28,10 @@ uses
   GLS.FBORenderer,
   GLS.HUDObjects,
 
-  GLS.CUDA,
-  GLS.CUDAGraphics,
-  GLS.CUDACompiler,
-  GLS.CUDAContext,
+  GPU.CUDA,
+  GPU.CUDAGraphics,
+  GPU.CUDACompiler,
+  GPU.CUDAContext,
 
   GLS.State,
   GLS.RenderContextInfo,
@@ -53,9 +53,9 @@ type
     RenderRoot: TGLDummyCube;
     GLCylinder1: TGLCylinder;
     RenderToTexture: TGLFBORenderer;
-    GLSCUDADevice1: TGLSCUDADevice;
-    GLSCUDA1: TGLSCUDA;
-    GLSCUDACompiler1: TGLSCUDACompiler;
+    GLSCUDADevice1: TGLCUDADevice;
+    GLSCUDA1: TGLCUDA;
+    GLSCUDACompiler1: TGLCUDACompiler;
     MainModule: TCUDAModule;
     processedTextureMapper: TCUDAImageResource;
     CallPostProcess: TGLDirectOpenGL;

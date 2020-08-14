@@ -20,13 +20,13 @@ uses
   GLS.Utils,
   GLS.FilePGM,
   GLS.Graphics,
-  GLS.CUDAUtility,
-  GLS.CUDADataAccess,
+  GPU.CUDAUtility,
+  GPU.CUDADataAccess,
   GLS.VectorTypes,
   CPUFFT,
-  GLS.CUDAFFTPlan,
-  GLS.CUDA,
-  GLS.CUDAContext;
+  GPU.CUDAFFTPlan,
+  GPU.CUDA,
+  GPU.CUDAContext;
 
 type
   TDemoMode = (dmNone, dm1D, dm2D, dmLena);
@@ -51,8 +51,8 @@ type
     Label2: TLabel;
     Image2: TImage;
     Image1: TImage;
-    GLSCUDA1: TGLSCUDA;
-    GLSCUDADevice1: TGLSCUDADevice;
+    GLSCUDA1: TGLCUDA;
+    GLSCUDADevice1: TGLCUDADevice;
     Signal1D: TCUDAMemData;
     FFTPlan1D: TCUDAFFTPlan;
     ESize: TLabeledEdit;

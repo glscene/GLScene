@@ -29,7 +29,7 @@ uses
   GLS.SkyDome,
   GLS.SceneViewer,
   GLS.VectorGeometry,
-  GLLensFlare,
+  GLS.LensFlare,
   Physics.ODEManager,
   GLS.Navigator,
   GLS.GeomObjects,

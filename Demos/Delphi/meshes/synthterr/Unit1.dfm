@@ -88,4 +88,16 @@ object Form1: TForm1
     Left = 152
     Top = 88
   end
+  object GLShadowHDS: TGLShadowHDS
+    MaxPoolSize = 0
+    Active = True
+    ShadowmapLibrary = GLMaterialLibrary1
+    ScanDistance = 64
+    SoftRange = 1
+    Diffuse = 0.750000000000000000
+    Ambient = 0.250000000000000000
+    MaxTextures = 0
+    Left = 256
+    Top = 88
+  end
 end

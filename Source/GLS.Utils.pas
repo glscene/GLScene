@@ -111,8 +111,6 @@ function SavePictureDialog(var aFileName: string; const aTitle: string = ''): Bo
 function OpenPictureDialog(var aFileName: string; const aTitle: string = ''): Boolean;
 
 procedure SetGLSceneMediaDir();
-function GetSceneMediaPath(): TFileName;
-
 
 //------------------ from CrossPlatform -----------------------
 
@@ -621,24 +619,10 @@ begin
    path := ParamStr(0);
    path := LowerCase(ExtractFilePath(path));
    p := Pos('demos', path);
-   Delete(path, p+6, Length(path));
+   Delete(path, p+5, Length(path));
    path := IncludeTrailingPathDelimiter(path) + 'media';
    SetCurrentDir(path);
 end;
-
-function GetSceneMediaPath: TFileName;
-var
-  path: String;
-  p: Integer;
-begin
-   path := ParamStr(0);
-   path := LowerCase(ExtractFilePath(path));
-   p := Pos('demos', path);
-   Delete(path, p+6, Length(path));
-   Result := IncludeTrailingPathDelimiter(path) + 'media';
-   SetCurrentDir(Result);
-end;
-
 
 //------------ from CrossPfatform -------------------
 

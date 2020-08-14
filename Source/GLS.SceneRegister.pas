@@ -1320,16 +1320,16 @@ end;
 // ******************************************************
 // Register Properties
 //*******************************************************
-procedure RegisterPropertiesInCategories;
+procedure GLSceneRegisterPropertiesInCategories;
 begin
   // property types
   // ScreenDepth in Win32FullScreenViewer
   RegisterPropertiesInCategory(strOpenGLCategoryName,
      [TypeInfo(TGLCamera), TypeInfo(TGLSceneBuffer),
      TypeInfo(TGLVSyncMode), TypeInfo(TGLScreenDepth)]);
-  // SceneViewer
+  // TGLSceneViewer
   RegisterPropertiesInCategory(strOpenGLCategoryName, TGLSceneViewer, ['*Render']);
-  // Scene
+  // GLScene
   RegisterPropertiesInCategory(strOpenGLCategoryName,
     [TypeInfo(TGLObjectsSorting), TypeInfo(TGLProgressEvent),
     TypeInfo(TGLBehaviours), TypeInfo(TGLEffects),
@@ -1350,11 +1350,11 @@ begin
   RegisterPropertiesInCategory(strVisualCategoryName, TGLCamera, ['DepthOfView', 'SceneScale']);
   RegisterPropertiesInCategory(strOpenGLCategoryName, TGLNonVisualViewer, ['*Render']);
 
-  // Objects
+  // GLObjects
   RegisterPropertiesInCategory(strOpenGLCategoryName,
     [TypeInfo(TGLLinesNodes), TypeInfo(TGLLineNodesAspect),
     TypeInfo(TGLLineSplineMode), TypeInfo(TGLLinesOptions)]);
-  // DummyCube
+  // GLDummyCube
   RegisterPropertiesInCategory(strLayoutCategoryName, TGLDummyCube, ['VisibleAtRunTime']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLDummyCube, ['CubeSize', 'VisibleAtRunTime']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLPlane, ['*Offset', '*Tiles']);
@@ -1366,7 +1366,7 @@ begin
     ['Antialiased', 'Division', 'Line*', 'NodeSize']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLCube, ['Cube*']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLFrustrum, ['ApexHeight', 'Base*']);
-  // SpaceText
+  // GLSpaceText
   RegisterPropertiesInCategory(strLayoutCategoryName, [TypeInfo(TGLTextAdjust)]);
   RegisterPropertiesInCategory(strLocalizableCategoryName, [TypeInfo(TGLSpaceTextCharRange)]);
   RegisterPropertiesInCategory(strVisualCategoryName, [TypeInfo(TGLLineSplineMode),
@@ -1392,18 +1392,18 @@ begin
     ['Bottom*', 'Loops', 'Slices', 'Stacks', 'Top*']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLPolygon, ['Division']);
 
-  // MultiPolygon
+  // GLMultiPolygon
   RegisterPropertiesInCategory(strVisualCategoryName, TGLContour, ['Division']);
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLContourNodes), TypeInfo(TGLContours)]);
 
-  // Extrusion
+  // GLExtrusion
   RegisterPropertiesInCategory(strVisualCategoryName, TGLExtrusionSolid, ['Stacks']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLPipeNode, ['RadiusFactor']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLPipe, ['Division', 'Radius', 'Slices']);
   RegisterPropertiesInCategory(strVisualCategoryName, [TypeInfo(TGLNodes), TypeInfo(TPipeNodesColorMode)]);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLRevolutionSolid, ['Division', 'Slices', 'YOffsetPerTurn']);
 
-  // VectorFileObjects
+  // GLVectorFileObjects
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLActorAnimationMode), TypeInfo(TGLActorAnimations),
     TypeInfo(TGLMeshAutoCenterings), TypeInfo(TGLActorFrameInterpolation),
     TypeInfo(TGLActorAnimationReference), TypeInfo(TGLActor)]);
@@ -1418,21 +1418,21 @@ begin
     ['*Frame*', 'Interval', 'OverlaySkeleton', 'UseMeshmaterials']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLActor,  ['OverlaySkeleton']);
 
-  // Mesh
+  // GLMesh 
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLMeshMode), TypeInfo(TGLVertexMode)]);
 
-  // Graph
+  // GLGraph 
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLHeightFieldOptions)]);
   RegisterPropertiesInCategory(strVisualCategoryName, [TypeInfo(TGLHeightFieldColorMode), TypeInfo(TGLSamplingScale),
     TypeInfo(TGLXYZGridLinesStyle), TypeInfo(TGLXYZGridParts)]);
   RegisterPropertiesInCategory(strOpenGLCategoryName, TGLXYZGrid, ['Antialiased']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLXYZGrid, ['Antialiased', 'Line*']);
 
-  // Particles
+  // GLParticles
   RegisterPropertiesInCategory(strLayoutCategoryName, TGLParticles, ['VisibleAtRunTime']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLParticles, ['*Size', 'VisibleAtRunTime']);
 
-  // Skydome
+  // GLSkydome
   RegisterPropertiesInCategory(strOpenGLCategoryName,
     [TypeInfo(TGLSkyDomeBands), TypeInfo(TGLSkyDomeOptions), TypeInfo(TGLSkyDomeStars)]);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLSkyDomeBand, ['Slices', 'Stacks', '*Angle']);
@@ -1440,11 +1440,11 @@ begin
   RegisterPropertiesInCategory(strOpenGLCategoryName, TGLEarthSkyDome,
     ['Slices', 'Stacks', 'SunElevation', 'Turbidity']);
 
-  // Mirror
+  // GLMirror
   RegisterPropertiesInCategory(strOpenGLCategoryName,
     [TypeInfo(TGLMirrorOptions), TypeInfo(TGLBaseSceneObject)]);
 
-  // ParticleFX
+  // GLParticleFX 
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLBlendingMode)]);
   RegisterPropertiesInCategory(strVisualCategoryName,
     [TypeInfo(TGLBlendingMode), TypeInfo(TPFXLifeColors), TypeInfo(TSpriteColorMode)]);
@@ -1456,48 +1456,48 @@ begin
   RegisterPropertiesInCategory(strVisualCategoryName, TGLPolygonPFXManager, ['NbSides']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLPointLightPFXManager, ['TexMapSize']);
 
-  // TerrainRenderer
+  // GLTerrainRenderer 
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLHeightDataSource)]);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLTerrainRenderer, ['*CLOD*', 'QualityDistance', 'Tile*']);
 
-  // zBuffer
+  // GLzBuffer 
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLMemoryViewer),
     TypeInfo(TGLSceneViewer), TypeInfo(TOptimise)]);
   RegisterPropertiesInCategory(strVisualCategoryName, [TypeInfo(TOptimise)]);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLZShadows, ['DepthFade', '*Shadow', 'Soft', 'Tolerance']);
 
-  // HUDObjects
+  // GLHUDObjects
   RegisterPropertiesInCategory(strLayoutCategoryName, [TypeInfo(TTextLayout)]);
   RegisterPropertiesInCategory(strVisualCategoryName, [TypeInfo(TGLBitmapFont), TypeInfo(TTextLayout)]);
   RegisterPropertiesInCategory(strLocalizableCategoryName,[TypeInfo(TGLBitmapFont)]);
 
-  // Texture
+  // GLTexture
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLMaterial), TypeInfo(TGLMaterialLibrary),
     TypeInfo(TGLLibMaterials), TypeInfo(TGLTextureNeededEvent)]);
   RegisterPropertiesInCategory(strOpenGLCategoryName, TGLLibMaterial, ['Texture2Name']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLLibMaterial, ['TextureOffset', 'TextureScale']);
   RegisterPropertiesInCategory(strOpenGLCategoryName, TGLMaterialLibrary, ['TexturePaths']);
 
-  // Cadencer
+  // GLCadencer
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLCadencer)]);
 
-  // Collision
+  // GLCollision
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TObjectCollisionEvent)]);
 
-  // FireFX
+  // GLFireFX
   RegisterPropertiesInCategory(strOpenGLCategoryName, TGLFireFXManager,
     ['MaxParticles', 'NoZWrite', 'Paused', 'UseInterval']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLFireFXManager,
     ['Fire*', 'InitialDir', 'NoZWrite', 'Particle*', 'Paused']);
 
-  // ThorFX
+  // GLThorFX
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TCalcPointEvent)]);
   RegisterPropertiesInCategory(strOpenGLCategoryName, TGLThorFXManager,
     ['Maxpoints', 'Paused']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLThorFXManager,
     ['Core', 'Glow*', 'Paused', 'Target', 'Vibrate', 'Wildness']);
 
-  // BitmapFont
+  // GLBitmapFont 
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLMagFilter), TypeInfo(TGLMinFilter)]);
   RegisterPropertiesInCategory(strLocalizableCategoryName, [TypeInfo(TGLBitmapFontRanges)]);
   RegisterPropertiesInCategory(strLocalizableCategoryName, TGLBitmapFontRange, ['*ASCII']);
@@ -1506,7 +1506,7 @@ begin
   RegisterPropertiesInCategory(strVisualCategoryName, TGLBitmapFont,
     ['Char*', '*Interval*', '*Space', 'Glyphs']);
 
-  // HeightData
+  // GLHeightData
   RegisterPropertiesInCategory(strOpenGLCategoryName, TGLBitmapHDS, ['MaxPoolSize']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLBitmapHDS, ['Picture']);
 end;
@@ -1555,7 +1555,7 @@ begin
   RegisterComponentEditor(TGLMaterialLibraryEx, TGLMaterialLibraryEditor);
   RegisterComponentEditor(TGLSArchiveManager, TGLSArchiveManagerEditor);
 
-  RegisterPropertiesInCategories;
+  GLSceneRegisterPropertiesInCategories;
 
   RegisterPropertyEditor(TypeInfo(TResolution), nil, '', TGLResolutionProperty);
   RegisterPropertyEditor(TypeInfo(TGLTexture), TGLMaterial, '', TGLTextureProperty);
@@ -1797,13 +1797,12 @@ begin
   RegisterSceneObject(TGLSLProjectedTextures, 'GLSL Projected Textures', strOCSpecialObjects, HInstance);
   RegisterSceneObject(TGLTextureEmitter, 'Texture Emitter', strOCSpecialObjects, HInstance);
   RegisterSceneObject(TGLProjectedTextures, 'Projected Textures', strOCSpecialObjects, HInstance);
-
   RegisterSceneObject(TGLBlur, 'Blur', strOCSpecialObjects, HInstance);
   RegisterSceneObject(TGLMotionBlur, 'MotionBlur', strOCSpecialObjects, HInstance);
 
   RegisterSceneObject(TGLSpaceText, 'SpaceText', strOCDoodad, HInstance);
 
-  RegisterSceneObject(TGLTrail, 'GLS.Trail', strOCSpecialObjects, HInstance);
+  RegisterSceneObject(TGLTrail, 'GLTrail', strOCSpecialObjects, HInstance);
   RegisterSceneObject(TGLPostEffect, 'PostEffect', strOCSpecialObjects, HInstance);
   RegisterSceneObject(TGLPostShaderHolder, 'PostShaderHolder', strOCSpecialObjects, HInstance);
 

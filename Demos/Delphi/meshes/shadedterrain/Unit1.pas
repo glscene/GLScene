@@ -4,6 +4,7 @@ interface
 
 uses
   Winapi.Windows,
+  Winapi.OpenGL,
   System.SysUtils,
   System.UITypes,
   System.Classes,
@@ -21,6 +22,7 @@ uses
   GLS.Objects,
   GLS.Keyboard,
   GLS.TerrainRenderer,
+  GLS.ROAMPatch,
   GLS.HeightData,
   GLS.Cadencer,
   GLS.Texture,
@@ -28,14 +30,14 @@ uses
   GLS.SceneViewer,
   GLS.VectorTypes,
   GLS.VectorGeometry,
-  GLLensFlare,
+  GLS.LensFlare,
   GLS.BumpMapHDS,
+  GLSL.TextureShaders,
   GLS.Material,
   GLS.Coordinates,
- 
+
   GLS.State,
-  GLS.Utils,
-  GLSL.TextureShaders;
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)
@@ -67,6 +69,7 @@ type
     LabelZ: TLabel;
     LabelContInterval: TLabel;
     CBContourIntervals: TCheckBox;
+    
     procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
@@ -103,17 +106,21 @@ implementation
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   SetGLSceneMediaDir();
-  // 8 MB height data cache
+
+  // Load Terrain in 8 MB height data cache
   // Note this is the data size in terms of elevation samples, it does not
   // take into account all the data required/allocated by the renderer
   GLBitmapHDS1.MaxPoolSize := 8 * 1024 * 1024;
 
-  // specify height map data
+  // specify a map for height field data
   GLBitmapHDS1.Picture.LoadFromFile('terrain.bmp');
 
-  // load the texture maps
-  GLMaterialLibrary1.LibMaterialByName('details')
-    .Material.Texture.Image.LoadFromFile('detailmap.jpg');
+  GLMaterialLibrary1.LibMaterialByName('details').Material.Texture.Image.LoadFromFile('detailmap.jpg');
+
+  (*
+  GLMaterialLibrary1.LibMaterialByName('texture').Material.Texture.Image.LoadFromFile('texture.jpg');
+  *)
+
   SPSun.Material.Texture.Image.LoadFromFile('flare1.bmp');
 
   // Could've been done at design time, but then it hurts the eyes ;)
@@ -122,38 +129,35 @@ begin
   FCamHeight := 20;
 
   // apply texture map scale (our heightmap size is 256)
-  TerrainRenderer1.TilesPerTexture := 1; // 256/TerrainRenderer1.TileSize;
+  TerrainRenderer1.TilesPerTexture := 4; // 256/TerrainRenderer1.TileSize;
   // TerrainRenderer1.MaterialLibrary := GLMaterialLibrary1;
   TerrainRenderer1.ContourWidth := 2;
 
-  // initialize intensity texture
   TBIntensityChange(Self);
-  // initialize Scale Z
   TBScaleZChange(Self);
-  // initialize ContourInterval
-  TBContourIntervalChange(Self);
 end;
 
 procedure TForm1.FormShow(Sender: TObject);
 begin
   TBSubSamplingChange(Self);
+  TBContourIntervalChange(Self);
 end;
 
 procedure TForm1.GLBumpmapHDS1NewTilePrepared(Sender: TGLBumpmapHDS;
   heightData: TGLHeightData; normalMapMaterial: TGLLibMaterial);
 var
-  n: TVector;
+  Vec: TVector;
 begin
   heightData.MaterialName := normalMapMaterial.Name;
-  normalMapMaterial.Texture2Name := 'contrast';
+  normalMapMaterial.Texture2Name := 'details';//'texture'; not 'ground' or 'contrast';
   normalMapMaterial.Shader := GLTexCombineShader1;
   normalMapMaterial.Material.MaterialOptions := [moNoLighting];
-  n := VectorNormalize(SPSun.AbsolutePosition);
-  ScaleVector(n, 0.5);
-  n.Y := -n.Y;
-  n.Z := -n.Z;
-  AddVector(n, 0.5);
-  normalMapMaterial.Material.FrontProperties.Diffuse.Color := n;
+  Vec := VectorNormalize(SPSun.AbsolutePosition);
+  ScaleVector(Vec, 0.5);
+  Vec.Y := -Vec.Y;
+  Vec.Z := -Vec.Z;
+  AddVector(Vec, 0.5);
+  normalMapMaterial.Material.FrontProperties.Diffuse.Color := Vec;
 end;
 
 procedure TForm1.GLCadencer1Progress(Sender: TObject;
@@ -208,6 +212,7 @@ begin
     my := Y;
   end;
 end;
+
 
 procedure TForm1.Timer1Timer(Sender: TObject);
 begin
@@ -303,7 +308,7 @@ var
   i: Integer;
   bmp: TBitmap;
 begin
-  with GLMaterialLibrary1.LibMaterialByName('contrast').Material do
+  with GLMaterialLibrary1.LibMaterialByName('ground').Material do
   begin
     bmp := TBitmap.Create;
     try
@@ -340,7 +345,7 @@ begin
     TerrainRenderer1.ContourInterval := TBContourInterval.Position
   else
     TerrainRenderer1.ContourInterval := 0;
-  SetFocus;
+  TBContourinterval.SetFocus;
 end;
 
 end.

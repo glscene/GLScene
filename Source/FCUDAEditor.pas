@@ -14,24 +14,25 @@ uses
   Winapi.Windows, 
   Winapi.Messages,
   System.SysUtils, 
-  System.Variants, 
-  System.Classes, 
+  System.Variants,
+  System.Classes,
   System.Win.Registry,
   System.ImageList,
-  Vcl.Graphics, 
-  Vcl.Controls, 
-  Vcl.Forms, 
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
   Vcl.Dialogs,
-  Vcl.ImgList, 
-  Vcl.StdCtrls, 
-  Vcl.ComCtrls, 
+  Vcl.ImgList,
+  Vcl.StdCtrls,
+  Vcl.ComCtrls,
   Vcl.ToolWin,
   DesignIntf,
   VCLEditors,
   GLS.Strings,
-  GLS.CUDA,
-  GLS.CUDAFFTPlan,
-  GLS.CUDAGraphics;
+
+  GPU.CUDA,
+  GPU.CUDAFFTPlan,
+  GPU.CUDAGraphics;
 
 type
   TGLSCUDAEditorForm = class(TForm)
@@ -51,16 +52,14 @@ type
     procedure FormDestroy(Sender: TObject);
   private
     FClassList: TList;
-    FCUDA: TGLSCUDA;
+    FCUDA: TGLCUDA;
     FCurrentDesigner: IDesigner;
   protected
     procedure Notification(AComponent: TComponent; Operation: TOperation);
       override;
     procedure OnCUDAComponentNameChanged(Sender : TObject);
   public
-    
-    procedure SetCUDAEditorClient(Client: TGLSCUDA; Designer: IDesigner);
-
+    procedure SetCUDAEditorClient(Client: TGLCUDA; Designer: IDesigner);
   end;
 
 function GLSCUDAEditorForm: TGLSCUDAEditorForm;
@@ -73,7 +72,7 @@ implementation
 {$R *.dfm}
 
 const
-  cRegistryKey = 'Software\GLScene\GLSCUDAEditor';
+  cRegistryKey = 'Software\GLScene\CUDAEditor';
 
 var
   vGLSCUDAEditorForm: TGLSCUDAEditorForm;
@@ -203,7 +202,7 @@ begin
     FCurrentDesigner.SelectComponent(obj);
 end;
 
-procedure TGLSCUDAEditorForm.SetCUDAEditorClient(Client: TGLSCUDA; Designer: IDesigner);
+procedure TGLSCUDAEditorForm.SetCUDAEditorClient(Client: TGLCUDA; Designer: IDesigner);
 var
   i: Integer;
   child: TCUDAComponent;

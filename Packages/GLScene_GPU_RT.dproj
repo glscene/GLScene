@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <ProjectGuid>{F0792472-0CD2-4D29-A0F7-4D3BB36C2E02}</ProjectGuid>
-        <MainSource>GLScene_Parallel_RT.dpk</MainSource>
+        <MainSource>GLScene_GPU_RT.dpk</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <TargetedPlatforms>3</TargetedPlatforms>
@@ -60,7 +60,7 @@
     <PropertyGroup Condition="'$(Base)'!=''">
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <GenPackage>true</GenPackage>
-        <SanitizedProjectName>GLScene_Parallel_RT</SanitizedProjectName>
+        <SanitizedProjectName>GLScene_GPU_RT</SanitizedProjectName>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <DCC_K>false</DCC_K>
         <GenDll>true</GenDll>
@@ -133,18 +133,18 @@
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="xmlrtl.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
-        <DCCReference Include="..\Source\GLS.CUDARuntime.pas"/>
-        <DCCReference Include="..\Source\GLS.CUDAFourierTransform.pas"/>
-        <DCCReference Include="..\Source\GLS.CUDAUtility.pas"/>
-        <DCCReference Include="..\Source\GLS.CUDACompiler.pas"/>
-        <DCCReference Include="..\Source\GLS.CUDAContext.pas"/>
-        <DCCReference Include="..\Source\GLS.CUDAFFTPlan.pas"/>
-        <DCCReference Include="..\Source\GLS.CUDAGraphics.pas"/>
-        <DCCReference Include="..\Source\GLS.CUDAParser.pas"/>
-        <DCCReference Include="..\Source\GLS.CUDADataAccess.pas"/>
-        <DCCReference Include="..\Source\GLS.CUDAParallelPrimitives.pas"/>
-        <DCCReference Include="..\Source\GLS.CUDA.pas"/>
-        <DCCReference Include="..\Source\GLS.CUDAApi.pas"/>
+        <DCCReference Include="..\Source\Import.CUDAApi.pas"/>
+        <DCCReference Include="..\Source\Import.CUDAUtility.pas"/>
+        <DCCReference Include="..\Source\Import.CUDAParallelPrimitives.pas"/>
+        <DCCReference Include="..\Source\GPU.CUDARuntime.pas"/>
+        <DCCReference Include="..\Source\GPU.CUDAFourierTransform.pas"/>
+        <DCCReference Include="..\Source\GPU.CUDACompiler.pas"/>
+        <DCCReference Include="..\Source\GPU.CUDAContext.pas"/>
+        <DCCReference Include="..\Source\GPU.CUDAFFTPlan.pas"/>
+        <DCCReference Include="..\Source\GPU.CUDAGraphics.pas"/>
+        <DCCReference Include="..\Source\GPU.CUDAParser.pas"/>
+        <DCCReference Include="..\Source\GPU.CUDADataAccess.pas"/>
+        <DCCReference Include="..\Source\GPU.CUDA.pas"/>
         <DCCReference Include="..\Source\GLS.FilePGM.pas"/>
         <DCCReference Include="..\Source\Import.OpenCL.pas"/>
         <DCCReference Include="..\Source\Import.OpenCL_GL.pas"/>
@@ -167,13 +167,13 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">GLScene_Parallel_RT.dpk</Source>
+                    <Source Name="MainSource">GLScene_GPU_RT.dpk</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k270.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp270.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k270.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp270.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k260.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp260.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k260.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp260.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Platforms>
@@ -181,9 +181,9 @@
                 <Platform value="Win64">True</Platform>
             </Platforms>
             <Deployment Version="3">
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\GLScene_Parallel_RT.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\GLScene_GPU_RT.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>GLScene_Parallel_RT.bpl</RemoteName>
+                        <RemoteName>GLScene_GPU_RT.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

@@ -218,17 +218,17 @@ void __fastcall TForm1::TBSubSamplingChange(TObject * Sender)
 void __fastcall TForm1::TBIntensityChange(TObject * Sender)
 {
   int i;
-  Graphics::TBitmap * bmp;
+  Vcl::Graphics::TBitmap * bmp;
 
   TGLMaterial *m = GLMaterialLibrary1->LibMaterialByName("contrast")->Material;
-  bmp = new Graphics::TBitmap;
+  bmp = new Vcl::Graphics::TBitmap;
   try
   {
     bmp->PixelFormat = pf24bit;
     bmp->Width = 1;
     bmp->Height = 1;
     i = 255;
-	bmp->Canvas->Pixels[0][0] = (Graphics::TColor) RGB(i, i, i);
+	bmp->Canvas->Pixels[0][0] = (Vcl::Graphics::TColor) RGB(i, i, i);
 	m->Texture->Image->Assign(bmp);
   }
   __finally
@@ -236,7 +236,7 @@ void __fastcall TForm1::TBIntensityChange(TObject * Sender)
     delete bmp;
   }
   i = (TBIntensity->Position * 255) / 100;
-  m->Texture->EnvColor->AsWinColor = (Graphics::TColor) RGB(i, i, i);
+  m->Texture->EnvColor->AsWinColor = (Vcl::Graphics::TColor) RGB(i, i, i);
 
   LABumpIntensity->Caption = IntToStr(TBIntensity->Position) + " %";
 }

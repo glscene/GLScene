@@ -28,12 +28,12 @@ uses
   GLSL.Shader,
   GLS.Windows,
 
-  GLS.CUDAContext,
-  GLS.CUDA,
-  GLS.CUDACompiler,
-  GLS.CUDAFFTPlan,
-  GLS.CUDAGraphics,
-  GLS.CUDADataAccess;
+  GPU.CUDAContext,
+  GPU.CUDA,
+  GPU.CUDACompiler,
+  GPU.CUDAFFTPlan,
+  GPU.CUDAGraphics,
+  GPU.CUDADataAccess;
 
 type
   TForm1 = class(TForm)
@@ -41,9 +41,9 @@ type
     GLSceneViewer1: TGLSceneViewer;
     GLCadencer1: TGLCadencer;
     GLCamera1: TGLCamera;
-    GLSCUDADevice1: TGLSCUDADevice;
-    GLSCUDA1: TGLSCUDA;
-    GLSCUDACompiler1: TGLSCUDACompiler;
+    GLSCUDADevice1: TGLCUDADevice;
+    GLSCUDA1: TGLCUDA;
+    GLSCUDACompiler1: TGLCUDACompiler;
     MainModule: TCUDAModule;
     ArrayOfTexture: TCUDAMemData;
     TextureOfVelocityField: TCUDATexture;
@@ -59,7 +59,7 @@ type
     ResetButton: TGLButton;
     GLWindowsBitmapFont1: TGLWindowsBitmapFont;
     GLGuiLayout1: TGLGuiLayout;
-    ParticleRenderer: TGLS.FeedbackMesh;
+    ParticleRenderer: TCUDAFeedbackMesh;
     addForces: TCUDAFunction;
     advectVelocity: TCUDAFunction;
     diffuseProject: TCUDAFunction;

@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 135
   Top = 85
   Caption = 'Cube Map'
-  ClientHeight = 364
-  ClientWidth = 415
+  ClientHeight = 590
+  ClientWidth = 677
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,20 +18,23 @@ object Form1: TForm1
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 415
-    Height = 364
+    Width = 677
+    Height = 590
     Camera = GLCamera1
     BeforeRender = GLSceneViewer1BeforeRender
     Buffer.BackgroundColor = clTeal
-    FieldOfView = 62.487583160400390000
+    FieldOfView = 89.037071228027340000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 415
+    ExplicitHeight = 364
   end
   object Button1: TButton
-    Left = 136
-    Top = 8
+    Left = 264
+    Top = 24
     Width = 163
     Height = 25
     Caption = 'Apply Cube Environment Map'

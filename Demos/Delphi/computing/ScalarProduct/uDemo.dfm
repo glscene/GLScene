@@ -33,7 +33,7 @@ object Form1: TForm1
     TabOrder = 1
     OnClick = Button1Click
   end
-  object GLSCUDA1: TGLSCUDA
+  object GLSCUDA1: TGLCUDA
     ComputingDevice = GLSCUDADevice1
     Left = 104
     Top = 248
@@ -372,14 +372,14 @@ object Form1: TForm1
       ChannelsType = ctFloat
     end
   end
-  object GLSCUDADevice1: TGLSCUDADevice
-    SelectDevice = 'GeForce GTX 260 (1)'
+  object GLSCUDADevice1: TGLCUDADevice
+    SelectDevice = 'GeForce GTX 1040 (1)'
     Left = 16
     Top = 248
   end
-  object GLSCUDACompiler1: TGLSCUDACompiler
+  object GLSCUDACompiler1: TGLCUDACompiler
     NVCCPath = 'C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v3.2\\bin\'
-    CppCompilerPath = 'C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\'
+    CppCompilerPath = 'C:\Program Files\Microsoft Visual Studio 2017\VC\bin\'
     ProjectModule = 'scalarProd_kernel.cu'
     Left = 200
     Top = 248

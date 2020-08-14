@@ -172,12 +172,12 @@ object Form1: TForm1
     Left = 32
     Top = 128
   end
-  object GLSCUDADevice1: TGLSCUDADevice
+  object GLSCUDADevice1: TGLCUDADevice
     SelectDevice = 'GeForce GTX 260 (1)'
     Left = 448
     Top = 24
   end
-  object GLSCUDA1: TGLSCUDA
+  object GLSCUDA1: TGLCUDA
     ComputingDevice = GLSCUDADevice1
     OnOpenGLInteropInit = GLSCUDA1OpenGLInteropInit
     Left = 448
@@ -696,7 +696,7 @@ object Form1: TForm1
         end
       end
     end
-    object processedTextureMapper: TCUDAGLImageResource
+    object processedTextureMapper: TCUDAImageResource
       TextureName = 'processedTexture'
       MaterialLibrary = GLMaterialLibrary1
     end
@@ -719,7 +719,7 @@ object Form1: TForm1
       ChannelsNum = cnFour
     end
   end
-  object GLSCUDACompiler1: TGLSCUDACompiler
+  object GLSCUDACompiler1: TGLCUDACompiler
     NVCCPath = 'C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v3.2\\bin\'
     CppCompilerPath = 'C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\'
     ProjectModule = 'postProcessGL_kernel.cu'

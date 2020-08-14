@@ -107,12 +107,10 @@ implementation
 procedure TForm1.Load;
 begin
   SetGLSceneMediaDir();
+
   //Load Materials
-  with GLMatlLib do
-  begin
-    AddTextureMaterial('Terrain', 'snow512.jpg');
-    AddTextureMaterial('Actor', 'waste.jpg');
-  end;
+  GLMatlLib.AddTextureMaterial('Terrain', 'snow512.jpg');
+  GLMatlLib.AddTextureMaterial('Actor', 'waste.jpg');
 
   //Load Terrain
   GLBitmapHDS1.MaxPoolSize := 8 * 1024 * 1024;

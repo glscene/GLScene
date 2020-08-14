@@ -12,7 +12,7 @@
 
 
 #include "GLS.BumpMapHDS.hpp"
-#include "GLLensFlare.hpp"
+#include "GLS.LensFlare.hpp"
 #include "GLS.VectorGeometry.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.SkyDome.hpp"

@@ -22,7 +22,7 @@ uses
   GLS.Strings,
   GLS.ApplicationFileIO,
 
-  GLS.CUDAUtility;
+  Import.CUDAUtility;
 
 
 type

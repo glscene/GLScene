@@ -24,10 +24,10 @@ uses
   GLS.Coordinates,
   GLS.Context,
 
-  GLS.CUDA,
-  GLS.CUDACompiler,
-  GLS.CUDAContext,
-  GLS.CUDAGraphics,
+  GPU.CUDA,
+  GPU.CUDACompiler,
+  GPU.CUDAContext,
+  GPU.CUDAGraphics,
 
   GLS.Material,
   GLSL.CustomShader,
@@ -41,24 +41,21 @@ type
     GLCamera1: TGLCamera;
     GLDummyCube1: TGLDummyCube;
     GLSimpleNavigation1: TGLSimpleNavigation;
-    GLSCUDADevice1: TGLSCUDADevice;
-    GLSCUDA1: TGLSCUDA;
-    GLSCUDACompiler1: TGLSCUDACompiler;
+    GLSCUDADevice1: TGLCUDADevice;
+    GLSCUDA1: TGLCUDA;
+    GLSCUDACompiler1: TGLCUDACompiler;
     MainModule: TCUDAModule;
     DotFieldMapper: TCUDAGeometryResource;
     GLSLShader1: TGLSLShader;
     MakeDotField: TCUDAFunction;
-    GLS.FeedbackMesh1: TGLS.FeedbackMesh;
+    CUDAFeedbackMesh1: TCUDAFeedbackMesh;
     procedure GLCadencer1Progress(Sender: TObject;
       const deltaTime, newTime: Double);
     procedure MakeVertexBufferParameterSetup(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GLSLShader1Apply(Shader: TGLCustomGLSLShader);
     procedure GLSCUDA1OpenGLInteropInit(out Context: TGLContext);
-  private
-
   public
-     
     FieldWidth: Integer;
     FieldHeight: Integer;
   end;
@@ -74,8 +71,8 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
   FieldWidth := 256;
   FieldHeight := 256;
-  GLS.FeedbackMesh1.VertexNumber := FieldWidth * FieldHeight;
-  GLS.FeedbackMesh1.Visible := True;
+  CUDAFeedbackMesh1.VertexNumber := FieldWidth * FieldHeight;
+  CUDAFeedbackMesh1.Visible := True;
   MakeDotField.Grid.SizeX := FieldWidth div MakeDotField.BlockShape.SizeX;
   MakeDotField.Grid.SizeY := FieldWidth div MakeDotField.BlockShape.SizeY;
 end;
@@ -96,7 +93,7 @@ procedure TForm1.MakeVertexBufferParameterSetup(Sender: TObject);
 begin
   with MakeDotField do
   begin
-    SetParam(DotFieldMapper.AttributeDataAddress[GLS.FeedbackMesh1.Attributes[0].Name]);
+    SetParam(DotFieldMapper.AttributeDataAddress[CUDAFeedbackMesh1.Attributes[0].Name]);
     SetParam(FieldWidth);
     SetParam(FieldHeight);
     SetParam(GLCadencer1.CurrentTime);

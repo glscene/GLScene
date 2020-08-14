@@ -356,9 +356,7 @@ begin
     Result := '';
     Exit;
   end;
-
   SetLength(Result, sLength); // creates enough room
-
   L := 1;
   T := 1;
   while L <= Cardinal(sLength) do
@@ -1342,7 +1340,7 @@ end;
 function TGLBinaryReader.ReadFloat: Extended;
 {$IFDEF WIN64}
 var
-   C  :TExtended80Rec; // Temporary variable to store 10 bytes floating point number in a Win64 application
+   C: TExtended80Rec; // Temporary variable to store 10 bytes floating point number in a Win64 application
 {$ENDIF}
 begin
   Result := 0.0;

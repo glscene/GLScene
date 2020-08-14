@@ -12,17 +12,17 @@ uses
   Vcl.Dialogs,
   Vcl.StdCtrls,
 
-  GLS.CUDACompiler,
-  GLS.CUDAContext,
-  GLS.CUDA,
-  GLS.CUDAUtility;
+  GPU.CUDACompiler,
+  GPU.CUDAContext,
+  GPU.CUDA,
+  GPU.CUDAUtility;
 
 
 type
   TForm1 = class(TForm)
-    GLSCUDA1: TGLSCUDA;
-    GLSCUDADevice1: TGLSCUDADevice;
-    GLSCUDACompiler1: TGLSCUDACompiler;
+    GLSCUDA1: TGLCUDA;
+    GLSCUDADevice1: TGLCUDADevice;
+    GLSCUDACompiler1: TGLCUDACompiler;
     Memo1: TMemo;
     Button1: TButton;
     MainModule: TCUDAModule;

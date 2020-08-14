@@ -18,7 +18,7 @@ uses
   GLS.Silhouette;
 
 type
-  TGLFaceGroupConnectivity = class(TConnectivity)
+  TGLFaceGroupConnectivity = class(TGLConnectivity)
   private
     FMeshObject: TMeshObject;
     FOwnsVertices: boolean;
@@ -33,7 +33,7 @@ type
     destructor Destroy; override;
   end;
 
-  TGLBaseMeshConnectivity = class(TBaseConnectivity)
+  TGLBaseMeshConnectivity = class(TGLBaseConnectivity)
   private
     FBaseMesh: TGLBaseMesh;
     FFaceGroupConnectivityList: TList;
