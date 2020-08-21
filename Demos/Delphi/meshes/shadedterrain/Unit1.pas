@@ -149,7 +149,7 @@ var
   Vec: TVector;
 begin
   heightData.MaterialName := normalMapMaterial.Name;
-  normalMapMaterial.Texture2Name := 'details';//'texture'; not 'ground' or 'contrast';
+  normalMapMaterial.Texture2Name := 'contrast';//'details', 'texture' or 'contrast';
   normalMapMaterial.Shader := GLTexCombineShader1;
   normalMapMaterial.Material.MaterialOptions := [moNoLighting];
   Vec := VectorNormalize(SPSun.AbsolutePosition);
@@ -308,7 +308,7 @@ var
   i: Integer;
   bmp: TBitmap;
 begin
-  with GLMaterialLibrary1.LibMaterialByName('ground').Material do
+  with GLMaterialLibrary1.LibMaterialByName('contrast').Material do
   begin
     bmp := TBitmap.Create;
     try

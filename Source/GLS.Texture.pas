@@ -2815,17 +2815,10 @@ begin
   end;
 
   if gl.GetError <> GL_NO_ERROR then
-  begin
-    gl.ClearError;
-    SetTextureErrorImage;
-  end
-  else
-  begin
     FRequiredMemorySize := -1;
-    TextureImageRequiredMemory;
-    if not IsDesignTime and not FKeepImageAfterTransfer then
-      Image.ReleaseBitmap32;
-  end;
+  TextureImageRequiredMemory;
+  if not IsDesignTime and not FKeepImageAfterTransfer then
+    Image.ReleaseBitmap32;
 end;
 
 procedure TGLTexture.PrepareParams(target: Cardinal);
