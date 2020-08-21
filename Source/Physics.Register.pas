@@ -25,7 +25,7 @@ begin
   RegisterClasses([TGLODEManager, TGLODEJointList,  TGLODEJoints, TGLODEElements,
                    TGLNGDManager, TGLNGDDynamic, TGLNGDStatic,
                    TGLSPIManager]);
-  RegisterComponents('GLScene',[TGLODEManager,TGLODEJointList,
+  RegisterComponents('GLScene Physics Managers',[TGLODEManager,TGLODEJointList,
                                 TGLNGDManager, TGLSPIManager]);
 end;
 

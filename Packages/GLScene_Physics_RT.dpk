@@ -50,7 +50,8 @@ contains
   Physics.SPIForces in '..\Source\Physics.SPIForces.pas',
   Physics.SPIInertias in '..\Source\Physics.SPIInertias.pas',
   Physics.SPIJoints in '..\Source\Physics.SPIJoints.pas',
-  Physics.SPIManager in '..\Source\Physics.SPIManager.pas';
+  Physics.SPIManager in '..\Source\Physics.SPIManager.pas',
+  Import.Newton in '..\Source\Import.Newton.pas';
 
 end.
 

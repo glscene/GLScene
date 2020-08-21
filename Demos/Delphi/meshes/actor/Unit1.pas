@@ -27,7 +27,8 @@ uses
 
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.Utils;
+  GLS.Utils, VclTee.TeeGDIPlus, VCLTee.Series, VCLTee.ArrowCha, VCLTee.TeEngine,
+  VCLTee.TeeProcs, VCLTee.Chart;
 
 type
   TForm1 = class(TForm)

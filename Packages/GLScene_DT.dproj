@@ -102,10 +102,10 @@
         <DCC_ObjOutput>..\lib\$(Platform)</DCC_ObjOutput>
         <DCC_BpiOutput>..\lib\$(Platform)</DCC_BpiOutput>
         <VerInfo_Keys>CompanyName=;FileVersion=1.5.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.5.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
-        <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <DCC_Description>GLScene Engine</DCC_Description>
+        <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <DCC_DcuOutput>..\lib\$(Platform)</DCC_DcuOutput>
     </PropertyGroup>
     <ItemGroup>

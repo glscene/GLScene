@@ -29,8 +29,6 @@ object Form1: TForm1
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
-    ExplicitWidth = 587
-    ExplicitHeight = 340
   end
   object StatusBar1: TStatusBar
     Left = 0
@@ -41,8 +39,6 @@ object Form1: TForm1
       item
         Width = 200
       end>
-    ExplicitTop = 378
-    ExplicitWidth = 587
   end
   object Panel1: TPanel
     Left = 0
@@ -52,7 +48,6 @@ object Form1: TForm1
     Align = alTop
     BevelOuter = bvLowered
     TabOrder = 2
-    ExplicitWidth = 587
     object SBPlay: TSpeedButton
       Left = 188
       Top = 8
