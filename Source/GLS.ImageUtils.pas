@@ -4893,8 +4893,15 @@ begin
       Div2(ADstWidth);
       Div2(ADstHeight);
 
-      xscale := MaxFloat((ADstWidth - 1) / (ASrcWidth - 1), 0.25);
-      yscale := MaxFloat((ADstHeight - 1) / (ASrcHeight - 1), 0.25);
+      if ASrcWidth > 1 then
+        xscale := MaxFloat((ADstWidth - 1) / (ASrcWidth - 1), 0.25)
+      else
+        xscale := 0.25;
+
+      if ASrcHeight > 1 then
+        yscale := MaxFloat((ADstHeight - 1) / (ASrcHeight - 1), 0.25)
+      else
+        yscale := 0.25;
 
       // Pre-calculate filter contributions for a row
       ReallocMem(contrib, ADstWidth * SizeOf(TCList));
