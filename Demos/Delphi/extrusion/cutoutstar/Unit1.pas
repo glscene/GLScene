@@ -21,7 +21,7 @@ uses
   GLS.MultiPolygon,
   GLS.SceneViewer,
  
-  GLS.Coordinates, GLS.BaseClasses,,
+  GLS.Coordinates,
   GLS.BaseClasses;
 
 type

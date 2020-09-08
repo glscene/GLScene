@@ -34,6 +34,8 @@ uses
   GLS.GeometryBB,
   GLS.VectorFileObjects,
   GLS.PipelineTransformation,
+  GLS.Material,
+  GLS.Texture,
 
   GLS.Context,
   GLS.Objects,

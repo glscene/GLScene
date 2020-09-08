@@ -5854,12 +5854,12 @@ begin
   with Result do
   begin
     //--- header Information
-    NameStr := ansistring(NodeHdrChunk^.Data.NodeHdr^.ObjNameStr);
+    NameStr := AnsiString(NodeHdrChunk^.Data.NodeHdr^.ObjNameStr);
     Flags1 := NodeHdrChunk^.Data.NodeHdr^.Flags1;
     Flags2 := NodeHdrChunk^.Data.NodeHdr^.Flags2;
 
     //--- get parent name if there is one
-    ParentStr := ansistring(GetParentName(Source, NodeHdrChunk));
+    ParentStr := AnsiString(GetParentName(Source, NodeHdrChunk));
 
     //--- Instance
     if Assigned(InstData) then

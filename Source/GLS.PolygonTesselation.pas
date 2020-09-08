@@ -34,7 +34,7 @@ implementation
 var
   TessMesh: TMeshObject;
   TessFace: TFGIndexTexCoordList;
-  TessExtraVertices: Integer;
+  TessVerticesCount, TessExtraVertices: Integer;
   TessVertices: PAffineVectorArray;
 
 procedure DoTessBegin(mode: Cardinal);
@@ -68,6 +68,14 @@ end;
 function AllocNewVertex: PAffineVector;
 begin
   Inc(TessExtraVertices);
+  
+  // Allocate more memory if needed
+  if TessExtraVertices > TessVerticesCount then
+  begin
+    TessVerticesCount := TessVerticesCount * 2;
+    Reallocmem(TessVertices, TessVerticesCount * SizeOf(TAffineVector));
+  end;
+  
   Result := @TessVertices[TessExtraVertices - 1];
 end;
 
@@ -92,10 +100,12 @@ begin
   end
   else
     TessMesh := Mesh.MeshObjects[0];
-
+	
+  // vertices count.
+  TessVerticesCount := Vertexes.Count;
   // allocate extra buffer used by GLU in complex polygons.
-  GetMem(TessVertices, Vertexes.Count * SizeOf(TAffineVector));
 
+  GetMem(TessVertices, TessVerticesCount * SizeOf(TAffineVector));
   // make a Tessellation GLU object.
   Tess := gluNewTess;
 
@@ -142,7 +152,7 @@ begin
   gluDeleteTess(tess);
 
   // deallocate extra buffer used by GLU in complex polygons.
-  FreeMem(TessVertices, Vertexes.Count * SizeOf(TAffineVector));
+  FreeMem(TessVertices, TessVerticesCount * SizeOf(TAffineVector));
 end;
 
 end.

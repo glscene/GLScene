@@ -597,7 +597,6 @@ begin
   //
 end;
 
-
 // -------------------- RGBA Utils
 
 procedure GammaCorrectRGBArray(base: Pointer; pixelCount: Integer;
@@ -2010,8 +2009,8 @@ begin
     PBO.AllocateHandle;
     if PBO.IsDataNeedUpdate then
     begin
-      { This may work with multiple unshared context, but never tested
-        because unlikely. }
+      (* This may work with multiple unshared context, but never tested
+        because unlikely. *)
       PBO.BindBufferData(nil, MaxInteger(Size, 1024), GL_STREAM_DRAW);
       if Assigned(MapAddress) then
         if not PBO.UnmapBuffer then
@@ -2024,7 +2023,8 @@ begin
 
     if FSourceStream = nil then
     begin
-      FSourceStream := TFileStream.Create(ResourceName + IntToHex(FStreamLevel, 2));
+      FSourceStream := TFileStream.Create(ResourceName + 
+	  IntToHex(FStreamLevel,2), fmOpenRead + fmShareDenyNone);
     end;
 
     // Move to position of next piece and read it

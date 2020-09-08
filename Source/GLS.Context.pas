@@ -23,7 +23,7 @@ uses
   VCL.Consts,
 
 {$IFDEF USE_SERVICE_CONTEXT}
-  GLSGenerics,
+  GLS.Generics,
 {$ENDIF}
 
   GLS.OpenGLTokens,

@@ -32,7 +32,7 @@ type
     GLCube1: TGLCube;
     GLFreeForm1: TGLFreeForm;
     Button1: TButton;
-    GLS.Feedback1: TGLS.Feedback;
+    GLS.Feedback1: TGLFeedback;
     GLDodecahedron1: TGLDodecahedron;
     MeshObject1: TGLDummyCube;
     MeshObject2: TGLDummyCube;
