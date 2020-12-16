@@ -23,11 +23,12 @@ TForm1 *Form1;
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  SetGLSceneMediaDir();
+  HeightField1->Material->Texture->Image->LoadFromFile("marbletiles.jpg");
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GSbarChange(TObject *Sender)

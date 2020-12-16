@@ -15,7 +15,7 @@
 #include "GLS.Material.hpp"
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
-#include "GLS.TilePlane.hpp"
+#include "GLTilePlane.hpp"
 #include "GLS.SceneViewer.hpp"
 #include <Vcl.Imaging.jpeg.hpp>
 #include <Vcl.ExtCtrls.hpp>

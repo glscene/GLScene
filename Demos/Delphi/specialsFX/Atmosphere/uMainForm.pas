@@ -25,7 +25,7 @@ uses
   GLS.SimpleNavigation,
   GLS.Behaviours,
   GLS.Coordinates,
-  GLS.Color, GLS.SimpleNavigation, GLLensFlare;
+  GLS.Color;
 
 type
   TMainForm = class(TForm)

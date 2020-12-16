@@ -221,9 +221,9 @@ void __fastcall TForm1::FormKeyPress(TObject * Sender, char &Key)
 	  Color.Red = 255; Color.Green = 255; Color.Blue = 100;
 	  SkyDome1->Stars->AddRandomStars(100, TGIFColorMap::RGB2Color(Color), True); // some yellowish ones
 
-	  GLSceneViewer1->Buffer->BackgroundColor = Graphics::clBlack;
+	  GLSceneViewer1->Buffer->BackgroundColor = clBlack;
 	  fe = GLSceneViewer1->Buffer->FogEnvironment;
-	  fe->FogColor->AsWinColor = Graphics::clBlack;
+	  fe->FogColor->AsWinColor = clBlack;
 	  fe->FogStart = -fe->FogStart;     // Fog is used to make things darker
 
 	  SPMoon->Visible = True;

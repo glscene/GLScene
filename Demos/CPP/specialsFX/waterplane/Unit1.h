@@ -17,15 +17,15 @@
 #include "GLS.Material.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SimpleNavigation.hpp"
-#include "GLUserShader.hpp"
 #include "GLS.WaterPlane.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Objects.hpp"
 #include "GLS.Utils.hpp"
+#include "GLSL.UserShader.hpp"
 
 #pragma hdrstop
 
-#include "OpenGLx.hpp"
+//#include "OpenGLx.hpp"
 
 
 //---------------------------------------------------------------------------

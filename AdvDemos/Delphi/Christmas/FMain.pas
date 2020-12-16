@@ -34,6 +34,7 @@ uses
   GLS.ScreenSaver,
   GLS.ShadowPlane,
   GLS.File3DS,
+  GLS.FileOBJ,
   GLS.GeomObjects,
   GLS.Material,
   GLS.Coordinates,
@@ -103,6 +104,8 @@ type
     PopupMenu: TPopupMenu;
     miMerryCristmas: TMenuItem;
     miHappyNewYear: TMenuItem;
+    FFPiano: TGLFreeForm;
+    GLFireFXManager: TGLFireFXManager;
     procedure FormCreate(Sender: TObject);
     procedure CadencerProgress(Sender: TObject; const deltaTime,
       newTime: Double);
@@ -139,22 +142,23 @@ procedure TMain.FormCreate(Sender: TObject);
 var
   DataPath : String;
 begin
-   Randomize;
-   DataPath := ExtractFilePath(ParamStr(0))+'data';
-   SetCurrentDir(DataPath);
-   FFFirTree.LoadFromFile('firtree.3ds');
-   FFFirePlace.LoadFromFile('fireplace.3ds');
-   FireLight:=0.5;
-   FTYear.Text:= '';
+  Randomize;
+  DataPath := ExtractFilePath(ParamStr(0)) + 'data';
+  SetCurrentDir(DataPath);
+  FFFirTree.LoadFromFile('firtree.3ds');
+  FFFirePlace.LoadFromFile('fireplace.3ds');
+  FFPiano.LoadFromFile('Piano.obj');
+  FireLight := 0.5;
+  FTYear.Text := '';
 end;
 
 procedure TMain.FormResize(Sender: TObject);
 begin
-   Camera.SceneScale:=Width/640;
-   if Visible then
-      HUDSprite.Position.X:=Self.Width-200;
-   if (Width>=Screen.Width) then
-      ViewerDblClick(Self);
+  Camera.SceneScale := Width / 640;
+  if Visible then
+    HUDSprite.Position.X := Self.Width - 200;
+  if (Width >= Screen.Width) then
+    ViewerDblClick(Self);
 end;
 
 procedure TMain.miMerryCristmasClick(Sender: TObject);
@@ -248,17 +252,19 @@ begin
      BASS_ChannelPlay(bStream, True);
    end;
    DecodeDate(Now(), y, m, d);
-   if miMerryCristmas.Checked then
+//   if miMerryCristmas.Checked then
    begin
      t:=EncodeDate(y, 12, 25)-Now();
      FTCongratulations.Text := 'Merry Christmas!';
-   end
+   end;
+(*
    else
    begin
      t:=EncodeDate(y+1, 01, 01)-Now();
      FTCongratulations.Text := 'Happy New Year!';
      FTYear.Text:= IntToStr(y+1);
    end;
+*)
    if (t<1) and (t>-1) then
       DCGifts.Visible:=True;
    if t>=2 then

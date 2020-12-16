@@ -22,6 +22,7 @@ object Form1: TForm1
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
     FieldOfView = 143.130096435546900000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
@@ -29,7 +30,7 @@ object Form1: TForm1
   end
   object GLScene1: TGLScene
     ObjectsSorting = osNone
-    Left = 8
+    Left = 24
     Top = 8
     object Torus1: TGLTorus
       Material.FrontProperties.Ambient.Color = {9A99193E9A99193E9A99193E0000803F}
@@ -70,7 +71,7 @@ object Form1: TForm1
   end
   object GLCadencer1: TGLCadencer
     Scene = GLScene1
-    Left = 40
+    Left = 96
     Top = 8
   end
   object GLFireFXManager1: TGLFireFXManager
@@ -79,6 +80,7 @@ object Form1: TForm1
     Cadencer = GLCadencer1
     MaxParticles = 96
     ParticleSize = 0.699999988079071000
+    OuterColor.Color = {0000803FF628DC3E14AE473F0000803F}
     FireDensity = 0.500000000000000000
     FireEvaporation = 0.860000014305114700
     FireBurst = 1.000000000000000000
@@ -87,12 +89,12 @@ object Form1: TForm1
     Paused = False
     ParticleInterval = 0.009999999776482582
     UseInterval = True
-    Left = 72
+    Left = 344
     Top = 8
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer
-    Left = 8
-    Top = 40
+    Left = 24
+    Top = 72
   end
 end

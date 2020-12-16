@@ -49,7 +49,7 @@ type
     GLCadencer1: TGLCadencer;
     Label1: TLabel;
     CBMaterial: TComboBox;
-    GLS.TilePlane: TGLTilePlane;
+    GLTilePlane: TGLTilePlane;
     GLDirectOpenGL: TGLDirectOpenGL;
     DCSelection: TGLDummyCube;
     GLLines1: TGLLines;
@@ -101,7 +101,7 @@ begin
   RandSeed := 0;
   for i := -20 to 20 do
     for j := -20 to 20 do
-      GLS.TilePlane.Tiles[i, j] :=
+      GLTilePlane.Tiles[i, j] :=
         Random(GLMaterialLibrary.Materials.Count - 1) + 1;
 
   // set all tile materials to anisotropic,
@@ -122,13 +122,13 @@ begin
   my := Y;
   if Shift = [ssLeft] then
   begin
-    GLS.TilePlane.Tiles[tileX, tileY] := CBMaterial.ItemIndex;
-    GLS.TilePlane.StructureChanged;
+    GLTilePlane.Tiles[tileX, tileY] := CBMaterial.ItemIndex;
+    GLTilePlane.StructureChanged;
   end
   else if Shift = [ssRight] then
   begin
-    GLS.TilePlane.Tiles[tileX, tileY] := 0;
-    GLS.TilePlane.StructureChanged;
+    GLTilePlane.Tiles[tileX, tileY] := 0;
+    GLTilePlane.StructureChanged;
   end;
 end;
 
@@ -186,13 +186,13 @@ begin
       translating := False;
       if IsKeyDown(VK_LBUTTON) then
       begin
-        GLS.TilePlane.Tiles[tileX, tileY] := CBMaterial.ItemIndex;
-        GLS.TilePlane.StructureChanged;
+        GLTilePlane.Tiles[tileX, tileY] := CBMaterial.ItemIndex;
+        GLTilePlane.StructureChanged;
       end;
       if IsKeyDown(VK_RBUTTON) then
       begin
-        GLS.TilePlane.Tiles[tileX, tileY] := 0;
-        GLS.TilePlane.StructureChanged;
+        GLTilePlane.Tiles[tileX, tileY] := 0;
+        GLTilePlane.StructureChanged;
       end;
     end;
     mx := mp.X;
@@ -213,7 +213,7 @@ end;
 procedure TForm1.BUPackClick(Sender: TObject);
 begin
   // packing a tile area removes unused area from the in-memory structures
-  GLS.TilePlane.Tiles.Pack;
+  GLTilePlane.Tiles.Pack;
 end;
 
 procedure TForm1.CBShowGridClick(Sender: TObject);
@@ -223,7 +223,7 @@ end;
 
 procedure TForm1.CBSortByMaterialsClick(Sender: TObject);
 begin
-  GLS.TilePlane.SortByMaterials := CBSortByMaterials.Checked;
+  GLTilePlane.SortByMaterials := CBSortByMaterials.Checked;
 end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);

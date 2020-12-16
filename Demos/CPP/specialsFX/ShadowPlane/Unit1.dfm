@@ -25,6 +25,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = 8421440
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     FieldOfView = 154.503555297851600000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
@@ -127,7 +128,6 @@ object Form1: TForm1
       Material.MaterialLibrary = GLMaterialLibrary
       Material.LibMaterialName = 'Marble'
       Position.Coordinates = {0000000000000040000080C00000803F}
-      Up.Coordinates = {000000000000803F0000008000000000}
       Height = 4.000000000000000000
       Width = 4.000000000000000000
       XTiles = 4

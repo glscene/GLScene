@@ -44,8 +44,7 @@ uses
   GLS.RenderContextInfo,
   GLS.State,
   GLS.Context,
-  GLS.BaseClasses,
-  ;
+  GLS.BaseClasses;
 
 type
   TfrmClothify = class(TForm)

@@ -14,7 +14,7 @@
 
 #include "GLS.GeomObjects.hpp"
 #include "GLS.HUDObjects.hpp"
-#include "GLS.NGDManager.hpp"
+#include "Physics.NGDManager.hpp"
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SimpleNavigation.hpp"

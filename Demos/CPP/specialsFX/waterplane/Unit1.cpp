@@ -8,6 +8,7 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+#pragma link "GLSL.UserShader"
 #pragma resource "*.dfm"
 
 TForm1 *Form1;
@@ -147,7 +148,7 @@ void __fastcall TForm1::GLHeightField1GetHeight(const float x,
 {
   z = 0.5 -
     (GLWaterPlane1->Mask->Bitmap->Canvas->
-     Pixels[Round(x + 64)][Round(y + 64)] & 0xFF) / 255;
+     Pixels[Int(x + 64)][Int(y + 64)] & 0xFF) / 255;
 }
 
 //---------------------------------------------------------------------------

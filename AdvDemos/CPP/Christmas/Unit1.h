@@ -99,6 +99,7 @@ __published:	// IDE-managed Components
 	TPopupMenu *PopupMenu;
 	TMenuItem *miMerryCristmas;
 	TMenuItem *miHappyNewYear;
+	TGLFireFXManager *GLFireFXManager1;
 //	TScreenSaver *ScreenSaver;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall ViewerMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,

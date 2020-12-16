@@ -23,6 +23,7 @@ object Form1: TForm1
     BeforeRender = GLSceneViewer1BeforeRender
     Buffer.FaceCulling = False
     FieldOfView = 159.451248168945300000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     TabOrder = 0

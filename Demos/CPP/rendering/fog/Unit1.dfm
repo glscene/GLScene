@@ -27,6 +27,7 @@ object Form1: TForm1
     Margins.Bottom = 2
     Camera = GLCamera1
     FieldOfView = 144.457351684570300000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove

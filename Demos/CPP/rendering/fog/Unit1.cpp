@@ -30,7 +30,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
   TGLCube *Cube;
 
   SetGLSceneMediaDir();
-  GLMaterialLibrary1->AddTextureMaterial("glscene", "GLS.Scene.bmp",true);
+  GLMaterialLibrary1->AddTextureMaterial("glscene", "GLScene.bmp",true);
   for (X=-cNb; X<cNb; X++)
 	for (Y=-cNb; Y<cNb; Y++)
 	  for (Z=-cNb; Z<cNb; Z++)
@@ -38,12 +38,12 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 		{
 		  Cube = (TGLCube *) GLDummyCube1->AddNewChild(__classid(TGLCube));
 		  Cube->Material->MaterialLibrary = GLMaterialLibrary1;
-          Cube->Material->LibMaterialName = "GLS.Scene";
-          Cube->Position->SetPoint(X * cSpacing, Y * cSpacing, Z * cSpacing);
-          Cube->CubeWidth = cEdgeLength;
-          Cube->CubeHeight = cEdgeLength;
-          Cube->CubeDepth = cEdgeLength;
-        }
+		  Cube->Material->LibMaterialName = "GLScene";
+		  Cube->Position->SetPoint(X * cSpacing, Y * cSpacing, Z * cSpacing);
+		  Cube->CubeWidth = cEdgeLength;
+		  Cube->CubeHeight = cEdgeLength;
+		  Cube->CubeDepth = cEdgeLength;
+		}
   ApplyFogSettings();
 }
 //---------------------------------------------------------------------------
@@ -56,7 +56,7 @@ void TForm1::ApplyFogSettings(void)
   fog->FogColor->AsWinColor = SFogColor->Brush->Color;
   fog->FogColor->Alpha = (float)StrToInt(EFogDensity->Text) / 1000;
   if (CBApplyToBackground->Checked)
-    GLSceneViewer1->Buffer->BackgroundColor = SFogColor->Brush->Color;
+	GLSceneViewer1->Buffer->BackgroundColor = SFogColor->Brush->Color;
   fog->FogStart = StrToInt(EFogStart->Text);
   fog->FogEnd = StrToInt(EFogEnd->Text);
 
@@ -65,7 +65,7 @@ void TForm1::ApplyFogSettings(void)
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender,
-      TMouseButton Button, TShiftState Shift, int X, int Y)
+	  TMouseButton Button, TShiftState Shift, int X, int Y)
 {
   mx = X;
   my = Y;
@@ -73,37 +73,37 @@ void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender,
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender,
-      TShiftState Shift, int X, int Y)
+	  TShiftState Shift, int X, int Y)
 {
   if (Shift.Contains(ssLeft))
   {
 	GLCamera1->MoveAroundTarget(my-Y, mx-X);
-    mx = X;
-    my = Y;
+	mx = X;
+	my = Y;
   }
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::CBFogEnableClick(TObject *Sender)
 {
-  ApplyFogSettings();        
+  ApplyFogSettings();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::EFogStartChange(TObject *Sender)
 {
   if (((TEdit *)(Sender))->Text != "")
-    ApplyFogSettings();
+	ApplyFogSettings();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::SFogColorMouseDown(TObject *Sender,
-      TMouseButton Button, TShiftState Shift, int X, int Y)
+	  TMouseButton Button, TShiftState Shift, int X, int Y)
 {
   if (ColorDialog1->Execute())
   {
-    SFogColor->Brush->Color = ColorDialog1->Color;
-    ApplyFogSettings();
+	SFogColor->Brush->Color = ColorDialog1->Color;
+	ApplyFogSettings();
   }
 }
 //---------------------------------------------------------------------------
@@ -129,15 +129,15 @@ void __fastcall TForm1::CBTextureEnabledClick(TObject *Sender)
 void __fastcall TForm1::CBTextureIgnoreFogClick(TObject *Sender)
 {
   if (CBTextureIgnoreFog->Checked)
-    GLMaterialLibrary1->Materials->Items[0]->Material->MaterialOptions << moIgnoreFog;
+	GLMaterialLibrary1->Materials->Items[0]->Material->MaterialOptions << moIgnoreFog;
   else
-    GLMaterialLibrary1->Materials->Items[0]->Material->MaterialOptions >> moIgnoreFog;
+	GLMaterialLibrary1->Materials->Items[0]->Material->MaterialOptions >> moIgnoreFog;
   ApplyFogSettings();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
-          TPoint &MousePos, bool &Handled)
+		  TPoint &MousePos, bool &Handled)
 {
  GLCamera1->AdjustDistanceToTarget(Power(1.1, WheelDelta/120));
 }

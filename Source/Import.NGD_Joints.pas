@@ -37,7 +37,7 @@ uses
 
 const
 {$IFDEF WIN32}
-   JointLibraryDLL = 'dJointLibrary.dll';
+   JointLibraryDLL = 'dJointLibrary32.dll';
 {$ENDIF}
 {$IFDEF WIN64}
    JointLibraryDLL = 'dJointLibrary64.dll';

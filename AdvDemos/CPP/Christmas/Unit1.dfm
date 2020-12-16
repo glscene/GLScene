@@ -17,6 +17,7 @@ object Form1: TForm1
   Visible = True
   WindowState = wsMaximized
   OnCreate = FormCreate
+  OnDblClick = ViewerDblClick
   OnKeyPress = FormKeyPress
   OnMouseWheel = FormMouseWheel
   OnResize = FormResize
@@ -338,6 +339,9 @@ object Form1: TForm1
           Slices = 9
           Stacks = 1
           TopRadius = 1.000000000000000000
+          EffectsData = {
+            0458434F4C02010201060A54474C424669726546580201020006064669726546
+            58020002000610474C4669726546584D616E6167657231}
         end
       end
     end
@@ -5441,5 +5445,22 @@ object Form1: TForm1
       RadioItem = True
       OnClick = miHappyNewYearClick
     end
+  end
+  object GLFireFXManager1: TGLFireFXManager
+    FireDir.Coordinates = {000000009A99993E0000000000000000}
+    InitialDir.Coordinates = {00000000CDCC4C3E0000000000000000}
+    MaxParticles = 128
+    ParticleSize = 0.150000005960464500
+    FireDensity = 0.600000023841857900
+    FireEvaporation = 0.860000014305114700
+    ParticleLife = 2
+    FireBurst = 1.000000000000000000
+    FireRadius = 0.100000001490116100
+    Disabled = False
+    Paused = False
+    ParticleInterval = 0.039999999105930330
+    UseInterval = True
+    Left = 24
+    Top = 192
   end
 end

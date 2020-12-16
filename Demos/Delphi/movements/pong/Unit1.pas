@@ -44,7 +44,7 @@ type
     SpaceText1: TGLSpaceText;
     Timer1: TTimer;
     GLCadencer1: TGLCadencer;
-    GLS.ShadowVolume: TGLShadowVolume;
+    GLShadowVolume: TGLShadowVolume;
     procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
       X, Y: Integer);
     procedure FormCreate(Sender: TObject);

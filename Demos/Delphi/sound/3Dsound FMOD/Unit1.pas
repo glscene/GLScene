@@ -26,7 +26,7 @@ uses
   GLS.FileWAV,
   GLS.FileMP3,
   GLS.VectorGeometry,
-  GLS.U, GLS.GeomObjectstils;
+  GLS.Utils;
 
 
 type

@@ -32,7 +32,7 @@ type
     GLCube1: TGLCube;
     GLFreeForm1: TGLFreeForm;
     Button1: TButton;
-    GLS.Feedback1: TGLFeedback;
+    GLFeedback1: TGLFeedback;
     GLDodecahedron1: TGLDodecahedron;
     MeshObject1: TGLDummyCube;
     MeshObject2: TGLDummyCube;
@@ -63,7 +63,7 @@ begin
 
   // Set feedback to active, will feedback render child
   // objects into it's buffer
-  GLS.Feedback1.Active := True;
+  GLFeedback1.Active := True;
 
   // Process the first mesh object (GLCube and GLDodecahedron)
 
@@ -72,7 +72,7 @@ begin
 
   // Render the feedback object to buffer it's child object
   // that are visible
-  GLSceneViewer1.Buffer.Render(GLS.Feedback1);
+  GLSceneViewer1.Buffer.Render(GLFeedback1);
 
   // Hide the child objects we rendered
   MeshObject1.Visible := False;
@@ -85,13 +85,13 @@ begin
   // and build a mesh (normals are recalculated
   // since feedback only yields position and
   // texcoords)
-  GLS.Feedback1.BuildMeshFromBuffer(
+  GLFeedback1.BuildMeshFromBuffer(
     mo.Vertices, mo.Normals, mo.Colors, mo.TexCoords, nil);
 
   // Process the second mesh object (GLSphere)
   // (comments from first mesh object apply here also)
   MeshObject2.Visible := True;
-  GLSceneViewer1.Buffer.Render(GLS.Feedback1);
+  GLSceneViewer1.Buffer.Render(GLFeedback1);
   MeshObject2.Visible := False;
 
   // Vertex indices are required for smooth normals
@@ -99,10 +99,10 @@ begin
   mo.Mode := momFaceGroups;
   fg := TFGIndexTexCoordList.CreateOwned(mo.FaceGroups);
   fg.Mode := fgmmTriangles;
-  GLS.Feedback1.BuildMeshFromBuffer(mo.Vertices, mo.Normals, nil, fg.TexCoords, fg.VertexIndices);
+  GLFeedback1.BuildMeshFromBuffer(mo.Vertices, mo.Normals, nil, fg.TexCoords, fg.VertexIndices);
 
   // Deactivate the feedback object
-  GLS.Feedback1.Active := False;
+  GLFeedback1.Active := False;
 
   GLFreeForm1.StructureChanged;
 end;

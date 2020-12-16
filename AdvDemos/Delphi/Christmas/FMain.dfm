@@ -31,7 +31,7 @@ object Main: TMain
     Buffer.AmbientColor.Color = {0000803F0000803F0000803F0000803F}
     Buffer.ContextOptions = [roDoubleBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aa2x
-    FieldOfView = 159.463394165039100000
+    FieldOfView = 168.000000000000000000
     PenAsTouch = False
     Align = alClient
     PopupMenu = PopupMenu
@@ -68,12 +68,12 @@ object Main: TMain
     Top = 16
     object Camera: TGLCamera
       DepthOfView = 100.000000000000000000
-      FocalLength = 50.000000000000000000
+      FocalLength = 29.008768081665040000
       TargetObject = DCCameraTarget
       Position.Coordinates = {0000C0400000803F0000E0400000803F}
     end
     object DCFirTree: TGLDummyCube
-      Position.Coordinates = {000000000000B0C0000000000000803F}
+      Position.Coordinates = {000000C00000B0C0000000000000803F}
       Scale.Coordinates = {0000A0400000A0400000A04000000000}
       CubeSize = 1.000000000000000000
       object DCTree: TGLDummyCube
@@ -212,11 +212,6 @@ object Main: TMain
         object DCFireSource: TGLDummyCube
           Position.Coordinates = {00000000000000C0000000000000803F}
           CubeSize = 1.000000000000000000
-          EffectsData = {
-            0458434F4C02010201061254474C536F75726365504658456666656374020202
-            00120000000002000200060750465846697265050000000000000080FF3F0206
-            0200080200080200080500000000000000000000050000000000000000000005
-            0000000000CDCCCCFB3F02000200090500000000000000000000080200}
         end
         object CYLog: TGLCylinder
           Material.FrontProperties.Diffuse.Color = {9A99993E9A99993E9A99993E0000803F}
@@ -337,8 +332,17 @@ object Main: TMain
           Slices = 9
           Stacks = 1
           TopRadius = 1.000000000000000000
+          EffectsData = {
+            0458434F4C02010201060A54474C424669726546580201020006064669726546
+            5802000200060F474C4669726546584D616E61676572}
         end
       end
+    end
+    object FFPiano: TGLFreeForm
+      Direction.Coordinates = {79ACAAB400000000000080BF00000000}
+      Position.Coordinates = {00006041000020C0000000000000803F}
+      Scale.Coordinates = {00000040000000400000004000000000}
+      TurnAngle = 180.000000000000000000
     end
     object DCGifts: TGLDummyCube
       Visible = False
@@ -5438,5 +5442,24 @@ object Main: TMain
       RadioItem = True
       OnClick = miHappyNewYearClick
     end
+  end
+  object GLFireFXManager: TGLFireFXManager
+    FireDir.Coordinates = {000000000000803F0000000000000000}
+    InitialDir.Coordinates = {00000000000000000000000000000000}
+    Cadencer = Cadencer
+    MaxParticles = 96
+    ParticleSize = 0.699999988079071000
+    InnerColor.Color = {0000803F0000803E000000000000803F}
+    FireDensity = 0.500000000000000000
+    FireEvaporation = 0.860000014305114700
+    FireBurst = 1.000000000000000000
+    FireRadius = 0.500000000000000000
+    Disabled = False
+    Paused = False
+    ParticleInterval = 0.009999999776482582
+    UseInterval = True
+    Reference = CYLog
+    Left = 24
+    Top = 208
   end
 end

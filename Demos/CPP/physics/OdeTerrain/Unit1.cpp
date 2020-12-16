@@ -15,7 +15,7 @@
 
 #pragma link "GLS.HeightData"
 #pragma link "GLS.HUDObjects"
-#pragma link "GLLensFlare"
+#pragma link "GLS.LensFlare"
 #pragma link "GLS.Material"
 #pragma link "GLS.Navigator"
 #pragma link "GLS.Objects"
@@ -174,13 +174,13 @@ void __fastcall TForm1::FormKeyPress(TObject *Sender, System::WideChar &Key)
       SkyDome1->Bands->Items[0]->StartColor->AsWinColor = clWhite; //(Graphics::TColor) RGB(0, 0, 0);
 
 	  SkyDome1->Stars->AddRandomStars(700, clWhite, True);      // many white stars
-	  SkyDome1->Stars->AddRandomStars(100, (Graphics::TColor) RGB(255, 200, 200), True);        // some redish ones
-      SkyDome1->Stars->AddRandomStars(100, (Graphics::TColor) RGB(200, 200, 255), True);        // some blueish ones
-	  SkyDome1->Stars->AddRandomStars(100, (Graphics::TColor) RGB(255, 255, 200), True);        // some yellowish ones
+	  SkyDome1->Stars->AddRandomStars(100, (Vcl::Graphics::TColor) RGB(255, 200, 200), True);        // some redish ones
+	  SkyDome1->Stars->AddRandomStars(100, (Vcl::Graphics::TColor) RGB(200, 200, 255), True);        // some blueish ones
+	  SkyDome1->Stars->AddRandomStars(100, (Vcl::Graphics::TColor) RGB(255, 255, 200), True);        // some yellowish ones
 
-      GLSceneViewer1->Buffer->BackgroundColor = Graphics::clBlack;
+      GLSceneViewer1->Buffer->BackgroundColor = Vcl::Graphics::clBlack;
       fe = GLSceneViewer1->Buffer->FogEnvironment;
-      fe->FogColor->AsWinColor = Graphics::clBlack;
+      fe->FogColor->AsWinColor = Vcl::Graphics::clBlack;
 	  fe->FogStart = -fe->FogStart;     // Fog is used to make things darker
 
 	  SPMoon->Visible = True;

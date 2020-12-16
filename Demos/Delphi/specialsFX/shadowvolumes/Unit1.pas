@@ -29,7 +29,7 @@ uses
   GLS.VectorGeometry,
   GLS.Material,
   GLS.Coordinates,
- 
+
   GLS.SimpleNavigation,
   GLS.BaseClasses,
   GLS.Utils;
@@ -42,7 +42,7 @@ type
     GLCamera: TGLCamera;
     DCCamera: TGLDummyCube;
     GLLightSource1: TGLLightSource;
-    GLS.ShadowVolume: TGLShadowVolume;
+    GLShadowVolume: TGLShadowVolume;
     GLSphere1: TGLSphere;
     DCLight1Turn: TGLDummyCube;
     DCLight1Pitch: TGLDummyCube;
@@ -126,12 +126,12 @@ begin
           sphere := TGLSphere(DCSpheres.AddNewChild(TGLSphere));
           sphere.Position.SetPoint(X * cSpacing, Y * cSpacing, z * cSpacing);
           sphere.Radius := cRadius;
-          GLS.ShadowVolume.Occluders.AddCaster(sphere, 0, scmParentVisible);
+          GLShadowVolume.Occluders.AddCaster(sphere, 0, scmParentVisible);
         end;
-  DCSpheres.MoveTo(GLS.ShadowVolume);
+  DCSpheres.MoveTo(GLShadowVolume);
   GLFreeForm.LoadFromFile('trinityrage.smd');
   GLFreeForm.BuildSilhouetteConnectivityData;
-  GLS.ShadowVolume.Occluders.AddCaster(GLFreeForm);
+  GLShadowVolume.Occluders.AddCaster(GLFreeForm);
   CBBlueLightClick(Self);
   CBRedLightClick(Self);
   ScrollBar_ShadowResolutionChange(Self);
@@ -148,25 +148,25 @@ end;
 procedure TForm1.CBShowVolumesClick(Sender: TObject);
 begin
   if CBShowVolumes.Checked then
-    GLS.ShadowVolume.Options := GLS.ShadowVolume.Options + [svoShowVolumes]
+    GLShadowVolume.Options := GLShadowVolume.Options + [svoShowVolumes]
   else
-    GLS.ShadowVolume.Options := GLS.ShadowVolume.Options - [svoShowVolumes];
+    GLShadowVolume.Options := GLShadowVolume.Options - [svoShowVolumes];
 end;
 
 procedure TForm1.RBZFailClick(Sender: TObject);
 begin
   // this event handles all the radio buttons
   if RBDarkening.Checked then
-    GLS.ShadowVolume.Mode := svmDarkening
+    GLShadowVolume.Mode := svmDarkening
   else if RBNoShadows.Checked then
-    GLS.ShadowVolume.Mode := svmOff
+    GLShadowVolume.Mode := svmOff
   else
   begin
-    GLS.ShadowVolume.Mode := svmAccurate;
+    GLShadowVolume.Mode := svmAccurate;
     if RBZFail.Checked then
-      GLS.ShadowVolume.Capping := svcAlways
+      GLShadowVolume.Capping := svcAlways
     else
-      GLS.ShadowVolume.Capping := svcNever;
+      GLShadowVolume.Capping := svcNever;
   end;
 end;
 
@@ -223,7 +223,7 @@ procedure TForm1.ScrollBar_ShadowResolutionChange(Sender: TObject);
 begin
   GLSphere_Shadow.Stacks := ScrollBar_ShadowResolution.Position;
   GLSphere_Shadow.Slices := ScrollBar_ShadowResolution.Position;
-  GLS.ShadowVolume.FlushSilhouetteCache;
+  GLShadowVolume.FlushSilhouetteCache;
 end;
 
 procedure TForm1.Button_GenerateSilhouetteClick(Sender: TObject);
