@@ -1,8 +1,8 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
 
-unit FormatDDSImage;
+unit Formats.DDSImage;
 
 (*
     Alternative for DDS unit with more supported formats of flat image:
@@ -25,7 +25,7 @@ uses
   System.SysUtils,
   Vcl.Graphics,
 
-  GLS.OpenGLTokens,
+  GLS.VectorTypes,
   GLS.VectorGeometry,
   GLS.Graphics,
   GLS.Context;
@@ -45,7 +45,7 @@ implementation
 //-------------------------------------------------  
 
 uses
-  FormatDXTC,
+  Formats.DXTC,
   GLS.FileDDS,
   GLS.TextureFormat;
 

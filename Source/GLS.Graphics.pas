@@ -1,7 +1,6 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Graphics;
 
 (*
@@ -31,6 +30,7 @@ uses
 
   {$IFDEF USE_GRAPHICS32} GR32, {$ENDIF}
 
+  GLS.VectorTypes,
   GLS.OpenGLTokens,
   GLS.State,
   GLS.ApplicationFileIO,

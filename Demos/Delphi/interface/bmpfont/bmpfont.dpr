@@ -18,12 +18,12 @@ program Bmpfont;
 
 uses
   Forms,
-  Unit1 in 'Unit1.pas' {Form1};
+  fBmpFont in 'fBmpFont.pas' {FormBmpFont};
 
 {$R *.RES}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormBmpFont, FormBmpFont);
   Application.Run;
 end.

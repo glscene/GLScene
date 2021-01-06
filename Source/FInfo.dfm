@@ -36,10 +36,6 @@ object GLInfoForm: TGLInfoForm
     object TabSheetGLScene: TTabSheet
       Caption = 'GLScene'
       ImageIndex = 4
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Image: TImage
         Left = 1
         Top = 2
@@ -2730,10 +2726,6 @@ object GLInfoForm: TGLInfoForm
     end
     object TabSheetInformation: TTabSheet
       Caption = 'Information'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object ScrollBoxInfo: TScrollBox
         Left = 0
         Top = 0
@@ -3457,10 +3449,6 @@ object GLInfoForm: TGLInfoForm
     object TabSheetExtensions: TTabSheet
       Caption = 'Supported extensions'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object ListBoxExtensions: TListBox
         Left = 0
         Top = 0
@@ -3487,10 +3475,6 @@ object GLInfoForm: TGLInfoForm
     end
     object TabSheetContributors: TTabSheet
       Caption = 'Contributors'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object MemoContributors: TMemo
         Left = 0
         Top = 0
@@ -3507,10 +3491,8 @@ object GLInfoForm: TGLInfoForm
           'Alejandro Leon Escalera'
           'Alexandre Hirzel'
           'Arvydas Juskevicius'
-          'Ast'
           'Brian Johns'
           'Burkhard Carstens'
-          'C4'
           'Da Stranger'
           'Daniel Bartlett'
           'Dave Kerr'
@@ -3520,8 +3502,7 @@ object GLInfoForm: TGLInfoForm
           'Eric Hardinge'
           'Eric Pascual'
           'Erick Schuitema'
-          'fig'
-          'filippo'
+          'Filippo'
           'Gabriel Corneanu'
           'Ivan Lee Herring'
           'Jerome Delauney'
@@ -3532,11 +3513,10 @@ object GLInfoForm: TGLInfoForm
           'Lionel Reynaud'
           'Lord Crc'
           'Lukasz Sokol'
-          'mal'
           'Marcus Oblak'
           'Matheus Degiovani'
           'Mattias Fagerlund'
-          'mif'
+          'Mif'
           'Mike Lischke'
           'Nelson Chu'
           'overkrik'
@@ -3551,7 +3531,7 @@ object GLInfoForm: TGLInfoForm
           'Roshal Sasha'
           'Rustam Asmandiarov'
           'Sandor Domokos'
-          'Sergio'
+          'Sergio Feitoza'
           'Solerman Kaplon'
           'Sternas Stefanos'
           'Stuart Gooding'
@@ -3561,14 +3541,11 @@ object GLInfoForm: TGLInfoForm
         ReadOnly = True
         ScrollBars = ssVertical
         TabOrder = 0
+        ExplicitTop = 72
       end
     end
     object TabSheetAbout: TTabSheet
       Caption = 'About'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object WebsiteLbl: TLabel
         Left = 57
         Top = 274

@@ -1,7 +1,6 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Particles;
 
 (* Particle systems, based on replication of full-featured scene objects. *)
@@ -15,6 +14,7 @@ uses
   System.Classes,
   System.SysUtils,
 
+  GLS.VectorTypes,
   GLS.Scene,
   GLS.XCollection,
   GLS.PersistentClasses,

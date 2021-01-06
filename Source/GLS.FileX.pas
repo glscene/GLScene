@@ -1,7 +1,6 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.FileX;
 
 (* Support of X format files (Microsoft's favorite format) *)
@@ -22,7 +21,7 @@ uses
   GLS.VectorLists,
   GLS.Material,
 
-  FormatX;
+  Formats.X;
 
 type
   TGLXVectorFile = class(TGLVectorFile)

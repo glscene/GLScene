@@ -1,8 +1,8 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
 
-unit Format3DSUtils;
+unit Formats._3DSUtils;
 
 (*
    Utility functions for the universal 3DS file reader and writer (TFile3DS).
@@ -15,11 +15,13 @@ interface
 {$I GLScene.inc}
 {$R-}
 
-uses 
+uses
   System.Classes,
   System.SysUtils,
-  Format3DS,
-  Format3DSTypes,
+  Formats._3DS,
+  Formats._3DSTypes,
+  Formats._3DSConst,
+
   GLS.Strings;
 
 // functions to retrieve global settings of a specific 3DS database
@@ -129,9 +131,6 @@ procedure ShowErrorFormatted(const ErrorMessage: string; const Args: array of co
 //-------------------------------------------------
 implementation
 //-------------------------------------------------
-
-uses 
-  Format3DSConst;
 
 type
   E3DSError = class(Exception);

@@ -1,8 +1,7 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
-unit Format3DS;
+unit Formats._3DS;
 
 (*
   Implementation of an universal 3DS file reader (and writer). This is the main file of the
@@ -27,7 +26,7 @@ uses
   System.Classes, 
   System.SysUtils,
 
-  Format3DSTypes;
+  Formats._3DSTypes;
 
 type
   TFile3DS = class;
@@ -241,8 +240,8 @@ implementation
 // ---------------------------------------------------------------------------------------------------------------------
 
 uses 
-  Format3DSConst,
-  Format3DSUtils;
+  Formats._3DSConst,
+  Formats._3DSUtils;
 
 function StrPasFree(P: PChar3DS): String;
 begin
@@ -2955,7 +2954,7 @@ end;
 function TFile3DS.GetDatabaseRelease: TReleaseLevel;
 
 begin
-  Result := Format3DSUtils.GetDatabaseRelease(Self, FDatabase);
+  Result := Formats._3DSUtils.GetDatabaseRelease(Self, FDatabase);
 end;
 
 //---------------------------------------------------------------------------------------------------------------------
@@ -2963,7 +2962,7 @@ end;
 function TFile3DS.GetMeshRelease: TReleaseLevel;
 
 begin
-  Result := Format3DSUtils.GetMeshRelease(Self, FDatabase);
+  Result := Formats._3DSUtils.GetMeshRelease(Self, FDatabase);
 end;
 
 //---------------------------------------------------------------------------------------------------------------------

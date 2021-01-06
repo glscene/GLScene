@@ -1,7 +1,6 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
 unit Import.CUDAUtility;
 
 (* CUDA Utility Wraper of cutil *)
@@ -10,7 +9,6 @@ interface
 
 uses
   Winapi.Windows;
-
 
 const
 {$IFDEF WIN64}

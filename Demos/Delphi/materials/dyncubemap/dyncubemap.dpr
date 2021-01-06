@@ -22,12 +22,12 @@ program dyncubemap;
 
 uses
   Forms,
-  Unit1 in 'Unit1.pas' {Form1};
+  fDynCubeMap in 'fDynCubeMap.pas' {FormDynCubeMap};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormDynCubeMap, FormDynCubeMap);
   Application.Run;
 end.

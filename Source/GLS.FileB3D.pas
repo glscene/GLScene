@@ -1,7 +1,6 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.FileB3D;
 
 (* B3D VectorFile class to load Blitz 3D model files *)
@@ -20,7 +19,7 @@ uses
   GLS.VectorTypes, 
   GLS.VectorGeometry, 
   GLS.VectorLists,
-  FormatB3D;
+  Formats.B3D;
 
 type
   TGLB3DVectorFile = class(TGLVectorFile)

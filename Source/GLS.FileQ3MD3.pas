@@ -1,7 +1,6 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.FileQ3MD3;
 
 (* Helper classes and methods for Quake3 MD3 actors *)
@@ -17,7 +16,7 @@ uses
   GLS.VectorLists,
   GLS.Material,
   GLS.PersistentClasses,
-  FormatMD3;
+  Formats.MD3;
 
 type
   (* This class is used to extract the tag transform information

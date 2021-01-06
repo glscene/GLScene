@@ -1,5 +1,5 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
 
 unit GLS.Blur;
@@ -17,8 +17,7 @@ uses
   System.SysUtils,
   VCL.Graphics,
 
-  
-  GLS.OpenGLTokens,
+  GLS.VectorTypes,
   GLS.VectorGeometry,
   GLS.BaseClasses,
   GLS.Scene,
@@ -169,7 +168,6 @@ uses
   GLS.Coordinates,
   GLS.PersistentClasses,
   GLS.Strings,
-  GLS.VectorTypes,
   GLS.OpenGLAdapter;
 
 const

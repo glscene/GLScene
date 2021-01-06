@@ -1,5 +1,5 @@
 ﻿//
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
 
 unit GPU.CUDAGraphics;
@@ -16,7 +16,6 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
   Import.CUDAApi,
   GPU.CUDA,
 

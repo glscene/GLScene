@@ -1,7 +1,6 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.FileOCT;
 
 (*
@@ -26,7 +25,7 @@ uses
   GLS.VectorFileObjects,
   GLS.VectorGeometry,
   GLS.ApplicationFileIO,
-  FormatOCT;
+  Formats.OCT;
 
 type
 

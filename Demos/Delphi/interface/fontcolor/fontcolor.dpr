@@ -11,12 +11,12 @@ program Fontcolor;
 
 uses
   Forms,
-  Unit1 in 'Unit1.pas' {Form1};
+  fFontColor in 'fFontColor.pas' {FormFontColor};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormFontColor, FormFontColor);
   Application.Run;
 end.

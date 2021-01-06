@@ -13,12 +13,12 @@ program dynamictexture;
 
 uses
   Forms,
-  Unit1 in 'Unit1.pas' {Form1};
+  fDynamicTexture in 'fDynamicTexture.pas' {FormDynamicTexture};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormDynamicTexture, FormDynamicTexture);
   Application.Run;
 end.

@@ -44,12 +44,12 @@ program GuiPaint;
 
 uses
   Forms,
-  Unit1 in 'Unit1.pas' {Form1};
+  fGuiPaint in 'fGuiPaint.pas' {FormGuiPaint};
 
 {$R *.RES}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormGuiPaint, FormGuiPaint);
   Application.Run;
 end.

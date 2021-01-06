@@ -1,5 +1,5 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
 {
    Conversion of cg NVIDIA header files to cg.pas

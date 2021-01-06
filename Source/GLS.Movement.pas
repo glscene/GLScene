@@ -1,5 +1,5 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
 
 unit GLS.Movement;
@@ -18,7 +18,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-
+  GLS.VectorTypes,
   GLS.OpenGLTokens,
   GLS.Scene,
   GLS.PersistentClasses,
@@ -285,8 +285,6 @@ procedure StopAllMovements(const Scene: TGLScene; const StopCamerasMove, StopObj
 // ------------------------------------------------------------------
 implementation
 // ------------------------------------------------------------------
-uses
-  GLS.VectorTypes;
 
  //----------------------------- TGLPathNode ------------------------------------
 constructor TGLPathNode.Create(Collection: TCollection);

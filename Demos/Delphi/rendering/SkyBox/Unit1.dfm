@@ -36,7 +36,7 @@ object Form1: TForm1
     object GLSkyBox1: TGLSkyBox
       Direction.Coordinates = {9598A23144F7DFB20000803F00000000}
       Up.Coordinates = {1DB356B30000803FB3FA87B300000000}
-      MaterialLibrary = GLMaterialLibrary1
+      MaterialLibrary = GLMaterialLibraryCM
       MatNameTop = 'Top'
       MatNameBottom = 'Bottom'
       MatNameLeft = 'Left'
@@ -47,7 +47,7 @@ object Form1: TForm1
       CloudsPlaneOffset = 0.119999997317791000
       CloudsPlaneSize = 2.000000000000000000
       object GLSphere1: TGLSphere
-        Material.MaterialLibrary = GLMaterialLibrary1
+        Material.MaterialLibrary = GLMaterialLibraryCM
         Direction.Coordinates = {18EBC2BE6823FE3E49BA47BF00000000}
         PitchAngle = 86.500000000000000000
         Position.Coordinates = {000000C000008040000080BF0000803F}
@@ -55,7 +55,7 @@ object Form1: TForm1
         Up.Coordinates = {CE00D4BE9A8D58BF0519ACBE00000000}
         Radius = 1.000000000000000000
         object GLSphere2: TGLSphere
-          Material.MaterialLibrary = GLMaterialLibrary1
+          Material.MaterialLibrary = GLMaterialLibraryCM
           Direction.Coordinates = {000000000000803F0000000000000000}
           PitchAngle = -8.000000000000000000
           Position.Coordinates = {0000000000000000000000400000803F}
@@ -66,7 +66,7 @@ object Form1: TForm1
       end
     end
     object GLSkyBox2: TGLSkyBox
-      MaterialLibrary = GLMaterialLibrary1
+      MaterialLibrary = GLMaterialLibraryCM
       MatNameClouds = 'Clouds'
       CloudsPlaneOffset = 0.100000001490116100
       CloudsPlaneSize = 4.000000000000000000
@@ -74,47 +74,47 @@ object Form1: TForm1
     object Castle: TGLDummyCube
       CubeSize = 1.000000000000000000
       object GLCube1: TGLCube
-        Material.MaterialLibrary = GLMaterialLibrary1
+        Material.MaterialLibrary = GLMaterialLibraryCM
         Position.Coordinates = {0BD43940FFFF7FC018230B400000803F}
         CubeSize = {0000803F000000420000803F}
         object GLCube2: TGLCube
-          Material.MaterialLibrary = GLMaterialLibrary1
+          Material.MaterialLibrary = GLMaterialLibraryCM
           Position.Coordinates = {000040C0000000BFCDCCCC3D0000803F}
           CubeSize = {0000C0400000803F0000803F}
         end
       end
       object GLCube11: TGLCube
-        Material.MaterialLibrary = GLMaterialLibrary1
+        Material.MaterialLibrary = GLMaterialLibraryCM
         Direction.Coordinates = {000080BF000000001AE1F7B300000000}
         Position.Coordinates = {F42B46C0FFFF7FC018230B400000803F}
         TurnAngle = -90.000000000000000000
         CubeSize = {0000803F000000420000803F}
         object GLCube21: TGLCube
-          Material.MaterialLibrary = GLMaterialLibrary1
+          Material.MaterialLibrary = GLMaterialLibraryCM
           Position.Coordinates = {000040C0000000BFCDCCCC3D0000803F}
           CubeSize = {0000C0400000803F0000803F}
         end
       end
       object GLCube111: TGLCube
-        Material.MaterialLibrary = GLMaterialLibrary1
+        Material.MaterialLibrary = GLMaterialLibraryCM
         Direction.Coordinates = {0000803F00000000B28FF03200000000}
         Position.Coordinates = {0CD43940FFFF7FC0E8DC74C00000803F}
         TurnAngle = 90.000000000000000000
         CubeSize = {0000803F000000420000803F}
         object GLCube211: TGLCube
-          Material.MaterialLibrary = GLMaterialLibrary1
+          Material.MaterialLibrary = GLMaterialLibraryCM
           Position.Coordinates = {000040C0000000BFCDCCCC3D0000803F}
           CubeSize = {0000C0400000803F0000803F}
         end
       end
       object GLCube112: TGLCube
-        Material.MaterialLibrary = GLMaterialLibrary1
+        Material.MaterialLibrary = GLMaterialLibraryCM
         Direction.Coordinates = {647F2B3300000000000080BF00000000}
         Position.Coordinates = {F42B46C0FFFF7FC0E8DC74C00000803F}
         TurnAngle = -180.000000000000000000
         CubeSize = {0000803F000000420000803F}
         object GLCube212: TGLCube
-          Material.MaterialLibrary = GLMaterialLibrary1
+          Material.MaterialLibrary = GLMaterialLibraryCM
           Position.Coordinates = {000040C0000000BFCDCCCC3D0000803F}
           CubeSize = {0000C0400000803F0000803F}
         end
@@ -141,7 +141,7 @@ object Form1: TForm1
       Up.Coordinates = {A633CE3EC0C1593F8711ADBE00000000}
     end
   end
-  object GLMaterialLibrary1: TGLMaterialLibrary
+  object GLMaterialLibraryCM: TGLMaterialLibrary
     Left = 112
     Top = 24
   end

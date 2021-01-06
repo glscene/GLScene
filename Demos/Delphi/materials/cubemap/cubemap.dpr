@@ -15,12 +15,12 @@ program cubemap;
 
 uses
   Forms,
-  Unit1 in 'Unit1.pas' {Form1};
+  fCubeMap in 'fCubeMap.pas' {FormCubeMap};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormCubeMap, FormCubeMap);
   Application.Run;
 end.

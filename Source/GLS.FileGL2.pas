@@ -1,7 +1,6 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.FileGL2;
 
 (* Vector file object loading of Ghoul2 model and animation files *)
@@ -17,7 +16,7 @@ uses
   GLS.ApplicationFileIO,
   GLS.Material,
   GLS.VectorGeometry,
-  FormatGL2,
+  Formats.GL2,
   GLS.VectorTypes,
   GLS.VectorLists;
 

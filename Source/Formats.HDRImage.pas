@@ -1,8 +1,8 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
 
-unit FormatHDRImage;
+unit Formats.HDRImage;
 
 (*
     Good for preview picture in OpenDialog,
@@ -20,7 +20,7 @@ uses
   System.SysUtils,
   Vcl.Graphics,
 
-  GLS.OpenGLTokens,
+  GLS.VectorTypes,
   GLS.VectorGeometry,
   GLS.Graphics;
 

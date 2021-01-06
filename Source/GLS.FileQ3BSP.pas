@@ -1,7 +1,6 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.FileQ3BSP;
 
 (*
@@ -24,7 +23,7 @@ uses
   GLS.VectorGeometry,
   GLS.VectorTypes,
   GLS.VectorLists,
-  FormatQ3BSP,
+  Formats.Q3BSP,
   GLS.MeshBSP,
   GLS.Texture,
   GLS.Graphics,

@@ -1,5 +1,5 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
 
 unit GLS.File3DS;
@@ -31,8 +31,8 @@ uses
   GLS.RenderContextInfo,
   GLS.Material,
 
-  Format3DS,
-  Format3DSTypes;
+  Formats._3DS,
+  Formats._3DSTypes;
 
 type
 

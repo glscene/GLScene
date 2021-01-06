@@ -1,7 +1,6 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.MultiSampleImage;
 
 (*
@@ -19,7 +18,8 @@ uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
   System.Classes,
-  
+
+  GLS.VectorTypes,
   GLS.OpenGLTokens,
   GLS.Context,
   GLS.Texture,

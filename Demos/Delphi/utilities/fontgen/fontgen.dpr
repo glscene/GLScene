@@ -2,12 +2,12 @@ program fontgen;
 
 uses
   Forms,
-  main in 'main.pas' {frmMain};
+  fFontGen in 'fFontGen.pas' {FormFontGen};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TfrmMain, frmMain);
+  Application.CreateForm(TFormFontGen, FormFontGen);
   Application.Run;
 end.

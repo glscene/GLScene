@@ -1,7 +1,6 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.PipelineTransformation;
 
 (* Pipeline transformations *)
@@ -12,8 +11,9 @@ interface
 
 uses
   Winapi.OpenGL,
-  GLS.VectorGeometry,
+
   GLS.VectorTypes,
+  GLS.VectorGeometry,
   GLS.Logger;
 
 const

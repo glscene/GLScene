@@ -1,7 +1,6 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.WindowsContext;
 
 (* Windows specific Context *)
@@ -19,6 +18,7 @@ uses
   System.Classes,
   Vcl.Forms,
 
+  GLS.VectorTypes,
   GLS.OpenGLTokens,
   GLS.OpenGLAdapter,
   GLS.PipelineTransformation,

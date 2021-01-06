@@ -1,8 +1,7 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
-unit FormatX;
+unit Formats.X;
 
 (* Simple X format support (Microsoft's favorite format) *)
 

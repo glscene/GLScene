@@ -1,8 +1,7 @@
 //
 // The unit is part of the GLScene Engine, http://glscene.org
 //
-
-unit FormatVRML;
+unit Formats.VRML;
 
 (*  VRML file format parser. *)
 

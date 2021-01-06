@@ -1,8 +1,8 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
 
-unit Format3DSConst;
+unit Formats._3DSConst;
 
 (*
  All 3DS constant definitions used by the various routines (mainly in Utils3DS.pas). About one thousand
@@ -14,7 +14,7 @@ unit Format3DSConst;
 interface
 
 uses
-  Format3DSTypes;
+  Formats._3DSTypes;
 
 // ---------------- Constants for commonly used structures --------------------
 

@@ -1,7 +1,6 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.TextureFormat;
 
 (* Texture formats and functions *)
@@ -11,6 +10,8 @@ interface
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
+
+  GLS.VectorTypes,
   GLS.OpenGLTokens,
   GLS.Strings;
 

@@ -1,5 +1,5 @@
 ﻿//
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
 
 unit GLS.VectorFileObjects;
@@ -22,7 +22,7 @@ uses
   GLS.OpenGLTokens,
   GLS.Scene,
   GLS.VectorGeometry,
-  GLS.VectorRecTypes,
+  GLS.VectorTypesExt,
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.Silhouette,

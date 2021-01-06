@@ -1,5 +1,5 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
 
 unit GLS.Isosurface;
@@ -42,7 +42,7 @@ uses
   GLS.Mesh,
   GLS.VectorFileObjects,
   GLS.VectorTypes,
-  GLS.VectorRecTypes;
+  GLS.VectorTypesExt;
 
 const
   ALLOC_SIZE = 65536;

@@ -1,7 +1,6 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.OpenGLTokens;
 
 (* OpenGL tokens *)
@@ -14,103 +13,12 @@ uses
   Winapi.OpenGLext,
   Winapi.Windows,
   System.SysUtils,
+
   GLS.VectorTypes;
 
 type
-  TGLboolean = BYTEBOOL; 
-  PGLboolean = ^TGLboolean;
 
-  TGLbitfield = UINT;
-  PGLbitfield = ^TGLbitfield;
-
-  TGLbyte = ShortInt;
-  PGLbyte = ^TGLbyte;
-
-  TGLshort = SmallInt;
-  PGLshort = ^TGLshort;
-
-  TGLint = Integer;
-  PGLint = System.PInteger;
-
-  TGLsizei = Integer;
-  PGLsizei = System.PInteger;
-
-  TGLint64 = Int64;
-  PGLint64 = System.PInt64;
-
-  TGLint64EXT = Int64;
-  PGLint64EXT = System.PInt64;
-
-  TGLuint64 = UInt64;
-  PGLuint64 = System.PUInt64;
-
-  TGLuint64EXT = UInt64;
-  PGLuint64EXT = System.PUInt64;
-
-  TGLubyte = Byte;
-  PGLubyte = System.PByte;
-
-  TGLushort = Word;
-  PGLushort = System.PWord;
-
-  TGLenum = Cardinal;
-  PGLenum = ^TGLenum;
-
-  TGLuint = Cardinal;
-  PGLuint = System.PCardinal;
-
-  TGLfloat = Single;
-  PGLfloat = System.PSingle;
-  PGLclampf = System.PSingle;
-
-  TGLdouble = Double;
-  PGLdouble = System.PDouble;
-
-  TGLclampd = Double;
-  PGLclampd = System.PDouble;
-
-  TGLhandleARB = Cardinal;
-  PGLhandleARB = ^TGLhandleARB;
-
-  PGLPCharArray = ^PAnsiChar;
-
-  PGLvoid = Pointer;
-  PGLPointer = ^PGLvoid;
-
-  // GL_ARB_cl_event
-  (* These incomplete types are declare types compatible with OpenCL's
-    cl_context and cl_event *)
-  T_cl_context = record end;
-  P_cl_context = ^T_cl_context;
-  T_cl_event = record end;
-  P_cl_event = ^T_cl_event;
-
-  // the size of these depend on platform (32bit or 64bit)
-  TGLintptr = NativeInt;
-  PGLintptr = ^TGLintptr;
-
-  TGLsizeiptr = NativeInt;
-  PGLsizeiptr = ^TGLsizeiptr;
-
-  TGLsync = NativeInt;
-  PGLsync = ^TGLsync;
-
-  TGLchar = Byte;
-  PGLchar = MarshaledAString;
-
-  TGLhalf = WORD;
-  PGLhalf = ^TGLhalf;
-
-  // Windows types
-  PWGLswap = ^TWGLswap;
-  _WGLSWAP = packed record
-    hdc: HDC;
-    uiFlags: UINT;
-  end;
-
-  TWGLswap = _WGLSWAP;
-  WGLSWAP = _WGLSWAP;
-  HPBUFFERARB = Integer;
+  PGLfloat = System.PSingle;  // It's should be here!
 
 type
   PHGPUNV = ^HGPUNV;
@@ -135,7 +43,7 @@ type
     severity: Cardinal;
     length: TGLsizei;
     const message: PAnsiChar;
-    userParam: Pointer); {$IFDEF MSWINDOWS}stdcall; {$ENDIF}{$IFDEF UNIX}cdecl; {$ENDIF}
+    userParam: Pointer); {$IFDEF MSWINDOWS}stdcall;{$ELSE}}cdecl; {$ENDIF}
    TGLDEBUGPROCARB = TDebugProc;
 
   TDebugProcAMD = procedure(
@@ -144,7 +52,7 @@ type
     severity: Cardinal;
     length: TGLsizei;
     message: PAnsiChar;
-    userParam: Pointer); {$IFDEF MSWINDOWS}stdcall;{$ENDIF}{$IFDEF UNIX}cdecl;{$ENDIF}
+    userParam: Pointer); {$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
 
   TGLvdpauSurfaceNV = TGLintptr;
   PGLvdpauSurfaceNV = ^TGLvdpauSurfaceNV;

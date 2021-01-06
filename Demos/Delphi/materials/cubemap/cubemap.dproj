@@ -115,8 +115,8 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="Unit1.pas">
-            <Form>Form1</Form>
+        <DCCReference Include="fCubeMap.pas">
+            <Form>FormCubeMap</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>

@@ -15,12 +15,12 @@ program customquad;
 
 uses
   Forms,
-  Unit1 in 'Unit1.pas' {Form1};
+  fCustomQuad in 'fCustomQuad.pas' {FormCustomQuad};
 
 {$R *.RES}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormCustomQuad, FormCustomQuad);
   Application.Run;
 end.

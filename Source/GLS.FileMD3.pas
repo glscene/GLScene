@@ -1,7 +1,6 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.FileMD3;
 
 (* Code for loading animated MD3 files into FreeForms and Actors. *)
@@ -15,7 +14,7 @@ uses
   GLS.Material, 
   GLS.ApplicationFileIO,
   GLS.VectorGeometry, 
-  FormatMD3,
+  Formats.MD3,
   GLS.Texture;
 
 type

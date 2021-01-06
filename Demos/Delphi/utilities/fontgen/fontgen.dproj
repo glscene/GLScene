@@ -109,8 +109,8 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="main.pas">
-            <Form>frmMain</Form>
+        <DCCReference Include="fFontGen.pas">
+            <Form>FormFontGen</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>

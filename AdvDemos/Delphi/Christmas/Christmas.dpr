@@ -29,9 +29,9 @@ uses
 
 begin
    // don't complain about missing sound support
-   vVerboseGLSMErrors:=False;
-   Application.Initialize;
-   Application.Title := 'GLScene Christmas 2016';
-   Application.CreateForm(TMain, Main);
+  vVerboseGLSMErrors:=False;
+  Application.Initialize;
+  Application.Title := 'GLScene Christmas 2016';
+  Application.CreateForm(TMain, Main);
   Application.Run;
 end.

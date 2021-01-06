@@ -1,7 +1,6 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.FileLWO;
 
 (*  Support-code to load Lightwave LWO Files (v6.0+, partial support).*)
@@ -16,7 +15,7 @@ uses
   System.Math,
   GLS.VectorFileObjects,
   GLS.VectorLists,
-  FormatLWO;
+  Formats.LWO;
 
 type
   TGLLWOVectorFile = class(TGLVectorFile)

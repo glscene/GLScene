@@ -17,12 +17,12 @@ program Camera;
 
 uses
   Forms,
-  Unit1 in 'Unit1.pas' {Form1};
+  fCamera in 'fCamera.pas' {FormCamera};
 
 {$R *.RES}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormCamera, FormCamera);
   Application.Run;
 end.

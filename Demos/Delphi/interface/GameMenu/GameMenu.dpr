@@ -9,12 +9,12 @@ program GameMenu;
 
 uses
   Forms,
-  UnitM in 'UnitM.pas' {Form1};
+  fGameMenu in 'fGameMenu.pas' {FormGameMenu};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormGameMenu, FormGameMenu);
   Application.Run;
 end.

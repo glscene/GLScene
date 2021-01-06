@@ -1,8 +1,8 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
 
-unit GLS.VectorRecTypes;
+unit GLS.VectorTypesExt;
 
 (* Defines common vector types as advanced records using
    BigIntegers and BigDecimals by Rudy Velthuis:

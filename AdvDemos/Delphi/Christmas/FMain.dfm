@@ -31,7 +31,7 @@ object Main: TMain
     Buffer.AmbientColor.Color = {0000803F0000803F0000803F0000803F}
     Buffer.ContextOptions = [roDoubleBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aa2x
-    FieldOfView = 168.000000000000000000
+    FieldOfView = 160.000000000000000000
     PenAsTouch = False
     Align = alClient
     PopupMenu = PopupMenu
@@ -68,9 +68,9 @@ object Main: TMain
     Top = 16
     object Camera: TGLCamera
       DepthOfView = 100.000000000000000000
-      FocalLength = 29.008768081665040000
-      TargetObject = DCCameraTarget
-      Position.Coordinates = {0000C0400000803F0000E0400000803F}
+      FocalLength = 48.666248321533200000
+      TargetObject = DCFire
+      Position.Coordinates = {0000A04000000000000070410000803F}
     end
     object DCFirTree: TGLDummyCube
       Position.Coordinates = {000000C00000B0C0000000000000803F}
@@ -337,12 +337,6 @@ object Main: TMain
             5802000200060F474C4669726546584D616E61676572}
         end
       end
-    end
-    object FFPiano: TGLFreeForm
-      Direction.Coordinates = {79ACAAB400000000000080BF00000000}
-      Position.Coordinates = {00006041000020C0000000000000803F}
-      Scale.Coordinates = {00000040000000400000004000000000}
-      TurnAngle = 180.000000000000000000
     end
     object DCGifts: TGLDummyCube
       Visible = False
@@ -5461,5 +5455,9 @@ object Main: TMain
     Reference = CYLog
     Left = 24
     Top = 208
+  end
+  object GLMaterialLibraryCM: TGLMaterialLibrary
+    Left = 552
+    Top = 128
   end
 end

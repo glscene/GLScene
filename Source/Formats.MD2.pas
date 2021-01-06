@@ -1,8 +1,8 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
 
-unit FormatMD2;
+unit Formats.MD2;
 
 (* Loading methods for MD2 file format *)
 

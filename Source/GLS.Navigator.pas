@@ -1,5 +1,5 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
 
 unit GLS.Navigator;
@@ -951,3 +951,4 @@ sW2 := Screen.Width div 2;
 sH2 := Screen.Height div 2;
 
 end.
+

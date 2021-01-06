@@ -1,5 +1,5 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
 
 unit GLS.AVIRecorder;
@@ -21,7 +21,7 @@ uses
   VCL.Graphics, 
   VCL.Dialogs,
    
-  FormatVFW,
+  Formats.VFW,
 
   GLS.Graphics,
   GLS.Scene,

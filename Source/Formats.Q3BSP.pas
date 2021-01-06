@@ -1,8 +1,8 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
 
-unit FormatQ3BSP;
+unit Formats.Q3BSP;
 
 (* Simple Quake III BSP file loader. *)
 

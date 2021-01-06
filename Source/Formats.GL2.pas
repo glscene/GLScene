@@ -1,8 +1,8 @@
 //
-// This unit is part of the GLScene Engine, http://glscene.org
+// The graphics rendering engine GLScene http://glscene.org
 //
 
-unit FormatGL2;
+unit Formats.GL2;
 
 (*
   Ghoul2 (GLM/GLA) file format loading structures
