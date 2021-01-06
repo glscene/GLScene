@@ -31,7 +31,7 @@ uses
   GLS.SkyDome,
   GLS.SceneViewer,
   GLS.Sound,
-  GLSM.BASS,
+  Sounds.BASS,
   GLS.VectorGeometry,
   GLS.LensFlare,
   GLS.Material,

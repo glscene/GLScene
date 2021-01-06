@@ -1,13 +1,11 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
-unit GLSM.BASS;
+unit Sounds.BASS;
 
 (*
-  BASS based sound-manager (http://www.un4seen.com/music/, free for freeware).
-  Unsupported feature(s) :
-  sound source velocity
+  BASS based sound-manager http://www.un4seen.com/music/, free for freeware
+  Unsupported feature(s) : sound source velocity,
   looping (sounds are played either once or forever)
   source priorities (not relevant, channels are not limited)
 *)
@@ -187,7 +185,6 @@ begin
   begin
     KillSource(aSource);
   end;
-
   if (aSource.sample = nil) or (aSource.sample.Data = nil) or
     (aSource.sample.Data.WAVDataSize = 0) then
     Exit;
@@ -240,11 +237,9 @@ begin
       Round(aSource.OutsideConeAngle), Round(aSource.ConeOutsideVolume * 100));
     if not aSource.Pause then
       BASS_ChannelPlay(p.channel, True);
-
   end
   else
     BASS_ChannelSet3DPosition(p.channel, position, orientation, velocity);
-
   if p.channel <> 0 then
   begin
     res := BASS_ChannelSetAttribute(p.channel, BASS_ATTRIB_FREQ, 0);
@@ -307,7 +302,7 @@ begin
     Assert(False);
   // update sources
   inherited;
-  { if not } BASS_Apply3D; { then Assert(False); }
+  (* if not *) BASS_Apply3D; (* then Assert(False); *)
 end;
 
 function TGLSMBASS.CPUUsagePercent: Single;

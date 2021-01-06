@@ -12,7 +12,7 @@
 #pragma package(smart_init)
 #pragma link "GLS.LensFlare"
 #pragma link "GLS.VectorGeometry"
-#pragma link "GLSM.BASS"
+#pragma link "Sounds.BASS"
 #pragma link "GLS.Sound"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.SkyDome"

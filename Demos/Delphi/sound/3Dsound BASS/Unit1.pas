@@ -18,7 +18,7 @@ uses
   GLS.Cadencer,
   GLS.Objects,
   GLS.Sound,
-  GLSM.BASS,
+  Sounds.BASS,
   GLS.SceneViewer,
   GLS.GeomObjects,
 

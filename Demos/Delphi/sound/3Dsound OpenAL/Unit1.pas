@@ -19,7 +19,7 @@ uses
   GLS.Sound,
   GLS.SceneViewer,
   GLS.GeomObjects,
-  GLSM.OpenAL,
+  Sounds.OpenAL,
 
   GLS.Coordinates,
   GLS.BaseClasses,

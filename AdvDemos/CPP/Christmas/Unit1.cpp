@@ -24,7 +24,7 @@
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.WindowsFont"
 #pragma link "GLS.ScreenSaver"
-#pragma link "GLSM.BASS"
+#pragma link "Sounds.BASS"
 #pragma link "GLS.File3DS"
 #pragma link "GLS.FileWAV"
 #pragma link "GLS.ScreenSaver"

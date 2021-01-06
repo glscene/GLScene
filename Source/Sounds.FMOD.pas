@@ -1,8 +1,7 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
-unit GLSM.FMOD;
+unit Sounds.FMOD;
 
 (*
   FMOD based sound-manager (http://www.fmod.org/, free for freeware).

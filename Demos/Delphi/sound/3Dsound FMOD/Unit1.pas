@@ -17,7 +17,7 @@ uses
   GLS.VectorTypes,
   GLS.Objects,
   GLS.Sound,
-  GLSM.FMOD,
+  Sounds.FMOD,
   GLS.SceneViewer,
   GLS.GeomObjects,
  

@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Sound Around'
-  ClientHeight = 370
-  ClientWidth = 514
+  ClientHeight = 433
+  ClientWidth = 605
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,28 +12,30 @@ object Form1: TForm1
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  WindowState = wsMaximized
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer: TGLSceneViewer
     Left = 0
     Top = 73
-    Width = 514
-    Height = 270
+    Width = 605
+    Height = 333
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
     Buffer.AntiAliasing = aaNone
-    FieldOfView = 139.353729248046900000
+    FieldOfView = 146.569946289062500000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewerMouseDown
     OnMouseMove = GLSceneViewerMouseMove
     TabOrder = 0
+    ExplicitWidth = 514
+    ExplicitHeight = 270
   end
   object TrackBar: TTrackBar
     Left = 0
-    Top = 343
-    Width = 514
+    Top = 406
+    Width = 605
     Height = 27
     Align = alBottom
     Max = 180
@@ -44,11 +46,13 @@ object Form1: TForm1
     ThumbLength = 10
     TickMarks = tmBoth
     OnChange = TrackBarChange
+    ExplicitTop = 343
+    ExplicitWidth = 514
   end
   object TrackBar1: TTrackBar
     Left = 0
     Top = 41
-    Width = 514
+    Width = 605
     Height = 32
     Align = alTop
     Max = 50
@@ -59,17 +63,19 @@ object Form1: TForm1
     ThumbLength = 10
     TickMarks = tmBoth
     OnChange = TrackBar1Change
+    ExplicitWidth = 514
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 514
+    Width = 605
     Height = 41
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 3
+    ExplicitWidth = 514
     DesignSize = (
-      514
+      605
       41)
     object Label1: TLabel
       Left = 10
@@ -106,7 +112,7 @@ object Form1: TForm1
       OnClick = RBFMODClick
     end
     object Button1: TButton
-      Left = 423
+      Left = 514
       Top = 2
       Width = 83
       Height = 25
@@ -114,9 +120,10 @@ object Form1: TForm1
       Caption = 'Chimes (WAV)'
       TabOrder = 2
       OnClick = Button1Click
+      ExplicitLeft = 423
     end
     object btnHowl: TButton
-      Left = 334
+      Left = 425
       Top = 2
       Width = 83
       Height = 25
@@ -124,6 +131,7 @@ object Form1: TForm1
       Caption = 'Howl (MP3)'
       TabOrder = 3
       OnClick = btnHowlClick
+      ExplicitLeft = 334
     end
     object RBOpenAL: TRadioButton
       Left = 224

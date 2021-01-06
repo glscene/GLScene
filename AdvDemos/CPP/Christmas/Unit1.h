@@ -28,7 +28,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.WindowsFont.hpp"
 #include "GLS.ScreenSaver.hpp"
-#include "GLSM.BASS.hpp"
+#include "Sounds.BASS.hpp"
 #include "GLS.FileWAV.hpp"
 #include "Jpeg.hpp"
 #include "Import.Bass.hpp"

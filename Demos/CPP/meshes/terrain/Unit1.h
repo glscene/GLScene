@@ -13,7 +13,7 @@
 
 #include "GLS.LensFlare.hpp"
 #include "GLS.VectorGeometry.hpp"
-#include "GLSM.BASS.hpp"
+#include "Sounds.BASS.hpp"
 #include "GLS.Sound.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.SkyDome.hpp"

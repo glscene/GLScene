@@ -153,10 +153,10 @@
         <DCCReference Include="..\Source\Import.FMODtypes.pas"/>
         <DCCReference Include="..\Source\Import.FMODerrors.pas"/>
         <DCCReference Include="..\Source\Import.OpenAL.pas"/>
-        <DCCReference Include="..\Source\GLSM.BASS.pas"/>
-        <DCCReference Include="..\Source\GLSM.FMOD.pas"/>
-        <DCCReference Include="..\Source\GLSM.OpenAL.pas"/>
-        <DCCReference Include="..\Source\GLSM.WaveOut.pas"/>
+        <DCCReference Include="..\Source\Sounds.BASS.pas"/>
+        <DCCReference Include="..\Source\Sounds.FMOD.pas"/>
+        <DCCReference Include="..\Source\Sounds.OpenAL.pas"/>
+        <DCCReference Include="..\Source\Sounds.WaveOut.pas"/>
         <DCCReference Include="..\Source\Import.BASS.pas"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>

@@ -1,8 +1,7 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
-unit GLSM.WaveOut;
+unit Sounds.WaveOut;
 
 (* Basic sound manager based on WinMM *)
 
@@ -143,12 +142,14 @@ begin
   end;
 end;
 
-// Note: This callback function is called from another thread, from MSDN docs:
-// "Applications should not call any system-defined functions from inside a
-// callback function, except for EnterCriticalSection, LeaveCriticalSection,
-// midiOutLongMsg, midiOutShortMsg, OutputDebugString, PostMessage,
-// PostThreadMessage, SetEvent, timeGetSystemTime, timeGetTime, timeKillEvent,
-// and timeSetEvent. Calling other wave functions will cause deadlock."
+(*
+ Note: This callback function is called from another thread, from MSDN docs:
+ "Applications should not call any system-defined functions from inside a
+ callback function, except for EnterCriticalSection, LeaveCriticalSection,
+ midiOutLongMsg, midiOutShortMsg, OutputDebugString, PostMessage,
+ PostThreadMessage, SetEvent, timeGetSystemTime, timeGetTime, timeKillEvent,
+ and timeSetEvent. Calling other wave functions will cause deadlock."
+*)
 procedure _waveOutCallBack(hwo: HWaveOut; uMsg: Cardinal;
   dwInstance, dwParam1, dwParam2: Integer); stdcall;
 begin

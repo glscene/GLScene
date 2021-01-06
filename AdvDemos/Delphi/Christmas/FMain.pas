@@ -40,7 +40,7 @@ uses
   GLS.Coordinates,
   GLS.Color,
   GLS.Sound,
-  GLSM.BASS,
+  Sounds.BASS,
   Import.BASS,
   GLS.FireFX,
   GLS.FileWAV;

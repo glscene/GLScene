@@ -1,11 +1,10 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
-unit GLSM.OpenAL;
+unit Sounds.OpenAL;
 
 (*
-  OpenAL based sound-manager (http://www.openal.org).
+  OpenAL based sound-manager http://www.openal.org
   OpenAL drivers can be download from the OpenAL site or your soundcard
   manufacturer's website.
 
@@ -30,6 +29,7 @@ uses
   Vcl.Dialogs,
 
   GLS.Scene,
+  GLS.VectorGeometry,
   GLS.Sound,
   GLS.SoundFileObjects;
 
@@ -64,7 +64,6 @@ implementation
 // ---------------------------------------------------------------------
 
 uses
-  GLS.VectorGeometry,
   Import.OpenAL {al, alut, alTypes};
 
 // checks for an error and raises an exception if necessary

@@ -1,6 +1,7 @@
 (*
   BASS 2.4 Delphi unit
-  Copyright (c) 1999-2017 Un4seen Developments Ltd.
+  Copyright (c) 1999-2021 Un4seen Developments Ltd.
+  http://www.un4seen.com/music/, free for freeware
 
   See the BASS.CHM file for more detailed documentation
 

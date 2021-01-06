@@ -17,15 +17,15 @@
 #include "GLS.GeomObjects.hpp"
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
-#include "GLSMBASS.hpp"
-#include "GLSMFMOD.hpp"
-#include "GLSMOpenAL.hpp"
+#include "Sounds.BASS.hpp"
+#include "Sounds.FMOD.hpp"
+#include "Sounds.OpenAL.hpp"
 #include "GLS.Sound.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Utils.hpp"
 #include "GLS.FileWAV.hpp"
 #include "GLS.FileMP3.hpp"
-#include "BASS.hpp"
+#include "Import.BASS.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

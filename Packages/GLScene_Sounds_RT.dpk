@@ -40,10 +40,10 @@ contains
   Import.FMODtypes in '..\Source\Import.FMODtypes.pas',
   Import.FMODerrors in '..\Source\Import.FMODerrors.pas',
   Import.OpenAL in '..\Source\Import.OpenAL.pas',
-  GLSM.BASS in '..\Source\GLSM.BASS.pas',
-  GLSM.FMOD in '..\Source\GLSM.FMOD.pas',
-  GLSM.OpenAL in '..\Source\GLSM.OpenAL.pas',
-  GLSM.WaveOut in '..\Source\GLSM.WaveOut.pas',
+  Sounds.BASS in '..\Source\Sounds.BASS.pas',
+  Sounds.FMOD in '..\Source\Sounds.FMOD.pas',
+  Sounds.OpenAL in '..\Source\Sounds.OpenAL.pas',
+  Sounds.WaveOut in '..\Source\Sounds.WaveOut.pas',
   Import.BASS in '..\Source\Import.BASS.pas';
 
 end.

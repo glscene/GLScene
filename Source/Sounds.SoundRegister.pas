@@ -1,8 +1,7 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
-unit GLSM.SoundRegister;
+unit Sounds.SoundRegister;
 
 (* Design time registration code for the Sounds *)
 
@@ -10,10 +9,11 @@ interface
 
 uses
   System.Classes,
-  GLSM.BASS,
-  GLSM.FMOD,
-  GLSM.OpenAL,
-  GLSM.WaveOut;
+
+  Sounds.BASS,
+  Sounds.FMOD,
+  Sounds.OpenAL,
+  Sounds.WaveOut;
 
 procedure Register;
 
