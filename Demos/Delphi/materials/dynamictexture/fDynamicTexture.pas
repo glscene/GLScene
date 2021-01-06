@@ -1,4 +1,4 @@
-unit Unit1;
+unit fDynamicTexture;
 
 interface
 
@@ -26,7 +26,7 @@ uses
   GLS.Utils;
 
 type
-  TForm1 = class(TForm)
+  TFormDynamicTexture = class(TForm)
     GLScene1: TGLScene;
     GLSceneViewer1: TGLSceneViewer;
     GLMaterialLibrary1: TGLMaterialLibrary;
@@ -52,18 +52,18 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FormDynamicTexture: TFormDynamicTexture;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TFormDynamicTexture.FormCreate(Sender: TObject);
 begin
   GLSceneViewer1.Align := alClient;
 end;
 
-procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TFormDynamicTexture.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 var
   tex: TGLTexture;
   img: TGLDynamicTextureImage;
@@ -94,17 +94,17 @@ begin
   end;
 end;
 
-procedure TForm1.FormResize(Sender: TObject);
+procedure TFormDynamicTexture.FormResize(Sender: TObject);
 begin
   GLCamera1.SceneScale := GLSceneViewer1.ClientWidth / 400;
 end;
 
-procedure TForm1.GLCadencer1Progress(Sender: TObject; const DeltaTime, newTime: Double);
+procedure TFormDynamicTexture.GLCadencer1Progress(Sender: TObject; const DeltaTime, newTime: Double);
 begin
   GLSceneViewer1.Invalidate;
 end;
 
-procedure TForm1.GLDirectOpenGL1Render(Sender: TObject; var rci: TGLRenderContextInfo);
+procedure TFormDynamicTexture.GLDirectOpenGL1Render(Sender: TObject; var rci: TGLRenderContextInfo);
 var
   tex:  TGLTexture;
   img:  TGLDynamicTextureImage;
@@ -163,7 +163,7 @@ begin
   img.EndUpdate;
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
+procedure TFormDynamicTexture.Timer1Timer(Sender: TObject);
 const
   PBOText: array[Boolean] of string = ('PBO disabled', 'PBO enabled');
 var

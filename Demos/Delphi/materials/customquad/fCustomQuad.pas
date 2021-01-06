@@ -1,4 +1,4 @@
-unit Unit1;
+unit fCustomQuad;
 
 interface
 
@@ -27,7 +27,7 @@ uses
   GLS.RenderContextInfo;
 
 type
-  TForm1 = class(TForm)
+  TFormCustomQuad = class(TForm)
     GLScene1: TGLScene;
     GLSceneViewer1: TGLSceneViewer;
     GLMaterialLibrary: TGLMaterialLibrary;
@@ -40,13 +40,10 @@ type
     procedure DirectOpenGL1Render(Sender: TObject; var rci: TGLRenderContextInfo);
     procedure FormCreate(Sender: TObject);
   private
-    { Private declarations  }
-  public
-    { Public declarations  }
   end;
 
 var
-  Form1: TForm1;
+  FormCustomQuad: TFormCustomQuad;
 
 implementation
 
@@ -57,7 +54,7 @@ uses
   GLS.State,
   GLS.Utils;
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TFormCustomQuad.FormCreate(Sender: TObject);
 begin
    SetGLSceneMediaDir();
    // dynamically create 2 materials and load 2 textures
@@ -75,7 +72,7 @@ begin
    end;
 end;
 
-procedure TForm1.DirectOpenGL1Render(Sender: TObject; var rci: TGLRenderContextInfo);
+procedure TFormCustomQuad.DirectOpenGL1Render(Sender: TObject; var rci: TGLRenderContextInfo);
 var
    material : TGLLibMaterial;
 begin

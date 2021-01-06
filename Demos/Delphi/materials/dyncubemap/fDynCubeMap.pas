@@ -1,4 +1,4 @@
-unit Unit1;
+unit fDynCubeMap;
 
 interface
 
@@ -26,7 +26,7 @@ uses
   GLS.BaseClasses;
 
 type
-  TForm1 = class(TForm)
+  TFormDynCubeMap = class(TForm)
     GLScene1: TGLScene;
     GLSceneViewer1: TGLSceneViewer;
     GLMemoryViewer1: TGLMemoryViewer;
@@ -61,7 +61,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FormDynCubeMap: TFormDynCubeMap;
 
 //===================================
 implementation
@@ -69,7 +69,7 @@ implementation
 
 {$R *.dfm}
 
-procedure TForm1.GenerateCubeMap;
+procedure TFormDynCubeMap.GenerateCubeMap;
 begin
    // Don't do anything if cube maps aren't supported
    if not CubmapSupported then begin
@@ -91,7 +91,7 @@ begin
    end;
 end;
 
-procedure TForm1.GLCadencer1Progress(Sender: TObject; const deltaTime,
+procedure TFormDynCubeMap.GLCadencer1Progress(Sender: TObject; const deltaTime,
   newTime: Double);
 begin
    if CBDynamic.Checked then begin
@@ -106,14 +106,14 @@ end;
 
 // Standard issue mouse movement
 
-procedure TForm1.GLSceneViewer1MouseDown(Sender: TObject;
+procedure TFormDynCubeMap.GLSceneViewer1MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
    mx:=x;
    my:=y;
 end;
 
-procedure TForm1.GLSceneViewer1MouseMove(Sender: TObject;
+procedure TFormDynCubeMap.GLSceneViewer1MouseMove(Sender: TObject;
   Shift: TShiftState; X, Y: Integer);
 begin
    if Shift<>[] then begin
@@ -123,13 +123,13 @@ begin
    end;
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
+procedure TFormDynCubeMap.Timer1Timer(Sender: TObject);
 begin
    LabelFPS.Caption:=Format('%.1f FPS', [GLSceneViewer1.FramesPerSecond]);
    GLSceneViewer1.ResetPerformanceMonitor;
 end;
 
-procedure TForm1.GLSceneViewer1BeforeRender(Sender: TObject);
+procedure TFormDynCubeMap.GLSceneViewer1BeforeRender(Sender: TObject);
 begin
   CubmapSupported := GL.ARB_texture_cube_map;
   GLSceneViewer1.BeforeRender := nil;

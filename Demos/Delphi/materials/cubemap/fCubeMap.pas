@@ -1,4 +1,4 @@
-unit Unit1;
+unit fCubeMap;
 
 interface
 
@@ -23,7 +23,7 @@ uses
   GLS.GeomObjects;
 
 type
-  TForm1 = class(TForm)
+  TFormCubeMap = class(TForm)
     GLScene1: TGLScene;
     GLSceneViewer1: TGLSceneViewer;
     GLCamera1: TGLCamera;
@@ -45,25 +45,25 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FormCubeMap: TFormCubeMap;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TFormCubeMap.FormCreate(Sender: TObject);
 begin
   // Our cube map images are here
   SetGLSceneMediaDir();
 end;
 
-procedure TForm1.GLSceneViewer1BeforeRender(Sender: TObject);
+procedure TFormCubeMap.GLSceneViewer1BeforeRender(Sender: TObject);
 begin
   CubmapSupported := gl.ARB_texture_cube_map;
   GLSceneViewer1.BeforeRender := nil;
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TFormCubeMap.Button1Click(Sender: TObject);
 begin
   // Cube map warning message
   // If you don't check and turn off cube maps yourself in your apps when
@@ -103,14 +103,14 @@ end;
 
 // standard issue handlers for mouse movement
 
-procedure TForm1.GLSceneViewer1MouseDown(Sender: TObject;
+procedure TFormCubeMap.GLSceneViewer1MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
   mx := x;
   my := y;
 end;
 
-procedure TForm1.GLSceneViewer1MouseMove(Sender: TObject;
+procedure TFormCubeMap.GLSceneViewer1MouseMove(Sender: TObject;
   Shift: TShiftState; X, Y: Integer);
 begin
   if Shift <> [] then
