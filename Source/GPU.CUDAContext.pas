@@ -15,8 +15,8 @@ uses
   GLS.Context,
   GLS.Generics,
 
-  Import.CUDAApi,
-  Import.CUDARunTime;
+  Imports.CUDAApi,
+  GPU.CUDARunTime;
 
 type
 

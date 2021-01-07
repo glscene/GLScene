@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLSL.CgRegister;
 
 (*  Registration unit for Cg shader package *)
@@ -18,8 +17,8 @@ uses
 
   GLS.Material,
 
-  Import.Cg,
-  Import.CgGL,
+  Imports.Cg,
+  Imports.CgGL,
   GLS.SceneRegister,  //?
   GLSL.CgShader,
   GLSL.CgBombShader;

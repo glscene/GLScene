@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.SDLWindow;
 
 (*
@@ -28,7 +27,7 @@ uses
   GLS.State,
   GLS.Context,
   GLS.VectorGeometry,
-  Import.SDL2;
+  Imports.SDL2;
 
 type
   (* Pixel Depth options.

@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit Physics.Register;
 
 (* DesignTime registration code for the Physics Managers *)

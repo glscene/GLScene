@@ -47,7 +47,7 @@ interface
 uses
   Winapi.Windows,
 
-  Import.CUDAApi,
+  Imports.CUDAApi,
   GLS.Logger;
 
 const

@@ -13,7 +13,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  Import.CUDAApi,
+  Imports.CUDAApi,
   GPU.CUDAContext,
   GPU.CUDA,
   GPU.CUDAFourierTransform,

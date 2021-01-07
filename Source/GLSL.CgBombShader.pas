@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLSL.CgBombShader;
 
 (*  Just a good looking shader *)
@@ -22,7 +21,7 @@ uses
   GLS.RenderContextInfo,
   GLS.TextureFormat,
 
-  Import.cgGL,
+  Imports.cgGL,
   GLSL.CgShader;
 
 type

@@ -48,8 +48,8 @@ uses
   GLS.VectorTypes,
   GLS.Strings,
 
-  Import.CUDAApi,
-  Import.CUDARunTime;
+  Imports.CUDAApi,
+  GPU.CUDARunTime;
 
 
 const

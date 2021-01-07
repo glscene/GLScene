@@ -66,7 +66,7 @@ implementation
 //-----------------------------------------------
 
 uses
-  Import.CUDARunTime;
+  GPU.CUDARunTime;
 
 function FindCuFile(var AModuleName: string): Boolean;
 var

@@ -25,8 +25,8 @@ uses
   GLS.Strings,
   GLS.Utils,
 
-  Import.CUDAApi,
-  Import.CUDARunTime,
+  Imports.CUDAApi,
+  GPU.CUDARunTime,
   GPU.CUDAParser,
   GPU.CUDAFourierTransform,
   GPU.CUDACompiler,

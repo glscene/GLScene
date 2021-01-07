@@ -13,7 +13,7 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-  Import.CUDARunTime;
+  GPU.CUDARunTime;
 
 type
 

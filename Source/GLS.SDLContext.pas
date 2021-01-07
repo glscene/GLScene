@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.SDLContext;
 
 (*
@@ -26,8 +25,8 @@ uses
   GLS.Context,
   GLS.Scene,
 
-  SDL.Window,
-  Import.SDL2;
+  Imports.SDL2,
+  GLS.SDLWindow;
 
 type
   (* A viewer using SDL.

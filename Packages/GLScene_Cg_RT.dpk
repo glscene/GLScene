@@ -36,8 +36,8 @@ requires
   GLScene_RT;
 
 contains
-  Import.cgGL in '..\Source\Import.cgGL.pas',
-  Import.cg in '..\Source\Import.cg.pas',
+  Imports.CgGL in '..\Source\Imports.CgGL.pas',
+  Imports.Cg in '..\Source\Imports.Cg.pas',
   GLSL.CgShader in '..\Source\GLSL.CgShader.pas',
   GLSL.CgBombShader in '..\Source\GLSL.CgBombShader.pas',
   GLSL.CgPostTransformationShader in '..\Source\GLSL.CgPostTransformationShader.pas';

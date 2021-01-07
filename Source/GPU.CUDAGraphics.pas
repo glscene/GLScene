@@ -16,7 +16,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  Import.CUDAApi,
+  Imports.CUDAApi,
   GPU.CUDA,
 
   GLS.Context,

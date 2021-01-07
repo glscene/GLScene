@@ -64,7 +64,7 @@ implementation
 // ---------------------------------------------------------------------
 
 uses
-  Import.OpenAL {al, alut, alTypes};
+  Imports.OpenAL {al, alut, alTypes};
 
 // checks for an error and raises an exception if necessary
 procedure CheckOpenALError;

@@ -1,10 +1,9 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit Physics.ODEUtils;
 
-(* Open Dynamic Engine Utils 
+(* Open Dynamic Engine Utils
 
    Here is the collection of random functions and procedures that useful when
    integrating ODE into GLScene. If you don't use GLS.Scene, this unit won't be
@@ -19,7 +18,7 @@ uses
   System.SysUtils,
   System.Classes,
 
-  Import.ODE,
+  Imports.ODE,
   GLS.OpenGLTokens,
   GLS.Context,
   GLS.VectorGeometry,

@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLSL.CgShader;
 
 (* Base Cg shader classes *)
@@ -26,8 +25,8 @@ uses
   GLS.Material,
   GLS.TextureFormat,
 
-  Import.cg,
-  Import.cgGL;
+  Imports.cg,
+  Imports.cgGL;
 
 {$I GLScene.inc}
 

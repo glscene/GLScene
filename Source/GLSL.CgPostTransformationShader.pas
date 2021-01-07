@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLSL.CgPostTransformationShader;
 
 (*
@@ -25,8 +24,8 @@ uses
   GLS.RenderContextInfo,
   GLS.TextureFormat,
 
-  Import.Cg,
-  Import.CgGL,
+  Imports.Cg,
+  Imports.CgGL,
   GLSL.CustomShader,
   GLSL.CgShader;
 

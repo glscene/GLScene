@@ -19,7 +19,7 @@ uses
   GLS.Utils,
 
   GLS.SDLContext,
-  Import.SDL2;
+  Imports.SDL2;
 
 type
   TDataModule1 = class(TDataModule)

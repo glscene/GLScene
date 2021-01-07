@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit Physics.ODERagdoll;
 
 (* The extension of TGLRagdoll by using Open Dynamics Engine (ODE) *)
@@ -17,7 +16,7 @@ uses
   GLS.Texture,
   GLS.VectorFileObjects,
 
-  Import.ODE,
+  Imports.ODE,
   Physics.ODEUtils;
 
 const

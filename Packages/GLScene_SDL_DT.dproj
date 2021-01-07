@@ -113,7 +113,7 @@
         <DCCReference Include="vclimg.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
         <DCCReference Include="GLScene_SDL_RT.dcp"/>
-        <DCCReference Include="..\Source\SDL.Context.pas"/>
+        <DCCReference Include="..\Source\GLS.SDLContext.pas"/>
         <RcCompile Include="..\Resources\GLSceneSDL.rc">
             <Form>GLSceneSDL.res</Form>
         </RcCompile>
@@ -149,7 +149,7 @@
                 <Platform value="Win64">False</Platform>
             </Platforms>
             <Deployment Version="3">
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\21.0\Bpl\GLScene_SDL_DT.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\GLScene_SDL_DT.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>GLScene_SDL_DT.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
