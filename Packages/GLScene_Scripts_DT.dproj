@@ -106,7 +106,7 @@
         <DCCReference Include="DWS.Runtime.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
         <DCCReference Include="GLScene_Scripts_RT.dcp"/>
-        <DCCReference Include="..\Source\GLS.dwsScene.pas"/>
+        <DCCReference Include="..\Source\DWSs.Scene.pas"/>
         <RcCompile Include="..\Resources\GLSceneDWS.rc">
             <Form>GLSceneDWS.res</Form>
         </RcCompile>

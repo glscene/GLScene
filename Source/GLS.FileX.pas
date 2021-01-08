@@ -3,7 +3,7 @@
 //
 unit GLS.FileX;
 
-(* Support of X format files (Microsoft's favorite format) *)
+(* Support of X format files for Microsoft's favorite format *)
 
 interface
 

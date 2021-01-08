@@ -10,7 +10,7 @@
 #pragma link "GLS.AsyncTimer"
 #pragma link "GLS.BaseClasses"
 #pragma link "GLS.Cadencer"
-#pragma link "GLSL.cgShader"
+#pragma link "CGs.Shader"
 #pragma link "GLS.Coordinates"
 
 #pragma link "GLS.Material"
@@ -20,7 +20,7 @@
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.FileMD2"
 
-#pragma link "GLSL.cgShader"
+#pragma link "CGs.Shader"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------

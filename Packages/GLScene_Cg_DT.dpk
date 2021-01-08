@@ -38,6 +38,6 @@ requires
   GLScene_Cg_RT;
 
 contains
-  GLSL.CgRegister in '..\Source\GLSL.CgRegister.pas';
+  CGs.Register in '..\Source\CGs.Register.pas';
 
 end.

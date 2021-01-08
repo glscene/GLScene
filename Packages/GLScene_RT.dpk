@@ -36,12 +36,12 @@ requires
   xmlrtl;
 
 contains
-  Formats._3DSConst in '..\Source\Formats._3DSConst.pas',
-  Formats._3DSTypes in '..\Source\Formats._3DSTypes.pas',
-  Formats._3DSUtils in '..\Source\Formats._3DSUtils.pas',
+  Formats.m3DSConst in '..\Source\Formats.m3DSConst.pas',
+  Formats.m3DSTypes in '..\Source\Formats.m3DSTypes.pas',
+  Formats.m3DSUtils in '..\Source\Formats.m3DSUtils.pas',
   Formats.DDSImage in '..\Source\Formats.DDSImage.pas',
   Formats.DXTC in '..\Source\Formats.DXTC.pas',
-  Formats._3DS in '..\Source\Formats._3DS.pas',
+  Formats.m3DS in '..\Source\Formats.m3DS.pas',
   Formats.HDRImage in '..\Source\Formats.HDRImage.pas',
   Formats.Q3BSP in '..\Source\Formats.Q3BSP.pas',
   Formats.B3D in '..\Source\Formats.B3D.pas',

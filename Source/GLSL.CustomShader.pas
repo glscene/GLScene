@@ -1,9 +1,7 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLSL.CustomShader;
-
 (*
     A collection of pure abstract classes - descendants of TGLShader, which are
     used for purpose of not having to write the same stuff all over and over
@@ -12,7 +10,6 @@ unit GLSL.CustomShader;
     The whole history is logged in a former GLS version of the unit.
 
 *)
-
 interface
 
 {$I GLScene.inc}

@@ -20,8 +20,8 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.FileMD2.hpp"
 #include "GLS.Utils.hpp"
-#include "Import.CgGL.hpp"
-#include "GLSL.cgShader.hpp"
+#include "Imports.cgGL.hpp"
+#include "CGs.Shader.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

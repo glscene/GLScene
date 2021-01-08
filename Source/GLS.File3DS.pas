@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.File3DS;
 
 (* 3DStudio 3DS vector file format implementation *)
@@ -31,8 +30,8 @@ uses
   GLS.RenderContextInfo,
   GLS.Material,
 
-  Formats._3DS,
-  Formats._3DSTypes;
+  Formats.m3DS,
+  Formats.m3DSTypes;
 
 type
 
@@ -162,7 +161,6 @@ type
   public
     procedure AddKeys(const AItem: TGLFile3DSAnimationKeys);
     procedure ClearKeys;
-
     procedure Assign(Source: TPersistent); override;
     procedure WriteToFiler(Writer: TVirtualWriter); override;
     procedure ReadFromFiler(Reader: TVirtualReader); override;
@@ -184,19 +182,16 @@ type
   public
     procedure LoadAnimation(const AData: Pointer); virtual;
     procedure SetFrame(const AFrame: real); virtual;
-
     procedure MorphTo(morphTargetIndex: Integer); override;
     procedure Lerp(morphTargetIndex1, morphTargetIndex2: Integer; lerpFactor: Single); override;
     procedure GetExtents(out min, max: TAffineVector); override;
     function ExtractTriangles(texCoords: TAffineVectorList = nil; normals: TAffineVectorList = nil): TAffineVectorList;
       override;
-
     procedure WriteToFiler(Writer: TVirtualWriter); override;
     procedure ReadFromFiler(Reader: TVirtualReader); override;
     procedure Assign(Source: TPersistent); override;
     constructor Create; override;
     destructor Destroy; override;
-
     property AnimList: TGLFile3DSAnimationKeyList read FAnimList;
     property Parent: TGLFile3DSDummyObject read FParent write FParent;
     property RefrenceTransf: TGLFile3DSAnimationData read FRefTranf write FRefTranf;

@@ -38,6 +38,6 @@ requires
   GLScene_Scripts_RT;
 
 contains
-  GLS.dwsScene in '..\Source\GLS.dwsScene.pas';
+  DWSs.Scene in '..\Source\DWSs.Scene.pas';
 
 end.

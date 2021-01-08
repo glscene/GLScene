@@ -1,0 +1,59 @@
+package GLScene_Parallel_RT;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'GLScene GPU Computing'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vclimg,
+  vcl,
+  xmlrtl,
+  GLScene_RT;
+
+contains
+  Imports.CUDAApi in '..\Source\Imports.CUDAApi.pas',
+  Imports.CUDAUtility in '..\Source\Imports.CUDAUtility.pas',
+  Imports.CUDAParallelPrimitives in '..\Source\Imports.CUDAParallelPrimitives.pas',
+  CUDAs.Runtime in '..\Source\CUDAs.Runtime.pas',
+  CUDAs.FourierTransform in '..\Source\CUDAs.FourierTransform.pas',
+  CUDAs.Compiler in '..\Source\CUDAs.Compiler.pas',
+  CUDAs.Context in '..\Source\CUDAs.Context.pas',
+  CUDAs.FFTPlan in '..\Source\CUDAs.FFTPlan.pas',
+  CUDAs.Graphics in '..\Source\CUDAs.Graphics.pas',
+  CUDAs.Parser in '..\Source\CUDAs.Parser.pas',
+  CUDAs.DataAccess in '..\Source\CUDAs.DataAccess.pas',
+  CUDAs.API in '..\Source\CUDAs.API.pas',
+  GLS.FilePGM in '..\Source\GLS.FilePGM.pas',
+  Imports.OpenCL in '..\Source\Imports.OpenCL.pas',
+  Imports.OpenCL_GL in '..\Source\Imports.OpenCL_GL.pas',
+  Imports.OpenCL_Platform in '..\Source\Imports.OpenCL_Platform.pas';
+
+end.
+
+

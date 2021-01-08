@@ -3,7 +3,7 @@
 //
 unit Formats.X;
 
-(* Simple X format support (Microsoft's favorite format) *)
+(* Simple X format support for Microsoft's favorite format *)
 
 interface
 

@@ -1,15 +1,7 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit Formats.VFW;
-
-(*  Video for windows *)
-
-interface
-
-{.$UNDEF UNICODE}
-{$I GLScene.inc}
 
 (****************************************************************************
  *
@@ -81,6 +73,11 @@ interface
 (*  Only modified line 1380  ( TAVIPALCHANGE.peNew )                          *)
 (*                                                                            *)
 (******************************************************************************)
+
+interface
+
+{.$UNDEF UNICODE}
+{$I GLScene.inc}
 
 uses
     Winapi.Windows,

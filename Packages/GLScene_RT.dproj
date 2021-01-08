@@ -140,12 +140,12 @@
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="vclimg.dcp"/>
         <DCCReference Include="xmlrtl.dcp"/>
-        <DCCReference Include="..\Source\Formats._3DSConst.pas"/>
-        <DCCReference Include="..\Source\Formats._3DSTypes.pas"/>
-        <DCCReference Include="..\Source\Formats._3DSUtils.pas"/>
+        <DCCReference Include="..\Source\Formats.m3DSConst.pas"/>
+        <DCCReference Include="..\Source\Formats.m3DSTypes.pas"/>
+        <DCCReference Include="..\Source\Formats.m3DSUtils.pas"/>
         <DCCReference Include="..\Source\Formats.DDSImage.pas"/>
         <DCCReference Include="..\Source\Formats.DXTC.pas"/>
-        <DCCReference Include="..\Source\Formats._3DS.pas"/>
+        <DCCReference Include="..\Source\Formats.m3DS.pas"/>
         <DCCReference Include="..\Source\Formats.HDRImage.pas"/>
         <DCCReference Include="..\Source\Formats.Q3BSP.pas"/>
         <DCCReference Include="..\Source\Formats.B3D.pas"/>

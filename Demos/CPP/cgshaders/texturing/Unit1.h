@@ -18,7 +18,7 @@
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLSL.CgShader.hpp"
+#include "CGs.Shader.hpp"
 #include "JPeg.hpp"
 #include "GLS.Utils.hpp"
 //---------------------------------------------------------------------------

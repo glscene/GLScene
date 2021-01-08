@@ -20,10 +20,10 @@
 #include "GLS.Graph.hpp"
 #include "GLS.Objects.hpp"
 #include "GLS.VectorFileObjects.hpp"
-#include "GLSL.CgShader.hpp"
+#include "CGs.Shader.hpp"
 #include "GLS.File3DS.hpp"
-#include "Import.Cg.hpp"
-#include "Import.CgGL.hpp"
+#include "Imports.Cg.hpp"
+#include "Imports.cgGL.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
