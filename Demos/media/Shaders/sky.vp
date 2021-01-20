@@ -1,0 +1,8 @@
+varying	vec3		vTexCoord;
+
+void main (void) {
+	
+	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
+	vTexCoord = vec3( gl_Vertex );
+	
+}

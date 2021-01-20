@@ -1,0 +1,11 @@
+uniform	mat4		m4;
+varying	vec3		vTexCoord;
+
+void main (void) {
+
+	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
+	
+	vec3 r = reflect( vec3( gl_ModelViewMatrix * gl_Vertex ), gl_NormalMatrix * gl_Normal );
+	vTexCoord = vec3( m4 * gl_ModelViewMatrixInverse * vec4( r, 0.0 ));
+
+}
