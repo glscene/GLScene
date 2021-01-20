@@ -151,7 +151,6 @@
         <DCCReference Include="GLScene_RT.dcp"/>
         <DCCReference Include="..\Source\Imports.ModuleLoader.pas"/>
         <DCCReference Include="..\Source\Imports.NGD.pas"/>
-        <DCCReference Include="..\Source\Imports.NGD_Joints.pas"/>
         <DCCReference Include="..\Source\Imports.ODE.pas"/>
         <DCCReference Include="..\Source\Imports.PhysX.pas"/>
         <DCCReference Include="..\Source\Physics.NGDManager.pas"/>

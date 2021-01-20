@@ -120,11 +120,12 @@
         <DCCReference Include="VclSmp.dcp"/>
         <DCCReference Include="GLScene_DT.dcp"/>
         <DCCReference Include="GLScene_Parallel_RT.dcp"/>
-        <DCCReference Include="..\Source\FsCUDAEditor.pas">
-            <Form>GLSCUDAEditorForm</Form>
+        <DCCReference Include="..\Source\CUDA.PropEditors.pas"/>
+        <DCCReference Include="..\Source\CUDA.Register.pas"/>
+        <DCCReference Include="..\Source\CUDA.EditorFm.pas">
+            <Form>GLCUDAEditorForm</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\Source\CUDAs.PropEditors.pas"/>
-        <DCCReference Include="..\Source\CUDAs.Register.pas"/>
         <RcCompile Include="..\Resources\GLSceneParallel.rc">
             <Form>GLSceneParallel.res</Form>
         </RcCompile>

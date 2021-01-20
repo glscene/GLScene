@@ -39,8 +39,8 @@ requires
   GLScene_Parallel_RT;
 
 contains
-  FsCUDAEditor in '..\Source\FsCUDAEditor.pas' {GLSCUDAEditorForm},
-  CUDAs.PropEditors in '..\Source\CUDAs.PropEditors.pas',
-  CUDAs.Register in '..\Source\CUDAs.Register.pas';
+  CUDA.PropEditors in '..\Source\CUDA.PropEditors.pas',
+  CUDA.Register in '..\Source\CUDA.Register.pas',
+  CUDA.EditorFm in '..\Source\CUDA.EditorFm.pas' {GLCUDAEditorForm};
 
 end.

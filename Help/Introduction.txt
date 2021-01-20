@@ -1,0 +1,37 @@
+GLScene for Win32/Win64
+Embarcadero Rad Studio
+
+-------------------------------------------------------
+
+GLScene is an OpenGL based 3D library for Delphi, C++Builder and Lazarus. 
+It provides visual components and objects allowing description and effective rendering of 3D scenes.
+GLScene is not only an OpenGL wrapper or utility library, but it has grown to become a set of founding classes 
+for a generic 3D engine with Rapid Application Development in mind. 
+GLScene allows you to quickly design and render 3D scenes without having to learn the intricacies of OpenGL: 
+if you know how to design a TForm, you'll easily master the basic operation of TGLScene. 
+Make sure to checkout the introduction tutorial included in the help folder.
+GLScene includes more than many components and a variety of founding classes. 
+The library comes with a comfortable set of demos showcasing the ease of use and demonstrating RAD wasn't done 
+at the expense of CPU horsepower. Advanced demos and samples can be found in the project repository 
+at http://sourceforge/projects/glscene/
+The GLScene Sound System allows positional 3D audio via low-level APIs like 
+FMOD, BASS, OpenAL and WaveOut.
+
+---------------------------------------------------------
+
+To Install GLScene follow the instruction in installation directory. 
+To compile GLScene see Installation instruction and after having installed all the necessary units 
+and updated your environment library paths open and install the packages appropriate to the corresponding directory. 
+Check your RAD Studio paths for duplicates or old .pas/.dcu that's where the problem lies 99% of the time.
+If you have installed a current version, make sure no files of the previous version remains, 
+some files may have been renamed, moved or removed in between versions with CleanForRelease.bat. 
+ 
+Compile options (activated/deactivated in GLScene.inc, all are inactive by default):
+The option DEFINE GLS_Graphics32_SUPPORT  controls support and dependency to Alex Denissov's Graphics32 library 
+(http://www.graphics32.org), once activated in GLScene.inc, TGLBitmap32 will redirect 
+assignments from TBitmap32.
+
+See http://www.glscene.org for more details.
+--------------------------------------------------------------
+
+GLSTeam

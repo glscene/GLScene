@@ -28,6 +28,12 @@ void TForm1::ClickWater(int x, int y)
 __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
 {
   SetGLSceneMediaDir();
+  GLWaterPlane1->Mask->LoadFromFile("basinMask.bmp");
+  GLHeightField1->Material->Texture->Image->LoadFromFile("clover.jpg");
+
+  TFileName PathCM = GetCurrentDir() + "\\Cubemaps";
+  SetCurrentDir(PathCM);
+
   // Load the cube map which is used both for environment and as reflection texture
   TGLTexture *t = GLMaterialLibrary1->Materials->Items[0]->Material->Texture;
   t->ImageClassName = __classid(TGLCubeMapImage)->ClassName();
@@ -42,8 +48,6 @@ __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
   img->Picture[CmtNY]->LoadFromFile("cm_bottom.jpg");
   img->Picture[CmtNZ]->LoadFromFile("cm_front.jpg");
 
-  GLWaterPlane1->Mask->LoadFromFile("basinMask.bmp");
-  GLHeightField1->Material->Texture->Image->LoadFromFile("clover.jpg");
 }
 
 //---------------------------------------------------------------------------

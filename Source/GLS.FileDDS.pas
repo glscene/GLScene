@@ -1,10 +1,9 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.FileDDS;
 
-(* DDS File support *)
+(* DDS File support - Direct Draw Surface *)
 
 interface
 
@@ -31,19 +30,18 @@ type
 
   TGLDDSImage = class(TGLBaseImage)
   private
-    procedure flipSurface(chgData: PGLubyte; w, h, d: integer);
+    procedure FlipSurface(ChangeData: PGLubyte; W, H, D: integer);
   public
     class function Capabilities: TGLDataFileCapabilities; override;
-    procedure LoadFromFile(const filename: string); override;
-    procedure SaveToFile(const filename: string); override;
-    procedure LoadFromStream(stream: TStream); override;
-    procedure SaveToStream(stream: TStream); override;
+    procedure LoadFromFile(const Filename: string); override;
+    procedure SaveToFile(const Filename: string); override;
+    procedure LoadFromStream(Stream: TStream); override;
+    procedure SaveToStream(Stream: TStream); override;
     // Assigns from any Texture.
-    procedure AssignFromTexture(textureContext: TGLContext;
-      const textureHandle: Cardinal;
-      textureTarget: TGLTextureTarget;
+    procedure AssignFromTexture(TextureContext: TGLContext;
+      const TextureHandle: Cardinal; TextureTarget: TGLTextureTarget;
       const CurrentFormat: Boolean;
-      const intFormat: TGLInternalFormat); reintroduce;
+      const IntFormat: TGLInternalFormat); reintroduce;
   end;
 
 var
@@ -63,7 +61,7 @@ uses
 // ------------------ TGLDDSImage ------------------
 // ------------------
 
-procedure TGLDDSImage.LoadFromFile(const filename: string);
+procedure TGLDDSImage.LoadFromFile(const Filename: string);
 var
   fs: TStream;
 begin
@@ -81,11 +79,11 @@ begin
     raise EInvalidRasterFile.CreateFmt(strFileNotFound, [filename]);
 end;
 
-procedure TGLDDSImage.SaveToFile(const filename: string);
+procedure TGLDDSImage.SaveToFile(const Filename: string);
 var
   fs: TStream;
 begin
-  fs := TFileStream.Create(fileName, fmOpenWrite or fmCreate);
+  fs := TFileStream.Create(FileName, fmOpenWrite or fmCreate);
   try
     SaveToStream(fs);
   finally
@@ -94,7 +92,7 @@ begin
   ResourceName := filename;
 end;
 
-procedure TGLDDSImage.LoadFromStream(stream: TStream);
+procedure TGLDDSImage.LoadFromStream(Stream: TStream);
 var
   header: TDDSHeader;
   DX10header: TDDS_HEADER_DXT10;
@@ -246,7 +244,7 @@ begin
   end; // for level
 end;
 
-procedure TGLDDSImage.SaveToStream(stream: TStream);
+procedure TGLDDSImage.SaveToStream(Stream: TStream);
 const
   Magic: array[0..3] of AnsiChar = 'DDS ';
 var
@@ -349,7 +347,7 @@ begin
   end;
 end;
 
-procedure TGLDDSImage.AssignFromTexture(textureContext: TGLContext;
+procedure TGLDDSImage.AssignFromTexture(TextureContext: TGLContext;
   const textureHandle: Cardinal;
   textureTarget: TGLTextureTarget;
   const CurrentFormat: Boolean;
@@ -512,14 +510,14 @@ begin
   end;
 end;
 
-procedure TGLDDSImage.flipSurface(chgData: PGLubyte; w, h, d: integer);
+procedure TGLDDSImage.FlipSurface(ChangeData: PGLubyte; W, H, D: integer);
 var
-  lineSize: integer;
-  sliceSize: integer;
-  tempBuf: PGLubyte;
+  LineSize: integer;
+  SliceSize: integer;
+  TempBuf: PGLubyte;
   i, j: integer;
-  top, bottom: PGLubyte;
-  flipblocks: procedure(data: PGLubyte; size: integer);
+  Top, Bottom: PGLubyte;
+  FlipBlocks: procedure(data: PGLubyte; size: integer);
 
 begin
   if d = 0 then
@@ -533,7 +531,7 @@ begin
 
     for i := 0 to d - 1 do
     begin
-      top := chgData;
+      top := ChangeData;
       Inc(top, i * sliceSize);
       bottom := top;
       Inc(bottom, sliceSize - lineSize);
@@ -568,7 +566,7 @@ begin
     GetMem(tempBuf, lineSize);
     for i := 0 to d - 1 do
     begin
-      top := chgData;
+      top := ChangeData;
       Inc(top, i * sliceSize);
       bottom := top;
       Inc(bottom, sliceSize - lineSize);

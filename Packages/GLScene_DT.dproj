@@ -130,45 +130,41 @@
             <Form>RTextureEdit</Form>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
-        <DCCReference Include="..\Source\FRTrackBarEdit.pas">
-            <Form>RTrackBarEdit</Form>
-            <DesignClass>TFrame</DesignClass>
-        </DCCReference>
-        <DCCReference Include="..\Source\FLibMaterialPicker.pas">
-            <Form>GLLibMaterialPickerForm</Form>
-        </DCCReference>
-        <DCCReference Include="..\Source\FMaterialEditor.pas">
-            <Form>GLMaterialEditorForm</Form>
-        </DCCReference>
-        <DCCReference Include="..\Source\FGUILayoutEditor.pas">
+        <DCCReference Include="..\Source\FmGuiLayoutEditor.pas">
             <Form>GLLayoutEditorForm</Form>
         </DCCReference>
-        <DCCReference Include="..\Source\FGuiSkinEditor.pas">
+        <DCCReference Include="..\Source\FmGuiSkinEditor.pas">
             <Form>GLSkinEditorForm</Form>
         </DCCReference>
-        <DCCReference Include="..\Source\FShaderMemo.pas">
+        <DCCReference Include="..\Source\FmShaderMemo.pas">
             <Form>ShaderMemoForm</Form>
         </DCCReference>
-        <DCCReference Include="..\Source\FShaderUniformEditor.pas">
+        <DCCReference Include="..\Source\FmShaderUniformEditor.pas">
             <Form>GLShaderUniformEditor</Form>
         </DCCReference>
-        <DCCReference Include="..\Source\FVectorEditor.pas">
+        <DCCReference Include="..\Source\FmVectorEditor.pas">
             <Form>GLVectorEditorForm</Form>
         </DCCReference>
-        <DCCReference Include="..\Source\FSceneEditor.pas">
+        <DCCReference Include="..\Source\FmSceneEditor.pas">
             <Form>GLSceneEditorForm</Form>
         </DCCReference>
-        <DCCReference Include="..\Source\FPlugInManagerEditor.pas">
+        <DCCReference Include="..\Source\FmPlugInManagerEditor.pas">
             <Form>GLPlugInManagerEditorForm</Form>
         </DCCReference>
-        <DCCReference Include="..\Source\FXCollectionEditor.pas">
+        <DCCReference Include="..\Source\FmXCollectionEditor.pas">
             <Form>GLXCollectionEditorForm</Form>
         </DCCReference>
-        <DCCReference Include="..\Source\FInfo.pas">
+        <DCCReference Include="..\Source\FmInfo.pas">
             <Form>GLInfoForm</Form>
         </DCCReference>
         <DCCReference Include="..\Source\GLS.SceneRegister.pas"/>
         <DCCReference Include="..\Source\GLS.XCollectionRegister.pas"/>
+        <DCCReference Include="..\Source\FmMaterialEditor.pas"/>
+        <DCCReference Include="..\Source\FRTrackBarEdit.pas">
+            <Form>RTrackBarEdit</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
         <RcCompile Include="..\Resources\GLScene.rc">
             <Form>GLScene.res</Form>
         </RcCompile>

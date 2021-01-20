@@ -29,7 +29,7 @@ unit Imports.NGD;
 interface
 
 uses
-  Classes;
+  System.Classes;
 
 const
 {.$DEFINE NEWTON_DOUBLE_PRECISION} // This is needed when you want to use double precision

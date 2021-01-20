@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{CDF38BAB-66B8-4E3D-8001-E16FD3FECC49}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DwsShader.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GlsScript.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ScriptBasics.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DwsShader">
+        <MSBuild Projects="DwsShader.dproj"/>
+    </Target>
+    <Target Name="DwsShader:Clean">
+        <MSBuild Projects="DwsShader.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DwsShader:Make">
+        <MSBuild Projects="DwsShader.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GlsScript">
+        <MSBuild Projects="GlsScript.dproj"/>
+    </Target>
+    <Target Name="GlsScript:Clean">
+        <MSBuild Projects="GlsScript.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GlsScript:Make">
+        <MSBuild Projects="GlsScript.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ScriptBasics">
+        <MSBuild Projects="ScriptBasics.dproj"/>
+    </Target>
+    <Target Name="ScriptBasics:Clean">
+        <MSBuild Projects="ScriptBasics.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ScriptBasics:Make">
+        <MSBuild Projects="ScriptBasics.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DwsShader;GlsScript;ScriptBasics"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DwsShader:Clean;GlsScript:Clean;ScriptBasics:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DwsShader:Make;GlsScript:Make;ScriptBasics:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

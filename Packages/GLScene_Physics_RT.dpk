@@ -37,7 +37,6 @@ requires
 contains
   Imports.ModuleLoader in '..\Source\Imports.ModuleLoader.pas',
   Imports.NGD in '..\Source\Imports.NGD.pas',
-  Imports.NGD_Joints in '..\Source\Imports.NGD_Joints.pas',
   Imports.ODE in '..\Source\Imports.ODE.pas',
   Imports.PhysX in '..\Source\Imports.PhysX.pas',
   Physics.NGDManager in '..\Source\Physics.NGDManager.pas',

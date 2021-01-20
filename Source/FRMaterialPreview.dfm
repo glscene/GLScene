@@ -2,7 +2,7 @@ object RMaterialPreview: TRMaterialPreview
   Left = 0
   Top = 0
   Width = 202
-  Height = 229
+  Height = 230
   AutoSize = True
   TabOrder = 0
   object CBObject: TComboBox
@@ -37,7 +37,7 @@ object RMaterialPreview: TRMaterialPreview
   end
   object GLSceneViewer: TGLSceneViewer
     Left = 0
-    Top = 26
+    Top = 27
     Width = 202
     Height = 203
     Camera = Camera

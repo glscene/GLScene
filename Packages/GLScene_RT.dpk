@@ -125,6 +125,8 @@ contains
   GLS.FileX in '..\Source\GLS.FileX.pas',
   GLS.FireFX in '..\Source\GLS.FireFX.pas',
   GLS.FileZLIB in '..\Source\GLS.FileZLIB.pas',
+  GLS.FileDEL in '..\Source\GLS.FileDEL.pas',
+  GLS.FileVOR in '..\Source\GLS.FileVOR.pas',
   GLS.FullScreenViewer in '..\Source\GLS.FullScreenViewer.pas',
   GLS.PolygonTesselation in '..\Source\GLS.PolygonTesselation.pas',
   GLS.GameMenu in '..\Source\GLS.GameMenu.pas',

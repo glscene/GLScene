@@ -1,15 +1,12 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit Physics.NGDManager;
-
 (*
   The Scene Manager based on Newton Game Dynamics Engine (http://newtondynamics.com)
   Notes:
   This code is still being developed so any part of it may change at anytime.
 *)
-
 interface
 
 { .$I GLScene.inc }
@@ -21,7 +18,7 @@ uses
   System.Types,
 
   Imports.NGD,
-  Imports.NGD_Joints,
+///  Imports.NGD_Joints,
 
   /// Import.Newton,    // new version
 
@@ -1100,6 +1097,7 @@ procedure TGLNGDManager.RebuildAllJoint(Sender: TObject);
       begin
         pinAndPivot := IdentityHmgMatrix;
         pinAndPivot.W := FCustomBallAndSocketOptions.FPivotPoint.AsVector;
+(* from dJointLibrary.dll
         FNewtonUserJoint := CreateCustomBallAndSocket(@pinAndPivot,
           GetBodyFromGLSceneObject(FChildObject),
           GetBodyFromGLSceneObject(FParentObject));
@@ -1111,6 +1109,7 @@ procedure TGLNGDManager.RebuildAllJoint(Sender: TObject);
         CustomSetBodiesCollisionState(FNewtonUserJoint, Ord(FCollisionState));
         NewtonJointSetStiffness(CustomGetNewtonJoint(FNewtonUserJoint),
           FStiffness);
+*)
       end;
   end;
 
@@ -1136,6 +1135,7 @@ procedure TGLNGDManager.RebuildAllJoint(Sender: TObject);
         pinAndPivot.Z := bso.AbsoluteMatrix.X;
         bso.Free;
 
+(* from dJointLibrary.dll
         FNewtonUserJoint := CreateCustomHinge(@pinAndPivot,
           GetBodyFromGLSceneObject(FChildObject),
           GetBodyFromGLSceneObject(FParentObject));
@@ -1147,6 +1147,7 @@ procedure TGLNGDManager.RebuildAllJoint(Sender: TObject);
         NewtonJointSetStiffness(CustomGetNewtonJoint(FNewtonUserJoint),
           FStiffness);
         CustomSetUserData(FNewtonUserJoint, CustomHingeOptions);
+*)
       end;
   end;
 
@@ -1156,13 +1157,15 @@ procedure TGLNGDManager.RebuildAllJoint(Sender: TObject);
     bso: TGLBaseSceneObject;
 
   begin
-    { Newton wait from FPinAndPivotMatrix a structure like that:
+    (*
+      Newton wait from FPinAndPivotMatrix a structure like that:
       First row: the pin direction
       Second and third rows are set to create an orthogonal matrix
       Fourth: The pivot position
 
       In GLS.Scene, the GLBaseSceneObjects direction is the third row,
-      because the first row is the right vector (second row is up vector). }
+      because the first row is the right vector (second row is up vector).
+    *)
     with Joint do
       if Assigned(FParentObject) and Assigned(FChildObject) then
       begin
@@ -1175,6 +1178,7 @@ procedure TGLNGDManager.RebuildAllJoint(Sender: TObject);
         pinAndPivot.Z := bso.AbsoluteMatrix.X;
         bso.Free;
 
+(* from dJointLibrary.dll
         FNewtonUserJoint := CreateCustomSlider(@pinAndPivot,
           GetBodyFromGLSceneObject(FChildObject),
           GetBodyFromGLSceneObject(FParentObject));
@@ -1185,6 +1189,7 @@ procedure TGLNGDManager.RebuildAllJoint(Sender: TObject);
 
         CustomSetBodiesCollisionState(FNewtonUserJoint, Ord(FCollisionState));
         CustomSetUserData(FNewtonUserJoint, CustomSliderOptions);
+*)
       end;
   end;
 
@@ -2632,7 +2637,7 @@ begin
   end;
   if FNewtonUserJoint <> nil then
   begin
-    CustomDestroyJoint(FNewtonUserJoint);
+    (* CustomDestroyJoint(FNewtonUserJoint); *) //from dJointLibrary.dll
     FNewtonUserJoint := nil;
   end;
 end;
@@ -2640,6 +2645,8 @@ end;
 procedure TGLNGDJoint.KinematicControllerPick(pickpoint: TVector;
   PickedActions: TGLNGDPickedActions);
 begin
+  (* CustomDestroyJoint(FNewtonUserJoint);  //from dJointLibrary.dll
+
   if FJointType = nj_KinematicController then
     if Assigned(FParentObject) then
     begin
@@ -2679,6 +2686,7 @@ begin
         ParentObject := nil;
       end;
     end;
+  *)
 end;
 
 procedure TGLNGDJoint.Render;
@@ -2719,7 +2727,8 @@ procedure TGLNGDJoint.Render;
     size: Single;
   begin
     size := FManager.DebugOption.DotAxisSize;
-    CustomKinematicControllerGetTargetMatrix(FNewtonUserJoint, @pickedMatrix);
+/// From dJointLibrary.dll
+///    CustomKinematicControllerGetTargetMatrix(FNewtonUserJoint, @pickedMatrix);
     FManager.FCurrentColor := FManager.DebugOption.JointAxisColor;
 
     FManager.AddNode(FParentObject.AbsolutePosition);

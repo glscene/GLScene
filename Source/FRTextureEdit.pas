@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit FRTextureEdit;
 
 (* Basic editing frame for TGLTexture *)

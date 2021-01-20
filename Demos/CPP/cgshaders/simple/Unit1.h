@@ -20,7 +20,7 @@
 #include "GLS.Graph.hpp"
 #include "GLS.Objects.hpp"
 #include "GLS.VectorFileObjects.hpp"
-#include "CGs.Shader.hpp"
+#include "Cg.Shader.hpp"
 #include "GLS.File3DS.hpp"
 #include "Imports.Cg.hpp"
 #include "Imports.cgGL.hpp"

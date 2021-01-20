@@ -58,6 +58,7 @@ uses
   GLS.Graph,
   GLS.MeshBuilder,
   GLS.Navigator,
+  GLS.Utils,
 
   fGLForm,
   fGLAbout,
@@ -295,7 +296,9 @@ end;
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   inherited;
-  GetCurrentDir;
+  SetCurrentDir(ExtractFilePath(ParamStr(0)));
+  SetGLSceneMediaDir();
+
   NaviCube := TGLNaviCube.CreateAsChild(Scene.Objects);
   NaviCube.SceneViewer := snViewer;
   NaviCube.FPS := 30;

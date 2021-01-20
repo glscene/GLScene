@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.FileSMD;
 
 (* SMD vector file format implementation *)

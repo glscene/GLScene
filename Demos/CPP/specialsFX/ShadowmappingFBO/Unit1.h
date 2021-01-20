@@ -24,7 +24,7 @@
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "OpenGLx.hpp"
-#include "FormatDDSImage.hpp"
+#include "Formats.DDSImage.hpp"
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

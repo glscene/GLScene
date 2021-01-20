@@ -104,7 +104,6 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
-        <DCC_CBuilderOutput>None</DCC_CBuilderOutput>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -113,8 +112,8 @@
         <DCCReference Include="GLScenePhysics.res"/>
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="vcl.dcp"/>
-        <DCCReference Include="GLScene_Physics_RT.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
+        <DCCReference Include="GLScene_Physics_RT.dcp"/>
         <DCCReference Include="..\Source\Physics.Register.pas"/>
         <RcCompile Include="..\Resources\GLScenePhysics.rc">
             <Form>GLScenePhysics.res</Form>

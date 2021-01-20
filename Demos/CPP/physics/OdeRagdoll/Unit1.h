@@ -24,7 +24,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.WindowsFont.hpp"
 #include "Physics.ODEUtils.hpp"
-#include "Import.ODE.hpp"
+#include "Imports.ODE.hpp"
 #include "Physics.ODERagdoll.hpp"
 
 //---------------------------------------------------------------------------

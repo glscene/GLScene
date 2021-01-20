@@ -1,0 +1,84 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{3A5763F3-F0E8-44C7-9B8C-67B7599DD152}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="BendingCyl.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="CutoutStar.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NutsnBolts.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Pawn.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Tentacles.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BendingCyl">
+        <MSBuild Projects="BendingCyl.dproj"/>
+    </Target>
+    <Target Name="BendingCyl:Clean">
+        <MSBuild Projects="BendingCyl.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BendingCyl:Make">
+        <MSBuild Projects="BendingCyl.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CutoutStar">
+        <MSBuild Projects="CutoutStar.dproj"/>
+    </Target>
+    <Target Name="CutoutStar:Clean">
+        <MSBuild Projects="CutoutStar.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CutoutStar:Make">
+        <MSBuild Projects="CutoutStar.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NutsnBolts">
+        <MSBuild Projects="NutsnBolts.dproj"/>
+    </Target>
+    <Target Name="NutsnBolts:Clean">
+        <MSBuild Projects="NutsnBolts.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NutsnBolts:Make">
+        <MSBuild Projects="NutsnBolts.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Pawn">
+        <MSBuild Projects="Pawn.dproj"/>
+    </Target>
+    <Target Name="Pawn:Clean">
+        <MSBuild Projects="Pawn.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Pawn:Make">
+        <MSBuild Projects="Pawn.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Tentacles">
+        <MSBuild Projects="Tentacles.dproj"/>
+    </Target>
+    <Target Name="Tentacles:Clean">
+        <MSBuild Projects="Tentacles.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Tentacles:Make">
+        <MSBuild Projects="Tentacles.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BendingCyl;CutoutStar;NutsnBolts;Pawn;Tentacles"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BendingCyl:Clean;CutoutStar:Clean;NutsnBolts:Clean;Pawn:Clean;Tentacles:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BendingCyl:Make;CutoutStar:Make;NutsnBolts:Make;Pawn:Make;Tentacles:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Texture;
 
 (* Handles all texture stuff *)
@@ -491,11 +490,11 @@ type
       The compressed size is returned if, and only if texture compression
       if active and possible, and the texture has been allocated (Handle
       is defined), otherwise the estimated size (from TextureFormat
-      specification) is returned. *)
+      specification) is returned *)
     function TextureImageRequiredMemory: Integer;
     (* Allocates the texture handle if not already allocated.
       The texture is binded and parameters are setup, but no image data
-      is initialized by this call - for expert use only. *)
+      is initialized by this call - for expert use only *)
     function AllocateHandle: Cardinal;
     function IsHandleAllocated: Boolean;
     // Returns OpenGL texture format corresponding to current options.
@@ -510,7 +509,7 @@ type
     property Handle: Cardinal read GetHandle;
     property TextureHandle: TGLTextureHandle read FTextureHandle;
     (* Actual width, height and depth used for last texture
-      specification binding. *)
+      specification binding *)
     property TexWidth: Integer read FTexWidth;
     property TexHeight: Integer read FTexHeight;
     property TexDepth: Integer read FTexDepth;
@@ -520,22 +519,21 @@ type
     This is ugly, but since the default streaming mechanism does a
     really bad job at storing	polymorphic owned-object properties,
     and neither TFiler nor TPicture allow proper use of the built-in
-    streaming, that's the only way I found to allow a user-extensible
-    mechanism. *)
+    streaming, that's the only way to allow a user-extensible mechanism *)
     property ImageClassName: string read GetImageClassName write
       SetImageClassName stored StoreImageClassName;
-    // Image data for the texture.
+    // Image data for the texture
     property Image: TGLTextureImage read FImage write SetImage;
     (* Automatic Image Alpha setting.
     Allows to control how and if the image's Alpha channel (transparency)
-    is computed. *)
+    is computed *)
     property ImageAlpha: TGLTextureImageAlpha read FImageAlpha write
       SetImageAlpha default tiaDefault;
     (* Texture brightness correction.
     This correction is applied upon loading a TGLTextureImage, it's a
     simple saturating scaling applied to the RGB components of
     the 32 bits image, before it is passed to OpenGL, and before
-    gamma correction (if any). *)
+    gamma correction (if any) *)
     property ImageBrightness: Single read FImageBrightness write
       SetImageBrightness stored StoreBrightness;
     (* Texture gamma correction.
@@ -571,16 +569,16 @@ type
     (* Specifies texture filtering quality.
     You can choose between bilinear and trilinear filetring (anisotropic).
     The OpenGL ICD must support GL_EXT_texture_filter_anisotropic or
-    this property is ignored. *)
+    this property is ignored *)
     property FilteringQuality: TGLTextureFilteringQuality read FFilteringQuality
       write SetFilteringQuality default tfIsotropic;
     (* Texture coordinates mapping mode.
-    This property controls automatic texture coordinates generation. *)
+    This property controls automatic texture coordinates generation *)
     property MappingMode: TGLTextureMappingMode read FMappingMode write
       SetMappingMode default tmmUser;
     (* Texture mapping coordinates mode for S, T, R and Q axis.
     This property stores the coordinates for automatic texture
-    coordinates generation. *)
+    coordinates generation *)
     property MappingSCoordinates: TGLCoordinates4 read GetMappingSCoordinates
       write SetMappingSCoordinates stored StoreMappingSCoordinates;
     property MappingTCoordinates: TGLCoordinates4 read GetMappingTCoordinates
@@ -589,16 +587,16 @@ type
       write SetMappingRCoordinates stored StoreMappingRCoordinates;
     property MappingQCoordinates: TGLCoordinates4 read GetMappingQCoordinates
       write SetMappingQCoordinates stored StoreMappingQCoordinates;
-    // Texture Environment color.
+    // Texture Environment color
     property EnvColor: TGLColor read FEnvColor write SetEnvColor;
-    // Texture Border color.
+    // Texture Border color
     property BorderColor: TGLColor read FBorderColor write SetBorderColor;
-    // If true, the texture is disabled (not used).
+    // If true, the texture is disabled (not used)
     property Disabled: Boolean read FDisabled write SetDisabled default True;
     (* Normal Map scaling.
     Only applies when TextureFormat is tfNormalMap, this property defines
     the scaling that is applied during normal map generation (ie. controls
-    the intensity of the bumps). *)
+    the intensity of the bumps) *)
     property NormalMapScale: Single read FNormalMapScale write SetNormalMapScale
       stored StoreNormalMapScale;
      property TextureCompareMode: TGLTextureCompareMode read fTextureCompareMode
@@ -607,7 +605,7 @@ type
       write SetTextureCompareFunc default cfLequal;
     property DepthTextureMode: TGLDepthTextureMode read fDepthTextureMode write
       SetDepthTextureMode default dtmLuminance;
-    // Disable image release after transfering it to VGA.
+    // Disable image release after transfering it to VGA
     property KeepImageAfterTransfer: Boolean read FKeepImageAfterTransfer
       write FKeepImageAfterTransfer default False;
   end;

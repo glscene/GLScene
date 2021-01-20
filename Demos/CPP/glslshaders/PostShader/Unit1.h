@@ -25,7 +25,7 @@
 #include "GLS.Utils.hpp"
 
 #include "GLSL.PostShaders.hpp"
-#include "GLSL.CGPostTransformationShader.hpp"
+#include "CGs.PostTransformationShader.hpp"
 
 // FileFormats
 #include "GLS.FileTGA.hpp"

@@ -44,20 +44,19 @@ contains
   FRMaterialPreview in '..\Source\FRMaterialPreview.pas',
   FRColorEditor in '..\Source\FRColorEditor.pas' {RColorEditor: TFrame},
   FRTextureEdit in '..\Source\FRTextureEdit.pas' {RTextureEdit: TFrame},
-  FRTrackBarEdit in '..\Source\FRTrackBarEdit.pas' {RTrackBarEdit: TFrame},
-  FLibMaterialPicker in '..\Source\FLibMaterialPicker.pas' {GLLibMaterialPickerForm},
-  FMaterialEditor in '..\Source\FMaterialEditor.pas' {GLMaterialEditorForm},
-  FGUILayoutEditor in '..\Source\FGUILayoutEditor.pas' {GLLayoutEditorForm},
-  FGuiSkinEditor in '..\Source\FGuiSkinEditor.pas' {GLSkinEditorForm},
-  FShaderMemo in '..\Source\FShaderMemo.pas' {ShaderMemoForm},
-  FShaderUniformEditor in '..\Source\FShaderUniformEditor.pas' {GLShaderUniformEditor},
-  FVectorEditor in '..\Source\FVectorEditor.pas' {GLVectorEditorForm},
-  FSceneEditor in '..\Source\FSceneEditor.pas' {GLSceneEditorForm},
-  FPlugInManagerEditor in '..\Source\FPlugInManagerEditor.pas' {GLPlugInManagerEditorForm},
-  FXCollectionEditor in '..\Source\FXCollectionEditor.pas' {GLXCollectionEditorForm},
-  FInfo in '..\Source\FInfo.pas' {GLInfoForm},
+  FmGuiLayoutEditor in '..\Source\FmGuiLayoutEditor.pas' {GLLayoutEditorForm},
+  FmGuiSkinEditor in '..\Source\FmGuiSkinEditor.pas' {GLSkinEditorForm},
+  FmShaderMemo in '..\Source\FmShaderMemo.pas' {ShaderMemoForm},
+  FmShaderUniformEditor in '..\Source\FmShaderUniformEditor.pas' {GLShaderUniformEditor},
+  FmVectorEditor in '..\Source\FmVectorEditor.pas' {GLVectorEditorForm},
+  FmSceneEditor in '..\Source\FmSceneEditor.pas' {GLSceneEditorForm},
+  FmPlugInManagerEditor in '..\Source\FmPlugInManagerEditor.pas' {GLPlugInManagerEditorForm},
+  FmXCollectionEditor in '..\Source\FmXCollectionEditor.pas' {GLXCollectionEditorForm},
+  FmInfo in '..\Source\FmInfo.pas' {GLInfoForm},
   GLS.SceneRegister in '..\Source\GLS.SceneRegister.pas',
-  GLS.XCollectionRegister in '..\Source\GLS.XCollectionRegister.pas';
+  GLS.XCollectionRegister in '..\Source\GLS.XCollectionRegister.pas',
+  FmMaterialEditor in '..\Source\FmMaterialEditor.pas',
+  FRTrackBarEdit in '..\Source\FRTrackBarEdit.pas' {RTrackBarEdit: TFrame};
 
 end.
 

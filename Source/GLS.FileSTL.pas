@@ -1,9 +1,7 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.FileSTL;
-
 (*
   Support-code to load STL Files into TGLFreeForm-Components in GLScene.
   Note that you must manually add this unit to one of your project's uses
@@ -16,7 +14,6 @@ unit GLS.FileSTL;
   This class reads both, but exports only the "binary" version.
   Original Binary importer code by Paul M. Bearne, Text importer by Adem.
 *)
-
 interface
 
 uses
@@ -79,7 +76,7 @@ const
 // ------------------ TGLSTLVectorFile ------------------
 // ------------------
 
-class function TglSTLVectorFile.Capabilities: TglDataFileCapabilities;
+class function TGLSTLVectorFile.Capabilities: TGLDataFileCapabilities;
 begin
    Result := [dfcRead, dfcWrite];
 end;

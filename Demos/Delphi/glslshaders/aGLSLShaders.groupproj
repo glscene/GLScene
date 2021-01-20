@@ -1,0 +1,132 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{4C2A9536-A78A-4C3B-BD8F-687FEEC63D71}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="BumpShader.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DiffuseShader.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="LiningShaders.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Ocean.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PostShader.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ProjectTexture.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ShaderComponent.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ShadersLab.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SkyboxShader.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BumpShader">
+        <MSBuild Projects="BumpShader.dproj"/>
+    </Target>
+    <Target Name="BumpShader:Clean">
+        <MSBuild Projects="BumpShader.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BumpShader:Make">
+        <MSBuild Projects="BumpShader.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DiffuseShader">
+        <MSBuild Projects="DiffuseShader.dproj"/>
+    </Target>
+    <Target Name="DiffuseShader:Clean">
+        <MSBuild Projects="DiffuseShader.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DiffuseShader:Make">
+        <MSBuild Projects="DiffuseShader.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="LiningShaders">
+        <MSBuild Projects="LiningShaders.dproj"/>
+    </Target>
+    <Target Name="LiningShaders:Clean">
+        <MSBuild Projects="LiningShaders.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LiningShaders:Make">
+        <MSBuild Projects="LiningShaders.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Ocean">
+        <MSBuild Projects="Ocean.dproj"/>
+    </Target>
+    <Target Name="Ocean:Clean">
+        <MSBuild Projects="Ocean.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Ocean:Make">
+        <MSBuild Projects="Ocean.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PostShader">
+        <MSBuild Projects="PostShader.dproj"/>
+    </Target>
+    <Target Name="PostShader:Clean">
+        <MSBuild Projects="PostShader.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PostShader:Make">
+        <MSBuild Projects="PostShader.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ProjectTexture">
+        <MSBuild Projects="ProjectTexture.dproj"/>
+    </Target>
+    <Target Name="ProjectTexture:Clean">
+        <MSBuild Projects="ProjectTexture.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProjectTexture:Make">
+        <MSBuild Projects="ProjectTexture.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ShaderComponent">
+        <MSBuild Projects="ShaderComponent.dproj"/>
+    </Target>
+    <Target Name="ShaderComponent:Clean">
+        <MSBuild Projects="ShaderComponent.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ShaderComponent:Make">
+        <MSBuild Projects="ShaderComponent.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ShadersLab">
+        <MSBuild Projects="ShadersLab.dproj"/>
+    </Target>
+    <Target Name="ShadersLab:Clean">
+        <MSBuild Projects="ShadersLab.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ShadersLab:Make">
+        <MSBuild Projects="ShadersLab.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SkyboxShader">
+        <MSBuild Projects="SkyboxShader.dproj"/>
+    </Target>
+    <Target Name="SkyboxShader:Clean">
+        <MSBuild Projects="SkyboxShader.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SkyboxShader:Make">
+        <MSBuild Projects="SkyboxShader.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BumpShader;DiffuseShader;LiningShaders;Ocean;PostShader;ProjectTexture;ShaderComponent;ShadersLab;SkyboxShader"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BumpShader:Clean;DiffuseShader:Clean;LiningShaders:Clean;Ocean:Clean;PostShader:Clean;ProjectTexture:Clean;ShaderComponent:Clean;ShadersLab:Clean;SkyboxShader:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BumpShader:Make;DiffuseShader:Make;LiningShaders:Make;Ocean:Make;PostShader:Make;ProjectTexture:Make;ShaderComponent:Make;ShadersLab:Make;SkyboxShader:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

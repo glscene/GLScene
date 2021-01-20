@@ -11,12 +11,12 @@ program CgBombShader;
 
 uses
   Forms,
-  fBombShader in 'fBombShader.pas' {Form1};
+  CgBombShaderFm in 'CgBombShaderFm.pas' {FormCgBombShader};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormCgBombShader, FormCgBombShader);
   Application.Run;
 end.

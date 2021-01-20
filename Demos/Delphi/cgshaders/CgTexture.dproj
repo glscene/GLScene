@@ -124,7 +124,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="fCgTexture.pas">
+        <DCCReference Include="CgTextureFm.pas">
             <Form>FormCgTexture</Form>
         </DCCReference>
         <None Include="..\..\..\media\Shaders\cg_texture_fp.cg"/>

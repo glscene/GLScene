@@ -39,10 +39,8 @@ echo.
 echo Copying Newton DLLs
 rem win32
 copy "%~dp0newton32.dll" %SystemRoot%\SysWOW64\
-copy "%~dp0dJointLibrary32.dll" %SystemRoot%\SysWOW64\
 rem win64
 copy "%~dp0newton64.dll" %SystemRoot%\System32\
-copy "%~dp0dJointLibrary64.dll" %SystemRoot%\System32\
 
 echo.
 echo Copying nVidia PhysX DLLs

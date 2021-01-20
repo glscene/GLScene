@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.FilePLY;
 
 (* PLY (Stanford Triangle Format) vector file format implementation *)

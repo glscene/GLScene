@@ -30,7 +30,7 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  FXCollectionEditor;
+  FmXCollectionEditor;
 
 
 //----------------- TXCollectionProperty ------------------------------------

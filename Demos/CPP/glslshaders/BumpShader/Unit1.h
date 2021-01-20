@@ -25,7 +25,7 @@
 #include "GLS.FileSMD.hpp"
 #include "GLS.FileMD2.hpp"
 #include "GLS.File3DS.hpp"
-#include "FormatDDSImage.hpp"
+#include "Formats.DDSImage.hpp"
 #include "GLS.FileMS3D.hpp"
 
 #include "GLS.Utils.hpp"

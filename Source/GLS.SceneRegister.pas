@@ -1,14 +1,11 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.SceneRegister;
-
 (*
   Registration unit for library components, property editors and
   IDE experts.
 *)
-
 interface
 
 {$I GLScene.inc}
@@ -281,12 +278,12 @@ implementation
 
 uses
   FLibMaterialPicker,
-  FGUILayoutEditor,
-  FMaterialEditor,
-  FShaderMemo,
-  FShaderUniformEditor,
-  FVectorEditor,
-  FSceneEditor,
+  FmGUILayoutEditor,
+  FmMaterialEditor,
+  FmShaderMemo,
+  FmShaderUniformEditor,
+  FmVectorEditor,
+  FmSceneEditor,
 
   GLS.ApplicationFileIO,
   GLS.VectorGeometry,
@@ -838,19 +835,7 @@ begin
   end;
 end;
 
-//----------------- TGLMaterialProperty --------------------------------------------------------------------------------
-
-function TGLMaterialProperty.GetAttributes: TPropertyAttributes;
-begin
-  Result := [paDialog, paSubProperties];
-end;
-
-procedure TGLMaterialProperty.Edit;
-begin
-  if FMaterialEditor.GLMaterialEditorForm.Execute(TGLMaterial(GetOrdValue))
-  then
-    Modified;
-end;
+//----------------- TGLGUILayoutEditor -------------------------------
 
 procedure TGLGUILayoutEditor.Edit;
 begin
@@ -876,6 +861,8 @@ function TGLGUILayoutEditor.GetVerbCount: Integer;
 begin
   Result := 1;
 end;
+
+//----------------- TGLReuseableDefaultEditor --------------------------
 
 procedure TGLReuseableDefaultEditor.CheckEdit(const Prop: IProperty);
 begin
@@ -966,6 +953,28 @@ begin
   Result := 1
 end;
 
+//----------------- TGLMaterialProperty -------------------------------
+
+function TGLMaterialProperty.GetAttributes: TPropertyAttributes;
+begin
+  Result := [paDialog, paSubProperties];
+end;
+
+procedure TGLMaterialProperty.Edit;
+var
+  buf: string;
+  ml: TGLAbstractMaterialLibrary;
+  obj: TPersistent;
+  Int: IGLMaterialLibrarySupported;
+begin
+
+  if FmMaterialEditor.GLMaterialEditorForm.Execute(
+    TGLMaterial(GetOrdValue))
+  then
+    Modified;
+end;
+
+
 //----------------- TGLLibMaterialNameProperty ---------------------------------
 
 function TGLLibMaterialNameProperty.GetAttributes: TPropertyAttributes;
@@ -991,7 +1000,9 @@ begin
   end;
   if not Assigned(ml) then
     ShowMessage('Select the material library first.')
-  else if GLLibMaterialPickerForm.Execute(buf, ml) then
+  else
+//  if FmMaterialEditor.GLMaterialEditorForm.ExecutePicker(buf, ml) then
+  if GLLibMaterialPickerForm.Execute(buf, ml) then
     SetStrValue(buf);
 end;
 

@@ -80,7 +80,7 @@ const
       ODEDLL = 'ode32d.dll';
     {$ENDIF}
   {$ENDIF}
-  {$IFDEF WIN64}
+  {$IFDEF WIN664}
     {$IFDEF cSINGLE}
       ODEDLL = 'ode64s.dll';
     {$ELSE}

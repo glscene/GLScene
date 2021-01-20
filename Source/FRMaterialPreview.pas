@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit FRMaterialPreview;
 
 (* Material Preview frame. *)
@@ -17,7 +16,7 @@ uses
   VCL.Forms,
   VCL.StdCtrls,
   VCL.ComCtrls,
-  Vcl.Controls,
+  VCL.Controls,
 
   GLS.Scene,
   GLS.VectorTypes,
@@ -30,7 +29,6 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.Material;
-
 
 type
   TRMaterialPreview = class(TFrame)
@@ -51,8 +49,8 @@ type
     GLSceneViewer: TGLSceneViewer;
     procedure CBObjectChange(Sender: TObject);
     procedure CBBackgroundChange(Sender: TObject);
-    procedure SceneViewerMouseMove(Sender: TObject; Shift: TShiftState; X,
-      Y: Integer);
+    procedure SceneViewerMouseMove(Sender: TObject; Shift: TShiftState;
+      X, Y: Integer);
     procedure SceneViewerMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure SceneViewerMouseWheel(Sender: TObject; Shift: TShiftState;
@@ -64,10 +62,9 @@ type
     function GetLibMaterial: TGLAbstractLibMaterial;
     procedure SetLibMaterial(const Value: TGLAbstractLibMaterial);
   public
-    constructor Create(AOwner : TComponent); override;
-    property Material : TGLMaterial read GetMaterial
-      write SetMaterial;
-    property LibMaterial : TGLAbstractLibMaterial read GetLibMaterial
+    constructor Create(AOwner: TComponent); override;
+    property Material: TGLMaterial read GetMaterial write SetMaterial;
+    property LibMaterial: TGLAbstractLibMaterial read GetLibMaterial
       write SetLibMaterial;
   end;
 
@@ -80,46 +77,49 @@ implementation
 var
   MX, MY: Integer;
 
-constructor TRMaterialPreview.Create(AOwner : TComponent);
+constructor TRMaterialPreview.Create(AOwner: TComponent);
 begin
-   inherited;
-   BackGroundSprite.Position.X := GLSceneViewer.Width div 2;
-   BackGroundSprite.Position.Y := GLSceneViewer.Height div 2;
-   BackGroundSprite.Width := GLSceneViewer.Width;
-   BackGroundSprite.Height := GLSceneViewer.Height;
+  inherited;
+  BackGroundSprite.Position.X := GLSceneViewer.Width div 2;
+  BackGroundSprite.Position.Y := GLSceneViewer.Height div 2;
+  BackGroundSprite.Width := GLSceneViewer.Width;
+  BackGroundSprite.Height := GLSceneViewer.Height;
 
-   CBObject.ItemIndex:=0;     CBObjectChange(Self);
-   CBBackground.ItemIndex:=0; CBBackgroundChange(Self);
+  CBObject.ItemIndex := 0;
+  CBObjectChange(Self);
+  CBBackground.ItemIndex := 0;
+  CBBackgroundChange(Self);
 end;
 
 procedure TRMaterialPreview.CBObjectChange(Sender: TObject);
 var
-   i : Integer;
+  i: Integer;
 begin
-   i:=CBObject.ItemIndex;
-   Cube.Visible   := I = 0;
-   Sphere.Visible := I = 1;
-   Cone.Visible   := I = 2;
-   Teapot.Visible := I = 3;
+  i := CBObject.ItemIndex;
+  Cube.Visible := i = 0;
+  Sphere.Visible := i = 1;
+  Cone.Visible := i = 2;
+  Teapot.Visible := i = 3;
 end;
 
 procedure TRMaterialPreview.CBBackgroundChange(Sender: TObject);
 var
-   bgColor : TColor;
+  bgColor: TColor;
 begin
-   case CBBackground.ItemIndex of
-      1 : bgColor:=clWhite;
-      2 : bgColor:=clBlack;
-      3 : bgColor:=clBlue;
-      4 : bgColor:=clRed;
-      5 : bgColor:=clGreen;
-   else
-      bgColor:=clNone;
-   end;
-   with BackGroundSprite.Material do begin
-      Texture.Disabled:=(bgColor<>clNone);
-      FrontProperties.Diffuse.Color:=ConvertWinColor(bgColor);
-   end;
+  case CBBackground.ItemIndex of
+    1: bgColor := clWhite;
+    2: bgColor := clBlack;
+    3: bgColor := clBlue;
+    4: bgColor := clRed;
+    5: bgColor := clGreen;
+  else
+    bgColor := clNone;
+  end;
+  with BackGroundSprite.Material do
+  begin
+    Texture.Disabled := (bgColor <> clNone);
+    FrontProperties.Diffuse.Color := ConvertWinColor(bgColor);
+  end;
 end;
 
 procedure TRMaterialPreview.SceneViewerMouseMove(Sender: TObject;
@@ -127,8 +127,7 @@ procedure TRMaterialPreview.SceneViewerMouseMove(Sender: TObject;
 begin
   if (ssRight in Shift) and (ssLeft in Shift) then
     Camera.AdjustDistanceToTarget(1 - 0.01 * (MY - Y))
-  else
-  if (ssRight in Shift) or (ssLeft in Shift) then
+  else if (ssRight in Shift) or (ssLeft in Shift) then
     Camera.MoveAroundTarget(Y - MY, X - MX);
 
   MX := X;
@@ -156,7 +155,8 @@ end;
 
 procedure TRMaterialPreview.SetMaterial(const Value: TGLMaterial);
 begin
-  GLMaterialLibrary.Materials[0].Material.Assign(Value.GetActualPrimaryMaterial);
+  GLMaterialLibrary.Materials[0].Material.Assign
+    (Value.GetActualPrimaryMaterial);
 end;
 
 function TRMaterialPreview.GetLibMaterial: TGLAbstractLibMaterial;
@@ -176,14 +176,11 @@ begin
     end;
   end
   else
-  with GLMaterialLibrary.Materials[0] do
-  begin
-    Material.MaterialLibrary := nil;
-    Material.LibMaterialName := '';
-  end;
+    with GLMaterialLibrary.Materials[0] do
+    begin
+      Material.MaterialLibrary := nil;
+      Material.LibMaterialName := '';
+    end;
 end;
 
 end.
-
-
-

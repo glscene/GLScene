@@ -41,7 +41,7 @@ uses
   GLS.Color,
   GLS.Sound,
   Sounds.BASS,
-  Import.BASS,
+  Imports.BASS,
   GLS.FireFX,
   GLS.FileWAV;
 
@@ -151,6 +151,7 @@ procedure TMain.FormCreate(Sender: TObject);
 var
   DataPath : String;
 begin
+
   Randomize;
   DataPath := ExtractFilePath(ParamStr(0)) + 'data';
   SetCurrentDir(DataPath);

@@ -1,0 +1,132 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{C352AAA9-23EE-4B0C-AB6B-B2C94946F4B2}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Column.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Events.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Hierarchy.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Manual.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Objmove.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Pointto.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Pong.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SmoothNavigator.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Tweening.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Column">
+        <MSBuild Projects="Column.dproj"/>
+    </Target>
+    <Target Name="Column:Clean">
+        <MSBuild Projects="Column.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Column:Make">
+        <MSBuild Projects="Column.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Events">
+        <MSBuild Projects="Events.dproj"/>
+    </Target>
+    <Target Name="Events:Clean">
+        <MSBuild Projects="Events.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Events:Make">
+        <MSBuild Projects="Events.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Hierarchy">
+        <MSBuild Projects="Hierarchy.dproj"/>
+    </Target>
+    <Target Name="Hierarchy:Clean">
+        <MSBuild Projects="Hierarchy.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Hierarchy:Make">
+        <MSBuild Projects="Hierarchy.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Manual">
+        <MSBuild Projects="Manual.dproj"/>
+    </Target>
+    <Target Name="Manual:Clean">
+        <MSBuild Projects="Manual.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Manual:Make">
+        <MSBuild Projects="Manual.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Objmove">
+        <MSBuild Projects="Objmove.dproj"/>
+    </Target>
+    <Target Name="Objmove:Clean">
+        <MSBuild Projects="Objmove.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Objmove:Make">
+        <MSBuild Projects="Objmove.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Pointto">
+        <MSBuild Projects="Pointto.dproj"/>
+    </Target>
+    <Target Name="Pointto:Clean">
+        <MSBuild Projects="Pointto.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Pointto:Make">
+        <MSBuild Projects="Pointto.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Pong">
+        <MSBuild Projects="Pong.dproj"/>
+    </Target>
+    <Target Name="Pong:Clean">
+        <MSBuild Projects="Pong.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Pong:Make">
+        <MSBuild Projects="Pong.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SmoothNavigator">
+        <MSBuild Projects="SmoothNavigator.dproj"/>
+    </Target>
+    <Target Name="SmoothNavigator:Clean">
+        <MSBuild Projects="SmoothNavigator.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SmoothNavigator:Make">
+        <MSBuild Projects="SmoothNavigator.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Tweening">
+        <MSBuild Projects="Tweening.dproj"/>
+    </Target>
+    <Target Name="Tweening:Clean">
+        <MSBuild Projects="Tweening.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Tweening:Make">
+        <MSBuild Projects="Tweening.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Column;Events;Hierarchy;Manual;Objmove;Pointto;Pong;SmoothNavigator;Tweening"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Column:Clean;Events:Clean;Hierarchy:Clean;Manual:Clean;Objmove:Clean;Pointto:Clean;Pong:Clean;SmoothNavigator:Clean;Tweening:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Column:Make;Events:Make;Hierarchy:Make;Manual:Make;Objmove:Make;Pointto:Make;Pong:Make;SmoothNavigator:Make;Tweening:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

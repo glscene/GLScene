@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Scene;
 
 (* Base classes and structures *)
@@ -56,8 +55,8 @@ type
 
 const
   cDefaultProxyOptions = [pooEffects, pooObjects, pooTransformation];
-  GLSCENE_REVISION = '$Revision: 0123$';
-  GLSCENE_VERSION = 'v2.0 %s';
+  GLSCENE_REVISION = '$Revision: 1234$';
+  GLSCENE_VERSION = 'v2.01 %s';
 
 type
 
@@ -1784,8 +1783,8 @@ procedure AxesBuildList(var rci: TGLRenderContextInfo; pattern: Word; axisLen:
   Single);
 begin
 {$IFDEF USE_OPENGL_DEBUG}
-  if gl.GREMEDY_string_marker then
-    gl.StringMarkerGREMEDY(13, 'AxesBuildList');
+  if GL.GREMEDY_string_marker then
+    GL.StringMarkerGREMEDY(13, 'AxesBuildList');
 {$ENDIF}
   with rci.GLStates do
   begin

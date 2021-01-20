@@ -41,6 +41,10 @@ void TDataModule1::DataModuleCreate(TObject *Sender)
 void TDataModule1::GLSDLViewer1EventPollDone(TObject *Sender)
 {
    SetGLSceneMediaDir();
+   TFileName PathCM = GetCurrentDir() + "\\Cubemaps";
+   SetCurrentDir(PathCM);
+
+
    if (!firstPassDone)
    {
 	  // Loads a texture map for the teapot

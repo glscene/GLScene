@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.FileGLTF;
 
 (* GLB binary file for glTF format implementation. *)
@@ -344,7 +343,6 @@ end;
 
 // ------------------------------------------------------------------
 initialization
-
 // ------------------------------------------------------------------
 
 RegisterVectorFileFormat('glb', 'Binary glTF files', TGLTFVectorFile);

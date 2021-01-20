@@ -16,7 +16,7 @@ uses
   GLS.ScriptBase,
   GLS.Manager,
 
-  PythonEngine;
+  Python.Engine;
 
 type
   (* This class only adds manager registration logic to the TPythonEngine

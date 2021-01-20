@@ -8,7 +8,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GLS.BaseClasses"
-#pragma link "CGs.Shader"
+#pragma link "Cg.Shader"
 
 #pragma link "GLS.Material"
 #pragma link "GLS.Scene"

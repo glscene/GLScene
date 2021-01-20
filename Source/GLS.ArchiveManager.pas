@@ -1,7 +1,6 @@
 ﻿//
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.ArchiveManager;
 
 (* Archive manager -  the class to work with archives *)

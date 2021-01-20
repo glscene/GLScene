@@ -1,16 +1,13 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.FileOBJ;
-
 (*
     Support-Code to load Wavefront OBJ Files into TGLFreeForm-Components
     in GLScene.
     Note that you must manually add this unit to one of your project's uses
     to enable support for OBJ & OBJF at run-time.
 *)
-
 interface
 
 {$I GLScene.inc}

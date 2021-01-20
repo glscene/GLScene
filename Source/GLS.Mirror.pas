@@ -1,15 +1,12 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Mirror;
-
 (*
-   Implements a basic, stencil-based mirror (as in Mark Kilgard's demo). 
+   Implements a basic, stencil-based mirror (as in Mark Kilgard's demo).
    It is strongly recommended to read and understand the explanations in the
-   materials/mirror demo before using this component. 
+   materials/mirror demo before using this component.
 *)
-
 interface
 
 {$I GLScene.inc}
@@ -122,7 +119,6 @@ implementation
 // ------------------ TGLMirror ------------------
 // ------------------
 
- 
 constructor TGLMirror.Create(AOwner: Tcomponent);
 begin
   inherited Create(AOwner);

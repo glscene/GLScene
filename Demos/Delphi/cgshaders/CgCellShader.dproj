@@ -121,11 +121,11 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="fCgCellShader.pas">
+        <DCCReference Include="CgCellShaderFm.pas">
             <Form>FormCellShading</Form>
         </DCCReference>
-        <None Include="..\..\..\..\media\Shaders\cellshading_fp.cg"/>
-        <None Include="..\..\..\..\media\Shaders\cellshading_vp.cg"/>
+        <None Include="D:\media\Shaders\cellshading_fp.cg"/>
+        <None Include="D:\media\Shaders\cellshading_vp.cg"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -158,6 +158,12 @@
                 <Platform value="Win64">False</Platform>
             </Platforms>
             <Deployment Version="3">
+                <DeployFile LocalName="..\..\..\..\media\Shaders\cellshading_vp.cg" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Shaders\cellshading_fp.cg" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win64">
                         <RemoteDir>.\</RemoteDir>
@@ -176,21 +182,15 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win64\Debug\CgCellShader.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win64">
-                        <RemoteName>CgCellShader.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\CgCellShader.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>CgCellShader.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\..\..\..\media\Shaders\cellshading_vp.cg" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
+                <DeployFile LocalName="Win64\Debug\CgCellShader.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win64">
+                        <RemoteName>CgCellShader.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

@@ -33,15 +33,15 @@ requires
   rtl,
   vcl,
   GLScene_RT,
-  DWS_RT;  // for vcl from https://bitbucket.org/egrange/dwscript/src/master/
+  DWS_RT;
 
 contains
   Pythons.Script in '..\Source\Pythons.Script.pas',
-  DWSs.Classes in '..\Source\DWSs.Classes.pas',
-  DWSs.HelperFunc in '..\Source\DWSs.HelperFunc.pas',
-  DWSs.Objects in '..\Source\DWSs.Objects.pas',
-  DWSs.OpenGL in '..\Source\DWSs.OpenGL.pas',
-  DWSs.Script in '..\Source\DWSs.Script.pas',
-  DWSs.VectorGeometry in '..\Source\DWSs.VectorGeometry.pas';
+  DWS.Classes in '..\Source\DWS.Classes.pas',
+  DWS.HelperFunc in '..\Source\DWS.HelperFunc.pas',
+  DWS.Objects in '..\Source\DWS.Objects.pas',
+  DWS.OpenGL in '..\Source\DWS.OpenGL.pas',
+  DWS.Script in '..\Source\DWS.Script.pas',
+  DWS.VectorGeometry in '..\Source\DWS.VectorGeometry.pas';
 
 end.
