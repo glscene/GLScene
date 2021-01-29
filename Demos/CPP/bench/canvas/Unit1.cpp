@@ -174,7 +174,7 @@ void TForm1::PaintTheBox()
 {
    int i, x, y;
    TRect r;
-   Graphics::TBitmap *b;
+   Vcl::Graphics::TBitmap *b;
    //to be fair, use offscreen painting...
    b = new TBitmap;
    b->Width = 256;

@@ -20,16 +20,16 @@ object FormCanvas: TFormCanvas
     Width = 256
     Height = 256
   end
-  object LAGLCanvas: TLabel
+  object lbGLCanvas: TLabel
     Left = 8
-    Top = 48
+    Top = 46
     Width = 76
     Height = 13
     Caption = 'GLCanvas: N/A'
   end
-  object LAGDI: TLabel
+  object lbGDI: TLabel
     Left = 272
-    Top = 48
+    Top = 45
     Width = 45
     Height = 13
     Caption = 'GDI: N/A'
@@ -59,8 +59,8 @@ object FormCanvas: TFormCanvas
     OnClick = BUEllipsesClick
   end
   object GLSceneViewer: TGLSceneViewer
-    Left = 8
-    Top = 64
+    Left = 10
+    Top = 65
     Width = 256
     Height = 256
     Camera = GLCamera1

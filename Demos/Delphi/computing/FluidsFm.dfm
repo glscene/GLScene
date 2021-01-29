@@ -1112,8 +1112,8 @@ object Form1: TForm1
     end
   end
   object GLCUDACompiler1: TGLCUDACompiler
-    NVCCPath = 'C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v3.2\\bin\'
-    CppCompilerPath = 'C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\'
+    NVCCPath = 'C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v3.2\bin\'
+    CppCompilerPath = 'C:\Program Files (x86)\Microsoft Visual Studio 2019\VC\bin\'
     ProjectModule = 'Fluids kernels.cu'
     Left = 448
     Top = 160

@@ -1,11 +1,20 @@
+//
+// The graphics rendering engine GLScene http://glscene.org
+//
 unit FSplitterMain;
 
 interface
 
 uses
-  System.SysUtils, System.Classes,
-  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.Jpeg,
-  Vcl.StdCtrls, Vcl.ComCtrls;
+  System.SysUtils,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.Imaging.Jpeg,
+  Vcl.StdCtrls,
+  Vcl.ComCtrls;
 
 type
   TForm1 = class(TForm)

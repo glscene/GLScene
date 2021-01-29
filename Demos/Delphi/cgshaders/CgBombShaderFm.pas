@@ -30,10 +30,7 @@ uses
   GLS.BaseClasses,
   GLS.Utils,
 
-  // Formats
   GLS.FileMD2,
-
-
   Cg.BombShader;
 
 type
@@ -87,15 +84,13 @@ type
     procedure TrackBar9Change(Sender: TObject);
     procedure TrackBar1Change(Sender: TObject);
   private
-     
   public
-     
     mx, my: Integer;
     procedure ResetPositions;
   end;
 
 var
-  FormCgBombShader:    TFormCgBombShader;
+  FormCgBombShader: TFormCgBombShader;
   MyShader: TCgBombShader;
 
 implementation

@@ -1,4 +1,4 @@
-{: This is a basic use for TGLBInertia behaviour.
+(* This is a basic use for TGLBInertia behaviour.
 
 	There are three objects, which we assign three different dampings, and we
 	apply a torque to the object under the mouse pointer, other are left along
@@ -16,7 +16,7 @@
 	helper function GetOrCreateInertia is a more convenient (and resilient) way,
 	since it will automatically add an inertia behaviour to our object if it
 	doesn't have one.
-}
+*)
 program Torque;
 
 uses

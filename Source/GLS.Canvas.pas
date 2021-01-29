@@ -1,15 +1,12 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Canvas;
-
 (*
    Implements a basic Canvas-like interface over for OpenGL.
    This class can be used for generic OpenGL applications and has no dependencies
    to the GLScene core units (only to base units).
 *)
-
 interface
 
 {$I GLScene.inc}
@@ -140,7 +137,7 @@ type
     procedure FillEllipse(const x, y: Single; const Radius: Single); overload;
     (* Draw a filled gradient ellipse.
     OpenGL will use the last PenColor and PenAlpha as the center color and do gradient 
-	to edge of ellipse using the edgeColor parameter. *)
+  	to edge of ellipse using the edgeColor parameter. *)
     procedure FillEllipseGradient(const x, y, xRadius, yRadius: Single;
       const edgeColor: TColorVector); overload;
     procedure FillEllipseGradient(const x, y: Integer;

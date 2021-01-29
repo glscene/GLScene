@@ -23,7 +23,7 @@ uses
   GLS.BaseClasses;
 
 type
-  TForm1 = class(TForm)
+  TFormSimpleNavigation = class(TForm)
     GLScene1: TGLScene;
     GLSceneViewer1: TGLSceneViewer;
     GLCamera1: TGLCamera;
@@ -40,13 +40,13 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FormSimpleNavigation: TFormSimpleNavigation;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm1.GLCadencer1Progress(Sender: TObject; const deltaTime,
+procedure TFormSimpleNavigation.GLCadencer1Progress(Sender: TObject; const deltaTime,
   newTime: Double);
 begin
   GLSceneViewer1.Invalidate;

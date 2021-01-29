@@ -1,4 +1,4 @@
-object Form1: TForm1
+object FormSimpleNavigation: TFormSimpleNavigation
   Left = 326
   Top = 126
   Caption = 'Simple Navigation'
@@ -24,8 +24,6 @@ object Form1: TForm1
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 517
-    ExplicitHeight = 420
   end
   object GLScene1: TGLScene
     Left = 48

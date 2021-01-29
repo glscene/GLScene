@@ -15,13 +15,13 @@ uses
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
 
-  
+
   GLS.Scene,
   GLS.SceneViewer,
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.Coordinates,
- 
+
   GLS.BaseClasses,
   GLS.Canvas,
   GLS.Texture,
@@ -34,8 +34,8 @@ type
     BUEllipses: TButton;
     GLSceneViewer: TGLSceneViewer;
     PaintBox: TPaintBox;
-    LAGLCanvas: TLabel;
-    LAGDI: TLabel;
+    lbGLCanvas: TLabel;
+    lbGDI: TLabel;
     Bevel1: TBevel;
     GLScene1: TGLScene;
     GLCamera1: TGLCamera;
@@ -55,11 +55,11 @@ type
       var rci: TGLRenderContextInfo);
     procedure BUArcClick(Sender: TObject);
   private
-     
+
     procedure PaintTheBox;
     procedure Bench;
   public
-     
+
   end;
 
 var
@@ -134,7 +134,7 @@ begin
 
   t := StartPrecisionTimer;
   GLSceneViewer.Refresh;
-  LAGLCanvas.Caption := Format('GLCanvas: %.2f msec',
+  lbGLCanvas.Caption := Format('GLCanvas: %.2f msec',
     [StopPrecisionTimer(t) * 1000]);
 
   Application.ProcessMessages;
@@ -142,74 +142,71 @@ begin
 
   t := StartPrecisionTimer;
   PaintTheBox;
-  LAGDI.Caption := Format('GDI: %.1f msec', [StopPrecisionTimer(t) * 1000]);
+  lbGDI.Caption := Format('GDI: %.1f msec', [StopPrecisionTimer(t) * 1000]);
 end;
 
 procedure TFormCanvas.GLDirectOpenGL1Render(Sender: TObject;
   var rci: TGLRenderContextInfo);
 var
   i, x, y: Integer;
-  glc: TGLCanvas;
+  GLCanvas: TGLCanvas;
   r: TRect;
-  color: TColor;
+  Color: TColor;
 begin
-  glc := TGLCanvas.Create(256, 256);
-  with glc do
-  begin
-    PenWidth := vPenWidth;
-    case vWhat of
-      wLines:
+  GLCanvas := TGLCanvas.Create(256, 256);
+  GLCanvas.PenWidth := vPenWidth;
+  case vWhat of
+    wLines:
+      begin
+        for i := 1 to cNbLines do
         begin
-          for i := 1 to cNbLines do
-          begin
-            PenColor := Random(256 * 256 * 256);
-            MoveTo(Random(256), Random(256));
-            LineTo(Random(256), Random(256));
-          end;
+          GLCanvas.PenColor := Random(256 * 256 * 256);
+          GLCanvas.MoveTo(Random(256), Random(256)); // first point
+          GLCanvas.LineTo(Random(256), Random(256)); // second point
         end;
-      wEllipses:
+      end;
+    wEllipses:
+      for i := 1 to cNbEllipses do
+      begin
+        GLCanvas.PenColor := Random(256 * 256 * 256);
+        GLCanvas.EllipseBB(Random(256), Random(256), Random(256), Random(256));
+      end;
+    wRects:
+      for i := 1 to cNbRects do
+      begin
+        GLCanvas.PenColor := Random(256 * 256 * 256);
+        r := Rect(Random(256), Random(256), Random(256), Random(256));
+        GLCanvas.FillRect(r.Left, r.Top, r.Right, r.Bottom);
+      end;
+    wPoints:
+      begin
+        for i := 1 to cNbPoints do
+        begin
+          GLCanvas.PenColor := Random(256 * 256 * 256);
+          GLCanvas.PlotPixel(Random(256), Random(256));
+        end;
+      end;
+    wTextOut:
+      begin
+        for i := 1 to cNbTextOuts do
+        begin
+          Color := Random(256 * 256 * 256);
+          x := Random(256);
+          y := Random(256);
+          WindowsBitmapFont.TextOut(rci, x, y, 'Hello', Color);
+        end;
+      end;
+    wArcs:
+      begin
         for i := 1 to cNbEllipses do
         begin
-          PenColor := Random(256 * 256 * 256);
-          EllipseBB(Random(256), Random(256), Random(256), Random(256));
+          GLCanvas.PenColor := Random(256 * 256 * 256);
+          GLCanvas.Arc(Random(256), Random(256), Random(256), Random(256),
+            Random(256), Random(256), Random(256), Random(256))
         end;
-      wRects:
-        for i := 1 to cNbRects do
-        begin
-          PenColor := Random(256 * 256 * 256);
-          r := Rect(Random(256), Random(256), Random(256), Random(256));
-          FillRect(r.Left, r.Top, r.Right, r.Bottom);
-        end;
-      wPoints:
-        begin
-          for i := 1 to cNbPoints do
-          begin
-            PenColor := Random(256 * 256 * 256);
-            PlotPixel(Random(256), Random(256));
-          end;
-        end;
-      wTextOut:
-        begin
-          for i := 1 to cNbTextOuts do
-          begin
-            color := Random(256 * 256 * 256);
-            x := Random(256);
-            y := Random(256);
-            WindowsBitmapFont.TextOut(rci, x, y, 'Hello', color);
-          end;
-        end;
-      wArcs:
-        begin
-          for i := 1 to cNbEllipses do
-          begin
-            PenColor := Random(256 * 256 * 256);
-            Arc(Random(256), Random(256), Random(256), Random(256), Random(256),
-              Random(256), Random(256), Random(256))
-          end;
-        end;
-    end;
+      end;
   end;
-  glc.Free;
+  GLCanvas.Free;
 end;
 
 procedure TFormCanvas.PaintTheBox;

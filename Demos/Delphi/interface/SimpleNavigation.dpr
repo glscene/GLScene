@@ -3,12 +3,12 @@ program SimpleNavigation;
 
 uses
   Forms,
-  SimpleNavigationFm in 'SimpleNavigationFm.pas' {Form1};
+  SimpleNavigationFm in 'SimpleNavigationFm.pas' {FormSimpleNavigation};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormSimpleNavigation, FormSimpleNavigation);
   Application.Run;
 end.

@@ -1,131 +1,271 @@
 <html>
 
 <head>
-<meta http-equiv="Content-Type"
-content="text/html; charset=iso-8859-1">
-<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
 <title>Meshes demos</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+	{mso-style-link:"\0422\0435\043A\0441\0442 \0417\043D\0430\043A";
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+p.msonormal0, li.msonormal0, div.msonormal0
+	{mso-style-name:msonormal;
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+span.a
+	{mso-style-name:"\0422\0435\043A\0441\0442 \0417\043D\0430\043A";
+	mso-style-link:\0422\0435\043A\0441\0442;
+	font-family:Consolas;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 42.5pt 2.0cm 3.0cm;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
 </head>
 
-<body bgcolor="#FFFFFF" link="#0000FF" vlink="#800080" lang="FR"
-style="tab-interval:35.4pt">
+<body bgcolor=white lang=RU link=blue vlink=purple>
 
-<p class="MsoPlainText"><font size="4" face="Courier New"><b>Meshes&nbsp;:</b></font></p>
+<div class=WordSection1>
 
-<ul>
-    <li><a href="actor/actor.dpr"><b>actor</b></a><b>&nbsp;:</b><ul>
-            <li>using the TActor object to load Quake II model (.md2)</li>
-            <li>displaying an actor's frame names</li>
-            <li>animating an actor (morph animation)</li>
-        </ul>
-    </li>
-    <li><a href="actorms3d/actorms3d.dpr"><b>actor</b></a><b>&nbsp;:</b><ul>
-            <li>using the TActor object to load Quake II model (.md2)</li>
-            <li>displaying an actor's frame names</li>
-            <li>animating an actor (morph animation)</li>
-        </ul>
-    </li>
-    <li><a href="actortwocam/actortwocam.dpr"><b>actortwocam</b></a><b>&nbsp;:</b><ul>
-            <li>moving a TActor (Quake II model with wepon) in a
-                small scenery</li>
-            <li>doom-like (keyboard only) movement, with walk/run,
-                turn/strafe</li>
-            <li>switching between first-person and third-person
-                views</li>
-        </ul>
-    </li>
-    <li><a href="csg/csg.dpr"><b>csg</b></a><b>&nbsp;:</b><ul>
-            <li>Constructive Solid Geometry.</li>
-            <li>The CSG system uses BSP to optimize what triangles it considers.</li>
-            <li>Features: CSG_Union, CSG_Subtraction, CSG_Intersection.</li>
-        </ul>
-    </li>
-    <li><a href="shadedterrain/shadedterrain.dpr"><b>shadedterrain</b></a><b>&nbsp;:</b><ul>
-            <li>Shaded terrain rendering demo.</li>
-            <li>...</li>
-        </ul>
-    </li>
-    <li><a href="feedback/feedback.dpr"><b>feedback</b></a><b>&nbsp;:</b><ul>
-            <li>This demo shows how to use a GLFeedback object to
-   extract mesh data from regular GLScene objects.</li>
-            <li>The GLFeedback object</li>
-        </ul>
-    </li>
-    <li><a href="formula/formula.dpr"><b>formula</b></a><b>&nbsp;:</b><ul>
-            <li>using the TMesh object to plot a formula in 3D</li>
-            <li>triangle and triangle-strip meshes to make
-                regular, grid-based, height-fields meshes</li>
-        </ul>
-    </li>
-    <li><a href="mushroom/mushroom.dpr"><b>mushroom</b></a><b>&nbsp;:</b><ul>
-            <li>using the TFreeForm to load a 3DStudio (.3DS)
-                mesh</li>
-            <li>using TGLProxyObject to duplicate an object</li>
-            <li>uses fog and a textured &quot;ground&quot;</li>
-        </ul>
-    </li>
-    <li><a href="centering/centering.dpr"><b>centering</b></a><b>&nbsp;:</b><ul>
-            <li>using AutoCentering for a TFreeForm's mesh</li>
-            <li>effects of various AutoCentering options</li>
-        </ul>
-    </li>
-    <li><a href="skeletal/skeletal.dpr"><b>skeletal</b></a><b>&nbsp;:</b><ul>
-            <li>using the TActor object to an Half-Life model (.smd)</li>
-            <li>animating an actor (skeletal animation)</li>
-        </ul>
-    </li>
-    <li><a href="expolygon/expolygon.dpr"><strong>expolygon</strong></a>
-        :<ul>
-            <li>using TMultiPolygon for rendering complex
-                polygons</li>
-            <li>automatic tesselation of polygons with holes and
-                cutoffs</li>
-        </ul>
-    </li>
-    <li><a href="portal/portal.dpr"><b>portal</b></a><b>&nbsp;:</b><ul>
-            <li>using the TPortal object to render indoor scenes</li>
-            <li>basic wolfenstein-like &quot;level designer&quot;
-                for generating the maze mesh</li>
-        </ul>
-    </li>
-    <li><a href="subdivide/subdivide.dpr"><b>subdivide</b></a><b>&nbsp;:</b><ul>
-            <li>Early mesh subdivision refinement demo</li>
-            <li>MD2 format isn't really suited for refinement</li>
-        </ul>
-    </li>
-    <li><a href="synthterr/synthterr.dpr"><b>synthterr</b></a><b>&nbsp;:</b><ul>
-            <li>using TTerrainRender and TGLCustomHDS</li>
-            <li>1D textures</li>
-        </ul>
-    </li>
-    <li><a href="terrain/terrain.dpr"><b>terrain</b></a><b>&nbsp;:</b><ul>
-            <li>using TTerrainRender and TGLBitmapHDS to render a simple landscape</li>
-            <li>Full-screen mode and using THUDText/TBitmapFont for a FPS counter</li>
-            <li>Positional 3D sounds</li>
-        </ul>
-    </li>
-    <li><a href="ducky/ducky.dpr"><b>ducky</b></a><b>&nbsp;:</b><ul>
-            <li>Loading NURBS into a GLScene FreeForm/Actor object.</li>
-            <li>Use the resolution slider to increase or decrease the models triangle count dynamically.</li>
-        </ul>
-    </li>
-    <li><a href="tiles/tiles.dpr"><b>tileplane</b></a><b>&nbsp;:</b><ul>
-            <li>Illustrates the use of TGLTilePlane to render an area made of tiled textures placed in a grid.</li>
-            <li>...</li>
-        </ul>
-    </li>
-    <li><a href="tiles/tiles.dpr"><b>tiles</b></a><b>&nbsp;:</b><ul>
-            <li>Illustrates the use of TGLTilePlane to render an area made of tiled textures placed in a grid.</li>
-            <li>The TGLTilePlane object</li>
-        </ul>
-    </li>
-    <li><a href="tree/tree.dpr"><b>tree</b></a><b>&nbsp;:</b><ul>
-            <li>GLTree Editor.</li>
-            <li>Interactive parameter changes display tree variations.</li>
-        </ul>
-    </li>
+<p class=MsoPlainText><b><span lang=FR style='font-size:13.5pt;font-family:
+"Courier New"'>Meshes&nbsp;:</span></b></p>
+
+<ul type=disc>
+ <li class=MsoNormal><span lang=FR><a href="actor/actor.dpr"><b>actor</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>using the TActor object to load Quake II
+      model (.md2)</span></li>
+  <li class=MsoNormal><span lang=FR>displaying an actor's frame names</span></li>
+  <li class=MsoNormal><span lang=FR>animating an actor (morph animation)</span></li>
+ </ul>
 </ul>
 
-<a href="..\demos.htm">Back</a></p>
+<p class=MsoNormal><img border=0 width=521 height=362 src=Actor.jpg></p>
+
+<ul type=disc>
+ <li class=MsoNormal><span lang=FR><a href="actorms3d/actorms3d.dpr"><b>actor</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>using the TActor object to load Quake II
+      model (.md2)</span></li>
+  <li class=MsoNormal><span lang=FR>displaying an actor's frame names</span></li>
+  <li class=MsoNormal><span lang=FR>animating an actor (morph animation)</span></li>
+ </ul>
+ <li class=MsoNormal><span lang=FR><a href="actortwocam/actortwocam.dpr"><b>actortwocam</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>moving a TActor (Quake II model with wepon)
+      in a small scenery</span></li>
+  <li class=MsoNormal><span lang=FR>doom-like (keyboard only) movement, with
+      walk/run, turn/strafe</span></li>
+  <li class=MsoNormal><span lang=FR>switching between first-person and
+      third-person views</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal><span lang=FR><a href="centering/centering.dpr"><b>centering</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>using AutoCentering for a TFreeForm's mesh</span></li>
+  <li class=MsoNormal><span lang=FR>effects of various AutoCentering options</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal><span lang=FR><a href="csg/csg.dpr"><b>csg</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>Constructive Solid Geometry.</span></li>
+  <li class=MsoNormal><span lang=FR>The CSG system uses BSP to optimize what
+      triangles it considers.</span></li>
+  <li class=MsoNormal><span lang=FR>Features: CSG_Union, CSG_Subtraction,
+      CSG_Intersection.</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal><span lang=FR><a href="ducky/ducky.dpr"><b>ducky</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>Loading NURBS into a GLScene FreeForm/Actor
+      object.</span></li>
+  <li class=MsoNormal><span lang=FR>Use the resolution slider to increase or
+      decrease the models triangle count dynamically.</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal><span lang=FR><a href="expolygon/expolygon.dpr"><strong>expolygon</strong></a>
+     :</span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>using TMultiPolygon for rendering complex
+      polygons</span></li>
+  <li class=MsoNormal><span lang=FR>automatic tesselation of polygons with
+      holes and cutoffs</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal><span lang=FR><a href="feedback/feedback.dpr"><b>feedback</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>This demo shows how to use a GLFeedback
+      object to extract mesh data from regular GLScene objects.</span></li>
+  <li class=MsoNormal><span lang=FR>The GLFeedback object</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal><span lang=FR><a href="formula/formula.dpr"><b>formula</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>using the TMesh object to plot a formula in
+      3D</span></li>
+  <li class=MsoNormal><span lang=FR>triangle and triangle-strip meshes to make
+      regular, grid-based, height-fields meshes</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal><span lang=FR><a href="mushroom/mushroom.dpr"><b>mushroom</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>using the TFreeForm to load a 3DStudio
+      (.3DS) mesh</span></li>
+  <li class=MsoNormal><span lang=FR>using TGLProxyObject to duplicate an object</span></li>
+  <li class=MsoNormal><span lang=FR>uses fog and a textured &quot;ground&quot;</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal><span lang=FR><a href="portal/portal.dpr"><b>portal</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>using the TPortal object to render indoor
+      scenes</span></li>
+  <li class=MsoNormal><span lang=FR>basic wolfenstein-like &quot;level
+      designer&quot; for generating the maze mesh</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal><span lang=FR><a href="skeletal/skeletal.dpr"><b>skeletal</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>using the TActor object to an Half-Life
+      model (.smd)</span></li>
+  <li class=MsoNormal><span lang=FR>animating an actor (skeletal animation)</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal><span lang=FR><a href="shadedterrain/shadedterrain.dpr"><b>shadedterrain</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>Shaded terrain rendering demo.</span></li>
+  <li class=MsoNormal><span lang=FR>...</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><img border=0 width=610 height=390 src=ShadedTerrain.jpg></p>
+
+<ul type=disc>
+ <li class=MsoNormal><span lang=FR><a href="subdivide/subdivide.dpr"><b>subdivide</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>Early mesh subdivision refinement demo</span></li>
+  <li class=MsoNormal><span lang=FR>MD2 format isn't really suited for
+      refinement</span></li>
+ </ul>
+ <li class=MsoNormal><span lang=FR><a href="synthterr/synthterr.dpr"><b>synthterr</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>using TTerrainRender and TGLCustomHDS</span></li>
+  <li class=MsoNormal><span lang=FR>1D textures</span></li>
+ </ul>
+ <li class=MsoNormal><span lang=FR><a href="terrain/terrain.dpr"><b>terrain</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>using TTerrainRender and TGLBitmapHDS to
+      render a simple landscape</span></li>
+  <li class=MsoNormal><span lang=FR>Full-screen mode and using
+      THUDText/TBitmapFont for a FPS counter</span></li>
+  <li class=MsoNormal><span lang=FR>Positional 3D sounds</span></li>
+ </ul>
+ <li class=MsoNormal><span lang=FR><a href="tiles/tiles.dpr"><b>Tile Plane</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>Illustrates the use of TGLTilePlane to
+      render an area made of tiled textures placed in a grid.</span></li>
+  <li class=MsoNormal><span lang=FR>...</span></li>
+ </ul>
+ <li class=MsoNormal><span lang=FR><a href="tiles/tiles.dpr"><b>Tiles</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>Illustrates the use of TGLTilePlane to
+      render an area made of tiled textures placed in a grid.</span></li>
+  <li class=MsoNormal><span lang=FR>The TGLTilePlane object</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><img border=0 width=518 height=375 src=Tiles.jpg></p>
+
+<ul type=disc>
+ <li class=MsoNormal><span lang=FR><a href="tree/tree.dpr"><b>tree</b></a><b>&nbsp;:</b></span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span lang=FR>GLTree Editor.</span></li>
+  <li class=MsoNormal><span lang=FR>Interactive parameter changes display tree
+      variations.</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><span lang=FR><a href="../demos.htm">Back</a></span></p>
+
+</div>
+
 </body>
+
 </html>

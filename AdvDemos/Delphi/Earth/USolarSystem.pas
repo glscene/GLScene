@@ -1,4 +1,9 @@
-{  Solar system planetary elements and positions utility unit.
+//
+// The graphics rendering engine GLScene http://glscene.org
+//
+unit USolarSystem;
+(*
+   Solar system planetary elements and positions utility unit.
 
    Based on document by Paul Schlyter (Stockholm, Sweden)
    http://www.stjarnhimlen.se/comp/ppcomp.html
@@ -8,13 +13,12 @@
 
    Eric Grange
    http://glscene.org
-}
-unit USolarSystem;
-
+*)
 interface
 
 uses
-  System.SysUtils, System.Math,
+  System.SysUtils,
+  System.Math,
   GLS.VectorGeometry;
 
 type
