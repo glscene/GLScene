@@ -1,4 +1,4 @@
-{: Basic Skeletal Animation sample.
+(* Basic Skeletal Animation sample.
 
    This demo loads a SMD model and 3 of its animation (SMD are part of and
    Half-Life MDL file, and may be extracted to individual files with tools
@@ -23,12 +23,12 @@
 
    Model Author: Neal 'Guplik' Corbett, edited by ~A.u.s.t.i.n. (manny@cgocable.net)<br>
    Thanks!
-}
+*)
 program Skeletal;
 
 uses
   Forms,
-  SkeletalFm in 'SkeletalFm.pas' {FormSkeletal};
+  SkeletalFm in 'SkeletalFm.pas';
 
 {$R *.RES}
 

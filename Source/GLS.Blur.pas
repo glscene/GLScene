@@ -246,7 +246,7 @@ var
   refsiz: single;
   BMP: TGLImage;
   x, y: integer;
-  line: PPixel32Array;
+  line: PGLPixel32Array;
   by: Integer;
   bp: Integer;
   DoBlur: Boolean;
@@ -255,7 +255,7 @@ var
   var
     t: integer;
     x, y: integer;
-    lin, linu, lind, linuu, lindd: PPixel32Array;
+    lin, linu, lind, linuu, lindd: PGLPixel32Array;
     r, g, b: single;
 
     procedure ApplyBlurClampAndSetPixel;

@@ -134,7 +134,7 @@ type
     Fsoft: boolean;
     FTolerance: single;
     FColor: TGLColor;
-    SCol: TPixel32;
+    SCol: TGLPixel32;
     //stepX, stepY :single;
     FTexturePrepared: Boolean;
     FTexHandle: TGLTextureHandle;

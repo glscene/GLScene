@@ -119,7 +119,7 @@ end;
 procedure TGLProcTextureNoise.UpdateNoise;
 var
   X, Y, C: Integer;
-  Line: PPixel32Array;
+  Line: PGLPixel32Array;
   nf: Single;
   n: Byte;
 

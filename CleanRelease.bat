@@ -19,7 +19,6 @@ del *.rst /s
 del *.s /s
 del *.a /s
 del *.map /s
-del *.rsm /s
 del *.drc /s
 del *.local /s
 

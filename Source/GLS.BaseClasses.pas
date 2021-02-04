@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.BaseClasses;
 
 (* Base classes *)
@@ -17,14 +16,15 @@ uses
 
 type
 
-  TGLProgressTimes = record
-    deltaTime, newTime: Double
+  TGLProgressTimes = packed record
+    DeltaTime, NewTime: Double;
+    SqrDeltaTime, InvSqrDeltaTime: Single;
   end;
 
   (* Progression event for time-base animations/simulations.
      deltaTime is the time delta since last progress and newTime is the new
      time after the progress event is completed. *)
-  TGLProgressEvent = procedure(Sender: TObject; const deltaTime, newTime: Double) of object;
+  TGLProgressEvent = procedure(Sender: TObject; const DeltaTime, NewTime: Double) of object;
 
   IGLNotifyAble = interface(IInterface)
     ['{00079A6C-D46E-4126-86EE-F9E2951B4593}']

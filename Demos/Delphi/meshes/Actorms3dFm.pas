@@ -139,6 +139,9 @@ begin
   GLSArchiveManager1.Archives[0].LoadFromFile('ActorMS3D.zlib');
 
 //  MatLib.TextureByName('floor_parquet').Image.LoadFromFile('ashwood.jpg');
+//  MatLib.LibMaterialByName('floor_parquet').Material.Texture.Image.LoadFromFile('beigemarble.jpg');
+//  MatLib.TextureByName('floor_parquet').Image.LoadFromFile('beigemarble.jpg');
+
   LoadTexture('floor_parquet', 'JPG');
   LoadTexture('Chair', 'PNG');
   LoadTexture('Hair', 'PNG');

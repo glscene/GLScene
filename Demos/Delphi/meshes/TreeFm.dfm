@@ -13,7 +13,6 @@ object FormTree: TFormTree
   Menu = MainMenu1
   OldCreateOrder = False
   Position = poScreenCenter
-  WindowState = wsMaximized
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13

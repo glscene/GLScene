@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Gui;
 
 (* Windows management classes and structures *)
@@ -118,7 +117,6 @@ type
   end;
 
   TGLGuiComponentName = string;
-
   TGLGuiComponentList = class;
 
   TGLGuiComponent = class(TCollectionItem)
@@ -572,7 +570,6 @@ begin
     begin
       TmpComponent := FGuiComponents.Items[xc];
       Data.WriteString(TmpComponent.FName);
-
       Data.WriteInteger(TmpComponent.FElements.Count);
 
       for YC := 0 to TmpComponent.FElements.Count - 1 do
@@ -601,7 +598,6 @@ begin
         end;
 
         Data.WriteInteger(Alignments);
-
         for TmpAlignment := GLAlTopLeft to GLAlBorder do
         begin
           if TmpAlignment = TmpElement.FAlign then

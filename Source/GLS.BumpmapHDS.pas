@@ -281,7 +281,7 @@ var
   X, Y: Integer;
   scaleVec: TAffineVector;
   vec: TAffineVector;
-  nmRow: PPixel32Array;
+  nmRow: PGLPixel32Array;
   px, py: Integer;
 begin
   HD := heightData;

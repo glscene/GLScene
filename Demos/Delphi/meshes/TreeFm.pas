@@ -347,7 +347,7 @@ end;
 
 procedure TFormTree.Exit1Click(Sender: TObject);
 begin
-  Form1.Close;
+  FormTree.Close;
 end;
 
 procedure TFormTree.LeafFrontTexture1Click(Sender: TObject);

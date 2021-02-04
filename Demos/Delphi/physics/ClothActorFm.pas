@@ -72,8 +72,8 @@ type
   public
     mx, my: Integer;
     VerletWorld: TGLVerletWorld;
-    EdgeDetector: TEdgeDetector;
-    AirResistance: TVFAirResistance;
+    EdgeDetector: TGLEdgeDetector;
+    AirResistance: TGLAirResistanceVF;
   end;
 
 var
@@ -122,9 +122,7 @@ begin
   for i := 0 to BaseMesh.MeshObjects.Count - 1 do
   begin
     mo := BaseMesh.MeshObjects[i];
-
     FillChar(mo.Normals.List[0], SizeOf(TAffineVector) * mo.Normals.Count, 0);
-
     for j := 0 to mo.FaceGroups.Count - 1 do
     begin
       if mo.FaceGroups[j] is TFGVertexIndexList then
@@ -139,18 +137,18 @@ begin
           mo.Normals.TranslateItem(fg.VertexIndices.List[k], n);
           mo.Normals.TranslateItem(fg.VertexIndices.List[k + 1], n);
           mo.Normals.TranslateItem(fg.VertexIndices.List[k + 2], n); // }
-
           Inc(k, 3);
         end;
       end;
     end;
     mo.Normals.Normalize;
   end;
-
   BaseMesh.StructureChanged;
 end;
 
 procedure TFormClothActor.FormCreate(Sender: TObject);
+var
+  FloorVC: TGLFloorVC;
 begin
   SetGLSceneMediaDir();
   Randomize;
@@ -182,39 +180,34 @@ begin
   VerletWorld.Iterations := 3;
 
   // 'Clothify' the cape and add it to the verlet world
-  EdgeDetector := TEdgeDetector.Create(Cape);
+  EdgeDetector := TGLEdgeDetector.Create(Cape);
   EdgeDetector.ProcessMesh;
   EdgeDetector.AddEdgesAsSticks(VerletWorld, 0.15);
   EdgeDetector.AddEdgesAsSolidEdges(VerletWorld);
   // EdgeDetector.AddOuterEdgesAsSolidEdges(VerletWorld);
 
   // Set up verlet gravity and add the floor as a constraint
-  with TVFGravity.Create(VerletWorld) do
-    Gravity := AffineVectorMake(0, -98.1, 0);
-  with TVCFloor.Create(VerletWorld) do
-  begin
-    Normal := GLPlane1.Direction.AsAffineVector;
-    Location := VectorAdd(GLPlane1.Position.AsAffineVector,
+  TGLGravityVF.Create(VerletWorld).Gravity := AffineVectorMake(0, -98.1, 0);
+  FloorVC := TGLFloorVC.Create(VerletWorld);
+  FloorVC.Normal := GLPlane1.Direction.AsAffineVector;
+  FloorVC.Location := VectorAdd(GLPlane1.Position.AsAffineVector,
       VectorScale(GLPlane1.Direction.AsAffineVector, 0.1));
-  end;
-
   // Load the skeleton colliders. Skeleton colliders define an
   // approximate collision boundary for actors and are controlled
   // by the actor's skeleton.
-  with GLActor1.Skeleton.Colliders do
-  begin
-    LoadFromFile('trinityRAGE.glsc');
-    AlignColliders;
-  end;
+  GLActor1.Skeleton.Colliders.LoadFromFile('trinityRAGE.glsc');
+  GLActor1.Skeleton.Colliders.AlignColliders;
 
   // Add the collider's verlet constraints to the verlet world
   AddSCVerletConstriantsToVerletWorld(GLActor1.Skeleton.Colliders, VerletWorld);
-
-  (* AirResistance := TVFAirResistance.Create(VerletWorld);
-    AirResistance.DragCoeff := 0.001;
-    AirResistance.WindDirection := AffineVectorMake(0,0,1);
-    AirResistance.WindMagnitude := 15;
-    AirResistance.WindChaos := 2;// *)
+  (*
+  AirResistance := TGLAirResistanceVF.Create(VerletWorld);
+  AirResistance.DragCoeff := 0.001;
+  AirResistance.WindDirection := AffineVectorMake(0,0,1);
+  AirResistance.WindMagnitude := 15;
+  AirResistance.WindChaos := 2;
+  // *)
+  FloorVC.Free;
 end;
 
 procedure TFormClothActor.FormDestroy(Sender: TObject);
@@ -229,73 +222,67 @@ var
 begin
   // Step the verlet world (this is where the magic happens)
   VerletWorld.Progress(deltaTime, newTime);
-
   // Recalculate the cape's normals
   RecalcMeshNormals(Cape);
-
   // Cycle the floor texture to make it look like it's moving
   GLPlane1.YOffset := GLPlane1.YOffset - 0.25 * deltaTime;
   if GLPlane1.YOffset < 0 then
     GLPlane1.YOffset := GLPlane1.YOffset + 1;
-
   // Orbit the light (to show off the pretty shadow volumes)
   GLLightSource1.MoveObjectAround(GLActor1, 0, -deltaTime * 20);
   GLLightSource1.PointTo(GLActor1, YHMGVector);
 end;
 
+procedure RenderAABB(AABB: TAABB; w, r, g, b: single);
+begin
+  glColor3f(r, g, b);
+  glLineWidth(w);
+
+  glBegin(GL_LINE_STRIP);
+  glVertex3f(AABB.min.X, AABB.min.Y, AABB.min.Z);
+  glVertex3f(AABB.min.X, AABB.max.Y, AABB.min.Z);
+  glVertex3f(AABB.max.X, AABB.max.Y, AABB.min.Z);
+  glVertex3f(AABB.max.X, AABB.min.Y, AABB.min.Z);
+  glVertex3f(AABB.min.X, AABB.min.Y, AABB.min.Z);
+  glVertex3f(AABB.min.X, AABB.min.Y, AABB.max.Z);
+  glVertex3f(AABB.min.X, AABB.max.Y, AABB.max.Z);
+  glVertex3f(AABB.max.X, AABB.max.Y, AABB.max.Z);
+  glVertex3f(AABB.max.X, AABB.min.Y, AABB.max.Z);
+  glVertex3f(AABB.min.X, AABB.min.Y, AABB.max.Z);
+  glEnd;
+
+  glBegin(GL_LINES);
+  glVertex3f(AABB.min.X, AABB.max.Y, AABB.min.Z);
+  glVertex3f(AABB.min.X, AABB.max.Y, AABB.max.Z);
+  glVertex3f(AABB.max.X, AABB.max.Y, AABB.min.Z);
+  glVertex3f(AABB.max.X, AABB.max.Y, AABB.max.Z);
+  glVertex3f(AABB.max.X, AABB.min.Y, AABB.min.Z);
+  glVertex3f(AABB.max.X, AABB.min.Y, AABB.max.Z);
+  glEnd;
+end;
+
+procedure RenderOctreeNode(Node: TSectorNode);
+var
+  i: Integer;
+  AABB: TAABB;
+begin
+  if Node.NoChildren then
+  begin
+    AABB := Node.AABB;
+    if Node.RecursiveLeafCount > 0 then
+      RenderAABB(AABB, 1, 0, 0, 0)
+    else
+      RenderAABB(AABB, 1, 0.8, 0.8, 0.8) // }
+  end
+  else
+  begin
+    for i := 0 to Node.ChildCount - 1 do
+      RenderOctreeNode(Node.Children[i]);
+  end;
+end;
+
 procedure TFormClothActor.OctreeRendererRender(Sender: TObject;
   var rci: TGLRenderContextInfo);
-  procedure RenderAABB(AABB: TAABB; w, r, g, b: single);
-  begin
-    glColor3f(r, g, b);
-    glLineWidth(w);
-
-    glBegin(GL_LINE_STRIP);
-    glVertex3f(AABB.min.X, AABB.min.Y, AABB.min.Z);
-    glVertex3f(AABB.min.X, AABB.max.Y, AABB.min.Z);
-    glVertex3f(AABB.max.X, AABB.max.Y, AABB.min.Z);
-    glVertex3f(AABB.max.X, AABB.min.Y, AABB.min.Z);
-    glVertex3f(AABB.min.X, AABB.min.Y, AABB.min.Z);
-
-    glVertex3f(AABB.min.X, AABB.min.Y, AABB.max.Z);
-    glVertex3f(AABB.min.X, AABB.max.Y, AABB.max.Z);
-    glVertex3f(AABB.max.X, AABB.max.Y, AABB.max.Z);
-    glVertex3f(AABB.max.X, AABB.min.Y, AABB.max.Z);
-    glVertex3f(AABB.min.X, AABB.min.Y, AABB.max.Z);
-    glEnd;
-
-    glBegin(GL_LINES);
-    glVertex3f(AABB.min.X, AABB.max.Y, AABB.min.Z);
-    glVertex3f(AABB.min.X, AABB.max.Y, AABB.max.Z);
-
-    glVertex3f(AABB.max.X, AABB.max.Y, AABB.min.Z);
-    glVertex3f(AABB.max.X, AABB.max.Y, AABB.max.Z);
-
-    glVertex3f(AABB.max.X, AABB.min.Y, AABB.min.Z);
-    glVertex3f(AABB.max.X, AABB.min.Y, AABB.max.Z);
-    glEnd;
-  end;
-
-  procedure RenderOctreeNode(Node: TSectorNode);
-  var
-    i: Integer;
-    AABB: TAABB;
-  begin
-    if Node.NoChildren then
-    begin
-      AABB := Node.AABB;
-      if Node.RecursiveLeafCount > 0 then
-        RenderAABB(AABB, 1, 0, 0, 0)
-      else
-        RenderAABB(AABB, 1, 0.8, 0.8, 0.8) // }
-    end
-    else
-    begin
-      for i := 0 to Node.ChildCount - 1 do
-        RenderOctreeNode(Node.Children[i]);
-    end;
-  end;
-
 begin
   if cbShowOctree.Checked then
   begin

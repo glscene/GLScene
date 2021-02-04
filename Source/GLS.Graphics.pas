@@ -31,7 +31,7 @@ uses
   {$IFDEF USE_GRAPHICS32} GR32, {$ENDIF}
 
   GLS.VectorTypes,
-  GLS.OpenGLTokens,
+//  GLS.OpenGLTokens,
   GLS.State,
   GLS.ApplicationFileIO,
   GLS.PersistentClasses,
@@ -47,19 +47,18 @@ uses
 {$DEFINE PRF_HACK_PASSES}
 
 type
-
-  TPixel24 = packed record
+  TGLPixel24 = packed record
     r, g, b: Byte;
   end;
-  PPixel24 = ^TPixel24;
+  PGLPixel24 = ^TGLPixel24;
 
-  TPixel32 = packed record
+  TGLPixel32 = packed record
     r, g, b, a: Byte;
   end;
-  PPixel32 = ^TPixel32;
+  PGLPixel32 = ^TGLPixel32;
 
-  TPixel32Array = array[0..MaxInt shr 3] of TPixel32;
-  PPixel32Array = ^TPixel32Array;
+  TGLPixel32Array = array[0..MaxInt shr 3] of TGLPixel32;
+  PGLPixel32Array = ^TGLPixel32Array;
 
   TGLLODStreamingState = (ssKeeping, ssLoading, ssLoaded, ssTransfered);
 
@@ -88,7 +87,7 @@ type
     procedure ImageStreamingTask; stdcall;
 {$ENDIF}
   protected
-    fData: PPixel32Array;
+    fData: PGLPixel32Array;
     FLOD: TGLImagePiramid;
     fLevelCount: TGLImageLODRange;
     fColorFormat: Cardinal;
@@ -97,7 +96,7 @@ type
     fElementSize: Integer;
     fCubeMap: Boolean;
     fTextureArray: Boolean;
-    function GetData: PPixel32Array; virtual;
+    function GetData: PGLPixel32Array; virtual;
     function GetWidth: Integer;
     function GetHeight: Integer;
     function GetDepth: Integer;
@@ -153,7 +152,7 @@ type
     // Leave top level and remove other
     procedure UnMipmap; virtual;
     // Direct Access to image data
-    property Data: PPixel32Array read GetData;
+    property Data: PGLPixel32Array read GetData;
     // Set image of error.
     procedure SetErrorImage;
     // Recalculate levels information based on first level.
@@ -206,7 +205,7 @@ type
     procedure SetBlank(const Value: Boolean);
     procedure SetCubeMap(const val: Boolean);
     procedure SetArray(const val: Boolean);
-    function GetScanLine(index: Integer): PPixel32Array;
+    function GetScanLine(index: Integer): PGLPixel32Array;
     procedure AssignFrom24BitsBitmap(aBitmap: TBitmap);
     procedure AssignFrom32BitsBitmap(aBitmap: TBitmap);
 {$IFDEF USE_GRAPHICS32}
@@ -254,7 +253,7 @@ type
     (* Access to a specific Bitmap ScanLine. index should be in the [0; Height[ range.
       Warning : this function is NOT protected against invalid indexes,
       and invoking it is invalid if the bitmap is Empty. *)
-    property ScanLine[index: Integer]: PPixel32Array read GetScanLine;
+    property ScanLine[index: Integer]: PGLPixel32Array read GetScanLine;
     property VerticalReverseOnAssignFromBitmap: Boolean read
       FVerticalReverseOnAssignFromBitmap write
       FVerticalReverseOnAssignFromBitmap;
@@ -270,8 +269,8 @@ type
       This makes pixels of given color totally transparent while the others
       are completely opaque. *)
     procedure SetAlphaTransparentForColor(const aColor: TColor); overload;
-    procedure SetAlphaTransparentForColor(const aColor: TPixel32); overload;
-    procedure SetAlphaTransparentForColor(const aColor: TPixel24); overload;
+    procedure SetAlphaTransparentForColor(const aColor: TGLPixel32); overload;
+    procedure SetAlphaTransparentForColor(const aColor: TGLPixel24); overload;
     // Set Alpha channel values to given byte value.
     procedure SetAlphaToValue(const aValue: Byte);
     // Set Alpha channel values to given float [0..1] value.
@@ -314,7 +313,7 @@ type
 
   TGLBitmap32 = TGLImage;
 
-  TRasterFileFormat = class
+  TGLRasterFileFormat = class
   public
     BaseImageClass: TGLBaseImageClass;
     Extension: string;
@@ -323,7 +322,7 @@ type
   end;
 
   // Stores registered raster file formats.
-  TRasterFileFormatsList = class(TPersistentObjectList)
+  TGLRasterFileFormatsList = class(TPersistentObjectList)
   public
     destructor Destroy; override;
     procedure Add(const Ext, Desc: string; DescID: Integer; AClass:
@@ -351,7 +350,7 @@ procedure BGRA32ToRGBA32(src, dest: Pointer; pixelCount: Integer);
 procedure GammaCorrectRGBArray(base: Pointer; pixelCount: Integer; gamma: Single);
 procedure BrightenRGBArray(base: Pointer; pixelCount: Integer; factor: Single);
 // Read access to the list of registered vector file formats
-function GetRasterFileFormats: TRasterFileFormatsList;
+function GetRasterFileFormats: TGLRasterFileFormatsList;
 (* Returns an extension by its index
    in the internal image files dialogs filter.
    Use InternalImageFileFormatsFilter to obtain the filter. *)
@@ -379,14 +378,14 @@ implementation
 // ------------------------------------------------------------------
 
 var
-  vRasterFileFormats: TRasterFileFormatsList;
+  vRasterFileFormats: TGLRasterFileFormatsList;
 
 // ------------------------------ Raster File Registries
 
-function GetRasterFileFormats: TRasterFileFormatsList;
+function GetRasterFileFormats: TGLRasterFileFormatsList;
 begin
   if not Assigned(vRasterFileFormats) then
-    vRasterFileFormats := TRasterFileFormatsList.Create;
+    vRasterFileFormats := TGLRasterFileFormatsList.Create;
   Result := vRasterFileFormats;
 end;
 
@@ -408,18 +407,18 @@ begin
   Result := GetRasterFileFormats.FindExtByIndex(index);
 end;
 
-destructor TRasterFileFormatsList.Destroy;
+destructor TGLRasterFileFormatsList.Destroy;
 begin
   Clean;
   inherited;
 end;
 
-procedure TRasterFileFormatsList.Add(const Ext, Desc: string; DescID: Integer;
+procedure TGLRasterFileFormatsList.Add(const Ext, Desc: string; DescID: Integer;
   AClass: TGLBaseImageClass);
 var
-  newRec: TRasterFileFormat;
+  newRec: TGLRasterFileFormat;
 begin
-  newRec := TRasterFileFormat.Create;
+  newRec := TGLRasterFileFormat.Create;
   with newRec do
   begin
     Extension := AnsiLowerCase(Ext);
@@ -430,13 +429,13 @@ begin
   inherited Add(newRec);
 end;
 
-function TRasterFileFormatsList.FindExt(Ext: string): TGLBaseImageClass;
+function TGLRasterFileFormatsList.FindExt(Ext: string): TGLBaseImageClass;
 var
   i: Integer;
 begin
   Ext := AnsiLowerCase(Ext);
   for i := Count - 1 downto 0 do
-    with TRasterFileFormat(Items[i]) do
+    with TGLRasterFileFormat(Items[i]) do
     begin
       if Extension = Ext then
       begin
@@ -447,7 +446,7 @@ begin
   Result := nil;
 end;
 
-function TRasterFileFormatsList.FindFromFileName(const fileName: string):
+function TGLRasterFileFormatsList.FindFromFileName(const fileName: string):
   TGLBaseImageClass;
 var
   Ext: string;
@@ -460,7 +459,7 @@ begin
       [Ext, 'GLFile' + UpperCase(Ext)]);
 end;
 
-function TRasterFileFormatsList.FindFromStream(const AStream: TStream): TGLBaseImageClass;
+function TGLRasterFileFormatsList.FindFromStream(const AStream: TStream): TGLBaseImageClass;
 var
   Ext: string;
   magic: array [0 .. 1] of LongWord;
@@ -487,32 +486,32 @@ begin
       [Ext, 'GLFile' + UpperCase(Ext)]);
 end;
 
-procedure TRasterFileFormatsList.Remove(AClass: TGLBaseImageClass);
+procedure TGLRasterFileFormatsList.Remove(AClass: TGLBaseImageClass);
 var
   i: Integer;
 begin
   for i := Count - 1 downto 0 do
   begin
-    if TRasterFileFormat(Items[i]).BaseImageClass.InheritsFrom(AClass) then
+    if TGLRasterFileFormat(Items[i]).BaseImageClass.InheritsFrom(AClass) then
       DeleteAndFree(i);
   end;
 end;
 
-procedure TRasterFileFormatsList.BuildFilterStrings(
+procedure TGLRasterFileFormatsList.BuildFilterStrings(
   imageFileClass: TGLBaseImageClass;
   var descriptions, filters: string;
   formatsThatCanBeOpened: Boolean = True;
   formatsThatCanBeSaved: Boolean = False);
 var
   k, i: Integer;
-  p: TRasterFileFormat;
+  p: TGLRasterFileFormat;
 begin
   descriptions := '';
   filters := '';
   k := 0;
   for i := 0 to Count - 1 do
   begin
-    p := TRasterFileFormat(Items[i]);
+    p := TGLRasterFileFormat(Items[i]);
     if p.BaseImageClass.InheritsFrom(imageFileClass) and (p.Extension <> '')
       and ((formatsThatCanBeOpened and (dfcRead in
       p.BaseImageClass.Capabilities))
@@ -539,19 +538,19 @@ begin
       [sAllFilter, filters, descriptions]);
 end;
 
-function TRasterFileFormatsList.FindExtByIndex(index: Integer;
+function TGLRasterFileFormatsList.FindExtByIndex(index: Integer;
   formatsThatCanBeOpened: Boolean = True;
   formatsThatCanBeSaved: Boolean = False): string;
 var
   i: Integer;
-  p: TRasterFileFormat;
+  p: TGLRasterFileFormat;
 begin
   Result := '';
   if index > 0 then
   begin
     for i := 0 to Count - 1 do
     begin
-      p := TRasterFileFormat(Items[i]);
+      p := TGLRasterFileFormat(Items[i]);
       if (formatsThatCanBeOpened and (dfcRead in p.BaseImageClass.Capabilities))
         or (formatsThatCanBeSaved and (dfcWrite in
         p.BaseImageClass.Capabilities)) then
@@ -1363,7 +1362,7 @@ begin
   end;
 end;
 
-function TGLBaseImage.GetData: PPixel32Array;
+function TGLBaseImage.GetData: PGLPixel32Array;
 begin
   Result := fData;
 end;
@@ -2390,7 +2389,7 @@ procedure TGLImage.AssignFromPngImage(aPngImage: TPngImage);
 var
   i, j: Integer;
   SourceScan: PRGBLine;
-  DestScan: PPixel32Array;
+  DestScan: PGLPixel32Array;
   AlphaScan: VCL.Imaging.Pngimage.PByteArray;
   Pixel: Integer;
 begin
@@ -2619,10 +2618,10 @@ begin
   DataConvertTask;
 end;
 
-function TGLImage.GetScanLine(index: Integer): PPixel32Array;
+function TGLImage.GetScanLine(index: Integer): PGLPixel32Array;
 begin
   Narrow;
-  Result := PPixel32Array(@fData[index * GetWidth]);
+  Result := PGLPixel32Array(@fData[index * GetWidth]);
 end;
 
 procedure TGLImage.SetAlphaFromIntensity;
@@ -2637,7 +2636,7 @@ end;
 
 procedure TGLImage.SetAlphaTransparentForColor(const aColor: TColor);
 var
-  color: TPixel24;
+  color: TGLPixel24;
 begin
   color.r := GetRValue(aColor);
   color.g := GetGValue(aColor);
@@ -2645,9 +2644,9 @@ begin
   SetAlphaTransparentForColor(color);
 end;
 
-procedure TGLImage.SetAlphaTransparentForColor(const aColor: TPixel32);
+procedure TGLImage.SetAlphaTransparentForColor(const aColor: TGLPixel32);
 var
-  color: TPixel24;
+  color: TGLPixel24;
 begin
   color.r := aColor.r;
   color.g := aColor.g;
@@ -2655,7 +2654,7 @@ begin
   SetAlphaTransparentForColor(color);
 end;
 
-procedure TGLImage.SetAlphaTransparentForColor(const aColor: TPixel24);
+procedure TGLImage.SetAlphaTransparentForColor(const aColor: TGLPixel24);
 var
   i: Integer;
   intCol: Integer;
@@ -2724,10 +2723,10 @@ end;
 
 procedure TGLImage.DownSampleByFactor2;
 type
-  T2Pixel32 = packed array[0..1] of TPixel32;
+  T2Pixel32 = packed array[0..1] of TGLPixel32;
   P2Pixel32 = ^T2Pixel32;
 
-  procedure ProcessRowPascal(pDest: PPixel32; pLineA, pLineB: P2Pixel32; n:
+  procedure ProcessRowPascal(pDest: PGLPixel32; pLineA, pLineB: P2Pixel32; n:
     Integer);
   var
     i: Integer;
@@ -2750,7 +2749,7 @@ type
 
 var
   y, w2, h2: Integer;
-  pDest: PPixel32;
+  pDest: PGLPixel32;
   pLineA, pLineB: P2Pixel32;
 begin
   if (GetWidth <= 1) or (GetHeight <= 1) then
@@ -2806,9 +2805,9 @@ var
   dcx, dcy: Single;
   invLen: Single;
   maskX, maskY: Integer;
-  curRow, nextRow, prevRow: PPixel32Array;
-  normalMapBuffer: PPixel32Array;
-  p: PPixel32;
+  curRow, nextRow, prevRow: PGLPixel32Array;
+  normalMapBuffer: PGLPixel32Array;
+  p: PGLPixel32;
 begin
   if Assigned(FData) then
   begin
@@ -2875,8 +2874,8 @@ var
   x, y: Integer;
   sr, sg, sb: Single;
   invLen: Single;
-  curRow: PPixel32Array;
-  p: PPixel32;
+  curRow: PGLPixel32Array;
+  p: PGLPixel32;
 const
   cInv128: Single = 1 / 128;
 begin

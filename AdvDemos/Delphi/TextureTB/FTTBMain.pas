@@ -246,7 +246,7 @@ var
    bmp : TBitmap;
    bmp32 : TGLBitmap32;
    x, y : Integer;
-   pSrc : PPixel32Array;
+   pSrc : PGLPixel32Array;
    pDest : PIntegerArray;
    c : Integer;
 begin

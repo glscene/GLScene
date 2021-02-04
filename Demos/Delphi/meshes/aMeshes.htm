@@ -8,9 +8,6 @@
 <!--
  /* Font Definitions */
  @font-face
-	{font-family:Wingdings;
-	panose-1:5 0 0 0 0 0 0 0 0 0;}
-@font-face
 	{font-family:"Cambria Math";
 	panose-1:2 4 5 3 5 4 6 3 2 4;}
 @font-face
@@ -44,6 +41,12 @@ span.a
 	{mso-style-name:"\0422\0435\043A\0441\0442 \0417\043D\0430\043A";
 	mso-style-link:\0422\0435\043A\0441\0442;
 	font-family:Consolas;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:10.0pt;
+	font-family:"Times New Roman",serif;}
 .MsoChpDefault
 	{font-size:10.0pt;}
 @page WordSection1
@@ -68,10 +71,10 @@ ul
 <p class=MsoPlainText><b><span lang=FR style='font-size:13.5pt;font-family:
 "Courier New"'>Meshes&nbsp;:</span></b></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="actor/actor.dpr"><b>actor</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
-  <li class=MsoNormal><span lang=FR>using the TActor object to load Quake II
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="actor/actor.dpr"><b>Actor</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
+  <li class=MsoNormal><span lang=FR>using the TGLActor object to load Quake II
       model (.md2)</span></li>
   <li class=MsoNormal><span lang=FR>displaying an actor's frame names</span></li>
   <li class=MsoNormal><span lang=FR>animating an actor (morph animation)</span></li>
@@ -80,18 +83,25 @@ ul
 
 <p class=MsoNormal><img border=0 width=521 height=362 src=Actor.jpg></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="actorms3d/actorms3d.dpr"><b>actor</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
-  <li class=MsoNormal><span lang=FR>using the TActor object to load Quake II
-      model (.md2)</span></li>
-  <li class=MsoNormal><span lang=FR>displaying an actor's frame names</span></li>
-  <li class=MsoNormal><span lang=FR>animating an actor (morph animation)</span></li>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="actorms3d/actorms3d.dpr"><b>Actor
+     Proxy</b></a> <b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
+  <li class=MsoNormal><span lang=FR>using the TGLActorProxy object to load
+      Quake II model (.md2)</span></li>
+  <li class=MsoNormal><span lang=FR>animating actors</span></li>
  </ul>
- <li class=MsoNormal><span lang=FR><a href="actortwocam/actortwocam.dpr"><b>actortwocam</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
-  <li class=MsoNormal><span lang=FR>moving a TActor (Quake II model with wepon)
-      in a small scenery</span></li>
+</ul>
+
+<p class=MsoNormal><img border=0 width=518 height=410 src=ActorProxy.jpg></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="actortwocam/actortwocam.dpr"><b>ActorTwocam</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
+  <li class=MsoNormal><span lang=FR>moving a TGLActor (Quake II model with
+      wepon) in a small scenery</span></li>
   <li class=MsoNormal><span lang=FR>doom-like (keyboard only) movement, with
       walk/run, turn/strafe</span></li>
   <li class=MsoNormal><span lang=FR>switching between first-person and
@@ -99,21 +109,41 @@ ul
  </ul>
 </ul>
 
-<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="centering/centering.dpr"><b>centering</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<p class=MsoNormal><span lang=FR>&nbsp;</span><img border=0 width=576
+height=375 src=ActorTwocam.jpg></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="centering/centering.dpr"><b>Centering</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>using AutoCentering for a TFreeForm's mesh</span></li>
   <li class=MsoNormal><span lang=FR>effects of various AutoCentering options</span></li>
  </ul>
 </ul>
 
+<p class=MsoNormal><span lang=FR>&nbsp;</span><img border=0 width=445
+height=294 src=Centering.jpg></p>
+
 <p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="csg/csg.dpr"><b>csg</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="csg/csg.dpr"><b>Csg</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>Constructive Solid Geometry.</span></li>
   <li class=MsoNormal><span lang=FR>The CSG system uses BSP to optimize what
       triangles it considers.</span></li>
@@ -124,9 +154,13 @@ ul
 
 <p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="ducky/ducky.dpr"><b>ducky</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<p class=MsoNormal><img border=0 width=486 height=409 src=Csg.jpg></p>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="ducky/ducky.dpr"><b>Ducky</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>Loading NURBS into a GLScene FreeForm/Actor
       object.</span></li>
   <li class=MsoNormal><span lang=FR>Use the resolution slider to increase or
@@ -134,12 +168,21 @@ ul
  </ul>
 </ul>
 
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span><img border=0 width=458
+height=300 src=Ducky.jpg></p>
+
 <p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<ul type=disc>
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<ul style='margin-top:0cm' type=disc>
  <li class=MsoNormal><span lang=FR><a href="expolygon/expolygon.dpr"><strong>expolygon</strong></a>
      :</span></li>
- <ul type=circle>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>using TMultiPolygon for rendering complex
       polygons</span></li>
   <li class=MsoNormal><span lang=FR>automatic tesselation of polygons with
@@ -149,9 +192,11 @@ ul
 
 <p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="feedback/feedback.dpr"><b>feedback</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<p class=MsoNormal><img border=0 width=449 height=338 src=ExPolygon.jpg></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="feedback/feedback.dpr"><b>Feedback</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>This demo shows how to use a GLFeedback
       object to extract mesh data from regular GLScene objects.</span></li>
   <li class=MsoNormal><span lang=FR>The GLFeedback object</span></li>
@@ -160,9 +205,9 @@ ul
 
 <p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="formula/formula.dpr"><b>formula</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="formula/formula.dpr"><b>Formula</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>using the TMesh object to plot a formula in
       3D</span></li>
   <li class=MsoNormal><span lang=FR>triangle and triangle-strip meshes to make
@@ -170,11 +215,23 @@ ul
  </ul>
 </ul>
 
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=537 height=280 src=Formula.jpg></p>
+
 <p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="mushroom/mushroom.dpr"><b>mushroom</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="mushroom/mushroom.dpr"><b>Mushroom</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>using the TFreeForm to load a 3DStudio
       (.3DS) mesh</span></li>
   <li class=MsoNormal><span lang=FR>using TGLProxyObject to duplicate an object</span></li>
@@ -184,9 +241,11 @@ ul
 
 <p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="portal/portal.dpr"><b>portal</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<p class=MsoNormal><img border=0 width=415 height=291 src=Mushroom.jpg></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="portal/portal.dpr"><b>Portal</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>using the TPortal object to render indoor
       scenes</span></li>
   <li class=MsoNormal><span lang=FR>basic wolfenstein-like &quot;level
@@ -194,22 +253,24 @@ ul
  </ul>
 </ul>
 
-<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span><img border=0 width=621
+height=392 src=Portal.jpg></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="skeletal/skeletal.dpr"><b>skeletal</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="skeletal/skeletal.dpr"><b>Skeletal</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>using the TActor object to an Half-Life
       model (.smd)</span></li>
   <li class=MsoNormal><span lang=FR>animating an actor (skeletal animation)</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span><img border=0 width=452
+height=378 src=Skeletal.jpg></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="shadedterrain/shadedterrain.dpr"><b>shadedterrain</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="shadedterrain/shadedterrain.dpr"><b>Shadedterrain</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>Shaded terrain rendering demo.</span></li>
   <li class=MsoNormal><span lang=FR>...</span></li>
  </ul>
@@ -217,34 +278,69 @@ ul
 
 <p class=MsoNormal><img border=0 width=610 height=390 src=ShadedTerrain.jpg></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="subdivide/subdivide.dpr"><b>subdivide</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="subdivide/subdivide.dpr"><b>Subdivide</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>Early mesh subdivision refinement demo</span></li>
   <li class=MsoNormal><span lang=FR>MD2 format isn't really suited for
       refinement</span></li>
  </ul>
- <li class=MsoNormal><span lang=FR><a href="synthterr/synthterr.dpr"><b>synthterr</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+</ul>
+
+<p class=MsoNormal><img border=0 width=546 height=389 src=Subdivide.jpg></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="synthterr/synthterr.dpr"><b>Synthterr</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>using TTerrainRender and TGLCustomHDS</span></li>
   <li class=MsoNormal><span lang=FR>1D textures</span></li>
  </ul>
- <li class=MsoNormal><span lang=FR><a href="terrain/terrain.dpr"><b>terrain</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+</ul>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=480 height=374 src=SynthTerrain.jpg></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="terrain/terrain.dpr"><b>Terrain</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>using TTerrainRender and TGLBitmapHDS to
       render a simple landscape</span></li>
   <li class=MsoNormal><span lang=FR>Full-screen mode and using
       THUDText/TBitmapFont for a FPS counter</span></li>
   <li class=MsoNormal><span lang=FR>Positional 3D sounds</span></li>
  </ul>
- <li class=MsoNormal><span lang=FR><a href="tiles/tiles.dpr"><b>Tile Plane</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
-  <li class=MsoNormal><span lang=FR>Illustrates the use of TGLTilePlane to
-      render an area made of tiled textures placed in a grid.</span></li>
-  <li class=MsoNormal><span lang=FR>...</span></li>
- </ul>
+</ul>
+
+<p class=MsoNormal><img border=0 width=573 height=404 src=Terrain.jpg></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<ul style='margin-top:0cm' type=disc>
  <li class=MsoNormal><span lang=FR><a href="tiles/tiles.dpr"><b>Tiles</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>Illustrates the use of TGLTilePlane to
       render an area made of tiled textures placed in a grid.</span></li>
   <li class=MsoNormal><span lang=FR>The TGLTilePlane object</span></li>
@@ -253,14 +349,20 @@ ul
 
 <p class=MsoNormal><img border=0 width=518 height=375 src=Tiles.jpg></p>
 
-<ul type=disc>
+<p class=MsoNormal>&nbsp;</p>
+
+<ul style='margin-top:0cm' type=disc>
  <li class=MsoNormal><span lang=FR><a href="tree/tree.dpr"><b>tree</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>GLTree Editor.</span></li>
   <li class=MsoNormal><span lang=FR>Interactive parameter changes display tree
       variations.</span></li>
  </ul>
 </ul>
+
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
+
+<p class=MsoNormal><img border=0 width=504 height=425 src=Tree.jpg></p>
 
 <p class=MsoNormal><span lang=FR><a href="../demos.htm">Back</a></span></p>
 

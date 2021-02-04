@@ -436,16 +436,16 @@ function CreateTriMeshFromBaseMesh(
   var Indices: PdIntegerArray): PdxGeom;
 var
   i, j, p: integer;
-  FaceExtractor: TFaceExtractor;
+  FaceExtractor: TGLFaceExtractor;
   VertexCount: integer;
   Vertex: TAffineVector;
   OffsetList: TIntegerList;
-  Face: TFace;
+  Face: TGLFace;
   iMO: integer;
   TriMeshData: PdxTriMeshData;
 begin
   OffsetList := nil;
-  FaceExtractor := TFaceExtractor.Create(GLBaseMesh);
+  FaceExtractor := TGLFaceExtractor.Create(GLBaseMesh);
 
   try
     OffsetList := TIntegerList.Create;

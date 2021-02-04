@@ -1,12 +1,11 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.VerletHairClasses;
 
 (*
-   Creates a single strand of hair using verlet classes. Can be used to simulate
-   ropes, fur or hair. 
+  Creates a single strand of hair using verlet classes. Can be used to simulate
+  ropes, fur or hair.
 *)
 
 interface
@@ -14,170 +13,171 @@ interface
 {$I GLScene.inc}
 
 uses
-  System.Classes, 
+  System.Classes,
   System.SysUtils,
-  GLS.VerletTypes, 
-  GLS.VectorTypes, 
-  GLS.VectorLists, 
+  GLS.VerletTypes,
+  GLS.VectorTypes,
+  GLS.VectorLists,
   GLS.VectorGeometry;
 
 type
-  TVHStiffness = (vhsFull, vhsSkip1Node, vhsSkip2Node, vhsSkip3Node,
+  TGLStiffnessVH = (vhsFull, vhsSkip1Node, vhsSkip2Node, vhsSkip3Node,
     vhsSkip4Node, vhsSkip5Node, vhsSkip6Node, vhsSkip7Node, vhsSkip8Node,
     vhsSkip9Node);
-  TVHStiffnessSet = set of TVHStiffness;
+  TGLStiffnessSetVH = set of TGLStiffnessVH;
 
   TGLVerletHair = class
   private
-    FNodeList: TVerletNodeList;
+    FNodeList: TGLVerletNodeList;
     FLinkCount: integer;
     FRootDepth: single;
     FVerletWorld: TGLVerletWorld;
     FHairLength: single;
     FData: pointer;
-    FStiffness: TVHStiffnessSet;
-    FStiffnessList : TList;
-    function GetAnchor: TVerletNode;
-    function GetRoot: TVerletNode;
+    FStiffness: TGLStiffnessSetVH;
+    FStiffnessList: TList;
+    function GetAnchor: TGLBaseNode;
+    function GetRoot: TGLBaseNode;
     function GetLinkLength: single;
-    procedure AddStickStiffness(const ANodeSkip : integer);
-    procedure SetStiffness(const Value: TVHStiffnessSet);
+    procedure AddStickStiffness(const ANodeSkip: integer);
+    procedure SetStiffness(const Value: TGLStiffnessSetVH);
   public
     procedure BuildHair(const AAnchorPosition, AHairDirection: TAffineVector);
     procedure BuildStiffness;
     procedure ClearStiffness;
     procedure Clear;
-    constructor Create(const AVerletWorld : TGLVerletWorld;
-    const ARootDepth, AHairLength : single; ALinkCount : integer;
-    const AAnchorPosition, AHairDirection : TAffineVector;
-    const AStiffness : TVHStiffnessSet);
+    constructor Create(const AVerletWorld: TGLVerletWorld;
+      const ARootDepth, AHairLength: single; ALinkCount: integer;
+      const AAnchorPosition, AHairDirection: TAffineVector;
+      const AStiffness: TGLStiffnessSetVH);
     destructor Destroy; override;
-    property NodeList : TVerletNodeList read FNodeList;
-    property VerletWorld : TGLVerletWorld read FVerletWorld;
-    property RootDepth : single read FRootDepth;
-    property LinkLength : single read GetLinkLength;
-    property LinkCount : integer read FLinkCount;
-    property HairLength : single read FHairLength;
-    property Stiffness : TVHStiffnessSet read FStiffness write SetStiffness;
-    property Data : pointer read FData write FData;
-    {Anchor should be nailed down to give the hair stability }
-    property Anchor : TVerletNode read GetAnchor;
-    {Root should be nailed down to give the hair stability }
-    property Root : TVerletNode read GetRoot;
+    property NodeList: TGLVerletNodeList read FNodeList;
+    property VerletWorld: TGLVerletWorld read FVerletWorld;
+    property RootDepth: single read FRootDepth;
+    property LinkLength: single read GetLinkLength;
+    property LinkCount: integer read FLinkCount;
+    property HairLength: single read FHairLength;
+    property Stiffness: TGLStiffnessSetVH read FStiffness write SetStiffness;
+    property Data: pointer read FData write FData;
+    // Anchor should be nailed down to give the hair stability
+    property Anchor: TGLBaseNode read GetAnchor;
+    // Root should be nailed down to give the hair stability
+    property Root: TGLBaseNode read GetRoot;
   end;
 
-//------------------------------------------------------------------
+// ------------------------------------------------------------------
 implementation
-//------------------------------------------------------------------
+// ------------------------------------------------------------------
 
-{ TGLVerletHair }
-
+//-----------------------------
+// TGLVerletHair
+//-----------------------------
 procedure TGLVerletHair.AddStickStiffness(const ANodeSkip: integer);
 var
-  i : integer;
+  i: integer;
 begin
-  for i := 0 to NodeList.Count-(1+ANodeSkip*2) do
-    FStiffnessList.Add(VerletWorld.CreateStick(NodeList[i], NodeList[i+2*ANodeSkip]));
+  for i := 0 to NodeList.Count - (1 + ANodeSkip * 2) do
+    FStiffnessList.Add(VerletWorld.CreateStick(NodeList[i],
+      NodeList[i + 2 * ANodeSkip]));
 end;
 
-procedure TGLVerletHair.BuildHair(const AAnchorPosition, AHairDirection: TAffineVector);
+procedure TGLVerletHair.BuildHair(const AAnchorPosition, AHairDirection
+  : TAffineVector);
 var
-  i : integer;
-  Position : TAffineVector;
-  Node, PrevNode : TVerletNode;
-  Direction : TAffineVector;
+  i: integer;
+  Position: TAffineVector;
+  Node, PrevNode: TGLBaseNode;
+  Direction: TAffineVector;
 begin
   Clear;
-
   Direction := VectorNormalize(AHairDirection);
-
   // Fix the root of the hair
   Position := VectorAdd(AAnchorPosition, VectorScale(Direction, -FRootDepth));
   Node := VerletWorld.CreateOwnedNode(Position);
   NodeList.Add(Node);
   Node.NailedDown := true;
   PrevNode := Node;
-
   // Now add the links in the hair
-  for i := 0 to FLinkCount-1 do
+  for i := 0 to FLinkCount - 1 do
   begin
-    Position := VectorAdd(AAnchorPosition, VectorScale(Direction, HairLength * (i/LinkCount)));
-
+    Position := VectorAdd(AAnchorPosition, VectorScale(Direction,
+      HairLength * (i / LinkCount)));
     Node := VerletWorld.CreateOwnedNode(Position);
     NodeList.Add(Node);
-
     // first one is the anchor
-    if i=0 then
+    if i = 0 then
       Node.NailedDown := true
     else
       // Creates the hair link
       VerletWorld.CreateStick(PrevNode, Node);
-
     PrevNode := Node;
   end;
-
   // Now we must stiffen the hair with either sticks or springs
   BuildStiffness;
 end;
 
 procedure TGLVerletHair.BuildStiffness;
 var
-  i : integer;
+  i: integer;
 begin
   ClearStiffness;
-
   if vhsFull in FStiffness then
   begin
     for i := 1 to 100 do
       AddStickStiffness(i);
-      
     exit;
   end;
-
-  if vhsSkip1Node in FStiffness then AddStickStiffness(1);
-  if vhsSkip2Node in FStiffness then AddStickStiffness(2);
-  if vhsSkip3Node in FStiffness then AddStickStiffness(3);
-  if vhsSkip4Node in FStiffness then AddStickStiffness(4);
-  if vhsSkip5Node in FStiffness then AddStickStiffness(5);
-  if vhsSkip6Node in FStiffness then AddStickStiffness(6);
-  if vhsSkip7Node in FStiffness then AddStickStiffness(7);
-  if vhsSkip8Node in FStiffness then AddStickStiffness(8);
-  if vhsSkip9Node in FStiffness then AddStickStiffness(9);
+  if vhsSkip1Node in FStiffness then
+    AddStickStiffness(1);
+  if vhsSkip2Node in FStiffness then
+    AddStickStiffness(2);
+  if vhsSkip3Node in FStiffness then
+    AddStickStiffness(3);
+  if vhsSkip4Node in FStiffness then
+    AddStickStiffness(4);
+  if vhsSkip5Node in FStiffness then
+    AddStickStiffness(5);
+  if vhsSkip6Node in FStiffness then
+    AddStickStiffness(6);
+  if vhsSkip7Node in FStiffness then
+    AddStickStiffness(7);
+  if vhsSkip8Node in FStiffness then
+    AddStickStiffness(8);
+  if vhsSkip9Node in FStiffness then
+    AddStickStiffness(9);
 end;
 
 procedure TGLVerletHair.Clear;
 var
-  i : integer;
+  i: integer;
 begin
   ClearStiffness;
-  for i := FNodeList.Count-1 downto 0 do
+  for i := FNodeList.Count - 1 downto 0 do
     FNodeList[i].Free;
-
   FNodeList.Clear;
   FStiffnessList.Clear;
 end;
 
 procedure TGLVerletHair.ClearStiffness;
 var
-  i : integer;
+  i: integer;
 begin
-  for i := 0 to FStiffnessList.Count-1 do
-    TVerletConstraint(FStiffnessList[i]).Free;
-
+  for i := 0 to FStiffnessList.Count - 1 do
+    TGLVerletConstraint(FStiffnessList[i]).Free;
   FStiffnessList.Clear;
 end;
 
-constructor TGLVerletHair.Create(const AVerletWorld : TGLVerletWorld;
-      const ARootDepth, AHairLength : single; ALinkCount : integer;
-      const AAnchorPosition, AHairDirection : TAffineVector;
-      const AStiffness : TVHStiffnessSet);
+constructor TGLVerletHair.Create(const AVerletWorld: TGLVerletWorld;
+  const ARootDepth, AHairLength: single; ALinkCount: integer;
+  const AAnchorPosition, AHairDirection: TAffineVector;
+  const AStiffness: TGLStiffnessSetVH);
 begin
   FVerletWorld := AVerletWorld;
   FRootDepth := ARootDepth;
   FLinkCount := ALinkCount;
   FHairLength := AHairLength;
 
-  FNodeList := TVerletNodeList.Create;
+  FNodeList := TGLVerletNodeList.Create;
   FStiffness := AStiffness;
   FStiffnessList := TList.Create;
 
@@ -192,25 +192,25 @@ begin
   inherited;
 end;
 
-function TGLVerletHair.GetAnchor: TVerletNode;
+function TGLVerletHair.GetAnchor: TGLBaseNode;
 begin
   result := NodeList[1];
 end;
 
 function TGLVerletHair.GetLinkLength: single;
 begin
-  if LinkCount>0 then
+  if LinkCount > 0 then
     result := HairLength / LinkCount
   else
     result := 0;
 end;
 
-function TGLVerletHair.GetRoot: TVerletNode;
+function TGLVerletHair.GetRoot: TGLBaseNode;
 begin
   result := NodeList[0];
 end;
 
-procedure TGLVerletHair.SetStiffness(const Value: TVHStiffnessSet);
+procedure TGLVerletHair.SetStiffness(const Value: TGLStiffnessSetVH);
 begin
   FStiffness := Value;
   BuildStiffness;
