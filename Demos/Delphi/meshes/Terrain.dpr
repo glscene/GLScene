@@ -1,14 +1,14 @@
 {: Basic terrain rendering demo.
 
    This demo showcases the TerrainRenderer, some of the SkyDome features
-   and bits of 3D sound 'cause I got carried over ;)<br>
+   and bits of 3D sound 'cause I got carried over ;)
    The terrain HeightData is provided by a TGLBitmapHDS (HDS stands for
    "Height Data Source"), and displayed by a TGLTerrainRenderer.
 
    The base terrain renderer uses a hybrid ROAM/brute-force approach to
    rendering terrain, by requesting height data tiles, then rendering them
    using either triangle strips (for those below "QualityDistance") or ROAM
-   tessellation.<br>
+   tessellation.
    Note that if the terrain is wrapping in this sample (to reduce the required
    datasets size), the engine is *not* aware of it and does not exploit this
    fact in any way: it considers just an infinite terrain.

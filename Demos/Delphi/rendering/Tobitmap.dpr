@@ -1,9 +1,9 @@
 {: Render To Bitmap sample.
 
-   This demo illustrates the two ways to obtain a 3D scene in a bitmap.<br>
+   This demo illustrates the two ways to obtain a 3D scene in a bitmap.
    The first, which is also the fastest, is to use CreateSnapShot. It allows
    to obtain what you see on the screen, as it was rendered by the 3D acceleration
-   device if any is available.<br>
+   device if any is available.
    The second is to use RenderToBitmap. This makes use of Software OpenGL
    rendering and is significantly slower, but you can render to any size,
    including to bitmap much larger than the screen which are suited for use

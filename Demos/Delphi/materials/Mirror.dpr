@@ -11,7 +11,7 @@
 
    If you want your mirror to be transparent, you must respect a rendering order
    and have the non-transparent objects rendered last (this includes the mirror,
-   like any other blended object, see materials/transparency for an explanation).<br>
+   like any other blended object, see materials/transparency for an explanation).
    Also note that some of the options (stenciling, clearZBuffer) <b>require</b>
    a stencil buffer (must be enabled in the viewer's buffer), but stenciling may
    not always be hardware accelerated (modern boards will support it).

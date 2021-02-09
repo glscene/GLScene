@@ -6,7 +6,7 @@
 
    For texture compression to work... it must be supported by your 3D card,
    so older boards may not see any change when applying texture compression
-   (the setting is ignored by GLScene if unsupported).<br>
+   (the setting is ignored by GLScene if unsupported).
    Alternatively, some OpenGL ICD will use only one or two compression formats,
    and you may not see any difference between the standard/fastest/nicest
    compression modes.

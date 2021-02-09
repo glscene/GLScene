@@ -7,7 +7,7 @@
 	It is implemented here using a shared field, "currentPick" (by shared,
 	I mean it's a form field used in more than one event) indicating the
 	object the mouse is currently hovering, a classic timer and the "Progress"
-	chain of events.<br>
+	chain of events.
    When a mouse move is detected, it activates a timer, and when this timer
    is fired, the picking is performed. The "direct" approach would perform
    picking in the mousemove event, however, if the picking takes more time

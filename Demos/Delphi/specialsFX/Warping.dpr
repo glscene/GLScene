@@ -3,7 +3,7 @@
    Load an image (preferably with dimensions a power of two, not too big,
    and less than 256x256 if you have and old hardware, all TNT, GeForce,
    Radeon and better should have no trouble loading big pictures), then click
-   somewhere in the image to define the warp point.<br>
+   somewhere in the image to define the warp point.
    You may use the menu to adjust or choose the effect.
 
    This sample displays an image with the help of a single TGLHeightField used

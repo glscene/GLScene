@@ -3,7 +3,7 @@
    This demo illustrates a simple technique to obtain a motion blur: using
    a plane that covers all the viewport that is used to transparently blend
    the previous frame. By adjusting the transparency, you control how many
-   frames are taken into account in the blur.<br>
+   frames are taken into account in the blur.
    Since it is a frame-to-frame mechanism, the result is highly dependant
    on framerate, which is illustrated here by turning VSync ON or OFF in the
    demo (hit V or S key). You can control the number of frames with the up

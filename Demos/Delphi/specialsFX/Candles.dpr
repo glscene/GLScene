@@ -6,7 +6,7 @@
 
    The "cake" is a simple revolution solid, the candles are based on a cylinder,
    line, fire FX on the line, and a transparent plane (for the 2cents "shadow").
-   The candles are duplicated with a TGLProxyObject each.<br>
+   The candles are duplicated with a TGLProxyObject each.
    Particles in a FireFX are submitted to a uniform acceleration, specified with
    the "FireDir" property, and the "wind" slider directly adjusts it.
 }

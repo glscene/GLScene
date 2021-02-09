@@ -1,7 +1,7 @@
 {: Scene-wide Particles FX bench.
 
    Originally planned for the specials FX, but become a bench due to lack of
-   time to improve graphics ;)<br>
+   time to improve graphics ;)
    This is quite a brute-force situation for the Particles FX Renderer, two
    systems are present (Red an Blue) but Red contains the bulk of the particles.
 

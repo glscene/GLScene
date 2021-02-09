@@ -10,11 +10,11 @@
   To use Graphics32 with GLScene:
 
   1. Make sure GLS_Graphics32_SUPPORT is defined in GLSCene.inc. Recompile if
-     needed.<br>
-  2. In your program, use code like:<br>
+     needed.
+  2. In your program, use code like:
 
-       GLTexture.Image.GetBitmap32(0).assign(Bitmap32);<br>
-       GLTexture.Image.NotifyChange(self);<br>
+       GLTexture.Image.GetBitmap32(0).assign(Bitmap32);
+       GLTexture.Image.NotifyChange(self);
 
      to assign the Bitmap32 to your GLScene texture and notify GLScene.
 

@@ -2,7 +2,7 @@
 
    A basic sample for the PFX and the possibility to specify several colors
    to use throughout the life of the particles, additionnally it shows how
-   to use the FullScreenViewer and avoid some pitfalls.<br>
+   to use the FullScreenViewer and avoid some pitfalls.
    There are two PFXs actually, one rendering a spiral with colors from
    yellow (top), then blue, green and red (bottom); the second fades from
    blue to white and "explodes" periodically. The PFX depth-sorts particles

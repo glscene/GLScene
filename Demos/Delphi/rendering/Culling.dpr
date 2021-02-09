@@ -2,7 +2,7 @@
 
    This sample is used to test and showcase the efficiency (or inefficiency) of
    visibility in various cases. Be aware that the sample may be slow loading
-   (the same mesh is loaded multiple times to put some stress).<br>
+   (the same mesh is loaded multiple times to put some stress).
    In each of the tests, a "square grid" of objects is created and made visible,
    the camera points at the center of the square, making most of the objects
    off-screen. Visibility culling detects that and does not render the off-screen

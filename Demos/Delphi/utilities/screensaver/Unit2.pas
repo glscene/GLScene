@@ -1,8 +1,9 @@
-{ Properties dialog for the GLScene screensaver sample.
+(* 
+  Properties dialog for the GLScene screensaver sample.
 
   Here is some basic interface and animation stuff showcased in other GLScene
   samples. The selection/hot mechanism is a little different from the approach
-  used in other "interface" samples.<br>
+  used in other "interface" samples.
   Note that the Cadencer is used in "cmManual" mode. Why doing this ? well, on
   slower systems the PickedObject call in each OnMouseMove may overwhelm the
   message queue, and since the Cadencer uses the message queue, this will result
@@ -10,7 +11,7 @@
   mouse. Using the old "AfterRender" trick sorts this out.
 
   Beginners may also be interested in the Registry access.
-}
+*)
 unit Unit2;
 
 interface

@@ -6,7 +6,7 @@
    Be aware that if you use default compression, you will likely get a lossless,
    low compression codec (which may be good if you want the highest quality),
    but you can specify a codec, for instance DiVX (www.divx.com) if you
-   installed it, for high compression video.<br>
+   installed it, for high compression video.
    The codec can be choosed with the Compressor property of TGLAVIRecorder.
 }
 program Recorder;

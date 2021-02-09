@@ -7,7 +7,7 @@
    You'll also note the glPolygonOffset call, it displaces fragments depths
    value a little "farther away" so that surface fill depth values do not
    interact with the rendering of the lines (comment out the call and you'll
-   see).<br>
+   see).
    The axis and sphere allow you to see the limit of that simple technique:
    it actually "paints" between the lines, so you cannot use it to make
    transparent wireframed objects with hidden lines - if that thought ever

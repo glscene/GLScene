@@ -24,11 +24,11 @@ TForm1 *Form1;
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
+  SetGLSceneMediaDir();
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  SetGLSceneMediaDir();
   GLCanvas->MaxInvalidRenderCount = 40;
   StartX = -1;
 }

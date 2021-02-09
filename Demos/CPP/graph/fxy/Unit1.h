@@ -46,6 +46,7 @@ __published:                   // IDE-managed Components
           TPoint &MousePos, bool &Handled);
 	void __fastcall RadioGroup1Click(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
+
 private:                       // User declarations
 	int mx,my;
 	void __fastcall Formula0(const float x, const float y, float &z,

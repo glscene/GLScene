@@ -4,7 +4,7 @@
 
 	A cadencer is used to "play" the animation, it is not used as a time-controler,
    but just as a way to push the animation as fast as possible. See further
-   samples on framerate independance to see how it can be better used.<br>
+   samples on framerate independance to see how it can be better used.
 
 	Note : when using 3Dfx OPENGL and a Voodoo3 on Win9x in 24bits resolution,
 	the driver always uses internal double-buffering (since it can only render

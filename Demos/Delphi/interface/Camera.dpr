@@ -7,11 +7,11 @@
 	Movements in this sample are done by moving the mouse with a button
 	pressed, left button will translate the dummy cube (and the camera),
 	right button will rotate the camera around the target, shift+right will
-   rotate the object in camera's axis.<br>
-	Mouse Wheel allows zooming in/out.<br>
-	'7', '9' rotate around the X vector (in red, absolute).<br>
-	'4', '6' rotate around the Y vector (in green, absolute).<br>
-	'1', '3' rotate around the Z vector (in blue, absolute).<br>
+   rotate the object in camera's axis.
+	Mouse Wheel allows zooming in/out.
+	'7', '9' rotate around the X vector (in red, absolute).
+	'4', '6' rotate around the Y vector (in green, absolute).
+	'1', '3' rotate around the Z vector (in blue, absolute).
 }
 program Camera;
 

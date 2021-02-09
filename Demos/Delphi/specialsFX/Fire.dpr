@@ -1,9 +1,9 @@
 {: The fire special effect basic sample.
 
    If you look at the code you won't see anything fancy. The FireFX is a dynamic
-   special effect (driven by a cadencer). Making use of it means two things :<br>
-   - dropping a FirexFXManager, this one controls fire particle systems aspects<br>
-   - adding a FireFX effect to the object you want to see burning (here, a sphere)<br>
+   special effect (driven by a cadencer). Making use of it means two things :
+   - dropping a FirexFXManager, this one controls fire particle systems aspects
+   - adding a FireFX effect to the object you want to see burning (here, a sphere)
    You may have multiple objects sharing the same FireFXManager, this means they
    will all look the same, but also that the particle system calculations are
    made only once.

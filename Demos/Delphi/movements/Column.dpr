@@ -1,4 +1,4 @@
-{: This form showcases runtime object creation and framerate independant motion.
+(* This form showcases runtime object creation and framerate independant motion.
 
 	We start with an almost empty scene. The dummy cube is used as a convenient
 	way to orient the camera (using its TargetObject property). Planes are
@@ -8,7 +8,7 @@
 	Framerate independance motion is obtained by using a clock reference (in
 	this sample, it is given by the TGLCadencer, which uses the high performance
    precision counter as reference). You can check it by resizing the window :
-   whatever the framerate, the spin speed is the same.<br>
+   whatever the framerate, the spin speed is the same.
 	In this sample, it is extremely simply done, but with more complex scenes
 	and movements the same rule applies : for framerate independant motion, you
 	need a clock measurement.
@@ -20,7 +20,7 @@
 
 	Note that measured framerates are 1 sec averages, a TTimer is used to refresh
    and reset FPS counter.
-}
+*)
 program Column;
 
 uses

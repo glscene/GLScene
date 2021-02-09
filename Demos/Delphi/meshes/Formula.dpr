@@ -12,17 +12,17 @@
 
    In triangle mode, the normals are computed on a triangle basis, hence the
    facetted look, for triangle-strip, they are computed for each vertex based
-   on the triangle it completes (smooth along strip-direction).<br>
+   on the triangle it completes (smooth along strip-direction).
 
    The reader may make the "good" looking version (ie. smooth aspect in all
    direction) by calculating the proper normal from the formula instead of
-   using standard normal calculations.<br>
+   using standard normal calculations.
 
-   Sample framerates (K6-400 + Sofware OpenGL), 5000 triangles (cResolution=25) :<br>
-   -  mmTriangles : 9.6 FPS<br>
+   Sample framerates (K6-400 + Sofware OpenGL), 5000 triangles (cResolution=25) :
+   -  mmTriangles : 9.6 FPS
    -  mmTriangleStrip : 17.2 FPS
-   Sample framerates (K7-500 + GeForce 256), 20000 triangles (cResolution=50) :<br>
-   -  mmTriangles : 53 FPS<br>
+   Sample framerates (K7-500 + GeForce 256), 20000 triangles (cResolution=50) :
+   -  mmTriangles : 53 FPS
    -  mmTriangleStrip : 202 FPS
 }
 program Formula;

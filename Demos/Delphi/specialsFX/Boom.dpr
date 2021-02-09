@@ -3,7 +3,7 @@
    In this sample, a small sphere is thrusted upward (with a gravity-like
    deceleration) with a small fire trail, explodes (in one of two styles,
    isotropic or ring, chosen at random), and falls back followed by a smoke
-   trail.<br>
+   trail.
    The explosion takes place in 3D, to help you visualize it, hold the mouse
    button down and move around.
 

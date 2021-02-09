@@ -1,7 +1,7 @@
 {: Sample showing use of TGLSprite for "caterpillar" effect.
 
 	A bunch of TGLSprite is created in FormCreate, all copied from Sprite2 (used
-	as "template"), then we move and resize them as they orbit a pulsating "star".<br>
+	as "template"), then we move and resize them as they orbit a pulsating "star".
 	Textures are loaded from a "flare1.bmp" file that is expected to be in the
 	same directory as the compiled EXE.
 
@@ -9,7 +9,7 @@
 		<li>blending is set to bmAdditive (for the color saturation effect)
       <li>DepthTest is disabled
 		<li>ball color is determined with the Emission color
-	</ul><br>
+	</ul>
 	The number of sprites is low to avoid stalling a software renderer
 	(texture alpha-blending is a costly effect), if you're using a 3D hardware,
 	you'll get FPS in the hundredths and may want to make the sprite count higher.

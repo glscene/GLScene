@@ -2,7 +2,7 @@
 
    This demo loads a SMD model and 3 of its animation (SMD are part of and
    Half-Life MDL file, and may be extracted to individual files with tools
-   like MilkShape).<br>
+   like MilkShape).
    SMD loading order matters: the "model" SMD must be loaded first, it contains
    bones and vertex data, the "animation" SMD are loaded afterwards with
    AddDataFromFile, they contain only bone animation data. Don't forget to link
@@ -21,7 +21,7 @@
    the model's author if it ain't anatomically correct (hand edited smd with
    only three keyframes).
 
-   Model Author: Neal 'Guplik' Corbett, edited by ~A.u.s.t.i.n. (manny@cgocable.net)<br>
+   Model Author: Neal 'Guplik' Corbett, edited by ~A.u.s.t.i.n. (manny@cgocable.net)
    Thanks!
 *)
 program Skeletal;
