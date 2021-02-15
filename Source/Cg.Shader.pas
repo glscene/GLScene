@@ -25,11 +25,10 @@ uses
   GLS.Material,
   GLS.TextureFormat,
 
-  Imports.cg,
+  Imports.Cg,
   Imports.cgGL;
 
-{$I GLScene.inc}
-
+{.$I GLScene.inc}
 { .$DEFINE OutputCompilerWarnings }
 
 (* Define OutputCompilerWarnings to output Cg compiler warnings to a file. Useful
@@ -40,18 +39,14 @@ type
   TCustomCgShader = class;
   TCgProgram = class;
   TCgParameter = class;
-
   TCgApplyEvent = procedure(CgProgram: TCgProgram; Sender: TObject) of object;
   TCgUnApplyEvent = procedure(CgProgram: TCgProgram) of object;
   TCgShaderEvent = procedure(CgShader: TCustomCgShader) of object;
-
   TcgProgramType = (ptVertex, ptFragment);
-
   // Available vertex program profile
   TCgVPProfile = (vpDetectLatest, vp20, vp30, vp40, arbvp1);
   // Available fragment program profile
   TCgFPProfile = (fpDetectLatest, fp20, fp30, fp40, arbfp1);
-
   TPrecisionSetting = (psFull, psFast);
 
   // Wrapper around a Cg program.
@@ -591,7 +586,6 @@ begin
     Exit;
   if Assigned(FOnUnApply) then
     FOnUnApply(Self);
-
   cgGLDisableProfile(FProfile);
 end;
 

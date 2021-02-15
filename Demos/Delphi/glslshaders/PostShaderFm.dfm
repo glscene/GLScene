@@ -2,8 +2,8 @@ object PostShaderDemoForm: TPostShaderDemoForm
   Left = 261
   Top = 176
   Caption = 'GLSL Post Shader'
-  ClientHeight = 466
-  ClientWidth = 646
+  ClientHeight = 548
+  ClientWidth = 661
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,7 +12,6 @@ object PostShaderDemoForm: TPostShaderDemoForm
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  WindowState = wsMaximized
   OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
@@ -20,26 +19,28 @@ object PostShaderDemoForm: TPostShaderDemoForm
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 423
-    Height = 437
+    Width = 438
+    Height = 519
     Camera = Camera
     Buffer.BackgroundColor = clBackground
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aaNone
     Buffer.DepthPrecision = dp24bits
     Buffer.ColorDepth = cd24bits
-    FieldOfView = 145.832611083984400000
+    FieldOfView = 146.937835693359400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object Panel1: TPanel
     Left = 0
-    Top = 437
-    Width = 646
+    Top = 519
+    Width = 661
     Height = 29
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 437
+    ExplicitWidth = 646
     object LightMovingCheckBox: TCheckBox
       Left = 8
       Top = 8
@@ -64,12 +65,14 @@ object PostShaderDemoForm: TPostShaderDemoForm
     end
   end
   object Panel2: TPanel
-    Left = 423
+    Left = 438
     Top = 0
     Width = 223
-    Height = 437
+    Height = 519
     Align = alRight
     TabOrder = 2
+    ExplicitLeft = 423
+    ExplicitHeight = 437
     object Label1: TLabel
       Left = 16
       Top = 8

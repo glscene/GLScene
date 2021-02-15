@@ -106,11 +106,11 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   CheckBox_FurGravityClick(Sender);
   CheckBox_WindResistenceClick(Sender);
 
-  CreateVCPlaneFromGLPlane(GLShadowPlane_Floor, VerletWorld, cOffset);
-  CreateVCPlaneFromGLPlane(GLShadowPlane_Floor2, VerletWorld, cOffset);
-  CreateVCPlaneFromGLPlane(GLShadowPlane_Wall, VerletWorld, cOffset);
-  CreateVCPlaneFromGLPlane(GLShadowPlane_Wall2, VerletWorld, cOffset);
-  CreateVCPlaneFromGLPlane(GLShadowPlane_Wall3, VerletWorld, cOffset);
+  CreateVerletPlaneFromGLPlane(GLShadowPlane_Floor, VerletWorld, cOffset);
+  CreateVerletPlaneFromGLPlane(GLShadowPlane_Floor2, VerletWorld, cOffset);
+  CreateVerletPlaneFromGLPlane(GLShadowPlane_Wall, VerletWorld, cOffset);
+  CreateVerletPlaneFromGLPlane(GLShadowPlane_Wall2, VerletWorld, cOffset);
+  CreateVerletPlaneFromGLPlane(GLShadowPlane_Wall3, VerletWorld, cOffset);
 
   HairList = new TList;
 
@@ -223,7 +223,7 @@ void __fastcall TForm1::CreateRandomHair()
   Dir = AffineVectorMake(random() - 0.5, random() - 0.5, random() - 0.5);
   NormalizeVector(Dir);
 
-  TVHStiffnessSet vhs;
+  TGLStiffnessSetVH vhs;
   vhs << vhsSkip1Node;
   Hair =
 	new TGLVerletHair(VerletWorld, FurBall->Radius * cRootDepth,
@@ -295,7 +295,7 @@ void __fastcall TForm1::CreateBall()
 
   CopyPosFromGeomToGL(odeFurBallGeom, FurBall);
 
-  VCSphere = new TVCSphere(VerletWorld);
+  VCSphere = new TGLVerletFricSphere(VerletWorld);
   VCSphere->Radius = FurBall->Radius * 1.1;
   VCSphere->Location = AffineVectorMake(FurBall->AbsolutePosition);
 
@@ -310,7 +310,7 @@ void __fastcall TForm1::CheckBox_FurGravityClick(TObject *Sender)
 	delete Gravity;
   else
   {
-	Gravity = new TVFGravity(VerletWorld);
+	Gravity = new TGLVerletGravity(VerletWorld);
 	Gravity->Gravity = AffineVectorMake(0, 0, -9.81);
   }
 }
@@ -323,7 +323,7 @@ void __fastcall TForm1::CheckBox_WindResistenceClick(TObject *Sender)
 	delete AirResistance;
   else
   {
-	AirResistance = new TVFAirResistance(VerletWorld);
+	AirResistance = new TGLVerletAirResistance(VerletWorld);
 	AirResistance->DragCoeff = 0.01;
 	AirResistance->WindDirection = AffineVectorMake(1, 0, 0);
 	AirResistance->WindMagnitude =

@@ -20,6 +20,9 @@ uses
   System.SysUtils,
   System.Types,
 
+  GLS.VectorTypes,
+  GLS.PersistentClasses,
+
   GLS.BaseClasses,
   GLS.Objects,
   GLS.Scene,
@@ -28,18 +31,25 @@ uses
   GLS.VectorLists,
   GLS.SpacePartition,
   GLS.GeometryBB,
-  GLS.VectorTypes;
+  GLS.VectorFileObjects;
 
 const
   G_DRAG = 0.0001;
   cDEFAULT_CONSTRAINT_FRICTION = 0.6;
 
+
+type
+  TGLStiffnessVH = (vhsFull, vhsSkip1Node, vhsSkip2Node, vhsSkip3Node,
+    vhsSkip4Node, vhsSkip5Node, vhsSkip6Node, vhsSkip7Node, vhsSkip8Node,
+    vhsSkip9Node);
+  TGLStiffnessSetVH = set of TGLStiffnessVH;
+
 type
   TGLVerletEdgeList = class;
   TGLVerletWorld = class;
 
-  // Basic Verlet node
-  TGLBaseNode = class(TSpacePartitionLeaf)
+  // Basic Verlet Node
+  TGLBaseVerletNode = class(TSpacePartitionLeaf)
   private
     FForce: TAffineVector;
     FOwner: TGLVerletWorld;
@@ -68,10 +78,10 @@ type
       FOldPosition = FPosition, so that speed is zero *)
     procedure Initialize; dynamic;
     // Calculates the distance to another node
-    function DistanceToNode(const node: TGLBaseNode): Single;
+    function DistanceToNode(const node: TGLBaseVerletNode): Single;
     // Calculates the movement of the node
     function GetMovement: TAffineVector;
-    (* The TGLBaseNode inherits from TSpacePartitionLeaf, and it needs to
+    (* The TGLBaseVerletNode inherits from TSpacePartitionLeaf, and it needs to
       know how to publish itself. The owner (a TGLVerletWorld) has a spatial
       partitioning object *)
     procedure UpdateCachedAABBAndBSphere; override;
@@ -101,14 +111,14 @@ type
     property ChangedOnStep: Integer read FChangedOnStep;
   end;
 
-  TGLVerletNodeClass = class of TGLBaseNode;
+  TGLVerletNodeClass = class of TGLBaseVerletNode;
 
   TGLVerletNodeList = class(TList)
   private
-    function GetItems(i: Integer): TGLBaseNode;
-    procedure SetItems(i: Integer; const Value: TGLBaseNode);
+    function GetItems(i: Integer): TGLBaseVerletNode;
+    procedure SetItems(i: Integer; const Value: TGLBaseVerletNode);
   public
-    property Items[i: Integer]: TGLBaseNode read GetItems
+    property Items[i: Integer]: TGLBaseVerletNode read GetItems
       write SetItems; default;
   end;
 
@@ -125,7 +135,7 @@ type
     procedure SatisfyConstraint(const iteration, maxIterations: Integer);
       virtual; abstract;
     // Notifies removal of a node
-    procedure RemoveNode(const aNode: TGLBaseNode); virtual; abstract;
+    procedure RemoveNode(const aNode: TGLBaseVerletNode); virtual; abstract;
     // Method that's fired before the physics iterations are performed
     procedure BeforeIterations; virtual;
     // Onwer of the constraint
@@ -138,13 +148,13 @@ type
 
   TGLVerletDualConstraint = class(TGLVerletConstraint)
   private
-    FNodeA, FNodeB: TGLBaseNode;
+    FNodeA, FNodeB: TGLBaseVerletNode;
   public
-    procedure RemoveNode(const aNode: TGLBaseNode); override;
+    procedure RemoveNode(const aNode: TGLBaseVerletNode); override;
     // Reference to NodeA.
-    property NodeA: TGLBaseNode read FNodeA write FNodeA;
+    property NodeA: TGLBaseVerletNode read FNodeA write FNodeA;
     // Reference to NodeB.
-    property NodeB: TGLBaseNode read FNodeB write FNodeB;
+    property NodeB: TGLBaseVerletNode read FNodeB write FNodeB;
   end;
 
   TGLVerletGroupConstraint = class(TGLVerletConstraint)
@@ -153,7 +163,7 @@ type
   public
     constructor Create(const aOwner: TGLVerletWorld); override;
     destructor Destroy; override;
-    procedure RemoveNode(const aNode: TGLBaseNode); override;
+    procedure RemoveNode(const aNode: TGLBaseVerletNode); override;
     // The list of nodes that this constraint will effect
     property Nodes: TGLVerletNodeList read FNodes;
   end;
@@ -161,18 +171,18 @@ type
   // Verlet edges simulate rigid collission edges
   TGLVerletEdge = class(TSpacePartitionLeaf)
   private
-    FNodeA: TGLBaseNode;
-    FNodeB: TGLBaseNode;
+    FNodeA: TGLBaseVerletNode;
+    FNodeB: TGLBaseVerletNode;
   public
     (* The TGLVerletEdge inherits from TSpacePartitionLeaf, and it needs to
       know how to publish itself. The owner ( a TGLVerletWorld ) has a spatial
       partitioning object *)
     procedure UpdateCachedAABBAndBSphere; override;
-    constructor CreateEdgeOwned(const aNodeA, aNodeB: TGLBaseNode);
+    constructor CreateEdgeOwned(const aNodeA, aNodeB: TGLBaseVerletNode);
     // One of the nodes in the edge
-    property NodeA: TGLBaseNode read FNodeA write FNodeA;
+    property NodeA: TGLBaseVerletNode read FNodeA write FNodeA;
     // One of the nodes in the edge
-    property NodeB: TGLBaseNode read FNodeB write FNodeB;
+    property NodeB: TGLBaseVerletNode read FNodeB write FNodeB;
   end;
 
   TGLVerletEdgeList = class(TList)
@@ -193,11 +203,11 @@ type
   public
     constructor Create(const aOwner: TGLVerletWorld); override;
     destructor Destroy; override;
-    procedure RemoveNode(const aNode: TGLBaseNode); override;
+    procedure RemoveNode(const aNode: TGLBaseVerletNode); override;
     procedure BeforeIterations; override;
     procedure SatisfyConstraint(const iteration, maxIterations
       : Integer); override;
-    procedure SatisfyConstraintForNode(const aNode: TGLBaseNode;
+    procedure SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
       const iteration, maxIterations: Integer); virtual; abstract;
     procedure SatisfyConstraintForEdge(const aEdge: TGLVerletEdge;
       const iteration, maxIterations: Integer); virtual;
@@ -260,7 +270,7 @@ type
     property CachedAABB: TAABB read FCachedAABB;
   end;
 
-  TVerletConstraintList = class(TList)
+  TGLVerletConstraintList = class(TList)
   private
     function GetItems(i: Integer): TGLVerletConstraint;
     procedure SetItems(i: Integer; const Value: TGLVerletConstraint);
@@ -279,20 +289,20 @@ type
     // Implementation should add force to force resultant for all relevant nodes
     procedure AddForce(const vpt: TGLProgressTimes); virtual; abstract;
     // Notifies removal of a node
-    procedure RemoveNode(const aNode: TGLBaseNode); virtual; abstract;
+    procedure RemoveNode(const aNode: TGLBaseVerletNode); virtual; abstract;
     property Owner: TGLVerletWorld read FOwner;
   end;
 
   // A verlet force that applies to two specified nodes.
   TGLVerletDualForce = class(TGLVerletForce)
   private
-    FNodeA, FNodeB: TGLBaseNode;
+    FNodeA, FNodeB: TGLBaseVerletNode;
   public
-    procedure RemoveNode(const aNode: TGLBaseNode); override;
+    procedure RemoveNode(const aNode: TGLBaseVerletNode); override;
     // Reference to NodeA.
-    property NodeA: TGLBaseNode read FNodeA write FNodeA;
+    property NodeA: TGLBaseVerletNode read FNodeA write FNodeA;
     // Reference to NodeB.
-    property NodeB: TGLBaseNode read FNodeB write FNodeB;
+    property NodeB: TGLBaseVerletNode read FNodeB write FNodeB;
   end;
 
   // A verlet force that applies to a specified group of nodes.
@@ -302,7 +312,7 @@ type
   public
     constructor Create(const aOwner: TGLVerletWorld); override;
     destructor Destroy; override;
-    procedure RemoveNode(const aNode: TGLBaseNode); override;
+    procedure RemoveNode(const aNode: TGLBaseVerletNode); override;
     // Nodes of the force group, referred, NOT owned.
     property Nodes: TGLVerletNodeList read FNodes;
   end;
@@ -310,9 +320,9 @@ type
   // A global force (applied to all verlet nodes).
   TGLVerletGlobalForce = class(TGLVerletForce)
   public
-    procedure RemoveNode(const aNode: TGLBaseNode); override;
+    procedure RemoveNode(const aNode: TGLBaseVerletNode); override;
     procedure AddForce(const vpt: TGLProgressTimes); override;
-    procedure AddForceToNode(const aNode: TGLBaseNode); virtual; abstract;
+    procedure AddForceToNode(const aNode: TGLBaseVerletNode); virtual; abstract;
   end;
 
   TGLVerletForceList = class(TList)
@@ -324,9 +334,9 @@ type
       write SetItems; default;
   end;
 
-  TGLStickVC = class;
-  TGLSpringVF = class;
-  TGLSliderVC = class;
+  TGLVerletStick = class;
+  TGLVerletSpring = class;
+  TGLVerletSlider = class;
 
   TUpdateSpacePartion = (uspEveryIteration, uspEveryFrame, uspNever);
   TCollisionConstraintTypes = (cctEdge, cctNode);
@@ -336,7 +346,7 @@ type
   private
     FIterations: Integer;
     FNodes: TGLVerletNodeList;
-    FConstraints: TVerletConstraintList;
+    FConstraints: TGLVerletConstraintList;
     FForces: TGLVerletForceList;
     FMaxDeltaTime, FSimTime: Single;
     FDrag: Single;
@@ -347,7 +357,7 @@ type
     FCurrentStepCount: Integer;
     FUpdateSpacePartion: TUpdateSpacePartion;
     FCollisionConstraintTypes: TCollisionConstraintTypesSet;
-    FConstraintsWithBeforeIterations: TVerletConstraintList;
+    FConstraintsWithBeforeIterations: TGLVerletConstraintList;
     FVerletNodeClass: TGLVerletNodeClass;
     FInertia: Boolean;
     FInertaPauseSteps: Integer;
@@ -359,33 +369,33 @@ type
   public
     constructor Create; virtual;
     destructor Destroy; override;
-    function AddNode(const aNode: TGLBaseNode): Integer;
-    procedure RemoveNode(const aNode: TGLBaseNode);
+    function AddNode(const aNode: TGLBaseVerletNode): Integer;
+    procedure RemoveNode(const aNode: TGLBaseVerletNode);
     function AddConstraint(const aConstraint: TGLVerletConstraint): Integer;
     procedure RemoveConstraint(const aConstraint: TGLVerletConstraint);
     function AddForce(const aForce: TGLVerletForce): Integer;
     procedure RemoveForce(const aForce: TGLVerletForce);
-    procedure AddSolidEdge(const aNodeA, aNodeB: TGLBaseNode);
+    procedure AddSolidEdge(const aNodeA, aNodeB: TGLBaseVerletNode);
     procedure PauseInertia(const IterationSteps: Integer);
     function CreateOwnedNode(const Location: TAffineVector;
-      const aRadius: Single = 0; const aWeight: Single = 1): TGLBaseNode;
-    function CreateStick(const aNodeA, aNodeB: TGLBaseNode;
-      const Slack: Single = 0): TGLStickVC;
-    function CreateSpring(const aNodeA, aNodeB: TGLBaseNode;
-      const aStrength, aDamping: Single; const aSlack: Single = 0): TGLSpringVF;
-    function CreateSlider(const aNodeA, aNodeB: TGLBaseNode;
-      const aSlideDirection: TAffineVector): TGLSliderVC;
+      const aRadius: Single = 0; const aWeight: Single = 1): TGLBaseVerletNode;
+    function CreateStick(const aNodeA, aNodeB: TGLBaseVerletNode;
+      const Slack: Single = 0): TGLVerletStick;
+    function CreateSpring(const aNodeA, aNodeB: TGLBaseVerletNode;
+      const aStrength, aDamping: Single; const aSlack: Single = 0): TGLVerletSpring;
+    function CreateSlider(const aNodeA, aNodeB: TGLBaseVerletNode;
+      const aSlideDirection: TAffineVector): TGLVerletSlider;
     procedure Initialize; virtual;
     procedure CreateOctree(const OctreeMin, OctreeMax: TAffineVector;
       const LeafThreshold, MaxTreeDepth: Integer);
     function Progress(const deltaTime, newTime: Double): Integer; virtual;
-    function FirstNode: TGLBaseNode;
-    function LastNode: TGLBaseNode;
+    function FirstNode: TGLBaseVerletNode;
+    function LastNode: TGLBaseVerletNode;
     property Drag: Single read FDrag write FDrag;
     property Iterations: Integer read FIterations write FIterations;
     property Nodes: TGLVerletNodeList read FNodes;
-    property Constraints: TVerletConstraintList read FConstraints;
-    property ConstraintsWithBeforeIterations: TVerletConstraintList
+    property Constraints: TGLVerletConstraintList read FConstraints;
+    property ConstraintsWithBeforeIterations: TGLVerletConstraintList
       read FConstraintsWithBeforeIterations;
     property SimTime: Single read FSimTime write FSimTime;
     property MaxDeltaTime: Single read FMaxDeltaTime write FMaxDeltaTime;
@@ -402,16 +412,16 @@ type
     property Inertia: Boolean read FInertia write FInertia;
   end;
 
-  TGLGravityVF = class(TGLVerletGlobalForce)
+  TGLVerletGravity = class(TGLVerletGlobalForce)
   private
     FGravity: TAffineVector;
   public
     constructor Create(const aOwner: TGLVerletWorld); override;
-    procedure AddForceToNode(const aNode: TGLBaseNode); override;
+    procedure AddForceToNode(const aNode: TGLBaseVerletNode); override;
     property Gravity: TAffineVector read FGravity write FGravity;
   end;
 
-  TGLAirResistanceVF = class(TGLVerletGlobalForce)
+  TGLVerletAirResistance = class(TGLVerletGlobalForce)
   private
     FDragCoeff: Single;
     FWindDirection: TAffineVector;
@@ -420,7 +430,7 @@ type
     procedure SetWindDirection(const Value: TAffineVector);
   public
     constructor Create(const aOwner: TGLVerletWorld); override;
-    procedure AddForceToNode(const aNode: TGLBaseNode); override;
+    procedure AddForceToNode(const aNode: TGLBaseVerletNode); override;
     property DragCoeff: Single read FDragCoeff write FDragCoeff;
     property WindDirection: TAffineVector read FWindDirection
       write SetWindDirection;
@@ -429,7 +439,7 @@ type
     property WindChaos: Single read FWindChaos write FWindChaos;
   end;
 
-  TGLSpringVF = class(TGLVerletDualForce)
+  TGLVerletSpring = class(TGLVerletDualForce)
   private
     FRestLength: Single;
     FStrength: Single;
@@ -448,7 +458,7 @@ type
   end;
 
   // Floor Collision Constraint
-  TGLFloorVC = class(TGLVerletGlobalFrictionConstraintSP)
+  TGLVerletFloor = class(TGLVerletGlobalFrictionConstraintSP)
   private
     FBounceRatio, FFloorLevel: Single;
     FNormal: TAffineVector;
@@ -457,30 +467,30 @@ type
   public
     constructor Create(const aOwner: TGLVerletWorld); override;
     procedure PerformSpaceQuery; override;
-    procedure SatisfyConstraintForNode(const aNode: TGLBaseNode;
+    procedure SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
       const iteration, maxIterations: Integer); override;
     property BounceRatio: Single read FBounceRatio write FBounceRatio;
     property FloorLevel: Single read FFloorLevel write FFloorLevel;
     property Normal: TAffineVector read FNormal write SetNormal;
   end;
 
-  TVCHeightField = class;
-  TVCHeightFieldOnNeedHeight = function(hfConstraint: TVCHeightField;
-    node: TGLBaseNode): Single of object;
+  TGLVerletHeightField = class;
+  TGLVerletHeightFieldOnNeedHeight = function(hfConstraint: TGLVerletHeightField;
+    node: TGLBaseVerletNode): Single of object;
 
   // HeightField collision constraint (punctual!)
-  TVCHeightField = class(TGLFloorVC)
+  TGLVerletHeightField = class(TGLVerletFloor)
   private
-    FOnNeedHeight: TVCHeightFieldOnNeedHeight;
+    FOnNeedHeight: TGLVerletHeightFieldOnNeedHeight;
   public
-    procedure SatisfyConstraintForNode(const aNode: TGLBaseNode;
+    procedure SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
       const iteration, maxIterations: Integer); override;
-    property OnNeedHeight: TVCHeightFieldOnNeedHeight read FOnNeedHeight
+    property OnNeedHeight: TGLVerletHeightFieldOnNeedHeight read FOnNeedHeight
       write FOnNeedHeight;
   end;
 
   // Stick Verlet Collision Constraint. Imposes a fixed distance between two nodes
-  TGLStickVC = class(TGLVerletDualConstraint)
+  TGLVerletStick = class(TGLVerletDualConstraint)
   private
     FSlack: Single;
     FRestLength: Single;
@@ -495,7 +505,7 @@ type
   (* Rigid body verlet Collision constraint.
     Regroups several nodes in a rigid body conformation, somewhat similar
     to a stick but for multiple nodes. EXPERIMENTAL, STILL DOES NOT WORK! *)
-  TGLRigidBodyVC = class(TGLVerletGroupConstraint)
+  TGLVerletRigidBody = class(TGLVerletGroupConstraint)
   private
     FNodeParams: array of TAffineVector;
     FNodeCoords: array of TAffineVector;
@@ -514,7 +524,7 @@ type
     Imposes that two nodes be aligned on a defined direction, on which they
     can slide freely. Note that the direction is fixed and won't rotate
     with the verlet assembly!. *)
-  TGLSliderVC = class(TGLVerletDualConstraint)
+  TGLVerletSlider = class(TGLVerletDualConstraint)
   private
     FSlideDirection: TAffineVector;
     FConstrained: Boolean;
@@ -529,29 +539,29 @@ type
     property Constrained: Boolean read FConstrained write FConstrained;
   end;
 
-  // Sphere Ñollision constraint.
-  TVCSphere = class(TGLVerletGlobalFrictionConstraintSphere)
+  // Sphere Ñollision Friction Constraint
+  TGLVerletFricSphere = class(TGLVerletGlobalFrictionConstraintSphere)
   private
     FRadius: Single;
   public
     function GetBSphere: TBSphere; override;
-    procedure SatisfyConstraintForNode(const aNode: TGLBaseNode;
+    procedure SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
       const iteration, maxIterations: Integer); override;
     procedure SatisfyConstraintForEdge(const aEdge: TGLVerletEdge;
       const iteration, maxIterations: Integer); override;
     property Radius: Single read FRadius write FRadius;
   end;
 
-  (* Cylinder collision constraint.
+  (* Cylinder collision Friction Constraint.
     The cylinder is considered infinite by this constraint. *)
-  TVCCylinder = class(TGLVerletGlobalFrictionConstraint)
+  TGLVerletFricCylinder = class(TGLVerletGlobalFrictionConstraint)
   private
     FAxis: TAffineVector;
     FRadius, FRadius2: Single;
   protected
     procedure SetRadius(const val: Single);
   public
-    procedure SatisfyConstraintForNode(const aNode: TGLBaseNode;
+    procedure SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
       const iteration, maxIterations: Integer); override;
     (* A base point on the cylinder axis.
       Can theoretically be anywhere, however, to reduce floating point
@@ -564,8 +574,8 @@ type
     property Radius: Single read FRadius write SetRadius;
   end;
 
-  // Cube Ñollision constraint.
-  TVCCube = class(TGLVerletGlobalFrictionConstraintBox)
+  // Cube Ñollision Friction Constraint.
+  TGLVerletFricCube = class(TGLVerletGlobalFrictionConstraintBox)
   private
     FHalfSides: TAffineVector;
     FSides: TAffineVector;
@@ -573,7 +583,7 @@ type
     procedure SetSides(const Value: TAffineVector);
   public
     function GetAABB: TAABB; override;
-    procedure SatisfyConstraintForNode(const aNode: TGLBaseNode;
+    procedure SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
       const iteration, maxIterations: Integer); override;
     // Broken and very slow!
     procedure SatisfyConstraintForEdge(const aEdge: TGLVerletEdge;
@@ -582,8 +592,8 @@ type
     property Sides: TAffineVector read FSides write SetSides;
   end;
 
-  // Capsule collision constraint.
-  TVCCapsule = class(TGLVerletGlobalFrictionConstraintSphere)
+  // Capsule collision Friction Constraint.
+  TGLVerletFricCapsule = class(TGLVerletGlobalFrictionConstraintSphere)
   private
     FAxis: TAffineVector;
     FRadius, FRadius2, FLength, FLengthDiv2: Single;
@@ -593,7 +603,7 @@ type
     procedure SetLength(const val: Single);
   public
     function GetBSphere: TBSphere; override;
-    procedure SatisfyConstraintForNode(const aNode: TGLBaseNode;
+    procedure SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
       const iteration, maxIterations: Integer); override;
     procedure SatisfyConstraintForEdge(const aEdge: TGLVerletEdge;
       const iteration, maxIterations: Integer); override;
@@ -606,7 +616,7 @@ type
   (* Specialized verlet node that can be anchored to a GLScene object. If it's
     anchored and has the property "NailedDown" set, it will remain in the same
     relative position to the GLScene object. *)
-  TGLVerletNode = class(TGLBaseNode)
+  TGLVerletNode = class(TGLBaseVerletNode)
   private
     FRelativePosition: TAffineVector;
     FGLBaseSceneObject: TGLBaseSceneObject;
@@ -621,18 +631,107 @@ type
       write FRelativePosition;
   end;
 
-function CreateVCPlaneFromGLPlane(Plane: TGLPlane; VerletWorld: TGLVerletWorld;
-  Offset: Single): TGLFloorVC;
+  // Verlet Hair class
+  TGLVerletHair = class
+  private
+    FNodeList: TGLVerletNodeList;
+    FLinkCount: integer;
+    FRootDepth: single;
+    FVerletWorld: TGLVerletWorld;
+    FHairLength: single;
+    FData: pointer;
+    FStiffness: TGLStiffnessSetVH;
+    FStiffnessList: TList;
+    function GetAnchor: TGLBaseVerletNode;
+    function GetRoot: TGLBaseVerletNode;
+    function GetLinkLength: single;
+    procedure AddStickStiffness(const ANodeSkip: integer);
+    procedure SetStiffness(const Value: TGLStiffnessSetVH);
+  public
+    procedure BuildHair(const AAnchorPosition, AHairDirection: TAffineVector);
+    procedure BuildStiffness;
+    procedure ClearStiffness;
+    procedure Clear;
+    constructor Create(const AVerletWorld: TGLVerletWorld;
+      const ARootDepth, AHairLength: single; ALinkCount: integer;
+      const AAnchorPosition, AHairDirection: TAffineVector;
+      const AStiffness: TGLStiffnessSetVH);
+    destructor Destroy; override;
+    property NodeList: TGLVerletNodeList read FNodeList;
+    property VerletWorld: TGLVerletWorld read FVerletWorld;
+    property RootDepth: single read FRootDepth;
+    property LinkLength: single read GetLinkLength;
+    property LinkCount: integer read FLinkCount;
+    property HairLength: single read FHairLength;
+    property Stiffness: TGLStiffnessSetVH read FStiffness write SetStiffness;
+    property Data: pointer read FData write FData;
+    // Anchor should be nailed down to give the hair stability
+    property Anchor: TGLBaseVerletNode read GetAnchor;
+    // Root should be nailed down to give the hair stability
+    property Root: TGLBaseVerletNode read GetRoot;
+  end;
+
+  // Base Verlet Skeleton Collider class.
+  TGLVerletSkeletonCollider = class(TGLSkeletonCollider)
+  private
+    FVerletConstraint: TGLVerletConstraint;
+  public
+    procedure WriteToFiler(Writer: TVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TVirtualReader); override;
+    procedure AddToVerletWorld(VerletWorld: TGLVerletWorld); virtual;
+    // The verlet constraint is created through the AddToVerletWorld procedure
+    property VerletConstraint: TGLVerletConstraint read FVerletConstraint;
+  end;
+
+  // Sphere shaped verlet constraint in a skeleton collider
+  TGLVerletSphere = class(TGLVerletSkeletonCollider)
+  private
+    FRadius: Single;
+  protected
+    procedure SetRadius(const Val: Single);
+  public
+    constructor Create; override;
+    procedure WriteToFiler(Writer: TVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TVirtualReader); override;
+    procedure AddToVerletWorld(VerletWorld: TGLVerletWorld); override;
+    procedure AlignCollider; override;
+    property Radius: Single read FRadius write SetRadius;
+  end;
+
+  // Capsule shaped verlet constraint in a skeleton collider
+  TGLVerletCapsule = class(TGLVerletSkeletonCollider)
+  private
+    FRadius, FLength: Single;
+  protected
+    procedure SetRadius(const Val: Single);
+    procedure SetLength(const Val: Single);
+  public
+    constructor Create; override;
+    procedure WriteToFiler(Writer: TVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TVirtualReader); override;
+    procedure AddToVerletWorld(VerletWorld: TGLVerletWorld); override;
+    procedure AlignCollider; override;
+    property Radius: Single read FRadius write SetRadius;
+    property Length: Single read FLength write SetLength;
+  end;
+
+(* After loading call this function to add all the constraints in a
+   skeleton collider list to a given verlet world. *)
+procedure AddVerletConstriantsToVerletWorld
+  (Colliders: TGLSkeletonColliderList; World: TGLVerletWorld);
+
+function CreateVerletPlaneFromGLPlane(Plane: TGLPlane; VerletWorld: TGLVerletWorld;
+  Offset: Single): TGLVerletFloor;
 
 // ------------------------------------------------------------------
 implementation
 
 // ------------------------------------------------------------------
 
-function CreateVCPlaneFromGLPlane(Plane: TGLPlane; VerletWorld: TGLVerletWorld;
-  Offset: Single): TGLFloorVC;
+function CreateVerletPlaneFromGLPlane(Plane: TGLPlane; VerletWorld: TGLVerletWorld;
+  Offset: Single): TGLVerletFloor;
 begin
-  result := TGLFloorVC.Create(VerletWorld);
+  result := TGLVerletFloor.Create(VerletWorld);
   with result do
   begin
     Normal := VectorNormalize(Plane.Direction.AsAffineVector);
@@ -672,10 +771,10 @@ begin
 end;
 
 // ------------------
-// ------------------ TGLBaseNode ------------------
+// ------------------ TGLBaseVerletNode ------------------
 // ------------------
 
-constructor TGLBaseNode.CreateOwned(const aOwner: TGLVerletWorld);
+constructor TGLBaseVerletNode.CreateOwned(const aOwner: TGLVerletWorld);
 begin
   inherited CreateOwned(aOwner.SpacePartition);
   if Assigned(aOwner) then
@@ -687,7 +786,7 @@ begin
   FFriction := 1;
 end;
 
-destructor TGLBaseNode.Destroy;
+destructor TGLBaseVerletNode.Destroy;
 begin
   if Assigned(FOwner) then
     FOwner.RemoveNode(Self);
@@ -707,7 +806,7 @@ end;
   NormalForce := Weight * Acceleration;
   This force should be applied to stopping the movement.
 *)
-procedure TGLBaseNode.ApplyFriction(const friction, penetrationDepth: Single;
+procedure TGLBaseVerletNode.ApplyFriction(const friction, penetrationDepth: Single;
   const surfaceNormal: TAffineVector);
 var
   frictionMove, move, moveNormal: TAffineVector;
@@ -732,7 +831,7 @@ begin
   end;
 end;
 
-procedure TGLBaseNode.OldApplyFriction(const friction, penetrationDepth
+procedure TGLBaseVerletNode.OldApplyFriction(const friction, penetrationDepth
   : Single);
 var
   frictionMove, move: TAffineVector;
@@ -745,22 +844,22 @@ begin
   VectorAdd(OldLocation, frictionMove, FOldLocation);
 end;
 
-function TGLBaseNode.DistanceToNode(const node: TGLBaseNode): Single;
+function TGLBaseVerletNode.DistanceToNode(const node: TGLBaseVerletNode): Single;
 begin
   result := VectorDistance(Location, node.Location);
 end;
 
-function TGLBaseNode.GetMovement: TAffineVector;
+function TGLBaseVerletNode.GetMovement: TAffineVector;
 begin
   result := VectorSubtract(Location, OldLocation);
 end;
 
-procedure TGLBaseNode.Initialize;
+procedure TGLBaseVerletNode.Initialize;
 begin
   FOldLocation := Location;
 end;
 
-procedure TGLBaseNode.SetWeight(const Value: Single);
+procedure TGLBaseVerletNode.SetWeight(const Value: Single);
 begin
   FWeight := Value;
   if Value <> 0 then
@@ -769,7 +868,7 @@ begin
     FInvWeight := 1;
 end;
 
-procedure TGLBaseNode.Verlet(const vpt: TGLProgressTimes);
+procedure TGLBaseVerletNode.Verlet(const vpt: TGLProgressTimes);
 var
   newLocation, temp, move, accel: TAffineVector;
 begin
@@ -801,7 +900,7 @@ begin
   end;
 end;
 
-procedure TGLBaseNode.AfterProgress;
+procedure TGLBaseVerletNode.AfterProgress;
 begin
   // nothing here, reserved for subclass use
 end;
@@ -809,17 +908,17 @@ end;
 // ------------------
 // ------------------ TGLVerletNodeList ------------------
 // ------------------
-function TGLVerletNodeList.GetItems(i: Integer): TGLBaseNode;
+function TGLVerletNodeList.GetItems(i: Integer): TGLBaseVerletNode;
 begin
   result := Get(i);
 end;
 
-procedure TGLVerletNodeList.SetItems(i: Integer; const Value: TGLBaseNode);
+procedure TGLVerletNodeList.SetItems(i: Integer; const Value: TGLBaseVerletNode);
 begin
   Put(i, Value);
 end;
 
-function TGLBaseNode.GetSpeed: TAffineVector;
+function TGLBaseVerletNode.GetSpeed: TAffineVector;
 begin
   result := VectorScale(VectorSubtract(FLocation, FOldLocation),
     1 / Owner.CurrentDeltaTime);
@@ -851,7 +950,7 @@ end;
 // ------------------
 // ------------------ TGLVerletDualConstraint ------------------
 // ------------------
-procedure TGLVerletDualConstraint.RemoveNode(const aNode: TGLBaseNode);
+procedure TGLVerletDualConstraint.RemoveNode(const aNode: TGLBaseVerletNode);
 begin
   if FNodeA = aNode then
     FNodeA := nil;
@@ -876,7 +975,7 @@ begin
   inherited;
 end;
 
-procedure TGLVerletGroupConstraint.RemoveNode(const aNode: TGLBaseNode);
+procedure TGLVerletGroupConstraint.RemoveNode(const aNode: TGLBaseVerletNode);
 begin
   FNodes.Remove(aNode);
 end;
@@ -912,7 +1011,7 @@ begin
   FKickbackTorque := NullVector;
 end;
 
-procedure TGLVerletGlobalConstraint.RemoveNode(const aNode: TGLBaseNode);
+procedure TGLVerletGlobalConstraint.RemoveNode(const aNode: TGLBaseVerletNode);
 begin
   // nothing to do here
 end;
@@ -926,12 +1025,12 @@ procedure TGLVerletGlobalConstraint.SatisfyConstraint(const iteration,
   maxIterations: Integer);
 var
   i: Integer;
-  node: TGLBaseNode;
+  node: TGLBaseVerletNode;
 begin
   if cctNode in Owner.CollisionConstraintTypes then
     for i := 0 to Owner.Nodes.Count - 1 do
     begin
-      node := TGLBaseNode(Owner.Nodes[i]);
+      node := TGLBaseVerletNode(Owner.Nodes[i]);
       if not node.NailedDown then
         SatisfyConstraintForNode(node, iteration, maxIterations);
     end; // }
@@ -966,7 +1065,7 @@ procedure TGLVerletGlobalFrictionConstraintSP.SatisfyConstraint(const iteration,
   maxIterations: Integer);
 var
   i: Integer;
-  node: TGLBaseNode;
+  node: TGLBaseVerletNode;
   edge: TGLVerletEdge;
   SP: TBaseSpacePartition;
   Leaf: TSpacePartitionLeaf;
@@ -982,11 +1081,11 @@ begin
   for i := 0 to SP.QueryResult.Count - 1 do
   begin
     Leaf := SP.QueryResult[i];
-    if Leaf is TGLBaseNode then
+    if Leaf is TGLBaseVerletNode then
     begin
       if cctNode in Owner.CollisionConstraintTypes then
       begin
-        node := Leaf as TGLBaseNode;
+        node := Leaf as TGLBaseVerletNode;
         if not node.NailedDown then
           SatisfyConstraintForNode(node, iteration, maxIterations);
       end;
@@ -1005,14 +1104,14 @@ begin
 end;
 
 // ------------------
-// ------------------ TVerletConstraintList ------------------
+// ------------------ TGLVerletConstraintList ------------------
 // ------------------
-function TVerletConstraintList.GetItems(i: Integer): TGLVerletConstraint;
+function TGLVerletConstraintList.GetItems(i: Integer): TGLVerletConstraint;
 begin
   result := Get(i);
 end;
 
-procedure TVerletConstraintList.SetItems(i: Integer;
+procedure TGLVerletConstraintList.SetItems(i: Integer;
   const Value: TGLVerletConstraint);
 begin
   Put(i, Value);
@@ -1050,7 +1149,7 @@ begin
   inherited;
 end;
 
-procedure TGLVerletGroupForce.RemoveNode(const aNode: TGLBaseNode);
+procedure TGLVerletGroupForce.RemoveNode(const aNode: TGLBaseVerletNode);
 begin
   FNodes.Remove(aNode);
 end;
@@ -1058,7 +1157,7 @@ end;
 // ------------------
 // ------------------ TGLVerletGlobalForce ------------------
 // ------------------
-procedure TGLVerletGlobalForce.RemoveNode(const aNode: TGLBaseNode);
+procedure TGLVerletGlobalForce.RemoveNode(const aNode: TGLBaseVerletNode);
 begin
   // nothing to do here
 end;
@@ -1066,11 +1165,11 @@ end;
 procedure TGLVerletGlobalForce.AddForce;
 var
   i: Integer;
-  node: TGLBaseNode;
+  node: TGLBaseVerletNode;
 begin
   for i := 0 to Owner.Nodes.Count - 1 do
   begin
-    node := TGLBaseNode(Owner.Nodes.List[i]);
+    node := TGLBaseVerletNode(Owner.Nodes.List[i]);
     if not node.NailedDown then
       AddForceToNode(node);
   end;
@@ -1079,7 +1178,7 @@ end;
 // ------------------
 // ------------------ TGLVerletDualForce ------------------
 // ------------------
-procedure TGLVerletDualForce.RemoveNode(const aNode: TGLBaseNode);
+procedure TGLVerletDualForce.RemoveNode(const aNode: TGLBaseVerletNode);
 begin
   if FNodeA = aNode then
     FNodeA := nil;
@@ -1108,8 +1207,8 @@ begin
   inherited;
   FDrag := G_DRAG;
   FNodes := TGLVerletNodeList.Create;
-  FConstraints := TVerletConstraintList.Create;
-  FConstraintsWithBeforeIterations := TVerletConstraintList.Create;
+  FConstraints := TGLVerletConstraintList.Create;
+  FConstraintsWithBeforeIterations := TGLVerletConstraintList.Create;
   FForces := TGLVerletForceList.Create;
   FMaxDeltaTime := 0.02;
   FIterations := 3;
@@ -1118,7 +1217,7 @@ begin
   FUpdateSpacePartion := uspNever;
   FCollisionConstraintTypes := [cctNode, cctEdge];
   FSpacePartition := nil;
-  FVerletNodeClass := TGLBaseNode;
+  FVerletNodeClass := TGLBaseVerletNode;
   FInertia := True;
 end;
 
@@ -1170,7 +1269,7 @@ begin
     FForces[i].AddForce(vpt);
 end;
 
-function TGLVerletWorld.AddNode(const aNode: TGLBaseNode): Integer;
+function TGLVerletWorld.AddNode(const aNode: TGLBaseVerletNode): Integer;
 begin
   if Assigned(aNode.FOwner) then
     aNode.Owner.FNodes.Remove(aNode);
@@ -1178,7 +1277,7 @@ begin
   aNode.FOwner := Self;
 end;
 
-procedure TGLVerletWorld.RemoveNode(const aNode: TGLBaseNode);
+procedure TGLVerletWorld.RemoveNode(const aNode: TGLBaseVerletNode);
 var
   i: Integer;
 begin
@@ -1231,7 +1330,7 @@ begin
   end;
 end;
 
-procedure TGLVerletWorld.AddSolidEdge(const aNodeA, aNodeB: TGLBaseNode);
+procedure TGLVerletWorld.AddSolidEdge(const aNodeA, aNodeB: TGLBaseVerletNode);
 var
   VerletEdge: TGLVerletEdge;
 begin
@@ -1239,20 +1338,20 @@ begin
   SolidEdges.Add(VerletEdge);
 end;
 
-function TGLVerletWorld.FirstNode: TGLBaseNode;
+function TGLVerletWorld.FirstNode: TGLBaseVerletNode;
 begin
   Assert(FNodes.Count > 0, 'There are no nodes in the assembly!');
   result := FNodes[0];
 end;
 
-function TGLVerletWorld.LastNode: TGLBaseNode;
+function TGLVerletWorld.LastNode: TGLBaseVerletNode;
 begin
   Assert(FNodes.Count > 0, 'There are no nodes in the assembly!');
   result := FNodes[FNodes.Count - 1];
 end;
 
 function TGLVerletWorld.CreateOwnedNode(const Location: TAffineVector;
-  const aRadius: Single = 0; const aWeight: Single = 1): TGLBaseNode;
+  const aRadius: Single = 0; const aWeight: Single = 1): TGLBaseVerletNode;
 begin
   result := VerletNodeClass.CreateOwned(Self);
   result.Location := Location;
@@ -1261,21 +1360,21 @@ begin
   result.Radius := aRadius;
 end;
 
-function TGLVerletWorld.CreateStick(const aNodeA, aNodeB: TGLBaseNode;
-  const Slack: Single = 0): TGLStickVC;
+function TGLVerletWorld.CreateStick(const aNodeA, aNodeB: TGLBaseVerletNode;
+  const Slack: Single = 0): TGLVerletStick;
 begin
   Assert(aNodeA <> aNodeB, 'Can''t create stick between same node!');
-  result := TGLStickVC.Create(Self);
+  result := TGLVerletStick.Create(Self);
   result.NodeA := aNodeA;
   result.NodeB := aNodeB;
   result.SetRestLengthToCurrent;
   result.Slack := Slack;
 end;
 
-function TGLVerletWorld.CreateSpring(const aNodeA, aNodeB: TGLBaseNode;
-  const aStrength, aDamping: Single; const aSlack: Single = 0): TGLSpringVF;
+function TGLVerletWorld.CreateSpring(const aNodeA, aNodeB: TGLBaseVerletNode;
+  const aStrength, aDamping: Single; const aSlack: Single = 0): TGLVerletSpring;
 begin
-  result := TGLSpringVF.Create(Self);
+  result := TGLVerletSpring.Create(Self);
   result.NodeA := aNodeA;
   result.NodeB := aNodeB;
   result.Strength := aStrength;
@@ -1284,10 +1383,10 @@ begin
   result.SetRestLengthToCurrent;
 end;
 
-function TGLVerletWorld.CreateSlider(const aNodeA, aNodeB: TGLBaseNode;
-  const aSlideDirection: TAffineVector): TGLSliderVC;
+function TGLVerletWorld.CreateSlider(const aNodeA, aNodeB: TGLBaseVerletNode;
+  const aSlideDirection: TAffineVector): TGLVerletSlider;
 begin
-  result := TGLSliderVC.Create(Self);
+  result := TGLVerletSlider.Create(Self);
   result.NodeA := aNodeA;
   result.NodeB := aNodeB;
   result.SlideDirection := aSlideDirection;
@@ -1398,9 +1497,9 @@ begin
 end;
 
 // ------------------
-// ------------------ TGLGravityVF ------------------
+// ------------------ TGLVerletGravity ------------------
 // ------------------
-constructor TGLGravityVF.Create(const aOwner: TGLVerletWorld);
+constructor TGLVerletGravity.Create(const aOwner: TGLVerletWorld);
 begin
   inherited;
   FGravity.X := 0;
@@ -1408,15 +1507,15 @@ begin
   FGravity.Z := 0;
 end;
 
-procedure TGLGravityVF.AddForceToNode(const aNode: TGLBaseNode);
+procedure TGLVerletGravity.AddForceToNode(const aNode: TGLBaseVerletNode);
 begin
   CombineVector(aNode.FForce, Gravity, @aNode.Weight);
 end;
 
 // ------------------
-// TGLSpringVF
+// TGLVerletSpring
 // ------------------
-procedure TGLSpringVF.SetSlack(const Value: Single);
+procedure TGLVerletSpring.SetSlack(const Value: Single);
 begin
   if Value <= 0 then
     FSlack := 0
@@ -1424,7 +1523,7 @@ begin
     FSlack := Value;
 end;
 
-procedure TGLSpringVF.AddForce;
+procedure TGLVerletSpring.AddForce;
 var
   hTerm, dTerm: Single;
   deltaV, Force: TAffineVector;
@@ -1449,16 +1548,16 @@ begin
   SubtractVector(NodeB.FForce, Force);
 end;
 
-procedure TGLSpringVF.SetRestLengthToCurrent;
+procedure TGLVerletSpring.SetRestLengthToCurrent;
 begin
   FRestLength := VectorDistance(NodeA.Location, NodeB.Location);
   FForceFactor := FStrength / FRestLength;
 end;
 
 // ------------------
-// ------------------ TGLAirResistanceVF ------------------
+// ------------------ TGLVerletAirResistance ------------------
 // ------------------
-procedure TGLAirResistanceVF.AddForceToNode(const aNode: TGLBaseNode);
+procedure TGLVerletAirResistance.AddForceToNode(const aNode: TGLBaseVerletNode);
 var
   s, F, FCurrentWindBurst: TAffineVector;
   sMag: Single;
@@ -1488,7 +1587,7 @@ begin
   end;
 end;
 
-constructor TGLAirResistanceVF.Create(const aOwner: TGLVerletWorld);
+constructor TGLVerletAirResistance.Create(const aOwner: TGLVerletWorld);
 begin
   inherited;
   FDragCoeff := 0.001;
@@ -1499,27 +1598,27 @@ begin
   FWindChaos := 0;
 end;
 
-procedure TGLAirResistanceVF.SetWindDirection(const Value: TAffineVector);
+procedure TGLVerletAirResistance.SetWindDirection(const Value: TAffineVector);
 begin
   FWindDirection := VectorNormalize(Value);
 end;
 
 // ------------------
-// ------------------ TGLFloorVC ------------------
+// ------------------ TGLVerletFloor ------------------
 // ------------------
-constructor TGLFloorVC.Create(const aOwner: TGLVerletWorld);
+constructor TGLVerletFloor.Create(const aOwner: TGLVerletWorld);
 begin
   inherited;
   MakeVector(FNormal, 0, 1, 0);
   MakeVector(FLocation, 0, 0, 0);
 end;
 
-procedure TGLFloorVC.PerformSpaceQuery;
+procedure TGLVerletFloor.PerformSpaceQuery;
 begin
   Owner.SpacePartition.QueryPlane(FLocation, FNormal);
 end;
 
-procedure TGLFloorVC.SatisfyConstraintForNode(const aNode: TGLBaseNode;
+procedure TGLVerletFloor.SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
   const iteration, maxIterations: Integer);
 var
   penetrationDepth: Single;
@@ -1554,16 +1653,16 @@ begin
   end;
 end;
 
-procedure TGLFloorVC.SetNormal(const Value: TAffineVector);
+procedure TGLVerletFloor.SetNormal(const Value: TAffineVector);
 begin
   FNormal := Value;
   NormalizeVector(FNormal);
 end;
 
 // ------------------
-// TVCHeightField
+// TGLVerletHeightField
 // ------------------
-procedure TVCHeightField.SatisfyConstraintForNode(const aNode: TGLBaseNode;
+procedure TGLVerletHeightField.SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
   const iteration, maxIterations: Integer);
 var
   penetrationDepth: Single;
@@ -1603,9 +1702,9 @@ begin
 end;
 
 // ------------------
-// TGLStickVC
+// TGLVerletStick
 // ------------------
-procedure TGLStickVC.SatisfyConstraint(const iteration, maxIterations: Integer);
+procedure TGLVerletStick.SatisfyConstraint(const iteration, maxIterations: Integer);
 var
   delta: TAffineVector;
   F, r: Single;
@@ -1648,15 +1747,15 @@ begin
   end;
 end;
 
-procedure TGLStickVC.SetRestLengthToCurrent;
+procedure TGLVerletStick.SetRestLengthToCurrent;
 begin
   FRestLength := VectorDistance(NodeA.Location, NodeB.Location);
 end;
 
 // ------------------
-// TGLRigidBodyVC
+// TGLVerletRigidBody
 // ------------------
-procedure TGLRigidBodyVC.ComputeBarycenter(var barycenter: TAffineVector);
+procedure TGLVerletRigidBody.ComputeBarycenter(var barycenter: TAffineVector);
 var
   i: Integer;
   totWeight: Single;
@@ -1674,7 +1773,7 @@ begin
     ScaleVector(barycenter, 1 / totWeight);
 end;
 
-procedure TGLRigidBodyVC.ComputeNaturals(const barycenter: TAffineVector;
+procedure TGLVerletRigidBody.ComputeNaturals(const barycenter: TAffineVector;
   var natX, natY, natZ: TAffineVector);
 var
   i: Integer;
@@ -1692,7 +1791,7 @@ begin
   end;
 end;
 
-procedure TGLRigidBodyVC.ComputeRigidityParameters;
+procedure TGLVerletRigidBody.ComputeRigidityParameters;
 var
   i: Integer;
   barycenter: TAffineVector;
@@ -1722,7 +1821,7 @@ begin
   InvertMatrix(FInvNatMatrix);
 end;
 
-procedure TGLRigidBodyVC.SatisfyConstraint(const iteration,
+procedure TGLVerletRigidBody.SatisfyConstraint(const iteration,
   maxIterations: Integer);
 var
   i: Integer;
@@ -1791,14 +1890,14 @@ begin
 end;
 
 // ------------------
-// TGLSliderVC
+// TGLVerletSlider
 // ------------------
-procedure TGLSliderVC.SetSlideDirection(const Value: TAffineVector);
+procedure TGLVerletSlider.SetSlideDirection(const Value: TAffineVector);
 begin
   FSlideDirection := VectorNormalize(Value);
 end;
 
-procedure TGLSliderVC.SatisfyConstraint(const iteration, maxIterations: Integer);
+procedure TGLVerletSlider.SatisfyConstraint(const iteration, maxIterations: Integer);
 var
   delta: TAffineVector;
   F, r: Single;
@@ -1831,15 +1930,15 @@ begin
 end;
 
 // ------------------
-// ------------------ TVCSphere ------------------
+// ------------------ TGLVerletFricSphere ------------------
 // ------------------
-function TVCSphere.GetBSphere: TBSphere;
+function TGLVerletFricSphere.GetBSphere: TBSphere;
 begin
   result.Center := FLocation;
   result.Radius := FRadius;
 end;
 
-procedure TVCSphere.SatisfyConstraintForEdge(const aEdge: TGLVerletEdge;
+procedure TGLVerletFricSphere.SatisfyConstraintForEdge(const aEdge: TGLVerletEdge;
   const iteration, maxIterations: Integer);
 var
   closestPoint, move, delta, contactNormal: TAffineVector;
@@ -1881,7 +1980,7 @@ begin
   end;
 end;
 
-procedure TVCSphere.SatisfyConstraintForNode(const aNode: TGLBaseNode;
+procedure TGLVerletFricSphere.SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
   const iteration, maxIterations: Integer);
 var
   delta, move, contactNormal: TAffineVector;
@@ -1920,15 +2019,15 @@ begin
 end;
 
 // ------------------
-// ------------------ TVCCylinder ------------------
+// ------------------ TGLVerletFricCylinder ------------------
 // ------------------
-procedure TVCCylinder.SetRadius(const val: Single);
+procedure TGLVerletFricCylinder.SetRadius(const val: Single);
 begin
   FRadius := val;
   FRadius2 := Sqr(val);
 end;
 
-procedure TVCCylinder.SatisfyConstraintForNode(const aNode: TGLBaseNode;
+procedure TGLVerletFricCylinder.SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
   const iteration, maxIterations: Integer);
 var
   Proj, newLocation, move: TAffineVector;
@@ -1953,16 +2052,16 @@ begin
 end;
 
 // ------------------
-// ------------------ TVCCube ------------------
+// ------------------ TGLVerletFricCube ------------------
 // ------------------
-function TVCCube.GetAABB: TAABB;
+function TGLVerletFricCube.GetAABB: TAABB;
 begin
   VectorAdd(FLocation, FHalfSides, result.max);
   VectorSubtract(FLocation, FHalfSides, result.min);
 end;
 
 // BROKEN AND VERY SLOW!
-procedure TVCCube.SatisfyConstraintForEdge(const aEdge: TGLVerletEdge;
+procedure TGLVerletFricCube.SatisfyConstraintForEdge(const aEdge: TGLVerletEdge;
   const iteration, maxIterations: Integer);
 var
   Corners: array [0 .. 7] of TAffineVector;
@@ -2073,7 +2172,7 @@ begin
   end;
 end;
 
-procedure TVCCube.SatisfyConstraintForNode(const aNode: TGLBaseNode;
+procedure TGLVerletFricCube.SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
   const iteration, maxIterations: Integer);
 var
   p, absP, contactNormal: TAffineVector;
@@ -2118,7 +2217,7 @@ begin
   aNode.FChangedOnStep := Owner.CurrentStepCount;
 end;
 
-procedure TVCCube.SetSides(const Value: TAffineVector);
+procedure TGLVerletFricCube.SetSides(const Value: TAffineVector);
 begin
   FSides := Value;
   FHalfSides := VectorScale(Sides, 0.5);
@@ -2126,36 +2225,36 @@ begin
 end;
 
 // ------------------
-// ------------------ TVCCapsule ------------------
+// ------------------ TGLVerletFricCapsule ------------------
 // ------------------
 
-procedure TVCCapsule.SetAxis(const val: TAffineVector);
+procedure TGLVerletFricCapsule.SetAxis(const val: TAffineVector);
 begin
   FAxis := VectorNormalize(val);
   UpdateCachedBSphere;
 end;
 
-procedure TVCCapsule.SetLength(const val: Single);
+procedure TGLVerletFricCapsule.SetLength(const val: Single);
 begin
   FLength := val;
   FLengthDiv2 := val * 0.5;
   UpdateCachedBSphere;
 end;
 
-procedure TVCCapsule.SetRadius(const val: Single);
+procedure TGLVerletFricCapsule.SetRadius(const val: Single);
 begin
   FRadius := val;
   FRadius2 := Sqr(val);
   UpdateCachedBSphere;
 end;
 
-function TVCCapsule.GetBSphere: TBSphere;
+function TGLVerletFricCapsule.GetBSphere: TBSphere;
 begin
   result.Center := FLocation;
   result.Radius := Length + Radius;
 end;
 
-procedure TVCCapsule.SatisfyConstraintForNode(const aNode: TGLBaseNode;
+procedure TGLVerletFricCapsule.SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
   const iteration, maxIterations: Integer);
 var
   p, n2, penetrationDepth: Single;
@@ -2187,7 +2286,7 @@ begin
   end;
 end;
 
-procedure TVCCapsule.SatisfyConstraintForEdge(const aEdge: TGLVerletEdge;
+procedure TGLVerletFricCapsule.SatisfyConstraintForEdge(const aEdge: TGLVerletEdge;
   const iteration, maxIterations: Integer);
 var
   SphereLocation, closestPoint, Dummy, delta, move, contactNormal
@@ -2230,7 +2329,7 @@ end;
 // ------------------
 // ------------------ TGLVerletEdge ------------------
 // ------------------
-constructor TGLVerletEdge.CreateEdgeOwned(const aNodeA, aNodeB: TGLBaseNode);
+constructor TGLVerletEdge.CreateEdgeOwned(const aNodeA, aNodeB: TGLBaseVerletNode);
 begin
   FNodeA := aNodeA;
   FNodeB := aNodeB;
@@ -2258,7 +2357,7 @@ begin
   Put(i, Value);
 end;
 
-procedure TGLBaseNode.UpdateCachedAABBAndBSphere;
+procedure TGLBaseVerletNode.UpdateCachedAABBAndBSphere;
 begin
   FCachedAABB.min := FLocation;
   FCachedAABB.max := FLocation;
@@ -2266,7 +2365,7 @@ begin
   FCachedBSphere.Radius := 0;
 end;
 
-procedure TGLBaseNode.SetLocation(const Value: TAffineVector);
+procedure TGLBaseVerletNode.SetLocation(const Value: TAffineVector);
 begin
   FLocation := Value;
   FChangedOnStep := Owner.CurrentStepCount;
@@ -2350,5 +2449,332 @@ begin
     Owner.ConstraintsWithBeforeIterations.Remove(Self);
   inherited;
 end;
+
+//-----------------------------
+// TGLVerletHair
+//-----------------------------
+procedure TGLVerletHair.AddStickStiffness(const ANodeSkip: integer);
+var
+  i: integer;
+begin
+  for i := 0 to NodeList.Count - (1 + ANodeSkip * 2) do
+    FStiffnessList.Add(VerletWorld.CreateStick(NodeList[i],
+      NodeList[i + 2 * ANodeSkip]));
+end;
+
+procedure TGLVerletHair.BuildHair(const AAnchorPosition, AHairDirection
+  : TAffineVector);
+var
+  i: integer;
+  Position: TAffineVector;
+  Node, PrevNode: TGLBaseVerletNode;
+  Direction: TAffineVector;
+begin
+  Clear;
+  Direction := VectorNormalize(AHairDirection);
+  // Fix the root of the hair
+  Position := VectorAdd(AAnchorPosition, VectorScale(Direction, -FRootDepth));
+  Node := VerletWorld.CreateOwnedNode(Position);
+  NodeList.Add(Node);
+  Node.NailedDown := true;
+  PrevNode := Node;
+  // Now add the links in the hair
+  for i := 0 to FLinkCount - 1 do
+  begin
+    Position := VectorAdd(AAnchorPosition, VectorScale(Direction,
+      HairLength * (i / LinkCount)));
+    Node := VerletWorld.CreateOwnedNode(Position);
+    NodeList.Add(Node);
+    // first one is the anchor
+    if i = 0 then
+      Node.NailedDown := true
+    else
+      // Creates the hair link
+      VerletWorld.CreateStick(PrevNode, Node);
+    PrevNode := Node;
+  end;
+  // Now we must stiffen the hair with either sticks or springs
+  BuildStiffness;
+end;
+
+procedure TGLVerletHair.BuildStiffness;
+var
+  i: integer;
+begin
+  ClearStiffness;
+  if vhsFull in FStiffness then
+  begin
+    for i := 1 to 100 do
+      AddStickStiffness(i);
+    exit;
+  end;
+  if vhsSkip1Node in FStiffness then
+    AddStickStiffness(1);
+  if vhsSkip2Node in FStiffness then
+    AddStickStiffness(2);
+  if vhsSkip3Node in FStiffness then
+    AddStickStiffness(3);
+  if vhsSkip4Node in FStiffness then
+    AddStickStiffness(4);
+  if vhsSkip5Node in FStiffness then
+    AddStickStiffness(5);
+  if vhsSkip6Node in FStiffness then
+    AddStickStiffness(6);
+  if vhsSkip7Node in FStiffness then
+    AddStickStiffness(7);
+  if vhsSkip8Node in FStiffness then
+    AddStickStiffness(8);
+  if vhsSkip9Node in FStiffness then
+    AddStickStiffness(9);
+end;
+
+procedure TGLVerletHair.Clear;
+var
+  i: integer;
+begin
+  ClearStiffness;
+  for i := FNodeList.Count - 1 downto 0 do
+    FNodeList[i].Free;
+  FNodeList.Clear;
+  FStiffnessList.Clear;
+end;
+
+procedure TGLVerletHair.ClearStiffness;
+var
+  i: integer;
+begin
+  for i := 0 to FStiffnessList.Count - 1 do
+    TGLVerletConstraint(FStiffnessList[i]).Free;
+  FStiffnessList.Clear;
+end;
+
+constructor TGLVerletHair.Create(const AVerletWorld: TGLVerletWorld;
+  const ARootDepth, AHairLength: single; ALinkCount: integer;
+  const AAnchorPosition, AHairDirection: TAffineVector;
+  const AStiffness: TGLStiffnessSetVH);
+begin
+  FVerletWorld := AVerletWorld;
+  FRootDepth := ARootDepth;
+  FLinkCount := ALinkCount;
+  FHairLength := AHairLength;
+
+  FNodeList := TGLVerletNodeList.Create;
+  FStiffness := AStiffness;
+  FStiffnessList := TList.Create;
+
+  BuildHair(AAnchorPosition, AHairDirection);
+end;
+
+destructor TGLVerletHair.Destroy;
+begin
+  Clear;
+  FreeAndNil(FNodeList);
+  FreeAndNil(FStiffnessList);
+  inherited;
+end;
+
+function TGLVerletHair.GetAnchor: TGLBaseVerletNode;
+begin
+  result := NodeList[1];
+end;
+
+function TGLVerletHair.GetLinkLength: single;
+begin
+  if LinkCount > 0 then
+    result := HairLength / LinkCount
+  else
+    result := 0;
+end;
+
+function TGLVerletHair.GetRoot: TGLBaseVerletNode;
+begin
+  result := NodeList[0];
+end;
+
+procedure TGLVerletHair.SetStiffness(const Value: TGLStiffnessSetVH);
+begin
+  FStiffness := Value;
+  BuildStiffness;
+end;
+
+// ------------------
+// ------------------ Global methods ------------------
+// ------------------
+
+procedure AddVerletConstriantsToVerletWorld
+  (Colliders: TGLSkeletonColliderList; World: TGLVerletWorld);
+var
+  i: Integer;
+begin
+  for i := 0 to Colliders.Count - 1 do
+    if Colliders[i] is TGLVerletSkeletonCollider then
+      TGLVerletSkeletonCollider(Colliders[i]).AddToVerletWorld(World);
+end;
+
+// ------------------
+// ------------------ TGLVerletSkeletonCollider ------------------
+// ------------------
+procedure TGLVerletSkeletonCollider.WriteToFiler(Writer: TVirtualWriter);
+begin
+  inherited WriteToFiler(Writer);
+  Writer.WriteInteger(0); // Archive Version 0
+end;
+
+procedure TGLVerletSkeletonCollider.ReadFromFiler(Reader: TVirtualReader);
+var
+  archiveVersion: Integer;
+begin
+  inherited ReadFromFiler(Reader);
+  archiveVersion := Reader.ReadInteger;
+  if archiveVersion = 0 then
+    with Reader do
+      // Nothing yet
+    else
+      RaiseFilerException(archiveVersion);
+end;
+
+procedure TGLVerletSkeletonCollider.AddToVerletWorld
+  (VerletWorld: TGLVerletWorld);
+begin
+  AlignCollider;
+end;
+
+// ------------------
+// ------------------ TGLVerletSphere ------------------
+// ------------------
+constructor TGLVerletSphere.Create;
+begin
+  inherited;
+  Radius := 0.5;
+  AlignCollider;
+end;
+
+procedure TGLVerletSphere.WriteToFiler(Writer: TVirtualWriter);
+begin
+  inherited WriteToFiler(Writer);
+  Writer.WriteInteger(0); // Archive Version 0
+  Writer.WriteFloat(FRadius);
+end;
+
+procedure TGLVerletSphere.ReadFromFiler(Reader: TVirtualReader);
+var
+  archiveVersion: Integer;
+begin
+  inherited ReadFromFiler(Reader);
+  archiveVersion := Reader.ReadInteger;
+  if archiveVersion = 0 then
+    with Reader do
+      Radius := ReadFloat
+  else
+    RaiseFilerException(archiveVersion);
+end;
+
+procedure TGLVerletSphere.AddToVerletWorld(VerletWorld: TGLVerletWorld);
+begin
+  FVerletConstraint := TGLVerletFricSphere.Create(VerletWorld);
+  TGLVerletFricSphere(FVerletConstraint).Radius := FRadius;
+  inherited;
+end;
+
+procedure TGLVerletSphere.AlignCollider;
+begin
+  inherited;
+  if Assigned(FVerletConstraint) then
+    TGLVerletFricSphere(FVerletConstraint).Location :=
+      AffineVectorMake(GlobalMatrix.W);
+end;
+
+procedure TGLVerletSphere.SetRadius(const Val: Single);
+begin
+  if Val <> FRadius then
+  begin
+    FRadius := Val;
+    if Assigned(FVerletConstraint) then
+      TGLVerletFricSphere(FVerletConstraint).Radius := FRadius;
+  end;
+end;
+
+// ------------------
+// ------------------ TGLVerletCapsule ------------------
+// ------------------
+constructor TGLVerletCapsule.Create;
+begin
+  inherited;
+  Radius := 0.5;
+  Length := 1;
+  AlignCollider;
+end;
+
+procedure TGLVerletCapsule.WriteToFiler(Writer: TVirtualWriter);
+begin
+  inherited WriteToFiler(Writer);
+  Writer.WriteInteger(0); // Archive Version 0
+  Writer.WriteFloat(FRadius);
+  Writer.WriteFloat(FLength);
+end;
+
+procedure TGLVerletCapsule.ReadFromFiler(Reader: TVirtualReader);
+var
+  archiveVersion: Integer;
+begin
+  inherited ReadFromFiler(Reader);
+  archiveVersion := Reader.ReadInteger;
+  if archiveVersion = 0 then
+    with Reader do
+    begin
+      Radius := ReadFloat;
+      Length := ReadFloat;
+    end
+  else
+    RaiseFilerException(archiveVersion);
+end;
+
+procedure TGLVerletCapsule.AddToVerletWorld(VerletWorld: TGLVerletWorld);
+begin
+  FVerletConstraint := TGLVerletFricCapsule.Create(VerletWorld);
+  TGLVerletFricCapsule(FVerletConstraint).Radius := FRadius;
+  TGLVerletFricCapsule(FVerletConstraint).Length := FLength;
+  inherited;
+end;
+
+procedure TGLVerletCapsule.AlignCollider;
+begin
+  inherited;
+  if Assigned(FVerletConstraint) then
+  begin
+    TGLVerletFricCapsule(FVerletConstraint).Location :=
+      AffineVectorMake(GlobalMatrix.W);
+    TGLVerletFricCapsule(FVerletConstraint).Axis :=
+      AffineVectorMake(GlobalMatrix.Y);
+  end;
+end;
+
+procedure TGLVerletCapsule.SetRadius(const Val: Single);
+begin
+  if Val <> FRadius then
+  begin
+    FRadius := Val;
+    if Assigned(FVerletConstraint) then
+      TGLVerletFricCapsule(FVerletConstraint).Radius := FRadius;
+  end;
+end;
+
+procedure TGLVerletCapsule.SetLength(const Val: Single);
+begin
+  if Val <> FLength then
+  begin
+    FLength := Val;
+    if Assigned(FVerletConstraint) then
+      TGLVerletFricCapsule(FVerletConstraint).Length := FLength;
+  end;
+end;
+
+// ------------------------------------------------------------------
+initialization
+// ------------------------------------------------------------------
+
+RegisterClasses([TGLVerletSkeletonCollider, TGLVerletSphere,
+  TGLVerletCapsule]);
+
 
 end.

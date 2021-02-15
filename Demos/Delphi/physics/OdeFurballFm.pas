@@ -29,7 +29,6 @@ uses
   GLS.ShadowPlane,
   GLS.Navigator,
   GLS.VerletTypes,
-  GLS.VerletHairClasses,
   GLS.Keyboard,
   GLS.Color,
  
@@ -92,10 +91,10 @@ type
     contactgroup : TdJointGroupID;
     VerletWorld : TGLVerletWorld;
     HairList : TList;
-    VCSphere : TVCSphere;
+    VCSphere : TGLVerletFricSphere;
     PhysicsTime : single;
-    Gravity : TVFGravity;
-    AirResistance : TVFAirResistance;
+    Gravity : TGLVerletGravity;
+    AirResistance : TGLVerletAirResistance;
     procedure CreateBall;
     procedure CreateFur;
   end;
@@ -175,11 +174,11 @@ begin
   CheckBox_FurGravityClick(Sender);
   CheckBox_WindResistenceClick(Sender);
 
-  CreateVCPlaneFromGLPlane(GLShadowPlane_Floor, VerletWorld, cOffset);
-  CreateVCPlaneFromGLPlane(GLShadowPlane_Floor2, VerletWorld, cOffset);
-  CreateVCPlaneFromGLPlane(GLShadowPlane_Wall, VerletWorld, cOffset);
-  CreateVCPlaneFromGLPlane(GLShadowPlane_Wall2, VerletWorld, cOffset);
-  CreateVCPlaneFromGLPlane(GLShadowPlane_Wall3, VerletWorld, cOffset);
+  CreateVerletPlaneFromGLPlane(GLShadowPlane_Floor, VerletWorld, cOffset);
+  CreateVerletPlaneFromGLPlane(GLShadowPlane_Floor2, VerletWorld, cOffset);
+  CreateVerletPlaneFromGLPlane(GLShadowPlane_Wall, VerletWorld, cOffset);
+  CreateVerletPlaneFromGLPlane(GLShadowPlane_Wall2, VerletWorld, cOffset);
+  CreateVerletPlaneFromGLPlane(GLShadowPlane_Wall3, VerletWorld, cOffset);
 
   HairList := TList.Create;
 
@@ -292,7 +291,7 @@ begin
 
   CopyPosFromGeomToGL(odeFurBallGeom, FurBall);
 
-  VCSphere := TVCSphere.Create(VerletWorld);
+  VCSphere := TGLVerletFricSphere.Create(VerletWorld);
   VCSphere.Radius := FurBall.Radius * 1.1;
   VCSphere.Location := AffineVectorMake(FurBall.AbsolutePosition);
 
@@ -371,7 +370,7 @@ begin
     FreeAndNil(Gravity)
   else
   begin
-    Gravity := TVFGravity.Create(VerletWorld);
+    Gravity := TGLVerletGravity.Create(VerletWorld);
     Gravity.Gravity := AffineVectorMake(0,0,-9.81);
   end;
 end;
@@ -382,7 +381,7 @@ begin
     FreeAndNil(AirResistance)
   else
   begin
-    AirResistance := TVFAirResistance.Create(VerletWorld);
+    AirResistance := TGLVerletAirResistance.Create(VerletWorld);
     AirResistance.DragCoeff := 0.01;
     AirResistance.WindDirection := AffineVectorMake(1,0,0);
     AirResistance.WindMagnitude := TrackBar_WindForce.Position/100 * cMaxWindMag;

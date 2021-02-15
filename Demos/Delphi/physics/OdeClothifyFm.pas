@@ -15,9 +15,6 @@ uses
   Vcl.StdCtrls,
   Vcl.ComCtrls,
 
-  Imports.ODE,
-  Physics.ODEUtils,
-
   GLS.Objects,
   GLS.Scene,
   GLS.PersistentClasses,
@@ -44,7 +41,10 @@ uses
   GLS.RenderContextInfo,
   GLS.State,
   GLS.Context,
-  GLS.BaseClasses;
+  GLS.BaseClasses,
+
+  Imports.ODE,
+  Physics.ODEUtils;
 
 type
   TFormClothify = class(TForm)
@@ -101,36 +101,37 @@ type
     Label1: TLabel;
     procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
       X, Y: Integer);
-    procedure GLCadencer1Progress(Sender: TObject; const deltaTime,
-      newTime: Double);
+    procedure GLCadencer1Progress(Sender: TObject;
+      const deltaTime, newTime: Double);
     procedure Timer1Timer(Sender: TObject);
     procedure Button_LoadMeshClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure TrackBar_SlackChange(Sender: TObject);
-    function GetSlack : single;
+    function GetSlack: single;
     procedure TrackBar_IterationsChange(Sender: TObject);
     procedure FormMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure TrackBar_FrictionChange(Sender: TObject);
-    procedure GLDirectOpenGL1Render(Sender: TObject; var rci: TGLRenderContextInfo);
+    procedure GLDirectOpenGL1Render(Sender: TObject;
+      var rci: TGLRenderContextInfo);
     procedure Button_OpenLoadFormClick(Sender: TObject);
     procedure Button_CancelLoadClick(Sender: TObject);
     procedure ComboBox_ShadowChange(Sender: TObject);
   private
   public
-    mx, my : integer;
-    VerletWorld : TGLVerletWorld;
-    EdgeDetector : TEdgeDetector;
-    world : PdxWorld;
-    space : PdxSpace;
+    mx, my: Integer;
+    VerletWorld: TGLVerletWorld;
+    EdgeDetector: TGLEdgeDetector;
+    world: PdxWorld;
+    space: PdxSpace;
     ODESphere: PdxGeom;
-    body : PdxBody;
-    contactgroup : TdJointGroupID;
-    VCSphere : TVCSphere;
+    body: PdxBody;
+    contactgroup: TdJointGroupID;
+    VCSphere: TGLVerletFricSphere;
   end;
 
-  procedure RecalcMeshNormals(BaseMesh : TGLBaseMesh);
-  procedure PrepareMeshForNormalsRecalc(BaseMesh : TGLBaseMesh);
+procedure RecalcMeshNormals(BaseMesh: TGLBaseMesh);
+procedure PrepareMeshForNormalsRecalc(BaseMesh: TGLBaseMesh);
 
 var
   FormClothify: TFormClothify;
@@ -142,9 +143,9 @@ implementation
 procedure TFormClothify.FormCreate(Sender: TObject);
 begin
   SetGLSceneMediaDir();
-  ComboBox_MeshName.ItemIndex:=0;
-  ComboBox_ConstraintType.ItemIndex:=0;
-  ComboBox_Collider.ItemIndex:=3;
+  ComboBox_MeshName.ItemIndex := 0;
+  ComboBox_ConstraintType.ItemIndex := 0;
+  ComboBox_Collider.ItemIndex := 3;
   ComboBox_ShadowChange(nil);
   Button_LoadMesh.Click;
   TrackBar_IterationsChange(nil);
@@ -153,106 +154,113 @@ end;
 
 procedure PrepareMeshForNormalsRecalc(BaseMesh: TGLBaseMesh);
 var
-   i, j, k : Integer;
-   mo : TMeshObject;
-   fg : TFGVertexNormalTexIndexList;
+  i, j, k: Integer;
+  mo: TMeshObject;
+  fg: TFGVertexNormalTexIndexList;
 begin
   // update normals
   // (not very efficient, could use some work...)
-  for i:=0 to BaseMesh.MeshObjects.Count-1 do begin
-     mo:=BaseMesh.MeshObjects[i];
+  for i := 0 to BaseMesh.MeshObjects.Count - 1 do
+  begin
+    mo := BaseMesh.MeshObjects[i];
 
-     for j:=0 to mo.FaceGroups.Count-1 do begin
-        if mo.FaceGroups[j] is TFGVertexNormalTexIndexList then begin
-           fg:=TFGVertexNormalTexIndexList(mo.FaceGroups[j]);
-           for k := 0 to fg.VertexIndices.Count-1 do begin
-              fg.NormalIndices.List[k] := fg.VertexIndices.List[k];
-           end;
+    for j := 0 to mo.FaceGroups.Count - 1 do
+    begin
+      if mo.FaceGroups[j] is TFGVertexNormalTexIndexList then
+      begin
+        fg := TFGVertexNormalTexIndexList(mo.FaceGroups[j]);
+        for k := 0 to fg.VertexIndices.Count - 1 do
+        begin
+          fg.NormalIndices.List[k] := fg.VertexIndices.List[k];
         end;
-     end;
+      end;
+    end;
   end;
   BaseMesh.StructureChanged;
 end;
 
 procedure RecalcMeshNormals(BaseMesh: TGLBaseMesh);
 var
-   i, j, k : Integer;
-   mo : TMeshObject;
-   fg : TFGVertexIndexList;
-   n : TAffineVector;
+  i, j, k: Integer;
+  mo: TMeshObject;
+  fg: TFGVertexIndexList;
+  n: TAffineVector;
 begin
   // update normals
   // (not very efficient, could use some work...)
-  for i:=0 to BaseMesh.MeshObjects.Count-1 do begin
-     mo:=BaseMesh.MeshObjects[i];
+  for i := 0 to BaseMesh.MeshObjects.Count - 1 do
+  begin
+    mo := BaseMesh.MeshObjects[i];
 
-     FillChar(mo.Normals.List[0], SizeOf(TAffineVector)*mo.Normals.Count, 0);
+    FillChar(mo.Normals.List[0], SizeOf(TAffineVector) * mo.Normals.Count, 0);
 
-     for j:=0 to mo.FaceGroups.Count-1 do begin
-        if mo.FaceGroups[j] is TFGVertexIndexList then begin
-           fg:=TFGVertexIndexList(mo.FaceGroups[j]);
-           k:=0; while k<=fg.VertexIndices.Count-3 do begin
-              n:=CalcPlaneNormal(mo.Vertices.List[fg.VertexIndices.List[k]],
-                                 mo.Vertices.List[fg.VertexIndices.List[k+1]],
-                                 mo.Vertices.List[fg.VertexIndices.List[k+2]]);
-              mo.Normals.TranslateItem(fg.VertexIndices.List[k], n);
-              mo.Normals.TranslateItem(fg.VertexIndices.List[k+1], n);
-              mo.Normals.TranslateItem(fg.VertexIndices.List[k+2], n);//}
+    for j := 0 to mo.FaceGroups.Count - 1 do
+    begin
+      if mo.FaceGroups[j] is TFGVertexIndexList then
+      begin
+        fg := TFGVertexIndexList(mo.FaceGroups[j]);
+        k := 0;
+        while k <= fg.VertexIndices.Count - 3 do
+        begin
+          n := CalcPlaneNormal(mo.Vertices.List[fg.VertexIndices.List[k]],
+            mo.Vertices.List[fg.VertexIndices.List[k + 1]],
+            mo.Vertices.List[fg.VertexIndices.List[k + 2]]);
+          mo.Normals.TranslateItem(fg.VertexIndices.List[k], n);
+          mo.Normals.TranslateItem(fg.VertexIndices.List[k + 1], n);
+          mo.Normals.TranslateItem(fg.VertexIndices.List[k + 2], n); // }
 
-              Inc(k, 3);
-           end;
+          Inc(k, 3);
         end;
-     end;
-     mo.Normals.Normalize;
+      end;
+    end;
+    mo.Normals.Normalize;
   end;
 
   BaseMesh.StructureChanged;
 end;
 
-
 procedure TFormClothify.Button_LoadMeshClick(Sender: TObject);
 var
-  Floor : TVCFloor;
-  Capsule : TVCCapsule;
-  Sides : TAffineVector;
-  Cube : TVCCube;
-  ColliderGravy : single;
-  s : string;
-  f : single;
-  p : Integer;
+  Floor: TGLVerletFloor;
+  Capsule: TGLVerletFricCapsule;
+  Cube: TGLVerletFricCube;
+  Sides: TAffineVector;
+  ColliderGravy: Single;
+  s: string;
+  f: single;
+  p: Integer;
 
-  procedure CreateCubeFromGLCube(GLCube : TGLCube);
+  procedure CreateCubeFromGLCube(GLCube: TGLCube);
   begin
-    Cube := TVCCube.Create(VerletWorld);
+    Cube := TGLVerletFricCube.Create(VerletWorld);
     Cube.Location := AffineVectorMake(GLCube.AbsolutePosition);
     Cube.FrictionRatio := 0.1;
     Sides.X := GLCube.CubeWidth * 1.1;
     Sides.Y := GLCube.CubeHeight * 1.1;
     Sides.Z := GLCube.CubeDepth * 1.1;
-    Cube.Sides := Sides;//}
+    Cube.Sides := Sides; // }
   end;
-
 
   procedure CreateODEWorld;
   var
-    m : TdMass;
+    m: TdMass;
 
   begin
     GLSphere1.Visible := true;
     world := dWorldCreate;
-    dWorldSetGravity (world,0,-9.81,0);
+    dWorldSetGravity(world, 0, -9.81, 0);
 
-    contactgroup := dJointGroupCreate (0);
+    contactgroup := dJointGroupCreate(0);
     space := dHashSpaceCreate(nil);
     body := dBodyCreate(world);
-    dMassSetSphere (m,0.1,GLSphere1.Radius);
-    dCreatePlane (space,0,1,0,GLShadowPlane1.Position.Y);
+    dMassSetSphere(m, 0.1, GLSphere1.Radius);
+    dCreatePlane(space, 0, 1, 0, GLShadowPlane1.Position.Y);
 
+    ODESphere := dCreateSphere(space, GLSphere1.Radius);
 
-    ODESphere := dCreateSphere (space, GLSphere1.Radius);
-
-    dGeomSetBody (ODESphere, body);
-    dBodySetMass (body, @m); ///How to set centre of mass to origin ???
+    dGeomSetBody(ODESphere, body);
+    dBodySetMass(body, @m);
+    /// How to set centre of mass to origin ???
 
     ODESphere.data := GLSphere1;
 
@@ -262,7 +270,7 @@ var
 begin
   randomize;
 
-  if world<>nil then
+  if world <> nil then
   begin
     dWorldDestroy(world);
     world := nil;
@@ -276,14 +284,17 @@ begin
 
   System.SysUtils.FormatSettings.DecimalSeparator := '.';
 
-  p:=Pos(',', s);
-  if p>0 then begin
-      f := StrToFloatDef(Trim(Copy(s, p+1, MaxInt)), 1);
-      GLActor1.Scale.AsVector := VectorMake(f,f,f,0)
-  end else GLActor1.Scale.AsVector := XYZHmgVector;
+  p := Pos(',', s);
+  if p > 0 then
+  begin
+    f := StrToFloatDef(Trim(Copy(s, p + 1, MaxInt)), 1);
+    GLActor1.Scale.AsVector := VectorMake(f, f, f, 0)
+  end
+  else
+    GLActor1.Scale.AsVector := XYZHmgVector;
 
   GLActor1.AutoCentering := [macUseBarycenter];
-  GLActor1.LoadFromFile(Trim(Copy(s, 1, p-1)));
+  GLActor1.LoadFromFile(Trim(Copy(s, 1, p - 1)));
   PrepareMeshForNormalsRecalc(GLActor1);
   GLActor1.Reference := aarNone;
 
@@ -291,25 +302,31 @@ begin
   // this line, it'll be _very_ slow.
   GLActor1.BuildSilhouetteConnectivityData;
 
-  GLActor1.Roll(random*360);
-  GLActor1.Turn(random*360);//}
+  GLActor1.Roll(random * 360);
+  GLActor1.Turn(random * 360); // }
 
   GLSphere1.Visible := false;
   GLCylinder1.Visible := false;
   GLCube1.Visible := false;
-  GLDummyCube_Stairs.Visible := False;
-  GL_Capsule.Visible := False;
+  GLDummyCube_Stairs.Visible := false;
+  GL_Capsule.Visible := false;
 
   case ComboBox_Collider.ItemIndex of
-    0,-1 : GLSphere1.Visible := true;
-    1 : GLCylinder1.Visible := true;
-    2 : GLCube1.Visible := true;
-    3 : GLDummyCube_Stairs.Visible := true;
-    4 : GL_Capsule.Visible := true;
-    5 : CreateODEWorld;
+    0, -1:
+      GLSphere1.Visible := true;
+    1:
+      GLCylinder1.Visible := true;
+    2:
+      GLCube1.Visible := true;
+    3:
+      GLDummyCube_Stairs.Visible := true;
+    4:
+      GL_Capsule.Visible := true;
+    5:
+      CreateODEWorld;
   end;
 
-  EdgeDetector := TEdgeDetector.Create(GLActor1);
+  EdgeDetector := TGLEdgeDetector.Create(GLActor1);
 
   if not CheckBox_Weld.Checked then
     EdgeDetector.WeldDistance := -1;
@@ -319,61 +336,67 @@ begin
   VerletWorld := TGLVerletWorld.Create;
 
   if CheckBox_UseOctree.Checked then
-    VerletWorld.CreateOctree(
-      AffineVectorMake( -20, -5.5, -20),
-      AffineVectorMake(  20,  20,  20), 25, 5);//}
+    VerletWorld.CreateOctree(AffineVectorMake(-20, -5.5, -20),
+      AffineVectorMake(20, 20, 20), 25, 5); // }
 
   if CheckBox_SolidEdges.Checked then
   begin
     ColliderGravy := 1;
     EdgeDetector.AddEdgesAsSolidEdges(VerletWorld);
-  end else
+  end
+  else
     ColliderGravy := 1.1;
 
-  if ComboBox_ConstraintType.ItemIndex=0 then
+  if ComboBox_ConstraintType.ItemIndex = 0 then
     EdgeDetector.AddEdgesAsSticks(VerletWorld, GetSlack)
   else
-    EdgeDetector.AddEdgesAsSprings(VerletWorld, 1000,100, GetSlack);//}
+    EdgeDetector.AddEdgesAsSprings(VerletWorld, 1000, 100, GetSlack); // }
 
   // VerletWorld.Nodes[0].NailedDown := true;
 
-  TVFGravity.Create(VerletWorld);
+  TGLVerletGravity.Create(VerletWorld);
 
-  Floor := TVCFloor.Create(VerletWorld);
-  Floor.Location := VectorAdd(GLShadowPlane1.Position.AsAffineVector, AffineVectorMake(0,0.1,0));
+  Floor := TGLVerletFloor.Create(VerletWorld);
+  Floor.Location := VectorAdd(GLShadowPlane1.Position.AsAffineVector,
+    AffineVectorMake(0, 0.1, 0));
   Floor.Normal := GLShadowPlane1.Direction.AsAffineVector;
 
-  Floor.FrictionRatio := 0.6;//}
+  Floor.FrictionRatio := 0.6; // }
 
-  if GLSphere1.Visible then begin
-     VCSphere := TVCSphere.Create(VerletWorld);
-     VCSphere.Radius := GLSphere1.Radius * ColliderGravy;
-     VCSphere.Location := AffineVectorMake(GLSphere1.AbsolutePosition);
+  if GLSphere1.Visible then
+  begin
+    VCSphere := TGLVerletFricSphere.Create(VerletWorld);
+    VCSphere.Radius := GLSphere1.Radius * ColliderGravy;
+    VCSphere.Location := AffineVectorMake(GLSphere1.AbsolutePosition);
   end;
 
-  if GLCube1.Visible then begin
+  if GLCube1.Visible then
+  begin
     CreateCubeFromGLCube(GLCube1);
   end;
 
-  if GLCylinder1.Visible then begin
-     Capsule := TVCCapsule.Create(VerletWorld);
-     Capsule.Radius := GLCylinder1.TopRadius * ColliderGravy;
-     Capsule.Location := AffineVectorMake(GLCylinder1.AbsolutePosition);
-     Capsule.Axis := AffineVectorMake(GLCylinder1.AbsoluteUp);//}
-     Capsule.Length := 20;
-     Capsule.FrictionRatio := 0.6;
+  if GLCylinder1.Visible then
+  begin
+    Capsule := TGLVerletFricCapsule.Create(VerletWorld);
+    Capsule.Radius := GLCylinder1.TopRadius * ColliderGravy;
+    Capsule.Location := AffineVectorMake(GLCylinder1.AbsolutePosition);
+    Capsule.Axis := AffineVectorMake(GLCylinder1.AbsoluteUp); // }
+    Capsule.Length := 20;
+    Capsule.FrictionRatio := 0.6;
   end;
 
-  if GL_Capsule.Visible then begin
-     Capsule := TVCCapsule.Create(VerletWorld);
-     Capsule.Radius := GL_Capsule.TopRadius * ColliderGravy;
-     Capsule.Location := AffineVectorMake(GL_Capsule.AbsolutePosition);
-     Capsule.Axis := AffineVectorMake(GL_Capsule.AbsoluteUp);//}
-     Capsule.Length := GL_Capsule.Height * ColliderGravy;
-     Capsule.FrictionRatio := 0.6;
+  if GL_Capsule.Visible then
+  begin
+    Capsule := TGLVerletFricCapsule.Create(VerletWorld);
+    Capsule.Radius := GL_Capsule.TopRadius * ColliderGravy;
+    Capsule.Location := AffineVectorMake(GL_Capsule.AbsolutePosition);
+    Capsule.Axis := AffineVectorMake(GL_Capsule.AbsoluteUp); // }
+    Capsule.Length := GL_Capsule.Height * ColliderGravy;
+    Capsule.FrictionRatio := 0.6;
   end;
 
-  if GLDummyCube_Stairs.Visible then begin
+  if GLDummyCube_Stairs.Visible then
+  begin
     CreateCubeFromGLCube(GLCube_Stair1);
     CreateCubeFromGLCube(GLCube_Stair2);
     CreateCubeFromGLCube(GLCube_Stair3);
@@ -389,57 +412,58 @@ begin
   GroupBox_LoadForm.Hide;
 
   CheckBox_ShowOctree.Enabled := CheckBox_UseOctree.Checked;
-  TrackBar_Iterations.Enabled := (ComboBox_ConstraintType.ItemIndex=0);
-  TrackBar_Slack.Enabled := (ComboBox_ConstraintType.ItemIndex=0);
+  TrackBar_Iterations.Enabled := (ComboBox_ConstraintType.ItemIndex = 0);
+  TrackBar_Slack.Enabled := (ComboBox_ConstraintType.ItemIndex = 0);
 end;
 
 procedure TFormClothify.GLSceneViewer1MouseMove(Sender: TObject;
   Shift: TShiftState; X, Y: Integer);
 begin
   if ssLeft in Shift then
-    GLCamera1.MoveAroundTarget(my-y, mx-x);
+    GLCamera1.MoveAroundTarget(my - Y, mx - X);
 
-  mx := x;
-  my := y
+  mx := X;
+  my := Y
 end;
 
-procedure nearCallback (data : pointer; o1, o2 : PdxGeom); cdecl;
+procedure nearCallback(data: pointer; o1, o2: PdxGeom); cdecl;
 const
   cCOL_MAX = 3;
 var
-  i : integer;
-  b1, b2 : PdxBody;
-  numc : integer;
-  contact : array[0..cCOL_MAX-1] of TdContact;
-  c : TdJointID;
+  i: Integer;
+  b1, b2: PdxBody;
+  numc: Integer;
+  contact: array [0 .. cCOL_MAX - 1] of TdContact;
+  c: TdJointID;
 begin
   // exit without doing anything if the two bodies are connected by a joint
   b1 := dGeomGetBody(o1);
   b2 := dGeomGetBody(o2);
-  if (assigned(b1) and assigned(b2) and (dAreConnected (b1,b2)<>0)) then
-    exit;//}
+  if (assigned(b1) and assigned(b2) and (dAreConnected(b1, b2) <> 0)) then
+    exit; // }
 
-  for i :=0 to cCOL_MAX-1 do
+  for i := 0 to cCOL_MAX - 1 do
   begin
     contact[i].surface.mode := dContactBounce;
 
     // This determines friction, play around with it!
-    contact[i].surface.mu := 10e9; //dInfinity; SHOULD BE INFINITY!
+    contact[i].surface.mu := 10E9; // dInfinity; SHOULD BE INFINITY!
     contact[i].surface.mu2 := 0;
-    contact[i].surface.bounce := 0.5;//0.5;
+    contact[i].surface.bounce := 0.5; // 0.5;
     contact[i].surface.bounce_vel := 0.1;
   end;
 
-  numc := dCollide (o1,o2,cCOL_MAX,contact[0].geom,sizeof(TdContact));
-  if (numc>0) then
+  numc := dCollide(o1, o2, cCOL_MAX, contact[0].geom, SizeOf(TdContact));
+  if (numc > 0) then
   begin
     // dMatrix3 RI;
     // dRSetIdentity (RI);
     // const dReal ss[3] = {0.02,0.02,0.02};
-    for i := 0 to numc-1 do
+    for i := 0 to numc - 1 do
     begin
-      c := dJointCreateContact (FormClothify.world,FormClothify.contactgroup, @contact[i]);
-      dJointAttach (c,b1,b2);
+      c := dJointCreateContact(FormClothify.world, FormClothify.contactgroup,
+        @contact[i]);
+      dJointAttach(c, b1, b2);
       // dsDrawBox (contact[i].geom.pos,RI,ss);
     end;
   end;
@@ -449,109 +473,110 @@ procedure TFormClothify.GLCadencer1Progress(Sender: TObject;
   const deltaTime, newTime: Double);
 begin
 
-   {if CheckBox_Pause.Checked then
-      VerletWorld.SimTime := newTime
-   else//}
-   begin
-      if world <> nil then begin
-         PositionSceneObjectForGeom(ODESphere);
-         VCSphere.Location := GLSphere1.Position.AsAffineVector;
-         dBodyAddForce(dGeomGetBody(ODESphere),
-                       VCSphere.KickbackForce.X,
-                       VCSphere.KickbackForce.Y,
-                       VCSphere.KickbackForce.Z);
-         dSpaceCollide (space,nil,nearCallback);
-         dWorldStep(World, VerletWorld.MaxDeltaTime);
-         dJointGroupEmpty (contactgroup);
-      end;
+  { if CheckBox_Pause.Checked then
+    VerletWorld.SimTime := newTime
+    else// }
+  begin
+    if world <> nil then
+    begin
+      PositionSceneObjectForGeom(ODESphere);
+      VCSphere.Location := GLSphere1.Position.AsAffineVector;
+      dBodyAddForce(dGeomGetBody(ODESphere), VCSphere.KickbackForce.X,
+        VCSphere.KickbackForce.Y, VCSphere.KickbackForce.Z);
+      dSpaceCollide(space, nil, nearCallback);
+      dWorldStep(world, VerletWorld.MaxDeltaTime);
+      dJointGroupEmpty(contactgroup);
+    end;
 
-      VerletWorld.Progress(VerletWorld.MaxDeltaTime, newTime);
+    VerletWorld.Progress(VerletWorld.MaxDeltaTime, newTime);
 
-      RecalcMeshNormals(GLActor1);
+    RecalcMeshNormals(GLActor1);
 
-   end;
+  end;
 end;
 
 procedure TFormClothify.Timer1Timer(Sender: TObject);
 begin
-  Label1.Caption := Format('%2.1f FPS',[GLSceneViewer1.FramesPerSecond]);
+  Label1.Caption := Format('%2.1f FPS', [GLSceneViewer1.FramesPerSecond]);
   GLSceneViewer1.ResetPerformanceMonitor;
 end;
 
 procedure TFormClothify.TrackBar_SlackChange(Sender: TObject);
 var
-  i : integer;
+  i: Integer;
 begin
-  for i := 0 to VerletWorld.Constraints.Count-1 do
+  for i := 0 to VerletWorld.Constraints.Count - 1 do
   begin
-    if VerletWorld.Constraints[i] is TVCStick then
-      TVCStick(VerletWorld.Constraints[i]).Slack := GetSlack;
+    if VerletWorld.Constraints[i] is TGLVerletStick then
+      TGLVerletStick(VerletWorld.Constraints[i]).Slack := GetSlack;
   end;
 end;
 
 function TFormClothify.GetSlack: single;
 begin
-  result := TrackBar_Slack.Position/500;
+  result := TrackBar_Slack.Position / 500;
 end;
 
 procedure TFormClothify.TrackBar_IterationsChange(Sender: TObject);
 begin
   VerletWorld.Iterations := TrackBar_Iterations.Position;
 
-  Label6.Caption := Format('Iterations %d',[TrackBar_Iterations.Position]);
+  Label6.Caption := Format('Iterations %d', [TrackBar_Iterations.Position]);
 end;
 
 procedure TFormClothify.FormMouseWheel(Sender: TObject; Shift: TShiftState;
   WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
 begin
-	GLCamera1.AdjustDistanceToTarget(Power(1.1, WheelDelta/120));
+  GLCamera1.AdjustDistanceToTarget(Power(1.1, WheelDelta / 120));
 end;
 
 procedure TFormClothify.TrackBar_FrictionChange(Sender: TObject);
 var
-  i : integer;
+  i: Integer;
 begin
-  for i := 0 to VerletWorld.Constraints.Count-1 do
+  for i := 0 to VerletWorld.Constraints.Count - 1 do
     if VerletWorld.Constraints[i] is TGLVerletGlobalFrictionConstraint then
-      TGLVerletGlobalFrictionConstraint(VerletWorld.Constraints[i]).FrictionRatio := TrackBar_Friction.Position / 100;
+      TGLVerletGlobalFrictionConstraint(VerletWorld.Constraints[i])
+        .FrictionRatio := TrackBar_Friction.Position / 100;
 end;
 
-procedure TFormClothify.GLDirectOpenGL1Render(Sender: TObject; var rci: TGLRenderContextInfo);
-  procedure RenderAABB(AABB : TAABB; w, r,g,b : single);
+procedure TFormClothify.GLDirectOpenGL1Render(Sender: TObject;
+  var rci: TGLRenderContextInfo);
+  procedure RenderAABB(AABB: TAABB; w, r, g, b: single);
   begin
-    GL.Color3f(r,g,b);
+    GL.Color3f(r, g, b);
     rci.GLStates.LineWidth := w;
 
     GL.Begin_(GL_LINE_STRIP);
-      GL.Vertex3f(AABB.min.X,AABB.min.Y, AABB.min.Z);
-      GL.Vertex3f(AABB.min.X,AABB.max.Y, AABB.min.Z);
-      GL.Vertex3f(AABB.max.X,AABB.max.Y, AABB.min.Z);
-      GL.Vertex3f(AABB.max.X,AABB.min.Y, AABB.min.Z);
-      GL.Vertex3f(AABB.min.X,AABB.min.Y, AABB.min.Z);
+    GL.Vertex3f(AABB.min.X, AABB.min.Y, AABB.min.Z);
+    GL.Vertex3f(AABB.min.X, AABB.max.Y, AABB.min.Z);
+    GL.Vertex3f(AABB.max.X, AABB.max.Y, AABB.min.Z);
+    GL.Vertex3f(AABB.max.X, AABB.min.Y, AABB.min.Z);
+    GL.Vertex3f(AABB.min.X, AABB.min.Y, AABB.min.Z);
 
-      GL.Vertex3f(AABB.min.X,AABB.min.Y, AABB.max.Z);
-      GL.Vertex3f(AABB.min.X,AABB.max.Y, AABB.max.Z);
-      GL.Vertex3f(AABB.max.X,AABB.max.Y, AABB.max.Z);
-      GL.Vertex3f(AABB.max.X,AABB.min.Y, AABB.max.Z);
-      GL.Vertex3f(AABB.min.X,AABB.min.Y, AABB.max.Z);
+    GL.Vertex3f(AABB.min.X, AABB.min.Y, AABB.max.Z);
+    GL.Vertex3f(AABB.min.X, AABB.max.Y, AABB.max.Z);
+    GL.Vertex3f(AABB.max.X, AABB.max.Y, AABB.max.Z);
+    GL.Vertex3f(AABB.max.X, AABB.min.Y, AABB.max.Z);
+    GL.Vertex3f(AABB.min.X, AABB.min.Y, AABB.max.Z);
     GL.End_;
 
     GL.Begin_(GL_LINES);
-      GL.Vertex3f(AABB.min.X,AABB.max.Y, AABB.min.Z);
-      GL.Vertex3f(AABB.min.X,AABB.max.Y, AABB.max.Z);
+    GL.Vertex3f(AABB.min.X, AABB.max.Y, AABB.min.Z);
+    GL.Vertex3f(AABB.min.X, AABB.max.Y, AABB.max.Z);
 
-      GL.Vertex3f(AABB.max.X,AABB.max.Y, AABB.min.Z);
-      GL.Vertex3f(AABB.max.X,AABB.max.Y, AABB.max.Z);
+    GL.Vertex3f(AABB.max.X, AABB.max.Y, AABB.min.Z);
+    GL.Vertex3f(AABB.max.X, AABB.max.Y, AABB.max.Z);
 
-      GL.Vertex3f(AABB.max.X,AABB.min.Y, AABB.min.Z);
-      GL.Vertex3f(AABB.max.X,AABB.min.Y, AABB.max.Z);
+    GL.Vertex3f(AABB.max.X, AABB.min.Y, AABB.min.Z);
+    GL.Vertex3f(AABB.max.X, AABB.min.Y, AABB.max.Z);
     GL.End_;
   end;
 
-  procedure RenderOctreeNode(Node : TSectorNode);
+  procedure RenderOctreeNode(Node: TSectorNode);
   var
-    i : integer;
-    AABB : TAABB;
+    i: Integer;
+    AABB: TAABB;
   begin
     if Node.NoChildren then
     begin
@@ -560,21 +585,25 @@ procedure TFormClothify.GLDirectOpenGL1Render(Sender: TObject; var rci: TGLRende
       if Node.RecursiveLeafCount > 0 then
         RenderAABB(AABB, 1, 0, 0, 0)
       else
-        RenderAABB(AABB, 1, 0.8, 0.8, 0.8)//}
+        RenderAABB(AABB, 1, 0.8, 0.8, 0.8) // }
 
-    end else
+    end
+    else
     begin
-      for i := 0 to Node.ChildCount-1 do
+      for i := 0 to Node.ChildCount - 1 do
         RenderOctreeNode(Node.Children[i]);
     end;
   end;
+
 begin
-  if CheckBox_ShowOctree.Checked and (VerletWorld.SpacePartition is TOctreeSpacePartition) then
+  if CheckBox_ShowOctree.Checked and
+    (VerletWorld.SpacePartition is TOctreeSpacePartition) then
   begin
     rci.GLStates.PushAttrib([sttEnable, sttCurrent, sttLine, sttColorBuffer]);
     rci.GLStates.Disable(stLighting);
 
-    RenderOctreeNode(TOctreeSpacePartition(VerletWorld.SpacePartition).RootNode);
+    RenderOctreeNode(TOctreeSpacePartition(VerletWorld.SpacePartition)
+      .RootNode);
     rci.GLStates.PopAttrib;
   end;
 end;
@@ -592,24 +621,28 @@ end;
 
 procedure TFormClothify.ComboBox_ShadowChange(Sender: TObject);
 begin
-  GLShadowVolume1.Mode := svmOff;
+  GLShadowVolume1.mode := svmOff;
   GLShadowPlane1.Visible := false;
   GLPlane1.Visible := true;
-  GLSceneViewer1.Buffer.ContextOptions := GLSceneViewer1.Buffer.ContextOptions - [roStencilBuffer];
+  GLSceneViewer1.Buffer.ContextOptions := GLSceneViewer1.Buffer.ContextOptions -
+    [roStencilBuffer];
 
   case ComboBox_Shadow.ItemIndex of
-    0 :;
-    1 :
-    begin
-      GLShadowVolume1.Mode := svmDarkening;
-      GLSceneViewer1.Buffer.ContextOptions := GLSceneViewer1.Buffer.ContextOptions + [roStencilBuffer];
-    end;
-    2 :
-    begin
-      GLShadowPlane1.Visible := true;
-      GLPlane1.Visible := false;
-      GLSceneViewer1.Buffer.ContextOptions := GLSceneViewer1.Buffer.ContextOptions + [roStencilBuffer];
-    end;
+    0:
+      ;
+    1:
+      begin
+        GLShadowVolume1.mode := svmDarkening;
+        GLSceneViewer1.Buffer.ContextOptions :=
+          GLSceneViewer1.Buffer.ContextOptions + [roStencilBuffer];
+      end;
+    2:
+      begin
+        GLShadowPlane1.Visible := true;
+        GLPlane1.Visible := false;
+        GLSceneViewer1.Buffer.ContextOptions :=
+          GLSceneViewer1.Buffer.ContextOptions + [roStencilBuffer];
+      end;
   end;
 end;
 

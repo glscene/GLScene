@@ -25,13 +25,12 @@ uses
   GLS.File3DS,
   GLS.VerletTypes,
   GLS.VerletClothify,
-  GLS.VerletSkeletonColliders,
   GLS.ShadowVolume,
   GLS.Keyboard,
   GLS.VectorGeometry,
   GLS.GeometryBB,
   GLS.SpacePartition,
- 
+
   GLS.Material,
   GLS.BaseClasses,
   GLS.RenderContextInfo,
@@ -73,7 +72,7 @@ type
     mx, my: Integer;
     VerletWorld: TGLVerletWorld;
     EdgeDetector: TGLEdgeDetector;
-    AirResistance: TGLAirResistanceVF;
+    AirResistance: TGLVerletAirResistance;
   end;
 
 var
@@ -148,7 +147,7 @@ end;
 
 procedure TFormClothActor.FormCreate(Sender: TObject);
 var
-  FloorVC: TGLFloorVC;
+  FloorVC: TGLVerletFloor;
 begin
   SetGLSceneMediaDir();
   Randomize;
@@ -187,8 +186,8 @@ begin
   // EdgeDetector.AddOuterEdgesAsSolidEdges(VerletWorld);
 
   // Set up verlet gravity and add the floor as a constraint
-  TGLGravityVF.Create(VerletWorld).Gravity := AffineVectorMake(0, -98.1, 0);
-  FloorVC := TGLFloorVC.Create(VerletWorld);
+  TGLVerletGravity.Create(VerletWorld).Gravity := AffineVectorMake(0, -98.1, 0);
+  FloorVC := TGLVerletFloor.Create(VerletWorld);
   FloorVC.Normal := GLPlane1.Direction.AsAffineVector;
   FloorVC.Location := VectorAdd(GLPlane1.Position.AsAffineVector,
       VectorScale(GLPlane1.Direction.AsAffineVector, 0.1));
@@ -199,9 +198,9 @@ begin
   GLActor1.Skeleton.Colliders.AlignColliders;
 
   // Add the collider's verlet constraints to the verlet world
-  AddSCVerletConstriantsToVerletWorld(GLActor1.Skeleton.Colliders, VerletWorld);
+  AddVerletConstriantsToVerletWorld(GLActor1.Skeleton.Colliders, VerletWorld);
   (*
-  AirResistance := TGLAirResistanceVF.Create(VerletWorld);
+  AirResistance := TGLVerletAirResistance.Create(VerletWorld);
   AirResistance.DragCoeff := 0.001;
   AirResistance.WindDirection := AffineVectorMake(0,0,1);
   AirResistance.WindMagnitude := 15;

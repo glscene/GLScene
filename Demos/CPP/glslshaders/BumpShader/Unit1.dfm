@@ -34,6 +34,7 @@ object Form1: TForm1
     OnMouseDown = ViewerMouseDown
     OnMouseMove = ViewerMouseMove
     TabOrder = 0
+    ExplicitTop = 2
   end
   object Panel1: TPanel
     Left = 0

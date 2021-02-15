@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Color;
 
 (* All color types, constants and utilities should go here *)

@@ -56,6 +56,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   MatLib->LibMaterialByName("Brick01")->Material->Texture->Image->LoadFromFile("mur_NormalMap.bmp");
   MatLib->LibMaterialByName("Brick02")->Material->Texture->Image->LoadFromFile("mur_Ambiant.bmp");
   MatLib->LibMaterialByName("Brick03")->Material->Texture->Image->LoadFromFile("mur_Hauteur.bmp");
+
 }
 
 //---------------------------------------------------------------------------
