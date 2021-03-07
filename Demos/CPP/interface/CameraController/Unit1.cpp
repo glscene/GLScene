@@ -63,7 +63,7 @@ void __fastcall TForm1::GetInput(TButton *Sender)
   }
 }
 //---------------------------------------------------------------------------
-Gls::Vectorgeometry::TVector __fastcall TForm1::OnGetCameraPosition(
+TGLVector __fastcall TForm1::OnGetCameraPosition(
 					   TGLNavigatorSmoothChangeVector* const ASender)
 {
   if (ASender == FCameraSmoothAnimator_AbsPos)
@@ -119,7 +119,7 @@ void __fastcall TForm1::btnZoomToDistanceClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::btnOrbitToPosClick(TObject *Sender)
 {
-  Gls::Vectorgeometry::TVector lTargetPosition;
+  TGLVector lTargetPosition;
 
   GetInput(btnOrbitToPos);
   lTargetPosition = dcSphere->LocalToAbsolute(PointMake(DextX, DextY, DextZ));
@@ -147,7 +147,7 @@ void __fastcall TForm1::btSmoothOrbitClick(TObject *Sender)
   float lAngle; // In radians.
   float lTime;
   bool lNeedToRecalculateZoom;
-  Gls::Vectorgeometry::TVector lTargetPosition;
+  TGLVector lTargetPosition;
 
   GetInput(btSmoothOrbit);
   lTargetPosition = dcSphere->LocalToAbsolute(PointMake(DextX, DextY, DextZ));
@@ -178,7 +178,7 @@ void __fastcall TForm1::btSmoothOrbitToPosAdvClick(TObject *Sender)
 {
   float lAngle; // In radians.
   float lTime;
-  Gls::Vectorgeometry::TVector lTargetPosition;
+  TGLVector lTargetPosition;
 
   GetInput(btSmoothOrbitToPosAdv);
 
@@ -199,7 +199,7 @@ void __fastcall TForm1::btSmoothOrbitToPosAdvClick(TObject *Sender)
 
 void __fastcall TForm1::btnOrbitToPosAdvClick(TObject *Sender)
 {
-  Gls::Vectorgeometry::TVector lTargetPosition;
+  TGLVector lTargetPosition;
 
   GetInput(btnOrbitToPosAdv);
   lTargetPosition = dcSphere->LocalToAbsolute(PointMake(DextX, DextY, DextZ));

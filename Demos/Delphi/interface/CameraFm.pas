@@ -74,7 +74,7 @@ procedure TFormCamera.GLSceneViewer1MouseMove(Sender: TObject;
   Shift: TShiftState; X, Y: Integer);
 var
   dx, dy: Integer;
-  v: TVector;
+  v: TGLVector;
 begin
   // calculate delta since last move or last mousedown
   dx := mdx - X;

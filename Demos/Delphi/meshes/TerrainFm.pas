@@ -327,7 +327,7 @@ end;
 
 procedure TFormTerrain.TISoundTimer(Sender: TObject);
 var
-  wolfPos: TVector;
+  wolfPos: TGLVector;
   c, s: Single;
 begin
   if not GLSMBASS1.Active then

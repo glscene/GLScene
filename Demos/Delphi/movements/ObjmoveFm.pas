@@ -13,55 +13,58 @@ uses
   Vcl.Graphics,
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
-  
-  GLS.Scene, 
-  GLS.Objects, 
-  GLS.Graph, 
-  GLS.Collision, 
-  GLS.Texture, 
+  Vcl.ComCtrls,
+
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Graph,
+  GLS.Collision,
+  GLS.Texture,
   GLS.VectorTypes,
-  GLS.VectorGeometry, 
-  GLS.VectorFileObjects, 
+  GLS.VectorGeometry,
+  GLS.VectorFileObjects,
   GLS.SceneViewer,
-  GLS.SpaceText, 
-  GLS.GeomObjects, 
-  GLS.Color, 
- 
-  GLS.Coordinates, 
-  GLS.BaseClasses, 
-  GLS.BitmapFont, 
+  GLS.SpaceText,
+  GLS.GeomObjects,
+  GLS.Color,
+
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.BitmapFont,
   GLS.WindowsFont,
-  GLS.HUDObjects, 
-  GLS.SimpleNavigation;
+  GLS.HUDObjects,
+  GLS.SimpleNavigation,
+  GLS.Navigator,
+  GLS.SmoothNavigator;
 
 type
   TFormObjmove = class(TForm)
     GLScene1: TGLScene;
     Scn: TGLSceneViewer;
-    GLCamera1: TGLCamera;
-    DummyCube1: TGLDummyCube;
+    GLCamera: TGLCamera;
+    DummyCube: TGLDummyCube;
     ZArrow: TGLArrowLine;
     XArrow: TGLArrowLine;
     YArrow: TGLArrowLine;
     Cube1: TGLCube;
-    TopLight1: TGLLightSource;
+    TopLight: TGLLightSource;
     Cube2: TGLCube;
     Floor: TGLCube;
     Panel1: TPanel;
     Button1: TButton;
     Label2: TLabel;
-    Label1: TLabel;
     TxtX: TGLSpaceText;
     TxtY: TGLSpaceText;
     Label3: TLabel;
     Label4: TLabel;
-    Label5: TLabel;
     TxtZ: TGLSpaceText;
     TopText: TGLHUDText;
     GLWindowsBitmapFont1: TGLWindowsBitmapFont;
     ObjText: TGLHUDText;
     GroupBox1: TGroupBox;
     ShowAxes: TCheckBox;
+    StatusBar1: TStatusBar;
+    GLSmoothNavigator1: TGLSmoothNavigator;
     procedure ScnMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure ScnMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
@@ -72,11 +75,12 @@ type
     procedure FormCreate(Sender: TObject);
     procedure ShowAxesClick(Sender: TObject);
   private
-    lastMouseWorldPos: TVector;
+    lastMouseWorldPos: TGLVector;
+    Cube: TGLCube;
     movingOnZ: Boolean;
     CurrentPick: TGLCustomSceneObject;
     ScnMouseMoveCnt: Integer;
-    function MouseWorldPos(X, Y: Integer): TVector;
+    function MouseWorldPos(X, Y: Integer): TGLVector;
     procedure UpdateHudText;
     procedure ProcessPick(pick: TGLBaseSceneObject);
   end;
@@ -94,11 +98,18 @@ implementation
 procedure TFormObjmove.FormCreate(Sender: TObject);
 begin
   UpdateHudText;
+  Cube := TGLCube.CreateAsChild(DummyCube);
+  Cube.CubeDepth := 0.2;
+  Cube.CubeWidth := 0.2;
+  Cube.CubeHeight := 0.2;
+  Cube.Position.X := 1;
+  Cube.Position.Y := 1;
+  Cube.Position.Z := 1;
 end;
 
-function TFormObjmove.MouseWorldPos(X, Y: Integer): TVector;
+function TFormObjmove.MouseWorldPos(X, Y: Integer): TGLVector;
 var
-  v: TVector;
+  v: TGLVector;
 begin
   Y := Scn.Height - Y;
   if Assigned(CurrentPick) then
@@ -159,7 +170,7 @@ end;
 procedure TFormObjmove.ScnMouseMove(Sender: TObject; Shift: TShiftState;
   X, Y: Integer);
 var
-  newPos: TVector;
+  newPos: TGLVector;
 begin
   Inc(ScnMouseMoveCnt);
   Assert(ScnMouseMoveCnt < 2);
@@ -193,12 +204,12 @@ begin
   // Note that 1 wheel-step induces a WheelDelta of 120,
   // this code adjusts the distance to target with a 10% per wheel-step ratio
   if WheelDelta <> 0 then
-    GLCamera1.AdjustDistanceToTarget(Power(1.1, -WheelDelta / 120));
+    GLCamera.AdjustDistanceToTarget(Power(1.1, -WheelDelta / 120));
 end;
 
 procedure TFormObjmove.FormKeyPress(Sender: TObject; var Key: Char);
 begin
-  with GLCamera1 do
+  with GLCamera do
     case Key of
       '2':  MoveAroundTarget(3, 0);
       '4':  MoveAroundTarget(0, -3);

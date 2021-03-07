@@ -159,7 +159,7 @@ type
     procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure SpeedButton1Click(Sender: TObject);
     procedure ComboBox3Change(Sender: TObject);
-    function MouseWorldPos(const X, Y: Integer; isy: boolean = false): TVector;
+    function MouseWorldPos(const X, Y: Integer; isy: boolean = false): TGLVector;
     procedure ComboBox4Change(Sender: TObject);
     procedure SpeedButton6MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -175,9 +175,9 @@ type
   public
      
     mx, my: Integer;
-    MousePos,LostMousePos: TVector;
+    MousePos,LostMousePos: TGLVector;
     MouseMoving: boolean;
-    pos: TVector;
+    pos: TGLVector;
     FObj: TGLBaseSceneObject;
     procedure UpdateTreeView;
   end;
@@ -192,7 +192,7 @@ implementation
 
 {$R *.dfm}
 
-procedure SettingsObj(Obj: TGLBaseSceneObject; Step: Integer; Length: TVector);
+procedure SettingsObj(Obj: TGLBaseSceneObject; Step: Integer; Length: TGLVector);
 begin
   if (Obj is TGLCube) then
   with (Obj as TGLCube) do
@@ -238,9 +238,9 @@ begin
    end;
 end;
 
-function TFormGizmoEx.MouseWorldPos(const X, Y: Integer; isy: boolean = false): TVector;
+function TFormGizmoEx.MouseWorldPos(const X, Y: Integer; isy: boolean = false): TGLVector;
 var
-  v: TVector;
+  v: TGLVector;
   InvertedY: Integer;
 begin
   InvertedY := Viewer.Height - Y;

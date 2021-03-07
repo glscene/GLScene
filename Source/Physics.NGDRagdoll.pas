@@ -121,6 +121,8 @@ var
   p1, p2: TVector4f;
   d: single;
   Collision: PNewtonCollision;
+  CollisionBox, CollisionCylinder, CollisionSphere: PNewtonCollision;
+  Matrix: Tmatrix;
   CollisionOffsetMatrix: TMatrix; // For cone capsule and cylinder
 begin
   collisionOffsetMatrix := IdentityHmgMatrix;
@@ -138,9 +140,9 @@ begin
   SetLength(joints, actor.Skeleton.BoneCount - 1);
   for i := 0 to actor.Skeleton.BoneCount - 2 do
   begin
-    p1 := actor.Skeleton.BoneByID(i).GlobalMatrix.w;
+    p1 := actor.Skeleton.BoneByID(i).GlobalMatrix.W;
     if actor.Skeleton.BoneByID(i).BoneCount > 1 then
-      p2 := actor.Skeleton.BoneByID(i).Items[0].GlobalMatrix.w
+      p2 := actor.Skeleton.BoneByID(i).Items[0].GlobalMatrix.W
     else
       p2 := p1;
     p1 := VectorTransform(p1, actor.AbsoluteMatrix);

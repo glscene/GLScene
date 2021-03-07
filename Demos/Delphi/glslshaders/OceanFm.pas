@@ -166,7 +166,7 @@ end;
 procedure TForm1.GLUserShader1DoApply(Sender: TObject;
   var rci: TGLRenderContextInfo);
 var
-  camPos: TVector;
+  camPos: TGLVector;
 begin
   programObject.UseProgramObject;
 

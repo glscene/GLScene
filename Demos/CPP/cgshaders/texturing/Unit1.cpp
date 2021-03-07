@@ -72,7 +72,7 @@ void __fastcall TForm1::CgShader1Initialize(TCustomCgShader *CgShader)
 
 void __fastcall TForm1::CgShader1ApplyVP(TCgProgram *CgProgram, TObject *Sender)
 {
-  Gls::Vectorgeometry::TVector v;
+  TGLVector v;
   CgProgram->ParamByName("ModelViewProj")->SetAsStateMatrix(CG_GL_MODELVIEW_PROJECTION_MATRIX, CG_GL_MATRIX_IDENTITY);
 // Alternatively, you can set it using:
 // CgProgram->SetStateMatrix("ModelViewProj", CG_GL_MODELVIEW_PROJECTION_MATRIX, CG_GL_MATRIX_IDENTITY);
@@ -91,7 +91,7 @@ void __fastcall TForm1::CgShader1ApplyVP(TCgProgram *CgProgram, TObject *Sender)
 
 void __fastcall TForm1::CgShader1ApplyFP(TCgProgram *CgProgram, TObject *Sender)
 {
-  Gls::Vectorgeometry::TVector v;
+  TGLVector v;
   CgProgram->ParamByName("Map0")->EnableTexture();
   CgProgram->ParamByName("Map1")->EnableTexture();
   CgProgram->ParamByName("Map2")->EnableTexture();

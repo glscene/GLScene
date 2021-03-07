@@ -204,7 +204,7 @@ procedure TForm1.GLCadencerProgress(Sender: TObject; const deltaTime,
 var
   speed, alpha, f: Single;
   terrainHeight, surfaceHeight: Single;
-  sbp: TVector;
+  sbp: TGLVector;
   newMousePos: TPoint;
 begin
   // handle keypresses
@@ -532,7 +532,7 @@ procedure TForm1.DOWakeProgress(Sender: TObject; const deltaTime,
   newTime: Double);
 var
   i: Integer;
-  sbp, sbr: TVector;
+  sbp, sbr: TGLVector;
 begin
   if WakeVertices = nil then
   begin
@@ -583,7 +583,7 @@ procedure TForm1.DOWakeRender(Sender: TObject; var rci: TGLRenderContextInfo);
 var
   i, n: Integer;
   p: PAffineVector;
-  sbp: TVector;
+  sbp: TGLVector;
   c: Single;
 begin
   if not Assigned(WakeVertices) then

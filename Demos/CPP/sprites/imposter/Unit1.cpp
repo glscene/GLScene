@@ -96,8 +96,8 @@ void __fastcall TForm1::GLDirectOpenGL1Render(TObject *Sender, TGLRenderContextI
 
 {
    int x, y;
-   Gls::Vectorgeometry::TVector camPos;
-   Gls::Vectorgeometry::TVector pos;
+   TGLVector camPos;
+   TGLVector pos;
 
 /*   to do
    TImposter *imp;

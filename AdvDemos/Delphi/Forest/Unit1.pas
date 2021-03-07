@@ -374,7 +374,7 @@ const
   cTreeCenteringOffset: TAffineVector = (X:0; Y:30; Z:0);
 var
   d: Single;
-  camPos: TVector;
+  camPos: TGLVector;
 begin
   if not IsVolumeClipped(VectorAdd(aParticle.Position, cTreeCenteringOffset), 30, rci.rcci.frustum)
   then
@@ -398,7 +398,7 @@ procedure TForm1.PFXTreesEndParticles(Sender: TObject;
   var rci: TGLRenderContextInfo);
 var
   aParticle: TGLParticle;
-  camPos: TVector;
+  camPos: TGLVector;
 begin
   // Only 20 trees max rendered at full res, force imposter'ing the others
   while nearTrees.Count > 20 do
@@ -505,7 +505,7 @@ procedure TForm1.DOInitializeReflectionRender(Sender: TObject;
 var
   w, h: Integer;
   refMat: TMatrix;
-  cameraPosBackup, cameraDirectionBackup: TVector;
+  cameraPosBackup, cameraDirectionBackup: TGLVector;
   frustumBackup: TFrustum;
   clipPlane: TDoubleHmgPlane;
   glTarget: GLEnum;

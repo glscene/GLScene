@@ -83,7 +83,7 @@ function BuoyancyPlaneCallback(const collisionID: Integer; context: Pointer;
   cdecl;
 var
   BodyMatrix: TMatrix;
-  PlaneEquation: TVector;
+  PlaneEquation: TGLVector;
   pv: PVector;
   MyForm: TFormNewtonDensity;
 begin
@@ -151,7 +151,7 @@ end;
 procedure TFormNewtonDensity.MyForceAndTorqueDensity(const cbody: PNewtonBody;
   timestep: NGDFloat; threadIndex: Integer);
 var
-  worldGravity: TVector;
+  worldGravity: TGLVector;
   NGDDyn: TGLNGDDynamic;
   fluidDensity, fluidLinearViscosity, fluidAngularViscosity: Single;
 begin

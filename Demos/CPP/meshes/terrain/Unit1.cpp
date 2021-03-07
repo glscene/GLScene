@@ -267,7 +267,7 @@ void __fastcall TForm1::FormKeyPress(TObject * Sender, char &Key)
 
 void __fastcall TForm1::TISoundTimer(TObject * Sender)
 {
-  Gls::Vectorgeometry::TVector wolfPos;
+  TGLVector wolfPos;
   float c, s;
   TGLBSoundEmitter *be;
 

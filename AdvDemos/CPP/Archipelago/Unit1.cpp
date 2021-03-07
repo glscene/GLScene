@@ -140,7 +140,7 @@ void __fastcall TForm1::GLCadencerProgress(TObject *Sender,
 	const double deltaTime, const double newTime) {
 	float Speed, Alpha, f;
 	float TerrainHeight, SurfaceHeight;
-	Gls::Vectorgeometry::TVector Sbp;
+	TGLVector Sbp;
 	POINT NewMousePos;
 
 	// Handle keypresses
@@ -477,7 +477,7 @@ void __fastcall TForm1::TerrainRendererHeightDataPostRender
 void __fastcall TForm1::DOWakeProgress(TObject *Sender, const double deltaTime,
 	const double newTime) {
 	int i;
-	Gls::Vectorgeometry::TVector sbp, sbr;
+	TGLVector sbp, sbr;
 
 	if (WakeVertices == NULL) {
 		WakeVertices = new TAffineVectorList();
@@ -523,7 +523,7 @@ void __fastcall TForm1::DOWakeProgress(TObject *Sender, const double deltaTime,
 void __fastcall TForm1::DOWakeRender(TObject *Sender, TGLRenderContextInfo &rci) {
 	int i, n;
 	Gls::Vectortypes::TVector3f p;
-	Gls::Vectorgeometry::TVector sbp;
+	TGLVector sbp;
 	float c;
 
 	if (!(WakeVertices) && (!((FFSailBoat->Visible) || (WaterPlane)))) {

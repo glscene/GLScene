@@ -42,7 +42,7 @@ object Form1: TForm1
     OnKeyDown = TreeViewKeyDown
   end
   object ListView: TListView
-    Left = 176
+    Left = 175
     Top = 8
     Width = 365
     Height = 466
@@ -72,7 +72,7 @@ object Form1: TForm1
   end
   object GLSceneViewer1: TGLSceneViewer
     Left = 8
-    Top = 312
+    Top = 311
     Width = 161
     Height = 161
     Camera = GLCamera1

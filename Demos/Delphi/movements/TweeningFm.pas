@@ -55,7 +55,7 @@ type
     Initial1iValue: Integer;
     Initial1sValue: single;
     Initial3fValue: TAffineVector;
-    Initial4fValue: TVector;
+    Initial4fValue: TGLVector;
     InitialPtValue: TSinglePoint;
   end;
 

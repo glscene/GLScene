@@ -48,7 +48,7 @@ type
     procedure FormCreate(Sender: TObject);
   private
      
-    point3d, FPaneNormal: TVector;
+    point3d, FPaneNormal: TGLVector;
   public
      
     pickjoint: TGLNGDJoint;
@@ -101,7 +101,7 @@ end;
 procedure TFormNewtonMousePick.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
   X, Y: Integer);
 var
-  point2d, GotoPoint3d: TVector;
+  point2d, GotoPoint3d: TGLVector;
 begin
 
   if ssLeft in Shift then

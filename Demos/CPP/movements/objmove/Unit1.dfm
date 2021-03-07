@@ -21,73 +21,58 @@ object Form1: TForm1
     Left = 161
     Top = 0
     Width = 387
-    Height = 452
+    Height = 433
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
     FieldOfView = 51.630752563476560000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = ScnMouseDown
     OnMouseMove = ScnMouseMove
     TabOrder = 0
+    ExplicitHeight = 452
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
     Width = 161
-    Height = 452
+    Height = 433
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitHeight = 407
+    ExplicitHeight = 452
     object Label2: TLabel
       Left = 0
-      Top = 26
-      Width = 158
+      Top = 0
+      Width = 161
       Height = 26
       Align = alTop
-      Caption = 'Select and move with the mouse any of the two cubes.'
+      Caption = 'Select and move with the mouse any of the cubes.'
       ShowAccelChar = False
       WordWrap = True
-    end
-    object Label1: TLabel
-      Left = 0
-      Top = 0
-      Width = 114
-      Height = 13
-      Align = alTop
-      Caption = 'Author: Rado Stoyanov'
-      ShowAccelChar = False
-      WordWrap = True
+      ExplicitWidth = 158
     end
     object Label3: TLabel
       Left = 0
-      Top = 52
-      Width = 150
+      Top = 26
+      Width = 161
       Height = 26
       Align = alTop
       Caption = 'Default movement is on the XY plane.'
       ShowAccelChar = False
       WordWrap = True
+      ExplicitWidth = 150
     end
     object Label4: TLabel
       Left = 0
-      Top = 78
-      Width = 145
+      Top = 52
+      Width = 161
       Height = 26
       Align = alTop
       Caption = 'Shift + Drag moves on the XZ plane.'
       ShowAccelChar = False
       WordWrap = True
-    end
-    object Label5: TLabel
-      Left = 0
-      Top = 13
-      Width = 142
-      Height = 13
-      Align = alTop
-      Caption = 'radostoyanov@softhome.net'
-      ShowAccelChar = False
-      WordWrap = True
+      ExplicitWidth = 145
     end
     object Button1: TButton
       Left = 618
@@ -99,7 +84,7 @@ object Form1: TForm1
     end
     object GroupBox1: TGroupBox
       Left = 0
-      Top = 104
+      Top = 78
       Width = 161
       Height = 43
       Align = alTop
@@ -115,6 +100,16 @@ object Form1: TForm1
         OnClick = ShowAxesClick
       end
     end
+  end
+  object StatusBar: TStatusBar
+    Left = 0
+    Top = 433
+    Width = 548
+    Height = 19
+    Panels = <>
+    ExplicitLeft = 304
+    ExplicitTop = -16
+    ExplicitWidth = 0
   end
   object GLScene1: TGLScene
     Left = 296
@@ -259,5 +254,9 @@ object Form1: TForm1
     Font.Style = []
     Left = 400
     Top = 8
+  end
+  object GLSmoothNavigator1: TGLSmoothNavigator
+    Left = 400
+    Top = 64
   end
 end

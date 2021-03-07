@@ -59,10 +59,10 @@ void __fastcall TForm1::GLCadencer1Progress(TObject * Sender,
 											const double deltaTime,
 											const double newTime)
 {
-  Gls::Vectorgeometry::TVector rayStart, rayVector;
+  TGLVector rayStart, rayVector;
   float velocity;
-  Gls::Vectorgeometry::TVector pPoint;
-  Gls::Vectorgeometry::TVector pNormal;
+  TGLVector pPoint;
+  TGLVector pNormal;
   __int64 t;
 
   if(IsKeyDown(VK_ESCAPE))
@@ -111,7 +111,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject * Sender,
 
 //---------------------------------------------------------------------------
 
-void TForm1::AddToTrail(const Gls::Vectorgeometry::TVector & p)
+void TForm1::AddToTrail(const TGLVector & p)
 {
   int i, k;
   Lines1->Nodes->Last()->AsVector = p;

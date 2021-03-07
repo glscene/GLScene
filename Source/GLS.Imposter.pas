@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Imposter;
 
 (* Imposter building and rendering implementation for GLScene *)
@@ -37,17 +36,17 @@ uses
 type
   (* Imposter rendering options.
      Following options are supported:
-      impoBlended : the imposters are transparently blended during renders,
-     this will smooth their edges but requires them to be rendered sorted
-     from back to front
-      impoAlphaTest : alpha test is used to eliminate transparent pixels,
-     the alpha treshold is adjusted by the AlphaTreshold property
+     impoBlended : the imposters are transparently blended during renders,
+      this will smooth their edges but requires them to be rendered sorted
+      from back to front
+     impoAlphaTest : alpha test is used to eliminate transparent pixels,
+      the alpha treshold is adjusted by the AlphaTreshold property
       impoNearestFiltering : use nearest texture filtering (the alternative
-     is linear filtering)
-      impoPerspectiveCorrection : activates a special imposter rendering
-     projection suitable for distorting the sprites when seen from a level
-     angle of view with a wide focal camera (think trees/grass when walking
-     in a forest), if not active, the imposter sprites are camera-facing *)
+      is linear filtering)
+     impoPerspectiveCorrection : activates a special imposter rendering
+      projection suitable for distorting the sprites when seen from a level
+      angle of view with a wide focal camera (think trees/grass when walking
+      in a forest), if not active, the imposter sprites are camera-facing *)
   TImposterOption = (impoBlended, impoAlphaTest, impoNearestFiltering,
     impoPerspectiveCorrection);
   TImposterOptions = set of TImposterOption;

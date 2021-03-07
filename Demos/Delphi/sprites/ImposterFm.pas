@@ -60,9 +60,7 @@ type
     procedure CBShowImposterClick(Sender: TObject);
     procedure CBShowTeapotClick(Sender: TObject);
   private
-     
   public
-     
     impBuilder: TGLStaticImposterBuilder;
     renderPoint: TGLRenderPoint;
     mx, my: Integer;
@@ -98,7 +96,7 @@ end;
 procedure TFormImposter.GLDirectOpenGL1Render(Sender: TObject;
   var rci: TGLRenderContextInfo);
 var
-  camPos, pos: TVector;
+  camPos, pos: TGLVector;
   imp: TImposter;
   X, Y: Integer;
 begin

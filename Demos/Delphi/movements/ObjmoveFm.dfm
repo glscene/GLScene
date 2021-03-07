@@ -2,8 +2,8 @@ object FormObjmove: TFormObjmove
   Left = 87
   Top = 128
   Caption = 'Moving Objects with Mouse'
-  ClientHeight = 407
-  ClientWidth = 571
+  ClientHeight = 469
+  ClientWidth = 628
   Color = clBtnFace
   ParentFont = True
   KeyPreview = True
@@ -12,16 +12,17 @@ object FormObjmove: TFormObjmove
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnKeyUp = FormKeyUp
+  OnMouseWheel = FormMouseWheel
   PixelsPerInch = 96
   TextHeight = 13
   object Scn: TGLSceneViewer
     Left = 161
     Top = 0
-    Width = 410
-    Height = 407
-    Camera = GLCamera1
+    Width = 467
+    Height = 450
+    Camera = GLCamera
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 25.000000000000000000
+    FieldOfView = 27.545242309570310000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ScnMouseDown
@@ -33,64 +34,39 @@ object FormObjmove: TFormObjmove
     Left = 0
     Top = 0
     Width = 161
-    Height = 407
+    Height = 450
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 1
     object Label2: TLabel
       Left = 0
-      Top = 26
-      Width = 161
+      Top = 0
+      Width = 158
       Height = 26
       Align = alTop
-      Caption = 'Select and move with the mouse any of the two cubes.'
+      Caption = 'Select and move with the mouse any of the cubes.'
       ShowAccelChar = False
       WordWrap = True
-      ExplicitWidth = 158
-    end
-    object Label1: TLabel
-      Left = 0
-      Top = 0
-      Width = 161
-      Height = 13
-      Align = alTop
-      Caption = 'Author: Rado Stoyanov'
-      ShowAccelChar = False
-      WordWrap = True
-      ExplicitWidth = 114
     end
     object Label3: TLabel
       Left = 0
-      Top = 52
-      Width = 161
+      Top = 26
+      Width = 150
       Height = 26
       Align = alTop
       Caption = 'Default movement is on the XY plane.'
       ShowAccelChar = False
       WordWrap = True
-      ExplicitWidth = 150
     end
     object Label4: TLabel
       Left = 0
-      Top = 78
-      Width = 161
+      Top = 52
+      Width = 145
       Height = 26
       Align = alTop
       Caption = 'Shift + Drag moves on the XZ plane.'
       ShowAccelChar = False
       WordWrap = True
-      ExplicitWidth = 145
-    end
-    object Label5: TLabel
-      Left = 0
-      Top = 13
-      Width = 161
-      Height = 13
-      Align = alTop
-      Caption = 'radostoyanov@softhome.net'
-      ShowAccelChar = False
-      WordWrap = True
-      ExplicitWidth = 142
     end
     object Button1: TButton
       Left = 618
@@ -102,7 +78,7 @@ object FormObjmove: TFormObjmove
     end
     object GroupBox1: TGroupBox
       Left = 0
-      Top = 104
+      Top = 78
       Width = 161
       Height = 43
       Align = alTop
@@ -121,6 +97,13 @@ object FormObjmove: TFormObjmove
       end
     end
   end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Top = 450
+    Width = 628
+    Height = 19
+    Panels = <>
+  end
   object GLScene1: TGLScene
     Left = 296
     Top = 8
@@ -129,7 +112,21 @@ object FormObjmove: TFormObjmove
       Position.Coordinates = {00000000000000005C8F82BF0000803F}
       CubeSize = {00000040000000400AD7233C}
     end
-    object TopLight1: TGLLightSource
+    object GLCamera: TGLCamera
+      DepthOfView = 1000.000000000000000000
+      FocalLength = 917.929199218750000000
+      NearPlaneBias = 0.001000000047497451
+      TargetObject = DummyCube
+      Position.Coordinates = {0000B8410000A041000080410000803F}
+      Direction.Coordinates = {2EF964BF2EF9E43E0000000000000000}
+      Up.Coordinates = {00000000000000000000803F00000000}
+    end
+    object DummyCube: TGLDummyCube
+      Position.Coordinates = {0000803F0000803F0000003F0000803F}
+      CubeSize = 0.200000002980232200
+      EdgeColor.Color = {DEDD5D3FDEDD5D3FE9E8683F0000803F}
+    end
+    object TopLight: TGLLightSource
       Ambient.Color = {0000003F0000003F0000003F0000803F}
       ConstAttenuation = 0.800000011920929000
       Diffuse.Color = {EAE9693FEAE9693FEAE9693F0000803F}
@@ -149,11 +146,6 @@ object FormObjmove: TFormObjmove
     object Cube2: TGLCube
       Position.Coordinates = {CDCCCCBECDCCCC3E000000BF0000803F}
       CubeSize = {0000803E0000803E0000803E}
-    end
-    object DummyCube1: TGLDummyCube
-      Position.Coordinates = {0000803F0000803F0000003F0000803F}
-      CubeSize = 0.200000002980232200
-      EdgeColor.Color = {DEDD5D3FDEDD5D3FE9E8683F0000803F}
     end
     object XArrow: TGLArrowLine
       Direction.Coordinates = {0000803F000000000000000000000000}
@@ -234,15 +226,6 @@ object FormObjmove: TFormObjmove
         'Z')
       CharacterRange = stcrAlphaNum
     end
-    object GLCamera1: TGLCamera
-      DepthOfView = 1000.000000000000000000
-      FocalLength = 917.929199218750000000
-      NearPlaneBias = 0.001000000047497451
-      TargetObject = DummyCube1
-      Position.Coordinates = {0000B8410000A041000080410000803F}
-      Direction.Coordinates = {2EF964BF2EF9E43E0000000000000000}
-      Up.Coordinates = {00000000000000000000803F00000000}
-    end
     object TopText: TGLHUDText
       Position.Coordinates = {0000A0400000A040000000000000803F}
       BitmapFont = GLWindowsBitmapFont1
@@ -264,5 +247,11 @@ object FormObjmove: TFormObjmove
     Font.Style = []
     Left = 448
     Top = 8
+  end
+  object GLSmoothNavigator1: TGLSmoothNavigator
+    MovingObject = DummyCube
+    MoveAroundParams.TargetObject = DummyCube
+    Left = 448
+    Top = 72
   end
 end

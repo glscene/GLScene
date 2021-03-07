@@ -17,16 +17,13 @@
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
-//---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
-	: TForm(Owner)
-{
-}
-//---------------------------------------------------------------------------
 
 const int
   cSize = 10;
-void __fastcall TForm1::FormCreate(TObject *Sender)
+
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
 {
   int x, y, z;
   TGLCube *cube;
@@ -51,9 +48,10 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	  }
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
-          const double newTime)
+		  const double newTime)
 {
- //DummyCube1->TurnAngle = 90 * newTime; // 90° per second
+  DummyCube1->TurnAngle = 90 * newTime; // 90° per second
 }
 //---------------------------------------------------------------------------

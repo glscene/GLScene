@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Selection;
 
 (* Picking and selection of objects *)
@@ -14,19 +13,18 @@ uses
   Winapi.OpenGL,
   System.SysUtils,
   System.Classes,
-   
-  GLS.OpenGLTokens, 
-  GLS.Context, 
-  GLS.VectorLists, 
+
+  GLS.OpenGLTokens,
+  GLS.Context,
+  GLS.VectorLists,
   GLS.VectorGeometry,
-  GLS.BaseClasses, 
+  GLS.BaseClasses,
   GLS.PersistentClasses;
 
- const
+const
   MAX_OBJECT_STACK_DEPTH = 512;
 
 type
-
   TPickSubObjects = array of LongInt;
 
   TPickRecord = class
@@ -85,7 +83,6 @@ type
   end;
 
   TGLBaseSelectTechniqueClass = class of TGLBaseSelectTechnique;
-
 
   TGLSelectRenderModeTechnique = class(TGLBaseSelectTechnique)
   private
@@ -180,13 +177,11 @@ begin
     Sort(@Comparefunction);
 end;
 
-
 procedure TGLPickList.Clear;
 begin
   DoClean;
   inherited;
 end;
-
 
 function TGLPickList.FindObject(aObject: TObject): Integer;
 var
@@ -204,18 +199,15 @@ begin
     end;
 end;
 
-
 function TGLPickList.GetFar(aValue: Integer): Single;
 begin
   Result := TPickRecord(Items[AValue]).ZMax;
 end;
 
-
 function TGLPickList.GetHit(aValue: Integer): TObject;
 begin
   Result := TPickRecord(Items[AValue]).AObject;
 end;
-
 
 function TGLPickList.GetNear(aValue: Integer): Single;
 begin
@@ -226,7 +218,6 @@ function TGLPickList.GetSubObjects(aValue: Integer): TPickSubobjects;
 begin
   Result := TPickRecord(Items[AValue]).SubObjects;
 end;
-
 
 // ------------------
 // ------------------ TGLSelectRenderModeTechnique ------------------
@@ -286,7 +277,6 @@ begin
     AList := TGLPickList.Create(psDefault)
   else
     AList.Clear;
-
   if FHits > -1 then
   begin
     next := 0;
@@ -328,7 +318,5 @@ begin
   gl.LoadName(FCurrentName);
   Inc(FCurrentName);
 end;
-
- 
 
 end.

@@ -86,7 +86,7 @@ procedure TFormMushroom.AddMushrooms;
 var
    i : Integer;
    proxy : TGLProxyObject;
-   s : TVector;
+   s : TGLVector;
    f : Single;
 begin
    // spawn some more mushrooms using proxy objects

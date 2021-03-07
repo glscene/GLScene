@@ -12,13 +12,12 @@ object FormCandles: TFormCandles
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  WindowState = wsMaximized
   OnResize = FormResize
   PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 0
+    Top = 29
     Width = 442
     Height = 296
     Camera = GLCamera1
@@ -32,11 +31,11 @@ object FormCandles: TFormCandles
   end
   object TrackBar1: TTrackBar
     Left = 0
-    Top = 296
+    Top = 0
     Width = 442
     Height = 29
     Hint = 'Wind'
-    Align = alBottom
+    Align = alTop
     Max = 20
     Min = -20
     ParentShowHint = False
@@ -44,6 +43,7 @@ object FormCandles: TFormCandles
     ShowHint = True
     TabOrder = 1
     OnChange = TrackBar1Change
+    ExplicitTop = 302
   end
   object GLScene1: TGLScene
     Left = 32

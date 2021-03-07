@@ -112,7 +112,7 @@ end;
 
 procedure TFormActorProxy.DoRaycastStuff;
 var
-   rayStart, rayVector, iPoint, iNormal : TVector;
+   rayStart, rayVector, iPoint, iNormal : TGLVector;
 begin
      SetVector(rayStart, GLCamera1.AbsolutePosition);
      SetVector(rayVector, GLSceneViewer1.Buffer.ScreenToVector(

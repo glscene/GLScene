@@ -146,7 +146,7 @@ end;
 procedure TFormShadedTerrain.GLBumpmapHDS1NewTilePrepared(Sender: TGLBumpmapHDS;
   heightData: TGLHeightData; normalMapMaterial: TGLLibMaterial);
 var
-  Vec: TVector;
+  Vec: TGLVector;
 begin
   heightData.MaterialName := normalMapMaterial.Name;
   normalMapMaterial.Texture2Name := 'contrast';//'details', 'texture' or 'contrast';

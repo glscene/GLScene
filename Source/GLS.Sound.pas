@@ -20,6 +20,8 @@ uses
   GLS.VectorGeometry,
   GLS.Cadencer,
   GLS.BaseClasses,
+  GLS.FileMP3,
+  GLS.FileWAV,
   GLS.Utils;
 
 {$I GLScene.inc}

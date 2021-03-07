@@ -60,7 +60,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 
 void __fastcall TForm1::CgShader1ApplyVP(TCgProgram *CgProgram, TObject *Sender)
 {
-  Gls::Vectorgeometry::TVector v;
+  TGLVector v;
   TCgParameter *Param;
   // rotate light vector for the "simple lighting" vertex program
   v = ZHmgVector;

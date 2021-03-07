@@ -101,7 +101,7 @@ var
 
   FPickedSceneObject: TGLBaseSceneObject;
   NGDDynamicBehav: TGLNGDDynamic;
-  point3d, FPaneNormal: TVector;
+  point3d, FPaneNormal: TGLVector;
   M_X, M_Y: Integer;
   Maps_Count: Integer;
   OnAir, OnGround: boolean;
@@ -133,7 +133,7 @@ var
   peak_Up, peak_Down: boolean;
   ray, GP3D, result_GP3D: TVector4f;
   j: Integer;
-  point2d, GotoPoint3d: TVector;
+  point2d, GotoPoint3d: TGLVector;
   key_space: boolean;
   cp: TPoint;
   visible_cursor: boolean;

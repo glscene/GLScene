@@ -997,7 +997,7 @@ begin
 end;
 
 procedure TLogSession.DisplayLog;
-{$IFDEF LINUX}
+{$IF Defined(LINUX) and not Defined(CROSSVCL)}
 var
   lProcess: TProcess;
 {$ENDIF}
@@ -1006,7 +1006,7 @@ begin
   ShellExecute(0, 'open', 'C:\WINDOWS\notepad.exe',
     PChar(FCurrentLogFileName), nil, 1);
 {$ENDIF}
-{$IFDEF LINUX}
+{$IF Defined(LINUX) and not Defined(CROSSVCL)}
   lProcess := TProcess.Create(nil);
   lProcess.CommandLine := 'gedit ' + FCurrentLogFileName;
   lProcess.Execute;

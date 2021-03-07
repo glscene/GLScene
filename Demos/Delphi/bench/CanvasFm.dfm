@@ -16,7 +16,7 @@ object FormCanvas: TFormCanvas
   TextHeight = 13
   object PaintBox: TPaintBox
     Left = 272
-    Top = 64
+    Top = 65
     Width = 256
     Height = 256
   end

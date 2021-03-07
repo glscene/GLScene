@@ -142,9 +142,9 @@ __published:	// IDE-managed Components
 
 private:	// User declarations
 	int mx, my;
-	Gls::Vectorgeometry::TVector MousePos,LostMousePos;
+	TGLVector MousePos,LostMousePos;
 	bool MouseMoving;
-	Gls::Vectorgeometry::TVector pos;
+	TGLVector pos;
 	TGLBaseSceneObject *FObj;
 	TGLGizmoEx *Gizmo;
 	float FVectorLength;

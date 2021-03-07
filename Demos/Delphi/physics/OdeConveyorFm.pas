@@ -71,8 +71,8 @@ type
     procedure FDirChange(Sender: TObject);
     procedure AddODECubeClick(Sender: TObject);
   private
-    FUserDirection: TVector;
-    FDirectionVector: TVector;
+    FUserDirection: TGLVector;
+    FDirectionVector: TGLVector;
   end;
 
 var

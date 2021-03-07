@@ -57,7 +57,7 @@ __published:                   // IDE-managed Components
 private:                       // User declarations
   float colTotalTime;           // for timing collision detection
   int colCount;
-  void AddToTrail(const Gls::Vectorgeometry::TVector & p);
+  void AddToTrail(const TGLVector & p);
 public:                        // User declarations
     __fastcall TForm1(TComponent * Owner);
   int mousex, mousey;

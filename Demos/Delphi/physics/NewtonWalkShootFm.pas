@@ -183,10 +183,10 @@ procedure TFormNewtonWalkShoot.GLSceneViewer1MouseDown(Sender: TObject; Button: 
   Shift: TShiftState; X, Y: Integer);
 var
   Ball: TGLSphere;
-  delta: Tvector;
+  delta: TGLVector;
 
   PickedSceneObject: TGLBaseSceneObject;
-  point3d: Tvector;
+  point3d: TGLVector;
   MyX, MyY: Integer;
 begin
   // Shoot a Bullet
@@ -250,8 +250,8 @@ end;
 
 procedure TFormNewtonWalkShoot.MoveCam(const deltaTime, newTime: Double);
 var
-  f: Tvector;
-  fup, fdn, flf, frg: Tvector;
+  f: TGLVector;
+  fup, fdn, flf, frg: TGLVector;
   Bup, Bdn, Blf, Brg: Boolean;
   NGDDyn: TGLNGDDynamic;
 begin
@@ -308,8 +308,8 @@ end;
 
 procedure TFormNewtonWalkShoot.MoveGrab;
 var
-  point3d: Tvector;
-  delta: Tvector;
+  point3d: TGLVector;
+  delta: TGLVector;
 begin
   // Move the object in 3 unit front of GLCamera1.TargetObject
   if IsKeyDown(VK_MBUTTON) then

@@ -19,8 +19,6 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLS.ArchiveManager,
-  GLS.FilePAK,
-  GLS.FileZLIB,
   GLS.SceneViewer,
 
   GLS.BaseClasses,
@@ -36,6 +34,10 @@ uses
   GLS.State,
   GLS.CompositeImage,
   // FileFormats 3D
+  GLS.FileJPEG,
+  GLS.FilePAK,
+  GLS.FileZLIB,
+
   GLS.FileMS3D,
   GLS.File3DS,
   GLS.FileMD2,
@@ -45,7 +47,9 @@ uses
   GLS.FileSMD,
   GLS.FileTGA,
   GLS.FilePNG,
-  GLS.FileDDS;
+  GLS.FileDDS,
+
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)
@@ -129,12 +133,27 @@ var
 implementation
 //-------------------------------------
 
-uses 
+uses
   FolderDialog, 
   FolderSelect;
 
 {$R *.dfm}
 {.$R icons.res}
+
+procedure TForm1.FormCreate(Sender: TObject);
+var
+  Bmp: TBitmap;
+begin
+  SetGLSceneMediaDir();
+  Bmp := TBitmap.Create;
+  Bmp.LoadFromResourceName(HInstance, 'ICONS');
+  ImageList1.AddMasked(Bmp, clWhite);
+  Bmp.Free;
+  ArchiveManager := TGLSArchiveManager.Create(Self);
+  Archive := ArchiveManager.Archives.Add;
+  vMenu := None1;
+end;
+
 
 procedure TForm1.AddNode(text: string; node: TTreeNode);
 var
@@ -263,19 +282,6 @@ begin
             ImageIndex := 2;
         end;
     end;
-end;
-
-procedure TForm1.FormCreate(Sender: TObject);
-var
-  Bmp: TBitmap;
-begin
-  Bmp := TBitmap.Create;
-  Bmp.LoadFromResourceName(HInstance, 'ICONS');
-  ImageList1.AddMasked(Bmp, clWhite);
-  Bmp.Free;
-  ArchiveManager := TGLSArchiveManager.Create(Self);
-  Archive := ArchiveManager.Archives.Add;
-  vMenu := None1;
 end;
 
 procedure TForm1.TreeViewCollapsing(Sender: TObject; node: TTreeNode;

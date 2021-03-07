@@ -195,7 +195,7 @@ end;
 procedure TFormCgTexture.CgShader1ApplyVP(CgProgram: TCgProgram; Sender: TObject);
 
 var
-  v: TVector;
+  v: TGLVector;
 
   function conv(TrackBar: TTrackBar): single;
   var
@@ -219,7 +219,7 @@ end;
 
 procedure TFormCgTexture.CgShader1ApplyFP(CgProgram: TCgProgram; Sender: TObject);
 var
-  v: TVector;
+  v: TGLVector;
 
   function conv(TrackBar: TTrackBar): single;
   var

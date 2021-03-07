@@ -23,8 +23,20 @@ uses
   GLS.VectorTypes;
 
 const
+  {$IFDEF CROSSVCL}
+    {$IF Defined(LINUX)}
+    opengl32 = 'libGL.so';
+    glu32 = 'libGLU.so.1';
+    {$ELSEIF Defined(MACOS)}
+    opengl32 = '/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib';
+    glu32 = '/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLU.dylib';
+    {$ELSE}
+    Unsupported platform 
+    {$ENDIF}
+  {$ELSE}
   opengl32 = 'OpenGL32.dll';
   glu32 = 'GLU32.dll';
+  {$ENDIF}
 
 type
   EOpenGLError = class(Exception);
@@ -1766,8 +1778,17 @@ end;
 {$ENDIF} //MSWINDOWS
 
 function GetProcAddressGLLib(ProcName: PAnsiChar): Pointer;
+{$IFDEF CROSSVCL}
+var
+  UniProcName: string;
+{$ENDIF}
 begin
+  {$IFDEF CROSSVCL}
+  UniProcName := ProcName;
+  Result := getProcAddress(GLHandle, PChar(UniProcName));
+  {$ELSE}
   Result := getProcAddress(GLHandle, ProcName);
+  {$ENDIF}
 end;
 
 var
@@ -4909,7 +4930,9 @@ end;
 initialization
 //--------------------------------------
 
+{$IFNDEF CROSSVCL}
 Set8087CW($133F);
+{$ENDIF}
 
 finalization
 

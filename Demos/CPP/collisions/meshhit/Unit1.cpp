@@ -36,7 +36,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y)
 {
-   Gls::Vectorgeometry::TVector rayStart, rayVector, iPoint, iNormal;
+   TGLVector rayStart, rayVector, iPoint, iNormal;
    // retrieve raycasting data:
    //    rayStart is obtained for camera and screen position
    //    rayVector is the camera direction (i.e direction to target since our camera is targeted)
@@ -71,7 +71,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
 void __fastcall TForm1::GLSceneViewer2MouseDown(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y)
 {
-   Gls::Vectorgeometry::TVector rayStart, rayVector, iPoint, iNormal;
+   TGLVector rayStart, rayVector, iPoint, iNormal;
    // retrieve raycasting data:
    //    rayStart is the eye (camera) position
    //    rayVector is computed from screen position

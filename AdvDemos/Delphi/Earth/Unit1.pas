@@ -127,13 +127,13 @@ const
     1 / 11, 1 / 12, 1 / 13, 1 / 14, 1 / 15, 1 / 16, 1 / 17, 1 / 18, 1 / 19, 1 / 20);
 var
   radius, invAtmosphereHeight: Single;
-  sunPos, eyePos, lightingVector: TVector;
-  diskNormal, diskRight, diskUp: TVector;
+  sunPos, eyePos, lightingVector: TGLVector;
+  diskNormal, diskRight, diskUp: TGLVector;
 
-  function AtmosphereColor(const rayStart, rayEnd: TVector): TColorVector;
+  function AtmosphereColor(const rayStart, rayEnd: TGLVector): TColorVector;
   var
     i, n: Integer;
-    atmPoint, normal: TVector;
+    atmPoint, normal: TGLVector;
     altColor: TColorVector;
     alt, rayLength, contrib, decay, intensity, invN: Single;
   begin
@@ -174,10 +174,10 @@ var
     Result.W := n * contrib * cOpacity * 0.1;
   end;
 
-  function ComputeColor(var rayDest: TVector; mayHitGround: Boolean): TColorVector;
+  function ComputeColor(var rayDest: TGLVector; mayHitGround: Boolean): TColorVector;
   var
-    ai1, ai2, pi1, pi2: TVector;
-    rayVector: TVector;
+    ai1, ai2, pi1, pi2: TGLVector;
+    rayVector: TGLVector;
   begin
     rayVector := VectorNormalize(VectorSubtract(rayDest, eyePos));
     if RayCastSphereIntersect(eyePos, rayVector, NullHmgPoint, cAtmosphereRadius, ai1, ai2) > 1 then
@@ -220,8 +220,8 @@ begin
   lightingVector := VectorNormalize(sunPos); // sun at infinity
   PrepareSinCosCache(sinCache, cosCache, 0, 360);
 
-  GetMem(pVertex, 2 * (cSlices + 1) * SizeOf(TVector));
-  GetMem(pColor, 2 * (cSlices + 1) * SizeOf(TVector));
+  GetMem(pVertex, 2 * (cSlices + 1) * SizeOf(TGLVector));
+  GetMem(pColor, 2 * (cSlices + 1) * SizeOf(TGLVector));
 
   rci.GLStates.DepthWriteMask := False;
   rci.GLStates.Disable(stLighting);

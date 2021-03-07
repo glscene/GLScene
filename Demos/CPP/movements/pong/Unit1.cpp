@@ -67,7 +67,7 @@ const float
 void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
 		  const double newTime)
 {
-	Gls::Vectorgeometry::TVector newBallPos;
+	TGLVector newBallPos;
 	// gameOver is True as soon as the ball is behind the pad, but we don't end
 	// the game immediately so the user can realize he has lost
 	if ((!gameOver) && (deltaTime>0))

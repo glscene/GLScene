@@ -74,8 +74,8 @@ procedure TFormProjection.DirectOpenGLRender(Sender: TObject; var rci: TGLRender
 var
   i: Integer;
   mat: TMatrix;
-  p, pProj: TVector;
-  planePoint, planeNormal: TVector;
+  p, pProj: TGLVector;
+  planePoint, planeNormal: TGLVector;
   plane: THmgPlane;
 begin
   // Here we recover our plane point and normal...

@@ -17,6 +17,8 @@
 #pragma link "GLS.SpaceText"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.WindowsFont"
+#pragma link "GLS.Navigator"
+#pragma link "GLS.SmoothNavigator"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
@@ -35,10 +37,10 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   UpdateHudText();
 }
 //---------------------------------------------------------------------------
-Gls::Vectorgeometry::TVector __fastcall TForm1::MouseWorldPos(int X, int Y)
+TGLVector __fastcall TForm1::MouseWorldPos(int X, int Y)
 {
-  Gls::Vectorgeometry::TVector v;
-  Gls::Vectorgeometry::TVector Result;
+  TGLVector v;
+  TGLVector Result;
 
   Y = Scn->Height - Y;
   if (CurrentPick)
@@ -131,7 +133,7 @@ void __fastcall TForm1::ScnMouseDown(TObject *Sender, TMouseButton Button, TShif
 void __fastcall TForm1::ScnMouseMove(TObject *Sender, TShiftState Shift, int X, int Y)
 
 {
-  Gls::Vectorgeometry::TVector newPos;
+  TGLVector newPos;
 
   ScnMouseMoveCnt++;
 ////not translated  Assert(ScnMouseMoveCnt < 2);

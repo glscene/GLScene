@@ -83,7 +83,7 @@ implementation
 
 procedure TFormWaterPlane.ClickWater(X, Y: Integer);
 var
-  ip: TVector;
+  ip: TGLVector;
 begin
   // create a ripple in the pond on a right-mousebutton click
 

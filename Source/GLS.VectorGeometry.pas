@@ -72,7 +72,11 @@ type
 
   PExtendedVector = ^TExtendedVector;
   PExtendedArray = PExtendedVector;
+  {$IFDEF CROSSVCL}
+  TExtendedVector = array [0 .. cMaxArray div 2] of Extended;
+  {$ELSE}
   TExtendedVector = array [0 .. cMaxArray] of Extended;
+  {$ENDIF}
 
   PPointerVector = ^TPointerVector;
   PPointerArray = PPointerVector;

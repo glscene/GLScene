@@ -477,8 +477,8 @@ type
     property Options: TGLLinesOptions read FOptions write SetOptions;
   end;
 
-  TCubePart = (cpTop, cpBottom, cpFront, cpBack, cpLeft, cpRight);
-  TCubeParts = set of TCubePart;
+  TGLCubePart = (cpTop, cpBottom, cpFront, cpBack, cpLeft, cpRight);
+  TGLCubeParts = set of TGLCubePart;
 
   (* A simple cube object.
     This cube use the same material for each of its faces, ie. all faces look
@@ -487,11 +487,11 @@ type
   TGLCube = class(TGLSceneObject)
   private
     FCubeSize: TAffineVector;
-    FParts: TCubeParts;
+    FParts: TGLCubeParts;
     FNormalDirection: TGLNormalDirection;
     function GetCubeWHD(const Index: Integer): TGLFloat; inline;
     procedure SetCubeWHD(Index: Integer; aValue: TGLFloat); inline;
-    procedure SetParts(aValue: TCubeParts); inline;
+    procedure SetParts(aValue: TGLCubeParts); inline;
     procedure SetNormalDirection(aValue: TGLNormalDirection); inline;
   protected
     procedure DefineProperties(Filer: TFiler); override;
@@ -516,7 +516,7 @@ type
       stored False;
     property NormalDirection: TGLNormalDirection read FNormalDirection
       write SetNormalDirection default ndOutside;
-    property Parts: TCubeParts read FParts write SetParts
+    property Parts: TGLCubeParts read FParts write SetParts
       default [cpTop, cpBottom, cpFront, cpBack, cpLeft, cpRight];
   end;
 
@@ -2520,7 +2520,7 @@ begin
   end;
 end;
 
-procedure TGLCube.SetParts(aValue: TCubeParts);
+procedure TGLCube.SetParts(aValue: TGLCubeParts);
 begin
   if aValue <> FParts then
   begin

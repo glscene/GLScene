@@ -25,6 +25,9 @@ uses
   Winapi.Windows;
 
 type
+
+// ===========  OpenGL types  ============
+
   TGLboolean = BYTEBOOL;
   PGLboolean = ^TGLboolean;
 
@@ -101,7 +104,8 @@ type
   TGLhalf = WORD;
   PGLhalf = ^TGLhalf;
 
-  // Windows types
+// ========= Windows types ==============
+
   PWGLswap = ^TWGLswap;
   _WGLSWAP = packed record
     hdc: HDC;
@@ -112,13 +116,18 @@ type
   WGLSWAP = _WGLSWAP;
   HPBUFFERARB = Integer;
 
-  (* These OpenCL's types are compatible with cl_context and cl_event *)
+(* These OpenCL's types are compatible with cl_context and cl_event *)
+
   T_cl_context = record end;
   P_cl_context = ^T_cl_context;
   T_cl_event = record end;
   P_cl_event = ^T_cl_event;
 
+
 type
+
+// ===========  Vectors  ============
+
   //2
   TVector2d = record
     case Integer of
@@ -293,6 +302,11 @@ type
       1 : (X,Y,Z,W: Pointer);
   end;
 
+  PGLVector = ^TGLVector;
+  TGLVector = TVector4f;
+
+// ===========  Matrices  ============
+
  TMatrix2d = record
     case Integer of
       0 : (V: array[0..1] of TVector2d);
@@ -432,6 +446,9 @@ type
            _41, _42, _43, _44: single);
       1 : (M : TMatrix4f);
   end;
+
+  PGLMatrix = ^TMatrix4f;
+  TGLMatrix = TMatrix4f;
 
 //-----------------------------------------------  
 implementation

@@ -1,9 +1,7 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Isosurface;
-
 (*
   Polygonising a scalar field by construction of isosurfaces
   Algorithms
@@ -27,7 +25,6 @@ unit GLS.Isosurface;
   - Simple Data Structures to store Mesh. Vertices are calculated and stored twice
   or even more often.
 *)
-
 interface
 
 {$I GLScene.inc}
@@ -51,7 +48,6 @@ type
   TSingle3DArray = array of array of array of Single;
   TVertexArray = array of TVector3f;
   TIntegerArray = array of Integer;
-
   TGLMarchingCube = class(TObject)
   private
     FIsoValue: TxScalarValue;
@@ -156,10 +152,10 @@ type
       var AData: TSingle3DArray); overload;
     destructor Destroy(); override;
     procedure AssignData(Xdim, Ydim, Zdim: Integer; var AData: TSingle3DArray);
-    { Launch Marching Cubes }
+    // Launch Marching Cubes
     procedure MarchingCubes(Isovalue: Single; out Vertices: TVertexArray;
       out Triangles: TIntegerArray; isPolished: boolean);
-    { Launch Marching Tetrahedra }
+    // Launch Marching Tetrahedra
     procedure MarchingTetrahedra(Isovalue: Single; out Vertices: TVertexArray;
       out Triangles: TIntegerArray; isPolished: boolean);
   end;

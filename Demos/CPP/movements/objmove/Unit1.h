@@ -29,6 +29,9 @@
 #include "GLS.BitmapFont.hpp"
 #include "GLS.WindowsFont.hpp"
 #include "GLS.HUDObjects.hpp"
+#include <Vcl.ComCtrls.hpp>
+#include "GLS.Navigator.hpp"
+#include "GLS.SmoothNavigator.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
@@ -37,10 +40,8 @@ __published:	// IDE-managed Components
 	TGLSceneViewer *Scn;
 	TPanel *Panel1;
 	TLabel *Label2;
-	TLabel *Label1;
 	TLabel *Label3;
 	TLabel *Label4;
-	TLabel *Label5;
 	TButton *Button1;
 	TGroupBox *GroupBox1;
 	TCheckBox *ShowAxes;
@@ -60,6 +61,8 @@ __published:	// IDE-managed Components
 	TGLHUDText *TopText;
 	TGLHUDText *ObjText;
 	TGLWindowsBitmapFont *GLWindowsBitmapFont1;
+	TStatusBar *StatusBar;
+	TGLSmoothNavigator *GLSmoothNavigator1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall ScnMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
@@ -71,11 +74,11 @@ __published:	// IDE-managed Components
 	void __fastcall FormKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
 
 private:	// User declarations
-	Gls::Vectorgeometry::TVector lastMouseWorldPos;
+	TGLVector lastMouseWorldPos;
 	bool movingOnZ;
 	TGLCustomSceneObject *CurrentPick;
 	int ScnMouseMoveCnt;
-	Gls::Vectorgeometry::TVector __fastcall MouseWorldPos(int X, int Y);
+	TGLVector __fastcall MouseWorldPos(int X, int Y);
 	void __fastcall UpdateHudText();
 	void __fastcall ProcessPick(TGLBaseSceneObject* pick);
 public:		// User declarations

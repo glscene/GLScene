@@ -26,7 +26,6 @@ __published:	// IDE-managed Components
 	TGLCamera *GLCamera1;
 	TGLCadencer *GLCadencer1;
 	TGLSimpleNavigation *GLSimpleNavigation1;
-	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall GLCadencer1Progress(TObject *Sender, const double deltaTime, const double newTime);
 
 private:	// User declarations

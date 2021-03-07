@@ -153,7 +153,7 @@ end;
 
 procedure TFormCgSimple.CgShader1ApplyVP(CgProgram: TCgProgram; Sender: TObject);
 var
-  v : TVector;
+  v : TGLVector;
   Param: TCgParameter;
 begin
   // rotate light vector for the "simple lighting" vertex program

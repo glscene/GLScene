@@ -76,7 +76,7 @@ type
      
     mx, my: Integer;
     tileX, tileY: Integer;
-    mip, translateOffset: TVector;
+    mip, translateOffset: TGLVector;
     translating: Boolean;
   end;
 
@@ -141,7 +141,7 @@ end;
 procedure TFormTiles.GLCadencer1Progress(Sender: TObject;
   const deltaTime, newTime: Double);
 var
-  ip: TVector;
+  ip: TGLVector;
   mp: TPoint;
   shiftDown: Boolean;
 begin

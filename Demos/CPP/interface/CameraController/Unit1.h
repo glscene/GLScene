@@ -135,7 +135,7 @@ private:	// User declarations
 	void __fastcall GetInput(TButton *Sender);
 	TVector4f __fastcall(__closure *TGLNavigatorSmoothChangeVectorGetEvent)
 		(TGLNavigatorSmoothChangeVector* const ASender);
-	Gls::Vectorgeometry::TVector __fastcall OnGetCameraPosition(
+	TGLVector __fastcall OnGetCameraPosition(
 					   TGLNavigatorSmoothChangeVector* const ASender);
 	void __fastcall OnSetCameraPosition(TGLNavigatorSmoothChangeVector* const ASender,
 					   const TVector4f &AValue);

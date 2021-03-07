@@ -146,8 +146,8 @@ type
     FCameraSmoothAnimator_AbsPos: TGLNavigatorSmoothChangeVector;
     FCameraSmoothAnimator_RelPos: TGLNavigatorSmoothChangeVector;
     procedure GetInput(Sender:TButton);
-    function OnGetCameraPosition(const ASender: TGLNavigatorSmoothChangeVector): TVector;
-    procedure OnSetCameraPosition(const ASender: TGLNavigatorSmoothChangeVector; const AValue: TVector);
+    function OnGetCameraPosition(const ASender: TGLNavigatorSmoothChangeVector): TGLVector;
+    procedure OnSetCameraPosition(const ASender: TGLNavigatorSmoothChangeVector; const AValue: TGLVector);
   public
 end;
 
@@ -195,7 +195,7 @@ begin
   end;
 end;
 
-function TForm1.OnGetCameraPosition(const ASender: TGLNavigatorSmoothChangeVector): TVector;
+function TForm1.OnGetCameraPosition(const ASender: TGLNavigatorSmoothChangeVector): TGLVector;
 begin
   if ASender = FCameraSmoothAnimator_AbsPos then
     Result := GLCamera.AbsolutePosition
@@ -203,7 +203,7 @@ begin
     Result := GLCamera.Position.DirectVector;
 end;
 
-procedure TForm1.OnSetCameraPosition(const ASender: TGLNavigatorSmoothChangeVector; const AValue: TVector);
+procedure TForm1.OnSetCameraPosition(const ASender: TGLNavigatorSmoothChangeVector; const AValue: TGLVector);
 begin
   if ASender = FCameraSmoothAnimator_AbsPos then
     GLCamera.AbsolutePosition := AValue
@@ -248,7 +248,7 @@ end;
 //OrbitToPos Usage
 procedure TForm1.btnOrbitToPosClick(Sender: TObject);
 var
-  lTargetPosition: TVector;
+  lTargetPosition: TGLVector;
 begin
   GetInput(TButton(Sender));
   lTargetPosition := dcSphere.LocalToAbsolute(PointMake(DextX, DextY, DextZ));
@@ -258,7 +258,7 @@ end;
 
 procedure TForm1.btnOrbitToPosAdvClick(Sender: TObject);
 var
-  lTargetPosition: TVector;
+  lTargetPosition: TGLVector;
 begin
   GetInput(TButton(Sender));
   lTargetPosition := dcSphere.LocalToAbsolute(PointMake(DextX, DextY, DextZ));
@@ -355,7 +355,7 @@ var
   lAngle: Single; // In radians.
   lTime: Single;
   lNeedToRecalculateZoom: Boolean;
-  lTargetPosition: TVector;
+  lTargetPosition: TGLVector;
 begin
   GetInput(TButton(Sender));
 
@@ -393,7 +393,7 @@ procedure TForm1.btSmoothOrbitToPosAdvClick(Sender: TObject);
 var
   lAngle: Single; // In radians.
   lTime: Single;
-  lTargetPosition: TVector;
+  lTargetPosition: TGLVector;
 begin
   GetInput(TButton(Sender));
 

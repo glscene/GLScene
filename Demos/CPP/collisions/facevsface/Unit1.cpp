@@ -161,7 +161,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
           int X, int Y)
 {
    int dx, dy;
-   Gls::Vectorgeometry::TVector VX, VY;
+   TGLVector VX, VY;
    TGLCamera *Camera;
 
    Camera = GLSceneViewer1->Camera;

@@ -67,7 +67,7 @@ type
     procedure FormCreate(Sender: TObject);
   private
      
-       point3d, FPaneNormal: TVector;
+       point3d, FPaneNormal: TGLVector;
 
   public
      
@@ -90,7 +90,7 @@ end;
 procedure TFormNewtonJoints.GLCadencer1Progress(Sender: TObject;
   const deltaTime, newTime: Double);
   var
-  point2d, GotoPoint3d: TVector;
+  point2d, GotoPoint3d: TGLVector;
 begin
   GLNGDManager1.Step(deltaTime);
 
