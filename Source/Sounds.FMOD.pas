@@ -67,7 +67,7 @@ type
 
   PFMODInfo = ^TFMODInfo;
 
-procedure VectorToFMODVector(const aVector: TVector; var aFMODVector: TFSoundVector);
+procedure VectorToFMODVector(const aVector: TGLVector; var aFMODVector: TFSoundVector);
 begin
   aFMODVector.X := aVector.X;
   aFMODVector.Y := aVector.Y;
@@ -211,7 +211,7 @@ end;
 procedure TGLSMFMOD.UpdateSource(aSource: TGLBaseSoundSource);
 var
   p: PFMODInfo;
-  objPos, objVel: TVector;
+  objPos, objVel: TGLVector;
   position, velocity: TFSoundVector;
 begin
   if (sscSample in aSource.Changes) then
@@ -297,7 +297,7 @@ end;
 
 procedure TGLSMFMOD.UpdateSources;
 var
-  objPos, objVel, objDir, objUp: TVector;
+  objPos, objVel, objDir, objUp: TGLVector;
   position, velocity, fwd, top: TFSoundVector;
 begin
   // update listener

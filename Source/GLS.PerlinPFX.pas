@@ -103,7 +103,7 @@ type
     function Noise(const x, y: Single): Single; overload;
     function Noise(const x, y, z: Single): Single; overload;
     function Noise(const v: TAffineVector): Single; overload;
-    function Noise(const v: TVector): Single; overload;
+    function Noise(const v: TGLVector): Single; overload;
   end;
 
 
@@ -432,7 +432,7 @@ begin
   Result := Noise(AffineVectorMake(x, y, z));
 end;
 
-function TGLPerlin3DNoise.Noise(const v: TVector): Single;
+function TGLPerlin3DNoise.Noise(const v: TGLVector): Single;
 begin
   Result := Noise(PAffineVector(@v)^);
 end;

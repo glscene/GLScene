@@ -193,7 +193,7 @@ procedure TGLFeedback.BuildMeshFromBuffer(
 var
   value: Single;
   i, j, LCount, skip: Integer;
-  vertex, color, texcoord: TVector;
+  vertex, color, texcoord: TGLVector;
   tempVertices, tempNormals, tempTexCoords: TAffineVectorList;
   tempColors: TVectorList;
   tempIndices: TIntegerList;

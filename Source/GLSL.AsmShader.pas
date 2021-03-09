@@ -41,7 +41,7 @@ type
     function GetAsVector2i: TVector2i; override;
     function GetAsVector3f: TVector3f; override;
     function GetAsVector3i: TVector3i; override;
-    function GetAsVector4f: TVector; override;
+    function GetAsVector4f: TGLVector; override;
     function GetAsVector4i: TVector4i; override;
 
     procedure SetAsVector1f(const Value: Single); override;

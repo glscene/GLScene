@@ -227,7 +227,7 @@ procedure TFormDCE.AddMushrooms;
 var
   i: Integer;
   proxy: TGLFreeFormProxy;
-  s: TVector;
+  s: TGLVector;
   f: Single;
 begin
   // spawn some more mushrooms using proxy objects

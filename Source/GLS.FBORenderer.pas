@@ -196,7 +196,7 @@ type
     FPostGenerateMipmap: Boolean;
     FMaxSize: Integer;
     FMaxAttachment: Integer;
-    FStoreCamera: array[0..2] of TVector;
+    FStoreCamera: array[0..2] of TGLVector;
     FOnSetTextureTargets: TSetTextureTargetsEvent;
     // implementing IGLMaterialLibrarySupported
     function GetMaterialLibrary: TGLAbstractMaterialLibrary;

@@ -29,13 +29,13 @@ uses
 type
 
   TBSPCullingSphere = record
-    position: TVector;
+    position: TGLVector;
     radius: Single;
   end;
 
   TBSPRenderContextInfo = record
     // Local coordinates of the camera (can be a vector or point)
-    cameraLocal: TVector;
+    cameraLocal: TGLVector;
     rci: PRenderContextInfo;
     faceGroups: TList;
     cullingSpheres: array of TBSPCullingSphere;
@@ -85,7 +85,7 @@ type
       of tree balancing (structurally speaking, not polygon-wise). *)
     function AverageDepth: Single;
     // Traverses the tree to the given point and returns the node index.
-    function FindNodeByPoint(const aPoint: TVector): TFGBSPNode;
+    function FindNodeByPoint(const aPoint: TGLVector): TFGBSPNode;
     (*  Rendering sort mode.
       This sort mode can currently *not* blend with the sort by materials
       flag, default mode is rsBackToFront.
@@ -278,10 +278,10 @@ var
   renderNode: Boolean;
   camNode: TFGBSPNode;
 
-  procedure AbsoluteSphereToLocal(const absPos: TVector; absRadius: Single;
+  procedure AbsoluteSphereToLocal(const absPos: TGLVector; absRadius: Single;
     var local: TBSPCullingSphere);
   var
-    v: TVector;
+    v: TGLVector;
   begin
     local.position := Owner.Owner.AbsoluteToLocal(absPos);
     SetVector(v, absRadius, absRadius, absRadius, 0);
@@ -500,7 +500,7 @@ begin
   end;
 end;
 
-function TBSPMeshObject.FindNodeByPoint(const aPoint: TVector): TFGBSPNode;
+function TBSPMeshObject.FindNodeByPoint(const aPoint: TGLVector): TFGBSPNode;
 
   function Traverse(nodeIndex: Integer): Integer;
   var

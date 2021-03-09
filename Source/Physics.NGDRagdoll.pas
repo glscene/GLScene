@@ -49,7 +49,7 @@ procedure Conform;
 destructor Destroy; override;
 procedure LoadFromFile(filename: string);
 procedure SaveToFile(filename: string);
-function TranslatePos(n: integer; add: boolean): TVector;
+function TranslatePos(n: integer; add: boolean): TGLVector;
 end;
 
 function GetBoneParent(actor: TGLActor; bone: integer): integer;

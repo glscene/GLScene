@@ -68,7 +68,7 @@ type
 
   PBASSInfo = ^TBASSInfo;
 
-procedure VectorToBASSVector(const aVector: TVector;
+procedure VectorToBASSVector(const aVector: TGLVector;
   var aBASSVector: BASS_3DVECTOR);
 begin
   aBASSVector.x := aVector.x;
@@ -177,7 +177,7 @@ procedure TGLSMBASS.UpdateSource(aSource: TGLBaseSoundSource);
 var
   i: Integer;
   p: PBASSInfo;
-  objPos, objOri, objVel: TVector;
+  objPos, objOri, objVel: TGLVector;
   position, orientation, velocity: BASS_3DVECTOR;
   res: Boolean;
 begin
@@ -289,7 +289,7 @@ end;
 
 procedure TGLSMBASS.UpdateSources;
 var
-  objPos, objVel, objDir, objUp: TVector;
+  objPos, objVel, objDir, objUp: TGLVector;
   position, velocity, fwd, top: BASS_3DVECTOR;
 begin
   // update listener

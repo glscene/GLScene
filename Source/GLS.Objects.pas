@@ -87,15 +87,15 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
-    function AxisAlignedDimensionsUnscaled: TVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TVector;
-      intersectPoint: PVector = nil; intersectNormal: PVector = nil)
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
+    function RayCastIntersect(const rayStart, rayVector: TGLVector;
+      intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil)
       : Boolean; override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
     procedure DoRender(var rci: TGLRenderContextInfo;
       renderSelf, renderChildren: Boolean); override;
     procedure StructureChanged; override;
-    function BarycenterAbsolutePosition: TVector; override;
+    function BarycenterAbsolutePosition: TGLVector; override;
   published
     property CubeSize: TGLFloat read FCubeSize write SetCubeSize;
     property EdgeColor: TGLColor read FEdgeColor write SetEdgeColor;
@@ -161,16 +161,16 @@ type
     procedure BuildList(var rci: TGLRenderContextInfo); override;
     function GenerateSilhouette(const silhouetteParameters
       : TGLSilhouetteParameters): TGLSilhouette; override;
-    function AxisAlignedDimensionsUnscaled: TVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TVector;
-      intersectPoint: PVector = nil; intersectNormal: PVector = nil)
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
+    function RayCastIntersect(const rayStart, rayVector: TGLVector;
+      intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil)
       : Boolean; override;
     (* Computes the screen coordinates of the smallest rectangle encompassing the plane.
       Returned extents are NOT limited to any physical screen extents. *)
     function ScreenRect(aBuffer: TGLSceneBuffer): TRect;
     (* Computes the signed distance to the point.
       Point coordinates are expected in absolute coordinates. *)
-    function PointDistance(const aPoint: TVector): Single;
+    function PointDistance(const aPoint: TGLVector): Single;
   published
     property Height: TGLFloat read FHeight write SetHeight;
     property Width: TGLFloat read FWidth write SetWidth;
@@ -206,7 +206,7 @@ type
     constructor Create(AOwner: TComponent); override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
-    function AxisAlignedDimensionsUnscaled: TVector; override;
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
     procedure SetSize(const Width, Height: TGLFloat);
     // Set width and height to "size"
     procedure SetSquareSize(const Size: TGLFloat);
@@ -410,10 +410,10 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
-    function AxisAlignedDimensionsUnscaled: TVector; override;
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
     procedure AddNode(const coords: TGLCoordinates); overload;
     procedure AddNode(const X, Y, Z: TGLFloat); overload;
-    procedure AddNode(const Value: TVector); overload;
+    procedure AddNode(const Value: TGLVector); overload;
     procedure AddNode(const Value: TAffineVector); overload;
   published
     // Default color for nodes. lnaInvisible and lnaAxes ignore this setting
@@ -503,9 +503,9 @@ type
       : TGLSilhouetteParameters): TGLSilhouette; override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
     procedure Assign(Source: TPersistent); override;
-    function AxisAlignedDimensionsUnscaled: TVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TVector;
-      intersectPoint: PVector = nil; intersectNormal: PVector = nil)
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
+    function RayCastIntersect(const rayStart, rayVector: TGLVector;
+      intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil)
       : Boolean; override;
   published
     property CubeWidth: TGLFloat index 0 read GetCubeWHD write SetCubeWHD
@@ -578,9 +578,9 @@ type
     constructor Create(AOwner: TComponent); override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
-    function AxisAlignedDimensionsUnscaled: TVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TVector;
-      intersectPoint: PVector = nil; intersectNormal: PVector = nil)
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
+    function RayCastIntersect(const rayStart, rayVector: TGLVector;
+      intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil)
       : Boolean; override;
     function GenerateSilhouette(const silhouetteParameters
       : TGLSilhouetteParameters): TGLSilhouette; override;
@@ -615,7 +615,7 @@ type
     procedure NotifyChange(Sender: TObject); override;
     procedure AddNode(const coords: TGLCoordinates); overload;
     procedure AddNode(const X, Y, Z: TGLFloat); overload;
-    procedure AddNode(const Value: TVector); overload;
+    procedure AddNode(const Value: TGLVector); overload;
     procedure AddNode(const Value: TAffineVector); overload;
   published
     // The nodes list.
@@ -655,9 +655,9 @@ type
     constructor Create(AOwner: TComponent); override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
-    function AxisAlignedDimensionsUnscaled: TVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TVector;
-      intersectPoint: PVector = nil; intersectNormal: PVector = nil)
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
+    function RayCastIntersect(const rayStart, rayVector: TGLVector;
+      intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil)
       : Boolean; override;
     function GenerateSilhouette(const silhouetteParameters
       : TGLSilhouetteParameters): TGLSilhouette; override;
@@ -774,7 +774,7 @@ begin
   inherited Assign(Source);
 end;
 
-function TGLDummyCube.AxisAlignedDimensionsUnscaled: TVector;
+function TGLDummyCube.AxisAlignedDimensionsUnscaled: TGLVector;
 begin
   Result.X := 0.5 * Abs(FCubeSize);
   Result.Y := Result.X;
@@ -782,8 +782,8 @@ begin
   Result.W := 0;
 end;
 
-function TGLDummyCube.RayCastIntersect(const rayStart, rayVector: TVector;
-  intersectPoint: PVector = nil; intersectNormal: PVector = nil): Boolean;
+function TGLDummyCube.RayCastIntersect(const rayStart, rayVector: TGLVector;
+  intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil): Boolean;
 begin
   Result := False;
 end;
@@ -831,7 +831,7 @@ begin
   inherited;
 end;
 
-function TGLDummyCube.BarycenterAbsolutePosition: TVector;
+function TGLDummyCube.BarycenterAbsolutePosition: TGLVector;
 var
   i: Integer;
 begin
@@ -919,17 +919,17 @@ begin
   inherited Assign(Source);
 end;
 
-function TGLPlane.AxisAlignedDimensionsUnscaled: TVector;
+function TGLPlane.AxisAlignedDimensionsUnscaled: TGLVector;
 begin
   Result.X := 0.5 * Abs(FWidth);
   Result.Y := 0.5 * Abs(FHeight);
   Result.Z := 0;
 end;
 
-function TGLPlane.RayCastIntersect(const rayStart, rayVector: TVector;
-  intersectPoint: PVector = nil; intersectNormal: PVector = nil): Boolean;
+function TGLPlane.RayCastIntersect(const rayStart, rayVector: TGLVector;
+  intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil): Boolean;
 var
-  locRayStart, locRayVector, ip: TVector;
+  locRayStart, locRayVector, ip: TGLVector;
   t: Single;
 begin
   locRayStart := AbsoluteToLocal(rayStart);
@@ -1143,7 +1143,7 @@ end;
 
 function TGLPlane.ScreenRect(aBuffer: TGLSceneBuffer): TRect;
 var
-  v: array [0 .. 3] of TVector;
+  v: array [0 .. 3] of TGLVector;
   buf: TGLSceneBuffer;
   hw, hh: TGLFloat;
 begin
@@ -1166,7 +1166,7 @@ begin
     FillChar(Result, SizeOf(TRect), 0);
 end;
 
-function TGLPlane.PointDistance(const aPoint: TVector): Single;
+function TGLPlane.PointDistance(const aPoint: TGLVector): Single;
 begin
   Result := VectorDotProduct(VectorSubtract(aPoint, AbsolutePosition),
     AbsoluteDirection);
@@ -1290,7 +1290,7 @@ begin
   inherited Assign(Source);
 end;
 
-function TGLSprite.AxisAlignedDimensionsUnscaled: TVector;
+function TGLSprite.AxisAlignedDimensionsUnscaled: TGLVector;
 begin
   Result.X := 0.5 * Abs(FWidth);
   Result.Y := 0.5 * Abs(FHeight);
@@ -1608,7 +1608,7 @@ end;
 procedure TGLPoints.BuildList(var rci: TGLRenderContextInfo);
 var
   n: Integer;
-  v: TVector;
+  v: TGLVector;
 begin
   n := FPositions.Count;
   if n = 0 then
@@ -2023,7 +2023,7 @@ begin
   gl.PopMatrix;
 end;
 
-function TGLNodedLines.AxisAlignedDimensionsUnscaled: TVector;
+function TGLNodedLines.AxisAlignedDimensionsUnscaled: TGLVector;
 var
   i: Integer;
 begin
@@ -2054,7 +2054,7 @@ begin
   StructureChanged;
 end;
 
-procedure TGLNodedLines.AddNode(const Value: TVector);
+procedure TGLNodedLines.AddNode(const Value: TGLVector);
 var
   n: TGLNode;
 begin
@@ -2154,9 +2154,9 @@ var
   A, B, C: TGLFloat;
   f: Single;
   Spline: TCubicSpline;
-  vertexColor: TVector;
+  vertexColor: TGLVector;
   nodeBuffer: array of TAffineVector;
-  colorBuffer: array of TVector;
+  colorBuffer: array of TGLVector;
   nurbsRenderer: PGLUNurbs;
 begin
   if Nodes.Count > 1 then
@@ -2549,7 +2549,7 @@ begin
   inherited Assign(Source);
 end;
 
-function TGLCube.AxisAlignedDimensionsUnscaled: TVector;
+function TGLCube.AxisAlignedDimensionsUnscaled: TGLVector;
 begin
   Result.X := FCubeSize.X * 0.5;
   Result.Y := FCubeSize.Y * 0.5;
@@ -2557,12 +2557,12 @@ begin
   Result.W := 0;
 end;
 
-function TGLCube.RayCastIntersect(const rayStart, rayVector: TVector;
-  intersectPoint: PVector = nil; intersectNormal: PVector = nil): Boolean;
+function TGLCube.RayCastIntersect(const rayStart, rayVector: TGLVector;
+  intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil): Boolean;
 var
-  p: array [0 .. 5] of TVector;
-  rv: TVector;
-  rs, r: TVector;
+  p: array [0 .. 5] of TGLVector;
+  rv: TGLVector;
+  rs, r: TGLVector;
   i: Integer;
   t: Single;
   eSize: TAffineVector;
@@ -2873,11 +2873,11 @@ begin
   rci.GLStates.PopAttrib;
 end;
 
-function TGLSphere.RayCastIntersect(const rayStart, rayVector: TVector;
-  intersectPoint: PVector = nil; intersectNormal: PVector = nil): Boolean;
+function TGLSphere.RayCastIntersect(const rayStart, rayVector: TGLVector;
+  intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil): Boolean;
 var
-  i1, i2: TVector;
-  localStart, localVector: TVector;
+  i1, i2: TGLVector;
+  localStart, localVector: TGLVector;
 begin
   // compute coefficients of quartic polynomial
   SetVector(localStart, AbsoluteToLocal(rayStart));
@@ -3036,7 +3036,7 @@ begin
   inherited Assign(Source);
 end;
 
-function TGLSphere.AxisAlignedDimensionsUnscaled: TVector;
+function TGLSphere.AxisAlignedDimensionsUnscaled: TGLVector;
 begin
   Result.X := Abs(FRadius);
   Result.Y := Result.X;
@@ -3131,7 +3131,7 @@ begin
   StructureChanged;
 end;
 
-procedure TGLPolygonBase.AddNode(const Value: TVector);
+procedure TGLPolygonBase.AddNode(const Value: TGLVector);
 var
   n: TGLNode;
 begin
@@ -3436,11 +3436,11 @@ end;
 
 // This will probably not work, karamba
 // RayCastSphereIntersect -> RayCastSuperellipsoidIntersect ??????
-function TGLSuperellipsoid.RayCastIntersect(const rayStart, rayVector: TVector;
-  intersectPoint: PVector = nil; intersectNormal: PVector = nil): Boolean;
+function TGLSuperellipsoid.RayCastIntersect(const rayStart, rayVector: TGLVector;
+  intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil): Boolean;
 var
-  i1, i2: TVector;
-  localStart, localVector: TVector;
+  i1, i2: TGLVector;
+  localStart, localVector: TGLVector;
 begin
   // compute coefficients of quartic polynomial
   SetVector(localStart, AbsoluteToLocal(rayStart));
@@ -3617,7 +3617,7 @@ begin
   inherited Assign(Source);
 end;
 
-function TGLSuperellipsoid.AxisAlignedDimensionsUnscaled: TVector;
+function TGLSuperellipsoid.AxisAlignedDimensionsUnscaled: TGLVector;
 begin
   Result.X := Abs(FRadius);
   Result.Y := Result.X;

@@ -63,7 +63,7 @@ type
      
     colTotalTime : Single; // for timing collision detection
     colCount : Integer;
-    procedure AddToTrail(const p : TVector);
+    procedure AddToTrail(const p : TGLVector);
   public
      
     mousex, mousey: integer;
@@ -93,10 +93,10 @@ end;
 procedure TFormBoxedin.GLCadencer1Progress(Sender: TObject; const deltaTime,
   newTime: Double);
 var
-   rayStart, rayVector : TVector;
+   rayStart, rayVector : TGLVector;
    velocity : Single;
-   pPoint : TVector;
-   pNormal : TVector;
+   pPoint : TGLVector;
+   pNormal : TGLVector;
    t : Int64;
 begin
    if IsKeyDown(VK_ESCAPE) then close;
@@ -140,7 +140,7 @@ begin
    Inc(colCount);
 end;
 
-procedure TFormBoxedin.AddToTrail(const p : TVector);
+procedure TFormBoxedin.AddToTrail(const p : TGLVector);
 var
    i, k : Integer;
 begin

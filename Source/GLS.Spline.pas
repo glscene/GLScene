@@ -57,9 +57,9 @@ type
     procedure SplineAffineVector(const t: Single;
       var vector: TAffineVector); overload;
     // Calculates vector at time t. 
-    function SplineVector(const t: Single): TVector; overload;
+    function SplineVector(const t: Single): TGLVector; overload;
     // Calculates vector at time t. 
-    procedure SplineVector(const t: Single; var vector: TVector); overload;
+    procedure SplineVector(const t: Single; var vector: TGLVector); overload;
     // Calculates X component slope at time t. 
     function SplineSlopeX(const t: Single): Single;
     // Calculates Y component slope at time t. 
@@ -269,7 +269,7 @@ begin
   vector.Z := MATValeurSpline(matZ, t, FNb);
 end;
 
-function TCubicSpline.SplineVector(const t: Single): TVector;
+function TCubicSpline.SplineVector(const t: Single): TGLVector;
 begin
   Result.X := MATValeurSpline(matX, t, FNb);
   Result.Y := MATValeurSpline(matY, t, FNb);
@@ -277,7 +277,7 @@ begin
   Result.W := MATValeurSpline(matW, t, FNb);
 end;
 
-procedure TCubicSpline.SplineVector(const t: Single; var vector: TVector);
+procedure TCubicSpline.SplineVector(const t: Single; var vector: TGLVector);
 begin
   vector.X := MATValeurSpline(matX, t, FNb);
   vector.Y := MATValeurSpline(matY, t, FNb);

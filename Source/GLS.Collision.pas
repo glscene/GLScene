@@ -164,7 +164,7 @@ end;
 
 function FastCheckPointVsEllipsoid(obj1, obj2: TGLBaseSceneObject): Boolean;
 var
-  v: TVector;
+  v: TGLVector;
 begin
   // calc vector expressed in local coordinates (for obj2)
   v := VectorTransform(obj1.AbsolutePosition, obj2.InvAbsoluteMatrix);
@@ -181,7 +181,7 @@ end;
 
 function FastCheckPointVsCube(obj1, obj2: TGLBaseSceneObject): Boolean;
 var
-  v: TVector;
+  v: TGLVector;
 begin
   // calc vector expressed in local coordinates (for obj2)
   v := VectorTransform(obj1.AbsolutePosition, obj2.InvAbsoluteMatrix);
@@ -205,8 +205,8 @@ end;
 
 function FastCheckSphereVsEllipsoid(obj1, obj2: TGLBaseSceneObject): Boolean;
 var
-  v: TVector;
-  aad: TVector;
+  v: TGLVector;
+  aad: TGLVector;
 begin
   // express in local coordinates (for obj2)
   v := VectorTransform(obj1.AbsolutePosition, obj2.InvAbsoluteMatrix);
@@ -222,8 +222,8 @@ end;
 
 function FastCheckSphereVsCube(obj1, obj2: TGLBaseSceneObject): Boolean;
 var
-  v: TVector;
-  aad: TVector;
+  v: TGLVector;
+  aad: TGLVector;
   r, r2: Single;
 begin
   // express in local coordinates (for cube "obj2")
@@ -314,7 +314,7 @@ end;
 
 function FastCheckEllipsoidVsEllipsoid(obj1, obj2: TGLBaseSceneObject): Boolean;
 var
-  v1, v2: TVector;
+  v1, v2: TGLVector;
 begin
   // express in local coordinates (for obj2)
   v1 := VectorTransform(obj1.AbsolutePosition, obj2.InvAbsoluteMatrix);
@@ -335,8 +335,8 @@ end;
 function FastCheckEllipsoidVsCube(obj1, obj2: TGLBaseSceneObject): Boolean;
 { current implementation assumes Ellipsoid as Sphere }
 var
-  v: TVector;
-  aad: TVector;
+  v: TGLVector;
+  aad: TGLVector;
 begin
   // express in local coordinates (for obj2)
   v := VectorTransform(obj1.AbsolutePosition, obj2.InvAbsoluteMatrix);
@@ -365,7 +365,7 @@ begin
   Result := FastCheckEllipsoidVsCube(obj2, obj1);
 end;
 
-procedure InitArray(v: TVector; var pt: array of TVector);
+procedure InitArray(v: TGLVector; var pt: array of TGLVector);
 // calculate the cube edge points from the axis aligned dimension
 begin
   pt[0] := VectorMake(-v.X, -v.Y, -v.Z, 1);
@@ -383,7 +383,7 @@ function DoCubesIntersectPrim(obj1, obj2: TGLBaseSceneObject): Boolean;
 // else, for each "wire" in then wireframe of the "cube" obj1, check if it
 // intersects with one of the "planes" of "cube" obj2
 
-  function CheckWire(p0, p1, pl: TVector): Boolean;
+  function CheckWire(p0, p1, pl: TGLVector): Boolean;
   // check "wire" line (p0,p1) for intersection with each plane, given from
   // axis aligned dimensions pl
   // - calculate "direction" d: p0 -> p1
@@ -396,7 +396,7 @@ function DoCubesIntersectPrim(obj1, obj2: TGLBaseSceneObject): Boolean;
   // - do the same for opposite plane -pl[I]
   var
     t: Single;
-    d, s: TVector;
+    d, s: TGLVector;
     i, j, k: Integer;
   begin
     Result := true;
@@ -440,10 +440,10 @@ const
   cWires: array [0 .. 11, 0 .. 1] of Integer = ((0, 1), (1, 2), (2, 3), (3, 0),
     (4, 5), (5, 6), (6, 7), (7, 4), (0, 4), (1, 5), (2, 6), (3, 7));
 var
-  pt1: array [0 .. 7] of TVector;
+  pt1: array [0 .. 7] of TGLVector;
   M: TMatrix;
   i: Integer;
-  aad: TVector;
+  aad: TGLVector;
 begin
   Result := true;
   aad := obj2.AxisAlignedDimensionsUnscaled; // DanB experiment
@@ -467,7 +467,7 @@ end;
 
 function FastCheckCubeVsCube(obj1, obj2: TGLBaseSceneObject): Boolean;
 { var
-  aad1,aad2 : TVector;
+  aad1,aad2 : TGLVector;
   D1,D2,D : Double;
 }
 begin

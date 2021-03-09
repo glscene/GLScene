@@ -69,7 +69,7 @@ type
     (* Bounce speed as if hitting a surface.
       restitution is the coefficient of restituted energy (1=no energy loss,
       0=no bounce). The normal is NOT assumed to be normalized. *)
-    procedure SurfaceBounce(const surfaceNormal: TVector; restitution: Single);
+    procedure SurfaceBounce(const surfaceNormal: TGLVector; restitution: Single);
   published
     property Mass: Single read FMass write FMass;
     property TranslationSpeed: TGLCoordinates read FTranslationSpeed
@@ -465,7 +465,7 @@ begin
   FTranslationSpeed.Invert;
 end;
 
-procedure TGLParticleInertia.SurfaceBounce(const surfaceNormal: TVector;
+procedure TGLParticleInertia.SurfaceBounce(const surfaceNormal: TGLVector;
   restitution: Single);
 var
   f: Single;

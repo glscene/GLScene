@@ -1,14 +1,13 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.ShadowPlane;
 
 (*
    Implements a basic shadow plane.
 
-   It is strongly recommended to read and understand the explanations in the
-   materials/mirror demo before using this component.
+   It is strongly recommended to read and understand the explanations
+   in the materials/mirror demo before using this component.
 *)
 
 interface
@@ -36,9 +35,7 @@ uses
   GLS.Texture,
   GLS.Utils;
 
-
 type
-
   TShadowPlaneOption = (spoUseStencil, spoScissor, spoTransparent, spoIgnoreZ);
   TShadowPlaneOptions = set of TShadowPlaneOption;
 
@@ -278,7 +275,6 @@ begin
   end;
 end;
 
-
 procedure TGLShadowPlane.Notification(AComponent: TComponent; Operation: TOperation);
 begin
   if Operation = opRemove then
@@ -290,7 +286,6 @@ begin
   end;
   inherited;
 end;
-
 
 procedure TGLShadowPlane.SetShadowingObject(const val: TGLBaseSceneObject);
 begin
@@ -304,7 +299,6 @@ begin
     NotifyChange(Self);
   end;
 end;
-
 
 procedure TGLShadowPlane.SetShadowedLight(const val: TGLLightSource);
 begin

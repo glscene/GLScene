@@ -106,7 +106,7 @@ type
     function GetAsVector1f: Single; override;
     function GetAsVector2f: TVector2f; override;
     function GetAsVector3f: TVector3f; override;
-    function GetAsVector4f: TVector; override;
+    function GetAsVector4f: TGLVector; override;
     function GetAsVector1i: Integer; override;
     function GetAsVector2i: TVector2i; override;
     function GetAsVector3i: TVector3i; override;
@@ -499,7 +499,7 @@ begin
   gl.GetUniformiv(FGLSLProg.Handle, FParameterID, @Result);
 end;
 
-function TGLSLShaderParameter.GetAsVector4f: TVector;
+function TGLSLShaderParameter.GetAsVector4f: TGLVector;
 begin
   gl.GetUniformfv(FGLSLProg.Handle, FParameterID, @Result);
 end;

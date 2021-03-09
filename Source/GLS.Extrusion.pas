@@ -59,7 +59,7 @@ type
     FTriangleCount: Integer;
     FNormalDirection: TGLNormalDirection;
     FParts: TGLRevolutionSolidParts;
-    FAxisAlignedDimensionsCache: TVector;
+    FAxisAlignedDimensionsCache: TGLVector;
   protected
     procedure SetStartAngle(const val: Single);
     procedure SetStopAngle(const val: Single);
@@ -76,7 +76,7 @@ type
     procedure BuildList(var rci: TGLRenderContextInfo); override;
     {Number of triangles used for rendering. }
     property TriangleCount: Integer read FTriangleCount;
-    function AxisAlignedDimensionsUnscaled: TVector; override;
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
     procedure StructureChanged; override;
   published
     (* Parts of the rotation solid to be generated for rendering.
@@ -122,7 +122,7 @@ type
     FHeight: TGLFloat;
     FMinSmoothAngle: Single;
     FMinSmoothAngleCos: Single;
-    FAxisAlignedDimensionsCache: TVector;
+    FAxisAlignedDimensionsCache: TGLVector;
     procedure SetHeight(const Value: TGLFloat);
     procedure SetMinSmoothAngle(const Value: Single);
   protected
@@ -137,7 +137,7 @@ type
     procedure BuildList(var rci: TGLRenderContextInfo); override;
     // Number of triangles used for rendering.
     property TriangleCount: Integer read FTriangleCount;
-    function AxisAlignedDimensionsUnscaled: TVector; override;
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
     procedure StructureChanged; override;
   published
     property Parts: TGLExtrusionSolidParts read FParts write SetParts default [espOutside];
@@ -652,7 +652,7 @@ begin
   end;
 end;
 
-function TGLRevolutionSolid.AxisAlignedDimensionsUnscaled: TVector;
+function TGLRevolutionSolid.AxisAlignedDimensionsUnscaled: TGLVector;
 var
   maxRadius: Single;
   maxHeight: Single;
@@ -982,7 +982,7 @@ const
   end;
 
   procedure RenderDisk(row: PRowData;
-    const center: TVector; const normal: TAffineVector;
+    const center: TGLVector; const normal: TAffineVector;
     invert: Boolean; TextCoordTileS: Single);
   var
     i: Integer;
@@ -1734,7 +1734,7 @@ begin
 end;
 
 
-function TGLExtrusionSolid.AxisAlignedDimensionsUnscaled: TVector;
+function TGLExtrusionSolid.AxisAlignedDimensionsUnscaled: TGLVector;
 var
   dMin, dMax: TAffineVector;
 begin

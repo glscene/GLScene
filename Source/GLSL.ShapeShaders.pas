@@ -800,7 +800,7 @@ end;
 
 procedure TGLCelShader.DoApply(var rci: TGLRenderContextInfo; Sender: TObject);
 var
-  light: TVector;
+  light: TGLVector;
 begin
   if (csDesigning in ComponentState) then
     exit;

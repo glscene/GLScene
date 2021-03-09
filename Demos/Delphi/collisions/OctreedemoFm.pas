@@ -98,7 +98,7 @@ end;
 procedure TFormOctreedemo.GLSceneViewer2MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 var
-   rayStart, rayVector, iPoint, iNormal : TVector;
+   rayStart, rayVector, iPoint, iNormal : TGLVector;
    t : Int64;
 begin
    SetVector(rayStart, GLCamera2.AbsolutePosition);

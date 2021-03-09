@@ -127,8 +127,8 @@ type
     procedure NotifyFontChanged;
     procedure NotifyChange(sender: TObject); override;
     procedure DefaultHandler(var Message); override;
-    function AxisAlignedDimensionsUnscaled: TVector; override;
-    function BarycenterAbsolutePosition: TVector; override;
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
+    function BarycenterAbsolutePosition: TGLVector; override;
   published
     (* Adjusts the 3D font extrusion.
       If Extrusion=0, the characters will be flat (2D), values >0 will
@@ -615,10 +615,10 @@ begin
   end;
 end;
 
-function TGLSpaceText.BarycenterAbsolutePosition: TVector;
+function TGLSpaceText.BarycenterAbsolutePosition: TGLVector;
 var
   lWidth, lHeightMax, lHeightMin: Single;
-  AdjustVector: TVector;
+  AdjustVector: TGLVector;
 begin
   TextMetrics(Text, lWidth, lHeightMax, lHeightMin);
 
@@ -657,7 +657,7 @@ begin
   Result := LocalToAbsolute(AdjustVector);
 end;
 
-function TGLSpaceText.AxisAlignedDimensionsUnscaled: TVector;
+function TGLSpaceText.AxisAlignedDimensionsUnscaled: TGLVector;
 var
   lWidth, lHeightMax, lHeightMin: Single;
   charScale: Single;

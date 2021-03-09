@@ -152,23 +152,23 @@ type
   TGLHintType = (hintDontCare, hintFastest, hintNicest);
 
   TGLLightSourceState = packed record
-    Position: array [0 .. MAX_HARDWARE_LIGHT - 1] of TVector;
-    Ambient: array [0 .. MAX_HARDWARE_LIGHT - 1] of TVector;
-    Diffuse: array [0 .. MAX_HARDWARE_LIGHT - 1] of TVector;
-    Specular: array [0 .. MAX_HARDWARE_LIGHT - 1] of TVector;
-    SpotDirection: array [0 .. MAX_HARDWARE_LIGHT - 1] of TVector;
-    SpotCosCutoffExponent: array [0 .. MAX_HARDWARE_LIGHT - 1] of TVector;
-    Attenuation: array [0 .. MAX_HARDWARE_LIGHT - 1] of TVector;
+    Position: array [0 .. MAX_HARDWARE_LIGHT - 1] of TGLVector;
+    Ambient: array [0 .. MAX_HARDWARE_LIGHT - 1] of TGLVector;
+    Diffuse: array [0 .. MAX_HARDWARE_LIGHT - 1] of TGLVector;
+    Specular: array [0 .. MAX_HARDWARE_LIGHT - 1] of TGLVector;
+    SpotDirection: array [0 .. MAX_HARDWARE_LIGHT - 1] of TGLVector;
+    SpotCosCutoffExponent: array [0 .. MAX_HARDWARE_LIGHT - 1] of TGLVector;
+    Attenuation: array [0 .. MAX_HARDWARE_LIGHT - 1] of TGLVector;
   end;
 
   TGLShaderLightSourceState = packed record
-    Position: array [0 .. MAX_SHADER_LIGHT - 1] of TVector;
-    Ambient: array [0 .. MAX_SHADER_LIGHT - 1] of TVector;
-    Diffuse: array [0 .. MAX_SHADER_LIGHT - 1] of TVector;
-    Specular: array [0 .. MAX_SHADER_LIGHT - 1] of TVector;
-    SpotDirection: array [0 .. MAX_SHADER_LIGHT - 1] of TVector;
-    SpotCosCutoffExponent: array [0 .. MAX_SHADER_LIGHT - 1] of TVector;
-    Attenuation: array [0 .. MAX_SHADER_LIGHT - 1] of TVector;
+    Position: array [0 .. MAX_SHADER_LIGHT - 1] of TGLVector;
+    Ambient: array [0 .. MAX_SHADER_LIGHT - 1] of TGLVector;
+    Diffuse: array [0 .. MAX_SHADER_LIGHT - 1] of TGLVector;
+    Specular: array [0 .. MAX_SHADER_LIGHT - 1] of TGLVector;
+    SpotDirection: array [0 .. MAX_SHADER_LIGHT - 1] of TGLVector;
+    SpotCosCutoffExponent: array [0 .. MAX_SHADER_LIGHT - 1] of TGLVector;
+    Attenuation: array [0 .. MAX_SHADER_LIGHT - 1] of TGLVector;
   end;
 
   TGLOnLightsChanged = procedure(Sender: TObject);
@@ -190,7 +190,7 @@ type
   TGLStateCache = class
   strict private
     // Legacy state
-    FFrontBackColors: array [0 .. 1, 0 .. 3] of TVector;
+    FFrontBackColors: array [0 .. 1, 0 .. 3] of TGLVector;
     FFrontBackShininess: array [0 .. 1] of Integer;
     FAlphaFunc: TGLComparisonFunction;
     FAlphaRef: Single;
@@ -292,7 +292,7 @@ type
     FBlendDstAlpha: TGLDstBlendFunction;
     FBlendEquationRGB: TGLBlendEquation;
     FBlendEquationAlpha: TGLBlendEquation;
-    FBlendColor: TVector;
+    FBlendColor: TGLVector;
     FEnableFramebufferSRGB: TGLboolean;
     FEnableDither: TGLboolean;
     FEnableColorLogicOp: TGLboolean;
@@ -302,7 +302,7 @@ type
     FDepthWriteMask: TGLboolean;
     FStencilWriteMask: Cardinal;
     FStencilBackWriteMask: Cardinal;
-    FColorClearValue: TVector;
+    FColorClearValue: TGLVector;
     FDepthClearValue: TGLfloat;
     FStencilClearValue: Cardinal;
     // Framebuffer state
@@ -335,7 +335,7 @@ type
     FUniformBufferBinding: Cardinal;
     FUBOStates: array [TGLBufferBindingTarget, 0 .. MAX_HARDWARE_UNIFORM_BUFFER_BINDING - 1] of TUBOStates;
     // Vector + Geometry Shader state
-    FCurrentVertexAttrib: array [0 .. 15] of TVector;
+    FCurrentVertexAttrib: array [0 .. 15] of TGLVector;
     FEnableProgramPointSize: TGLboolean;
     // Transform Feedback state
     FTransformFeedbackBufferBinding: Cardinal;
@@ -430,7 +430,7 @@ type
     procedure SetDepthFunc(const Value: TGLDepthFunction); inline;
     function GetEnableBlend(index: Integer): TGLboolean; inline;
     procedure SetEnableBlend(index: Integer; const Value: TGLboolean); inline;
-    procedure SetBlendColor(const Value: TVector); inline;
+    procedure SetBlendColor(const Value: TGLVector); inline;
     procedure SetEnableFramebufferSRGB(const Value: TGLboolean); inline;
     procedure SetEnableDither(const Value: TGLboolean); inline;
     procedure SetEnableColorLogicOp(const Value: TGLboolean); inline;
@@ -441,7 +441,7 @@ type
     procedure SetDepthWriteMask(const Value: TGLboolean); inline;
     procedure SetStencilWriteMask(const Value: Cardinal); inline;
     procedure SetStencilBackWriteMask(const Value: Cardinal); inline;
-    procedure SetColorClearValue(const Value: TVector); inline;
+    procedure SetColorClearValue(const Value: TGLVector); inline;
     procedure SetDepthClearValue(const Value: TGLfloat); inline;
     procedure SetStencilClearValue(const Value: Cardinal); inline;
     // Framebuffer
@@ -473,8 +473,8 @@ type
     procedure SetUniformBufferBinding(const Value: Cardinal); inline;
     function GetMaxTextureUnits: Cardinal; inline;
     // Vector + Geometry Shader state
-    function GetCurrentVertexAttrib(index: Integer): TVector; inline;
-    procedure SetCurrentVertexAttrib(index: Integer; const Value: TVector); inline;
+    function GetCurrentVertexAttrib(index: Integer): TGLVector; inline;
+    procedure SetCurrentVertexAttrib(index: Integer; const Value: TGLVector); inline;
     procedure SetEnableProgramPointSize(const Value: TGLboolean); inline;
     // Transform Feedback state
     procedure SetTransformFeedbackBufferBinding(const Value: Cardinal); inline;
@@ -495,16 +495,16 @@ type
     function GetMaxLights: Integer; inline;
     function GetLightEnabling(I: Integer): Boolean; inline;
     procedure SetLightEnabling(I: Integer; Value: Boolean); inline;
-    function GetLightPosition(I: Integer): TVector; inline;
-    procedure SetLightPosition(I: Integer; const Value: TVector); inline;
+    function GetLightPosition(I: Integer): TGLVector; inline;
+    procedure SetLightPosition(I: Integer; const Value: TGLVector); inline;
     function GetLightSpotDirection(I: Integer): TAffineVector; inline;
     procedure SetLightSpotDirection(I: Integer; const Value: TAffineVector); inline;
-    function GetLightAmbient(I: Integer): TVector; inline;
-    procedure SetLightAmbient(I: Integer; const Value: TVector); inline;
-    function GetLightDiffuse(I: Integer): TVector; inline;
-    procedure SetLightDiffuse(I: Integer; const Value: TVector); inline;
-    function GetLightSpecular(I: Integer): TVector; inline;
-    procedure SetLightSpecular(I: Integer; const Value: TVector); inline;
+    function GetLightAmbient(I: Integer): TGLVector; inline;
+    procedure SetLightAmbient(I: Integer; const Value: TGLVector); inline;
+    function GetLightDiffuse(I: Integer): TGLVector; inline;
+    procedure SetLightDiffuse(I: Integer; const Value: TGLVector); inline;
+    function GetLightSpecular(I: Integer): TGLVector; inline;
+    procedure SetLightSpecular(I: Integer; const Value: TGLVector); inline;
     function GetSpotCutoff(I: Integer): Single; inline;
     procedure SetSpotCutoff(I: Integer; const Value: Single); inline;
     function GetSpotExponent(I: Integer): Single; inline;
@@ -516,10 +516,10 @@ type
     function GetQuadAtten(I: Integer): Single; inline;
     procedure SetQuadAtten(I: Integer; const Value: Single); inline;
     procedure SetForwardContext(Value: Boolean); inline;
-    function GetMaterialAmbient(const aFace: TGLCullFaceMode): TVector; inline;
-    function GetMaterialDiffuse(const aFace: TGLCullFaceMode): TVector; inline;
-    function GetMaterialSpecular(const aFace: TGLCullFaceMode): TVector; inline;
-    function GetMaterialEmission(const aFace: TGLCullFaceMode): TVector; inline;
+    function GetMaterialAmbient(const aFace: TGLCullFaceMode): TGLVector; inline;
+    function GetMaterialDiffuse(const aFace: TGLCullFaceMode): TGLVector; inline;
+    function GetMaterialSpecular(const aFace: TGLCullFaceMode): TGLVector; inline;
+    function GetMaterialEmission(const aFace: TGLCullFaceMode): TGLVector; inline;
     function GetMaterialShininess(const aFace: TGLCullFaceMode): Integer; inline;
   public
     constructor Create; virtual;
@@ -540,26 +540,26 @@ type
     procedure SetGLFrontFaceCW; deprecated; inline;
     procedure ResetAll; deprecated; inline;
     // Adjusts material colors for a face
-    procedure SetGLMaterialColors(const aFace: TGLCullFaceMode; const emission, Ambient, Diffuse, Specular: TVector;
+    procedure SetGLMaterialColors(const aFace: TGLCullFaceMode; const emission, Ambient, Diffuse, Specular: TGLVector;
       const shininess: Integer);
-    property MaterialAmbient[const aFace: TGLCullFaceMode]: TVector read GetMaterialAmbient;
-    property MaterialDiffuse[const aFace: TGLCullFaceMode]: TVector read GetMaterialDiffuse;
-    property MaterialSpecular[const aFace: TGLCullFaceMode]: TVector read GetMaterialSpecular;
-    property MaterialEmission[const aFace: TGLCullFaceMode]: TVector read GetMaterialEmission;
+    property MaterialAmbient[const aFace: TGLCullFaceMode]: TGLVector read GetMaterialAmbient;
+    property MaterialDiffuse[const aFace: TGLCullFaceMode]: TGLVector read GetMaterialDiffuse;
+    property MaterialSpecular[const aFace: TGLCullFaceMode]: TGLVector read GetMaterialSpecular;
+    property MaterialEmission[const aFace: TGLCullFaceMode]: TGLVector read GetMaterialEmission;
     property MaterialShininess[const aFace: TGLCullFaceMode]: Integer read GetMaterialShininess;
     // Adjusts material alpha channel for a face
     procedure SetGLMaterialAlphaChannel(const aFace: Cardinal; const alpha: TGLfloat);
     // Adjusts material diffuse color for a face
-    procedure SetGLMaterialDiffuseColor(const aFace: Cardinal; const Diffuse: TVector);
+    procedure SetGLMaterialDiffuseColor(const aFace: Cardinal; const Diffuse: TGLVector);
     // Lighting states
     property FixedFunctionPipeLight: Boolean read FFFPLight write SetFFPLight;
     property MaxLights: Integer read GetMaxLights;
     property LightEnabling[Index: Integer]: Boolean read GetLightEnabling write SetLightEnabling;
-    property LightPosition[Index: Integer]: TVector read GetLightPosition write SetLightPosition;
+    property LightPosition[Index: Integer]: TGLVector read GetLightPosition write SetLightPosition;
     property LightSpotDirection[Index: Integer]: TAffineVector read GetLightSpotDirection write SetLightSpotDirection;
-    property LightAmbient[Index: Integer]: TVector read GetLightAmbient write SetLightAmbient;
-    property LightDiffuse[Index: Integer]: TVector read GetLightDiffuse write SetLightDiffuse;
-    property LightSpecular[Index: Integer]: TVector read GetLightSpecular write SetLightSpecular;
+    property LightAmbient[Index: Integer]: TGLVector read GetLightAmbient write SetLightAmbient;
+    property LightDiffuse[Index: Integer]: TGLVector read GetLightDiffuse write SetLightDiffuse;
+    property LightSpecular[Index: Integer]: TGLVector read GetLightSpecular write SetLightSpecular;
     property LightSpotCutoff[Index: Integer]: Single read GetSpotCutoff write SetSpotCutoff;
     property LightSpotExponent[Index: Integer]: Single read GetSpotExponent write SetSpotExponent;
     property LightConstantAtten[Index: Integer]: Single read GetConstantAtten write SetConstantAtten;
@@ -771,7 +771,7 @@ type
     // Sets the blend equations for RGB + alpha separately.
     procedure SetBlendEquationSeparate(const modeRGB, modeAlpha: TGLBlendEquation); inline;
     // A constant blend color, that can be used in the blend equation.
-    property BlendColor: TVector read FBlendColor write SetBlendColor;
+    property BlendColor: TGLVector read FBlendColor write SetBlendColor;
     // Enables/disables framebuffer SRGB.
     property EnableFramebufferSRGB: TGLboolean read FEnableFramebufferSRGB write SetEnableFramebufferSRGB;
     // Enables/disables dithering.
@@ -791,7 +791,7 @@ type
     // The stencil back write mask.
     property StencilBackWriteMask: Cardinal read FStencilBackWriteMask write SetStencilBackWriteMask;
     // The color clear value.
-    property ColorClearValue: TVector read FColorClearValue write SetColorClearValue;
+    property ColorClearValue: TGLVector read FColorClearValue write SetColorClearValue;
     // The depth clear value.
     property DepthClearValue: TGLfloat read FDepthClearValue write SetDepthClearValue;
     // The stencil clear value.
@@ -853,7 +853,7 @@ type
     procedure SetBufferIndexedBinding(const Value: Cardinal; ATarget: TGLBufferBindingTarget; AIndex: Cardinal;
       AOffset: TGLintptr; ARangeSize: TGLsizeiptr); overload; inline;
     // Default values to be used when a vertex array is not used for that attribute
-    property CurrentVertexAttrib[Index: Integer]: TVector read GetCurrentVertexAttrib write SetCurrentVertexAttrib;
+    property CurrentVertexAttrib[Index: Integer]: TGLVector read GetCurrentVertexAttrib write SetCurrentVertexAttrib;
     // Enables/disables program point size
     property EnableProgramPointSize: TGLboolean read FEnableProgramPointSize write SetEnableProgramPointSize;
     // Currently bound transform feedbac buffer
@@ -1331,7 +1331,7 @@ begin
 end;
 
 procedure TGLStateCache.SetGLMaterialColors(const aFace: TGLCullFaceMode;
-  const emission, ambient, diffuse, specular: TVector;
+  const emission, ambient, diffuse, specular: TGLVector;
   const shininess: Integer);
 var
   I: Integer;
@@ -1417,7 +1417,7 @@ begin
   end;
 end;
 
-procedure TGLStateCache.SetGLMaterialDiffuseColor(const aFace: Cardinal; const Diffuse: TVector);
+procedure TGLStateCache.SetGLMaterialDiffuseColor(const aFace: Cardinal; const Diffuse: TGLVector);
 var
   I: Integer;
 begin
@@ -1554,7 +1554,7 @@ begin
   end;
 end;
 
-procedure TGLStateCache.SetBlendColor(const Value: TVector);
+procedure TGLStateCache.SetBlendColor(const Value: TGLVector);
 begin
   if not VectorEquals(Value, FBlendColor) or FInsideList then
   begin
@@ -1704,7 +1704,7 @@ begin
   end;
 end;
 
-procedure TGLStateCache.SetCurrentVertexAttrib(index: Integer; const Value: TVector);
+procedure TGLStateCache.SetCurrentVertexAttrib(index: Integer; const Value: TGLVector);
 begin
   if not VectorEquals(Value, FCurrentVertexAttrib[Index]) then
   begin
@@ -2034,7 +2034,7 @@ begin
   Result := FCurrentQuery[Index];
 end;
 
-function TGLStateCache.GetCurrentVertexAttrib(index: Integer): TVector;
+function TGLStateCache.GetCurrentVertexAttrib(index: Integer): TGLVector;
 begin
   Result := FCurrentVertexAttrib[Index];
 end;
@@ -2071,17 +2071,17 @@ begin
   Result := FMaxTextureSize;
 end;
 
-function TGLStateCache.GetMaterialAmbient(const aFace: TGLCullFaceMode): TVector;
+function TGLStateCache.GetMaterialAmbient(const aFace: TGLCullFaceMode): TGLVector;
 begin
   Result := FFrontBackColors[ord(aFace)][1];
 end;
 
-function TGLStateCache.GetMaterialDiffuse(const aFace: TGLCullFaceMode): TVector;
+function TGLStateCache.GetMaterialDiffuse(const aFace: TGLCullFaceMode): TGLVector;
 begin
   Result := FFrontBackColors[ord(aFace)][2];
 end;
 
-function TGLStateCache.GetMaterialEmission(const aFace: TGLCullFaceMode): TVector;
+function TGLStateCache.GetMaterialEmission(const aFace: TGLCullFaceMode): TGLVector;
 begin
   Result := FFrontBackColors[ord(aFace)][0];
 end;
@@ -2091,7 +2091,7 @@ begin
   Result := FFrontBackShininess[ord(aFace)];
 end;
 
-function TGLStateCache.GetMaterialSpecular(const aFace: TGLCullFaceMode): TVector;
+function TGLStateCache.GetMaterialSpecular(const aFace: TGLCullFaceMode): TGLVector;
 begin
   Result := FFrontBackColors[ord(aFace)][3];
 end;
@@ -2588,7 +2588,7 @@ begin
   end;
 end;
 
-procedure TGLStateCache.SetColorClearValue(const Value: TVector);
+procedure TGLStateCache.SetColorClearValue(const Value: TGLVector);
 begin
   if not VectorEquals(Value, FColorClearValue) or FInsideList then
   begin
@@ -3158,12 +3158,12 @@ begin
   Result := @FShaderLightStates;
 end;
 
-function TGLStateCache.GetLightPosition(I: Integer): TVector;
+function TGLStateCache.GetLightPosition(I: Integer): TGLVector;
 begin
   Result := FLightStates.Position[I];
 end;
 
-procedure TGLStateCache.SetLightPosition(I: Integer; const Value: TVector);
+procedure TGLStateCache.SetLightPosition(I: Integer; const Value: TGLVector);
 begin
   if not VectorEquals(Value, FLightStates.Position[I]) then
   begin
@@ -3190,12 +3190,12 @@ begin
   end;
 end;
 
-function TGLStateCache.GetLightAmbient(I: Integer): TVector;
+function TGLStateCache.GetLightAmbient(I: Integer): TGLVector;
 begin
   Result := FLightStates.Ambient[I];
 end;
 
-procedure TGLStateCache.SetLightAmbient(I: Integer; const Value: TVector);
+procedure TGLStateCache.SetLightAmbient(I: Integer; const Value: TGLVector);
 begin
   if not VectorEquals(Value, FLightStates.Ambient[I]) or FInsideList then
   begin
@@ -3213,12 +3213,12 @@ begin
   end;
 end;
 
-function TGLStateCache.GetLightDiffuse(I: Integer): TVector;
+function TGLStateCache.GetLightDiffuse(I: Integer): TGLVector;
 begin
   Result := FLightStates.Diffuse[I];
 end;
 
-procedure TGLStateCache.SetLightDiffuse(I: Integer; const Value: TVector);
+procedure TGLStateCache.SetLightDiffuse(I: Integer; const Value: TGLVector);
 begin
   if not VectorEquals(Value, FLightStates.Diffuse[I]) or FInsideList then
   begin
@@ -3236,12 +3236,12 @@ begin
   end;
 end;
 
-function TGLStateCache.GetLightSpecular(I: Integer): TVector;
+function TGLStateCache.GetLightSpecular(I: Integer): TGLVector;
 begin
   Result := FLightStates.Specular[I];
 end;
 
-procedure TGLStateCache.SetLightSpecular(I: Integer; const Value: TVector);
+procedure TGLStateCache.SetLightSpecular(I: Integer; const Value: TGLVector);
 begin
   if not VectorEquals(Value, FLightStates.Specular[I]) or FInsideList then
   begin

@@ -22,7 +22,7 @@ type
   PHmgBoundingBox = ^THmgBoundingBox;
 
   THmgBoundingBox = record
-    BBox: array [0 .. 7] of TVector;
+    BBox: array [0 .. 7] of TGLVector;
   end;
 
   //  Structure for storing Axis Aligned Bounding Boxes 
@@ -74,8 +74,8 @@ function BoundingBoxesAreEqual(const ABoundingBox1, ABoundingBox2: PHmgBoundingB
 function AddBB(var C1: THmgBoundingBox; const C2: THmgBoundingBox): THmgBoundingBox;
 procedure AddAABB(var Aabb: TAABB; const Aabb1: TAABB);
 
-procedure SetBB(var C: THmgBoundingBox; const V: TVector);
-procedure SetAABB(var Bb: TAABB; const V: TVector); inline;
+procedure SetBB(var C: THmgBoundingBox; const V: TGLVector);
+procedure SetAABB(var Bb: TAABB; const V: TGLVector); inline;
 
 procedure BBTransform(var C: THmgBoundingBox; const M: TMatrix);
 procedure AABBTransform(var Bb: TAABB; const M: TMatrix);
@@ -91,7 +91,7 @@ function BBMaxZ(const C: THmgBoundingBox): Single;
 // Resize the AABB if necessary to include p.
 procedure AABBInclude(var Bb: TAABB; const P: TAffineVector);
 // Make an AABB that is formed by sweeping a sphere (or AABB) from Start to Dest 
-procedure AABBFromSweep(var SweepAABB: TAABB; const Start, Dest: TVector; const Radius: Single);
+procedure AABBFromSweep(var SweepAABB: TAABB; const Start, Dest: TGLVector; const Radius: Single);
 (* Returns the intersection AABB of two AABBs. 
   If the AABBs don't intersect, will return a degenerated AABB (plane, line or point). *)
 function AABBIntersection(const Aabb1, Aabb2: TAABB): TAABB;
@@ -103,12 +103,12 @@ function AABBToBB(const AnAABB: TAABB): THmgBoundingBox; overload;
 function AABBToBB(const AnAABB: TAABB; const M: TMatrix): THmgBoundingBox; overload;
 //  Adds delta to min and max of the AABB. 
 procedure OffsetAABB(var Aabb: TAABB; const Delta: TAffineVector); overload;
-procedure OffsetAABB(var Aabb: TAABB; const Delta: TVector); overload;
+procedure OffsetAABB(var Aabb: TAABB; const Delta: TGLVector); overload;
 //  Adds delta to min and max of the BB.
 procedure OffsetBB(var Bb: THmgBoundingBox; const Delta: TAffineVector); overload;
-procedure OffsetBB(var Bb: THmgBoundingBox; const Delta: TVector); overload;
+procedure OffsetBB(var Bb: THmgBoundingBox; const Delta: TGLVector); overload;
 // The same as above but uses AddPoint() instead of AddVector().
-procedure OffsetBBPoint(var Bb: THmgBoundingBox; const Delta: TVector); overload;
+procedure OffsetBBPoint(var Bb: THmgBoundingBox; const Delta: TGLVector); overload;
 (* Determines if two AxisAlignedBoundingBoxes intersect.
   The matrices are the ones that convert one point to the other's AABB system *)
 function IntersectAABBs(const Aabb1, Aabb2: TAABB; const M1To2, M2To1: TMatrix): Boolean; overload;
@@ -124,7 +124,7 @@ function AABBFitsInAABBAbsolute(const Aabb1, Aabb2: TAABB): Boolean;
 
 // Checks if a point "p" is inside an AABB
 function PointInAABB(const P: TAffineVector; const Aabb: TAABB): Boolean; overload;
-function PointInAABB(const P: TVector; const Aabb: TAABB): Boolean; overload;
+function PointInAABB(const P: TGLVector; const Aabb: TAABB): Boolean; overload;
 
 // Checks if a plane (given by the normal+d) intersects the AABB
 function PlaneIntersectAABB(const Normal: TAffineVector; D: Single; const Aabb: TAABB): Boolean;
@@ -154,7 +154,7 @@ procedure AABBToBSphere(const AABB: TAABB; var BSphere: TBSphere);
 // Convert a BSphere to an AABB 
 procedure BSphereToAABB(const BSphere: TBSphere; var AABB: TAABB); overload;
 function BSphereToAABB(const Center: TAffineVector; Radius: Single): TAABB; overload;
-function BSphereToAABB(const Center: TVector; Radius: Single): TAABB; overload;
+function BSphereToAABB(const Center: TGLVector; Radius: Single): TAABB; overload;
 
 // Determines to which extent one AABB contains another AABB 
 function AABBContainsAABB(const MainAABB, TestAABB: TAABB): TSpaceContains;
@@ -184,10 +184,10 @@ function AABBToClipRect(const Aabb: TAABB; const ModelViewProjection: TMatrix;
   ViewportSizeX, ViewportSizeY: Integer): TClipRect;
 
 // Finds the intersection between a ray and an axis aligned bounding box. 
-function RayCastAABBIntersect(const RayOrigin, RayDirection: TVector;
+function RayCastAABBIntersect(const RayOrigin, RayDirection: TGLVector;
   const Aabb: TAABB; out TNear, TFar: Single): Boolean; overload;
-function RayCastAABBIntersect(const RayOrigin, RayDirection: TVector;
-  const Aabb: TAABB; IntersectPoint: PVector = nil): Boolean; overload;
+function RayCastAABBIntersect(const RayOrigin, RayDirection: TGLVector;
+  const Aabb: TAABB; IntersectPoint: PGLVector = nil): Boolean; overload;
 
 type
   TPlanIndices = array [0 .. 3] of Integer;
@@ -281,7 +281,7 @@ begin
     Aabb.Max.Z := Aabb1.Max.Z;
 end;
 
-procedure SetBB(var C: THmgBoundingBox; const V: TVector);
+procedure SetBB(var C: THmgBoundingBox; const V: TGLVector);
 begin
   SetPlanBB(C, 0, V.X);
   SetPlanBB(C, 1, -V.X);
@@ -291,7 +291,7 @@ begin
   SetPlanBB(C, 5, -V.Z);
 end;
 
-procedure SetAABB(var Bb: TAABB; const V: TVector);
+procedure SetAABB(var Bb: TAABB; const V: TGLVector);
 begin
   Bb.Max.X := Abs(V.X);
   Bb.Max.Y := Abs(V.Y);
@@ -408,7 +408,7 @@ begin
     Bb.Max.Z := P.Z;
 end;
 
-procedure AABBFromSweep(var SweepAABB: TAABB; const Start, Dest: TVector;
+procedure AABBFromSweep(var SweepAABB: TAABB; const Start, Dest: TGLVector;
   const Radius: Single);
 begin
   if Start.X < Dest.X then
@@ -504,7 +504,7 @@ begin
   AddVector(Aabb.Max, Delta);
 end;
 
-procedure OffsetAABB(var Aabb: TAABB; const Delta: TVector);
+procedure OffsetAABB(var Aabb: TAABB; const Delta: TGLVector);
 begin
   AddVector(Aabb.Min, Delta);
   AddVector(Aabb.Max, Delta);
@@ -513,14 +513,14 @@ end;
 procedure OffsetBB(var Bb: THmgBoundingBox; const Delta: TAffineVector);
 var
   I: Integer;
-  TempVector: TVector;
+  TempVector: TGLVector;
 begin
   TempVector := VectorMake(Delta, 0);
   for I := 0 to 7 do
     AddVector(Bb.BBox[I], TempVector);
 end;
 
-procedure OffsetBB(var Bb: THmgBoundingBox; const Delta: TVector);
+procedure OffsetBB(var Bb: THmgBoundingBox; const Delta: TGLVector);
 var
   I: Integer;
 begin
@@ -528,7 +528,7 @@ begin
     AddVector(Bb.BBox[I], Delta);
 end;
 
-procedure OffsetBBPoint(var Bb: THmgBoundingBox; const Delta: TVector);
+procedure OffsetBBPoint(var Bb: THmgBoundingBox; const Delta: TGLVector);
 var
   I: Integer;
 begin
@@ -577,7 +577,7 @@ var
   Planes2: array [0 .. 5] of THmgPlane;
   I, T: Integer;
   V: TVertex;
-  P: TVector;
+  P: TGLVector;
 begin
   Result := False;
 
@@ -706,7 +706,7 @@ begin
     (P.Z >= Aabb.Min.Z);
 end;
 
-function PointInAABB(const P: TVector; const Aabb: TAABB): Boolean;
+function PointInAABB(const P: TGLVector; const Aabb: TAABB): Boolean;
 begin
   Result := (P.X <= Aabb.Max.X) and
     (P.X >= Aabb.Min.X) and (P.Y <= Aabb.Max.Y) and
@@ -1040,7 +1040,7 @@ begin
   Result.Max := VectorAdd(Center, Radius);
 end;
 
-function BSphereToAABB(const Center: TVector; Radius: Single): TAABB;
+function BSphereToAABB(const Center: TGLVector; Radius: Single): TAABB;
 begin
   SetVector(Result.Min, VectorSubtract(Center, Radius));
   SetVector(Result.Max, VectorAdd(Center, Radius));
@@ -1292,7 +1292,7 @@ function AABBToClipRect(const Aabb: TAABB; const ModelViewProjection: TMatrix;
   ViewportSizeX, ViewportSizeY: Integer): TClipRect;
 var
   I: Integer;
-  V, Vt: TVector;
+  V, Vt: TGLVector;
   Minmax: array [0 .. 1] of PAffineVector;
 begin
   Minmax[0] := @Aabb.Min;
@@ -1322,7 +1322,7 @@ begin
   end;
 end;
 
-function RayCastAABBIntersect(const RayOrigin, RayDirection: TVector;
+function RayCastAABBIntersect(const RayOrigin, RayDirection: TGLVector;
   const Aabb: TAABB; out TNear, TFar: Single): Boolean; overload;
 const
   Infinity = 1.0 / 0.0;
@@ -1370,8 +1370,8 @@ begin
   Result := True;
 end;
 
-function RayCastAABBIntersect(const RayOrigin, RayDirection: TVector;
-  const Aabb: TAABB; IntersectPoint: PVector = nil): Boolean; overload;
+function RayCastAABBIntersect(const RayOrigin, RayDirection: TGLVector;
+  const Aabb: TAABB; IntersectPoint: PGLVector = nil): Boolean; overload;
 var
   TNear, TFar: Single;
 begin

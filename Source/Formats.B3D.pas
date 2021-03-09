@@ -99,7 +99,7 @@ type
     frame: Integer; //where key occurs
     position: TAffineVector; //present if (flags&1)
     scale: TAffineVector; //present if (flags&2)
-    rotation: TVector; //present if (flags&4)
+    rotation: TGLVector; //present if (flags&4)
   end;
 
   PANIMChunk = ^TANIMChunk;
@@ -114,7 +114,7 @@ type
     name: array[0..255] of char; //name of node
     position: TAffineVector;  //local...
     scale: TAffineVector; //coord...
-    rotation: TVector; //system...
+    rotation: TGLVector; //system...
     //array of node elements
     //should be one of meshes or bones, support meshes only for now
     meshes: PMESHChunk; //what 'kind' of node this is - if unrecognized, just use a Blitz3D pivot.
@@ -542,7 +542,7 @@ begin
   Inc(Count, ReadString(aStream, Node^.name, 255));
   Inc(Count, aStream.Read(Node^.position.X, sizeof(TAffineVector)));
   Inc(Count, aStream.Read(Node^.scale.X, sizeof(TAffineVector)));
-  Inc(Count, aStream.Read(Node^.rotation.X, sizeof(TVector)));
+  Inc(Count, aStream.Read(Node^.rotation.X, sizeof(TGLVector)));
   while Count<aChunk.length do
   begin
     Inc(Count, aStream.Read(C, sizeof(TB3DChunk)));

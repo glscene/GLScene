@@ -96,7 +96,7 @@ type
     FInheritedRotation: TAffineVector;
     FRotationAngle: Single;
     FRotationAxis: TAffineVector;
-    FPosition: TVector;
+    FPosition: TGLVector;
     FScale: TAffineVector;
     FScaleAxisAngle: Single;
     FScaleAxis: TAffineVector;
@@ -117,7 +117,7 @@ type
     property InheritedPosition: TAffineVector read FInheritedPosition;
     property InheritedRotation: TAffineVector read FInheritedRotation;
     property InheritedScale: TAffineVector read FInheritedScale;
-    property Position: TVector read FPosition;
+    property Position: TGLVector read FPosition;
     property RotationAxis: TAffineVector read FRotationAxis;
     property RotationAngle: Single read FRotationAngle;
     property Scale: TAffineVector read FScale;
@@ -676,7 +676,7 @@ procedure CopyASEToMesh(aASEMesh: TGLASEMeshObject; aMesh: TMeshObject; aASEMate
   function GetOrAllocateMaterial(const aIndex, aSubID: Integer): string;
   var
     material : TGLASEMaterial;
-    specColor : TVector;
+    specColor : TGLVector;
     matLib : TGLMaterialLibrary;
     libMat : TGLLibMaterial;
     TM: TGLASEMaterialTextureMap;

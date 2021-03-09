@@ -1,7 +1,6 @@
 ﻿//
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.VectorFileObjects;
 
 (* Vector File related objects *)
@@ -22,6 +21,7 @@ uses
   GLS.OpenGLTokens,
   GLS.Scene,
   GLS.VectorGeometry,
+  GLS.VectorTypes,
   GLS.VectorTypesExt,
   GLS.VectorLists,
   GLS.PersistentClasses,
@@ -468,16 +468,16 @@ type
     procedure GetExtents(out min, max: TAffineVector); overload; virtual;
     procedure GetExtents(out aabb: TAABB); overload; virtual;
     // Barycenter from vertices data
-    function GetBarycenter: TVector;
+    function GetBarycenter: TGLVector;
     // Precalculate whatever is needed for rendering, called once
     procedure Prepare; virtual;
     function PointInObject(const aPoint: TAffineVector): Boolean; virtual;
     // Returns the triangle data for a given triangle
     procedure GetTriangleData(tri: Integer; list: TAffineVectorList; var v0, v1, v2: TAffineVector); overload;
-    procedure GetTriangleData(tri: Integer; list: TVectorList; var v0, v1, v2: TVector); overload;
+    procedure GetTriangleData(tri: Integer; list: TVectorList; var v0, v1, v2: TGLVector); overload;
     // Sets the triangle data of a given triangle
     procedure SetTriangleData(tri: Integer; list: TAffineVectorList; const v0, v1, v2: TAffineVector); overload;
-    procedure SetTriangleData(tri: Integer; list: TVectorList; const v0, v1, v2: TVector); overload;
+    procedure SetTriangleData(tri: Integer; list: TVectorList; const v0, v1, v2: TGLVector); overload;
     (* Build the tangent space from the mesh object's vertex, normal
       and texcoord data, filling the binormals and tangents where specified. *)
     procedure BuildTangentSpace(buildBinormals: Boolean = True; buildTangents: Boolean = True);
@@ -846,9 +846,9 @@ type
     FNormalsOrientation: TGLMeshNormalsOrientation;
     FMaterialLibrary: TGLMaterialLibrary;
     FLightmapLibrary: TGLMaterialLibrary;
-    FAxisAlignedDimensionsCache: TVector;
+    FAxisAlignedDimensionsCache: TGLVector;
     FBaryCenterOffsetChanged: Boolean;
-    FBaryCenterOffset: TVector;
+    FBaryCenterOffset: TGLVector;
     FUseMeshMaterials: Boolean;
     FOverlaySkeleton: Boolean;
     FIgnoreMissingTextures: Boolean;
@@ -891,10 +891,10 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
-    function AxisAlignedDimensionsUnscaled: TVector; override;
-    function BarycenterOffset: TVector;
-    function BarycenterPosition: TVector;
-    function BarycenterAbsolutePosition: TVector; override;
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
+    function BarycenterOffset: TGLVector;
+    function BarycenterPosition: TGLVector;
+    function BarycenterAbsolutePosition: TGLVector; override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
     procedure DoRender(var rci: TGLRenderContextInfo; renderSelf, renderChildren: Boolean); override;
     procedure StructureChanged; override;
@@ -904,8 +904,8 @@ type
       (ie. invalid collision detection). Use with caution. *)
     procedure StructureChangedNoPrepare;
     // BEWARE! Utterly inefficient implementation! 
-    function RayCastIntersect(const rayStart, rayVector: TVector; intersectPoint: PVector = nil;
-	  intersectNormal: PVector = nil): Boolean; override;
+    function RayCastIntersect(const rayStart, rayVector: TGLVector; intersectPoint: PGLVector = nil;
+	  intersectNormal: PGLVector = nil): Boolean; override;
     function GenerateSilhouette(const silhouetteParameters: TGLSilhouetteParameters): TGLSilhouette; override;
     (* This method allows fast shadow volumes for GLActors.
       If your actor/mesh doesn't change, you don't need to call this.
@@ -999,14 +999,14 @@ type
   public
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
-    function OctreeRayCastIntersect(const rayStart, rayVector: TVector; intersectPoint: PVector = nil;
-      intersectNormal: PVector = nil): Boolean;
-    function OctreeSphereSweepIntersect(const rayStart, rayVector: TVector; const velocity, radius: Single;
-      intersectPoint: PVector = nil; intersectNormal: PVector = nil): Boolean;
+    function OctreeRayCastIntersect(const rayStart, rayVector: TGLVector; intersectPoint: PGLVector = nil;
+      intersectNormal: PGLVector = nil): Boolean;
+    function OctreeSphereSweepIntersect(const rayStart, rayVector: TGLVector; const velocity, radius: Single;
+      intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil): Boolean;
     function OctreeTriangleIntersect(const v1, v2, v3: TAffineVector): Boolean;
     (* Returns true if Point is inside the free form - this will only work
       properly on closed meshes. Requires that Octree has been prepared. *)
-    function OctreePointInMesh(const Point: TVector): Boolean;
+    function OctreePointInMesh(const Point: TGLVector): Boolean;
     function OctreeAABBIntersect(const AABB: TAABB; objMatrix, invObjMatrix: TMatrix;
       triangles: TAffineVectorList = nil): Boolean;
     // TODO:  function OctreeSphereIntersect
@@ -1313,8 +1313,7 @@ uses
   GLS.MeshUtils,
   GLS.State,
   GLS.Utils,
-  GLS.BaseMeshSilhouette,
-  GLS.VectorTypes;
+  GLS.BaseMeshSilhouette;
 
 var
   vVectorFileFormats: TGLVectorFileFormatsList;
@@ -3121,7 +3120,7 @@ begin
   aabb := FExtentCache;
 end;
 
-function TMeshObject.GetBarycenter: TVector;
+function TMeshObject.GetBarycenter: TGLVector;
 var
   dMin, dMax: TAffineVector;
 begin
@@ -3299,7 +3298,7 @@ begin
   end;
 end;
 
-procedure TMeshObject.GetTriangleData(tri: Integer; list: TVectorList; var v0, v1, v2: TVector);
+procedure TMeshObject.GetTriangleData(tri: Integer; list: TVectorList; var v0, v1, v2: TGLVector);
 var
   i, LastCount, Count: Integer;
   fg: TFGVertexIndexList;
@@ -3451,7 +3450,7 @@ begin
   end;
 end;
 
-procedure TMeshObject.SetTriangleData(tri: Integer; list: TVectorList; const v0, v1, v2: TVector);
+procedure TMeshObject.SetTriangleData(tri: Integer; list: TVectorList; const v0, v1, v2: TGLVector);
 var
   i, LastCount, Count: Integer;
   fg: TFGVertexIndexList;
@@ -3574,7 +3573,7 @@ procedure TMeshObject.BuildTangentSpace(buildBinormals: Boolean = True; buildTan
 var
   i, j: Integer;
   v, n, t: array [0 .. 2] of TAffineVector;
-  tangent, binormal: array [0 .. 2] of TVector;
+  tangent, binormal: array [0 .. 2] of TGLVector;
   vt, tt: TAffineVector;
   interp, dot: Single;
 
@@ -3757,7 +3756,7 @@ begin
             if FUseVBO then
               FTexCoordsVBO[i].Bind;
             gl.ClientActiveTexture(GL_TEXTURE0 + i);
-            gl.TexCoordPointer(4, GL_FLOAT, SizeOf(TVector), tlists[i]);
+            gl.TexCoordPointer(4, GL_FLOAT, SizeOf(TGLVector), tlists[i]);
             gl.EnableClientState(GL_TEXTURE_COORD_ARRAY);
           end;
         end;
@@ -3955,7 +3954,7 @@ begin
 
     if FColorsVBO.IsDataNeedUpdate then
     begin
-      FColorsVBO.BindBufferData(Colors.list, SizeOf(TVector) * Colors.Count, BufferUsage);
+      FColorsVBO.BindBufferData(Colors.list, SizeOf(TGLVector) * Colors.Count, BufferUsage);
       FColorsVBO.NotifyDataUpdated;
       FColorsVBO.UnBind;
     end;
@@ -4011,7 +4010,7 @@ begin
 
       if FTexCoordsVBO[i].IsDataNeedUpdate then
       begin
-        FTexCoordsVBO[i].BindBufferData(TexCoordsEx[i].list, SizeOf(TVector) * TexCoordsEx[i].Count, BufferUsage);
+        FTexCoordsVBO[i].BindBufferData(TexCoordsEx[i].list, SizeOf(TGLVector) * TexCoordsEx[i].Count, BufferUsage);
         FTexCoordsVBO[i].NotifyDataUpdated;
         FTexCoordsVBO[i].UnBind;
       end;
@@ -4913,7 +4912,7 @@ var
   invMesh: TGLBaseMeshObject;
   invMat: TMatrix;
   Bone: TGLSkeletonBone;
-  p: TVector;
+  p: TGLVector;
 begin
   // cleanup existing stuff
   for i := 0 to FBoneMatrixInvertedMeshes.Count - 1 do
@@ -4991,7 +4990,7 @@ procedure TGLSkeletonMeshObject.ApplyCurrentSkeletonFrame(normalize: Boolean);
 var
   i, j, BoneID: Integer;
   refVertices, refNormals: TAffineVectorList;
-  n, nt: TVector;
+  n, nt: TGLVector;
   Bone: TGLSkeletonBone;
   Skeleton: TGLSkeleton;
   tempvert, tempnorm: TAffineVector;
@@ -6175,7 +6174,7 @@ begin
   inherited;
 end;
 
-function TGLBaseMesh.AxisAlignedDimensionsUnscaled: TVector;
+function TGLBaseMesh.AxisAlignedDimensionsUnscaled: TGLVector;
 var
   dMin, dMax: TAffineVector;
 begin
@@ -6190,7 +6189,7 @@ begin
   SetVector(Result, FAxisAlignedDimensionsCache);
 end;
 
-function TGLBaseMesh.BarycenterOffset: TVector;
+function TGLBaseMesh.BarycenterOffset: TGLVector;
 var
   dMin, dMax: TAffineVector;
 begin
@@ -6207,12 +6206,12 @@ begin
   Result := FBaryCenterOffset;
 end;
 
-function TGLBaseMesh.BarycenterPosition: TVector;
+function TGLBaseMesh.BarycenterPosition: TGLVector;
 begin
   Result := VectorAdd(Position.DirectVector, BarycenterOffset);
 end;
 
-function TGLBaseMesh.BarycenterAbsolutePosition: TVector;
+function TGLBaseMesh.BarycenterAbsolutePosition: TGLVector;
 begin
   Result := LocalToAbsolute(BarycenterPosition);
 end;
@@ -6390,14 +6389,14 @@ begin
   inherited StructureChanged;
 end;
 
-function TGLBaseMesh.RayCastIntersect(const rayStart, rayVector: TVector; intersectPoint: PVector = nil;
-  intersectNormal: PVector = nil): Boolean;
+function TGLBaseMesh.RayCastIntersect(const rayStart, rayVector: TGLVector; intersectPoint: PGLVector = nil;
+  intersectNormal: PGLVector = nil): Boolean;
 
 var
   i,j: Integer;
   Obj: TMeshObject;
   Tris: TAffineVectorList;
-  locRayStart, locRayVector, iPoint, iNormal: TVector;
+  locRayStart, locRayVector, iPoint, iNormal: TGLVector;
   d, minD: Single;
 
 begin
@@ -6529,10 +6528,10 @@ begin
   end;
 end;
 
-function TGLFreeForm.OctreeRayCastIntersect(const rayStart, rayVector: TVector; intersectPoint: PVector = nil;
-  intersectNormal: PVector = nil): Boolean;
+function TGLFreeForm.OctreeRayCastIntersect(const rayStart, rayVector: TGLVector; intersectPoint: PGLVector = nil;
+  intersectNormal: PGLVector = nil): Boolean;
 var
-  locRayStart, locRayVector: TVector;
+  locRayStart, locRayVector: TGLVector;
 begin
   Assert(Assigned(FOctree), strOctreeMustBePreparedBeforeUse);
   SetVector(locRayStart, AbsoluteToLocal(rayStart));
@@ -6551,11 +6550,11 @@ begin
   end;
 end;
 
-function TGLFreeForm.OctreePointInMesh(const Point: TVector): Boolean;
+function TGLFreeForm.OctreePointInMesh(const Point: TGLVector): Boolean;
 const
   cPointRadiusStep = 10000;
 var
-  rayStart, rayVector, hitPoint, hitNormal: TVector;
+  rayStart, rayVector, hitPoint, hitNormal: TGLVector;
   BRad: double;
   HitCount: Integer;
   hitDot: double;
@@ -6605,10 +6604,10 @@ begin
   end;
 end;
 
-function TGLFreeForm.OctreeSphereSweepIntersect(const rayStart, rayVector: TVector; const velocity, radius: Single;
-  intersectPoint: PVector = nil; intersectNormal: PVector = nil): Boolean;
+function TGLFreeForm.OctreeSphereSweepIntersect(const rayStart, rayVector: TGLVector; const velocity, radius: Single;
+  intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil): Boolean;
 var
-  locRayStart, locRayVector: TVector;
+  locRayStart, locRayVector: TGLVector;
 begin
   Assert(Assigned(FOctree), strOctreeMustBePreparedBeforeUse);
   SetVector(locRayStart, AbsoluteToLocal(rayStart));

@@ -34,15 +34,15 @@ type
 
   TGLPathNode = class (TCollectionItem)
   private
-    FPosition: TVector;
-    FScale: TVector;
-    FRotation: TVector;
-    FDirection: TVector;
-    FUp: TVector;
+    FPosition: TGLVector;
+    FScale: TGLVector;
+    FRotation: TGLVector;
+    FDirection: TGLVector;
+    FUp: TGLVector;
     FSpeed: single;
-    procedure SetPositionAsVector(const Value: TVector);
-    procedure SetRotationAsVector(const Value: TVector);
-    procedure SetScaleAsVector(const Value: TVector);
+    procedure SetPositionAsVector(const Value: TGLVector);
+    procedure SetRotationAsVector(const Value: TGLVector);
+    procedure SetScaleAsVector(const Value: TGLVector);
     function GetPositionCoordinate(const Index: Integer): TGLFloat;
     procedure SetPositionCoordinate(const Index: integer; const AValue: TGLFloat);
     function GetRotationCoordinate(const Index: Integer): TGLFloat; inline;
@@ -69,11 +69,11 @@ type
     {Warning: does not take speed into account. }
     function EqualNode(const aNode: TGLPathNode): boolean;
     {Rotation.X means PitchAngle, Rotation.Y means TurnAngle, Rotation.Z means RollAngle.}
-    property RotationAsVector: TVector Read FRotation Write SetRotationAsVector;
-    property PositionAsVector: TVector Read FPosition Write SetPositionAsVector;
-    property ScaleAsVector: TVector Read FScale Write SetScaleAsVector;
-    property UpAsVector: TVector read FUp write FUp;
-    property DirectionAsVector: TVector read FDirection write FDirection;
+    property RotationAsVector: TGLVector Read FRotation Write SetRotationAsVector;
+    property PositionAsVector: TGLVector Read FPosition Write SetPositionAsVector;
+    property ScaleAsVector: TGLVector Read FScale Write SetScaleAsVector;
+    property UpAsVector: TGLVector read FUp write FUp;
+    property DirectionAsVector: TGLVector read FDirection write FDirection;
   published
     property X: TGLFloat index 0 Read GetPositionCoordinate Write SetPositionCoordinate;
     property Y: TGLFloat index 1 Read GetPositionCoordinate Write SetPositionCoordinate;
@@ -303,19 +303,19 @@ begin
   inherited Destroy;
 end;
 
-procedure TGLPathNode.SetPositionAsVector(const Value: TVector);
+procedure TGLPathNode.SetPositionAsVector(const Value: TGLVector);
 begin
   FPosition := Value;
     (Collection as TGLPathNodes).NotifyChange;
 end;
 
-procedure TGLPathNode.SetRotationAsVector(const Value: TVector);
+procedure TGLPathNode.SetRotationAsVector(const Value: TGLVector);
 begin
   FRotation := Value;
     (Collection as TGLPathNodes).NotifyChange;
 end;
 
-procedure TGLPathNode.SetScaleAsVector(const Value: TVector);
+procedure TGLPathNode.SetScaleAsVector(const Value: TGLVector);
 begin
   FScale := Value;
     (Collection as TGLPathNodes).NotifyChange;

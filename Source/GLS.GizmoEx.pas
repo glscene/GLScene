@@ -48,7 +48,7 @@ type
 
   TGLGizmoExObjectItem = class(TCollectionItem)
   private
-    FOldAutoScaling: TVector;
+    FOldAutoScaling: TGLVector;
     FEffectedObject: TGLBaseSceneObject;
     FParentOldObject: TGLBaseSceneObject;
     FIndexOldObject: Integer;
@@ -318,7 +318,7 @@ type
     fLastCursorPos: TPoint;
     fChangeRate: TAffineVector;   //total rotate angle
     FEnableLoopCursorMoving: Boolean;
-    lastMousePos: TVector;
+    lastMousePos: TGLVector;
     FOnUpdate: TNotifyEvent;
     FOnSelect: TGLGizmoExAcceptEvent;
     FOnOperationChange: TNotifyEvent;
@@ -347,7 +347,7 @@ type
     procedure SetHistoryStepsCount(aValue: Integer);
     procedure SetExcludeObjectsList(const AValue: TStrings);
     procedure SetExcludeClassNameList(const AValue: TStrings);
-    function MouseWorldPos(const X, Y: Integer): TVector;
+    function MouseWorldPos(const X, Y: Integer): TGLVector;
     function CheckObjectInExcludeList(const Obj: TGLBaseSceneObject): Boolean;
     function CheckClassNameInExcludeList(const Obj: TGLBaseSceneObject): Boolean;
     procedure UpdateVisibleInfoLabels;
@@ -2110,7 +2110,7 @@ procedure TGLGizmoEx.InternalRender(Sender: TObject; var rci: TGLRenderContextIn
   var
     I, J:    Byte;
     BB:      THmgBoundingBox;
-    AVector: TVector;
+    AVector: TGLVector;
   begin
     if aObject = nil then
       Exit;
@@ -2134,7 +2134,7 @@ procedure TGLGizmoEx.InternalRender(Sender: TObject; var rci: TGLRenderContextIn
 
   //test#12 result is positive, but only for 2d
   //
-  procedure ShowText(const Text: UnicodeString; Position: Tvector; Scale: TVector; Color: Tvector);
+  procedure ShowText(const Text: UnicodeString; Position: TGLVector; Scale: TGLVector; Color: TGLVector);
   var
     FLayout: TTextLayout;
     FAlignment: TAlignment;
@@ -2897,7 +2897,7 @@ function TGLGizmoEx.InternalGetPickedObjects(const x1, y1, x2, y2: Integer; cons
   var
     t:    Integer;
     dist: Single;
-    rayStart, rayVector, iPoint, iNormal: TVector;
+    rayStart, rayVector, iPoint, iNormal: TGLVector;
   begin
     SetVector(rayStart, Viewer.Camera.AbsolutePosition);
     SetVector(rayVector, Viewer.Buffer.ScreenToVector(AffineVectorMake(X, Viewer.Height - Y, 0)));
@@ -3073,9 +3073,9 @@ begin
 
 end;
 
-function TGLGizmoEx.MouseWorldPos(const X, Y: Integer): TVector;
+function TGLGizmoEx.MouseWorldPos(const X, Y: Integer): TGLVector;
 var
-  v: TVector;
+  v: TGLVector;
   InvertedY: Integer;
 begin
 
@@ -3100,7 +3100,7 @@ end;
 
 procedure TGLGizmoEx.ActivatingElements(PickList: TGLPickList);
 
-  procedure ActlightRotateLine(const line: TGLLines; const dark: TVector);
+  procedure ActlightRotateLine(const line: TGLLines; const dark: TGLVector);
   var
     v: TVector4f;
     I: Integer;
@@ -3122,7 +3122,7 @@ procedure TGLGizmoEx.ActivatingElements(PickList: TGLPickList);
     end;
   end;
 
-  procedure DeActlightRotateLine(const line: TGLLines; const dark: TVector);
+  procedure DeActlightRotateLine(const line: TGLLines; const dark: TGLVector);
   var
     v: TVector4f;
     I: Integer;
@@ -3151,7 +3151,7 @@ procedure TGLGizmoEx.ActivatingElements(PickList: TGLPickList);
     line.Options := [];
   end;
 
-  procedure DeActlightLine(const line: TGLLines; const dark: TVector; alterStyle: Boolean = False);
+  procedure DeActlightLine(const line: TGLLines; const dark: TGLVector; alterStyle: Boolean = False);
   begin
     with  line.LineColor do
       if (AsWinColor = FSelectedColor.AsWinColor) then
@@ -3163,13 +3163,13 @@ procedure TGLGizmoEx.ActivatingElements(PickList: TGLPickList);
       end;
   end;
 
-  procedure ActlightRotateArrowLine(const line: TGLLines; Color: TVector);
+  procedure ActlightRotateArrowLine(const line: TGLLines; Color: TGLVector);
   begin
     line.LineColor.color := Color;
     line.Options := [];
   end;
 
-  procedure DeActlightRotateArrowLine(const line: TGLLines; const dark: TVector);
+  procedure DeActlightRotateArrowLine(const line: TGLLines; const dark: TGLVector);
   begin
     if not VectorEquals(line.LineColor.Color, dark) then
     begin
@@ -3194,19 +3194,19 @@ procedure TGLGizmoEx.ActivatingElements(PickList: TGLPickList);
     FlatText.ModulateColor.Color := FSelectedColor.Color;
   end;
 
-  procedure DeActlightText(const FlatText: TGLFlatText; const dark: TVector);
+  procedure DeActlightText(const FlatText: TGLFlatText; const dark: TGLVector);
   begin
     with FlatText.ModulateColor do
       if AsWinColor = FSelectedColor.AsWinColor then
         Color := dark;
   end;
 
-  procedure ActlightTextRotate(const FlatText: TGLFlatText; Color: TVector);
+  procedure ActlightTextRotate(const FlatText: TGLFlatText; Color: TGLVector);
   begin
     FlatText.ModulateColor.Color := Color;
   end;
 
-  procedure DeActlightTextRotate(const FlatText: TGLFlatText; const dark: TVector);
+  procedure DeActlightTextRotate(const FlatText: TGLFlatText; const dark: TGLVector);
   begin
     with FlatText.ModulateColor do
       if not VectorEquals(Color, dark) then
@@ -3458,7 +3458,7 @@ end;
 procedure TGLGizmoEx.ViewerMouseMove(const X, Y: Integer);
 var
   pickList:  TGLPickList;
-  mousePos:  TVector;
+  mousePos:  TGLVector;
   includeCh: Boolean;
 
   function FindParent(parent: TGLBaseSceneObject): Boolean;
@@ -3472,10 +3472,10 @@ var
     end;
   end;
 
-  procedure OpeMove(mousePos: TVector);
+  procedure OpeMove(mousePos: TGLVector);
   var
-    vec1, vec2: TVector;
-    quantizedMousePos, quantizedMousePos2: TVector;
+    vec1, vec2: TGLVector;
+    quantizedMousePos, quantizedMousePos2: TGLVector;
     I: Integer;
   begin
     if VectorNorm(lastMousePos) = 0 then
@@ -3558,12 +3558,12 @@ var
 
   procedure OpeRotate(const X, Y: Integer);
   var
-    vec1: TVector;
+    vec1: TGLVector;
     rotV: TAffineVector;
     pmat: TMatrix;
     I:    Integer;
     IncludeCh: Boolean;
-    v:    TVector;
+    v:    TGLVector;
   begin
 
     vec1.X := 0;
@@ -3657,10 +3657,10 @@ var
       end;
   end;
 
-  procedure OpeScale(const mousePos: TVector);
+  procedure OpeScale(const mousePos: TGLVector);
   var
-    vec1, vec2: TVector;
-    quantizedMousePos, quantizedMousePos2: TVector;
+    vec1, vec2: TGLVector;
+    quantizedMousePos, quantizedMousePos2: TGLVector;
     t: Integer;
   begin
     if VectorNorm(lastMousePos) = 0 then
@@ -3881,9 +3881,9 @@ end;
 
 procedure TGLGizmoEx.ViewerMouseDown(const X, Y: Integer);
 
-  function SetInitialDiskPostition(aObject, aObject2: TGLCustomSceneObject): TVector;
+  function SetInitialDiskPostition(aObject, aObject2: TGLCustomSceneObject): TGLVector;
   var
-    rayStart, rayVector, iPoint, iNormal: TVector;
+    rayStart, rayVector, iPoint, iNormal: TGLVector;
   begin
     if (Viewer = nil) then
       Exit;
@@ -4042,7 +4042,7 @@ end;
 procedure TGLGizmoEx.UpdateGizmo;
 var
   d: Single;
-  v: TVector;
+  v: TGLVector;
   I: Integer;
 begin
   if not Assigned(RootGizmo)   or

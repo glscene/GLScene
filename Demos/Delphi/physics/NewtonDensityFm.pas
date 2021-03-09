@@ -84,7 +84,7 @@ function BuoyancyPlaneCallback(const collisionID: Integer; context: Pointer;
 var
   BodyMatrix: TMatrix;
   PlaneEquation: TGLVector;
-  pv: PVector;
+  pv: PGLVector;
   MyForm: TFormNewtonDensity;
 begin
   // Get the matrix of the actual body
@@ -98,7 +98,7 @@ begin
   PlaneEquation := MyForm.GLPlane1.Direction.AsVector;
   // the distance along this normal, to the origin.
   PlaneEquation.W := MyForm.GLPlane1.Position.Y;
-  PVector(globalSpacePlane)^ := PlaneEquation;
+  PGLVector(globalSpacePlane)^ := PlaneEquation;
   Result := 1;
 end;
 

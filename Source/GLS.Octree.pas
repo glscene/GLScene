@@ -64,13 +64,13 @@ type
       V3: TAffineFLTVector): BOOLEAN;
     // Check if a sphere (at point C with radius) lies within the AABB specified by min and max entents
     function SphereInNode(const MinExtent, MaxExtent: TAffineVector;
-      const C: TVector; Radius: Single): Boolean;
+      const C: TGLVector; Radius: Single): Boolean;
     procedure WalkTriToLeafx(Onode: POctreeNode;
       const V1, V2, V3: TAffineFLTVector);
     procedure WalkPointToLeafx(ONode: POctreeNode; const P: TAffineVector);
-    procedure WalkSphereToLeafx(Onode: POctreeNode; const P: TVector;
+    procedure WalkSphereToLeafx(Onode: POctreeNode; const P: TGLVector;
       Radius: Single);
-    procedure WalkRayToLeafx(Onode: POctreeNode; const P, V: TVector);
+    procedure WalkRayToLeafx(Onode: POctreeNode; const P, V: TGLVector);
     function GetExtent(const Flags: array of Byte; ParentNode: POctreeNode)
       : TAffineFLTVector;
     //  Recursive routine to build nodes from parent to max depth level.
@@ -79,7 +79,7 @@ type
     procedure WalkPointToLeaf(ONode: POctreeNode; const P: TAffineVector);
     procedure WalkTriToLeaf(Onode: POctreeNode;
       const V1, V2, V3: TAffineVector);
-    procedure WalkRayToLeaf(Onode: POctreeNode; const P, V: TVector);
+    procedure WalkRayToLeaf(Onode: POctreeNode; const P, V: TGLVector);
     // Example of how to process each node in the tree
     procedure ConvertR4(ONode: POctreeNode; const Scale: TAffineFLTVector);
     procedure CreateTree(Depth: Integer);
@@ -96,7 +96,7 @@ type
     ResultArray: array of POctreeNode;
     // holds the result nodes of various calls
     TriangleFiler: TAffineVectorList;
-    procedure WalkSphereToLeaf(Onode: POctreeNode; const P: TVector;
+    procedure WalkSphereToLeaf(Onode: POctreeNode; const P: TGLVector;
       Radius: Single);
     (*  Initializes the tree from the triangle list.
       All triangles must be contained in the world extent to be properly
@@ -106,12 +106,12 @@ type
       const ATreeDepth: Integer);
     procedure DisposeTree;
     destructor Destroy; override;
-    function RayCastIntersect(const RayStart, RayVector: TVector;
-      IntersectPoint: PVector = nil; IntersectNormal: PVector = nil;
+    function RayCastIntersect(const RayStart, RayVector: TGLVector;
+      IntersectPoint: PGLVector = nil; IntersectNormal: PGLVector = nil;
       TriangleInfo: POctreeTriangleInfo = nil): Boolean;
-    function SphereSweepIntersect(const RayStart, RayVector: TVector;
-      const Velocity, Radius: Single; IntersectPoint: PVector = nil;
-      IntersectNormal: PVector = nil): Boolean;
+    function SphereSweepIntersect(const RayStart, RayVector: TGLVector;
+      const Velocity, Radius: Single; IntersectPoint: PGLVector = nil;
+      IntersectNormal: PGLVector = nil): Boolean;
     function TriangleIntersect(const V1, V2, V3: TAffineVector): Boolean;
     //  Returns all triangles in the AABB.
     function GetTrianglesFromNodesIntersectingAABB(const ObjAABB: TAABB)
@@ -138,7 +138,7 @@ implementation
 // Return: TRUE if point is in sphere, FALSE if not.
 // -----------------------------------------------------------------------
 
-function CheckPointInSphere(const Point, SO: TVector; const SR: Single)
+function CheckPointInSphere(const Point, SO: TGLVector; const SR: Single)
   : Boolean;
 begin
   // Allow small margin of error
@@ -293,7 +293,7 @@ begin
 end;
 
 function HitBoundingBox(const MinB, MaxB: TAffineFLTVector;
-  const Origin, Dir: TVector; var Coord: TVector): BOOLEAN;
+  const Origin, Dir: TGLVector; var Coord: TGLVector): BOOLEAN;
 const
   NUMDIM = 2;
   RIGHT = 0;
@@ -985,7 +985,7 @@ begin
 end;
 
 function TGLOctree.SphereInNode(const MinExtent, MaxExtent: TAffineVector;
-  const C: TVector; Radius: Single): Boolean;
+  const C: TGLVector; Radius: Single): Boolean;
 // Sphere-AABB intersection by Miguel Gomez
 var
   S, D: Single;
@@ -1014,14 +1014,14 @@ begin
     Result := FALSE;
 end;
 
-procedure TGLOctree.WalkSphereToLeaf(Onode: POctreeNode; const P: TVector;
+procedure TGLOctree.WalkSphereToLeaf(Onode: POctreeNode; const P: TGLVector;
   Radius: Single);
 begin
   Finalize(Resultarray);
   WalkSphereToLeafx(Onode, P, Radius);
 end;
 
-procedure TGLOctree.WalkSphereToLeafx(Onode: POctreeNode; const P: TVector;
+procedure TGLOctree.WalkSphereToLeafx(Onode: POctreeNode; const P: TGLVector;
   Radius: Single);
 var
   N: Integer;
@@ -1040,17 +1040,17 @@ begin
 end;
 
 // Cast a ray (point p, vector v) into the Octree (ie: ray-box intersect).
-procedure TGLOctree.WalkRayToLeaf(Onode: POctreeNode; const P, V: TVector);
+procedure TGLOctree.WalkRayToLeaf(Onode: POctreeNode; const P, V: TGLVector);
 begin
   Finalize(Resultarray);
 
   WalkRayToLeafx(Onode, P, V);
 end;
 
-procedure TGLOctree.WalkRayToLeafx(Onode: POctreeNode; const P, V: TVector);
+procedure TGLOctree.WalkRayToLeafx(Onode: POctreeNode; const P, V: TGLVector);
 var
   N: Integer;
-  Coord: TVector;
+  Coord: TGLVector;
 begin
   if HitBoundingBox(Onode^.MinExtent, Onode^.MaxExtent, P, V, Coord) then
   begin
@@ -1132,8 +1132,8 @@ begin
   end;
 end;
 
-function TGLOctree.RayCastIntersect(const RayStart, RayVector: TVector;
-  IntersectPoint: PVector = nil; IntersectNormal: PVector = nil;
+function TGLOctree.RayCastIntersect(const RayStart, RayVector: TGLVector;
+  IntersectPoint: PGLVector = nil; IntersectNormal: PGLVector = nil;
   TriangleInfo: POctreeTriangleInfo = nil): Boolean;
 const
   CInitialMinD: Single = 1E40;
@@ -1141,7 +1141,7 @@ var
   I, T, K: Integer;
   D, MinD: Single;
   P: POctreeNode;
-  IPoint, INormal: TVector;
+  IPoint, INormal: TGLVector;
 begin
   WalkRayToLeaf(RootNode, RayStart, RayVector);
 
@@ -1215,9 +1215,9 @@ end;
 //
 // Return the polygon intersection point and the closest triangle's normal if hit.
 //
-function TGLOctree.SphereSweepIntersect(const RayStart, RayVector: TVector;
-  const Velocity, Radius: Single; IntersectPoint: PVector = nil;
-  IntersectNormal: PVector = nil): Boolean;
+function TGLOctree.SphereSweepIntersect(const RayStart, RayVector: TGLVector;
+  const Velocity, Radius: Single; IntersectPoint: PGLVector = nil;
+  IntersectNormal: PGLVector = nil): Boolean;
 const
   CInitialMinD2: Single = 1E40;
   CEpsilon: Single = 0.05;
@@ -1228,12 +1228,12 @@ var
   DistanceToTravel, DistanceToTravelMinusRadius2: Single;
   P: POctreeNode;
   PNormal: TAffineVector;
-  PNormal4: TVector;
-  NEGpNormal4: TVector;
-  SIPoint, SIPoint2: TVector; // sphere intersection point
-  PIPoint: TVector; // plane intersection point
-  PolyIPoint: TVector; // polygon intersection point
-  NEGVelocity: TVector; // sphere's forward velocity
+  PNormal4: TGLVector;
+  NEGpNormal4: TGLVector;
+  SIPoint, SIPoint2: TGLVector; // sphere intersection point
+  PIPoint: TGLVector; // plane intersection point
+  PolyIPoint: TGLVector; // polygon intersection point
+  NEGVelocity: TGLVector; // sphere's forward velocity
   DirectHit: Boolean;
 
   P1, P2, P3: PAffineVector;
@@ -1241,9 +1241,9 @@ var
   // SphereSweepAABB:TAABB;
 
   // response identifiers (for future use)
-  // destinationPoint, newdestinationPoint: TVector;
-  // slidePlaneOrigin, slidePlaneNormal: TVector;
-  // newvelocityVector: TVector;
+  // destinationPoint, newdestinationPoint: TGLVector;
+  // slidePlaneOrigin, slidePlaneNormal: TGLVector;
+  // newvelocityVector: TGLVector;
   // v: single;
   // L: double;
 begin

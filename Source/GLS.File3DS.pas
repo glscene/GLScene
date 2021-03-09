@@ -40,7 +40,7 @@ type
   // A record that holds all the information that is used during 3ds animation.
   TGLFile3DSAnimationData = packed record
     ModelMatrix: TMatrix;
-    Color: TVector; // Omni Light.
+    Color: TGLVector; // Omni Light.
     TargetPos: TAffineVector; // Spot Light.
     SpotLightCutOff: Single;
     HotSpot: Single;
@@ -335,7 +335,7 @@ end;
 
 function MakeRotationQuaternion(const axis: TAffineVector; angle: Single): TQuaternion;
 var
-  v: TVector;
+  v: TGLVector;
   halfAngle, invAxisLengthMult: Single;
 begin
   halfAngle := (angle) / 2;
@@ -353,7 +353,7 @@ end;
 function QuaternionToRotateMatrix(const Quaternion: TQuaternion): TMatrix;
 var
   wx, wy, wz, xx, yy, yz, xy, xz, zz, x2, y2, z2: Single;
-  quat: TVector;
+  quat: TGLVector;
   m: TMatrix;
 begin
   quat := VectorMake(Quaternion.ImagPart);
@@ -1506,7 +1506,7 @@ var
   function GetOrAllocateMaterial(materials: TMaterialList; const Name: string): string;
   var
     material: PMaterial3DS;
-    specColor: TVector;
+    specColor: TGLVector;
     matLib: TGLMaterialLibrary;
     libMat, SecondMaterial: TGLLibMaterial;
   begin
@@ -1709,7 +1709,7 @@ var
     I, Index: Integer;
     boolY: Boolean;
     m: TMatrix;
-    v4: TVector;
+    v4: TGLVector;
     factor: Single;
   begin
     with Objects do

@@ -306,7 +306,7 @@ end;
 
 procedure TGLSMOpenAL.UpdateSources;
 var
-  pos, dir, up, vel: TVector;
+  pos, dir, up, vel: TGLVector;
   DirUp: array [0 .. 5] of TALfloat; // orientation
 begin
   ListenerCoordinates(pos, vel, dir, up);

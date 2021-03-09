@@ -52,8 +52,8 @@ type
   TGLVisibilityCulling = (vcInherited, vcNone, vcObjectBased, vcHierarchical);
 
   TRenderContextClippingInfo = record
-    Origin: TVector;
-    ClippingDirection: TVector;
+    Origin: TGLVector;
+    ClippingDirection: TGLVector;
     ViewPortRadius: Single; // viewport bounding radius per distance unit
     NearClippingDistance: Single;
     FarClippingDistance: Single;
@@ -64,8 +64,8 @@ type
   TGLRenderContextInfo = record
     Scene: TObject; //usually TGLScene
     Buffer: TObject; //usually TGLSceneBuffer
-    CameraPosition: TVector;
-    CameraDirection, CameraUp: TVector;
+    CameraPosition: TGLVector;
+    CameraDirection, CameraUp: TGLVector;
     ViewPortSize: TGLSize;
     RenderDPI: Integer;
     MaterialLibrary: TObject; //usually TGLMaterialLibrary;

@@ -85,8 +85,8 @@ type
     destructor Destroy; override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
     procedure CoordinateChanged(Sender: TGLCustomCoordinates); override;
-    function AxisAlignedDimensionsUnscaled: TVector; override;
-    function BarycenterAbsolutePosition: TVector; override;
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
+    function BarycenterAbsolutePosition: TGLVector; override;
   published
     property S_Rot3DS: TGLCoordinates4 read FS_Rot3DS;
     property Rot3DS: TGLCoordinates4 read FRot3DS;
@@ -102,7 +102,7 @@ implementation
 
 function MakeRotationQuaternion(const axis: TAffineVector; angle: Single): TQuaternion;
 var
-  v: Tvector;
+  v: TGLVector;
   halfAngle, invAxisLengthMult: Single;
 begin
   halfAngle := (angle) / 2;
@@ -120,7 +120,7 @@ end;
 function QuaternionToRotateMatrix(const Quaternion: TQuaternion): TMatrix;
 var
   wx, wy, wz, xx, yy, yz, xy, xz, zz, x2, y2, z2: Single;
-  quat: TVector;
+  quat: TGLVector;
   m: TMatrix;
 begin
   quat := VectorMake(Quaternion.ImagPart);
@@ -375,7 +375,7 @@ end;
 
 procedure TGLFile3DSFreeForm.ReadMesh(Stream: TStream);
 var
-  v: TVector;
+  v: TGLVector;
   virt: TGLBinaryReader;
 begin
   virt := TGLBinaryReader.Create(Stream);
@@ -395,7 +395,7 @@ end;
 procedure TGLFile3DSFreeForm.WriteMesh(Stream: TStream);
 var
   virt: TGLBinaryWriter;
-  v: TVector;
+  v: TGLVector;
 begin
   virt := TGLBinaryWriter.Create(Stream);
 
@@ -457,7 +457,7 @@ begin
   end;
 end;
 
-function TGLFile3DSFreeForm.AxisAlignedDimensionsUnscaled: TVector;
+function TGLFile3DSFreeForm.AxisAlignedDimensionsUnscaled: TGLVector;
 var
   dMin, dMax: TAffineVector;
   mat: TMatrix;
@@ -476,7 +476,7 @@ begin
   Result.W := 0;
 end;
 
-function TGLFile3DSFreeForm.BarycenterAbsolutePosition: TVector;
+function TGLFile3DSFreeForm.BarycenterAbsolutePosition: TGLVector;
 var
   dMin, dMax: TAffineVector;
   mat: TMatrix;

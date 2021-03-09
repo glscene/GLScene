@@ -79,10 +79,10 @@ const
      procedure DoProgress(const progressTime: TGLProgressTimes); override;
      procedure BuildList(var rci: TGLRenderContextInfo); override;
      procedure Assign(Source: TPersistent); override;
-     function AxisAlignedDimensionsUnscaled: TVector; override;
+     function AxisAlignedDimensionsUnscaled: TGLVector; override;
      procedure CreateRippleAtGridPos(X, Y: Integer);
      procedure CreateRippleAtWorldPos(const X, Y, z: Single); overload;
-     procedure CreateRippleAtWorldPos(const pos: TVector); overload;
+     procedure CreateRippleAtWorldPos(const pos: TGLVector); overload;
      procedure CreateRippleRandom;
      procedure Reset;
      // CPU time (in seconds) taken by the last iteration step.
@@ -206,16 +206,16 @@ end;
 
 procedure TGLWaterPlane.CreateRippleAtWorldPos(const X, Y, z: Single);
 var
-  vv: TVector;
+  vv: TGLVector;
 begin
   vv := AbsoluteToLocal(PointMake(X, Y, z));
   CreateRippleAtGridPos(Round((vv.X + 0.5) * Resolution),
     Round((vv.z + 0.5) * Resolution));
 end;
 
-procedure TGLWaterPlane.CreateRippleAtWorldPos(const pos: TVector);
+procedure TGLWaterPlane.CreateRippleAtWorldPos(const pos: TGLVector);
 var
-  vv: TVector;
+  vv: TGLVector;
 begin
   vv := AbsoluteToLocal(PointMake(pos));
   CreateRippleAtGridPos(Round((vv.X + 0.5) * Resolution),
@@ -477,7 +477,7 @@ begin
   inherited Assign(Source);
 end;
 
-function TGLWaterPlane.AxisAlignedDimensionsUnscaled: TVector;
+function TGLWaterPlane.AxisAlignedDimensionsUnscaled: TGLVector;
 begin
   Result.X := 0.5 * Abs(Resolution);
   Result.Y := 0;

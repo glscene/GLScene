@@ -763,7 +763,7 @@ procedure RndVector(const dispersion: TGLSourcePFXDispersionMode;
 
 var
   f2: Single;
-  p: TVector;
+  p: TGLVector;
 begin
   f2 := 2 * f;
   if Assigned(dispersionRange) then
@@ -1917,7 +1917,7 @@ var
   list: PGLParticleArray;
   doFriction, doPack: Boolean;
   frictionScale: Single;
-  //pos4: TVector;
+  //pos4: TGLVector;
 begin
   maxAge := MaxParticleAge;
   accelVector := Acceleration.AsAffineVector;

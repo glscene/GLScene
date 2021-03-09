@@ -180,7 +180,7 @@ procedure DrawContours(Vertices: TAffineVectorList; VertexIndices: TIntegerList;
 var
   i: Integer;
   Isolines: TAffineVectorList;
-  CurColor: TVector;
+  CurColor: TGLVector;
 
 begin
   if ContourInterval > 0 then

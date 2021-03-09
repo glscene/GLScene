@@ -28,17 +28,17 @@ type
   TGLCoordinatesStyle = (csPoint2D, csPoint, csVector, csUnknown);
 
   (* Stores and homogeneous vector.
-    This class is basicly a container for a TVector, allowing proper use of
+    This class is basicly a container for a TGLVector, allowing proper use of
     delphi property editors and editing in the IDE. Vector/Coordinates
     manipulation methods are only minimal.
     Handles dynamic default values to save resource file space.  *)
   TGLCustomCoordinates = class(TGLUpdateAbleObject)
   private
-   FCoords: TVector;
+   FCoords: TGLVector;
     FStyle: TGLCoordinatesStyle; // NOT Persistent
-    FPDefaultCoords: PVector;
+    FPDefaultCoords: PGLVector;
     procedure SetAsPoint2D(const Value: TVector2f);
-    procedure SetAsVector(const Value: TVector);
+    procedure SetAsVector(const Value: TGLVector);
     procedure SetAsAffineVector(const Value: TAffineVector);
     function GetAsAffineVector: TAffineVector; inline;
     function GetAsPoint2D: TVector2f;
@@ -48,18 +48,18 @@ type
     function GetDirectCoordinate(const Index: Integer): Single; inline;
     procedure SetDirectCoordinate(const Index: Integer; const AValue: Single);
   protected
-    procedure SetDirectVector(const V: TVector); inline;
+    procedure SetDirectVector(const V: TGLVector); inline;
     procedure DefineProperties(Filer: TFiler); override;
     procedure ReadData(Stream: TStream);
     procedure WriteData(Stream: TStream);
   public
-    constructor CreateInitialized(AOwner: TPersistent; const AValue: TVector;
+    constructor CreateInitialized(AOwner: TPersistent; const AValue: TGLVector;
       const AStyle: TGLCoordinatesStyle = CsUnknown);
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure WriteToFiler(Writer: TWriter);
     procedure ReadFromFiler(Reader: TReader);
-    procedure Initialize(const Value: TVector);
+    procedure Initialize(const Value: TGLVector);
     procedure NotifyChange(Sender: TObject); override;
     (* Identifies the coordinates styles.
       The property is NOT persistent, csUnknown by default, and should be
@@ -68,36 +68,36 @@ type
       to detect "misuses" or "misunderstandings" of what the homogeneous
       coordinates system implies. *)
     property Style: TGLCoordinatesStyle read FStyle write FStyle;
-    procedure Translate(const TranslationVector: TVector); overload;
+    procedure Translate(const TranslationVector: TGLVector); overload;
     procedure Translate(const TranslationVector: TAffineVector); overload;
-    procedure AddScaledVector(const Factor: Single; const TranslationVector: TVector); overload;
+    procedure AddScaledVector(const Factor: Single; const TranslationVector: TGLVector); overload;
     procedure AddScaledVector(const Factor: Single; const TranslationVector: TAffineVector); overload;
     procedure Rotate(const AnAxis: TAffineVector; AnAngle: Single); overload;
-    procedure Rotate(const AnAxis: TVector; AnAngle: Single); overload;
+    procedure Rotate(const AnAxis: TGLVector; AnAngle: Single); overload;
     procedure Normalize; inline;
     procedure Invert;
     procedure Scale(Factor: Single);
     function VectorLength: Single;
     function VectorNorm: Single;
     function MaxXYZ: Single;
-    function Equals(const AVector: TVector): Boolean; reintroduce;
+    function Equals(const AVector: TGLVector): Boolean; reintroduce;
     procedure SetVector(const X, Y: Single; Z: Single = 0); overload;
     procedure SetVector(const X, Y, Z, W: Single); overload;
     procedure SetVector(const V: TAffineVector); overload;
-    procedure SetVector(const V: TVector); overload;
+    procedure SetVector(const V: TGLVector); overload;
     procedure SetPoint(const X, Y, Z: Single); overload;
     procedure SetPoint(const V: TAffineVector); overload;
-    procedure SetPoint(const V: TVector); overload;
+    procedure SetPoint(const V: TGLVector); overload;
     procedure SetPoint2D(const X, Y: Single); overload;
     procedure SetPoint2D(const Vector: TAffineVector); overload;
-    procedure SetPoint2D(const Vector: TVector); overload;
+    procedure SetPoint2D(const Vector: TGLVector); overload;
     procedure SetPoint2D(const Vector: TVector2f); overload;
     procedure SetToZero;
     function AsAddress: PSingle; inline;
     (* The coordinates viewed as a vector.
       Assigning a value to this property will trigger notification events,
       if you don't want so, use DirectVector instead. *)
-    property AsVector: TVector read FCoords write SetAsVector;
+    property AsVector: TGLVector read FCoords write SetAsVector;
     (* The coordinates viewed as an affine vector.
       Assigning a value to this property will trigger notification events,
       if you don't want so, use DirectVector instead.
@@ -115,7 +115,7 @@ type
     // The coordinates, in-between brackets, separated by semi-colons.
     property AsString: String read GetAsString;
     // Similar to AsVector but does not trigger notification events
-    property DirectVector: TVector read FCoords write SetDirectVector;
+    property DirectVector: TGLVector read FCoords write SetDirectVector;
     property DirectX: Single index 0 read GetDirectCoordinate write SetDirectCoordinate;
     property DirectY: Single index 1 read GetDirectCoordinate write SetDirectCoordinate;
     property DirectZ: Single index 2 read GetDirectCoordinate write SetDirectCoordinate;
@@ -253,7 +253,7 @@ const
   // ------------------
 
 constructor TGLCustomCoordinates.CreateInitialized(AOwner: TPersistent;
-  const AValue: TVector; const AStyle: TGLCoordinatesStyle = CsUnknown);
+  const AValue: TGLVector; const AStyle: TGLCoordinatesStyle = CsUnknown);
 begin
   Create(AOwner);
   Initialize(AValue);
@@ -267,7 +267,7 @@ begin
   inherited;
 end;
 
-procedure TGLCustomCoordinates.Initialize(const Value: TVector);
+procedure TGLCustomCoordinates.Initialize(const Value: TGLVector);
 begin
   FCoords := Value;
   if VUseDefaultCoordinateSets then
@@ -347,7 +347,7 @@ begin
   inherited NotifyChange(Sender);
 end;
 
-procedure TGLCustomCoordinates.Translate(const TranslationVector: TVector);
+procedure TGLCustomCoordinates.Translate(const TranslationVector: TGLVector);
 begin
   FCoords.X := FCoords.X + TranslationVector.X;
   FCoords.Y := FCoords.Y + TranslationVector.Y;
@@ -365,7 +365,7 @@ begin
 end;
 
 procedure TGLCustomCoordinates.AddScaledVector(const Factor: Single;
-  const TranslationVector: TVector);
+  const TranslationVector: TGLVector);
 var
   F: Single;
 begin
@@ -391,7 +391,7 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TGLCustomCoordinates.Rotate(const AnAxis: TVector; AnAngle: Single);
+procedure TGLCustomCoordinates.Rotate(const AnAxis: TGLVector; AnAngle: Single);
 begin
   RotateVector(FCoords, AnAxis, AnAngle);
   NotifyChange(Self);
@@ -430,7 +430,7 @@ begin
   Result := MaxXYZComponent(FCoords);
 end;
 
-function TGLCustomCoordinates.Equals(const AVector: TVector): Boolean;
+function TGLCustomCoordinates.Equals(const AVector: TGLVector): Boolean;
 begin
   Result := VectorEquals(FCoords, AVector);
 end;
@@ -449,7 +449,7 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TGLCustomCoordinates.SetVector(const V: TVector);
+procedure TGLCustomCoordinates.SetVector(const V: TGLVector);
 begin
   Assert(FStyle = csVector, csVectorHelp);
   GLS.VectorGeometry.SetVector(FCoords, V);
@@ -469,7 +469,7 @@ begin
   FCoords.V[index] := AValue;
 end;
 
-procedure TGLCustomCoordinates.SetDirectVector(const V: TVector);
+procedure TGLCustomCoordinates.SetDirectVector(const V: TGLVector);
 begin
   FCoords.X := V.X;
   FCoords.Y := V.Y;
@@ -503,7 +503,7 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TGLCustomCoordinates.SetPoint(const V: TVector);
+procedure TGLCustomCoordinates.SetPoint(const V: TGLVector);
 begin
   Assert(FStyle = CsPoint, CsPointHelp);
   MakePoint(FCoords, V);
@@ -524,7 +524,7 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TGLCustomCoordinates.SetPoint2D(const Vector: TVector);
+procedure TGLCustomCoordinates.SetPoint2D(const Vector: TGLVector);
 begin
   Assert(FStyle = CsPoint2D, CsPoint2DHelp);
   MakeVector(FCoords, Vector);
@@ -543,7 +543,7 @@ begin
   Result := @FCoords;
 end;
 
-procedure TGLCustomCoordinates.SetAsVector(const Value: TVector);
+procedure TGLCustomCoordinates.SetAsVector(const Value: TGLVector);
 begin
   FCoords := Value;
   case FStyle of

@@ -77,8 +77,8 @@ implementation
 var
   yangle: double = 90;
   xangle: double = 0;
-  //Velocity:TVector=(0,0,0,0);
-  //Gravity:TVector=(0,-9.81*20,0,0);
+  //Velocity:TGLVector=(0,0,0,0);
+  //Gravity:TGLVector=(0,-9.81*20,0,0);
   Wireframe: Boolean;
   //DisplayTime:Integer=2000;
 

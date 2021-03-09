@@ -168,7 +168,7 @@ type
     FLeafBackMaterialName: TGLLibMaterialName;
     FBranchMaterialName: TGLLibMaterialName;
     FRebuildTree: Boolean;
-    FAxisAlignedDimensionsCache: TVector;
+    FAxisAlignedDimensionsCache: TGLVector;
   protected
    procedure SetDepth(const Value: Integer);
     procedure SetBranchFacets(const Value: Integer);
@@ -205,7 +205,7 @@ type
     procedure ForceTotalRebuild;
     procedure Clear;
     procedure GetExtents(var min, max: TAffineVector);
-    function AxisAlignedDimensionsUnscaled: TVector; override;
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
     procedure LoadFromStream(aStream: TStream);
     procedure SaveToStream(aStream: TStream);
     procedure LoadFromFile(const aFileName: String);
@@ -287,7 +287,7 @@ end;
 procedure TGLTreeLeaves.AddNew(matrix: TMatrix);
 var
   radius: Single;
-  pos: TVector;
+  pos: TGLVector;
 begin
   radius := Owner.LeafSize;
   Inc(FCount);
@@ -1339,7 +1339,7 @@ begin
   max.Z := MaxFloat([lmin.Z, lmax.Z, bmin.Z, bmax.Z]);
 end;
 
-function TGLTree.AxisAlignedDimensionsUnscaled: TVector;
+function TGLTree.AxisAlignedDimensionsUnscaled: TGLVector;
 var
   dMin, dMax: TAffineVector;
 begin

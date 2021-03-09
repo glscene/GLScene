@@ -85,7 +85,7 @@ type
   TMaterialInfo = record
     FShininess, BShininess: TGLShininess;
     FAmbient, FDiffuse, FEmission, FSpecular, BAmbient, BDiffuse, BEmission,
-      BSpecular: TVector;
+      BSpecular: TGLVector;
     ImageAlpha: TGLTextureImageAlpha;
     magFilter: TGLMagFilter;
     minFilter: TGLMinFilter;

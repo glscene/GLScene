@@ -318,7 +318,7 @@ procedure ECAddFreeForm(var MovePack: TECMovePack; FreeForm: TGLBaseSceneObject;
   Solid: Boolean; ObjectID: Integer);
 var
   i, count: Integer;
-  Pos: TVector;
+  Pos: TGLVector;
   Master: TGLBaseSceneObject;
   d1, d2: single;
 begin
@@ -502,7 +502,7 @@ end;
 function RotateVectorByObject(obj: TGLBaseSceneObject; const v: TAffineVector)
   : TAffineVector;
 var
-  v2: TVector;
+  v2: TGLVector;
 begin
   SetVector(v2, v);
   SetVector(result, VectorTransform(v2, obj.Matrix^));

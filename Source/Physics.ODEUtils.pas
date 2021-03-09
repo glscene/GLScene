@@ -74,10 +74,10 @@ function CreateTriMeshFromBaseMesh(
   var Indices: PdIntegerArray): PdxGeom;
 
 function GLMatrixFromGeom(Geom: PdxGeom): TMatrix;
-function GLDirectionFromGeom(Geom: PdxGeom): TVector;
+function GLDirectionFromGeom(Geom: PdxGeom): TGLVector;
 function CreateODEPlaneFromGLPlane(Plane: TGLPlane; Space: PdxSpace): PdxGeom;
 procedure RenderGeomList(GeomList: TGeomList);
-function RandomColorVector: TVector;
+function RandomColorVector: TGLVector;
 
 {.$ EXTERNALSYM GL_ZERO}
 
@@ -344,7 +344,7 @@ begin
   end;
 end;
 
-function GLDirectionFromGeom(Geom: PdxGeom): TVector;
+function GLDirectionFromGeom(Geom: PdxGeom): TGLVector;
 var
   m: TMatrix;
 begin
@@ -375,7 +375,7 @@ end;
 
 procedure CopyPosFromGeomToGL(Geom: PdxGeom; GLBaseSceneObject: TGLBaseSceneObject);
 var
-  v: TVector;
+  v: TGLVector;
   m: TMatrix;
 
   R: PdMatrix3;
@@ -551,7 +551,7 @@ end;
 
 function CreateODEPlaneFromGLPlane(Plane: TGLPlane; Space: PdxSpace): PdxGeom;
 var
-  Pos, Direction: TVector;
+  Pos, Direction: TGLVector;
   d: single;
 begin
   Direction := Plane.AbsoluteDirection;
@@ -564,7 +564,7 @@ begin
   result := dCreatePlane(space, Direction.X, Direction.Y, Direction.Z, d);
 end;
 
-function RandomColorVector: TVector;
+function RandomColorVector: TGLVector;
 begin
   result := VectorMake(Random, Random, Random, 1);
 end;

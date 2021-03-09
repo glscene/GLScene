@@ -23,7 +23,7 @@ uses
   /// Import.Newton,    // new version
 
   GLS.VectorTypes,
-  GLS.VectorGeometry, // PVector TVector TMatrix PMatrix NullHmgVector...
+  GLS.VectorGeometry, // PGLVector TGLVector TMatrix PMatrix NullHmgVector...
   GLS.VectorLists, // TAffineVectorList for Tree
   GLS.XCollection, // TXCollection file function
   GLS.GeometryBB, // For show debug
@@ -188,7 +188,7 @@ type
     function GetConstraintCount: Integer;
     procedure AddNode(const coords: TGLCustomCoordinates); overload;
     procedure AddNode(const X, Y, Z: Single); overload;
-    procedure AddNode(const Value: TVector); overload;
+    procedure AddNode(const Value: TGLVector); overload;
     procedure AddNode(const Value: TAffineVector); overload;
     procedure RebuildAllMaterial;
     procedure RebuildAllJoint(Sender: TObject);
@@ -365,16 +365,16 @@ type
   public
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
-    procedure AddImpulse(const veloc, pointposit: TVector);
-    function GetOmega: TVector;
-    procedure SetOmega(const Omega: TVector);
-    function GetVelocity: TVector;
-    procedure SetVelocity(const Velocity: TVector);
+    procedure AddImpulse(const veloc, pointposit: TGLVector);
+    function GetOmega: TGLVector;
+    procedure SetOmega(const Omega: TGLVector);
+    function GetVelocity: TGLVector;
+    procedure SetVelocity(const Velocity: TGLVector);
     class function FriendlyName: string; override;
     property CustomForceAndTorqueEvent: TApplyForceAndTorqueEvent
       read FCustomForceAndTorqueEvent write FCustomForceAndTorqueEvent;
-    property Velocity: TVector read GetVelocity write SetVelocity;
-    property Omega: TVector read GetOmega write SetOmega;
+    property Velocity: TGLVector read GetVelocity write SetVelocity;
+    property Omega: TGLVector read GetOmega write SetOmega;
   published
     property Force: TGLCoordinates read FForce write FForce;
     property Torque: TGLCoordinates read FTorque write FTorque;
@@ -632,7 +632,7 @@ type
   public
     constructor Create(Collection: TCollection); override;
     destructor Destroy; override;
-    procedure KinematicControllerPick(pickpoint: TVector;
+    procedure KinematicControllerPick(pickpoint: TGLVector;
       PickedActions: TGLNGDPickedActions);
   published
     property BallAndSocketOptions: TGLNGDJointPivot read FBallAndSocketOptions
@@ -781,7 +781,7 @@ end;
 // ------------------------
 // TGLNGDManager
 // ------------------------
-procedure TGLNGDManager.AddNode(const Value: TVector);
+procedure TGLNGDManager.AddNode(const Value: TGLVector);
 begin
   if Assigned(FGLLines) then
   begin
@@ -821,7 +821,7 @@ end;
 
 constructor TGLNGDManager.Create(AOwner: TComponent);
 var
-  minworld, maxworld: TVector;
+  minworld, maxworld: TGLVector;
 begin
   inherited;
   FNGDBehaviours := TGLNGDBehaviourList.Create;
@@ -1418,13 +1418,13 @@ end;
 
 function TGLNGDBehaviour.GetBBoxCollision: PNewtonCollision;
 var
-  vc: array [0 .. 7] of TVector;
+  vc: array [0 .. 7] of TGLVector;
   I: Integer;
 begin
   for I := 0 to 8 - 1 do
     vc[I] := AABBToBB(FOwnerBaseSceneObject.AxisAlignedBoundingBoxEx).BBox[I];
   Result := NewtonCreateConvexHull(FManager.FNewtonWorld, 8, @vc[0],
-    SizeOf(TVector), 0.01, 0, nil);
+    SizeOf(TGLVector), 0.01, 0, nil);
 end;
 
 function TGLNGDBehaviour.GetBSphereCollision: PNewtonCollision;
@@ -1952,7 +1952,7 @@ end;
 // TGLNGDDynamic
 //-------------------------
 
-procedure TGLNGDDynamic.AddImpulse(const veloc, pointposit: TVector);
+procedure TGLNGDDynamic.AddImpulse(const veloc, pointposit: TGLVector);
 begin
   if Assigned(FNewtonBody) then
     NewtonBodyAddImpulse(FNewtonBody, @veloc, @pointposit);
@@ -2090,7 +2090,7 @@ procedure TGLNGDDynamic.Render;
     cnt: PNewtonJoint;
     thisContact: PNewtonJoint;
     material: PNewtonMaterial;
-    pos, nor: TVector;
+    pos, nor: TGLVector;
   begin
     FManager.FCurrentColor := FManager.DebugOption.ContactColor;
     cnt := NewtonBodyGetFirstContactJoint(FNewtonBody);
@@ -2112,7 +2112,7 @@ procedure TGLNGDDynamic.Render;
     end;
   end;
 
-  function GetAbsCom(): TVector;
+  function GetAbsCom(): TGLVector;
   var
     M: TMatrix;
   begin
@@ -2126,8 +2126,8 @@ procedure TGLNGDDynamic.Render;
 
   procedure DrawForce;
   var
-    pos: TVector;
-    nor: TVector;
+    pos: TGLVector;
+    nor: TGLVector;
   begin
     pos := GetAbsCom;
 
@@ -2158,7 +2158,7 @@ procedure TGLNGDDynamic.Render;
 
   procedure DrawCoM;
   var
-    com: TVector;
+    com: TGLVector;
     size: Single;
   begin
     FManager.FCurrentColor := FManager.DebugOption.CenterOfMassColor;
@@ -2203,8 +2203,8 @@ end;
 
 procedure TGLNGDDynamic.SetDensity(const Value: Single);
 var
-  inertia: TVector;
-  origin: TVector;
+  inertia: TGLVector;
+  origin: TGLVector;
 begin
   if Assigned(FManager) then
     if Value >= 0 then
@@ -2238,22 +2238,22 @@ begin
       NewtonBodySetLinearDamping(FNewtonBody, FLinearDamping);
 end;
 
-function TGLNGDDynamic.GetOmega: TVector;
+function TGLNGDDynamic.GetOmega: TGLVector;
 begin
   NewtonBodyGetOmega(FNewtonBody, @Result);
 end;
 
-procedure TGLNGDDynamic.SetOmega(const Omega: TVector);
+procedure TGLNGDDynamic.SetOmega(const Omega: TGLVector);
 begin
   NewtonBodySetOmega(FNewtonBody, @Omega);
 end;
 
-function TGLNGDDynamic.GetVelocity: TVector;
+function TGLNGDDynamic.GetVelocity: TGLVector;
 begin
   NewtonBodyGetVelocity(FNewtonBody, @Result);
 end;
 
-procedure TGLNGDDynamic.SetVelocity(const Velocity: TVector);
+procedure TGLNGDDynamic.SetVelocity(const Velocity: TGLVector);
 begin
   NewtonBodySetVelocity(FNewtonBody, @Velocity);
 end;
@@ -2371,7 +2371,7 @@ end;
 procedure TGLNGDDynamic.OnApplyForceAndTorqueEvent(const cbody: PNewtonBody;
   timestep: NGDFloat; threadIndex: Integer);
 var
-  worldGravity: TVector;
+  worldGravity: TGLVector;
 begin
   // Read Only: We get the force and torque resulting from every interaction on this body
   NewtonBodyGetForce(cbody, @(FAppliedForce.AsVector));
@@ -2642,7 +2642,7 @@ begin
   end;
 end;
 
-procedure TGLNGDJoint.KinematicControllerPick(pickpoint: TVector;
+procedure TGLNGDJoint.KinematicControllerPick(pickpoint: TGLVector;
   PickedActions: TGLNGDPickedActions);
 begin
   (* CustomDestroyJoint(FNewtonUserJoint);  //from dJointLibrary.dll
@@ -2691,7 +2691,7 @@ end;
 
 procedure TGLNGDJoint.Render;
 
-  procedure DrawPivot(pivot: TVector);
+  procedure DrawPivot(pivot: TGLVector);
   var
     size: Single;
   begin
@@ -2705,14 +2705,14 @@ procedure TGLNGDJoint.Render;
     FManager.AddNode(VectorAdd(pivot, VectorMake(-size, 0, 0)));
   end;
 
-  procedure DrawPin(pin, pivot: TVector);
+  procedure DrawPin(pin, pivot: TGLVector);
   begin
     FManager.FCurrentColor := FManager.DebugOption.JointAxisColor;
     FManager.AddNode(VectorAdd(pivot, pin));
     FManager.AddNode(VectorAdd(pivot, VectorNegate(pin)));
   end;
 
-  procedure DrawJoint(pivot: TVector);
+  procedure DrawJoint(pivot: TGLVector);
   begin
     FManager.FCurrentColor := FManager.DebugOption.CustomColor;
     FManager.AddNode(FParentObject.AbsolutePosition);

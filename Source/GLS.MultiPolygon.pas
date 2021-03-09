@@ -121,7 +121,7 @@ type
     FContours: TGLContours;
     FOutline: TGLPolygonList;
     FContoursNormal: TAffineVector;
-    FAxisAlignedDimensionsCache: TVector;
+    FAxisAlignedDimensionsCache: TGLVector;
     procedure SetContours(const Value: TGLContours);
     function GetPath(i: Integer): TGLContourNodes;
     procedure SetPath(i: Integer; const value: TGLContourNodes);
@@ -139,12 +139,12 @@ type
     procedure Assign(Source: TPersistent); override;
     procedure AddNode(const i: Integer; const coords: TGLCoordinates); overload;
     procedure AddNode(const i: Integer; const X, Y, Z: TGLfloat); overload;
-    procedure AddNode(const i: Integer; const value: TVector); overload;
+    procedure AddNode(const i: Integer; const value: TGLVector); overload;
     procedure AddNode(const i: Integer; const value: TAffineVector); overload;
     property Path[i: Integer]: TGLContourNodes read GetPath write SetPath;
     property Outline: TGLPolygonList read GetOutline;
     property ContoursNormal: TAffineVector read FContoursNormal write SetContoursNormal;
-    function AxisAlignedDimensionsUnscaled: TVector; override;
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
     procedure StructureChanged; override;
   published
     property Contours: TGLContours read FContours write SetContours;
@@ -422,7 +422,7 @@ begin
 end;
 
 
-procedure TGLMultiPolygonBase.AddNode(const i: Integer; const value: TVector);
+procedure TGLMultiPolygonBase.AddNode(const i: Integer; const value: TGLVector);
 begin
   Path[i].AddNode(value);
 end;
@@ -758,7 +758,7 @@ begin
 end;
 
 
-function TGLMultiPolygonBase.AxisAlignedDimensionsUnscaled: TVector;
+function TGLMultiPolygonBase.AxisAlignedDimensionsUnscaled: TGLVector;
 var
   dMin, dMax: TAffineVector;
 begin

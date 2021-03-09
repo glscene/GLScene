@@ -139,9 +139,9 @@ type
     gpRotateGizmo);
 
   TGLGizmoAcceptEvent = procedure(Sender: TObject; var Obj: TGLBaseSceneObject;
-    var Accept: Boolean; var Dimensions: TVector) of object;
+    var Accept: Boolean; var Dimensions: TGLVector) of object;
   TGLGizmoUpdateEvent = procedure(Sender: TObject; Obj: TGLBaseSceneObject;
-    Axis: TGLGizmoAxis; Operation: TGLGizmoOperation; var Vector: TVector)
+    Axis: TGLGizmoAxis; Operation: TGLGizmoOperation; var Vector: TGLVector)
     of object;
 
   TGLGizmoPickMode = (pmGetPickedObjects, pmRayCast);
@@ -149,7 +149,7 @@ type
   TGLGizmoRayCastHitData = class(TPersistent)
   public
     Obj: TGLBaseSceneObject;
-    Point: TVector;
+    Point: TGLVector;
   end;
 
   TGLGizmoPickCube = class(TGLCube)
@@ -204,8 +204,8 @@ type
     Rx, Ry: Integer;
     dglEnable, dglDisable, dgtEnable, dgtDisable, dgcEnable, dgcDisable,
       dglaEnable, dglaDisable, dgliEnable, dgliDisable: TGLDirectOpenGL;
-    LastMousePos: TVector;
-    ObjDimensions: TVector;
+    LastMousePos: TGLVector;
+    ObjDimensions: TGLVector;
     FOnBeforeSelect: TGLGizmoAcceptEvent;
     FOnBeforeUpdate: TGLGizmoUpdateEvent;
     FOnSelectionLost: TNotifyEvent;
@@ -225,7 +225,7 @@ type
     procedure SetExcludeObjectsList(const AValue: TStrings);
     procedure DirectGlDisable(Sender: TObject; var Rci: TGLRenderContextInfo);
     procedure DirectGlEnable(Sender: TObject; var Rci: TGLRenderContextInfo);
-    function MouseWorldPos(const X, Y: Integer): TVector;
+    function MouseWorldPos(const X, Y: Integer): TGLVector;
     function CheckObjectInExcludeList(const Obj: TGLBaseSceneObject): Boolean;
     procedure UpdateVisibleInfoLabels;
     procedure SetGLGizmoThickness(const Value: Single);
@@ -246,9 +246,9 @@ type
     procedure ViewerMouseDown(const X, Y: Integer);
     procedure ViewerMouseUp(const X, Y: Integer);
     procedure UpdateGizmo; overload;
-    procedure UpdateGizmo(const NewDimensions: TVector); overload;
+    procedure UpdateGizmo(const NewDimensions: TGLVector); overload;
     procedure SetVisible(const AValue: Boolean);
-    function GetPickedObjectPoint(const Obj: TGLBaseSceneObject): TVector;
+    function GetPickedObjectPoint(const Obj: TGLBaseSceneObject): TGLVector;
     procedure LooseSelection; virtual;
     procedure UndoAdd(const AObject: TGLCustomSceneObject);
     property RootGizmo: TGLBaseSceneObject read FRootGizmo write SetRootGizmo;
@@ -922,7 +922,7 @@ begin
     Rci.GLStates.Enable(StDepthTest);
 end;
 
-function TGLGizmo.GetPickedObjectPoint(const Obj: TGLBaseSceneObject): TVector;
+function TGLGizmo.GetPickedObjectPoint(const Obj: TGLBaseSceneObject): TGLVector;
 var
   T: Integer;
   R: TGLGizmoRayCastHitData;
@@ -942,7 +942,7 @@ function TGLGizmo.InternalGetPickedObjects(const X1, Y1, X2, Y2: Integer;
   const GuessCount: Integer): TGLPickList;
 var
   T: Integer;
-  RayStart, RayVector, IPoint, INormal: TVector;
+  RayStart, RayVector, IPoint, INormal: TGLVector;
   O: TGLBaseSceneObject;
   Dist: Single;
   HitData: TGLGizmoRayCastHitData;
@@ -1107,9 +1107,9 @@ begin
   end;
 end;
 
-function TGLGizmo.MouseWorldPos(const X, Y: Integer): TVector;
+function TGLGizmo.MouseWorldPos(const X, Y: Integer): TGLVector;
 var
-  V: TVector;
+  V: TGLVector;
   InvertedY: Integer;
 begin
   InvertedY := Viewer.Height - Y;
@@ -1158,7 +1158,7 @@ end;
 procedure TGLGizmo.ViewerMouseMove(const X, Y: Integer);
 var
   PickList: TGLPickList;
-  MousePos: TVector;
+  MousePos: TGLVector;
 
   function IndexOf(Obj: TGLBaseSceneObject): Integer;
   var
@@ -1173,7 +1173,7 @@ var
       end;
   end;
 
-  function LightLine(const Line: TGLLines; const Dark: TVector;
+  function LightLine(const Line: TGLLines; const Dark: TGLVector;
     const Axis: TGLGizmoAxis; AlterStyle: Boolean = False): Boolean;
   var
     PickObj: TGLBaseSceneObject;
@@ -1215,7 +1215,7 @@ var
     end;
   end;
 
-  function LightTorus(const Torus: TGLGizmoPickTorus; const Dark: TVector;
+  function LightTorus(const Torus: TGLGizmoPickTorus; const Dark: TGLVector;
     const Axis: TGLGizmoAxis; AlterStyle: Boolean = False): Boolean;
   begin
     if IndexOf(Torus) > -1 then
@@ -1240,7 +1240,7 @@ var
     end;
   end;
 
-  function LightCube(const Cube: TGLCube; const Dark: TVector;
+  function LightCube(const Cube: TGLCube; const Dark: TGLVector;
     const Axis: TGLGizmoAxis; AlterStyle: Boolean = False): Boolean;
   begin
     if IndexOf(Cube) > -1 then
@@ -1265,10 +1265,10 @@ var
     end;
   end;
 
-  procedure OpeMove(MousePos: TVector);
+  procedure OpeMove(MousePos: TGLVector);
   var
-    Vec1, Vec2: TVector;
-    QuantizedMousePos, QuantizedMousePos2: TVector;
+    Vec1, Vec2: TGLVector;
+    QuantizedMousePos, QuantizedMousePos2: TGLVector;
     T: Integer;
   begin
     for T := 0 to 3 do
@@ -1310,7 +1310,7 @@ var
 
   procedure OpeRotate(const X, Y: Integer);
   var
-    Vec1: TVector;
+    Vec1: TGLVector;
     RotV: TAffineVector;
     Pmat: TMatrix;
 
@@ -1390,10 +1390,10 @@ var
     end;
   end;
 
-  procedure OpeScale(const MousePos: TVector);
+  procedure OpeScale(const MousePos: TGLVector);
   var
-    Vec1, Vec2: TVector;
-    QuantizedMousePos, QuantizedMousePos2: TVector;
+    Vec1, Vec2: TGLVector;
+    QuantizedMousePos, QuantizedMousePos2: TGLVector;
     T: Integer;
   begin
     for T := 0 to 3 do
@@ -1528,7 +1528,7 @@ var
   Pick: TGLPickList;
   I: Integer;
   Accept: Boolean;
-  Dimensions: TVector;
+  Dimensions: TGLVector;
   GotPick: Boolean;
   PickedObj: TGLBaseSceneObject;
 begin
@@ -1685,7 +1685,7 @@ begin
   _GZOrootVisibleInfoLabels.Scale.AsVector := VectorMake(D, D, D);
 end;
 
-procedure TGLGizmo.UpdateGizmo(const NewDimensions: TVector);
+procedure TGLGizmo.UpdateGizmo(const NewDimensions: TGLVector);
 begin
   ObjDimensions := NewDimensions;
   UpdateGizmo;

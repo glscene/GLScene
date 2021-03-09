@@ -170,7 +170,7 @@ type
     function GetAsVector1f: Single; virtual; abstract;
     function GetAsVector2f: TVector2f; virtual; abstract;
     function GetAsVector3f: TVector3f; virtual; abstract;
-    function GetAsVector4f: TVector; virtual; abstract;
+    function GetAsVector4f: TGLVector; virtual; abstract;
     function GetAsVector1i: Integer; virtual; abstract;
     function GetAsVector2i: TVector2i; virtual; abstract;
     function GetAsVector3i: TVector3i; virtual; abstract;
@@ -224,7 +224,7 @@ type
     procedure SetToTextureOf(const LibMaterial: TGLLibMaterial; const TextureIndex: Integer); overload;
     procedure SetToTextureOf(const Texture: TGLTexture; const TextureIndex: Integer); overload;
     // GLScene-friendly properties.
-    property AsVector: TVector read GetAsVector4f write SetAsVector4f;
+    property AsVector: TGLVector read GetAsVector4f write SetAsVector4f;
     property AsAffineVector: TAffineVector read GetAsVector3f write SetAsVector3f;
      // Standard types.
     property AsFloat: Single read GetAsVector1f write SetAsVector1f;

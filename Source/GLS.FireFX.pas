@@ -36,8 +36,8 @@ uses
 type
   PFireParticle = ^TFireParticle;
   TFireParticle = record
-    Position: TVector;
-    Speed: TVector;
+    Position: TGLVector;
+    Speed: TGLVector;
     Alpha: Single;
     TimeToLive, LifeLength: Single;
   end;
@@ -394,7 +394,7 @@ procedure TGLFireFXManager.IsotropicExplosion(minInitialSpeed, maxInitialSpeed, 
   nbParticles: Integer = -1);
 var
   n: Integer;
-  tmp, refPos: TVector;
+  tmp, refPos: TGLVector;
 begin
   if nbParticles < 0 then
     n := MaxInt
@@ -429,7 +429,7 @@ procedure TGLFireFXManager.RingExplosion(minInitialSpeed, maxInitialSpeed, lifeB
   nbParticles: Integer = -1);
 var
   n: Integer;
-  tmp, refPos: TVector;
+  tmp, refPos: TGLVector;
   fx, fy, d: Single;
 begin
   if nbParticles < 0 then
@@ -467,7 +467,7 @@ procedure TGLFireFXManager.CalcFire(deltaTime: Double;
 var
   N, I: Integer;
   Fdelta: Single;
-  tmp, refPos: TVector;
+  tmp, refPos: TGLVector;
 begin
   // Process live stuff
   N := 0;
@@ -528,7 +528,7 @@ end;
 
 procedure TGLFireFXManager.AffParticle3d(Color2: TColorVector; const mat: TMatrix);
 var
-  vx, vy: TVector;
+  vx, vy: TGLVector;
   i: Integer;
 begin
   for i := 0 to 2 do
@@ -653,7 +653,7 @@ procedure TGLBFireFX.Render(var rci: TGLRenderContextInfo);
 var
   n: Integer;
   i: Integer;
-  innerColor: TVector;
+  innerColor: TGLVector;
   lastTr: TAffineVector;
   distList: TSingleList;
   objList: TList;

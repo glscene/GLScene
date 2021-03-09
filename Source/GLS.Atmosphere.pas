@@ -90,7 +90,7 @@ type
     // Main rendering procedure.
     procedure DoRender(var rci: TGLRenderContextInfo; renderSelf, renderChildren: Boolean); override;
     // Used to determine extents.
-    function AxisAlignedDimensionsUnscaled : TVector; override;
+    function AxisAlignedDimensionsUnscaled : TGLVector; override;
   end;
 
   TGLAtmosphere = class(TGLCustomAtmosphere)
@@ -165,14 +165,14 @@ end;
 procedure TGLCustomAtmosphere.DoRender(var rci: TGLRenderContextInfo; renderSelf, renderChildren: Boolean);
 var
   radius, invAtmosphereHeight:    Single;
-  sunPos, eyePos, lightingVector: TVector;
-  diskNormal, diskRight, diskUp:  TVector;
+  sunPos, eyePos, lightingVector: TGLVector;
+  diskNormal, diskRight, diskUp:  TGLVector;
 
 
-  function AtmosphereColor(const rayStart, rayEnd: TVector): TColorVector;
+  function AtmosphereColor(const rayStart, rayEnd: TGLVector): TColorVector;
   var
     I, n:     Integer;
-    atmPoint, normal: TVector;
+    atmPoint, normal: TGLVector;
     altColor: TColorVector;
     alt, rayLength, contrib, decay, intensity, invN: Single;
   begin
@@ -214,10 +214,10 @@ var
   end;
 
 
-  function ComputeColor(var rayDest: TVector; mayHitGround: Boolean): TColorVector;
+  function ComputeColor(var rayDest: TGLVector; mayHitGround: Boolean): TColorVector;
   var
-    ai1, ai2, pi1, pi2: TVector;
-    rayVector: TVector;
+    ai1, ai2, pi1, pi2: TGLVector;
+    rayVector: TGLVector;
   begin
     rayVector := VectorNormalize(VectorSubtract(rayDest, eyePos));
     if RayCastSphereIntersect(eyePos, rayVector, NullHmgPoint,
@@ -363,7 +363,7 @@ begin
   if FSun <> nil then FSun.FreeNotification(Self);
 end;
 
-function TGLCustomAtmosphere.AxisAlignedDimensionsUnscaled : TVector;
+function TGLCustomAtmosphere.AxisAlignedDimensionsUnscaled : TGLVector;
 begin
   Result.X := FAtmosphereRadius;
   Result.Y := Result.X;
@@ -431,8 +431,8 @@ begin
     SetLength(sinCache, FSlices + 1);
     PrepareSinCosCache(sinCache, cosCache, 0, 360);
 
-    GetMem(pVertex, 2 * (FSlices + 1) * SizeOf(TVector));
-    GetMem(pColor, 2 * (FSlices + 1) * SizeOf(TVector));
+    GetMem(pVertex, 2 * (FSlices + 1) * SizeOf(TGLVector));
+    GetMem(pColor, 2 * (FSlices + 1) * SizeOf(TGLVector));
   end
   else
     raise EGLAtmosphereException.Create('Slices must be more than0!');

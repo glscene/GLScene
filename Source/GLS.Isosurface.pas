@@ -1496,7 +1496,7 @@ var
   i: Integer;
   vx1, vx2, vx3: TGLVertexData;
 
-  function GetNrmColor(Nrm: TAffineVector): TVector;
+  function GetNrmColor(Nrm: TAffineVector): TGLVector;
   begin
     Result.V[0] := 0;
     if Nrm.V[0] > 0.0 then
@@ -1524,7 +1524,7 @@ var
     Result.V[3] := 0.3
   end;
 
-  function GetColor(H: TxScalarValue): TVector;
+  function GetColor(H: TxScalarValue): TGLVector;
   begin
     Result := VectorMake(0.890, 0.855, 0.788, Alpha)
     (*

@@ -215,7 +215,7 @@ end;
 
 procedure TGLPhongShader.DoAmbientPass(var rci: TGLRenderContextInfo);
 var
-  ambient, materialAmbient: TVector;
+  ambient, materialAmbient: TGLVector;
 begin
   rci.GLStates.Disable(stLighting);
 
@@ -227,7 +227,7 @@ end;
 
 procedure TGLPhongShader.DoLightPass(lightID: Cardinal);
 var
-  LightParam: TVector;
+  LightParam: TGLVector;
 begin
   Self.ApplyShaderPrograms();
 

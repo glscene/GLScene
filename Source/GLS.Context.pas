@@ -810,8 +810,8 @@ type
     procedure SetUniform2f(const index: string; const val: TVector2f);
     function GetUniform3f(const index: string): TAffineVector;
     procedure SetUniform3f(const index: string; const val: TAffineVector);
-    function GetUniform4f(const index: string): TVector;
-    procedure SetUniform4f(const index: string; const val: TVector);
+    function GetUniform4f(const index: string): TGLVector;
+    procedure SetUniform4f(const index: string; const val: TGLVector);
     function GetUniformMatrix2fv(const index: string): TMatrix2f;
     procedure SetUniformMatrix2fv(const index: string; const val: TMatrix2f);
     function GetUniformMatrix3fv(const index: string): TMatrix3f;
@@ -865,7 +865,7 @@ type
     property Uniform1f[const index: string]: Single read GetUniform1f write SetUniform1f;
     property Uniform2f[const index: string]: TVector2f read GetUniform2f write SetUniform2f;
     property Uniform3f[const index: string]: TAffineVector read GetUniform3f write SetUniform3f;
-    property Uniform4f[const index: string]: TVector read GetUniform4f write SetUniform4f;
+    property Uniform4f[const index: string]: TGLVector read GetUniform4f write SetUniform4f;
     property UniformMatrix2fv[const index: string]: TMatrix2f read GetUniformMatrix2fv write SetUniformMatrix2fv;
     property UniformMatrix3fv[const index: string]: TMatrix3f read GetUniformMatrix3fv write SetUniformMatrix3fv;
     property UniformMatrix4fv[const index: string]: TMatrix read GetUniformMatrix4fv write SetUniformMatrix4fv;
@@ -3226,12 +3226,12 @@ begin
   gl.Uniform3f(GetUniformLocation(index), val.X, val.Y, val.Z);
 end;
 
-function TGLProgramHandle.GetUniform4f(const index: string): TVector;
+function TGLProgramHandle.GetUniform4f(const index: string): TGLVector;
 begin
   gl.GetUniformfv(GetHandle, GetUniformLocation(index), @Result);
 end;
 
-procedure TGLProgramHandle.SetUniform4f(const index: string; const val: TVector);
+procedure TGLProgramHandle.SetUniform4f(const index: string; const val: TGLVector);
 begin
   gl.Uniform4f(GetUniformLocation(index), val.X, val.Y, val.Z, val.W);
 end;

@@ -50,7 +50,7 @@ type
 
   TGLVertexData = packed record
     textCoord: TTexPoint;
-    color: TVector;
+    color: TGLVector;
     normal: TAffineVector;
     coord: TVertex;
   end;
@@ -159,7 +159,7 @@ type
     FVertices: TGLVertexList;
     FMode: TGLMeshMode;
     FVertexMode: TGLVertexMode;
-    FAxisAlignedDimensionsCache: TVector;
+    FAxisAlignedDimensionsCache: TGLVector;
   protected
     procedure SetMode(AValue: TGLMeshMode);
     procedure SetVertices(AValue: TGLVertexList);
@@ -172,7 +172,7 @@ type
     procedure BuildList(var rci: TGLRenderContextInfo); override;
     procedure CalcNormals(Frontface: TGLFaceWinding);
     property Vertices: TGLVertexList read FVertices write SetVertices;
-    function AxisAlignedDimensionsUnscaled: TVector; override;
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
     procedure StructureChanged; override;
     function Length: Single;
     function Area: Single;
@@ -743,7 +743,7 @@ begin
     inherited Assign(Source);
 end;
 
-function TGLMesh.AxisAlignedDimensionsUnscaled: TVector;
+function TGLMesh.AxisAlignedDimensionsUnscaled: TGLVector;
 var
   dMin, dMax: TAffineVector;
 begin

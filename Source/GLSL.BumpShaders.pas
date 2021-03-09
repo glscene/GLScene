@@ -1593,7 +1593,7 @@ procedure TGLBumpShader.DoLightPass(var rci: TGLRenderContextInfo;
 var
   dummyHandle, tempHandle: Integer;
   lightPos, lightAtten,
-    materialDiffuse, lightDiffuse, lightSpecular: TVector;
+    materialDiffuse, lightDiffuse, lightSpecular: TGLVector;
 begin
   FVertexProgramHandle.Enable;
   FVertexProgramHandle.Bind;
@@ -1763,7 +1763,7 @@ end;
 
 function TGLBumpShader.DoUnApply(var rci: TGLRenderContextInfo): Boolean;
 var
-  ambient, LMaterialAmbient: TVector;
+  ambient, LMaterialAmbient: TGLVector;
 begin
   Result := False;
   if (csDesigning in ComponentState) and not DesignTimeEnabled then

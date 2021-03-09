@@ -44,8 +44,8 @@ type
     procedure DefineProperties(Filer: TFiler); override;
     procedure ReadData(Stream: TStream);
     procedure WriteData(Stream: TStream);
-    function GetHSVA: TVector;
-    procedure SetHSVA(const hsva: TVector);
+    function GetHSVA: TGLVector;
+    procedure SetHSVA(const hsva: TGLVector);
   public
     constructor Create(AOwner: TPersistent); override;
     constructor CreateInitialized(AOwner: TPersistent;
@@ -60,7 +60,7 @@ type
     property Color: TColorVector read FColor write SetColorVector;
     property DirectColor: TColorVector read FColor write SetDirectColorVector;
     property AsWinColor: TColor read GetAsWinColor write SetAsWinColor;
-    property hsva: TVector read GetHSVA write SetHSVA;
+    property hsva: TGLVector read GetHSVA write SetHSVA;
     property DefaultColor: TColorVector read FColor;
   published
     property Red: Single index 0 read GetColorComponent write SetColorComponent
@@ -613,7 +613,7 @@ begin
   NotifyChange(Self);
 end;
 
-function TGLColor.GetHSVA: TVector;
+function TGLColor.GetHSVA: TGLVector;
 var
   delta, min: Single;
 const
@@ -649,7 +649,7 @@ begin
   Result.W := Alpha;
 end;
 
-procedure TGLColor.SetHSVA(const hsva: TVector);
+procedure TGLColor.SetHSVA(const hsva: TGLVector);
 var
   f, hTemp, p, q, t: Single;
 const

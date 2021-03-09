@@ -57,7 +57,7 @@ type
   TGLNavigator = class(TComponent)
   private
     FObject: TGLBaseSceneObject;
-    FVirtualRight: TVector;
+    FVirtualRight: TGLVector;
     FVirtualUp: TGLCoordinates;
     FUseVirtualUp: boolean;
     FAutoUpdateObject: boolean;
@@ -74,7 +74,7 @@ type
     procedure SetObject(NewObject: TGLBaseSceneObject); virtual;
     procedure SetUseVirtualUp(UseIt: boolean);
     procedure SetVirtualUp(Up: TGLCoordinates);
-    function CalcRight: TVector;
+    function CalcRight: TGLVector;
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -160,7 +160,7 @@ type
     FDelta, FFps, FTimer, FInactiveTime: single;
     FCube: TGLDummyCube;
     FSel: integer;
-    FSelPos: TVector;
+    FSelPos: TGLVector;
     FCam, FNaviCam: TGLCamera;
     FHud: TGLHUDSprite;
     FMem: TGLMemoryViewer;
@@ -168,8 +168,8 @@ type
     FReady, FMouse: boolean;
     FMouseRotation: boolean;
     FMousePos: TPoint;
-    FPosAnimationStart: TVector;
-    FPosAnimationEnd: TVector;
+    FPosAnimationStart: TGLVector;
+    FPosAnimationEnd: TGLVector;
   public
     constructor CreateAsChild(aParentOwner: TGLBaseSceneObject); reintroduce;
     procedure DoProgress(const pt: TGLProgressTimes); override;
@@ -241,7 +241,7 @@ begin
   inherited;
 end;
 
-Function TGLNavigator.CalcRight: TVector;
+Function TGLNavigator.CalcRight: TGLVector;
 
 begin
   If Assigned(FObject) then
@@ -259,7 +259,7 @@ end;
 procedure TGLNavigator.TurnHorizontal(Angle: single);
 
 Var
-  T: TVector;
+  T: TGLVector;
   U: TAffineVector;
   TempVal: single;
 
@@ -299,7 +299,7 @@ Var
   ExpectedAngle: single;
   CosAngle, SinAngle: single;
   TempVal: single;
-  Direction: TVector;
+  Direction: TGLVector;
 
 begin
   ExpectedAngle := FCurrentVAngle + Angle;
@@ -379,8 +379,8 @@ end;
 procedure TGLNavigator.Straighten;
 
 Var
-  R: TVector;
-  D: TVector;
+  R: TGLVector;
+  D: TGLVector;
   A: single;
 
 begin
@@ -778,7 +778,7 @@ end;
 
 procedure TGLNaviCube.DoProgress(const pt: TGLProgressTimes);
 const
-  tb: array [0 .. 1] of array [0 .. 3] of TVector = (((x: 0; Y: 20; z: 1;
+  tb: array [0 .. 1] of array [0 .. 3] of TGLVector = (((x: 0; Y: 20; z: 1;
     W: 0), (x: 1; Y: 20; z: 0; W: 0), (x: 0; Y: 20; z: - 1; W: 0), (x: - 1;
     Y: 20; z: 0; W: 0)), ((x: 0; Y: - 20; z: 1; W: 0), (x: 1; Y: - 20; z: 0;
     W: 0), (x: 0; Y: - 20; z: - 1; W: 0), (x: - 1; Y: - 20; z: 0; W: 0)));
@@ -786,10 +786,10 @@ var
   mp: TPoint;
   mover: boolean;
   i: integer;
-  v0, v1, v2, v: TVector;
+  v0, v1, v2, v: TGLVector;
   obj: TGLBaseSceneObject;
 
-  procedure moveTo(trgv: TVector);
+  procedure moveTo(trgv: TGLVector);
   begin
     FPosAnimationStart := FCam.Position.AsVector;
     FPosAnimationEnd := FCam.TargetObject.AbsoluteToLocal

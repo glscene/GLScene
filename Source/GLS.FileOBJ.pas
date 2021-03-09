@@ -88,7 +88,7 @@ type
     procedure Prepare;
     function MaterialStringProperty(const materialName, propertyName: string): string;
     function MaterialVectorProperty(const materialName, propertyName: string;
-      const defaultValue: TVector): TVector;
+      const defaultValue: TGLVector): TGLVector;
   end;
 
 var
@@ -1350,7 +1350,7 @@ begin
 end;
 
 function TGLMTLFile.MaterialVectorProperty(const materialName, propertyName: string;
-  const defaultValue: TVector): TVector;
+  const defaultValue: TGLVector): TGLVector;
 var
   i: Integer;
   sl: TStringList;

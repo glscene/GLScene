@@ -129,7 +129,7 @@ type
     constructor Create; override;
     procedure Assign(Src: TPersistent); override;
     function Add(const item: TAffineVector): Integer; overload;
-    function Add(const item: TVector): Integer; overload;
+    function Add(const item: TGLVector): Integer; overload;
     procedure Add(const i1, i2: TAffineVector); overload;
     procedure Add(const i1, i2, i3: TAffineVector); overload;
     function Add(const item: TVector2f): Integer; overload;
@@ -172,33 +172,33 @@ type
     procedure Scale(const factors: TAffineVector); overload;
   end;
 
-  (* A list of TVector.
-   Similar to TList, but using TVector as items.
+  (* A list of TGLVector.
+   Similar to TList, but using TGLVector as items.
    The list has stack-like push/pop methods *)
   TVectorList = class(TBaseVectorList)
   private
     FList: PVectorArray;
   protected
-    function Get(Index: Integer): TVector; inline;
-    procedure Put(Index: Integer; const item: TVector); inline;
+    function Get(Index: Integer): TGLVector; inline;
+    procedure Put(Index: Integer; const item: TGLVector); inline;
     procedure SetCapacity(NewCapacity: Integer); override;
   public
     constructor Create; override;
     procedure Assign(Src: TPersistent); override;
-    function Add(const item: TVector): Integer; overload; inline;
+    function Add(const item: TGLVector): Integer; overload; inline;
     function Add(const item: TAffineVector; w: Single): Integer; overload; inline;
     function Add(const X, Y, Z, w: Single): Integer; overload; inline;
     procedure Add(const i1, i2, i3: TAffineVector; w: Single); overload; inline;
     function AddVector(const item: TAffineVector): Integer; overload;
     function AddPoint(const item: TAffineVector): Integer; overload;
     function AddPoint(const X, Y: Single; const Z: Single = 0): Integer; overload;
-    procedure Push(const Val: TVector);
-    function Pop: TVector;
-    function IndexOf(const item: TVector): Integer;
-    function FindOrAdd(const item: TVector): Integer;
+    procedure Push(const Val: TGLVector);
+    function Pop: TGLVector;
+    function IndexOf(const item: TGLVector): Integer;
+    function FindOrAdd(const item: TGLVector): Integer;
     function FindOrAddPoint(const item: TAffineVector): Integer;
-    procedure Insert(Index: Integer; const item: TVector);
-    property Items[Index: Integer]: TVector read Get write Put; default;
+    procedure Insert(Index: Integer; const item: TGLVector);
+    property Items[Index: Integer]: TGLVector read Get write Put; default;
     property List: PVectorArray read FList;
     procedure Lerp(const list1, list2: TBaseVectorList; lerpFactor: Single); override;
   end;
@@ -1220,7 +1220,7 @@ begin
   Inc(FRevision);
 end;
 
-function TAffineVectorList.Add(const item: TVector): Integer;
+function TAffineVectorList.Add(const item: TGLVector): Integer;
 begin
   Result := Add(PAffineVector(@item)^);
 end;
@@ -1546,7 +1546,7 @@ end;
 
 constructor TVectorList.Create;
 begin
-  FItemSize := SizeOf(TVector);
+  FItemSize := SizeOf(TGLVector);
   inherited Create;
   FGrowthDelta := cDefaultListGrowthDelta;
 end;
@@ -1557,13 +1557,13 @@ begin
   begin
     inherited;
     if (Src is TVectorList) then
-      System.Move(TVectorList(Src).FList^, FList^, FCount * SizeOf(TVector));
+      System.Move(TVectorList(Src).FList^, FList^, FCount * SizeOf(TGLVector));
   end
   else
     Clear;
 end;
 
-function TVectorList.Add(const item: TVector): Integer;
+function TVectorList.Add(const item: TGLVector): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -1610,7 +1610,7 @@ begin
   Result := Add(PointMake(X, Y, Z));
 end;
 
-function TVectorList.Get(Index: Integer): TVector;
+function TVectorList.Get(Index: Integer): TGLVector;
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1618,7 +1618,7 @@ begin
   Result := FList^[Index];
 end;
 
-procedure TVectorList.Insert(Index: Integer; const Item: TVector);
+procedure TVectorList.Insert(Index: Integer; const Item: TGLVector);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1627,12 +1627,12 @@ begin
     SetCapacity(FCapacity + FGrowthDelta);
   if Index < FCount then
     System.Move(FList[Index], FList[Index + 1],
-      (FCount - Index) * SizeOf(TVector));
+      (FCount - Index) * SizeOf(TGLVector));
   FList^[Index] := Item;
   Inc(FCount);
 end;
 
-procedure TVectorList.Put(Index: Integer; const Item: TVector);
+procedure TVectorList.Put(Index: Integer; const Item: TGLVector);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1646,12 +1646,12 @@ begin
   FList := PVectorArray(FBaseList);
 end;
 
-procedure TVectorList.Push(const Val: TVector);
+procedure TVectorList.Push(const Val: TGLVector);
 begin
   Add(Val);
 end;
 
-function TVectorList.Pop: TVector;
+function TVectorList.Pop: TGLVector;
 begin
   if FCount > 0 then
   begin
@@ -1662,7 +1662,7 @@ begin
     Result := NullHmgVector;
 end;
 
-function TVectorList.IndexOf(const item: TVector): Integer;
+function TVectorList.IndexOf(const item: TGLVector): Integer;
 var
   I: Integer;
 begin
@@ -1675,7 +1675,7 @@ begin
     end;
 end;
 
-function TVectorList.FindOrAdd(const item: TVector): Integer;
+function TVectorList.FindOrAdd(const item: TGLVector): Integer;
 begin
   Result := IndexOf(item);
   if Result < 0 then
@@ -1684,7 +1684,7 @@ end;
 
 function TVectorList.FindOrAddPoint(const item: TAffineVector): Integer;
 var
-  ptItem: TVector;
+  ptItem: TGLVector;
 begin
   MakePoint(ptItem, item);
   Result := IndexOf(ptItem);

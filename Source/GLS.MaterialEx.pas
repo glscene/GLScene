@@ -738,7 +738,7 @@ type
     function GetFloat: Single; virtual;
     function GetVec2: TVector2f; virtual;
     function GetVec3: TVector3f; virtual;
-    function GetVec4: TVector; virtual;
+    function GetVec4: TGLVector; virtual;
     function GetInt: TGLint; virtual;
     function GetIVec2: TVector2i; virtual;
     function GetIVec3: TVector3i; virtual;
@@ -787,7 +787,7 @@ type
     function GetFloat: Single; override;
     function GetVec2: TVector2f; override;
     function GetVec3: TVector3f; override;
-    function GetVec4: TVector; override;
+    function GetVec4: TGLVector; override;
     function GetInt: Integer; override;
     function GetIVec2: TVector2i; override;
     function GetIVec3: TVector3i; override;
@@ -3180,7 +3180,7 @@ end;
 procedure TGLMultitexturingProperties.Apply(var ARci: TGLRenderContextInfo);
 var
   N, U: Integer;
-  LDir: TVector;
+  LDir: TGLVector;
 begin
   if FEnabled then
   begin
@@ -5775,7 +5775,7 @@ begin
   FillChar(Result, SizeOf(Result), $00);
 end;
 
-function TGLAbstractShaderUniform.GetVec4: TVector;
+function TGLAbstractShaderUniform.GetVec4: TGLVector;
 begin
   FillChar(Result, SizeOf(Result), $00);
 end;
@@ -5985,7 +5985,7 @@ begin
   gl.GetUniformfv(GetProgram, FLocation, @Result);
 end;
 
-function TGLShaderUniform.GetVec4: TVector;
+function TGLShaderUniform.GetVec4: TGLVector;
 begin
   gl.GetUniformfv(GetProgram, FLocation, @Result);
 end;

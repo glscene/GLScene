@@ -65,8 +65,8 @@ implementation
 
 procedure TFormRayCast.BUCastClick(Sender: TObject);
 var
-  o, v, vLight, light, iPoint, iNormal: TVector;
-  up, right, dir: TVector;
+  o, v, vLight, light, iPoint, iNormal: TGLVector;
+  up, right, dir: TGLVector;
   x, y, dx, dy: Integer;
   f, d: Single;
   color: TColor;

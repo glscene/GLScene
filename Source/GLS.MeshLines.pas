@@ -602,7 +602,7 @@ end;
 
 procedure TGLMeshLines.DrawCircle(Radius: Single);
 var
-  inner,outer,p1,p2: TVector;
+  inner,outer,p1,p2: TGLVector;
   i: Integer;
   a: Single;
   lUp: TAffineVector;

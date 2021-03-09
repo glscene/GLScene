@@ -2681,7 +2681,7 @@ end;
 
 procedure TGLODEElementBase.CoordinateChanged(Sender: TObject);
 var
-  rightVector: TVector;
+  rightVector: TGLVector;
 begin
   if FIsCalculating then
     Exit;
@@ -4369,7 +4369,7 @@ end;
 
 procedure TGLODEJointHinge.AxisChange(Sender: TObject);
 var
-  vec: TVector;
+  vec: TGLVector;
 begin
   vec := FAxis.DirectVector;
   NormalizeVector(vec);
@@ -4558,7 +4558,7 @@ end;
 
 procedure TGLODEJointSlider.AxisChange(Sender: TObject);
 var
-  vec: TVector;
+  vec: TGLVector;
 begin
   vec := FAxis.DirectVector;
   NormalizeVector(vec);
@@ -4738,7 +4738,7 @@ end;
 
 procedure TGLODEJointHinge2.Axis1Change(Sender: TObject);
 var
-  vec: TVector;
+  vec: TGLVector;
 begin
   vec := FAxis1.DirectVector;
   NormalizeVector(vec);
@@ -4749,7 +4749,7 @@ end;
 
 procedure TGLODEJointHinge2.Axis2Change(Sender: TObject);
 var
-  vec: TVector;
+  vec: TGLVector;
 begin
   vec := FAxis2.DirectVector;
   NormalizeVector(vec);
@@ -4924,7 +4924,7 @@ end;
 
 procedure TGLODEJointUniversal.Axis1Change(Sender: TObject);
 var
-  vec: TVector;
+  vec: TGLVector;
 begin
   vec := FAxis1.DirectVector;
   NormalizeVector(vec);
@@ -4935,7 +4935,7 @@ end;
 
 procedure TGLODEJointUniversal.Axis2Change(Sender: TObject);
 var
-  vec: TVector;
+  vec: TGLVector;
 begin
   vec := FAxis2.DirectVector;
   NormalizeVector(vec);
@@ -5315,7 +5315,7 @@ end;
 function TGLODEHeightField.Collide(aPos: TAffineVector; var Depth: Single;
   var cPos, cNorm: TAffineVector): Boolean;
 
-  function AbsoluteToLocal(vec: TVector): TVector;
+  function AbsoluteToLocal(vec: TGLVector): TGLVector;
   var
     mat: TMatrix;
   begin
@@ -5332,7 +5332,7 @@ function TGLODEHeightField.Collide(aPos: TAffineVector; var Depth: Single;
       Assert(False);
   end;
 
-  function LocalToAbsolute(vec: TVector): TVector;
+  function LocalToAbsolute(vec: TGLVector): TGLVector;
   var
     mat: TMatrix;
   begin
@@ -5348,9 +5348,9 @@ function TGLODEHeightField.Collide(aPos: TAffineVector; var Depth: Single;
       Assert(False);
   end;
 
-  function GetHeight(pos: TVector; var height: Single): Boolean;
+  function GetHeight(pos: TGLVector; var height: Single): Boolean;
   var
-    dummy1: TVector;
+    dummy1: TGLVector;
     dummy2: TTexPoint;
   begin
     Result := False;
@@ -5373,7 +5373,7 @@ function TGLODEHeightField.Collide(aPos: TAffineVector; var Depth: Single;
 const
   cDelta = 0.1;
 var
-  localPos: TVector;
+  localPos: TGLVector;
   height: Single;
   temp1, temp2: TAffineVector;
 begin

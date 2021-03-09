@@ -218,9 +218,9 @@ type
     procedure SetEffects(const val: TGLEffects);
     function GetEffects: TGLEffects;
     function GetAbsoluteAffineScale: TAffineVector;
-    function GetAbsoluteScale: TVector;
+    function GetAbsoluteScale: TGLVector;
     procedure SetAbsoluteAffineScale(const Value: TAffineVector);
-    procedure SetAbsoluteScale(const Value: TVector);
+    procedure SetAbsoluteScale(const Value: TGLVector);
     function GetAbsoluteMatrix: TMatrix; inline;
     procedure SetAbsoluteMatrix(const Value: TMatrix);
     procedure SetBBChanges(const Value: TGLObjectBBChanges);
@@ -240,12 +240,12 @@ type
     function GetPickable: Boolean; virtual;
     procedure SetVisible(aValue: Boolean); virtual;
     procedure SetPickable(aValue: Boolean); virtual;
-    procedure SetAbsolutePosition(const v: TVector);
-    function GetAbsolutePosition: TVector; inline;
-    procedure SetAbsoluteUp(const v: TVector);
-    function GetAbsoluteUp: TVector;
-    procedure SetAbsoluteDirection(const v: TVector);
-    function GetAbsoluteDirection: TVector;
+    procedure SetAbsolutePosition(const v: TGLVector);
+    function GetAbsolutePosition: TGLVector; inline;
+    procedure SetAbsoluteUp(const v: TGLVector);
+    function GetAbsoluteUp: TGLVector;
+    procedure SetAbsoluteDirection(const v: TGLVector);
+    function GetAbsoluteDirection: TGLVector;
     function GetAbsoluteAffinePosition: TAffineVector;
     procedure SetAbsoluteAffinePosition(const Value: TAffineVector);
     procedure SetAbsoluteAffineUp(const v: TAffineVector);
@@ -315,41 +315,41 @@ type
        Multiplying a local coordinate with this matrix gives an absolute coordinate. *)
     property AbsoluteMatrix: TMatrix read GetAbsoluteMatrix write SetAbsoluteMatrix;
     // Direction vector in absolute coordinates.
-    property AbsoluteDirection: TVector read GetAbsoluteDirection write SetAbsoluteDirection;
+    property AbsoluteDirection: TGLVector read GetAbsoluteDirection write SetAbsoluteDirection;
     property AbsoluteAffineDirection: TAffineVector read GetAbsoluteAffineDirection write SetAbsoluteAffineDirection;
     (* Scale vector in absolute coordinates.
        Warning: SetAbsoluteScale() does not work correctly at the moment. *)
-    property AbsoluteScale: TVector read GetAbsoluteScale write SetAbsoluteScale;
+    property AbsoluteScale: TGLVector read GetAbsoluteScale write SetAbsoluteScale;
     property AbsoluteAffineScale: TAffineVector read GetAbsoluteAffineScale write SetAbsoluteAffineScale;
     // Up vector in absolute coordinates.
-    property AbsoluteUp: TVector read GetAbsoluteUp write SetAbsoluteUp;
+    property AbsoluteUp: TGLVector read GetAbsoluteUp write SetAbsoluteUp;
     property AbsoluteAffineUp: TAffineVector read GetAbsoluteAffineUp write SetAbsoluteAffineUp;
     // Calculate the right vector in absolute coordinates.
-    function AbsoluteRight: TVector;
+    function AbsoluteRight: TGLVector;
     // Calculate the left vector in absolute coordinates.
-    function AbsoluteLeft: TVector;
+    function AbsoluteLeft: TGLVector;
     // Computes and allows to set the object's absolute coordinates.
-    property AbsolutePosition: TVector read GetAbsolutePosition write SetAbsolutePosition;
+    property AbsolutePosition: TGLVector read GetAbsolutePosition write SetAbsolutePosition;
     property AbsoluteAffinePosition: TAffineVector read GetAbsoluteAffinePosition write SetAbsoluteAffinePosition;
-    function AbsolutePositionAsAddress: PVector;
+    function AbsolutePositionAsAddress: PGLVector;
     // Returns the Absolute X Vector expressed in local coordinates.
-    function AbsoluteXVector: TVector;
+    function AbsoluteXVector: TGLVector;
     // Returns the Absolute Y Vector expressed in local coordinates.
-    function AbsoluteYVector: TVector;
+    function AbsoluteYVector: TGLVector;
     // Returns the Absolute Z Vector expressed in local coordinates.
-    function AbsoluteZVector: TVector;
+    function AbsoluteZVector: TGLVector;
     // Converts a vector/point from absolute coordinates to local coordinates.
-    function AbsoluteToLocal(const v: TVector): TVector; overload;
+    function AbsoluteToLocal(const v: TGLVector): TGLVector; overload;
     // Converts a vector from absolute coordinates to local coordinates.
     function AbsoluteToLocal(const v: TAffineVector): TAffineVector; overload;
     // Converts a vector/point from local coordinates to absolute coordinates.
-    function LocalToAbsolute(const v: TVector): TVector; overload;
+    function LocalToAbsolute(const v: TGLVector): TGLVector; overload;
     // Converts a vector from local coordinates to absolute coordinates.
     function LocalToAbsolute(const v: TAffineVector): TAffineVector; overload;
     // Returns the Right vector (based on Up and Direction)
-    function Right: TVector; inline;
+    function Right: TGLVector; inline;
     // Returns the Left vector (based on Up and Direction)
-    function LeftVector: TVector; inline;
+    function LeftVector: TGLVector; inline;
     // Returns the Right vector (based on Up and Direction)
     function AffineRight: TAffineVector; inline;
     // Returns the Left vector (based on Up and Direction)
@@ -358,28 +358,28 @@ type
        pt is assumed to be in absolute coordinates,
        AbsolutePosition is considered as being the object position. *)
     function SqrDistanceTo(anObject: TGLBaseSceneObject): Single; overload;
-    function SqrDistanceTo(const pt: TVector): Single; overload;
+    function SqrDistanceTo(const pt: TGLVector): Single; overload;
     function SqrDistanceTo(const pt: TAffineVector): Single; overload;
     (* Computes the object's distance to a point/object.
        Only objects AbsolutePositions are considered. *)
     function DistanceTo(anObject: TGLBaseSceneObject): Single; overload;
     function DistanceTo(const pt: TAffineVector): Single; overload;
-    function DistanceTo(const pt: TVector): Single; overload;
+    function DistanceTo(const pt: TGLVector): Single; overload;
     (* Calculates the object's barycenter in absolute coordinates.
        Default behaviour is to consider Barycenter=AbsolutePosition
        (whatever the number of children).
        SubClasses where AbsolutePosition is not the barycenter should
        override this method as it is used for distance calculation, during
        rendering for instance, and may lead to visual inconsistencies. *)
-    function BarycenterAbsolutePosition: TVector; virtual;
+    function BarycenterAbsolutePosition: TGLVector; virtual;
     // Calculates the object's barycenter distance to a point.
-    function BarycenterSqrDistanceTo(const pt: TVector): Single;
+    function BarycenterSqrDistanceTo(const pt: TGLVector): Single;
     (* Shall returns the object's axis aligned extensions.
        The dimensions are measured from object center and are expressed
        with scale accounted for, in the object's coordinates (not in absolute ones).
        Default value is half the object's Scale. *)
-    function AxisAlignedDimensions: TVector; virtual;
-    function AxisAlignedDimensionsUnscaled: TVector; virtual;
+    function AxisAlignedDimensions: TGLVector; virtual;
+    function AxisAlignedDimensionsUnscaled: TGLVector; virtual;
     (* Calculates and return the AABB for the object.
        The AABB is currently calculated from the BB.
        There is  no  caching scheme for them. *)
@@ -413,7 +413,7 @@ type
        Given coordinate is an absolute coordinate.
        Linear or surfacic objects shall always return False.
        Default value is based on AxisAlignedDimension and a cube bounding. *)
-    function PointInObject(const point: TVector): Boolean; virtual;
+    function PointInObject(const point: TGLVector): Boolean; virtual;
     (* Request to determine an intersection with a casted ray.
        Given coordinates & vector are in absolute coordinates, rayVector
        must be normalized.
@@ -424,9 +424,9 @@ type
        is found, non nil parameters should be defined.
        The intersectNormal needs NOT be normalized by the implementations.
        Default value is based on bounding sphere. *)
-    function RayCastIntersect(const rayStart, rayVector: TVector;
-      intersectPoint: PVector = nil;
-      intersectNormal: PVector = nil): Boolean; virtual;
+    function RayCastIntersect(const rayStart, rayVector: TGLVector;
+      intersectPoint: PGLVector = nil;
+      intersectNormal: PGLVector = nil): Boolean; virtual;
     (* Request to generate silhouette outlines.
        Default implementation assumes the objects is a sphere of
        AxisAlignedDimensionUnscaled size. Subclasses may choose to return
@@ -506,9 +506,9 @@ type
     // Moves camera along the right vector (move left and right)
     procedure Slide(ADistance: Single);
     // Orients the object toward a target object
-    procedure PointTo(const ATargetObject: TGLBaseSceneObject; const AUpVector: TVector); overload;
+    procedure PointTo(const ATargetObject: TGLBaseSceneObject; const AUpVector: TGLVector); overload;
     // Orients the object toward a target absolute position
-    procedure PointTo(const AAbsolutePosition, AUpVector: TVector); overload;
+    procedure PointTo(const AAbsolutePosition, AUpVector: TGLVector); overload;
     procedure Render(var ARci: TGLRenderContextInfo);
     procedure DoRender(var ARci: TGLRenderContextInfo;
       ARenderSelf, ARenderChildren: Boolean); virtual;
@@ -783,7 +783,7 @@ type
     constructor Create(AOwner: TComponent); override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
-    function AxisAlignedDimensionsUnscaled: TVector; override;
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
   published
     (* Specifies if a build list be made.
        If True, GLScene will generate a build list (OpenGL-side cache),
@@ -844,12 +844,12 @@ type
     procedure Assign(Source: TPersistent); override;
     procedure DoRender(var ARci: TGLRenderContextInfo;
       ARenderSelf, ARenderChildren: Boolean); override;
-    function BarycenterAbsolutePosition: TVector; override;
-    function AxisAlignedDimensions: TVector; override;
-    function AxisAlignedDimensionsUnscaled: TVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TVector;
-      intersectPoint: PVector = nil;
-      intersectNormal: PVector = nil): Boolean; override;
+    function BarycenterAbsolutePosition: TGLVector; override;
+    function AxisAlignedDimensions: TGLVector; override;
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
+    function RayCastIntersect(const rayStart, rayVector: TGLVector;
+      intersectPoint: PGLVector = nil;
+      intersectNormal: PGLVector = nil): Boolean; override;
     function GenerateSilhouette(const silhouetteParameters:
       TGLSilhouetteParameters): TGLSilhouette; override;
   published
@@ -924,9 +924,9 @@ type
     procedure DoRender(var ARci: TGLRenderContextInfo;
       ARenderSelf, ARenderChildren: Boolean); override;
     // light sources have different handle types than normal scene objects
-    function RayCastIntersect(const rayStart, rayVector: TVector;
-      intersectPoint: PVector = nil;
-      intersectNormal: PVector = nil): Boolean; override;
+    function RayCastIntersect(const rayStart, rayVector: TGLVector;
+      intersectPoint: PGLVector = nil;
+      intersectNormal: PGLVector = nil): Boolean; override;
     procedure CoordinateChanged(Sender: TGLCustomCoordinates); override;
     function GenerateSilhouette(const silhouetteParameters:
       TGLSilhouetteParameters): TGLSilhouette; override;
@@ -972,7 +972,7 @@ type
     FNearPlaneBias: Single; // scaling bias applied to near plane
     FViewPortRadius: Single; // viewport bounding radius per distance unit
     FTargetObject: TGLBaseSceneObject;
-    FLastDirection: TVector; // Not persistent
+    FLastDirection: TGLVector; // Not persistent
     FCameraStyle: TGLCameraStyle;
     FKeepFOVMode: TGLCameraKeepFOVMode;
     FSceneScale: Single;
@@ -1003,9 +1003,9 @@ type
     procedure Apply;
     procedure DoRender(var ARci: TGLRenderContextInfo;
       ARenderSelf, ARenderChildren: Boolean); override;
-    function RayCastIntersect(const rayStart, rayVector: TVector;
-      intersectPoint: PVector = nil;
-      intersectNormal: PVector = nil): Boolean; override;
+    function RayCastIntersect(const rayStart, rayVector: TGLVector;
+      intersectPoint: PGLVector = nil;
+      intersectNormal: PGLVector = nil): Boolean; override;
     procedure ApplyPerspective(const AViewport: TRectangle;
       AWidth, AHeight: Integer; ADPI: Integer);
     procedure AutoLeveling(Factor: Single);
@@ -1033,7 +1033,7 @@ type
     procedure MoveTargetInEyeSpace(forwardDistance, rightDistance, upDistance: Single);
     // Computes the absolute vector corresponding to the eye-space translations.
     function AbsoluteEyeSpaceVector(forwardDistance, rightDistance, upDistance:
-      Single): TVector;
+      Single): TGLVector;
     (* Adjusts distance from camera to target by applying a ratio.
        If TargetObject is nil, nothing happens. This method helps in quickly
        implementing camera controls. Only the camera's position is changed. *)
@@ -1043,26 +1043,26 @@ type
     function DistanceToTarget: Single;
     (* Computes the absolute normalized vector to the camera target.
        If no target is defined, AbsoluteDirection is returned. *)
-    function AbsoluteVectorToTarget: TVector;
+    function AbsoluteVectorToTarget: TGLVector;
     (* Computes the absolute normalized right vector to the camera target.
        If no target is defined, AbsoluteRight is returned. *)
-    function AbsoluteRightVectorToTarget: TVector;
+    function AbsoluteRightVectorToTarget: TGLVector;
     (* Computes the absolute normalized up vector to the camera target.
        If no target is defined, AbsoluteUpt is returned. *)
-    function AbsoluteUpVectorToTarget: TVector;
+    function AbsoluteUpVectorToTarget: TGLVector;
     (* Calculate an absolute translation vector from a screen vector.
        Ratio is applied to both screen delta, planeNormal should be the
        translation plane's normal. *)
     function ScreenDeltaToVector(deltaX, deltaY: Integer; ratio: Single;
-      const planeNormal: TVector): TVector;
+      const planeNormal: TGLVector): TGLVector;
     // Same as ScreenDeltaToVector but optimized for XY plane.
-    function ScreenDeltaToVectorXY(deltaX, deltaY: Integer; ratio: Single): TVector;
+    function ScreenDeltaToVectorXY(deltaX, deltaY: Integer; ratio: Single): TGLVector;
     // Same as ScreenDeltaToVector but optimized for XZ plane.
-    function ScreenDeltaToVectorXZ(deltaX, deltaY: Integer; ratio: Single): TVector;
+    function ScreenDeltaToVectorXZ(deltaX, deltaY: Integer; ratio: Single): TGLVector;
     // Same as ScreenDeltaToVector but optimized for YZ plane.
-    function ScreenDeltaToVectorYZ(deltaX, deltaY: Integer; ratio: Single): TVector;
+    function ScreenDeltaToVectorYZ(deltaX, deltaY: Integer; ratio: Single): TGLVector;
     // Returns true if a point is in front of the camera.
-    function PointInFront(const point: TVector): boolean; overload;
+    function PointInFront(const point: TGLVector): boolean; overload;
     (* Calculates the field of view in degrees, given a viewport dimension
     (width or height). F.i. you may wish to use the minimum of the two. *)
     function GetFieldOfView(const AViewportDimension: single): single;
@@ -1177,8 +1177,8 @@ type
        accurate only for objects that overrided their RayCastIntersect
        method with accurate code, otherwise, bounding sphere intersections
        will be returned. *)
-    function RayCastIntersect(const rayStart, rayVector: TVector; intersectPoint: PVector = nil;
-      intersectNormal: PVector = nil): TGLBaseSceneObject;
+    function RayCastIntersect(const rayStart, rayVector: TGLVector; intersectPoint: PGLVector = nil;
+      intersectNormal: PGLVector = nil): TGLBaseSceneObject;
     procedure ShutdownAllLights;
     // Saves the scene to a file (recommended extension : .GLSM)
     procedure SaveToFile(const fileName: string);
@@ -1278,7 +1278,7 @@ type
     FViewMatrixStack: array of TMatrix;
     FProjectionMatrixStack: array of TMatrix;
     FBaseProjectionMatrix: TMatrix;
-    FCameraAbsolutePosition: TVector;
+    FCameraAbsolutePosition: TGLVector;
     FViewPort: TRectangle;
     FSelector: TGLBaseSelectTechnique;
     // Options & User Properties
@@ -1470,7 +1470,7 @@ type
        This methods wraps a call to gluUnProject.
        Note that screen coord (0,0) is the lower left corner. *)
     function ScreenToWorld(const aPoint: TAffineVector): TAffineVector; overload;
-    function ScreenToWorld(const aPoint: TVector): TVector; overload;
+    function ScreenToWorld(const aPoint: TGLVector): TGLVector; overload;
     {Converts a screen pixel coordinate into 3D world coordinates.
        This function accepts standard canvas coordinates, with (0,0) being
        the top left corner. }
@@ -1479,16 +1479,16 @@ type
        This methods wraps a call to gluProject.
        Note that screen coord (0,0) is the lower left corner. *)
     function WorldToScreen(const aPoint: TAffineVector): TAffineVector; overload;
-    function WorldToScreen(const aPoint: TVector): TVector; overload;
+    function WorldToScreen(const aPoint: TGLVector): TGLVector; overload;
     // Converts a set of point absolute world coordinates into screen coordinates.
-    procedure WorldToScreen(points: PVector; nbPoints: Integer); overload;
+    procedure WorldToScreen(points: PGLVector; nbPoints: Integer); overload;
     (* Calculates the 3D vector corresponding to a 2D screen coordinate.
        The vector originates from the camera's absolute position and is
        expressed in absolute coordinates.
        Note that screen coord (0,0) is the lower left corner. *)
     function ScreenToVector(const aPoint: TAffineVector): TAffineVector; overload;
-    function ScreenToVector(const aPoint: TVector): TVector; overload;
-    function ScreenToVector(const x, y: Integer): TVector; overload;
+    function ScreenToVector(const aPoint: TGLVector): TGLVector; overload;
+    function ScreenToVector(const x, y: Integer): TGLVector; overload;
     (* Calculates the 2D screen coordinate of a vector from the camera's
        absolute position and is expressed in absolute coordinates.
        Note that screen coord (0,0) is the lower left corner. *)
@@ -1497,27 +1497,27 @@ type
        If an intersection is found, returns True and places result in
        intersectPoint. *)
     function ScreenVectorIntersectWithPlane(
-      const aScreenPoint: TVector;
-      const planePoint, planeNormal: TVector;
-      var intersectPoint: TVector): Boolean;
+      const aScreenPoint: TGLVector;
+      const planePoint, planeNormal: TGLVector;
+      var intersectPoint: TGLVector): Boolean;
     (* Calculates intersection between plane XY and screen vector.
        If an intersection is found, returns True and places result in
        intersectPoint. *)
     function ScreenVectorIntersectWithPlaneXY(
-      const aScreenPoint: TVector; const z: Single;
-      var intersectPoint: TVector): Boolean;
+      const aScreenPoint: TGLVector; const z: Single;
+      var intersectPoint: TGLVector): Boolean;
     (* Calculates intersection between plane YZ and screen vector.
        If an intersection is found, returns True and places result in
        intersectPoint. *)
     function ScreenVectorIntersectWithPlaneYZ(
-      const aScreenPoint: TVector; const x: Single;
-      var intersectPoint: TVector): Boolean;
+      const aScreenPoint: TGLVector; const x: Single;
+      var intersectPoint: TGLVector): Boolean;
     (* Calculates intersection between plane XZ and screen vector.
        If an intersection is found, returns True and places result in
        intersectPoint. *)
     function ScreenVectorIntersectWithPlaneXZ(
-      const aScreenPoint: TVector; const y: Single;
-      var intersectPoint: TVector): Boolean;
+      const aScreenPoint: TGLVector; const y: Single;
+      var intersectPoint: TGLVector): Boolean;
     (* Calculates a 3D coordinate from screen position and ZBuffer.
        This function returns a world absolute coordinate from a 2D point
        in the viewer, the depth being extracted from the ZBuffer data
@@ -2328,12 +2328,12 @@ begin
   end;
 end;
 
-function TGLBaseSceneObject.GetAbsoluteDirection: TVector;
+function TGLBaseSceneObject.GetAbsoluteDirection: TGLVector;
 begin
   Result := VectorNormalize(AbsoluteMatrixAsAddress^.V[2]);
 end;
 
-procedure TGLBaseSceneObject.SetAbsoluteDirection(const v: TVector);
+procedure TGLBaseSceneObject.SetAbsoluteDirection(const v: TGLVector);
 begin
   if Parent <> nil then
     Direction.AsVector := Parent.AbsoluteToLocal(v)
@@ -2341,7 +2341,7 @@ begin
     Direction.AsVector := v;
 end;
 
-function TGLBaseSceneObject.GetAbsoluteScale: TVector;
+function TGLBaseSceneObject.GetAbsoluteScale: TGLVector;
 begin
   Result.X := AbsoluteMatrixAsAddress^.X.X;
   Result.Y := AbsoluteMatrixAsAddress^.Y.Y;
@@ -2350,7 +2350,7 @@ begin
   Result.W := 0;
 end;
 
-procedure TGLBaseSceneObject.SetAbsoluteScale(const Value: TVector);
+procedure TGLBaseSceneObject.SetAbsoluteScale(const Value: TGLVector);
 begin
   if Parent <> nil then
     Scale.AsVector := Parent.AbsoluteToLocal(Value)
@@ -2358,12 +2358,12 @@ begin
     Scale.AsVector := Value;
 end;
 
-function TGLBaseSceneObject.GetAbsoluteUp: TVector;
+function TGLBaseSceneObject.GetAbsoluteUp: TGLVector;
 begin
   Result := VectorNormalize(AbsoluteMatrixAsAddress^.Y);
 end;
 
-procedure TGLBaseSceneObject.SetAbsoluteUp(const v: TVector);
+procedure TGLBaseSceneObject.SetAbsoluteUp(const v: TGLVector);
 begin
   if Parent <> nil then
     Up.AsVector := Parent.AbsoluteToLocal(v)
@@ -2371,22 +2371,22 @@ begin
     Up.AsVector := v;
 end;
 
-function TGLBaseSceneObject.AbsoluteRight: TVector;
+function TGLBaseSceneObject.AbsoluteRight: TGLVector;
 begin
   Result := VectorNormalize(AbsoluteMatrixAsAddress^.X);
 end;
 
-function TGLBaseSceneObject.AbsoluteLeft: TVector;
+function TGLBaseSceneObject.AbsoluteLeft: TGLVector;
 begin
   Result := VectorNegate(AbsoluteRight);
 end;
 
-function TGLBaseSceneObject.GetAbsolutePosition: TVector;
+function TGLBaseSceneObject.GetAbsolutePosition: TGLVector;
 begin
   Result := AbsoluteMatrixAsAddress^.W;
 end;
 
-procedure TGLBaseSceneObject.SetAbsolutePosition(const v: TVector);
+procedure TGLBaseSceneObject.SetAbsolutePosition(const v: TGLVector);
 begin
   if Assigned(Parent) then
     Position.AsVector := Parent.AbsoluteToLocal(v)
@@ -2394,30 +2394,30 @@ begin
     Position.AsVector := v;
 end;
 
-function TGLBaseSceneObject.AbsolutePositionAsAddress: PVector;
+function TGLBaseSceneObject.AbsolutePositionAsAddress: PGLVector;
 begin
   Result := @AbsoluteMatrixAsAddress^.W;
 end;
 
-function TGLBaseSceneObject.AbsoluteXVector: TVector;
+function TGLBaseSceneObject.AbsoluteXVector: TGLVector;
 begin
   AbsoluteMatrixAsAddress;
   SetVector(Result, PAffineVector(@FAbsoluteMatrix.X)^);
 end;
 
-function TGLBaseSceneObject.AbsoluteYVector: TVector;
+function TGLBaseSceneObject.AbsoluteYVector: TGLVector;
 begin
   AbsoluteMatrixAsAddress;
   SetVector(Result, PAffineVector(@FAbsoluteMatrix.Y)^);
 end;
 
-function TGLBaseSceneObject.AbsoluteZVector: TVector;
+function TGLBaseSceneObject.AbsoluteZVector: TGLVector;
 begin
   AbsoluteMatrixAsAddress;
   SetVector(Result, PAffineVector(@FAbsoluteMatrix.Z)^);
 end;
 
-function TGLBaseSceneObject.AbsoluteToLocal(const v: TVector): TVector;
+function TGLBaseSceneObject.AbsoluteToLocal(const v: TGLVector): TGLVector;
 begin
   Result := VectorTransform(v, InvAbsoluteMatrixAsAddress^);
 end;
@@ -2428,7 +2428,7 @@ begin
   Result := VectorTransform(v, InvAbsoluteMatrixAsAddress^);
 end;
 
-function TGLBaseSceneObject.LocalToAbsolute(const v: TVector): TVector;
+function TGLBaseSceneObject.LocalToAbsolute(const v: TGLVector): TGLVector;
 begin
   Result := VectorTransform(v, AbsoluteMatrixAsAddress^);
 end;
@@ -2439,17 +2439,17 @@ begin
   Result := VectorTransform(v, AbsoluteMatrixAsAddress^);
 end;
 
-function TGLBaseSceneObject.Right: TVector;
+function TGLBaseSceneObject.Right: TGLVector;
 begin
   Result := VectorCrossProduct(FDirection.AsVector, FUp.AsVector);
 end;
 
-function TGLBaseSceneObject.LeftVector: TVector;
+function TGLBaseSceneObject.LeftVector: TGLVector;
 begin
   Result := VectorCrossProduct(FUp.AsVector, FDirection.AsVector);
 end;
 
-function TGLBaseSceneObject.BarycenterAbsolutePosition: TVector;
+function TGLBaseSceneObject.BarycenterAbsolutePosition: TGLVector;
 begin
   Result := AbsolutePosition;
 end;
@@ -2462,7 +2462,7 @@ begin
     Result := 0;
 end;
 
-function TGLBaseSceneObject.SqrDistanceTo(const pt: TVector): Single;
+function TGLBaseSceneObject.SqrDistanceTo(const pt: TGLVector): Single;
 begin
   Result := VectorDistance2(pt, AbsolutePosition);
 end;
@@ -2475,26 +2475,26 @@ begin
     Result := 0;
 end;
 
-function TGLBaseSceneObject.DistanceTo(const pt: TVector): Single;
+function TGLBaseSceneObject.DistanceTo(const pt: TGLVector): Single;
 begin
   Result := VectorDistance(AbsolutePosition, pt);
 end;
 
-function TGLBaseSceneObject.BarycenterSqrDistanceTo(const pt: TVector): Single;
+function TGLBaseSceneObject.BarycenterSqrDistanceTo(const pt: TGLVector): Single;
 var
-  d: TVector;
+  d: TGLVector;
 begin
   d := BarycenterAbsolutePosition;
   Result := VectorDistance2(d, pt);
 end;
 
-function TGLBaseSceneObject.AxisAlignedDimensions: TVector;
+function TGLBaseSceneObject.AxisAlignedDimensions: TGLVector;
 begin
   Result := AxisAlignedDimensionsUnscaled();
   ScaleVector(Result, Scale.AsVector);
 end;
 
-function TGLBaseSceneObject.AxisAlignedDimensionsUnscaled: TVector;
+function TGLBaseSceneObject.AxisAlignedDimensionsUnscaled: TGLVector;
 begin
   Result.X := 0.5;
   Result.Y := 0.5;
@@ -2552,7 +2552,7 @@ end;
 function TGLBaseSceneObject.BoundingBox(const AIncludeChilden: Boolean;
   const AUseBaryCenter: Boolean): THmgBoundingBox;
 var
-  CurrentBaryOffset: TVector;
+  CurrentBaryOffset: TGLVector;
 begin
   Result := AABBToBB(AxisAlignedBoundingBox(AIncludeChilden));
 
@@ -2570,7 +2570,7 @@ function TGLBaseSceneObject.BoundingBoxUnscaled(
   const AIncludeChilden: Boolean;
   const AUseBaryCenter: Boolean): THmgBoundingBox;
 var
-  CurrentBaryOffset: TVector;
+  CurrentBaryOffset: TGLVector;
 begin
   Result := AABBToBB(AxisAlignedBoundingBoxUnscaled(AIncludeChilden));
 
@@ -2588,7 +2588,7 @@ function TGLBaseSceneObject.BoundingBoxAbsolute(const AIncludeChilden: Boolean;
   const AUseBaryCenter: Boolean): THmgBoundingBox;
 var
   I: Integer;
-  CurrentBaryOffset: TVector;
+  CurrentBaryOffset: TGLVector;
 begin
   Result := BoundingBoxUnscaled(AIncludeChilden, False);
   for I := 0 to 7 do
@@ -2612,9 +2612,9 @@ begin
   Result := VectorLength(AxisAlignedDimensionsUnscaled);
 end;
 
-function TGLBaseSceneObject.PointInObject(const point: TVector): Boolean;
+function TGLBaseSceneObject.PointInObject(const point: TGLVector): Boolean;
 var
-  localPt, dim: TVector;
+  localPt, dim: TGLVector;
 begin
   dim := AxisAlignedDimensions;
   localPt := VectorTransform(point, InvAbsoluteMatrix);
@@ -2703,11 +2703,11 @@ begin
   Result := FBoundingBoxIncludingChildren;
 end;
 
-function TGLBaseSceneObject.RayCastIntersect(const rayStart, rayVector: TVector;
-  intersectPoint: PVector = nil;
-  intersectNormal: PVector = nil): Boolean;
+function TGLBaseSceneObject.RayCastIntersect(const rayStart, rayVector: TGLVector;
+  intersectPoint: PGLVector = nil;
+  intersectNormal: PGLVector = nil): Boolean;
 var
-  i1, i2, absPos: TVector;
+  i1, i2, absPos: TGLVector;
 begin
   SetVector(absPos, AbsolutePosition);
   if RayCastSphereIntersect(rayStart, rayVector, absPos, BoundingSphereRadius,
@@ -2867,7 +2867,7 @@ end;
 procedure TGLBaseSceneObject.ResetAndPitchTurnRoll(const degX, degY, degZ: Single);
 var
   rotMatrix: TMatrix;
-  V: TVector;
+  V: TGLVector;
 begin
   ResetRotations;
   // set DegX (Pitch)
@@ -2940,7 +2940,7 @@ end;
 procedure TGLBaseSceneObject.Pitch(angle: Single);
 var
   r: Single;
-  rightVector: TVector;
+  rightVector: TGLVector;
 begin
   FIsCalculating := True;
   try
@@ -2993,7 +2993,7 @@ end;
 procedure TGLBaseSceneObject.Roll(angle: Single);
 var
   r: Single;
-  rightVector, directionVector: TVector;
+  rightVector, directionVector: TGLVector;
 begin
   FIsCalculating := True;
   try
@@ -3051,7 +3051,7 @@ end;
 procedure TGLBaseSceneObject.Turn(angle: Single);
 var
   r: Single;
-  upVector: TVector;
+  upVector: TGLVector;
 begin
   FIsCalculating := True;
   try
@@ -3121,14 +3121,14 @@ begin
   Result := FRotation.Z;
 end;
 
-procedure TGLBaseSceneObject.PointTo(const ATargetObject: TGLBaseSceneObject; const AUpVector: TVector);
+procedure TGLBaseSceneObject.PointTo(const ATargetObject: TGLBaseSceneObject; const AUpVector: TGLVector);
 begin
   PointTo(ATargetObject.AbsolutePosition, AUpVector);
 end;
 
-procedure TGLBaseSceneObject.PointTo(const AAbsolutePosition, AUpVector: TVector);
+procedure TGLBaseSceneObject.PointTo(const AAbsolutePosition, AUpVector: TGLVector);
 var
-  absDir, absRight, absUp: TVector;
+  absDir, absRight, absUp: TGLVector;
 begin
   // first compute absolute attitude for pointing
   absDir := VectorSubtract(AAbsolutePosition, Self.AbsolutePosition);
@@ -3317,7 +3317,7 @@ end;
 
 procedure TGLBaseSceneObject.MoveObjectAround(anObject: TGLBaseSceneObject; pitchDelta, turnDelta: Single);
 var
-  originalT2C, normalT2C, normalCameraRight, newPos: TVector;
+  originalT2C, normalT2C, normalCameraRight, newPos: TGLVector;
   pitchNow, dist: Single;
 begin
   if Assigned(anObject) then
@@ -3355,11 +3355,11 @@ end;
 procedure TGLBaseSceneObject.MoveObjectAllAround(anObject: TGLBaseSceneObject;
   pitchDelta, turnDelta: Single);
 var
-  upvector: TVector;
-  lookat : TVector;
-  rightvector : TVector;
-  tempvector: TVector;
-  T2C: TVector;
+  upvector: TGLVector;
+  lookat : TGLVector;
+  rightvector : TGLVector;
+  tempvector: TGLVector;
+  T2C: TGLVector;
 
 begin
 
@@ -3407,7 +3407,7 @@ end;
 
 procedure TGLBaseSceneObject.CoordinateChanged(Sender: TGLCustomCoordinates);
 var
-  rightVector: TVector;
+  rightVector: TGLVector;
 begin
   if FIsCalculating then
     Exit;
@@ -3989,7 +3989,7 @@ end;
 
 function TGLBaseSceneObject.GetAbsoluteAffinePosition: TAffineVector;
 var
-  temp: TVector;
+  temp: TGLVector;
 begin
   temp := GetAbsolutePosition;
   Result := AffineVectorMake(temp.X, temp.Y, temp.Z);
@@ -3997,7 +3997,7 @@ end;
 
 function TGLBaseSceneObject.GetAbsoluteAffineDirection: TAffineVector;
 var
-  temp: TVector;
+  temp: TGLVector;
 begin
   temp := GetAbsoluteDirection;
   Result := AffineVectorMake(temp.X, temp.Y, temp.Z);
@@ -4005,7 +4005,7 @@ end;
 
 function TGLBaseSceneObject.GetAbsoluteAffineUp: TAffineVector;
 var
-  temp: TVector;
+  temp: TGLVector;
 begin
   temp := GetAbsoluteUp;
   Result := AffineVectorMake(temp.X, temp.Y, temp.Z);
@@ -4388,7 +4388,7 @@ end;
 procedure TGLCamera.Assign(Source: TPersistent);
 var
   cam: TGLCamera;
-  dir: TVector;
+  dir: TGLVector;
 begin
   if Assigned(Source) then
   begin
@@ -4423,7 +4423,7 @@ begin
   end;
 end;
 
-function TGLCamera.AbsoluteVectorToTarget: TVector;
+function TGLCamera.AbsoluteVectorToTarget: TGLVector;
 begin
   if TargetObject <> nil then
   begin
@@ -4434,7 +4434,7 @@ begin
     Result := AbsoluteDirection;
 end;
 
-function TGLCamera.AbsoluteRightVectorToTarget: TVector;
+function TGLCamera.AbsoluteRightVectorToTarget: TGLVector;
 begin
   if TargetObject <> nil then
   begin
@@ -4446,7 +4446,7 @@ begin
     Result := AbsoluteRight;
 end;
 
-function TGLCamera.AbsoluteUpVectorToTarget: TVector;
+function TGLCamera.AbsoluteUpVectorToTarget: TGLVector;
 begin
   if TargetObject <> nil then
     Result := VectorCrossProduct(AbsoluteRightVectorToTarget,
@@ -4457,8 +4457,8 @@ end;
 
 procedure TGLCamera.Apply;
 var
-  v, d, v2: TVector;
-  absPos: TVector;
+  v, d, v2: TGLVector;
+  absPos: TGLVector;
   LM, mat: TMatrix;
 begin
   if Assigned(FDeferredApply) then
@@ -4642,7 +4642,7 @@ end;
 
 procedure TGLCamera.AutoLeveling(Factor: Single);
 var
-  rightVector, rotAxis: TVector;
+  rightVector, rotAxis: TGLVector;
   angle: Single;
 begin
   angle := RadToDeg(ArcCos(VectorDotProduct(FUp.AsVector, YVector)));
@@ -4724,10 +4724,10 @@ procedure TGLCamera.RotateObject(obj: TGLBaseSceneObject; pitchDelta, turnDelta:
   rollDelta: Single = 0);
 var
   resMat: TMatrix;
-  vDir, vUp, vRight: TVector;
+  vDir, vUp, vRight: TGLVector;
   v: TAffineVector;
-  position1: TVector;
-  Scale1: TVector;
+  position1: TGLVector;
+  Scale1: TGLVector;
 begin
   // First we need to compute the actual camera's vectors, which may not be
   // directly available if we're in "targeting" mode
@@ -4790,7 +4790,7 @@ end;
 
 procedure TGLCamera.MoveInEyeSpace(forwardDistance, rightDistance, upDistance: Single);
 var
-  trVector: TVector;
+  trVector: TGLVector;
 begin
   trVector := AbsoluteEyeSpaceVector(forwardDistance, rightDistance, upDistance);
   if Assigned(Parent) then
@@ -4801,7 +4801,7 @@ end;
 
 procedure TGLCamera.MoveTargetInEyeSpace(forwardDistance, rightDistance, upDistance: Single);
 var
-  trVector: TVector;
+  trVector: TGLVector;
 begin
   if TargetObject <> nil then
   begin
@@ -4811,7 +4811,7 @@ begin
   end;
 end;
 
-function TGLCamera.AbsoluteEyeSpaceVector(forwardDistance, rightDistance, upDistance: Single): TVector;
+function TGLCamera.AbsoluteEyeSpaceVector(forwardDistance, rightDistance, upDistance: Single): TGLVector;
 begin
   Result := NullHmgVector;
   if forwardDistance <> 0 then
@@ -4824,7 +4824,7 @@ end;
 
 procedure TGLCamera.AdjustDistanceToTarget(distanceRatio: Single);
 var
-  vect: TVector;
+  vect: TGLVector;
 begin
   if Assigned(FTargetObject) then
   begin
@@ -4841,7 +4841,7 @@ end;
 
 function TGLCamera.DistanceToTarget: Single;
 var
-  vect: TVector;
+  vect: TGLVector;
 begin
   if Assigned(FTargetObject) then
   begin
@@ -4853,9 +4853,9 @@ begin
 end;
 
 function TGLCamera.ScreenDeltaToVector(deltaX, deltaY: Integer; ratio: Single;
-  const planeNormal: TVector): TVector;
+  const planeNormal: TGLVector): TGLVector;
 var
-  screenY, screenX: TVector;
+  screenY, screenX: TGLVector;
   screenYoutOfPlaneComponent: Single;
 begin
   // calculate projection of direction vector on the plane
@@ -4872,9 +4872,9 @@ begin
   Result := VectorCombine(screenX, screenY, deltaX * ratio, deltaY * ratio);
 end;
 
-function TGLCamera.ScreenDeltaToVectorXY(deltaX, deltaY: Integer; ratio: Single): TVector;
+function TGLCamera.ScreenDeltaToVectorXY(deltaX, deltaY: Integer; ratio: Single): TGLVector;
 var
-  screenY: TVector;
+  screenY: TGLVector;
   dxr, dyr, d: Single;
 begin
   // calculate projection of direction vector on the plane
@@ -4896,9 +4896,9 @@ begin
   Result.W := 0;
 end;
 
-function TGLCamera.ScreenDeltaToVectorXZ(deltaX, deltaY: Integer; ratio: Single): TVector;
+function TGLCamera.ScreenDeltaToVectorXZ(deltaX, deltaY: Integer; ratio: Single): TGLVector;
 var
-  screenY: TVector;
+  screenY: TGLVector;
   d, dxr, dzr: Single;
 begin
   // calculate the projection of direction vector on the plane
@@ -4919,9 +4919,9 @@ begin
   Result.W := 0;
 end;
 
-function TGLCamera.ScreenDeltaToVectorYZ(deltaX, deltaY: Integer; ratio: Single): TVector;
+function TGLCamera.ScreenDeltaToVectorYZ(deltaX, deltaY: Integer; ratio: Single): TGLVector;
 var
-  screenY: TVector;
+  screenY: TGLVector;
   d, dyr, dzr: single;
 begin
   // calculate the projection of direction vector on the plane
@@ -4942,7 +4942,7 @@ begin
   Result.W := 0;
 end;
 
-function TGLCamera.PointInFront(const point: TVector): boolean;
+function TGLCamera.PointInFront(const point: TGLVector): boolean;
 begin
   result := PointIsInHalfSpace(point, AbsolutePosition, AbsoluteDirection);
 end;
@@ -5046,9 +5046,9 @@ begin
     Self.RenderChildren(0, Count - 1, ARci);
 end;
 
-function TGLCamera.RayCastIntersect(const rayStart, rayVector: TVector;
-  intersectPoint: PVector = nil;
-  intersectNormal: PVector = nil): Boolean;
+function TGLCamera.RayCastIntersect(const rayStart, rayVector: TGLVector;
+  intersectPoint: PGLVector = nil;
+  intersectNormal: PGLVector = nil): Boolean;
 begin
   Result := False;
 end;
@@ -5177,7 +5177,7 @@ begin
   end;
 end;
 
-function TGLDirectOpenGL.AxisAlignedDimensionsUnscaled: TVector;
+function TGLDirectOpenGL.AxisAlignedDimensionsUnscaled: TGLVector;
 begin
   Result := NullHmgPoint;
 end;
@@ -5342,7 +5342,7 @@ begin
   ClearStructureChanged;
 end;
 
-function TGLProxyObject.AxisAlignedDimensions: TVector;
+function TGLProxyObject.AxisAlignedDimensions: TGLVector;
 begin
   If Assigned(FMasterObject) then
   begin
@@ -5356,7 +5356,7 @@ begin
     Result := inherited AxisAlignedDimensions;
 end;
 
-function TGLProxyObject.AxisAlignedDimensionsUnscaled: TVector;
+function TGLProxyObject.AxisAlignedDimensionsUnscaled: TGLVector;
 begin
   if Assigned(FMasterObject) then
   begin
@@ -5366,9 +5366,9 @@ begin
     Result := inherited AxisAlignedDimensionsUnscaled;
 end;
 
-function TGLProxyObject.BarycenterAbsolutePosition: TVector;
+function TGLProxyObject.BarycenterAbsolutePosition: TGLVector;
 var
-  lAdjustVector: TVector;
+  lAdjustVector: TGLVector;
 begin
   if Assigned(FMasterObject) then
   begin
@@ -5412,11 +5412,11 @@ begin
   end;
 end;
 
-function TGLProxyObject.RayCastIntersect(const rayStart, rayVector: TVector;
-  intersectPoint: PVector = nil;
-  intersectNormal: PVector = nil): Boolean;
+function TGLProxyObject.RayCastIntersect(const rayStart, rayVector: TGLVector;
+  intersectPoint: PGLVector = nil;
+  intersectNormal: PGLVector = nil): Boolean;
 var
-  localRayStart, localRayVector: TVector;
+  localRayStart, localRayVector: TGLVector;
 begin
   if Assigned(MasterObject) then
   begin
@@ -5494,9 +5494,9 @@ begin
     Self.RenderChildren(0, Count - 1, ARci);
 end;
 
-function TGLLightSource.RayCastIntersect(const rayStart, rayVector: TVector;
-  intersectPoint: PVector = nil;
-  intersectNormal: PVector = nil): Boolean;
+function TGLLightSource.RayCastIntersect(const rayStart, rayVector: TGLVector;
+  intersectPoint: PGLVector = nil;
+  intersectNormal: PGLVector = nil): Boolean;
 begin
   Result := False;
 end;
@@ -5928,14 +5928,14 @@ begin
   Result := FObjects.FindChild(AName, False);
 end;
 
-function TGLScene.RayCastIntersect(const rayStart, rayVector: TVector;
-  intersectPoint: PVector = nil;
-  intersectNormal: PVector = nil): TGLBaseSceneObject;
+function TGLScene.RayCastIntersect(const rayStart, rayVector: TGLVector;
+  intersectPoint: PGLVector = nil;
+  intersectNormal: PGLVector = nil): TGLBaseSceneObject;
 var
   bestDist2: Single;
   bestHit: TGLBaseSceneObject;
-  iPoint, iNormal: TVector;
-  pINormal: PVector;
+  iPoint, iNormal: TGLVector;
+  pINormal: PGLVector;
 
   function RecursiveDive(baseObject: TGLBaseSceneObject): TGLBaseSceneObject;
   var
@@ -6002,7 +6002,7 @@ var
   i: Integer;
   lightSource: TGLLightSource;
   nbLights: Integer;
-  lPos: TVector;
+  lPos: TGLVector;
 begin
   nbLights := FLights.Count;
   if nbLights > maxLights then
@@ -6898,7 +6898,7 @@ end;
 function TGLSceneBuffer.ScreenToWorld(const aPoint: TAffineVector):
   TAffineVector;
 var
-  rslt: TVector;
+  rslt: TGLVector;
 begin
   if Assigned(FCamera)
     and UnProject(
@@ -6910,7 +6910,7 @@ begin
     Result := aPoint;
 end;
 
-function TGLSceneBuffer.ScreenToWorld(const aPoint: TVector): TVector;
+function TGLSceneBuffer.ScreenToWorld(const aPoint: TGLVector): TGLVector;
 begin
   MakePoint(Result, ScreenToWorld(AffineVectorMake(aPoint)));
 end;
@@ -6923,7 +6923,7 @@ end;
 
 function TGLSceneBuffer.WorldToScreen(const aPoint: TAffineVector): TAffineVector;
 var
-  rslt: TVector;
+  rslt: TGLVector;
 begin
   RenderingContext.Activate;
   try
@@ -6942,12 +6942,12 @@ begin
   end;
 end;
 
-function TGLSceneBuffer.WorldToScreen(const aPoint: TVector): TVector;
+function TGLSceneBuffer.WorldToScreen(const aPoint: TGLVector): TGLVector;
 begin
   SetVector(Result, WorldToScreen(AffineVectorMake(aPoint)));
 end;
 
-procedure TGLSceneBuffer.WorldToScreen(points: PVector; nbPoints: Integer);
+procedure TGLSceneBuffer.WorldToScreen(points: PGLVector; nbPoints: Integer);
 var
   i: Integer;
 begin
@@ -6968,14 +6968,14 @@ begin
     PAffineVector(@FCameraAbsolutePosition)^);
 end;
 
-function TGLSceneBuffer.ScreenToVector(const aPoint: TVector): TVector;
+function TGLSceneBuffer.ScreenToVector(const aPoint: TGLVector): TGLVector;
 begin
   SetVector(Result, VectorSubtract(ScreenToWorld(aPoint),
     FCameraAbsolutePosition));
   Result.W := 0;
 end;
 
-function TGLSceneBuffer.ScreenToVector(const x, y: Integer): TVector;
+function TGLSceneBuffer.ScreenToVector(const x, y: Integer): TGLVector;
 var
   av: TAffineVector;
 begin
@@ -6993,11 +6993,11 @@ begin
 end;
 
 function TGLSceneBuffer.ScreenVectorIntersectWithPlane(
-  const aScreenPoint: TVector;
-  const planePoint, planeNormal: TVector;
-  var intersectPoint: TVector): Boolean;
+  const aScreenPoint: TGLVector;
+  const planePoint, planeNormal: TGLVector;
+  var intersectPoint: TGLVector): Boolean;
 var
-  v: TVector;
+  v: TGLVector;
 begin
   if Assigned(FCamera) then
   begin
@@ -7011,8 +7011,8 @@ begin
 end;
 
 function TGLSceneBuffer.ScreenVectorIntersectWithPlaneXY(
-  const aScreenPoint: TVector; const z: Single;
-  var intersectPoint: TVector): Boolean;
+  const aScreenPoint: TGLVector; const z: Single;
+  var intersectPoint: TGLVector): Boolean;
 begin
   Result := ScreenVectorIntersectWithPlane(aScreenPoint, VectorMake(0, 0, z),
     ZHmgVector, intersectPoint);
@@ -7020,8 +7020,8 @@ begin
 end;
 
 function TGLSceneBuffer.ScreenVectorIntersectWithPlaneYZ(
-  const aScreenPoint: TVector; const x: Single;
-  var intersectPoint: TVector): Boolean;
+  const aScreenPoint: TGLVector; const x: Single;
+  var intersectPoint: TGLVector): Boolean;
 begin
   Result := ScreenVectorIntersectWithPlane(aScreenPoint, VectorMake(x, 0, 0),
     XHmgVector, intersectPoint);
@@ -7029,8 +7029,8 @@ begin
 end;
 
 function TGLSceneBuffer.ScreenVectorIntersectWithPlaneXZ(
-  const aScreenPoint: TVector; const y: Single;
-  var intersectPoint: TVector): Boolean;
+  const aScreenPoint: TGLVector; const y: Single;
+  var intersectPoint: TGLVector): Boolean;
 begin
   Result := ScreenVectorIntersectWithPlane(aScreenPoint, VectorMake(0, y, 0),
     YHmgVector, intersectPoint);
@@ -7422,7 +7422,7 @@ procedure TGLSceneBuffer.RenderScene(aScene: TGLScene;
 var
   i: Integer;
   rci: TGLRenderContextInfo;
-  rightVector: TVector;
+  rightVector: TGLVector;
 begin
   FAfterRenderEffects.Clear;
   aScene.FCurrentBuffer := Self;

@@ -102,12 +102,12 @@ type
   public
     (* If the MasterObject is a FreeForm, you can raycast against the Octree,
        which is alot faster.  You must build the octree before using. *)
-    function OctreeRayCastIntersect(const rayStart, rayVector: TVector;
-      intersectPoint: PVector = nil;  intersectNormal: PVector = nil): Boolean;
+    function OctreeRayCastIntersect(const rayStart, rayVector: TGLVector;
+      intersectPoint: PGLVector = nil;  intersectNormal: PGLVector = nil): Boolean;
     // WARNING: This function is not yet 100% reliable with scale+rotation. 
-    function OctreeSphereSweepIntersect(const rayStart, rayVector: TVector;
+    function OctreeSphereSweepIntersect(const rayStart, rayVector: TGLVector;
       const velocity, radius, modelscale: Single;
-      intersectPoint: PVector = nil; intersectNormal: PVector = nil): Boolean;
+      intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil): Boolean;
   published
 
    // Redeclare as TGLFreeForm.
@@ -176,9 +176,9 @@ type
     function BoneMatrix(BoneName: string): TMatrix; overload;
     procedure BoneMatricesClear;
     // A standard version of the RayCastIntersect function. 
-    function RayCastIntersect(const rayStart, rayVector: TVector;
-      intersectPoint: PVector = nil;
-      intersectNormal: PVector = nil): Boolean; override;
+    function RayCastIntersect(const rayStart, rayVector: TGLVector;
+      intersectPoint: PGLVector = nil;
+      intersectNormal: PGLVector = nil): Boolean; override;
     (* Raycasts on self, but actually on the "RefActor" Actor.
        Note that the "RefActor" parameter does not necessarily have to be
        the same Actor refernced by the MasterObject property:
@@ -186,9 +186,9 @@ type
        while using a high-poly Actor in the "MasterObject" property,
        of course we assume that the two Masterobject Actors have same animations.  *)
     function RayCastIntersectEx(RefActor: TGLActor; const rayStart, rayVector:
-      TVector;
-      intersectPoint: PVector = nil;
-      intersectNormal: PVector = nil): Boolean; overload;
+      TGLVector;
+      intersectPoint: PGLVector = nil;
+      intersectNormal: PGLVector = nil): Boolean; overload;
   published
     property AnimationMode: TGLActorProxyAnimationMode read FAnimationMode write FAnimationMode default pamInherited;
     property Animation: TGLActorAnimationName read FAnimation write SetAnimation;
@@ -292,11 +292,11 @@ end;
 // ------------------
 
 function TGLFreeFormProxy.OctreeRayCastIntersect(const rayStart, rayVector:
-  TVector;
-  intersectPoint: PVector = nil;
-  intersectNormal: PVector = nil): Boolean;
+  TGLVector;
+  intersectPoint: PGLVector = nil;
+  intersectNormal: PGLVector = nil): Boolean;
 var
-  localRayStart, localRayVector: TVector;
+  localRayStart, localRayVector: TGLVector;
 begin
   if Assigned(MasterObject) then
   begin
@@ -330,12 +330,12 @@ begin
 end;
 
 function TGLFreeFormProxy.OctreeSphereSweepIntersect(const rayStart, rayVector:
-  TVector;
+  TGLVector;
   const velocity, radius, modelscale: Single;
-  intersectPoint: PVector = nil;
-  intersectNormal: PVector = nil): Boolean;
+  intersectPoint: PGLVector = nil;
+  intersectNormal: PGLVector = nil): Boolean;
 var
-  localRayStart, localRayVector: TVector;
+  localRayStart, localRayVector: TGLVector;
   localVelocity, localRadius: single;
 begin
   Result := False;
@@ -618,8 +618,8 @@ begin
   end;
 end;
 
-function TGLActorProxy.RayCastIntersect(const rayStart, rayVector: TVector;
-  intersectPoint, intersectNormal: PVector): Boolean;
+function TGLActorProxy.RayCastIntersect(const rayStart, rayVector: TGLVector;
+  intersectPoint, intersectNormal: PGLVector): Boolean;
 begin
   if MasterObject <> nil then
     Result := RayCastIntersectEx(GetMasterActorObject, rayStart, rayVector,
@@ -634,9 +634,9 @@ type
   TGLDummyActor = class(TGLActor);
 
 function TGLActorProxy.RayCastIntersectEx(RefActor: TGLActor; const rayStart,
-  rayVector: TVector; intersectPoint, intersectNormal: PVector): Boolean;
+  rayVector: TGLVector; intersectPoint, intersectNormal: PGLVector): Boolean;
 var
-  localRayStart, localRayVector: TVector;
+  localRayStart, localRayVector: TGLVector;
   cf, sf, ef: Integer;
   cfd: Single;
   HaspooTransformation: boolean;

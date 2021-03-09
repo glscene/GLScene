@@ -221,7 +221,7 @@ procedure TFormFacevsFace.GLSceneViewer1MouseMove(Sender: TObject;
   Shift: TShiftState; X, Y: Integer);
 var
    dx, dy: Integer;
-   VX, VY: TVector;
+   VX, VY: TGLVector;
    Camera: TGLCamera;
 begin
    Camera := GLSceneViewer1.Camera;

@@ -167,7 +167,7 @@ procedure TGLBExplosionFx.CacheInfo;
 var
   Face: integer;
   p1, p2, p3, v1, v2, posi: TAffineVector;
-  Normal: TVector;
+  Normal: TGLVector;
 begin
   // make sure we can explode this object
   if not OwnerBaseSceneObject.InheritsFrom(TGLBaseMesh) then begin

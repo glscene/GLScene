@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.VectorTypesExt;
 
 (* Defines common vector types as advanced records using
@@ -1024,7 +1023,7 @@ procedure Init(Obj, TypeInfoOfObj: Pointer; Offset: Integer = 0);
 const
   DefaultRowCount = 3;
   DefaultColCount = 3;
-  VectorTypeName = 'TVector';
+  VectorTypeName = 'TGLVector';
   MatrixTypeName = 'TMatrix';
 var
   RTTIContext: TRttiContext;

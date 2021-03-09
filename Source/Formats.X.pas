@@ -296,7 +296,7 @@ var
     end;
   end;
 
-  function ReadVector4f: TVector;
+  function ReadVector4f: TGLVector;
   var
     str: String;
   begin

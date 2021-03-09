@@ -110,11 +110,11 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
-    function RayCastIntersect(const rayStart, rayVector: TVector;
-      intersectPoint: PVector = nil; intersectNormal: PVector = nil): Boolean; override;
+    function RayCastIntersect(const rayStart, rayVector: TGLVector;
+      intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil): Boolean; override;
     (* Interpolates height for the given point.
        Expects a point expressed in absolute coordinates. *)
-    function InterpolatedHeight(const p: TVector): Single; overload;
+    function InterpolatedHeight(const p: TGLVector): Single; overload;
     function InterpolatedHeight(const p: TAffineVector): Single; overload;
     // Triangle count for the last render
     property LastTriangleCount: Integer read FLastTriangleCount;
@@ -286,14 +286,14 @@ begin
     HeightDataSource.Clear;
 end;
 
-function TGLTerrainRenderer.RayCastIntersect(const rayStart, rayVector: TVector;
-  intersectPoint: PVector = nil; intersectNormal: PVector = nil): Boolean;
+function TGLTerrainRenderer.RayCastIntersect(const rayStart, rayVector: TGLVector;
+  intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil): Boolean;
 var
-  p1, d, p2, p3: TVector;
+  p1, d, p2, p3: TGLVector;
   step, i, h, minH, maxH, p1height: Single;
   startedAbove: Boolean;
   failSafe: Integer;
-  AbsX, AbsY, AbsZ: TVector;
+  AbsX, AbsY, AbsZ: TGLVector;
 begin
   Result := False;
   if Assigned(HeightDataSource) then
@@ -411,9 +411,9 @@ begin
   end;
 end;
 
-function TGLTerrainRenderer.InterpolatedHeight(const p: TVector): Single;
+function TGLTerrainRenderer.InterpolatedHeight(const p: TGLVector): Single;
 var
-  pLocal: TVector;
+  pLocal: TGLVector;
 begin
   if Assigned(HeightDataSource) then
   begin
@@ -432,7 +432,7 @@ end;
 
 procedure TGLTerrainRenderer.BuildList(var rci: TGLRenderContextInfo);
 var
-  vEye, vEyeDirection: TVector;
+  vEye, vEyeDirection: TGLVector;
   TilePos, AbsTilePos, Observer: TAffineVector;
   DeltaX, nbX, iX: Integer;
   DeltaY, nbY, iY: Integer;

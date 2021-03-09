@@ -125,8 +125,8 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure DoRender(var rci: TGLRenderContextInfo; renderSelf, renderChildren: Boolean); override;
-    function AxisAlignedDimensionsUnscaled: TVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TVector; intersectPoint: PVector = nil; intersectNormal: PVector = nil): Boolean; override;
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
+    function RayCastIntersect(const rayStart, rayVector: TGLVector; intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil): Boolean; override;
     function GenerateSilhouette(const silhouetteParameters: TGLSilhouetteParameters): TGLSilhouette; override;
   published
     property MasterObjects: TGLMaterialMultiProxyMasters read FMasterObjects write SetMasterObjects;
@@ -451,7 +451,7 @@ begin
     Result := nil;
 end;
 
-function TGLMaterialMultiProxy.AxisAlignedDimensionsUnscaled: TVector;
+function TGLMaterialMultiProxy.AxisAlignedDimensionsUnscaled: TGLVector;
 var
   Master: TGLBaseSceneObject;
 begin
@@ -462,10 +462,10 @@ begin
     Result := inherited AxisAlignedDimensionsUnscaled;
 end;
 
-function TGLMaterialMultiProxy.RayCastIntersect(const rayStart, rayVector: TVector;
-  intersectPoint: PVector = nil; intersectNormal: PVector = nil): Boolean;
+function TGLMaterialMultiProxy.RayCastIntersect(const rayStart, rayVector: TGLVector;
+  intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil): Boolean;
 var
-  localRayStart, localRayVector: TVector;
+  localRayStart, localRayVector: TGLVector;
   Master: TGLBaseSceneObject;
 begin
   Master := PrimaryMaster;

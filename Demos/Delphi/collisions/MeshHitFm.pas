@@ -68,7 +68,7 @@ end;
 procedure TFormMeshHit.GLSceneViewer1MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 var
-   rayStart, rayVector, iPoint, iNormal : TVector;
+   rayStart, rayVector, iPoint, iNormal : TGLVector;
 begin
    // retrieve raycasting data:
    //    rayStart is obtained for camera and screen position
@@ -103,7 +103,7 @@ end;
 procedure TFormMeshHit.GLSceneViewer2MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 var
-   rayStart, rayVector, iPoint, iNormal : TVector;
+   rayStart, rayVector, iPoint, iNormal : TGLVector;
 begin
    // retrieve raycasting data:
    //    rayStart is the eye (camera) position

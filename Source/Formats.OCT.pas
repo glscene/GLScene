@@ -78,7 +78,7 @@ type
     procedure SaveToStream(aStream: TStream);
     procedure AddTriangles(vertexCoords: TAffineVectorList;
       texMapCoords: TAffineVectorList; const textureName: String);
-    procedure AddLight(const lightPos: TAffineVector; const lightColor: TVector;
+    procedure AddLight(const lightPos: TAffineVector; const lightColor: TGLVector;
       lightIntensity: Integer);
   end;
 
@@ -178,7 +178,7 @@ begin
 end;
 
 procedure TOCTFile.AddLight(const lightPos: TAffineVector;
-  const lightColor: TVector; lightIntensity: Integer);
+  const lightColor: TGLVector; lightIntensity: Integer);
 var
   n: Integer;
 begin

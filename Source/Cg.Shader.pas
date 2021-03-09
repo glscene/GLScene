@@ -199,7 +199,7 @@ type
     property Direction: TCGenum read FDirection write FDirection;
     property Variability: TCGenum read FVariability write FVariability;
     // GLScene-friendly properties
-    property AsVector: TVector write SetAsVector4f; // position f.i.
+    property AsVector: TGLVector write SetAsVector4f; // position f.i.
     property AsAffineVector: TAffineVector write SetAsVector3f; // normal f.i.
     property AsVector2f: TVector2f write SetAsVector2f; // texCoord f.i.
   end;
