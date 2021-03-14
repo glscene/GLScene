@@ -460,7 +460,7 @@ type
     FTextureRotate: Single;
     FTextureMatrixIsIdentity: Boolean;
     FTextureOverride: Boolean;
-    FTextureMatrix: TMatrix;
+    FTextureMatrix: TGLMatrix;
     FTexture2Name: TGLLibMaterialName;
     FShader: TGLShader;
     libMatTexture2: TGLLibMaterial; // internal cache
@@ -469,7 +469,7 @@ type
     procedure SetMaterial(const val: TGLMaterial);
     procedure SetTextureOffset(const val: TGLCoordinates);
     procedure SetTextureScale(const val: TGLCoordinates);
-    procedure SetTextureMatrix(const Value: TMatrix);
+    procedure SetTextureMatrix(const Value: TGLMatrix);
     procedure SetTexture2Name(const val: TGLLibMaterialName);
     procedure SetShader(const val: TGLShader);
     procedure SetTextureRotate(Value: Single);
@@ -487,7 +487,7 @@ type
     { Restore non-standard material states that were altered}
     function UnApply(var ARci: TGLRenderContextInfo): Boolean; override;
     procedure NotifyUsersOfTexMapChange;
-    property TextureMatrix: TMatrix read FTextureMatrix write SetTextureMatrix;
+    property TextureMatrix: TGLMatrix read FTextureMatrix write SetTextureMatrix;
     property TextureMatrixIsIdentity: boolean read FTextureMatrixIsIdentity;
     procedure NotifyTexMapChange(Sender: TObject);
     function Blended: Boolean; override;
@@ -1968,9 +1968,9 @@ begin
   CalculateTextureMatrix;
 end;
 
-procedure TGLLibMaterial.SetTextureMatrix(const Value: TMatrix);
+procedure TGLLibMaterial.SetTextureMatrix(const Value: TGLMatrix);
 begin
-  FTextureMatrixIsIdentity := CompareMem(@Value.V[0], @IdentityHmgMatrix.V[0], SizeOf(TMatrix));
+  FTextureMatrixIsIdentity := CompareMem(@Value.V[0], @IdentityHmgMatrix.V[0], SizeOf(TGLMatrix));
   FTextureMatrix := Value;
   FTextureOverride := True;
   NotifyUsers;

@@ -56,11 +56,11 @@ var
   Vertex: PVertexData;
   Triangles: PTRISChunk;
   V, V1: TAffineVector;
-  Matrix: TMatrix;
+  Matrix: TGLMatrix;
   MatLib: TGLMaterialLibrary;
   LightLib: TGLMaterialLibrary;
   RotQuat: TQuaternion;
-  RotMat: TMatrix;
+  RotMat: TGLMatrix;
 
   function GetOrAllocateMaterial(MaterialNum: Integer; AMat: TB3DMaterial;
     ATex: TB3DTexture; ALightmap: TB3DTexture): string;

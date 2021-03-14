@@ -44,10 +44,10 @@ void __fastcall TForm1::CheckBox04Click(TObject *Sender)
 //---------------------------------------------------------------------------
 
 // Generates random rotation for matrix. It remains a scale.
-Gls::Vectorgeometry::TMatrix RandomRotation(Gls::Vectorgeometry::TMatrix const &aMatrix)
+Gls::Vectorgeometry::TGLMatrix RandomRotation(Gls::Vectorgeometry::TGLMatrix const &aMatrix)
 {
   TAffineVector aScale;
-  Gls::Vectorgeometry::TMatrix mat;
+  Gls::Vectorgeometry::TGLMatrix mat;
   int I;
 
   // Save scale.

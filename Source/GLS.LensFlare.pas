@@ -461,7 +461,7 @@ var
   screenPos: TAffineVector;
   flareInViewPort, dynamicSize: Boolean;
   oldSeed: LongInt;
-  projMatrix: TMatrix;
+  projMatrix: TGLMatrix;
   CurrentBuffer: TGLSceneBuffer;
 begin
   if (rci.drawState = dsPicking) then

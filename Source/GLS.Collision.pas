@@ -441,7 +441,7 @@ const
     (4, 5), (5, 6), (6, 7), (7, 4), (0, 4), (1, 5), (2, 6), (3, 7));
 var
   pt1: array [0 .. 7] of TGLVector;
-  M: TMatrix;
+  M: TGLMatrix;
   i: Integer;
   aad: TGLVector;
 begin
@@ -507,7 +507,7 @@ end;
 function FastCheckCubeVsFace(obj1, obj2: TGLBaseSceneObject): Boolean;
 // var
 // triList : TAffineVectorList;
-// m1to2, m2to1 : TMatrix;
+// m1to2, m2to1 : TGLMatrix;
 // i:integer;
 begin
   if (obj2 is TGLFreeForm) then
@@ -544,7 +544,7 @@ var
   i: Integer;
   triList: TAffineVectorList;
   tri: PTriangle;
-  m1to2, m2to1: TMatrix;
+  m1to2, m2to1: TGLMatrix;
   AABB2: TAABB;
 begin
   Result := false;
@@ -600,7 +600,7 @@ end;
 function IntersectCubes(obj1, obj2: TGLBaseSceneObject): Boolean;
 var
   aabb1, AABB2: TAABB;
-  m1to2, m2to1: TMatrix;
+  m1to2, m2to1: TGLMatrix;
 begin
   // Calc AABBs
   aabb1 := obj1.AxisAlignedBoundingBoxUnscaled;

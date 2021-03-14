@@ -70,7 +70,7 @@ type
 
   TGLFile3DSFreeForm = class(TGLFreeForm)
   private
-    FTransfMat, FScaleMat, ParentMatrix: TMatrix;
+    FTransfMat, FScaleMat, ParentMatrix: TGLMatrix;
 
     FS_Rot3DS: TGLCoordinates4;
     FRot3DS: TGLCoordinates4;
@@ -80,7 +80,7 @@ type
   protected
     procedure DefineProperties(Filer: TFiler); override;
   public
-    FRefMat: TMatrix;
+    FRefMat: TGLMatrix;
     constructor Create(AOWner: TComponent); override;
     destructor Destroy; override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
@@ -117,11 +117,11 @@ begin
   Result.RealPart := v.W;
 end;
 
-function QuaternionToRotateMatrix(const Quaternion: TQuaternion): TMatrix;
+function QuaternionToRotateMatrix(const Quaternion: TQuaternion): TGLMatrix;
 var
   wx, wy, wz, xx, yy, yz, xy, xz, zz, x2, y2, z2: Single;
   quat: TGLVector;
-  m: TMatrix;
+  m: TGLMatrix;
 begin
   quat := VectorMake(Quaternion.ImagPart);
   quat.W := Quaternion.RealPart;
@@ -460,7 +460,7 @@ end;
 function TGLFile3DSFreeForm.AxisAlignedDimensionsUnscaled: TGLVector;
 var
   dMin, dMax: TAffineVector;
-  mat: TMatrix;
+  mat: TGLMatrix;
 begin
   MeshObjects.GetExtents(dMin, dMax);
   mat := ParentMatrix;
@@ -479,7 +479,7 @@ end;
 function TGLFile3DSFreeForm.BarycenterAbsolutePosition: TGLVector;
 var
   dMin, dMax: TAffineVector;
-  mat: TMatrix;
+  mat: TGLMatrix;
 begin
   MeshObjects.GetExtents(dMin, dMax);
   mat := ParentMatrix;

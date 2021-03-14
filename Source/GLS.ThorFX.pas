@@ -468,7 +468,7 @@ var
   distList: TSingleList;
   objList: TList;
   fp: PThorpoint;
-  mat: TMatrix;
+  mat: TGLMatrix;
 
   vx, vy: TGLVector;
   m: integer;

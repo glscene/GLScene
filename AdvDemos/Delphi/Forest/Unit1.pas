@@ -115,7 +115,7 @@ type
     lmp: TPoint;
     camPitch, camTurn, camTime, curPitch, curTurn: Single;
 
-    function GetTextureReflectionMatrix: TMatrix;
+    function GetTextureReflectionMatrix: TGLMatrix;
   public
      
     TestTree: TGLTree;
@@ -418,7 +418,7 @@ procedure TForm1.DOTreesRender(Sender: TObject;
 var
   i: Integer;
   particle: TGLParticle;
-  TreeModelMatrix: TMatrix;
+  TreeModelMatrix: TGLMatrix;
 begin
   rci.GLStates.Disable(stBlend);
   for i := 0 to nearTrees.Count - 1 do
@@ -504,7 +504,7 @@ procedure TForm1.DOInitializeReflectionRender(Sender: TObject;
   var rci: TGLRenderContextInfo);
 var
   w, h: Integer;
-  refMat: TMatrix;
+  refMat: TGLMatrix;
   cameraPosBackup, cameraDirectionBackup: TGLVector;
   frustumBackup: TFrustum;
   clipPlane: TDoubleHmgPlane;
@@ -607,7 +607,7 @@ const
   cWaveSpeed = 0.02;
   cSinScale = 0.02;
 var
-  tex0Matrix, tex1Matrix: TMatrix;
+  tex0Matrix, tex1Matrix: TGLMatrix;
   tWave: Single;
   pos: TAffineVector;
   tex: TTexPoint;
@@ -743,9 +743,9 @@ end;
 // SetupReflectionMatrix
 //
 
-function TForm1.GetTextureReflectionMatrix: TMatrix;
+function TForm1.GetTextureReflectionMatrix: TGLMatrix;
 const
-  cBaseMat: TMatrix =
+  cBaseMat: TGLMatrix =
   (V:((X:0.5; Y:0;   Z:0; W:0),
       (X:0;   Y:0.5; Z:0; W:0),
       (X:0;   Y:0; Z:1; W:0),

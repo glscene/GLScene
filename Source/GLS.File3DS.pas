@@ -39,7 +39,7 @@ type
 
   // A record that holds all the information that is used during 3ds animation.
   TGLFile3DSAnimationData = packed record
-    ModelMatrix: TMatrix;
+    ModelMatrix: TGLMatrix;
     Color: TGLVector; // Omni Light.
     TargetPos: TAffineVector; // Spot Light.
     SpotLightCutOff: Single;
@@ -56,7 +56,7 @@ type
   protected
     function InterpolateValue(const AValues: array of Single; const AFrame: real): Single; overload;
     function InterpolateValue(const AValues: array of TAffineVector; const AFrame: real): TAffineVector; overload;
-    function InterpolateValue(const AValues: array of TKFRotKey3DS; const AFrame: real): TMatrix; overload;
+    function InterpolateValue(const AValues: array of TKFRotKey3DS; const AFrame: real): TGLMatrix; overload;
   public
     procedure LoadData(const ANumKeys: Integer; const Keys: PKeyHeaderList; const AData: Pointer); virtual;
     procedure Apply(var DataTransf: TGLFile3DSAnimationData; const AFrame: real); virtual; abstract;
@@ -350,11 +350,11 @@ begin
   Result.RealPart := v.W;
 end;
 
-function QuaternionToRotateMatrix(const Quaternion: TQuaternion): TMatrix;
+function QuaternionToRotateMatrix(const Quaternion: TQuaternion): TGLMatrix;
 var
   wx, wy, wz, xx, yy, yz, xy, xz, zz, x2, y2, z2: Single;
   quat: TGLVector;
-  m: TMatrix;
+  m: TGLMatrix;
 begin
   quat := VectorMake(Quaternion.ImagPart);
   quat.W := Quaternion.RealPart;
@@ -453,7 +453,7 @@ begin
   Result := VectorLerp(start, stop, w);
 end;
 
-function TGLFile3DSAnimationKeys.InterpolateValue(const AValues: array of TKFRotKey3DS; const AFrame: real): TMatrix;
+function TGLFile3DSAnimationKeys.InterpolateValue(const AValues: array of TKFRotKey3DS; const AFrame: real): TGLMatrix;
 var
   I: Integer;
   w: real;
@@ -1155,8 +1155,8 @@ var
   aScale: TGLFile3DSScaleAnimationKeys;
   aRot: TGLFile3DSRotationAnimationKeys;
   aPos: TGLFile3DSPositionAnimationKeys;
-  Mat : TMatrix;
-  RotMat : TMatrix;
+  Mat : TGLMatrix;
+  RotMat : TGLMatrix;
   AffVect : TAffineVector;
 begin
   inherited;
@@ -1702,13 +1702,13 @@ var
 
 // ----------------------------------------------------------------------
 
-  function InvertMeshMatrix(Objects: TObjectList; const Name: string): TMatrix;
+  function InvertMeshMatrix(Objects: TObjectList; const Name: string): TGLMatrix;
   // constructs a 4x4 matrix from 3x4 local mesh matrix given by Name and
   // inverts it so it can be used for the keyframer stuff
   var
     I, Index: Integer;
     boolY: Boolean;
-    m: TMatrix;
+    m: TGLMatrix;
     v4: TGLVector;
     factor: Single;
   begin

@@ -408,7 +408,7 @@ type
     FTextureRotate: Single;
     FTextureMatrixIsIdentity: Boolean;
     FTextureOverride: Boolean;
-    FTextureMatrix: TMatrix;
+    FTextureMatrix: TGLMatrix;
     FMappingMode: TGLTextureMappingMode;
     FEnvColor: TGLColor;
     FMapSCoordinates: TGLCoordinates4;
@@ -426,7 +426,7 @@ type
     function GetTextureScale: TGLCoordinates;
     procedure SetTextureScale(const AValue: TGLCoordinates);
     function StoreTextureScale: Boolean;
-    procedure SetTextureMatrix(const AValue: TMatrix);
+    procedure SetTextureMatrix(const AValue: TGLMatrix);
     procedure SetTextureRotate(AValue: Single);
     function StoreTextureRotate: Boolean;
     procedure SetMappingMode(const AValue: TGLTextureMappingMode);
@@ -459,7 +459,7 @@ type
     function IsValid: Boolean;
     procedure Apply(var ARci: TGLRenderContextInfo);
     procedure UnApply(var ARci: TGLRenderContextInfo);
-    property TextureMatrix: TMatrix read FTextureMatrix write SetTextureMatrix;
+    property TextureMatrix: TGLMatrix read FTextureMatrix write SetTextureMatrix;
   published
     property LibTextureName: TGLMaterialComponentName read GetLibTextureName
       write SetLibTextureName;
@@ -3903,10 +3903,10 @@ begin
   FSwizzling.Assign(AValue);
 end;
 
-procedure TGLTextureProperties.SetTextureMatrix(const AValue: TMatrix);
+procedure TGLTextureProperties.SetTextureMatrix(const AValue: TGLMatrix);
 begin
   FTextureMatrixIsIdentity := CompareMem(@AValue.V[0], @IdentityHmgMatrix.V[0],
-    SizeOf(TMatrix));
+    SizeOf(TGLMatrix));
   FTextureMatrix := AValue;
   FTextureOverride := True;
   NotifyChange(Self);

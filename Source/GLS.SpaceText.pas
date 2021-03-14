@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.SpaceText;
 
 (*
@@ -31,6 +30,7 @@ uses
   VCL.Graphics,
   VCL.Controls,
 
+  GLS.VectorTypes,
   GLS.OpenGLTokens,
   GLS.Scene,
   GLS.Texture,

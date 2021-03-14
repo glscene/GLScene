@@ -126,7 +126,7 @@ type
   private
     FCutoffAngle: Single;
     FNeedToRecalculateZoom: boolean;
-    FShouldBeMatrix: TMatrix;
+    FShouldBeMatrix: TGLMatrix;
     FSmoothNavigator: TGLNavigatorSmoothChangeVector;
   public
     constructor Create(const AJoblist: TGLCameraJobList); override;
@@ -890,7 +890,7 @@ procedure TGLSmoothOrbitToPos.Step;
 var
   lCurrentDistanceToTarget: Single;
   lTargetPosition: TGLVector;
-  lCurrentMatrix: TMatrix;
+  lCurrentMatrix: TGLMatrix;
   lAngle: Single;
   lAbsTargetPosition: TGLVector;
 

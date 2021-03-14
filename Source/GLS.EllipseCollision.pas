@@ -31,7 +31,7 @@ type
 
   // Object collision properties
   TECObjectInfo = record
-    AbsoluteMatrix: TMatrix;
+    AbsoluteMatrix: TGLMatrix;
     Solid: Boolean;
     IsDynamic: Boolean;
     ObjectID: Integer;

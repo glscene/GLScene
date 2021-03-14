@@ -118,9 +118,9 @@ type
       : TAffineVectorList;
     //  Returns all triangles in an arbitrarily placed cube
     function GetTrianglesFromNodesIntersectingCube(const ObjAABB: TAABB;
-      const ObjToSelf, SelfToObj: TMatrix): TAffineVectorList;
+      const ObjToSelf, SelfToObj: TGLMatrix): TAffineVectorList;
     //  Checks if an AABB intersects a face on the octree
-    function AABBIntersect(const AABB: TAABB; const M1to2, M2to1: TMatrix;
+    function AABBIntersect(const AABB: TAABB; const M1to2, M2to1: TGLMatrix;
       Triangles: TAffineVectorList = nil): Boolean;
     // function SphereIntersect(position:TAffineVector; radius:single);
   end;
@@ -1410,7 +1410,7 @@ begin
   end; // end for i nodes
 end;
 
-function TGLOctree.AABBIntersect(const AABB: TAABB; const M1to2, M2to1: TMatrix;
+function TGLOctree.AABBIntersect(const AABB: TAABB; const M1to2, M2to1: TGLMatrix;
   Triangles: TAffineVectorList = nil): Boolean;
 var
   TriList: TAffineVectorList;
@@ -1512,10 +1512,10 @@ begin
 end;
 
 function TGLOctree.GetTrianglesFromNodesIntersectingCube(const ObjAABB: TAABB;
-  const ObjToSelf, SelfToObj: TMatrix): TAffineVectorList;
+  const ObjToSelf, SelfToObj: TGLMatrix): TAffineVectorList;
 var
   AABB1: TAABB;
-  M1To2, M2To1: TMatrix;
+  M1To2, M2To1: TGLMatrix;
 
   procedure HandleNode(Onode: POctreeNode);
   var

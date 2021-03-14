@@ -11,6 +11,7 @@ interface
 
 uses
   GLS.PersistentClasses,
+  GLS.VectorTypes,
   GLS.VectorGeometry,
   GLS.State,
   GLS.PipelineTransformation,

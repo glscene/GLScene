@@ -47,8 +47,8 @@ __published:	// IDE-managed Components
 private:	// User declarations
 	int mx, my;
 	int tileX, tileY;
-	TVector* mip;
-	TVector* translateOffset;
+	TGLVector* mip;
+	TGLVector* translateOffset;
 	bool translating;
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

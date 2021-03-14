@@ -336,7 +336,7 @@ begin
     Info.Element([i]).Value := vec[i];
 end;
 
-function GetMatrixFromInfo(Info: IInfo): TMatrix;
+function GetMatrixFromInfo(Info: IInfo): TGLMatrix;
 var
   i: Integer;
 begin
@@ -346,7 +346,7 @@ begin
       .Value, Info.Element([i]).Element([3]).Value);
 end;
 
-procedure SetInfoFromMatrix(Info: IInfo; mat: TMatrix);
+procedure SetInfoFromMatrix(Info: IInfo; mat: TGLMatrix);
 var
   i, j: Integer;
 begin
@@ -930,16 +930,16 @@ begin
       [], 'Boolean', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('SetMatrix')) then
     TGLBaseSceneObjectSetMatrixMethod.Create(mkProcedure, [], 0, 'SetMatrix',
-      ['Value', 'TMatrix'], '', ClassSym, SymbolTable);
+      ['Value', 'TGLMatrix'], '', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('GetMatrix')) then
     TGLBaseSceneObjectGetMatrixMethod.Create(mkFunction, [], 0, 'GetMatrix', [],
-      'TMatrix', ClassSym, SymbolTable);
+      'TGLMatrix', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('AbsoluteMatrix')) then
     TGLBaseSceneObjectAbsoluteMatrixMethod.Create(mkFunction, [], 0,
-      'AbsoluteMatrix', [], 'TMatrix', ClassSym, SymbolTable);
+      'AbsoluteMatrix', [], 'TGLMatrix', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('InvAbsoluteMatrix')) then
     TGLBaseSceneObjectInvAbsoluteMatrixMethod.Create(mkFunction, [], 0,
-      'InvAbsoluteMatrix', [], 'TMatrix', ClassSym, SymbolTable);
+      'InvAbsoluteMatrix', [], 'TGLMatrix', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('SetAbsolutePosition')) then
     TGLBaseSceneObjectSetAbsolutePositionMethod.Create(mkProcedure, [], 0,
       'SetAbsolutePosition', ['Value', 'TGLVector'], '', ClassSym, SymbolTable);
@@ -1021,7 +1021,7 @@ begin
   // Properties
   AddPropertyToClass('Visible', 'Boolean', 'GetVisible', 'SetVisible', '',
     False, ClassSym, SymbolTable);
-  AddPropertyToClass('Matrix', 'TMatrix', 'GetMatrix', 'SetMatrix', '', False,
+  AddPropertyToClass('Matrix', 'TGLMatrix', 'GetMatrix', 'SetMatrix', '', False,
     ClassSym, SymbolTable);
   AddPropertyToClass('AbsolutePosition', 'TGLVector', 'GetAbsolutePosition',
     'SetAbsolutePosition', '', False, ClassSym, SymbolTable);

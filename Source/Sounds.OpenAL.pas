@@ -28,6 +28,7 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
 
+  GLS.VectorTypes,
   GLS.Scene,
   GLS.VectorGeometry,
   GLS.Sound,

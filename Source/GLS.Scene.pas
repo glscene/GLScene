@@ -157,8 +157,8 @@ type
      move and delete them). Using the regular TComponent methods is not encouraged *)
   TGLBaseSceneObject = class(TGLCoordinatesUpdateAbleComponent)
   private
-    FAbsoluteMatrix, FInvAbsoluteMatrix: TMatrix;
-    FLocalMatrix: TMatrix;
+    FAbsoluteMatrix, FInvAbsoluteMatrix: TGLMatrix;
+    FLocalMatrix: TGLMatrix;
     FObjectStyle: TGLObjectStyles;
     FListHandle: TGLListHandle; // created on 1st use
     FPosition: TGLCoordinates;
@@ -200,7 +200,7 @@ type
     procedure SetIndex(aValue: Integer);
     procedure SetDirection(AVector: TGLCoordinates);
     procedure SetUp(AVector: TGLCoordinates);
-    function GetMatrix: PMatrix; inline;
+    function GetMatrix: PGLMatrix; inline;
     procedure SetPosition(APosition: TGLCoordinates);
     procedure SetPitchAngle(AValue: Single);
     procedure SetRollAngle(AValue: Single);
@@ -221,11 +221,11 @@ type
     function GetAbsoluteScale: TGLVector;
     procedure SetAbsoluteAffineScale(const Value: TAffineVector);
     procedure SetAbsoluteScale(const Value: TGLVector);
-    function GetAbsoluteMatrix: TMatrix; inline;
-    procedure SetAbsoluteMatrix(const Value: TMatrix);
+    function GetAbsoluteMatrix: TGLMatrix; inline;
+    procedure SetAbsoluteMatrix(const Value: TGLMatrix);
     procedure SetBBChanges(const Value: TGLObjectBBChanges);
-    function GetDirectAbsoluteMatrix: PMatrix;
-    function GetLocalMatrix: PMatrix; inline;
+    function GetDirectAbsoluteMatrix: PGLMatrix;
+    function GetLocalMatrix: PGLMatrix; inline;
   protected
     procedure Loaded; override;
     procedure SetScene(const Value: TGLScene); virtual;
@@ -286,34 +286,34 @@ type
     (* The local transformation (relative to parent).
        If you're *sure* the local matrix is up-to-date, you may use LocalMatrix
        for quicker access. *)
-    procedure SetMatrix(const aValue: TMatrix); inline;
-    property Matrix: PMatrix read GetMatrix;
+    procedure SetMatrix(const aValue: TGLMatrix); inline;
+    property Matrix: PGLMatrix read GetMatrix;
     (* Holds the local transformation (relative to parent).
        If you're not *sure* the local matrix is up-to-date, use Matrix property. *)
-    property LocalMatrix: PMatrix read GetLocalMatrix;
+    property LocalMatrix: PGLMatrix read GetLocalMatrix;
     (* Forces the local matrix to the specified value.
        AbsoluteMatrix, InverseMatrix, etc. will honour that change, but
        may become invalid if the specified matrix isn't orthonormal (can
        be used for specific rendering or projection effects).
        The local matrix will be reset by the next TransformationChanged,
        position or attitude change. *)
-    procedure ForceLocalMatrix(const aMatrix: TMatrix); inline;
+    procedure ForceLocalMatrix(const aMatrix: TGLMatrix); inline;
     // See AbsoluteMatrix.
-    function AbsoluteMatrixAsAddress: PMatrix;
+    function AbsoluteMatrixAsAddress: PGLMatrix;
     (* Holds the absolute transformation matrix.
        If you're not *sure* the absolute matrix is up-to-date,
        use the AbsoluteMatrix property, this one may be nil... *)
-    property DirectAbsoluteMatrix: PMatrix read GetDirectAbsoluteMatrix;
+    property DirectAbsoluteMatrix: PGLMatrix read GetDirectAbsoluteMatrix;
     (* Calculates the object's absolute inverse matrix.
        Multiplying an absolute coordinate with this matrix gives a local coordinate.
        The current implem uses transposition(AbsoluteMatrix), which is true
        unless you're using some scaling... *)
-    function InvAbsoluteMatrix: TMatrix; inline;
+    function InvAbsoluteMatrix: TGLMatrix; inline;
     //See InvAbsoluteMatrix.
-    function InvAbsoluteMatrixAsAddress: PMatrix;
+    function InvAbsoluteMatrixAsAddress: PGLMatrix;
     (* The object's absolute matrix by composing all local matrices.
        Multiplying a local coordinate with this matrix gives an absolute coordinate. *)
-    property AbsoluteMatrix: TMatrix read GetAbsoluteMatrix write SetAbsoluteMatrix;
+    property AbsoluteMatrix: TGLMatrix read GetAbsoluteMatrix write SetAbsoluteMatrix;
     // Direction vector in absolute coordinates.
     property AbsoluteDirection: TGLVector read GetAbsoluteDirection write SetAbsoluteDirection;
     property AbsoluteAffineDirection: TAffineVector read GetAbsoluteAffineDirection write SetAbsoluteAffineDirection;
@@ -1275,9 +1275,9 @@ type
     FRendering: Boolean;
     FRenderingContext: TGLContext;
     FAfterRenderEffects: TPersistentObjectList;
-    FViewMatrixStack: array of TMatrix;
-    FProjectionMatrixStack: array of TMatrix;
-    FBaseProjectionMatrix: TMatrix;
+    FViewMatrixStack: array of TGLMatrix;
+    FProjectionMatrixStack: array of TGLMatrix;
+    FBaseProjectionMatrix: TGLMatrix;
     FCameraAbsolutePosition: TGLVector;
     FViewPort: TRectangle;
     FSelector: TGLBaseSelectTechnique;
@@ -1444,22 +1444,22 @@ type
     // Adjusts background alpha channel.
     property BackgroundAlpha: Single read FBackgroundAlpha write SetBackgroundAlpha;
     // Returns the projection matrix in use or used for the last rendering.
-    function ProjectionMatrix: TMatrix; deprecated;
+    function ProjectionMatrix: TGLMatrix; deprecated;
     // Returns the view matrix in use or used for the last rendering.
-    function ViewMatrix: TMatrix; deprecated;
-    function ModelMatrix: TMatrix; deprecated;
+    function ViewMatrix: TGLMatrix; deprecated;
+    function ModelMatrix: TGLMatrix; deprecated;
     (* Returns the base projection matrix in use or used for the last rendering.
        The "base" projection is (as of now) either identity or the pick
        matrix, ie. it is the matrix on which the perspective or orthogonal
        matrix gets applied. *)
-    property BaseProjectionMatrix: TMatrix read FBaseProjectionMatrix;
+    property BaseProjectionMatrix: TGLMatrix read FBaseProjectionMatrix;
     (* Back up current View matrix and replace it with newMatrix.
        This method has no effect on the OpenGL matrix, only on the Buffer's
        matrix, and is intended for special effects rendering. *)
-    procedure PushViewMatrix(const newMatrix: TMatrix); deprecated;
+    procedure PushViewMatrix(const newMatrix: TGLMatrix); deprecated;
     // Restore a View matrix previously pushed.
     procedure PopViewMatrix; deprecated;
-    procedure PushProjectionMatrix(const newMatrix: TMatrix); deprecated;
+    procedure PushProjectionMatrix(const newMatrix: TGLMatrix); deprecated;
     procedure PopProjectionMatrix;  deprecated;
     (* Converts a screen pixel coordinate into 3D coordinates for orthogonal projection.
        This function accepts standard canvas coordinates, with (0,0) being
@@ -2175,7 +2175,7 @@ begin
   Result := FChildren.Count;
 end;
 
-function TGLBaseSceneObject.GetDirectAbsoluteMatrix: PMatrix;
+function TGLBaseSceneObject.GetDirectAbsoluteMatrix: PGLMatrix;
 begin
   Result := @FAbsoluteMatrix;
 end;
@@ -2255,7 +2255,7 @@ begin
   end;
 end;
 
-procedure TGLBaseSceneObject.ForceLocalMatrix(const aMatrix: TMatrix);
+procedure TGLBaseSceneObject.ForceLocalMatrix(const aMatrix: TGLMatrix);
 begin
   FLocalMatrix := aMatrix;
   Exclude(FChanges, ocTransformation);
@@ -2263,7 +2263,7 @@ begin
   Include(FChanges, ocInvAbsoluteMatrix);
 end;
 
-function TGLBaseSceneObject.AbsoluteMatrixAsAddress: PMatrix;
+function TGLBaseSceneObject.AbsoluteMatrixAsAddress: PGLMatrix;
 begin
   if ocAbsoluteMatrix in FChanges then
   begin
@@ -2281,12 +2281,12 @@ begin
   Result := @FAbsoluteMatrix;
 end;
 
-function TGLBaseSceneObject.InvAbsoluteMatrix: TMatrix;
+function TGLBaseSceneObject.InvAbsoluteMatrix: TGLMatrix;
 begin
   Result := InvAbsoluteMatrixAsAddress^;
 end;
 
-function TGLBaseSceneObject.InvAbsoluteMatrixAsAddress: PMatrix;
+function TGLBaseSceneObject.InvAbsoluteMatrixAsAddress: PGLMatrix;
 begin
   if ocInvAbsoluteMatrix in FChanges then
   begin
@@ -2310,12 +2310,12 @@ begin
   Result := @FInvAbsoluteMatrix;
 end;
 
-function TGLBaseSceneObject.GetAbsoluteMatrix: TMatrix;
+function TGLBaseSceneObject.GetAbsoluteMatrix: TGLMatrix;
 begin
   Result := AbsoluteMatrixAsAddress^;
 end;
 
-procedure TGLBaseSceneObject.SetAbsoluteMatrix(const Value: TMatrix);
+procedure TGLBaseSceneObject.SetAbsoluteMatrix(const Value: TGLMatrix);
 begin
   if not MatrixEquals(Value, FAbsoluteMatrix) then
   begin
@@ -2852,7 +2852,7 @@ end;
 
 procedure TGLBaseSceneObject.ResetRotations;
 begin
-  FillChar(FLocalMatrix, SizeOf(TMatrix), 0);
+  FillChar(FLocalMatrix, SizeOf(TGLMatrix), 0);
   FLocalMatrix.X.X := Scale.DirectX;
   FLocalMatrix.Y.Y := Scale.DirectY;
   FLocalMatrix.Z.Z := Scale.DirectZ;
@@ -2866,7 +2866,7 @@ end;
 
 procedure TGLBaseSceneObject.ResetAndPitchTurnRoll(const degX, degY, degZ: Single);
 var
-  rotMatrix: TMatrix;
+  rotMatrix: TGLMatrix;
   V: TGLVector;
 begin
   ResetRotations;
@@ -2903,7 +2903,7 @@ end;
 
 procedure TGLBaseSceneObject.RotateAbsolute(const rx, ry, rz: Single);
 var
-  resMat: TMatrix;
+  resMat: TGLMatrix;
   v: TAffineVector;
 begin
   resMat := Matrix^;
@@ -2966,7 +2966,7 @@ end;
 procedure TGLBaseSceneObject.SetPitchAngle(AValue: Single);
 var
   diff: Single;
-  rotMatrix: TMatrix;
+  rotMatrix: TGLMatrix;
 begin
   if AValue <> FRotation.X then
   begin
@@ -3024,7 +3024,7 @@ end;
 procedure TGLBaseSceneObject.SetRollAngle(AValue: Single);
 var
   diff: Single;
-  rotMatrix: TMatrix;
+  rotMatrix: TGLMatrix;
 begin
   if AValue <> FRotation.Z then
   begin
@@ -3077,7 +3077,7 @@ end;
 procedure TGLBaseSceneObject.SetTurnAngle(AValue: Single);
 var
   diff: Single;
-  rotMatrix: TMatrix;
+  rotMatrix: TGLMatrix;
 begin
   if AValue <> FRotation.Y then
   begin
@@ -3188,7 +3188,7 @@ begin
     Result := -1;
 end;
 
-function TGLBaseSceneObject.GetLocalMatrix: PMatrix;
+function TGLBaseSceneObject.GetLocalMatrix: PGLMatrix;
 begin
   Result := @FLocalMatrix;
 end;
@@ -3859,13 +3859,13 @@ begin
     FScene.NotifyChange(Self);
 end;
 
-function TGLBaseSceneObject.GetMatrix: PMatrix;
+function TGLBaseSceneObject.GetMatrix: PGLMatrix;
 begin
   RebuildMatrix;
   Result := @FLocalMatrix;
 end;
 
-procedure TGLBaseSceneObject.SetMatrix(const aValue: TMatrix);
+procedure TGLBaseSceneObject.SetMatrix(const aValue: TGLMatrix);
 begin
   FLocalMatrix := aValue;
   FDirection.DirectVector := VectorNormalize(FLocalMatrix.Z);
@@ -4459,7 +4459,7 @@ procedure TGLCamera.Apply;
 var
   v, d, v2: TGLVector;
   absPos: TGLVector;
-  LM, mat: TMatrix;
+  LM, mat: TGLMatrix;
 begin
   if Assigned(FDeferredApply) then
     FDeferredApply(Self)
@@ -4499,7 +4499,7 @@ var
   vLeft, vRight, vBottom, vTop, vFar: Single;
   MaxDim, Ratio, f: Double;
   xmax, ymax: Double;
-  mat: TMatrix;
+  mat: TGLMatrix;
 const
   cEpsilon: Single = 1e-4;
 
@@ -4723,7 +4723,7 @@ end;
 procedure TGLCamera.RotateObject(obj: TGLBaseSceneObject; pitchDelta, turnDelta: Single;
   rollDelta: Single = 0);
 var
-  resMat: TMatrix;
+  resMat: TGLMatrix;
   vDir, vUp, vRight: TGLVector;
   v: TAffineVector;
   position1: TGLVector;
@@ -6806,7 +6806,7 @@ begin
   FFirstPerfCounter := 0;
 end;
 
-procedure TGLSceneBuffer.PushViewMatrix(const newMatrix: TMatrix);
+procedure TGLSceneBuffer.PushViewMatrix(const newMatrix: TGLMatrix);
 var
   n: Integer;
 begin
@@ -6826,7 +6826,7 @@ begin
   SetLength(FViewMatrixStack, n);
 end;
 
-procedure TGLSceneBuffer.PushProjectionMatrix(const newMatrix: TMatrix);
+procedure TGLSceneBuffer.PushProjectionMatrix(const newMatrix: TGLMatrix);
 var
   n: Integer;
 begin
@@ -6851,12 +6851,12 @@ begin
   Result := RenderingContext.PipelineTransformation.ProjectionMatrix^;
 end;
 
-function TGLSceneBuffer.ViewMatrix: TMatrix;
+function TGLSceneBuffer.ViewMatrix: TGLMatrix;
 begin
   Result := RenderingContext.PipelineTransformation.ViewMatrix^;
 end;
 
-function TGLSceneBuffer.ModelMatrix: TMatrix;
+function TGLSceneBuffer.ModelMatrix: TGLMatrix;
 begin
   Result := RenderingContext.PipelineTransformation.ModelMatrix^;
 end;
@@ -7803,7 +7803,7 @@ procedure TGLNonVisualViewer.SetupCubeMapCamera(Sender: TObject);
 
 {
 const
-  cFaceMat: array[0..5] of TMatrix =
+  cFaceMat: array[0..5] of TGLMatrix =
   (
     (X: (X:0; Y:0; Z:-1; W:0);
      Y: (X:0; Y:-1; Z:0; W:0);
@@ -7833,7 +7833,7 @@ const
 }
 
 var
-  TM: TMatrix;
+  TM: TGLMatrix;
 begin
   // Setup appropriate FOV
   with CurrentGLContext.PipelineTransformation do

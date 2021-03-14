@@ -2286,7 +2286,7 @@ procedure TGLLifeColoredPFXManager.RotateVertexBuf(buf: TAffineVectorList;
   lifeTime: Single; const axis: TAffineVector; offsetAngle: Single);
 var
   rotateAngle: Single;
-  rotMatrix: TMatrix;
+  rotMatrix: TGLMatrix;
   diff: Single;
   lifeRotationApplied: Boolean;
 begin
@@ -2421,7 +2421,7 @@ end;
 procedure TGLPolygonPFXManager.InitializeRendering(var rci: TGLRenderContextInfo);
 var
   i: Integer;
-  matrix: TMatrix;
+  matrix: TGLMatrix;
   s, c: Single;
 begin
   inherited;
@@ -2629,7 +2629,7 @@ end;
 procedure TGLBaseSpritePFXManager.InitializeRendering(var rci: TGLRenderContextInfo);
 var
   i: Integer;
-  matrix: TMatrix;
+  matrix: TGLMatrix;
   s, c, w, h: Single;
 begin
   inherited;

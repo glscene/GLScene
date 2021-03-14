@@ -139,7 +139,7 @@ procedure TGLMirror.DoRender(var ARci: TGLRenderContextInfo;
   ARenderSelf, ARenderChildren: Boolean);
 var
   oldProxySubObject: Boolean;
-  refMat, curMat, ModelMat: TMatrix;
+  refMat, curMat, ModelMat: TGLMatrix;
   clipPlane: TDoubleHmgPlane;
   bgColor: TColorVector;
   cameraPosBackup, cameraDirectionBackup: TGLVector;
@@ -307,7 +307,7 @@ end;
 
 procedure TGLMirror.ClearZBufferArea(aBuffer: TGLSceneBuffer);
 var
-  worldMat: TMatrix;
+  worldMat: TGLMatrix;
   p: TAffineVector;
 begin
   with aBuffer do

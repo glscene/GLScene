@@ -125,14 +125,14 @@ end;
 
 procedure TGLTextureEmitter.SetupTexMatrix(var ARci: TGLRenderContextInfo);
 const
-  cBaseMat: TMatrix =
+  cBaseMat: TGLMatrix =
       (V:((X:0.5; Y:0;   Z:0; W:0),
           (X:0;   Y:0.5; Z:0; W:0),
           (X:0;   Y:0; Z:1; W:0),
           (X:0.5; Y:0.5; Z:0; W:1)));
 
 var
-  PM: TMatrix;
+  PM: TGLMatrix;
 begin
   // Set the projector's "perspective" (i.e. the "spotlight cone"):.
   PM := MatrixMultiply(CreatePerspectiveMatrix(FFOVy, FAspect, 0.1, 1), cBaseMat);

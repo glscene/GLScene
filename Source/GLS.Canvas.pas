@@ -255,7 +255,7 @@ end;
 
 procedure TGLCanvas.InvertYAxis;
 var
-  mat: TMatrix;
+  mat: TGLMatrix;
 begin
   mat := IdentityHmgMatrix;
   mat.Y.Y := -1;

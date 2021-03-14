@@ -82,7 +82,7 @@ function BuoyancyPlaneCallback(const collisionID: Integer; context: Pointer;
   const globalSpaceMatrix: PNGDFloat; globalSpacePlane: PNGDFloat): Integer;
   cdecl;
 var
-  BodyMatrix: TMatrix;
+  BodyMatrix: TGLMatrix;
   PlaneEquation: TGLVector;
   pv: PGLVector;
   MyForm: TFormNewtonDensity;

@@ -141,8 +141,6 @@ type
   PVector2f = ^TVector2f;
 
   // some simplified names
-///  PGLVector = ^TGLVector;
-  TGLVector = THomogeneousFltVector;
 
   PHomogeneousVector = ^THomogeneousVector;
   THomogeneousVector = THomogeneousFltVector;
@@ -178,10 +176,10 @@ type
   TAffineExtMatrix = array [0 .. 2] of TAffineExtVector;
 
   // Some simplified names
-  PMatrix = ^TMatrix;
-  TMatrix = THomogeneousFltMatrix;
+///  PGLMatrix = ^TGLMatrix;
+///  TGLMatrix = THomogeneousFltMatrix;
 
-  TMatrixArray = array [0 .. MaxInt shr 7] of TMatrix;
+  TMatrixArray = array [0 .. MaxInt shr 7] of TGLMatrix;
   PMatrixArray = ^TMatrixArray;
 
   PHomogeneousMatrix = ^THomogeneousMatrix;
@@ -272,14 +270,14 @@ const
 
   IdentityMatrix: TAffineMatrix = (V: ((X: 1; Y: 0; Z: 0), (X: 0; Y: 1;
     Z: 0), (X: 0; Y: 0; Z: 1)));
-  IdentityHmgMatrix: TMatrix = (V: ((X: 1; Y: 0; Z: 0; W: 0), (X: 0; Y: 1; Z: 0;
+  IdentityHmgMatrix: TGLMatrix = (V: ((X: 1; Y: 0; Z: 0; W: 0), (X: 0; Y: 1; Z: 0;
     W: 0), (X: 0; Y: 0; Z: 1; W: 0), (X: 0; Y: 0; Z: 0; W: 1)));
   IdentityHmgDblMatrix: THomogeneousDblMatrix = (V: ((X: 1; Y: 0; Z: 0;
     W: 0), (X: 0; Y: 1; Z: 0; W: 0), (X: 0; Y: 0; Z: 1; W: 0), (X: 0; Y: 0;
     Z: 0; W: 1)));
   EmptyMatrix: TAffineMatrix = (V: ((X: 0; Y: 0; Z: 0), (X: 0; Y: 0;
     Z: 0), (X: 0; Y: 0; Z: 0)));
-  EmptyHmgMatrix: TMatrix = (V: ((X: 0; Y: 0; Z: 0; W: 0), (X: 0; Y: 0; Z: 0;
+  EmptyHmgMatrix: TGLMatrix = (V: ((X: 0; Y: 0; Z: 0; W: 0), (X: 0; Y: 0; Z: 0;
     W: 0), (X: 0; Y: 0; Z: 0; W: 0), (X: 0; Y: 0; Z: 0; W: 0)));
 
 
@@ -594,7 +592,7 @@ function Lerp(const start, stop, T: Single): Single; inline;
 function AngleLerp(start, stop, T: Single): Single; inline;
 (* This is used for interpolating between 2 matrices. The result
   is used to reposition the model parts each frame. *)
-function MatrixLerp(const m1, m2: TMatrix; const delta: Single): TMatrix;
+function MatrixLerp(const m1, m2: TGLMatrix; const delta: Single): TGLMatrix;
 
 (* Calculates the angular distance between two angles in radians.
   Result is in the [0; PI] range. *)
@@ -817,84 +815,84 @@ function IsColinear(const V1, V2: TGLVector): Boolean; overload;
 (* ----------------------------------------------------------------------------
   Matrix functions
  ---------------------------------------------------------------------------- *)
-procedure SetMatrix(var dest: THomogeneousDblMatrix; const src: TMatrix); overload;
-procedure SetMatrix(var dest: TAffineMatrix; const src: TMatrix); overload;
-procedure SetMatrix(var dest: TMatrix; const src: TAffineMatrix); overload;
-procedure SetMatrixRow(var dest: TMatrix; rowNb: Integer; const aRow: TGLVector); overload;
+procedure SetMatrix(var dest: THomogeneousDblMatrix; const src: TGLMatrix); overload;
+procedure SetMatrix(var dest: TAffineMatrix; const src: TGLMatrix); overload;
+procedure SetMatrix(var dest: TGLMatrix; const src: TAffineMatrix); overload;
+procedure SetMatrixRow(var dest: TGLMatrix; rowNb: Integer; const aRow: TGLVector); overload;
 
 // Creates scale matrix
-function CreateScaleMatrix(const V: TAffineVector): TMatrix; overload;
+function CreateScaleMatrix(const V: TAffineVector): TGLMatrix; overload;
 // Creates scale matrix
-function CreateScaleMatrix(const V: TGLVector): TMatrix; overload;
+function CreateScaleMatrix(const V: TGLVector): TGLMatrix; overload;
 // Creates translation matrix
-function CreateTranslationMatrix(const V: TAffineVector): TMatrix; overload;
+function CreateTranslationMatrix(const V: TAffineVector): TGLMatrix; overload;
 // Creates translation matrix
-function CreateTranslationMatrix(const V: TGLVector): TMatrix; overload;
+function CreateTranslationMatrix(const V: TGLVector): TGLMatrix; overload;
 { Creates a scale+translation matrix.
   Scale is applied BEFORE applying offset }
-function CreateScaleAndTranslationMatrix(const scale, offset: TGLVector): TMatrix; overload;
+function CreateScaleAndTranslationMatrix(const scale, offset: TGLVector): TGLMatrix; overload;
 // Creates matrix for rotation about x-axis (angle in rad)
-function CreateRotationMatrixX(const sine, cosine: Single): TMatrix; overload;
-function CreateRotationMatrixX(const angle: Single): TMatrix; overload;
+function CreateRotationMatrixX(const sine, cosine: Single): TGLMatrix; overload;
+function CreateRotationMatrixX(const angle: Single): TGLMatrix; overload;
 // Creates matrix for rotation about y-axis (angle in rad)
-function CreateRotationMatrixY(const sine, cosine: Single): TMatrix; overload;
-function CreateRotationMatrixY(const angle: Single): TMatrix; overload;
+function CreateRotationMatrixY(const sine, cosine: Single): TGLMatrix; overload;
+function CreateRotationMatrixY(const angle: Single): TGLMatrix; overload;
 // Creates matrix for rotation about z-axis (angle in rad)
-function CreateRotationMatrixZ(const sine, cosine: Single): TMatrix; overload;
-function CreateRotationMatrixZ(const angle: Single): TMatrix; overload;
+function CreateRotationMatrixZ(const sine, cosine: Single): TGLMatrix; overload;
+function CreateRotationMatrixZ(const angle: Single): TGLMatrix; overload;
 // Creates a rotation matrix along the given Axis by the given Angle in radians.
-function CreateRotationMatrix(const anAxis: TAffineVector; angle: Single): TMatrix; overload;
-function CreateRotationMatrix(const anAxis: TGLVector; angle: Single): TMatrix; overload; 
+function CreateRotationMatrix(const anAxis: TAffineVector; angle: Single): TGLMatrix; overload;
+function CreateRotationMatrix(const anAxis: TGLVector; angle: Single): TGLMatrix; overload; 
 // Creates a rotation matrix along the given Axis by the given Angle in radians.
 function CreateAffineRotationMatrix(const anAxis: TAffineVector; angle: Single): TAffineMatrix;
 
 // Multiplies two 3x3 matrices
 function MatrixMultiply(const m1, m2: TAffineMatrix): TAffineMatrix; overload; 
 // Multiplies two 4x4 matrices
-function MatrixMultiply(const m1, m2: TMatrix): TMatrix; overload;
+function MatrixMultiply(const m1, m2: TGLMatrix): TGLMatrix; overload;
 // Multiplies M1 by M2 and places result in MResult
-procedure MatrixMultiply(const m1, m2: TMatrix; var MResult: TMatrix); overload;
+procedure MatrixMultiply(const m1, m2: TGLMatrix; var MResult: TGLMatrix); overload;
 
 // Transforms a homogeneous vector by multiplying it with a matrix
-function VectorTransform(const V: TGLVector; const M: TMatrix): TGLVector; overload; 
+function VectorTransform(const V: TGLVector; const M: TGLMatrix): TGLVector; overload; 
 // Transforms a homogeneous vector by multiplying it with a matrix
 function VectorTransform(const V: TGLVector; const M: TAffineMatrix): TGLVector; overload; 
 // Transforms an affine vector by multiplying it with a matrix
-function VectorTransform(const V: TAffineVector; const M: TMatrix): TAffineVector; overload; 
+function VectorTransform(const V: TAffineVector; const M: TGLMatrix): TAffineVector; overload; 
 // Transforms an affine vector by multiplying it with a matrix
 function VectorTransform(const V: TAffineVector; const M: TAffineMatrix): TAffineVector; overload; 
 
 // Determinant of a 3x3 matrix
 function MatrixDeterminant(const M: TAffineMatrix): Single; overload; 
 // Determinant of a 4x4 matrix
-function MatrixDeterminant(const M: TMatrix): Single; overload;
+function MatrixDeterminant(const M: TGLMatrix): Single; overload;
 
 // Adjoint of a 4x4 matrix, used in the computation of the inverse of a 4x4 matrix 
-procedure AdjointMatrix(var M: TMatrix); overload;
+procedure AdjointMatrix(var M: TGLMatrix); overload;
 // Adjoint of a 3x3 matrix, used in the computation of the inverse of a 3x3 matrix 
 procedure AdjointMatrix(var M: TAffineMatrix); overload;
 
 // Multiplies all elements of a 3x3 matrix with a factor
 procedure ScaleMatrix(var M: TAffineMatrix; const factor: Single); overload;
 // Multiplies all elements of a 4x4 matrix with a factor
-procedure ScaleMatrix(var M: TMatrix; const factor: Single); overload;
+procedure ScaleMatrix(var M: TGLMatrix; const factor: Single); overload;
 
 // Adds the translation vector into the matrix
-procedure TranslateMatrix(var M: TMatrix; const V: TAffineVector); overload;
-procedure TranslateMatrix(var M: TMatrix; const V: TGLVector); overload;
+procedure TranslateMatrix(var M: TGLMatrix; const V: TAffineVector); overload;
+procedure TranslateMatrix(var M: TGLMatrix; const V: TGLVector); overload;
 
 (* Normalize the matrix and remove the translation component.
   The resulting matrix is an orthonormal matrix (Y direction preserved, then Z) *)
-procedure NormalizeMatrix(var M: TMatrix);
+procedure NormalizeMatrix(var M: TGLMatrix);
 
 // Computes transpose of 3x3 matrix
 procedure TransposeMatrix(var M: TAffineMatrix); overload;
 // Computes transpose of 4x4 matrix
-procedure TransposeMatrix(var M: TMatrix); overload;
+procedure TransposeMatrix(var M: TGLMatrix); overload;
 
 // Finds the inverse of a 4x4 matrix
-procedure InvertMatrix(var M: TMatrix); overload;
-function MatrixInvert(const M: TMatrix): TMatrix; overload;
+procedure InvertMatrix(var M: TGLMatrix); overload;
+function MatrixInvert(const M: TGLMatrix): TGLMatrix; overload;
 
 // Finds the inverse of a 3x3 matrix;
 procedure InvertMatrix(var M: TAffineMatrix); overload;
@@ -903,20 +901,20 @@ function  MatrixInvert(const M: TAffineMatrix): TAffineMatrix; overload;
 (* Finds the inverse of an angle preserving matrix.
   Angle preserving matrices can combine translation, rotation and isotropic
   scaling, other matrices won't be properly inverted by this function. *)
-function AnglePreservingMatrixInvert(const mat: TMatrix): TMatrix;
+function AnglePreservingMatrixInvert(const mat: TGLMatrix): TGLMatrix;
 
 (* Decompose a non-degenerated 4x4 transformation matrix into the sequence of transformations that produced it.
   Modified by ml then eg, original Author: Spencer W. Thomas, University of Michigan
   The coefficient of each transformation is returned in the corresponding
   element of the vector Tran. Returns true upon success, false if the matrix is singular. *)
-function MatrixDecompose(const M: TMatrix; var Tran: TTransformations): Boolean;
-function CreateLookAtMatrix(const eye, center, normUp: TGLVector): TMatrix;
-function CreateMatrixFromFrustum(Left, Right, Bottom, Top, ZNear, ZFar: Single): TMatrix;
-function CreatePerspectiveMatrix(FOV, Aspect, ZNear, ZFar: Single): TMatrix;
-function CreateOrthoMatrix(Left, Right, Bottom, Top, ZNear, ZFar: Single): TMatrix;
-function CreatePickMatrix(X, Y, deltax, deltay: Single; const viewport: TVector4i): TMatrix;
-function Project(objectVector: TGLVector; const ViewProjMatrix: TMatrix; const viewport: TVector4i; out WindowVector: TGLVector): Boolean;
-function UnProject(WindowVector: TGLVector; ViewProjMatrix: TMatrix; const viewport: TVector4i; out objectVector: TGLVector): Boolean;
+function MatrixDecompose(const M: TGLMatrix; var Tran: TTransformations): Boolean;
+function CreateLookAtMatrix(const eye, center, normUp: TGLVector): TGLMatrix;
+function CreateMatrixFromFrustum(Left, Right, Bottom, Top, ZNear, ZFar: Single): TGLMatrix;
+function CreatePerspectiveMatrix(FOV, Aspect, ZNear, ZFar: Single): TGLMatrix;
+function CreateOrthoMatrix(Left, Right, Bottom, Top, ZNear, ZFar: Single): TGLMatrix;
+function CreatePickMatrix(X, Y, deltax, deltay: Single; const viewport: TVector4i): TGLMatrix;
+function Project(objectVector: TGLVector; const ViewProjMatrix: TGLMatrix; const viewport: TVector4i; out WindowVector: TGLVector): Boolean;
+function UnProject(WindowVector: TGLVector; ViewProjMatrix: TGLMatrix; const viewport: TVector4i; out objectVector: TGLVector): Boolean;
 
 (* ----------------------------------------------------------------------------
  Plane functions
@@ -1028,11 +1026,11 @@ function QuaternionFromPoints(const V1, V2: TAffineVector): TQuaternion;
 // Converts a unit quaternion into two points on a unit sphere
 procedure QuaternionToPoints(const Q: TQuaternion; var ArcFrom, ArcTo: TAffineVector);
 // Constructs a unit quaternion from a rotation matrix
-function QuaternionFromMatrix(const mat: TMatrix): TQuaternion;
+function QuaternionFromMatrix(const mat: TGLMatrix): TQuaternion;
 (* Constructs a rotation matrix from (possibly non-unit) quaternion.
   Assumes matrix is used to multiply column vector on the left: vnew = mat vold.
   Works correctly for right-handed coordinate system and right-handed rotations *)
-function QuaternionToMatrix(quat: TQuaternion): TMatrix;
+function QuaternionToMatrix(quat: TQuaternion): TGLMatrix;
 // Constructs an affine rotation matrix from (possibly non-unit) quaternion
 function QuaternionToAffineMatrix(quat: TQuaternion): TAffineMatrix;
 // Constructs quaternion from angle (in deg) and axis
@@ -1262,17 +1260,17 @@ procedure DivMod(Dividend: Integer; Divisor: Word; var result, Remainder: Word);
 // Coordinate system manipulation functions
 
 // Rotates the given coordinate system (represented by the matrix) around its Y-axis
-function Turn(const Matrix: TMatrix; Angle: Single): TMatrix; overload;
+function Turn(const Matrix: TGLMatrix; Angle: Single): TGLMatrix; overload;
 // Rotates the given coordinate system (represented by the matrix) around MasterUp
-function Turn(const Matrix: TMatrix; const MasterUp: TAffineVector; Angle: Single): TMatrix; overload;
+function Turn(const Matrix: TGLMatrix; const MasterUp: TAffineVector; Angle: Single): TGLMatrix; overload;
 // Rotates the given coordinate system (represented by the matrix) around its X-axis
-function Pitch(const Matrix: TMatrix; Angle: Single): TMatrix; overload;
+function Pitch(const Matrix: TGLMatrix; Angle: Single): TGLMatrix; overload;
 // Rotates the given coordinate system (represented by the matrix) around MasterRight
-function Pitch(const Matrix: TMatrix; const MasterRight: TAffineVector; Angle: Single): TMatrix; overload;
+function Pitch(const Matrix: TGLMatrix; const MasterRight: TAffineVector; Angle: Single): TGLMatrix; overload;
 // Rotates the given coordinate system (represented by the matrix) around its Z-axis
-function Roll(const Matrix: TMatrix; Angle: Single): TMatrix; overload;
+function Roll(const Matrix: TGLMatrix; Angle: Single): TGLMatrix; overload;
 // Rotates the given coordinate system (represented by the matrix) around MasterDirection
-function Roll(const Matrix: TMatrix; const MasterDirection: TAffineVector; Angle: Single): TMatrix; overload;
+function Roll(const Matrix: TGLMatrix; const MasterDirection: TAffineVector; Angle: Single): TGLMatrix; overload;
 
 // Intersection functions
 
@@ -1295,7 +1293,7 @@ function IntersectTriangleBox(const p1, p2, p3, aMinExtent, aMaxExtent: TAffineV
    Up, Direction and Right must be normalized!
    Use CubDepth, CubeHeight and CubeWidth to scale TGLCube *)
 function IntersectSphereBox(const SpherePos: TGLVector;
-  const SphereRadius: Single; const BoxMatrix: TMatrix;
+  const SphereRadius: Single; const BoxMatrix: TGLMatrix;
   const BoxScale: TAffineVector; intersectPoint: PAffineVector = nil;
   normal: PAffineVector = nil; depth: PSingle = nil): Boolean;
 
@@ -1341,7 +1339,7 @@ function RectangleContains(const ACenterOfBigRect1, ACenterOfSmallRect2,
   intersection testing. *)
 function SphereVisibleRadius(distance, radius: Single): Single;
 // Extracts a TFrustum for combined modelview and projection matrices
-function ExtractFrustumFromModelViewProjection(const modelViewProj: TMatrix): TFrustum;
+function ExtractFrustumFromModelViewProjection(const modelViewProj: TGLMatrix): TFrustum;
 // Determines if volume is clipped or not
 function IsVolumeClipped(const objPos: TAffineVector; const objRadius: Single;
   const Frustum: TFrustum): Boolean; overload;
@@ -1353,22 +1351,22 @@ function IsVolumeClipped(const min, max: TAffineVector; const Frustum: TFrustum)
 
 (* Creates a parallel projection matrix.
   Transformed points will projected on the plane along the specified direction *)
-function MakeParallelProjectionMatrix(const plane: THmgPlane; const dir: TGLVector): TMatrix;
+function MakeParallelProjectionMatrix(const plane: THmgPlane; const dir: TGLVector): TGLMatrix;
 (* Creates a shadow projection matrix.
   Shadows will be projected onto the plane defined by planePoint and planeNormal,
   from lightPos *)
-function MakeShadowMatrix(const planePoint, planeNormal, lightPos: TGLVector): TMatrix;
+function MakeShadowMatrix(const planePoint, planeNormal, lightPos: TGLVector): TGLMatrix;
 (* Builds a reflection matrix for the given plane.
   Reflection matrix allow implementing planar reflectors (mirrors) *)
-function MakeReflectionMatrix(const planePoint, planeNormal: TAffineVector): TMatrix;
+function MakeReflectionMatrix(const planePoint, planeNormal: TAffineVector): TGLMatrix;
 (* Packs an homogeneous rotation matrix to 6 bytes.
   The 6:64 (or 6:36) compression ratio is achieved by computing the quaternion
   associated to the matrix and storing its Imaginary components at 16 bits
   precision each. Deviation is typically below 0.01% and around 0.1% in worst case situations.
   Note: quaternion conversion is faster and more robust than an angle decomposition *)
-function PackRotationMatrix(const mat: TMatrix): TPackedRotationMatrix;
+function PackRotationMatrix(const mat: TGLMatrix): TPackedRotationMatrix;
 // Restores a packed rotation matrix. See PackRotationMatrix
-function UnPackRotationMatrix(const packedMatrix: TPackedRotationMatrix): TMatrix;
+function UnPackRotationMatrix(const packedMatrix: TPackedRotationMatrix): TGLMatrix;
 
 (* Calculates the barycentric coordinates for the point p on the triangle
   defined by the vertices v1, v2 and v3. That is, solves
@@ -2220,7 +2218,7 @@ end;
 function VectorAngleLerp(const V1, V2: TAffineVector; T: Single): TAffineVector;
 var
   q1, q2, qR: TQuaternion;
-  M: TMatrix;
+  M: TGLMatrix;
   Tran: TTransformations;
 begin
   if VectorEquals(V1, V2) then
@@ -2396,7 +2394,7 @@ begin
     result := (stop - start) * Power(delta, DistortionDegree) + start;
 end;
 
-function MatrixLerp(const m1, m2: TMatrix; const delta: Single): TMatrix;
+function MatrixLerp(const m1, m2: TGLMatrix; const delta: Single): TGLMatrix;
 var
   i, J: Integer;
 begin
@@ -2969,7 +2967,7 @@ begin
   result := (a * c - b * b) < cColinearBias;
 end;
 
-procedure SetMatrix(var dest: THomogeneousDblMatrix; const src: TMatrix);
+procedure SetMatrix(var dest: THomogeneousDblMatrix; const src: TGLMatrix);
 var
   i: Integer;
 begin
@@ -2982,7 +2980,7 @@ begin
   end;
 end;
 
-procedure SetMatrix(var dest: TAffineMatrix; const src: TMatrix);
+procedure SetMatrix(var dest: TAffineMatrix; const src: TGLMatrix);
 begin
   dest.X.X := src.X.X;
   dest.X.Y := src.X.Y;
@@ -2995,7 +2993,7 @@ begin
   dest.Z.Z := src.Z.Z;
 end;
 
-procedure SetMatrix(var dest: TMatrix; const src: TAffineMatrix);
+procedure SetMatrix(var dest: TGLMatrix; const src: TAffineMatrix);
 begin
   dest.X.X := src.X.X;
   dest.X.Y := src.X.Y;
@@ -3015,7 +3013,7 @@ begin
   dest.W.W := 1;
 end;
 
-procedure SetMatrixRow(var dest: TMatrix; rowNb: Integer; const aRow: TGLVector);
+procedure SetMatrixRow(var dest: TGLMatrix; rowNb: Integer; const aRow: TGLVector);
 begin
   dest.X.V[rowNb] := aRow.X;
   dest.Y.V[rowNb] := aRow.Y;
@@ -3023,7 +3021,7 @@ begin
   dest.W.V[rowNb] := aRow.W;
 end;
 
-function CreateScaleMatrix(const V: TAffineVector): TMatrix;
+function CreateScaleMatrix(const V: TAffineVector): TGLMatrix;
 begin
   result := IdentityHmgMatrix;
   result.X.X := V.V[X];
@@ -3031,7 +3029,7 @@ begin
   result.Z.Z := V.V[Z];
 end;
 
-function CreateScaleMatrix(const V: TGLVector): TMatrix;
+function CreateScaleMatrix(const V: TGLVector): TGLMatrix;
 begin
   result := IdentityHmgMatrix;
   result.X.X := V.V[X];
@@ -3039,7 +3037,7 @@ begin
   result.Z.Z := V.V[Z];
 end;
 
-function CreateTranslationMatrix(const V: TAffineVector): TMatrix;
+function CreateTranslationMatrix(const V: TAffineVector): TGLMatrix;
 begin
   result := IdentityHmgMatrix;
   result.W.X := V.V[X];
@@ -3047,7 +3045,7 @@ begin
   result.W.Z := V.V[Z];
 end;
 
-function CreateTranslationMatrix(const V: TGLVector): TMatrix;
+function CreateTranslationMatrix(const V: TGLVector): TGLMatrix;
 begin
   result := IdentityHmgMatrix;
   result.W.X := V.V[X];
@@ -3055,7 +3053,7 @@ begin
   result.W.Z := V.V[Z];
 end;
 
-function CreateScaleAndTranslationMatrix(const scale, offset: TGLVector): TMatrix;
+function CreateScaleAndTranslationMatrix(const scale, offset: TGLVector): TGLMatrix;
 begin
   result := IdentityHmgMatrix;
   result.X.X := scale.V[X];
@@ -3066,7 +3064,7 @@ begin
   result.W.Z := offset.V[Z];
 end;
 
-function CreateRotationMatrixX(const sine, cosine: Single): TMatrix;
+function CreateRotationMatrixX(const sine, cosine: Single): TGLMatrix;
 begin
   result := EmptyHmgMatrix;
   result.X.X := 1;
@@ -3077,7 +3075,7 @@ begin
   result.W.W := 1;
 end;
 
-function CreateRotationMatrixX(const angle: Single): TMatrix;
+function CreateRotationMatrixX(const angle: Single): TGLMatrix;
 var
   S, c: Single;
 begin
@@ -3085,7 +3083,7 @@ begin
   result := CreateRotationMatrixX(S, c);
 end;
 
-function CreateRotationMatrixY(const sine, cosine: Single): TMatrix;
+function CreateRotationMatrixY(const sine, cosine: Single): TGLMatrix;
 begin
   result := EmptyHmgMatrix;
   result.X.X := cosine;
@@ -3096,7 +3094,7 @@ begin
   result.W.W := 1;
 end;
 
-function CreateRotationMatrixY(const angle: Single): TMatrix;
+function CreateRotationMatrixY(const angle: Single): TGLMatrix;
 var
   S, c: Single;
 begin
@@ -3104,7 +3102,7 @@ begin
   result := CreateRotationMatrixY(S, c);
 end;
 
-function CreateRotationMatrixZ(const sine, cosine: Single): TMatrix;
+function CreateRotationMatrixZ(const sine, cosine: Single): TGLMatrix;
 begin
   result := EmptyHmgMatrix;
   result.X.X := cosine;
@@ -3115,7 +3113,7 @@ begin
   result.W.W := 1;
 end;
 
-function CreateRotationMatrixZ(const angle: Single): TMatrix;
+function CreateRotationMatrixZ(const angle: Single): TGLMatrix;
 var
   S, c: Single;
 begin
@@ -3124,7 +3122,7 @@ begin
 end;
 
 function CreateRotationMatrix(const anAxis: TAffineVector;
-  angle: Single): TMatrix;
+  angle: Single): TGLMatrix;
 var
   axis: TAffineVector;
   cosine, sine, one_minus_cosine: Single;
@@ -3154,7 +3152,7 @@ begin
   result.W.W := 1;
 end;
 
-function CreateRotationMatrix(const anAxis: TGLVector; angle: Single): TMatrix;
+function CreateRotationMatrix(const anAxis: TGLVector; angle: Single): TGLMatrix;
 begin
   result := CreateRotationMatrix(PAffineVector(@anAxis)^, angle);
 end;
@@ -3195,7 +3193,7 @@ begin
   result.Z.Z := m1.Z.X * m2.X.Z + m1.Z.Y * m2.Y.Z + m1.Z.Z * m2.Z.Z;
 end;
 
-function MatrixMultiply(const m1, m2: TMatrix): TMatrix;
+function MatrixMultiply(const m1, m2: TGLMatrix): TGLMatrix;
 begin
   result.X.X := m1.X.X * m2.X.X + m1.X.Y * m2.Y.X + m1.X.Z * m2.Z.X +
     m1.X.W * m2.W.X;
@@ -3231,7 +3229,7 @@ begin
     m1.W.W * m2.W.W;
 end;
 
-procedure MatrixMultiply(const m1, m2: TMatrix; var MResult: TMatrix);
+procedure MatrixMultiply(const m1, m2: TGLMatrix; var MResult: TGLMatrix);
 begin
   MResult.X.X := m1.X.X * m2.X.X + m1.X.Y * m2.Y.X + m1.X.Z * m2.Z.X +  m1.X.W * m2.W.X;
   MResult.X.Y := m1.X.X * m2.X.Y + m1.X.Y * m2.Y.Y + m1.X.Z * m2.Z.Y +  m1.X.W * m2.W.Y;
@@ -3252,7 +3250,7 @@ begin
 
 end;
 
-function VectorTransform(const V: TGLVector; const M: TMatrix): TGLVector;
+function VectorTransform(const V: TGLVector; const M: TGLMatrix): TGLVector;
 begin
     result.V[X] := V.V[X] * M.X.X + V.V[Y] * M.Y.X + V.V[Z] * M.Z.X + V.V[W] * M.W.X;
     result.V[Y] := V.V[X] * M.X.Y + V.V[Y] * M.Y.Y + V.V[Z] * M.Z.Y + V.V[W] * M.W.Y;
@@ -3268,7 +3266,7 @@ begin
   result.W := V.W;
 end;
 
-function VectorTransform(const V: TAffineVector; const M: TMatrix)
+function VectorTransform(const V: TAffineVector; const M: TGLMatrix)
   : TAffineVector;
 begin
   result.X := V.X * M.V[X].X + V.Y * M.V[Y].X + V.Z * M.V[Z].X + M.V[W].X;
@@ -3298,7 +3296,7 @@ begin
     (a2 * b3 - a3 * b2);
 end;
 
-function MatrixDeterminant(const M: TMatrix): Single;
+function MatrixDeterminant(const M: TGLMatrix): Single;
 begin
   result := M.X.X * MatrixDetInternal(M.Y.Y, M.Z.Y, M.W.Y, M.Y.Z, M.Z.Z, M.W.Z,
     M.Y.W, M.Z.W, M.W.W) - M.X.Y * MatrixDetInternal(M.Y.X, M.Z.X, M.W.X, M.Y.Z,
@@ -3308,7 +3306,7 @@ begin
     M.Z.Z, M.W.Z);
 end;
 
-procedure AdjointMatrix(var M: TMatrix);
+procedure AdjointMatrix(var M: TGLMatrix);
 var
   a1, a2, a3, a4, b1, b2, b3, b4, c1, c2, c3, c4, d1, d2, d3, d4: Single;
 begin
@@ -3389,7 +3387,7 @@ begin
   end;
 end;
 
-procedure ScaleMatrix(var M: TMatrix; const factor: Single);
+procedure ScaleMatrix(var M: TGLMatrix; const factor: Single);
 var
   i: Integer;
 begin
@@ -3402,21 +3400,21 @@ begin
   end;
 end;
 
-procedure TranslateMatrix(var M: TMatrix; const V: TAffineVector);
+procedure TranslateMatrix(var M: TGLMatrix; const V: TAffineVector);
 begin
   M.W.X := M.W.X + V.X;
   M.W.Y := M.W.Y + V.Y;
   M.W.Z := M.W.Z + V.Z;
 end;
 
-procedure TranslateMatrix(var M: TMatrix; const V: TGLVector);
+procedure TranslateMatrix(var M: TGLMatrix; const V: TGLVector);
 begin
   M.W.X := M.W.X + V.X;
   M.W.Y := M.W.Y + V.Y;
   M.W.Z := M.W.Z + V.Z;
 end;
 
-procedure NormalizeMatrix(var M: TMatrix);
+procedure NormalizeMatrix(var M: TGLMatrix);
 begin
   M.X.W := 0;
   NormalizeVector(M.X);
@@ -3442,7 +3440,7 @@ begin
   M.Z.Y := f;
 end;
 
-procedure TransposeMatrix(var M: TMatrix);
+procedure TransposeMatrix(var M: TGLMatrix);
 var
   f: Single;
 begin
@@ -3466,7 +3464,7 @@ begin
   M.W.Z := f;
 end;
 
-procedure InvertMatrix(var M: TMatrix);
+procedure InvertMatrix(var M: TGLMatrix);
 var
   det: Single;
 begin
@@ -3480,7 +3478,7 @@ begin
   end;
 end;
 
-function MatrixInvert(const M: TMatrix): TMatrix;
+function MatrixInvert(const M: TGLMatrix): TGLMatrix;
 begin
   result := M;
   InvertMatrix(result);
@@ -3506,7 +3504,7 @@ begin
   InvertMatrix(result);
 end;
 
-procedure Transpose_Scale_M33(const src: TMatrix; var dest: TMatrix;
+procedure Transpose_Scale_M33(const src: TGLMatrix; var dest: TGLMatrix;
   var scale: Single);
 begin
   dest.X.X := scale * src.X.X;
@@ -3521,7 +3519,7 @@ begin
 end;
 
 
-function AnglePreservingMatrixInvert(const mat: TMatrix): TMatrix;
+function AnglePreservingMatrixInvert(const mat: TGLMatrix): TGLMatrix;
 var
   scale: Single;
 begin
@@ -3558,10 +3556,10 @@ begin
     mat.W.Y + result.Z.Z * mat.W.Z);
 end;
 
-function MatrixDecompose(const M: TMatrix; var Tran: TTransformations): Boolean;
+function MatrixDecompose(const M: TGLMatrix; var Tran: TTransformations): Boolean;
 var
   I, J: Integer;
-  LocMat, pmat, invpmat: TMatrix;
+  LocMat, pmat, invpmat: TGLMatrix;
   prhs, psol: TGLVector;
   row0, row1, row2: TAffineVector;
   f: Single;
@@ -3694,7 +3692,7 @@ begin
   result := True;
 end;
 
-function CreateLookAtMatrix(const eye, center, normUp: TGLVector): TMatrix;
+function CreateLookAtMatrix(const eye, center, normUp: TGLVector): TGLMatrix;
 var
   XAxis, YAxis, ZAxis, negEye: TGLVector;
 begin
@@ -3717,7 +3715,7 @@ begin
 end;
 
 function CreateMatrixFromFrustum(Left, Right, Bottom, Top, ZNear,
-  ZFar: Single): TMatrix;
+  ZFar: Single): TGLMatrix;
 begin
   result.X.X := 2 * ZNear / (Right - Left);
   result.X.Y := 0;
@@ -3740,7 +3738,7 @@ begin
   result.W.W := 0;
 end;
 
-function CreatePerspectiveMatrix(FOV, Aspect, ZNear, ZFar: Single): TMatrix;
+function CreatePerspectiveMatrix(FOV, Aspect, ZNear, ZFar: Single): TGLMatrix;
 var
   X, Y: Single;
 begin
@@ -3751,7 +3749,7 @@ begin
 end;
 
 function CreateOrthoMatrix(Left, Right, Bottom, Top, ZNear,
-  ZFar: Single): TMatrix;
+  ZFar: Single): TGLMatrix;
 begin
   result.X.X := 2 / (Right - Left);
   result.X.Y := 0;
@@ -3775,7 +3773,7 @@ begin
 end;
 
 function CreatePickMatrix(X, Y, deltax, deltay: Single;
-  const viewport: TVector4i): TMatrix;
+  const viewport: TVector4i): TGLMatrix;
 begin
   if (deltax <= 0) or (deltay <= 0) then
   begin
@@ -3790,7 +3788,7 @@ begin
   result.Y.Y := viewport.W / deltay;
 end;
 
-function Project(objectVector: TGLVector; const ViewProjMatrix: TMatrix;
+function Project(objectVector: TGLVector; const ViewProjMatrix: TGLMatrix;
   const viewport: TVector4i; out WindowVector: TGLVector): Boolean;
 begin
   result := False;
@@ -3812,7 +3810,7 @@ begin
   result := True;
 end;
 
-function UnProject(WindowVector: TGLVector; ViewProjMatrix: TMatrix;
+function UnProject(WindowVector: TGLVector; ViewProjMatrix: TGLMatrix;
   const viewport: TVector4i; out objectVector: TGLVector): Boolean;
 begin
   result := False;
@@ -4415,7 +4413,7 @@ begin
   result.RealPart := Sqrt((VectorDotProduct(V1, V2) + 1) / 2);
 end;
 
-function QuaternionFromMatrix(const mat: TMatrix): TQuaternion;
+function QuaternionFromMatrix(const mat: TGLMatrix): TQuaternion;
 // the matrix must be a rotation matrix!
 var
   traceMat, S, invS: Double;
@@ -4483,7 +4481,7 @@ begin
   result := Temp;
 end;
 
-function QuaternionToMatrix(quat: TQuaternion): TMatrix;
+function QuaternionToMatrix(quat: TQuaternion): TGLMatrix;
 var
   W, X, Y, Z, xx, xy, xz, xw, yy, yz, yw, zz, zw: Single;
 begin
@@ -5678,7 +5676,7 @@ function ConvertRotation(const Angles: TAffineVector): TGLVector;
 }
 var
   Axis1, Axis2: TVector3f;
-  M, m1, m2: TMatrix;
+  M, m1, m2: TGLMatrix;
   cost, cost1, sint, s1, s2, s3: Single;
   i: Integer;
 begin
@@ -5891,41 +5889,41 @@ end;
 
 // ----------------- coordinate system manipulation functions -----------------------------------------------------------
 
-function Turn(const Matrix: TMatrix; angle: Single): TMatrix;
+function Turn(const Matrix: TGLMatrix; angle: Single): TGLMatrix;
 begin
   result := MatrixMultiply(Matrix,
     CreateRotationMatrix(AffineVectorMake(Matrix.Y.X, Matrix.Y.Y,
     Matrix.Y.Z), angle));
 end;
 
-function Turn(const Matrix: TMatrix; const MasterUp: TAffineVector;
-  angle: Single): TMatrix;
+function Turn(const Matrix: TGLMatrix; const MasterUp: TAffineVector;
+  angle: Single): TGLMatrix;
 begin
   result := MatrixMultiply(Matrix, CreateRotationMatrix(MasterUp, angle));
 end;
 
-function Pitch(const Matrix: TMatrix; angle: Single): TMatrix;
+function Pitch(const Matrix: TGLMatrix; angle: Single): TGLMatrix;
 begin
   result := MatrixMultiply(Matrix,
     CreateRotationMatrix(AffineVectorMake(Matrix.X.X, Matrix.X.Y,
     Matrix.X.Z), angle));
 end;
 
-function Pitch(const Matrix: TMatrix; const MasterRight: TAffineVector;
-  angle: Single): TMatrix; overload;
+function Pitch(const Matrix: TGLMatrix; const MasterRight: TAffineVector;
+  angle: Single): TGLMatrix; overload;
 begin
   result := MatrixMultiply(Matrix, CreateRotationMatrix(MasterRight, angle));
 end;
 
-function Roll(const Matrix: TMatrix; angle: Single): TMatrix;
+function Roll(const Matrix: TGLMatrix; angle: Single): TGLMatrix;
 begin
   result := MatrixMultiply(Matrix,
     CreateRotationMatrix(AffineVectorMake(Matrix.Z.X, Matrix.Z.Y,
     Matrix.Z.Z), angle));
 end;
 
-function Roll(const Matrix: TMatrix; const MasterDirection: TAffineVector;
-  angle: Single): TMatrix; overload;
+function Roll(const Matrix: TGLMatrix; const MasterDirection: TAffineVector;
+  angle: Single): TGLMatrix; overload;
 begin
   result := MatrixMultiply(Matrix,
     CreateRotationMatrix(MasterDirection, angle));
@@ -6269,21 +6267,21 @@ begin
 end;
 
 function IntersectSphereBox(const SpherePos: TGLVector;
-  const SphereRadius: Single; const BoxMatrix: TMatrix;
+  const SphereRadius: Single; const BoxMatrix: TGLMatrix;
   // Up Direction and Right must be normalized!
   // Use CubDepht, CubeHeight and CubeWidth
   // for scale TGLCube.
   const BoxScale: TAffineVector; intersectPoint: PAffineVector = nil;
   normal: PAffineVector = nil; depth: PSingle = nil): Boolean;
 
-  function dDOTByColumn(const V: TAffineVector; const M: TMatrix;
+  function dDOTByColumn(const V: TAffineVector; const M: TGLMatrix;
     const aColumn: Integer): Single;
   begin
     result := V.X * M.X.V[aColumn] + V.Y * M.Y.V[aColumn] + V.Z *
       M.Z.V[aColumn];
   end;
 
-  function dDotByRow(const V: TAffineVector; const M: TMatrix;
+  function dDotByRow(const V: TAffineVector; const M: TGLMatrix;
     const aRow: Integer): Single;
   begin
     // Equal with: Result := VectorDotProduct(v, AffineVectorMake(m[aRow]));
@@ -6291,7 +6289,7 @@ function IntersectSphereBox(const SpherePos: TGLVector;
       M.V[aRow].Z;
   end;
 
-  function dDotMatrByColumn(const V: TAffineVector; const M: TMatrix)
+  function dDotMatrByColumn(const V: TAffineVector; const M: TGLMatrix)
     : TAffineVector;
   begin
     result.X := dDOTByColumn(V, M, 0);
@@ -6299,7 +6297,7 @@ function IntersectSphereBox(const SpherePos: TGLVector;
     result.Z := dDOTByColumn(V, M, 2);
   end;
 
-  function dDotMatrByRow(const V: TAffineVector; const M: TMatrix)
+  function dDotMatrByRow(const V: TAffineVector; const M: TGLMatrix)
     : TAffineVector;
   begin
     result.X := dDotByRow(V, M, 0);
@@ -6397,7 +6395,7 @@ begin
   end;
 end;
 
-function ExtractFrustumFromModelViewProjection(const modelViewProj: TMatrix)
+function ExtractFrustumFromModelViewProjection(const modelViewProj: TGLMatrix)
   : TFrustum;
 begin
   with result do
@@ -6470,7 +6468,7 @@ begin
 end;
 
 function MakeParallelProjectionMatrix(const plane: THmgPlane;
-  const dir: TGLVector): TMatrix;
+  const dir: TGLVector): TGLMatrix;
 // Based on material from a course by William D. Shoaff (www.cs.fit.edu)
 var
   dot, invDot: Single;
@@ -6505,7 +6503,7 @@ begin
 end;
 
 function MakeShadowMatrix(const planePoint, planeNormal,
-  lightPos: TGLVector): TMatrix;
+  lightPos: TGLVector): TGLMatrix;
 var
   planeNormal3, dot: Single;
 begin
@@ -6539,7 +6537,7 @@ begin
 end;
 
 function MakeReflectionMatrix(const planePoint, planeNormal
-  : TAffineVector): TMatrix;
+  : TAffineVector): TGLMatrix;
 var
   pv2: Single;
 begin
@@ -6567,7 +6565,7 @@ begin
   result.W.W := 1;
 end;
 
-function PackRotationMatrix(const mat: TMatrix): TPackedRotationMatrix;
+function PackRotationMatrix(const mat: TGLMatrix): TPackedRotationMatrix;
 var
   Q: TQuaternion;
 const
@@ -6592,7 +6590,7 @@ begin
 end;
 
 function UnPackRotationMatrix(const packedMatrix
-  : TPackedRotationMatrix): TMatrix;
+  : TPackedRotationMatrix): TGLMatrix;
 var
   Q: TQuaternion;
 const

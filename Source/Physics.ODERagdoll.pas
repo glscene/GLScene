@@ -27,9 +27,9 @@ type
   TGLODERagdollBone = class;
 
   TGLODERagdollCube = class(TGLCube)
-   public
-    Bone:TGLODERagdollBone; // Useful in Oncollision Event
-    Ragdoll:TGLODERagdoll;  // Useful in Oncollision Event
+  public
+    Bone: TGLODERagdollBone; // Useful in Oncollision Event
+    Ragdoll: TGLODERagdoll; // Useful in Oncollision Event
   end;
 
   TGLODERagdollWorld = class
@@ -38,11 +38,12 @@ type
     FWorld: PdxWorld;
     FContactGroup: TdJointGroupID;
     FRagdoll: TGLODERagdoll;
-    isWorldCreated : Boolean; // NEW1
+    isWorldCreated: Boolean; // NEW1
   public
     constructor Create;
     // Create the world from any existing ODE world
-    constructor CreateFrom(World: PdxWorld; Space: PdxSpace; ContactGroup: TdJointGroupID);
+    constructor CreateFrom(World: PdxWorld; Space: PdxSpace;
+      ContactGroup: TdJointGroupID);
     destructor Destroy; override;
     procedure WorldUpdate;
     property World: PdxWorld read FWorld;
@@ -54,16 +55,15 @@ type
   TGLODERagdollDummyJoint = class(TGLRagdolJoint)
   end;
 
-
   TGLODERagdollHingeJoint = class(TGLRagdolJoint)
   private
     FParamHiStop: Single;
     FParamLoStop: Single;
     FAxis: TAffineVector;
   public
-    constructor Create(Axis: TAffineVector;
-      ParamLoStop: Single; ParamHiStop: Single);
-    property Axis : TAffineVector read FAxis;
+    constructor Create(Axis: TAffineVector; ParamLoStop: Single;
+      ParamHiStop: Single);
+    property Axis: TAffineVector read FAxis;
     property ParamLoStop: Single read FParamLoStop write FParamLoStop;
     property ParamHiStop: Single read FParamHiStop write FParamHiStop;
   end;
@@ -74,28 +74,29 @@ type
     FParamLoStop2: Single;
     FAxis2: TAffineVector;
   public
-    constructor Create(Axis: TAffineVector; ParamLoStop: Single; ParamHiStop: Single;
-                       Axis2: TAffineVector; ParamLoStop2: Single; ParamHiStop2: Single);
-    property Axis2 : TAffineVector read FAxis2;
+    constructor Create(Axis: TAffineVector; ParamLoStop: Single;
+      ParamHiStop: Single; Axis2: TAffineVector; ParamLoStop2: Single;
+      ParamHiStop2: Single);
+    property Axis2: TAffineVector read FAxis2;
     property ParamLoStop2: Single read FParamLoStop2 write FParamLoStop2;
     property ParamHiStop2: Single read FParamHiStop2 write FParamHiStop2;
   end;
 
-	TGLODERagdollBone = class (TGLRagdolBone)
+  TGLODERagdollBone = class(TGLRagdolBone)
   private
     FOwner: TGLODERagdollBone;
     FRagdoll: TGLODERagdoll;
     FBody: PdxBody;
     FGeom: PdxGeom;
     FJointId: TdJointID;
-    procedure AlignBodyToMatrix(Mat: TMatrix);
+    procedure AlignBodyToMatrix(Mat: TGLMatrix);
   protected
     procedure Start; override;
     procedure Align; override;
     procedure Update; override;
     procedure Stop; override;
   public
-    constructor CreateOwned(aOwner : TGLODERagdollBone);
+    constructor CreateOwned(aOwner: TGLODERagdollBone);
     constructor Create(Ragdoll: TGLODERagdoll);
     property Body: PdxBody read FBody;
     property Geom: PdxGeom read FGeom;
@@ -106,34 +107,37 @@ type
     FODEWorld: TGLODERagdollWorld;
     FGLSceneRoot: TGLBaseSceneObject;
     FShowBoundingBoxes: Boolean;
+    FEnabled: Boolean;
   public
-    constructor Create(AOwner : TGLBaseMesh);
+    constructor Create(aOwner: TGLBaseMesh);
     property ODEWorld: TGLODERagdollWorld read FODEWorld write FODEWorld;
-    property GLSceneRoot: TGLBaseSceneObject read FGLSceneRoot write FGLSceneRoot;
-    property ShowBoundingBoxes: Boolean read FShowBoundingBoxes write FShowBoundingBoxes;
+    property GLSceneRoot: TGLBaseSceneObject read FGLSceneRoot
+      write FGLSceneRoot;
+    property ShowBoundingBoxes: Boolean read FShowBoundingBoxes
+      write FShowBoundingBoxes;
+    property Enabled: Boolean read FEnabled write FEnabled;
   end;
 
-
 var
-  vODERagdoll_cDensity : Single;
-  vODERagdoll_cMass : Single;
+  vODERagdoll_cDensity: Single;
+  vODERagdoll_cMass: Single;
 
-//----------------------------------------
+// ----------------------------------------
 implementation
-//----------------------------------------
 
-//
+//-------------------------------------
 // TGLODERagdollWorld
-//
+// ----------------------------------------
+
 constructor TGLODERagdollWorld.Create;
 begin
-  //Create default physics
+  // Create default physics
   FWorld := dWorldCreate();
   dWorldSetQuickStepNumIterations(FWorld, 8);
-  FSpace := dHashSpaceCreate (nil);
+  FSpace := dHashSpaceCreate(nil);
   FContactGroup := dJointGroupCreate(0);
   dWorldSetGravity(FWorld, 0, 0, -0.81);
-  dWorldSetCFM(FWorld, 1e-5);
+  dWorldSetCFM(FWorld, 1E-5);
   isWorldCreated := True; // NEW1
 end;
 
@@ -176,7 +180,7 @@ begin
     for i := 0 to n - 1 do
     begin
       contact[i].surface.mode := ord(dContactBounce) or ord(dContactSoftCFM) or
-	    ord(dContactSlip1) or ord(dContactSlip2);
+        ord(dContactSlip1) or ord(dContactSlip2);
       contact[i].surface.mu := 10E9;
       contact[i].surface.mu2 := 0;
       contact[i].surface.soft_cfm := 0.001;
@@ -185,8 +189,10 @@ begin
       contact[i].surface.slip1 := 0.1;
       contact[i].surface.slip2 := 0.1;
 
-      c := dJointCreateContact(TGLODERagdollWorld(Data).World, TGLODERagdollWorld(Data).ContactGroup, @contact[i]);
-      dJointAttach(c, dGeomGetBody(contact[i].Geom.g1), dGeomGetBody(contact[i].Geom.g2));
+      c := dJointCreateContact(TGLODERagdollWorld(data).World,
+        TGLODERagdollWorld(data).ContactGroup, @contact[i]);
+      dJointAttach(c, dGeomGetBody(contact[i].Geom.g1),
+        dGeomGetBody(contact[i].Geom.g2));
     end;
   end;
 
@@ -206,7 +212,8 @@ end;
 //
 // TGLODERagdollHingeJoint
 //
-constructor TGLODERagdollHingeJoint.Create(Axis: TAffineVector; ParamLoStop, ParamHiStop: Single);
+constructor TGLODERagdollHingeJoint.Create(Axis: TAffineVector;
+  ParamLoStop, ParamHiStop: Single);
 begin
   inherited Create;
   FAxis := Axis;
@@ -217,16 +224,17 @@ end;
 //
 // TGLODERagdollUniversalJoint
 //
-constructor TGLODERagdollUniversalJoint.Create(Axis: TAffineVector; ParamLoStop, ParamHiStop: Single; Axis2: TAffineVector;
+constructor TGLODERagdollUniversalJoint.Create(Axis: TAffineVector;
+  ParamLoStop, ParamHiStop: Single; Axis2: TAffineVector;
   ParamLoStop2, ParamHiStop2: Single);
 begin
   inherited Create(Axis, ParamLoStop, ParamHiStop);
-  FAxis2:= Axis2;
-  FParamLoStop:= ParamLoStop;
-  FParamHiStop:= ParamHiStop;
+  FAxis2 := Axis2;
+  FParamLoStop := ParamLoStop;
+  FParamHiStop := ParamHiStop;
 
-  FParamLoStop2:= ParamLoStop2;
-  FParamHiStop2:= ParamHiStop2;
+  FParamLoStop2 := ParamLoStop2;
+  FParamHiStop2 := ParamHiStop2;
 end;
 
 //
@@ -245,26 +253,26 @@ begin
   FRagdoll := aOwner.FRagdoll;
 end;
 
-procedure TGLODERagdollBone.AlignBodyToMatrix(Mat:TMatrix);
+procedure TGLODERagdollBone.AlignBodyToMatrix(Mat: TGLMatrix);
 var
   R: TdMatrix3;
 begin
-  if not Assigned(FBody) then
+  if not assigned(FBody) then
     exit;
-  R[0]:=Mat.X.X;
-  R[1]:=Mat.Y.X; 
-  R[2]:= Mat.Z.X;
-  R[3]:= 0;
-  R[4]:=Mat.X.Y; 
-  R[5]:=Mat.Y.Y; 
-  R[6]:= Mat.Z.Y; 
-  R[7]:= 0;
-  R[8]:=Mat.X.Z; 
-  R[9]:=Mat.Y.Z; 
-  R[10]:=Mat.Z.Z;
-  R[11]:=0;
-  dBodySetRotation(FBody,R);
-  dBodySetPosition(FBody,Mat.W.X,Mat.W.Y,Mat.W.Z);
+  R[0] := Mat.X.X;
+  R[1] := Mat.Y.X;
+  R[2] := Mat.Z.X;
+  R[3] := 0;
+  R[4] := Mat.X.Y;
+  R[5] := Mat.Y.Y;
+  R[6] := Mat.Z.Y;
+  R[7] := 0;
+  R[8] := Mat.X.Z;
+  R[9] := Mat.Y.Z;
+  R[10] := Mat.Z.Z;
+  R[11] := 0;
+  dBodySetRotation(FBody, R);
+  dBodySetPosition(FBody, Mat.W.X, Mat.W.Y, Mat.W.Z);
 end;
 
 procedure TGLODERagdollBone.Start;
@@ -275,23 +283,23 @@ var
 
   function RotateAxis(Axis: TAffineVector): TAffineVector;
   var
-    absMat: TMatrix;
+    absMat: TGLMatrix;
   begin
-    absMat:= ReferenceMatrix;
-    absMat.W:= NullHmgVector;
-    Result:= VectorNormalize(VectorTransform(Axis, absMat));
+    absMat := ReferenceMatrix;
+    absMat.W := NullHmgVector;
+    Result := VectorNormalize(VectorTransform(Axis, absMat));
   end;
 
 begin
-  FBody:= dBodyCreate(FRagdoll.ODEWorld.World);
-  boneSize.X:= Size.X*VectorLength(BoneMatrix.X);
-  boneSize.Y:= Size.Y*VectorLength(BoneMatrix.Y);
-  boneSize.Z:= Size.Z*VectorLength(BoneMatrix.Z);
+  FBody := dBodyCreate(FRagdoll.ODEWorld.World);
+  boneSize.X := Size.X * VectorLength(BoneMatrix.X);
+  boneSize.Y := Size.Y * VectorLength(BoneMatrix.Y);
+  boneSize.Z := Size.Z * VectorLength(BoneMatrix.Z);
 
   // prevent ODE 0.9 "bNormalizationResult failed" error:
-  for n:= 0 to 2 do
+  for n := 0 to 2 do
     if (boneSize.V[n] = 0) then
-      boneSize.V[n]:= 0.000001;
+      boneSize.V[n] := 0.000001;
 
   dMassSetBox(mass, vODERagdoll_cDensity, boneSize.X, boneSize.Y, boneSize.Z);
 
@@ -300,31 +308,32 @@ begin
 
   AlignBodyToMatrix(ReferenceMatrix);
 
-  FGeom:= dCreateBox(FRagdoll.ODEWorld.Space, boneSize.X, boneSize.Y, boneSize.Z);
-  FGeom.data:= FRagdoll.GLSceneRoot.AddNewChild(TGLODERagdollCube);
+  FGeom := dCreateBox(FRagdoll.ODEWorld.Space, boneSize.X, boneSize.Y,
+    boneSize.Z);
+  FGeom.data := FRagdoll.GLSceneRoot.AddNewChild(TGLODERagdollCube);
   if (Joint is TGLODERagdollDummyJoint) then
     dGeomSetBody(FGeom, FOwner.Body)
   else
     dGeomSetBody(FGeom, FBody);
   if (Owner <> nil) then
   begin
-      if (Joint is TGLODERagdollHingeJoint) then
+    if (Joint is TGLODERagdollHingeJoint) then
       with (Joint as TGLODERagdollHingeJoint) do
       begin
-        vAxis:= RotateAxis(Axis);
-        FJointId:= dJointCreateHinge(FRagdoll.ODEWorld.World, nil);
+        vAxis := RotateAxis(Axis);
+        FJointId := dJointCreateHinge(FRagdoll.ODEWorld.World, nil);
         dJointAttach(FJointId, TGLODERagdollBone(Owner).Body, FBody);
         dJointSetHingeAnchor(FJointId, Anchor.X, Anchor.Y, Anchor.Z);
         dJointSetHingeAxis(FJointId, vAxis.X, vAxis.Y, vAxis.Z);
         dJointSetHingeParam(FJointId, dParamLoStop, ParamLoStop);
         dJointSetHingeParam(FJointId, dParamHiStop, ParamHiStop);
       end;
-      if (Joint is TGLODERagdollUniversalJoint) then
+    if (Joint is TGLODERagdollUniversalJoint) then
       with (Joint as TGLODERagdollUniversalJoint) do
       begin
-        vAxis:= RotateAxis(Axis);
-        vAxis2:= RotateAxis(Axis2);
-        FJointId:= dJointCreateUniversal(FRagdoll.ODEWorld.World, nil);
+        vAxis := RotateAxis(Axis);
+        vAxis2 := RotateAxis(Axis2);
+        FJointId := dJointCreateUniversal(FRagdoll.ODEWorld.World, nil);
         dJointAttach(FJointId, TGLODERagdollBone(Owner).Body, FBody);
         dJointSetUniversalAnchor(FJointId, Anchor.X, Anchor.Y, Anchor.Z);
         dJointSetUniversalAxis1(FJointId, vAxis.X, vAxis.Y, vAxis.Z);
@@ -334,16 +343,16 @@ begin
         dJointSetUniversalParam(FJointId, dParamLoStop2, ParamLoStop2);
         dJointSetUniversalParam(FJointId, dParamHiStop2, ParamHiStop2);
       end;
-    end;
+  end;
   with TGLODERagdollCube(FGeom.data) do
   begin
     Visible := FRagdoll.ShowBoundingBoxes;
     Material.FrontProperties.Diffuse.SetColor(1, 0, 0, 0.4);
-    CubeWidth:= boneSize.X;
-    CubeHeight:= boneSize.Y;
-    CubeDepth:= boneSize.Z;
-    Bone:= Self;
-    Ragdoll:= Self.FRagdoll;
+    CubeWidth := boneSize.X;
+    CubeHeight := boneSize.Y;
+    CubeDepth := boneSize.Z;
+    Bone := Self;
+    Ragdoll := Self.FRagdoll;
   end;
 end;
 
@@ -353,7 +362,7 @@ var
 begin
   inherited;
   dBodyDestroy(FBody);
-  if Assigned(FGeom.data) then
+  if assigned(FGeom.data) then
   begin
     o := TGLBaseSceneObject(FGeom.data);
     FRagdoll.GLSceneRoot.Remove(o, False);
@@ -367,8 +376,8 @@ end;
 procedure TGLODERagdollBone.Update;
 begin
   PositionSceneObject(TGLBaseSceneObject(PdxGeom(FGeom.data)), FGeom);
-  Ragdoll.Owner.Skeleton.BoneByID(BoneID).SetGlobalMatrixForRagDoll(
-    TGLBaseSceneObject(PdxGeom(FGeom.data)).AbsoluteMatrix);
+  Ragdoll.Owner.Skeleton.BoneByID(BoneID).SetGlobalMatrixForRagDoll
+    (TGLBaseSceneObject(PdxGeom(FGeom.data)).AbsoluteMatrix);
 end;
 
 procedure TGLODERagdollBone.Align;
@@ -382,16 +391,16 @@ end;
 //
 constructor TGLODERagdoll.Create(aOwner: TGLBaseMesh);
 begin
-  inherited Create(AOwner);
+  inherited Create(aOwner);
   FShowBoundingBoxes := False;
 end;
 
-//-------------------------------------------------
+// -------------------------------------------------
 initialization
-//-------------------------------------------------
+
+// -------------------------------------------------
 
 vODERagdoll_cDensity := 20;
 vODERagdoll_cMass := 1;
-
 
 end.

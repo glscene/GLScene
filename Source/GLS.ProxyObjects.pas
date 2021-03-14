@@ -118,7 +118,7 @@ type
   // An object containing the bone matrix for TGLActorProxy.  
   TBoneMatrixObj = class
   public
-    Matrix: TMatrix;
+    Matrix: TGLMatrix;
     BoneName: string;
     BoneIndex: integer;
   end;
@@ -172,8 +172,8 @@ type
     property CurrentTime: TGLProgressTimes read FCurrentTime;
     (* Gets the Bones Matrix in the current animation frame.
      (since the masterobject is shared between all proxies, each proxy will have it's bones matrices) *)
-    function BoneMatrix(BoneIndex: integer): TMatrix; overload;
-    function BoneMatrix(BoneName: string): TMatrix; overload;
+    function BoneMatrix(BoneIndex: integer): TGLMatrix; overload;
+    function BoneMatrix(BoneName: string): TGLMatrix; overload;
     procedure BoneMatricesClear;
     // A standard version of the RayCastIntersect function. 
     function RayCastIntersect(const rayStart, rayVector: TGLVector;
@@ -388,13 +388,13 @@ end;
 // ------------------ TGLActorProxy ------------------
 // ------------------
 
-function TGLActorProxy.BoneMatrix(BoneIndex: integer): TMatrix;
+function TGLActorProxy.BoneMatrix(BoneIndex: integer): TGLMatrix;
 begin
   if BoneIndex < FBonesMatrices.count then
     result := TBoneMatrixObj(FBonesMatrices.Objects[BoneIndex]).Matrix;
 end;
 
-function TGLActorProxy.BoneMatrix(BoneName: string): TMatrix;
+function TGLActorProxy.BoneMatrix(BoneName: string): TGLMatrix;
 var
   i: Integer;
 begin

@@ -411,7 +411,7 @@ var
 
   function AddRotations(rot, baserot: TAffineVector): TAffineVector;
   var
-    mat1, mat2, rmat: TMatrix;
+    mat1, mat2, rmat: TGLMatrix;
     s, c: Single;
     Trans: TTransformations;
   begin

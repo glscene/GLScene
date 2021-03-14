@@ -94,12 +94,12 @@ type
   private
     mdx, mdy: Integer;
     intersPoint, ResNormal, BoxScale, SpherePos: TAffineVector;
-    BoxMatrix: TMatrix;
+    BoxMatrix: TGLMatrix;
     SphereRadius: Single;
   end;
 
 // Generates random rotation for matrix. It remains a scale.
-function RandomRotation(const aMatrix: TMatrix): TMatrix;
+function RandomRotation(const aMatrix: TGLMatrix): TGLMatrix;
 
 var
   FormBoxSphere: TFormBoxSphere;
@@ -195,7 +195,7 @@ begin
 end;
 
 // Generates random rotation for matrix. It remains a scale.
-function RandomRotation(const aMatrix: TMatrix): TMatrix;
+function RandomRotation(const aMatrix: TGLMatrix): TGLMatrix;
 var
   aScale: TAffineVector;
   I:      Integer;

@@ -113,7 +113,7 @@ end;
 procedure TGLLinePFXManager.InitializeRendering(var rci: TGLRenderContextInfo);
 var
   i: Integer;
-  matrix: TMatrix;
+  matrix: TGLMatrix;
 begin
   inherited;
   gl.GetFloatv(GL_MODELVIEW_MATRIX, @matrix);

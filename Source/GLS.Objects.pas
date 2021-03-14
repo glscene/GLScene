@@ -1303,7 +1303,7 @@ procedure TGLSprite.BuildList(var rci: TGLRenderContextInfo);
 var
   vx, vy: TAffineVector;
   W, h: Single;
-  mat: TMatrix;
+  mat: TGLMatrix;
   u0, v0, u1, v1: Integer;
 begin
   if FAlphaChannel <> 1 then

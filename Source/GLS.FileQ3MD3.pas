@@ -11,6 +11,7 @@ uses
   System.Classes,
   System.SysUtils,
 
+  GLS.VectorTypes,
   GLS.VectorGeometry,
   GLS.VectorFileObjects,
   GLS.VectorLists,
@@ -30,7 +31,7 @@ type
   public
     procedure LoadFromFile(const FileName: String);
     procedure LoadFromStream(AStream: TStream);
-    function GetTransform(const TagName: string; Frame: Integer): TMatrix;
+    function GetTransform(const TagName: string; Frame: Integer): TGLMatrix;
     property TagCount: Integer read FNumTags;
     property FrameCount: Integer read FNumFrames;
     property Tags[index: Integer]: TMD3Tag read GetTag;
@@ -304,7 +305,7 @@ begin
 end;
 
 function TMD3TagList.GetTransform(const TagName: string;
-  Frame: Integer): TMatrix;
+  Frame: Integer): TGLMatrix;
 var
   TagIdx, i, j: Integer;
   Tag: TMD3Tag;

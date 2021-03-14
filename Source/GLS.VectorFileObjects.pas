@@ -179,7 +179,7 @@ type
   private
     FSkeleton: TGLSkeleton; // not persistent
   protected
-    FGlobalMatrix: TMatrix;
+    FGlobalMatrix: TGLMatrix;
     function GetSkeletonBone(Index: Integer): TGLSkeletonBone;
     procedure AfterObjectCreatedByReader(Sender: TObject); override;
   public
@@ -208,7 +208,7 @@ type
     procedure ReadFromFiler(reader: TVirtualReader); override;
     // Render skeleton wireframe
     procedure BuildList(var mrci: TGLRenderContextInfo); override;
-    property GlobalMatrix: TMatrix read FGlobalMatrix write FGlobalMatrix;
+    property GlobalMatrix: TGLMatrix read FGlobalMatrix write FGlobalMatrix;
   end;
 
   (* A skeleton bone or node and its children.
@@ -241,16 +241,16 @@ type
     function BoneByID(anID: Integer): TGLSkeletonBone; override;
     function BoneByName(const aName: string): TGLSkeletonBone; override;
     // Set the bone's matrix. Becareful using this.
-    procedure SetGlobalMatrix(const Matrix: TMatrix); // Ragdoll
+    procedure SetGlobalMatrix(const Matrix: TGLMatrix); // Ragdoll
     // Set the bone's GlobalMatrix. Used for Ragdoll.
-    procedure SetGlobalMatrixForRagDoll(const RagDollMatrix: TMatrix); // Ragdoll
+    procedure SetGlobalMatrixForRagDoll(const RagDollMatrix: TGLMatrix); // Ragdoll
     (* Calculates the global matrix for the bone and its sub-bone.
       Call this function directly only the RootBone. *)
     procedure PrepareGlobalMatrices; override;
     (* Global Matrix for the bone in the current frame.
       Global matrices must be prepared by invoking PrepareGlobalMatrices
       on the root bone. *)
-    property GlobalMatrix: TMatrix read FGlobalMatrix;
+    property GlobalMatrix: TGLMatrix read FGlobalMatrix;
     // Free all sub bones and reset BoneID and Name.
     procedure Clean; override;
   end;
@@ -266,11 +266,11 @@ type
     FOwner: TGLSkeletonColliderList;
     FBone: TGLSkeletonBone;
     FBoneID: Integer;
-    FLocalMatrix, FGlobalMatrix: TMatrix;
+    FLocalMatrix, FGlobalMatrix: TGLMatrix;
     FAutoUpdate: Boolean;
   protected
     procedure SetBone(const val: TGLSkeletonBone);
-    procedure SetLocalMatrix(const val: TMatrix);
+    procedure SetLocalMatrix(const val: TGLMatrix);
   public
     constructor Create; override;
     constructor CreateOwned(AOwner: TGLSkeletonColliderList);
@@ -284,10 +284,10 @@ type
     // The bone that this collider associates with.
     property Bone: TGLSkeletonBone read FBone write SetBone;
     // Offset and orientation of the collider in the associated bone's space.
-    property LocalMatrix: TMatrix read FLocalMatrix write SetLocalMatrix;
+    property LocalMatrix: TGLMatrix read FLocalMatrix write SetLocalMatrix;
     (* Global offset and orientation of the collider.
       This gets set in the AlignCollider method. *)
-    property GlobalMatrix: TMatrix read FGlobalMatrix;
+    property GlobalMatrix: TGLMatrix read FGlobalMatrix;
     property AutoUpdate: Boolean read FAutoUpdate write FAutoUpdate;
   end;
 
@@ -693,7 +693,7 @@ type
     property Owner: TGLFaceGroups read FOwner write FOwner;
     property MaterialName: string read FMaterialName write FMaterialName;
     property MaterialCache: TGLLibMaterial read FMaterialCache;
-    { Index of lightmap in the lightmap library. }
+    // Index of lightmap in the lightmap library.
     property LightMapIndex: Integer read FLightMapIndex write FLightMapIndex;
   end;
 
@@ -840,7 +840,7 @@ type
     procedure SaveToStream(aStream: TStream); override;
   end;
 
-  // Base class for mesh objects. 
+  // Base class for mesh objects.
   TGLBaseMesh = class(TGLSceneObject)
   private
     FNormalsOrientation: TGLMeshNormalsOrientation;
@@ -903,7 +903,7 @@ type
       rendering, reduced performance and/or invalid bounding box data
       (ie. invalid collision detection). Use with caution. *)
     procedure StructureChangedNoPrepare;
-    // BEWARE! Utterly inefficient implementation! 
+    // BEWARE! Utterly inefficient implementation!
     function RayCastIntersect(const rayStart, rayVector: TGLVector; intersectPoint: PGLVector = nil;
 	  intersectNormal: PGLVector = nil): Boolean; override;
     function GenerateSilhouette(const silhouetteParameters: TGLSilhouetteParameters): TGLSilhouette; override;
@@ -964,10 +964,10 @@ type
       If you want to alter mesh data, use direct manipulation methods
       (on the TMeshObjects). *)
     property AutoScaling: TGLCoordinates read FAutoScaling write FAutoScaling;
-    { Material library where mesh materials will be stored/retrieved.
+    (* Material library where mesh materials will be stored/retrieved.
       If this property is not defined or if UseMeshMaterials is false,
       only the FreeForm's material will be used (and the mesh's materials
-      will be ignored. }
+      will be ignored. *)
     property MaterialLibrary: TGLMaterialLibrary read FMaterialLibrary write SetMaterialLibrary;
     (* Defines wether materials declared in the vector file mesh are used.
       You must also define the MaterialLibrary property. *)
@@ -981,10 +981,10 @@ type
       Implementation is up to the file loader class (ie. this property
       may be ignored by some loaders) *)
     property IgnoreMissingTextures: Boolean read FIgnoreMissingTextures write FIgnoreMissingTextures default False;
-    // Normals orientation for owned mesh. 
+    // Normals orientation for owned mesh.
     property NormalsOrientation: TGLMeshNormalsOrientation read FNormalsOrientation
 	   write SetNormalsOrientation default mnoDefault;
-    // Request rendering of skeleton bones over the mesh. 
+    // Request rendering of skeleton bones over the mesh.
     property OverlaySkeleton: Boolean read FOverlaySkeleton write SetOverlaySkeleton default False;
   end;
 
@@ -1007,10 +1007,10 @@ type
     (* Returns true if Point is inside the free form - this will only work
       properly on closed meshes. Requires that Octree has been prepared. *)
     function OctreePointInMesh(const Point: TGLVector): Boolean;
-    function OctreeAABBIntersect(const AABB: TAABB; objMatrix, invObjMatrix: TMatrix;
+    function OctreeAABBIntersect(const AABB: TAABB; objMatrix, invObjMatrix: TGLMatrix;
       triangles: TAffineVectorList = nil): Boolean;
     // TODO:  function OctreeSphereIntersect
-    // Octree support *experimental*. Use only if you understand what you're doing! 
+    // Octree support *experimental*. Use only if you understand what you're doing!
     property Octree: TGLOctree read FOctree;
     procedure BuildOctree(TreeDepth: Integer = 3);
   published
@@ -1870,7 +1870,7 @@ function TGLSkeletonFrame.LocalMatrixList: PMatrixArray;
 var
   i: Integer;
   s, c: Single;
-  mat, rmat: TMatrix;
+  mat, rmat: TGLMatrix;
   quat: TQuaternion;
 begin
   if not Assigned(FLocalMatrixList) then
@@ -1878,7 +1878,7 @@ begin
     case FTransformMode of
       sftRotation:
         begin
-          FLocalMatrixList := AllocMem(SizeOf(TMatrix) * Rotation.Count);
+          FLocalMatrixList := AllocMem(SizeOf(TGLMatrix) * Rotation.Count);
           for i := 0 to Rotation.Count - 1 do
           begin
             if Rotation[i].X <> 0 then
@@ -1908,7 +1908,7 @@ begin
         end;
       sftQuaternion:
         begin
-          FLocalMatrixList := AllocMem(SizeOf(TMatrix) * Quaternion.Count);
+          FLocalMatrixList := AllocMem(SizeOf(TGLMatrix) * Quaternion.Count);
           for i := 0 to Quaternion.Count - 1 do
           begin
             quat := Quaternion[i];
@@ -1938,7 +1938,7 @@ procedure TGLSkeletonFrame.ConvertQuaternionsToRotations(KeepQuaternions: Boolea
 var
   i: Integer;
   t: TTransformations;
-  m: TMatrix;
+  m: TGLMatrix;
 begin
   Rotation.Clear;
   for i := 0 to Quaternion.Count - 1 do
@@ -1956,7 +1956,7 @@ end;
 procedure TGLSkeletonFrame.ConvertRotationsToQuaternions(KeepRotations: Boolean = True);
 var
   i: Integer;
-  mat, rmat: TMatrix;
+  mat, rmat: TGLMatrix;
   s, c: Single;
 begin
   Quaternion.Clear;
@@ -2323,12 +2323,12 @@ begin
   inherited;
 end;
 
-procedure TGLSkeletonBone.SetGlobalMatrix(const Matrix: TMatrix); // ragdoll
+procedure TGLSkeletonBone.SetGlobalMatrix(const Matrix: TGLMatrix); // ragdoll
 begin
   FGlobalMatrix := Matrix;
 end;
 
-procedure TGLSkeletonBone.SetGlobalMatrixForRagDoll(const RagDollMatrix: TMatrix);
+procedure TGLSkeletonBone.SetGlobalMatrixForRagDoll(const RagDollMatrix: TGLMatrix);
 // ragdoll
 begin
   FGlobalMatrix := MatrixMultiply(RagDollMatrix,
@@ -2366,7 +2366,7 @@ begin
       WriteInteger(FBone.BoneID)
     else
       WriteInteger(-1);
-    Write(FLocalMatrix, SizeOf(TMatrix));
+    Write(FLocalMatrix, SizeOf(TGLMatrix));
   end;
 end;
 
@@ -2380,7 +2380,7 @@ begin
     with reader do
     begin
       FBoneID := ReadInteger;
-      Read(FLocalMatrix, SizeOf(TMatrix));
+      Read(FLocalMatrix, SizeOf(TGLMatrix));
     end
   else
     RaiseFilerException(archiveVersion);
@@ -2388,7 +2388,7 @@ end;
 
 procedure TGLSkeletonCollider.AlignCollider;
 var
-  mat: TMatrix;
+  mat: TGLMatrix;
 begin
   if Assigned(FBone) then
   begin
@@ -2410,7 +2410,7 @@ begin
     FBone := val;
 end;
 
-procedure TGLSkeletonCollider.SetLocalMatrix(const val: TMatrix);
+procedure TGLSkeletonCollider.SetLocalMatrix(const val: TGLMatrix);
 begin
   FLocalMatrix := val;
 end;
@@ -4910,7 +4910,7 @@ procedure TGLSkeletonMeshObject.PrepareBoneMatrixInvertedMeshes;
 var
   i, k, boneIndex: Integer;
   invMesh: TGLBaseMeshObject;
-  invMat: TMatrix;
+  invMat: TGLMatrix;
   Bone: TGLSkeletonBone;
   p: TGLVector;
 begin
@@ -6638,10 +6638,10 @@ begin
   Result := Octree.TriangleIntersect(t1, t2, t3);
 end;
 
-function TGLFreeForm.OctreeAABBIntersect(const AABB: TAABB; objMatrix, invObjMatrix: TMatrix;
+function TGLFreeForm.OctreeAABBIntersect(const AABB: TAABB; objMatrix, invObjMatrix: TGLMatrix;
   triangles: TAffineVectorList = nil): Boolean;
 var
-  m1to2, m2to1: TMatrix;
+  m1to2, m2to1: TGLMatrix;
 begin
   Assert(Assigned(FOctree), strOctreeMustBePreparedBeforeUse);
 

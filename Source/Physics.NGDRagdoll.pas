@@ -30,9 +30,9 @@ type
     Actor: TGLActor;
     Bodies: TList;
     Joints: array of PNewtonJoint;
-    Norm_matrices: array of TMatrix;
+    Norm_matrices: array of TGLMatrix;
     Envelopes: array of record kind: byte;
-    Mat: TMatrix;
+    Mat: TGLMatrix;
     Pt: TVector3f;
     W, D, H, Mass: single;
   end;
@@ -122,8 +122,8 @@ var
   d: single;
   Collision: PNewtonCollision;
   CollisionBox, CollisionCylinder, CollisionSphere: PNewtonCollision;
-  Matrix: Tmatrix;
-  CollisionOffsetMatrix: TMatrix; // For cone capsule and cylinder
+  Matrix: TGLMatrix;
+  CollisionOffsetMatrix: TGLMatrix; // For cone capsule and cylinder
 begin
   collisionOffsetMatrix := IdentityHmgMatrix;
   d := 0;
@@ -256,7 +256,7 @@ end;
 procedure TNewtonRagdoll.SetEnabled;
 var
   i: integer;
-  a: TMatrix;
+  a: TGLMatrix;
   v: TVector3f;
 begin
   if FEnabled = value then

@@ -77,8 +77,8 @@ procedure AddAABB(var Aabb: TAABB; const Aabb1: TAABB);
 procedure SetBB(var C: THmgBoundingBox; const V: TGLVector);
 procedure SetAABB(var Bb: TAABB; const V: TGLVector); inline;
 
-procedure BBTransform(var C: THmgBoundingBox; const M: TMatrix);
-procedure AABBTransform(var Bb: TAABB; const M: TMatrix);
+procedure BBTransform(var C: THmgBoundingBox; const M: TGLMatrix);
+procedure AABBTransform(var Bb: TAABB; const M: TGLMatrix);
 procedure AABBScale(var Bb: TAABB; const V: TAffineVector);
 
 function BBMinX(const C: THmgBoundingBox): Single;
@@ -100,7 +100,7 @@ function BBToAABB(const ABB: THmgBoundingBox): TAABB;
 // Converts an AABB to its canonical BB. 
 function AABBToBB(const AnAABB: TAABB): THmgBoundingBox; overload;
 // Transforms an AABB to a BB. 
-function AABBToBB(const AnAABB: TAABB; const M: TMatrix): THmgBoundingBox; overload;
+function AABBToBB(const AnAABB: TAABB; const M: TGLMatrix): THmgBoundingBox; overload;
 //  Adds delta to min and max of the AABB. 
 procedure OffsetAABB(var Aabb: TAABB; const Delta: TAffineVector); overload;
 procedure OffsetAABB(var Aabb: TAABB; const Delta: TGLVector); overload;
@@ -111,7 +111,7 @@ procedure OffsetBB(var Bb: THmgBoundingBox; const Delta: TGLVector); overload;
 procedure OffsetBBPoint(var Bb: THmgBoundingBox; const Delta: TGLVector); overload;
 (* Determines if two AxisAlignedBoundingBoxes intersect.
   The matrices are the ones that convert one point to the other's AABB system *)
-function IntersectAABBs(const Aabb1, Aabb2: TAABB; const M1To2, M2To1: TMatrix): Boolean; overload;
+function IntersectAABBs(const Aabb1, Aabb2: TAABB; const M1To2, M2To1: TGLMatrix): Boolean; overload;
 // Checks whether two Bounding boxes aligned with the world axes collide in the XY plane.
 function IntersectAABBsAbsoluteXY(const Aabb1, Aabb2: TAABB): Boolean;
 // Checks whether two Bounding boxes aligned with the world axes collide in the XZ plane.
@@ -180,7 +180,7 @@ function BSphereIntersectsBSphere(const MainBSphere, TestBSphere: TBSphere): Boo
 // Extend the clip rect to include given coordinate. 
 procedure IncludeInClipRect(var ClipRect: TClipRect; X, Y: Single);
 // Projects an AABB and determines the extent of its projection as a clip rect. 
-function AABBToClipRect(const Aabb: TAABB; const ModelViewProjection: TMatrix;
+function AABBToClipRect(const Aabb: TAABB; const ModelViewProjection: TGLMatrix;
   ViewportSizeX, ViewportSizeY: Integer): TClipRect;
 
 // Finds the intersection between a ray and an axis aligned bounding box. 
@@ -301,7 +301,7 @@ begin
   Bb.Min.Z := -Bb.Max.Z;
 end;
 
-procedure BBTransform(var C: THmgBoundingBox; const M: TMatrix);
+procedure BBTransform(var C: THmgBoundingBox; const M: TGLMatrix);
 var
   I: Integer;
 begin
@@ -309,7 +309,7 @@ begin
     C.BBox[I] := VectorTransform(C.BBox[I], M);
 end;
 
-procedure AABBTransform(var Bb: TAABB; const M: TMatrix);
+procedure AABBTransform(var Bb: TAABB; const M: TGLMatrix);
 var
   OldMin, OldMax: TAffineVector;
 begin
@@ -492,7 +492,7 @@ begin
   end;
 end;
 
-function AABBToBB(const AnAABB: TAABB; const M: TMatrix): THmgBoundingBox;
+function AABBToBB(const AnAABB: TAABB; const M: TGLMatrix): THmgBoundingBox;
 begin
   Result := AABBToBB(AnAABB);
   BBTransform(Result, M);
@@ -537,7 +537,7 @@ begin
 end;
 
 function IntersectAABBs(const Aabb1, Aabb2: TAABB;
-  const M1To2, M2To1: TMatrix): Boolean;
+  const M1To2, M2To1: TGLMatrix): Boolean;
 const
   CWires: array [0 .. 11, 0 .. 1] of Integer // Points of the wire
     = ((0, 1), (1, 2), (2, 3), (3, 0), (4, 5), (5, 6), (6, 7), (7, 4), (0, 4),
@@ -1288,7 +1288,7 @@ begin
   end;
 end;
 
-function AABBToClipRect(const Aabb: TAABB; const ModelViewProjection: TMatrix;
+function AABBToClipRect(const Aabb: TAABB; const ModelViewProjection: TGLMatrix;
   ViewportSizeX, ViewportSizeY: Integer): TClipRect;
 var
   I: Integer;

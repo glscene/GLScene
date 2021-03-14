@@ -893,7 +893,7 @@ type
     // Call display list
     procedure CallList(list: Cardinal); inline;
     // Defines the OpenGL texture matrix. Assumed texture mode is GL_MODELVIEW.
-    procedure SetGLTextureMatrix(const matrix: TMatrix); inline;
+    procedure SetGLTextureMatrix(const matrix: TGLMatrix); inline;
     procedure ResetGLTextureMatrix; inline;
     procedure ResetAllGLTextureMatrix; inline;
     // note: needs to change to per draw-buffer
@@ -2167,7 +2167,7 @@ begin
   end;
 end;
 
-procedure TGLStateCache.SetGLTextureMatrix(const matrix: TMatrix);
+procedure TGLStateCache.SetGLTextureMatrix(const matrix: TGLMatrix);
 begin
   { if FForwardContext then
     exit; }

@@ -57,7 +57,7 @@ void __fastcall TForm1::RadioGroup2Click(TObject *Sender)
 void __fastcall TForm1::GLCamera1CustomPerspective(const TRectangle &viewport, int width,
           int height, int DPI, float &viewPortRadius)
 {
-  Gls::Vectorgeometry::TMatrix Mat;
+  Gls::Vectorgeometry::TGLMatrix Mat;
 
   Mat =  CreatePerspectiveMatrix(GLCamera1->GetFieldOfView(Width)/4,
 	Width / Height, GLCamera1->NearPlaneBias, GLCamera1->DepthOfView);

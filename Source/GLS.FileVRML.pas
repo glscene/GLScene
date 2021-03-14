@@ -164,7 +164,7 @@ var
   mesh: TMeshObject;
   uniqueMatID: Integer;
   currentMaterial: TGLLibMaterial;
-  currentTransform: TMatrix;
+  currentTransform: TGLMatrix;
   creaseAngle: Single;
 
   function GetUniqueMaterialName: String;
@@ -443,7 +443,7 @@ var
     fg: TFGVertexNormalTexIndexList;
     face: TIntegerList;
     tempLibMat: TGLLibMaterial;
-    saveTransform, mat: TMatrix;
+    saveTransform, mat: TGLMatrix;
     saveMaterial: TGLLibMaterial;
     axis: TAffineVector;
     angle: Single;

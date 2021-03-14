@@ -82,11 +82,11 @@ type
   private
      
 
-    FBiasMatrix: TMatrix;
-    FLightModelViewMatrix: TMatrix;
-    FLightProjMatrix: TMatrix;
-    FInvCameraMatrix: TMatrix;
-    FEyeToLightMatrix: TMatrix;
+    FBiasMatrix: TGLMatrix;
+    FLightModelViewMatrix: TGLMatrix;
+    FLightProjMatrix: TGLMatrix;
+    FInvCameraMatrix: TGLMatrix;
+    FEyeToLightMatrix: TGLMatrix;
   public
      
   end;

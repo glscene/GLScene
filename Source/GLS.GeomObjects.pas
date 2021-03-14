@@ -3585,7 +3585,7 @@ end;
 procedure TGLTeapot.DoRender(var ARci: TGLRenderContextInfo;
   ARenderSelf, ARenderChildren: Boolean);
 const
-  M: TMatrix = (
+  M: TGLMatrix = (
   X:(X:0.150000005960464; Y:0; Z:0; W:0);
   Y:(X:0; Y:-6.55670850946422e-09; Z:-0.150000005960464; W:0);
   Z:(X:0; Y:0.150000005960464; Z:-6.55670850946422e-09; W:0);

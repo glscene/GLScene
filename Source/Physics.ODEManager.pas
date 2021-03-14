@@ -196,7 +196,7 @@ type
     procedure Loaded; override;
     procedure SetManager(Value: TGLODEManager);
     procedure SetSurface(Value: TGLODECollisionSurface);
-    function GetAbsoluteMatrix: TMatrix;
+    function GetAbsoluteMatrix: TGLMatrix;
   public
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
@@ -204,7 +204,7 @@ type
     procedure Render(var rci: TGLRenderContextInfo); virtual;
     procedure Reinitialize;
     property Initialized: Boolean read FInitialized;
-    property AbsoluteMatrix: TMatrix read GetAbsoluteMatrix;
+    property AbsoluteMatrix: TGLMatrix read GetAbsoluteMatrix;
   published
     property Manager: TGLODEManager read FManager write SetManager;
     property Surface: TGLODECollisionSurface read FSurface write SetSurface;
@@ -225,7 +225,7 @@ type
     procedure ReadFromFiler(reader: TReader); override;
     procedure SetMass(const Value: TdMass);
     function GetMass: TdMass;
-    procedure AlignBodyToMatrix(Mat: TMatrix);
+    procedure AlignBodyToMatrix(Mat: TGLMatrix);
     procedure SetEnabled(const Value: Boolean);
     function GetEnabled: Boolean;
     procedure RegisterJoint(Joint: TGLODEJointBase);
@@ -297,7 +297,7 @@ type
     FPosition, 
 	FDirection, 
 	FUp: TGLCoordinates;
-    FLocalMatrix: TMatrix;
+    FLocalMatrix: TGLMatrix;
     FRealignODE,
 	FInitialized,
 	FDynamic,
@@ -312,13 +312,13 @@ type
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
     function IsODEInitialized: Boolean;
-    procedure AlignGeomElementToMatrix(Mat: TMatrix); virtual;
+    procedure AlignGeomElementToMatrix(Mat: TGLMatrix); virtual;
     procedure SetGeomElement(aGeom: PdxGeom);
     procedure RebuildMatrix;
     procedure RebuildVectors;
     procedure SetDensity(const Value: TdReal);
-    procedure SetMatrix(const Value: TMatrix);
-    function GetMatrix: TMatrix;
+    procedure SetMatrix(const Value: TGLMatrix);
+    function GetMatrix: TGLMatrix;
     procedure SetPosition(const Value: TGLCoordinates);
     procedure SetDirection(const Value: TGLCoordinates);
     procedure SetUp(const Value: TGLCoordinates);
@@ -326,9 +326,9 @@ type
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
     procedure Render(var rci: TGLRenderContextInfo); virtual;
-    function AbsoluteMatrix: TMatrix;
+    function AbsoluteMatrix: TGLMatrix;
     function AbsolutePosition: TAffineVector;
-    property Matrix: TMatrix read GetMatrix write SetMatrix;
+    property Matrix: TGLMatrix read GetMatrix write SetMatrix;
     property GeomTransform: PdxGeom read FGeomTransform;
     property Geom: PdxGeom read FGeomElement;
     property Initialized: Boolean read FInitialized;
@@ -474,7 +474,7 @@ type
     procedure Initialize; override;
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
-    procedure AlignGeomElementToMatrix(Mat: TMatrix); override;
+    procedure AlignGeomElementToMatrix(Mat: TGLMatrix); override;
   public
     class function FriendlyName: String; override;
     class function FriendlyDescription: String; override;
@@ -811,7 +811,7 @@ type
     FGeom: PdxGeom;
     FContactList,
       FContactCache: TList;
-    FTransform: TMatrix;
+    FTransform: TGLMatrix;
     FContactResolution: Single;
     FRenderContacts: Boolean;
     FContactRenderPoints: TAffineVectorList;
@@ -834,7 +834,7 @@ type
     function ApplyContacts(o1, o2: PdxGeom; flags: Integer;
       contact: PdContactGeom; skip: Integer): Integer;
     // Set the transform used that transforms contact points generated with AddContact
-    procedure SetTransform(ATransform: TMatrix);
+    procedure SetTransform(ATransform: TGLMatrix);
     procedure SetContactResolution(const Value: Single);
     procedure SetRenderContacts(const Value: Boolean);
     procedure SetPointSize(const Value: Single);
@@ -1053,7 +1053,7 @@ var
   i, j, res: Integer;
   pos: PdVector3;
   R: PdMatrix3;
-  rmat, mat: TMatrix;
+  rmat, mat: TGLMatrix;
   rad, dx, dy, dz: TdReal;
 begin
   Result := 0;
@@ -1099,7 +1099,7 @@ var
   s: TdVector3;
   pos: PdVector3;
   R: PdMatrix3;
-  mat: TMatrix;
+  mat: TGLMatrix;
 begin
   Result := 0;
   Collider := GetColliderFromGeom(o1);
@@ -1179,7 +1179,7 @@ var
   i, j, res: Integer;
   pos: PdVector3;
   R: PdMatrix3;
-  mat, rmat: TMatrix;
+  mat, rmat: TGLMatrix;
   rad, len, dx, dy, dz: TdReal;
 begin
   Result := 0;
@@ -1226,7 +1226,7 @@ var
   i, j, res: Integer;
   pos: PdVector3;
   R: PdMatrix3;
-  mat: TMatrix;
+  mat: TGLMatrix;
   rad, len, dx, dy: TdReal;
 begin
   Result := 0;
@@ -2026,7 +2026,7 @@ begin
   FSurface.Assign(Value);
 end;
 
-function TGLODEBehaviour.GetAbsoluteMatrix: TMatrix;
+function TGLODEBehaviour.GetAbsoluteMatrix: TGLMatrix;
 begin
   Result := IdentityHMGMatrix;
   if Assigned(Owner.Owner) then
@@ -2056,7 +2056,7 @@ end;
 
 procedure TGLODEDynamic.Render(var rci: TGLRenderContextInfo);
 var
-  Mat: TMatrix;
+  Mat: TGLMatrix;
 begin
   if Assigned(Owner.Owner) then
   begin
@@ -2179,7 +2179,7 @@ procedure TGLODEDynamic.AlignObject;
 var
   Pos: PdVector3;
   R: PdMatrix3;
-  m: TMatrix;
+  m: TGLMatrix;
 begin
   Pos := dBodyGetPosition(Body);
   R := dBodyGetRotation(Body);
@@ -2189,7 +2189,7 @@ begin
   OwnerBaseSceneObject.SetMatrix(m);
 end;
 
-procedure TGLODEDynamic.AlignBodyToMatrix(Mat: TMatrix);
+procedure TGLODEDynamic.AlignBodyToMatrix(Mat: TGLMatrix);
 var
   R: TdMatrix3;
 begin
@@ -2340,7 +2340,7 @@ end;
 
 procedure TGLODEStatic.Render(var rci: TGLRenderContextInfo);
 var
-  Mat: TMatrix;
+  Mat: TGLMatrix;
 begin
   if Assigned(Owner.Owner) then
   begin
@@ -2602,9 +2602,9 @@ begin
   NotifyChange(Self);
 end;
 
-function TGLODEElementBase.AbsoluteMatrix: TMatrix;
+function TGLODEElementBase.AbsoluteMatrix: TGLMatrix;
 var
-  Mat: TMatrix;
+  Mat: TGLMatrix;
 begin
   Mat := IdentityHMGMatrix;
   if Owner.Owner is TGLODEBehaviour then
@@ -2617,7 +2617,7 @@ begin
   Result := AffineVectorMake(AbsoluteMatrix.W);
 end;
 
-procedure TGLODEElementBase.AlignGeomElementToMatrix(Mat: TMatrix);
+procedure TGLODEElementBase.AlignGeomElementToMatrix(Mat: TGLMatrix);
 var
   R: TdMatrix3;
 begin
@@ -2730,7 +2730,7 @@ begin
   ODERebuild;
 end;
 
-function TGLODEElementBase.GetMatrix: TMatrix;
+function TGLODEElementBase.GetMatrix: TGLMatrix;
 begin
   Result := FLocalMatrix;
 end;
@@ -2755,7 +2755,7 @@ begin
   FDensity := Value;
 end;
 
-procedure TGLODEElementBase.SetMatrix(const Value: TMatrix);
+procedure TGLODEElementBase.SetMatrix(const Value: TGLMatrix);
 begin
   FLocalMatrix := Value;
   RebuildVectors;
@@ -3602,7 +3602,7 @@ begin
       Result := True;
 end;
 
-procedure TGLODEElementPlane.AlignGeomElementToMatrix(Mat: TMatrix);
+procedure TGLODEElementPlane.AlignGeomElementToMatrix(Mat: TGLMatrix);
 var
   d: Single;
 begin
@@ -5189,7 +5189,7 @@ begin
   end;
 end;
 
-procedure TGLODECustomCollider.SetTransform(ATransform: TMatrix);
+procedure TGLODECustomCollider.SetTransform(ATransform: TGLMatrix);
 begin
   FTransform := ATransform;
 end;
@@ -5317,7 +5317,7 @@ function TGLODEHeightField.Collide(aPos: TAffineVector; var Depth: Single;
 
   function AbsoluteToLocal(vec: TGLVector): TGLVector;
   var
-    mat: TMatrix;
+    mat: TGLMatrix;
   begin
     if Owner.Owner is TGLHeightField then
       Result := TGLHeightField(Owner.Owner).AbsoluteToLocal(vec)
@@ -5334,7 +5334,7 @@ function TGLODEHeightField.Collide(aPos: TAffineVector; var Depth: Single;
 
   function LocalToAbsolute(vec: TGLVector): TGLVector;
   var
-    mat: TMatrix;
+    mat: TGLMatrix;
   begin
     if Owner.Owner is TGLHeightField then
       Result := TGLHeightField(Owner.Owner).LocalToAbsolute(vec)

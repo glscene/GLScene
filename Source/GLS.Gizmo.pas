@@ -86,11 +86,11 @@ type
     FOldLibMaterialName: string;
     FOldAutoScaling: TGLCoordinates;
     FEffectedObject: TGLCustomSceneObject;
-    FOldMatr: TMatrix;
-    FOldMatrix: TMatrix;
+    FOldMatr: TGLMatrix;
+    FOldMatrix: TGLMatrix;
     procedure SetEffectedObject(const Value: TGLCustomSceneObject);
     procedure SetOldAutoScaling(const Value: TGLCoordinates);
-    procedure SetOldMatrix(const Value: TMatrix);
+    procedure SetOldMatrix(const Value: TGLMatrix);
   protected
     procedure DoUndo; virtual;
     function GetParent: TGLGizmoUndoCollection;
@@ -102,7 +102,7 @@ type
       Operation: TOperation); virtual;
     procedure AssignFromObject(const AObject: TGLCustomSceneObject);
     // TODO: create a special type for Matrix.
-    property OldMatrix: TMatrix read FOldMatrix write SetOldMatrix;
+    property OldMatrix: TGLMatrix read FOldMatrix write SetOldMatrix;
   published
     property EffectedObject: TGLCustomSceneObject read FEffectedObject
       write SetEffectedObject;
@@ -317,7 +317,7 @@ implementation
 procedure RotateAroundArbitraryAxis(const AnObject: TGLBaseSceneObject;
   const Axis, Origin: TAffineVector; const Angle: Single);
 var
-  M, M1, M2, M3: TMatrix;
+  M, M1, M2, M3: TGLMatrix;
 begin
   M1 := CreateTranslationMatrix(VectorNegate(Origin));
   M2 := CreateRotationMatrix(Axis, Angle * PI / 180);
@@ -1312,7 +1312,7 @@ var
   var
     Vec1: TGLVector;
     RotV: TAffineVector;
-    Pmat: TMatrix;
+    Pmat: TGLMatrix;
 
   begin
     Vec1.X := 0;
@@ -1797,7 +1797,7 @@ begin
   FOldAutoScaling.Assign(Value);
 end;
 
-procedure TGLGizmoUndoItem.SetOldMatrix(const Value: TMatrix);
+procedure TGLGizmoUndoItem.SetOldMatrix(const Value: TGLMatrix);
 begin
   FOldMatrix := Value;
 end;

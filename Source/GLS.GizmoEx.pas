@@ -54,10 +54,10 @@ type
     FIndexOldObject: Integer;
     FNameOldObject: string;
     FReturnObject: Boolean;
-    FOldMatrix: TMatrix;
+    FOldMatrix: TGLMatrix;
     FGizmoTmpRoot: TGLBaseSceneObject;
     procedure SetEffectedObject(const Value: TGLBaseSceneObject);
-    procedure SetOldMatrix(const Value: TMatrix);
+    procedure SetOldMatrix(const Value: TGLMatrix);
   protected
     procedure DoUndo;
     function GetParent: TGLGizmoExObjectCollection;
@@ -69,7 +69,7 @@ type
     procedure Notification(AComponent: TComponent; Operation: TOperation); virtual;
     procedure AssignFromObject(const AObject: TGLBaseSceneObject; AssignAndRemoveObj: Boolean = False);
     // TODO: create a special type for Matrix.
-    property OldMatrix: TMatrix read FOldMatrix write SetOldMatrix;
+    property OldMatrix: TGLMatrix read FOldMatrix write SetOldMatrix;
   published
     property EffectedObject: TGLBaseSceneobject read FEffectedObject write SetEffectedObject;
   end;
@@ -480,7 +480,7 @@ uses
 
 procedure RotateAroundArbitraryAxis(const anObject: TGLBaseSceneObject; const Axis, Origin: TAffineVector; const angle: Single);
 var
-  M, M1, M2, M3: TMatrix;
+  M, M1, M2, M3: TGLMatrix;
 begin
   M1 := CreateTranslationMatrix(VectorNegate(Origin));
   M2 := CreateRotationMatrix(Axis, Angle * PI / 180);
@@ -2138,7 +2138,7 @@ procedure TGLGizmoEx.InternalRender(Sender: TObject; var rci: TGLRenderContextIn
   var
     FLayout: TTextLayout;
     FAlignment: TAlignment;
-    wm:   TMatrix;
+    wm:   TGLMatrix;
     I, J: Integer;
   begin
     if not Assigned(FLabelFont) and (Text = '') then
@@ -3560,7 +3560,7 @@ var
   var
     vec1: TGLVector;
     rotV: TAffineVector;
-    pmat: TMatrix;
+    pmat: TGLMatrix;
     I:    Integer;
     IncludeCh: Boolean;
     v:    TGLVector;
@@ -4324,7 +4324,7 @@ begin
   FEffectedObject := Value;
 end;
 
-procedure TGLGizmoExObjectItem.SetOldMatrix(const Value: TMatrix);
+procedure TGLGizmoExObjectItem.SetOldMatrix(const Value: TGLMatrix);
 begin
   FOldMatrix := Value;
 end;

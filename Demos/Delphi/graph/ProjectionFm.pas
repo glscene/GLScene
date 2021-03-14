@@ -73,7 +73,7 @@ end;
 procedure TFormProjection.DirectOpenGLRender(Sender: TObject; var rci: TGLRenderContextInfo);
 var
   i: Integer;
-  mat: TMatrix;
+  mat: TGLMatrix;
   p, pProj: TGLVector;
   planePoint, planeNormal: TGLVector;
   plane: THmgPlane;

@@ -152,7 +152,7 @@ end;
 procedure TFormCamera.GLCamera1CustomPerspective(const viewport: TRectangle;
   width, height, DPI: Integer; var viewPortRadius: Single);
 var
-  Mat: TMatrix;
+  Mat: TGLMatrix;
 begin
   Mat :=  CreatePerspectiveMatrix(GLCamera1.GetFieldOfView(Width)/4,
     Width / Height, GLCamera1.NearPlaneBias, GLCamera1.DepthOfView);

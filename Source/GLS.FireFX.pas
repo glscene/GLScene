@@ -79,7 +79,7 @@ type
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
     procedure CalcFire(deltaTime: Double; ParticleInterval, ParticleLife: Single;
       FireAlpha: Single);
-    procedure AffParticle3d(Color2: TColorVector; const mat: TMatrix);
+    procedure AffParticle3d(Color2: TColorVector; const mat: TGLMatrix);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -526,7 +526,7 @@ begin
   end;
 end;
 
-procedure TGLFireFXManager.AffParticle3d(Color2: TColorVector; const mat: TMatrix);
+procedure TGLFireFXManager.AffParticle3d(Color2: TColorVector; const mat: TGLMatrix);
 var
   vx, vy: TGLVector;
   i: Integer;

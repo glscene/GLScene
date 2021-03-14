@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit Physics.ODESkeletonColliders;
 
 (* Skeleton colliders for defining and controlling ODE geoms. *)
@@ -10,6 +9,8 @@ interface
 
 uses
   System.Classes,
+
+  GLS.VectorTypes,
   GLS.PersistentClasses,
   GLS.VectorGeometry,
   GLS.VectorFileObjects,
@@ -133,7 +134,7 @@ end;
 procedure TSCODEBase.AlignCollider;
 var
   R: TdMatrix3;
-  Mat: TMatrix;
+  Mat: TGLMatrix;
 begin
   inherited;
   if Assigned(FGeom) then

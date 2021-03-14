@@ -50,7 +50,7 @@ int mdx, mdy;
 Gls::Vectorgeometry::TMatrix4f FBiasMatrix;
 Gls::Vectorgeometry::TMatrix4f FLightModelViewMatrix;
 Gls::Vectorgeometry::TMatrix4f FLightProjMatrix;
-Gls::VectorGeometry::TMatrix FInvCameraMatrix;
+Gls::VectorGeometry::TGLMatrix FInvCameraMatrix;
 Gls::Vectorgeometry::TMatrix4f FEyeToLightMatrix;
 
 Gls::Vectorgeometry::TMatrix4f FLightModelViewMatrix2;

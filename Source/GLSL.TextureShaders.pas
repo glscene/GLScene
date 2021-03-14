@@ -45,7 +45,7 @@ type
 
   TGLTextureSharingShaderMaterial = class(TGLInterfacedCollectionItem, IGLMaterialLibrarySupported)
   private
-    FTextureMatrix: TMatrix;
+    FTextureMatrix: TGLMatrix;
     FNeedToUpdateTextureMatrix: Boolean;
     FTextureMatrixIsUnitary: Boolean;
     FLibMaterial: TGLLibMaterial;
@@ -70,7 +70,7 @@ type
     procedure SetLibMaterial(const Value: TGLLibMaterial);
     procedure SetTexOffset(const Value: TGLCoordinates2);
     procedure SetTexScale(const Value: TGLCoordinates2);
-    function GetTextureMatrix: TMatrix;
+    function GetTextureMatrix: TGLMatrix;
     function GetTextureMatrixIsUnitary: Boolean;
   protected
     procedure coordNotifychange(Sender: TObject);
@@ -85,7 +85,7 @@ type
     constructor Create(Collection: TCollection); override;
     destructor Destroy; override;
     property LibMaterial: TGLLibMaterial read FLibMaterial write SetLibMaterial;
-    property TextureMatrix: TMatrix read GetTextureMatrix;
+    property TextureMatrix: TGLMatrix read GetTextureMatrix;
     property TextureMatrixIsUnitary: Boolean read GetTextureMatrixIsUnitary;
   published
     property TexOffset: TGLCoordinates2 read FTexOffset write SetTexOffset;
@@ -376,7 +376,7 @@ begin
   Result := FMaterialLibrary;
 end;
 
-function TGLTextureSharingShaderMaterial.GetTextureMatrix: TMatrix;
+function TGLTextureSharingShaderMaterial.GetTextureMatrix: TGLMatrix;
 begin
   if FNeedToUpdateTextureMatrix then
   begin

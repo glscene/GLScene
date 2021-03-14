@@ -447,7 +447,7 @@ type
       1 : (M : TMatrix4f);
   end;
 
-  PGLMatrix = ^TMatrix4f;
+  PGLMatrix = ^TGLMatrix;
   TGLMatrix = TMatrix4f;
 
 //-----------------------------------------------  

@@ -23,7 +23,7 @@ uses
   /// Import.Newton,    // new version
 
   GLS.VectorTypes,
-  GLS.VectorGeometry, // PGLVector TGLVector TMatrix PMatrix NullHmgVector...
+  GLS.VectorGeometry, // PGLVector TGLVector TGLMatrix PGLMatrix NullHmgVector...
   GLS.VectorLists, // TAffineVectorList for Tree
   GLS.XCollection, // TXCollection file function
   GLS.GeometryBB, // For show debug
@@ -238,7 +238,7 @@ type
     FInitialized: Boolean;
     FNewtonBody: PNewtonBody;
     FCollision: PNewtonCollision;
-    FNewtonBodyMatrix: TMatrix; // Position and Orientation
+    FNewtonBodyMatrix: TGLMatrix; // Position and Orientation
     FContinuousCollisionMode: Boolean; // Default=False
     FNGDCollisions: TGLNGDCollisions;
     FCollisionIteratorEvent: TCollisionIteratorEvent;
@@ -256,9 +256,9 @@ type
     procedure ReadFromFiler(reader: TReader); override;
     procedure Loaded; override;
     procedure SetManager(Value: TGLNGDManager);
-    procedure SetNewtonBodyMatrix(const Value: TMatrix);
+    procedure SetNewtonBodyMatrix(const Value: TGLMatrix);
     procedure SetContinuousCollisionMode(const Value: Boolean);
-    function GetNewtonBodyMatrix: TMatrix;
+    function GetNewtonBodyMatrix: TGLMatrix;
     function GetNewtonBodyAABB: TAABB;
     procedure UpdCollision; virtual;
     procedure Render; virtual;
@@ -292,7 +292,7 @@ type
     procedure Reinitialize;
     property Initialized: Boolean read FInitialized;
     class function UniqueItem: Boolean; override;
-    property NewtonBodyMatrix: TMatrix read GetNewtonBodyMatrix
+    property NewtonBodyMatrix: TGLMatrix read GetNewtonBodyMatrix
       write SetNewtonBodyMatrix;
     property NewtonBodyAABB: TAABB read GetNewtonBodyAABB;
     procedure Serialize(filename: string);
@@ -1090,7 +1090,7 @@ procedure TGLNGDManager.RebuildAllJoint(Sender: TObject);
 
   procedure BuildCustomBallAndSocket(Joint: TGLNGDJoint);
   var
-    pinAndPivot: TMatrix;
+    pinAndPivot: TGLMatrix;
   begin
     with Joint do
       if Assigned(FParentObject) and Assigned(FChildObject) then
@@ -1115,7 +1115,7 @@ procedure TGLNGDManager.RebuildAllJoint(Sender: TObject);
 
   procedure BuildCustomHinge(Joint: TGLNGDJoint);
   var
-    pinAndPivot: TMatrix;
+    pinAndPivot: TGLMatrix;
     bso: TGLBaseSceneObject;
   begin
     (* Newton wait from FPinAndPivotMatrix a structure like that:
@@ -1153,7 +1153,7 @@ procedure TGLNGDManager.RebuildAllJoint(Sender: TObject);
 
   procedure BuildCustomSlider(Joint: TGLNGDJoint);
   var
-    pinAndPivot: TMatrix;
+    pinAndPivot: TGLMatrix;
     bso: TGLBaseSceneObject;
 
   begin
@@ -1430,7 +1430,7 @@ end;
 function TGLNGDBehaviour.GetBSphereCollision: PNewtonCollision;
 var
   boundingSphere: TBSphere;
-  collisionOffsetMatrix: TMatrix;
+  collisionOffsetMatrix: TGLMatrix;
 begin
   AABBToBSphere(FOwnerBaseSceneObject.AxisAlignedBoundingBoxEx, boundingSphere);
 
@@ -1526,7 +1526,7 @@ begin
     Result := GetNullCollision;
 end;
 
-function TGLNGDBehaviour.GetNewtonBodyMatrix: TMatrix;
+function TGLNGDBehaviour.GetNewtonBodyMatrix: TGLMatrix;
 begin
   if Assigned(FManager) then
     NewtonBodyGetmatrix(FNewtonBody, @FNewtonBodyMatrix);
@@ -1561,7 +1561,7 @@ end;
 
 function TGLNGDBehaviour.GetPrimitiveCollision: PNewtonCollision;
 var
-  collisionOffsetMatrix: TMatrix; // For cone capsule and cylinder
+  collisionOffsetMatrix: TGLMatrix; // For cone capsule and cylinder
 begin
   collisionOffsetMatrix := IdentityHmgMatrix;
 
@@ -1754,7 +1754,7 @@ end;
 
 procedure TGLNGDBehaviour.Render;
 var
-  M: TMatrix;
+  M: TGLMatrix;
 begin
   // Rebuild collision in design time
   if (csDesigning in FOwnerBaseSceneObject.ComponentState) then
@@ -1849,7 +1849,7 @@ begin
   end;
 end;
 
-procedure TGLNGDBehaviour.SetNewtonBodyMatrix(const Value: TMatrix);
+procedure TGLNGDBehaviour.SetNewtonBodyMatrix(const Value: TGLMatrix);
 begin
   FNewtonBodyMatrix := Value;
   if Assigned(FManager) then
@@ -2114,7 +2114,7 @@ procedure TGLNGDDynamic.Render;
 
   function GetAbsCom(): TGLVector;
   var
-    M: TMatrix;
+    M: TGLMatrix;
   begin
     NewtonBodyGetCentreOfMass(FNewtonBody, @Result);
     M := IdentityHmgMatrix;
@@ -2413,7 +2413,7 @@ begin
     else
       // Make the Position and orientation of the glscene-Object relative to the
       // NewtonBody position and orientation.
-      FOwnerBaseSceneObject.AbsoluteMatrix := pMatrix(cmatrix)^;
+      FOwnerBaseSceneObject.AbsoluteMatrix := PGLMatrix(cmatrix)^;
 end;
 
 // ------------------------
@@ -2723,7 +2723,7 @@ procedure TGLNGDJoint.Render;
 
   procedure DrawKinematic;
   var
-    pickedMatrix: TMatrix;
+    pickedMatrix: TGLMatrix;
     size: Single;
   begin
     size := FManager.DebugOption.DotAxisSize;

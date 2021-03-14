@@ -61,11 +61,11 @@ __published:	// IDE-managed Components
 	void __fastcall PrepareShadowMappingRender(TObject *Sender, TGLRenderContextInfo &rci);
 
 private:	// User declarations
-	TMatrix FBiasMatrix;
-	TMatrix FLightModelViewMatrix;
-	TMatrix FLightProjMatrix;
-	TMatrix FInvCameraMatrix;
-	TMatrix FEyeToLightMatrix;
+	TGLMatrix FBiasMatrix;
+	TGLMatrix FLightModelViewMatrix;
+	TGLMatrix FLightProjMatrix;
+	TGLMatrix FInvCameraMatrix;
+	TGLMatrix FEyeToLightMatrix;
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
 };

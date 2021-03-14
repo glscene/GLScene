@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Spline;
 
 (* Cubic spline interpolation functions *)
@@ -9,6 +8,7 @@ unit GLS.Spline;
 interface
 
 uses
+  GLS.VectorTypes,
   GLS.VectorGeometry;
 
 {$I GLScene.inc}

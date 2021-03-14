@@ -90,7 +90,7 @@ type
   private
     FFaces: TGLASEFaceList;
     FVertices: TAffineVectorList;
-    FMatrix: TMatrix;
+    FMatrix: TGLMatrix;
     FInheritedPosition: TAffineVector;
     FInheritedScale: TAffineVector;
     FInheritedRotation: TAffineVector;
@@ -113,7 +113,7 @@ type
     property Vertices: TAffineVectorList read FVertices;
     property TextChannel[Channel: Integer]: TAffineVectorList read GetTextChannel;
     property TextChannelsCount: Integer read FTexChannelsCount;
-    property Matrix: TMatrix read FMatrix;
+    property Matrix: TGLMatrix read FMatrix;
     property InheritedPosition: TAffineVector read FInheritedPosition;
     property InheritedRotation: TAffineVector read FInheritedRotation;
     property InheritedScale: TAffineVector read FInheritedScale;

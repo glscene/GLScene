@@ -93,7 +93,7 @@ void __fastcall TForm1::DOInitializeRender(TObject *Sender, TGLRenderContextInfo
 void __fastcall TForm1::GLUserShader1DoApply(TObject *Sender, TGLRenderContextInfo &rci)
 
 {
-  TVector camPos;
+  TGLVector camPos;
 
   programObject = new TGLProgramHandle();
   programObject->UseProgramObject();

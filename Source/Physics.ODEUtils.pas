@@ -35,10 +35,10 @@ procedure DrawBox(Sides: TdVector3);
 procedure setTransform(pos: TdVector3; R: TdMatrix3);
 procedure dsDrawBox(pos: PdVector3; R: PdMatrix3; Sides: TdVector3); overload;
 procedure dsDrawBox(pos: TdVector3; R: TdMatrix3; Sides: TdVector3); overload;
-procedure ODERToGLSceneMatrix(var m: TMatrix; R: TdMatrix3; pos: TdVector3); overload;
-procedure ODERToGLSceneMatrix(var m: TMatrix; R: PdMatrix3; pos: PdVector3); overload;
-procedure ODERToGLSceneMatrix(var m: TMatrix; R: TdMatrix3_As3x4; pos:  TdVector3); overload;
-function GLSceneMatrixToODER(m: TMatrix): TdMatrix3;
+procedure ODERToGLSceneMatrix(var m: TGLMatrix; R: TdMatrix3; pos: TdVector3); overload;
+procedure ODERToGLSceneMatrix(var m: TGLMatrix; R: PdMatrix3; pos: PdVector3); overload;
+procedure ODERToGLSceneMatrix(var m: TGLMatrix; R: TdMatrix3_As3x4; pos:  TdVector3); overload;
+function GLSceneMatrixToODER(m: TGLMatrix): TdMatrix3;
 
 // Converting between ODE and GLScene formats
 function ConvertdVector3ToVector3f(R: TdVector3): TVector3f; overload;
@@ -73,7 +73,7 @@ function CreateTriMeshFromBaseMesh(
   var Vertices: PdVector3Array;
   var Indices: PdIntegerArray): PdxGeom;
 
-function GLMatrixFromGeom(Geom: PdxGeom): TMatrix;
+function GLMatrixFromGeom(Geom: PdxGeom): TGLMatrix;
 function GLDirectionFromGeom(Geom: PdxGeom): TGLVector;
 function CreateODEPlaneFromGLPlane(Plane: TGLPlane; Space: PdxSpace): PdxGeom;
 procedure RenderGeomList(GeomList: TGeomList);
@@ -85,7 +85,7 @@ function RandomColorVector: TGLVector;
 implementation
 //---------------------------------------------------------------------------
 
-procedure ODERToGLSceneMatrix(var m: TMatrix; R: TdMatrix3_As3x4; pos: TdVector3); overload;
+procedure ODERToGLSceneMatrix(var m: TGLMatrix; R: TdMatrix3_As3x4; pos: TdVector3); overload;
 begin
   m.X.X := r[0][0];
   m.X.Y := r[0][1];
@@ -108,12 +108,12 @@ begin
   m.W.W := 1; //}
 end;
 
-procedure ODERToGLSceneMatrix(var m: TMatrix; R: PdMatrix3; pos: PdVector3);
+procedure ODERToGLSceneMatrix(var m: TGLMatrix; R: PdMatrix3; pos: PdVector3);
 begin
   ODERToGLSceneMatrix(m, TdMatrix3_As3x4(R^), pos^);
 end;
 
-procedure ODERToGLSceneMatrix(var m: TMatrix; R: TdMatrix3; pos: TdVector3);
+procedure ODERToGLSceneMatrix(var m: TGLMatrix; R: TdMatrix3; pos: TdVector3);
 begin
   ODERToGLSceneMatrix(m, TdMatrix3_As3x4(R), pos);
 end;
@@ -163,7 +163,7 @@ begin
   gl.End_();
 end;
 
-function GLSceneMatrixToODER(m: TMatrix): TdMatrix3;
+function GLSceneMatrixToODER(m: TGLMatrix): TdMatrix3;
 begin
   TransposeMatrix(m);
   Result[0] := m.X.X;
@@ -302,7 +302,7 @@ begin
     PositionSceneObject(TGLBaseSceneObject(Geom.Data), Geom);
 end;
 
-function GLMatrixFromGeom(Geom: PdxGeom): TMatrix;
+function GLMatrixFromGeom(Geom: PdxGeom): TGLMatrix;
 var
   pos, Pos2: PdVector3;
   R, R2: PdMatrix3;
@@ -346,7 +346,7 @@ end;
 
 function GLDirectionFromGeom(Geom: PdxGeom): TGLVector;
 var
-  m: TMatrix;
+  m: TGLMatrix;
 begin
   m := GLMatrixFromGeom(Geom);
 
@@ -376,7 +376,7 @@ end;
 procedure CopyPosFromGeomToGL(Geom: PdxGeom; GLBaseSceneObject: TGLBaseSceneObject);
 var
   v: TGLVector;
-  m: TMatrix;
+  m: TGLMatrix;
 
   R: PdMatrix3;
   pos: PdVector3;

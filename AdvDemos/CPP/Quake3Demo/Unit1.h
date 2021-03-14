@@ -84,8 +84,8 @@ private:	// User declarations
 	TMD3TagList *TorsoTags;
 	TMD3TagList *WeaponTags;
 	void __fastcall BuildModel();
-	Glvectorgeometry::TMatrix __fastcall InterpolateMatrix(
-	       Glvectorgeometry::TMatrix m1, Glvectorgeometry::TMatrix m2, Single Delta);
+	Glvectorgeometry::TGLMatrix __fastcall InterpolateMatrix(
+	       Glvectorgeometry::TGLMatrix m1, Glvectorgeometry::TGLMatrix m2, Single Delta);
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
 };

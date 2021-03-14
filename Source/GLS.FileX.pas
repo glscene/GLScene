@@ -47,7 +47,7 @@ var
   var
     i, j, k, l, vertcount: integer;
     mo: TMeshObject;
-    mat: TMatrix;
+    mat: TGLMatrix;
     libmat: TGLLibMaterial;
     fg: TFGVertexNormalTexIndexList;
     str: String;

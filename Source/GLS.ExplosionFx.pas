@@ -220,7 +220,7 @@ procedure TGLBExplosionFX.Render(var rci : TGLRenderContextInfo);
 var
   Face: integer;
   dir, p1, p2, p3: TAffineVector;
-  mat: TMatrix;
+  mat: TGLMatrix;
 
 begin
   if not FEnabled then

@@ -61,7 +61,7 @@ type
    constructor Create(AOwner: TGLTree);
     destructor Destroy; override;
     procedure BuildList(var rci: TGLRenderContextInfo);
-    procedure AddNew(matrix: TMatrix);
+    procedure AddNew(matrix: TGLMatrix);
     procedure Clear;
     property Owner: TGLTree read FOwner;
     property Count: Integer read FCount;
@@ -79,12 +79,12 @@ type
     FParent: TGLTreeBranch;
     FBranchID: Integer;
     FParentID: Integer;
-    FMatrix: TMatrix;
+    FMatrix: TGLMatrix;
     FLower: TIntegerList;
     FUpper: TIntegerList;
     FCentralLeader: Boolean;
     procedure BuildBranch(branchNoise: TGLTreeBranchNoise;
-      const matrix: TMatrix; TexCoordY, Twist: Single; Level: Integer);
+      const matrix: TGLMatrix; TexCoordY, Twist: Single; Level: Integer);
   public
     constructor Create(AOwner: TGLTreeBranches; AParent: TGLTreeBranch);
     destructor Destroy; override;
@@ -93,7 +93,7 @@ type
     property Center: TGLTreeBranch read FCenter;
     property Right: TGLTreeBranch read FRight;
     property Parent: TGLTreeBranch read FParent;
-    property matrix: TMatrix read FMatrix;
+    property matrix: TGLMatrix read FMatrix;
     property Lower: TIntegerList read FLower;
     property Upper: TIntegerList read FUpper;
   end;
@@ -284,7 +284,7 @@ begin
   inherited;
 end;
 
-procedure TGLTreeLeaves.AddNew(matrix: TMatrix);
+procedure TGLTreeLeaves.AddNew(matrix: TGLMatrix);
 var
   radius: Single;
   pos: TGLVector;
@@ -400,7 +400,7 @@ begin
 end;
 
 procedure TGLTreeBranch.BuildBranch(branchNoise: TGLTreeBranchNoise;
-  const matrix: TMatrix; TexCoordY, Twist: Single; Level: Integer);
+  const matrix: TGLMatrix; TexCoordY, Twist: Single; Level: Integer);
 var
   i: Integer;
   Tree: TGLTree;
@@ -414,7 +414,7 @@ var
   LeftBranchNoise: TGLTreeBranchNoise;
   CenterBranchNoise: TGLTreeBranchNoise;
   RightBranchNoise: TGLTreeBranchNoise;
-  LeftMatrix, RightMatrix, CenterMatrix: TMatrix;
+  LeftMatrix, RightMatrix, CenterMatrix: TGLMatrix;
   central_leader: Boolean;
 begin
   Assert(Assigned(FOwner), 'Incorrect use of TGLTreeBranch');
@@ -839,7 +839,7 @@ procedure TGLTree.BuildMesh(GLBaseMesh: TGLBaseMesh);
     Frame: TGLSkeletonFrame);
   var
     trans: TTransformations;
-    mat: TMatrix;
+    mat: TGLMatrix;
     rot, pos: TAffineVector;
   begin
     bone.Name := 'Branch' + IntToStr(Branch.FBranchID);

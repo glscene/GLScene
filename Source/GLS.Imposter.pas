@@ -417,7 +417,7 @@ end;
 
 procedure TImposter.BeginRender(var rci: TGLRenderContextInfo);
 var
-  mat: TMatrix;
+  mat: TGLMatrix;
   filter: Cardinal;
   fx, fy, yOffset, cosAlpha, dynScale: Single;
 begin
@@ -1124,7 +1124,7 @@ var
   xDest, xSrc, yDest, ySrc: Integer;
   corona: TGLStaticImposterBuilderCorona;
   fx, fy, yOffset: Single;
-  LM: TMatrix;
+  LM: TGLMatrix;
 begin
   FTextureSize := ComputeOptimalTextureSize;
   if (FTextureSize.X <= 0) and (FTextureSize.Y <= 0) then
@@ -1302,7 +1302,7 @@ procedure TGLDynamicImposterBuilder.DoRender(var rci : TGLRenderContextInfo;
 var
   i, size, Left, Top, Width, Height : Integer;
   imposter : TGLImposter;
-  mat, projection, modelview : TMatrix;
+  mat, projection, modelview : TGLMatrix;
   BackColor, pos, temp : TGLVector;
   rad : Single;
   AABB : TAABB;
@@ -1508,10 +1508,10 @@ begin
    Result:=NullHMGVector;
 end;
 
-function TGLImposter.CalcError(NewMatrix : TMatrix) : Single;
+function TGLImposter.CalcError(NewMatrix : TGLMatrix) : Single;
 var
    i : Integer;
-   mat : TMatrix;
+   mat : TGLMatrix;
    err : Single;
 begin
    err:=0;

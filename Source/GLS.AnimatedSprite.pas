@@ -673,7 +673,7 @@ procedure TGLAnimatedSprite.BuildList(var rci: TGLRenderContextInfo);
 var
   vx, vy: TAffineVector;
   w, h, temp: Single;
-  mat: TMatrix;
+  mat: TGLMatrix;
   u0, v0, u1, v1: Single;
   x0, y0, x1, y1, TexWidth, TexHeight: Integer;
   Anim: TGLSpriteAnimation;

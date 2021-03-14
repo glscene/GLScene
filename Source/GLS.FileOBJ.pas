@@ -20,6 +20,7 @@ uses
   System.Classes,
   System.SysUtils,
 
+  GLS.VectorTypes,
   GLS.ApplicationFileIO,
   GLS.PersistentClasses,
   GLS.VectorGeometry,
@@ -100,7 +101,6 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLS.VectorTypes,
   GLS.Strings,
   GLS.OpenGLTokens,
   GLS.XOpenGL,

@@ -1024,7 +1024,7 @@ const
   DefaultRowCount = 3;
   DefaultColCount = 3;
   VectorTypeName = 'TGLVector';
-  MatrixTypeName = 'TMatrix';
+  MatrixTypeName = 'TGLMatrix';
 var
   RTTIContext: TRttiContext;
   Field : TRttiField;
@@ -1382,4 +1382,4 @@ begin
 end;
 
 
-end.
+end.

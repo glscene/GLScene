@@ -158,7 +158,7 @@ type
     class function FriendlyName: String; override;
     class function FriendlyDescription: String; override;
     class function UniqueItem: Boolean; override;
-    // function Star(Vector:TAffineVector):TMatrix;
+    // function Star(Vector:TAffineVector):TGLMatrix;
     function QuaternionToString(Quat: TQuaternion): String;
     procedure RemoveForces(); override;
     procedure SetTorque(x, y, z: Real);
@@ -700,7 +700,7 @@ begin
 end;
 
 (*
- function TGLRigidBodyInertia.Star(Vector:TAffineVector):TMatrix;
+ function TGLRigidBodyInertia.Star(Vector:TAffineVector):TGLMatrix;
   begin
   Result.X.X:=0;             Result[0][1]:=-Vector[2];  Result[0][2]:=Vector[1];  Result[0][3]:=0;
   Result[1][0]:=Vector[2];   Result[1][1]:=0;           Result[1][2]:=-Vector[0]; Result[1][3]:=0;
@@ -792,7 +792,7 @@ var
   IRt: TAffineMAtrix;
   Rt: TAffineMAtrix;
   Scale: TAffineVector;
-  RMatrix: TMatrix;
+  RMatrix: TGLMatrix;
 begin
   // TODO: sort this out
   fBodyInverseInertiaTensor := IdentityMatrix;

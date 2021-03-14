@@ -130,10 +130,10 @@ procedure TGLShadowPlane.DoRender(var ARci: TGLRenderContextInfo;
   ARenderSelf, ARenderChildren: Boolean);
 var
   oldProxySubObject, oldIgnoreMaterials: Boolean;
-  shadowMat: TMatrix;
+  shadowMat: TGLMatrix;
   sr, ds: TRect;
   CurrentBuffer: TGLSceneBuffer;
-  ModelMat: TMatrix;
+  ModelMat: TGLMatrix;
 begin
   if FRendering then
     Exit;

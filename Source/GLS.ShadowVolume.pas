@@ -363,7 +363,7 @@ end;
 function TGLShadowVolumeLight.SetupScissorRect(worldAABB: PAABB; var rci:
   TGLRenderContextInfo): Boolean;
 var
-  mvp: TMatrix;
+  mvp: TGLMatrix;
   ls: TGLLightSource;
   aabb: TAABB;
   clipRect: TClipRect;
@@ -622,7 +622,7 @@ var
   silParams: TGLSilhouetteParameters;
   worldAABB: TAABB;
   pWorldAABB: PAABB;
-  PM: TMatrix;
+  PM: TGLMatrix;
 begin
   if not Active then
   begin

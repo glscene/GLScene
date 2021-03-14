@@ -51,10 +51,10 @@ void __fastcall TForm1::FormCreate(TObject *Sender) {
 }
 
 // ---------------------------------------------------------------------------
-Glvectorgeometry::TMatrix __fastcall TForm1::InterpolateMatrix
-	(Glvectorgeometry::TMatrix m1, Glvectorgeometry::TMatrix m2, float delta) {
+Glvectorgeometry::TGLMatrix __fastcall TForm1::InterpolateMatrix
+	(Glvectorgeometry::TGLMatrix m1, Glvectorgeometry::TGLMatrix m2, float delta) {
 	int i, j;
-	Glvectorgeometry::TMatrix mat;
+	Glvectorgeometry::TGLMatrix mat;
 	// This is used for interpolating between 2 matrices. The result
 	// is used to reposition the model parts each frame.
 	//
@@ -140,8 +140,8 @@ void __fastcall TForm1::ComboBox2Change(TObject *Sender) {
 // ---------------------------------------------------------------------------
 void __fastcall TForm1::GLCadencer1Progress(TObject *Sender,
 	const double deltaTime, const double newTime) {
-	Glvectorgeometry::TMatrix m1;
-	Glvectorgeometry::TMatrix m2;
+	Glvectorgeometry::TGLMatrix m1;
+	Glvectorgeometry::TGLMatrix m2;
 
 	// Set the transform for the torso
 	m1 = LegsTags->GetTransform("tag_torso", Legs->CurrentFrame);

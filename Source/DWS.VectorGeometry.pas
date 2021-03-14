@@ -159,7 +159,7 @@ begin
     Info.Element([i]).Value := vec[i];
 end;
 
-function GetMatrixFromInfo(Info: IInfo): TMatrix;
+function GetMatrixFromInfo(Info: IInfo): TGLMatrix;
 var
   i: Integer;
 begin
@@ -169,7 +169,7 @@ begin
       .Value, Info.Element([i]).Element([3]).Value);
 end;
 
-procedure SetInfoFromMatrix(Info: IInfo; mat: TMatrix);
+procedure SetInfoFromMatrix(Info: IInfo; mat: TGLMatrix);
 var
   i, j: Integer;
 begin
@@ -187,7 +187,7 @@ begin
   // Array types
   SymbolTable.AddSymbol(TStaticArraySymbol.Create('TGLVector',
     FloatSymbol, 0, 3));
-  SymbolTable.AddSymbol(TStaticArraySymbol.Create('TMatrix',
+  SymbolTable.AddSymbol(TStaticArraySymbol.Create('TGLMatrix',
     SymbolTable.FindSymbol('TGLVector'), 0, 3));
 
   // Vector functions
@@ -217,30 +217,30 @@ begin
   TVectorNormalizeFunction.Create(SymbolTable, 'VectorNormalize',
     ['v', 'TGLVector'], 'TGLVector');
   TVectorTransformFunction.Create(SymbolTable, 'VectorTransform',
-    ['v', 'TGLVector', 'm', 'TMatrix'], 'TGLVector');
+    ['v', 'TGLVector', 'm', 'TGLMatrix'], 'TGLVector');
 
   // Matrix function
   TInvertMatrixFunction.Create(SymbolTable, 'InvertMatrix',
-    ['@mat', 'TMatrix'], '');
+    ['@mat', 'TGLMatrix'], '');
   TTransposeMatrixFunction.Create(SymbolTable, 'TransposeMatrix',
-    ['@mat', 'TMatrix'], '');
+    ['@mat', 'TGLMatrix'], '');
   TMatrixMultiplyFunction.Create(SymbolTable, 'MatrixMultiply',
-    ['m1', 'TMatrix', 'm2', 'TMatrix'], 'TMatrix');
+    ['m1', 'TGLMatrix', 'm2', 'TGLMatrix'], 'TGLMatrix');
   TCreateScaleMatrixFunction.Create(SymbolTable, 'CreateScaleMatrix',
-    ['v', 'TGLVector'], 'TMatrix');
+    ['v', 'TGLVector'], 'TGLMatrix');
   TCreateTranslationMatrixFunction.Create(SymbolTable,
-    'CreateTranslationMatrix', ['v', 'TGLVector'], 'TMatrix');
+    'CreateTranslationMatrix', ['v', 'TGLVector'], 'TGLMatrix');
   TCreateScaleAndTranslationMatrixFunction.Create(SymbolTable,
     'CreateScaleAndTranslationMatrix', ['scale', 'TGLVector', 'offset',
-    'TGLVector'], 'TMatrix');
+    'TGLVector'], 'TGLMatrix');
   TCreateRotationMatrixXFunction.Create(SymbolTable, 'CreateRotationMatrixX',
-    ['angle', 'Float'], 'TMatrix');
+    ['angle', 'Float'], 'TGLMatrix');
   TCreateRotationMatrixYFunction.Create(SymbolTable, 'CreateRotationMatrixY',
-    ['angle', 'Float'], 'TMatrix');
+    ['angle', 'Float'], 'TGLMatrix');
   TCreateRotationMatrixZFunction.Create(SymbolTable, 'CreateRotationMatrixZ',
-    ['angle', 'Float'], 'TMatrix');
+    ['angle', 'Float'], 'TGLMatrix');
   TCreateRotationMatrixFunction.Create(SymbolTable, 'CreateRotationMatrix',
-    ['anAxis', 'TGLVector', 'angle', 'Float'], 'TMatrix');
+    ['anAxis', 'TGLVector', 'angle', 'Float'], 'TGLMatrix');
 end;
 
 constructor TdwsVectorGeometryUnit.Create(AOwner: TComponent);
@@ -368,7 +368,7 @@ end;
 procedure TVectorTransformFunction.Execute;
 var
   v, vr: TGLVector;
-  mat: TMatrix;
+  mat: TGLMatrix;
 begin
   v := GetVectorFromInfo(Info.Vars['v']);
   mat := GetMatrixFromInfo(Info.Vars['mat']);
@@ -378,7 +378,7 @@ end;
 
 procedure TInvertMatrixFunction.Execute;
 var
-  mat: TMatrix;
+  mat: TGLMatrix;
 begin
   mat := GetMatrixFromInfo(Info.Vars['mat']);
   InvertMatrix(mat);
@@ -387,7 +387,7 @@ end;
 
 procedure TTransposeMatrixFunction.Execute;
 var
-  mat: TMatrix;
+  mat: TGLMatrix;
 begin
   mat := GetMatrixFromInfo(Info.Vars['mat']);
   TransposeMatrix(mat);
@@ -396,7 +396,7 @@ end;
 
 procedure TMatrixMultiplyFunction.Execute;
 var
-  m1, m2, mr: TMatrix;
+  m1, m2, mr: TGLMatrix;
 begin
   m1 := GetMatrixFromInfo(Info.Vars['m1']);
   m2 := GetMatrixFromInfo(Info.Vars['m2']);
@@ -407,7 +407,7 @@ end;
 procedure TCreateScaleMatrixFunction.Execute;
 var
   v: TGLVector;
-  mr: TMatrix;
+  mr: TGLMatrix;
 begin
   v := GetVectorFromInfo(Info.Vars['v']);
   mr := CreateScaleMatrix(v);
@@ -417,7 +417,7 @@ end;
 procedure TCreateTranslationMatrixFunction.Execute;
 var
   v: TGLVector;
-  mr: TMatrix;
+  mr: TGLMatrix;
 begin
   v := GetVectorFromInfo(Info.Vars['v']);
   mr := CreateTranslationMatrix(v);
@@ -427,7 +427,7 @@ end;
 procedure TCreateScaleAndTranslationMatrixFunction.Execute;
 var
   scale, offset: TGLVector;
-  mr: TMatrix;
+  mr: TGLMatrix;
 begin
   scale := GetVectorFromInfo(Info.Vars['scale']);
   offset := GetVectorFromInfo(Info.Vars['offset']);
@@ -438,7 +438,7 @@ end;
 procedure TCreateRotationMatrixXFunction.Execute;
 var
   angle: Single;
-  mr: TMatrix;
+  mr: TGLMatrix;
 begin
   angle := Info['angle'];
   mr := CreateRotationMatrixX(angle);
@@ -448,7 +448,7 @@ end;
 procedure TCreateRotationMatrixYFunction.Execute;
 var
   angle: Single;
-  mr: TMatrix;
+  mr: TGLMatrix;
 begin
   angle := Info['angle'];
   mr := CreateRotationMatrixY(angle);
@@ -458,7 +458,7 @@ end;
 procedure TCreateRotationMatrixZFunction.Execute;
 var
   angle: Single;
-  mr: TMatrix;
+  mr: TGLMatrix;
 begin
   angle := Info['angle'];
   mr := CreateRotationMatrixZ(angle);
@@ -469,7 +469,7 @@ procedure TCreateRotationMatrixFunction.Execute;
 var
   angle: Single;
   anAxis: TGLVector;
-  mr: TMatrix;
+  mr: TGLMatrix;
 begin
   anAxis := GetVectorFromInfo(Info.Vars['anAxis']);
   angle := Info['angle'];

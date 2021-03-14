@@ -84,7 +84,7 @@ type
   public
     LegsTags, TorsoTags, WeaponTags: TMD3TagList;
     procedure BuildModel;
-    function InterpolateMatrix(m1, m2: TMatrix; delta: single): TMatrix;
+    function InterpolateMatrix(m1, m2: TGLMatrix; delta: single): TGLMatrix;
   end;
 
 var
@@ -278,7 +278,7 @@ begin
   LoadQ3Anims(Torso.Animations, '.\model\animation.cfg', 'TORSO');
 end;
 
-function TForm1.InterpolateMatrix(m1, m2: TMatrix; delta: single): TMatrix;
+function TForm1.InterpolateMatrix(m1, m2: TGLMatrix; delta: single): TGLMatrix;
 var
   i, j: Integer;
 begin
@@ -293,7 +293,7 @@ end;
 procedure TForm1.GLCadencer1Progress(Sender: TObject;
   const deltaTime, newTime: Double);
 var
-  m1, m2: TMatrix;
+  m1, m2: TGLMatrix;
 begin
   // Set the transform for the torso
   m1 := LegsTags.GetTransform('tag_torso', Legs.CurrentFrame);

@@ -29,14 +29,14 @@ TForm1 *Form1;
 int __cdecl BuoyancyPlaneCallback(const int collisionID, void *context,
   const PNGDFloat globalSpaceMatrix, PNGDFloat globalSpacePlane)
 {
-  Gls::Vectorgeometry::TMatrix *BodyMatrix;
+  Gls::Vectorgeometry::TGLMatrix *BodyMatrix;
   TGLVector PlaneEquation;
-  Gls::Vectorgeometry::PVector pv;
+  Gls::Vectorgeometry::PGLVector pv;
   TForm1 *MyForm;
 
   // Get the matrix of the actual body
 
-  BodyMatrix = (PMatrix) globalSpaceMatrix;
+  BodyMatrix = (PGLMatrix) globalSpaceMatrix;
   MyForm = (TForm1 *) context;
 
   // this is the 4-value vector that represents the plane equation for

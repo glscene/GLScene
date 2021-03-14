@@ -71,11 +71,11 @@ type
 
   TDXFrame = class(TDXNode)
   private
-    FMatrix: TMatrix;
+    FMatrix: TGLMatrix;
   public
     constructor Create; override;
-    function GlobalMatrix: TMatrix;
-    property Matrix: TMatrix read FMatrix write FMatrix;
+    function GlobalMatrix: TGLMatrix;
+    property Matrix: TGLMatrix read FMatrix write FMatrix;
 
   end;
 
@@ -259,7 +259,7 @@ var
     Result := StrToFloatDef(str, 0);
   end;
 
-  function ReadMatrix: TMatrix;
+  function ReadMatrix: TGLMatrix;
   var
     i, j: Integer;
   begin
@@ -670,7 +670,7 @@ begin
   FMatrix := IdentityHMGMatrix;
 end;
 
-function TDXFrame.GlobalMatrix: TMatrix;
+function TDXFrame.GlobalMatrix: TGLMatrix;
 begin
   if Owner is TDXFrame then
     Result := MatrixMultiply(TDXFrame(Owner).GlobalMatrix, FMatrix)
