@@ -12,7 +12,6 @@ object Form1: TForm1
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  WindowState = wsMaximized
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96

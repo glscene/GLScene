@@ -2959,7 +2959,7 @@ begin
   end;
 end;
 
-procedure TGLSphere.SetSlices(aValue: Integer);
+procedure TGLSphere.SetSlices(aValue: TGLInt);
 begin
   if aValue <> FSlices then
   begin
@@ -3531,7 +3531,7 @@ begin
   end;
 end;
 
-procedure TGLSuperellipsoid.SetSlices(aValue: Integer);
+procedure TGLSuperellipsoid.SetSlices(aValue: TGLInt);
 begin
   if aValue <> FSlices then
   begin

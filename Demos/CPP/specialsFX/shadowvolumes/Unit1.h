@@ -32,7 +32,7 @@ __published:                   // IDE-managed Components
   TGLCamera *GLCamera;
   TGLDummyCube *DCCamera;
   TGLLightSource *GLLightSource1;
-  TGLShadowVolume *GLS.ShadowVolume;
+  TGLShadowVolume *GLShadowVolume;
   TGLSphere *GLSphere1;
   TGLDummyCube *DCLight1Turn;
   TGLDummyCube *DCLight1Pitch;

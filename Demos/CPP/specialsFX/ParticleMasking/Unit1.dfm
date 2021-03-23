@@ -11,7 +11,6 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  WindowState = wsMaximized
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
   PixelsPerInch = 96
@@ -115,6 +114,7 @@ object Form1: TForm1
     Camera = Camera
     Buffer.BackgroundColor = clBackground
     FieldOfView = 175.409606933593800000
+    PenAsTouch = False
     Align = alClient
     OnMouseMove = SceneViewerMouseMove
     TabOrder = 1

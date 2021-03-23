@@ -20,7 +20,6 @@
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.FileMD2"
 
-#pragma link "Cg.Shader"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------

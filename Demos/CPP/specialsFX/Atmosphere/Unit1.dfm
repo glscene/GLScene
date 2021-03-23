@@ -23,6 +23,7 @@ object Form1: TForm1
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
     FieldOfView = 166.785736083984400000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
@@ -179,7 +180,6 @@ object Form1: TForm1
       end
       object GLDummyCube1: TGLDummyCube
         ObjectsSorting = osNone
-        Direction.Coordinates = {00000000000000800000803F00000000}
         Position.Coordinates = {0000204100000040000040400000803F}
         CubeSize = 1.000000000000000000
         object GLSphere1: TGLSphere

@@ -26,12 +26,11 @@ object Form1: TForm1
     Margins.Bottom = 2
     Camera = GLCamera
     FieldOfView = 179.686050415039100000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewerMouseDown
     OnMouseMove = GLSceneViewerMouseMove
     TabOrder = 0
-    ExplicitWidth = 425
-    ExplicitHeight = 272
   end
   object MainMenu1: TMainMenu
     Left = 208
@@ -146,7 +145,6 @@ object Form1: TForm1
       Material.Texture.MinFilter = miLinear
       Material.Texture.TextureMode = tmReplace
       Material.Texture.Disabled = False
-      Direction.Coordinates = {00000000000000800000803F00000000}
       XSamplingScale.Max = 16.000000000000000000
       XSamplingScale.Step = 8.000000000000000000
       YSamplingScale.Max = 16.000000000000000000

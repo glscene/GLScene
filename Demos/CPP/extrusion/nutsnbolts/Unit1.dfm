@@ -12,7 +12,6 @@ object Form1: TForm1
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  WindowState = wsMaximized
   OnMouseWheel = FormMouseWheel
   PixelsPerInch = 96
   TextHeight = 13
@@ -24,6 +23,7 @@ object Form1: TForm1
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
     FieldOfView = 152.777770996093800000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove

@@ -27,12 +27,15 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::GenerateCubeMap()
 {
    // Don't do anything if cube maps aren't supported
+   /*
    if (!CubmapSupported) {
 	  if (!CubeMapWarnDone)
 		 ShowMessage("Your graphics hardware does not support cube maps...");
 	  CubeMapWarnDone = true;
 	  exit;
    }
+   */
+
    // Here we generate the new cube map, from CubeMapCamera (a child of the
    // teapot in the scene hierarchy)
    // hide the teapot while rendering the cube map

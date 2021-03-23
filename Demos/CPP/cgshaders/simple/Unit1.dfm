@@ -384,7 +384,6 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 1
-    ExplicitWidth = 217
     object PanelFPS: TPanel
       Left = 1
       Top = 1
@@ -399,7 +398,6 @@ object Form1: TForm1
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 215
     end
     object GLSceneViewer1: TGLSceneViewer
       Left = 1
@@ -414,7 +412,6 @@ object Form1: TForm1
       OnMouseDown = GLSceneViewer1MouseDown
       OnMouseMove = GLSceneViewer1MouseMove
       TabOrder = 1
-      ExplicitWidth = 215
     end
   end
   object GLScene1: TGLScene

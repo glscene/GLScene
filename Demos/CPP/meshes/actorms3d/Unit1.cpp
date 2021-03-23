@@ -47,16 +47,16 @@
 TForm1 *Form1;
 
 int mdx, mdy;
-Gls::Vectorgeometry::TMatrix4f FBiasMatrix;
-Gls::Vectorgeometry::TMatrix4f FLightModelViewMatrix;
-Gls::Vectorgeometry::TMatrix4f FLightProjMatrix;
-Gls::VectorGeometry::TGLMatrix FInvCameraMatrix;
-Gls::Vectorgeometry::TMatrix4f FEyeToLightMatrix;
+TMatrix4f FBiasMatrix;
+TMatrix4f FLightModelViewMatrix;
+TMatrix4f FLightProjMatrix;
+TGLMatrix FInvCameraMatrix;
+TMatrix4f FEyeToLightMatrix;
 
-Gls::Vectorgeometry::TMatrix4f FLightModelViewMatrix2;
-Gls::Vectorgeometry::TMatrix4f FLightProjMatrix2;
-Gls::Vectorgeometry::TMatrix4f FInvCameraMatrix2;
-Gls::Vectorgeometry::TMatrix4f FEyeToLightMatrix2;
+TMatrix4f FLightModelViewMatrix2;
+TMatrix4f FLightProjMatrix2;
+TMatrix4f FInvCameraMatrix2;
+TMatrix4f FEyeToLightMatrix2;
 
 // ---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {
@@ -232,7 +232,7 @@ void __fastcall TForm1::GLDirectOpenGL1Render(TObject *Sender,
 	TGLRenderContextInfo &rci)
 
 {
-	FInvCameraMatrix = rci.PipelineTransformation->InvModelViewMatrix;
+	FInvCameraMatrix = *rci.PipelineTransformation->InvModelViewMatrix;
 	FEyeToLightMatrix = MatrixMultiply(FInvCameraMatrix, FLightModelViewMatrix);
 	FEyeToLightMatrix = MatrixMultiply(FEyeToLightMatrix, FLightProjMatrix);
 	FEyeToLightMatrix = MatrixMultiply(FEyeToLightMatrix, FBiasMatrix);
@@ -252,9 +252,9 @@ void __fastcall TForm1::GLFrameBufferBeforeRender(TObject *Sender,
 
 {
 	FLightModelViewMatrix =
-		CurrentGLContext()->PipelineTransformation->ModelViewMatrix;
+		*CurrentGLContext()->PipelineTransformation->ModelViewMatrix;
 	FLightProjMatrix =
-		CurrentGLContext()->PipelineTransformation->ProjectionMatrix;
+		*CurrentGLContext()->PipelineTransformation->ProjectionMatrix;
 	CurrentGLContext()->GLStates->Enable(stPolygonOffsetFill);
 	CurrentGLContext()->GLStates->PolygonOffsetFactor = 2;
 	CurrentGLContext()->GLStates->PolygonOffsetUnits = 2;

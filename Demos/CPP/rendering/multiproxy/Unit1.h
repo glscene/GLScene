@@ -33,7 +33,7 @@ __published:	// IDE-managed Components
 	TRadioButton *RBLowRes;
 	TGLScene *GLScene;
 	TGLDummyCube *DCTarget;
-	TGLParticles *GLS.Particles;
+	TGLParticles *GLParticles;
 	TGLMultiProxy *MPSphere;
 	TGLDummyCube *DCReferences;
 	TGLSphere *SPHighRes;

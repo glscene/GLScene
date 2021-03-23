@@ -20,6 +20,9 @@
 #pragma link "GLS.VectorFileObjects"
 #pragma link "GLS.File3DS"
 
+#pragma link "Cg.Shader"
+#pragma link "Cg.Shader"
+#pragma link "Cg.Shader"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -32,10 +35,10 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 {
    // Load Cg proggy from project directory
 	SetCurrentDir(ExtractFilePath(Application->ExeName));
-	CgShader1->VertexProgram->LoadFromFile("simple_vp.cg");
+	CgShader1->VertexProgram->LoadFromFile("Shaders\\simple_vp.cg");
 	MemoVertCode->Lines->Assign(CgShader1->VertexProgram->Code);
 
-	CgShader1->FragmentProgram->LoadFromFile("simple_fp.cg");
+	CgShader1->FragmentProgram->LoadFromFile("Shaders\\simple_fp.cg");
 	MemoFragCode->Lines->Assign(CgShader1->FragmentProgram->Code);
 
 	CgShader1->VertexProgram->Enabled = false;

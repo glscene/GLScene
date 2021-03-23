@@ -334,7 +334,7 @@ object Main: TMain
           TopRadius = 1.000000000000000000
           EffectsData = {
             0458434F4C02010201060A54474C424669726546580201020006064669726546
-            5802000200060F474C4669726546584D616E61676572}
+            5802000200060D4669726546584D616E61676572}
         end
       end
     end
@@ -5437,7 +5437,7 @@ object Main: TMain
       OnClick = miHappyNewYearClick
     end
   end
-  object GLFireFXManager: TGLFireFXManager
+  object FireFXManager: TGLFireFXManager
     FireDir.Coordinates = {000000000000803F0000000000000000}
     InitialDir.Coordinates = {00000000000000000000000000000000}
     Cadencer = Cadencer
@@ -5456,7 +5456,7 @@ object Main: TMain
     Left = 24
     Top = 208
   end
-  object GLMaterialLibraryCM: TGLMaterialLibrary
+  object MaterialLibraryCM: TGLMaterialLibrary
     Left = 552
     Top = 128
   end

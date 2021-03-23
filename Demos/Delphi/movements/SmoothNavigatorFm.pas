@@ -65,7 +65,7 @@ type
   private
     UI:  TGLSmoothUserInterface;
     Navigator: TGLSmoothNavigator;
-    //  RealPos: TPoint;
+    RealPos: TPoint;
     ShiftState: TShiftState;
     xx, yy: Integer;
     NewXX, NewYY: Integer;
@@ -162,7 +162,7 @@ begin
     GLCamera1.PointTo(GLArrowLine1, YHmgVector);
 
     UI.MouseLookActive := True;
-//    GetCursorPos(RealPos);
+    GetCursorPos(RealPos);
 //    UI.OriginalMousePos.SetPoint2D(RealPos.X, RealPos.Y);
 //    ShowCursor(False);
   end

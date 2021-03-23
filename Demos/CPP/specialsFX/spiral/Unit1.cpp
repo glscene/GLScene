@@ -17,7 +17,8 @@
 #pragma link "GLS.ParticleFX"
 #pragma link "GLS.BaseClasses"
 #pragma link "GLS.Coordinates"
-#pragma link "GLFullScreenViewer"
+#pragma link "GLS.FullScreenViewer"
+#pragma link "GLS.FullScreenViewer"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------

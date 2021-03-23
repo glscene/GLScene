@@ -20,7 +20,7 @@
 #include <GLS.VectorFileObjects.hpp>
 #include "GLS.Coordinates.hpp"
 
-#include "GLS.Utils.
+#include "GLS.Utils.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.SceneViewer.hpp"hpp"
 

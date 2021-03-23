@@ -64,7 +64,6 @@ void __fastcall TForm1::chkMouseLookClick(TObject *Sender)
 
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
-	Caption = "PFXGallery FPS - " + IntToStr(Round(GLSceneViewer1->FramesPerSecond()));
 	GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------

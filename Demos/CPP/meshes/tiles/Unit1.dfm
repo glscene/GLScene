@@ -21,6 +21,7 @@ object Form1: TForm1
     Height = 422
     Camera = GLCamera
     FieldOfView = 153.337402343750000000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
@@ -202,7 +203,7 @@ object Form1: TForm1
         Material.Texture.Disabled = False
         TextureScale.Coordinates = {0000003F0000003F0000803F00000000}
       end>
-    TexturePaths = '..\..\..\..\media'
+    TexturePaths = '..\\..\\..\\..\\media'
     Left = 24
     Top = 64
   end

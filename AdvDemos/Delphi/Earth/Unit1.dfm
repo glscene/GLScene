@@ -106,6 +106,7 @@ object Form1: TForm1
         Material.MaterialLibrary = GLMaterialLibrary
         Material.LibMaterialName = 'earthDay'
         Direction.Coordinates = {000000000000803F0000000000000000}
+        ShowAxes = True
         TurnAngle = -150.000000000000000000
         Up.Coordinates = {00000000000000800000803F00000000}
         Radius = 0.500000000000000000

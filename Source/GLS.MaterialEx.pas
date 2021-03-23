@@ -788,7 +788,7 @@ type
     function GetVec2: TVector2f; override;
     function GetVec3: TVector3f; override;
     function GetVec4: TGLVector; override;
-    function GetInt: Integer; override;
+    function GetInt: TGLInt; override;
     function GetIVec2: TVector2i; override;
     function GetIVec3: TVector3i; override;
     function GetIVec4: TVector4i; override;

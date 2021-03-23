@@ -39,7 +39,7 @@ void __fastcall TForm1::DirectOpenGLRender(TObject *Sender, TGLRenderContextInfo
 
 {
    int i;
-   Gls::Vectorgeometry::TGLMatrix mat;
+   TGLMatrix mat;
    TGLVector p, pProj;
    TGLVector planePoint, planeNormal;
    THmgPlane plane;

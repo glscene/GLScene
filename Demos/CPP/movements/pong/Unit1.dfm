@@ -23,6 +23,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = clBlack
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     FieldOfView = 133.897399902343800000
+    PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0

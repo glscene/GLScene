@@ -100,7 +100,7 @@ void __fastcall TForm1::CastBtnClick(TObject *Sender)
  double RefTime = GLCadencer1->GetCurrenttime();
  Shadows1->CastShadow();
  Viewer->Refresh();
- TimeLbl->Caption = IntToStr(Round((GLCadencer1->GetCurrenttime()-(int)RefTime)*100));
+/// TimeLbl->Caption = IntToStr(Int((GLCadencer1->GetCurrenttime()-(int)RefTime)*100));
 
 }
 //---------------------------------------------------------------------------

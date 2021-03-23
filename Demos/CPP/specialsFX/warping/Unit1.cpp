@@ -5,7 +5,7 @@
 
 #include "Unit1.h"
 #include "math.h"
-#include "GLGraphics.hpp"
+#include "GLS.Graphics.hpp"
 #include "GLS.Texture.hpp"
 #include "jpeg.hpp"
 
@@ -95,7 +95,7 @@ void __fastcall TForm1::MIOpenImageFileClick(TObject *Sender)
 void __fastcall TForm1::MISaveCurrentImageClick(TObject *Sender)
 {
    TGLBitmap32 *bmp32;
-   Graphics::TBitmap *bmp;
+   TBitmap *bmp;
 
    bmp32 = GLSceneViewer->Buffer->CreateSnapShot();
    try

@@ -1,4 +1,4 @@
-{: Shows how to use 1D palettes to visualize "intensity" on a mesh.
+(* Shows how to use 1D palettes to visualize "intensity" on a mesh.
 
    Typical application is interactive representation of FEA (Finite Element
    Analysis), the palette texture can be used with discrete colors
@@ -14,7 +14,7 @@
    transversal wind and self weigth.
 
    (Sample Data contributed by Carlos Ferreira)
-}
+*)
 program IntensityMesh;
 
 uses

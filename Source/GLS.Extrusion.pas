@@ -1,17 +1,13 @@
 ﻿//
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Extrusion;
-
 (*
   Extrusion objects are solids defined by the surface described by a moving curve.
   Suggestion:
     All extrusion objects use actually the same kind of "parts",
     one common type should do.
 *)
-
-
 interface
 
 {$I GLScene.inc}

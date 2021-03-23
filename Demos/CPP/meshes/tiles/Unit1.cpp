@@ -29,12 +29,19 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 {
    int i, j;
    SetGLSceneMediaDir();
+   GLMaterialLibrary->TexturePaths = GetCurrentDir();
+
+  GLMaterialLibrary->LibMaterialByName("beigemarble")->Material->Texture->Image->LoadFromFile("beigemarble.jpg");
+  GLMaterialLibrary->LibMaterialByName("marbletiles")->Material->Texture->Image->LoadFromFile("marbletiles.jpg");
+  GLMaterialLibrary->LibMaterialByName("walkway")->Material->Texture->Image->LoadFromFile("walkway.jpg");
+
    // fill the tiled area with random tiles
    RandSeed = 0;
-/*
+
+ /*
    for (i=-20;i<=20;i++)
 	 for (j=-20;j<=20;j++)
-	  GLS.TilePlane->Tiles[i,j] = Random(GLMaterialLibrary->Materials->Count-1)+1;
+	  GLTilePlane->Tiles[i,j] = Random(GLMaterialLibrary->Materials->Count-1)+1;
 */
    // set all tile materials to anisotropic,
    // add them to the material selection combo

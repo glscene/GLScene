@@ -7,13 +7,13 @@
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include <GLS.FileZLIB.hpp>
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 #include "GLS.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.Coordinates.hpp"
+#include "GLS.FileZLIB.hpp"
 
 #include "GLS.FBORenderer.hpp"
 #include "GLS.Material.hpp"

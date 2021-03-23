@@ -5,6 +5,7 @@
 //---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include <System.Math.hpp>
+#include <System.Math.Vectors.hpp>
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
@@ -31,7 +32,7 @@
 #include "Sounds.BASS.hpp"
 #include "GLS.FileWAV.hpp"
 #include "Jpeg.hpp"
-#include "Import.Bass.hpp"
+#include "Imports.Bass.hpp"
 #include "GLS.FileMP3.hpp"
 #include "GLS.ThorFX.hpp"
 #include "GLS.FireFX.hpp"

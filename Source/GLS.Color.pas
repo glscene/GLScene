@@ -115,7 +115,7 @@ function ConvertRGBColor(const aColor: array of Byte): TColorVector;
 
 // color definitions
 const
-  // Some extra colors, not declared in Graphics.pas
+  // Some extra colors, not declared in Vcl.Graphics.pas
   clForeground = TColor(-1);
   clButton = TColor(-2);
   clLight = TColor(-3);
@@ -188,8 +188,8 @@ const
   clMask = clWhite;
   clDontMask = clBlack;
 
-  // Window's colors (must be filled at program
-  // startup, since they depend on the desktop scheme)
+  // Window's colors (must be filled at program startup,
+  // since they depend on the desktop scheme)
 const
 {$J+ - allow change of the following typed constants}
   clrScrollBar: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
@@ -219,8 +219,7 @@ const
   clrInfoBk: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
 
 {$J- - disable change of other typed constants}
-  // 'static' color definitions
-  // sort of grays
+  // 'static' color definitions sort of grays
   clrTransparent: TColorVector = (X: 0; Y: 0; Z: 0; W: 0);
   clrBlack: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
   clrGray05: TColorVector = (X: 0.05; Y: 0.05; Z: 0.05; W: 1);
@@ -250,7 +249,10 @@ const
   clrLightGray: TColorVector = (X: 0.658824; Y: 0.658824; Z: 0.658824; W: 1);
 
   // colors en masse
+  clrAqua: TColorVector = (X: 0; Y: 1; Z: 1; W: 1);
   clrAquamarine: TColorVector = (X: 0.439216; Y: 0.858824; Z: 0.576471; W: 1);
+  clrBakersChoc: TColorVector = (X: 0.36; Y: 0.20; Z: 0.09; W: 1);
+  clrBlue: TColorVector = (X: 0; Y: 0; Z: 1; W: 1);
   clrBlueViolet: TColorVector = (X: 0.62352; Y: 0.372549; Z: 0.623529; W: 1);
   clrBrown: TColorVector = (X: 0.647059; Y: 0.164706; Z: 0.164706; W: 1);
   clrCadetBlue: TColorVector = (X: 0.372549; Y: 0.623529; Z: 0.623529; W: 1);
@@ -265,6 +267,7 @@ const
   clrDarkTurquoise: TColorVector = (X: 0.439216; Y: 0.576471; Z: 0.858824; W: 1);
   clrFirebrick: TColorVector = (X: 0.556863; Y: 0.137255; Z: 0.137255; W: 1);
   clrForestGreen: TColorVector = (X: 0.137255; Y: 0.556863; Z: 0.137255; W: 1);
+  clrFuchsia: TColorVector = (X: 1; Y: 0; Z: 1; W: 1);
   clrGold: TColorVector = (X: 0.8; Y: 0.498039; Z: 0.196078; W: 1);
   clrGoldenrod: TColorVector = (X: 0.858824; Y: 0.858824; Z: 0.439216; W: 1);
   clrGreenYellow: TColorVector = (X: 0.576471; Y: 0.858824; Z: 0.439216; W: 1);
@@ -272,6 +275,7 @@ const
   clrKhaki: TColorVector = (X: 0.623529; Y: 0.623529; Z: 0.372549; W: 1);
   clrLightBlue: TColorVector = (X: 0.74902; Y: 0.847059; Z: 0.847059; W: 1);
   clrLightSteelBlue: TColorVector = (X: 0.560784; Y: 0.560784; Z: 0.737255; W: 1);
+  clrLime: TColorVector = (X: 0; Y: 1; Z: 0; W: 1);
   clrLimeGreen: TColorVector = (X: 0.196078; Y: 0.8; Z: 0.196078; W: 1);
   clrMaroon: TColorVector = (X: 0.556863; Y: 0.137255; Z: 0.419608; W: 1);
   clrMediumAquamarine: TColorVector = (X: 0.196078; Y: 0.8; Z: 0.6; W: 1);
@@ -284,6 +288,7 @@ const
   clrMediumSpringGreen: TColorVector = (X: 0.498039; Y: 1; Z: 0; W: 1);
   clrMediumTurquoise: TColorVector = (X: 0.439216; Y: 0.858824; Z: 0.858824; W: 1);
   clrMediumViolet: TColorVector = (X: 0.858824; Y: 0.439216; Z: 0.576471; W: 1);
+  clrMediumPurple: TColorVector = (X: 0.73; Y: 0.16; Z: 0.96; W: 1);
   clrMidnightBlue: TColorVector = (X: 0.184314; Y: 0.184314; Z: 0.309804; W: 1);
   clrNavy: TColorVector = (X: 0.137255; Y: 0.137255; Z: 0.556863; W: 1);
   clrNavyBlue: TColorVector = (X: 0.137255; Y: 0.137255; Z: 0.556863; W: 1);
@@ -305,7 +310,6 @@ const
   clrTurquoise: TColorVector = (X: 0.678431; Y: 0.917647; Z: 0.917647; W: 1);
   clrViolet: TColorVector = (X: 0.309804; Y: 0.184314; Z: 0.309804; W: 1);
   clrVioletRed: TColorVector = (X: 0.8; Y: 0.196078; Z: 0.6; W: 1);
-  clrWheat: TColorVector = (X: 0.847059; Y: 0.847059; Z: 0.74902; W: 1);
   clrYellowGreen: TColorVector = (X: 0.6; Y: 0.8; Z: 0.196078; W: 1);
   clrSummerSky: TColorVector = (X: 0.22; Y: 0.69; Z: 0.87; W: 1);
   clrRichBlue: TColorVector = (X: 0.35; Y: 0.35; Z: 0.67; W: 1);
@@ -328,7 +332,6 @@ const
   clrDarkWood: TColorVector = (X: 0.52; Y: 0.37; Z: 0.26; W: 1);
   clrSpicyPink: TColorVector = (X: 1.00; Y: 0.11; Z: 0.68; W: 1);
   clrSemiSweetChoc: TColorVector = (X: 0.42; Y: 0.26; Z: 0.15; W: 1);
-  clrBakersChoc: TColorVector = (X: 0.36; Y: 0.20; Z: 0.09; W: 1);
   clrFlesh: TColorVector = (X: 0.96; Y: 0.80; Z: 0.69; W: 1);
   clrNewTan: TColorVector = (X: 0.92; Y: 0.78; Z: 0.62; W: 1);
   clrNewMidnightBlue: TColorVector = (X: 0.00; Y: 0.00; Z: 0.61; W: 1);
@@ -340,7 +343,6 @@ const
   clrDustyRose: TColorVector = (X: 0.52; Y: 0.39; Z: 0.39; W: 1);
   clrHuntersGreen: TColorVector = (X: 0.13; Y: 0.37; Z: 0.31; W: 1);
   clrScarlet: TColorVector = (X: 0.55; Y: 0.09; Z: 0.09; W: 1);
-  clrMediumPurple: TColorVector = (X: 0.73; Y: 0.16; Z: 0.96; W: 1);
   clrLightPurple: TColorVector = (X: 0.87; Y: 0.58; Z: 0.98; W: 1);
   clrVeryLightPurple: TColorVector = (X: 0.94; Y: 0.81; Z: 0.99; W: 1);
   clrGreen: TColorVector = (X: 0; Y: 0.5; Z: 0; W: 1);
@@ -348,11 +350,8 @@ const
   clrPurple: TColorVector = (X: 1; Y: 0; Z: 1; W: 1);
   clrTeal: TColorVector = (X: 0; Y: 0.5; Z: 0.5; W: 1);
   clrRed: TColorVector = (X: 1; Y: 0; Z: 0; W: 1);
-  clrLime: TColorVector = (X: 0; Y: 1; Z: 0; W: 1);
   clrYellow: TColorVector = (X: 1; Y: 1; Z: 0; W: 1);
-  clrBlue: TColorVector = (X: 0; Y: 0; Z: 1; W: 1);
-  clrFuchsia: TColorVector = (X: 1; Y: 0; Z: 1; W: 1);
-  clrAqua: TColorVector = (X: 0; Y: 1; Z: 1; W: 1);
+  clrWheat: TColorVector = (X: 0.847059; Y: 0.847059; Z: 0.74902; W: 1);
 
   cDefaultNormalMapScale = 0.125;
 

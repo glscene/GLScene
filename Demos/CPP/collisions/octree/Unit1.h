@@ -7,18 +7,18 @@
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
-#include <GLS.GeomObjects.hpp>    // Pascal unit
-#include <GLS.Cadencer.hpp>       // Pascal unit
-#include <GLS.SceneViewer.hpp>    // Pascal unit
-#include <GLS.Objects.hpp>        // Pascal unit
-#include <GLS.VectorFileObjects.hpp>      // Pascal unit
-#include <GLS.Scene.hpp>          // Pascal unit
+#include <GLS.GeomObjects.hpp>
+#include <GLS.Cadencer.hpp>
+#include <GLS.SceneViewer.hpp>
+#include <GLS.Objects.hpp>
+#include <GLS.VectorFileObjects.hpp>
+#include <GLS.Scene.hpp>
 #include <ExtCtrls.hpp>
 #include "GLS.BaseClasses.hpp"
 #include "GLS.Coordinates.hpp"
-         // Pascal unit
-#include "GLS.Utils.hp
-#include "GLS.Scene.hpp"p"         // Pascal unit
+
+#include "GLS.Utils.hpp"
+#include "GLS.Scene.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1:public TForm

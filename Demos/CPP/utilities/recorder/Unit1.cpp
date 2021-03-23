@@ -18,6 +18,7 @@
 #pragma link "GLS.Coordinates"
 
 
+#pragma link "GLS.AVIRecorder"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 bool UserAbort;

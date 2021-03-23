@@ -15,7 +15,7 @@
 #include "GLS.Material.hpp"
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
-#include "GLTilePlane.hpp"
+#include "GLS.TilePlane.hpp"
 #include "GLS.SceneViewer.hpp"
 #include <Vcl.Imaging.jpeg.hpp>
 #include <Vcl.ExtCtrls.hpp>
@@ -35,7 +35,7 @@ __published:	// IDE-managed Components
 	TGLLightSource *GLLightSource;
 	TGLDummyCube *DCTarget;
 	TGLCamera *GLCamera;
-	TGLTilePlane *GLS.TilePlane;
+	TGLTilePlane *GLTilePlane;
 	TGLDirectOpenGL *GLDirectOpenGL;
 	TGLXYZGrid *GLXYZGrid;
 	TGLDummyCube *DCSelection;

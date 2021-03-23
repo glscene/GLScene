@@ -18,6 +18,7 @@
 #pragma link "GLS.SimpleNavigation"
 #pragma link "GLS.VectorFileObjects"
 #pragma link "GLS.SceneViewer"
+#pragma link "GLSL.PostEffects"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 //---------------------------------------------------------------------------
@@ -70,8 +71,8 @@ void __fastcall TMainForm::GLPostEffect1CustomEffect(TObject *Sender, TGLRenderC
 
   for (i = 0; i <= 7; i++) {
 	Buffer[i]->r = (int)(Buffer[i + 5]->r * 2);
-	Buffer[i]->g = Round(Buffer[i]->g * 1.5);
-	Buffer[i]->b = Round(Buffer[i + 5]->b * 1.5);
+	Buffer[i]->g = Int(Buffer[i]->g * 1.5);
+	Buffer[i]->b = Int(Buffer[i + 5]->b * 1.5);
   }
 }
 //---------------------------------------------------------------------------

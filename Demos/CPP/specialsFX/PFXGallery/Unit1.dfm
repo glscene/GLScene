@@ -27,6 +27,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = clBlack
     Buffer.AmbientColor.Color = {0000803F0000803F0000803F0000803F}
     FieldOfView = 143.454727172851600000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
@@ -2303,7 +2304,6 @@ object Form1: TForm1
     Left = 36
     Top = 44
     object WorldRoot: TGLDummyCube
-      Direction.Coordinates = {00000000000000800000803F00000000}
       Scale.Coordinates = {0000C0400000C0400000C04000000000}
       CubeSize = 1.000000000000000000
       object GLLightSource1: TGLLightSource

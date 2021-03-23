@@ -11,7 +11,6 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  WindowState = wsMaximized
   OnMouseWheel = FormMouseWheel
   OnResize = FormResize
   PixelsPerInch = 96
@@ -82,6 +81,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = clTeal
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     FieldOfView = 151.023590087890600000
+    PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove

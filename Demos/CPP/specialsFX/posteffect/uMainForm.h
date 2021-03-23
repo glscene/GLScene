@@ -13,12 +13,12 @@
 #include "GLS.Coordinates.hpp"
 
 #include "GLS.Material.hpp"
-#include "GLPostEffects.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SimpleNavigation.hpp"
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.SceneViewer.hpp"
 #include <Vcl.ExtCtrls.hpp>
+#include "GLSL.PostEffects.hpp"
 //---------------------------------------------------------------------------
 class TMainForm : public TForm
 {

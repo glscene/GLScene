@@ -29,9 +29,9 @@ TForm1 *Form1;
 int __cdecl BuoyancyPlaneCallback(const int collisionID, void *context,
   const PNGDFloat globalSpaceMatrix, PNGDFloat globalSpacePlane)
 {
-  Gls::Vectorgeometry::TGLMatrix *BodyMatrix;
+  TGLMatrix *BodyMatrix;
   TGLVector PlaneEquation;
-  Gls::Vectorgeometry::PGLVector pv;
+  PGLVector pv;
   TForm1 *MyForm;
 
   // Get the matrix of the actual body

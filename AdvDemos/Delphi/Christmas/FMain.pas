@@ -104,8 +104,8 @@ type
     PopupMenu: TPopupMenu;
     miMerryCristmas: TMenuItem;
     miHappyNewYear: TMenuItem;
-    GLFireFXManager: TGLFireFXManager;
-    GLMaterialLibraryCM: TGLMaterialLibrary;
+    FireFXManager: TGLFireFXManager;
+    MaterialLibraryCM: TGLMaterialLibrary;
     procedure FormCreate(Sender: TObject);
     procedure CadencerProgress(Sender: TObject; const deltaTime,
       newTime: Double);
@@ -142,7 +142,7 @@ implementation
 
 function TMain.LoadTexture(Matname, Filename: string): TGLLibMaterial;
 begin
-  Result := GLMaterialLibraryCM.AddTextureMaterial(Matname, Filename);
+  Result := MaterialLibraryCM.AddTextureMaterial(Matname, Filename);
   Result.Material.Texture.Disabled := False;
   Result.Material.Texture.TextureMode := tmDecal;
 end;

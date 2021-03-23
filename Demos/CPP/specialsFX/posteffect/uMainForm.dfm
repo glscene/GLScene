@@ -67,6 +67,7 @@ object MainForm: TMainForm
     Camera = GLCamera1
     Buffer.BackgroundColor = 16776176
     FieldOfView = 143.915725708007800000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 1
   end

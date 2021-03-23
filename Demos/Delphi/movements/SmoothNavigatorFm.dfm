@@ -1,6 +1,7 @@
 object FormSmoothNavigator: TFormSmoothNavigator
   Left = 318
   Top = 150
+  ActiveControl = GLSceneViewer1
   Caption = 'Smooth Navigator'
   ClientHeight = 420
   ClientWidth = 620
@@ -39,8 +40,6 @@ object FormSmoothNavigator: TFormSmoothNavigator
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitTop = 463
-    ExplicitWidth = 642
     object MouseLookCheckBox: TCheckBox
       Left = 8
       Top = 6

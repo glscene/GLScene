@@ -11,11 +11,11 @@
 #pragma link "GLS.Coordinates"
 
 #pragma link "GLS.Material"
-#pragma link "GLMultiMaterialShader"
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
-#pragma link "GLTS.TextureCombineShader"
 #pragma link "GLS.SceneViewer"
+#pragma link "GLSL.MultiMaterialShader"
+#pragma link "GLSL.TextureShaders"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------

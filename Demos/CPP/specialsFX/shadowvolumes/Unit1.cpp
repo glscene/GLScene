@@ -39,12 +39,12 @@ __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
 		  sphere = (TGLSphere *) DCSpheres->AddNewChild(__classid(TGLSphere));
 		  sphere->Position->SetPoint(x * cSpacing, y * cSpacing, z * cSpacing);
 		  sphere->Radius = cRadius;
-		  GLS.ShadowVolume->Occluders->AddCaster(sphere, 0, scmParentVisible);
+		  GLShadowVolume->Occluders->AddCaster(sphere, 0, scmParentVisible);
         }
-  DCSpheres->MoveTo(GLS.ShadowVolume);
+  DCSpheres->MoveTo(GLShadowVolume);
   GLFreeForm->LoadFromFile("trinityrage.smd");
   GLFreeForm->BuildSilhouetteConnectivityData();
-  GLS.ShadowVolume->Occluders->AddCaster(GLFreeForm,0,scmRecursivelyVisible);
+  GLShadowVolume->Occluders->AddCaster(GLFreeForm,0,scmRecursivelyVisible);
 }
 
 //---------------------------------------------------------------------------
@@ -62,9 +62,9 @@ void __fastcall TForm1::GLCadencer1Progress(TObject * Sender,
 void __fastcall TForm1::CBShowVolumesClick(TObject * Sender)
 {
   if(CBShowVolumes->Checked)
-    GLS.ShadowVolume->Options = GLS.ShadowVolume->Options << svoShowVolumes;
+	GLShadowVolume->Options = GLShadowVolume->Options << svoShowVolumes;
   else
-    GLS.ShadowVolume->Options = GLS.ShadowVolume->Options >> svoShowVolumes;
+	GLShadowVolume->Options = GLShadowVolume->Options >> svoShowVolumes;
 }
 
 //---------------------------------------------------------------------------
@@ -72,23 +72,23 @@ void __fastcall TForm1::RBZFailClick(TObject * Sender)
 {
 // this event handles all the radio buttons
   if(RBDarkening->Checked)
-    GLS.ShadowVolume->Mode = svmDarkening;
+	GLShadowVolume->Mode = svmDarkening;
   else if(RBNoShadows->Checked)
-    GLS.ShadowVolume->Mode = svmOff;
+	GLShadowVolume->Mode = svmOff;
   else
   {
-    GLS.ShadowVolume->Mode = svmAccurate;
-    if(RBZFail->Checked)
-      GLS.ShadowVolume->Capping = svcAlways;
-    else
-      GLS.ShadowVolume->Capping = svcNever;
+	GLShadowVolume->Mode = svmAccurate;
+	if(RBZFail->Checked)
+	  GLShadowVolume->Capping = svcAlways;
+	else
+	  GLShadowVolume->Capping = svcNever;
   }
 }
 
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLSceneViewerMouseDown(TObject * Sender,
-                                               TMouseButton Button,
-                                               TShiftState Shift, int X, int Y)
+											   TMouseButton Button,
+											   TShiftState Shift, int X, int Y)
 {
   mx = X;
   my = Y;
@@ -96,7 +96,7 @@ void __fastcall TForm1::GLSceneViewerMouseDown(TObject * Sender,
 
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLSceneViewerMouseMove(TObject * Sender,
-                                               TShiftState Shift, int X, int Y)
+											   TShiftState Shift, int X, int Y)
 {
   if(Shift.Contains(ssLeft))
   {
@@ -150,7 +150,7 @@ void __fastcall TForm1::ScrollBar_ShadowResolutionChange(TObject * Sender)
 {
   GLSphere_Shadow->Stacks = ScrollBar_ShadowResolution->Position;
   GLSphere_Shadow->Slices = ScrollBar_ShadowResolution->Position;
-  GLS.ShadowVolume->FlushSilhouetteCache();
+  GLShadowVolume->FlushSilhouetteCache();
 }
 
 //---------------------------------------------------------------------------
@@ -163,7 +163,7 @@ void __fastcall TForm1::Button_GenerateSilhouetteClick(TObject * Sender)
 
   silhouetteParameters.CappingRequired = false;
   SetVector(silhouetteParameters.SeenFrom,
-            GLLines1->AbsoluteToLocal(GLCamera->AbsolutePosition));
+			GLLines1->AbsoluteToLocal(GLCamera->AbsolutePosition));
 
   silhouetteParameters.Style = ssOmni;
 
@@ -172,13 +172,13 @@ void __fastcall TForm1::Button_GenerateSilhouetteClick(TObject * Sender)
   GLLines1->Nodes->Clear();
 
   for(i = 0; i <= Silhouette->Indices->Count - 1; i++)
-    GLLines1->Nodes->AddNode(GLLines1->
-                             AbsoluteToLocal(Target->
-                                             LocalToAbsolute(Silhouette->
-                                                             Vertices->
-                                                             Items[Silhouette->
-                                                                   Indices->
-                                                                   Items[i]])));
+	GLLines1->Nodes->AddNode(GLLines1->
+							 AbsoluteToLocal(Target->
+											 LocalToAbsolute(Silhouette->
+															 Vertices->
+															 Items[Silhouette->
+																   Indices->
+																   Items[i]])));
 
   delete Silhouette;
 }

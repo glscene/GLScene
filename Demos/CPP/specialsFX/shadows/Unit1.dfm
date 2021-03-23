@@ -63,6 +63,7 @@ object Form1: TForm1
       Camera = GLCamera2
       Buffer.FaceCulling = False
       FieldOfView = 137.326278686523400000
+      PenAsTouch = False
       OnMouseDown = CasterMouseDown
       OnMouseMove = CasterMouseMove
       OnMouseUp = CasterMouseUp
@@ -82,6 +83,7 @@ object Form1: TForm1
       Height = 256
       Camera = GLCamera1
       FieldOfView = 137.326278686523400000
+      PenAsTouch = False
       OnMouseDown = ViewerMouseDown
       OnMouseMove = ViewerMouseMove
       OnMouseUp = ViewerMouseUp

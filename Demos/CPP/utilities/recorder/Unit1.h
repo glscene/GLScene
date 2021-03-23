@@ -1,6 +1,12 @@
 //---------------------------------------------------------------------------
-#include "vfw_BCB.h"
-#include "GLAVIRecorder.hpp"
+#include <tchar.h>
+///#include "vfw_BCB.h"
+#include <System.Classes.hpp>
+#include <Vcl.ComCtrls.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+
+#include "GLS.AVIRecorder.hpp"
 #include "GLS.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.Coordinates.hpp"
@@ -9,10 +15,6 @@
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Keyboard.hpp"
-#include <System.Classes.hpp>
-#include <Vcl.ComCtrls.hpp>
-#include <Vcl.Controls.hpp>
-#include <Vcl.StdCtrls.hpp>
 
 #ifndef Unit1H
 #define Unit1H

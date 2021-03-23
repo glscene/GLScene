@@ -27,7 +27,7 @@ class TForm1 : public TForm
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
 	TGLScene *GLScene1;
-	TGLShadowVolume *GLS.ShadowVolume;
+	TGLShadowVolume *GLShadowVolume;
 	TGLPlane *Plane1;
 	TGLCube *Cube1;
 	TGLCube *Cube2;
@@ -43,7 +43,7 @@ __published:	// IDE-managed Components
 	TGLCadencer *GLCadencer1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift, int X,
-          int Y);
+		  int Y);
 	void __fastcall GLCadencer1Progress(TObject *Sender, const double deltaTime, const double newTime);
 	void __fastcall Timer1Timer(TObject *Sender);
 

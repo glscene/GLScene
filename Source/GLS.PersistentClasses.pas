@@ -1,9 +1,7 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.PersistentClasses;
-
 (*
    Base persistence classes.
 
@@ -12,7 +10,6 @@ unit GLS.PersistentClasses;
    allowing for object-level versioning (100% backward compatibility) and full
    polymorphic persistence.
 *)
-
 interface
 
 {$I GLScene.inc}
@@ -130,7 +127,7 @@ type
     FList: PPointerObjectList;
     FCount: Integer;
     FCapacity: Integer;
-    FGrowthDelta: integer;
+    FGrowthDelta: Integer;
   protected
     procedure Error; virtual;
     function Get(Index: Integer): TObject; inline;

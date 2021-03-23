@@ -29,8 +29,6 @@ object Form1: TForm1
     OnMouseDown = GLSceneViewerMouseDown
     OnMouseMove = GLSceneViewerMouseMove
     TabOrder = 0
-    ExplicitWidth = 514
-    ExplicitHeight = 270
   end
   object TrackBar: TTrackBar
     Left = 0
@@ -46,8 +44,6 @@ object Form1: TForm1
     ThumbLength = 10
     TickMarks = tmBoth
     OnChange = TrackBarChange
-    ExplicitTop = 343
-    ExplicitWidth = 514
   end
   object TrackBar1: TTrackBar
     Left = 0
@@ -63,7 +59,6 @@ object Form1: TForm1
     ThumbLength = 10
     TickMarks = tmBoth
     OnChange = TrackBar1Change
-    ExplicitWidth = 514
   end
   object Panel1: TPanel
     Left = 0
@@ -73,7 +68,6 @@ object Form1: TForm1
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 3
-    ExplicitWidth = 514
     DesignSize = (
       605
       41)
@@ -120,7 +114,6 @@ object Form1: TForm1
       Caption = 'Chimes (WAV)'
       TabOrder = 2
       OnClick = Button1Click
-      ExplicitLeft = 423
     end
     object btnHowl: TButton
       Left = 425
@@ -131,7 +124,6 @@ object Form1: TForm1
       Caption = 'Howl (MP3)'
       TabOrder = 3
       OnClick = btnHowlClick
-      ExplicitLeft = 334
     end
     object RBOpenAL: TRadioButton
       Left = 224

@@ -20,10 +20,9 @@
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SimpleNavigation.hpp"
-#include "GLSLShader.hpp"
+#include "GLSL.Shader.hpp"
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "OpenGLx.hpp"
 #include "Formats.DDSImage.hpp"
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------

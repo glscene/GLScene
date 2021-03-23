@@ -73,8 +73,8 @@ void __fastcall TForm1::RefreshMask()
 
   XImage->Canvas->FillRect(Rect);
 
-  XImage->Canvas->TextOut(Round((XImage->Width - XImage->Canvas->TextWidth(Letter)) / 2),
-	 Round((XImage->Height - XImage->Canvas->TextHeight(Letter)) / 2), Letter);
+  XImage->Canvas->TextOut(Int((XImage->Width - XImage->Canvas->TextWidth(Letter)) / 2),
+	 Int((XImage->Height - XImage->Canvas->TextHeight(Letter)) / 2), Letter);
 
   Mat = MatLib->LibMaterialByName("XMask");
  ((TGLPersistentImage *)Mat->Material->Texture->Image)->Picture->Bitmap->Height = XImage->Height;

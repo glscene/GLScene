@@ -11,7 +11,6 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  WindowState = wsMaximized
   OnCreate = FormCreate
   OnResize = FormResize
   PixelsPerInch = 96

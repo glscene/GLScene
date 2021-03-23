@@ -15,13 +15,15 @@
 #include "GLS.Texture.hpp"
 #include "GLS.VectorGeometry.hpp"
 #include "GLS.Cadencer.hpp"
-#include "GLMultiMaterialShader.hpp"
-#include "GLSL.TexureCombineShader.hpp"
+#include "GLSL.MultiMaterialShader.hpp"
+#include "GLSL.TextureShaders.hpp"
 #include "GLS.Material.hpp"
 #include "GLS.Coordinates.hpp"
 
 #include "GLS.BaseClasses.hpp"
 #include "GLS.Utils.hpp"
+#include "GLSL.MultiMaterialShader.hpp"
+#include "GLSL.TextureShaders.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

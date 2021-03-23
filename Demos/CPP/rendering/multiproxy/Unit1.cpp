@@ -30,7 +30,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
    RBUseLODsClick(Sender); //MPSphere
    // replicate the multiproxy via a TGLParticles object
    for (i = 0; i < 35; i++) {
-	  GLS.Particles->CreateParticle()->TagFloat = DegToRad((float)i*10);
+	  GLParticles->CreateParticle()->TagFloat = DegToRad((float)i*10);
    }
 }
 //---------------------------------------------------------------------------
@@ -91,8 +91,8 @@ void __fastcall TForm1::MPSphereProgress(TObject *Sender, const double deltaTime
 		  const double newTime)
 {
    // this is invoked for each of our MultiProxys, it makes them loop an ellipse
-	  GLS.Particles->Position->X = Sin(newTime+GLS.Particles->TagFloat)*80-60;
-	  GLS.Particles->Position->Z = Cos(newTime+GLS.Particles->TagFloat)*7;
+	  GLParticles->Position->X = Sin(newTime+GLParticles->TagFloat)*80-60;
+	  GLParticles->Position->Z = Cos(newTime+GLParticles->TagFloat)*7;
 }
 //---------------------------------------------------------------------------
 

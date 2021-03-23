@@ -25,6 +25,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = clGray
     Buffer.AntiAliasing = aa4xHQ
     FieldOfView = 159.054977416992200000
+    PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
@@ -95,7 +96,6 @@ object Form1: TForm1
         Material.MaterialLibrary = GLMaterialLibrary1
         Material.LibMaterialName = 'mask'
         Position.Coordinates = {0000403F000000006666663F0000803F}
-        Up.Coordinates = {000000000000803F0000008000000000}
         BottomRadius = 0.100000001490116100
         Height = 2.000000000000000000
         Slices = 20

@@ -34,7 +34,7 @@
 // Shader headers
 #include "GLSL.PostShaders.hpp"
 #include "GLSL.PostEffects.hpp"
-#include "CG.PostTransformationShader.hpp"
+#include "Cg.PostTransformationShader.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
