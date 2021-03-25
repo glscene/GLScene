@@ -21,7 +21,6 @@ uses
   System.SysUtils,
 
   GLS.OpenGLTokens,
-  GLS.OpenGLAdapter,
   GLS.Strings,
   GLS.XOpenGL,
   GLS.Context,

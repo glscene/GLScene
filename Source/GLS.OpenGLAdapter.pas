@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.OpenGLAdapter;
 
 (* OpenGL adapter *)
@@ -31,7 +30,7 @@ const
     opengl32 = '/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib';
     glu32 = '/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLU.dylib';
     {$ELSE}
-    Unsupported platform 
+    Unsupported platform
     {$ENDIF}
   {$ELSE}
   opengl32 = 'OpenGL32.dll';
@@ -1588,15 +1587,16 @@ function wglCopyContext(p1: HGLRC; p2: HGLRC; p3: cardinal): BOOL; stdcall; exte
 function wglCreateContext(DC: HDC): HGLRC; stdcall; external opengl32;
 function wglCreateLayerContext(p1: HDC; p2: integer): HGLRC; stdcall; external opengl32;
 function wglDeleteContext(p1: HGLRC): BOOL; stdcall; external opengl32;
-function wglDescribeLayerPlane(p1: HDC; p2, p3: integer; p4: cardinal; var p5: TLayerPlaneDescriptor): BOOL; stdcall; external opengl32;
+///function wglDescribeLayerPlane(p1: HDC; p2, p3: integer; p4: cardinal; var p5: TLayerPlaneDescriptor): BOOL; stdcall; external opengl32;
 function wglGetCurrentContext: HGLRC; stdcall; external opengl32;
 function wglGetCurrentDC: HDC; stdcall; external opengl32;
-function wglGetLayerPaletteEntries(p1: HDC; p2, p3, p4: integer; var pcr): integer; stdcall; external opengl32;
+///function wglGetLayerPaletteEntries(p1: HDC; p2, p3, p4: integer; var pcr): integer; stdcall; external opengl32;
 function wglMakeCurrent(DC: HDC; p2: HGLRC): BOOL; stdcall; external opengl32;
 function wglRealizeLayerPalette(p1: HDC; p2: integer; p3: BOOL): BOOL; stdcall; external opengl32;
-function wglSetLayerPaletteEntries(p1: HDC; p2, p3, p4: integer; var pcr): integer; stdcall; external opengl32;
+///function wglSetLayerPaletteEntries(p1: HDC; p2, p3, p4: integer; var pcr): integer; stdcall; external opengl32;
 function wglShareLists(p1, p2: HGLRC): BOOL; stdcall; external opengl32;
 function wglSwapLayerBuffers(p1: HDC; p2: cardinal): BOOL; stdcall; external opengl32;
+(*
 function wglSwapMultipleBuffers(p1: UINT; const p2: PWGLSwap): DWORD; stdcall; external opengl32;
 function wglUseFontBitmapsA(DC: HDC; p2, p3, p4: DWORD): BOOL; stdcall; external opengl32;
 function wglUseFontOutlinesA(p1: HDC; p2, p3, p4: DWORD; p5, p6: single;
@@ -1607,6 +1607,7 @@ function wglUseFontOutlinesW(p1: HDC; p2, p3, p4: DWORD; p5, p6: single;
 function wglUseFontBitmaps(DC: HDC; p2, p3, p4: DWORD): BOOL; stdcall; external opengl32 Name 'wglUseFontBitmapsA';
 function wglUseFontOutlines(p1: HDC; p2, p3, p4: DWORD; p5, p6: single;
   p7: integer; p8: PGlyphMetricsFloat): BOOL; stdcall; external opengl32 Name 'wglUseFontOutlinesA';
+*)
 {$ENDIF}
 
 

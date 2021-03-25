@@ -25,8 +25,6 @@ object Form1: TForm1
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 497
-    ExplicitHeight = 378
   end
   object MoveBtn: TBitBtn
     Left = 0

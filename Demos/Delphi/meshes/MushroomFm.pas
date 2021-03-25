@@ -13,6 +13,7 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
 
+  GLS.VectorTypes,
   GLS.VectorGeometry,
   GLS.Texture,
   GLS.Scene,
