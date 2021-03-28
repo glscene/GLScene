@@ -176,8 +176,6 @@ type
   TAffineExtMatrix = array [0 .. 2] of TAffineExtVector;
 
   // Some simplified names
-///  PGLMatrix = ^TGLMatrix;
-///  TGLMatrix = THomogeneousFltMatrix;
 
   TMatrixArray = array [0 .. MaxInt shr 7] of TGLMatrix;
   PMatrixArray = ^TMatrixArray;
@@ -250,6 +248,7 @@ const
   MinusXVector: TAffineVector = (X: - 1; Y: 0; Z: 0);
   MinusYVector: TAffineVector = (X: 0; Y: - 1; Z: 0);
   MinusZVector: TAffineVector = (X: 0; Y: 0; Z: - 1);
+
   // Standard homogeneous vectors
   XHmgVector: THomogeneousVector = (X: 1; Y: 0; Z: 0; W: 0);
   YHmgVector: THomogeneousVector = (X: 0; Y: 1; Z: 0; W: 0);
@@ -261,6 +260,7 @@ const
   XYZHmgVector: THomogeneousVector = (X: 1; Y: 1; Z: 1; W: 0);
   XYZWHmgVector: THomogeneousVector = (X: 1; Y: 1; Z: 1; W: 1);
   NullHmgVector: THomogeneousVector = (X: 0; Y: 0; Z: 0; W: 0);
+
   // Standard homogeneous points
   XHmgPoint: THomogeneousVector = (X: 1; Y: 0; Z: 0; W: 1);
   YHmgPoint: THomogeneousVector = (X: 0; Y: 1; Z: 0; W: 1);
@@ -512,7 +512,7 @@ procedure VectorSubtract(const V1: TGLVector; const V2: TAffineVector; var resul
 // Returns V1-V2
 function VectorSubtract(const V1, V2: TGLVector): TGLVector; overload; 
 // Subtracts V2 from V1 and return value in result
-procedure VectorSubtract(const V1, V2: TGLVector; var result: TGLVector); overload; 
+procedure VectorSubtract(const V1, V2: TGLVector; var result: TGLVector); overload;
 // Subtracts V2 from V1 and return value in result
 procedure VectorSubtract(const V1, V2: TGLVector; var result: TAffineVector); overload;
 function VectorSubtract(const V1: TAffineVector; delta: Single): TAffineVector; overload; inline;
@@ -2452,6 +2452,7 @@ function VectorNorm(const V: TAffineVector): Single;
 begin
   result := V.X * V.X + V.Y * V.Y + V.Z * V.Z;
 end;
+
 function VectorNorm(const V: TGLVector): Single;
 begin
   result := V.X * V.X + V.Y * V.Y + V.Z * V.Z;
@@ -5632,15 +5633,14 @@ end;
 
 function ConvertRotation(const Angles: TAffineVector): TGLVector;
 
-{ Rotation of the Angle t about the axis (X, Y, Z) is given by:
-
+(*
+  Rotation of the Angle t about the axis (X, Y, Z) is given by:
   | X^2 + (1-X^2) Cos(t),    XY(1-Cos(t))  +  Z Sin(t), XZ(1-Cos(t))-Y Sin(t) |
   M = | XY(1-Cos(t))-Z Sin(t), Y^2 + (1-Y^2) Cos(t),      YZ(1-Cos(t)) + X Sin(t) |
   | XZ(1-Cos(t)) + Y Sin(t), YZ(1-Cos(t))-X Sin(t),   Z^2 + (1-Z^2) Cos(t)    |
 
   Rotation about the three axes (Angles a1, a2, a3) can be represented as
   the product of the individual rotation matrices:
-
   | 1  0       0       | | Cos(a2) 0 -Sin(a2) | |  Cos(a3) Sin(a3) 0 |
   | 0  Cos(a1) Sin(a1) | * | 0       1  0       | * | -Sin(a3) Cos(a3) 0 |
   | 0 -Sin(a1) Cos(a1) | | Sin(a2) 0  Cos(a2) | |  0       0       1 |
@@ -5654,14 +5654,11 @@ function ConvertRotation(const Angles: TAffineVector): TGLVector;
   Z^2 + (1-Z^2) Cos(t) = M[2][2]
 
   Adding the three equations, we get:
-
   X^2  +  Y^2  +  Z^2 - (M[0][0]  +  M[1][1]  +  M[2][2]) =
   - (3 - X^2 - Y^2 - Z^2) Cos(t)
 
   Since (X^2  +  Y^2  +  Z^2) = 1, we can rewrite as:
-
   Cos(t) = (1 - (M[0][0]  +  M[1][1]  +  M[2][2])) / 2
-
   Solving for t, we get:
 
   t = Acos(((M[0][0]  +  M[1][1]  +  M[2][2]) - 1) / 2)
@@ -5669,11 +5666,10 @@ function ConvertRotation(const Angles: TAffineVector): TGLVector;
   We can substitute t into the equations for X^2, Y^2, and Z^2 above
   to get the values for X, Y, and Z.  To find the proper signs we note
   that:
-
   2 X Sin(t) = M[1][2] - M[2][1]
   2 Y Sin(t) = M[2][0] - M[0][2]
   2 Z Sin(t) = M[0][1] - M[1][0]
-}
+*)
 var
   Axis1, Axis2: TVector3f;
   M, m1, m2: TGLMatrix;
@@ -6655,7 +6651,7 @@ begin
   result := (u >= 0) and (V >= 0) and (u + V <= 1);
 end;
 
-{ ***************************************************************************** }
+//**********************************************************************
 
 function Vector2fMake(const X, Y: Single): TVector2f;
 begin
@@ -6687,7 +6683,7 @@ begin
   result.Y := Y;
 end;
 
-// **************
+//**********************************************************
 
 function Vector2fMake(const Vector: TVector3f): TVector2f;
 begin
@@ -6719,7 +6715,7 @@ begin
   result.Y := Vector.Y;
 end;
 
-// **********
+//*******************************************************
 
 function Vector2fMake(const Vector: TVector4f): TVector2f;
 begin
@@ -6751,7 +6747,7 @@ begin
   result.Y := Vector.Y;
 end;
 
-{ ***************************************************************************** }
+//***********************************************************************
 
 function Vector3fMake(const X, Y, Z: Single): TVector3f;
 begin
@@ -6858,7 +6854,7 @@ begin
   result.Z := Vector.Z;
 end;
 
-{ ***************************************************************************** }
+//***********************************************************************
 
 function Vector4fMake(const X, Y, Z, W: Single): TVector4f;
 begin
@@ -6985,7 +6981,7 @@ begin
   result.W := W;
 end;
 
-{ ***************************************************************************** }
+//***********************************************************************
 
 function VectorEquals(const Vector1, Vector2: TVector2f): Boolean;
 begin
@@ -7012,7 +7008,7 @@ begin
   result := (V1.X = V2.X) and (V1.Y = V2.Y);
 end;
 
-{ ***************************************************************************** }
+// ********************************************************************
 
 function VectorEquals(const V1, V2: TVector3i): Boolean;
 begin

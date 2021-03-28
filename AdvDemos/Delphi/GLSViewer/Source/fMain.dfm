@@ -130,7 +130,6 @@ object MainForm: TMainForm
   ShowHint = True
   WindowState = wsMaximized
   OnCreate = FormCreate
-  OnMouseWheel = FormMouseWheel
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -173,7 +172,6 @@ object MainForm: TMainForm
     OnMouseLeave = snViewerMouseLeave
     Align = alClient
     OnMouseDown = snViewerMouseDown
-    OnMouseMove = snViewerMouseMove
     OnMouseUp = snViewerMouseUp
     TabOrder = 1
   end
@@ -1097,9 +1095,13 @@ object MainForm: TMainForm
           item
             Items = <
               item
-                Action = acObjects
-                Caption = 'O&bjects...'
+                Action = acPoints
+                Caption = '&Points'
                 ImageIndex = 21
+              end
+              item
+                Action = acSpheres
+                Caption = 'Sph&eres'
               end
               item
                 Caption = '-'
@@ -1708,8 +1710,8 @@ object MainForm: TMainForm
             ShowCaption = False
           end
           item
-            Action = acObjects
-            Caption = 'O&bjects...'
+            Action = acPoints
+            Caption = '&Points'
             ImageIndex = 21
             ShowCaption = False
           end
@@ -2040,12 +2042,12 @@ object MainForm: TMainForm
       Caption = 'CSAA 16X'
       GroupIndex = 2
     end
-    object acObjects: TAction
+    object acPoints: TAction
       Category = 'View'
-      Caption = 'Objects...'
-      Hint = 'Objects'
+      Caption = 'Points'
+      Hint = 'Points'
       ImageIndex = 21
-      OnExecute = acObjectsExecute
+      OnExecute = acPointsExecute
     end
     object acNaviCube: TAction
       Category = 'View'
@@ -2060,6 +2062,10 @@ object MainForm: TMainForm
       Hint = 'Info of objects'
       ImageIndex = 22
       OnExecute = acToolsInfoExecute
+    end
+    object acSpheres: TAction
+      Category = 'View'
+      Caption = 'Spheres'
     end
   end
   object ImageListMenu: TImageList
@@ -2869,5 +2875,25 @@ object MainForm: TMainForm
     OnTimer = AsyncTimerTimer
     Left = 240
     Top = 152
+  end
+  object GLSimpleNavigation: TGLSimpleNavigation
+    Form = Owner
+    GLSceneViewer = snViewer
+    FormCaption = 'GLSViewer - %FPS'
+    KeyCombinations = <
+      item
+        ShiftState = [ssLeft, ssRight]
+        Action = snaZoom
+      end
+      item
+        ShiftState = [ssLeft]
+        Action = snaMoveAroundTarget
+      end
+      item
+        ShiftState = [ssRight]
+        Action = snaMoveAroundTarget
+      end>
+    Left = 328
+    Top = 96
   end
 end

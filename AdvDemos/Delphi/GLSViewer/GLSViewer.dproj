@@ -100,14 +100,14 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <BT_BuildType>Debug</BT_BuildType>
-        <VerInfo_Build>93</VerInfo_Build>
+        <VerInfo_Build>115</VerInfo_Build>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <VerInfo_MinorVer>8</VerInfo_MinorVer>
         <VerInfo_Debug>true</VerInfo_Debug>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Icon_MainIcon>Resource\GLSViewer.ico</Icon_MainIcon>
-        <VerInfo_Keys>CompanyName=;FileVersion=1.8.0.93;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.8.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=;FileVersion=1.8.0.115;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.8.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">

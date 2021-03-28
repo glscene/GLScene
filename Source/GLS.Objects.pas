@@ -597,7 +597,7 @@ type
     property TopCap: TGLCapType read FTopCap write SetTopCap default ctNone;
   end;
 
-  (* Base class for objects based on a polygon. *)
+  (* Base class for objects based on a polygon *)
   TGLPolygonBase = class(TGLSceneObject)
   private
     FDivision: Integer;

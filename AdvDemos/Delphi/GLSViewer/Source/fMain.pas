@@ -64,7 +64,8 @@ uses
   fGLAbout,
   fGLOptions,
   fGLDialog,
-  dGLSViewer;
+  dGLSViewer,
+  GLS.SimpleNavigation;
 
 type
   TMainForm = class(TGLForm)
@@ -132,13 +133,15 @@ type
     atbTools: TActionToolBar;
     atbView: TActionToolBar;
     atbFile: TActionToolBar;
-    acObjects: TAction;
+    acPoints: TAction;
     AsyncTimer: TGLAsyncTimer;
     dcWorld: TGLDummyCube;
     grdXYZ: TGLXYZGrid;
     acNaviCube: TAction;
     GLPoints: TGLPoints;
     acToolsInfo: TAction;
+    GLSimpleNavigation: TGLSimpleNavigation;
+    acSpheres: TAction;
     procedure FormCreate(Sender: TObject);
     procedure snViewerMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -183,7 +186,7 @@ type
     procedure acViewResetExecute(Sender: TObject);
     procedure acViewZoomOutExecute(Sender: TObject);
     procedure acViewZoomInExecute(Sender: TObject);
-    procedure acObjectsExecute(Sender: TObject);
+    procedure acPointsExecute(Sender: TObject);
     procedure AsyncTimerTimer(Sender: TObject);
     procedure acNaviCubeExecute(Sender: TObject);
     procedure acToolsInfoExecute(Sender: TObject);
@@ -213,9 +216,6 @@ type
 var
   MainForm: TMainForm;
   NaviCube: TGLNaviCube;
-
-const
-  NumObjects: Integer = 1000;
 
 //=======================================================================
 implementation
@@ -943,24 +943,30 @@ begin
 end;
 
 // Show Base and Additional Objects
-procedure TMainForm.acObjectsExecute(Sender: TObject);
+procedure TMainForm.acPointsExecute(Sender: TObject);
 var
   i: Integer;
   Color : TVector3f;
-const
-  RandMax: Integer = 1000;
+  NumPoints: Integer;
+  X, Y, Z : Single;
+
 begin
-  for i := 0 to NumObjects - 1 do
+  NumPoints := 1000000;
+  GLPoints := TGLPoints(dcWorld.AddNewChild(TGLPoints));
+  GLPoints.Size := 5.0;
+  GLPoints.Style := psSmooth;
+  for i := 0 to NumPoints - 1 do
   begin
-    GLPoints := TGLPoints(dcWorld.AddNewChild(TGLPoints));
-    Color.X := Random(256)/256;
-    Color.Y := Random(256)/256;
-    Color.Z := Random(256)/256;
+    Color.X := Random();
+    Color.Y := Random();
+    Color.Z := Random();
+
+	  X := Random(50) - 25;
+	  Y := Random(50) - 25;
+	  Z := Random(50) - 25;
+
+    GLPoints.Positions.Add(X*0.05, Y*0.05, Z*0.05);  // Fill array of GLPoints
     GLPoints.Colors.AddPoint(Color);
-    GLPoints.Size := 5;
-	  GLPoints.Position.X := Random(10) - 5;
-	  GLPoints.Position.Y := Random(10) - 5;
-	  GLPoints.Position.Z := Random(10) - 5;
   end;
 end;
 
