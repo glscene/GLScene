@@ -1,49 +1,43 @@
 object FormPathControl: TFormPathControl
-  Left = 83
-  Top = 95
+  Left = 0
+  Top = 0
   Caption = 'Path Control'
-  ClientHeight = 370
-  ClientWidth = 505
+  ClientHeight = 480
+  ClientWidth = 705
   Color = clBtnFace
-  Constraints.MinHeight = 200
-  Constraints.MinWidth = 320
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'MS Sans Serif'
+  Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
   OnActivate = FormActivate
-  DesignSize = (
-    505
-    370)
   PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 505
-    Height = 370
+    Width = 705
+    Height = 480
     Camera = GLCamera1
     Buffer.BackgroundColor = clAppWorkSpace
-    FieldOfView = 149.751983642578100000
+    FieldOfView = 156.463424682617200000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object MoveBtn: TBitBtn
-    Left = 176
-    Top = 13
-    Width = 137
+    Left = 0
+    Top = 0
+    Width = 129
     Height = 25
-    Anchors = [akLeft, akBottom]
     Caption = 'Start Movement'
     TabOrder = 1
     OnClick = MoveBtnClick
   end
   object GLScene1: TGLScene
-    Left = 40
-    Top = 24
+    Left = 32
+    Top = 48
     object DummyCube1: TGLDummyCube
       CubeSize = 2.000000000000000000
       VisibleAtRunTime = True
@@ -77,7 +71,7 @@ object FormPathControl: TFormPathControl
     TimeMultiplier = 2.000000000000000000
     SleepLength = 10
     Left = 32
-    Top = 88
+    Top = 112
   end
   object GLSimpleNavigation1: TGLSimpleNavigation
     Form = Owner
@@ -97,6 +91,6 @@ object FormPathControl: TFormPathControl
         Action = snaMoveAroundTarget
       end>
     Left = 128
-    Top = 88
+    Top = 112
   end
 end

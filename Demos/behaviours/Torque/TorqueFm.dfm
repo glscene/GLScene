@@ -26,7 +26,6 @@ object FormTorque: TFormTorque
     FieldOfView = 110.444335937500000000
     PenAsTouch = False
     Align = alClient
-    OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
   end
@@ -37,7 +36,6 @@ object FormTorque: TFormTorque
     Height = 78
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 615
     object lHexahedron: TLabel
       Left = 280
       Top = 8
@@ -102,8 +100,6 @@ object FormTorque: TFormTorque
       'Move your mouse over an object and it will start spinning. Click' +
       ' to get info.'
     TabOrder = 2
-    ExplicitTop = 269
-    ExplicitWidth = 615
   end
   object GLScene1: TGLScene
     Left = 16

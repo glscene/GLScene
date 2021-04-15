@@ -15,15 +15,19 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.VectorFileObjects"
+#pragma link "GLS.BitmapFont"
+#pragma link "GLS.HUDObjects"
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormTorque *FormTorque;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+
+__fastcall TFormTorque::TFormTorque(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
+
+void __fastcall TFormTorque::FormCreate(TObject *Sender)
 {
 	// Initialize last time
 	lastTime = 24*3600*(Now());
@@ -40,22 +44,22 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	GetOrCreateInertia(Tetrahedron)->RotationDamping->SetDamping(0, 0, 0.01);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
-          int X, int Y)
+void __fastcall TFormTorque::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
+		  int X, int Y)
 {
 	// Mouse moved, get what's underneath
 	pickedObject = GLSceneViewer1->Buffer->GetPickedObject(X, Y);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
-          const double newTime)
+void __fastcall TFormTorque::GLCadencer1Progress(TObject *Sender, const double deltaTime,
+		  const double newTime)
 {
 	// apply some "torque" to the pickedObject if any
   if (pickedObject)
 	 GetOrCreateInertia(pickedObject)->ApplyTorque(deltaTime, 200, 0, 0);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::CheckBox1Click(TObject *Sender)
+void __fastcall TFormTorque::CheckBox1Click(TObject *Sender)
 {
 	int i;
 	Single mass;
