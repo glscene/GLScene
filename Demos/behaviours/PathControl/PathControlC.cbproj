@@ -138,16 +138,16 @@
         <Defines>NDEBUG;$(Defines)</Defines>
     </PropertyGroup>
     <ItemGroup>
+        <CppCompile Include="fPathControlC.cpp">
+            <Form>FormPathControl</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>fPathControlC.h</DependentOn>
+            <BuildOrder>2</BuildOrder>
+        </CppCompile>
         <CppCompile Include="PathControlC.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
-        <CppCompile Include="PathControlFm.cpp">
-            <Form>FormPathControl</Form>
-            <FormType>dfm</FormType>
-            <DependentOn>PathControlFm.h</DependentOn>
-            <BuildOrder>2</BuildOrder>
-        </CppCompile>
-        <FormResources Include="PathControlFm.dfm"/>
+        <FormResources Include="fPathControlC.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -211,8 +211,8 @@
                 </ProjectProperties>
             </CPlusPlusBuilder.Personality>
             <Deployment Version="3">
-                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx64\libcgcrtl.dylib" Class="DependencyModule">
-                    <Platform Name="OSX64">
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64230.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -226,9 +226,8 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\PathControlC.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32c240.dll" Class="DependencyModule">
                     <Platform Name="Win32">
-                        <RemoteName>PathControlC.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -323,13 +322,14 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64230.dll" Class="DependencyModule">
-                    <Platform Name="Win64">
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx64\libcgcrtl.dylib" Class="DependencyModule">
+                    <Platform Name="OSX64">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32c240.dll" Class="DependencyModule">
+                <DeployFile LocalName=".\Win32\Debug\PathControlC.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
+                        <RemoteName>PathControlC.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

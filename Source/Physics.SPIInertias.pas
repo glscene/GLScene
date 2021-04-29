@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit Physics.SPIInertias;
 
 interface
@@ -11,6 +10,7 @@ uses
   System.Classes,
   Vcl.Dialogs,
 
+  GLS.PersistentClasses,
   GLS.XCollection,
   GLS.Scene,
   GLS.BaseClasses,
@@ -18,13 +18,12 @@ uses
   GLS.VectorTypes,
   Physics.SPIManager,
   GLS.Coordinates,
+  GLS.Strings,
   GLS.Behaviours;
 
 type
-  // TGLRigidBody=class;
-
   TGLParticleInertia = class(TGLBaseInertia)
-  // modified from TGLBInertia by Dan Bartlett
+  // modified from TGLBInertia
   private
     FMass: Single;
     FTranslationSpeed: TGLCoordinates;

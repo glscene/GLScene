@@ -20,6 +20,7 @@ uses
   GLS.Material,
   GLS.RenderContextInfo,
   GLS.TextureFormat,
+  GLS.State,
 
   Imports.cgGL,
   Cg.Shader;

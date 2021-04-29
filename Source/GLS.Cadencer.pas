@@ -1,10 +1,9 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Cadencer;
 
-(* Cadencing composant for GLScene (ease Progress processing) *)
+(* The cadencer component (ease Progress processing) *)
 
 interface
 
@@ -31,7 +30,7 @@ type
      any previous event handle, and only one cadencer may be in this mode. *)
   TGLCadencerMode = (cmManual, cmASAP, cmApplicationIdle);
 
-  (* Determines which time reference the TGLCadencer should use. 
+  (* Determines which time reference the TGLCadencer should use.
    - cmRTC : the Real Time Clock is used (precise over long periods, but
     not accurate to the millisecond, may limit your effective framerate
           to less than 50 FPS on some systems)
@@ -41,7 +40,7 @@ type
    - cmExternal : the CurrentTime property is used *)
   TGLCadencerTimeReference = (cmRTC, cmPerformanceCounter, cmExternal);
 
-  (* This component allows auto-progression of animation. 
+  (* This component allows auto-progression of animation.
    Basicly dropping this component and linking it to your TGLScene will send
    it real-time progression events (time will be measured in seconds) while
    keeping the CPU 100% busy if possible (ie. if things change in your scene). 
@@ -73,7 +72,7 @@ type
     procedure SetMode(const val: TGLCadencerMode);
     procedure SetTimeReference(const val: TGLCadencerTimeReference);
     procedure SetTimeMultiplier(const val: Double);
-    {Returns raw ref time (no multiplier, no offset) }
+    // Returns raw ref time (no multiplier, no offset)
     function GetRawReferenceTime: Double;
     procedure RestartASAP;
     procedure Loaded; override;
@@ -83,7 +82,7 @@ type
     destructor Destroy; override;
     procedure Subscribe(aComponent: TGLCadenceAbleComponent);
     procedure UnSubscribe(aComponent: TGLCadenceAbleComponent);
-    (* Allows to manually trigger a progression. 
+    (* Allows to manually trigger a progression.
      Time stuff is handled automatically.
      If cadencer is disabled, this functions does nothing. *)
     procedure Progress;
@@ -196,7 +195,6 @@ var
   vASAPCadencerList: TList;
   vHandler: TASAPHandler;
   vCounterFrequency: Int64;
-
 
 procedure RegisterASAPCadencer(aCadencer: TGLCadencer);
 begin
@@ -638,8 +636,8 @@ end;
 
 procedure TGLCadencer.Reset;
 begin
-  lasttime := 0;
-  downTime := GetRawReferenceTime;
+  LastTime := 0;
+  DownTime := GetRawReferenceTime;
   FOriginTime := downTime;
 end;
 

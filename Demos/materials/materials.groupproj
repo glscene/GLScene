@@ -1,0 +1,144 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{030D665E-1C50-48A9-B6CA-8D07889A6DE2}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="cubemap\Cubemap.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="customquad\Customquad.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="dynamictexture\Dynamictexture.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="dyncubemap\Dyncubemap.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MaterialScript\MatScript.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="mirror\mirror.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="multipass\multipass.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="multimaterial\MultiMaterial.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="multitexture\MultiTexture.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="transparency\Transparency.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Cubemap">
+        <MSBuild Projects="cubemap\Cubemap.cbproj"/>
+    </Target>
+    <Target Name="Cubemap:Clean">
+        <MSBuild Projects="cubemap\Cubemap.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Cubemap:Make">
+        <MSBuild Projects="cubemap\Cubemap.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Customquad">
+        <MSBuild Projects="customquad\Customquad.cbproj"/>
+    </Target>
+    <Target Name="Customquad:Clean">
+        <MSBuild Projects="customquad\Customquad.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Customquad:Make">
+        <MSBuild Projects="customquad\Customquad.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Dynamictexture">
+        <MSBuild Projects="dynamictexture\Dynamictexture.cbproj"/>
+    </Target>
+    <Target Name="Dynamictexture:Clean">
+        <MSBuild Projects="dynamictexture\Dynamictexture.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Dynamictexture:Make">
+        <MSBuild Projects="dynamictexture\Dynamictexture.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Dyncubemap">
+        <MSBuild Projects="dyncubemap\Dyncubemap.cbproj"/>
+    </Target>
+    <Target Name="Dyncubemap:Clean">
+        <MSBuild Projects="dyncubemap\Dyncubemap.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Dyncubemap:Make">
+        <MSBuild Projects="dyncubemap\Dyncubemap.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MatScript">
+        <MSBuild Projects="MaterialScript\MatScript.cbproj"/>
+    </Target>
+    <Target Name="MatScript:Clean">
+        <MSBuild Projects="MaterialScript\MatScript.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MatScript:Make">
+        <MSBuild Projects="MaterialScript\MatScript.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="mirror">
+        <MSBuild Projects="mirror\mirror.cbproj"/>
+    </Target>
+    <Target Name="mirror:Clean">
+        <MSBuild Projects="mirror\mirror.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="mirror:Make">
+        <MSBuild Projects="mirror\mirror.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="multipass">
+        <MSBuild Projects="multipass\multipass.cbproj"/>
+    </Target>
+    <Target Name="multipass:Clean">
+        <MSBuild Projects="multipass\multipass.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="multipass:Make">
+        <MSBuild Projects="multipass\multipass.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MultiMaterial">
+        <MSBuild Projects="multimaterial\MultiMaterial.cbproj"/>
+    </Target>
+    <Target Name="MultiMaterial:Clean">
+        <MSBuild Projects="multimaterial\MultiMaterial.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MultiMaterial:Make">
+        <MSBuild Projects="multimaterial\MultiMaterial.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MultiTexture">
+        <MSBuild Projects="multitexture\MultiTexture.cbproj"/>
+    </Target>
+    <Target Name="MultiTexture:Clean">
+        <MSBuild Projects="multitexture\MultiTexture.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MultiTexture:Make">
+        <MSBuild Projects="multitexture\MultiTexture.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Transparency">
+        <MSBuild Projects="transparency\Transparency.cbproj"/>
+    </Target>
+    <Target Name="Transparency:Clean">
+        <MSBuild Projects="transparency\Transparency.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Transparency:Make">
+        <MSBuild Projects="transparency\Transparency.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Cubemap;Customquad;Dynamictexture;Dyncubemap;MatScript;mirror;multipass;MultiMaterial;MultiTexture;Transparency"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Cubemap:Clean;Customquad:Clean;Dynamictexture:Clean;Dyncubemap:Clean;MatScript:Clean;mirror:Clean;multipass:Clean;MultiMaterial:Clean;MultiTexture:Clean;Transparency:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Cubemap:Make;Customquad:Make;Dynamictexture:Make;Dyncubemap:Make;MatScript:Make;mirror:Make;multipass:Make;MultiMaterial:Make;MultiTexture:Make;Transparency:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -71,7 +71,7 @@ type
     procedure ReadFromFiler(reader: TVirtualReader); override;
     property Tile[col, row: Integer]: Integer read GetTile
       write SetTile; default;
-    property row[index: Integer]: TGLTiledAreaRow read GetRow;
+    property Row[index: Integer]: TGLTiledAreaRow read GetRow;
     property RowMin: Integer read FRowMin write SetRowMin;
     property RowMax: Integer read FRowMax write SetRowMax;
     procedure Pack;

@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.WindowsFont;
 
 (* TFont Import into a BitmapFont using variable width...*)

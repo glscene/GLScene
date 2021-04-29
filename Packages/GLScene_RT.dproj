@@ -74,6 +74,7 @@
         <DCC_S>false</DCC_S>
         <DCC_N>false</DCC_N>
         <RuntimeOnlyPackage>true</RuntimeOnlyPackage>
+        <DCC_HppOutputARM>true</DCC_HppOutputARM>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
@@ -140,6 +141,7 @@
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="vclimg.dcp"/>
         <DCCReference Include="xmlrtl.dcp"/>
+        <DCCReference Include="GR32_RT.dcp"/>
         <DCCReference Include="..\Source\Formats.m3DSConst.pas"/>
         <DCCReference Include="..\Source\Formats.m3DSTypes.pas"/>
         <DCCReference Include="..\Source\Formats.m3DSUtils.pas"/>
@@ -370,6 +372,7 @@
         <DCCReference Include="..\Source\GLS.Strings.pas"/>
         <DCCReference Include="..\Source\GLS.XCollection.pas"/>
         <DCCReference Include="..\Source\GLS.XOpenGL.pas"/>
+        <None Include="..\Source\GLScene.inc"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

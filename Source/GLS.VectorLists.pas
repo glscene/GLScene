@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.VectorLists;
 
 (*  Misc. lists of vectors and entities *)
@@ -172,7 +171,7 @@ type
     procedure Scale(const factors: TAffineVector); overload;
   end;
 
-  (* A list of TGLVector.
+  (* A list of TGLVectors.
    Similar to TList, but using TGLVector as items.
    The list has stack-like push/pop methods *)
   TVectorList = class(TBaseVectorList)

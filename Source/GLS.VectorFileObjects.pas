@@ -513,7 +513,7 @@ type
   TGLMeshObjectList = class(TPersistentObjectList)
   private
     FOwner: TGLBaseMesh;
-    // Resturns True if all its MeshObjects use VBOs.
+    // Returns True if all its MeshObjects use VBOs.
     function GetUseVBO: Boolean;
     procedure SetUseVBO(const Value: Boolean);
   protected

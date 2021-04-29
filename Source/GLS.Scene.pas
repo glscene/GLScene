@@ -1125,12 +1125,12 @@ type
     property OnProgress;
   end;
 
-  (* Scene object.
+  (* Scene component class.
      The scene contains the scene description (lights, geometry...), which is
      basicly a hierarchical scene graph made of TGLBaseSceneObject. It will
      usually contain one or more TGLCamera object, which can be referred by
      a Viewer component for rendering purposes.
-     The scene's objects can be accessed directly from Delphi code (as regular
+     The scene's objects can be accessed directly from code (as regular
      components), but those are edited with a specific editor (double-click
      on the TGLScene component at design-time to invoke it). To add objects
      at runtime, use the AddNewChild method of TGLBaseSceneObject. *)
@@ -3619,7 +3619,7 @@ begin
 {$IFDEF USE_OPENGL_DEBUG}
   if gl.GREMEDY_string_marker then
     gl.StringMarkerGREMEDY(
-      Length(Name) + Length('.Render'), PGLChar(TGLString(Name + '.Render')));
+      Length(Name) + Length('.Render'), PChar(TString(Name + '.Render')));
 {$ENDIF}
 
   if (ARci.drawState = dsPicking) and not FPickable then

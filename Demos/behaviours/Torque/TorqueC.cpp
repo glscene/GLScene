@@ -4,7 +4,7 @@
 #pragma hdrstop
 #include <tchar.h>
 //---------------------------------------------------------------------------
-USEFORM("TorqueFm.cpp", FormTorque);
+USEFORM("fTorqueC.cpp", FormTorqueC);
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
@@ -12,7 +12,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 	{
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
-		Application->CreateForm(__classid(TFormTorque), &FormTorque);
+		Application->CreateForm(__classid(TFormTorqueC), &FormTorqueC);
 		Application->Run();
 	}
 	catch (Exception &exception)

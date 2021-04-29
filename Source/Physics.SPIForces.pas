@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit Physics.SPIForces;
 
 interface
@@ -10,6 +9,7 @@ uses
   System.Classes,
   Vcl.Dialogs,
 
+  GLS.VectorTypes,
   GLS.XCollection,
   GLS.Scene,
   GLS.VectorGeometry,

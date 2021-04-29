@@ -1,0 +1,3 @@
+MainIcon ICON "../../Media/GR32.ico"
+Delphi RCDATA "../../Media/delphi.jpg"
+SpriteTexture BITMAP "../../Media/sprite_texture.bmp"

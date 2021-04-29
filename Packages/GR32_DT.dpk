@@ -1,0 +1,46 @@
+package GR32_DT;
+
+{$R *.res}
+{$R '..\external\GR32\GR32_Reg.dcr'}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE RELEASE}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'Graphics32 Design Time Package'}
+{$IMPLICITBUILD ON}
+
+requires
+  DesignIde,
+  Rtl,
+  Vcl,
+  VclSmp,
+  GR32_RT;
+
+contains
+  GR32_Dsgn_Bitmap in '..\Source\GR32_Dsgn_Bitmap.pas',
+  GR32_Reg in '..\Source\GR32_Reg.pas',
+  GR32_Dsgn_Color in '..\Source\GR32_Dsgn_Color.pas',
+  GR32_Dsgn_ColorPicker in '..\Source\GR32_Dsgn_ColorPicker.pas',
+  GR32_Dsgn_Misc in '..\Source\GR32_Dsgn_Misc.pas';
+
+end.
