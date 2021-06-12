@@ -33,8 +33,7 @@ requires
   vcl,
   rtl,
   vclimg,
-  xmlrtl,
-  GR32_RT;
+  xmlrtl;
 
 contains
   Formats.m3DSConst in '..\Source\Formats.m3DSConst.pas',

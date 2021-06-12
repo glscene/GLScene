@@ -12,7 +12,7 @@
 
 // Activate support for Graphics32 library
 // Can be found at https://github.com/graphics32
-{$DEFINE USE_GRAPHICS32}
+{.$DEFINE USE_GRAPHICS32}
 
 // Activate support for FastMath library
 // Use https://github.com/neslib/FastMath

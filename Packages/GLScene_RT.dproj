@@ -141,7 +141,6 @@
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="vclimg.dcp"/>
         <DCCReference Include="xmlrtl.dcp"/>
-        <DCCReference Include="GR32_RT.dcp"/>
         <DCCReference Include="..\Source\Formats.m3DSConst.pas"/>
         <DCCReference Include="..\Source\Formats.m3DSTypes.pas"/>
         <DCCReference Include="..\Source\Formats.m3DSUtils.pas"/>

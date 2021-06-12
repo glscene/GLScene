@@ -8,6 +8,6 @@ uses
 
 begin
   Application.Initialize;
-  AApplication.CreateForm(TMainForm, MainForm);
-  pplication.Run;
+  Application.CreateForm(TMainForm, MainForm);
+  Application.Run;
 end.

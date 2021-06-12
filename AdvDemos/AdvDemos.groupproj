@@ -1,0 +1,156 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{02A55F1F-28A9-4F0B-BC74-BAC6D4030B89}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Archipelago\Splitter\SplitterD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Archipelago\ArchipelagoD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Christmas\ChristmasC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Christmas\ChristmasD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Earth\EarthD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Forest\ForestD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLSViewer\GLSViewerD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="IntensityMesh\IntensityMeshD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PanoramViewer\PanoViewerD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Quake3Demo\Q3DemoD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TextureTB\TtbD.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SplitterD">
+        <MSBuild Projects="Archipelago\Splitter\SplitterD.dproj"/>
+    </Target>
+    <Target Name="SplitterD:Clean">
+        <MSBuild Projects="Archipelago\Splitter\SplitterD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SplitterD:Make">
+        <MSBuild Projects="Archipelago\Splitter\SplitterD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ArchipelagoD">
+        <MSBuild Projects="Archipelago\ArchipelagoD.dproj"/>
+    </Target>
+    <Target Name="ArchipelagoD:Clean">
+        <MSBuild Projects="Archipelago\ArchipelagoD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ArchipelagoD:Make">
+        <MSBuild Projects="Archipelago\ArchipelagoD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ChristmasC">
+        <MSBuild Projects="Christmas\ChristmasC.cbproj"/>
+    </Target>
+    <Target Name="ChristmasC:Clean">
+        <MSBuild Projects="Christmas\ChristmasC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ChristmasC:Make">
+        <MSBuild Projects="Christmas\ChristmasC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="ChristmasD">
+        <MSBuild Projects="Christmas\ChristmasD.dproj"/>
+    </Target>
+    <Target Name="ChristmasD:Clean">
+        <MSBuild Projects="Christmas\ChristmasD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ChristmasD:Make">
+        <MSBuild Projects="Christmas\ChristmasD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="EarthD">
+        <MSBuild Projects="Earth\EarthD.dproj"/>
+    </Target>
+    <Target Name="EarthD:Clean">
+        <MSBuild Projects="Earth\EarthD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="EarthD:Make">
+        <MSBuild Projects="Earth\EarthD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ForestD">
+        <MSBuild Projects="Forest\ForestD.dproj"/>
+    </Target>
+    <Target Name="ForestD:Clean">
+        <MSBuild Projects="Forest\ForestD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ForestD:Make">
+        <MSBuild Projects="Forest\ForestD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLSViewerD">
+        <MSBuild Projects="GLSViewer\GLSViewerD.dproj"/>
+    </Target>
+    <Target Name="GLSViewerD:Clean">
+        <MSBuild Projects="GLSViewer\GLSViewerD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLSViewerD:Make">
+        <MSBuild Projects="GLSViewer\GLSViewerD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="IntensityMeshD">
+        <MSBuild Projects="IntensityMesh\IntensityMeshD.dproj"/>
+    </Target>
+    <Target Name="IntensityMeshD:Clean">
+        <MSBuild Projects="IntensityMesh\IntensityMeshD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="IntensityMeshD:Make">
+        <MSBuild Projects="IntensityMesh\IntensityMeshD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PanoViewerD">
+        <MSBuild Projects="PanoramViewer\PanoViewerD.dproj"/>
+    </Target>
+    <Target Name="PanoViewerD:Clean">
+        <MSBuild Projects="PanoramViewer\PanoViewerD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PanoViewerD:Make">
+        <MSBuild Projects="PanoramViewer\PanoViewerD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Q3DemoD">
+        <MSBuild Projects="Quake3Demo\Q3DemoD.dproj"/>
+    </Target>
+    <Target Name="Q3DemoD:Clean">
+        <MSBuild Projects="Quake3Demo\Q3DemoD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Q3DemoD:Make">
+        <MSBuild Projects="Quake3Demo\Q3DemoD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TtbD">
+        <MSBuild Projects="TextureTB\TtbD.dproj"/>
+    </Target>
+    <Target Name="TtbD:Clean">
+        <MSBuild Projects="TextureTB\TtbD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TtbD:Make">
+        <MSBuild Projects="TextureTB\TtbD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SplitterD;ArchipelagoD;ChristmasC;ChristmasD;EarthD;ForestD;GLSViewerD;IntensityMeshD;PanoViewerD;Q3DemoD;TtbD"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SplitterD:Clean;ArchipelagoD:Clean;ChristmasC:Clean;ChristmasD:Clean;EarthD:Clean;ForestD:Clean;GLSViewerD:Clean;IntensityMeshD:Clean;PanoViewerD:Clean;Q3DemoD:Clean;TtbD:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SplitterD:Make;ArchipelagoD:Make;ChristmasC:Make;ChristmasD:Make;EarthD:Make;ForestD:Make;GLSViewerD:Make;IntensityMeshD:Make;PanoViewerD:Make;Q3DemoD:Make;TtbD:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

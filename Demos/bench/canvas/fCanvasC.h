@@ -11,7 +11,6 @@
 #include <Vcl.Graphics.hpp>
 
 #include "GLS.Coordinates.hpp"
-
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Canvas.hpp"

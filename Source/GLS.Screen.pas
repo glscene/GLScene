@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Screen;
 
 (* Routines to interact with the screen/desktop *)

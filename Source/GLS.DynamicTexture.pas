@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.DynamicTexture;
 
 (*
@@ -53,8 +52,9 @@ type
     property TextureFormat: integer read GetTextureFormat;
   public
     constructor Create(AOwner: TPersistent); override;
-    class function FriendlyName : String; override;
-    class function FriendlyDescription : String; override;
+    destructor Destroy; override;
+    class function FriendlyName: String; override;
+    class function FriendlyDescription: String; override;
     procedure NotifyChange(Sender: TObject); override;
     // Must be called before using the Data pointer. Rendering context must be active!
     procedure BeginUpdate;
@@ -63,10 +63,10 @@ type
     // Pointer to buffer data.  Will be nil outside a BeginUpdate / EndUpdate block
     property Data: pointer read FData;
     (* Marks the dirty rectangle inside the texture.  BeginUpdate sets
-       it to ((0, 0), (Width, Height)), ie the entire texture.
-       Override it if you're only changing a small piece of the texture.
-       Note that the Data pointer is relative to the DirtyRectangle,
-       NOT the entire texture. *)
+      it to ((0, 0), (Width, Height)), ie the entire texture.
+      Override it if you're only changing a small piece of the texture.
+      Note that the Data pointer is relative to the DirtyRectangle,
+      NOT the entire texture. *)
     property DirtyRectangle: TRect read FDirtyRect write SetDirtyRectangle;
     // Indicates that the data is stored as BGR(A) instead of RGB(A). The default is BGR(A)
     property UseBGR: boolean read FUseBGR write FUseBGR;
@@ -74,37 +74,33 @@ type
     property UsePBO: boolean read FUsePBO write SetUsePBO;
   end;
 
-//---------------------------------------------------------
+// ---------------------------------------------------------
 implementation
-//---------------------------------------------------------  
+// ---------------------------------------------------------
 
 uses
   GLS.VectorGeometry;
 
-//----------------------------------
+// ----------------------------------
 // TGLDynamicTextureImage
-//----------------------------------
+// ----------------------------------
 
 procedure TGLDynamicTextureImage.BeginUpdate;
 var
   LTarget: TGLTextureTarget;
 begin
   Assert(FUpdating >= 0, 'Unbalanced begin/end update');
-
-  FUpdating:= FUpdating + 1;
-
+  FUpdating := FUpdating + 1;
   if FUpdating > 1 then
     exit;
-
   // initialization
-  if not (assigned(FPBO) or assigned(FBuffer)) then
+  if not(assigned(FPBO) or assigned(FBuffer)) then
   begin
     // cache so we know if it's changed
-    FTexSize:= GetTexSize;
-    
+    FTexSize := GetTexSize;
     if FUsePBO and TGLUnpackPBOHandle.IsSupported then
     begin
-      FPBO:= TGLUnpackPBOHandle.CreateAndAllocate;
+      FPBO := TGLUnpackPBOHandle.CreateAndAllocate;
       // initialize buffer
       FPBO.BindBufferData(nil, FTexSize, GL_STREAM_DRAW_ARB);
       // unbind so we don't upload the data from it, which is unnecessary
@@ -113,18 +109,21 @@ begin
     else
     begin
       // fall back to regular memory buffer if PBO's aren't supported
-      FBuffer:= AllocMem(FTexSize);
+      FBuffer := AllocMem(FTexSize);
     end;
 
     // Force creation of texture
     // This is a bit of a hack, should be a better way...
     LTarget := TGLTexture(OwnerTexture).TextureHandle.Target;
-    CurrentGLContext.GLStates.TextureBinding[0, LTarget] := TGLTexture(OwnerTexture).Handle;
+    CurrentGLContext.GLStates.TextureBinding[0, LTarget] :=
+      TGLTexture(OwnerTexture).Handle;
     case LTarget of
       ttNoShape: ;
       ttTexture1D: ;
       ttTexture2D:
-        gl.TexImage2D(GL_TEXTURE_2D, 0, TGLTexture(OwnerTexture).OpenGLTextureFormat, Width, Height, 0, TextureFormat, GL_UNSIGNED_BYTE, nil);
+        gl.TexImage2D(GL_TEXTURE_2D, 0, TGLTexture(OwnerTexture)
+          .OpenGLTextureFormat, Width, Height, 0, TextureFormat,
+          GL_UNSIGNED_BYTE, nil);
       ttTexture3D: ;
       ttTexture1DArray: ;
       ttTexture2DArray: ;
@@ -138,29 +137,34 @@ begin
   end;
 
   gl.CheckError;
-  
+
   if assigned(FPBO) then
   begin
     FPBO.Bind;
-
-    FData:= FPBO.MapBuffer(GL_WRITE_ONLY_ARB);
+    FData := FPBO.MapBuffer(GL_WRITE_ONLY_ARB);
   end
   else
   begin
-    FData:= FBuffer;
+    FData := FBuffer;
   end;
 
   gl.CheckError;
-
-  FDirtyRect:= GetGLRect(0, 0, Width, Height);
+  FDirtyRect := GetGLRect(0, 0, Width, Height);
 end;
 
 constructor TGLDynamicTextureImage.Create(AOwner: TPersistent);
 begin
   inherited Create(AOwner);
 
-  FUseBGR:= true;
-  FUsePBO:= true;
+  FUseBGR := true;
+  FUsePBO := true;
+end;
+
+destructor TGLDynamicTextureImage.Destroy;
+begin
+  FreePBO;
+  FreeBuffer;
+  inherited Destroy;
 end;
 
 procedure TGLDynamicTextureImage.EndUpdate;
@@ -169,33 +173,32 @@ var
   LTarget: TGLTextureTarget;
 begin
   Assert(FUpdating > 0, 'Unbalanced begin/end update');
-  FUpdating:= FUpdating - 1;
+  FUpdating := FUpdating - 1;
   if FUpdating > 0 then
     exit;
   if assigned(FPBO) then
   begin
     FPBO.UnmapBuffer;
     // pointer will act as an offset when using PBO
-    d:= nil;
+    d := nil;
   end
   else
   begin
-    d:= FBuffer;
+    d := FBuffer;
   end;
 
   LTarget := TGLTexture(OwnerTexture).TextureHandle.Target;
-  CurrentGLContext.GLStates.TextureBinding[0, LTarget] := TGLTexture(OwnerTexture).Handle;
+  CurrentGLContext.GLStates.TextureBinding[0, LTarget] :=
+    TGLTexture(OwnerTexture).Handle;
 
   case LTarget of
     ttNoShape: ;
     ttTexture1D: ;
     ttTexture2D:
       begin
-        gl.TexSubImage2D(GL_TEXTURE_2D, 0,
-          FDirtyRect.Left, FDirtyRect.Top,
-          FDirtyRect.Right-FDirtyRect.Left,
-          FDirtyRect.Bottom-FDirtyRect.Top,
-          TextureFormat, DataFormat, d);
+        gl.TexSubImage2D(GL_TEXTURE_2D, 0, FDirtyRect.Left, FDirtyRect.Top,
+          FDirtyRect.Right - FDirtyRect.Left, FDirtyRect.Bottom -
+          FDirtyRect.Top, TextureFormat, DataFormat, d);
       end;
     ttTexture3D: ;
     ttTexture1DArray: ;
@@ -211,8 +214,7 @@ begin
   if assigned(FPBO) then
     FPBO.UnBind;
 
-  FData:= nil;
-
+  FData := nil;
   gl.CheckError;
 end;
 
@@ -221,7 +223,7 @@ begin
   if assigned(FBuffer) then
   begin
     FreeMem(FBuffer);
-    FBuffer:= nil;
+    FBuffer := nil;
   end;
 end;
 
@@ -230,47 +232,51 @@ begin
   if assigned(FPBO) then
   begin
     FPBO.Free;
-    FPBO:= nil;
+    FPBO := nil;
   end;
 end;
 
-class function TGLDynamicTextureImage.FriendlyName : String;
+class function TGLDynamicTextureImage.FriendlyName: String;
 begin
-   Result:='Dynamic Texture';
+  Result := 'Dynamic Texture';
 end;
 
-class function TGLDynamicTextureImage.FriendlyDescription : String;
+class function TGLDynamicTextureImage.FriendlyDescription: String;
 begin
-   Result:='Dynamic Texture - optimised for changes at runtime';
+  Result := 'Dynamic Texture - optimised for changes at runtime';
 end;
 
 function TGLDynamicTextureImage.GetBitsPerPixel: integer;
 begin
-  Result := 8 * GetTextureElementSize( TGLTexture(OwnerTexture).TextureFormatEx );
+  Result := 8 * GetTextureElementSize(TGLTexture(OwnerTexture).TextureFormatEx);
 end;
 
 function TGLDynamicTextureImage.GetDataFormat: integer;
 var
-  data, color: Cardinal;
+  Data, color: Cardinal;
 begin
-  FindCompatibleDataFormat(TGLTexture(OwnerTexture).TextureFormatEx, color, data);
-  Result := data;
+  FindCompatibleDataFormat(TGLTexture(OwnerTexture).TextureFormatEx,
+    color, Data);
+  Result := Data;
 end;
 
 function TGLDynamicTextureImage.GetTexSize: integer;
 begin
-  result:= Width * Height * BitsPerPixel div 8;
+  Result := Width * Height * BitsPerPixel div 8;
 end;
 
 function TGLDynamicTextureImage.GetTextureFormat: integer;
 var
-  data, color: Cardinal;
+  Data, color: Cardinal;
 begin
-  FindCompatibleDataFormat(TGLTexture(OwnerTexture).TextureFormatEx, color, data);
+  FindCompatibleDataFormat(TGLTexture(OwnerTexture).TextureFormatEx,
+    color, Data);
   if FUseBGR then
     case color of
-      GL_RGB: color := GL_BGR;
-      GL_RGBA: color := GL_BGRA;
+      GL_RGB:
+        color := GL_BGR;
+      GL_RGBA:
+        color := GL_BGRA;
     end;
   Result := color;
 end;
@@ -282,16 +288,15 @@ begin
     FreePBO;
     FreeBuffer;
   end;
-
   inherited;
 end;
 
 procedure TGLDynamicTextureImage.SetDirtyRectangle(const Value: TRect);
 begin
-  FDirtyRect.Left:= MaxInteger(Value.Left, 0);
-  FDirtyRect.Top:= MaxInteger(Value.Top, 0);
-  FDirtyRect.Right:= MinInteger(Value.Right, Width);
-  FDirtyRect.Bottom:= MinInteger(Value.Bottom, Height);
+  FDirtyRect.Left := MaxInteger(Value.Left, 0);
+  FDirtyRect.Top := MaxInteger(Value.Top, 0);
+  FDirtyRect.Right := MinInteger(Value.Right, Width);
+  FDirtyRect.Bottom := MinInteger(Value.Bottom, Height);
 end;
 
 procedure TGLDynamicTextureImage.SetUsePBO(const Value: boolean);
@@ -307,10 +312,10 @@ begin
   end;
 end;
 
-//----------------------------------
+// ----------------------------------
 initialization
-//----------------------------------
+// ----------------------------------
 
-  RegisterGLTextureImageClass(TGLDynamicTextureImage);
+RegisterGLTextureImageClass(TGLDynamicTextureImage);
 
 end.

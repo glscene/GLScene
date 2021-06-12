@@ -1,4 +1,4 @@
-{: Basic sample for loading and applying a cube map.
+(* Basic sample for loading and applying a cube map.
 
    In this extremely simple demo, with a single teapot, we just setup and
    enabled reflection cube map environment mapping. Cube maps allow higher
@@ -10,12 +10,12 @@
 
    The cube map images used in this sample are from the Developper section
    of the nVidia website (http://www.nvidia.com).
-}
+*)
 program Cubemap;
 
 uses
   Forms,
-  CubemapFm in 'CubemapFm.pas' {FormCubeMap};
+  fCubemap in 'fCubemap.pas' {FormCubeMap};
 
 {$R *.res}
 
