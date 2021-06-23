@@ -7,7 +7,7 @@ program Pawn;
 
 uses
   Forms,
-  PawnFm in 'PawnFm.pas' {FormPawn};
+  fPawn in 'fPawn.pas' {FormPawn};
 
 {$R *.RES}
 

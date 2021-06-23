@@ -45,7 +45,10 @@
         <Projects Include="RenderToTexture\RenderToTexture.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="SkyBox\SkyBox.cbproj">
+        <Projects Include="SkyBox\SkyBox.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SkyBox\SkyBoxC.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="tobitmap\ToBitmap.cbproj">
@@ -186,13 +189,22 @@
         <MSBuild Projects="RenderToTexture\RenderToTexture.cbproj" Targets="Make"/>
     </Target>
     <Target Name="SkyBox">
-        <MSBuild Projects="SkyBox\SkyBox.cbproj"/>
+        <MSBuild Projects="SkyBox\SkyBox.dproj"/>
     </Target>
     <Target Name="SkyBox:Clean">
-        <MSBuild Projects="SkyBox\SkyBox.cbproj" Targets="Clean"/>
+        <MSBuild Projects="SkyBox\SkyBox.dproj" Targets="Clean"/>
     </Target>
     <Target Name="SkyBox:Make">
-        <MSBuild Projects="SkyBox\SkyBox.cbproj" Targets="Make"/>
+        <MSBuild Projects="SkyBox\SkyBox.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SkyBoxC">
+        <MSBuild Projects="SkyBox\SkyBoxC.cbproj"/>
+    </Target>
+    <Target Name="SkyBoxC:Clean">
+        <MSBuild Projects="SkyBox\SkyBoxC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SkyBoxC:Make">
+        <MSBuild Projects="SkyBox\SkyBoxC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="ToBitmap">
         <MSBuild Projects="tobitmap\ToBitmap.cbproj"/>
@@ -204,13 +216,13 @@
         <MSBuild Projects="tobitmap\ToBitmap.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="Blur;BlurAdvanced;Bunnybump;celshading;culling;fog;FullScreen;Invariance;Memviewer;Multiproxy;MultiSampleTextures;OctreeDemo;phong;RenderToTexture;SkyBox;ToBitmap"/>
+        <CallTarget Targets="Blur;BlurAdvanced;Bunnybump;celshading;culling;fog;FullScreen;Invariance;Memviewer;Multiproxy;MultiSampleTextures;OctreeDemo;phong;RenderToTexture;SkyBox;SkyBoxC;ToBitmap"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Blur:Clean;BlurAdvanced:Clean;Bunnybump:Clean;celshading:Clean;culling:Clean;fog:Clean;FullScreen:Clean;Invariance:Clean;Memviewer:Clean;Multiproxy:Clean;MultiSampleTextures:Clean;OctreeDemo:Clean;phong:Clean;RenderToTexture:Clean;SkyBox:Clean;ToBitmap:Clean"/>
+        <CallTarget Targets="Blur:Clean;BlurAdvanced:Clean;Bunnybump:Clean;celshading:Clean;culling:Clean;fog:Clean;FullScreen:Clean;Invariance:Clean;Memviewer:Clean;Multiproxy:Clean;MultiSampleTextures:Clean;OctreeDemo:Clean;phong:Clean;RenderToTexture:Clean;SkyBox:Clean;SkyBoxC:Clean;ToBitmap:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Blur:Make;BlurAdvanced:Make;Bunnybump:Make;celshading:Make;culling:Make;fog:Make;FullScreen:Make;Invariance:Make;Memviewer:Make;Multiproxy:Make;MultiSampleTextures:Make;OctreeDemo:Make;phong:Make;RenderToTexture:Make;SkyBox:Make;ToBitmap:Make"/>
+        <CallTarget Targets="Blur:Make;BlurAdvanced:Make;Bunnybump:Make;celshading:Make;culling:Make;fog:Make;FullScreen:Make;Invariance:Make;Memviewer:Make;Multiproxy:Make;MultiSampleTextures:Make;OctreeDemo:Make;phong:Make;RenderToTexture:Make;SkyBox:Make;SkyBoxC:Make;ToBitmap:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

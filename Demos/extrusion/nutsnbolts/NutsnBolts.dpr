@@ -15,7 +15,7 @@ program NutsnBolts;
 
 uses
   Forms,
-  NutsnBoltsFm in 'NutsnBoltsFm.pas' {FormNutsnBolts};
+  fNutsnBolts in 'fNutsnBolts.pas' {FormNutsnBolts};
 
 {$R *.RES}
 

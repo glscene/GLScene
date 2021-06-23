@@ -17,7 +17,7 @@ program Mushroom;
 
 uses
   Forms,
-  MushroomFm in 'MushroomFm.pas' {FormMushroom};
+  fMushroom in 'fMushroom.pas' {FormMushroom};
 
 {$R *.RES}
 

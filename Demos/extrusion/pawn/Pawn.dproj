@@ -123,7 +123,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="PawnFm.pas">
+        <DCCReference Include="fPawn.pas">
             <Form>FormPawn</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

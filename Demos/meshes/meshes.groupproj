@@ -3,7 +3,10 @@
         <ProjectGuid>{A3213364-6485-4ED8-B8F3-F842CB4C21F0}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="actor\Actor.cbproj">
+        <Projects Include="actor\Actor.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="actor\ActorC.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="actorms3d\ActorMS3D.cbproj">
@@ -21,7 +24,7 @@
         <Projects Include="CSG\CSG.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="ducky\ducky.cbproj">
+        <Projects Include="ducky\DuckyC.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="expolygon\Expolygon.cbproj">
@@ -33,7 +36,10 @@
         <Projects Include="formula\Formula.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="mushroom\Mushroom.cbproj">
+        <Projects Include="mushroom\Mushroom.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="mushroom\MushroomC.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="portal\Portal.cbproj">
@@ -69,13 +75,22 @@
         </BorlandProject>
     </ProjectExtensions>
     <Target Name="Actor">
-        <MSBuild Projects="actor\Actor.cbproj"/>
+        <MSBuild Projects="actor\Actor.dproj"/>
     </Target>
     <Target Name="Actor:Clean">
-        <MSBuild Projects="actor\Actor.cbproj" Targets="Clean"/>
+        <MSBuild Projects="actor\Actor.dproj" Targets="Clean"/>
     </Target>
     <Target Name="Actor:Make">
-        <MSBuild Projects="actor\Actor.cbproj" Targets="Make"/>
+        <MSBuild Projects="actor\Actor.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ActorC">
+        <MSBuild Projects="actor\ActorC.cbproj"/>
+    </Target>
+    <Target Name="ActorC:Clean">
+        <MSBuild Projects="actor\ActorC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ActorC:Make">
+        <MSBuild Projects="actor\ActorC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="ActorMS3D">
         <MSBuild Projects="actorms3d\ActorMS3D.cbproj"/>
@@ -122,14 +137,14 @@
     <Target Name="CSG:Make">
         <MSBuild Projects="CSG\CSG.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="ducky">
-        <MSBuild Projects="ducky\ducky.cbproj"/>
+    <Target Name="DuckyC">
+        <MSBuild Projects="ducky\DuckyC.cbproj"/>
     </Target>
-    <Target Name="ducky:Clean">
-        <MSBuild Projects="ducky\ducky.cbproj" Targets="Clean"/>
+    <Target Name="DuckyC:Clean">
+        <MSBuild Projects="ducky\DuckyC.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="ducky:Make">
-        <MSBuild Projects="ducky\ducky.cbproj" Targets="Make"/>
+    <Target Name="DuckyC:Make">
+        <MSBuild Projects="ducky\DuckyC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Expolygon">
         <MSBuild Projects="expolygon\Expolygon.cbproj"/>
@@ -159,13 +174,22 @@
         <MSBuild Projects="formula\Formula.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Mushroom">
-        <MSBuild Projects="mushroom\Mushroom.cbproj"/>
+        <MSBuild Projects="mushroom\Mushroom.dproj"/>
     </Target>
     <Target Name="Mushroom:Clean">
-        <MSBuild Projects="mushroom\Mushroom.cbproj" Targets="Clean"/>
+        <MSBuild Projects="mushroom\Mushroom.dproj" Targets="Clean"/>
     </Target>
     <Target Name="Mushroom:Make">
-        <MSBuild Projects="mushroom\Mushroom.cbproj" Targets="Make"/>
+        <MSBuild Projects="mushroom\Mushroom.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MushroomC">
+        <MSBuild Projects="mushroom\MushroomC.cbproj"/>
+    </Target>
+    <Target Name="MushroomC:Clean">
+        <MSBuild Projects="mushroom\MushroomC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MushroomC:Make">
+        <MSBuild Projects="mushroom\MushroomC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Portal">
         <MSBuild Projects="portal\Portal.cbproj"/>
@@ -240,13 +264,13 @@
         <MSBuild Projects="tree\tree.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="Actor;ActorMS3D;Actorproxy;Actortwocam;Centering;CSG;ducky;Expolygon;Feedback;Formula;Mushroom;Portal;shadedterrain;Skeletal;Subdivide;Synthterr;terrain;tiles;tree"/>
+        <CallTarget Targets="Actor;ActorC;ActorMS3D;Actorproxy;Actortwocam;Centering;CSG;DuckyC;Expolygon;Feedback;Formula;Mushroom;MushroomC;Portal;shadedterrain;Skeletal;Subdivide;Synthterr;terrain;tiles;tree"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Actor:Clean;ActorMS3D:Clean;Actorproxy:Clean;Actortwocam:Clean;Centering:Clean;CSG:Clean;ducky:Clean;Expolygon:Clean;Feedback:Clean;Formula:Clean;Mushroom:Clean;Portal:Clean;shadedterrain:Clean;Skeletal:Clean;Subdivide:Clean;Synthterr:Clean;terrain:Clean;tiles:Clean;tree:Clean"/>
+        <CallTarget Targets="Actor:Clean;ActorC:Clean;ActorMS3D:Clean;Actorproxy:Clean;Actortwocam:Clean;Centering:Clean;CSG:Clean;DuckyC:Clean;Expolygon:Clean;Feedback:Clean;Formula:Clean;Mushroom:Clean;MushroomC:Clean;Portal:Clean;shadedterrain:Clean;Skeletal:Clean;Subdivide:Clean;Synthterr:Clean;terrain:Clean;tiles:Clean;tree:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Actor:Make;ActorMS3D:Make;Actorproxy:Make;Actortwocam:Make;Centering:Make;CSG:Make;ducky:Make;Expolygon:Make;Feedback:Make;Formula:Make;Mushroom:Make;Portal:Make;shadedterrain:Make;Skeletal:Make;Subdivide:Make;Synthterr:Make;terrain:Make;tiles:Make;tree:Make"/>
+        <CallTarget Targets="Actor:Make;ActorC:Make;ActorMS3D:Make;Actorproxy:Make;Actortwocam:Make;Centering:Make;CSG:Make;DuckyC:Make;Expolygon:Make;Feedback:Make;Formula:Make;Mushroom:Make;MushroomC:Make;Portal:Make;shadedterrain:Make;Skeletal:Make;Subdivide:Make;Synthterr:Make;terrain:Make;tiles:Make;tree:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

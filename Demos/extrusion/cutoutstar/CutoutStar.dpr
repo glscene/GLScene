@@ -16,7 +16,7 @@ program CutoutStar;
 
 uses
   Forms,
-  CutoutStarFm in 'CutoutStarFm.pas' {FormCutoutStar};
+  fCutoutStar in 'fCutoutStar.pas' {FormCutoutStar};
 
 {$R *.RES}
 

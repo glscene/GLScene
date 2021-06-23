@@ -14,7 +14,7 @@ program Tentacles;
 
 uses
   Forms,
-  TentaclesFm in 'TentaclesFm.pas' {FormTentacles};
+  fTentacles in 'fTentacles.pas' {FormTentacles};
 
 {$R *.res}
 

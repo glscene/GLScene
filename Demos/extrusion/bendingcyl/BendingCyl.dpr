@@ -14,7 +14,7 @@ program BendingCyl;
 
 uses
   Forms,
-  BendingCylFm in 'BendingCylFm.pas' {FormBendingCyl};
+  fBendingCyl in 'fBendingCyl.pas' {FormBendingCyl};
 
 {$R *.RES}
 

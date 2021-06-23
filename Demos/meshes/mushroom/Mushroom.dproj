@@ -113,7 +113,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="MushroomFm.pas">
+        <DCCReference Include="fMushroom.pas">
             <Form>FormMushroom</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">
