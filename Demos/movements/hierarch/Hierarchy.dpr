@@ -14,7 +14,7 @@ program Hierarchy;
 
 uses
   Forms,
-  HierarchyFm in 'HierarchyFm.pas' {FormHierarchy};
+  fHierarchy in 'fHierarchy.pas' {FormHierarchy};
 
 {$R *.RES}
 

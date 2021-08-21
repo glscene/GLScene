@@ -122,7 +122,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="SoundFMODFm.pas">
+        <DCCReference Include="fSoundFMOD.pas">
             <Form>FormSoundFMOF</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

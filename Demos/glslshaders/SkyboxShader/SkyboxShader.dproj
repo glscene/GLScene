@@ -99,7 +99,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="SkyboxShaderFm.pas">
+        <DCCReference Include="fSkyboxShader.pas">
             <Form>FormSkyboxShader</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

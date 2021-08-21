@@ -122,7 +122,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="NewtonDensityFm.pas">
+        <DCCReference Include="fNewtonDensity.pas">
             <Form>FormNewtonDensity</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

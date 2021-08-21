@@ -48,7 +48,7 @@ program SoundAround;
 
 uses
   Forms,
-  SoundAroundFm in 'SoundAroundFm.pas' {FormSoundAround};
+  fSoundAround in 'fSoundAround.pas' {FormSoundAround};
 
 {$R *.RES}
 

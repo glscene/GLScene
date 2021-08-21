@@ -123,7 +123,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="ColumnFm.pas">
+        <DCCReference Include="fColumn.pas">
             <Form>FormColumn</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

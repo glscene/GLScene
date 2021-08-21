@@ -3,12 +3,12 @@ program ShadedTerrain;
 
 uses
   Forms,
-  ShadedTerrainFm in 'ShadedTerrainFm.pas';
+  fShadedTerrain in 'fShadedTerrain.pas' {FormShadedTerrain};
 
 {$R *.RES}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TFormShadedTerrain, FormShadedTerrain);
-  Application.Run;
+  AApplication.CreateForm(TFormShadedTerrain, FormShadedTerrain);
+  pplication.Run;
 end.

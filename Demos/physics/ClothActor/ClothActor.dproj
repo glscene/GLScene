@@ -137,7 +137,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="ClothActorFm.pas">
+        <DCCReference Include="fClothActor.pas">
             <Form>FormClothActor</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

@@ -32,7 +32,7 @@ program SynthTerrain;
 
 uses
   Forms,
-  SynthTerrainFm in 'SynthTerrainFm.pas' {FormSynthTerrain};
+  fSynthTerrain in 'fSynthTerrain.pas' {FormSynthTerrain};
 
 {$R *.RES}
 

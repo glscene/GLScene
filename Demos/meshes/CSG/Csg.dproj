@@ -121,7 +121,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="CsgFm.pas">
+        <DCCReference Include="fCsg.pas">
             <Form>FormCsg</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

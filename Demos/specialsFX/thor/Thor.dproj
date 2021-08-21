@@ -127,7 +127,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="ThorFm.pas">
+        <DCCReference Include="fThor.pas">
             <Form>FormThor</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

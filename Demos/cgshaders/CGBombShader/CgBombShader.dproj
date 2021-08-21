@@ -122,7 +122,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="CgBombShaderFm.pas">
+        <DCCReference Include="fCgBombShader.pas">
             <Form>FormCgBombShader</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

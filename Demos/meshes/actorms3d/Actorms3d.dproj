@@ -124,7 +124,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="Actorms3dFm.pas">
+        <DCCReference Include="fActorms3d.pas">
             <Form>FormActorms3d</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

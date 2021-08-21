@@ -7,7 +7,7 @@ program Boxedin;
 
 uses
   Forms,
-  BoxedinFm in 'BoxedinFm.pas' {FormBoxedin};
+  fBoxedin in 'fBoxedin.pas' {FormBoxedin};
 
 {$R *.res}
 

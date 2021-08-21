@@ -3,7 +3,7 @@ program PFXGallery;
 
 uses
   Forms,
-  PFXGalleryFm in 'PFXGalleryFm.pas' {FormPFXGallery};
+  fPFXGallery in 'fPFXGallery.pas' {FormPFXGallery};
 
 {$R *.res}
 

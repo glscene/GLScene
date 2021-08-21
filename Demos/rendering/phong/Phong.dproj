@@ -122,7 +122,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="PhongFm.pas">
+        <DCCReference Include="fPhong.pas">
             <Form>Form1</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

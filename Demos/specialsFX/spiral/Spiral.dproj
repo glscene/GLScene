@@ -127,7 +127,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="SpiralFm.pas">
+        <DCCReference Include="fSpiral.pas">
             <Form>FormSpiral</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

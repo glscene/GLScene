@@ -90,7 +90,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="NewtonMousePickFm.pas">
+        <DCCReference Include="fNewtonMousePick.pas">
             <Form>FormNewtonMousePick</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

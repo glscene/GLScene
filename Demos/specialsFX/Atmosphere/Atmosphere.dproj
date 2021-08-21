@@ -123,7 +123,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="AtmosphereFm.pas">
+        <DCCReference Include="fAtmosphere.pas">
             <Form>FormAtmosphere</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

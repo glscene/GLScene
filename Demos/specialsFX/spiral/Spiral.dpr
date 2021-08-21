@@ -22,7 +22,7 @@ program Spiral;
 
 uses
   Forms,
-  SpiralFm in 'SpiralFm.pas' {FormSpiral};
+  fSpiral in 'fSpiral.pas' {FormSpiral};
 
 {$R *.res}
 

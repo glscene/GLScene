@@ -10,7 +10,7 @@ program ParticleMasking;
 
 uses
   Forms,
-  ParticleMaskingFm in 'ParticleMaskingFm.pas' {FormParticleMasking};
+  fParticleMasking in 'fParticleMasking.pas' {FormParticleMasking};
 
 {$R *.res}
 

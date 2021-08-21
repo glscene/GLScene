@@ -124,7 +124,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="OceanFm.pas">
+        <DCCReference Include="fOcean.pas">
             <Form>Form1</Form>
         </DCCReference>
         <None Include="..\..\..\media\Shaders\ocean_fp.glsl"/>

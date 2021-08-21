@@ -20,7 +20,7 @@ program Gizmo;
 
 uses
   Forms,
-  GizmoFm in 'GizmoFm.pas' {FormGizmo};
+  fGizmo in 'fGizmo.pas' {FormGizmo};
 
 {$R *.res}
 

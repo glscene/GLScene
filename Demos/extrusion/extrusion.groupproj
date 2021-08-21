@@ -15,10 +15,10 @@
         <Projects Include="cutoutstar\CutoutstarC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="nutsnbolts\NutsnboltC.cbproj">
+        <Projects Include="nutsnbolts\NutsnBolts.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="nutsnbolts\NutsnBolts.dproj">
+        <Projects Include="nutsnbolts\NutsnboltC.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="pawn\Pawn.dproj">
@@ -27,10 +27,10 @@
         <Projects Include="pawn\PawnC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="tentacles\TentacleC.cbproj">
+        <Projects Include="tentacles\Tentacles.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="tentacles\Tentacles.dproj">
+        <Projects Include="tentacles\TentacleC.cbproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -77,15 +77,6 @@
     <Target Name="CutoutstarC:Make">
         <MSBuild Projects="cutoutstar\CutoutstarC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="NutsnboltC">
-        <MSBuild Projects="nutsnbolts\NutsnboltC.cbproj"/>
-    </Target>
-    <Target Name="NutsnboltC:Clean">
-        <MSBuild Projects="nutsnbolts\NutsnboltC.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="NutsnboltC:Make">
-        <MSBuild Projects="nutsnbolts\NutsnboltC.cbproj" Targets="Make"/>
-    </Target>
     <Target Name="NutsnBolts">
         <MSBuild Projects="nutsnbolts\NutsnBolts.dproj"/>
     </Target>
@@ -94,6 +85,15 @@
     </Target>
     <Target Name="NutsnBolts:Make">
         <MSBuild Projects="nutsnbolts\NutsnBolts.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NutsnboltC">
+        <MSBuild Projects="nutsnbolts\NutsnboltC.cbproj"/>
+    </Target>
+    <Target Name="NutsnboltC:Clean">
+        <MSBuild Projects="nutsnbolts\NutsnboltC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NutsnboltC:Make">
+        <MSBuild Projects="nutsnbolts\NutsnboltC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Pawn">
         <MSBuild Projects="pawn\Pawn.dproj"/>
@@ -113,15 +113,6 @@
     <Target Name="PawnC:Make">
         <MSBuild Projects="pawn\PawnC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="TentacleC">
-        <MSBuild Projects="tentacles\TentacleC.cbproj"/>
-    </Target>
-    <Target Name="TentacleC:Clean">
-        <MSBuild Projects="tentacles\TentacleC.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="TentacleC:Make">
-        <MSBuild Projects="tentacles\TentacleC.cbproj" Targets="Make"/>
-    </Target>
     <Target Name="Tentacles">
         <MSBuild Projects="tentacles\Tentacles.dproj"/>
     </Target>
@@ -131,14 +122,23 @@
     <Target Name="Tentacles:Make">
         <MSBuild Projects="tentacles\Tentacles.dproj" Targets="Make"/>
     </Target>
+    <Target Name="TentacleC">
+        <MSBuild Projects="tentacles\TentacleC.cbproj"/>
+    </Target>
+    <Target Name="TentacleC:Clean">
+        <MSBuild Projects="tentacles\TentacleC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TentacleC:Make">
+        <MSBuild Projects="tentacles\TentacleC.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="BendingCyl;BendingC;CutoutStar;CutoutstarC;NutsnboltC;NutsnBolts;Pawn;PawnC;TentacleC;Tentacles"/>
+        <CallTarget Targets="BendingCyl;BendingC;CutoutStar;CutoutstarC;NutsnBolts;NutsnboltC;Pawn;PawnC;Tentacles;TentacleC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="BendingCyl:Clean;BendingC:Clean;CutoutStar:Clean;CutoutstarC:Clean;NutsnboltC:Clean;NutsnBolts:Clean;Pawn:Clean;PawnC:Clean;TentacleC:Clean;Tentacles:Clean"/>
+        <CallTarget Targets="BendingCyl:Clean;BendingC:Clean;CutoutStar:Clean;CutoutstarC:Clean;NutsnBolts:Clean;NutsnboltC:Clean;Pawn:Clean;PawnC:Clean;Tentacles:Clean;TentacleC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="BendingCyl:Make;BendingC:Make;CutoutStar:Make;CutoutstarC:Make;NutsnboltC:Make;NutsnBolts:Make;Pawn:Make;PawnC:Make;TentacleC:Make;Tentacles:Make"/>
+        <CallTarget Targets="BendingCyl:Make;BendingC:Make;CutoutStar:Make;CutoutstarC:Make;NutsnBolts:Make;NutsnboltC:Make;Pawn:Make;PawnC:Make;Tentacles:Make;TentacleC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

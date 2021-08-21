@@ -18,7 +18,7 @@ program ShadowPlane;
 
 uses
   Forms,
-  ShadowPlaneFm in 'ShadowPlaneFm.pas' {FormShadowPlane};
+  fShadowPlane in 'fShadowPlane.pas' {FormShadowPlane};
 
 {$R *.res}
 

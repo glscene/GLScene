@@ -23,7 +23,7 @@ program NewtonJoints;
 
 uses
   Forms,
-  NewtonJointsFm in 'NewtonJointsFm.pas' {FormNewtonJoints};
+  fNewtonJoints in 'fNewtonJoints.pas' {FormNewtonJoints};
 
 {$R *.res}
 

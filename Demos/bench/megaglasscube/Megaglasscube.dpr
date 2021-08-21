@@ -23,7 +23,7 @@ program Megaglasscube;
 
 uses
   Forms,
-  MegaglassCubeFm in 'MegaglassCubeFm.pas' {FormMegaglasscube};
+  fMegaGlassCube in 'fMegaGlassCube.pas' {FormMegaglasscube};
 
 {$R *.RES}
 

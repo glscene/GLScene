@@ -131,7 +131,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="ShaderLabFm.pas">
+        <DCCReference Include="fShaderLab.pas">
             <Form>FormShaderLab</Form>
             <FormType>dfm</FormType>
         </DCCReference>

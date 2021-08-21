@@ -123,7 +123,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="BumpShaderFm.pas">
+        <DCCReference Include="fBumpShader.pas">
             <Form>FormBumpShader</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

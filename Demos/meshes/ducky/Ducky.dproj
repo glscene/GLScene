@@ -140,7 +140,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="DuckyFm.pas">
+        <DCCReference Include="fDucky.pas">
             <Form>FormDucky</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

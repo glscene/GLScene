@@ -122,7 +122,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="QuadtreeCullingFm.pas">
+        <DCCReference Include="fQuadtreeCulling.pas">
             <Form>frmQuadtreeVisCulling</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

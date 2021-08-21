@@ -125,7 +125,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="PFXGalleryFm.pas">
+        <DCCReference Include="fPFXGallery.pas">
             <Form>FormPFXGallery</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

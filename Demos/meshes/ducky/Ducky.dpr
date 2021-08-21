@@ -14,7 +14,7 @@ program Ducky;
 
 uses
   Forms,
-  DuckyFm in 'DuckyFm.pas' {FormDucky};
+  fDucky in 'fDucky.pas' {FormDucky};
 
 {$R *.res}
 

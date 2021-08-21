@@ -122,7 +122,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="SkyBoxFm.pas">
+        <DCCReference Include="fSkyBox.pas">
             <Form>FormSkyBox</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

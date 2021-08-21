@@ -5,7 +5,7 @@ program Shadows;
 
 uses
   Forms,
-  ShadowsFm in 'ShadowsFm.pas' {FormShadows};
+  fShadows in 'fShadows.pas' {FormShadows};
 
 {$R *.RES}
 

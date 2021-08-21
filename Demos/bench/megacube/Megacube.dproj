@@ -123,7 +123,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="MegacubeFm.pas">
+        <DCCReference Include="fMegaCube.pas">
             <Form>;
 
 {$R *.RES</Form>

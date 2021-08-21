@@ -146,7 +146,7 @@ var
 begin
   SetGLSceneMediaDir();
   Bmp := TBitmap.Create;
-  Bmp.LoadFromResourceName(HInstance, 'ICONS');
+  Bmp.LoadFromResourceName(HInstance, 'icons');
   ImageList1.AddMasked(Bmp, clWhite);
   Bmp.Free;
   ArchiveManager := TGLSArchiveManager.Create(Self);

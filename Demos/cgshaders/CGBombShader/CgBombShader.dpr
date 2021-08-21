@@ -11,7 +11,7 @@ program CgBombShader;
 
 uses
   Forms,
-  CgBombShaderFm in 'CgBombShaderFm.pas' {FormCgBombShader};
+  fCgBombShader in 'fCgBombShader.pas' {FormCgBombShader};
 
 {$R *.res}
 

@@ -127,7 +127,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="WaterPlaneFm.pas">
+        <DCCReference Include="fWaterPlane.pas">
             <Form>FormWaterPlane</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

@@ -22,7 +22,7 @@ program Feedback;
 
 uses
   Forms,
-  FeedbackFm in 'FeedbackFm.pas' {FormFeedback};
+  fFeedback in 'fFeedback.pas' {FormFeedback};
 
 {$R *.res}
 

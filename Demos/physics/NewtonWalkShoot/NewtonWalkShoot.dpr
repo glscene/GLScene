@@ -18,7 +18,7 @@ program NewtonWalkShoot;
 
 uses
   Forms,
-  NewtonWalkShootFm in 'NewtonWalkShootFm.pas' {FormNewtonWalkShoot};
+  fNewtonWalkShoot in 'fNewtonWalkShoot.pas' {FormNewtonWalkShoot};
 
 {$R *.res}
 

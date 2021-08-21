@@ -135,7 +135,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="CelShadingFm.pas">
+        <DCCReference Include="fCelShading.pas">
             <Form>FormCelShading</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

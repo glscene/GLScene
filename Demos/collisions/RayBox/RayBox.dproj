@@ -123,7 +123,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="RayBoxFm.pas">
+        <DCCReference Include="fRayBox.pas">
             <Form>FormRayBox</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

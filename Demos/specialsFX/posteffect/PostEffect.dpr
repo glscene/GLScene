@@ -12,7 +12,7 @@ program PostEffect;
 
 uses
   Forms,
-  PostEffectFm in 'PostEffectFm.pas' {FormPostEffect};
+  fPostEffect in 'fPostEffect.pas' {FormPostEffect};
 
 {$R *.res}
 

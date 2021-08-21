@@ -89,7 +89,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="OdeMachineFm.pas">
+        <DCCReference Include="fOdeMachine.pas">
             <Form>FormOdeMachine</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

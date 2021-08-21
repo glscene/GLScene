@@ -7,7 +7,7 @@ uses
   FolderSelect in 'FolderSelect.pas' {FolderSel};
 
 {$R *.res}
-{$R Icons.res}
+{.$R Icons.res}
 
 begin
   Application.Initialize;

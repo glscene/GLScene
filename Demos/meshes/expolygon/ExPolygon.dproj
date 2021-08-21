@@ -135,7 +135,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="ExPolygonFm.pas">
+        <DCCReference Include="fExPolygon.pas">
             <Form>FormExPolygon</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

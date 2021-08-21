@@ -150,22 +150,17 @@
         <BCC_Defines>NDEBUG;$(BCC_Defines);$(BCC_Defines)</BCC_Defines>
     </PropertyGroup>
     <ItemGroup>
-        <CppCompile Include="fMainC.cpp">
+        <CppCompile Include="fParticlesC.cpp">
             <BuildOrder>2</BuildOrder>
             <Form>FormStars</Form>
-            <DependentOn>fMainC.h</DependentOn>
+            <DependentOn>fParticlesC.h</DependentOn>
             <BuildOrder>0</BuildOrder>
         </CppCompile>
         <CppCompile Include="ParticlesC.cpp">
             <BuildOrder>-1</BuildOrder>
             <BuildOrder>0</BuildOrder>
         </CppCompile>
-        <ResFiles Include="ParticlesC.res">
-            <ModuleName>ParticlesC.res</ModuleName>
-            <BuildOrder>-1</BuildOrder>
-            <BuildOrder>1</BuildOrder>
-        </ResFiles>
-        <FormResources Include="fMainC.dfm"/>
+        <FormResources Include="fParticlesC.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -289,12 +284,6 @@
                 </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64260mt.dll" Class="DependencyModule">
                     <Platform Name="Win64">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="ParticlesC.res" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

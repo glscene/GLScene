@@ -11,7 +11,7 @@ program Fullscreen;
 
 uses
   Forms,
-  FullscreenFm in 'FullscreenFm.pas' {DataModuleFS: TDataModule};
+  fFullscreen in 'fFullscreen.pas' {DataModuleFS: TDataModule};
 
 {$R *.res}
 

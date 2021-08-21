@@ -42,7 +42,7 @@ program OdeConveyor;
 
 uses
   Forms,
-  OdeConveyorFm in 'OdeConveyorFm.pas' {FormOdeConveyor};
+  fOdeConveyor in 'fOdeConveyor.pas' {FormOdeConveyor};
 
 {$R *.res}
 

@@ -10,7 +10,7 @@ program Smoking;
 
 uses
   Forms,
-  SmokingFm in 'SmokingFm.pas' {Form1};
+  fSmoking in 'fSmoking.pas' {Form1};
 
 {$R *.res}
 

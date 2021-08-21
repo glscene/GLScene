@@ -2,7 +2,7 @@ program MatScript;
 
 uses
   Forms,
-  MatscriptFm in 'MatscriptFm.pas' {FormMatScript};
+  fMatScript in 'fMatScript.pas' {FormMatScript};
 
 {$R *.res}
 

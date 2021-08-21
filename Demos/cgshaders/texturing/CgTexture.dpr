@@ -11,7 +11,7 @@ program CgTexture;
 
 uses
   Forms,
-  CgTextureFm in 'CgTextureFm.pas' {FormCgTexture};
+  fCgTexture in 'fCgTexture.pas' {FormCgTexture};
 
 {$R *.res}
 

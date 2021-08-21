@@ -8,7 +8,7 @@ program TriangleBox;
 
 uses
   Forms,
-  TriangleBoxFm in 'TriangleBoxFm.pas' {FormTriangleBox};
+  fTriangleBox in 'fTriangleBox.pas' {FormTriangleBox};
 
 {$R *.RES}
 

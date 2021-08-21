@@ -6,7 +6,7 @@ program QuadtreeCulling;
 
 uses
   Forms,
-  QuadtreeCullingFm in 'QuadtreeCullingFm.pas' {frmQuadtreeVisCulling};
+  fQuadtreeCulling in 'fQuadtreeCulling.pas' {frmQuadtreeVisCulling};
 
 {$R *.res}
 

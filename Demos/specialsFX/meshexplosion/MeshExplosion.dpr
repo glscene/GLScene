@@ -13,7 +13,7 @@ program MeshExplosion;
 
 uses
   Forms,
-  MeshExplosionFm in 'MeshExplosionFm.pas' {FormMeshExplosion};
+  fMeshExplosion in 'fMeshExplosion.pas' {FormMeshExplosion};
 
 {$R *.RES}
 

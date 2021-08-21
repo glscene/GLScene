@@ -89,7 +89,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="OdeFurballFm.pas">
+        <DCCReference Include="fOdeFurball.pas">
             <Form>FormFurball</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

@@ -46,7 +46,7 @@ program SoundOpenAL;
 
 uses
   Forms,
-  SoundOpenALFm in 'SoundOpenALFm.pas' {Form1};
+  fSoundOpenAL in 'fSoundOpenAL.pas' {Form1};
 
 {$R *.RES}
 

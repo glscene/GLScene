@@ -9,7 +9,7 @@ program NewtonWalkCarry;
 
 uses
   Forms,
-  NewtonWalkCarryFm in 'NewtonWalkCarryFm.pas' {FormNewtonWalkCarry};
+  fNewtonWalkCarry in 'fNewtonWalkCarry.pas' {FormNewtonWalkCarry};
 
 {$R *.res}
 

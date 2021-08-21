@@ -43,7 +43,7 @@ program SoundBASS;
 
 uses
   Forms,
-  SoundBASSFm in 'SoundBASSFm.pas' {FormSoundBASS};
+  fSoundBASS in 'fSoundBASS.pas' {FormSoundBASS};
 
 {$R *.RES}
 

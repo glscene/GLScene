@@ -29,7 +29,7 @@ program Formula;
 
 uses
   Forms,
-  FormulaFm in 'FormulaFm.pas' {FormFormula};
+  fFormula in 'fFormula.pas' {FormFormula};
 
 {$R *.RES}
 

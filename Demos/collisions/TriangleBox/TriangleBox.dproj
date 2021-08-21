@@ -120,7 +120,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="TriangleBoxFm.pas">
+        <DCCReference Include="fTriangleBox.pas">
             <Form>FormTriangleBox</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

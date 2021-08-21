@@ -25,7 +25,7 @@ program Column;
 
 uses
   Forms,
-  ColumnFm in 'ColumnFm.pas' {FormColumn};
+  fColumn in 'fColumn.pas' {FormColumn};
 
 {$R *.RES}
 

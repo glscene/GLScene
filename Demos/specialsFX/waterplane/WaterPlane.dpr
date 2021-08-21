@@ -5,7 +5,7 @@ program WaterPlane;
 
 uses
   Forms,
-  WaterPlaneFm in 'WaterPlaneFm.pas' {FormWaterPlane};
+  fWaterPlane in 'fWaterPlane.pas' {FormWaterPlane};
 
 {$R *.res}
 

@@ -18,7 +18,7 @@ program MotionBlur;
 
 uses
   Forms,
-  MotionBlurFm in 'MotionBlurFm.pas' {FormMotionBlur};
+  fMotionBlur in 'fMotionBlur.pas' {FormMotionBlur};
 
 {$R *.res}
 

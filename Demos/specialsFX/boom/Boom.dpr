@@ -20,7 +20,7 @@ program Boom;
 
 uses
   Forms,
-  BoomFm in 'BoomFm.pas' {Form1};
+  fBoom in 'fBoom.pas' {Form1};
 
 {$R *.RES}
 

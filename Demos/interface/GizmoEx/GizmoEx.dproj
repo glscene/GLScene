@@ -136,7 +136,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="GizmoexFm.pas">
+        <DCCReference Include="fGizmoEx.pas">
             <Form>FormGizmoEx</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

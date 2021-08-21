@@ -114,7 +114,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="SynthTerrainFm.pas">
+        <DCCReference Include="fSynthTerrain.pas">
             <Form>FormSynthTerrain</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

@@ -126,7 +126,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="BoomFm.pas">
+        <DCCReference Include="fBoom.pas">
             <Form>Form1</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

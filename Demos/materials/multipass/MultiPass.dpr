@@ -22,7 +22,7 @@ program MultiPass;
 
 uses
   Forms,
-  MultipathFm in 'MultipathFm.pas' {FormMultiPath};
+  fMultiPass in 'fMultiPass.pas' {FormMultiPath};
 
 {$R *.res}
 

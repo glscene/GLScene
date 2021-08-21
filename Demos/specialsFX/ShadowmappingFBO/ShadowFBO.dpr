@@ -10,7 +10,7 @@ program ShadowFBO;
 
 uses
   Forms,
-  ShadowFBOFm in 'ShadowFBOFm.pas' {FormShadowFBO};
+  fShadowFBO in 'fShadowFBO.pas' {FormShadowFBO};
 
 {$R *.res}
 

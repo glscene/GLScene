@@ -18,7 +18,7 @@ program OdeRagdoll;
 
 uses
   Forms,
-  OdeRagdollFm in 'OdeRagdollFm.pas' {FormRagdoll};
+  fOdeRagdoll in 'fOdeRagdoll.pas' {FormRagdoll};
 
 {$R *.res}
 

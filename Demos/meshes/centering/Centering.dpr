@@ -7,7 +7,7 @@ program Centering;
 
 uses
   Forms,
-  CenteringFm in 'CenteringFm.pas' {FormCentering};
+  fCentering in 'fCentering.pas' {FormCentering};
 
 {$R *.RES}
 

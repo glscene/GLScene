@@ -5,7 +5,7 @@ program Thor;
 
 uses
   Forms,
-  ThorFm in 'ThorFm.pas' {FormThor};
+  fThor in 'fThor.pas' {FormThor};
 
 {$R *.RES}
 

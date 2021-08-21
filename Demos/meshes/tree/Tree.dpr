@@ -9,7 +9,7 @@ program Tree;
 
 uses
   Forms,
-  TreeFm in 'TreeFm.pas' {FormTree};
+  fTree in 'fTree.pas' {FormTree};
 
 {$R *.res}
 

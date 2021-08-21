@@ -88,7 +88,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="NewtonWalkCarryFm.pas">
+        <DCCReference Include="fNewtonWalkCarry.pas">
             <Form>FormNewtonWalkCarry</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

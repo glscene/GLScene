@@ -2,7 +2,7 @@ program CelShading;
 
 uses
   Forms,
-  CelShadingFm in 'CelShadingFm.pas' {FormCelShading};
+  fCelShading in 'fCelShading.pas' {FormCelShading};
 
 {$R *.res}
 

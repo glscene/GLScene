@@ -135,7 +135,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="CullingFm.pas">
+        <DCCReference Include="fCulling.pas">
             <Form>FormCulling</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

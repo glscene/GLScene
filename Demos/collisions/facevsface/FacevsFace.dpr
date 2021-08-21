@@ -21,7 +21,7 @@ program FacevsFace;
 
 uses
   Forms,
-  FacevsFaceFm in 'FacevsFaceFm.pas' {FormFacevsFace};
+  fFacevsFace in 'fFacevsFace.pas' {FormFacevsFace};
 
 {$R *.RES}
 

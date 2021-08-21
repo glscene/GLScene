@@ -136,7 +136,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="PointsFm.pas">
+        <DCCReference Include="fPoints.pas">
             <Form>FormPoints</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

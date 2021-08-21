@@ -11,7 +11,7 @@ program MultiMaterial;
 
 uses
   Forms,
-  MultiMaterialFm in 'MultiMaterialFm.pas' {FormMultiMat};
+  fMultiMaterial in 'fMultiMaterial.pas' {FormMultiMat};
 
 {$R *.res}
 

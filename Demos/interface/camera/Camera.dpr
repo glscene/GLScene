@@ -17,7 +17,7 @@ program Camera;
 
 uses
   Forms,
-  CameraFm in 'CameraFm.pas' {FormCamera};
+  fCamera in 'fCamera.pas' {FormCamera};
 
 {$R *.RES}
 

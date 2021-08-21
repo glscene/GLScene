@@ -10,7 +10,7 @@ program Sphere;
 
 uses
   Forms,
-  SphereFm in 'SphereFm.pas' {FormSphere};
+  fSphere in 'fSphere.pas' {FormSphere};
 
 {$R *.RES}
 

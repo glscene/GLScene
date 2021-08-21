@@ -18,7 +18,7 @@ program SkyBox;
 
 uses
   Forms,
-  SkyBoxFm in 'SkyBoxFm.pas' {FormSkyBox};
+  fSkyBox in 'fSkyBox.pas' {FormSkyBox};
 
 {$R *.res}
 

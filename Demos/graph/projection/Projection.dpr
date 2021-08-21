@@ -19,7 +19,7 @@ program Projection;
 
 uses
   Forms,
-  ProjectionFm in 'ProjectionFm.pas';
+  fProjection in 'fProjection.pas' {FormProjection};
 
 {$R *.res}
 

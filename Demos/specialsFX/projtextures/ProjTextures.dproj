@@ -127,7 +127,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="ProjTexturesFm.pas">
+        <DCCReference Include="fProjTextures.pas">
             <Form>FormProjTextures</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

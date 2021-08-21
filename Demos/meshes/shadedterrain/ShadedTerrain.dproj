@@ -134,7 +134,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="ShadedTerrainFm.pas">
+        <DCCReference Include="fShadedTerrain.pas">
             <Form>FormShadedTerrain</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

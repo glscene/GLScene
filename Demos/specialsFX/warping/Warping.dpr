@@ -18,7 +18,7 @@ program Warping;
 
 uses
   Forms,
-  WarpingFm in 'WarpingFm.pas' {FormWarping};
+  fWarping in 'fWarping.pas' {FormWarping};
 
 {$R *.RES}
 

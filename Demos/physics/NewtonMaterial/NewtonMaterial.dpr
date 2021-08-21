@@ -18,7 +18,7 @@ program NewtonMaterial;
 
 uses
   Forms,
-  NewtonMaterialFm in 'NewtonMaterialFm.pas' {FormNewtonMaterial};
+  fNewtonMaterial in 'fNewtonMaterial.pas' {FormNewtonMaterial};
 
 {$R *.res}
 

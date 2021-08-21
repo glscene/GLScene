@@ -23,7 +23,7 @@ program Csg;
 
 uses
   Forms,
-  CsgFm in 'CsgFm.pas' {FormCsg};
+  fCsg in 'fCsg.pas' {FormCsg};
 
 {$R *.res}
 

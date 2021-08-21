@@ -123,7 +123,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="BoxSphereFm.pas">
+        <DCCReference Include="fBoxSphere.pas">
             <Form>FormBoxSphere</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

@@ -2,7 +2,7 @@ program Ocean;
 
 uses
   Forms,
-  OceanFm in 'OceanFm.pas' {Form1};
+  fOcean in 'fOcean.pas' {Form1};
 
 {$R *.res}
 

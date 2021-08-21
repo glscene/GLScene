@@ -5,7 +5,7 @@ program RenderToTexture;
 
 uses
   Forms,
-  RenderToTextureFm in 'RenderToTextureFm.pas' {Form1};
+  fRenderToTexture in 'fRenderToTexture.pas' {Form1};
 
 {$R *.res}
 

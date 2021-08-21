@@ -3,31 +3,76 @@
         <ProjectGuid>{9DFB6EE7-DB5B-482B-9FB6-E593374D549A}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="NewtonDensity\NewtonDensity.cbproj">
+        <Projects Include="ClothActor\ClothActor.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="NewtonMaterial\NewtonMaterial.cbproj">
+        <Projects Include="NewtonDensity\NewtonDensity.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="NewtonSimpleSpawn\NewtonSimpleSpawn.cbproj">
+        <Projects Include="NewtonDensity\NewtonDensityC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="OdeConveyor\OdeConveyor.cbproj">
+        <Projects Include="NewtonJoints\NewtonJoints.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="OdeFurball\OdeFurball.cbproj">
+        <Projects Include="NewtonMaterial\NewtonMaterial.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="OdeMachine\OdeMachine.cbproj">
+        <Projects Include="NewtonMaterial\NewtonMaterialC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="OdeRagdoll\OdeRagdoll.cbproj">
+        <Projects Include="NewtonMousePick\NewtonMousePick.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="OdeSimple\OdeSimple.cbproj">
+        <Projects Include="NewtonSimpleSpawn\NewtonSimple.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="OdeTerrain\OdeTerrain.cbproj">
+        <Projects Include="NewtonSimpleSpawn\NewtonSimpleC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NewtonWalkCarry\NewtonWalkCarry.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NewtonWalkShoot\NewtonWalkShoot.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OdeClothify\OdeClothify.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OdeConveyor\OdeConveyor.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OdeConveyor\OdeConveyorC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OdeFurball\OdeFurball.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OdeFurball\OdeFurballC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OdeMachine\OdeMachine.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OdeMachine\OdeMachineC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OdeRagdoll\OdeRagdoll.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OdeRagdoll\OdeRagdollC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OdeSimple\OdeSimple.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OdeSimple\OdeSimpleC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OdeTerrain\OdeTerrain.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OdeTerrain\OdeTerrainC.cbproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -38,95 +83,230 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
+    <Target Name="ClothActor">
+        <MSBuild Projects="ClothActor\ClothActor.dproj"/>
+    </Target>
+    <Target Name="ClothActor:Clean">
+        <MSBuild Projects="ClothActor\ClothActor.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ClothActor:Make">
+        <MSBuild Projects="ClothActor\ClothActor.dproj" Targets="Make"/>
+    </Target>
     <Target Name="NewtonDensity">
-        <MSBuild Projects="NewtonDensity\NewtonDensity.cbproj"/>
+        <MSBuild Projects="NewtonDensity\NewtonDensity.dproj"/>
     </Target>
     <Target Name="NewtonDensity:Clean">
-        <MSBuild Projects="NewtonDensity\NewtonDensity.cbproj" Targets="Clean"/>
+        <MSBuild Projects="NewtonDensity\NewtonDensity.dproj" Targets="Clean"/>
     </Target>
     <Target Name="NewtonDensity:Make">
-        <MSBuild Projects="NewtonDensity\NewtonDensity.cbproj" Targets="Make"/>
+        <MSBuild Projects="NewtonDensity\NewtonDensity.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NewtonDensityC">
+        <MSBuild Projects="NewtonDensity\NewtonDensityC.cbproj"/>
+    </Target>
+    <Target Name="NewtonDensityC:Clean">
+        <MSBuild Projects="NewtonDensity\NewtonDensityC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NewtonDensityC:Make">
+        <MSBuild Projects="NewtonDensity\NewtonDensityC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="NewtonJoints">
+        <MSBuild Projects="NewtonJoints\NewtonJoints.dproj"/>
+    </Target>
+    <Target Name="NewtonJoints:Clean">
+        <MSBuild Projects="NewtonJoints\NewtonJoints.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NewtonJoints:Make">
+        <MSBuild Projects="NewtonJoints\NewtonJoints.dproj" Targets="Make"/>
     </Target>
     <Target Name="NewtonMaterial">
-        <MSBuild Projects="NewtonMaterial\NewtonMaterial.cbproj"/>
+        <MSBuild Projects="NewtonMaterial\NewtonMaterial.dproj"/>
     </Target>
     <Target Name="NewtonMaterial:Clean">
-        <MSBuild Projects="NewtonMaterial\NewtonMaterial.cbproj" Targets="Clean"/>
+        <MSBuild Projects="NewtonMaterial\NewtonMaterial.dproj" Targets="Clean"/>
     </Target>
     <Target Name="NewtonMaterial:Make">
-        <MSBuild Projects="NewtonMaterial\NewtonMaterial.cbproj" Targets="Make"/>
+        <MSBuild Projects="NewtonMaterial\NewtonMaterial.dproj" Targets="Make"/>
     </Target>
-    <Target Name="NewtonSimpleSpawn">
-        <MSBuild Projects="NewtonSimpleSpawn\NewtonSimpleSpawn.cbproj"/>
+    <Target Name="NewtonMaterialC">
+        <MSBuild Projects="NewtonMaterial\NewtonMaterialC.cbproj"/>
     </Target>
-    <Target Name="NewtonSimpleSpawn:Clean">
-        <MSBuild Projects="NewtonSimpleSpawn\NewtonSimpleSpawn.cbproj" Targets="Clean"/>
+    <Target Name="NewtonMaterialC:Clean">
+        <MSBuild Projects="NewtonMaterial\NewtonMaterialC.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="NewtonSimpleSpawn:Make">
-        <MSBuild Projects="NewtonSimpleSpawn\NewtonSimpleSpawn.cbproj" Targets="Make"/>
+    <Target Name="NewtonMaterialC:Make">
+        <MSBuild Projects="NewtonMaterial\NewtonMaterialC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="NewtonMousePick">
+        <MSBuild Projects="NewtonMousePick\NewtonMousePick.dproj"/>
+    </Target>
+    <Target Name="NewtonMousePick:Clean">
+        <MSBuild Projects="NewtonMousePick\NewtonMousePick.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NewtonMousePick:Make">
+        <MSBuild Projects="NewtonMousePick\NewtonMousePick.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NewtonSimple">
+        <MSBuild Projects="NewtonSimpleSpawn\NewtonSimple.dproj"/>
+    </Target>
+    <Target Name="NewtonSimple:Clean">
+        <MSBuild Projects="NewtonSimpleSpawn\NewtonSimple.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NewtonSimple:Make">
+        <MSBuild Projects="NewtonSimpleSpawn\NewtonSimple.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NewtonSimpleC">
+        <MSBuild Projects="NewtonSimpleSpawn\NewtonSimpleC.cbproj"/>
+    </Target>
+    <Target Name="NewtonSimpleC:Clean">
+        <MSBuild Projects="NewtonSimpleSpawn\NewtonSimpleC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NewtonSimpleC:Make">
+        <MSBuild Projects="NewtonSimpleSpawn\NewtonSimpleC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="NewtonWalkCarry">
+        <MSBuild Projects="NewtonWalkCarry\NewtonWalkCarry.dproj"/>
+    </Target>
+    <Target Name="NewtonWalkCarry:Clean">
+        <MSBuild Projects="NewtonWalkCarry\NewtonWalkCarry.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NewtonWalkCarry:Make">
+        <MSBuild Projects="NewtonWalkCarry\NewtonWalkCarry.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NewtonWalkShoot">
+        <MSBuild Projects="NewtonWalkShoot\NewtonWalkShoot.dproj"/>
+    </Target>
+    <Target Name="NewtonWalkShoot:Clean">
+        <MSBuild Projects="NewtonWalkShoot\NewtonWalkShoot.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NewtonWalkShoot:Make">
+        <MSBuild Projects="NewtonWalkShoot\NewtonWalkShoot.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OdeClothify">
+        <MSBuild Projects="OdeClothify\OdeClothify.dproj"/>
+    </Target>
+    <Target Name="OdeClothify:Clean">
+        <MSBuild Projects="OdeClothify\OdeClothify.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OdeClothify:Make">
+        <MSBuild Projects="OdeClothify\OdeClothify.dproj" Targets="Make"/>
     </Target>
     <Target Name="OdeConveyor">
-        <MSBuild Projects="OdeConveyor\OdeConveyor.cbproj"/>
+        <MSBuild Projects="OdeConveyor\OdeConveyor.dproj"/>
     </Target>
     <Target Name="OdeConveyor:Clean">
-        <MSBuild Projects="OdeConveyor\OdeConveyor.cbproj" Targets="Clean"/>
+        <MSBuild Projects="OdeConveyor\OdeConveyor.dproj" Targets="Clean"/>
     </Target>
     <Target Name="OdeConveyor:Make">
-        <MSBuild Projects="OdeConveyor\OdeConveyor.cbproj" Targets="Make"/>
+        <MSBuild Projects="OdeConveyor\OdeConveyor.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OdeConveyorC">
+        <MSBuild Projects="OdeConveyor\OdeConveyorC.cbproj"/>
+    </Target>
+    <Target Name="OdeConveyorC:Clean">
+        <MSBuild Projects="OdeConveyor\OdeConveyorC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OdeConveyorC:Make">
+        <MSBuild Projects="OdeConveyor\OdeConveyorC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="OdeFurball">
-        <MSBuild Projects="OdeFurball\OdeFurball.cbproj"/>
+        <MSBuild Projects="OdeFurball\OdeFurball.dproj"/>
     </Target>
     <Target Name="OdeFurball:Clean">
-        <MSBuild Projects="OdeFurball\OdeFurball.cbproj" Targets="Clean"/>
+        <MSBuild Projects="OdeFurball\OdeFurball.dproj" Targets="Clean"/>
     </Target>
     <Target Name="OdeFurball:Make">
-        <MSBuild Projects="OdeFurball\OdeFurball.cbproj" Targets="Make"/>
+        <MSBuild Projects="OdeFurball\OdeFurball.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OdeFurballC">
+        <MSBuild Projects="OdeFurball\OdeFurballC.cbproj"/>
+    </Target>
+    <Target Name="OdeFurballC:Clean">
+        <MSBuild Projects="OdeFurball\OdeFurballC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OdeFurballC:Make">
+        <MSBuild Projects="OdeFurball\OdeFurballC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="OdeMachine">
-        <MSBuild Projects="OdeMachine\OdeMachine.cbproj"/>
+        <MSBuild Projects="OdeMachine\OdeMachine.dproj"/>
     </Target>
     <Target Name="OdeMachine:Clean">
-        <MSBuild Projects="OdeMachine\OdeMachine.cbproj" Targets="Clean"/>
+        <MSBuild Projects="OdeMachine\OdeMachine.dproj" Targets="Clean"/>
     </Target>
     <Target Name="OdeMachine:Make">
-        <MSBuild Projects="OdeMachine\OdeMachine.cbproj" Targets="Make"/>
+        <MSBuild Projects="OdeMachine\OdeMachine.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OdeMachineC">
+        <MSBuild Projects="OdeMachine\OdeMachineC.cbproj"/>
+    </Target>
+    <Target Name="OdeMachineC:Clean">
+        <MSBuild Projects="OdeMachine\OdeMachineC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OdeMachineC:Make">
+        <MSBuild Projects="OdeMachine\OdeMachineC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="OdeRagdoll">
-        <MSBuild Projects="OdeRagdoll\OdeRagdoll.cbproj"/>
+        <MSBuild Projects="OdeRagdoll\OdeRagdoll.dproj"/>
     </Target>
     <Target Name="OdeRagdoll:Clean">
-        <MSBuild Projects="OdeRagdoll\OdeRagdoll.cbproj" Targets="Clean"/>
+        <MSBuild Projects="OdeRagdoll\OdeRagdoll.dproj" Targets="Clean"/>
     </Target>
     <Target Name="OdeRagdoll:Make">
-        <MSBuild Projects="OdeRagdoll\OdeRagdoll.cbproj" Targets="Make"/>
+        <MSBuild Projects="OdeRagdoll\OdeRagdoll.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OdeRagdollC">
+        <MSBuild Projects="OdeRagdoll\OdeRagdollC.cbproj"/>
+    </Target>
+    <Target Name="OdeRagdollC:Clean">
+        <MSBuild Projects="OdeRagdoll\OdeRagdollC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OdeRagdollC:Make">
+        <MSBuild Projects="OdeRagdoll\OdeRagdollC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="OdeSimple">
-        <MSBuild Projects="OdeSimple\OdeSimple.cbproj"/>
+        <MSBuild Projects="OdeSimple\OdeSimple.dproj"/>
     </Target>
     <Target Name="OdeSimple:Clean">
-        <MSBuild Projects="OdeSimple\OdeSimple.cbproj" Targets="Clean"/>
+        <MSBuild Projects="OdeSimple\OdeSimple.dproj" Targets="Clean"/>
     </Target>
     <Target Name="OdeSimple:Make">
-        <MSBuild Projects="OdeSimple\OdeSimple.cbproj" Targets="Make"/>
+        <MSBuild Projects="OdeSimple\OdeSimple.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OdeSimpleC">
+        <MSBuild Projects="OdeSimple\OdeSimpleC.cbproj"/>
+    </Target>
+    <Target Name="OdeSimpleC:Clean">
+        <MSBuild Projects="OdeSimple\OdeSimpleC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OdeSimpleC:Make">
+        <MSBuild Projects="OdeSimple\OdeSimpleC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="OdeTerrain">
-        <MSBuild Projects="OdeTerrain\OdeTerrain.cbproj"/>
+        <MSBuild Projects="OdeTerrain\OdeTerrain.dproj"/>
     </Target>
     <Target Name="OdeTerrain:Clean">
-        <MSBuild Projects="OdeTerrain\OdeTerrain.cbproj" Targets="Clean"/>
+        <MSBuild Projects="OdeTerrain\OdeTerrain.dproj" Targets="Clean"/>
     </Target>
     <Target Name="OdeTerrain:Make">
-        <MSBuild Projects="OdeTerrain\OdeTerrain.cbproj" Targets="Make"/>
+        <MSBuild Projects="OdeTerrain\OdeTerrain.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OdeTerrainC">
+        <MSBuild Projects="OdeTerrain\OdeTerrainC.cbproj"/>
+    </Target>
+    <Target Name="OdeTerrainC:Clean">
+        <MSBuild Projects="OdeTerrain\OdeTerrainC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OdeTerrainC:Make">
+        <MSBuild Projects="OdeTerrain\OdeTerrainC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="NewtonDensity;NewtonMaterial;NewtonSimpleSpawn;OdeConveyor;OdeFurball;OdeMachine;OdeRagdoll;OdeSimple;OdeTerrain"/>
+        <CallTarget Targets="ClothActor;NewtonDensity;NewtonDensityC;NewtonJoints;NewtonMaterial;NewtonMaterialC;NewtonMousePick;NewtonSimple;NewtonSimpleC;NewtonWalkCarry;NewtonWalkShoot;OdeClothify;OdeConveyor;OdeConveyorC;OdeFurball;OdeFurballC;OdeMachine;OdeMachineC;OdeRagdoll;OdeRagdollC;OdeSimple;OdeSimpleC;OdeTerrain;OdeTerrainC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="NewtonDensity:Clean;NewtonMaterial:Clean;NewtonSimpleSpawn:Clean;OdeConveyor:Clean;OdeFurball:Clean;OdeMachine:Clean;OdeRagdoll:Clean;OdeSimple:Clean;OdeTerrain:Clean"/>
+        <CallTarget Targets="ClothActor:Clean;NewtonDensity:Clean;NewtonDensityC:Clean;NewtonJoints:Clean;NewtonMaterial:Clean;NewtonMaterialC:Clean;NewtonMousePick:Clean;NewtonSimple:Clean;NewtonSimpleC:Clean;NewtonWalkCarry:Clean;NewtonWalkShoot:Clean;OdeClothify:Clean;OdeConveyor:Clean;OdeConveyorC:Clean;OdeFurball:Clean;OdeFurballC:Clean;OdeMachine:Clean;OdeMachineC:Clean;OdeRagdoll:Clean;OdeRagdollC:Clean;OdeSimple:Clean;OdeSimpleC:Clean;OdeTerrain:Clean;OdeTerrainC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="NewtonDensity:Make;NewtonMaterial:Make;NewtonSimpleSpawn:Make;OdeConveyor:Make;OdeFurball:Make;OdeMachine:Make;OdeRagdoll:Make;OdeSimple:Make;OdeTerrain:Make"/>
+        <CallTarget Targets="ClothActor:Make;NewtonDensity:Make;NewtonDensityC:Make;NewtonJoints:Make;NewtonMaterial:Make;NewtonMaterialC:Make;NewtonMousePick:Make;NewtonSimple:Make;NewtonSimpleC:Make;NewtonWalkCarry:Make;NewtonWalkShoot:Make;OdeClothify:Make;OdeConveyor:Make;OdeConveyorC:Make;OdeFurball:Make;OdeFurballC:Make;OdeMachine:Make;OdeMachineC:Make;OdeRagdoll:Make;OdeRagdollC:Make;OdeSimple:Make;OdeSimpleC:Make;OdeTerrain:Make;OdeTerrainC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

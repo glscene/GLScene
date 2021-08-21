@@ -8,7 +8,7 @@ program Subdivide;
 
 uses
   Forms,
-  SubdivideFm in 'SubdivideFm.pas';
+  fSubdivide in 'fSubdivide.pas';
 
 {$R *.res}
 

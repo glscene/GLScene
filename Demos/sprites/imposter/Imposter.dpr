@@ -2,7 +2,7 @@ program Imposter;
 
 uses
   Forms,
-  ImposterFm in 'ImposterFm.pas' {FormImposter};
+  fImposter in 'fImposter.pas' {FormImposter};
 
 {$R *.res}
 

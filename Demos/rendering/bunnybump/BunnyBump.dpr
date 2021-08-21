@@ -33,7 +33,7 @@ program BunnyBump;
 
 uses
   Forms,
-  BunnyBumpFm in 'BunnyBumpFm.pas' {Form1};
+  fBunnyBump in 'fBunnyBump.pas' {Form1};
 
 {$R *.res}
 

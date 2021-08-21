@@ -6,7 +6,7 @@ program OdeTerrain;
 
 uses
   Forms,
-  OdeTerrainFm in 'OdeTerrainFm.pas' {FormOdeTerrain};
+  fOdeTerrain in 'fOdeTerrain.pas' {FormOdeTerrain};
 
 {$R *.RES}
 

@@ -128,7 +128,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="MotionBlurFm.pas">
+        <DCCReference Include="fMotionBlur.pas">
             <Form>FormMotionBlur</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

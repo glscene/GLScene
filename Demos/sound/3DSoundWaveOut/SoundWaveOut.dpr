@@ -42,7 +42,7 @@ program SoundWaveOut;
 
 uses
   Forms,
-  SoundWaveoutFm in 'SoundWaveoutFm.pas' {FormSoundWaveout};
+  fSoundWaveout in 'fSoundWaveout.pas' {FormSoundWaveout};
 
 {$R *.RES}
 

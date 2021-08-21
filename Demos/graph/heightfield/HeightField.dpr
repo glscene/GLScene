@@ -1,4 +1,4 @@
-(* 
+(*
    Advenced for the TGLHeightField object.
 
    Check the fxy sample first.
@@ -24,7 +24,7 @@ program HeightField;
 
 uses
   Forms,
-  HeightFieldFm in 'HeightFieldFm.pas' {FormHeightField};
+  fHeightField in 'fHeightField.pas' {FormHeightField};
 
 {$R *.RES}
 

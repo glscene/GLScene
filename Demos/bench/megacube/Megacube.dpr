@@ -49,7 +49,9 @@ program Megacube;
 
 uses
   Forms,
-  MegacubeFm in 'MegacubeFm.pas';
+  fMegaCube in 'fMegaCube.pas' {;
+
+{$R *.RES};
 
 {$R *.RES}
 

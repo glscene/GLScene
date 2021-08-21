@@ -7,7 +7,7 @@ program ExPolygon;
 
 uses
   Forms,
-  ExPolygonFm in 'ExPolygonFm.pas' {FormExPolygon};
+  fExPolygon in 'fExPolygon.pas' {FormExPolygon};
 
 {$R *.RES}
 

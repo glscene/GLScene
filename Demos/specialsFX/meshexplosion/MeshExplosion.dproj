@@ -127,7 +127,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="MeshExplosionFm.pas">
+        <DCCReference Include="fMeshExplosion.pas">
             <Form>FormMeshExplosion</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

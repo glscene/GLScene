@@ -141,7 +141,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="PostShaderFm.pas">
+        <DCCReference Include="fPostShader.pas">
             <Form>PostShaderDemoForm</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

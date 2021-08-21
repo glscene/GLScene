@@ -149,13 +149,13 @@
         <CppCompile Include="AtmosphereC.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
-        <CppCompile Include="fMainC.cpp">
+        <CppCompile Include="fAtmosphereC.cpp">
             <Form>Form1</Form>
             <FormType>dfm</FormType>
-            <DependentOn>fMainC.h</DependentOn>
+            <DependentOn>fAtmosphereC.h</DependentOn>
             <BuildOrder>2</BuildOrder>
         </CppCompile>
-        <FormResources Include="fMainC.dfm"/>
+        <FormResources Include="fAtmosphereC.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

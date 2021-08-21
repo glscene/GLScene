@@ -12,7 +12,7 @@ program Beer;
 
 uses
   Forms,
-  BeerFm in 'BeerFm.pas' {FormBeer};
+  fBeer in 'fBeer.pas' {FormBeer};
 
 {$R *.res}
 

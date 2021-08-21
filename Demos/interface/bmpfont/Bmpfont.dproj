@@ -123,7 +123,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="BmpFontFm.pas">
+        <DCCReference Include="fBmpfont.pas">
             <Form>FormBmpFont</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

@@ -123,7 +123,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="PointtoFm.pas">
+        <DCCReference Include="fPointto.pas">
             <Form>FormPointto</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

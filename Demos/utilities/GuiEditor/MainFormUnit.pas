@@ -90,10 +90,10 @@ var
   I : Integer;
 begin
   MediaPath := ExtractFilePath(ParamStr(0));
-  I := Pos(UpperCase('Samples'), UpperCase(MediaPath));
+  I := Pos(UpperCase('Demos'), UpperCase(MediaPath));
   if (I <> 0) then
   begin
-    Delete(MediaPath, I+8, Length(MediaPath)-I);
+    Delete(MediaPath, I+6, Length(MediaPath)-I-2);
     SetCurrentDir(MediaPath+'Media\');
   end;
   GLMaterialLibrary1.Materials[0].Material.Texture.Image.

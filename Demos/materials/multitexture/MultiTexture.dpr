@@ -24,7 +24,7 @@ program MultiTexture;
 
 uses
   Forms,
-  MultiTextureFm in 'MultiTextureFm.pas' {Form1};
+  fMultiTexture in 'fMultiTexture.pas' {Form1};
 
 {$R *.RES}
 

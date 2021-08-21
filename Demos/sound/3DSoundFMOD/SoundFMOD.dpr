@@ -42,7 +42,7 @@ program SoundFMOD;
 
 uses
   Forms,
-  SoundFMODFm in 'SoundFMODFm.pas' {FormSoundFMOF};
+  fSoundFMOD in 'fSoundFMOD.pas' {FormSoundFMOF};
 
 {$R *.RES}
 

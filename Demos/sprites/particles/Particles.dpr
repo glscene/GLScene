@@ -25,7 +25,7 @@ program Particles;
 
 uses
   Forms,
-  ParticlesFm in 'ParticlesFm.pas' {FormParticles};
+  fParticles in 'fParticles.pas' {FormParticles};
 
 {$R *.RES}
 

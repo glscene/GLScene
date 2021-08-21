@@ -113,7 +113,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="TreeFm.pas">
+        <DCCReference Include="fTree.pas">
             <Form>FormTree</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

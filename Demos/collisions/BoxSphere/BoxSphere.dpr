@@ -7,7 +7,7 @@ program BoxSphere;
 
 uses
   Forms,
-  BoxSphereFm in 'BoxSphereFm.pas' {FormBoxSphere};
+  fBoxSphere in 'fBoxSphere.pas' {FormBoxSphere};
 
 {$R *.RES}
 

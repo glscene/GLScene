@@ -18,7 +18,7 @@ program Atmosphere;
 
 uses
   Forms,
-  AtmosphereFm in 'AtmosphereFm.pas' {FormAtmosphere};
+  fAtmosphere in 'fAtmosphere.pas' {FormAtmosphere};
 
 {$R *.res}
   

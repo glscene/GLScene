@@ -90,7 +90,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="FeedbackFm.pas">
+        <DCCReference Include="fFeedback.pas">
             <Form>FormFeedback</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

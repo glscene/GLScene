@@ -20,7 +20,7 @@ program Tiles;
 
 uses
   Forms,
-  TilesFm in 'TilesFm.pas';
+  fTiles in 'fTiles.pas';
 
 {$R *.res}
 

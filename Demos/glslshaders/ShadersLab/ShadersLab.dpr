@@ -13,7 +13,7 @@ program ShadersLab;
 
 uses
   Vcl.Forms,
-  ShaderLabFm in 'ShaderLabFm.pas' {FormShaderLab};
+  fShaderLab in 'fShaderLab.pas' {FormShaderLab};
 
 {$R *.res}
 

@@ -40,7 +40,7 @@ program Terrain;
 
 uses
   Forms,
-  TerrainFm in 'TerrainFm.pas' {FormTerrain};
+  fTerrain in 'fTerrain.pas' {FormTerrain};
 
 {$R *.RES}
 

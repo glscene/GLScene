@@ -3,13 +3,22 @@
         <ProjectGuid>{93AF517E-DD42-4884-A2A8-9915DDD3FD49}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="caterpillar\caterpillar.cbproj">
+        <Projects Include="caterpillar\CaterpillarC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="imposter\Imposter.cbproj">
+        <Projects Include="caterpillar\Caterpillar.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="particles\particles.cbproj">
+        <Projects Include="imposter\ImposterC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="imposter\Imposter.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="particles\ParticlesC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="particles\Particles.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -20,41 +29,68 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="caterpillar">
-        <MSBuild Projects="caterpillar\caterpillar.cbproj"/>
+    <Target Name="CaterpillarC">
+        <MSBuild Projects="caterpillar\CaterpillarC.cbproj"/>
     </Target>
-    <Target Name="caterpillar:Clean">
-        <MSBuild Projects="caterpillar\caterpillar.cbproj" Targets="Clean"/>
+    <Target Name="CaterpillarC:Clean">
+        <MSBuild Projects="caterpillar\CaterpillarC.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="caterpillar:Make">
-        <MSBuild Projects="caterpillar\caterpillar.cbproj" Targets="Make"/>
+    <Target Name="CaterpillarC:Make">
+        <MSBuild Projects="caterpillar\CaterpillarC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Caterpillar">
+        <MSBuild Projects="caterpillar\Caterpillar.dproj"/>
+    </Target>
+    <Target Name="Caterpillar:Clean">
+        <MSBuild Projects="caterpillar\Caterpillar.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Caterpillar:Make">
+        <MSBuild Projects="caterpillar\Caterpillar.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ImposterC">
+        <MSBuild Projects="imposter\ImposterC.cbproj"/>
+    </Target>
+    <Target Name="ImposterC:Clean">
+        <MSBuild Projects="imposter\ImposterC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ImposterC:Make">
+        <MSBuild Projects="imposter\ImposterC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Imposter">
-        <MSBuild Projects="imposter\Imposter.cbproj"/>
+        <MSBuild Projects="imposter\Imposter.dproj"/>
     </Target>
     <Target Name="Imposter:Clean">
-        <MSBuild Projects="imposter\Imposter.cbproj" Targets="Clean"/>
+        <MSBuild Projects="imposter\Imposter.dproj" Targets="Clean"/>
     </Target>
     <Target Name="Imposter:Make">
-        <MSBuild Projects="imposter\Imposter.cbproj" Targets="Make"/>
+        <MSBuild Projects="imposter\Imposter.dproj" Targets="Make"/>
     </Target>
-    <Target Name="particles">
-        <MSBuild Projects="particles\particles.cbproj"/>
+    <Target Name="ParticlesC">
+        <MSBuild Projects="particles\ParticlesC.cbproj"/>
     </Target>
-    <Target Name="particles:Clean">
-        <MSBuild Projects="particles\particles.cbproj" Targets="Clean"/>
+    <Target Name="ParticlesC:Clean">
+        <MSBuild Projects="particles\ParticlesC.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="particles:Make">
-        <MSBuild Projects="particles\particles.cbproj" Targets="Make"/>
+    <Target Name="ParticlesC:Make">
+        <MSBuild Projects="particles\ParticlesC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Particles">
+        <MSBuild Projects="particles\Particles.dproj"/>
+    </Target>
+    <Target Name="Particles:Clean">
+        <MSBuild Projects="particles\Particles.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Particles:Make">
+        <MSBuild Projects="particles\Particles.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="caterpillar;Imposter;particles"/>
+        <CallTarget Targets="CaterpillarC;Caterpillar;ImposterC;Imposter;ParticlesC;Particles"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="caterpillar:Clean;Imposter:Clean;particles:Clean"/>
+        <CallTarget Targets="CaterpillarC:Clean;Caterpillar:Clean;ImposterC:Clean;Imposter:Clean;ParticlesC:Clean;Particles:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="caterpillar:Make;Imposter:Make;particles:Make"/>
+        <CallTarget Targets="CaterpillarC:Make;Caterpillar:Make;ImposterC:Make;Imposter:Make;ParticlesC:Make;Particles:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

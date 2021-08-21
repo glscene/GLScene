@@ -122,7 +122,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="OdeTerrainFm.pas">
+        <DCCReference Include="fOdeTerrain.pas">
             <Form>FormOdeTerrain</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

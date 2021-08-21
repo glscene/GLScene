@@ -9,7 +9,7 @@ program GizmoEx;
 
 uses
   Forms,
-  GizmoexFm in 'GizmoexFm.pas' {FormGizmoEx};
+  fGizmoEx in 'fGizmoEx.pas' {FormGizmoEx};
 
 {$R *.res}
 

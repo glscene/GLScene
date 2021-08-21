@@ -125,7 +125,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="BlurAdvancedFm.pas">
+        <DCCReference Include="fBlurAdvanced.pas">
             <Form>FormBlurAdvanced</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

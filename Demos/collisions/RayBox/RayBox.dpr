@@ -7,7 +7,7 @@ program RayBox;
 
 uses
   Forms,
-  RayBoxFm in 'RayBoxFm.pas' {FormRayBox};
+  fRayBox in 'fRayBox.pas' {FormRayBox};
 
 {$R *.RES}
 

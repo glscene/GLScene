@@ -27,7 +27,7 @@ program Actorms3d;
 
 uses
   Forms,
-  Actorms3dFm in 'Actorms3dFm.pas' {FormActorms3d};
+  fActorms3d in 'fActorms3d.pas' {FormActorms3d};
 
 {$R *.res}
 

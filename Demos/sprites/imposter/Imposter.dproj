@@ -123,7 +123,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="ImposterFm.pas">
+        <DCCReference Include="fImposter.pas">
             <Form>FormImposter</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

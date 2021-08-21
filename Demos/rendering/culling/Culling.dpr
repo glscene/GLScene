@@ -25,7 +25,7 @@ program Culling;
 
 uses
   Forms,
-  CullingFm in 'CullingFm.pas' {FormCulling};
+  fCulling in 'fCulling.pas' {FormCulling};
 
 {$R *.RES}
 

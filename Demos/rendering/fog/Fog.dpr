@@ -5,7 +5,7 @@ program Fog;
 
 uses
   Forms,
-  FogFm in 'FogFm.pas' {FormFog};
+  fFog in 'fFog.pas' {FormFog};
 
 {$R *.res}
 

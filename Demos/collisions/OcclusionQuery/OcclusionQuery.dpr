@@ -17,7 +17,7 @@ program OcclusionQuery;
 
 uses
   Forms,
-  OcclusionQueryFm in 'OcclusionQueryFm.pas' {FormOcclusionQuery};
+  fOcclusionQuery in 'fOcclusionQuery.pas' {FormOcclusionQuery};
 
 {$R *.res}
 

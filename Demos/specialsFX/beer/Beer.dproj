@@ -150,7 +150,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="BeerFm.pas">
+        <DCCReference Include="fBeer.pas">
             <Form>FormBeer</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

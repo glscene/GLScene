@@ -123,7 +123,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="ActorProxyFm.pas">
+        <DCCReference Include="fActorProxy.pas">
             <Form>FormActorProxy</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

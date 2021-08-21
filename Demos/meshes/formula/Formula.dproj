@@ -88,7 +88,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="FormulaFm.pas">
+        <DCCReference Include="fFormula.pas">
             <Form>FormFormula</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

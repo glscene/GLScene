@@ -123,7 +123,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="HierarchyFm.pas">
+        <DCCReference Include="fHierarchy.pas">
             <Form>FormHierarchy</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

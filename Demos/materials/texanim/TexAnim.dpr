@@ -11,7 +11,7 @@ program TexAnim;
 
 uses
   Forms,
-  TexAnimFm in 'TexAnimFm.pas' {FormTexAnim};
+  fTexAnim in 'fTexAnim.pas' {FormTexAnim};
 
 {$R *.RES}
 

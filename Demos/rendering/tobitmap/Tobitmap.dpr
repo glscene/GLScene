@@ -19,8 +19,8 @@ program Tobitmap;
 
 uses
   Forms,
-  TobitmapFm in 'TobitmapFm.pas' {Form1},
-  TobitmapImgFm in 'TobitmapImgFm.pas' {Form2};
+  fTobitmap in 'fTobitmap.pas' {Form1},
+  fTobitmapImg in 'fTobitmapImg.pas' {Form2};
 
 {$R *.res}
 

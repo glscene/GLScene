@@ -30,7 +30,7 @@ program ProjTextures;
 
 uses
   Forms,
-  ProjTexturesFm in 'ProjTexturesFm.pas' {FormProjTextures};
+  fProjTextures in 'fProjTextures.pas' {FormProjTextures};
 
 {$R *.RES}
 

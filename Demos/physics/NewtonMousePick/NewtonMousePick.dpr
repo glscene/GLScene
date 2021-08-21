@@ -14,7 +14,7 @@ program NewtonMousePick;
 
 uses
   Forms,
-  NewtonMousePickFm in 'NewtonMousePickFm.pas' {FormNewtonMousePick};
+  fNewtonMousePick in 'fNewtonMousePick.pas' {FormNewtonMousePick};
 
 {$R *.res}
 

@@ -8,7 +8,7 @@ program MeshHit;
 
 uses
   Forms,
-  MeshHitFm in 'MeshHitFm.pas' {FormMeshHit};
+  fMeshHit in 'fMeshHit.pas' {FormMeshHit};
 
 {$R *.res}
 

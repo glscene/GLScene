@@ -134,7 +134,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="OdeSimpleFm.pas">
+        <DCCReference Include="fOdeSimple.pas">
             <Form>FormOdeSimple</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

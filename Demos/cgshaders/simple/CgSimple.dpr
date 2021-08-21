@@ -11,7 +11,7 @@ program CgSimple;
 
 uses
   Forms,
-  CgSimpleFm in 'CgSimpleFm.pas' {FormCgSimple};
+  fCgSimple in 'fCgSimple.pas' {FormCgSimple};
 
 {$R *.res}
 

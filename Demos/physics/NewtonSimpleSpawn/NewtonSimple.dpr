@@ -15,7 +15,7 @@ program NewtonSimple;
 
 uses
   Forms,
-  NewtonSimpleFm in 'NewtonSimpleFm.pas' {FormNewtonSimple};
+  fNewtonSimple in 'fNewtonSimple.pas' {FormNewtonSimple};
 
 {$R *.res}
 

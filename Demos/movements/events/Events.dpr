@@ -2,7 +2,7 @@ program Events;
 
 uses
   Forms,
-  EventsFm in 'EventsFm.pas' {FormEvents};
+  fEvents in 'fEvents.pas' {FormEvents};
 
 {$R *.res}
 

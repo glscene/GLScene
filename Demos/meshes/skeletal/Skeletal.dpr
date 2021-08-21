@@ -28,7 +28,7 @@ program Skeletal;
 
 uses
   Forms,
-  SkeletalFm in 'SkeletalFm.pas';
+  fSkeletal in 'fSkeletal.pas';
 
 {$R *.RES}
 

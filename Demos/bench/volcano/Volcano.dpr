@@ -25,7 +25,7 @@ program Volcano;
 
 uses
   Forms,
-  VolcanoFm in 'VolcanoFm.pas' {FormVolcano};
+  fVolcano in 'fVolcano.pas' {FormVolcano};
 
 {$R *.res}
 

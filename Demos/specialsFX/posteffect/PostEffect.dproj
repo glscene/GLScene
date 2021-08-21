@@ -127,7 +127,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="PostEffectFm.pas">
+        <DCCReference Include="fPostEffect.pas">
             <Form>FormPostEffect</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

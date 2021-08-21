@@ -23,7 +23,7 @@ program Caterpillar;
 
 uses
   Forms,
-  CaterpillarFm in 'CaterpillarFm.pas' {FormCaterpillar};
+  fCaterpillar in 'fCaterpillar.pas' {FormCaterpillar};
 
 {$R *.RES}
 

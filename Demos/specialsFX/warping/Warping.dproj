@@ -127,7 +127,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="WarpingFm.pas">
+        <DCCReference Include="fWarping.pas">
             <Form>FormWarping</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

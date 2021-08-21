@@ -123,7 +123,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="CenteringFm.pas">
+        <DCCReference Include="fCentering.pas">
             <Form>FormCentering</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

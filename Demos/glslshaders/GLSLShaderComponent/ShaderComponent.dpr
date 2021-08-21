@@ -15,7 +15,7 @@ program ShaderComponent;
 
 uses
   Forms,
-  ShaderComponentFm in 'ShaderComponentFm.pas' {GLSLTestForm};
+  fShaderComponent in 'fShaderComponent.pas' {GLSLTestForm};
 
 {$R *.res}
 

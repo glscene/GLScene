@@ -127,7 +127,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="CandlesFm.pas">
+        <DCCReference Include="fCandles.pas">
             <Form>FormCandles</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

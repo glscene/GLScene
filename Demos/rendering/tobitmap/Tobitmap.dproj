@@ -120,10 +120,10 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="TobitmapFm.pas">
+        <DCCReference Include="fTobitmap.pas">
             <Form>Form1</Form>
         </DCCReference>
-        <DCCReference Include="TobitmapImgFm.pas">
+        <DCCReference Include="fTobitmapImg.pas">
             <Form>Form2</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

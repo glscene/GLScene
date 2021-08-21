@@ -2,7 +2,7 @@ program OdeMachine;
 
 uses
   Forms,
-  OdeMachineFm in 'OdeMachineFm.pas' {FormOdeMachine};
+  fOdeMachine in 'fOdeMachine.pas' {FormOdeMachine};
 
 {$R *.res}
 

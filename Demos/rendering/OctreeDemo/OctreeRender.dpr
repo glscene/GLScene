@@ -2,7 +2,7 @@ program OctreeRender;
 
 uses
   Forms,
-  OctreeRenderFm in 'OctreeRenderFm.pas' {frmOctreeDemo};
+  fOctreeRender in 'fOctreeRender.pas' {frmOctreeDemo};
 
 {$R *.res}
 
