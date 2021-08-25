@@ -20,7 +20,7 @@ program Cursor;
 
 uses
   Forms,
-  CursorFm in 'CursorFm.pas' {FormCursor};
+  fCursor in 'fCursor.pas' {FormCursor};
 
 {$R *.RES}
 

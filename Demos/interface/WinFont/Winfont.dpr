@@ -16,8 +16,8 @@ program Winfont;
 
 uses
   Forms,
-  WinFontFm in 'WinFontFm.pas' {FormWinFont},
-  WinFontTextureFm in 'WinFontTextureFm.pas' {FormFontTexture};
+  fWinFont in 'fWinFont.pas' {FormWinFont},
+  fWinTexture in 'fWinTexture.pas' {FormFontTexture};
 
 {$R *.RES}
 

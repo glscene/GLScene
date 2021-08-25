@@ -14,7 +14,7 @@ program ShadowVolumes;
 
 uses
   Forms,
-  ShadowVolumesFm in 'ShadowVolumesFm.pas' {FormShadowVolumes};
+  fShadowVolumes in 'fShadowVolumes.pas' {FormShadowVolumes};
 
 {$R *.res}
 

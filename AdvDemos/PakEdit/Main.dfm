@@ -1,9 +1,9 @@
 object Form1: TForm1
   Left = 253
   Top = 218
-  Width = 555
-  Height = 299
   Caption = 'GLScene Pak Editor'
+  ClientHeight = 240
+  ClientWidth = 539
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,8 +15,8 @@ object Form1: TForm1
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   DesignSize = (
-    547
-    245)
+    539
+    240)
   PixelsPerInch = 96
   TextHeight = 13
   object Bevel1: TBevel
@@ -31,7 +31,7 @@ object Form1: TForm1
     Left = 8
     Top = 8
     Width = 161
-    Height = 241
+    Height = 221
     Anchors = [akLeft, akTop, akBottom]
     Images = ImageList1
     Indent = 19
@@ -43,10 +43,10 @@ object Form1: TForm1
     OnKeyDown = TreeViewKeyDown
   end
   object ListView: TListView
-    Left = 176
+    Left = 175
     Top = 8
     Width = 365
-    Height = 241
+    Height = 221
     Anchors = [akLeft, akTop, akRight, akBottom]
     Columns = <
       item
@@ -58,9 +58,10 @@ object Form1: TForm1
         Width = 70
       end>
     Enabled = False
-    Items.Data = {
-      370000000100000000000000FFFFFFFFFFFFFFFF00000000000000001A4F7065
-      6E206F72206372656174652070616B2066696C652E2E2E}
+    Items.ItemData = {
+      054E0000000100000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF000000
+      001A4F00700065006E0020006F00720020006300720065006100740065002000
+      700061006B002000660069006C0065002E002E002E00}
     MultiSelect = True
     SmallImages = ImageList1
     TabOrder = 1

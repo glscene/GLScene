@@ -128,7 +128,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="ShadowVolumesFm.pas">
+        <DCCReference Include="fShadowVolumes.pas">
             <Form>FormShadowVolumes</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

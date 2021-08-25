@@ -8,7 +8,7 @@ program CameraController;
 
 uses
   Forms,
-  CameraControllerFm in 'CameraControllerFm.pas' {Form1};
+  fCameraController in 'fCameraController.pas' {Form1};
 
 {$R *.res}
 

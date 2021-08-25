@@ -37,7 +37,7 @@ program Guidemo;
 
 uses
   Forms,
-  GuidemoFm in 'GuidemoFm.pas' {FormGuidemo};
+  fGuiDemo in 'fGuiDemo.pas' {FormGuidemo};
 
 {$R *.RES}
 

@@ -116,8 +116,8 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="HFPickFm.pas">
-            <Form>FormHFPickFm</Form>
+        <DCCReference Include="fHFPick.pas">
+            <Form>FormHFPick</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>

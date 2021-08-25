@@ -16,7 +16,7 @@ program Fire;
 
 uses
   Forms,
-  FireFm in 'FireFm.pas' {FormFire};
+  fFire in 'fFire.pas' {FormFire};
 
 {$R *.RES}
 

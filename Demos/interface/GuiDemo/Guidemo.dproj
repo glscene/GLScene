@@ -123,7 +123,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="GuidemoFm.pas">
+        <DCCReference Include="fGuiDemo.pas">
             <Form>FormGuidemo</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

@@ -26,12 +26,12 @@ program HFpick;
 
 uses
   Forms,
-  HFPickFm in 'HFPickFm.pas' {FormHFPickFm};
+  fHFPick in 'fHFPick.pas' {FormHFPick};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TFormHFPickFm, FormHFPickFm);
+  Application.CreateForm(TFormHFPick, FormHFPick);
   Application.Run;
 end.

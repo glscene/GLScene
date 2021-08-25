@@ -123,7 +123,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="CursorFm.pas">
+        <DCCReference Include="fCursor.pas">
             <Form>FormCursor</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

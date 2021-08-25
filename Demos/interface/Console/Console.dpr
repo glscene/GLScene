@@ -9,7 +9,7 @@ program Console;
 
 uses
   Forms,
-  ConsoleFm in 'ConsoleFm.pas' {FormConsole};
+  fConsole in 'fConsole.pas' {FormConsole};
 
 {$R *.RES}
 

@@ -125,7 +125,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="FireFm.pas">
+        <DCCReference Include="fFire.pas">
             <Form>FormFire</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

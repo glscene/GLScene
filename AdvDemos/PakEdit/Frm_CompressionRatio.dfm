@@ -43,7 +43,6 @@ object FrmCompressionRatio: TFrmCompressionRatio
     Width = 161
     Height = 21
     Style = csDropDownList
-    ItemHeight = 13
     TabOrder = 2
   end
 end

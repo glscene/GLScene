@@ -123,10 +123,10 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="WinFontFm.pas">
+        <DCCReference Include="fWinFont.pas">
             <Form>FormWinFont</Form>
         </DCCReference>
-        <DCCReference Include="WinFontTextureFm.pas">
+        <DCCReference Include="fWinTexture.pas">
             <Form>FormFontTexture</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">
@@ -161,13 +161,13 @@
                 <Platform value="Win64">True</Platform>
             </Platforms>
             <Deployment Version="3">
-                <DeployFile LocalName="Win32\Debug\Winfont.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="\Winfont.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Winfont.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="\Winfont.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="Win32\Debug\Winfont.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Winfont.exe</RemoteName>
                         <Overwrite>true</Overwrite>

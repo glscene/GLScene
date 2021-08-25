@@ -2,8 +2,16 @@ unit FolderSelect;
 
 interface
 
-uses Windows, System.SysUtils, System.Classes, Vcl.Graphics, Vcl.Forms, Vcl.Controls, Vcl.StdCtrls, 
-  Buttons, Vcl.ExtCtrls, Vcl.ComCtrls, ShellCtrls;
+uses
+  Windows,
+  System.SysUtils,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Forms, Vcl.Controls, Vcl.StdCtrls,
+  Vcl.Buttons,
+  Vcl.ExtCtrls,
+  Vcl.ComCtrls,
+  ShellCtrls;
 
 type
   TFolderSel = class(TForm)
@@ -13,9 +21,9 @@ type
     ShellView: TShellTreeView;
     Label1: TLabel;
   private
-     
+
   public
-     
+
   end;
 
 var

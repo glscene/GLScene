@@ -10,7 +10,7 @@ program Fontcolor;
 
 uses
   Forms,
-  FontColorFm in 'FontColorFm.pas';
+  fFontColor in 'fFontColor.pas' {FormFontColor};
 
 {$R *.res}
 
