@@ -147,16 +147,16 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
     </PropertyGroup>
     <ItemGroup>
-        <CppCompile Include="fMainCC.cpp">
+        <CppCompile Include="fLineStipplingC.cpp">
             <Form>FormLineStipplingC</Form>
             <FormType>dfm</FormType>
-            <DependentOn>fMainCC.h</DependentOn>
+            <DependentOn>fLineStipplingC.h</DependentOn>
             <BuildOrder>2</BuildOrder>
         </CppCompile>
         <CppCompile Include="LineStipplingC.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
-        <FormResources Include="fMainCC.dfm"/>
+        <FormResources Include="fLineStipplingC.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -242,12 +242,6 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="LineStipplingC.tds" Configuration="Debug" Class="DebugSymbols">
-                    <Platform Name="Win32">
-                        <RemoteName>LineStipplingC.tds</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64260.dll" Class="DependencyModule">
                     <Platform Name="Win64">
                         <Overwrite>true</Overwrite>
@@ -255,6 +249,12 @@
                 </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32c260mt.dll" Class="DependencyModule">
                     <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="LineStipplingC.tds" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win32">
+                        <RemoteName>LineStipplingC.tds</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

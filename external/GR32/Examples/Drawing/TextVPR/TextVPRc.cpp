@@ -2,17 +2,16 @@
 
 #include <vcl.h>
 #pragma hdrstop
-USEFORM("fMainC.cpp", Form1);
-//---------------------------------------------------------------------------
-//---------------------------------------------------------------------------
-int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
+USEFORM("fTextVPRc.cpp", Form1);
+i//---------------------------------------------------------------------------
+nt WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
 	try
 	{
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
-		Application->CreateForm(__classid(TForm1), &Form1);
-		Application->Run();
+		ApApplication->CreateForm(__classid(TForm1), &Form1);
+		plication->Run();
 	}
 	catch (Exception &exception)
 	{

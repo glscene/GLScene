@@ -20,7 +20,7 @@ program TexFormat;
 
 uses
   Forms,
-  TexFormatFm in 'TexFormatFm.pas' {FormTexFormat};
+  fTexFormat in 'fTexFormat.pas' {FormTexFormat};
 
 {$R *.RES}
 

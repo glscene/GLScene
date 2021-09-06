@@ -128,7 +128,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="MirrorFm.pas">
+        <DCCReference Include="fMirror.pas">
             <Form>FormMirror</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

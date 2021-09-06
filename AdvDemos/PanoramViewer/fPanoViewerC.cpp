@@ -27,7 +27,6 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::BtnLoadClick(TObject *Sender)
 {
-//  SetGLSceneMediaDir();
   OpenPictureDialog1->InitialDir = ExtractFilePath(ParamStr(0));
   OpenPictureDialog1->FileName = "sejourstmathieu2048.jpg";
   if (OpenPictureDialog1->Execute())

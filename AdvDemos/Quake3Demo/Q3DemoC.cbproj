@@ -141,16 +141,16 @@
         <Defines>NDEBUG;$(Defines)</Defines>
     </PropertyGroup>
     <ItemGroup>
-        <CppCompile Include="fQ3Demo.cpp">
+        <CppCompile Include="fQ3DemoC.cpp">
             <Form>Form1</Form>
             <FormType>dfm</FormType>
-            <DependentOn>fQ3Demo.h</DependentOn>
+            <DependentOn>fQ3DemoC.h</DependentOn>
             <BuildOrder>2</BuildOrder>
         </CppCompile>
         <CppCompile Include="Q3DemoC.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
-        <FormResources Include="fQ3Demo.dfm"/>
+        <FormResources Include="fQ3DemoC.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -1,0 +1,312 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{E746D7E4-D35A-4D10-AFE7-39F6B12FE777}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="AntiAliasing\AntiAliasing.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ArrowHead\ArrowHead.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Benchmark\Benchmark.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Blurs\Blurs.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Clipper\Clipper.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="CubicSpline\CubicSpline.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Curves\Curves.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GammaBlur\GammaBlur.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GammaCorrection\GammaCorrection.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GradFills\GradFills.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GradLines\GradLines.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GradSampler\GradSampler.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Grow\Grow.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="LineStippling\LineStippling.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="LineStippling\LineStipplingC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Lion\Lion.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MeshGradients\MeshGradients.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Polygons\Polygons.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="RenderText\RenderText.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ScatterPlot\ScatterPlot.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SvgPath\SvgPath.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TextVPR\TextVPR.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TextVPR\TextVPRc.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="VertexReduction\VertextReduction.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="AntiAliasing">
+        <MSBuild Projects="AntiAliasing\AntiAliasing.dproj"/>
+    </Target>
+    <Target Name="AntiAliasing:Clean">
+        <MSBuild Projects="AntiAliasing\AntiAliasing.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AntiAliasing:Make">
+        <MSBuild Projects="AntiAliasing\AntiAliasing.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ArrowHead">
+        <MSBuild Projects="ArrowHead\ArrowHead.dproj"/>
+    </Target>
+    <Target Name="ArrowHead:Clean">
+        <MSBuild Projects="ArrowHead\ArrowHead.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ArrowHead:Make">
+        <MSBuild Projects="ArrowHead\ArrowHead.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Benchmark">
+        <MSBuild Projects="Benchmark\Benchmark.dproj"/>
+    </Target>
+    <Target Name="Benchmark:Clean">
+        <MSBuild Projects="Benchmark\Benchmark.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Benchmark:Make">
+        <MSBuild Projects="Benchmark\Benchmark.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Blurs">
+        <MSBuild Projects="Blurs\Blurs.dproj"/>
+    </Target>
+    <Target Name="Blurs:Clean">
+        <MSBuild Projects="Blurs\Blurs.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Blurs:Make">
+        <MSBuild Projects="Blurs\Blurs.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Clipper">
+        <MSBuild Projects="Clipper\Clipper.dproj"/>
+    </Target>
+    <Target Name="Clipper:Clean">
+        <MSBuild Projects="Clipper\Clipper.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Clipper:Make">
+        <MSBuild Projects="Clipper\Clipper.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CubicSpline">
+        <MSBuild Projects="CubicSpline\CubicSpline.dproj"/>
+    </Target>
+    <Target Name="CubicSpline:Clean">
+        <MSBuild Projects="CubicSpline\CubicSpline.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CubicSpline:Make">
+        <MSBuild Projects="CubicSpline\CubicSpline.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Curves">
+        <MSBuild Projects="Curves\Curves.dproj"/>
+    </Target>
+    <Target Name="Curves:Clean">
+        <MSBuild Projects="Curves\Curves.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Curves:Make">
+        <MSBuild Projects="Curves\Curves.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GammaBlur">
+        <MSBuild Projects="GammaBlur\GammaBlur.dproj"/>
+    </Target>
+    <Target Name="GammaBlur:Clean">
+        <MSBuild Projects="GammaBlur\GammaBlur.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GammaBlur:Make">
+        <MSBuild Projects="GammaBlur\GammaBlur.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GammaCorrection">
+        <MSBuild Projects="GammaCorrection\GammaCorrection.dproj"/>
+    </Target>
+    <Target Name="GammaCorrection:Clean">
+        <MSBuild Projects="GammaCorrection\GammaCorrection.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GammaCorrection:Make">
+        <MSBuild Projects="GammaCorrection\GammaCorrection.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GradFills">
+        <MSBuild Projects="GradFills\GradFills.dproj"/>
+    </Target>
+    <Target Name="GradFills:Clean">
+        <MSBuild Projects="GradFills\GradFills.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GradFills:Make">
+        <MSBuild Projects="GradFills\GradFills.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GradLines">
+        <MSBuild Projects="GradLines\GradLines.dproj"/>
+    </Target>
+    <Target Name="GradLines:Clean">
+        <MSBuild Projects="GradLines\GradLines.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GradLines:Make">
+        <MSBuild Projects="GradLines\GradLines.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GradSampler">
+        <MSBuild Projects="GradSampler\GradSampler.dproj"/>
+    </Target>
+    <Target Name="GradSampler:Clean">
+        <MSBuild Projects="GradSampler\GradSampler.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GradSampler:Make">
+        <MSBuild Projects="GradSampler\GradSampler.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Grow">
+        <MSBuild Projects="Grow\Grow.dproj"/>
+    </Target>
+    <Target Name="Grow:Clean">
+        <MSBuild Projects="Grow\Grow.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Grow:Make">
+        <MSBuild Projects="Grow\Grow.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="LineStippling">
+        <MSBuild Projects="LineStippling\LineStippling.dproj"/>
+    </Target>
+    <Target Name="LineStippling:Clean">
+        <MSBuild Projects="LineStippling\LineStippling.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LineStippling:Make">
+        <MSBuild Projects="LineStippling\LineStippling.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="LineStipplingC">
+        <MSBuild Projects="LineStippling\LineStipplingC.cbproj"/>
+    </Target>
+    <Target Name="LineStipplingC:Clean">
+        <MSBuild Projects="LineStippling\LineStipplingC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LineStipplingC:Make">
+        <MSBuild Projects="LineStippling\LineStipplingC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Lion">
+        <MSBuild Projects="Lion\Lion.dproj"/>
+    </Target>
+    <Target Name="Lion:Clean">
+        <MSBuild Projects="Lion\Lion.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Lion:Make">
+        <MSBuild Projects="Lion\Lion.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MeshGradients">
+        <MSBuild Projects="MeshGradients\MeshGradients.dproj"/>
+    </Target>
+    <Target Name="MeshGradients:Clean">
+        <MSBuild Projects="MeshGradients\MeshGradients.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MeshGradients:Make">
+        <MSBuild Projects="MeshGradients\MeshGradients.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Polygons">
+        <MSBuild Projects="Polygons\Polygons.dproj"/>
+    </Target>
+    <Target Name="Polygons:Clean">
+        <MSBuild Projects="Polygons\Polygons.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Polygons:Make">
+        <MSBuild Projects="Polygons\Polygons.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="RenderText">
+        <MSBuild Projects="RenderText\RenderText.dproj"/>
+    </Target>
+    <Target Name="RenderText:Clean">
+        <MSBuild Projects="RenderText\RenderText.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RenderText:Make">
+        <MSBuild Projects="RenderText\RenderText.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ScatterPlot">
+        <MSBuild Projects="ScatterPlot\ScatterPlot.dproj"/>
+    </Target>
+    <Target Name="ScatterPlot:Clean">
+        <MSBuild Projects="ScatterPlot\ScatterPlot.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ScatterPlot:Make">
+        <MSBuild Projects="ScatterPlot\ScatterPlot.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SvgPath">
+        <MSBuild Projects="SvgPath\SvgPath.dproj"/>
+    </Target>
+    <Target Name="SvgPath:Clean">
+        <MSBuild Projects="SvgPath\SvgPath.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SvgPath:Make">
+        <MSBuild Projects="SvgPath\SvgPath.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TextVPR">
+        <MSBuild Projects="TextVPR\TextVPR.dproj"/>
+    </Target>
+    <Target Name="TextVPR:Clean">
+        <MSBuild Projects="TextVPR\TextVPR.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TextVPR:Make">
+        <MSBuild Projects="TextVPR\TextVPR.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TextVPRc">
+        <MSBuild Projects="TextVPR\TextVPRc.cbproj"/>
+    </Target>
+    <Target Name="TextVPRc:Clean">
+        <MSBuild Projects="TextVPR\TextVPRc.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TextVPRc:Make">
+        <MSBuild Projects="TextVPR\TextVPRc.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="VertextReduction">
+        <MSBuild Projects="VertexReduction\VertextReduction.dproj"/>
+    </Target>
+    <Target Name="VertextReduction:Clean">
+        <MSBuild Projects="VertexReduction\VertextReduction.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VertextReduction:Make">
+        <MSBuild Projects="VertexReduction\VertextReduction.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="AntiAliasing;ArrowHead;Benchmark;Blurs;Clipper;CubicSpline;Curves;GammaBlur;GammaCorrection;GradFills;GradLines;GradSampler;Grow;LineStippling;LineStipplingC;Lion;MeshGradients;Polygons;RenderText;ScatterPlot;SvgPath;TextVPR;TextVPRc;VertextReduction"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="AntiAliasing:Clean;ArrowHead:Clean;Benchmark:Clean;Blurs:Clean;Clipper:Clean;CubicSpline:Clean;Curves:Clean;GammaBlur:Clean;GammaCorrection:Clean;GradFills:Clean;GradLines:Clean;GradSampler:Clean;Grow:Clean;LineStippling:Clean;LineStipplingC:Clean;Lion:Clean;MeshGradients:Clean;Polygons:Clean;RenderText:Clean;ScatterPlot:Clean;SvgPath:Clean;TextVPR:Clean;TextVPRc:Clean;VertextReduction:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="AntiAliasing:Make;ArrowHead:Make;Benchmark:Make;Blurs:Make;Clipper:Make;CubicSpline:Make;Curves:Make;GammaBlur:Make;GammaCorrection:Make;GradFills:Make;GradLines:Make;GradSampler:Make;Grow:Make;LineStippling:Make;LineStipplingC:Make;Lion:Make;MeshGradients:Make;Polygons:Make;RenderText:Make;ScatterPlot:Make;SvgPath:Make;TextVPR:Make;TextVPRc:Make;VertextReduction:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

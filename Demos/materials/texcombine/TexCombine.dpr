@@ -16,7 +16,7 @@ program TexCombine;
 
 uses
   Forms,
-  TexCombineFm in 'TexCombineFm.pas' {FormTexCombine};
+  fTexCombine in 'fTexCombine.pas' {FormTexCombine};
 
 {$R *.res}
 

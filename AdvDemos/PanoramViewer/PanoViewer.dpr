@@ -17,7 +17,7 @@ program PanoViewer;
 
 uses
   Forms,
-  Unit1 in 'Unit1.pas' {Form1};
+  fPanoViewer in 'fPanoViewer.pas' {Form1};
 
 {$R *.RES}
 

@@ -2,7 +2,7 @@ program SvgPath;
 
 uses
   Forms,
-  MainUnit in 'MainUnit.pas' {FrmSvgPathRenderer};
+  fSvgPath in 'fSvgPath.pas' {FrmSvgPathRenderer};
 
 {$R *.res}
 

@@ -114,7 +114,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="TexFormatFm.pas">
+        <DCCReference Include="fTexFormat.pas">
             <Form>FormTexFormat</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

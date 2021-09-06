@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{0B530069-6695-460E-85C5-F4BE9BD3BA5C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="BlendVsMerge\BlendVsMerge.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="BlendVsMerge\BlendVsMergeC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PixelCombine\PixelCombine.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TextureBlend\TextureBlend.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BlendVsMerge">
+        <MSBuild Projects="BlendVsMerge\BlendVsMerge.dproj"/>
+    </Target>
+    <Target Name="BlendVsMerge:Clean">
+        <MSBuild Projects="BlendVsMerge\BlendVsMerge.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BlendVsMerge:Make">
+        <MSBuild Projects="BlendVsMerge\BlendVsMerge.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="BlendVsMergeC">
+        <MSBuild Projects="BlendVsMerge\BlendVsMergeC.cbproj"/>
+    </Target>
+    <Target Name="BlendVsMergeC:Clean">
+        <MSBuild Projects="BlendVsMerge\BlendVsMergeC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BlendVsMergeC:Make">
+        <MSBuild Projects="BlendVsMerge\BlendVsMergeC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="PixelCombine">
+        <MSBuild Projects="PixelCombine\PixelCombine.dproj"/>
+    </Target>
+    <Target Name="PixelCombine:Clean">
+        <MSBuild Projects="PixelCombine\PixelCombine.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PixelCombine:Make">
+        <MSBuild Projects="PixelCombine\PixelCombine.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TextureBlend">
+        <MSBuild Projects="TextureBlend\TextureBlend.dproj"/>
+    </Target>
+    <Target Name="TextureBlend:Clean">
+        <MSBuild Projects="TextureBlend\TextureBlend.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TextureBlend:Make">
+        <MSBuild Projects="TextureBlend\TextureBlend.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BlendVsMerge;BlendVsMergeC;PixelCombine;TextureBlend"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BlendVsMerge:Clean;BlendVsMergeC:Clean;PixelCombine:Clean;TextureBlend:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BlendVsMerge:Make;BlendVsMergeC:Make;PixelCombine:Make;TextureBlend:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

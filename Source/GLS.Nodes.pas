@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Nodes;
 
 (* Nodes are used to describe lines, polygons + more. *)

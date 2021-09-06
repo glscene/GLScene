@@ -4,7 +4,7 @@ program RenderText;
 
 uses
   Forms,
-  MainUnit in 'MainUnit.pas';
+  fRenderText in 'fRenderText.pas';
 
 begin
   Application.Initialize;

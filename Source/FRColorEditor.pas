@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit FRColorEditor;
 
 (* RGB+Alpha color editor. *)

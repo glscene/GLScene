@@ -117,7 +117,7 @@
         <RcCompile Include="Media.rc">
             <Form>Media.res</Form>
         </RcCompile>
-        <DCCReference Include="MainUnit.pas">
+        <DCCReference Include="fGammaBlur.pas">
             <Form>FormGammaBlur</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

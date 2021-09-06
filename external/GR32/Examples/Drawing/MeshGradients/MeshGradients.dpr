@@ -4,7 +4,7 @@ program MeshGradients;
 
 uses
   Forms,
-  MainUnit in 'MainUnit.pas' {FrmMeshGradients};
+  fMeshGradients in 'fMeshGradients.pas' {FrmMeshGradients};
 
 begin
   Application.Initialize;

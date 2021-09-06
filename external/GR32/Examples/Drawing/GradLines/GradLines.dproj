@@ -117,7 +117,7 @@
         <RcCompile Include="Media.rc">
             <Form>Media.res</Form>
         </RcCompile>
-        <DCCReference Include="MainUnit.pas"/>
+        <DCCReference Include="fGradLines.pas"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

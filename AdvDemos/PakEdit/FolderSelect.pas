@@ -21,9 +21,9 @@ type
     ShellView: TShellTreeView;
     Label1: TLabel;
   private
-
+     
   public
-
+     
   end;
 
 var

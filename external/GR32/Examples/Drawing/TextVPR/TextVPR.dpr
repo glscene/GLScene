@@ -4,7 +4,7 @@ program TextVPR;
 
 uses
   Forms,
-  MainUnit in 'MainUnit.pas';
+  fTextVPR in 'fTextVPR.pas';
 
 begin
   Application.Initialize;

@@ -7,7 +7,7 @@ program Q3Demo;
 
 uses
   Forms,
-  Unit1 in 'Unit1.pas' {Form1};
+  fQ3Demo in 'fQ3Demo.pas' {Form1};
 
 {$R *.RES}
 

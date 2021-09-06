@@ -8,7 +8,7 @@ program Grow;
 
 uses
   Forms,
-  MainUnit in 'MainUnit.pas' {FormGrow};
+  fGrow in 'fGrow.pas' {FormGrow};
 
 begin
   Application.Initialize;

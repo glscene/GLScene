@@ -21,7 +21,6 @@ uses
   VCL.Controls,
   VCL.Graphics,
 
-  FRTrackBarEdit,
   FRColorEditor,
   GLS.Texture,
   GLS.Material,

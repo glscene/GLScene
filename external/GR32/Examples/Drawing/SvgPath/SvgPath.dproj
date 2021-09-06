@@ -114,7 +114,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="MainUnit.pas">
+        <DCCReference Include="fSvgPath.pas">
             <Form>FrmSvgPathRenderer</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

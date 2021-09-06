@@ -4,7 +4,7 @@ program Rotate;
 
 uses
   Forms,
-  MainUnit in 'MainUnit.pas';
+  fRotate in 'fRotate.pas';
 
 begin
   Application.Initialize;

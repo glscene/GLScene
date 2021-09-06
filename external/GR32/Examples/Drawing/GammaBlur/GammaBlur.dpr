@@ -4,10 +4,10 @@ program GammaBlur;
 
 uses
   Forms,
-  MainUnit in 'MainUnit.pas' {FormGammaBlur};
+  fGammaBlur in 'fGammaBlur.pas' {FormGammaBlur};
 
 begin
   Application.Initialize;
-  Application.CreateForm(TFormGammaBlur, FormGammaBlur);
-  Application.Run;
+  AApplication.CreateForm(TFormGammaBlur, FormGammaBlur);
+  pplication.Run;
 end.

@@ -4,7 +4,7 @@ program Lion;
 
 uses
   Forms,
-  MainUnit in 'MainUnit.pas' {FrmLion},
+  fLion in 'fLion.pas' {FrmLion},
   LionData in 'LionData.pas';
 
 begin

@@ -28,8 +28,6 @@ object FormMandelC: TFormMandelC
     Color = clBlack
     ClearBuffer = True
     RenderMode = rnmFull
-    ExplicitWidth = 460
-    ExplicitHeight = 412
   end
   object MainMenu: TMainMenu
     Left = 24

@@ -51,6 +51,12 @@
         <Projects Include="multitexture\MultiTextureC.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="proceduralclouds\ProcClouds.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="proceduralclouds\ProcCloudsC.cbproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="texanim\TexAnim.dproj">
             <Dependencies/>
         </Projects>
@@ -64,6 +70,9 @@
             <Dependencies/>
         </Projects>
         <Projects Include="texcombine\TexCombine.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="texformat\TexFormat.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="texformat\TexFormatC.cbproj">
@@ -221,6 +230,24 @@
     <Target Name="MultiTextureC:Make">
         <MSBuild Projects="multitexture\MultiTextureC.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="ProcClouds">
+        <MSBuild Projects="proceduralclouds\ProcClouds.dproj"/>
+    </Target>
+    <Target Name="ProcClouds:Clean">
+        <MSBuild Projects="proceduralclouds\ProcClouds.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProcClouds:Make">
+        <MSBuild Projects="proceduralclouds\ProcClouds.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ProcCloudsC">
+        <MSBuild Projects="proceduralclouds\ProcCloudsC.cbproj"/>
+    </Target>
+    <Target Name="ProcCloudsC:Clean">
+        <MSBuild Projects="proceduralclouds\ProcCloudsC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProcCloudsC:Make">
+        <MSBuild Projects="proceduralclouds\ProcCloudsC.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="TexAnim">
         <MSBuild Projects="texanim\TexAnim.dproj"/>
     </Target>
@@ -266,6 +293,15 @@
     <Target Name="TexCombine:Make">
         <MSBuild Projects="texcombine\TexCombine.dproj" Targets="Make"/>
     </Target>
+    <Target Name="TexFormat">
+        <MSBuild Projects="texformat\TexFormat.dproj"/>
+    </Target>
+    <Target Name="TexFormat:Clean">
+        <MSBuild Projects="texformat\TexFormat.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TexFormat:Make">
+        <MSBuild Projects="texformat\TexFormat.dproj" Targets="Make"/>
+    </Target>
     <Target Name="TexFormatC">
         <MSBuild Projects="texformat\TexFormatC.cbproj"/>
     </Target>
@@ -276,13 +312,13 @@
         <MSBuild Projects="texformat\TexFormatC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="Cubemap;CubemapC;CustomQuad;CustomQuadC;DynTexture;DynTextureC;DynCubemap;DyncubeMapC;MatScript;MatScriptC;MultiPass;MultipassC;MultiMaterial;MultiMaterialC;MultiTexture;MultiTextureC;TexAnim;TexAnimC;Transparency;TransparencyC;TexCombine;TexFormatC"/>
+        <CallTarget Targets="Cubemap;CubemapC;CustomQuad;CustomQuadC;DynTexture;DynTextureC;DynCubemap;DyncubeMapC;MatScript;MatScriptC;MultiPass;MultipassC;MultiMaterial;MultiMaterialC;MultiTexture;MultiTextureC;ProcClouds;ProcCloudsC;TexAnim;TexAnimC;Transparency;TransparencyC;TexCombine;TexFormat;TexFormatC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Cubemap:Clean;CubemapC:Clean;CustomQuad:Clean;CustomQuadC:Clean;DynTexture:Clean;DynTextureC:Clean;DynCubemap:Clean;DyncubeMapC:Clean;MatScript:Clean;MatScriptC:Clean;MultiPass:Clean;MultipassC:Clean;MultiMaterial:Clean;MultiMaterialC:Clean;MultiTexture:Clean;MultiTextureC:Clean;TexAnim:Clean;TexAnimC:Clean;Transparency:Clean;TransparencyC:Clean;TexCombine:Clean;TexFormatC:Clean"/>
+        <CallTarget Targets="Cubemap:Clean;CubemapC:Clean;CustomQuad:Clean;CustomQuadC:Clean;DynTexture:Clean;DynTextureC:Clean;DynCubemap:Clean;DyncubeMapC:Clean;MatScript:Clean;MatScriptC:Clean;MultiPass:Clean;MultipassC:Clean;MultiMaterial:Clean;MultiMaterialC:Clean;MultiTexture:Clean;MultiTextureC:Clean;ProcClouds:Clean;ProcCloudsC:Clean;TexAnim:Clean;TexAnimC:Clean;Transparency:Clean;TransparencyC:Clean;TexCombine:Clean;TexFormat:Clean;TexFormatC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Cubemap:Make;CubemapC:Make;CustomQuad:Make;CustomQuadC:Make;DynTexture:Make;DynTextureC:Make;DynCubemap:Make;DyncubeMapC:Make;MatScript:Make;MatScriptC:Make;MultiPass:Make;MultipassC:Make;MultiMaterial:Make;MultiMaterialC:Make;MultiTexture:Make;MultiTextureC:Make;TexAnim:Make;TexAnimC:Make;Transparency:Make;TransparencyC:Make;TexCombine:Make;TexFormatC:Make"/>
+        <CallTarget Targets="Cubemap:Make;CubemapC:Make;CustomQuad:Make;CustomQuadC:Make;DynTexture:Make;DynTextureC:Make;DynCubemap:Make;DyncubeMapC:Make;MatScript:Make;MatScriptC:Make;MultiPass:Make;MultipassC:Make;MultiMaterial:Make;MultiMaterialC:Make;MultiTexture:Make;MultiTextureC:Make;ProcClouds:Make;ProcCloudsC:Make;TexAnim:Make;TexAnimC:Make;Transparency:Make;TransparencyC:Make;TexCombine:Make;TexFormat:Make;TexFormatC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

@@ -15,7 +15,7 @@ program CustomQuad;
 
 uses
   Forms,
-  CustomQuadFm in 'CustomQuadFm.pas' {FormCustomQuad};
+  fCustomQuad in 'fCustomQuad.pas' {FormCustomQuad};
 
 {$R *.RES}
 

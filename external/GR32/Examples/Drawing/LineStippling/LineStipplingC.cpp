@@ -2,7 +2,7 @@
 
 #include <vcl.h>
 #pragma hdrstop
-USEFORM("fMainCC.cpp", FormLineStipplingC);
+USEFORM("fLineStipplingC.cpp", FormLineStipplingC);
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
@@ -11,7 +11,6 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
 		Application->CreateForm(__classid(TFormLineStipplingC), &FormLineStipplingC);
-///		Application->CreateForm(__classid(TFormLineStipplingC), &FormLineStipplingC);
 		Application->Run();
 	}
 	catch (Exception &exception)

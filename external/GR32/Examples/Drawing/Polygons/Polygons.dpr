@@ -4,7 +4,7 @@ program Polygons;
 
 uses
   Forms,
-  MainUnit in 'MainUnit.pas';
+  fPolygons in 'fPolygons.pas';
 
 begin
   Application.Initialize;

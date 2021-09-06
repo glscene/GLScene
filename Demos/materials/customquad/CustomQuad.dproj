@@ -116,7 +116,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="CustomQuadFm.pas">
+        <DCCReference Include="fCustomQuad.pas">
             <Form>FormCustomQuad</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">

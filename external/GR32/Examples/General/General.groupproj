@@ -1,0 +1,96 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{BC35960A-3846-4583-9634-78F6F678A761}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ByteMaps\ByteMaps.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Color Picker\ColorPicker.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Image32\Image32.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Mandelbrot\Mandelbrot.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Mandelbrot\MandelbrotC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Rotate\Rotate.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ByteMaps">
+        <MSBuild Projects="ByteMaps\ByteMaps.dproj"/>
+    </Target>
+    <Target Name="ByteMaps:Clean">
+        <MSBuild Projects="ByteMaps\ByteMaps.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ByteMaps:Make">
+        <MSBuild Projects="ByteMaps\ByteMaps.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ColorPicker">
+        <MSBuild Projects="Color Picker\ColorPicker.dproj"/>
+    </Target>
+    <Target Name="ColorPicker:Clean">
+        <MSBuild Projects="Color Picker\ColorPicker.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ColorPicker:Make">
+        <MSBuild Projects="Color Picker\ColorPicker.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Image32">
+        <MSBuild Projects="Image32\Image32.dproj"/>
+    </Target>
+    <Target Name="Image32:Clean">
+        <MSBuild Projects="Image32\Image32.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Image32:Make">
+        <MSBuild Projects="Image32\Image32.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Mandelbrot">
+        <MSBuild Projects="Mandelbrot\Mandelbrot.dproj"/>
+    </Target>
+    <Target Name="Mandelbrot:Clean">
+        <MSBuild Projects="Mandelbrot\Mandelbrot.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Mandelbrot:Make">
+        <MSBuild Projects="Mandelbrot\Mandelbrot.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MandelbrotC">
+        <MSBuild Projects="Mandelbrot\MandelbrotC.cbproj"/>
+    </Target>
+    <Target Name="MandelbrotC:Clean">
+        <MSBuild Projects="Mandelbrot\MandelbrotC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MandelbrotC:Make">
+        <MSBuild Projects="Mandelbrot\MandelbrotC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Rotate">
+        <MSBuild Projects="Rotate\Rotate.dproj"/>
+    </Target>
+    <Target Name="Rotate:Clean">
+        <MSBuild Projects="Rotate\Rotate.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Rotate:Make">
+        <MSBuild Projects="Rotate\Rotate.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ByteMaps;ColorPicker;Image32;Mandelbrot;MandelbrotC;Rotate"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ByteMaps:Clean;ColorPicker:Clean;Image32:Clean;Mandelbrot:Clean;MandelbrotC:Clean;Rotate:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ByteMaps:Make;ColorPicker:Make;Image32:Make;Mandelbrot:Make;MandelbrotC:Make;Rotate:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

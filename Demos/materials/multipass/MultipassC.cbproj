@@ -160,11 +160,6 @@
             <BuildOrder>-1</BuildOrder>
             <BuildOrder>0</BuildOrder>
         </CppCompile>
-        <ResFiles Include="MultipassC.res">
-            <ModuleName>MultipassC.res</ModuleName>
-            <BuildOrder>-1</BuildOrder>
-            <BuildOrder>1</BuildOrder>
-        </ResFiles>
         <FormResources Include="fMultipassC.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -295,12 +290,6 @@
                 <DeployFile LocalName=".\MultipassC.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
                         <RemoteName>MultipassC.tds</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="MultipassC.res" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

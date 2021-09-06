@@ -1,4 +1,4 @@
-GLScene Christmas 2015 
+GLScene Christmas 
 based on 2002 "ScreenSaver" by Eric Grange
 
 The scene is made up from a few meshes, some GLScene objects, several
@@ -13,13 +13,13 @@ the means to check... so if you have clues about any of them:
 - Music: unknown origin, was in a "royalty free" download package,
   playback via BASS (http://www.un4seen.com/music/)
 
-Customized using GLScene v.1.3 for Delphi & C++Builder 
+Customized using GLScene for Delphi & C++Builder 
 Adapted for Happy New Year with PopupMenu items. 
 Sound library BASS 2.4.10 as bass.dll included.
-Copyright (c) 1999-2014 Un4seen Developments Ltd. All rights reserved.
+Copyright (c) 1999-2022 Un4seen Developments Ltd. All rights reserved.
 Check http://www.un4seen.com/music/ for any later bass.dll
 
-Updated Christmas source available from the GLScene Sourceforge site (AdvDemos) at
+Updated Christmas source codes available from the GLScene AdvDemos at
 http://sourceforge.net/projects/glscene
 
 GLS Team

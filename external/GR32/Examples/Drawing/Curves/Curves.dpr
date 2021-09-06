@@ -4,7 +4,7 @@ program Curves;
 
 uses
   Forms,
-  MainUnit in 'MainUnit.pas';
+  fCurves in 'fCurves.pas';
 
 begin
   Application.Initialize;
