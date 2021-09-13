@@ -1,4 +1,4 @@
-unit DynCubemapFm;
+unit fDynCubemap;
 
 interface
 

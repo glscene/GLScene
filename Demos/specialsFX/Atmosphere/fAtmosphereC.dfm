@@ -62,14 +62,14 @@ object Form1: TForm1
       Height = 13
       Caption = ' = turn camera'
     end
-    object Button1: TButton
+    object btnRotate: TButton
       Left = 13
       Top = 15
       Width = 74
       Height = 25
       Caption = 'Rotate Planet'
       TabOrder = 0
-      OnClick = Button1Click
+      OnClick = btnRotateClick
     end
     object Button4: TButton
       Left = 13

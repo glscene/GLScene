@@ -29,7 +29,7 @@ program Fire2D_GR32;
 
 uses
   Forms,
-  Fire2D_GR32Fm in 'Fire2D_GR32Fm.pas' {FormFire2d_GR32};
+  fFire2D_GR32 in 'fFire2D_GR32.pas' {FormFire2d_GR32};
 
 {$R *.RES}
 

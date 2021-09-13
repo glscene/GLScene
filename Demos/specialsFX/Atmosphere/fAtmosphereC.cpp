@@ -42,7 +42,7 @@ void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
   Atmosphere->Free();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Button1Click(TObject *Sender)
+void __fastcall TForm1::btnRotateClick(TObject *Sender)
 {
   GLSphere1->Roll(20);
 }

@@ -516,10 +516,12 @@
 
 {$IFNDEF COMPILER6_UP}
 {$IFNDEF COMPILERFPC}
+{
 +--------------------------------------------------------------------+
 |  Graphics32 may only be installed with Delphi/BCB 6 (or higher)    |
 |   or Free Pascal / Lazarus                                         |
 +--------------------------------------------------------------------+
+}
 {$ENDIF}
 {$ENDIF}
 

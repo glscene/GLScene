@@ -917,7 +917,7 @@ var
   tempWnd: HWND;
   shareRC: TGLWindowsContext;
   pfDescriptor: TPixelFormatDescriptor;
-  bOES: Boolean;
+  bOES: Boolean;  // for logger
 begin
   localHPBuffer := 0;
   localDC := 0;

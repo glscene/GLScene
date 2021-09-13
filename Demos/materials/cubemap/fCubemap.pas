@@ -1,7 +1,5 @@
 unit fCubemap;
-
 interface
-
 uses
   System.SysUtils,
   System.Classes,
@@ -11,7 +9,6 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
   Vcl.StdCtrls,
-
   GLS.Scene,
   GLS.SceneViewer,
   GLS.Objects,
@@ -21,7 +18,6 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.GeomObjects;
-
 type
   TFormCubeMap = class(TForm)
     GLScene1: TGLScene;
@@ -45,14 +41,10 @@ type
   public
     mx, my: Integer;
   end;
-
 var
   FormCubeMap: TFormCubeMap;
-
 implementation
-
 {$R *.dfm}
-
 procedure TFormCubeMap.FormCreate(Sender: TObject);
 begin
   // Our cube map images are here
@@ -66,7 +58,6 @@ begin
   CubmapSupported := GL.ARB_texture_cube_map;
   GLSceneViewer1.BeforeRender := nil;
 end;
-
 procedure TFormCubeMap.ButtonApplyClick(Sender: TObject);
 begin
   // Cube map warning message
@@ -104,16 +95,13 @@ begin
   end;
   ButtonApply.Visible := False;
 end;
-
 // standard issue handlers for mouse movement
-
 procedure TFormCubeMap.GLSceneViewer1MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
   mx := x;
   my := y;
 end;
-
 procedure TFormCubeMap.GLSceneViewer1MouseMove(Sender: TObject;
   Shift: TShiftState; X, Y: Integer);
 begin
@@ -127,6 +115,4 @@ begin
     my := y;
   end;
 end;
-
 end.
-

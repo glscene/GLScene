@@ -55,8 +55,7 @@ contains
   FmInfo in '..\Source\FmInfo.pas' {GLInfoForm},
   GLS.SceneRegister in '..\Source\GLS.SceneRegister.pas',
   GLS.XCollectionRegister in '..\Source\GLS.XCollectionRegister.pas',
-  FmMaterialEditor in '..\Source\FmMaterialEditor.pas',
-  FRTrackBarEdit in '..\Source\FRTrackBarEdit.pas' {RTrackBarEdit: TFrame};
+  FmMaterialEditor in '..\Source\FmMaterialEditor.pas';
 
 end.
 

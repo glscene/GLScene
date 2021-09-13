@@ -22,7 +22,7 @@ program DynCubemap;
 
 uses
   Forms,
-  DynCubemapFm in 'DynCubemapFm.pas' {FormDynCubeMap};
+  fDynCubemap in 'fDynCubemap.pas' {FormDynCubeMap};
 
 {$R *.res}
 

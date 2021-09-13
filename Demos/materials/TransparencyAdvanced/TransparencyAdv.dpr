@@ -2,7 +2,7 @@ program TransparencyAdv;
 
 uses
   Forms,
-  TransparencyAdvFm in 'TransparencyAdvFm.pas' {Form1};
+  fTransparencyAdv in 'fTransparencyAdv.pas' {Form1};
 
 {$R *.res}
 

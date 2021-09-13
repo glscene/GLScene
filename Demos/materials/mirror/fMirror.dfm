@@ -11,7 +11,6 @@ object FormMirror: TFormMirror
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
   OnResize = FormResize

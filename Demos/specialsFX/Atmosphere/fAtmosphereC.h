@@ -37,7 +37,7 @@ __published:	// IDE-managed Components
 	TLabel *Label2;
 	TLabel *Label3;
 	TLabel *Label4;
-	TButton *Button1;
+	TButton *btnRotate;
 	TButton *Button4;
 	TButton *Button5;
 	TButton *Button2;
@@ -60,7 +60,7 @@ __published:	// IDE-managed Components
 	TButton *Button6;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall btnRotateClick(TObject *Sender);
 	void __fastcall Button2Click(TObject *Sender);
 	void __fastcall Button3Click(TObject *Sender);
 	void __fastcall Button4Click(TObject *Sender);
