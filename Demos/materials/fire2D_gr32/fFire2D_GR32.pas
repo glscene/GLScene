@@ -1,4 +1,4 @@
-unit Fire2D_GR32Fm;
+unit fFire2D_GR32;
 
 interface
 

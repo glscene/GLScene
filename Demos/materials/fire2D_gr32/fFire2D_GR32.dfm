@@ -17,7 +17,6 @@ object FormFire2d_GR32: TFormFire2d_GR32
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
   OnDestroy = FormDestroy
