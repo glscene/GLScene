@@ -55,7 +55,8 @@ contains
   FmInfo in '..\Source\FmInfo.pas' {GLInfoForm},
   GLS.SceneRegister in '..\Source\GLS.SceneRegister.pas',
   GLS.XCollectionRegister in '..\Source\GLS.XCollectionRegister.pas',
-  FmMaterialEditor in '..\Source\FmMaterialEditor.pas';
+  FmMaterialEditor in '..\Source\FmMaterialEditor.pas',
+  FmLibMaterialPicker in '..\Source\FmLibMaterialPicker.pas' {GLLibMaterialPickerForm};
 
 end.
 

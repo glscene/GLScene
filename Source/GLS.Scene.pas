@@ -56,7 +56,7 @@ type
 const
   cDefaultProxyOptions = [pooEffects, pooObjects, pooTransformation];
   GLSCENE_REVISION = '$Revision: 2021$';
-  GLSCENE_VERSION = 'v11 %s';
+  GLSCENE_VERSION = 'v2.1 %s';
 
 type
 
@@ -7285,7 +7285,7 @@ begin
   with RenderingContext.GLStates do
   begin
     PrepareRenderingMatrices(aViewPort, resolution);
-{    if not ForwardContext then}
+    (* if not ForwardContext then *)
     begin
       xgl.MapTexCoordToNull; // force XGL rebind
       xgl.MapTexCoordToMain;
@@ -7303,7 +7303,7 @@ begin
       with FCamera.FScene do
       begin
         SetupLights(MaxLights);
-{        if not ForwardContext then}
+        (* if not ForwardContext then *)
         begin
           if FogEnable then
           begin
@@ -7801,7 +7801,7 @@ end;
 
 procedure TGLNonVisualViewer.SetupCubeMapCamera(Sender: TObject);
 
-{
+(*
 const
   cFaceMat: array[0..5] of TGLMatrix =
   (
@@ -7830,7 +7830,7 @@ const
      Z:(X:-1.2167964414e-08; Y:0; Z:1; W:0);
      W:(X:0; Y:0; Z:0; W:1))
   );
-}
+*)
 
 var
   TM: TGLMatrix;
@@ -7840,7 +7840,7 @@ begin
   begin
     SetProjectionMatrix(CreatePerspectiveMatrix(90, 1, FCubeMapZNear, FCubeMapZFar));
     TM := CreateTranslationMatrix(FCubeMapTranslation);
- {   SetViewMatrix(MatrixMultiply(cFaceMat[FCubeMapRotIdx], TM));}
+  (* SetViewMatrix(MatrixMultiply(cFaceMat[FCubeMapRotIdx], TM)); *)
   end;
 end;
 

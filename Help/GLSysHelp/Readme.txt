@@ -1,10 +1,10 @@
-Создание системной справки с ипользованием скрипта PasDoc
+The directory for PasDoc scripts
 ------------------------------------------------------------
-Для создания файла справки GLSysHelp.chm выполните следующие шаги -
-1.Загрузите программу PasDoc с сайта http://pasdoc.sourceforge.net/.
-2.Запустите pasdoc_gui и откройте скрипт GLSysHelp.pds в этой же директории 
-3.Сгенерируйте HTML файлы системной справки GLScene, щелкнув по кнопке Generate
-4.Загрузите HTML Help Workshop 1.3 с сайта Microsoft и установите её.
-5.Запустите программу hhw.exe в директории C:\Program Files (x86)\HTML Help Workshop\
-6.Откройте проект GLSysHelp.hhp в папке ..\ru\GLSysHelp\HTML\ и скомпилируйте его
-7.Там будет создан GLSysHelp.chm. Очистите папку, используя _CleanHTML.bat
+To generate GLSysHelp.chm you need to follow the next steps:
+1.Download PasDoc program from http://pasdoc.sourceforge.net/ and setup it.
+2.Run the pasdoc_gui program and Open GLSysHelp.pds script 
+3.Click on Generate button and create GLScene's system help files in HTML folder
+4.Download HTML Help Workshop 1.3 software from Microsoft site and setup it.
+5.Run the hhw.exe program from C:\Program Files (x86)\HTML Help Workshop\
+6.Open GLSysHelp.hhp project in ..\en\GLSysHelp\HTML\ folder and compile it.
+7.Clean HTML folder using _CleanHTML.bat and find there GLSysHelp.chm

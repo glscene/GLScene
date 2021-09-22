@@ -11,7 +11,6 @@ object GLLibMaterialPickerForm: TGLLibMaterialPickerForm
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -57,63 +56,100 @@ object GLLibMaterialPickerForm: TGLLibMaterialPickerForm
     NumGlyphs = 2
     TabOrder = 1
   end
-  inline MPPreview: TRMaterialPreview
-    Left = 157
-    Top = 25
-    Width = 202
-    Height = 222
-    AutoSize = True
+  object GLSceneViewer: TGLSceneViewer
+    Left = 151
+    Top = 54
+    Width = 210
+    Height = 191
+    Camera = Camera
+    FieldOfView = 71.620002746582030000
+    PenAsTouch = False
     TabOrder = 3
-    ExplicitLeft = 157
-    ExplicitTop = 25
-    ExplicitHeight = 222
-    inherited GLSceneViewer: TGLSceneViewer
-      Top = 19
-      ExplicitTop = 19
+  end
+  object cbObject: TComboBox
+    Left = 151
+    Top = 27
+    Width = 90
+    Height = 21
+    ParentShowHint = False
+    ShowHint = False
+    TabOrder = 4
+    Items.Strings = (
+      'Cube'
+      'Sphere'
+      'Cone'
+      'Teapot')
+  end
+  object ComboBox1: TComboBox
+    Left = 247
+    Top = 27
+    Width = 113
+    Height = 21
+    TabOrder = 5
+    Items.Strings = (
+      'on a pattern background'
+      'on a white background'
+      'on a black background'
+      'on a blue background'
+      'on a red background'
+      'on a green background')
+  end
+  object GLScene: TGLScene
+    ObjectsSorting = osNone
+    Left = 56
+    Top = 48
+    object BackgroundSprite: TGLSprite
+      Width = 1.000000000000000000
+      Height = 1.000000000000000000
+      Rotation = 0.000000000000000000
     end
-    inherited GLScene: TGLScene
-      inherited World: TGLDummyCube
-        inherited Cube: TGLCube
-          Material.MaterialLibrary = nil
-          Material.LibMaterialName = ''
-          Direction.Coordinates = {FCFAF0B1D8B35D3FFEFFFF3E00000000}
-          Up.Coordinates = {D7B35DBFFFFF7F3ED7B3DDBE00000000}
-        end
-        inherited Sphere: TGLSphere
-          Material.MaterialLibrary = nil
-          Material.LibMaterialName = ''
-        end
-        inherited Cone: TGLCone
-          Material.MaterialLibrary = nil
-          Material.LibMaterialName = ''
-        end
-        inherited Teapot: TGLTeapot
-          Material.MaterialLibrary = nil
-          Material.LibMaterialName = ''
-          Scale.Coordinates = {00000040000000400000004000000000}
-        end
+    object World: TGLDummyCube
+      CubeSize = 1.000000000000000000
+      object Cube: TGLCube
+        Material.MaterialLibrary = GLMaterialLibrary
+        Material.LibMaterialName = 'LibMaterial'
       end
-      inherited Light: TGLDummyCube
-        Position.Coordinates = {0000000000004040000020410000803F}
-        inherited LightSource: TGLLightSource
-          Position.Coordinates = {0000000000004040000020410000803F}
-          Specular.Color = {0000803F0000803F0000803F0000803F}
-        end
-        inherited FireSphere: TGLSphere
-          Material.FrontProperties.Ambient.Color = {A3A2223FCDCC4C3ECDCC4C3E0000803F}
-          Material.FrontProperties.Emission.Color = {D3D2523FA1A0203F000000000000803F}
-        end
+      object Sphere: TGLSphere
+        Material.MaterialLibrary = GLMaterialLibrary
+        Material.LibMaterialName = 'LibMaterial'
+        Radius = 0.500000000000000000
       end
-      inherited Camera: TGLCamera
-        Position.Coordinates = {0000000000000000000020410000803F}
+      object Cone: TGLCone
+        Material.MaterialLibrary = GLMaterialLibrary
+        Material.LibMaterialName = 'LibMaterial'
+        BottomRadius = 0.500000000000000000
+        Height = 1.000000000000000000
+      end
+      object Teapot: TGLTeapot
+        Material.MaterialLibrary = GLMaterialLibrary
+        Material.LibMaterialName = 'LibMaterial'
       end
     end
-    inherited GLMaterialLibrary: TGLMaterialLibrary
-      Materials = <
-        item
-          Name = 'LibMaterial1'
-          Tag = 0
-        end>
+    object Light: TGLDummyCube
+      CubeSize = 1.000000000000000000
+      object LightSource: TGLLightSource
+        ConstAttenuation = 1.000000000000000000
+        Position.Coordinates = {000040400000A040000020410000803F}
+        SpotCutOff = 180.000000000000000000
+      end
+      object FireSphere: TGLSphere
+        Radius = 0.300000011920929000
+      end
     end
+    object Camera: TGLCamera
+      DepthOfView = 100.000000000000000000
+      FocalLength = 132.365310668945300000
+      TargetObject = Cube
+      Position.Coordinates = {000000400000A040000020410000803F}
+    end
+  end
+  object GLMaterialLibrary: TGLMaterialLibrary
+    Materials = <
+      item
+        Name = 'LibMaterial'
+        Tag = 0
+      end>
+    Left = 56
+    Top = 128
   end
 end

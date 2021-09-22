@@ -184,7 +184,7 @@ type
     procedure RequiresUnits(Proc: TGetStrProc); override;
   end;
 
-  // Editor for GLScene Archive Manager.  
+  // Editor for Archive Manager
   TGLSArchiveManagerEditor = class(TGLReuseableDefaultEditor, IDefaultEditor)
   protected
     procedure EditProperty(const Prop: IProperty; var Continue: Boolean); override;
@@ -277,7 +277,7 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  FLibMaterialPicker,
+  FmLibMaterialPicker,
   FmGUILayoutEditor,
   FmMaterialEditor,
   FmShaderMemo,

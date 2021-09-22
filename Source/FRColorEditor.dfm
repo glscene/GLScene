@@ -7,6 +7,7 @@ object RColorEditor: TRColorEditor
   TabOrder = 0
   TabStop = True
   OnResize = FrameResize
+  PixelsPerInch = 96
   object Label1: TLabel
     Left = 0
     Top = 2

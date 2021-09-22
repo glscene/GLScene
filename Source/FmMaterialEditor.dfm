@@ -11,7 +11,6 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   ShowHint = True
   PixelsPerInch = 96
   TextHeight = 13
@@ -43,12 +42,14 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
         Left = 0
         Top = 0
         Width = 305
-        Height = 186
+        Height = 180
         AutoSize = True
         TabOrder = 0
         inherited Label1: TLabel
           Width = 45
+          Height = 13
           ExplicitWidth = 45
+          ExplicitHeight = 13
         end
         inherited PageControl: TPageControl
           inherited TSAmbient: TTabSheet
@@ -59,10 +60,18 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
             ExplicitTop = 24
             ExplicitHeight = 102
           end
+          inherited TSEmission: TTabSheet
+            ExplicitTop = 25
+            ExplicitHeight = 101
+          end
           inherited TSSpecular: TTabSheet
             ExplicitTop = 24
             ExplicitHeight = 102
           end
+        end
+        inherited Edit: TEdit
+          Height = 21
+          ExplicitHeight = 21
         end
         inherited ImageList: TImageList
           Top = 0
@@ -76,12 +85,14 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
         Left = 0
         Top = 0
         Width = 305
-        Height = 186
+        Height = 180
         AutoSize = True
         TabOrder = 0
         inherited Label1: TLabel
           Width = 45
+          Height = 13
           ExplicitWidth = 45
+          ExplicitHeight = 13
         end
         inherited PageControl: TPageControl
           inherited TSAmbient: TTabSheet
@@ -92,10 +103,18 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
             ExplicitTop = 24
             ExplicitHeight = 102
           end
+          inherited TSEmission: TTabSheet
+            ExplicitTop = 25
+            ExplicitHeight = 101
+          end
           inherited TSSpecular: TTabSheet
             ExplicitTop = 24
             ExplicitHeight = 102
           end
+        end
+        inherited Edit: TEdit
+          Height = 21
+          ExplicitHeight = 21
         end
       end
     end
@@ -118,7 +137,9 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
           186)
         inherited Label2: TLabel
           Width = 29
+          Height = 13
           ExplicitWidth = 29
+          ExplicitHeight = 13
         end
         inherited SBEditImage: TSpeedButton
           Left = 287
@@ -126,31 +147,69 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
         end
         inherited Label3: TLabel
           Width = 43
+          Height = 13
           ExplicitWidth = 43
+          ExplicitHeight = 13
         end
         inherited Label4: TLabel
           Width = 39
+          Height = 13
           ExplicitWidth = 39
+          ExplicitHeight = 13
         end
         inherited Label1: TLabel
           Width = 66
+          Height = 13
           ExplicitWidth = 66
+          ExplicitHeight = 13
         end
         inherited Label5: TLabel
           Width = 65
+          Height = 13
           ExplicitWidth = 65
+          ExplicitHeight = 13
         end
         inherited Label6: TLabel
           Width = 56
+          Height = 13
           ExplicitWidth = 56
+          ExplicitHeight = 13
         end
         inherited Label7: TLabel
           Width = 71
+          Height = 13
           ExplicitWidth = 71
+          ExplicitHeight = 13
+        end
+        inherited CBMagFilter: TComboBox
+          Height = 21
+          ExplicitHeight = 21
+        end
+        inherited CBMinFilter: TComboBox
+          Height = 21
+          ExplicitHeight = 21
+        end
+        inherited CBTextureMode: TComboBox
+          Height = 21
+          ExplicitHeight = 21
+        end
+        inherited CBTextureWrap: TComboBox
+          Height = 21
+          ExplicitHeight = 21
         end
         inherited CBImageClass: TComboBox
           Width = 213
+          Height = 21
           ExplicitWidth = 213
+          ExplicitHeight = 21
+        end
+        inherited CBImageAlpha: TComboBox
+          Height = 21
+          ExplicitHeight = 21
+        end
+        inherited CBFilteringQuality: TComboBox
+          Height = 21
+          ExplicitHeight = 21
         end
       end
     end
@@ -166,11 +225,19 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
       Left = 16
       Top = 22
       Width = 202
-      Height = 229
+      Height = 230
       AutoSize = True
       TabOrder = 0
       ExplicitLeft = 16
       ExplicitTop = 22
+      inherited CBObject: TComboBox
+        Height = 21
+        ExplicitHeight = 21
+      end
+      inherited CBBackground: TComboBox
+        Height = 21
+        ExplicitHeight = 21
+      end
       inherited GLScene: TGLScene
         inherited World: TGLDummyCube
           inherited Cube: TGLCube

@@ -5,11 +5,12 @@ object RMaterialPreview: TRMaterialPreview
   Height = 230
   AutoSize = True
   TabOrder = 0
+  PixelsPerInch = 96
   object CBObject: TComboBox
     Left = 0
     Top = 0
     Width = 60
-    Height = 21
+    Height = 28
     Style = csDropDownList
     TabOrder = 0
     OnChange = CBObjectChange
@@ -23,7 +24,7 @@ object RMaterialPreview: TRMaterialPreview
     Left = 60
     Top = 0
     Width = 142
-    Height = 21
+    Height = 28
     Style = csDropDownList
     TabOrder = 1
     OnChange = CBBackgroundChange

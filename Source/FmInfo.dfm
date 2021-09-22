@@ -14,16 +14,15 @@ object GLInfoForm: TGLInfoForm
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
-  OldCreateOrder = True
   Position = poScreenCenter
   ShowHint = True
   OnClose = FormClose
   OnKeyPress = FormKeyPress
   OnShow = FormShow
+  PixelsPerInch = 96
   DesignSize = (
     460
     376)
-  PixelsPerInch = 96
   TextHeight = 13
   object PageControl: TPageControl
     Left = 0
@@ -3540,8 +3539,6 @@ object GLInfoForm: TGLInfoForm
         ReadOnly = True
         ScrollBars = ssVertical
         TabOrder = 0
-        ExplicitLeft = -16
-        ExplicitTop = 64
       end
     end
     object TabSheetAbout: TTabSheet

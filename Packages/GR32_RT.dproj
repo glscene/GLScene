@@ -156,8 +156,11 @@
         <DCCReference Include="..\Source\GR32_VectorMaps.pas"/>
         <DCCReference Include="..\Source\GR32_VectorUtils.pas"/>
         <DCCReference Include="..\Source\GR32_VPR.pas"/>
-        <DCCReference Include="..\Source\GR32_Text_VCL.pas"/>
-        <DCCReference Include="..\Source\GR32_XPThemes.pas"/>
+        <DCCReference Include="..\Source\GR32_Text_VCL.pas">
+            <Form>*,
+  GR32_XPThemes in &apos;..\Source\GR32_XPThemes.pas&apos;
+  *</Form>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

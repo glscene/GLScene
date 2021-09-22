@@ -1,16 +1,21 @@
 [OPTIONS]
+Auto Index=Yes
+Auto TOC=9
+Binary TOC=Yes
 Compatibility=1.1 or later
 Compiled file=GLSGuide.chm
 Contents file=GLSGuide.hhc
-Default topic=HTML\Installation.htm
+Default topic=Installation\Installation.htm
 Display compile progress=No
+Full-text search=Yes
 Index file=GLSGuide.hhk
-Language=0x419 Русский (Россия)
+Language=0x409 Английский (США)
+Title=GLScene Guide
 
 
 [FILES]
-Introduction\Introduction.htm
 Installation\Installation.htm
+Introduction\Introduction.htm
 Introduction\Welcome.htm
 
 [MAP]
@@ -18,6 +23,7 @@ Introduction\Welcome.htm
 
 [TEXT POPUPS]
 ..\..\#IDH\Idh_Popup.h
+..\..\#IDH\IdhFiles.txt
 
 [INFOTYPES]
 

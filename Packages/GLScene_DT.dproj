@@ -160,6 +160,10 @@
         <DCCReference Include="..\Source\GLS.SceneRegister.pas"/>
         <DCCReference Include="..\Source\GLS.XCollectionRegister.pas"/>
         <DCCReference Include="..\Source\FmMaterialEditor.pas"/>
+        <DCCReference Include="..\Source\FmLibMaterialPicker.pas">
+            <Form>GLLibMaterialPickerForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <RcCompile Include="..\Resources\GLScene.rc">
             <Form>GLScene.res</Form>
         </RcCompile>
@@ -198,7 +202,7 @@
                 <Platform value="Win64">False</Platform>
             </Platforms>
             <Deployment Version="3">
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\GLScene_DT.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GLScene_DT.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>GLScene_DT.bpl</RemoteName>
                         <Overwrite>true</Overwrite>

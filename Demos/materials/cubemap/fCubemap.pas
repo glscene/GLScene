@@ -62,7 +62,7 @@ procedure TFormCubeMap.ButtonApplyClick(Sender: TObject);
 begin
   // Cube map warning message
   // If you don't check and turn off cube maps yourself in your apps when
-  // cube maps aren't supported, GLScene will just turn off texturing
+  // cube maps aren't supported and will just turn off texturing
   // (ie. no error generated, just a different output)
   if not CubmapSupported then
   begin

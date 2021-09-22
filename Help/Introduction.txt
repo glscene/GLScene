@@ -1,5 +1,5 @@
 GLScene for Win32/Win64
-Embarcadero Rad Studio
+Embarcadero Rad Studio 11.0
 
 -------------------------------------------------------
 

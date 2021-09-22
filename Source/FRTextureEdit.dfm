@@ -6,14 +6,15 @@ object RTextureEdit: TRTextureEdit
   ParentShowHint = False
   ShowHint = True
   TabOrder = 0
+  PixelsPerInch = 96
   DesignSize = (
     230
     187)
   object Label2: TLabel
     Left = 0
     Top = 1
-    Width = 30
-    Height = 13
+    Width = 42
+    Height = 20
     Caption = 'Image'
   end
   object SBEditImage: TSpeedButton
@@ -29,43 +30,43 @@ object RTextureEdit: TRTextureEdit
   object Label3: TLabel
     Left = 0
     Top = 52
-    Width = 44
-    Height = 13
+    Width = 63
+    Height = 20
     Caption = 'MagFilter'
   end
   object Label4: TLabel
     Left = 0
     Top = 76
-    Width = 40
-    Height = 13
+    Width = 58
+    Height = 20
     Caption = 'MinFilter'
   end
   object Label1: TLabel
     Left = 0
     Top = 124
-    Width = 67
-    Height = 13
+    Width = 91
+    Height = 20
     Caption = 'Texture Mode'
   end
   object Label5: TLabel
     Left = 0
     Top = 148
-    Width = 67
-    Height = 13
+    Width = 88
+    Height = 20
     Caption = 'Texture Wrap'
   end
   object Label6: TLabel
     Left = 0
     Top = 28
-    Width = 57
-    Height = 13
+    Width = 81
+    Height = 20
     Caption = 'ImageAlpha'
   end
   object Label7: TLabel
     Left = 0
     Top = 100
-    Width = 75
-    Height = 13
+    Width = 105
+    Height = 20
     Caption = 'Filtering Quality'
   end
   object CBMagFilter: TComboBox

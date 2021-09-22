@@ -11,7 +11,6 @@ object FormFire: TFormFire
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   OnMouseWheel = FormMouseWheel
   PixelsPerInch = 96
   TextHeight = 13

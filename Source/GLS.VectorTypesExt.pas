@@ -13,6 +13,7 @@ interface
 
 uses
   System.Types,
+  System.TypInfo,
   System.SysUtils,
   System.Rtti,
   System.Math,
@@ -1382,4 +1383,5 @@ begin
 end;
 
 
-end.
+end.
+

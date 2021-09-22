@@ -66,7 +66,7 @@
         <IncludePath>D:\GLScene\Samples\CPP\Demos\materials\cubemap\;$(IncludePath)</IncludePath>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
-        <AllPackageLibs>rtl.lib;vcl.lib;GLScene_RT.lib;fmx.lib;xmlrtl.lib;vclimg.lib;GR32_RT.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;GLScene_RT.lib;fmx.lib;xmlrtl.lib;vclimg.lib</AllPackageLibs>
         <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
         <DynamicRTL>true</DynamicRTL>
         <UsePackages>true</UsePackages>
@@ -125,7 +125,6 @@
         <ILINK_LibraryPath>$(BDSCOMMONDIR)\Dcp;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <Defines>_DEBUG;$(Defines)</Defines>
         <LinkPackageImports>rtl.bpi;vcl.bpi;GLScene_RT.bpi;fmx.bpi;xmlrtl.bpi;vclimg.bpi</LinkPackageImports>
-        <LinkPackageStatics>GR32_RT.lib</LinkPackageStatics>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>

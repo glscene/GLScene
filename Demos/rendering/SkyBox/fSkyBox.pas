@@ -57,11 +57,11 @@ type
     GLSphere2: TGLSphere;
     GLSimpleNavigation1: TGLSimpleNavigation;
     procedure FormCreate(Sender: TObject);
-    procedure GLCadencer1Progress(Sender: TObject; const deltaTime,
-      newTime: Double);
+    procedure GLCadencer1Progress(Sender: TObject;
+      const deltaTime, newTime: Double);
   private
-    procedure HandleKeys(d: double);
-    function LoadTexture(Matname,Filename : string) : TGLLibMaterial;
+    procedure HandleKeys(d: Double);
+    function LoadTexture(Matname, Filename: string): TGLLibMaterial;
   public
   end;
 
@@ -72,7 +72,7 @@ implementation
 
 {$R *.dfm}
 
-function TFormSkyBox.LoadTexture(Matname,Filename : string) : TGLLibMaterial;
+function TFormSkyBox.LoadTexture(Matname, Filename: string): TGLLibMaterial;
 begin
   Result := GLMaterialLibraryCM.AddTextureMaterial(Matname, Filename);
   Result.Material.Texture.Disabled := False;
@@ -137,42 +137,42 @@ begin
   GLSphere1.Material.LibMaterialName := 'Moon';
   GLSphere2.Material.LibMaterialName := 'Moon';
 
-  GLUserInterface1.MouseLookActive := true;
+  //GLUserInterface1.MouseLookActive := true;
 end;
 
-procedure TFormSkyBox.GLCadencer1Progress(Sender: TObject; const deltaTime,
-  newTime: Double);
+procedure TFormSkyBox.GLCadencer1Progress(Sender: TObject;
+  const deltaTime, newTime: Double);
 begin
-   // Make clouds Texture slide
-   with GLMaterialLibraryCM.Materials.GetLibMaterialByName('Clouds') do
-   begin
-        TextureOffset.X := TextureOffset.X + deltaTime * 0.02;
-        TextureOffset.Y := TextureOffset.Y + deltaTime * 0.03;
-   end;
+  // Make clouds Texture slide
+  with GLMaterialLibraryCM.Materials.GetLibMaterialByName('Clouds') do
+  begin
+    TextureOffset.X := TextureOffset.X + deltaTime * 0.02;
+    TextureOffset.y := TextureOffset.y + deltaTime * 0.03;
+  end;
 
+  // Rotate moons
+  GLSphere1.Turn(deltaTime * 7);
+  GLSphere2.Turn(deltaTime * 10);
 
-   // Rotate moons
-   GLSphere1.Turn(deltaTime * 7);
-   GLSphere2.Turn(deltaTime * 10);
-
-   HandleKeys(deltaTime);
-   GLUserInterface1.Mouselook;
-   GLUserInterface1.MouseUpdate;
-   GLSceneViewer1.Invalidate;
+  HandleKeys(deltaTime);
+  GLUserInterface1.Mouselook;
+  GLUserInterface1.MouseUpdate;
+  GLSceneViewer1.Invalidate;
 end;
 
-procedure TFormSkyBox.HandleKeys(d: double);
+procedure TFormSkyBox.HandleKeys(d: Double);
 begin
-    if IsKeyDown('W') or IsKeyDown('Z') then
-         GLCamera1.Move(d);
-    if IsKeyDown('S') then
-         GLCamera1.Move(-d);
-    if IsKeyDown('A') or IsKeyDown('A') then
-         GLCamera1.Slide(-d);
-    if IsKeyDown('D') then
-         GLCamera1.Slide(d);
+  if IsKeyDown('W') or IsKeyDown('Z') then
+    GLCamera1.Move(d);
+  if IsKeyDown('S') then
+    GLCamera1.Move(-d);
+  if IsKeyDown('A') or IsKeyDown('A') then
+    GLCamera1.Slide(-d);
+  if IsKeyDown('D') then
+    GLCamera1.Slide(d);
 
-    if IsKeyDown(VK_ESCAPE) then Close;
+  if IsKeyDown(VK_ESCAPE) then
+    Close;
 end;
 
 end.

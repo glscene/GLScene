@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit FLibMaterialPicker;
 
 (* Allows choosing a material in a material library *)
@@ -16,18 +15,37 @@ uses
   VCL.StdCtrls,
   VCL.Buttons,
   VCL.Controls,
+
+  GLS.Scene,
+  GLS.Objects,
+  GLS.GeomObjects,
+  GLS.HudObjects,
   GLS.SceneViewer,
   GLS.Material,
-  FRMaterialPreview;
+  GLS.BaseClasses, GLS.Coordinates;
 
 type
   TGLLibMaterialPickerForm = class(TForm)
+    GLScene: TGLScene;
     LBMaterials: TListBox;
     Label1: TLabel;
     Label2: TLabel;
     BBOk: TBitBtn;
     BBCancel: TBitBtn;
-    MPPreview: TRMaterialPreview;
+    GLMaterialLibrary: TGLMaterialLibrary;
+    GLSceneViewer: TGLSceneViewer;
+    Camera: TGLCamera;
+    BackgroundSprite: TGLSprite;
+    World: TGLDummyCube;
+    Light: TGLDummyCube;
+    Cube: TGLCube;
+    Cone: TGLCone;
+    Sphere: TGLSphere;
+    Teapot: TGLTeapot;
+    cbObject: TComboBox;
+    LightSource: TGLLightSource;
+    FireSphere: TGLSphere;
+    ComboBox1: TComboBox;
     procedure LBMaterialsClick(Sender: TObject);
     procedure LBMaterialsKeyPress(Sender: TObject; var Key: Char);
     procedure LBMaterialsDblClick(Sender: TObject);
@@ -45,6 +63,10 @@ implementation
 //-------------------------------------------------
 
 {$R *.dfm}
+
+var
+  MX, MY: Integer;
+
 
 var
   vGLLibMaterialPickerForm: TGLLibMaterialPickerForm;
@@ -93,7 +115,7 @@ procedure TGLLibMaterialPickerForm.LBMaterialsClick(Sender: TObject);
 begin
   with LBMaterials do
     if ItemIndex >= 0 then
-      MPPreview.LibMaterial := TGLAbstractLibMaterial(Items.Objects[ItemIndex]);
+      {MPPreview.}LibMaterial := TGLAbstractLibMaterial(Items.Objects[ItemIndex]);
 end;
 
 procedure TGLLibMaterialPickerForm.LBMaterialsKeyPress(Sender: TObject;

@@ -5,11 +5,12 @@ object RFaceEditor: TRFaceEditor
   Height = 180
   AutoSize = True
   TabOrder = 0
+  PixelsPerInch = 96
   object Label1: TLabel
     Left = 0
     Top = 0
-    Width = 44
-    Height = 13
+    Width = 60
+    Height = 20
     Caption = 'Shininess'
   end
   object PageControl: TPageControl

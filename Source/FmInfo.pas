@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit FmInfo;
 
 (* Informations on OpenGL driver and contributions *)
@@ -122,7 +121,6 @@ type
     procedure MIDelphi3DClick(Sender: TObject);
     procedure WebsiteLblClick(Sender: TObject);
   protected
-    procedure LoadContributors;
     function GetSceneVersion: string;
   public
     procedure GetInfoFrom(aSceneBuffer: TGLSceneBuffer);
@@ -377,26 +375,6 @@ end;
 procedure TGLInfoForm.ListBoxExtensionsKeyPress(Sender: TObject; var Key: Char);
 begin
   ListBoxExtensionsClick(Sender);
-end;
-
-// -------------------------------------------------------------------
-
-procedure TGLInfoForm.LoadContributors;
- var
-   ContributorsFileName: string;
-   ContrPath: TFileName;
-begin
-(*
-   ContrPath := ExtractFilePath(ParamStr(0));
-   ContributorsFileName := ContrPath + '\Contributors.txt';
-
-   if FileExists(ContributorsFileName)
-    then
-      MemoContributors.Lines.LoadFromFile(ContributorsFileName)
-    else
-      MemoContributors.Lines.Text := 'Cannot find contributors list.';
-    MemoContributors.Lines.Add(ContributorsFileName);
-*)
 end;
 
 // -------------------------------------------------------------------
