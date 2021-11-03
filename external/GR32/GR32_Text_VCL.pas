@@ -153,11 +153,13 @@ begin
   while Res > 0 do
   begin
     S := BufferPtr.cb - SizeOf(TTTPolygonHeader);
-    {$IFDEF HAS_NATIVEINT}
+//    {$IFDEF HAS_NATIVEINT}
     NativeInt(CurvePtr) := NativeInt(BufferPtr) + SizeOf(TTTPolygonHeader);
+(*
     {$ELSE}
     Integer(CurvePtr) := Integer(BufferPtr) + SizeOf(TTTPolygonHeader);
     {$ENDIF}
+*)
     P1 := PointFXtoPointF(BufferPtr.pfxStart);
     Path.MoveTo(P1.X + DstX, P1.Y + DstY);
     while S > 0 do
@@ -202,21 +204,25 @@ begin
       K := (CurvePtr.cpfx - 1) * SizeOf(TPointFX) + SizeOf(TTPolyCurve);
       Dec(S, K);
 
-      {$IFDEF HAS_NATIVEINT}
+//      {$IFDEF HAS_NATIVEINT}
       Inc(NativeInt(CurvePtr), K);
+(*
       {$ELSE}
       Inc(Integer(CurvePtr), K);
       {$ENDIF}
+*)
     end;
 
     Path.EndPath(True);
 
     Dec(Res, BufferPtr.cb);
-    {$IFDEF HAS_NATIVEINT}
+//    {$IFDEF HAS_NATIVEINT}
     Inc(NativeInt(BufferPtr), BufferPtr.cb);
+(*
     {$ELSE}
     Inc(integer(BufferPtr), BufferPtr.cb);
     {$ENDIF}
+*)
   end;
 
   {$IFDEF USESTACKALLOC}

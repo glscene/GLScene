@@ -871,7 +871,7 @@ begin
   {$ELSE}
   alpha_ptr := Pointer(Cardinal(AlphaTable) and (not $F));
   if Cardinal(alpha_ptr) < Cardinal(AlphaTable) then
-    Inc(Cardinal(alpha_ptr), 16);
+    Inc(NativeInt(alpha_ptr), 16);
   {$ENDIF}
   P := alpha_ptr;
   for I := 0 to 255 do

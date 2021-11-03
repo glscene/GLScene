@@ -122,6 +122,9 @@
         <DCCReference Include="..\Source\CUDA.PropEditors.pas"/>
         <DCCReference Include="..\Source\CUDA.Register.pas"/>
         <DCCReference Include="..\Source\CUDA.EditorFm.pas"/>
+        <RcCompile Include="..\Resources\GLSceneParallel.rc">
+            <Form>GLSceneParallel.res</Form>
+        </RcCompile>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -155,7 +158,7 @@
                 <Platform value="Win64">False</Platform>
             </Platforms>
             <Deployment Version="3">
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\GLScene_Parallel_DT.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GLScene_Parallel_DT.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>GLScene_Parallel_DT.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
