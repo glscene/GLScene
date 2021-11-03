@@ -35,12 +35,11 @@ requires
   GLScene_RT;
 
 contains
-  Imports.ModuleLoader in '..\Source\Imports.ModuleLoader.pas',
-  Imports.NGD in '..\Source\Imports.NGD.pas',
-  Imports.ODE in '..\Source\Imports.ODE.pas',
-  Imports.PhysX in '..\Source\Imports.PhysX.pas',
+  Physics.NGDImport in '..\Source\Physics.NGDImport.pas',
   Physics.NGDManager in '..\Source\Physics.NGDManager.pas',
   Physics.NGDRagdoll in '..\Source\Physics.NGDRagdoll.pas',
+  Physics.NewtonImport in '..\Source\Physics.NewtonImport.pas',
+  Physics.ODEImport in '..\Source\Physics.ODEImport.pas',
   Physics.ODEManager in '..\Source\Physics.ODEManager.pas',
   Physics.ODERagdoll in '..\Source\Physics.ODERagdoll.pas',
   Physics.ODESkeletonColliders in '..\Source\Physics.ODESkeletonColliders.pas',
@@ -50,7 +49,7 @@ contains
   Physics.SPIInertias in '..\Source\Physics.SPIInertias.pas',
   Physics.SPIJoints in '..\Source\Physics.SPIJoints.pas',
   Physics.SPIManager in '..\Source\Physics.SPIManager.pas',
-  Imports.Newton in '..\Source\Imports.Newton.pas';
+  Physics.PhysXImport in '..\Source\Physics.PhysXImport.pas';
 
 end.
 

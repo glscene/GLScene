@@ -15,7 +15,7 @@ uses
   GLS.Context,
   GLS.Generics,
 
-  Imports.CUDAApi,
+  CUDA.Import,
   CUDA.RunTime;
 
 type

@@ -3,118 +3,118 @@
         <ProjectGuid>{A3213364-6485-4ED8-B8F3-F842CB4C21F0}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="actor\Actor.dproj">
+        <Projects Include="actor\ActorD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="actor\ActorC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="actorms3d\Actorms3d.dproj">
+        <Projects Include="actorms3d\Actorms3dD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="actorms3d\ActorMS3dC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="actorproxy\ActorProxy.dproj">
+        <Projects Include="actorproxy\ActorProxyD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="actorproxy\ActorProxyC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="actortwocam\ActorTwocam.dproj">
+        <Projects Include="actortwocam\ActorTwocamD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="actortwocam\ActorTwocamC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="centering\Centering.dproj">
+        <Projects Include="centering\CenteringD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="centering\CenteringC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="CSG\Csg.dproj">
+        <Projects Include="CSG\CsgD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="CSG\CsgC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="ducky\Ducky.dproj">
+        <Projects Include="ducky\DuckyD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="ducky\DuckyC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="expolygon\ExPolygon.dproj">
+        <Projects Include="expolygon\ExPolygonD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="expolygon\ExPolygonC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="feedback\Feedback.dproj">
+        <Projects Include="feedback\FeedbackD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="feedback\FeedbackC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="formula\Formula.dproj">
+        <Projects Include="formula\FormulaD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="formula\FormulaC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="mushroom\Mushroom.dproj">
+        <Projects Include="mushroom\MushroomD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="mushroom\MushroomC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="portal\Portal.dproj">
+        <Projects Include="portal\PortalD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="portal\PortalC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="shadedterrain\ShadedTerrain.dproj">
+        <Projects Include="shadedterrain\ShadedTerrainD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="shadedterrain\ShadedTerrainC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="skeletal\Skeletal.dproj">
+        <Projects Include="skeletal\SkeletalD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="skeletal\SkeletalC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="subdivide\Subdivide.dproj">
+        <Projects Include="subdivide\SubdivideD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="subdivide\SubdivideC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="synthterr\SynthTerrain.dproj">
+        <Projects Include="synthterr\SynthTerrainD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="synthterr\SynthTerrainC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="terrain\Terrain.dproj">
+        <Projects Include="terrain\TerrainD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="terrain\TerrainC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="tiles\Tiles.dproj">
+        <Projects Include="tiles\TilesD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="tiles\TilesC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="tree\TreeC.cbproj">
+        <Projects Include="tree\TreeD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="tree\Tree.dproj">
+        <Projects Include="tree\TreeC.cbproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -125,14 +125,14 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="Actor">
-        <MSBuild Projects="actor\Actor.dproj"/>
+    <Target Name="ActorD">
+        <MSBuild Projects="actor\ActorD.dproj"/>
     </Target>
-    <Target Name="Actor:Clean">
-        <MSBuild Projects="actor\Actor.dproj" Targets="Clean"/>
+    <Target Name="ActorD:Clean">
+        <MSBuild Projects="actor\ActorD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Actor:Make">
-        <MSBuild Projects="actor\Actor.dproj" Targets="Make"/>
+    <Target Name="ActorD:Make">
+        <MSBuild Projects="actor\ActorD.dproj" Targets="Make"/>
     </Target>
     <Target Name="ActorC">
         <MSBuild Projects="actor\ActorC.cbproj"/>
@@ -143,14 +143,14 @@
     <Target Name="ActorC:Make">
         <MSBuild Projects="actor\ActorC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Actorms3d">
-        <MSBuild Projects="actorms3d\Actorms3d.dproj"/>
+    <Target Name="Actorms3dD">
+        <MSBuild Projects="actorms3d\Actorms3dD.dproj"/>
     </Target>
-    <Target Name="Actorms3d:Clean">
-        <MSBuild Projects="actorms3d\Actorms3d.dproj" Targets="Clean"/>
+    <Target Name="Actorms3dD:Clean">
+        <MSBuild Projects="actorms3d\Actorms3dD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Actorms3d:Make">
-        <MSBuild Projects="actorms3d\Actorms3d.dproj" Targets="Make"/>
+    <Target Name="Actorms3dD:Make">
+        <MSBuild Projects="actorms3d\Actorms3dD.dproj" Targets="Make"/>
     </Target>
     <Target Name="ActorMS3dC">
         <MSBuild Projects="actorms3d\ActorMS3dC.cbproj"/>
@@ -161,14 +161,14 @@
     <Target Name="ActorMS3dC:Make">
         <MSBuild Projects="actorms3d\ActorMS3dC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="ActorProxy">
-        <MSBuild Projects="actorproxy\ActorProxy.dproj"/>
+    <Target Name="ActorProxyD">
+        <MSBuild Projects="actorproxy\ActorProxyD.dproj"/>
     </Target>
-    <Target Name="ActorProxy:Clean">
-        <MSBuild Projects="actorproxy\ActorProxy.dproj" Targets="Clean"/>
+    <Target Name="ActorProxyD:Clean">
+        <MSBuild Projects="actorproxy\ActorProxyD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="ActorProxy:Make">
-        <MSBuild Projects="actorproxy\ActorProxy.dproj" Targets="Make"/>
+    <Target Name="ActorProxyD:Make">
+        <MSBuild Projects="actorproxy\ActorProxyD.dproj" Targets="Make"/>
     </Target>
     <Target Name="ActorProxyC">
         <MSBuild Projects="actorproxy\ActorProxyC.cbproj"/>
@@ -179,14 +179,14 @@
     <Target Name="ActorProxyC:Make">
         <MSBuild Projects="actorproxy\ActorProxyC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="ActorTwocam">
-        <MSBuild Projects="actortwocam\ActorTwocam.dproj"/>
+    <Target Name="ActorTwocamD">
+        <MSBuild Projects="actortwocam\ActorTwocamD.dproj"/>
     </Target>
-    <Target Name="ActorTwocam:Clean">
-        <MSBuild Projects="actortwocam\ActorTwocam.dproj" Targets="Clean"/>
+    <Target Name="ActorTwocamD:Clean">
+        <MSBuild Projects="actortwocam\ActorTwocamD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="ActorTwocam:Make">
-        <MSBuild Projects="actortwocam\ActorTwocam.dproj" Targets="Make"/>
+    <Target Name="ActorTwocamD:Make">
+        <MSBuild Projects="actortwocam\ActorTwocamD.dproj" Targets="Make"/>
     </Target>
     <Target Name="ActorTwocamC">
         <MSBuild Projects="actortwocam\ActorTwocamC.cbproj"/>
@@ -197,14 +197,14 @@
     <Target Name="ActorTwocamC:Make">
         <MSBuild Projects="actortwocam\ActorTwocamC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Centering">
-        <MSBuild Projects="centering\Centering.dproj"/>
+    <Target Name="CenteringD">
+        <MSBuild Projects="centering\CenteringD.dproj"/>
     </Target>
-    <Target Name="Centering:Clean">
-        <MSBuild Projects="centering\Centering.dproj" Targets="Clean"/>
+    <Target Name="CenteringD:Clean">
+        <MSBuild Projects="centering\CenteringD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Centering:Make">
-        <MSBuild Projects="centering\Centering.dproj" Targets="Make"/>
+    <Target Name="CenteringD:Make">
+        <MSBuild Projects="centering\CenteringD.dproj" Targets="Make"/>
     </Target>
     <Target Name="CenteringC">
         <MSBuild Projects="centering\CenteringC.cbproj"/>
@@ -215,14 +215,14 @@
     <Target Name="CenteringC:Make">
         <MSBuild Projects="centering\CenteringC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Csg">
-        <MSBuild Projects="CSG\Csg.dproj"/>
+    <Target Name="CsgD">
+        <MSBuild Projects="CSG\CsgD.dproj"/>
     </Target>
-    <Target Name="Csg:Clean">
-        <MSBuild Projects="CSG\Csg.dproj" Targets="Clean"/>
+    <Target Name="CsgD:Clean">
+        <MSBuild Projects="CSG\CsgD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Csg:Make">
-        <MSBuild Projects="CSG\Csg.dproj" Targets="Make"/>
+    <Target Name="CsgD:Make">
+        <MSBuild Projects="CSG\CsgD.dproj" Targets="Make"/>
     </Target>
     <Target Name="CsgC">
         <MSBuild Projects="CSG\CsgC.cbproj"/>
@@ -233,14 +233,14 @@
     <Target Name="CsgC:Make">
         <MSBuild Projects="CSG\CsgC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Ducky">
-        <MSBuild Projects="ducky\Ducky.dproj"/>
+    <Target Name="DuckyD">
+        <MSBuild Projects="ducky\DuckyD.dproj"/>
     </Target>
-    <Target Name="Ducky:Clean">
-        <MSBuild Projects="ducky\Ducky.dproj" Targets="Clean"/>
+    <Target Name="DuckyD:Clean">
+        <MSBuild Projects="ducky\DuckyD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Ducky:Make">
-        <MSBuild Projects="ducky\Ducky.dproj" Targets="Make"/>
+    <Target Name="DuckyD:Make">
+        <MSBuild Projects="ducky\DuckyD.dproj" Targets="Make"/>
     </Target>
     <Target Name="DuckyC">
         <MSBuild Projects="ducky\DuckyC.cbproj"/>
@@ -251,14 +251,14 @@
     <Target Name="DuckyC:Make">
         <MSBuild Projects="ducky\DuckyC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="ExPolygon">
-        <MSBuild Projects="expolygon\ExPolygon.dproj"/>
+    <Target Name="ExPolygonD">
+        <MSBuild Projects="expolygon\ExPolygonD.dproj"/>
     </Target>
-    <Target Name="ExPolygon:Clean">
-        <MSBuild Projects="expolygon\ExPolygon.dproj" Targets="Clean"/>
+    <Target Name="ExPolygonD:Clean">
+        <MSBuild Projects="expolygon\ExPolygonD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="ExPolygon:Make">
-        <MSBuild Projects="expolygon\ExPolygon.dproj" Targets="Make"/>
+    <Target Name="ExPolygonD:Make">
+        <MSBuild Projects="expolygon\ExPolygonD.dproj" Targets="Make"/>
     </Target>
     <Target Name="ExPolygonC">
         <MSBuild Projects="expolygon\ExPolygonC.cbproj"/>
@@ -269,14 +269,14 @@
     <Target Name="ExPolygonC:Make">
         <MSBuild Projects="expolygon\ExPolygonC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Feedback">
-        <MSBuild Projects="feedback\Feedback.dproj"/>
+    <Target Name="FeedbackD">
+        <MSBuild Projects="feedback\FeedbackD.dproj"/>
     </Target>
-    <Target Name="Feedback:Clean">
-        <MSBuild Projects="feedback\Feedback.dproj" Targets="Clean"/>
+    <Target Name="FeedbackD:Clean">
+        <MSBuild Projects="feedback\FeedbackD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Feedback:Make">
-        <MSBuild Projects="feedback\Feedback.dproj" Targets="Make"/>
+    <Target Name="FeedbackD:Make">
+        <MSBuild Projects="feedback\FeedbackD.dproj" Targets="Make"/>
     </Target>
     <Target Name="FeedbackC">
         <MSBuild Projects="feedback\FeedbackC.cbproj"/>
@@ -287,14 +287,14 @@
     <Target Name="FeedbackC:Make">
         <MSBuild Projects="feedback\FeedbackC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Formula">
-        <MSBuild Projects="formula\Formula.dproj"/>
+    <Target Name="FormulaD">
+        <MSBuild Projects="formula\FormulaD.dproj"/>
     </Target>
-    <Target Name="Formula:Clean">
-        <MSBuild Projects="formula\Formula.dproj" Targets="Clean"/>
+    <Target Name="FormulaD:Clean">
+        <MSBuild Projects="formula\FormulaD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Formula:Make">
-        <MSBuild Projects="formula\Formula.dproj" Targets="Make"/>
+    <Target Name="FormulaD:Make">
+        <MSBuild Projects="formula\FormulaD.dproj" Targets="Make"/>
     </Target>
     <Target Name="FormulaC">
         <MSBuild Projects="formula\FormulaC.cbproj"/>
@@ -305,14 +305,14 @@
     <Target Name="FormulaC:Make">
         <MSBuild Projects="formula\FormulaC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Mushroom">
-        <MSBuild Projects="mushroom\Mushroom.dproj"/>
+    <Target Name="MushroomD">
+        <MSBuild Projects="mushroom\MushroomD.dproj"/>
     </Target>
-    <Target Name="Mushroom:Clean">
-        <MSBuild Projects="mushroom\Mushroom.dproj" Targets="Clean"/>
+    <Target Name="MushroomD:Clean">
+        <MSBuild Projects="mushroom\MushroomD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Mushroom:Make">
-        <MSBuild Projects="mushroom\Mushroom.dproj" Targets="Make"/>
+    <Target Name="MushroomD:Make">
+        <MSBuild Projects="mushroom\MushroomD.dproj" Targets="Make"/>
     </Target>
     <Target Name="MushroomC">
         <MSBuild Projects="mushroom\MushroomC.cbproj"/>
@@ -323,14 +323,14 @@
     <Target Name="MushroomC:Make">
         <MSBuild Projects="mushroom\MushroomC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Portal">
-        <MSBuild Projects="portal\Portal.dproj"/>
+    <Target Name="PortalD">
+        <MSBuild Projects="portal\PortalD.dproj"/>
     </Target>
-    <Target Name="Portal:Clean">
-        <MSBuild Projects="portal\Portal.dproj" Targets="Clean"/>
+    <Target Name="PortalD:Clean">
+        <MSBuild Projects="portal\PortalD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Portal:Make">
-        <MSBuild Projects="portal\Portal.dproj" Targets="Make"/>
+    <Target Name="PortalD:Make">
+        <MSBuild Projects="portal\PortalD.dproj" Targets="Make"/>
     </Target>
     <Target Name="PortalC">
         <MSBuild Projects="portal\PortalC.cbproj"/>
@@ -341,14 +341,14 @@
     <Target Name="PortalC:Make">
         <MSBuild Projects="portal\PortalC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="ShadedTerrain">
-        <MSBuild Projects="shadedterrain\ShadedTerrain.dproj"/>
+    <Target Name="ShadedTerrainD">
+        <MSBuild Projects="shadedterrain\ShadedTerrainD.dproj"/>
     </Target>
-    <Target Name="ShadedTerrain:Clean">
-        <MSBuild Projects="shadedterrain\ShadedTerrain.dproj" Targets="Clean"/>
+    <Target Name="ShadedTerrainD:Clean">
+        <MSBuild Projects="shadedterrain\ShadedTerrainD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="ShadedTerrain:Make">
-        <MSBuild Projects="shadedterrain\ShadedTerrain.dproj" Targets="Make"/>
+    <Target Name="ShadedTerrainD:Make">
+        <MSBuild Projects="shadedterrain\ShadedTerrainD.dproj" Targets="Make"/>
     </Target>
     <Target Name="ShadedTerrainC">
         <MSBuild Projects="shadedterrain\ShadedTerrainC.cbproj"/>
@@ -359,14 +359,14 @@
     <Target Name="ShadedTerrainC:Make">
         <MSBuild Projects="shadedterrain\ShadedTerrainC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Skeletal">
-        <MSBuild Projects="skeletal\Skeletal.dproj"/>
+    <Target Name="SkeletalD">
+        <MSBuild Projects="skeletal\SkeletalD.dproj"/>
     </Target>
-    <Target Name="Skeletal:Clean">
-        <MSBuild Projects="skeletal\Skeletal.dproj" Targets="Clean"/>
+    <Target Name="SkeletalD:Clean">
+        <MSBuild Projects="skeletal\SkeletalD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Skeletal:Make">
-        <MSBuild Projects="skeletal\Skeletal.dproj" Targets="Make"/>
+    <Target Name="SkeletalD:Make">
+        <MSBuild Projects="skeletal\SkeletalD.dproj" Targets="Make"/>
     </Target>
     <Target Name="SkeletalC">
         <MSBuild Projects="skeletal\SkeletalC.cbproj"/>
@@ -377,14 +377,14 @@
     <Target Name="SkeletalC:Make">
         <MSBuild Projects="skeletal\SkeletalC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Subdivide">
-        <MSBuild Projects="subdivide\Subdivide.dproj"/>
+    <Target Name="SubdivideD">
+        <MSBuild Projects="subdivide\SubdivideD.dproj"/>
     </Target>
-    <Target Name="Subdivide:Clean">
-        <MSBuild Projects="subdivide\Subdivide.dproj" Targets="Clean"/>
+    <Target Name="SubdivideD:Clean">
+        <MSBuild Projects="subdivide\SubdivideD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Subdivide:Make">
-        <MSBuild Projects="subdivide\Subdivide.dproj" Targets="Make"/>
+    <Target Name="SubdivideD:Make">
+        <MSBuild Projects="subdivide\SubdivideD.dproj" Targets="Make"/>
     </Target>
     <Target Name="SubdivideC">
         <MSBuild Projects="subdivide\SubdivideC.cbproj"/>
@@ -395,14 +395,14 @@
     <Target Name="SubdivideC:Make">
         <MSBuild Projects="subdivide\SubdivideC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="SynthTerrain">
-        <MSBuild Projects="synthterr\SynthTerrain.dproj"/>
+    <Target Name="SynthTerrainD">
+        <MSBuild Projects="synthterr\SynthTerrainD.dproj"/>
     </Target>
-    <Target Name="SynthTerrain:Clean">
-        <MSBuild Projects="synthterr\SynthTerrain.dproj" Targets="Clean"/>
+    <Target Name="SynthTerrainD:Clean">
+        <MSBuild Projects="synthterr\SynthTerrainD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="SynthTerrain:Make">
-        <MSBuild Projects="synthterr\SynthTerrain.dproj" Targets="Make"/>
+    <Target Name="SynthTerrainD:Make">
+        <MSBuild Projects="synthterr\SynthTerrainD.dproj" Targets="Make"/>
     </Target>
     <Target Name="SynthTerrainC">
         <MSBuild Projects="synthterr\SynthTerrainC.cbproj"/>
@@ -413,14 +413,14 @@
     <Target Name="SynthTerrainC:Make">
         <MSBuild Projects="synthterr\SynthTerrainC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Terrain">
-        <MSBuild Projects="terrain\Terrain.dproj"/>
+    <Target Name="TerrainD">
+        <MSBuild Projects="terrain\TerrainD.dproj"/>
     </Target>
-    <Target Name="Terrain:Clean">
-        <MSBuild Projects="terrain\Terrain.dproj" Targets="Clean"/>
+    <Target Name="TerrainD:Clean">
+        <MSBuild Projects="terrain\TerrainD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Terrain:Make">
-        <MSBuild Projects="terrain\Terrain.dproj" Targets="Make"/>
+    <Target Name="TerrainD:Make">
+        <MSBuild Projects="terrain\TerrainD.dproj" Targets="Make"/>
     </Target>
     <Target Name="TerrainC">
         <MSBuild Projects="terrain\TerrainC.cbproj"/>
@@ -431,14 +431,14 @@
     <Target Name="TerrainC:Make">
         <MSBuild Projects="terrain\TerrainC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Tiles">
-        <MSBuild Projects="tiles\Tiles.dproj"/>
+    <Target Name="TilesD">
+        <MSBuild Projects="tiles\TilesD.dproj"/>
     </Target>
-    <Target Name="Tiles:Clean">
-        <MSBuild Projects="tiles\Tiles.dproj" Targets="Clean"/>
+    <Target Name="TilesD:Clean">
+        <MSBuild Projects="tiles\TilesD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Tiles:Make">
-        <MSBuild Projects="tiles\Tiles.dproj" Targets="Make"/>
+    <Target Name="TilesD:Make">
+        <MSBuild Projects="tiles\TilesD.dproj" Targets="Make"/>
     </Target>
     <Target Name="TilesC">
         <MSBuild Projects="tiles\TilesC.cbproj"/>
@@ -449,6 +449,15 @@
     <Target Name="TilesC:Make">
         <MSBuild Projects="tiles\TilesC.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="TreeD">
+        <MSBuild Projects="tree\TreeD.dproj"/>
+    </Target>
+    <Target Name="TreeD:Clean">
+        <MSBuild Projects="tree\TreeD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TreeD:Make">
+        <MSBuild Projects="tree\TreeD.dproj" Targets="Make"/>
+    </Target>
     <Target Name="TreeC">
         <MSBuild Projects="tree\TreeC.cbproj"/>
     </Target>
@@ -458,23 +467,14 @@
     <Target Name="TreeC:Make">
         <MSBuild Projects="tree\TreeC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Tree">
-        <MSBuild Projects="tree\Tree.dproj"/>
-    </Target>
-    <Target Name="Tree:Clean">
-        <MSBuild Projects="tree\Tree.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="Tree:Make">
-        <MSBuild Projects="tree\Tree.dproj" Targets="Make"/>
-    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Actor;ActorC;Actorms3d;ActorMS3dC;ActorProxy;ActorProxyC;ActorTwocam;ActorTwocamC;Centering;CenteringC;Csg;CsgC;Ducky;DuckyC;ExPolygon;ExPolygonC;Feedback;FeedbackC;Formula;FormulaC;Mushroom;MushroomC;Portal;PortalC;ShadedTerrain;ShadedTerrainC;Skeletal;SkeletalC;Subdivide;SubdivideC;SynthTerrain;SynthTerrainC;Terrain;TerrainC;Tiles;TilesC;TreeC;Tree"/>
+        <CallTarget Targets="ActorD;ActorC;Actorms3dD;ActorMS3dC;ActorProxyD;ActorProxyC;ActorTwocamD;ActorTwocamC;CenteringD;CenteringC;CsgD;CsgC;DuckyD;DuckyC;ExPolygonD;ExPolygonC;FeedbackD;FeedbackC;FormulaD;FormulaC;MushroomD;MushroomC;PortalD;PortalC;ShadedTerrainD;ShadedTerrainC;SkeletalD;SkeletalC;SubdivideD;SubdivideC;SynthTerrainD;SynthTerrainC;TerrainD;TerrainC;TilesD;TilesC;TreeD;TreeC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Actor:Clean;ActorC:Clean;Actorms3d:Clean;ActorMS3dC:Clean;ActorProxy:Clean;ActorProxyC:Clean;ActorTwocam:Clean;ActorTwocamC:Clean;Centering:Clean;CenteringC:Clean;Csg:Clean;CsgC:Clean;Ducky:Clean;DuckyC:Clean;ExPolygon:Clean;ExPolygonC:Clean;Feedback:Clean;FeedbackC:Clean;Formula:Clean;FormulaC:Clean;Mushroom:Clean;MushroomC:Clean;Portal:Clean;PortalC:Clean;ShadedTerrain:Clean;ShadedTerrainC:Clean;Skeletal:Clean;SkeletalC:Clean;Subdivide:Clean;SubdivideC:Clean;SynthTerrain:Clean;SynthTerrainC:Clean;Terrain:Clean;TerrainC:Clean;Tiles:Clean;TilesC:Clean;TreeC:Clean;Tree:Clean"/>
+        <CallTarget Targets="ActorD:Clean;ActorC:Clean;Actorms3dD:Clean;ActorMS3dC:Clean;ActorProxyD:Clean;ActorProxyC:Clean;ActorTwocamD:Clean;ActorTwocamC:Clean;CenteringD:Clean;CenteringC:Clean;CsgD:Clean;CsgC:Clean;DuckyD:Clean;DuckyC:Clean;ExPolygonD:Clean;ExPolygonC:Clean;FeedbackD:Clean;FeedbackC:Clean;FormulaD:Clean;FormulaC:Clean;MushroomD:Clean;MushroomC:Clean;PortalD:Clean;PortalC:Clean;ShadedTerrainD:Clean;ShadedTerrainC:Clean;SkeletalD:Clean;SkeletalC:Clean;SubdivideD:Clean;SubdivideC:Clean;SynthTerrainD:Clean;SynthTerrainC:Clean;TerrainD:Clean;TerrainC:Clean;TilesD:Clean;TilesC:Clean;TreeD:Clean;TreeC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Actor:Make;ActorC:Make;Actorms3d:Make;ActorMS3dC:Make;ActorProxy:Make;ActorProxyC:Make;ActorTwocam:Make;ActorTwocamC:Make;Centering:Make;CenteringC:Make;Csg:Make;CsgC:Make;Ducky:Make;DuckyC:Make;ExPolygon:Make;ExPolygonC:Make;Feedback:Make;FeedbackC:Make;Formula:Make;FormulaC:Make;Mushroom:Make;MushroomC:Make;Portal:Make;PortalC:Make;ShadedTerrain:Make;ShadedTerrainC:Make;Skeletal:Make;SkeletalC:Make;Subdivide:Make;SubdivideC:Make;SynthTerrain:Make;SynthTerrainC:Make;Terrain:Make;TerrainC:Make;Tiles:Make;TilesC:Make;TreeC:Make;Tree:Make"/>
+        <CallTarget Targets="ActorD:Make;ActorC:Make;Actorms3dD:Make;ActorMS3dC:Make;ActorProxyD:Make;ActorProxyC:Make;ActorTwocamD:Make;ActorTwocamC:Make;CenteringD:Make;CenteringC:Make;CsgD:Make;CsgC:Make;DuckyD:Make;DuckyC:Make;ExPolygonD:Make;ExPolygonC:Make;FeedbackD:Make;FeedbackC:Make;FormulaD:Make;FormulaC:Make;MushroomD:Make;MushroomC:Make;PortalD:Make;PortalC:Make;ShadedTerrainD:Make;ShadedTerrainC:Make;SkeletalD:Make;SkeletalC:Make;SubdivideD:Make;SubdivideC:Make;SynthTerrainD:Make;SynthTerrainC:Make;TerrainD:Make;TerrainC:Make;TilesD:Make;TilesC:Make;TreeD:Make;TreeC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

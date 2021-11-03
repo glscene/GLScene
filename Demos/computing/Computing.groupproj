@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{5FE5B196-8E5A-4535-86DA-03BBB0E22FA1}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="FastFourierTransformation\FastFourierD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PostProcessing\PostProcessingD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ScalarProduct\ScalarProductD.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="FastFourierD">
+        <MSBuild Projects="FastFourierTransformation\FastFourierD.dproj"/>
+    </Target>
+    <Target Name="FastFourierD:Clean">
+        <MSBuild Projects="FastFourierTransformation\FastFourierD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FastFourierD:Make">
+        <MSBuild Projects="FastFourierTransformation\FastFourierD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PostProcessingD">
+        <MSBuild Projects="PostProcessing\PostProcessingD.dproj"/>
+    </Target>
+    <Target Name="PostProcessingD:Clean">
+        <MSBuild Projects="PostProcessing\PostProcessingD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PostProcessingD:Make">
+        <MSBuild Projects="PostProcessing\PostProcessingD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ScalarProductD">
+        <MSBuild Projects="ScalarProduct\ScalarProductD.dproj"/>
+    </Target>
+    <Target Name="ScalarProductD:Clean">
+        <MSBuild Projects="ScalarProduct\ScalarProductD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ScalarProductD:Make">
+        <MSBuild Projects="ScalarProduct\ScalarProductD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="FastFourierD;PostProcessingD;ScalarProductD"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="FastFourierD:Clean;PostProcessingD:Clean;ScalarProductD:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="FastFourierD:Make;PostProcessingD:Make;ScalarProductD:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

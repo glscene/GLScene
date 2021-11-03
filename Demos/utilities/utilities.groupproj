@@ -3,13 +3,37 @@
         <ProjectGuid>{42939014-896A-4EC3-A943-FC10829CCD36}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="fontgen\fontgen.cbproj">
+        <Projects Include="ArchiveEdit\ArchiveEditD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="recorder\Recorder.cbproj">
+        <Projects Include="fontgen\FontgenD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="ScreenSaver\ScreenSaver.cbproj">
+        <Projects Include="fontgen\FontgenC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="HTFUtils\HTFViewerD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="joystick\JoystickD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="keymap\KeymapD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Language\LanguageD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="recorder\RecorderD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="HTFUtils\TerrainPackD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ScreenSaver\ScreenSaverD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ScreenSaver\ScreenSaverC.cbproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -20,41 +44,113 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="fontgen">
-        <MSBuild Projects="fontgen\fontgen.cbproj"/>
+    <Target Name="ArchiveEditD">
+        <MSBuild Projects="ArchiveEdit\ArchiveEditD.dproj"/>
     </Target>
-    <Target Name="fontgen:Clean">
-        <MSBuild Projects="fontgen\fontgen.cbproj" Targets="Clean"/>
+    <Target Name="ArchiveEditD:Clean">
+        <MSBuild Projects="ArchiveEdit\ArchiveEditD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="fontgen:Make">
-        <MSBuild Projects="fontgen\fontgen.cbproj" Targets="Make"/>
+    <Target Name="ArchiveEditD:Make">
+        <MSBuild Projects="ArchiveEdit\ArchiveEditD.dproj" Targets="Make"/>
     </Target>
-    <Target Name="Recorder">
-        <MSBuild Projects="recorder\Recorder.cbproj"/>
+    <Target Name="FontgenD">
+        <MSBuild Projects="fontgen\FontgenD.dproj"/>
     </Target>
-    <Target Name="Recorder:Clean">
-        <MSBuild Projects="recorder\Recorder.cbproj" Targets="Clean"/>
+    <Target Name="FontgenD:Clean">
+        <MSBuild Projects="fontgen\FontgenD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Recorder:Make">
-        <MSBuild Projects="recorder\Recorder.cbproj" Targets="Make"/>
+    <Target Name="FontgenD:Make">
+        <MSBuild Projects="fontgen\FontgenD.dproj" Targets="Make"/>
     </Target>
-    <Target Name="ScreenSaver">
-        <MSBuild Projects="ScreenSaver\ScreenSaver.cbproj"/>
+    <Target Name="FontgenC">
+        <MSBuild Projects="fontgen\FontgenC.cbproj"/>
     </Target>
-    <Target Name="ScreenSaver:Clean">
-        <MSBuild Projects="ScreenSaver\ScreenSaver.cbproj" Targets="Clean"/>
+    <Target Name="FontgenC:Clean">
+        <MSBuild Projects="fontgen\FontgenC.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="ScreenSaver:Make">
-        <MSBuild Projects="ScreenSaver\ScreenSaver.cbproj" Targets="Make"/>
+    <Target Name="FontgenC:Make">
+        <MSBuild Projects="fontgen\FontgenC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="HTFViewerD">
+        <MSBuild Projects="HTFUtils\HTFViewerD.dproj"/>
+    </Target>
+    <Target Name="HTFViewerD:Clean">
+        <MSBuild Projects="HTFUtils\HTFViewerD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="HTFViewerD:Make">
+        <MSBuild Projects="HTFUtils\HTFViewerD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="JoystickD">
+        <MSBuild Projects="joystick\JoystickD.dproj"/>
+    </Target>
+    <Target Name="JoystickD:Clean">
+        <MSBuild Projects="joystick\JoystickD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="JoystickD:Make">
+        <MSBuild Projects="joystick\JoystickD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="KeymapD">
+        <MSBuild Projects="keymap\KeymapD.dproj"/>
+    </Target>
+    <Target Name="KeymapD:Clean">
+        <MSBuild Projects="keymap\KeymapD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="KeymapD:Make">
+        <MSBuild Projects="keymap\KeymapD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="LanguageD">
+        <MSBuild Projects="Language\LanguageD.dproj"/>
+    </Target>
+    <Target Name="LanguageD:Clean">
+        <MSBuild Projects="Language\LanguageD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LanguageD:Make">
+        <MSBuild Projects="Language\LanguageD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="RecorderD">
+        <MSBuild Projects="recorder\RecorderD.dproj"/>
+    </Target>
+    <Target Name="RecorderD:Clean">
+        <MSBuild Projects="recorder\RecorderD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RecorderD:Make">
+        <MSBuild Projects="recorder\RecorderD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TerrainPackD">
+        <MSBuild Projects="HTFUtils\TerrainPackD.dproj"/>
+    </Target>
+    <Target Name="TerrainPackD:Clean">
+        <MSBuild Projects="HTFUtils\TerrainPackD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TerrainPackD:Make">
+        <MSBuild Projects="HTFUtils\TerrainPackD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ScreenSaverD">
+        <MSBuild Projects="ScreenSaver\ScreenSaverD.dproj"/>
+    </Target>
+    <Target Name="ScreenSaverD:Clean">
+        <MSBuild Projects="ScreenSaver\ScreenSaverD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ScreenSaverD:Make">
+        <MSBuild Projects="ScreenSaver\ScreenSaverD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ScreenSaverC">
+        <MSBuild Projects="ScreenSaver\ScreenSaverC.cbproj"/>
+    </Target>
+    <Target Name="ScreenSaverC:Clean">
+        <MSBuild Projects="ScreenSaver\ScreenSaverC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ScreenSaverC:Make">
+        <MSBuild Projects="ScreenSaver\ScreenSaverC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="fontgen;Recorder;ScreenSaver"/>
+        <CallTarget Targets="ArchiveEditD;FontgenD;FontgenC;HTFViewerD;JoystickD;KeymapD;LanguageD;RecorderD;TerrainPackD;ScreenSaverD;ScreenSaverC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="fontgen:Clean;Recorder:Clean;ScreenSaver:Clean"/>
+        <CallTarget Targets="ArchiveEditD:Clean;FontgenD:Clean;FontgenC:Clean;HTFViewerD:Clean;JoystickD:Clean;KeymapD:Clean;LanguageD:Clean;RecorderD:Clean;TerrainPackD:Clean;ScreenSaverD:Clean;ScreenSaverC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="fontgen:Make;Recorder:Make;ScreenSaver:Make"/>
+        <CallTarget Targets="ArchiveEditD:Make;FontgenD:Make;FontgenC:Make;HTFViewerD:Make;JoystickD:Make;KeymapD:Make;LanguageD:Make;RecorderD:Make;TerrainPackD:Make;ScreenSaverD:Make;ScreenSaverC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

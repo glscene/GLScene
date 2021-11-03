@@ -8,9 +8,6 @@
 <!--
  /* Font Definitions */
  @font-face
-	{font-family:Wingdings;
-	panose-1:5 0 0 0 0 0 0 0 0 0;}
-@font-face
 	{font-family:"Cambria Math";
 	panose-1:2 4 5 3 5 4 6 3 2 4;}
 @font-face
@@ -44,6 +41,12 @@ span.a
 	{mso-style-name:"\0422\0435\043A\0441\0442 \0417\043D\0430\043A";
 	mso-style-link:\0422\0435\043A\0441\0442;
 	font-family:Consolas;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:10.0pt;
+	font-family:"Times New Roman",serif;}
 .MsoChpDefault
 	{font-size:10.0pt;}
 @page WordSection1
@@ -68,21 +71,22 @@ ul
 <p class=MsoPlainText><b><span lang=FR style='font-size:13.5pt;font-family:
 "Courier New"'>Benchmarks&nbsp;:</span></b></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="canvas.dpr"><b>canvas</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="canvas/CanvasD.dpr"><b>canvas</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>drawing 2D with TGLCanvas in a scene viewer</span></li>
   <li class=MsoNormal><span lang=FR>allows benchmarking TGLCanvas performance
-      vs GDI (hardware-acceleration on both sides if available)</span></li>
+      vs GDI</span></li>
+  <li class=MsoNormal><span lang=FR>hardware-acceleration on both sides is available</span></li>
  </ul>
 </ul>
 
 <p class=MsoPlainText><b><span style='font-size:13.5pt;font-family:"Courier New"'><img
-border=0 width=504 height=333 src=Canvas.jpg></span></b></p>
+border=0 width=455 height=301 src=Canvas.jpg></span></b></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="megacube.dpr"><b>megacube</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="megacube/MegacubeD.dpr"><b>megacube</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>a high number of shaded cubes arranged in a
       cubic array</span></li>
   <li class=MsoNormal><span lang=FR>allows benchmarking raw geometrical and
@@ -94,9 +98,9 @@ border=0 width=504 height=333 src=Canvas.jpg></span></b></p>
 
 <p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="megaglasscube.dpr"><b>megaglasscube</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="megaglasscube/MegaglasscubeD.dpr"><b>megaglasscube</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>a high number of shaded transparent cubes
       arranged in a cubic array</span></li>
   <li class=MsoNormal><span lang=FR>same use as megacube but with emphasis on
@@ -106,36 +110,39 @@ border=0 width=504 height=333 src=Canvas.jpg></span></b></p>
 
 <p class=MsoNormal><img border=0 width=472 height=368 src=MegaGlasscube.jpg></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="volcano.dpr"><b>volcano</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="volcano/VolcanoD.dpr"><b>volcano</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>volcano-like particle systems using
       ParticleFX</span></li>
-  <li class=MsoNormal><span lang=FR>benchmarking of PFX and depth sorting (PFX
-      is a scene-wide blended particles system)</span></li>
+  <li class=MsoNormal><span lang=FR>benchmarking of PFX and depth sorting</span></li>
+  <li class=MsoNormal><span lang=FR>PFX is a scene-wide blended particles
+      system</span></li>
  </ul>
 </ul>
 
 <p class=MsoNormal><img border=0 width=432 height=325 src=Volcano.jpg></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="smoking.dpr"><b>smoking</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="smoking/SmokingD.dpr"><b>smoking</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>several heavily smoking fire PFXs</span></li>
-  <li class=MsoNormal><span lang=FR>benchmarking of PFX sprites, depth sorting
-      and intertwined additive/transparently blended PFXs</span></li>
+  <li class=MsoNormal><span lang=FR>benchmarking of PFX sprites, depth sorting </span></li>
+  <li class=MsoNormal><span lang=FR>intertwined additive/transparently blended
+      PFXs</span></li>
  </ul>
 </ul>
 
 <p class=MsoNormal><img border=0 width=464 height=361 src=Smoking.jpg></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="whirlwind.dpr"><b>whirlwind</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="whirlwind/WhirlwindD.dpr"><b>whirlwind</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>a whirlwind-shaped particle systems (via
-      TGLParticles, looks ugly)</span></li>
-  <li class=MsoNormal><span lang=FR>allows benchmarking particle systems and
-      GLScene object management (not even shading is used here)</span></li>
+      TGLParticles)</span></li>
+  <li class=MsoNormal><span lang=FR>allows benchmarking particle systems </span></li>
+  <li class=MsoNormal><span lang=FR>object management (not even shading is used
+      here)</span></li>
  </ul>
 </ul>
 

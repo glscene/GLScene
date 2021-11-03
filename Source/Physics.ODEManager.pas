@@ -36,7 +36,7 @@ uses
   GLS.TerrainRenderer,
   GLS.Graph,
 
-  Imports.ODE,
+  Physics.ODEImport,
   Physics.ODEUtils;
 
 type

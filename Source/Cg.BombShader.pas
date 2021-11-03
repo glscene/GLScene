@@ -22,7 +22,7 @@ uses
   GLS.TextureFormat,
   GLS.State,
 
-  Imports.cgGL,
+  Cg.GL,
   Cg.Shader;
 
 type

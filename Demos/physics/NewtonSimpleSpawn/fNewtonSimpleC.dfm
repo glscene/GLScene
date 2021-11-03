@@ -2,89 +2,120 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Newton Simple Spawn'
-  ClientHeight = 385
-  ClientWidth = 553
+  ClientHeight = 481
+  ClientWidth = 729
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
-  WindowState = wsMaximized
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 17
   object GLSceneViewer1: TGLSceneViewer
-    Left = 105
+    Left = 131
     Top = 0
-    Width = 448
-    Height = 385
+    Width = 598
+    Height = 481
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 150.879455566406300000
+    FieldOfView = 156.511001586914100000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 563
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 105
-    Height = 385
+    Width = 131
+    Height = 481
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alLeft
     Caption = ' '
     TabOrder = 1
     object Button1: TButton
-      Left = 14
-      Top = 8
-      Width = 75
-      Height = 25
+      Left = 18
+      Top = 10
+      Width = 93
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'AddCube'
       TabOrder = 0
       OnClick = Button1Click
     end
     object Button2: TButton
-      Left = 14
-      Top = 39
-      Width = 75
-      Height = 25
+      Left = 18
+      Top = 49
+      Width = 93
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'AddSphere'
       TabOrder = 1
       OnClick = Button2Click
     end
     object Button3: TButton
-      Left = 14
-      Top = 70
-      Width = 75
-      Height = 25
+      Left = 18
+      Top = 88
+      Width = 93
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'AddCone'
       TabOrder = 2
       OnClick = Button3Click
     end
     object Button4: TButton
-      Left = 14
-      Top = 101
-      Width = 75
-      Height = 25
+      Left = 18
+      Top = 126
+      Width = 93
+      Height = 32
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'AddCylinder'
       TabOrder = 3
       OnClick = Button4Click
     end
     object Button5: TButton
-      Left = 14
-      Top = 132
-      Width = 75
-      Height = 25
+      Left = 18
+      Top = 165
+      Width = 93
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'AddCapsule'
       TabOrder = 4
       OnClick = Button5Click
     end
     object Button6: TButton
-      Left = 14
-      Top = 163
-      Width = 75
-      Height = 25
+      Left = 18
+      Top = 204
+      Width = 93
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Remove All'
       TabOrder = 5
       OnClick = Button6Click

@@ -3,27 +3,30 @@ object FormTorqueC: TFormTorqueC
   Top = 119
   BorderWidth = 5
   Caption = 'Torque'
-  ClientHeight = 407
-  ClientWidth = 751
+  ClientHeight = 509
+  ClientWidth = 939
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 16
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 78
-    Width = 751
-    Height = 288
+    Top = 98
+    Width = 939
+    Height = 360
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 110.444335937500000000
+    FieldOfView = 121.890792846679700000
     PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
@@ -32,59 +35,87 @@ object FormTorqueC: TFormTorqueC
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 751
-    Height = 78
+    Width = 939
+    Height = 98
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
     TabOrder = 1
     object lHexahedron: TLabel
-      Left = 280
-      Top = 8
-      Width = 116
-      Height = 39
+      Left = 350
+      Top = 10
+      Width = 145
+      Height = 48
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Alignment = taCenter
       Caption = 'Hexahedron has a small constant'#13#10'and linear damping'
       WordWrap = True
     end
     object lDodecahedron: TLabel
-      Left = 472
-      Top = 8
-      Width = 100
-      Height = 39
+      Left = 590
+      Top = 10
+      Width = 119
+      Height = 64
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Alignment = taCenter
       Caption = 'Dodecahedron has a'#13#10'small constant and'#13#10'quadratic damping'
       WordWrap = True
     end
     object lOctagedron: TLabel
-      Left = 128
-      Top = 8
-      Width = 109
-      Height = 26
+      Left = 160
+      Top = 10
+      Width = 106
+      Height = 48
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Alignment = taCenter
       Caption = 'Octahedron has a'#13#10'only quadratic damping'
       WordWrap = True
     end
     object lTetrahedron: TLabel
-      Left = 8
-      Top = 10
-      Width = 84
-      Height = 39
+      Left = 10
+      Top = 13
+      Width = 105
+      Height = 48
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Tetrahedron has an only quadratic damping'
       WordWrap = True
     end
     object lIcosahedron: TLabel
-      Left = 604
-      Top = 8
-      Width = 117
-      Height = 39
+      Left = 755
+      Top = 10
+      Width = 146
+      Height = 48
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Alignment = taCenter
       Caption = 'Icosahedron has a small constant'#13#10'and linear damping'
       WordWrap = True
     end
     object CheckBox1: TCheckBox
-      Left = 8
-      Top = 55
-      Width = 81
-      Height = 17
+      Left = 10
+      Top = 69
+      Width = 101
+      Height = 21
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Double Mass'
       TabOrder = 0
       OnClick = CheckBox1Click
@@ -92,9 +123,13 @@ object FormTorqueC: TFormTorqueC
   end
   object PanelBottom: TPanel
     Left = 0
-    Top = 366
-    Width = 751
-    Height = 41
+    Top = 458
+    Width = 939
+    Height = 51
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alBottom
     Caption = 
       'Move your mouse over an object and it will start spinning. Click' +

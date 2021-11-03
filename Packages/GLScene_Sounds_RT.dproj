@@ -148,16 +148,16 @@
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
-        <DCCReference Include="..\Source\Imports.FMOD.pas"/>
-        <DCCReference Include="..\Source\Imports.FMODpresets.pas"/>
-        <DCCReference Include="..\Source\Imports.FMODtypes.pas"/>
-        <DCCReference Include="..\Source\Imports.FMODerrors.pas"/>
-        <DCCReference Include="..\Source\Imports.OpenAL.pas"/>
+        <DCCReference Include="..\Source\Sounds.FMODImport.pas"/>
+        <DCCReference Include="..\Source\Sounds.FMODpresets.pas"/>
+        <DCCReference Include="..\Source\Sounds.FMODtypes.pas"/>
+        <DCCReference Include="..\Source\Sounds.FMODerrors.pas"/>
+        <DCCReference Include="..\Source\Sounds.OpenALImport.pas"/>
         <DCCReference Include="..\Source\Sounds.BASS.pas"/>
         <DCCReference Include="..\Source\Sounds.FMOD.pas"/>
         <DCCReference Include="..\Source\Sounds.OpenAL.pas"/>
         <DCCReference Include="..\Source\Sounds.WaveOut.pas"/>
-        <DCCReference Include="..\Source\Imports.BASS.pas"/>
+        <DCCReference Include="..\Source\Sounds.BASSImport.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -190,7 +190,7 @@
                 <Platform value="Win64">True</Platform>
             </Platforms>
             <Deployment Version="3">
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\GLScene_Sounds_RT.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GLScene_Sounds_RT.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>GLScene_Sounds_RT.bpl</RemoteName>
                         <Overwrite>true</Overwrite>

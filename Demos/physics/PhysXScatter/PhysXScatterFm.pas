@@ -28,7 +28,7 @@ uses
   GLS.Gui,
   GLS.Windows,
 
-  Imports.PhysX;
+  Physics.PhysXImport;
 
 type
   TFormPhysXScatter = class(TForm)

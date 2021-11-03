@@ -132,8 +132,8 @@
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="vclimg.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
-        <DCCReference Include="..\Source\Imports.CgGL.pas"/>
-        <DCCReference Include="..\Source\Imports.Cg.pas"/>
+        <DCCReference Include="..\Source\Cg.GL.pas"/>
+        <DCCReference Include="..\Source\Cg.Import.pas"/>
         <DCCReference Include="..\Source\Cg.Shader.pas"/>
         <DCCReference Include="..\Source\Cg.BombShader.pas"/>
         <DCCReference Include="..\Source\Cg.PostTransformationShader.pas"/>

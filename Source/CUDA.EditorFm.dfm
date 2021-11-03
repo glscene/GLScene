@@ -2,32 +2,42 @@ object GLCUDAEditorForm: TGLCUDAEditorForm
   Left = 0
   Top = 0
   BorderStyle = bsSizeToolWin
-  ClientHeight = 286
-  ClientWidth = 234
+  ClientHeight = 385
+  ClientWidth = 740
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 17
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 234
-    Height = 22
+    Width = 740
+    Height = 109
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     AutoSize = True
+    ButtonHeight = 109
+    ButtonWidth = 113
     Caption = 'ToolBar1'
     Images = ImageList1
     TabOrder = 0
+    ExplicitWidth = 840
     object AddModuleButton: TToolButton
       Left = 0
       Top = 0
       Hint = 'Add Module'
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Add Module'
       ImageIndex = 0
       ParentShowHint = False
@@ -35,9 +45,13 @@ object GLCUDAEditorForm: TGLCUDAEditorForm
       OnClick = AddItemButtonClick
     end
     object AddMemDataButton: TToolButton
-      Left = 23
+      Left = 113
       Top = 0
       Hint = 'Add MemData'
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Add MemData'
       ImageIndex = 1
       ParentShowHint = False
@@ -45,9 +59,13 @@ object GLCUDAEditorForm: TGLCUDAEditorForm
       OnClick = AddItemButtonClick
     end
     object AddFFTPlanButton: TToolButton
-      Left = 46
+      Left = 226
       Top = 0
       Hint = 'Add FFTPlan'
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Add FFTPlan'
       ImageIndex = 2
       ParentShowHint = False
@@ -55,23 +73,35 @@ object GLCUDAEditorForm: TGLCUDAEditorForm
       OnClick = AddItemButtonClick
     end
     object AddGeometryResButton: TToolButton
-      Left = 69
+      Left = 339
       Top = 0
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Add OpenGL Geometry Resource'
       ImageIndex = 4
       OnClick = AddItemButtonClick
     end
     object AddImageResButton: TToolButton
-      Left = 92
+      Left = 452
       Top = 0
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Add OpenGL Image Resource'
       ImageIndex = 5
       OnClick = AddItemButtonClick
     end
     object DeleteButton: TToolButton
-      Left = 115
+      Left = 565
       Top = 0
       Hint = 'Delete Item'
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Delete Item'
       ImageIndex = 3
       ParentShowHint = False
@@ -81,18 +111,25 @@ object GLCUDAEditorForm: TGLCUDAEditorForm
   end
   object ListBox1: TListBox
     Left = 0
-    Top = 22
-    Width = 234
-    Height = 264
+    Top = 109
+    Width = 740
+    Height = 276
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alClient
-    ItemHeight = 13
+    ItemHeight = 17
     MultiSelect = True
     TabOrder = 1
     OnClick = ListBox1Click
+    ExplicitTop = 327
+    ExplicitWidth = 293
+    ExplicitHeight = 31
   end
   object ImageList1: TImageList
-    Left = 24
-    Top = 48
+    Left = 96
+    Top = 136
     Bitmap = {
       494C010106000800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020

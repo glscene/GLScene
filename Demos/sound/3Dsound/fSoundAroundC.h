@@ -25,7 +25,7 @@
 #include "GLS.Utils.hpp"
 #include "GLS.FileWAV.hpp"
 #include "GLS.FileMP3.hpp"
-#include "Imports.BASS.hpp"
+#include "Sounds.BASSImport.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

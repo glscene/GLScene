@@ -48,7 +48,7 @@ uses
   GLS.VectorTypes,
   GLS.Strings,
 
-  Imports.CUDAApi,
+  CUDA.Import,
   CUDA.RunTime;
 
 

@@ -2,25 +2,28 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Lining'
-  ClientHeight = 407
-  ClientWidth = 564
+  ClientHeight = 509
+  ClientWidth = 705
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 17
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 409
-    Height = 407
+    Width = 511
+    Height = 509
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Camera = GLCamera1
     Buffer.AntiAliasing = aa4xHQ
-    FieldOfView = 152.391708374023400000
+    FieldOfView = 157.770050048828100000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -28,52 +31,76 @@ object Form1: TForm1
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 409
+    Left = 511
     Top = 0
-    Width = 155
-    Height = 407
+    Width = 194
+    Height = 509
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alRight
     BevelOuter = bvSpace
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
+    Font.Height = -14
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
     TabOrder = 1
     object Label1: TLabel
-      Left = 17
-      Top = 226
-      Width = 50
-      Height = 13
+      Left = 21
+      Top = 283
+      Width = 64
+      Height = 17
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Drag with:'
     end
     object Label2: TLabel
-      Left = 17
-      Top = 242
-      Width = 123
-      Height = 13
+      Left = 21
+      Top = 303
+      Width = 160
+      Height = 17
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'LMB - move around scene'
     end
     object Label3: TLabel
-      Left = 17
-      Top = 258
-      Width = 89
-      Height = 13
+      Left = 21
+      Top = 323
+      Width = 113
+      Height = 17
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'RMB - rotate torus'
     end
     object Bevel1: TBevel
-      Left = 11
-      Top = 218
-      Width = 131
-      Height = 9
+      Left = 14
+      Top = 273
+      Width = 164
+      Height = 11
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Shape = bsTopLine
     end
     object CheckBox1: TCheckBox
-      Left = 9
-      Top = 186
-      Width = 131
-      Height = 17
+      Left = 11
+      Top = 233
+      Width = 164
+      Height = 21
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Outline Shader Enabled'
       Checked = True
       State = cbChecked
@@ -81,30 +108,42 @@ object Form1: TForm1
       OnClick = CheckBox1Click
     end
     object GroupBox1: TGroupBox
-      Left = 9
-      Top = 58
-      Width = 137
-      Height = 111
+      Left = 11
+      Top = 73
+      Width = 172
+      Height = 138
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Shader on Torus'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -14
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
       TabOrder = 1
       object Bevel2: TBevel
-        Left = 8
-        Top = 52
-        Width = 117
-        Height = 9
+        Left = 10
+        Top = 65
+        Width = 146
+        Height = 11
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Shape = bsTopLine
       end
       object CheckBox2: TCheckBox
-        Left = 10
-        Top = 16
-        Width = 97
-        Height = 17
+        Left = 13
+        Top = 20
+        Width = 121
+        Height = 21
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Enabled'
         Checked = True
         State = cbChecked
@@ -112,19 +151,27 @@ object Form1: TForm1
         OnClick = CheckBox2Click
       end
       object CheckBox3: TCheckBox
-        Left = 10
-        Top = 56
-        Width = 97
-        Height = 17
+        Left = 13
+        Top = 70
+        Width = 121
+        Height = 21
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Solid'
         TabOrder = 1
         OnClick = CheckBox3Click
       end
       object CheckBox4: TCheckBox
-        Left = 10
-        Top = 32
-        Width = 113
-        Height = 17
+        Left = 13
+        Top = 40
+        Width = 141
+        Height = 21
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Dotted Hidden Line'
         Checked = True
         State = cbChecked
@@ -132,19 +179,27 @@ object Form1: TForm1
         OnClick = CheckBox4Click
       end
       object CheckBox5: TCheckBox
-        Left = 26
-        Top = 72
-        Width = 79
-        Height = 17
+        Left = 33
+        Top = 90
+        Width = 98
+        Height = 21
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Surface Lit'
         TabOrder = 3
         OnClick = CheckBox5Click
       end
       object CheckBox6: TCheckBox
-        Left = 26
-        Top = 88
-        Width = 63
-        Height = 17
+        Left = 33
+        Top = 110
+        Width = 78
+        Height = 21
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Flat'
         TabOrder = 4
         OnClick = CheckBox6Click
@@ -153,15 +208,19 @@ object Form1: TForm1
     object Panel2: TPanel
       Left = 1
       Top = 1
-      Width = 153
-      Height = 43
+      Width = 192
+      Height = 54
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alTop
       BevelOuter = bvNone
       Caption = 'Lining Shaders'
       Color = clBtnHighlight
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -19
+      Font.Height = -24
       Font.Name = 'Trebuchet MS'
       Font.Style = [fsBold]
       ParentFont = False

@@ -25,7 +25,7 @@ uses
   GLS.Context,
   GLS.Scene,
 
-  Imports.SDL2,
+  SDL2.Import,
   GLS.SDLWindow;
 
 type

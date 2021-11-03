@@ -13,7 +13,7 @@ program RecorderD;
 
 uses
   Forms,
-  fMainD in 'fMainD.pas' {Form1};
+  fRecorderD in 'fRecorderD.pas' {Form1};
 
 {$R *.RES}
 

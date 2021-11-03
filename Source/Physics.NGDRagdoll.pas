@@ -13,7 +13,7 @@ uses
   GLS.VectorGeometry,
   GLS.VectorTypes,
   GLS.VectorFileObjects,
-  Imports.NGD;
+  Physics.NGDImport;
 
 type
   TNewtonRagdoll = class

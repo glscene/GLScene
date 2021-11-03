@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 
-#ifndef fDyncubeMapCH
-#define fDyncubeMapCH
+#ifndef fDynCubemapCH
+#define fDynCubemapCH
 
 //---------------------------------------------------------------------------
 
@@ -64,7 +64,6 @@ private:	// User declarations
 	bool CubmapSupported;
 	bool CubeMapWarnDone;
 	void __fastcall GenerateCubeMap();
-
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm1 *Form1;

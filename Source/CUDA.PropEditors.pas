@@ -14,7 +14,7 @@ uses
   DesignEditors,
   DesignIntf,
 
-  CUDA.API,
+  CUDA.APIComps,
   CUDA.Context,
   CUDA.Compiler,
   CUDA.Parser,

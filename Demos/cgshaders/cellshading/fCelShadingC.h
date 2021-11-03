@@ -20,7 +20,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.FileMD2.hpp"
 #include "GLS.Utils.hpp"
-#include "Imports.cgGL.hpp"
+#include "Cg.GL.hpp"
 #include "Cg.Shader.hpp"
 
 //---------------------------------------------------------------------------

@@ -29,7 +29,7 @@ uses
   VCLEditors,
   GLS.Strings,
 
-  CUDA.API,
+  CUDA.APIComps,
   CUDA.FFTPlan,
   CUDA.Graphics;
 

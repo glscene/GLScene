@@ -35,15 +35,15 @@ requires
   GLScene_RT;
 
 contains
-  Imports.FMOD in '..\Source\Imports.FMOD.pas',
-  Imports.FMODpresets in '..\Source\Imports.FMODpresets.pas',
-  Imports.FMODtypes in '..\Source\Imports.FMODtypes.pas',
-  Imports.FMODerrors in '..\Source\Imports.FMODerrors.pas',
-  Imports.OpenAL in '..\Source\Imports.OpenAL.pas',
+  Sounds.FMODImport in '..\Source\Sounds.FMODImport.pas',
+  Sounds.FMODpresets in '..\Source\Sounds.FMODpresets.pas',
+  Sounds.FMODtypes in '..\Source\Sounds.FMODtypes.pas',
+  Sounds.FMODerrors in '..\Source\Sounds.FMODerrors.pas',
+  Sounds.OpenALImport in '..\Source\Sounds.OpenALImport.pas',
   Sounds.BASS in '..\Source\Sounds.BASS.pas',
   Sounds.FMOD in '..\Source\Sounds.FMOD.pas',
   Sounds.OpenAL in '..\Source\Sounds.OpenAL.pas',
   Sounds.WaveOut in '..\Source\Sounds.WaveOut.pas',
-  Imports.BASS in '..\Source\Imports.BASS.pas';
+  Sounds.BASSImport in '..\Source\Sounds.BASSImport.pas';
 
 end.

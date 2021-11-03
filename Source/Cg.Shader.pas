@@ -25,8 +25,8 @@ uses
   GLS.Material,
   GLS.TextureFormat,
 
-  Imports.Cg,
-  Imports.cgGL;
+  Cg.Import,
+  Cg.GL;
 
 {.$I GLScene.inc}
 { .$DEFINE OutputCompilerWarnings }

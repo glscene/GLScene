@@ -3,31 +3,31 @@
         <ProjectGuid>{E0C70AF5-D1F7-41A0-A60F-F71B530ED67A}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="fxy\Fxy.dproj">
+        <Projects Include="fxy\FxyD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="fxy\FxyC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="heightfield\HeightField.dproj">
+        <Projects Include="heightfield\HeightFieldD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="heightfield\HeightfieldC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="points\Points.dproj">
+        <Projects Include="points\PointsD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="points\PointsC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="projection\Projection.dproj">
+        <Projects Include="projection\ProjectionD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="projection\ProjectionC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="splines\Splines.dproj">
+        <Projects Include="splines\SplinesD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="splines\SplinesC.cbproj">
@@ -41,14 +41,14 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="Fxy">
-        <MSBuild Projects="fxy\Fxy.dproj"/>
+    <Target Name="FxyD">
+        <MSBuild Projects="fxy\FxyD.dproj"/>
     </Target>
-    <Target Name="Fxy:Clean">
-        <MSBuild Projects="fxy\Fxy.dproj" Targets="Clean"/>
+    <Target Name="FxyD:Clean">
+        <MSBuild Projects="fxy\FxyD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Fxy:Make">
-        <MSBuild Projects="fxy\Fxy.dproj" Targets="Make"/>
+    <Target Name="FxyD:Make">
+        <MSBuild Projects="fxy\FxyD.dproj" Targets="Make"/>
     </Target>
     <Target Name="FxyC">
         <MSBuild Projects="fxy\FxyC.cbproj"/>
@@ -59,14 +59,14 @@
     <Target Name="FxyC:Make">
         <MSBuild Projects="fxy\FxyC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="HeightField">
-        <MSBuild Projects="heightfield\HeightField.dproj"/>
+    <Target Name="HeightFieldD">
+        <MSBuild Projects="heightfield\HeightFieldD.dproj"/>
     </Target>
-    <Target Name="HeightField:Clean">
-        <MSBuild Projects="heightfield\HeightField.dproj" Targets="Clean"/>
+    <Target Name="HeightFieldD:Clean">
+        <MSBuild Projects="heightfield\HeightFieldD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="HeightField:Make">
-        <MSBuild Projects="heightfield\HeightField.dproj" Targets="Make"/>
+    <Target Name="HeightFieldD:Make">
+        <MSBuild Projects="heightfield\HeightFieldD.dproj" Targets="Make"/>
     </Target>
     <Target Name="HeightfieldC">
         <MSBuild Projects="heightfield\HeightfieldC.cbproj"/>
@@ -77,14 +77,14 @@
     <Target Name="HeightfieldC:Make">
         <MSBuild Projects="heightfield\HeightfieldC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Points">
-        <MSBuild Projects="points\Points.dproj"/>
+    <Target Name="PointsD">
+        <MSBuild Projects="points\PointsD.dproj"/>
     </Target>
-    <Target Name="Points:Clean">
-        <MSBuild Projects="points\Points.dproj" Targets="Clean"/>
+    <Target Name="PointsD:Clean">
+        <MSBuild Projects="points\PointsD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Points:Make">
-        <MSBuild Projects="points\Points.dproj" Targets="Make"/>
+    <Target Name="PointsD:Make">
+        <MSBuild Projects="points\PointsD.dproj" Targets="Make"/>
     </Target>
     <Target Name="PointsC">
         <MSBuild Projects="points\PointsC.cbproj"/>
@@ -95,14 +95,14 @@
     <Target Name="PointsC:Make">
         <MSBuild Projects="points\PointsC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Projection">
-        <MSBuild Projects="projection\Projection.dproj"/>
+    <Target Name="ProjectionD">
+        <MSBuild Projects="projection\ProjectionD.dproj"/>
     </Target>
-    <Target Name="Projection:Clean">
-        <MSBuild Projects="projection\Projection.dproj" Targets="Clean"/>
+    <Target Name="ProjectionD:Clean">
+        <MSBuild Projects="projection\ProjectionD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Projection:Make">
-        <MSBuild Projects="projection\Projection.dproj" Targets="Make"/>
+    <Target Name="ProjectionD:Make">
+        <MSBuild Projects="projection\ProjectionD.dproj" Targets="Make"/>
     </Target>
     <Target Name="ProjectionC">
         <MSBuild Projects="projection\ProjectionC.cbproj"/>
@@ -113,14 +113,14 @@
     <Target Name="ProjectionC:Make">
         <MSBuild Projects="projection\ProjectionC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Splines">
-        <MSBuild Projects="splines\Splines.dproj"/>
+    <Target Name="SplinesD">
+        <MSBuild Projects="splines\SplinesD.dproj"/>
     </Target>
-    <Target Name="Splines:Clean">
-        <MSBuild Projects="splines\Splines.dproj" Targets="Clean"/>
+    <Target Name="SplinesD:Clean">
+        <MSBuild Projects="splines\SplinesD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Splines:Make">
-        <MSBuild Projects="splines\Splines.dproj" Targets="Make"/>
+    <Target Name="SplinesD:Make">
+        <MSBuild Projects="splines\SplinesD.dproj" Targets="Make"/>
     </Target>
     <Target Name="SplinesC">
         <MSBuild Projects="splines\SplinesC.cbproj"/>
@@ -132,13 +132,13 @@
         <MSBuild Projects="splines\SplinesC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="Fxy;FxyC;HeightField;HeightfieldC;Points;PointsC;Projection;ProjectionC;Splines;SplinesC"/>
+        <CallTarget Targets="FxyD;FxyC;HeightFieldD;HeightfieldC;PointsD;PointsC;ProjectionD;ProjectionC;SplinesD;SplinesC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Fxy:Clean;FxyC:Clean;HeightField:Clean;HeightfieldC:Clean;Points:Clean;PointsC:Clean;Projection:Clean;ProjectionC:Clean;Splines:Clean;SplinesC:Clean"/>
+        <CallTarget Targets="FxyD:Clean;FxyC:Clean;HeightFieldD:Clean;HeightfieldC:Clean;PointsD:Clean;PointsC:Clean;ProjectionD:Clean;ProjectionC:Clean;SplinesD:Clean;SplinesC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Fxy:Make;FxyC:Make;HeightField:Make;HeightfieldC:Make;Points:Make;PointsC:Make;Projection:Make;ProjectionC:Make;Splines:Make;SplinesC:Make"/>
+        <CallTarget Targets="FxyD:Make;FxyC:Make;HeightFieldD:Make;HeightfieldC:Make;PointsD:Make;PointsC:Make;ProjectionD:Make;ProjectionC:Make;SplinesD:Make;SplinesC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

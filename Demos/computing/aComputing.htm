@@ -8,9 +8,6 @@
 <!--
  /* Font Definitions */
  @font-face
-	{font-family:Wingdings;
-	panose-1:5 0 0 0 0 0 0 0 0 0;}
-@font-face
 	{font-family:"Cambria Math";
 	panose-1:2 4 5 3 5 4 6 3 2 4;}
 @font-face
@@ -44,6 +41,12 @@ span.a
 	{mso-style-name:"\0422\0435\043A\0441\0442 \0417\043D\0430\043A";
 	mso-style-link:\0422\0435\043A\0441\0442;
 	font-family:Consolas;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:10.0pt;
+	font-family:"Times New Roman",serif;}
 .MsoChpDefault
 	{font-size:10.0pt;}
 @page WordSection1
@@ -66,11 +69,12 @@ ul
 <div class=WordSection1>
 
 <p class=MsoPlainText><b><span lang=FR style='font-size:13.5pt;font-family:
-"Courier New"'>Collisions&nbsp;:</span></b></p>
+"Courier New"'>GPU Computing&nbsp;: CUDA and OpenCL</span></b></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="FastFT.dpr"><b>FastFT</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a
+     href="FastFourierTransformation/uCPUFFT.pas"><b>FastFT</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>Fast Fourier Transformation for 1d/2d
       signals</span></li>
   <li class=MsoNormal><span lang=FR>with a complex (high poly) mesh</span></li>
@@ -79,32 +83,41 @@ ul
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=624 height=317 src=FastFT.jpg></p>
+<p class=MsoNormal><img border=0 width=454 height=230 src=FastFT.jpg></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="Fluids.dpr"><b>Fluids</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="StableFluids/Fluids_kernels.cu"><b>Fluids</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>testing for fluids</span></li>
  </ul>
- <li class=MsoNormal><span lang=FR><a href="PostProcessing.dpr"><b>PostProcessing</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+ <li class=MsoNormal><span lang=FR><a
+     href="PostProcessing/PostProcessing_kernel.cu"><b>PostProcessing</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>accurate calculation for</span></li>
   <li class=MsoNormal><span lang=FR>cubes (test case)</span></li>
   <li class=MsoNormal><span lang=FR>moving objects in 3D with the mouse</span></li>
  </ul>
- <li class=MsoNormal><span lang=FR><a href="ScalarProduct.dpr"><b>ScalarProduct</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+</ul>
+
+<p class=MsoNormal><img border=0 width=457 height=302 src=PostProcessing.jpg></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a
+     href="ScalarProduct/ScalarProduct_kernel.cu"><b>ScalarProduct</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>basic scalar product</span></li>
   <li class=MsoNormal><span lang=FR>finding mesh surface point and normal below
       mouse</span></li>
  </ul>
- <li class=MsoNormal><span lang=FR><a href="SimpleTexture.dpr"><b>SimpleTexture</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+ <li class=MsoNormal><span lang=FR><a
+     href="SimpleCUDATexture/SimpleTexture_kernel.cu"><b>SimpleTexture</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>simple demo showing how to use textures in
       GPU computations</span></li>
  </ul>
- <li class=MsoNormal><span lang=FR><a href="VertexGeneration.dpr"><b>VertexGeneration</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+ <li class=MsoNormal><span lang=FR><a
+     href="VertexDataGeneration/Simple%20kernel.cu"><b>VertexGeneration</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>vertex generation to get high poly mesh</span></li>
   <li class=MsoNormal><span lang=FR>using the octree to speed up GPU
       computations</span></li>

@@ -65,7 +65,7 @@ implementation
 // ---------------------------------------------------------------------
 
 uses
-  Imports.OpenAL {al, alut, alTypes};
+  Sounds.OpenALImport {al, alut, alTypes};
 
 // checks for an error and raises an exception if necessary
 procedure CheckOpenALError;

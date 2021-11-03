@@ -23,8 +23,6 @@ TForm1 *Form1;
 
 // ---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {
-	TAffineVector av = {-250, 0, 0};
-	((TGLODEDynamic*)Pin2->Behaviours->Items[0])->AddForce(av);
 }
 
 // ---------------------------------------------------------------------------

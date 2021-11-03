@@ -32,7 +32,7 @@
 #include "Sounds.BASS.hpp"
 #include "GLS.FileWAV.hpp"
 #include "Jpeg.hpp"
-#include "Imports.Bass.hpp"
+#include "Sounds.BassImport.hpp"
 #include "GLS.FileMP3.hpp"
 #include "GLS.ThorFX.hpp"
 #include "GLS.FireFX.hpp"

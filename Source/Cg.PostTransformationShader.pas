@@ -22,8 +22,8 @@ uses
   GLS.RenderContextInfo,
   GLS.TextureFormat,
 
-  Imports.Cg,
-  Imports.CgGL,
+  Cg.Import,
+  Cg.GL,
   Cg.Shader,
   GLSL.CustomShader;
 

@@ -5,8 +5,11 @@ interface
 
 uses
   System.SysUtils, System.Classes,
-  Vcl.Graphics, Vcl.Forms, Vcl.Controls, Vcl.StdCtrls,
-  Vcl.Buttons, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Shell.ShellCtrls;
+  Vcl.Graphics, Vcl.Forms,
+  Vcl.Controls, Vcl.StdCtrls,
+  Vcl.Buttons, Vcl.ExtCtrls,
+  Vcl.ComCtrls,
+  Vcl.Shell.ShellCtrls;
 
 type
   TFolderSel = class(TForm)

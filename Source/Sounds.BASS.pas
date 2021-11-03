@@ -24,7 +24,7 @@ uses
   GLS.VectorTypes,
   GLS.VectorGeometry,
 
-  Imports.BASS;
+  Sounds.BASSImport;
 
 type
   TBASS3DAlgorithm = (algDefault, algOff, algFull, algLight);

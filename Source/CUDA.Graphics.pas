@@ -15,8 +15,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  Imports.CUDAApi,
-  CUDA.API,
+  CUDA.Import,
+  CUDA.APIComps,
 
   GLS.Context,
   GLS.State,
@@ -923,7 +923,7 @@ procedure TCUDACustomFeedBackMesh.LaunchKernels;
 var
   i: Integer;
   GeomRes: TCUDAGeometryResource;
-//  IR: TCUDAGLImageResource;
+  //IR: TCUDAImageResource;
 begin
 
   if Assigned(FGeometryResource) then

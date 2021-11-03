@@ -103,7 +103,7 @@ object Form1: TForm1
       WordWrap = False
     end
   end
-  object GLDelphiWebScriptII1: TGLDelphiWebScriptII
+  object GLDelphiWebScript: TGLDelphiWebScript
     Config.CompilerOptions = []
     Config.MaxDataSize = 0
     Config.Timeout = 0
@@ -111,7 +111,7 @@ object Form1: TForm1
     Top = 8
   end
   object dws2OpenGLxUnit1: Tdws2OpenGLxUnit
-    Script = GLDelphiWebScriptII1
+    Script = GLDelphiWebScript
     Left = 496
     Top = 8
   end
@@ -166,7 +166,7 @@ object Form1: TForm1
     Top = 8
   end
   object dws2VectorGeometryUnit1: Tdws2VectorGeometryUnit
-    Script = GLDelphiWebScriptII1
+    Script = GLDelphiWebScript
     Left = 464
     Top = 8
   end

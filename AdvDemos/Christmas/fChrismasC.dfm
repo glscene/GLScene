@@ -4,15 +4,14 @@ object Form1: TForm1
   Align = alClient
   BorderStyle = bsNone
   Caption = 'Christmas'
-  ClientHeight = 537
-  ClientWidth = 685
+  ClientHeight = 839
+  ClientWidth = 1070
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Visible = True
   WindowState = wsMaximized
   OnCreate = FormCreate
@@ -20,25 +19,31 @@ object Form1: TForm1
   OnKeyPress = FormKeyPress
   OnMouseWheel = FormMouseWheel
   OnResize = FormResize
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 17
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 685
-    Height = 537
+    Width = 1070
+    Height = 839
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Camera = Camera
     Buffer.BackgroundColor = clBlack
     Buffer.AmbientColor.Color = {0000803F0000803F0000803F0000803F}
     Buffer.ContextOptions = [roDoubleBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aa2x
-    FieldOfView = 158.902450561523400000
+    FieldOfView = 166.406021118164100000
     PenAsTouch = False
     Align = alClient
     OnDblClick = ViewerDblClick
     OnMouseDown = ViewerMouseDown
     OnMouseMove = ViewerMouseMove
     TabOrder = 0
+    ExplicitWidth = 856
+    ExplicitHeight = 671
   end
   object GLSMBASS: TGLSMBASS
     Active = True

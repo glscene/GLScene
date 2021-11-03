@@ -17,7 +17,7 @@ uses
 
   GLS.SceneRegister,
 
-  CUDA.API,
+  CUDA.APIComps,
   CUDA.Context,
   CUDA.PropEditors;
 
@@ -38,7 +38,7 @@ uses
 
 procedure Register;
 begin
-  RegisterComponents('GLScene Parallel Computing', [TGLCUDA, TGLCUDADevice, TGLCUDACompiler]);
+  RegisterComponents('GLScene GPU Computing', [TGLCUDA, TGLCUDADevice, TGLCUDACompiler]);
   RegisterComponentEditor(TGLCUDA, TGLCUDAEditor);
   RegisterComponentEditor(TGLCUDACompiler, TGLCUDACompilerEditor);
   RegisterPropertyEditor(TypeInfo(string), TGLCUDACompiler, 'ProjectModule',

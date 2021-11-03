@@ -3,49 +3,55 @@
         <ProjectGuid>{9B780FAA-D85C-4EC7-867D-81ACBBFB2E47}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="BumpShader\BumpShader.dproj">
+        <Projects Include="BumpShader\BumpShaderD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="BumpShader\BumpShaderC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="DiffuseSpecularShader\DiffuseShader.dproj">
+        <Projects Include="DiffuseSpecularShader\DiffuseShaderD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="DiffuseSpecularShader\DiffuseSpecularShaderC.cbproj">
+        <Projects Include="DiffuseSpecularShader\DiffuseShaderC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="LiningShaders\LiningShaders.dproj">
+        <Projects Include="LiningShaders\LiningShadersD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="LiningShaders\LiningShadersC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Ocean\Ocean.dproj">
+        <Projects Include="Ocean\OceanD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Ocean\OceanC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="PostShader\PostShader.dproj">
+        <Projects Include="PostShader\PostShaderD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="PostShader\PostShaderC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="GLSLShaderComponent\ShaderComponent.dproj">
+        <Projects Include="GLSLProjectedTexture\ProjectTextureD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="GLSLShaderComponent\ShaderComponentC.cbproj">
+        <Projects Include="GLSLProjectedTexture\ProjectTextureC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLSLShaderComponent\ShaderCompD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLSLShaderComponent\ShaderCompC.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="SimpleGLSL\SimpleShaderC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="ShadersLab\ShadersLab.dproj">
+        <Projects Include="ShadersLab\ShadersLabD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="SkyboxShader\SkyboxShader.dproj">
+        <Projects Include="SkyboxShader\SkyboxShaderD.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -56,14 +62,14 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="BumpShader">
-        <MSBuild Projects="BumpShader\BumpShader.dproj"/>
+    <Target Name="BumpShaderD">
+        <MSBuild Projects="BumpShader\BumpShaderD.dproj"/>
     </Target>
-    <Target Name="BumpShader:Clean">
-        <MSBuild Projects="BumpShader\BumpShader.dproj" Targets="Clean"/>
+    <Target Name="BumpShaderD:Clean">
+        <MSBuild Projects="BumpShader\BumpShaderD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="BumpShader:Make">
-        <MSBuild Projects="BumpShader\BumpShader.dproj" Targets="Make"/>
+    <Target Name="BumpShaderD:Make">
+        <MSBuild Projects="BumpShader\BumpShaderD.dproj" Targets="Make"/>
     </Target>
     <Target Name="BumpShaderC">
         <MSBuild Projects="BumpShader\BumpShaderC.cbproj"/>
@@ -74,32 +80,32 @@
     <Target Name="BumpShaderC:Make">
         <MSBuild Projects="BumpShader\BumpShaderC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="DiffuseShader">
-        <MSBuild Projects="DiffuseSpecularShader\DiffuseShader.dproj"/>
+    <Target Name="DiffuseShaderD">
+        <MSBuild Projects="DiffuseSpecularShader\DiffuseShaderD.dproj"/>
     </Target>
-    <Target Name="DiffuseShader:Clean">
-        <MSBuild Projects="DiffuseSpecularShader\DiffuseShader.dproj" Targets="Clean"/>
+    <Target Name="DiffuseShaderD:Clean">
+        <MSBuild Projects="DiffuseSpecularShader\DiffuseShaderD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="DiffuseShader:Make">
-        <MSBuild Projects="DiffuseSpecularShader\DiffuseShader.dproj" Targets="Make"/>
+    <Target Name="DiffuseShaderD:Make">
+        <MSBuild Projects="DiffuseSpecularShader\DiffuseShaderD.dproj" Targets="Make"/>
     </Target>
-    <Target Name="DiffuseSpecularShaderC">
-        <MSBuild Projects="DiffuseSpecularShader\DiffuseSpecularShaderC.cbproj"/>
+    <Target Name="DiffuseShaderC">
+        <MSBuild Projects="DiffuseSpecularShader\DiffuseShaderC.cbproj"/>
     </Target>
-    <Target Name="DiffuseSpecularShaderC:Clean">
-        <MSBuild Projects="DiffuseSpecularShader\DiffuseSpecularShaderC.cbproj" Targets="Clean"/>
+    <Target Name="DiffuseShaderC:Clean">
+        <MSBuild Projects="DiffuseSpecularShader\DiffuseShaderC.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="DiffuseSpecularShaderC:Make">
-        <MSBuild Projects="DiffuseSpecularShader\DiffuseSpecularShaderC.cbproj" Targets="Make"/>
+    <Target Name="DiffuseShaderC:Make">
+        <MSBuild Projects="DiffuseSpecularShader\DiffuseShaderC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="LiningShaders">
-        <MSBuild Projects="LiningShaders\LiningShaders.dproj"/>
+    <Target Name="LiningShadersD">
+        <MSBuild Projects="LiningShaders\LiningShadersD.dproj"/>
     </Target>
-    <Target Name="LiningShaders:Clean">
-        <MSBuild Projects="LiningShaders\LiningShaders.dproj" Targets="Clean"/>
+    <Target Name="LiningShadersD:Clean">
+        <MSBuild Projects="LiningShaders\LiningShadersD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="LiningShaders:Make">
-        <MSBuild Projects="LiningShaders\LiningShaders.dproj" Targets="Make"/>
+    <Target Name="LiningShadersD:Make">
+        <MSBuild Projects="LiningShaders\LiningShadersD.dproj" Targets="Make"/>
     </Target>
     <Target Name="LiningShadersC">
         <MSBuild Projects="LiningShaders\LiningShadersC.cbproj"/>
@@ -110,14 +116,14 @@
     <Target Name="LiningShadersC:Make">
         <MSBuild Projects="LiningShaders\LiningShadersC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Ocean">
-        <MSBuild Projects="Ocean\Ocean.dproj"/>
+    <Target Name="OceanD">
+        <MSBuild Projects="Ocean\OceanD.dproj"/>
     </Target>
-    <Target Name="Ocean:Clean">
-        <MSBuild Projects="Ocean\Ocean.dproj" Targets="Clean"/>
+    <Target Name="OceanD:Clean">
+        <MSBuild Projects="Ocean\OceanD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Ocean:Make">
-        <MSBuild Projects="Ocean\Ocean.dproj" Targets="Make"/>
+    <Target Name="OceanD:Make">
+        <MSBuild Projects="Ocean\OceanD.dproj" Targets="Make"/>
     </Target>
     <Target Name="OceanC">
         <MSBuild Projects="Ocean\OceanC.cbproj"/>
@@ -128,14 +134,14 @@
     <Target Name="OceanC:Make">
         <MSBuild Projects="Ocean\OceanC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="PostShader">
-        <MSBuild Projects="PostShader\PostShader.dproj"/>
+    <Target Name="PostShaderD">
+        <MSBuild Projects="PostShader\PostShaderD.dproj"/>
     </Target>
-    <Target Name="PostShader:Clean">
-        <MSBuild Projects="PostShader\PostShader.dproj" Targets="Clean"/>
+    <Target Name="PostShaderD:Clean">
+        <MSBuild Projects="PostShader\PostShaderD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="PostShader:Make">
-        <MSBuild Projects="PostShader\PostShader.dproj" Targets="Make"/>
+    <Target Name="PostShaderD:Make">
+        <MSBuild Projects="PostShader\PostShaderD.dproj" Targets="Make"/>
     </Target>
     <Target Name="PostShaderC">
         <MSBuild Projects="PostShader\PostShaderC.cbproj"/>
@@ -146,23 +152,41 @@
     <Target Name="PostShaderC:Make">
         <MSBuild Projects="PostShader\PostShaderC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="ShaderComponent">
-        <MSBuild Projects="GLSLShaderComponent\ShaderComponent.dproj"/>
+    <Target Name="ProjectTextureD">
+        <MSBuild Projects="GLSLProjectedTexture\ProjectTextureD.dproj"/>
     </Target>
-    <Target Name="ShaderComponent:Clean">
-        <MSBuild Projects="GLSLShaderComponent\ShaderComponent.dproj" Targets="Clean"/>
+    <Target Name="ProjectTextureD:Clean">
+        <MSBuild Projects="GLSLProjectedTexture\ProjectTextureD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="ShaderComponent:Make">
-        <MSBuild Projects="GLSLShaderComponent\ShaderComponent.dproj" Targets="Make"/>
+    <Target Name="ProjectTextureD:Make">
+        <MSBuild Projects="GLSLProjectedTexture\ProjectTextureD.dproj" Targets="Make"/>
     </Target>
-    <Target Name="ShaderComponentC">
-        <MSBuild Projects="GLSLShaderComponent\ShaderComponentC.cbproj"/>
+    <Target Name="ProjectTextureC">
+        <MSBuild Projects="GLSLProjectedTexture\ProjectTextureC.cbproj"/>
     </Target>
-    <Target Name="ShaderComponentC:Clean">
-        <MSBuild Projects="GLSLShaderComponent\ShaderComponentC.cbproj" Targets="Clean"/>
+    <Target Name="ProjectTextureC:Clean">
+        <MSBuild Projects="GLSLProjectedTexture\ProjectTextureC.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="ShaderComponentC:Make">
-        <MSBuild Projects="GLSLShaderComponent\ShaderComponentC.cbproj" Targets="Make"/>
+    <Target Name="ProjectTextureC:Make">
+        <MSBuild Projects="GLSLProjectedTexture\ProjectTextureC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="ShaderCompD">
+        <MSBuild Projects="GLSLShaderComponent\ShaderCompD.dproj"/>
+    </Target>
+    <Target Name="ShaderCompD:Clean">
+        <MSBuild Projects="GLSLShaderComponent\ShaderCompD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ShaderCompD:Make">
+        <MSBuild Projects="GLSLShaderComponent\ShaderCompD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ShaderCompC">
+        <MSBuild Projects="GLSLShaderComponent\ShaderCompC.cbproj"/>
+    </Target>
+    <Target Name="ShaderCompC:Clean">
+        <MSBuild Projects="GLSLShaderComponent\ShaderCompC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ShaderCompC:Make">
+        <MSBuild Projects="GLSLShaderComponent\ShaderCompC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="SimpleShaderC">
         <MSBuild Projects="SimpleGLSL\SimpleShaderC.cbproj"/>
@@ -173,32 +197,32 @@
     <Target Name="SimpleShaderC:Make">
         <MSBuild Projects="SimpleGLSL\SimpleShaderC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="ShadersLab">
-        <MSBuild Projects="ShadersLab\ShadersLab.dproj"/>
+    <Target Name="ShadersLabD">
+        <MSBuild Projects="ShadersLab\ShadersLabD.dproj"/>
     </Target>
-    <Target Name="ShadersLab:Clean">
-        <MSBuild Projects="ShadersLab\ShadersLab.dproj" Targets="Clean"/>
+    <Target Name="ShadersLabD:Clean">
+        <MSBuild Projects="ShadersLab\ShadersLabD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="ShadersLab:Make">
-        <MSBuild Projects="ShadersLab\ShadersLab.dproj" Targets="Make"/>
+    <Target Name="ShadersLabD:Make">
+        <MSBuild Projects="ShadersLab\ShadersLabD.dproj" Targets="Make"/>
     </Target>
-    <Target Name="SkyboxShader">
-        <MSBuild Projects="SkyboxShader\SkyboxShader.dproj"/>
+    <Target Name="SkyboxShaderD">
+        <MSBuild Projects="SkyboxShader\SkyboxShaderD.dproj"/>
     </Target>
-    <Target Name="SkyboxShader:Clean">
-        <MSBuild Projects="SkyboxShader\SkyboxShader.dproj" Targets="Clean"/>
+    <Target Name="SkyboxShaderD:Clean">
+        <MSBuild Projects="SkyboxShader\SkyboxShaderD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="SkyboxShader:Make">
-        <MSBuild Projects="SkyboxShader\SkyboxShader.dproj" Targets="Make"/>
+    <Target Name="SkyboxShaderD:Make">
+        <MSBuild Projects="SkyboxShader\SkyboxShaderD.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="BumpShader;BumpShaderC;DiffuseShader;DiffuseSpecularShaderC;LiningShaders;LiningShadersC;Ocean;OceanC;PostShader;PostShaderC;ShaderComponent;ShaderComponentC;SimpleShaderC;ShadersLab;SkyboxShader"/>
+        <CallTarget Targets="BumpShaderD;BumpShaderC;DiffuseShaderD;DiffuseShaderC;LiningShadersD;LiningShadersC;OceanD;OceanC;PostShaderD;PostShaderC;ProjectTextureD;ProjectTextureC;ShaderCompD;ShaderCompC;SimpleShaderC;ShadersLabD;SkyboxShaderD"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="BumpShader:Clean;BumpShaderC:Clean;DiffuseShader:Clean;DiffuseSpecularShaderC:Clean;LiningShaders:Clean;LiningShadersC:Clean;Ocean:Clean;OceanC:Clean;PostShader:Clean;PostShaderC:Clean;ShaderComponent:Clean;ShaderComponentC:Clean;SimpleShaderC:Clean;ShadersLab:Clean;SkyboxShader:Clean"/>
+        <CallTarget Targets="BumpShaderD:Clean;BumpShaderC:Clean;DiffuseShaderD:Clean;DiffuseShaderC:Clean;LiningShadersD:Clean;LiningShadersC:Clean;OceanD:Clean;OceanC:Clean;PostShaderD:Clean;PostShaderC:Clean;ProjectTextureD:Clean;ProjectTextureC:Clean;ShaderCompD:Clean;ShaderCompC:Clean;SimpleShaderC:Clean;ShadersLabD:Clean;SkyboxShaderD:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="BumpShader:Make;BumpShaderC:Make;DiffuseShader:Make;DiffuseSpecularShaderC:Make;LiningShaders:Make;LiningShadersC:Make;Ocean:Make;OceanC:Make;PostShader:Make;PostShaderC:Make;ShaderComponent:Make;ShaderComponentC:Make;SimpleShaderC:Make;ShadersLab:Make;SkyboxShader:Make"/>
+        <CallTarget Targets="BumpShaderD:Make;BumpShaderC:Make;DiffuseShaderD:Make;DiffuseShaderC:Make;LiningShadersD:Make;LiningShadersC:Make;OceanD:Make;OceanC:Make;PostShaderD:Make;PostShaderC:Make;ProjectTextureD:Make;ProjectTextureC:Make;ShaderCompD:Make;ShaderCompC:Make;SimpleShaderC:Make;ShadersLabD:Make;SkyboxShaderD:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

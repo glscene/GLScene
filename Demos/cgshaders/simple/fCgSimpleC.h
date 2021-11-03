@@ -21,8 +21,8 @@
 #include "GLS.Objects.hpp"
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.File3DS.hpp"
-#include "Imports.Cg.hpp"
-#include "Imports.cgGL.hpp"
+#include "Cg.Import.hpp"
+#include "Cg.GL.hpp"
 #include "Cg.Shader.hpp"
 
 //---------------------------------------------------------------------------

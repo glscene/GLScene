@@ -30,6 +30,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender) {
 		->Material->FrontProperties->Emission->Color = clrGray50;
 	GLMaterialLibrary->AddTextureMaterial("wood", "ashwood.jpg")
 		->Material->FaceCulling = fcNoCull;
+
 	GLMaterialLibrary->AddTextureMaterial("stone", "walkway.jpg")
 		->Material->FrontProperties->Emission->Color = clrGray50;
 	GLMaterialLibrary->AddTextureMaterial("stone", "walkway.jpg")
@@ -41,10 +42,7 @@ void __fastcall TForm1::DirectOpenGL1Render(TObject *Sender,
 	TGLRenderContextInfo &rci)
 
 {
-	TGLLibMaterial *Material;
-	// disable face culling
-	//glDisable(GL_CULL_FACE);
-
+	glDisable(GL_CULL_FACE);
 	// 1st quad, textured with 'wood', using standard method
 	GLMaterialLibrary->ApplyMaterial("wood", rci);
 	glBegin(GL_QUADS);
@@ -59,10 +57,9 @@ void __fastcall TForm1::DirectOpenGL1Render(TObject *Sender,
 	glEnd;
 	GLMaterialLibrary->UnApplyMaterial(rci);
 	// 2nd quad, textured with 'stone'
-	// we "manually" apply the material, this can be usefull if you want to have
+	// we could apply the material "manually", but this can be usefull if you want to have
 	// some dynamic material control
-	Material = GLMaterialLibrary->Materials->GetLibMaterialByName("stone");
-	Material->Material->Apply(rci); //  - unconsistent content
+	GLMaterialLibrary->ApplyMaterial("stone", rci);
 	glBegin(GL_QUADS);
 	glTexCoord2f(0, 1);
 	glVertex3f(0.5, -0.5, -0.5);
@@ -73,8 +70,7 @@ void __fastcall TForm1::DirectOpenGL1Render(TObject *Sender,
 	glTexCoord2f(1, 1);
 	glVertex3f(-0.5, -0.5, -0.5);
 	glEnd;
-	Material->Material->UnApply(rci);
-	// enable face culling again
+	GLMaterialLibrary->UnApplyMaterial(rci);
 	glEnable(GL_CULL_FACE);
 }
 // ---------------------------------------------------------------------------

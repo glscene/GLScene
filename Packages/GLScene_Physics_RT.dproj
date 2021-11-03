@@ -149,12 +149,11 @@
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
-        <DCCReference Include="..\Source\Imports.ModuleLoader.pas"/>
-        <DCCReference Include="..\Source\Imports.NGD.pas"/>
-        <DCCReference Include="..\Source\Imports.ODE.pas"/>
-        <DCCReference Include="..\Source\Imports.PhysX.pas"/>
+        <DCCReference Include="..\Source\Physics.NGDImport.pas"/>
         <DCCReference Include="..\Source\Physics.NGDManager.pas"/>
         <DCCReference Include="..\Source\Physics.NGDRagdoll.pas"/>
+        <DCCReference Include="..\Source\Physics.NewtonImport.pas"/>
+        <DCCReference Include="..\Source\Physics.ODEImport.pas"/>
         <DCCReference Include="..\Source\Physics.ODEManager.pas"/>
         <DCCReference Include="..\Source\Physics.ODERagdoll.pas"/>
         <DCCReference Include="..\Source\Physics.ODESkeletonColliders.pas"/>
@@ -164,7 +163,7 @@
         <DCCReference Include="..\Source\Physics.SPIInertias.pas"/>
         <DCCReference Include="..\Source\Physics.SPIJoints.pas"/>
         <DCCReference Include="..\Source\Physics.SPIManager.pas"/>
-        <DCCReference Include="..\Source\Imports.Newton.pas"/>
+        <DCCReference Include="..\Source\Physics.PhysXImport.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -197,7 +196,7 @@
                 <Platform value="Win64">True</Platform>
             </Platforms>
             <Deployment Version="3">
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\GLScene_Physics_RT.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GLScene_Physics_RT.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>GLScene_Physics_RT.bpl</RemoteName>
                         <Overwrite>true</Overwrite>

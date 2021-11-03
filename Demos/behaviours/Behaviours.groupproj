@@ -3,28 +3,28 @@
         <ProjectGuid>{2E3221B1-5B2C-430B-8087-B9633A920509}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
+        <Projects Include="Torque\TorqueD.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="Torque\TorqueC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Torque\Torque.dproj">
+        <Projects Include="PathControl\PathControlD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="PathControl\PathControlC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="PathControl\PathControl.dproj">
+        <Projects Include="FPSMovement\FPSMovementD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="FPSMovement\FPSMovementC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="FPSMovement\FPSMovement.dproj">
+        <Projects Include="DCEDemo\DceDemoD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="DCEDemo\DceDemoC.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="DCEDemo\DceDemo.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -35,6 +35,15 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
+    <Target Name="TorqueD">
+        <MSBuild Projects="Torque\TorqueD.dproj"/>
+    </Target>
+    <Target Name="TorqueD:Clean">
+        <MSBuild Projects="Torque\TorqueD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TorqueD:Make">
+        <MSBuild Projects="Torque\TorqueD.dproj" Targets="Make"/>
+    </Target>
     <Target Name="TorqueC">
         <MSBuild Projects="Torque\TorqueC.cbproj"/>
     </Target>
@@ -44,14 +53,14 @@
     <Target Name="TorqueC:Make">
         <MSBuild Projects="Torque\TorqueC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Torque">
-        <MSBuild Projects="Torque\Torque.dproj"/>
+    <Target Name="PathControlD">
+        <MSBuild Projects="PathControl\PathControlD.dproj"/>
     </Target>
-    <Target Name="Torque:Clean">
-        <MSBuild Projects="Torque\Torque.dproj" Targets="Clean"/>
+    <Target Name="PathControlD:Clean">
+        <MSBuild Projects="PathControl\PathControlD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Torque:Make">
-        <MSBuild Projects="Torque\Torque.dproj" Targets="Make"/>
+    <Target Name="PathControlD:Make">
+        <MSBuild Projects="PathControl\PathControlD.dproj" Targets="Make"/>
     </Target>
     <Target Name="PathControlC">
         <MSBuild Projects="PathControl\PathControlC.cbproj"/>
@@ -62,14 +71,14 @@
     <Target Name="PathControlC:Make">
         <MSBuild Projects="PathControl\PathControlC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="PathControl">
-        <MSBuild Projects="PathControl\PathControl.dproj"/>
+    <Target Name="FPSMovementD">
+        <MSBuild Projects="FPSMovement\FPSMovementD.dproj"/>
     </Target>
-    <Target Name="PathControl:Clean">
-        <MSBuild Projects="PathControl\PathControl.dproj" Targets="Clean"/>
+    <Target Name="FPSMovementD:Clean">
+        <MSBuild Projects="FPSMovement\FPSMovementD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="PathControl:Make">
-        <MSBuild Projects="PathControl\PathControl.dproj" Targets="Make"/>
+    <Target Name="FPSMovementD:Make">
+        <MSBuild Projects="FPSMovement\FPSMovementD.dproj" Targets="Make"/>
     </Target>
     <Target Name="FPSMovementC">
         <MSBuild Projects="FPSMovement\FPSMovementC.cbproj"/>
@@ -80,14 +89,14 @@
     <Target Name="FPSMovementC:Make">
         <MSBuild Projects="FPSMovement\FPSMovementC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="FPSMovement">
-        <MSBuild Projects="FPSMovement\FPSMovement.dproj"/>
+    <Target Name="DceDemoD">
+        <MSBuild Projects="DCEDemo\DceDemoD.dproj"/>
     </Target>
-    <Target Name="FPSMovement:Clean">
-        <MSBuild Projects="FPSMovement\FPSMovement.dproj" Targets="Clean"/>
+    <Target Name="DceDemoD:Clean">
+        <MSBuild Projects="DCEDemo\DceDemoD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="FPSMovement:Make">
-        <MSBuild Projects="FPSMovement\FPSMovement.dproj" Targets="Make"/>
+    <Target Name="DceDemoD:Make">
+        <MSBuild Projects="DCEDemo\DceDemoD.dproj" Targets="Make"/>
     </Target>
     <Target Name="DceDemoC">
         <MSBuild Projects="DCEDemo\DceDemoC.cbproj"/>
@@ -98,23 +107,14 @@
     <Target Name="DceDemoC:Make">
         <MSBuild Projects="DCEDemo\DceDemoC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="DceDemo">
-        <MSBuild Projects="DCEDemo\DceDemo.dproj"/>
-    </Target>
-    <Target Name="DceDemo:Clean">
-        <MSBuild Projects="DCEDemo\DceDemo.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="DceDemo:Make">
-        <MSBuild Projects="DCEDemo\DceDemo.dproj" Targets="Make"/>
-    </Target>
     <Target Name="Build">
-        <CallTarget Targets="TorqueC;Torque;PathControlC;PathControl;FPSMovementC;FPSMovement;DceDemoC;DceDemo"/>
+        <CallTarget Targets="TorqueD;TorqueC;PathControlD;PathControlC;FPSMovementD;FPSMovementC;DceDemoD;DceDemoC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="TorqueC:Clean;Torque:Clean;PathControlC:Clean;PathControl:Clean;FPSMovementC:Clean;FPSMovement:Clean;DceDemoC:Clean;DceDemo:Clean"/>
+        <CallTarget Targets="TorqueD:Clean;TorqueC:Clean;PathControlD:Clean;PathControlC:Clean;FPSMovementD:Clean;FPSMovementC:Clean;DceDemoD:Clean;DceDemoC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="TorqueC:Make;Torque:Make;PathControlC:Make;PathControl:Make;FPSMovementC:Make;FPSMovement:Make;DceDemoC:Make;DceDemo:Make"/>
+        <CallTarget Targets="TorqueD:Make;TorqueC:Make;PathControlD:Make;PathControlC:Make;FPSMovementD:Make;FPSMovementC:Make;DceDemoD:Make;DceDemoC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

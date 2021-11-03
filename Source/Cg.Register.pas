@@ -17,8 +17,8 @@ uses
 
   GLS.Material,
 
-  Imports.Cg,
-  Imports.CgGL,
+  Cg.Import,
+  Cg.GL,
   GLS.SceneRegister,  // TGLLibMaterialNameProperty
   Cg.Shader,
   Cg.BombShader;

@@ -13,9 +13,9 @@ uses
   System.Classes,
   System.SysUtils,
 
-  Imports.CUDAApi,
+  CUDA.Import,
   CUDA.Context,
-  CUDA.API,
+  CUDA.APIComps,
   CUDA.FourierTransform,
 
   GLS.Strings,

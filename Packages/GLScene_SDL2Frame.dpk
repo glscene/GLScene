@@ -32,11 +32,11 @@ requires
   vcl;
 
 contains
-  GLS.SDL2Frame in '..\Source\GLS.SDL2Frame.pas',
-  Imports.SDL2 in '..\Source\Imports.SDL2.pas',
-  Imports.SDL2Image in '..\Source\Imports.SDL2Image.pas',
-  Imports.SDL2Mixer in '..\Source\Imports.SDL2Mixer.pas',
-  Imports.SDL2Net in '..\Source\Imports.SDL2Net.pas',
-  Imports.SDL2Ttf in '..\Source\Imports.SDL2Ttf.pas';
+  SDL2.Frame in '..\Source\SDL2.Frame.pas',
+  SDL2.Mixer in '..\Source\SDL2.Mixer.pas',
+  SDL2.Net in '..\Source\SDL2.Net.pas',
+  SDL2.Ttf in '..\Source\SDL2.Ttf.pas',
+  SDL2.Import in '..\Source\SDL2.Import.pas',
+  SDL2.Image in '..\Source\SDL2.Image.pas';
 
 end.

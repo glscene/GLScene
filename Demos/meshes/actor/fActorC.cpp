@@ -28,6 +28,13 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
    SetGLSceneMediaDir();
+   TFileName MediaPath = GetCurrentDir();
+   SetCurrentDir(MediaPath);
+
+   // Load Texture of ground disk for Persistant Image
+   Disk1->Material->Texture->Image->LoadFromFile("clover.jpg");
+
+
    // Load Actor into GLScene
    Actor1->LoadFromFile("waste.md2");
    Actor1->Material->Texture->Image->LoadFromFile("waste.jpg");
@@ -46,10 +53,8 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
    // Force state to stand (first in list)
    CBAnimations->ItemIndex = 0;
    CBAnimationsChange(Sender);
+ }
 
-   // Load Texture of ground disk for Persistant Image
-   // Disk1->Material->Texture->Image->LoadFromFile("clover.jpg");
-}
 //---------------------------------------------------------------------------
 void __fastcall TForm1::SBPlayClick(TObject *Sender)
 {
@@ -99,7 +104,6 @@ void __fastcall TForm1::SBFrameToFrameClick(TObject *Sender)
 void __fastcall TForm1::BBLoadWeaponClick(TObject *Sender)
 {
    // Load weapon model and texture
-   SetGLSceneMediaDir();
    Actor2->LoadFromFile("WeaponWaste.md2");
    Actor2->Material->Texture->Image->LoadFromFile("WeaponWaste.jpg");
 
@@ -111,7 +115,7 @@ void __fastcall TForm1::BBLoadWeaponClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
-          TShiftState Shift, int X, int Y)
+		  TShiftState Shift, int X, int Y)
 {
  // store mouse coordinates when a button went down
  mdx = X; mdy = Y;
@@ -120,12 +124,12 @@ void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Bu
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
    LabelFPS->Caption = Format("%.1f FPS",
-    ARRAYOFCONST((GLSceneViewer1->FramesPerSecond())));
+	ARRAYOFCONST((GLSceneViewer1->FramesPerSecond())));
    GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
-          int X, int Y)
+		  int X, int Y)
 {
    // (we're moving around the parent and target dummycube)
    if (Shift.Contains(ssLeft))

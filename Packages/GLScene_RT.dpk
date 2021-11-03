@@ -265,7 +265,8 @@ contains
   GLS.Spline in '..\Source\GLS.Spline.pas',
   GLS.Strings in '..\Source\GLS.Strings.pas',
   GLS.XCollection in '..\Source\GLS.XCollection.pas',
-  GLS.XOpenGL in '..\Source\GLS.XOpenGL.pas';
+  GLS.XOpenGL in '..\Source\GLS.XOpenGL.pas',
+  GLS.ModuleLoader in '..\Source\GLS.ModuleLoader.pas';
 
 end.
 

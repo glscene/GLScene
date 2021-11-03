@@ -17,7 +17,7 @@ uses
   System.Math, // Samevalue isZero to compare single
   System.Types,
 
-  Imports.NGD,
+  Physics.NGDImport,
 ///  Imports.NGD_Joints,
 
   /// Import.Newton,    // new version
@@ -38,7 +38,7 @@ uses
   GLS.Color;
 
 type
-  NGDFloat = Imports.NGD.dFloat;
+  NGDFloat = Physics.NGDImport.dFloat;
   PNGDFloat = ^NGDFloat;
 
   TGLNGDHeightField = record

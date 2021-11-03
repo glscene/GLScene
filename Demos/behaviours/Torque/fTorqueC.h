@@ -5,6 +5,7 @@
 //---------------------------------------------------------------------------
 #include <tchar.h>
 #include <System.Classes.hpp>
+#include <System.SysUtils.hpp>
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
@@ -51,7 +52,7 @@ __published:	// IDE-managed Components
 	void __fastcall GLCadencer1Progress(TObject *Sender, const double deltaTime, const double newTime);
 	void __fastcall CheckBox1Click(TObject *Sender);
 private:	// User declarations
-	Double lastTime;
+	double lastTime;
 	TGLBaseSceneObject *pickedObject;
 public:		// User declarations
 	__fastcall TFormTorqueC(TComponent* Owner);

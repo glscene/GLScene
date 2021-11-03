@@ -20,7 +20,7 @@ uses
   GLS.Strings,
   GLS.ApplicationFileIO,
 
-  Imports.CUDAUtility;
+  CUDA.Utility;
 
 
 type

@@ -8,9 +8,6 @@
 <!--
  /* Font Definitions */
  @font-face
-	{font-family:Wingdings;
-	panose-1:5 0 0 0 0 0 0 0 0 0;}
-@font-face
 	{font-family:"Cambria Math";
 	panose-1:2 4 5 3 5 4 6 3 2 4;}
 @font-face
@@ -44,6 +41,12 @@ span.a
 	{mso-style-name:"\0422\0435\043A\0441\0442 \0417\043D\0430\043A";
 	mso-style-link:\0422\0435\043A\0441\0442;
 	font-family:Consolas;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:10.0pt;
+	font-family:"Times New Roman",serif;}
 .MsoChpDefault
 	{font-size:10.0pt;}
 @page WordSection1
@@ -68,9 +71,9 @@ ul
 <p class=MsoPlainText><b><span lang=FR style='font-size:13.5pt;font-family:
 "Courier New"'>Collisions&nbsp;:</span></b></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="Boxedin.dpr"><b>Bboxedin</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="boxedin/BoxedinD.dpr"><b>Bboxedin</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>sphere bouncing inside a 3DS object</span></li>
   <li class=MsoNormal><span lang=FR>sphere collision detection with a complex
       (high poly) mesh</span></li>
@@ -79,21 +82,21 @@ ul
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=624 height=498 src=Boxedin.jpg></p>
+<p class=MsoNormal><img border=0 width=493 height=393 src=Boxedin.jpg></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="BoxSphere.dpr"><b>BoxSphere</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="BoxSphere/BoxSphereD.dpr"><b>BoxSphere</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>testing for collisions between a box and a
       sphere</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=624 height=491 src=BoxSphere.jpg></p>
+<p class=MsoNormal><img border=0 width=494 height=389 src=BoxSphere.jpg></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="FacevsFace.dpr"><b>FacevsFace</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="facevsface/FacevsFaceD.dpr"><b>FacevsFace</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>accurate face vs face collision detection
       between freeforms</span></li>
   <li class=MsoNormal><span lang=FR>accurate collision detection between cubes
@@ -102,37 +105,37 @@ ul
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=624 height=483 src=FacevsFace.jpg></p>
+<p class=MsoNormal><img border=0 width=508 height=394 src=FacevsFace.jpg></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="MeshHit.dpr"><b>Meshhit</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="meshhit/MeshHitD.dpr"><b>Meshhit</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>basic raycast collision with a mesh</span></li>
   <li class=MsoNormal><span lang=FR>finding mesh surface point and normal below
       mouse</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=624 height=353 src=MeshHit.jpg></p>
+<p class=MsoNormal><img border=0 width=508 height=287 src=MeshHit.jpg></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="OcclusionQuery.dpr"><b>OcclusionQuery</b></a><b>&nbsp;:</b></span></li>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="OcclusionQuery/OcclusionQueryD.dpr"><b>OcclusionQuery</b></a><b>&nbsp;:</b></span></li>
 </ul>
 
 <p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<ul type=disc>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>simple demo showing how to use an occlusion
       query to see if an object is visible</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=624 height=373 src=OcclusionQuery.jpg></p>
+<p class=MsoNormal><img border=0 width=518 height=310 src=OcclusionQuery.jpg></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="Octreedemo.dpr"><b>Octree demo</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="octree/OctreeD.dpr"><b>Octree demo</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>raycast collision with a complex (high
       poly) mesh</span></li>
   <li class=MsoNormal><span lang=FR>using the octree to speed up collision
@@ -140,41 +143,41 @@ ul
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=624 height=467 src=OctreeDemo.jpg></p>
+<p class=MsoNormal><img border=0 width=518 height=387 src=OctreeDemo.jpg></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="RayBox.dpr"><b>Raybox</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="RayBox/RayBoxD.dpr"><b>Raybox</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>testing for collisions between a ray and a
       box</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=624 height=477 src=RayBox.jpg></p>
+<p class=MsoNormal><img border=0 width=521 height=398 src=RayBox.jpg></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="RayCast.dpr"><b>RayCast</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="Raycast/RayCastD.dpr"><b>RayCast</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>raycasting intersection sample
       (RayCastIntersect function)</span></li>
   <li class=MsoNormal><span lang=FR>a two-cents worth raytracer</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=624 height=351 src=RayCast.jpg></p>
+<p class=MsoNormal><img border=0 width=524 height=295 src=RayCast.jpg></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="Sphere.dpr"><b>Sphere</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="sphere/SphereD.dpr"><b>Sphere</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>ultra-basic collision detection sample</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=565 height=437 src=Sphere.jpg></p>
+<p class=MsoNormal><img border=0 width=524 height=405 src=Sphere.jpg></p>
 
-<ul type=disc>
- <li class=MsoNormal><span lang=FR><a href="TriangleBox/TriangleBox.dpr"><b>Trianglebox</b></a><b>&nbsp;:</b></span></li>
- <ul type=circle>
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="TriangleBox/TriangleBoxD.dpr"><b>Trianglebox</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>testing for collisions between a triangle
       and a box</span></li>
  </ul>
@@ -182,7 +185,7 @@ ul
 
 <p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<p class=MsoNormal><img border=0 width=624 height=412 src=TriangleBox.jpg></p>
+<p class=MsoNormal><img border=0 width=527 height=348 src=TriangleBox.jpg></p>
 
 <p class=MsoNormal><span lang=FR><a href="../demos.htm">Back</a></span></p>
 
