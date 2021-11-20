@@ -131,7 +131,7 @@ type
     procedure FillVoxelData(AIsoValue: TxScalarValue;
       AScalarField: TxScalarFieldInt); overload; virtual;
     procedure CalcVertices(Vertices: TGLVertexList; Alpha: Single = 1);
-    procedure CalcMeshObject(AMeshObject: TMeshObject; Alpha: Single = 1);
+    procedure CalcMeshObject(AMeshObject: TGLMeshObject; Alpha: Single = 1);
     property IsoValue: TxScalarValue read FIsoValue write FIsoValue;
     // TODO SetIsoValue to Run
   end;
@@ -1564,7 +1564,7 @@ begin
     end;
 end;
 
-procedure TGLMarchingCube.CalcMeshObject(AMeshObject: TMeshObject; Alpha: Single);
+procedure TGLMarchingCube.CalcMeshObject(AMeshObject: TGLMeshObject; Alpha: Single);
 var
   i: Integer;
 begin

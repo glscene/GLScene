@@ -29,7 +29,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-   TMeshObject *mo;
+   TGLMeshObject *mo;
    TFGVertexIndexList *fgQuads, *fgTris;
    int i;
    TFileStream *str;
@@ -55,8 +55,8 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
    // fill the freeform with our data
 
    // first create a mesh object
-   mo = new TMeshObject(); //Delphi - mo = TMeshObject.CreateOwned(GLFreeForm.MeshObjects);
-   mo = (TMeshObject *) (GLFreeForm->MeshObjects);
+   mo = new TGLMeshObject(); //Delphi - mo = TGLMeshObject.CreateOwned(GLFreeForm.MeshObjects);
+   mo = (TGLMeshObject *) (GLFreeForm->MeshObjects);
    mo->Mode = momFaceGroups;
    // Specify vertex and texcoords data (intensity is stored a texcoord)
 

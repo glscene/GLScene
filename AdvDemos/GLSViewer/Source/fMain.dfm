@@ -2,12 +2,12 @@ object MainForm: TMainForm
   Left = 188
   Top = 87
   Caption = 'GLSViewer'
-  ClientHeight = 490
-  ClientWidth = 668
+  ClientHeight = 613
+  ClientWidth = 835
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Icon.Data = {
@@ -125,48 +125,55 @@ object MainForm: TMainForm
     00000509030000000000000000000000000000050000FFFF0000FC3F0000F00F
     0000C003000000000000000000000000000080010000C0030000C0070000000F
     00000019000080200000C2600000E7F10000FFFB0000}
-  OldCreateOrder = False
   Position = poScreenCenter
   ShowHint = True
   OnCreate = FormCreate
   OnShow = FormShow
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 16
   object StatusBar: TStatusBar
     Left = 0
-    Top = 471
-    Width = 668
-    Height = 19
+    Top = 589
+    Width = 835
+    Height = 24
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Panels = <
       item
         Text = 'X'
-        Width = 50
+        Width = 63
       end
       item
         Text = 'Y'
-        Width = 50
+        Width = 63
       end
       item
         Text = 'Z'
-        Width = 50
+        Width = 63
       end
       item
         Text = 'FPS'
-        Width = 50
+        Width = 63
       end>
   end
   object snViewer: TGLSceneViewer
     Left = 0
-    Top = 55
-    Width = 668
-    Height = 416
+    Top = 69
+    Width = 835
+    Height = 520
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Camera = Camera
     BeforeRender = snViewerBeforeRender
     AfterRender = snViewerAfterRender
     Buffer.BackgroundColor = clGray
     Buffer.ContextOptions = [roDoubleBuffer, roRenderToWindow, roTwoSideLighting]
     Buffer.FaceCulling = False
-    FieldOfView = 152.966857910156300000
+    FieldOfView = 158.228942871093800000
     PenAsTouch = False
     OnMouseLeave = snViewerMouseLeave
     Align = alClient
@@ -176,16 +183,25 @@ object MainForm: TMainForm
   end
   object ControlBar: TControlBar
     Left = 0
-    Top = 25
-    Width = 668
-    Height = 30
+    Top = 32
+    Width = 835
+    Height = 37
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
+    RowSize = 33
     TabOrder = 2
     object atbTools: TActionToolBar
-      Left = 535
+      Left = 567
       Top = 2
-      Width = 82
-      Height = 22
+      Width = 95
+      Height = 29
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       ActionManager = ActionManager
       Caption = 'Tools'
       Color = clMenuBar
@@ -195,17 +211,21 @@ object MainForm: TMainForm
       ColorMap.UnusedColor = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
-      Font.Height = -11
+      Font.Height = -14
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
       Spacing = 0
     end
     object atbView: TActionToolBar
-      Left = 102
+      Left = 127
       Top = 2
-      Width = 339
-      Height = 22
+      Width = 424
+      Height = 29
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       ActionManager = ActionManager
       Caption = 'View'
       Color = clMenuBar
@@ -215,17 +235,21 @@ object MainForm: TMainForm
       ColorMap.UnusedColor = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
-      Font.Height = -11
+      Font.Height = -14
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
       Spacing = 0
     end
     object atbFile: TActionToolBar
-      Left = 11
+      Left = 14
       Top = 2
-      Width = 78
-      Height = 22
+      Width = 97
+      Height = 29
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       ActionManager = ActionManager
       Caption = 'File'
       Color = clMenuBar
@@ -235,7 +259,7 @@ object MainForm: TMainForm
       ColorMap.UnusedColor = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
-      Font.Height = -11
+      Font.Height = -14
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
@@ -247,8 +271,12 @@ object MainForm: TMainForm
   object amMenuBar: TActionMainMenuBar
     Left = 0
     Top = 0
-    Width = 668
-    Height = 25
+    Width = 835
+    Height = 32
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     UseSystemFont = False
     ActionManager = ActionManager
     Caption = 'ActionMainMenuBar'
@@ -259,7 +287,7 @@ object MainForm: TMainForm
     ColorMap.UnusedColor = clWhite
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
-    Font.Height = -13
+    Font.Height = -16
     Font.Name = 'Segoe UI'
     Font.Style = []
     Spacing = 0

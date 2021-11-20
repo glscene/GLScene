@@ -5428,7 +5428,8 @@ object Main: TMain
     Cadencer = Cadencer
     MaxParticles = 96
     ParticleSize = 0.699999988079071000
-    InnerColor.Color = {0000803F0000803E000000000000803F}
+    InnerColor.Color = {0000803FF8FEFE3E000000000000803F}
+    OuterColor.Color = {00000000F8FEFE3E0000803F0000803F}
     FireDensity = 0.500000000000000000
     FireEvaporation = 0.860000014305114700
     FireBurst = 1.000000000000000000

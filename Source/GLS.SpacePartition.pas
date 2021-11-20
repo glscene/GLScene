@@ -156,8 +156,8 @@ type
     (* Query space for Leaves that intersect a plane. Result is returned through
       QueryResult *)
     function QueryPlane(const Location, Normal: TAffineVector): Integer; virtual;
-    { Query space for Leaves that intersect a Frustum. Result is returned through
-      QueryResult }
+    (* Query space for Leaves that intersect a Frustum. Result is returned through
+      QueryResult *)
     function QueryFrustum(const Frustum: TFrustum): Integer; virtual;
     (* Query space for Leaves that intersect an extended frustum. Result is
       returned through QueryResult. Extended frustum is slightly faster than the

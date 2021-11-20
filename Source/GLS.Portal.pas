@@ -105,7 +105,7 @@ end;
 procedure TGLPortalMeshObjectList.BuildList(var mrci: TGLRenderContextInfo);
 var
   i: Integer;
-  startSector: TMeshObject;
+  startSector: TGLMeshObject;
 begin
   for i := 0 to Count - 1 do
     with TGLSectorMeshObject(Items[i]) do

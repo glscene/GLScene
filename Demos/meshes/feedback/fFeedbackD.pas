@@ -55,7 +55,7 @@ implementation
 
 procedure TFormFeedback.Button1Click(Sender: TObject);
 var
-  mo: TMeshObject;
+  mo: TGLMeshObject;
   fg: TFGIndexTexCoordList;
 begin
   // Clear our freeform of any meshes
@@ -78,7 +78,7 @@ begin
   MeshObject1.Visible := False;
 
   // Create a new mesh object in our freeform
-  mo := TMeshObject.CreateOwned(GLFreeForm1.MeshObjects);
+  mo := TGLMeshObject.CreateOwned(GLFreeForm1.MeshObjects);
   mo.Mode := momTriangles;
 
   // Process the feedback buffer for polygon data
@@ -95,7 +95,7 @@ begin
   MeshObject2.Visible := False;
 
   // Vertex indices are required for smooth normals
-  mo := TMeshObject.CreateOwned(GLFreeForm1.MeshObjects);
+  mo := TGLMeshObject.CreateOwned(GLFreeForm1.MeshObjects);
   mo.Mode := momFaceGroups;
   fg := TFGIndexTexCoordList.CreateOwned(mo.FaceGroups);
   fg.Mode := fgmmTriangles;

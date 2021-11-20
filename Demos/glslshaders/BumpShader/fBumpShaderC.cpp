@@ -63,36 +63,29 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   Fighter->AnimationMode = aamLoop;
   Fighter->Scale->Scale(3);
 //  Fighter->MeshObjects->BuildTangentSpace;
-
   Teapot->LoadFromFile("Teapot.3ds"); //Teapot
   Teapot->Scale->Scale(0.8);
   //  Teapot.MeshObjects->BuildTangentSpace; does not have texture coordinates...
-
   Sphere_big->LoadFromFile("Sphere_big.3DS"); //Sphere_big
   Sphere_big->Scale->Scale(70);
   Sphere_big->MeshObjects->BuildTangentSpace();
-
   Sphere_little->LoadFromFile("Sphere_little.3ds"); //Sphere_little
   Sphere_little->Scale->Scale(4);
   Sphere_little->MeshObjects->BuildTangentSpace();
-
   // Then load textures
   MaterialLibrary->LibMaterialByName("Earth")->Material->Texture->Image->LoadFromFile("Earth.jpg");
   MaterialLibrary->LibMaterialByName("EarthGross")->Material->Texture->Image->LoadFromFile("EarthSpec.dds");
   MaterialLibrary->LibMaterialByName("EarthNormals")->Material->Texture->Image->LoadFromFile("EarthNormals.jpg");
-
   // Create Shader
   MultiLightShader = new TGLSLMLBumpShader(this);
   MultiLightShader->LightSources = MultiLightShader->LightSources << 1, 2 ;
   MultiLightShader->LightCompensation = 0.7;
   MultiLightShader->NormalTexture = MaterialLibrary->LibMaterialByName("EarthNormals")->Material->Texture;
   MultiLightShader->SpecularTexture = MaterialLibrary->LibMaterialByName("EarthGross")->Material->Texture;
-
   // Attach shader to the material
   MaterialLibrary->LibMaterialByName("Earth")->Shader = MyBumpShader;
   for (I = 0; I < TrinityMatlib->Materials->Count - 1; I++)
 	TrinityMatlib->Materials->Items[I]->Shader = MyBumpShader;
-
   ShowNotGLSceneObjectsCheckBoxClick(this);
   MyBumpShader->Enabled = ShaderEnabledCheckBox->Checked;
 }
@@ -142,7 +135,8 @@ void __fastcall TForm1::UseSpecularTextureCheckBoxClick(TObject *Sender)
 	MyBumpShader->SpecularTexture = NULL;
 	MultiLightShader->SpecularTexture = NULL;
   }
-}
+
+}
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::UseNormalTextureCheckBoxClick(TObject *Sender)
@@ -155,7 +149,8 @@ void __fastcall TForm1::UseNormalTextureCheckBoxClick(TObject *Sender)
 	MyBumpShader->NormalTexture = NULL;
 	MultiLightShader->NormalTexture = NULL;
   }
-}
+
+}
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::CadencerProgress(TObject *Sender, const double deltaTime,

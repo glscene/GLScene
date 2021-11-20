@@ -32,7 +32,7 @@ implementation
 //---------------------------------------------------------------------------
 
 var
-  TessMesh: TMeshObject;
+  TessMesh: TGLMeshObject;
   TessFace: TFGIndexTexCoordList;
   TessVerticesCount, TessExtraVertices: Integer;
   TessVertices: PAffineVectorArray;
@@ -95,7 +95,7 @@ begin
   // Select or Create FaceGroup
   if Mesh.MeshObjects.Count = 0 then
   begin
-    TessMesh := TMeshObject.CreateOwned(Mesh.MeshObjects);
+    TessMesh := TGLMeshObject.CreateOwned(Mesh.MeshObjects);
     Mesh.MeshObjects[0].Mode := momFaceGroups;
   end
   else

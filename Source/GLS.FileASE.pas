@@ -85,7 +85,7 @@ type
   (* ASE geom object, represents single mesh object;
     contains: vertices, faces, verice indices, faces and vertices normals,
     channels of texture coordinates and indices, scaling and location info;
-    this object used only to store ASE data temporary to copy supported piece of it into GLScene TMeshObject *)
+    this object used only to store ASE data temporary to copy supported piece of it into GLScene TGLMeshObject *)
   TGLASEMeshObject = class(TObject)
   private
     FFaces: TGLASEFaceList;
@@ -630,7 +630,7 @@ end;
 
 
 // here ASE geom object is converted to GLScene mesh
-procedure CopyASEToMesh(aASEMesh: TGLASEMeshObject; aMesh: TMeshObject; aASEMaterials: TGLASEMaterialList);
+procedure CopyASEToMesh(aASEMesh: TGLASEMeshObject; aMesh: TGLMeshObject; aASEMaterials: TGLASEMaterialList);
 
   const
     ASETextureMapKinds: array [TASETextureMap] of string = (
@@ -1337,13 +1337,13 @@ end;
 procedure TGLASEVectorFile.ParseGeomObject(var aLineIndex: Integer);
 var
   aseMesh: TGLASEMeshObject;
-  obj: TMeshObject;
+  obj: TGLMeshObject;
   Data: string;
   b: Boolean;
 begin
   aseMesh := TGLASEMeshObject.Create;
   try
-    obj := TMeshObject.CreateOwned(Owner.MeshObjects);
+    obj := TGLMeshObject.CreateOwned(Owner.MeshObjects);
 
     Inc(aLineIndex);
     Data := FStringData[aLineIndex];

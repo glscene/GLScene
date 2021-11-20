@@ -48,12 +48,12 @@ type
     ComboBox1: TComboBox;
     Label1: TLabel;
     GroupBox1: TGroupBox;
-    CheckBox1: TCheckBox;
-    CheckBox2: TCheckBox;
-    CheckBox3: TCheckBox;
-    Shape1: TShape;
-    Shape2: TShape;
-    Shape3: TShape;
+    cbWhite: TCheckBox;
+    cbRed: TCheckBox;
+    cbBlue: TCheckBox;
+    ShapeWhite: TShape;
+    ShapeRed: TShape;
+    ShapeBlue: TShape;
     ColorDialog1: TColorDialog;
     DCLights: TGLDummyCube;
     AsyncTimer1: TGLAsyncTimer;
@@ -97,7 +97,7 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
   SetGLSceneMediaDir();
   // Load the bunny mesh and scale for viewing
-  ffBunny.LoadFromFile('bunny.glsm');
+  ffBunny.LoadFromFile('Models\bunny.glsm');
 //  ffBunny.LoadFromFile('bunny.obj');
   ffBunny.Scale.Scale(2 / ffBunny.BoundingSphereRadius);
 
@@ -106,12 +106,12 @@ begin
     LoadFromFile('bunnynormals.jpg');
 
   // Link the lights to their toggles
-  CheckBox1.Tag := Integer(WhiteLight);
-  CheckBox2.Tag := Integer(RedLight);
-  CheckBox3.Tag := Integer(BlueLight);
-  Shape1.Tag := Integer(WhiteLight);
-  Shape2.Tag := Integer(RedLight);
-  Shape3.Tag := Integer(BlueLight);
+  cbWhite.Tag := Integer(WhiteLight);
+  cbRed.Tag := Integer(RedLight);
+  cbBlue.Tag := Integer(BlueLight);
+  ShapeWhite.Tag := Integer(WhiteLight);
+  ShapeRed.Tag := Integer(RedLight);
+  ShapeBlue.Tag := Integer(BlueLight);
 
   ComboBox1.ItemIndex := 0;
   ComboBox1Change(nil);

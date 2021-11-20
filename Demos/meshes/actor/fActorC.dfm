@@ -10,6 +10,7 @@ object Form1: TForm1
   Font.Height = -14
   Font.Name = 'Tahoma'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
   PixelsPerInch = 120
   TextHeight = 17

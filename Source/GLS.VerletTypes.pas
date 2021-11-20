@@ -495,8 +495,7 @@ type
     FSlack: Single;
     FRestLength: Single;
   public
-    procedure SatisfyConstraint(const iteration, maxIterations
-      : Integer); override;
+    procedure SatisfyConstraint(const iteration, maxIterations: Integer); override;
     procedure SetRestLengthToCurrent;
     property Slack: Single read FSlack write FSlack;
     property RestLength: Single read FRestLength write FRestLength;
@@ -516,8 +515,7 @@ type
       var natX, natY, natZ: TAffineVector);
   public
     procedure ComputeRigidityParameters;
-    procedure SatisfyConstraint(const iteration, maxIterations
-      : Integer); override;
+    procedure SatisfyConstraint(const iteration, maxIterations: Integer); override;
   end;
 
   (* Slider constraint.
@@ -531,16 +529,14 @@ type
   protected
     procedure SetSlideDirection(const Value: TAffineVector);
   public
-    procedure SatisfyConstraint(const iteration, maxIterations
-      : Integer); override;
-    property SlideDirection: TAffineVector read FSlideDirection
-      write SetSlideDirection;
+    procedure SatisfyConstraint(const iteration, maxIterations: Integer); override;
+    property SlideDirection: TAffineVector read FSlideDirection write SetSlideDirection;
     // Constrain NodeB to the halfplane defined by NodeA and SlideDirection.
     property Constrained: Boolean read FConstrained write FConstrained;
   end;
 
   // Sphere Ñollision Friction Constraint
-  TGLVerletFricSphere = class(TGLVerletGlobalFrictionConstraintSphere)
+  TGLVerletFrictionSphere = class(TGLVerletGlobalFrictionConstraintSphere)
   private
     FRadius: Single;
   public
@@ -554,7 +550,7 @@ type
 
   (* Cylinder collision Friction Constraint.
     The cylinder is considered infinite by this constraint. *)
-  TGLVerletFricCylinder = class(TGLVerletGlobalFrictionConstraint)
+  TGLVerletFrictionCylinder = class(TGLVerletGlobalFrictionConstraint)
   private
     FAxis: TAffineVector;
     FRadius, FRadius2: Single;
@@ -575,7 +571,7 @@ type
   end;
 
   // Cube Ñollision Friction Constraint.
-  TGLVerletFricCube = class(TGLVerletGlobalFrictionConstraintBox)
+  TGLVerletFrictionCube = class(TGLVerletGlobalFrictionConstraintBox)
   private
     FHalfSides: TAffineVector;
     FSides: TAffineVector;
@@ -593,7 +589,7 @@ type
   end;
 
   // Capsule collision Friction Constraint.
-  TGLVerletFricCapsule = class(TGLVerletGlobalFrictionConstraintSphere)
+  TGLVerletFrictionCapsule = class(TGLVerletGlobalFrictionConstraintSphere)
   private
     FAxis: TAffineVector;
     FRadius, FRadius2, FLength, FLengthDiv2: Single;
@@ -1930,15 +1926,15 @@ begin
 end;
 
 // ------------------
-// ------------------ TGLVerletFricSphere ------------------
+// ------------------ TGLVerletFrictionSphere ------------------
 // ------------------
-function TGLVerletFricSphere.GetBSphere: TBSphere;
+function TGLVerletFrictionSphere.GetBSphere: TBSphere;
 begin
   result.Center := FLocation;
   result.Radius := FRadius;
 end;
 
-procedure TGLVerletFricSphere.SatisfyConstraintForEdge(const aEdge: TGLVerletEdge;
+procedure TGLVerletFrictionSphere.SatisfyConstraintForEdge(const aEdge: TGLVerletEdge;
   const iteration, maxIterations: Integer);
 var
   closestPoint, move, delta, contactNormal: TAffineVector;
@@ -1980,7 +1976,7 @@ begin
   end;
 end;
 
-procedure TGLVerletFricSphere.SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
+procedure TGLVerletFrictionSphere.SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
   const iteration, maxIterations: Integer);
 var
   delta, move, contactNormal: TAffineVector;
@@ -2019,15 +2015,15 @@ begin
 end;
 
 // ------------------
-// ------------------ TGLVerletFricCylinder ------------------
+// ------------------ TGLVerletFrictionCylinder ------------------
 // ------------------
-procedure TGLVerletFricCylinder.SetRadius(const val: Single);
+procedure TGLVerletFrictionCylinder.SetRadius(const val: Single);
 begin
   FRadius := val;
   FRadius2 := Sqr(val);
 end;
 
-procedure TGLVerletFricCylinder.SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
+procedure TGLVerletFrictionCylinder.SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
   const iteration, maxIterations: Integer);
 var
   Proj, newLocation, move: TAffineVector;
@@ -2052,16 +2048,16 @@ begin
 end;
 
 // ------------------
-// ------------------ TGLVerletFricCube ------------------
+// ------------------ TGLVerletFrictionCube ------------------
 // ------------------
-function TGLVerletFricCube.GetAABB: TAABB;
+function TGLVerletFrictionCube.GetAABB: TAABB;
 begin
   VectorAdd(FLocation, FHalfSides, result.max);
   VectorSubtract(FLocation, FHalfSides, result.min);
 end;
 
 // BROKEN AND VERY SLOW!
-procedure TGLVerletFricCube.SatisfyConstraintForEdge(const aEdge: TGLVerletEdge;
+procedure TGLVerletFrictionCube.SatisfyConstraintForEdge(const aEdge: TGLVerletEdge;
   const iteration, maxIterations: Integer);
 var
   Corners: array [0 .. 7] of TAffineVector;
@@ -2172,7 +2168,7 @@ begin
   end;
 end;
 
-procedure TGLVerletFricCube.SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
+procedure TGLVerletFrictionCube.SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
   const iteration, maxIterations: Integer);
 var
   p, absP, contactNormal: TAffineVector;
@@ -2217,7 +2213,7 @@ begin
   aNode.FChangedOnStep := Owner.CurrentStepCount;
 end;
 
-procedure TGLVerletFricCube.SetSides(const Value: TAffineVector);
+procedure TGLVerletFrictionCube.SetSides(const Value: TAffineVector);
 begin
   FSides := Value;
   FHalfSides := VectorScale(Sides, 0.5);
@@ -2225,36 +2221,36 @@ begin
 end;
 
 // ------------------
-// ------------------ TGLVerletFricCapsule ------------------
+// ------------------ TGLVerletFrictionCapsule ------------------
 // ------------------
 
-procedure TGLVerletFricCapsule.SetAxis(const val: TAffineVector);
+procedure TGLVerletFrictionCapsule.SetAxis(const val: TAffineVector);
 begin
   FAxis := VectorNormalize(val);
   UpdateCachedBSphere;
 end;
 
-procedure TGLVerletFricCapsule.SetLength(const val: Single);
+procedure TGLVerletFrictionCapsule.SetLength(const val: Single);
 begin
   FLength := val;
   FLengthDiv2 := val * 0.5;
   UpdateCachedBSphere;
 end;
 
-procedure TGLVerletFricCapsule.SetRadius(const val: Single);
+procedure TGLVerletFrictionCapsule.SetRadius(const val: Single);
 begin
   FRadius := val;
   FRadius2 := Sqr(val);
   UpdateCachedBSphere;
 end;
 
-function TGLVerletFricCapsule.GetBSphere: TBSphere;
+function TGLVerletFrictionCapsule.GetBSphere: TBSphere;
 begin
   result.Center := FLocation;
   result.Radius := Length + Radius;
 end;
 
-procedure TGLVerletFricCapsule.SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
+procedure TGLVerletFrictionCapsule.SatisfyConstraintForNode(const aNode: TGLBaseVerletNode;
   const iteration, maxIterations: Integer);
 var
   p, n2, penetrationDepth: Single;
@@ -2286,7 +2282,7 @@ begin
   end;
 end;
 
-procedure TGLVerletFricCapsule.SatisfyConstraintForEdge(const aEdge: TGLVerletEdge;
+procedure TGLVerletFrictionCapsule.SatisfyConstraintForEdge(const aEdge: TGLVerletEdge;
   const iteration, maxIterations: Integer);
 var
   SphereLocation, closestPoint, Dummy, delta, move, contactNormal
@@ -2671,8 +2667,8 @@ end;
 
 procedure TGLVerletSphere.AddToVerletWorld(VerletWorld: TGLVerletWorld);
 begin
-  FVerletConstraint := TGLVerletFricSphere.Create(VerletWorld);
-  TGLVerletFricSphere(FVerletConstraint).Radius := FRadius;
+  FVerletConstraint := TGLVerletFrictionSphere.Create(VerletWorld);
+  TGLVerletFrictionSphere(FVerletConstraint).Radius := FRadius;
   inherited;
 end;
 
@@ -2680,7 +2676,7 @@ procedure TGLVerletSphere.AlignCollider;
 begin
   inherited;
   if Assigned(FVerletConstraint) then
-    TGLVerletFricSphere(FVerletConstraint).Location :=
+    TGLVerletFrictionSphere(FVerletConstraint).Location :=
       AffineVectorMake(GlobalMatrix.W);
 end;
 
@@ -2690,7 +2686,7 @@ begin
   begin
     FRadius := Val;
     if Assigned(FVerletConstraint) then
-      TGLVerletFricSphere(FVerletConstraint).Radius := FRadius;
+      TGLVerletFrictionSphere(FVerletConstraint).Radius := FRadius;
   end;
 end;
 
@@ -2731,9 +2727,9 @@ end;
 
 procedure TGLVerletCapsule.AddToVerletWorld(VerletWorld: TGLVerletWorld);
 begin
-  FVerletConstraint := TGLVerletFricCapsule.Create(VerletWorld);
-  TGLVerletFricCapsule(FVerletConstraint).Radius := FRadius;
-  TGLVerletFricCapsule(FVerletConstraint).Length := FLength;
+  FVerletConstraint := TGLVerletFrictionCapsule.Create(VerletWorld);
+  TGLVerletFrictionCapsule(FVerletConstraint).Radius := FRadius;
+  TGLVerletFrictionCapsule(FVerletConstraint).Length := FLength;
   inherited;
 end;
 
@@ -2742,9 +2738,9 @@ begin
   inherited;
   if Assigned(FVerletConstraint) then
   begin
-    TGLVerletFricCapsule(FVerletConstraint).Location :=
+    TGLVerletFrictionCapsule(FVerletConstraint).Location :=
       AffineVectorMake(GlobalMatrix.W);
-    TGLVerletFricCapsule(FVerletConstraint).Axis :=
+    TGLVerletFrictionCapsule(FVerletConstraint).Axis :=
       AffineVectorMake(GlobalMatrix.Y);
   end;
 end;
@@ -2755,7 +2751,7 @@ begin
   begin
     FRadius := Val;
     if Assigned(FVerletConstraint) then
-      TGLVerletFricCapsule(FVerletConstraint).Radius := FRadius;
+      TGLVerletFrictionCapsule(FVerletConstraint).Radius := FRadius;
   end;
 end;
 
@@ -2765,7 +2761,7 @@ begin
   begin
     FLength := Val;
     if Assigned(FVerletConstraint) then
-      TGLVerletFricCapsule(FVerletConstraint).Length := FLength;
+      TGLVerletFrictionCapsule(FVerletConstraint).Length := FLength;
   end;
 end;
 

@@ -95,6 +95,8 @@ void __fastcall TForm1::Button9Click(TObject *Sender)
 void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
           const double newTime)
 {
+  Not_a_planet->PitchAngle = newTime*60;
+ // World->PitchAngle = newTime*60;
   GLSceneViewer1->Invalidate();
 }
 //---------------------------------------------------------------------------

@@ -5,12 +5,12 @@
 #pragma hdrstop
 
 #include "fTreeC.h"
-#include "GLS.FileTGA.hpp"
 #include "jpeg.hpp"
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GLS.Material"
+#pragma link "GLS.FileTGA"
 
 #pragma resource "*.dfm"
 TForm1 *Form1;

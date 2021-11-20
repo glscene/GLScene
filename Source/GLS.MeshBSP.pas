@@ -66,7 +66,7 @@ type
     Stores the geometry information, BSP rendering options and offers some
     basic BSP utility methods. Geometry information is indexed in the facegroups,
     the 1st facegroup (of index 0) being the root node of the BSP tree. *)
-  TBSPMeshObject = class(TMeshObject)
+  TBSPMeshObject = class(TGLMeshObject)
   private
     FRenderSort: TBSPRenderSort;
     FClusterVisibility: TBSPClusterVisibility;

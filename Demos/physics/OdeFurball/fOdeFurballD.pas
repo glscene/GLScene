@@ -91,7 +91,7 @@ type
     contactgroup : TdJointGroupID;
     VerletWorld : TGLVerletWorld;
     HairList : TList;
-    VCSphere : TGLVerletFricSphere;
+    VCSphere : TGLVerletFrictionSphere;
     PhysicsTime : single;
     Gravity : TGLVerletGravity;
     AirResistance : TGLVerletAirResistance;
@@ -291,7 +291,7 @@ begin
 
   CopyPosFromGeomToGL(odeFurBallGeom, FurBall);
 
-  VCSphere := TGLVerletFricSphere.Create(VerletWorld);
+  VCSphere := TGLVerletFrictionSphere.Create(VerletWorld);
   VCSphere.Radius := FurBall.Radius * 1.1;
   VCSphere.Location := AffineVectorMake(FurBall.AbsolutePosition);
 

@@ -27,7 +27,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
-  TMeshObject *mo;
+  TGLMeshObject *mo;
   TFGIndexTexCoordList *fg;
 
   // Clear our freeform of any meshes
@@ -50,9 +50,9 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
   MeshObject1->Visible = false;
 
   // Create a new mesh object in our freeform
-  // Delphi -  mo := TMeshObject.CreateOwned(GLFreeForm1.MeshObjects);
-  mo = new TMeshObject;
-  mo = (TMeshObject *) (GLFreeForm1->MeshObjects);
+  // Delphi -  mo := TGLMeshObject.CreateOwned(GLFreeForm1.MeshObjects);
+  mo = new TGLMeshObject;
+  mo = (TGLMeshObject *) (GLFreeForm1->MeshObjects);
   mo->Mode = momTriangles;
 
   // Process the feedback buffer for polygon data
@@ -69,19 +69,19 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
   MeshObject2->Visible = false;
 
   // Vertex indices are required for smooth normals
-  // Delphi - mo := TMeshObject.CreateOwned(GLFreeForm1.MeshObjects);
-  GLFreeForm1->MeshObjects->Add(Mesh);
-  mo = new TMeshObject;
+  // in Delphi - mo := TGLMeshObject.CreateOwned(GLFreeForm1.MeshObjects);
+  // GLFreeForm1->MeshObjects->Add(Mesh);
+  mo = new TGLMeshObject;
   mo = GLFreeForm1->MeshObjects->Items[0];
   mo->Mode = momFaceGroups;
-  //Delphi - fg := TFGIndexTexCoordList.CreateOwned(mo.FaceGroups);
+  // in Delphi - fg := TFGIndexTexCoordList.CreateOwned(mo.FaceGroups);
   fg = new TFGIndexTexCoordList;
   fg->Mode = fgmmTriangles;
-  GLS.Feedback1->BuildMeshFromBuffer(
+  GLFeedback1->BuildMeshFromBuffer(
 	mo->Vertices, mo->Normals, NULL, fg->TexCoords, fg->VertexIndices);
 
   // Deactivate the feedback object
-  GLS.Feedback1->Active = false;
+  GLFeedback1->Active = false;
   GLFreeForm1->StructureChanged();
 }
 //---------------------------------------------------------------------------

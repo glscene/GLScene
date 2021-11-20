@@ -28,7 +28,7 @@ type
      Used for converting to IDTF -> U3D -> 3D PDF *)
   TGLIDTFVectorFile = class(TGLVectorFile)
   private
-    procedure BuildNormals(m: TMeshObject);
+    procedure BuildNormals(m: TGLMeshObject);
   public
     class function Capabilities: TGLDataFileCapabilities; override;
     procedure SaveToStream(aStream: TStream); override;
@@ -200,7 +200,7 @@ begin
 end;
 
     // build normals
-procedure TGLIDTFVectorFile.BuildNormals(m: TMeshObject);
+procedure TGLIDTFVectorFile.BuildNormals(m: TGLMeshObject);
 var
   i, j: Integer;
   v1, v2, v3, v4, n: TAffineVector;
@@ -255,7 +255,7 @@ end;
 procedure TGLIDTFVectorFile.SaveToStream(aStream: TStream);
 var
   S: String;
-  Mesh: TMeshObject;
+  Mesh: TGLMeshObject;
   FaceCount, ModelPositionCount, NormalCount, I, J: Integer;
   FacePositionList, NormalList, ModelPositionList, ModelNormalList, FaceShadingList: String;
   Lines: TStringList;

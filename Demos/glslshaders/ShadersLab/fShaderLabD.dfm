@@ -2,7 +2,7 @@ object FormShaderLab: TFormShaderLab
   Left = 0
   Top = 0
   Caption = 'Shader Lab'
-  ClientHeight = 638
+  ClientHeight = 653
   ClientWidth = 1205
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -20,16 +20,18 @@ object FormShaderLab: TFormShaderLab
     Left = 0
     Top = 0
     Width = 465
-    Height = 638
+    Height = 653
     Margins.Left = 4
     Margins.Top = 4
     Margins.Right = 4
     Margins.Bottom = 4
     Align = alLeft
     TabOrder = 0
+    ExplicitLeft = 9
+    ExplicitHeight = 638
     object Label54: TLabel
-      Left = 193
-      Top = 516
+      Left = 185
+      Top = 545
       Width = 41
       Height = 17
       Margins.Left = 4
@@ -42,16 +44,15 @@ object FormShaderLab: TFormShaderLab
       Left = 1
       Top = 1
       Width = 463
-      Height = 496
+      Height = 536
       Margins.Left = 4
       Margins.Top = 4
       Margins.Right = 4
       Margins.Bottom = 4
-      ActivePage = TabSheet6
+      ActivePage = TabSheet3
       Align = alTop
       MultiLine = True
       TabOrder = 0
-      ExplicitWidth = 439
       object TabSheet1: TTabSheet
         Margins.Left = 4
         Margins.Top = 4
@@ -1273,10 +1274,10 @@ object FormShaderLab: TFormShaderLab
           OnChange = tbErosionAnisoRChange
         end
         object Button5: TButton
-          Left = 4
-          Top = 459
-          Width = 230
-          Height = 31
+          Left = 196
+          Top = 433
+          Width = 214
+          Height = 23
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -2959,8 +2960,8 @@ object FormShaderLab: TFormShaderLab
       end
     end
     object chkAnimScene: TCheckBox
-      Left = 24
-      Top = 512
+      Left = 17
+      Top = 569
       Width = 122
       Height = 21
       Margins.Left = 4
@@ -2971,8 +2972,8 @@ object FormShaderLab: TFormShaderLab
       TabOrder = 1
     end
     object chkLightmoving: TCheckBox
-      Left = 24
-      Top = 541
+      Left = 16
+      Top = 598
       Width = 122
       Height = 21
       Margins.Left = 4
@@ -2983,8 +2984,8 @@ object FormShaderLab: TFormShaderLab
       TabOrder = 2
     end
     object cbxObjects: TComboBox
-      Left = 242
-      Top = 509
+      Left = 234
+      Top = 541
       Width = 181
       Height = 25
       Margins.Left = 4
@@ -3007,10 +3008,10 @@ object FormShaderLab: TFormShaderLab
         'GLSphere')
     end
     object Button2: TButton
-      Left = 193
-      Top = 543
+      Left = 186
+      Top = 574
       Width = 230
-      Height = 31
+      Height = 35
       Margins.Left = 4
       Margins.Top = 4
       Margins.Right = 4
@@ -3020,8 +3021,8 @@ object FormShaderLab: TFormShaderLab
       OnClick = Button2Click
     end
     object chkBackgroundImg: TCheckBox
-      Left = 168
-      Top = 582
+      Left = 160
+      Top = 622
       Width = 18
       Height = 21
       Hint = 'Show Background Texture'
@@ -3033,8 +3034,8 @@ object FormShaderLab: TFormShaderLab
       OnClick = chkBackgroundImgClick
     end
     object Button11: TButton
-      Left = 193
-      Top = 577
+      Left = 186
+      Top = 612
       Width = 230
       Height = 31
       Margins.Left = 4
@@ -3051,7 +3052,7 @@ object FormShaderLab: TFormShaderLab
     Left = 465
     Top = 0
     Width = 740
-    Height = 638
+    Height = 653
     Margins.Left = 4
     Margins.Top = 4
     Margins.Right = 4
@@ -3059,10 +3060,11 @@ object FormShaderLab: TFormShaderLab
     Camera = Camera
     Buffer.BackgroundColor = clBlack
     Buffer.AntiAliasing = aa2x
-    FieldOfView = 162.183898925781300000
+    FieldOfView = 162.586807250976600000
     PenAsTouch = False
     Align = alClient
     TabOrder = 1
+    ExplicitHeight = 640
   end
   object MaterialLibrary: TGLMaterialLibrary
     Materials = <

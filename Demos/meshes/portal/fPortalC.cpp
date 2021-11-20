@@ -122,7 +122,7 @@ void __fastcall TForm1::BBProcessClick(TObject *Sender)
 	  }
 	  else
 	  {
-		 //Delphi - Poly = TFGPortalPolygon.CreateOwned(Sector.FaceGroups);
+		 //in Delphi - Poly = TFGPortalPolygon.CreateOwned(Sector.FaceGroups);
 		 Poly = new TFGPortalPolygon;
 		 Poly = (TFGPortalPolygon*)(Sector->FaceGroups);
 		 //-TFGPortalPolygon(Poly)->DestinationSectorIndex = (x+1+7)*16+(y+7);
@@ -141,7 +141,7 @@ void __fastcall TForm1::BBProcessClick(TObject *Sender)
 	  }
 	  else
 	  {
-		 //Delphi - Poly = TFGPortalPolygon.CreateOwned(Sector.FaceGroups);
+		 //in Delphi - Poly = TFGPortalPolygon.CreateOwned(Sector.FaceGroups);
 		 Poly = new TFGPortalPolygon;
 		 Poly = (TFGPortalPolygon*)(Sector->FaceGroups);
 		 //-TFGPortalPolygon(Poly)->DestinationSectorIndex = (x+7)*16+(y+1+7);

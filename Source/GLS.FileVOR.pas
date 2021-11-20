@@ -106,7 +106,7 @@ var
   I: Integer;
   L: Integer;
   CurLine: string;
-  Mesh: TMeshObject;
+  Mesh: TGLMeshObject;
   DataFace: TVORFace;
   Header: TVORHeader;
   FileContent: TStringList;
@@ -122,7 +122,7 @@ var
 
 begin
   // create mesh object
-  Mesh := TMeshObject.CreateOwned(Owner.MeshObjects);
+  Mesh := TGLMeshObject.CreateOwned(Owner.MeshObjects);
   try
     Mesh.Mode := momTriangles;
     begin

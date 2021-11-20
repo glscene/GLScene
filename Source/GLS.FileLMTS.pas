@@ -121,7 +121,7 @@ end;
 
 procedure TGLLMTSVectorFile.LoadFromStream(aStream: TStream);
 var
-  MO: TMeshObject;
+  MO: TGLMeshObject;
   FG: TFGVertexIndexList;
   LL: TGLMaterialLibrary;
   ML: TGLMaterialLibrary;
@@ -142,7 +142,7 @@ var
 begin
   owner.MeshObjects.Clear;
 
-  MO := TMeshObject.CreateOwned(owner.MeshObjects);
+  MO := TGLMeshObject.CreateOwned(owner.MeshObjects);
   MO.Mode := momFaceGroups;
 
   vi := Tintegerlist.create;
@@ -418,7 +418,7 @@ end;
 
 procedure TGLLMTSVectorFile.SaveToStream(aStream: TStream);
 var
-  MO: TMeshObject;
+  MO: TGLMeshObject;
   FG: TFGVertexIndexList;
   i, j, k, l, lmstartindex, C, matindex: integer;
   h: TLMTS_Header;

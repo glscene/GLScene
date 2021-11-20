@@ -97,7 +97,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender) {
 	WaterPlane = true;
 
 	// load the sailboat
-	FFSailBoat->LoadFromFile("sailboat.glsm");
+    FFSailBoat->LoadFromFile("sailboat.glsm");    //<- error for glsm format
 	MLSailBoat->LoadFromFile("sailboat.glml");
 	FFSailBoat->Position->SetPoint(-125*TerrainRenderer->Scale->X, 0,
 		-100*TerrainRenderer->Scale->Z);

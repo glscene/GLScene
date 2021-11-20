@@ -55,7 +55,7 @@ procedure TGLGTSVectorFile.LoadFromStream(aStream: TStream);
 var
   i, nv, ne, nf, k, ei: Integer;
   sl: TStringList;
-  mesh: TMeshObject;
+  mesh: TGLMeshObject;
   fg: TFGVertexIndexList;
   vertIndices: array [0 .. 5] of Integer;
   pEdge, pTri, p: PChar;
@@ -63,7 +63,7 @@ begin
   sl := TStringList.Create;
   try
     sl.LoadFromStream(aStream{$IFDEF Unicode}, TEncoding.ASCII{$ENDIF});
-    mesh := TMeshObject.CreateOwned(Owner.MeshObjects);
+    mesh := TGLMeshObject.CreateOwned(Owner.MeshObjects);
     mesh.Mode := momFaceGroups;
     if sl.Count > 0 then
     begin

@@ -118,7 +118,7 @@ var
   I: Integer;
   L: Integer;
   CurLine: string;
-  Mesh: TMeshObject;
+  Mesh: TGLMeshObject;
   DataFace: TSTLFace;
   Header: TSTLHeader;
   FileContent: TStringList;
@@ -170,7 +170,7 @@ var
 
 begin
   // create mesh object
-  Mesh := TMeshObject.CreateOwned(Owner.MeshObjects);
+  Mesh := TGLMeshObject.CreateOwned(Owner.MeshObjects);
   try
     Mesh.Mode := momTriangles;
     if IsBinary then

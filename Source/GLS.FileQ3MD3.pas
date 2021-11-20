@@ -175,12 +175,12 @@ var
   SkinStrings, temp: TStrings;
   i, j: Integer;
   libmat: TGLLibMaterial;
-  mesh: TMeshObject;
+  mesh: TGLMeshObject;
   texture, textureNoDir: string;
   textureFound, meshFound: Boolean;
 
   function GetMeshObjectByName(MeshObjects: TGLMeshObjectList;
-    const Name: string; out mesh: TMeshObject): Boolean;
+    const Name: string; out mesh: TGLMeshObject): Boolean;
   var
     i: Integer;
   begin

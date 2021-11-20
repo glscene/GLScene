@@ -295,7 +295,7 @@ void __fastcall TForm1::CreateBall()
 
   CopyPosFromGeomToGL(odeFurBallGeom, FurBall);
 
-  VCSphere = new TGLVerletFricSphere(VerletWorld);
+  VCSphere = new TGLVerletFrictionSphere(VerletWorld);
   VCSphere->Radius = FurBall->Radius * 1.1;
   VCSphere->Location = AffineVectorMake(FurBall->AbsolutePosition);
 

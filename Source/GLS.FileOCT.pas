@@ -60,7 +60,7 @@ var
   oct: TOCTFile;
   octFace: POCTFace;
   octLightmap: POCTLightmap;
-  mo: TMeshObject;
+  mo: TGLMeshObject;
   fg: TFGVertexIndexList;
   lightmapLib: TGLMaterialLibrary;
   lightmapBmp: TBitmap;
@@ -68,7 +68,7 @@ var
 begin
   oct := TOCTFile.Create(aStream);
   try
-    mo := TMeshObject.CreateOwned(Owner.MeshObjects);
+    mo := TGLMeshObject.CreateOwned(Owner.MeshObjects);
     mo.Mode := momFaceGroups;
 
     lightmapLib := Owner.LightmapLibrary;

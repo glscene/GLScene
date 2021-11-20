@@ -895,7 +895,7 @@ begin
   // if GLBaseMesh is TGLActor then
   // TGLSkeletonMeshObject.CreateOwned(GLBaseMesh.MeshObjects)
   // else
-  TMeshObject.CreateOwned(GLBaseMesh.MeshObjects);
+  TGLMeshObject.CreateOwned(GLBaseMesh.MeshObjects);
   GLBaseMesh.MeshObjects[0].Mode := momFaceGroups;
 
   // Branches
@@ -931,7 +931,7 @@ begin
   // if GLBaseMesh is TGLActor then
   // TGLSkeletonMeshObject.CreateOwned(GLBaseMesh.MeshObjects)
   // else
-  TMeshObject.CreateOwned(GLBaseMesh.MeshObjects);
+  TGLMeshObject.CreateOwned(GLBaseMesh.MeshObjects);
   GLBaseMesh.MeshObjects[1].Mode := momFaceGroups;
 
   GLBaseMesh.MeshObjects[1].Vertices.Add(Leaves.Vertices);

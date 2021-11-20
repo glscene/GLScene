@@ -30,7 +30,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 {
   SetGLSceneMediaDir();
   // Load the bunny mesh and scale for viewing
-  Bunny->LoadFromFile("bunny.glsm");
+  Bunny->LoadFromFile("Models\\bunny.glsm");
   Bunny->Scale->Scale((float)(2/Bunny->BoundingSphereRadius()));
 
   // Load the normal map

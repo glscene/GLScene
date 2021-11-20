@@ -106,22 +106,24 @@ object Form1: TForm1
       Margins.Bottom = 4
       Caption = 'Lights'
       TabOrder = 1
-      object Shape1: TShape
+      object ShapeWhite: TShape
         Left = 40
         Top = 20
         Width = 21
         Height = 21
+        Hint = 'White'
         Margins.Left = 4
         Margins.Top = 4
         Margins.Right = 4
         Margins.Bottom = 4
         OnMouseDown = ShapeMouseDown
       end
-      object Shape2: TShape
+      object ShapeRed: TShape
         Left = 110
         Top = 20
         Width = 21
         Height = 21
+        Hint = 'Red'
         Margins.Left = 4
         Margins.Top = 4
         Margins.Right = 4
@@ -129,11 +131,12 @@ object Form1: TForm1
         Brush.Color = clRed
         OnMouseDown = ShapeMouseDown
       end
-      object Shape3: TShape
+      object ShapeBlue: TShape
         Left = 180
         Top = 20
         Width = 21
         Height = 21
+        Hint = 'Blue'
         Margins.Left = 4
         Margins.Top = 4
         Margins.Right = 4
@@ -141,7 +144,7 @@ object Form1: TForm1
         Brush.Color = clBlue
         OnMouseDown = ShapeMouseDown
       end
-      object CheckBox1: TCheckBox
+      object cbWhite: TCheckBox
         Left = 11
         Top = 20
         Width = 22
@@ -155,7 +158,7 @@ object Form1: TForm1
         TabOrder = 0
         OnClick = CheckBoxClick
       end
-      object CheckBox2: TCheckBox
+      object cbRed: TCheckBox
         Left = 81
         Top = 20
         Width = 22
@@ -167,7 +170,7 @@ object Form1: TForm1
         TabOrder = 1
         OnClick = CheckBoxClick
       end
-      object CheckBox3: TCheckBox
+      object cbBlue: TCheckBox
         Left = 151
         Top = 20
         Width = 22

@@ -29,7 +29,6 @@ object GLCUDAEditorForm: TGLCUDAEditorForm
     Caption = 'ToolBar1'
     Images = ImageList1
     TabOrder = 0
-    ExplicitWidth = 840
     object AddModuleButton: TToolButton
       Left = 0
       Top = 0
@@ -123,9 +122,6 @@ object GLCUDAEditorForm: TGLCUDAEditorForm
     MultiSelect = True
     TabOrder = 1
     OnClick = ListBox1Click
-    ExplicitTop = 327
-    ExplicitWidth = 293
-    ExplicitHeight = 31
   end
   object ImageList1: TImageList
     Left = 96

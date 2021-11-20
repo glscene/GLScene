@@ -141,12 +141,12 @@ end;
 
 procedure TFormCsg.btnUnionClick(Sender: TObject);
 var
-  Mesh : TMeshObject;
+  Mesh : TGLMeshObject;
 begin
   btnClearClick(Sender);
 
   if GLFreeForm3.MeshObjects.Count = 0 then
-    TMeshObject.CreateOwned(GLFreeForm3.MeshObjects).Mode := momFaceGroups;
+    TGLMeshObject.CreateOwned(GLFreeForm3.MeshObjects).Mode := momFaceGroups;
 
   Mesh := GLFreeForm3.MeshObjects[0];
 
@@ -159,12 +159,12 @@ end;
 
 procedure TFormCsg.btnSubtractABClick(Sender: TObject);
 var
-  Mesh : TMeshObject;
+  Mesh : TGLMeshObject;
 begin
   btnClearClick(Sender);
 
   if GLFreeForm3.MeshObjects.Count = 0 then
-    TMeshObject.CreateOwned(GLFreeForm3.MeshObjects).Mode := momFaceGroups;
+    TGLMeshObject.CreateOwned(GLFreeForm3.MeshObjects).Mode := momFaceGroups;
 
   Mesh := GLFreeForm3.MeshObjects[0];
 
@@ -177,12 +177,12 @@ end;
 
 procedure TFormCsg.btnSubtractBAClick(Sender: TObject);
 var
-  Mesh : TMeshObject;
+  Mesh : TGLMeshObject;
 begin
   btnClearClick(Sender);
 
   if GLFreeForm3.MeshObjects.Count = 0 then
-    TMeshObject.CreateOwned(GLFreeForm3.MeshObjects).Mode := momFaceGroups;
+    TGLMeshObject.CreateOwned(GLFreeForm3.MeshObjects).Mode := momFaceGroups;
 
   Mesh := GLFreeForm3.MeshObjects[0];
 
@@ -195,12 +195,12 @@ end;
 
 procedure TFormCsg.btnIntersectClick(Sender: TObject);
 var
-  Mesh : TMeshObject;
+  Mesh : TGLMeshObject;
 begin
   btnClearClick(Sender);
 
   if GLFreeForm3.MeshObjects.Count = 0 then
-    TMeshObject.CreateOwned(GLFreeForm3.MeshObjects).Mode := momFaceGroups;
+    TGLMeshObject.CreateOwned(GLFreeForm3.MeshObjects).Mode := momFaceGroups;
 
   Mesh := GLFreeForm3.MeshObjects[0];
 

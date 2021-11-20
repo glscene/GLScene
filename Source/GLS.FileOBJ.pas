@@ -53,7 +53,7 @@ type
     procedure ReadLine;
     // Raise a class-specific exception
     procedure Error(const msg: string);
-    procedure CalcMissingOBJNormals(mesh: TMeshObject);
+    procedure CalcMissingOBJNormals(mesh: TGLMeshObject);
   public
     class function Capabilities: TGLDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -540,7 +540,7 @@ begin
   Result := [dfcRead, dfcWrite];
 end;
 
-procedure TGLOBJVectorFile.CalcMissingOBJNormals(mesh: TMeshObject);
+procedure TGLOBJVectorFile.CalcMissingOBJNormals(mesh: TGLMeshObject);
 var
   vertexPool: PAffineVectorArray;
   n: TAffineVector;
@@ -620,7 +620,7 @@ procedure TGLOBJVectorFile.LoadFromStream(aStream: TStream);
 var
   hv: THomogeneousVector;
   av: TAffineVector;
-  mesh: TMeshObject;
+  mesh: TGLMeshObject;
   faceGroup: TOBJFGVertexNormalTexIndexList;
   faceGroupNames: TStringList;
 
@@ -895,7 +895,7 @@ var
   procedure SplitMesh;
   var
     i, j, count: Integer;
-    newMesh: TMeshObject;
+    newMesh: TGLMeshObject;
     newfaceGroup: TOBJFGVertexNormalTexIndexList;
     VertexIdx, NormalIdx, TexCoordIdx: Integer;
     AffineVector: TAffineVector;
@@ -904,7 +904,7 @@ var
     begin
       faceGroup := mesh.FaceGroups[i] as TOBJFGVertexNormalTexIndexList;
 
-      newMesh := TMeshObject.CreateOwned(Owner.MeshObjects);
+      newMesh := TGLMeshObject.CreateOwned(Owner.MeshObjects);
       newMesh.Mode := momFaceGroups;
       newMesh.Name := faceGroup.Name;
 
@@ -957,7 +957,7 @@ begin
   objMtlFileName := '';
   curMtlName := '';
 
-  mesh := TMeshObject.CreateOwned(Owner.MeshObjects);
+  mesh := TGLMeshObject.CreateOwned(Owner.MeshObjects);
   mesh.Mode := momFaceGroups;
 
   faceGroupNames := TStringList.Create;

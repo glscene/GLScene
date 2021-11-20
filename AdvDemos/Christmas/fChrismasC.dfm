@@ -42,8 +42,6 @@ object Form1: TForm1
     OnMouseDown = ViewerMouseDown
     OnMouseMove = ViewerMouseMove
     TabOrder = 0
-    ExplicitWidth = 856
-    ExplicitHeight = 671
   end
   object GLSMBASS: TGLSMBASS
     Active = True
@@ -74,7 +72,7 @@ object Form1: TForm1
     object Camera: TGLCamera
       DepthOfView = 100.000000000000000000
       FocalLength = 50.000000000000000000
-      TargetObject = DCCameraTarget
+      TargetObject = DCFire
       Position.Coordinates = {0000C0400000803F0000E0400000803F}
     end
     object DCFirTree: TGLDummyCube
@@ -217,11 +215,6 @@ object Form1: TForm1
         object DCFireSource: TGLDummyCube
           Position.Coordinates = {00000000000000C0000000000000803F}
           CubeSize = 1.000000000000000000
-          EffectsData = {
-            0458434F4C02010201061254474C536F75726365504658456666656374020202
-            00120000000002000200060750465846697265050000000000000080FF3F0206
-            0200080200080200080500000000000000000000050000000000000000000005
-            0000000000CDCCCCFB3F02000200090500000000000000000000080200}
         end
         object CYLog: TGLCylinder
           Material.FrontProperties.Diffuse.Color = {9A99993E9A99993E9A99993E0000803F}
@@ -5435,8 +5428,10 @@ object Form1: TForm1
   object GLFireFXManager1: TGLFireFXManager
     FireDir.Coordinates = {000000009A99993E0000000000000000}
     InitialDir.Coordinates = {00000000CDCC4C3E0000000000000000}
+    Cadencer = Cadencer
     MaxParticles = 128
     ParticleSize = 0.150000005960464500
+    InnerColor.Color = {0000803FF8FEFE3E000000000000803F}
     FireDensity = 0.600000023841857900
     FireEvaporation = 0.860000014305114700
     ParticleLife = 2
@@ -5446,6 +5441,7 @@ object Form1: TForm1
     Paused = False
     ParticleInterval = 0.039999999105930330
     UseInterval = True
+    Reference = CYLog
     Left = 24
     Top = 192
   end

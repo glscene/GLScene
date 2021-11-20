@@ -2,118 +2,153 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Portal'
-  ClientHeight = 492
-  ClientWidth = 749
+  ClientHeight = 615
+  ClientWidth = 936
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
+  PixelsPerInch = 120
   DesignSize = (
-    749
-    492)
-  PixelsPerInch = 96
-  TextHeight = 13
+    936
+    615)
+  TextHeight = 17
   object Label1: TLabel
-    Left = 8
-    Top = 8
-    Width = 75
-    Height = 18
+    Left = 10
+    Top = 10
+    Width = 97
+    Height = 24
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Maze Map'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -16
+    Font.Height = -20
     Font.Name = 'Arial'
     Font.Style = [fsBold, fsItalic]
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 304
-    Top = 8
-    Width = 61
-    Height = 18
+    Left = 380
+    Top = 10
+    Width = 78
+    Height = 24
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = '3D View'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -16
+    Font.Height = -20
     Font.Name = 'Arial'
     Font.Style = [fsBold, fsItalic]
     ParentFont = False
   end
   object Label3: TLabel
-    Left = 24
-    Top = 312
-    Width = 241
-    Height = 42
+    Left = 30
+    Top = 390
+    Width = 314
+    Height = 48
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 
       'To modify map, edit cells with keyboard :'#13#10'- any non-empty cell ' +
       'is a wall'#13#10'- click '#39'process'#39' to commit changes or check '#39'auto'#39
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
+    Font.Height = -14
     Font.Name = 'Arial'
     Font.Style = []
     ParentFont = False
   end
   object GLSceneViewer1: TGLSceneViewer
-    Left = 286
-    Top = 32
-    Width = 463
-    Height = 456
+    Left = 358
+    Top = 40
+    Width = 578
+    Height = 570
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Camera = GLCamera1
     Buffer.FogEnvironment.FogColor.Color = {00000000000000008180003F0000803F}
     Buffer.FogEnvironment.FogStart = 1.000000000000000000
     Buffer.FogEnvironment.FogEnd = 10.000000000000000000
     Buffer.BackgroundColor = clNavy
-    FieldOfView = 155.261871337890600000
+    FieldOfView = 160.098739624023400000
     PenAsTouch = False
     Anchors = [akLeft, akTop, akRight, akBottom]
     TabOrder = 0
   end
   object BUForward: TButton
-    Left = 96
-    Top = 360
-    Width = 89
-    Height = 25
+    Left = 120
+    Top = 450
+    Width = 111
+    Height = 31
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Forward (Z/W)'
     TabOrder = 1
   end
   object BUTurnLeft: TButton
-    Left = 8
-    Top = 376
-    Width = 81
-    Height = 25
+    Left = 10
+    Top = 470
+    Width = 101
+    Height = 31
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Turn Left (Q/A)'
     TabOrder = 2
   end
   object BUTurnRight: TButton
-    Left = 192
-    Top = 376
-    Width = 89
-    Height = 25
+    Left = 240
+    Top = 470
+    Width = 111
+    Height = 31
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'TurnRight (D)'
     TabOrder = 3
   end
   object BUBackward: TButton
-    Left = 96
-    Top = 407
-    Width = 89
-    Height = 25
+    Left = 120
+    Top = 509
+    Width = 111
+    Height = 31
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Backward (S)'
     TabOrder = 4
   end
   object SGMap: TStringGrid
-    Left = 8
-    Top = 32
-    Width = 272
-    Height = 272
+    Left = 10
+    Top = 40
+    Width = 340
+    Height = 340
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     BorderStyle = bsNone
     ColCount = 16
-    DefaultColWidth = 16
-    DefaultRowHeight = 16
+    DefaultColWidth = 20
+    DefaultRowHeight = 20
     FixedCols = 0
     RowCount = 16
     FixedRows = 0
@@ -122,27 +157,39 @@ object Form1: TForm1
     TabOrder = 5
   end
   object BBProcess: TButton
-    Left = 200
-    Top = 8
-    Width = 75
-    Height = 17
+    Left = 250
+    Top = 10
+    Width = 94
+    Height = 21
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Process'
     TabOrder = 6
     OnClick = BBProcessClick
   end
   object CBAuto: TCheckBox
-    Left = 152
-    Top = 8
-    Width = 41
-    Height = 17
+    Left = 190
+    Top = 10
+    Width = 51
+    Height = 21
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Auto'
     TabOrder = 7
   end
   object CBFog: TCheckBox
-    Left = 472
-    Top = 8
-    Width = 49
-    Height = 17
+    Left = 590
+    Top = 10
+    Width = 61
+    Height = 21
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Fog'
     TabOrder = 8
   end

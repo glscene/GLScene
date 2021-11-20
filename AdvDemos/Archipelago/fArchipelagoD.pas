@@ -145,7 +145,7 @@ begin
         TextureMode := tmReplace;
         TextureWrap := twNone;
         Compression := tcStandard; // comment out to turn off texture compression
-        //         FilteringQuality:=tfAnisotropic;
+         //        FilteringQuality := tfAnisotropic;
       end;
       libMat.Texture2Name := 'detail';
     end;

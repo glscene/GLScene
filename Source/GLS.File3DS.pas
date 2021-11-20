@@ -266,8 +266,8 @@ var
   (* If enabled, allows 3ds animation and fixes loading of some 3ds models,
     but has a few bugs:
     - TGLFreeForm.AutoCentering does now work correctly.
-    - TMeshObject.vertices return values different from
-    TMeshObject.ExtractTriangles() *)
+    - TGLMeshObject.vertices return values different from
+    TGLMeshObject.ExtractTriangles() *)
   vGLFile3DS_EnableAnimation: Boolean = False;
 
   (* If enabled, a -90 degrees (-PI/2) rotation will occured on X Axis.

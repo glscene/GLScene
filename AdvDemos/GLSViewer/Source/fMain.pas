@@ -775,7 +775,7 @@ procedure TMainForm.acConvertToIndexedTrianglesExecute(Sender: TObject);
 var
   v: TAffineVectorList;
   I: TIntegerList;
-  m: TMeshObject;
+  m: TGLMeshObject;
   fg: TFGVertexIndexList;
 begin
   v := ffObject.MeshObjects.ExtractTriangles;
@@ -786,7 +786,7 @@ begin
       IncreaseCoherency(I, 12);
       I.Capacity := I.Count;
       ffObject.MeshObjects.Clean;
-      m := TMeshObject.CreateOwned(ffObject.MeshObjects);
+      m := TGLMeshObject.CreateOwned(ffObject.MeshObjects);
       m.Vertices := v;
       m.BuildNormals(I, momTriangles);
       m.Mode := momFaceGroups;
@@ -807,7 +807,7 @@ end;
 procedure TMainForm.acStripifyExecute(Sender: TObject);
 var
   I: Integer;
-  mo: TMeshObject;
+  mo: TGLMeshObject;
   fg: TFGVertexIndexList;
   strips: TPersistentObjectList;
 begin

@@ -127,7 +127,7 @@ type
     ODESphere: PdxGeom;
     body: PdxBody;
     contactgroup: TdJointGroupID;
-    VCSphere: TGLVerletFricSphere;
+    VCSphere: TGLVerletFrictionSphere;
   end;
 
 procedure RecalcMeshNormals(BaseMesh: TGLBaseMesh);
@@ -155,7 +155,7 @@ end;
 procedure PrepareMeshForNormalsRecalc(BaseMesh: TGLBaseMesh);
 var
   i, j, k: Integer;
-  mo: TMeshObject;
+  mo: TGLMeshObject;
   fg: TFGVertexNormalTexIndexList;
 begin
   // update normals
@@ -182,7 +182,7 @@ end;
 procedure RecalcMeshNormals(BaseMesh: TGLBaseMesh);
 var
   i, j, k: Integer;
-  mo: TMeshObject;
+  mo: TGLMeshObject;
   fg: TFGVertexIndexList;
   n: TAffineVector;
 begin
@@ -222,8 +222,8 @@ end;
 procedure TFormClothify.Button_LoadMeshClick(Sender: TObject);
 var
   Floor: TGLVerletFloor;
-  Capsule: TGLVerletFricCapsule;
-  Cube: TGLVerletFricCube;
+  Capsule: TGLVerletFrictionCapsule;
+  Cube: TGLVerletFrictionCube;
   Sides: TAffineVector;
   ColliderGravy: Single;
   s: string;
@@ -232,7 +232,7 @@ var
 
   procedure CreateCubeFromGLCube(GLCube: TGLCube);
   begin
-    Cube := TGLVerletFricCube.Create(VerletWorld);
+    Cube := TGLVerletFrictionCube.Create(VerletWorld);
     Cube.Location := AffineVectorMake(GLCube.AbsolutePosition);
     Cube.FrictionRatio := 0.1;
     Sides.X := GLCube.CubeWidth * 1.1;
@@ -365,7 +365,7 @@ begin
 
   if GLSphere1.Visible then
   begin
-    VCSphere := TGLVerletFricSphere.Create(VerletWorld);
+    VCSphere := TGLVerletFrictionSphere.Create(VerletWorld);
     VCSphere.Radius := GLSphere1.Radius * ColliderGravy;
     VCSphere.Location := AffineVectorMake(GLSphere1.AbsolutePosition);
   end;
@@ -377,7 +377,7 @@ begin
 
   if GLCylinder1.Visible then
   begin
-    Capsule := TGLVerletFricCapsule.Create(VerletWorld);
+    Capsule := TGLVerletFrictionCapsule.Create(VerletWorld);
     Capsule.Radius := GLCylinder1.TopRadius * ColliderGravy;
     Capsule.Location := AffineVectorMake(GLCylinder1.AbsolutePosition);
     Capsule.Axis := AffineVectorMake(GLCylinder1.AbsoluteUp); // }
@@ -387,7 +387,7 @@ begin
 
   if GL_Capsule.Visible then
   begin
-    Capsule := TGLVerletFricCapsule.Create(VerletWorld);
+    Capsule := TGLVerletFrictionCapsule.Create(VerletWorld);
     Capsule.Radius := GL_Capsule.TopRadius * ColliderGravy;
     Capsule.Location := AffineVectorMake(GL_Capsule.AbsolutePosition);
     Capsule.Axis := AffineVectorMake(GL_Capsule.AbsoluteUp); // }

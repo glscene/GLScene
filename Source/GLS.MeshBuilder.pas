@@ -30,9 +30,9 @@ uses
 
 (* ---------------- Mesh building routines ------------------- *)
 
-procedure BuildCube(Mesh : TMeshObject; const Position, Scale : TAffineVector);
-procedure BuildCylinder(Mesh : TMeshObject; const Position, Scale : TAffineVector; Slices : Integer);
-procedure BuildCylinder2(Mesh : TMeshObject; const Position, Scale : TAffineVector; TopRadius,BottomRadius,Height: single; Slices : Integer);
+procedure BuildCube(Mesh : TGLMeshObject; const Position, Scale : TAffineVector);
+procedure BuildCylinder(Mesh : TGLMeshObject; const Position, Scale : TAffineVector; Slices : Integer);
+procedure BuildCylinder2(Mesh : TGLMeshObject; const Position, Scale : TAffineVector; TopRadius,BottomRadius,Height: single; Slices : Integer);
 
 (* ---------------- Mesh optimization routines --------------- *)
 
@@ -45,10 +45,10 @@ type
 procedure OptimizeMesh(aList: TGLMeshObjectList; options: TGLMeshOptimizerOptions); overload;
 procedure OptimizeMesh(aList: TGLMeshObjectList); overload;
 // OptimizeMesh (object, with options)
-procedure OptimizeMesh(aMeshObject: TMeshObject; options: TGLMeshOptimizerOptions); overload;
+procedure OptimizeMesh(aMeshObject: TGLMeshObject; options: TGLMeshOptimizerOptions); overload;
 // OptimizeMesh (object, default options)
-procedure OptimizeMesh(aMeshObject: TMeshObject); overload;
-procedure FacesSmooth(aMeshObj: TMeshObject;
+procedure OptimizeMesh(aMeshObject: TGLMeshObject); overload;
+procedure FacesSmooth(aMeshObj: TGLMeshObject;
   aWeldDistance: Single = 0.0000001; aThreshold: Single = 35.0;
   InvertNormals: boolean = false);
 
@@ -68,7 +68,7 @@ begin
   Result.Z:= position.Z+Scale.Z*Z;
 end;
 
-procedure BuildCube(Mesh : TMeshObject; const Position, Scale : TAffineVector);
+procedure BuildCube(Mesh : TGLMeshObject; const Position, Scale : TAffineVector);
 var
   FGR : TFGVertexNormalTexIndexList;
   VertexOffset : Integer;
@@ -159,7 +159,7 @@ begin
   FGR.TexCoordIndices.Add(TextureOffset+2,TextureOffset+7,TextureOffset+6);
 end;
 
-procedure BuildCylinder(Mesh : TMeshObject; const Position, Scale : TAffineVector; Slices : Integer);
+procedure BuildCylinder(Mesh : TGLMeshObject; const Position, Scale : TAffineVector; Slices : Integer);
 var
   FGR : TFGVertexNormalTexIndexList;
   VertexOffset : Integer;
@@ -219,7 +219,7 @@ begin
   end;
 end;
 
-procedure BuildCylinder2(Mesh : TMeshObject; const Position, Scale : TAffineVector; TopRadius,BottomRadius,Height: single; Slices : Integer);
+procedure BuildCylinder2(Mesh : TGLMeshObject; const Position, Scale : TAffineVector; TopRadius,BottomRadius,Height: single; Slices : Integer);
 var
   FGR : TFGVertexNormalTexIndexList;
   VertexOffset : Integer;
@@ -289,7 +289,7 @@ procedure OptimizeMesh(aList: TGLMeshObjectList;
   options: TGLMeshOptimizerOptions);
 var
   i, k: Integer;
-  mob, mo: TMeshObject;
+  mob, mo: TGLMeshObject;
   fg: TGLFaceGroup;
   fgvi: TFGVertexIndexList;
 begin
@@ -335,12 +335,12 @@ begin
   end;
 end;
 
-procedure OptimizeMesh(aMeshObject: TMeshObject);
+procedure OptimizeMesh(aMeshObject: TGLMeshObject);
 begin
   OptimizeMesh(aMeshObject, vDefaultMeshOptimizerOptions);
 end;
 
-procedure OptimizeMesh(aMeshObject: TMeshObject;
+procedure OptimizeMesh(aMeshObject: TGLMeshObject;
   options: TGLMeshOptimizerOptions);
 var
   i: Integer;
@@ -421,7 +421,7 @@ begin
     aMeshObject.FaceGroups.SortByMaterial;
 end;
 
-procedure FacesSmooth(aMeshObj: TMeshObject;
+procedure FacesSmooth(aMeshObj: TGLMeshObject;
   aWeldDistance: Single = 0.0000001; aThreshold: Single = 35.0;
   InvertNormals: boolean = false);
 Var

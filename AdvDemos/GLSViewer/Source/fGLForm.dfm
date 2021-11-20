@@ -3,14 +3,13 @@ object GLForm: TGLForm
   Top = 227
   HelpContext = 1
   ClientHeight = 304
-  ClientWidth = 500
+  ClientWidth = 1122
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poMainFormCenter
   Scaled = False
   OnCreate = FormCreate
