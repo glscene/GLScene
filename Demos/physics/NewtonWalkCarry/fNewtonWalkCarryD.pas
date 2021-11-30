@@ -138,7 +138,7 @@ var
   cp: TPoint;
   visible_cursor: boolean;
   ScObj, FScObj: TGLBaseSceneObject;
-  targetColor: TColorVector;
+  targetColor: TGLColorVector;
   picked: TGLCustomSceneObject;
   mm: TMatrix4f;
 

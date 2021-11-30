@@ -1368,14 +1368,6 @@ function PackRotationMatrix(const mat: TGLMatrix): TPackedRotationMatrix;
 // Restores a packed rotation matrix. See PackRotationMatrix
 function UnPackRotationMatrix(const packedMatrix: TPackedRotationMatrix): TGLMatrix;
 
-(* Calculates the barycentric coordinates for the point p on the triangle
-  defined by the vertices v1, v2 and v3. That is, solves
-  p = u * v1 + v * v2 + (1-u-v) * v3
-  for u,v.
-  Returns true if the point is inside the triangle, false otherwise.
-  NOTE: This function assumes that the point lies on the plane defined by the triangle.
-  If this is not the case, the function will not work correctly! *)
-function BarycentricCoordinates(const V1, V2, V3, p: TAffineVector; var u, V: Single): Boolean;
 (*Calculates angles for the Camera.MoveAroundTarget(pitch, turn) procedure.
   Initially from then GLCameraColtroller unit, requires AOriginalUpVector to contain only -1, 0 or 1.
   Result contains pitch and turn angles *)
@@ -6601,54 +6593,6 @@ begin
   else
     Q.RealPart := Sqrt(Q.RealPart);
   result := QuaternionToMatrix(Q);
-end;
-
-function BarycentricCoordinates(const V1, V2, V3, p: TAffineVector;
-  var u, V: Single): Boolean;
-var
-  a1, a2: Integer;
-  n, e1, e2, pt: TAffineVector;
-begin
-  // calculate edges
-  VectorSubtract(V1, V3, e1);
-  VectorSubtract(V2, V3, e2);
-
-  // calculate p relative to v3
-  VectorSubtract(p, V3, pt);
-
-  // find the dominant axis
-  n := VectorCrossProduct(e1, e2);
-  AbsVector(n);
-  a1 := 0;
-  if n.Y > n.V[a1] then
-    a1 := 1;
-  if n.Z > n.V[a1] then
-    a1 := 2;
-
-  // use dominant axis for projection
-  case a1 of
-    0:
-      begin
-        a1 := 1;
-        a2 := 2;
-      end;
-    1:
-      begin
-        a1 := 0;
-        a2 := 2;
-      end;
-  else // 2:
-    a1 := 0;
-    a2 := 1;
-  end;
-
-  // solve for u and v
-  u := (pt.V[a2] * e2.V[a1] - pt.V[a1] * e2.V[a2]) /
-    (e1.V[a2] * e2.V[a1] - e1.V[a1] * e2.V[a2]);
-  V := (pt.V[a2] * e1.V[a1] - pt.V[a1] * e1.V[a2]) /
-    (e2.V[a2] * e1.V[a1] - e2.V[a1] * e1.V[a2]);
-
-  result := (u >= 0) and (V >= 0) and (u + V <= 1);
 end;
 
 //**********************************************************************

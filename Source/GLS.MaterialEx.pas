@@ -2590,7 +2590,7 @@ begin
       FWrap[0] := TGLSeparateTextureWrap(ReadInteger);
       FWrap[1] := TGLSeparateTextureWrap(ReadInteger);
       FWrap[2] := TGLSeparateTextureWrap(ReadInteger);
-      Read(FBorderColor.AsAddress^, SizeOf(TColorVector));
+      Read(FBorderColor.AsAddress^, SizeOf(TGLColorVector));
       FCompareMode := TGLTextureCompareMode(ReadInteger);
       FCompareFunc := TGLDepthFunction(ReadInteger);
       FDecodeSRGB := ReadBoolean;
@@ -2701,7 +2701,7 @@ begin
     WriteInteger(Integer(FWrap[0]));
     WriteInteger(Integer(FWrap[1]));
     WriteInteger(Integer(FWrap[2]));
-    Write(FBorderColor.AsAddress^, SizeOf(TColorVector));
+    Write(FBorderColor.AsAddress^, SizeOf(TGLColorVector));
     WriteInteger(Integer(FCompareMode));
     WriteInteger(Integer(FCompareFunc));
     WriteBoolean(FDecodeSRGB);

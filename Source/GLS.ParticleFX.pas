@@ -497,9 +497,9 @@ type
     procedure InitializeRendering(var rci: TGLRenderContextInfo); override;
     procedure FinalizeRendering(var rci: TGLRenderContextInfo); override;
     function MaxParticleAge: Single; override;
-    procedure ComputeColors(var lifeTime: Single; var inner, outer: TColorVector);
-    procedure ComputeInnerColor(var lifeTime: Single; var inner: TColorVector);
-    procedure ComputeOuterColor(var lifeTime: Single; var outer: TColorVector);
+    procedure ComputeColors(var lifeTime: Single; var inner, outer: TGLColorVector);
+    procedure ComputeInnerColor(var lifeTime: Single; var inner: TGLColorVector);
+    procedure ComputeOuterColor(var lifeTime: Single; var outer: TGLColorVector);
     function ComputeSizeScale(var lifeTime: Single; var sizeScale: Single): Boolean;
     function ComputeRotateAngle(var lifeTime, rotateAngle: Single): Boolean;
     procedure RotateVertexBuf(buf: TAffineVectorList; lifeTime: Single;
@@ -2054,7 +2054,7 @@ begin
   Result := LifeColors.MaxLifeTime;
 end;
 
-procedure TGLLifeColoredPFXManager.ComputeColors(var lifeTime: Single; var inner, outer: TColorVector);
+procedure TGLLifeColoredPFXManager.ComputeColors(var lifeTime: Single; var inner, outer: TGLColorVector);
 var
   i, k, n: Integer;
   f: Single;
@@ -2100,7 +2100,7 @@ begin
   end;
 end;
 
-procedure TGLLifeColoredPFXManager.ComputeInnerColor(var lifeTime: Single; var inner: TColorVector);
+procedure TGLLifeColoredPFXManager.ComputeInnerColor(var lifeTime: Single; var inner: TGLColorVector);
 var
   i, k, n: Integer;
   f: Single;
@@ -2143,7 +2143,7 @@ begin
   end;
 end;
 
-procedure TGLLifeColoredPFXManager.ComputeOuterColor(var lifeTime: Single; var outer: TColorVector);
+procedure TGLLifeColoredPFXManager.ComputeOuterColor(var lifeTime: Single; var outer: TGLColorVector);
 var
   i, k, n: Integer;
   f: Single;
@@ -2451,7 +2451,7 @@ procedure TGLPolygonPFXManager.RenderParticle(var rci: TGLRenderContextInfo; aPa
 var
   i: Integer;
   lifeTime, sizeScale: Single;
-  inner, outer: TColorVector;
+  inner, outer: TGLColorVector;
   pos: TAffineVector;
   vertexList: PAffineVectorArray;
 begin
@@ -2686,7 +2686,7 @@ const
     ((S: 0.5; T: 0.5), (S: 0.0; T: 0.5), (S: 0.0; T: 0.0), (S: 0.5; T: 0.0)));
 var
   lifeTime, sizeScale: Single;
-  inner, outer: TColorVector;
+  inner, outer: TGLColorVector;
   pos: TAffineVector;
   vertexList: PAffineVectorArray;
   i: Integer;

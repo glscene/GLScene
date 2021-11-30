@@ -123,10 +123,10 @@ type
   // *) ms3d_material_t;
   TMS3DMaterial = record
     Name: array[0..31] of AnsiChar;
-    Ambient: TColorVector;
-    Diffuse: TColorVector;
-    Specular: TColorVector;
-    Emissive: TColorVector;
+    Ambient: TGLColorVector;
+    Diffuse: TGLColorVector;
+    Specular: TGLColorVector;
+    Emissive: TGLColorVector;
     Shininess: single;
     Transparency: single;
     Mode: AnsiChar;

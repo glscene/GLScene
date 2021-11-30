@@ -189,13 +189,13 @@ type
        Enable states are also possibly altered. *)
     procedure RenderString(var ARci: TGLRenderContextInfo;
       const aText: UnicodeString; aAlignment: TAlignment;
-      aLayout: TTextLayout; const aColor: TColorVector;
+      aLayout: TTextLayout; const aColor: TGLColorVector;
       aPosition: PGLVector = nil; aReverseY: boolean = False); overload; virtual;
     (* A simpler canvas-style TextOut helper for RenderString.
        The rendering is reversed along Y by default, to allow direct use
        with TGLCanvas *)
     procedure TextOut(var rci: TGLRenderContextInfo; X, Y: Single;
-      const Text: UnicodeString; const Color: TColorVector); overload;
+      const Text: UnicodeString; const Color: TGLColorVector); overload;
     procedure TextOut(var rci: TGLRenderContextInfo; X, Y: Single;
       const Text: UnicodeString; const Color: TColor); overload;
     function TextWidth(const Text: UnicodeString): Integer;
@@ -832,7 +832,7 @@ end;
 
 procedure TGLCustomBitmapFont.RenderString(var ARci: TGLRenderContextInfo;
   const aText: UnicodeString; aAlignment: TAlignment; aLayout: TTextLayout;
-  const aColor: TColorVector; aPosition: PGLVector = nil;
+  const aColor: TGLColorVector; aPosition: PGLVector = nil;
   aReverseY: boolean = False);
 
   function AlignmentAdjustement(p: Integer): Single;
@@ -964,7 +964,7 @@ begin
 end;
 
 procedure TGLCustomBitmapFont.TextOut(var rci: TGLRenderContextInfo; X, Y: Single;
-  const Text: UnicodeString; const Color: TColorVector);
+  const Text: UnicodeString; const Color: TGLColorVector);
 var
   V: TGLVector;
 begin

@@ -926,7 +926,7 @@ type
   end;
   TRowData = record
     node: array of TNodeData;
-    color: TColorVector;
+    color: TGLColorVector;
     center: TVector3f;
     textcoordT: Single;
   end;

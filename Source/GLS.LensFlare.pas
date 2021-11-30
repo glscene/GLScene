@@ -50,7 +50,7 @@ type
   public
     constructor Create(AOwner: TPersistent); override;
     constructor CreateInitialized(AOwner: TPersistent;
-      const fromColor, toColor: TColorVector);
+      const fromColor, toColor: TGLColorVector);
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
   published
@@ -206,7 +206,7 @@ begin
 end;
 
 constructor TGLFlareGradient.CreateInitialized(AOwner: TPersistent;
-  const fromColor, toColor: TColorVector);
+  const fromColor, toColor: TGLColorVector);
 begin
   Create(AOwner);
   FFromColor.Initialize(fromColor);

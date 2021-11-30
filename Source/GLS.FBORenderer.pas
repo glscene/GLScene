@@ -808,7 +808,7 @@ end;
 procedure TGLFrameBuffer.Render(var rci: TGLRenderContextInfo; baseObject:
   TGLBaseSceneObject);
 var
-  backColor: TColorVector;
+  backColor: TGLColorVector;
   buffer: TGLSceneBuffer;
 begin
   Bind;
@@ -1278,7 +1278,7 @@ procedure TGLFBORenderer.RenderToFBO(var ARci: TGLRenderContextInfo);
 
 type
   TGLStoredStates = record
-    ColorClearValue: TColorVector;
+    ColorClearValue: TGLColorVector;
     ColorWriteMask: TGLColorMask;
     Tests: TGLStates;
   end;
@@ -1306,7 +1306,7 @@ type
   end;
 
 var
-  backColor: TColorVector;
+  backColor: TGLColorVector;
   buffer: TGLSceneBuffer;
   savedStates: TGLStoredStates;
   w, h: Integer;

@@ -55,6 +55,7 @@ type
     GLCameraControler: TGLCamera;
     GLSkyDome: TGLSkyDome;
     ConstellationLines: TGLLines;
+    ConstellationBorders: TGLLines;
     procedure FormCreate(Sender: TObject);
     procedure GLDirectOpenGL1Render(Sender: TObject; var rci: TGLRenderContextInfo);
     procedure Timer1Timer(Sender: TObject);
@@ -71,7 +72,7 @@ type
     procedure GLSceneViewerBeforeRender(Sender: TObject);
   private
     procedure LoadConstellationLines;
-    function AtmosphereColor(const rayStart, rayEnd: TGLVector): TColorVector;
+    function AtmosphereColor(const rayStart, rayEnd: TGLVector): TGLColorVector;
   public
     ConstellationsAlpha: Single;
     TimeMultiplier: Single;
@@ -92,8 +93,8 @@ const
   cAtmosphereRadius: Single = 0.55;
   // use value slightly lower than actual radius, for antialiasing effect
   cPlanetRadius: Single = 0.495;
-  cLowAtmColor: TColorVector = (X:1; Y:1; Z:1; W:1);
-  cHighAtmColor: TColorVector = (X:0; Y:0; Z:1; W:1);
+  cLowAtmColor: TGLColorVector = (X:1; Y:1; Z:1; W:1);
+  cHighAtmColor: TGLColorVector = (X:0; Y:0; Z:1; W:1);
   cIntDivTable: array[2..20] of Single =
     (1 / 2, 1 / 3, 1 / 4, 1 / 5, 1 / 6, 1 / 7, 1 / 8, 1 / 9, 1 / 10,
     1 / 11, 1 / 12, 1 / 13, 1 / 14, 1 / 15, 1 / 16, 1 / 17, 1 / 18, 1 / 19, 1 / 20);
@@ -130,11 +131,11 @@ begin
 end;
 
 function TForm1.AtmosphereColor(const rayStart, rayEnd: TGLVector)
-  : TColorVector;
+  : TGLColorVector;
 var
   i, n: Integer;
   atmPoint, normal: TGLVector;
-  altColor: TColorVector;
+  altColor: TGLColorVector;
   alt, rayLength, contrib, decay, intensity, invN: Single;
 
 begin
@@ -177,7 +178,7 @@ end;
 
 procedure TForm1.GLDirectOpenGL1Render(Sender: TObject; var rci: TGLRenderContextInfo);
 
-  function ComputeColor(var rayDest: TGLVector; mayHitGround: Boolean): TColorVector;
+  function ComputeColor(var rayDest: TGLVector; mayHitGround: Boolean): TGLColorVector;
   var
     ai1, ai2, pi1, pi2: TGLVector;
     rayVector: TGLVector;
@@ -241,8 +242,7 @@ begin
     k1 := (cSlices + 1) - k0;
     for j := 0 to cSlices do
     begin
-      VectorCombine(diskRight, diskUp,
-        cosCache[j] * radius, sinCache[j] * radius,
+      VectorCombine(diskRight, diskUp, cosCache[j] * radius, sinCache[j] * radius,
         pVertex[k0 + j]);
       if i < 13 then
         pColor[k0 + j] := ComputeColor(pVertex[k0 + j], i <= 7);
@@ -316,6 +316,7 @@ begin
   sl := TStringList.Create;
   line := TStringList.Create;
   sl.LoadFromFile('Data\Constellations.dat');
+//  sl.LoadFromFile('Data\Constellation_borders.dat');
   for i := 0 to sl.Count - 1 do
   begin
     line.CommaText := sl[i];
@@ -372,12 +373,13 @@ begin
     cameraTimeSteps := cameraTimeSteps - 0.005;
   end;
   // smooth constellation appearance/disappearance
-  with ConstellationLines.LineColor do
-    if Alpha <> constellationsAlpha then
-    begin
-      Alpha := ClampValue(Alpha + Sign(constellationsAlpha - Alpha) * deltaTime, 0, 0.5);
-      ConstellationLines.Visible := (Alpha > 0);
-    end;
+  if ConstellationLines.LineColor.Alpha <> constellationsAlpha then
+  begin
+    ConstellationLines.LineColor.Alpha :=
+      ClampValue(ConstellationLines.LineColor.Alpha + Sign(constellationsAlpha -
+                 ConstellationLines.LineColor.Alpha) * deltaTime, 0, 0.5);
+    ConstellationLines.Visible := (ConstellationLines.LineColor.Alpha > 0);
+  end;
 end;
 
 procedure TForm1.GLSceneViewerMouseDown(Sender: TObject;

@@ -9,6 +9,7 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
+#include "Vcl.imaging.JPeg.hpp"
 
 #include "GLS.Scene.hpp"
 #include "GLS.Objects.hpp"
@@ -22,7 +23,6 @@
 #include "GLS.Atmosphere.hpp"
 #include "GLS.SimpleNavigation.hpp"
 #include "GLS.Behaviours.hpp"
-#include "JPeg.hpp"
 #include "GLS.Coordinates.hpp"
 #include "GLS.BaseClasses.hpp"
 #include "GLS.Color.hpp"

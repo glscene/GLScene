@@ -248,8 +248,8 @@ type
   // Hidden line shader (specific implem for the viewer, *not* generic)
   THiddenLineShader = class(TGLShader)
   private
-    LinesColor: TColorVector;
-    BackgroundColor: TColorVector;
+    LinesColor: TGLColorVector;
+    BackgroundColor: TGLColorVector;
     PassCount: Integer;
   public
     procedure DoApply(var rci: TGLRenderContextInfo; Sender: TObject); override;

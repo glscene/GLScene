@@ -23,8 +23,8 @@ uses
   GLS.BaseClasses;
 
 type
-  PColorVector = ^TColorVector;
-  TColorVector = TVector4f;
+  PColorVector = ^TGLColorVector;
+  TGLColorVector = TVector4f;
 
   PRGBColor = ^TRGBColor;
   TRGBColor = TVector3b;
@@ -32,14 +32,14 @@ type
   // Wraps an OpenGL color.
   TGLColor = class(TGLUpdateAbleObject)
   private
-    FColor: TColorVector;
+    FColor: TGLColorVector;
     FPDefaultColor: PColorVector;
-    procedure SetColorVector(const aColor: TColorVector); overload;
+    procedure SetColorVector(const aColor: TGLColorVector); overload;
     procedure SetColorComponent(index: Integer; value: Single);
     function GetColorComponent(const index: Integer): Single;
     procedure SetAsWinColor(const val: TColor);
     function GetAsWinColor: TColor;
-    procedure SetDirectColorVector(const aColor: TColorVector);
+    procedure SetDirectColorVector(const aColor: TGLColorVector);
   protected
     procedure DefineProperties(Filer: TFiler); override;
     procedure ReadData(Stream: TStream);
@@ -49,19 +49,19 @@ type
   public
     constructor Create(AOwner: TPersistent); override;
     constructor CreateInitialized(AOwner: TPersistent;
-      const Color: TColorVector; changeEvent: TNotifyEvent = nil);
+      const Color: TGLColorVector; changeEvent: TNotifyEvent = nil);
     destructor Destroy; override;
     procedure NotifyChange(Sender: TObject); override;
     procedure Assign(Source: TPersistent); override;
-    procedure Initialize(const color: TColorVector);
+    procedure Initialize(const color: TGLColorVector);
     function AsAddress: PSingle;
     procedure RandomColor;
     procedure SetColor(Red, Green, Blue: Single; Alpha: Single = 1); overload;
-    property Color: TColorVector read FColor write SetColorVector;
-    property DirectColor: TColorVector read FColor write SetDirectColorVector;
+    property Color: TGLColorVector read FColor write SetColorVector;
+    property DirectColor: TGLColorVector read FColor write SetDirectColorVector;
     property AsWinColor: TColor read GetAsWinColor write SetAsWinColor;
     property hsva: TGLVector read GetHSVA write SetHSVA;
-    property DefaultColor: TColorVector read FColor;
+    property DefaultColor: TGLColorVector read FColor;
   published
     property Red: Single index 0 read GetColorComponent write SetColorComponent
       stored False;
@@ -73,23 +73,23 @@ type
       write SetColorComponent stored False;
   end;
 
-  PColorEntry = ^TColorEntry;
+  PGLColorEntry = ^TGLColorEntry;
 
-  TColorEntry = record
+  TGLColorEntry = record
     Name: String;
-    Color: TColorVector;
+    Color: TGLColorVector;
   end;
 
   TGLColorManager = class(TList)
   public
     destructor Destroy; override;
-    procedure AddColor(const aName: String; const aColor: TColorVector);
+    procedure AddColor(const aName: String; const aColor: TGLColorVector);
     procedure EnumColors(Proc: TGetStrProc); overload;
     procedure EnumColors(AValues: TStrings); overload;
-    function FindColor(const aName: String): TColorVector;
+    function FindColor(const aName: String): TGLColorVector;
     // Convert a clrXxxx or a '<Red Green Blue Alpha> to a color vector
-    function GetColor(const aName: String): TColorVector;
-    function GetColorName(const aColor: TColorVector): String;
+    function GetColor(const aName: String): TGLColorVector;
+    function GetColorName(const aColor: TGLColorVector): String;
     procedure RegisterDefaultColors;
     procedure RemoveColor(const aName: String);
   end;
@@ -97,21 +97,21 @@ type
 // Builds a TColor from Red Green Blue components.
 function RGB2Color(const r, g, b: Byte): TColor; inline;
 function ColorManager: TGLColorManager;
-procedure RegisterColor(const aName: String; const aColor: TColorVector);
+procedure RegisterColor(const aName: String; const aColor: TGLColorVector);
 procedure UnRegisterColor(const aName: String);
 function GetRValue(rgb: DWORD): Byte; {$NODEFINE GetRValue}
 function GetGValue(rgb: DWORD): Byte; {$NODEFINE GetGValue}
 function GetBValue(rgb: DWORD): Byte; {$NODEFINE GetBValue}
 procedure InitGLSceneColors;
 // Converts a delphi color into its RGB fragments and correct range.
-function ConvertWinColor(aColor: TColor; Alpha: Single = 1): TColorVector;
+function ConvertWinColor(aColor: TColor; Alpha: Single = 1): TGLColorVector;
 // Converts a color vector (containing float values)
-function ConvertColorVector(const aColor: TColorVector): TColor; overload;
+function ConvertColorVector(const aColor: TGLColorVector): TColor; overload;
 (* Converts a color vector (containing float values) and alter intensity.
   intensity is in [0..1] *)
-function ConvertColorVector(const aColor: TColorVector; intensity: Single): TColor; overload;
+function ConvertColorVector(const aColor: TGLColorVector; intensity: Single): TColor; overload;
 // Converts RGB components into a color vector with correct range
-function ConvertRGBColor(const aColor: array of Byte): TColorVector;
+function ConvertRGBColor(const aColor: array of Byte): TGLColorVector;
 
 // color definitions
 const
@@ -192,166 +192,166 @@ const
   // since they depend on the desktop scheme)
 const
 {$J+ - allow change of the following typed constants}
-  clrScrollBar: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrBackground: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrActiveCaption: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrInactiveCaption: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrMenu: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrWindow: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrWindowFrame: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrMenuText: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrWindowText: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrCaptionText: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrActiveBorder: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrInactiveBorder: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrAppWorkSpace: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrHighlight: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrHighlightText: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrBtnFace: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrBtnShadow: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrGrayText: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrBtnText: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrInactiveCaptionText: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrBtnHighlight: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clr3DDkShadow: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clr3DLight: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrInfoText: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrInfoBk: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrScrollBar: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrBackground: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrActiveCaption: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrInactiveCaption: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrMenu: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrWindow: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrWindowFrame: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrMenuText: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrWindowText: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrCaptionText: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrActiveBorder: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrInactiveBorder: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrAppWorkSpace: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrHighlight: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrHighlightText: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrBtnFace: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrBtnShadow: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrGrayText: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrBtnText: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrInactiveCaptionText: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrBtnHighlight: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clr3DDkShadow: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clr3DLight: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrInfoText: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrInfoBk: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
 
 {$J- - disable change of other typed constants}
   // 'static' color definitions sort of grays
-  clrTransparent: TColorVector = (X: 0; Y: 0; Z: 0; W: 0);
-  clrBlack: TColorVector = (X: 0; Y: 0; Z: 0; W: 1);
-  clrGray05: TColorVector = (X: 0.05; Y: 0.05; Z: 0.05; W: 1);
-  clrGray10: TColorVector = (X: 0.10; Y: 0.10; Z: 0.10; W: 1);
-  clrGray15: TColorVector = (X: 0.15; Y: 0.15; Z: 0.15; W: 1);
-  clrGray20: TColorVector = (X: 0.20; Y: 0.20; Z: 0.20; W: 1);
-  clrGray25: TColorVector = (X: 0.25; Y: 0.25; Z: 0.25; W: 1);
-  clrGray30: TColorVector = (X: 0.30; Y: 0.30; Z: 0.30; W: 1);
-  clrGray35: TColorVector = (X: 0.35; Y: 0.35; Z: 0.35; W: 1);
-  clrGray40: TColorVector = (X: 0.40; Y: 0.40; Z: 0.40; W: 1);
-  clrGray45: TColorVector = (X: 0.45; Y: 0.45; Z: 0.45; W: 1);
-  clrGray50: TColorVector = (X: 0.50; Y: 0.50; Z: 0.50; W: 1);
-  clrGray55: TColorVector = (X: 0.55; Y: 0.55; Z: 0.55; W: 1);
-  clrGray60: TColorVector = (X: 0.60; Y: 0.60; Z: 0.60; W: 1);
-  clrGray65: TColorVector = (X: 0.65; Y: 0.65; Z: 0.65; W: 1);
-  clrGray70: TColorVector = (X: 0.70; Y: 0.70; Z: 0.70; W: 1);
-  clrGray75: TColorVector = (X: 0.75; Y: 0.75; Z: 0.75; W: 1);
-  clrGray80: TColorVector = (X: 0.80; Y: 0.80; Z: 0.80; W: 1);
-  clrGray85: TColorVector = (X: 0.85; Y: 0.85; Z: 0.85; W: 1);
-  clrGray90: TColorVector = (X: 0.90; Y: 0.90; Z: 0.90; W: 1);
-  clrGray95: TColorVector = (X: 0.95; Y: 0.95; Z: 0.95; W: 1);
-  clrWhite: TColorVector = (X: 1; Y: 1; Z: 1; W: 1);
+  clrTransparent: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 0);
+  clrBlack: TGLColorVector = (X: 0; Y: 0; Z: 0; W: 1);
+  clrGray05: TGLColorVector = (X: 0.05; Y: 0.05; Z: 0.05; W: 1);
+  clrGray10: TGLColorVector = (X: 0.10; Y: 0.10; Z: 0.10; W: 1);
+  clrGray15: TGLColorVector = (X: 0.15; Y: 0.15; Z: 0.15; W: 1);
+  clrGray20: TGLColorVector = (X: 0.20; Y: 0.20; Z: 0.20; W: 1);
+  clrGray25: TGLColorVector = (X: 0.25; Y: 0.25; Z: 0.25; W: 1);
+  clrGray30: TGLColorVector = (X: 0.30; Y: 0.30; Z: 0.30; W: 1);
+  clrGray35: TGLColorVector = (X: 0.35; Y: 0.35; Z: 0.35; W: 1);
+  clrGray40: TGLColorVector = (X: 0.40; Y: 0.40; Z: 0.40; W: 1);
+  clrGray45: TGLColorVector = (X: 0.45; Y: 0.45; Z: 0.45; W: 1);
+  clrGray50: TGLColorVector = (X: 0.50; Y: 0.50; Z: 0.50; W: 1);
+  clrGray55: TGLColorVector = (X: 0.55; Y: 0.55; Z: 0.55; W: 1);
+  clrGray60: TGLColorVector = (X: 0.60; Y: 0.60; Z: 0.60; W: 1);
+  clrGray65: TGLColorVector = (X: 0.65; Y: 0.65; Z: 0.65; W: 1);
+  clrGray70: TGLColorVector = (X: 0.70; Y: 0.70; Z: 0.70; W: 1);
+  clrGray75: TGLColorVector = (X: 0.75; Y: 0.75; Z: 0.75; W: 1);
+  clrGray80: TGLColorVector = (X: 0.80; Y: 0.80; Z: 0.80; W: 1);
+  clrGray85: TGLColorVector = (X: 0.85; Y: 0.85; Z: 0.85; W: 1);
+  clrGray90: TGLColorVector = (X: 0.90; Y: 0.90; Z: 0.90; W: 1);
+  clrGray95: TGLColorVector = (X: 0.95; Y: 0.95; Z: 0.95; W: 1);
+  clrWhite: TGLColorVector = (X: 1; Y: 1; Z: 1; W: 1);
 
   // other grays
-  clrDimGray: TColorVector = (X: 0.329412; Y: 0.329412; Z: 0.329412; W: 1);
-  clrGray: TColorVector = (X: 0.752941; Y: 0.752941; Z: 0.752941; W: 1);
-  clrLightGray: TColorVector = (X: 0.658824; Y: 0.658824; Z: 0.658824; W: 1);
+  clrDimGray: TGLColorVector = (X: 0.329412; Y: 0.329412; Z: 0.329412; W: 1);
+  clrGray: TGLColorVector = (X: 0.752941; Y: 0.752941; Z: 0.752941; W: 1);
+  clrLightGray: TGLColorVector = (X: 0.658824; Y: 0.658824; Z: 0.658824; W: 1);
 
   // colors en masse
-  clrAqua: TColorVector = (X: 0; Y: 1; Z: 1; W: 1);
-  clrAquamarine: TColorVector = (X: 0.439216; Y: 0.858824; Z: 0.576471; W: 1);
-  clrBakersChoc: TColorVector = (X: 0.36; Y: 0.20; Z: 0.09; W: 1);
-  clrBlue: TColorVector = (X: 0; Y: 0; Z: 1; W: 1);
-  clrBlueViolet: TColorVector = (X: 0.62352; Y: 0.372549; Z: 0.623529; W: 1);
-  clrBrown: TColorVector = (X: 0.647059; Y: 0.164706; Z: 0.164706; W: 1);
-  clrCadetBlue: TColorVector = (X: 0.372549; Y: 0.623529; Z: 0.623529; W: 1);
-  clrCoral: TColorVector = (X: 1; Y: 0.498039; Z: 0.0; W: 1);
-  clrCornflowerBlue: TColorVector = (X: 0.258824; Y: 0.258824; Z: 0.435294; W: 1);
-  clrDarkGreen: TColorVector = (X: 0.184314; Y: 0.309804; Z: 0.184314; W: 1);
-  clrDarkOliveGreen: TColorVector = (X: 0.309804; Y: 0.309804; Z: 0.184314; W: 1);
-  clrDarkOrchid: TColorVector = (X: 0.6; Y: 0.196078; Z: 0.8; W: 1);
-  clrDarkSlateBlue: TColorVector = (X: 0.419608; Y: 0.137255; Z: 0.556863; W: 1);
-  clrDarkSlateGray: TColorVector = (X: 0.184314; Y: 0.309804; Z: 0.309804; W: 1);
-  clrDarkSlateGrey: TColorVector = (X: 0.184314; Y: 0.309804; Z: 0.309804; W: 1);
-  clrDarkTurquoise: TColorVector = (X: 0.439216; Y: 0.576471; Z: 0.858824; W: 1);
-  clrFirebrick: TColorVector = (X: 0.556863; Y: 0.137255; Z: 0.137255; W: 1);
-  clrForestGreen: TColorVector = (X: 0.137255; Y: 0.556863; Z: 0.137255; W: 1);
-  clrFuchsia: TColorVector = (X: 1; Y: 0; Z: 1; W: 1);
-  clrGold: TColorVector = (X: 0.8; Y: 0.498039; Z: 0.196078; W: 1);
-  clrGoldenrod: TColorVector = (X: 0.858824; Y: 0.858824; Z: 0.439216; W: 1);
-  clrGreenYellow: TColorVector = (X: 0.576471; Y: 0.858824; Z: 0.439216; W: 1);
-  clrIndian: TColorVector = (X: 0.309804; Y: 0.184314; Z: 0.184314; W: 1);
-  clrKhaki: TColorVector = (X: 0.623529; Y: 0.623529; Z: 0.372549; W: 1);
-  clrLightBlue: TColorVector = (X: 0.74902; Y: 0.847059; Z: 0.847059; W: 1);
-  clrLightSteelBlue: TColorVector = (X: 0.560784; Y: 0.560784; Z: 0.737255; W: 1);
-  clrLime: TColorVector = (X: 0; Y: 1; Z: 0; W: 1);
-  clrLimeGreen: TColorVector = (X: 0.196078; Y: 0.8; Z: 0.196078; W: 1);
-  clrMaroon: TColorVector = (X: 0.556863; Y: 0.137255; Z: 0.419608; W: 1);
-  clrMediumAquamarine: TColorVector = (X: 0.196078; Y: 0.8; Z: 0.6; W: 1);
-  clrMediumBlue: TColorVector = (X: 0.196078; Y: 0.196078; Z: 0.8; W: 1);
-  clrMediumForestGreen: TColorVector = (X: 0.419608; Y: 0.556863; Z: 0.137255; W: 1);
-  clrMediumGoldenrod: TColorVector = (X: 0.917647; Y: 0.917647; Z: 0.678431; W: 1);
-  clrMediumOrchid: TColorVector = (X: 0.576471; Y: 0.439216; Z: 0.858824; W: 1);
-  clrMediumSeaGreen: TColorVector = (X: 0.258824; Y: 0.435294; Z: 0.258824; W: 1);
-  clrMediumSlateBlue: TColorVector = (X: 0.498039; Y: 0; Z: 1; W: 1);
-  clrMediumSpringGreen: TColorVector = (X: 0.498039; Y: 1; Z: 0; W: 1);
-  clrMediumTurquoise: TColorVector = (X: 0.439216; Y: 0.858824; Z: 0.858824; W: 1);
-  clrMediumViolet: TColorVector = (X: 0.858824; Y: 0.439216; Z: 0.576471; W: 1);
-  clrMediumPurple: TColorVector = (X: 0.73; Y: 0.16; Z: 0.96; W: 1);
-  clrMidnightBlue: TColorVector = (X: 0.184314; Y: 0.184314; Z: 0.309804; W: 1);
-  clrNavy: TColorVector = (X: 0.137255; Y: 0.137255; Z: 0.556863; W: 1);
-  clrNavyBlue: TColorVector = (X: 0.137255; Y: 0.137255; Z: 0.556863; W: 1);
-  clrOrange: TColorVector = (X: 1; Y: 0.5; Z: 0.0; W: 1);
-  clrOrangeRed: TColorVector = (X: 1; Y: 0.25; Z: 0; W: 1);
-  clrOrchid: TColorVector = (X: 0.858824; Y: 0.439216; Z: 0.858824; W: 1);
-  clrPaleGreen: TColorVector = (X: 0.560784; Y: 0.737255; Z: 0.560784; W: 1);
-  clrPink: TColorVector = (X: 0.737255; Y: 0.560784; Z: 0.560784; W: 1);
-  clrPlum: TColorVector = (X: 0.917647; Y: 0.678431; Z: 0.917647; W: 1);
-  clrSalmon: TColorVector = (X: 0.435294; Y: 0.258824; Z: 0.258824; W: 1);
-  clrSeaGreen: TColorVector = (X: 0.137255; Y: 0.556863; Z: 0.419608; W: 1);
-  clrSienna: TColorVector = (X: 0.556863; Y: 0.419608; Z: 0.137255; W: 1);
-  clrSkyBlue: TColorVector = (X: 0.196078; Y: 0.6; Z: 0.8; W: 1);
-  clrSlateBlue: TColorVector = (X: 0; Y: 0.498039; Z: 1; W: 1);
-  clrSpringGreen: TColorVector = (X: 0; Y: 1; Z: 0.498039; W: 1);
-  clrSteelBlue: TColorVector = (X: 0.137255; Y: 0.419608; Z: 0.556863; W: 1);
-  clrTan: TColorVector = (X: 0.858824; Y: 0.576471; Z: 0.439216; W: 1);
-  clrThistle: TColorVector = (X: 0.847059; Y: 0.74902; Z: 0.847059; W: 1);
-  clrTurquoise: TColorVector = (X: 0.678431; Y: 0.917647; Z: 0.917647; W: 1);
-  clrViolet: TColorVector = (X: 0.309804; Y: 0.184314; Z: 0.309804; W: 1);
-  clrVioletRed: TColorVector = (X: 0.8; Y: 0.196078; Z: 0.6; W: 1);
-  clrYellowGreen: TColorVector = (X: 0.6; Y: 0.8; Z: 0.196078; W: 1);
-  clrSummerSky: TColorVector = (X: 0.22; Y: 0.69; Z: 0.87; W: 1);
-  clrRichBlue: TColorVector = (X: 0.35; Y: 0.35; Z: 0.67; W: 1);
-  clrBrass: TColorVector = (X: 0.71; Y: 0.65; Z: 0.26; W: 1);
-  clrCopper: TColorVector = (X: 0.72; Y: 0.45; Z: 0.20; W: 1);
-  clrBronze: TColorVector = (X: 0.55; Y: 0.47; Z: 0.14; W: 1);
-  clrBronze2: TColorVector = (X: 0.65; Y: 0.49; Z: 0.24; W: 1);
-  clrSilver: TColorVector = (X: 0.90; Y: 0.91; Z: 0.98; W: 1);
-  clrBrightGold: TColorVector = (X: 0.85; Y: 0.85; Z: 0.10; W: 1);
-  clrOldGold: TColorVector = (X: 0.81; Y: 0.71; Z: 0.23; W: 1);
-  clrFeldspar: TColorVector = (X: 0.82; Y: 0.57; Z: 0.46; W: 1);
-  clrQuartz: TColorVector = (X: 0.85; Y: 0.85; Z: 0.95; W: 1);
-  clrNeonPink: TColorVector = (X: 1.00; Y: 0.43; Z: 0.78; W: 1);
-  clrDarkPurple: TColorVector = (X: 0.53; Y: 0.12; Z: 0.47; W: 1);
-  clrNeonBlue: TColorVector = (X: 0.30; Y: 0.30; Z: 1.00; W: 1);
-  clrCoolCopper: TColorVector = (X: 0.85; Y: 0.53; Z: 0.10; W: 1);
-  clrMandarinOrange: TColorVector = (X: 0.89; Y: 0.47; Z: 0.20; W: 1);
-  clrLightWood: TColorVector = (X: 0.91; Y: 0.76; Z: 0.65; W: 1);
-  clrMediumWood: TColorVector = (X: 0.65; Y: 0.50; Z: 0.39; W: 1);
-  clrDarkWood: TColorVector = (X: 0.52; Y: 0.37; Z: 0.26; W: 1);
-  clrSpicyPink: TColorVector = (X: 1.00; Y: 0.11; Z: 0.68; W: 1);
-  clrSemiSweetChoc: TColorVector = (X: 0.42; Y: 0.26; Z: 0.15; W: 1);
-  clrFlesh: TColorVector = (X: 0.96; Y: 0.80; Z: 0.69; W: 1);
-  clrNewTan: TColorVector = (X: 0.92; Y: 0.78; Z: 0.62; W: 1);
-  clrNewMidnightBlue: TColorVector = (X: 0.00; Y: 0.00; Z: 0.61; W: 1);
-  clrVeryDarkBrown: TColorVector = (X: 0.35; Y: 0.16; Z: 0.14; W: 1);
-  clrDarkBrown: TColorVector = (X: 0.36; Y: 0.25; Z: 0.20; W: 1);
-  clrDarkTan: TColorVector = (X: 0.59; Y: 0.41; Z: 0.31; W: 1);
-  clrGreenCopper: TColorVector = (X: 0.32; Y: 0.49; Z: 0.46; W: 1);
-  clrDkGreenCopper: TColorVector = (X: 0.29; Y: 0.46; Z: 0.43; W: 1);
-  clrDustyRose: TColorVector = (X: 0.52; Y: 0.39; Z: 0.39; W: 1);
-  clrHuntersGreen: TColorVector = (X: 0.13; Y: 0.37; Z: 0.31; W: 1);
-  clrScarlet: TColorVector = (X: 0.55; Y: 0.09; Z: 0.09; W: 1);
-  clrLightPurple: TColorVector = (X: 0.87; Y: 0.58; Z: 0.98; W: 1);
-  clrVeryLightPurple: TColorVector = (X: 0.94; Y: 0.81; Z: 0.99; W: 1);
-  clrGreen: TColorVector = (X: 0; Y: 0.5; Z: 0; W: 1);
-  clrOlive: TColorVector = (X: 0.5; Y: 0.5; Z: 1; W: 1);
-  clrPurple: TColorVector = (X: 1; Y: 0; Z: 1; W: 1);
-  clrTeal: TColorVector = (X: 0; Y: 0.5; Z: 0.5; W: 1);
-  clrRed: TColorVector = (X: 1; Y: 0; Z: 0; W: 1);
-  clrYellow: TColorVector = (X: 1; Y: 1; Z: 0; W: 1);
-  clrWheat: TColorVector = (X: 0.847059; Y: 0.847059; Z: 0.74902; W: 1);
+  clrAqua: TGLColorVector = (X: 0; Y: 1; Z: 1; W: 1);
+  clrAquamarine: TGLColorVector = (X: 0.439216; Y: 0.858824; Z: 0.576471; W: 1);
+  clrBakersChoc: TGLColorVector = (X: 0.36; Y: 0.20; Z: 0.09; W: 1);
+  clrBlue: TGLColorVector = (X: 0; Y: 0; Z: 1; W: 1);
+  clrBlueViolet: TGLColorVector = (X: 0.62352; Y: 0.372549; Z: 0.623529; W: 1);
+  clrBrown: TGLColorVector = (X: 0.647059; Y: 0.164706; Z: 0.164706; W: 1);
+  clrCadetBlue: TGLColorVector = (X: 0.372549; Y: 0.623529; Z: 0.623529; W: 1);
+  clrCoral: TGLColorVector = (X: 1; Y: 0.498039; Z: 0.0; W: 1);
+  clrCornflowerBlue: TGLColorVector = (X: 0.258824; Y: 0.258824; Z: 0.435294; W: 1);
+  clrDarkGreen: TGLColorVector = (X: 0.184314; Y: 0.309804; Z: 0.184314; W: 1);
+  clrDarkOliveGreen: TGLColorVector = (X: 0.309804; Y: 0.309804; Z: 0.184314; W: 1);
+  clrDarkOrchid: TGLColorVector = (X: 0.6; Y: 0.196078; Z: 0.8; W: 1);
+  clrDarkSlateBlue: TGLColorVector = (X: 0.419608; Y: 0.137255; Z: 0.556863; W: 1);
+  clrDarkSlateGray: TGLColorVector = (X: 0.184314; Y: 0.309804; Z: 0.309804; W: 1);
+  clrDarkSlateGrey: TGLColorVector = (X: 0.184314; Y: 0.309804; Z: 0.309804; W: 1);
+  clrDarkTurquoise: TGLColorVector = (X: 0.439216; Y: 0.576471; Z: 0.858824; W: 1);
+  clrFirebrick: TGLColorVector = (X: 0.556863; Y: 0.137255; Z: 0.137255; W: 1);
+  clrForestGreen: TGLColorVector = (X: 0.137255; Y: 0.556863; Z: 0.137255; W: 1);
+  clrFuchsia: TGLColorVector = (X: 1; Y: 0; Z: 1; W: 1);
+  clrGold: TGLColorVector = (X: 0.8; Y: 0.498039; Z: 0.196078; W: 1);
+  clrGoldenrod: TGLColorVector = (X: 0.858824; Y: 0.858824; Z: 0.439216; W: 1);
+  clrGreenYellow: TGLColorVector = (X: 0.576471; Y: 0.858824; Z: 0.439216; W: 1);
+  clrIndian: TGLColorVector = (X: 0.309804; Y: 0.184314; Z: 0.184314; W: 1);
+  clrKhaki: TGLColorVector = (X: 0.623529; Y: 0.623529; Z: 0.372549; W: 1);
+  clrLightBlue: TGLColorVector = (X: 0.74902; Y: 0.847059; Z: 0.847059; W: 1);
+  clrLightSteelBlue: TGLColorVector = (X: 0.560784; Y: 0.560784; Z: 0.737255; W: 1);
+  clrLime: TGLColorVector = (X: 0; Y: 1; Z: 0; W: 1);
+  clrLimeGreen: TGLColorVector = (X: 0.196078; Y: 0.8; Z: 0.196078; W: 1);
+  clrMaroon: TGLColorVector = (X: 0.556863; Y: 0.137255; Z: 0.419608; W: 1);
+  clrMediumAquamarine: TGLColorVector = (X: 0.196078; Y: 0.8; Z: 0.6; W: 1);
+  clrMediumBlue: TGLColorVector = (X: 0.196078; Y: 0.196078; Z: 0.8; W: 1);
+  clrMediumForestGreen: TGLColorVector = (X: 0.419608; Y: 0.556863; Z: 0.137255; W: 1);
+  clrMediumGoldenrod: TGLColorVector = (X: 0.917647; Y: 0.917647; Z: 0.678431; W: 1);
+  clrMediumOrchid: TGLColorVector = (X: 0.576471; Y: 0.439216; Z: 0.858824; W: 1);
+  clrMediumSeaGreen: TGLColorVector = (X: 0.258824; Y: 0.435294; Z: 0.258824; W: 1);
+  clrMediumSlateBlue: TGLColorVector = (X: 0.498039; Y: 0; Z: 1; W: 1);
+  clrMediumSpringGreen: TGLColorVector = (X: 0.498039; Y: 1; Z: 0; W: 1);
+  clrMediumTurquoise: TGLColorVector = (X: 0.439216; Y: 0.858824; Z: 0.858824; W: 1);
+  clrMediumViolet: TGLColorVector = (X: 0.858824; Y: 0.439216; Z: 0.576471; W: 1);
+  clrMediumPurple: TGLColorVector = (X: 0.73; Y: 0.16; Z: 0.96; W: 1);
+  clrMidnightBlue: TGLColorVector = (X: 0.184314; Y: 0.184314; Z: 0.309804; W: 1);
+  clrNavy: TGLColorVector = (X: 0.137255; Y: 0.137255; Z: 0.556863; W: 1);
+  clrNavyBlue: TGLColorVector = (X: 0.137255; Y: 0.137255; Z: 0.556863; W: 1);
+  clrOrange: TGLColorVector = (X: 1; Y: 0.5; Z: 0.0; W: 1);
+  clrOrangeRed: TGLColorVector = (X: 1; Y: 0.25; Z: 0; W: 1);
+  clrOrchid: TGLColorVector = (X: 0.858824; Y: 0.439216; Z: 0.858824; W: 1);
+  clrPaleGreen: TGLColorVector = (X: 0.560784; Y: 0.737255; Z: 0.560784; W: 1);
+  clrPink: TGLColorVector = (X: 0.737255; Y: 0.560784; Z: 0.560784; W: 1);
+  clrPlum: TGLColorVector = (X: 0.917647; Y: 0.678431; Z: 0.917647; W: 1);
+  clrSalmon: TGLColorVector = (X: 0.435294; Y: 0.258824; Z: 0.258824; W: 1);
+  clrSeaGreen: TGLColorVector = (X: 0.137255; Y: 0.556863; Z: 0.419608; W: 1);
+  clrSienna: TGLColorVector = (X: 0.556863; Y: 0.419608; Z: 0.137255; W: 1);
+  clrSkyBlue: TGLColorVector = (X: 0.196078; Y: 0.6; Z: 0.8; W: 1);
+  clrSlateBlue: TGLColorVector = (X: 0; Y: 0.498039; Z: 1; W: 1);
+  clrSpringGreen: TGLColorVector = (X: 0; Y: 1; Z: 0.498039; W: 1);
+  clrSteelBlue: TGLColorVector = (X: 0.137255; Y: 0.419608; Z: 0.556863; W: 1);
+  clrTan: TGLColorVector = (X: 0.858824; Y: 0.576471; Z: 0.439216; W: 1);
+  clrThistle: TGLColorVector = (X: 0.847059; Y: 0.74902; Z: 0.847059; W: 1);
+  clrTurquoise: TGLColorVector = (X: 0.678431; Y: 0.917647; Z: 0.917647; W: 1);
+  clrViolet: TGLColorVector = (X: 0.309804; Y: 0.184314; Z: 0.309804; W: 1);
+  clrVioletRed: TGLColorVector = (X: 0.8; Y: 0.196078; Z: 0.6; W: 1);
+  clrYellowGreen: TGLColorVector = (X: 0.6; Y: 0.8; Z: 0.196078; W: 1);
+  clrSummerSky: TGLColorVector = (X: 0.22; Y: 0.69; Z: 0.87; W: 1);
+  clrRichBlue: TGLColorVector = (X: 0.35; Y: 0.35; Z: 0.67; W: 1);
+  clrBrass: TGLColorVector = (X: 0.71; Y: 0.65; Z: 0.26; W: 1);
+  clrCopper: TGLColorVector = (X: 0.72; Y: 0.45; Z: 0.20; W: 1);
+  clrBronze: TGLColorVector = (X: 0.55; Y: 0.47; Z: 0.14; W: 1);
+  clrBronze2: TGLColorVector = (X: 0.65; Y: 0.49; Z: 0.24; W: 1);
+  clrSilver: TGLColorVector = (X: 0.90; Y: 0.91; Z: 0.98; W: 1);
+  clrBrightGold: TGLColorVector = (X: 0.85; Y: 0.85; Z: 0.10; W: 1);
+  clrOldGold: TGLColorVector = (X: 0.81; Y: 0.71; Z: 0.23; W: 1);
+  clrFeldspar: TGLColorVector = (X: 0.82; Y: 0.57; Z: 0.46; W: 1);
+  clrQuartz: TGLColorVector = (X: 0.85; Y: 0.85; Z: 0.95; W: 1);
+  clrNeonPink: TGLColorVector = (X: 1.00; Y: 0.43; Z: 0.78; W: 1);
+  clrDarkPurple: TGLColorVector = (X: 0.53; Y: 0.12; Z: 0.47; W: 1);
+  clrNeonBlue: TGLColorVector = (X: 0.30; Y: 0.30; Z: 1.00; W: 1);
+  clrCoolCopper: TGLColorVector = (X: 0.85; Y: 0.53; Z: 0.10; W: 1);
+  clrMandarinOrange: TGLColorVector = (X: 0.89; Y: 0.47; Z: 0.20; W: 1);
+  clrLightWood: TGLColorVector = (X: 0.91; Y: 0.76; Z: 0.65; W: 1);
+  clrMediumWood: TGLColorVector = (X: 0.65; Y: 0.50; Z: 0.39; W: 1);
+  clrDarkWood: TGLColorVector = (X: 0.52; Y: 0.37; Z: 0.26; W: 1);
+  clrSpicyPink: TGLColorVector = (X: 1.00; Y: 0.11; Z: 0.68; W: 1);
+  clrSemiSweetChoc: TGLColorVector = (X: 0.42; Y: 0.26; Z: 0.15; W: 1);
+  clrFlesh: TGLColorVector = (X: 0.96; Y: 0.80; Z: 0.69; W: 1);
+  clrNewTan: TGLColorVector = (X: 0.92; Y: 0.78; Z: 0.62; W: 1);
+  clrNewMidnightBlue: TGLColorVector = (X: 0.00; Y: 0.00; Z: 0.61; W: 1);
+  clrVeryDarkBrown: TGLColorVector = (X: 0.35; Y: 0.16; Z: 0.14; W: 1);
+  clrDarkBrown: TGLColorVector = (X: 0.36; Y: 0.25; Z: 0.20; W: 1);
+  clrDarkTan: TGLColorVector = (X: 0.59; Y: 0.41; Z: 0.31; W: 1);
+  clrGreenCopper: TGLColorVector = (X: 0.32; Y: 0.49; Z: 0.46; W: 1);
+  clrDkGreenCopper: TGLColorVector = (X: 0.29; Y: 0.46; Z: 0.43; W: 1);
+  clrDustyRose: TGLColorVector = (X: 0.52; Y: 0.39; Z: 0.39; W: 1);
+  clrHuntersGreen: TGLColorVector = (X: 0.13; Y: 0.37; Z: 0.31; W: 1);
+  clrScarlet: TGLColorVector = (X: 0.55; Y: 0.09; Z: 0.09; W: 1);
+  clrLightPurple: TGLColorVector = (X: 0.87; Y: 0.58; Z: 0.98; W: 1);
+  clrVeryLightPurple: TGLColorVector = (X: 0.94; Y: 0.81; Z: 0.99; W: 1);
+  clrGreen: TGLColorVector = (X: 0; Y: 0.5; Z: 0; W: 1);
+  clrOlive: TGLColorVector = (X: 0.5; Y: 0.5; Z: 1; W: 1);
+  clrPurple: TGLColorVector = (X: 1; Y: 0; Z: 1; W: 1);
+  clrTeal: TGLColorVector = (X: 0; Y: 0.5; Z: 0.5; W: 1);
+  clrRed: TGLColorVector = (X: 1; Y: 0; Z: 0; W: 1);
+  clrYellow: TGLColorVector = (X: 1; Y: 1; Z: 0; W: 1);
+  clrWheat: TGLColorVector = (X: 0.847059; Y: 0.847059; Z: 0.74902; W: 1);
 
   cDefaultNormalMapScale = 0.125;
 
@@ -386,7 +386,7 @@ begin
   Result := vColorManager;
 end;
 
-function ConvertWinColor(aColor: TColor; alpha: Single = 1): TColorVector;
+function ConvertWinColor(aColor: TColor; alpha: Single = 1): TGLColorVector;
 var
   winColor: Integer;
 begin
@@ -443,13 +443,13 @@ begin
   clrBackground := ConvertWinColor(clBackground);
 end;
 
-function ConvertColorVector(const aColor: TColorVector): TColor;
+function ConvertColorVector(const aColor: TGLColorVector): TColor;
 begin
   Result := RGB2Color(Round(255 * aColor.X), Round(255 * aColor.Y),
     Round(255 * aColor.Z));
 end;
 
-function ConvertColorVector(const aColor: TColorVector;
+function ConvertColorVector(const aColor: TGLColorVector;
   intensity: Single): TColor;
 begin
   intensity := 255 * intensity;
@@ -457,7 +457,7 @@ begin
     Round(intensity * aColor.Z));
 end;
 
-function ConvertRGBColor(const aColor: array of Byte): TColorVector;
+function ConvertRGBColor(const aColor: array of Byte): TGLColorVector;
 var
   n: Integer;
 begin
@@ -488,7 +488,7 @@ begin
 end;
 
 constructor TGLColor.CreateInitialized(AOwner: TPersistent;
-  const color: TColorVector; changeEvent: TNotifyEvent = nil);
+  const color: TGLColorVector; changeEvent: TNotifyEvent = nil);
 begin
   Create(AOwner);
   Initialize(color);
@@ -502,7 +502,7 @@ begin
   inherited;
 end;
 
-procedure TGLColor.Initialize(const color: TColorVector);
+procedure TGLColor.Initialize(const color: TGLColorVector);
 begin
   SetVector(FColor, color);
   if vUseDefaultColorSets then
@@ -513,13 +513,13 @@ begin
   end;
 end;
 
-procedure TGLColor.SetColorVector(const aColor: TColorVector);
+procedure TGLColor.SetColorVector(const aColor: TGLColorVector);
 begin
   SetVector(FColor, aColor);
   NotifyChange(Self);
 end;
 
-procedure TGLColor.SetDirectColorVector(const aColor: TColorVector);
+procedure TGLColor.SetDirectColorVector(const aColor: TGLColorVector);
 begin
   SetVector(FColor, aColor);
 end;
@@ -719,20 +719,20 @@ end;
 // ------------------ TGLColorManager ------------------
 // ------------------
 
-function TGLColorManager.FindColor(const aName: String): TColorVector;
+function TGLColorManager.FindColor(const aName: String): TGLColorVector;
 var
   i: Integer;
 begin
   Result := clrBlack;
   for i := 0 to Count - 1 do
-    if CompareText(string(TColorEntry(Items[i]^).Name), aName) = 0 then
+    if CompareText(string(TGLColorEntry(Items[i]^).Name), aName) = 0 then
     begin
-      SetVector(Result, TColorEntry(Items[i]^).color);
+      SetVector(Result, TGLColorEntry(Items[i]^).color);
       Break;
     end;
 end;
 
-function TGLColorManager.GetColor(const aName: String): TColorVector;
+function TGLColorManager.GetColor(const aName: String): TGLColorVector;
 var
   workCopy: String;
   delimiter: Integer;
@@ -788,7 +788,7 @@ end;
 
 // ------------------------------------------------------------------------------
 
-function TGLColorManager.GetColorName(const aColor: TColorVector): String;
+function TGLColorManager.GetColorName(const aColor: TGLColorVector): String;
 
 const
   MinDiff = 1E-6;
@@ -798,14 +798,14 @@ var
 
 begin
   for i := 0 to Count - 1 do
-    with TColorEntry(Items[i]^) do
+    with TGLColorEntry(Items[i]^) do
       if (Abs(Color.X - aColor.X) < MinDiff) and
         (Abs(Color.Y - aColor.Y) < MinDiff) and
         (Abs(Color.Z - aColor.Z) < MinDiff) and
         (Abs(Color.W - aColor.W) < MinDiff) then
         Break;
   if i < Count then
-    Result := string(TColorEntry(Items[i]^).Name)
+    Result := string(TGLColorEntry(Items[i]^).Name)
   else
     Result := Format('<%.3f %.3f %.3f %.3f>', [aColor.X, aColor.Y, aColor.Z,
       aColor.W]);
@@ -818,16 +818,16 @@ var
   i: Integer;
 begin
   for i := 0 to Count - 1 do
-    FreeMem(Items[i], SizeOf(TColorEntry));
+    FreeMem(Items[i], SizeOf(TGLColorEntry));
   inherited Destroy;
 end;
 
 // ------------------------------------------------------------------------------
 
 procedure TGLColorManager.AddColor(const aName: String;
-  const aColor: TColorVector);
+  const aColor: TGLColorVector);
 var
-  newEntry: PColorEntry;
+  newEntry: PGLColorEntry;
 begin
   New(newEntry);
   if newEntry = nil then
@@ -845,7 +845,7 @@ var
   i: Integer;
 begin
   for i := 0 to Count - 1 do
-    Proc(string(TColorEntry(Items[i]^).Name));
+    Proc(string(TGLColorEntry(Items[i]^).Name));
 end;
 
 procedure TGLColorManager.EnumColors(AValues: TStrings);
@@ -853,7 +853,7 @@ var
   i: Integer;
 begin
   for i := 0 to Count - 1 do
-    AValues.Add(string(TColorEntry(Items[i]^).Name));
+    AValues.Add(string(TGLColorEntry(Items[i]^).Name));
 end;
 
 procedure TGLColorManager.RegisterDefaultColors;
@@ -1020,7 +1020,7 @@ var
 begin
   for i := 0 to Count - 1 do
   begin
-    if CompareText(string(TColorEntry(Items[i]^).Name), aName) = 0 then
+    if CompareText(string(TGLColorEntry(Items[i]^).Name), aName) = 0 then
     begin
       Delete(i);
       Break;
@@ -1028,7 +1028,7 @@ begin
   end;
 end;
 
-procedure RegisterColor(const aName: String; const aColor: TColorVector);
+procedure RegisterColor(const aName: String; const aColor: TGLColorVector);
 begin
   ColorManager.AddColor(aName, aColor);
 end;

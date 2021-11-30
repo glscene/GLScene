@@ -40,7 +40,7 @@ TAffineVector __fastcall TForm1::MakeVect(const float aX, const float aY)
 void __fastcall TForm1::AddTriangle(const TAffineVector p1,
 									const TAffineVector p2,
 									const TAffineVector p3,
-									const TColorVector color)
+									const TGLColorVector color)
 {
   Mesh1->Vertices->AddVertex(p1, NullVector, color);
   Mesh1->Vertices->AddVertex(p2, NullVector, color);

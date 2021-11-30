@@ -161,16 +161,16 @@ type
   TGLBaseFontControl = class(TGLBaseControl)
   private
     FBitmapFont: TGLCustomBitmapFont;
-    FDefaultColor: TColorVector;
+    FDefaultColor: TGLColorVector;
   protected
     function GetDefaultColor: TColor;
     procedure SetDefaultColor(value: TColor);
     procedure SetBitmapFont(NewFont: TGLCustomBitmapFont);
     function GetBitmapFont: TGLCustomBitmapFont;
     procedure WriteTextAt(var rci: TGLRenderContextInfo; const X, Y: TGLFloat;
-      const Data: UnicodeString; const Color: TColorVector); overload;
+      const Data: UnicodeString; const Color: TGLColorVector); overload;
     procedure WriteTextAt(var rci: TGLRenderContextInfo; const X1, Y1, X2, Y2:
-      TGLFloat; const Data: UnicodeString; const Color: TColorVector); overload;
+      TGLFloat; const Data: UnicodeString; const Color: TGLColorVector); overload;
     function GetFontHeight: Integer;
   public
     constructor Create(AOwner: TComponent); override;
@@ -199,7 +199,7 @@ type
     FOnKeyUp: TKeyEvent;
     FOnKeyPress: TKeyPressEvent;
     FShiftState: TShiftState;
-    FFocusedColor: TColorVector;
+    FFocusedColor: TGLColorVector;
   protected
     procedure InternalKeyPress(var Key: Char); virtual;
     procedure InternalKeyDown(var Key: Word; Shift: TShiftState); virtual;
@@ -318,7 +318,7 @@ type
     Moving: Boolean;
     OldX: Integer;
     OldY: Integer;
-    FTitleColor: TColorVector;
+    FTitleColor: TGLColorVector;
     FTitleOffset: Single;
   protected
     procedure InternalMouseDown(Shift: TShiftState; Button: TMouseButton; X, Y: Integer); override;
@@ -528,7 +528,7 @@ type
     FColSelect: Boolean;
     FColumns: TStrings;
     FRows: TList;
-    FHeaderColor: TColorVector;
+    FHeaderColor: TGLColorVector;
     FMarginSize: Integer;
     FColumnSize: Integer;
     FRowHeight: Integer;
@@ -1642,7 +1642,7 @@ begin
 end;
 
 procedure TGLBaseFontControl.WriteTextAt(var rci: TGLRenderContextInfo; const X,
-  Y: TGLFloat; const Data: UnicodeString; const Color: TColorVector);
+  Y: TGLFloat; const Data: UnicodeString; const Color: TGLColorVector);
 var
   Position: TGLVector;
 begin
@@ -1657,7 +1657,7 @@ begin
 end;
 
 procedure TGLBaseFontControl.WriteTextAt(var rci: TGLRenderContextInfo; const X1,
-  Y1, X2, Y2: TGLFloat; const Data: UnicodeString; const Color: TColorVector);
+  Y1, X2, Y2: TGLFloat; const Data: UnicodeString; const Color: TGLColorVector);
 var
   Position: TGLVector;
 begin
@@ -2173,7 +2173,7 @@ end;
 procedure TGLForm.InternalRender(var rci: TGLRenderContextInfo; renderSelf,
   renderChildren: Boolean);
 var
-  ATitleColor: TColorVector;
+  ATitleColor: TGLColorVector;
 begin
   if Assigned(FGuiComponent) then
   begin
@@ -2486,7 +2486,7 @@ var
   TexHeight: Integer;
   Material: TGLMaterial;
   LibMaterial: TGLLibMaterial;
-  TextColor: TColorVector;
+  TextColor: TGLColorVector;
 begin
   if Pressed then
   begin
@@ -2773,7 +2773,7 @@ procedure TGLLabel.InternalRender(var rci: TGLRenderContextInfo; renderSelf,
 var
   TekstPos: TGLVector;
   Tekst: UnicodeString;
-  TextColor: TColorVector;
+  TextColor: TGLColorVector;
 begin
   if Assigned(BitmapFont) then
   begin

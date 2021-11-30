@@ -112,7 +112,7 @@ implementation
 
 constructor TGLShadowPlane.Create(AOwner: Tcomponent);
 const
-  cDefaultShadowColor: TColorVector = (X:0; Y:0; Z:0; W:0.5);
+  cDefaultShadowColor: TGLColorVector = (X:0; Y:0; Z:0; W:0.5);
 begin
   inherited Create(AOwner);
   FShadowOptions := cDefaultShadowPlaneOptions;

@@ -161,6 +161,17 @@ type
     procedure CoordinateChanged(Sender: TGLCustomCoordinates); virtual; abstract;
   end;
 
+(* Calculates the barycentric coordinates for the point p on the triangle
+  defined by the vertices v1, v2 and v3. That is, solves
+  p = u * v1 + v * v2 + (1-u-v) * v3
+  for u,v.
+  Returns true if the point is inside the triangle, false otherwise.
+  NOTE: This function assumes that the point lies on the plane defined by the triangle.
+  If this is not the case, the function will not work correctly!
+  https://mathworld.wolfram.com/BarycentricCoordinates.html *)
+function BarycentricCoordinates(const V1, V2, V3, p: TAffineVector; var u, V: Single): Boolean;
+
+
 //-------------------- Conversions of Coordinates --------------------
 (*
   Helper functions to convert between different three dimensional coordinate
@@ -170,43 +181,89 @@ type
 (* Convert Cylindrical to Cartesian [single] with no checks, theta in rad
   Ref: http://mathworld.wolfram.com/CylindricalCoordinates.html *)
 procedure Cylindrical_Cartesian(const r, theta, z1: single; var x, y, z: single); overload;
-// Convert cylindrical to cartesian [double]. theta in rads
+(* Convert Cylindrical to Cartesian with no checks. Double version, theta in rads
+  Ref: http://mathworld.wolfram.com/CylindricalCoordinates.html *)
 procedure Cylindrical_Cartesian(const r, theta, z1: double; var x, y, z: double); overload;
-// Convert cylindrical to cartesian [single] (with error check). theta in rad
+(* Convert Cylindrical to Cartesian with checks. [single], theta in rad
+  ierr: [0] = ok,
+  [1] = r out of bounds. Acceptable r: [0,inf)
+  [2] = theta out of bounds. Acceptable theta: [0,2pi)
+  [3] = z1 out of bounds. Acceptable z1 : (-inf,inf)
+  Ref: http://mathworld.wolfram.com/CylindricalCoordinates.html *)
 procedure Cylindrical_Cartesian(const r, theta, z1: single; var x, y, z: single;
   var ierr: integer); overload;
-// Convert cylindrical to cartesian [double] (with error check). theta in rad
+(* Convert Cylindrical to Cartesian with checks. [double], theta in rad
+  ierr: [0] = ok,
+  [1] = r out of bounds. Acceptable r: [0,inf)
+  [2] = theta out of bounds. Acceptable theta: [0,2pi)
+  [3] = z1 out of bounds. Acceptable z1 : (-inf,inf)
+  Ref: http://mathworld.wolfram.com/CylindricalCoordinates.html *)
 procedure Cylindrical_Cartesian(const r, theta, z1: double; var x, y, z: double;
   var ierr: integer); overload;
-// Convert cartesian to cylindrical [single]
+(* Convert Cartesian to Cylindrical no checks. Single *)
 procedure Cartesian_Cylindrical(const x, y, z1: single; var r, theta, z: single); overload;
-// Convert cartesion to cylindrical [double]
+(* Convert Cartesian to Cylindrical no checks. Duoble *)
 procedure Cartesian_Cylindrical(const x, y, z1: double; var r, theta, z: double); overload;
-// Convert spherical to cartesion. [single] theta,phi in rads
+
+(* Convert Spherical to Cartesian with no checks. [single] theta,phi in rads
+   Ref: http://mathworld.wolfram.com/SphericalCoordinates.html *)
 procedure Spherical_Cartesian(const r, theta, phi: single; var x, y, z: single); overload;
-// Convert spherical to cartesion. [double] theta,phi in rads
+(* Convert Spherical to Cartesian with no checks. Double version. theta,phi in rads *)
 procedure Spherical_Cartesian(const r, theta, phi: double; var x, y, z: double); overload;
-// Convert spherical to cartesian [single] (with error check).theta,phi in rad
+(* Convert Spherical to Cartesian [single] (with error check).theta,phi in rad
+  ierr: [0] = ok,
+  [1] = r out of bounds
+  [2] = theta out of bounds
+  [3] = phi out of bounds
+  Ref: http://mathworld.wolfram.com/SphericalCoordinates.html *)
 procedure Spherical_Cartesian(const r, theta, phi: single; var x, y, z: single;
   var ierr: integer); overload;
 // Convert spherical to cartesian [double] (with error check).theta,phi in rad
 procedure Spherical_Cartesian(const r, theta, phi: double; var x, y, z: double;
   var ierr: integer); overload;
-// Convert cartesian to spherical [single]
+(* Convert Cartesian to Spherical, no checks, single
+  Ref: http://mathworld.wolfram.com/SphericalCoordinates.html
+  NB: Could be optimised by using jclmath.pas unit *)
 procedure Cartesian_Spherical(const x, y, z: single; var r, theta, phi: single); overload;
 procedure Cartesian_Spherical(const v: TAffineVector; var r, theta, phi: single); overload;
-// Convert cartesion to spherical [double]
+(* convert Cartesian to Spherical, no checks, double
+  Ref: http://mathworld.wolfram.com/SphericalCoordinates.html
+  NB: Could be optimised by using jclmath.pas unit? *)
 procedure Cartesian_Spherical(const x, y, z: double; var r, theta, phi: double); overload;
-// Convert Prolate-Spheroidal to Cartesian. [single] eta, phi in rad
+(* Convert Prolate-Spheroidal to Cartesian with no checks. [single] eta, phi in rad
+  A system of curvilinear coordinates in which two sets of coordinate surfaces are
+  obtained by revolving the curves of the elliptic cylindrical coordinates about
+  the x-axis, which is relabeled the z-axis. The third set of coordinates
+  consists of planes passing through this axis.
+  The coordinate system is parameterised by parameter a.
+  A default value of a=1 is suggesed:
+  Ref: http://mathworld.wolfram.com/ProlateSpheroidalCoordinates.html *)
 procedure ProlateSpheroidal_Cartesian(const xi, eta, phi, a: single;
   var x, y, z: single); overload;
-// Convert Prolate-Spheroidal to Cantesian. [double] eta,phi in rad
+(* Convert Prolate-Spheroidal to Cartesian [double] eta,phi in rad
+  A system of curvilinear coordinates in which two sets of coordinate surfaces are
+  obtained by revolving the curves of the elliptic cylindrical coordinates about
+  the x-axis, which is relabeled the z-axis. The third set of coordinates
+  consists of planes passing through this axis.
+  The coordinate system is parameterised by parameter a. A default value of a=1 is
+  suggesed:
+  Ref: http://mathworld.wolfram.com/ProlateSpheroidalCoordinates.html *)
 procedure ProlateSpheroidal_Cartesian(const xi, eta, phi, a: double;
   var x, y, z: double); overload;
-// Convert Prolate-Spheroidal to Cartesian [single](with error check). eta,phi in rad
+(* Convert Prolate-Spheroidal to Cartesian [single](with error check). eta,phi in rad
+  ierr: [0] = ok,
+  [1] = xi out of bounds. Acceptable xi: [0,inf)
+  [2] = eta out of bounds. Acceptable eta: [0,pi]
+  [3] = phi out of bounds. Acceptable phi: [0,2pi)
+  Ref: http://mathworld.wolfram.com/ProlateSpheroidalCoordinates.html *)
 procedure ProlateSpheroidal_Cartesian(const xi, eta, phi, a: single;
   var x, y, z: single; var ierr: integer); overload;
-// Convert Prolate-Spheroidal to Cartesian [single](with error check). eta,phi in rad
+(* Convert Prolate-Spheroidal to Cartesian [double](with error check). eta,phi in rad
+  ierr: [0] = ok,
+  [1] = xi out of bounds. Acceptable xi: [0,inf)
+  [2] = eta out of bounds. Acceptable eta: [0,pi]
+  [3] = phi out of bounds. Acceptable phi: [0,2pi)
+  Ref: http://mathworld.wolfram.com/ProlateSpheroidalCoordinates.html *)
 procedure ProlateSpheroidal_Cartesian(const xi, eta, phi, a: double;
   var x, y, z: double;  var ierr: integer); overload;
 // Convert Oblate-Spheroidal to Cartesian. [Single] eta, phi in rad
@@ -218,19 +275,30 @@ procedure OblateSpheroidal_Cartesian(const xi, eta, phi, a: double;
 // Convert Oblate-Spheroidal to Cartesian (with error check). eta,phi in rad
 procedure OblateSpheroidal_Cartesian(const xi, eta, phi, a: single;
   var x, y, z: single; var ierr: integer); overload;
-// Convert Oblate-Spheroidal to Cartesian (with error check).[Double] eta,phi in rad
+(* Convert Oblate-Spheroidal to Cartesian with checks. [Double] eta,phi in rad
+  ierr: [0] = ok,
+  [1] = xi out of bounds. Acceptable xi: [0,inf)
+  [2] = eta out of bounds. Acceptable eta: [-0.5*pi,0.5*pi]
+  [3] = phi out of bounds. Acceptable phi: [0,2*pi)
+  Ref: http://mathworld.wolfram.com/ProlateSpheroidalCoordinates.html *)
 procedure OblateSpheroidal_Cartesian(const xi, eta, phi, a: double;
   var x, y, z: double; var ierr: integer); overload;
 // Convert Bipolar to Cartesian. u in rad
 procedure BipolarCylindrical_Cartesian(const u, v, z1, a: single;
   var x, y, z: single); overload;
-// Convert Bipolar to Cartesian. [Double] u in rad
+(* Convert BiPolarCylindrical to Cartesian with no checks. Double, u in rad
+  http://mathworld.wolfram.com/BipolarCylindricalCoordinates.html *)
 procedure BipolarCylindrical_Cartesian(const u, v, z1, a: double;
   var x, y, z: double); overload;
 // Convert Bipolar to Cartesian (with error check). u in rad
 procedure BipolarCylindrical_Cartesian(const u, v, z1, a: single;
   var x, y, z: single; var ierr: integer); overload;
-// Convert Bipolar to Cartesian (with error check). [Double] u in rad
+(* Convert Oblate-Spheroidal to Cartesian with checks. Double, u in rad
+  ierr: [0] = ok,
+  [1] = u out of bounds. Acceptable u: [0,2*pi)
+  [2] = v out of bounds. Acceptable v: (-inf,inf)
+  [3] = z1 out of bounds. Acceptable z1: (-inf,inf)
+  Ref: https://mathworld.wolfram.com/BipolarCylindricalCoordinates.html *)
 procedure BipolarCylindrical_Cartesian(const u, v, z1, a: double;
   var x, y, z: double; var ierr: integer); overload;
 
@@ -640,31 +708,20 @@ end;
 // ----------------- Conversions of coordinates --------------------
 
 // ----------------- Cylindrical_Cartesian ----------------------
-
 procedure Cylindrical_Cartesian(const r, theta, z1: single; var x, y, z: single);
-
 begin
   SinCosine(theta, r, y, x);
   z := z1;
 end;
 
 // ----- Cylindrical_Cartesian -------------------------------------
-(* Convert Cylindrical to Cartesian with no checks. Double version
-  Ref: http://mathworld.wolfram.com/CylindricalCoordinates.html *)
 procedure Cylindrical_Cartesian(const r, theta, z1: double; var x, y, z: double);
-
 begin
   SinCosine(theta, r, y, x);
   z := z1;
 end;
 
 // ------------------ Cylindrical_Cartesian -----------------------
-(* Convert Cylindrical to Cartesian with checks.
-  ierr: [0] = ok,
-  [1] = r out of bounds. Acceptable r: [0,inf)
-  [2] = theta out of bounds. Acceptable theta: [0,2pi)
-  [3] = z1 out of bounds. Acceptable z1 : (-inf,inf)
-  Ref: http://mathworld.wolfram.com/CylindricalCoordinates.html *)
 procedure Cylindrical_Cartesian(const r, theta, z1: single; var x, y, z: single;
   var ierr: integer);
 
@@ -685,12 +742,6 @@ begin
 end;
 
 // ----- Cylindrical_Cartesian -------------------------------------------------
-(* Convert Cylindrical to Cartesian with checks.
-  ierr: [0] = ok,
-  [1] = r out of bounds. Acceptable r: [0,inf)
-  [2] = theta out of bounds. Acceptable theta: [0,2pi)
-  [3] = z1 out of bounds. Acceptable z1 : (-inf,inf)
-  Ref: http://mathworld.wolfram.com/CylindricalCoordinates.html *)
 procedure Cylindrical_Cartesian(const r, theta, z1: double; var x, y, z: double;
   var ierr: integer);
 
@@ -711,7 +762,6 @@ begin
 end;
 
 // ----- Cartesian_Cylindrical -------------------------------------------------
-(* Convert Cartesian to Cylindrical no checks. Single *)
 procedure Cartesian_Cylindrical(const x, y, z1: single; var r, theta, z: single);
 begin
   r := sqrt(x * x + y * y);
@@ -720,7 +770,6 @@ begin
 end;
 
 // ----- Cartesian_Cylindrical -------------------------------------------------
-(* Convert Cartesian to Cylindrical no checks. Duoble *)
 procedure Cartesian_Cylindrical(const x, y, z1: double; var r, theta, z: double);
 begin
   r := sqrt(x * x + y * y);
@@ -729,34 +778,24 @@ begin
 end;
 
 // ----- Spherical_Cartesian ---------------------------------------------------
-(* Convert Spherical to Cartesian with no checks.
-  Ref: http://mathworld.wolfram.com/SphericalCoordinates.html *)
 procedure Spherical_Cartesian(const r, theta, phi: single; var x, y, z: single);
 var
   a: single;
 begin
-  SinCosine(phi, r, a, z); // z = r*cos(phi), a=r*sin(phi)
+  SinCosine(phi, r, a, z); // z = r*cos(phi), a = r*sin(phi)
   SinCosine(theta, a, y, x); // x = a*cos(theta), y = a*sin(theta)}
 end;
 
 // ----- Spherical_Cartesian ---------------------------------------------------
-(* Convert Spherical to Cartesian with no checks. Double version.
-  Ref: http://mathworld.wolfram.com/SphericalCoordinates.html *)
 procedure Spherical_Cartesian(const r, theta, phi: double; var x, y, z: double);
 var
   a: double;
 begin
-  SinCosine(phi, r, a, z); // z = r*cos(phi), a=r*sin(phi)
+  SinCosine(phi, r, a, z); // z = r*cos(phi), a = r*sin(phi)
   SinCosine(theta, a, y, x); // x = a*cos(theta), y = a*sin(theta)}
 end;
 
 // ----- Spherical_Cartesian ---------------------------------------------------
-(* Convert Spherical to Cartesian with checks.
-  ierr: [0] = ok,
-  [1] = r out of bounds
-  [2] = theta out of bounds
-  [3] = phi out of bounds
-  Ref: http://mathworld.wolfram.com/SphericalCoordinates.html *)
 procedure Spherical_Cartesian(const r, theta, phi: single; var x, y, z: single;
   var ierr: integer);
 var
@@ -772,7 +811,7 @@ begin
     ierr := 0;
   if (ierr = 0) then
   begin
-    SinCosine(phi, r, a, z); // z = r*cos(phi), a=r*sin(phi)
+    SinCosine(phi, r, a, z); // z = r*cos(phi), a = r*sin(phi)
     SinCosine(theta, a, y, x); // x = a*cos(theta), y = a*sin(theta)}
   end;
 end;
@@ -806,9 +845,6 @@ begin
 end;
 
 // ----- Cartesian_Spherical ---------------------------------------------------
-(* convert Cartesian to Spherical, no checks, single
-  Ref: http://mathworld.wolfram.com/SphericalCoordinates.html
-  NB: Could be optimised by using jclmath.pas unit? *)
 procedure Cartesian_Spherical(const x, y, z: single; var r, theta, phi: single);
 begin
   r := sqrt((x * x) + (y * y) + (z * z));
@@ -824,9 +860,6 @@ begin
 end;
 
 // ----- Cartesian_Spherical ---------------------------------------------------
-(* convert Cartesian to Spherical, no checks, double
-  Ref: http://mathworld.wolfram.com/SphericalCoordinates.html
-  NB: Could be optimised by using jclmath.pas unit? *)
 procedure Cartesian_Spherical(const x, y, z: double; var r, theta, phi: double);
 begin
   r := sqrt((x * x) + (y * y) + (z * z));
@@ -835,15 +868,6 @@ begin
 end;
 
 // ----- ProlateSpheroidal_Cartesian -------------------------------------------
-(* Convert Prolate-Spheroidal to Cartesian with no checks.
-  A system of curvilinear coordinates in which two sets of coordinate surfaces are
-  obtained by revolving the curves of the elliptic cylindrical coordinates about
-  the x-axis, which is relabeled the z-axis. The third set of coordinates
-  consists of planes passing through this axis.
-  The coordinate system is parameterised by parameter a. A default value of a=1 is
-  suggesed:
-  http://documents.wolfram.com/v4/AddOns/StandardPackages/Calculus/VectorAnalysis.html
-  Ref: http://mathworld.wolfram.com/ProlateSpheroidalCoordinates.html *)
 procedure ProlateSpheroidal_Cartesian(const xi, eta, phi, a: single; var x, y, z: single);
 var
   sn, cs, snphi, csphi, shx, chx: single;
@@ -858,15 +882,6 @@ begin
 end;
 
 // ----- ProlateSpheroidal_Cartesian -------------------------------------------
-(* Convert Prolate-Spheroidal to Cartesian with no checks. Double version.
-  A system of curvilinear coordinates in which two sets of coordinate surfaces are
-  obtained by revolving the curves of the elliptic cylindrical coordinates about
-  the x-axis, which is relabeled the z-axis. The third set of coordinates
-  consists of planes passing through this axis.
-  The coordinate system is parameterised by parameter a. A default value of a=1 is
-  suggesed:
-  http://documents.wolfram.com/v4/AddOns/StandardPackages/Calculus/VectorAnalysis.html
-  Ref: http://mathworld.wolfram.com/ProlateSpheroidalCoordinates.html *)
 procedure ProlateSpheroidal_Cartesian(const xi, eta, phi, a: double; var x, y, z: double);
 var
   sn, cs, snphi, csphi, shx, chx: double;
@@ -881,12 +896,6 @@ begin
 end;
 
 // ----- ProlateSpheroidal_Cartesian -------------------------------------------
-(* Convert Prolate-Spheroidal to Cartesian with checks.
-  ierr: [0] = ok,
-  [1] = xi out of bounds. Acceptable xi: [0,inf)
-  [2] = eta out of bounds. Acceptable eta: [0,pi]
-  [3] = phi out of bounds. Acceptable phi: [0,2pi)
-  Ref: http://mathworld.wolfram.com/ProlateSpheroidalCoordinates.html *)
 procedure ProlateSpheroidal_Cartesian(const xi, eta, phi, a: single;
   var x, y, z: single; var ierr: integer); overload;
 var
@@ -913,12 +922,6 @@ begin
 end;
 
 // ----- ProlateSpheroidal_Cartesian -------------------------------------------
-(* Convert Prolate-Spheroidal to Cartesian with checks. Double Version.
-  ierr: [0] = ok,
-  [1] = xi out of bounds. Acceptable xi: [0,inf)
-  [2] = eta out of bounds. Acceptable eta: [0,pi]
-  [3] = phi out of bounds. Acceptable phi: [0,2pi)
-  Ref: http://mathworld.wolfram.com/ProlateSpheroidalCoordinates.html *)
 procedure ProlateSpheroidal_Cartesian(const xi, eta, phi, a: double;
   var x, y, z: double; var ierr: integer); overload;
 var
@@ -1023,12 +1026,6 @@ begin
 end;
 
 // ----- OblateSpheroidal_Cartesian -------------------------------------------
-(* Convert Oblate-Spheroidal to Cartesian with checks. Double Version.
-  ierr: [0] = ok,
-  [1] = xi out of bounds. Acceptable xi: [0,inf)
-  [2] = eta out of bounds. Acceptable eta: [-0.5*pi,0.5*pi]
-  [3] = phi out of bounds. Acceptable phi: [0,2*pi)
-  Ref: http://mathworld.wolfram.com/ProlateSpheroidalCoordinates.html *)
 procedure OblateSpheroidal_Cartesian(const xi, eta, phi, a: double;
   var x, y, z: double; var ierr: integer); overload;
 var
@@ -1070,8 +1067,6 @@ begin
 end;
 
 // ----- BipolarCylindrical_Cartesian ------------------------------------------
-(* Convert BiPolarCylindrical to Cartesian with no checks. Double Version
-  http://mathworld.wolfram.com/BipolarCylindricalCoordinates.html *)
 procedure BipolarCylindrical_Cartesian(const u, v, z1, a: double; var x, y, z: double);
 var
   cs, sn, shx, chx: double;
@@ -1112,12 +1107,6 @@ begin
 end;
 
 // ----- BipolarCylindrical_Cartesian ------------------------------------------
-(* Convert Oblate-Spheroidal to Cartesian with checks. Double Version
-  ierr: [0] = ok,
-  [1] = u out of bounds. Acceptable u: [0,2*pi)
-  [2] = v out of bounds. Acceptable v: (-inf,inf)
-  [3] = z1 out of bounds. Acceptable z1: (-inf,inf)
-  Ref: http://mathworld.wolfram.com/BiPolarCylindricalCoordinates.html *)
 procedure BipolarCylindrical_Cartesian(const u, v, z1, a: double;
   var x, y, z: double; var ierr: integer); overload;
 var
@@ -1136,6 +1125,54 @@ begin
     y := a * sn / (chx - cs);
     z := z1;
   end;
+end;
+
+function BarycentricCoordinates(const V1, V2, V3, p: TAffineVector;
+  var u, V: Single): Boolean;
+var
+  a1, a2: Integer;
+  n, e1, e2, pt: TAffineVector;
+begin
+  // calculate edges
+  VectorSubtract(V1, V3, e1);
+  VectorSubtract(V2, V3, e2);
+
+  // calculate p relative to v3
+  VectorSubtract(p, V3, pt);
+
+  // find the dominant axis
+  n := VectorCrossProduct(e1, e2);
+  AbsVector(n);
+  a1 := 0;
+  if n.Y > n.V[a1] then
+    a1 := 1;
+  if n.Z > n.V[a1] then
+    a1 := 2;
+
+  // use dominant axis for projection
+  case a1 of
+    0:
+      begin
+        a1 := 1;
+        a2 := 2;
+      end;
+    1:
+      begin
+        a1 := 0;
+        a2 := 2;
+      end;
+  else // 2:
+    a1 := 0;
+    a2 := 1;
+  end;
+
+  // solve for u and v
+  u := (pt.V[a2] * e2.V[a1] - pt.V[a1] * e2.V[a2]) /
+    (e1.V[a2] * e2.V[a1] - e1.V[a1] * e2.V[a2]);
+  V := (pt.V[a2] * e1.V[a1] - pt.V[a1] * e1.V[a2]) /
+    (e2.V[a2] * e1.V[a1] - e2.V[a1] * e1.V[a2]);
+
+  result := (u >= 0) and (V >= 0) and (u + V <= 1);
 end;
 
 

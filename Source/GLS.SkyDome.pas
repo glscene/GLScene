@@ -190,7 +190,8 @@ type
     (* Adds nb random stars of the given color.
       Stars are homogenously scattered on the complete sphere, not only the band defined or visible dome. *)
     procedure AddRandomStars(const nb: Integer; const color: TColor; const limitToTopDome: Boolean = False); overload;
-    procedure AddRandomStars(const nb: Integer; const ColorMin, ColorMax:TVector3b; const Magnitude_min, Magnitude_max: Single;const limitToTopDome: Boolean = False); overload;
+    procedure AddRandomStars(const nb: Integer; const ColorMin, ColorMax:TVector3b;
+      const Magnitude_min, Magnitude_max: Single;const limitToTopDome: Boolean = False); overload;
     (* Load a 'stars' file, which is made of TGLStarRecord.
        Not that '.stars' files should already be sorted by magnitude and color. *)
     procedure LoadStarsFile(const starsFileName: string);
@@ -243,7 +244,7 @@ type
   private
     FSunElevation: Single;
     FTurbidity: Single;
-    FCurSunColor, FCurSkyColor, FCurHazeColor: TColorVector;
+    FCurSunColor, FCurSkyColor, FCurHazeColor: TGLColorVector;
     FCurHazeTurbid, FCurSunSkyTurbid: Single;
     FSunZenithColor: TGLColor;
     FSunDawnColor: TGLColor;
@@ -269,7 +270,7 @@ type
     procedure OnColorChanged(Sender: TObject);
     procedure PreCalculate;
     procedure RenderDome;
-    function CalculateColor(const theta, cosGamma: Single): TColorVector;
+    function CalculateColor(const theta, cosGamma: Single): TGLColorVector;
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -791,7 +792,7 @@ procedure TGLSkyDomeBand.BuildList(var rci: TGLRenderContextInfo);
 
 // always rendered as sphere of radius 1
   procedure RenderBand(start, stop: Single;
-    const colStart, colStop: TColorVector);
+    const colStart, colStop: TGLColorVector);
   var
     i: Integer;
     f, r, r2: Single;
@@ -1008,7 +1009,7 @@ var
   star: TGLSkyDomeStar;
   lastColor: TColor;
   lastPointSize10, pointSize10: Integer;
-  Color, twinkleColor: TColorVector;
+  Color, twinkleColor: TGLColorVector;
 
   procedure DoTwinkle;
   begin
@@ -1080,6 +1081,7 @@ begin
   rci.GLStates.SetGLAlphaFunction(cfGreater, 0);
 end;
 
+//------------------------------------------------------------
 procedure TGLSkyDomeStars.AddRandomStars(const nb: Integer; const Color: TColor;
   const limitToTopDome: Boolean = False);
 var
@@ -1105,6 +1107,7 @@ begin
   end;
 end;
 
+//------------------------------------------------------------
 procedure TGLSkyDomeStars.AddRandomStars(const nb: Integer;
   const ColorMin, ColorMax: TVector3b;
   const Magnitude_min, Magnitude_max: Single;
@@ -1144,7 +1147,7 @@ procedure TGLSkyDomeStars.LoadStarsFile(const starsFileName: string);
 var
   fs: TFileStream;
   sr: TGLStarRecord;
-  colorVector: TColorVector;
+  colorVector: TGLColorVector;
 begin
   fs := TFileStream.Create(starsFileName, fmOpenRead + fmShareDenyWrite);
   try
@@ -1559,7 +1562,7 @@ begin
 end;
 
 function TGLEarthSkyDome.CalculateColor(const theta, cosGamma: Single)
-  : TColorVector;
+  : TGLColorVector;
 var
   t: Single;
 begin
@@ -1592,7 +1595,7 @@ var
     i: Integer;
     r, thetaStart: Single;
     vertex1: TGLVector;
-    Color: TColorVector;
+    Color: TGLColorVector;
   begin
     r := 0;
     vertex1.W := 1;
@@ -1619,7 +1622,7 @@ var
     i: Integer;
     r, r2, thetaStart, thetaStop: Single;
     vertex1, vertex2: TGLVector;
-    Color: TColorVector;
+    Color: TGLColorVector;
   begin
     vertex1.W := 1;
     if stop = 90 then

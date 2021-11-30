@@ -396,7 +396,7 @@ type
     FNodesAspect: TGLLineNodesAspect;
     FNodeColor: TGLColor;
     FNodeSize: Single;
-    FOldNodeColor: TColorVector;
+    FOldNodeColor: TGLColorVector;
   protected
     procedure SetNodesAspect(const Value: TGLLineNodesAspect);
     procedure SetNodeColor(const Value: TGLColor);
@@ -483,7 +483,8 @@ type
   (* A simple cube object.
     This cube use the same material for each of its faces, ie. all faces look
     the same. If you want a multi-material cube, use a mesh in conjunction
-    with a TGLFreeForm and a material library. *)
+    with a TGLFreeForm and a material library.
+    Ref: https://mathworld.wolfram.com/Cube.html *)
   TGLCube = class(TGLSceneObject)
   private
     FCubeSize: TAffineVector;
@@ -554,8 +555,9 @@ type
   TGLCapType = (ctNone, ctCenter, ctFlat);
 
   (* A sphere object.
-    The sphere can have to and bottom caps, as well as being just a slice
-    of sphere. *)
+    The sphere can have to and bottom caps, as well as being just a slice of sphere.
+    Ref: https://mathworld.wolfram.com/Sphere.html
+    Ref: https://mathworld.wolfram.com/GeodesicDome.html *)
   TGLSphere = class(TGLQuadricObject)
   private
     FRadius: TGLFloat;
@@ -630,7 +632,8 @@ type
   end;
 
   (* A Superellipsoid object. The Superellipsoid can have top and bottom caps,
-    as well as being just a slice of Superellipsoid. *)
+    as well as being just a slice of Superellipsoid.
+    Ref: https://mathworld.wolfram.com/Superellipse.html  *)
   TGLSuperellipsoid = class(TGLQuadricObject)
   private
     FRadius, FVCurve, FHCurve: TGLFloat;
@@ -678,7 +681,7 @@ type
 
 // Issues for a unit-size cube stippled wireframe
 procedure CubeWireframeBuildList(var rci: TGLRenderContextInfo; Size: TGLFloat;
-  Stipple: Boolean; const Color: TColorVector);
+  Stipple: Boolean; const Color: TGLColorVector);
 
 const
   TangentAttributeName: PAnsiChar = 'Tangent';
@@ -689,7 +692,7 @@ implementation
 // -------------------------------------------------------------
 
 procedure CubeWireframeBuildList(var rci: TGLRenderContextInfo; Size: TGLFloat;
-  Stipple: Boolean; const Color: TColorVector);
+  Stipple: Boolean; const Color: TGLColorVector);
 var
   mi, ma: Single;
 begin

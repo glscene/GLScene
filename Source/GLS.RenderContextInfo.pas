@@ -78,7 +78,7 @@ type
     GLStates: TGLStateCache;
     PipelineTransformation: TGLTransformation;
     Rcci: TRenderContextClippingInfo;
-    SceneAmbientColor: TColorVector;
+    SceneAmbientColor: TGLColorVector;
     BufferFaceCull: Boolean;
     BufferLighting: Boolean;
     BufferFog: Boolean;

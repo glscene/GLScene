@@ -169,11 +169,11 @@ var
   diskNormal, diskRight, diskUp:  TGLVector;
 
 
-  function AtmosphereColor(const rayStart, rayEnd: TGLVector): TColorVector;
+  function AtmosphereColor(const rayStart, rayEnd: TGLVector): TGLColorVector;
   var
     I, n:     Integer;
     atmPoint, normal: TGLVector;
-    altColor: TColorVector;
+    altColor: TGLColorVector;
     alt, rayLength, contrib, decay, intensity, invN: Single;
   begin
     Result := clrTransparent;
@@ -214,7 +214,7 @@ var
   end;
 
 
-  function ComputeColor(var rayDest: TGLVector; mayHitGround: Boolean): TColorVector;
+  function ComputeColor(var rayDest: TGLVector; mayHitGround: Boolean): TGLColorVector;
   var
     ai1, ai2, pi1, pi2: TGLVector;
     rayVector: TGLVector;

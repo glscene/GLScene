@@ -135,7 +135,7 @@ procedure TGLLinePFXManager.RenderParticle(var rci: TGLRenderContextInfo;
   aParticle: TGLParticle);
 var
   lifeTime, sizeScale, fx, fy, f: Single;
-  inner, outer: TColorVector;
+  inner, outer: TGLColorVector;
   pos, dir, start, stop, dv: TAffineVector;
 begin
   lifeTime := CurrentTime - aParticle.CreationTime;

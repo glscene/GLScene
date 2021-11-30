@@ -51,7 +51,7 @@ public:
 	__fastcall virtual THiddenLineShader(TComponent* AOwner);
 	__fastcall virtual ~THiddenLineShader(void);
 
-        TColorVector BackgroundColor, LineColor;
+        TGLColorVector BackgroundColor, LineColor;
         int PassCount;
 
 	void __fastcall DoApply(TGLRenderContextInfo &rci, System::TObject* Sender);
@@ -66,7 +66,7 @@ public:
 	__fastcall virtual TOutLineShader(TComponent* AOwner);
 	__fastcall virtual ~TOutLineShader(void);
         
-        TColorVector BackgroundColor, LineColor;
+        TGLColorVector BackgroundColor, LineColor;
         bool OutlineSmooth, Lighting;
         float OutlineWidth, OldlineWidth;
         int PassCount;

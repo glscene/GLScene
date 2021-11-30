@@ -62,9 +62,9 @@ type
   end;
 
   TGLHeightFieldGetHeightEvent = procedure(const x, y: Single; var z: Single;
-    var Color: TColorVector; var TexPoint: TTexPoint) of object;
+    var Color: TGLColorVector; var TexPoint: TTexPoint) of object;
   TGLHeightFieldGetHeight2Event = procedure(Sender: TObject; const x, y: Single;
-    var z: Single; var Color: TColorVector; var TexPoint: TTexPoint) of object;
+    var z: Single; var Color: TGLColorVector; var TexPoint: TTexPoint) of object;
 
   TGLHeightFieldOption = (hfoTextureCoordinates, hfoTwoSided);
   TGLHeightFieldOptions = set of TGLHeightFieldOption;
@@ -95,9 +95,9 @@ type
     procedure SetOnGetHeight2(const val: TGLHeightFieldGetHeight2Event);
     procedure SetColorMode(const val: TGLHeightFieldColorMode);
     procedure DefaultHeightField(const x, y: Single; var z: Single;
-      var Color: TColorVector; var TexPoint: TTexPoint);
+      var Color: TGLColorVector; var TexPoint: TTexPoint);
     procedure Height2Field(const x, y: Single; var z: Single;
-      var Color: TColorVector; var texPoint: TTexPoint);
+      var Color: TGLColorVector; var texPoint: TTexPoint);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -331,7 +331,7 @@ end;
 procedure TGLHeightField.BuildList(var rci: TGLRenderContextInfo);
 type
   TRowData = packed record
-    Color: TColorVector;
+    Color: TGLColorVector;
     Z: Single;
     TexPoint: TTexPoint;
     Normal: TAffineVector;
@@ -553,7 +553,7 @@ end;
 
 
 procedure TGLHeightField.DefaultHeightField(const x, y: Single; var z: Single;
-  var color: TColorVector; var texPoint: TTexPoint);
+  var color: TGLColorVector; var texPoint: TTexPoint);
 begin
   z := VectorNorm(x, y);
   z := cos(z * 12) / (2 * (z * 6.28 + 1));
@@ -562,7 +562,7 @@ end;
 
 
 procedure TGLHeightField.Height2Field(const x, y: Single; var z: Single;
-  var color: TColorVector; var texPoint: TTexPoint);
+  var color: TGLColorVector; var texPoint: TTexPoint);
 begin
   FOnGetHeight2(Self, x, y, z, color, texPoint);
 end;

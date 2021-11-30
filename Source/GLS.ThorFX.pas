@@ -472,7 +472,7 @@ var
 
   vx, vy: TGLVector;
   m: integer;
-  Icol, Ocol, Ccol: TColorVector;
+  Icol, Ocol, Ccol: TGLColorVector;
   Ppos, Ppos2: TAffineVector;
 begin
   if Manager = nil then

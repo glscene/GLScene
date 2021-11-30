@@ -164,7 +164,7 @@ var
   canvas: TGLCanvas;
   buffer: TGLSceneBuffer;
   i, w, h, tw, Y: Integer;
-  color: TColorVector;
+  color: TGLColorVector;
   libMat: TGLLibMaterial;
 begin
   if Font = nil then

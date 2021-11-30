@@ -123,11 +123,11 @@ end;
 
 procedure TForm1.CreateShapes;
 const
-  vLtBlue: TColorVector = (X: 0.00; Y: 0.00; Z: 1.00; W:0.90);
-  vLtPink: TColorVector = (X: 0.40; Y:0.00; Z:0.20; W:0.50);
-  vLtYellow: TColorVector = (X: 0.98; Y:0.96; Z:0.14; W:0.30);
-  vLtMagenta: TColorVector = (X: 0.83; Y:0.04; Z:0.83; W:0.70);
-  vLtGreen: TColorVector = (X: 0.05; Y:0.98; Z:0.14; W:0.30);
+  vLtBlue: TGLColorVector = (X: 0.00; Y: 0.00; Z: 1.00; W:0.90);
+  vLtPink: TGLColorVector = (X: 0.40; Y:0.00; Z:0.20; W:0.50);
+  vLtYellow: TGLColorVector = (X: 0.98; Y:0.96; Z:0.14; W:0.30);
+  vLtMagenta: TGLColorVector = (X: 0.83; Y:0.04; Z:0.83; W:0.70);
+  vLtGreen: TGLColorVector = (X: 0.05; Y:0.98; Z:0.14; W:0.30);
 
 var
   vd: array [0 .. 3] of TGLVertexData;

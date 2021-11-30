@@ -237,7 +237,7 @@ object FormActor: TFormActor
         Position.Coordinates = {0000000000000000000080BF0000803F}
         Loops = 1
         OuterRadius = 3.000000000000000000
-        Slices = 8
+        Slices = 100
         SweepAngle = 360.000000000000000000
       end
     end
