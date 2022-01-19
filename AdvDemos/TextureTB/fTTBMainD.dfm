@@ -2,58 +2,76 @@ object TTBMain: TTTBMain
   Left = 293
   Top = 216
   Caption = 'GLScene Texture ToolBox'
-  ClientHeight = 464
-  ClientWidth = 674
+  ClientHeight = 580
+  ClientWidth = 843
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Menu = MainMenu
-  OldCreateOrder = False
   Position = poScreenCenter
   WindowState = wsMaximized
   OnCreate = FormCreate
   OnShow = FormShow
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 16
   object Splitter1: TSplitter
-    Left = 385
+    Left = 481
     Top = 0
-    Width = 4
-    Height = 464
-    ExplicitHeight = 472
+    Width = 5
+    Height = 580
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
   end
   object PAImages: TPanel
     Left = 0
     Top = 0
-    Width = 385
-    Height = 464
+    Width = 481
+    Height = 580
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alLeft
     BevelOuter = bvLowered
     BorderWidth = 4
     Caption = 'PAImages'
     TabOrder = 0
     DesignSize = (
-      385
-      464)
+      481
+      580)
     object PageControl: TPageControl
       Left = 5
-      Top = 33
-      Width = 375
-      Height = 426
+      Top = 40
+      Width = 471
+      Height = 535
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       ActivePage = TSRGB
       Align = alClient
       Style = tsButtons
       TabOrder = 0
       object TSRGB: TTabSheet
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'RGB'
         object ScrollBox1: TScrollBox
           Left = 0
           Top = 0
-          Width = 367
-          Height = 395
+          Width = 463
+          Height = 501
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           HorzScrollBar.Smooth = True
           HorzScrollBar.Style = ssFlat
           HorzScrollBar.Tracking = True
@@ -67,24 +85,32 @@ object TTBMain: TTTBMain
           object IMRGB: TImage
             Left = 0
             Top = 0
-            Width = 288
-            Height = 312
+            Width = 360
+            Height = 390
+            Margins.Left = 4
+            Margins.Top = 4
+            Margins.Right = 4
+            Margins.Bottom = 4
             AutoSize = True
           end
         end
       end
       object TSAlpha: TTabSheet
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Alpha'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object ScrollBox2: TScrollBox
           Left = 0
           Top = 0
-          Width = 367
-          Height = 412
+          Width = 463
+          Height = 501
+          Margins.Left = 4
+          Margins.Top = 4
+          Margins.Right = 4
+          Margins.Bottom = 4
           HorzScrollBar.Smooth = True
           HorzScrollBar.Style = ssFlat
           HorzScrollBar.Tracking = True
@@ -98,22 +124,30 @@ object TTBMain: TTTBMain
           object IMAlpha: TImage
             Left = 0
             Top = 0
-            Width = 288
-            Height = 312
+            Width = 360
+            Height = 390
+            Margins.Left = 4
+            Margins.Top = 4
+            Margins.Right = 4
+            Margins.Bottom = 4
             AutoSize = True
           end
         end
       end
     end
     object ToolBar: TToolBar
-      Left = 232
-      Top = 35
-      Width = 153
-      Height = 23
+      Left = 290
+      Top = 44
+      Width = 191
+      Height = 29
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alNone
       Anchors = [akTop, akRight]
-      ButtonHeight = 21
-      ButtonWidth = 73
+      ButtonHeight = 24
+      ButtonWidth = 91
       Caption = 'ToolBar'
       Color = clBtnFace
       ParentColor = False
@@ -122,41 +156,65 @@ object TTBMain: TTTBMain
       object TBImport: TToolButton
         Left = 0
         Top = 0
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Action = ACImport
       end
       object ToolButton1: TToolButton
-        Left = 73
+        Left = 91
         Top = 0
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Action = ACExport
       end
     end
     object Panel1: TPanel
       Left = 5
       Top = 5
-      Width = 375
-      Height = 28
+      Width = 471
+      Height = 35
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 2
       object Label1: TLabel
-        Left = 4
-        Top = 4
-        Width = 57
-        Height = 13
+        Left = 5
+        Top = 5
+        Width = 72
+        Height = 16
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Texture size'
       end
       object Label2: TLabel
-        Left = 132
-        Top = 4
-        Width = 11
-        Height = 13
+        Left = 165
+        Top = 5
+        Width = 12
+        Height = 16
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = ' x '
       end
       object CBWidth: TComboBox
-        Left = 72
+        Left = 90
         Top = 0
-        Width = 57
-        Height = 21
+        Width = 71
+        Height = 24
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Style = csDropDownList
         TabOrder = 0
         OnChange = CBWidthChange
@@ -176,10 +234,14 @@ object TTBMain: TTTBMain
           '4096')
       end
       object CBHeight: TComboBox
-        Left = 148
+        Left = 185
         Top = 0
-        Width = 57
-        Height = 21
+        Width = 71
+        Height = 24
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Style = csDropDownList
         TabOrder = 1
         OnChange = CBWidthChange
@@ -201,10 +263,14 @@ object TTBMain: TTTBMain
     end
   end
   object PAPreview: TPanel
-    Left = 389
+    Left = 486
     Top = 0
-    Width = 285
-    Height = 464
+    Width = 357
+    Height = 580
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alClient
     BevelOuter = bvLowered
     BorderWidth = 4
@@ -214,11 +280,15 @@ object TTBMain: TTTBMain
     object GLSceneViewer: TGLSceneViewer
       Left = 5
       Top = 5
-      Width = 275
-      Height = 454
+      Width = 347
+      Height = 570
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Camera = GLCamera
       Buffer.AntiAliasing = aa2x
-      FieldOfView = 140.033782958984400000
+      FieldOfView = 147.847686767578100000
       PenAsTouch = False
       Align = alClient
       OnMouseDown = GLSceneViewerMouseDown
@@ -226,16 +296,24 @@ object TTBMain: TTTBMain
       TabOrder = 0
     end
     object Panel2: TPanel
-      Left = 8
-      Top = 8
-      Width = 257
-      Height = 32
+      Left = 10
+      Top = 10
+      Width = 321
+      Height = 40
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       TabOrder = 1
       object CBTextureFiltering: TCheckBox
-        Left = 112
-        Top = 8
-        Width = 97
-        Height = 17
+        Left = 140
+        Top = 10
+        Width = 121
+        Height = 21
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Texture filtering'
         Checked = True
         State = cbChecked
@@ -243,10 +321,14 @@ object TTBMain: TTTBMain
         OnClick = CBTextureFilteringClick
       end
       object CBBackground: TComboBox
-        Left = 7
-        Top = 6
-        Width = 90
-        Height = 21
+        Left = 9
+        Top = 8
+        Width = 112
+        Height = 24
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Style = csDropDownList
         TabOrder = 1
         OnChange = CBBackgroundChange

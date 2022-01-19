@@ -59,7 +59,7 @@ var
    Tnam: string;
    Id_Mat, NVert, NTri : Integer;
 
-   VertArr :  TxPoint3DArray;
+   VertArr :  TGLPoint3DArray;
    n1, n2, n3 : Integer;
 
 
@@ -131,4 +131,4 @@ initialization
 
    RegisterVectorFileFormat('delaunay', 'Triangular Irregular Network', TGLDELVectorFile);
 
-end.
+end.

@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Generics;
 
 (* Cross IDE generic classes collection. *)
@@ -35,7 +34,6 @@ type
     FCapacity: Integer;
 //    FOnChange: TListChangeEvent;
     FOnChange: TNotifyEvent;
-
   protected
     procedure SetCapacity(Value: Integer);
     procedure SetCount(Value: Integer);
@@ -103,7 +101,6 @@ type
   public
     constructor Create; virtual;
     destructor Destroy; override;
-
     function Count: Integer;
     function AtLeast(ACount: Integer): Boolean;
     function Push(const AItem: T): T;
@@ -301,8 +298,6 @@ begin
   SetCapacity(FCapacity + Delta);
 end;
 
-
-
 constructor GThreadList{$IFNDEF USE_GENERIC_PREFIX}<T>{$ENDIF}.Create;
 begin
   inherited Create;
@@ -363,9 +358,6 @@ begin
   FLock.Leave;
 end;
 
-
-
-
 constructor GOrderedList{$IFNDEF USE_GENERIC_PREFIX}<T>{$ENDIF}.Create;
 begin
   FList := TOrderedList.Create;
@@ -413,10 +405,6 @@ begin
   Result := List.Count;
 end;
 
-
-
-
-
 procedure GStack{$IFNDEF USE_GENERIC_PREFIX}<T>{$ENDIF}.PushItem(AItem: T);
 begin
   List.Add(AItem);
@@ -428,6 +416,5 @@ procedure GQueue{$IFNDEF USE_GENERIC_PREFIX}<T>{$ENDIF}.PushItem(AItem: T);
 begin
   List.Insert(0, AItem);
 end;
-
 
 end.

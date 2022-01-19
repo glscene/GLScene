@@ -266,7 +266,10 @@ contains
   GLS.Strings in '..\Source\GLS.Strings.pas',
   GLS.XCollection in '..\Source\GLS.XCollection.pas',
   GLS.XOpenGL in '..\Source\GLS.XOpenGL.pas',
-  GLS.ModuleLoader in '..\Source\GLS.ModuleLoader.pas';
+  GLS.ModuleLoader in '..\Source\GLS.ModuleLoader.pas',
+  PasGLTF in '..\Source\PasGLTF.pas',
+  PasJSON in '..\Source\PasJSON.pas',
+  PasDblStrUtils in '..\Source\PasDblStrUtils.pas';
 
 end.
 

@@ -17,6 +17,7 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.VectorFileObjects"
 #pragma link "GLS.SceneViewer"
+#pragma link "GLS.FileOBJ"
 
 #pragma resource "*.dfm"
 TForm1 *Form1;
@@ -30,8 +31,10 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 {
   SetGLSceneMediaDir();
   // Load the bunny mesh and scale for viewing
-  Bunny->LoadFromFile("Models\\bunny.glsm");
+  Bunny->LoadFromFile("Models\\bunny.obj");
   Bunny->Scale->Scale((float)(2/Bunny->BoundingSphereRadius()));
+  Bunny->PitchAngle = 90;
+  Bunny->RollAngle = 90;
 
   // Load the normal map
   GLMaterialLibrary1->Materials->Items[0]->Material->Texture->Image->LoadFromFile("bunnynormals.jpg");
@@ -47,6 +50,8 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   ComboBox1->ItemIndex = 0;
   ComboBox1Change(NULL);
   StartHeight = Height;
+  CheckBox3Click(this);
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
@@ -61,7 +66,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
   }
 
   // Rotate the light sources
-  if (CheckBox4->Checked)
+  if (cbSpin->Checked)
 	DCLights->Turn(deltaTime*20);
 
   GLSceneViewer1->Invalidate();
@@ -77,7 +82,7 @@ void __fastcall TForm1::CheckBox1Click(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::CheckBox2Click(TObject *Sender)
 {
-  RedLight->Shining = CheckBox1->Checked;
+  RedLight->Shining = CheckBox2->Checked;
   CheckBox2->Tag = CheckBox2->Checked;
 }
 
@@ -85,7 +90,7 @@ void __fastcall TForm1::CheckBox2Click(TObject *Sender)
 
 void __fastcall TForm1::CheckBox3Click(TObject *Sender)
 {
-  BlueLight->Shining = CheckBox1->Checked;
+  BlueLight->Shining = CheckBox3->Checked;
   CheckBox3->Tag = CheckBox3->Checked;
 }
 

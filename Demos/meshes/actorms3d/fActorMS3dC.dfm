@@ -175,6 +175,7 @@ object Form1: TForm1
         Blend = False
       end
       object Actor1: TGLActor
+        Material.Texture.Disabled = False
         Material.MaterialLibrary = MatLib
         Direction.Coordinates = {2EBD3B34F0AD099D0000803F00000000}
         Position.Coordinates = {000080BF00000000000000000000803F}
@@ -199,6 +200,7 @@ object Form1: TForm1
       object Chair1: TGLFreeForm
         Material.FrontProperties.Ambient.Color = {00000000000000000000000000000000}
         Material.FrontProperties.Diffuse.Color = {00000000000000000000000000000000}
+        Material.Texture.Disabled = False
         Direction.Coordinates = {EE8384BE00000000EA46773F00000000}
         Position.Coordinates = {000040BF0000000052B85E3F0000803F}
         TurnAngle = -15.000000000000000000

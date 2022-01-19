@@ -76,7 +76,7 @@ object FormProjection: TFormProjection
       Style = psSmooth
     end
     object GLPlane: TGLPlane
-      Material.FrontProperties.Diffuse.Color = {0000003F0000003F0000803FCDCC4C3F}
+      Material.FrontProperties.Diffuse.Color = {0000003F0000003F0000803F9A99193F}
       Material.BlendingMode = bmTransparency
       Material.MaterialOptions = [moNoLighting]
       Direction.Coordinates = {000000000000803F0000000000000000}
@@ -84,7 +84,6 @@ object FormProjection: TFormProjection
       Height = 6.000000000000000000
       Width = 6.000000000000000000
       object GLXYZGrid1: TGLXYZGrid
-        Visible = False
         LineColor.Color = {0000803F0000803F0000803F0000003F}
         XSamplingScale.Min = -3.000000000000000000
         XSamplingScale.Max = 3.000000000000000000

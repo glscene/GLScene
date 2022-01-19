@@ -251,7 +251,7 @@ object Form1: TForm1
     object ffBunny: TGLFreeForm
       Material.FrontProperties.Shininess = 64
       Material.FrontProperties.Specular.Color = {CDCC4C3ECDCC4C3ECDCC4C3E0000803F}
-      Material.MaterialLibrary = GLMaterialLibrary1
+      Material.MaterialLibrary = MatLib
       AutoCentering = [macCenterX, macCenterY, macCenterZ]
     end
     object Camera: TGLCamera
@@ -267,7 +267,7 @@ object Form1: TForm1
     Left = 40
     Top = 136
   end
-  object GLMaterialLibrary1: TGLMaterialLibrary
+  object MatLib: TGLMaterialLibrary
     Materials = <
       item
         Name = 'Bump'

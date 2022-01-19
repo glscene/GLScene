@@ -117,8 +117,10 @@ inherited GLAbout: TGLAbout
     00000509030000000000000000000000000000050000FFFF0000FC3F0000F00F
     0000C003000000000000000000000000000080010000C0030000C0070000000F
     00000019000080200000C2600000E7F10000FFFB0000}
-  ExplicitWidth = 462
-  ExplicitHeight = 362
+  ExplicitLeft = 3
+  ExplicitTop = 3
+  ExplicitWidth = 464
+  ExplicitHeight = 370
   PixelsPerInch = 96
   TextHeight = 16
   inherited PanelTop: TPanel
@@ -127,7 +129,7 @@ inherited GLAbout: TGLAbout
     ExplicitWidth = 446
     ExplicitHeight = 89
     object LabelVersion: TLabel
-      Left = 144
+      Left = -32
       Top = 63
       Width = 44
       Height = 16
@@ -139,6 +141,7 @@ inherited GLAbout: TGLAbout
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
+      ExplicitLeft = 144
     end
     object LabelGeoblock: TLabel
       Left = 102

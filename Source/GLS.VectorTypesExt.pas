@@ -22,113 +22,113 @@ uses
 
 
 type
-  TxBigMatrix = array of Extended; // replace with BigDecimals
-  T_BigMatrix = array of array of Extended;  // replace with BigDecimals
+  TGLBigMatrix = array of Extended; // replace with BigDecimals
+  TGLBigMatrixExt = array of array of Extended;  // replace with BigDecimals
 
-  TxQuaternion = record
+  TGLQuat = record
   private
     FData: array[0..3] of Extended;
     procedure SetElement(Index: Byte; Value: Extended);
     function GetElement(Index: Byte): Extended;
   public
-    constructor Create(Q: TxBigMatrix);
-    class operator Multiply(Q1, Q2: TxQuaternion): TxQuaternion;
-    class operator Multiply(Q: TxQuaternion; Sc: Extended): TxQuaternion;
-    class operator Multiply(Scalar: Extended; Q: TxQuaternion): TxQuaternion;
-    class operator Implicit(V: TxBigMatrix): TxQuaternion;
-    function Inv: TxQuaternion;
-    function TruncateSTI: TxQuaternion;
+    constructor Create(Q: TGLBigMatrix);
+    class operator Multiply(Q1, Q2: TGLQuat): TGLQuat;
+    class operator Multiply(Q: TGLQuat; Sc: Extended): TGLQuat;
+    class operator Multiply(Scalar: Extended; Q: TGLQuat): TGLQuat;
+    class operator Implicit(V: TGLBigMatrix): TGLQuat;
+    function Inv: TGLQuat;
+    function TruncateSTI: TGLQuat;
     property Element[index: Byte]: Extended read GetElement
       write SetElement; default;
   end;
 
-  PxVector = ^TxVector;
-  TxVector = record
+  PGLVec = ^TGLVec;
+  TGLVec = record
   private
-    FData: TxBigMatrix;
+    FData: TGLBigMatrix;
     FCount: Word;
     procedure SetElement(Index: Word; Value: Extended);
     function GetElement(Index: Word): Extended;
     procedure CheckUnique;
   public
     constructor Create(ElementsCount: Word); overload;
-    constructor Create(V: TxBigMatrix); overload;
-    class operator Add(V1, V2: TxVector): TxVector;
-    class operator Add(V: TxVector; Scalar: Extended): TxVector;
-    class operator Add(Scalar: Extended; V: TxVector): TxVector;
-    class operator Subtract(V1, V2: TxVector): TxVector;
-    class operator Subtract(Scalar: Extended; V: TxVector): TxVector;
-    class operator Subtract(V: TxVector; Scalar: Extended): TxVector;
-    class operator Multiply(V1, V2: TxVector): TxVector;
-    class operator Multiply(V: TxVector; Scalar: Extended): TxVector;
-    class operator Multiply(Scalar: Extended; V: TxVector): TxVector;
-    class operator Divide(V: TxVector; Scalar: Extended): TxVector;
-    class operator Divide(V1, V2: TxVector): TxVector;
-    class operator Implicit(V: TxBigMatrix): TxVector;
+    constructor Create(V: TGLBigMatrix); overload;
+    class operator Add(V1, V2: TGLVec): TGLVec;
+    class operator Add(V: TGLVec; Scalar: Extended): TGLVec;
+    class operator Add(Scalar: Extended; V: TGLVec): TGLVec;
+    class operator Subtract(V1, V2: TGLVec): TGLVec;
+    class operator Subtract(Scalar: Extended; V: TGLVec): TGLVec;
+    class operator Subtract(V: TGLVec; Scalar: Extended): TGLVec;
+    class operator Multiply(V1, V2: TGLVec): TGLVec;
+    class operator Multiply(V: TGLVec; Scalar: Extended): TGLVec;
+    class operator Multiply(Scalar: Extended; V: TGLVec): TGLVec;
+    class operator Divide(V: TGLVec; Scalar: Extended): TGLVec;
+    class operator Divide(V1, V2: TGLVec): TGLVec;
+    class operator Implicit(V: TGLBigMatrix): TGLVec;
     function Norm: Extended;
     function SumOfSquares: Extended;
     function SumOfElments: Extended;
-    function TruncateSTI: TxVector;
-    function ToQuat: TxQuaternion;
+    function TruncateSTI: TGLVec;
+    function ToQuat: TGLQuat;
     procedure Fill(Value: Extended);
-    function ScalarMult(V: TxVector): Extended;
+    function ScalarMult(V: TGLVec): Extended;
     property Count: Word read FCount;
     property Elements[index: Word]: Extended read GetElement
       write SetElement; default;
   end;
 
-  PxMatrix = ^TxMatrix;
-  TxMatrix = record
+  PGLMat = ^TGLMat;
+  TGLMat = record
   private
-    FData: T_BigMatrix;
+    FData: TGLBigMatrixExt;
     FRowsCount: Word;
     FColsCount: Word;
     procedure SetElement(Row, Col: Word; Value: Extended);
     function GetElement(Row, Col: Word): Extended;
-    function GetRow(Row: Word): TxVector;
-    procedure SetRow(Row: Word; Value: TxVector);
-    function GetCol(Col: Word): TxVector;
-    procedure SetCol(Col: Word; Value: TxVector);
-    function Del(A: TxMatrix; I, J: Integer; M: Integer): TxMatrix;
-    function Det(A: TxMatrix; M: Integer): Extended;
+    function GetRow(Row: Word): TGLVec;
+    procedure SetRow(Row: Word; Value: TGLVec);
+    function GetCol(Col: Word): TGLVec;
+    procedure SetCol(Col: Word; Value: TGLVec);
+    function Del(A: TGLMat; I, J: Integer; M: Integer): TGLMat;
+    function Det(A: TGLMat; M: Integer): Extended;
     procedure CheckUnique;
   public
     constructor Create(RowsCount, ColsCount: Word); overload;
     constructor CreateDiag(Dim: Word; Value: Extended = 1.0);
-    constructor Create(M: T_BigMatrix); overload;
-    class operator Add(M1, M2: TxMatrix): TxMatrix;
-    class operator Subtract(M1, M2: TxMatrix): TxMatrix;
-    class operator Multiply(M1, M2: TxMatrix): TxMatrix;
-    class operator Multiply(M: TxMatrix; V: TxVector): TxVector;
-    class operator Multiply(V: TxVector; M: TxMatrix): TxVector;
-    class operator Multiply(M: TxMatrix; Scalar: Extended): TxMatrix;
-    class operator Multiply(Scalar: Extended; M: TxMatrix): TxMatrix;
-    class operator Multiply(M: TxMatrix; Q: TxQuaternion): TxQuaternion;
-    class operator Implicit(M: T_BigMatrix): TxMatrix;
-    function Transp: TxMatrix;
-    function Inv: TxMatrix;
-    function ToQuat: TxQuaternion;
+    constructor Create(M: TGLBigMatrixExt); overload;
+    class operator Add(M1, M2: TGLMat): TGLMat;
+    class operator Subtract(M1, M2: TGLMat): TGLMat;
+    class operator Multiply(M1, M2: TGLMat): TGLMat;
+    class operator Multiply(M: TGLMat; V: TGLVec): TGLVec;
+    class operator Multiply(V: TGLVec; M: TGLMat): TGLVec;
+    class operator Multiply(M: TGLMat; Scalar: Extended): TGLMat;
+    class operator Multiply(Scalar: Extended; M: TGLMat): TGLMat;
+    class operator Multiply(M: TGLMat; Q: TGLQuat): TGLQuat;
+    class operator Implicit(M: TGLBigMatrixExt): TGLMat;
+    function Transp: TGLMat;
+    function Inv: TGLMat;
+    function ToQuat: TGLQuat;
     function Determinant: Extended;
-    function TruncateSTI: TxMatrix;
+    function TruncateSTI: TGLMat;
     function Trace: Extended; // sum on diagonal elements
     procedure Fill(Scalar: Extended);
     property RowCount: Word read FRowsCount;
     property ColCount: Word read FColsCount;
-    property Row[Row: Word]: TxVector read GetRow write SetRow;
-    property Col[Col: Word]: TxVector read GetCol write SetCol;
+    property Row[Row: Word]: TGLVec read GetRow write SetRow;
+    property Col[Col: Word]: TGLVec read GetCol write SetCol;
     property Elements[Row, Col: Word]: Extended read GetElement
       write SetElement; default;
   end;
 
-  TxQuatHelper = record helper for TxQuaternion
-    function ToMatrix: TxMatrix;
+  TGLQuatHelper = record helper for TGLQuat
+    function ToMatrix: TGLMat;
   end;
 
-  TxVecHelper = record helper for TxVector
-    function ToDiagMatrix: TxMatrix;
+  TGLVecHelper = record helper for TGLVec
+    function ToDiagMatrix: TGLMat;
   end;
 
-  TxDim = class(TCustomAttribute)
+  TGLDim = class(TCustomAttribute)
   private
     FRowCount: Integer;
     FColCount: Integer;
@@ -138,9 +138,10 @@ type
     property ColCount: Integer read FColCount;
   end;
 
-  function TxVec(V: TxBigMatrix): TxVector;
-  function TxMat(M: T_BigMatrix): TxMatrix;
-  function TxQuat(Q: TxBigMatrix): TxQuaternion;
+
+  function GetGLVec(V: TGLBigMatrix): TGLVec;
+  function GetGLMat(M: TGLBigMatrixExt): TGLMat;
+  function GetGLQuat(Q: TGLBigMatrix): TGLQuat;
   procedure Init(Obj, TypeInfoOfObj: Pointer; Offset: Integer = 0);
 
 
@@ -148,18 +149,18 @@ type
 // Point types
 //-----------------------
 type
-  TxScalarValue = Extended;  // replaced with BigDecimals
-  TxScalarField = function(X, Y, Z: Extended): TxScalarValue;
+  TGLScalarValue = Extended;  // replaced with BigDecimals
+  TGLScalarField = function(X, Y, Z: Extended): TGLScalarValue;
 
   // If data are made on integer XYZ index replaced with BigIntegers
-  TxScalarFieldInt = function(iX, iY, iZ: Integer): TxScalarValue of object;
+  TGLScalarFieldInt = function(iX, iY, iZ: Integer): TGLScalarValue of object;
 
-  TxVertex = record
-    P, N: TVector3f;  //Point and Normal
+  TGLVertRec = record
+    P, N: TVector3f;  //Position and Normal
     Density: Extended;
   end;
 
-  TxFace = record
+  TGLFaceRec = record
     Normal: TVector3f;
     V1: TVector3f; // vertex 1
     V2: TVector3f; // vertex 2
@@ -167,85 +168,85 @@ type
     Padding: array [0 .. 1] of Byte;
   end;
 
-  PxPoint2D = ^TxPoint2D;
-  TxPoint2D = record
+  PGLPoint2D = ^TGLPoint2D;
+  TGLPoint2D = record
     X: Extended;
     Y: Extended;
     public
-      function Create(X, Y: Extended): TxPoint2D;
+      function Create(X, Y: Extended): TGLPoint2D;
       procedure SetPosition(const X, Y : Extended);
-      function Add(const APoint2D: TxPoint2D): TxPoint2D;
+      function Add(const APoint2D: TGLPoint2D): TGLPoint2D;
       function Length: Extended; //distance to origin
-      function Distance(const APoint2D : TxPoint2D) : Extended;
-      class function PointInCircle(const Point, Center: TxPoint2D;
+      function Distance(const APoint2D : TGLPoint2D) : Extended;
+      class function PointInCircle(const Point, Center: TGLPoint2D;
         const Radius: Integer):Boolean; static; inline;
       procedure Offset(const ADeltaX, ADeltaY : Extended);
   end;
 
-  PxPoint3D = ^TxPoint3D;
-  TxPoint3D = record
+  PGLPoint3D = ^TGLPoint3D;
+  TGLPoint3D = record
     X: Extended;
     Y: Extended;
     Z: Extended;
     public
-      function Create(X, Y, Z: Extended): TxPoint3D;
+      function Create(X, Y, Z: Extended): TGLPoint3D;
       procedure SetPosition(const X, Y, Z: Extended);
-      function Add(const AGLPoint3D: TxPoint3D): TxPoint3D;
+      function Add(const AGLPoint3D: TGLPoint3D): TGLPoint3D;
       function Length: Single; //distance to origin
-      function Distance(const APoint3D : TxPoint3D) : Extended;
+      function Distance(const APoint3D : TGLPoint3D) : Extended;
       procedure Offset(const ADeltaX, ADeltaY, ADeltaZ : Extended);
   end;
 
 
-  TxPoint2DArray = array of TxPoint2D;
-  TxPoint3DArray = array of TxPoint3D;
+  TGLPoint2DArray = array of TGLPoint2D;
+  TGLPoint3DArray = array of TGLPoint3D;
 
 
 // Voxel types
-  TxVoxelStatus = (bpExternal, bpInternal);
-  TxVoxel = record
+  TGLVoxelStatus = (bpExternal, bpInternal);
+  PGLVoxel = ^TGLVoxel;
+  TGLVoxel = record
     P: TVector3f;
-    Density: TxScalarValue;
-    Status: TxVoxelStatus;
+    Density: TGLScalarValue;
+    Status: TGLVoxelStatus;
   end;
-  PxVoxel = ^TxVoxel;
 
-  TxVoxelData = array [0 .. (MaxInt shr 8)] of TxVoxel;
-  PxVoxelData = ^TxVoxelData;
+  TGLVoxelData = array [0 .. (MaxInt shr 8)] of TGLVoxel;
+  PGLVoxelData = ^TGLVoxelData;
 
 
 //-----------------------
 // Vector types
 //-----------------------
 
-  TxVector2DType = array [0..1] of Extended;
-  TxVector3DType = array [0..2] of Extended;
+  TGLVec2DType = array [0..1] of Extended;
+  TGLVec3DType = array [0..2] of Extended;
 
-  TxVector2D = record
-      function Create(const AX, AY, AW : Single): TxVector2D;
-      function Add(const AVector2D: TxVector2D): TxVector2D;
+  TGLVec2D = record
+      function Create(const AX, AY, AW : Single): TGLVec2D;
+      function Add(const AVector2D: TGLVec2D): TGLVec2D;
       function Length: Extended;
       function Norm: Extended;
-      function Normalize: TxVector2D;
-      function CrossProduct(const AVector: TxVector2D): TxVector2D;
-      function DotProduct(const AVector: TxVector2D): Extended;
+      function Normalize: TGLVec2D;
+      function CrossProduct(const AVector: TGLVec2D): TGLVec2D;
+      function DotProduct(const AVector: TGLVec2D): Extended;
     case Integer of
-      0: (V: TxVector2DType;);
+      0: (V: TGLVec2DType;);
       1: (X: Extended;
           Y: Extended;
           W: Extended;)
   end;
 
-  TxVector3D = record
-      function Create(const AX, AY, AZ, AW : Single): TxVector3D;
-      function Add(const AVector3D: TxVector3D): TxVector3D;
+  TGLVec3D = record
+      function Create(const AX, AY, AZ, AW : Single): TGLVec3D;
+      function Add(const AVector3D: TGLVec3D): TGLVec3D;
       function Length: Single;
       function Norm: Single;
-      function Normalize: TxVector3D;
+      function Normalize: TGLVec3D;
       function CrossProduct(const AVector3D: TVector3D): TVector3D;
       function DotProduct(const AVector3D: TVector3D): Single; inline;
     case Integer of
-      0: (V: TxVector3DType;);
+      0: (V: TGLVec3DType;);
       1: (X: Extended;
           Y: Extended;
           Z: Extended;
@@ -253,30 +254,30 @@ type
   end;
 
 // Vector Arrays
-  TxVector2DArray = array of TxVector2D;
-  TxVector3DArray = array of TxVector3D;
+  TGLVec2DArray = array of TGLVec2D;
+  TGLVec3DArray = array of TGLVec3D;
 
 //-----------------------
 // Matrix types
 //-----------------------
-  TxMatrix2DType = array[0..3] of TxVector2D;
-  TxMatrix3DType = array[0..3] of TxVector3D;
+  TGLMat2DType = array[0..3] of TGLVec2D;
+  TGLMat3DType = array[0..3] of TGLVec3D;
 
-  TxMatrix2D = record
+  TGLMat2D = record
   private
   public
     case Integer of
-      0: (M: TxMatrix2DType;);
+      0: (M: TGLMat2DType;);
       1: (e11, e12, e13: Single;
           e21, e22, e23: Single;
           e31, e32, e33: Single);
   end;
 
-  TxMatrix3D = record
+  TGLMat3D = record
   private
   public
     case Integer of
-      0: (M: TxMatrix3DType;);
+      0: (M: TGLMat3DType;);
       1: (e11, e12, e13, e14: Single;
           e21, e22, e23, e24: Single;
           e31, e32, e33, e34: Single;
@@ -284,51 +285,51 @@ type
   end;
 
 // Matrix Arrays
-  TxMatrix2DArray = array of TxMatrix2D;
-  TxMatrix3DArray = array of TxMatrix3D;
+  TGLMat2DArray = array of TGLMat2D;
+  TGLMat3DArray = array of TGLMat3D;
 
 
 //-----------------------
 // Polygon types
 //-----------------------
 
-  TxPolygon2D = TxPoint2DArray;
+  TGLPolygon2D = TGLPoint2DArray;
+  TGLPolygon3D = TGLPoint3DArray;
 
-  TxPolygon3D = TxPoint3DArray;
-{
-  TxPolygon3D = record
-    Vertices: array of TxPoint3D;
-    function Area;
+(*
+  TGLPolygon3D = record
+    Vertices: array of TGLPoint3D;
+    function Length;
   end;
-}
+*)
 
 const
-   ClosedPolygon2D: TxPoint2D = (X: $FFFF; Y: $FFFF);
-   ClosedPolygon3D: TxPoint3D = (X: $FFFF; Y: $FFFF; Z: $FFFF);
+   ClosedPolygon2D: TGLPoint2D = (X: $FFFF; Y: $FFFF);
+   ClosedPolygon3D: TGLPoint3D = (X: $FFFF; Y: $FFFF; Z: $FFFF);
 
 type
-  PxVertexArray = ^TxVertexArray;
-  TxVertexArray = array [0 .. (MaxInt shr 8)] of TxVertex;
+  PGLVertArray = ^TGLVertArray;
+  TGLVertArray = array [0 .. (MaxInt shr 8)] of TGLVertRec;
 
 type
-  TxTriangle = record
+  TGLTrianRec = record
     v1, v2, v3: Integer;
-    ///Vertices: array[0..2] of TxPoint3D;
+    ///Vertices: array[0..2] of TGLPoint3D;
     ///function Area;
   end;
 
-  PxTriangleArray = ^TxTriangleArray;
-  TxTriangleArray = array [0 .. (MaxInt shr 8)] of TxTriangle;
+  PGLTrianRecArray = ^TGLTrianRecArray;
+  TGLTrianRecArray = array [0 .. (MaxInt shr 8)] of TGLTrianRec;
 
 //-----------------------
 // Polyhedron types
 //-----------------------
 type
-  TxPolyhedron = array of TxPolygon3D;
+  TGLPolyhedron = array of TGLPolygon3D;
 
 (*
-  TxPolyhedron = record
-    Facets: array of TxPolygon3D;
+  TGLPolyhedron = record
+    Facets: array of TGLPolygon3D;
     function NetLength;
     function Area;
     function Volume;
@@ -339,35 +340,35 @@ type
 // Mesh simple record types
 //--------------------------
 type
-   TxMesh2DVertex = record
+   TGLMesh2DVert = record
     X, Y: Single;
     NX, NY: Single;
     tU, tV: Single;
   end;
 
-   TxMesh3DVertex = packed record
+   TGLMesh3DVert = packed record
     X, Y, Z: Single;
     NX, NY, NZ: Single;
     tU, tV: Single;
   end;
 
-  TxMesh2D = array of TxMesh2DVertex;
-  TxMesh3D = array of TxMesh3DVertex;
+  TGLMesh2DArray = array of TGLMesh2DVert;
+  TGLMesh3DArray = array of TGLMesh3DVert;
 
 //--------------------------
 // Quaternion record types
 //--------------------------
 type
-  TxQuaternion3D = record
-    ImPart: TxVector3D;
+  TGLQuat3D = record
+    ImPart: TGLVec3D;
     RePart: Single;
   end;
 
-  TxQuaternionArray = array of TxQuaternion3D;
+  TGLQuatArray = array of TGLQuat3D;
 
 
 type
-  TxBox = record
+  TGLBoxRec = record
     ALeft, ATop, ANear, ARight, ABottom, AFar: Single;
   end;
 
@@ -383,17 +384,17 @@ implementation
 //---------------------------------------------------------------
 
 
-function TxVec(V: TxBigMatrix): TxVector;
+function GetGLVec(V: TGLBigMatrix): TGLVec;
 begin
   Result.Create(V);
 end;
 
-function TxMat(M: T_BigMatrix): TxMatrix;
+function GetGLMat(M: TGLBigMatrixExt): TGLMat;
 begin
   Result.Create(M);
 end;
 
-function TxQuat(Q: TxBigMatrix): TxQuaternion;
+function GetGLQuat(Q: TGLBigMatrix): TGLQuat;
 begin
   Result.Create(Q);
 end;
@@ -404,10 +405,10 @@ begin
   Result := (PArr - 2)^ > 1;
 end;
 
-{ TxMatrix }
+{ TGLMat }
 
 // Removing i-th row and j-th col
-function TxMatrix.Del(A: TxMatrix; I, J: Integer; M: Integer): TxMatrix;
+function TGLMat.Del(A: TGLMat; I, J: Integer; M: Integer): TGLMat;
 var
   K, G: Integer;
 begin
@@ -421,7 +422,7 @@ begin
 end;
 
 // Recursive calculation of det for matrix
-function TxMatrix.Det(A: TxMatrix; M: Integer): Extended;
+function TGLMat.Det(A: TGLMat; M: Integer): Extended;
 var
   I: Integer;
   Buf: Extended;
@@ -436,7 +437,7 @@ begin
   Result := Buf;
 end;
 
-class operator TxMatrix.Add(M1, M2: TxMatrix): TxMatrix;
+class operator TGLMat.Add(M1, M2: TGLMat): TGLMat;
 var
   I, J: Integer;
 begin
@@ -448,7 +449,7 @@ begin
       Result.FData[I, J] := M1.FData[I, J] + M2.FData[I, J];
 end;
 
-procedure TxMatrix.CheckUnique;
+procedure TGLMat.CheckUnique;
 var
   I: Integer;
 begin
@@ -460,7 +461,7 @@ begin
     end;
 end;
 
-constructor TxMatrix.Create(RowsCount, ColsCount: Word);
+constructor TGLMat.Create(RowsCount, ColsCount: Word);
 begin
   FRowsCount := RowsCount;
   FColsCount := ColsCount;
@@ -468,7 +469,7 @@ begin
   SetLength(FData, FRowsCount, FColsCount);
 end;
 
-constructor TxMatrix.Create(M: T_BigMatrix);
+constructor TGLMat.Create(M: TGLBigMatrixExt);
 var
   I: Integer;
 begin
@@ -484,7 +485,7 @@ begin
     end;
 end;
 
-constructor TxMatrix.CreateDiag(Dim: Word; Value: Extended = 1.0);
+constructor TGLMat.CreateDiag(Dim: Word; Value: Extended = 1.0);
 var
   I: Integer;
 begin
@@ -493,14 +494,14 @@ begin
     FData[I, I] := Value;
 end;
 
-function TxMatrix.Determinant: Extended;
+function TGLMat.Determinant: Extended;
 begin
   if (FRowsCount <> FColsCount) then
     raise EMathError.Create(sNOT_QUAD);
   Result := Det(Self, FRowsCount);
 end;
 
-procedure TxMatrix.Fill(Scalar: Extended);
+procedure TGLMat.Fill(Scalar: Extended);
 var
   I, J: Integer;
 begin
@@ -515,7 +516,7 @@ begin
         FData[I, J] := Scalar;
 end;
 
-function TxMatrix.GetCol(Col: Word): TxVector;
+function TGLMat.GetCol(Col: Word): TGLVec;
 var
   I: Integer;
 begin
@@ -526,13 +527,13 @@ begin
     Result.FData[I] := FData[I, Col - 1];
 end;
 
-function TxMatrix.GetElement(Row, Col: Word): Extended;
+function TGLMat.GetElement(Row, Col: Word): Extended;
 begin
   {$R+}
   Result := FData[Pred(Row), Pred(Col)];
 end;
 
-function TxMatrix.GetRow(Row: Word): TxVector;
+function TGLMat.GetRow(Row: Word): TGLVec;
 var
   I: Integer;
 begin
@@ -543,12 +544,12 @@ begin
     Result.FData[I] := FData[Row - 1, I];
 end;
 
-class operator TxMatrix.Implicit(M: T_BigMatrix): TxMatrix;
+class operator TGLMat.Implicit(M: TGLBigMatrixExt): TGLMat;
 begin
   Result.Create(M);
 end;
 
-function TxMatrix.Inv: TxMatrix;
+function TGLMat.Inv: TGLMat;
 var
   Ipiv, Indxr, Indxc: array of Integer;
   DimMat, I, J, K, L, N, ICol, IRow: Integer;
@@ -612,7 +613,7 @@ begin
       end;
 end;
 
-function TxMatrix.ToQuat: TxQuaternion;
+function TGLMat.ToQuat: TGLQuat;
 begin
     Result[0] := 0.5 * Sqrt(Abs(1 + Self[1,1] + Self[2,2] + Self[3,3]));
     Result[1] := 0.5 * Sqrt(Abs(1 + Self[1,1] - Self[2,2] - Self[3,3]));
@@ -626,7 +627,7 @@ begin
         Result[3] := -Result[3];
 end;
 
-class operator TxMatrix.Multiply(M: TxMatrix; Q: TxQuaternion): TxQuaternion;
+class operator TGLMat.Multiply(M: TGLMat; Q: TGLQuat): TGLQuat;
 var
   I, J: Integer;
 begin
@@ -638,12 +639,12 @@ begin
       Result.FData[I] := Result.FData[I] + M.FData[I, J] * Q.FData[J];
 end;
 
-class operator TxMatrix.Multiply(Scalar: Extended; M: TxMatrix): TxMatrix;
+class operator TGLMat.Multiply(Scalar: Extended; M: TGLMat): TGLMat;
 begin
   Result := M * Scalar;
 end;
 
-class operator TxMatrix.Multiply(V: TxVector; M: TxMatrix): TxVector;
+class operator TGLMat.Multiply(V: TGLVec; M: TGLMat): TGLVec;
 var
   I, J: Integer;
 begin
@@ -655,7 +656,7 @@ begin
       Result.FData[I] := Result.FData[I] + V.FData[J] * M.FData[J, I];
 end;
 
-class operator TxMatrix.Multiply(M: TxMatrix; V: TxVector): TxVector;
+class operator TGLMat.Multiply(M: TGLMat; V: TGLVec): TGLVec;
 var
   I, J: Integer;
 begin
@@ -667,7 +668,7 @@ begin
       Result.FData[I] := Result.FData[I] + M.FData[I, J] * V.FData[J];
 end;
 
-class operator TxMatrix.Multiply(M: TxMatrix; Scalar: Extended): TxMatrix;
+class operator TGLMat.Multiply(M: TGLMat; Scalar: Extended): TGLMat;
 var
   I, J: Integer;
 begin
@@ -677,7 +678,7 @@ begin
       Result.FData[I, J] := M.FData[I, J] * Scalar;
 end;
 
-class operator TxMatrix.Multiply(M1, M2: TxMatrix): TxMatrix;
+class operator TGLMat.Multiply(M1, M2: TGLMat): TGLMat;
 var
   I, J, K: Integer;
 begin
@@ -690,7 +691,7 @@ begin
         Result.FData[I, J] := Result.FData[I, J] + M1.FData[I, K] * M2.FData[K, J];
 end;
 
-procedure TxMatrix.SetCol(Col: Word; Value: TxVector);
+procedure TGLMat.SetCol(Col: Word; Value: TGLVec);
 var
   I: Integer;
 begin
@@ -702,14 +703,14 @@ begin
     FData[I, Col - 1] := Value.FData[I];
 end;
 
-procedure TxMatrix.SetElement(Row, Col: Word; Value: Extended);
+procedure TGLMat.SetElement(Row, Col: Word; Value: Extended);
 begin
   {$R+}
   CheckUnique;
   FData[Pred(Row), Pred(Col)] := Value;
 end;
 
-procedure TxMatrix.SetRow(Row: Word; Value: TxVector);
+procedure TGLMat.SetRow(Row: Word; Value: TGLVec);
 var
   I: Integer;
 begin
@@ -721,7 +722,7 @@ begin
     FData[Row - 1, I] := Value.FData[I];
 end;
 
-class operator TxMatrix.Subtract(M1, M2: TxMatrix): TxMatrix;
+class operator TGLMat.Subtract(M1, M2: TGLMat): TGLMat;
 var
   I, J: Integer;
 begin
@@ -733,7 +734,7 @@ begin
       Result.FData[I, J] := M1.FData[I, J] - M2.FData[I, J];
 end;
 
-function TxMatrix.Trace: Extended;
+function TGLMat.Trace: Extended;
 var
   I: Integer;
 begin
@@ -744,7 +745,7 @@ begin
     Result := Result + FData[I, I];
 end;
 
-function TxMatrix.Transp: TxMatrix;
+function TGLMat.Transp: TGLMat;
 var
   I, J: Integer;
 begin
@@ -754,7 +755,7 @@ begin
       Result.FData[I, J] := FData[J, I];
 end;
 
-function TxMatrix.TruncateSTI: TxMatrix;
+function TGLMat.TruncateSTI: TGLMat;
 const
   Int32Max: Double = Integer.MaxValue;
   Int32Min: Double = Integer.MinValue;
@@ -777,34 +778,34 @@ end;
 
 
 //-----------------------------
-// TxVector
+// TGLVec
 //-----------------------------
 
-constructor TxVector.Create(V: TxBigMatrix);
+constructor TGLVec.Create(V: TGLBigMatrix);
 begin
   FCount := Length(V);
   FData := Copy(V);
 end;
 
-constructor TxVector.Create(ElementsCount: Word);
+constructor TGLVec.Create(ElementsCount: Word);
 begin
   FCount := ElementsCount;
   FData := nil;
   SetLength(FData, FCount);
 end;
 
-class operator TxVector.Add(V1, V2: TxVector): TxVector;
+class operator TGLVec.Add(V1, V2: TGLVec): TGLVec;
 var
   i: Integer;
 begin
   if (V1.FCount <> V2.FCount) then
     raise EMathError.Create(sWRONG_SIZE);
-  Result := TxVector.Create(V1.FCount);
+  Result := TGLVec.Create(V1.FCount);
   for i := 0 to V1.FCount - 1 do
     Result.FData[i] := V1.FData[i] + V2.FData[i];
 end;
 
-class operator TxVector.Add(V: TxVector; Scalar: Extended): TxVector;
+class operator TGLVec.Add(V: TGLVec; Scalar: Extended): TGLVec;
 var
   I: Integer;
 begin
@@ -813,18 +814,18 @@ begin
     Result.FData[I] := V.FData[I] + Scalar;
 end;
 
-class operator TxVector.Add(Scalar: Extended; V: TxVector): TxVector;
+class operator TGLVec.Add(Scalar: Extended; V: TGLVec): TGLVec;
 begin
   Result := V + Scalar;
 end;
 
-procedure TxVector.CheckUnique;
+procedure TGLVec.CheckUnique;
 begin
   if NotUnique(@FData) then
     FData := Copy(FData);
 end;
 
-class operator TxVector.Divide(V1, V2: TxVector): TxVector;
+class operator TGLVec.Divide(V1, V2: TGLVec): TGLVec;
 var
   I: Integer;
 begin
@@ -835,17 +836,17 @@ begin
     Result.FData[I] := V1.FData[I] / V2.FData[I];
 end;
 
-class operator TxVector.Divide(V: TxVector; Scalar: Extended): TxVector;
+class operator TGLVec.Divide(V: TGLVec; Scalar: Extended): TGLVec;
 begin
   Result := V * (1 / Scalar);
 end;
 
-class operator TxVector.Implicit(V: TxBigMatrix): TxVector;
+class operator TGLVec.Implicit(V: TGLBigMatrix): TGLVec;
 begin
   Result.Create(V);
 end;
 
-procedure TxVector.Fill(Value: Extended);
+procedure TGLVec.Fill(Value: Extended);
 var
   I: Integer;
 begin
@@ -859,14 +860,14 @@ begin
       FData[I] := Value;
 end;
 
-function TxVector.GetElement(Index: Word): Extended;
+function TGLVec.GetElement(Index: Word): Extended;
 begin
   if (Index = 0) or (Index > FCount) then
     raise EMathError.Create(sWRONG_ELEMENT);
   Result := FData[Pred(Index)];
 end;
 
-class operator TxVector.Multiply(V: TxVector; Scalar: Extended): TxVector;
+class operator TGLVec.Multiply(V: TGLVec; Scalar: Extended): TGLVec;
 var
   I: Integer;
 begin
@@ -875,17 +876,17 @@ begin
     Result.FData[I] := V.FData[I] * Scalar;
 end;
 
-class operator TxVector.Multiply(Scalar: Extended; V: TxVector): TxVector;
+class operator TGLVec.Multiply(Scalar: Extended; V: TGLVec): TGLVec;
 begin
   Result := V * Scalar;
 end;
 
-function TxVector.Norm: Extended;
+function TGLVec.Norm: Extended;
 begin
   Result := System.Math.Norm(FData);
 end;
 
-class operator TxVector.Multiply(V1, V2: TxVector): TxVector;
+class operator TGLVec.Multiply(V1, V2: TGLVec): TGLVec;
 begin
   if (V1.FCount <> 3) or (V2.FCount <> 3) then
     raise EMathError.Create(sWRONG_SIZE);
@@ -895,7 +896,7 @@ begin
   Result.FData[2] := V1.FData[0] * V2.FData[1] - V1.FData[1] * V2.FData[0];
 end;
 
-function TxVector.ScalarMult(V: TxVector): Extended;
+function TGLVec.ScalarMult(V: TGLVec): Extended;
 var
   I: Integer;
 begin
@@ -906,7 +907,7 @@ begin
     Result := Result + FData[I] * V.FData[I];
 end;
 
-procedure TxVector.SetElement(Index: Word; Value: Extended);
+procedure TGLVec.SetElement(Index: Word; Value: Extended);
 begin
   if (Index = 0) or (Index > FCount) then
     raise EMathError.Create(sWRONG_ELEMENT);
@@ -914,7 +915,7 @@ begin
   FData[Pred(Index)] := Value;
 end;
 
-class operator TxVector.Subtract(V1, V2: TxVector): TxVector;
+class operator TGLVec.Subtract(V1, V2: TGLVec): TGLVec;
 var
   I: Integer;
 begin
@@ -925,7 +926,7 @@ begin
     Result.FData[I] := V1.FData[I] - V2.FData[I];
 end;
 
-class operator TxVector.Subtract(Scalar: Extended; V: TxVector): TxVector;
+class operator TGLVec.Subtract(Scalar: Extended; V: TGLVec): TGLVec;
 var
   I: Integer;
 begin
@@ -934,7 +935,7 @@ begin
     Result.FData[I] := Scalar - V.FData[I];
 end;
 
-class operator TxVector.Subtract(V: TxVector; Scalar: Extended): TxVector;
+class operator TGLVec.Subtract(V: TGLVec; Scalar: Extended): TGLVec;
 var
   I: Integer;
 begin
@@ -943,17 +944,17 @@ begin
     Result.FData[I] := V.FData[I] - Scalar;
 end;
 
-function TxVector.SumOfElments: Extended;
+function TGLVec.SumOfElments: Extended;
 begin
   Result := Sum(FData);
 end;
 
-function TxVector.SumOfSquares: Extended;
+function TGLVec.SumOfSquares: Extended;
 begin
   Result := System.Math.SumOfSquares(FData);
 end;
 
-function TxVector.ToQuat: TxQuaternion;
+function TGLVec.ToQuat: TGLQuat;
 var
   ModVec: Extended;
   C1, C2: Extended;
@@ -969,7 +970,7 @@ begin
   Result := [C1, FData[0] * C2, FData[1] * C2, FData[2] * C2];
 end;
 
-function TxVector.TruncateSTI: TxVector;
+function TGLVec.TruncateSTI: TGLVec;
 const
   Int32Max: Double = Integer.MaxValue;
   Int32Min: Double = Integer.MinValue;
@@ -990,10 +991,10 @@ begin
 end;
 
 //-----------------------------
-// TxQuatHelper
+// TGLQuatHelper
 //-----------------------------
 
-function TxQuatHelper.ToMatrix: TxMatrix;
+function TGLQuatHelper.ToMatrix: TGLMat;
 begin
   Result.Create(3, 3);
   Result[1, 1] := Sqr(FData[0]) + Sqr(FData[1]) - Sqr(FData[2]) - Sqr(FData[3]);
@@ -1008,10 +1009,10 @@ begin
 end;
 
 //-----------------------------
-// TxVecHelper
+// TGLVecHelper
 //-----------------------------
 
-function TxVecHelper.ToDiagMatrix: TxMatrix;
+function TGLVecHelper.ToDiagMatrix: TGLMat;
 var
   I: Integer;
 begin
@@ -1024,8 +1025,8 @@ procedure Init(Obj, TypeInfoOfObj: Pointer; Offset: Integer = 0);
 const
   DefaultRowCount = 3;
   DefaultColCount = 3;
-  VectorTypeName = 'TGLVector';
-  MatrixTypeName = 'TGLMatrix';
+  VectorTypeName = 'TGLVec';
+  MatrixTypeName = 'TGLMat';
 var
   RTTIContext: TRttiContext;
   Field : TRttiField;
@@ -1043,8 +1044,8 @@ begin
       ColCount := DefaultColCount;
       for Dim in Field.GetAttributes do
       begin
-        RowCount := (Dim as TxDim).RowCount;
-        ColCount := (Dim as TxDim).ColCount;
+        RowCount := (Dim as TGLDim).RowCount;
+        ColCount := (Dim as TGLDim).ColCount;
       end;
       if Field.FieldType.TypeKind = tkArray then
       begin
@@ -1055,15 +1056,15 @@ begin
           begin
             OffsetFromArray := I * ArrFld.ElementType.TypeSize;
             if ArrFld.ElementType.Name = VectorTypeName then
-              PxVector(Integer(Obj) +
+              PGLVec(Integer(Obj) +
                       Field.Offset +
                       OffsetFromArray +
-                      Offset)^ := TxVector.Create(RowCount)
+                      Offset)^ := TGLVec.Create(RowCount)
             else if ArrFld.ElementType.Name = MatrixTypeName then
-              PxMatrix(Integer(Obj) +
+              PGLMat(Integer(Obj) +
                       Field.Offset +
                       OffsetFromArray +
-                      Offset)^ := TxMatrix.Create(RowCount, ColCount)
+                      Offset)^ := TGLMat.Create(RowCount, ColCount)
             else
               Init(Obj, ArrFld.ElementType.Handle, Field.Offset + OffsetFromArray);
           end;
@@ -1072,13 +1073,13 @@ begin
       else if Field.FieldType.TypeKind = tkRecord then
       begin
         if Field.FieldType.Name = VectorTypeName then
-          PxVector(Integer(Obj) +
+          PGLVec(Integer(Obj) +
                   Field.Offset +
-                  Offset)^ := TxVector.Create(RowCount)
+                  Offset)^ := TGLVec.Create(RowCount)
         else if Field.FieldType.Name = MatrixTypeName then
-          PxMatrix(Integer(Obj) +
+          PGLMat(Integer(Obj) +
                   Field.Offset +
-                  Offset)^ := TxMatrix.Create(RowCount, ColCount)
+                  Offset)^ := TGLMat.Create(RowCount, ColCount)
         else
           Init(Obj, Field.FieldType.Handle, Field.Offset)
       end;
@@ -1087,10 +1088,10 @@ begin
 end;
 
 //-----------------------------
-// TxDim
+// TGLDim
 //-----------------------------
 
-constructor TxDim.Create(ARowCount: Integer; AColCount: Integer = 0);
+constructor TGLDim.Create(ARowCount: Integer; AColCount: Integer = 0);
 begin
   FRowCount := ARowCount;
   FColCount := AColCount;
@@ -1098,84 +1099,84 @@ end;
 
 
 //-----------------------------
-// TxPoint2D
+// TGLPoint2D
 //-----------------------------
 
-function TxPoint2D.Create(X, Y : Extended): TxPoint2D;
+function TGLPoint2D.Create(X, Y : Extended): TGLPoint2D;
 begin
   Result.X := X;
   Result.Y := Y;
 end;
 
-procedure TxPoint2D.SetPosition(const X, Y: Extended);
+procedure TGLPoint2D.SetPosition(const X, Y: Extended);
 begin
   Self.X := X;
   Self.Y := Y;
 end;
 
-function TxPoint2D.Length: Extended;
+function TGLPoint2D.Length: Extended;
 begin
   Result := Sqrt(Self.X * Self.X + Self.Y * Self.Y);
 end;
 
-function TxPoint2D.Add(const APoint2D: TxPoint2D): TxPoint2D;
+function TGLPoint2D.Add(const APoint2D: TGLPoint2D): TGLPoint2D;
 begin
   Result.SetPosition(Self.X + APoint2D.X, Self.Y + APoint2D.Y);
 end;
 
-function TxPoint2D.Distance(const APoint2D: TxPoint2D): Extended;
+function TGLPoint2D.Distance(const APoint2D: TGLPoint2D): Extended;
 begin
   Result := Sqrt(Sqr(Self.X - APoint2D.X) +  Sqr(Self.Y - APoint2D.Y));
 end;
 
-procedure TxPoint2D.Offset(const ADeltaX, ADeltaY: Extended);
+procedure TGLPoint2D.Offset(const ADeltaX, ADeltaY: Extended);
 begin
   Self.X := Self.X + ADeltaX;
   Self.Y := Self.Y + ADeltaY;
 end;
 
-class function TxPoint2D.PointInCircle(const Point, Center: TxPoint2D;
+class function TGLPoint2D.PointInCircle(const Point, Center: TGLPoint2D;
   const Radius: Integer): Boolean;
 begin
   Result := Point.Distance(Center) <= Radius;
 end;
 
 //-----------------------------
-// TxPoint3D
+// TGLPoint3D
 //-----------------------------
 
-function TxPoint3D.Create(X, Y, Z: Extended): TxPoint3D;
+function TGLPoint3D.Create(X, Y, Z: Extended): TGLPoint3D;
 begin
   Result.X := X;
   Result.Y := Y;
   Result.Z := Z;
 end;
 
-function TxPoint3D.Add(const AGLPoint3D: TxPoint3D): TxPoint3D;
+function TGLPoint3D.Add(const AGLPoint3D: TGLPoint3D): TGLPoint3D;
 begin
   Result.X := Self.X + AGLPoint3D.X;
   Result.Y := Self.Y + AGLPoint3D.Y;
   Result.Z := Self.Z + AGLPoint3D.Z;
 end;
 
-function TxPoint3D.Distance(const APoint3D: TxPoint3D): Extended;
+function TGLPoint3D.Distance(const APoint3D: TGLPoint3D): Extended;
 begin
   Result := Self.Length - APoint3D.Length;
 end;
 
-function TxPoint3D.Length: Single;
+function TGLPoint3D.Length: Single;
 begin
   Result := Sqrt(Self.X * Self.X + Self.Y * Self.Y + Self.Z * Self.Z);
 end;
 
-procedure TxPoint3D.Offset(const ADeltaX, ADeltaY, ADeltaZ: Extended);
+procedure TGLPoint3D.Offset(const ADeltaX, ADeltaY, ADeltaZ: Extended);
 begin
   Self.X := Self.X + ADeltaX;
   Self.Y := Self.Y + ADeltaY;
   Self.Z := Self.Z + ADeltaZ;
 end;
 
-procedure TxPoint3D.SetPosition(const X, Y, Z: Extended);
+procedure TGLPoint3D.SetPosition(const X, Y, Z: Extended);
 begin
   Self.X := X;
   Self.Y := Y;
@@ -1183,46 +1184,46 @@ begin
 end;
 
 //-----------------------------
-// TxVector2D
+// TGLVec2D
 //-----------------------------
 
-function TxVector2D.Create(const AX, AY, AW: Single): TxVector2D;
+function TGLVec2D.Create(const AX, AY, AW: Single): TGLVec2D;
 begin
   Result.X := AX;
   Result.Y := AY;
   Result.W := AW;
 end;
 
-function TxVector2D.CrossProduct(const AVector: TxVector2D): TxVector2D;
+function TGLVec2D.CrossProduct(const AVector: TGLVec2D): TGLVec2D;
 begin
   Result.X := (Self.Y * AVector.W) - (Self.W * AVector.Y);
   Result.Y := (Self.W * AVector.X) - (Self.X * AVector.W);
   Result.W := (Self.X * AVector.Y) - (Self.Y * AVector.X);
 end;
 
-function TxVector2D.DotProduct(const AVector: TxVector2D): Extended;
+function TGLVec2D.DotProduct(const AVector: TGLVec2D): Extended;
 begin
   Result := (Self.X * AVector.X) + (Self.Y * AVector.Y) + (Self.W * AVector.W);
 end;
 
-function TxVector2D.Add(const AVector2D: TxVector2D): TxVector2D;
+function TGLVec2D.Add(const AVector2D: TGLVec2D): TGLVec2D;
 begin
   Result.X := Self.X + AVector2D.X;
   Result.Y := Self.Y + AVector2D.Y;
   Result.W := 1.0;
 end;
 
-function TxVector2D.Length: Extended;
+function TGLVec2D.Length: Extended;
 begin
   Result := Sqrt((Self.X * Self.X) + (Self.Y * Self.Y));
 end;
 
-function TxVector2D.Norm: Extended;
+function TGLVec2D.Norm: Extended;
 begin
   Result := Sqr(Self.X) + Sqr(Self.Y);
 end;
 
-function TxVector2D.Normalize: TxVector2D;
+function TGLVec2D.Normalize: TGLVec2D;
 var
   invLen: Single;
   vn: Single;
@@ -1241,9 +1242,9 @@ begin
 end;
 
 //---------------------------------
-// TxVector3D
+// TGLVec3D
 //---------------------------------
-function TxVector3D.Create(const AX, AY, AZ, AW: Single): TxVector3D;
+function TGLVec3D.Create(const AX, AY, AZ, AW: Single): TGLVec3D;
 begin
   Result.X := AX;
   Result.Y := AY;
@@ -1251,7 +1252,7 @@ begin
   Result.W := AW;
 end;
 
-function TxVector3D.Add(const AVector3D: TxVector3D): TxVector3D;
+function TGLVec3D.Add(const AVector3D: TGLVec3D): TGLVec3D;
 begin
   Result.X := Self.X + AVector3D.X;
   Result.Y := Self.Y + AVector3D.Y;
@@ -1259,12 +1260,12 @@ begin
   Result.W := 1.0;
 end;
 
-function TxVector3D.Norm: Single;
+function TGLVec3D.Norm: Single;
 begin
   result := Self.X * Self.X + Self.Y * Self.Y + Self.Z * Self.Z;
 end;
 
-function TxVector3D.Normalize: TxVector3D;
+function TGLVec3D.Normalize: TGLVec3D;
 var
   invLen: Single;
   vn: Single;
@@ -1284,59 +1285,59 @@ begin
     Result := Self;
 end;
 
-function TxVector3D.DotProduct(const AVector3D: TVector3D): Single;
+function TGLVec3D.DotProduct(const AVector3D: TVector3D): Single;
 begin
   Result := (Self.X * AVector3D.X) + (Self.Y * AVector3D.Y) + (Self.Z * AVector3D.Z);
 end;
 
-function TxVector3D.CrossProduct(const AVector3D: TVector3D): TVector3D;
+function TGLVec3D.CrossProduct(const AVector3D: TVector3D): TVector3D;
 begin
   Result.X := (Self.Y * AVector3D.Z) - (Self.Z * AVector3D.Y);
   Result.Y := (Self.Z * AVector3D.X) - (Self.X * AVector3D.Z);
   Result.Z := (Self.X * AVector3D.Y) - (Self.Y * AVector3D.X);
 end;
 
-function TxVector3D.Length: Single;
+function TGLVec3D.Length: Single;
 begin
   Result := Sqrt((Self.X * Self.X) + (Self.Y * Self.Y) + (Self.Z * Self.Z));
 end;
 
 //---------------------------------
-// TxQuaternion
+// TGLQuat
 //---------------------------------
 
-function TxQuaternion.GetElement(Index: Byte): Extended;
+function TGLQuat.GetElement(Index: Byte): Extended;
 begin
   if (Index > 3) then
     raise EMathError.Create(sWRONG_ELEMENT);
   Result := FData[Index];
 end;
 
-class operator TxQuaternion.Implicit(V: TxBigMatrix): TxQuaternion;
+class operator TGLQuat.Implicit(V: TGLBigMatrix): TGLQuat;
 begin
   if (Length(V) <> 4) then
     raise EMathError.Create(sWRONG_SIZE);
   Move(V[0], Result.FData, SizeOf(Result.FData));
 end;
 
-function TxQuaternion.Inv: TxQuaternion;
+function TGLQuat.Inv: TGLQuat;
 begin
     Result := [FData[0], -FData[1], -FData[2], -FData[3]];
 end;
 
-class operator TxQuaternion.Multiply(Scalar: Extended; Q: TxQuaternion): TxQuaternion;
+class operator TGLQuat.Multiply(Scalar: Extended; Q: TGLQuat): TGLQuat;
 begin
   Result := Q * Scalar;
 end;
 
-class operator TxQuaternion.Multiply(Q: TxQuaternion; Sc: Extended): TxQuaternion;
+class operator TGLQuat.Multiply(Q: TGLQuat; Sc: Extended): TGLQuat;
 begin
   Result := [Q.FData[0] * Sc, Q.FData[1] * Sc, Q.FData[2] * Sc, Q.FData[3] * Sc];
 end;
 
-class operator TxQuaternion.Multiply(Q1, Q2: TxQuaternion): TxQuaternion;
+class operator TGLQuat.Multiply(Q1, Q2: TGLQuat): TGLQuat;
 var
-  Mat: TxMatrix;
+  Mat: TGLMat;
 begin
   Mat := [[Q1.FData[0], -Q1.FData[1], -Q1.FData[2], -Q1.FData[3]],
           [Q1.FData[1],  Q1.FData[0], -Q1.FData[3],  Q1.FData[2]],
@@ -1345,21 +1346,21 @@ begin
   Result := Mat * Q2;
 end;
 
-constructor TxQuaternion.Create(Q: TxBigMatrix);
+constructor TGLQuat.Create(Q: TGLBigMatrix);
 begin
   if Length(Q) <> 4 then
     raise EMathError.Create(sWRONG_SIZE);
   Move(Q[0], FData[0], SizeOf(FData));
 end;
 
-procedure TxQuaternion.SetElement(Index: Byte; Value: Extended);
+procedure TGLQuat.SetElement(Index: Byte; Value: Extended);
 begin
   if (Index > 3) then
     raise EMathError.Create(sWRONG_ELEMENT);
   FData[Index] := Value;
 end;
 
-function TxQuaternion.TruncateSTI: TxQuaternion;
+function TGLQuat.TruncateSTI: TGLQuat;
 const
   Int32Max: Double = Integer.MaxValue;
   Int32Min: Double = Integer.MinValue;

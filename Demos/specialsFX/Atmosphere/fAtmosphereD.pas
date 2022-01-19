@@ -35,8 +35,8 @@ type
     GLLensFlare1: TGLLensFlare;
     GLCadencer1: TGLCadencer;
     GLLightSource1: TGLLightSource;
-    GLSphere1:  TGLSphere;
-    GLDummyCube1: TGLDummyCube;
+    Planet: TGLSphere;
+    dcPlanet: TGLDummyCube;
     Not_a_planet: TGLSphere;
     CameraTarget: TGLDummyCube;
     GLSkyDome1: TGLSkyDome;
@@ -54,11 +54,11 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    Button6: TButton;
     Button8: TButton;
+    AtmosphereUpper: TGLAtmosphere;
+    rgAtmosphere: TRadioGroup;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
@@ -69,11 +69,15 @@ type
     procedure Button10Click(Sender: TObject);
     procedure GLCadencer1Progress(Sender: TObject; const deltaTime,
       newTime: Double);
+    procedure rgAtmosphereClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+  private
+    AtmosphereLower:  TGLAtmosphere;
   end;
 
 var
   FormAtmosphere:  TFormAtmosphere;
-  Atmosphere:  TGLAtmosphere;
+
 
 implementation
 
@@ -81,54 +85,79 @@ implementation
 
 procedure TFormAtmosphere.FormCreate(Sender: TObject);
 begin
-  Atmosphere := TGLAtmosphere.CreateAsChild(GLDummyCube1);
-  Atmosphere.Sun := glLensFlare1;
-  Atmosphere.SetOptimalAtmosphere2(GLSphere1.Radius);
+
+  AtmosphereLower := TGLAtmosphere.CreateAsChild(dcPlanet);
+  AtmosphereLower.Sun := GLLensFlare1;
+  AtmosphereLower.PlanetRadius := 3.4;
+  AtmosphereLower.AtmosphereRadius := 3.8;
+  AtmosphereLower.SetOptimalAtmosphere(Planet.Radius);
+  AtmosphereLower.Opacity := 1.2;
 
   GLSkyDome1.Bands.Clear;
   GLSkyDome1.Stars.AddRandomStars(5000, ConvertColorVector(clrWhite));
 end;
 
-
-procedure TFormAtmosphere.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TFormAtmosphere.rgAtmosphereClick(Sender: TObject);
 begin
-  Atmosphere.Free;
+  case rgAtmosphere.ItemIndex of
+    0:
+    begin
+      AtmosphereUpper.Visible := True;
+      AtmosphereLower.Visible := True;
+    end;
+    1:
+    begin
+      AtmosphereUpper.Visible := False;
+      AtmosphereLower.Visible := True;
+    end;
+    2:
+    begin
+      AtmosphereUpper.Visible := True;
+      AtmosphereLower.Visible := False;
+    end
+    else
+    begin
+      AtmosphereUpper.Visible := False;
+      AtmosphereLower.Visible := False;
+    end;
+   end;
 end;
 
 
 procedure TFormAtmosphere.Button1Click(Sender: TObject);
 begin
-  GLSphere1.Roll(10);
+  GLCadencer1.Enabled := not GLCadencer1.Enabled;
 end;
 
 procedure TFormAtmosphere.Button2Click(Sender: TObject);
 begin
-  glLensFlare1.Slide(0.8);
+  GLLensFlare1.Slide(0.8);
 end;
 
 procedure TFormAtmosphere.Button3Click(Sender: TObject);
 begin
-  glLensFlare1.Slide(-0.8);
+  GLLensFlare1.Slide(-0.8);
 end;
 
 procedure TFormAtmosphere.Button4Click(Sender: TObject);
 begin
-  GLDummyCube1.Slide(-0.5);
+  dcPlanet.Slide(-0.5);
 end;
 
 procedure TFormAtmosphere.Button5Click(Sender: TObject);
 begin
-  GLDummyCube1.Slide(0.5);
+  dcPlanet.Slide(0.5);
 end;
 
 procedure TFormAtmosphere.Button6Click(Sender: TObject);
 begin
-  Atmosphere.Visible := not Atmosphere.Visible;
+  AtmosphereLower.Visible := not AtmosphereLower.Visible;
+  AtmosphereUpper.Visible := not AtmosphereUpper.Visible;
 end;
 
 procedure TFormAtmosphere.Button8Click(Sender: TObject);
 begin
-  Atmosphere.TogleBlendingMode;
+  AtmosphereLower.TogleBlendingMode;
 end;
 
 procedure TFormAtmosphere.Button10Click(Sender: TObject);
@@ -144,7 +173,13 @@ end;
 procedure TFormAtmosphere.GLCadencer1Progress(Sender: TObject; const deltaTime,
   newTime: Double);
 begin
+  Planet.Turn(deltaTime *20);
   GLSceneViewer1.Invalidate;
+end;
+
+procedure TFormAtmosphere.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  AtmosphereLower.Free;
 end;
 
 end.

@@ -1,7 +1,6 @@
 ﻿//
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.SkyDome;
 
 (* Skydome object *)
@@ -163,13 +162,13 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
   published
-      {Right Ascension, in degrees. }
+    // Right Ascension, in degrees.
     property RA: Single read FRA write FRA;
-    {Declination, in degrees. }
+    // Declination, in degrees.
     property Dec: Single read FDec write FDec;
-    {Absolute magnitude. }
+    // Absolute magnitude.
     property Magnitude: Single read FMagnitude write FMagnitude;
-    {Color of the star. }
+    // Color of the star.
     property Color: TColor read FColor write FColor;
   end;
 
@@ -205,10 +204,7 @@ type
      depth buffering and overwrites everything. All children of a skydome
      are rendered in the skydome's coordinate system.
      The skydome is described by "bands", each "band" is an horizontal cut
-     of a sphere, and you can have as many bands as you wish.
-     Estimated CPU cost (K7-500, GeForce SDR, default bands):
-     800x600 fullscreen filled: 4.5 ms (220 FPS, worst case)
-      Geometry cost (0% fill): 0.7 ms (1300 FPS, best case) *)
+     of a sphere, and you can have as many bands as you wish *)
   TGLSkyDome = class(TGLCameraInvariantObject)
   private
     FOptions: TGLSkyDomeOptions;
@@ -235,7 +231,7 @@ type
   (* Render a skydome like what can be seen on earth.
      Color is based on sun position and turbidity, to "mimic" atmospheric
      Rayleigh and Mie scatterings. The colors can be adjusted to render
-     weird/extra-terrestrial atmospheres too.
+     weird/exoplanet atmospheres too.
      The default slices/stacks values make for an average quality rendering,
      for a very clean rendering, use 64/64 (more is overkill in most cases).
      The complexity is quite high though, making a T&L 3D board a necessity

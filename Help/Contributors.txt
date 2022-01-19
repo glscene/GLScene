@@ -1,4 +1,4 @@
-GLScene Development Team
+GLScene's
 Developers and contributors
 
 ===========================
@@ -26,7 +26,6 @@ Ivan Lee Herring,
 Jerome Delauney,
 Joen A. Joensen,
 Joen Joensen,
-Kapitan,
 Kenneth Poulter,
 Lionel Reynaud,
 Lord Crc,
@@ -54,4 +53,3 @@ Stuart Gooding,
 Uwe Raabe,
 YarUnderoaker,
 Zsolt Laky
-

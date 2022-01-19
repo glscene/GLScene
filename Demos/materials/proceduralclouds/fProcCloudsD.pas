@@ -145,7 +145,7 @@ begin
     begin
       try
         AssignFile(outfile, CloudFileUsedEdit.Text);
-        { File selected in dialog box }
+        // File selected in dialog box
         Reset(outfile);
         Readln(outfile, s { 'Cloud Base V1.0' } );
         For i := 0 to 255 do

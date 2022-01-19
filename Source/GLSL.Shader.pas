@@ -238,6 +238,8 @@ begin
 
           if (not FGLSLProg.LinkProgram) then
             raise EGLSLShaderException.Create(FGLSLProg.InfoLog);
+
+          FGLSLProg.DetachAllObject;  // Detach shaders after linking. 
         end;
         FGLSLProg.NotifyDataUpdated;
       end;

@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.GeometryBB;
 
 (* Calculations and manipulations on Bounding Boxes *)
@@ -40,7 +39,7 @@ type
     Radius: Single;
   end;
 
-  TClipRect = record
+  TGLClipRect = record
     Left, Top: Single;
     Right, Bottom: Single;
   end;
@@ -178,10 +177,10 @@ function ClipToAABB(const V: TAffineVector; const AABB: TAABB): TAffineVector;
 function BSphereIntersectsBSphere(const MainBSphere, TestBSphere: TBSphere): Boolean;
 
 // Extend the clip rect to include given coordinate. 
-procedure IncludeInClipRect(var ClipRect: TClipRect; X, Y: Single);
-// Projects an AABB and determines the extent of its projection as a clip rect. 
+procedure IncludeInClipRect(var ClipRect: TGLClipRect; X, Y: Single);
+// Projects an AABB and determines the extent of its projection as a clip rect.
 function AABBToClipRect(const Aabb: TAABB; const ModelViewProjection: TGLMatrix;
-  ViewportSizeX, ViewportSizeY: Integer): TClipRect;
+  ViewportSizeX, ViewportSizeY: Integer): TGLClipRect;
 
 // Finds the intersection between a ray and an axis aligned bounding box. 
 function RayCastAABBIntersect(const RayOrigin, RayDirection: TGLVector;
@@ -1273,7 +1272,7 @@ begin
     Result.Z := AABB.Max.Z;
 end;
 
-procedure IncludeInClipRect(var ClipRect: TClipRect; X, Y: Single);
+procedure IncludeInClipRect(var ClipRect: TGLClipRect; X, Y: Single);
 begin
   with ClipRect do
   begin
@@ -1289,7 +1288,7 @@ begin
 end;
 
 function AABBToClipRect(const Aabb: TAABB; const ModelViewProjection: TGLMatrix;
-  ViewportSizeX, ViewportSizeY: Integer): TClipRect;
+  ViewportSizeX, ViewportSizeY: Integer): TGLClipRect;
 var
   I: Integer;
   V, Vt: TGLVector;

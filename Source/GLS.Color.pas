@@ -23,7 +23,7 @@ uses
   GLS.BaseClasses;
 
 type
-  PColorVector = ^TGLColorVector;
+  PGLColorVector = ^TGLColorVector;
   TGLColorVector = TVector4f;
 
   PRGBColor = ^TRGBColor;
@@ -33,7 +33,7 @@ type
   TGLColor = class(TGLUpdateAbleObject)
   private
     FColor: TGLColorVector;
-    FPDefaultColor: PColorVector;
+    FPDefaultColor: PGLColorVector;
     procedure SetColorVector(const aColor: TGLColorVector); overload;
     procedure SetColorComponent(index: Integer; value: Single);
     function GetColorComponent(const index: Integer): Single;

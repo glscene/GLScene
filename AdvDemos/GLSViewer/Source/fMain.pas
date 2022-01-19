@@ -137,7 +137,7 @@ type
     AsyncTimer: TGLAsyncTimer;
     dcWorld: TGLDummyCube;
     grdXYZ: TGLXYZGrid;
-    acNaviCube: TAction;
+    acToolsNaviCube: TAction;
     GLPoints: TGLPoints;
     acToolsInfo: TAction;
     GLSimpleNavigation: TGLSimpleNavigation;
@@ -188,7 +188,7 @@ type
     procedure acViewZoomInExecute(Sender: TObject);
     procedure acPointsExecute(Sender: TObject);
     procedure AsyncTimerTimer(Sender: TObject);
-    procedure acNaviCubeExecute(Sender: TObject);
+    procedure acToolsNaviCubeExecute(Sender: TObject);
     procedure acToolsInfoExecute(Sender: TObject);
     procedure snViewerMouseLeave(Sender: TObject);
   private
@@ -298,7 +298,7 @@ end;
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   inherited;
-  SetCurrentDir(ExtractFilePath(ParamStr(0)));
+ // SetCurrentDir(ExtractFilePath(ParamStr(0)));
   SetGLSceneMediaDir();
 
   NaviCube := TGLNaviCube.CreateAsChild(Scene.Objects);
@@ -572,7 +572,6 @@ end;
 
 procedure TMainForm.AsyncTimerTimer(Sender: TObject);
 begin
-  Caption := 'NaviCube: ' + snViewer.FramesPerSecondText(2);
   snViewer.ResetPerformanceMonitor;
 end;
 
@@ -587,7 +586,7 @@ begin
   begin
     Timer.Enabled := False;
     Cadencer.Enabled := False;
-    StatusBar.Panels[3].Text := ' FPS';
+//    StatusBar.Panels[3].Text := ' FPS';
   end;
 end;
 
@@ -614,11 +613,12 @@ end;
 procedure TMainForm.DoOpen(const FileName: String);
 var
   min, max: TAffineVector;
+  Name: TFileName;
 begin
   if not FileExists(FileName) then
     Exit;
   Screen.Cursor := crHourGlass;
-  Caption := 'GLSViewer - ' + FileName;
+  MainForm.Caption := 'GLSViewer - ' + FileName;
   MaterialLib.Materials.Clear;
   ffObject.MeshObjects.Clear;
   ffObject.LoadFromFile(FileName);
@@ -635,7 +635,8 @@ begin
   StatusBar.Panels[0].Text := 'X: ' + ' ';
   StatusBar.Panels[1].Text := 'Y: ' + ' ';
   StatusBar.Panels[2].Text := 'Z: ' + ' ';
-
+  Name := ExtractFileName(FileName);
+  StatusBar.Panels[3].Text := Name;
   DoResetCamera;
 end;
 
@@ -939,6 +940,23 @@ begin
     ApplyTexturing;
 end;
 
+procedure TMainForm.acToolsNaviCubeExecute(Sender: TObject);
+begin
+  acToolsNaviCube.Checked := not acToolsNaviCube.Checked;
+  if acToolsNaviCube.Checked = True then
+  begin
+    NaviCube.Visible := True;
+    Cadencer.Enabled := True;
+  end
+  else
+  begin
+    NaviCube.Visible := False;
+    Cadencer.Enabled := False;
+  end;
+  snViewer.Invalidate;
+end;
+
+
 // Show Base and Additional Objects
 procedure TMainForm.acPointsExecute(Sender: TObject);
 var
@@ -958,15 +976,44 @@ begin
     Color.Y := Random();
     Color.Z := Random();
 
-    X := Random(50) - 25;
-    Y := Random(50) - 25;
-    Z := Random(50) - 25;
+    X := Random(100) - 50;
+    Y := Random(100) - 50;
+    Z := Random(100) - 50;
 
     GLPoints.Positions.Add(X * 0.05, Y * 0.05, Z * 0.05);
     // Fill array of GLPoints
     GLPoints.Colors.AddPoint(Color);
   end;
+//  dcWorld.Remove(GLPoints, False);
+//  GLPoints := TGLPoints(dcWorld.AddNewChild(TGLPoints));
 end;
+
+(*
+procedure TMainForm.acDeletePoints(Sender: TObject);
+var
+  I: Integer;
+  Color: TVector3f;
+  NumPoints: Integer;
+  X, Y, Z: Single;
+
+begin
+  NumPoints := 10000;
+  GLPoints := TGLPoints(dcWorld.AddNewChild(TGLPoints));
+  for I := 0 to NumPoints - 1 do
+  begin
+    Color.X := Random();
+    Color.Y := Random();
+    Color.Z := Random();
+
+    X := Random(100) - 50;
+    Y := Random(100) - 50;
+    Z := Random(100) - 50;
+
+    GLPoints.Positions.Add(X * 0.05, Y * 0.05, Z * 0.05);
+    // Fill array of GLPoints
+  end;
+end;
+*)
 
 procedure TMainForm.CadencerProgress(Sender: TObject;
   const deltaTime, newTime: Double);
@@ -984,23 +1031,9 @@ begin
     snViewer.Invalidate;
 end;
 
-procedure TMainForm.acNaviCubeExecute(Sender: TObject);
-begin
-  acNaviCube.Checked := not acNaviCube.Checked;
-  if acNaviCube.Checked = True then
-  begin
-    Cadencer.Enabled := True;
-  end
-  else
-  begin
-    snViewer.Refresh;
-    Cadencer.Enabled := False;
-  end;
-end;
-
 procedure TMainForm.TimerTimer(Sender: TObject);
 begin
-  StatusBar.Panels[3].Text := Format('%.1f  FPS', [snViewer.FramesPerSecond]);
+//  StatusBar.Panels[3].Text := Format('%.1f  FPS', [snViewer.FramesPerSecond]);
   snViewer.ResetPerformanceMonitor;
 end;
 
@@ -1008,19 +1041,12 @@ procedure TMainForm.ReadIniFile;
 begin
   inherited;
   IniFile := TIniFile.Create(ChangeFileExt(ParamStr(0), '.ini'));
-  with IniFile do
-    try
-      Top := ReadInteger(Name, 'Top', 100);
-      Left := ReadInteger(Name, 'Left', 200);
-      {
-        if ReadBool(Name, 'InitMax', False) then
-        WindowState := wsMaximized
-        else
-        WindowState := wsNormal;
-      }
-    finally
-      IniFile.Free;
-    end;
+  try
+    Top := IniFile.ReadInteger(Name, 'Top', 100);
+    Left := IniFile.ReadInteger(Name, 'Left', 200);
+  finally
+    IniFile.Free;
+  end;
 end;
 
 procedure TMainForm.WriteIniFile;

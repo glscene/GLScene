@@ -73,7 +73,7 @@ object FormCustomQuad: TFormCustomQuad
       Top = 136
     end
   end
-  object GLMaterialLibrary: TGLMaterialLibrary
+  object MatLib: TGLMaterialLibrary
     Left = 192
     Top = 8
   end

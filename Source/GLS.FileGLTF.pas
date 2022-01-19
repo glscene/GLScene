@@ -3,7 +3,7 @@
 //
 unit GLS.FileGLTF;
 
-(* GLB binary file for glTF format implementation. *)
+(* glTF/GLB formats implementation. *)
 
 interface
 
@@ -18,10 +18,12 @@ uses
   GLS.VectorTypes,
   GLS.VectorLists,
   GLS.VectorGeometry,
-  GLS.Material;
+  GLS.Material,
+
+  PasGLTF;
 
 type
-  (* The GLB binary glTF format is a runtime asset delivery format
+  (* The glTF format is a runtime asset delivery format
     for GL APIs: WebGL, OpenGL ES OpenGL and Vulkan. *)
   TGLTFVectorFile = class(TGLVectorFile)
   public

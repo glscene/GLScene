@@ -33,6 +33,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 
    // Load Texture of ground disk for Persistant Image
    Disk1->Material->Texture->Image->LoadFromFile("clover.jpg");
+   Disk1->Material->Texture->Disabled = false;
 
 
    // Load Actor into GLScene

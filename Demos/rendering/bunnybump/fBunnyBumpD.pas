@@ -38,7 +38,7 @@ type
     GLSceneViewer1: TGLSceneViewer;
     GLScene1: TGLScene;
     GLCadencer1: TGLCadencer;
-    GLMaterialLibrary1: TGLMaterialLibrary;
+    MatLib: TGLMaterialLibrary;
     Camera: TGLCamera;
     WhiteLight: TGLLightSource;
     RedLight: TGLLightSource;
@@ -100,10 +100,12 @@ begin
   ffBunny.LoadFromFile('Models\bunny.glsm');
 //  ffBunny.LoadFromFile('bunny.obj');
   ffBunny.Scale.Scale(2 / ffBunny.BoundingSphereRadius);
+  ffBunny.RollAngle := 90;
+  ffBunny.TurnAngle := 90;
+
 
   // Load the normal map
-  with GLMaterialLibrary1.Materials[0].Material.Texture.Image do
-    LoadFromFile('bunnynormals.jpg');
+  MatLib.Materials[0].Material.Texture.Image.LoadFromFile('bunnynormals.jpg');
 
   // Link the lights to their toggles
   cbWhite.Tag := Integer(WhiteLight);
@@ -114,7 +116,7 @@ begin
   ShapeBlue.Tag := Integer(BlueLight);
 
   ComboBox1.ItemIndex := 0;
-  ComboBox1Change(nil);
+  ComboBox1Change(Self);
 
   StartHeight := Height;
 end;

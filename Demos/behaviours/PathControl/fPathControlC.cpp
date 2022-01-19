@@ -39,7 +39,7 @@ void __fastcall TFormPathControl::FormActivate(TObject *Sender) {
 	TGLPathNode *Node;
 
 	// Create a movement, a path and the first node of the path.
-	Movement = GetOrCreateMovement(Cube2);
+	Movement = GetOrCreateMovement(Cube);
 	// Movement->OnPathTravelStop = PathTravelStop();
 	// Movement->OnAllPathTravelledOver = PathAllTravelledOver();
 	Path = Movement->AddPath();
@@ -48,7 +48,7 @@ void __fastcall TFormPathControl::FormActivate(TObject *Sender) {
 	// Path.StartTime := 2;
 	// Path.Looped := True;
 
-	Node = Path->AddNodeFromObject(Cube2);
+	Node = Path->AddNodeFromObject(Cube);
 	Node->Speed = 4.0;
 
 	// Add a node.
@@ -84,7 +84,7 @@ void __fastcall TFormPathControl::FormActivate(TObject *Sender) {
 void __fastcall TFormPathControl::MoveBtnClick(TObject *Sender) {
 	TGLMovement *Movement;
 
-	Movement = GetMovement(Cube2);
+	Movement = GetMovement(Cube);
 	if (Movement) {
 		Movement->StartPathTravel();
 		GLCadencer1->Enabled = true;

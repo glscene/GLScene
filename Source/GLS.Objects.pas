@@ -550,8 +550,8 @@ type
       write SetNormalDirection default ndOutside;
   end;
 
-  TAngleLimit1 = -90 .. 90;
-  TAngleLimit2 = 0 .. 360;
+  TGLAngleLimit180 = -90 .. 90;
+  TGLAngleLimit360 = 0 .. 360;
   TGLCapType = (ctNone, ctCenter, ctFlat);
 
   (* A sphere object.
@@ -562,19 +562,19 @@ type
   private
     FRadius: TGLFloat;
     FSlices, FStacks: TGLInt;
-    FTop: TAngleLimit1;
-    FBottom: TAngleLimit1;
-    FStart: TAngleLimit2;
-    FStop: TAngleLimit2;
+    FTop: TGLAngleLimit180;
+    FBottom: TGLAngleLimit180;
+    FStart: TGLAngleLimit360;
+    FStop: TGLAngleLimit360;
     FTopCap, FBottomCap: TGLCapType;
-    procedure SetBottom(aValue: TAngleLimit1);
+    procedure SetBottom(aValue: TGLAngleLimit180);
     procedure SetBottomCap(aValue: TGLCapType);
     procedure SetRadius(const aValue: TGLFloat);
     procedure SetSlices(aValue: TGLInt);
-    procedure SetStart(aValue: TAngleLimit2);
-    procedure SetStop(aValue: TAngleLimit2);
+    procedure SetStart(aValue: TGLAngleLimit360);
+    procedure SetStop(aValue: TGLAngleLimit360);
     procedure SetStacks(aValue: TGLInt);
-    procedure SetTop(aValue: TAngleLimit1);
+    procedure SetTop(aValue: TGLAngleLimit180);
     procedure SetTopCap(aValue: TGLCapType);
   public
     constructor Create(AOwner: TComponent); override;
@@ -587,15 +587,15 @@ type
     function GenerateSilhouette(const silhouetteParameters
       : TGLSilhouetteParameters): TGLSilhouette; override;
   published
-    property Bottom: TAngleLimit1 read FBottom write SetBottom default -90;
+    property Bottom: TGLAngleLimit180 read FBottom write SetBottom default -90;
     property BottomCap: TGLCapType read FBottomCap write SetBottomCap
       default ctNone;
     property Radius: TGLFloat read FRadius write SetRadius;
     property Slices: TGLInt read FSlices write SetSlices default 16;
     property Stacks: TGLInt read FStacks write SetStacks default 16;
-    property Start: TAngleLimit2 read FStart write SetStart default 0;
-    property Stop: TAngleLimit2 read FStop write SetStop default 360;
-    property Top: TAngleLimit1 read FTop write SetTop default 90;
+    property Start: TGLAngleLimit360 read FStart write SetStart default 0;
+    property Stop: TGLAngleLimit360 read FStop write SetStop default 360;
+    property Top: TGLAngleLimit180 read FTop write SetTop default 90;
     property TopCap: TGLCapType read FTopCap write SetTopCap default ctNone;
   end;
 
@@ -638,21 +638,21 @@ type
   private
     FRadius, FVCurve, FHCurve: TGLFloat;
     FSlices, FStacks: TGLInt;
-    FTop: TAngleLimit1;
-    FBottom: TAngleLimit1;
-    FStart: TAngleLimit2;
-    FStop: TAngleLimit2;
+    FTop: TGLAngleLimit180;
+    FBottom: TGLAngleLimit180;
+    FStart: TGLAngleLimit360;
+    FStop: TGLAngleLimit360;
     FTopCap, FBottomCap: TGLCapType;
-    procedure SetBottom(aValue: TAngleLimit1);
+    procedure SetBottom(aValue: TGLAngleLimit180);
     procedure SetBottomCap(aValue: TGLCapType);
     procedure SetRadius(const aValue: TGLFloat);
     procedure SetVCurve(const aValue: TGLFloat);
     procedure SetHCurve(const aValue: TGLFloat);
     procedure SetSlices(aValue: TGLInt);
-    procedure SetStart(aValue: TAngleLimit2);
-    procedure SetStop(aValue: TAngleLimit2);
+    procedure SetStart(aValue: TGLAngleLimit360);
+    procedure SetStop(aValue: TGLAngleLimit360);
     procedure SetStacks(aValue: TGLInt);
-    procedure SetTop(aValue: TAngleLimit1);
+    procedure SetTop(aValue: TGLAngleLimit180);
     procedure SetTopCap(aValue: TGLCapType);
   public
     constructor Create(AOwner: TComponent); override;
@@ -665,7 +665,7 @@ type
     function GenerateSilhouette(const silhouetteParameters
       : TGLSilhouetteParameters): TGLSilhouette; override;
   published
-    property Bottom: TAngleLimit1 read FBottom write SetBottom default -90;
+    property Bottom: TGLAngleLimit180 read FBottom write SetBottom default -90;
     property BottomCap: TGLCapType read FBottomCap write SetBottomCap
       default ctNone;
     property Radius: TGLFloat read FRadius write SetRadius;
@@ -673,9 +673,9 @@ type
     property HCurve: TGLFloat read FHCurve write SetHCurve;
     property Slices: TGLInt read FSlices write SetSlices default 16;
     property Stacks: TGLInt read FStacks write SetStacks default 16;
-    property Start: TAngleLimit2 read FStart write SetStart default 0;
-    property Stop: TAngleLimit2 read FStop write SetStop default 360;
-    property Top: TAngleLimit1 read FTop write SetTop default 90;
+    property Start: TGLAngleLimit360 read FStart write SetStart default 0;
+    property Stop: TGLAngleLimit360 read FStop write SetStop default 360;
+    property Top: TGLAngleLimit180 read FTop write SetTop default 90;
     property TopCap: TGLCapType read FTopCap write SetTopCap default ctNone;
   end;
 
@@ -2935,7 +2935,7 @@ begin
     Result.vertices.Add(NullHmgPoint);
 end;
 
-procedure TGLSphere.SetBottom(aValue: TAngleLimit1);
+procedure TGLSphere.SetBottom(aValue: TGLAngleLimit180);
 begin
   if FBottom <> aValue then
   begin
@@ -2986,7 +2986,7 @@ begin
   end;
 end;
 
-procedure TGLSphere.SetStart(aValue: TAngleLimit2);
+procedure TGLSphere.SetStart(aValue: TGLAngleLimit360);
 begin
   if FStart <> aValue then
   begin
@@ -2996,7 +2996,7 @@ begin
   end;
 end;
 
-procedure TGLSphere.SetStop(aValue: TAngleLimit2);
+procedure TGLSphere.SetStop(aValue: TGLAngleLimit360);
 begin
   if FStop <> aValue then
   begin
@@ -3006,7 +3006,7 @@ begin
   end;
 end;
 
-procedure TGLSphere.SetTop(aValue: TAngleLimit1);
+procedure TGLSphere.SetTop(aValue: TGLAngleLimit180);
 begin
   if FTop <> aValue then
   begin
@@ -3498,7 +3498,7 @@ begin
     Result.vertices.Add(NullHmgPoint);
 end;
 
-procedure TGLSuperellipsoid.SetBottom(aValue: TAngleLimit1);
+procedure TGLSuperellipsoid.SetBottom(aValue: TGLAngleLimit180);
 begin
   if FBottom <> aValue then
   begin
@@ -3558,7 +3558,7 @@ begin
   end;
 end;
 
-procedure TGLSuperellipsoid.SetStart(aValue: TAngleLimit2);
+procedure TGLSuperellipsoid.SetStart(aValue: TGLAngleLimit360);
 begin
   if FStart <> aValue then
   begin
@@ -3568,7 +3568,7 @@ begin
   end;
 end;
 
-procedure TGLSuperellipsoid.SetStop(aValue: TAngleLimit2);
+procedure TGLSuperellipsoid.SetStop(aValue: TGLAngleLimit360);
 begin
   if FStop <> aValue then
   begin
@@ -3578,7 +3578,7 @@ begin
   end;
 end;
 
-procedure TGLSuperellipsoid.SetTop(aValue: TAngleLimit1);
+procedure TGLSuperellipsoid.SetTop(aValue: TGLAngleLimit180);
 begin
   if FTop <> aValue then
   begin

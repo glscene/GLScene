@@ -10,12 +10,13 @@ object FormDynamicTexture: TFormDynamicTexture
   Font.Height = -14
   Font.Name = 'Tahoma'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnResize = FormResize
   PixelsPerInch = 120
   TextHeight = 17
-  object GLSceneViewer1: TGLSceneViewer
+  object SceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
     Width = 548
@@ -31,7 +32,7 @@ object FormDynamicTexture: TFormDynamicTexture
     Align = alClient
     TabOrder = 0
   end
-  object GLScene1: TGLScene
+  object Scene: TGLScene
     Left = 64
     Top = 16
     object GLDirectOpenGL1: TGLDirectOpenGL
@@ -42,7 +43,7 @@ object FormDynamicTexture: TFormDynamicTexture
     object GLDummyCube1: TGLDummyCube
       CubeSize = 1.000000000000000000
       object GLCube1: TGLCube
-        Material.MaterialLibrary = GLMaterialLibrary1
+        Material.MaterialLibrary = MatLib
         Material.LibMaterialName = 'Anim'
       end
     end
@@ -58,7 +59,7 @@ object FormDynamicTexture: TFormDynamicTexture
       Position.Coordinates = {0000803F0000803F000040400000803F}
     end
   end
-  object GLMaterialLibrary1: TGLMaterialLibrary
+  object MatLib: TGLMaterialLibrary
     Materials = <
       item
         Name = 'Anim'
@@ -68,15 +69,15 @@ object FormDynamicTexture: TFormDynamicTexture
     Left = 160
     Top = 16
   end
-  object GLCadencer1: TGLCadencer
-    Scene = GLScene1
-    OnProgress = GLCadencer1Progress
+  object Cadencer: TGLCadencer
+    Scene = Scene
+    OnProgress = CadencerProgress
     Left = 64
     Top = 88
   end
-  object Timer1: TTimer
+  object Timer: TTimer
     Interval = 3000
-    OnTimer = Timer1Timer
+    OnTimer = TimerTimer
     Left = 160
     Top = 88
   end

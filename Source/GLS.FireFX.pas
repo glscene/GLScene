@@ -34,15 +34,15 @@ uses
   GLS.TextureFormat;
 
 type
-  PFireParticle = ^TFireParticle;
-  TFireParticle = record
+  PGLFireParticle = ^TGLFireParticle;
+  TGLFireParticle = record
     Position: TGLVector;
     Speed: TGLVector;
     Alpha: Single;
     TimeToLive, LifeLength: Single;
   end;
-  TFireParticleArray = array[0..MAXINT shr 6] of TFireParticle;
-  PFireParticleArray = ^TFireParticleArray;
+  TGLFireParticleArray = array[0..MAXINT shr 6] of TGLFireParticle;
+  PGLFireParticleArray = ^TGLFireParticleArray;
 
   TGLBFireFX = class;
 
@@ -52,7 +52,7 @@ type
   TGLFireFXManager = class(TGLCadenceAbleComponent)
   private
     FClients: TList;
-    FFireParticles: PFireParticleArray;
+    FFireParticles: PGLFireParticleArray;
     FFireDir, FInitialDir: TGLCoordinates;
     FCadencer: TGLCadencer;
     FMaxParticles, FParticleLife: Integer;
@@ -168,6 +168,7 @@ type
     procedure Assign(Source: TPersistent); override;
     class function FriendlyName: string; override;
     class function FriendlyDescription: string; override;
+   // Old - procedure Render(sceneBuffer: TGLSceneBuffer; var rci: TGLRenderContextInfo); override;
     procedure Render(var rci: TGLRenderContextInfo); override;
   published
    // Refers the collision manager.
@@ -347,7 +348,7 @@ begin
       FMaxParticles := val
     else
       FMaxParticles := 0;
-    ReallocMem(FFireParticles, MaxParticles * Sizeof(TFireParticle));
+    ReallocMem(FFireParticles, MaxParticles * Sizeof(TGLFireParticle));
     if NP > MaxParticles then
       NP := MaxParticles;
   end;
@@ -386,7 +387,7 @@ procedure TGLFireFXManager.FireInit;
 begin
   IntervalDelta := 0;
   NP := 0;
-  ReallocMem(FFireParticles, FMaxParticles * Sizeof(TFireParticle));
+  ReallocMem(FFireParticles, FMaxParticles * Sizeof(TGLFireParticle));
 end;
 
 
@@ -657,7 +658,7 @@ var
   lastTr: TAffineVector;
   distList: TSingleList;
   objList: TList;
-  fp: PFireParticle;
+  fp: PGLFireParticle;
 begin
   if Manager = nil then
     Exit;
@@ -696,7 +697,7 @@ begin
       SetVector(innerColor, Manager.FInnerColor.Color);
       for i := n - 1 downto 0 do
       begin
-        fp := PFireParticle(objList[i]);
+        fp := PGLFireParticle(objList[i]);
         gl.Translatef(fp^.Position.X - lastTr.X,
                       fp^.Position.Y - lastTr.Y,
                       fp^.Position.Z - lastTr.Z);

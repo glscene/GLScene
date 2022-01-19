@@ -51,6 +51,7 @@ object FormColumn: TFormColumn
     Left = 24
     Top = 8
     object DummyCube1: TGLDummyCube
+      ShowAxes = True
       CubeSize = 1.000000000000000000
     end
     object GLCamera1: TGLCamera

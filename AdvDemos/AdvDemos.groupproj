@@ -21,9 +21,6 @@
         <Projects Include="Christmas\ChristmasC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Earth\EarthD.dproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="Forest\ForestD.dproj">
             <Dependencies/>
         </Projects>
@@ -113,15 +110,6 @@
     <Target Name="ChristmasC:Make">
         <MSBuild Projects="Christmas\ChristmasC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="EarthD">
-        <MSBuild Projects="Earth\EarthD.dproj"/>
-    </Target>
-    <Target Name="EarthD:Clean">
-        <MSBuild Projects="Earth\EarthD.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="EarthD:Make">
-        <MSBuild Projects="Earth\EarthD.dproj" Targets="Make"/>
-    </Target>
     <Target Name="ForestD">
         <MSBuild Projects="Forest\ForestD.dproj"/>
     </Target>
@@ -204,13 +192,13 @@
         <MSBuild Projects="Quake3Demo\Q3DemoC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="SplitterD;SplitterC;ArchipelagoD;ArchipelagoC;ChristmasD;ChristmasC;EarthD;ForestD;GLSViewerD;IntensityMeshD;IntensityMeshC;PanoViewerD;PanoViewerC;TtbD;Q3DemoD;Q3DemoC"/>
+        <CallTarget Targets="SplitterD;SplitterC;ArchipelagoD;ArchipelagoC;ChristmasD;ChristmasC;ForestD;GLSViewerD;IntensityMeshD;IntensityMeshC;PanoViewerD;PanoViewerC;TtbD;Q3DemoD;Q3DemoC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="SplitterD:Clean;SplitterC:Clean;ArchipelagoD:Clean;ArchipelagoC:Clean;ChristmasD:Clean;ChristmasC:Clean;EarthD:Clean;ForestD:Clean;GLSViewerD:Clean;IntensityMeshD:Clean;IntensityMeshC:Clean;PanoViewerD:Clean;PanoViewerC:Clean;TtbD:Clean;Q3DemoD:Clean;Q3DemoC:Clean"/>
+        <CallTarget Targets="SplitterD:Clean;SplitterC:Clean;ArchipelagoD:Clean;ArchipelagoC:Clean;ChristmasD:Clean;ChristmasC:Clean;ForestD:Clean;GLSViewerD:Clean;IntensityMeshD:Clean;IntensityMeshC:Clean;PanoViewerD:Clean;PanoViewerC:Clean;TtbD:Clean;Q3DemoD:Clean;Q3DemoC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="SplitterD:Make;SplitterC:Make;ArchipelagoD:Make;ArchipelagoC:Make;ChristmasD:Make;ChristmasC:Make;EarthD:Make;ForestD:Make;GLSViewerD:Make;IntensityMeshD:Make;IntensityMeshC:Make;PanoViewerD:Make;PanoViewerC:Make;TtbD:Make;Q3DemoD:Make;Q3DemoC:Make"/>
+        <CallTarget Targets="SplitterD:Make;SplitterC:Make;ArchipelagoD:Make;ArchipelagoC:Make;ChristmasD:Make;ChristmasC:Make;ForestD:Make;GLSViewerD:Make;IntensityMeshD:Make;IntensityMeshC:Make;PanoViewerD:Make;PanoViewerC:Make;TtbD:Make;Q3DemoD:Make;Q3DemoC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

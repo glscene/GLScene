@@ -124,9 +124,9 @@ object FormActorTwocam: TFormActorTwocam
         end>
       Stars = <>
     end
-    object Disk1: TGLDisk
+    object diskClover: TGLDisk
+      Material.FrontProperties.Ambient.Color = {000000000000003F000000000000803F}
       Material.Texture.MinFilter = miLinear
-      Material.Texture.Disabled = False
       Direction.Coordinates = {000000000000803F0000000000000000}
       Up.Coordinates = {00000000000000000000803F00000000}
       Loops = 1
@@ -140,9 +140,9 @@ object FormActorTwocam: TFormActorTwocam
       LightStyle = lsOmni
       SpotCutOff = 180.000000000000000000
     end
-    object DummyCube1: TGLDummyCube
+    object dcMushroom: TGLDummyCube
       CubeSize = 1.000000000000000000
-      object FreeForm1: TGLFreeForm
+      object ffMushroom: TGLFreeForm
         Material.FrontProperties.Diffuse.Color = {0AD7633FD7A3F03ECDCC4C3E0000803F}
         Direction.Coordinates = {000000000000803F0000000000000000}
         Position.Coordinates = {0000803F0000803F000000000000803F}
@@ -212,5 +212,13 @@ object FormActorTwocam: TFormActorTwocam
     GLNavigator = GLNavigator1
     Left = 296
     Top = 56
+  end
+  object GLDCEManager1: TGLDCEManager
+    WorldScale = 1.000000000000000000
+    MovimentScale = 1.000000000000000000
+    StandardiseLayers = ccsDCEStandard
+    ManualStep = False
+    Left = 139
+    Top = 155
   end
 end

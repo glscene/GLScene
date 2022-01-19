@@ -24,7 +24,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.OpenGLAdapter.hpp"
 #include "JPeg.hpp"
-#include "GLS.AsyncTimer.hpp"
+#include "GLS.FileOBJ.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
@@ -43,7 +43,7 @@ __published:	// IDE-managed Components
 	TCheckBox *CheckBox1;
 	TCheckBox *CheckBox2;
 	TCheckBox *CheckBox3;
-	TCheckBox *CheckBox4;
+	TCheckBox *cbSpin;
 	TComboBox *ComboBox2;
 	TGLScene *GLScene1;
 	TGLDummyCube *DCLights;

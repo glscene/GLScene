@@ -89,7 +89,7 @@ var
 begin
   // Move the red sphere (sound source) along an elliptic path
   alpha := 60 * DegToRad(newTime);
-  TGLSphere(Sender).Position.SetPoint(sin(alpha) * 2, 0.5, cos(alpha) * 5);
+  TGLSphere(Sender).Position.SetPoint(sin(alpha) * 1, 0.5, cos(alpha) * 5);
 end;
 
 procedure TFormSoundBASS.TrackBarChange(Sender: TObject);

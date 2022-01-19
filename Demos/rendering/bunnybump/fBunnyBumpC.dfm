@@ -56,8 +56,8 @@ object Form1: TForm1
       Caption = 'Shade Method'
     end
     object Label2: TLabel
-      Left = 480
-      Top = 10
+      Left = 440
+      Top = 5
       Width = 89
       Height = 17
       Margins.Left = 4
@@ -179,9 +179,9 @@ object Form1: TForm1
         OnClick = CheckBox3Click
       end
     end
-    object CheckBox4: TCheckBox
-      Left = 420
-      Top = 30
+    object cbSpin: TCheckBox
+      Left = 546
+      Top = 31
       Width = 61
       Height = 21
       Margins.Left = 4
@@ -194,8 +194,8 @@ object Form1: TForm1
       TabOrder = 2
     end
     object ComboBox2: TComboBox
-      Left = 480
-      Top = 30
+      Left = 439
+      Top = 26
       Width = 91
       Height = 25
       Margins.Left = 4

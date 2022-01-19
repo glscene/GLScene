@@ -31,6 +31,7 @@ uses
   GLS.VectorTypes,
   GLS.Scene,
   GLS.VectorGeometry,
+  GLS.Coordinates,
   GLS.Sound,
   GLS.SoundFileObjects;
 

@@ -79,7 +79,7 @@ void __fastcall TForm1::TimerTimer(TObject *Sender) {
 	Word y, m, d;
 	bool TheChristmas;
 
-	TheChristmas = true; // Merry Christmas or Happy New Year!
+	TheChristmas = false; // Merry Christmas or Happy New Year!
 	Caption = Format("%.1f FPS", ARRAYOFCONST((Viewer->FramesPerSecond())));
 	Viewer->ResetPerformanceMonitor();
 

@@ -372,7 +372,9 @@
         <DCCReference Include="..\Source\GLS.XCollection.pas"/>
         <DCCReference Include="..\Source\GLS.XOpenGL.pas"/>
         <DCCReference Include="..\Source\GLS.ModuleLoader.pas"/>
-        <None Include="..\Source\GLScene.inc"/>
+        <DCCReference Include="..\Source\PasGLTF.pas"/>
+        <DCCReference Include="..\Source\PasJSON.pas"/>
+        <DCCReference Include="..\Source\PasDblStrUtils.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -405,14 +407,14 @@
                 <Platform value="Win64">True</Platform>
             </Platforms>
             <Deployment Version="3">
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\17.0\Bpl\Win64\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win64">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
                         <RemoteName>GLScene_RT.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\Win64\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win64">
                         <RemoteName>GLScene_RT.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>

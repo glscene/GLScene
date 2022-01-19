@@ -10,15 +10,15 @@ uses
   Vcl.Controls,
   Vcl.Forms,
   Vcl.Dialogs,
-  
+
   GLS.VectorTypes,
-  GLS.BaseClasses, 
+  GLS.BaseClasses,
   GLS.VectorGeometry,
-  GLS.Scene, GLS.Objects, 
-  GLS.GeomObjects, 
-  GLS.Texture, 
+  GLS.Scene, GLS.Objects,
+  GLS.GeomObjects,
+  GLS.Texture,
   GLS.MultiPolygon,
-  GLS.SceneViewer, 
+  GLS.SceneViewer,
   GLS.Material,
   GLS.Coordinates;
 
@@ -57,7 +57,6 @@ type
     function TransformToPlane(Side:Integer; x,y,z:Double):TVektor; overload;
     function TransformToPlane(Side:Integer; v:TVektor):TVektor; overload;
   public
-    { Public-Deklarationen }
     procedure MakeHole(Side:Integer; X,Y,Z,D,T:Double; Phi:Double=0; Rho:Double=0);
     property Plane[Side:Integer]:TGLMultiPolygon read GetPlane;
     property DX:Double read FDX write SetDX;
@@ -132,6 +131,7 @@ begin
   if through then
     Plane[cOpposite[Side]].Contours.Add.Nodes.AddXYArc(R/cos(Phi*c180divPi),R,0,360,16, AffineVectorMake(X,Y,0));
 end;
+
 
 procedure TFormExPolygon.CreatePanel;
 var

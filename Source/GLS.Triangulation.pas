@@ -4,7 +4,9 @@
 
 unit GLS.Triangulation;
 
-(* Classes and methods for triangulation of scatter points. *)
+(*
+  Classes and methods for triangulation of scatter points.
+*)
 
 interface
 
@@ -52,7 +54,8 @@ type
   TDComplete = array of Boolean;
   TDEdges = array of array of LongInt;
 
-(*
+type
+(*  
   TGLDelaunay2D is a class for Delaunay triangulation of arbitrary points
   Credit to Paul Bourke (http://paulbourke.net/) for the original Fortran 77 Program :))
   Conversion to Visual Basic by EluZioN (EluZioN@casesladder.com)
@@ -66,7 +69,6 @@ type
   the triangles are now stored to improve calculation time.
   You can use this code however you like providing the above credits remain in tact
 *)
-type
   TGLDelaunay2D = class
   private
     function InCircle(Xp, Yp, X1, Y1, X2, Y2, X3, Y3: Single; out Xc,Yc, R:

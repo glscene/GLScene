@@ -2,8 +2,8 @@ object FormHierarchy: TFormHierarchy
   Left = 204
   Top = 101
   Caption = 'Hierarchy'
-  ClientHeight = 458
-  ClientWidth = 631
+  ClientHeight = 578
+  ClientWidth = 742
   Color = clBtnFace
   Constraints.MinHeight = 250
   Constraints.MinWidth = 400
@@ -17,45 +17,28 @@ object FormHierarchy: TFormHierarchy
   OnResize = FormResize
   PixelsPerInch = 120
   DesignSize = (
-    631
-    458)
+    742
+    578)
   TextHeight = 16
-  object GLSceneViewer1: TGLSceneViewer
+  object SceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 631
-    Height = 427
+    Width = 742
+    Height = 578
     Margins.Left = 4
     Margins.Top = 4
     Margins.Right = 4
     Margins.Bottom = 4
-    Camera = GLCamera1
+    Camera = Camera
     Buffer.BackgroundColor = clSilver
-    FieldOfView = 129.804718017578100000
+    FieldOfView = 141.826629638671900000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
-  object TrackBar: TTrackBar
-    Left = 0
-    Top = 427
-    Width = 631
-    Height = 31
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
-    Align = alBottom
-    Max = 360
-    PageSize = 10
-    Frequency = 10
-    TabOrder = 1
-    ThumbLength = 19
-    OnChange = TrackBarChange
-  end
   object CBPlay: TCheckBox
-    Left = 6
-    Top = 430
+    Left = 334
+    Top = 22
     Width = 52
     Height = 21
     Margins.Left = 4
@@ -64,49 +47,73 @@ object FormHierarchy: TFormHierarchy
     Margins.Bottom = 4
     Anchors = [akLeft, akBottom]
     Caption = 'Play'
-    TabOrder = 2
+    TabOrder = 1
   end
-  object GLScene1: TGLScene
+  object Scene: TGLScene
     Left = 80
     Top = 24
-    object Cube1: TGLCube
-      Material.FrontProperties.Ambient.Color = {0000000000000000000000000000803F}
-      Material.FrontProperties.Diffuse.Color = {0000000000000000000000000000803F}
-      Material.FrontProperties.Emission.Color = {0000803F0000803F000000000000803F}
+    object Camera: TGLCamera
+      DepthOfView = 100.000000000000000000
+      FocalLength = 100.000000000000000000
+      TargetObject = dcSun
+      Position.Coordinates = {000020410000A040000020410000803F}
     end
-    object DummyCube1: TGLDummyCube
+    object LightSource: TGLLightSource
+      ConstAttenuation = 1.000000000000000000
+      SpotCutOff = 180.000000000000000000
+    end
+    object dcSun: TGLDummyCube
+      CubeSize = 1.000000000000000000
+      object Sun: TGLSphere
+        Material.FrontProperties.Ambient.Color = {0000000000000000000000000000803F}
+        Material.FrontProperties.Emission.Color = {0000803F0000803F000000000000803F}
+        ShowAxes = True
+        Radius = 0.500000000000000000
+      end
+    end
+    object dcEarth: TGLDummyCube
       CubeSize = 2.000000000000000000
-      object Cube2: TGLCube
-        Material.FrontProperties.Diffuse.Color = {8786063F8786063F0000803F0000803F}
-        Material.FrontProperties.Emission.Color = {0000000000000000A1A0203F0000803F}
+      object Earth: TGLSphere
+        Material.FrontProperties.Diffuse.Color = {0000003F0000003F0000803F0000803F}
+        Material.FrontProperties.Emission.Color = {0000000000000000AE47213F0000803F}
         Position.Coordinates = {0000404000000000000000000000803F}
-        CubeSize = {0000003F0000003F0000003F}
-        object DummyCube2: TGLDummyCube
+        Radius = 0.300000011920929000
+        object dcMoon: TGLDummyCube
           Direction.Coordinates = {00000000F304353FF304353F00000000}
           Up.Coordinates = {00000000F304353FF30435BF00000000}
           CubeSize = 1.000000000000000000
-          object Cube3: TGLCube
-            Position.Coordinates = {000000000000803F000000000000803F}
-            CubeSize = {CDCC4C3ECDCC4C3ECDCC4C3E}
+          object Moon: TGLSphere
+            Position.Coordinates = {0000803F00000000000000000000803F}
+            Radius = 0.100000001490116100
           end
         end
       end
     end
-    object GLLightSource1: TGLLightSource
-      ConstAttenuation = 1.000000000000000000
-      SpotCutOff = 180.000000000000000000
-    end
-    object GLCamera1: TGLCamera
-      DepthOfView = 100.000000000000000000
-      FocalLength = 100.000000000000000000
-      TargetObject = Cube1
-      Position.Coordinates = {000020410000A040000020410000803F}
-    end
   end
-  object GLCadencer1: TGLCadencer
-    Scene = GLScene1
-    OnProgress = GLCadencer1Progress
-    Left = 208
-    Top = 24
+  object Cadencer: TGLCadencer
+    Scene = Scene
+    OnProgress = CadencerProgress
+    Left = 100
+    Top = 110
+  end
+  object GLSimpleNavigation1: TGLSimpleNavigation
+    Form = Owner
+    GLSceneViewer = SceneViewer
+    FormCaption = 'Hierarchy - %FPS'
+    KeyCombinations = <
+      item
+        ShiftState = [ssLeft, ssRight]
+        Action = snaZoom
+      end
+      item
+        ShiftState = [ssLeft]
+        Action = snaMoveAroundTarget
+      end
+      item
+        ShiftState = [ssRight]
+        Action = snaMoveAroundTarget
+      end>
+    Left = 40
+    Top = 258
   end
 end

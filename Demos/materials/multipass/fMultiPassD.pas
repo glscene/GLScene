@@ -92,7 +92,7 @@ begin
     Disable(stLighting);
     PolygonMode := pmFill;
     // use background color
-    gl.Color3fv(@BackgroundColor);
+    glColor3fv(@BackgroundColor);
     // enable and adjust polygon offset
     Enable(stPolygonOffsetFill);
     SetPolygonOffset(1, 2);
@@ -114,7 +114,7 @@ begin
         Disable(stLineStipple);
         Disable(stLineSmooth);
         LineWidth := 1;
-        gl.Color3fv(@LineColor);
+        glColor3fv(@LineColor);
         Result := True;
       end;
     2:
@@ -156,7 +156,7 @@ begin
     PolygonMode := pmLines;
     CullFaceMode := cmFront;
     DepthFunc := cfLEqual;
-    gl.Color3fv(@lineColor);
+    glColor3fv(@lineColor);
   end;
 end;
 
@@ -170,7 +170,7 @@ begin
         if lighting then
           Enable(stLighting)
         else
-          gl.Color3fv(@backGroundColor);
+          glColor3fv(@backGroundColor);
         DepthFunc := cfLess;
         PolygonMode := pmFill;
         CullFaceMode := cmBack;

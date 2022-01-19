@@ -1,9 +1,10 @@
 object MainForm: TMainForm
   Left = 188
   Top = 87
+  AutoSize = True
   Caption = 'GLSViewer'
-  ClientHeight = 613
-  ClientWidth = 835
+  ClientHeight = 433
+  ClientWidth = 622
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -133,8 +134,8 @@ object MainForm: TMainForm
   TextHeight = 16
   object StatusBar: TStatusBar
     Left = 0
-    Top = 589
-    Width = 835
+    Top = 409
+    Width = 622
     Height = 24
     Margins.Left = 4
     Margins.Top = 4
@@ -154,15 +155,15 @@ object MainForm: TMainForm
         Width = 63
       end
       item
-        Text = 'FPS'
-        Width = 63
+        Text = 'Model'
+        Width = 50
       end>
   end
   object snViewer: TGLSceneViewer
     Left = 0
     Top = 69
-    Width = 835
-    Height = 520
+    Width = 622
+    Height = 340
     Margins.Left = 4
     Margins.Top = 4
     Margins.Right = 4
@@ -173,7 +174,7 @@ object MainForm: TMainForm
     Buffer.BackgroundColor = clGray
     Buffer.ContextOptions = [roDoubleBuffer, roRenderToWindow, roTwoSideLighting]
     Buffer.FaceCulling = False
-    FieldOfView = 158.228942871093800000
+    FieldOfView = 147.220916748046900000
     PenAsTouch = False
     OnMouseLeave = snViewerMouseLeave
     Align = alClient
@@ -184,7 +185,7 @@ object MainForm: TMainForm
   object ControlBar: TControlBar
     Left = 0
     Top = 32
-    Width = 835
+    Width = 622
     Height = 37
     Margins.Left = 4
     Margins.Top = 4
@@ -194,7 +195,7 @@ object MainForm: TMainForm
     RowSize = 33
     TabOrder = 2
     object atbTools: TActionToolBar
-      Left = 567
+      Left = 436
       Top = 2
       Width = 95
       Height = 29
@@ -220,7 +221,7 @@ object MainForm: TMainForm
     object atbView: TActionToolBar
       Left = 127
       Top = 2
-      Width = 424
+      Width = 274
       Height = 29
       Margins.Left = 4
       Margins.Top = 4
@@ -271,7 +272,7 @@ object MainForm: TMainForm
   object amMenuBar: TActionMainMenuBar
     Left = 0
     Top = 0
-    Width = 835
+    Width = 622
     Height = 32
     Margins.Left = 4
     Margins.Top = 4
@@ -966,6 +967,16 @@ object MainForm: TMainForm
   object Scene: TGLScene
     Left = 24
     Top = 96
+    object CubeExtents: TGLCube
+      Material.BackProperties.Ambient.Color = {0000000000000000000000000000803F}
+      Material.BackProperties.Diffuse.Color = {0C026B3F0C026B3F0000803F0000803F}
+      Material.FrontProperties.Ambient.Color = {0000000000000000000000000000803F}
+      Material.FrontProperties.Diffuse.Color = {0C026B3F0C026B3F0000803F0000803F}
+      Material.MaterialOptions = [moNoLighting]
+      Material.FaceCulling = fcNoCull
+      Material.PolygonMode = pmLines
+      CubeSize = {000000400000004000000040}
+    end
     object dcTarget: TGLDummyCube
       CubeSize = 1.000000000000000000
       object Camera: TGLCamera
@@ -988,16 +999,6 @@ object MainForm: TMainForm
       AutoCentering = [macCenterX, macCenterY, macCenterZ, macUseBarycenter]
       MaterialLibrary = MaterialLib
       LightmapLibrary = LightmapLib
-      object CubeExtents: TGLCube
-        Material.BackProperties.Ambient.Color = {0000000000000000000000000000803F}
-        Material.BackProperties.Diffuse.Color = {0C026B3F0C026B3F0000803F0000803F}
-        Material.FrontProperties.Ambient.Color = {0000000000000000000000000000803F}
-        Material.FrontProperties.Diffuse.Color = {0C026B3F0C026B3F0000803F0000803F}
-        Material.MaterialOptions = [moNoLighting]
-        Material.FaceCulling = fcNoCull
-        Material.PolygonMode = pmLines
-        CubeSize = {000000400000004000000040}
-      end
     end
     object dcAxis: TGLDummyCube
       Direction.Coordinates = {000000000000803F0000000000000000}
@@ -1007,6 +1008,7 @@ object MainForm: TMainForm
     end
     object dcWorld: TGLDummyCube
       CubeSize = 1.000000000000000000
+      VisibleAtRunTime = True
       object GLPoints: TGLPoints
         NoZWrite = False
         Static = False
@@ -1229,6 +1231,11 @@ object MainForm: TMainForm
                 Action = acToolsLighting
                 Caption = '&Lighting'
                 ImageIndex = 12
+              end
+              item
+                Action = acToolsNaviCube
+                Caption = '&Navi Cube'
+                ImageIndex = 20
               end
               item
                 Action = acToolsCustomize
@@ -1743,7 +1750,7 @@ object MainForm: TMainForm
             ShowCaption = False
           end
           item
-            Action = acNaviCube
+            Action = acToolsNaviCube
             Caption = '&Navi Cube'
             ImageIndex = 20
             ShowCaption = False
@@ -1831,6 +1838,13 @@ object MainForm: TMainForm
       Hint = 'Lighting'
       ImageIndex = 12
       OnExecute = acToolsLightingExecute
+    end
+    object acToolsNaviCube: TAction
+      Category = 'Tools'
+      Caption = 'Navi Cube'
+      Hint = 'Navi Cube'
+      ImageIndex = 20
+      OnExecute = acToolsNaviCubeExecute
     end
     object acToolsCustomize: TCustomizeActionBars
       Category = 'Tools'
@@ -2075,13 +2089,6 @@ object MainForm: TMainForm
       Hint = 'Points'
       ImageIndex = 21
       OnExecute = acPointsExecute
-    end
-    object acNaviCube: TAction
-      Category = 'View'
-      Caption = 'Navi Cube'
-      Hint = 'Navi Cube'
-      ImageIndex = 20
-      OnExecute = acNaviCubeExecute
     end
     object acToolsInfo: TAction
       Category = 'Tools'

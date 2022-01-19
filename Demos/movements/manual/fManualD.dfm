@@ -18,7 +18,7 @@ object FormManual: TFormManual
     624
     473)
   TextHeight = 16
-  object GLSceneViewer1: TGLSceneViewer
+  object SceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
     Width = 624
@@ -27,14 +27,12 @@ object FormManual: TFormManual
     Margins.Top = 4
     Margins.Right = 4
     Margins.Bottom = 4
-    Camera = GLCamera1
+    Camera = Camera
     Buffer.BackgroundColor = clSilver
     FieldOfView = 131.307571411132800000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 561
-    ExplicitHeight = 346
   end
   object TrackBar: TTrackBar
     Left = 0
@@ -52,8 +50,6 @@ object FormManual: TFormManual
     TabOrder = 1
     ThumbLength = 19
     OnChange = TrackBarChange
-    ExplicitTop = 343
-    ExplicitWidth = 561
   end
   object CBPlay: TCheckBox
     Left = 8
@@ -69,7 +65,6 @@ object FormManual: TFormManual
     Checked = True
     State = cbChecked
     TabOrder = 2
-    ExplicitTop = 346
   end
   object StaticText1: TStaticText
     Left = 20
@@ -84,38 +79,38 @@ object FormManual: TFormManual
     Caption = '??? FPS'
     TabOrder = 3
   end
-  object GLScene1: TGLScene
+  object Scene: TGLScene
     Left = 120
     Top = 16
-    object Cube1: TGLCube
+    object CubeSun: TGLCube
       Material.FrontProperties.Ambient.Color = {0000000000000000000000000000803F}
       Material.FrontProperties.Diffuse.Color = {0000000000000000000000000000803F}
       Material.FrontProperties.Emission.Color = {0000803F0000803F000000000000803F}
     end
-    object Cube2: TGLCube
+    object CubeEarth: TGLCube
       Material.FrontProperties.Diffuse.Color = {8786063F8786063F0000803F0000803F}
       Material.FrontProperties.Emission.Color = {0000000000000000A1A0203F0000803F}
       Position.Coordinates = {0000404000000000000000000000803F}
       CubeSize = {0000003F0000003F0000003F}
     end
-    object Cube3: TGLCube
+    object CubeMoon: TGLCube
       Position.Coordinates = {000040400000803F000000000000803F}
       CubeSize = {CDCC4C3ECDCC4C3ECDCC4C3E}
     end
-    object GLLightSource1: TGLLightSource
+    object LightSource: TGLLightSource
       ConstAttenuation = 1.000000000000000000
       SpotCutOff = 180.000000000000000000
     end
-    object GLCamera1: TGLCamera
+    object Camera: TGLCamera
       DepthOfView = 100.000000000000000000
       FocalLength = 100.000000000000000000
-      TargetObject = Cube1
+      TargetObject = CubeSun
       Position.Coordinates = {000020410000A040000020410000803F}
     end
   end
-  object GLCadencer1: TGLCadencer
-    Scene = GLScene1
-    OnProgress = GLCadencer1Progress
+  object Cadencer: TGLCadencer
+    Scene = Scene
+    OnProgress = CadencerProgress
     Left = 240
     Top = 16
   end

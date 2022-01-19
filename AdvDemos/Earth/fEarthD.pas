@@ -38,28 +38,28 @@ uses
 
 type
   TForm1 = class(TForm)
-    GLScene: TGLScene;
+    Scene: TGLScene;
     GLSceneViewer: TGLSceneViewer;
-    GLCamera: TGLCamera;
+    Camera: TGLCamera;
     SPEarth: TGLSphere;
     LSSun: TGLLightSource;
-    GLDirectOpenGL1: TGLDirectOpenGL;
-    GLCadencer: TGLCadencer;
+    DirectOpenGL: TGLDirectOpenGL;
+    Cadencer: TGLCadencer;
     Timer1: TTimer;
     SPMoon: TGLSphere;
-    DCEarthSystem: TGLDummyCube;
+    dcEarth: TGLDummyCube;
     DCMoon: TGLDummyCube;
     GLLensFlare1: TGLLensFlare;
-    GLMaterialLibrary: TGLMaterialLibrary;
+    MatLib: TGLMaterialLibrary;
     EarthCombiner: TGLTexCombineShader;
-    GLCameraControler: TGLCamera;
-    GLSkyDome: TGLSkyDome;
+    CameraControler: TGLCamera;
+    SkyDome: TGLSkyDome;
     ConstellationLines: TGLLines;
     ConstellationBorders: TGLLines;
     procedure FormCreate(Sender: TObject);
-    procedure GLDirectOpenGL1Render(Sender: TObject; var rci: TGLRenderContextInfo);
+    procedure DirectOpenGLRender(Sender: TObject; var rci: TGLRenderContextInfo);
     procedure Timer1Timer(Sender: TObject);
-    procedure GLCadencerProgress(Sender: TObject; const deltaTime,
+    procedure CadencerProgress(Sender: TObject; const deltaTime,
       newTime: Double);
     procedure GLSceneViewerMouseDown(Sender: TObject;
       Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
@@ -70,9 +70,6 @@ type
     procedure GLSceneViewerDblClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure GLSceneViewerBeforeRender(Sender: TObject);
-  private
-    procedure LoadConstellationLines;
-    function AtmosphereColor(const rayStart, rayEnd: TGLVector): TGLColorVector;
   public
     ConstellationsAlpha: Single;
     TimeMultiplier: Single;
@@ -82,6 +79,11 @@ type
     radius, invAtmosphereHeight: Single;
     sunPos, eyePos, lightingVector: TGLVector;
     diskNormal, diskRight, diskUp: TGLVector;
+  private
+    function LonLatToPos(lon, lat: Single): TAffineVector;
+    procedure LoadConstellationLines;
+    function AtmosphereColor(const rayStart, rayEnd: TGLVector): TGLColorVector;
+    function ComputeColor(var rayDest: TGLVector; mayHitGround: Boolean): TGLColorVector;
   end;
 
 var
@@ -115,9 +117,9 @@ var
 begin
   SetCurrentDir(ExtractFilePath(ParamStr(0)));
   FileName := 'Data\Yale_BSC.stars';
-  GLSkyDome.Bands.Clear;
+  SkyDome.Bands.Clear;
   if FileExists(FileName) then
-    GLSkyDome.Stars.LoadStarsFile(FileName);
+    SkyDome.Stars.LoadStarsFile(FileName);
   LoadConstellationLines;
   TimeMultiplier := 1;
 end;
@@ -126,8 +128,8 @@ procedure TForm1.GLSceneViewerBeforeRender(Sender: TObject);
 begin
   GLLensFlare1.PreRender(Sender as TGLSceneBuffer);
   // if no multitexturing or no combiner support, turn off city lights
-  GLMaterialLibrary.Materials[0].Shader := EarthCombiner;
-  GLMaterialLibrary.Materials[0].Texture2Name := 'earthNight';
+  MatLib.Materials[0].Shader := EarthCombiner;
+  MatLib.Materials[0].Texture2Name := 'earthNight';
 end;
 
 function TForm1.AtmosphereColor(const rayStart, rayEnd: TGLVector)
@@ -176,32 +178,37 @@ begin
   Result.W := n * contrib * cOpacity * 0.1;
 end;
 
-procedure TForm1.GLDirectOpenGL1Render(Sender: TObject; var rci: TGLRenderContextInfo);
-
-  function ComputeColor(var rayDest: TGLVector; mayHitGround: Boolean): TGLColorVector;
-  var
-    ai1, ai2, pi1, pi2: TGLVector;
-    rayVector: TGLVector;
+//---------------------------------------------------------
+//
+function TForm1.ComputeColor(var rayDest: TGLVector; mayHitGround: Boolean): TGLColorVector;
+var
+  ai1, ai2, pi1, pi2: TGLVector;
+  rayVector: TGLVector;
+begin
+  rayVector := VectorNormalize(VectorSubtract(rayDest, eyePos));
+  if RayCastSphereIntersect(eyePos, rayVector, NullHmgPoint, cAtmosphereRadius,
+    ai1, ai2) > 1 then
   begin
-    rayVector := VectorNormalize(VectorSubtract(rayDest, eyePos));
-    if RayCastSphereIntersect(eyePos, rayVector, NullHmgPoint, cAtmosphereRadius, ai1, ai2) > 1 then
+    // atmosphere hit
+    if mayHitGround and (RayCastSphereIntersect(eyePos, rayVector, NullHmgPoint,
+      cPlanetRadius, pi1, pi2) > 0) then
     begin
-      // atmosphere hit
-      if mayHitGround and (RayCastSphereIntersect(eyePos, rayVector, NullHmgPoint, cPlanetRadius, pi1, pi2) > 0) then
-      begin
-        // hit ground
-        Result := AtmosphereColor(ai1, pi1);
-      end
-      else
-      begin
-        // through atmosphere only
-        Result := AtmosphereColor(ai1, ai2);
-      end;
-      rayDest := ai1;
+      // hit ground
+      Result := AtmosphereColor(ai1, pi1);
     end
     else
-      Result := clrTransparent;
-  end;
+    begin
+      // through atmosphere only
+      Result := AtmosphereColor(ai1, ai2);
+    end;
+    rayDest := ai1;
+  end
+  else
+    Result := clrTransparent;
+end;
+
+
+procedure TForm1.DirectOpenGLRender(Sender: TObject; var rci: TGLRenderContextInfo);
 
 const
   cSlices = 60;
@@ -211,11 +218,11 @@ var
   pVertex, pColor: PVectorArray;
 begin
   sunPos := LSSun.AbsolutePosition;
-  eyepos := GLCamera.AbsolutePosition;
+  eyePos := Camera.AbsolutePosition;
 
   diskNormal := VectorNegate(eyePos);
   NormalizeVector(diskNormal);
-  diskRight := VectorCrossProduct(GLCamera.AbsoluteUp, diskNormal);
+  diskRight := VectorCrossProduct(Camera.AbsoluteUp, diskNormal);
   NormalizeVector(diskRight);
   diskUp := VectorCrossProduct(diskNormal, diskRight);
   NormalizeVector(diskUp);
@@ -296,19 +303,20 @@ begin
   FreeMem(pColor);
 end;
 
+function TForm1.LonLatToPos(lon, lat: Single): TAffineVector;
+var
+  f: Single;
+begin
+  SinCosine(lat * (PI / 180), Result.Y, f);
+  SinCosine(lon * (360 / 24 * PI / 180), f, Result.X, Result.Z);
+end;
+
+// -------------------------------------------
+//
 procedure TForm1.LoadConstellationLines;
 var
   sl, line: TStrings;
   pos1, pos2: TAffineVector;
-
-  function LonLatToPos(lon, lat: Single): TAffineVector;
-  var
-    f: Single;
-  begin
-    SinCosine(lat * (PI / 180), Result.Y, f);
-    SinCosine(lon * (360 / 24 * PI / 180), f,
-      Result.X, Result.Z);
-  end;
 
 var
   i: Integer;
@@ -316,14 +324,16 @@ begin
   sl := TStringList.Create;
   line := TStringList.Create;
   sl.LoadFromFile('Data\Constellations.dat');
-//  sl.LoadFromFile('Data\Constellation_borders.dat');
+///  sl.LoadFromFile('Data\Constellation_borders.dat');
   for i := 0 to sl.Count - 1 do
   begin
     line.CommaText := sl[i];
     pos1 := LonLatToPos(StrToFloatDef(line[0], 0), StrToFloatDef(line[1], 0));
     ConstellationLines.AddNode(pos1);
+///     ConstellationBorders.AddNode(pos1);
     pos2 := LonLatToPos(StrToFloatDef(line[2], 0), StrToFloatDef(line[3], 0));
     ConstellationLines.AddNode(pos2);
+///    ConstellationBorders.AddNode(pos2);
   end;
   sl.Free;
   line.Free;
@@ -335,7 +345,7 @@ begin
   GLSceneViewer.ResetPerformanceMonitor;
 end;
 
-procedure TForm1.GLCadencerProgress(Sender: TObject; const deltaTime,
+procedure TForm1.CadencerProgress(Sender: TObject; const deltaTime,
   newTime: Double);
 //var
 //   d : Double;
@@ -359,7 +369,7 @@ begin
   // honour camera movements
   if (dmy <> 0) or (dmx <> 0) then
   begin
-    GLCameraControler.MoveAroundTarget(ClampValue(dmy * 0.3, -5, 5),
+    CameraControler.MoveAroundTarget(ClampValue(dmy * 0.3, -5, 5),
       ClampValue(dmx * 0.3, -5, 5));
     dmx := 0;
     dmy := 0;
@@ -368,9 +378,9 @@ begin
   cameraTimeSteps := cameraTimeSteps + deltaTime;
   while cameraTimeSteps > 0.005 do
   begin
-    GLCamera.Position.AsVector := VectorLerp(GLCamera.Position.AsVector,
-      GLCameraControler.Position.AsVector, 0.05);
-    cameraTimeSteps := cameraTimeSteps - 0.005;
+    Camera.Position.AsVector := VectorLerp(Camera.Position.AsVector,
+      CameraControler.Position.AsVector, 0.05);
+    CameraTimeSteps := CameraTimeSteps - 0.005;
   end;
   // smooth constellation appearance/disappearance
   if ConstellationLines.LineColor.Alpha <> constellationsAlpha then
@@ -398,7 +408,7 @@ begin
     dmy := dmy + (my - y);
   end
   else if Shift = [ssRight] then
-    GLCamera.FocalLength := GLCamera.FocalLength * Power(1.05, (my - y) * 0.1);
+    Camera.FocalLength := Camera.FocalLength * Power(1.05, (my - y) * 0.1);
   mx := x;
   my := y;
 end;
@@ -408,10 +418,10 @@ procedure TForm1.FormMouseWheel(Sender: TObject; Shift: TShiftState;
 var
   f: Single;
 begin
-  if (WheelDelta > 0) or (GLCameraControler.Position.VectorLength > 0.90) then
+  if (WheelDelta > 0) or (CameraControler.Position.VectorLength > 0.90) then
   begin
     f := Power(1.05, WheelDelta * (1 / 120));
-    GLCameraControler.AdjustDistanceToTarget(f);
+    CameraControler.AdjustDistanceToTarget(f);
   end;
   Handled := True;
 end;
@@ -434,12 +444,12 @@ end;
 
 procedure TForm1.FormKeyPress(Sender: TObject; var Key: Char);
 
-  procedure LoadHighResTexture(libMat: TGLLibMaterial; const fileName: string);
+  procedure LoadHighResTexture(LibMat: TGLLibMaterial; const FileName: string);
   begin
     if FileExists(fileName) then
     begin
-      libMat.Material.Texture.Compression := tcStandard;
-      libMat.Material.Texture.Image.LoadFromFile(fileName);
+      LibMat.Material.Texture.Compression := tcStandard;
+      LibMat.Material.Texture.Image.LoadFromFile(fileName);
     end;
   end;
 
@@ -448,17 +458,17 @@ begin
     #27: Close;
     'm', 'M':
       begin
-        GLCamera.MoveTo(SPMoon);
-        GLCameraControler.MoveTo(SPMoon);
-        GLCamera.TargetObject := SPMoon;
-        GLCameraControler.TargetObject := SPMoon;
+        Camera.MoveTo(SPMoon);
+        CameraControler.MoveTo(SPMoon);
+        Camera.TargetObject := SPMoon;
+        CameraControler.TargetObject := SPMoon;
       end;
     'e', 'E':
       begin
-        GLCamera.MoveTo(DCEarthSystem);
-        GLCameraControler.MoveTo(DCEarthSystem);
-        GLCamera.TargetObject := DCEarthSystem;
-        GLCameraControler.TargetObject := DCEarthSystem;
+        Camera.MoveTo(dcEarth);
+        CameraControler.MoveTo(dcEarth);
+        Camera.TargetObject := dcEarth;
+        CameraControler.TargetObject := dcEarth;
       end;
     'h': if not highResResourcesLoaded then
       begin
@@ -466,7 +476,7 @@ begin
         try
           if DirectoryExists('Data') then
             ChDir('Data');
-          with GLMaterialLibrary do
+          with MatLib do
           begin
             LoadHighResTexture(Materials[0], 'land_ocean_ice_4096.jpg');
             LoadHighResTexture(Materials[1], 'land_ocean_ice_lights_4096.jpg');
@@ -474,9 +484,9 @@ begin
           end;
           if FileExists('Hipparcos_9.0.stars') then
           begin
-            GLSkyDome.Stars.Clear;
-            GLSkyDome.Stars.LoadStarsFile('Hipparcos_9.0.stars');
-            GLSkyDome.StructureChanged;
+            SkyDome.Stars.Clear;
+            SkyDome.Stars.LoadStarsFile('Hipparcos_9.0.stars');
+            SkyDome.StructureChanged;
           end;
           GLSceneViewer.Buffer.AntiAliasing := aa2x;
         finally

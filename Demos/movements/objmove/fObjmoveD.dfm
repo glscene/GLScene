@@ -2,12 +2,13 @@ object FormObjmove: TFormObjmove
   Left = 87
   Top = 128
   Caption = 'Moving Objects with Mouse'
-  ClientHeight = 586
-  ClientWidth = 785
+  ClientHeight = 628
+  ClientWidth = 832
   Color = clBtnFace
   ParentFont = True
   KeyPreview = True
   Position = poScreenCenter
+  WindowState = wsMaximized
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnKeyUp = FormKeyUp
@@ -17,27 +18,29 @@ object FormObjmove: TFormObjmove
   object Scn: TGLSceneViewer
     Left = 201
     Top = 0
-    Width = 584
-    Height = 563
+    Width = 631
+    Height = 605
     Margins.Left = 4
     Margins.Top = 4
     Margins.Right = 4
     Margins.Bottom = 4
     Camera = GLCamera
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 34.098258972167970000
+    FieldOfView = 36.478870391845700000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ScnMouseDown
     OnMouseMove = ScnMouseMove
     OnMouseWheel = FormMouseWheel
     TabOrder = 0
+    ExplicitWidth = 598
+    ExplicitHeight = 582
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
     Width = 201
-    Height = 563
+    Height = 605
     Margins.Left = 4
     Margins.Top = 4
     Margins.Right = 4
@@ -45,11 +48,12 @@ object FormObjmove: TFormObjmove
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitHeight = 563
     object Label2: TLabel
       Left = 0
       Top = 0
       Width = 201
-      Height = 75
+      Height = 40
       Margins.Left = 4
       Margins.Top = 4
       Margins.Right = 4
@@ -58,13 +62,13 @@ object FormObjmove: TFormObjmove
       Caption = 'Select and move with the mouse any of the cubes.'
       ShowAccelChar = False
       WordWrap = True
-      ExplicitWidth = 183
+      ExplicitWidth = 171
     end
     object Label3: TLabel
       Left = 0
-      Top = 75
+      Top = 40
       Width = 201
-      Height = 50
+      Height = 40
       Margins.Left = 4
       Margins.Top = 4
       Margins.Right = 4
@@ -73,14 +77,14 @@ object FormObjmove: TFormObjmove
       Caption = 'Default movement is on the XY plane.'
       ShowAccelChar = False
       WordWrap = True
-      ExplicitTop = 33
-      ExplicitWidth = 199
+      ExplicitTop = 75
+      ExplicitWidth = 188
     end
     object Label4: TLabel
       Left = 0
-      Top = 125
+      Top = 80
       Width = 201
-      Height = 50
+      Height = 40
       Margins.Left = 4
       Margins.Top = 4
       Margins.Right = 4
@@ -89,8 +93,8 @@ object FormObjmove: TFormObjmove
       Caption = 'Shift + Drag moves on the XZ plane.'
       ShowAccelChar = False
       WordWrap = True
-      ExplicitTop = 65
-      ExplicitWidth = 191
+      ExplicitTop = 125
+      ExplicitWidth = 200
     end
     object Button1: TButton
       Left = 773
@@ -106,7 +110,7 @@ object FormObjmove: TFormObjmove
     end
     object GroupBox1: TGroupBox
       Left = 0
-      Top = 175
+      Top = 120
       Width = 201
       Height = 53
       Margins.Left = 4
@@ -135,14 +139,16 @@ object FormObjmove: TFormObjmove
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 563
-    Width = 785
+    Top = 605
+    Width = 832
     Height = 23
     Margins.Left = 4
     Margins.Top = 4
     Margins.Right = 4
     Margins.Bottom = 4
     Panels = <>
+    ExplicitTop = 563
+    ExplicitWidth = 785
   end
   object GLScene1: TGLScene
     Left = 296
@@ -188,6 +194,7 @@ object FormObjmove: TFormObjmove
       CubeSize = {0000803E0000803E0000803E}
     end
     object XArrow: TGLArrowLine
+      Material.FrontProperties.Ambient.Color = {00000000000000000000803F0000803F}
       Direction.Coordinates = {0000803F000000000000000000000000}
       Position.Coordinates = {CDCCCC3D000080BF000080BF0000803F}
       Up.Coordinates = {000000002EBD3BB30000803F00000000}
@@ -200,6 +207,7 @@ object FormObjmove: TFormObjmove
       BottomArrowHeadRadius = 0.050000000745058060
     end
     object YArrow: TGLArrowLine
+      Material.FrontProperties.Ambient.Color = {000000000000003F000000000000803F}
       Direction.Coordinates = {24DE4C320000803F2CBD3B3300000000}
       Position.Coordinates = {000080BFCDCCCC3D000080BF0000803F}
       Up.Coordinates = {2EBD3BB32CBD3BB30000803F00000000}
@@ -212,6 +220,7 @@ object FormObjmove: TFormObjmove
       BottomArrowHeadRadius = 0.200000002980232200
     end
     object ZArrow: TGLArrowLine
+      Material.FrontProperties.Ambient.Color = {0000803F00000000000000000000803F}
       Position.Coordinates = {000080BF000080BF000000BF0000803F}
       BottomRadius = 0.009999999776482582
       Height = 1.000000000000000000

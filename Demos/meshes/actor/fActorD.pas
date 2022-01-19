@@ -88,6 +88,7 @@ begin
   SetGLSceneMediaDir();
   // Load Texture for ground disk
   Disk1.Material.Texture.Image.LoadFromFile('clover.jpg');
+  Disk1.Material.Texture.Disabled := False;
 
   // Load Actor into GLScene
   Actor1.LoadFromFile('waste.md2');

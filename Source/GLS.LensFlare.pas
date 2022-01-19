@@ -16,7 +16,7 @@ uses
   System.Classes,
   System.SysUtils,
   System.Math,
-  
+
   GLS.OpenGLTokens,
   GLS.Scene,
   GLS.PersistentClasses,
@@ -34,10 +34,10 @@ uses
 
 type
 
-  TFlareElement = (feGlow, feRing, feStreaks, feRays, feSecondaries);
-  TFlareElements = set of TFlareElement;
+  TGLFlareElement = (feGlow, feRing, feStreaks, feRays, feSecondaries);
+  TGLFlareElements = set of TGLFlareElement;
 
-  (* The actual gradients between two colors are, of course, calculated by OpenGL. 
+  (* The actual gradients between two colors are, of course, calculated by OpenGL.
      The start and end colors of a gradient are stored to represent the color of
      lens flare elements. *)
   TGLFlareGradient = class(TGLUpdateAbleObject)
@@ -75,7 +75,7 @@ type
     FNumSecs: Integer;
     FResolution: Integer;
     FAutoZTest: Boolean;
-    FElements: TFlareElements;
+    FElements: TGLFlareElements;
     FSin20Res, FCos20Res: array of Single;
     FSinRes, FCosRes: array of Single;
     FTexRays: TGLTextureHandle;
@@ -105,7 +105,7 @@ type
     procedure SetNumSecs(aValue: Integer);
     procedure SetResolution(aValue: Integer);
     procedure SetAutoZTest(aValue: Boolean);
-    procedure SetElements(aValue: TFlareElements);
+    procedure SetElements(aValue: TGLFlareElements);
     procedure SetDynamic(aValue: Boolean);
     procedure SetPreRenderPoint(const val: TGLRenderPoint);
     procedure PreRenderEvent(Sender: TObject; var rci: TGLRenderContextInfo);
@@ -158,17 +158,17 @@ type
     property NumSecs: Integer read FNumSecs write SetNumSecs default 8;
     // Number of segments used when rendering circles.
     property Resolution: Integer read FResolution write SetResolution default 64;
-    {Automatically computes FlareIsNotOccluded depending on ZBuffer test.
+    (* Automatically computes FlareIsNotOccluded depending on ZBuffer test.
        Not that the automated test may use test result from the previous
-       frame into the next (to avoid a rendering stall). }
+       frame into the next (to avoid a rendering stall). *)
     property AutoZTest: Boolean read FAutoZTest write SetAutoZTest default True;
-    {Is the LensFlare not occluded?.
+    (* Is the LensFlare not occluded?.
        If false the flare will fade away, if true, it will fade in and stay.
-       This value is automatically updated if AutoZTest is set. }
+       This value is automatically updated if AutoZTest is set. *)
     property FlareIsNotOccluded: Boolean read FFlareIsNotOccluded write
       FFlareIsNotOccluded;
     // Which elements should be rendered?
-    property Elements: TFlareElements read FElements write SetElements default
+    property Elements: TGLFlareElements read FElements write SetElements default
       cDefaultFlareElements;
     (* Is the flare size adjusted dynamically?
        If true, the flare size will be grown and reduced over a few frames
@@ -177,8 +177,7 @@ type
        When false, flare will either be at full size or hidden.
        The flare is always considered non-dynamic at design-time. *)
     property Dynamic: Boolean read FDynamic write FDynamic default True;
-
-    (* PreRender point for pre-rendered flare textures. 
+    (* PreRender point for pre-rendered flare textures.
        See PreRender method for more details. *)
     property PreRenderPoint: TGLRenderPoint read FPreRenderPoint write
       SetPreRenderPoint;
@@ -272,7 +271,6 @@ begin
     VectorMake(1, 0.8, 0.5, 0.05), VectorMake(0.5, 0.2, 0, 0));
   FSecondariesGradient := TGLFlareGradient.CreateInitialized(Self,
     VectorMake(0, 0.2, 1, 0), VectorMake(0, 0.8, 0.2, 0.15));
-
   FTexRays := TGLTextureHandle.Create;
 end;
 
@@ -299,19 +297,16 @@ end;
 
 procedure TGLLensFlare.SetupRenderingOptions(StateCache: TGLStateCache);
 begin
-  with StateCache do
-  begin
-    Disable(stLighting);
-    Disable(stDepthTest);
-    Disable(stFog);
-    Disable(stColorMaterial);
-    Disable(stCullFace);
-    DepthWriteMask := False;
-    Enable(stBlend);
-    SetBlendFunc(bfSrcAlpha, bfOne);
-    Disable(stAlphaTest);
-    PolygonMode := pmFill;
-  end;
+  StateCache.Disable(stLighting);
+  StateCache.Disable(stDepthTest);
+  StateCache.Disable(stFog);
+  StateCache.Disable(stColorMaterial);
+  StateCache.Disable(stCullFace);
+  StateCache.DepthWriteMask := False;
+  StateCache.Enable(stBlend);
+  StateCache.SetBlendFunc(bfSrcAlpha, bfOne);
+  StateCache.Disable(stAlphaTest);
+  StateCache.PolygonMode := pmFill;
 end;
 
 procedure TGLLensFlare.RenderRays(StateCache: TGLStateCache; const size:
@@ -324,13 +319,9 @@ begin
   if gl.GREMEDY_string_marker then
     gl.StringMarkerGREMEDY(14, 'LensFlare.Rays');
 {$ENDIF}
-
-  with StateCache do
-  begin
-    LineWidth := 1;
-    Disable(stLineSmooth);
-    Disable(stLineStipple);
-  end;
+  StateCache.LineWidth := 1;
+  StateCache.Disable(stLineSmooth);
+  StateCache.Disable(stLineStipple);
 
   gl.Begin_(GL_LINES);
   for i := 0 to Resolution * 20 - 1 do
@@ -392,20 +383,16 @@ begin
     c := c0;
     s0 := FSinRes[i] * 0.6 * Squeeze;
     c0 := FCosRes[i] * 0.6;
-
     gl.Color4fv(GlowGradient.ToColor.AsAddress);
     gl.Vertex2f((FCurrSize - rW) * c, (FCurrSize - rW) * s);
     gl.Color4fv(RingGradient.FromColor.AsAddress);
     gl.Vertex2f(FCurrSize * c, Squeeze * FCurrSize * s);
-
     gl.Vertex2f(FCurrSize * c0, FCurrSize * s0);
     gl.Color4fv(GlowGradient.ToColor.AsAddress);
     gl.Vertex2f((FCurrSize - rW) * c0, (FCurrSize - rW) * s0);
-
     gl.Color4fv(RingGradient.FromColor.AsAddress);
     gl.Vertex2f(FCurrSize * c, FCurrSize * s);
     gl.Vertex2f(FCurrSize * c0, FCurrSize * s0);
-
     gl.Color4fv(GlowGradient.ToColor.AsAddress);
     gl.Vertex2f((FCurrSize + rW) * c0, (FCurrSize + rW) * s0);
     gl.Vertex2f((FCurrSize + rW) * c, (FCurrSize + rW) * s);
@@ -442,7 +429,6 @@ begin
     else
       grad := SecondariesGradient;
     rnd := (Random + 0.1) * FCurrSize * 0.25;
-
     gl.Begin_(GL_TRIANGLE_FAN);
     gl.Color4fv(grad.FromColor.AsAddress);
     gl.Vertex2f(v.X, v.Y);
@@ -471,7 +457,6 @@ begin
     Exit;
   end;
   CurrentBuffer := TGLSceneBuffer(rci.buffer);
-
   SetVector(v, AbsolutePosition);
   // are we looking towards the flare?
   rv := VectorSubtract(v, PAffineVector(@rci.cameraPosition)^);
@@ -486,7 +471,6 @@ begin
   end
   else
     flareInViewPort := False;
-
   dynamicSize := FDynamic and not (csDesigning in ComponentState);
   if dynamicSize then
   begin
@@ -511,7 +495,6 @@ begin
     else
       FCurrSize := 0;
   end;
-
   // Prepare matrices
   gl.PushMatrix;
   gl.LoadMatrixf(@CurrentBuffer.BaseProjectionMatrix);
@@ -527,21 +510,18 @@ begin
     screenPos.X - rci.viewPortSize.cx * 0.5,
     screenPos.Y - rci.viewPortSize.cy * 0.5,
     0);
-
   if AutoZTest then
   begin
-    if dynamicSize and (GL.HP_occlusion_test or
-      TGLOcclusionQueryHandle.IsSupported) then
+    if (dynamicSize and (GL.HP_occlusion_test or
+      TGLOcclusionQueryHandle.IsSupported)) then
     begin
       // hardware-based occlusion test is possible
       FlareIsNotOccluded := True;
-
       rci.GLStates.SetColorMask([]);
       rci.GLStates.Disable(stAlphaTest);
       rci.GLStates.DepthWriteMask := False;
       rci.GLStates.Enable(stDepthTest);
       rci.GLStates.DepthFunc := cfLEqual;
-
       if TGLOcclusionQueryHandle.IsSupported then
       begin
         // preferred method, doesn't stall rendering too badly
@@ -559,14 +539,12 @@ begin
         // occlusion_test, stalls rendering a bit
         gl.Enable(GL_OCCLUSION_TEST_HP);
       end;
-
       gl.Begin_(GL_QUADS);
       gl.Vertex3f(posVector.X + 2, posVector.Y, 1);
       gl.Vertex3f(posVector.X, posVector.Y + 2, 1);
       gl.Vertex3f(posVector.X - 2, posVector.Y, 1);
       gl.Vertex3f(posVector.X, posVector.Y - 2, 1);
       gl.End_;
-
       if TGLOcclusionQueryHandle.IsSupported then
         FOcclusionQuery.EndQuery
       else
@@ -574,7 +552,6 @@ begin
         gl.Disable(GL_OCCLUSION_TEST_HP);
         gl.GetBooleanv(GL_OCCLUSION_TEST_RESULT_HP, @FFlareIsNotOccluded)
       end;
-
       rci.GLStates.DepthFunc := cfLEqual;
       rci.GLStates.SetColorMask(cAllColorComponents);
     end
@@ -582,27 +559,24 @@ begin
     begin
       //Compares the distance to the lensflare, to the z-buffer depth.
       //This prevents the flare from being occluded by objects BEHIND the light.
+      (*
       depth := CurrentBuffer.PixelToDistance(Round(ScreenPos.X),
         Round(rci.viewPortSize.cy - ScreenPos.Y));
       dist := VectorDistance(rci.cameraPosition, self.AbsolutePosition);
       FlareIsNotOccluded := ((dist - depth) < 1);
+      *)
     end;
   end;
-
   if FCurrSize >= 0 then
   begin
-
     // Random seed must be backed up, could be used for other purposes
     // (otherwise we essentially reset the random generator at each frame)
     oldSeed := RandSeed;
     RandSeed := Seed;
-
     SetupRenderingOptions(rci.GLStates);
-
     if [feGlow, feStreaks, feRays, feRing] * Elements <> [] then
     begin
       gl.Translatef(posVector.X, posVector.Y, posVector.Z);
-
       // Glow (a circle with transparent edges):
       if feGlow in Elements then
       begin
@@ -835,7 +809,7 @@ begin
   end;
 end;
 
-procedure TGLLensFlare.SetElements(aValue: TFlareElements);
+procedure TGLLensFlare.SetElements(aValue: TGLFlareElements);
 begin
   if FElements <> aValue then
   begin

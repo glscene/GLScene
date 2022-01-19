@@ -26,7 +26,7 @@ object Form1: TForm1
     Margins.Top = 4
     Margins.Right = 4
     Margins.Bottom = 4
-    Camera = GLCamera
+    Camera = Camera
     BeforeRender = GLSceneViewerBeforeRender
     Buffer.BackgroundColor = clBlack
     FieldOfView = 153.668411254882800000
@@ -37,11 +37,11 @@ object Form1: TForm1
     OnMouseMove = GLSceneViewerMouseMove
     TabOrder = 0
   end
-  object GLScene: TGLScene
+  object Scene: TGLScene
     ObjectsSorting = osNone
     Left = 16
     Top = 16
-    object GLSkyDome: TGLSkyDome
+    object SkyDome: TGLSkyDome
       Bands = <
         item
           StartColor.Color = {0000803F0000803F0000803F0000803F}
@@ -72,22 +72,22 @@ object Form1: TForm1
         Options = []
       end
     end
-    object DCEarthSystem: TGLDummyCube
+    object dcEarth: TGLDummyCube
       ObjectsSorting = osNone
       CubeSize = 1.000000000000000000
-      object GLCameraControler: TGLCamera
+      object CameraControler: TGLCamera
         DepthOfView = 100.000000000000000000
         FocalLength = 50.000000000000000000
-        TargetObject = DCEarthSystem
+        TargetObject = dcEarth
         Position.Coordinates = {000000400000003F0000803F0000803F}
         Direction.Coordinates = {0000803F000000000000008000000000}
         Up.Coordinates = {00000000000000000000803F00000000}
       end
-      object GLCamera: TGLCamera
+      object Camera: TGLCamera
         DepthOfView = 16000.000000000000000000
         FocalLength = 80.000000000000000000
         NearPlaneBias = 0.100000001490116100
-        TargetObject = DCEarthSystem
+        TargetObject = dcEarth
         CameraStyle = csInfinitePerspective
         Position.Coordinates = {000000400000003F0000803F0000803F}
         Direction.Coordinates = {0000803F000000000000008000000000}
@@ -97,7 +97,7 @@ object Form1: TForm1
         Up.Coordinates = {FC9D7FB10000803F0000000000000000}
         CubeSize = 1.000000000000000000
         object SPMoon: TGLSphere
-          Material.MaterialLibrary = GLMaterialLibrary
+          Material.MaterialLibrary = MatLib
           Material.LibMaterialName = 'moon'
           Direction.Coordinates = {DAD031BE000000005B1C7CBF00000000}
           Position.Coordinates = {CDCCECC100000000000000000000803F}
@@ -109,19 +109,18 @@ object Form1: TForm1
         end
       end
       object SPEarth: TGLSphere
-        Material.MaterialLibrary = GLMaterialLibrary
+        Material.MaterialLibrary = MatLib
         Material.LibMaterialName = 'earthDay'
         Direction.Coordinates = {000000000000803F0000000000000000}
-        ShowAxes = True
         TurnAngle = -150.000000000000000000
         Up.Coordinates = {00000000000000800000803F00000000}
         Radius = 0.500000000000000000
         Slices = 32
         Stacks = 32
       end
-      object GLDirectOpenGL1: TGLDirectOpenGL
+      object DirectOpenGL: TGLDirectOpenGL
         UseBuildList = False
-        OnRender = GLDirectOpenGL1Render
+        OnRender = DirectOpenGLRender
         Blend = False
       end
     end
@@ -136,19 +135,19 @@ object Form1: TForm1
       end
     end
   end
-  object GLCadencer: TGLCadencer
-    Scene = GLScene
+  object Cadencer: TGLCadencer
+    Scene = Scene
     MaxDeltaTime = 0.050000000000000000
-    OnProgress = GLCadencerProgress
-    Left = 56
-    Top = 16
+    OnProgress = CadencerProgress
+    Left = 22
+    Top = 92
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer
-    Left = 16
-    Top = 56
+    Left = 348
+    Top = 22
   end
-  object GLMaterialLibrary: TGLMaterialLibrary
+  object MatLib: TGLMaterialLibrary
     Materials = <
       item
         Name = 'earthDay'
@@ -6930,8 +6929,8 @@ object Form1: TForm1
         Material.Texture.FilteringQuality = tfAnisotropic
         Material.Texture.Disabled = False
       end>
-    Left = 56
-    Top = 56
+    Left = 134
+    Top = 102
   end
   object EarthCombiner: TGLTexCombineShader
     Combiners.Strings = (

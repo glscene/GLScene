@@ -26,21 +26,6 @@
 #pragma link "GLS.WindowsFont"
 #pragma link "GLS.HUDObjects"
 
-#pragma link "GLS.BaseClasses"
-#pragma link "GLS.BitmapFont"
-#pragma link "GLS.Cadencer"
-#pragma link "GLS.Coordinates"
-#pragma link "GLS.HeightData"
-#pragma link "GLS.HeightTileFileHDS"
-#pragma link "GLS.HUDObjects"
-#pragma link "GLS.Material"
-#pragma link "GLS.Objects"
-#pragma link "GLS.Scene"
-#pragma link "GLS.SceneViewer"
-#pragma link "GLS.SkyDome"
-#pragma link "GLS.TerrainRenderer"
-#pragma link "GLS.VectorFileObjects"
-#pragma link "GLS.WindowsFont"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
@@ -60,8 +45,8 @@ void __fastcall TForm1::FormCreate(TObject *Sender) {
 	TGLLibMaterial *libMat;
 	String DataPath;
 
-//	DataPath = ExtractFilePath(ParamStr(0));
-	DataPath = ExtractFilePath(Application->ExeName);
+	DataPath = ExtractFilePath(ParamStr(0));
+//	DataPath = ExtractFilePath(Application->ExeName);
 	DataPath += "Data\\";
 	SetCurrentDir(DataPath);
 	MaterialLibrary->TexturePaths = DataPath;
@@ -399,14 +384,16 @@ void TForm1::IssuePoint(TGLHeightData *hd, int x, int y, int s2, float t, int rx
 
 	px = x + rx + s2;
 	py = y + ry + s2;
-	if (hd->DataState == hdsNone) {
-		alpha = 1;
+//	if (hd->DataState == hdsNone) {
+	alpha = 1;
+/*
 	}
 	else {
 		alpha = (cWaterLevel - hd->SmallIntHeight(rx, ry)) *
 			(1 / cWaterOpaqueDepth);
 		alpha = ClampValue(alpha, 0.5, 1.0);
 	}
+*/
 	SinCos(WaterPhase(px, py), sa, ca);
 	colorRatio = 1 - alpha * 0.1;
 	glColor4f(r*colorRatio, g*colorRatio, b, alpha);

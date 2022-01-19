@@ -101,20 +101,20 @@ begin
     Material.FrontProperties.Diffuse.Alpha := 0.2;
     // scale the clouds texture
     TextureScale.X := 8;
-    TextureScale.y := 8;
+    TextureScale.Y := 8;
   end;
 
   // bricks
   with LoadTexture('Bricks', 'rawwall.jpg') do
   begin
     TextureScale.X := 1;
-    TextureScale.y := 32;
+    TextureScale.Y := 32;
     Material.Texture.TextureMode := tmModulate;
   end;
   with LoadTexture('Bricks2', 'marbletiles.jpg') do
   begin
     TextureScale.X := 6;
-    TextureScale.y := 1;
+    TextureScale.Y := 1;
     Material.Texture.TextureMode := tmModulate;
   end;
 

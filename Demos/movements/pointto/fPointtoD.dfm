@@ -32,6 +32,20 @@ object FormPointto: TFormPointto
   object GLScene1: TGLScene
     Left = 16
     Top = 16
+    object GLLightSource1: TGLLightSource
+      Ambient.Color = {C1C0403FC1C0403FC1C0403F0000803F}
+      ConstAttenuation = 1.000000000000000000
+      Position.Coordinates = {0000A04100007041000040410000803F}
+      SpotCutOff = 180.000000000000000000
+    end
+    object GLCamera1: TGLCamera
+      DepthOfView = 100.000000000000000000
+      FocalLength = 50.000000000000000000
+      TargetObject = DCSphere
+      Position.Coordinates = {0000A0400000E040000000410000803F}
+      Left = 208
+      Top = 128
+    end
     object DCSphere: TGLDummyCube
       CubeSize = 1.000000000000000000
       object Sphere: TGLSphere
@@ -53,12 +67,6 @@ object FormPointto: TFormPointto
         NodesAspect = lnaInvisible
         Options = []
       end
-    end
-    object GLLightSource1: TGLLightSource
-      Ambient.Color = {C1C0403FC1C0403FC1C0403F0000803F}
-      ConstAttenuation = 1.000000000000000000
-      Position.Coordinates = {0000A04100007041000040410000803F}
-      SpotCutOff = 180.000000000000000000
     end
     object DCArrow: TGLDummyCube
       CubeSize = 1.000000000000000000
@@ -114,14 +122,6 @@ object FormPointto: TFormPointto
       OuterRadius = 4.000000000000000000
       Slices = 32
       SweepAngle = 360.000000000000000000
-    end
-    object GLCamera1: TGLCamera
-      DepthOfView = 100.000000000000000000
-      FocalLength = 50.000000000000000000
-      TargetObject = DCSphere
-      Position.Coordinates = {0000A0400000E040000000410000803F}
-      Left = 208
-      Top = 128
     end
   end
   object GLCadencer1: TGLCadencer

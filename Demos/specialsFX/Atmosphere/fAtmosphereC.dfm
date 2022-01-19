@@ -228,7 +228,6 @@ object Form1: TForm1
         item
           Color = clLime
         end>
-      Options = [sdoTwinkle]
     end
     object CameraTarget: TGLDummyCube
       Position.Coordinates = {0000204100000040000040400000803F}

@@ -231,7 +231,6 @@ object Form1: TForm1
       end
       object Disk1: TGLDisk
         Material.Texture.MinFilter = miLinear
-        Material.Texture.Disabled = False
         Position.Coordinates = {0000000000000000000080BF0000803F}
         Loops = 1
         OuterRadius = 3.000000000000000000

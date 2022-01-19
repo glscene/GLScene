@@ -18,7 +18,7 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.Color,
- 
+
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.VectorGeometry;

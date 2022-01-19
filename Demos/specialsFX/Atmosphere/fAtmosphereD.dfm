@@ -10,6 +10,7 @@ object FormAtmosphere: TFormAtmosphere
   Font.Height = -14
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 120
@@ -100,7 +101,7 @@ object FormAtmosphere: TFormAtmosphere
     end
     object Button4: TButton
       Left = 16
-      Top = 80
+      Top = 58
       Width = 135
       Height = 31
       Margins.Left = 4
@@ -113,7 +114,7 @@ object FormAtmosphere: TFormAtmosphere
     end
     object Button5: TButton
       Left = 16
-      Top = 119
+      Top = 97
       Width = 135
       Height = 31
       Margins.Left = 4
@@ -126,7 +127,7 @@ object FormAtmosphere: TFormAtmosphere
     end
     object Button2: TButton
       Left = 16
-      Top = 180
+      Top = 136
       Width = 110
       Height = 31
       Margins.Left = 4
@@ -139,7 +140,7 @@ object FormAtmosphere: TFormAtmosphere
     end
     object Button3: TButton
       Left = 16
-      Top = 219
+      Top = 175
       Width = 110
       Height = 31
       Margins.Left = 4
@@ -151,9 +152,9 @@ object FormAtmosphere: TFormAtmosphere
       OnClick = Button3Click
     end
     object Button9: TButton
-      Left = 16
-      Top = 280
-      Width = 93
+      Left = 14
+      Top = 214
+      Width = 67
       Height = 31
       Hint = 'Mouse Wheel Can change zoom too'
       Margins.Left = 4
@@ -167,9 +168,9 @@ object FormAtmosphere: TFormAtmosphere
       OnClick = Button9Click
     end
     object Button10: TButton
-      Left = 16
-      Top = 319
-      Width = 93
+      Left = 95
+      Top = 214
+      Width = 73
       Height = 31
       Hint = 'Mouse Wheel Can change zoom too'
       Margins.Left = 4
@@ -182,22 +183,9 @@ object FormAtmosphere: TFormAtmosphere
       TabOrder = 6
       OnClick = Button10Click
     end
-    object Button6: TButton
-      Left = 16
-      Top = 358
-      Width = 152
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
-      Caption = 'ON/Off atmosphere'
-      TabOrder = 7
-      OnClick = Button6Click
-    end
     object Button8: TButton
-      Left = 16
-      Top = 396
+      Left = 13
+      Top = 420
       Width = 152
       Height = 32
       Margins.Left = 4
@@ -205,13 +193,40 @@ object FormAtmosphere: TFormAtmosphere
       Margins.Right = 4
       Margins.Bottom = 4
       Caption = 'Change Blending Mode'
-      TabOrder = 8
+      TabOrder = 7
       OnClick = Button8Click
+    end
+    object rgAtmosphere: TRadioGroup
+      Left = 12
+      Top = 273
+      Width = 156
+      Height = 128
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
+      Caption = 'Atmosphere'
+      ItemIndex = 0
+      Items.Strings = (
+        'All'
+        'Lower'
+        'Upper'
+        'None')
+      TabOrder = 8
+      OnClick = rgAtmosphereClick
     end
   end
   object GLScene1: TGLScene
     Left = 176
     Top = 16
+    object GLCamera1: TGLCamera
+      DepthOfView = 1000.000000000000000000
+      FocalLength = 30.000000000000000000
+      TargetObject = CameraTarget
+      Position.Coordinates = {0000A0400000803F0000A0400000803F}
+      Direction.Coordinates = {00000000000080BF0000000000000000}
+      Up.Coordinates = {00000000000000000000803F00000000}
+    end
     object GLSkyDome1: TGLSkyDome
       Bands = <
         item
@@ -235,16 +250,23 @@ object FormAtmosphere: TFormAtmosphere
       object Not_a_planet: TGLSphere
         Material.FrontProperties.Diffuse.Color = {E6E5653F8F8E8E3ECDCC4C3F0000803F}
         Position.Coordinates = {0000000000007041000000C00000803F}
+        Visible = False
         Radius = 3.000000000000000000
       end
-      object GLDummyCube1: TGLDummyCube
+      object dcPlanet: TGLDummyCube
         ObjectsSorting = osNone
         Position.Coordinates = {0000204100000040000040400000803F}
         CubeSize = 1.000000000000000000
-        object GLSphere1: TGLSphere
+        object AtmosphereUpper: TGLAtmosphere
+          Sun = GLLensFlare1
+          Opacity = 2.000000000000000000
+          AtmosphereRadius = 4.000000000000000000
+          PlanetRadius = 3.500000000000000000
+        end
+        object Planet: TGLSphere
           Material.FrontProperties.Ambient.Color = {9796963E9796963E8F8E8E3E022B473F}
           Material.FrontProperties.Diffuse.Color = {CDCC4C3FCDCC4C3FCDCC4C3F48E13A3F}
-          Material.FrontProperties.Emission.Color = {8786863EA3A2A23EABAAAA3EB4C8363F}
+          Material.FrontProperties.Emission.Color = {0000803F0000803F0000803F0000803F}
           Material.FrontProperties.Specular.Color = {9190103F8988083FCFCE4E3F0000803F}
           Material.Texture.Image.Picture.Data = {
             0A544A504547496D61676565640100FFD8FFE000104A46494600010201004800
@@ -3102,9 +3124,12 @@ object FormAtmosphere: TFormAtmosphere
           Material.Texture.MagFilter = maNearest
           Material.Texture.TextureMode = tmModulate
           Material.Texture.Disabled = False
+          Material.Texture.NormalMapScale = 0.250000000000000000
           Direction.Coordinates = {00000000000080BF0000000000000000}
           Up.Coordinates = {00000000000000000000803F00000000}
           Radius = 3.500000000000000000
+          Slices = 64
+          Stacks = 64
         end
       end
       object GLLensFlare1: TGLLensFlare
@@ -3113,20 +3138,12 @@ object FormAtmosphere: TFormAtmosphere
         NumSecs = 10
         Resolution = 10
         FlareIsNotOccluded = True
-        Position.Coordinates = {000020C1000020C1000000000000803F}
+        Position.Coordinates = {0000A0400000A040000000000000803F}
         object GLLightSource1: TGLLightSource
           ConstAttenuation = 1.000000000000000000
           SpotCutOff = 180.000000000000000000
         end
       end
-    end
-    object GLCamera1: TGLCamera
-      DepthOfView = 1000.000000000000000000
-      FocalLength = 30.000000000000000000
-      TargetObject = CameraTarget
-      Position.Coordinates = {0000704100007041000000000000803F}
-      Direction.Coordinates = {00000000000080BF0000000000000000}
-      Up.Coordinates = {00000000000000000000803F00000000}
     end
   end
   object GLCadencer1: TGLCadencer

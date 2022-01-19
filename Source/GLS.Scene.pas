@@ -1870,7 +1870,6 @@ end;
 // ------------------
 // ------------------ TGLBaseSceneObject ------------------
 // ------------------
-
 constructor TGLBaseSceneObject.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
@@ -1894,10 +1893,8 @@ begin
   FBoundingBoxPersonalUnscaled := NullBoundingBox;
   FBoundingBoxOfChildren := NullBoundingBox;
   FBoundingBoxIncludingChildren := NullBoundingBox;
-
   distList := TSingleList.Create;
   objList := TPersistentObjectList.Create;
-
 end;
 
 constructor TGLBaseSceneObject.CreateAsChild(aParentOwner: TGLBaseSceneObject);
@@ -1921,8 +1918,8 @@ begin
     FParent.Remove(Self, False);
   DeleteChildren;
   FChildren.Free;
-            objList.Free;
-            distList.Free;
+  objList.Free;
+  distList.Free;
 
   inherited Destroy;
 end;
@@ -1935,17 +1932,14 @@ begin
     Result := 0;
     Exit;
   end;
-
   Result := FListHandle.Handle;
   if Result = 0 then
     Result := FListHandle.AllocateHandle;
-
   if ocStructure in FChanges then
   begin
     ClearStructureChanged;
     FListHandle.NotifyChangesOfData;
   end;
-
   if FListHandle.IsDataNeedUpdate then
   begin
     rci.GLStates.NewList(Result, GL_COMPILE);
@@ -2066,13 +2060,12 @@ end;
 procedure TGLBaseSceneObject.DefineProperties(Filer: TFiler);
 begin
   inherited;
-  {FOriginalFiler := Filer;}
-
+  (*FOriginalFiler := Filer;*)
   Filer.DefineBinaryProperty('BehavioursData', ReadBehaviours, WriteBehaviours,
     (Assigned(FBehaviours) and (FBehaviours.Count > 0)));
   Filer.DefineBinaryProperty('EffectsData', ReadEffects, WriteEffects,
     (Assigned(FEffects) and (FEffects.Count > 0)));
-  {FOriginalFiler:=nil;}
+  (*FOriginalFiler := nil;*)
 end;
 
 procedure TGLBaseSceneObject.WriteBehaviours(stream: TStream);
@@ -2092,16 +2085,18 @@ var
   reader: TReader;
 begin
   reader := TReader.Create(stream, 16384);
-  { with TReader(FOriginalFiler) do  }
+  (* with TReader(FOriginalFiler) do  *)
   try
-    {  reader.Root                 := Root;
+    (*
+      reader.Root                 := Root;
       reader.OnError              := OnError;
       reader.OnFindMethod         := OnFindMethod;
       reader.OnSetName            := OnSetName;
       reader.OnReferenceName      := OnReferenceName;
       reader.OnAncestorNotFound   := OnAncestorNotFound;
       reader.OnCreateComponent    := OnCreateComponent;
-      reader.OnFindComponentClass := OnFindComponentClass;}
+      reader.OnFindComponentClass := OnFindComponentClass;
+    *)
     Behaviours.ReadFromFiler(reader);
   finally
     reader.Free;
@@ -2125,16 +2120,18 @@ var
   reader: TReader;
 begin
   reader := TReader.Create(stream, 16384);
-  {with TReader(FOriginalFiler) do }
+  (*with TReader(FOriginalFiler) do *)
   try
-    { reader.Root                 := Root;
+    (*
+     reader.Root                 := Root;
      reader.OnError              := OnError;
      reader.OnFindMethod         := OnFindMethod;
      reader.OnSetName            := OnSetName;
      reader.OnReferenceName      := OnReferenceName;
      reader.OnAncestorNotFound   := OnAncestorNotFound;
      reader.OnCreateComponent    := OnCreateComponent;
-     reader.OnFindComponentClass := OnFindComponentClass;   }
+     reader.OnFindComponentClass := OnFindComponentClass;
+    *)
     Effects.ReadFromFiler(reader);
   finally
     reader.Free;
@@ -2268,7 +2265,7 @@ begin
   if ocAbsoluteMatrix in FChanges then
   begin
     RebuildMatrix;
-    if Assigned(Parent) {and (not (Parent is TGLSceneRootObject))} then
+    if Assigned(Parent) (*and (not (Parent is TGLSceneRootObject))*) then
     begin
       MatrixMultiply(FLocalMatrix, TGLBaseSceneObject(Parent).AbsoluteMatrixAsAddress^,
         FAbsoluteMatrix);
@@ -3139,12 +3136,12 @@ begin
   // convert absolute to local and adjust object
   if Parent <> nil then
   begin
-    FUp.AsVector := Parent.AbsoluteToLocal(absUp);  
+    FUp.AsVector := Parent.AbsoluteToLocal(absUp);
     FDirection.AsVector := Parent.AbsoluteToLocal(absDir);
   end
   else
   begin
-    FUp.AsVector := absUp;  
+    FUp.AsVector := absUp;
     FDirection.AsVector := absDir;
   end;
   TransformationChanged
@@ -3389,19 +3386,16 @@ begin
       rightvector := VectorCrossProduct(lookat,upvector);
       upvector:= VectorCrossProduct(rightvector,lookat);
     end;
-    //now the up right and lookat vector are orthogonal
-
+    //now the up right and look at vector are orthogonal
     // vector Target to camera
     T2C:= VectorSubtract(AbsolutePosition,anObject.AbsolutePosition);
     RotateVector(T2C,rightvector,DegToRadian(-PitchDelta));
     RotateVector(T2C,upvector,DegToRadian(-TurnDelta));
     AbsolutePosition := VectorAdd(anObject.AbsolutePosition, T2C);
-
     //now update new up vector
     RotateVector(upvector,rightvector,DegToRadian(-PitchDelta));
     AbsoluteUp := upvector;
     AbsoluteDirection := VectorSubtract(anObject.AbsolutePosition,AbsolutePosition);
-
   end;
 end;
 
@@ -3485,7 +3479,6 @@ begin
   if Assigned(FScene) then
     FScene.AddLights(aChild);
   AChild.TransformationChanged;
-
   aChild.DoOnAddedToParent;
 end;
 
@@ -3624,7 +3617,6 @@ begin
 
   if (ARci.drawState = dsPicking) and not FPickable then
     exit;
-
   // visibility culling determination
   if ARci.visibilityCulling in [vcObjectBased, vcHierarchical] then
   begin
@@ -3652,7 +3644,6 @@ begin
     shouldRenderSelf := True;
     shouldRenderChildren := FChildren.Count>0;
   end;
-
   // Prepare Matrix and PickList stuff
   ARci.PipelineTransformation.Push;
 
@@ -3664,7 +3655,6 @@ begin
 	  MatrixMultiply(LocalMatrix^, ARci.PipelineTransformation.ModelMatrix^))
   else
     ARci.PipelineTransformation.SetModelMatrix(AbsoluteMatrix);
-
   master := nil;
   if ARci.drawState = dsPicking then
   begin
@@ -3672,7 +3662,6 @@ begin
       master := TGLSceneBuffer(ARci.buffer).FSelector.CurrentObject;
     TGLSceneBuffer(ARci.buffer).FSelector.CurrentObject := Self;
   end;
-
   // Start rendering
   if shouldRenderSelf then
   begin
@@ -3681,7 +3670,6 @@ begin
     if FShowAxes then
       DrawAxes(ARci, $CCCC);
 {$ENDIF}
-
     if Assigned(FEffects) and (FEffects.Count > 0) then
     begin
       ARci.PipelineTransformation.Push;
@@ -4067,7 +4055,6 @@ end;
 // ------------------
 // ------------------ TGLBaseBehaviour ------------------
 // ------------------
-
 constructor TGLBaseBehaviour.Create(aOwner: TXCollection);
 begin
   inherited Create(aOwner);
@@ -4124,7 +4111,6 @@ end;
 // ------------------
 // ------------------ TGLBehaviours ------------------
 // ------------------
-
 constructor TGLBehaviours.Create(aOwner: TPersistent);
 begin
   Assert(aOwner is TGLBaseSceneObject);
@@ -4171,7 +4157,6 @@ end;
 // ------------------
 // ------------------ TGLEffect ------------------
 // ------------------
-
 procedure TGLEffect.WriteToFiler(writer: TWriter);
 begin
   inherited;
@@ -4203,7 +4188,6 @@ end;
 // ------------------
 // ------------------ TGLEffects ------------------
 // ------------------
-
 constructor TGLEffects.Create(aOwner: TPersistent);
 begin
   Assert(aOwner is TGLBaseSceneObject);
@@ -4278,7 +4262,6 @@ end;
 // ------------------
 // ------------------ TGLCustomSceneObject ------------------
 // ------------------
-
 constructor TGLCustomSceneObject.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
@@ -4352,7 +4335,6 @@ end;
 // ------------------
 // ------------------ TGLSceneRootObject ------------------
 // ------------------
-
 constructor TGLSceneRootObject.Create(AOwner: TComponent);
 begin
   Assert(AOwner is TGLScene);
@@ -4364,7 +4346,6 @@ end;
 // ------------------
 // ------------------ TGLCamera ------------------
 // ------------------
-
 constructor TGLCamera.Create(aOwner: TComponent);
 begin
   inherited Create(aOwner);
@@ -4545,39 +4526,31 @@ begin
     // borders (left, top, right and bottom) and the viewport borders.
     // Note: viewport.top is actually bottom, because the window (and viewport) origin
     // in OGL is the lower left corner
-
     if IsPerspective(CameraStyle) then
       f := FNearPlaneBias / (AWidth * FSceneScale)
     else
       f := 100 * FNearPlaneBias / (focalLength * AWidth * FSceneScale);
-
     // calculate window/viewport ratio for right extent
     Ratio := (2 * AViewport.Width + 2 * AViewport.Left - AWidth) * f;
     // calculate aspect ratio correct right value of the view frustum and take
     // the window/viewport ratio also into account
     vRight := Ratio * AWidth / (2 * MaxDim);
-
     // the same goes here for the other three extents
     // left extent:
     Ratio := (AWidth - 2 * AViewport.Left) * f;
     vLeft := -Ratio * AWidth / (2 * MaxDim);
-
     if IsPerspective(CameraStyle) then
       f := FNearPlaneBias / (AHeight * FSceneScale)
     else
       f := 100 * FNearPlaneBias / (focalLength * AHeight * FSceneScale);
-
     // top extent (keep in mind the origin is left lower corner):
     Ratio := (2 * AViewport.Height + 2 * AViewport.Top - AHeight) * f;
     vTop := Ratio * AHeight / (2 * MaxDim);
-
     // bottom extent:
     Ratio := (AHeight - 2 * AViewport.Top) * f;
     vBottom := -Ratio * AHeight / (2 * MaxDim);
-
     FNearPlane := FFocalLength * 2 * ADPI / (25.4 * MaxDim) * FNearPlaneBias;
     vFar := FNearPlane + FDepthOfView;
-
     // finally create view frustum (perspective or orthogonal)
     case CameraStyle of
       csPerspective:
@@ -4631,7 +4604,6 @@ begin
     else
       Assert(False);
     end;
-
     with CurrentGLContext.PipelineTransformation do
       SetProjectionMatrix(MatrixMultiply(mat, ProjectionMatrix^));
       FViewPortRadius := VectorLength(vRight, vTop) / FNearPlane
@@ -4743,7 +4715,6 @@ begin
     vDir := AbsoluteDirection;
     vRight := VectorCrossProduct(vDir, vUp);
   end;
-
   //save scale & position info
   Scale1 := obj.Scale.AsVector;
   position1 := obj.Position.asVector;
@@ -5056,7 +5027,6 @@ end;
 // ------------------
 // ------------------ TGLImmaterialSceneObject ------------------
 // ------------------
-
 procedure TGLImmaterialSceneObject.DoRender(var ARci: TGLRenderContextInfo;
   ARenderSelf, ARenderChildren: Boolean);
 begin
@@ -5076,7 +5046,6 @@ end;
 // ------------------
 // ------------------ TGLCameraInvariantObject ------------------
 // ------------------
-
 constructor TGLCameraInvariantObject.Create(AOwner: TComponent);
 begin
   inherited;
@@ -5118,7 +5087,6 @@ begin
         end;
         // Apply local transform
         SetModelMatrix(LocalMatrix^);
-
         if ARenderSelf then
         begin
           if (osDirectDraw in ObjectStyle) or ARci.amalgamating then
@@ -5149,7 +5117,6 @@ end;
 // ------------------
 // ------------------ TGLDirectOpenGL ------------------
 // ------------------
-
 constructor TGLDirectOpenGL.Create(AOwner: TComponent);
 begin
   inherited;
@@ -5211,7 +5178,6 @@ end;
 // ------------------
 // ------------------ TGLRenderPoint ------------------
 // ------------------
-
 constructor TGLRenderPoint.Create(AOwner: TComponent);
 begin
   inherited;
@@ -5284,7 +5250,6 @@ end;
 // ------------------
 // ------------------ TGLProxyObject ------------------
 // ------------------
-
 constructor TGLProxyObject.Create(AOwner: TComponent);
 begin
   inherited;
@@ -5460,7 +5425,6 @@ end;
 // ------------------
 // ------------------ TGLLightSource ------------------
 // ------------------
-
 constructor TGLLightSource.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
@@ -5615,7 +5579,6 @@ end;
 // ------------------
 // ------------------ TGLScene ------------------
 // ------------------
-
 constructor TGLScene.Create(AOwner: TComponent);
 begin
   inherited;
@@ -5637,7 +5600,7 @@ begin
   FObjects.DestroyHandles;
   FLights.Free;
   FObjects.Free;
-  if Assigned(FBuffers) then 
+  if Assigned(FBuffers) then
     FreeAndNil(FBuffers);
   inherited Destroy;
 end;
@@ -6075,7 +6038,6 @@ end;
 
 // Note: The fog implementation is not conformal with the rest of the scene management
 //       because it is viewer bound not scene bound.
-
 constructor TGLFogEnvironment.Create(AOwner: TPersistent);
 begin
   inherited;
@@ -6220,7 +6182,6 @@ end;
 // ------------------
 // ------------------ TGLSceneBuffer ------------------
 // ------------------
-
 constructor TGLSceneBuffer.Create(AOwner: TPersistent);
 begin
   inherited Create(AOwner);
@@ -6502,7 +6463,7 @@ begin
     limStereo: gl.GetIntegerv(GL_STEREO, @Result);
     limDoubleBuffer: gl.GetIntegerv(GL_DOUBLEBUFFER, @Result);
     limSubpixelBits: gl.GetIntegerv(GL_SUBPIXEL_BITS, @Result);
-    limNbTextureUnits: 
+    limNbTextureUnits:
       if gl.ARB_multitexture then
         gl.GetIntegerv(GL_MAX_TEXTURE_UNITS_ARB, @Result)
       else
@@ -7673,7 +7634,6 @@ end;
 // ------------------
 // ------------------ TGLNonVisualViewer ------------------
 // ------------------
-
 constructor TGLNonVisualViewer.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
@@ -7968,7 +7928,6 @@ end;
 // ------------------
 // ------------------ TGLMemoryViewer ------------------
 // ------------------
-
 constructor TGLMemoryViewer.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
@@ -8013,7 +7972,6 @@ end;
 // ------------------
 // ------------------ TGLInitializableObjectList ------------------
 // ------------------
-
 function TGLInitializableObjectList.Add(const Item: IGLInitializable): Integer;
 begin
   Result := inherited Add(Pointer(Item));

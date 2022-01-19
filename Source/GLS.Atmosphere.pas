@@ -1,13 +1,12 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Atmosphere;
 
 (*
-   This unit contains classes that imitate an atmosphere around a planet.
-      1) Eats a lot of CPU (reduces FPS from 1240 to 520 on my PC with cSlices=100)
-      2) Alpha in LowAtmColor, HighAtmColor is ignored.
+  This unit contains classes that imitate an atmosphere around a planet.
+  1) Eats a lot of CPU (reduces FPS from 1240 to 520 on my PC with cSlices=100)
+  2) Alpha in LowAtmColor, HighAtmColor is ignored.
 *)
 
 interface
@@ -18,7 +17,7 @@ uses
   Winapi.OpenGL,
   System.SysUtils,
   System.Classes,
-  
+
   GLS.OpenGLTokens,
   GLS.Scene,
   GLS.Objects,
@@ -32,12 +31,15 @@ uses
   GLS.VectorTypes;
 
 type
-   EGLAtmosphereException = class(Exception);
+  EGLAtmosphereException = class(Exception);
 
-  (* With aabmOneMinusSrcAlpha atmosphere is transparent to other objects,
-     but has problems, which are best seen when the Atmosphere radius is big.
-     With bmOneMinusDstColor atmosphere doesn't have these problems, but offers
-     limited transparency (when you look closely on the side). *)
+  (*
+    With atmosphere options:
+    - aabmOneMinusSrcAlpha  is transparent to other objects,
+      but has problems, which are best seen when the Atmosphere radius is big;
+    - bmOneMinusDstColor atmosphere doesn't have these problems, but offers
+      limited transparency (when you look closely on the side).
+  *)
   TGLAtmosphereBlendingMode = (abmOneMinusDstColor, abmOneMinusSrcAlpha);
 
   // This class imitates an atmosphere around a planet
@@ -67,30 +69,36 @@ type
     function StoreLowAtmColor: Boolean;
     function StoreHighAtmColor: Boolean;
   protected
-    procedure Notification(AComponent: TComponent; Operation: TOperation); override;
+    procedure Notification(AComponent: TComponent;
+      Operation: TOperation); override;
   public
     property Sun: TGLBaseSceneObject read FSun write SetSun;
     property Slices: Integer read FSlices write SetSlices default 60;
     property Opacity: Single read FOpacity write FOpacity stored StoreOpacity;
-    // AtmosphereRadius > PlanetRadius!!!
-    property AtmosphereRadius: Single read FAtmosphereRadius write SetAtmosphereRadius stored StoreAtmosphereRadius;
-    property PlanetRadius: Single read FPlanetRadius write SetPlanetRadius stored StorePlanetRadius;
+    // AtmosphereRadius > PlanetRadius!
+    property AtmosphereRadius: Single read FAtmosphereRadius
+      write SetAtmosphereRadius stored StoreAtmosphereRadius;
+    property PlanetRadius: Single read FPlanetRadius write SetPlanetRadius
+      stored StorePlanetRadius;
     // Use value slightly lower than actual radius, for antialiasing effect.
-    property LowAtmColor: TGLColor read FLowAtmColor write SetLowAtmColor stored StoreLowAtmColor;
-    property HighAtmColor: TGLColor read FHighAtmColor write SetHighAtmColor stored StoreHighAtmColor;
+    property LowAtmColor: TGLColor read FLowAtmColor write SetLowAtmColor
+      stored StoreLowAtmColor;
+    property HighAtmColor: TGLColor read FHighAtmColor write SetHighAtmColor
+      stored StoreHighAtmColor;
     property BlendingMode: TGLAtmosphereBlendingMode read FBlendingMode
-                               write FBlendingMode default abmOneMinusSrcAlpha;
-    procedure SetOptimalAtmosphere(const ARadius: Single);  //absolute
-    procedure SetOptimalAtmosphere2(const ARadius: Single); //relative
-    procedure TogleBlendingMode; //changes between 2 blending modes
+      write FBlendingMode default abmOneMinusSrcAlpha;
+    procedure SetOptimalAtmosphere(const ARadius: Single); // absolute
+    procedure SetOptimalAtmosphere2(const ARadius: Single); // relative
+    procedure TogleBlendingMode; // changes between 2 blending modes
     // Standard component stuff.
     procedure Assign(Source: TPersistent); override;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     // Main rendering procedure.
-    procedure DoRender(var rci: TGLRenderContextInfo; renderSelf, renderChildren: Boolean); override;
+    procedure DoRender(var rci: TGLRenderContextInfo;
+      renderSelf, renderChildren: Boolean); override;
     // Used to determine extents.
-    function AxisAlignedDimensionsUnscaled : TGLVector; override;
+    function AxisAlignedDimensionsUnscaled: TGLVector; override;
   end;
 
   TGLAtmosphere = class(TGLCustomAtmosphere)
@@ -112,22 +120,21 @@ type
     property Effects;
   end;
 
-//---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 implementation
-//---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 
 const
   EPS = 0.0001;
-  cIntDivTable: array [2..20] of Single =
-    (1 / 2, 1 / 3, 1 / 4, 1 / 5, 1 / 6, 1 / 7, 1 / 8, 1 / 9, 1 / 10,
-    1 / 11, 1 / 12, 1 / 13, 1 / 14, 1 / 15, 1 / 16, 1 / 17, 1 / 18, 1 / 19, 1 / 20);
+  cIntDivTable: array [2 .. 20] of Single = (1 / 2, 1 / 3, 1 / 4, 1 / 5, 1 / 6,
+    1 / 7, 1 / 8, 1 / 9, 1 / 10, 1 / 11, 1 / 12, 1 / 13, 1 / 14, 1 / 15, 1 / 16,
+    1 / 17, 1 / 18, 1 / 19, 1 / 20);
 
 procedure TGLCustomAtmosphere.SetOptimalAtmosphere(const ARadius: Single);
 begin
   FAtmosphereRadius := ARadius + 0.25;
   FPlanetRadius := ARadius - 0.07;
 end;
-
 
 procedure TGLCustomAtmosphere.SetOptimalAtmosphere2(const ARadius: Single);
 begin
@@ -140,17 +147,14 @@ begin
   inherited;
   FLowAtmColor := TGLColor.Create(Self);
   FHighAtmColor := TGLColor.Create(Self);
-
   FOpacity := 2.1;
   SetSlices(60);
   FAtmosphereRadius := 3.55;
   FPlanetRadius := 3.395;
   FLowAtmColor.Color := VectorMake(1, 1, 1, 1);
   FHighAtmColor.Color := VectorMake(0, 0, 1, 1);
-
   FBlendingMode := abmOneMinusSrcAlpha;
 end;
-
 
 destructor TGLCustomAtmosphere.Destroy;
 begin
@@ -161,17 +165,16 @@ begin
   inherited;
 end;
 
-
-procedure TGLCustomAtmosphere.DoRender(var rci: TGLRenderContextInfo; renderSelf, renderChildren: Boolean);
+procedure TGLCustomAtmosphere.DoRender(var rci: TGLRenderContextInfo;
+  renderSelf, renderChildren: Boolean);
 var
-  radius, invAtmosphereHeight:    Single;
+  radius, invAtmosphereHeight: Single;
   sunPos, eyePos, lightingVector: TGLVector;
-  diskNormal, diskRight, diskUp:  TGLVector;
-
+  diskNormal, diskRight, diskUp: TGLVector;
 
   function AtmosphereColor(const rayStart, rayEnd: TGLVector): TGLColorVector;
   var
-    I, n:     Integer;
+    I, n: Integer;
     atmPoint, normal: TGLVector;
     altColor: TGLColorVector;
     alt, rayLength, contrib, decay, intensity, invN: Single;
@@ -181,7 +184,7 @@ var
     n := Round(3 * rayLength * invAtmosphereHeight) + 2;
     if n > 10 then
       n := 10;
-    invN := cIntDivTable[n];//1/n;
+    invN := cIntDivTable[n]; // 1/n;
     contrib := rayLength * invN * Opacity;
     decay := 1 - contrib * 0.5;
     contrib := contrib * (1 / 1.1);
@@ -213,8 +216,8 @@ var
     Result.W := n * contrib * Opacity * 0.1;
   end;
 
-
-  function ComputeColor(var rayDest: TGLVector; mayHitGround: Boolean): TGLColorVector;
+  function ComputeColor(var rayDest: TGLVector; mayHitGround: Boolean)
+    : TGLColorVector;
   var
     ai1, ai2, pi1, pi2: TGLVector;
     rayVector: TGLVector;
@@ -242,14 +245,14 @@ var
   end;
 
 var
-  I, J, k0, k1:    Integer;
+  I, J, k0, k1: Integer;
 begin
   if FSun <> nil then
   begin
     Assert(FAtmosphereRadius > FPlanetRadius);
 
     sunPos := VectorSubtract(FSun.AbsolutePosition, AbsolutePosition);
-    eyepos := VectorSubtract(rci.CameraPosition, AbsolutePosition);
+    eyePos := VectorSubtract(rci.CameraPosition, AbsolutePosition);
 
     diskNormal := VectorNegate(eyePos);
     NormalizeVector(diskNormal);
@@ -270,15 +273,15 @@ begin
       if I < 5 then
         radius := FPlanetRadius * Sqrt(I * (1 / 5))
       else
-        radius := FPlanetRadius + (I - 5.1) * (FAtmosphereRadius - FPlanetRadius) * (1 / 6.9);
+        radius := FPlanetRadius + (I - 5.1) *
+          (FAtmosphereRadius - FPlanetRadius) * (1 / 6.9);
       radius := SphereVisibleRadius(VectorLength(eyePos), radius);
       k0 := (I and 1) * (FSlices + 1);
       k1 := (FSlices + 1) - k0;
       for J := 0 to FSlices do
       begin
-        VectorCombine(diskRight, diskUp,
-          cosCache[J] * radius, sinCache[J] * radius,
-          pVertex[k0 + J]);
+        VectorCombine(diskRight, diskUp, cosCache[J] * radius,
+          sinCache[J] * radius, pVertex[k0 + J]);
         if I < 13 then
           pColor[k0 + J] := ComputeColor(pVertex[k0 + J], I <= 7);
         if I = 0 then
@@ -316,7 +319,7 @@ begin
       end
       else if I = 1 then
       begin
-        //gl.BlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        // gl.BlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         gl.Begin_(GL_TRIANGLE_FAN);
         gl.Color4fv(@pColor[k1]);
         gl.Vertex3fv(@pVertex[k1]);
@@ -356,14 +359,16 @@ begin
   end;
 end;
 
-procedure TGLCustomAtmosphere.SetSun(const Value: TglBaseSceneObject);
+procedure TGLCustomAtmosphere.SetSun(const Value: TGLBaseSceneObject);
 begin
-  if FSun <> nil then FSun.RemoveFreeNotification(Self);
+  if FSun <> nil then
+    FSun.RemoveFreeNotification(Self);
   FSun := Value;
-  if FSun <> nil then FSun.FreeNotification(Self);
+  if FSun <> nil then
+    FSun.FreeNotification(Self);
 end;
 
-function TGLCustomAtmosphere.AxisAlignedDimensionsUnscaled : TGLVector;
+function TGLCustomAtmosphere.AxisAlignedDimensionsUnscaled: TGLVector;
 begin
   Result.X := FAtmosphereRadius;
   Result.Y := Result.X;
@@ -379,8 +384,7 @@ begin
     FSun := nil;
 end;
 
-procedure TGLCustomAtmosphere.SetAtmosphereRadius(
-  const Value: Single);
+procedure TGLCustomAtmosphere.SetAtmosphereRadius(const Value: Single);
 begin
   FAtmosphereRadius := Value;
   if Value <= FPlanetRadius then
@@ -458,11 +462,10 @@ begin
   Result := not VectorEquals(FLowAtmColor.Color, VectorMake(1, 1, 1, 1));
 end;
 
-//--------------------------------------
+// --------------------------------------
 initialization
-//--------------------------------------
+// --------------------------------------
 
-  RegisterClasses([TGLCustomAtmosphere, TGLAtmosphere]);
+RegisterClasses([TGLCustomAtmosphere, TGLAtmosphere]);
 
 end.
-

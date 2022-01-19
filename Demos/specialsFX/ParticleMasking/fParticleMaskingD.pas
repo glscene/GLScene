@@ -87,7 +87,8 @@ type
     procedure GLCadencerProgress(Sender: TObject; const DeltaTime, newTime: Double);
     procedure FormCreate(Sender: TObject);
     procedure SceneViewerMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
-    procedure FormMouseWheel(Sender: TObject; Shift: TShiftState; WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+    procedure FormMouseWheel(Sender: TObject; Shift: TShiftState; WheelDelta: Integer;
+      MousePos: TPoint; var Handled: Boolean);
     procedure PLManagerCreateParticle(Sender: TObject; aParticle: TGLParticle);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -152,7 +153,8 @@ begin
 
   XImage.Canvas.FillRect(Rect);
 
-  XImage.Canvas.TextOut(round((XImage.Width - XImage.Canvas.TextWidth(Letter)) / 2), round((XImage.Height - XImage.Canvas.TextHeight(Letter)) / 2), Letter);
+  XImage.Canvas.TextOut(round((XImage.Width - XImage.Canvas.TextWidth(Letter)) / 2),
+    round((XImage.Height - XImage.Canvas.TextHeight(Letter)) / 2), Letter);
 
   Mat := MatLib.LibMaterialByName('XMask');
   with Mat.Material.Texture.Image as TGLPersistentImage do
@@ -286,7 +288,8 @@ end;
 
 procedure TFormParticleMasking.AsyncTimer1Timer(Sender: TObject);
 begin
-  Caption := FormatFloat('Particle Masking - ' +'FPS: 0.0', SceneViewer.FramesPerSecond) + ' Particle Count: ' + IntToStr(PLManager.ParticleCount);
+  Caption := FormatFloat('Particle Masking - ' +'FPS: 0.0', SceneViewer.FramesPerSecond) +
+    ' Particle Count: ' + IntToStr(PLManager.ParticleCount);
   SceneViewer.ResetPerformanceMonitor;
 end;
 
