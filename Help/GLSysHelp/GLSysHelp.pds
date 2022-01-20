@@ -4,20 +4,20 @@ Language=en
 OutputDir=HTML
 GenerateFormat=1
 ProjectName=GLSysHelp
-Verbosity=2
+Verbosity=3
 ClassMembers_0=1
 ClassMembers_1=1
 ClassMembers_2=1
-ClassMembers_3=0
-ClassMembers_4=0
-ClassMembers_5=0
-ClassMembers_6=0
-ClassMembers_7=0
-ImplicitVisibility=1
+ClassMembers_3=1
+ClassMembers_4=1
+ClassMembers_5=1
+ClassMembers_6=1
+ClassMembers_7=1
+ImplicitVisibility=0
 Sorting_0=0
 Sorting_1=0
 Sorting_2=0
-Sorting_3=0
+Sorting_3=1
 Sorting_4=0
 Sorting_5=0
 Sorting_6=0
@@ -30,11 +30,11 @@ ConclusionFileName=..\Contributors.txt
 WriteUsesList=1
 AutoAbstract=0
 AutoLink=0
-HandleMacros=1
+HandleMacros=0
 UseTipueSearch=0
 LineBreakQuality=0
-SpecialMarkerTreatment=0
-Title=GLSysHelp v.1.5
+SpecialMarkerTreatment=2
+Title=GLSysHelp v.2.1
 VizGraphClasses=0
 VizGraphUses=0
 CheckSpelling=0
@@ -46,11 +46,10 @@ ExternalDescriptions=
 OpenHTML=1
 
 [Defines]
-Count=4
-Item_0=FPC
-Item_1=MSWINDOWS
-Item_2=WIN32
-Item_3=CPU386
+Count=3
+Item_0=MSWINDOWS
+Item_1=WIN32
+Item_2=CPU386
 
 [Header]
 Count=1
@@ -398,11 +397,10 @@ Count=0
 Count=0
 
 [SpecialMarkers]
-Count=4
-Item_0={:
-Item_1=//:
-Item_2=(*
-Item_3=
+Count=3
+Item_0=(*
+Item_1=//
+Item_2=
 
 [IgnoreWords]
 Count=0

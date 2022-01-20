@@ -43,7 +43,7 @@ type
     severity: Cardinal;
     length: TGLsizei;
     const message: PAnsiChar;
-    userParam: Pointer); {$IFDEF MSWINDOWS}stdcall;{$ELSE}}cdecl; {$ENDIF}
+    userParam: Pointer); {$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl; {$ENDIF}
    TGLDEBUGPROCARB = TDebugProc;
 
   TDebugProcAMD = procedure(
@@ -2282,4 +2282,4 @@ type
 implementation
 //-----------------------------------------
 
-end.
+end.
