@@ -58,7 +58,7 @@ type
      The class implements properties for position, velocity and time, whatever
      you need in excess of that will have to be placed in subclasses (this
      class should remain as compact as possible). *)
-  TGLParticle = class(TPersistentObject)
+  TGLParticle = class(TGLPersistentObject)
   private
     FID, FTag: Integer;
     FManager: TGLParticleFXManager; // NOT persistent
@@ -74,8 +74,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     property Manager: TGLParticleFXManager read FManager write FManager;
     // Particle's ID, given at birth. ID is a value unique per manager.
     property ID: Integer read FID;
@@ -106,10 +106,10 @@ type
   (* List of particles.
    This list is managed with particles and performance in mind, make sure to
    check methods doc. *)
-  TGLParticleList = class(TPersistentObject)
+  TGLParticleList = class(TGLPersistentObject)
   private
     FOwner: TGLParticleFXManager; // NOT persistent
-    FItemList: TPersistentObjectList;
+    FItemList: TGLPersistentObjectList;
     FDirectList: PGLParticleArray; // NOT persistent
   protected
     function GetItems(index: Integer): TGLParticle;
@@ -118,8 +118,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     // Refers owner manager
     property Owner: TGLParticleFXManager read FOwner write FOwner;
     property Items[index: Integer]: TGLParticle read GetItems write SetItems; default;
@@ -502,7 +502,7 @@ type
     procedure ComputeOuterColor(var lifeTime: Single; var outer: TGLColorVector);
     function ComputeSizeScale(var lifeTime: Single; var sizeScale: Single): Boolean;
     function ComputeRotateAngle(var lifeTime, rotateAngle: Single): Boolean;
-    procedure RotateVertexBuf(buf: TAffineVectorList; lifeTime: Single;
+    procedure RotateVertexBuf(buf: TGLAffineVectorList; lifeTime: Single;
       const axis: TAffineVector; offsetAngle: Single);
   public
     constructor Create(aOwner: TComponent); override;
@@ -572,8 +572,8 @@ type
   private
     FNbSides: Integer;
     Fvx, Fvy: TAffineVector; // NOT persistent
-    FVertices: TAffineVectorList; // NOT persistent
-    FVertBuf: TAffineVectorList; // NOT persistent
+    FVertices: TGLAffineVectorList; // NOT persistent
+    FVertBuf: TGLAffineVectorList; // NOT persistent
   protected
     procedure SetNbSides(const val: Integer);
     function TexturingMode: Cardinal; override;
@@ -609,8 +609,8 @@ type
   private
     FTexHandle: TGLTextureHandle;
     Fvx, Fvy, Fvz: TAffineVector; // NOT persistent
-    FVertices: TAffineVectorList; // NOT persistent
-    FVertBuf: TAffineVectorList; // NOT persistent
+    FVertices: TGLAffineVectorList; // NOT persistent
+    FVertBuf: TGLAffineVectorList; // NOT persistent
     FAspectRatio: Single;
     FRotation: Single;
     FShareSprites: TGLBaseSpritePFXManager;
@@ -817,7 +817,7 @@ begin
     FVelocity.V[Index] := aValue;
 end;
 
-procedure TGLParticle.WriteToFiler(writer: TVirtualWriter);
+procedure TGLParticle.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -830,7 +830,7 @@ begin
   end;
 end;
 
-procedure TGLParticle.ReadFromFiler(reader: TVirtualReader);
+procedure TGLParticle.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion: integer;
 begin
@@ -855,7 +855,7 @@ end;
 constructor TGLParticleList.Create;
 begin
   inherited Create;
-  FItemList := TPersistentObjectList.Create;
+  FItemList := TGLPersistentObjectList.Create;
   FitemList.GrowthDelta := 64;
   FDirectList := nil;
 end;
@@ -866,7 +866,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TGLParticleList.WriteToFiler(writer: TVirtualWriter);
+procedure TGLParticleList.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -876,7 +876,7 @@ begin
   end;
 end;
 
-procedure TGLParticleList.ReadFromFiler(reader: TVirtualReader);
+procedure TGLParticleList.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion: integer;
 begin
@@ -2282,7 +2282,7 @@ begin
   end;
 end;
 
-procedure TGLLifeColoredPFXManager.RotateVertexBuf(buf: TAffineVectorList;
+procedure TGLLifeColoredPFXManager.RotateVertexBuf(buf: TGLAffineVectorList;
   lifeTime: Single; const axis: TAffineVector; offsetAngle: Single);
 var
   rotateAngle: Single;
@@ -2431,14 +2431,14 @@ begin
     Fvx.V[i] := matrix.V[i].X * FParticleSize;
     Fvy.V[i] := matrix.V[i].Y * FParticleSize;
   end;
-  FVertices := TAffineVectorList.Create;
+  FVertices := TGLAffineVectorList.Create;
   FVertices.Capacity := FNbSides;
   for i := 0 to FNbSides - 1 do
   begin
     SinCosine(i * c2PI / FNbSides, s, c);
     FVertices.Add(VectorCombine(FVx, Fvy, c, s));
   end;
-  FVertBuf := TAffineVectorList.Create;
+  FVertBuf := TGLAffineVectorList.Create;
   FVertBuf.Count := FVertices.Count;
 end;
 
@@ -2645,7 +2645,7 @@ begin
     Fvz.V[i] := matrix.V[i].Z;
   end;
 
-  FVertices := TAffineVectorList.Create;
+  FVertices := TGLAffineVectorList.Create;
   for i := 0 to 3 do
   begin
     SinCosine(i * cPIdiv2 + cPIdiv4, s, c);
@@ -2657,7 +2657,7 @@ begin
     FVertices.TransformAsPoints(matrix);
   end;
 
-  FVertBuf := TAffineVectorList.Create;
+  FVertBuf := TGLAffineVectorList.Create;
   FVertBuf.Count := FVertices.Count;
 end;
 

@@ -128,7 +128,7 @@ function PointInAABB(const P: TGLVector; const Aabb: TAABB): Boolean; overload;
 // Checks if a plane (given by the normal+d) intersects the AABB
 function PlaneIntersectAABB(const Normal: TAffineVector; D: Single; const Aabb: TAABB): Boolean;
 // Compute the intersection between a plane and the AABB
-function PlaneAABBIntersection(const plane : THmgPlane; const AABB : TAABB) : TAffineVectorList;
+function PlaneAABBIntersection(const plane : THmgPlane; const AABB : TAABB) : TGLAffineVectorList;
 (*
   Original source code by Tomas Akenine-Möller
   Based on the paper "Fast 3D Triangle-Box Overlap Testing"
@@ -751,7 +751,7 @@ begin
     Max := X2;
 end;
 
-function PlaneAABBIntersection(const plane : THmgPlane;const AABB : TAABB) : TAffineVectorList;
+function PlaneAABBIntersection(const plane : THmgPlane;const AABB : TAABB) : TGLAffineVectorList;
 var
   i, j, annexe : Integer;
   index : array[0..2] of Integer;
@@ -771,7 +771,7 @@ begin
   box[0] := AABB.min;
   box[1] := AABB.max;
 
-  Result := TAffineVectorList.Create;
+  Result := TGLAffineVectorList.Create;
 
   // loop on vertices
   for i := 0 to 7 do

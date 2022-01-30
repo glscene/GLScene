@@ -76,7 +76,7 @@ type
   end;
 
   // Used to store the actual objects in the SpacePartition
-  TSpacePartitionLeaf = class(TPersistentObject)
+  TSpacePartitionLeaf = class(TGLPersistentObject)
   private
     FSpacePartition: TBaseSpacePartition;
     procedure SetSpacePartition(const Value: TBaseSpacePartition);
@@ -109,7 +109,7 @@ type
   end;
 
   // List for storing space partition leaves
-  TSpacePartitionLeafList = class(TPersistentObjectList)
+  TSpacePartitionLeafList = class(TGLPersistentObjectList)
   private
     function GetItems(I: Integer): TSpacePartitionLeaf;
     procedure SetItems(I: Integer; const Value: TSpacePartitionLeaf);
@@ -121,7 +121,7 @@ type
   TCullingMode = (CmFineCulling, CmGrossCulling);
 
   // Basic space partition, does not implement any actual space partitioning
-  TBaseSpacePartition = class(TPersistentObject)
+  TBaseSpacePartition = class(TGLPersistentObject)
   private
     FCullingMode: TCullingMode;
     // Query space for Leaves that intersect a cone, result is returned through QueryResult

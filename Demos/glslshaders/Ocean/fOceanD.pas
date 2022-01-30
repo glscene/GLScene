@@ -222,14 +222,14 @@ procedure TForm1.DOOceanPlaneRender(Sender: TObject;
   var rci: TGLRenderContextInfo);
 var
   x, y: Integer;
-  v: TTexPointList;
+  v: TGLTexPointList;
   cont: Boolean;
 begin
   GLUserShader1DoApply(Self, rci);
   gl.EnableClientState(GL_VERTEX_ARRAY);
   if not Assigned(vbo) then
   begin
-    v := TTexPointList.Create;
+    v := TGLTexPointList.Create;
     v.Capacity := Sqr(cExtent + 1);
     y := -cExtent;
     while y < cExtent do

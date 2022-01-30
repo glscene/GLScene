@@ -33,7 +33,7 @@ uses
   GLS.Graphics,
   GLS.State,
   GLS.CompositeImage,
-  // FileFormats 3D
+
   GLS.FileJPEG,
   GLS.FilePAK,
   GLS.FileZLIB,
@@ -54,7 +54,6 @@ uses
 type
   TForm1 = class(TForm)
     MainMenu1: TMainMenu;
-    TreeView: TTreeView;
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
     ImageList1: TImageList;
@@ -80,7 +79,6 @@ type
     Fast1: TMenuItem;
     Default1: TMenuItem;
     GLScene1: TGLScene;
-    GLSceneViewer1: TGLSceneViewer;
     GLCamera1: TGLCamera;
     GLLightSource1: TGLLightSource;
     GLSprite1: TGLSprite;
@@ -89,6 +87,9 @@ type
     GLSimpleNavigation1: TGLSimpleNavigation;
     GLSArchiveManager1: TGLSArchiveManager;
     GLCube1: TGLCube;
+    PanelTree: TPanel;
+    TreeView: TTreeView;
+    GLSceneViewer1: TGLSceneViewer;
     procedure FormCreate(Sender: TObject);
     procedure TreeViewRefresh;
     procedure FileListRefresh;
@@ -119,7 +120,7 @@ type
   private
      
   public
-     
+
   end;
 
 var

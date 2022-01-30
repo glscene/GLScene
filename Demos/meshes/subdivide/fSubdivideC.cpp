@@ -54,9 +54,9 @@ void __fastcall TForm1::BULoadClick(TObject *Sender)
 void __fastcall TForm1::BUSubdivideClick(TObject *Sender)
 {
    int i, j;
-   TAffineVectorList *tris, *norms, *tex, *buf, *morphTris, *morphNorms;
-   TIntegerList *indices, *texIndices;
-   TIntegerList *firstRemap, *subdivideRemap, *bufRemap;
+   TGLAffineVectorList *tris, *norms, *tex, *buf, *morphTris, *morphNorms;
+   TGLIntegerList *indices, *texIndices;
+   TGLIntegerList *firstRemap, *subdivideRemap, *bufRemap;
    __int64 t;
 
    BUSubdivide->Enabled = false;
@@ -66,10 +66,10 @@ void __fastcall TForm1::BUSubdivideClick(TObject *Sender)
 
    for (i = 0; i < GLActor1->MeshObjects->Count-1; i++ )
    {
-	  tex = new TAffineVectorList;
+	  tex = new TGLAffineVectorList;
 	  tris = GLActor1->MeshObjects->Items[i]->ExtractTriangles(tex);
 	  indices = BuildVectorCountOptimizedIndices(tris);
-	  firstRemap = (TIntegerList *)(indices->CreateClone());
+	  firstRemap = (TGLIntegerList *)(indices->CreateClone());
 	  RemapAndCleanupReferences(tris, indices);
 
 	  norms = BuildNormals(tris, indices);
@@ -84,7 +84,7 @@ void __fastcall TForm1::BUSubdivideClick(TObject *Sender)
 	  SubdivideTriangles(0, tex, texIndices);
 
 	  // Re-expand everything
-	  buf = new TAffineVectorList;
+	  buf = new TGLAffineVectorList;
 	  try
 	  {
 		 ConvertIndexedListToList(tris, indices, buf);
@@ -103,14 +103,14 @@ void __fastcall TForm1::BUSubdivideClick(TObject *Sender)
 	  // Pack & Optimize the expanded stuff
 	  indices->Free();
 	  indices = BuildVectorCountOptimizedIndices(tris, norms, tex);
-	  subdivideRemap = (TIntegerList *)(indices->CreateClone());
+	  subdivideRemap = (TGLIntegerList *)(indices->CreateClone());
 	  RemapReferences(norms, indices);
 	  RemapReferences(tex, indices);
 	  RemapAndCleanupReferences(tris, indices);
 
 	  IncreaseCoherency(indices, 13);
 
-	  bufRemap = new TIntegerList;
+	  bufRemap = new TGLIntegerList;
 	 for (j = 0; j < GLActor1->MeshObjects->MorphTargetCount()-1; j++)
 	 {
 		GLActor1->MeshObjects->MorphTo(j);
@@ -123,7 +123,7 @@ void __fastcall TForm1::BUSubdivideClick(TObject *Sender)
 
 		SubdivideTriangles(TrackBar1->Position*0.1, morphTris, bufRemap, morphNorms);
 
-		buf = new TAffineVectorList;
+		buf = new TGLAffineVectorList;
 		try
 		{
 		   ConvertIndexedListToList(morphTris, bufRemap, buf);

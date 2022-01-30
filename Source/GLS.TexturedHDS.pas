@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.TexturedHDS;
 
 (*
@@ -58,9 +57,9 @@ type
     property HeightDataSource: TGLHeightDataSource read FHeightDataSource write SetHeightDataSource;
     property MaterialLibrary: TGLMaterialLibrary read FMaterialLibrary write FMaterialLibrary;
     property WholeTilesOnly: Boolean read FWholeTilesOnly write FWholeTilesOnly;
-    { This should match TileSize in TGLTerrainRenderer }
+    // This should match TileSize in TGLTerrainRenderer
     property TileSize: integer read FTileSize write FTileSize;
-    { This should match TilesPerTexture in TGLTerrainRenderer }
+    // This should match TilesPerTexture in TGLTerrainRenderer
     property TilesPerTexture: integer read FTilesPerTexture write FTilesPerTexture;
   end;
 
@@ -92,7 +91,6 @@ begin
    if Assigned(FOnMarkDirty) then
       FOnMarkDirty(area);
 end;
-
 
 procedure TGLTexturedHDS.StartPreparingData(heightData : TGLHeightData);
 var
@@ -204,6 +202,5 @@ initialization
 // ------------------------------------------------------------------
 
 RegisterClasses([TGLTexturedHDS]);
-
 
 end.

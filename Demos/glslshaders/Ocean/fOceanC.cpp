@@ -155,7 +155,7 @@ void __fastcall TForm1::DOOceanPlaneRender(TObject *Sender,
 
 {
 	int x, y;
-	TTexPointList *v;
+	TGLTexPointList *v;
 	bool cont;
 	TGLExtensionsAndEntryPoints *GL;
 
@@ -164,7 +164,7 @@ void __fastcall TForm1::DOOceanPlaneRender(TObject *Sender,
 	GL->EnableClientState(GL_VERTEX_ARRAY);
 
 	if (!vbo) {
-		v = new TTexPointList;
+		v = new TGLTexPointList;
 
 		v->Capacity = (cExtent + 1) * (cExtent + 1);
 		y = -cExtent;

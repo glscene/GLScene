@@ -30,35 +30,16 @@ object Form1: TForm1
     Anchors = [akLeft, akTop, akRight]
     Shape = bsTopLine
   end
-  object TreeView: TTreeView
-    Left = 10
-    Top = 10
-    Width = 201
-    Height = 371
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
-    Anchors = [akLeft, akTop, akBottom]
-    Images = ImageList1
-    Indent = 29
-    ShowRoot = False
-    TabOrder = 0
-    ToolTips = False
-    OnChange = TreeViewChange
-    OnCollapsing = TreeViewCollapsing
-    OnKeyDown = TreeViewKeyDown
-  end
   object ListView: TListView
-    Left = 175
-    Top = 8
-    Width = 456
-    Height = 583
+    Left = 201
+    Top = 0
+    Width = 473
+    Height = 608
     Margins.Left = 4
     Margins.Top = 4
     Margins.Right = 4
     Margins.Bottom = 4
-    Anchors = [akLeft, akTop, akRight, akBottom]
+    Align = alClient
     Columns = <
       item
         AutoSize = True
@@ -75,31 +56,70 @@ object Form1: TForm1
       700061006B002000660069006C0065002E002E002E00}
     MultiSelect = True
     SmallImages = ImageList1
-    TabOrder = 1
+    TabOrder = 0
     ViewStyle = vsReport
     OnChange = ListViewChange
     OnClick = ListViewClick
     OnDblClick = ListViewDblClick
     OnKeyDown = ListViewKeyDown
+    ExplicitLeft = 209
+    ExplicitTop = 9
+    ExplicitWidth = 456
+    ExplicitHeight = 583
   end
-  object GLSceneViewer1: TGLSceneViewer
-    Left = 10
-    Top = 389
+  object PanelTree: TPanel
+    Left = 0
+    Top = 0
     Width = 201
-    Height = 201
+    Height = 608
     Margins.Left = 4
     Margins.Top = 4
     Margins.Right = 4
     Margins.Bottom = 4
-    Camera = GLCamera1
-    VSync = vsmSync
-    Buffer.BackgroundColor = clWhite
-    Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
-    Buffer.AntiAliasing = aa2x
-    FieldOfView = 90.285766601562500000
-    PenAsTouch = False
-    Anchors = [akLeft, akBottom]
-    TabOrder = 2
+    Align = alLeft
+    Caption = ' '
+    TabOrder = 1
+    object TreeView: TTreeView
+      Left = 1
+      Top = 1
+      Width = 199
+      Height = 367
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
+      Align = alClient
+      Images = ImageList1
+      Indent = 29
+      ShowRoot = False
+      TabOrder = 0
+      ToolTips = False
+      OnChange = TreeViewChange
+      OnCollapsing = TreeViewCollapsing
+      OnKeyDown = TreeViewKeyDown
+      ExplicitWidth = 174
+      ExplicitHeight = 328
+    end
+    object GLSceneViewer1: TGLSceneViewer
+      Left = 1
+      Top = 368
+      Width = 199
+      Height = 239
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
+      Camera = GLCamera1
+      VSync = vsmSync
+      Buffer.BackgroundColor = clWhite
+      Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
+      Buffer.AntiAliasing = aa2x
+      FieldOfView = 89.712806701660160000
+      PenAsTouch = False
+      Align = alBottom
+      TabOrder = 1
+      ExplicitWidth = 174
+    end
   end
   object MainMenu1: TMainMenu
     Left = 184
@@ -252,7 +272,6 @@ object Form1: TForm1
   end
   object GLSimpleNavigation1: TGLSimpleNavigation
     Form = Owner
-    GLSceneViewer = GLSceneViewer1
     FormCaption = 'GLScene Pak Editor - %FPS'
     KeyCombinations = <
       item

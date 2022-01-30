@@ -259,7 +259,7 @@ var
   FaceCount, ModelPositionCount, NormalCount, I, J: Integer;
   FacePositionList, NormalList, ModelPositionList, ModelNormalList, FaceShadingList: String;
   Lines: TStringList;
-  Indicies: TIntegerList;
+  Indicies: TGLIntegerList;
 
   function FormatVector(const AVector: TAffineVector): string;
   begin

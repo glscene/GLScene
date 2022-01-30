@@ -269,8 +269,8 @@ type
     and Colors properties *)
   TGLPoints = class(TGLImmaterialSceneObject)
   private
-    FPositions: TAffineVectorList;
-    FColors: TVectorList;
+    FPositions: TGLAffineVectorList;
+    FColors: TGLVectorList;
     FSize: Single;
     FStyle: TGLPointStyle;
     FPointParameters: TGLPointParameters;
@@ -280,8 +280,8 @@ type
     procedure SetNoZWrite(const val: Boolean);
     procedure SetStatic(const val: Boolean);
     procedure SetSize(const val: Single);
-    procedure SetPositions(const val: TAffineVectorList); inline;
-    procedure SetColors(const val: TVectorList);
+    procedure SetPositions(const val: TGLAffineVectorList); inline;
+    procedure SetColors(const val: TGLVectorList);
     procedure SetStyle(const val: TGLPointStyle);
     procedure SetPointParameters(const val: TGLPointParameters);
   public
@@ -290,13 +290,13 @@ type
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
     // Points positions.  If empty, a single point is assumed at (0, 0, 0)
-    property Positions: TAffineVectorList read FPositions write SetPositions;
+    property Positions: TGLAffineVectorList read FPositions write SetPositions;
     (* Defines the points colors:
       if empty, point color will be opaque white
       if contains a single color, all points will use that color
       if contains N colors, the first N points (at max) will be rendered
       using the corresponding colors *)
-    property Colors: TVectorList read FColors write SetColors;
+    property Colors: TGLVectorList read FColors write SetColors;
   published
     // If true points do not write their Z to the depth buffer.
     property NoZWrite: Boolean read FNoZWrite write SetNoZWrite;
@@ -446,7 +446,7 @@ type
     FOptions: TGLLinesOptions;
     FNURBSOrder: Integer;
     FNURBSTolerance: Single;
-    FNURBSKnots: TSingleList;
+    FNURBSKnots: TGLSingleList;
   protected
     procedure SetSplineMode(const val: TGLLineSplineMode);
     procedure SetDivision(const Value: Integer);
@@ -458,7 +458,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
-    property NURBSKnots: TSingleList read FNURBSKnots;
+    property NURBSKnots: TGLSingleList read FNURBSKnots;
     property NURBSOrder: Integer read FNURBSOrder write SetNURBSOrder;
     property NURBSTolerance: Single read FNURBSTolerance
       write SetNURBSTolerance;
@@ -1581,9 +1581,9 @@ begin
   ObjectStyle := ObjectStyle + [osDirectDraw, osNoVisibilityCulling];
   FStyle := psSquare;
   FSize := cDefaultPointSize;
-  FPositions := TAffineVectorList.Create;
+  FPositions := TGLAffineVectorList.Create;
   FPositions.Add(NullVector);
-  FColors := TVectorList.Create;
+  FColors := TGLVectorList.Create;
   FPointParameters := TGLPointParameters.Create(Self);
 end;
 
@@ -1729,13 +1729,13 @@ begin
   end;
 end;
 
-procedure TGLPoints.SetPositions(const val: TAffineVectorList);
+procedure TGLPoints.SetPositions(const val: TGLAffineVectorList);
 begin
   FPositions.Assign(val);
   StructureChanged;
 end;
 
-procedure TGLPoints.SetColors(const val: TVectorList);
+procedure TGLPoints.SetColors(const val: TGLVectorList);
 begin
   FColors.Assign(val);
   StructureChanged;
@@ -2084,7 +2084,7 @@ begin
   inherited Create(AOwner);
   FDivision := 10;
   FSplineMode := lsmLines;
-  FNURBSKnots := TSingleList.Create;
+  FNURBSKnots := TGLSingleList.Create;
   FNURBSOrder := 0;
   FNURBSTolerance := 50;
 end;

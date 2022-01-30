@@ -40,8 +40,8 @@ type
      PCardinalArray = ^TCardinalArray;
      TCardinalArray = array[0..MaxInt div (2*SizeOf(Cardinal))] of Cardinal;
 
-     PSingleList = ^TSingleList;
-     TSingleList = array[0..MaxInt div (2*SizeOf(Single))] of Single;
+     PSingleList = ^TGLSingleList;
+     TGLSingleList = array[0..MaxInt div (2*SizeOf(Single))] of Single;
 
      PPoint3DS = ^TPoint3DS;                     // 3D point structure
      TPoint3DS = record

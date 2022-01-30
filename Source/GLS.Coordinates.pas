@@ -1183,4 +1183,3 @@ initialization
 RegisterClasses([TGLCoordinates2, TGLCoordinates3, TGLCoordinates4]);
 
 end.
-

@@ -18,10 +18,14 @@ uses
 
   GLS.Context,
   GLS.Graphics,
+  GLS.Texture,
   GLS.TextureFormat,
+  GLS.CompositeImage,
+  GLS.MultiSampleImage,
   GLS.RGBE,
   GLS.ApplicationFileIO,
   GLS.VectorGeometry,
+  GLS.Material,
   GLS.Strings;
 
 type
@@ -44,6 +48,28 @@ type
       const IntFormat: TGLInternalFormat); reintroduce;
   end;
 
+
+// get or create material in material library
+function GetOrCreateLibMaterial(aMaterialLibrary: TGLMaterialLibrary;
+  aMaterialName: string): TGLLibMaterial;
+
+function LibMat(aMatLib: TGLMaterialLibrary; aMatName: string): TGLLibMaterial;
+
+// load DDS to texture
+{
+function DDStex(aMatLib: TGLMaterialLibrary; aTexName, aDDSFileName: string;
+  aSecondTexName: string = ''; aDDSLevel: integer = 0): TGLLibMaterial; overload;
+}
+function DDStex(aMatLib: TGLMaterialLibrary; aTexName, aDDSFileName: string;
+  aSecondTexName: string = ''; aDDSLevel: integer = 0): TGLLibMaterial; overload;
+
+function DDStex(aTexture: TGLTexture; aDDSFileName: string;
+  aDDSLevel: integer = 0): TGLTexture; overload;
+
+function DDStex(aTextureEx: TGLTextureExItem; aDDSFileName: string;
+  aDDSLevel: integer = 0): TGLTextureExItem; overload;
+
+
 var
   (* Variable determines which resolution to use textures,
      high - it loads all levels,
@@ -57,6 +83,110 @@ implementation
 
 uses
   Formats.DXTC;
+
+// --------------------------------------------------------------------
+function GetOrCreateLibMaterial(aMaterialLibrary: TGLMaterialLibrary;
+  aMaterialName: string): TGLLibMaterial;
+begin
+  result := nil;
+  if aMaterialLibrary = nil then
+    exit;
+  result := aMaterialLibrary.LibMaterialByName(aMaterialName);
+  if result = nil then
+  begin
+    result := aMaterialLibrary.Materials.Add;
+    result.Name := aMaterialName;
+  end;
+end;
+
+// ---------------------------------------------------------------------
+function LibMat(aMatLib: TGLMaterialLibrary; aMatName: string): TGLLibMaterial;
+begin
+  if aMatLib = nil then
+    exit;
+  result := aMatLib.LibMaterialByName(aMatName);
+  if result = nil then
+  begin
+    result := aMatLib.Materials.Add;
+    result.Name := aMatName;
+  end;
+end;
+
+// DDStex
+// --------------------------------------------------------------------
+function DDStex(aMatLib: TGLMaterialLibrary; aTexName, aDDSFileName: string;
+  aSecondTexName: string = ''; aDDSLevel: integer = 0): TGLLibMaterial;
+begin
+  result := GetOrCreateLibMaterial(aMatLib, aTexName);
+  result.Texture2Name := aSecondTexName;
+  DDStex(result.Material.Texture, aDDSFileName, aDDSLevel);
+end;
+
+
+// ---------------------------------------------------------------------
+{
+function DDStex(aMatLib: TGLMaterialLibrary; aTexName, aDDSFileName: string;
+  aSecondTexName: string = ''; aDDSLevel: integer = 0): TGLLibMaterial;
+var
+  Level: TGLDDSDetailLevels;
+begin
+  Level := vDDSDetailLevel;
+  case aDDSLevel of
+    1: vDDSDetailLevel := ddsMediumDet;
+    2: vDDSDetailLevel := ddsLowDet;
+  else
+    vDDSDetailLevel := ddsHighDet;
+  end;
+
+  Result := LibMat(aMatLib, aTexName);
+  Result.Texture2Name := aSecondTexName;
+
+  with Result.Material.Texture do
+  begin
+    ImageClassName := 'TGLCompositeImage';
+    Image.LoadFromFile(aDDSFileName);
+    Disabled := false;
+  end;
+  vDDSDetailLevel := Level;
+end;
+}
+
+// DDStex
+// --------------------------------------------------------------------
+function DDStex(aTextureEx: TGLTextureExItem; aDDSFileName: string;
+  aDDSLevel: integer = 0): TGLTextureExItem;
+begin
+  DDStex(aTextureEx.Texture, aDDSFileName, aDDSLevel);
+  result := aTextureEx;
+end;
+
+// DDStex
+// --------------------------------------------------------------------
+function DDStex(aTexture: TGLTexture; aDDSFileName: string;
+  aDDSLevel: integer = 0): TGLTexture;
+var
+  def: TGLDDSDetailLevels;
+begin
+  def := vDDSDetailLevel;
+  case aDDSLevel of
+    1: vDDSDetailLevel := ddsMediumDet;
+    2: vDDSDetailLevel := ddsLowDet;
+  else
+    vDDSDetailLevel := ddsHighDet;
+  end;
+  with aTexture do
+  begin
+    ImageClassName := 'TGLCompositeImage';
+    if FileExists(aDDSFileName) then
+      Image.LoadFromFile(aDDSFileName);
+    Disabled := false;
+  end;
+  result := aTexture;
+  vDDSDetailLevel := def;
+end;
+
+
+
 // ------------------
 // ------------------ TGLDDSImage ------------------
 // ------------------

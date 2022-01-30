@@ -16,11 +16,12 @@
 program TilesD;
 uses
   Forms,
-  fTilesD in 'fTilesD.pas';
+  fTilesD in 'fTilesD.pas' {FormTiles};
 
 {$R *.res}
 begin
   Application.Initialize;
+  Application.CreateForm(TFormTiles, FormTiles);
   Application.CreateForm(TFormTiles, FormTiles);
   Application.Run;
 end.

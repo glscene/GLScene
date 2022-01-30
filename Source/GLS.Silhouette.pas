@@ -42,21 +42,21 @@ type
     need some helper methods for generating the indexed sets. *)
   TGLSilhouette = class
   private
-    FVertices: TVectorList;
-    FIndices: TIntegerList;
-    FCapIndices: TIntegerList;
+    FVertices: TGLVectorList;
+    FIndices: TGLIntegerList;
+    FCapIndices: TGLIntegerList;
     FParameters: TGLSilhouetteParameters;
   protected
-    procedure SetIndices(const value: TIntegerList);
-    procedure SetCapIndices(const value: TIntegerList);
-    procedure SetVertices(const value: TVectorList);
+    procedure SetIndices(const value: TGLIntegerList);
+    procedure SetCapIndices(const value: TGLIntegerList);
+    procedure SetVertices(const value: TGLVectorList);
   public
     constructor Create; virtual;
     destructor Destroy; override;
     property Parameters: TGLSilhouetteParameters read FParameters write FParameters;
-    property Vertices: TVectorList read FVertices write SetVertices;
-    property Indices: TIntegerList read FIndices write SetIndices;
-    property CapIndices: TIntegerList read FCapIndices write SetCapIndices;
+    property Vertices: TGLVectorList read FVertices write SetVertices;
+    property Indices: TGLIntegerList read FIndices write SetIndices;
+    property CapIndices: TGLIntegerList read FCapIndices write SetCapIndices;
     procedure Flush; virtual;
     procedure Clear; inline;
     procedure ExtrudeVerticesToInfinity(const origin: TAffineVector);
@@ -95,13 +95,13 @@ type
       it'd be nicer with Structs or classes, but it's actually faster this way.
       The reason it's faster is because of less cache overwrites when we only
       access a tiny bit of a triangle (for instance), not all data. *)
-    FEdgeVertices: TIntegerList;
-    FEdgeFaces: TIntegerList;
+    FEdgeVertices: TGLIntegerList;
+    FEdgeFaces: TGLIntegerList;
     FFaceVisible: TByteList;
-    FFaceVertexIndex: TIntegerList;
-    FFaceNormal: TAffineVectorList;
-    FVertexMemory: TIntegerList;
-    FVertices: TAffineVectorList;
+    FFaceVertexIndex: TGLIntegerList;
+    FFaceNormal: TGLAffineVectorList;
+    FVertexMemory: TGLIntegerList;
+    FVertices: TGLAffineVectorList;
     function GetEdgeCount: integer;
     function GetFaceCount: integer;
     function ReuseOrFindVertexID(const SeenFrom: TAffineVector; ASilhouette: TGLSilhouette; index: integer): integer;
@@ -131,9 +131,9 @@ implementation
 constructor TGLSilhouette.Create;
 begin
   inherited;
-  FVertices := TVectorList.Create;
-  FIndices := TIntegerList.Create;
-  FCapIndices := TIntegerList.Create;
+  FVertices := TGLVectorList.Create;
+  FIndices := TGLIntegerList.Create;
+  FCapIndices := TGLIntegerList.Create;
 end;
 
 destructor TGLSilhouette.Destroy;
@@ -144,17 +144,17 @@ begin
   inherited;
 end;
 
-procedure TGLSilhouette.SetIndices(const value: TIntegerList);
+procedure TGLSilhouette.SetIndices(const value: TGLIntegerList);
 begin
   FIndices.Assign(value);
 end;
 
-procedure TGLSilhouette.SetCapIndices(const value: TIntegerList);
+procedure TGLSilhouette.SetCapIndices(const value: TGLIntegerList);
 begin
   FCapIndices.Assign(value);
 end;
 
-procedure TGLSilhouette.SetVertices(const value: TVectorList);
+procedure TGLSilhouette.SetVertices(const value: TGLVectorList);
 begin
   FVertices.Assign(value);
 end;
@@ -278,13 +278,13 @@ end;
 constructor TGLConnectivity.Create(APrecomputeFaceNormal: Boolean);
 begin
   FFaceVisible := TByteList.Create;
-  FFaceVertexIndex := TIntegerList.Create;
-  FFaceNormal := TAffineVectorList.Create;
-  FEdgeVertices := TIntegerList.Create;
-  FEdgeFaces := TIntegerList.Create;
+  FFaceVertexIndex := TGLIntegerList.Create;
+  FFaceNormal := TGLAffineVectorList.Create;
+  FEdgeVertices := TGLIntegerList.Create;
+  FEdgeFaces := TGLIntegerList.Create;
   FPrecomputeFaceNormal := APrecomputeFaceNormal;
-  FVertexMemory := TIntegerList.Create;
-  FVertices := TAffineVectorList.Create;
+  FVertexMemory := TGLIntegerList.Create;
+  FVertices := TGLAffineVectorList.Create;
 end;
 
 destructor TGLConnectivity.Destroy;

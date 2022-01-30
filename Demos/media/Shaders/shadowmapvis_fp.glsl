@@ -1,4 +1,3 @@
-#version 120
 uniform sampler2DShadow ShadowMap;
 
 void main()

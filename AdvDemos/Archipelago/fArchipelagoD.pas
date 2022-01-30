@@ -90,8 +90,8 @@ type
     WasAboveWater: Boolean;
     HelpOpacity: Single;
     DataPath : String;
-    WakeVertices: TAffineVectorList;
-    WakeStretch: TAffineVectorList;
+    WakeVertices: TGLAffineVectorList;
+    WakeStretch: TGLAffineVectorList;
     WakeTime: TSingleList;
     procedure ResetMousePos;
     function WaterPhase(const px, py: Single): Single;
@@ -529,8 +529,8 @@ var
 begin
   if WakeVertices = nil then
   begin
-    WakeVertices := TAffineVectorList.Create;
-    WakeStretch := TAffineVectorList.Create;
+    WakeVertices := TGLAffineVectorList.Create;
+    WakeStretch := TGLAffineVectorList.Create;
     WakeTime := TSingleList.Create;
   end;
 

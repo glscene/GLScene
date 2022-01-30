@@ -52,7 +52,7 @@ type
   // Ellipsoid collision FreeForm
   TECFreeForm = record
     OctreeNodes: array of POctreeNode;
-    triangleFiler: ^TAffineVectorList;
+    triangleFiler: ^TGLAffineVectorList;
     InvertedNormals: Boolean;
     ObjectInfo: TECObjectInfo;
   end;

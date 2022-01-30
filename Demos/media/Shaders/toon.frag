@@ -1,13 +1,3 @@
-//
-// Fragment shader for cartoon-style shading
-//
-// Author: Philip Rideout
-//
-// Copyright (c) 2004 3Dlabs Inc. Ltd.
-//
-// See 3Dlabs-License.txt for license information
-//
-
 uniform vec3 DiffuseColor;
 uniform vec3 PhongColor;
 uniform float Edge;

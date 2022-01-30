@@ -76,8 +76,8 @@ type
     (* Saves content to stream in OCT format.
       The Header is automatically prepared before streaming. *)
     procedure SaveToStream(aStream: TStream);
-    procedure AddTriangles(vertexCoords: TAffineVectorList;
-      texMapCoords: TAffineVectorList; const textureName: String);
+    procedure AddTriangles(vertexCoords: TGLAffineVectorList;
+      texMapCoords: TGLAffineVectorList; const textureName: String);
     procedure AddLight(const lightPos: TAffineVector; const lightColor: TGLVector;
       lightIntensity: Integer);
   end;
@@ -137,8 +137,8 @@ begin
   end;
 end;
 
-procedure TOCTFile.AddTriangles(vertexCoords: TAffineVectorList;
-  texMapCoords: TAffineVectorList; const textureName: String);
+procedure TOCTFile.AddTriangles(vertexCoords: TGLAffineVectorList;
+  texMapCoords: TGLAffineVectorList; const textureName: String);
 var
   i: Integer;
   baseIdx, texIdx: Integer;

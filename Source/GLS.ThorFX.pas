@@ -465,7 +465,7 @@ var
   i: integer;
   // absPos :TGLVector;
   InnerColor: TGLVector;
-  distList: TSingleList;
+  distList: TGLSingleList;
   objList: TList;
   fp: PThorpoint;
   mat: TGLMatrix;
@@ -494,7 +494,7 @@ begin
 
   if N > 1 then
   begin
-    distList := TSingleList.Create;
+    distList := TGLSingleList.Create;
     objList := TList.Create;
     for i := 0 to N - 1 do
     begin

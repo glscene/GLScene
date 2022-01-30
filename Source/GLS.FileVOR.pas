@@ -197,7 +197,7 @@ var
   I: Integer;
   DataFace: TVORFace;
   Header: TVORHeader;
-  List: TAffineVectorList;
+  List: TGLAffineVectorList;
 const
   cHeaderTag = 'VOR export';
 begin

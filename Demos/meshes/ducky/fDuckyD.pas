@@ -68,7 +68,7 @@ implementation
 
 procedure TFormDucky.FormCreate(Sender: TObject);
 var
-  cp: TAffineVectorList;
+  cp: TGLAffineVectorList;
 begin
   SetGLSceneMediaDir();
   // Load the nurbs data

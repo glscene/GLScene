@@ -30,7 +30,7 @@ uses
 type
   TGLPhongShader = class(TGLCustomAsmShader)
   private
-    FLightIDs: TIntegerList;
+    FLightIDs: TGLIntegerList;
     FDesignTimeEnabled: Boolean;
     FAmbientPass: Boolean;
     procedure SetDesignTimeEnabled(const Value: Boolean);
@@ -185,7 +185,7 @@ begin
 
     Add('END');
   end;
-  FLightIDs := TIntegerList.Create;
+  FLightIDs := TGLIntegerList.Create;
 end;
 
 function TGLPhongShader.ShaderSupported: Boolean;

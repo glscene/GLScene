@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.GeomObjects;
 
 (*
@@ -355,8 +354,8 @@ type
       write SetBottomArrowHeadRadius;
   end;
 
-  TArrowArcPart = (aaArc, aaTopArrow, aaBottomArrow);
-  TGLArrowArcPart = set of TArrowArcPart;
+  TGLArrowArcPart = (aaArc, aaTopArrow, aaBottomArrow);
+  TGLArrowArcParts = set of TGLArrowArcPart;
 
   (* Draws an arrowhead (Sliced Torus + cone).
     The arrow head is a cone that shares the attributes of the Torus
@@ -369,7 +368,7 @@ type
     fArcRadius: Single;
     FStartAngle: Single;
     FStopAngle: Single;
-    FParts: TGLArrowArcPart;
+    FParts: TGLArrowArcParts;
     FTopRadius: Single;
     fTopArrowHeadHeight: Single;
     fTopArrowHeadRadius: Single;
@@ -386,7 +385,7 @@ type
     procedure SetTopArrowHeadRadius(const aValue: Single);
     procedure SetBottomArrowHeadHeight(const aValue: Single);
     procedure SetBottomArrowHeadRadius(const aValue: Single);
-    procedure SetParts(aValue: TGLArrowArcPart);
+    procedure SetParts(aValue: TGLArrowArcParts);
     procedure SetHeadStackingStyle(const val: TGLArrowHeadStyle);
   public
     constructor Create(AOwner: TComponent); override;
@@ -399,7 +398,7 @@ type
     property TopRadius: Single read FTopRadius write SetTopRadius;
     property HeadStackingStyle: TGLArrowHeadStyle read FHeadStackingStyle
       write SetHeadStackingStyle default ahssStacked;
-    property Parts: TGLArrowArcPart read FParts write SetParts
+    property Parts: TGLArrowArcParts read FParts write SetParts
       default [aaArc, aaTopArrow];
     property TopArrowHeadHeight: Single read fTopArrowHeadHeight
       write SetTopArrowHeadHeight;
@@ -2665,7 +2664,7 @@ begin
   end;
 end;
 
-procedure TGLArrowArc.SetParts(aValue: TGLArrowArcPart);
+procedure TGLArrowArc.SetParts(aValue: TGLArrowArcParts);
 begin
   if aValue <> FParts then
   begin

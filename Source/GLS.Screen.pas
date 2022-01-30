@@ -23,18 +23,18 @@ type
   TResolution = 0 .. MaxVideoModes;
 
   // window attributes
-  TWindowAttribute = (woDesktop, woStayOnTop, woTransparent);
-  TWindowAttributes = set of TWindowAttribute;
+  TGLWindowAttribute = (woDesktop, woStayOnTop, woTransparent);
+  TGLWindowAttributes = set of TGLWindowAttribute;
 
   // window-to-screen fitting
-  TWindowFitting = (wfDefault, wfFitWindowToScreen, wfFitScreenToWindow);
+  TGLWindowFitting = (wfDefault, wfFitWindowToScreen, wfFitScreenToWindow);
 
   TGLDisplayOptions = class(TPersistent)
   private
     FFullScreen: Boolean;
     FScreenResolution: TResolution;
-    FWindowAttributes: TWindowAttributes;
-    FWindowFitting: TWindowFitting;
+    FWindowAttributes: TGLWindowAttributes;
+    FWindowFitting: TGLWindowFitting;
   public
     procedure Assign(Source: TPersistent); override;
   published
@@ -42,21 +42,20 @@ type
       default False;
     property ScreenResolution: TResolution read FScreenResolution
       write FScreenResolution default 0;
-    property WindowAttributes: TWindowAttributes read FWindowAttributes
+    property WindowAttributes: TGLWindowAttributes read FWindowAttributes
       write FWindowAttributes default [];
-    property WindowFitting: TWindowFitting read FWindowFitting
+    property WindowFitting: TGLWindowFitting read FWindowFitting
       write FWindowFitting default wfDefault;
   end;
 
-  TVideoMode = packed record
+  TGLVideoMode = packed record
     Width: Word;
     Height: Word;
     ColorDepth: Byte;
     MaxFrequency: Byte;
     Description: String;
   end;
-
-  PVideoMode = ^TVideoMode;
+  PGLVideoMode = ^TGLVideoMode;
 
 function GetIndexFromResolution(XRes, YRes, BPP: Integer): TResolution;
 procedure ReadVideoModes;
@@ -78,7 +77,7 @@ function GLGetScreenHeight: Integer;
 var
   vNumberVideoModes: Integer = 0;
   vCurrentVideoMode: Integer = 0;
-  vVideoModes: array of TVideoMode;
+  vVideoModes: array of TGLVideoMode;
 
 // ------------------------------------------------------------------------------
 implementation
@@ -157,7 +156,7 @@ procedure TryToAddToList(deviceMode: TDevMode);
 // Adds a video mode to the list if it's not a duplicate and can actually be set.
 var
   I: Integer;
-  vm: PVideoMode;
+  vm: PGLVideoMode;
 begin
   // See if this is a duplicate mode (can happen because of refresh
   // rates, or because we explicitly try all the low-res modes)

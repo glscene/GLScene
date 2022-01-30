@@ -55,7 +55,7 @@ var
    Tnam: string;
    Id_Mat, NVert, NTri : Integer;
 
-   VertArr :  TGLPoint3DArray;
+   VertArr :  TPoint3DArray;
    n1, n2, n3 : Integer;
 
 

@@ -53,7 +53,7 @@ procedure TGLNurbsVectorFile.LoadFromStream(stream: TStream);
   end;
 
   function ReadSingleArray(sl: TStrings; idx: Integer;
-    list: TSingleList): Integer;
+    list: TGLSingleList): Integer;
   var
     k: Integer;
     buf: String;
@@ -79,7 +79,7 @@ procedure TGLNurbsVectorFile.LoadFromStream(stream: TStream);
   end;
 
   function ReadVectorArray(sl: TStrings; idx: Integer;
-    list: TAffineVectorList): Integer;
+    list: TGLAffineVectorList): Integer;
   var
     buf: String;
     vals: TStringList;
@@ -110,7 +110,7 @@ var
   i, j: Integer;
   surface: TMOParametricSurface;
   invert: Boolean;
-  invControlPoints: TAffineVectorList;
+  invControlPoints: TGLAffineVectorList;
 begin
   ss := TStringStream.Create('');
   sl := TStringList.Create;
@@ -161,7 +161,7 @@ begin
 
     if invert then
     begin
-      invControlPoints := TAffineVectorList.Create;
+      invControlPoints := TGLAffineVectorList.Create;
       for i := surface.CountV - 1 downto 0 do
         for j := 0 to surface.CountU - 1 do
           invControlPoints.Add(surface.ControlPoints[i * surface.CountU + j]);

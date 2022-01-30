@@ -188,7 +188,7 @@ type
      property Width: Integer read GetWidth;
     property Height: Integer read GetHeight;
     property Depth: Integer read GetDepth;
-    {Native opengl texture target.  }
+    // Native opengl texture target.
     property NativeTextureTarget: TGLTextureTarget read GetTextureTarget;
     property ResourceName: string read GetResourceName;
   end;

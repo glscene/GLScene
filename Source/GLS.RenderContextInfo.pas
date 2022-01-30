@@ -88,8 +88,8 @@ type
     IgnoreBlendingRequests: Boolean;
     IgnoreDepthRequests: Boolean;
     Amalgamating: Boolean;
-    Lights: TPersistentObjectList;
-    AfterRenderEffects: TPersistentObjectList;
+    Lights: TGLPersistentObjectList;
+    AfterRenderEffects: TGLPersistentObjectList;
     CurrentMaterialLevel: TGLMaterialLevel;
     PrimitiveMask: TGLMeshPrimitives;
     OrderCounter: Integer;

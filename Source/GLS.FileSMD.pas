@@ -90,7 +90,7 @@ var
   faceGroup: TFGVertexNormalTexIndexList;
   v: TAffineVector;
 
-  boneIDs: TVertexBoneWeightDynArray;
+  boneIDs: TGLVertexBoneWeightDynArray;
   weightCount: Integer;
 begin
   sl := TStringList.Create;

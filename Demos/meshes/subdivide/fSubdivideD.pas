@@ -103,9 +103,9 @@ end;
 procedure TFormSubdivide.BUSubdivideClick(Sender: TObject);
 var
   i, j: Integer;
-  tris, norms, tex, buf, morphTris, morphNorms: TAffineVectorList;
-  indices, texIndices: TIntegerlist;
-  firstRemap, subdivideRemap, bufRemap: TIntegerlist;
+  tris, norms, tex, buf, morphTris, morphNorms: TGLAffineVectorList;
+  indices, texIndices: TGLIntegerList;
+  firstRemap, subdivideRemap, bufRemap: TGLIntegerList;
   t: Int64;
 begin
   BUSubdivide.Enabled := False;
@@ -115,11 +115,11 @@ begin
 
   for i := 0 to GLActor1.MeshObjects.Count - 1 do
   begin
-    tex := TAffineVectorList.Create;
+    tex := TGLAffineVectorList.Create;
     with GLActor1.MeshObjects[i] do
       tris := ExtractTriangles(tex);
     indices := BuildVectorCountOptimizedIndices(tris);
-    firstRemap := TIntegerlist(indices.CreateClone);
+    firstRemap := TGLIntegerList(indices.CreateClone);
     RemapAndCleanupReferences(tris, indices);
 
     norms := BuildNormals(tris, indices);
@@ -134,7 +134,7 @@ begin
     SubdivideTriangles(0, tex, texIndices);
 
     // Re-expand everything
-    buf := TAffineVectorList.Create;
+    buf := TGLAffineVectorList.Create;
     try
       ConvertIndexedListToList(tris, indices, buf);
       tris.Assign(buf);
@@ -151,7 +151,7 @@ begin
     // Pack & Optimize the expanded stuff
     indices.Free;
     indices := BuildVectorCountOptimizedIndices(tris, norms, tex);
-    subdivideRemap := TIntegerlist(indices.CreateClone);
+    subdivideRemap := TGLIntegerList(indices.CreateClone);
     RemapReferences(norms, indices);
     RemapReferences(tex, indices);
     RemapAndCleanupReferences(tris, indices);
@@ -161,7 +161,7 @@ begin
     with GLActor1.MeshObjects[i] as TGLMorphableMeshObject do
     begin
 
-      bufRemap := TIntegerlist.Create;
+      bufRemap := TGLIntegerList.Create;
       for j := 0 to MorphTargets.Count - 1 do
       begin
         MorphTo(j);
@@ -175,7 +175,7 @@ begin
         SubdivideTriangles(TrackBar1.Position * 0.1, morphTris, bufRemap,
           morphNorms);
 
-        buf := TAffineVectorList.Create;
+        buf := TGLAffineVectorList.Create;
         try
           ConvertIndexedListToList(morphTris, bufRemap, buf);
           morphTris.Assign(buf);

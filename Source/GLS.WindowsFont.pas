@@ -44,7 +44,7 @@ type
   TGLWindowsBitmapFont = class(TGLCustomBitmapFont)
   private
     FFont: TFont;
-    procedure SetList(const AList : TIntegerList);
+    procedure SetList(const AList : TGLIntegerList);
   protected
     procedure SetFont(value: TFont);
     procedure LoadWindowsFont; virtual;
@@ -303,7 +303,7 @@ begin
   end;
 end;
 
-procedure TGLWindowsBitmapFont.SetList(const AList: TIntegerList);
+procedure TGLWindowsBitmapFont.SetList(const AList: TGLIntegerList);
 var
   i : integer;
   f, n, s : integer;
@@ -342,9 +342,9 @@ end;
 procedure TGLWindowsBitmapFont.EnsureChars(const AStart, AEnd: widechar);
 var
   c : WideChar;
-  ACharList : TIntegerList;
+  ACharList : TGLIntegerList;
 begin
-  ACharList := TIntegerList.Create;
+  ACharList := TGLIntegerList.Create;
   for c := AStart to AEnd do
       ACharList.Add(integer(c));
   SetList(ACharList);
@@ -355,9 +355,9 @@ end;
 procedure TGLWindowsBitmapFont.EnsureString(const s: String);
 var
   i : Integer;
-  ACharList : TIntegerList;
+  ACharList : TGLIntegerList;
 begin
-  ACharList := TIntegerList.Create;
+  ACharList := TGLIntegerList.Create;
   for i := 1 to length(s) do
       ACharList.Add(integer(s[i]));
   SetList(ACharList);

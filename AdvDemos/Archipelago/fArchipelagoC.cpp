@@ -467,8 +467,8 @@ void __fastcall TForm1::DOWakeProgress(TObject *Sender, const double deltaTime,
 	TGLVector sbp, sbr;
 
 	if (WakeVertices == NULL) {
-		WakeVertices = new TAffineVectorList();
-		WakeStretch = new TAffineVectorList();
+		WakeVertices = new TGLAffineVectorList();
+		WakeStretch = new TGLAffineVectorList();
 		WakeTime = new TSingleList();
 	}
 

@@ -508,8 +508,8 @@ procedure CSG_Operation(obj1, obj2: TGLMeshObject; Operation: TCSGOperation;
   Res: TGLMeshObject; const MaterialName1, MaterialName2: string);
 
 var
-  v1, t1, n1: TAffineVectorList;
-  v2, t2, n2: TAffineVectorList;
+  v1, t1, n1: TGLAffineVectorList;
+  v2, t2, n2: TGLAffineVectorList;
   BSP1, BSP2: TBSPMeshObject;
   FG1, FG2: TFGBSPNode;
   i: Integer;
@@ -526,8 +526,8 @@ begin
   FG1 := TFGBSPNode.CreateOwned(BSP1.FaceGroups);
   FG2 := TFGBSPNode.CreateOwned(BSP2.FaceGroups);
 
-  t1 := TAffineVectorList.create;
-  n1 := TAffineVectorList.create;
+  t1 := TGLAffineVectorList.create;
+  n1 := TGLAffineVectorList.create;
   v1 := obj1.ExtractTriangles(t1, n1);
 
   v1.TransformAsPoints(obj1.Owner.Owner.Matrix^);
@@ -538,8 +538,8 @@ begin
   BSP1.TexCoords := t1;
   FG1.VertexIndices.AddSerie(0, 1, BSP1.Vertices.Count);
 
-  t2 := TAffineVectorList.create;
-  n2 := TAffineVectorList.create;
+  t2 := TGLAffineVectorList.create;
+  n2 := TGLAffineVectorList.create;
   v2 := obj2.ExtractTriangles(t2, n2);
   v2.TransformAsPoints(obj2.Owner.Owner.Matrix^);
 

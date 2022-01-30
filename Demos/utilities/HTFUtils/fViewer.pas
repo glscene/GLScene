@@ -222,7 +222,7 @@ procedure TViewerForm.PrepareBitmap;
 var
   i, sx, tx, ty: Integer;
   scanLine: PColor32Array;
-  tileInfo: PHeightTileInfo;
+  tileInfo: PGLHeightTileInfo;
   dataRow: PSmallIntArray;
   tile: PHeightTile;
   start, lap, stop, htfTime, drawTime, freq: Int64;
@@ -245,7 +245,7 @@ begin
 
     for i := 0 to tileList.Count - 1 do
     begin
-      tileInfo := PHeightTileInfo(tileList[i]);
+      tileInfo := PGLHeightTileInfo(tileList[i]);
 
       QueryPerformanceCounter(start);
 
@@ -273,7 +273,7 @@ begin
     if TBGrid.Down then
     begin
       for i := 0 to tileList.Count - 1 do
-        with PHeightTileInfo(tileList[i])^ do
+        with PGLHeightTileInfo(tileList[i])^ do
         begin
           bmp.FrameRectS(left - curX, top - curY, left + Width - curX + 1,
             top + Height - curY + 1, clWhite32);
@@ -312,7 +312,7 @@ procedure TViewerForm.PaintBoxMouseMove(Sender: TObject; Shift: TShiftState;
   X, Y: Integer);
 var
   tileIdx, n: Integer;
-  tileInfo: PHeightTileInfo;
+  tileInfo: PGLHeightTileInfo;
 begin
   if Shift <> [] then
   begin

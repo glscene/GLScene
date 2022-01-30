@@ -4,8 +4,8 @@
 unit GLS.VectorTypes;
 
 (*
-   Defines base vector types for use in GLS.VectorGeometry.pas.
-   The sole aim of this unit is to limit dependency between the GLS.VectorGeometry
+   Defines base vector types for use in VectorGeometry unit
+   The sole aim of this unit is to limit dependency between the VectorGeometry
    and OpenGL units by introducing the base compatibility types
    (and only the *base* types).
 
@@ -125,7 +125,6 @@ type
 
 
 type
-
 // ===========  Vectors  ============
 
   //2
@@ -302,6 +301,8 @@ type
       1 : (X,Y,Z,W: Pointer);
   end;
 
+// The vector by default
+
   PGLVector = ^TGLVector;
   TGLVector = TVector4f;
 
@@ -447,12 +448,13 @@ type
       1 : (M : TMatrix4f);
   end;
 
+// the matrix by default
   PGLMatrix = ^TGLMatrix;
   TGLMatrix = TMatrix4f;
 
-//-----------------------------------------------  
+//-----------------------------------------------
 implementation
-//-----------------------------------------------  
+//-----------------------------------------------
 
 end.
 

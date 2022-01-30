@@ -110,8 +110,8 @@ public:		// User declarations
 	bool WasAboveWater;
 	float HelpOpacity;
 
-	TAffineVectorList *WakeVertices;
-	TAffineVectorList *WakeStretch;
+	TGLAffineVectorList *WakeVertices;
+	TGLAffineVectorList *WakeStretch;
 	TSingleList *WakeTime;
 	void ResetMousePos(void);
 	float WaterPhase(const float px, const float py);

@@ -42,27 +42,27 @@ uses
 type
   TGLBExplosionFX = class(TGLObjectPreEffect)
   private
-    FTriList: TAffineVectorList;
-    FRotList: TAffineVectorList;
-    FDirList: TAffineVectorList;
-    FPosList: TAffineVectorList;
+    FTriList: TGLAffineVectorList;
+    FRotList: TGLAffineVectorList;
+    FDirList: TGLAffineVectorList;
+    FPosList: TGLAffineVectorList;
     FEnabled: boolean;
     FFaceCount: integer;
     FSpeed: single;
     FDirection: TGLCoordinates;
     FMaxSteps: integer;
     FStep: integer;
-    procedure SetTriList(Value: TAffineVectorList);
-    procedure SetRotList(Value: TAffineVectorList);
-    procedure SetDirList(Value: TAffineVectorList);
-    procedure SetPosList(Value: TAffineVectorList);
+    procedure SetTriList(Value: TGLAffineVectorList);
+    procedure SetRotList(Value: TGLAffineVectorList);
+    procedure SetDirList(Value: TGLAffineVectorList);
+    procedure SetPosList(Value: TGLAffineVectorList);
     procedure SetDirection(value: TGLCoordinates);
     procedure SetEnabled(value: boolean);
   protected
-    property TriList: TAffineVectorList read FTriList write SetTriList;
-    property RotList: TAffineVectorList read FRotList write SetRotList;
-    property DirList: TAffineVectorList read FDirList write SetDirList;
-    property PosList: TAffineVectorList read FPosList write SetPosList;
+    property TriList: TGLAffineVectorList read FTriList write SetTriList;
+    property RotList: TGLAffineVectorList read FRotList write SetRotList;
+    property DirList: TGLAffineVectorList read FDirList write SetDirList;
+    property PosList: TGLAffineVectorList read FPosList write SetPosList;
     property FaceCount: integer read FFAceCount write FFaceCount;
     procedure CacheInfo;
   public
@@ -93,10 +93,10 @@ implementation
 constructor TGLBExplosionFx.Create(aOwner: TXCollection);
 begin
   inherited Create(AOwner);
-  FTriList := TAffineVectorList.Create;
-  FRotList := TAffineVectorList.Create;
-  FDirList := TAffineVectorList.Create;
-  FPosList := TAffineVectorList.Create;
+  FTriList := TGLAffineVectorList.Create;
+  FRotList := TGLAffineVectorList.Create;
+  FDirList := TGLAffineVectorList.Create;
+  FPosList := TGLAffineVectorList.Create;
   FDirection := TGLCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
 end;
 
@@ -121,22 +121,22 @@ begin
   Result := 'Explosion FX';
 end;
 
-procedure TGLBExplosionFx.SetTriList(Value: TAffineVectorList);
+procedure TGLBExplosionFx.SetTriList(Value: TGLAffineVectorList);
 begin
   FTriList.Assign(Value);
 end;
 
-procedure TGLBExplosionFx.SetRotList(Value: TAffineVectorList);
+procedure TGLBExplosionFx.SetRotList(Value: TGLAffineVectorList);
 begin
   FRotList.Assign(Value);
 end;
 
-procedure TGLBExplosionFx.SetDirList(Value: TAffineVectorList);
+procedure TGLBExplosionFx.SetDirList(Value: TGLAffineVectorList);
 begin
   FDirList.Assign(Value);
 end;
 
-procedure TGLBExplosionFx.SetPosList(Value: TAffineVectorList);
+procedure TGLBExplosionFx.SetPosList(Value: TGLAffineVectorList);
 begin
   FPosList.Assign(Value);
 end;

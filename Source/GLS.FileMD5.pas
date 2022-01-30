@@ -29,9 +29,9 @@ type
     FMD5String, FTempString, FBoneNames: TStringList;
     FCurrentPos: Integer;
     FBasePose: TGLSkeletonFrame;
-    FFramePositions: TAffineVectorList;
+    FFramePositions: TGLAffineVectorList;
     FFrameQuaternions: TQuaternionList;
-    FJointFlags: TIntegerList;
+    FJointFlags: TGLIntegerList;
     FNumFrames, FFirstFrame, FFrameRate, FNumJoints: Integer;
     function ReadLine: String;
   public
@@ -203,18 +203,18 @@ procedure TGLMD5VectorFile.LoadFromStream(aStream: TStream);
     mesh: TGLSkeletonMeshObject;
     fg: TFGVertexIndexList;
     vnum, wnum, numverts, numweights: Integer;
-    VertexWeightID, VertexWeightCount, VertexBoneRef: TIntegerList;
-    VertexWeight: TSingleList;
-    VertexWeighted: TAffineVectorList;
+    VertexWeightID, VertexWeightCount, VertexBoneRef: TGLIntegerList;
+    VertexWeight: TGLSingleList;
+    VertexWeighted: TGLAffineVectorList;
     blendedVert, transformedVert: TAffineVector;
     i, j, k: Integer;
     mat: TGLMatrix;
   begin
-    VertexWeightID := TIntegerList.Create;
-    VertexWeightCount := TIntegerList.Create;
-    VertexBoneRef := TIntegerList.Create;
-    VertexWeight := TSingleList.Create;
-    VertexWeighted := TAffineVectorList.Create;
+    VertexWeightID := TGLIntegerList.Create;
+    VertexWeightCount := TGLIntegerList.Create;
+    VertexBoneRef := TGLIntegerList.Create;
+    VertexWeight := TGLSingleList.Create;
+    VertexWeighted := TGLAffineVectorList.Create;
 
     numverts := 0;
 
@@ -333,7 +333,7 @@ procedure TGLMD5VectorFile.LoadFromStream(aStream: TStream);
   begin
     if not Assigned(FJointFlags) then
     begin
-      FJointFlags := TIntegerList.Create;
+      FJointFlags := TGLIntegerList.Create;
       Assert(Owner.Skeleton.Frames.Count > 0,
         'The md5mesh file must be loaded before md5anim files!');
       FJointFlags.Count := Owner.Skeleton.Frames[0].Position.Count;
@@ -479,7 +479,7 @@ begin
         if (temp = 'numjoints') then
         begin
           FNumJoints := StrToInt(FTempString[1]);
-          FFramePositions := TAffineVectorList.Create;
+          FFramePositions := TGLAffineVectorList.Create;
           FFrameQuaternions := TQuaternionList.Create;
           if Owner.Skeleton.Frames.Count = 0 then
           begin

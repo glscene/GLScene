@@ -39,7 +39,7 @@ type
   TVectorL4I = array [0 .. 4] of Integer;
   TCastArray = array [0 .. 2, 0 .. 2, 0 .. 2] of Integer;
 
-  TVertex2DArr = array [0 .. 32767] of TGLPoint2D;
+  TVertex2DArr = array [0 .. 32767] of TPoint2DRec;
   PVertex2DArr = ^TVertex2DArr;
 
   PGLIsoline = ^TGLIsoline;
@@ -102,7 +102,7 @@ function GetNextIsoline(var Isoline: TGLIsoline): Boolean;
 
 // Defines contouring segments inside a triangle using elevations
 procedure TriangleElevationSegments(const p1, p2, p3: TAffineVector;
-  ElevationDelta: Single; Segments: TAffineVectorList);
+  ElevationDelta: Single; Segments: TGLAffineVectorList);
 
 //----------------------------------------------------------------------
 implementation
@@ -390,7 +390,7 @@ begin
 end;
 
 procedure TriangleElevationSegments(const p1, p2, p3: TAffineVector;
-  ElevationDelta: Single; Segments: TAffineVectorList);
+  ElevationDelta: Single; Segments: TGLAffineVectorList);
 
   function SegmentIntersect(const a, b: TAffineVector; e: Single): Integer;
   var

@@ -132,7 +132,7 @@ var
   _4cc: Cardinal;
   C: Integer;
   fName: string;
-  vi: Tintegerlist;
+  vi: TGLIntegerList;
   libmat: TGLLibmaterial;
   lmnames, matnames: TStringlist;
   MatInfoHeader: array [0 .. 3] of AnsiChar;
@@ -145,7 +145,7 @@ begin
   MO := TGLMeshObject.CreateOwned(owner.MeshObjects);
   MO.Mode := momFaceGroups;
 
-  vi := Tintegerlist.create;
+  vi := TGLIntegerList.create;
 
   LL := owner.LightmapLibrary;
   ML := owner.MaterialLibrary;

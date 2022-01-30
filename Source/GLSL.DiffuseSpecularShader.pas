@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLSL.DiffuseSpecularShader;
 
 (*
@@ -28,7 +27,7 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-  
+
   GLS.OpenGLTokens,
   GLS.Texture,
   GLS.Scene,

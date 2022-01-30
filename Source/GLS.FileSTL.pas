@@ -286,7 +286,7 @@ var
   I: Integer;
   DataFace: TSTLFace;
   Header: TSTLHeader;
-  List: TAffineVectorList;
+  List: TGLAffineVectorList;
 const
   cHeaderTag = 'STL export';
 begin

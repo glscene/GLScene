@@ -1,5 +1,3 @@
-#version 330 compatibility
-
 uniform sampler2DArray ColorLayers;
 uniform sampler2DArray DepthLayers;
 

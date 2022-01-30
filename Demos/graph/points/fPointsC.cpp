@@ -43,10 +43,10 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
 {
    int i;
    float f, a, ab, ca, sa;
-   TAffineVectorList *p;
+   TGLAffineVectorList *p;
    TAffineVector *v;
 
-   p = new TAffineVectorList;
+   p = new TGLAffineVectorList;
    v = new TAffineVector;
 
    if (CBAnimate->Checked)

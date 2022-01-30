@@ -42,20 +42,20 @@ type
 
   TVRMLSingleArray = class(TVRMLNode)
   private
-    FValues: TSingleList;
+    FValues: TGLSingleList;
   public
     constructor Create; override;
     destructor Destroy; override;
-    property Values: TSingleList read FValues;
+    property Values: TGLSingleList read FValues;
   end;
 
   TVRMLIntegerArray = class(TVRMLNode)
   private
-    FValues: TIntegerList;
+    FValues: TGLIntegerList;
   public
     constructor Create; override;
     destructor Destroy; override;
-    property Values: TIntegerList read FValues;
+    property Values: TGLIntegerList read FValues;
   end;
 
   TVRMLMaterial = class(TVRMLNode)
@@ -272,7 +272,7 @@ end;
 constructor TVRMLSingleArray.Create;
 begin
   inherited;
-  FValues := TSingleList.Create;
+  FValues := TGLSingleList.Create;
 end;
 
 destructor TVRMLSingleArray.Destroy;
@@ -289,7 +289,7 @@ end;
 constructor TVRMLIntegerArray.Create;
 begin
   inherited;
-  FValues := TIntegerList.Create;
+  FValues := TGLIntegerList.Create;
 end;
 
 destructor TVRMLIntegerArray.Destroy;

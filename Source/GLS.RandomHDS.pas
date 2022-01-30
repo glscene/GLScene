@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.RandomHDS;
 
 (*
@@ -266,8 +265,8 @@ type
       and sea steps. *)
     procedure BuildLandscape;
     (* - Compute the light effects
-      - Compute the casted shadows
-      - Perform a basic smoothing if TextureScale>1 *)
+       - Compute the casted shadows
+       - Perform a basic smoothing if TextureScale>1 *)
     procedure BuildLightMap; overload;
     procedure BuildLightMap(const aLightDirection: TGLVector); overload;
     // Normals are needed for lighting and slope-based textures
@@ -298,7 +297,10 @@ type
       though. Some tweaking may be needed *)
     procedure DoErosionByLife;
     (* Create sharp valleys and canyons. If DepositRate>0, it will also fill the
-      low pools, producing flat "lakes" and "ponds" *)
+      low pools, producing flat "lakes" and "ponds".
+      Drop some rain on every cell of the landscape and let it run downward,
+      taking soil on its way. When it arrives into a pool,
+      let it deposit all that has been eroded *)
     procedure DoErosionByRain;
     // Create a beach and a cliff around the islands
     procedure DoErosionBySea;
@@ -386,10 +388,11 @@ type
   TGLLandTile = TGLCustomRandomHDS;
 
   TRelativeCoordinate = record
-    DX, DZ: integer 
+    DX, DZ: integer
   end;
   TOnCreateLandTile =  procedure(x, z, Seed: integer; var aLandscape: TGLLandTile) of object;
   TIsDefaultTile =  function(X, Z: integer): boolean of object;
+
   TGLTiledRndLandscape = class(TGLBaseRandomHDS)
   private 
     FLandTileComputing: boolean; // Is a landtile being computed?
@@ -500,12 +503,12 @@ type
       a unique seed for each landtile *)
     property ExtentX: integer read FExtentX write SetExtentX;
     property ExtentZ: integer read FExtentZ write SetExtentZ;
-    { Distance at which a new landtile begin to be built. Increasing this value
-      allows for a higher camera speed but it will also increase the memory requirements. }
+    (* Distance at which a new landtile begin to be built. Increasing this value
+      allows for a higher camera speed but it will also increase the memory requirements. *)
     property GenerationRadius: integer read FGenerationRadius write SetGenerationRadius;
     // Number of landtile to keep in memory. Should not be modified.
     property LandTileCapacity: integer read FLandTileCapacity write SetLandTileCapacity;
-    // Probability that a given landtile is non-default 
+    // Probability that a given landtile is non-default
     property LandTileDensity: single read FLandTileDensity write SetLandTileDensity;
     // Base seed for the entire archipelago
     property Seed: integer read FSeed write SetSeed;
@@ -559,7 +562,7 @@ type
     // Ranges for the roughness parameter in the fractal algorithm 
     property RoughnessMax: single read FRoughnessMax write SetRoughnessMax;
     property RoughnessMin: single read FRoughnessMin write SetRoughnessMin;
-    // If true, the sea will show dynamic waves. Slow. 
+    // If true, the sea will show dynamic waves. Slow.
     property SeaDynamic: boolean read FSeaDynamic write SetSeaDynamic;
     (* Reference to a material in the TerrainRenderer's material library. This
       material will be used to drape the water plane. *)
@@ -847,9 +850,9 @@ begin
   FTextureScale := Value;
 end;
 
-//
+// ----------------------------------------------
 // TGLCustomRandomHDS
-//
+// ----------------------------------------------
 procedure TGLCustomRandomHDS.BoundaryClamp(var x, y: single);
 begin
   ClampValue(x, 0, FSize);
@@ -930,8 +933,8 @@ begin
   if FLandCover then
     BuildTexture;
 
-  { Free memory. If you need often to recompute texture, you may want to keep
-    one or both maps, providing the heightfield or the light source have not changed. }
+  (* Free memory. If you need often to recompute texture, you may want to keep
+    one or both maps, providing the heightfield or the light source have not changed. *)
   if not FKeepNormals then
     FNormal := nil;
   FLightMap := nil;
@@ -962,7 +965,7 @@ begin
   NormalizeVector(l);
   NegateVector(l);
 
-  { Compute lighting }
+  // Compute lighting
   for i := 0 to FSize do
   begin
     FTaskProgress := Round(i / FSize * 100);
@@ -977,7 +980,7 @@ begin
     end; // for
   end; // for i
 
-  { Shadows }
+  // Shadows
   if FShadows then
   begin
     FTask := 'Shadow casting';
@@ -1013,7 +1016,7 @@ begin
     end; // for i
   end; // if
 
-  { Smoothing }
+  // Smoothing
   if FLightSmoothing then
   begin
     FTask := 'Light-map smoothing';
@@ -1254,9 +1257,10 @@ end; // *)
   fTask:='Texture creation';
   fTaskProgress:=0;
 
-  {Draw bitmap}
+  //Draw bitmap
   try
-  with Bmp do begin
+  with Bmp do
+  begin
   PixelFormat:=pf24bit;
   Width:=fSize*TextureScale;
   Height:=fSize*TextureScale;
@@ -1264,7 +1268,8 @@ end; // *)
   for y:=0 to fSize*TextureScale-1 do begin
   fTaskProgress:=Round(y/(fSize*TextureScale)*100);
   Application.ProcessMessages;
-  for x:=0 to fSize*TextureScale-1 do begin
+  for x:=0 to fSize*TextureScale-1 do
+  begin
   i:=x div TextureScale;
   j:=y div TextureScale;
   z:=Interpolate(x/TextureScale,y/TextureScale);
@@ -1283,8 +1288,9 @@ end; // *)
   end;//with
   //Bmp.SaveToFile('test.bmp');
 
-  {Use it as texture}
-  with Mat.Material.Texture do begin
+  // Use it as texture
+  with Mat.Material.Texture do
+  begin
   Image.Assign(Bmp);
   Image.NotifyChange(Self);
   Enabled:=true;
@@ -1400,7 +1406,7 @@ var
   x, y, i: integer;
   z, z1: single;
 begin
-  { Smoothing by a 3-by-3 mean filter }
+  // Smoothing by a 3-by-3 mean filter
   FTask := 'Erosion by life';
   FTaskProgress := 0;
   for y := 0 to FSize do
@@ -1422,8 +1428,6 @@ begin
 end;
 
 procedure TGLCustomRandomHDS.DoErosionByRain;
-{ Drop some rain on every cell of the landscape and let it run downward, taking soil
-  on its way. When it arrives into a pool, let it deposit all that has been eroded. }
 const
   Ks = 0.001; // Soil solubility
 var
@@ -1445,7 +1449,7 @@ begin
   MinZ := 0;
   Next := 0;
 
-  { Rain }
+  // Rain
   for y0 := 0 to FSize do
   begin
     FTaskProgress := Round(y0 / (FSize) * 100);
@@ -1530,7 +1534,7 @@ end; // *)
   dz,mindz	:single;
   begin
   c:=1/VSF/sqrt(sqr(Scale.X)+sqr(Scale.Z));
-  {Water flow map computation}
+  // Water flow map computation
   SetLength(Flow,fSize+1,fSize+1);
   for y:=0 to fSize do begin
   for x:=0 to fSize do begin
@@ -1568,7 +1572,7 @@ end; // *)
   end;//for
   From:=0;
 
-  {Rain}
+  //Rain
   for y0:=0 to fSize do begin
   for x0:=0 to fSize do begin
   x:=x0;
@@ -1591,7 +1595,7 @@ end; // *)
   end;//for x0
   end;//for y0
 
-  {Apply erosion}
+  //Apply erosion
   for y:=0 to fSize do begin
   for x:=0 to fSize do begin
   //fHeight[x,y]:=fHeight[x,y]+Flow[x,y].Erosion*0.002*Intensity*fRangeHeight;
@@ -1620,7 +1624,7 @@ end; // *)
   SetLength(Erosion,fSize+2,fSize+2);
   for y:=0 to fSize+1 do for x:=0 to fSize+1 do Erosion[x,y]:=0;
 
-  {Erosion computation}
+  //Erosion computation
   for y:=0 to fSize+1 do begin
   for x:=0 to fSize+1 do begin
   z:=fHeight[x,y];
@@ -1654,7 +1658,7 @@ end; // *)
   end;//for x
   end;//for y
 
-  {Apply erosion to each cell}
+  //Apply erosion to each cell
   for y:=0 to fSize do begin
   for x:=0 to fSize do begin
   fHeight[x,y]:=fHeight[x,y]+Erosion[x,y]*0.005*Intensity*fRangeHeight;
@@ -1682,7 +1686,7 @@ end; // *)
   for i:=1 to 1 do begin
   //for y:=0 to fSize+1 do for x:=0 to fSize+1 do Erosion[x,y]:=0;
 
-  {Erosion computation}
+  //Erosion computation
   for y:=5 to fSize-4 do begin
   for x:=5 to fSize-4 do begin
   z:=fHeight[x,y];
@@ -1704,7 +1708,7 @@ end; // *)
   end;//for x
   end;//for y
 
-  {Apply erosion to each cell}
+  //Apply erosion to each cell
   for y:=0 to fSize do begin
   for x:=0 to fSize do begin
   fHeight[x,y]:=fHeight[x,y]+Erosion[x,y]*100*Intensity;
@@ -1967,8 +1971,9 @@ begin
   FKeepNormals := Value;
 end;
 
-{ TGLFractalHDS }
-
+// --------------------------------------
+// TGLFractalHDS
+// --------------------------------------
 procedure TGLFractalHDS.BuildHeightField(const aDepth, aSeed, aAmplitude: integer);
 begin
   fDepth := aDepth;

@@ -319,7 +319,7 @@ type
   private
     FVertexProgramHandle: TGLARBVertexProgramHandle;
     FFragmentProgramHandle: TGLARBFragmentProgramHandle;
-    FLightIDs: TIntegerList;
+    FLightIDs: TGLIntegerList;
     FLightsEnabled: Integer;
     FBumpMethod: TBumpMethod;
     FBumpSpace: TBumpSpace;
@@ -1192,7 +1192,7 @@ end;
 constructor TGLBumpShader.Create(AOwner: TComponent);
 begin
   inherited;
-  FLightIDs := TIntegerList.Create;
+  FLightIDs := TGLIntegerList.Create;
   FBumpMethod := bmDot3TexCombiner;
   FBumpSpace := bsObject;
   FBumpOptions := [];

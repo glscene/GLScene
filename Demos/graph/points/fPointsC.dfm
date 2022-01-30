@@ -2,26 +2,29 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Points'
-  ClientHeight = 413
-  ClientWidth = 487
+  ClientHeight = 516
+  ClientWidth = 609
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -10
+  Font.Height = -13
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 12
+  PixelsPerInch = 120
+  TextHeight = 16
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 23
-    Width = 487
-    Height = 390
+    Top = 29
+    Width = 609
+    Height = 487
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Camera = GLCamera1
     Buffer.BackgroundColor = clTeal
-    FieldOfView = 151.237213134765600000
+    FieldOfView = 156.792495727539100000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -31,22 +34,34 @@ object Form1: TForm1
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 487
-    Height = 23
+    Width = 609
+    Height = 29
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
     TabOrder = 1
     object LabelFPS: TLabel
-      Left = 266
-      Top = 5
-      Width = 18
-      Height = 12
+      Left = 333
+      Top = 6
+      Width = 22
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'FPS'
     end
     object CBPointParams: TCheckBox
-      Left = 8
-      Top = 4
-      Width = 89
-      Height = 16
+      Left = 10
+      Top = 5
+      Width = 111
+      Height = 20
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'PointParameters'
       Checked = True
       State = cbChecked
@@ -54,10 +69,14 @@ object Form1: TForm1
       OnClick = CBPointParamsClick
     end
     object CBAnimate: TCheckBox
-      Left = 163
-      Top = 4
-      Width = 89
-      Height = 16
+      Left = 204
+      Top = 5
+      Width = 111
+      Height = 20
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Animate'
       Checked = True
       State = cbChecked

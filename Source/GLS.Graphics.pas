@@ -31,7 +31,6 @@ uses
   {$IFDEF USE_GRAPHICS32} GR32, {$ENDIF}
 
   GLS.VectorTypes,
-//  GLS.OpenGLTokens,
   GLS.State,
   GLS.ApplicationFileIO,
   GLS.PersistentClasses,
@@ -322,7 +321,7 @@ type
   end;
 
   // Stores registered raster file formats.
-  TGLRasterFileFormatsList = class(TPersistentObjectList)
+  TGLRasterFileFormatsList = class(TGLPersistentObjectList)
   public
     destructor Destroy; override;
     procedure Add(const Ext, Desc: string; DescID: Integer; AClass:
@@ -1233,7 +1232,7 @@ begin
     Exit;
 
   UnMipmap;
-  // Use GLScene image utils
+  // Use image utils
   Size := GetWidth * GetHeight * 4;
   GetMem(newData, Size);
   try
@@ -1269,7 +1268,7 @@ begin
     fLevelCount := GetImageLodNumber(GetWidth, GetHeight, GetDepth, True);
     UpdateLevelsInfo;
     ReallocMem(FData, DataSize);
-    {Message Hint 'TGLBaseImage.GenerateMipmap not yet implemented for volume images' }
+    // Message Hint 'TGLBaseImage.GenerateMipmap not yet implemented for volume images'
   end
   else
   begin
@@ -2057,6 +2056,7 @@ begin
   end;
 end;
 {$ENDIF}
+
 // ------------------
 // ------------------ TGLImage ------------------
 // ------------------
@@ -2426,7 +2426,7 @@ begin
         end;
       end;
   else
-    { Internal Decode TColor - Palette }
+    // Internal Decode TColor - Palette
     for j := 1 to aPngImage.Height do
     begin
       AlphaScan := aPngImage.AlphaScanline[aPngImage.Height - j];

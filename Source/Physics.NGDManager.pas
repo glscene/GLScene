@@ -24,7 +24,7 @@ uses
 
   GLS.VectorTypes,
   GLS.VectorGeometry, // PGLVector TGLVector TGLMatrix PGLMatrix NullHmgVector...
-  GLS.VectorLists, // TAffineVectorList for Tree
+  GLS.VectorLists, // TGLAffineVectorList for Tree
   GLS.XCollection, // TXCollection file function
   GLS.GeometryBB, // For show debug
   GLS.BaseClasses,
@@ -1613,7 +1613,7 @@ end;
 function TGLNGDBehaviour.GetTreeCollision: PNewtonCollision;
 var
   meshIndex, triangleIndex: Integer;
-  triangleList: TAffineVectorList;
+  triangleList: TGLAffineVectorList;
   v: array [0 .. 2] of TAffineVector;
 begin
   if FOwnerBaseSceneObject is TGLBaseMesh then

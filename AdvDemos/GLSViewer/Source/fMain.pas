@@ -774,8 +774,8 @@ end;
 
 procedure TMainForm.acConvertToIndexedTrianglesExecute(Sender: TObject);
 var
-  v: TAffineVectorList;
-  I: TIntegerList;
+  v: TGLAffineVectorList;
+  I: TGLIntegerList;
   m: TGLMeshObject;
   fg: TFGVertexIndexList;
 begin
@@ -810,7 +810,7 @@ var
   I: Integer;
   mo: TGLMeshObject;
   fg: TFGVertexIndexList;
-  strips: TPersistentObjectList;
+  strips: TGLPersistentObjectList;
 begin
   acConvertToTriangles.Execute;
   mo := ffObject.MeshObjects[0];
@@ -821,7 +821,7 @@ begin
     for I := 0 to strips.Count - 1 do
     begin
       fg := TFGVertexIndexList.CreateOwned(mo.FaceGroups);
-      fg.VertexIndices := (strips[I] as TIntegerList);
+      fg.VertexIndices := (strips[I] as TGLIntegerList);
       if I = 0 then
         fg.Mode := fgmmTriangles
       else

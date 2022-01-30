@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.HeightData;
 
 (*
@@ -915,7 +914,6 @@ procedure TGLHeightDataSource.BeforePreparingData(HeightData: TGLHeightData);
 begin
   //
 end;
-
 
 // When Threads are used, this runs from the sub-thread, so this MUST be thread-safe.
 // Any Non-thread-safe code should be placed in "BeforePreparingData"
