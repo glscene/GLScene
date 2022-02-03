@@ -42,7 +42,8 @@ uses
   GLS.OpenGLTokens, 
   GLS.Context, 
   GLS.State, 
-  GLS.TextureFormat;
+  GLS.TextureFormat,
+  GLS.File3DS;
 
 type
   TForm1 = class(TForm)
@@ -69,6 +70,7 @@ type
     BFLarge: TGLWindowsBitmapFont;
     HTHelp: TGLHUDText;
     DOWake: TGLDirectOpenGL;
+    GLDummyCube1: TGLDummyCube;
     procedure Timer1Timer(Sender: TObject);
     procedure GLCadencerProgress(Sender: TObject; const deltaTime,
       newTime: Double);
@@ -92,7 +94,7 @@ type
     DataPath : String;
     WakeVertices: TGLAffineVectorList;
     WakeStretch: TGLAffineVectorList;
-    WakeTime: TSingleList;
+    WakeTime: TGLSingleList;
     procedure ResetMousePos;
     function WaterPhase(const px, py: Single): Single;
     function WaterHeight(const px, py: Single): Single;
@@ -157,8 +159,11 @@ begin
   WaterPlane := True;
 
   // load the sailboat
+  (*  lost material for sailboat
   FFSailBoat.LoadFromFile('sailboat.glsm');
   MLSailBoat.LoadFromFile('sailboat.glml');
+  *)
+  FFSailBoat.LoadFromFile('boat.3ds');
   FFSailBoat.Position.SetPoint(-125 * TerrainRenderer.Scale.X, 0, -100 * TerrainRenderer.Scale.Z);
   FFSailBoat.TurnAngle := -30;
   // boost ambient
@@ -304,10 +309,9 @@ begin
   end;
   // rock the sailboat
   sbp := TerrainRenderer.AbsoluteToLocal(FFSailBoat.AbsolutePosition);
-  alpha := WaterPhase(sbp.X + TerrainRenderer.TileSize * 0.5,
-    sbp.Y + TerrainRenderer.TileSize * 0.5);
+  alpha := WaterPhase(sbp.X + TerrainRenderer.TileSize * 0.5, sbp.Y + TerrainRenderer.TileSize * 0.5);
   FFSailBoat.Position.Y := (cWaterLevel + Sin(alpha) * cWaveAmplitude) * (TerrainRenderer.Scale.Z / 128)
-    - 1.5;
+    + 4;
   f := cWaveAmplitude * 0.01;
   FFSailBoat.Up.SetVector(Cos(alpha) * 0.02 * f, 1, (Sin(alpha) * 0.02 - 0.005) * f);
   FFSailBoat.Move(deltaTime * 2);
@@ -398,6 +402,7 @@ begin
     WaterPolyCount := heightDatas.Count * 8;
   until not MaterialLibrary.UnApplyMaterial(rci);
 end;
+
 procedure TForm1.Timer1Timer(Sender: TObject);
 begin
   HTFPS.Text := Format('%.1f FPS - %d - %d',
@@ -531,7 +536,7 @@ begin
   begin
     WakeVertices := TGLAffineVectorList.Create;
     WakeStretch := TGLAffineVectorList.Create;
-    WakeTime := TSingleList.Create;
+    WakeTime := TGLSingleList.Create;
   end;
 
   // enlarge current vertices
@@ -574,7 +579,7 @@ end;
 
 procedure TForm1.DOWakeRender(Sender: TObject; var rci: TGLRenderContextInfo);
 var
-  i, n: Integer;
+  i: Integer;
   p: PAffineVector;
   sbp: TGLVector;
   c: Single;
@@ -603,14 +608,13 @@ begin
         InvertGLFrontFace;
 
       glBegin(GL_TRIANGLE_STRIP);
-      n := WakeVertices.Count;
-      for i := 0 to n - 1 do
+      for i := 0 to WakeVertices.Count - 1 do
       begin
         p := @WakeVertices.List[i xor 1];
         sbp := TerrainRenderer.AbsoluteToLocal(VectorMake(p^));
         if (i and 1) = 0 then
         begin
-          c := (i and $FFE) * 0.2 / n;
+          c := (i and $FFE) * 0.2 / WakeVertices.Count;
           glColor3f(c, c, c);
           glTexCoord2f(0, WakeTime[i div 2]);
         end

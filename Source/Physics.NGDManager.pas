@@ -3,9 +3,9 @@
 //
 unit Physics.NGDManager;
 (*
-  The Scene Manager based on Newton Game Dynamics Engine (http://newtondynamics.com)
+  The Newton Game Dynamics Manager for GLScene.
   Notes:
-  This code is still being developed so any part of it may change at anytime.
+  This code is still under development so any part of it may change at anytime.
 *)
 interface
 
@@ -38,8 +38,7 @@ uses
   GLS.Color;
 
 type
-  NGDFloat = Physics.NGDImport.dFloat;
-  PNGDFloat = ^NGDFloat;
+  PdFloat = ^dFloat;
 
   TGLNGDHeightField = record
     heightArray: array of Word;
@@ -84,14 +83,14 @@ type
 
   // Events for Newton Callback
   TCollisionIteratorEvent = procedure(const userData: Pointer;
-    vertexCount: Integer; const cfaceArray: PNGDFloat; faceId: Integer)
+    vertexCount: Integer; const cfaceArray: PdFloat; faceId: Integer)
     of object;
 
   TApplyForceAndTorqueEvent = procedure(const cbody: PNewtonBody;
-    timestep: NGDFloat; threadIndex: Integer) of object;
+    timestep: dFloat; threadIndex: Integer) of object;
 
   TSetTransformEvent = procedure(const cbody: PNewtonBody;
-    const cmatrix: PNGDFloat; threadIndex: Integer) of object;
+    const cmatrix: PdFloat; threadIndex: Integer) of object;
 
   TSerializeEvent = procedure(serializeHandle: Pointer; const cbuffer: Pointer;
     size: Cardinal) of object;
@@ -104,7 +103,7 @@ type
     : Boolean of object;
 
   TContactProcessEvent = procedure(const ccontact: PNewtonJoint;
-    timestep: NGDFloat; threadIndex: Integer) of object;
+    timestep: dFloat; threadIndex: Integer) of object;
 
   TGLNGDDebugOption = class(TPersistent)
   strict private
@@ -122,8 +121,8 @@ type
     FAppliedVelocityColor: TGLColor; // Lime
     FCustomColor: TGLColor; // Aqua
     FDotAxisSize: Single; // 1
-    FNGDManagerDebugs: TGLNGDManagerDebugs; // Default All false
-    procedure SetNGDManagerDebugs(const Value: TGLNGDManagerDebugs);
+    FManagerDebugs: TGLNGDManagerDebugs; // Default All false
+    procedure SetManagerDebugs(const Value: TGLNGDManagerDebugs);
     procedure SetDotAxisSize(const Value: Single);
     function StoredDotAxis: Boolean;
   public
@@ -148,8 +147,8 @@ type
     property AppliedVelocityColor: TGLColor read FAppliedVelocityColor
       write FAppliedVelocityColor;
     property CustomColor: TGLColor read FCustomColor write FCustomColor;
-    property NGDManagerDebugs: TGLNGDManagerDebugs read FNGDManagerDebugs
-      write SetNGDManagerDebugs default [];
+    property NGDManagerDebugs: TGLNGDManagerDebugs read FManagerDebugs
+      write SetManagerDebugs default [];
     property DotAxisSize: Single read FDotAxisSize write SetDotAxisSize
       stored StoredDotAxis;
   end;
@@ -169,7 +168,7 @@ type
     FNewtonSurfaceItem: TCollection;
     FNewtonSurfacePair: TOwnedCollection;
     FNewtonJointGroup: TOwnedCollection;
-    FNGDDebugOption: TGLNGDDebugOption;
+    FNewtonDebugOption: TGLNGDDebugOption;
     FGLLines: TGLLines;
   private
     FNewtonWorld: PNewtonWorld;
@@ -223,8 +222,8 @@ type
       write FNewtonSurfaceItem;
     property NewtonSurfacePair: TOwnedCollection read FNewtonSurfacePair
       write FNewtonSurfacePair;
-    property DebugOption: TGLNGDDebugOption read FNGDDebugOption
-      write FNGDDebugOption;
+    property DebugOption: TGLNGDDebugOption read FNewtonDebugOption
+      write FNewtonDebugOption;
     property Line: TGLLines read FGLLines write SetGLLines;
     property NewtonJoint: TOwnedCollection read FNewtonJointGroup
       write FNewtonJointGroup;
@@ -240,14 +239,14 @@ type
     FCollision: PNewtonCollision;
     FNewtonBodyMatrix: TGLMatrix; // Position and Orientation
     FContinuousCollisionMode: Boolean; // Default=False
-    FNGDCollisions: TGLNGDCollisions;
+    FNewtonCollisions: TGLNGDCollisions;
     FCollisionIteratorEvent: TCollisionIteratorEvent;
     FOwnerBaseSceneObject: TGLBaseSceneObject;
     // FNullCollisionMass: Single; // Default=0
     FTreeCollisionOptimize: Boolean; // Default=True
     FConvexCollisionTolerance: Single; // Default=0.01 1%
     FFileCollision: string;
-    FNGDSurfaceItem: TGLNGDSurfaceItem;
+    FSurfaceItem: TGLNGDSurfaceItem;
     FHeightFieldOptions: TGLNGDHeightField;
   protected
     procedure Initialize; virtual;
@@ -262,8 +261,8 @@ type
     function GetNewtonBodyAABB: TAABB;
     procedure UpdCollision; virtual;
     procedure Render; virtual;
-    procedure SetNGDNewtonCollisions(const Value: TGLNGDCollisions);
-    procedure SetNGDSurfaceItem(const Value: TGLNGDSurfaceItem);
+    procedure SetNewtonCollisions(const Value: TGLNGDCollisions);
+    procedure SetNewtonSurfaceItem(const Value: TGLNGDSurfaceItem);
     procedure SetHeightFieldOptions(const Value: TGLNGDHeightField);
     function GetPrimitiveCollision(): PNewtonCollision;
     function GetConvexCollision(): PNewtonCollision;
@@ -277,10 +276,10 @@ type
     function StoredTolerance: Boolean;
     // Event
     procedure OnCollisionIteratorEvent(const userData: Pointer;
-      vertexCount: Integer; const cfaceArray: PNGDFloat; faceId: Integer);
+      vertexCount: Integer; const cfaceArray: PdFloat; faceId: Integer);
     // CallBack
     class procedure NewtonCollisionIterator(const userData: Pointer;
-      vertexCount: Integer; const faceArray: PNGDFloat; faceId: Integer);
+      vertexCount: Integer; const faceArray: PdFloat; faceId: Integer);
       static; cdecl;
     class procedure NewtonSerialize(serializeHandle: Pointer;
       const buffer: Pointer; size: Cardinal); static; cdecl;
@@ -303,15 +302,15 @@ type
     property Manager: TGLNGDManager read FManager write SetManager;
     property ContinuousCollisionMode: Boolean read FContinuousCollisionMode
       write SetContinuousCollisionMode default False;
-    property NGDNewtonCollisions: TGLNGDCollisions read FNGDCollisions
-      write SetNGDNewtonCollisions default nc_Primitive;
+    property NGDNewtonCollisions: TGLNGDCollisions read FNewtonCollisions
+      write SetNewtonCollisions default nc_Primitive;
     property TreeCollisionOptimize: Boolean read FTreeCollisionOptimize
       write FTreeCollisionOptimize default True;
     property ConvexCollisionTolerance: Single read FConvexCollisionTolerance
       write FConvexCollisionTolerance stored StoredTolerance;
     property FileCollision: string read FFileCollision write FFileCollision;
-    property NGDSurfaceItem: TGLNGDSurfaceItem read FNGDSurfaceItem
-      write SetNGDSurfaceItem;
+    property NGDSurfaceItem: TGLNGDSurfaceItem read FSurfaceItem
+      write SetNewtonSurfaceItem;
   end;
 
   TGLNGDDynamic = class(TGLNGDBehaviour)
@@ -354,14 +353,14 @@ type
     procedure NotifyCenterOfMassChange(Sender: TObject);
     procedure NotifyAngularDampingChange(Sender: TObject);
     procedure OnApplyForceAndTorqueEvent(const cbody: PNewtonBody;
-      timestep: NGDFloat; threadIndex: Integer);
+      timestep: dFloat; threadIndex: Integer);
     procedure OnSetTransformEvent(const cbody: PNewtonBody;
-      const cmatrix: PNGDFloat; threadIndex: Integer);
+      const cmatrix: PdFloat; threadIndex: Integer);
     // Callback
     class procedure NewtonApplyForceAndTorque(const body: PNewtonBody;
-      timestep: NGDFloat; threadIndex: Integer); static; cdecl;
+      timestep: dFloat; threadIndex: Integer); static; cdecl;
     class procedure NewtonSetTransform(const body: PNewtonBody;
-      const matrix: PNGDFloat; threadIndex: Integer); static; cdecl;
+      const matrix: PdFloat; threadIndex: Integer); static; cdecl;
   public
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
@@ -422,8 +421,8 @@ type
   TGLNGDSurfacePair = class(TCollectionItem)
   strict private
     FManager: TGLNGDManager;
-    FNGDSurfaceItem1: TGLNGDSurfaceItem;
-    FNGDSurfaceItem2: TGLNGDSurfaceItem;
+    FSurfaceItem1: TGLNGDSurfaceItem;
+    FSurfaceItem2: TGLNGDSurfaceItem;
     FAABBOverlapEvent: TAABBOverlapEvent;
     FContactProcessEvent: TContactProcessEvent;
     FSoftness: Single; // 0.1
@@ -450,18 +449,18 @@ type
       const body0: PNewtonBody; const body1: PNewtonBody; threadIndex: Integer)
       : Integer; static; cdecl;
     class procedure NewtonContactsProcess(const contact: PNewtonJoint;
-      timestep: NGDFloat; threadIndex: Integer); static; cdecl;
+      timestep: dFloat; threadIndex: Integer); static; cdecl;
     // Event
     function OnNewtonAABBOverlapEvent(const cmaterial: PNewtonMaterial;
       const cbody0: PNewtonBody; const cbody1: PNewtonBody;
       threadIndex: Integer): Boolean;
     procedure OnNewtonContactsProcessEvent(const ccontact: PNewtonJoint;
-      timestep: NGDFloat; threadIndex: Integer);
+      timestep: dFloat; threadIndex: Integer);
   public
     constructor Create(Collection: TCollection); override;
     procedure SetMaterialItems(const item1, item2: TGLNGDSurfaceItem);
-    property NGDSurfaceItem1: TGLNGDSurfaceItem read FNGDSurfaceItem1;
-    property NGDSurfaceItem2: TGLNGDSurfaceItem read FNGDSurfaceItem2;
+    property NGDSurfaceItem1: TGLNGDSurfaceItem read FSurfaceItem1;
+    property NGDSurfaceItem2: TGLNGDSurfaceItem read FSurfaceItem2;
   published
     property Softness: Single read FSoftness write SetSoftness
       stored StoredSoftness;
@@ -666,6 +665,7 @@ type
       write FUPVectorDirection;
   end;
 
+// Global function 
 function GetNGDStatic(Obj: TGLBaseSceneObject): TGLNGDStatic;
 function GetOrCreateNGDStatic(Obj: TGLBaseSceneObject): TGLNGDStatic;
 function GetNGDDynamic(Obj: TGLBaseSceneObject): TGLNGDDynamic;
@@ -738,7 +738,7 @@ begin
     FCustomColor := TGLColor.CreateInitialized(self, clrAqua, NotifyChange);
   end;
   FDotAxisSize := 1;
-  FNGDManagerDebugs := [];
+  FManagerDebugs := [];
 
   FManager := AOwner as TGLNGDManager;
 end;
@@ -766,10 +766,10 @@ begin
   FManager.NotifyChange(self);
 end;
 
-procedure TGLNGDDebugOption.SetNGDManagerDebugs(const Value
+procedure TGLNGDDebugOption.SetManagerDebugs(const Value
   : TGLNGDManagerDebugs);
 begin
-  FNGDManagerDebugs := Value;
+  FManagerDebugs := Value;
   FManager.NotifyChange(self);
 end;
 
@@ -857,7 +857,7 @@ begin
   FNewtonSurfaceItem := TCollection.Create(TGLNGDSurfaceItem);
   FNewtonSurfacePair := TOwnedCollection.Create(self, TGLNGDSurfacePair);
   FNewtonJointGroup := TOwnedCollection.Create(self, TGLNGDJoint);
-  FNGDDebugOption := TGLNGDDebugOption.Create(self);
+  FNewtonDebugOption := TGLNGDDebugOption.Create(self);
   RegisterManager(self);
 end;
 
@@ -877,7 +877,7 @@ begin
   FreeAndNil(FGravity);
   FreeAndNil(FNewtonSurfaceItem);
   FreeAndNil(FNewtonSurfacePair);
-  FreeAndNil(FNGDDebugOption);
+  FreeAndNil(FNewtonDebugOption);
 
   NewtonDestroyAllBodies(FNewtonWorld);
   NewtonMaterialDestroyAllGroupID(FNewtonWorld);
@@ -937,7 +937,7 @@ begin
   for I := 0 to FNGDBehaviours.Count - 1 do
     FNGDBehaviours[I].Render;
 
-  if mdShowJoint in FNGDDebugOption.NGDManagerDebugs then
+  if mdShowJoint in FNewtonDebugOption.NGDManagerDebugs then
     for I := 0 to NewtonJoint.Count - 1 do //
       (NewtonJoint.Items[I] as TGLNGDJoint).Render;
 
@@ -1097,7 +1097,7 @@ procedure TGLNGDManager.RebuildAllJoint(Sender: TObject);
       begin
         pinAndPivot := IdentityHmgMatrix;
         pinAndPivot.W := FCustomBallAndSocketOptions.FPivotPoint.AsVector;
-(* from dJointLibrary.dll
+       (* // from dJointLibrary.dll
         FNewtonUserJoint := CreateCustomBallAndSocket(@pinAndPivot,
           GetBodyFromGLSceneObject(FChildObject),
           GetBodyFromGLSceneObject(FParentObject));
@@ -1122,7 +1122,7 @@ procedure TGLNGDManager.RebuildAllJoint(Sender: TObject);
       First row: the pin direction
       Second and third rows are set to create an orthogonal matrix
       Fourth: The pivot position
-      The GLBaseSceneObjects direction is the third row,
+      The BaseSceneObjects direction is the third row,
       because the first row is the right vector (second row is up vector). *)
     with Joint do
       if Assigned(FParentObject) and Assigned(FChildObject) then
@@ -1341,8 +1341,8 @@ begin
     // assign matID to bodies
     for I := 0 to FNGDBehaviours.Count - 1 do
       with FNGDBehaviours[I] do
-        if Assigned(FNGDSurfaceItem) then
-          NewtonBodySetMaterialGroupID(FNewtonBody, FNGDSurfaceItem.ID)
+        if Assigned(FSurfaceItem) then
+          NewtonBodySetMaterialGroupID(FNewtonBody, FSurfaceItem.ID)
         else
           NewtonBodySetMaterialGroupID(FNewtonBody, 0);
     // Set values to newton material pair :callback userdata friction...
@@ -1372,7 +1372,7 @@ begin
   FNewtonBody := nil;
   FCollision := nil;
 
-  FNGDCollisions := nc_Primitive;
+  FNewtonCollisions := nc_Primitive;
 
   FCollisionIteratorEvent := OnCollisionIteratorEvent;
 
@@ -1690,7 +1690,7 @@ begin
 end;
 
 class procedure TGLNGDBehaviour.NewtonCollisionIterator(const userData: Pointer;
-  vertexCount: Integer; const faceArray: PNGDFloat; faceId: Integer)cdecl;
+  vertexCount: Integer; const faceArray: PdFloat; faceId: Integer)cdecl;
 begin
   TGLNGDBehaviour(userData).FCollisionIteratorEvent(userData, vertexCount,
     faceArray, faceId);
@@ -1712,7 +1712,7 @@ begin
 end;
 
 procedure TGLNGDBehaviour.OnCollisionIteratorEvent(const userData: Pointer;
-  vertexCount: Integer; const cfaceArray: PNGDFloat; faceId: Integer);
+  vertexCount: Integer; const cfaceArray: PdFloat; faceId: Integer);
 var
   I: Integer;
   v0, v1: array [0 .. 2] of Single;
@@ -1776,7 +1776,7 @@ procedure TGLNGDBehaviour.UpdCollision;
 var
   collisionInfoRecord: TNewtonCollisionInfoRecord;
 begin
-  case FNGDCollisions of
+  case FNewtonCollisions of
     nc_Primitive:
       FCollision := GetPrimitiveCollision;
     nc_Convex:
@@ -1796,7 +1796,6 @@ begin
     nc_NGDFile:
       FCollision := GetNGDFileCollision;
   end;
-
   if Assigned(FCollision) then
   begin
     NewtonBodySetCollision(FNewtonBody, FCollision);
@@ -1806,7 +1805,6 @@ begin
     if collisionInfoRecord.m_collisionType > 2 then
       NewtonReleaseCollision(FManager.FNewtonWorld, FCollision);
   end;
-
 end;
 
 procedure TGLNGDBehaviour.SetContinuousCollisionMode(const Value: Boolean);
@@ -1856,16 +1854,16 @@ begin
     NewtonBodySetmatrix(FNewtonBody, @FNewtonBodyMatrix);
 end;
 
-procedure TGLNGDBehaviour.SetNGDNewtonCollisions(const Value: TGLNGDCollisions);
+procedure TGLNGDBehaviour.SetNewtonCollisions(const Value: TGLNGDCollisions);
 begin
-  FNGDCollisions := Value;
+  FNewtonCollisions := Value;
   if Assigned(FManager) then
     UpdCollision;
 end;
 
-procedure TGLNGDBehaviour.SetNGDSurfaceItem(const Value: TGLNGDSurfaceItem);
+procedure TGLNGDBehaviour.SetNewtonSurfaceItem(const Value: TGLNGDSurfaceItem);
 begin
-  FNGDSurfaceItem := Value;
+  FSurfaceItem := Value;
   FManager.RebuildAllMaterial;
 end;
 
@@ -1891,7 +1889,7 @@ begin
 
     FManagerName := ReadString;
     FContinuousCollisionMode := ReadBoolean;
-    read(FNGDCollisions, SizeOf(TGLNGDCollisions));
+    read(FNewtonCollisions, SizeOf(TGLNGDCollisions));
     FTreeCollisionOptimize := ReadBoolean;
     if version <= 0 then
       FConvexCollisionTolerance := ReadSingle
@@ -1912,7 +1910,7 @@ begin
     else
       WriteString('');
     WriteBoolean(FContinuousCollisionMode);
-    write(FNGDCollisions, SizeOf(TGLNGDCollisions));
+    write(FNewtonCollisions, SizeOf(TGLNGDCollisions));
     WriteBoolean(FTreeCollisionOptimize);
     WriteFloat(FConvexCollisionTolerance);
     WriteString(FFileCollision);
@@ -2336,14 +2334,14 @@ begin
 end;
 
 class procedure TGLNGDDynamic.NewtonApplyForceAndTorque(const body: PNewtonBody;
-  timestep: NGDFloat; threadIndex: Integer); cdecl;
+  timestep: dFloat; threadIndex: Integer); cdecl;
 begin
   TGLNGDDynamic(NewtonBodyGetUserData(body)).FApplyForceAndTorqueEvent(body,
     timestep, threadIndex);
 end;
 
 class procedure TGLNGDDynamic.NewtonSetTransform(const body: PNewtonBody;
-  const matrix: PNGDFloat; threadIndex: Integer); cdecl;
+  const matrix: PdFloat; threadIndex: Integer); cdecl;
 begin
   TGLNGDDynamic(NewtonBodyGetUserData(body)).FSetTransformEvent(body, matrix,
     threadIndex);
@@ -2369,7 +2367,7 @@ begin
 end;
 
 procedure TGLNGDDynamic.OnApplyForceAndTorqueEvent(const cbody: PNewtonBody;
-  timestep: NGDFloat; threadIndex: Integer);
+  timestep: dFloat; threadIndex: Integer);
 var
   worldGravity: TGLVector;
 begin
@@ -2395,7 +2393,7 @@ begin
 end;
 
 procedure TGLNGDDynamic.OnSetTransformEvent(const cbody: PNewtonBody;
-  const cmatrix: PNGDFloat; threadIndex: Integer);
+  const cmatrix: PdFloat; threadIndex: Integer);
 var
   epsi: Single;
 begin
@@ -2437,7 +2435,6 @@ end;
 // ------------------------
 // TGLNGDSurfaceItem
 // ------------------------
-
 function TGLNGDSurfaceItem.GetDisplayName: string;
 begin
   if FDisplayName = '' then
@@ -2481,7 +2478,7 @@ begin
 end;
 
 class procedure TGLNGDSurfacePair.NewtonContactsProcess(const contact
-  : PNewtonJoint; timestep: NGDFloat; threadIndex: Integer); cdecl;
+  : PNewtonJoint; timestep: dFloat; threadIndex: Integer); cdecl;
 begin
   TGLNGDSurfacePair(NewtonMaterialGetMaterialPairUserData
     (NewtonContactGetMaterial(NewtonContactJointGetFirstContact(contact))))
@@ -2496,7 +2493,7 @@ begin
 end;
 
 procedure TGLNGDSurfacePair.OnNewtonContactsProcessEvent(const ccontact
-  : PNewtonJoint; timestep: NGDFloat; threadIndex: Integer);
+  : PNewtonJoint; timestep: dFloat; threadIndex: Integer);
 begin
   //
 end;
@@ -2530,8 +2527,8 @@ end;
 procedure TGLNGDSurfacePair.SetMaterialItems(const item1,
   item2: TGLNGDSurfaceItem);
 begin
-  FNGDSurfaceItem1 := item1;
-  FNGDSurfaceItem2 := item2;
+  FSurfaceItem1 := item1;
+  FSurfaceItem2 := item2;
   FManager.RebuildAllMaterial;
 end;
 
@@ -2863,7 +2860,6 @@ end;
 // ------------------------
 // TGLNGDJointPivot
 // ------------------------
-
 constructor TGLNGDJointPivot.Create(AOwner: TComponent; aOuter: TGLNGDJoint);
 begin
   FManager := AOwner as TGLNGDManager;
@@ -2882,7 +2878,6 @@ end;
 // ------------------------
 // TGLNGDJointPin
 // ------------------------
-
 constructor TGLNGDJointPin.Create(AOwner: TComponent; aOuter: TGLNGDJoint);
 begin
   inherited;
@@ -3072,7 +3067,6 @@ RegisterXCollectionItemClass(TGLNGDStatic);
 
 // ------------------------------------------------------------------
 finalization
-
 // ------------------------------------------------------------------
 
 UnregisterXCollectionItemClass(TGLNGDDynamic);

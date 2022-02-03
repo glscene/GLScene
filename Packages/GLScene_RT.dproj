@@ -313,7 +313,7 @@
         <DCCReference Include="..\Source\GLSL.Shader.pas"/>
         <DCCReference Include="..\Source\GLS.Language.pas"/>
         <DCCReference Include="..\Source\GLS.Memo.pas"/>
-        <DCCReference Include="..\Source\GLS.OpenGLVCL.pas"/>
+        <DCCReference Include="..\Source\OpenGL.InitVCL.pas"/>
         <DCCReference Include="..\Source\GLS.ProjectedTextures.pas"/>
         <DCCReference Include="..\Source\GLS.Scene.pas"/>
         <DCCReference Include="..\Source\GLS.SceneForm.pas"/>

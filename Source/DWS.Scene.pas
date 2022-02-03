@@ -2,6 +2,7 @@
 // The graphics rendering engine GLScene http://glscene.org
 //
 unit DWS.Scene;
+
 (*
   DelphiWebScript symbol creation for base GLScene classes.
 
@@ -9,6 +10,7 @@ unit DWS.Scene;
   These components must be associated with the same compiler
   for the GLScene classes to inherit from.
 *)
+
 interface
 
 uses

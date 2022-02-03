@@ -1,11 +1,10 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.MeshBSP;
 
 (*
-  Mesh support using Binary Space Partion
+  Meshes support using Binary Space Partition
   The classes of this unit are designed to operate within a TGLBaseMesh.
 *)
 
@@ -62,7 +61,7 @@ type
 
   TFGBSPNode = class;
 
-  (* A BSP mesh object. 
+  (* A BSP mesh object.
     Stores the geometry information, BSP rendering options and offers some
     basic BSP utility methods. Geometry information is indexed in the facegroups,
     the 1st facegroup (of index 0) being the root node of the BSP tree. *)
@@ -102,7 +101,7 @@ type
       write FUseClusterVisibility;
   end;
 
-  (*  A node in the BSP tree. 
+  (*  A node in the BSP tree.
     The description does not explicitly differentiates nodes and leafs,
     nodes are referred by their index. *)
   TFGBSPNode = class(TFGVertexIndexList)
@@ -1153,7 +1152,6 @@ end;
 initialization
 // ------------------------------------------------------------------
 
-// class registrations
 RegisterClasses([TBSPMeshObject, TFGBSPNode]);
 
 end.

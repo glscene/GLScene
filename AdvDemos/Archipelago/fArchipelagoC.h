@@ -8,22 +8,6 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.StdCtrls.hpp>
-#include "GLS.BaseClasses.hpp"
-#include "GLS.BitmapFont.hpp"
-#include "GLS.Cadencer.hpp"
-#include "GLS.Coordinates.hpp"
-#include "GLS.HeightData.hpp"
-#include "GLS.HeightTileFileHDS.hpp"
-#include "GLS.HUDObjects.hpp"
-#include "GLS.Material.hpp"
-#include "GLS.Objects.hpp"
-#include "GLS.Scene.hpp"
-#include "GLS.SceneViewer.hpp"
-#include "GLS.SkyDome.hpp"
-#include "GLS.TerrainRenderer.hpp"
-#include "GLS.VectorFileObjects.hpp"
-#include "GLS.WindowsFont.hpp"
-#include <gl\gl.h>
 #include <System.Classes.hpp>
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.Controls.hpp>
@@ -32,13 +16,14 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.Imaging.jpeg.hpp>
 
-#include "GLS.Material.hpp"
+#include "GLS.BaseClasses.hpp"
 #include "GLS.BitmapFont.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.Coordinates.hpp"
 #include "GLS.HeightData.hpp"
 #include "GLS.HeightTileFileHDS.hpp"
 #include "GLS.HUDObjects.hpp"
+#include "GLS.Material.hpp"
 
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
@@ -62,6 +47,7 @@
 #include "GLS.Context.hpp"
 #include "GLS.State.hpp"
 #include "GLS.TextureFormat.hpp"
+#include "GLS.File3DS.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
@@ -112,7 +98,7 @@ public:		// User declarations
 
 	TGLAffineVectorList *WakeVertices;
 	TGLAffineVectorList *WakeStretch;
-	TSingleList *WakeTime;
+	TGLSingleList *WakeTime;
 	void ResetMousePos(void);
 	float WaterPhase(const float px, const float py);
 	float WaterHeight(const float px, const float py);

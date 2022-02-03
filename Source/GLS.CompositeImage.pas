@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.CompositeImage;
 
 (*
@@ -274,4 +273,3 @@ initialization
   RegisterGLTextureImageClass(TGLCompositeImage);
 
 end.
-

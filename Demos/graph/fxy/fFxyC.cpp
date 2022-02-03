@@ -104,7 +104,7 @@ void __fastcall TForm1::TrackBar3Change(TObject *Sender)
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLSceneViewer1MouseDown(TObject * Sender,
+void __fastcall TForm1::ViewerMouseDown(TObject * Sender,
 												TMouseButton Button,
 												TShiftState Shift, int X, int Y)
 {
@@ -113,13 +113,13 @@ void __fastcall TForm1::GLSceneViewer1MouseDown(TObject * Sender,
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLSceneViewer1MouseMove(TObject * Sender,
+void __fastcall TForm1::ViewerMouseMove(TObject * Sender,
 												TShiftState Shift, int X, int Y)
 {
 	if (Shift.Contains(ssLeft))
-		GLCamera1->MoveAroundTarget(my - Y, mx - X);
+		Camera->MoveAroundTarget(my - Y, mx - X);
 	else if (Shift.Contains(ssRight))
-		GLCamera1->RotateTarget(my - Y, mx - X, 0);
+		Camera->RotateTarget(my - Y, mx - X, 0);
 	mx = X;
 	my = Y;
 }
@@ -128,8 +128,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject * Sender,
 void __fastcall TForm1::FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
 		  TPoint &MousePos, bool &Handled)
 {
-  GLCamera1->
-   AdjustDistanceToTarget(Power(1.1, (WheelDelta / 120.0)));
+  Camera->AdjustDistanceToTarget(Power(1.1, (WheelDelta / 120.0)));
 }
 
 //---------------------------------------------------------------------------

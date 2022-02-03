@@ -135,11 +135,6 @@ object Form1: TForm1
       OnRender = DOWakeRender
       Blend = False
     end
-    object FFSailBoat: TGLFreeForm
-      Direction.Coordinates = {97C8CBAF00000000FFFF7F3F00000000}
-      Scale.Coordinates = {9A99193E9A99193E9A99193E00000000}
-      MaterialLibrary = MLSailBoat
-    end
     object LSSun: TGLLightSource
       Ambient.Color = {9A99993E9A99993E9A99993E0000803F}
       ConstAttenuation = 1.000000000000000000
@@ -158,6 +153,15 @@ object Form1: TForm1
     object HTHelp: TGLHUDText
       BitmapFont = BFLarge
       Rotation = 0.000000000000000000
+    end
+    object GLDummyCube1: TGLDummyCube
+      Position.Coordinates = {000048C200007041000048420000803F}
+      CubeSize = 1.000000000000000000
+      object FFSailBoat: TGLFreeForm
+        Direction.Coordinates = {97C8CBAF00000000FFFF7F3F00000000}
+        Scale.Coordinates = {8FC2753C8FC2753C8FC2753C00000000}
+        MaterialLibrary = MLSailBoat
+      end
     end
   end
   object Timer1: TTimer

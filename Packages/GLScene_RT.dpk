@@ -208,7 +208,7 @@ contains
   GLSL.Shader in '..\Source\GLSL.Shader.pas',
   GLS.Language in '..\Source\GLS.Language.pas',
   GLS.Memo in '..\Source\GLS.Memo.pas',
-  GLS.OpenGLVCL in '..\Source\GLS.OpenGLVCL.pas',
+  OpenGL.InitVCL in '..\Source\OpenGL.InitVCL.pas',
   GLS.ProjectedTextures in '..\Source\GLS.ProjectedTextures.pas',
   GLS.Scene in '..\Source\GLS.Scene.pas',
   GLS.SceneForm in '..\Source\GLS.SceneForm.pas',

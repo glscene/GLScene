@@ -1,4 +1,4 @@
-package GLScene_Parallel_RT;
+package GLScene_GPU_RT;
 
 {$R *.res}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}

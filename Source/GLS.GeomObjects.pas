@@ -480,7 +480,6 @@ type
       write SetNormalDirection default ndOutside;
     property Parts: TGLFrustrumParts read FParts write SetParts default cAllFrustrumParts;
   end;
-
 //--------------------- TGLTeapot -------------------------
   (* The classic teapot.
      The only use of this object is as placeholder for testing... *)
@@ -3624,9 +3623,6 @@ RegisterClasses([TGLDodecahedron, TGLIcosahedron, TGLHexahedron,
     TGLOctahedron, TGLTetrahedron]);
 
 RegisterClasses([TGLCylinder, TGLCone, TGLTorus, TGLDisk, TGLArrowLine,
-  TGLAnnulus, TGLFrustrum, TGLPolygon, TGLCapsule, TGLArrowArc]);
-
-RegisterClasses([TGLTeapot]);
+  TGLAnnulus, TGLFrustrum, TGLPolygon, TGLCapsule, TGLArrowArc, TGLTeapot]);
 
 end.
-

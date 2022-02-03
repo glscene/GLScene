@@ -136,7 +136,7 @@ object Form1: TForm1
       Blend = False
     end
     object FFSailBoat: TGLFreeForm
-      Scale.Coordinates = {9A99193E9A99193E9A99193E00000000}
+      Scale.Coordinates = {8FC2753C8FC2753C8FC2753C00000000}
       MaterialLibrary = MLSailBoat
     end
     object LSSun: TGLLightSource

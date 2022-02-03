@@ -20,8 +20,8 @@ class TForm1:public TForm
 {
 __published:                   // IDE-managed Components
   TGLScene * GLScene1;
-  TGLSceneViewer *GLSceneViewer1;
-  TGLCamera *GLCamera1;
+	TGLSceneViewer *Viewer;
+	TGLCamera *Camera;
   TGLLightSource *GLLightSource1;
   TGLHeightField *GLHeightField1;
   TGLXYZGrid *XYGrid;
@@ -36,9 +36,9 @@ __published:                   // IDE-managed Components
 	TRadioGroup *RadioGroup1;
   void __fastcall CheckBox1Click(TObject * Sender);
   void __fastcall TrackBar1Change(TObject * Sender);
-  void __fastcall GLSceneViewer1MouseDown(TObject * Sender, TMouseButton Button,
+  void __fastcall ViewerMouseDown(TObject * Sender, TMouseButton Button,
                                           TShiftState Shift, int X, int Y);
-  void __fastcall GLSceneViewer1MouseMove(TObject * Sender, TShiftState Shift,
+  void __fastcall ViewerMouseMove(TObject * Sender, TShiftState Shift,
                                           int X, int Y);
 	void __fastcall TrackBar2Change(TObject *Sender);
 	void __fastcall TrackBar3Change(TObject *Sender);

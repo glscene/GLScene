@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.BaseMeshSilhouette;
 
 (* Silhouette classes for GLBaseMesh and FaceGroups. *)
@@ -222,7 +221,8 @@ procedure TGLBaseMeshConnectivity.SetBaseMesh(const Value: TGLBaseMesh);
     end;
   end;
 
-procedure TGLBaseMeshConnectivity.CreateSilhouette(const silhouetteParameters: TGLSilhouetteParameters; var aSilhouette: TGLSilhouette; AddToSilhouette: boolean);
+procedure TGLBaseMeshConnectivity.CreateSilhouette(const silhouetteParameters: TGLSilhouetteParameters; 
+  var aSilhouette: TGLSilhouette; AddToSilhouette: boolean);
 var
   i: integer;
 begin

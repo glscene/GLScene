@@ -765,7 +765,6 @@ end;
 initialization
 // ------------------------------------------------------------------
 
-  // class registrations
   RegisterClasses([TGLMesh]);
 
 end.

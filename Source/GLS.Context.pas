@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Context;
 
 (* Prototypes and base implementation of TGLContext *)
@@ -1693,7 +1692,7 @@ begin
         for I := FHandles.Count - 1 downto 1 do
         begin
           p := RCItem(I);
-          if (p.FRenderingContext <> vCurrentGLContext) and (p.FHandle <> 0) and 
+          if (p.FRenderingContext <> vCurrentGLContext) and (p.FHandle <> 0) and
 		  (aList.IndexOf(p.FRenderingContext) > -1) then
           begin
             bShared := True;

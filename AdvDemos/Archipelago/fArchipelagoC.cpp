@@ -25,6 +25,7 @@
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.WindowsFont"
 #pragma link "GLS.HUDObjects"
+#pragma link "GLS.File3DS"
 
 #pragma resource "*.dfm"
 TForm1 *Form1;
@@ -82,8 +83,11 @@ void __fastcall TForm1::FormCreate(TObject *Sender) {
 	WaterPlane = true;
 
 	// load the sailboat
-    FFSailBoat->LoadFromFile("sailboat.glsm");    //<- error for glsm format
+	/* lost material for sailboat
+	FFSailBoat->LoadFromFile("sailboat.glsm");
 	MLSailBoat->LoadFromFile("sailboat.glml");
+	*/
+	FFSailBoat->LoadFromFile("boat.3DS");
 	FFSailBoat->Position->SetPoint(-125*TerrainRenderer->Scale->X, 0,
 		-100*TerrainRenderer->Scale->Z);
 	FFSailBoat->TurnAngle = -30;
@@ -232,7 +236,7 @@ void __fastcall TForm1::GLCadencerProgress(TObject *Sender,
 	Alpha = WaterPhase(Sbp.X + TerrainRenderer->TileSize * 0.5,
 		Sbp.Y + TerrainRenderer->TileSize * 0.5);
 	FFSailBoat->Position->Y = (cWaterLevel + sin(Alpha) * cWaveAmplitude) *
-		(TerrainRenderer->Scale->Z / 128) - 1.5;
+		(TerrainRenderer->Scale->Z / 128) + 10;
 	f = cWaveAmplitude * 0.01;
 	FFSailBoat->Up->SetVector(cos(Alpha)*0.02*f, 1,
 		(sin(Alpha)*0.02 - 0.005)*f);
@@ -469,7 +473,7 @@ void __fastcall TForm1::DOWakeProgress(TObject *Sender, const double deltaTime,
 	if (WakeVertices == NULL) {
 		WakeVertices = new TGLAffineVectorList();
 		WakeStretch = new TGLAffineVectorList();
-		WakeTime = new TSingleList();
+		WakeTime = new TGLSingleList();
 	}
 
 	// enlarge current vertices

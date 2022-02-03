@@ -1,11 +1,9 @@
 ﻿//
 // The graphics rendering engine GLScene http://glscene.org
 //
-unit GLS.OpenGLVCL;
-
+unit OpenGL.InitVCL;
 (*
-  OpenGL for Vcl
-  Adapted from https://github.com/LUXOPHIA
+  OpenGL for Vcl adapted from github.com/LUXOPHIA
 *)
 
 interface
@@ -14,17 +12,15 @@ uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
   Winapi.Windows,
+  System.SysUtils,
 
   GLS.VectorTypes,
-  GLS.OpenGLTokens,
-  GLS.OpenGLAdapter,
-  GLS.Context,
   Vcl.Forms;
 
 type
   TGLOpenGL = class
   private
-    _Form: TCustomForm;
+    CustomForm: TCustomForm;
     _WND: HWND;
     _DC: HDC;
   protected
@@ -166,9 +162,6 @@ var
 implementation
 //=====================================================================
 
-uses
-  System.SysUtils;
-
 procedure TGLOpenGL.SetPFD(const PFD_: TPixelFormatDescriptor);
 begin
   DestroyRC;
@@ -189,13 +182,13 @@ end;
 
 procedure TGLOpenGL.CreateWindow;
 begin
-  _Form := TCustomForm.CreateNew(nil);
-  _WND := _Form.Handle;
+  CustomForm := TCustomForm.CreateNew(nil);
+  _WND := CustomForm.Handle;
 end;
 
 procedure TGLOpenGL.DestroyWindow;
 begin
-  _Form.Free;
+  CustomForm.Free;
 end;
 
 // ------------------------------------------------------------------------------
@@ -308,8 +301,8 @@ end;
 procedure TGLOpenGL.InitOpenGL;
 begin
   BeginGL;
-  gl.Enable(GL_DEPTH_TEST);
-  gl.Enable(GL_CULL_FACE);
+  glEnable(GL_DEPTH_TEST);
+  glEnable(GL_CULL_FACE);
   EndGL;
 end;
 
@@ -323,12 +316,12 @@ end;
 constructor TGLShader.Create(const Kind_: TGLuint);
 begin
   inherited Create;
-  _ID := gl.CreateShader(Kind_);
+  _ID := glCreateShader(Kind_);
 end;
 
 destructor TGLShader.Destroy;
 begin
-  gl.DeleteShader(_ID);
+  glDeleteShader(_ID);
   inherited;
 end;
 
@@ -342,14 +335,14 @@ var
 begin
   P := PAnsiChar(AnsiString(Source_));
   N := Length(Source_);
-  gl.ShaderSource(_ID, 1, @P, @N);
-  gl.CompileShader(_ID);
-  gl.GetShaderiv(_ID, GL_COMPILE_STATUS, @E);
+  glShaderSource(_ID, 1, @P, @N);
+  glCompileShader(_ID);
+  glGetShaderiv(_ID, GL_COMPILE_STATUS, @E);
   if E = GL_FALSE then
   begin
-    gl.GetShaderiv(_ID, GL_INFO_LOG_LENGTH, @N);
+    glGetShaderiv(_ID, GL_INFO_LOG_LENGTH, @N);
     SetLength(Cs, N);
-    gl.GetShaderInfoLog(_ID, N, @CsN, @Cs[0]);
+    glGetShaderInfoLog(_ID, N, @CsN, @Cs[0]);
     Assert(False, AnsiString(Cs));
   end;
 end;
@@ -387,69 +380,69 @@ end;
 constructor TGLProgram.Create;
 begin
   inherited;
-  _ID := gl.CreateProgram;
+  _ID := glCreateProgram;
 end;
 
 destructor TGLProgram.Destroy;
 begin
-  gl.DeleteProgram(_ID);
+  glDeleteProgram(_ID);
   inherited;
 end;
 
 procedure TGLProgram.Attach(const Shader_: TGLShader);
 begin
-  gl.AttachShader(_ID, Shader_.ID);
+  glAttachShader(_ID, Shader_.ID);
 end;
 
 procedure TGLProgram.Detach(const Shader_: TGLShader);
 begin
-  gl.DetachShader(_ID, Shader_.ID);
+  glDetachShader(_ID, Shader_.ID);
 end;
 
 // ------------------------------------------------------------------------------
 
 procedure TGLProgram.Link;
 begin
-  gl.LinkProgram(_ID);
+  glLinkProgram(_ID);
 end;
 
 // ------------------------------------------------------------------------------
 
 procedure TGLProgram.Use;
 begin
-  gl.UseProgram(_ID);
+  glUseProgram(_ID);
 end;
 
 procedure TGLBuffer<_TYPE_>.SetCount(const Count_: Integer);
 begin
   _Count := Count_;
   Bind;
-  gl.BufferData(_Kind, SizeOf(_TYPE_) * _Count, nil, GL_DYNAMIC_DRAW);
+  glBufferData(_Kind, SizeOf(_TYPE_) * _Count, nil, GL_DYNAMIC_DRAW);
   Unbind;
 end;
 
 constructor TGLBuffer<_TYPE_>.Create(const Kind_: TGLuint);
 begin
   inherited Create;
-  gl.GenBuffers(1, @_ID);
+  glGenBuffers(1, @_ID);
   _Kind := Kind_;
   Count := 0;
 end;
 
 destructor TGLBuffer<_TYPE_>.Destroy;
 begin
-  gl.DeleteBuffers(1, @_ID);
+  glDeleteBuffers(1, @_ID);
   inherited;
 end;
 
 procedure TGLBuffer<_TYPE_>.Bind;
 begin
-  gl.BindBuffer(_Kind, _ID);
+  glBindBuffer(_Kind, _ID);
 end;
 
 procedure TGLBuffer<_TYPE_>.Unbind;
 begin
-  gl.BindBuffer(_Kind, 0);
+  glBindBuffer(_Kind, 0);
 end;
 
 // ------------------------------------------------------------------------------
@@ -457,12 +450,12 @@ end;
 procedure TGLBuffer<_TYPE_>.Map;
 begin
   Bind;
-  _Head := gl.MapBuffer(_Kind, GL_READ_WRITE);
+  _Head := glMapBuffer(_Kind, GL_READ_WRITE);
 end;
 
 procedure TGLBuffer<_TYPE_>.Unmap;
 begin
-  gl.UnmapBuffer(_Kind);
+  glUnmapBuffer(_Kind);
   Unbind;
 end;
 
@@ -499,23 +492,23 @@ end;
 constructor TGLArray.Create;
 begin
   inherited Create;
-  gl.GenVertexArrays(1, @_ID);
+  glGenVertexArrays(1, @_ID);
 end;
 
 destructor TGLArray.Destroy;
 begin
-  gl.DeleteVertexArrays(1, @_ID);
+  glDeleteVertexArrays(1, @_ID);
   inherited;
 end;
 
 procedure TGLArray.BeginBind;
 begin
-  gl.BindVertexArray(_ID);
+  glBindVertexArray(_ID);
 end;
 
 procedure TGLArray.EndBind;
 begin
-  gl.BindVertexArray(0);
+  glBindVertexArray(0);
 end;
 
 // ====================================================================
@@ -524,7 +517,7 @@ initialization
 
 GLOpenGL := TGLOpenGL.Create;
 GLOpenGL.BeginGL;
-GL.Initialize; // InitOpenGLext;
+InitOpenGLext;
 
 finalization
 

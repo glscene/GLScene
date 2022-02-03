@@ -76,7 +76,7 @@ begin
   // otherwise, it's a per-point coloring)
   GLPoints1.Colors.Add(clrWhite);
   // specify blue color for the 2nd point set
-  GLPoints2.Colors.Add(clrBlue);
+  GLPoints2.Colors.Add(clrGold);
 end;
 
 procedure TFormPoints.GLCadencer1Progress(Sender: TObject;

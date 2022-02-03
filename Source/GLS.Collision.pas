@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Collision;
 
 (* Collision-detection management *)
@@ -965,4 +964,3 @@ finalization
 UnregisterXCollectionItemClass(TGLBCollision);
 
 end.
-

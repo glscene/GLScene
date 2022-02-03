@@ -272,16 +272,6 @@ end;
 
 
 // ----------
-// ---------- Global procedures/functions ----------
-// ----------
-
-procedure Register;
-begin
-  RegisterComponents('GLScene DWS2', [Tdws2ClassesUnit]);
-end;
-
-
-// ----------
 // ---------- TdwsClassesUnit ----------
 // ----------
 
@@ -388,5 +378,15 @@ begin
   AddClassTPersistent(SymbolTable);
   AddClassTComponent(SymbolTable);
 end;
+
+// ----------
+// ---------- Global procedures/functions ----------
+// ----------
+
+procedure Register;
+begin
+  RegisterComponents('GLScene DWS2', [Tdws2ClassesUnit]);
+end;
+
 
 end.
