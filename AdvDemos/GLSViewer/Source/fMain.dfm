@@ -1,10 +1,9 @@
 object MainForm: TMainForm
   Left = 188
   Top = 87
-  AutoSize = True
   Caption = 'GLSViewer'
-  ClientHeight = 433
-  ClientWidth = 622
+  ClientHeight = 553
+  ClientWidth = 769
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -134,8 +133,8 @@ object MainForm: TMainForm
   TextHeight = 16
   object StatusBar: TStatusBar
     Left = 0
-    Top = 409
-    Width = 622
+    Top = 529
+    Width = 769
     Height = 24
     Margins.Left = 4
     Margins.Top = 4
@@ -162,8 +161,8 @@ object MainForm: TMainForm
   object snViewer: TGLSceneViewer
     Left = 0
     Top = 69
-    Width = 622
-    Height = 340
+    Width = 769
+    Height = 460
     Margins.Left = 4
     Margins.Top = 4
     Margins.Right = 4
@@ -174,7 +173,7 @@ object MainForm: TMainForm
     Buffer.BackgroundColor = clGray
     Buffer.ContextOptions = [roDoubleBuffer, roRenderToWindow, roTwoSideLighting]
     Buffer.FaceCulling = False
-    FieldOfView = 147.220916748046900000
+    FieldOfView = 155.470458984375000000
     PenAsTouch = False
     OnMouseLeave = snViewerMouseLeave
     Align = alClient
@@ -185,7 +184,7 @@ object MainForm: TMainForm
   object ControlBar: TControlBar
     Left = 0
     Top = 32
-    Width = 622
+    Width = 769
     Height = 37
     Margins.Left = 4
     Margins.Top = 4
@@ -272,7 +271,7 @@ object MainForm: TMainForm
   object amMenuBar: TActionMainMenuBar
     Left = 0
     Top = 0
-    Width = 622
+    Width = 769
     Height = 32
     Margins.Left = 4
     Margins.Top = 4
@@ -967,6 +966,16 @@ object MainForm: TMainForm
   object Scene: TGLScene
     Left = 24
     Top = 96
+    object grdXYZ: TGLXYZGrid
+      XSamplingScale.Min = -10.000000000000000000
+      XSamplingScale.Max = 10.000000000000000000
+      XSamplingScale.Step = 1.000000000000000000
+      YSamplingScale.Step = 0.100000001490116100
+      ZSamplingScale.Min = -10.000000000000000000
+      ZSamplingScale.Max = 10.000000000000000000
+      ZSamplingScale.Step = 1.000000000000000000
+      Parts = [gpX, gpZ]
+    end
     object CubeExtents: TGLCube
       Material.BackProperties.Ambient.Color = {0000000000000000000000000000803F}
       Material.BackProperties.Diffuse.Color = {0C026B3F0C026B3F0000803F0000803F}
@@ -1012,16 +1021,6 @@ object MainForm: TMainForm
       object GLPoints: TGLPoints
         NoZWrite = False
         Static = False
-      end
-      object grdXYZ: TGLXYZGrid
-        XSamplingScale.Min = -10.000000000000000000
-        XSamplingScale.Max = 10.000000000000000000
-        XSamplingScale.Step = 1.000000000000000000
-        YSamplingScale.Step = 0.100000001490116100
-        ZSamplingScale.Min = -10.000000000000000000
-        ZSamplingScale.Max = 10.000000000000000000
-        ZSamplingScale.Step = 1.000000000000000000
-        Parts = [gpX, gpZ]
       end
     end
   end
@@ -1744,16 +1743,20 @@ object MainForm: TMainForm
             ShowCaption = False
           end
           item
-            Action = acPoints
-            Caption = '&Points'
-            ImageIndex = 21
-            ShowCaption = False
-          end
-          item
             Action = acToolsNaviCube
             Caption = '&Navi Cube'
             ImageIndex = 20
             ShowCaption = False
+          end
+          item
+            Action = acPoints
+            Caption = 'Po&ints'
+            ImageIndex = 21
+          end
+          item
+            Action = acPoints
+            Caption = '&Points'
+            ImageIndex = 21
           end>
         ActionBar = atbView
       end
@@ -1779,8 +1782,8 @@ object MainForm: TMainForm
         ActionBar = atbFile
       end>
     Images = ImageListMenu
-    Left = 552
-    Top = 88
+    Left = 577
+    Top = 116
     StyleName = 'Platform Default'
     object acOptimizeMesh: TAction
       Category = 'Processing'

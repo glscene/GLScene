@@ -966,7 +966,7 @@ var
   X, Y, Z: Single;
 
 begin
-  NumPoints := 100000;
+  NumPoints := 10000;
   GLPoints := TGLPoints(dcWorld.AddNewChild(TGLPoints));
   GLPoints.Size := 5.0;
   GLPoints.Style := psSmooth;
@@ -976,9 +976,9 @@ begin
     Color.Y := Random();
     Color.Z := Random();
 
-    X := Random(100) - 50;
-    Y := Random(100) - 50;
-    Z := Random(100) - 50;
+    X := Random(10) - 5;
+    Y := Random(10) - 5;
+    Z := Random(10) - 5;
 
     GLPoints.Positions.Add(X * 0.05, Y * 0.05, Z * 0.05);
     // Fill array of GLPoints

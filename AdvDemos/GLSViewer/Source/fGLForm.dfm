@@ -3,7 +3,7 @@ object GLForm: TGLForm
   Top = 227
   HelpContext = 1
   ClientHeight = 304
-  ClientWidth = 2988
+  ClientWidth = 3610
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

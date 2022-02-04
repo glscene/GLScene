@@ -12,6 +12,7 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
+  OnCreate = FormCreate
   PixelsPerInch = 120
   TextHeight = 16
   object GLSceneViewer1: TGLSceneViewer
@@ -24,6 +25,7 @@ object Form1: TForm1
     Margins.Right = 4
     Margins.Bottom = 4
     Camera = GLCamera1
+    Buffer.BackgroundColor = clBackground
     FieldOfView = 152.966857910156300000
     PenAsTouch = False
     Align = alClient
@@ -74,6 +76,13 @@ object Form1: TForm1
       Up.Coordinates = {00000000EA46773FF283843E00000000}
       BottomRadius = 1.000000000000000000
       Height = 1.500000000000000000
+    end
+    object Points: TGLPoints
+      Position.Coordinates = {000000000000803F000000000000803F}
+      NoZWrite = False
+      Static = False
+      Size = 5.000000000000000000
+      PointParameters.Enabled = True
     end
   end
 end
