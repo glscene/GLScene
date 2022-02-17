@@ -1982,7 +1982,6 @@ procedure TGLNodedLines.SetNodes(const aNodes: TGLLinesNodes);
 begin
   FNodes.Free;
   FNodes := aNodes;
-  //FNodes.Assign(aNodes);
   StructureChanged;
 end;
 
