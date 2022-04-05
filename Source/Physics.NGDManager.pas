@@ -38,8 +38,6 @@ uses
   GLS.Color;
 
 type
-  PdFloat = ^dFloat;
-
   TGLNGDHeightField = record
     heightArray: array of Word;
     width: Integer;

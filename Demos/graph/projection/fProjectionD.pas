@@ -11,7 +11,7 @@ uses
   System.Types,
   Vcl.Controls,
   Vcl.Forms,
-  
+
   GLS.Scene,
   GLS.Objects,
   GLS.SceneViewer,
@@ -23,7 +23,8 @@ uses
   GLS.VectorTypes,
   GLS.Graph,
   GLS.Coordinates,
- 
+  GLS.Color,
+
   GLS.BaseClasses;
 
 type
@@ -67,7 +68,10 @@ var
 begin
   // generate a bunch of random points
   for i := 1 to 1000 do
+  begin
     GLPoints.Positions.Add((Random - 0.5) * 5, (Random - 0.5) * 5, (Random - 0.5) * 5);
+    GLPoints.Colors.Add(Random, Random, Random, 0.8);
+  end;
 end;
 
 procedure TFormProjection.DirectOpenGLRender(Sender: TObject; var rci: TGLRenderContextInfo);
@@ -87,8 +91,9 @@ begin
   // (which is here the plane normal)
   mat := MakeParallelProjectionMatrix(plane, planeNormal);
 
-  // save state, turn off lighting and specify the lines color
+  // save state, turn off lighting
   rci.GLStates.Disable(stLighting);
+  // and specify the lines color
   glColor3f(1, 1, 0);
 
   // we'll be drawing a bunch of lines, to specify a line in OpenGL,
@@ -100,7 +105,7 @@ begin
     MakePoint(p, GLPoints.Positions.List[i]);
     // project this point on the plane with the matrix
     pProj := VectorTransform(p, mat);
-    // specify the two vertices
+    // specify the two vertices for a line
     glVertex3fv(@p);
     glVertex3fv(@pProj);
   end;

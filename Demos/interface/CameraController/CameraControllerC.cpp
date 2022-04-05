@@ -12,7 +12,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
 	try
 	{
-		System::Sysutils::FormatSettings.DecimalSeparator = (wchar_t)".";
+		FormatSettings.DecimalSeparator = (wchar_t)".";
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
 		Application->CreateForm(__classid(TForm1), &Form1);

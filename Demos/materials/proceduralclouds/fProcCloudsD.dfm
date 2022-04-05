@@ -2,144 +2,99 @@ object FormClouds: TFormClouds
   Left = 339
   Top = 205
   Caption = 'Procedural Clouds'
-  ClientHeight = 508
-  ClientWidth = 671
+  ClientHeight = 406
+  ClientWidth = 537
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 411
-    Height = 508
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 329
+    Height = 406
     Camera = Camera
     AfterRender = GLSceneViewer1AfterRender
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 179.442382812500000000
+    FieldOfView = 179.303405761718800000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 411
+    Left = 329
     Top = 0
-    Width = 260
-    Height = 508
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 208
+    Height = 406
     Align = alRight
     BevelOuter = bvLowered
     TabOrder = 1
     object Label2: TLabel
-      Left = 20
-      Top = 185
-      Width = 42
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 148
+      Width = 32
+      Height = 13
       Caption = 'Format'
     end
     object Label3: TLabel
-      Left = 20
-      Top = 225
-      Width = 80
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 180
+      Width = 60
+      Height = 13
       Caption = 'Compression'
     end
     object Label5: TLabel
-      Left = 20
-      Top = 340
-      Width = 74
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 272
+      Width = 58
+      Height = 13
       Caption = 'Render Size'
     end
     object LAUsedMemory: TLabel
-      Left = 20
-      Top = 285
-      Width = 85
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 228
+      Width = 65
+      Height = 13
       Caption = 'Used Memory'
     end
     object LARGB32: TLabel
-      Left = 20
-      Top = 265
-      Width = 85
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 212
+      Width = 65
+      Height = 13
       Caption = 'Used Memory'
     end
     object LACompression: TLabel
-      Left = 20
-      Top = 305
-      Width = 85
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 244
+      Width = 65
+      Height = 13
       Caption = 'Used Memory'
     end
     object Label4: TLabel
-      Left = 20
-      Top = 120
-      Width = 43
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 96
+      Width = 36
+      Height = 13
       Caption = 'MinCut:'
     end
     object Label6: TLabel
-      Left = 20
-      Top = 90
-      Width = 68
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 72
+      Width = 53
+      Height = 13
       Caption = 'Sharpness:'
     end
     object CloudFileOpenBtn: TSpeedButton
-      Left = 19
-      Top = 450
-      Width = 31
-      Height = 26
+      Left = 15
+      Top = 360
+      Width = 25
+      Height = 21
       Hint = 'Load Cloud File'
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Glyph.Data = {
         76010000424D7601000000000000760000002800000020000000100000000100
         04000000000000010000120B0000120B00001000000000000000000000000000
@@ -154,18 +109,16 @@ object FormClouds: TFormClouds
         0000777777777777777733333333333333333333333333333333333333333333
         3333333333333333333333333333333333333333333333333333}
       NumGlyphs = 2
+      ParentShowHint = False
+      ShowHint = True
       OnClick = CloudFileOpenBtnClick
     end
     object MakeAndSaveCloudNoiseFile: TSpeedButton
-      Left = 201
-      Top = 450
-      Width = 50
-      Height = 28
-      Hint = 'Make And Save Cloud'
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 161
+      Top = 360
+      Width = 40
+      Height = 22
+      Hint = 'Save Cloud File'
       Glyph.Data = {
         F6000000424DF600000000000000760000002800000010000000100000000100
         0400000000008000000074120000741200001000000000000000000000000000
@@ -175,39 +128,29 @@ object FormClouds: TFormClouds
         07777703300000030777FF03333333330FFF000300000003000077030FFFFF03
         077777030FFFFF03077777030FFFFF03077777030FFFFF0F07777F0000000000
         0777F07777F0777770F7077777F07777770F777777F077777770}
+      ParentShowHint = False
+      ShowHint = True
       OnClick = MakeAndSaveCloudNoiseFileClick
     end
     object Label61: TLabel
-      Left = 223
-      Top = 420
-      Width = 7
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 178
+      Top = 336
+      Width = 6
+      Height = 13
       Caption = '0'
     end
     object LabelFPS: TLabel
-      Left = 20
-      Top = 30
-      Width = 26
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 24
+      Width = 20
+      Height = 13
       Caption = 'FPS'
     end
     object CBFormat: TComboBox
-      Left = 110
-      Top = 180
-      Width = 131
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 88
+      Top = 144
+      Width = 105
+      Height = 21
       Style = csDropDownList
       TabOrder = 0
       OnChange = CBFormatChange
@@ -218,14 +161,10 @@ object FormClouds: TFormClouds
         'RGBA  (16 bits)')
     end
     object CBCompression: TComboBox
-      Left = 110
-      Top = 220
-      Width = 131
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 88
+      Top = 176
+      Width = 105
+      Height = 21
       Style = csDropDownList
       TabOrder = 1
       OnChange = CBFormatChange
@@ -236,14 +175,10 @@ object FormClouds: TFormClouds
         'Fastest')
     end
     object RBDefault: TRadioButton
-      Left = 20
-      Top = 358
-      Width = 71
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 286
+      Width = 57
+      Height = 17
       Caption = '100 %'
       Checked = True
       TabOrder = 2
@@ -251,52 +186,36 @@ object FormClouds: TFormClouds
       OnClick = CBFormatChange
     end
     object RBDouble: TRadioButton
-      Left = 99
-      Top = 358
-      Width = 72
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 79
+      Top = 286
+      Width = 58
+      Height = 17
       Caption = '200 %'
       TabOrder = 3
       OnClick = CBFormatChange
     end
     object RBQuad: TRadioButton
-      Left = 179
-      Top = 358
-      Width = 72
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 143
+      Top = 286
+      Width = 58
+      Height = 17
       Caption = '400 %'
       TabOrder = 4
       OnClick = CBFormatChange
     end
     object CheckBox1: TCheckBox
-      Left = 160
-      Top = 54
-      Width = 91
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 128
+      Top = 43
+      Width = 73
+      Height = 17
       Caption = 'Animated'
       TabOrder = 5
     end
     object SpinEdit1: TSpinEdit
-      Left = 110
-      Top = 120
-      Width = 131
-      Height = 26
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 88
+      Top = 96
+      Width = 105
+      Height = 22
       MaxValue = 255
       MinValue = 0
       TabOrder = 6
@@ -304,14 +223,10 @@ object FormClouds: TFormClouds
       OnChange = CBFormatChange
     end
     object SpinEdit2: TSpinEdit
-      Left = 110
-      Top = 90
-      Width = 131
-      Height = 26
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 88
+      Top = 72
+      Width = 105
+      Height = 22
       MaxValue = 99
       MinValue = 1
       TabOrder = 7
@@ -319,14 +234,10 @@ object FormClouds: TFormClouds
       OnChange = CBFormatChange
     end
     object CheckBox2: TCheckBox
-      Left = 20
-      Top = 54
-      Width = 101
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 43
+      Width = 81
+      Height = 17
       Caption = 'Seamless'
       Checked = True
       State = cbChecked
@@ -334,69 +245,48 @@ object FormClouds: TFormClouds
       OnClick = CBFormatChange
     end
     object TrackBar1: TTrackBar
-      Left = 30
-      Top = 380
-      Width = 188
-      Height = 41
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 24
+      Top = 304
+      Width = 150
+      Height = 33
       Min = 1
       Position = 2
       TabOrder = 9
-      ThumbLength = 25
       OnChange = TrackBar1Change
     end
     object CloudRandomSeedUsedEdit: TEdit
-      Left = 139
-      Top = 420
-      Width = 61
-      Height = 24
+      Left = 111
+      Top = 336
+      Width = 49
+      Height = 21
       Hint = 'Cloud Random Seed'
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       TabOrder = 10
       Text = '12345'
     end
     object CloudImageSizeUsedEdit: TEdit
-      Left = 119
-      Top = 330
-      Width = 41
-      Height = 24
+      Left = 95
+      Top = 264
+      Width = 33
+      Height = 21
       Hint = 'Cloud Image Size'
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       TabOrder = 11
       Text = '128'
     end
     object UseCloudFileCB: TCheckBox
-      Left = 19
-      Top = 424
-      Width = 112
-      Height = 21
+      Left = 15
+      Top = 339
+      Width = 90
+      Height = 17
       Hint = 'Use File'
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Use Cloud File'
       TabOrder = 12
     end
     object CloudFileUsedEdit: TEdit
-      Left = 69
-      Top = 450
-      Width = 122
-      Height = 24
+      Left = 55
+      Top = 360
+      Width = 98
+      Height = 21
       HelpContext = 50
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       TabOrder = 13
     end
   end
@@ -439,8 +329,8 @@ object FormClouds: TFormClouds
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer
-    Left = 264
-    Top = 16
+    Left = 234
+    Top = 84
   end
   object OpenDialog1: TOpenDialog
     Left = 116

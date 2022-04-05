@@ -2,12 +2,12 @@ object frmQuadtreeVisCulling: TfrmQuadtreeVisCulling
   Left = 297
   Top = 155
   Caption = 'Quadtree Visibility Culling'
-  ClientHeight = 545
-  ClientWidth = 790
+  ClientHeight = 436
+  ClientWidth = 632
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
@@ -16,119 +16,82 @@ object frmQuadtreeVisCulling: TfrmQuadtreeVisCulling
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 51
-    Width = 790
-    Height = 494
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 41
+    Width = 632
+    Height = 395
     Camera = GLCamera1
     Buffer.FogEnvironment.FogStart = 3000.000000000000000000
     Buffer.FogEnvironment.FogEnd = 3950.000000000000000000
     Buffer.BackgroundColor = clWhite
     Buffer.Lighting = False
-    FieldOfView = 157.112609863281300000
+    FieldOfView = 151.586471557617200000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 280
-    Top = 270
-    Width = 231
-    Height = 61
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 224
+    Top = 216
+    Width = 185
+    Height = 49
     TabOrder = 1
     object Label1: TLabel
-      Left = 10
-      Top = 10
-      Width = 105
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 8
+      Width = 82
+      Height = 13
       Caption = 'Generating Trees'
     end
     object ProgressBar1: TProgressBar
-      Left = 10
-      Top = 30
-      Width = 211
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 24
+      Width = 169
+      Height = 17
       TabOrder = 0
     end
   end
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 790
-    Height = 51
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 632
+    Height = 41
     Align = alTop
     TabOrder = 2
     object Label2: TLabel
-      Left = 430
-      Top = 11
-      Width = 41
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 344
+      Top = 9
+      Width = 32
+      Height = 13
       Caption = 'Label2'
     end
     object cbUseQuadtree: TCheckBox
-      Left = 20
-      Top = 10
-      Width = 81
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 8
+      Width = 65
+      Height = 17
       Caption = 'Quadtree'
       Checked = True
       State = cbChecked
       TabOrder = 0
     end
     object cbUseExtendedFrustum: TCheckBox
-      Left = 120
-      Top = 10
-      Width = 131
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 96
+      Top = 8
+      Width = 105
+      Height = 17
       Caption = 'E&xtended Frustum'
       Checked = True
       State = cbChecked
       TabOrder = 1
     end
     object cbShowQuadtree: TCheckBox
-      Left = 280
-      Top = 10
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 224
+      Top = 8
+      Width = 97
+      Height = 17
       Caption = 'Show &Quadtree'
       TabOrder = 2
       OnClick = cbShowQuadtreeClick

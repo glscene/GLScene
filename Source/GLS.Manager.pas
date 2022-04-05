@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.Manager;
 
 (*
@@ -25,7 +24,6 @@ function FindManager(classType: TComponentClass; const managerName: String)
 
 // ------------------------------------------------------
 implementation
-
 // ------------------------------------------------------
 
 var

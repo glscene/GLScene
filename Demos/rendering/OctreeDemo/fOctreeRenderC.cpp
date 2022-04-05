@@ -35,7 +35,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 
   Randomize;
 
-  Octree = new TOctreeSpacePartition;
+  Octree = new TGLOctreeSpacePartition;
   Octree->SetSize(AffineVectorMake(-15, -15, -15), AffineVectorMake(15, 15, 15));
   Octree->MaxTreeDepth = 6;
   Octree->LeafThreshold = 10;
@@ -46,32 +46,6 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	CreateBox();
 
   VerifySpacialMisc();
-}
-
-// class TGLSpacePartitionLeaf
-
-__fastcall TGLSpacePartitionLeaf::CreateGLOwned(TBaseSpacePartition *SpacePartition, TGLBaseSceneObject *aGLBaseSceneObject)
-{
-  GLBaseSceneObject = aGLBaseSceneObject;
-
-  // Set them all off in the same direction
-  Direction.X = rand();
-  Direction.Y = rand();
-  Direction.Z = rand();
-
-  NormalizeVector(Direction);
-
-//  inherited CreateOwned(SpacePartition);
-}
-
-void __fastcall TGLSpacePartitionLeaf::UpdateCachedAABBAndBSphere()
-{
-  FCachedAABB = GLBaseSceneObject->AxisAlignedBoundingBox();
-  FCachedAABB.Min = GLBaseSceneObject->LocalToAbsolute(FCachedAABB.Min);
-  FCachedAABB.Max = GLBaseSceneObject->LocalToAbsolute(FCachedAABB.Max);
-
-  FCachedBSphere.Radius = GLBaseSceneObject->BoundingSphereRadius();
-  FCachedBSphere.Center = GLBaseSceneObject->Position->AsAffineVector;
 }
 
 //---------------------------------------------------------------------------
@@ -93,7 +67,7 @@ float RandomSize()
 void __fastcall TForm1::CreateBox()
 {
   TGLCube *GLCube;
-  TGLSpacePartitionLeaf * GLSpacePartitionLeaf;
+  TGLSpacePartitionLeafS * GLSpacePartitionLeaf;
 
   GLCube = (TGLCube *)GLScene1->Objects->AddNewChild(__classid(TGLCube));
   GLCube->Position->AsAffineVector = RandomPos();
@@ -101,8 +75,8 @@ void __fastcall TForm1::CreateBox()
   GLCube->CubeHeight = RandomSize();
   GLCube->CubeDepth = RandomSize();
 
-   GLSpacePartitionLeaf = new TGLSpacePartitionLeaf;
-   GLSpacePartitionLeaf->CreateGLOwned(Octree, GLCube); //C++
+   GLSpacePartitionLeaf = new TGLSpacePartitionLeafS;
+//   GLSpacePartitionLeafS->CreateGLOwned(Octree, GLCube); //C++
 }
 //---------------------------------------------------------------------------
 
@@ -112,17 +86,6 @@ void __fastcall TForm1::TrackBar_LeafThresholdChange(TObject *Sender)
 	 ARRAYOFCONST ((TrackBar_LeafThreshold->Position)));
 
   Octree->LeafThreshold = TrackBar_LeafThreshold->Position;
-}
-
-//---------------------------------------------------------------------------
-float TestMove(float pos, float dir, const double deltaTime)
-{
-  const cSPEED = 2;
-  {
-	if (abs(pos+dir*deltaTime*cSPEED)>=cBOX_SIZE)
-	  dir = -dir;
-	return (pos + dir * deltaTime*cSPEED);
-  }
 }
 
 void __fastcall TForm1::RenderAABB(TAABB* AABB, float w, float r, float g, float b)
@@ -157,7 +120,7 @@ void __fastcall TForm1::RenderAABB(TAABB* AABB, float w, float r, float g, float
 */
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::RenderOctreeNode(TSectorNode* Node)
+void __fastcall TForm1::RenderOctreeNode(TGLSectorNode* Node)
 {
 	int i;
 	TAABB* AABB;
@@ -193,6 +156,18 @@ void __fastcall TForm1::GLDirectOpenGL1Render(TObject *Sender, TGLRenderContextI
   RenderAABB(AABB,2, 0,0,0);
   RenderOctreeNode(Octree->RootNode);
 }
+
+//---------------------------------------------------------------------------
+float TestMove(float pos, float dir, const double deltaTime)
+{
+  const cSPEED = 2;
+  {
+	if (abs(pos+dir*deltaTime*cSPEED)>=cBOX_SIZE)
+	  dir = -dir;
+	return (pos + dir * deltaTime*cSPEED);
+  }
+}
+
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
 		  const double newTime)
@@ -200,14 +175,14 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
   const cSPEED = 2;
   TAABB* AABB;
   TBSphere* BSphere;
-  TGLSpacePartitionLeaf* Leaf;
-  TGLSpacePartitionLeaf* TestLeaf;
+  TGLSpacePartitionLeafS* Leaf;
+  TGLSpacePartitionLeafS* TestLeaf;
   TGLCube* Cube;
   int i, j, CollidingLeafCount;
 
   for (i = 0; i < Octree->Leaves->Count-1; i++)
   {
-	Leaf = (TGLSpacePartitionLeaf*)(Octree->Leaves->Items[i]);
+	Leaf = (TGLSpacePartitionLeafS*)(Octree->Leaves->Items[i]);
 	Cube = (TGLCube*)(Leaf->GLBaseSceneObject);
 	Cube->Position->X = TestMove(Cube->Position->X, Leaf->GLBaseSceneObject->Direction->X, deltaTime);
 	Cube->Position->Y = TestMove(Cube->Position->Y, Leaf->GLBaseSceneObject->Direction->Y, deltaTime);
@@ -218,7 +193,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
 
   for (i = 0; i < Octree->Leaves->Count-1; i++)
   {
-	Leaf = (TGLSpacePartitionLeaf*)(Octree->Leaves->Items[i]);
+	Leaf = (TGLSpacePartitionLeafS*)(Octree->Leaves->Items[i]);
 	Cube = (TGLCube*)(Leaf->GLBaseSceneObject);
 	Cube->Material->FrontProperties->Emission->Red = 0;
 	Cube->Material->FrontProperties->Emission->Green = 0;

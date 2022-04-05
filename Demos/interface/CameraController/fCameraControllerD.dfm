@@ -2,410 +2,285 @@ object Form1: TForm1
   Left = 138
   Top = 176
   Caption = 'Camera Controller'
-  ClientHeight = 739
-  ClientWidth = 1256
+  ClientHeight = 591
+  ClientWidth = 1005
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object Panel1: TPanel
-    Left = 699
+    Left = 559
     Top = 0
-    Width = 557
-    Height = 695
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 446
+    Height = 556
     Align = alRight
     TabOrder = 0
     object Panel2: TPanel
-      Left = 8
-      Top = 11
-      Width = 193
-      Height = 252
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 6
+      Top = 9
+      Width = 155
+      Height = 201
       TabOrder = 0
       object Label1: TLabel
-        Left = 8
-        Top = 71
-        Width = 80
-        Height = 17
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 57
+        Width = 63
+        Height = 13
         Caption = 'Destination X'
       end
       object Label2: TLabel
-        Left = 8
-        Top = 131
-        Width = 80
-        Height = 17
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 105
+        Width = 63
+        Height = 13
         Caption = 'Destination Y'
       end
       object Label3: TLabel
-        Left = 8
-        Top = 191
-        Width = 80
-        Height = 17
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 153
+        Width = 63
+        Height = 13
         Caption = 'Destination Z'
       end
       object Label5: TLabel
-        Left = 5
-        Top = 3
-        Width = 176
-        Height = 58
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 4
+        Top = 2
+        Width = 141
+        Height = 47
         AutoSize = False
         Caption = 'Data for MoveToPos, OrbitToPos and SafeOrbitAndZoomToPos'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -14
+        Font.Height = -11
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
         WordWrap = True
       end
       object eDestX: TEdit
-        Left = 8
-        Top = 90
-        Width = 151
-        Height = 25
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 72
+        Width = 121
+        Height = 21
         TabOrder = 0
         Text = '0'
       end
       object eDestY: TEdit
-        Left = 8
-        Top = 153
-        Width = 151
-        Height = 25
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 122
+        Width = 121
+        Height = 21
         TabOrder = 1
         Text = '5.79'
       end
       object eDestZ: TEdit
-        Left = 8
-        Top = 210
-        Width = 151
-        Height = 25
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 168
+        Width = 121
+        Height = 21
         TabOrder = 2
         Text = '-3.34'
       end
     end
     object Panel3: TPanel
-      Left = 208
-      Top = 301
-      Width = 193
-      Height = 90
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 166
+      Top = 241
+      Width = 155
+      Height = 72
       TabOrder = 1
       object Label6: TLabel
-        Left = 8
-        Top = 31
-        Width = 52
-        Height = 17
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 25
+        Width = 41
+        Height = 13
         Caption = 'Distance'
       end
       object Label9: TLabel
-        Left = 5
-        Top = 3
-        Width = 161
-        Height = 18
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 4
+        Top = 2
+        Width = 129
+        Height = 15
         AutoSize = False
         Caption = 'Data for ZoomToDistance'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -14
+        Font.Height = -11
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
         WordWrap = True
       end
       object eDistance: TEdit
-        Left = 8
-        Top = 50
-        Width = 151
-        Height = 25
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 40
+        Width = 121
+        Height = 21
         TabOrder = 0
         Text = '4'
       end
     end
     object Panel4: TPanel
-      Left = 208
-      Top = 11
-      Width = 193
-      Height = 280
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 166
+      Top = 9
+      Width = 155
+      Height = 224
       TabOrder = 2
       object Label7: TLabel
-        Left = 8
-        Top = 51
-        Width = 92
-        Height = 17
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 41
+        Width = 74
+        Height = 13
         Caption = 'soSafeDistance'
       end
       object Label8: TLabel
-        Left = 8
-        Top = 171
-        Width = 89
-        Height = 17
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 137
+        Width = 69
+        Height = 13
         Caption = 'soTimeToOrbit'
       end
       object Label10: TLabel
-        Left = 8
-        Top = 111
-        Width = 148
-        Height = 17
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 89
+        Width = 116
+        Height = 13
         Caption = 'soTimeToSafePlacement'
       end
       object Label11: TLabel
-        Left = 5
-        Top = 3
-        Width = 176
-        Height = 38
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 4
+        Top = 2
+        Width = 141
+        Height = 31
         AutoSize = False
         Caption = 'Data for SafeOrbitAndZoomToPos'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -14
+        Font.Height = -11
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
         WordWrap = True
       end
       object Label12: TLabel
-        Left = 8
-        Top = 221
-        Width = 136
-        Height = 17
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 177
+        Width = 103
+        Height = 13
         Caption = 'soTimeToZoomBackIn'
       end
       object eSafeDistance: TEdit
-        Left = 8
-        Top = 70
-        Width = 151
-        Height = 25
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 56
+        Width = 121
+        Height = 21
         TabOrder = 0
         Text = '9'
       end
       object eTimeToSafePlacement: TEdit
-        Left = 8
-        Top = 133
-        Width = 151
-        Height = 25
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 106
+        Width = 121
+        Height = 21
         TabOrder = 1
         Text = '1'
       end
       object eTimeToOrbit: TEdit
-        Left = 8
-        Top = 190
-        Width = 151
-        Height = 25
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 152
+        Width = 121
+        Height = 21
         TabOrder = 2
         Text = '2'
       end
       object eTimeToZoomBackIn: TEdit
-        Left = 8
-        Top = 240
-        Width = 151
-        Height = 25
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 192
+        Width = 121
+        Height = 21
         TabOrder = 3
         Text = '1'
       end
     end
     object Panel5: TPanel
-      Left = 8
-      Top = 271
-      Width = 193
-      Height = 120
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 6
+      Top = 217
+      Width = 155
+      Height = 96
       TabOrder = 3
       object Label13: TLabel
-        Left = 8
-        Top = 61
-        Width = 29
-        Height = 17
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 49
+        Width = 22
+        Height = 13
         Caption = 'Time'
       end
       object Label14: TLabel
-        Left = 5
-        Top = 3
-        Width = 161
-        Height = 58
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 4
+        Top = 2
+        Width = 129
+        Height = 47
         AutoSize = False
         Caption = 'Data for MoveToPos, OrbitToPos and ZoomToDistance'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -14
+        Font.Height = -11
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
         WordWrap = True
       end
       object eTime: TEdit
-        Left = 8
-        Top = 80
-        Width = 151
-        Height = 25
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 6
+        Top = 64
+        Width = 121
+        Height = 21
         TabOrder = 0
         Text = '2'
       end
     end
     object btnMoveToPos: TButton
-      Left = 31
-      Top = 420
-      Width = 280
-      Height = 41
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 25
+      Top = 336
+      Width = 224
+      Height = 33
       Caption = 'MoveToPos (linear interpolation)'
       TabOrder = 4
       OnClick = btnMoveToPosClick
     end
     object btnZoomToDistance: TButton
-      Left = 31
-      Top = 469
-      Width = 280
-      Height = 42
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 25
+      Top = 375
+      Width = 224
+      Height = 34
       Caption = 'ZoomToDistance'
       TabOrder = 5
       OnClick = btnZoomToDistanceClick
     end
     object btnOrbitToPos: TButton
-      Left = 31
-      Top = 519
-      Width = 280
-      Height = 42
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 25
+      Top = 415
+      Width = 224
+      Height = 34
       Caption = 'OrbitToPos (will not zoom in to pos)'
       TabOrder = 6
       OnClick = btnOrbitToPosClick
     end
     object btnSafeOrbitAndZoomToPos: TButton
-      Left = 31
-      Top = 569
-      Width = 280
-      Height = 42
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 25
+      Top = 455
+      Width = 224
+      Height = 34
       Caption = 'SafeOrbitAndZoomToPos'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -14
+      Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
@@ -413,285 +288,197 @@ object Form1: TForm1
       OnClick = btnSafeOrbitAndZoomToPosClick
     end
     object btnOrbitToPosAdv: TButton
-      Left = 319
-      Top = 569
-      Width = 232
-      Height = 42
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 255
+      Top = 455
+      Width = 186
+      Height = 34
       Caption = 'OrbitToPosAdv (will not zoom in to pos)'
       TabOrder = 8
       WordWrap = True
       OnClick = btnOrbitToPosAdvClick
     end
     object Panel8: TPanel
-      Left = 409
-      Top = 11
-      Width = 142
-      Height = 400
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 327
+      Top = 9
+      Width = 114
+      Height = 320
       TabOrder = 9
       object Label20: TLabel
-        Left = 5
-        Top = 3
-        Width = 53
-        Height = 17
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 4
+        Top = 2
+        Width = 44
+        Height = 13
         Caption = 'Camera'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -14
+        Font.Height = -11
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
         WordWrap = True
       end
       object Panel7: TPanel
-        Left = 10
-        Top = 24
-        Width = 121
-        Height = 147
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 8
+        Top = 19
+        Width = 97
+        Height = 118
         BevelOuter = bvLowered
         Caption = ' '
         TabOrder = 0
         object Label16: TLabel
-          Left = 10
-          Top = 43
-          Width = 8
-          Height = 17
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 8
+          Top = 34
+          Width = 6
+          Height = 13
           Caption = 'X'
         end
         object Label17: TLabel
-          Left = 10
-          Top = 76
-          Width = 8
-          Height = 17
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 8
+          Top = 61
+          Width = 6
+          Height = 13
           Caption = 'Y'
         end
         object Label18: TLabel
-          Left = 10
-          Top = 110
-          Width = 8
-          Height = 17
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 8
+          Top = 88
+          Width = 6
+          Height = 13
           Caption = 'Z'
         end
         object Label19: TLabel
-          Left = 5
-          Top = 3
-          Width = 61
-          Height = 17
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 4
+          Top = 2
+          Width = 51
+          Height = 13
           Caption = 'Direction'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -14
+          Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
           WordWrap = True
         end
         object camDirX: TEdit
-          Left = 25
-          Top = 39
-          Width = 85
-          Height = 25
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 31
+          Width = 68
+          Height = 21
           TabOrder = 0
           Text = '0.0'
         end
         object camDirY: TEdit
-          Left = 25
-          Top = 73
-          Width = 85
-          Height = 25
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 58
+          Width = 68
+          Height = 21
           TabOrder = 1
           Text = '0.0'
         end
         object camDirZ: TEdit
-          Left = 25
-          Top = 106
-          Width = 85
-          Height = 25
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 85
+          Width = 68
+          Height = 21
           TabOrder = 2
           Text = '0.0'
         end
       end
       object Panel9: TPanel
-        Left = 10
-        Top = 179
-        Width = 121
-        Height = 147
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 8
+        Top = 143
+        Width = 97
+        Height = 118
         BevelOuter = bvLowered
         Caption = ' '
         TabOrder = 1
         object Label21: TLabel
-          Left = 10
-          Top = 43
-          Width = 8
-          Height = 17
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 8
+          Top = 34
+          Width = 6
+          Height = 13
           Caption = 'X'
         end
         object Label22: TLabel
-          Left = 10
-          Top = 76
-          Width = 8
-          Height = 17
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 8
+          Top = 61
+          Width = 6
+          Height = 13
           Caption = 'Y'
         end
         object Label23: TLabel
-          Left = 10
-          Top = 110
-          Width = 8
-          Height = 17
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 8
+          Top = 88
+          Width = 6
+          Height = 13
           Caption = 'Z'
         end
         object Label24: TLabel
-          Left = 5
-          Top = 3
-          Width = 19
-          Height = 17
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 4
+          Top = 2
+          Width = 15
+          Height = 13
           Caption = 'Up'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -14
+          Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
           WordWrap = True
         end
         object camUpX: TEdit
-          Left = 25
-          Top = 39
-          Width = 85
-          Height = 25
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 31
+          Width = 68
+          Height = 21
           TabOrder = 0
           Text = '0.0'
         end
         object camUpY: TEdit
-          Left = 25
-          Top = 73
-          Width = 85
-          Height = 25
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 58
+          Width = 68
+          Height = 21
           TabOrder = 1
           Text = '0.0'
         end
         object camUpZ: TEdit
-          Left = 25
-          Top = 106
-          Width = 85
-          Height = 25
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
+          Left = 20
+          Top = 85
+          Width = 68
+          Height = 21
           TabOrder = 2
           Text = '0.0'
         end
       end
       object UpAxis: TCheckBox
-        Left = 11
-        Top = 339
-        Width = 122
-        Height = 21
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 9
+        Top = 271
+        Width = 97
+        Height = 17
         Caption = 'Prefer up axis'
         TabOrder = 2
       end
       object cbMoveParent: TCheckBox
-        Left = 11
-        Top = 369
-        Width = 122
-        Height = 21
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 9
+        Top = 295
+        Width = 97
+        Height = 17
         Caption = 'Move Parent'
         TabOrder = 3
       end
     end
     object btSmoothOrbit: TButton
-      Left = 319
-      Top = 469
-      Width = 230
-      Height = 42
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 255
+      Top = 375
+      Width = 184
+      Height = 34
       Caption = 'Smooth Orbit'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -14
+      Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
@@ -699,18 +486,14 @@ object Form1: TForm1
       OnClick = btSmoothOrbitClick
     end
     object btSmoothOrbitAndZoom: TButton
-      Left = 319
-      Top = 419
-      Width = 230
-      Height = 42
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 255
+      Top = 335
+      Width = 184
+      Height = 34
       Caption = 'Smooth OrbitToPos and Zoom'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -14
+      Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
@@ -718,18 +501,14 @@ object Form1: TForm1
       OnClick = btSmoothOrbitAndZoomClick
     end
     object btSmoothOrbitToPosAdv: TButton
-      Left = 319
-      Top = 519
-      Width = 230
-      Height = 42
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 255
+      Top = 415
+      Width = 184
+      Height = 34
       Caption = 'Smooth OrbitToPos'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -14
+      Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
@@ -740,15 +519,11 @@ object Form1: TForm1
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 699
-    Height = 695
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 559
+    Height = 556
     Camera = GLCamera
     VSync = vsmSync
-    FieldOfView = 141.897979736328100000
+    FieldOfView = 133.304656982421900000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -757,25 +532,17 @@ object Form1: TForm1
     TabOrder = 1
   end
   object pImg: TPanel
-    Left = 5
-    Top = 5
-    Width = 196
-    Height = 30
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 4
+    Top = 4
+    Width = 157
+    Height = 24
     BevelOuter = bvNone
     TabOrder = 2
     object Image1: TImage
       Left = 0
       Top = 0
-      Width = 30
-      Height = 30
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 24
+      Height = 24
       Picture.Data = {
         07544269746D6170F6060000424DF60600000000000036000000280000001800
         0000180000000100180000000000C0060000C30E0000C30E0000000000000000
@@ -836,49 +603,37 @@ object Form1: TForm1
         CBF7}
     end
     object Label4: TLabel
-      Left = 40
-      Top = 8
-      Width = 130
-      Height = 17
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 32
+      Top = 6
+      Width = 102
+      Height = 13
       Caption = 'TGLCameraController'
     end
   end
   object Panel6: TPanel
     Left = 0
-    Top = 695
-    Width = 1256
-    Height = 44
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 556
+    Width = 1005
+    Height = 35
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 3
     object Label15: TLabel
-      Left = 5
-      Top = 8
-      Width = 1066
-      Height = 38
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 4
+      Top = 6
+      Width = 853
+      Height = 31
       Alignment = taCenter
       AutoSize = False
       Caption = 
         'The main method, SafeOrbitAndZoomToPos, resambles the Google Ear' +
-        'th "Fly to..." motion. I developed and used it to fly to differe' +
-        'nt views of a car (hood, trunk etc) in 3DCar(TM), which probably' +
-        ' was/is the first interactive 3D car configurator, released by B' +
-        'luemind Software.'
+        'th "Fly to..." motion. It was developed and used it to fly to di' +
+        'fferent views of a car (hood, trunk etc) in 3DCar(TM), which pro' +
+        'bably was/is the first interactive 3D car configurator, released' +
+        ' by Bluemind Software.'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -14
+      Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False

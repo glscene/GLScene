@@ -88,7 +88,7 @@ begin
   SetGLSceneMediaDir();
   // hide the Windows cursor for the GLSceneViewer
   GLSceneViewer1.Cursor := crNone;
-  // and load my ugly cursor (size adjusted in design props)
+  // and load an ugly cursor (size adjusted in design props)
   with GLMaterialLibrary1.Materials[0] do
     Material.Texture.Image.LoadFromFile('cursor.bmp');
 end;

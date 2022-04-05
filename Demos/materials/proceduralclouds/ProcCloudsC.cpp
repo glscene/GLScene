@@ -4,7 +4,7 @@
 #pragma hdrstop
 #include <tchar.h>
 //---------------------------------------------------------------------------
-USEFORM("fProcCloudsC.cpp", FormClouds);
+USEFORM("fProcCloudsC.cpp", FormCloudsC);
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
@@ -12,7 +12,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 	{
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
-		Application->CreateForm(__classid(TFormClouds), &FormClouds);
+		Application->CreateForm(__classid(TFormCloudsC), &FormCloudsC);
 		Application->Run();
 	}
 	catch (Exception &exception)

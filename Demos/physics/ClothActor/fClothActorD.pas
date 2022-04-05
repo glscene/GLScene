@@ -260,7 +260,7 @@ begin
   glEnd;
 end;
 
-procedure RenderOctreeNode(Node: TSectorNode);
+procedure RenderOctreeNode(Node: TGLSectorNode);
 var
   i: Integer;
   AABB: TAABB;
@@ -285,12 +285,12 @@ procedure TFormClothActor.OctreeRendererRender(Sender: TObject;
 begin
   if cbShowOctree.Checked then
   begin
-    if VerletWorld.SpacePartition is TOctreeSpacePartition then
+    if VerletWorld.SpacePartition is TGLOctreeSpacePartition then
     begin
       glPushAttrib(GL_ENABLE_BIT or GL_CURRENT_BIT or GL_LINE_BIT or
         GL_COLOR_BUFFER_BIT);
       glDisable(GL_LIGHTING);
-      RenderOctreeNode(TOctreeSpacePartition(VerletWorld.SpacePartition).RootNode);
+      RenderOctreeNode(TGLOctreeSpacePartition(VerletWorld.SpacePartition).RootNode);
       glPopAttrib;
     end;
   end;

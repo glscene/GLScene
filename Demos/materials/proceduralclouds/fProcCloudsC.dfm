@@ -1,4 +1,4 @@
-object FormClouds: TFormClouds
+object FormCloudsC: TFormCloudsC
   Left = 0
   Top = 0
   Caption = 'Procedural Clouds'
@@ -10,9 +10,7 @@ object FormClouds: TFormClouds
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
@@ -20,6 +18,7 @@ object FormClouds: TFormClouds
     Width = 335
     Height = 423
     Camera = Camera
+    AfterRender = GLSceneViewer1AfterRender
     Buffer.BackgroundColor = clBackground
     FieldOfView = 179.315872192382800000
     PenAsTouch = False
@@ -110,13 +109,16 @@ object FormClouds: TFormClouds
         0000777777777777777733333333333333333333333333333333333333333333
         3333333333333333333333333333333333333333333333333333}
       NumGlyphs = 2
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = CloudFileOpenBtnClick
     end
     object MakeAndSaveCloudNoiseFile: TSpeedButton
       Left = 161
       Top = 360
       Width = 40
       Height = 22
-      Hint = 'Make And Save Cloud'
+      Hint = 'Save Cloud File'
       Glyph.Data = {
         F6000000424DF600000000000000760000002800000010000000100000000100
         0400000000008000000074120000741200001000000000000000000000000000
@@ -126,6 +128,9 @@ object FormClouds: TFormClouds
         07777703300000030777FF03333333330FFF000300000003000077030FFFFF03
         077777030FFFFF03077777030FFFFF03077777030FFFFF0F07777F0000000000
         0777F07777F0777770F7077777F07777770F777777F077777770}
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = MakeAndSaveCloudNoiseFileClick
     end
     object Label61: TLabel
       Left = 178
@@ -148,6 +153,7 @@ object FormClouds: TFormClouds
       Height = 21
       Style = csDropDownList
       TabOrder = 0
+      OnChange = CBFormatChange
       Items.Strings = (
         'RGB    (24 bits)'
         'RGBA  (32 bits)'
@@ -239,6 +245,7 @@ object FormClouds: TFormClouds
       Min = 1
       Position = 2
       TabOrder = 9
+      OnChange = TrackBar1Change
     end
     object CloudRandomSeedUsedEdit: TEdit
       Left = 111
@@ -309,10 +316,12 @@ object FormClouds: TFormClouds
   end
   object GLCadencer1: TGLCadencer
     Scene = GLScene1
+    OnTotalProgress = GLCadencer1TotalProgress
     Left = 40
     Top = 64
   end
   object Timer1: TTimer
+    OnTimer = Timer1Timer
     Left = 264
     Top = 16
   end

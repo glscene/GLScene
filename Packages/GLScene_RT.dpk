@@ -166,6 +166,7 @@ contains
   GLS.MeshLines in '..\Source\GLS.MeshLines.pas',
   GLS.MeshUtils in '..\Source\GLS.MeshUtils.pas',
   GLS.Mirror in '..\Source\GLS.Mirror.pas',
+  GLS.ModuleLoader in '..\Source\GLS.ModuleLoader.pas',
   GLS.Movement in '..\Source\GLS.Movement.pas',
   GLS.MultiPolygon in '..\Source\GLS.MultiPolygon.pas',
   GLS.MultiProxy in '..\Source\GLS.MultiProxy.pas',
@@ -266,7 +267,6 @@ contains
   GLS.Strings in '..\Source\GLS.Strings.pas',
   GLS.XCollection in '..\Source\GLS.XCollection.pas',
   GLS.XOpenGL in '..\Source\GLS.XOpenGL.pas',
-  GLS.ModuleLoader in '..\Source\GLS.ModuleLoader.pas',
   PasGLTF in '..\Source\PasGLTF.pas',
   PasJSON in '..\Source\PasJSON.pas',
   PasDblStrUtils in '..\Source\PasDblStrUtils.pas';

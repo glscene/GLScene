@@ -2,94 +2,69 @@ object FormClothify: TFormClothify
   Left = 34
   Top = 114
   Caption = 'Clothify'
-  ClientHeight = 623
-  ClientWidth = 894
+  ClientHeight = 498
+  ClientWidth = 715
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   WindowState = wsMaximized
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 75
-    Width = 894
-    Height = 548
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 60
+    Width = 715
+    Height = 438
     Camera = GLCamera1
     Buffer.BackgroundColor = clGray
     Buffer.AmbientColor.Color = {CDCC4C3DCDCC4C3DCDCC4C3D0000803F}
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow, roTwoSideLighting]
     Buffer.FaceCulling = False
-    FieldOfView = 149.383621215820300000
+    FieldOfView = 142.190841674804700000
     PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
   end
   object GroupBox_LoadForm: TGroupBox
-    Left = 60
-    Top = 110
-    Width = 811
-    Height = 81
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 48
+    Top = 88
+    Width = 649
+    Height = 65
     Caption = 'Load Settings'
     TabOrder = 1
     Visible = False
     object Label2: TLabel
-      Left = 10
-      Top = 20
-      Width = 33
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 16
+      Width = 26
+      Height = 13
       Caption = 'Mesh'
     end
     object Label4: TLabel
-      Left = 190
-      Top = 20
-      Width = 35
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 152
+      Top = 16
+      Width = 27
+      Height = 13
       Caption = 'Mode'
     end
     object Label5: TLabel
-      Left = 310
-      Top = 20
-      Width = 46
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 248
+      Top = 16
+      Width = 34
+      Height = 13
       Caption = 'Collider'
     end
     object ComboBox_MeshName: TComboBox
-      Left = 10
-      Top = 40
-      Width = 171
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 32
+      Width = 137
+      Height = 21
       Style = csDropDownList
       TabOrder = 0
       Items.Strings = (
@@ -103,14 +78,10 @@ object FormClothify: TFormClothify
         'teapot.3ds, 0.1')
     end
     object ComboBox_ConstraintType: TComboBox
-      Left = 190
-      Top = 40
-      Width = 111
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 152
+      Top = 32
+      Width = 89
+      Height = 21
       Style = csDropDownList
       TabOrder = 1
       Items.Strings = (
@@ -118,14 +89,10 @@ object FormClothify: TFormClothify
         'Forces')
     end
     object ComboBox_Collider: TComboBox
-      Left = 310
-      Top = 40
-      Width = 91
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 248
+      Top = 32
+      Width = 73
+      Height = 21
       Style = csDropDownList
       TabOrder = 2
       Items.Strings = (
@@ -138,66 +105,46 @@ object FormClothify: TFormClothify
         '(none)')
     end
     object Button_LoadMesh: TButton
-      Left = 686
-      Top = 40
-      Width = 45
-      Height = 26
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 549
+      Top = 32
+      Width = 36
+      Height = 21
       Caption = 'OK'
       Default = True
       TabOrder = 3
       OnClick = Button_LoadMeshClick
     end
     object CheckBox_UseOctree: TCheckBox
-      Left = 480
-      Top = 43
-      Width = 101
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 384
+      Top = 34
+      Width = 81
+      Height = 17
       Caption = 'Use Octree'
       TabOrder = 4
     end
     object CheckBox_SolidEdges: TCheckBox
-      Left = 580
-      Top = 43
-      Width = 101
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 464
+      Top = 34
+      Width = 81
+      Height = 17
       Caption = 'Solid Edges'
       TabOrder = 5
     end
     object CheckBox_Weld: TCheckBox
-      Left = 410
-      Top = 43
-      Width = 61
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 328
+      Top = 34
+      Width = 49
+      Height = 17
       Caption = 'Weld'
       Checked = True
       State = cbChecked
       TabOrder = 6
     end
     object Button_CancelLoad: TButton
-      Left = 736
-      Top = 40
-      Width = 55
-      Height = 26
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 589
+      Top = 32
+      Width = 44
+      Height = 21
       Caption = 'Cancel'
       TabOrder = 7
       OnClick = Button_CancelLoadClick
@@ -206,155 +153,104 @@ object FormClothify: TFormClothify
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 894
-    Height = 75
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 715
+    Height = 60
     Align = alTop
     TabOrder = 2
     DesignSize = (
-      894
-      75)
+      715
+      60)
     object Label3: TLabel
-      Left = 10
+      Left = 8
       Top = 0
-      Width = 34
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 27
+      Height = 13
       Caption = 'Slack'
     end
     object Label6: TLabel
-      Left = 130
+      Left = 104
       Top = 0
-      Width = 54
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 43
+      Height = 13
       Caption = 'Iterations'
     end
     object Label7: TLabel
-      Left = 240
+      Left = 192
       Top = 0
-      Width = 43
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 34
+      Height = 13
       Caption = 'Friction'
     end
     object Label8: TLabel
-      Left = 520
+      Left = 416
       Top = 0
-      Width = 56
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 44
+      Height = 13
       Caption = 'Shadows'
     end
     object Label1: TLabel
-      Left = 729
-      Top = 24
-      Width = 46
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 583
+      Top = 19
+      Width = 38
+      Height = 13
       Anchors = [akTop, akRight]
       Caption = '0,0 FPS'
     end
     object TrackBar_Slack: TTrackBar
       Left = 0
-      Top = 18
-      Width = 121
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Top = 14
+      Width = 97
+      Height = 25
       Max = 100
       TabOrder = 0
-      ThumbLength = 25
       TickStyle = tsNone
       OnChange = TrackBar_SlackChange
     end
     object TrackBar_Iterations: TTrackBar
-      Left = 120
-      Top = 18
-      Width = 101
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 96
+      Top = 14
+      Width = 81
+      Height = 25
       Max = 30
       Min = 1
       Position = 4
       TabOrder = 1
-      ThumbLength = 25
       TickStyle = tsNone
       OnChange = TrackBar_IterationsChange
     end
     object TrackBar_Friction: TTrackBar
-      Left = 230
-      Top = 18
-      Width = 101
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 184
+      Top = 14
+      Width = 81
+      Height = 25
       Max = 100
       Position = 60
       TabOrder = 2
-      ThumbLength = 25
       TickStyle = tsNone
       OnChange = TrackBar_FrictionChange
     end
     object CheckBox_ShowOctree: TCheckBox
-      Left = 340
-      Top = 19
-      Width = 101
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 272
+      Top = 15
+      Width = 81
+      Height = 17
       Caption = 'Show Octree'
       TabOrder = 3
     end
     object Button_OpenLoadForm: TButton
-      Left = 450
-      Top = 14
-      Width = 64
-      Height = 26
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 360
+      Top = 11
+      Width = 51
+      Height = 21
       Caption = '&Load'
       TabOrder = 4
       OnClick = Button_OpenLoadFormClick
     end
     object ComboBox_Shadow: TComboBox
-      Left = 520
-      Top = 20
-      Width = 181
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 416
+      Top = 16
+      Width = 145
+      Height = 21
       Style = csDropDownList
       TabOrder = 5
       OnChange = ComboBox_ShadowChange

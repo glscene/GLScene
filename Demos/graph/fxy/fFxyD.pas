@@ -22,7 +22,7 @@ uses
   GLS.SceneViewer,
 
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLS.BaseClasses, GLS.AsyncTimer;
 
 type
   TFormFxy = class(TForm)
@@ -43,6 +43,7 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
+    GLAsyncTimer1: TGLAsyncTimer;
     procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
@@ -55,6 +56,7 @@ type
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure HeightField1GetHeight(const X, Y: Single; var z: Single;
       var Color: TVector4f; var TexPoint: TTexPoint);
+    procedure GLAsyncTimer1Timer(Sender: TObject);
   public
     mx, my: Integer;
   end;
@@ -62,9 +64,8 @@ type
 var
   FormFxy: TFormFxy;
 
-  // ----------------------------------
+// ----------------------------------
 implementation
-
 // ----------------------------------
 
 {$R *.DFM}
@@ -109,6 +110,11 @@ end;
 
 // following code takes care of camera movement, see camera & movement demos
 // for explanations and more samples
+
+procedure TFormFxy.GLAsyncTimer1Timer(Sender: TObject);
+begin
+  HeightField1.StructureChanged;
+end;
 
 procedure TFormFxy.GLSceneViewer1MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);

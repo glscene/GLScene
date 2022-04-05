@@ -158,6 +158,13 @@ object FormTorqueC: TFormTorqueC
     end
     object DummyCube1: TGLDummyCube
       CubeSize = 1.000000000000000000
+      object Teapot: TGLTeapot
+        Material.FrontProperties.Diffuse.Color = {1F856B3F14AE473F52B81E3F0000803F}
+        Direction.Coordinates = {010000BF00000000D7B35D3F00000000}
+        Position.Coordinates = {0000404000000000000000000000803F}
+        Scale.Coordinates = {0000C03F0000C03F0000C03F00000000}
+        TurnAngle = -30.000000000000000000
+      end
       object Tetrahedron: TGLTetrahedron
         Material.FrontProperties.Diffuse.Color = {BEBEBE3E999F1F3F999F1F3F0000803F}
         Material.BlendingMode = bmTransparency
@@ -192,13 +199,6 @@ object FormTorqueC: TFormTorqueC
         Material.FrontProperties.Diffuse.Color = {14AE073F8FC2F53DD7A3F03E0000803F}
         Position.Coordinates = {0000000000000000000080C00000803F}
         Scale.Coordinates = {9A99993F9A99993F9A99993F00000000}
-      end
-      object Teapot: TGLTeapot
-        Material.FrontProperties.Diffuse.Color = {1F856B3F14AE473F52B81E3F0000803F}
-        Direction.Coordinates = {010000BF00000000D7B35D3F00000000}
-        Position.Coordinates = {0000404000000000000000000000803F}
-        Scale.Coordinates = {0000C03F0000C03F0000C03F00000000}
-        TurnAngle = -30.000000000000000000
       end
       object Torus: TGLTorus
         Material.FrontProperties.Diffuse.Color = {85EB513F85EB113F1F85EB3E0000803F}

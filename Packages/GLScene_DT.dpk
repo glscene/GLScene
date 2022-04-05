@@ -42,21 +42,21 @@ requires
 contains
   FRFaceEditor in '..\Source\FRFaceEditor.pas',
   FRMaterialPreview in '..\Source\FRMaterialPreview.pas',
-  FRColorEditor in '..\Source\FRColorEditor.pas' {RColorEditor: TFrame},
-  FRTextureEdit in '..\Source\FRTextureEdit.pas' {RTextureEdit: TFrame},
-  FmGuiLayoutEditor in '..\Source\FmGuiLayoutEditor.pas' {GLLayoutEditorForm},
-  FmGuiSkinEditor in '..\Source\FmGuiSkinEditor.pas' {GLSkinEditorForm},
-  FmShaderMemo in '..\Source\FmShaderMemo.pas' {ShaderMemoForm},
-  FmShaderUniformEditor in '..\Source\FmShaderUniformEditor.pas' {GLShaderUniformEditor},
-  FmVectorEditor in '..\Source\FmVectorEditor.pas' {GLVectorEditorForm},
-  FmSceneEditor in '..\Source\FmSceneEditor.pas' {GLSceneEditorForm},
-  FmPlugInManagerEditor in '..\Source\FmPlugInManagerEditor.pas' {GLPlugInManagerEditorForm},
-  FmXCollectionEditor in '..\Source\FmXCollectionEditor.pas' {GLXCollectionEditorForm},
-  FmInfo in '..\Source\FmInfo.pas' {GLInfoForm},
+  FRColorEditor in '..\Source\FRColorEditor.pas',
+  FRTextureEdit in '..\Source\FRTextureEdit.pas',
+  FmGuiLayoutEditor in '..\Source\FmGuiLayoutEditor.pas',
+  FmGuiSkinEditor in '..\Source\FmGuiSkinEditor.pas',
+  FmShaderMemo in '..\Source\FmShaderMemo.pas',
+  FmShaderUniformEditor in '..\Source\FmShaderUniformEditor.pas',
+  FmVectorEditor in '..\Source\FmVectorEditor.pas',
+  FmSceneEditor in '..\Source\FmSceneEditor.pas',
+  FmPlugInManagerEditor in '..\Source\FmPlugInManagerEditor.pas',
+  FmXCollectionEditor in '..\Source\FmXCollectionEditor.pas',
+  FmInfo in '..\Source\FmInfo.pas',
   GLS.SceneRegister in '..\Source\GLS.SceneRegister.pas',
   GLS.XCollectionRegister in '..\Source\GLS.XCollectionRegister.pas',
   FmMaterialEditor in '..\Source\FmMaterialEditor.pas',
-  FmLibMaterialPicker in '..\Source\FmLibMaterialPicker.pas' {GLLibMaterialPickerForm};
+  FmLibMaterialPicker in '..\Source\FmLibMaterialPicker.pas';
 
 end.
 

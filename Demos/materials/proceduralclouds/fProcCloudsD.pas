@@ -81,6 +81,8 @@ type
 
 var
   FormClouds: TFormClouds;
+  aPERM: array [0 .. 255] of Byte;
+  outfile: TextFile;
 
 implementation
 
@@ -105,13 +107,13 @@ procedure TFormClouds.TrackBar1Change(Sender: TObject);
 begin
   Plane.XTiles := TrackBar1.Position;
   Plane.YTiles := TrackBar1.Position;
-  { EnvColor clrLightBlue   TextureMode Blend }
+  // EnvColor clrLightBlue   TextureMode Blend
 end;
 
 procedure TFormClouds.Timer1Timer(Sender: TObject);
 begin
-  LabelFPS.Caption := GLSceneViewer1.FramesPerSecondText;
-  GLSceneViewer1.ResetPerformanceMonitor;
+  LabelFPS.Caption := GLSceneViewer1.FramesPerSecondText();
+  GLSceneViewer1.ResetPerformanceMonitor();
 end;
 
 procedure TFormClouds.GLSceneViewer1AfterRender(Sender: TObject);
@@ -125,67 +127,63 @@ begin
   LARGB32.Caption := Format('RGBA 32bits would require %d kB',
     [rgb div 1024]);
   LAUsedMemory.Caption := Format('Required memory : %d kB',
-    [Plane.Material.Texture.TextureImageRequiredMemory div 1024]);
+    [Plane.Material.Texture.TextureImageRequiredMemory() div 1024]);
   LACompression.Caption := Format('Compression ratio : %d %%',
-    [100 - 100 * Plane.Material.Texture.TextureImageRequiredMemory div rgb]);
+    [100 - 100 * Plane.Material.Texture.TextureImageRequiredMemory() div rgb]);
   newSelection := False;
 end;
 
+//----------------------------------------------------------------------
 procedure TFormClouds.CBFormatChange(Sender: TObject);
 var
-  aPERM: array [0 .. 255] of Byte;
-  outfile: Textfile;
-  s: string;
+  s: String;
   i: Integer;
 begin
   // adjust settings from selection and reload the texture map
-  with Plane.Material.Texture do
+  if (UseCloudFileCB.Checked and (FileExists(CloudFileUsedEdit.Text))) then
   begin
-    If (UseCloudFileCB.Checked and (FileExists(CloudFileUsedEdit.Text))) then
-    begin
-      try
-        AssignFile(outfile, CloudFileUsedEdit.Text);
-        // File selected in dialog box
-        Reset(outfile);
-        Readln(outfile, s { 'Cloud Base V1.0' } );
-        For i := 0 to 255 do
-        begin
-          Readln(outfile, s);
-          aPERM[i] := strtoint(s);
-        end;
-      finally
-        CloseFile(outfile);
+    try
+      AssignFile(outfile, CloudFileUsedEdit.Text);
+      // File selected in dialog box
+      Reset(outfile);
+      Readln(outfile, s);
+      for i := 0 to 255 do
+      begin
+        Readln(outfile, s);
+        aPERM[i] := strtoint(s);
       end;
-      TGLProcTextureNoise(Image).SetPermFromData(aPERM);
-    end
-    else
-      TGLProcTextureNoise(Image).SetPermToDefault;
-    TextureFormat := TGLTextureFormat(Integer(tfRGB) + CBFormat.ItemIndex);
-    Compression := TGLTextureCompression(Integer(tcNone) +
-      CBCompression.ItemIndex);
-    TGLProcTextureNoise(Image).MinCut := SpinEdit1.Value;
-    TGLProcTextureNoise(Image).NoiseSharpness := SpinEdit2.Value / 100;
-    TGLProcTextureNoise(Image).Height := strtoint(CloudImageSizeUsedEdit.Text);
-    TGLProcTextureNoise(Image).Width := strtoint(CloudImageSizeUsedEdit.Text);
-    TGLProcTextureNoise(Image).NoiseRandSeed :=
-      strtoint(CloudRandomSeedUsedEdit.Text);;
-    TGLProcTextureNoise(Image).Seamless := CheckBox2.Checked;
-
-    if RBDefault.Checked then
-    begin
-      Plane.Width := 50;
-      Plane.Height := 50;
-    end
-    else if RBDouble.Checked then
-    begin
-      Plane.Width := 100;
-      Plane.Height := 100;
-    end
-    else
-    begin
-      Plane.Width := 400;
-      Plane.Height := 400;
+    finally
+      CloseFile(outfile);
     end;
+    TGLProcTextureNoise(Plane.Material.Texture.Image).SetPermFromData(aPERM);
+  end
+  else
+    TGLProcTextureNoise(Plane.Material.Texture.Image).SetPermToDefault;
+  Plane.Material.Texture.TextureFormat := TGLTextureFormat(Integer(tfRGB) + CBFormat.ItemIndex);
+  Plane.Material.Texture.Compression := TGLTextureCompression(Integer(tcNone) +
+    CBCompression.ItemIndex);
+  TGLProcTextureNoise(Plane.Material.Texture.Image).MinCut := SpinEdit1.Value;
+  TGLProcTextureNoise(Plane.Material.Texture.Image).NoiseSharpness := SpinEdit2.Value / 100;
+  TGLProcTextureNoise(Plane.Material.Texture.Image).Height := strtoint(CloudImageSizeUsedEdit.Text);
+  TGLProcTextureNoise(Plane.Material.Texture.Image).Width := strtoint(CloudImageSizeUsedEdit.Text);
+  TGLProcTextureNoise(Plane.Material.Texture.Image).NoiseRandSeed :=
+    strtoint(CloudRandomSeedUsedEdit.Text);;
+  TGLProcTextureNoise(Plane.Material.Texture.Image).Seamless := CheckBox2.Checked;
+
+  if RBDefault.Checked then
+  begin
+    Plane.Width := 50;
+    Plane.Height := 50;
+  end
+  else if RBDouble.Checked then
+  begin
+    Plane.Width := 100;
+    Plane.Height := 100;
+  end
+  else
+  begin
+    Plane.Width := 400;
+    Plane.Height := 400;
   end;
   newSelection := True;
 end;
@@ -194,79 +192,77 @@ procedure TFormClouds.CloudFileOpenBtnClick(Sender: TObject);
 begin
   OpenDialog1.Filter := 'Cloud base (*.clb)|*.clb';
   OpenDialog1.InitialDir := ExtractFilePath(ParamStr(0));
-  OpenDialog1.Filename := '*.clb';
-  if OpenDialog1.Execute then
-  begin
-    CloudFileUsedEdit.Text := OpenDialog1.Filename;
-  end;
+  OpenDialog1.FileName := '*.clb';
+  if OpenDialog1.Execute() then
+    CloudFileUsedEdit.Text := OpenDialog1.FileName;
 end;
 
 procedure TFormClouds.MakeAndSaveCloudNoiseFileClick(Sender: TObject);
 var
-  aPERM: array [0 .. 255] of Byte;
-  outfile: Textfile;
   i: Integer;
 
-  procedure RandomPerm;
+  (*sub*)procedure RandomPerm;
   var
-    Idiot, Count, More, Less, again: Integer;
+    Id, Count, More, Less, Again: Integer;
   begin
-    MakeAndSaveCloudNoiseFile.Caption := inttostr(0);
+    MakeAndSaveCloudNoiseFile.Caption := IntToStr(0);
     Application.ProcessMessages;
-    For Idiot := 0 to 255 do
+    for Id := 0 to 255 do
     begin
-      aPERM[Idiot] := Random(256);
-      // Label61.Caption:= inttostr(Idiot);
+      aPERM[Id] := Random(256);
+      // Label61.Caption:= IntToStr(Id);
       // Application.ProcessMessages;
     end;
     Count := 0;
     repeat
       again := 0;
       Less := Random(256);
-      For Idiot := 0 to Count do
+      for Id := 0 to Count do
       begin
-        More := aPERM[Idiot];
+        More := aPERM[Id];
         If (Less = More) then
-          inc(again);
+          Inc(Again);
       end;
-      Label61.Caption := inttostr(again);
+      Label61.Caption := IntToStr(again);
       // these can be removed.. just for debugging
       Application.ProcessMessages;
-      If (again = 0) then
+      if (again = 0) then
       begin
         aPERM[Count + 1] := Less;
-        inc(Count);
-        MakeAndSaveCloudNoiseFile.Caption := inttostr(Less) + ',' +
-          inttostr(Count);
+        Inc(Count);
+        MakeAndSaveCloudNoiseFile.Caption := IntToStr(Less) + ',' +
+          IntToStr(Count);
         Application.ProcessMessages;
       end;
-    until Count = 255 end;
+    until Count = 255
+  end;
+
+  begin
+    SaveDialog1.Filter := 'Cloud base (*.clb)|*.clb';
+    SaveDialog1.InitialDir := ExtractFilePath(ParamStr(0));
+    SaveDialog1.DefaultExt := 'rnd';
+    SaveDialog1.Filename := '*.clb';
+    if (SaveDialog1.Execute()) then
     begin
-      SaveDialog1.Filter := 'Cloud base (*.clb)|*.clb';
-      SaveDialog1.InitialDir := ExtractFilePath(ParamStr(0));
-      SaveDialog1.DefaultExt := 'rnd';
-      SaveDialog1.Filename := '*.clb';
-      if (SaveDialog1.Execute) then
+      if UpperCase(ExtractFileExt(SaveDialog1.Filename)) = '.CLB' then
       begin
-        if UpperCase(ExtractFileExt(SaveDialog1.Filename)) = '.CLB' then
-        begin
-          Application.ProcessMessages;
-          Randomize;
-          RandomPerm;
-          try
-            AssignFile(outfile, SaveDialog1.Filename);
-            { File selected in dialog box }
-            Rewrite(outfile);
-            Writeln(outfile, 'Cloud Base V1.0');
-            for i := 0 to 255 do
-              Writeln(outfile, inttostr(aPERM[i]));
-          finally
-            CloseFile(outfile);
-          end;
-          Label61.Caption := 'Done';
-          MakeAndSaveCloudNoiseFile.Caption := '';
+        Application.ProcessMessages;
+        Randomize();
+        RandomPerm();
+        try
+          AssignFile(outfile, SaveDialog1.Filename);
+          // File selected in dialog box
+          Rewrite(outfile);
+          Writeln(outfile, 'Cloud Base V1.0');
+          for i := 0 to 255 do
+            Writeln(outfile, IntToStr(aPERM[i]));
+        finally
+          CloseFile(outfile);
         end;
+        Label61.Caption := 'Done';
+        MakeAndSaveCloudNoiseFile.Caption := '';
       end;
     end;
+  end;
 
 end.

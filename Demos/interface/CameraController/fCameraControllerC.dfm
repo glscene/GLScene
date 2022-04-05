@@ -10,11 +10,9 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnClose = FormClose
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 304
@@ -628,10 +626,10 @@ object Form1: TForm1
       AutoSize = False
       Caption = 
         'The main method, SafeOrbitAndZoomToPos, resambles the Google Ear' +
-        'th "Fly to..." motion. I developed and used it to fly to differe' +
-        'nt views of a car (hood, trunk etc) in 3DCar(TM), which probably' +
-        ' was/is the first interactive 3D car configurator, released by B' +
-        'luemind Software.'
+        'th "Fly to..." motion. It was developed and used it to fly to di' +
+        'fferent views of a car (hood, trunk etc) in 3DCar(TM), which pro' +
+        'bably was/is the first interactive 3D car configurator, released' +
+        ' by Bluemind Software.'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11

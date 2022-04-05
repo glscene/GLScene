@@ -56,24 +56,14 @@ __published:	// IDE-managed Components
 
 
 private:	// User declarations
-	TOctreeSpacePartition *Octree;
+	TGLOctreeSpacePartition *Octree;
 	void __fastcall CreateBox();
 	void __fastcall VerifySpacialMisc();
 	void __fastcall RenderAABB(TAABB* AABB, float w, float r, float g, float b);
-	void __fastcall RenderOctreeNode(TSectorNode* Node);
+	void __fastcall RenderOctreeNode(TGLSectorNode* Node);
 
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
-};
-
-class TGLSpacePartitionLeaf : public TSpacePartitionLeaf
-{
-__published:	// IDE-managed Components
-	TGLBaseSceneObject *GLBaseSceneObject;
-	void __fastcall UpdateCachedAABBAndBSphere(); //override;
-	virtual __fastcall CreateGLOwned(TBaseSpacePartition *SpacePartition, TGLBaseSceneObject *aGLBaseSceneObject);
-private:	// User declarations
-	TAffineVector Direction;
 };
 
 //---------------------------------------------------------------------------

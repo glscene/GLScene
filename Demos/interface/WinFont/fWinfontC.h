@@ -20,7 +20,7 @@
 #include "GLS.GeomObjects.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.WindowsFont.hpp"
-#include "Unit2.h"
+#include "fWintextureC.h"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

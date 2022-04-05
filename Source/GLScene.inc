@@ -2,19 +2,17 @@
 // The graphics rendering engine GLScene http://glscene.org
 //
 
-(* Include File for GLScene *)
-
 {$DEFINE GLSCENE}
 
 //
 // Additionnal support & dependencies
 //
 
-// Activate support for Graphics32 library
+// Activate support Graphics32 library
 // Can be found at https://github.com/graphics32
 {.$DEFINE USE_GRAPHICS32}
 
-// Activate support for FastMath library
+// Activate support FastMath library
 // Use https://github.com/neslib/FastMath
 {.$DEFINE USE_FASTMATH}
 
@@ -50,33 +48,12 @@
 // Activate support of Windows
 {$DEFINE MSWINDOWS}
 
-// Activate support of Linux
-{.$DEFINE LINUX}
-
-// Activate support of Mac OS
-{.$DEFINE MACOS}
-
-// Activate support of iOS
-{.$DEFINE iOS}
-
-// Activate support of Android
-{.$DEFINE ANDROID}
-
-// Activate support X Window System
-{.$DEFINE X11_SUPPORT}
-
-// Activate OpenGL ES
-{.$DEFINE OPENGL_ES}
 
 //
 // Platform Specific
 //
 
-// by default, GLX is not supported on windows, although windows implementations
-// do exist
 {$IFDEF MSWINDOWS}
-  {$UNDEF SUPPORT_GLX}
-  {$UNDEF X11_SUPPORT}
   {$DEFINE SUPPORT_WGL}
 {$ENDIF}
 

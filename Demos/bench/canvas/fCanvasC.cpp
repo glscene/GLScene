@@ -154,7 +154,8 @@ void __fastcall TForm1::GLDirectOpenGL1Render(TObject *Sender, TGLRenderContextI
 			   Color = Random(256*256*256);
 			   x = Random(256);
 			   y = Random(256);
-///	?   WindowsBitmapFont->TextOutW(rci, x, y, "Hello", Color);
+//	   WindowsBitmapFont->TextOut(rci, x, y, "Hello", Color);
+
 			}
 		 }
 	  case wArcs :

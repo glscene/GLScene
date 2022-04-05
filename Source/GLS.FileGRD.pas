@@ -1,10 +1,9 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.FileGRD;
 
-(* GRD (Grid Text Format) vector file format implementation *)
+(* GRD (Grid Format) text and binary vector file format implementation *)
 
 interface
 

@@ -14,9 +14,8 @@ unit GLS.Tree;
   it makes a small branch inside the tree, for higher values
   much more branches and leaves are created, so either use it
   with low depth, or set it to zero, and have two-branched tree.
-  Default : 0.5
-  "AutoRebuild" flag -
-  Rebuild tree after property change.
+  Default value: 0.5
+  "AutoRebuild" flag - Rebuild tree after property change.
   Default: True
 *)
 
@@ -29,7 +28,7 @@ uses
   System.Classes,
   System.SysUtils,
   System.Math,
-  
+
   GLS.OpenGLTokens,
   GLS.Scene,
   GLS.State,

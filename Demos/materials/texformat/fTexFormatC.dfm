@@ -2,100 +2,143 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Texture Formats'
-  ClientHeight = 299
-  ClientWidth = 536
+  ClientHeight = 374
+  ClientWidth = 670
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
   OnResize = FormResize
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 17
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 328
-    Height = 299
+    Width = 410
+    Height = 374
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Camera = GLCamera1
     AfterRender = GLSceneViewer1AfterRender
-    FieldOfView = 179.233505249023400000
+    FieldOfView = 179.387222290039100000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 328
+    Left = 410
     Top = 0
-    Width = 208
-    Height = 299
+    Width = 260
+    Height = 374
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alRight
     BevelOuter = bvLowered
     TabOrder = 1
     object Label2: TLabel
-      Left = 16
-      Top = 100
-      Width = 34
-      Height = 13
+      Left = 20
+      Top = 125
+      Width = 44
+      Height = 17
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Format'
     end
     object Label3: TLabel
-      Left = 16
-      Top = 132
-      Width = 61
-      Height = 13
+      Left = 20
+      Top = 165
+      Width = 79
+      Height = 17
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Compression'
     end
     object Label4: TLabel
-      Left = 16
-      Top = 36
-      Width = 30
-      Height = 13
+      Left = 20
+      Top = 45
+      Width = 38
+      Height = 17
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Image'
     end
     object LAPicSize: TLabel
-      Left = 88
-      Top = 64
-      Width = 44
-      Height = 13
+      Left = 110
+      Top = 80
+      Width = 55
+      Height = 17
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'LAPicSize'
     end
     object Label5: TLabel
-      Left = 16
-      Top = 224
-      Width = 57
-      Height = 13
+      Left = 20
+      Top = 280
+      Width = 71
+      Height = 17
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Render Size'
     end
     object LAUsedMemory: TLabel
-      Left = 16
-      Top = 180
-      Width = 65
-      Height = 13
+      Left = 20
+      Top = 225
+      Width = 84
+      Height = 17
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Used Memory'
     end
     object LARGB32: TLabel
-      Left = 16
-      Top = 164
-      Width = 65
-      Height = 13
+      Left = 20
+      Top = 205
+      Width = 84
+      Height = 17
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Used Memory'
     end
     object LACompression: TLabel
-      Left = 16
-      Top = 196
-      Width = 65
-      Height = 13
+      Left = 20
+      Top = 245
+      Width = 84
+      Height = 17
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Used Memory'
     end
     object CBFormat: TComboBox
-      Left = 88
-      Top = 96
-      Width = 105
-      Height = 21
+      Left = 110
+      Top = 120
+      Width = 131
+      Height = 25
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Style = csDropDownList
       TabOrder = 0
       OnChange = CBFormatChange
@@ -106,10 +149,14 @@ object Form1: TForm1
         'RGBA  (16 bits)')
     end
     object CBCompression: TComboBox
-      Left = 88
-      Top = 128
-      Width = 105
-      Height = 21
+      Left = 110
+      Top = 160
+      Width = 131
+      Height = 25
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Style = csDropDownList
       TabOrder = 1
       OnChange = CBCompressionChange
@@ -120,19 +167,27 @@ object Form1: TForm1
         'Fastest')
     end
     object CBImage: TComboBox
-      Left = 88
-      Top = 32
-      Width = 105
-      Height = 21
+      Left = 110
+      Top = 40
+      Width = 131
+      Height = 25
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Style = csDropDownList
       TabOrder = 2
       OnChange = CBImageChange
     end
     object RBDefault: TRadioButton
-      Left = 88
-      Top = 222
-      Width = 57
-      Height = 17
+      Left = 110
+      Top = 278
+      Width = 71
+      Height = 21
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = '100 %'
       Checked = True
       TabOrder = 3
@@ -140,19 +195,27 @@ object Form1: TForm1
       OnClick = RBDefaultClick
     end
     object RBDouble: TRadioButton
-      Left = 87
-      Top = 246
-      Width = 58
-      Height = 17
+      Left = 109
+      Top = 308
+      Width = 72
+      Height = 21
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = '200 %'
       TabOrder = 4
       OnClick = RBDoubleClick
     end
     object RBQuad: TRadioButton
-      Left = 87
-      Top = 270
-      Width = 58
-      Height = 17
+      Left = 109
+      Top = 338
+      Width = 72
+      Height = 21
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = '400 %'
       TabOrder = 5
       OnClick = RBQuadClick

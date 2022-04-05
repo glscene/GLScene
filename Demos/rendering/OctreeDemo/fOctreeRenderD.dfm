@@ -2,32 +2,27 @@ object frmOctreeDemo: TfrmOctreeDemo
   Left = 309
   Top = 207
   Caption = 'Octree Demo'
-  ClientHeight = 691
-  ClientWidth = 963
+  ClientHeight = 553
+  ClientWidth = 770
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 101
-    Width = 963
-    Height = 590
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 81
+    Width = 770
+    Height = 472
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
     Buffer.FaceCulling = False
-    FieldOfView = 151.470977783203100000
+    FieldOfView = 144.739837646484400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -35,80 +30,55 @@ object frmOctreeDemo: TfrmOctreeDemo
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 963
-    Height = 101
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 770
+    Height = 81
     Align = alTop
     TabOrder = 1
     DesignSize = (
-      963
-      101)
+      770
+      81)
     object Label3: TLabel
-      Left = 20
-      Top = 10
-      Width = 90
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 8
+      Width = 71
+      Height = 13
       Caption = 'Leaf Threshold'
     end
     object Label2: TLabel
-      Left = 150
-      Top = 10
-      Width = 482
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 120
+      Top = 8
+      Width = 388
+      Height = 13
       Caption = 
         '(Green = Colliding with other object, Red = inside query box/sph' +
         'ere, Yellow = both)'
     end
     object LabelCollisions: TLabel
-      Left = 655
-      Top = 43
-      Width = 58
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 527
+      Top = 34
+      Width = 43
+      Height = 13
       Alignment = taRightJustify
       Anchors = [akTop, akRight]
       Caption = 'Collisions'
     end
     object TrackBar_LeafThreshold: TTrackBar
-      Left = 10
-      Top = 30
-      Width = 188
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 24
+      Width = 150
+      Height = 25
       Max = 20
       Min = 3
       Position = 10
       TabOrder = 0
-      ThumbLength = 25
       TickStyle = tsNone
       OnChange = TrackBar_LeafThresholdChange
     end
     object Button_ResetOctreeSize: TButton
-      Left = 340
-      Top = 34
-      Width = 131
-      Height = 26
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 272
+      Top = 27
+      Width = 105
+      Height = 21
       Caption = 'Reset Octree Size'
       TabOrder = 1
       OnClick = Button_ResetOctreeSizeClick

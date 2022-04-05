@@ -33,7 +33,7 @@ void __fastcall TFormTorqueC::FormCreate(TObject* Sender)
     GetOrCreateInertia(Hexahedron->Behaviours)->RotationDamping->Constant = 1;
     GetOrCreateInertia(Hexahedron->Behaviours)->RotationDamping->Linear = 1;
     GetOrCreateInertia(Hexahedron->Behaviours)->RotationDamping->Quadratic = 0;
-    // ...using helper function on the TGLBehaviours...
+	// ...using helper function on the TGLBehaviours...
     GetOrCreateInertia(Dodecahedron->Behaviours)
         ->RotationDamping->SetDamping(10, 0, 0.01);
     // ...or using helper function directly on the TGLBaseSceneObject
@@ -71,4 +71,5 @@ void __fastcall TFormTorqueC::CheckBox1Click(TObject* Sender)
         GetOrCreateInertia(DummyCube1->Children[i])->Mass = mass;
 }
 //---------------------------------------------------------------------------
+
 

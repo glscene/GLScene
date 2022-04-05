@@ -90,17 +90,18 @@ begin
   Bench;
 end;
 
-procedure TFormCanvas.BUArcClick(Sender: TObject);
-begin
-  vWhat := wArcs;
-  Bench;
-end;
 
 procedure TFormCanvas.BUEllipsesClick(Sender: TObject);
 begin
   vWhat := wEllipses;
   Bench;
 end;
+procedure TFormCanvas.BUArcClick(Sender: TObject);
+begin
+  vWhat := wArcs;
+  Bench;
+end;
+
 
 procedure TFormCanvas.BURectsClick(Sender: TObject);
 begin

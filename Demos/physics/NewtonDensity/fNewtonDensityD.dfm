@@ -2,43 +2,34 @@ object FormNewtonDensity: TFormNewtonDensity
   Left = 0
   Top = 0
   Caption = 'Density'
-  ClientHeight = 498
-  ClientWidth = 715
+  ClientHeight = 398
+  ClientWidth = 572
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 715
-    Height = 498
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 572
+    Height = 398
     Camera = GLCamera1
-    FieldOfView = 157.291641235351600000
+    FieldOfView = 151.792068481445300000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     TabOrder = 0
   end
   object SpinEdit1: TSpinEdit
-    Left = 20
-    Top = 129
-    Width = 94
-    Height = 27
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 16
+    Top = 103
+    Width = 75
+    Height = 21
     EditorEnabled = False
     MaxValue = 20
     MinValue = 0
@@ -46,14 +37,10 @@ object FormNewtonDensity: TFormNewtonDensity
     Value = 1
   end
   object SpinEdit2: TSpinEdit
-    Left = 20
-    Top = 199
-    Width = 94
-    Height = 27
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 16
+    Top = 159
+    Width = 75
+    Height = 21
     EditorEnabled = False
     MaxValue = 10
     MinValue = 0
@@ -61,14 +48,10 @@ object FormNewtonDensity: TFormNewtonDensity
     Value = 1
   end
   object SpinEdit3: TSpinEdit
-    Left = 20
-    Top = 269
-    Width = 94
-    Height = 27
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 16
+    Top = 215
+    Width = 75
+    Height = 21
     EditorEnabled = False
     MaxValue = 10
     MinValue = 0

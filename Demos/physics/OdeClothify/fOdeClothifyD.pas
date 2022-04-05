@@ -127,7 +127,7 @@ type
     ODESphere: PdxGeom;
     body: PdxBody;
     contactgroup: TdJointGroupID;
-    VCSphere: TGLVerletFrictionSphere;
+    VerletSphere: TGLVerletFrictionSphere;
   end;
 
 procedure RecalcMeshNormals(BaseMesh: TGLBaseMesh);
@@ -140,6 +140,7 @@ implementation
 
 {$R *.dfm}
 
+//-----------------------------------------------------------------
 procedure TFormClothify.FormCreate(Sender: TObject);
 begin
   SetGLSceneMediaDir();
@@ -152,6 +153,7 @@ begin
   GLShadowVolume1.Occluders.AddCaster(GLActor1);
 end;
 
+//-----------------------------------------------------------------
 procedure PrepareMeshForNormalsRecalc(BaseMesh: TGLBaseMesh);
 var
   i, j, k: Integer;
@@ -179,6 +181,7 @@ begin
   BaseMesh.StructureChanged;
 end;
 
+//-----------------------------------------------------------------
 procedure RecalcMeshNormals(BaseMesh: TGLBaseMesh);
 var
   i, j, k: Integer;
@@ -215,10 +218,10 @@ begin
     end;
     mo.Normals.Normalize;
   end;
-
   BaseMesh.StructureChanged;
 end;
 
+//----------------------------------------------------------------------
 procedure TFormClothify.Button_LoadMeshClick(Sender: TObject);
 var
   Floor: TGLVerletFloor;
@@ -282,7 +285,7 @@ begin
 
   s := ComboBox_MeshName.Items[MaxInteger(ComboBox_MeshName.ItemIndex, 0)];
 
-  System.SysUtils.FormatSettings.DecimalSeparator := '.';
+  FormatSettings.DecimalSeparator := '.';
 
   p := Pos(',', s);
   if p > 0 then
@@ -365,9 +368,9 @@ begin
 
   if GLSphere1.Visible then
   begin
-    VCSphere := TGLVerletFrictionSphere.Create(VerletWorld);
-    VCSphere.Radius := GLSphere1.Radius * ColliderGravy;
-    VCSphere.Location := AffineVectorMake(GLSphere1.AbsolutePosition);
+    VerletSphere := TGLVerletFrictionSphere.Create(VerletWorld);
+    VerletSphere.Radius := GLSphere1.Radius * ColliderGravy;
+    VerletSphere.Location := AffineVectorMake(GLSphere1.AbsolutePosition);
   end;
 
   if GLCube1.Visible then
@@ -469,32 +472,31 @@ begin
   end;
 end;
 
+//-------------------------------------------------------------
 procedure TFormClothify.GLCadencer1Progress(Sender: TObject;
   const deltaTime, newTime: Double);
 begin
-
-  { if CheckBox_Pause.Checked then
+  (* if CheckBox_Pause.Checked then
     VerletWorld.SimTime := newTime
-    else// }
+    else// *)
   begin
     if world <> nil then
     begin
       PositionSceneObjectForGeom(ODESphere);
-      VCSphere.Location := GLSphere1.Position.AsAffineVector;
-      dBodyAddForce(dGeomGetBody(ODESphere), VCSphere.KickbackForce.X,
-        VCSphere.KickbackForce.Y, VCSphere.KickbackForce.Z);
+      VerletSphere.Location := GLSphere1.Position.AsAffineVector;
+      dBodyAddForce(dGeomGetBody(ODESphere), VerletSphere.KickbackForce.X,
+        VerletSphere.KickbackForce.Y, VerletSphere.KickbackForce.Z);
       dSpaceCollide(space, nil, nearCallback);
       dWorldStep(world, VerletWorld.MaxDeltaTime);
       dJointGroupEmpty(contactgroup);
     end;
 
     VerletWorld.Progress(VerletWorld.MaxDeltaTime, newTime);
-
     RecalcMeshNormals(GLActor1);
-
   end;
 end;
 
+//----------------------------------------------------------------
 procedure TFormClothify.Timer1Timer(Sender: TObject);
 begin
   Label1.Caption := Format('%2.1f FPS', [GLSceneViewer1.FramesPerSecond]);
@@ -524,6 +526,7 @@ begin
   Label6.Caption := Format('Iterations %d', [TrackBar_Iterations.Position]);
 end;
 
+//-----------------------------------------------------------------------
 procedure TFormClothify.FormMouseWheel(Sender: TObject; Shift: TShiftState;
   WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
 begin
@@ -540,40 +543,41 @@ begin
         .FrictionRatio := TrackBar_Friction.Position / 100;
 end;
 
+//------------------------------------------------------------------
 procedure TFormClothify.GLDirectOpenGL1Render(Sender: TObject;
   var rci: TGLRenderContextInfo);
   procedure RenderAABB(AABB: TAABB; w, r, g, b: single);
   begin
-    GL.Color3f(r, g, b);
+    glColor3f(r, g, b);
     rci.GLStates.LineWidth := w;
 
-    GL.Begin_(GL_LINE_STRIP);
-    GL.Vertex3f(AABB.min.X, AABB.min.Y, AABB.min.Z);
-    GL.Vertex3f(AABB.min.X, AABB.max.Y, AABB.min.Z);
-    GL.Vertex3f(AABB.max.X, AABB.max.Y, AABB.min.Z);
-    GL.Vertex3f(AABB.max.X, AABB.min.Y, AABB.min.Z);
-    GL.Vertex3f(AABB.min.X, AABB.min.Y, AABB.min.Z);
+    glBegin(GL_LINE_STRIP);
+    glVertex3f(AABB.min.X, AABB.min.Y, AABB.min.Z);
+    glVertex3f(AABB.min.X, AABB.max.Y, AABB.min.Z);
+    glVertex3f(AABB.max.X, AABB.max.Y, AABB.min.Z);
+    glVertex3f(AABB.max.X, AABB.min.Y, AABB.min.Z);
+    glVertex3f(AABB.min.X, AABB.min.Y, AABB.min.Z);
 
-    GL.Vertex3f(AABB.min.X, AABB.min.Y, AABB.max.Z);
-    GL.Vertex3f(AABB.min.X, AABB.max.Y, AABB.max.Z);
-    GL.Vertex3f(AABB.max.X, AABB.max.Y, AABB.max.Z);
-    GL.Vertex3f(AABB.max.X, AABB.min.Y, AABB.max.Z);
-    GL.Vertex3f(AABB.min.X, AABB.min.Y, AABB.max.Z);
-    GL.End_;
+    glVertex3f(AABB.min.X, AABB.min.Y, AABB.max.Z);
+    glVertex3f(AABB.min.X, AABB.max.Y, AABB.max.Z);
+    glVertex3f(AABB.max.X, AABB.max.Y, AABB.max.Z);
+    glVertex3f(AABB.max.X, AABB.min.Y, AABB.max.Z);
+    glVertex3f(AABB.min.X, AABB.min.Y, AABB.max.Z);
+    glEnd;
 
-    GL.Begin_(GL_LINES);
-    GL.Vertex3f(AABB.min.X, AABB.max.Y, AABB.min.Z);
-    GL.Vertex3f(AABB.min.X, AABB.max.Y, AABB.max.Z);
+    glBegin(GL_LINES);
+    glVertex3f(AABB.min.X, AABB.max.Y, AABB.min.Z);
+    glVertex3f(AABB.min.X, AABB.max.Y, AABB.max.Z);
 
-    GL.Vertex3f(AABB.max.X, AABB.max.Y, AABB.min.Z);
-    GL.Vertex3f(AABB.max.X, AABB.max.Y, AABB.max.Z);
+    glVertex3f(AABB.max.X, AABB.max.Y, AABB.min.Z);
+    glVertex3f(AABB.max.X, AABB.max.Y, AABB.max.Z);
 
-    GL.Vertex3f(AABB.max.X, AABB.min.Y, AABB.min.Z);
-    GL.Vertex3f(AABB.max.X, AABB.min.Y, AABB.max.Z);
-    GL.End_;
+    glVertex3f(AABB.max.X, AABB.min.Y, AABB.min.Z);
+    glVertex3f(AABB.max.X, AABB.min.Y, AABB.max.Z);
+    glEnd;
   end;
 
-  procedure RenderOctreeNode(Node: TSectorNode);
+  procedure RenderOctreeNode(Node: TGLSectorNode);
   var
     i: Integer;
     AABB: TAABB;
@@ -597,17 +601,18 @@ procedure TFormClothify.GLDirectOpenGL1Render(Sender: TObject;
 
 begin
   if CheckBox_ShowOctree.Checked and
-    (VerletWorld.SpacePartition is TOctreeSpacePartition) then
+    (VerletWorld.SpacePartition is TGLOctreeSpacePartition) then
   begin
     rci.GLStates.PushAttrib([sttEnable, sttCurrent, sttLine, sttColorBuffer]);
     rci.GLStates.Disable(stLighting);
 
-    RenderOctreeNode(TOctreeSpacePartition(VerletWorld.SpacePartition)
+    RenderOctreeNode(TGLOctreeSpacePartition(VerletWorld.SpacePartition)
       .RootNode);
     rci.GLStates.PopAttrib;
   end;
 end;
 
+//--------------------------------------------------------------------
 procedure TFormClothify.Button_OpenLoadFormClick(Sender: TObject);
 begin
   GroupBox_LoadForm.Visible := true;
@@ -619,6 +624,7 @@ begin
   GroupBox_LoadForm.Hide;
 end;
 
+//-------------------------------------------------------------------
 procedure TFormClothify.ComboBox_ShadowChange(Sender: TObject);
 begin
   GLShadowVolume1.mode := svmOff;

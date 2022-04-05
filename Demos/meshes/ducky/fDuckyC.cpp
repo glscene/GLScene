@@ -12,7 +12,9 @@
 #pragma resource "*.dfm"
 TForm1 *Form1;
 int mx, my;
+
 //---------------------------------------------------------------------------
+
 __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
 {
   SetGLSceneMediaDir();

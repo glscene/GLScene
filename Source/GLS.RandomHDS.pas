@@ -348,9 +348,9 @@ type
     (* When long computations are running, this property contains the operation
       beeing processed. *)
     property Task: string read FTask;
-    // A value between 0 and 100 indicating the percentage of completion 
+    // A value between 0 and 100 indicating the percentage of completion
     property TaskProgress: integer read FTaskProgress;
-    // Use these boundaries with non-cyclic landscapes to constrain camera movements. 
+    // Use these boundaries with non-cyclic landscapes to constrain camera movements.
     function XMoveBoundary: single;
     function ZMoveBoundary: single;
     // tTerrainRender event handler
@@ -383,7 +383,7 @@ type
     property Roughness: single read fRoughness write SetRoughness;
   end;
 
-  (* TMapOfLandscapes	:array of array of TGLBaseRandomHDS; *)
+  // TMapOfLandscapes: array of array of TGLBaseRandomHDS;
 
   TGLLandTile = TGLCustomRandomHDS;
 
@@ -394,7 +394,7 @@ type
   TIsDefaultTile =  function(X, Z: integer): boolean of object;
 
   TGLTiledRndLandscape = class(TGLBaseRandomHDS)
-  private 
+  private
     FLandTileComputing: boolean; // Is a landtile being computed?
     FExtentX: integer;
     FExtentZ: integer;
@@ -439,16 +439,18 @@ type
     procedure ComputeLandTile(const aX, aZ: integer; var NewLandTile: TGLLandTile); virtual;
     procedure CyclicClamp(var x, z: single); overload;
     procedure CyclicClamp(var x, z: integer); overload;
-    // tTerrainRenderer event handler
+    // TGLTerrainRenderer event handler
     procedure GetTerrainBounds(var l, t, r, b: single);
     function LandTileSeed(x, z: integer): integer;
     property OnCreateDefaultTile: TStartPreparingDataEvent read fOnCreateDefaultTile write SetOnCreateDefaultTile;
     procedure SetCyclic(const Value: boolean); override;
     // This procedure MUST be called by the descendent of TGLRandomArchipelago
     procedure SetSize(const aSize: integer);
+    // Sort landtiles from the closest to the farthest
     function fSortLandscapes(Item1, Item2: Pointer): integer;
-    // procedure PrepareLandTileData(HeightData:tHeightData; LandTile:tLandTile);
-    (* tTerrainRender event handler *)
+    // Preparing Land Tile Data
+    procedure PrepareLandTileData(HeightData: TGLHeightData; LandTile: TGLLandTile);
+    (* Terrain Render event handler *)
     procedure SetTerrainRenderer(const Value: TGLTerrainRenderer); override;
   public
     procedure ApplyLighting(var aLandTile: TGLLandTile);
@@ -464,25 +466,25 @@ type
     procedure ConstrainCoordinates(var x, z: integer); overload;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    // Compute the landtile containing (x,z) 
+    // Compute the landtile containing (x,z)
     procedure FindLandTile(const x, z: single; var TileX, TileZ: integer);
-    // Build the first landtile and position the camera. Must be called first. 
+    // Build the first landtile and position the camera. Must be called first.
     procedure Initialize(const aX, aZ: single); virtual;
     (* User-supplied function determining if this landtile will be built by the
       OnCreateDefaultTile or if a landscape will be generated. *)
     property IsDefaultTile: TIsDefaultTile read FIsDefaultTile write SetIsDefaultTile;
-    // Number of landtile in memory 
+    // Number of landtile in memory
     function LandtileCount: integer;
-    // Size of a landtile. Must be a power of two 
+    // Size of a landtile. Must be a power of two
     property LandTileSize: integer read fLandTileSize;
     (* User-specified event handler containing the particular code for tile generation *)
     property OnCreateLandTile: TOnCreateLandTile read fOnCreateLandTile write SetOnCreateLandTile;
     (* When long computations are running, this property contains the operation
       beeing processed. *)
     property Task: string read GetTask;
-    // A value between 0 and 100 indicating the percentage of completion 
+    // A value between 0 and 100 indicating the percentage of completion
     property TaskProgress: integer read GetTaskProgress;
-    // Distance between two landtiles 
+    // Distance between two landtiles
     function TileDistance(const x1, z1, x2, z2: integer): single;
     (* Square of distance between two landtiles. Use this function to compare
       two distances. *)
@@ -531,7 +533,7 @@ type
     (* PostRender event handler drawing a static water plane between islands
       Code borrowed from Eric's Archipelago GLScene advanced demo *)
     procedure FPostRenderSeaStatic(var rci: TGLRenderContextInfo; var HeightDatas: TList);
-    // Sea with waves. Borrowed from GLS Archipelago advanced demo 
+    // Sea with waves. Borrowed from GLS Archipelago advanced demo
     procedure FPostRenderSeaDynamic(var rci: TGLRenderContextInfo; var HeightDatas: TList);
     procedure SetIslandDensity(const Value: single);
     procedure SetDepth(const Value: integer);
@@ -559,7 +561,7 @@ type
     (* A wrapper for LandtileDensity. This is the probabilty for a landtile to
       contain an island. *)
     property IslandDensity: single read GetIslandDensity write SetIslandDensity;
-    // Ranges for the roughness parameter in the fractal algorithm 
+    // Ranges for the roughness parameter in the fractal algorithm
     property RoughnessMax: single read FRoughnessMax write SetRoughnessMax;
     property RoughnessMin: single read FRoughnessMin write SetRoughnessMin;
     // If true, the sea will show dynamic waves. Slow.
@@ -567,7 +569,7 @@ type
     (* Reference to a material in the TerrainRenderer's material library. This
       material will be used to drape the water plane. *)
     property SeaMaterialName: string read FSeaMaterialName write SetSeaMaterialName;
-    // Size of the waves 
+    // Size of the waves
     property WaveAmplitude: single read FWaveAmplitude write SetWaveAmplitude;
     property WaveSpeed: single read FWaveSpeed write SetWaveSpeed;
   end;
@@ -584,6 +586,8 @@ function TextureDarkGray(const x, y: integer): TGLColorVector;
 function TextureWhite(const x, y: integer): TGLColorVector;
 
 (* Random HDS functions *)
+(* Fractal algorithm based on the middle-point displacement method. It is built in
+  a way that it can be juxtaposed seamlessly to itself (cyclic boundaries) *)
 procedure FractalMiddlePointHDS(const aDepth, aSeed, aAmplitude: integer; const aRoughness: single; aCyclic: boolean;
   var z: TMapOfSingle; var MinZ, MaxZ: single);
 procedure InitializeRandomGenerator(const Seed: integer);
@@ -599,7 +603,7 @@ const
 implementation
 // ==========================================================================
 
-const // Neighbourhood vectors and weight 
+const // Neighbourhood vectors and weight
   NeighX: array [0 .. 8] of integer = (-1, 0, 1, 1, 1, 0, -1, -1, 0);
   NeighY: array [0 .. 8] of integer = (-1, -1, -1, 0, 1, 1, 1, 0, 0);
   NeighW: array [0 .. 8] of single = (1 / 1.4142, 1, 1 / 1.4142, 1, 1 / 1.4142, 1, 1 / 1.4142, 1, 2);
@@ -2204,8 +2208,9 @@ begin
   FIntegerConstrain(TileX, TileZ);
 end;
 
+// Sorting Landscape
+//
 function TGLTiledRndLandscape.fSortLandscapes(Item1, Item2: Pointer): integer;
-{ Sort landtiles from the closest to the farthest }
 var
   x, z: integer;
   d1, d2: single;
@@ -2290,6 +2295,7 @@ begin
 end;
 
 // Generates a unique seed from the tile coordinates
+//
 function TGLTiledRndLandscape.LandTileSeed(x, z: integer): integer;
 begin
   Result := fBaseSeed + z * ExtentX + x;
@@ -2300,38 +2306,53 @@ begin
   Result := fLandTiles.Count;
 end;
 
-(* procedure TGLTiledRndLandscape.PrepareLandTileData(HeightData: tHeightData;
-  LandTile: tLandTile);
-  var
-  x,y,x0,y0	:integer;
-  rasterLine	:GLS.HeightData.PSingleArray;
-  oldType 	:THeightDataType;
+// Preparing Land Tile Data
+//
+procedure TGLTiledRndLandscape.PrepareLandTileData(HeightData: TGLHeightData;
+  LandTile: TGLLandTile);
+var
+  x, y, x0, y0: integer;
+  rasterLine: PFloatArray;
+  oldType: TGLHeightDataType;
+begin
+  with HeightData do
   begin
-  with HeightData do begin
-  DataState:=hdsPreparing;
-  oldType:=DataType;
-  Allocate(hdtSingle);
+    DataState := hdsPreparing;
+    oldType := DataType;
+    Allocate(hdtSingle);
 
-  if XLeft>=0 then x0:=XLeft mod (fLandTileSize) else x0:=(fLandTileSize+(XLeft mod (fLandTileSize)))mod (fLandTileSize);
-  if YTop>=0 then y0:=YTop mod (fLandTileSize) else y0:=(fLandTileSize+(YTop mod (fLandTileSize)))mod (fLandTileSize);
+    if XLeft >= 0 then
+      x0 := XLeft mod (fLandTileSize)
+    else
+      x0 := (fLandTileSize + (XLeft mod (fLandTileSize))) mod (fLandTileSize);
+    if YTop >= 0 then
+      y0 := YTop mod (fLandTileSize)
+    else
+      y0 := (fLandTileSize + (YTop mod (fLandTileSize))) mod (fLandTileSize);
 
-  MaterialName:=Format('%s%d%d',[LandTile.Name,x0 div fTerrainRenderer.TileSize,
-  y0 div fTerrainRenderer.TileSize]);
-  TextureCoordinatesMode:=tcmLocal;
-  TextureCoordinatesScale:=TexPointMake((fLandTileSize)/(Size),
-  (fLandTileSize)/(Size));
-  for y:=y0 to y0+heightData.Size-1 do begin
-  rasterLine:=singleRaster[y-y0];
-  for x:=x0 to x0+heightData.Size-1 do begin
-  rasterLine[x-x0]:=LandTile.fHeight[x,y];
-  end;//for
-  end;//for
+    MaterialName := Format('%s%d%d',
+      [LandTile.Name, x0 div FTerrainRenderer.TileSize,
+      y0 div FTerrainRenderer.TileSize]);
+    TextureCoordinatesMode := tcmLocal;
+    TextureCoordinatesScale := TexPointMake((fLandTileSize) / (Size),
+      (fLandTileSize) / (Size));
+    for y := y0 to y0 + HeightData.Size - 1 do
+    begin
+      rasterLine := singleRaster[y - y0];
+      for x := x0 to x0 + HeightData.Size - 1 do
+      begin
+        rasterLine[x - x0] := LandTile.FHeight[x, y];
+      end; // for
+    end; // for
 
-  DataState:=hdsReady;
-  if oldType<>hdtSingle then DataType:=oldType;
-  end;//with
-  end; *)
+    DataState := hdsReady;
+    if oldType <> hdtSingle then
+      DataType := oldType;
+  end; // with
+end;
 
+// Set Camera
+//
 procedure TGLTiledRndLandscape.SetCamera(const Value: TGLCamera);
 begin
   FCamera := Value;
@@ -2657,8 +2678,10 @@ begin
   end; // with
 end;
 
+//
+// Code borrowed from Archipelago advanced demo
+//
 procedure TGLFractalArchipelago.FPostRenderSeaDynamic(var rci: TGLRenderContextInfo; var HeightDatas: TList);
-// Code borrowed from Eric's Archipelago GLScene advanced demo
 var
   i, x, y, s, s2: integer;
   t: single;
@@ -2816,7 +2839,7 @@ begin
     gl.StencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
     gl.PopAttrib;
     // if not WasAboveWater then InverTGLFrontFace;
-    // WaterPolyCount:=heightDatas.Count*8;
+    // WaterPolyCount := heightDatas.Count*8;
   until not FTerrainRenderer.MaterialLibrary.UnApplyMaterial(rci);
 end;
 
@@ -2889,10 +2912,8 @@ end;
 (***************************************************************
  *******              RANDOM HDS ALGORITHMS             ********
  ***************************************************************)
-
-(* Fractal algorithm based on the middle-point displacement method. It is built in
-  a way that it can be juxtaposed seamlessly to itself (cyclic boundaries) *)
-procedure FractalMiddlePointHDS(const aDepth, aSeed, aAmplitude: integer; const aRoughness: single; aCyclic: boolean;
+procedure FractalMiddlePointHDS(const aDepth, aSeed, aAmplitude: integer;
+  const aRoughness: single; aCyclic: boolean;
   var z: TMapOfSingle; var MinZ, MaxZ: single);
 var
   iter, Stp, stp2: integer;
@@ -3067,7 +3088,6 @@ end;
 (***************************************************************
  *******              PREDEFINED HEIGHT-FIELD           ********
  ***************************************************************)
-
 procedure PrimerNull(var z: TMapOfSingle);
 // Empty field
 var

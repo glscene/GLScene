@@ -39,7 +39,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
    }
    else
    {
-//	 Pipe1->Nodes->RotateAroundZ(0);
+	 Pipe1->Nodes->RotateAroundZ(0);
 	 Pipe1->Nodes->Items[2]->X = 1*sin(newTime*5);
 	 Pipe1->Radius = 0.2;
    }

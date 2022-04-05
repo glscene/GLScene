@@ -92,6 +92,8 @@ object FormProjection: TFormProjection
         YSamplingScale.Min = -3.000000000000000000
         YSamplingScale.Max = 3.000000000000000000
         YSamplingScale.Step = 0.500000000000000000
+        ZSamplingScale.Min = -3.000000000000000000
+        ZSamplingScale.Max = 3.000000000000000000
         ZSamplingScale.Step = 0.100000001490116100
       end
     end

@@ -3,94 +3,94 @@
         <ProjectGuid>{E9E3BD2F-D698-44A7-A85C-84DEC315027B}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="bmpfont\BmpfontD.dproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="bmpfont\BmpfontC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="camera\CameraD.dproj">
+        <Projects Include="bmpfont\BmpfontD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="camera\CameraC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="CameraController\CameraControllerD.dproj">
+        <Projects Include="camera\CameraD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="CameraController\CameraControllerC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Console\ConsoleD.dproj">
+        <Projects Include="CameraController\CameraControllerD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Console\ConsoleC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="cursor\CursorD.dproj">
+        <Projects Include="Console\ConsoleD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="cursor\CursorC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="fontcolor\FontcolorD.dproj">
+        <Projects Include="cursor\CursorD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="fontcolor\FontColorC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="GameMenu\GameMenuD.dproj">
+        <Projects Include="fontcolor\FontcolorD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="GameMenu\GameMenuC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Gizmo\GizmoD.dproj">
+        <Projects Include="GameMenu\GameMenuD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Gizmo\GizmoC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="GizmoEx\GizmoExD.dproj">
+        <Projects Include="Gizmo\GizmoD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="GizmoEx\GizmoExC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="GuiDemo\GuidemoD.dproj">
+        <Projects Include="GizmoEx\GizmoExD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="GuiDemo\GuiDemoC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="GuiPaint\GuiPaintD.dproj">
+        <Projects Include="GuiDemo\GuidemoD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="GuiPaint\GuiPaintC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="HFPick\HFpickD.dproj">
+        <Projects Include="GuiPaint\GuiPaintD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="HFPick\HFPickC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Pick\PickD.dproj">
+        <Projects Include="HFPick\HFpickD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Pick\PickC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="SimpleNavigation\SimpleNaviD.dproj">
+        <Projects Include="Pick\PickD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="SimpleNavigation\SimpleNaviC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="WinFont\WinfontD.dproj">
+        <Projects Include="SimpleNavigation\SimpleNaviD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="WinFont\WinFontC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="WinFont\WinfontD.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -101,15 +101,6 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="BmpfontD">
-        <MSBuild Projects="bmpfont\BmpfontD.dproj"/>
-    </Target>
-    <Target Name="BmpfontD:Clean">
-        <MSBuild Projects="bmpfont\BmpfontD.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="BmpfontD:Make">
-        <MSBuild Projects="bmpfont\BmpfontD.dproj" Targets="Make"/>
-    </Target>
     <Target Name="BmpfontC">
         <MSBuild Projects="bmpfont\BmpfontC.cbproj"/>
     </Target>
@@ -119,14 +110,14 @@
     <Target Name="BmpfontC:Make">
         <MSBuild Projects="bmpfont\BmpfontC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="CameraD">
-        <MSBuild Projects="camera\CameraD.dproj"/>
+    <Target Name="BmpfontD">
+        <MSBuild Projects="bmpfont\BmpfontD.dproj"/>
     </Target>
-    <Target Name="CameraD:Clean">
-        <MSBuild Projects="camera\CameraD.dproj" Targets="Clean"/>
+    <Target Name="BmpfontD:Clean">
+        <MSBuild Projects="bmpfont\BmpfontD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="CameraD:Make">
-        <MSBuild Projects="camera\CameraD.dproj" Targets="Make"/>
+    <Target Name="BmpfontD:Make">
+        <MSBuild Projects="bmpfont\BmpfontD.dproj" Targets="Make"/>
     </Target>
     <Target Name="CameraC">
         <MSBuild Projects="camera\CameraC.cbproj"/>
@@ -137,14 +128,14 @@
     <Target Name="CameraC:Make">
         <MSBuild Projects="camera\CameraC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="CameraControllerD">
-        <MSBuild Projects="CameraController\CameraControllerD.dproj"/>
+    <Target Name="CameraD">
+        <MSBuild Projects="camera\CameraD.dproj"/>
     </Target>
-    <Target Name="CameraControllerD:Clean">
-        <MSBuild Projects="CameraController\CameraControllerD.dproj" Targets="Clean"/>
+    <Target Name="CameraD:Clean">
+        <MSBuild Projects="camera\CameraD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="CameraControllerD:Make">
-        <MSBuild Projects="CameraController\CameraControllerD.dproj" Targets="Make"/>
+    <Target Name="CameraD:Make">
+        <MSBuild Projects="camera\CameraD.dproj" Targets="Make"/>
     </Target>
     <Target Name="CameraControllerC">
         <MSBuild Projects="CameraController\CameraControllerC.cbproj"/>
@@ -155,14 +146,14 @@
     <Target Name="CameraControllerC:Make">
         <MSBuild Projects="CameraController\CameraControllerC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="ConsoleD">
-        <MSBuild Projects="Console\ConsoleD.dproj"/>
+    <Target Name="CameraControllerD">
+        <MSBuild Projects="CameraController\CameraControllerD.dproj"/>
     </Target>
-    <Target Name="ConsoleD:Clean">
-        <MSBuild Projects="Console\ConsoleD.dproj" Targets="Clean"/>
+    <Target Name="CameraControllerD:Clean">
+        <MSBuild Projects="CameraController\CameraControllerD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="ConsoleD:Make">
-        <MSBuild Projects="Console\ConsoleD.dproj" Targets="Make"/>
+    <Target Name="CameraControllerD:Make">
+        <MSBuild Projects="CameraController\CameraControllerD.dproj" Targets="Make"/>
     </Target>
     <Target Name="ConsoleC">
         <MSBuild Projects="Console\ConsoleC.cbproj"/>
@@ -173,14 +164,14 @@
     <Target Name="ConsoleC:Make">
         <MSBuild Projects="Console\ConsoleC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="CursorD">
-        <MSBuild Projects="cursor\CursorD.dproj"/>
+    <Target Name="ConsoleD">
+        <MSBuild Projects="Console\ConsoleD.dproj"/>
     </Target>
-    <Target Name="CursorD:Clean">
-        <MSBuild Projects="cursor\CursorD.dproj" Targets="Clean"/>
+    <Target Name="ConsoleD:Clean">
+        <MSBuild Projects="Console\ConsoleD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="CursorD:Make">
-        <MSBuild Projects="cursor\CursorD.dproj" Targets="Make"/>
+    <Target Name="ConsoleD:Make">
+        <MSBuild Projects="Console\ConsoleD.dproj" Targets="Make"/>
     </Target>
     <Target Name="CursorC">
         <MSBuild Projects="cursor\CursorC.cbproj"/>
@@ -191,14 +182,14 @@
     <Target Name="CursorC:Make">
         <MSBuild Projects="cursor\CursorC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="FontcolorD">
-        <MSBuild Projects="fontcolor\FontcolorD.dproj"/>
+    <Target Name="CursorD">
+        <MSBuild Projects="cursor\CursorD.dproj"/>
     </Target>
-    <Target Name="FontcolorD:Clean">
-        <MSBuild Projects="fontcolor\FontcolorD.dproj" Targets="Clean"/>
+    <Target Name="CursorD:Clean">
+        <MSBuild Projects="cursor\CursorD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="FontcolorD:Make">
-        <MSBuild Projects="fontcolor\FontcolorD.dproj" Targets="Make"/>
+    <Target Name="CursorD:Make">
+        <MSBuild Projects="cursor\CursorD.dproj" Targets="Make"/>
     </Target>
     <Target Name="FontColorC">
         <MSBuild Projects="fontcolor\FontColorC.cbproj"/>
@@ -209,14 +200,14 @@
     <Target Name="FontColorC:Make">
         <MSBuild Projects="fontcolor\FontColorC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="GameMenuD">
-        <MSBuild Projects="GameMenu\GameMenuD.dproj"/>
+    <Target Name="FontcolorD">
+        <MSBuild Projects="fontcolor\FontcolorD.dproj"/>
     </Target>
-    <Target Name="GameMenuD:Clean">
-        <MSBuild Projects="GameMenu\GameMenuD.dproj" Targets="Clean"/>
+    <Target Name="FontcolorD:Clean">
+        <MSBuild Projects="fontcolor\FontcolorD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="GameMenuD:Make">
-        <MSBuild Projects="GameMenu\GameMenuD.dproj" Targets="Make"/>
+    <Target Name="FontcolorD:Make">
+        <MSBuild Projects="fontcolor\FontcolorD.dproj" Targets="Make"/>
     </Target>
     <Target Name="GameMenuC">
         <MSBuild Projects="GameMenu\GameMenuC.cbproj"/>
@@ -227,14 +218,14 @@
     <Target Name="GameMenuC:Make">
         <MSBuild Projects="GameMenu\GameMenuC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="GizmoD">
-        <MSBuild Projects="Gizmo\GizmoD.dproj"/>
+    <Target Name="GameMenuD">
+        <MSBuild Projects="GameMenu\GameMenuD.dproj"/>
     </Target>
-    <Target Name="GizmoD:Clean">
-        <MSBuild Projects="Gizmo\GizmoD.dproj" Targets="Clean"/>
+    <Target Name="GameMenuD:Clean">
+        <MSBuild Projects="GameMenu\GameMenuD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="GizmoD:Make">
-        <MSBuild Projects="Gizmo\GizmoD.dproj" Targets="Make"/>
+    <Target Name="GameMenuD:Make">
+        <MSBuild Projects="GameMenu\GameMenuD.dproj" Targets="Make"/>
     </Target>
     <Target Name="GizmoC">
         <MSBuild Projects="Gizmo\GizmoC.cbproj"/>
@@ -245,14 +236,14 @@
     <Target Name="GizmoC:Make">
         <MSBuild Projects="Gizmo\GizmoC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="GizmoExD">
-        <MSBuild Projects="GizmoEx\GizmoExD.dproj"/>
+    <Target Name="GizmoD">
+        <MSBuild Projects="Gizmo\GizmoD.dproj"/>
     </Target>
-    <Target Name="GizmoExD:Clean">
-        <MSBuild Projects="GizmoEx\GizmoExD.dproj" Targets="Clean"/>
+    <Target Name="GizmoD:Clean">
+        <MSBuild Projects="Gizmo\GizmoD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="GizmoExD:Make">
-        <MSBuild Projects="GizmoEx\GizmoExD.dproj" Targets="Make"/>
+    <Target Name="GizmoD:Make">
+        <MSBuild Projects="Gizmo\GizmoD.dproj" Targets="Make"/>
     </Target>
     <Target Name="GizmoExC">
         <MSBuild Projects="GizmoEx\GizmoExC.cbproj"/>
@@ -263,14 +254,14 @@
     <Target Name="GizmoExC:Make">
         <MSBuild Projects="GizmoEx\GizmoExC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="GuidemoD">
-        <MSBuild Projects="GuiDemo\GuidemoD.dproj"/>
+    <Target Name="GizmoExD">
+        <MSBuild Projects="GizmoEx\GizmoExD.dproj"/>
     </Target>
-    <Target Name="GuidemoD:Clean">
-        <MSBuild Projects="GuiDemo\GuidemoD.dproj" Targets="Clean"/>
+    <Target Name="GizmoExD:Clean">
+        <MSBuild Projects="GizmoEx\GizmoExD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="GuidemoD:Make">
-        <MSBuild Projects="GuiDemo\GuidemoD.dproj" Targets="Make"/>
+    <Target Name="GizmoExD:Make">
+        <MSBuild Projects="GizmoEx\GizmoExD.dproj" Targets="Make"/>
     </Target>
     <Target Name="GuiDemoC">
         <MSBuild Projects="GuiDemo\GuiDemoC.cbproj"/>
@@ -281,14 +272,14 @@
     <Target Name="GuiDemoC:Make">
         <MSBuild Projects="GuiDemo\GuiDemoC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="GuiPaintD">
-        <MSBuild Projects="GuiPaint\GuiPaintD.dproj"/>
+    <Target Name="GuidemoD">
+        <MSBuild Projects="GuiDemo\GuidemoD.dproj"/>
     </Target>
-    <Target Name="GuiPaintD:Clean">
-        <MSBuild Projects="GuiPaint\GuiPaintD.dproj" Targets="Clean"/>
+    <Target Name="GuidemoD:Clean">
+        <MSBuild Projects="GuiDemo\GuidemoD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="GuiPaintD:Make">
-        <MSBuild Projects="GuiPaint\GuiPaintD.dproj" Targets="Make"/>
+    <Target Name="GuidemoD:Make">
+        <MSBuild Projects="GuiDemo\GuidemoD.dproj" Targets="Make"/>
     </Target>
     <Target Name="GuiPaintC">
         <MSBuild Projects="GuiPaint\GuiPaintC.cbproj"/>
@@ -299,14 +290,14 @@
     <Target Name="GuiPaintC:Make">
         <MSBuild Projects="GuiPaint\GuiPaintC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="HFpickD">
-        <MSBuild Projects="HFPick\HFpickD.dproj"/>
+    <Target Name="GuiPaintD">
+        <MSBuild Projects="GuiPaint\GuiPaintD.dproj"/>
     </Target>
-    <Target Name="HFpickD:Clean">
-        <MSBuild Projects="HFPick\HFpickD.dproj" Targets="Clean"/>
+    <Target Name="GuiPaintD:Clean">
+        <MSBuild Projects="GuiPaint\GuiPaintD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="HFpickD:Make">
-        <MSBuild Projects="HFPick\HFpickD.dproj" Targets="Make"/>
+    <Target Name="GuiPaintD:Make">
+        <MSBuild Projects="GuiPaint\GuiPaintD.dproj" Targets="Make"/>
     </Target>
     <Target Name="HFPickC">
         <MSBuild Projects="HFPick\HFPickC.cbproj"/>
@@ -317,14 +308,14 @@
     <Target Name="HFPickC:Make">
         <MSBuild Projects="HFPick\HFPickC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="PickD">
-        <MSBuild Projects="Pick\PickD.dproj"/>
+    <Target Name="HFpickD">
+        <MSBuild Projects="HFPick\HFpickD.dproj"/>
     </Target>
-    <Target Name="PickD:Clean">
-        <MSBuild Projects="Pick\PickD.dproj" Targets="Clean"/>
+    <Target Name="HFpickD:Clean">
+        <MSBuild Projects="HFPick\HFpickD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="PickD:Make">
-        <MSBuild Projects="Pick\PickD.dproj" Targets="Make"/>
+    <Target Name="HFpickD:Make">
+        <MSBuild Projects="HFPick\HFpickD.dproj" Targets="Make"/>
     </Target>
     <Target Name="PickC">
         <MSBuild Projects="Pick\PickC.cbproj"/>
@@ -335,14 +326,14 @@
     <Target Name="PickC:Make">
         <MSBuild Projects="Pick\PickC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="SimpleNaviD">
-        <MSBuild Projects="SimpleNavigation\SimpleNaviD.dproj"/>
+    <Target Name="PickD">
+        <MSBuild Projects="Pick\PickD.dproj"/>
     </Target>
-    <Target Name="SimpleNaviD:Clean">
-        <MSBuild Projects="SimpleNavigation\SimpleNaviD.dproj" Targets="Clean"/>
+    <Target Name="PickD:Clean">
+        <MSBuild Projects="Pick\PickD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="SimpleNaviD:Make">
-        <MSBuild Projects="SimpleNavigation\SimpleNaviD.dproj" Targets="Make"/>
+    <Target Name="PickD:Make">
+        <MSBuild Projects="Pick\PickD.dproj" Targets="Make"/>
     </Target>
     <Target Name="SimpleNaviC">
         <MSBuild Projects="SimpleNavigation\SimpleNaviC.cbproj"/>
@@ -353,14 +344,14 @@
     <Target Name="SimpleNaviC:Make">
         <MSBuild Projects="SimpleNavigation\SimpleNaviC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="WinfontD">
-        <MSBuild Projects="WinFont\WinfontD.dproj"/>
+    <Target Name="SimpleNaviD">
+        <MSBuild Projects="SimpleNavigation\SimpleNaviD.dproj"/>
     </Target>
-    <Target Name="WinfontD:Clean">
-        <MSBuild Projects="WinFont\WinfontD.dproj" Targets="Clean"/>
+    <Target Name="SimpleNaviD:Clean">
+        <MSBuild Projects="SimpleNavigation\SimpleNaviD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="WinfontD:Make">
-        <MSBuild Projects="WinFont\WinfontD.dproj" Targets="Make"/>
+    <Target Name="SimpleNaviD:Make">
+        <MSBuild Projects="SimpleNavigation\SimpleNaviD.dproj" Targets="Make"/>
     </Target>
     <Target Name="WinFontC">
         <MSBuild Projects="WinFont\WinFontC.cbproj"/>
@@ -371,14 +362,23 @@
     <Target Name="WinFontC:Make">
         <MSBuild Projects="WinFont\WinFontC.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="WinfontD">
+        <MSBuild Projects="WinFont\WinfontD.dproj"/>
+    </Target>
+    <Target Name="WinfontD:Clean">
+        <MSBuild Projects="WinFont\WinfontD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WinfontD:Make">
+        <MSBuild Projects="WinFont\WinfontD.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="BmpfontD;BmpfontC;CameraD;CameraC;CameraControllerD;CameraControllerC;ConsoleD;ConsoleC;CursorD;CursorC;FontcolorD;FontColorC;GameMenuD;GameMenuC;GizmoD;GizmoC;GizmoExD;GizmoExC;GuidemoD;GuiDemoC;GuiPaintD;GuiPaintC;HFpickD;HFPickC;PickD;PickC;SimpleNaviD;SimpleNaviC;WinfontD;WinFontC"/>
+        <CallTarget Targets="BmpfontC;BmpfontD;CameraC;CameraD;CameraControllerC;CameraControllerD;ConsoleC;ConsoleD;CursorC;CursorD;FontColorC;FontcolorD;GameMenuC;GameMenuD;GizmoC;GizmoD;GizmoExC;GizmoExD;GuiDemoC;GuidemoD;GuiPaintC;GuiPaintD;HFPickC;HFpickD;PickC;PickD;SimpleNaviC;SimpleNaviD;WinFontC;WinfontD"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="BmpfontD:Clean;BmpfontC:Clean;CameraD:Clean;CameraC:Clean;CameraControllerD:Clean;CameraControllerC:Clean;ConsoleD:Clean;ConsoleC:Clean;CursorD:Clean;CursorC:Clean;FontcolorD:Clean;FontColorC:Clean;GameMenuD:Clean;GameMenuC:Clean;GizmoD:Clean;GizmoC:Clean;GizmoExD:Clean;GizmoExC:Clean;GuidemoD:Clean;GuiDemoC:Clean;GuiPaintD:Clean;GuiPaintC:Clean;HFpickD:Clean;HFPickC:Clean;PickD:Clean;PickC:Clean;SimpleNaviD:Clean;SimpleNaviC:Clean;WinfontD:Clean;WinFontC:Clean"/>
+        <CallTarget Targets="BmpfontC:Clean;BmpfontD:Clean;CameraC:Clean;CameraD:Clean;CameraControllerC:Clean;CameraControllerD:Clean;ConsoleC:Clean;ConsoleD:Clean;CursorC:Clean;CursorD:Clean;FontColorC:Clean;FontcolorD:Clean;GameMenuC:Clean;GameMenuD:Clean;GizmoC:Clean;GizmoD:Clean;GizmoExC:Clean;GizmoExD:Clean;GuiDemoC:Clean;GuidemoD:Clean;GuiPaintC:Clean;GuiPaintD:Clean;HFPickC:Clean;HFpickD:Clean;PickC:Clean;PickD:Clean;SimpleNaviC:Clean;SimpleNaviD:Clean;WinFontC:Clean;WinfontD:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="BmpfontD:Make;BmpfontC:Make;CameraD:Make;CameraC:Make;CameraControllerD:Make;CameraControllerC:Make;ConsoleD:Make;ConsoleC:Make;CursorD:Make;CursorC:Make;FontcolorD:Make;FontColorC:Make;GameMenuD:Make;GameMenuC:Make;GizmoD:Make;GizmoC:Make;GizmoExD:Make;GizmoExC:Make;GuidemoD:Make;GuiDemoC:Make;GuiPaintD:Make;GuiPaintC:Make;HFpickD:Make;HFPickC:Make;PickD:Make;PickC:Make;SimpleNaviD:Make;SimpleNaviC:Make;WinfontD:Make;WinFontC:Make"/>
+        <CallTarget Targets="BmpfontC:Make;BmpfontD:Make;CameraC:Make;CameraD:Make;CameraControllerC:Make;CameraControllerD:Make;ConsoleC:Make;ConsoleD:Make;CursorC:Make;CursorD:Make;FontColorC:Make;FontcolorD:Make;GameMenuC:Make;GameMenuD:Make;GizmoC:Make;GizmoD:Make;GizmoExC:Make;GizmoExD:Make;GuiDemoC:Make;GuidemoD:Make;GuiPaintC:Make;GuiPaintD:Make;HFPickC:Make;HFpickD:Make;PickC:Make;PickD:Make;SimpleNaviC:Make;SimpleNaviD:Make;WinFontC:Make;WinfontD:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

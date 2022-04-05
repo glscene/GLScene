@@ -10,7 +10,7 @@ uses
   Vcl.Controls,
   Vcl.Forms,
   Vcl.ExtCtrls,
-  
+
   GLS.Scene,
   GLS.Objects,
   GLS.VectorGeometry,
@@ -19,7 +19,7 @@ uses
   GLS.VectorTypes,
   GLS.SceneViewer,
   GLS.Color,
- 
+
   GLS.Coordinates,
   GLS.Material,
   GLS.SimpleNavigation,
@@ -27,20 +27,18 @@ uses
 
 type
   TFormMegaglasscube = class(TForm)
-	 GLSceneViewer1: TGLSceneViewer;
-	 GLScene1: TGLScene;
-	 GLCamera1: TGLCamera;
-	 DummyCube1: TGLDummyCube;
-	 GLLightSource1: TGLLightSource;
-   GLCadencer1: TGLCadencer;
-   GLSimpleNavigation1: TGLSimpleNavigation;
-	 procedure FormCreate(Sender: TObject);
-   procedure GLCadencer1Progress(Sender: TObject;
-     const deltaTime, newTime: Double);
+    GLSceneViewer1: TGLSceneViewer;
+    GLScene1: TGLScene;
+    GLCamera1: TGLCamera;
+    DummyCube1: TGLDummyCube;
+    GLLightSource1: TGLLightSource;
+    GLCadencer1: TGLCadencer;
+    GLSimpleNavigation1: TGLSimpleNavigation;
+    procedure FormCreate(Sender: TObject);
+    procedure GLCadencer1Progress(Sender: TObject;
+      const deltaTime, newTime: Double);
   private
-     
   public
-     
   end;
 
 var
@@ -51,19 +49,19 @@ implementation
 {$R *.DFM}
 
 const
-	cSize = 5;
+  cSize = 5;
 
 procedure TFormMegaglasscube.FormCreate(Sender: TObject);
 var
-	x, y, z : Integer;
-	cube : TGLCube;
-	factor, cubeSize : Single;
-  Color : TColor;
+  x, y, z: Integer;
+  cube: TGLCube;
+  factor, cubeSize: Single;
+  Color: TColor;
 begin
-	// bench only creation and 1st render (with lists builds, etc...)
-	factor:=70/(cSize*2+1);
-	cubeSize:=0.4*factor;
-	for x := -cSize to cSize do
+  // bench only creation and 1st render (with lists builds, etc...)
+  factor := 70 / (cSize * 2 + 1);
+  cubeSize := 0.4 * factor;
+  for x := -cSize to cSize do
     for y := -cSize to cSize do
       for z := -cSize to cSize do
       begin
@@ -83,10 +81,10 @@ begin
       end;
 end;
 
-procedure TFormMegaglasscube.GLCadencer1Progress(Sender: TObject; const deltaTime,
-  newTime: Double);
+procedure TFormMegaglasscube.GLCadencer1Progress(Sender: TObject;
+  const deltaTime, newTime: Double);
 begin
-	DummyCube1.TurnAngle:=90*newTime; // 90° per second
+  DummyCube1.TurnAngle := 90 * newTime; // 90° per second
 end;
 
 end.

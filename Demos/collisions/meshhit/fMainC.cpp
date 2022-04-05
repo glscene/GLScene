@@ -52,11 +52,11 @@ void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Bu
 	  Sphere1->Position->AsVector = iPoint;
 	  Sphere1->Direction->AsVector = VectorNormalize(iNormal);
 	  // make it visible
-	  Sphere1->Visible = True;
+	  Sphere1->Visible = true;
 	 }
    else
 	  // hide it if we did not hit
-	  Sphere1->Visible = False;
+	  Sphere1->Visible = false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
@@ -64,7 +64,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
 {
    // when mouse moves, recompute intersection
    if (Shift.Contains(ssLeft)||Shift.Contains(ssRight))
-	GLSceneViewer1MouseDown(Sender, TMouseButton(Vcl::Controls::mbLeft), Shift, X, Y);
+	GLSceneViewer1MouseDown(Sender, TMouseButton(mbLeft), Shift, X, Y);
 
 }
 //---------------------------------------------------------------------------
@@ -99,7 +99,7 @@ void __fastcall TForm1::GLSceneViewer2MouseMove(TObject *Sender, TShiftState Shi
 {
    // when mouse moves, recompute intersection
    if (Shift.Contains(ssLeft)||Shift.Contains(ssRight))
-	GLSceneViewer2MouseDown(Sender, TMouseButton(Vcl::Controls::mbLeft), Shift, X, Y);
+	GLSceneViewer2MouseDown(Sender, TMouseButton(mbLeft), Shift, X, Y);
 
 
 }

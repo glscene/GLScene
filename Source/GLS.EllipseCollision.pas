@@ -51,7 +51,7 @@ type
 
   // Ellipsoid collision FreeForm
   TECFreeForm = record
-    OctreeNodes: array of POctreeNode;
+    OctreeNodes: array of PGLOctreeNode;
     triangleFiler: ^TGLAffineVectorList;
     InvertedNormals: Boolean;
     ObjectInfo: TECObjectInfo;
@@ -669,7 +669,7 @@ end;
 procedure CheckCollisionFreeForm(var MP: TECMovePack);
 var
   n, i, t, k: Integer;
-  p: POctreeNode;
+  p: PGLOctreeNode;
   p1, p2, p3: PAffineVector;
   v1, v2, v3: TAffineVector;
   Collided: Boolean;

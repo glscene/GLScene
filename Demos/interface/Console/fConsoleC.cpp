@@ -23,7 +23,6 @@
 #pragma link "GLS.WindowsFont"
 #pragma resource "*.dfm"
 TForm1 *Form1;
-TGLConsole *Console;
 
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
@@ -63,119 +62,119 @@ void __fastcall TForm1::OnCommand(const TGLConsoleCommand *ConsoleCommand,
 									 // command you recognize :)
   }
 ///  if (Command.UnknownCommand)
-///	Console->AddLine(" - Current supported external commands are: \r\
+///	GLConsole1->AddLine(" - Current supported external commands are: \r\
 ///					 echo and exit!");
 }
 
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  Console = (TGLConsole *)(Scene->Objects->AddNewChild(__classid(TGLConsole)));
+//  GLConsole1 = (TGLConsole*)(Scene->Objects->AddNewChild(__classid(TGLConsole)));
 
-  Console->Visible = false;
-  Console->SceneViewer = Viewer;
-  Console->Font = Font1;
+  GLConsole1->Visible = false;
+  GLConsole1->SceneViewer = Viewer;
+  GLConsole1->Font = Font1;
 
   //optional stuff:
   SetGLSceneMediaDir();
-  Console->HudSprite->Material->Texture->Image->LoadFromFile("GLScene.bmp");
-  Console->AddLine("Console started");
-  Console->HUDSpriteColor = clWhite;
-  Console->FontColor = clBlue;
+  GLConsole1->HudSprite->Material->Texture->Image->LoadFromFile("GLScene.bmp");
+  GLConsole1->AddLine("Console started");
+  GLConsole1->HUDSpriteColor = clWhite;
+  GLConsole1->FontColor = clBlue;
 
   //two ways of processing commands:
 	 //1) manual
-///  Console->OnCommandIssued = OnCommand;
+///  GLConsole1->OnCommandIssued = OnCommand;
 	 //2)using built-in objects (prefered)
-	Console->Commands->Add()->CommandName = "hello";
-	Console->Commands->Add()->ShortHelp = "Says hi to you too";
-	Console->Commands->Add()->LongHelp->Add("Well, the console really does say - Hi, dude - to you, because");
-	Console->Commands->Add()->LongHelp->Add("it is roude not to greet someone, when he says - hello - to you ;)");
-///	Console->Commands->Add()->OnCommand = OnHelloCommand;
+	GLConsole1->Commands->Add()->CommandName = "hello";
+	GLConsole1->Commands->Add()->ShortHelp = "Says hi to you too";
+	GLConsole1->Commands->Add()->LongHelp->Add("Well, the console really does say - Hi, dude - to you, because");
+	GLConsole1->Commands->Add()->LongHelp->Add("it is roude not to greet someone, when he says - hello - to you ;)");
+///	GLConsole1->Commands->Add()->OnCommand = OnHelloCommand;
 
   //register additional commands to enable auto-completion function
-  Console->AdditionalCommands->Add("echo");
-  Console->AdditionalCommands->Add("exit");
+  GLConsole1->AdditionalCommands->Add("echo");
+  GLConsole1->AdditionalCommands->Add("exit");
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
-          const double newTime)
+		  const double newTime)
 {
   Viewer->Invalidate();
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormKeyPress(TObject *Sender, System::WideChar &Key)
 {
-  Console->ProcessKeyPress(Key);
+  GLConsole1->ProcessKeyPress(Key);
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
 
 {
-  Console->ProcessKeyDown(Key);
+  GLConsole1->ProcessKeyDown(Key);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::ViewerMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
-          int X, int Y)
+		  int X, int Y)
 {
-  Console->Visible = !Console->Visible;
+  GLConsole1->Visible = !GLConsole1->Visible;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormResize(TObject *Sender)
 {
-  Console->RefreshHudSize();
+  GLConsole1->RefreshHudSize();
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::CheckBox1Click(TObject *Sender)
 {
   if (CheckBox1->Checked)
-	Console->Options = Console->Options << coAutoCompleteCommandsOnKeyPress;
+	GLConsole1->Options = GLConsole1->Options << coAutoCompleteCommandsOnKeyPress;
   else
-	Console->Options = Console->Options >> coAutoCompleteCommandsOnKeyPress;
+	GLConsole1->Options = GLConsole1->Options >> coAutoCompleteCommandsOnKeyPress;
   Viewer->SetFocus();
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::CheckBox2Click(TObject *Sender)
 {
   if (CheckBox1->Checked)
-	Console->Options = Console->Options << coAutoCompleteCommandsOnEnter;
+	GLConsole1->Options = GLConsole1->Options << coAutoCompleteCommandsOnEnter;
   else
-	Console->Options = Console->Options >> coAutoCompleteCommandsOnEnter;
+	GLConsole1->Options = GLConsole1->Options >> coAutoCompleteCommandsOnEnter;
   Viewer->SetFocus();
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::CheckBox3Click(TObject *Sender)
 {
   if (CheckBox1->Checked)
-	Console->Options = Console->Options << coShowConsoleHelpIfUnknownCommand;
+	GLConsole1->Options = GLConsole1->Options << coShowConsoleHelpIfUnknownCommand;
   else
-	Console->Options = Console->Options >> coShowConsoleHelpIfUnknownCommand;
+	GLConsole1->Options = GLConsole1->Options >> coShowConsoleHelpIfUnknownCommand;
   Viewer->SetFocus();
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
-  Console->TypedCommands->SaveToFile("saved_typed_commands.ini");
+  GLConsole1->TypedCommands->SaveToFile("saved_typed_commands.ini");
   Viewer->SetFocus();
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::Button2Click(TObject *Sender)
 {
-  Console->ColsoleLog->SaveToFile("saved_console_output.ini");
+  GLConsole1->ColsoleLog->SaveToFile("saved_console_output.ini");
   Viewer->SetFocus();
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::Button6Click(TObject *Sender)
 {
-  Console->TypedCommands->LoadFromFile("saved_typed_commands.ini");
+  GLConsole1->TypedCommands->LoadFromFile("saved_typed_commands.ini");
   Viewer->SetFocus();
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::Button7Click(TObject *Sender)
 {
-  Console->ColsoleLog->LoadFromFile("saved_console_output.ini");
-  Console->RefreshHudSize();
+  GLConsole1->ColsoleLog->LoadFromFile("saved_console_output.ini");
+  GLConsole1->RefreshHudSize();
   Viewer->SetFocus();
 }
 //---------------------------------------------------------------------------

@@ -60,7 +60,7 @@ public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
 
 	void MyForceAndTorqueDensity(const PNewtonBody cbody,
-	  NGDFloat timestep, int threadIndex);
+	  dFloat timestep, int threadIndex);
 
 	void Shoot(void);
 };

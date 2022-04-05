@@ -411,6 +411,6 @@ begin
 end;
 
 initialization
-  System.SysUtils.FormatSettings.DecimalSeparator := '.';
+  FormatSettings.DecimalSeparator := '.';
 
 end.

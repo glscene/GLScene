@@ -7405,6 +7405,7 @@ object FormCursor: TFormCursor
       Caption = 'Options'
       object MITrail: TMenuItem
         Caption = 'Trail'
+        Checked = True
         OnClick = MITrailClick
       end
     end

@@ -5,7 +5,7 @@ unit GLS.SpacePartition;
 
 (*
   Space Partition speeds up geometrical queries, like what objects does an overlap.
-  Note that the class TOctreeSpacePartition is optimized for dynamic scenes with
+  Note that the class TGLOctreeSpacePartition is optimized for dynamic scenes with
   objects that are small in relation to the size of the Octree space.
   The non-duplicating octree shouldn't really be used if  you have big objects,
   and this especially if you have lots of big objects (the more objects you have
@@ -54,7 +54,7 @@ const
   COctree_GROW_GRAVY = 0.1;
 
 type
-  TBaseSpacePartition = class;
+  TGLBaseSpacePartition = class;
 
   // Describes a cone, and is used for cone collision
   TGLConeSP = record
@@ -76,10 +76,10 @@ type
   end;
 
   // Used to store the actual objects in the SpacePartition
-  TSpacePartitionLeaf = class(TGLPersistentObject)
+  TGLSpacePartitionLeaf = class(TGLPersistentObject)
   private
-    FSpacePartition: TBaseSpacePartition;
-    procedure SetSpacePartition(const Value: TBaseSpacePartition);
+    FSpacePartition: TGLBaseSpacePartition;
+    procedure SetSpacePartition(const Value: TGLBaseSpacePartition);
   public
     // This can be used by the space partitioner as it sees fit
     FPartitionTag: Pointer;
@@ -99,50 +99,61 @@ type
       overriden to update the cache from the structure that the leaf stores. This
       is the only function you MUST override to use space partitions. *)
     procedure UpdateCachedAABBAndBSphere; virtual;
-    // The TBaseSpacePartition that owns this leaf
-    property SpacePartition: TBaseSpacePartition read FSpacePartition write SetSpacePartition;
+    // The TGLBaseSpacePartition that owns this leaf
+    property SpacePartition: TGLBaseSpacePartition read FSpacePartition write SetSpacePartition;
     // This tag can be used by the space partition to store vital information in the leaf
     property PartitionTag: Pointer read FPartitionTag;
-    constructor CreateOwned(SpacePartition: TBaseSpacePartition);
+    constructor CreateOwned(SpacePartition: TGLBaseSpacePartition);
     destructor Destroy; override;
   published
   end;
 
   // List for storing space partition leaves
-  TSpacePartitionLeafList = class(TGLPersistentObjectList)
+  TGLSpacePartitionLeafList = class(TGLPersistentObjectList)
   private
-    function GetItems(I: Integer): TSpacePartitionLeaf;
-    procedure SetItems(I: Integer; const Value: TSpacePartitionLeaf);
+    function GetItems(I: Integer): TGLSpacePartitionLeaf;
+    procedure SetItems(I: Integer; const Value: TGLSpacePartitionLeaf);
   public
-    property Items[I: Integer]: TSpacePartitionLeaf read GetItems write SetItems; default;
+    property Items[I: Integer]: TGLSpacePartitionLeaf read GetItems write SetItems; default;
     constructor Create; override;
   end;
 
-  TCullingMode = (CmFineCulling, CmGrossCulling);
+  // The Space Partition updating for a bounding sphere
+  TGLSpacePartitionLeafS = class(TGLSpacePartitionLeaf)
+  public
+    GLBaseSceneObject: TGLBaseSceneObject;
+    Direction: TAffineVector;
+    procedure UpdateCachedAABBAndBSphere; override;
+    constructor CreateGLOwned(SpacePartition: TGLBaseSpacePartition;
+      aGLBaseSceneObject: TGLBaseSceneObject);
+  end;
+
+
+  TGLCullingMode = (CmFineCulling, CmGrossCulling);
 
   // Basic space partition, does not implement any actual space partitioning
-  TBaseSpacePartition = class(TGLPersistentObject)
+  TGLBaseSpacePartition = class(TGLPersistentObject)
   private
-    FCullingMode: TCullingMode;
+    FCullingMode: TGLCullingMode;
     // Query space for Leaves that intersect a cone, result is returned through QueryResult
     function QueryCone(const ACone: TGLConeSP): Integer; virtual;
   protected
-    FQueryResult: TSpacePartitionLeafList;
+    FQueryResult: TGLSpacePartitionLeafList;
     FQueryInterObjectTests: Integer;
     // Empties the search result and resetting all search statistics
     procedure FlushQueryResult; virtual;
   public
     // The results from the last query
-    property QueryResult: TSpacePartitionLeafList read FQueryResult;
+    property QueryResult: TGLSpacePartitionLeafList read FQueryResult;
     // Clear all internal storage Leaves
     procedure Clear; virtual;
     // ** Update space partition
     // Add a leaf
-    procedure AddLeaf(ALeaf: TSpacePartitionLeaf); virtual;
+    procedure AddLeaf(ALeaf: TGLSpacePartitionLeaf); virtual;
     // Remove a leaf
-    procedure RemoveLeaf(ALeaf: TSpacePartitionLeaf); virtual;
+    procedure RemoveLeaf(ALeaf: TGLSpacePartitionLeaf); virtual;
     // Called by leaf when it has changed
-    procedure LeafChanged(ALeaf: TSpacePartitionLeaf); virtual;
+    procedure LeafChanged(ALeaf: TGLSpacePartitionLeaf); virtual;
     // ** Query space partition
     (* Query space for Leaves that intersect the axis aligned bounding box,
       result is returned through QueryResult *)
@@ -152,7 +163,7 @@ type
     function QueryBSphere(const ABSphere: TBSphere): Integer; virtual;
     (* Query space for Leaves that intersect the bounding sphere or box
       of a leaf. Result is returned through QueryResult *)
-    function QueryLeaf(const ALeaf: TSpacePartitionLeaf): Integer; virtual;
+    function QueryLeaf(const ALeaf: TGLSpacePartitionLeaf): Integer; virtual;
     (* Query space for Leaves that intersect a plane. Result is returned through
       QueryResult *)
     function QueryPlane(const Location, Normal: TAffineVector): Integer; virtual;
@@ -171,16 +182,16 @@ type
     procedure ProcessUpdated; virtual;
     (* Determines if the spatial structure should do very simple preliminary
       culling (gross culling) or a more detailed form of culling (fine culling) *)
-    property CullingMode: TCullingMode read FCullingMode write FCullingMode;
+    property CullingMode: TGLCullingMode read FCullingMode write FCullingMode;
     constructor Create; override;
     destructor Destroy; override;
   end;
 
   (* Implements a list of all leaves added to the space partition, _not_ a
      good solution, but it can be used as a benchmark against more complex methods *)
-  TLeavedSpacePartition = class(TBaseSpacePartition)
+  TGLLeavedSpacePartition = class(TGLBaseSpacePartition)
   private
-    FLeaves: TSpacePartitionLeafList;
+    FLeaves: TGLSpacePartitionLeafList;
     // Query space for Leaves that intersect a cone, result is returned through QueryResult
     function QueryCone(const ACone: TGLConeSP): Integer; override;
   public
@@ -188,9 +199,9 @@ type
     procedure Clear; override;
     // ** Update space partition
     // Add a leaf
-    procedure AddLeaf(ALeaf: TSpacePartitionLeaf); override;
+    procedure AddLeaf(ALeaf: TGLSpacePartitionLeaf); override;
     // Remove a leaf
-    procedure RemoveLeaf(ALeaf: TSpacePartitionLeaf); override;
+    procedure RemoveLeaf(ALeaf: TGLSpacePartitionLeaf); override;
     // ** Query space partition
     (* Query space for Leaves that intersect the axis aligned bounding box,
       result is returned through QueryResult. This override scans _all_ leaves
@@ -205,26 +216,26 @@ type
     constructor Create; override;
     destructor Destroy; override;
   published
-    property Leaves: TSpacePartitionLeafList read FLeaves;
+    property Leaves: TGLSpacePartitionLeafList read FLeaves;
   end;
 
-  TSectoredSpacePartition = class;
-  TSectorNode = class;
-  TSectorNodeArray = array [0 .. 7] of TSectorNode;
+  TGLSectoredSpacePartition = class;
+  TGLSectorNode = class;
+  TGLSectorNodeArray = array [0 .. 7] of TGLSectorNode;
 
   (* Implements a SectorNode node. Each node can have 0 or 8 children, each child
     being a portion of the size of the parent. For quadtrees, that's 1/4, for
     octrees, it's 1/8 *)
-  TSectorNode = class
+  TGLSectorNode = class
   private
-    FLeaves: TSpacePartitionLeafList;
+    FLeaves: TGLSpacePartitionLeafList;
     FAABB: TAABB;
-    FSectoredSpacePartition: TSectoredSpacePartition;
+    FSectoredSpacePartition: TGLSectoredSpacePartition;
     FRecursiveLeafCount: Integer;
-    FParent: TSectorNode;
+    FParent: TGLSectorNode;
     FNodeDepth: Integer;
     FChildCount: Integer;
-    FChildren: TSectorNodeArray;
+    FChildren: TGLSectorNodeArray;
     FBSphere: TBSphere;
     function GetNoChildren: Boolean;
     procedure SetAABB(const Value: TAABB);
@@ -236,11 +247,11 @@ type
     function CalcRecursiveLeafCount: Integer;
     (* Places a leaf in one of the children of this node, or in the node itself
        if it doesn't fit in any of the children *)
-    function PlaceLeafInChild(ALeaf: TSpacePartitionLeaf): TSectorNode;
+    function PlaceLeafInChild(ALeaf: TGLSpacePartitionLeaf): TGLSectorNode;
     (* Debug method that checks that FRecursiveLeafCount and
       CalcRecursiveLeafCount actually agree *)
     function VerifyRecursiveLeafCount: string;
-    { Executed whenever the children of the node has changed }
+    // Executed whenever the children of the node has changed
     procedure ChildrenChanged; virtual;
   public
     (* Clear deletes all children and empties the leaves. It doesn't destroy
@@ -255,17 +266,17 @@ type
     // NoChildren is true if the node has no children
     property NoChildren: Boolean read GetNoChildren;
     // A list of the children for this node, only ChildCount children are none nil
-    property Children: TSectorNodeArray read FChildren;
+    property Children: TGLSectorNodeArray read FChildren;
     // The number of child sectors that have been created
     property ChildCount: Integer read FChildCount;
     // Computes which child the AABB should go in. Returns nil if no such child exists
-    function GetChildForAABB(const AABB: TAABB): TSectorNode; virtual;
+    function GetChildForAABB(const AABB: TAABB): TGLSectorNode; virtual;
     // The leaves that are stored in this node
-    property Leaves: TSpacePartitionLeafList read FLeaves;
+    property Leaves: TGLSpacePartitionLeafList read FLeaves;
     // The Structure that owns this node
-    property SectoredSpacePartition: TSectoredSpacePartition read FSectoredSpacePartition;
+    property SectoredSpacePartition: TGLSectoredSpacePartition read FSectoredSpacePartition;
     // The parent node of this node. If parent is nil, that means that this node is the root node
-    property Parent: TSectorNode read FParent;
+    property Parent: TGLSectorNode read FParent;
     // The number of leaves stored in this node and all it's children
     property RecursiveLeafCount: Integer read FRecursiveLeafCount;
     (* The tree depth at which this node is located. For the root, this value
@@ -290,25 +301,25 @@ type
     (* Adds leaf to this node - or one of it's children. If the node has enough
       leaves and has no children, children will be created and all leaves will be
       spread among the children *)
-    function AddLeaf(ALeaf: TSpacePartitionLeaf): TSectorNode;
+    function AddLeaf(ALeaf: TGLSpacePartitionLeaf): TGLSectorNode;
     (* Remove leaf will remove a leaf from this node. If it is determined that
       this node has too few leaves after the delete, it may be collapsed. Returns
       true if the node was actually collapsed *)
-    function RemoveLeaf(ALeaf: TSpacePartitionLeaf; OwnerByThis: Boolean): Boolean;
+    function RemoveLeaf(ALeaf: TGLSpacePartitionLeaf; OwnerByThis: Boolean): Boolean;
     // Query the node and its children for leaves that match the AABB
-    procedure QueryAABB(const AAABB: TAABB; const QueryResult: TSpacePartitionLeafList);
+    procedure QueryAABB(const AAABB: TAABB; const QueryResult: TGLSpacePartitionLeafList);
     // Query the node and its children for leaves that match the BSphere
-    procedure QueryBSphere(const ABSphere: TBSphere; const QueryResult: TSpacePartitionLeafList);
+    procedure QueryBSphere(const ABSphere: TBSphere; const QueryResult: TGLSpacePartitionLeafList);
     // Query the node and its children for leaves that match the plane
-    procedure QueryPlane(const Location, Normal: TAffineVector; const QueryResult: TSpacePartitionLeafList);
+    procedure QueryPlane(const Location, Normal: TAffineVector; const QueryResult: TGLSpacePartitionLeafList);
     // Query the node and its children for leaves that match the Frustum
-    procedure QueryFrustum(const Frustum: TFrustum; const QueryResult: TSpacePartitionLeafList);
+    procedure QueryFrustum(const Frustum: TFrustum; const QueryResult: TGLSpacePartitionLeafList);
     // Query the node and its children for leaves that match the extended frustum
-    procedure QueryFrustumEx(const ExtendedFrustum: TGLExtendedFrustum; const QueryResult: TSpacePartitionLeafList);
+    procedure QueryFrustumEx(const ExtendedFrustum: TGLExtendedFrustum; const QueryResult: TGLSpacePartitionLeafList);
     (* Adds all leaves to query result without testing if they intersect, and
       then do the same for all children. This is used when QueryAABB or
       QueryBSphere determines that a node fits completely in the searched space *)
-    procedure AddAllLeavesRecursive(const QueryResult: TSpacePartitionLeafList);
+    procedure AddAllLeavesRecursive(const QueryResult: TGLSpacePartitionLeafList);
     // Add children to this node and spread the leaves among it's children
     procedure ExpandNode;
     // Create the number of children this node type needs
@@ -317,21 +328,21 @@ type
     procedure CollapseNode;
     // Returns the number of nodes in the Octree
     function GetNodeCount: Integer;
-    constructor Create(ASectoredSpacePartition: TSectoredSpacePartition; AParent: TSectorNode);
+    constructor Create(ASectoredSpacePartition: TGLSectoredSpacePartition; AParent: TGLSectorNode);
     destructor Destroy; override;
   end;
 
+  TGLGrowMethod = (gmNever, gmBestFit, gmIncreaseToFitAll);
+
   (* Implements sectored space partitioning, sectored space partitions include
      Octrees, Quadtrees and  BSP-trees *)
-  TGrowMethod = (gmNever, gmBestFit, gmIncreaseToFitAll);
-
-  TSectoredSpacePartition = class(TLeavedSpacePartition)
+  TGLSectoredSpacePartition = class(TGLLeavedSpacePartition)
   private
-    FRootNode: TSectorNode;
+    FRootNode: TGLSectorNode;
     FLeafThreshold: Integer;
     FMaxTreeDepth: Integer;
     FGrowGravy: Single;
-    FGrowMethod: TGrowMethod;
+    FGrowMethod: TGLGrowMethod;
     procedure SetLeafThreshold(const Value: Integer);
     procedure SetMaxTreeDepth(const Value: Integer);
   protected
@@ -343,11 +354,11 @@ type
     (* Add a leaf to the structure. If the leaf doesn't fit in the structure, the
       structure is either grown or an exception is raised. If GrowMethod is set to
       gmBestFit or gmIncreaseToFitAll, the octree will be grown *)
-    procedure AddLeaf(ALeaf: TSpacePartitionLeaf); override;
+    procedure AddLeaf(ALeaf: TGLSpacePartitionLeaf); override;
     // Remove a leaf from the structure
-    procedure RemoveLeaf(ALeaf: TSpacePartitionLeaf); override;
+    procedure RemoveLeaf(ALeaf: TGLSpacePartitionLeaf); override;
     // Called by leaf when it has changed, the leaf will be moved to an apropriate node
-    procedure LeafChanged(ALeaf: TSpacePartitionLeaf); override;
+    procedure LeafChanged(ALeaf: TGLSpacePartitionLeaf); override;
     // ** Query space partition
     (* Query space for Leaves that intersect the axis aligned bounding box,
       result is returned through QueryResult. This method simply defers to the
@@ -359,7 +370,7 @@ type
     function QueryBSphere(const ABSphere: TBSphere): Integer; override;
     (* Query space for Leaves that intersect the bounding sphere or box
       of a leaf. Result is returned through QueryResult *)
-    function QueryLeaf(const ALeaf: TSpacePartitionLeaf): Integer; override;
+    function QueryLeaf(const ALeaf: TGLSpacePartitionLeaf): Integer; override;
     // Query space for Leaves that intersect a plane. Result is returned through QueryResult
     function QueryPlane(const Location, Normal: TAffineVector): Integer; override;
     // Query space for Leaves that intersect a Frustum. Result is returned through QueryResult
@@ -378,21 +389,21 @@ type
     procedure RebuildTree(const NewAABB: TAABB);
     // Returns the _total_ AABB in structure
     function GetAABB: TAABB;
-    // CreateNewNode creates a new node of the TSectorNode subclass that this structure requires
-    function CreateNewNode(AParent: TSectorNode): TSectorNode; virtual;
+    // CreateNewNode creates a new node of the TGLSectorNode subclass that this structure requires
+    function CreateNewNode(AParent: TGLSectorNode): TGLSectorNode; virtual;
     procedure Clear; override;
     constructor Create; override;
     destructor Destroy; override;
   published
-    // Root TSectorNode that all others stem from
-    property RootNode: TSectorNode read FRootNode;
+    // Root TGLSectorNode that all others stem from
+    property RootNode: TGLSectorNode read FRootNode;
     // Determines how deep a tree should be allowed to grow
     property MaxTreeDepth: Integer read FMaxTreeDepth write SetMaxTreeDepth;
     // Determines when a node should be split up to form children
     property LeafThreshold: Integer read FLeafThreshold write SetLeafThreshold;
     (* Determines if the structure should grow with new leaves, or if an exception
       should be raised *)
-    property GrowMethod: TGrowMethod read FGrowMethod write FGrowMethod;
+    property GrowMethod: TGLGrowMethod read FGrowMethod write FGrowMethod;
     (* When the structure is recreated because it's no longer large enough to fit
       all leafs, it will become large enough to safely fit all leafs, plus
       GrowGravy. This is to prevent too many grows *)
@@ -401,7 +412,7 @@ type
 
   // ** OCTTREE
   // Implements sector node that handles octrees
-  TSPOctreeNode = class(TSectorNode)
+  TSPOctreeNode = class(TGLSectorNode)
   public
     // Create 8 TSPOctreeNode children
     procedure CreateChildren; override;
@@ -416,12 +427,12 @@ type
   end;
 
   // Implements octrees
-  TOctreeSpacePartition = class(TSectoredSpacePartition)
+  TGLOctreeSpacePartition = class(TGLSectoredSpacePartition)
   public
     // Set size updates the size of the Octree
     procedure SetSize(const Min, Max: TAffineVector);
     { CreateNewNode creates a new TSPOctreeNode }
-    function CreateNewNode(AParent: TSectorNode): TSectorNode; override;
+    function CreateNewNode(AParent: TGLSectorNode): TGLSectorNode; override;
   end;
 
   // ** QUADTREE
@@ -444,7 +455,7 @@ type
     // Checks if a BSphere intersects this node
     function BSphereIntersectsNode(const BSphere: TBSphere): Boolean; override;
     // Computes which child the AABB should go in. Returns nil if no such child  exists
-    function GetChildForAABB(const AABB: TAABB): TSectorNode; override;
+    function GetChildForAABB(const AABB: TAABB): TGLSectorNode; override;
   end;
 
   (* Implements quadtrees.
@@ -452,28 +463,28 @@ type
     to determine positioning.
     This means that they're well suited for 2d-ish situations (landscapes with
     trees for instance) but not for fully 3d situations (space fighting) *)
-  TQuadtreeSpacePartition = class(TSectoredSpacePartition)
+  TGLQuadtreeSpacePartition = class(TGLSectoredSpacePartition)
   public
     // Set size updates the size of the Octree
     procedure SetSize(const Min, Max: TAffineVector);
     // CreateNewNode creates a new TSPOctreeNode
-    function CreateNewNode(AParent: TSectorNode): TSectorNode; override;
+    function CreateNewNode(AParent: TGLSectorNode): TGLSectorNode; override;
   end;
 
 
   // Object for holding glscene objects in a spatial partitioning
-  TSceneObj = class(TSpacePartitionLeaf)
+  TGLSceneObj = class(TGLSpacePartitionLeaf)
   public
     Obj: TGLBaseSceneObject;
     procedure UpdateCachedAABBAndBSphere; override;
-    constructor CreateObj(Owner: TSectoredSpacePartition; aObj: TGLBaseSceneObject);
+    constructor CreateObj(Owner: TGLSectoredSpacePartition; aObj: TGLBaseSceneObject);
     destructor Destroy; override;
   end;
 
-(*Render a spacial partitioning descending from TSectoredSpacePartition
+(*Render a spacial partitioning descending from TGLSectoredSpacePartition
  (octree and quadtree) as a grid - great for debugging and visualisation *)
 procedure RenderSpatialPartitioning(var rci: TGLRenderContextInfo;
-  const Space: TSectoredSpacePartition);
+  const Space: TGLSectoredSpacePartition);
 
 (*Create an extended frustum from a GLSceneViewer - this makes the unit
   specific to the windows platform!*)
@@ -639,27 +650,27 @@ begin
 end;
 
 //-------------------------
-// TSpacePartitionLeaf
+// TGLSpacePartitionLeaf
 //-------------------------
 
-procedure TSpacePartitionLeaf.UpdateCachedAABBAndBSphere;
+procedure TGLSpacePartitionLeaf.UpdateCachedAABBAndBSphere;
 begin
-  // You MUST override TSpacePartitionLeaf.UpdateCachedAABBAndBSphere, if you
+  // You MUST override TGLSpacePartitionLeaf.UpdateCachedAABBAndBSphere, if you
   // only have easy access to a bounding sphere, or only an axis aligned
   // bounding box, you can easily convert from one to the other by using
   // AABBToBSphere and BSphereToAABB.
   //
   // You MUST set both FCachedAABB AND FCachedBSphere
-  Assert(False, 'You MUST override TSpacePartitionLeaf.UpdateCachedAABBAndBSphere!');
+  Assert(False, 'You MUST override TGLSpacePartitionLeaf.UpdateCachedAABBAndBSphere!');
 end;
 
-procedure TSpacePartitionLeaf.Changed;
+procedure TGLSpacePartitionLeaf.Changed;
 begin
   UpdateCachedAABBAndBSphere;
   SpacePartition.LeafChanged(Self);
 end;
 
-constructor TSpacePartitionLeaf.CreateOwned(SpacePartition: TBaseSpacePartition);
+constructor TGLSpacePartitionLeaf.CreateOwned(SpacePartition: TGLBaseSpacePartition);
 begin
   inherited Create;
 
@@ -669,7 +680,7 @@ begin
     SpacePartition.AddLeaf(Self);
 end;
 
-destructor TSpacePartitionLeaf.Destroy;
+destructor TGLSpacePartitionLeaf.Destroy;
 begin
   if Assigned(FSpacePartition) then
     FSpacePartition.RemoveLeaf(Self);
@@ -677,7 +688,7 @@ begin
   inherited;
 end;
 
-procedure TSpacePartitionLeaf.SetSpacePartition(const Value: TBaseSpacePartition);
+procedure TGLSpacePartitionLeaf.SetSpacePartition(const Value: TGLBaseSpacePartition);
 begin
   if Assigned(FSpacePartition) then
     FSpacePartition.RemoveLeaf(Self);
@@ -688,92 +699,121 @@ begin
     FSpacePartition.AddLeaf(Self);
 end;
 
-{ TSpacePartitionLeafList }
-
-constructor TSpacePartitionLeafList.Create;
+//------------------------------
+// TGLSpacePartitionLeafList
+//-------------------------------
+constructor TGLSpacePartitionLeafList.Create;
 begin
   inherited;
   GrowthDelta := 128;
 end;
 
-function TSpacePartitionLeafList.GetItems(I: Integer): TSpacePartitionLeaf;
+function TGLSpacePartitionLeafList.GetItems(I: Integer): TGLSpacePartitionLeaf;
 begin
-  Result := TSpacePartitionLeaf(Get(I));
+  Result := TGLSpacePartitionLeaf(Get(I));
 end;
 
-procedure TSpacePartitionLeafList.SetItems(I: Integer; const Value: TSpacePartitionLeaf);
+procedure TGLSpacePartitionLeafList.SetItems(I: Integer; const Value: TGLSpacePartitionLeaf);
 begin
   Put(I, Value);
 end;
 
+//------------------------------
+// TGLSpacePartitionLeafs
+//-------------------------------
+
+constructor TGLSpacePartitionLeafS.CreateGLOwned(SpacePartition
+  : TGLBaseSpacePartition; aGLBaseSceneObject: TGLBaseSceneObject);
+begin
+  GLBaseSceneObject := aGLBaseSceneObject;
+
+  // Set them all off in the same direction
+  Direction.X := Random();
+  Direction.Y := Random();
+  Direction.Z := Random(); // }
+
+  NormalizeVector(Direction);
+  inherited CreateOwned(SpacePartition);
+end;
+
+procedure TGLSpacePartitionLeafS.UpdateCachedAABBAndBSphere;
+begin
+  FCachedAABB := GLBaseSceneObject.AxisAlignedBoundingBox();
+  FCachedAABB.Min := GLBaseSceneObject.LocalToAbsolute(FCachedAABB.Min);
+  FCachedAABB.Max := GLBaseSceneObject.LocalToAbsolute(FCachedAABB.Max);
+
+  FCachedBSphere.Radius := GLBaseSceneObject.BoundingSphereRadius;
+  FCachedBSphere.Center := GLBaseSceneObject.Position.AsAffineVector;
+end;
+
 //--------------------------------------
-// TBaseSpacePartition
+// TGLBaseSpacePartition
 //--------------------------------------
-procedure TBaseSpacePartition.AddLeaf(ALeaf: TSpacePartitionLeaf);
+procedure TGLBaseSpacePartition.AddLeaf(ALeaf: TGLSpacePartitionLeaf);
 begin
   // Virtual
   ALeaf.UpdateCachedAABBAndBSphere;
 end;
 
-procedure TBaseSpacePartition.Clear;
+procedure TGLBaseSpacePartition.Clear;
 begin
   // Virtual
 end;
 
-constructor TBaseSpacePartition.Create;
+constructor TGLBaseSpacePartition.Create;
 begin
   inherited;
 
-  FQueryResult := TSpacePartitionLeafList.Create
+  FQueryResult := TGLSpacePartitionLeafList.Create
 end;
 
-destructor TBaseSpacePartition.Destroy;
+destructor TGLBaseSpacePartition.Destroy;
 begin
   FreeAndNil(FQueryResult);
   inherited;
 end;
 
-procedure TBaseSpacePartition.FlushQueryResult;
+procedure TGLBaseSpacePartition.FlushQueryResult;
 begin
   FQueryResult.Count := 0;
   FQueryInterObjectTests := 0;
 end;
 
-procedure TBaseSpacePartition.LeafChanged(ALeaf: TSpacePartitionLeaf);
+procedure TGLBaseSpacePartition.LeafChanged(ALeaf: TGLSpacePartitionLeaf);
 begin
   // Virtual
 end;
 
-procedure TBaseSpacePartition.ProcessUpdated;
+procedure TGLBaseSpacePartition.ProcessUpdated;
 begin
   // Virtual
 end;
 
-function TBaseSpacePartition.QueryAABB(const AAABB: TAABB): Integer;
-begin
-  // Virtual
-  Result := 0;
-end;
-
-function TBaseSpacePartition.QueryBSphere(const ABSphere: TBSphere): Integer;
+function TGLBaseSpacePartition.QueryAABB(const AAABB: TAABB): Integer;
 begin
   // Virtual
   Result := 0;
 end;
 
-function TBaseSpacePartition.QueryCone(const ACone: TGLConeSP): Integer;
+function TGLBaseSpacePartition.QueryBSphere(const ABSphere: TBSphere): Integer;
 begin
   // Virtual
   Result := 0;
 end;
 
-function TBaseSpacePartition.QueryPlane(const Location, Normal: TAffineVector): Integer;
+function TGLBaseSpacePartition.QueryCone(const ACone: TGLConeSP): Integer;
 begin
   // Virtual
   Result := 0;
 end;
 
-function TBaseSpacePartition.QueryLeaf(const ALeaf: TSpacePartitionLeaf): Integer;
+function TGLBaseSpacePartition.QueryPlane(const Location, Normal: TAffineVector): Integer;
+begin
+  // Virtual
+  Result := 0;
+end;
+
+function TGLBaseSpacePartition.QueryLeaf(const ALeaf: TGLSpacePartitionLeaf): Integer;
 begin
   QueryBSphere(ALeaf.FCachedBSphere);
   // Remove self if it was included (it should have been)
@@ -781,32 +821,32 @@ begin
   Result := FQueryResult.Count;
 end;
 
-procedure TBaseSpacePartition.RemoveLeaf(ALeaf: TSpacePartitionLeaf);
+procedure TGLBaseSpacePartition.RemoveLeaf(ALeaf: TGLSpacePartitionLeaf);
 begin
   // Virtual
 end;
 
-function TBaseSpacePartition.QueryFrustum(const Frustum: TFrustum): Integer;
-begin
-  // Virtual
-  Result := 0;
-end;
-
-function TBaseSpacePartition.QueryFrustumEx(const ExtendedFrustum: TGLExtendedFrustum): Integer;
+function TGLBaseSpacePartition.QueryFrustum(const Frustum: TFrustum): Integer;
 begin
   // Virtual
   Result := 0;
 end;
 
-{ TLeavedSpacePartition }
+function TGLBaseSpacePartition.QueryFrustumEx(const ExtendedFrustum: TGLExtendedFrustum): Integer;
+begin
+  // Virtual
+  Result := 0;
+end;
 
-procedure TLeavedSpacePartition.AddLeaf(ALeaf: TSpacePartitionLeaf);
+{ TGLLeavedSpacePartition }
+
+procedure TGLLeavedSpacePartition.AddLeaf(ALeaf: TGLSpacePartitionLeaf);
 begin
   FLeaves.Add(ALeaf);
   ALeaf.UpdateCachedAABBAndBSphere;
 end;
 
-procedure TLeavedSpacePartition.Clear;
+procedure TGLLeavedSpacePartition.Clear;
 var
   I: Integer;
 begin
@@ -821,14 +861,14 @@ begin
   FLeaves.Clear;
 end;
 
-constructor TLeavedSpacePartition.Create;
+constructor TGLLeavedSpacePartition.Create;
 begin
   inherited;
 
-  FLeaves := TSpacePartitionLeafList.Create;
+  FLeaves := TGLSpacePartitionLeafList.Create;
 end;
 
-destructor TLeavedSpacePartition.Destroy;
+destructor TGLLeavedSpacePartition.Destroy;
 begin
   Clear;
   FreeAndNil(FLeaves);
@@ -836,12 +876,12 @@ begin
   inherited;
 end;
 
-procedure TLeavedSpacePartition.RemoveLeaf(ALeaf: TSpacePartitionLeaf);
+procedure TGLLeavedSpacePartition.RemoveLeaf(ALeaf: TGLSpacePartitionLeaf);
 begin
   FLeaves.Remove(ALeaf);
 end;
 
-function TLeavedSpacePartition.QueryAABB(const AAABB: TAABB): Integer;
+function TGLLeavedSpacePartition.QueryAABB(const AAABB: TAABB): Integer;
 var
   I: Integer;
 begin
@@ -859,12 +899,12 @@ begin
   Result := FQueryResult.Count;
 end;
 
-function TLeavedSpacePartition.QueryBSphere(const ABSphere: TBSphere): Integer;
+function TGLLeavedSpacePartition.QueryBSphere(const ABSphere: TBSphere): Integer;
 var
   I: Integer;
   Distance2: Single;
 
-  Leaf: TSpacePartitionLeaf;
+  Leaf: TGLSpacePartitionLeaf;
 begin
   // Very brute force!
   FlushQueryResult;
@@ -882,7 +922,7 @@ begin
   Result := FQueryResult.Count;
 end;
 
-function TLeavedSpacePartition.QueryCone(const ACone: TGLConeSP): Integer;
+function TGLLeavedSpacePartition.QueryCone(const ACone: TGLConeSP): Integer;
 var
   I: Integer;
 begin
@@ -899,11 +939,11 @@ begin
   Result := FQueryResult.Count;
 end;
 
-function TLeavedSpacePartition.QueryPlane(const FLocation, FNormal: TAffineVector): Integer;
+function TGLLeavedSpacePartition.QueryPlane(const FLocation, FNormal: TAffineVector): Integer;
 var
   I: Integer;
   CurrentPenetrationDepth: Single;
-  Leaf: TSpacePartitionLeaf;
+  Leaf: TGLSpacePartitionLeaf;
 begin
   // Very brute force!
   FlushQueryResult;
@@ -921,19 +961,19 @@ begin
 end;
 
 //-------------------------------------
-// TSectorNode
+// TGLSectorNode
 //-------------------------------------
-function TSectorNode.AABBFitsInNode(const AAABB: TAABB): Boolean;
+function TGLSectorNode.AABBFitsInNode(const AAABB: TAABB): Boolean;
 begin
   Result := ContainsAABB(AAABB) in [ScContainsFully];
 end;
 
-function TSectorNode.AABBIntersectsNode(const AAABB: TAABB): Boolean;
+function TGLSectorNode.AABBIntersectsNode(const AAABB: TAABB): Boolean;
 begin
   Result := ContainsAABB(AAABB) in [ScContainsPartially, ScContainsFully];
 end;
 
-procedure TSectorNode.AddAllLeavesRecursive(const QueryResult: TSpacePartitionLeafList);
+procedure TGLSectorNode.AddAllLeavesRecursive(const QueryResult: TGLSpacePartitionLeafList);
 var
   I: Integer;
 begin
@@ -944,7 +984,7 @@ begin
     FChildren[I].AddAllLeavesRecursive(QueryResult);
 end;
 
-function TSectorNode.AddLeaf(ALeaf: TSpacePartitionLeaf): TSectorNode;
+function TGLSectorNode.AddLeaf(ALeaf: TGLSpacePartitionLeaf): TGLSectorNode;
 begin
   // Time to grow the node?
   if NoChildren and (FLeaves.Count >= FSectoredSpacePartition.FLeafThreshold) and
@@ -969,17 +1009,17 @@ begin
   end;
 end;
 
-function TSectorNode.BSphereFitsInNode(const BSphere: TBSphere): Boolean;
+function TGLSectorNode.BSphereFitsInNode(const BSphere: TBSphere): Boolean;
 begin
   Result := ContainsBSphere(BSphere) in [ScContainsFully];
 end;
 
-function TSectorNode.BSphereIntersectsNode(const BSphere: TBSphere): Boolean;
+function TGLSectorNode.BSphereIntersectsNode(const BSphere: TBSphere): Boolean;
 begin
   Result := ContainsBSphere(BSphere) in [ScContainsPartially, ScContainsFully];
 end;
 
-function TSectorNode.CalcRecursiveLeafCount: Integer;
+function TGLSectorNode.CalcRecursiveLeafCount: Integer;
 var
   I: Integer;
 begin
@@ -989,7 +1029,7 @@ begin
     Result := Result + FChildren[I].CalcRecursiveLeafCount;
 end;
 
-procedure TSectorNode.Clear;
+procedure TGLSectorNode.Clear;
 var
   I: Integer;
 begin
@@ -1001,9 +1041,9 @@ begin
   FLeaves.Clear;
 end;
 
-constructor TSectorNode.Create(ASectoredSpacePartition: TSectoredSpacePartition; AParent: TSectorNode);
+constructor TGLSectorNode.Create(ASectoredSpacePartition: TGLSectoredSpacePartition; AParent: TGLSectorNode);
 begin
-  FLeaves := TSpacePartitionLeafList.Create;
+  FLeaves := TGLSpacePartitionLeafList.Create;
   FChildCount := 0;
   FParent := AParent;
   FSectoredSpacePartition := ASectoredSpacePartition;
@@ -1014,10 +1054,10 @@ begin
     FNodeDepth := AParent.FNodeDepth + 1;
 end;
 
-procedure TSectorNode.ExpandNode;
+procedure TGLSectorNode.ExpandNode;
 var
   I: Integer;
-  OldLeaves: TSpacePartitionLeafList;
+  OldLeaves: TGLSpacePartitionLeafList;
 
 begin
   CreateChildren;
@@ -1026,7 +1066,7 @@ begin
   // we can
   OldLeaves := FLeaves;
   try
-    FLeaves := TSpacePartitionLeafList.Create;
+    FLeaves := TGLSpacePartitionLeafList.Create;
     for I := 0 to OldLeaves.Count - 1 do
       PlaceLeafInChild(OldLeaves[I]);
   finally
@@ -1034,7 +1074,7 @@ begin
   end;
 end;
 
-procedure TSectorNode.CollapseNode;
+procedure TGLSectorNode.CollapseNode;
 var
   I, J: Integer;
 begin
@@ -1052,19 +1092,19 @@ begin
   FChildCount := 0;
 end;
 
-destructor TSectorNode.Destroy;
+destructor TGLSectorNode.Destroy;
 begin
   Clear;
   FreeAndNil(FLeaves);
   inherited;
 end;
 
-function TSectorNode.GetNoChildren: Boolean;
+function TGLSectorNode.GetNoChildren: Boolean;
 begin
   Result := FChildCount = 0;
 end;
 
-function TSectorNode.GetNodeCount: Integer;
+function TGLSectorNode.GetNodeCount: Integer;
 var
   I: Integer;
 begin
@@ -1073,9 +1113,9 @@ begin
     Result := Result + FChildren[I].GetNodeCount;
 end;
 
-function TSectorNode.PlaceLeafInChild(ALeaf: TSpacePartitionLeaf): TSectorNode;
+function TGLSectorNode.PlaceLeafInChild(ALeaf: TGLSpacePartitionLeaf): TGLSectorNode;
 var
-  ChildNode: TSectorNode;
+  ChildNode: TGLSectorNode;
 begin
   // Which child does it fit in?
   ChildNode := GetChildForAABB(ALeaf.FCachedAABB);
@@ -1091,7 +1131,7 @@ begin
   Result := Self;
 end;
 
-procedure TSectorNode.QueryAABB(const AAABB: TAABB; const QueryResult: TSpacePartitionLeafList);
+procedure TGLSectorNode.QueryAABB(const AAABB: TAABB; const QueryResult: TGLSpacePartitionLeafList);
 var
   I: Integer;
   SpaceContains: TSpaceContains;
@@ -1127,7 +1167,7 @@ begin
   end;
 end;
 
-procedure TSectorNode.QueryBSphere(const ABSphere: TBSphere; const QueryResult: TSpacePartitionLeafList);
+procedure TGLSectorNode.QueryBSphere(const ABSphere: TBSphere; const QueryResult: TGLSpacePartitionLeafList);
 var
   I: Integer;
   SpaceContains: TSpaceContains;
@@ -1159,7 +1199,7 @@ begin
   end;
 end;
 
-procedure TSectorNode.QueryPlane(const Location, Normal: TAffineVector; const QueryResult: TSpacePartitionLeafList);
+procedure TGLSectorNode.QueryPlane(const Location, Normal: TAffineVector; const QueryResult: TGLSpacePartitionLeafList);
 var
   I: Integer;
   SpaceContains: TSpaceContains;
@@ -1194,7 +1234,7 @@ begin
   // *)
 end;
 
-function TSectorNode.RemoveLeaf(ALeaf: TSpacePartitionLeaf; OwnerByThis: Boolean): Boolean;
+function TGLSectorNode.RemoveLeaf(ALeaf: TGLSpacePartitionLeaf; OwnerByThis: Boolean): Boolean;
 begin
   Result := False;
   Dec(FRecursiveLeafCount);
@@ -1216,7 +1256,7 @@ begin
     Parent.RemoveLeaf(ALeaf, False);
 end;
 
-function TSectorNode.VerifyRecursiveLeafCount: string;
+function TGLSectorNode.VerifyRecursiveLeafCount: string;
 var
   I: Integer;
 begin
@@ -1233,41 +1273,41 @@ begin
   end;
 end;
 
-procedure TSectorNode.CreateChildren;
+procedure TGLSectorNode.CreateChildren;
 begin
   Assert(False, 'You must override CreateChildren!');
 end;
 
-function TSectorNode.AABBContainsSector(const AABB: TAABB): TSpaceContains;
+function TGLSectorNode.AABBContainsSector(const AABB: TAABB): TSpaceContains;
 begin
   Result := AABBContainsAABB(AABB, FAABB);
 end;
 
-function TSectorNode.BSphereContainsSector(const BSphere: TBSphere): TSpaceContains;
+function TGLSectorNode.BSphereContainsSector(const BSphere: TBSphere): TSpaceContains;
 begin
   Result := BSphereContainsAABB(BSphere, FAABB);
 end;
 
-function TSectorNode.ContainsAABB(const AAABB: TAABB): TSpaceContains;
+function TGLSectorNode.ContainsAABB(const AAABB: TAABB): TSpaceContains;
 begin
   Result := AABBContainsAABB(FAABB, AAABB);
 end;
 
-function TSectorNode.ContainsBSphere(const ABSphere: TBSphere): TSpaceContains;
+function TGLSectorNode.ContainsBSphere(const ABSphere: TBSphere): TSpaceContains;
 begin
   Result := AABBContainsBSphere(FAABB, ABSphere);
 end;
 
-procedure TSectorNode.SetAABB(const Value: TAABB);
+procedure TGLSectorNode.SetAABB(const Value: TAABB);
 begin
   FAABB := Value;
   AABBToBSphere(FAABB, FBSphere);
 end;
 
-function TSectorNode.GetChildForAABB(const AABB: TAABB): TSectorNode;
+function TGLSectorNode.GetChildForAABB(const AABB: TAABB): TGLSectorNode;
 var
   Location: TAffineVector;
-  ChildNode: TSectorNode;
+  ChildNode: TGLSectorNode;
   ChildNodeIndex: Integer;
 begin
   Assert(FChildCount > 0, 'There are no children in this node!');
@@ -1293,12 +1333,12 @@ begin
     Result := nil;
 end;
 
-function TSectorNode.GetCenter: TAffineVector;
+function TGLSectorNode.GetCenter: TAffineVector;
 begin
   Result := FBSphere.Center;
 end;
 
-procedure TSectorNode.QueryFrustum(const Frustum: TFrustum; const QueryResult: TSpacePartitionLeafList);
+procedure TGLSectorNode.QueryFrustum(const Frustum: TFrustum; const QueryResult: TGLSpacePartitionLeafList);
 var
   SpaceContains: TSpaceContains;
   I: Integer;
@@ -1334,12 +1374,12 @@ begin
     end;
 end;
 
-procedure TSectorNode.ChildrenChanged;
+procedure TGLSectorNode.ChildrenChanged;
 begin
   // Do nothing in the basic case
 end;
 
-procedure TSectorNode.QueryFrustumEx(const ExtendedFrustum: TGLExtendedFrustum; const QueryResult: TSpacePartitionLeafList);
+procedure TGLSectorNode.QueryFrustumEx(const ExtendedFrustum: TGLExtendedFrustum; const QueryResult: TGLSpacePartitionLeafList);
 var
   SpaceContains: TSpaceContains;
   I: Integer;
@@ -1378,9 +1418,9 @@ begin
 end;
 
 //-------------------------------------
-// TSectoredSpacePartition
+// TGLSectoredSpacePartition
 //-------------------------------------
-procedure TSectoredSpacePartition.AddLeaf(ALeaf: TSpacePartitionLeaf);
+procedure TGLSectoredSpacePartition.AddLeaf(ALeaf: TGLSpacePartitionLeaf);
 begin
   inherited;
   FRootNode.AddLeaf(ALeaf);
@@ -1394,14 +1434,14 @@ begin
   end;
 end;
 
-procedure TSectoredSpacePartition.Clear;
+procedure TGLSectoredSpacePartition.Clear;
 begin
   inherited Clear;
   if Assigned(FRootNode) then
     FRootNode.Clear;
 end;
 
-constructor TSectoredSpacePartition.Create;
+constructor TGLSectoredSpacePartition.Create;
 begin
   FLeafThreshold := COctree_LEAF_TRHESHOLD;
   FMaxTreeDepth := COctree_MAX_TREE_DEPTH;
@@ -1412,18 +1452,18 @@ begin
   inherited Create;
 end;
 
-function TSectoredSpacePartition.CreateNewNode(AParent: TSectorNode): TSectorNode;
+function TGLSectoredSpacePartition.CreateNewNode(AParent: TGLSectorNode): TGLSectorNode;
 begin
-  Result := TSectorNode.Create(Self, AParent);
+  Result := TGLSectorNode.Create(Self, AParent);
 end;
 
-destructor TSectoredSpacePartition.Destroy;
+destructor TGLSectoredSpacePartition.Destroy;
 begin
   inherited Destroy;
   FRootNode.Free;
 end;
 
-function TSectoredSpacePartition.GetAABB: TAABB;
+function TGLSectoredSpacePartition.GetAABB: TAABB;
 var
   I: Integer;
 begin
@@ -1441,18 +1481,18 @@ begin
   end;
 end;
 
-function TSectoredSpacePartition.GetNodeCount: Integer;
+function TGLSectoredSpacePartition.GetNodeCount: Integer;
 begin
   Result := FRootNode.GetNodeCount;
 end;
 
-procedure TSectoredSpacePartition.LeafChanged(ALeaf: TSpacePartitionLeaf);
+procedure TGLSectoredSpacePartition.LeafChanged(ALeaf: TGLSpacePartitionLeaf);
 var
-  Node: TSectorNode;
+  Node: TGLSectorNode;
 begin
   // If the leaf still fits in the old node, leave it there - or in one of the
   // children
-  Node := TSectorNode(ALeaf.FPartitionTag);
+  Node := TGLSectorNode(ALeaf.FPartitionTag);
   Assert(Node <> nil, 'No leaf node could be found!');
   if Node.AABBFitsInNode(ALeaf.FCachedAABB) then
   begin
@@ -1481,38 +1521,38 @@ begin
   end;
 end;
 
-function TSectoredSpacePartition.QueryAABB(const AAABB: TAABB): Integer;
+function TGLSectoredSpacePartition.QueryAABB(const AAABB: TAABB): Integer;
 begin
   FlushQueryResult;
   FRootNode.QueryAABB(AAABB, FQueryResult);
   Result := FQueryResult.Count;
 end;
 
-function TSectoredSpacePartition.QueryBSphere(const ABSphere: TBSphere): Integer;
+function TGLSectoredSpacePartition.QueryBSphere(const ABSphere: TBSphere): Integer;
 begin
   FlushQueryResult;
   FRootNode.QueryBSphere(ABSphere, FQueryResult);
   Result := FQueryResult.Count;
 end;
 
-function TSectoredSpacePartition.QueryPlane(const Location, Normal: TAffineVector): Integer;
+function TGLSectoredSpacePartition.QueryPlane(const Location, Normal: TAffineVector): Integer;
 begin
   FlushQueryResult;
   FRootNode.QueryPlane(Location, Normal, FQueryResult);
   Result := FQueryResult.Count;
 end;
 
-function TSectoredSpacePartition.QueryLeaf(const ALeaf: TSpacePartitionLeaf): Integer;
+function TGLSectoredSpacePartition.QueryLeaf(const ALeaf: TGLSpacePartitionLeaf): Integer;
 var
   I: Integer;
-  Node: TSectorNode;
-  TestLeaf: TSpacePartitionLeaf;
+  Node: TGLSectorNode;
+  TestLeaf: TGLSpacePartitionLeaf;
 begin
   // Query current node and all nodes upwards until we find the root, no need
   // to check intersections, because we know that the leaf partially intersects
   // all it's parents.
 
-  Node := TSectorNode(ALeaf.FPartitionTag);
+  Node := TGLSectorNode(ALeaf.FPartitionTag);
   FlushQueryResult;
   // First, query downwards!
   Node.QueryAABB(ALeaf.FCachedAABB, QueryResult);
@@ -1536,27 +1576,27 @@ begin
   Result := QueryResult.Count;
 end;
 
-procedure TSectoredSpacePartition.RemoveLeaf(ALeaf: TSpacePartitionLeaf);
+procedure TGLSectoredSpacePartition.RemoveLeaf(ALeaf: TGLSpacePartitionLeaf);
 begin
   inherited;
-  TSectorNode(ALeaf.FPartitionTag).RemoveLeaf(ALeaf, True);
+  TGLSectorNode(ALeaf.FPartitionTag).RemoveLeaf(ALeaf, True);
 end;
 
-procedure TSectoredSpacePartition.SetLeafThreshold(const Value: Integer);
+procedure TGLSectoredSpacePartition.SetLeafThreshold(const Value: Integer);
 begin
   FLeafThreshold := Value;
 end;
 
-procedure TSectoredSpacePartition.SetMaxTreeDepth(const Value: Integer);
+procedure TGLSectoredSpacePartition.SetMaxTreeDepth(const Value: Integer);
 begin
   FMaxTreeDepth := Value;
 end;
 
-procedure TSectoredSpacePartition.RebuildTree(const NewAABB: TAABB);
+procedure TGLSectoredSpacePartition.RebuildTree(const NewAABB: TAABB);
 var
   I: Integer;
-  OldLeaves: TSpacePartitionLeafList;
-  TempGrowMethod: TGrowMethod;
+  OldLeaves: TGLSpacePartitionLeafList;
+  TempGrowMethod: TGLGrowMethod;
 begin
   // Delete ALL nodes in the tree
   FRootNode.Free;
@@ -1566,7 +1606,7 @@ begin
 
   // Insert all nodes again
   OldLeaves := FLeaves;
-  FLeaves := TSpacePartitionLeafList.Create;
+  FLeaves := TGLSpacePartitionLeafList.Create;
 
   // This will cause an except if the build goes badly, which is better than
   // an infinite loop
@@ -1578,7 +1618,7 @@ begin
   FGrowMethod := TempGrowMethod;
 end;
 
-procedure TSectoredSpacePartition.UpdateStructureSize(Gravy: Single);
+procedure TGLSectoredSpacePartition.UpdateStructureSize(Gravy: Single);
 var
   MaxAABB, NewAABB: TAABB;
   AABBSize: TAffineVector;
@@ -1602,20 +1642,20 @@ begin
   RebuildTree(NewAABB);
 end;
 
-procedure TSectoredSpacePartition.FlushQueryResult;
+procedure TGLSectoredSpacePartition.FlushQueryResult;
 begin
   inherited;
   FQueryNodeTests := 0;
 end;
 
-function TSectoredSpacePartition.QueryFrustum(const Frustum: TFrustum): Integer;
+function TGLSectoredSpacePartition.QueryFrustum(const Frustum: TFrustum): Integer;
 begin
   FlushQueryResult;
   FRootNode.QueryFrustum(Frustum, FQueryResult);
   Result := FQueryResult.Count;
 end;
 
-function TSectoredSpacePartition.QueryFrustumEx(const ExtendedFrustum: TGLExtendedFrustum): Integer;
+function TGLSectoredSpacePartition.QueryFrustumEx(const ExtendedFrustum: TGLExtendedFrustum): Integer;
 begin
   FlushQueryResult;
   FRootNode.QueryFrustumEx(ExtendedFrustum, FQueryResult);
@@ -1691,14 +1731,14 @@ begin
 end;
 
 //-------------------------------------
-// TOctreeSpacePartition
+// TGLOctreeSpacePartition
 //-------------------------------------
-function TOctreeSpacePartition.CreateNewNode(AParent: TSectorNode): TSectorNode;
+function TGLOctreeSpacePartition.CreateNewNode(AParent: TGLSectorNode): TGLSectorNode;
 begin
   Result := TSPOctreeNode.Create(Self, AParent);
 end;
 
-procedure TOctreeSpacePartition.SetSize(const Min, Max: TAffineVector);
+procedure TGLOctreeSpacePartition.SetSize(const Min, Max: TAffineVector);
 var
   AABB: TAABB;
 begin
@@ -1828,10 +1868,10 @@ begin
   FChildCount := 4;
 end;
 
-function TSPQuadtreeNode.GetChildForAABB(const AABB: TAABB): TSectorNode;
+function TSPQuadtreeNode.GetChildForAABB(const AABB: TAABB): TGLSectorNode;
 var
   Location: TAffineVector;
-  ChildNode: TSectorNode;
+  ChildNode: TGLSectorNode;
   ChildNodeIndex: Integer;
 begin
   // Instead of looping through all children, we simply determine on which
@@ -1855,14 +1895,14 @@ begin
 end;
 
 //-----------------------------------
-// TQuadtreeSpacePartition
+// TGLQuadtreeSpacePartition
 //-----------------------------------
-function TQuadtreeSpacePartition.CreateNewNode(AParent: TSectorNode): TSectorNode;
+function TGLQuadtreeSpacePartition.CreateNewNode(AParent: TGLSectorNode): TGLSectorNode;
 begin
   Result := TSPQuadtreeNode.Create(Self, AParent);
 end;
 
-procedure TQuadtreeSpacePartition.SetSize(const Min, Max: TAffineVector);
+procedure TGLQuadtreeSpacePartition.SetSize(const Min, Max: TAffineVector);
 var
   AABB: TAABB;
 begin
@@ -1905,9 +1945,9 @@ begin
 end;
 
 procedure RenderSpatialPartitioning(var rci: TGLRenderContextInfo;
-  const Space: TSectoredSpacePartition);
+  const Space: TGLSectoredSpacePartition);
 
-  procedure RenderSectorNode(Node: TSectorNode);
+  procedure RenderSectorNode(Node: TGLSectorNode);
   var
     i: integer;
     AABB: TAABB;
@@ -1962,20 +2002,20 @@ begin
 end;
 
 //------------------------------------
-// TSceneObj
+// TGLSceneObj
 //------------------------------------
-constructor TSceneObj.CreateObj(Owner: TSectoredSpacePartition; aObj: TGLBaseSceneObject);
+constructor TGLSceneObj.CreateObj(Owner: TGLSectoredSpacePartition; aObj: TGLBaseSceneObject);
 begin
   Obj := aObj;
   inherited CreateOwned(Owner);
 end;
 
-destructor TSceneObj.Destroy;
+destructor TGLSceneObj.Destroy;
 begin
   inherited;
 end;
 
-procedure TSceneObj.UpdateCachedAABBAndBSphere;
+procedure TGLSceneObj.UpdateCachedAABBAndBSphere;
 begin
   FCachedAABB := Obj.AxisAlignedBoundingBox;
   FCachedAABB.min := Obj.LocalToAbsolute(FCachedAABB.min);

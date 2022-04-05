@@ -10,12 +10,10 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
   OnResize = FormResize
-  PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
     Left = 209
@@ -215,13 +213,19 @@ object Form1: TForm1
       end
     end
     object GLConsole1: TGLConsole
+      SceneViewer = Viewer
       HudSprite.Material.FrontProperties.Ambient.Color = {0000803F0000803F0000803F0000803F}
       HudSprite.Material.FrontProperties.Diffuse.Color = {CDCC4C3FCDCC4C3FCDCC4C3F0000003F}
       HudSprite.Material.BlendingMode = bmTransparency
       HudSprite.Material.Texture.TextureMode = tmModulate
       HudSprite.Material.Texture.Disabled = False
+      HudSprite.Position.Coordinates = {00002F4366E69742000000000000803F}
+      HudSprite.Width = 350.000000000000000000
+      HudSprite.Height = 151.899993896484400000
       HudSprite.Rotation = 0.000000000000000000
       HudText.Position.Coordinates = {0000404000000040000000000000803F}
+      HudText.BitmapFont = Font1
+      HudText.Text = '> '
       HudText.Rotation = 0.000000000000000000
       HudText.ModulateColor.Color = {00000000000000000000803F0000803F}
       Options = []

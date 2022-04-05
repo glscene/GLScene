@@ -2186,7 +2186,8 @@ begin
   // Verify Body
   dBodySetData(body, VerificationPointer);
   Assert(dBodyGetData(body) = VerificationPointer, 'Body test 1 fails');
-  Assert(body.baseObject.userdata = VerificationPointer, 'Body test 2 fails');
+    Assert(dBodyGetData(body) = VerificationPointer, 'Body test 2 fails');
+//  Assert(body.baseObject.userdata = VerificationPointer, 'Body test 2 fails');
 
   dBodyGetMass(body, m);
 

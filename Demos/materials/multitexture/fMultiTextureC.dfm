@@ -2,97 +2,132 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'MultiTexture'
-  ClientHeight = 415
-  ClientWidth = 550
+  ClientHeight = 519
+  ClientWidth = 688
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 17
   object Image1: TImage
-    Left = 411
-    Top = 56
-    Width = 128
-    Height = 128
+    Left = 514
+    Top = 70
+    Width = 160
+    Height = 160
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Stretch = True
     OnClick = Image1Click
   end
   object Image2: TImage
-    Left = 411
-    Top = 208
-    Width = 128
-    Height = 128
+    Left = 514
+    Top = 260
+    Width = 160
+    Height = 160
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Stretch = True
     OnClick = Image2Click
   end
   object Label1: TLabel
-    Left = 416
-    Top = 40
-    Width = 70
-    Height = 13
+    Left = 520
+    Top = 50
+    Width = 89
+    Height = 17
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Texture Map 1'
   end
   object Label2: TLabel
-    Left = 416
-    Top = 192
-    Width = 70
-    Height = 13
+    Left = 520
+    Top = 240
+    Width = 89
+    Height = 17
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Texture Map 2'
   end
   object Label3: TLabel
-    Left = 416
-    Top = 368
-    Width = 57
-    Height = 13
+    Left = 520
+    Top = 460
+    Width = 72
+    Height = 17
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Map 2 Scale'
   end
   object Label4: TLabel
-    Left = 432
-    Top = 8
-    Width = 93
-    Height = 19
+    Left = 540
+    Top = 10
+    Width = 118
+    Height = 24
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'MultiTexture'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -16
+    Font.Height = -20
     Font.Name = 'Arial'
     Font.Style = [fsBold]
     ParentFont = False
   end
   object GLSceneViewer1: TGLSceneViewer
-    Left = 8
-    Top = 8
-    Width = 393
-    Height = 393
+    Left = 10
+    Top = 10
+    Width = 491
+    Height = 491
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Camera = GLCamera1
-    FieldOfView = 151.447769165039100000
+    FieldOfView = 156.976486206054700000
     PenAsTouch = False
     Enabled = False
     TabOrder = 0
   end
   object TrackBar1: TTrackBar
-    Left = 413
-    Top = 378
-    Width = 126
-    Height = 25
+    Left = 516
+    Top = 473
+    Width = 158
+    Height = 31
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Max = 30
     Min = 5
     Position = 10
     TabOrder = 1
-    ThumbLength = 10
+    ThumbLength = 13
     OnChange = TrackBar1Change
   end
   object CBClampTex2: TCheckBox
-    Left = 416
-    Top = 344
-    Width = 97
-    Height = 17
+    Left = 520
+    Top = 430
+    Width = 121
+    Height = 21
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Clamp Texture 2'
     TabOrder = 2
   end

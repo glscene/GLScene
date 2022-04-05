@@ -2,25 +2,28 @@ object Form1: TForm1
   Left = 217
   Top = 127
   Caption = 'Splines'
-  ClientHeight = 400
-  ClientWidth = 408
+  ClientHeight = 320
+  ClientWidth = 326
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 408
-    Height = 400
+    Width = 326
+    Height = 320
+    Margins.Left = 2
+    Margins.Top = 2
+    Margins.Right = 2
+    Margins.Bottom = 2
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
     Buffer.AntiAliasing = aa4xHQ
-    FieldOfView = 165.749969482421900000
+    FieldOfView = 162.238677978515600000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -47,7 +50,7 @@ object Form1: TForm1
         end>
       NodesAspect = lnaCube
       NodeSize = 0.500000000000000000
-      SplineMode = lsmCubicSpline
+      SplineMode = lsmBezierSpline
       Options = [loUseNodeColorForLines]
     end
     object GLCamera1: TGLCamera

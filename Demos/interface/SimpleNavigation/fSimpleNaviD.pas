@@ -50,6 +50,7 @@ procedure TFormSimpleNavigation.GLCadencer1Progress(Sender: TObject; const delta
   newTime: Double);
 begin
   GLSceneViewer1.Invalidate;
+  GLCube1.Turn(0.1);
 end;
 
 end.

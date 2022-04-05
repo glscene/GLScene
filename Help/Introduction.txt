@@ -1,13 +1,12 @@
 GLScene for Win32/Win64
-Embarcadero Rad Studio 11.0
 
 -------------------------------------------------------
 
 GLScene is an OpenGL based 3D library for Delphi, C++Builder and Lazarus. 
 It provides visual components and objects allowing description and effective rendering of 3D scenes.
-GLScene is not only an OpenGL wrapper or utility library, but it has grown to become a set of founding classes 
-for a generic 3D engine with Rapid Application Development in mind. 
-GLScene allows you to quickly design and render 3D scenes without having to learn the intricacies of OpenGL: 
+GLScene is not only an OpenGL wrapper or utility library, but it's grown to become a set of founding classes 
+for a generic 3D engine for the Rapid Application Development. 
+GLScene allows you to design and render 3D scenes quickly and without having to learn the intricacies of OpenGL: 
 if you know how to design a TForm, you'll easily master the basic operation of TGLScene. 
 Make sure to checkout the introduction tutorial included in the help folder.
 GLScene includes more than many components and a variety of founding classes. 

@@ -67,7 +67,7 @@ type
   private
   public
     procedure MyForceAndTorqueDensity(const cbody: PNewtonBody;
-      timestep: NGDFloat; threadIndex: Integer);
+      timestep: dFloat; threadIndex: Integer);
     procedure Shoot;
   end;
 
@@ -79,7 +79,7 @@ implementation
 {$R *.dfm}
 
 function BuoyancyPlaneCallback(const collisionID: Integer; context: Pointer;
-  const globalSpaceMatrix: PNGDFloat; globalSpacePlane: PNGDFloat): Integer;
+  const globalSpaceMatrix: PdFloat; globalSpacePlane: PdFloat): Integer;
   cdecl;
 var
   BodyMatrix: TGLMatrix;
@@ -149,7 +149,7 @@ begin
 end;
 
 procedure TFormNewtonDensity.MyForceAndTorqueDensity(const cbody: PNewtonBody;
-  timestep: NGDFloat; threadIndex: Integer);
+  timestep: dFloat; threadIndex: Integer);
 var
   worldGravity: TGLVector;
   NGDDyn: TGLNGDDynamic;

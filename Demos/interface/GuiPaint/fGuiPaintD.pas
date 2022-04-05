@@ -24,6 +24,7 @@ uses
   GLS.Windows,
   GLS.Gui,
   GLS.Texture,
+  GLS.Canvas,
 
   GLS.Material,
   GLS.Coordinates,

@@ -22,7 +22,7 @@
 #include <Vcl.Samples.Spin.hpp>
 
 // ---------------------------------------------------------------------------
-class TFormClouds : public TForm {
+class TFormCloudsC : public TForm {
 __published: // IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
 	TPanel *Panel1;
@@ -61,12 +61,21 @@ __published: // IDE-managed Components
 	TSaveDialog *SaveDialog1;
 
 	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall CBFormatChange(TObject *Sender);
+	void __fastcall GLCadencer1TotalProgress(TObject *Sender, const double DeltaTime,
+          const double NewTime);
+	void __fastcall TrackBar1Change(TObject *Sender);
+	void __fastcall Timer1Timer(TObject *Sender);
+	void __fastcall GLSceneViewer1AfterRender(TObject *Sender);
+	void __fastcall CloudFileOpenBtnClick(TObject *Sender);
+	void __fastcall MakeAndSaveCloudNoiseFileClick(TObject *Sender);
 
 public: // User declarations
-	__fastcall TFormClouds(TComponent* Owner);
+    BOOL newSelection;
+	__fastcall TFormCloudsC(TComponent* Owner);
 };
 
 // ---------------------------------------------------------------------------
-extern PACKAGE TFormClouds *FormClouds;
+extern PACKAGE TFormCloudsC *FormCloudsC;
 // ---------------------------------------------------------------------------
 #endif

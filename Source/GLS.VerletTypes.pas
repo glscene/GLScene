@@ -49,7 +49,7 @@ type
   TGLVerletWorld = class;
 
   // Basic Verlet Node
-  TGLBaseVerletNode = class(TSpacePartitionLeaf)
+  TGLBaseVerletNode = class(TGLSpacePartitionLeaf)
   private
     FForce: TAffineVector;
     FOwner: TGLVerletWorld;
@@ -169,7 +169,7 @@ type
   end;
 
   // Verlet edges simulate rigid collission edges
-  TGLVerletEdge = class(TSpacePartitionLeaf)
+  TGLVerletEdge = class(TGLSpacePartitionLeaf)
   private
     FNodeA: TGLBaseVerletNode;
     FNodeB: TGLBaseVerletNode;
@@ -353,7 +353,7 @@ type
     FCurrentDeltaTime: Single;
     FInvCurrentDeltaTime: Single;
     FSolidEdges: TGLVerletEdgeList;
-    FSpacePartition: TBaseSpacePartition;
+    FSpacePartition: TGLBaseSpacePartition;
     FCurrentStepCount: Integer;
     FUpdateSpacePartion: TUpdateSpacePartion;
     FCollisionConstraintTypes: TCollisionConstraintTypesSet;
@@ -402,7 +402,7 @@ type
     property CurrentDeltaTime: Single read FCurrentDeltaTime;
     property SolidEdges: TGLVerletEdgeList read FSolidEdges write FSolidEdges;
     property CurrentStepCount: Integer read FCurrentStepCount;
-    property SpacePartition: TBaseSpacePartition read FSpacePartition;
+    property SpacePartition: TGLBaseSpacePartition read FSpacePartition;
     property UpdateSpacePartion: TUpdateSpacePartion read FUpdateSpacePartion
       write FUpdateSpacePartion;
     property CollisionConstraintTypes: TCollisionConstraintTypesSet
@@ -1063,8 +1063,8 @@ var
   i: Integer;
   node: TGLBaseVerletNode;
   edge: TGLVerletEdge;
-  SP: TBaseSpacePartition;
-  Leaf: TSpacePartitionLeaf;
+  SP: TGLBaseSpacePartition;
+  Leaf: TGLSpacePartitionLeaf;
 begin
   if Owner.SpacePartition = nil then
   begin
@@ -2370,12 +2370,12 @@ end;
 procedure TGLVerletWorld.CreateOctree(const OctreeMin, OctreeMax: TAffineVector;
   const LeafThreshold, MaxTreeDepth: Integer);
 var
-  Octree: TOctreeSpacePartition;
+  Octree: TGLOctreeSpacePartition;
 begin
   Assert(FNodes.Count = 0,
     'You can only create an octree while the world is empty!');
   FreeAndNil(FSpacePartition);
-  Octree := TOctreeSpacePartition.Create;
+  Octree := TGLOctreeSpacePartition.Create;
   Octree.SetSize(OctreeMin, OctreeMax);
   Octree.MaxTreeDepth := MaxTreeDepth;
   Octree.LeafThreshold := LeafThreshold;

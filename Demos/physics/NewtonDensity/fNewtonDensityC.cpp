@@ -27,7 +27,7 @@ TForm1 *Form1;
 
 
 int __cdecl BuoyancyPlaneCallback(const int collisionID, void *context,
-  const PNGDFloat globalSpaceMatrix, PNGDFloat globalSpacePlane)
+  const PdFloat globalSpaceMatrix, PdFloat globalSpacePlane)
 {
   TGLMatrix *BodyMatrix;
   TGLVector PlaneEquation;
@@ -105,7 +105,7 @@ void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Bu
 //---------------------------------------------------------------------------
 
 void TForm1::MyForceAndTorqueDensity(const PNewtonBody cbody,
-	  NGDFloat timestep, int threadIndex)
+	  dFloat timestep, int threadIndex)
 {
   TGLVector worldGravity;
   TGLNGDDynamic  *NGDDyn;

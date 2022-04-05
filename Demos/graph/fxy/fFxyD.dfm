@@ -226,4 +226,9 @@ object FormFxy: TFormFxy
       end
     end
   end
+  object GLAsyncTimer1: TGLAsyncTimer
+    OnTimer = GLAsyncTimer1Timer
+    Left = 125
+    Top = 21
+  end
 end

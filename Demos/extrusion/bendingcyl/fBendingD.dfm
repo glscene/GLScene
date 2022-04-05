@@ -3,29 +3,24 @@ object FormBendingCyl: TFormBendingCyl
   Top = 106
   BorderWidth = 3
   Caption = 'Bending Cylinder'
-  ClientHeight = 451
-  ClientWidth = 645
+  ClientHeight = 361
+  ClientWidth = 516
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 645
-    Height = 451
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 516
+    Height = 361
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 154.996200561523400000
+    FieldOfView = 149.033645629882800000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -33,39 +28,27 @@ object FormBendingCyl: TFormBendingCyl
     TabOrder = 0
   end
   object CBSpline: TCheckBox
-    Left = 140
-    Top = 10
-    Width = 71
-    Height = 21
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 112
+    Top = 8
+    Width = 57
+    Height = 17
     Caption = 'Splines'
     TabOrder = 1
     OnClick = CBSplineClick
   end
   object CBFat: TCheckBox
-    Left = 250
-    Top = 10
-    Width = 71
-    Height = 21
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 200
+    Top = 8
+    Width = 57
+    Height = 17
     Caption = 'Fat/Slim'
     TabOrder = 2
   end
   object PanelFPS: TPanel
-    Left = 360
-    Top = 10
-    Width = 161
-    Height = 21
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 288
+    Top = 8
+    Width = 129
+    Height = 17
     Caption = 'FPS'
     TabOrder = 3
   end
