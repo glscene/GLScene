@@ -88,7 +88,7 @@ uses
   LazJPG;
 {$ENDIF}
 
-{ TFormPixelCombine }
+// TFormPixelCombine
 
 procedure TFormPixelCombine.FormCreate(Sender: TObject);
 var

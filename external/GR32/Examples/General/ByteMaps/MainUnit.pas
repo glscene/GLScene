@@ -1,46 +1,46 @@
 unit MainUnit;
 
 (* ***** BEGIN LICENSE BLOCK *****
- * Version: MPL 1.1 or LGPL 2.1 with linking exception
- *
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
- * http://www.mozilla.org/MPL/
- *
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
- * for the specific language governing rights and limitations under the
- * License.
- *
- * Alternatively, the contents of this file may be used under the terms of the
- * Free Pascal modified version of the GNU Lesser General Public License
- * Version 2.1 (the "FPC modified LGPL License"), in which case the provisions
- * of this license are applicable instead of those above.
- * Please see the file LICENSE.txt for additional information concerning this
- * license.
- *
- * The Original Code is ByteMaps Example
- *
- * The Initial Developer of the Original Code is
- * Alex A. Denisov
- *
- * Portions created by the Initial Developer are Copyright (C) 2000-2005
- * the Initial Developer. All Rights Reserved.
- *
- * Contributor(s):
- *
- * ***** END LICENSE BLOCK ***** *)
+  * Version: MPL 1.1 or LGPL 2.1 with linking exception
+  *
+  * The contents of this file are subject to the Mozilla Public License Version
+  * 1.1 (the "License"); you may not use this file except in compliance with
+  * the License. You may obtain a copy of the License at
+  * http://www.mozilla.org/MPL/
+  *
+  * Software distributed under the License is distributed on an "AS IS" basis,
+  * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+  * for the specific language governing rights and limitations under the
+  * License.
+  *
+  * Alternatively, the contents of this file may be used under the terms of the
+  * Free Pascal modified version of the GNU Lesser General Public License
+  * Version 2.1 (the "FPC modified LGPL License"), in which case the provisions
+  * of this license are applicable instead of those above.
+  * Please see the file LICENSE.txt for additional information concerning this
+  * license.
+  *
+  * The Original Code is ByteMaps Example
+  *
+  * The Initial Developer of the Original Code is
+  * Alex A. Denisov
+  *
+  * Portions created by the Initial Developer are Copyright (C) 2000-2005
+  * the Initial Developer. All Rights Reserved.
+  *
+  * Contributor(s):
+  *
+  * ***** END LICENSE BLOCK ***** *)
 
 interface
 
 {$I GR32.inc}
 
 uses
-  {$IFDEF FPC}LCLIntf, {$ENDIF} SysUtils, Classes, Graphics, Controls, Forms,
+{$IFDEF FPC}LCLIntf, {$ENDIF} SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, ComCtrls, Math, Clipbrd, ExtDlgs, ToolWin,
   ImgList, Menus, GR32, GR32_OrdinalMaps, GR32_RangeBars, GR32_Image,
-  GR32_Layers;
+  GR32_Layers, System.ImageList;
 
 type
   TMainForm = class(TForm)
@@ -49,11 +49,11 @@ type
     BtnNew: TToolButton;
     BtnOpen: TToolButton;
     BtnSave: TToolButton;
-    {$IFDEF FPC}
+{$IFDEF FPC}
     CoolBar: TToolBar;
-    {$ELSE}
+{$ELSE}
     CoolBar: TCoolBar;
-    {$ENDIF}
+{$ENDIF}
     Image: TImgView32;
     ImageList: TImageList;
     LblPalette: TLabel;
@@ -86,9 +86,12 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure CheckBox1Click(Sender: TObject);
     procedure CopyClick(Sender: TObject);
-    procedure ImageMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer; Layer: TCustomLayer);
-    procedure ImageMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer; Layer: TCustomLayer);
-    procedure ImageMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer; Layer: TCustomLayer);
+    procedure ImageMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer; Layer: TCustomLayer);
+    procedure ImageMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer;
+      Layer: TCustomLayer);
+    procedure ImageMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer; Layer: TCustomLayer);
     procedure mnExitClick(Sender: TObject);
     procedure NewClick(Sender: TObject);
     procedure OpenClick(Sender: TObject);
@@ -127,7 +130,7 @@ uses
   LazJPG;
 {$ENDIF}
 
-{ TMainForm }
+// TMainForm
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
@@ -151,21 +154,25 @@ begin
     Scale := Index / 255;
     PalGrayscale[Index] := HSLtoRGB(0, 0, Scale * 0.9 + 0.1);
     PalGreens[Index] := HSLtoRGB(Scale * 0.4, 0.5, Scale * 0.4 + 0.2);
-    PalReds[Index] := HSLtoRGB(0.8 + Scale * 0.3 , 0.7 + Scale * 0.3, Scale * 0.85 + 0.1);
+    PalReds[Index] := HSLtoRGB(0.8 + Scale * 0.3, 0.7 + Scale * 0.3,
+      Scale * 0.85 + 0.1);
     PalRainbow[Index] := HSLtoRGB(0.66 - Scale * 0.7, 1, 0.4 + 0.4 * Scale);
   end;
+end;
+
+function Clamp(FloatVal: Extended): Byte;
+begin
+  if FloatVal <= 0 then
+    Result := 0
+  else if FloatVal >= 1 then
+    Result := 255
+  else
+    Result := Round(FloatVal * 255);
 end;
 
 procedure TMainForm.GenSampleData(W, H: Integer);
 var
   X, Y: Integer;
-
-  function Clamp(FloatVal: Extended): Byte;
-  begin
-    if FloatVal <= 0 then Result := 0
-    else if FloatVal >= 1 then Result := 255
-    else Result := Round(FloatVal * 255);
-  end;
 
 begin
   DataSet.SetSize(W, H);
@@ -173,10 +180,8 @@ begin
     for X := 0 to W - 1 do
     begin
       // just some noise
-      DataSet[X, Y] := Clamp(0.5 +
-        0.5 * Sin(X + Random(10)) * 0.01 +
-        0.5 * Cos(Y / 11) +
-        0.2 * Sin((X + Y) / 3));
+      DataSet[X, Y] := Clamp(0.5 + 0.5 * Sin(X + Random(10)) * 0.01 + 0.5 *
+        Cos(Y / 11) + 0.2 * Sin((X + Y) / 3));
     end;
 end;
 
@@ -185,9 +190,12 @@ var
   P: PPalette32;
 begin
   case PaletteCombo.ItemIndex of
-    0: P := @PalGrayscale;
-    1: P := @PalGreens;
-    2: P := @PalReds;
+    0:
+      P := @PalGrayscale;
+    1:
+      P := @PalGreens;
+    2:
+      P := @PalReds;
   else
     P := @PalRainbow;
   end;
@@ -236,7 +244,8 @@ procedure TMainForm.SaveClick(Sender: TObject);
 begin
   Application.ProcessMessages;
   with SavePictureDialog do
-    if Execute then Image.Bitmap.SaveToFile(FileName);
+    if Execute then
+      Image.Bitmap.SaveToFile(FileName);
 end;
 
 procedure TMainForm.ImageMouseDown(Sender: TObject; Button: TMouseButton;
@@ -248,11 +257,12 @@ begin
     MouseDragging := True;
     Image.Cursor := crSizeAll;
   end
-  else ReleaseCapture;
+  else
+    ReleaseCapture;
 end;
 
-procedure TMainForm.ImageMouseMove(Sender: TObject; Shift: TShiftState; X,
-  Y: Integer; Layer: TCustomLayer);
+procedure TMainForm.ImageMouseMove(Sender: TObject; Shift: TShiftState;
+  X, Y: Integer; Layer: TCustomLayer);
 begin
   if MouseDragging then
   begin
@@ -285,11 +295,11 @@ begin
   with OpenPictureDialog do
     if Execute then
     begin
-      { Create a temporary bitmap }
+      // Create a temporary bitmap
       B := TBitmap32.Create;
       try
         B.LoadFromFile(FileName);
-        { Convert it to grayscale values and store it into the byte map }
+        // Convert it to grayscale values and store it into the byte map
         DataSet.ReadFrom(B, ctWeightedRGB);
       finally
         B.Free;

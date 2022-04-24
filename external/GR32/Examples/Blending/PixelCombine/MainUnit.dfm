@@ -10,12 +10,10 @@ object FormPixelCombine: TFormPixelCombine
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
   DesignSize = (
     564
     346)
-  PixelsPerInch = 96
   TextHeight = 13
   object ImgView: TImgView32
     Left = 16

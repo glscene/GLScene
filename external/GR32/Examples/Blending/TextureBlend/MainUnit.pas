@@ -1,42 +1,42 @@
 unit MainUnit;
 
 (* ***** BEGIN LICENSE BLOCK *****
- * Version: MPL 1.1 or LGPL 2.1 with linking exception
- *
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
- * http://www.mozilla.org/MPL/
- *
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
- * for the specific language governing rights and limitations under the
- * License.
- *
- * Alternatively, the contents of this file may be used under the terms of the
- * Free Pascal modified version of the GNU Lesser General Public License
- * Version 2.1 (the "FPC modified LGPL License"), in which case the provisions
- * of this license are applicable instead of those above.
- * Please see the file LICENSE.txt for additional information concerning this
- * license.
- *
- * The Original Code is Texture Blend Example
- *
- * The Initial Developer(s) of the Original Code is:
- * Michael Hansen <dyster_tid@hotmail.com>
- *
- * Portions created by the Initial Developer are Copyright (C) 2000-2010
- * the Initial Developer. All Rights Reserved.
- *
- *
- * ***** END LICENSE BLOCK ***** *)
+  * Version: MPL 1.1 or LGPL 2.1 with linking exception
+  *
+  * The contents of this file are subject to the Mozilla Public License Version
+  * 1.1 (the "License"); you may not use this file except in compliance with
+  * the License. You may obtain a copy of the License at
+  * http://www.mozilla.org/MPL/
+  *
+  * Software distributed under the License is distributed on an "AS IS" basis,
+  * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+  * for the specific language governing rights and limitations under the
+  * License.
+  *
+  * Alternatively, the contents of this file may be used under the terms of the
+  * Free Pascal modified version of the GNU Lesser General Public License
+  * Version 2.1 (the "FPC modified LGPL License"), in which case the provisions
+  * of this license are applicable instead of those above.
+  * Please see the file LICENSE.txt for additional information concerning this
+  * license.
+  *
+  * The Original Code is Texture Blend Example
+  *
+  * The Initial Developer(s) of the Original Code is:
+  * Michael Hansen <dyster_tid@hotmail.com>
+  *
+  * Portions created by the Initial Developer are Copyright (C) 2000-2010
+  * the Initial Developer. All Rights Reserved.
+  *
+  *
+  * ***** END LICENSE BLOCK ***** *)
 
 interface
 
 {$I GR32.inc}
 
 uses
-  {$IFNDEF FPC} Windows, {$ELSE} LCLIntf, LResources, Buttons, {$ENDIF}
+{$IFNDEF FPC} Windows, {$ELSE} LCLIntf, LResources, Buttons, {$ENDIF}
   SysUtils, Classes, Graphics, Controls, Forms, Math, StdCtrls, ExtCtrls,
   GR32_Image, GR32_RangeBars;
 
@@ -65,6 +65,7 @@ type
 
 var
   MainForm: TMainForm;
+  A, B, C: Single;
 
 implementation
 
@@ -91,19 +92,19 @@ var
 function ColorAlgebraEx(F, B, M: TColor32): TColor32;
 begin
   // Call the coloralgebra routine in action, restore foreground alpha and blend
-  Result := BlendRegEx(ColorAlgebraReg(F, B) and $FFFFFF or F and $FF000000, B, M);
+  Result := BlendRegEx(ColorAlgebraReg(F, B) and $FFFFFF or F and
+    $FF000000, B, M);
 end;
 
 function SoftMaskedEx(F, B, M: TColor32): TColor32;
 var
-   X: Integer;
+  X: Integer;
 begin
   // Some sort of masking with MasterAlpha (as threshold) included
   X := F shr 24 - (255 - M);
   if X > 0 then
     Result := F
-  else
-  if X = 0 then
+  else if X = 0 then
     Result := ColorAverage(F, B) // Create soft edges
   else
     Result := B;
@@ -146,39 +147,36 @@ begin
   WeightmapImg.Bitmap.SetSize(256, 256);
   GenerateButton.OnClick := GenerateWeightmap;
 
-  //we don't want the same series of weightmaps repeat every time the app is run
+  // we don't want the same series of weightmaps repeat every time the app is run
   Randomize;
 
   GenerateWeightmap(Self);
 end;
 
+function GenerateSomething(X, Y: Single): Single;
+begin
+  if A < 0.6 then
+    Result := Max(Cos(X * PI * A * 2 + B), Sqr(0.1 + C + X * Y - Y)) *
+      (Sin(Y * B * A) - C + ArcTan2(X + Cos((X - Y) * B), Y + A))
+  else
+    Result := Cos(X * PI * A * 2 + C) * Sin(Y * B * A) +
+      Sin(ArcTan2(X + Cos((X - Y) * B), Y * c * Sin(X - A)));
+end;
+
 procedure TMainForm.GenerateWeightmap(Sender: TObject);
 // Below code is very much based on experimentation, feel free to play around..
-var
-  a, b, c: Single;
-
-  function GenerateSomething(x, y : Single): Single;
-  begin
-    if a < 0.6 then
-      Result := Max(Cos(x * PI * a * 2 + b), Sqr(0.1 + c + x*y - y)) *
-        (Sin(y * b * a) - c + ArcTan2(x + Cos((x - y) * b), y + a))
-    else
-      Result := Cos(x * PI * a * 2 + c) * Sin(y * b * a) +
-        Sin(ArcTan2(x + Cos((x - y) * b), y * c * Sin(x - a)));
-  end;
 
 const
   nS = 1 / 255;
-
 var
   I, J: Integer;
-  W : TColor32;
+  W: TColor32;
   D, WImg: PColor32;
-  x, y: Single;
+  X, y: Single;
 begin
   // Setup some random factors:
   a := 0.01 + Random;
-  b := PI * 10 * a * (Random * Random * 2 - 1);
+  B := PI * 10 * a * (Random * Random * 2 - 1);
   c := Random - Random;
 
   // We use the weightmap as TexB alpha, so we write that on the loop too
@@ -187,10 +185,10 @@ begin
   for J := 0 to 255 do
     for I := 0 to 255 do
     begin
-      x := Cos(I * nS + (PI * a));
+      X := Cos(I * nS + (PI * a));
       y := Sin(J * nS * (PI * c));
-      W := Round(Constrain(Abs(Min(GenerateSomething(x * c, y),
-        GenerateSomething(y + c , x * a))) * 200, 0, 255));
+      W := Round(Constrain(Abs(Min(GenerateSomething(X * c, y),
+        GenerateSomething(y + c, X * a))) * 200, 0, 255));
       if c > 0 then
         WImg^ := ColorDifference(WImg^, $FF000000 + W shl 16 + W shl 8 + W)
       else
@@ -213,28 +211,43 @@ var
 begin
   // Setup blendmode
   case BlendBox.ItemIndex of
-    0: ABlendRegEx := BlendRegEx;
-    1: ABlendRegEx := SoftMaskedEx;
+    0:
+      ABlendRegEx := BlendRegEx;
+    1:
+      ABlendRegEx := SoftMaskedEx;
   else
     begin
-       ABlendRegEx := ColorAlgebraEx;
-       case BlendBox.ItemIndex of
-         2: ColorAlgebraReg := ColorAdd;
-         3: ColorAlgebraReg := ColorSub;
-         4: ColorAlgebraReg := ColorDiv;
-         5: ColorAlgebraReg := ColorModulate;
-         6: ColorAlgebraReg := ColorMax;
-         7: ColorAlgebraReg := ColorMin;
-         8: ColorAlgebraReg := ColorDifference;
-         9: ColorAlgebraReg := ColorAverage;
-         10: ColorAlgebraReg := ColorExclusion;
-         11: ColorAlgebraReg := ColorScreen;
-         12: ColorAlgebraReg := ColorScreen;
-         13: ColorAlgebraReg := ColorDodge;
-         14: ColorAlgebraReg := ColorBurn;
-       end;
+      ABlendRegEx := ColorAlgebraEx;
+      case BlendBox.ItemIndex of
+        2:
+          ColorAlgebraReg := ColorAdd;
+        3:
+          ColorAlgebraReg := ColorSub;
+        4:
+          ColorAlgebraReg := ColorDiv;
+        5:
+          ColorAlgebraReg := ColorModulate;
+        6:
+          ColorAlgebraReg := ColorMax;
+        7:
+          ColorAlgebraReg := ColorMin;
+        8:
+          ColorAlgebraReg := ColorDifference;
+        9:
+          ColorAlgebraReg := ColorAverage;
+        10:
+          ColorAlgebraReg := ColorExclusion;
+        11:
+          ColorAlgebraReg := ColorScreen;
+        12:
+          ColorAlgebraReg := ColorScreen;
+        13:
+          ColorAlgebraReg := ColorDodge;
+        14:
+          ColorAlgebraReg := ColorBurn;
+      end;
     end;
- end;
+  end;
 
   // Combine Texture A with B
   BlendTransfer(CombImg.Bitmap, 0, 0, CombImg.Bitmap.BoundsRect, TexBImg.Bitmap,

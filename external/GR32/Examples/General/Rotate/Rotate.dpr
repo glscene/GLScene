@@ -4,10 +4,11 @@ program Rotate;
 
 uses
   Forms,
-  fRotate in 'fRotate.pas';
+  fRotate in 'fRotate.pas' {FormRotateExample};
 
 begin
   Application.Initialize;
+  Application.CreateForm(TFormRotateExample, FormRotateExample);
   Application.CreateForm(TFormRotateExample, FormRotateExample);
   Application.Run;
 end.

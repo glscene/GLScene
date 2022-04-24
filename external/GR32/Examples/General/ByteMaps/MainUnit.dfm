@@ -14,10 +14,8 @@ object MainForm: TMainForm
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  PixelsPerInch = 96
   TextHeight = 13
   object PnlMain: TPanel
     Left = 0
@@ -82,14 +80,14 @@ object MainForm: TMainForm
         MinHeight = 21
         MinWidth = 38
         ParentColor = False
-        Width = 38
+        Width = 39
       end
       item
         Control = ToolBar2
         ImageIndex = -1
         MinHeight = 22
         MinWidth = 291
-        Width = 490
+        Width = 494
       end>
     ParentShowHint = False
     ShowHint = True
@@ -158,7 +156,7 @@ object MainForm: TMainForm
       TabOrder = 1
       Wrapable = False
       DesignSize = (
-        481
+        479
         22)
       object LblZoom: TLabel
         Left = 0
@@ -225,7 +223,7 @@ object MainForm: TMainForm
         Left = 220
         Top = 0
         Width = 73
-        Height = 21
+        Height = 22
         Anchors = [akTop, akRight]
         TabOrder = 1
         TabStop = False
@@ -238,7 +236,7 @@ object MainForm: TMainForm
       end
     end
     object TbrMain: TToolBar
-      Left = 9
+      Left = 11
       Top = 0
       Width = 56
       Height = 21
