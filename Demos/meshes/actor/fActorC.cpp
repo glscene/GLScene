@@ -28,8 +28,6 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
    SetGLSceneMediaDir();
-   TFileName MediaPath = GetCurrentDir();
-   SetCurrentDir(MediaPath);
 
    // Load Texture of ground disk for Persistant Image
    Disk1->Material->Texture->Image->LoadFromFile("clover.jpg");
@@ -53,7 +51,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
    Actor1->Animations->SetToStrings(CBAnimations->Items);
    // Force state to stand (first in list)
    CBAnimations->ItemIndex = 0;
-   CBAnimationsChange(Sender);
+   CBAnimationsChange(this);    // Sender may be used
  }
 
 //---------------------------------------------------------------------------

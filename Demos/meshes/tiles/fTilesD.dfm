@@ -2,71 +2,54 @@ object FormTiles: TFormTiles
   Left = 124
   Top = 96
   Caption = 'Tiles'
-  ClientHeight = 508
-  ClientWidth = 753
+  ClientHeight = 406
+  ClientWidth = 602
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 593
-    Height = 508
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 474
+    Height = 406
     Camera = GLCamera
-    FieldOfView = 157.727386474609400000
+    FieldOfView = 152.326324462890600000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 593
+    Left = 474
     Top = 0
-    Width = 160
-    Height = 508
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 128
+    Height = 406
     Align = alRight
     BevelOuter = bvLowered
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -14
+    Font.Height = -11
     Font.Name = 'Arial'
     Font.Style = []
     ParentFont = False
     TabOrder = 1
     object Label1: TLabel
-      Left = 10
-      Top = 10
-      Width = 83
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 8
+      Width = 62
+      Height = 14
       Caption = 'Tile Materials'
     end
     object Label2: TLabel
-      Left = 10
-      Top = 170
-      Width = 141
-      Height = 111
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 136
+      Width = 113
+      Height = 89
       AutoSize = False
       Caption = 
         'Shift + Left button: pan'#13#10#13#10'Left button : paint with current mat' +
@@ -74,39 +57,27 @@ object FormTiles: TFormTiles
       WordWrap = True
     end
     object CBMaterial: TComboBox
-      Left = 10
-      Top = 30
-      Width = 141
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 24
+      Width = 113
+      Height = 22
       Style = csDropDownList
       TabOrder = 0
     end
     object BUPack: TButton
-      Left = 30
-      Top = 90
-      Width = 94
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 24
+      Top = 72
+      Width = 75
+      Height = 25
       Caption = 'Pack'
       TabOrder = 1
       OnClick = BUPackClick
     end
     object CBShowGrid: TCheckBox
-      Left = 10
-      Top = 310
-      Width = 101
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 248
+      Width = 81
+      Height = 17
       Caption = 'Show Grid'
       Checked = True
       State = cbChecked
@@ -114,14 +85,10 @@ object FormTiles: TFormTiles
       OnClick = CBShowGridClick
     end
     object CBSortByMaterials: TCheckBox
-      Left = 10
-      Top = 340
-      Width = 131
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 272
+      Width = 105
+      Height = 17
       Caption = 'Sort by materials'
       Checked = True
       State = cbChecked
@@ -196,6 +163,9 @@ object FormTiles: TFormTiles
         NodeSize = 0.150000005960464500
         Options = []
       end
+    end
+    object GLDummyCube1: TGLDummyCube
+      CubeSize = 1.000000000000000000
     end
   end
   object GLMaterialLibrary: TGLMaterialLibrary

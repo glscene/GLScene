@@ -16,7 +16,7 @@ unit Formats.m3DSTypes;
 
 interface
 
-{$I GLScene.inc}
+{.$I GLScene.inc}
 
 uses
    System.Classes, // for TStringList

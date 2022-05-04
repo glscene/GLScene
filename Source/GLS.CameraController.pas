@@ -351,10 +351,10 @@ begin
     end;
     if not CurrentJob.FRunning then
     begin
-      FCameraJobList.Remove(CurrentJob);
       // Notify job
       if Assigned(FOnJobFinished) then
         FOnJobFinished(CurrentJob);
+      FCameraJobList.Remove(CurrentJob);		
     end;
   end;
   // AdjustScene;

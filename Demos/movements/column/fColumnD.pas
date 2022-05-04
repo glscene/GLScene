@@ -21,7 +21,8 @@ uses
 
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.VectorGeometry;
+  GLS.VectorGeometry,
+  GLS.FPSMovement;
 
 type
   TFormColumn = class(TForm)
@@ -32,6 +33,7 @@ type
     StaticText1: TStaticText;
     Timer1: TTimer;
     GLCadencer1: TGLCadencer;
+    GLFPSMovementManager1: TGLFPSMovementManager;
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure GLCadencer1Progress(Sender: TObject;

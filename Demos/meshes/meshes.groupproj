@@ -9,12 +9,6 @@
         <Projects Include="actor\ActorC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="actorms3d\Actorms3dD.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="actorms3d\ActorMS3dC.cbproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="actorproxy\ActorProxyD.dproj">
             <Dependencies/>
         </Projects>
@@ -142,24 +136,6 @@
     </Target>
     <Target Name="ActorC:Make">
         <MSBuild Projects="actor\ActorC.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="Actorms3dD">
-        <MSBuild Projects="actorms3d\Actorms3dD.dproj"/>
-    </Target>
-    <Target Name="Actorms3dD:Clean">
-        <MSBuild Projects="actorms3d\Actorms3dD.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="Actorms3dD:Make">
-        <MSBuild Projects="actorms3d\Actorms3dD.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="ActorMS3dC">
-        <MSBuild Projects="actorms3d\ActorMS3dC.cbproj"/>
-    </Target>
-    <Target Name="ActorMS3dC:Clean">
-        <MSBuild Projects="actorms3d\ActorMS3dC.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="ActorMS3dC:Make">
-        <MSBuild Projects="actorms3d\ActorMS3dC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="ActorProxyD">
         <MSBuild Projects="actorproxy\ActorProxyD.dproj"/>
@@ -468,13 +444,13 @@
         <MSBuild Projects="tree\TreeC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="ActorD;ActorC;Actorms3dD;ActorMS3dC;ActorProxyD;ActorProxyC;ActorTwocamD;ActorTwocamC;CenteringD;CenteringC;CsgD;CsgC;DuckyD;DuckyC;ExPolygonD;ExPolygonC;FeedbackD;FeedbackC;FormulaD;FormulaC;MushroomD;MushroomC;PortalD;PortalC;ShadedTerrainD;ShadedTerrainC;SkeletalD;SkeletalC;SubdivideD;SubdivideC;SynthTerrainD;SynthTerrainC;TerrainD;TerrainC;TilesD;TilesC;TreeD;TreeC"/>
+        <CallTarget Targets="ActorD;ActorC;ActorProxyD;ActorProxyC;ActorTwocamD;ActorTwocamC;CenteringD;CenteringC;CsgD;CsgC;DuckyD;DuckyC;ExPolygonD;ExPolygonC;FeedbackD;FeedbackC;FormulaD;FormulaC;MushroomD;MushroomC;PortalD;PortalC;ShadedTerrainD;ShadedTerrainC;SkeletalD;SkeletalC;SubdivideD;SubdivideC;SynthTerrainD;SynthTerrainC;TerrainD;TerrainC;TilesD;TilesC;TreeD;TreeC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ActorD:Clean;ActorC:Clean;Actorms3dD:Clean;ActorMS3dC:Clean;ActorProxyD:Clean;ActorProxyC:Clean;ActorTwocamD:Clean;ActorTwocamC:Clean;CenteringD:Clean;CenteringC:Clean;CsgD:Clean;CsgC:Clean;DuckyD:Clean;DuckyC:Clean;ExPolygonD:Clean;ExPolygonC:Clean;FeedbackD:Clean;FeedbackC:Clean;FormulaD:Clean;FormulaC:Clean;MushroomD:Clean;MushroomC:Clean;PortalD:Clean;PortalC:Clean;ShadedTerrainD:Clean;ShadedTerrainC:Clean;SkeletalD:Clean;SkeletalC:Clean;SubdivideD:Clean;SubdivideC:Clean;SynthTerrainD:Clean;SynthTerrainC:Clean;TerrainD:Clean;TerrainC:Clean;TilesD:Clean;TilesC:Clean;TreeD:Clean;TreeC:Clean"/>
+        <CallTarget Targets="ActorD:Clean;ActorC:Clean;ActorProxyD:Clean;ActorProxyC:Clean;ActorTwocamD:Clean;ActorTwocamC:Clean;CenteringD:Clean;CenteringC:Clean;CsgD:Clean;CsgC:Clean;DuckyD:Clean;DuckyC:Clean;ExPolygonD:Clean;ExPolygonC:Clean;FeedbackD:Clean;FeedbackC:Clean;FormulaD:Clean;FormulaC:Clean;MushroomD:Clean;MushroomC:Clean;PortalD:Clean;PortalC:Clean;ShadedTerrainD:Clean;ShadedTerrainC:Clean;SkeletalD:Clean;SkeletalC:Clean;SubdivideD:Clean;SubdivideC:Clean;SynthTerrainD:Clean;SynthTerrainC:Clean;TerrainD:Clean;TerrainC:Clean;TilesD:Clean;TilesC:Clean;TreeD:Clean;TreeC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ActorD:Make;ActorC:Make;Actorms3dD:Make;ActorMS3dC:Make;ActorProxyD:Make;ActorProxyC:Make;ActorTwocamD:Make;ActorTwocamC:Make;CenteringD:Make;CenteringC:Make;CsgD:Make;CsgC:Make;DuckyD:Make;DuckyC:Make;ExPolygonD:Make;ExPolygonC:Make;FeedbackD:Make;FeedbackC:Make;FormulaD:Make;FormulaC:Make;MushroomD:Make;MushroomC:Make;PortalD:Make;PortalC:Make;ShadedTerrainD:Make;ShadedTerrainC:Make;SkeletalD:Make;SkeletalC:Make;SubdivideD:Make;SubdivideC:Make;SynthTerrainD:Make;SynthTerrainC:Make;TerrainD:Make;TerrainC:Make;TilesD:Make;TilesC:Make;TreeD:Make;TreeC:Make"/>
+        <CallTarget Targets="ActorD:Make;ActorC:Make;ActorProxyD:Make;ActorProxyC:Make;ActorTwocamD:Make;ActorTwocamC:Make;CenteringD:Make;CenteringC:Make;CsgD:Make;CsgC:Make;DuckyD:Make;DuckyC:Make;ExPolygonD:Make;ExPolygonC:Make;FeedbackD:Make;FeedbackC:Make;FormulaD:Make;FormulaC:Make;MushroomD:Make;MushroomC:Make;PortalD:Make;PortalC:Make;ShadedTerrainD:Make;ShadedTerrainC:Make;SkeletalD:Make;SkeletalC:Make;SubdivideD:Make;SubdivideC:Make;SynthTerrainD:Make;SynthTerrainC:Make;TerrainD:Make;TerrainC:Make;TilesD:Make;TilesC:Make;TreeD:Make;TreeC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

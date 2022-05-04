@@ -58,6 +58,7 @@ type
     CBShowGrid: TCheckBox;
     CBSortByMaterials: TCheckBox;
     GLSimpleNavigation1: TGLSimpleNavigation;
+    GLDummyCube1: TGLDummyCube;
     procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure FormMouseWheel(Sender: TObject; Shift: TShiftState;

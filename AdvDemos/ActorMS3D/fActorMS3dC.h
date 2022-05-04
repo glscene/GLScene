@@ -10,15 +10,19 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
+
 #include "GLS.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.Coordinates.hpp"
-#include "GLS.FileZLIB.hpp"
 
 #include "GLS.FBORenderer.hpp"
 #include "GLS.Material.hpp"
 #include "GLS.Objects.hpp"
+
 #include "GLS.ArchiveManager.hpp"
+#include "GLS.FileZLIB.hpp"
+#include "GLS.TextureFormat.hpp"
+
 #include "GLS.Scene.hpp"
 
 #include "GLS.VectorGeometry.hpp"
@@ -31,7 +35,6 @@
 #include "GLS.FilePNG.hpp"
 #include "GLS.CompositeImage.hpp"
 #include "GLSL.CustomShader.hpp"
-#include "GLSL.Shader.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
@@ -48,7 +51,7 @@ __published:	// IDE-managed Components
 	TGLCamera *GLCamera1;
 	TGLCamera *GLCamera2;
 	TGLLightSource *Light2;
-	TGLSphere *GLSphere2;
+	TGLSphere *Globus;
 	TGLFBORenderer *GLFrameBuffer;
 	TGLDummyCube *Root;
 	TGLLightSource *GLLightSource1;
@@ -58,7 +61,6 @@ __published:	// IDE-managed Components
 	TGLFreeForm *Chair1;
 	TGLCadencer *GLCadencer1;
 	TGLMaterialLibrary *MatLib;
-	TGLSLShader *GLSLShader1;
 	TGLSimpleNavigation *GLNavigation;
 	TTimer *Timer1;
 	TGLSArchiveManager *GLSArchiveManager1;
@@ -75,7 +77,6 @@ __published:	// IDE-managed Components
 	void __fastcall GLDirectOpenGL1Render(TObject *Sender, TGLRenderContextInfo &rci);
 	void __fastcall GLFrameBufferAfterRender(TObject *Sender, TGLRenderContextInfo &rci);
 	void __fastcall GLFrameBufferBeforeRender(TObject *Sender, TGLRenderContextInfo &rci);
-	void __fastcall GLSLShader1Apply(TGLCustomGLSLShader *Shader);
 	void __fastcall Timer1Timer(TObject *Sender);
     void __fastcall LoadTexture(String AName, String ext);
 

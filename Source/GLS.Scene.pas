@@ -6299,6 +6299,8 @@ begin
           CreateContext(AWindowHandle);
       except
         FreeAndNil(FRenderingContext);
+    	if Assigned(FCamera) and Assigned(FCamera.FScene) then
+          FCamera.FScene.RemoveBuffer(Self);
         raise;
       end;
     end;

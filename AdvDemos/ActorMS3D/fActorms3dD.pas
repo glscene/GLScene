@@ -14,16 +14,16 @@ uses
   Vcl.ComCtrls,
   Vcl.Imaging.jpeg,
   
-  GLS.OpenGLTokens,
   GLS.PipelineTransformation,
   GLS.VectorLists,
   GLS.Cadencer,
   GLS.SceneViewer,
- 
+
   GLS.BaseClasses,
   GLS.Scene,
   GLS.VectorFileObjects,
-  GLS.Objects, GLS.Utils,
+  GLS.Objects,
+  GLS.Utils,
   GLS.Coordinates,
   GLS.GeomObjects,
   GLS.FileMS3D,
@@ -32,9 +32,6 @@ uses
   GLS.Graphics,
   GLS.VectorTypes,
   GLS.RenderContextInfo,
-  GLSL.Shader,
-  GLSL.CustomShader,
-  GLS.FBORenderer,
   GLS.ShadowPlane,
   GLS.VectorGeometry,
   GLS.SimpleNavigation,
@@ -45,10 +42,10 @@ uses
   GLS.ArchiveManager,
   GLS.Context,
   GLS.CompositeImage,
-  GLS.FileTGA,
   GLS.FileZLIB,
   GLS.FileJPEG,
-  GLS.FilePNG;
+  GLS.FilePNG,
+  GLS.FBORenderer;
 
 type
   TFormActorms3d = class(TForm)
@@ -64,14 +61,13 @@ type
     btnStartStop: TButton;
     Button4: TButton;
     Light2: TGLLightSource;
-    GLSLShader1: TGLSLShader;
     GLFrameBuffer: TGLFBORenderer;
     GLDirectOpenGL1: TGLDirectOpenGL;
     GLCamera2: TGLCamera;
     GLPlane1: TGLPlane;
     GLNavigation: TGLSimpleNavigation;
     Chair1: TGLFreeForm;
-    GLSphere2: TGLSphere;
+    Globus: TGLSphere;
     GLLightSource1: TGLLightSource;
     aniBox: TComboBox;
     aniPos: TTrackBar;
@@ -83,7 +79,6 @@ type
     procedure Button4Click(Sender: TObject);
     procedure GLCadencer1Progress(Sender: TObject; const deltaTime,
       newTime: Double);
-    procedure GLSLShader1Apply(Shader: TGLCustomGLSLShader);
     procedure GLFrameBufferBeforeRender(Sender: TObject; var rci: TGLRenderContextInfo);
     procedure GLFrameBufferAfterRender(Sender: TObject; var rci: TGLRenderContextInfo);
     procedure GLDirectOpenGL1Render(Sender: TObject;
@@ -130,27 +125,23 @@ begin
   img := MatLib.TextureByName(AName).Image as TGLCompositeImage;
   strm := GLSArchiveManager1.Archives[0].GetContent('Main/'+AName+'.'+ext);
   img.LoadFromStream(strm);
-  img.LoadFromFile('beigemarble.jpg');
 end;
 
 procedure TFormActorms3d.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
-  GLSArchiveManager1.Archives[0].LoadFromFile('ActorMS3D.zlib');
-
-
-//  MatLib.TextureByName('floor_parquet').Image.LoadFromFile('ashwood.jpg');
-//  MatLib.LibMaterialByName('floor_parquet').Material.Texture.Image.LoadFromFile('beigemarble.jpg');
-//  MatLib.TextureByName('floor_parquet').Image.LoadFromFile('beigemarble.jpg');
-
-  LoadTexture('floor_parquet', 'JPG');
-  LoadTexture('Chair', 'PNG');
-  LoadTexture('Hair', 'PNG');
-  LoadTexture('Woman4-Remap-texture', 'PNG');
+  // Loading archive
+  GLSArchiveManager1.Archives[0].LoadFromFile('../../Assets/ActorMS3D.zlib');
+  // Loading models
   Actor1.LoadFromStream('Woman4.ms3d', GLSArchiveManager1.Archives[0].GetContent('Main/Woman4.ms3d'));
-
   Chair1.LoadFromStream('Chair.ms3d', GLSArchiveManager1.Archives[0].GetContent('Main/Chair.ms3d'));
-  MatLib.TextureByName('Lightspot').Image.LoadFromFile('Flare1.bmp');
+
+  // Loading a skin and textures
+  Actor1.Material.Texture.Image.LoadFromFile('../../Assets/Woman4-Remap-texture.png');
+	Globus.Material.Texture.Image.LoadFromFile('../../Assets/Earth.jpg');
+ 	GLPlane1.Material.Texture.Image.LoadFromFile('../../Assets/floor_parquet.jpg');
+
+	LoadTexture('Hair', 'png');
+	LoadTexture('Chair', 'png');
 
   Actor1.AnimationMode := aamNone;
   Actor1.Scale.SetVector(0.1, 0.1, 0.1, 0);
@@ -214,9 +205,6 @@ begin
 
   FBiasMatrix := CreateScaleAndTranslationMatrix(VectorMake(0.5, 0.5, 0.5),
     VectorMake(0.5, 0.5, 0.5));
-  GLSLShader1.VertexProgram.LoadFromFile('Shaders\shadowmap_vp.glsl');
-  GLSLShader1.FragmentProgram.LoadFromFile('Shaders\shadowmap_fp.glsl');
-  GLSLShader1.Enabled := true;
 end;
 
 procedure TFormActorms3d.FormShow(Sender: TObject);
@@ -230,8 +218,6 @@ procedure TFormActorms3d.GLCadencer1Progress(Sender: TObject; const deltaTime,
 var
   af, af2, pv, pv2: TAffineVector;
 begin
-  //I don't know if I did this right or there is a better way,  but
-  //it does seem to work well.
   //This is used to always keep the spotlight pointed at the model during
   //animation translations.
 
@@ -313,7 +299,6 @@ procedure TFormActorms3d.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   Actor1.AnimationMode := aamNone;
   GLCadencer1.Enabled := False;
-  GLSLShader1.Enabled := false;
 end;
 
 
@@ -351,17 +336,6 @@ begin
     PolygonOffsetFactor := 2;
     PolygonOffsetUnits := 2;
   end;
-end;
-
-procedure TFormActorms3d.GLSLShader1Apply(Shader: TGLCustomGLSLShader);
-begin
-  Shader.SetTex('TextureMap', MatLib.TextureByName('floor_parquet'));
-  Shader.SetTex('ShadowMap',MatLib.TextureByName(GLFrameBuffer.DepthTextureName));
-  Shader.SetTex('LightspotMap', MatLib.TextureByName('Lightspot'));
-
-  Shader.Param['Scale'].AsFloat := 16.0;
-  Shader.Param['Softly'].AsInteger := 1;
-  Shader.Param['EyeToLightMatrix'].AsMatrix4f := FEyeToLightMatrix;
 end;
 
 procedure TFormActorms3d.SetAppPath(const Value: string);

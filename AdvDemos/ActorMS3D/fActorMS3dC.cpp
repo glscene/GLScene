@@ -17,9 +17,7 @@
 
 #pragma link "GLS.Utils"
 #pragma link "GLS.GeomObjects"
-#pragma link "GLS.CameraController"
 #pragma link "GLS.Graphics"
-#pragma link "GLS.FileTGA"
 #pragma link "GLS.VectorTypes"
 #pragma link "GLS.RenderContextInfo"
 #pragma link "GLS.ShadowPlane"
@@ -27,21 +25,23 @@
 #pragma link "GLS.Mesh"
 #pragma link "GLS.Windows"
 #pragma link "GLS.State"
-#pragma link "GLS.OpenGLTokens"
 #pragma link "GLS.Context"
 
 #pragma link "GLS.ArchiveManager"
+#pragma link "GLS.FileZLIB"
+#pragma link "GLS.TextureFormat"
+
 #pragma link "GLS.Scene"
 #pragma link "GLS.SimpleNavigation"
 #pragma link "GLS.VectorFileObjects"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.CompositeImage"
+
 #pragma link "GLS.FileMS3D"
 #pragma link "GLS.FileJPEG"
 #pragma link "GLS.FilePNG"
-#pragma link "GLS.FileZLIB"
-#pragma link "GLSL.CustomShader"
-#pragma link "GLSL.Shader"
+#pragma link "GLS.FileTGA"
+
 #pragma resource "*.dfm"
 TForm1* Form1;
 
@@ -132,55 +132,51 @@ void __fastcall TForm1::FormCloseQuery(TObject* Sender, bool &CanClose)
 {
     Actor1->AnimationMode = aamNone;
     GLCadencer1->Enabled = false;
-    GLSLShader1->Enabled = false;
 }
 
 // ---------------------------------------------------------------------------
 void _fastcall TForm1::LoadTexture(String AName, String ext)
 {
-    TGLCompositeImage* img;
-    TStream* strm = new TStream();
-    img = (TGLCompositeImage*)MatLib->TextureByName(AName)->Image;
-    strm = GLSArchiveManager1->Archives->Items[0]->GetContent(
-        "Main/" + AName + "." + ext);
-    img->LoadFromStream(strm);
+	TGLCompositeImage* img;
+	TStream* strm = new TStream();
+	img = (TGLCompositeImage*)MatLib->TextureByName(AName)->Image;
+	strm = GLSArchiveManager1->Archives->Items[0]->GetContent(
+		"Main/" + AName + "." + ext);
+	img->LoadFromStream(strm);
 }
 
 void __fastcall TForm1::FormCreate(TObject* Sender)
 {
-    SetGLSceneMediaDir();
-    GLSArchiveManager1->Archives->Items[0]->LoadFromFile("ActorMS3D.zlib");
-    LoadTexture("floor_parquet", "JPG");
-    LoadTexture("Chair", "PNG");
-    LoadTexture("Hair", "PNG");
-    LoadTexture("Woman4-Remap-texture", "PNG");
-    Actor1->LoadFromStream("Woman4.ms3d",
-        GLSArchiveManager1->Archives->Items[0]->GetContent("Main/Woman4.ms3d"));
-    Chair1->LoadFromStream("Chair.ms3d",
-        GLSArchiveManager1->Archives->Items[0]->GetContent("Main/Chair.ms3d"));
-    MatLib->TextureByName("Lightspot")->Image->LoadFromFile("Flare1.bmp");
-    // MatLib->Materials->Items[2]->Material->Texture->Image->LoadFromFile
-    // ("Flare1.bmp");
-    Actor1->AnimationMode = aamNone;
-    Actor1->Scale->SetVector(0.1, 0.1, 0.1, 0);
-    Chair1->Scale->SetVector(0.35, 0.35, 0.35, 0);
+	GLSArchiveManager1->Archives->Items[0]->LoadFromFile("../../Assets/ActorMS3D.zlib");
+	Actor1->LoadFromStream("Woman4.ms3d", GLSArchiveManager1->Archives->Items[0]->GetContent("Main/Woman4.ms3d"));
+	Chair1->LoadFromStream("Chair.ms3d", GLSArchiveManager1->Archives->Items[0]->GetContent("Main/Chair.ms3d"));
 
-    Actor1->Animations->Add();
-    Actor1->Animations->Items[0]->Reference = aarSkeleton;
-    Actor1->Animations->Items[0]->StartFrame = 2;
-    Actor1->Animations->Items[0]->EndFrame = 855;
-    Actor1->Animations->Items[0]->Name = "Dance";
+	Actor1->Material->Texture->Image->LoadFromFile("../../Assets/Woman4-Remap-texture.png");
+	Globus->Material->Texture->Image->LoadFromFile("../../Assets/Earth.jpg");
+	GLPlane1->Material->Texture->Image->LoadFromFile("../../Assets/floor_parquet.jpg");
 
-    Actor1->Animations->Items[1]->Reference = aarSkeleton;
-    Actor1->Animations->Items[1]->StartFrame = 856;
-    Actor1->Animations->Items[1]->EndFrame = 1166;
-    Actor1->Animations->Items[1]->Name = "Sexy Walk";
-    Actor1->Animations->Add();
+	LoadTexture("Hair", "png");
+	LoadTexture("Chair", "png");
+	Actor1->AnimationMode = aamNone;
+	Actor1->Scale->SetVector(0.1, 0.1, 0.1, 0);
+	Chair1->Scale->SetVector(0.35, 0.35, 0.35, 0);
 
-    Actor1->Animations->Items[2]->Reference = aarSkeleton;
-    Actor1->Animations->Items[2]->StartFrame = 1168;
-    Actor1->Animations->Items[2]->EndFrame = 1203;
-    Actor1->Animations->Items[2]->Name = "Cartwheel";
+	Actor1->Animations->Add();
+	Actor1->Animations->Items[0]->Reference = aarSkeleton;
+	Actor1->Animations->Items[0]->StartFrame = 2;
+	Actor1->Animations->Items[0]->EndFrame = 855;
+	Actor1->Animations->Items[0]->Name = "Dance";
+
+	Actor1->Animations->Items[1]->Reference = aarSkeleton;
+	Actor1->Animations->Items[1]->StartFrame = 856;
+	Actor1->Animations->Items[1]->EndFrame = 1166;
+	Actor1->Animations->Items[1]->Name = "Sexy Walk";
+	Actor1->Animations->Add();
+
+	Actor1->Animations->Items[2]->Reference = aarSkeleton;
+	Actor1->Animations->Items[2]->StartFrame = 1168;
+	Actor1->Animations->Items[2]->EndFrame = 1203;
+	Actor1->Animations->Items[2]->Name = "Cartwheel";
     Actor1->Animations->Add();
 
     Actor1->Animations->Items[3]->Reference = aarSkeleton;
@@ -189,7 +185,7 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
     Actor1->Animations->Items[3]->Name = "Hand Flip";
     Actor1->Animations->Add();
 
-    Actor1->Animations->Items[4]->Reference = aarSkeleton;
+	Actor1->Animations->Items[4]->Reference = aarSkeleton;
     Actor1->Animations->Items[4]->StartFrame = 1308;
     Actor1->Animations->Items[4]->EndFrame = 1395;
     Actor1->Animations->Items[4]->Name = "Wave";
@@ -198,20 +194,17 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
     Actor1->Animations->Items[5]->Reference = aarSkeleton;
     Actor1->Animations->Items[5]->StartFrame = 1397;
     Actor1->Animations->Items[5]->EndFrame = 2014;
-    Actor1->Animations->Items[5]->Name = "Sun Salutation";
+	Actor1->Animations->Items[5]->Name = "Sun Salutation";
     Actor1->Animations->Add();
 
     Actor1->Animations->Items[6]->Reference = aarSkeleton;
-    Actor1->Animations->Items[6]->StartFrame = 2016;
+	Actor1->Animations->Items[6]->StartFrame = 2016;
     Actor1->Animations->Items[6]->EndFrame = 2133;
     Actor1->Animations->Items[6]->Name = "Sit";
     Actor1->Animations->Add();
 
     FBiasMatrix = CreateScaleAndTranslationMatrix(
         VectorMake(0.5, 0.5, 0.5), VectorMake(0.5, 0.5, 0.5));
-    GLSLShader1->VertexProgram->LoadFromFile("shaders\\shadowmap_vp.glsl");
-    GLSLShader1->FragmentProgram->LoadFromFile("shaders\\shadowmap_fp.glsl");
-    GLSLShader1->Enabled = true;
 }
 
 // ---------------------------------------------------------------------------
@@ -226,59 +219,46 @@ void __fastcall TForm1::GLCadencer1Progress(
     TObject* Sender, const double deltaTime, const double newTime)
 {
     TAffineVector af, af2, pv, pv2;
-    GLCamera2->Position->Rotate(VectorMake(0, 1, 0), deltaTime * 0.1);
-    af = Actor1->Skeleton->CurrentFrame->Position->Items[0];
-    ScaleVector(af, Actor1->Scale->AsAffineVector);
-    af2 = GLCamera2->Position->AsAffineVector;
-    pv = VectorSubtract(af, af2);
-    NormalizeVector(pv);
-    GLCamera2->Direction->AsAffineVector = pv;
+	GLCamera2->Position->Rotate(VectorMake(0, 1, 0), deltaTime * 0.1);
+	af = Actor1->Skeleton->CurrentFrame->Position->Items[0];
+	ScaleVector(af, Actor1->Scale->AsAffineVector);
+	af2 = GLCamera2->Position->AsAffineVector;
+	pv = VectorSubtract(af, af2);
+	NormalizeVector(pv);
+	GLCamera2->Direction->AsAffineVector = pv;
 }
 
 // ---------------------------------------------------------------------------
 void __fastcall TForm1::GLDirectOpenGL1Render(
-    TObject* Sender, TGLRenderContextInfo &rci)
+	TObject* Sender, TGLRenderContextInfo &rci)
 
 {
-    FInvCameraMatrix = *rci.PipelineTransformation->InvModelViewMatrix;
-    FEyeToLightMatrix = MatrixMultiply(FInvCameraMatrix, FLightModelViewMatrix);
-    FEyeToLightMatrix = MatrixMultiply(FEyeToLightMatrix, FLightProjMatrix);
-    FEyeToLightMatrix = MatrixMultiply(FEyeToLightMatrix, FBiasMatrix);
+	FInvCameraMatrix = *rci.PipelineTransformation->InvModelViewMatrix;
+	FEyeToLightMatrix = MatrixMultiply(FInvCameraMatrix, FLightModelViewMatrix);
+	FEyeToLightMatrix = MatrixMultiply(FEyeToLightMatrix, FLightProjMatrix);
+	FEyeToLightMatrix = MatrixMultiply(FEyeToLightMatrix, FBiasMatrix);
 }
 
 // ---------------------------------------------------------------------------
 void __fastcall TForm1::GLFrameBufferAfterRender(
-    TObject* Sender, TGLRenderContextInfo &rci)
+	TObject* Sender, TGLRenderContextInfo &rci)
 
 {
-    CurrentGLContext()->GLStates->Disable(stPolygonOffsetFill);
+	CurrentGLContext()->GLStates->Disable(stPolygonOffsetFill);
 }
 
 // ---------------------------------------------------------------------------
 void __fastcall TForm1::GLFrameBufferBeforeRender(
-    TObject* Sender, TGLRenderContextInfo &rci)
+	TObject* Sender, TGLRenderContextInfo &rci)
 
 {
-    FLightModelViewMatrix =
-        *CurrentGLContext()->PipelineTransformation->ModelViewMatrix;
-    FLightProjMatrix =
-        *CurrentGLContext()->PipelineTransformation->ProjectionMatrix;
-    CurrentGLContext()->GLStates->Enable(stPolygonOffsetFill);
-    CurrentGLContext()->GLStates->PolygonOffsetFactor = 2;
-    CurrentGLContext()->GLStates->PolygonOffsetUnits = 2;
-}
-
-// ---------------------------------------------------------------------------
-void __fastcall TForm1::GLSLShader1Apply(TGLCustomGLSLShader* Shader)
-{
-    Shader->SetTex("TextureMap", MatLib->TextureByName("floor_parquet"));
-    Shader->SetTex(
-        "ShadowMap", MatLib->TextureByName(GLFrameBuffer->DepthTextureName));
-    Shader->SetTex("LightspotMap", MatLib->TextureByName("Lightspot"));
-
-    Shader->Param["Scale"]->AsFloat = 16.0;
-    Shader->Param["Softly"]->AsInteger = 1;
-    Shader->Param["EyeToLightMatrix"]->AsMatrix4f = FEyeToLightMatrix;
+	FLightModelViewMatrix =
+		*CurrentGLContext()->PipelineTransformation->ModelViewMatrix;
+	FLightProjMatrix =
+		*CurrentGLContext()->PipelineTransformation->ProjectionMatrix;
+	CurrentGLContext()->GLStates->Enable(stPolygonOffsetFill);
+	CurrentGLContext()->GLStates->PolygonOffsetFactor = 2;
+	CurrentGLContext()->GLStates->PolygonOffsetUnits = 2;
 }
 
 // ---------------------------------------------------------------------------

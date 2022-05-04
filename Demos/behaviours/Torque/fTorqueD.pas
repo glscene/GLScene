@@ -12,13 +12,13 @@ uses
   Vcl.Controls,
   Vcl.Dialogs,
   Vcl.Imaging.jpeg,
-  
+
   GLS.Objects,
   GLS.Scene,
   GLS.PersistentClasses,
   GLS.Cadencer,
   GLS.SceneViewer,
-  
+
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.Behaviours,

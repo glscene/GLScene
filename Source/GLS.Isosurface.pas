@@ -22,7 +22,7 @@ unit GLS.Isosurface;
   - by Paul Bourke (http://paulbourke.net/geometry/polygonise/)
 
   Overall
-  - Simple Data Structures to store Mesh. Vertices are calculated and stored twice
+  - Simple Data Structures to store Mesh.Vertices are calculated and stored twice
   or even more often.
 *)
 interface
@@ -46,7 +46,7 @@ const
 type
   TGLMarchingCube = class(TObject)
   private
-    FIsoValue: TScalarValue;
+    FIsoValue: TGLScalarValue;
     // sliceSize:Longword;
     PVertsX: PIntegerArray;
     PVertsY: PIntegerArray;
@@ -85,7 +85,7 @@ type
     FStepY: Single;
     FStepZ: Single;
     VoxelData: PVoxelData;
-    procedure Process_cube;
+    procedure Process_Cube;
     (* function test_face(face:byte):Boolean;
       function test_interior(s:Byte):boolean *)
     procedure Compute_Intersection_Points;
@@ -103,37 +103,37 @@ type
     procedure Set_x_vert(a_val, i, j, k: Integer);
     procedure Set_y_vert(a_val, i, j, k: Integer);
     procedure Set_z_vert(a_val, i, j, k: Integer);
-    function GetVoxelValue(i, j, k: Integer): TScalarValue;
-    procedure SetVoxelValue(i, j, k: Integer; HfValue: TScalarValue);
+    function GetVoxelValue(i, j, k: Integer): TGLScalarValue;
+    procedure SetVoxelValue(i, j, k: Integer; HfValue: TGLScalarValue);
     function GetVoxelData(i, j, k: Integer): TVoxelRec;
     function Voxel(i, j, k: Integer): PVoxelRec;
-    function calc_u(v1, v2: Single): Extended; virtual;
+    function Calc_u(v1, v2: Single): Extended; virtual;
   public
-    ScalarField: TScalarField;
+    ScalarField: TGLScalarField;
     constructor Create; overload; virtual;
     constructor Create(SizeX, SizeY, SizeZ: Integer;
-      AIsoValue: TScalarValue = 0.0; xMin: Single = -0.5; xMax: Single = 0.5;
+      AIsoValue: TGLScalarValue = 0.0; xMin: Single = -0.5; xMax: Single = 0.5;
       yMin: Single = -0.5; yMax: Single = 0.5; zMin: Single = -0.5;
       zMax: Single = 0.5); overload; virtual;
     procedure ReDim(ASizeX, ASizeY, ASizeZ: Integer;
       xMin, xMax, yMin, yMax, zMin, zMax: Single); virtual;
     destructor Destroy; override;
     procedure Run; overload;
-    procedure Run(IsoValue: TScalarValue); overload;
-    function Internal(AValue: TScalarValue): Boolean; virtual;
+    procedure Run(IsoValue: TGLScalarValue); overload;
+    function Internal(AValue: TGLScalarValue): Boolean; virtual;
     procedure FillVoxelData; overload; virtual;
-    procedure FillVoxelData(AIsoValue: TScalarValue;
-      AScalarField: TScalarField = nil); overload; virtual;
-    procedure FillVoxelData(AIsoValue: TScalarValue;
-      AScalarField: TScalarFieldInt); overload; virtual;
+    procedure FillVoxelData(AIsoValue: TGLScalarValue;
+      AScalarField: TGLScalarField = nil); overload; virtual;
+    procedure FillVoxelData(AIsoValue: TGLScalarValue;
+      AScalarField: TGLScalarFieldInt); overload; virtual;
     procedure CalcVertices(Vertices: TGLVertexList; Alpha: Single = 1);
     procedure CalcMeshObject(AMeshObject: TGLMeshObject; Alpha: Single = 1);
-    property IsoValue: TScalarValue read FIsoValue write FIsoValue; // TODO
+    property IsoValue: TGLScalarValue read FIsoValue write FIsoValue; // TODO
   end;
 
   (* 3D isosurface extractor class. This class allows to calculate and exctract
     isosurfaces from scalar field voxel models using a given isovalue *)
-  TIsoSurfaceExtractor = class(TObject)
+  TGLIsoSurfaceExtractor = class(TObject)
   private
     Data: TArray3DExt;
     Dimensions: array ['x' .. 'z'] of Integer;
@@ -156,19 +156,19 @@ type
   end;
 
 // Sphere surface
-function SFSphere(X, Y, Z: Extended): TScalarValue;
+function SFSphere(X, Y, Z: Extended): TGLScalarValue;
 // Minkowski space (http://mathworld.wolfram.com)
-function SFMinkowski(X, Y, Z: Extended): TScalarValue;
+function SFMinkowski(X, Y, Z: Extended): TGLScalarValue;
 // Klein Bottle (http://mathworld.wolfram.com)
-function SFKleinBottle(X, Y, Z: Extended): TScalarValue;
+function SFKleinBottle(X, Y, Z: Extended): TGLScalarValue;
 // Chmutov-surface-1 (http://mathworld.wolfram.com)
-function SFChmutov1(X, Y, Z: Extended): TScalarValue;
+function SFChmutov1(X, Y, Z: Extended): TGLScalarValue;
 // Chmutov-surface-2 (http://mathworld.wolfram.com)
-function SFChmutov2(X, Y, Z: Extended): TScalarValue;
+function SFChmutov2(X, Y, Z: Extended): TGLScalarValue;
 // Toroidal surface (phantasy!)
-function SFToroidal(X, Y, Z: Extended): TScalarValue;
+function SFToroidal(X, Y, Z: Extended): TGLScalarValue;
 // Double torus Surface (phantasy!)
-function SFDoubleTorus(X, Y, Z: Extended): TScalarValue;
+function SFDoubleTorus(X, Y, Z: Extended): TGLScalarValue;
 
 // -------------------------------------------------------------------------
 implementation
@@ -493,12 +493,12 @@ const
     (0, 2, 3, 6), (0, 3, 7, 6), (0, 7, 4, 6), (0, 4, 5, 6));
 
 // Test surface functions
-function SFSphere(X, Y, Z: Extended): TScalarValue;
+function SFSphere(X, Y, Z: Extended): TGLScalarValue;
 begin
   Result := sqr(X) + sqr(Y) + sqr(Z)
 end;
 
-function SFToroidal(X, Y, Z: Extended): TScalarValue;
+function SFToroidal(X, Y, Z: Extended): TGLScalarValue;
 const
   FScale = 7;
   a = 2.5;
@@ -511,7 +511,7 @@ begin
     (sqr(sqrt(sqr(Z) + sqr(X)) - a) + sqr(Y));
 end;
 
-function SFDoubleTorus(X, Y, Z: Extended): TScalarValue;
+function SFDoubleTorus(X, Y, Z: Extended): TGLScalarValue;
 const
   FScale = 2.25;
 begin
@@ -523,7 +523,7 @@ begin
     PowerInteger(Y, 4) + sqr(Z)
 end;
 
-function SFChmutov1(X, Y, Z: Extended): TScalarValue;
+function SFChmutov1(X, Y, Z: Extended): TGLScalarValue;
 const
   FScale = 2.5;
 begin
@@ -534,7 +534,7 @@ begin
     (PowerInteger(X, 4) + PowerInteger(Y, 4) + PowerInteger(Z, 4));
 end;
 
-function SFChmutov2(X, Y, Z: Extended): TScalarValue;
+function SFChmutov2(X, Y, Z: Extended): TGLScalarValue;
 const
   FScale = 2.5;
 begin
@@ -545,7 +545,7 @@ begin
     sqr(Z) * sqr(3 - 4 * sqr(Z)));
 end;
 
-function SFKleinBottle(X, Y, Z: Extended): TScalarValue;
+function SFKleinBottle(X, Y, Z: Extended): TGLScalarValue;
 const
   FScale = 7.5;
 begin
@@ -557,7 +557,7 @@ begin
     (sqr(X) + sqr(Y) + sqr(Z) - 2 * Y - 1);
 end;
 
-function SFMinkowski(X, Y, Z: Extended): TScalarValue;
+function SFMinkowski(X, Y, Z: Extended): TGLScalarValue;
 const
   FScale = 7;
 begin
@@ -574,7 +574,7 @@ end;
    Purpose: Extract an Isosurface from volume dataset for given Isovalue
    ------------------------------------------------------------------------- *)
 
-function TIsoSurfaceExtractor.BuildIndex(var ADatavals: array of Single;
+function TGLIsoSurfaceExtractor.BuildIndex(var ADatavals: array of Single;
   Isovalue: Single): word;
 var
   i: Integer;
@@ -626,7 +626,9 @@ begin
   Result.Z := w0 * V0.Z + w1 * V1.Z;
 end;
 
-function TIsoSurfaceExtractor.Interpolate(const V0, V1: TAffineVector;
+//------------------------------------------------------------------
+
+function TGLIsoSurfaceExtractor.Interpolate(const V0, V1: TAffineVector;
   var Val0, Val1, Isovalue: Single; isPolished: boolean): TVertex;
 begin
   if isPolished then
@@ -635,7 +637,7 @@ begin
     Result := InterpolateRugged(V0, V1, Val0, Val1, Isovalue)
 end;
 
-procedure TIsoSurfaceExtractor.MarchingTetrahedra(Isovalue: Single;
+procedure TGLIsoSurfaceExtractor.MarchingTetrahedra(Isovalue: Single;
   out Vertices: TVertexArray; out Triangles: TIntegerArray; isPolished: boolean);
 var
   i, j, k: Integer;
@@ -730,24 +732,24 @@ begin
   end; // for i
 end; // ccMT
 
-constructor TIsoSurfaceExtractor.Create;
+constructor TGLIsoSurfaceExtractor.Create;
 begin
   inherited;
 end;
 
-constructor TIsoSurfaceExtractor.Create(Xdim, Ydim, Zdim: Integer;
+constructor TGLIsoSurfaceExtractor.Create(Xdim, Ydim, Zdim: Integer;
   var AData: TArray3DExt);
 begin
   Create();
   AssignData(Xdim, Ydim, Zdim, AData);
 end;
 
-destructor TIsoSurfaceExtractor.Destroy;
+destructor TGLIsoSurfaceExtractor.Destroy;
 begin
   inherited;
 end;
 
-procedure TIsoSurfaceExtractor.AssignData(Xdim, Ydim, Zdim: Integer;
+procedure TGLIsoSurfaceExtractor.AssignData(Xdim, Ydim, Zdim: Integer;
   var AData: TArray3DExt);
 begin
   Dimensions['x'] := Xdim;
@@ -758,7 +760,7 @@ begin
 end;
 
 //-----------------------------------------------------------------------
-procedure TIsoSurfaceExtractor.MarchingCubes(Isovalue: Single;
+procedure TGLIsoSurfaceExtractor.MarchingCubes(Isovalue: Single;
   out Vertices: TVertexArray; out Triangles: TIntegerArray; isPolished: boolean);
 var
   i, j, k: Integer;
@@ -842,7 +844,7 @@ begin
 end;
 
 
-function TGLMarchingCube.add_c_vertex: Integer;
+function TGLMarchingCube.Add_c_vertex: Integer;
 var
   u: Single;
   vid: Integer;
@@ -860,17 +862,14 @@ var
   end;
 
 begin
-  test_vertex_addiction;
+  Test_Vertex_Addiction;
 
   u := 0;
-  with PVertices^[_Nverts] do
-  begin
-    P := NullVector;
-    N := NullVector;
+  PVertices^[_Nverts].P := NullVector;
+  PVertices^[_Nverts].N := NullVector;
 {$IFDEF UseDensity}
-    Density := 0;
+  PVertices^[_Nverts].Density := 0;
 {$ENDIF}
-  end;
   Inc(_Nverts);
 
   // Computes the average of the intersection points of the cube
@@ -919,9 +918,8 @@ begin
   Result := _Nverts - 1;
 end;
 
-procedure TGLMarchingCube.add_triangle(trig: array of Integer; N: Byte;
+procedure TGLMarchingCube.Add_Triangle(trig: array of Integer; N: Byte;
   v12: Integer = -1);
-
 var
   tv: array [0 .. 2] of Integer;
   t, tmod3: Integer;
@@ -957,19 +955,16 @@ begin
         ReallocMem(PTriangles, _Strigs * SizeOf(TTriangleRec));
       end;
 
-      with PTriangles^[_Ntrigs] do
-      begin
-        v1 := tv[0];
-        v2 := tv[1];
-        v3 := tv[2];
-      end;
-      Inc(_Ntrigs);
+      PTriangles^[_Ntrigs].v1 := tv[0];
+      PTriangles^[_Ntrigs].v2 := tv[1];
+      PTriangles^[_Ntrigs].v3 := tv[2];
 
+      Inc(_Ntrigs);
     end
   end
 end;
 
-function TGLMarchingCube.calc_u(v1, v2: Single): Extended;
+function TGLMarchingCube.Calc_u(v1, v2: Single): Extended;
 begin
   if (abs(FIsoValue - v1) >= 0.00001) then
     Result := 1
@@ -985,81 +980,72 @@ function TGLMarchingCube.add_x_vertex: Integer;
 var
   u: Single;
 begin
-  test_vertex_addiction;
-  u := calc_u(_Cube[0].Density, _Cube[1].Density);
+  Test_Vertex_Addiction;
+  u := Calc_u(_Cube[0].Density, _Cube[1].Density);
 
-  with PVertices^[_Nverts] do
-  begin
-    P.X := _Cube[0].P.X + u * FStepX;
-    P.Y := _Cube[0].P.Y;
-    P.Z := _Cube[0].P.Z;
+  PVertices^[_Nverts].P.X := _Cube[0].P.X + u * FStepX;
+  PVertices^[_Nverts].P.Y := _Cube[0].P.Y;
+  PVertices^[_Nverts].P.Z := _Cube[0].P.Z;
 
-    N.X := (1 - u) * Get_x_grad(_i, _j, _k) + u * Get_x_grad(_i + 1, _j, _k);
-    N.Y := (1 - u) * Get_y_grad(_i, _j, _k) + u * Get_y_grad(_i + 1, _j, _k);
-    N.Z := (1 - u) * Get_z_grad(_i, _j, _k) + u * Get_z_grad(_i + 1, _j, _k);
-    NormalizeVector(N);
+  PVertices^[_Nverts].N.X := (1 - u) * Get_x_grad(_i, _j, _k) + u * Get_x_grad(_i + 1, _j, _k);
+  PVertices^[_Nverts].N.Y := (1 - u) * Get_y_grad(_i, _j, _k) + u * Get_y_grad(_i + 1, _j, _k);
+  PVertices^[_Nverts].N.Z := (1 - u) * Get_z_grad(_i, _j, _k) + u * Get_z_grad(_i + 1, _j, _k);
+  NormalizeVector(PVertices^[_Nverts].N);
 {$IFDEF UseDensity}
-    Density := _Cube[1].Density
+  PVertices^[_Nverts].Density := _Cube[1].Density;
 {$ENDIF}
-  end;
   Inc(_Nverts);
   Result := _Nverts - 1;
 end;
 
-function TGLMarchingCube.add_y_vertex: Integer;
+function TGLMarchingCube.Add_y_vertex: Integer;
 var
   u: Single;
 begin
-  test_vertex_addiction;
-  u := calc_u(_Cube[0].Density, _Cube[3].Density);
+  Test_Vertex_Addiction;
+  u := Calc_u(_Cube[0].Density, _Cube[3].Density);
 
-  with PVertices^[_Nverts] do
-  begin
-    P.X := _Cube[0].P.X;
-    P.Y := _Cube[0].P.Y + u * FStepY;
-    P.Z := _Cube[0].P.Z;
+  PVertices^[_Nverts].P.X := _Cube[0].P.X;
+  PVertices^[_Nverts].P.Y := _Cube[0].P.Y + u * FStepY;
+  PVertices^[_Nverts].P.Z := _Cube[0].P.Z;
 
-    N.X := (1 - u) * Get_x_grad(_i, _j, _k) + u * Get_x_grad(_i, _j + 1, _k);
-    N.Y := (1 - u) * Get_y_grad(_i, _j, _k) + u * Get_y_grad(_i, _j + 1, _k);
-    N.Z := (1 - u) * Get_z_grad(_i, _j, _k) + u * Get_z_grad(_i, _j + 1, _k);
-    NormalizeVector(N);
+  PVertices^[_Nverts].N.X := (1 - u) * Get_x_grad(_i, _j, _k) + u * Get_x_grad(_i, _j + 1, _k);
+  PVertices^[_Nverts].N.Y := (1 - u) * Get_y_grad(_i, _j, _k) + u * Get_y_grad(_i, _j + 1, _k);
+  PVertices^[_Nverts].N.Z := (1 - u) * Get_z_grad(_i, _j, _k) + u * Get_z_grad(_i, _j + 1, _k);
+  NormalizeVector(PVertices^[_Nverts].N);
 {$IFDEF UseDensity}
-    Density := _Cube[3].Density
+  PVertices^[_Nverts].Density := _Cube[3].Density
 {$ENDIF}
-  end;
   Inc(_Nverts);
   Result := _Nverts - 1;
 end;
 
-function TGLMarchingCube.add_z_vertex: Integer;
+function TGLMarchingCube.Add_z_vertex: Integer;
 var
   u: Single;
 begin
-  test_vertex_addiction;
-  u := calc_u(_Cube[0].Density, _Cube[4].Density);
+  Test_Vertex_Addiction;
+  u := Calc_u(_Cube[0].Density, _Cube[4].Density);
 
-  with PVertices^[_Nverts] do
-  begin
-    P.X := _Cube[0].P.X;
-    P.Y := _Cube[0].P.Y;
-    P.Z := _Cube[0].P.Z + u * FStepZ;;
+  PVertices^[_Nverts].P.X := _Cube[0].P.X;
+  PVertices^[_Nverts].P.Y := _Cube[0].P.Y;
+  PVertices^[_Nverts].P.Z := _Cube[0].P.Z + u * FStepZ;;
 
-    N.X := (1 - u) * Get_x_grad(_i, _j, _k) + u * Get_x_grad(_i, _j, _k + 1);
-    N.Y := (1 - u) * Get_y_grad(_i, _j, _k) + u * Get_y_grad(_i, _j, _k + 1);
-    N.Z := (1 - u) * Get_z_grad(_i, _j, _k) + u * Get_z_grad(_i, _j, _k + 1);
-    NormalizeVector(N);
+  PVertices^[_Nverts].N.X := (1 - u) * Get_x_grad(_i, _j, _k) + u * Get_x_grad(_i, _j, _k + 1);
+  PVertices^[_Nverts].N.Y := (1 - u) * Get_y_grad(_i, _j, _k) + u * Get_y_grad(_i, _j, _k + 1);
+  PVertices^[_Nverts].N.Z := (1 - u) * Get_z_grad(_i, _j, _k) + u * Get_z_grad(_i, _j, _k + 1);
+  NormalizeVector(PVertices^[_Nverts].N);
 {$IFDEF UseDensity}
-    Density := _Cube[4].Density
+  PVertices^[_Nverts].Density := _Cube[4].Density
 {$ENDIF}
-  end;
   Inc(_Nverts);
   Result := _Nverts - 1;
 end;
 
-procedure TGLMarchingCube.clean_all(keepFacets: Boolean = False);
+procedure TGLMarchingCube.Clean_all(keepFacets: Boolean = False);
 begin
-  clean_temps;
-  clean_space;
+  Clean_temps;
+  Clean_space;
   if (not keepFacets) then
     FreeMem(PVertices);
   FreeMem(PTriangles);
@@ -1071,7 +1057,7 @@ begin
   _Strigs := 0;
 end;
 
-procedure TGLMarchingCube.clean_space;
+procedure TGLMarchingCube.Clean_space;
 begin
   if (VoxelData <> nil) then
   begin
@@ -1083,7 +1069,7 @@ begin
   FSizeZ := 0
 end;
 
-procedure TGLMarchingCube.clean_temps;
+procedure TGLMarchingCube.Clean_temps;
 begin
   FreeMem(PVertsX);
   PVertsX := nil;
@@ -1093,17 +1079,17 @@ begin
   PVertsZ := nil;
 end;
 
-procedure TGLMarchingCube.compute_intersection_points;
+procedure TGLMarchingCube.Compute_Intersection_Points;
 var
   k, j, i: Integer;
 begin
-  _Cube[0] := getVoxelData(0, 0, 0);
-  _Cube[1] := getVoxelData(1, 0, 0);
-  _Cube[3] := getVoxelData(0, 1, 0);
-  _Cube[4] := getVoxelData(0, 0, 1);
-  { _step_x:= _Cube[1].P[0] - _Cube[0].P[0] ;
+  _Cube[0] := GetVoxelData(0, 0, 0);
+  _Cube[1] := GetVoxelData(1, 0, 0);
+  _Cube[3] := GetVoxelData(0, 1, 0);
+  _Cube[4] := GetVoxelData(0, 0, 1);
+  (* _step_x:= _Cube[1].P[0] - _Cube[0].P[0] ;
     _step_y:= _Cube[3].P[1] - _Cube[0].P[1] ;
-    _step_z:= _Cube[4].P[2] - _Cube[0].P[2] ; }
+    _step_z:= _Cube[4].P[2] - _Cube[0].P[2] ; *)
 
   for k := 0 to FSizeZ - 2 do
   begin
@@ -1114,15 +1100,15 @@ begin
       for i := 0 to FSizeX - 2 do
       begin
         _i := i;
-        _Cube[0] := getVoxelData(_i, _j, _k);
-        _Cube[1] := getVoxelData(_i + 1, _j, _k);
-        _Cube[3] := getVoxelData(_i, _j + 1, _k);
-        _Cube[4] := getVoxelData(_i, _j, _k + 1);
+        _Cube[0] := GetVoxelData(_i, _j, _k);
+        _Cube[1] := GetVoxelData(_i + 1, _j, _k);
+        _Cube[3] := GetVoxelData(_i, _j + 1, _k);
+        _Cube[4] := GetVoxelData(_i, _j, _k + 1);
 
         if (Internal(_Cube[0].Density)) then
         begin
           if (not Internal(_Cube[1].Density)) then
-            set_x_vert(add_x_vertex(), _i, _j, _k);
+            Set_x_vert(add_x_vertex(), _i, _j, _k);
           if (not Internal(_Cube[3].Density)) then
             set_y_vert(add_y_vertex(), _i, _j, _k);
           if (not Internal(_Cube[4].Density)) then
@@ -1131,11 +1117,11 @@ begin
         else
         begin
           if (Internal(_Cube[1].Density)) then
-            set_x_vert(add_x_vertex(), _i, _j, _k);
+            Set_x_vert(Add_x_vertex(), _i, _j, _k);
           if (Internal(_Cube[3].Density)) then
-            set_y_vert(add_y_vertex(), _i, _j, _k);
+            set_y_vert(Add_y_vertex(), _i, _j, _k);
           if (Internal(_Cube[4].Density)) then
-            set_z_vert(add_z_vertex(), _i, _j, _k);
+            set_z_vert(Add_z_vertex(), _i, _j, _k);
         end
       end
     end
@@ -1171,9 +1157,11 @@ begin
   PVertices := nil;
   PTriangles := nil;
 
-  Init_all;
-  // FillVoxelData;
+  Init_all();
+  // FillVoxelData();
 end;
+
+//------------------------------------------------------------------
 
 constructor TGLMarchingCube.Create;
 begin
@@ -1194,36 +1182,34 @@ begin
   PTriangles := nil;
 end;
 
+//------------------------------------------------------------------
+
 constructor TGLMarchingCube.Create(SizeX, SizeY, SizeZ: Integer;
-  AIsoValue: TScalarValue = 0.0; xMin: Single = -0.5; xMax: Single = 0.5;
+  AIsoValue: TGLScalarValue = 0.0; xMin: Single = -0.5; xMax: Single = 0.5;
   yMin: Single = -0.5; yMax: Single = 0.5; zMin: Single = -0.5;
   zMax: Single = 0.5);
 begin
   FOriginalMC := True; // now only original MC is implemented
   FIsoValue := AIsoValue;
   ScalarField := SFSphere;
-  //SFKleinBottle;
-  //SFMinkowski;
-  //SFChmutov2;
-  //SFChmutov1;
-  //SFDoubleTorus;
-  //SFToroidal;
+  (* ScalarField := SFKleinBottle; SFMinkowski; SFChmutov2;
+     SFChmutov1; SFDoubleTorus; SFToroidal; *)
   ReDim(SizeX, SizeY, SizeZ, xMin, xMax, yMin, yMax, zMin, zMax);
-  FillVoxelData;
+  FillVoxelData();
 end;
 
 destructor TGLMarchingCube.Destroy;
 begin
-  clean_all;
+  Clean_all;
   inherited;
 end;
 
-function TGLMarchingCube.getVoxelValue(i, j, k: Integer): TScalarValue;
+function TGLMarchingCube.GetVoxelValue(i, j, k: Integer): TGLScalarValue;
 begin
   Result := VoxelData^[i + j * FSizeX + k * FSizeX * FSizeY].Density
 end;
 
-function TGLMarchingCube.getVoxelData(i, j, k: Integer): TVoxelRec;
+function TGLMarchingCube.GetVoxelData(i, j, k: Integer): TVoxelRec;
 begin
   Result := VoxelData^[i + j * FSizeX + k * FSizeX * FSizeY]
 end;
@@ -1232,11 +1218,11 @@ function TGLMarchingCube.Get_x_grad(i, j, k: Integer): Single;
 begin
   if (i > 0) then
     if (i < FSizeX - 1) then
-      Result := (getVoxelValue(i + 1, j, k) - getVoxelValue(i - 1, j, k)) / 2
+      Result := (GetVoxelValue(i + 1, j, k) - GetVoxelValue(i - 1, j, k)) / 2
     else
-      Result := getVoxelValue(i, j, k) - getVoxelValue(i - 1, j, k)
+      Result := GetVoxelValue(i, j, k) - GetVoxelValue(i - 1, j, k)
   else
-    Result := getVoxelValue(i + 1, j, k) - getVoxelValue(i, j, k)
+    Result := GetVoxelValue(i + 1, j, k) - GetVoxelValue(i, j, k)
 end;
 
 function TGLMarchingCube.Get_x_vert(i, j, k: Integer): Integer;
@@ -1248,11 +1234,11 @@ function TGLMarchingCube.Get_y_grad(i, j, k: Integer): Single;
 begin
   if (j > 0) then
     if (j < FSizeY - 1) then
-      Result := (getVoxelValue(i, j + 1, k) - getVoxelValue(i, j - 1, k)) / 2
+      Result := (GetVoxelValue(i, j + 1, k) - GetVoxelValue(i, j - 1, k)) / 2
     else
-      Result := getVoxelValue(i, j, k) - getVoxelValue(i, j - 1, k)
+      Result := GetVoxelValue(i, j, k) - GetVoxelValue(i, j - 1, k)
   else
-    Result := getVoxelValue(i, j + 1, k) - getVoxelValue(i, j, k)
+    Result := GetVoxelValue(i, j + 1, k) - GetVoxelValue(i, j, k)
 end;
 
 function TGLMarchingCube.Get_y_vert(i, j, k: Integer): Integer;
@@ -1264,11 +1250,11 @@ function TGLMarchingCube.Get_z_grad(i, j, k: Integer): Single;
 begin
   if (k > 0) then
     if (k < FSizeZ - 1) then
-      Result := (getVoxelValue(i, j, k + 1) - getVoxelValue(i, j, k - 1)) / 2
+      Result := (GetVoxelValue(i, j, k + 1) - GetVoxelValue(i, j, k - 1)) / 2
     else
-      Result := getVoxelValue(i, j, k) - getVoxelValue(i, j, k - 1)
+      Result := GetVoxelValue(i, j, k) - GetVoxelValue(i, j, k - 1)
   else
-    Result := getVoxelValue(i, j, k + 1) - getVoxelValue(i, j, k)
+    Result := GetVoxelValue(i, j, k + 1) - GetVoxelValue(i, j, k)
 end;
 
 function TGLMarchingCube.Get_z_vert(i, j, k: Integer): Integer;
@@ -1313,12 +1299,12 @@ begin
   FillChar(PVertsZ^, spaceSize * SizeOf(Integer), -1);
 end;
 
-function TGLMarchingCube.Internal(AValue: TScalarValue): Boolean;
+function TGLMarchingCube.Internal(AValue: TGLScalarValue): Boolean;
 begin
   Result := AValue <= FIsoValue
 end;
 
-procedure TGLMarchingCube.process_cube;
+procedure TGLMarchingCube.Process_Cube;
 var
   nt: Byte;
 begin
@@ -1356,9 +1342,9 @@ begin
         _lut_entry := 0;
         for P := 0 to 7 do
         begin
-          _Cube[P] := getVoxelData(i + ((P xor (P shr 1)) and 1),
+          _Cube[P] := GetVoxelData(i + ((P xor (P shr 1)) and 1),
             j + ((P shr 1) and 1), k + ((P shr 2) and 1));
-          // _Cube[p]:= getVoxelData( i+((p^(p>>1))&1), j+((p>>1)&1), k+((p>>2)&1) ) ;
+          // _Cube[p]:= GetVoxelData( i+((p^(p>>1))&1), j+((p>>1)&1), k+((p>>2)&1) ) ;
           if (Internal(_Cube[P].Density)) then
             _lut_entry := _lut_entry or (1 shl P);
         end;
@@ -1369,33 +1355,33 @@ begin
   clean_temps;
 end;
 
-procedure TGLMarchingCube.Run(IsoValue: TScalarValue);
+procedure TGLMarchingCube.Run(IsoValue: TGLScalarValue);
 begin
   FIsoValue := IsoValue;
   Run
 end;
 
-procedure TGLMarchingCube.setVoxelValue(i, j, k: Integer; HfValue: TScalarValue);
+procedure TGLMarchingCube.SetVoxelValue(i, j, k: Integer; HfValue: TGLScalarValue);
 begin
   VoxelData^[i + j * FSizeX + k * FSizeX * FSizeY].Density := HfValue
 end;
 
-procedure TGLMarchingCube.set_x_vert(a_val, i, j, k: Integer);
+procedure TGLMarchingCube.Set_x_vert(a_val, i, j, k: Integer);
 begin
   PVertsX^[i + j * FSizeX + k * FSizeX * FSizeY] := a_val
 end;
 
-procedure TGLMarchingCube.set_y_vert(a_val, i, j, k: Integer);
+procedure TGLMarchingCube.Set_y_vert(a_val, i, j, k: Integer);
 begin
   PVertsY^[i + j * FSizeX + k * FSizeX * FSizeY] := a_val
 end;
 
-procedure TGLMarchingCube.set_z_vert(a_val, i, j, k: Integer);
+procedure TGLMarchingCube.Set_z_vert(a_val, i, j, k: Integer);
 begin
   PVertsZ^[i + j * FSizeX + k * FSizeX * FSizeY] := a_val
 end;
 
-procedure TGLMarchingCube.test_vertex_addiction;
+procedure TGLMarchingCube.Test_vertex_addiction;
 begin
   if _Nverts >= _Sverts then
   begin
@@ -1404,7 +1390,7 @@ begin
   end;
 end;
 
-function TGLMarchingCube.voxel(i, j, k: Integer): PVoxelRec;
+function TGLMarchingCube.Voxel(i, j, k: Integer): PVoxelRec;
 begin
   if (k >= FSizeZ) or (j >= FSizeY) or (i >= FSizeX) then
     Result := nil
@@ -1438,7 +1424,7 @@ begin
   end;
 end;
 
-procedure TGLMarchingCube.FillVoxelData(AIsoValue: TScalarValue; AScalarField: TScalarField = nil);
+procedure TGLMarchingCube.FillVoxelData(AIsoValue: TGLScalarValue; AScalarField: TGLScalarField = nil);
 begin
   FIsoValue := AIsoValue;
   if Assigned(AScalarField) then
@@ -1446,7 +1432,7 @@ begin
   FillVoxelData;
 end;
 
-procedure TGLMarchingCube.FillVoxelData(AIsoValue: TScalarValue; AScalarField: TScalarFieldInt);
+procedure TGLMarchingCube.FillVoxelData(AIsoValue: TGLScalarValue; AScalarField: TGLScalarFieldInt);
 var
   iX, iY, iZ: Integer;
   X, Y, Z: Single;
@@ -1507,7 +1493,7 @@ var
     Result.V[3] := 0.3
   end;
 
-  function GetColor(H: TScalarValue): TGLVector;
+  function GetColor(H: TGLScalarValue): TGLVector;
   begin
     Result := VectorMake(0.890, 0.855, 0.788, Alpha)
     (*
@@ -1525,18 +1511,17 @@ begin
   Vertices.Capacity := 3 * _Ntrigs;
 
   for i := 0 to _Ntrigs - 1 do
-    with PTriangles^[i] do
     begin
-      vx1.coord := PVertices^[v1].P;
-      vx1.normal := PVertices^[v1].N;
-      vx2.coord := PVertices^[v2].P;
-      vx2.normal := PVertices^[v2].N;
-      vx3.coord := PVertices^[v3].P;
-      vx3.normal := PVertices^[v3].N;
+      vx1.coord := PVertices^[PTriangles^[i].v1].P;
+      vx1.normal := PVertices^[PTriangles^[i].v1].N;
+      vx2.coord := PVertices^[PTriangles^[i].v2].P;
+      vx2.normal := PVertices^[PTriangles^[i].v2].N;
+      vx3.coord := PVertices^[PTriangles^[i].v3].P;
+      vx3.normal := PVertices^[PTriangles^[i].v3].N;
 {$IFDEF UseDensity}
-      vx1.Color := GetColor(PVertices^[v1].Density); // GetNrmColor(vx1.normal);
-      vx2.Color := GetColor(PVertices^[v2].Density); // GetNrmColor(vx2.normal);
-      vx3.Color := GetColor(PVertices^[v3].Density); // GetNrmColor(vx3.normal);
+      vx1.Color := GetColor(PVertices^[PTriangles^[i].v1].Density); // GetNrmColor(vx1.normal);
+      vx2.Color := GetColor(PVertices^[PTriangles^[i].v2].Density); // GetNrmColor(vx2.normal);
+      vx3.Color := GetColor(PVertices^[PTriangles^[i].v3].Density); // GetNrmColor(vx3.normal);
 {$ELSE}
       vx1.Color := VectorMake(0.890, 0.855, 0.788, Alpha);
       vx2.Color := VectorMake(0.890, 0.855, 0.788, Alpha);
@@ -1568,8 +1553,7 @@ begin
 
     for i := 0 to _Ntrigs - 1 do
       // with PTriangles^[i] do VertexIndices.Add(v1, v2, v3);
-      with PTriangles^[i] do
-        VertexIndices.Add(v3, v2, v1);
+      VertexIndices.Add(PTriangles^[i].v3, PTriangles^[i].v2, PTriangles^[i].v1);
   end;
 end;
 
