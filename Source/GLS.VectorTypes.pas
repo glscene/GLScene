@@ -114,7 +114,7 @@ type
 
   TWGLswap = _WGLSWAP;
   WGLSWAP = _WGLSWAP;
-  HPBUFFERARB = Integer;
+  HPBUFFERARB = type UINT_PTR;
 
 (* These OpenCL's types are compatible with cl_context and cl_event *)
 

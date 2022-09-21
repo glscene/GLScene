@@ -35,7 +35,7 @@ type
     FDC: NativeUInt;
     FRC: NativeUInt;
     FShareContext: TGLWindowsContext;
-    FHPBUFFER: Integer;
+    FHPBUFFER: HPBUFFERARB;
     FiAttribs: packed array of Integer;
     FfAttribs: packed array of Single;
     FLegacyContextsOnly: Boolean;
@@ -911,7 +911,7 @@ var
   nbFormats: Integer;
   iFormats: array [0 .. 31] of Integer;
   iPBufferAttribs: array [0 .. 0] of Integer;
-  localHPBuffer: Integer;
+  localHPBuffer: HPBUFFERARB;
   localRC: HGLRC;
   localDC, tempDC: HDC;
   tempWnd: HWND;
