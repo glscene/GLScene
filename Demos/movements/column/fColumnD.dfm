@@ -3,43 +3,34 @@ object FormColumn: TFormColumn
   Top = 102
   BorderWidth = 5
   Caption = 'Column'
-  ClientHeight = 426
-  ClientWidth = 508
+  ClientHeight = 341
+  ClientWidth = 406
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 508
-    Height = 405
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 406
+    Height = 324
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 127.437179565429700000
+    FieldOfView = 116.627265930175800000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object StaticText1: TStaticText
     Left = 0
-    Top = 405
-    Width = 508
-    Height = 21
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 324
+    Width = 406
+    Height = 17
     Align = alBottom
     Alignment = taCenter
     AutoSize = False
@@ -71,5 +62,11 @@ object FormColumn: TFormColumn
     OnProgress = GLCadencer1Progress
     Left = 104
     Top = 8
+  end
+  object GLFPSMovementManager1: TGLFPSMovementManager
+    DisplayTime = 2000
+    MovementScale = 4.000000000000000000
+    Left = 120
+    Top = 160
   end
 end

@@ -172,8 +172,8 @@ type
     tbErosionAnisoR: TTrackBar;
     lblErosionAnisoR: TLabel;
     Label36: TLabel;
-    Shape8: TShape;
-    Shape9: TShape;
+    shAmbientErosion: TShape;
+    shSpecularErosion: TShape;
     Label37: TLabel;
     lblLatticeThresholdY: TLabel;
     lblLatticeSpecularPower: TLabel;
@@ -359,9 +359,9 @@ type
     procedure tbErosionSpecularFChange(Sender: TObject);
     procedure tbErosionSpecularRChange(Sender: TObject);
     procedure tbErosionAnisoRChange(Sender: TObject);
-    procedure Shape8MouseDown(Sender: TObject; Button: TMouseButton;
+    procedure shAmbientErosionMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure Shape9MouseDown(Sender: TObject; Button: TMouseButton;
+    procedure shSpecularErosionMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure tbLatticeSpecularPowerChange(Sender: TObject);
     procedure tbLatticeLightPowerChange(Sender: TObject);
@@ -1202,23 +1202,23 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape8MouseDown(Sender: TObject; Button: TMouseButton;
+procedure TFormShaderLab.shAmbientErosionMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
     ErosionShader.AmbientColor.Color := ConvertWinColor(ColorDialog.Color);
-    Shape8.Brush.Color := ColorDialog.Color;
+    shAmbientErosion.Brush.Color := ColorDialog.Color;
   end;
 end;
 
-procedure TFormShaderLab.Shape9MouseDown(Sender: TObject; Button: TMouseButton;
+procedure TFormShaderLab.shSpecularErosionMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
     ErosionShader.SpecularColor.Color := ConvertWinColor(ColorDialog.Color);
-    Shape9.Brush.Color := ColorDialog.Color;
+    shSpecularErosion.Brush.Color := ColorDialog.Color;
   end;
 end;
 

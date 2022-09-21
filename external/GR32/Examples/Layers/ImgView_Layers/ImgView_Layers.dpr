@@ -4,12 +4,15 @@ program ImgView_Layers;
 
 uses
   Forms,
-  MainUnit in 'MainUnit.pas',
-  NewImageUnit in 'NewImageUnit.pas',
-  RGBALoaderUnit in 'RGBALoaderUnit.pas';
+  MainUnit in 'MainUnit.pas' {MainForm},
+  NewImageUnit in 'NewImageUnit.pas' {FrmNewImage},
+  RGBALoaderUnit in 'RGBALoaderUnit.pas' {RGBALoaderForm};
 
 begin
   Application.Initialize;
+  Application.CreateForm(TMainForm, MainForm);
+  Application.CreateForm(TFrmNewImage, FrmNewImage);
+  Application.CreateForm(TRGBALoaderForm, RGBALoaderForm);
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TFrmNewImage, FrmNewImage);
   Application.CreateForm(TRGBALoaderForm, RGBALoaderForm);

@@ -39,7 +39,9 @@ interface
 {$BOOLEVAL OFF}
 
 uses
-  Math, {$IFDEF FPC}Types, {$ENDIF} {$IFDEF COMPILERXE2_UP}Types, {$ENDIF}
+  Math, {$IFDEF FPC} Types, {$ENDIF}
+  System.Types,
+  System.UITypes,
   GR32, GR32_Transforms, GR32_Polygons;
 
 const

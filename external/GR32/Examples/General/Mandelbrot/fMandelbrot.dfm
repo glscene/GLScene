@@ -11,12 +11,10 @@ object MainForm: TMainForm
   Font.Name = 'Tahoma'
   Font.Style = []
   Menu = MainMenu
-  OldCreateOrder = False
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnMouseWheel = ImgMouseWheel
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object Img: TSyntheticImage32
     Left = 0

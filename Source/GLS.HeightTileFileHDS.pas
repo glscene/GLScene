@@ -53,7 +53,7 @@ type
     data: array of SmallInt;
   end;
 
-  PHeightTile = ^TGLHeightTile;
+  PGLHeightTile = ^TGLHeightTile;
 
   THTFHeader = packed record
     FileVersion: array [0 .. 5] of AnsiChar;
@@ -98,7 +98,7 @@ type
     // Returns tile index for corresponding left/top.
     function GetTileIndex(aLeft, aTop: Integer): Integer;
     // Returns tile of corresponding left/top.
-    function GetTile(aLeft, aTop: Integer; pTileInfo: PPHeightTileInfo = nil): PHeightTile;
+    function GetTile(aLeft, aTop: Integer; pTileInfo: PPHeightTileInfo = nil): PGLHeightTile;
     (* Stores and compresses give tile data.
       aLeft and top MUST be a multiple of TileSize, aWidth and aHeight
       MUST be lower or equal to TileSize. *)
@@ -625,7 +625,7 @@ begin
 end;
 
 function TGLHeightTileFile.GetTile(aLeft, aTop: Integer;
-  pTileInfo: PPHeightTileInfo = nil): PHeightTile;
+  pTileInfo: PPHeightTileInfo = nil): PGLHeightTile;
 var
   I, n: Integer;
   tileInfo: PGLHeightTileInfo;
@@ -686,7 +686,7 @@ var
   rx: Integer;
   n: Cardinal;
   tileInfo: PGLHeightTileInfo;
-  tile: PHeightTile;
+  tile: PGLHeightTile;
 begin
   while len > 0 do
   begin
@@ -724,7 +724,7 @@ end;
 function TGLHeightTileFile.XYHeight(anX, anY: Integer): SmallInt;
 var
   tileInfo: PGLHeightTileInfo;
-  tile: PHeightTile;
+  tile: PGLHeightTile;
 begin
   // Current tile per chance?
   with FHeightTile.info do
@@ -897,7 +897,7 @@ end;
 procedure TGLHeightTileFileHDS.StartPreparingData(HeightData: TGLHeightData);
 var
   oldType: TGLHeightDataType;
-  htfTile: PHeightTile;
+  htfTile: PGLHeightTile;
   htfTileInfo: PGLHeightTileInfo;
   x, y: Integer;
   YPos: Integer;

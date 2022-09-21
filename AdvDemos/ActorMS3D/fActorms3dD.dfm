@@ -2,35 +2,30 @@ object FormActorms3d: TFormActorms3d
   Left = 332
   Top = 110
   Caption = 'Actor MS3D Animation'
-  ClientHeight = 920
-  ClientWidth = 1285
+  ClientHeight = 736
+  ClientWidth = 1028
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnShow = FormShow
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 81
-    Width = 1285
-    Height = 839
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 65
+    Width = 1028
+    Height = 671
     Camera = GLCamera1
     Buffer.BackgroundColor = 3618615
     Buffer.AmbientColor.Color = {0000803F0000803F0000803F0000803F}
     Buffer.AntiAliasing = aa4xHQ
     Buffer.ShadeModel = smSmooth
-    FieldOfView = 148.073135375976600000
+    FieldOfView = 140.638275146484400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -38,62 +33,42 @@ object FormActorms3d: TFormActorms3d
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1285
-    Height = 81
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 1028
+    Height = 65
     Align = alTop
     TabOrder = 1
     object Button2: TButton
-      Left = 374
-      Top = 13
-      Width = 94
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 299
+      Top = 10
+      Width = 75
+      Height = 25
       Caption = 'Next Frame'
       TabOrder = 0
       OnClick = Button2Click
     end
     object btnStartStop: TButton
-      Left = 16
-      Top = 13
-      Width = 94
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 10
+      Width = 75
+      Height = 25
       Caption = 'Start'
       TabOrder = 1
       OnClick = btnStartStopClick
     end
     object Button4: TButton
-      Left = 1084
-      Top = 13
-      Width = 94
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 867
+      Top = 10
+      Width = 75
+      Height = 25
       Caption = 'Previous'
       TabOrder = 2
       OnClick = Button4Click
     end
     object aniBox: TComboBox
-      Left = 130
-      Top = 15
-      Width = 221
-      Height = 25
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 104
+      Top = 12
+      Width = 177
+      Height = 21
       Style = csDropDownList
       TabOrder = 3
       OnSelect = aniBoxSelect
@@ -107,17 +82,12 @@ object FormActorms3d: TFormActorms3d
         'Sit')
     end
     object aniPos: TTrackBar
-      Left = 485
-      Top = 15
-      Width = 591
-      Height = 36
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 388
+      Top = 12
+      Width = 473
+      Height = 29
       Enabled = False
       TabOrder = 4
-      ThumbLength = 25
       OnChange = aniPosChange
     end
   end
@@ -143,7 +113,8 @@ object FormActorms3d: TFormActorms3d
         SpotCutOff = 80.000000000000000000
         SpotDirection.Coordinates = {00000000000000000000803F00000000}
         SpotExponent = 1.000000000000000000
-        object GLSphere2: TGLSphere
+        object Globus: TGLSphere
+          Material.Texture.Disabled = False
           Radius = 0.500000000000000000
         end
       end
@@ -177,6 +148,7 @@ object FormActorms3d: TFormActorms3d
         Blend = False
       end
       object Actor1: TGLActor
+        Material.Texture.Disabled = False
         Material.MaterialLibrary = MatLib
         Direction.Coordinates = {2EBD3B34F0AD099D0000803F00000000}
         Position.Coordinates = {000080BF00000000000000000000803F}
@@ -188,6 +160,7 @@ object FormActorms3d: TFormActorms3d
         MaterialLibrary = MatLib
       end
       object GLPlane1: TGLPlane
+        Material.Texture.Disabled = False
         Material.LibMaterialName = 'floor_parquet'
         Direction.Coordinates = {000000000000803F0000000000000000}
         Up.Coordinates = {0000000000000000000080BF00000000}
@@ -219,15 +192,10 @@ object FormActorms3d: TFormActorms3d
       item
         Name = 'floor_parquet'
         Tag = 0
-        Material.Texture.ImageClassName = 'TGLCompositeImage'
-        Material.Texture.Image.Width = 256
-        Material.Texture.Image.Height = 256
-        Material.Texture.Image.Depth = 0
         Material.Texture.TextureMode = tmModulate
         Material.Texture.Disabled = False
         Material.MaterialLibrary = MatLib
         TextureScale.Coordinates = {0000803F0000803F0000000000000000}
-        Shader = GLSLShader1
       end
       item
         Name = 'Shadow'
@@ -252,7 +220,6 @@ object FormActorms3d: TFormActorms3d
         Material.FrontProperties.Emission.Color = {CDCC4C3FF8FEFE3EACC8483E0000803F}
         Material.Texture.TextureWrap = twNone
         Material.Texture.Disabled = False
-        Shader = GLSLShader1
       end
       item
         Name = 'Hair'
@@ -270,6 +237,7 @@ object FormActorms3d: TFormActorms3d
         Material.Texture.Image.Width = 256
         Material.Texture.Image.Height = 256
         Material.Texture.Image.Depth = 0
+        Material.Texture.TextureMode = tmModulate
         Material.Texture.Disabled = False
       end
       item
@@ -283,12 +251,6 @@ object FormActorms3d: TFormActorms3d
       end>
     Left = 188
     Top = 84
-  end
-  object GLSLShader1: TGLSLShader
-    Enabled = False
-    OnApply = GLSLShader1Apply
-    Left = 28
-    Top = 148
   end
   object GLNavigation: TGLSimpleNavigation
     Form = Owner
@@ -323,7 +285,7 @@ object FormActorms3d: TFormActorms3d
       item
         Name = 'LibArchive'
       end>
-    Left = 48
-    Top = 224
+    Left = 276
+    Top = 184
   end
 end

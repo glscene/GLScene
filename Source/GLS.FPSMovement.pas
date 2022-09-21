@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.FPSMovement;
 
 (* FPS-like movement behaviour and manager. *)
@@ -348,11 +347,11 @@ end;
 procedure TGLFPSMovementManager.DefineProperties(Filer: TFiler);
 begin
   inherited;
-  { FOriginalFiler := Filer; }
+  // FOriginalFiler := Filer;
 
   Filer.DefineBinaryProperty('MapsData', ReadMaps, WriteMaps,
     (assigned(FMaps) and (FMaps.count > 0)));
-  { FOriginalFiler:=nil; }
+  // FOriginalFiler:=nil;
 end;
 
 procedure TGLFPSMovementManager.WriteMaps(stream: TStream);
@@ -471,7 +470,7 @@ begin
 
   // Direction sphere is moving in
   Ray := VectorSubtract(newPosition, oldPosition);
-  // ray:=Velocity;
+  // ray := Velocity;
   // newPosition:=VectorAdd(newPosition,ray);
   // Speed of sphere
   vel := VectorLength(Ray);

@@ -60,6 +60,7 @@ __published:	// published declarations
         void __fastcall CBTextureIgnoreFogClick(TObject *Sender);
 	void __fastcall FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
           TPoint &MousePos, bool &Handled);
+
 private:	// private declarations
 		void ApplyFogSettings(void);
 		int mx, my;

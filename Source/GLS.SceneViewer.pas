@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.SceneViewer;
 
 (* Windows specific Scene viewer *)
@@ -36,7 +35,7 @@ type
      It is primarily a windowed component, but it can handle full-screen
      operations : simply make this component fit the whole screen (use a
      borderless form).
-     This viewer also allows to define rendering options such a fog, face culling,
+     This viewer also allows to define rendering options such as fog, face culling,
      depth testing, etc. and can take care of framerate calculation.  *)
   TGLSceneViewer = class(TWinControl)
   private

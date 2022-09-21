@@ -12,13 +12,11 @@ object MainForm: TMainForm
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
   DesignSize = (
     272
     456)
-  PixelsPerInch = 96
   TextHeight = 13
   object LabelOverlay: TLabel
     Left = 8

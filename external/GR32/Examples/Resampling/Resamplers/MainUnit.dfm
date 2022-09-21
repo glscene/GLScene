@@ -12,10 +12,8 @@ object FrmResamplersExample: TFrmResamplersExample
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object SidePanel: TPanel
     Left = 329
@@ -262,10 +260,6 @@ object FrmResamplersExample: TFrmResamplersExample
     object TabResampling: TTabSheet
       Caption = 'Resampling'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object ResamplingPaintBox: TPaintBox32
         Left = 0
         Top = 0
@@ -281,10 +275,6 @@ object FrmResamplersExample: TFrmResamplersExample
       Caption = 'Curve'
       ImageIndex = 2
       TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object CurveImage: TImage32
         Left = 0
         Top = 0

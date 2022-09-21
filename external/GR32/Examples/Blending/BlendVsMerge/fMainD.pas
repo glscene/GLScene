@@ -92,7 +92,7 @@ uses
 {$ENDIF}
   GR32_Resamplers, GR32_LowLevel;
 
-{ TMainForm }
+// TMainForm
 
 procedure TMainForm.FormCreate(Sender: TObject);
 var
@@ -100,14 +100,10 @@ var
   JPEG: TJPEGImage;
 begin
   // setup custom checker board paint stage
-  with DstImg do
-  begin
-    with PaintStages[0]^ do //Set up custom paintstage to draw checkerboard
-    begin
-      Stage := PST_CUSTOM;
-      Parameter := 1; // use parameter to tag the stage, we inspect this in OnPaintStage
-    end;
-  end;
+
+  // Set up custom paintstage to draw checkerboard
+  DstImg.PaintStages[0]^.Stage := PST_CUSTOM;
+  DstImg.PaintStages[0]^.Parameter := 1; // use parameter to tag the stage, we inspect this in OnPaintStage
 
   // Load the textures (note size 256x256 is implicity expected!)
   JPEG := TJPEGImage.Create;
@@ -180,29 +176,26 @@ var
   TileHeight, TileWidth: Integer;
 begin
   // draw checker board
-  with TImgView32(Sender) do
+  TImgView32(Sender).BeginUpdate;
+  R := TImgView32(Sender).GetViewportRect;
+  TileHeight := 8;
+  TileWidth := 8;
+  TilesHorz := (R.Right - R.Left) div TileWidth;
+  TilesVert := (R.Bottom - R.Top) div TileHeight;
+  TileY := 0;
+  for J := 0 to TilesVert do
   begin
-    BeginUpdate;
-    R := GetViewportRect;
-    TileHeight := 8;
-    TileWidth := 8;
-    TilesHorz := (R.Right - R.Left) div TileWidth;
-    TilesVert := (R.Bottom - R.Top) div TileHeight;
-    TileY := 0;
-    for J := 0 to TilesVert do
+    TileX := 0;
+    OddY := J and $1;
+    for I := 0 to TilesHorz do
     begin
-      TileX := 0;
-      OddY := J and $1;
-      for I := 0 to TilesHorz do
-      begin
-        Buffer.FillRectS(TileX, TileY, TileX + TileWidth, TileY +
-          TileHeight, Colors[I and $1 = OddY]);
-        Inc(TileX, TileWidth);
-      end;
-      Inc(TileY, TileHeight);
+      Buffer.FillRectS(TileX, TileY, TileX + TileWidth, TileY +
+        TileHeight, Colors[I and $1 = OddY]);
+      Inc(TileX, TileWidth);
     end;
-    EndUpdate;
+    Inc(TileY, TileHeight);
   end;
+  TImgView32(Sender).EndUpdate;
 end;
 
 procedure TMainForm.RadioButtonNoneClick(Sender: TObject);
@@ -216,14 +209,12 @@ end;
 procedure TMainForm.RadioButtonBlendClick(Sender: TObject);
 begin
   FBlendFunc := BlendReg;
-
   DrawBitmap;
 end;
 
 procedure TMainForm.RadioButtonMergeClick(Sender: TObject);
 begin
   FBlendFunc := MergeReg;
-
   DrawBitmap;
 end;
 

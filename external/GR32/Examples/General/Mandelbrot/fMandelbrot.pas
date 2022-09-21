@@ -134,7 +134,6 @@ type
     procedure TranslateY(Amount: TFloat);
     procedure Zoom(Center: TPoint; Factor: TFloat);
   public
-    { Public declarations }
     Rasterizer: TRasterizer;
     Sampler: TCustomSampler;
     MandelSampler: TMandelbrotSampler;
@@ -183,15 +182,12 @@ const
   CBailoutValue = 4;
   CQuarter = 0.25;
 begin
-  with Bounds do
-  begin
-    CX := Left + X * (Right - Left) * FWidthInv;
-    CY := Top + Y * (Bottom - Top) * FHeightInv;
-  end;
+  CX := Bounds.Left + X * (Bounds.Right - Bounds.Left) * FWidthInv;
+  CY := Bounds.Top + Y * (Bounds.Bottom - Bounds.Top) * FHeightInv;
 
   M := Length(FPalette) - 1;
 
-  { Check whether point lies in the period-2 bulb }
+  // Check whether point lies in the period-2 bulb
   ZY := Sqr(CY);
   if Sqr(CX - 1) + ZY < 0.0625 then
   begin
@@ -323,6 +319,7 @@ const
 begin
   SamplerKind := ASamplerKind;
   miAdaptive.Enabled := False;
+
   case SamplerKind of
     skDefault: Sampler := MandelSampler;
     skSS2X..skSS4X:
@@ -352,21 +349,15 @@ end;
 
 procedure TMainForm.TranslateX(Amount: TFloat);
 begin
-  with MandelSampler do
-  begin
-    Bounds.Left := Bounds.Left + Amount;
-    Bounds.Right := Bounds.Right + Amount;
-  end;
+  MandelSampler.Bounds.Left := MandelSampler.Bounds.Left + Amount;
+  MandelSampler.Bounds.Right := MandelSampler.Bounds.Right + Amount;
   Img.Rasterize;
 end;
 
 procedure TMainForm.TranslateY(Amount: TFloat);
 begin
-  with MandelSampler do
-  begin
-    Bounds.Top := Bounds.Top + Amount;
-    Bounds.Bottom := Bounds.Bottom + Amount;
-  end;
+  MandelSampler.Bounds.Top := MandelSampler.Bounds.Top + Amount;
+  MandelSampler.Bounds.Bottom := MandelSampler.Bounds.Bottom + Amount;
   Img.Rasterize;
 end;
 
@@ -376,19 +367,17 @@ var
 begin
   cX := Center.X / Img.Width;
   cY := Center.Y / Img.Height;
-  with MandelSampler do
-  begin
-    L := Bounds.Left;
-    T := Bounds.Top;
-    W := Bounds.Right - Bounds.Left;
-    H := Bounds.Bottom - Bounds.Top;
-    if W = 0 then W := H;
-    if H = 0 then H := W;
-    Bounds.Left := cX * W - W * Factor * 0.5 + L;
-    Bounds.Top := cY * H - H * Factor * 0.5 + T;
-    Bounds.Right := W * Factor + Bounds.Left;
-    Bounds.Bottom := H * Factor + Bounds.Top;
-  end;
+
+  L := MandelSampler.Bounds.Left;
+  T := MandelSampler.Bounds.Top;
+  W := MandelSampler.Bounds.Right - MandelSampler.Bounds.Left;
+  H := MandelSampler.Bounds.Bottom - MandelSampler.Bounds.Top;
+  if W = 0 then W := H;
+  if H = 0 then H := W;
+  MandelSampler.Bounds.Left := cX * W - W * Factor * 0.5 + L;
+  MandelSampler.Bounds.Top := cY * H - H * Factor * 0.5 + T;
+  MandelSampler.Bounds.Right := W * Factor + MandelSampler.Bounds.Left;
+  MandelSampler.Bounds.Bottom := H * Factor + MandelSampler.Bounds.Top;
   Img.Rasterize;
 end;
 
@@ -396,7 +385,7 @@ procedure TMainForm.miRasterizerClick(Sender: TObject);
 var
   mi: TMenuItem;
 begin
-  if not(Sender is TMenuItem) then Exit;
+  if not (Sender is TMenuItem) then Exit;
   mi := TMenuItem(Sender);
   mi.Checked := True;
   SelectRasterizer(TRasterizerKind(mi.Tag));
@@ -404,7 +393,7 @@ end;
 
 procedure TMainForm.miDefaultClick(Sender: TObject);
 begin
-  if Sender is TMenuItem then
+  if (Sender is TMenuItem) then
     SelectSampler(TSamplerKind(TMenuItem(Sender).Tag));
 end;
 

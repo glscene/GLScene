@@ -37,10 +37,10 @@ requires
   GR32_RT;
 
 contains
-  GR32_Dsgn_Bitmap in '..\Source\GR32_Dsgn_Bitmap.pas',
-  GR32_Reg in '..\Source\GR32_Reg.pas',
-  GR32_Dsgn_Color in '..\Source\GR32_Dsgn_Color.pas',
-  GR32_Dsgn_ColorPicker in '..\Source\GR32_Dsgn_ColorPicker.pas',
-  GR32_Dsgn_Misc in '..\Source\GR32_Dsgn_Misc.pas';
+  GR32_Dsgn_Bitmap in '..\external\GR32\GR32_Dsgn_Bitmap.pas',
+  GR32_Reg in '..\external\GR32\GR32_Reg.pas',
+  GR32_Dsgn_Color in '..\external\GR32\GR32_Dsgn_Color.pas',
+  GR32_Dsgn_ColorPicker in '..\external\GR32\GR32_Dsgn_ColorPicker.pas',
+  GR32_Dsgn_Misc in '..\external\GR32\GR32_Dsgn_Misc.pas';
 
 end.
