@@ -31,7 +31,11 @@ procedure DoTesselate(Vertexes: TGLAffineVectorList; Mesh: TGLBaseMesh;
 implementation
 //---------------------------------------------------------------------------
 
+{$IFDEF USE_MULTITHREAD}
+threadvar
+{$ELSE}
 var
+{$ENDIF}
   TessMesh: TGLMeshObject;
   TessFace: TFGIndexTexCoordList;
   TessVerticesCount, TessExtraVertices: Integer;
