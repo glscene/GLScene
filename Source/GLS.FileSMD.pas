@@ -35,6 +35,9 @@ type
     procedure SaveToStream(aStream: TStream); override;
   end;
 
+// added to fix problem with decimal separator in non En configurations
+  var fs: TFormatSettings;
+
 // ------------------------------------------------------------------
 implementation
 // ------------------------------------------------------------------
@@ -160,10 +163,10 @@ begin
           frame.Position.Add(NullVector);
           frame.Rotation.Add(NullVector);
         end;
-        frame.Position.Add(StrToFloatDef(tl[1],0),
-          StrToFloatDef(tl[2],0), StrToFloatDef(tl[3],0));
-        v := AffineVectorMake(StrToFloatDef(tl[4],0),
-          StrToFloatDef(tl[5],0), StrToFloatDef(tl[6],0));
+        frame.Position.Add(StrToFloatDef(tl[1],0,fs),
+          StrToFloatDef(tl[2],0,fs), StrToFloatDef(tl[3],0,fs));
+        v := AffineVectorMake(StrToFloatDef(tl[4],0,fs),
+          StrToFloatDef(tl[5],0,fs), StrToFloatDef(tl[6],0,fs));
         frame.Rotation.Add(v);
         Inc(i);
       end;
@@ -220,17 +223,17 @@ begin
               for j := 0 to weightCount - 1 do
               begin
                 boneIDs[j].boneID := StrToInt(tl[10 + j * 2]);
-                boneIDs[j].Weight := StrToFloatDef(tl[11 + j * 2],0);
+                boneIDs[j].Weight := StrToFloatDef(tl[11 + j * 2],0,fs);
               end;
 
               nVert := FindOrAdd(boneIDs,
-                AffineVectorMake(StrToFloatDef(tl[1],0),
-                StrToFloatDef(tl[2],0), StrToFloatDef(tl[3],0)),
-                AffineVectorMake(StrToFloatDef(tl[4],0),
-                StrToFloatDef(tl[5],0), StrToFloatDef(tl[6],0)));
+                AffineVectorMake(StrToFloatDef(tl[1],0,fs),
+                StrToFloatDef(tl[2],0,fs), StrToFloatDef(tl[3],0,fs)),
+                AffineVectorMake(StrToFloatDef(tl[4],0,fs),
+                StrToFloatDef(tl[5],0,fs), StrToFloatDef(tl[6],0,fs)));
               nTex := TexCoords.FindOrAdd
-                (AffineVectorMake(StrToFloatDef(tl[7],0),
-                StrToFloatDef(tl[8],0), 0));
+                (AffineVectorMake(StrToFloatDef(tl[7],0,fs),
+                StrToFloatDef(tl[8],0,fs), 0));
               faceGroup.Add(nVert, nVert, nTex);
               Inc(i);
             end
@@ -239,13 +242,13 @@ begin
               // Half-Life 1 simple format
               boneID := StrToInt(tl[0]);
               nVert := FindOrAdd(boneID,
-                AffineVectorMake(StrToFloatDef(tl[1],0),
-                StrToFloatDef(tl[2],0), StrToFloatDef(tl[3],0)),
-                AffineVectorMake(StrToFloatDef(tl[4],0),
-                StrToFloatDef(tl[5],0), StrToFloatDef(tl[6],0)));
+                AffineVectorMake(StrToFloatDef(tl[1],0,fs),
+                StrToFloatDef(tl[2],0,fs), StrToFloatDef(tl[3],0,fs)),
+                AffineVectorMake(StrToFloatDef(tl[4],0,fs),
+                StrToFloatDef(tl[5],0,fs), StrToFloatDef(tl[6],0,fs)));
               nTex := TexCoords.FindOrAdd
-                (AffineVectorMake(StrToFloatDef(tl[7],0),
-                StrToFloatDef(tl[8],0), 0));
+                (AffineVectorMake(StrToFloatDef(tl[7],0,fs),
+                StrToFloatDef(tl[8],0,fs), 0));
               faceGroup.Add(nVert, nVert, nTex);
               Inc(i);
             end;
@@ -350,8 +353,9 @@ end;
 
 // ------------------------------------------------------------------
 initialization
-
 // ------------------------------------------------------------------
+
+fs.DecimalSeparator := '.';
 
 RegisterVectorFileFormat('smd', 'Half-Life SMD files', TGLSMDVectorFile);
 
