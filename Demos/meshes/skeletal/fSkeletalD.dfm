@@ -2,32 +2,27 @@ object FormSkeletal: TFormSkeletal
   Left = 237
   Top = 105
   Caption = 'Skeletal Animation'
-  ClientHeight = 501
-  ClientWidth = 644
+  ClientHeight = 401
+  ClientWidth = 515
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 510
-    Height = 450
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 408
+    Height = 360
     Camera = GLCamera1
     Buffer.BackgroundColor = clSilver
     Buffer.Lighting = False
-    FieldOfView = 154.942382812500000000
+    FieldOfView = 148.951782226562500000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -35,67 +30,51 @@ object FormSkeletal: TFormSkeletal
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 510
+    Left = 408
     Top = 0
-    Width = 134
-    Height = 450
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 107
+    Height = 360
     Align = alRight
     BevelOuter = bvNone
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -16
+    Font.Height = -13
     Font.Name = 'Arial'
     Font.Style = []
     ParentFont = False
     TabOrder = 1
     DesignSize = (
-      134
-      450)
+      107
+      360)
     object LabelFPS: TLabel
-      Left = 40
-      Top = 30
-      Width = 32
-      Height = 18
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 32
+      Top = 24
+      Width = 26
+      Height = 16
       Alignment = taCenter
       Anchors = []
       Caption = 'FPS'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -13
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
     end
     object BULongJump: TButton
-      Left = 20
-      Top = 190
-      Width = 101
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 152
+      Width = 81
+      Height = 25
       Caption = 'Long Jump'
       TabOrder = 0
       OnClick = BULongJumpClick
     end
     object CheckBox1: TCheckBox
-      Left = 20
-      Top = 300
-      Width = 101
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 240
+      Width = 81
+      Height = 17
       Caption = 'Skeleton'
       Checked = True
       State = cbChecked
@@ -103,27 +82,19 @@ object FormSkeletal: TFormSkeletal
       OnClick = CheckBox1Click
     end
     object BUHighJump: TButton
-      Left = 20
-      Top = 240
-      Width = 101
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 192
+      Width = 81
+      Height = 25
       Caption = 'High Jump'
       TabOrder = 2
       OnClick = BUHighJumpClick
     end
     object RBWalk: TRadioButton
-      Left = 20
-      Top = 110
-      Width = 81
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 88
+      Width = 65
+      Height = 17
       Caption = 'Walk'
       Checked = True
       TabOrder = 3
@@ -131,14 +102,10 @@ object FormSkeletal: TFormSkeletal
       OnClick = RBWalkClick
     end
     object RBRun: TRadioButton
-      Left = 20
-      Top = 140
-      Width = 91
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 112
+      Width = 73
+      Height = 17
       Caption = 'Run'
       TabOrder = 4
       OnClick = RBRunClick
@@ -146,45 +113,32 @@ object FormSkeletal: TFormSkeletal
   end
   object Panel2: TPanel
     Left = 0
-    Top = 450
-    Width = 644
-    Height = 51
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 360
+    Width = 515
+    Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
     DesignSize = (
-      644
-      51)
+      515
+      41)
     object TrackBar1: TTrackBar
-      Left = 80
+      Left = 64
       Top = 0
-      Width = 564
-      Height = 43
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 451
+      Height = 34
       Anchors = [akLeft, akTop, akRight, akBottom]
       Max = 100
       Position = 50
       TabOrder = 0
-      ThumbLength = 25
       TickMarks = tmBoth
       OnChange = TrackBar1Change
     end
     object CBBlend: TCheckBox
-      Left = 10
-      Top = 15
-      Width = 61
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 12
+      Width = 49
+      Height = 17
       Caption = 'Blend'
       TabOrder = 1
       OnClick = CBBlendClick

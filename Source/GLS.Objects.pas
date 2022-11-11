@@ -3438,8 +3438,8 @@ begin
     rci.GLStates.InvertGLFrontFace;
 end;
 
-// This will probably not work, karamba
-// RayCastSphereIntersect -> RayCastSuperellipsoidIntersect ??????
+// This will probably not work
+// RayCastSphereIntersect -> RayCastSuperellipsoidIntersect ?
 function TGLSuperellipsoid.RayCastIntersect(const rayStart, rayVector: TGLVector;
   intersectPoint: PGLVector = nil; intersectNormal: PGLVector = nil): Boolean;
 var

@@ -18,6 +18,7 @@
 #include "GLS.Scene.hpp"
 #include "GLS.SimpleNavigation.hpp"
 #include "GLS.SceneViewer.hpp"
+#include <Vcl.Menus.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

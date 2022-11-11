@@ -47,32 +47,24 @@ type
 
 //-------------------- TGLBaseMesh Objects -----------------------
 
-  (* The tetrahedron has no texture coordinates defined, ie. without using
+  (* This objects has no texture coordinates defined, ie. without using
     a texture generation mode, no texture will be mapped. *)
   TGLTetrahedron = class(TGLBaseMesh)
   public
     procedure BuildList(var rci: TGLRenderContextInfo); override;
   end;
-  (* The octahedron has no texture coordinates defined, ie. without using
-    a texture generation mode, no texture will be mapped. *)
   TGLOctahedron = class(TGLBaseMesh)
   public
     procedure BuildList(var rci: TGLRenderContextInfo); override;
   end;
-  (* The hexahedron has no texture coordinates defined, ie. without using
-    a texture generation mode, no texture will be mapped. *)
   TGLHexahedron = class(TGLBaseMesh)
   public
     procedure BuildList(var rci: TGLRenderContextInfo); override;
   end;
-  (* The dodecahedron has no texture coordinates defined, ie. without using
-   a texture generation mode, no texture will be mapped. *)
   TGLDodecahedron = class(TGLBaseMesh)
   public
     procedure BuildList(var rci: TGLRenderContextInfo); override;
   end;
-  (* The icosahedron has no texture coordinates defined, ie. without using
-     a texture generation mode, no texture will be mapped. *)
   TGLIcosahedron = class(TGLBaseMesh)
   public
     procedure BuildList(var rci: TGLRenderContextInfo); override;
@@ -113,7 +105,7 @@ type
     property SweepAngle: Single read FSweepAngle write SetSweepAngle;
   end;
 
-  (*  Base class to cylinder-like objects that introduces the basic cylinder description properties.
+  (* Base class to cylinder-like objects that introduces the basic cylinder description properties.
     Be aware teh default slices and stacks make up for a high-poly cylinder,
     unless you're after high-quality lighting it is recommended to reduce the
     Stacks property to 1. *)

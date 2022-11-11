@@ -22,6 +22,5 @@ uses
 begin
   Application.Initialize;
   Application.CreateForm(TFormTiles, FormTiles);
-  Application.CreateForm(TFormTiles, FormTiles);
   Application.Run;
 end.

@@ -44,6 +44,10 @@ __published:	// IDE-managed Components
 	TTimer *Timer1;
 	TGLCadencer *GLCadencer1;
 	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
+          TPoint &MousePos, bool &Handled);
+	void __fastcall GLDirectOpenGLRender(TObject *Sender, TGLRenderContextInfo &rci);
+
 private:	// User declarations
 	int mx, my;
 	int tileX, tileY;

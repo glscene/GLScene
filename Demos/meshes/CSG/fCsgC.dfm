@@ -10,11 +10,9 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
   OnMouseWheelDown = FormMouseWheelDown
   OnMouseWheelUp = FormMouseWheelUp
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
@@ -48,41 +46,41 @@ object Form1: TForm1
       TabOrder = 0
       OnClick = ButtonClearClick
     end
-    object Button2: TButton
+    object btnUnionAandB: TButton
       Left = 63
       Top = 8
       Width = 83
       Height = 25
       Caption = 'Union A and B'
       TabOrder = 1
-      OnClick = Button2Click
+      OnClick = btnUnionAandBClick
     end
-    object Button3: TButton
+    object btnSubtractAB: TButton
       Left = 156
       Top = 8
       Width = 75
       Height = 25
       Caption = 'Subtract A-B'
       TabOrder = 2
-      OnClick = Button3Click
+      OnClick = btnSubtractABClick
     end
-    object Button4: TButton
+    object btnSubtractBA: TButton
       Left = 239
       Top = 8
       Width = 75
       Height = 25
       Caption = 'Subtract B-A'
       TabOrder = 3
-      OnClick = Button4Click
+      OnClick = btnSubtractBAClick
     end
-    object Button5: TButton
+    object btnIntersectAorB: TButton
       Left = 320
       Top = 8
       Width = 97
       Height = 25
       Caption = 'Intersection A or B'
       TabOrder = 4
-      OnClick = Button5Click
+      OnClick = btnIntersectAorBClick
     end
     object CheckBox1: TCheckBox
       Left = 457

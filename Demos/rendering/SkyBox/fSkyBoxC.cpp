@@ -101,7 +101,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender) {
 	GLSphere1->Material->LibMaterialName = "Moon";
 	GLSphere2->Material->LibMaterialName = "Moon";
 
-	GLUserInterface1->MouseLookActive = true;
+   //	GLUserInterface1->MouseLookActive = true;
 
 }
 // ---------------------------------------------------------------------------

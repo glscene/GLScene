@@ -2,36 +2,31 @@ object FormBumpShader: TFormBumpShader
   Left = 261
   Top = 176
   Caption = 'GLSL Bump Shader'
-  ClientHeight = 483
-  ClientWidth = 714
+  ClientHeight = 386
+  ClientWidth = 571
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 500
-    Height = 483
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 400
+    Height = 386
     Camera = Camera
     Buffer.BackgroundColor = clBackground
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aaNone
     Buffer.DepthPrecision = dp24bits
     Buffer.ColorDepth = cd24bits
-    FieldOfView = 149.871536254882800000
+    FieldOfView = 142.774230957031300000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ViewerMouseDown
@@ -39,25 +34,17 @@ object FormBumpShader: TFormBumpShader
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 500
+    Left = 400
     Top = 0
-    Width = 214
-    Height = 483
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 171
+    Height = 386
     Align = alRight
     TabOrder = 1
     object LightMovingCheckBox: TCheckBox
-      Left = 10
-      Top = 10
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 8
+      Width = 97
+      Height = 17
       Caption = 'Light is Moving'
       Checked = True
       Color = clBtnFace
@@ -66,26 +53,18 @@ object FormBumpShader: TFormBumpShader
       TabOrder = 0
     end
     object RollPitchTurnCheckBox: TCheckBox
-      Left = 10
-      Top = 39
-      Width = 201
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 31
+      Width = 161
+      Height = 17
       Caption = 'Roll / Pitch / Turn Enabled'
       TabOrder = 1
     end
     object ShaderEnabledCheckBox: TCheckBox
-      Left = 10
-      Top = 90
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 72
+      Width = 97
+      Height = 17
       Caption = 'Shader Enabled'
       Checked = True
       State = cbChecked
@@ -93,27 +72,19 @@ object FormBumpShader: TFormBumpShader
       OnClick = ShaderEnabledCheckBoxClick
     end
     object MultiLightShaderCheckBox: TCheckBox
-      Left = 10
-      Top = 110
-      Width = 133
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 88
+      Width = 106
+      Height = 17
       Caption = 'MultiLight Shader'
       TabOrder = 3
       OnClick = MultiLightShaderCheckBoxClick
     end
     object UseSpecularTextureCheckBox: TCheckBox
-      Left = 10
-      Top = 160
-      Width = 151
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 128
+      Width = 121
+      Height = 17
       Caption = 'Use Specular Texture'
       Checked = True
       State = cbChecked
@@ -121,14 +92,10 @@ object FormBumpShader: TFormBumpShader
       OnClick = UseSpecularTextureCheckBoxClick
     end
     object UseNormalTextureCheckBox: TCheckBox
-      Left = 10
-      Top = 180
-      Width = 151
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 144
+      Width = 121
+      Height = 17
       Caption = 'Use Normal Texture'
       Checked = True
       State = cbChecked
@@ -136,14 +103,10 @@ object FormBumpShader: TFormBumpShader
       OnClick = UseNormalTextureCheckBoxClick
     end
     object ShowNotGLSceneObjectsCheckBox: TCheckBox
-      Left = 8
-      Top = 220
-      Width = 163
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 6
+      Top = 176
+      Width = 131
+      Height = 17
       Caption = 'Show not GLS objects'
       Checked = True
       State = cbChecked

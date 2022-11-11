@@ -2,43 +2,34 @@ object FormTentacles: TFormTentacles
   Left = 218
   Top = 106
   Caption = 'Tentacles'
-  ClientHeight = 406
-  ClientWidth = 575
+  ClientHeight = 325
+  ClientWidth = 460
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 575
-    Height = 406
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 460
+    Height = 325
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 152.326324462890600000
+    FieldOfView = 145.794540405273400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object PanelFPS: TPanel
-    Left = 220
-    Top = 10
-    Width = 151
-    Height = 21
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 176
+    Top = 8
+    Width = 121
+    Height = 17
     Caption = 'FPS'
     TabOrder = 1
   end

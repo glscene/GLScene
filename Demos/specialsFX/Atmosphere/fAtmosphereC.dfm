@@ -2,30 +2,25 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Atmosphere'
-  ClientHeight = 663
-  ClientWidth = 849
+  ClientHeight = 530
+  ClientWidth = 679
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
-    Left = 201
+    Left = 161
     Top = 0
-    Width = 648
-    Height = 663
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 518
+    Height = 530
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 169.419830322265600000
+    FieldOfView = 166.785736083984400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -33,133 +28,89 @@ object Form1: TForm1
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 201
-    Height = 663
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 161
+    Height = 530
     Align = alLeft
     TabOrder = 1
     object Label1: TLabel
-      Left = 16
-      Top = 470
-      Width = 56
-      Height = 17
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 376
+      Width = 44
+      Height = 13
       Caption = 'Controls:'
     end
     object Label2: TLabel
-      Left = 16
-      Top = 494
-      Width = 133
-      Height = 17
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 395
+      Width = 103
+      Height = 13
       Caption = 'Mouse Wheel = zoom'
     end
     object Label3: TLabel
-      Left = 16
-      Top = 518
-      Width = 152
-      Height = 17
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 414
+      Width = 119
+      Height = 13
       Caption = 'Hold Mouse and Move = '
     end
     object Label4: TLabel
-      Left = 24
-      Top = 541
-      Width = 93
-      Height = 17
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 19
+      Top = 433
+      Width = 72
+      Height = 13
       Caption = ' = turn camera'
     end
     object btnRotate: TButton
-      Left = 16
-      Top = 19
-      Width = 93
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 15
+      Width = 74
+      Height = 25
       Caption = 'Rotate Planet'
       TabOrder = 0
       OnClick = btnRotateClick
     end
     object Button4: TButton
-      Left = 16
-      Top = 80
-      Width = 135
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 64
+      Width = 108
+      Height = 25
       Caption = 'Move Planet Right'
       TabOrder = 1
       OnClick = Button4Click
     end
     object Button5: TButton
-      Left = 16
-      Top = 119
-      Width = 135
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 95
+      Width = 108
+      Height = 25
       Caption = 'Move Planet Left'
       TabOrder = 2
       OnClick = Button5Click
     end
     object Button2: TButton
-      Left = 16
-      Top = 180
-      Width = 110
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 144
+      Width = 88
+      Height = 25
       Caption = 'Move Sun Right'
       TabOrder = 3
       OnClick = Button2Click
     end
     object Button3: TButton
-      Left = 16
-      Top = 219
-      Width = 110
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 175
+      Width = 88
+      Height = 25
       Caption = 'Move Sun Left'
       TabOrder = 4
       OnClick = Button3Click
     end
     object Button9: TButton
-      Left = 16
-      Top = 280
-      Width = 93
-      Height = 31
+      Left = 13
+      Top = 224
+      Width = 74
+      Height = 25
       Hint = 'Mouse Wheel Can change zoom too'
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Zoom in'
       ParentShowHint = False
       ShowHint = True
@@ -167,15 +118,11 @@ object Form1: TForm1
       OnClick = Button9Click
     end
     object Button10: TButton
-      Left = 16
-      Top = 319
-      Width = 93
-      Height = 31
+      Left = 13
+      Top = 255
+      Width = 74
+      Height = 25
       Hint = 'Mouse Wheel Can change zoom too'
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Zoom out'
       ParentShowHint = False
       ShowHint = True
@@ -183,27 +130,19 @@ object Form1: TForm1
       OnClick = Button10Click
     end
     object Button8: TButton
-      Left = 16
-      Top = 396
-      Width = 152
-      Height = 32
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 317
+      Width = 121
+      Height = 25
       Caption = 'Change Blending Mode'
       TabOrder = 7
       OnClick = Button8Click
     end
     object Button6: TButton
-      Left = 16
-      Top = 358
-      Width = 152
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 286
+      Width = 121
+      Height = 25
       Caption = 'ON/Off atmosphere'
       TabOrder = 8
       OnClick = Button6Click
@@ -228,6 +167,7 @@ object Form1: TForm1
         item
           Color = clLime
         end>
+      Options = [sdoTwinkle]
     end
     object CameraTarget: TGLDummyCube
       Position.Coordinates = {0000204100000040000040400000803F}

@@ -142,11 +142,9 @@ object GLSceneEditorForm: TGLSceneEditorForm
     0000000000000000000000000000000000000000000000000000000000000000
     0000000000000000000000000000000000000000000000000000000000000000
     00000000000000000000000000000000000000000000}
-  OldCreateOrder = False
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
-  PixelsPerInch = 96
   TextHeight = 14
   object ToolBar: TToolBar
     Left = 0
@@ -193,7 +191,7 @@ object GLSceneEditorForm: TGLSceneEditorForm
       Style = tbsDropDown
     end
     object TBGalleryPanel: TToolButton
-      Left = 135
+      Left = 139
       Top = 0
       Hint = 'Show Gallery'
       Caption = 'Gallery'
@@ -203,7 +201,7 @@ object GLSceneEditorForm: TGLSceneEditorForm
       OnClick = TBGalleryPanelClick
     end
     object TBCharacterPanels: TToolButton
-      Left = 163
+      Left = 167
       Top = 0
       Hint = 'Show Behaviours/Effects'
       Caption = 'Show Behaviours/Effects'
@@ -212,7 +210,7 @@ object GLSceneEditorForm: TGLSceneEditorForm
       OnClick = TBCharacterPanelsClick
     end
     object TBSeparator2: TToolButton
-      Left = 191
+      Left = 195
       Top = 0
       Width = 8
       Caption = 'TBSeparator2'
@@ -220,23 +218,23 @@ object GLSceneEditorForm: TGLSceneEditorForm
       Style = tbsSeparator
     end
     object TBMoveUp: TToolButton
-      Left = 199
+      Left = 203
       Top = 0
       Action = acMoveUp
     end
     object TBMoveDown: TToolButton
-      Left = 227
+      Left = 231
       Top = 0
       Action = acMoveDown
     end
     object TBExpand: TToolButton
-      Left = 255
+      Left = 259
       Top = 0
       Action = acExpand
       Style = tbsCheck
     end
     object TBSeparator3: TToolButton
-      Left = 283
+      Left = 287
       Top = 0
       Width = 8
       Caption = 'TBSeparator3'
@@ -244,27 +242,27 @@ object GLSceneEditorForm: TGLSceneEditorForm
       Style = tbsSeparator
     end
     object TBDeleteObject: TToolButton
-      Left = 291
+      Left = 295
       Top = 0
       Action = acDeleteObject
     end
     object TBCut: TToolButton
-      Left = 319
+      Left = 323
       Top = 0
       Action = acCut
     end
     object TBCopy: TToolButton
-      Left = 347
+      Left = 351
       Top = 0
       Action = acCopy
     end
     object TBPaste: TToolButton
-      Left = 375
+      Left = 379
       Top = 0
       Action = acPaste
     end
     object TBSeparator4: TToolButton
-      Left = 403
+      Left = 407
       Top = 0
       Width = 8
       Caption = 'TBSeparator4'
@@ -272,7 +270,7 @@ object GLSceneEditorForm: TGLSceneEditorForm
       Style = tbsSeparator
     end
     object TBInfo: TToolButton
-      Left = 411
+      Left = 415
       Top = 0
       Action = acInfo
     end

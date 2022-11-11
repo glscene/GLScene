@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.TerrainRenderer;
 
 (*
@@ -17,9 +16,9 @@ interface
 uses
   Winapi.OpenGL,
   System.Classes,
-  System.SysUtils, 
+  System.SysUtils,
   System.Types,
-  
+
   GLS.OpenGLTokens,
   GLS.Scene,
   GLS.Coordinates,

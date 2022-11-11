@@ -4,12 +4,12 @@ object Main: TMain
   Align = alCustom
   BorderStyle = bsNone
   Caption = 'Christmas'
-  ClientHeight = 690
-  ClientWidth = 879
+  ClientHeight = 552
+  ClientWidth = 703
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Visible = True
@@ -18,23 +18,18 @@ object Main: TMain
   OnKeyPress = FormKeyPress
   OnMouseWheel = FormMouseWheel
   OnResize = FormResize
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 879
-    Height = 690
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 703
+    Height = 552
     Camera = Camera
     Buffer.BackgroundColor = clBlack
     Buffer.AmbientColor.Color = {0000803F0000803F0000803F0000803F}
     Buffer.ContextOptions = [roDoubleBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aa2x
-    FieldOfView = 163.941482543945300000
+    FieldOfView = 160.000000000000000000
     PenAsTouch = False
     Align = alClient
     OnDblClick = ViewerDblClick
@@ -5443,7 +5438,7 @@ object Main: TMain
     Top = 208
   end
   object MaterialLibraryCM: TGLMaterialLibrary
-    Left = 552
-    Top = 128
+    Left = 474
+    Top = 120
   end
 end

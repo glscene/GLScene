@@ -26,32 +26,41 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  SetGLSceneMediaDir();
+    SetGLSceneMediaDir();
 
-  // Add the specular pass
-  // tmBlend for shiny background
-  //Material->Texture->TextureMode = tmBlend;
-  // tmModulate for shiny text
-  GLMaterialLibrary1->AddTextureMaterial("specular","GLScene_alpha.bmp")->Material->Texture->TextureMode = tmModulate;
-  GLMaterialLibrary1->AddTextureMaterial("specular","GLScene_alpha.bmp")->Material->BlendingMode = bmAdditive;
-  GLMaterialLibrary1->AddTextureMaterial("specular","GLScene_alpha.bmp")->Texture2Name = "specular_tex2";
-  GLMaterialLibrary1->AddTextureMaterial("specular_tex2","chrome_buckle.bmp")->Material->Texture->MappingMode = tmmCubeMapReflection;
-  GLMaterialLibrary1->AddTextureMaterial("specular_tex2","chrome_buckle.bmp")->Material->Texture->ImageBrightness = 0.3;
+    // Add the specular pass
+    // tmBlend for shiny background
+    //Material->Texture->TextureMode = tmBlend;
+    // tmModulate for shiny text
+    GLMaterialLibrary1->AddTextureMaterial("specular", "GLScene_alpha.bmp")
+        ->Material->Texture->TextureMode = tmModulate;
+    GLMaterialLibrary1->AddTextureMaterial("specular", "GLScene_alpha.bmp")
+        ->Material->BlendingMode = bmAdditive;
+    GLMaterialLibrary1->AddTextureMaterial("specular", "GLScene_alpha.bmp")
+        ->Texture2Name = "specular_tex2";
 
-  // GLMaterialLibrary2 is the source of the GLMultiMaterialShader
-  // passes.
+    GLMaterialLibrary1->AddTextureMaterial("specular_tex2", "chrome_buckle.bmp")
+        ->Material->Texture->MappingMode = tmmCubeMapReflection;
+    GLMaterialLibrary1->AddTextureMaterial("specular_tex2", "chrome_buckle.bmp")
+        ->Material->Texture->ImageBrightness = 0.3;
+
+	// GLMaterialLibrary2 is the source of the GLMultiMaterialShader passes.
 	// Pass 1 : Base texture
-  GLMaterialLibrary2->AddTextureMaterial("Pass1","glscene.bmp");//}
+    GLMaterialLibrary2->AddTextureMaterial("Pass1", "glscene.bmp"); //}
 
-	// Pass 2 : Add a bit of detail
-  GLMaterialLibrary2->AddTextureMaterial("Pass2","detailmap.jpg")->Material->Texture->TextureMode=tmBlend;
-  GLMaterialLibrary2->AddTextureMaterial("Pass2","detailmap.jpg")->Material->BlendingMode=bmAdditive;
+    // Pass 2 : Add a bit of detail
+    GLMaterialLibrary2->AddTextureMaterial("Pass2", "detailmap.jpg")
+		->Material->Texture->TextureMode = tmBlend;
+    GLMaterialLibrary2->AddTextureMaterial("Pass2", "detailmap.jpg")
+        ->Material->BlendingMode = bmAdditive;
 
-	// Pass 3 : And a little specular reflection
-  (new TGLLibMaterial(GLMaterialLibrary2->Materials))->Material->MaterialLibrary=GLMaterialLibrary1;
-  (new TGLLibMaterial(GLMaterialLibrary2->Materials))->Material->LibMaterialName="specular";
+    // Pass 3 : And a little specular reflection
+    (new TGLLibMaterial(GLMaterialLibrary2->Materials))
+        ->Material->MaterialLibrary = GLMaterialLibrary1;
+    (new TGLLibMaterial(GLMaterialLibrary2->Materials))
+        ->Material->LibMaterialName = "specular";
 
-	// This isn't limited to 3, try adding some more passes!
+    // This isn't limited to 3, try adding some more passes!
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
@@ -86,4 +95,5 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
   my=Y;
 }
 //---------------------------------------------------------------------------
+
 

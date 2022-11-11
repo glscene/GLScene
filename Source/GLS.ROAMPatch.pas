@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.ROAMPatch;
 
 (*  Class for managing a ROAM (square) patch *)

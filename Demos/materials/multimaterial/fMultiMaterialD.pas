@@ -74,7 +74,7 @@ begin
   with GLMaterialLibrary1.AddTextureMaterial('specular', 'glscene_alpha.bmp') do
   begin
     // tmBlend for shiny background
-    // Material.Texture.TextureMode:=tmBlend;
+    // Material.Texture.TextureMode := tmBlend;
     // tmModulate for shiny text
     Material.Texture.TextureMode := tmModulate;
     Material.BlendingMode := bmAdditive;
@@ -86,8 +86,7 @@ begin
     Material.Texture.ImageBrightness := 0.3;
   end;
 
-  // GLMaterialLibrary2 is the source of the GLMultiMaterialShader
-  // passes.
+  // GLMaterialLibrary2 is the source of the GLMultiMaterialShader passes.
   // Pass 1 : Base texture
   GLMaterialLibrary2.AddTextureMaterial('Pass1', 'glscene.bmp'); // }
 

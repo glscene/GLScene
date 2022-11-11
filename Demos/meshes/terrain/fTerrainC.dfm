@@ -13,7 +13,6 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OnKeyPress = FormKeyPress
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
@@ -214,5 +213,9 @@ object Form1: TForm1
     Samples = <>
     Left = 208
     Top = 16
+  end
+  object Timer2: TTimer
+    Left = 136
+    Top = 176
   end
 end

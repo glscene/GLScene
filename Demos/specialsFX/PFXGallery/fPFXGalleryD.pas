@@ -14,32 +14,32 @@ uses
   Vcl.StdCtrls,
   Vcl.Imaging.Jpeg,
 
-  GLS.VectorGeometry, 
-  GLS.SceneViewer, 
-  GLS.Scene, 
-  GLS.HUDObjects, 
+  GLS.VectorGeometry,
+  GLS.SceneViewer,
+  GLS.Scene,
+  GLS.HUDObjects,
   GLS.ParticleFX,
-  GLS.VectorFileObjects, 
-  GLS.VectorTypes, 
-  GLS.Objects, 
+  GLS.VectorFileObjects,
+  GLS.VectorTypes,
+  GLS.Objects,
   GLS.BitmapFont,
   GLS.Utils,
-  GLS.Cadencer,  
-  GLS.Texture, 
+  GLS.Cadencer,
+  GLS.Texture,
   GLS.Navigator,
-  GLS.GeomObjects, 
-  GLS.Keyboard, 
-  GLS.SpaceText, 
+  GLS.GeomObjects,
+  GLS.Keyboard,
+  GLS.SpaceText,
   GLS.Behaviours,
-  GLS.PerlinPFX, 
+  GLS.PerlinPFX,
   GLS.Blur,
-  GLS.Coordinates, 
+  GLS.Coordinates,
   GLS.BaseClasses;
 
 const
-     cRunBoost = 10;
-     cWalkStep = 20;
-     cStrafeStep =20;
+  cRunBoost = 10;
+  cWalkStep = 20;
+  cStrafeStep = 20;
 
 type
   TFormPFXGallery = class(TForm)
@@ -77,8 +77,8 @@ type
     GLBlur1: TGLBlur;
     chkBlur: TCheckBox;
     Label1: TLabel;
-    procedure GLCadencer1Progress(Sender: TObject; const deltaTime,
-      newTime: Double);
+    procedure GLCadencer1Progress(Sender: TObject;
+      const deltaTime, newTime: Double);
     procedure Timer1Timer(Sender: TObject);
     procedure chkMouseLookClick(Sender: TObject);
     procedure chkFloorClick(Sender: TObject);
@@ -86,9 +86,8 @@ type
     procedure FormCreate(Sender: TObject);
   private
     procedure HandleKeys(const deltaTime: Double);
-     
+
   public
-     
 
   end;
 
@@ -104,65 +103,65 @@ begin
   chkFloorClick(Sender);
 end;
 
-procedure TFormPFXGallery.GLCadencer1Progress(Sender: TObject; const deltaTime,
-  newTime: Double);
+procedure TFormPFXGallery.GLCadencer1Progress(Sender: TObject;
+  const deltaTime, newTime: Double);
 begin
-     HandleKeys(deltaTime);
-     GLUserInterface1.Mouselook();
+  HandleKeys(deltaTime);
+  GLUserInterface1.Mouselook();
 
-     GLSceneViewer1.Invalidate();
-     GLUserInterface1.MouseUpdate();
-     GLSceneViewer1.Invalidate();
+  GLSceneViewer1.Invalidate();
+  GLUserInterface1.MouseUpdate();
+  GLSceneViewer1.Invalidate();
 end;
-
 
 procedure TFormPFXGallery.HandleKeys(const deltaTime: Double);
 var
-   boost : Single;
+  boost: Single;
 begin
-   if IsKeyDown(VK_ESCAPE) then begin
-      chkMouseLook.Checked := false;
-      chkMouseLookClick(self);
-   end;
+  if IsKeyDown(VK_ESCAPE) then
+  begin
+    chkMouseLook.Checked := false;
+    chkMouseLookClick(self);
+  end;
 
-   if IsKeyDown(VK_SHIFT) then
-      boost:=cRunBoost*deltaTime
-   else
-   if IsKeyDown(VK_CONTROL) then
-      boost:=cRunBoost*0.01*deltaTime
-   else
-      boost:=deltaTime;
+  if IsKeyDown(VK_SHIFT) then
+    boost := cRunBoost * deltaTime
+  else if IsKeyDown(VK_CONTROL) then
+    boost := cRunBoost * 0.01 * deltaTime
+  else
+    boost := deltaTime;
 
-   if IsKeyDown('W') then
-      GLCamera1.Move(cWalkStep*boost);
-   if IsKeyDown('S') then
-      GLCamera1.Move(-cWalkStep*boost);
+  if IsKeyDown('W') then
+    GLCamera1.Move(cWalkStep * boost);
+  if IsKeyDown('S') then
+    GLCamera1.Move(-cWalkStep * boost);
 
-   if IsKeyDown('A') then
-          GLCamera1.Slide(-cStrafeStep*boost);
-   if IsKeyDown('D') then
-          GLCamera1.Slide(cStrafeStep*boost)
+  if IsKeyDown('A') then
+    GLCamera1.Slide(-cStrafeStep * boost);
+  if IsKeyDown('D') then
+    GLCamera1.Slide(cStrafeStep * boost)
 end;
 
 procedure TFormPFXGallery.Timer1Timer(Sender: TObject);
 begin
-     Caption := 'PFXGallery ' + Inttostr(Round(GLSceneViewer1.FramesPerSecond))+' FPS';
-     GLSceneViewer1.ResetPerformanceMonitor;
+  Caption := 'PFXGallery ' + Inttostr(Round(GLSceneViewer1.FramesPerSecond)
+    ) + ' FPS';
+  GLSceneViewer1.ResetPerformanceMonitor;
 end;
 
 procedure TFormPFXGallery.chkMouseLookClick(Sender: TObject);
 begin
-     GLUserInterface1.MouseLookActive:= chkMouseLook.Checked;
+  GLUserInterface1.MouseLookActive := chkMouseLook.Checked;
 end;
 
 procedure TFormPFXGallery.chkFloorClick(Sender: TObject);
 begin
-     GLPlane1.Visible := chkFloor.Checked;
+  GLPlane1.Visible := chkFloor.Checked;
 end;
 
 procedure TFormPFXGallery.chkBlurClick(Sender: TObject);
 begin
-     GLBlur1.Visible := chkBlur.Checked;
+  GLBlur1.Visible := chkBlur.Checked;
 end;
 
 end.

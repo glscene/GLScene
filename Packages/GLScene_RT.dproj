@@ -8,7 +8,7 @@
         <AppType>Package</AppType>
         <FrameworkType>VCL</FrameworkType>
         <ProjectVersion>19.4</ProjectVersion>
-        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <Platform Condition="'$(Platform)'==''">Win64</Platform>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -271,7 +271,6 @@
         <DCCReference Include="..\Source\GLS.MeshLines.pas"/>
         <DCCReference Include="..\Source\GLS.MeshUtils.pas"/>
         <DCCReference Include="..\Source\GLS.Mirror.pas"/>
-        <DCCReference Include="..\Source\GLS.ModuleLoader.pas"/>
         <DCCReference Include="..\Source\GLS.Movement.pas"/>
         <DCCReference Include="..\Source\GLS.MultiPolygon.pas"/>
         <DCCReference Include="..\Source\GLS.MultiProxy.pas"/>
@@ -314,7 +313,6 @@
         <DCCReference Include="..\Source\GLSL.Shader.pas"/>
         <DCCReference Include="..\Source\GLS.Language.pas"/>
         <DCCReference Include="..\Source\GLS.Memo.pas"/>
-        <DCCReference Include="..\Source\OpenGL.InitVCL.pas"/>
         <DCCReference Include="..\Source\GLS.ProjectedTextures.pas"/>
         <DCCReference Include="..\Source\GLS.Scene.pas"/>
         <DCCReference Include="..\Source\GLS.SceneForm.pas"/>
@@ -372,9 +370,11 @@
         <DCCReference Include="..\Source\GLS.Strings.pas"/>
         <DCCReference Include="..\Source\GLS.XCollection.pas"/>
         <DCCReference Include="..\Source\GLS.XOpenGL.pas"/>
+        <DCCReference Include="..\Source\OpenGL.InitVCL.pas"/>
         <DCCReference Include="..\Source\PasGLTF.pas"/>
         <DCCReference Include="..\Source\PasJSON.pas"/>
         <DCCReference Include="..\Source\PasDblStrUtils.pas"/>
+        <DCCReference Include="..\Source\GLS.ModuleLoader.pas"/>
         <None Include="..\Source\GLScene.inc"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'PFXGallery'
-  ClientHeight = 449
-  ClientWidth = 704
+  ClientHeight = 526
+  ClientWidth = 748
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,15 +16,15 @@ object Form1: TForm1
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 25
-    Width = 704
-    Height = 424
+    Width = 748
+    Height = 501
     Camera = GLCamera1
     Buffer.FogEnvironment.FogColor.Color = {D7A3703ED7A3703ED7A3703E0000803F}
     Buffer.FogEnvironment.FogStart = 30.000000000000000000
     Buffer.FogEnvironment.FogEnd = 200.000000000000000000
     Buffer.BackgroundColor = clBlack
     Buffer.AmbientColor.Color = {0000803F0000803F0000803F0000803F}
-    FieldOfView = 143.454727172851600000
+    FieldOfView = 148.774902343750000000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -32,7 +32,7 @@ object Form1: TForm1
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 704
+    Width = 748
     Height = 25
     Align = alTop
     Caption = ' '

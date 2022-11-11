@@ -57,6 +57,7 @@ __published:                   // IDE-managed Components
   TGLLensFlare *GLLensFlare;
   TGLDummyCube *GLDummyCube1;
   TGLRenderPoint *InitialRenderPoint;
+	TTimer *Timer2;
   void __fastcall GLCadencer1Progress(TObject * Sender, const double deltaTime,
 									  const double newTime);
   void __fastcall GLSceneViewer1MouseDown(TObject * Sender, TMouseButton Button,
