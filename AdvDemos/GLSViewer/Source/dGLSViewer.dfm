@@ -1,36 +1,36 @@
 object dmGLSViewer: TdmGLSViewer
-  OldCreateOrder = False
-  Height = 334
-  Width = 390
+  Height = 418
+  Width = 488
+  PixelsPerInch = 120
   object ColorDialog: TColorDialog
     Color = 14540253
     Options = [cdFullOpen, cdAnyColor]
-    Left = 46
-    Top = 24
+    Left = 178
+    Top = 22
   end
   object OpenDialog: TOpenDialog
     Options = [ofHideReadOnly, ofFileMustExist, ofEnableSizing]
-    Left = 150
-    Top = 24
+    Left = 60
+    Top = 22
   end
   object SaveDialog: TSaveDialog
     Options = [ofHideReadOnly, ofPathMustExist, ofEnableSizing]
-    Left = 232
-    Top = 24
+    Left = 170
+    Top = 110
   end
   object odTextures: TOpenDialog
     DefaultExt = 'glml'
     Filter = 'GLScene Material Library (*.glml)|*.glml|All files (*.*)|*.*'
     Options = [ofHideReadOnly, ofFileMustExist, ofEnableSizing]
-    Left = 46
-    Top = 80
+    Left = 58
+    Top = 196
   end
   object sdTextures: TSaveDialog
     DefaultExt = 'glml'
     Filter = 'GLScene Material Library (*.glml)|*.glml|All files (*.*)|*.*'
     Options = [ofHideReadOnly, ofPathMustExist, ofEnableSizing]
-    Left = 150
-    Top = 80
+    Left = 172
+    Top = 196
   end
   object opDialog: TOpenPictureDialog
     Filter = 
@@ -46,7 +46,7 @@ object dmGLSViewer: TdmGLSViewer
       'ns (*.ico)|*.ico|Enhanced Metafiles (*.emf)|*.emf|Metafiles (*.w' +
       'mf)|*.wmf'
     Options = [ofHideReadOnly, ofFileMustExist, ofEnableSizing]
-    Left = 230
-    Top = 80
+    Left = 64
+    Top = 108
   end
 end

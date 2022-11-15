@@ -94,10 +94,13 @@ begin
   tl := TStringList.Create;
   try
     sl.LoadFromStream(aStream);
+    /// then reading glts/glb file for GLS skeleton
+(*
     if sl[0] <> 'version 1' then
-      raise Exception.Create('SMD version 1 required');
+      raise Exception.Create('GLTF version 1 required');
     if sl[1] <> 'nodes' then
       raise Exception.Create('nodes not found');
+*)
     if sl.IndexOf('triangles') >= 0 then
     begin
       mesh := TGLSkeletonMeshObject.CreateOwned(Owner.MeshObjects);
@@ -106,7 +109,7 @@ begin
     else if Owner.MeshObjects.Count > 0 then
       mesh := (Owner.MeshObjects[0] as TGLSkeletonMeshObject)
     else
-      raise Exception.Create('SMD is an animation, load model SMD first.');
+      raise Exception.Create('Cant load GLTF with an animation');
     // read skeleton nodes
     i := 2;
     if Owner.Skeleton.RootBones.Count = 0 then
@@ -128,12 +131,6 @@ begin
         end;
         Inc(i);
       end;
-    end
-    else
-    begin
-      // animation file, skip structure
-      while sl[i] <> 'end' do
-        Inc(i);
     end;
     Inc(i);
     if sl[i] <> 'skeleton' then
@@ -347,6 +344,7 @@ end;
 initialization
 // ------------------------------------------------------------------
 
+RegisterVectorFileFormat('gltf', 'ASCII glTF files', TGLTFVectorFile);
 RegisterVectorFileFormat('glb', 'Binary glTF files', TGLTFVectorFile);
 
 end.

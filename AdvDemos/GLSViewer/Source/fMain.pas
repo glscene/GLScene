@@ -242,7 +242,8 @@ uses
   GLS.FileTIN,
   GLS.FileDXF,
   GLS.FileGRD,
-  GLS.FileX;
+  GLS.FileX,
+  GLS.FileGLTF;
 
 type
   // Hidden line shader (specific implem for the viewer, *not* generic)
@@ -314,13 +315,14 @@ procedure TMainForm.FormShow(Sender: TObject);
 begin
   if not nthShow then
   begin
+    // using formats supported by gls
     dmGLSViewer.OpenDialog.Filter := VectorFileFormatsFilter;
     dmGLSViewer.SaveDialog.Filter := VectorFileFormatsSaveFilter;
     ApplyFSAA;
     ApplyFaceCull;
     ApplyFPS;
     if ParamCount > 0 then
-      DoOpen(ParamStr(1));
+      DoOpen(ParamStr(0));
     nthShow := True;
   end;
 end;
