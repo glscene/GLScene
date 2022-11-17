@@ -17,7 +17,8 @@ uses
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
   GLS.VectorGeometry,
-  GLS.VectorTypesExt;
+  GLS.VectorTypesExt,
+  GLS.Utils;
 
 
 type
@@ -75,9 +76,9 @@ begin
         Trim(tl.CommaText);
         if tl.Count = 9 then
         begin
-            SetVector(v1, StrToFloatDef(tl[0],0), StrToFloatDef(tl[1],0), StrToFloatDef(tl[2],0));
-            SetVector(v2, StrToFloatDef(tl[3],0), StrToFloatDef(tl[4],0), StrToFloatDef(tl[5],0));
-            SetVector(v3, StrToFloatDef(tl[6],0), StrToFloatDef(tl[7],0), StrToFloatDef(tl[8],0));
+            SetVector(v1, GLStrToFloatDef(tl[0],0), GLStrToFloatDef(tl[1],0), GLStrToFloatDef(tl[2],0));
+            SetVector(v2, GLStrToFloatDef(tl[3],0), GLStrToFloatDef(tl[4],0), GLStrToFloatDef(tl[5],0));
+            SetVector(v3, GLStrToFloatDef(tl[6],0), GLStrToFloatDef(tl[7],0), GLStrToFloatDef(tl[8],0));
             mesh.Vertices.Add(v1, v2, v3);
             n := CalcPlaneNormal(v1, v2, v3);
             mesh.Normals.Add(n, n, n);
@@ -109,9 +110,9 @@ begin
         repeat
           Inc(i);
           tl.DelimitedText := sl[i];
-          VertArr[j].X := StrToFloat(tl[0]);
-          VertArr[j].Y := StrToFloat(tl[1]);
-          VertArr[j].Z := StrToFloat(tl[2]);
+          VertArr[j].X := GLStrToFloatDef(tl[0]);
+          VertArr[j].Y := GLStrToFloatDef(tl[1]);
+          VertArr[j].Z := GLStrToFloatDef(tl[2]);
           Inc(j);
         until (j = NVert);
         Inc(i);  

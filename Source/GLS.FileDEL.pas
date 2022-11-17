@@ -18,7 +18,8 @@ uses
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
   GLS.VectorGeometry,
-  GLS.VectorTypesExt;
+  GLS.VectorTypesExt,
+  GLS.Utils;
 
 
 type
@@ -96,9 +97,9 @@ begin
         repeat
           Inc(i);
           tl.DelimitedText := sl[i];
-          VertArr[j].X := StrToFloat(tl[0]);
-          VertArr[j].Y := StrToFloat(tl[1]);
-          VertArr[j].Z := StrToFloat(tl[2]);
+          VertArr[j].X := GLStrToFloatDef(tl[0]);
+          VertArr[j].Y := GLStrToFloatDef(tl[1]);
+          VertArr[j].Z := GLStrToFloatDef(tl[2]);
           Inc(j);
         until (j = NVert);
         Inc(i);  

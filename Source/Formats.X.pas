@@ -16,7 +16,8 @@ uses
   GLS.VectorTypes,
   GLS.VectorGeometry,
   GLS.VectorLists,
-  GLS.PersistentClasses;
+  GLS.PersistentClasses,
+  GLS.Utils;
 
 type
   TDXNode = class;
@@ -256,7 +257,7 @@ var
     if ContainsEnd(str) then
       str := StringReplace(str, '}', '', [rfReplaceAll]);
 
-    Result := StrToFloatDef(str, 0);
+    Result := GLStrToFloatDef(str, 0);
   end;
 
   function ReadMatrix: TGLMatrix;
@@ -284,13 +285,13 @@ var
     TempBuffer.CommaText := str;
     if TempBuffer.Count > 1 then
     begin
-      Result.X := StrToFloatDef(TempBuffer[0], 0);
-      Result.Y := StrToFloatDef(TempBuffer[1], 0);
-      Result.Z := StrToFloatDef(TempBuffer[2], 0);
+      Result.X := GLStrToFloatDef(TempBuffer[0], 0);
+      Result.Y := GLStrToFloatDef(TempBuffer[1], 0);
+      Result.Z := GLStrToFloatDef(TempBuffer[2], 0);
     end
     else
     begin
-      Result.X := StrToFloatDef(TempBuffer[0], 0);
+      Result.X := GLStrToFloatDef(TempBuffer[0], 0);
       Result.Y := ReadSingle;
       Result.Z := ReadSingle;
     end;
@@ -305,14 +306,14 @@ var
     TempBuffer.CommaText := str;
     if TempBuffer.Count > 1 then
     begin
-      Result.X := StrToFloatDef(TempBuffer[0], 0);
-      Result.Y := StrToFloatDef(TempBuffer[1], 0);
-      Result.Z := StrToFloatDef(TempBuffer[2], 0);
-      Result.W := StrToFloatDef(TempBuffer[3], 0);
+      Result.X := GLStrToFloatDef(TempBuffer[0], 0);
+      Result.Y := GLStrToFloatDef(TempBuffer[1], 0);
+      Result.Z := GLStrToFloatDef(TempBuffer[2], 0);
+      Result.W := GLStrToFloatDef(TempBuffer[3], 0);
     end
     else
     begin
-      Result.X := StrToFloatDef(TempBuffer[0], 0);
+      Result.X := GLStrToFloatDef(TempBuffer[0], 0);
       Result.Y := ReadSingle;
       Result.Z := ReadSingle;
       Result.W := ReadSingle;
@@ -328,12 +329,12 @@ var
     TempBuffer.CommaText := str;
     if TempBuffer.Count > 1 then
     begin
-      Result.X := StrToFloatDef(TempBuffer[0], 0);
-      Result.Y := StrToFloatDef(TempBuffer[1], 0);
+      Result.X := GLStrToFloatDef(TempBuffer[0], 0);
+      Result.Y := GLStrToFloatDef(TempBuffer[1], 0);
     end
     else
     begin
-      Result.X := StrToFloatDef(TempBuffer[0], 0);
+      Result.X := GLStrToFloatDef(TempBuffer[0], 0);
       Result.Y := ReadSingle;
     end;
     Result.Z := 0;

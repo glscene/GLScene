@@ -16,7 +16,8 @@ uses
   GLS.VectorTypes,
   GLS.VectorGeometry,
   GLS.VectorLists,
-  GLS.VectorFileObjects;
+  GLS.VectorFileObjects,
+  GLS.Utils;
 
 type
   TVORHeader = packed record
@@ -80,9 +81,9 @@ var
       raise Exception.Create('Invalid Normal')
     else
     begin
-      aNormal.X := StrToFloatDef(Sl[2], 0);
-      aNormal.Y := StrToFloatDef(Sl[3], 0);
-      aNormal.Z := StrToFloatDef(Sl[4], 0);
+      aNormal.X := GLStrToFloatDef(Sl[2], 0);
+      aNormal.Y := GLStrToFloatDef(Sl[3], 0);
+      aNormal.Z := GLStrToFloatDef(Sl[4], 0);
     end;
   end;
 
@@ -93,9 +94,9 @@ var
       raise Exception.Create('Invalid Vertex')
     else
     begin
-      aVertex.X := StrToFloatDef(Sl[1], 0);
-      aVertex.Y := StrToFloatDef(Sl[2], 0);
-      aVertex.Z := StrToFloatDef(Sl[3], 0);
+      aVertex.X := GLStrToFloatDef(Sl[1], 0);
+      aVertex.Y := GLStrToFloatDef(Sl[2], 0);
+      aVertex.Z := GLStrToFloatDef(Sl[3], 0);
     end;
   end;
 

@@ -136,13 +136,13 @@ procedure TGLMD5VectorFile.LoadFromStream(aStream: TStream);
     bonename := FTempString[0];
     ParentBoneID := StrToInt(FTempString[1]);
 
-    pos.X := StrToFloatDef(FTempString[2]);
-    pos.Y := StrToFloatDef(FTempString[4]);
-    pos.Z := StrToFloatDef(FTempString[3]);
+    pos.X := GLStrToFloatDef(FTempString[2]);
+    pos.Y := GLStrToFloatDef(FTempString[4]);
+    pos.Z := GLStrToFloatDef(FTempString[3]);
 
-    quat := QuaternionMakeFromImag(StrToFloatDef(FTempString[5]),
-      StrToFloatDef(FTempString[7]),
-      StrToFloatDef(FTempString[6]));
+    quat := QuaternionMakeFromImag(GLStrToFloatDef(FTempString[5]),
+      GLStrToFloatDef(FTempString[7]),
+      GLStrToFloatDef(FTempString[6]));
 
     FFramePositions.Add(pos);
     FFrameQuaternions.Add(quat);
@@ -247,8 +247,8 @@ procedure TGLMD5VectorFile.LoadFromStream(aStream: TStream);
           begin
             vnum := StrToInt(FTempString[1]);
             mesh.TexCoords[vnum] :=
-              AffineVectorMake(StrToFloatDef(FTempString[2]),
-              1 - StrToFloatDef(FTempString[3]), 0);
+              AffineVectorMake(GLStrToFloatDef(FTempString[2]),
+              1 - GLStrToFloatDef(FTempString[3]), 0);
             VertexWeightID[vnum] := StrToInt(FTempString[4]);
             VertexWeightCount[vnum] := StrToInt(FTempString[5]);
             if VertexWeightCount[vnum] > mesh.BonesPerVertex then
@@ -281,11 +281,11 @@ procedure TGLMD5VectorFile.LoadFromStream(aStream: TStream);
           begin
             wnum := StrToInt(FTempString[1]);
             VertexBoneRef[wnum] := StrToInt(FTempString[2]);
-            VertexWeight[wnum] := StrToFloatDef(FTempString[3]);
+            VertexWeight[wnum] := GLStrToFloatDef(FTempString[3]);
             VertexWeighted[wnum] :=
-              AffineVectorMake(StrToFloatDef(FTempString[4]),
-              StrToFloatDef(FTempString[6]),
-              StrToFloatDef(FTempString[5]));
+              AffineVectorMake(GLStrToFloatDef(FTempString[4]),
+              GLStrToFloatDef(FTempString[6]),
+              GLStrToFloatDef(FTempString[5]));
           end;
         end;
       end;
@@ -363,12 +363,12 @@ procedure TGLMD5VectorFile.LoadFromStream(aStream: TStream);
       FTempString.CommaText := temp;
       if FTempString.Count >= 6 then
       begin
-        pos := AffineVectorMake(StrToFloatDef(FTempString[0]),
-          StrToFloatDef(FTempString[1]),
-          StrToFloatDef(FTempString[2]));
-        quat := QuaternionMakeFromImag(StrToFloatDef(FTempString[3]),
-          StrToFloatDef(FTempString[4]),
-          StrToFloatDef(FTempString[5]));
+        pos := AffineVectorMake(GLStrToFloatDef(FTempString[0]),
+          GLStrToFloatDef(FTempString[1]),
+          GLStrToFloatDef(FTempString[2]));
+        quat := QuaternionMakeFromImag(GLStrToFloatDef(FTempString[3]),
+          GLStrToFloatDef(FTempString[4]),
+          GLStrToFloatDef(FTempString[5]));
         FFramePositions.Add(pos);
         FFrameQuaternions.Add(quat);
       end;
@@ -400,32 +400,32 @@ procedure TGLMD5VectorFile.LoadFromStream(aStream: TStream);
 
         if FJointFlags[i] and 1 > 0 then
         begin
-          pos.X := StrToFloatDef(FTempString[j]);
+          pos.X := GLStrToFloatDef(FTempString[j]);
           Inc(j);
         end;
         if FJointFlags[i] and 2 > 0 then
         begin
-          pos.Y := StrToFloatDef(FTempString[j]);
+          pos.Y := GLStrToFloatDef(FTempString[j]);
           Inc(j);
         end;
         if FJointFlags[i] and 4 > 0 then
         begin
-          pos.Z := StrToFloatDef(FTempString[j]);
+          pos.Z := GLStrToFloatDef(FTempString[j]);
           Inc(j);
         end;
 
         if FJointFlags[i] and 8 > 0 then
         begin
-          quat.ImagPart.X := StrToFloatDef(FTempString[j]);
+          quat.ImagPart.X := GLStrToFloatDef(FTempString[j]);
           Inc(j);
         end;
         if FJointFlags[i] and 16 > 0 then
         begin
-          quat.ImagPart.Y := StrToFloatDef(FTempString[j]);
+          quat.ImagPart.Y := GLStrToFloatDef(FTempString[j]);
           Inc(j);
         end;
         if FJointFlags[i] and 32 > 0 then
-          quat.ImagPart.Z := StrToFloatDef(FTempString[j]);
+          quat.ImagPart.Z := GLStrToFloatDef(FTempString[j]);
       end;
 
       pos := AffineVectorMake(pos.X, pos.Z, pos.Y);

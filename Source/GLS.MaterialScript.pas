@@ -409,14 +409,14 @@ begin
   Val := ExtractValue;
   if pos('(', Val) > 0 then
   begin
-    TmpColor.Alpha := StrToFloatDef(copy(Val, pos('(', Val) + 1,
+    TmpColor.Alpha := GLStrToFloatDef(copy(Val, pos('(', Val) + 1,
       pos(';', Val) - 2));
     delete(Val, 1, pos(';', Val));
-    TmpColor.Red := StrToFloatDef(copy(Val, 1, pos(';', Val) - 1));
+    TmpColor.Red := GLStrToFloatDef(copy(Val, 1, pos(';', Val) - 1));
     delete(Val, 1, pos(';', Val));
-    TmpColor.Green := StrToFloatDef(copy(Val, 1, pos(';', Val) - 1));
+    TmpColor.Green := GLStrToFloatDef(copy(Val, 1, pos(';', Val) - 1));
     delete(Val, 1, pos(';', Val));
-    TmpColor.Blue := StrToFloatDef(copy(Val, 1, pos(')', Val) - 1));
+    TmpColor.Blue := GLStrToFloatDef(copy(Val, 1, pos(')', Val) - 1));
   end;
 end;
 
@@ -427,12 +427,12 @@ begin
   Val := ExtractValue;
   if pos('(', Val) > 0 then
   begin
-    TmpCoords.X := StrToFloatDef(copy(Val, pos('(', Val) + 1,
+    TmpCoords.X := GLStrToFloatDef(copy(Val, pos('(', Val) + 1,
       pos(';', Val) - 2));
     delete(Val, 1, pos(';', Val));
-    TmpCoords.Y := StrToFloatDef(copy(Val, 1, pos(';', Val) - 1));
+    TmpCoords.Y := GLStrToFloatDef(copy(Val, 1, pos(';', Val) - 1));
     delete(Val, 1, pos(';', Val));
-    TmpCoords.Z := StrToFloatDef(copy(Val, 1, pos(')', Val) - 1));
+    TmpCoords.Z := GLStrToFloatDef(copy(Val, 1, pos(')', Val) - 1));
   end;
 end;
 
@@ -443,14 +443,14 @@ begin
   Val := ExtractValue;
   if pos('(', Val) > 0 then
   begin
-    TmpCoords4.W := StrToFloatDef(copy(Val, pos('(', Val) + 1,
+    TmpCoords4.W := GLStrToFloatDef(copy(Val, pos('(', Val) + 1,
       pos(';', Val) - 2));
     delete(Val, 1, pos(';', Val));
-    TmpCoords4.X := StrToFloatDef(copy(Val, 1, pos(';', Val) - 1));
+    TmpCoords4.X := GLStrToFloatDef(copy(Val, 1, pos(';', Val) - 1));
     delete(Val, 1, pos(';', Val));
-    TmpCoords4.Y := StrToFloatDef(copy(Val, 1, pos(';', Val) - 1));
+    TmpCoords4.Y := GLStrToFloatDef(copy(Val, 1, pos(';', Val) - 1));
     delete(Val, 1, pos(';', Val));
-    TmpCoords4.Z := StrToFloatDef(copy(Val, 1, pos(')', Val) - 1));
+    TmpCoords4.Z := GLStrToFloatDef(copy(Val, 1, pos(')', Val) - 1));
   end;
 end;
 
@@ -861,14 +861,14 @@ procedure TGLMaterialScripter.XImageBrightness;
 begin
   if ClassExists('imagebrightness') then
     if ExtractValue <> '' then
-      NewMat.Material.Texture.ImageBrightness := StrToFloatDef(ExtractValue);
+      NewMat.Material.Texture.ImageBrightness := GLStrToFloatDef(ExtractValue);
 end;
 
 procedure TGLMaterialScripter.XImageGamma;
 begin
   if ClassExists('imagegamma') then
     if ExtractValue <> '' then
-      NewMat.Material.Texture.ImageGamma := StrToFloatDef(ExtractValue);
+      NewMat.Material.Texture.ImageGamma := GLStrToFloatDef(ExtractValue);
 end;
 
 procedure TGLMaterialScripter.XLibMaterialName;
@@ -998,7 +998,7 @@ procedure TGLMaterialScripter.XNormalMapScale;
 begin
   if ClassExists('normalmapscale') then
     if ExtractValue <> '' then
-      NewMat.Material.Texture.NormalMapScale := StrToFloatDef(ExtractValue);
+      NewMat.Material.Texture.NormalMapScale := GLStrToFloatDef(ExtractValue);
 end;
 
 procedure TGLMaterialScripter.XTexture2Name;

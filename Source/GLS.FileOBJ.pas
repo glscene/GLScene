@@ -25,12 +25,13 @@ uses
   GLS.PersistentClasses,
   GLS.VectorGeometry,
   GLS.Scene,  
-  GLS.VectorFileObjects, 
+  GLS.VectorFileObjects,
   GLS.VectorLists,  
   GLS.Texture,  
   GLS.Color,
   GLS.RenderContextInfo, 
-  GLS.Material;
+  GLS.Material,
+  GLS.Utils;
 
 const
   // Load input data in chunks of BufSize Bytes. 
@@ -811,7 +812,7 @@ var
               begin
                 Ambient.Color := objMtl.MaterialVectorProperty(matName, 'Ka', clrGray20);
                 Diffuse.Color := objMtl.MaterialVectorProperty(matName, 'Kd', clrGray80);
-                Diffuse.Alpha := StrToFloatDef(objMtl.MaterialStringProperty(matName, 'd'), 1);
+                Diffuse.Alpha := GLStrToFloatDef(objMtl.MaterialStringProperty(matName, 'd'), 1);
                 if Diffuse.Alpha < 1 then
                   libMat.Material.BlendingMode := bmTransparency;
                 case StrToIntDef(objMtl.MaterialStringProperty(matName, 'illum'), 1) of
@@ -1363,7 +1364,7 @@ begin
       Result := NullHmgVector;
       for i := 0 to 3 do
         if sl.Count > i then
-          Result.V[i] := StrToFloatDef(sl[i], 0)
+          Result.V[i] := GLStrToFloatDef(sl[i], 0)
         else
           Break;
     end

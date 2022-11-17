@@ -25,7 +25,8 @@ uses
   GLS.Scene,
   GLS.Texture,
   GLS.VectorFileObjects,
-  GLS.Material;
+  GLS.Material,
+  GLS.Utils;
 
 type
   TGLDXFVectorFile = class(TGLVectorFile)
@@ -244,7 +245,7 @@ const
     c := FormatSettings.DecimalSeparator;
     FormatSettings.DecimalSeparator := '.';
     S := Trim(ReadLine);
-    result := StrToFloat(S);
+    result := GLStrToFloatDef(S);
     FormatSettings.DecimalSeparator := c;
   end;
 

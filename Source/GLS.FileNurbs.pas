@@ -17,7 +17,8 @@ uses
   GLS.VectorGeometry,
   GLS.VectorLists,
   GLS.ApplicationFileIO,
-  GLS.ParametricSurfaces;
+  GLS.ParametricSurfaces,
+  GLS.Utils;
 
 type
 
@@ -69,7 +70,7 @@ procedure TGLNurbsVectorFile.LoadFromStream(stream: TStream);
         vals.CommaText := buf;
         for k := 0 to vals.Count - 1 do
           if vals[k] <> '' then
-            list.Add(StrToFloatDef(vals[k], 0));
+            list.Add(GLStrToFloatDef(vals[k], 0));
         Inc(idx);
       end;
       Result := idx;
@@ -93,9 +94,9 @@ procedure TGLNurbsVectorFile.LoadFromStream(stream: TStream);
           Break;
         vals.CommaText := buf;
         if vals.Count >= 3 then
-          list.Add(StrToFloatDef(vals[0], 0),
-            StrToFloatDef(vals[1], 0),
-            StrToFloatDef(vals[2], 0));
+          list.Add(GLStrToFloatDef(vals[0], 0),
+            GLStrToFloatDef(vals[1], 0),
+            GLStrToFloatDef(vals[2], 0));
         Inc(idx);
       end;
       Result := idx;

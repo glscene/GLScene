@@ -207,6 +207,7 @@ begin
       buf := InputDlg(TGLProcTextureNoise.FriendlyName, 'Minimum Cut', IntToStr(MinCut));
       MinCut := StrToIntDef(buf, 0);
       buf := InputDlg(TGLProcTextureNoise.FriendlyName, 'Noise Sharpness', FloatToStr(NoiseSharpness));
+      //By PAL, this has to be StrToFloatDef using Windows locale because comes from a Dialog
       NoiseSharpness := StrToFloatDef(buf, 0.9);
       buf := InputDlg(TGLProcTextureNoise.FriendlyName, 'Random Seed', IntToStr(NoiseRandSeed));
       NoiseRandSeed := StrToIntDef(buf, 0);

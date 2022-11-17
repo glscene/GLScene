@@ -18,7 +18,8 @@ uses
   GLS.VectorGeometry, 
   GLS.VectorLists,
   GLS.Texture,
-  GLS.Material;
+  GLS.Material,
+  GLS.Utils;
 
 const
   GL_ASE_MAX_TEXURE_CHANNELS = 12; // maximum texture channels
@@ -599,13 +600,13 @@ end;
 
 function StringToFloatRegular(aValue: string): Double;
 begin
-  Result := StrToFloatDef(aValue, 0);
+  Result := GLStrToFloatDef(aValue, 0);
   if Result = 0 then begin
     ChangeDotToComma(aValue);
-    Result := StrToFloatDef(aValue, 0);
+    Result := GLStrToFloatDef(aValue, 0);
     if Result = 0 then begin
       ChangeCommaToDot(aValue);
-      Result := StrToFloatDef(aValue, 0);
+      Result := GLStrToFloatDef(aValue, 0);
     end;
   end;
 end;

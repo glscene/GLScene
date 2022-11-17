@@ -17,7 +17,8 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-  GLS.Strings;
+  GLS.Strings,
+  GLS.Utils;
 
 type
 
@@ -1631,7 +1632,7 @@ begin
   ReadLine(cVTInteger);
   oldDc := FormatSettings.DecimalSeparator;
   FormatSettings.DecimalSeparator := '.';
-  Result := StrToFloat(FData);
+  Result := GLStrToFloatDef(FData);
   FormatSettings.DecimalSeparator := oldDc;
 end;
 

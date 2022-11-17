@@ -79,7 +79,7 @@ begin
     begin
       p := PChar(sl[i]);
       mesh.Vertices.Add(ParseFloat(p), ParseFloat(p), ParseFloat(p));
-      // AffineVectorMake(StrToFloatDef(tl[0]), StrToFloatDef(tl[1]), StrToFloatDef(tl[2])));}
+      // AffineVectorMake(GLStrToFloatDef(tl[0]), GLStrToFloatDef(tl[1]), GLStrToFloatDef(tl[2])));}
       Dec(nbVertices);
       Inc(i);
     end;

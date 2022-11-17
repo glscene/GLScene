@@ -19,7 +19,7 @@ uses
   GLS.VectorLists,
   GLS.VectorGeometry,
   GLS.Material,
-
+  GLS.Utils,
   PasGLTF;
 
 type
@@ -39,6 +39,7 @@ implementation
 // ------------------
 // ------------------ TGLTFVectorFile ------------------
 // ------------------
+
 
 class function TGLTFVectorFile.Capabilities: TGLDataFileCapabilities;
 begin
@@ -154,10 +155,10 @@ begin
           frame.Position.Add(NullVector);
           frame.Rotation.Add(NullVector);
         end;
-        frame.Position.Add(StrToFloatDef(tl[1],0),
-          StrToFloatDef(tl[2],0), StrToFloatDef(tl[3],0));
-        v := AffineVectorMake(StrToFloatDef(tl[4],0),
-          StrToFloatDef(tl[5],0), StrToFloatDef(tl[6],0));
+        frame.Position.Add(GLStrToFloatDef(tl[1],0),
+          GLStrToFloatDef(tl[2],0), GLStrToFloatDef(tl[3],0));
+        v := AffineVectorMake(GLStrToFloatDef(tl[4],0),
+          GLStrToFloatDef(tl[5],0), GLStrToFloatDef(tl[6],0));
         frame.Rotation.Add(v);
         Inc(i);
       end;
@@ -214,16 +215,16 @@ begin
               for j := 0 to weightCount - 1 do
               begin
                 boneIDs[j].boneID := StrToInt(tl[10 + j * 2]);
-                boneIDs[j].Weight := StrToFloatDef(tl[11 + j * 2],0);
+                boneIDs[j].Weight := GLStrToFloatDef(tl[11 + j * 2],0);
               end;
 
               nVert := FindOrAdd(boneIDs,
-                AffineVectorMake(StrToFloatDef(tl[1],0),
-                StrToFloatDef(tl[2],0), StrToFloatDef(tl[3],0)),
-                AffineVectorMake(StrToFloatDef(tl[4],0),
-                StrToFloatDef(tl[5],0), StrToFloatDef(tl[6],0)));
+                AffineVectorMake(GLStrToFloatDef(tl[1],0),
+                GLStrToFloatDef(tl[2],0), GLStrToFloatDef(tl[3],0)),
+                AffineVectorMake(GLStrToFloatDef(tl[4],0),
+                GLStrToFloatDef(tl[5],0), GLStrToFloatDef(tl[6],0)));
               nTex := TexCoords.FindOrAdd
-                (AffineVectorMake(StrToFloatDef(tl[7],0), StrToFloatDef(tl[8],0),0));
+                (AffineVectorMake(GLStrToFloatDef(tl[7],0), GLStrToFloatDef(tl[8],0),0));
               faceGroup.Add(nVert, nVert, nTex);
               Inc(i);
             end
@@ -232,12 +233,12 @@ begin
               // simple format
               boneID := StrToInt(tl[0]);
               nVert := FindOrAdd(boneID,
-                AffineVectorMake(StrToFloatDef(tl[1],0),
-                StrToFloatDef(tl[2],0), StrToFloatDef(tl[3],0)),
-                AffineVectorMake(StrToFloatDef(tl[4],0),
-                StrToFloatDef(tl[5],8), StrToFloatDef(tl[6],0)));
+                AffineVectorMake(GLStrToFloatDef(tl[1],0),
+                GLStrToFloatDef(tl[2],0), GLStrToFloatDef(tl[3],0)),
+                AffineVectorMake(GLStrToFloatDef(tl[4],0),
+                GLStrToFloatDef(tl[5],8), GLStrToFloatDef(tl[6],0)));
               nTex := TexCoords.FindOrAdd
-                (AffineVectorMake(StrToFloatDef(tl[7],0), StrToFloatDef(tl[8],0), 0));
+                (AffineVectorMake(GLStrToFloatDef(tl[7],0), GLStrToFloatDef(tl[8],0), 0));
               faceGroup.Add(nVert, nVert, nTex);
               Inc(i);
             end;

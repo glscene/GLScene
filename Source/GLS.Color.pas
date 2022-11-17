@@ -20,7 +20,8 @@ uses
   GLS.VectorTypes,
   GLS.VectorGeometry,
   GLS.PersistentClasses,
-  GLS.BaseClasses;
+  GLS.BaseClasses,
+  GLS.Utils;
 
 type
   PGLColorVector = ^TGLColorVector;
@@ -754,31 +755,31 @@ begin
         delimiter := Pos(' ', workCopy);
         if (Length(workCopy) > 0) and (delimiter > 0) then
         begin
-          Result.X := StrToFloat(Copy(workCopy, 1, delimiter - 1));
+          Result.X := GLStrToFloatDef(Copy(workCopy, 1, delimiter - 1));
           System.Delete(workCopy, 1, delimiter);
           workCopy := TrimLeft(workCopy);
           delimiter := Pos(' ', workCopy);
           if (Length(workCopy) > 0) and (delimiter > 0) then
           begin
-            Result.Y := StrToFloat(Copy(workCopy, 1, delimiter - 1));
+            Result.Y := GLStrToFloatDef(Copy(workCopy, 1, delimiter - 1));
             System.Delete(workCopy, 1, delimiter);
             workCopy := TrimLeft(workCopy);
             delimiter := Pos(' ', workCopy);
             if (Length(workCopy) > 0) and (delimiter > 0) then
             begin
-              Result.Z := StrToFloat(Copy(workCopy, 1, delimiter - 1));
+              Result.Z := GLStrToFloatDef(Copy(workCopy, 1, delimiter - 1));
               System.Delete(workCopy, 1, delimiter);
               workCopy := TrimLeft(workCopy);
-              Result.W := StrToFloat(workCopy);
+              Result.W := GLStrToFloatDef(workCopy);
             end
             else
-              Result.Z := StrToFloat(workCopy);
+              Result.Z := GLStrToFloatDef(workCopy);
           end
           else
-            Result.Y := StrToFloat(workCopy);
+            Result.Y := GLStrToFloatDef(workCopy);
         end
         else
-          Result.X := StrToFloat(workCopy);
+          Result.X := GLStrToFloatDef(workCopy);
       except
         ShowMessage('Wrong vector format. Use: ''<red green blue alpha>''!');
         Abort;

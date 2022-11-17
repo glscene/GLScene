@@ -41,7 +41,8 @@ uses
   GLS.PersistentClasses,
   GLS.XOpenGL,
   GLS.Context,
-  GLS.VectorTypes;
+  GLS.VectorTypes,
+  GLS.Utils;
 
 type
   TGLTree = class;
@@ -1215,23 +1216,23 @@ begin
         else if str = 'branch_facets' then
           FBranchFacets := StrToInt(StrParse[1])
         else if str = 'leaf_size' then
-          FLeafSize := StrToFloat(StrParse[1])
+          FLeafSize := GLStrToFloatDef(StrParse[1])
         else if str = 'branch_size' then
-          FBranchSize := StrToFloat(StrParse[1])
+          FBranchSize := GLStrToFloatDef(StrParse[1])
         else if str = 'branch_noise' then
-          FBranchNoise := StrToFloat(StrParse[1])
+          FBranchNoise := GLStrToFloatDef(StrParse[1])
         else if str = 'branch_angle_bias' then
-          FBranchAngleBias := StrToFloat(StrParse[1])
+          FBranchAngleBias := GLStrToFloatDef(StrParse[1])
         else if str = 'branch_angle' then
-          FBranchAngle := StrToFloat(StrParse[1])
+          FBranchAngle := GLStrToFloatDef(StrParse[1])
         else if str = 'branch_twist' then
-          FBranchTwist := StrToFloat(StrParse[1])
+          FBranchTwist := GLStrToFloatDef(StrParse[1])
         else if str = 'branch_radius' then
-          FBranchRadius := StrToFloat(StrParse[1])
+          FBranchRadius := GLStrToFloatDef(StrParse[1])
         else if str = 'leaf_threshold' then
-          FLeafThreshold := StrToFloat(StrParse[1])
+          FLeafThreshold := GLStrToFloatDef(StrParse[1])
         else if str = 'central_leader_bias' then
-          FCentralLeaderBias := StrToFloat(StrParse[1])
+          FCentralLeaderBias := GLStrToFloatDef(StrParse[1])
         else if str = 'central_leader' then
           FCentralLeader := LowerCase(StrParse[1]) = 'true'
         else if str = 'seed' then
