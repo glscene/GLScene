@@ -15,7 +15,8 @@ program TerrainPackD;
 uses
   Forms,
   fTerrainPackD in 'fTerrainPackD.pas' {MainForm},
-  fNavD in 'fNavD.pas' {NavForm};
+  fNavD in 'fNavD.pas' {NavForm},
+  fViewerD in 'fViewerD.pas' {ViewerForm};
 
 {$R *.res}
 
@@ -23,5 +24,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TNavForm, NavForm);
+  Application.CreateForm(TViewerForm, ViewerForm);
   Application.Run;
 end.

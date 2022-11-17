@@ -2,32 +2,28 @@ object MainForm: TMainForm
   Left = 252
   Top = 328
   Caption = 'Terrain Pack v1.1'
-  ClientHeight = 515
-  ClientWidth = 726
+  ClientHeight = 412
+  ClientWidth = 581
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Menu = MainMenu
   ShowHint = True
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object StringGrid: TStringGrid
     Left = 0
-    Top = 351
-    Width = 726
-    Height = 139
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 282
+    Width = 581
+    Height = 110
     Align = alClient
     BorderStyle = bsNone
-    DefaultColWidth = 138
+    DefaultColWidth = 110
+    DefaultRowHeight = 19
     FixedCols = 0
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goEditing, goThumbTracking]
@@ -37,277 +33,189 @@ object MainForm: TMainForm
   end
   object Panel1: TPanel
     Left = 0
-    Top = 215
-    Width = 726
-    Height = 136
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 173
+    Width = 581
+    Height = 109
     Align = alTop
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 1
     DesignSize = (
-      726
-      136)
+      581
+      109)
     object Label1: TLabel
-      Left = 10
-      Top = 104
-      Width = 59
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 83
+      Width = 48
+      Height = 13
       Caption = 'DEM path'
     end
     object Label2: TLabel
-      Left = 10
-      Top = 14
-      Width = 66
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 11
+      Width = 54
+      Height = 13
       Caption = 'HTF output'
     end
     object Label3: TLabel
-      Left = 10
-      Top = 44
-      Width = 65
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 35
+      Width = 51
+      Height = 13
       Caption = 'World Size'
     end
     object Label4: TLabel
-      Left = 150
-      Top = 44
-      Width = 21
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 120
+      Top = 35
+      Width = 17
+      Height = 13
       Alignment = taCenter
       AutoSize = False
       Caption = 'x'
     end
     object Label5: TLabel
-      Left = 400
-      Top = 44
-      Width = 81
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 320
+      Top = 35
+      Width = 66
+      Height = 13
       Caption = 'Default height'
     end
     object Label6: TLabel
-      Left = 260
-      Top = 44
-      Width = 52
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 208
+      Top = 35
+      Width = 40
+      Height = 13
       Caption = 'Tile Size'
     end
     object Label7: TLabel
-      Left = 240
-      Top = 74
-      Width = 72
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 192
+      Top = 59
+      Width = 55
+      Height = 13
       Caption = 'Tile overlap'
     end
     object Label8: TLabel
-      Left = 400
-      Top = 74
-      Width = 89
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 320
+      Top = 59
+      Width = 72
+      Height = 13
       Caption = 'Filter to default:'
     end
     object Label9: TLabel
-      Left = 590
-      Top = 44
-      Width = 46
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 472
+      Top = 35
+      Width = 37
+      Height = 13
       Caption = 'Z Scale'
     end
     object EDHTFName: TEdit
-      Left = 90
-      Top = 10
-      Width = 591
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 72
+      Top = 8
+      Width = 473
+      Height = 21
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 0
     end
     object EDDEMPath: TEdit
-      Left = 90
-      Top = 100
-      Width = 591
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 72
+      Top = 80
+      Width = 473
+      Height = 21
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 1
       OnChange = EDDEMPathChange
     end
     object BUDEMPath: TButton
-      Left = 684
-      Top = 100
-      Width = 30
-      Height = 26
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 547
+      Top = 80
+      Width = 24
+      Height = 21
       Anchors = [akTop, akRight]
       Caption = '...'
       TabOrder = 2
       OnClick = BUDEMPathClick
     end
     object BUPickHTF: TButton
-      Left = 684
-      Top = 10
-      Width = 30
-      Height = 26
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 547
+      Top = 8
+      Width = 24
+      Height = 21
       Anchors = [akTop, akRight]
       Caption = '...'
       TabOrder = 3
       OnClick = BUPickHTFClick
     end
     object EDSizeX: TEdit
-      Left = 90
-      Top = 40
-      Width = 61
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 72
+      Top = 32
+      Width = 49
+      Height = 21
       TabOrder = 4
     end
     object EDSizeY: TEdit
-      Left = 170
-      Top = 40
-      Width = 61
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 136
+      Top = 32
+      Width = 49
+      Height = 21
       TabOrder = 5
     end
     object EDDefaultZ: TEdit
-      Left = 500
-      Top = 40
-      Width = 61
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 400
+      Top = 32
+      Width = 49
+      Height = 21
       TabOrder = 6
       Text = '0'
       OnChange = EDDefaultZChange
     end
     object EDTileSize: TEdit
-      Left = 320
-      Top = 40
-      Width = 61
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 256
+      Top = 32
+      Width = 49
+      Height = 21
       TabOrder = 7
       Text = '256'
     end
     object EDTileOverlap: TEdit
-      Left = 320
-      Top = 70
-      Width = 61
-      Height = 24
+      Left = 256
+      Top = 56
+      Width = 49
+      Height = 21
       Hint = 
         'Tile overlap in samples'#13#10'When overlap is 1, righternmost and bot' +
         'tommost undefined samples '#13#10'will be filled completed with last r' +
         'ow value in place of default value'
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       TabOrder = 8
       Text = '0'
     end
     object EDZFilter: TEdit
-      Left = 500
-      Top = 70
-      Width = 63
-      Height = 24
+      Left = 400
+      Top = 56
+      Width = 50
+      Height = 21
       Hint = 
         'All samples with this altitude will be replaced by default heigh' +
         't'
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       TabOrder = 9
       OnChange = EDZFilterChange
     end
     object EDZScale: TEdit
-      Left = 644
-      Top = 40
-      Width = 71
-      Height = 24
+      Left = 515
+      Top = 32
+      Width = 57
+      Height = 21
       Hint = 
         'Scaling is applied after filtering, and applied to default heigh' +
         't too'
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       TabOrder = 10
       Text = '1.0'
       OnChange = EDZScaleChange
     end
     object CBWholeOnly: TCheckBox
-      Left = 590
-      Top = 74
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 472
+      Top = 59
+      Width = 97
+      Height = 17
       Caption = 'Whole tiles only'
       TabOrder = 11
     end
@@ -315,120 +223,76 @@ object MainForm: TMainForm
   object ToolBar: TToolBar
     Left = 0
     Top = 0
-    Width = 726
-    Height = 215
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 581
+    Height = 173
     AutoSize = True
     BorderWidth = 1
-    ButtonHeight = 211
-    ButtonWidth = 114
+    ButtonHeight = 169
+    ButtonWidth = 91
     Caption = 'ToolBar'
     Images = ImageList
     TabOrder = 2
     object ToolButton1: TToolButton
       Left = 0
       Top = 0
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Action = ACOpen
     end
     object ToolButton2: TToolButton
-      Left = 114
+      Left = 91
       Top = 0
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Action = ACSave
     end
     object ToolButton3: TToolButton
-      Left = 228
+      Left = 182
       Top = 0
-      Width = 10
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 8
       Caption = 'ToolButton3'
       ImageIndex = 2
       Style = tbsSeparator
     end
     object ToolButton4: TToolButton
-      Left = 238
+      Left = 190
       Top = 0
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Action = ACNewDEM
     end
     object ToolButton5: TToolButton
-      Left = 352
+      Left = 281
       Top = 0
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Action = ACRemoveDEM
     end
     object ToolButton6: TToolButton
-      Left = 466
+      Left = 372
       Top = 0
-      Width = 10
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 8
       Caption = 'ToolButton6'
       ImageIndex = 6
       Style = tbsSeparator
     end
     object ToolButton7: TToolButton
-      Left = 476
+      Left = 380
       Top = 0
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Action = ACProcess
     end
     object ToolButton8: TToolButton
-      Left = 590
+      Left = 471
       Top = 0
-      Width = 10
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 8
       Caption = 'ToolButton8'
       ImageIndex = 4
       Style = tbsSeparator
     end
     object ToolButton9: TToolButton
-      Left = 600
+      Left = 479
       Top = 0
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Action = ACViewer
     end
   end
   object CBType: TComboBox
-    Left = 410
-    Top = 230
-    Width = 141
-    Height = 24
+    Left = 328
+    Top = 184
+    Width = 113
+    Height = 21
     Hint = 'Select input file format.'
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
     Style = csDropDownList
     TabOrder = 3
     Visible = False
@@ -443,15 +307,11 @@ object MainForm: TMainForm
       'DTED')
   end
   object CBFile: TComboBox
-    Left = 10
-    Top = 230
-    Width = 141
-    Height = 24
+    Left = 8
+    Top = 184
+    Width = 113
+    Height = 21
     Hint = 'Filename to be inported.'
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
     DropDownCount = 24
     TabOrder = 4
     Visible = False
@@ -459,13 +319,9 @@ object MainForm: TMainForm
   end
   object PanelFoot: TPanel
     Left = 0
-    Top = 490
-    Width = 726
-    Height = 25
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 392
+    Width = 581
+    Height = 20
     Align = alBottom
     BevelOuter = bvNone
     BorderWidth = 3
@@ -473,12 +329,8 @@ object MainForm: TMainForm
     object ProgressBar: TProgressBar
       Left = 3
       Top = 3
-      Width = 720
-      Height = 19
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 575
+      Height = 14
       Align = alClient
       Smooth = True
       Step = 1
@@ -486,17 +338,13 @@ object MainForm: TMainForm
     end
   end
   object CBFlipRotate: TComboBox
-    Left = 560
-    Top = 230
-    Width = 141
-    Height = 24
+    Left = 448
+    Top = 184
+    Width = 113
+    Height = 21
     Hint = 
       'Rotate and/or flip the input data. (Use Rotate 270 for DTED data' +
       '.)'
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
     Style = csDropDownList
     TabOrder = 6
     Visible = False

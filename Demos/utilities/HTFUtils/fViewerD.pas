@@ -1,4 +1,4 @@
-unit fViewer;
+unit fViewerD;
 
 interface
 
@@ -7,6 +7,7 @@ uses
   System.SysUtils,
   System.Classes,
   System.Actions,
+  System.ImageList,
   Vcl.Graphics,
   Vcl.Controls,
   Vcl.Forms,
@@ -24,7 +25,7 @@ uses
 
   GLS.HeightTileFileHDS,
   GLS.VectorGeometry,
-  GLS.Utils, System.ImageList;
+  GLS.Utils;
 
 type
   TViewerForm = class(TForm)
@@ -85,13 +86,14 @@ implementation
 uses
   fNavD;
 
-{ Quick'n dirty parser for palette file format '.pal', in which each line defines
+(*
+  Quick'n dirty parser for palette file format '.pal', in which each line defines
   nodes in the color ramp palette:
 
   value:red,green,blue
 
   color is then interpolated between node values (ie. between each line in the file)
-}
+*)
 procedure PreparePal(const fileName: String);
 
   procedure ParseLine(buf: String; var n: Integer; var c: TAffineVector);
@@ -224,7 +226,7 @@ var
   scanLine: PColor32Array;
   tileInfo: PGLHeightTileInfo;
   dataRow: PSmallIntArray;
-  tile: PHeightTile;
+  tile: PGLHeightTile;
   start, lap, stop, htfTime, drawTime, freq: Int64;
   tileList: TList;
   bmp: TBitmap32;

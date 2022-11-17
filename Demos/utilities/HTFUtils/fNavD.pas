@@ -36,7 +36,7 @@ implementation
 {$R *.dfm}
 
 uses
-  fViewer;
+  fViewerD;
 
 function TNavForm.Execute(htf : TGLHeightTileFile) : Boolean;
 var

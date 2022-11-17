@@ -2,81 +2,56 @@ object ViewerForm: TViewerForm
   Left = 99
   Top = 98
   Caption = 'HTFViewer'
-  ClientHeight = 602
-  ClientWidth = 786
+  ClientHeight = 482
+  ClientWidth = 629
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object ToolBar: TToolBar
     Left = 0
     Top = 0
-    Width = 786
-    Height = 58
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 629
+    Height = 56
     AutoSize = True
     BorderWidth = 1
-    ButtonWidth = 246
+    ButtonWidth = 197
     Caption = 'ToolBar'
     Images = ImageList
     TabOrder = 0
     object ToolButton1: TToolButton
       Left = 0
       Top = 0
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Action = ACOpen
     end
     object ToolButton3: TToolButton
-      Left = 246
+      Left = 197
       Top = 0
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Action = ACExit
     end
     object ToolButton2: TToolButton
-      Left = 492
+      Left = 394
       Top = 0
-      Width = 10
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 8
       Caption = 'ToolButton2'
       ImageIndex = 1
       Style = tbsSeparator
     end
     object ToolButton6: TToolButton
-      Left = 502
+      Left = 402
       Top = 0
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Action = ACNavMap
     end
     object ToolButton5: TToolButton
       Left = 0
       Top = 0
-      Width = 10
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 8
       Caption = 'ToolButton5'
       ImageIndex = 3
       Wrap = True
@@ -84,12 +59,8 @@ object ViewerForm: TViewerForm
     end
     object TBGrid: TToolButton
       Left = 0
-      Top = 32
+      Top = 30
       Hint = 'Toggle Grid'
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'TBGrid'
       Down = True
       ImageIndex = 3
@@ -97,41 +68,29 @@ object ViewerForm: TViewerForm
       OnClick = TBGridClick
     end
     object ToolButton7: TToolButton
-      Left = 246
-      Top = 32
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 197
+      Top = 30
       Action = ACPalette
       DropdownMenu = PMPalettes
       Style = tbsDropDown
     end
     object ToolButton4: TToolButton
-      Left = 511
-      Top = 32
-      Width = 10
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 413
+      Top = 30
+      Width = 8
       Caption = 'ToolButton4'
       ImageIndex = 2
       Style = tbsSeparator
     end
     object LAMap: TLabel
-      Left = 521
-      Top = 32
-      Width = 61
-      Height = 22
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 421
+      Top = 30
+      Width = 49
+      Height = 16
       Caption = ' No map'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -13
       Font.Name = 'Arial'
       Font.Style = [fsItalic]
       ParentFont = False
@@ -140,60 +99,49 @@ object ViewerForm: TViewerForm
   end
   object PaintBox: TPaintBox32
     Left = 0
-    Top = 58
-    Width = 786
-    Height = 520
+    Top = 56
+    Width = 629
+    Height = 406
     Cursor = crCross
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
     Align = alClient
     TabOrder = 1
     OnMouseDown = PaintBoxMouseDown
     OnMouseMove = PaintBoxMouseMove
     OnMouseUp = PaintBoxMouseUp
     OnResize = PaintBoxResize
-    ExplicitTop = 1452
-    ExplicitWidth = 721
-    ExplicitHeight = 456
+    ExplicitTop = 46
+    ExplicitHeight = 416
   end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 578
-    Width = 786
-    Height = 24
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 462
+    Width = 629
+    Height = 20
     Font.Charset = ANSI_CHARSET
     Font.Color = clBtnText
-    Font.Height = -14
+    Font.Height = -11
     Font.Name = 'Arial'
     Font.Style = []
     Panels = <
       item
-        Width = 81
+        Width = 65
       end
       item
-        Width = 81
+        Width = 65
       end
       item
-        Width = 81
+        Width = 65
       end
       item
-        Width = 81
+        Width = 65
       end
       item
-        Width = 131
+        Width = 105
       end
       item
-        Width = 63
+        Width = 50
       end>
     UseSystemFont = False
-    ExplicitTop = 489
-    ExplicitWidth = 721
   end
   object ImageList: TImageList
     Left = 40

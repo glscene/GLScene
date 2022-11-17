@@ -2,9 +2,12 @@
 // The graphics rendering engine GLScene http://glscene.org
 //
 unit GLS.Utils;
+
 (* Miscellaneous support utilities & classes for localization *)
 interface
+
 {$I GLScene.inc}
+
 uses
   Winapi.Windows,
   Winapi.ShellApi,
@@ -18,22 +21,26 @@ uses
   Vcl.ExtDlgs,
   GLS.VectorGeometry,
   GLS.Strings;
+
 type
   THalfFloat = type Word;
   PHalfFloat = ^THalfFloat;
   EGLOSError = EOSError;
   EGLUtilsException = class(Exception);
-  TSqrt255Array = array[0..255] of Byte;
+  TSqrt255Array = array [0 .. 255] of Byte;
   PSqrt255Array = ^TSqrt255Array;
   TProjectTargetNameFunc = function(): string;
+
 const
   FONT_CHARS_COUNT = 2024;
+
 var
   IsDesignTime: Boolean = False;
   vProjectTargetName: TProjectTargetNameFunc;
 
 // Copies the values of Source to Dest (converting word values to integer values)
-procedure WordToIntegerArray(Source: PWordArray; Dest: PIntegerArray; Count: Cardinal);
+procedure WordToIntegerArray(Source: PWordArray; Dest: PIntegerArray;
+  Count: Cardinal);
 // Round ups to the nearest power of two, value must be positive
 function RoundUpToPowerOf2(value: Integer): Integer;
 // Round down to the nearest power of two, value must be strictly positive
@@ -45,60 +52,69 @@ function ReadCRLFString(aStream: TStream): String;
 // Write the string and a CRLF in the stream
 procedure WriteCRLFString(aStream: TStream; const aString: String);
 // Similar to SysUtils.StrToFloatDef, but ignores user's locale
-function StrToFloatDef(const strValue: string; defValue: Extended = 0): Extended;
+function StrToFloatDef(const strValue: string; defValue: Extended = 0)
+  : Extended;
+// Trying to read string otherwise using '.' as Decimal Separator
+function Str2Float(const S: string): Single;
 // Converts a string into color
-function StringToColorAdvancedSafe(const Str: string; const Default: TColor): TColor;
+function StringToColorAdvancedSafe(const Str: string;
+  const Default: TColor): TColor;
 // Converts a string into color
-function TryStringToColorAdvanced(const Str: string; var OutColor: TColor): Boolean;
+function TryStringToColorAdvanced(const Str: string;
+  var OutColor: TColor): Boolean;
 // Converts a string into color
 function StringToColorAdvanced(const Str: string): TColor;
-(*Parses the next integer in the string. 
-   Initial non-numeric characters are skipper, p is altered, returns 0 if none
-   found. '+' and '-' are acknowledged. *)
+(* Parses the next integer in the string.
+  Initial non-numeric characters are skipper, p is altered, returns 0 if none
+  found. '+' and '-' are acknowledged. *)
 function ParseInteger(var p: PChar): Integer;
-(* Parses the next integer in the string. 
-   Initial non-numeric characters are skipper, p is altered, returns 0 if none
-   found. Both '.' and ',' are accepted as decimal separators. *)
+(* Parses the next integer in the string.
+  Initial non-numeric characters are skipper, p is altered, returns 0 if none
+  found. Both '.' and ',' are accepted as decimal separators. *)
 function ParseFloat(var p: PChar): Extended;
-//Saves ansistring "data" to "filename". 
+// Saves ansistring "data" to "filename".
 procedure SaveAnsiStringToFile(const fileName: string; const data: AnsiString);
-//Returns the ansistring content of "filename". 
+// Returns the ansistring content of "filename".
 function LoadAnsiStringFromFile(const fileName: string): AnsiString;
-//Saves string "data" to "filename". 
+// Saves string "data" to "filename".
 procedure SaveStringToFile(const fileName: string; const data: String);
-//Returns the string content of "filename". 
+// Returns the string content of "filename".
 function LoadStringFromFile(const fileName: string): String;
-//Saves component to a file.
-procedure SaveComponentToFile(const Component: TComponent; const FileName: string; const AsText: Boolean = True);
+// Saves component to a file.
+procedure SaveComponentToFile(const Component: TComponent;
+  const fileName: string; const AsText: Boolean = True);
 // Loads component from a file.
-procedure LoadComponentFromFile(const Component: TComponent; const FileName: string; const AsText: Boolean = True);
-(* Returns the size of "filename". 
-   Returns 0 (zero) is file does not exists. *)
+procedure LoadComponentFromFile(const Component: TComponent;
+  const fileName: string; const AsText: Boolean = True);
+(* Returns the size of "filename".
+  Returns 0 (zero) is file does not exists. *)
 function SizeOfFile(const fileName: string): Int64;
-// Returns a pointer to an array containing the results of "255*sqrt(i/255)". 
+// Returns a pointer to an array containing the results of "255*sqrt(i/255)".
 function GetSqrt255Array: PSqrt255Array;
-// Pops up a simple dialog with msg and an Ok button. 
+// Pops up a simple dialog with msg and an Ok button.
 procedure InformationDlg(const msg: string);
 (* Pops up a simple question dialog with msg and yes/no buttons.
-   Returns True if answer was "yes". *)
+  Returns True if answer was "yes". *)
 function QuestionDlg(const msg: string): Boolean;
 // Posp a simple dialog with a string input.
 function InputDlg(const aCaption, aPrompt, aDefault: string): string;
 // Pops up a simple save picture dialog.
-function SavePictureDialog(var aFileName: string; const aTitle: string = ''): Boolean;
+function SavePictureDialog(var aFileName: string;
+  const aTitle: string = ''): Boolean;
 // Pops up a simple open picture dialog.
-function OpenPictureDialog(var aFileName: string; const aTitle: string = ''): Boolean;
+function OpenPictureDialog(var aFileName: string;
+  const aTitle: string = ''): Boolean;
 procedure SetGLSceneMediaDir();
-//------------------ from CrossPlatform -----------------------
+// ------------------ from CrossPlatform -----------------------
 function GetGLRect(const aLeft, aTop, aRight, aBottom: Integer): TRect;
 (* Increases or decreases the width and height of the specified rectangle.
-   Adds dx units to the left and right ends of the rectangle and dy units to
-   the top and bottom. *)
+  Adds dx units to the left and right ends of the rectangle and dy units to
+  the top and bottom. *)
 procedure InflateGLRect(var aRect: TRect; dx, dy: Integer);
 procedure IntersectGLRect(var aRect: TRect; const rect2: TRect);
 procedure RaiseLastOSError;
 (* Number of pixels per logical inch along the screen width for the device.
-   Under Win32 awaits a HDC and returns its LOGPIXELSX. *)
+  Under Win32 awaits a HDC and returns its LOGPIXELSX. *)
 function GetDeviceLogicalPixelsX(device: HDC): Integer;
 // Number of bits per pixel for the current desktop resolution.
 function GetCurrentColorDepth: Integer;
@@ -109,20 +125,20 @@ procedure FixPathDelimiter(var S: string);
 // Remove if possible part of path witch leads to project executable.
 function RelativePath(const S: string): string;
 (* Returns the current value of the highest-resolution counter.
-   If the platform has none, should return a value derived from the highest
-   precision time reference available, avoiding, if possible, timers that
-   allocate specific system resources. *)
+  If the platform has none, should return a value derived from the highest
+  precision time reference available, avoiding, if possible, timers that
+  allocate specific system resources. *)
 procedure QueryPerformanceCounter(out val: Int64);
 (* Returns the frequency of the counter used by QueryPerformanceCounter.
-   Return value is in ticks per second (Hz), returns False if no precision
-   counter is available. *)
+  Return value is in ticks per second (Hz), returns False if no precision
+  counter is available. *)
 function QueryPerformanceFrequency(out val: Int64): Boolean;
 (* Starts a precision timer.
-   Returned value should just be considered as 'handle', even if it ain't so.
-   Default platform implementation is to use QueryPerformanceCounter and
-   QueryPerformanceFrequency, if higher precision references are available,
-   they should be used. The timer will and must be stopped/terminated/released
-   with StopPrecisionTimer. *)
+  Returned value should just be considered as 'handle', even if it ain't so.
+  Default platform implementation is to use QueryPerformanceCounter and
+  QueryPerformanceFrequency, if higher precision references are available,
+  they should be used. The timer will and must be stopped/terminated/released
+  with StopPrecisionTimer. *)
 function StartPrecisionTimer: Int64;
 // Computes time elapsed since timer start. Return time lap in seconds.
 function PrecisionTimerLap(const precisionTimer: Int64): Double;
@@ -132,35 +148,40 @@ function StopPrecisionTimer(const precisionTimer: Int64): Double;
 function AppTime: Double;
 // Returns the number of CPU cycles since startup. Use the similarly named CPU instruction.
 function GLOKMessageBox(const Text, Caption: string): Integer;
-procedure GLLoadBitmapFromInstance(Instance: LongInt; ABitmap: TBitmap; const AName: string);
+procedure GLLoadBitmapFromInstance(Instance: LongInt; ABitmap: TBitmap;
+  const AName: string);
 procedure ShowHTMLUrl(const Url: string);
 procedure SetExeDirectory;
 // StrUtils.pas
 function AnsiStartsText(const ASubText, AText: string): Boolean;
 // Classes.pas
 function IsSubComponent(const AComponent: TComponent): Boolean; inline;
-procedure MakeSubComponent(const AComponent: TComponent; const Value: Boolean);
+procedure MakeSubComponent(const AComponent: TComponent; const value: Boolean);
 function FindUnitName(anObject: TObject): string; overload;
 function FindUnitName(aClass: TClass): string; overload;
 function FloatToHalf(Float: Single): THalfFloat;
 function HalfToFloat(Half: THalfFloat): Single;
-function GetValueFromStringsIndex(const AStrings: TStrings; const AIndex: Integer): string;
+function GetValueFromStringsIndex(const AStrings: TStrings;
+  const AIndex: Integer): string;
 // Determine if the directory is writable.
 function IsDirectoryWriteable(const AName: string): Boolean;
 function CharToWideChar(const AChar: AnsiChar): WideChar;
 
-(* 
+(*
   Added by PAL to fix problem with decimal separator in not En-US configurations
-  Decimal separator in text descriptions of meshes for import/export is always '.' char 
+  Decimal separator in text descriptions of meshes for import/export is always '.' char
   But in System.SysUtils.TextToFloat is Windows char, maybe ',' or others...
 *)
-function GLStrToFloatDef(const S: string; const Default: Extended; fs: TFormatSettings): Extended; overload;
-function GLStrToFloatDef(const S: string; const Default: Extended): Extended; overload;
+function GLStrToFloatDef(const S: string; const Default: Extended;
+  fs: TFormatSettings): Extended; overload;
+function GLStrToFloatDef(const S: string; const Default: Extended)
+  : Extended; overload;
 function GLStrToFloatDef(const S: string): Extended; overload;
 
-//------------------------------------------------------
+// ------------------------------------------------------
 implementation
-//------------------------------------------------------
+
+// ------------------------------------------------------
 
 var
   vSqrt255: TSqrt255Array;
@@ -168,20 +189,23 @@ var
   vInvPerformanceCounterFrequencyReady: Boolean = False;
   vLastProjectTargetName: string;
 
-//---------------from Utils -----------------------
-procedure WordToIntegerArray(Source: PWordArray; Dest: PIntegerArray; Count: Cardinal);
+  // ---------------from Utils -----------------------
+procedure WordToIntegerArray(Source: PWordArray; Dest: PIntegerArray;
+  Count: Cardinal);
 var
-  i: integer;
+  i: Integer;
 begin
   for i := 0 to Count - 1 do
     Dest^[i] := Source^[i];
 end;
+
 function RoundUpToPowerOf2(value: Integer): Integer;
 begin
   Result := 1;
   while (Result < value) do
     Result := Result shl 1;
 end;
+
 function RoundDownToPowerOf2(value: Integer): Integer;
 begin
   if value > 0 then
@@ -193,10 +217,12 @@ begin
   else
     Result := 1;
 end;
+
 function IsPowerOf2(value: Integer): Boolean;
 begin
   Result := (RoundUpToPowerOf2(value) = value);
 end;
+
 function ReadCRLFString(aStream: TStream): String;
 var
   c: Char;
@@ -209,6 +235,7 @@ begin
   end;
   Result := Copy(Result, 1, Length(Result) - 2);
 end;
+
 procedure WriteCRLFString(aStream: TStream; const aString: String);
 const
   cCRLF: Integer = $0A0D;
@@ -220,46 +247,65 @@ begin
   end;
 end;
 
-function StrToFloatDef(const strValue: string; defValue: Extended = 0): Extended;
+function StrToFloatDef(const strValue: string; defValue: Extended = 0)
+  : Extended;
 begin
   if not TryStrToFloat(strValue, Result) then
-    result := defValue;
+    Result := defValue;
 end;
-function StringToColorAdvancedSafe(const Str: string; const Default: TColor): TColor;
+
+function Str2Float(const S: string): Single;
+var
+  fs: TFormatSettings;
+begin                                                                                                           fs.DecimalSeparator := ',';
+  if not TryStrToFloat(S, Result, fs) then
+  begin
+    fs.DecimalSeparator := '.';
+    if not TryStrToFloat(S, Result, fs) then
+      Result := 0;
+  end;
+end;
+
+function StringToColorAdvancedSafe(const Str: string;
+  const Default: TColor): TColor;
 begin
   if not TryStringToColorAdvanced(Str, Result) then
     Result := Default;
 end;
+
 function StringToColorAdvanced(const Str: string): TColor;
 begin
   if not TryStringToColorAdvanced(Str, Result) then
     raise EGLUtilsException.CreateResFmt(@strInvalidColor, [Str]);
 end;
-function TryStringToColorAdvanced(const Str: string; var OutColor: TColor): Boolean;
+
+function TryStringToColorAdvanced(const Str: string;
+  var OutColor: TColor): Boolean;
 var
-  Code, I: Integer;
+  Code, i: Integer;
   Temp: string;
 begin
   Result := True;
   Temp := Str;
-  Val(Temp, I, Code); //to see if it is a number
+  val(Temp, i, Code); // to see if it is a number
   if Code = 0 then
-    OutColor := TColor(I) //Str = $0000FF
+    OutColor := TColor(i) // Str = $0000FF
   else
   begin
-    if not IdentToColor(Temp, Longint(OutColor)) then //Str = clRed
+    if not IdentToColor(Temp, LongInt(OutColor)) then // Str = clRed
     begin
-      if AnsiStartsText('clr', Temp) then //Str = clrRed
+      if AnsiStartsText('clr', Temp) then // Str = clrRed
       begin
         Delete(Temp, 3, 1);
-        if not IdentToColor(Temp, Longint(OutColor)) then
+        if not IdentToColor(Temp, LongInt(OutColor)) then
           Result := False;
       end
-      else if not IdentToColor('cl' + Temp, Longint(OutColor)) then //Str = Red
+      else if not IdentToColor('cl' + Temp, LongInt(OutColor)) then // Str = Red
         Result := False;
     end;
   end;
 end;
+
 function ParseInteger(var p: PChar): Integer;
 var
   neg: Boolean;
@@ -270,7 +316,7 @@ begin
     Exit;
   neg := False;
   // skip non-numerics
-  while not CharInSet(p^, [#0, '0'..'9', '+', '-']) do
+  while not CharInSet(p^, [#0, '0' .. '9', '+', '-']) do
     Inc(p);
   c := p^;
   if c = '+' then
@@ -284,7 +330,7 @@ begin
   while True do
   begin
     c := p^;
-    if not CharInSet(c, ['0'..'9']) then
+    if not CharInSet(c, ['0' .. '9']) then
       Break;
     Result := Result * 10 + Integer(c) - Integer('0');
     Inc(p);
@@ -292,6 +338,7 @@ begin
   if neg then
     Result := -Result;
 end;
+
 function ParseFloat(var p: PChar): Extended;
 var
   decimals, expSign, exponent: Integer;
@@ -302,7 +349,7 @@ begin
   if p = nil then
     Exit;
   // skip non-numerics
-  while not CharInSet(p^, [#0, '0'..'9', '+', '-']) do
+  while not CharInSet(p^, [#0, '0' .. '9', '+', '-']) do
     Inc(p);
   c := p^;
   if c = '+' then
@@ -318,7 +365,7 @@ begin
   else
     neg := False;
   // parse numbers
-  while CharInSet(p^, ['0'..'9']) do
+  while CharInSet(p^, ['0' .. '9']) do
   begin
     Result := Result * 10 + (Integer(p^) - Integer('0'));
     Inc(p);
@@ -328,7 +375,7 @@ begin
   if (p^ = '.') then
   begin
     Inc(p);
-    while CharInSet(p^, ['0'..'9']) do
+    while CharInSet(p^, ['0' .. '9']) do
     begin
       Result := Result * 10 + (Integer(p^) - Integer('0'));
       Inc(p);
@@ -355,7 +402,7 @@ begin
       expSign := 1;
     // parse exponent
     exponent := 0;
-    while CharInSet(p^, ['0'..'9']) do
+    while CharInSet(p^, ['0' .. '9']) do
     begin
       exponent := exponent * 10 + (Integer(p^) - Integer('0'));
       Inc(p);
@@ -367,6 +414,7 @@ begin
   if neg then
     Result := -Result;
 end;
+
 procedure SaveAnsiStringToFile(const fileName: string; const data: AnsiString);
 var
   n: Cardinal;
@@ -381,6 +429,7 @@ begin
     fs.Free;
   end;
 end;
+
 function LoadAnsiStringFromFile(const fileName: string): AnsiString;
 var
   n: Cardinal;
@@ -401,6 +450,7 @@ begin
   else
     Result := '';
 end;
+
 procedure SaveStringToFile(const fileName: string; const data: String);
 var
   n: Cardinal;
@@ -415,6 +465,7 @@ begin
     fs.Free;
   end;
 end;
+
 function LoadStringFromFile(const fileName: string): String;
 var
   n: Cardinal;
@@ -436,12 +487,13 @@ begin
     Result := '';
 end;
 
-procedure SaveComponentToFile(const Component: TComponent; const FileName: string; const AsText: Boolean);
+procedure SaveComponentToFile(const Component: TComponent;
+  const fileName: string; const AsText: Boolean);
 var
   Stream: TStream;
   MemStream: TMemoryStream;
 begin
-  Stream := TFileStream.Create(FileName, fmCreate);
+  Stream := TFileStream.Create(fileName, fmCreate);
   try
     if AsText then
     begin
@@ -460,12 +512,14 @@ begin
     Stream.Free;
   end;
 end;
-procedure LoadComponentFromFile(const Component: TComponent; const FileName: string; const AsText: Boolean = True);
+
+procedure LoadComponentFromFile(const Component: TComponent;
+  const fileName: string; const AsText: Boolean = True);
 var
   Stream: TStream;
   MemStream: TMemoryStream;
 begin
-  Stream := TFileStream.Create(FileName, fmOpenRead);
+  Stream := TFileStream.Create(fileName, fmOpenRead);
   try
     if AsText then
     begin
@@ -484,6 +538,7 @@ begin
     Stream.Free;
   end;
 end;
+
 function SizeOfFile(const fileName: string): Int64;
 var
   fs: TStream;
@@ -500,6 +555,7 @@ begin
   else
     Result := 0;
 end;
+
 function GetSqrt255Array: PSqrt255Array;
 const
   cOneDiv255 = 1 / 255;
@@ -513,19 +569,24 @@ begin
   end;
   Result := @vSqrt255;
 end;
+
 procedure InformationDlg(const msg: string);
 begin
   ShowMessage(msg);
 end;
+
 function QuestionDlg(const msg: string): Boolean;
 begin
   Result := (MessageDlg(msg, mtConfirmation, [mbYes, mbNo], 0) = mrYes);
 end;
+
 function InputDlg(const aCaption, aPrompt, aDefault: string): string;
 begin
   Result := InputBox(aCaption, aPrompt, aDefault);
 end;
-function SavePictureDialog(var aFileName: string; const aTitle: string = ''): Boolean;
+
+function SavePictureDialog(var aFileName: string;
+  const aTitle: string = ''): Boolean;
 var
   saveDialog: TSavePictureDialog;
 begin
@@ -536,16 +597,18 @@ begin
       Options := [ofHideReadOnly, ofNoReadOnlyReturn];
       if aTitle <> '' then
         Title := aTitle;
-      FileName := aFileName;
+      fileName := aFileName;
       Result := Execute;
       if Result then
-        aFileName := FileName;
+        aFileName := fileName;
     end;
   finally
     saveDialog.Free;
   end;
 end;
-function OpenPictureDialog(var aFileName: string; const aTitle: string = ''): Boolean;
+
+function OpenPictureDialog(var aFileName: string;
+  const aTitle: string = ''): Boolean;
 var
   openDialog: TOpenPictureDialog;
 begin
@@ -556,28 +619,29 @@ begin
       Options := [ofHideReadOnly, ofNoReadOnlyReturn];
       if aTitle <> '' then
         Title := aTitle;
-      FileName := aFileName;
+      fileName := aFileName;
       Result := Execute;
       if Result then
-        aFileName := FileName;
+        aFileName := fileName;
     end;
   finally
     openDialog.Free;
   end;
 end;
+
 procedure SetGLSceneMediaDir();
 var
   path: String;
   p: Integer;
 begin
-   path := ParamStr(0);
-   path := LowerCase(ExtractFilePath(path));
-   p := Pos('demos', path);
-   Delete(path, p+5, Length(path));
-   path := IncludeTrailingPathDelimiter(path) + 'media';
-   SetCurrentDir(path);
+  path := ParamStr(0);
+  path := LowerCase(ExtractFilePath(path));
+  p := Pos('demos', path);
+  Delete(path, p + 5, Length(path));
+  path := IncludeTrailingPathDelimiter(path) + 'media';
+  SetCurrentDir(path);
 end;
-//------------ from CrossPfatform -------------------
+// ------------ from CrossPfatform -------------------
 
 procedure RaiseLastOSError;
 var
@@ -586,30 +650,38 @@ begin
   e := EGLOSError.Create('OS Error : ' + SysErrorMessage(GetLastError));
   raise e;
 end;
+
 function IsSubComponent(const AComponent: TComponent): Boolean;
 begin
   Result := (csSubComponent in AComponent.ComponentStyle);
 end;
-procedure MakeSubComponent(const AComponent: TComponent; const Value: Boolean);
+
+procedure MakeSubComponent(const AComponent: TComponent; const value: Boolean);
 begin
-  AComponent.SetSubComponent(Value);
+  AComponent.SetSubComponent(value);
 end;
+
 function AnsiStartsText(const ASubText, AText: string): Boolean;
 begin
   Result := AnsiStartsText(ASubText, AText);
 end;
+
 function GLOKMessageBox(const Text, Caption: string): Integer;
 begin
   Result := Application.MessageBox(PChar(Text), PChar(Caption), MB_OK);
 end;
-procedure GLLoadBitmapFromInstance(Instance: LongInt; ABitmap: TBitmap; const AName: string);
+
+procedure GLLoadBitmapFromInstance(Instance: LongInt; ABitmap: TBitmap;
+  const AName: string);
 begin
   ABitmap.Handle := LoadBitmap(Instance, PChar(AName));
 end;
+
 procedure ShowHTMLUrl(const Url: string);
 begin
   ShellExecute(0, 'open', PChar(Url), nil, nil, SW_SHOW);
 end;
+
 function GetGLRect(const aLeft, aTop, aRight, aBottom: Integer): TRect;
 begin
   Result.Left := aLeft;
@@ -617,6 +689,7 @@ begin
   Result.Right := aRight;
   Result.Bottom := aBottom;
 end;
+
 procedure InflateGLRect(var aRect: TRect; dx, dy: Integer);
 begin
   aRect.Left := aRect.Left - dx;
@@ -628,12 +701,13 @@ begin
   if aRect.Bottom < aRect.Top then
     aRect.Bottom := aRect.Top;
 end;
+
 procedure IntersectGLRect(var aRect: TRect; const rect2: TRect);
 var
   a: Integer;
 begin
-  if (aRect.Left > rect2.Right) or (aRect.Right < rect2.Left)
-    or (aRect.Top > rect2.Bottom) or (aRect.Bottom < rect2.Top) then
+  if (aRect.Left > rect2.Right) or (aRect.Right < rect2.Left) or
+    (aRect.Top > rect2.Bottom) or (aRect.Bottom < rect2.Top) then
   begin
     // no intersection
     a := 0;
@@ -654,59 +728,72 @@ begin
       aRect.Bottom := rect2.Bottom;
   end;
 end;
+
 type
   TDeviceCapabilities = record
-    Xdpi, Ydpi: integer; // Number of pixels per logical inch.
-    Depth: integer; // The bit depth.
-    NumColors: integer; // Number of entries in the device's color table.
+    Xdpi, Ydpi: Integer; // Number of pixels per logical inch.
+    Depth: Integer; // The bit depth.
+    NumColors: Integer; // Number of entries in the device's color table.
   end;
+
 function GetDeviceCapabilities: TDeviceCapabilities;
 var
-  Device: HDC;
+  device: HDC;
 begin
-  Device := GetDC(0);
+  device := GetDC(0);
   try
-    result.Xdpi := GetDeviceCaps(Device, LOGPIXELSX);
-    result.Ydpi := GetDeviceCaps(Device, LOGPIXELSY);
-    result.Depth := GetDeviceCaps(Device, BITSPIXEL);
-    result.NumColors := GetDeviceCaps(Device, NUMCOLORS);
+    Result.Xdpi := GetDeviceCaps(device, LOGPIXELSX);
+    Result.Ydpi := GetDeviceCaps(device, LOGPIXELSY);
+    Result.Depth := GetDeviceCaps(device, BITSPIXEL);
+    Result.NumColors := GetDeviceCaps(device, NumColors);
   finally
-    ReleaseDC(0, Device);
+    ReleaseDC(0, device);
   end;
 end;
+
 function GetDeviceLogicalPixelsX(device: HDC): Integer;
 begin
-  result := GetDeviceCapabilities().Xdpi;
+  Result := GetDeviceCapabilities().Xdpi;
 end;
+
 function GetCurrentColorDepth: Integer;
 begin
-  result := GetDeviceCapabilities().Depth;
+  Result := GetDeviceCapabilities().Depth;
 end;
+
 function PixelFormatToColorBits(aPixelFormat: TPixelFormat): Integer;
 begin
   case aPixelFormat of
     pfCustom{$IFDEF WIN32}, pfDevice{$ENDIF}: // use current color depth
       Result := GetCurrentColorDepth;
-    pf1bit: Result := 1;
+    pf1bit:
+      Result := 1;
 {$IFDEF WIN32}
-    pf4bit: Result := 4;
-    pf15bit: Result := 15;
+    pf4bit:
+      Result := 4;
+    pf15bit:
+      Result := 15;
 {$ENDIF}
-    pf8bit: Result := 8;
-    pf16bit: Result := 16;
-    pf32bit: Result := 32;
+    pf8bit:
+      Result := 8;
+    pf16bit:
+      Result := 16;
+    pf32bit:
+      Result := 32;
   else
     Result := 24;
   end;
 end;
+
 procedure FixPathDelimiter(var S: string);
 var
-  I: Integer;
+  i: Integer;
 begin
-  for I := Length(S) downto 1 do
-    if (S[I] = '/') or (S[I] = '\') then
-      S[I] := PathDelim;
+  for i := Length(S) downto 1 do
+    if (S[i] = '/') or (S[i] = '\') then
+      S[i] := PathDelim;
 end;
+
 function RelativePath(const S: string): string;
 var
   path: string;
@@ -716,7 +803,7 @@ begin
   begin
     if Assigned(vProjectTargetName) then
     begin
-      path :=  vProjectTargetName();
+      path := vProjectTargetName();
       if Length(path) = 0 then
         path := vLastProjectTargetName
       else
@@ -724,7 +811,7 @@ begin
       path := IncludeTrailingPathDelimiter(ExtractFilePath(path));
     end
     else
-      exit;
+      Exit;
   end
   else
   begin
@@ -734,23 +821,28 @@ begin
   if Pos(path, S) = 1 then
     Delete(Result, 1, Length(path));
 end;
+
 procedure QueryPerformanceCounter(out val: Int64);
 begin
   Winapi.Windows.QueryPerformanceCounter(val);
 end;
+
 function QueryPerformanceFrequency(out val: Int64): Boolean;
 begin
   Result := Boolean(Winapi.Windows.QueryPerformanceFrequency(val));
 end;
+
 function StartPrecisionTimer: Int64;
 begin
   QueryPerformanceCounter(Result);
 end;
+
 function PrecisionTimerLap(const precisionTimer: Int64): Double;
 begin
   // we can do this, because we don't really stop anything
   Result := StopPrecisionTimer(precisionTimer);
 end;
+
 function StopPrecisionTimer(const precisionTimer: Int64): Double;
 var
   cur, freq: Int64;
@@ -764,31 +856,34 @@ begin
   end;
   Result := (cur - precisionTimer) * vInvPerformanceCounterFrequency;
 end;
+
 var
-  vSStartTime : TDateTime;
+  vSStartTime: TDateTime;
   vLastTime: TDateTime;
   vDeltaMilliSecond: TDateTime;
+
 function AppTime: Double;
 var
   SystemTime: TSystemTime;
 begin
   GetLocalTime(SystemTime);
   with SystemTime do
-    Result := (wHour * (MinsPerHour * SecsPerMin * MSecsPerSec) +
-             wMinute * (SecsPerMin * MSecsPerSec) +
-               wSecond * MSecsPerSec +
-             wMilliSeconds) - vSStartTime;
+    Result := (wHour * (MinsPerHour * SecsPerMin * MSecsPerSec) + wMinute *
+      (SecsPerMin * MSecsPerSec) + wSecond * MSecsPerSec + wMilliSeconds) -
+      vSStartTime;
   // Hack to fix time precession
   if Result - vLastTime = 0 then
   begin
     Result := Result + vDeltaMilliSecond;
     vDeltaMilliSecond := vDeltaMilliSecond + 0.1;
   end
-  else begin
+  else
+  begin
     vLastTime := Result;
     vDeltaMilliSecond := 0.1;
   end;
 end;
+
 function FindUnitName(anObject: TObject): string;
 begin
   if Assigned(anObject) then
@@ -796,6 +891,7 @@ begin
   else
     Result := '';
 end;
+
 function FindUnitName(aClass: TClass): string;
 begin
   if Assigned(aClass) then
@@ -803,6 +899,7 @@ begin
   else
     Result := '';
 end;
+
 procedure SetExeDirectory;
 var
   path: string;
@@ -811,7 +908,7 @@ begin
   begin
     if Assigned(vProjectTargetName) then
     begin
-      path :=  vProjectTargetName();
+      path := vProjectTargetName();
       if Length(path) = 0 then
         path := vLastProjectTargetName
       else
@@ -828,10 +925,12 @@ begin
   end;
 end;
 
-function GetValueFromStringsIndex(const AStrings: TStrings; const AIndex: Integer): string;
+function GetValueFromStringsIndex(const AStrings: TStrings;
+  const AIndex: Integer): string;
 begin
   Result := AStrings.ValueFromIndex[AIndex];
 end;
+
 function IsDirectoryWriteable(const AName: string): Boolean;
 var
   LFileName: String;
@@ -898,7 +997,7 @@ begin
     // +/- infinity
     Dst := (Sign shl 31) or $7F800000;
   end
-  else //if (Exp = 31) and (Mantisa <> 0) then
+  else // if (Exp = 31) and (Mantisa <> 0) then
   begin
     // not a number - preserve sign and mantissa
     Dst := (Sign shl 31) or $7F800000 or (Mantissa shl 13);
@@ -906,6 +1005,7 @@ begin
   // reinterpret LongWord as Single
   Result := PSingle(@Dst)^;
 end;
+
 function FloatToHalf(Float: Single): THalfFloat;
 var
   Src: LongWord;
@@ -986,31 +1086,39 @@ begin
   end;
 end;
 
-//By PAL, added to fix problem with decimal separator in non En configurations
-function GLStrToFloatDef(const S: string; const Default: Extended; fs: TFormatSettings): Extended; overload;
+// By PAL, added to fix problem with decimal separator in non En configurations
+function GLStrToFloatDef(const S: string; const Default: Extended;
+  fs: TFormatSettings): Extended; overload;
 begin
   fs.DecimalSeparator := '.';
-  if not System.SysUtils.TextToFloat(S, Result, fs) then
+  if not TextToFloat(S, Result, fs) then
     Result := Default;
 end;
-//By PAL, added to fix problem with decimal separator in non En configurations
-function GLStrToFloatDef(const S: string; const Default: Extended): Extended; overload;
-  var fs: TFormatSettings;
+
+// By PAL, added to fix problem with decimal separator in non En configurations
+function GLStrToFloatDef(const S: string; const Default: Extended)
+  : Extended; overload;
+var
+  fs: TFormatSettings;
 begin
   fs.DecimalSeparator := '.';
-  if not System.SysUtils.TextToFloat(S, Result, fs) then
+  if not TextToFloat(S, Result, fs) then
     Result := Default;
 end;
-//By PAL, added to fix problem with decimal separator in non En configurations
+
+// By PAL, added to fix problem with decimal separator in non En configurations
 function GLStrToFloatDef(const S: string): Extended; overload;
-  var fs: TFormatSettings;
+var
+  fs: TFormatSettings;
 begin
   fs.DecimalSeparator := '.';
-  if not System.SysUtils.TextToFloat(S, Result, fs) then
+  if not TextToFloat(S, Result, fs) then
     Result := 0;
 end;
-//----------------------------------------
+
+// ----------------------------------------
 initialization
-//----------------------------------------
-  vSStartTime := AppTime;
+// ----------------------------------------
+vSStartTime := AppTime;
+
 end.

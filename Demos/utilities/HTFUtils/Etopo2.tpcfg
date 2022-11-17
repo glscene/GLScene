@@ -1,7 +1,7 @@
-HTFName=F:\HTF\etopo2.htf
+HTFName=D:\HTF\etopo2.htf
 WorldSizeX=10800
 WorldSizeY=6336
 TileSize=128
 DefaultZ=0
-DEMPath=F:\DEM
+DEMPath=D:\DEM
 DEMs="topo_8.2.img,""0,0"",10800x6336,""16 bits (non-Intel)"""
