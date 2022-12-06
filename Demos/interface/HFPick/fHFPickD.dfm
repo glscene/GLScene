@@ -2,29 +2,24 @@ object FormHFPick: TFormHFPick
   Left = 133
   Top = 72
   Caption = 'Heightfield Pick'
-  ClientHeight = 561
-  ClientWidth = 721
+  ClientHeight = 449
+  ClientWidth = 577
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 594
-    Height = 561
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 475
+    Height = 449
     Camera = GLCamera1
     Buffer.BackgroundColor = clTeal
-    FieldOfView = 159.786010742187500000
+    FieldOfView = 154.888351440429700000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewerMouseDown
@@ -32,66 +27,50 @@ object FormHFPick: TFormHFPick
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 594
+    Left = 475
     Top = 0
-    Width = 127
-    Height = 561
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 102
+    Height = 449
     Align = alRight
     BevelOuter = bvLowered
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -14
+    Font.Height = -11
     Font.Name = 'Arial'
     Font.Style = []
     ParentFont = False
     TabOrder = 1
     object Label1: TLabel
-      Left = 10
-      Top = 10
-      Width = 108
-      Height = 22
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 8
+      Width = 82
+      Height = 18
       Caption = 'Last Coord.'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -19
+      Font.Height = -15
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 30
-      Top = 40
-      Width = 41
-      Height = 22
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 24
+      Top = 32
+      Width = 32
+      Height = 18
       Caption = 'X   Y'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -19
+      Font.Height = -15
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 10
-      Top = 210
-      Width = 111
-      Height = 181
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 168
+      Width = 89
+      Height = 145
       AutoSize = False
       Caption = 
         'This demo uses a crude method for heightfield picking based on t' +
@@ -100,28 +79,20 @@ object FormHFPick: TFormHFPick
       WordWrap = True
     end
     object RBPaint: TRadioButton
-      Left = 20
-      Top = 100
-      Width = 61
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 80
+      Width = 49
+      Height = 17
       Caption = 'Paint'
       Checked = True
       TabOrder = 0
       TabStop = True
     end
     object RadioButton2: TRadioButton
-      Left = 20
-      Top = 140
-      Width = 71
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 112
+      Width = 57
+      Height = 17
       Caption = 'Rotate'
       TabOrder = 1
     end

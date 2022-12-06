@@ -2,32 +2,27 @@ object Form1: TForm1
   Left = 192
   Top = 107
   Caption = 'Bunny Bump Shader'
-  ClientHeight = 546
-  ClientWidth = 703
+  ClientHeight = 437
+  ClientWidth = 562
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnResize = FormResize
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 71
-    Width = 703
-    Height = 475
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 57
+    Width = 562
+    Height = 380
     Camera = Camera
     BeforeRender = GLSceneViewer1BeforeRender
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 156.222686767578100000
+    FieldOfView = 150.512878417968800000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -37,56 +32,36 @@ object Form1: TForm1
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 703
-    Height = 71
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 562
+    Height = 57
     Align = alTop
     TabOrder = 1
     object Label1: TLabel
-      Left = 10
-      Top = 10
-      Width = 88
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 8
+      Width = 70
+      Height = 13
       Caption = 'Shade Method'
     end
     object Label2: TLabel
-      Left = 460
-      Top = 10
-      Width = 92
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 368
+      Top = 8
+      Width = 72
+      Height = 13
       Caption = 'Specular Mode'
     end
     object LabelFPS: TLabel
-      Left = 643
-      Top = 33
-      Width = 26
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 514
+      Top = 26
+      Width = 20
+      Height = 13
       Caption = 'FPS'
     end
     object ComboBox1: TComboBox
-      Left = 10
-      Top = 30
-      Width = 181
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 24
+      Width = 145
+      Height = 21
       Style = csDropDownList
       ItemIndex = 0
       TabOrder = 0
@@ -96,116 +71,80 @@ object Form1: TForm1
         'Per-Vertex')
     end
     object GroupBox1: TGroupBox
-      Left = 201
-      Top = 13
-      Width = 212
-      Height = 51
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 161
+      Top = 10
+      Width = 169
+      Height = 41
       Caption = 'Lights'
       TabOrder = 1
       object ShapeWhite: TShape
-        Left = 40
-        Top = 20
-        Width = 21
-        Height = 21
+        Left = 32
+        Top = 16
+        Width = 17
+        Height = 17
         Hint = 'White'
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
         OnMouseDown = ShapeMouseDown
       end
       object ShapeRed: TShape
-        Left = 110
-        Top = 20
-        Width = 21
-        Height = 21
+        Left = 88
+        Top = 16
+        Width = 17
+        Height = 17
         Hint = 'Red'
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
         Brush.Color = clRed
         OnMouseDown = ShapeMouseDown
       end
       object ShapeBlue: TShape
-        Left = 180
-        Top = 20
-        Width = 21
-        Height = 21
+        Left = 144
+        Top = 16
+        Width = 17
+        Height = 17
         Hint = 'Blue'
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
         Brush.Color = clBlue
         OnMouseDown = ShapeMouseDown
       end
       object cbWhite: TCheckBox
-        Left = 11
-        Top = 20
-        Width = 22
-        Height = 21
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 9
+        Top = 16
+        Width = 17
+        Height = 17
         Checked = True
         State = cbChecked
         TabOrder = 0
         OnClick = CheckBoxClick
       end
       object cbRed: TCheckBox
-        Left = 81
-        Top = 20
-        Width = 22
-        Height = 21
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 65
+        Top = 16
+        Width = 17
+        Height = 17
         TabOrder = 1
         OnClick = CheckBoxClick
       end
       object cbBlue: TCheckBox
-        Left = 151
-        Top = 20
-        Width = 22
-        Height = 21
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 121
+        Top = 16
+        Width = 17
+        Height = 17
         TabOrder = 2
         OnClick = CheckBoxClick
       end
     end
     object CheckBox4: TCheckBox
-      Left = 573
-      Top = 30
-      Width = 61
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 458
+      Top = 24
+      Width = 49
+      Height = 17
       Caption = 'Spin'
       Checked = True
       State = cbChecked
       TabOrder = 2
     end
     object ComboBox2: TComboBox
-      Left = 464
-      Top = 30
-      Width = 91
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 371
+      Top = 24
+      Width = 73
+      Height = 21
       Style = csDropDownList
       ItemIndex = 0
       TabOrder = 3

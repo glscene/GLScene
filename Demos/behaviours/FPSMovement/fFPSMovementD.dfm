@@ -2,33 +2,28 @@ object FormFPSMovement: TFormFPSMovement
   Left = 209
   Top = 112
   Caption = 'FPSMovement'
-  ClientHeight = 479
-  ClientWidth = 735
+  ClientHeight = 383
+  ClientWidth = 588
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
   Position = poScreenCenter
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 735
-    Height = 479
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 588
+    Height = 383
     Camera = ThirdPersonCamera
     Buffer.BackgroundColor = clBlack
     Buffer.ShadeModel = smSmooth
-    FieldOfView = 156.415664672851600000
+    FieldOfView = 150.733886718750000000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -38,6 +33,11 @@ object FormFPSMovement: TFormFPSMovement
     Top = 24
     object World: TGLDummyCube
       CubeSize = 1.000000000000000000
+      object GLLight: TGLLightSource
+        ConstAttenuation = 1.000000000000000000
+        Diffuse.Color = {3333733F3333733F3333733F0000803F}
+        SpotCutOff = 180.000000000000000000
+      end
       object Player: TGLDummyCube
         Position.Coordinates = {0000803FCDCC8C3F0000803F0000803F}
         CubeSize = 1.000000000000000000
@@ -82,11 +82,6 @@ object FormFPSMovement: TFormFPSMovement
           Material.FaceCulling = fcNoCull
           Radius = 0.400000005960464500
         end
-      end
-      object GLLight: TGLLightSource
-        ConstAttenuation = 1.000000000000000000
-        Diffuse.Color = {3333733F3333733F3333733F0000803F}
-        SpotCutOff = 180.000000000000000000
       end
       object Map1: TGLFreeForm
         VisibilityCulling = vcNone

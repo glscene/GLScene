@@ -51,8 +51,10 @@ type
   TGLMeshAutoCenterings = set of TGLMeshAutoCentering;
   TGLMeshObjectMode = (momTriangles, momTriangleStrip, momFaceGroups);
 
-  (* A base class for mesh objects. The class introduces a set of vertices and
-    normals for the object but does no rendering of its own *)
+  (*
+    A base class for mesh objects. The class introduces a set of vertices and
+    normals for the object but does no rendering of its own
+  *)
   TGLBaseMeshObject = class(TGLPersistentObject)
   private
     FName: string;
@@ -73,7 +75,8 @@ type
     procedure Clear; virtual;
     // Translates all the vertices by the given delta.
     procedure Translate(const delta: TAffineVector); virtual;
-    (* Builds (smoothed) normals for the vertex list.
+    (*
+      Builds (smoothed) normals for the vertex list.
       If normalIndices is nil, the method assumes a bijection between
       vertices and normals sets, and when performed, Normals and Vertices
       list will have the same number of items (whatever previously was in
@@ -82,18 +85,21 @@ type
       their indices will be added to normalIndices. Already defined
       normals and indices are preserved.
       The only valid modes are currently momTriangles and momTriangleStrip
-      (ie. momFaceGroups not supported). *)
+      (ie. momFaceGroups not supported).
+    *)
     procedure BuildNormals(vertexIndices: TGLIntegerList; mode: TGLMeshObjectMode;
 	  NormalIndices: TGLIntegerList = nil);
     // Builds normals faster without index calculations for the stripe mode
     procedure GenericOrderedBuildNormals (mode: TGLMeshObjectMode);
-    (* Extracts all mesh triangles as a triangles list.
+    (*
+      Extracts all mesh triangles as a triangles list.
       The resulting list size is a multiple of 3, each group of 3 vertices
       making up and independant triangle.
       The returned list can be used independantly from the mesh object
       (all data is duplicated) and should be freed by caller.
       If texCoords is specified, per vertex texture coordinates will be
-      placed there, when available. *)
+      placed there, when available.
+    *)
     function ExtractTriangles(texCoords: TGLAffineVectorList = nil;
 	  Normals: TGLAffineVectorList = nil): TGLAffineVectorList; virtual;
     property Name: string read FName write FName;
@@ -105,23 +111,25 @@ type
   TGLSkeletonFrameList = class;
   TGLSkeletonFrameTransform = (sftRotation, sftQuaternion);
 
-  (* Stores position and rotation for skeleton joints.
+  (*
+    Stores position and rotation for skeleton joints.
     If you directly alter some values, make sure to call FlushLocalMatrixList
     so that the local matrices will be recalculated (the call to Flush does
-    not recalculate the matrices, but marks the current ones as dirty) *)
+    not recalculate the matrices, but marks the current ones as dirty)
+  *)
   TGLSkeletonFrame = class(TGLPersistentObject)
   private
     FOwner: TGLSkeletonFrameList;
     FName: string;
     FPosition: TGLAffineVectorList;
     FRotation: TGLAffineVectorList;
-    FQuaternion: TQuaternionList;
+    FQuaternion: TGLQuaternionList;
     FLocalMatrixList: PMatrixArray;
     FTransformMode: TGLSkeletonFrameTransform;
   protected
     procedure SetPosition(const val: TGLAffineVectorList);
     procedure SetRotation(const val: TGLAffineVectorList);
-    procedure SetQuaternion(const val: TQuaternionList);
+    procedure SetQuaternion(const val: TGLQuaternionList);
   public
     constructor CreateOwned(aOwner: TGLSkeletonFrameList);
     constructor Create; override;
@@ -136,7 +144,7 @@ type
     property Rotation: TGLAffineVectorList read FRotation write SetRotation;
     (* Quaternions are an alternative to Euler rotations to build the
       global matrices for the skeleton bones. *)
-    property Quaternion: TQuaternionList read FQuaternion write SetQuaternion;
+    property Quaternion: TGLQuaternionList read FQuaternion write SetQuaternion;
     (* TransformMode indicates whether to use Rotation or Quaternion to build
       the local transform matrices. *)
     property TransformMode: TGLSkeletonFrameTransform read FTransformMode write FTransformMode;
@@ -211,10 +219,12 @@ type
     property GlobalMatrix: TGLMatrix read FGlobalMatrix write FGlobalMatrix;
   end;
 
-  (* A skeleton bone or node and its children.
+  (*
+    A skeleton bone or node and its children.
     This class is the base item of the bones hierarchy in a skeletal model.
     The joint values are stored in a TGLSkeletonFrame, but the calculated bone
-    matrices are stored here. *)
+    matrices are stored here.
+  *)
   TGLSkeletonBone = class(TGLSkeletonBoneList)
   private
     FOwner: TGLSkeletonBoneList; // indirectly persistent
@@ -244,12 +254,16 @@ type
     procedure SetGlobalMatrix(const Matrix: TGLMatrix); // Ragdoll
     // Set the bone's GlobalMatrix. Used for Ragdoll.
     procedure SetGlobalMatrixForRagDoll(const RagDollMatrix: TGLMatrix); // Ragdoll
-    (* Calculates the global matrix for the bone and its sub-bone.
-      Call this function directly only the RootBone. *)
+    (*
+      Calculates the global matrix for the bone and its sub-bone.
+      Call this function directly only the RootBone.
+    *)
     procedure PrepareGlobalMatrices; override;
-    (* Global Matrix for the bone in the current frame.
+    (*
+      Global Matrix for the bone in the current frame.
       Global matrices must be prepared by invoking PrepareGlobalMatrices
-      on the root bone. *)
+      on the root bone.
+    *)
     property GlobalMatrix: TGLMatrix read FGlobalMatrix;
     // Free all sub bones and reset BoneID and Name.
     procedure Clean; override;
@@ -257,10 +271,12 @@ type
 
   TGLSkeletonColliderList = class;
 
- (* A general class storing the base level info required for skeleton
+ (*
+    A general class storing the base level info required for skeleton
     based collision methods. This class is meant to be inherited from
     to create skeleton driven Verlet Constraints, ODE Geoms, etc.
-    Overriden classes should be named as TSCxxxxx. *)
+    Overriden classes should be named as TSCxxxxx.
+  *)
   TGLSkeletonCollider = class(TGLPersistentObject)
   private
     FOwner: TGLSkeletonColliderList;
@@ -317,7 +333,7 @@ type
     Weight: Single;
     ExternalPositions: TGLAffineVectorList;
     ExternalRotations: TGLAffineVectorList;
-    ExternalQuaternions: TQuaternionList;
+    ExternalQuaternions: TGLQuaternionList;
   end;
 
   (* Main skeleton object. This class stores the bones hierarchy and animation frames.
@@ -358,17 +374,21 @@ type
     procedure MorphTo(frame: TGLSkeletonFrame); overload;
     procedure Lerp(frameIndex1, frameIndex2: Integer; lerpFactor: Single);
     procedure BlendedLerps(const lerpInfos: array of TGLBlendedLerpInfo);
-    (* Linearly removes the translation component between skeletal frames.
+    (*
+      Linearly removes the translation component between skeletal frames.
       This function will compute the translation of the first bone (index 0)
       and linearly subtract this translation in all frames between startFrame
       and endFrame. Its purpose is essentially to remove the 'slide' that
-      exists in some animation formats (f.i. SMD). *)
+      exists in some animation formats (f.i. SMD).
+    *)
     procedure MakeSkeletalTranslationStatic(startFrame, endFrame: Integer);
-    (* Removes the absolute rotation component of the skeletal frames.
+    (*
+      Removes the absolute rotation component of the skeletal frames.
       Some formats will store frames with absolute rotation information,
       if this correct if the animation is the "main" animation.
       This function removes that absolute information, making the animation
-      frames suitable for blending purposes. *)
+      frames suitable for blending purposes.
+    *)
     procedure MakeSkeletalRotationDelta(startFrame, endFrame: Integer);
     // Applies current frame to morph all mesh objects.
     procedure MorphMesh(normalize: Boolean);
@@ -380,24 +400,30 @@ type
     procedure StartRagdoll;
     // Restore the BoneMatrixInvertedMeshes to stop the ragdoll
     procedure StopRagdoll;
-    (* Turning this option off (by default) allows to increase FPS,
+    (*
+      Turning this option off (by default) allows to increase FPS,
       but may break backwards-compatibility, because some may choose to
-      attach other objects to invisible parts. *)
+      attach other objects to invisible parts.
+    *)
     property MorphInvisibleParts: Boolean read FMorphInvisibleParts write FMorphInvisibleParts;
   end;
 
-  (* Rendering options per TGLMeshObject.moroGroupByMaterial : if set,
+  (*
+    Rendering options per TGLMeshObject.moroGroupByMaterial : if set,
     the facegroups will be rendered by material in batchs, this will optimize
     rendering by reducing material switches, but also implies that facegroups
-    will not be rendered in the order they are in the list *)
+    will not be rendered in the order they are in the list
+  *)
   TGLMeshObjectRenderingOption = (moroGroupByMaterial);
   TGLMeshObjectRenderingOptions = set of TGLMeshObjectRenderingOption;
 
   TGLVBOBuffer = (vbVertices, vbNormals, vbColors, vbTexCoords, vbLightMapTexCoords, vbTexCoordsEx);
   TGLVBOBuffers = set of TGLVBOBuffer;
 
-  (* Base mesh class. Introduces base methods and properties for mesh objects.
-    Subclasses are named "TGLMOxxx". *)
+  (*
+    Base mesh class. Introduces base methods and properties for mesh objects.
+    Subclasses are named "TGLMOxxx".
+  *)
   TGLMeshObject = class(TGLBaseMeshObject)
   private
     FOwner: TGLMeshObjectList;
@@ -1801,7 +1827,7 @@ begin
   inherited Create;
   FPosition := TGLAffineVectorList.Create;
   FRotation := TGLAffineVectorList.Create;
-  FQuaternion := TQuaternionList.Create;
+  FQuaternion := TGLQuaternionList.Create;
   FTransformMode := sftRotation;
 end;
 
@@ -1861,7 +1887,7 @@ begin
   FRotation.Assign(val);
 end;
 
-procedure TGLSkeletonFrame.SetQuaternion(const val: TQuaternionList);
+procedure TGLSkeletonFrame.SetQuaternion(const val: TGLQuaternionList);
 begin
   FQuaternion.Assign(val);
 end;
@@ -2636,7 +2662,7 @@ var
   i, n: Integer;
   blendPositions: TGLAffineVectorList;
   blendRotations: TGLAffineVectorList;
-  blendQuaternions: TQuaternionList;
+  blendQuaternions: TGLQuaternionList;
 begin
   n := High(lerpInfos) - Low(lerpInfos) + 1;
   Assert(n >= 1);
@@ -2710,7 +2736,7 @@ begin
 
         sftQuaternion:
           begin
-            blendQuaternions := TQuaternionList.Create;
+            blendQuaternions := TGLQuaternionList.Create;
             // Initial frame lerp
             Quaternion.Lerp(Frames[lerpInfos[i].frameIndex1].Quaternion,
               Frames[lerpInfos[i].frameIndex2].Quaternion,

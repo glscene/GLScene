@@ -1339,7 +1339,7 @@ type
     procedure PrepareRenderingMatrices(const aViewPort: TRectangle;
       resolution: Integer; pickingRect: PRect = nil); inline;
     procedure DoBaseRender(const aViewPort: TRectangle; resolution: Integer;
-      drawState: TDrawState; baseObject: TGLBaseSceneObject);
+      drawState: TGLDrawState; baseObject: TGLBaseSceneObject);
     procedure SetupRenderingContext(context: TGLContext);
     procedure SetupRCOptions(context: TGLContext);
     procedure PrepareGLContext;
@@ -1398,7 +1398,7 @@ type
     procedure Render; overload; inline;
     procedure RenderScene(aScene: TGLScene;
       const viewPortSizeX, viewPortSizeY: Integer;
-      drawState: TDrawState; baseObject: TGLBaseSceneObject);
+      drawState: TGLDrawState; baseObject: TGLBaseSceneObject);
     (*Render the scene to a bitmap at given DPI.
       DPI = "dots per inch".
       The "magic" DPI of the screen is 96 under Windows. *)
@@ -7243,7 +7243,7 @@ end;
 
 procedure TGLSceneBuffer.DoBaseRender(const aViewPort: TRectangle; resolution:
   Integer;
-  drawState: TDrawState; baseObject: TGLBaseSceneObject);
+  drawState: TGLDrawState; baseObject: TGLBaseSceneObject);
 begin
   with RenderingContext.GLStates do
   begin
@@ -7379,7 +7379,7 @@ end;
 
 procedure TGLSceneBuffer.RenderScene(aScene: TGLScene;
   const viewPortSizeX, viewPortSizeY: Integer;
-  drawState: TDrawState;
+  drawState: TGLDrawState;
   baseObject: TGLBaseSceneObject);
 
 var

@@ -97,7 +97,7 @@ type
       access a tiny bit of a triangle (for instance), not all data. *)
     FEdgeVertices: TGLIntegerList;
     FEdgeFaces: TGLIntegerList;
-    FFaceVisible: TByteList;
+    FFaceVisible: TGLByteList;
     FFaceVertexIndex: TGLIntegerList;
     FFaceNormal: TGLAffineVectorList;
     FVertexMemory: TGLIntegerList;
@@ -277,7 +277,7 @@ end;
 
 constructor TGLConnectivity.Create(APrecomputeFaceNormal: Boolean);
 begin
-  FFaceVisible := TByteList.Create;
+  FFaceVisible := TGLByteList.Create;
   FFaceVertexIndex := TGLIntegerList.Create;
   FFaceNormal := TGLAffineVectorList.Create;
   FEdgeVertices := TGLIntegerList.Create;

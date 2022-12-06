@@ -2,8 +2,8 @@ object FormObjmove: TFormObjmove
   Left = 87
   Top = 128
   Caption = 'Moving Objects with Mouse'
-  ClientHeight = 628
-  ClientWidth = 832
+  ClientHeight = 502
+  ClientWidth = 666
   Color = clBtnFace
   ParentFont = True
   KeyPreview = True
@@ -12,123 +12,84 @@ object FormObjmove: TFormObjmove
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnKeyUp = FormKeyUp
-  OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 120
   TextHeight = 20
   object Scn: TGLSceneViewer
-    Left = 201
+    Left = 161
     Top = 0
-    Width = 631
-    Height = 605
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 505
+    Height = 484
     Camera = GLCamera
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 36.478870391845700000
+    FieldOfView = 29.538454055786130000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ScnMouseDown
     OnMouseMove = ScnMouseMove
     OnMouseWheel = FormMouseWheel
     TabOrder = 0
-    ExplicitWidth = 598
-    ExplicitHeight = 582
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 201
-    Height = 605
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 161
+    Height = 484
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitHeight = 563
     object Label2: TLabel
       Left = 0
       Top = 0
-      Width = 201
-      Height = 40
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 161
+      Height = 60
       Align = alTop
       Caption = 'Select and move with the mouse any of the cubes.'
       ShowAccelChar = False
       WordWrap = True
-      ExplicitWidth = 171
+      ExplicitWidth = 146
     end
     object Label3: TLabel
       Left = 0
-      Top = 40
-      Width = 201
+      Top = 60
+      Width = 161
       Height = 40
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Align = alTop
       Caption = 'Default movement is on the XY plane.'
       ShowAccelChar = False
       WordWrap = True
-      ExplicitTop = 75
-      ExplicitWidth = 188
+      ExplicitWidth = 159
     end
     object Label4: TLabel
       Left = 0
-      Top = 80
-      Width = 201
+      Top = 100
+      Width = 161
       Height = 40
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Align = alTop
       Caption = 'Shift + Drag moves on the XZ plane.'
       ShowAccelChar = False
       WordWrap = True
-      ExplicitTop = 125
-      ExplicitWidth = 200
+      ExplicitWidth = 153
     end
     object Button1: TButton
-      Left = 773
-      Top = 10
-      Width = 193
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 618
+      Top = 8
+      Width = 155
+      Height = 25
       Caption = 'Near: (0,0) Eye -> Obj'
       TabOrder = 0
     end
     object GroupBox1: TGroupBox
       Left = 0
-      Top = 120
-      Width = 201
-      Height = 53
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Top = 140
+      Width = 161
+      Height = 42
       Align = alTop
       Caption = 'Options'
       TabOrder = 1
       object ShowAxes: TCheckBox
-        Left = 6
-        Top = 23
-        Width = 182
-        Height = 21
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 5
+        Top = 18
+        Width = 145
+        Height = 17
         Caption = 'Show selection axes'
         Checked = True
         State = cbChecked
@@ -139,16 +100,10 @@ object FormObjmove: TFormObjmove
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 605
-    Width = 832
-    Height = 23
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 484
+    Width = 666
+    Height = 18
     Panels = <>
-    ExplicitTop = 563
-    ExplicitWidth = 785
   end
   object GLScene1: TGLScene
     Left = 296
@@ -169,6 +124,7 @@ object FormObjmove: TFormObjmove
     end
     object DummyCube: TGLDummyCube
       Position.Coordinates = {0000803F0000803F0000003F0000803F}
+      Visible = False
       CubeSize = 0.200000002980232200
       EdgeColor.Color = {DEDD5D3FDEDD5D3FE9E8683F0000803F}
     end

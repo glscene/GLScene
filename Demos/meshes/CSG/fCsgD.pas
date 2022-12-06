@@ -15,7 +15,7 @@ uses
   Vcl.Dialogs,
   Vcl.StdCtrls,
 
-  
+
   GLS.Scene,
   GLS.PersistentClasses,
   GLS.VectorFileObjects,
@@ -25,7 +25,7 @@ uses
   GLS.Objects,
   GLS.Texture,
   GLS.File3DS,
- 
+
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
@@ -36,21 +36,22 @@ uses
 type
   TFormCsg = class(TForm)
     GLScene1: TGLScene;
-    GLFreeForm1: TGLFreeForm;
+    FF_A: TGLFreeForm;
     GLCamera1: TGLCamera;
     GLSceneViewer1: TGLSceneViewer;
     GLMaterialLibrary1: TGLMaterialLibrary;
-    GLFreeForm2: TGLFreeForm;
-    GLFreeForm3: TGLFreeForm;
-    Panel1: TPanel;
-    btnClear: TButton;
-    btnUnion: TButton;
-    btnSubtractAB: TButton;
-    btnSubtractBA: TButton;
-    btnIntersect: TButton;
-    CheckBox1: TCheckBox;
+    FF_B: TGLFreeForm;
+    FF_C: TGLFreeForm;
     GLLightSource1: TGLLightSource;
     GLDummyCube1: TGLDummyCube;
+    PanelLeft: TPanel;
+    chbSolidResult: TCheckBox;
+    btnReset: TButton;
+    gbVisibility: TGroupBox;
+    chbA: TCheckBox;
+    chbB: TCheckBox;
+    chbC: TCheckBox;
+    rgOperation: TRadioGroup;
     procedure GLSceneViewer1MouseDown(Sender: TObject;
       Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
     procedure GLSceneViewer1MouseUp(Sender: TObject; Button: TMouseButton;
@@ -62,15 +63,13 @@ type
     procedure FormMouseWheelUp(Sender: TObject; Shift: TShiftState;
       MousePos: TPoint; var Handled: Boolean);
     procedure FormCreate(Sender: TObject);
-// Demo starts here above is just navigation.
-    procedure btnClearClick(Sender: TObject);
-    procedure btnUnionClick(Sender: TObject);
-    procedure btnSubtractABClick(Sender: TObject);
-    procedure btnSubtractBAClick(Sender: TObject);
-    procedure btnIntersectClick(Sender: TObject);
-    procedure CheckBox1Click(Sender: TObject);
+
+    procedure btnResetClick(Sender: TObject);
+    procedure chbSolidResultClick(Sender: TObject);
+    procedure chbClick(Sender: TObject);
+    procedure rgOperationClick(Sender: TObject);
   private
-     
+
   public
     mx : Integer;
     my : Integer;
@@ -84,15 +83,41 @@ implementation
 
 {$R *.dfm}
 
-// Demo starts here above is just navigation.
 procedure TFormCsg.FormCreate(Sender: TObject);
 begin
   SetGLSceneMediaDir();
   // scaled 40
-  GLFreeForm1.LoadFromFile('polyhedron.3ds');
+  FF_A.LoadFromFile('polyhedron.3ds');
 
   // scaled 20, position.x = 16
-  GLFreeForm2.LoadFromFile('polyhedron.3ds');
+  FF_B.LoadFromFile('polyhedron.3ds');
+end;
+
+//
+// Boolean operations
+//
+procedure TFormCsg.rgOperationClick(Sender: TObject);
+begin
+  FF_C.MeshObjects.Clear;
+
+  if FF_C.MeshObjects.Count = 0 then
+    TGLMeshObject.CreateOwned(FF_C.MeshObjects).Mode := momFaceGroups;
+
+  case rgOperation.ItemIndex of
+    0: CSG_Operation(FF_A.MeshObjects.Items[0], FF_B.MeshObjects.Items[0],
+           CSG_Union, FF_C.MeshObjects[0], '1', '2');
+    1: CSG_Operation(FF_A.MeshObjects.Items[0], FF_B.MeshObjects.Items[0],
+           CSG_Subtraction, FF_C.MeshObjects[0], '1', '2');
+    2: CSG_Operation(FF_B.MeshObjects.Items[0], FF_A.MeshObjects.Items[0],
+           CSG_Subtraction, FF_C.MeshObjects[0], '1', '2');
+    3: CSG_Operation(FF_A.MeshObjects.Items[0], FF_B.MeshObjects.Items[0],
+    CSG_Intersection, FF_C.MeshObjects[0],'1','2');
+  end;
+
+  FF_A.Material.PolygonMode := pmLines;
+  FF_B.Material.PolygonMode := pmLines;
+  FF_C.StructureChanged;
+  GLSceneViewer1.Invalidate;
 end;
 
 procedure TFormCsg.GLSceneViewer1MouseDown(Sender: TObject;
@@ -118,102 +143,29 @@ begin
   my := Y;
 end;
 
-procedure TFormCsg.FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
-  MousePos: TPoint; var Handled: Boolean);
-begin
-  GLCamera1.AdjustDistanceToTarget(1.1);
-end;
-
 procedure TFormCsg.FormMouseWheelUp(Sender: TObject; Shift: TShiftState;
   MousePos: TPoint; var Handled: Boolean);
 begin
   GLCamera1.AdjustDistanceToTarget(1/1.1);
 end;
 
-procedure TFormCsg.btnClearClick(Sender: TObject);
+procedure TFormCsg.FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
+  MousePos: TPoint; var Handled: Boolean);
 begin
-  GLFreeForm3.MeshObjects.Clear;
-  GLFreeForm3.StructureChanged;
-
-  GLFreeForm1.Material.PolygonMode := pmFill;
-  GLFreeForm2.Material.PolygonMode := pmFill;
+  GLCamera1.AdjustDistanceToTarget(1.1);
 end;
 
-procedure TFormCsg.btnUnionClick(Sender: TObject);
-var
-  Mesh : TGLMeshObject;
+
+procedure TFormCsg.chbClick(Sender: TObject);
 begin
-  btnClearClick(Sender);
-
-  if GLFreeForm3.MeshObjects.Count = 0 then
-    TGLMeshObject.CreateOwned(GLFreeForm3.MeshObjects).Mode := momFaceGroups;
-
-  Mesh := GLFreeForm3.MeshObjects[0];
-
-  CSG_Operation(GLFreeForm1.MeshObjects.Items[0],GLFreeForm2.MeshObjects.Items[0],CSG_Union,Mesh,'1','2');
-  GLFreeForm3.StructureChanged;
-
-  GLFreeForm1.Material.PolygonMode := pmLines;
-  GLFreeForm2.Material.PolygonMode := pmLines;
+  FF_A.Visible := chbA.Checked;
+  FF_B.Visible := chbB.Checked;
+  FF_C.Visible := chbC.Checked;
 end;
 
-procedure TFormCsg.btnSubtractABClick(Sender: TObject);
-var
-  Mesh : TGLMeshObject;
+procedure TFormCsg.chbSolidResultClick(Sender: TObject);
 begin
-  btnClearClick(Sender);
-
-  if GLFreeForm3.MeshObjects.Count = 0 then
-    TGLMeshObject.CreateOwned(GLFreeForm3.MeshObjects).Mode := momFaceGroups;
-
-  Mesh := GLFreeForm3.MeshObjects[0];
-
-  CSG_Operation(GLFreeForm1.MeshObjects.Items[0],GLFreeForm2.MeshObjects.Items[0],CSG_Subtraction,Mesh,'1','2');
-  GLFreeForm3.StructureChanged;
-
-  GLFreeForm1.Material.PolygonMode := pmLines;
-  GLFreeForm2.Material.PolygonMode := pmLines;
-end;
-
-procedure TFormCsg.btnSubtractBAClick(Sender: TObject);
-var
-  Mesh : TGLMeshObject;
-begin
-  btnClearClick(Sender);
-
-  if GLFreeForm3.MeshObjects.Count = 0 then
-    TGLMeshObject.CreateOwned(GLFreeForm3.MeshObjects).Mode := momFaceGroups;
-
-  Mesh := GLFreeForm3.MeshObjects[0];
-
-  CSG_Operation(GLFreeForm2.MeshObjects.Items[0],GLFreeForm1.MeshObjects.Items[0],CSG_Subtraction,Mesh,'1','2');
-  GLFreeForm3.StructureChanged;
-
-  GLFreeForm1.Material.PolygonMode := pmLines;
-  GLFreeForm2.Material.PolygonMode := pmLines;
-end;
-
-procedure TFormCsg.btnIntersectClick(Sender: TObject);
-var
-  Mesh : TGLMeshObject;
-begin
-  btnClearClick(Sender);
-
-  if GLFreeForm3.MeshObjects.Count = 0 then
-    TGLMeshObject.CreateOwned(GLFreeForm3.MeshObjects).Mode := momFaceGroups;
-
-  Mesh := GLFreeForm3.MeshObjects[0];
-
-  CSG_Operation(GLFreeForm1.MeshObjects.Items[0],GLFreeForm2.MeshObjects.Items[0],CSG_Intersection,Mesh,'1','2');
-  GLFreeForm3.StructureChanged;
-
-  GLFreeForm1.Material.PolygonMode := pmLines;
-  GLFreeForm2.Material.PolygonMode := pmLines;
-end;
-
-procedure TFormCsg.CheckBox1Click(Sender: TObject);
-begin
-  if CheckBox1.Checked then
+  if chbSolidResult.Checked then
   begin
     GLMaterialLibrary1.Materials[0].Material.PolygonMode := pmFill;
     GLMaterialLibrary1.Materials[1].Material.PolygonMode := pmFill;
@@ -223,7 +175,25 @@ begin
     GLMaterialLibrary1.Materials[0].Material.PolygonMode := pmLines;
     GLMaterialLibrary1.Materials[1].Material.PolygonMode := pmLines;
   end;
-  GLFreeForm3.StructureChanged;
+  FF_C.StructureChanged;
+  GLSceneViewer1.Invalidate;
+end;
+
+procedure TFormCsg.btnResetClick(Sender: TObject);
+begin
+  FF_C.MeshObjects.Clear;
+  FF_C.StructureChanged;
+
+  FF_A.Visible := True;  chbA.Checked := True;
+  FF_B.Visible := True;  chbB.Checked := True;
+  FF_C.Visible := True;  chbC.Checked := True;
+  chbSolidResult.Checked := True;
+
+  FF_A.Material.PolygonMode := pmFill;
+  FF_B.Material.PolygonMode := pmFill;
+
+  rgOperation.ItemIndex := 0;
+  GLSceneViewer1.Invalidate;
 end;
 
 end.

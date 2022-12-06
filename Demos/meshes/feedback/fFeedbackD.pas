@@ -29,14 +29,14 @@ type
     GLCamera1: TGLCamera;
     GLDummyCube1: TGLDummyCube;
     GLLightSource1: TGLLightSource;
-    GLCube1: TGLCube;
     GLFreeForm1: TGLFreeForm;
     Button1: TButton;
     GLFeedback1: TGLFeedback;
-    GLDodecahedron1: TGLDodecahedron;
     MeshObject1: TGLDummyCube;
     MeshObject2: TGLDummyCube;
+    GLCube1: TGLCube;
     GLSphere1: TGLSphere;
+    GLDodecahedron1: TGLDodecahedron;
     procedure Button1Click(Sender: TObject);
     procedure GLSceneViewer1MouseDown(Sender: TObject;
       Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
@@ -65,7 +65,7 @@ begin
   // objects into it's buffer
   GLFeedback1.Active := True;
 
-  // Process the first mesh object (GLCube and GLDodecahedron)
+  (* Process the first mesh object (GLCube and GLDodecahedron) *)
 
   // Make the objects visible that we want to buffer
   MeshObject1.Visible := True;
@@ -75,7 +75,7 @@ begin
   GLSceneViewer1.Buffer.Render(GLFeedback1);
 
   // Hide the child objects we rendered
-  MeshObject1.Visible := False;
+  ///  MeshObject1.Visible := False;
 
   // Create a new mesh object in our freeform
   mo := TGLMeshObject.CreateOwned(GLFreeForm1.MeshObjects);
@@ -83,16 +83,15 @@ begin
 
   // Process the feedback buffer for polygon data
   // and build a mesh (normals are recalculated
-  // since feedback only yields position and
-  // texcoords)
-  GLFeedback1.BuildMeshFromBuffer(
-    mo.Vertices, mo.Normals, mo.Colors, mo.TexCoords, nil);
+  // since feedback only yields position and texcoords)
+  GLFeedback1.BuildMeshFromBuffer(mo.Vertices, mo.Normals, mo.Colors, mo.TexCoords, nil);
 
   // Process the second mesh object (GLSphere)
+
   // (comments from first mesh object apply here also)
   MeshObject2.Visible := True;
   GLSceneViewer1.Buffer.Render(GLFeedback1);
-  MeshObject2.Visible := False;
+  ///  MeshObject2.Visible := False;
 
   // Vertex indices are required for smooth normals
   mo := TGLMeshObject.CreateOwned(GLFreeForm1.MeshObjects);

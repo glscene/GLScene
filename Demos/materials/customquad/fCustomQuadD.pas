@@ -69,6 +69,9 @@ begin
     Material.FrontProperties.Emission.Color := clrGray50;
   MatLib.AddTextureMaterial('stone', 'walkway.jpg').
     Material.FaceCulling := fcNoCull;
+
+  Torus1.Material.Texture.Disabled := False;
+  Torus1.Material.Texture.Image.LoadFromFile('walkway.jpg');
 end;
 
 procedure TFormCustomQuad.DirectOpenGL1Render(Sender: TObject;

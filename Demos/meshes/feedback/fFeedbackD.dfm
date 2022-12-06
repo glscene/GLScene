@@ -2,44 +2,39 @@ object FormFeedback: TFormFeedback
   Left = 192
   Top = 107
   Caption = 'Feedback'
-  ClientHeight = 221
-  ClientWidth = 445
+  ClientHeight = 383
+  ClientWidth = 481
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  PixelsPerInch = 120
-  TextHeight = 16
+  Position = poScreenCenter
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 445
-    Height = 221
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 481
+    Height = 383
     Camera = GLCamera1
+    Buffer.BackgroundColor = clTeal
     Buffer.AmbientColor.Color = {0000000000000000000000000000803F}
     Buffer.FaceCulling = False
-    FieldOfView = 131.307571411132800000
+    FieldOfView = 150.733886718750000000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 373
+    ExplicitHeight = 214
   end
   object Button1: TButton
-    Left = 190
-    Top = 10
-    Width = 94
-    Height = 31
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 200
+    Top = 24
+    Width = 75
+    Height = 25
     Caption = 'Build Mesh'
     TabOrder = 1
     OnClick = Button1Click
@@ -66,7 +61,6 @@ object FormFeedback: TFormFeedback
       MaxBufferSize = 1048576
       Active = False
       Mode = fm3DColorTexture
-      Visible = False
       object MeshObject1: TGLDummyCube
         Visible = False
         CubeSize = 1.000000000000000000

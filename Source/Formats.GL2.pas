@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit Formats.GL2;
 
 (*
@@ -20,42 +19,25 @@ uses
 
 type
   TGLMHeader = record
-    fileID           : array[0..3] of char;
-    version          : integer;
-    strFile,
-    animName         : array[0..63] of char;
-    animIndex,
-    numBones,
-    numLODs,
-    ofsLODs,
-    numSurfaces,
-    ofsSurfHierarchy,
-    ofsEnd           : integer;
+    fileID: array [0 .. 3] of char;
+    version: integer;
+    strFile, animName: array [0 .. 63] of char;
+    animIndex, numBones, numLODs, ofsLODs, numSurfaces, ofsSurfHierarchy, ofsEnd: integer;
   end;
 
   TGLMSurfaceHeirachyOffsets = array of integer;
 
   TGLMSurfaceHeirachy = record
-    name         : array[0..63] of Char;
-    flags        : LongWord;
-    shader       : array[0..63] of Char;
-    shaderIndex,
-    parentIndex,
-    numChildren  : integer;
-    childIndices : array of integer;
+    name: array [0 .. 63] of char;
+    flags: LongWord;
+    shader: array [0 .. 63] of char;
+    shaderIndex, parentIndex, numChildren: integer;
+    childIndices: array of integer;
   end;
 
   TGLMSurfaceHeader = record
-    ident,
-    thisSurfaceIndex,
-    ofsHeader,
-    numVerts,
-    ofsVerts,
-    numTriangles,
-    ofsTriangles,
-    numBoneReferences,
-    ofsBoneReferences,
-    ofsEnd            : integer;
+    ident, thisSurfaceIndex, ofsHeader, numVerts, ofsVerts, numTriangles, ofsTriangles,
+      numBoneReferences, ofsBoneReferences, ofsEnd: integer;
   end;
 
   TGLMTriangle = record
@@ -134,8 +116,7 @@ type
   end;
 
 function G2_GetVertWeights(const vert: TGLMVertex): integer;
-function G2_GetVertBoneIndex(const vert: TGLMVertex;
-  iWeightNum: integer): integer;
+function G2_GetVertBoneIndex(const vert: TGLMVertex; iWeightNum: integer): integer;
 function G2_GetVertBoneWeight(const vert: TGLMVertex; iWeightNum: Cardinal;
   var fTotalWeight: single; const iNumWeights: Cardinal): single;
 
@@ -160,8 +141,7 @@ begin
   result := (vert.uiNumWeightsAndBoneIndices shr 30) + 1;
 end;
 
-function G2_GetVertBoneIndex(const vert: TGLMVertex;
-  iWeightNum: integer): integer;
+function G2_GetVertBoneIndex(const vert: TGLMVertex; iWeightNum: integer): integer;
 begin
   // Extract the bone reference array index, a 5-bit integer
   result := (vert.uiNumWeightsAndBoneIndices shr (5 * iWeightNum)) and 31;
@@ -185,8 +165,7 @@ begin
     iTemp := vert.BoneWeightings[iWeightNum];
     // Get the 2-bit overflow and 'or' it to the front of the
     // weight to get 10-bit integer weight (0..1023)
-    iTemp := iTemp or
-      ((vert.uiNumWeightsAndBoneIndices shr (12 + (iWeightNum * 2))) and $300);
+    iTemp := iTemp or ((vert.uiNumWeightsAndBoneIndices shr (12 + (iWeightNum * 2))) and $300);
     // Convert to floating point weight (0..1)
     fBoneWeight := iTemp / 1023;
     // Accumulate total weight
@@ -200,10 +179,9 @@ end;
 
 procedure MC_UnCompressQuat(var mat: TGLMatrix; const comp: TGLACompQuatBone);
 begin
-  mat := QuaternionToMatrix(QuaternionMake([comp[1] - 32726, comp[2] - 32726,
-    comp[3] - 32726], comp[0] - 32726));
-  mat.V[3] := VectorMake(comp[4] / 64 - 512, comp[5] / 64 - 512,
-    comp[6] / 64 - 512, 1);
+  mat := QuaternionToMatrix(QuaternionMake([comp[1] - 32726, comp[2] - 32726, comp[3] - 32726],
+    comp[0] - 32726));
+  mat.V[3] := VectorMake(comp[4] / 64 - 512, comp[5] / 64 - 512, comp[6] / 64 - 512, 1);
 end;
 
 
@@ -222,21 +200,18 @@ begin
 
   if not(idstr = '2LGM') then
   begin
-    raise Exception.Create(Format('Unknown or incorrect identity tag: [%s]',
-      [idstr]));
+    raise Exception.Create(Format('Unknown or incorrect identity tag: [%s]', [idstr]));
     exit;
   end;
 
-  aStream.Read(ModelHeader,SizeOf(ModelHeader));
+  aStream.Read(ModelHeader, sizeof(ModelHeader));
 
   if ModelHeader.version <> 6 then
-    raise Exception.Create
-      (Format('Only GLM (MDXM) version 6 is supported. File is version %d.',
+    raise Exception.Create(Format('Only GLM (MDXM) version 6 is supported. File is version %d.',
       [ModelHeader.version]));
 
   SetLength(SurfaceHeirachyOffsets, ModelHeader.numSurfaces);
-  aStream.Read(SurfaceHeirachyOffsets[0], sizeof(integer) *
-    ModelHeader.numSurfaces);
+  aStream.Read(SurfaceHeirachyOffsets[0], sizeof(integer) * ModelHeader.numSurfaces);
 
   SetLength(SurfaceHeirachy, ModelHeader.numSurfaces);
   for i := 0 to ModelHeader.numSurfaces - 1 do
@@ -264,8 +239,7 @@ begin
       LODofs := aStream.Position;
       aStream.Read(LODInfo, sizeof(LODInfo));
       SetLength(LODSurfaceOffsets, ModelHeader.numSurfaces);
-      aStream.Read(LODSurfaceOffsets[0], sizeof(integer) *
-        ModelHeader.numSurfaces);
+      aStream.Read(LODSurfaceOffsets[0], sizeof(integer) * ModelHeader.numSurfaces);
       SetLength(Surfaces, ModelHeader.numSurfaces);
       for j := 0 to ModelHeader.numSurfaces - 1 do
         with Surfaces[j] do
@@ -277,16 +251,12 @@ begin
           SetLength(TexCoords, SurfaceHeader.numVerts);
           SetLength(BoneReferences, SurfaceHeader.numBoneReferences);
           aStream.Position := ofs + SurfaceHeader.ofsTriangles;
-          aStream.Read(Triangles[0], SurfaceHeader.numTriangles *
-            sizeof(TGLMTriangle));
+          aStream.Read(Triangles[0], SurfaceHeader.numTriangles * sizeof(TGLMTriangle));
           aStream.Position := ofs + SurfaceHeader.ofsVerts;
-          aStream.Read(Vertices[0], SurfaceHeader.numVerts *
-            sizeof(TGLMVertex));
-          aStream.Read(TexCoords[0], SurfaceHeader.numVerts *
-            sizeof(TVector2f));
+          aStream.Read(Vertices[0], SurfaceHeader.numVerts * sizeof(TGLMVertex));
+          aStream.Read(TexCoords[0], SurfaceHeader.numVerts * sizeof(TVector2f));
           aStream.Position := ofs + SurfaceHeader.ofsBoneReferences;
-          aStream.Read(BoneReferences[0], SurfaceHeader.numBoneReferences *
-            sizeof(integer));
+          aStream.Read(BoneReferences[0], SurfaceHeader.numBoneReferences * sizeof(integer));
           aStream.Position := ofs + SurfaceHeader.ofsEnd;
         end;
       aStream.Position := LODofs + LODInfo.ofsEnd;
@@ -307,8 +277,7 @@ end;
 //
 function TFileGLA.GetUnCompressedMatrix(Frame, Bone: integer): TGLMatrix;
 begin
-  MC_UnCompressQuat(result, CompBonePool[BoneIndices[Frame * AnimHeader.numBones
-    + Bone]]);
+  MC_UnCompressQuat(result, CompBonePool[BoneIndices[Frame * AnimHeader.numBones + Bone]]);
 end;
 
 procedure TFileGLA.LoadFromStream(aStream: TStream);
@@ -322,16 +291,14 @@ begin
 
   if not(idstr = '2LGA') then
   begin
-    raise Exception.Create(Format('Unknown or incorrect identity tag: [%s]',
-      [idstr]));
+    raise Exception.Create(Format('Unknown or incorrect identity tag: [%s]', [idstr]));
     exit;
   end;
 
-  aStream.Read(AnimHeader,SizeOf(AnimHeader));
+  aStream.Read(AnimHeader, sizeof(AnimHeader));
 
   if AnimHeader.version <> 6 then
-    raise Exception.Create
-      (Format('Only GLA (MDXA) version 6 is supported. File is version %d.',
+    raise Exception.Create(Format('Only GLA (MDXA) version 6 is supported. File is version %d.',
       [AnimHeader.version]));
 
   SetLength(SkeletonOffsets, AnimHeader.numBones);
@@ -343,7 +310,7 @@ begin
     begin
       aStream.Read(name, Length(name));
       aStream.Read(flags, sizeof(LongWord));
-      aStream.Read(Parent,SizeOf(Integer));
+      aStream.Read(parent, sizeof(integer));
       aStream.Read(BasePoseMat, sizeof(TGLABone));
       aStream.Read(BasePoseMatInv, sizeof(TGLABone));
       aStream.Read(numChildren, sizeof(integer));

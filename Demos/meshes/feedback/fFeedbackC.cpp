@@ -47,7 +47,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
   GLSceneViewer1->Buffer->Render(GLFeedback1);
 
   // Hide the child objects we rendered
-  MeshObject1->Visible = false;
+  /// MeshObject1->Visible = false;   /// need to be true
 
   // Create a new mesh object in our freeform
   // Delphi -  mo := TGLMeshObject.CreateOwned(GLFreeForm1.MeshObjects);
@@ -66,7 +66,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
   // (comments from first mesh object apply here also)
   MeshObject2->Visible = true;
   GLSceneViewer1->Buffer->Render(GLFeedback1);
-  MeshObject2->Visible = false;
+  /// MeshObject2->Visible = false;  /// need to be true
 
   // Vertex indices are required for smooth normals
   // in Delphi - mo := TGLMeshObject.CreateOwned(GLFreeForm1.MeshObjects);

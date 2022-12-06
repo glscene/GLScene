@@ -19,7 +19,7 @@ uses
 
 type
 
-  TDrawState = (dsRendering, dsPicking, dsPrinting);
+  TGLDrawState = (dsRendering, dsPicking, dsPrinting);
 
   TGLSize = record
     cx: Longint;
@@ -32,9 +32,8 @@ type
    osRenderFarthestFirst : render objects whose Position is the farthest from the camera first.
    osRenderBlendedLast : opaque objects are not sorted and rendered first, blended ones are rendered afterwards and depth sorted.
    osRenderNearestFirst : render objects whose Position is the nearest to the camera first.  *)
-  TGLObjectsSorting = (osInherited, osNone,
-    osRenderFarthestFirst, osRenderBlendedLast,
-    osRenderNearestFirst);
+  TGLObjectsSorting = (osInherited, osNone, osRenderFarthestFirst,
+    osRenderBlendedLast, osRenderNearestFirst);
 
   (* Determines the visibility culling mode.
      Culling is done level by level, allowed values are:
@@ -52,7 +51,7 @@ type
      board, it may be faster not to cull at all (ie. leave this to the hardware). *)
   TGLVisibilityCulling = (vcInherited, vcNone, vcObjectBased, vcHierarchical);
 
-  TRenderContextClippingInfo = record
+  TGLRenderContextClippingInfo = record
     Origin: TGLVector;
     ClippingDirection: TGLVector;
     ViewPortRadius: Single; // viewport bounding radius per distance unit
@@ -72,12 +71,12 @@ type
     MaterialLibrary: TObject; //usually TGLMaterialLibrary;
     LightMapLibrary: TObject; //usually TGLMaterialLibrary;
     FogDisabledCounter: Integer;
-    DrawState: TDrawState;
+    DrawState: TGLDrawState;
     ObjectsSorting: TGLObjectsSorting;
     VisibilityCulling: TGLVisibilityCulling;
     GLStates: TGLStateCache;
     PipelineTransformation: TGLTransformation;
-    Rcci: TRenderContextClippingInfo;
+    Rcci: TGLRenderContextClippingInfo;
     SceneAmbientColor: TGLColorVector;
     BufferFaceCull: Boolean;
     BufferLighting: Boolean;
@@ -94,14 +93,10 @@ type
     PrimitiveMask: TGLMeshPrimitives;
     OrderCounter: Integer;
   end;
-  PRenderContextInfo = ^TGLRenderContextInfo;
+  PGLRenderContextInfo = ^TGLRenderContextInfo;
 
 //====================================================================
 implementation
 //====================================================================
 
 end.
-
-
-
-

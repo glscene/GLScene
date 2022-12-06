@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.MultiProxy;
 
 (* Implements a multi-proxy objects, useful for discreet LOD. *)
@@ -28,7 +27,7 @@ type
 
   TGLMultiProxy = class;
 
-  (* MasterObject description for a MultiProxy object. *)
+    // MasterObject description for a MultiProxy object 
 	TGLMultiProxyMaster = class (TCollectionItem)
 	   private
          FMasterObject : TGLBaseSceneObject;
@@ -48,19 +47,20 @@ type
          function OwnerObject : TGLMultiProxy;
          procedure NotifyChange;
       published
-         {Specifies the Master object which will be proxy'ed. }
+         // Specifies the Master object which will be proxy'ed. 
          property MasterObject : TGLBaseSceneObject read FMasterObject write SetMasterObject;
-         {Minimum visibility distance (inclusive). }
+         // Minimum visibility distance (inclusive). 
          property DistanceMin : Single read FDistanceMin write SetDistanceMin;
-         {Maximum visibility distance (exclusive). }
+         // Maximum visibility distance (exclusive). 
          property DistanceMax : Single read FDistanceMax write SetDistanceMax;
-         {Determines if the master object can be visible (proxy'ed).
-            Note: the master object's distance also has to be within DistanceMin
-            and DistanceMax.}
+         (*
+		  Determines if the master object can be visible (proxy'ed).
+          Note: the master object's distance also has to be within DistanceMin and DistanceMax.
+		  *)
          property Visible : Boolean read FVisible write SetVisible default True;
    end;
 
-   {Collection of TGLMultiProxyMaster. }
+   // Collection of TGLMultiProxyMaster. 
 	TGLMultiProxyMasters = class (TOwnedCollection)
 	   protected
          procedure SetItems(index : Integer; const val : TGLMultiProxyMaster);
@@ -77,13 +77,13 @@ type
          procedure EndUpdate; override;
    end;
 
-   {Multiple Proxy object.
+   (* Multiple Proxy object.
       This proxy has multiple master objects, which are individually made visible
       depending on a distance to the camera criterion. It can be used to implement
       discreet level of detail directly for static objects, or objects that
       go through cyclic animation. 
       For dimensionsn raycasting and silhouette purposes, the first master is used
-      (item zero in the MasterObjects collection). }
+      (item zero in the MasterObjects collection). *)
    TGLMultiProxy = class (TGLSceneObject)
       private
          FMasterObjects : TGLMultiProxyMasters;

@@ -1,4 +1,5 @@
-{: This demo shows how to use a GLFeedback object to
+(*
+   This demo shows how to use a GLFeedback object to
    extract mesh data from regular GLScene objects.
 
    The GLFeedback object uses the GL_FEEDBACK render
@@ -16,8 +17,7 @@
    returned will be per index value. They can either
    be used in a TFGIndexTexCoordList or resampled for
    use with other facegroup types.
-
-}
+*)
 program FeedbackD;
 
 uses

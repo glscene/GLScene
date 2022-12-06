@@ -2317,6 +2317,8 @@ object FormPFXGallery: TFormPFXGallery
         Visible = False
         Height = 16.000000000000000000
         Width = 8.000000000000000000
+        XTiles = 0
+        YTiles = 0
       end
       object ICE: TGLSpaceText
         Font.Charset = DEFAULT_CHARSET

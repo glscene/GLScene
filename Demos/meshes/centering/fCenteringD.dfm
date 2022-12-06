@@ -2,93 +2,74 @@ object FormCentering: TFormCentering
   Left = 160
   Top = 105
   Caption = 'Centering'
-  ClientHeight = 315
-  ClientWidth = 711
+  ClientHeight = 408
+  ClientWidth = 574
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Arial'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 14
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 51
-    Width = 680
-    Height = 264
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 41
+    Width = 549
+    Height = 367
     Camera = GLCamera1
     Buffer.BackgroundColor = 11447982
-    FieldOfView = 72.507675170898440000
+    FieldOfView = 91.103324890136720000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 545
+    ExplicitHeight = 329
   end
   object TrackBar1: TTrackBar
-    Left = 680
-    Top = 51
-    Width = 31
-    Height = 264
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 549
+    Top = 41
+    Width = 25
+    Height = 367
     Align = alRight
     Max = 80
     Min = -80
     Orientation = trVertical
     Frequency = 10
     TabOrder = 1
-    ThumbLength = 13
+    ThumbLength = 10
     OnChange = TrackBar1Change
+    ExplicitLeft = 544
+    ExplicitHeight = 211
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 711
-    Height = 51
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 574
+    Height = 41
     Align = alTop
     TabOrder = 2
+    ExplicitWidth = 569
     object Label1: TLabel
-      Left = 70
-      Top = 10
-      Width = 88
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 56
+      Top = 8
+      Width = 68
+      Height = 14
       Caption = 'Centered X, Y'
     end
     object Label2: TLabel
-      Left = 290
-      Top = 10
-      Width = 72
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 232
+      Top = 8
+      Width = 55
+      Height = 14
       Caption = 'Centered Y'
     end
     object Label3: TLabel
-      Left = 510
-      Top = 10
-      Width = 102
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 408
+      Top = 8
+      Width = 80
+      Height = 14
       Caption = 'Centered X, Y, Z'
     end
   end

@@ -31,10 +31,10 @@ uses
 type
   TFormActor = class(TForm)
     GLScene1: TGLScene;
-    GLCamera1: TGLCamera;
-    GLLightSource1: TGLLightSource;
-    DummyCube1: TGLDummyCube;
-    Disk1: TGLDisk;
+    Camera: TGLCamera;
+    LightSource: TGLLightSource;
+    DummyCube: TGLDummyCube;
+    DiskRing: TGLDisk;
     GLSceneViewer1: TGLSceneViewer;
     Actor1: TGLActor;
     Actor2: TGLActor;
@@ -43,13 +43,14 @@ type
     Panel1: TPanel;
     SBPlay: TSpeedButton;
     SBStop: TSpeedButton;
-    CBAnimations: TComboBox;
+    cbxAnimations: TComboBox;
     BBLoadWeapon: TBitBtn;
     SBFrameToFrame: TSpeedButton;
-    Label1: TLabel;
-    CBSmooth: TCheckBox;
+    lblAnimation: TLabel;
+    chbSmooth: TCheckBox;
     Timer1: TTimer;
-    LabelFPS: TLabel;
+    lblDiskSlices: TLabel;
+    cbxDiskSlices: TComboBox;
     procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
@@ -60,17 +61,17 @@ type
     procedure SBStopClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BBLoadWeaponClick(Sender: TObject);
-    procedure CBAnimationsChange(Sender: TObject);
+    procedure cbxAnimationsChange(Sender: TObject);
     procedure SBFrameToFrameClick(Sender: TObject);
     procedure Actor1FrameChanged(Sender: TObject);
-    procedure CBSmoothClick(Sender: TObject);
+    procedure chbSmoothClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure GLCadencer1Progress(Sender: TObject;
       const deltaTime, newTime: Double);
+    procedure cbxDiskSlicesChange(Sender: TObject);
   private
     mdx, mdy: Integer;
   public
-     
   end;
 
 var
@@ -87,10 +88,10 @@ procedure TFormActor.FormCreate(Sender: TObject);
 begin
   SetGLSceneMediaDir();
   // Load Texture for ground disk
-  Disk1.Material.Texture.Image.LoadFromFile('clover.jpg');
-  Disk1.Material.Texture.Disabled := False;
+  DiskRing.Material.Texture.Image.LoadFromFile('clover.jpg');
+  DiskRing.Material.Texture.Disabled := False;
 
-  // Load Actor into GLScene
+  // Load Actor from file
   Actor1.LoadFromFile('waste.md2');
   Actor1.Material.Texture.Image.LoadFromFile('waste.jpg');
 
@@ -104,10 +105,13 @@ begin
   Actor1.Scale.SetVector(0.04, 0.04, 0.04, 0);
 
   // Send animation names to the combo, to allow user selection
-  Actor1.Animations.SetToStrings(CBAnimations.Items);
+  Actor1.Animations.SetToStrings(cbxAnimations.Items);
   // Force state to stand (first in list)
-  CBAnimations.ItemIndex := 0;
-  CBAnimationsChange(Self);
+  cbxAnimations.ItemIndex := 0;
+  cbxAnimationsChange(Self);
+
+  cbxDiskSlices.ItemIndex := 5; // 64
+  cbxDiskSlicesChange(Self);
 end;
 
 procedure TFormActor.SBPlayClick(Sender: TObject);
@@ -147,10 +151,11 @@ begin
   Actor2.Synchronize(Actor1);
 end;
 
-procedure TFormActor.CBAnimationsChange(Sender: TObject);
+// Combo Box with Animations
+procedure TFormActor.cbxAnimationsChange(Sender: TObject);
 begin
   // Change animation
-  Actor1.SwitchToAnimation(CBAnimations.Text, True);
+  Actor1.SwitchToAnimation(cbxAnimations.Text, True);
 
   // Normally actors for Quake II Model have one number of frames
   // for all states 198 for actors and 172 for weapon,
@@ -161,6 +166,21 @@ begin
     Actor2.Synchronize(Actor1);
 end;
 
+procedure TFormActor.cbxDiskSlicesChange(Sender: TObject);
+begin
+//  DiskRing.Slices := StrToInt(cbxDiskSlices.Items[cbxDiskSlices.ItemIndex]);
+// (* the same
+  case cbxDiskSlices.ItemIndex of
+    0: DiskRing.Slices := StrToInt(cbxDiskSlices.Items[0]); // 3
+    1: DiskRing.Slices := StrToInt(cbxDiskSlices.Items[1]); // 4
+    2: DiskRing.Slices := StrToInt(cbxDiskSlices.Items[2]); // 5
+    3: DiskRing.Slices := StrToInt(cbxDiskSlices.Items[3]); // 6
+    4: DiskRing.Slices := StrToInt(cbxDiskSlices.Items[4]); // 12;
+    5: DiskRing.Slices := StrToInt(cbxDiskSlices.Items[5]); // 64;
+  end;
+// *)
+end;
+
 procedure TFormActor.SBFrameToFrameClick(Sender: TObject);
 begin
   // Animate Frame to Frame
@@ -168,10 +188,10 @@ begin
   Actor2.NextFrame;
 end;
 
-procedure TFormActor.CBSmoothClick(Sender: TObject);
+procedure TFormActor.chbSmoothClick(Sender: TObject);
 begin
   // Smooth movement is achieved by using linear frame interpolation
-  if CBSmooth.Checked then
+  if chbSmooth.Checked then
   begin
     Actor1.FrameInterpolation := afpLinear;
     Actor2.FrameInterpolation := afpLinear;
@@ -188,10 +208,7 @@ begin
   StatusBar1.SimpleText := 'CurrentFrame = ' + IntToStr(Actor1.CurrentFrame);
 end;
 
-//
 // events that follow handle camera movements and FPS rate
-//
-
 procedure TFormActor.GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
@@ -205,7 +222,7 @@ procedure TFormActor.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState
 begin
   // (we're moving around the parent and target dummycube)
   if Shift <> [] then
-    GLCamera1.MoveAroundTarget(mdy - Y, mdx - X);
+    Camera.MoveAroundTarget(mdy - Y, mdx - X);
   mdx := X;
   mdy := Y;
 end;
@@ -215,12 +232,12 @@ procedure TFormActor.FormMouseWheel(Sender: TObject; Shift: TShiftState;
 begin
   // Note that 1 wheel-step induces a WheelDelta of 120,
   // this code adjusts the distance to target with a 10% per wheel-step ratio
-  GLCamera1.AdjustDistanceToTarget(Power(1.1, WheelDelta / 120));
+  Camera.AdjustDistanceToTarget(Power(1.1, WheelDelta / 120));
 end;
 
 procedure TFormActor.Timer1Timer(Sender: TObject);
 begin
-  LabelFPS.Caption := Format('%.1f FPS', [GLSceneViewer1.FramesPerSecond]);
+  StatusBar1.Panels[0].Text := Format('  FPS  ' + '%.1f', [GLSceneViewer1.FramesPerSecond]);
   GLSceneViewer1.ResetPerformanceMonitor;
 end;
 

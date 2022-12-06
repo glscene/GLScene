@@ -30,7 +30,7 @@ type
     FCurrentPos: Integer;
     FBasePose: TGLSkeletonFrame;
     FFramePositions: TGLAffineVectorList;
-    FFrameQuaternions: TQuaternionList;
+    FFrameQuaternions: TGLQuaternionList;
     FJointFlags: TGLIntegerList;
     FNumFrames, FFirstFrame, FFrameRate, FNumJoints: Integer;
     function ReadLine: String;
@@ -480,7 +480,7 @@ begin
         begin
           FNumJoints := StrToInt(FTempString[1]);
           FFramePositions := TGLAffineVectorList.Create;
-          FFrameQuaternions := TQuaternionList.Create;
+          FFrameQuaternions := TGLQuaternionList.Create;
           if Owner.Skeleton.Frames.Count = 0 then
           begin
             FBasePose := TGLSkeletonFrame.CreateOwned(Owner.Skeleton.Frames);

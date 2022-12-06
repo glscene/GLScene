@@ -2,30 +2,25 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Feedback'
-  ClientHeight = 315
-  ClientWidth = 501
+  ClientHeight = 252
+  ClientWidth = 401
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 501
-    Height = 315
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 401
+    Height = 252
     Camera = GLCamera1
     Buffer.AmbientColor.Color = {0000000000000000000000000000803F}
     Buffer.FaceCulling = False
-    FieldOfView = 144.774841308593800000
+    FieldOfView = 136.711135864257800000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -33,14 +28,10 @@ object Form1: TForm1
     TabOrder = 0
   end
   object Button1: TButton
-    Left = 190
-    Top = 10
-    Width = 94
-    Height = 31
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 152
+    Top = 8
+    Width = 75
+    Height = 25
     Caption = 'Build Mesh'
     TabOrder = 1
     OnClick = Button1Click

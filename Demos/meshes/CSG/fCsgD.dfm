@@ -2,129 +2,120 @@ object FormCsg: TFormCsg
   Left = 321
   Top = 128
   Caption = 'Constructive Solid Geometry'
-  ClientHeight = 545
-  ClientWidth = 693
+  ClientHeight = 542
+  ClientWidth = 726
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
   OnMouseWheelDown = FormMouseWheelDown
   OnMouseWheelUp = FormMouseWheelUp
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 693
-    Height = 493
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 544
+    Height = 542
     Camera = GLCamera1
     Buffer.BackgroundColor = clTeal
     Buffer.FaceCulling = False
-    FieldOfView = 157.067413330078100000
+    FieldOfView = 159.092758178710900000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     OnMouseUp = GLSceneViewer1MouseUp
     TabOrder = 0
+    ExplicitWidth = 556
+    ExplicitHeight = 395
   end
-  object Panel1: TPanel
-    Left = 0
-    Top = 493
-    Width = 693
-    Height = 52
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
-    Align = alBottom
+  object PanelLeft: TPanel
+    Left = 544
+    Top = 0
+    Width = 182
+    Height = 542
+    Align = alRight
     TabOrder = 1
-    object btnClear: TButton
-      Left = 10
-      Top = 10
-      Width = 61
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
-      Caption = 'Clear'
-      TabOrder = 0
-      OnClick = btnClearClick
-    end
-    object btnUnion: TButton
-      Left = 79
-      Top = 10
-      Width = 104
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
-      Caption = 'Union A and B'
-      TabOrder = 1
-      OnClick = btnUnionClick
-    end
-    object btnSubtractAB: TButton
-      Left = 198
-      Top = 8
-      Width = 93
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
-      Caption = 'Subtract A-B'
-      TabOrder = 2
-      OnClick = btnSubtractABClick
-    end
-    object btnSubtractBA: TButton
-      Left = 299
-      Top = 10
-      Width = 94
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
-      Caption = 'Subtract B-A'
-      TabOrder = 3
-      OnClick = btnSubtractBAClick
-    end
-    object btnIntersect: TButton
-      Left = 400
-      Top = 10
-      Width = 121
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
-      Caption = 'Intersection A or B'
-      TabOrder = 4
-      OnClick = btnIntersectClick
-    end
-    object CheckBox1: TCheckBox
-      Left = 571
-      Top = 15
-      Width = 122
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+    ExplicitLeft = 536
+    object chbSolidResult: TCheckBox
+      Left = 48
+      Top = 324
+      Width = 97
+      Height = 17
       Caption = 'Solid Result'
       Checked = True
       State = cbChecked
-      TabOrder = 5
-      OnClick = CheckBox1Click
+      TabOrder = 0
+      OnClick = chbSolidResultClick
+    end
+    object btnReset: TButton
+      Left = 48
+      Top = 371
+      Width = 49
+      Height = 25
+      Caption = 'Reset'
+      TabOrder = 1
+      OnClick = btnResetClick
+    end
+    object gbVisibility: TGroupBox
+      Left = 16
+      Top = 210
+      Width = 153
+      Height = 92
+      Caption = 'Visibility'
+      TabOrder = 2
+      object chbA: TCheckBox
+        Left = 32
+        Top = 18
+        Width = 97
+        Height = 17
+        Caption = 'Object A'
+        Checked = True
+        State = cbChecked
+        TabOrder = 0
+        OnClick = chbClick
+      end
+      object chbB: TCheckBox
+        Left = 32
+        Top = 41
+        Width = 97
+        Height = 17
+        Caption = 'Object B'
+        Checked = True
+        State = cbChecked
+        TabOrder = 1
+        OnClick = chbClick
+      end
+      object chbC: TCheckBox
+        Left = 32
+        Top = 64
+        Width = 97
+        Height = 17
+        Caption = 'Result'
+        Checked = True
+        State = cbChecked
+        TabOrder = 2
+        OnClick = chbClick
+      end
+    end
+    object rgOperation: TRadioGroup
+      Left = 16
+      Top = 16
+      Width = 153
+      Height = 169
+      Caption = 'Operation'
+      ItemIndex = 0
+      Items.Strings = (
+        'Union A and B'
+        'Subtract A-B'
+        'Subtract B-A'
+        'Intersect A and B')
+      TabOrder = 3
+      OnClick = rgOperationClick
     end
   end
   object GLScene1: TGLScene
@@ -145,10 +136,15 @@ object FormCsg: TFormCsg
     object GLDummyCube1: TGLDummyCube
       Scale.Coordinates = {00000040000000400000004000000000}
       CubeSize = 100.000000000000000000
-      object GLFreeForm3: TGLFreeForm
-        MaterialLibrary = GLMaterialLibrary1
+      object FF_A: TGLFreeForm
+        Material.FrontProperties.Ambient.Color = {0000000000000000000000000000803F}
+        Material.FrontProperties.Diffuse.Color = {9484843E9484843EDBDEDE3E0000803F}
+        Material.FrontProperties.Shininess = 32
+        Material.FrontProperties.Specular.Color = {9A99593F9A99593FCDCCCC3D0000803F}
+        Scale.Coordinates = {0000A0420000A0420000A04200000000}
+        AutoCentering = [macCenterX, macCenterY, macCenterZ]
       end
-      object GLFreeForm2: TGLFreeForm
+      object FF_B: TGLFreeForm
         Material.FrontProperties.Ambient.Color = {0000000000000000000000000000803F}
         Material.FrontProperties.Diffuse.Color = {CFBC3C3EA19E9E3EA19E9E3E0000803F}
         Material.FrontProperties.Shininess = 32
@@ -157,13 +153,8 @@ object FormCsg: TFormCsg
         Scale.Coordinates = {00002042000020420000204200000000}
         AutoCentering = [macCenterX, macCenterY, macCenterZ]
       end
-      object GLFreeForm1: TGLFreeForm
-        Material.FrontProperties.Ambient.Color = {0000000000000000000000000000803F}
-        Material.FrontProperties.Diffuse.Color = {9484843E9484843EDBDEDE3E0000803F}
-        Material.FrontProperties.Shininess = 32
-        Material.FrontProperties.Specular.Color = {9A99593F9A99593FCDCCCC3D0000803F}
-        Scale.Coordinates = {0000A0420000A0420000A04200000000}
-        AutoCentering = [macCenterX, macCenterY, macCenterZ]
+      object FF_C: TGLFreeForm
+        MaterialLibrary = GLMaterialLibrary1
       end
     end
   end

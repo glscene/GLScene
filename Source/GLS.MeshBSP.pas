@@ -35,7 +35,7 @@ type
   TBSPRenderContextInfo = record
     // Local coordinates of the camera (can be a vector or point)
     cameraLocal: TGLVector;
-    rci: PRenderContextInfo;
+    rci: PGLRenderContextInfo;
     faceGroups: TList;
     cullingSpheres: array of TBSPCullingSphere;
   end;

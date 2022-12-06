@@ -19,7 +19,7 @@ object FormActor: TFormActor
     Top = 38
     Width = 683
     Height = 430
-    Camera = GLCamera1
+    Camera = Camera
     Buffer.BackgroundColor = clSilver
     FieldOfView = 56.516059875488280000
     PenAsTouch = False
@@ -119,21 +119,21 @@ object FormActor: TFormActor
       ShowHint = True
       OnClick = SBFrameToFrameClick
     end
-    object Label1: TLabel
+    object lblAnimation: TLabel
       Left = 8
       Top = 14
       Width = 52
       Height = 13
       Caption = 'Animation :'
     end
-    object LabelFPS: TLabel
-      Left = 490
+    object lblDiskSlices: TLabel
+      Left = 466
       Top = 12
-      Width = 20
+      Width = 52
       Height = 13
-      Caption = 'FPS'
+      Caption = 'Disk Slices'
     end
-    object CBAnimations: TComboBox
+    object cbxAnimations: TComboBox
       Left = 64
       Top = 10
       Width = 109
@@ -143,7 +143,7 @@ object FormActor: TFormActor
       ParentShowHint = False
       ShowHint = True
       TabOrder = 0
-      OnChange = CBAnimationsChange
+      OnChange = cbxAnimationsChange
     end
     object BBLoadWeapon: TBitBtn
       Left = 351
@@ -154,7 +154,7 @@ object FormActor: TFormActor
       TabOrder = 1
       OnClick = BBLoadWeaponClick
     end
-    object CBSmooth: TCheckBox
+    object chbSmooth: TCheckBox
       Left = 280
       Top = 11
       Width = 65
@@ -163,35 +163,51 @@ object FormActor: TFormActor
       Checked = True
       State = cbChecked
       TabOrder = 2
-      OnClick = CBSmoothClick
+      OnClick = chbSmoothClick
+    end
+    object cbxDiskSlices: TComboBox
+      Left = 540
+      Top = 11
+      Width = 93
+      Height = 21
+      TabOrder = 3
+      OnChange = cbxDiskSlicesChange
+      Items.Strings = (
+        '3'
+        '4'
+        '5'
+        '6'
+        '12'
+        '64')
     end
   end
   object GLScene1: TGLScene
     Left = 24
     Top = 48
-    object DummyCube1: TGLDummyCube
+    object DummyCube: TGLDummyCube
       CubeSize = 1.000000000000000000
-      object GLLightSource1: TGLLightSource
+      object LightSource: TGLLightSource
         Ambient.Color = {0000803F0000803F0000803F0000803F}
         ConstAttenuation = 1.000000000000000000
         Position.Coordinates = {0000204100000000000020410000803F}
         LightStyle = lsOmni
         SpotCutOff = 180.000000000000000000
       end
-      object GLCamera1: TGLCamera
+      object Camera: TGLCamera
         DepthOfView = 1000.000000000000000000
         FocalLength = 400.000000000000000000
-        TargetObject = DummyCube1
+        TargetObject = DummyCube
         Position.Coordinates = {00009041000080410000C0400000803F}
         Direction.Coordinates = {2EF964BF2EF9E43E0000000000000000}
         Up.Coordinates = {00000000000000000000803F00000000}
       end
-      object Disk1: TGLDisk
+      object DiskRing: TGLDisk
         Material.Texture.MinFilter = miLinear
         Position.Coordinates = {0000000000000000000080BF0000803F}
+        InnerRadius = 2.000000000000000000
         Loops = 1
-        OuterRadius = 3.000000000000000000
-        Slices = 100
+        OuterRadius = 5.000000000000000000
+        Slices = 3
         SweepAngle = 360.000000000000000000
       end
     end

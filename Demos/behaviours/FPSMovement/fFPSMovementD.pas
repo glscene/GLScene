@@ -122,7 +122,7 @@ begin
   if Key = VK_F3 then
     GLSceneViewer1.Camera := ThirdPersonCamera;
   // solid / wireframe
-  if iskeydown(VK_F5) then
+  if IsKeyDown(VK_F5) then
   begin
     WireFrame := not WireFrame;
     if WireFrame then

@@ -440,7 +440,7 @@ var
   Patch, PrevPatch: TGLROAMPatch;
   PatchList, RowList, prevRow, buf: TList;
   PostRenderPatchList, postRenderHeightDataList: TList;
-  rcci: TRenderContextClippingInfo;
+  rcci: TGLRenderContextClippingInfo;
   CurrentMaterialName: String;
   MaxTilePosX, MaxTilePosY, MinTilePosX, MinTilePosY: Single;
   t_l, t_t, t_r, t_b: Single;

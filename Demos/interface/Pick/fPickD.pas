@@ -18,7 +18,8 @@ uses
   GLS.Color,
 
   GLS.Coordinates,
-  GLS.BaseClasses, GLS.SimpleNavigation;
+  GLS.BaseClasses,
+  GLS.SimpleNavigation;
 
 type
   TForm1 = class(TForm)

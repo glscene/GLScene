@@ -19,82 +19,92 @@ uses
   GLS.VectorGeometry,
   GLS.VectorTypes;
 
-(* Converts a triangle strips into a triangle list.
+(* 
+  Converts a triangle strips into a triangle list.
   Vertices are added to list, based on the content of strip. Both non-indexed
-  and indexed variants are available, the output is *always* non indexed. *)
+  and indexed variants are available, the output is *always* non indexed. 
+*)
 procedure ConvertStripToList(const strip: TGLAffineVectorList;
   list: TGLAffineVectorList); overload;
 procedure ConvertStripToList(const strip: TGLIntegerList;
   list: TGLIntegerList); overload;
 procedure ConvertStripToList(const strip: TGLAffineVectorList;
   const indices: TGLIntegerList; list: TGLAffineVectorList); overload;
-
 function ConvertStripToList(const AindicesList: PLongWordArray; Count: LongWord;
   RestartIndex: LongWord): TGLLongWordList; overload;
-
 function ConvertFansToList(const AindicesList: PLongWordArray; Count: LongWord;
   RestartIndex: LongWord): TGLLongWordList;
-
 // Expands an indexed structure into a non-indexed structure.
 procedure ConvertIndexedListToList(const data: TGLAffineVectorList;
   const indices: TGLIntegerList; list: TGLAffineVectorList);
-
-(* Builds a vector-count optimized indices list.
+(* 
+  Builds a vector-count optimized indices list.
   The returned list (to be freed by caller) contains an "optimized" indices
   list in which duplicates coordinates in the original vertices list are used
   only once (the first available duplicate in the list is used).
   The vertices list is left untouched, to remap/cleanup, you may use the
-  RemapAndCleanupReferences function. *)
+  RemapAndCleanupReferences function. 
+*)
 function BuildVectorCountOptimizedIndices(const vertices: TGLAffineVectorList;
   const normals: TGLAffineVectorList = nil;
   const texCoords: TGLAffineVectorList = nil): TGLIntegerList;
-
-(* Alters a reference array and removes unused reference values.
+(* 
+  Alters a reference array and removes unused reference values.
   This functions scans the reference list and removes all values that aren't
-  referred in the indices list, the indices list is *not* remapped. *)
+  referred in the indices list, the indices list is *not* remapped. 
+*)
 procedure RemapReferences(reference: TGLAffineVectorList;
   const indices: TGLIntegerList); overload;
 procedure RemapReferences(reference: TGLIntegerList;
   const indices: TGLIntegerList); overload;
-(* Alters a reference/indice pair and removes unused reference values.
+(* 
+  Alters a reference/indice pair and removes unused reference values.
   This functions scans the reference list and removes all values that aren't
   referred in the indices list, and the indices list is remapped so as to remain
-  coherent. *)
+  coherent. 
+*)
 procedure RemapAndCleanupReferences(reference: TGLAffineVectorList;
   indices: TGLIntegerList);
-(* Creates an indices map from a remap list.
+(* 
+  Creates an indices map from a remap list.
   The remap list is what BuildVectorCountOptimizedIndices, a list of indices
   to distinct/unique items, the indices map contains the indices of these items
   after a remap and cleanup of the set referred by remapIndices... Clear?
   In short it takes the output of BuildVectorCountOptimizedIndices and can change
   it to something suitable for RemapTrianglesIndices.
-  Any simpler documentation of this function welcome ;) *)
+  Any simpler documentation of this function welcome ;) 
+*)
 function RemapIndicesToIndicesMap(remapIndices: TGLIntegerList): TGLIntegerList;
-
-(* Remaps a list of triangles vertex indices and remove degenerate triangles.
-  The indicesMap provides newVertexIndex:=indicesMap[oldVertexIndex] *)
+(* 
+  Remaps a list of triangles vertex indices and remove degenerate triangles.
+  The indicesMap provides newVertexIndex:=indicesMap[oldVertexIndex] 
+*)
 procedure RemapTrianglesIndices(indices, indicesMap: TGLIntegerList);
-(* Remaps a list of indices.
-  The indicesMap provides newVertexIndex:=indicesMap[oldVertexIndex] *)
+(* 
+  Remaps a list of indices.
+  The indicesMap provides newVertexIndex:=indicesMap[oldVertexIndex] 
+*)
 procedure remapIndices(indices, indicesMap: TGLIntegerList);
-
-(* Attempts to unify triangle winding.
+(* 
+  Attempts to unify triangle winding.
   Depending on topology, this may or may not be successful (some topologies
   can't be unified, f.i. those that have duplicate triangles, those that
   have edges shared by more than two triangles, those that have unconnected
-  submeshes etc.) *)
+  submeshes etc.) 
+*)
 procedure UnifyTrianglesWinding(indices: TGLIntegerList);
 // Inverts the triangles winding (vertex order).
 procedure InvertTrianglesWinding(indices: TGLIntegerList);
-
-(* Builds normals for a triangles list.
+(* 
+  Builds normals for a triangles list.
   Builds one normal per reference vertex (may be NullVector is reference isn't
   used), which is the averaged for normals of all adjacent triangles.
-  Returned list must be freed by caller. *)
+  Returned list must be freed by caller. 
+*)
 function BuildNormals(reference: TGLAffineVectorList; indices: TGLIntegerList)
   : TGLAffineVectorList;
-
-(* Builds a list of non-oriented (non duplicated) edges list.
+(* 
+  Builds a list of non-oriented (non duplicated) edges list.
   Each edge is represented by the two integers of its vertices,
   sorted in ascending order. If not nil then
   - triangleEdges is filled with the 3 indices of the 3 edges
@@ -103,13 +113,13 @@ function BuildNormals(reference: TGLAffineVectorList; indices: TGLIntegerList)
   - edgesTriangles is filled with the indices of the first index
   of the triangle in triangleIndices that have this edge.
   A maximum of two triangles can be referred by this list,
-  and its final size will be that of the Result (ie. non oriented edges list) *)
-
+  and its final size will be that of the Result (ie. non oriented edges list) 
+*)
 function BuildNonOrientedEdgesList(triangleIndices: TGLIntegerList;
   triangleEdges: TGLIntegerList = nil; edgesTriangles: TGLIntegerList = nil)
   : TGLIntegerList;
-
-(* Welds all vertices separated by a distance inferior to weldRadius.
+(* 
+  Welds all vertices separated by a distance inferior to weldRadius.
   Any two vertices whose distance is inferior to weldRadius will be merged
   (ie. one of them will be removed, and the other replaced by the barycenter).
   The indicesMap is constructed to allow remapping of indices lists with the
@@ -119,21 +129,24 @@ function BuildNonOrientedEdgesList(triangleIndices: TGLIntegerList;
   This procedure can be used for mesh simplification, but preferably at design-time
   for it is not optimized for speed. This is more a "fixing" utility for meshes
   exported from high-polycount CAD tools (to remove duplicate vertices,
-  quantification errors, etc.) *)
+  quantification errors, etc.) 
+*)
 procedure WeldVertices(vertices: TGLAffineVectorList; indicesMap: TGLIntegerList;
   weldRadius: Single);
-
-(* Attempts to create as few as possible triangle strips to cover the mesh.
+(* 
+  Attempts to create as few as possible triangle strips to cover the mesh.
   The indices parameters define a set of triangles as a set of indices to
   vertices in a vertex pool, free of duplicate vertices (or resulting
   stripification will be of lower quality).
   The function returns a list of TGLIntegerList, each of these lists hosting
   a triangle strip, returned objects must be freed by caller.
   If agglomerateLoneTriangles is True, the first of the lists actually contains
-  the agglomerated list of the triangles that couldn't be stripified. *)
+  the agglomerated list of the triangles that couldn't be stripified. 
+*)
 function StripifyMesh(indices: TGLIntegerList; maxVertexIndex: Integer;
   agglomerateLoneTriangles: Boolean = False): TGLPersistentObjectList;
-(* Increases indices coherency wrt vertex caches.
+(* 
+  Increases indices coherency wrt vertex caches.
   The indices parameters is understood as vertex indices of a triangles set,
   the triangles are reordered to maximize coherency (vertex reuse) over the
   cacheSize latest indices. This allows higher rendering performance from
@@ -141,24 +154,25 @@ function StripifyMesh(indices: TGLIntegerList; maxVertexIndex: Integer;
   allowing reuse of T&amp;L performance (similar to stripification without
   the normals issues of strips).
   This procedure performs a coherency optimization via a greedy hill-climber
-  algorithm (ie. not optimal but fast). *)
+  algorithm (ie. not optimal but fast). 
+*)
 procedure IncreaseCoherency(indices: TGLIntegerList; cacheSize: Integer);
 
 type
   TSubdivideEdgeEvent = procedure(const idxA, idxB, newIdx: Integer); register;
-
-  (* Subdivides mesh triangles.
-    Splits along edges, each triangle becomes four. The smoothFactor can be
-    used to control subdivision smoothing, zero means no smoothing (tesselation
-    only), while 1 means "sphere" subdivision (a low res sphere will be subdivided
-    in a higher-res sphere), values outside of the [0..1] range are for, er,
-    artistic purposes.
-    The procedure is not intended for real-time use. *)
+(* 
+  Subdivides mesh triangles.
+  Splits along edges, each triangle becomes four. The smoothFactor can be
+  used to control subdivision smoothing, zero means no smoothing (tesselation
+  only), while 1 means "sphere" subdivision (a low res sphere will be subdivided
+  in a higher-res sphere), values outside of the [0..1] range are for, er,
+  artistic purposes.
+  The procedure is not intended for real-time use. 
+*)
 procedure SubdivideTriangles(smoothFactor: Single; vertices: TGLAffineVectorList;
   triangleIndices: TGLIntegerList; normals: TGLAffineVectorList = nil;
   onSubdivideEdge: TSubdivideEdgeEvent = nil);
-
-(* Create list of indices of triangles with adjacency from triangle list *)
+// Create list of indices of triangles with adjacency from triangle list 
 function MakeTriangleAdjacencyList(const AindicesList: PLongWordArray;
   Count: LongWord; const AVerticesList: PAffineVectorArray): TGLLongWordList;
 
