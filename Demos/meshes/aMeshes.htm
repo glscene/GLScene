@@ -1,2627 +1,347 @@
-<html xmlns:v="urn:schemas-microsoft-com:vml"
-xmlns:o="urn:schemas-microsoft-com:office:office"
-xmlns:w="urn:schemas-microsoft-com:office:word"
-xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
-xmlns="http://www.w3.org/TR/REC-html40">
+<html>
 
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
-<meta name=ProgId content=Word.Document>
-<meta name=Generator content="Microsoft Word 15">
-<meta name=Originator content="Microsoft Word 15">
-<link rel=File-List href="aMeshes.files/filelist.xml">
-<link rel=Edit-Time-Data href="aMeshes.files/editdata.mso">
-<!--[if !mso]>
-<style>
-v\:* {behavior:url(#default#VML);}
-o\:* {behavior:url(#default#VML);}
-w\:* {behavior:url(#default#VML);}
-.shape {behavior:url(#default#VML);}
-</style>
-<![endif]-->
+<meta name=Generator content="Microsoft Word 15 (filtered)">
 <title>Meshes demos</title>
-<link rel=themeData href="aMeshes.files/themedata.thmx">
-<link rel=colorSchemeMapping href="aMeshes.files/colorschememapping.xml">
-<!--[if gte mso 9]><xml>
- <w:WordDocument>
-  <w:View>Print</w:View>
-  <w:TrackMoves>false</w:TrackMoves>
-  <w:TrackFormatting/>
-  <w:ValidateAgainstSchemas/>
-  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
-  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
-  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
-  <w:DoNotPromoteQF/>
-  <w:LidThemeOther>RU</w:LidThemeOther>
-  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
-  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
-  <w:Compatibility>
-   <w:BreakWrappedTables/>
-   <w:SplitPgBreakAndParaMark/>
-  </w:Compatibility>
-  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
-  <m:mathPr>
-   <m:mathFont m:val="Cambria Math"/>
-   <m:brkBin m:val="before"/>
-   <m:brkBinSub m:val="&#45;-"/>
-   <m:smallFrac m:val="off"/>
-   <m:dispDef/>
-   <m:lMargin m:val="0"/>
-   <m:rMargin m:val="0"/>
-   <m:defJc m:val="centerGroup"/>
-   <m:wrapIndent m:val="1440"/>
-   <m:intLim m:val="subSup"/>
-   <m:naryLim m:val="undOvr"/>
-  </m:mathPr></w:WordDocument>
-</xml><![endif]--><!--[if gte mso 9]><xml>
- <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
-  DefSemiHidden="false" DefQFormat="false" DefPriority="99"
-  LatentStyleCount="371">
-  <w:LsdException Locked="false" Priority="0" QFormat="true" Name="Normal"/>
-  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 1"/>
-  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="heading 2"/>
-  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="heading 3"/>
-  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="heading 4"/>
-  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="heading 5"/>
-  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="heading 6"/>
-  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="heading 7"/>
-  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="heading 8"/>
-  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="heading 9"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 5"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 6"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 7"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 8"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 9"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 1"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 2"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 3"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 4"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 5"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 6"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 7"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 8"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 9"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Normal Indent"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="footnote text"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="annotation text"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="header"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="footer"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index heading"/>
-  <w:LsdException Locked="false" Priority="35" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="caption"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="table of figures"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="envelope address"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="envelope return"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="footnote reference"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="annotation reference"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="line number"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="page number"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="endnote reference"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="endnote text"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="table of authorities"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="macro"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="toa heading"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Bullet"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Number"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List 5"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Bullet 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Bullet 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Bullet 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Bullet 5"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Number 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Number 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Number 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Number 5"/>
-  <w:LsdException Locked="false" Priority="10" QFormat="true" Name="Title"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Closing"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Signature"/>
-  <w:LsdException Locked="false" Priority="1" SemiHidden="true"
-   UnhideWhenUsed="true" Name="Default Paragraph Font"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Body Text"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Body Text Indent"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Continue"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Continue 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Continue 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Continue 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Continue 5"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Message Header"/>
-  <w:LsdException Locked="false" Priority="11" QFormat="true" Name="Subtitle"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Salutation"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Date"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Body Text First Indent"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Body Text First Indent 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Note Heading"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Body Text 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Body Text 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Body Text Indent 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Body Text Indent 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Block Text"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Hyperlink"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="FollowedHyperlink"/>
-  <w:LsdException Locked="false" Priority="22" QFormat="true" Name="Strong"/>
-  <w:LsdException Locked="false" Priority="20" QFormat="true" Name="Emphasis"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Document Map"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Plain Text"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="E-mail Signature"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Top of Form"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Bottom of Form"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Normal (Web)"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Acronym"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Address"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Cite"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Code"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Definition"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Keyboard"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Preformatted"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Sample"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Typewriter"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Variable"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Normal Table"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="annotation subject"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="No List"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Outline List 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Outline List 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Outline List 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Simple 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Simple 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Simple 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Classic 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Classic 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Classic 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Classic 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Colorful 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Colorful 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Colorful 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Columns 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Columns 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Columns 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Columns 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Columns 5"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Grid 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Grid 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Grid 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Grid 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Grid 5"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Grid 6"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Grid 7"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Grid 8"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table List 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table List 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table List 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table List 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table List 5"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table List 6"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table List 7"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table List 8"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table 3D effects 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table 3D effects 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table 3D effects 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Contemporary"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Elegant"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Professional"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Subtle 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Subtle 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Web 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Web 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Web 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Balloon Text"/>
-  <w:LsdException Locked="false" Priority="39" Name="Table Grid"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Theme"/>
-  <w:LsdException Locked="false" SemiHidden="true" Name="Placeholder Text"/>
-  <w:LsdException Locked="false" Priority="1" QFormat="true" Name="No Spacing"/>
-  <w:LsdException Locked="false" Priority="60" Name="Light Shading"/>
-  <w:LsdException Locked="false" Priority="61" Name="Light List"/>
-  <w:LsdException Locked="false" Priority="62" Name="Light Grid"/>
-  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1"/>
-  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2"/>
-  <w:LsdException Locked="false" Priority="65" Name="Medium List 1"/>
-  <w:LsdException Locked="false" Priority="66" Name="Medium List 2"/>
-  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1"/>
-  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2"/>
-  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3"/>
-  <w:LsdException Locked="false" Priority="70" Name="Dark List"/>
-  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading"/>
-  <w:LsdException Locked="false" Priority="72" Name="Colorful List"/>
-  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid"/>
-  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 1"/>
-  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 1"/>
-  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 1"/>
-  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 1"/>
-  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 1"/>
-  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" Name="Revision"/>
-  <w:LsdException Locked="false" Priority="34" QFormat="true"
-   Name="List Paragraph"/>
-  <w:LsdException Locked="false" Priority="29" QFormat="true" Name="Quote"/>
-  <w:LsdException Locked="false" Priority="30" QFormat="true"
-   Name="Intense Quote"/>
-  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 1"/>
-  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 1"/>
-  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 1"/>
-  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 1"/>
-  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 1"/>
-  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 1"/>
-  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 1"/>
-  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 1"/>
-  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 2"/>
-  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 2"/>
-  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 2"/>
-  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 2"/>
-  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 2"/>
-  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 2"/>
-  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 2"/>
-  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 2"/>
-  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 2"/>
-  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 2"/>
-  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 2"/>
-  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 2"/>
-  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 2"/>
-  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 2"/>
-  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 3"/>
-  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 3"/>
-  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 3"/>
-  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 3"/>
-  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 3"/>
-  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 3"/>
-  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 3"/>
-  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 3"/>
-  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 3"/>
-  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 3"/>
-  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 3"/>
-  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 3"/>
-  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 3"/>
-  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 3"/>
-  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 4"/>
-  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 4"/>
-  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 4"/>
-  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 4"/>
-  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 4"/>
-  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 4"/>
-  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 4"/>
-  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 4"/>
-  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 4"/>
-  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 4"/>
-  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 4"/>
-  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 4"/>
-  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 4"/>
-  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 4"/>
-  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 5"/>
-  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 5"/>
-  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 5"/>
-  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 5"/>
-  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 5"/>
-  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 5"/>
-  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 5"/>
-  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 5"/>
-  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 5"/>
-  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 5"/>
-  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 5"/>
-  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 5"/>
-  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 5"/>
-  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 5"/>
-  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 6"/>
-  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 6"/>
-  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 6"/>
-  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 6"/>
-  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 6"/>
-  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 6"/>
-  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 6"/>
-  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 6"/>
-  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 6"/>
-  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 6"/>
-  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 6"/>
-  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 6"/>
-  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 6"/>
-  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
-  <w:LsdException Locked="false" Priority="19" QFormat="true"
-   Name="Subtle Emphasis"/>
-  <w:LsdException Locked="false" Priority="21" QFormat="true"
-   Name="Intense Emphasis"/>
-  <w:LsdException Locked="false" Priority="31" QFormat="true"
-   Name="Subtle Reference"/>
-  <w:LsdException Locked="false" Priority="32" QFormat="true"
-   Name="Intense Reference"/>
-  <w:LsdException Locked="false" Priority="33" QFormat="true" Name="Book Title"/>
-  <w:LsdException Locked="false" Priority="37" SemiHidden="true"
-   UnhideWhenUsed="true" Name="Bibliography"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
-  <w:LsdException Locked="false" Priority="41" Name="Plain Table 1"/>
-  <w:LsdException Locked="false" Priority="42" Name="Plain Table 2"/>
-  <w:LsdException Locked="false" Priority="43" Name="Plain Table 3"/>
-  <w:LsdException Locked="false" Priority="44" Name="Plain Table 4"/>
-  <w:LsdException Locked="false" Priority="45" Name="Plain Table 5"/>
-  <w:LsdException Locked="false" Priority="40" Name="Grid Table Light"/>
-  <w:LsdException Locked="false" Priority="46" Name="Grid Table 1 Light"/>
-  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2"/>
-  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3"/>
-  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4"/>
-  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark"/>
-  <w:LsdException Locked="false" Priority="51" Name="Grid Table 6 Colorful"/>
-  <w:LsdException Locked="false" Priority="52" Name="Grid Table 7 Colorful"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="Grid Table 1 Light Accent 1"/>
-  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 1"/>
-  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 1"/>
-  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 1"/>
-  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 1"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="Grid Table 6 Colorful Accent 1"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="Grid Table 7 Colorful Accent 1"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="Grid Table 1 Light Accent 2"/>
-  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 2"/>
-  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 2"/>
-  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 2"/>
-  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 2"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="Grid Table 6 Colorful Accent 2"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="Grid Table 7 Colorful Accent 2"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="Grid Table 1 Light Accent 3"/>
-  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 3"/>
-  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 3"/>
-  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 3"/>
-  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 3"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="Grid Table 6 Colorful Accent 3"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="Grid Table 7 Colorful Accent 3"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="Grid Table 1 Light Accent 4"/>
-  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 4"/>
-  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 4"/>
-  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 4"/>
-  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 4"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="Grid Table 6 Colorful Accent 4"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="Grid Table 7 Colorful Accent 4"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="Grid Table 1 Light Accent 5"/>
-  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 5"/>
-  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 5"/>
-  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 5"/>
-  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 5"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="Grid Table 6 Colorful Accent 5"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="Grid Table 7 Colorful Accent 5"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="Grid Table 1 Light Accent 6"/>
-  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 6"/>
-  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 6"/>
-  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 6"/>
-  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 6"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="Grid Table 6 Colorful Accent 6"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="Grid Table 7 Colorful Accent 6"/>
-  <w:LsdException Locked="false" Priority="46" Name="List Table 1 Light"/>
-  <w:LsdException Locked="false" Priority="47" Name="List Table 2"/>
-  <w:LsdException Locked="false" Priority="48" Name="List Table 3"/>
-  <w:LsdException Locked="false" Priority="49" Name="List Table 4"/>
-  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark"/>
-  <w:LsdException Locked="false" Priority="51" Name="List Table 6 Colorful"/>
-  <w:LsdException Locked="false" Priority="52" Name="List Table 7 Colorful"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="List Table 1 Light Accent 1"/>
-  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 1"/>
-  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 1"/>
-  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 1"/>
-  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 1"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="List Table 6 Colorful Accent 1"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="List Table 7 Colorful Accent 1"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="List Table 1 Light Accent 2"/>
-  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 2"/>
-  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 2"/>
-  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 2"/>
-  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 2"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="List Table 6 Colorful Accent 2"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="List Table 7 Colorful Accent 2"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="List Table 1 Light Accent 3"/>
-  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 3"/>
-  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 3"/>
-  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 3"/>
-  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 3"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="List Table 6 Colorful Accent 3"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="List Table 7 Colorful Accent 3"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="List Table 1 Light Accent 4"/>
-  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 4"/>
-  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 4"/>
-  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 4"/>
-  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 4"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="List Table 6 Colorful Accent 4"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="List Table 7 Colorful Accent 4"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="List Table 1 Light Accent 5"/>
-  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 5"/>
-  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 5"/>
-  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 5"/>
-  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 5"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="List Table 6 Colorful Accent 5"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="List Table 7 Colorful Accent 5"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="List Table 1 Light Accent 6"/>
-  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 6"/>
-  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 6"/>
-  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 6"/>
-  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 6"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="List Table 6 Colorful Accent 6"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="List Table 7 Colorful Accent 6"/>
- </w:LatentStyles>
-</xml><![endif]-->
 <style>
 <!--
  /* Font Definitions */
  @font-face
 	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;
-	mso-font-charset:204;
-	mso-generic-font-family:roman;
-	mso-font-pitch:variable;
-	mso-font-signature:-536869121 1107305727 33554432 0 415 0;}
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
 @font-face
 	{font-family:Consolas;
-	panose-1:2 11 6 9 2 2 4 3 2 4;
-	mso-font-charset:204;
-	mso-generic-font-family:modern;
-	mso-font-pitch:fixed;
-	mso-font-signature:-536869121 64767 1 0 415 0;}
+	panose-1:2 11 6 9 2 2 4 3 2 4;}
  /* Style Definitions */
  p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{mso-style-unhide:no;
-	mso-style-qformat:yes;
-	mso-style-parent:"";
-	margin:0cm;
+	{margin:0cm;
 	margin-bottom:.0001pt;
-	mso-pagination:widow-orphan;
 	font-size:12.0pt;
-	font-family:"Times New Roman",serif;
-	mso-fareast-font-family:"Times New Roman";
-	mso-fareast-theme-font:minor-fareast;}
+	font-family:"Times New Roman",serif;}
 a:link, span.MsoHyperlink
-	{mso-style-noshow:yes;
-	mso-style-priority:99;
-	color:blue;
-	text-decoration:underline;
-	text-underline:single;}
+	{color:blue;
+	text-decoration:underline;}
 a:visited, span.MsoHyperlinkFollowed
-	{mso-style-noshow:yes;
-	mso-style-priority:99;
-	color:purple;
-	text-decoration:underline;
-	text-underline:single;}
+	{color:purple;
+	text-decoration:underline;}
 p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
-	{mso-style-noshow:yes;
-	mso-style-priority:99;
-	mso-style-link:"\0422\0435\043A\0441\0442 \0417\043D\0430\043A";
-	mso-margin-top-alt:auto;
+	{mso-style-link:"\0422\0435\043A\0441\0442 \0417\043D\0430\043A";
 	margin-right:0cm;
-	mso-margin-bottom-alt:auto;
 	margin-left:0cm;
-	mso-pagination:widow-orphan;
 	font-size:12.0pt;
-	font-family:"Times New Roman",serif;
-	mso-fareast-font-family:"Times New Roman";
-	mso-fareast-theme-font:minor-fareast;}
+	font-family:"Times New Roman",serif;}
 p.msonormal0, li.msonormal0, div.msonormal0
 	{mso-style-name:msonormal;
-	mso-style-unhide:no;
-	mso-margin-top-alt:auto;
 	margin-right:0cm;
-	mso-margin-bottom-alt:auto;
 	margin-left:0cm;
-	mso-pagination:widow-orphan;
 	font-size:12.0pt;
-	font-family:"Times New Roman",serif;
-	mso-fareast-font-family:"Times New Roman";
-	mso-fareast-theme-font:minor-fareast;}
+	font-family:"Times New Roman",serif;}
 span.a
 	{mso-style-name:"\0422\0435\043A\0441\0442 \0417\043D\0430\043A";
-	mso-style-noshow:yes;
-	mso-style-priority:99;
-	mso-style-unhide:no;
-	mso-style-locked:yes;
 	mso-style-link:\0422\0435\043A\0441\0442;
-	font-family:Consolas;
-	mso-ascii-font-family:Consolas;
-	mso-hansi-font-family:Consolas;}
+	font-family:Consolas;}
 p.msochpdefault, li.msochpdefault, div.msochpdefault
 	{mso-style-name:msochpdefault;
-	mso-style-unhide:no;
-	mso-margin-top-alt:auto;
 	margin-right:0cm;
-	mso-margin-bottom-alt:auto;
 	margin-left:0cm;
-	mso-pagination:widow-orphan;
 	font-size:10.0pt;
-	font-family:"Times New Roman",serif;
-	mso-fareast-font-family:"Times New Roman";
-	mso-fareast-theme-font:minor-fareast;}
+	font-family:"Times New Roman",serif;}
 .MsoChpDefault
-	{mso-style-type:export-only;
-	mso-default-props:yes;
-	font-size:10.0pt;
-	mso-ansi-font-size:10.0pt;
-	mso-bidi-font-size:10.0pt;}
+	{font-size:10.0pt;}
 @page WordSection1
 	{size:595.3pt 841.9pt;
-	margin:2.0cm 42.5pt 2.0cm 3.0cm;
-	mso-header-margin:35.4pt;
-	mso-footer-margin:35.4pt;
-	mso-paper-source:0;}
+	margin:2.0cm 42.5pt 2.0cm 3.0cm;}
 div.WordSection1
 	{page:WordSection1;}
  /* List Definitions */
- @list l0
-	{mso-list-id:164901286;
-	mso-list-template-ids:-306444160;}
-@list l0:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l0:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l0:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l0:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l0:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l0:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l0:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l0:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l0:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l1
-	{mso-list-id:200677574;
-	mso-list-template-ids:758571580;}
-@list l1:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l1:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l1:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l1:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l1:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l1:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l1:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l1:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l1:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l2
-	{mso-list-id:228927576;
-	mso-list-template-ids:-502489406;}
-@list l2:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l2:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l2:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l2:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l2:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l2:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l2:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l2:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l2:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l3
-	{mso-list-id:251281917;
-	mso-list-template-ids:-1219040372;}
-@list l3:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l3:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l3:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l3:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l3:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l3:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l3:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l3:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l3:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l4
-	{mso-list-id:433980886;
-	mso-list-template-ids:237137500;}
-@list l4:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l4:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l4:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l4:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l4:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l4:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l4:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l4:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l4:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l5
-	{mso-list-id:476537612;
-	mso-list-template-ids:270069714;}
-@list l5:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l5:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l5:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l5:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l5:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l5:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l5:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l5:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l5:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l6
-	{mso-list-id:600845363;
-	mso-list-template-ids:-644331142;}
-@list l6:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l6:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l6:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l6:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l6:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l6:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l6:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l6:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l6:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l7
-	{mso-list-id:602373177;
-	mso-list-template-ids:-792038990;}
-@list l7:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l7:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l7:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l7:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l7:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l7:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l7:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l7:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l7:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l8
-	{mso-list-id:680133499;
-	mso-list-template-ids:1718257104;}
-@list l8:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l8:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l8:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l8:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l8:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l8:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l8:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l8:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l8:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l9
-	{mso-list-id:891891873;
-	mso-list-template-ids:-1828427382;}
-@list l9:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l9:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l9:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l9:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l9:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l9:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l9:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l9:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l9:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l10
-	{mso-list-id:965427646;
-	mso-list-template-ids:-989691612;}
-@list l10:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l10:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l10:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l10:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l10:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l10:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l10:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l10:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l10:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l11
-	{mso-list-id:1432240423;
-	mso-list-template-ids:1296728238;}
-@list l11:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l11:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l11:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l11:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l11:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l11:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l11:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l11:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l11:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l12
-	{mso-list-id:1669750903;
-	mso-list-template-ids:-467488044;}
-@list l12:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l12:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l12:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l12:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l12:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l12:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l12:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l12:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l12:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l13
-	{mso-list-id:1936283496;
-	mso-list-template-ids:396646646;}
-@list l13:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l13:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l13:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l13:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l13:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l13:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l13:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l13:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l13:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l14
-	{mso-list-id:1958293951;
-	mso-list-template-ids:1544183164;}
-@list l14:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l14:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l14:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l14:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l14:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l14:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l14:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l14:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l14:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l15
-	{mso-list-id:1958948297;
-	mso-list-template-ids:1619719050;}
-@list l15:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l15:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l15:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l15:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l15:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l15:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l15:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l15:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l15:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l16
-	{mso-list-id:1974482144;
-	mso-list-template-ids:-2066172880;}
-@list l16:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l16:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l16:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l16:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l16:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l16:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l16:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l16:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l16:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l17
-	{mso-list-id:2067219784;
-	mso-list-template-ids:1123439910;}
-@list l17:level1
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:36.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l17:level2
-	{mso-level-number-format:bullet;
-	mso-level-text:o;
-	mso-level-tab-stop:72.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:"Courier New";
-	mso-bidi-font-family:"Times New Roman";}
-@list l17:level3
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:108.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l17:level4
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:144.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l17:level5
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:180.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l17:level6
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:216.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l17:level7
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:252.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l17:level8
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:288.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-@list l17:level9
-	{mso-level-number-format:bullet;
-	mso-level-text:\F0B7;
-	mso-level-tab-stop:324.0pt;
-	mso-level-number-position:left;
-	text-indent:-18.0pt;
-	mso-ansi-font-size:10.0pt;
-	font-family:Symbol;}
-ol
+ ol
 	{margin-bottom:0cm;}
 ul
 	{margin-bottom:0cm;}
 -->
 </style>
-<!--[if gte mso 10]>
-<style>
- /* Style Definitions */
- table.MsoNormalTable
-	{mso-style-name:"\041E\0431\044B\0447\043D\0430\044F \0442\0430\0431\043B\0438\0446\0430";
-	mso-tstyle-rowband-size:0;
-	mso-tstyle-colband-size:0;
-	mso-style-noshow:yes;
-	mso-style-priority:99;
-	mso-style-parent:"";
-	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
-	mso-para-margin:0cm;
-	mso-para-margin-bottom:.0001pt;
-	mso-pagination:widow-orphan;
-	font-size:10.0pt;
-	font-family:"Times New Roman",serif;}
-</style>
-<![endif]--><!--[if gte mso 9]><xml>
- <o:shapedefaults v:ext="edit" spidmax="1026"/>
-</xml><![endif]--><!--[if gte mso 9]><xml>
- <o:shapelayout v:ext="edit">
-  <o:idmap v:ext="edit" data="1"/>
- </o:shapelayout></xml><![endif]-->
+
 </head>
 
-<body bgcolor=white lang=RU link=blue vlink=purple style='tab-interval:35.4pt'>
+<body bgcolor=white lang=RU link=blue vlink=purple>
 
 <div class=WordSection1>
 
 <p class=MsoPlainText><b><span lang=FR style='font-size:13.5pt;font-family:
-"Courier New";mso-ansi-language:FR'>Meshes&nbsp;:</span></b></p>
+"Courier New"'>Meshes&nbsp;:</span></b></p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l4 level1 lfo1;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="actor/ActorD.dpr"><b>Actor</b></a><b>&nbsp;:</b></span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="actor/ActorD.dpr"><b>Actor</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l4 level2 lfo1;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>using the TGLActor object to load Quake II model (.md2)</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l4 level2 lfo1;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>displaying an actor's frame names</span><span style='mso-fareast-font-family:
-      "Times New Roman"'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l4 level2 lfo1;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>animating an actor (morph animation)</span><span lang=EN-US
-      style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>using the TGLActor object to load Quake II
+      model (.md2)</span></li>
+  <li class=MsoNormal><span lang=FR>displaying an actor's frame names</span></li>
+  <li class=MsoNormal><span lang=FR>animating an actor (morph animation)</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span style='mso-no-proof:yes'><img border=0 width=450
-height=314 id="_x0000_i1042" src=Actor.jpg></span></p>
+<p class=MsoNormal><img border=0 width=450 height=314 src=Actor.jpg></p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l5 level1 lfo2;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="actorproxy/ActorProxyD.dpr"><b>Actor Proxy</b></a> <b>&nbsp;:</b></span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="actorproxy/ActorProxyD.dpr"><b>Actor
+     Proxy</b></a> <b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l5 level2 lfo2;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>using the TGLActorProxy object to load Quake II model (.md2)</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l5 level2 lfo2;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>animating actors</span><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>using the TGLActorProxy object to load
+      Quake II model (.md2)</span></li>
+  <li class=MsoNormal><span lang=FR>animating actors</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span style='mso-no-proof:yes'><img border=0 width=455
-height=361 id="_x0000_i1041" src=ActorProxy.jpg></span></p>
+<p class=MsoNormal><img border=0 width=455 height=361 src=ActorProxy.jpg></p>
 
-<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&nbsp;</span></p>
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l0 level1 lfo3;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="actortwocam/ActorTwocamD.dpr"><b>ActorTwocam</b></a><b>&nbsp;:</b></span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="actortwocam/ActorTwocamD.dpr"><b>ActorTwocam</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l0 level2 lfo3;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>moving a TGLActor (Quake II model with wepon) in a small scenery</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l0 level2 lfo3;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>doom-like (keyboard only) movement, with walk/run, turn/strafe</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l0 level2 lfo3;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>switching between first-person and third-person views</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>moving a TGLActor (Quake II model with
+      wepon) in a small scenery</span></li>
+  <li class=MsoNormal><span lang=FR>doom-like (keyboard only) movement, with
+      walk/run, turn/strafe</span></li>
+  <li class=MsoNormal><span lang=FR>switching between first-person and
+      third-person views</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&nbsp;<o:p></o:p></span></p>
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span><span
-style='mso-no-proof:yes'><img border=0 width=450 height=293 id="_x0000_i1040"
-src=ActorTwocam.jpg></span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span><img border=0 width=450
+height=293 src=ActorTwocam.jpg></p>
 
-<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&nbsp;</span></p>
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l9 level1 lfo4;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="centering/CenteringD.dpr"><b>Centering</b></a><b>&nbsp;:</b></span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="centering/CenteringD.dpr"><b>Centering</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l9 level2 lfo4;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>using AutoCentering for a TFreeForm's mesh</span><span lang=EN-US
-      style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l9 level2 lfo4;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>effects of various AutoCentering options</span><span
-      style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>using AutoCentering for a TFreeForm's mesh</span></li>
+  <li class=MsoNormal><span lang=FR>effects of various AutoCentering options</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span><span
-style='mso-no-proof:yes'><img border=0 width=445 height=294 id="_x0000_i1039"
-src=Centering.jpg></span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span><img border=0 width=445
+height=294 src=Centering.jpg></p>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span>&nbsp;</p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span>&nbsp;</p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l10 level1 lfo5;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="CSG/CsgD.dpr"><b>Csg</b></a><b>&nbsp;:</b></span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="CSG/CsgD.dpr"><b>Csg</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l10 level2 lfo5;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>Constructive Solid Geometry.</span><span style='mso-fareast-font-family:
-      "Times New Roman"'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l10 level2 lfo5;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>The CSG system uses BSP to optimize what triangles it considers.</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l10 level2 lfo5;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>Features: CSG_Union, CSG_Subtraction, CSG_Intersection.</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>Constructive Solid Geometry.</span></li>
+  <li class=MsoNormal><span lang=FR>The CSG system uses BSP to optimize what
+      triangles it considers.</span></li>
+  <li class=MsoNormal><span lang=FR>Features: CSG_Union, CSG_Subtraction,
+      CSG_Intersection.</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span><span
-lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='mso-no-proof:yes'><img border=0 width=454
-height=382 id="_x0000_i1038" src=Csg.jpg></span></p>
+<p class=MsoNormal><img border=0 width=454 height=382 src=Csg.jpg></p>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l11 level1 lfo6;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="ducky/DuckyD.dpr"><b>Ducky</b></a><b>&nbsp;:</b></span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="ducky/DuckyD.dpr"><b>Ducky</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l11 level2 lfo6;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>Loading NURBS into a GLScene FreeForm/Actor object.</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l11 level2 lfo6;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>Use the resolution slider to increase or decrease the models triangle
-      count dynamically.</span><span lang=EN-US style='mso-fareast-font-family:
-      "Times New Roman";mso-ansi-language:EN-US'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>Loading NURBS into a GLScene FreeForm/Actor
+      object.</span></li>
+  <li class=MsoNormal><span lang=FR>Use the resolution slider to increase or
+      decrease the models triangle count dynamically.</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&nbsp;<o:p></o:p></span></p>
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span><span
-style='mso-no-proof:yes'><img border=0 width=458 height=300 id="_x0000_i1037"
-src=Ducky.jpg></span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span><img border=0 width=458
+height=300 src=Ducky.jpg></p>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l3 level1 lfo7;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="expolygon/ExPolygonD.dpr"><strong>expolygon</strong></a> :</span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="expolygon/ExPolygonD.dpr"><strong>expolygon</strong></a>
+     :</span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l3 level2 lfo7;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>using TMultiPolygon for rendering complex polygons</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l3 level2 lfo7;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>automatic tesselation of polygons with holes and cutoffs</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>using TMultiPolygon for rendering complex
+      polygons</span></li>
+  <li class=MsoNormal><span lang=FR>automatic tesselation of polygons with
+      holes and cutoffs</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span><span
-lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='mso-no-proof:yes'><img border=0 width=449
-height=338 id="_x0000_i1036" src=ExPolygon.jpg></span></p>
+<p class=MsoNormal><img border=0 width=449 height=338 src=ExPolygon.jpg></p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l1 level1 lfo8;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="feedback/FeedbackD.dpr"><b>Feedback</b></a><b>&nbsp;:</b></span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="feedback/FeedbackD.dpr"><b>Feedback</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l1 level2 lfo8;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>This demo shows how to use a GLFeedback object </span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l1 level2 lfo8;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>to extract mesh data from regular GLScene objects.</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l1 level2 lfo8;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>The GLFeedback object</span><span style='mso-fareast-font-family:
-      "Times New Roman"'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>This demo shows how to use a GLFeedback
+      object </span></li>
+  <li class=MsoNormal><span lang=FR>to extract mesh data from regular GLScene
+      objects.</span></li>
+  <li class=MsoNormal><span lang=FR>The GLFeedback object</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span><span
-style='mso-no-proof:yes'><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
- coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
- filled="f" stroked="f">
- <v:stroke joinstyle="miter"/>
- <v:formulas>
-  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
-  <v:f eqn="sum @0 1 0"/>
-  <v:f eqn="sum 0 0 @1"/>
-  <v:f eqn="prod @2 1 2"/>
-  <v:f eqn="prod @3 21600 pixelWidth"/>
-  <v:f eqn="prod @3 21600 pixelHeight"/>
-  <v:f eqn="sum @0 0 1"/>
-  <v:f eqn="prod @6 1 2"/>
-  <v:f eqn="prod @7 21600 pixelWidth"/>
-  <v:f eqn="sum @8 21600 0"/>
-  <v:f eqn="prod @7 21600 pixelHeight"/>
-  <v:f eqn="sum @10 21600 0"/>
- </v:formulas>
- <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
- <o:lock v:ext="edit" aspectratio="t"/>
-</v:shapetype><v:shape id="_x0420__x0438__x0441__x0443__x043d__x043e__x043a__x0020_18"
- o:spid="_x0000_i1035" type="#_x0000_t75" style='width:333.6pt;height:286.8pt;
- visibility:visible;mso-wrap-style:square'>
- <v:imagedata src="aMeshes.files/image001.jpg" o:title=""/>
-</v:shape><![endif]--><![if !vml]><img border=0 width=445 height=382
-src="aMeshes.files/image002.jpg" v:shapes="_x0420__x0438__x0441__x0443__x043d__x043e__x043a__x0020_18"><![endif]></span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span><img border=0 width=444
+height=382 src=FeedBack.jpg></p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l12 level1 lfo9;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="formula/FormulaD.dpr"><b>Formula</b></a><b>&nbsp;:</b></span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="formula/FormulaD.dpr"><b>Formula</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l12 level2 lfo9;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>using the TMesh object to plot a formula in 3D</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l12 level2 lfo9;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>triangle and triangle-strip meshes to make regular, grid-based,
-      height-fields meshes</span><span lang=EN-US style='mso-fareast-font-family:
-      "Times New Roman";mso-ansi-language:EN-US'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>using the TMesh object to plot a formula in
+      3D</span></li>
+  <li class=MsoNormal><span lang=FR>triangle and triangle-strip meshes to make
+      regular, grid-based, height-fields meshes</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>&nbsp;<o:p></o:p></span></p>
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='mso-no-proof:yes'><img border=0 width=537
-height=280 id="_x0000_i1034" src=Formula.jpg></span></p>
+<p class=MsoNormal><img border=0 width=537 height=280 src=Formula.jpg></p>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l13 level1 lfo10;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="mushroom/MushroomD.dpr"><b>Mushroom</b></a><b>&nbsp;:</b></span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="mushroom/MushroomD.dpr"><b>Mushroom</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l13 level2 lfo10;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>using the TFreeForm to load a 3DStudio (.3DS) mesh</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l13 level2 lfo10;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>using TGLProxyObject to duplicate an object</span><span lang=EN-US
-      style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l13 level2 lfo10;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>uses fog and a textured &quot;ground&quot;</span><span lang=EN-US
-      style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>using the TFreeForm to load a 3DStudio
+      (.3DS) mesh</span></li>
+  <li class=MsoNormal><span lang=FR>using TGLProxyObject to duplicate an object</span></li>
+  <li class=MsoNormal><span lang=FR>uses fog and a textured &quot;ground&quot;</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span><span
-lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='mso-no-proof:yes'><img border=0 width=415
-height=291 id="_x0000_i1033" src=Mushroom.jpg></span></p>
+<p class=MsoNormal><img border=0 width=415 height=291 src=Mushroom.jpg></p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l8 level1 lfo11;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="portal/PortalD.dpr"><b>Portal</b></a><b>&nbsp;:</b></span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="portal/PortalD.dpr"><b>Portal</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l8 level2 lfo11;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>using the TPortal object to render indoor scenes</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l8 level2 lfo11;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>basic wolfenstein-like &quot;level designer&quot; for generating the
-      maze mesh</span><span lang=EN-US style='mso-fareast-font-family:"Times New Roman";
-      mso-ansi-language:EN-US'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>using the TPortal object to render indoor
+      scenes</span></li>
+  <li class=MsoNormal><span lang=FR>basic wolfenstein-like &quot;level
+      designer&quot; for generating the maze mesh</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span><span
-style='mso-no-proof:yes'><img border=0 width=415 height=262 id="_x0000_i1032"
-src=Portal.jpg></span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span><img border=0 width=415
+height=262 src=Portal.jpg></p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l16 level1 lfo12;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="skeletal/SkeletalD.dpr"><b>Skeletal</b></a><b>&nbsp;:</b></span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="skeletal/SkeletalD.dpr"><b>Skeletal</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l16 level2 lfo12;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>using the TActor object to an Half-Life model (.smd)</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l16 level2 lfo12;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>animating an actor (skeletal animation)</span><span lang=EN-US
-      style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>using the TActor object to an Half-Life
+      model (.smd)</span></li>
+  <li class=MsoNormal><span lang=FR>animating an actor (skeletal animation)</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span><span
-style='mso-no-proof:yes'><img border=0 width=422 height=354 id="_x0000_i1031"
-src=Skeletal.jpg></span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span><img border=0 width=422
+height=354 src=Skeletal.jpg></p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l6 level1 lfo13;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="shadedterrain/ShadedTerrainD.dpr"><b>Shadedterrain</b></a><b>&nbsp;:</b></span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="shadedterrain/ShadedTerrainD.dpr"><b>Shadedterrain</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l6 level2 lfo13;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>Shaded terrain rendering demo.</span><span style='mso-fareast-font-family:
-      "Times New Roman"'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l6 level2 lfo13;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>...</span><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>Shaded terrain rendering demo.</span></li>
+  <li class=MsoNormal><span lang=FR>...</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span style='mso-no-proof:yes'><img border=0 width=430
-height=274 id="_x0000_i1030" src=ShadedTerrain.jpg></span></p>
+<p class=MsoNormal><img border=0 width=430 height=274 src=ShadedTerrain.jpg></p>
 
 <p class=MsoNormal>&nbsp;</p>
 
 <p class=MsoNormal>&nbsp;</p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l7 level1 lfo14;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="subdivide/SubdivideD.dpr"><b>Subdivide</b></a><b>&nbsp;:</b></span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="subdivide/SubdivideD.dpr"><b>Subdivide</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l7 level2 lfo14;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>Early mesh subdivision refinement demo</span><span style='mso-fareast-font-family:
-      "Times New Roman"'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l7 level2 lfo14;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>MD2 format isn't really suited for refinement</span><span lang=EN-US
-      style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>Early mesh subdivision refinement demo</span></li>
+  <li class=MsoNormal><span lang=FR>MD2 format isn't really suited for
+      refinement</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span style='mso-no-proof:yes'><img border=0 width=434
-height=309 id="_x0000_i1029" src=Subdivide.jpg></span></p>
+<p class=MsoNormal><img border=0 width=434 height=309 src=Subdivide.jpg></p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l2 level1 lfo15;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="synthterr/SynthTerrainD.dpr"><b>Synthterr</b></a><b>&nbsp;:</b></span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="synthterr/SynthTerrainD.dpr"><b>Synthterr</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l2 level2 lfo15;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>using TTerrainRender and TGLCustomHDS</span><span style='mso-fareast-font-family:
-      "Times New Roman"'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l2 level2 lfo15;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>1D textures</span><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>using TTerrainRender and TGLCustomHDS</span></li>
+  <li class=MsoNormal><span lang=FR>1D textures</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='mso-no-proof:yes'><img border=0 width=433
-height=338 id="_x0000_i1028" src=SynthTerrain.jpg></span></p>
+<p class=MsoNormal><img border=0 width=433 height=338 src=SynthTerrain.jpg></p>
 
 <p class=MsoNormal>&nbsp;</p>
 
 <p class=MsoNormal>&nbsp;</p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l17 level1 lfo16;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="terrain/TerrainD.dpr"><b>Terrain</b></a><b>&nbsp;:</b></span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="terrain/TerrainD.dpr"><b>Terrain</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l17 level2 lfo16;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>using TTerrainRender and TGLBitmapHDS to render a simple landscape</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l17 level2 lfo16;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>Full-screen mode and using THUDText/TBitmapFont for a FPS counter</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l17 level2 lfo16;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>Positional 3D sounds</span><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>using TTerrainRender and TGLBitmapHDS to
+      render a simple landscape</span></li>
+  <li class=MsoNormal><span lang=FR>Full-screen mode and using
+      THUDText/TBitmapFont for a FPS counter</span></li>
+  <li class=MsoNormal><span lang=FR>Positional 3D sounds</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span style='mso-no-proof:yes'><img border=0 width=445
-height=314 id="_x0000_i1027" src=Terrain.jpg></span></p>
+<p class=MsoNormal><img border=0 width=445 height=314 src=Terrain.jpg></p>
 
 <p class=MsoNormal>&nbsp;</p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l14 level1 lfo17;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="tiles/TilesD.dpr"><b>Tiles</b></a><b>&nbsp;:</b></span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="tiles/TilesD.dpr"><b>Tiles</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l14 level2 lfo17;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>Illustrates the use of TGLTilePlane to render an area made of tiled
-      textures placed in a grid.</span><span lang=EN-US style='mso-fareast-font-family:
-      "Times New Roman";mso-ansi-language:EN-US'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l14 level2 lfo17;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>The TGLTilePlane object</span><span style='mso-fareast-font-family:
-      "Times New Roman"'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>Illustrates the use of TGLTilePlane to
+      render an area made of tiled textures placed in a grid.</span></li>
+  <li class=MsoNormal><span lang=FR>The TGLTilePlane object</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span style='mso-no-proof:yes'><img border=0 width=446
-height=323 id="_x0000_i1026" src=Tiles.jpg></span></p>
+<p class=MsoNormal><img border=0 width=446 height=323 src=Tiles.jpg></p>
 
 <p class=MsoNormal>&nbsp;</p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal style='mso-list:l15 level1 lfo18;tab-stops:list 36.0pt'><span
-     lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-     FR'><a href="tree/TreeD.dpr"><b>tree</b></a><b>&nbsp;:</b></span><span
-     style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
+ <li class=MsoNormal><span lang=FR><a href="tree/TreeD.dpr"><b>tree</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal style='mso-list:l15 level2 lfo18;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>GLTree Editor.</span><span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
-  <li class=MsoNormal style='mso-list:l15 level2 lfo18;tab-stops:list 72.0pt'><span
-      lang=FR style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      FR'>Interactive parameter changes display tree variations.</span><span
-      lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:
-      EN-US'><o:p></o:p></span></li>
+  <li class=MsoNormal><span lang=FR>GLTree Editor.</span></li>
+  <li class=MsoNormal><span lang=FR>Interactive parameter changes display tree
+      variations.</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'>&nbsp;</span><span
-lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+<p class=MsoNormal><span lang=FR>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='mso-no-proof:yes'><img border=0 width=448
-height=378 id="_x0000_i1025" src=Tree.jpg></span></p>
+<p class=MsoNormal><img border=0 width=448 height=378 src=Tree.jpg></p>
 
-<p class=MsoNormal><span lang=FR style='mso-ansi-language:FR'><a
-href="../demos.htm">Back</a></span></p>
+<p class=MsoNormal><span lang=FR><a href="../demos.htm">Back</a></span></p>
 
 </div>
 
