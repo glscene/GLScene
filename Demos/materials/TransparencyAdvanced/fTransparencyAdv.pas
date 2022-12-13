@@ -95,9 +95,11 @@ var
   img: TGLBlankImage;
   NativeDir: string;
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
   GLMaterialLibrary1.TextureByName('Surround').Image.LoadFromFile('WheatFld.JPG');
-  GLSLShader1.LoadShaderPrograms('Shaders\OIT_vtx.glsl','Shaders\OIT_frag.glsl');
+    SetCurrentDir(Path  + '\shader');
+  GLSLShader1.LoadShaderPrograms('OIT_vtx.glsl','OIT_frag.glsl');
   GLSLShader1.Enabled := true;
 
   // Setup texture arrays

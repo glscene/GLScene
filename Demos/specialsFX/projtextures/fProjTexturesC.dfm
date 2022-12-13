@@ -2,26 +2,23 @@ object Form1: TForm1
   Left = 198
   Top = 138
   Caption = 'Projected Textures'
-  ClientHeight = 444
-  ClientWidth = 684
+  ClientHeight = 555
+  ClientWidth = 774
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -10
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
-  WindowState = wsMaximized
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
-  PixelsPerInch = 96
   TextHeight = 13
   object viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 684
-    Height = 444
+    Width = 774
+    Height = 555
     Margins.Left = 2
     Margins.Top = 2
     Margins.Right = 2
@@ -30,13 +27,15 @@ object Form1: TForm1
     Buffer.BackgroundColor = clSilver
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     Buffer.DepthPrecision = dp32bits
-    FieldOfView = 154.614669799804700000
+    FieldOfView = 159.572052001953100000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = viewerMouseDown
     OnMouseMove = viewerMouseMove
     OnMouseUp = viewerMouseUp
     TabOrder = 0
+    ExplicitWidth = 713
+    ExplicitHeight = 490
   end
   object scene: TGLScene
     Left = 40

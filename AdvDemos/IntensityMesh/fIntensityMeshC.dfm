@@ -10,9 +10,7 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
@@ -20,7 +18,7 @@ object Form1: TForm1
     Width = 554
     Height = 433
     Camera = GLCamera
-    Buffer.BackgroundColor = clWhite
+    Buffer.BackgroundColor = clTeal
     Buffer.ContextOptions = [roDoubleBuffer, roRenderToWindow, roStereo]
     Buffer.FaceCulling = False
     Buffer.Lighting = False

@@ -32,7 +32,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 {
   Atmosphere = (TGLAtmosphere *)(GLDummyCube1->AddNewChild(__classid(TGLAtmosphere)));
   Atmosphere->Sun  = GLLensFlare1;
-  Atmosphere->SetOptimalAtmosphere2(GLSphere1->Radius);
+  Atmosphere->SetOptimalAtmosphere2(Planet->Radius);
   GLSkyDome1->Bands->Clear();
   GLSkyDome1->Stars->AddRandomStars(5000, ConvertColorVector(clrWhite));
 }
@@ -44,7 +44,7 @@ void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::btnRotateClick(TObject *Sender)
 {
-  GLSphere1->Roll(20);
+  GLCadencer1->Enabled = !GLCadencer1->Enabled;
 }
 //---------------------------------------------------------------------------
 
@@ -70,9 +70,9 @@ void __fastcall TForm1::Button5Click(TObject *Sender)
   GLDummyCube1->Slide(0.5);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Button6Click(TObject *Sender)
+void __fastcall TForm1::btnShowAtmosphereClick(TObject *Sender)
 {
-  Atmosphere->Visible = ! Atmosphere->Visible;
+  Atmosphere->Visible = !Atmosphere->Visible;
 }
 //---------------------------------------------------------------------------
 
@@ -93,10 +93,9 @@ void __fastcall TForm1::Button9Click(TObject *Sender)
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
-          const double newTime)
+		  const double newTime)
 {
-  Not_a_planet->PitchAngle = newTime*60;
- // World->PitchAngle = newTime*60;
+  Planet->Turn(deltaTime *20);
   GLSceneViewer1->Invalidate();
 }
 //---------------------------------------------------------------------------

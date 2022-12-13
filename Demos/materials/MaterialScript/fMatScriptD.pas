@@ -66,8 +66,8 @@ procedure TFormMatScript.ButtonLoadScriptClick(Sender: TObject);
 var
   Path: TFileName;
 begin
-   SetGLSceneMediaDir();
-   Path := GetCurrentDir + '\Scripts';
+   var Path: TFileName := GetCurrentAssetPath();
+   Path := S + '\script';
    OpenDialog1.InitialDir := Path;
    if OpenDialog1.Execute then
       if FileExists(Opendialog1.FileName) then

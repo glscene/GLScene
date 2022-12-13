@@ -1,11 +1,11 @@
 object DataModule1: TDataModule1
-  OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Height = 191
-  Width = 332
+  Height = 239
+  Width = 415
+  PixelsPerInch = 120
   object GLScene1: TGLScene
-    Left = 16
-    Top = 8
+    Left = 20
+    Top = 10
     object GLLightSource1: TGLLightSource
       ConstAttenuation = 1.000000000000000000
       Position.Coordinates = {0000484200004842000048420000803F}
@@ -45,7 +45,7 @@ object DataModule1: TDataModule1
     StayOnTop = True
     RefreshRate = 100
     OnKeyPress = GLFullScreenViewer1KeyPress
-    Left = 104
-    Top = 8
+    Left = 130
+    Top = 10
   end
 end

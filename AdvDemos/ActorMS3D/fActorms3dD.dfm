@@ -2,7 +2,7 @@ object FormActorms3d: TFormActorms3d
   Left = 332
   Top = 110
   Caption = 'Actor MS3D Animation'
-  ClientHeight = 736
+  ClientHeight = 714
   ClientWidth = 1028
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,13 +19,13 @@ object FormActorms3d: TFormActorms3d
     Left = 0
     Top = 65
     Width = 1028
-    Height = 671
+    Height = 649
     Camera = GLCamera1
     Buffer.BackgroundColor = 3618615
     Buffer.AmbientColor.Color = {0000803F0000803F0000803F0000803F}
     Buffer.AntiAliasing = aa4xHQ
     Buffer.ShadeModel = smSmooth
-    FieldOfView = 140.638275146484400000
+    FieldOfView = 139.411239624023400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -123,7 +123,6 @@ object FormActorms3d: TFormActorms3d
       Width = 512
       Height = 512
       DepthTextureName = 'Shadow'
-      MaterialLibrary = MatLib
       ClearOptions = [coDepthBufferClear, coUseBufferBackground]
       Camera = GLCamera2
       RootObject = Root
@@ -133,7 +132,7 @@ object FormActorms3d: TFormActorms3d
     end
     object Root: TGLDummyCube
       CubeSize = 1.000000000000000000
-      object GLLightSource1: TGLLightSource
+      object LightSpot: TGLLightSource
         Ambient.Color = {9A99593F9A99593FCDCCCC3D0000803F}
         ConstAttenuation = 1.000000000000000000
         Diffuse.Color = {9A99593F9A99593FCDCCCC3D0000803F}
@@ -149,7 +148,6 @@ object FormActorms3d: TFormActorms3d
       end
       object Actor1: TGLActor
         Material.Texture.Disabled = False
-        Material.MaterialLibrary = MatLib
         Direction.Coordinates = {2EBD3B34F0AD099D0000803F00000000}
         Position.Coordinates = {000080BF00000000000000000000803F}
         Up.Coordinates = {043D48A70000803F6042CA2600000000}
@@ -160,8 +158,6 @@ object FormActorms3d: TFormActorms3d
         MaterialLibrary = MatLib
       end
       object GLPlane1: TGLPlane
-        Material.Texture.Disabled = False
-        Material.LibMaterialName = 'floor_parquet'
         Direction.Coordinates = {000000000000803F0000000000000000}
         Up.Coordinates = {0000000000000000000080BF00000000}
         Height = 11.000000000000000000
@@ -171,12 +167,13 @@ object FormActorms3d: TFormActorms3d
         Style = [psTileTexture]
       end
       object Chair1: TGLFreeForm
-        Material.FrontProperties.Ambient.Color = {00000000000000000000000000000000}
-        Material.FrontProperties.Diffuse.Color = {00000000000000000000000000000000}
+        Material.Texture.MagFilter = maNearest
+        Material.Texture.MinFilter = miNearest
+        Material.Texture.Compression = tcNone
+        Material.Texture.Disabled = False
         Direction.Coordinates = {EE8384BE00000000EA46773F00000000}
         Position.Coordinates = {000040BF0000000052B85E3F0000803F}
         TurnAngle = -15.000000000000000000
-        Visible = False
         MaterialLibrary = MatLib
       end
     end
@@ -185,71 +182,6 @@ object FormActorms3d: TFormActorms3d
     Scene = GLScene1
     OnProgress = GLCadencer1Progress
     Left = 108
-    Top = 84
-  end
-  object MatLib: TGLMaterialLibrary
-    Materials = <
-      item
-        Name = 'floor_parquet'
-        Tag = 0
-        Material.Texture.TextureMode = tmModulate
-        Material.Texture.Disabled = False
-        Material.MaterialLibrary = MatLib
-        TextureScale.Coordinates = {0000803F0000803F0000000000000000}
-      end
-      item
-        Name = 'Shadow'
-        Tag = 0
-        Material.Texture.ImageClassName = 'TGLBlankImage'
-        Material.Texture.Image.ColorFormat = 6408
-        Material.Texture.MinFilter = miLinear
-        Material.Texture.TextureMode = tmReplace
-        Material.Texture.TextureWrap = twSeparate
-        Material.Texture.TextureWrapS = twClampToBorder
-        Material.Texture.TextureWrapT = twClampToBorder
-        Material.Texture.TextureWrapR = twClampToBorder
-        Material.Texture.TextureFormat = tfExtended
-        Material.Texture.TextureFormatEx = tfDEPTH_COMPONENT24
-        Material.Texture.BorderColor.Color = {0000803F000000000000000000000000}
-        Material.Texture.Disabled = False
-        Material.Texture.TextureCompareMode = tcmCompareRtoTexture
-      end
-      item
-        Name = 'Lightspot'
-        Tag = 0
-        Material.FrontProperties.Emission.Color = {CDCC4C3FF8FEFE3EACC8483E0000803F}
-        Material.Texture.TextureWrap = twNone
-        Material.Texture.Disabled = False
-      end
-      item
-        Name = 'Hair'
-        Tag = 0
-        Material.Texture.ImageClassName = 'TGLCompositeImage'
-        Material.Texture.Image.Width = 256
-        Material.Texture.Image.Height = 256
-        Material.Texture.Image.Depth = 0
-        Material.Texture.Disabled = False
-      end
-      item
-        Name = 'Woman4-Remap-texture'
-        Tag = 0
-        Material.Texture.ImageClassName = 'TGLCompositeImage'
-        Material.Texture.Image.Width = 256
-        Material.Texture.Image.Height = 256
-        Material.Texture.Image.Depth = 0
-        Material.Texture.TextureMode = tmModulate
-        Material.Texture.Disabled = False
-      end
-      item
-        Name = 'Chair'
-        Tag = 0
-        Material.Texture.ImageClassName = 'TGLCompositeImage'
-        Material.Texture.Image.Width = 256
-        Material.Texture.Image.Height = 256
-        Material.Texture.Image.Depth = 0
-        Material.Texture.Disabled = False
-      end>
-    Left = 188
     Top = 84
   end
   object GLNavigation: TGLSimpleNavigation
@@ -287,5 +219,61 @@ object FormActorms3d: TFormActorms3d
       end>
     Left = 276
     Top = 184
+  end
+  object GLSLShader1: TGLSLShader
+    Enabled = False
+    OnApply = GLSLShader1Apply
+    OnInitialize = GLSLShader1Initialize
+    Left = 489
+    Top = 111
+  end
+  object MatLib: TGLMaterialLibrary
+    Materials = <
+      item
+        Name = 'floor_parquet'
+        Tag = 0
+        Material.Texture.ImageClassName = 'TGLBlankImage'
+        Material.Texture.Image.ColorFormat = 6408
+        Material.Texture.Disabled = False
+      end
+      item
+        Name = 'Shadow'
+        Tag = 0
+        Material.Texture.ImageClassName = 'TGLBlankImage'
+        Material.Texture.Image.ColorFormat = 6408
+        Shader = GLSLShader1
+      end
+      item
+        Name = 'LightSpot'
+        Tag = 0
+        Material.Texture.Disabled = False
+        Shader = GLSLShader1
+      end
+      item
+        Name = 'Hair'
+        Tag = 0
+        Material.Texture.ImageClassName = 'TGLCompositeImage'
+        Material.Texture.Image.Width = 256
+        Material.Texture.Image.Height = 256
+        Material.Texture.Image.Depth = 0
+      end
+      item
+        Name = 'Woman4_skin'
+        Tag = 0
+        Material.Texture.Disabled = False
+      end
+      item
+        Name = 'Chair'
+        Tag = 0
+        Material.Texture.ImageClassName = 'TGLBlankImage'
+        Material.Texture.Image.ColorFormat = 6408
+        Material.Texture.MagFilter = maNearest
+        Material.Texture.MinFilter = miNearest
+        Material.Texture.Compression = tcNone
+        Material.Texture.Disabled = False
+        Shader = GLSLShader1
+      end>
+    Left = 235
+    Top = 105
   end
 end

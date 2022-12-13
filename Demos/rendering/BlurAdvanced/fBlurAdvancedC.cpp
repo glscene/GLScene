@@ -28,14 +28,14 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
 
- // TFileName MediaPath = SetGLSceneMediaDir();
- //  SetCurrentDir(MediaPath);
- String MediaPath = ExtractFilePath(ParamStr(0));
-  int I = MediaPath.Pos("Demos");
+ // TFileName AssetsPath = TFileName Path = GetCurrentAssetPath();
+ //  SetCurrentDir(AssetsPath);
+ String AssetsPath = ExtractFilePath(ParamStr(0));
+  int I = AssetsPath.Pos("Demos");
   if (I != 0) {
-	MediaPath.Delete(I+5, MediaPath.Length() - (I+5));
-	MediaPath += "Media\\";
-	SetCurrentDir(MediaPath);
+	AssetsPath.Delete(I+7, AssetsPath.Length() - (I+5));
+	AssetsPath += "Assets\\";
+	SetCurrentDir(AssetsPath);
   }
 
   // Blur GLDummyCube1 and it's children

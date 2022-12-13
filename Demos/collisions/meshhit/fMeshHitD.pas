@@ -58,7 +58,8 @@ implementation
 procedure TFormMeshHit.FormCreate(Sender: TObject);
 begin
   // Load mushroom mesh
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+ 	SetCurrentDir(Path + '\model');
   FreeForm1.LoadFromFile('mushroom.3ds');
 end;
 

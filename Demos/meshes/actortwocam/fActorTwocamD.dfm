@@ -2,8 +2,8 @@ object FormActorTwocam: TFormActorTwocam
   Left = 77
   Top = 70
   Caption = 'Actor with Two Cameras'
-  ClientHeight = 398
-  ClientWidth = 657
+  ClientHeight = 535
+  ClientWidth = 751
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,17 +11,16 @@ object FormActorTwocam: TFormActorTwocam
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
-  WindowState = wsMaximized
   OnCreate = FormCreate
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 25
-    Width = 657
-    Height = 373
+    Width = 751
+    Height = 510
     Camera = GLCamera2
     Buffer.BackgroundColor = clGreen
-    FieldOfView = 123.600204467773400000
+    FieldOfView = 137.174057006835900000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -29,7 +28,7 @@ object FormActorTwocam: TFormActorTwocam
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 657
+    Width = 751
     Height = 25
     Align = alTop
     BevelOuter = bvLowered

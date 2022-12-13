@@ -2,31 +2,26 @@ object FormNewtonWalkShoot: TFormNewtonWalkShoot
   Left = 0
   Top = 0
   Caption = 'Newton Walk Carry Shoot'
-  ClientHeight = 480
-  ClientWidth = 725
+  ClientHeight = 298
+  ClientWidth = 460
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   WindowState = wsMaximized
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 725
-    Height = 480
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 460
+    Height = 298
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 156.463424682617200000
+    FieldOfView = 142.899536132812500000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -79,7 +74,17 @@ object FormNewtonWalkShoot: TFormNewtonWalkShoot
     end
     object GLLines1: TGLLines
       Pickable = False
-      Nodes = <>
+      Nodes = <
+        item
+        end
+        item
+          Y = 1.000000000000000000
+        end
+        item
+        end
+        item
+          X = 1.000000000000000000
+        end>
       NodesAspect = lnaInvisible
       SplineMode = lsmSegments
       Options = [loUseNodeColorForLines]

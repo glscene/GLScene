@@ -70,7 +70,7 @@ implementation
 {$R *.dfm}
 
 uses
-  TobitmapImgFm;
+  fToBitmapImgD;
 (*
    A utility function, this takes the bitmap and uses Form2 to display it with
    a regular TImage component.
@@ -100,7 +100,8 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-   SetGLSceneMediaDir();
+   var Path: TFileName := GetCurrentAssetPath();
+   SetCurrentDir(Path  + '\texture');
    HUDSprite1.Material.Texture.Image.LoadFromFile('ashwood.jpg');
    Plane1.Material.Texture.Image.LoadFromFile('marbletiles.jpg');
    Sphere1.Material.Texture.Image.LoadFromFile('marbletiles.jpg');

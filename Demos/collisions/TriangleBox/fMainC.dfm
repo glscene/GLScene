@@ -2,41 +2,43 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Triangle and Box Intersection'
-  ClientHeight = 437
-  ClientWidth = 543
+  ClientHeight = 548
+  ClientWidth = 806
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
+  Position = poScreenCenter
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnMouseWheel = FormMouseWheel
   OnResize = FormResize
-  PixelsPerInch = 96
   TextHeight = 13
   object Viewer: TGLSceneViewer
     Left = 175
     Top = 0
-    Width = 368
-    Height = 437
+    Width = 631
+    Height = 548
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 149.595184326171900000
+    FieldOfView = 159.316711425781300000
     PenAsTouch = False
     Align = alClient
     OnMouseMove = ViewerMouseMove
     TabOrder = 0
+    ExplicitWidth = 449
+    ExplicitHeight = 462
   end
   object Panel2: TPanel
     Left = 0
     Top = 0
     Width = 175
-    Height = 437
+    Height = 548
     Align = alLeft
     TabOrder = 1
+    ExplicitHeight = 437
     object CheckBox6: TCheckBox
       Left = 8
       Top = 170

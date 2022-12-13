@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 293
   Top = 145
   Caption = 'Fog'
-  ClientHeight = 452
-  ClientWidth = 598
+  ClientHeight = 481
+  ClientWidth = 634
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,33 +11,36 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
-  WindowState = wsMaximized
   OnMouseWheel = FormMouseWheel
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 598
-    Height = 312
+    Width = 634
+    Height = 341
     Margins.Left = 2
     Margins.Top = 2
     Margins.Right = 2
     Margins.Bottom = 2
     Camera = GLCamera1
-    FieldOfView = 144.457351684570300000
+    FieldOfView = 147.311904907226600000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 621
+    ExplicitHeight = 331
   end
   object Panel1: TPanel
     Left = 0
-    Top = 312
-    Width = 598
+    Top = 341
+    Width = 634
     Height = 140
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 312
+    ExplicitWidth = 598
     object LFogStart: TLabel
       Left = 16
       Top = 49

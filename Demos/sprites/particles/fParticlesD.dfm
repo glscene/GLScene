@@ -2,32 +2,27 @@ object FormParticles: TFormParticles
   Left = 284
   Top = 105
   Caption = 'Particles'
-  ClientHeight = 470
-  ClientWidth = 619
+  ClientHeight = 438
+  ClientWidth = 727
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnResize = FormResize
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 619
-    Height = 470
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 727
+    Height = 438
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
     Buffer.DepthTest = False
-    FieldOfView = 155.977050781250000000
+    FieldOfView = 154.278411865234400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -76,5 +71,25 @@ object FormParticles: TFormParticles
     OnTimer = Timer1Timer
     Left = 208
     Top = 8
+  end
+  object GLSimpleNavigation1: TGLSimpleNavigation
+    Form = Owner
+    GLSceneViewer = GLSceneViewer1
+    FormCaption = 'Particles - %FPS'
+    KeyCombinations = <
+      item
+        ShiftState = [ssLeft, ssRight]
+        Action = snaZoom
+      end
+      item
+        ShiftState = [ssLeft]
+        Action = snaMoveAroundTarget
+      end
+      item
+        ShiftState = [ssRight]
+        Action = snaMoveAroundTarget
+      end>
+    Left = 256
+    Top = 104
   end
 end

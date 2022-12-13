@@ -2,12 +2,12 @@ object FormSkyboxShader: TFormSkyboxShader
   Left = 192
   Top = 122
   Caption = 'GLSL SkyBox'
-  ClientHeight = 536
-  ClientWidth = 760
+  ClientHeight = 429
+  ClientWidth = 608
   Color = clBlack
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Icon.Data = {
@@ -562,21 +562,16 @@ object FormSkyboxShader: TFormSkyboxShader
     AC41F83FAC41}
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object SceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 760
-    Height = 536
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 608
+    Height = 429
     Camera = Camera
     Buffer.BackgroundColor = clBlack
     Buffer.ContextOptions = [roDoubleBuffer, roRenderToWindow, roNoColorBufferClear]
-    FieldOfView = 148.731369018554700000
+    FieldOfView = 141.455612182617200000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0

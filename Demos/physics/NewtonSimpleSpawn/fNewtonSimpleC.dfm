@@ -2,120 +2,89 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Newton Simple Spawn'
-  ClientHeight = 481
-  ClientWidth = 729
+  ClientHeight = 482
+  ClientWidth = 746
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
-    Left = 131
+    Left = 105
     Top = 0
-    Width = 598
-    Height = 481
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 641
+    Height = 482
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 156.511001586914100000
+    FieldOfView = 156.558380126953100000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 563
+    ExplicitWidth = 526
+    ExplicitHeight = 404
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 131
-    Height = 481
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 105
+    Height = 482
     Align = alLeft
     Caption = ' '
     TabOrder = 1
+    ExplicitHeight = 385
     object Button1: TButton
-      Left = 18
-      Top = 10
-      Width = 93
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 14
+      Top = 8
+      Width = 75
+      Height = 25
       Caption = 'AddCube'
       TabOrder = 0
       OnClick = Button1Click
     end
     object Button2: TButton
-      Left = 18
-      Top = 49
-      Width = 93
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 14
+      Top = 39
+      Width = 75
+      Height = 25
       Caption = 'AddSphere'
       TabOrder = 1
       OnClick = Button2Click
     end
     object Button3: TButton
-      Left = 18
-      Top = 88
-      Width = 93
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 14
+      Top = 70
+      Width = 75
+      Height = 25
       Caption = 'AddCone'
       TabOrder = 2
       OnClick = Button3Click
     end
     object Button4: TButton
-      Left = 18
-      Top = 126
-      Width = 93
-      Height = 32
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 14
+      Top = 101
+      Width = 75
+      Height = 25
       Caption = 'AddCylinder'
       TabOrder = 3
       OnClick = Button4Click
     end
     object Button5: TButton
-      Left = 18
-      Top = 165
-      Width = 93
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 14
+      Top = 132
+      Width = 75
+      Height = 25
       Caption = 'AddCapsule'
       TabOrder = 4
       OnClick = Button5Click
     end
     object Button6: TButton
-      Left = 18
-      Top = 204
-      Width = 93
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 14
+      Top = 163
+      Width = 75
+      Height = 25
       Caption = 'Remove All'
       TabOrder = 5
       OnClick = Button6Click
@@ -137,8 +106,8 @@ object Form1: TForm1
     object Floor: TGLCube
       BehavioursData = {
         0458434F4C02010201060C54474C4E47445374617469630200060C5374617469
-        6320466C6F6F7202000201060D474C4E47444D616E6167657231080009050000
-        0000000AD7A3F83F1200000000}
+        6320466C6F6F720200020112000000000800090500000000000AD7A3F83F1200
+        000000}
       CubeSize = {000020410000003F00002041}
     end
     object GLDummyCube1: TGLDummyCube

@@ -29,8 +29,11 @@ __fastcall TForm1::TForm1(TComponent* Owner)
   int X, Y, Z;
   TGLCube *Cube;
 
-  SetGLSceneMediaDir();
-  GLMaterialLibrary1->AddTextureMaterial("glscene", "GLScene.bmp",true);
+  TFileName Path = GetCurrentAssetPath();
+  SetCurrentDir(Path  + "\\texture");
+  GLMaterialLibrary1->TexturePaths = GetCurrentDir();
+
+  GLMaterialLibrary1->AddTextureMaterial("glscene", "glscene.bmp");
   for (X=-cNb; X<cNb; X++)
 	for (Y=-cNb; Y<cNb; Y++)
 	  for (Z=-cNb; Z<cNb; Z++)
@@ -38,7 +41,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 		{
 		  Cube = (TGLCube *) GLDummyCube1->AddNewChild(__classid(TGLCube));
 		  Cube->Material->MaterialLibrary = GLMaterialLibrary1;
-		  Cube->Material->LibMaterialName = "GLScene";
+		  Cube->Material->LibMaterialName = "glscene";
 		  Cube->Position->SetPoint(X * cSpacing, Y * cSpacing, Z * cSpacing);
 		  Cube->CubeWidth = cEdgeLength;
 		  Cube->CubeHeight = cEdgeLength;

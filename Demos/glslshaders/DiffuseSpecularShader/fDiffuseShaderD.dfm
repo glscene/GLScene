@@ -2,27 +2,22 @@ object FormDiffuseShader: TFormDiffuseShader
   Left = 261
   Top = 176
   Caption = 'GLSL Diffuse Specular Shader'
-  ClientHeight = 444
-  ClientWidth = 646
+  ClientHeight = 527
+  ClientWidth = 790
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 445
-    Height = 444
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 629
+    Height = 527
     Camera = Camera
     Buffer.FogEnvironment.FogColor.Color = {ACC8483E9A99193FCDCC4C3F9A99993E}
     Buffer.FogEnvironment.FogStart = 50.000000000000000000
@@ -33,31 +28,27 @@ object FormDiffuseShader: TFormDiffuseShader
     Buffer.AntiAliasing = aaNone
     Buffer.DepthPrecision = dp24bits
     Buffer.ColorDepth = cd24bits
-    FieldOfView = 147.360702514648400000
+    FieldOfView = 152.285934448242200000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 501
+    ExplicitHeight = 437
   end
   object Panel1: TPanel
-    Left = 445
+    Left = 629
     Top = 0
-    Width = 201
-    Height = 444
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 161
+    Height = 527
     Align = alRight
     TabOrder = 1
+    ExplicitLeft = 356
+    ExplicitHeight = 355
     object LightMovingCheckBox: TCheckBox
-      Left = 10
-      Top = 10
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 8
+      Width = 97
+      Height = 17
       Caption = 'Light is Moving'
       Checked = True
       Color = clBtnFace
@@ -66,14 +57,10 @@ object FormDiffuseShader: TFormDiffuseShader
       TabOrder = 0
     end
     object ShaderEnabledCheckBox: TCheckBox
-      Left = 10
-      Top = 80
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 64
+      Width = 97
+      Height = 17
       Caption = 'Shader Enabled'
       Checked = True
       State = cbChecked
@@ -81,54 +68,40 @@ object FormDiffuseShader: TFormDiffuseShader
       OnClick = ShaderEnabledCheckBoxClick
     end
     object TurnPitchrollCheckBox: TCheckBox
-      Left = 10
-      Top = 30
-      Width = 171
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 24
+      Width = 137
+      Height = 17
       Caption = 'Turn-Pitch-Roll Enabled'
       Checked = True
       State = cbChecked
       TabOrder = 2
     end
     object RealisticSpecularCheckBox: TCheckBox
-      Left = 10
-      Top = 141
-      Width = 171
-      Height = 22
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 113
+      Width = 137
+      Height = 17
       Caption = 'Realistic Specular Mode'
       TabOrder = 3
       OnClick = RealisticSpecularCheckBoxClick
     end
     object MultiLightShaderCheckBox: TCheckBox
-      Left = 10
-      Top = 100
-      Width = 141
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 80
+      Width = 113
+      Height = 17
       Caption = 'MultiLight Shader'
+      Checked = True
+      State = cbChecked
       TabOrder = 4
       OnClick = MultiLightShaderCheckBoxClick
     end
     object EnableFogCheckBox: TCheckBox
-      Left = 10
-      Top = 170
-      Width = 171
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 136
+      Width = 137
+      Height = 17
       Caption = 'Enable fog'
       TabOrder = 5
       OnClick = EnableFogCheckBoxClick
@@ -252,7 +225,7 @@ object FormDiffuseShader: TFormDiffuseShader
       FocalLength = 65.000000000000000000
       TargetObject = GLXYZGrid1
       CameraStyle = csInfinitePerspective
-      Position.Coordinates = {000016C30000E1430000B4430000803F}
+      Position.Coordinates = {000016C30000AF43000082430000803F}
       Direction.Coordinates = {00000000000080BF0000000000000000}
       Up.Coordinates = {00000000000000000000803F00000000}
     end

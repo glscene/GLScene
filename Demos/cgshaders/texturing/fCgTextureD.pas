@@ -148,25 +148,26 @@ implementation
 
 procedure TFormCgTexture.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\shader');
   // load Cg proggy from project dir
   with CgShader1 do
   begin
-    VertexProgram.LoadFromFile('Shaders\cg_texture_vp.cg');
+    VertexProgram.LoadFromFile('cg_texture_vp.cg');
     MemoVertCode.Lines.Assign(VertexProgram.Code);
 
-    FragmentProgram.LoadFromFile('Shaders\cg_texture_fp.cg');
+    FragmentProgram.LoadFromFile('cg_texture_fp.cg');
     MemoFragCode.Lines.Assign(FragmentProgram.Code);
   end;
 
-  // Load images from media dir
-  SetGLSceneMediaDir();
+  // Load images from texture dir
+  SetCurrentDir(Path  + '\texture');
   with GLMatLib do
   begin
     Materials[0].Material.Texture.Image.LoadFromFile('moon.bmp');
     Materials[1].Material.Texture.Image.LoadFromFile('clover.jpg');
     Materials[2].Material.Texture.Image.LoadFromFile('marbletiles.jpg');
-    Materials[3].Material.Texture.Image.LoadFromFile('chrome_buckle.bmp');
+    Materials[3].Material.Texture.Image.LoadFromFile('earth.png');
   end;
 end;
 

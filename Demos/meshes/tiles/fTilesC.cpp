@@ -25,7 +25,7 @@ __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {}
 void __fastcall TForm1::FormCreate(TObject* Sender)
 {
 	int i, j;
-	SetGLSceneMediaDir();
+	TFileName Path = GetCurrentAssetPath();
 	GLMaterialLibrary->TexturePaths = GetCurrentDir();
 
 	GLMaterialLibrary->LibMaterialByName("beigemarble")

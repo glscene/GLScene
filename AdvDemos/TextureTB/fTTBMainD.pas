@@ -152,7 +152,7 @@ implementation
 
 procedure TTTBMain.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  SetCurrentDirToAsset();
   CBWidth.ItemIndex := 8;
   CBHeight.ItemIndex := 8;
   ResetAlpha;

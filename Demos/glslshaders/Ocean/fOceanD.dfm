@@ -2,35 +2,32 @@ object Form1: TForm1
   Left = 63
   Top = 64
   Caption = 'GLSL Ocean'
-  ClientHeight = 456
-  ClientWidth = 644
+  ClientHeight = 483
+  ClientWidth = 746
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 644
-    Height = 456
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 746
+    Height = 483
     Camera = GLCamera
     Buffer.BackgroundColor = clBlack
     Buffer.FaceCulling = False
     Buffer.Lighting = False
-    FieldOfView = 165.008285522460900000
+    FieldOfView = 165.837570190429700000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 689
+    ExplicitHeight = 435
   end
   object GLScene1: TGLScene
     ObjectsSorting = osNone

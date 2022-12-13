@@ -139,7 +139,8 @@ end;
 
 procedure TfrmQuadtreeVisCulling.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir;
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
   SpacePartition := TGLQuadtreeSpacePartition.Create;
   SpacePartition.LeafThreshold := 50;
   SpacePartition.MaxTreeDepth := 10; // }

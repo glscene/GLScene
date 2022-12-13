@@ -66,8 +66,11 @@ implementation
 
 procedure TFormBeer.FormActivate(Sender: TObject);
 begin
-  SetGLSceneMediaDir;
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\model');
   GLFreeForm1.LoadFromFile('beer.3ds');
+
+  SetCurrentDir(Path  + '\texture');
   GLFreeForm1.Material.Texture.Image.LoadFromFile('clouds.jpg');
   GLShadowPlane1.Material.Texture.Image.LoadFromFile('ashwood.jpg');
   GetOrCreateSourcePFX(GLDummyCube3).Burst(0, 150);

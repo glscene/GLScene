@@ -48,28 +48,35 @@ void __fastcall TForm1::ResetPositions()
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  // First load models from media directory
-  SetGLSceneMediaDir();
-  GLActor1->LoadFromFile("waste.md2"); //Fighter
-  GLActor1->SwitchToAnimation(0, True);
-  GLActor1->AnimationMode = aamLoop;
-  GLActor1->Scale->Scale(0.05);
+  // First load models from asset directory
+  TFileName Path = GetCurrentAssetPath();
 
+  // First loading static models from asset directory
+  SetCurrentDir(Path  + "\\model");
   ffTeapot->LoadFromFile("Teapot.3ds");
   ffSphere1->LoadFromFile("Sphere_little.3DS");
   ffSphere2->LoadFromFile("Sphere_big.3DS");
   ffSphere2->Scale->Scale(20);
 
+  // Second load dynamic models with texture and animation
+  SetCurrentDir(Path  + "\\modelext");
+  GLActor1->LoadFromFile("waste.md2"); //Fighter
+  GLActor1->SwitchToAnimation(0, True);
+  GLActor1->AnimationMode = aamLoop;
+  GLActor1->Scale->Scale(0.05);
+  GLMaterialLibrary1->LibMaterialByName("FighterTexture")->
+	Material->Texture->Image->LoadFromFile("waste.jpg");
+
+  // Next loading other textures
+  SetCurrentDir(Path  + "\\texture");
   GLMaterialLibrary1->LibMaterialByName("marbles1")->
-     Material->Texture->Image->LoadFromFile("beigemarble.jpg");
+	 Material->Texture->Image->LoadFromFile("beigemarble.jpg");
   GLMaterialLibrary1->LibMaterialByName("marbles2")->
 	 Material->Texture->Image->LoadFromFile("marbletiles.jpg");
   GLMaterialLibrary1->LibMaterialByName("snow")->
 	 Material->Texture->Image->LoadFromFile("snow512.jpg");
   GLMaterialLibrary1->LibMaterialByName("Fire")->
-	 Material->Texture->Image->LoadFromFile("FireGrade.bmp");
-  GLMaterialLibrary1->LibMaterialByName("FighterTexture")->
-	 Material->Texture->Image->LoadFromFile("waste.jpg");
+	 Material->Texture->Image->LoadFromFile("FireGrade.png");
 
   MyShader = new TCgBombShader(this);
   MyShader->MainTexture = GLMaterialLibrary1->LibMaterialByName("FighterTexture")->Material->Texture;

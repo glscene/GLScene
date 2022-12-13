@@ -71,7 +71,9 @@ procedure TFormMeshExplosion.FormCreate(Sender: TObject);
 var
   expl: TGLBExplosionFx;
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\model');
+
   // load mesh
   mesh.LoadFromFile('mushroom.3ds');
   // cache information

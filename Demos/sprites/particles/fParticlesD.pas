@@ -24,7 +24,7 @@ uses
  
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.Utils;
+  GLS.Utils, GLS.SimpleNavigation;
 
 type
   TFormParticles = class(TForm)
@@ -35,6 +35,7 @@ type
     Sprite1: TGLSprite;
     GLCadencer1: TGLCadencer;
     Timer1: TTimer;
+    GLSimpleNavigation1: TGLSimpleNavigation;
     procedure GLParticles1ActivateParticle(Sender: TObject;
       particle: TGLBaseSceneObject);
     procedure Sprite1Progress(Sender: TObject;
@@ -53,12 +54,9 @@ implementation
 {$R *.DFM}
 
 procedure TFormParticles.FormCreate(Sender: TObject);
-var
-  MediaPath: String;
 begin
-  SetGLSceneMediaDir;
-  MediaPath := GetCurrentDir + '\';
-  Sprite1.Material.Texture.Image.LoadFromFile(MediaPath + 'Flare1.bmp');
+  var Path: TFileName := GetCurrentAssetPath() + '\texture\';
+  Sprite1.Material.Texture.Image.LoadFromFile(Path + 'flare1.bmp');
   // if we don't do this, our random won't look like random
   Randomize;
 end;

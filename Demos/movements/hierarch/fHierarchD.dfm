@@ -2,54 +2,46 @@ object FormHierarchy: TFormHierarchy
   Left = 204
   Top = 101
   Caption = 'Hierarchy'
-  ClientHeight = 578
-  ClientWidth = 742
+  ClientHeight = 462
+  ClientWidth = 594
   Color = clBtnFace
-  Constraints.MinHeight = 250
-  Constraints.MinWidth = 400
+  Constraints.MinHeight = 200
+  Constraints.MinWidth = 320
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
   OnResize = FormResize
-  PixelsPerInch = 120
   DesignSize = (
-    742
-    578)
-  TextHeight = 16
+    594
+    462)
+  TextHeight = 13
   object SceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 742
-    Height = 578
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 594
+    Height = 462
     Camera = Camera
     Buffer.BackgroundColor = clSilver
-    FieldOfView = 141.826629638671900000
+    FieldOfView = 133.184387207031300000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object CBPlay: TCheckBox
-    Left = 334
-    Top = 22
-    Width = 52
-    Height = 21
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 267
+    Top = 18
+    Width = 42
+    Height = 16
     Anchors = [akLeft, akBottom]
     Caption = 'Play'
     TabOrder = 1
   end
-  object Scene: TGLScene
+  object GLScene1: TGLScene
     Left = 80
     Top = 24
     object Camera: TGLCamera
@@ -90,9 +82,9 @@ object FormHierarchy: TFormHierarchy
       end
     end
   end
-  object Cadencer: TGLCadencer
-    Scene = Scene
-    OnProgress = CadencerProgress
+  object GLCadencer1: TGLCadencer
+    Scene = GLScene1
+    OnProgress = GLCadencer1Progress
     Left = 100
     Top = 110
   end
@@ -115,5 +107,22 @@ object FormHierarchy: TFormHierarchy
       end>
     Left = 40
     Top = 258
+  end
+  object GLMaterialLibrary1: TGLMaterialLibrary
+    Materials = <
+      item
+        Name = 'Sun'
+        Tag = 0
+      end
+      item
+        Name = 'Earth'
+        Tag = 0
+      end
+      item
+        Name = 'Moon'
+        Tag = 0
+      end>
+    Left = 360
+    Top = 88
   end
 end

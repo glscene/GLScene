@@ -106,7 +106,8 @@ implementation
 
 procedure TFormShadedTerrain.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
 
   // Load Terrain in 8 MB height data cache
   // Note this is the data size in terms of elevation samples, it does not
@@ -118,9 +119,8 @@ begin
 
   GLMaterialLibrary1.LibMaterialByName('details').Material.Texture.Image.LoadFromFile('detailmap.jpg');
 
-  (*
-  GLMaterialLibrary1.LibMaterialByName('texture').Material.Texture.Image.LoadFromFile('texture.jpg');
-  *)
+  // GLMaterialLibrary1.LibMaterialByName('texture').Material.Texture.Image.LoadFromFile('snow512.jpg');
+
 
   SPSun.Material.Texture.Image.LoadFromFile('flare1.bmp');
 

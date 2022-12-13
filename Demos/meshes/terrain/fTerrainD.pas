@@ -93,7 +93,9 @@ implementation
 
 procedure TFormTerrain.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
+  
   // 8 MB height data cache
   // Note this is the data size in terms of elevation samples, it does not
   // take into account all the data required/allocated by the renderer
@@ -109,7 +111,9 @@ begin
   TerrainRenderer1.TilesPerTexture := 256 / TerrainRenderer1.TileSize;
   // load Bitmap Font
   BitmapFont1.Glyphs.LoadFromFile('darkgold_font.bmp');
+  
   // load and setup sound samples
+  SetCurrentDir(S  + '\audio');
   with GLSoundLibrary.Samples do
   begin
     Add.LoadFromFile('ChillyWind.mp3');

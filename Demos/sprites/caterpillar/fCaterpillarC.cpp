@@ -27,22 +27,16 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  TGLSprite *spr;
-  String MediaPath = ExtractFilePath(ParamStr(0));
-  int I = MediaPath.Pos("Demos");
-  if (I != 0) {
-	MediaPath.Delete(I+5, MediaPath.Length() - (I+5));
-	MediaPath += "Media\\";
-	SetCurrentDir(MediaPath);
-  }
-  Sprite1->Material->Texture->Image->LoadFromFile(MediaPath+"Flare1.bmp");
-  GLMaterialLibrary1->TexturePaths = MediaPath;
-  GLMaterialLibrary1->Materials->Items[0]->Material->Texture->Image->LoadFromFile("Flare1.bmp");
-	// New sprites are created by duplicating the template "sprite2"
-	for (int i = 1; i < 9; i++) {
+  TFileName Path = GetCurrentAssetPath() + "\\texture\\";
+  GLMaterialLibrary1->TexturePaths = GetCurrentDir();
+
+  Sprite1->Material->Texture->Image->LoadFromFile(Path + "flare1.bmp");
+  GLMaterialLibrary1->Materials->Items[0]->Material->Texture->Image->LoadFromFile(Path + "flare1.bmp");
+  // New sprites are created by duplicating the template "sprite2"
+  for (int i = 1; i < 11; i++) {
 		spr = (TGLSprite*)GLDummyCube1->AddNewChild(__classid(TGLSprite));
 		spr->Assign(Sprite2);
-	}
+  }
 
 }
 //---------------------------------------------------------------------------

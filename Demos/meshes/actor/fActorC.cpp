@@ -27,26 +27,27 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-   SetGLSceneMediaDir();
-
+   TFileName Path = GetCurrentAssetPath();
+   SetCurrentDir(Path  + "\\texture");
    // Load Texture of ground disk for Persistant Image
    Disk1->Material->Texture->Image->LoadFromFile("clover.jpg");
    Disk1->Material->Texture->Disabled = false;
 
-
-   // Load Actor into GLScene
-   Actor1->LoadFromFile("waste.md2");
+   // Loading Actor with textures and aninations
+   SetCurrentDir(Path  + "\\modelext");
+   Actor1->LoadFromFile("waste.md2"); // and to load a weapon later
    Actor1->Material->Texture->Image->LoadFromFile("waste.jpg");
+   Actor2->Material->Texture->Image->LoadFromFile("WeaponWaste.jpg");
 
-   // Load Quake2 animations defaults, for "waste.md2", this is not required
-   // since the author did not renamed the frames, and thus, GLScene can
-   // recover them from the .MD2, but other authors just made a mess...
-   // Loading the default animations takes care of that
+   /*
+	 Load Quake2 animations defaults, for "waste.md2", this is not required
+	 since the author did not renamed the frames, and thus, GLScene can
+	 recover them from the .MD2, but other authors just made a mess...
+	 Loading the default animations takes care of that
+   */
    Actor1->Animations->LoadFromFile("Quake2Animations.aaf");
-
    // Scale Actor for put in the Scene
    Actor1->Scale->SetVector(0.04, 0.04, 0.04, 0);
-
    // Send animation names to the combo, to allow user selection
    Actor1->Animations->SetToStrings(CBAnimations->Items);
    // Force state to stand (first in list)
@@ -83,11 +84,12 @@ void __fastcall TForm1::CBAnimationsChange(TObject *Sender)
 {
    // Change animation
    Actor1->SwitchToAnimation(CBAnimations->Text, True);
-
-   // Normally actors for Quake II Model have one number of frames
-   // for all states 198 for actors and 172 for weapon,
-   // frames 173 to 198 are for death
-   // I use this for Hide and show weapon.
+   /*
+	Normally actors for Quake II Model have one number of frames
+	for all states 198 for actors and 172 for weapon,
+	frames 173 to 198 are for death
+	I use this for Hide and show weapon.
+   */
    Actor2->Visible = (Actor1->NextFrameIndex()<173);
    if (Actor2->Visible)
 	  Actor2->Synchronize(Actor1);
@@ -102,9 +104,8 @@ void __fastcall TForm1::SBFrameToFrameClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::BBLoadWeaponClick(TObject *Sender)
 {
-   // Load weapon model and texture
+  // Load weapon model and texture
    Actor2->LoadFromFile("WeaponWaste.md2");
-   Actor2->Material->Texture->Image->LoadFromFile("WeaponWaste.jpg");
 
    // Get animations frames from the main actor
    Actor2->Animations->Assign(Actor1->Animations);

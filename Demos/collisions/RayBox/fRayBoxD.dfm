@@ -2,95 +2,74 @@ object FormRayBox: TFormRayBox
   Left = 281
   Top = 118
   Caption = 'Ray Box'
-  ClientHeight = 498
-  ClientWidth = 700
+  ClientHeight = 489
+  ClientWidth = 640
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Arial'
   Font.Style = []
   KeyPreview = True
+  Position = poScreenCenter
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnMouseWheel = FormMouseWheel
   OnResize = FormResize
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 14
   object Viewer: TGLSceneViewer
     Left = 0
-    Top = 51
-    Width = 700
-    Height = 447
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 41
+    Width = 640
+    Height = 448
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 154.779571533203100000
+    FieldOfView = 154.834075927734400000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ViewerMouseDown
     OnMouseMove = ViewerMouseMove
     TabOrder = 0
+    ExplicitWidth = 573
+    ExplicitHeight = 374
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 700
-    Height = 51
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 640
+    Height = 41
     Align = alTop
     TabOrder = 1
+    ExplicitWidth = 560
     object Label1: TLabel
-      Left = 370
-      Top = 15
-      Width = 44
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 296
+      Top = 12
+      Width = 33
+      Height = 14
       Caption = 'Result:'
     end
     object LabelFPS: TLabel
-      Left = 610
-      Top = 15
-      Width = 27
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 488
+      Top = 12
+      Width = 19
+      Height = 14
       Caption = 'FPS'
     end
     object Button1: TButton
-      Left = 10
-      Top = 10
-      Width = 94
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 8
+      Width = 75
+      Height = 25
       Caption = 'Test!'
       Default = True
       TabOrder = 0
       OnClick = Button1Click
     end
     object CheckBox1: TCheckBox
-      Left = 124
-      Top = 15
-      Width = 87
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 99
+      Top = 12
+      Width = 70
+      Height = 17
       Caption = 'View box'
       Checked = True
       State = cbChecked
@@ -98,14 +77,10 @@ object FormRayBox: TFormRayBox
       OnClick = CheckBox1Click
     end
     object CheckBox2: TCheckBox
-      Left = 223
-      Top = 15
-      Width = 140
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 178
+      Top = 12
+      Width = 112
+      Height = 17
       Caption = 'Change pos scale'
       Checked = True
       State = cbChecked

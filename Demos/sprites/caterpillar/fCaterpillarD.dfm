@@ -3,32 +3,27 @@ object FormCaterpillar: TFormCaterpillar
   Top = 106
   BorderWidth = 5
   Caption = 'Caterpillar'
-  ClientHeight = 335
-  ClientWidth = 498
+  ClientHeight = 392
+  ClientWidth = 620
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnResize = FormResize
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 498
-    Height = 335
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 620
+    Height = 392
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
     Buffer.DepthTest = False
-    FieldOfView = 146.758483886718800000
+    FieldOfView = 151.377914428710900000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -613,6 +608,11 @@ object FormCaterpillar: TFormCaterpillar
         Position.Coordinates = {0000A04000000000000000000000803F}
         Width = 2.000000000000000000
         Height = 2.000000000000000000
+        Rotation = 0.000000000000000000
+      end
+      object Spr: TGLSprite
+        Width = 1.000000000000000000
+        Height = 1.000000000000000000
         Rotation = 0.000000000000000000
       end
     end

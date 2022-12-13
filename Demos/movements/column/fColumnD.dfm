@@ -3,8 +3,8 @@ object FormColumn: TFormColumn
   Top = 102
   BorderWidth = 5
   Caption = 'Column'
-  ClientHeight = 341
-  ClientWidth = 406
+  ClientHeight = 380
+  ClientWidth = 592
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,19 +17,21 @@ object FormColumn: TFormColumn
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 406
-    Height = 324
+    Width = 592
+    Height = 363
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 116.627265930175800000
+    FieldOfView = 122.293617248535200000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 468
+    ExplicitHeight = 337
   end
   object StaticText1: TStaticText
     Left = 0
-    Top = 324
-    Width = 406
+    Top = 363
+    Width = 592
     Height = 17
     Align = alBottom
     Alignment = taCenter
@@ -37,6 +39,8 @@ object FormColumn: TFormColumn
     BorderStyle = sbsSingle
     Caption = '???.? FPS'
     TabOrder = 1
+    ExplicitTop = 324
+    ExplicitWidth = 406
   end
   object GLScene1: TGLScene
     Left = 24

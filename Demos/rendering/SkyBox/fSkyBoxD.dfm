@@ -2,8 +2,8 @@ object FormSkyBox: TFormSkyBox
   Left = 176
   Top = 73
   Caption = 'Sky Box'
-  ClientHeight = 415
-  ClientWidth = 559
+  ClientHeight = 577
+  ClientWidth = 882
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,15 +17,17 @@ object FormSkyBox: TFormSkyBox
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 559
-    Height = 415
+    Width = 882
+    Height = 577
     Camera = GLCamera1
     Buffer.BackgroundColor = 7168
     Buffer.AmbientColor.Color = {0000803F0000803F0000803F0000803F}
-    FieldOfView = 158.177749633789100000
+    FieldOfView = 164.212738037109400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 728
+    ExplicitHeight = 507
   end
   object GLScene1: TGLScene
     Left = 32
@@ -33,7 +35,7 @@ object FormSkyBox: TFormSkyBox
     object GLSkyBox1: TGLSkyBox
       Direction.Coordinates = {9598A23144F7DFB20000803F00000000}
       Up.Coordinates = {1DB356B30000803FB3FA87B300000000}
-      MaterialLibrary = GLMaterialLibraryCM
+      MaterialLibrary = GLMatLibCubeMap
       MatNameTop = 'Top'
       MatNameBottom = 'Bottom'
       MatNameLeft = 'Left'
@@ -44,7 +46,7 @@ object FormSkyBox: TFormSkyBox
       CloudsPlaneOffset = 0.119999997317791000
       CloudsPlaneSize = 2.000000000000000000
       object GLSphere1: TGLSphere
-        Material.MaterialLibrary = GLMaterialLibraryCM
+        Material.MaterialLibrary = GLMatLibCubeMap
         Direction.Coordinates = {18EBC2BE6823FE3E49BA47BF00000000}
         PitchAngle = 86.500000000000000000
         Position.Coordinates = {000000C000008040000080BF0000803F}
@@ -52,7 +54,7 @@ object FormSkyBox: TFormSkyBox
         Up.Coordinates = {CE00D4BE9A8D58BF0519ACBE00000000}
         Radius = 1.000000000000000000
         object GLSphere2: TGLSphere
-          Material.MaterialLibrary = GLMaterialLibraryCM
+          Material.MaterialLibrary = GLMatLibCubeMap
           Direction.Coordinates = {000000000000803F0000000000000000}
           PitchAngle = -8.000000000000000000
           Position.Coordinates = {0000000000000000000000400000803F}
@@ -63,7 +65,7 @@ object FormSkyBox: TFormSkyBox
       end
     end
     object GLSkyBox2: TGLSkyBox
-      MaterialLibrary = GLMaterialLibraryCM
+      MaterialLibrary = GLMatLibCubeMap
       MatNameClouds = 'Clouds'
       CloudsPlaneOffset = 0.100000001490116100
       CloudsPlaneSize = 4.000000000000000000
@@ -71,47 +73,47 @@ object FormSkyBox: TFormSkyBox
     object Castle: TGLDummyCube
       CubeSize = 1.000000000000000000
       object GLCube1: TGLCube
-        Material.MaterialLibrary = GLMaterialLibraryCM
+        Material.MaterialLibrary = GLMatLibCubeMap
         Position.Coordinates = {0BD43940FFFF7FC018230B400000803F}
         CubeSize = {0000803F000000420000803F}
         object GLCube2: TGLCube
-          Material.MaterialLibrary = GLMaterialLibraryCM
+          Material.MaterialLibrary = GLMatLibCubeMap
           Position.Coordinates = {000040C0000000BFCDCCCC3D0000803F}
           CubeSize = {0000C0400000803F0000803F}
         end
       end
       object GLCube11: TGLCube
-        Material.MaterialLibrary = GLMaterialLibraryCM
+        Material.MaterialLibrary = GLMatLibCubeMap
         Direction.Coordinates = {000080BF000000001AE1F7B300000000}
         Position.Coordinates = {F42B46C0FFFF7FC018230B400000803F}
         TurnAngle = -90.000000000000000000
         CubeSize = {0000803F000000420000803F}
         object GLCube21: TGLCube
-          Material.MaterialLibrary = GLMaterialLibraryCM
+          Material.MaterialLibrary = GLMatLibCubeMap
           Position.Coordinates = {000040C0000000BFCDCCCC3D0000803F}
           CubeSize = {0000C0400000803F0000803F}
         end
       end
       object GLCube111: TGLCube
-        Material.MaterialLibrary = GLMaterialLibraryCM
+        Material.MaterialLibrary = GLMatLibCubeMap
         Direction.Coordinates = {0000803F00000000B28FF03200000000}
         Position.Coordinates = {0CD43940FFFF7FC0E8DC74C00000803F}
         TurnAngle = 90.000000000000000000
         CubeSize = {0000803F000000420000803F}
         object GLCube211: TGLCube
-          Material.MaterialLibrary = GLMaterialLibraryCM
+          Material.MaterialLibrary = GLMatLibCubeMap
           Position.Coordinates = {000040C0000000BFCDCCCC3D0000803F}
           CubeSize = {0000C0400000803F0000803F}
         end
       end
       object GLCube112: TGLCube
-        Material.MaterialLibrary = GLMaterialLibraryCM
+        Material.MaterialLibrary = GLMatLibCubeMap
         Direction.Coordinates = {647F2B3300000000000080BF00000000}
         Position.Coordinates = {F42B46C0FFFF7FC0E8DC74C00000803F}
         TurnAngle = -180.000000000000000000
         CubeSize = {0000803F000000420000803F}
         object GLCube212: TGLCube
-          Material.MaterialLibrary = GLMaterialLibraryCM
+          Material.MaterialLibrary = GLMatLibCubeMap
           Position.Coordinates = {000040C0000000BFCDCCCC3D0000803F}
           CubeSize = {0000C0400000803F0000803F}
         end
@@ -138,7 +140,7 @@ object FormSkyBox: TFormSkyBox
       Up.Coordinates = {A633CE3EC0C1593F8711ADBE00000000}
     end
   end
-  object GLMaterialLibraryCM: TGLMaterialLibrary
+  object GLMatLibCubeMap: TGLMaterialLibrary
     Left = 112
     Top = 24
   end

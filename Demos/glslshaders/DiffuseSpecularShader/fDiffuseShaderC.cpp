@@ -39,33 +39,38 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  // First load models.
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
+
+  // First load modelexts with animation and textures
+  SetCurrentDir(Path + "\\modelext");
   Fighter->LoadFromFile("waste.md2"); //Fighter
   Fighter->SwitchToAnimation(0, True);
   Fighter->AnimationMode = aamLoop;
   Fighter->Scale->Scale(3);
+  MaterialLibrary->LibMaterialByName("Fighter")->Material->Texture->Image->LoadFromFile("Waste.jpg");
+  MaterialLibrary->LibMaterialByName("Fighter")->Shader = DiffuseSpecularShader;
 
+  // Loading static models
+  SetCurrentDir(Path + "\\model");
   Teapot->LoadFromFile("Teapot.3ds"); //Teapot
   Teapot->Scale->Scale(0.8);
-
   Sphere_big->LoadFromFile("Sphere_big.3DS"); //Sphere_big
   Sphere_big->Scale->Scale(70);
-
   Sphere_little->LoadFromFile("Sphere_little.3ds"); //Sphere_little
   Sphere_little->Scale->Scale(4);
 
+  // Then load textures
+  SetCurrentDir(Path + "\\texture");
   MaterialLibrary->LibMaterialByName("Earth")->Material->Texture->Image->LoadFromFile("Earth.jpg");
-  MaterialLibrary->LibMaterialByName("Fighter")->Material->Texture->Image->LoadFromFile("Waste.jpg");
-
   MaterialLibrary->LibMaterialByName("Earth")->Shader = DiffuseSpecularShader;
-  MaterialLibrary->LibMaterialByName("Fighter")->Shader = DiffuseSpecularShader;
 
   // This is how a shader is created in runtime.
   MultiLightShader = new TGLSLMLDiffuseSpecularShader(this);
 
   // Disable fog.
   EnableFogCheckBoxClick(NULL);
+
+  MultiLightShaderCheckBoxClick(NULL);
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::EnableFogCheckBoxClick(TObject *Sender)

@@ -2,31 +2,31 @@ object FormStars: TFormStars
   Left = 284
   Top = 105
   Caption = 'Stars'
-  ClientHeight = 319
-  ClientWidth = 427
+  ClientHeight = 495
+  ClientWidth = 725
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnResize = FormResize
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 427
-    Height = 319
+    Width = 725
+    Height = 495
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
     Buffer.DepthTest = False
-    FieldOfView = 145.189712524414100000
+    FieldOfView = 157.157623291015600000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 592
+    ExplicitHeight = 419
   end
   object GLScene1: TGLScene
     Left = 8
@@ -72,5 +72,25 @@ object FormStars: TFormStars
     OnTimer = Timer1Timer
     Left = 48
     Top = 8
+  end
+  object GLSimpleNavigation1: TGLSimpleNavigation
+    Form = Owner
+    GLSceneViewer = GLSceneViewer1
+    FormCaption = 'Stars - %FPS'
+    KeyCombinations = <
+      item
+        ShiftState = [ssLeft, ssRight]
+        Action = snaZoom
+      end
+      item
+        ShiftState = [ssLeft]
+        Action = snaMoveAroundTarget
+      end
+      item
+        ShiftState = [ssRight]
+        Action = snaMoveAroundTarget
+      end>
+    Left = 168
+    Top = 24
   end
 end

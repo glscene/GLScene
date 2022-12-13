@@ -2,39 +2,40 @@ object Form1: TForm1
   Left = 264
   Top = 142
   Caption = 'Phong'
-  ClientHeight = 403
-  ClientWidth = 479
+  ClientHeight = 402
+  ClientWidth = 629
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -10
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
+  Position = poScreenCenter
   DesignSize = (
-    479
-    403)
-  PixelsPerInch = 96
+    629
+    402)
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 479
-    Height = 403
+    Width = 629
+    Height = 402
     Margins.Left = 2
     Margins.Top = 2
     Margins.Right = 2
     Margins.Bottom = 2
     Camera = GLCamera1
-    FieldOfView = 152.128311157226600000
+    FieldOfView = 152.061691284179700000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 522
+    ExplicitHeight = 403
   end
   object CheckBox1: TCheckBox
-    Left = 307
+    Left = 457
     Top = 8
     Width = 65
     Height = 17
@@ -43,9 +44,10 @@ object Form1: TForm1
     Margins.Right = 2
     Margins.Bottom = 2
     Anchors = [akTop, akRight]
-    Caption = 'Shader'
+    Caption = 'Phong Shader'
     TabOrder = 1
     OnClick = CheckBox1Click
+    ExplicitLeft = 307
   end
   object GLScene1: TGLScene
     Left = 32

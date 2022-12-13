@@ -54,7 +54,7 @@ TAffineVector RandomPos()
   {
 	int	c1 = 10;
 	TAffineVector result;
-   //MakeVector(result, rand()*c1-c1/2, rand()*c1-c1/2, rand()*c1-c1/2);
+	//MakeVector(result, rand()*c1-c1/2, rand()*c1-c1/2, rand()*c1-c1/2);
 	MakeVector(result, rand(), rand(), rand());
 	return result;
   };

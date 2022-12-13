@@ -16,7 +16,8 @@ __fastcall TForm1::TForm1(TComponent * Owner) : TForm(Owner) {
 
 	int x, y, z;
 	TGLSphere *sphere;
-	SetGLSceneMediaDir();
+	TFileName Path = GetCurrentAssetPath();
+	SetCurrentDir(Path  + "\\model");
 
 	// Dynamically construct an array of spheres, and make them shadow casters
 	// Note that as the spheres are children of the shadowvolume component,

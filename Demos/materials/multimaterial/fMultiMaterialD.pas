@@ -68,8 +68,8 @@ implementation
 
 procedure TFormMultiMat.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
-
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
   // Add the specular pass
   with GLMaterialLibrary1.AddTextureMaterial('specular', 'glscene_alpha.bmp') do
   begin

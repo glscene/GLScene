@@ -76,7 +76,8 @@ implementation
 
 procedure TFormGameMenu.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
   GLMaterialLibrary1.Materials[0].Material.Texture.Image.LoadFromFile('GLScene.bmp');
 
   GameMenu := TGLGameMenu(GLScene1.Objects.AddNewChild(TGLGameMenu));

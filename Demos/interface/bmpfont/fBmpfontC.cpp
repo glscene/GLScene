@@ -29,7 +29,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
    // Load the font bitmap from media dir
-   SetGLSceneMediaDir();
+   TFileName Path = GetCurrentAssetPath();
    BitmapFont1->Glyphs->LoadFromFile("darkgold_font.bmp");
    // sorry, couldn't resist...
 

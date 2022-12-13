@@ -32,7 +32,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-   SetGLSceneMediaDir();
+   TFileName Path = GetCurrentAssetPath();
    BitmapFont->Glyphs->LoadFromFile("toonfont.bmp");
 }
 //---------------------------------------------------------------------------

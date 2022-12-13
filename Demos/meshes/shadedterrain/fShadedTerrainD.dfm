@@ -2,29 +2,25 @@ object FormShadedTerrain: TFormShadedTerrain
   Left = 165
   Top = 146
   Caption = 'Shaded Terrain'
-  ClientHeight = 635
-  ClientWidth = 978
+  ClientHeight = 508
+  ClientWidth = 782
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnMouseWheel = FormMouseWheel
   OnShow = FormShow
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 81
-    Width = 978
-    Height = 554
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 65
+    Width = 782
+    Height = 443
     Camera = GLCamera1
     BeforeRender = GLSceneViewer1BeforeRender
     Buffer.FogEnvironment.FogColor.Color = {0000803F0000803F0000803F0000803F}
@@ -34,7 +30,7 @@ object FormShadedTerrain: TFormShadedTerrain
     Buffer.BackgroundColor = clGray
     Buffer.FogEnable = True
     Buffer.Lighting = False
-    FieldOfView = 159.535964965820300000
+    FieldOfView = 154.559234619140600000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -44,138 +40,94 @@ object FormShadedTerrain: TFormShadedTerrain
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 978
-    Height = 81
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 782
+    Height = 65
     Align = alTop
     BevelOuter = bvLowered
     TabOrder = 1
     object Label1: TLabel
-      Left = 10
-      Top = 10
-      Width = 148
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 8
+      Width = 113
+      Height = 13
       Caption = 'Bumpmap Sub-sampling'
     end
     object LASubFactor: TLabel
-      Left = 383
-      Top = 10
-      Width = 78
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 306
+      Top = 8
+      Width = 62
+      Height = 13
       Caption = 'LASubFactor'
     end
     object Label2: TLabel
-      Left = 10
-      Top = 50
-      Width = 113
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 40
+      Width = 89
+      Height = 13
       Caption = 'Bumpmap Intensity'
     end
     object LABumpIntensity: TLabel
-      Left = 385
-      Top = 48
-      Width = 73
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 308
+      Top = 38
+      Width = 59
+      Height = 13
       Caption = 'LABIntensity'
     end
     object LaScaleZ: TLabel
-      Left = 593
-      Top = 10
-      Width = 46
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 474
+      Top = 8
+      Width = 37
+      Height = 13
       Caption = 'Scale Z'
     end
     object LabelZ: TLabel
-      Left = 879
-      Top = 10
-      Width = 59
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 703
+      Top = 8
+      Width = 47
+      Height = 13
       Caption = 'LAScaleZ'
     end
     object LabelContInterval: TLabel
-      Left = 879
-      Top = 44
-      Width = 86
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 703
+      Top = 35
+      Width = 70
+      Height = 13
       Caption = 'LAContInterval'
     end
     object TBSubSampling: TTrackBar
-      Left = 159
-      Top = 4
-      Width = 221
-      Height = 36
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 127
+      Top = 3
+      Width = 177
+      Height = 29
       Max = 3
       PageSize = 1
       Position = 1
       TabOrder = 0
       TabStop = False
-      ThumbLength = 13
+      ThumbLength = 10
       TickMarks = tmBoth
       OnChange = TBSubSamplingChange
     end
     object TBIntensity: TTrackBar
-      Left = 156
-      Top = 38
-      Width = 222
-      Height = 36
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 125
+      Top = 30
+      Width = 177
+      Height = 29
       Max = 100
       PageSize = 1
       Frequency = 10
       Position = 40
       TabOrder = 1
       TabStop = False
-      ThumbLength = 13
+      ThumbLength = 10
       TickMarks = tmBoth
       OnChange = TBIntensityChange
     end
     object TBContourInterval: TTrackBar
-      Left = 650
-      Top = 38
-      Width = 221
-      Height = 36
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 520
+      Top = 30
+      Width = 177
+      Height = 29
       Max = 4000
       Min = 1000
       PageSize = 1
@@ -183,37 +135,29 @@ object FormShadedTerrain: TFormShadedTerrain
       Position = 2000
       TabOrder = 2
       TabStop = False
-      ThumbLength = 13
+      ThumbLength = 10
       TickMarks = tmBoth
     end
     object TBScaleZ: TTrackBar
-      Left = 650
+      Left = 520
       Top = 1
-      Width = 221
-      Height = 37
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 177
+      Height = 29
       Max = 50
       PageSize = 1
       Frequency = 10
       Position = 10
       TabOrder = 3
       TabStop = False
-      ThumbLength = 13
+      ThumbLength = 10
       TickMarks = tmBoth
       OnChange = TBScaleZChange
     end
     object CBContourIntervals: TCheckBox
-      Left = 528
-      Top = 44
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 422
+      Top = 35
+      Width = 97
+      Height = 17
       Caption = 'Contour Interval'
       Checked = True
       State = cbChecked

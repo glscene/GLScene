@@ -2,14 +2,15 @@ object FormMeshHit: TFormMeshHit
   Left = 108
   Top = 101
   Caption = 'Mesh Hit'
-  ClientHeight = 285
-  ClientWidth = 558
+  ClientHeight = 277
+  ClientWidth = 562
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
   TextHeight = 13
   object Label1: TLabel

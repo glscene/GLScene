@@ -48,9 +48,8 @@ implementation
 procedure TFormCubeMap.FormCreate(Sender: TObject);
 begin
   // Our cube map images are here
-  SetGLSceneMediaDir();
-  CubemapPath := GetCurrentDir() + '\Cubemaps';
-  SetCurrentDir(CubemapPath);
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\cubemap');  
 end;
 
 procedure TFormCubeMap.GLSceneViewer1BeforeRender(Sender: TObject);

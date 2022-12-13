@@ -42,9 +42,7 @@ type
       X, Y: Integer);
     procedure FormActivate(Sender: TObject);
   private
-
   public
-
     mx, my: Integer;
   end;
 
@@ -57,7 +55,9 @@ implementation
 
 procedure TFormInvariance.FormActivate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
+  GLMaterialLibrary.TexturePaths := GetCurrentDir();
 end;
 
 procedure TFormInvariance.GLSceneViewer1MouseDown(Sender: TObject;

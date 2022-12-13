@@ -2,96 +2,68 @@ object FormBlur: TFormBlur
   Left = 290
   Top = 175
   Caption = 'Blur'
-  ClientHeight = 551
-  ClientWidth = 687
+  ClientHeight = 441
+  ClientWidth = 550
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 56
-    Width = 687
-    Height = 495
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 45
+    Width = 550
+    Height = 396
     Camera = GLCamera1
     Buffer.FogEnvironment.FogColor.Color = {1283003F1283003F0000803F0000803F}
     Buffer.FogEnvironment.FogStart = 1.000000000000000000
     Buffer.FogEnvironment.FogEnd = 3.000000000000000000
     Buffer.BackgroundColor = clBackground
     Buffer.AmbientColor.Color = {0000000000000000000000000000803F}
-    FieldOfView = 157.157623291015600000
+    FieldOfView = 151.655319213867200000
     PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
-    ExplicitWidth = 642
-    ExplicitHeight = 483
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 687
-    Height = 56
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 550
+    Height = 45
     Align = alTop
     Caption = ' '
     TabOrder = 1
-    ExplicitWidth = 628
     object Label1: TLabel
-      Left = 10
-      Top = 5
-      Width = 68
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 4
+      Width = 54
+      Height = 13
       Caption = 'Blur Preset:'
     end
     object Label2: TLabel
-      Left = 270
-      Top = 5
-      Width = 77
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 216
+      Top = 4
+      Width = 61
+      Height = 13
       Caption = 'Render Size:'
     end
     object LabelFPS: TLabel
-      Left = 470
-      Top = 33
-      Width = 26
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 376
+      Top = 26
+      Width = 20
+      Height = 13
       Caption = 'FPS'
     end
     object ComboBox1: TComboBox
-      Left = 10
-      Top = 25
-      Width = 201
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 20
+      Width = 161
+      Height = 21
       Style = csDropDownList
       ItemIndex = 0
       TabOrder = 0
@@ -107,14 +79,10 @@ object FormBlur: TFormBlur
         'pAdvancedBlur')
     end
     object ComboBox2: TComboBox
-      Left = 270
-      Top = 25
-      Width = 181
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 216
+      Top = 20
+      Width = 145
+      Height = 21
       Style = csDropDownList
       ItemIndex = 5
       TabOrder = 1

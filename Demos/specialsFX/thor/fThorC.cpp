@@ -28,7 +28,8 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
+  SetCurrentDir(Path  + "\\texture");
   HeightField1->Material->Texture->Image->LoadFromFile("marbletiles.jpg");
 }
 //---------------------------------------------------------------------------

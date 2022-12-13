@@ -21,10 +21,11 @@ uses
   GLS.CompositeImage,
   GLS.Cadencer,
   GLS.Blur,
- 
+
   GLS.Material,
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLS.BaseClasses,
+  GLS.Utils;
 
 type
   TFormBlur = class(TForm)
@@ -67,19 +68,12 @@ implementation
 
 procedure TFormBlur.FormCreate(Sender: TObject);
 var
-  MediaPath : String;
   I : Integer;
 
 begin
-  MediaPath := ExtractFilePath(ParamStr(0));
-  I := Pos('Demos', MediaPath);
-  if (I <> 0) then
-  begin
-    Delete(MediaPath, I+5, Length(MediaPath)-(I+5));
-    SetCurrentDir(MediaPath+'Media\');
-  end;
-  MediaPath := MediaPath+'Media\';
-  GLMaterialLibrary1.TexturePaths := MediaPath;
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
+  GLMaterialLibrary1.TexturePaths := GetCurrentDir();
   // Add GLS.Blur to scene
   B := TGLBlur.Create(self);
   GLCube1.AddChild(B);

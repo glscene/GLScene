@@ -88,7 +88,9 @@ implementation
 
 procedure TFormThor.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
+
   HeightField1.Material.Texture.Image.LoadFromFile('marbletiles.jpg');
 end;
 

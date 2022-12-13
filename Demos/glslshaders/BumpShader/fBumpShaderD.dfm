@@ -2,8 +2,8 @@ object FormBumpShader: TFormBumpShader
   Left = 261
   Top = 176
   Caption = 'GLSL Bump Shader'
-  ClientHeight = 386
-  ClientWidth = 571
+  ClientHeight = 437
+  ClientWidth = 646
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,28 +18,32 @@ object FormBumpShader: TFormBumpShader
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 400
-    Height = 386
+    Width = 475
+    Height = 437
     Camera = Camera
     Buffer.BackgroundColor = clBackground
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aaNone
     Buffer.DepthPrecision = dp24bits
     Buffer.ColorDepth = cd24bits
-    FieldOfView = 142.774230957031300000
+    FieldOfView = 146.866317749023400000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ViewerMouseDown
     OnMouseMove = ViewerMouseMove
     TabOrder = 0
+    ExplicitWidth = 445
+    ExplicitHeight = 414
   end
   object Panel1: TPanel
-    Left = 400
+    Left = 475
     Top = 0
     Width = 171
-    Height = 386
+    Height = 437
     Align = alRight
     TabOrder = 1
+    ExplicitLeft = 400
+    ExplicitHeight = 386
     object LightMovingCheckBox: TCheckBox
       Left = 8
       Top = 8

@@ -27,7 +27,6 @@ uses
   GLS.BitmapFont,
   GLS.GeomObjects,
   GLS.RenderContextInfo,
-  GLS.Utils,
   GLS.Mesh,
   GLS.VectorFileObjects;
 
@@ -81,9 +80,6 @@ implementation
 
 procedure TFormTorque.FormCreate(Sender: TObject);
 begin
-  // Load the font bitmap from media dir
-  SetGLSceneMediaDir();
-  GLBitmapFont1.Glyphs.LoadFromFile('darkgold_font.bmp');
   // Initialize last time
   lastTime := Now * 3600 * 24;
   // Initialize rotation dampings...

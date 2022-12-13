@@ -43,7 +43,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender) {
 	 }
 	 */
 	// Our cube map images are here
-	SetGLSceneMediaDir();
+	TFileName Path = GetCurrentAssetPath();
 	// We need a CubeMapImage, which unlike the "regular Images" stores
 	// multiple images.
 

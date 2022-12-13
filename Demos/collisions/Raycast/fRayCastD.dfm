@@ -3,70 +3,49 @@ object FormRayCast: TFormRayCast
   Top = 79
   AutoSize = True
   Caption = 'Ray Cast'
-  ClientHeight = 323
-  ClientWidth = 631
+  ClientHeight = 258
+  ClientWidth = 505
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Arial'
   Font.Style = []
   Position = poScreenCenter
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 14
   object Bevel2: TBevel
-    Left = 350
-    Top = 61
-    Width = 281
-    Height = 262
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 280
+    Top = 49
+    Width = 225
+    Height = 209
   end
   object Bevel1: TBevel
     Left = 0
-    Top = 61
-    Width = 281
-    Height = 262
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 49
+    Width = 225
+    Height = 209
   end
   object PaintBox1: TPaintBox
-    Left = 360
-    Top = 70
-    Width = 261
-    Height = 241
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 288
+    Top = 56
+    Width = 209
+    Height = 193
   end
   object GLSceneViewer1: TGLSceneViewer
-    Left = 10
-    Top = 71
-    Width = 261
-    Height = 242
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 8
+    Top = 57
+    Width = 209
+    Height = 193
     Camera = GLCamera1
-    FieldOfView = 135.096908569335900000
+    FieldOfView = 125.219512939453100000
     PenAsTouch = False
     TabOrder = 0
   end
   object BUCast: TButton
-    Left = 290
-    Top = 111
-    Width = 51
-    Height = 32
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 232
+    Top = 89
+    Width = 41
+    Height = 25
     Caption = 'Cast!'
     TabOrder = 1
     OnClick = BUCastClick
@@ -74,67 +53,50 @@ object FormRayCast: TFormRayCast
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 631
-    Height = 61
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 505
+    Height = 49
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 2
     object Label1: TLabel
       Left = 0
       Top = 0
-      Width = 631
-      Height = 28
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 505
+      Height = 22
       Align = alTop
       Alignment = taCenter
       AutoSize = False
       Caption = 'RayCasting demo/testbed'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -13
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentFont = False
       Layout = tlCenter
-      ExplicitWidth = 641
     end
     object Label2: TLabel
-      Left = 10
-      Top = 40
-      Width = 126
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 32
+      Width = 100
+      Height = 14
       Caption = 'OpenGL scene view'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -14
+      Font.Height = -11
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 360
-      Top = 40
-      Width = 174
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 288
+      Top = 32
+      Width = 136
+      Height = 14
       Caption = 'RayCasted/RayTraced view'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -14
+      Font.Height = -11
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False

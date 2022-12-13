@@ -94,11 +94,13 @@ end;
 
 procedure TFormWaterPlane.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
   GLMaterialLibrary1.TexturePaths := GetCurrentDir();
   GLWaterPlane1.Mask.LoadFromFile('basinMask.bmp');
   GLHeightField1.Material.Texture.Image.LoadFromFile('clover.jpg');
-  SetCurrentDir(GLMaterialLibrary1.TexturePaths + '\Cubemaps');
+  
+  SetCurrentDir(Path  + '\cubemap');
   // Load the cube map which is used both for environment and as reflection texture
   with GLMaterialLibrary1.Materials[0].Material.Texture do
   begin

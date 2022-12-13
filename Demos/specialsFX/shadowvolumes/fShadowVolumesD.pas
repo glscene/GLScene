@@ -112,7 +112,7 @@ var
   X, Y, z: Integer;
   sphere: TGLSphere;
 begin
-  SetGLSceneMediaDir;
+  SetCurrentDirToAssets;
   // Dynamically construct an array of spheres, and make them shadow casters
   // Note that as the spheres are children of the shadowvolume component,
   // they are thus also shadow receivers. If they were created as child of

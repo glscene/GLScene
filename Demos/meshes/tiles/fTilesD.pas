@@ -33,7 +33,8 @@ uses
   GLS.RenderContextInfo,
   GLS.TextureFormat,
   GLS.Keyboard,
-  GLS.Utils, GLS.SimpleNavigation;
+  GLS.Utils,
+  GLS.SimpleNavigation;
 
 type
   TFormTiles = class(TForm)
@@ -93,7 +94,8 @@ procedure TFormTiles.FormCreate(Sender: TObject);
 var
   i, j: Integer;
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
   GLMaterialLibrary.TexturePaths := GetCurrentDir();
   GLMaterialLibrary.LibMaterialByName('beigemarble').Material.Texture.Image.LoadFromFile('beigemarble.jpg');
   GLMaterialLibrary.LibMaterialByName('marbletiles').Material.Texture.Image.LoadFromFile('marbletiles.jpg');

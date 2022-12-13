@@ -1,4 +1,4 @@
-{: Verlet cloth simulation and verlet constraints controlled by an
+(* Verlet cloth simulation and verlet constraints controlled by an
    actor's skeleton.
 
    Verlet physics is used to simulate a cloth-like effect on a mesh.
@@ -14,12 +14,12 @@
 
    A dynamic octree is used here to give a little performace boost to
    the verlet testing.
-}
+*)
 program ClothActorD;
 
 uses
   Forms,
-  fClothActorD in 'fClothActorD.pas' {FormClothActor};
+  fClothActorD in 'fClothActorD.pas';
 
 {$R *.res}
 

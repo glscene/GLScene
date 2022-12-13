@@ -86,14 +86,21 @@ implementation
 
 procedure TFormActor.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
   // Load Texture for ground disk
-  DiskRing.Material.Texture.Image.LoadFromFile('clover.jpg');
   DiskRing.Material.Texture.Disabled := False;
+  DiskRing.Material.Texture.Image.LoadFromFile('clover.jpg');
 
-  // Load Actor from file
+
+  // Load dynamic model of Actor with animation
+  SetCurrentDir(Path  + '\modelext');
   Actor1.LoadFromFile('waste.md2');
-  Actor1.Material.Texture.Image.LoadFromFile('waste.jpg');
+  // Load Texture for Actor1 and Weapon
+  Actor1.Material.Texture.Disabled := False;
+  Actor1.Material.Texture.Image.LoadFromFile('Waste.jpg');
+  Actor2.Material.Texture.Disabled := False;
+  Actor2.Material.Texture.Image.LoadFromFile('WeaponWaste.jpg');
 
   // Load Quake2 animations defaults, for "waste.md2", this is not required
   // since the author did not renamed the frames, and thus, GLScene can
@@ -142,7 +149,6 @@ procedure TFormActor.BBLoadWeaponClick(Sender: TObject);
 begin
   // Load weapon model and texture
   Actor2.LoadFromFile('WeaponWaste.md2');
-  Actor2.Material.Texture.Image.LoadFromFile('WeaponWaste.jpg');
 
   // Get animations frames from the main actor
   Actor2.Animations.Assign(Actor1.Animations);

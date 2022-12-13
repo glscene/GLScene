@@ -83,10 +83,10 @@ implementation
 {$R *.DFM}
 
 procedure TFormProjTextures.FormCreate(Sender: TObject);
-var
-  Path: TFilename;
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
+
   matLib.Materials[0].Material.Texture.Image.LoadFromFile('projector.tga');
   matLib.Materials[1].Material.Texture.Image.LoadFromFile('flare1.bmp');
 
@@ -97,8 +97,7 @@ begin
   emitter2.Material.LibMaterialName:= 'spot2';
   emitter2.FOVy:= 40;
   // Images from Cubemaps directory
-  Path := GetCurrentDir() + '\Cubemaps';
-  SetCurrentDir(Path);
+  SetCurrentDir(Path  + '\cubemap');
   GLPlane1.Material.Texture.Image.LoadFromFile('cm_front.jpg');
   GLPlane2.Material.Texture.Image.LoadFromFile('cm_left.jpg');
   GLPlane3.Material.Texture.Image.LoadFromFile('cm_bottom.jpg');
@@ -111,12 +110,9 @@ procedure TFormProjTextures.GLCadencer1Progress(Sender: TObject; const deltaTime
   newTime: Double);
 begin
      ang:= ang + deltatime*20;
-
      Light.Position.Y:= sin(degToRad(ang));
      light.position.x:= cos(degToRad(ang));
-
      light2.pitch(deltatime*20);
-
      viewer.invalidate;
 end;
 
@@ -143,7 +139,6 @@ begin
           else if shift = [ssRight] then
                camera.AdjustDistanceToTarget(1.0 + (y - my) / 100);
      end;
-
      mx:= x;
      my:= y;
 end;
@@ -155,7 +150,6 @@ begin
           emitter1.FOVy:= emitter1.FOVy + 5
      else if key = VK_SUBTRACT then
           emitter1.FOVy:= emitter1.FOVy - 5;
-
      if chr(Key) = 'S' then
           if ProjLight.style = ptsOriginal then
                ProjLight.style:= ptsInverse

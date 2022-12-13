@@ -23,8 +23,9 @@ TForm1 *Form1;
 __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
 {
   __int64 t;
-  SetGLSceneMediaDir();
-  // Load high poly mesh (10,000 triangles).
+  TFileName Path = GetCurrentAssetPath();
+  // Load high poly mesh (10 000 triangles).
+  SetCurrentDir(Path + "\\model");
   FreeForm1->LoadFromFile("HighPolyObject.3ds");
 
   t = StartPrecisionTimer();

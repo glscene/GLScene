@@ -95,9 +95,10 @@ implementation
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\model');
   // Load the bunny mesh and scale for viewing
-  ffBunny.LoadFromFile('Models\bunny.glsm');
+  ffBunny.LoadFromFile('bunny.glsm');
 //  ffBunny.LoadFromFile('bunny.obj');
   ffBunny.Scale.Scale(2 / ffBunny.BoundingSphereRadius);
   ffBunny.RollAngle := 90;

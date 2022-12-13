@@ -143,7 +143,9 @@ implementation
 //-----------------------------------------------------------------
 procedure TFormClothify.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\model');
+  
   ComboBox_MeshName.ItemIndex := 0;
   ComboBox_ConstraintType.ItemIndex := 0;
   ComboBox_Collider.ItemIndex := 3;

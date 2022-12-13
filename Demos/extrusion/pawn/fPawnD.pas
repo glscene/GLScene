@@ -76,7 +76,8 @@ implementation
 
 procedure TFormPawn.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
   RotationSolid1.Material.Texture.Image.LoadFromFile('ashwood.jpg');
 end;
 

@@ -37,9 +37,8 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  Width  = Screen->Width;
-  Height = Screen->Height;
-  WindowState = wsMaximized;
+//  Width  = Screen->Width;
+//  Height = Screen->Height;
 
   MainMaterialLibrary->TextureByName("MultisampledColor")->ImageClassName = "TGLMultisampleImage";
   ((TGLMultisampleImage *)(MainMaterialLibrary->TextureByName("MultisampledColor")->Image))->SamplesCount = 16;
@@ -109,12 +108,13 @@ void __fastcall TForm1::GLSLShader1Apply(TGLCustomGLSLShader *Shader)
 
 void __fastcall TForm1::MainViewerBeforeRender(TObject *Sender)
 {
+/*
   if (GL_EXT_framebuffer_multisample)
   {
-	ShowMessage
-	  ("Sorry, your hardware do not support Multisampling");
+	ShowMessage("Sorry, your hardware do not support Multisampling");
 	Close();
   }
+*/
 }
 //---------------------------------------------------------------------------
 

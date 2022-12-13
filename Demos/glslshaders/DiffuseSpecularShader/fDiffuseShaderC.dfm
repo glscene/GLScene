@@ -2,27 +2,22 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'GLSL Diffuse Specular Shader'
-  ClientHeight = 533
-  ClientWidth = 721
+  ClientHeight = 504
+  ClientWidth = 655
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 721
-    Height = 476
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 655
+    Height = 459
     Camera = Camera
     Buffer.FogEnvironment.FogColor.Color = {ACC8483E9A99193FCDCC4C3F9A99993E}
     Buffer.FogEnvironment.FogStart = 50.000000000000000000
@@ -33,31 +28,27 @@ object Form1: TForm1
     Buffer.AntiAliasing = aaNone
     Buffer.DepthPrecision = dp24bits
     Buffer.ColorDepth = cd24bits
-    FieldOfView = 149.449020385742200000
+    FieldOfView = 148.373168945312500000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 628
+    ExplicitHeight = 408
   end
   object Panel1: TPanel
     Left = 0
-    Top = 476
-    Width = 721
-    Height = 57
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 459
+    Width = 655
+    Height = 45
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 381
+    ExplicitWidth = 577
     object LightMovingCheckBox: TCheckBox
-      Left = 10
-      Top = 10
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 8
+      Width = 97
+      Height = 17
       Caption = 'Light is Moving'
       Checked = True
       Color = clBtnFace
@@ -66,68 +57,50 @@ object Form1: TForm1
       TabOrder = 0
     end
     object ShaderEnabledCheckBox: TCheckBox
-      Left = 220
-      Top = 10
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 176
+      Top = 8
+      Width = 97
+      Height = 17
       Caption = 'Shader Enabled'
       Checked = True
       State = cbChecked
       TabOrder = 1
     end
     object PitchRollTurnCheckBox: TCheckBox
-      Left = 10
-      Top = 30
-      Width = 171
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 24
+      Width = 137
+      Height = 17
       Caption = 'Pitch-Roll-Turn Enabled'
       Checked = True
       State = cbChecked
       TabOrder = 2
     end
     object RealisticSpecularCheckBox: TCheckBox
-      Left = 420
-      Top = 10
-      Width = 171
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 336
+      Top = 8
+      Width = 137
+      Height = 17
       Caption = 'Realistic Specular Mode'
       TabOrder = 3
       OnClick = RealisticSpecularCheckBoxClick
     end
     object MultiLightShaderCheckBox: TCheckBox
-      Left = 220
-      Top = 30
-      Width = 141
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 176
+      Top = 24
+      Width = 113
+      Height = 17
       Caption = 'MultiLight Shader'
+      Checked = True
+      State = cbChecked
       TabOrder = 4
       OnClick = MultiLightShaderCheckBoxClick
     end
     object EnableFogCheckBox: TCheckBox
-      Left = 420
-      Top = 30
-      Width = 171
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 336
+      Top = 24
+      Width = 137
+      Height = 17
       Caption = 'Enable fog'
       TabOrder = 5
       OnClick = EnableFogCheckBoxClick

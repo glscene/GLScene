@@ -40,9 +40,7 @@ type
     procedure CadencerProgress(Sender: TObject;
       const deltaTime, newTime: Double);
   private
-    { Private declarations }
   public
-
   end;
 
 var

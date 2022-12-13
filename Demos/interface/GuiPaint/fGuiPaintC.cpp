@@ -27,7 +27,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
   GLMaterialLibrary1->TexturePaths = GetCurrentDir();
   GLCanvas->MaxInvalidRenderCount = 40;
   StartX = -1;

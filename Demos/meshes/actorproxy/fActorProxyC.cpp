@@ -31,7 +31,8 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 {
   int i;
 
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
+  SetCurrentDir(Path  + "\\modelext");
   MasterActor->LoadFromFile("TRINITYrage.smd");
   MasterActor->AddDataFromFile("run.smd");
   MasterActor->AddDataFromFile("jump.smd");
@@ -63,8 +64,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
 {
 	 mouseX = X;
 	 mouseY = Y;
-
-}
+ }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::DoRaycastStuff()

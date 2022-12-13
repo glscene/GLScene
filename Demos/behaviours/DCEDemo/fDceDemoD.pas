@@ -104,23 +104,25 @@ implementation
 
 procedure TFormDCE.Load;
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
 
-  // Load Materials
+  // Load texture material for terrain
+  SetCurrentDir(Path  + '\texture');
   GLMatlLib.AddTextureMaterial('Terrain', 'snow512.jpg');
-  GLMatlLib.AddTextureMaterial('Actor', 'waste.jpg');
 
   // Load Terrain
   GLBitmapHDS1.MaxPoolSize := 8 * 1024 * 1024;
   GLBitmapHDS1.Picture.LoadFromFile('terrain.bmp');
   Terrain.Direction.SetVector(0, 1, 0);
-  Terrain.Material.LibMaterialName := 'Terrain';
+  //Terrain.Material.LibMaterialName := 'Terrain';
   Terrain.TilesPerTexture := 256 / Terrain.TileSize;
   Terrain.Scale.SetVector(1, 1, 0.02);
 
   Ground.Material.LibMaterialName := 'Terrain';
 
-  // Load mushroom mesh
+  // Load static models
+  SetCurrentDir(Path + '\model');
+  // Mushroom mesh
   // Always use AutoScaling property or you may get some problems
   moMushroom.AutoScaling.SetPoint(0.1, 0.1, 0.1);
   moMushroom.LoadFromFile('Mushroom.3ds');
@@ -129,7 +131,10 @@ begin
 
   // Load player
   Player.Position.SetPoint(0, 3, 0);
-  // Actor
+
+  // Load dyn modelexts with textures and animations
+  SetCurrentDir(Path + '\modelext');
+  GLMatlLib.AddTextureMaterial('Actor', 'waste.jpg');
   GLActor1.LoadFromFile('Waste.md2');
   GLActor1.Direction.SetVector(0, 1, 0);
   GLActor1.Up.SetVector(1, 0, 0);

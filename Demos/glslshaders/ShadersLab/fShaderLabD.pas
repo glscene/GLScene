@@ -47,7 +47,7 @@ uses
   GLS.MeshUtils,
   GLS.Utils,
   GLS.GeomObjects,
-  GLS.SimpleNavigation, 
+  GLS.SimpleNavigation,
   GLS.HUDObjects,
 
   GLSL.CustomShader,
@@ -307,10 +307,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure chkFurShaderClick(Sender: TObject);
-    procedure CadencerProgress(Sender: TObject;
-      const deltaTime, newTime: Double);
-    procedure LightCubeProgress(Sender: TObject;
-      const deltaTime, newTime: Double);
+    procedure CadencerProgress(Sender: TObject; const deltaTime, newTime: Double);
+    procedure LightCubeProgress(Sender: TObject; const deltaTime, newTime: Double);
     procedure tbFurLengthChange(Sender: TObject);
     procedure tbLatticeScaleXChange(Sender: TObject);
     procedure chkLatticeShaderClick(Sender: TObject);
@@ -318,8 +316,7 @@ type
     procedure tbLatticeThresholdXChange(Sender: TObject);
     procedure tbLatticeThresholdYChange(Sender: TObject);
     procedure chkIvoryShaderClick(Sender: TObject);
-    procedure LightCube2Progress(Sender: TObject;
-      const deltaTime, newTime: Double);
+    procedure LightCube2Progress(Sender: TObject; const deltaTime, newTime: Double);
     procedure cbxFurBlendDestChange(Sender: TObject);
     procedure cbxFurBlendSrcChange(Sender: TObject);
     procedure tbFurPassCountChange(Sender: TObject);
@@ -328,20 +325,20 @@ type
     procedure tbFurDensityChange(Sender: TObject);
     procedure chkFurRandomLengthClick(Sender: TObject);
     procedure tbFurLightPowerChange(Sender: TObject);
-    procedure Shape1MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure Shape2MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure Shape3MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure Shape4MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure Shape5MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure Shape6MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure Shape7MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
+    procedure Shape1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
+    procedure Shape2MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
+    procedure Shape3MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
+    procedure Shape4MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
+    procedure Shape5MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
+    procedure Shape6MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
+    procedure Shape7MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
     procedure tbGoochDFactorChange(Sender: TObject);
     procedure tbGoochWFactorChange(Sender: TObject);
     procedure tbGoochCFactorChange(Sender: TObject);
@@ -359,28 +356,28 @@ type
     procedure tbErosionSpecularFChange(Sender: TObject);
     procedure tbErosionSpecularRChange(Sender: TObject);
     procedure tbErosionAnisoRChange(Sender: TObject);
-    procedure shAmbientErosionMouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure shSpecularErosionMouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
+    procedure shAmbientErosionMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
+    procedure shSpecularErosionMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
     procedure tbLatticeSpecularPowerChange(Sender: TObject);
     procedure tbLatticeLightPowerChange(Sender: TObject);
-    procedure Shape10MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure Shape11MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure Shape12MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
+    procedure Shape10MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
+    procedure Shape11MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
+    procedure Shape12MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
     procedure cbxGootchBlendModeChange(Sender: TObject);
     procedure tbGoochAlphaChange(Sender: TObject);
     procedure chkSEMShaderClick(Sender: TObject);
     procedure tbSemDiffuseFChange(Sender: TObject);
     procedure tbSemAmbientFChange(Sender: TObject);
     procedure tbSemSpecularFChange(Sender: TObject);
-    procedure Shape13MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure Shape14MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
+    procedure Shape13MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
+    procedure Shape14MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
     procedure chkVDShaderClick(Sender: TObject);
     procedure tbVDDiffuseFChange(Sender: TObject);
     procedure tbVDAmbientFChange(Sender: TObject);
@@ -401,8 +398,8 @@ type
     procedure Button4Click(Sender: TObject);
     procedure Button9Click(Sender: TObject);
     procedure chkGlassShaderClick(Sender: TObject);
-    procedure Shape17MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
+    procedure Shape17MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
     procedure tbGlassDepthChange(Sender: TObject);
     procedure tbGlassMixChange(Sender: TObject);
     procedure Button10Click(Sender: TObject);
@@ -421,16 +418,18 @@ type
     procedure tbToonMidSizeChange(Sender: TObject);
     procedure tbToonShadowSizeChange(Sender: TObject);
     procedure tbToonOutlineWidthChange(Sender: TObject);
-    procedure Shape18MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure Shape19MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure Shape20MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure Shape21MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure Shape22MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
+    procedure Shape18MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
+    procedure Shape19MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
+    procedure Shape20MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
+    procedure Shape21MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
+    procedure Shape22MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
+    public
+      Path: TFileName;
   end;
 
 var
@@ -456,9 +455,9 @@ var
   i, j: Integer;
   v: Single;
 
-//----------------------------------------
+// ----------------------------------------
 implementation
-//----------------------------------------
+// ----------------------------------------
 
 {$R *.dfm}
 
@@ -483,12 +482,141 @@ uses
   GLS.FileDXF,
   GLS.FileGRD;
 
+
+procedure TFormShaderLab.FormCreate(Sender: TObject);
+begin
+  Path := GetCurrentAssetPath();
+  SetCurrentDir(Path + '\model');
+  Screen.Cursor := crHourGlass;
+  // FreeForm.IgnoreMissingTextures := True;
+  FreeForm.LoadFromFile('suzanne-blender.obj');
+  FreeForm.Visible := False;
+
+  // Then load textures
+  SetCurrentDir(Path + '\texture');
+
+  MaterialLibrary.LibMaterialByName('ShaderMaterial').Material.Texture.Image.LoadFromFile
+    ('bigtiger.jpg');
+  MaterialLibrary.LibMaterialByName('BackgroundTex').Material.Texture.Image.LoadFromFile
+    ('randal.jpg');
+
+  FreeForm.Material.MaterialLibrary := MaterialLibrary;
+  FreeForm.Material.LibMaterialName := 'ShaderMaterial';
+  GLTorus1.Material.MaterialLibrary := MaterialLibrary;
+  GLTorus1.Material.LibMaterialName := 'ShaderMaterial';
+  GLTorus1.Visible := False;
+  GLSphere1.Material.MaterialLibrary := MaterialLibrary;
+  GLSphere1.Material.LibMaterialName := 'ShaderMaterial';
+  GLSphere1.Visible := False;
+
+  MaterialLibrary.LibMaterialByName('MainTexture').Material.Texture.Image.LoadFromFile
+    ('bigtiger.jpg');
+
+  // My Shader
+  FurShader := TGLSLFurShader.Create(self);
+  MaterialLibrary.LibMaterialByName('NoiseTexture').Material.Texture.Image.LoadFromFile('fur.tga');
+  FurShader.MaterialLibrary := MaterialLibrary;
+  FurShader.MainTextureName := 'MainTexture';
+  FurShader.NoiseTextureName := 'NoiseTexture';
+  FurShader.Gravity.X := 0;
+  FurShader.Gravity.Y := -2.0;
+  FurShader.Gravity.Z := 0;
+  FurShader.Enabled := False;
+
+  LatticeShader := TGLSLLatticeShader.Create(self);
+  LatticeShader.MaterialLibrary := MaterialLibrary;
+  LatticeShader.MainTextureName := 'MainTexture';
+  LatticeShader.Enabled := False;
+
+  ErosionShader := TGLSLSimpleErosionShader.Create(self);
+  MaterialLibrary.LibMaterialByName('ErosionNoiseTexture').Material.Texture.Image.LoadFromFile
+    ('ErosionNoise.tga');
+  MaterialLibrary.LibMaterialByName('ErosionMainTexture').Material.Texture.Image.LoadFromFile
+    ('eroded_scratch_metal_texture.jpg');
+  MaterialLibrary.LibMaterialByName('ErosionTexture').Material.Texture.Image.LoadFromFile
+    ('rust_eroded_scratch_metal_texture.jpg');
+  ErosionShader.MaterialLibrary := MaterialLibrary;
+  ErosionShader.MainTextureName := 'ErosionMainTexture';
+  ErosionShader.ErosionTextureName := 'ErosionTexture';
+  ErosionShader.NoiseTextureName := 'ErosionNoiseTexture';
+  ErosionShader.Enabled := False;
+
+  IvoryShader := TGLSLIvoryShader.Create(self);
+  IvoryShader.Enabled := False;
+
+  GoochShader := TGLSLSimpleGoochShader.Create(self);
+  GoochShader.Enabled := False;
+
+  SEMShader := TGLSLSemShader.Create(self);
+  MaterialLibrary.LibMaterialByName('MatCapTexture').Material.Texture.Image.LoadFromFile
+    ('metal_matcap.jpg');
+  SEMShader.MaterialLibrary := MaterialLibrary;
+  SEMShader.MainTextureName := 'MatCapTexture';
+  SEMShader.Enabled := False;
+
+  VertexDisplacementShader := TGLSLVertexDisplacementShader.Create(self);
+  MaterialLibrary.LibMaterialByName('ExplosionTexture').Material.Texture.Image.LoadFromFile
+    ('FireGrade2.png');
+  VertexDisplacementShader.MaterialLibrary := MaterialLibrary;
+  VertexDisplacementShader.MainTextureName := 'ExplosionTexture';
+  VertexDisplacementShader.Enabled := False;
+
+  GlassShader := TGLSLGlassShader.Create(self);
+  MaterialLibrary.LibMaterialByName('RefractMap').Material.Texture.Image.LoadFromFile('barts.jpg');
+
+  // Don't load any texture in EnvMap let it empty. The EnvMap is auto generated
+  // MaterialLibrary.LibMaterialByName('EnvMap').Material.Texture.Image.LoadFromFile('textures\metal_matcap.jpg');
+  // But we need to make a ScreenShoot of the Scene Once before Enbale the GlassShader; otherwise an exception is raised
+  // I don't say at this time how to correct this
+  // capture and create material from framebuffer
+  Viewer.Buffer.CopyToTexture(MaterialLibrary.LibMaterialByName('EnvMap').Material.Texture);
+
+  GlassShader.MaterialLibrary := MaterialLibrary;
+  GlassShader.MainTextureName := 'EnvMap';
+  GlassShader.RefractionTextureName := 'RefractMap';
+
+  GlassShader.OwnerObject := FreeForm;
+  // GlassShader.Viewer := Viewer;
+  GlassShader.Enabled := False;
+
+  ToonShader := TGLSLToonShader.Create(self);
+
+  FreeForm.Visible := true;
+
+  Screen.Cursor := crDefault;
+  i := 0;
+  j := 0;
+  v := 0.0;
+end;
+
+procedure TFormShaderLab.FormDestroy(Sender: TObject);
+begin
+  Cadencer.Enabled := False;
+  FurShader.Free;
+  LatticeShader.Free;
+  IvoryShader.Free;
+  GoochShader.Free;
+  ErosionShader.Free;
+  SEMShader.Free;
+  VertexDisplacementShader.Free;
+  GlassShader.Free;
+end;
+
+procedure TFormShaderLab.FormResize(Sender: TObject);
+begin
+  ScreenBackGround.Width := Viewer.Width;
+  ScreenBackGround.Height := Viewer.Height;
+
+  ScreenBackGround.Position.X := Viewer.Width / 2;
+  ScreenBackGround.Position.Y := Viewer.Height / 2;
+end;
+
 procedure TFormShaderLab.Button10Click(Sender: TObject);
 begin
   if OpenPictureDialog.Execute then
   begin
-    MaterialLibrary.LibMaterialByName('RefractMap')
-      .Material.Texture.Image.LoadFromFile(OpenPictureDialog.FileName);
+    MaterialLibrary.LibMaterialByName('RefractMap').Material.Texture.Image.LoadFromFile
+      (OpenPictureDialog.FileName);
   end;
 end;
 
@@ -496,8 +624,8 @@ procedure TFormShaderLab.Button11Click(Sender: TObject);
 begin
   if OpenPictureDialog.Execute then
   begin
-    MaterialLibrary.LibMaterialByName('BackgroundTex')
-      .Material.Texture.Image.LoadFromFile(OpenPictureDialog.FileName);
+    MaterialLibrary.LibMaterialByName('BackgroundTex').Material.Texture.Image.LoadFromFile
+      (OpenPictureDialog.FileName);
   end;
 end;
 
@@ -505,8 +633,8 @@ procedure TFormShaderLab.Button1Click(Sender: TObject);
 begin
   if OpenPictureDialog.Execute then
   begin
-    MaterialLibrary.LibMaterialByName('ExplosionTexture')
-      .Material.Texture.Image.LoadFromFile(OpenPictureDialog.FileName);
+    MaterialLibrary.LibMaterialByName('ExplosionTexture').Material.Texture.Image.LoadFromFile
+      (OpenPictureDialog.FileName);
   end;
 end;
 
@@ -527,8 +655,8 @@ procedure TFormShaderLab.Button4Click(Sender: TObject);
 begin
   if OpenPictureDialog.Execute then
   begin
-    MaterialLibrary.LibMaterialByName('MatCapTexture')
-      .Material.Texture.Image.LoadFromFile(OpenPictureDialog.FileName);
+    MaterialLibrary.LibMaterialByName('MatCapTexture').Material.Texture.Image.LoadFromFile
+      (OpenPictureDialog.FileName);
   end;
 end;
 
@@ -536,8 +664,8 @@ procedure TFormShaderLab.Button5Click(Sender: TObject);
 begin
   if OpenPictureDialog.Execute then
   begin
-    MaterialLibrary.LibMaterialByName('ErosionMainTexture')
-      .Material.Texture.Image.LoadFromFile(OpenPictureDialog.FileName);
+    MaterialLibrary.LibMaterialByName('ErosionMainTexture').Material.Texture.Image.LoadFromFile
+      (OpenPictureDialog.FileName);
   end;
 end;
 
@@ -545,8 +673,8 @@ procedure TFormShaderLab.Button6Click(Sender: TObject);
 begin
   if OpenPictureDialog.Execute then
   begin
-    MaterialLibrary.LibMaterialByName('ErosionTexture')
-      .Material.Texture.Image.LoadFromFile(OpenPictureDialog.FileName);
+    MaterialLibrary.LibMaterialByName('ErosionTexture').Material.Texture.Image.LoadFromFile
+      (OpenPictureDialog.FileName);
   end;
 end;
 
@@ -554,8 +682,8 @@ procedure TFormShaderLab.Button8Click(Sender: TObject);
 begin
   if OpenPictureDialog.Execute then
   begin
-    MaterialLibrary.LibMaterialByName('MainTexture')
-      .Material.Texture.Image.LoadFromFile(OpenPictureDialog.FileName);
+    MaterialLibrary.LibMaterialByName('MainTexture').Material.Texture.Image.LoadFromFile
+      (OpenPictureDialog.FileName);
   end;
 end;
 
@@ -563,16 +691,13 @@ procedure TFormShaderLab.Button9Click(Sender: TObject);
 begin
   if OpenPictureDialog.Execute then
   begin
-    MaterialLibrary.LibMaterialByName('NoiseTexture')
-      .Material.Texture.Image.LoadFromFile(OpenPictureDialog.FileName);
+    MaterialLibrary.LibMaterialByName('NoiseTexture').Material.Texture.Image.LoadFromFile
+      (OpenPictureDialog.FileName);
   end;
 end;
 
-procedure TFormShaderLab.CadencerProgress(Sender: TObject;
-  const deltaTime, newTime: Double);
-
+procedure TFormShaderLab.CadencerProgress(Sender: TObject; const deltaTime, newTime: Double);
 begin
-
   if chkAnimScene.Checked then
   begin
     // GLSphere1.Pitch(40 * deltaTime);
@@ -581,7 +706,7 @@ begin
     Objects.Roll(40 * deltaTime);
   end;
 
-  if TabSheet1.Enabled then //Fur
+  if TabSheet1.Enabled then // Fur
   begin
     if (i <= 10) and (j >= 0) then
     begin
@@ -605,7 +730,6 @@ begin
   begin
     VertexDisplacementShader.ElapsedTime := newTime;
   end;
-
   Viewer.Invalidate;
 end;
 
@@ -631,30 +755,40 @@ end;
 
 procedure TFormShaderLab.cbxGoochBlendDstChange(Sender: TObject);
 begin
-  //GoochShader.BlendDst := TGLBlendFunction(cbxGoochBlendDst.ItemIndex);
+  // GoochShader.BlendDst := TGLBlendFunction(cbxGoochBlendDst.ItemIndex);
 end;
 
 procedure TFormShaderLab.cbxGoochBlendSrcChange(Sender: TObject);
 begin
-  //GoochShader.BlendSrc := TGLBlendFunction(cbxGoochBlendSrc.ItemIndex);
+  // GoochShader.BlendSrc := TGLBlendFunction(cbxGoochBlendSrc.ItemIndex);
 end;
 
 procedure TFormShaderLab.cbxGootchBlendModeChange(Sender: TObject);
 begin
   case cbxGootchBlendMode.ItemIndex of
-    0: GoochShader.BlendingMode := bmxOpaque;
-    1: GoochShader.BlendingMode := bmxTransparency;
-    2: GoochShader.BlendingMode := bmxAdditive;
-    3: GoochShader.BlendingMode := bmxAlphaTest50;
-    4: GoochShader.BlendingMode := bmxAlphaTest100;
-    5: GoochShader.BlendingMode := bmxModulate;
-    6: GoochShader.BlendingMode := bmxDestColorOne;
-    7: GoochShader.BlendingMode := bmxDestAlphaOne;
+    0:
+      GoochShader.BlendingMode := bmxOpaque;
+    1:
+      GoochShader.BlendingMode := bmxTransparency;
+    2:
+      GoochShader.BlendingMode := bmxAdditive;
+    3:
+      GoochShader.BlendingMode := bmxAlphaTest50;
+    4:
+      GoochShader.BlendingMode := bmxAlphaTest100;
+    5:
+      GoochShader.BlendingMode := bmxModulate;
+    6:
+      GoochShader.BlendingMode := bmxDestColorOne;
+    7:
+      GoochShader.BlendingMode := bmxDestAlphaOne;
   end;
 end;
 
 procedure TFormShaderLab.cbxObjectsChange(Sender: TObject);
 begin
+  // Then load textures
+  SetCurrentDir(Path + '\model');
   case cbxObjects.ItemIndex of
     0:
       begin
@@ -806,8 +940,7 @@ begin
   if VertexDisplacementShader.Enabled then
   begin
     // MaterialLibrary.LibMaterialByName('ShaderMaterial').Shader.Enabled := False;
-    MaterialLibrary.LibMaterialByName('ShaderMaterial').Shader :=
-      VertexDisplacementShader
+    MaterialLibrary.LibMaterialByName('ShaderMaterial').Shader := VertexDisplacementShader
   end
   else
     MaterialLibrary.LibMaterialByName('ShaderMaterial').Shader := nil;
@@ -815,28 +948,28 @@ end;
 
 procedure TFormShaderLab.EditFloatKeyPress(Sender: TObject; var Key: Char);
 begin
-  if not CharInSet(Key,['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', ',', '-']) then
+  if not CharInSet(Key, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', ',', '-']) then
     Key := #0;
 end;
 
 procedure TFormShaderLab.edtFurGravityXChange(Sender: TObject);
 begin
-  if (edtFurGravityX.Text <> '') and (edtFurGravityX.Text <> '-') and
-    (edtFurGravityX.Text <> ',') and (edtFurGravityX.Text <> '.') then
+  if (edtFurGravityX.Text <> '') and (edtFurGravityX.Text <> '-') and (edtFurGravityX.Text <> ',')
+    and (edtFurGravityX.Text <> '.') then
     FurShader.Gravity.X := StrToFloat(edtFurGravityX.Text);
 end;
 
 procedure TFormShaderLab.edtFurGravityYChange(Sender: TObject);
 begin
-  if (edtFurGravityY.Text <> '') and (edtFurGravityY.Text <> '-') and
-    (edtFurGravityY.Text <> ',') and (edtFurGravityY.Text <> '.') then
+  if (edtFurGravityY.Text <> '') and (edtFurGravityY.Text <> '-') and (edtFurGravityY.Text <> ',')
+    and (edtFurGravityY.Text <> '.') then
     FurShader.Gravity.Y := StrToFloat(edtFurGravityY.Text);
 end;
 
 procedure TFormShaderLab.edtFurGravityZChange(Sender: TObject);
 begin
-  if (edtFurGravityZ.Text <> '') and (edtFurGravityZ.Text <> '-') and
-    (edtFurGravityZ.Text <> ',') and (edtFurGravityZ.Text <> '.') then
+  if (edtFurGravityZ.Text <> '') and (edtFurGravityZ.Text <> '-') and (edtFurGravityZ.Text <> ',')
+    and (edtFurGravityZ.Text <> '.') then
     FurShader.Gravity.Z := StrToFloat(edtFurGravityZ.Text);
 end;
 
@@ -864,138 +997,6 @@ begin
     MaterialLibrary.LibMaterialByName('ShaderMaterial').Shader := nil;
 end;
 
-procedure TFormShaderLab.FormCreate(Sender: TObject);
-begin
-  SetGLSceneMediaDir();
-  Screen.Cursor := crHourGlass;
-  // FreeForm.IgnoreMissingTextures := True;
-
-  FreeForm.LoadFromFile('models\suzanne-blender.obj');
-  FreeForm.Visible := False;
-
-  // Then load textures
-
-  MaterialLibrary.LibMaterialByName('ShaderMaterial')
-    .Material.Texture.Image.LoadFromFile('textures\bigtiger.jpg');
-  MaterialLibrary.LibMaterialByName('BackgroundTex')
-    .Material.Texture.Image.LoadFromFile('textures\randal.jpg');
-
-  FreeForm.Material.MaterialLibrary := MaterialLibrary;
-  FreeForm.Material.LibMaterialName := 'ShaderMaterial';
-  GLTorus1.Material.MaterialLibrary := MaterialLibrary;
-  GLTorus1.Material.LibMaterialName := 'ShaderMaterial';
-  GLTorus1.Visible := False;
-  GLSphere1.Material.MaterialLibrary := MaterialLibrary;
-  GLSphere1.Material.LibMaterialName := 'ShaderMaterial';
-  GLSphere1.Visible := False;
-
-  MaterialLibrary.LibMaterialByName('MainTexture')
-    .Material.Texture.Image.LoadFromFile('textures\bigtiger.jpg');
-
-  // My Shader
-
-  FurShader := TGLSLFurShader.Create(self);
-  MaterialLibrary.LibMaterialByName('NoiseTexture')
-    .Material.Texture.Image.LoadFromFile('textures\fur.tga');
-  FurShader.MaterialLibrary := MaterialLibrary;
-  FurShader.MainTextureName := 'MainTexture';
-  FurShader.NoiseTextureName := 'NoiseTexture';
-  FurShader.Gravity.X := 0;
-  FurShader.Gravity.Y := -2.0;
-  FurShader.Gravity.Z := 0;
-  FurShader.Enabled := False;
-
-  LatticeShader := TGLSLLatticeShader.Create(self);
-  LatticeShader.MaterialLibrary := MaterialLibrary;
-  LatticeShader.MainTextureName := 'MainTexture';
-  LatticeShader.Enabled := False;
-
-  ErosionShader := TGLSLSimpleErosionShader.Create(self);
-  MaterialLibrary.LibMaterialByName('ErosionNoiseTexture')
-    .Material.Texture.Image.LoadFromFile('textures\ErosionNoise.tga');
-  MaterialLibrary.LibMaterialByName('ErosionMainTexture')
-    .Material.Texture.Image.LoadFromFile
-    ('textures\eroded_scratch_metal_texture.jpg');
-  MaterialLibrary.LibMaterialByName('ErosionTexture')
-    .Material.Texture.Image.LoadFromFile
-    ('textures\rust_eroded_scratch_metal_texture.jpg');
-  ErosionShader.MaterialLibrary := MaterialLibrary;
-  ErosionShader.MainTextureName := 'ErosionMainTexture';
-  ErosionShader.ErosionTextureName := 'ErosionTexture';
-  ErosionShader.NoiseTextureName := 'ErosionNoiseTexture';
-  ErosionShader.Enabled := False;
-
-  IvoryShader := TGLSLIvoryShader.Create(self);
-  IvoryShader.Enabled := False;
-
-  GoochShader := TGLSLSimpleGoochShader.Create(self);
-  GoochShader.Enabled := False;
-
-  SEMShader := TGLSLSemShader.Create(self);
-  MaterialLibrary.LibMaterialByName('MatCapTexture')
-    .Material.Texture.Image.LoadFromFile('textures\metal_matcap.jpg');
-  SEMShader.MaterialLibrary := MaterialLibrary;
-  SEMShader.MainTextureName := 'MatCapTexture';
-  SEMShader.Enabled := False;
-
-  VertexDisplacementShader := TGLSLVertexDisplacementShader.Create(self);
-  MaterialLibrary.LibMaterialByName('ExplosionTexture')
-    .Material.Texture.Image.LoadFromFile('textures\FireGrade2.png');
-  VertexDisplacementShader.MaterialLibrary := MaterialLibrary;
-  VertexDisplacementShader.MainTextureName := 'ExplosionTexture';
-  VertexDisplacementShader.Enabled := False;
-
-  GlassShader := TGLSLGlassShader.Create(self);
-  MaterialLibrary.LibMaterialByName('RefractMap')
-    .Material.Texture.Image.LoadFromFile('textures\barts.jpg');
-
-  // Don't load any texture in EnvMap let it empty. The EnvMap is auto generated
-  // MaterialLibrary.LibMaterialByName('EnvMap').Material.Texture.Image.LoadFromFile('textures\metal_matcap.jpg');
-  // But we need to make a ScreenShoot of the Scene Once before Enbale the GlassShader; otherwise an exception is raised
-  // I don't say at this time how to correct this
-  // capture and create material from framebuffer
-  Viewer.Buffer.CopyToTexture(MaterialLibrary.LibMaterialByName('EnvMap')
-    .Material.Texture);
-
-  GlassShader.MaterialLibrary := MaterialLibrary;
-  GlassShader.MainTextureName := 'EnvMap';
-  GlassShader.RefractionTextureName := 'RefractMap';
-
-  GlassShader.OwnerObject := FreeForm;
-  // GlassShader.Viewer := Viewer;
-  GlassShader.Enabled := False;
-
-  ToonShader := TGLSLToonShader.Create(self);
-
-  FreeForm.Visible := true;
-
-  Screen.Cursor := crDefault;
-  i := 0;
-  j := 0;
-  v := 0.0;
-end;
-
-procedure TFormShaderLab.FormDestroy(Sender: TObject);
-begin
-  Cadencer.Enabled := False;
-  FurShader.Free;
-  LatticeShader.Free;
-  IvoryShader.Free;
-  GoochShader.Free;
-  ErosionShader.Free;
-  SEMShader.Free;
-  VertexDisplacementShader.Free;
-  GlassShader.Free;
-end;
-
-procedure TFormShaderLab.FormResize(Sender: TObject);
-begin
-  ScreenBackGround.Width := Viewer.Width;
-  ScreenBackGround.Height := Viewer.Height;
-
-  ScreenBackGround.Position.X := Viewer.Width / 2;
-  ScreenBackGround.Position.Y := Viewer.Height / 2;
-end;
 
 procedure TFormShaderLab.chkIvoryShaderClick(Sender: TObject);
 begin
@@ -1006,24 +1007,20 @@ begin
     MaterialLibrary.LibMaterialByName('ShaderMaterial').Shader := nil;
 end;
 
-procedure TFormShaderLab.LightCube2Progress(Sender: TObject;
-  const deltaTime, newTime: Double);
+procedure TFormShaderLab.LightCube2Progress(Sender: TObject; const deltaTime, newTime: Double);
 begin
   if chkLightmoving.Checked then
-    LightCube2.MoveObjectAround(Camera.TargetObject, sin(newTime) * deltaTime *
-      20, deltaTime * 10);
+    LightCube2.MoveObjectAround(Camera.TargetObject, sin(newTime) * deltaTime * 20, deltaTime * 10);
 end;
 
-procedure TFormShaderLab.LightCubeProgress(Sender: TObject;
-  const deltaTime, newTime: Double);
+procedure TFormShaderLab.LightCubeProgress(Sender: TObject; const deltaTime, newTime: Double);
 begin
   if chkLightmoving.Checked then
-    LightCube.MoveObjectAround(Camera.TargetObject, sin(newTime) * deltaTime *
-      10, deltaTime * 20);
+    LightCube.MoveObjectAround(Camera.TargetObject, sin(newTime) * deltaTime * 10, deltaTime * 20);
 end;
 
-procedure TFormShaderLab.Shape10MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape10MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1032,8 +1029,8 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape11MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape11MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1042,8 +1039,8 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape12MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape12MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1052,8 +1049,8 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape13MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape13MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1062,8 +1059,8 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape14MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape14MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1072,8 +1069,8 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape17MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape17MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1082,8 +1079,8 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape18MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape18MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1092,8 +1089,8 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape19MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape19MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1102,8 +1099,8 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape1MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1112,8 +1109,8 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape20MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape20MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1122,8 +1119,8 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape21MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape21MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1132,8 +1129,8 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape22MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape22MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1142,8 +1139,8 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape2MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape2MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1152,8 +1149,8 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape3MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape3MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1162,8 +1159,8 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape4MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape4MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1172,8 +1169,8 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape5MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape5MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1182,8 +1179,8 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape6MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape6MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1192,8 +1189,8 @@ begin
   end;
 end;
 
-procedure TFormShaderLab.Shape7MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormShaderLab.Shape7MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if ColorDialog.Execute then
   begin
@@ -1225,64 +1222,55 @@ end;
 procedure TFormShaderLab.tbErosionAmbientFChange(Sender: TObject);
 begin
   ErosionShader.AmbientFactor := tbErosionAmbientF.Position / 100;
-  lblErosionAmbientF.Caption := FloatToStrF(ErosionShader.AmbientFactor,
-    ffFixed, 5, 3);
+  lblErosionAmbientF.Caption := FloatToStrF(ErosionShader.AmbientFactor, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbErosionAnisoRChange(Sender: TObject);
 begin
   ErosionShader.AnisotropicRoughness := tbErosionAnisoR.Position / 100;
-  lblErosionAnisoR.Caption := FloatToStrF(ErosionShader.AnisotropicRoughness,
-    ffFixed, 5, 3);
+  lblErosionAnisoR.Caption := FloatToStrF(ErosionShader.AnisotropicRoughness, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbErosionDiffuseFChange(Sender: TObject);
 begin
   ErosionShader.DiffuseFactor := tbErosionDiffuseF.Position / 100;
-  lblErosionDiffuseF.Caption := FloatToStrF(ErosionShader.DiffuseFactor,
-    ffFixed, 5, 3);
+  lblErosionDiffuseF.Caption := FloatToStrF(ErosionShader.DiffuseFactor, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbErosionFactorChange(Sender: TObject);
 begin
   ErosionShader.ErosionFactor := tbErosionFactor.Position / 100;
-  lblErosionFactor.Caption := FloatToStrF(ErosionShader.ErosionFactor,
-    ffFixed, 5, 3);
+  lblErosionFactor.Caption := FloatToStrF(ErosionShader.ErosionFactor, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbErosionIFactor1Change(Sender: TObject);
 begin
   ErosionShader.IntensityFactor1 := tbErosionIFactor1.Position / 100;
-  lblErosionIFactor1.Caption := FloatToStrF(ErosionShader.IntensityFactor1,
-    ffFixed, 5, 3);
+  lblErosionIFactor1.Caption := FloatToStrF(ErosionShader.IntensityFactor1, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbErosionIFactor2Change(Sender: TObject);
 begin
   ErosionShader.IntensityFactor2 := tbErosionIFactor2.Position / 100;
-  lblerosionIFactor2.Caption := FloatToStrF(ErosionShader.IntensityFactor2,
-    ffFixed, 5, 3);
+  lblerosionIFactor2.Caption := FloatToStrF(ErosionShader.IntensityFactor2, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tberosionScaleChange(Sender: TObject);
 begin
   ErosionShader.ErosionScale := tberosionScale.Position / 100;
-  lblErosionScale.Caption := FloatToStrF(ErosionShader.ErosionScale,
-    ffFixed, 5, 3);
+  lblErosionScale.Caption := FloatToStrF(ErosionShader.ErosionScale, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbErosionSpecularFChange(Sender: TObject);
 begin
   ErosionShader.SpecularFactor := tbErosionSpecularF.Position / 100;
-  lblErosionSpecularF.Caption := FloatToStrF(ErosionShader.SpecularFactor,
-    ffFixed, 5, 3);
+  lblErosionSpecularF.Caption := FloatToStrF(ErosionShader.SpecularFactor, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbErosionSpecularRChange(Sender: TObject);
 begin
   ErosionShader.SpecularRoughness := tbErosionSpecularR.Position / 100;
-  lblErosionSpecularR.Caption := FloatToStrF(ErosionShader.SpecularRoughness,
-    ffFixed, 5, 3);
+  lblErosionSpecularR.Caption := FloatToStrF(ErosionShader.SpecularRoughness, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbFurDensityChange(Sender: TObject);
@@ -1300,8 +1288,7 @@ end;
 procedure TFormShaderLab.tbFurLightPowerChange(Sender: TObject);
 begin
   FurShader.LightIntensity := tbFurLightPower.Position / 100;
-  lblFurLightPower.Caption := FloatToStrF(FurShader.LightIntensity,
-    ffFixed, 5, 3);
+  lblFurLightPower.Caption := FloatToStrF(FurShader.LightIntensity, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbFurMaxLengthChange(Sender: TObject);
@@ -1337,15 +1324,13 @@ end;
 procedure TFormShaderLab.tbGoochAFactorChange(Sender: TObject);
 begin
   GoochShader.AmbientFactor := tbGoochAFactor.Position / 100;
-  lblGoochAFactor.Caption := FloatToStrF(GoochShader.AmbientFactor,
-    ffFixed, 5, 3);
+  lblGoochAFactor.Caption := FloatToStrF(GoochShader.AmbientFactor, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbGoochAlphaChange(Sender: TObject);
 begin
   GoochShader.DiffuseColor.Alpha := tbGoochAlpha.Position / 100;
-  lblGoochAlpha.Caption := FloatToStrF(GoochShader.DiffuseColor.Alpha,
-    ffFixed, 5, 3);
+  lblGoochAlpha.Caption := FloatToStrF(GoochShader.DiffuseColor.Alpha, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbGoochCFactorChange(Sender: TObject);
@@ -1357,15 +1342,13 @@ end;
 procedure TFormShaderLab.tbGoochDFactorChange(Sender: TObject);
 begin
   GoochShader.DiffuseFactor := tbGoochDFactor.Position / 100;
-  lblGoochDFactor.Caption := FloatToStrF(GoochShader.DiffuseFactor,
-    ffFixed, 5, 3);
+  lblGoochDFactor.Caption := FloatToStrF(GoochShader.DiffuseFactor, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbGoochSFactorChange(Sender: TObject);
 begin
   GoochShader.SpecularFactor := tbGoochSFactor.Position / 100;
-  lblGoochSFactor.Caption := FloatToStrF(GoochShader.SpecularFactor,
-    ffFixed, 5, 3);
+  lblGoochSFactor.Caption := FloatToStrF(GoochShader.SpecularFactor, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbGoochWFactorChange(Sender: TObject);
@@ -1377,43 +1360,37 @@ end;
 procedure TFormShaderLab.tbLatticeLightPowerChange(Sender: TObject);
 begin
   LatticeShader.LightPower := tbLatticeLightPower.Position / 100;
-  lblLatticeLightPower.Caption := FloatToStrF(LatticeShader.LightPower,
-    ffFixed, 5, 3);
+  lblLatticeLightPower.Caption := FloatToStrF(LatticeShader.LightPower, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbLatticeScaleXChange(Sender: TObject);
 begin
   LatticeShader.LatticeScale.X := tbLatticeScaleX.Position;
-  lblLatticeScaleX.Caption := FloatToStrF(LatticeShader.LatticeScale.X,
-    ffFixed, 5, 0);
+  lblLatticeScaleX.Caption := FloatToStrF(LatticeShader.LatticeScale.X, ffFixed, 5, 0);
 end;
 
 procedure TFormShaderLab.tbLatticeScaleYChange(Sender: TObject);
 begin
   LatticeShader.LatticeScale.Y := tbLatticeScaleY.Position;
-  lblLatticeScaleY.Caption := FloatToStrF(LatticeShader.LatticeScale.Y,
-    ffFixed, 5, 0);
+  lblLatticeScaleY.Caption := FloatToStrF(LatticeShader.LatticeScale.Y, ffFixed, 5, 0);
 end;
 
 procedure TFormShaderLab.tbLatticeSpecularPowerChange(Sender: TObject);
 begin
   LatticeShader.SpecularPower := tbLatticeSpecularPower.Position / 100;
-  lblLatticeSpecularPower.Caption := FloatToStrF(LatticeShader.SpecularPower,
-    ffFixed, 5, 3);
+  lblLatticeSpecularPower.Caption := FloatToStrF(LatticeShader.SpecularPower, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbLatticeThresholdXChange(Sender: TObject);
 begin
   LatticeShader.LatticeThreshold.X := tbLatticeThresholdX.Position / 100;
-  lblLatticeThresholdX.Caption := FloatToStrF(LatticeShader.LatticeThreshold.X,
-    ffFixed, 5, 3);
+  lblLatticeThresholdX.Caption := FloatToStrF(LatticeShader.LatticeThreshold.X, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbLatticeThresholdYChange(Sender: TObject);
 begin
   LatticeShader.LatticeThreshold.Y := tbLatticeThresholdY.Position / 100;
-  lblLatticeThresholdY.Caption := FloatToStrF(LatticeShader.LatticeThreshold.Y,
-    ffFixed, 5, 3);
+  lblLatticeThresholdY.Caption := FloatToStrF(LatticeShader.LatticeThreshold.Y, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbSemAmbientFChange(Sender: TObject);
@@ -1431,15 +1408,13 @@ end;
 procedure TFormShaderLab.tbSemSpecularFChange(Sender: TObject);
 begin
   SEMShader.SpecularFactor := tbSemSpecularF.Position / 100;
-  lblSemSpecularF.Caption := FloatToStrF(SEMShader.SpecularFactor,
-    ffFixed, 5, 3);
+  lblSemSpecularF.Caption := FloatToStrF(SEMShader.SpecularFactor, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbToonHighlightSizeChange(Sender: TObject);
 begin
   ToonShader.HighlightSize := tbToonHighlightSize.Position / 100;
-  lblToonHighlightSize.Caption := FloatToStrF(ToonShader.HighlightSize,
-    ffFixed, 5, 3);
+  lblToonHighlightSize.Caption := FloatToStrF(ToonShader.HighlightSize, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbToonMidSizeChange(Sender: TObject);
@@ -1451,78 +1426,67 @@ end;
 procedure TFormShaderLab.tbToonOutlineWidthChange(Sender: TObject);
 begin
   ToonShader.OutlineWidth := tbToonOutlineWidth.Position / 100;
-  lblToonOutlineWidth.Caption := FloatToStrF(ToonShader.OutlineWidth,
-    ffFixed, 5, 3);
+  lblToonOutlineWidth.Caption := FloatToStrF(ToonShader.OutlineWidth, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbToonShadowSizeChange(Sender: TObject);
 begin
   ToonShader.ShadowSize := tbToonShadowSize.Position / 100;
-  lblToonShadowSize.Caption := FloatToStrF(ToonShader.ShadowSize,
-    ffFixed, 5, 3);
+  lblToonShadowSize.Caption := FloatToStrF(ToonShader.ShadowSize, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbVDAmbientFChange(Sender: TObject);
 begin
   VertexDisplacementShader.AmbientFactor := tbVDAmbientF.Position / 100;
-  lblVDAmbientF.Caption := FloatToStrF(VertexDisplacementShader.AmbientFactor,
-    ffFixed, 5, 3);
+  lblVDAmbientF.Caption := FloatToStrF(VertexDisplacementShader.AmbientFactor, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbVDDiffuseFChange(Sender: TObject);
 begin
   VertexDisplacementShader.DiffuseFactor := tbVDDiffuseF.Position / 100;
-  lblVDDiffuseF.Caption := FloatToStrF(VertexDisplacementShader.DiffuseFactor,
-    ffFixed, 5, 3);
+  lblVDDiffuseF.Caption := FloatToStrF(VertexDisplacementShader.DiffuseFactor, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbVDDispScaleChange(Sender: TObject);
 begin
   VertexDisplacementShader.DisplacementScale := tbVDDispScale.Position / 100;
-  lblVDDispScale.Caption :=
-    FloatToStrF(VertexDisplacementShader.DisplacementScale, ffFixed, 5, 3);
+  lblVDDispScale.Caption := FloatToStrF(VertexDisplacementShader.DisplacementScale, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbVDNoiseChange(Sender: TObject);
 begin
   VertexDisplacementShader.NoiseFactor := tbVDNoise.Position / 100;
-  lblVDNoise.Caption := FloatToStrF(VertexDisplacementShader.NoiseFactor,
-    ffFixed, 5, 3);
+  lblVDNoise.Caption := FloatToStrF(VertexDisplacementShader.NoiseFactor, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbVDNScaleChange(Sender: TObject);
 begin
   VertexDisplacementShader.NoiseScale := tbVDNScale.Position / 100;
-  lblVDNScale.Caption := FloatToStrF(VertexDisplacementShader.NoiseScale,
-    ffFixed, 5, 3);
+  lblVDNScale.Caption := FloatToStrF(VertexDisplacementShader.NoiseScale, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbVDPeriodChange(Sender: TObject);
 begin
   VertexDisplacementShader.NoisePeriod := tbVDPeriod.Position / 100;
-  lblVDPeriod.Caption := FloatToStrF(VertexDisplacementShader.NoisePeriod,
-    ffFixed, 5, 3);
+  lblVDPeriod.Caption := FloatToStrF(VertexDisplacementShader.NoisePeriod, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbVDSpecularFChange(Sender: TObject);
 begin
   VertexDisplacementShader.SpecularFactor := tbVDSpecularF.Position / 100;
-  lblVDSpecularF.Caption := FloatToStrF(VertexDisplacementShader.SpecularFactor,
-    ffFixed, 5, 3);
+  lblVDSpecularF.Caption := FloatToStrF(VertexDisplacementShader.SpecularFactor, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbVDTimeFChange(Sender: TObject);
 begin
   VertexDisplacementShader.TimeFactor := tbVDTimeF.Position / 100;
-  lblVDTimeF.Caption := FloatToStrF(VertexDisplacementShader.TimeFactor,
-    ffFixed, 5, 3);
+  lblVDTimeF.Caption := FloatToStrF(VertexDisplacementShader.TimeFactor, ffFixed, 5, 3);
 end;
 
 procedure TFormShaderLab.tbVDTurbChange(Sender: TObject);
 begin
   VertexDisplacementShader.TurbulenceFactor := tbVDTurb.Position / 100;
-  lblVDTurb.Caption := FloatToStrF(VertexDisplacementShader.TurbulenceFactor,
-    ffFixed, 5, 3);
+  lblVDTurb.Caption := FloatToStrF(VertexDisplacementShader.TurbulenceFactor, ffFixed, 5, 3);
 end;
 
 end.

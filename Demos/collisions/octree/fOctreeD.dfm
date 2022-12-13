@@ -2,30 +2,25 @@ object FormOctreedemo: TFormOctreedemo
   Left = 175
   Top = 104
   Caption = 'Octree Demo'
-  ClientHeight = 481
-  ClientWidth = 693
+  ClientHeight = 385
+  ClientWidth = 554
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer2: TGLSceneViewer
     Left = 0
-    Top = 61
-    Width = 693
-    Height = 420
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 49
+    Width = 554
+    Height = 336
     Camera = GLCamera2
     Buffer.BackgroundColor = 8404992
     Buffer.ShadeModel = smSmooth
-    FieldOfView = 153.215011596679700000
+    FieldOfView = 146.851989746093800000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer2MouseDown
@@ -35,115 +30,75 @@ object FormOctreedemo: TFormOctreedemo
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 693
-    Height = 61
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 554
+    Height = 49
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 1
     object Label1: TLabel
-      Left = 390
+      Left = 312
       Top = 1
-      Width = 41
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 32
+      Height = 13
       Caption = 'Label1'
     end
     object Label2: TLabel
-      Left = 390
-      Top = 20
-      Width = 41
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 312
+      Top = 16
+      Width = 32
+      Height = 13
       Caption = 'Label2'
     end
     object Label3: TLabel
-      Left = 389
-      Top = 38
-      Width = 41
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 311
+      Top = 30
+      Width = 32
+      Height = 13
       Caption = 'Label3'
     end
     object Label5: TLabel
-      Left = 10
-      Top = 10
-      Width = 41
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 8
+      Width = 32
+      Height = 13
       Caption = 'Label5'
     end
     object LABuild: TLabel
-      Left = 10
-      Top = 30
-      Width = 46
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 24
+      Width = 36
+      Height = 13
       Caption = 'LABuild'
     end
     object Label4: TLabel
-      Left = 210
-      Top = 40
-      Width = 41
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 168
+      Top = 32
+      Width = 32
+      Height = 13
       Caption = 'Label4'
     end
     object LabelFPS: TLabel
-      Left = 590
-      Top = 20
-      Width = 26
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 472
+      Top = 16
+      Width = 20
+      Height = 13
       Caption = 'FPS'
     end
     object CheckBox1: TCheckBox
-      Left = 210
-      Top = 20
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 168
+      Top = 16
+      Width = 97
+      Height = 17
       Caption = 'Auto collide'
       Checked = True
       State = cbChecked
       TabOrder = 0
     end
     object CBOctree: TCheckBox
-      Left = 210
+      Left = 168
       Top = 0
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 97
+      Height = 17
       Caption = 'Octree enabled'
       Checked = True
       State = cbChecked

@@ -58,8 +58,9 @@ implementation
 
 procedure TFormBmpFont.FormCreate(Sender: TObject);
 begin
-  // Load the font bitmap from media dir
-  SetGLSceneMediaDir();
+  // Load the font bitmap from asset dir
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
   BitmapFont1.Glyphs.LoadFromFile('darkgold_font.bmp');
   // sorry, couldn't resist...
   {$IFDEF WIN32}

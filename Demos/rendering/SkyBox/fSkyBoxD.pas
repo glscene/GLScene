@@ -35,7 +35,7 @@ type
   TFormSkyBox = class(TForm)
     GLScene1: TGLScene;
     GLCamera1: TGLCamera;
-    GLMaterialLibraryCM: TGLMaterialLibrary;
+    GLMatLibCubeMap: TGLMaterialLibrary;
     GLLightSource1: TGLLightSource;
     Castle: TGLDummyCube;
     GLCube1: TGLCube;
@@ -74,18 +74,17 @@ implementation
 
 function TFormSkyBox.LoadTexture(Matname, Filename: string): TGLLibMaterial;
 begin
-  Result := GLMaterialLibraryCM.AddTextureMaterial(Matname, Filename);
+  Result := GLMatLibCubeMap.AddTextureMaterial(Matname, Filename);
   Result.Material.Texture.Disabled := False;
   Result.Material.Texture.TextureMode := tmDecal;
 end;
 
 procedure TFormSkyBox.FormCreate(Sender: TObject);
-var
-  PathCM: TFileName;
 begin
-  SetGLSceneMediaDir();
-  PathCM := GetCurrentDir() + '\Cubemaps';
-  SetCurrentDir(PathCM);
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\cubemap');
+  GLMatLibCubeMap.TexturePaths := GetCurrentDir();
+
   // Skybox cubemaps
   LoadTexture('Left', 'icecraterlf.jpg');
   LoadTexture('Right', 'icecraterrt.jpg');
@@ -93,7 +92,9 @@ begin
   LoadTexture('Bottom', 'icecraterdn.jpg');
   LoadTexture('Front', 'icecraterft.jpg');
   LoadTexture('Back', 'icecraterbk.jpg');
-  SetGLSceneMediaDir(); // back to media folder with textures
+
+  // back to folder with textures
+  SetCurrentDir(Path  + '\texture');
   with LoadTexture('Clouds', 'Clouds.jpg') do
   begin
     // Add transparency to clouds
@@ -119,8 +120,7 @@ begin
   end;
 
   // Moon
-  LoadTexture('Moon', 'unwrapped moon.jpg').Material.Texture.TextureMode :=
-    tmModulate;
+  LoadTexture('Moon', 'moonmap.jpg').Material.Texture.TextureMode := tmModulate;
 
   // -----------------------------------------
   // Assign materials to objects
@@ -144,7 +144,7 @@ procedure TFormSkyBox.GLCadencer1Progress(Sender: TObject;
   const deltaTime, newTime: Double);
 begin
   // Make clouds Texture slide
-  with GLMaterialLibraryCM.Materials.GetLibMaterialByName('Clouds') do
+  with GLMatLibCubeMap.Materials.GetLibMaterialByName('Clouds') do
   begin
     TextureOffset.X := TextureOffset.X + deltaTime * 0.02;
     TextureOffset.y := TextureOffset.y + deltaTime * 0.03;

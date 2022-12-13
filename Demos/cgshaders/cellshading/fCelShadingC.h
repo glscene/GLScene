@@ -22,6 +22,7 @@
 #include "GLS.Utils.hpp"
 #include "Cg.GL.hpp"
 #include "Cg.Shader.hpp"
+#include <Vcl.ComCtrls.hpp>
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
@@ -37,6 +38,7 @@ __published:	// IDE-managed Components
 	TGLMaterialLibrary *GLMaterialLibrary1;
 	TGLCadencer *GLCadencer1;
 	TGLAsyncTimer *AsyncTimer1;
+	TStatusBar *StatusBar1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall CgCellShaderApplyVP(TCgProgram *CgProgram, TObject *Sender);
 	void __fastcall CgCellShaderInitialize(TCustomCgShader *CgShader);

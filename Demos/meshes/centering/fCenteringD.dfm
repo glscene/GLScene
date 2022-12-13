@@ -24,8 +24,6 @@ object FormCentering: TFormCentering
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 545
-    ExplicitHeight = 329
   end
   object TrackBar1: TTrackBar
     Left = 549
@@ -40,8 +38,6 @@ object FormCentering: TFormCentering
     TabOrder = 1
     ThumbLength = 10
     OnChange = TrackBar1Change
-    ExplicitLeft = 544
-    ExplicitHeight = 211
   end
   object Panel1: TPanel
     Left = 0
@@ -50,7 +46,6 @@ object FormCentering: TFormCentering
     Height = 41
     Align = alTop
     TabOrder = 2
-    ExplicitWidth = 569
     object Label1: TLabel
       Left = 56
       Top = 8

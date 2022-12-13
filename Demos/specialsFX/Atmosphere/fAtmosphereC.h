@@ -48,16 +48,16 @@ __published:	// IDE-managed Components
 	TGLSkyDome *GLSkyDome1;
 	TGLDummyCube *CameraTarget;
 	TGLDummyCube *World;
-	TGLSphere *Not_a_planet;
+	TGLSphere *Not_a_Planet;
 	TGLDummyCube *GLDummyCube1;
-	TGLSphere *GLSphere1;
+	TGLSphere *Planet;
 	TGLLensFlare *GLLensFlare1;
 	TGLLightSource *GLLightSource1;
 	TGLCamera *GLCamera1;
 	TGLCadencer *GLCadencer1;
 	TGLSimpleNavigation *GLSimpleNavigation1;
 	TButton *Button8;
-	TButton *Button6;
+	TButton *btnShowAtmosphere;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall btnRotateClick(TObject *Sender);
@@ -65,7 +65,7 @@ __published:	// IDE-managed Components
 	void __fastcall Button3Click(TObject *Sender);
 	void __fastcall Button4Click(TObject *Sender);
 	void __fastcall Button5Click(TObject *Sender);
-	void __fastcall Button6Click(TObject *Sender);
+	void __fastcall btnShowAtmosphereClick(TObject *Sender);
 	void __fastcall Button8Click(TObject *Sender);
 	void __fastcall Button10Click(TObject *Sender);
 	void __fastcall Button9Click(TObject *Sender);

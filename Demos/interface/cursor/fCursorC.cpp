@@ -27,7 +27,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-   SetGLSceneMediaDir();
+   TFileName Path = GetCurrentAssetPath();
    // hide the Windows cursor for the GLSceneViewer
    GLSceneViewer1->Cursor = crNone;
    // and load my ugly cursor (size adjusted in design props)

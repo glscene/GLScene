@@ -300,7 +300,7 @@ procedure TMainForm.FormCreate(Sender: TObject);
 begin
   inherited;
  // SetCurrentDir(ExtractFilePath(ParamStr(0)));
-  SetGLSceneMediaDir();
+  SetCurrentDirToAsset();
 
   NaviCube := TGLNaviCube.CreateAsChild(Scene.Objects);
   NaviCube.SceneViewer := snViewer;

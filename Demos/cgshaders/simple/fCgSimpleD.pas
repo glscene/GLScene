@@ -122,13 +122,14 @@ implementation
 
 procedure TFormCgSimple.FormCreate(Sender: TObject);
 begin
-   SetGLSceneMediaDir();
+   var Path: TFileName := GetCurrentAssetPath();
+   SetCurrentDir(Path  + '\shader');
    // Load Cg proggy
    with CgShader1 do begin
-     VertexProgram.LoadFromFile('Shaders\simple_vp.cg');
+     VertexProgram.LoadFromFile('simple_vp.cg');
      MemoVertCode.Lines.Assign(VertexProgram.Code);
 
-     FragmentProgram.LoadFromFile('Shaders\simple_fp.cg');
+     FragmentProgram.LoadFromFile('simple_fp.cg');
      MemoFragCode.Lines.Assign(FragmentProgram.Code);
 
      VertexProgram.Enabled:=false;
@@ -141,10 +142,10 @@ begin
    // Bind shader to the material
    GLMaterialLibrary1.Materials[0].Shader := CgShader1;
 
-   // Load the teapot model from media directory.
-   SetGLSceneMediaDir();
+   // Load the teapot model.
+   SetCurrentDir(Path  + '\model');
    // Note that GLScene will alter the ModelView matrix
-   // internally for GLScene objects like TGLCylinder & TGLSphere, and Cg shader
+   // internally objects like TGLCylinder & TGLSphere, and Cg shader
    // is not aware of that. If you apply a vertex shader on those objects, they
    // would appear scaled and/or rotated.
   GLFreeForm1.LoadFromFile('Teapot.3ds');

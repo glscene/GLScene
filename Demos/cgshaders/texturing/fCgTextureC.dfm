@@ -3,18 +3,16 @@ object Form1: TForm1
   Top = 0
   Caption = 'Cg Multi Texturing'
   ClientHeight = 414
-  ClientWidth = 995
+  ClientWidth = 834
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
     Left = 313
@@ -50,10 +48,6 @@ object Form1: TForm1
       TabOrder = 0
       object TabSheet1: TTabSheet
         Caption = 'Vertex Program'
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Splitter3: TSplitter
           Left = 0
           Top = 289
@@ -220,10 +214,6 @@ object Form1: TForm1
       object TabSheet2: TTabSheet
         Caption = 'Fragment Program'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Splitter2: TSplitter
           Left = 0
           Top = 289
@@ -384,10 +374,6 @@ object Form1: TForm1
       object TabSheet3: TTabSheet
         Caption = 'Controls'
         ImageIndex = 2
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         DesignSize = (
           301
           382)
@@ -661,7 +647,7 @@ object Form1: TForm1
   object Panel9: TPanel
     Left = 316
     Top = 0
-    Width = 679
+    Width = 518
     Height = 414
     Align = alClient
     Font.Charset = ANSI_CHARSET
@@ -674,7 +660,7 @@ object Form1: TForm1
     object PanelFPS: TPanel
       Left = 1
       Top = 1
-      Width = 677
+      Width = 516
       Height = 48
       Align = alTop
       Caption = 'FPS'
@@ -685,11 +671,12 @@ object Form1: TForm1
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      ExplicitWidth = 677
     end
     object GLSceneViewer1: TGLSceneViewer
       Left = 1
       Top = 49
-      Width = 677
+      Width = 516
       Height = 364
       Camera = GLCamera1
       Buffer.Lighting = False
@@ -762,24 +749,20 @@ object Form1: TForm1
         Name = 'LibMaterial'
         Tag = 0
         Material.Texture.Disabled = False
-        Material.MaterialLibrary = GLMatLib
         Shader = CgShader1
       end
       item
         Name = 'LibMaterial1'
         Tag = 0
         Material.Texture.Disabled = False
-        Material.MaterialLibrary = GLMatLib
       end
       item
         Name = 'LibMaterial2'
         Tag = 0
-        Material.MaterialLibrary = GLMatLib
       end
       item
         Name = 'LibMaterial3'
         Tag = 0
-        Material.MaterialLibrary = GLMatLib
       end>
     TexturePaths = '..\\..\\..\\media\\'
     Left = 105

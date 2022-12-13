@@ -2,34 +2,31 @@ object FormInvariance: TFormInvariance
   Left = 201
   Top = 110
   Caption = 'Invariance'
-  ClientHeight = 420
-  ClientWidth = 526
+  ClientHeight = 419
+  ClientWidth = 658
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 526
-    Height = 420
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 658
+    Height = 419
     Camera = GLCamera
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 153.215011596679700000
+    FieldOfView = 153.153396606445300000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 463
+    ExplicitHeight = 361
   end
   object GLScene1: TGLScene
     Left = 8
@@ -2208,7 +2205,6 @@ object FormInvariance: TFormInvariance
         Material.Texture.Disabled = False
         TextureScale.Coordinates = {000040410000803F0000803F00000000}
       end>
-    TexturePaths = '..\..\..\..\media\'
     Left = 48
     Top = 8
   end

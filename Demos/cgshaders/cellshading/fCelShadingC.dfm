@@ -2,34 +2,42 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Cg Cel Shading'
-  ClientHeight = 421
-  ClientWidth = 644
+  ClientHeight = 337
+  ClientWidth = 515
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 644
-    Height = 421
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 515
+    Height = 318
     Camera = GLCamera1
-    FieldOfView = 153.276336669921900000
+    FieldOfView = 145.086883544921900000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Top = 318
+    Width = 515
+    Height = 19
+    Panels = <
+      item
+        Width = 50
+      end>
+    ExplicitLeft = 224
+    ExplicitTop = 208
+    ExplicitWidth = 0
   end
   object GLScene1: TGLScene
     Left = 40

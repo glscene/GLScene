@@ -3,16 +3,10 @@
         <ProjectGuid>{2E3221B1-5B2C-430B-8087-B9633A920509}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="Torque\TorqueD.dproj">
+        <Projects Include="DCEDemo\DceDemoD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Torque\TorqueC.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="PathControl\PathControlD.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="PathControl\PathControlC.cbproj">
+        <Projects Include="DCEDemo\DceDemoC.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="FPSMovement\FPSMovementD.dproj">
@@ -21,10 +15,16 @@
         <Projects Include="FPSMovement\FPSMovementC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="DCEDemo\DceDemoD.dproj">
+        <Projects Include="PathControl\PathControlD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="DCEDemo\DceDemoC.cbproj">
+        <Projects Include="PathControl\PathControlC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Torque\TorqueD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Torque\TorqueC.cbproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -35,41 +35,23 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="TorqueD">
-        <MSBuild Projects="Torque\TorqueD.dproj"/>
+    <Target Name="DceDemoD">
+        <MSBuild Projects="DCEDemo\DceDemoD.dproj"/>
     </Target>
-    <Target Name="TorqueD:Clean">
-        <MSBuild Projects="Torque\TorqueD.dproj" Targets="Clean"/>
+    <Target Name="DceDemoD:Clean">
+        <MSBuild Projects="DCEDemo\DceDemoD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="TorqueD:Make">
-        <MSBuild Projects="Torque\TorqueD.dproj" Targets="Make"/>
+    <Target Name="DceDemoD:Make">
+        <MSBuild Projects="DCEDemo\DceDemoD.dproj" Targets="Make"/>
     </Target>
-    <Target Name="TorqueC">
-        <MSBuild Projects="Torque\TorqueC.cbproj"/>
+    <Target Name="DceDemoC">
+        <MSBuild Projects="DCEDemo\DceDemoC.cbproj"/>
     </Target>
-    <Target Name="TorqueC:Clean">
-        <MSBuild Projects="Torque\TorqueC.cbproj" Targets="Clean"/>
+    <Target Name="DceDemoC:Clean">
+        <MSBuild Projects="DCEDemo\DceDemoC.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="TorqueC:Make">
-        <MSBuild Projects="Torque\TorqueC.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="PathControlD">
-        <MSBuild Projects="PathControl\PathControlD.dproj"/>
-    </Target>
-    <Target Name="PathControlD:Clean">
-        <MSBuild Projects="PathControl\PathControlD.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="PathControlD:Make">
-        <MSBuild Projects="PathControl\PathControlD.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="PathControlC">
-        <MSBuild Projects="PathControl\PathControlC.cbproj"/>
-    </Target>
-    <Target Name="PathControlC:Clean">
-        <MSBuild Projects="PathControl\PathControlC.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="PathControlC:Make">
-        <MSBuild Projects="PathControl\PathControlC.cbproj" Targets="Make"/>
+    <Target Name="DceDemoC:Make">
+        <MSBuild Projects="DCEDemo\DceDemoC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="FPSMovementD">
         <MSBuild Projects="FPSMovement\FPSMovementD.dproj"/>
@@ -89,32 +71,50 @@
     <Target Name="FPSMovementC:Make">
         <MSBuild Projects="FPSMovement\FPSMovementC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="DceDemoD">
-        <MSBuild Projects="DCEDemo\DceDemoD.dproj"/>
+    <Target Name="PathControlD">
+        <MSBuild Projects="PathControl\PathControlD.dproj"/>
     </Target>
-    <Target Name="DceDemoD:Clean">
-        <MSBuild Projects="DCEDemo\DceDemoD.dproj" Targets="Clean"/>
+    <Target Name="PathControlD:Clean">
+        <MSBuild Projects="PathControl\PathControlD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="DceDemoD:Make">
-        <MSBuild Projects="DCEDemo\DceDemoD.dproj" Targets="Make"/>
+    <Target Name="PathControlD:Make">
+        <MSBuild Projects="PathControl\PathControlD.dproj" Targets="Make"/>
     </Target>
-    <Target Name="DceDemoC">
-        <MSBuild Projects="DCEDemo\DceDemoC.cbproj"/>
+    <Target Name="PathControlC">
+        <MSBuild Projects="PathControl\PathControlC.cbproj"/>
     </Target>
-    <Target Name="DceDemoC:Clean">
-        <MSBuild Projects="DCEDemo\DceDemoC.cbproj" Targets="Clean"/>
+    <Target Name="PathControlC:Clean">
+        <MSBuild Projects="PathControl\PathControlC.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="DceDemoC:Make">
-        <MSBuild Projects="DCEDemo\DceDemoC.cbproj" Targets="Make"/>
+    <Target Name="PathControlC:Make">
+        <MSBuild Projects="PathControl\PathControlC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="TorqueD">
+        <MSBuild Projects="Torque\TorqueD.dproj"/>
+    </Target>
+    <Target Name="TorqueD:Clean">
+        <MSBuild Projects="Torque\TorqueD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TorqueD:Make">
+        <MSBuild Projects="Torque\TorqueD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TorqueC">
+        <MSBuild Projects="Torque\TorqueC.cbproj"/>
+    </Target>
+    <Target Name="TorqueC:Clean">
+        <MSBuild Projects="Torque\TorqueC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TorqueC:Make">
+        <MSBuild Projects="Torque\TorqueC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="TorqueD;TorqueC;PathControlD;PathControlC;FPSMovementD;FPSMovementC;DceDemoD;DceDemoC"/>
+        <CallTarget Targets="DceDemoD;DceDemoC;FPSMovementD;FPSMovementC;PathControlD;PathControlC;TorqueD;TorqueC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="TorqueD:Clean;TorqueC:Clean;PathControlD:Clean;PathControlC:Clean;FPSMovementD:Clean;FPSMovementC:Clean;DceDemoD:Clean;DceDemoC:Clean"/>
+        <CallTarget Targets="DceDemoD:Clean;DceDemoC:Clean;FPSMovementD:Clean;FPSMovementC:Clean;PathControlD:Clean;PathControlC:Clean;TorqueD:Clean;TorqueC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="TorqueD:Make;TorqueC:Make;PathControlD:Make;PathControlC:Make;FPSMovementD:Make;FPSMovementC:Make;DceDemoD:Make;DceDemoC:Make"/>
+        <CallTarget Targets="DceDemoD:Make;DceDemoC:Make;FPSMovementD:Make;FPSMovementC:Make;PathControlD:Make;PathControlC:Make;TorqueD:Make;TorqueC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

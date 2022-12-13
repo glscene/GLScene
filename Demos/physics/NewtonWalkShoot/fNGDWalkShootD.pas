@@ -77,7 +77,9 @@ implementation
 
 procedure TFormNewtonWalkShoot.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir;
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\model');
+
   // Set Mesh and scale their vertice position
   // because matrix scale is not supported in newton
   Map.LoadFromFile('ngdmap1.3ds');

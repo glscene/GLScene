@@ -135,6 +135,7 @@ type
 
 var
   PostShaderDemoForm: TPostShaderDemoForm;
+
   //Shaders
   BlurShader: TGLSLPostBlurShader;
   ThermalVisionShader: TGLSLPostThermalVisionShader;
@@ -152,13 +153,17 @@ implementation
 
 procedure TPostShaderDemoForm.FormCreate(Sender: TObject);
 begin
-  // First load models.
-  SetGLSceneMediaDir();
+  // First load animated models with textures
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\modelext');
   Fighter.LoadFromFile('waste.md2'); // Fighter
   Fighter.SwitchToAnimation(0, True);
   Fighter.AnimationMode := aamLoop;
   Fighter.Scale.Scale(2);
+  MaterialLibrary.LibMaterialByName('Fighter').Material.Texture.Image.LoadFromFile('Waste.jpg');
 
+  // Loading static models
+  SetCurrentDir(Path  + '\model');
   Teapot.LoadFromFile('Teapot.3ds'); // Teapot (no texture coordinates)
   Teapot.Scale.Scale(0.8);
 
@@ -167,18 +172,15 @@ begin
 
   Sphere_little.LoadFromFile('Sphere_little.3ds');
   Sphere_little.Scale.Scale(4);
-  // Then load textures.
-  MaterialLibrary.LibMaterialByName('Earth').Material.Texture.Image.LoadFromFile
-    ('Earth.jpg');
-  MaterialLibrary.LibMaterialByName('Fighter')
-    .Material.Texture.Image.LoadFromFile('Waste.jpg');
-  MaterialLibrary.LibMaterialByName('Noise').Material.Texture.Image.LoadFromFile
-    ('Flare1.bmp');
-  // MaterialLibrary.LibMaterialByName('Noise').Material.Texture.Image.LoadFromFile('wikiNoise.jpg');
-  MaterialLibrary.LibMaterialByName('Mask').Material.Texture.Image.LoadFromFile
-    ('wikiMask.jpg');
 
-  // Blur Shader
+  // Then load textures.
+  SetCurrentDir(Path  + '\texture');
+  MaterialLibrary.LibMaterialByName('Earth').Material.Texture.Image.LoadFromFile('Earth.jpg');
+  MaterialLibrary.LibMaterialByName('Noise').Material.Texture.Image.LoadFromFile('Flare1.bmp');
+  // MaterialLibrary.LibMaterialByName('Noise').Material.Texture.Image.LoadFromFile('wikiNoise.jpg');
+  MaterialLibrary.LibMaterialByName('Mask').Material.Texture.Image.LoadFromFile('wikiMask.jpg');
+
+  // Creating Blur Shader
   BlurShader := TGLSLPostBlurShader.Create(Self);
   BlurShader.Enabled := false;
   BlurShader.Threshold := 0.001;
@@ -186,7 +188,7 @@ begin
   ShaderCheckListBox.Items.AddObject('Blur Shader', BlurShader);
   ShaderCheckListBox.Checked[0] := false;
 
-  // ThermalVision Shader
+  // Creating ThermalVision Shader
   ThermalVisionShader := TGLSLPostThermalVisionShader.Create(Self);
   ThermalVisionShader.Enabled := false;
   PostShaderHolder.Shaders.Add.Shader := ThermalVisionShader;
@@ -194,14 +196,14 @@ begin
     ThermalVisionShader);
   ShaderCheckListBox.Checked[1] := false;
 
-  // DreamVision Shader
+  // Creating DreamVision Shader
   DreamVisionShader := TGLSLPostDreamVisionShader.Create(Self);
   DreamVisionShader.Enabled := false;
   PostShaderHolder.Shaders.Add.Shader := DreamVisionShader;
   ShaderCheckListBox.Items.AddObject('Dream Vision Shader', DreamVisionShader);
   ShaderCheckListBox.Checked[2] := false;
 
-  // NightVision Shader
+  // Creating NightVision Shader
   NightVisionShader := TGLSLPostNightVisionShader.Create(Self);
   NightVisionShader.Enabled := false;
   NightVisionShader.MaterialLibrary := MaterialLibrary;
@@ -212,28 +214,28 @@ begin
   ShaderCheckListBox.Items.AddObject('Night Vision Shader', NightVisionShader);
   ShaderCheckListBox.Checked[3] := false;
 
-  // Pixelate Shader
+  // Creating Pixelate Shader
   PixelateShader := TGLSLPostPixelateShader.Create(Self);
   PixelateShader.Enabled := false;
   PostShaderHolder.Shaders.Add.Shader := PixelateShader;
   ShaderCheckListBox.Items.AddObject('Pixelate Shader', PixelateShader);
   ShaderCheckListBox.Checked[4] := false;
 
-  // Posterize Shader
+  // Creating Posterize Shader
   PosterizeShader := TGLSLPostPosterizeShader.Create(Self);
   PosterizeShader.Enabled := false;
   PostShaderHolder.Shaders.Add.Shader := PosterizeShader;
   ShaderCheckListBox.Items.AddObject('Posterize Shader', PosterizeShader);
   ShaderCheckListBox.Checked[5] := false;
 
-  // Frost Shader
+  // Creating Frost Shader
   FrostShader := TGLSLPostFrostShader.Create(Self);
   FrostShader.Enabled := false;
   PostShaderHolder.Shaders.Add.Shader := FrostShader;
   ShaderCheckListBox.Items.AddObject('Frost Shader', FrostShader);
   ShaderCheckListBox.Checked[6] := false;
 
-  // Trouble Shader
+  // Creating Trouble Shader
   TroubleShader := TGLSLPostTroubleShader.Create(Self);
   TroubleShader.Enabled := false;
   TroubleShader.MaterialLibrary := MaterialLibrary;
@@ -242,7 +244,7 @@ begin
   ShaderCheckListBox.Items.AddObject('Trouble Shader', TroubleShader);
   ShaderCheckListBox.Checked[7] := false;
 
-  // Transformation Shader
+  // Creating Transformation Shader
   TransformationShader := TGLCGPostTransformationShader.Create(Self);
   TransformationShader.TransformationTexture :=
     MaterialLibrary.LibMaterialByName('Noise').Material.Texture;

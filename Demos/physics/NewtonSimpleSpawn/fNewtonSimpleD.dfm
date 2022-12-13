@@ -2,28 +2,24 @@ object FormNewtonSimple: TFormNewtonSimple
   Left = 0
   Top = 0
   Caption = 'Newton Simple Spawn'
-  ClientHeight = 471
-  ClientWidth = 723
+  ClientHeight = 490
+  ClientWidth = 742
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  PixelsPerInch = 120
-  TextHeight = 17
+  Position = poScreenCenter
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
-    Left = 131
+    Left = 105
     Top = 0
-    Width = 592
-    Height = 471
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 637
+    Height = 490
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 156.026565551757800000
+    FieldOfView = 156.930755615234400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -31,89 +27,61 @@ object FormNewtonSimple: TFormNewtonSimple
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 131
-    Height = 471
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 105
+    Height = 490
     Align = alLeft
     Caption = ' '
     TabOrder = 1
     object btnAddCube: TButton
-      Left = 18
-      Top = 10
-      Width = 93
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 14
+      Top = 8
+      Width = 75
+      Height = 25
       Caption = 'AddCube'
       TabOrder = 0
       OnClick = btnAddCubeClick
     end
     object btnAddSphere: TButton
-      Left = 18
-      Top = 49
-      Width = 93
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 14
+      Top = 39
+      Width = 75
+      Height = 25
       Caption = 'AddSphere'
       TabOrder = 1
       OnClick = btnAddSphereClick
     end
     object btnAddCone: TButton
-      Left = 18
-      Top = 88
-      Width = 93
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 14
+      Top = 70
+      Width = 75
+      Height = 25
       Caption = 'AddCone'
       TabOrder = 2
       OnClick = btnAddConeClick
     end
     object btnAddCylinder: TButton
-      Left = 18
-      Top = 126
-      Width = 93
-      Height = 32
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 14
+      Top = 101
+      Width = 75
+      Height = 25
       Caption = 'AddCylinder'
       TabOrder = 3
       OnClick = btnAddCylinderClick
     end
     object btnAddCapsule: TButton
-      Left = 18
-      Top = 165
-      Width = 93
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 14
+      Top = 132
+      Width = 75
+      Height = 25
       Caption = 'AddCapsule'
       TabOrder = 4
       OnClick = btnAddCapsuleClick
     end
     object btnRemoveAll: TButton
-      Left = 18
-      Top = 204
-      Width = 93
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 14
+      Top = 163
+      Width = 75
+      Height = 25
       Caption = 'Remove All'
       TabOrder = 5
       OnClick = btnRemoveAllClick

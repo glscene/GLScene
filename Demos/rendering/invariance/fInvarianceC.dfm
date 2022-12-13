@@ -10,9 +10,7 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
@@ -129,7 +127,6 @@ object Form1: TForm1
         Material.Texture.Disabled = False
         TextureScale.Coordinates = {000040410000803F0000803F00000000}
       end>
-    TexturePaths = '..\..\..\..\media\'
     Left = 48
     Top = 8
   end

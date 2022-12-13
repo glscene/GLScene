@@ -55,9 +55,7 @@ type
     procedure btnAddCapsuleClick(Sender: TObject);
     procedure btnRemoveAllClick(Sender: TObject);
   private
-     
   public
-     
   end;
 
 var

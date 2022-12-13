@@ -27,11 +27,11 @@ void TForm1::ClickWater(int x, int y)
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
 {
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
   GLWaterPlane1->Mask->LoadFromFile("basinMask.bmp");
   GLHeightField1->Material->Texture->Image->LoadFromFile("clover.jpg");
 
-  TFileName PathCM = GetCurrentDir() + "\\Cubemaps";
+  TFileName PathCM = GetCurrentDir() + "\\cubemap";
   SetCurrentDir(PathCM);
 
   // Load the cube map which is used both for environment and as reflection texture

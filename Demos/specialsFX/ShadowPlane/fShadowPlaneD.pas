@@ -71,7 +71,9 @@ implementation
 
 procedure TFormShadowPlane.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
+
   GLMaterialLibrary.TexturePaths := GetCurrentDir;
   GLMaterialLibrary.Materials[0].Material.Texture.Image.LoadFromFile('BeigeMarble.jpg');
 end;

@@ -444,7 +444,6 @@ var
   bmp: TBitmap;
   pPal: PLogPalette;
 begin
-  SetGLSceneMediaDir();
   if not InitCUTIL then
   begin
     MessageDlg('Can''t load cutil32.dll', mtError, [mbOk], 0);

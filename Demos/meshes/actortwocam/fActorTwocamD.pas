@@ -88,20 +88,25 @@ const
 
 procedure TFormActorTwocam.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
-  // Load mushroom mesh
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\model');
+  // Load static mushroom mesh
   ffMushroom.LoadFromFile('mushroom.3ds');
 
   // Duplicate our reference mushroom (but not its mesh data !)
   AddMushrooms;
 
-  // Load Actor into GLScene
+  // Load skeletal Actor model
+  SetCurrentDir(Path  + '\modelext');
   Actor1.LoadFromFile('waste.md2');
-  Actor1.Material.Texture.Image.LoadFromFile('waste.jpg');
   Actor1.Animations.LoadFromFile('Quake2Animations.aaf');
   Actor1.Scale.SetVector(0.04, 0.04, 0.04, 0);
-  // Load weapon model and texture
+
+  // Load weapon model
   Actor2.LoadFromFile('WeaponWaste.md2');
+
+  // Load weapon texture
+  Actor1.Material.Texture.Image.LoadFromFile('Waste.jpg');
   Actor2.Material.Texture.Image.LoadFromFile('WeaponWaste.jpg');
   Actor2.Animations.Assign(Actor1.Animations);
 
@@ -112,6 +117,7 @@ begin
   Actor2.Synchronize(Actor1);
 
   // Load Texture for ground disk
+  SetCurrentDir(Path  + '\texture');
   diskClover.Material.Texture.Disabled := False;
   diskClover.Material.Texture.Image.LoadFromFile('clover.jpg');
 end;
@@ -126,7 +132,7 @@ var
   moving: String;
   boost: Single;
 begin
-  // This function uses asynchronous keyboard check (see Keyboard.pas)
+  // This function uses asynchronous keyboard check (see GLS.Keyboard.pas)
   if IsKeyDown(VK_ESCAPE) then
     Close;
   if IsKeyDown('A') then

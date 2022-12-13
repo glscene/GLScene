@@ -31,21 +31,27 @@ __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {
 
 // ---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender) {
-	SetGLSceneMediaDir();
-	// Load the cube map which is used both for environment and as reflection texture
+
+	Path = GetCurrentAssetPath();
+	// Loading noise texture
+	SetCurrentDir(Path  + "\\texture");
 	TGLTexture *tex = MatLib->LibMaterialByName("water")->Material->Texture;
 	tex->Image->LoadFromFile("noise.bmp");
+
+	// Creating and loading cubemap
+	SetCurrentDir(Path  + "\\cubemap");
+	// Load the cube map which is used both for environment and as reflection texture
 	tex->ImageClassName = __classid(TGLCubeMapImage)->ClassName();
 	TGLCubeMapImage *img = (TGLCubeMapImage*) tex->Image;
 	// Load all 6 texture map components of the cube map
 	// The 'PX', 'NX', etc. refer to 'positive X', 'negative X', etc.
 	// and follow the RenderMan specs/conventions
-	img->Picture[CmtPX]->LoadFromFile("CubeMaps\\cm_left.jpg");
-	img->Picture[CmtNX]->LoadFromFile("CubeMaps\\cm_right.jpg");
-	img->Picture[CmtPY]->LoadFromFile("CubeMaps\\cm_top.jpg");
-	img->Picture[CmtNY]->LoadFromFile("CubeMaps\\cm_bottom.jpg");
-	img->Picture[CmtPZ]->LoadFromFile("CubeMaps\\cm_back.jpg");
-	img->Picture[CmtNZ]->LoadFromFile("CubeMaps\\cm_front.jpg");
+	img->Picture[CmtPX]->LoadFromFile("cm_left.jpg");
+	img->Picture[CmtNX]->LoadFromFile("cm_right.jpg");
+	img->Picture[CmtPY]->LoadFromFile("cm_top.jpg");
+	img->Picture[CmtNY]->LoadFromFile("cm_bottom.jpg");
+	img->Picture[CmtPZ]->LoadFromFile("cm_back.jpg");
+	img->Picture[CmtNZ]->LoadFromFile("cm_front.jpg");
 }
 
 // ---------------------------------------------------------------------------
@@ -65,11 +71,13 @@ void __fastcall TForm1::DOInitializeRender(TObject *Sender,
 		(MatLib->LibMaterialByName("cubeMap")->Material->Texture);
 	GLSceneViewer1->Buffer->RenderingContext->Activate();
 
+	// Loading shaders
+	SetCurrentDir(Path  + "\\shader");
 	TGLProgramHandle *programObject = new TGLProgramHandle(true);
 	programObject->AddShader(__classid(TGLVertexShaderHandle),
-		LoadAnsiStringFromFile("Shaders\\ocean_vp.glsl"), true);
+		LoadAnsiStringFromFile("ocean_vp.glsl"), true);
 	programObject->AddShader(__classid(TGLFragmentShaderHandle),
-		LoadAnsiStringFromFile("Shaders\\ocean_fp.glsl"), true);
+		LoadAnsiStringFromFile("ocean_fp.glsl"), true);
 
 	if (!programObject->LinkProgram())
 		throw Exception(programObject->InfoLog());

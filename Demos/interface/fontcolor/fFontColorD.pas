@@ -68,7 +68,8 @@ var
 
 procedure TFormFontColor.FormCreate(Sender: TObject);
 begin
-   SetGLSceneMediaDir();
+   var Path: TFileName := GetCurrentAssetPath();
+   SetCurrentDir(Path  + '\texture');
    BitmapFont.Glyphs.LoadFromFile('toonfont.bmp');
 end;
 

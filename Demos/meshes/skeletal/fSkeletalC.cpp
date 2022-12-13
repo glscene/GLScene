@@ -28,7 +28,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-   SetGLSceneMediaDir();
+   TFileName Path = GetCurrentAssetPath();
    // We load the SMD model here
    // Note the actor was linked to a material library, and textures are loaded
    // automatically (4 textures are used by this model)

@@ -173,7 +173,8 @@ var
   Cube: TGLCube;
 
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
   GLMaterialLibrary1.AddTextureMaterial('glscene', 'glscene.bmp');
   for X := -cNb to cNb do
     for Y := -cNb to cNb do

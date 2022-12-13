@@ -23,6 +23,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.SceneViewer.hpp"
 #include <System.Classes.hpp>
+#include "GLS.SimpleNavigation.hpp"
 //---------------------------------------------------------------------------
 class TFormStars:public TForm
 {
@@ -34,6 +35,7 @@ __published:                   // IDE-managed Components
   TGLSprite *Sprite1;
   TGLCadencer *GLCadencer1;
   TTimer *Timer1;
+	TGLSimpleNavigation *GLSimpleNavigation1;
   void __fastcall GLParticles1ActivateParticle(TObject * Sender,
                                                TGLBaseSceneObject * particle);
   void __fastcall Sprite1Progress(TObject * Sender, const double deltaTime,

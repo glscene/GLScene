@@ -2,43 +2,44 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Mushroom'
-  ClientHeight = 326
-  ClientWidth = 452
+  ClientHeight = 423
+  ClientWidth = 688
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
+  Position = poScreenCenter
   OnCreate = FormCreate
   OnResize = FormResize
   DesignSize = (
-    452
-    326)
-  PixelsPerInch = 96
+    688
+    423)
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 452
-    Height = 326
+    Width = 688
+    Height = 423
     Camera = GLCamera1
     Buffer.FogEnvironment.FogColor.Color = {CECD4D3FCECD4D3FCECD4D3F0000803F}
     Buffer.FogEnvironment.FogStart = 30.000000000000000000
     Buffer.FogEnvironment.FogEnd = 90.000000000000000000
     Buffer.BackgroundColor = 13487565
     Buffer.FogEnable = True
-    FieldOfView = 145.893371582031300000
+    FieldOfView = 153.398193359375000000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 566
+    ExplicitHeight = 378
   end
   object Button1: TButton
     Left = 160
-    Top = 301
+    Top = 398
     Width = 137
     Height = 17
     Anchors = [akLeft, akBottom]
@@ -51,6 +52,7 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 1
     OnClick = Button1Click
+    ExplicitTop = 301
   end
   object GLScene1: TGLScene
     VisibilityCulling = vcObjectBased

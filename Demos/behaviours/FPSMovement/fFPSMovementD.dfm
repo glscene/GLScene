@@ -2,8 +2,8 @@ object FormFPSMovement: TFormFPSMovement
   Left = 209
   Top = 112
   Caption = 'FPSMovement'
-  ClientHeight = 383
-  ClientWidth = 588
+  ClientHeight = 501
+  ClientWidth = 728
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,15 +18,17 @@ object FormFPSMovement: TFormFPSMovement
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 588
-    Height = 383
+    Width = 728
+    Height = 501
     Camera = ThirdPersonCamera
     Buffer.BackgroundColor = clBlack
     Buffer.ShadeModel = smSmooth
-    FieldOfView = 150.733886718750000000
+    FieldOfView = 157.424118041992200000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 712
+    ExplicitHeight = 475
   end
   object GLScene1: TGLScene
     Left = 40

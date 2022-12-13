@@ -4,6 +4,7 @@
 unit GLS.Utils;
 
 (* Miscellaneous support utilities & classes for localization *)
+
 interface
 
 {$I GLScene.inc}
@@ -37,6 +38,11 @@ const
 var
   IsDesignTime: Boolean = False;
   vProjectTargetName: TProjectTargetNameFunc;
+
+// Sets a current dir to asset
+procedure SetCurrentDirToAsset();
+// Get a current path to asset
+function GetCurrentAssetPath(): TFileName;
 
 // Copies the values of Source to Dest (converting word values to integer values)
 procedure WordToIntegerArray(Source: PWordArray; Dest: PIntegerArray;
@@ -104,8 +110,7 @@ function SavePictureDialog(var aFileName: string;
 // Pops up a simple open picture dialog.
 function OpenPictureDialog(var aFileName: string;
   const aTitle: string = ''): Boolean;
-procedure SetGLSceneMediaDir();
-// ------------------ from CrossPlatform -----------------------
+// Rectangle as function
 function GetGLRect(const aLeft, aTop, aRight, aBottom: Integer): TRect;
 (* Increases or decreases the width and height of the specified rectangle.
   Adds dx units to the left and right ends of the rectangle and dy units to
@@ -166,7 +171,6 @@ function GetValueFromStringsIndex(const AStrings: TStrings;
 // Determine if the directory is writable.
 function IsDirectoryWriteable(const AName: string): Boolean;
 function CharToWideChar(const AChar: AnsiChar): WideChar;
-
 (*
   Added by PAL to fix problem with decimal separator in not En-US configurations
   Decimal separator in text descriptions of meshes for import/export is always '.' char
@@ -629,19 +633,27 @@ begin
   end;
 end;
 
-procedure SetGLSceneMediaDir();
+procedure SetCurrentDirToAsset();
 var
   path: String;
   p: Integer;
 begin
-  path := ParamStr(0);
-  path := LowerCase(ExtractFilePath(path));
-  p := Pos('demos', path);
-  Delete(path, p + 5, Length(path));
-  path := IncludeTrailingPathDelimiter(path) + 'media';
+  path := LowerCase(ExtractFilePath(ParamStr(0)));
+  p := Pos('glscene', path);
+  Delete(path, p + 7, Length(path));
+  path := IncludeTrailingPathDelimiter(path) + 'asset';
   SetCurrentDir(path);
 end;
-// ------------ from CrossPfatform -------------------
+
+function GetCurrentAssetPath(): TFileName;
+begin
+  var path: string := LowerCase(ExtractFilePath(ParamStr(0)));
+  var p: integer := Pos('glscene', path);
+  Delete(path, p + 7, Length(path));
+  path := IncludeTrailingPathDelimiter(path) + 'asset';
+  SetCurrentDir(path);
+  Result := path;
+end;
 
 procedure RaiseLastOSError;
 var

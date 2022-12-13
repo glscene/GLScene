@@ -36,8 +36,12 @@ void __fastcall TMainForm::GLCadencer1Progress(TObject *Sender, const double del
 
 void __fastcall TMainForm::FormCreate(TObject *Sender)
 {
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
+  SetCurrentDir(Path  + "\\model");
+
   GLActor1->LoadFromFile("waste.md2");
+
+  SetCurrentDir(Path  + "\\texture");
   GLActor1->Material->Texture->Image->LoadFromFile("waste.jpg");
   GLActor1->Material->Texture->Enabled = True;
 ///  GLActor1->SwitchToAnimation(GLActor1->Animations[0]);
@@ -59,8 +63,7 @@ void __fastcall TMainForm::ComboBox1Change(TObject *Sender)
 	case 6: GLPostEffect1->Preset = pepBlur; break;
 	case 7: GLPostEffect1->Preset = pepCustom; break;
 
-  default:
-	  ;
+  default:;
   }
 }
 //---------------------------------------------------------------------------
@@ -70,9 +73,9 @@ void __fastcall TMainForm::GLPostEffect1CustomEffect(TObject *Sender, TGLRenderC
   int i;
 
   for (i = 0; i <= 7; i++) {
-	Buffer[i]->r = (int)(Buffer[i + 5]->r * 2);
-	Buffer[i]->g = (int)(Buffer[i]->g * 1.5);
-	Buffer[i]->b = (int)(Buffer[i + 5]->b * 1.5);
+	&Buffer[i]->r = (int)(&Buffer[i + 5]->r * 2);
+	&Buffer[i]->g = (int)(&Buffer[i]->g * 1.5);
+	&Buffer[i]->b = (int)(&Buffer[i + 5]->b * 1.5);
   }
 }
 //---------------------------------------------------------------------------

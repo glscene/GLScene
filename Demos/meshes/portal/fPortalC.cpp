@@ -26,7 +26,10 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
+  // Load textures for ground and walls
+  SetCurrentDir(Path  + "\\texture");
+
   int i;
   for (i=0; i < 15; i++)
 	  SGMap->Cells[i][i] = 'X';
@@ -35,7 +38,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
    SGMap->Row = 12;
    GLMaterialLibrary1->AddTextureMaterial("gnd", "walkway.jpg");
    GLMaterialLibrary1->AddTextureMaterial("wall", "rawwall.jpg")->TextureScale->Y = 3;
-   BBProcessClick(Sender);
+//  BBProcessClick(NULL);
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::BBProcessClick(TObject *Sender)

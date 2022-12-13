@@ -113,10 +113,10 @@ end;
 procedure TFormShadowFBO.FormCreate(Sender: TObject);
 begin
   // Loading textures
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
   with GLMaterialLibrary1 do
   begin
-
     with TextureByName('Chekers') do
     begin
       Image.LoadFromFile('marbletiles.jpg');
@@ -128,19 +128,16 @@ begin
       Image.LoadFromFile('Concrete.jpg');
       Disabled := false;
     end;
-
     with TextureByName('Lightspot') do
     begin
       Image.LoadFromFile('Flare1.bmp');
       Disabled := false;
     end;
-
     with TextureByName('bark') do
     begin
       Image.LoadFromFile('waste.jpg');
       Disabled := false;
     end;
-
     with TextureByName('mask') do
     begin
       Image.LoadFromFile('Masks.dds');

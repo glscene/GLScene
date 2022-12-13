@@ -33,12 +33,14 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
+	TFileName Path = GetCurrentAssetPath();
+
    // Load Cg proggy from project directory
-	SetCurrentDir(ExtractFilePath(Application->ExeName));
-	CgShader1->VertexProgram->LoadFromFile("Shaders\\simple_vp.cg");
+	SetCurrentDir(Path  + "\\shader");
+	CgShader1->VertexProgram->LoadFromFile("simple_vp.cg");
 	MemoVertCode->Lines->Assign(CgShader1->VertexProgram->Code);
 
-	CgShader1->FragmentProgram->LoadFromFile("Shaders\\simple_fp.cg");
+	CgShader1->FragmentProgram->LoadFromFile("simple_fp.cg");
 	MemoFragCode->Lines->Assign(CgShader1->FragmentProgram->Code);
 
 	CgShader1->VertexProgram->Enabled = false;
@@ -50,8 +52,8 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	// Bind shader to the material
 	GLMaterialLibrary1->Materials->Items[0]->Shader = CgShader1;
 
-	// Load the teapot model from media directory.
-	SetGLSceneMediaDir();
+	// Load the teapot model.
+	SetCurrentDir(Path  + "\\model");
 	// Note that GLScene will alter the ModelView matrix
 	// internally for GLScene objects like TGLCylinder & TGLSphere, and Cg shader
 	// is not aware of that. If you apply a vertex shader on those objects, they

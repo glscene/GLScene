@@ -3,35 +3,32 @@ object FormPong: TFormPong
   Top = 93
   BorderWidth = 5
   Caption = 'Pong'
-  ClientHeight = 380
-  ClientWidth = 763
+  ClientHeight = 407
+  ClientWidth = 688
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 763
-    Height = 380
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 688
+    Height = 407
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
-    FieldOfView = 149.905456542968800000
+    FieldOfView = 151.819732666015600000
     PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 666
+    ExplicitHeight = 666
   end
   object GLScene1: TGLScene
     Left = 32
@@ -49,25 +46,25 @@ object FormPong: TFormPong
           Caster = Pad
         end>
       Options = [svoCacheSilhouettes, svoWorldScissorClip, svoDesignVisible]
-      object Plane1: TGLPlane
+      object PlaneTable: TGLPlane
         Material.MaterialLibrary = GLMaterialLibrary1
         Material.LibMaterialName = 'Mat'
         Position.Coordinates = {0000000000000000000000BF0000803F}
         Height = 10.000000000000000000
         Width = 15.000000000000000000
-        object Cube1: TGLCube
+        object BackBoard: TGLCube
           Material.MaterialLibrary = GLMaterialLibrary1
           Material.LibMaterialName = 'Edge'
           Position.Coordinates = {000000000000A0400000803E0000803F}
           CubeSize = {000078410000003F0000003F}
         end
-        object Cube2: TGLCube
+        object LeftBoard: TGLCube
           Material.MaterialLibrary = GLMaterialLibrary1
           Material.LibMaterialName = 'Edge'
           Position.Coordinates = {0000F0C0000000000000803E0000803F}
           CubeSize = {0000003F000020410000003F}
         end
-        object Cube3: TGLCube
+        object RightBoard: TGLCube
           Material.MaterialLibrary = GLMaterialLibrary1
           Material.LibMaterialName = 'Edge'
           Position.Coordinates = {0000F040000000000000803E0000803F}
@@ -95,7 +92,7 @@ object FormPong: TFormPong
         DepthOfView = 100.000000000000000000
         FocalLength = 51.078403472900390000
         TargetObject = DummyCube1
-        Position.Coordinates = {00000000000070C1000020410000803F}
+        Position.Coordinates = {00000000000070C10000A0410000803F}
         Direction.Coordinates = {000000000000803F0000000000000000}
         Up.Coordinates = {00000000000000000000803F00000000}
       end

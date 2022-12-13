@@ -15,7 +15,9 @@ __fastcall TForm1::TForm1(TComponent* Owner)
   TGLSphere *newSphere;
   TGLActor *newActor;
 
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
+  SetCurrentDir(Path  + "\\texture");
+  GLMaterialLibrary->Materials->Items[0]->Material->Texture->Image->LoadFromFile("waste.jpg");
   // Spheres are used as standalone, high-polycount objects
   // that are highly T&L friendly
   for (i=-4; i<4; i++)
@@ -29,15 +31,15 @@ __fastcall TForm1::TForm1(TComponent* Owner)
    // Actors are used as standalone, med-polycount objects
   // that aren't T&L friendly (all geometry must be sent to
   // the hardware at each frame)
-  GLMaterialLibrary->Materials->Items[0]->Material->Texture->Image->LoadFromFile("waste.jpg");
+  SetCurrentDir(Path  + "\\model");
   ACReference->LoadFromFile("waste.md2");
   for (i=-3; i<3; i++)
 	for (j=-3; j<3; j++)
 	{
-      newActor = (TGLActor *) DCActors->AddNewChild(__classid(TGLActor));
-      newActor->Assign(ACReference);
-      newActor->Position->SetPoint(i*10, 0, j*10);
-      newActor->CurrentFrame = (i+2)+(j+2)*5;
+	  newActor = (TGLActor *) DCActors->AddNewChild(__classid(TGLActor));
+	  newActor->Assign(ACReference);
+	  newActor->Position->SetPoint(i*10, 0, j*10);
+	  newActor->CurrentFrame = (i+2)+(j+2)*5;
     }
   ACReference->Visible = false;
 }

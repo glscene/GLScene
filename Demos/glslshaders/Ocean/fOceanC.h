@@ -66,12 +66,11 @@ __published:	// IDE-managed Components
           TVector4f &color, TTexPoint &texPoint);
 	void __fastcall DOOceanPlaneRender(TObject *Sender, TGLRenderContextInfo &rci);
 	void __fastcall GLSceneViewer1BeforeRender(TObject *Sender);
-
-
 private:	// User declarations
 	int mx, my, dmx, dmy;
 	TGLProgramHandle *programObject;
 public:		// User declarations
+    TFileName Path;
 	__fastcall TForm1(TComponent* Owner);
 };
 //---------------------------------------------------------------------------

@@ -209,7 +209,9 @@ var // rootBone,
   end;
 
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\model');
+  
   //Execute Create physic and RagdollPlayer
   WorldODE := TWorld_ODE.create;
 

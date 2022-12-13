@@ -2,121 +2,96 @@ object FormCulling: TFormCulling
   Left = 188
   Top = 112
   Caption = 'Culling'
-  ClientHeight = 608
-  ClientWidth = 795
+  ClientHeight = 556
+  ClientWidth = 844
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Arial'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 14
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 630
-    Height = 608
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 712
+    Height = 556
     Camera = GLCamera1
     Buffer.BackgroundColor = 12040119
-    FieldOfView = 161.319946289062500000
+    FieldOfView = 159.608016967773400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 578
+    ExplicitHeight = 498
   end
   object Panel2: TPanel
-    Left = 630
+    Left = 712
     Top = 0
-    Width = 165
-    Height = 608
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 132
+    Height = 556
     Align = alRight
     TabOrder = 1
+    ExplicitLeft = 504
+    ExplicitHeight = 486
     DesignSize = (
-      165
-      608)
+      132
+      556)
     object Label1: TLabel
-      Left = 31
-      Top = 10
-      Width = 98
-      Height = 18
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 25
+      Top = 8
+      Width = 75
+      Height = 15
       Anchors = [akTop, akRight]
       Caption = 'Culling Mode:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
+      Font.Height = -12
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 36
-      Top = 160
-      Width = 59
-      Height = 18
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 29
+      Top = 128
+      Width = 47
+      Height = 15
       Anchors = [akTop, akRight]
       Caption = 'Objects:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
+      Font.Height = -12
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object RBNone: TRadioButton
-      Left = 34
-      Top = 41
-      Width = 111
-      Height = 22
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 27
+      Top = 33
+      Width = 89
+      Height = 17
       Anchors = [akTop, akRight]
       Caption = 'None'
       TabOrder = 0
       OnClick = RBNoneClick
     end
     object RBObject: TRadioButton
-      Left = 34
-      Top = 70
-      Width = 111
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 27
+      Top = 56
+      Width = 89
+      Height = 17
       Anchors = [akTop, akRight]
       Caption = 'Object based'
       TabOrder = 1
       OnClick = RBNoneClick
     end
     object RBHierarchical: TRadioButton
-      Left = 34
-      Top = 99
-      Width = 111
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 27
+      Top = 79
+      Width = 89
+      Height = 17
       Anchors = [akTop, akRight]
       Caption = 'Hierarchical'
       TabOrder = 2
@@ -124,27 +99,19 @@ object FormCulling: TFormCulling
       OnClick = RBNoneClick
     end
     object RBActors: TRadioButton
-      Left = 40
-      Top = 260
-      Width = 101
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 32
+      Top = 208
+      Width = 81
+      Height = 17
       Caption = 'Actors'
       TabOrder = 3
       OnClick = RBSpheresClick
     end
     object RBSpheres: TRadioButton
-      Left = 38
-      Top = 213
-      Width = 101
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 30
+      Top = 170
+      Width = 81
+      Height = 17
       Caption = 'Spheres'
       Checked = True
       TabOrder = 4
@@ -209,5 +176,25 @@ object FormCulling: TFormCulling
       end>
     Left = 48
     Top = 48
+  end
+  object GLSimpleNavigation1: TGLSimpleNavigation
+    Form = Owner
+    GLSceneViewer = Viewer
+    FormCaption = 'Culling - %FPS'
+    KeyCombinations = <
+      item
+        ShiftState = [ssLeft, ssRight]
+        Action = snaZoom
+      end
+      item
+        ShiftState = [ssLeft]
+        Action = snaMoveAroundTarget
+      end
+      item
+        ShiftState = [ssRight]
+        Action = snaMoveAroundTarget
+      end>
+    Left = 192
+    Top = 24
   end
 end

@@ -2,63 +2,51 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Hierarchy'
-  ClientHeight = 553
-  ClientWidth = 709
+  ClientHeight = 442
+  ClientWidth = 567
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  Position = poScreenCenter
   OnCloseQuery = FormCloseQuery
   OnResize = FormResize
-  PixelsPerInch = 120
   DesignSize = (
-    709
-    553)
-  TextHeight = 17
+    567
+    442)
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 709
-    Height = 521
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 567
+    Height = 417
     Camera = GLCamera1
     Buffer.BackgroundColor = clSilver
-    FieldOfView = 137.998687744140600000
+    FieldOfView = 128.753723144531300000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object TrackBar: TTrackBar
     Left = 0
-    Top = 521
-    Width = 709
-    Height = 32
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 417
+    Width = 567
+    Height = 25
     Align = alBottom
     Max = 360
     PageSize = 10
     Frequency = 10
     TabOrder = 1
-    ThumbLength = 19
+    ThumbLength = 15
     OnChange = TrackBarChange
   end
   object CBPlay: TCheckBox
-    Left = 6
-    Top = 488
-    Width = 52
-    Height = 21
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 261
+    Top = 24
+    Width = 41
+    Height = 17
     Anchors = [akLeft, akBottom]
     Caption = 'Play'
     TabOrder = 2

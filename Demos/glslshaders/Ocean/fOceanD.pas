@@ -74,6 +74,7 @@ type
       var rci: TGLRenderContextInfo);
     procedure GLMemoryViewer1BeforeRender(Sender: TObject);
   public
+    Path: TFileName;
     mx, my, dmx, dmy: Integer;
     programObject: TGLProgramHandle;
   end;
@@ -90,16 +91,16 @@ implementation
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
-  CubeMap := TGLTexture.Create(Self);
-  // Load the cube map which is used both for environment and as reflection texture
+  Path := GetCurrentAssetPath();
+  // Loading noise texture
+  SetCurrentDir(Path  + '\texture');
   MatLib.LibMaterialByName('water').Material.Texture.Image.LoadFromFile('noise.bmp');
 
-  PathCM := GetCurrentDir() + '\Cubemaps';
-  SetCurrentDir(PathCM);
-
+  // Load the cube map which is used both for environment and as reflection texture
+  SetCurrentDir(Path  + '\cubemap');
+  CubeMap := TGLTexture.Create(Self);
 //  Cubemap.ImageClassName := 'TGLCompositeImage';
-//  Cubemap.Image.LoadFromFile('Cubemaps/Skybox.dds');
+//  Cubemap.Image.LoadFromFile('Skybox.dds'); // if loading all 6 images
   Cubemap.TextureWrap := twNone;
   Cubemap.FilteringQuality := tfAnisotropic;
   Cubemap.Disabled := False;
@@ -121,7 +122,7 @@ begin
       Picture[cmtNZ].LoadFromFile('cm_front.jpg');
     end;
   end;
-  SetGLSceneMediaDir();
+
 end;
 
 procedure TForm1.DoInitializeRender(Sender: TObject;
@@ -145,8 +146,9 @@ begin
 
   programObject := TGLProgramHandle.CreateAndAllocate;
 
-  programObject.AddShader(TGLVertexShaderHandle, String(LoadAnsiStringFromFile('Shaders\ocean_vp.glsl')), True);
-  programObject.AddShader(TGLFragmentShaderHandle, String(LoadAnsiStringFromFile('Shaders\ocean_fp.glsl')), True);
+  SetCurrentDir(Path  + '\shader');
+  programObject.AddShader(TGLVertexShaderHandle, string(LoadAnsiStringFromFile('ocean_vp.glsl')), True);
+  programObject.AddShader(TGLFragmentShaderHandle, string(LoadAnsiStringFromFile('ocean_fp.glsl')), True);
   if not programObject.LinkProgram then
     raise Exception.Create(programObject.InfoLog);
   programObject.UseProgramObject;

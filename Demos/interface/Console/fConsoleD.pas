@@ -128,7 +128,8 @@ begin
   Console.Font := Font1;
 
   // optional stuff:
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
   Console.HudSprite.Material.Texture.Image.LoadFromFile('GLScene.bmp');
   Console.AddLine('Console started');
   Console.HUDSpriteColor := clWhite;

@@ -118,16 +118,14 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure None1Click(Sender: TObject);
   private
-     
   public
-
   end;
 
 var
   Form1: TForm1;
   CurPath, Selection: string;
   ArchiveManager: TGLSArchiveManager;
-  Archive: TLibArchive;
+  Archive: TGLLibArchive;
   vMenu: TMenuItem;
 
 //-------------------------------------
@@ -145,7 +143,9 @@ procedure TForm1.FormCreate(Sender: TObject);
 var
   Bmp: TBitmap;
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\modelext');
+
   Bmp := TBitmap.Create;
  // Bmp.LoadFromResourceName(HInstance, 'icons');
   ImageList1.AddMasked(Bmp, clWhite);
@@ -406,6 +406,7 @@ begin
   OpenDialog1.DefaultExt := SaveDialog1.DefaultExt;
   OpenDialog1.Filter := SaveDialog1.Filter;
   OpenDialog1.Options := OpenDialog1.Options - [ofAllowMultiSelect];
+  OpenDialog1.InitialDir := GetCurrentDir();
   if OpenDialog1.Execute then
   begin
     Archive.Clear;
@@ -442,6 +443,7 @@ begin
   OpenDialog1.DefaultExt := '';
   OpenDialog1.Filter := 'All Files|*.*';
   OpenDialog1.Options := OpenDialog1.Options + [ofAllowMultiSelect];
+  OpenDialog1.InitialDir := GetCurrentDir();
   if OpenDialog1.Execute then
   begin
     for i := 0 to OpenDialog1.Files.Count - 1 do

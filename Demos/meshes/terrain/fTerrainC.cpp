@@ -41,7 +41,7 @@ float random(void)
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
 {
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
   // 8 MB height data cache
   // Note this is the data size in terms of elevation samples, it does not
   // take into account all the data required/allocated by the renderer

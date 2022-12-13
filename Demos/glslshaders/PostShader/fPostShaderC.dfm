@@ -10,11 +10,9 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object Viewer: TGLSceneViewer
     Left = 0
@@ -381,10 +379,10 @@ object Form1: TForm1
       Top = 24
       Width = 207
       Height = 145
-      OnClickCheck = ShaderCheckListBoxClick
       ItemHeight = 13
       TabOrder = 0
       OnClick = ShaderCheckListBoxClick
+      OnClickCheck = ShaderCheckListBoxClick
     end
     object tbBlurValue: TTrackBar
       Left = 85

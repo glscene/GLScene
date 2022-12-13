@@ -33,9 +33,12 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormActivate(TObject *Sender)
 {
-   SetGLSceneMediaDir();
+   TFileName Path = GetCurrentAssetPath();
+
+   SetCurrentDir(Path  + "\\model");
    GLFreeForm1->LoadFromFile("beer.3ds");
 
+   SetCurrentDir(Path  + "\\texture");
    GLFreeForm1->Material->Texture->Image->LoadFromFile("clouds.jpg");
    GLShadowPlane1->Material->Texture->Image->LoadFromFile("ashwood.jpg");
    GetOrCreateSourcePFX(GLDummyCube3)->Burst(0, 150);

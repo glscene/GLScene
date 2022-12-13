@@ -87,7 +87,9 @@ implementation
 
 procedure TFormBlurAdvanced.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
+  
   // Blur GLDummyCube1and it's children
   GLBlur1.TargetObject := GLDummyCube1;
   // point to GLDummyCube1

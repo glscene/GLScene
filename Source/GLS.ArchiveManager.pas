@@ -28,7 +28,7 @@ type
     FFileName: string;
     FContentList: TStrings;
     FCompressionLevel: TCompressionLevel;
-    Procedure SetCompressionLevel(aValue: TCompressionLevel); Virtual;
+    procedure SetCompressionLevel(aValue: TCompressionLevel); Virtual;
   public
     constructor Create(AOwner: TPersistent); override;
     destructor Destroy; override;
@@ -63,7 +63,7 @@ type
   // GLFilePak, GLFileZLib etc.
 
   (* The type to record a registered class *)
-  TArchiveFileFormat = class
+  TGLArchiveFileFormat = class
   public
     BaseArchiveClass: TGLBaseArchiveClass;
     Extension: string;
@@ -83,7 +83,7 @@ type
   end;
 
   // Using the collection item for simultaneous work with several archives
-  TLibArchive = class(TCollectionItem)
+  TGLLibArchive = class(TCollectionItem)
   private
     vArchive: TGLBaseArchive;
     ArcClass: TGLBaseArchiveClass;
@@ -124,45 +124,45 @@ type
     property Name: string read FName write SetName;
   end;
 
-  TLibArchives = class(TOwnedCollection)
+  TGLLibArchives = class(TOwnedCollection)
   protected
-    procedure SetItems(index: integer; const val: TLibArchive);
-    function GetItems(index: integer): TLibArchive;
+    procedure SetItems(index: integer; const val: TGLLibArchive);
+    function GetItems(index: integer): TGLLibArchive;
   public
     constructor Create(AOwner: TComponent);
     function Owner: TPersistent;
-    function IndexOf(const Item: TLibArchive): integer;
-    function Add: TLibArchive;
-    function FindItemID(ID: integer): TLibArchive;
-    property Items[index: integer]: TLibArchive read GetItems
+    function IndexOf(const Item: TGLLibArchive): integer;
+    function Add: TGLLibArchive;
+    function FindItemID(ID: integer): TGLLibArchive;
+    property Items[index: integer]: TGLLibArchive read GetItems
       write SetItems; default;
     // searching archiver by name
-    function GetArchiveByFileName(const AName: string): TLibArchive;
-    function GetFileNameOfArchive(aValue: TLibArchive): string;
+    function GetArchiveByFileName(const AName: string): TGLLibArchive;
+    function GetFileNameOfArchive(aValue: TGLLibArchive): string;
     // searching needed item
     function MakeUniqueName(const nameRoot: string): string;
-    function GetLibArchiveByName(const AName: string): TLibArchive;
-    function GetNameOfLibArchive(const Archive: TLibArchive): string;
+    function GetLibArchiveByName(const AName: string): TGLLibArchive;
+    function GetNameOfLibArchive(const Archive: TGLLibArchive): string;
   end;
 
   // ArchiveManager class
   TGLSArchiveManager = class(TComponent)
   private
-    FArchives: TLibArchives;
-    Procedure SetArchives(aValue: TLibArchives);
+    FArchives: TGLLibArchives;
+    Procedure SetArchives(aValue: TGLLibArchives);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    function GetArchiveByFileName(const AName: string): TLibArchive;
-    function GetFileNameOfArchive(const aArchive: TLibArchive): string;
+    function GetArchiveByFileName(const AName: string): TGLLibArchive;
+    function GetFileNameOfArchive(const aArchive: TGLLibArchive): string;
     function GetContent(aContentName: string): TStream;
     function ContentExists(aContentName: string): boolean;
-    function OpenArchive(aFileName: string): TLibArchive; overload;
-    function OpenArchive(aFileName, aAchiverType: string): TLibArchive;
+    function OpenArchive(aFileName: string): TGLLibArchive; overload;
+    function OpenArchive(aFileName, aAchiverType: string): TGLLibArchive;
       overload;
-    procedure CloseArchive(aArchive: TLibArchive);
+    procedure CloseArchive(aArchive: TGLLibArchive);
   published
-    property Archives: TLibArchives read FArchives write SetArchives;
+    property Archives: TGLLibArchives read FArchives write SetArchives;
   end;
 
   EInvalidArchiveFile = class(Exception);
@@ -252,28 +252,29 @@ begin
 end;
 
 // ******************************************************************************
-{ TLibArchive }
 
-constructor TLibArchive.Create(ACollection: TCollection);
+// TGLLibArchive
+
+constructor TGLLibArchive.Create(ACollection: TCollection);
 begin
   inherited Create(ACollection);
-  FName := TLibArchives(ACollection).MakeUniqueName('LibArchive');
+  FName := TGLLibArchives(ACollection).MakeUniqueName('LibArchive');
 end;
 
-destructor TLibArchive.Destroy;
+destructor TGLLibArchive.Destroy;
 begin
   Clear;
   inherited Destroy;
 end;
 
-procedure TLibArchive.SetCompressionLevel(aValue: TCompressionLevel);
+procedure TGLLibArchive.SetCompressionLevel(aValue: TCompressionLevel);
 begin
   if vArchive = nil then
     Exit;
   vArchive.CompressionLevel := aValue;
 end;
 
-function TLibArchive.GetCompressionLevel: TCompressionLevel;
+function TGLLibArchive.GetCompressionLevel: TCompressionLevel;
 begin
   Result := clDefault;
   if vArchive = nil then
@@ -281,7 +282,7 @@ begin
   Result := vArchive.CompressionLevel;
 end;
 
-procedure TLibArchive.CreateArchive(FileName: string;
+procedure TGLLibArchive.CreateArchive(FileName: string;
   OverwriteExistingFile: boolean = False);
 var
   fFile: TFileStream;
@@ -293,7 +294,7 @@ begin
   end;
 end;
 
-procedure TLibArchive.LoadFromFile(aFileName: string);
+procedure TGLLibArchive.LoadFromFile(aFileName: string);
 var
   Ext: string;
 begin
@@ -302,7 +303,7 @@ begin
   LoadFromFile(aFileName, Ext);
 end;
 
-procedure TLibArchive.LoadFromFile(aFileName, aAchiverType: string);
+procedure TGLLibArchive.LoadFromFile(aFileName, aAchiverType: string);
 begin
   if not FileExists(aFileName) then
     Exit;
@@ -310,7 +311,7 @@ begin
   If ArcClass = nil then
   begin
     raise Exception.Create(ClassName +
-      ': Unable to find module archiver to expand ' + aAchiverType);
+    ': Unable to find module archiver to expand ' + aAchiverType);
     Exit;
   end;
   vArchive := ArcClass.Create(nil);
@@ -318,7 +319,7 @@ begin
   FFileName := aFileName;
 end;
 
-procedure TLibArchive.Clear;
+procedure TGLLibArchive.Clear;
 begin
   if vArchive = nil then
     Exit;
@@ -328,7 +329,7 @@ begin
   FFileName := '';
 end;
 
-function TLibArchive.ContentExists(aContentName: string): boolean;
+function TGLLibArchive.ContentExists(aContentName: string): boolean;
 begin
   Result := False;
   if vArchive = nil then
@@ -336,7 +337,7 @@ begin
   Result := vArchive.ContentExists(aContentName)
 end;
 
-function TLibArchive.GetContent(aindex: integer): TStream;
+function TGLLibArchive.GetContent(aindex: integer): TStream;
 begin
   Result := nil;
   if vArchive = nil then
@@ -344,7 +345,7 @@ begin
   Result := vArchive.GetContent(aindex)
 end;
 
-function TLibArchive.GetContent(aContentName: string): TStream;
+function TGLLibArchive.GetContent(aContentName: string): TStream;
 begin
   Result := nil;
   if vArchive = nil then
@@ -352,7 +353,7 @@ begin
   Result := vArchive.GetContent(aContentName)
 end;
 
-function TLibArchive.GetContentSize(aindex: integer): integer;
+function TGLLibArchive.GetContentSize(aindex: integer): integer;
 begin
   Result := -1;
   if vArchive = nil then
@@ -360,7 +361,7 @@ begin
   Result := vArchive.GetContentSize(aindex)
 end;
 
-function TLibArchive.GetContentSize(aContentName: string): integer;
+function TGLLibArchive.GetContentSize(aContentName: string): integer;
 begin
   Result := -1;
   if vArchive = nil then
@@ -368,63 +369,63 @@ begin
   Result := vArchive.GetContentSize(aContentName)
 end;
 
-procedure TLibArchive.AddFromStream(aContentName, aPath: string; aF: TStream);
+procedure TGLLibArchive.AddFromStream(aContentName, aPath: string; aF: TStream);
 begin
   if vArchive = nil then
     Exit;
   vArchive.AddFromStream(aContentName, aPath, aF)
 end;
 
-procedure TLibArchive.AddFromStream(aContentName: string; aF: TStream);
+procedure TGLLibArchive.AddFromStream(aContentName: string; aF: TStream);
 begin
   if vArchive = nil then
     Exit;
   vArchive.AddFromStream(aContentName, '', aF)
 end;
 
-procedure TLibArchive.AddFromFile(aFileName, aPath: string);
+procedure TGLLibArchive.AddFromFile(aFileName, aPath: string);
 begin
   if vArchive = nil then
     Exit;
   vArchive.AddFromFile(aFileName, aPath)
 end;
 
-procedure TLibArchive.AddFromFile(aFileName: string);
+procedure TGLLibArchive.AddFromFile(aFileName: string);
 begin
   if vArchive = nil then
     Exit;
   vArchive.AddFromFile(aFileName, '')
 end;
 
-procedure TLibArchive.RemoveContent(aindex: integer);
+procedure TGLLibArchive.RemoveContent(aindex: integer);
 begin
   if vArchive = nil then
     Exit;
   vArchive.RemoveContent(aindex)
 end;
 
-procedure TLibArchive.RemoveContent(aContentName: string);
+procedure TGLLibArchive.RemoveContent(aContentName: string);
 begin
   if vArchive = nil then
     Exit;
   vArchive.RemoveContent(aContentName)
 end;
 
-procedure TLibArchive.Extract(aindex: integer; aNewName: string);
+procedure TGLLibArchive.Extract(aindex: integer; aNewName: string);
 begin
   if vArchive = nil then
     Exit;
   vArchive.Extract(aindex, aNewName)
 end;
 
-procedure TLibArchive.Extract(aContentName, aNewName: string);
+procedure TGLLibArchive.Extract(aContentName, aNewName: string);
 begin
   if vArchive = nil then
     Exit;
   vArchive.Extract(aContentName, aNewName)
 end;
 
-function TLibArchive.GetContentList: TStrings;
+function TGLLibArchive.GetContentList: TStrings;
 begin
   Result := nil;
   if vArchive = nil then
@@ -432,15 +433,15 @@ begin
   Result := vArchive.ContentList;
 end;
 
-procedure TLibArchive.SetName(const val: string);
+procedure TGLLibArchive.SetName(const val: string);
 begin
   if val <> FName then
   begin
-    if not(csLoading in TComponent(TLibArchives(Collection).GetOwner)
+    if not(csLoading in TComponent(TGLLibArchives(Collection).GetOwner)
       .ComponentState) then
     begin
-      if TLibArchives(Collection).GetLibArchiveByName(val) <> Self then
-        FName := TLibArchives(Collection).MakeUniqueName(val)
+      if TGLLibArchives(Collection).GetLibArchiveByName(val) <> Self then
+        FName := TGLLibArchives(Collection).MakeUniqueName(val)
       else
         FName := val;
     end
@@ -449,32 +450,32 @@ begin
   end;
 end;
 
-function TLibArchive.GetDisplayName: string;
+function TGLLibArchive.GetDisplayName: string;
 begin
   Result := Name;
 end;
 
-procedure TLibArchives.SetItems(index: integer; const val: TLibArchive);
+procedure TGLLibArchives.SetItems(index: integer; const val: TGLLibArchive);
 begin
   GetItems(Index).Assign(val);
 end;
 
-function TLibArchives.GetItems(index: integer): TLibArchive;
+function TGLLibArchives.GetItems(index: integer): TGLLibArchive;
 begin
-  Result := TLibArchive(inherited GetItem(Index));
+  Result := TGLLibArchive(inherited GetItem(Index));
 end;
 
-constructor TLibArchives.Create(AOwner: TComponent);
+constructor TGLLibArchives.Create(AOwner: TComponent);
 begin
-  inherited Create(AOwner, TLibArchive);
+  inherited Create(AOwner, TGLLibArchive);
 end;
 
-function TLibArchives.Owner: TPersistent;
+function TGLLibArchives.Owner: TPersistent;
 begin
   Result := GetOwner;
 end;
 
-function TLibArchives.IndexOf(const Item: TLibArchive): integer;
+function TGLLibArchives.IndexOf(const Item: TGLLibArchive): integer;
 var
   I: integer;
 begin
@@ -488,24 +489,24 @@ begin
       end;
 end;
 
-function TLibArchives.Add: TLibArchive;
+function TGLLibArchives.Add: TGLLibArchive;
 begin
-  Result := (inherited Add) as TLibArchive;
+  Result := (inherited Add) as TGLLibArchive;
 end;
 
-function TLibArchives.FindItemID(ID: integer): TLibArchive;
+function TGLLibArchives.FindItemID(ID: integer): TGLLibArchive;
 begin
-  Result := (inherited FindItemID(ID)) as TLibArchive;
+  Result := (inherited FindItemID(ID)) as TGLLibArchive;
 end;
 
-function TLibArchives.GetArchiveByFileName(const AName: string): TLibArchive;
+function TGLLibArchives.GetArchiveByFileName(const AName: string): TGLLibArchive;
 var
   I: integer;
-  Arc: TLibArchive;
+  Arc: TGLLibArchive;
 begin
   for I := 0 to Count - 1 do
   begin
-    Arc := TLibArchive(inherited Items[I]);
+    Arc := TGLLibArchive(inherited Items[I]);
     if Arc.FileName = AName then
     begin
       Result := Arc;
@@ -515,7 +516,7 @@ begin
   Result := nil;
 end;
 
-function TLibArchives.GetFileNameOfArchive(aValue: TLibArchive): string;
+function TGLLibArchives.GetFileNameOfArchive(aValue: TGLLibArchive): string;
 var
   ArcIndex: integer;
 begin
@@ -526,7 +527,7 @@ begin
     Result := '';
 end;
 
-function TLibArchives.MakeUniqueName(const nameRoot: string): string;
+function TGLLibArchives.MakeUniqueName(const nameRoot: string): string;
 var
   I: integer;
 begin
@@ -539,14 +540,14 @@ begin
   end;
 end;
 
-function TLibArchives.GetLibArchiveByName(const AName: string): TLibArchive;
+function TGLLibArchives.GetLibArchiveByName(const AName: string): TGLLibArchive;
 var
   I: integer;
-  Arc: TLibArchive;
+  Arc: TGLLibArchive;
 begin
   for I := 0 to Count - 1 do
   begin
-    Arc := TLibArchive(inherited Items[I]);
+    Arc := TGLLibArchive(inherited Items[I]);
     if (Arc.Name = AName) then
     begin
       Result := Arc;
@@ -556,7 +557,7 @@ begin
   Result := nil;
 end;
 
-function TLibArchives.GetNameOfLibArchive(const Archive: TLibArchive): string;
+function TGLLibArchives.GetNameOfLibArchive(const Archive: TGLLibArchive): string;
 var
   MatIndex: integer;
 begin
@@ -579,9 +580,9 @@ end;
 procedure TGLArchiveFileFormatsList.Add(const Ext, Desc: string;
   DescID: integer; AClass: TGLBaseArchiveClass);
 var
-  newRec: TArchiveFileFormat;
+  newRec: TGLArchiveFileFormat;
 begin
-  newRec := TArchiveFileFormat.Create;
+  newRec := TGLArchiveFileFormat.Create;
   with newRec do
   begin
     Extension := AnsiLowerCase(Ext);
@@ -598,7 +599,7 @@ var
 begin
   Ext := AnsiLowerCase(Ext);
   for I := Count - 1 downto 0 do
-    with TArchiveFileFormat(Items[I]) do
+    with TGLArchiveFileFormat(Items[I]) do
     begin
       if Extension = Ext then
       begin
@@ -628,7 +629,7 @@ var
 begin
   for I := Count - 1 downto 0 do
   begin
-    if TArchiveFileFormat(Items[I]).BaseArchiveClass.InheritsFrom(AClass) then
+    if TGLArchiveFileFormat(Items[I]).BaseArchiveClass.InheritsFrom(AClass) then
       DeleteAndFree(I);
   end;
 end;
@@ -662,7 +663,7 @@ end;
 constructor TGLSArchiveManager.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
-  FArchives := TLibArchives.Create(Self);
+  FArchives := TGLLibArchives.Create(Self);
   vArchiveManager := Self;
   vAFIOCreateFileStream := ArcCreateFileStream;
   vAFIOFileStreamExists := ArcFileStreamExists;
@@ -677,19 +678,19 @@ begin
   inherited Destroy;
 end;
 
-procedure TGLSArchiveManager.SetArchives(aValue: TLibArchives);
+procedure TGLSArchiveManager.SetArchives(aValue: TGLLibArchives);
 begin
   FArchives.Assign(aValue);
 end;
 
 function TGLSArchiveManager.GetArchiveByFileName(const AName: string)
-  : TLibArchive;
+  : TGLLibArchive;
 begin
   Result := FArchives.GetArchiveByFileName(AName);
 end;
 
 function TGLSArchiveManager.GetFileNameOfArchive(const aArchive
-  : TLibArchive): string;
+  : TGLLibArchive): string;
 begin
   Result := FArchives.GetFileNameOfArchive(aArchive)
 end;
@@ -722,20 +723,20 @@ begin
       end;
 end;
 
-function TGLSArchiveManager.OpenArchive(aFileName: string): TLibArchive;
+function TGLSArchiveManager.OpenArchive(aFileName: string): TGLLibArchive;
 begin
   Result := FArchives.Add;
   Result.LoadFromFile(aFileName);
 end;
 
 function TGLSArchiveManager.OpenArchive(aFileName, aAchiverType: string)
-  : TLibArchive;
+  : TGLLibArchive;
 begin
   Result := FArchives.Add;
   Result.LoadFromFile(aFileName, aAchiverType);
 end;
 
-procedure TGLSArchiveManager.CloseArchive(aArchive: TLibArchive);
+procedure TGLSArchiveManager.CloseArchive(aArchive: TGLLibArchive);
 begin
   FArchives.Delete(FArchives.IndexOf(aArchive));
 end;
@@ -745,7 +746,7 @@ initialization
 
 // -----------------------------------------------------------
 
-RegisterClasses([TGLSArchiveManager, TLibArchives]);
+RegisterClasses([TGLSArchiveManager, TGLLibArchives]);
 
 finalization
 

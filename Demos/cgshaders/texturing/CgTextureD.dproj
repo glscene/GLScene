@@ -127,8 +127,6 @@
         <DCCReference Include="fCgTextureD.pas">
             <Form>FormCgTexture</Form>
         </DCCReference>
-        <None Include="..\..\..\media\Shaders\cg_texture_fp.cg"/>
-        <None Include="..\..\..\media\Shaders\cg_texture_vp.cg"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -169,18 +167,6 @@
                 </DeployFile>
                 <DeployFile LocalName="..\..\..\..\media\Shaders\cg_texture_vp.cg" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win64">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="..\..\..\media\Shaders\cg_texture_fp.cg" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="..\..\..\media\Shaders\cg_texture_vp.cg" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>

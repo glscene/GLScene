@@ -77,7 +77,9 @@ implementation
 
 procedure TFormSoundFMOF.FormCreate(Sender: TObject);
 begin
-   SetGLSceneMediaDir();
+   var Path: TFileName := GetCurrentAssetPath();
+   SetCurrentDir(Path  + '\audio');
+
    // Load our sound sample
    GLSoundLibrary.Samples.AddFile('drumloop.wav','drumloop.wav');
    GLSoundLibrary.Samples.AddFile('chimes.wav','chimes.wav');

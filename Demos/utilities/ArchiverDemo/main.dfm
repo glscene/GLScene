@@ -10,9 +10,7 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = True
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
@@ -70,6 +68,11 @@ object Form1: TForm1
       Scale.Coordinates = {0000003F0000003F0000003F00000000}
       MaterialLibrary = GLMaterialLibrary1
     end
+    object GLLightSource2: TGLLightSource
+      ConstAttenuation = 1.000000000000000000
+      Position.Coordinates = {0000000000004040000000000000803F}
+      SpotCutOff = 180.000000000000000000
+    end
   end
   object GLMaterialLibrary1: TGLMaterialLibrary
     Materials = <
@@ -94,5 +97,25 @@ object Form1: TForm1
       end>
     Left = 127
     Top = 232
+  end
+  object GLSimpleNavigation1: TGLSimpleNavigation
+    Form = Owner
+    GLSceneViewer = GLSceneViewer1
+    FormCaption = 'Archive Loader - %FPS'
+    KeyCombinations = <
+      item
+        ShiftState = [ssLeft, ssRight]
+        Action = snaZoom
+      end
+      item
+        ShiftState = [ssLeft]
+        Action = snaMoveAroundTarget
+      end
+      item
+        ShiftState = [ssRight]
+        Action = snaMoveAroundTarget
+      end>
+    Left = 304
+    Top = 88
   end
 end

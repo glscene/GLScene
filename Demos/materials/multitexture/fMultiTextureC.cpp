@@ -25,7 +25,8 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-   SetGLSceneMediaDir();
+   TFileName Path = GetCurrentAssetPath();
+   SetCurrentDir(S  + '\\texture');
    // prepare images to merge in the multitexture
    Image1->Picture->LoadFromFile("ashwood.jpg");
    GLMaterialLibrary1->Materials->Items[0]->Material->Texture->Image->Assign(Image1->Picture);

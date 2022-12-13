@@ -54,8 +54,8 @@ type
     procedure CheckBox1Click(Sender: TObject);
   private
      
-  public
-     
+ public
+
     mx, my: Integer;
   end;
 
@@ -70,7 +70,9 @@ procedure TFormDucky.FormCreate(Sender: TObject);
 var
   cp: TGLAffineVectorList;
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\model');
+
   // Load the nurbs data
   GLActor1.LoadFromFile('duck1.nurbs');
   GLActor1.AddDataFromFile('duck2.nurbs');

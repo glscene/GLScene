@@ -17,7 +17,8 @@ int mx, my;
 
 __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
 {
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
+  SetCurrentDir(Path  + "\\model");
   // Load the nurbs data
   GLActor1->LoadFromFile("duck1.nurbs");
   GLActor1->AddDataFromFile("duck2.nurbs");

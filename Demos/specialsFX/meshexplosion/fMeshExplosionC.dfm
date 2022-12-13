@@ -2,29 +2,25 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Mesh Explosion'
-  ClientHeight = 526
-  ClientWidth = 735
+  ClientHeight = 421
+  ClientWidth = 588
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 735
-    Height = 405
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 588
+    Height = 324
     Camera = Camera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 152.260620117187500000
+    FieldOfView = 145.695159912109400000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ViewerMouseDown
@@ -33,115 +29,79 @@ object Form1: TForm1
   end
   object Panel1: TPanel
     Left = 0
-    Top = 405
-    Width = 735
-    Height = 121
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 324
+    Width = 588
+    Height = 97
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
     object Label2: TLabel
-      Left = 10
-      Top = 70
-      Width = 28
-      Height = 17
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 56
+      Width = 22
+      Height = 13
       Caption = 'Step'
     end
     object Label1: TLabel
-      Left = 10
-      Top = 10
-      Width = 59
-      Height = 17
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 8
+      Width = 47
+      Height = 13
       Caption = 'MaxSteps'
     end
     object Label3: TLabel
-      Left = 530
-      Top = 10
-      Width = 38
-      Height = 17
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 424
+      Top = 8
+      Width = 30
+      Height = 13
       Caption = 'Speed'
     end
     object CheckOn: TCheckBox
-      Left = 610
-      Top = 80
-      Width = 103
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 488
+      Top = 64
+      Width = 82
+      Height = 17
       Caption = 'Explosion'
       TabOrder = 0
       OnClick = CheckOnClick
     end
     object Button1: TButton
-      Left = 510
-      Top = 80
-      Width = 94
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 408
+      Top = 64
+      Width = 75
+      Height = 25
       Caption = 'Reset'
       TabOrder = 1
       OnClick = Button1Click
     end
     object StepBar: TProgressBar
-      Left = 10
-      Top = 90
-      Width = 491
-      Height = 20
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 72
+      Width = 393
+      Height = 16
       Max = 200
       Smooth = True
       TabOrder = 2
     end
     object MaxStepsBar: TTrackBar
       Left = 1
-      Top = 31
-      Width = 512
-      Height = 32
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Top = 25
+      Width = 409
+      Height = 25
       Max = 200
       TabOrder = 3
-      ThumbLength = 19
+      ThumbLength = 15
       OnChange = MaxStepsBarChange
     end
     object SpeedBar: TTrackBar
-      Left = 520
-      Top = 30
-      Width = 151
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 416
+      Top = 24
+      Width = 121
+      Height = 25
       Max = 20
       Position = 1
       TabOrder = 4
-      ThumbLength = 19
+      ThumbLength = 15
       OnChange = SpeedBarChange
     end
   end

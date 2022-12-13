@@ -126,7 +126,9 @@ implementation
 
 procedure TFormShadows.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
+
   GLMaterialLibrary1.Materials[2].Material.texture.Image.loadFromFile
     ('marbletiles.jpg');
   GLMaterialLibrary1.Materials[2].Material.texture.disabled := false;

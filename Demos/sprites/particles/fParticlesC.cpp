@@ -19,6 +19,7 @@
 
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.SceneViewer"
+#pragma link "GLS.SimpleNavigation"
 #pragma resource "*.dfm"
 TFormStars *FormStars;
 
@@ -30,14 +31,9 @@ float random(void)
 //---------------------------------------------------------------------------
 __fastcall TFormStars::TFormStars(TComponent * Owner):TForm(Owner)
 {
-  String MediaPath = ExtractFilePath(ParamStr(0));
-  int I = MediaPath.Pos("Demos");
-  if (I != 0) {
-	MediaPath.Delete(I+5,MediaPath.Length()-(I+5));
-	MediaPath += "Media\\";
-	SetCurrentDir(MediaPath);
-  }
-  Sprite1->Material->Texture->Image->LoadFromFile(MediaPath+"Flare1.bmp");
+  TFileName Path = GetCurrentAssetPath() + "\\texture\\";
+  // work only with (path + "flare1.bmp")  for sprites
+  Sprite1->Material->Texture->Image->LoadFromFile(Path + "flare1.bmp");
   Randomize();
 }
 

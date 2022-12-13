@@ -25,7 +25,21 @@
 
 #pragma link "GLSL.PostEffects"
 #pragma resource "*.dfm"
+
 TForm1 *Form1;
+
+  //Shaders
+  TGLSLPostBlurShader *BlurShader;
+  TGLSLPostThermalVisionShader *ThermalVisionShader;
+  TGLCGPostTransformationShader *TransformationShader;
+  TGLSLPostDreamVisionShader *DreamVisionShader;
+  TGLSLPostNightVisionShader *NightVisionShader;
+  TGLSLPostPosterizeShader *PosterizeShader;
+  TGLSLPostFrostShader *FrostShader;
+  TGLSLPostPixelateShader *PixelateShader;
+  TGLSLPostTroubleShader *TroubleShader;
+
+
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
@@ -35,12 +49,18 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
   // First load models.
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
+
+  // Loading animated models with texture
+  SetCurrentDir(Path + "\\modelext");
   Fighter->LoadFromFile("waste.md2"); //Fighter
   Fighter->SwitchToAnimation(0, true);
   Fighter->AnimationMode = aamLoop;
   Fighter->Scale->Scale(2);
+  MaterialLibrary->LibMaterialByName("Fighter")->Material->Texture->Image->LoadFromFile("Waste.jpg");
 
+  // Loading static models
+  SetCurrentDir(Path + "\\model");
   Teapot->LoadFromFile("Teapot.3ds"); //Teapot (no texture coordinates)
   Teapot->Scale->Scale(0.8);
 
@@ -50,14 +70,14 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   Sphere_little->LoadFromFile("Sphere_little.3ds");
   Sphere_little->Scale->Scale(4);
 
-  // Then load textures.
+  // Then loading textures.
+  SetCurrentDir(Path + "\\texture");
   MaterialLibrary->LibMaterialByName("Earth")->Material->Texture->Image->LoadFromFile("Earth.jpg");
-  MaterialLibrary->LibMaterialByName("Fighter")->Material->Texture->Image->LoadFromFile("Waste.jpg");
   MaterialLibrary->LibMaterialByName("Noise")->Material->Texture->Image->LoadFromFile("Flare1.bmp");
   // MaterialLibrary->LibMaterialByName('Noise')->Material->Texture->Image->LoadFromFile("wikiNoise.jpg");
-  MaterialLibrary->LibMaterialByName('Mask')->Material->Texture->Image->LoadFromFile("wikiMask.jpg");
+  MaterialLibrary->LibMaterialByName("Mask")->Material->Texture->Image->LoadFromFile("wikiMask.jpg");
 
-  // Blur Shader
+  // Creating Blur Shader
   BlurShader = new TGLSLPostBlurShader(this);
   BlurShader->Enabled = false;
   BlurShader->Threshold = 0.001;
@@ -65,60 +85,59 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   ShaderCheckListBox->Items->AddObject("Blur Shader", BlurShader);
   ShaderCheckListBox->Checked[0] = false;
 
-  // ThermalVision Shader
+  // Creating ThermalVision Shader
   ThermalVisionShader = new TGLSLPostThermalVisionShader(this);
   ThermalVisionShader->Enabled = false;
-  PostShaderHolder->Shaders->Add->Shader = ThermalVisionShader;
-  ShaderCheckListBox->Items->AddObject('Thermal Vision Shader',
-	ThermalVisionShader);
+  PostShaderHolder->Shaders->Add()->Shader = ThermalVisionShader;
+  ShaderCheckListBox->Items->AddObject("Thermal Vision Shader", ThermalVisionShader);
   ShaderCheckListBox->Checked[1] = false;
 
   // DreamVision Shader
   DreamVisionShader = new TGLSLPostDreamVisionShader(this);
   DreamVisionShader->Enabled = false;
-  PostShaderHolder->Shaders->Add->Shader = DreamVisionShader;
-  ShaderCheckListBox->Items.AddObject('Dream Vision Shader', DreamVisionShader);
+  PostShaderHolder->Shaders->Add()->Shader = DreamVisionShader;
+  ShaderCheckListBox->Items->AddObject("Dream Vision Shader", DreamVisionShader);
   ShaderCheckListBox->Checked[2] = false;
 
   // NightVision Shader
   NightVisionShader = new TGLSLPostNightVisionShader(this);
   NightVisionShader->Enabled = false;
   NightVisionShader->MaterialLibrary = MaterialLibrary;
-  NightVisionShader->NoiseTexName = 'Noise';
-  NightVisionShader->MaskTexName = 'Mask';
+  NightVisionShader->NoiseTexName = "Noise";
+  NightVisionShader->MaskTexName = "Mask";
   NightVisionShader->UseMask = 1;
-  PostShaderHolder->Shaders->Add.Shader = NightVisionShader;
-  ShaderCheckListBox->Items->AddObject('Night Vision Shader', NightVisionShader);
+  PostShaderHolder->Shaders->Add()->Shader = NightVisionShader;
+  ShaderCheckListBox->Items->AddObject("Night Vision Shader", NightVisionShader);
   ShaderCheckListBox->Checked[3] = false;
 
   // Pixelate Shader
   PixelateShader = new TGLSLPostPixelateShader(this);
   PixelateShader->Enabled = false;
-  PostShaderHolder->Shaders->Add->Shader = PixelateShader;
-  ShaderCheckListBox->Items->AddObject('Pixelate Shader', PixelateShader);
+  PostShaderHolder->Shaders->Add()->Shader = PixelateShader;
+  ShaderCheckListBox->Items->AddObject("Pixelate Shader", PixelateShader);
   ShaderCheckListBox->Checked[4] = false;
 
   // Posterize Shader
   PosterizeShader = new TGLSLPostPosterizeShader(this);
   PosterizeShader->Enabled = false;
-  PostShaderHolder->Shaders->Add->Shader = PosterizeShader;
-  ShaderCheckListBox->Items->AddObject('Posterize Shader', PosterizeShader);
+  PostShaderHolder->Shaders->Add()->Shader = PosterizeShader;
+  ShaderCheckListBox->Items->AddObject("Posterize Shader", PosterizeShader);
   ShaderCheckListBox->Checked[5] = false;
 
   // Frost Shader
   FrostShader = new TGLSLPostFrostShader(this);
   FrostShader->Enabled = false;
-  PostShaderHolder->Shaders->Add->Shader = FrostShader;
-  ShaderCheckListBox->Items->AddObject('Frost Shader', FrostShader);
+  PostShaderHolder->Shaders->Add()->Shader = FrostShader;
+  ShaderCheckListBox->Items->AddObject("Frost Shader", FrostShader);
   ShaderCheckListBox->Checked[6] = false;
 
   // Trouble Shader
   TroubleShader = new TGLSLPostTroubleShader(this);
   TroubleShader->Enabled = false;
   TroubleShader->MaterialLibrary = MaterialLibrary;
-  TroubleShader->NoiseTexName = 'Noise';
-  PostShaderHolder->Shaders->Add->Shader = TroubleShader;
-  ShaderCheckListBox->Items->AddObject('Trouble Shader', TroubleShader);
+  TroubleShader->NoiseTexName = "Noise";
+  PostShaderHolder->Shaders->Add()->Shader = TroubleShader;
+  ShaderCheckListBox->Items->AddObject("Trouble Shader", TroubleShader);
   ShaderCheckListBox->Checked[7] = false;
 
   // Transformation Shader
@@ -143,7 +162,7 @@ void __fastcall TForm1::CadencerProgress(TObject *Sender, const double deltaTime
 	Sphere_little->Roll(40 * deltaTime);
 	Teapot->Roll(-20 * deltaTime);
   }
-  if NightVisionShader->Enabled
+  if (NightVisionShader->Enabled)
 	NightVisionShader->ElapsedTime = newTime; // 20*deltaTime;
 }
 //---------------------------------------------------------------------------
@@ -168,11 +187,17 @@ void __fastcall TForm1::ShaderCheckListBoxClick(TObject *Sender)
 
 void __fastcall TForm1::tbBlurValueChange(TObject *Sender)
 {
-  if (BigBlurThicknessCheckbox->Checked)
+/*
+  BlurShader->Threshold = tbBlurValue->Position / 100;
+  lblBlurValue->Caption = FloatToStrF(BlurShader->Threshold, ffFixed, 5, 2);
+
+
+  if (BigBlurThickness->Checkbox = Checked)
 	BlurShader->Threshold = 0.005;
   else
 	BlurShader->Threshold = 0.2;
-
+*/
+}
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::tbDreamThresholdChange(TObject *Sender)
@@ -200,7 +225,7 @@ void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
 {
   Cadencer->Enabled = false;
 }
-}
+
 
 //---------------------------------------------------------------------------
 

@@ -56,18 +56,15 @@ type
     GLShadowVolume1: TGLShadowVolume;
     Cape: TGLActor;
     GLLightSource2: TGLLightSource;
-    LabelFPS: TLabel;
+    StaticTextFPS: TStaticText;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
+    procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
       X, Y: Integer);
-    procedure GLCadencer1Progress(Sender: TObject;
-      const deltaTime, newTime: Double);
+    procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    procedure GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
     procedure Timer1Timer(Sender: TObject);
-    procedure OctreeRendererRender(Sender: TObject;
-      var rci: TGLRenderContextInfo);
+    procedure OctreeRendererRender(Sender: TObject; var rci: TGLRenderContextInfo);
   public
     mx, my: Integer;
     VerletWorld: TGLVerletWorld;
@@ -149,22 +146,30 @@ procedure TFormClothActor.FormCreate(Sender: TObject);
 var
   FloorVC: TGLVerletFloor;
 begin
-  SetGLSceneMediaDir();
+  var
+    Path: TFileName := GetCurrentAssetPath();
   Randomize;
-  // Load the actor and animations
+
+  // Load dynamic models of actors with textures and/or animations
+  SetCurrentDir(Path + '\modelext');
   GLActor1.LoadFromFile('trinityRAGE.smd');
   GLActor1.AddDataFromFile('walk.smd');
   GLActor1.Animations[1].MakeSkeletalTranslationStatic;
   GLActor1.SwitchToAnimation('walk');
   GLActor1.BuildSilhouetteConnectivityData;
 
-  // Load the cape
+  // Load static models of objects
+  SetCurrentDir(Path + '\model');
+
+  // the cape must be loaded after trinityRAGE
   Cape.LoadFromFile('cape.3ds');
   Cape.Position.Y := GLActor1.BoundingSphereRadius - 10;
   PrepareMeshForNormalsRecalc(Cape);
   Cape.BuildSilhouetteConnectivityData;
 
+
   // Set up the floor texture and reposition to below the actors feet
+  SetCurrentDir(Path + '\texture');
   GLPlane1.Material.Texture.Image.LoadFromFile('beigemarble.jpg');
   GLPlane1.Material.Texture.Disabled := False;
   GLPlane1.Position.Y := -GLActor1.BoundingSphereRadius * 0.9;
@@ -172,8 +177,7 @@ begin
   // Setting up the verlet world using the optional dynamic octree can
   // give good perfamnce increases.
   VerletWorld := TGLVerletWorld.Create;
-  VerletWorld.CreateOctree(AffineVectorMake(0, 0, 0),
-    AffineVectorMake(0, 0, 0), 10, 6);
+  VerletWorld.CreateOctree(AffineVectorMake(0, 0, 0), AffineVectorMake(0, 0, 0), 10, 6);
 
   VerletWorld.UpdateSpacePartion := uspEveryFrame;
   VerletWorld.Iterations := 3;
@@ -190,22 +194,24 @@ begin
   FloorVC := TGLVerletFloor.Create(VerletWorld);
   FloorVC.Normal := GLPlane1.Direction.AsAffineVector;
   FloorVC.Location := VectorAdd(GLPlane1.Position.AsAffineVector,
-      VectorScale(GLPlane1.Direction.AsAffineVector, 0.1));
-  // Load the skeleton colliders. Skeleton colliders define an
-  // approximate collision boundary for actors and are controlled
-  // by the actor's skeleton.
+    VectorScale(GLPlane1.Direction.AsAffineVector, 0.1));
+
+  (* Load the skeleton colliders. Skeleton colliders define an
+    approximate collision boundary for actors and are controlled
+    by the actor's skeleton. *)
+  SetCurrentDir(Path + '\scenery');
   GLActor1.Skeleton.Colliders.LoadFromFile('trinityRAGE.glsc');
   GLActor1.Skeleton.Colliders.AlignColliders;
 
   // Add the collider's verlet constraints to the verlet world
   AddVerletConstriantsToVerletWorld(GLActor1.Skeleton.Colliders, VerletWorld);
   (*
-  AirResistance := TGLVerletAirResistance.Create(VerletWorld);
-  AirResistance.DragCoeff := 0.001;
-  AirResistance.WindDirection := AffineVectorMake(0,0,1);
-  AirResistance.WindMagnitude := 15;
-  AirResistance.WindChaos := 2;
-  // *)
+    AirResistance := TGLVerletAirResistance.Create(VerletWorld);
+    AirResistance.DragCoeff := 0.001;
+    AirResistance.WindDirection := AffineVectorMake(0,0,1);
+    AirResistance.WindMagnitude := 15;
+    AirResistance.WindChaos := 2;
+    // *)
   FloorVC.Free;
 end;
 
@@ -214,8 +220,7 @@ begin
   VerletWorld.Free;
 end;
 
-procedure TFormClothActor.GLCadencer1Progress(Sender: TObject;
-  const deltaTime, newTime: Double);
+procedure TFormClothActor.GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
 var
   i: Integer;
 begin
@@ -280,15 +285,13 @@ begin
   end;
 end;
 
-procedure TFormClothActor.OctreeRendererRender(Sender: TObject;
-  var rci: TGLRenderContextInfo);
+procedure TFormClothActor.OctreeRendererRender(Sender: TObject; var rci: TGLRenderContextInfo);
 begin
   if cbShowOctree.Checked then
   begin
     if VerletWorld.SpacePartition is TGLOctreeSpacePartition then
     begin
-      glPushAttrib(GL_ENABLE_BIT or GL_CURRENT_BIT or GL_LINE_BIT or
-        GL_COLOR_BUFFER_BIT);
+      glPushAttrib(GL_ENABLE_BIT or GL_CURRENT_BIT or GL_LINE_BIT or GL_COLOR_BUFFER_BIT);
       glDisable(GL_LIGHTING);
       RenderOctreeNode(TGLOctreeSpacePartition(VerletWorld.SpacePartition).RootNode);
       glPopAttrib;
@@ -298,7 +301,7 @@ end;
 
 procedure TFormClothActor.Timer1Timer(Sender: TObject);
 begin
-  LabelFPS.Caption := Format('%2.1f FPS', [GLSceneViewer1.FramesPerSecond]);
+  StaticTextFPS.Caption := Format('%2.1f FPS', [GLSceneViewer1.FramesPerSecond]);
   GLSceneViewer1.ResetPerformanceMonitor;
 end;
 

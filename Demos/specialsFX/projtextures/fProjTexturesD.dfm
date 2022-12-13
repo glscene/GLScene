@@ -2,32 +2,35 @@ object FormProjTextures: TFormProjTextures
   Left = 202
   Top = 106
   Caption = 'Projected Textures'
-  ClientHeight = 444
-  ClientWidth = 684
+  ClientHeight = 499
+  ClientWidth = 762
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   TextHeight = 13
   object viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 684
-    Height = 444
+    Width = 762
+    Height = 499
     Camera = camera
     Buffer.BackgroundColor = clSilver
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     Buffer.DepthPrecision = dp32bits
-    FieldOfView = 154.614669799804700000
+    FieldOfView = 157.335983276367200000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = viewerMouseDown
     OnMouseUp = viewerMouseUp
     TabOrder = 0
+    ExplicitWidth = 755
+    ExplicitHeight = 489
   end
   object scene: TGLScene
     Left = 56

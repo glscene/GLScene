@@ -44,6 +44,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure DirectOGLRender(Sender: TObject; var rci: TGLRenderContextInfo);
   public
+    Path: TFileName;
     procedure LoadCubemap;
     procedure InitGLSL;
   end;
@@ -76,11 +77,12 @@ end;
 //
 procedure TFormSkyboxShader.LoadCubemap;
 begin
-  SetGLSceneMediaDir();
+  Path := GetCurrentAssetPath();
+  // Loading the whole cubemap as TGLCompositeImage
+  SetCurrentDir(Path  + '\cubemap');
   Cubemap := TGLTexture.Create(self);
-
   Cubemap.ImageClassName := 'TGLCompositeImage';
-  Cubemap.Image.LoadFromFile('Cubemaps/skybox.dds');
+  Cubemap.Image.LoadFromFile('skybox.dds');
   Cubemap.TextureWrap := twNone;
   Cubemap.FilteringQuality := tfAnisotropic;
   Cubemap.Disabled := False;
@@ -143,8 +145,10 @@ begin
 
   Cadencer.Enabled := True;
 
-  GLSL_sky := Load('Shaders/sky.vp', 'Shaders/sky.fp');
-  GLSL_obj := Load('Shaders/obj.vp', 'Shaders/obj.fp');
+ // Loading shaders from asset
+  SetCurrentDir(Path  + '\shader');
+  GLSL_sky := Load('sky.vp', 'sky.fp');
+  GLSL_obj := Load('obj.vp', 'obj.fp');
 
 end;
 

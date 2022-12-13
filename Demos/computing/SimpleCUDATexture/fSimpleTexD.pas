@@ -99,7 +99,7 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  SetCurrentDirToAsset();
   pgm := TGLPGMImage.Create;
 end;
 

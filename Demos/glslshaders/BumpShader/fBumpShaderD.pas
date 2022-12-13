@@ -100,8 +100,9 @@ procedure TFormBumpShader.FormCreate(Sender: TObject);
 var
   I : Integer;
 begin
-  //First load models
-  SetGLSceneMediaDir();
+  //First loading modelexts
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\modelext');
   Fighter.LoadFromFile('TRINITYrage.smd'); //Fighter
   Fighter.AddDataFromFile('walk.smd');
   Fighter.Animations[1].MakeSkeletalTranslationStatic;
@@ -123,19 +124,20 @@ begin
   Fighter.Scale.Scale(3);
 //  Fighter.MeshObjects.BuildTangentSpace;
 
+  // Loading static models
+  SetCurrentDir(Path  + '\model');
   Teapot.LoadFromFile('Teapot.3ds'); //Teapot
   Teapot.Scale.Scale(0.8);
   //  Teapot.MeshObjects.BuildTangentSpace; does not have texture coordinates...
-
   Sphere_big.LoadFromFile('Sphere_big.3DS'); //Sphere_big
   Sphere_big.Scale.Scale(70);
   Sphere_big.MeshObjects.BuildTangentSpace;
-
   Sphere_little.LoadFromFile('Sphere_little.3ds'); //Sphere_little
   Sphere_little.Scale.Scale(4);
   Sphere_little.MeshObjects.BuildTangentSpace;
 
   // Then load textures
+  SetCurrentDir(Path  + '\texture');
   MaterialLibrary.LibMaterialByName('Earth').Material.Texture.Image.LoadFromFile('Earth.jpg');
   MaterialLibrary.LibMaterialByName('EarthGross').Material.Texture.Image.LoadFromFile('EarthSpec.dds');
   MaterialLibrary.LibMaterialByName('EarthNormals').Material.Texture.Image.LoadFromFile('EarthNormals.jpg');

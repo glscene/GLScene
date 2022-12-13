@@ -85,8 +85,10 @@ implementation
 
 procedure TFormOdeTerrain.FormCreate(Sender: TObject);
 begin
-   SetGLSceneMediaDir();
-   // Set up the visuals
+   var Path: TFileName := GetCurrentAssetPath();
+   SetCurrentDir(Path  + '\texture');
+   
+   // Set up textures
    GLBitmapHDS1.MaxPoolSize:=8*1024*1024;
    GLBitmapHDS1.Picture.LoadFromFile('terrain.bmp');
    GLMaterialLibrary1.Materials[0].Material.Texture.Image.LoadFromFile('snow512.jpg');

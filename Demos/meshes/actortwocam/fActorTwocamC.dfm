@@ -2,29 +2,25 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Actor with Two Cameras'
-  ClientHeight = 529
-  ClientWidth = 823
+  ClientHeight = 423
+  ClientWidth = 658
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 31
-    Width = 823
-    Height = 498
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 25
+    Width = 658
+    Height = 398
     Camera = GLCamera2
     Buffer.BackgroundColor = clGreen
-    FieldOfView = 136.238571166992200000
+    FieldOfView = 126.639793395996100000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -32,71 +28,51 @@ object Form1: TForm1
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 823
-    Height = 31
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 658
+    Height = 25
     Align = alTop
     BevelOuter = bvLowered
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -14
+    Font.Height = -11
     Font.Name = 'Arial'
     Font.Style = []
     ParentFont = False
     TabOrder = 1
     object Label3: TLabel
-      Left = 440
-      Top = 8
-      Width = 103
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 352
+      Top = 6
+      Width = 76
+      Height = 14
       Caption = 'F7 Third Person'
     end
     object Label4: TLabel
-      Left = 560
-      Top = 8
-      Width = 107
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 448
+      Top = 6
+      Width = 83
+      Height = 14
       Caption = 'F8 First Person'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -14
+      Font.Height = -11
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object Label1: TLabel
-      Left = 10
-      Top = 8
-      Width = 423
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 6
+      Width = 324
+      Height = 14
       Caption = 
         'Use arrow keys to move, CTRL to strafe , SHIFT to run , ESC to e' +
         'xit'
     end
     object CBMouseLook: TCheckBox
-      Left = 690
-      Top = 5
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 552
+      Top = 4
+      Width = 97
+      Height = 17
       Caption = '&Mouse Look'
       TabOrder = 0
       OnClick = CBMouseLookClick

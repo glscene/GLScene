@@ -33,7 +33,7 @@ void __fastcall TDataModule1::DataModuleCreate(TObject *Sender)
 	  // Message queue is not operational, but there may still be some messages
 	  Application->ProcessMessages();
 	  // Relinquish some of that CPU time
-	  Sleep(1);
+	   Sleep(1);
 	  // Slowly rotate the teapot and the blue light
 	  Teapot1->TurnAngle = 4*Frac(float(24*(Now())))*3600;
 	  DCBlueLight->RollAngle = 32*Frac(float(24*(Now())))*3600;
@@ -58,7 +58,7 @@ void __fastcall TDataModule1::GLFullScreenViewer1PostRender(TObject *Sender)
    glc->PenAlpha = 0.75;
    glc->PenWidth = 2;
    glc->Ellipse(x, y, 16, 16);
-	  // Complete the reticle
+  // Complete the reticle
    glc->PenAlpha = 0.3;
    glc->PenWidth = 2;
    glc->Line(x-32, y, x+32, y);

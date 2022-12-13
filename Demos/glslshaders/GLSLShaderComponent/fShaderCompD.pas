@@ -85,13 +85,10 @@ implementation
 procedure TGLSLTestForm.FormCreate(Sender: TObject);
 begin
   //First load scripts from shader directory
-  SetGLSceneMediaDir();
-  GLSLShader.LoadShaderPrograms('Shaders\Shader.Vert','Shaders\Shader.Frag');
-  GLSLShader.Enabled := True;
+  var Path: TFileName := GetCurrentAssetPath();
 
-
-  //Second load models from media directory
-  SetGLSceneMediaDir();
+  //Second load models from asset directory
+  SetCurrentDir(Path  + '\model');
 
   Fighter.LoadFromFile('waste.md2'); //Fighter
   Fighter.SwitchToAnimation(0, True);
@@ -100,16 +97,19 @@ begin
 
   Teapot.LoadFromFile('Teapot.3ds'); //Teapot (no texture coordinates)
   Teapot.Scale.Scale(0.8);
-
   Sphere_big.LoadFromFile('Sphere_big.3DS'); //Sphere_big
   Sphere_big.Scale.Scale(70);
-
   Sphere_little.LoadFromFile('Sphere_little.3ds'); //Sphere_little
   Sphere_little.Scale.Scale(4);
 
   // Then load textures.
+  SetCurrentDir(Path  + '\texture');
   MaterialLibrary.LibMaterialByName('Earth').Material.Texture.Image.LoadFromFile('Earth.jpg');
   MaterialLibrary.LibMaterialByName('WasteSkin').Material.Texture.Image.LoadFromFile('waste.jpg');
+
+  SetCurrentDir(Path  + '\shader');
+  GLSLShader.LoadShaderPrograms('Shader.Vert','Shaders\Shader.Frag');
+  GLSLShader.Enabled := True;
 
 end;
 

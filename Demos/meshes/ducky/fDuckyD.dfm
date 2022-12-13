@@ -2,82 +2,61 @@ object FormDucky: TFormDucky
   Left = 84
   Top = 117
   Caption = 'Ducky'
-  ClientHeight = 489
-  ClientWidth = 823
+  ClientHeight = 391
+  ClientWidth = 658
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 201
-    Height = 489
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 161
+    Height = 391
     Align = alLeft
     TabOrder = 0
     object Label1: TLabel
-      Left = 20
-      Top = 40
-      Width = 64
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 32
+      Width = 50
+      Height = 13
       Caption = 'Resolution'
     end
     object TrackBar1: TTrackBar
-      Left = 20
-      Top = 60
-      Width = 161
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 48
+      Width = 129
+      Height = 25
       Max = 50
       Min = 1
       Position = 20
       TabOrder = 0
-      ThumbLength = 13
+      ThumbLength = 10
       TickStyle = tsManual
       OnChange = TrackBar1Change
     end
     object CheckBox1: TCheckBox
-      Left = 20
-      Top = 100
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 80
+      Width = 97
+      Height = 17
       Caption = 'Wireframe'
       TabOrder = 1
       OnClick = CheckBox1Click
     end
   end
   object GLSceneViewer1: TGLSceneViewer
-    Left = 201
+    Left = 161
     Top = 0
-    Width = 622
-    Height = 489
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 497
+    Height = 391
     Camera = GLCamera1
-    FieldOfView = 156.884857177734400000
+    FieldOfView = 151.307739257812500000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown

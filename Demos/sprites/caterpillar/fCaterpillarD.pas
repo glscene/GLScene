@@ -30,60 +30,62 @@ uses
 
 type
   TFormCaterpillar = class(TForm)
-	 GLScene1: TGLScene;
-	 GLSceneViewer1: TGLSceneViewer;
-	 DummyCube1: TGLDummyCube;
+    GLScene1: TGLScene;
+    GLSceneViewer1: TGLSceneViewer;
+    DummyCube1: TGLDummyCube;
     GLCamera1: TGLCamera;
     Sprite1: TGLSprite;
     Sprite2: TGLSprite;
     GLMaterialLibrary1: TGLMaterialLibrary;
     GLCadencer1: TGLCadencer;
     GLSimpleNavigation1: TGLSimpleNavigation;
-	 procedure FormCreate(Sender: TObject);
+    Spr: TGLSprite;
+    (*
+      On FormCreate a texture for sprite2 is loading as the hand-coded way using a PersistentImage
+      Sprite1 uses a PicFileImage, and so the image is automagically loaded by
+      GLScene when necessary (no code is required).
+      (It would be possible to avoid this loading had we used two PicFileImage)
+    *)
+    procedure FormCreate(Sender: TObject);
+    (*
+      This lines take cares of auto-zooming.
+      Magic numbers explanation: 333 is a form width where things
+      looks good when focal length is 50, ie. when form width is 333,
+      uses 50 as focal length, when form is 666, uses 100, etc...
+    *)
     procedure FormResize(Sender: TObject);
-    procedure GLCadencer1Progress(Sender: TObject; const deltaTime,
-      newTime: Double);
+    procedure GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
   private
   end;
 
 var
   FormCaterpillar: TFormCaterpillar;
 
-//--------------------------------
+  // --------------------------------
 implementation
-//--------------------------------
+
+// --------------------------------
 
 {$R *.DFM}
 
 procedure TFormCaterpillar.FormCreate(Sender: TObject);
-var
-	Spr : TGLSprite;
-  I : Integer;
-  MediaPath : String;
 begin
-  SetGLSceneMediaDir;
-  // Load texture for sprite2, this is the hand-coded way using a PersistentImage
-  // Sprite1 uses a PicFileImage, and so the image is automagically loaded by
-  // GLScene when necessary (no code is required).
-  // (Had I used two PicFileImage, I would have avoided this code)
-  GLMaterialLibrary1.TexturePaths := GetCurrentDir;
-  MediaPath := GLMaterialLibrary1.TexturePaths + '\';
-  Sprite1.Material.Texture.Image.LoadFromFile(MediaPath + 'Flare1.bmp');
-  GLMaterialLibrary1.Materials[0].Material.Texture.Image.LoadFromFile
-    ('Flare1.bmp');
+  var
+    Path: TFileName := GetCurrentAssetPath() + '\texture\';
+  Sprite1.Material.Texture.Image.LoadFromFile(Path + 'flare1.bmp');
+  GLMaterialLibrary1.Materials[0].Material.Texture.Image.LoadFromFile(Path + 'flare1.bmp');
   // New sprites are created by duplicating the template "sprite2"
-  for I := 1 to 9 do
+  for var i: integer := 1 to 9 do
   begin
     Spr := TGLSprite(DummyCube1.AddNewChild(TGLSprite));
     Spr.Assign(Sprite2);
   end;
 end;
 
-procedure TFormCaterpillar.GLCadencer1Progress(Sender: TObject; const deltaTime,
-  newTime: Double);
+procedure TFormCaterpillar.GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
 var
-	i : Cardinal;
-	a, aBase : Double;
+  i: Cardinal;
+  a, aBase: Double;
 begin
   // angular reference : 90° per second <=> 4 second per revolution
   aBase := 90 * newTime;
@@ -91,10 +93,10 @@ begin
   a := DegToRad(aBase);
   Sprite1.SetSquareSize(4 + 0.2 * cos(3.5 * a));
   // rotate the sprites around the yellow "star"
-  for I := 0 to DummyCube1.Count - 1 do
+  for i := 0 to DummyCube1.Count - 1 do
   begin
-    a := DegToRad(aBase + I * 8);
-    with (DummyCube1.Children[I] as TGLSprite) do
+    a := DegToRad(aBase + i * 8);
+    with (DummyCube1.Children[i] as TGLSprite) do
     begin
       // rotation movement
       Position.X := 4 * cos(a);
@@ -107,14 +109,8 @@ begin
   end;
 end;
 
-
 procedure TFormCaterpillar.FormResize(Sender: TObject);
 begin
-   // This lines take cares of auto-zooming.
-  // magic numbers explanation :
-  // 333 is a form width where things looks good when focal length is 50,
-  // ie. when form width is 333, uses 50 as focal length,
-  // when form is 666, uses 100, etc...
   GLCamera1.FocalLength := Width * 50 / 333;
 end;
 

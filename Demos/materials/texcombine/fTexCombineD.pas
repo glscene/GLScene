@@ -76,14 +76,15 @@ implementation
 procedure TFormTexCombine.FormCreate(Sender: TObject);
 begin
   // load the textures
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
   Image1.Picture.LoadFromFile('beigemarble.jpg');
   GLMaterialLibrary.Materials.Items[0].Material.Texture.Image.Assign(Image1.Picture);
   Image2.Picture.LoadFromFile('flare1.bmp');
   GLMaterialLibrary.Materials.Items[1].Material.Texture.Image.Assign(Image2.Picture);
   Image3.Picture.LoadFromFile('clover.jpg');
   GLMaterialLibrary.Materials.Items[2].Material.Texture.Image.Assign(Image3.Picture);
-  Image4.Picture.LoadFromFile('cubemaps/cm_front.jpg');
+    Image4.Picture.LoadFromFile('concrete.jpg');
   GLMaterialLibrary.Materials.Items[3].Material.Texture.Image.Assign(Image4.Picture);
   BUApplyClick(Sender);
   Application.HintHidePause := 30000;

@@ -31,7 +31,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.Keyboard,
-  GLS.Utils;
+  GLS.Utils, GLS.SimpleNavigation;
 
 type
   TFormPortal = class(TForm)
@@ -92,7 +92,10 @@ procedure TFormPortal.FormCreate(Sender: TObject);
 var
   i: Integer;
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  // Load Texture for ground
+  SetCurrentDir(Path  + '\texture');
+
   for i := 0 to 15 do
     SGMap.Cells[i, i] := 'X';
   SGMap.Cells[8, 8] := '';

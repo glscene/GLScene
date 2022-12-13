@@ -3,22 +3,22 @@ unit fDiffuseShaderD;
 interface
 
 uses
-  System.SysUtils, 
-  System.Classes, 
-  Vcl.Graphics, 
-  Vcl.Controls, 
+  System.SysUtils,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
   Vcl.Forms,
-  Vcl.Dialogs, 
-  Vcl.ExtCtrls, 
-  Vcl.StdCtrls, 
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.StdCtrls,
 
-  GLS.Texture, 
-  GLS.Cadencer, 
-  GLS.SceneViewer, 
-  GLS.Scene, 
-  GLS.Objects, 
+  GLS.Texture,
+  GLS.Cadencer,
+  GLS.SceneViewer,
+  GLS.Scene,
+  GLS.Objects,
   GLS.Graph,
-  GLS.VectorTypes, 
+  GLS.VectorTypes,
   GLS.Context,
   GLS.VectorGeometry,
   GLS.GeomObjects,
@@ -28,14 +28,11 @@ uses
   GLSL.DiffuseSpecularShader,
   GLSL.CustomShader,
   GLSL.UserShader,
-
   GLS.SimpleNavigation,
- 
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.Utils,
-
   GLS.FileMD2,
   GLS.FileMS3D,
   GLS.File3DS,
@@ -47,7 +44,7 @@ type
     Viewer: TGLSceneViewer;
     Cadencer: TGLCadencer;
     Camera: TGLCamera;
-    Light:  TGLLightSource;
+    Light: TGLLightSource;
     LightCube: TGLDummyCube;
     GLSphere1: TGLSphere;
     GLXYZGrid1: TGLXYZGrid;
@@ -67,14 +64,13 @@ type
     LightCube2: TGLDummyCube;
     Light2: TGLLightSource;
     MultiLightShaderCheckBox: TCheckBox;
-
-    DiffuseSpecularShader: TGLSLDiffuseSpecularShader;    GLSimpleNavigation1: TGLSimpleNavigation;
+    DiffuseSpecularShader: TGLSLDiffuseSpecularShader;
+    GLSimpleNavigation1: TGLSimpleNavigation;
     EnableFogCheckBox: TCheckBox;
     GLArrowLine2: TGLArrowLine;
     procedure FormCreate(Sender: TObject);
     procedure CadencerProgress(Sender: TObject; const deltaTime, newTime: double);
-    procedure LightCubeProgress(Sender: TObject; const deltaTime,
-      newTime: Double);
+    procedure LightCubeProgress(Sender: TObject; const deltaTime, newTime: double);
     procedure ShaderEnabledCheckBoxClick(Sender: TObject);
     procedure RealisticSpecularCheckBoxClick(Sender: TObject);
     procedure MultiLightShaderCheckBoxClick(Sender: TObject);
@@ -82,7 +78,7 @@ type
   end;
 
 var
-  FormDiffuseShader:  TFormDiffuseShader;
+  FormDiffuseShader: TFormDiffuseShader;
   MultiLightShader: TGLSLMLDiffuseSpecularShader;
 
 implementation
@@ -91,33 +87,37 @@ implementation
 
 procedure TFormDiffuseShader.FormCreate(Sender: TObject);
 begin
-  // First load models.
-  SetGLSceneMediaDir();
-  Fighter.LoadFromFile('waste.md2'); //Fighter
+  var Path: TFileName := GetCurrentAssetPath();
+  // First load modelexts with animation and textures
+  SetCurrentDir(Path + '\modelext');
+  Fighter.LoadFromFile('waste.md2'); // Fighter
   Fighter.SwitchToAnimation(0, True);
   Fighter.AnimationMode := aamLoop;
   Fighter.Scale.Scale(3);
+  MaterialLibrary.LibMaterialByName('Fighter').Material.Texture.Image.LoadFromFile('Waste.jpg');
+  MaterialLibrary.LibMaterialByName('Fighter').Shader := DiffuseSpecularShader;
 
-  Teapot.LoadFromFile('Teapot.3ds'); //Teapot (no texture coordinates)
+  // Second loading static models.
+  SetCurrentDir(Path + '\model');
+  Teapot.LoadFromFile('Teapot.3ds'); // Teapot (no texture coordinates)
   Teapot.Scale.Scale(0.8);
-
-  Sphere_big.LoadFromFile('Sphere_big.3DS'); //Sphere_big
+  Sphere_big.LoadFromFile('Sphere_big.3DS'); // Sphere_big
   Sphere_big.Scale.Scale(70);
-
-  Sphere_little.LoadFromFile('Sphere_little.3ds'); //Sphere_little
+  Sphere_little.LoadFromFile('Sphere_little.3ds'); // Sphere_little
   Sphere_little.Scale.Scale(4);
 
+  // Loading textures
+  SetCurrentDir(Path + '\texture');
   MaterialLibrary.LibMaterialByName('Earth').Material.Texture.Image.LoadFromFile('Earth.jpg');
-  MaterialLibrary.LibMaterialByName('Fighter').Material.Texture.Image.LoadFromFile('Waste.jpg');
-
   MaterialLibrary.LibMaterialByName('Earth').Shader := DiffuseSpecularShader;
-  MaterialLibrary.LibMaterialByName('Fighter').Shader := DiffuseSpecularShader;
 
   // This is how a shader is created in runtime.
   MultiLightShader := TGLSLMLDiffuseSpecularShader.Create(Self);
 
   // Disable fog.
   EnableFogCheckBoxClick(nil);
+
+  MultiLightShaderCheckBoxClick(nil);
 
 end;
 
@@ -134,14 +134,11 @@ begin
   end;
 end;
 
-
-procedure TFormDiffuseShader.LightCubeProgress(Sender: TObject; const deltaTime,
-  newTime: Double);
+procedure TFormDiffuseShader.LightCubeProgress(Sender: TObject; const deltaTime, newTime: double);
 begin
   if LightMovingCheckBox.Checked then
-    LightCube.MoveObjectAround(Camera.TargetObject, sin(NewTime) * deltaTime * 10, deltaTime * 20);
+    LightCube.MoveObjectAround(Camera.TargetObject, sin(newTime) * deltaTime * 10, deltaTime * 20);
 end;
-
 
 procedure TFormDiffuseShader.ShaderEnabledCheckBoxClick(Sender: TObject);
 begin
@@ -187,7 +184,7 @@ begin
   if EnableFogCheckBox.Checked then
   begin
     Viewer.Buffer.FogEnable := True;
-    
+
     DiffuseSpecularShader.NotifyChange(Self);
     MultiLightShader.NotifyChange(Self);
   end

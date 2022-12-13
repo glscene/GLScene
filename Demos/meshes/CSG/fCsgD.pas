@@ -63,13 +63,11 @@ type
     procedure FormMouseWheelUp(Sender: TObject; Shift: TShiftState;
       MousePos: TPoint; var Handled: Boolean);
     procedure FormCreate(Sender: TObject);
-
     procedure btnResetClick(Sender: TObject);
     procedure chbSolidResultClick(Sender: TObject);
     procedure chbClick(Sender: TObject);
     procedure rgOperationClick(Sender: TObject);
   private
-
   public
     mx : Integer;
     my : Integer;
@@ -85,7 +83,8 @@ implementation
 
 procedure TFormCsg.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\model');
   // scaled 40
   FF_A.LoadFromFile('polyhedron.3ds');
 

@@ -77,7 +77,9 @@ implementation
 
 procedure TFormSubdivide.BULoadClick(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\model');
+  
   BUSubdivide.Enabled := True;
 
   // GLFreeForm1.LoadFromFile('polyhedron.3ds');
@@ -93,6 +95,9 @@ begin
   }
 
   GLActor1.LoadFromFile('waste.md2');
+  
+  SetCurrentDir(Path  + '\texture');
+  
   GLActor1.Material.Texture.Image.LoadFromFile('waste.jpg');
   GLActor1.Material.Texture.Enabled := True;
   GLActor1.SwitchToAnimation(GLActor1.Animations[0]);

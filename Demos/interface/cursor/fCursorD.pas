@@ -85,7 +85,8 @@ implementation
 
 procedure TFormCursor.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
   // hide the Windows cursor for the GLSceneViewer
   GLSceneViewer1.Cursor := crNone;
   // and load an ugly cursor (size adjusted in design props)

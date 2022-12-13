@@ -2,79 +2,67 @@ object FormManual: TFormManual
   Left = 192
   Top = 101
   Caption = 'Manual'
-  ClientHeight = 473
-  ClientWidth = 624
+  ClientHeight = 428
+  ClientWidth = 585
   Color = clBtnFace
-  Constraints.MinHeight = 250
-  Constraints.MinWidth = 400
+  Constraints.MinHeight = 200
+  Constraints.MinWidth = 320
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OnResize = FormResize
-  PixelsPerInch = 120
   DesignSize = (
-    624
-    473)
-  TextHeight = 16
+    585
+    428)
+  TextHeight = 13
   object SceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 624
-    Height = 442
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 585
+    Height = 404
     Camera = Camera
     Buffer.BackgroundColor = clSilver
-    FieldOfView = 131.307571411132800000
+    FieldOfView = 127.324623107910200000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 500
+    ExplicitHeight = 356
   end
   object TrackBar: TTrackBar
     Left = 0
-    Top = 442
-    Width = 624
-    Height = 31
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 404
+    Width = 585
+    Height = 24
     Align = alBottom
     Max = 360
     PageSize = 10
     Frequency = 10
     TabOrder = 1
-    ThumbLength = 19
+    ThumbLength = 15
     OnChange = TrackBarChange
+    ExplicitTop = 354
+    ExplicitWidth = 499
   end
   object CBPlay: TCheckBox
-    Left = 8
-    Top = 445
-    Width = 51
-    Height = 22
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 230
+    Top = 66
+    Width = 41
+    Height = 18
     Anchors = [akLeft, akBottom]
     Caption = 'Play'
     Checked = True
     State = cbChecked
     TabOrder = 2
+    ExplicitTop = 16
   end
   object StaticText1: TStaticText
-    Left = 20
-    Top = 20
-    Width = 54
-    Height = 20
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 16
+    Top = 16
+    Width = 45
+    Height = 17
     BorderStyle = sbsSingle
     Caption = '??? FPS'
     TabOrder = 3

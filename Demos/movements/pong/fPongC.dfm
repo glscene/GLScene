@@ -2,31 +2,32 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Pong'
-  ClientHeight = 235
-  ClientWidth = 534
+  ClientHeight = 382
+  ClientWidth = 620
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
+  Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 534
-    Height = 235
+    Width = 620
+    Height = 382
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
-    FieldOfView = 133.897399902343800000
+    FieldOfView = 150.660583496093800000
     PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 553
+    ExplicitHeight = 261
   end
   object GLScene1: TGLScene
     Left = 32

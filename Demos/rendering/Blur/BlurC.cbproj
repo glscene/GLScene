@@ -142,10 +142,6 @@
         <Defines>NDEBUG;$(Defines)</Defines>
     </PropertyGroup>
     <ItemGroup>
-        <PCHCompile Include="Blur1.h">
-            <BuildOrder>1</BuildOrder>
-            <PCH>true</PCH>
-        </PCHCompile>
         <CppCompile Include="BlurC.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>

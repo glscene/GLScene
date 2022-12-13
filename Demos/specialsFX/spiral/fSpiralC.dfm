@@ -3,36 +3,37 @@ object Form1: TForm1
   Top = 95
   BorderStyle = bsDialog
   Caption = 'Spiral'
-  ClientHeight = 357
-  ClientWidth = 437
+  ClientHeight = 423
+  ClientWidth = 620
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
+  Position = poScreenCenter
   OnResize = FormResize
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer: TGLSceneViewer
     Left = 0
     Top = 25
-    Width = 437
-    Height = 332
+    Width = 620
+    Height = 398
     Camera = GLCamera
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 146.474884033203100000
+    FieldOfView = 151.792068481445300000
     PenAsTouch = False
     Align = alClient
     OnDblClick = GLSceneViewerDblClick
     OnMouseMove = GLSceneViewerMouseMove
     TabOrder = 0
+    ExplicitWidth = 439
+    ExplicitHeight = 334
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 437
+    Width = 620
     Height = 25
     Align = alTop
     BevelOuter = bvNone
@@ -45,6 +46,7 @@ object Form1: TForm1
     Font.Style = [fsBold, fsItalic]
     ParentFont = False
     TabOrder = 1
+    ExplicitWidth = 437
     object SpeedButton1: TSpeedButton
       Left = 363
       Top = 2

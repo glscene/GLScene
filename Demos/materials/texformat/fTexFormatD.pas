@@ -72,8 +72,9 @@ var
   sr: TSearchRec;
   i: Integer;
 begin
-  SetGLSceneMediaDir();
-  // collect JPeg textures from the demos' media directory
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
+  // collect JPeg textures from the asset directory
   i := FindFirst('*.jpg', faAnyFile, sr);
   while i = 0 do
   begin

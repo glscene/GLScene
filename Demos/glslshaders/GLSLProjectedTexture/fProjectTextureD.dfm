@@ -2,36 +2,31 @@ object Form1: TForm1
   Left = 440
   Top = 264
   Caption = 'GLSL Projected Texture'
-  ClientHeight = 541
-  ClientWidth = 800
+  ClientHeight = 433
+  ClientWidth = 640
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Visible = True
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 120
   DesignSize = (
-    800
-    541)
-  TextHeight = 16
+    640
+    433)
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
-    Left = 10
-    Top = 10
-    Width = 771
-    Height = 538
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 8
+    Top = 8
+    Width = 617
+    Height = 430
     Camera = GLCamera1
     Buffer.BackgroundColor = 3080192
     Buffer.Lighting = False
     Buffer.AntiAliasing = aaNone
-    FieldOfView = 158.940780639648400000
+    FieldOfView = 153.816207885742200000
     PenAsTouch = False
     Anchors = [akLeft, akTop, akRight, akBottom]
     OnMouseDown = GLSceneViewer1MouseDown

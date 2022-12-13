@@ -2,38 +2,42 @@ object Form1: TForm1
   Left = 175
   Top = 104
   Caption = 'Octree'
-  ClientHeight = 385
-  ClientWidth = 554
+  ClientHeight = 457
+  ClientWidth = 645
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   TextHeight = 13
   object GLSceneViewer2: TGLSceneViewer
     Left = 0
     Top = 49
-    Width = 554
-    Height = 336
+    Width = 645
+    Height = 408
     Camera = GLCamera2
     Buffer.BackgroundColor = 8404992
     Buffer.ShadeModel = smSmooth
-    FieldOfView = 146.851989746093800000
+    FieldOfView = 152.456802368164100000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer2MouseDown
     OnMouseMove = GLSceneViewer2MouseMove
     TabOrder = 0
+    ExplicitWidth = 583
+    ExplicitHeight = 366
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 554
+    Width = 645
     Height = 49
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitWidth = 554
     object Label1: TLabel
       Left = 320
       Top = 1

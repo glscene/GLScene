@@ -2,37 +2,34 @@ object FormMultiSampleTextures: TFormMultiSampleTextures
   Left = 404
   Top = 280
   Caption = 'Multisample Texture'
-  ClientHeight = 473
-  ClientWidth = 756
+  ClientHeight = 542
+  ClientWidth = 789
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnResize = FormResize
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object MainViewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 756
-    Height = 473
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 789
+    Height = 542
     Camera = MainCamera
     BeforeRender = MainViewerBeforeRender
     Buffer.FogEnvironment.FogStart = 10.000000000000000000
     Buffer.FogEnvironment.FogEnd = 100.000000000000000000
     Buffer.BackgroundColor = clGray
-    FieldOfView = 138.331390380859400000
+    FieldOfView = 143.257003784179700000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 730
+    ExplicitHeight = 476
   end
   object MainScene: TGLScene
     Left = 24

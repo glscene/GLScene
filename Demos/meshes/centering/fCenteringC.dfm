@@ -10,9 +10,8 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
+  Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
@@ -39,9 +38,6 @@ object Form1: TForm1
     TabOrder = 1
     ThumbLength = 10
     OnChange = TrackBar1Change
-    ExplicitLeft = 481
-    ExplicitTop = 34
-    ExplicitHeight = 211
   end
   object Panel1: TPanel
     Left = 0
@@ -50,8 +46,6 @@ object Form1: TForm1
     Height = 41
     Align = alTop
     TabOrder = 2
-    ExplicitLeft = -63
-    ExplicitWidth = 569
     object Label1: TLabel
       Left = 56
       Top = 8

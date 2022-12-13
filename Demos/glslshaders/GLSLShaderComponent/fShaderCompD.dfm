@@ -2,59 +2,46 @@ object GLSLTestForm: TGLSLTestForm
   Left = 261
   Top = 176
   Caption = 'GLSL Shader Component'
-  ClientHeight = 505
-  ClientWidth = 763
+  ClientHeight = 404
+  ClientWidth = 610
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 763
-    Height = 469
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 610
+    Height = 375
     Camera = Camera
     Buffer.BackgroundColor = clBackground
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aaNone
     Buffer.DepthPrecision = dp24bits
     Buffer.ColorDepth = cd24bits
-    FieldOfView = 149.014801025390600000
+    FieldOfView = 141.760543823242200000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object Panel1: TPanel
     Left = 0
-    Top = 469
-    Width = 763
-    Height = 36
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 375
+    Width = 610
+    Height = 29
     Align = alBottom
     TabOrder = 1
     object LightMovingCheckBox: TCheckBox
-      Left = 10
-      Top = 10
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 8
+      Width = 97
+      Height = 17
       Caption = 'Light is Moving'
       Checked = True
       Color = clBtnFace
@@ -63,14 +50,10 @@ object GLSLTestForm: TGLSLTestForm
       TabOrder = 0
     end
     object ShadeEnabledCheckBox: TCheckBox
-      Left = 360
-      Top = 10
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 288
+      Top = 8
+      Width = 97
+      Height = 17
       Caption = 'Shader Enabled'
       Checked = True
       State = cbChecked
@@ -78,14 +61,10 @@ object GLSLTestForm: TGLSLTestForm
       OnClick = ShadeEnabledCheckBoxClick
     end
     object TurnPitchrollCheckBox: TCheckBox
-      Left = 140
-      Top = 10
-      Width = 171
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 112
+      Top = 8
+      Width = 137
+      Height = 17
       Caption = 'Turn-Pitch-Roll Enabled'
       TabOrder = 2
     end

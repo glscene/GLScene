@@ -37,7 +37,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
    // load our raw data
    str = new TFileStream("IntensityMesh.data", fmOpenRead);
    str->Read(0, 4);
-   //-System::AnsiString::SetLength(DataNodes, i);
+   //- SetLength(DataNodes, i);
    str->Read(0, 4);
 
 /*

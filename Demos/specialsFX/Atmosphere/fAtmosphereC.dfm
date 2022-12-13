@@ -10,6 +10,7 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
   TextHeight = 13
@@ -138,19 +139,31 @@ object Form1: TForm1
       TabOrder = 7
       OnClick = Button8Click
     end
-    object Button6: TButton
+    object btnShowAtmosphere: TButton
       Left = 13
       Top = 286
       Width = 121
       Height = 25
       Caption = 'ON/Off atmosphere'
       TabOrder = 8
-      OnClick = Button6Click
+      OnClick = btnShowAtmosphereClick
     end
   end
   object GLScene1: TGLScene
     Left = 176
     Top = 16
+    object GLCamera1: TGLCamera
+      DepthOfView = 1000.000000000000000000
+      FocalLength = 30.000000000000000000
+      TargetObject = CameraTarget
+      Position.Coordinates = {0000A0400000803F0000A0400000803F}
+      Direction.Coordinates = {00000000000080BF0000000000000000}
+      Up.Coordinates = {00000000000000000000803F00000000}
+    end
+    object CameraTarget: TGLDummyCube
+      Position.Coordinates = {0000204100000040000040400000803F}
+      CubeSize = 1.000000000000000000
+    end
     object GLSkyDome1: TGLSkyDome
       Bands = <
         item
@@ -167,15 +180,10 @@ object Form1: TForm1
         item
           Color = clLime
         end>
-      Options = [sdoTwinkle]
-    end
-    object CameraTarget: TGLDummyCube
-      Position.Coordinates = {0000204100000040000040400000803F}
-      CubeSize = 1.000000000000000000
     end
     object World: TGLDummyCube
       CubeSize = 1.000000000000000000
-      object Not_a_planet: TGLSphere
+      object Not_a_Planet: TGLSphere
         Material.FrontProperties.Diffuse.Color = {E6E5653F8F8E8E3ECDCC4C3F0000803F}
         Position.Coordinates = {0000000000007041000000C00000803F}
         Radius = 3.000000000000000000
@@ -184,7 +192,7 @@ object Form1: TForm1
         ObjectsSorting = osNone
         Position.Coordinates = {0000204100000040000040400000803F}
         CubeSize = 1.000000000000000000
-        object GLSphere1: TGLSphere
+        object Planet: TGLSphere
           Material.FrontProperties.Ambient.Color = {9796963E9796963E8F8E8E3E022B473F}
           Material.FrontProperties.Diffuse.Color = {CDCC4C3FCDCC4C3FCDCC4C3F48E13A3F}
           Material.FrontProperties.Emission.Color = {8786863EA3A2A23EABAAAA3EB4C8363F}
@@ -3062,14 +3070,6 @@ object Form1: TForm1
           SpotCutOff = 180.000000000000000000
         end
       end
-    end
-    object GLCamera1: TGLCamera
-      DepthOfView = 1000.000000000000000000
-      FocalLength = 30.000000000000000000
-      TargetObject = CameraTarget
-      Position.Coordinates = {0000704100007041000000000000803F}
-      Direction.Coordinates = {00000000000080BF0000000000000000}
-      Up.Coordinates = {00000000000000000000803F00000000}
     end
   end
   object GLCadencer1: TGLCadencer

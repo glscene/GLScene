@@ -31,20 +31,22 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
   float r;
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
 
   // Load the vertex and fragment Cg programs from project dir
-  CgCellShader->VertexProgram->LoadFromFile("Shaders\\cellshading_vp.cg");
-  CgCellShader->FragmentProgram->LoadFromFile("Shaders\\cellshading_fp.cg");
+  SetCurrentDir(Path  + "\\shader");
+  CgCellShader->VertexProgram->LoadFromFile("cellshading_vp.cg");
+  CgCellShader->FragmentProgram->LoadFromFile("cellshading_fp.cg");
 
-  // Load and scale the actor from media dir
+  // Load and scale the animated actor
+  SetCurrentDir(Path  + "\\modelext");
   GLActor1->LoadFromFile("waste.md2");
+  // Load the texture
+  GLMaterialLibrary1->Materials->Items[0]->Material->Texture->Image->LoadFromFile("wastecell.jpg");
 
   r = GLActor1->BoundingSphereRadius();
   GLActor1->Scale->SetVector(2.5/r,2.5/r,2.5/r);
   GLActor1->AnimationMode = aamLoop;
-  // Load the texture
-  GLMaterialLibrary1->Materials->Items[0]->Material->Texture->Image->LoadFromFile("wastecell.jpg");
 
 }
 //---------------------------------------------------------------------------
@@ -88,7 +90,7 @@ void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Bu
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
-          int X, int Y)
+		  int X, int Y)
 {
   if (Shift.Contains(ssLeft))
 	GLCamera1->MoveAroundTarget(my-Y,mx-X);
@@ -98,8 +100,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
 //---------------------------------------------------------------------------
 void __fastcall TForm1::AsyncTimer1Timer(TObject *Sender)
 {
-  Form1->Caption = Format("Cg Cell Shading - %.2f FPS",
-	ARRAYOFCONST ((GLSceneViewer1->FramesPerSecond())));
+  StatusBar1->Panels->Items[0]->Text = GLSceneViewer1->FramesPerSecondText();
   GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------

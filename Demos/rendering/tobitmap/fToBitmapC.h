@@ -19,7 +19,7 @@
 #include "GLS.SpaceText.hpp"
 #include "GLS.SceneViewer.hpp"
 
-#include "Unit2.h"
+#include "fToBitMapImgC.h"
 
 
 //---------------------------------------------------------------------------

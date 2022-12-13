@@ -78,7 +78,9 @@ procedure TFormActorProxy.FormCreate(Sender: TObject);
 var
   i : Integer;
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\modelext');
+
   MasterActor.LoadFromFile('TRINITYrage.smd');
   MasterActor.AddDataFromFile('run.smd');
   MasterActor.AddDataFromFile('jump.smd');

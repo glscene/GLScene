@@ -76,7 +76,8 @@ var
    t : Int64;
 begin
    // Load high poly mesh (10,000 triangles).
-   SetGLSceneMediaDir();
+   var Path: TFileName := GetCurrentAssetPath();
+   SetCurrentDir(Path  + '\model');
    FreeForm1.LoadFromFile('HighPolyObject.3ds');
 
    t:=StartPrecisionTimer;

@@ -2,35 +2,32 @@ object FormNewtonMousePick: TFormNewtonMousePick
   Left = 0
   Top = 0
   Caption = 'Newton Mouse Pick'
-  ClientHeight = 504
-  ClientWidth = 716
+  ClientHeight = 444
+  ClientWidth = 729
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 716
-    Height = 504
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 729
+    Height = 444
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 157.555084228515600000
+    FieldOfView = 154.614669799804700000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     OnMouseUp = GLSceneViewer1MouseUp
     TabOrder = 0
+    ExplicitWidth = 715
+    ExplicitHeight = 442
   end
   object GLScene1: TGLScene
     Left = 160

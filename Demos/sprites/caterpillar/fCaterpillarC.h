@@ -29,6 +29,7 @@ __published:	// IDE-managed Components
 	TGLMaterialLibrary *GLMaterialLibrary1;
 	TGLCadencer *GLCadencer1;
 	TGLSimpleNavigation *GLSimpleNavigation1;
+	TGLSprite *spr;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall GLCadencer1Progress(TObject *Sender, const double deltaTime, const double newTime);
 	void __fastcall FormResize(TObject *Sender);

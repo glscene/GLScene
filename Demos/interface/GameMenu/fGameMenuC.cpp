@@ -28,7 +28,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
   GLMaterialLibrary1->Materials->Items[0]->Material->Texture->Image->LoadFromFile("GLScene.bmp");
 
   GameMenu = (TGLGameMenu *)GLScene1->Objects->AddNewChild(__classid(TGLGameMenu));

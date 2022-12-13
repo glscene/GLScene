@@ -59,12 +59,10 @@ type
     procedure Timer1Timer(Sender: TObject);
     procedure Button1Click(Sender: TObject);
   private
-
     colTotalTime: Single; // for timing collision detection
     colCount: Integer;
     procedure AddToTrail(const p: TGLVector);
   public
-
     mousex, mousey: Integer;
   end;
 
@@ -77,7 +75,8 @@ implementation
 
 procedure TFormBoxedin.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\model');
   FreeForm1.LoadFromFile('BoxedIn.3ds');
 
   FreeForm1.BuildOctree;

@@ -2,30 +2,25 @@ object FormOcclusionQuery: TFormOcclusionQuery
   Left = 194
   Top = 119
   Caption = 'Occlusion Query'
-  ClientHeight = 551
-  ClientWidth = 701
+  ClientHeight = 441
+  ClientWidth = 561
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnDestroy = FormDestroy
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 51
-    Width = 701
-    Height = 500
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 41
+    Width = 561
+    Height = 400
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 157.380142211914100000
+    FieldOfView = 151.927505493164100000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -33,73 +28,49 @@ object FormOcclusionQuery: TFormOcclusionQuery
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 701
-    Height = 51
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 561
+    Height = 41
     Align = alTop
     TabOrder = 1
     object Label1: TLabel
-      Left = 140
-      Top = 4
-      Width = 39
-      Height = 17
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 112
+      Top = 3
+      Width = 31
+      Height = 13
       Caption = 'Label1'
     end
     object Label2: TLabel
-      Left = 140
-      Top = 28
-      Width = 39
-      Height = 17
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 112
+      Top = 22
+      Width = 31
+      Height = 13
       Caption = 'Label2'
     end
     object Label3: TLabel
-      Left = 250
-      Top = 8
-      Width = 322
-      Height = 36
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 200
+      Top = 6
+      Width = 259
+      Height = 29
       Caption = 'Test objects are hidden!'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -30
+      Font.Height = -24
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
     end
     object LabelFPS: TLabel
-      Left = 11
-      Top = 28
-      Width = 23
-      Height = 17
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 9
+      Top = 22
+      Width = 18
+      Height = 13
       Caption = 'FPS'
     end
     object CheckBox1: TCheckBox
-      Left = 11
-      Top = 3
-      Width = 122
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 9
+      Top = 2
+      Width = 97
+      Height = 17
       Caption = 'Boolean test'
       Enabled = False
       TabOrder = 0

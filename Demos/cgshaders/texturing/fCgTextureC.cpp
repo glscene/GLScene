@@ -28,18 +28,20 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
   // load Cg proggy from project directory
-  CgShader1->VertexProgram->LoadFromFile("Shaders\\cg_texture_vp.cg");
+  SetCurrentDir(Path  + "\\shader");
+  CgShader1->VertexProgram->LoadFromFile("cg_texture_vp.cg");
   MemoVertCode->Lines->Assign(CgShader1->VertexProgram->Code);
-  CgShader1->FragmentProgram->LoadFromFile("Shaders\\cg_texture_fp.cg");
+  CgShader1->FragmentProgram->LoadFromFile("cg_texture_fp.cg");
   MemoFragCode->Lines->Assign(CgShader1->FragmentProgram->Code);
 
   // Load images from media dir
+  SetCurrentDir(Path  + "\\texture");
   GLMatLib->Materials->Items[0]->Material->Texture->Image->LoadFromFile("moon.bmp");
   GLMatLib->Materials->Items[1]->Material->Texture->Image->LoadFromFile("clover.jpg");
   GLMatLib->Materials->Items[2]->Material->Texture->Image->LoadFromFile("marbletiles.jpg");
-  GLMatLib->Materials->Items[3]->Material->Texture->Image->LoadFromFile("chrome_buckle.bmp");
+  GLMatLib->Materials->Items[3]->Material->Texture->Image->LoadFromFile("earth.png");
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::CgShader1Initialize(TCustomCgShader *CgShader)

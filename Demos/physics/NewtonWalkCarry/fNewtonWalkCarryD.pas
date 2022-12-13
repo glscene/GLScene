@@ -18,7 +18,6 @@ uses
 
   GLS.Scene,
   GLS.PersistentClasses,
-  Physics.NGDManager,
   GLS.Material,
   GLS.Cadencer,
   GLS.SceneViewer,
@@ -39,7 +38,8 @@ uses
   GLS.Color,
   GLS.HUDObjects,
   GLS.Texture,
-  GLS.Utils;
+  GLS.Utils,
+  Physics.NGDManager;
 
 type
 
@@ -114,7 +114,7 @@ implementation
 
 procedure TFormNewtonWalkCarry.FormCreate(Sender: TObject);
 begin
-  // Switch to English keyboard leyout
+  // Switch to English keyboard layout
   LoadKeyboardLayout('00000409', KLF_ACTIVATE);
   Menu_Load;
 
@@ -486,7 +486,7 @@ var
   Nam, end1, end2: Integer;
   b_ti1, b_ti2, b_ti3, ML_col: Integer;
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
   // Memo1.Lines.Clear;
   // memo1.Lines.LoadFromFile('level.txt');
   SetLength(maps, Memo1.Lines.Count);

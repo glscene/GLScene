@@ -13,13 +13,12 @@ uses
   Vcl.ComCtrls,
   Vcl.StdCtrls,
 
-  
   GLS.Scene,
   GLS.VectorTypes,
   GLS.Objects,
   GLS.Collision,
   GLS.SceneViewer,
- 
+
   GLS.Coordinates,
   GLS.BaseClasses;
 
@@ -37,12 +36,11 @@ type
     Button1: TButton;
     procedure TrackBar1Change(Sender: TObject);
     procedure Button1Click(Sender: TObject);
-    procedure CollisionManager1Collision(Sender: TObject; object1,
-      object2: TGLBaseSceneObject);
+    procedure CollisionManager1Collision(Sender: TObject; object1, object2: TGLBaseSceneObject);
   private
-    { Private declarations  }
+    { Private declarations }
   public
-     
+
   end;
 
 var
@@ -54,18 +52,18 @@ implementation
 
 procedure TFormSphere.TrackBar1Change(Sender: TObject);
 begin
-   Sphere1.Position.Z:=TrackBar1.Position/10;
+  Sphere1.Position.Z := TrackBar1.Position / 10;
 end;
 
 procedure TFormSphere.Button1Click(Sender: TObject);
 begin
-   CollisionManager1.CheckCollisions;
+  CollisionManager1.CheckCollisions;
 end;
 
-procedure TFormSphere.CollisionManager1Collision(Sender: TObject; object1,
-  object2: TGLBaseSceneObject);
+procedure TFormSphere.CollisionManager1Collision(Sender: TObject;
+  object1, object2: TGLBaseSceneObject);
 begin
-   ShowMessage('Collision between '+object1.Name+' and '+object2.Name);
+  ShowMessage('Collision between ' + object1.Name + ' and ' + object2.Name);
 end;
 
 end.

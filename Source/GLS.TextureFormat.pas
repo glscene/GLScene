@@ -601,7 +601,7 @@ begin
   else
     begin
       Result := false;
-      Assert(False, strErrorEx + strUnknownType);
+      // Assert(False, strErrorEx + strUnknownType);
     end;
   end;
 end;
@@ -906,7 +906,7 @@ const
     GL_TEXTURE_CUBE_MAP_ARRAY
   );
 begin
-  Assert(TextureTarget <> ttNoShape);
+ // Assert(TextureTarget <> ttNoShape);
   Result := cTargetToEnum[TextureTarget];
 end;
 

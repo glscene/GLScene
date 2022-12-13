@@ -51,7 +51,7 @@ void __fastcall TForm1::PrepareShadowMappingRender(TObject *Sender, TGLRenderCon
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
   // Loading textures
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
 
   //with GLMaterialLibrary1 do
   GLMaterialLibrary1->TextureByName("Chekers")->Image->LoadFromFile("marbletiles.jpg");

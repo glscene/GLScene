@@ -29,7 +29,8 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
    // Load mushroom mesh
-   SetGLSceneMediaDir();
+   TFileName Path = GetCurrentAssetPath();
+   	SetCurrentDir(Path + "\\model");
    FreeForm1->LoadFromFile("mushroom.3ds");
 }
 //---------------------------------------------------------------------------

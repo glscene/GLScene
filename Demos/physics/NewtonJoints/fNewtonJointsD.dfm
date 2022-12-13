@@ -2,34 +2,32 @@ object FormNewtonJoints: TFormNewtonJoints
   Left = 0
   Top = 0
   Caption = 'Newton Joints'
-  ClientHeight = 504
-  ClientWidth = 719
+  ClientHeight = 412
+  ClientWidth = 637
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 719
-    Height = 504
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 637
+    Height = 412
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 157.555084228515600000
+    FieldOfView = 152.714172363281300000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseUp = GLSceneViewer1MouseUp
     TabOrder = 0
+    ExplicitWidth = 581
+    ExplicitHeight = 403
   end
   object GLScene1: TGLScene
     Left = 40

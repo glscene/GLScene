@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 140
   Top = 116
   Caption = 'Gui Skin Editor and Manager'
-  ClientHeight = 325
-  ClientWidth = 553
+  ClientHeight = 553
+  ClientWidth = 895
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,64 +11,75 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Menu = MainMenu1
-  OldCreateOrder = False
+  Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
-    Left = 8
-    Top = 8
-    Width = 99
-    Height = 13
-    Caption = 'Layouts in collection:'
-  end
-  object ListBox: TListBox
-    Left = 8
-    Top = 56
-    Width = 233
-    Height = 281
-    ItemHeight = 13
-    PopupMenu = ListPopup
-    TabOrder = 0
-    OnClick = ListBoxClick
-  end
   object GLSceneViewer1: TGLSceneViewer
-    Left = 248
-    Top = 8
-    Width = 297
-    Height = 329
+    Left = 247
+    Top = 0
+    Width = 648
+    Height = 553
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 142.783203125000000000
+    FieldOfView = 159.499740600585900000
+    PenAsTouch = False
+    Align = alClient
+    TabOrder = 0
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 247
+    Height = 553
+    Align = alLeft
+    Caption = 'Panel1'
     TabOrder = 1
-  end
-  object Edit3: TEdit
-    Left = 8
-    Top = 24
-    Width = 153
-    Height = 21
-    TabOrder = 2
-    Text = 'Newly Added'
-    OnChange = Edit3Change
-    OnKeyPress = Edit3KeyPress
-  end
-  object Button1: TButton
-    Left = 168
-    Top = 24
-    Width = 33
-    Height = 25
-    Caption = 'Add'
-    TabOrder = 3
-    OnClick = Button1Click
-  end
-  object Button2: TButton
-    Left = 208
-    Top = 24
-    Width = 33
-    Height = 25
-    Caption = 'Edit'
-    TabOrder = 4
-    OnClick = Button2Click
+    ExplicitLeft = 648
+    object Label1: TLabel
+      Left = 8
+      Top = 16
+      Width = 99
+      Height = 13
+      Caption = 'Layouts in collection:'
+    end
+    object ListBox: TListBox
+      Left = 8
+      Top = 64
+      Width = 233
+      Height = 281
+      ItemHeight = 13
+      PopupMenu = ListPopup
+      TabOrder = 0
+      OnClick = ListBoxClick
+    end
+    object Button2: TButton
+      Left = 208
+      Top = 32
+      Width = 33
+      Height = 25
+      Caption = 'Edit'
+      TabOrder = 1
+      OnClick = Button2Click
+    end
+    object Button1: TButton
+      Left = 168
+      Top = 32
+      Width = 33
+      Height = 25
+      Caption = 'Add'
+      TabOrder = 2
+      OnClick = Button1Click
+    end
+    object Edit3: TEdit
+      Left = 8
+      Top = 32
+      Width = 153
+      Height = 21
+      TabOrder = 3
+      Text = 'Newly Added'
+      OnChange = Edit3Change
+      OnKeyPress = Edit3KeyPress
+    end
   end
   object MainMenu1: TMainMenu
     Left = 160

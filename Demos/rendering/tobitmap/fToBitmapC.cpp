@@ -82,7 +82,9 @@ void TForm1::RenderToBitmap(Single scale)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-   SetGLSceneMediaDir();
+   TFileName Path = GetCurrentAssetPath();
+   SetCurrentDir(Path  + "\\texture");
+
    HUDSprite1->Material->Texture->Image->LoadFromFile("ashwood.jpg");
    Plane1->Material->Texture->Image->LoadFromFile("marbletiles.jpg");
    Sphere1->Material->Texture->Image->LoadFromFile("marbletiles.jpg");

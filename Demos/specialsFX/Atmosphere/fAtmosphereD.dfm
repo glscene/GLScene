@@ -2,165 +2,119 @@ object FormAtmosphere: TFormAtmosphere
   Left = 244
   Top = 109
   Caption = 'Atmosphere'
-  ClientHeight = 606
-  ClientWidth = 813
+  ClientHeight = 475
+  ClientWidth = 678
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
-    Left = 191
+    Left = 153
     Top = 0
-    Width = 622
-    Height = 606
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 525
+    Height = 475
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 168.691162109375000000
+    FieldOfView = 165.601531982421900000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 495
+    ExplicitHeight = 485
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 191
-    Height = 606
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 153
+    Height = 475
     Align = alLeft
     TabOrder = 1
+    ExplicitHeight = 485
     object Label1: TLabel
-      Left = 16
-      Top = 460
-      Width = 52
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 368
+      Width = 41
+      Height = 13
       Caption = 'Controls:'
     end
     object Label2: TLabel
-      Left = 16
-      Top = 484
-      Width = 129
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 387
+      Width = 103
+      Height = 13
       Caption = 'Mouse Wheel = zoom'
     end
     object Label3: TLabel
-      Left = 16
-      Top = 508
-      Width = 149
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 406
+      Width = 120
+      Height = 13
       Caption = 'Hold Mouse and Move = '
     end
     object Label4: TLabel
-      Left = 24
-      Top = 531
-      Width = 83
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 19
+      Top = 425
+      Width = 68
+      Height = 13
       Caption = ' = turn camera'
     end
     object Button1: TButton
-      Left = 16
-      Top = 19
-      Width = 93
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 15
+      Width = 74
+      Height = 25
       Caption = 'Rotate Planet'
       TabOrder = 0
       OnClick = Button1Click
     end
     object Button4: TButton
-      Left = 16
-      Top = 58
-      Width = 135
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 46
+      Width = 108
+      Height = 25
       Caption = 'Move Planet Right'
       TabOrder = 1
       OnClick = Button4Click
     end
     object Button5: TButton
-      Left = 16
-      Top = 97
-      Width = 135
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 78
+      Width = 108
+      Height = 24
       Caption = 'Move Planet Left'
       TabOrder = 2
       OnClick = Button5Click
     end
     object Button2: TButton
-      Left = 16
-      Top = 136
-      Width = 110
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 109
+      Width = 88
+      Height = 25
       Caption = 'Move Sun Right'
       TabOrder = 3
       OnClick = Button2Click
     end
     object Button3: TButton
-      Left = 16
-      Top = 175
-      Width = 110
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 13
+      Top = 140
+      Width = 88
+      Height = 25
       Caption = 'Move Sun Left'
       TabOrder = 4
       OnClick = Button3Click
     end
     object Button9: TButton
-      Left = 14
-      Top = 214
-      Width = 67
-      Height = 31
+      Left = 11
+      Top = 171
+      Width = 54
+      Height = 25
       Hint = 'Mouse Wheel Can change zoom too'
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Zoom in'
       ParentShowHint = False
       ShowHint = True
@@ -168,15 +122,11 @@ object FormAtmosphere: TFormAtmosphere
       OnClick = Button9Click
     end
     object Button10: TButton
-      Left = 95
-      Top = 214
-      Width = 73
-      Height = 31
+      Left = 76
+      Top = 171
+      Width = 58
+      Height = 25
       Hint = 'Mouse Wheel Can change zoom too'
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Caption = 'Zoom out'
       ParentShowHint = False
       ShowHint = True
@@ -184,27 +134,19 @@ object FormAtmosphere: TFormAtmosphere
       OnClick = Button10Click
     end
     object Button8: TButton
-      Left = 13
-      Top = 420
-      Width = 152
-      Height = 32
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 10
+      Top = 336
+      Width = 122
+      Height = 26
       Caption = 'Change Blending Mode'
       TabOrder = 7
       OnClick = Button8Click
     end
     object rgAtmosphere: TRadioGroup
-      Left = 12
-      Top = 273
-      Width = 156
-      Height = 128
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 10
+      Top = 218
+      Width = 124
+      Height = 103
       Caption = 'Atmosphere'
       ItemIndex = 0
       Items.Strings = (

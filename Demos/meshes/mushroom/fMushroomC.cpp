@@ -34,12 +34,15 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
   //   Randomize;
-  // Load mushroom mesh
+ // Load static mushroom mesh
+  SetCurrentDir(Path  + "\\model");
   FreeForm1->LoadFromFile("mushroom.3ds");
-  // Load ground texture
-  Disk1->Material->Texture->Image->LoadFromFile("clover.jpg");
+
+  // Load textures
+  SetCurrentDir(Path  + "\\texture");
+   Disk1->Material->Texture->Image->LoadFromFile("clover.jpg");
   // Duplicate our reference mushroom (but not its mesh data !)
   AddMushRooms();
 }

@@ -34,7 +34,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-   SetGLSceneMediaDir();
+   TFileName Path = GetCurrentAssetPath();
    // Set up the visuals
    GLBitmapHDS1->MaxPoolSize = 8*1024*1024;
    GLBitmapHDS1->Picture->LoadFromFile("terrain.bmp");

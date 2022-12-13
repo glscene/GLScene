@@ -2,31 +2,26 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'GLScene Caterpillar'
-  ClientHeight = 394
-  ClientWidth = 565
+  ClientHeight = 411
+  ClientWidth = 644
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   OnCreate = FormCreate
   OnResize = FormResize
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 565
-    Height = 394
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 644
+    Height = 411
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
     Buffer.DepthTest = False
-    FieldOfView = 151.517288208007800000
+    FieldOfView = 152.650268554687500000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -64,6 +59,11 @@ object Form1: TForm1
         Position.Coordinates = {0000A04000000000000000000000803F}
         Width = 2.000000000000000000
         Height = 2.000000000000000000
+        Rotation = 0.000000000000000000
+      end
+      object spr: TGLSprite
+        Width = 1.000000000000000000
+        Height = 1.000000000000000000
         Rotation = 0.000000000000000000
       end
     end

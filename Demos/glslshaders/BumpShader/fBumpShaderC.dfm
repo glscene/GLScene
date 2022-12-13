@@ -2,62 +2,52 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'GLSL Bump Shader'
-  ClientHeight = 543
-  ClientWidth = 708
+  ClientHeight = 505
+  ClientWidth = 656
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  WindowState = wsMaximized
   OnClose = FormClose
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 708
-    Height = 484
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 656
+    Height = 458
     Camera = Camera
     Buffer.BackgroundColor = clBackground
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aaNone
     Buffer.DepthPrecision = dp24bits
     Buffer.ColorDepth = cd24bits
-    FieldOfView = 149.930953979492200000
+    FieldOfView = 148.307571411132800000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ViewerMouseDown
     OnMouseMove = ViewerMouseMove
     TabOrder = 0
+    ExplicitWidth = 630
+    ExplicitHeight = 434
   end
   object Panel1: TPanel
     Left = 0
-    Top = 484
-    Width = 708
-    Height = 59
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 458
+    Width = 656
+    Height = 47
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 387
+    ExplicitWidth = 566
     object LightMovingCheckBox: TCheckBox
-      Left = 10
-      Top = 10
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 8
+      Width = 97
+      Height = 17
       Caption = 'Light is Moving'
       Checked = True
       Color = clBtnFace
@@ -66,41 +56,29 @@ object Form1: TForm1
       TabOrder = 0
     end
     object RollPitchTurnCheckBox: TCheckBox
-      Left = 10
-      Top = 30
-      Width = 201
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 24
+      Width = 161
+      Height = 17
       Caption = 'Roll / Pitch / Turn Enabled'
       Checked = True
       State = cbChecked
       TabOrder = 1
     end
     object ShaderEnabledCheckBox: TCheckBox
-      Left = 220
-      Top = 10
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 176
+      Top = 8
+      Width = 97
+      Height = 17
       Caption = 'Shader Enabled'
       TabOrder = 2
       OnClick = ShaderEnabledCheckBoxClick
     end
     object MultiLightShaderCheckBox: TCheckBox
-      Left = 220
-      Top = 30
-      Width = 133
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 176
+      Top = 24
+      Width = 106
+      Height = 17
       Caption = 'MultiLight Shader'
       Checked = True
       State = cbChecked
@@ -108,14 +86,10 @@ object Form1: TForm1
       OnClick = MultiLightShaderCheckBoxClick
     end
     object UseSpecularTextureCheckBox: TCheckBox
-      Left = 400
-      Top = 10
-      Width = 151
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 320
+      Top = 8
+      Width = 121
+      Height = 17
       Caption = 'Use Specular Texture'
       Checked = True
       State = cbChecked
@@ -123,14 +97,10 @@ object Form1: TForm1
       OnClick = UseSpecularTextureCheckBoxClick
     end
     object UseNormalTextureCheckBox: TCheckBox
-      Left = 400
-      Top = 30
-      Width = 151
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 320
+      Top = 24
+      Width = 121
+      Height = 17
       Caption = 'Use Normal Texture'
       Checked = True
       State = cbChecked
@@ -138,14 +108,10 @@ object Form1: TForm1
       OnClick = UseNormalTextureCheckBoxClick
     end
     object ShowNotGLSceneObjectsCheckBox: TCheckBox
-      Left = 570
-      Top = 10
-      Width = 231
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 456
+      Top = 8
+      Width = 185
+      Height = 17
       Caption = 'Show not GLScene objects'
       Checked = True
       State = cbChecked
@@ -284,7 +250,7 @@ object Form1: TForm1
       FocalLength = 65.000000000000000000
       TargetObject = GLXYZGrid1
       CameraStyle = csInfinitePerspective
-      Position.Coordinates = {0000000000004842000048430000803F}
+      Position.Coordinates = {000000000000C843000096430000803F}
       Direction.Coordinates = {00000000000080BF0000000000000000}
       Up.Coordinates = {00000000000000000000803F00000000}
     end

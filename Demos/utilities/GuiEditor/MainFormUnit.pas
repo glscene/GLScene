@@ -13,11 +13,21 @@ uses
   Vcl.Menus,
   Vcl.StdCtrls,
   Vcl.ExtDlgs,
-  
-  GLS.Gui, GLS.Scene, GLS.SceneViewer,
-  GLS.Objects, GLS.HUDObjects, GLS.Windows, GLS.BitmapFont, GLS.WindowsFont,
-  GLS.Texture, FGuiSkinEditor, GLS.Material, GLS.Coordinates,
-  GLS.BaseClasses;
+
+  GLS.Gui,
+  GLS.Scene,
+  GLS.SceneViewer,
+  GLS.Objects,
+  GLS.HUDObjects,
+  GLS.Windows,
+  GLS.BitmapFont,
+  GLS.WindowsFont,
+  GLS.Texture,
+  FmGuiSkinEditor,
+  GLS.Material,
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.Utils, Vcl.ExtCtrls;
 
 type
   TForm1 = class(TForm)
@@ -36,7 +46,6 @@ type
     ImportDialog: TOpenDialog;
     Edit1: TMenuItem;
     EditLayout1: TMenuItem;
-    ListBox: TListBox;
     ListPopup: TPopupMenu;
     Add1: TMenuItem;
     Remove1: TMenuItem;
@@ -52,10 +61,12 @@ type
     OpenPictureDialog: TOpenPictureDialog;
     GLMaterialLibrary1: TGLMaterialLibrary;
     HUDSprite1: TGLHUDSprite;
+    Panel1: TPanel;
+    ListBox: TListBox;
+    Button2: TButton;
+    Button1: TButton;
     Edit3: TEdit;
     Label1: TLabel;
-    Button1: TButton;
-    Button2: TButton;
     procedure Open1Click(Sender: TObject);
     procedure Save1Click(Sender: TObject);
     procedure Close1Click(Sender: TObject);
@@ -86,22 +97,16 @@ implementation
 
 procedure TForm1.FormCreate(Sender: TObject);
 var
-  MediaPath : String;
   I : Integer;
 begin
-  MediaPath := ExtractFilePath(ParamStr(0));
-  I := Pos(UpperCase('Demos'), UpperCase(MediaPath));
-  if (I <> 0) then
-  begin
-    Delete(MediaPath, I+6, Length(MediaPath)-I-2);
-    SetCurrentDir(MediaPath+'Media\');
-  end;
-  GLMaterialLibrary1.Materials[0].Material.Texture.Image.
-     LoadFromFile('DefaultSkin.bmp');
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path + '\skin');
+  GLMaterialLibrary1.Materials[0].Material.Texture.Image. LoadFromFile('DefaultSkin.bmp');
 end;
 
 procedure TForm1.Open1Click(Sender: TObject);
 begin
+  OpenDialog.InitialDir := GetCurrentDir();
   If OpenDialog.Execute then
   Begin
     GLScene1.BeginUpdate;

@@ -70,14 +70,14 @@ implementation
 {$R *.dfm}
 
 procedure TFormCelShading.FormCreate(Sender: TObject);
-var
-  r: Single;
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\model');
   GLActor1.LoadFromFile('waste.md2');
-  r := GLActor1.BoundingSphereRadius;
+  var r: Single := GLActor1.BoundingSphereRadius;
   GLActor1.Scale.SetVector(2.5 / r, 2.5 / r, 2.5 / r);
   GLActor1.AnimationMode := aamLoop;
+  SetCurrentDir(Path  + '\texture'); 
   GLMaterialLibrary1.Materials[0].Material.Texture.Image.LoadFromFile
     ('wastecell.jpg');
 end;

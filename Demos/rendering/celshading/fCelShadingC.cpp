@@ -15,7 +15,7 @@ TForm1 *Form1;
 __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
 {
   float r;
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
   GLActor1->LoadFromFile("waste.md2");
   r = GLActor1->BoundingSphereRadius();
   GLActor1->Scale->SetVector(2.5 / r, 2.5 / r, 2.5 / r);

@@ -35,7 +35,8 @@ bool WireFrame;
 //---------------------------------------------------------------------------
 __fastcall TFormFPSMovement::TFormFPSMovement(TComponent * Owner):TForm(Owner)
 {
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
+  SetCurrentDir(Path + "\\model");
   Map1->LoadFromFile("map.3ds");
   Map1->BuildOctree(3);
   Map1->Up->SetVector(0, 1, 0);

@@ -113,7 +113,8 @@ implementation
 
 procedure TFormGuiPaint.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir(); // go to media dir
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
   GLMaterialLibrary1.TexturePaths := GetCurrentDir();
   GLCanvas.MaxInvalidRenderCount := 40;
   StartX := -1;

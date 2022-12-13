@@ -16,9 +16,12 @@ TForm1 *Form1;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
 {
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
+  // Load textures
+  SetCurrentDir(Path  + "\\texture");
+
   // 8 MB height data cache
-  // Note this is the data size in terms of elevation samples, it does not
+	// Note this is the data size in terms of elevation samples, it does not
   // take into account all the data required/allocated by the renderer
   GLBitmapHDS1->MaxPoolSize = 8 * 1024 * 1024;
 

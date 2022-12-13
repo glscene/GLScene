@@ -40,8 +40,10 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
   int I;
-  //First load models
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
+  // Loading animated models
+  SetCurrentDir(Path + "\\modelext");
+
   Fighter->LoadFromFile("TRINITYrage.smd"); //Fighter
   Fighter->AddDataFromFile("walk.smd");
   Fighter->Animations->Items[1]->MakeSkeletalTranslationStatic();
@@ -63,6 +65,9 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   Fighter->AnimationMode = aamLoop;
   Fighter->Scale->Scale(3);
 //  Fighter->MeshObjects->BuildTangentSpace;
+
+  // Loading static models
+  SetCurrentDir(Path + "\\model");
   Teapot->LoadFromFile("Teapot.3ds"); //Teapot
   Teapot->Scale->Scale(0.8);
   //  Teapot.MeshObjects->BuildTangentSpace; does not have texture coordinates...
@@ -72,10 +77,13 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   Sphere_little->LoadFromFile("Sphere_little.3ds"); //Sphere_little
   Sphere_little->Scale->Scale(4);
   Sphere_little->MeshObjects->BuildTangentSpace();
+
   // Then load textures
+  SetCurrentDir(Path + "\\texture");
   MaterialLibrary->LibMaterialByName("Earth")->Material->Texture->Image->LoadFromFile("Earth.jpg");
   MaterialLibrary->LibMaterialByName("EarthGross")->Material->Texture->Image->LoadFromFile("EarthSpec.dds");
   MaterialLibrary->LibMaterialByName("EarthNormals")->Material->Texture->Image->LoadFromFile("EarthNormals.jpg");
+
   // Create Shader
   MultiLightShader = new TGLSLMLBumpShader(this);
   MultiLightShader->LightSources = MultiLightShader->LightSources << 1, 2 ;

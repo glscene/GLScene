@@ -58,7 +58,8 @@ uses
 
 procedure TFormCustomQuad.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
   // dynamically create 2 materials and load 2 textures
   MatLib.AddTextureMaterial('wood', 'ashwood.jpg').
     Material.FrontProperties.Emission.Color := clrGray50;

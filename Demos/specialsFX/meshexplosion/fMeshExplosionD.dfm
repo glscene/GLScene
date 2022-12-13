@@ -2,30 +2,25 @@ object FormMeshExplosion: TFormMeshExplosion
   Left = 174
   Top = 93
   Caption = 'Mesh Explosion'
-  ClientHeight = 523
-  ClientWidth = 718
+  ClientHeight = 418
+  ClientWidth = 574
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 718
-    Height = 401
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 574
+    Height = 321
     Camera = Camera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 151.994766235351600000
+    FieldOfView = 145.393615722656300000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ViewerMouseDown
@@ -34,115 +29,79 @@ object FormMeshExplosion: TFormMeshExplosion
   end
   object Panel1: TPanel
     Left = 0
-    Top = 401
-    Width = 718
-    Height = 122
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 321
+    Width = 574
+    Height = 97
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
     object Label2: TLabel
-      Left = 10
-      Top = 70
-      Width = 28
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
-      Caption = 'Step'
+      Left = 8
+      Top = 56
+      Width = 66
+      Height = 13
+      Caption = 'Step Progress'
     end
     object Label1: TLabel
-      Left = 10
-      Top = 10
-      Width = 60
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 8
+      Width = 47
+      Height = 13
       Caption = 'MaxSteps'
     end
     object Label3: TLabel
-      Left = 530
-      Top = 10
-      Width = 41
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 424
+      Top = 8
+      Width = 31
+      Height = 13
       Caption = 'Speed'
     end
     object CheckOn: TCheckBox
-      Left = 610
-      Top = 80
-      Width = 95
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 488
+      Top = 64
+      Width = 76
+      Height = 17
       Caption = 'Explosion'
       TabOrder = 0
       OnClick = CheckOnClick
     end
     object Button1: TButton
-      Left = 510
-      Top = 80
-      Width = 94
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 408
+      Top = 64
+      Width = 75
+      Height = 25
       Caption = 'Reset'
       TabOrder = 1
       OnClick = Button1Click
     end
     object StepBar: TProgressBar
-      Left = 10
-      Top = 90
-      Width = 491
-      Height = 20
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 72
+      Width = 393
+      Height = 16
       Max = 200
       Smooth = True
       TabOrder = 2
     end
     object MaxStepsBar: TTrackBar
       Left = 0
-      Top = 30
-      Width = 511
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Top = 24
+      Width = 409
+      Height = 25
       Max = 200
       TabOrder = 3
-      ThumbLength = 19
+      ThumbLength = 15
       OnChange = MaxStepsBarChange
     end
     object SpeedBar: TTrackBar
-      Left = 520
-      Top = 30
-      Width = 151
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 416
+      Top = 24
+      Width = 121
+      Height = 25
       Max = 20
       Position = 1
       TabOrder = 4
-      ThumbLength = 19
+      ThumbLength = 15
       OnChange = SpeedBarChange
     end
   end

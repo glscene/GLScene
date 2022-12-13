@@ -28,7 +28,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-   SetGLSceneMediaDir();
+   TFileName Path = GetCurrentAssetPath();
    GLMaterialScripter1->DebugMemo = Memo2;;
    GLCube1->Material->MaterialLibrary = GLMaterialLibrary1;
    SetCurrentDir(ExtractFilePath(Application->ExeName));

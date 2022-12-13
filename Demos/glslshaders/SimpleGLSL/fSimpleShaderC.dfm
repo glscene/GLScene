@@ -2,25 +2,23 @@ object Form1: TForm1
   Left = 296
   Top = 145
   Caption = 'Simple GLSL Shader'
-  ClientHeight = 612
-  ClientWidth = 944
+  ClientHeight = 551
+  ClientWidth = 787
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -10
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
+  Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
-  OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 944
-    Height = 612
+    Width = 787
+    Height = 551
     Margins.Left = 2
     Margins.Top = 2
     Margins.Right = 2
@@ -28,12 +26,13 @@ object Form1: TForm1
     Camera = Cam
     Buffer.BackgroundColor = 4194304
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow, roDestinationAlpha]
-    FieldOfView = 150.697280883789100000
+    FieldOfView = 147.615402221679700000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
-    OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 866
+    ExplicitHeight = 466
   end
   object GLScene1: TGLScene
     Left = 176
@@ -157,5 +156,25 @@ object Form1: TForm1
       end>
     Left = 408
     Top = 120
+  end
+  object GLSimpleNavigation1: TGLSimpleNavigation
+    Form = Owner
+    GLSceneViewer = GLSceneViewer1
+    FormCaption = 'Simple GLSL Shader - %FPS'
+    KeyCombinations = <
+      item
+        ShiftState = [ssLeft, ssRight]
+        Action = snaZoom
+      end
+      item
+        ShiftState = [ssLeft]
+        Action = snaMoveAroundTarget
+      end
+      item
+        ShiftState = [ssRight]
+        Action = snaMoveAroundTarget
+      end>
+    Left = 112
+    Top = 264
   end
 end

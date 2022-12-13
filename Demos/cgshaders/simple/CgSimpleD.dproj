@@ -125,8 +125,6 @@
         <DCCReference Include="fCgSimpleD.pas">
             <Form>FormCgSimple</Form>
         </DCCReference>
-        <None Include="..\..\..\media\Shaders\Simple_fp.cg"/>
-        <None Include="..\..\..\media\Shaders\Simple_vp.cg"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -159,18 +157,6 @@
                 <Platform value="Win64">False</Platform>
             </Platforms>
             <Deployment Version="3">
-                <DeployFile LocalName="..\..\..\media\Shaders\Simple_fp.cg" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="..\..\..\media\Shaders\Simple_vp.cg" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\CgSimpleD.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>CgSimpleD.exe</RemoteName>

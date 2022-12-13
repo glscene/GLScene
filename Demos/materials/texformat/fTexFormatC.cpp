@@ -26,7 +26,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 {
 	  TSearchRec sr;
 	  int i;
-	  SetGLSceneMediaDir();
+	  TFileName Path = GetCurrentAssetPath();
 	  // collect JPeg textures from the demos' media directory
 	  i=FindFirst("*.jpg", faAnyFile, sr);
 	  while (i == 0){

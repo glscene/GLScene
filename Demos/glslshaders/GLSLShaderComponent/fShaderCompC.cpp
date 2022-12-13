@@ -36,20 +36,16 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  SetGLSceneMediaDir();
-  //First load scripts from shader directory in project dir
-  GLSLShader->LoadShaderPrograms("Shaders\\Shader.Vert","Shaders\\Shader.Frag");
+  TFileName Path = GetCurrentAssetPath();
+
+  //First load scripts from shader asset directory
+  SetCurrentDir(Path  + "\\shader");
+  GLSLShader->LoadShaderPrograms("shader.vert","shader.frag");
   GLSLShader->Enabled = true;
 
-
-  //Second load models from media directory
-
-  Fighter->LoadFromFile("waste.md2"); //Fighter
-  Fighter->SwitchToAnimation(0, true);
-  Fighter->AnimationMode = aamLoop;
-  Fighter->Scale->Scale(3);
-
-  Teapot->LoadFromFile("Teapot.3ds"); //Teapot (no texture coordinates)
+  //Second load static models
+  SetCurrentDir(Path  + "\\model");
+  Teapot->LoadFromFile("Teapot.3ds"); //Teapot has no texture coordinates
   Teapot->Scale->Scale(0.8);
 
   Sphere_big->LoadFromFile("Sphere_big.3DS"); //Sphere_big
@@ -58,11 +54,18 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   Sphere_little->LoadFromFile("Sphere_little.3ds"); //Sphere_little
   Sphere_little->Scale->Scale(4);
 
+  //Third loading dynamic models with skeletal animation
+  SetCurrentDir(Path  + "\\modelext");
+  Fighter->LoadFromFile("waste.md2"); //Fighter
+  Fighter->SwitchToAnimation(0, true);
+  Fighter->AnimationMode = aamLoop;
+  Fighter->Scale->Scale(3);
+
   // Then load textures.
+  SetCurrentDir(Path  + "\\texture");
   MaterialLibrary->LibMaterialByName("Earth")->Material->Texture->Image->LoadFromFile("Earth.jpg");
+ }
 
-
-}
 //---------------------------------------------------------------------------
 void __fastcall TForm1::ShadeEnabledCheckBoxClick(TObject *Sender)
 {

@@ -2,39 +2,35 @@ object Form1: TForm1
   Left = 268
   Top = 248
   Caption = 'Pak Editor'
-  ClientHeight = 608
-  ClientWidth = 674
+  ClientHeight = 493
+  ClientWidth = 685
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Menu = MainMenu1
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
   DesignSize = (
-    674
-    608)
-  TextHeight = 16
+    685
+    493)
+  TextHeight = 13
   object Bevel1: TBevel
     Left = 0
     Top = 0
-    Width = 681
-    Height = 11
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 691
+    Height = 9
     Anchors = [akLeft, akTop, akRight]
     Shape = bsTopLine
+    ExplicitWidth = 545
   end
   object ListView: TListView
-    Left = 201
+    Left = 161
     Top = 0
-    Width = 473
-    Height = 608
+    Width = 524
+    Height = 493
     Margins.Left = 4
     Margins.Top = 4
     Margins.Right = 4
@@ -47,7 +43,7 @@ object Form1: TForm1
       end
       item
         Caption = 'Size'
-        Width = 88
+        Width = 70
       end>
     Enabled = False
     Items.ItemData = {
@@ -62,68 +58,49 @@ object Form1: TForm1
     OnClick = ListViewClick
     OnDblClick = ListViewDblClick
     OnKeyDown = ListViewKeyDown
-    ExplicitLeft = 209
-    ExplicitTop = 9
-    ExplicitWidth = 456
-    ExplicitHeight = 583
   end
   object PanelTree: TPanel
     Left = 0
     Top = 0
-    Width = 201
-    Height = 608
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 161
+    Height = 493
     Align = alLeft
     Caption = ' '
     TabOrder = 1
     object TreeView: TTreeView
       Left = 1
       Top = 1
-      Width = 199
-      Height = 367
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 159
+      Height = 299
       Align = alClient
       Images = ImageList1
-      Indent = 29
+      Indent = 23
       ShowRoot = False
       TabOrder = 0
       ToolTips = False
       OnChange = TreeViewChange
       OnCollapsing = TreeViewCollapsing
       OnKeyDown = TreeViewKeyDown
-      ExplicitWidth = 174
-      ExplicitHeight = 328
     end
     object GLSceneViewer1: TGLSceneViewer
       Left = 1
-      Top = 368
-      Width = 199
-      Height = 239
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Top = 300
+      Width = 159
+      Height = 192
       Camera = GLCamera1
       VSync = vsmSync
       Buffer.BackgroundColor = clWhite
       Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
       Buffer.AntiAliasing = aa2x
-      FieldOfView = 89.712806701660160000
+      FieldOfView = 76.969398498535160000
       PenAsTouch = False
       Align = alBottom
       TabOrder = 1
-      ExplicitWidth = 174
     end
   end
   object MainMenu1: TMainMenu
-    Left = 184
-    Top = 32
+    Left = 230
+    Top = 176
     object File1: TMenuItem
       Caption = 'File'
       object New1: TMenuItem
@@ -272,6 +249,7 @@ object Form1: TForm1
   end
   object GLSimpleNavigation1: TGLSimpleNavigation
     Form = Owner
+    GLSceneViewer = GLSceneViewer1
     FormCaption = 'GLScene Pak Editor - %FPS'
     KeyCombinations = <
       item

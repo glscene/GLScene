@@ -128,7 +128,8 @@ var
   i: Integer;
   Image32: TImage32;
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
   GLMaterialLibrary1.TexturePaths := GetCurrentDir();
 
   SetUpColorTableYellow;

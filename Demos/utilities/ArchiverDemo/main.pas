@@ -24,11 +24,9 @@ uses
   GLS.FileZLIB,
   GLS.Coordinates,
   GLS.SceneViewer,
-  GLS.Utils;
+  GLS.Utils, GLS.SimpleNavigation;
 
 type
-
-  { TForm1 }
 
   TForm1 = class(TForm)
     GLCadencer1: TGLCadencer;
@@ -42,43 +40,46 @@ type
     GLSArchiveManager1: TGLSArchiveManager;
     GLScene1: TGLScene;
     GLSceneViewer1: TGLSceneViewer;
+    GLSimpleNavigation1: TGLSimpleNavigation;
+    GLLightSource2: TGLLightSource;
     procedure FormCreate(Sender: TObject);
-    procedure GLCadencer1Progress(Sender: TObject;
-      const deltaTime, newTime: Double);
+    procedure GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
   private
   end;
 
 var
   Form1: TForm1;
 
-//--------------------------------------------
+  // --------------------------------------------
 implementation
-//--------------------------------------------
+
+// --------------------------------------------
 
 {$R *.dfm}
 
-procedure TForm1.GLCadencer1Progress(Sender: TObject;
-  const deltaTime, newTime: Double);
+procedure TForm1.GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
 begin
   GLCamera.Position.Rotate(VectorMake(0, 1, 0), deltaTime * 0.1);
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var
+    Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path + '\texture');
   GLMaterialLibrary1.TexturePaths := GetCurrentDir();
-  with GLSArchiveManager1.Archives[0] do
-  begin
-    LoadFromFile('Chair.zlib');
-    if FileName = '' then
-      ShowMessage('Archive Can not be Loaded');
-    (* Automatic loading from archive.
-      If file is not in archive, then it's loaded from harddrive. *)
-    GLFreeForm.LoadFromFile('Chair.ms3d');
-    // Direct loading from archive
-    GLFreeForm1.LoadFromStream('Chair.ms3d', GetContent('Chair.ms3d'));
-  end;
-  GLPlane1.Material.Texture.Image.LoadFromFile('GLScene.bmp');
+  GLPlane1.Material.Texture.Image.LoadFromFile('grass.png');
+
+  SetCurrentDir(Path + '\modelext');
+
+  GLSArchiveManager1.Archives[0].LoadFromFile('Chair.zlib');
+  if GLSArchiveManager1.Archives[0].FileName = '' then
+    ShowMessage('Archive Can not be Loaded');
+  (* Automatic loading from archive.
+    If file is not in archive, then it's loaded from archive directory ! *)
+  GLFreeForm.LoadFromFile('Chair.ms3d');
+  // Direct loading from archive
+  GLFreeForm1.LoadFromStream('Chair.ms3d', GLSArchiveManager1.Archives[0].GetContent('Chair.ms3d'));
 end;
 
 end.

@@ -3,62 +3,56 @@ object FormMushroom: TFormMushroom
   Top = 93
   BorderWidth = 3
   Caption = 'Mushroom'
-  ClientHeight = 369
-  ClientWidth = 584
+  ClientHeight = 381
+  ClientWidth = 615
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OnCreate = FormCreate
   OnResize = FormResize
-  PixelsPerInch = 120
   DesignSize = (
-    584
-    369)
-  TextHeight = 16
+    615
+    381)
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 584
-    Height = 369
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 615
+    Height = 381
     Camera = GLCamera1
     Buffer.FogEnvironment.FogColor.Color = {CECD4D3FCECD4D3FCECD4D3F0000803F}
     Buffer.FogEnvironment.FogStart = 30.000000000000000000
     Buffer.FogEnvironment.FogEnd = 90.000000000000000000
     Buffer.BackgroundColor = 13487565
     Buffer.FogEnable = True
-    FieldOfView = 149.673782348632800000
+    FieldOfView = 150.586914062500000000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 600
+    ExplicitHeight = 376
   end
   object Button1: TButton
-    Left = 180
-    Top = 346
-    Width = 171
-    Height = 22
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 144
+    Top = 363
+    Width = 137
+    Height = 17
     Anchors = [akLeft, akBottom]
     Caption = 'I want more mushrooms !'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -14
+    Font.Height = -11
     Font.Name = 'Arial'
     Font.Style = []
     ParentFont = False
     TabOrder = 1
     OnClick = Button1Click
+    ExplicitTop = 277
   end
   object GLScene1: TGLScene
     VisibilityCulling = vcObjectBased

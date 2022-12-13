@@ -2,39 +2,42 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Render To Bitmap'
-  ClientHeight = 406
-  ClientWidth = 489
+  ClientHeight = 521
+  ClientWidth = 829
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
+  Position = poScreenCenter
   OnCreate = FormCreate
   OnResize = FormResize
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 376
-    Height = 406
+    Width = 716
+    Height = 521
     Camera = GLCamera1
     Buffer.ContextOptions = [roDoubleBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aaNone
-    FieldOfView = 150.213058471679700000
+    FieldOfView = 158.269744873046900000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 609
+    ExplicitHeight = 440
   end
   object Panel1: TPanel
-    Left = 376
+    Left = 716
     Top = 0
     Width = 113
-    Height = 406
+    Height = 521
     Align = alRight
     TabOrder = 1
+    ExplicitLeft = 376
+    ExplicitHeight = 406
     object BUSnapShot: TButton
       Left = 8
       Top = 40

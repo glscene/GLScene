@@ -76,7 +76,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   GLConsole1->Font = Font1;
 
   //optional stuff:
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
   GLConsole1->HudSprite->Material->Texture->Image->LoadFromFile("GLScene.bmp");
   GLConsole1->AddLine("Console started");
   GLConsole1->HUDSpriteColor = clWhite;

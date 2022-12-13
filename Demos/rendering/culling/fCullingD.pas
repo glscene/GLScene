@@ -20,12 +20,13 @@ uses
   GLS.VectorFileObjects,
   GLS.SceneViewer,
   GLS.Texture,
- 
+
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.RenderContextInfo,
-  GLS.FileMD2;
+  GLS.FileMD2,
+  GLS.Utils, GLS.SimpleNavigation;
 
 type
   TFormCulling = class(TForm)
@@ -48,16 +49,16 @@ type
     Label2: TLabel;
     RBActors: TRadioButton;
     RBSpheres: TRadioButton;
-    procedure GLCadencerProgress(Sender: TObject; const deltaTime,
-      newTime: Double);
+    GLSimpleNavigation1: TGLSimpleNavigation;
+    procedure GLCadencerProgress(Sender: TObject; const deltaTime, newTime: Double);
     procedure Timer1Timer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RBNoneClick(Sender: TObject);
     procedure RBSpheresClick(Sender: TObject);
   private
-     
+
   public
-     
+
   end;
 
 var
@@ -69,67 +70,64 @@ implementation
 
 procedure TFormCulling.FormCreate(Sender: TObject);
 var
-  i, j : Integer;
-  newSphere : TGLSphere;
-  newActor : TGLActor;
-  MediaPath : String;
+  i, j: Integer;
+  newSphere: TGLSphere;
+  newActor: TGLActor;
 begin
-  MediaPath := ExtractFilePath(ParamStr(0));
-  I := Pos(UpperCase('Demos'), UpperCase(MediaPath));
-  if (I <> 0) then
-  begin
-    Delete(MediaPath, I+5, Length(MediaPath)-(I+5));
-    MediaPath := MediaPath+'Media\';
-    SetCurrentDir(MediaPath);
-  end;
-
-   // Spheres are used as standalone, high-polycount objects
-   // that are highly T&L friendly
-   for i:=-4 to 4 do for j:=-4 to 4 do begin
-      newSphere:=(DCSpheres.AddNewChild(TGLSphere) as TGLSphere);
-      newSphere.Position.SetPoint(i*5, 0, j*5);
-      newSphere.Slices:=32;
-      newSphere.Stacks:=32;
-   end;
-   // Actors are used as standalone, med-polycount objects
-   // that aren't T&L friendly (all geometry must be sent to
-   // the hardware at each frame)
-   GLMaterialLibrary.Materials[0].Material.Texture.Image.LoadFromFile('waste.jpg');
-   ACReference.LoadFromFile('waste.md2');
-   for i:=-3 to 3 do for j:=-3 to 3 do begin
-      newActor:=(DCActors.AddNewChild(TGLActor) as TGLActor);
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path + '\texture');
+  GLMaterialLibrary.Materials[0].Material.Texture.Image.LoadFromFile('waste.jpg');
+  // Spheres are used as standalone, high-polycount objects
+  // that are highly T&L friendly
+  for i := -4 to 4 do
+    for j := -4 to 4 do
+    begin
+      newSphere := (DCSpheres.AddNewChild(TGLSphere) as TGLSphere);
+      newSphere.Position.SetPoint(i * 5, 0, j * 5);
+      newSphere.Slices := 32;
+      newSphere.Stacks := 32;
+    end;
+  // Actors are used as standalone, med-polycount objects
+  // that aren't T&L friendly (all geometry must be sent to
+  // the hardware at each frame)
+  SetCurrentDir(Path + '\model');
+  ACReference.LoadFromFile('waste.md2');
+  for i := -3 to 3 do
+    for j := -3 to 3 do
+    begin
+      newActor := (DCActors.AddNewChild(TGLActor) as TGLActor);
       newActor.Assign(ACReference);
-      newActor.Position.SetPoint(i*10, 0, j*10);
-      newActor.CurrentFrame:=(i+2)+(j+2)*5;
-   end;
-   ACReference.Visible:=False;
+      newActor.Position.SetPoint(i * 10, 0, j * 10);
+      newActor.CurrentFrame := (i + 2) + (j + 2) * 5;
+    end;
+  ACReference.Visible := False;
 end;
 
 procedure TFormCulling.RBSpheresClick(Sender: TObject);
 begin
-   DCSpheres.Visible:=RBSpheres.Checked;
-   DCActors.Visible:=RBActors.Checked;
+  DCActors.Visible := RBActors.Checked;
+  DCSpheres.Visible := RBSpheres.Checked;
 end;
 
-procedure TFormCulling.GLCadencerProgress(Sender: TObject; const deltaTime,
-  newTime: Double);
+procedure TFormCulling.GLCadencerProgress(Sender: TObject; const deltaTime, newTime: Double);
 begin
-   Viewer.Invalidate;
+  Viewer.Invalidate;
 end;
 
 procedure TFormCulling.Timer1Timer(Sender: TObject);
 begin
-   Caption:=Format('Culling - %.1f FPS', [Viewer.FramesPerSecond]);
-   Viewer.ResetPerformanceMonitor;
+  Caption := Format('Culling - %.1f FPS', [Viewer.FramesPerSecond]);
+  Viewer.ResetPerformanceMonitor;
 end;
 
 procedure TFormCulling.RBNoneClick(Sender: TObject);
 begin
-   if RBObject.Checked then
-      GLScene.VisibilityCulling:=vcObjectBased
-   else if RBHierarchical.Checked then
-      GLScene.VisibilityCulling:=vcHierarchical
-   else GLScene.VisibilityCulling:=vcNone;
+  if RBObject.Checked then
+    GLScene.VisibilityCulling := vcObjectBased
+  else if RBHierarchical.Checked then
+    GLScene.VisibilityCulling := vcHierarchical
+  else
+    GLScene.VisibilityCulling := vcNone;
 end;
 
 end.

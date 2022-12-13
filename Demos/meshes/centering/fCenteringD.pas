@@ -57,11 +57,10 @@ implementation
 {$R *.DFM}
 
 procedure TFormCentering.FormCreate(Sender: TObject);
-const
-   cFileName = 'polyhedron.3ds';
-
 begin
-   SetGLSceneMediaDir();
+   const cFileName = 'polyhedron.3ds';
+   var Path: TFileName := GetCurrentAssetPath();
+   SetCurrentDir(Path  + '\model');
    // left one
    FreeForm3.AutoCentering:=[macCenterX, macCenterZ];
    FreeForm3.LoadFromFile(cFileName);

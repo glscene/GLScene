@@ -18,27 +18,29 @@ uses
   GLS.AsyncTimer,
   GLS.SceneViewer,
   GLS.Coordinates,
-  GLS.BaseClasses, GLS.SimpleNavigation;
+  GLS.BaseClasses, GLS.SimpleNavigation, GLS.Material;
 
 type
   TFormHierarchy = class(TForm)
-    Scene: TGLScene;
+    GLScene1: TGLScene;
     SceneViewer: TGLSceneViewer;
     Camera: TGLCamera;
     LightSource: TGLLightSource;
     CBPlay: TCheckBox;
     dcEarth: TGLDummyCube;
     dcMoon: TGLDummyCube;
-    Cadencer: TGLCadencer;
+    GLCadencer1: TGLCadencer;
     Sun: TGLSphere;
     Earth: TGLSphere;
     Moon: TGLSphere;
     dcSun: TGLDummyCube;
     GLSimpleNavigation1: TGLSimpleNavigation;
+    GLMaterialLibrary1: TGLMaterialLibrary;
     procedure FormResize(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-    procedure CadencerProgress(Sender: TObject;
+    procedure GLCadencer1Progress(Sender: TObject;
       const deltaTime, newTime: Double);
+    procedure FormCreate(Sender: TObject);
   private
   public
   end;
@@ -50,7 +52,15 @@ implementation
 
 {$R *.DFM}
 
-procedure TFormHierarchy.CadencerProgress(Sender: TObject;
+
+procedure TFormHierarchy.FormCreate(Sender: TObject);
+begin
+
+  //
+end;
+
+
+procedure TFormHierarchy.GLCadencer1Progress(Sender: TObject;
   const deltaTime, newTime: Double);
 begin
   if CBPlay.Checked and Visible then

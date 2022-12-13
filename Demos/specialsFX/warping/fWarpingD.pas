@@ -189,7 +189,9 @@ end;
 
 procedure TFormWarping.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
+
   warpX := -1000;
   warpY := -1000;
   warpRadius := 20;

@@ -63,7 +63,8 @@ implementation
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-   SetGLSceneMediaDir();
+   var Path: TFileName := GetCurrentAssetPath();
+   SetCurrentDir(Path  + '\texture');
    // prepare images to merge in the multitexture
    with GLMaterialLibrary1 do begin
       Image1.Picture.LoadFromFile('ashwood.jpg');

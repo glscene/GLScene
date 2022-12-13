@@ -29,7 +29,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
   // Load the bunny mesh and scale for viewing
   Bunny->LoadFromFile("Models\\bunny.obj");
   Bunny->Scale->Scale((float)(2/Bunny->BoundingSphereRadius()));

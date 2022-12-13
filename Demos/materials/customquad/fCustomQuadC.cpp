@@ -24,7 +24,7 @@ __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {
 
 // ---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender) {
-	SetGLSceneMediaDir();
+	TFileName Path = GetCurrentAssetPath();
 	// dynamically create 2 materials and load 2 textures
 	GLMaterialLibrary->AddTextureMaterial("wood", "ashwood.jpg")
 		->Material->FrontProperties->Emission->Color = clrGray50;

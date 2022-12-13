@@ -16,13 +16,17 @@
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
+#pragma link "GLS.Context"
+
 #pragma resource "*.dfm"
+
 TForm1 *Form1;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
 }
+
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormDestroy(TObject *Sender)
 {
@@ -31,9 +35,10 @@ void __fastcall TForm1::FormDestroy(TObject *Sender)
   OcclusionQuery->Free();
   bOcclusionQuery->Free();
 }
+
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
-          const double newTime)
+		  const double newTime)
 {
   // Move some of the scene objects around
   GLDummyCube1->Position->X = Sin(newTime);
@@ -41,6 +46,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
   dcTestObjects->Position->Z = 2 * Sin(newTime);
   GLDummyCube2->Position->X = - Sin(newTime);
 }
+
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLSceneViewer1BeforeRender(TObject *Sender)
 {
@@ -56,6 +62,7 @@ void __fastcall TForm1::GLSceneViewer1BeforeRender(TObject *Sender)
 	Close();
   }
 }
+
 //---------------------------------------------------------------------------
 void __fastcall TForm1::OGLBeginQueriesRender(TObject *Sender, TGLRenderContextInfo &rci)
 
@@ -74,8 +81,8 @@ void __fastcall TForm1::OGLBeginQueriesRender(TObject *Sender, TGLRenderContextI
 	bOcclusionQuery->BeginQuery();
   else
 	OcclusionQuery->BeginQuery();
-
 }
+
 //---------------------------------------------------------------------------
 void __fastcall TForm1::OGLEndQueriesRender(TObject *Sender, TGLRenderContextInfo &rci)
 
@@ -120,9 +127,8 @@ void __fastcall TForm1::OGLEndQueriesRender(TObject *Sender, TGLRenderContextInf
   default:
 	  ;
   }
-
-
 }
+
 //---------------------------------------------------------------------------
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {

@@ -59,11 +59,11 @@ TMatrix4f FEyeToLightMatrix2;
 
 // ---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {}
-
 // ---------------------------------------------------------------------------
+
 void __fastcall TForm1::Actor1EndFrameReached(TObject* Sender)
 {
-    if (Actor1->AnimationMode == aamNone) {
+	if (Actor1->AnimationMode == aamNone) {
         btnStartStop->Caption = "Start";
         Timer1->Enabled = false;
         aniPos->Enabled = true;
@@ -130,8 +130,8 @@ void __fastcall TForm1::Button4Click(TObject* Sender)
 // ---------------------------------------------------------------------------
 void __fastcall TForm1::FormCloseQuery(TObject* Sender, bool &CanClose)
 {
-    Actor1->AnimationMode = aamNone;
-    GLCadencer1->Enabled = false;
+	Actor1->AnimationMode = aamNone;
+	GLCadencer1->Enabled = false;
 }
 
 // ---------------------------------------------------------------------------
@@ -147,16 +147,28 @@ void _fastcall TForm1::LoadTexture(String AName, String ext)
 
 void __fastcall TForm1::FormCreate(TObject* Sender)
 {
-	GLSArchiveManager1->Archives->Items[0]->LoadFromFile("../../Assets/ActorMS3D.zlib");
+	TFileName Path = GetCurrentAssetPath();
+
+	// Loading an archive, to edit it you can use  ..\utilities\ArchiveEdit
+	SetCurrentDir(Path + "//modelext//");
+	GLSArchiveManager1->Archives->Items[0]->LoadFromFile("ActorMS3D.zlib");
 	Actor1->LoadFromStream("Woman4.ms3d", GLSArchiveManager1->Archives->Items[0]->GetContent("Main/Woman4.ms3d"));
 	Chair1->LoadFromStream("Chair.ms3d", GLSArchiveManager1->Archives->Items[0]->GetContent("Main/Chair.ms3d"));
 
-	Actor1->Material->Texture->Image->LoadFromFile("../../Assets/Woman4-Remap-texture.png");
-	Globus->Material->Texture->Image->LoadFromFile("../../Assets/Earth.jpg");
-	GLPlane1->Material->Texture->Image->LoadFromFile("../../Assets/floor_parquet.jpg");
-
+	// Loading textures from the archive as composite images and assigned to MatLib
 	LoadTexture("Hair", "png");
 	LoadTexture("Chair", "png");
+
+	// Loading skins
+	SetCurrentDir(Path + "//skin//");
+	Actor1->Material->LibMaterialName = MatLib->Materials->Items[4]->Name;  //"Woman4_skin";
+
+	// Loading other textures as assets directly to objects
+	SetCurrentDir(Path + "//texture//");
+	Globus->Material->Texture->Image->LoadFromFile("Earth.jpg");
+	GLPlane1->Material->Texture->Image->LoadFromFile("floor_parquet.jpg");
+
+
 	Actor1->AnimationMode = aamNone;
 	Actor1->Scale->SetVector(0.1, 0.1, 0.1, 0);
 	Chair1->Scale->SetVector(0.35, 0.35, 0.35, 0);
@@ -177,48 +189,48 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
 	Actor1->Animations->Items[2]->StartFrame = 1168;
 	Actor1->Animations->Items[2]->EndFrame = 1203;
 	Actor1->Animations->Items[2]->Name = "Cartwheel";
-    Actor1->Animations->Add();
+	Actor1->Animations->Add();
 
-    Actor1->Animations->Items[3]->Reference = aarSkeleton;
-    Actor1->Animations->Items[3]->StartFrame = 1205;
-    Actor1->Animations->Items[3]->EndFrame = 1306;
-    Actor1->Animations->Items[3]->Name = "Hand Flip";
-    Actor1->Animations->Add();
+	Actor1->Animations->Items[3]->Reference = aarSkeleton;
+	Actor1->Animations->Items[3]->StartFrame = 1205;
+	Actor1->Animations->Items[3]->EndFrame = 1306;
+	Actor1->Animations->Items[3]->Name = "Hand Flip";
+	Actor1->Animations->Add();
 
 	Actor1->Animations->Items[4]->Reference = aarSkeleton;
-    Actor1->Animations->Items[4]->StartFrame = 1308;
-    Actor1->Animations->Items[4]->EndFrame = 1395;
-    Actor1->Animations->Items[4]->Name = "Wave";
-    Actor1->Animations->Add();
+	Actor1->Animations->Items[4]->StartFrame = 1308;
+	Actor1->Animations->Items[4]->EndFrame = 1395;
+	Actor1->Animations->Items[4]->Name = "Wave";
+	Actor1->Animations->Add();
 
-    Actor1->Animations->Items[5]->Reference = aarSkeleton;
-    Actor1->Animations->Items[5]->StartFrame = 1397;
-    Actor1->Animations->Items[5]->EndFrame = 2014;
+	Actor1->Animations->Items[5]->Reference = aarSkeleton;
+	Actor1->Animations->Items[5]->StartFrame = 1397;
+	Actor1->Animations->Items[5]->EndFrame = 2014;
 	Actor1->Animations->Items[5]->Name = "Sun Salutation";
-    Actor1->Animations->Add();
+	Actor1->Animations->Add();
 
-    Actor1->Animations->Items[6]->Reference = aarSkeleton;
+	Actor1->Animations->Items[6]->Reference = aarSkeleton;
 	Actor1->Animations->Items[6]->StartFrame = 2016;
-    Actor1->Animations->Items[6]->EndFrame = 2133;
-    Actor1->Animations->Items[6]->Name = "Sit";
-    Actor1->Animations->Add();
+	Actor1->Animations->Items[6]->EndFrame = 2133;
+	Actor1->Animations->Items[6]->Name = "Sit";
+	Actor1->Animations->Add();
 
-    FBiasMatrix = CreateScaleAndTranslationMatrix(
-        VectorMake(0.5, 0.5, 0.5), VectorMake(0.5, 0.5, 0.5));
+	FBiasMatrix = CreateScaleAndTranslationMatrix(
+		VectorMake(0.5, 0.5, 0.5), VectorMake(0.5, 0.5, 0.5));
 }
 
 // ---------------------------------------------------------------------------
 void __fastcall TForm1::FormShow(TObject* Sender)
 {
-    aniBox->ItemIndex = 0;
-    aniBoxSelect(Sender);
+	aniBox->ItemIndex = 0;
+	aniBoxSelect(Sender);
 }
 
 // ---------------------------------------------------------------------------
 void __fastcall TForm1::GLCadencer1Progress(
-    TObject* Sender, const double deltaTime, const double newTime)
+	TObject* Sender, const double deltaTime, const double newTime)
 {
-    TAffineVector af, af2, pv, pv2;
+	TAffineVector af, af2, pv, pv2;
 	GLCamera2->Position->Rotate(VectorMake(0, 1, 0), deltaTime * 0.1);
 	af = Actor1->Skeleton->CurrentFrame->Position->Items[0];
 	ScaleVector(af, Actor1->Scale->AsAffineVector);

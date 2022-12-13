@@ -38,7 +38,8 @@ float random()
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
 {
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
+  SetCurrentDir(Path  + "\\model");
   FreeForm1->LoadFromFile("BoxedIn.3ds");
 
   FreeForm1->BuildOctree(3);

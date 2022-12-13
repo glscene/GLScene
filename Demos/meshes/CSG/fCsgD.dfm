@@ -30,8 +30,6 @@ object FormCsg: TFormCsg
     OnMouseMove = GLSceneViewer1MouseMove
     OnMouseUp = GLSceneViewer1MouseUp
     TabOrder = 0
-    ExplicitWidth = 556
-    ExplicitHeight = 395
   end
   object PanelLeft: TPanel
     Left = 544
@@ -40,7 +38,6 @@ object FormCsg: TFormCsg
     Height = 542
     Align = alRight
     TabOrder = 1
-    ExplicitLeft = 536
     object chbSolidResult: TCheckBox
       Left = 48
       Top = 324

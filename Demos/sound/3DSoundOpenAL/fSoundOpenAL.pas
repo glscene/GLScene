@@ -78,7 +78,7 @@ uses
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir;
+  SetCurrentDirToAssets;
   // Load our sound sample
   GLSoundLibrary.Samples.AddFile('drumloop.wav','drumloop.wav');
   GLSoundLibrary.Samples.AddFile('chimes.wav','chimes.wav');

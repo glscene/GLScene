@@ -3,43 +3,34 @@ object FormNewtonWalkCarry: TFormNewtonWalkCarry
   Top = 0
   BorderStyle = bsNone
   Caption = 'FormNewtonWalkCarry'
-  ClientHeight = 404
-  ClientWidth = 580
+  ClientHeight = 323
+  ClientWidth = 464
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   WindowState = wsMaximized
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 311
-    Height = 251
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 249
+    Height = 201
     Camera = Player_Cam
     VSync = vsmSync
-    FieldOfView = 102.903434753418000000
+    FieldOfView = 90.285766601562500000
     PenAsTouch = False
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
   end
   object Memo1: TMemo
-    Left = 10
-    Top = 259
-    Width = 551
-    Height = 122
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 8
+    Top = 207
+    Width = 441
+    Height = 98
     Lines.Strings = (
       
         '[Model]=PX_0PY_-5PZ_0RX_0RY_0RZ_0DX_0DY_1DZ_0[Name]=ngdmap1.3ds[' +
@@ -79,25 +70,25 @@ object FormNewtonWalkCarry: TFormNewtonWalkCarry
       Radius = 0.500000000000000000
       BehavioursData = {
         0458434F4C02010201060C54474C4E47445374617469630200060A4E47442053
-        746174696302000201060D474C4E47444D616E61676572310800090500000000
-        000AD7A3F83F1200000000}
+        74617469630200020112000000000800090500000000000AD7A3F83F12000000
+        00}
     end
     object Player_Cube: TGLDummyCube
       CubeSize = 1.000000000000000000
       BehavioursData = {
         0458434F4C02010201060D54474C4E474444796E616D69630200060B4E474420
-        44796E616D696302000201060D474C4E47444D616E6167657231080009050000
-        0000000AD7A3F83F1200000000020109050000000000CDCCCCFB3F0500000000
-        00000080FF3F0905000000000000000000000200080200080200090000000000
-        000000000000000000803F020008}
+        44796E616D69630200020112000000000800090500000000000AD7A3F83F1200
+        000000020109050000000000CDCCCCFB3F050000000000000080FF3F09050000
+        0000000000000000020008020008020009000000000000000000000000000080
+        3F020008}
       object GLCube3: TGLCube
         Direction.Coordinates = {000000000000803F0000000000000000}
         Position.Coordinates = {00000000CDCCCCBF000000000000803F}
         Up.Coordinates = {0000000000000000000080BF00000000}
         BehavioursData = {
           0458434F4C02010201060C54474C4E47445374617469630200060A4E47442053
-          746174696302000201060D474C4E47444D616E61676572310800090500000000
-          000AD7A3F83F1200000000}
+          74617469630200020112000000000800090500000000000AD7A3F83F12000000
+          00}
         CubeSize = {0000003F0000003F0000803F}
       end
       object Cam_Cube: TGLDummyCube
@@ -124,8 +115,8 @@ object FormNewtonWalkCarry: TFormNewtonWalkCarry
         Up.Coordinates = {0000000000000000000080BF00000000}
         BehavioursData = {
           0458434F4C02010201060C54474C4E47445374617469630200060A4E47442053
-          746174696302000201060D474C4E47444D616E61676572310800090500000000
-          000AD7A3F83F1200000000}
+          74617469630200020112000000000800090500000000000AD7A3F83F12000000
+          00}
       end
       object GLSphere1: TGLSphere
         Tag = 1
@@ -134,8 +125,8 @@ object FormNewtonWalkCarry: TFormNewtonWalkCarry
         Stacks = 32
         BehavioursData = {
           0458434F4C02010201060C54474C4E47445374617469630200060A4E47442053
-          746174696302000201060D474C4E47444D616E61676572310800090500000000
-          000AD7A3F83F1200000000}
+          74617469630200020112000000000800090500000000000AD7A3F83F12000000
+          00}
       end
     end
     object GLHUDSprite1: TGLHUDSprite

@@ -13,39 +13,38 @@ object FormClothActor: TFormClothActor
   Position = poScreenCenter
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  DesignSize = (
-    626
-    432)
   TextHeight = 13
-  object LabelFPS: TLabel
-    Left = 120
-    Top = 2
-    Width = 20
-    Height = 13
-    Caption = 'FPS'
-  end
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 24
+    Top = 0
     Width = 626
-    Height = 423
+    Height = 432
     Camera = GLCamera1
     Buffer.AmbientColor.Color = {CDCCCC3ECDCCCC3ECDCCCC3E0000803F}
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow, roTwoSideLighting]
-    FieldOfView = 153.398193359375000000
+    FieldOfView = 153.933288574218800000
     PenAsTouch = False
-    Anchors = [akLeft, akTop, akRight, akBottom]
+    Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
   end
   object cbShowOctree: TCheckBox
-    Left = 8
-    Top = 1
+    Left = 280
+    Top = 17
     Width = 97
     Height = 17
     Caption = 'Show Octree'
     TabOrder = 1
+    Visible = False
+  end
+  object StaticTextFPS: TStaticText
+    Left = 16
+    Top = 17
+    Width = 24
+    Height = 17
+    Caption = 'FPS'
+    TabOrder = 2
   end
   object GLScene1: TGLScene
     Left = 32

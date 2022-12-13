@@ -36,9 +36,9 @@ TGLLibMaterial* __fastcall TForm1::LoadTexture(String Matname, String Filename)
 }
 
 void __fastcall TForm1::FormCreate(TObject *Sender) {
-	SetGLSceneMediaDir();
-	TFileName PathCM = GetCurrentDir() + "\\Cubemaps";
-	SetCurrentDir(PathCM);
+	TFileName Path = GetCurrentAssetPath();
+	SetCurrentDir(Path  + "\\cubemap");
+	GLMaterialLibrary1->TexturePaths = GetCurrentDir();
 
 	// Skybox textures
 	LoadTexture("Left", "icecraterlf.jpg");
@@ -59,13 +59,11 @@ void __fastcall TForm1::FormCreate(TObject *Sender) {
 	LoadTexture("Back", "icecraterbk.jpg");
 	GLMaterialLibrary1->Materials->Items[5]->Material->Texture->TextureMode =
 		tmDecal;
-	SetGLSceneMediaDir();  // back to madia dir with textures
-	// Add transparency to clouds
 
-	LoadTexture("Clouds", "Clouds.jpg")->Material->BlendingMode =
-		bmTransparency;
-	LoadTexture("Clouds", "Clouds.jpg")
-		->Material->FrontProperties->Diffuse->Alpha = 0.2;
+	// Add transparency to clouds
+	SetCurrentDir(Path  + "\\texture");
+	LoadTexture("Clouds", "Clouds.jpg")->Material->BlendingMode = bmTransparency;
+   	LoadTexture("Clouds", "Clouds.jpg")->Material->FrontProperties->Diffuse->Alpha = 0.2;
 
 	// scale the clouds texture
 	LoadTexture("Clouds", "Clouds.jpg")->TextureScale->X = 8;
@@ -83,7 +81,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender) {
 		tmModulate;
 
 	// Moon
-	LoadTexture("Moon", "unwrapped moon.jpg")->Material->Texture->TextureMode =
+	LoadTexture("Moon", "moonmap.jpg")->Material->Texture->TextureMode =
 		tmModulate;
 
 	// -----------------------------------------

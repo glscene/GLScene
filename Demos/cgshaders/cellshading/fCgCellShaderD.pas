@@ -43,10 +43,9 @@ type
     GLLightSource1: TGLLightSource;
     GLActor1: TGLActor;
     AsyncTimer1: TGLAsyncTimer;
-    procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
+    procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
       X, Y: Integer);
+    procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure CgCellShaderApplyVP(CgProgram: TCgProgram; Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure CgCellShaderInitialize(CgShader: TCustomCgShader);
@@ -68,20 +67,22 @@ procedure TFormCellShading.FormCreate(Sender: TObject);
 var
   r: Single;
 begin
-  SetGLSceneMediaDir();
-  // Load the vertex and fragment Cg programs from Shaders dir
-  CgCellShader.VertexProgram.LoadFromFile('Shaders\cellshading_vp.cg');
-  CgCellShader.FragmentProgram.LoadFromFile('Shaders\cellshading_fp.cg');
+  var Path: TFileName := GetCurrentAssetPath();
 
-  // Load and scale the actor
+  // Load the vertex and fragment Cg programs from Shaders dir
+  SetCurrentDir(Path + '\shader');
+  CgCellShader.VertexProgram.LoadFromFile('cellshading_vp.cg');
+  CgCellShader.FragmentProgram.LoadFromFile('cellshading_fp.cg');
+
+  // Load and scale the aminated actor
+  SetCurrentDir(Path + '\modelext');
   GLActor1.LoadFromFile('waste.md2');
+  // Load the texture
+  GLMaterialLibrary1.Materials[0].Material.Texture.Image.LoadFromFile('wastecell.jpg');
 
   r := GLActor1.BoundingSphereRadius;
   GLActor1.Scale.SetVector(2.5 / r, 2.5 / r, 2.5 / r);
   GLActor1.AnimationMode := aamLoop;
-  // Load the texture
-  GLMaterialLibrary1.Materials[0].Material.Texture.Image.LoadFromFile
-    ('wastecell.jpg');
 end;
 
 procedure TFormCellShading.CgCellShaderApplyVP(CgProgram: TCgProgram; Sender: TObject);
@@ -90,8 +91,8 @@ begin
   with CgProgram do
   begin
     ParamByName('LightDir').SetAsVector(GLLightSource1.AbsoluteDirection);
-    ParamByName('ModelViewProj').SetAsStateMatrix
-      (CG_GL_MODELVIEW_PROJECTION_MATRIX, CG_GL_MATRIX_IDENTITY);
+    ParamByName('ModelViewProj').SetAsStateMatrix(CG_GL_MODELVIEW_PROJECTION_MATRIX,
+      CG_GL_MATRIX_IDENTITY);
     ParamByName('ModelViewIT').SetAsStateMatrix(CG_GL_MODELVIEW_MATRIX,
       CG_GL_MATRIX_INVERSE_TRANSPOSE);
   end;
@@ -135,9 +136,9 @@ end;
 
 procedure TFormCellShading.AsyncTimer1Timer(Sender: TObject);
 begin
-  FormCellShading.Caption := Format('Cg Cell Shading - %.2f FPS',
-    [GLSceneViewer1.FramesPerSecond]);
+  FormCellShading.Caption := Format('Cg Cell Shading - %.2f FPS', [GLSceneViewer1.FramesPerSecond]);
   GLSceneViewer1.ResetPerformanceMonitor;
+
 end;
 
 end.

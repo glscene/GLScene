@@ -24,10 +24,10 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-const String
-   cFileName = "polyhedron.3ds";
+   const String cFileName = "polyhedron.3ds";
+   TFileName Path = GetCurrentAssetPath();
+   SetCurrentDir(Path  + "\\model");
 
-   SetGLSceneMediaDir();
    // left one
    FreeForm3->AutoCentering = FreeForm3->AutoCentering << macCenterX, macCenterZ;
    FreeForm3->LoadFromFile(cFileName);

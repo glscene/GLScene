@@ -50,10 +50,11 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 void TForm1::Load()
 {
-  SetGLSceneMediaDir();
+  TFileName Path = GetCurrentAssetPath();
+  SetCurrentDir(Path + "\\texture");
+
   //Load Materials
   GLMatLib->AddTextureMaterial("Terrain", "snow512.jpg");
-  GLMatLib->AddTextureMaterial("Actor", "waste.jpg");
 
   //Load Terrain
   GLBitmapHDS1->MaxPoolSize = 8 * 1024 * 1024;
@@ -65,7 +66,8 @@ void TForm1::Load()
 
   Ground->Material->LibMaterialName = "Terrain";
 
-  // Load mushroom mesh
+  // Load static mushroom mesh
+  SetCurrentDir(Path + "\\model");
   //Always use AutoScaling property or you may get some problems
   moMushroom->AutoScaling->SetPoint(0.1, 0.1, 0.1);
   moMushroom->LoadFromFile("Mushroom.3ds");
@@ -74,7 +76,10 @@ void TForm1::Load()
 
   //Load player
   Player->Position->SetPoint(0.0, 3.0, 0.0);
-  //Actor
+
+  // Load dynamic Actor modelext with animation and texture
+  SetCurrentDir(Path + "\\modelext");
+  GLMatLib->AddTextureMaterial("Actor", "waste.jpg");
   GLActor1->LoadFromFile("Waste.md2");
   GLActor1->Direction->SetVector(0.0, 1.0, 0.0);
   GLActor1->Up->SetVector(1.0, 0.0, 0.0);

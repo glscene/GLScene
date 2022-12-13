@@ -61,7 +61,9 @@ end;
 
 procedure TDataModule1.GLSDLViewer1EventPollDone(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\cubemap');
+  
   if not firstPassDone then
   begin
     // Loads a texture map for the teapot

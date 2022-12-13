@@ -35,7 +35,7 @@ void __fastcall TDataModule2::DataModuleCreate(TObject* Sender)
 //---------------------------------------------------------------------------
 void __fastcall TDataModule2::GLSDLViewer1EventPollDone(TObject* Sender)
 {
-	SetGLSceneMediaDir();
+	TFileName Path = GetCurrentAssetPath();
 	TFileName PathCM = GetCurrentDir() + "\\Cubemaps";
     SetCurrentDir(PathCM);
 

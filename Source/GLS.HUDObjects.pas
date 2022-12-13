@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit GLS.HUDObjects;
 
 (* GLScene objects that get rendered in 2D coordinates *)
@@ -30,7 +29,8 @@ uses
 
 type
 
-  (*  A rectangular area, NOT perspective projected.
+  (*
+    A rectangular area, NOT perspective projected.
     (x, y) coordinates map directly to the viewport (in pixels) and refer
     the center of the area.
     The coordinate system is that of an equivalent TCanvas, ie. top-left
@@ -46,7 +46,8 @@ type
     AlphaChannel field. This provides you with hardware accelerated,
     alpha-blended blitting.
     Note : since TGLHUDSprite works in absolute coordinates, TGLProxyObject
-    can't be used to duplicate an hud sprite. *)
+    can't be used to duplicate an hud sprite.
+  *)
   TGLHUDSprite = class(TGLSprite)
   private
     FXTiles, FYTiles: Integer;
@@ -67,10 +68,12 @@ type
     property Height stored StoreHeight;
   end;
 
-  (* A 2D text displayed and positionned in 2D coordinates.
+  (*
+    A 2D text displayed and positionned in 2D coordinates.
     The HUDText uses a character font defined and stored by a TGLBitmapFont
     component. The text can be scaled and rotated (2D), the layout and
-    alignment can also be controled. *)
+    alignment can also be controled.
+  *)
   TGLHUDText = class(TGLImmaterialSceneObject)
   private
     FBitmapFont: TGLCustomBitmapFont;
@@ -96,14 +99,18 @@ type
     procedure DoRender(var rci: TGLRenderContextInfo;
       renderSelf, renderChildren: Boolean); override;
   published
-    (* Refers the bitmap font to use.
+    (*
+      Refers the bitmap font to use.
       The referred bitmap font component stores and allows access to
-      individual character bitmaps. *)
+      individual character bitmaps.
+    *)
     property BitmapFont: TGLCustomBitmapFont read FBitmapFont
       write SetBitmapFont;
-    (* Text to render.
+    (*
+      Text to render.
       Be aware that only the characters available in the bitmap font will
-      be rendered. CR LF sequences are allowed. *)
+      be rendered. CR LF sequences are allowed.
+    *)
     property Text: UnicodeString read FText write SetText;
     // Rotation angle in degrees (2d).
     property Rotation: Single read FRotation write SetRotation;
@@ -126,11 +133,13 @@ type
       renderSelf, renderChildren: Boolean); override;
   end;
 
-  (* Position (X and Y) is expected in a [0..1] range (from Screen size)
+  (*
+    Position (X and Y) is expected in a [0..1] range (from Screen size)
     This component converts this position to the actual screen position and
     renders the text there. This way a HUD text always appears to be in the
     the same place, regardless of the currect screen resolution.
-    Note: this still does not solve the font scaling problem. *)
+    Note: this still does not solve the font scaling problem.
+  *)
   TGLResolutionIndependantHUDText = class(TGLHUDText)
   public
     procedure DoRender(var rci: TGLRenderContextInfo;
@@ -150,7 +159,6 @@ uses
 // ------------------
 // ------------------ TGLHUDSprite ------------------
 // ------------------
-
 
 constructor TGLHUDSprite.Create(AOwner: TComponent);
 begin
@@ -433,7 +441,6 @@ end;
 initialization
 // ------------------------------------------------------------------
 
-// class registrations
 RegisterClasses([TGLHUDText, TGLHUDSprite, TGLResolutionIndependantHUDText,
   TGLAbsoluteHUDText]);
 

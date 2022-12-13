@@ -28,9 +28,40 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
 }
+
+//---------------------------------------------------------------------------
+void __fastcall TForm1::FormCreate(TObject *Sender)
+{
+  int I;
+
+  Randomize;
+  sdir = -10;
+  GLCamera1->CameraStyle = csCustom;
+
+  TFileName Path = GetCurrentAssetPath();
+  SetCurrentDir(Path  + "\\texture");
+
+  GLSLProjectedTextures1->Material->Texture->Image->LoadFromFile("flare1.bmp");
+  GLSLProjectedTextures1->Material->Texture->Disabled = false;
+  GLSLProjectedTextures1->Material->Texture->TextureWrap = twNone;
+  GLSLProjectedTextures1->Material->Texture->MinFilter = miLinear;
+  GLSLProjectedTextures1->Material->Texture->MagFilter = maLinear;
+  GLSLProjectedTextures1->UseLightmaps = true;
+  GLCube1->Material->Texture->Image->LoadFromFile("ashwood.jpg");
+  GLCube1->Material->Texture->Disabled = false;
+
+
+  GLFreeForm1->LoadFromFile("groundtest.lmts");  // persistent image
+  GLFreeForm1->ObjectStyle = GLFreeForm1->ObjectStyle << osDirectDraw;
+
+  for (I = 0; I < GLMaterialLibrary1->Materials->Count - 1; I++)
+	GLMaterialLibrary1->Materials->Items[I]->Material->MaterialOptions =
+	GLMaterialLibrary1->Materials->Items[I]->Material->MaterialOptions << moNoLighting;
+}
+
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
-          const double newTime)
+		  const double newTime)
 {
   int I;
   for (I = 1; I < GLSLProjectedTextures1->Emitters->Count - 1; I++)
@@ -87,32 +118,5 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
   Caption  = "GLSL Projected Texture " +GLSceneViewer1->FramesPerSecondText();
 }
-//---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
-{
-  int I;
 
-  Randomize;
-  sdir = -10;
-  GLCamera1->CameraStyle = csCustom;
-
-  SetGLSceneMediaDir();
-
-  GLSLProjectedTextures1->Material->Texture->Image->LoadFromFile("flare1.bmp");
-  GLSLProjectedTextures1->Material->Texture->Disabled = false;
-  GLSLProjectedTextures1->Material->Texture->TextureWrap = twNone;
-  GLSLProjectedTextures1->Material->Texture->MinFilter = miLinear;
-  GLSLProjectedTextures1->Material->Texture->MagFilter = maLinear;
-  GLSLProjectedTextures1->UseLightmaps = true;
-  GLCube1->Material->Texture->Image->LoadFromFile("ashwood.jpg");
-  GLCube1->Material->Texture->Disabled = false;
-
-
-  GLFreeForm1->LoadFromFile("groundtest.lmts");
-  GLFreeForm1->ObjectStyle = GLFreeForm1->ObjectStyle << osDirectDraw;
-
-  for (I = 0; I < GLMaterialLibrary1->Materials->Count - 1; I++)
-	GLMaterialLibrary1->Materials->Items[I]->Material->MaterialOptions =
-	GLMaterialLibrary1->Materials->Items[I]->Material->MaterialOptions << moNoLighting;
-}
 //---------------------------------------------------------------------------

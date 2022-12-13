@@ -136,7 +136,7 @@ object Form1: TForm1
       Left = 64
       Top = 10
       Width = 109
-      Height = 25
+      Height = 21
       Hint = 'Change State'
       Style = csDropDownList
       ParentShowHint = False
@@ -187,9 +187,10 @@ object Form1: TForm1
       object Disk1: TGLDisk
         Material.Texture.MinFilter = miLinear
         Position.Coordinates = {0000000000000000000080BF0000803F}
+        InnerRadius = 2.000000000000000000
         Loops = 1
-        OuterRadius = 3.000000000000000000
-        Slices = 8
+        OuterRadius = 5.000000000000000000
+        Slices = 32
         SweepAngle = 360.000000000000000000
       end
     end

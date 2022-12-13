@@ -70,20 +70,22 @@ void __fastcall TForm1::AddMushrooms()
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject* Sender)
 {
-    SetGLSceneMediaDir();
-    // Load mushroom mesh
-    FreeForm1->LoadFromFile("mushroom.3ds");
+	TFileName Path = GetCurrentAssetPath();
 
-    // Duplicate our reference mushroom (but not its mesh data !)
-    AddMushrooms();
+	// Load static mushroom mesh
+	SetCurrentDir(Path  + "\\model");
+	FreeForm1->LoadFromFile("mushroom.3ds");
 
-	// Load Actor into GLScene
+	// Duplicate our reference mushroom (but not its mesh data !)
+	AddMushrooms();
+
+	// Load Actors with textures and animations
+	SetCurrentDir(Path  + "\\modelext");
 	Actor1->LoadFromFile("waste.md2");
-	Actor1->Material->Texture->Image->LoadFromFile("waste.jpg");
 	Actor1->Animations->LoadFromFile("Quake2Animations.aaf");
 	Actor1->Scale->SetVector(0.04, 0.04, 0.04, 0);
-	// Load weapon model and texture
 	Actor2->LoadFromFile("WeaponWaste.md2");
+	Actor1->Material->Texture->Image->LoadFromFile("waste.jpg");
 	Actor2->Material->Texture->Image->LoadFromFile("WeaponWaste.jpg");
 	Actor2->Animations->Assign(Actor1->Animations);
 
@@ -93,14 +95,15 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
 	Actor1->FrameInterpolation = afpLinear;
 	Actor2->Synchronize(Actor1);
 
-	// Load Texture for ground disk
-	Disk1->Material->Texture->Image->LoadFromFile("clover.jpg");
-
 	// F7 Third person
 	GLSceneViewer1->Camera = GLCamera1;
 	Actor1->Visible = true;
 	Label4->Font->Style = Label4->Font->Style >> fsBold;
 	Label3->Font->Style = Label3->Font->Style << fsBold;
+
+	// Load textures
+	SetCurrentDir(Path  + "\\texture");
+	Disk1->Material->Texture->Image->LoadFromFile("clover.jpg");
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::CBMouseLookClick(TObject* Sender)
@@ -193,16 +196,15 @@ void __fastcall TForm1::GLCadencer1Progress(
     HandleKeys(deltaTime);
     GLUserInterface1->MouseLook();
 
-    GLSceneViewer1->Invalidate();
+	GLSceneViewer1->Invalidate();
     GLUserInterface1->MouseUpdate();
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::Timer1Timer(TObject* Sender)
 {
-    Caption =
-        "Actor with Two Cameras " +
-        Format("%.2f FPS", ARRAYOFCONST((GLSceneViewer1->FramesPerSecond())));
-    GLSceneViewer1->ResetPerformanceMonitor();
+	Caption = "Actor with Two Cameras " +
+		Format("%.2f FPS", ARRAYOFCONST((GLSceneViewer1->FramesPerSecond())));
+	GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------
 

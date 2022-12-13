@@ -63,7 +63,7 @@
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <IncludePath>D:\GLScene\Samples\CPP\Demos\behaviours\DCEDemo\;$(IncludePath)</IncludePath>
         <ILINK_LibraryPath>D:\GLScene\Samples\CPP\Demos\behaviours\DCEDemo\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
-        <AllPackageLibs>rtl.lib;vcl.lib;fmx.lib;xmlrtl.lib;vclimg.lib;GLScene_RT.lib;GLScene_DT.lib;vclactnband.lib;vclx.lib;VclSmp.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;fmx.lib;xmlrtl.lib;vclimg.lib;GLScene_RT.lib;GLScene_DT.lib;vclactnband.lib;vclx.lib;VclSmp.lib;GLScene_Cg_RT.lib</AllPackageLibs>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <Multithreaded>true</Multithreaded>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
@@ -127,7 +127,7 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <FinalOutputDir>.</FinalOutputDir>
-        <LinkPackageImports>rtl.bpi;vcl.bpi;fmx.bpi;xmlrtl.bpi;vclimg.bpi;GLScene_RT.bpi;vclactnband.bpi;vclx.bpi;VclSmp.bpi</LinkPackageImports>
+        <LinkPackageImports>rtl.bpi;vcl.bpi;fmx.bpi;xmlrtl.bpi;vclimg.bpi;GLScene_RT.bpi;vclactnband.bpi;vclx.bpi;VclSmp.bpi;GLScene_Cg_RT.bpi</LinkPackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <Defines>_DEBUG;$(Defines)</Defines>

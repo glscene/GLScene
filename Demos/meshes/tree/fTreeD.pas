@@ -183,7 +183,9 @@ end;
 
 procedure TFormTree.FormCreate(Sender: TObject);
 begin
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
+  
   // Set up default textures
   with GLMaterialLibrary1.AddTextureMaterial('LeafFront', 'maple_multi.tga') do
   begin
@@ -205,7 +207,6 @@ begin
 end;
 
 // Camera controls
-
 procedure TFormTree.GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
@@ -225,7 +226,6 @@ begin
 end;
 
 // Tree controls
-
 procedure TFormTree.TrackBar1Change(Sender: TObject);
 begin
   GLTree1.Depth := Integer(TrackBar1.Position);

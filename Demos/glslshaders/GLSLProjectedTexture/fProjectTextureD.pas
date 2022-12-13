@@ -80,7 +80,8 @@ begin
   sdir := -10;
   GLCamera1.CameraStyle := cscustom;
 
-  SetGLSceneMediaDir();
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\texture');
 
   GLSLProjectedTextures1.Material.Texture.Image.LoadFromFile('flare1.bmp');
   GLSLProjectedTextures1.Material.Texture.Disabled := False;
@@ -91,8 +92,7 @@ begin
   GLCube1.Material.Texture.Image.LoadFromFile('ashwood.jpg');
   GLCube1.Material.Texture.Disabled := False;
 
-
-  GLFreeForm1.LoadFromFile('groundtest.lmts');
+  GLFreeForm1.LoadFromFile('groundtest.lmts'); // persistent image
   GLFreeForm1.ObjectStyle := [osDirectDraw];
 
   for I := 0 to GLMaterialLibrary1.Materials.Count - 1 do

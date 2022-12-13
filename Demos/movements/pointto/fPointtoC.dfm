@@ -3,31 +3,29 @@ object Form1: TForm1
   Top = 110
   BorderWidth = 3
   Caption = 'Point To'
-  ClientHeight = 333
-  ClientWidth = 554
+  ClientHeight = 385
+  ClientWidth = 551
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  PixelsPerInch = 120
-  TextHeight = 16
+  Position = poScreenCenter
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 554
-    Height = 333
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 551
+    Height = 385
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 146.569946289062500000
+    FieldOfView = 150.879455566406300000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 442
+    ExplicitHeight = 267
   end
   object GLScene1: TGLScene
     Left = 16

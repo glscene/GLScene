@@ -206,7 +206,8 @@ procedure TViewerForm.ACOpenExecute(Sender: TObject);
 var
   i: Integer;
 begin
-  SetGLSceneMediaDir;
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\landscape');
   OpenDialog.InitialDir := GetCurrentDir;
   if OpenDialog.Execute then
   begin

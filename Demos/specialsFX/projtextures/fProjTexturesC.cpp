@@ -36,14 +36,9 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender,
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  String MediaPath = ExtractFilePath(ParamStr(0));
-  String SubStr = "Demos";
-  int I = MediaPath.Pos(SubStr);
-  if (I != 0) {
-	MediaPath.Delete(I+5,MediaPath.Length()-(I+5));
-	MediaPath += "Media\\";
-	SetCurrentDir(MediaPath);
-  }
+  TFileName Path = GetCurrentAssetPath();
+  SetCurrentDir(Path  + "\\texture");
+  matLib->TexturePaths = GetCurrentDir();
   matLib->Materials->Items[0]->Material->Texture->Image->LoadFromFile("projector.tga");
   matLib->Materials->Items[1]->Material->Texture->Image->LoadFromFile("flare1.bmp");
 
@@ -54,9 +49,11 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   emitter2->Material->LibMaterialName = "spot2";
   emitter2->FOVy = 40;
 
-  GLPlane1->Material->Texture->Image->LoadFromFile("cubemaps\\cm_front.jpg");
-  GLPlane2->Material->Texture->Image->LoadFromFile("cubemaps\\cm_left.jpg");
-  GLPlane3->Material->Texture->Image->LoadFromFile("cubemaps\\cm_bottom.jpg");
+  // cubemap
+  SetCurrentDir(Path  + "\\cubemap");
+  GLPlane1->Material->Texture->Image->LoadFromFile("cm_front.jpg");
+  GLPlane2->Material->Texture->Image->LoadFromFile("cm_left.jpg");
+  GLPlane3->Material->Texture->Image->LoadFromFile("cm_bottom.jpg");
 
   ProjLight->Emitters->AddEmitter(emitter1);
   ProjLight->Emitters->AddEmitter(emitter2);

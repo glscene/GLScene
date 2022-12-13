@@ -88,7 +88,8 @@ implementation
 
 procedure TFormSkeletal.FormCreate(Sender: TObject);
 begin
-   SetGLSceneMediaDir();
+   var Path: TFileName := GetCurrentAssetPath();
+   SetCurrentDir(Path  + '\model');
    // We load the SMD model here
    // Note the actor was linked to a material library, and textures are loaded
    // automatically (4 textures are used by this model)
