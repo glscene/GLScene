@@ -1,7 +1,6 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit Formats.DDSImage;
 
 (*
@@ -28,7 +27,9 @@ uses
   GLS.VectorTypes,
   GLS.VectorGeometry,
   GLS.Graphics,
-  GLS.Context;
+  GLS.Context,
+  GLS.FileDDS,
+  GLS.TextureFormat;
 
 type
 
@@ -40,14 +41,12 @@ type
 
   EDDSException = class(Exception);
 
-//-------------------------------------------------  
+//-------------------------------------------------
 implementation
-//-------------------------------------------------  
+//-------------------------------------------------
 
 uses
-  Formats.DXTC,
-  GLS.FileDDS,
-  GLS.TextureFormat;
+  Formats.DXTC;
 
 // ------------------
 // ------------------ TDDSImage ------------------

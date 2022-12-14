@@ -19,7 +19,6 @@ object GLInfoForm: TGLInfoForm
   OnClose = FormClose
   OnKeyPress = FormKeyPress
   OnShow = FormShow
-  PixelsPerInch = 96
   DesignSize = (
     460
     376)
@@ -29,7 +28,7 @@ object GLInfoForm: TGLInfoForm
     Top = 0
     Width = 460
     Height = 341
-    ActivePage = TabSheetContributors
+    ActivePage = TabSheetAbout
     Align = alTop
     TabOrder = 0
     object TabSheetGLScene: TTabSheet
@@ -3543,7 +3542,7 @@ object GLInfoForm: TGLInfoForm
     end
     object TabSheetAbout: TTabSheet
       Caption = 'About'
-      object WebsiteLbl: TLabel
+      object lblSfGLScene: TLabel
         Left = 57
         Top = 274
         Width = 94
@@ -3558,7 +3557,7 @@ object GLInfoForm: TGLInfoForm
         Font.Style = [fsUnderline]
         ParentColor = False
         ParentFont = False
-        OnClick = WebsiteLblClick
+        OnClick = lblSfGLSceneClick
       end
       object Label34: TLabel
         Left = 9
@@ -3568,6 +3567,22 @@ object GLInfoForm: TGLInfoForm
         Caption = 'Official:'
         Color = clBtnFace
         ParentColor = False
+      end
+      object lblGithubGLScene: TLabel
+        Left = 289
+        Top = 274
+        Width = 130
+        Height = 13
+        Caption = 'https://github.com/glscene'
+        Color = clBtnFace
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlue
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsUnderline]
+        ParentColor = False
+        ParentFont = False
+        OnClick = lblGithubGLSceneClick
       end
       object MemoAbout: TMemo
         Left = 0

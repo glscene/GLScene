@@ -29,6 +29,7 @@ uses
   GLS.VectorTypes,
   GLS.SkyDome,
   GLS.VectorLists,
+  GLS.FileDDS,
  
   GLS.Material,
   GLS.Coordinates,
@@ -99,8 +100,8 @@ begin
   // Load the cube map which is used both for environment and as reflection texture
   SetCurrentDir(Path  + '\cubemap');
   CubeMap := TGLTexture.Create(Self);
-//  Cubemap.ImageClassName := 'TGLCompositeImage';
-//  Cubemap.Image.LoadFromFile('Skybox.dds'); // if loading all 6 images
+  Cubemap.ImageClassName := 'TGLCompositeImage';
+  Cubemap.Image.LoadFromFile('Skybox.dds'); // if loading all 6 images
   Cubemap.TextureWrap := twNone;
   Cubemap.FilteringQuality := tfAnisotropic;
   Cubemap.Disabled := False;

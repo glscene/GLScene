@@ -27,7 +27,6 @@
 #include "GLS.FileSMD.hpp"
 #include "GLS.FileMD2.hpp"
 #include "GLS.File3DS.hpp"
-#include "Formats.DDSImage.hpp"
 #include "GLS.FileMS3D.hpp"
 #include "GLS.Utils.hpp"
 #include "GLSL.DiffuseSpecularShader.hpp"

@@ -109,7 +109,8 @@ type
     CloseButton: TButton;
     VersionLbl: TLabel;
     ViewLabel: TLabel;
-    WebsiteLbl: TLabel;
+    lblSfGLScene: TLabel;
+    lblGithubGLScene: TLabel;
     procedure CloseButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
@@ -119,7 +120,8 @@ type
     procedure ListBoxExtensionsKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
     procedure MIDelphi3DClick(Sender: TObject);
-    procedure WebsiteLblClick(Sender: TObject);
+    procedure lblSfGLSceneClick(Sender: TObject);
+    procedure lblGithubGLSceneClick(Sender: TObject);
   protected
     function GetSceneVersion: string;
   public
@@ -403,9 +405,14 @@ end;
 
 // ------------------------------------------------------------------------------
 
-procedure TGLInfoForm.WebsiteLblClick(Sender: TObject);
+procedure TGLInfoForm.lblSfGLSceneClick(Sender: TObject);
 begin
-  ShowHTMLUrl(WebsiteLbl.Caption);
+  ShowHTMLUrl(lblSfGLScene.Caption);
+end;
+
+procedure TGLInfoForm.lblGithubGLSceneClick(Sender: TObject);
+begin
+  ShowHTMLUrl(lblGithubGLScene.Caption);
 end;
 
 // ------------------------------------------------------------------------------

@@ -49,16 +49,17 @@ type
   TFormShadowFBO = class(TForm)
     GLSceneViewer1: TGLSceneViewer;
     GLScene1: TGLScene;
+    GLSphere1: TGLSphere;
     GLMaterialLibrary1: TGLMaterialLibrary;
     GLCamera1: TGLCamera;
-    GLShadowTextureSprite: TGLHUDSprite;
-    GLCamera2: TGLCamera;
     SceneRoot: TGLDummyCube;
     GLPlane1: TGLPlane;
     GLTorus1: TGLTorus;
     GLLightSource1: TGLLightSource;
     GLCadencer1: TGLCadencer;
     Timer1: TTimer;
+    GLShadowTextureSprite: TGLHUDSprite;
+    GLCamera2: TGLCamera;
     GLCylinder1: TGLCylinder;
     GLSLShader1: TGLSLShader;
     GLSLShader2: TGLSLShader;
@@ -66,7 +67,6 @@ type
     GLNavigation: TGLSimpleNavigation;
     GLFreeForm1: TGLFreeForm;
     LightFBORenderer: TGLFBORenderer;
-    GLSphere1: TGLSphere;
     procedure GLSLShader2Initialize(Shader: TGLCustomGLSLShader);
     procedure GLSLShader1UnApply(Shader: TGLCustomGLSLShader; var ThereAreMorePasses: Boolean);
     procedure FormResize(Sender: TObject);
@@ -80,8 +80,6 @@ type
     procedure LightFBORendererAfterRender(Sender: TObject; var rci: TGLRenderContextInfo);
     procedure GLSceneViewer1BeforeRender(Sender: TObject);
   private
-     
-
     FBiasMatrix: TGLMatrix;
     FLightModelViewMatrix: TGLMatrix;
     FLightProjMatrix: TGLMatrix;
@@ -112,54 +110,43 @@ end;
 
 procedure TFormShadowFBO.FormCreate(Sender: TObject);
 begin
-  // Loading textures
   var Path: TFileName := GetCurrentAssetPath();
+  // Loading textures
   SetCurrentDir(Path  + '\texture');
   with GLMaterialLibrary1 do
   begin
-    with TextureByName('Chekers') do
-    begin
-      Image.LoadFromFile('marbletiles.jpg');
-      Disabled := false;
-    end;
+    TextureByName('Chekers').Image.LoadFromFile('marbletiles.jpg');
+    TextureByName('Chekers').Disabled := false;
 
-    with TextureByName('Chekers2') do
-    begin
-      Image.LoadFromFile('Concrete.jpg');
-      Disabled := false;
-    end;
-    with TextureByName('Lightspot') do
-    begin
-      Image.LoadFromFile('Flare1.bmp');
-      Disabled := false;
-    end;
-    with TextureByName('bark') do
-    begin
-      Image.LoadFromFile('waste.jpg');
-      Disabled := false;
-    end;
-    with TextureByName('mask') do
-    begin
-      Image.LoadFromFile('Masks.dds');
-      Disabled := false;
-    end;
+    TextureByName('Chekers2').Image.LoadFromFile('Concrete.jpg');
+    TextureByName('Chekers2').Disabled := false;
 
+    TextureByName('Lightspot').Image.LoadFromFile('Flare1.bmp');
+    TextureByName('Lightspot').Disabled := false;
+
+    // Loading cubemap
+    SetCurrentDir(Path  + '\cubemap');
+    TextureByName('mask').Image.LoadFromFile('Masks.dds');
+    TextureByName('mask').Disabled := false;
   end;
 
-  // Loading models
+  // Loading skeletal models with skin texture
+  SetCurrentDir(Path  + '\modelext');
   GLFreeForm1.LoadFromFile('waste.md2');
   GLFreeForm1.Scale.Scale(0.05);
   GLFreeForm1.Position.Y := GLPlane1.Position.Y + 0.6;
+  GLMaterialLibrary1.TextureByName('bark').Image.LoadFromFile('waste.jpg');
+  GLMaterialLibrary1.TextureByName('bark').Disabled := false;
 
   FBiasMatrix := CreateScaleAndTranslationMatrix(VectorMake(0.5, 0.5, 0.5), VectorMake(0.5, 0.5, 0.5));
 
-  // Loading shader
-  GLSLShader1.VertexProgram.LoadFromFile('Shaders\shadowmap_vp.glsl');
-  GLSLShader1.FragmentProgram.LoadFromFile('Shaders\shadowmapvis_fp.glsl');
+  // Loading shaders
+  SetCurrentDir(Path  +'\shader');
+  GLSLShader1.VertexProgram.LoadFromFile('shadowmap_vp.glsl');
+  GLSLShader1.FragmentProgram.LoadFromFile('shadowmapvis_fp.glsl');
   GLSLShader1.Enabled := true;
-
-  GLSLShader2.VertexProgram.LoadFromFile('Shaders\shadowmap_vp.glsl');
-  GLSLShader2.FragmentProgram.LoadFromFile('Shaders\shadowmap_fp.glsl');
+  GLSLShader2.VertexProgram.LoadFromFile('shadowmap_vp.glsl');
+  GLSLShader2.FragmentProgram.LoadFromFile('shadowmap_fp.glsl');
   GLSLShader2.Enabled := true;
 end;
 

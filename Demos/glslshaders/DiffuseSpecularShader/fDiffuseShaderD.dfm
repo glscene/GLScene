@@ -32,8 +32,6 @@ object FormDiffuseShader: TFormDiffuseShader
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 501
-    ExplicitHeight = 437
   end
   object Panel1: TPanel
     Left = 629
@@ -42,8 +40,6 @@ object FormDiffuseShader: TFormDiffuseShader
     Height = 527
     Align = alRight
     TabOrder = 1
-    ExplicitLeft = 356
-    ExplicitHeight = 355
     object LightMovingCheckBox: TCheckBox
       Left = 8
       Top = 8

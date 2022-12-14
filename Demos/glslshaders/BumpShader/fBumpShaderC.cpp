@@ -81,8 +81,11 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   // Then load textures
   SetCurrentDir(Path + "\\texture");
   MaterialLibrary->LibMaterialByName("Earth")->Material->Texture->Image->LoadFromFile("Earth.jpg");
-  MaterialLibrary->LibMaterialByName("EarthGross")->Material->Texture->Image->LoadFromFile("EarthSpec.dds");
   MaterialLibrary->LibMaterialByName("EarthNormals")->Material->Texture->Image->LoadFromFile("EarthNormals.jpg");
+
+  // And cubemaps
+  SetCurrentDir(Path + "\\cubemap");
+  MaterialLibrary->LibMaterialByName("EarthGross")->Material->Texture->Image->LoadFromFile("EarthSpec.dds");
 
   // Create Shader
   MultiLightShader = new TGLSLMLBumpShader(this);

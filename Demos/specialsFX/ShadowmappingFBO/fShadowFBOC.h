@@ -20,11 +20,11 @@
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SimpleNavigation.hpp"
-#include "GLSL.Shader.hpp"
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "Formats.DDSImage.hpp"
 #include <Vcl.ExtCtrls.hpp>
+#include "GLSL.Shader.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -32,18 +32,18 @@ __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
 	TGLScene *GLScene1;
 	TGLCamera *GLCamera1;
-	TGLCamera *GLCamera2;
-	TGLLightSource *GLLightSource1;
 	TGLSphere *GLSphere1;
-	TGLFBORenderer *LightFBORenderer;
 	TGLDummyCube *SceneRoot;
+	TGLMaterialLibrary *GLMaterialLibrary1;
+	TGLLightSource *GLLightSource1;
+	TGLFBORenderer *LightFBORenderer;
 	TGLDirectOpenGL *PrepareShadowMapping;
+	TGLCamera *GLCamera2;
 	TGLPlane *GLPlane1;
 	TGLTorus *GLTorus1;
 	TGLCylinder *GLCylinder1;
 	TGLFreeForm *GLFreeForm1;
 	TGLHUDSprite *GLShadowTextureSprite;
-	TGLMaterialLibrary *GLMaterialLibrary1;
 	TGLCadencer *GLCadencer1;
 	TTimer *Timer1;
 	TGLSLShader *GLSLShader1;
@@ -60,11 +60,11 @@ __published:	// IDE-managed Components
 	void __fastcall PrepareShadowMappingRender(TObject *Sender, TGLRenderContextInfo &rci);
 
 private:	// User declarations
-	TGLMatrix FBiasMatrix;
-	TGLMatrix FLightModelViewMatrix;
-	TGLMatrix FLightProjMatrix;
-	TGLMatrix FInvCameraMatrix;
-	TGLMatrix FEyeToLightMatrix;
+	TGLMatrix *FBiasMatrix;
+	TGLMatrix *FLightModelViewMatrix;
+	TGLMatrix *FLightProjMatrix;
+	TGLMatrix *FInvCameraMatrix;
+	TGLMatrix *FEyeToLightMatrix;
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
 };

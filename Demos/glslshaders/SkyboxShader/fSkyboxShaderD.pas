@@ -45,25 +45,25 @@ type
     procedure DirectOGLRender(Sender: TObject; var rci: TGLRenderContextInfo);
   public
     Path: TFileName;
+    GLSL_Sky: TGLProgramHandle;
+    GLSL_Obj: TGLProgramHandle;
+    CubeMap: TGLTexture;
     procedure LoadCubemap;
     procedure InitGLSL;
   end;
 
 var
   FormSkyboxShader: TFormSkyboxShader;
-  GLSL_Sky: TGLProgramHandle;
-  GLSL_Obj: TGLProgramHandle;
-  CubeMap: TGLTexture;
 
 implementation
 
 {$R *.dfm}
 
-//
-// setup
-//
 procedure TFormSkyboxShader.FormCreate;
 begin
+  Path := GetCurrentAssetPath();
+  // Loading a cubemap as TGLCompositeImage
+  SetCurrentDir(Path  + '\cubemap');
   LoadCubemap;
   Skybox.Radius := Camera.DepthOfView;
   Skybox.Material.Texture := Cubemap;
@@ -72,14 +72,8 @@ begin
 
 end;
 
-//
-// LoadCubemap
-//
 procedure TFormSkyboxShader.LoadCubemap;
 begin
-  Path := GetCurrentAssetPath();
-  // Loading the whole cubemap as TGLCompositeImage
-  SetCurrentDir(Path  + '\cubemap');
   Cubemap := TGLTexture.Create(self);
   Cubemap.ImageClassName := 'TGLCompositeImage';
   Cubemap.Image.LoadFromFile('skybox.dds');
@@ -88,9 +82,6 @@ begin
   Cubemap.Disabled := False;
 end;
 
-//
-// cadProgress
-//
 procedure TFormSkyboxShader.CadencerProgress;
 begin
   DummyCam.Turn(deltaTime * 30);
@@ -99,8 +90,7 @@ begin
   Skybox.AbsolutePosition := Camera.AbsolutePosition;
 end;
 
-//
-// doglRender
+// Direct OpenGL rendering
 //
 procedure TFormSkyboxShader.DirectOGLRender;
 begin
@@ -119,8 +109,7 @@ begin
   GLSL_obj.EndUseProgramObject;
 end;
 
-//
-// initGLSL
+// GLSL Initialization
 //
 function Load(vp, fp: String): TGLProgramHandle;
 begin

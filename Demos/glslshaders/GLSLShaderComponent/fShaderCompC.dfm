@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'GLSL Shader Component'
-  ClientHeight = 407
-  ClientWidth = 561
+  ClientHeight = 585
+  ClientWidth = 856
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,37 +11,36 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
-  WindowState = wsMaximized
   OnClose = FormClose
   OnCreate = FormCreate
   TextHeight = 13
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 561
-    Height = 378
+    Width = 856
+    Height = 556
     Camera = Camera
     Buffer.BackgroundColor = clBackground
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aaNone
     Buffer.DepthPrecision = dp24bits
     Buffer.ColorDepth = cd24bits
-    FieldOfView = 142.042236328125000000
+    FieldOfView = 153.679840087890600000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 706
-    ExplicitHeight = 492
+    ExplicitWidth = 678
+    ExplicitHeight = 439
   end
   object Panel1: TPanel
     Left = 0
-    Top = 378
-    Width = 561
+    Top = 556
+    Width = 856
     Height = 29
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 492
-    ExplicitWidth = 706
+    ExplicitTop = 378
+    ExplicitWidth = 561
     object LightMovingCheckBox: TCheckBox
       Left = 8
       Top = 8

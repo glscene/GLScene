@@ -55,8 +55,8 @@ type
 
 const
   cDefaultProxyOptions = [pooEffects, pooObjects, pooTransformation];
-  GLSCENE_REVISION = '$Revision: 2022$';
-  GLSCENE_VERSION = 'v2.2 %s';
+  GLSCENE_REVISION = '$Revision: 2023$';
+  GLSCENE_VERSION = 'v2.3 %s';
 
 type
 

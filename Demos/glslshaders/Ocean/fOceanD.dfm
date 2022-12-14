@@ -26,8 +26,6 @@ object Form1: TForm1
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 689
-    ExplicitHeight = 435
   end
   object GLScene1: TGLScene
     ObjectsSorting = osNone

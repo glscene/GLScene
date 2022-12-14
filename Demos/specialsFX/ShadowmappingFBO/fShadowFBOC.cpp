@@ -19,12 +19,12 @@
 #pragma link "GLS.Material"
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
+#pragma link "Formats.DDSImage"
 #pragma link "GLS.SimpleNavigation"
-#pragma link "GLSLShader"
 #pragma link "GLS.VectorFileObjects"
 #pragma link "GLS.SceneViewer"
-#pragma link "GLFileDDS"
 #pragma link "GLS.FileMD2"
+#pragma link "GLSL.Shader"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -37,51 +37,50 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::PrepareShadowMappingRender(TObject *Sender, TGLRenderContextInfo &rci)
 
 {
+
   // prepare shadow mapping matrix
   FInvCameraMatrix = rci.PipelineTransformation->InvModelViewMatrix;
   // go from eye space to light's "eye" space
-  FEyeToLightMatrix = MatrixMultiply(FInvCameraMatrix, FLightModelViewMatrix);
+  *FEyeToLightMatrix = MatrixMultiply(*FInvCameraMatrix, *FLightModelViewMatrix);
   // then to clip space
-  FEyeToLightMatrix = MatrixMultiply(FEyeToLightMatrix, FLightProjMatrix);
+  *FEyeToLightMatrix = MatrixMultiply(*FEyeToLightMatrix, *FLightProjMatrix);
   // and finally make the [-1..1] coordinates into [0..1]
-  FEyeToLightMatrix = MatrixMultiply(FEyeToLightMatrix, FBiasMatrix);
+  *FEyeToLightMatrix = MatrixMultiply(*FEyeToLightMatrix, *FBiasMatrix);
 }
 
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  // Loading textures
   TFileName Path = GetCurrentAssetPath();
-
-  //with GLMaterialLibrary1 do
+  // Loading textures
+  SetCurrentDir(Path  + "\\texture");
   GLMaterialLibrary1->TextureByName("Chekers")->Image->LoadFromFile("marbletiles.jpg");
   GLMaterialLibrary1->TextureByName("Chekers")->Disabled = false;
-
   GLMaterialLibrary1->TextureByName("Chekers2")->Image->LoadFromFile("concrete.jpg");
   GLMaterialLibrary1->TextureByName("Chekers2")->Disabled = false;
-
   GLMaterialLibrary1->TextureByName("Lightspot")->Image->LoadFromFile("flare1.bmp");
   GLMaterialLibrary1->TextureByName("Lightspot")->Disabled = false;
 
-  GLMaterialLibrary1->TextureByName("bark")->Image->LoadFromFile("waste.jpg");
-  GLMaterialLibrary1->TextureByName("bark")->Disabled = false;
-
-  GLMaterialLibrary1->TextureByName("mask")->Image->LoadFromFile("masks.dds");
-  GLMaterialLibrary1->TextureByName("mask")->Disabled = false;
-
-  // Loading models
+  // Loading skeletal models with skin texture
+  SetCurrentDir(Path  + "\\modelext");
   GLFreeForm1->LoadFromFile("waste.md2");
   GLFreeForm1->Scale->Scale(0.05);
   GLFreeForm1->Position->Y = GLPlane1->Position->Y + 0.6;
-
   FBiasMatrix =
-	CreateScaleAndTranslationMatrix(VectorMake(0.5, 0.5, 0.5), VectorMake(0.5, 0.5, 0.5));
+	&CreateScaleAndTranslationMatrix(VectorMake(0.5, 0.5, 0.5), VectorMake(0.5, 0.5, 0.5));
+  GLMaterialLibrary1->TextureByName("bark")->Image->LoadFromFile("waste.jpg");
+  GLMaterialLibrary1->TextureByName("bark")->Disabled = false;
 
-  // Loading shader
+  // Loading cubemap
+  SetCurrentDir(Path  + "\\cubemap");
+  GLMaterialLibrary1->TextureByName("mask")->Image->LoadFromFile("masks.dds");
+  GLMaterialLibrary1->TextureByName("mask")->Disabled = false;
+
+  // Loading shaders
+  SetCurrentDir(Path  + "\\shader");
   GLSLShader1->VertexProgram->LoadFromFile("shadowmap_vp.glsl");
   GLSLShader1->FragmentProgram->LoadFromFile("shadowmapvis_fp.glsl");
   GLSLShader1->Enabled = true;
-
   GLSLShader2->VertexProgram->LoadFromFile("shadowmap_vp.glsl");
   GLSLShader2->FragmentProgram->LoadFromFile("shadowmap_fp.glsl");
   GLSLShader2->Enabled = true;
@@ -127,7 +126,7 @@ void __fastcall TForm1::GLSLShader2Apply(TGLCustomGLSLShader *Shader)
 	GLMaterialLibrary1->TextureByName("Lightspot");
   Shader->Param["Scale"]->AsFloat = 16.0;
   Shader->Param["Softly"]->AsInteger = 1;
-  Shader->Param["EyeToLightMatrix"]->AsMatrix4f = FEyeToLightMatrix;
+  Shader->Param["EyeToLightMatrix"]->AsMatrix4f = *FEyeToLightMatrix;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLSLShader2Initialize(TGLCustomGLSLShader *Shader)

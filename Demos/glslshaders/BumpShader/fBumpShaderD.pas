@@ -29,13 +29,13 @@ uses
   GLS.Utils,
   GLS.FileMS3D,
   GLS.File3DS,
-  Formats.DDSImage,
   GLS.FileMD2,
   GLS.FileSMD,
- 
   GLSL.Shader,
   GLSL.CustomShader,
-  GLSL.BumpShaders;
+  GLSL.BumpShaders,
+
+  Formats.DDSImage;
 
 type
   TFormBumpShader = class(TForm)

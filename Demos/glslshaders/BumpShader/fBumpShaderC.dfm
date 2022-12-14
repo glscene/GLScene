@@ -10,6 +10,7 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
@@ -31,8 +32,6 @@ object Form1: TForm1
     OnMouseDown = ViewerMouseDown
     OnMouseMove = ViewerMouseMove
     TabOrder = 0
-    ExplicitWidth = 630
-    ExplicitHeight = 434
   end
   object Panel1: TPanel
     Left = 0
@@ -41,8 +40,6 @@ object Form1: TForm1
     Height = 47
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 387
-    ExplicitWidth = 566
     object LightMovingCheckBox: TCheckBox
       Left = 8
       Top = 8
@@ -279,6 +276,7 @@ object Form1: TForm1
         Material.Texture.TextureMode = tmModulate
         Material.Texture.Disabled = False
         Material.MaterialLibrary = MaterialLibrary
+        Shader = MyBumpShader
       end
       item
         Name = 'EarthNormals'

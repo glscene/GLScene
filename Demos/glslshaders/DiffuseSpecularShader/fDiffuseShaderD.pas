@@ -35,8 +35,7 @@ uses
   GLS.Utils,
   GLS.FileMD2,
   GLS.FileMS3D,
-  GLS.File3DS,
-  Formats.DDSImage;
+  GLS.File3DS;
 
 type
   TFormDiffuseShader = class(TForm)

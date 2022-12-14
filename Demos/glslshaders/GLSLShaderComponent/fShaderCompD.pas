@@ -32,8 +32,7 @@ uses
 
   GLS.FileMD2,
   GLS.FileMS3D,
-  GLS.File3DS,
-  Formats.DDSImage;
+  GLS.File3DS;
 
 type
   TGLSLTestForm = class(TForm)
@@ -84,17 +83,10 @@ implementation
 
 procedure TGLSLTestForm.FormCreate(Sender: TObject);
 begin
-  //First load scripts from shader directory
   var Path: TFileName := GetCurrentAssetPath();
 
-  //Second load models from asset directory
+  // Loading static models
   SetCurrentDir(Path  + '\model');
-
-  Fighter.LoadFromFile('waste.md2'); //Fighter
-  Fighter.SwitchToAnimation(0, True);
-  Fighter.AnimationMode := aamLoop;
-  Fighter.Scale.Scale(3);
-
   Teapot.LoadFromFile('Teapot.3ds'); //Teapot (no texture coordinates)
   Teapot.Scale.Scale(0.8);
   Sphere_big.LoadFromFile('Sphere_big.3DS'); //Sphere_big
@@ -102,13 +94,23 @@ begin
   Sphere_little.LoadFromFile('Sphere_little.3ds'); //Sphere_little
   Sphere_little.Scale.Scale(4);
 
+
+  // Loading models with animations and skins
+  SetCurrentDir(Path  + '\modelext');
+  Fighter.LoadFromFile('waste.md2');
+  Fighter.SwitchToAnimation(0, True);
+  Fighter.AnimationMode := aamLoop;
+  Fighter.Scale.Scale(3);
+  // Skin texture
+  MaterialLibrary.LibMaterialByName('WasteSkin').Material.Texture.Image.LoadFromFile('waste.jpg');
+
   // Then load textures.
   SetCurrentDir(Path  + '\texture');
   MaterialLibrary.LibMaterialByName('Earth').Material.Texture.Image.LoadFromFile('Earth.jpg');
-  MaterialLibrary.LibMaterialByName('WasteSkin').Material.Texture.Image.LoadFromFile('waste.jpg');
 
+  // Loading scripts from shader directory
   SetCurrentDir(Path  + '\shader');
-  GLSLShader.LoadShaderPrograms('Shader.Vert','Shaders\Shader.Frag');
+  GLSLShader.LoadShaderPrograms('Shader.Vert','Shader.Frag');
   GLSLShader.Enabled := True;
 
 end;

@@ -32,8 +32,6 @@ object FormBumpShader: TFormBumpShader
     OnMouseDown = ViewerMouseDown
     OnMouseMove = ViewerMouseMove
     TabOrder = 0
-    ExplicitWidth = 445
-    ExplicitHeight = 414
   end
   object Panel1: TPanel
     Left = 475
@@ -42,8 +40,6 @@ object FormBumpShader: TFormBumpShader
     Height = 437
     Align = alRight
     TabOrder = 1
-    ExplicitLeft = 400
-    ExplicitHeight = 386
     object LightMovingCheckBox: TCheckBox
       Left = 8
       Top = 8
@@ -215,7 +211,7 @@ object FormBumpShader: TFormBumpShader
         AutoCentering = [macCenterX, macCenterY, macCenterZ]
       end
       object Fighter: TGLActor
-        Position.Coordinates = {0000164300000000000000000000803F}
+        Position.Coordinates = {00001643000000000000AA420000803F}
         Visible = False
         Interval = 100
         AutoCentering = [macCenterX, macCenterY, macCenterZ]

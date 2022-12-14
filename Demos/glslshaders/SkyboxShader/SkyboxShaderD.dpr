@@ -2,7 +2,7 @@ program SkyboxShaderD;
 
 uses
   Forms,
-  fSkyboxShaderD in 'fSkyboxShaderD.pas' {FormSkyboxShader};
+  fSkyboxShaderD in 'fSkyboxShaderD.pas';
 
 {$R *.res}
 

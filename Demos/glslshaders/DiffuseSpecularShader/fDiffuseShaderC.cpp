@@ -25,7 +25,6 @@
 #pragma link "GLS.FileSMD"
 #pragma link "GLS.FileMD2"
 #pragma link "GLS.File3DS"
-#pragma link "Formats.DDSImage"
 #pragma link "GLS.FileMS3D"
 
 #pragma resource "*.dfm"

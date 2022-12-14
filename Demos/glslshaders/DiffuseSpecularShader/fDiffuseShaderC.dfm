@@ -32,8 +32,6 @@ object Form1: TForm1
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 628
-    ExplicitHeight = 408
   end
   object Panel1: TPanel
     Left = 0
