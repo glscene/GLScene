@@ -2,8 +2,8 @@ object FormSkeletal: TFormSkeletal
   Left = 237
   Top = 105
   Caption = 'Skeletal Animation'
-  ClientHeight = 401
-  ClientWidth = 515
+  ClientHeight = 467
+  ClientWidth = 629
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,23 +17,25 @@ object FormSkeletal: TFormSkeletal
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 408
-    Height = 360
+    Width = 522
+    Height = 426
     Camera = GLCamera1
     Buffer.BackgroundColor = clSilver
     Buffer.Lighting = False
-    FieldOfView = 148.951782226562500000
+    FieldOfView = 153.578933715820300000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 468
+    ExplicitHeight = 397
   end
   object Panel1: TPanel
-    Left = 408
+    Left = 522
     Top = 0
     Width = 107
-    Height = 360
+    Height = 426
     Align = alRight
     BevelOuter = bvNone
     Font.Charset = ANSI_CHARSET
@@ -43,12 +45,14 @@ object FormSkeletal: TFormSkeletal
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    ExplicitLeft = 408
+    ExplicitHeight = 360
     DesignSize = (
       107
-      360)
+      426)
     object LabelFPS: TLabel
       Left = 32
-      Top = 24
+      Top = 30
       Width = 26
       Height = 16
       Alignment = taCenter
@@ -60,6 +64,7 @@ object FormSkeletal: TFormSkeletal
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
+      ExplicitTop = 24
     end
     object BULongJump: TButton
       Left = 16
@@ -113,19 +118,21 @@ object FormSkeletal: TFormSkeletal
   end
   object Panel2: TPanel
     Left = 0
-    Top = 360
-    Width = 515
+    Top = 426
+    Width = 629
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
+    ExplicitTop = 360
+    ExplicitWidth = 515
     DesignSize = (
-      515
+      629
       41)
     object TrackBar1: TTrackBar
       Left = 64
       Top = 0
-      Width = 451
+      Width = 565
       Height = 34
       Anchors = [akLeft, akTop, akRight, akBottom]
       Max = 100
@@ -133,6 +140,7 @@ object FormSkeletal: TFormSkeletal
       TabOrder = 0
       TickMarks = tmBoth
       OnChange = TrackBar1Change
+      ExplicitWidth = 451
     end
     object CBBlend: TCheckBox
       Left = 8
