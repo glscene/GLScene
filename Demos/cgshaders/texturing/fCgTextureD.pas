@@ -167,7 +167,7 @@ begin
     Materials[0].Material.Texture.Image.LoadFromFile('moon.bmp');
     Materials[1].Material.Texture.Image.LoadFromFile('clover.jpg');
     Materials[2].Material.Texture.Image.LoadFromFile('marbletiles.jpg');
-    Materials[3].Material.Texture.Image.LoadFromFile('earth.png');
+    Materials[3].Material.Texture.Image.LoadFromFile('earth.jpg');
   end;
 end;
 

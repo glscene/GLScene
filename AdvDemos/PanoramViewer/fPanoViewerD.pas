@@ -28,8 +28,8 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.Utils,
-  GLS.VectorGeometry;
+  GLS.VectorGeometry,
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)
@@ -60,7 +60,7 @@ type
       const deltaTime, newTime: Double);
     procedure FormCreate(Sender: TObject);
   private
-     
+
     mx, my: Integer;
     pitch, yaw: single; // in degree
     procedure PanCameraAround(dx, dy: single);
@@ -100,6 +100,8 @@ end;
 
 procedure TForm1.BtnLoadClick(Sender: TObject);
 begin
+  var Path: TFileName := GetCurrentAssetPath();
+  OpenPictureDialog1.InitialDir := Path + '\Panorama';
   with OpenPictureDialog1 do
     if Execute then
       GLMaterialLibrary1.Materials[0].Material.Texture.Image.LoadFromFile
