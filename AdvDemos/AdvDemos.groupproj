@@ -54,6 +54,12 @@
         <Projects Include="Quake3Demo\Q3DemoC.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Earth\EarthD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Earth\EarthC.cbproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -215,14 +221,32 @@
     <Target Name="Q3DemoC:Make">
         <MSBuild Projects="Quake3Demo\Q3DemoC.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="EarthD">
+        <MSBuild Projects="Earth\EarthD.dproj"/>
+    </Target>
+    <Target Name="EarthD:Clean">
+        <MSBuild Projects="Earth\EarthD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="EarthD:Make">
+        <MSBuild Projects="Earth\EarthD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="EarthC">
+        <MSBuild Projects="Earth\EarthC.cbproj"/>
+    </Target>
+    <Target Name="EarthC:Clean">
+        <MSBuild Projects="Earth\EarthC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="EarthC:Make">
+        <MSBuild Projects="Earth\EarthC.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Actorms3dD;ActorMS3dC;SplitterD;SplitterC;ArchipelagoD;ArchipelagoC;ChristmasD;ChristmasC;ForestD;GLSViewerD;IntensityMeshD;IntensityMeshC;PanoViewerD;PanoViewerC;TtbD;Q3DemoD;Q3DemoC"/>
+        <CallTarget Targets="Actorms3dD;ActorMS3dC;SplitterD;SplitterC;ArchipelagoD;ArchipelagoC;ChristmasD;ChristmasC;ForestD;GLSViewerD;IntensityMeshD;IntensityMeshC;PanoViewerD;PanoViewerC;TtbD;Q3DemoD;Q3DemoC;EarthD;EarthC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Actorms3dD:Clean;ActorMS3dC:Clean;SplitterD:Clean;SplitterC:Clean;ArchipelagoD:Clean;ArchipelagoC:Clean;ChristmasD:Clean;ChristmasC:Clean;ForestD:Clean;GLSViewerD:Clean;IntensityMeshD:Clean;IntensityMeshC:Clean;PanoViewerD:Clean;PanoViewerC:Clean;TtbD:Clean;Q3DemoD:Clean;Q3DemoC:Clean"/>
+        <CallTarget Targets="Actorms3dD:Clean;ActorMS3dC:Clean;SplitterD:Clean;SplitterC:Clean;ArchipelagoD:Clean;ArchipelagoC:Clean;ChristmasD:Clean;ChristmasC:Clean;ForestD:Clean;GLSViewerD:Clean;IntensityMeshD:Clean;IntensityMeshC:Clean;PanoViewerD:Clean;PanoViewerC:Clean;TtbD:Clean;Q3DemoD:Clean;Q3DemoC:Clean;EarthD:Clean;EarthC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Actorms3dD:Make;ActorMS3dC:Make;SplitterD:Make;SplitterC:Make;ArchipelagoD:Make;ArchipelagoC:Make;ChristmasD:Make;ChristmasC:Make;ForestD:Make;GLSViewerD:Make;IntensityMeshD:Make;IntensityMeshC:Make;PanoViewerD:Make;PanoViewerC:Make;TtbD:Make;Q3DemoD:Make;Q3DemoC:Make"/>
+        <CallTarget Targets="Actorms3dD:Make;ActorMS3dC:Make;SplitterD:Make;SplitterC:Make;ArchipelagoD:Make;ArchipelagoC:Make;ChristmasD:Make;ChristmasC:Make;ForestD:Make;GLSViewerD:Make;IntensityMeshD:Make;IntensityMeshC:Make;PanoViewerD:Make;PanoViewerC:Make;TtbD:Make;Q3DemoD:Make;Q3DemoC:Make;EarthD:Make;EarthC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

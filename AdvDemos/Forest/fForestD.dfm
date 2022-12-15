@@ -3,12 +3,12 @@ object Form1: TForm1
   Top = 166
   BorderStyle = bsNone
   Caption = 'Form1'
-  ClientHeight = 516
-  ClientWidth = 631
+  ClientHeight = 413
+  ClientWidth = 505
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   WindowState = wsMaximized
@@ -18,17 +18,12 @@ object Form1: TForm1
   OnKeyDown = FormKeyDown
   OnResize = FormResize
   OnShow = FormShow
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object SceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 631
-    Height = 516
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 505
+    Height = 413
     Camera = Camera
     Buffer.FogEnvironment.FogColor.Color = {9CC4403FFED4583F48E17A3F0000803F}
     Buffer.FogEnvironment.FogStart = 3500.000000000000000000
@@ -38,7 +33,7 @@ object Form1: TForm1
     Buffer.FogEnable = True
     Buffer.Lighting = False
     Buffer.AntiAliasing = aaNone
-    FieldOfView = 158.064254760742200000
+    FieldOfView = 152.777770996093800000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0

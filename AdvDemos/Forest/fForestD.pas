@@ -20,30 +20,30 @@ uses
   GLS.OpenGLTokens,
   GLS.SceneViewer,
   GLS.Cadencer,
-  GLS.Texture, 
-  GLS.VectorTypes, 
-  GLS.VectorGeometry, 
+  GLS.Texture,
+  GLS.VectorTypes,
+  GLS.VectorGeometry,
   GLS.Scene,
-  GLS.Objects, 
-  GLS.Tree, 
-  GLS.Keyboard, 
-  GLS.VectorLists, 
-  GLS.BitmapFont, 
+  GLS.Objects,
+  GLS.Tree,
+  GLS.Keyboard,
+  GLS.VectorLists,
+  GLS.BitmapFont,
   GLS.Context,
-  GLS.WindowsFont, 
-  GLS.HUDObjects, 
-  GLS.SkyDome, 
-  GLS.Imposter, 
+  GLS.WindowsFont,
+  GLS.HUDObjects,
+  GLS.SkyDome,
+  GLS.Imposter,
   GLS.ParticleFX,
-  GLS.Graphics, 
+  GLS.Graphics,
   GLS.PersistentClasses,
   GLS.PipelineTransformation,
-  GLS.XOpenGL, 
+  GLS.XOpenGL,
   GLS.BaseClasses,
-  GLS.TextureCombiners, 
-  GLS.TextureFormat, 
-  GLS.Material, 
-  GLS.Coordinates, 
+  GLS.TextureCombiners,
+  GLS.TextureFormat,
+  GLS.Material,
+  GLS.Coordinates,
   GLS.TerrainRenderer,
   GLS.HeightData,
   GLS.HeightTileFileHDS,
@@ -80,48 +80,39 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure TerrainGetTerrainBounds(var l, t, r, b: Single);
-    procedure GLCadencerProgress(Sender: TObject; const deltaTime,
-      newTime: Double);
-    procedure FormKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure GLCadencerProgress(Sender: TObject; const deltaTime, newTime: Double);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure DOTreesRender(Sender: TObject; var rci: TGLRenderContextInfo);
-    procedure PFXTreesBeginParticles(Sender: TObject;
-      var rci: TGLRenderContextInfo);
+    procedure PFXTreesBeginParticles(Sender: TObject; var rci: TGLRenderContextInfo);
     procedure PFXTreesCreateParticle(Sender: TObject; aParticle: TGLParticle);
     procedure PFXTreesEndParticles(Sender: TObject; var rci: TGLRenderContextInfo);
-    procedure PFXTreesRenderParticle(Sender: TObject;
-      aParticle: TGLParticle; var rci: TGLRenderContextInfo);
-    procedure SIBTreeImposterLoaded(Sender: TObject;
-      impostoredObject: TGLBaseSceneObject; destImposter: TImposter);
-    function SIBTreeLoadingImposter(Sender: TObject;
-      impostoredObject: TGLBaseSceneObject;
+    procedure PFXTreesRenderParticle(Sender: TObject; aParticle: TGLParticle;
+      var rci: TGLRenderContextInfo);
+    procedure SIBTreeImposterLoaded(Sender: TObject; impostoredObject: TGLBaseSceneObject;
+      destImposter: TImposter);
+    function SIBTreeLoadingImposter(Sender: TObject; impostoredObject: TGLBaseSceneObject;
       destImposter: TImposter): TGLBitmap32;
     procedure Timer1Timer(Sender: TObject);
-    procedure PFXTreesProgress(Sender: TObject;
-      const progressTime: TGLProgressTimes; var defaultProgress: Boolean);
+    procedure PFXTreesProgress(Sender: TObject; const progressTime: TGLProgressTimes;
+      var defaultProgress: Boolean);
     function PFXTreesGetParticleCountEvent(Sender: TObject): Integer;
     procedure FormResize(Sender: TObject);
-    procedure DOInitializeReflectionRender(Sender: TObject;
-      var rci: TGLRenderContextInfo);
-    procedure DOGLSLWaterPlaneRender(Sender: TObject;
-      var rci: TGLRenderContextInfo);
-    procedure DOClassicWaterPlaneRender(Sender: TObject;
-      var rci: TGLRenderContextInfo);
+    procedure DOInitializeReflectionRender(Sender: TObject; var rci: TGLRenderContextInfo);
+    procedure DOGLSLWaterPlaneRender(Sender: TObject; var rci: TGLRenderContextInfo);
+    procedure DOClassicWaterPlaneRender(Sender: TObject; var rci: TGLRenderContextInfo);
     procedure FormDeactivate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
-     
-//      hscale, mapwidth, mapheight : Single;
+    // hscale, mapwidth, mapheight : Single;
     lmp: TPoint;
     camPitch, camTurn, camTime, curPitch, curTurn: Single;
-
     function GetTextureReflectionMatrix: TGLMatrix;
   public
-     
+    Path: TFileName;
     TestTree: TGLTree;
     TreesShown: Integer;
     nearTrees: TGLPersistentObjectList;
-    imposter: TImposter;
+    Imposter: TImposter;
     densityBitmap: TBitmap;
     mirrorTexture: TGLTextureHandle;
     mirrorTexType: TGLTextureTarget;
@@ -134,9 +125,9 @@ type
 var
   Form1: TForm1;
 
-//-----------------------------------------------
+// -----------------------------------------------
 implementation
-//-----------------------------------------------
+// -----------------------------------------------
 
 {$R *.dfm}
 
@@ -149,28 +140,29 @@ const
 procedure TForm1.FormCreate(Sender: TObject);
 var
   density: TPicture;
-  DataPath : TFileName;
+
 begin
   // go to 1024x768x32
-//  SetFullscreenMode(GetIndexFromResolution(1024, 768, 32), 85);
+  // SetFullscreenMode(GetIndexFromResolution(1024, 768, 32), 85);
   Application.OnDeactivate := FormDeactivate;
 
-  DataPath := ExtractFilePath(ParamStr(0));
-  Delete(DataPath, Length(DataPath) - 12, 12);
-  DataPath := DataPath + 'Data\';
-  SetCurrentDir(DataPath);
+  Path := GetCurrentAssetPath();
 
- // Load volcano textures
+  // Load volcano textures
+  SetCurrentDir(Path + '\texture');
+
   MLTerrain.AddTextureMaterial('Terrain', 'volcano_TX_low.jpg').Texture2Name := 'Detail';
-  MLTerrain.AddTextureMaterial('Detail', 'detailmap.jpg').Material.Texture.TextureMode := tmModulate;
+  MLTerrain.AddTextureMaterial('Detail', 'detailmap.jpg').Material.Texture.TextureMode :=
+    tmModulate;
   MLTerrain.AddTextureMaterial('Detail', 'detailmap.jpg').TextureScale.SetPoint(128, 128, 128);
   Terrain.Material.MaterialLibrary := MLTerrain;
   Terrain.Material.LibMaterialName := 'Terrain';
 
-  // Load tree textures
+  // Load textures for trees
   MLTrees.AddTextureMaterial('Leaf', 'leaf.tga').Material.Texture.TextureFormat := tfRGBA;
   MLTrees.AddTextureMaterial('Leaf', 'leaf.tga').Material.Texture.TextureMode := tmModulate;
-  MLTrees.AddTextureMaterial('Leaf', 'leaf.tga').Material.Texture.MinFilter := miNearestMipmapNearest;
+  MLTrees.AddTextureMaterial('Leaf', 'leaf.tga').Material.Texture.MinFilter :=
+    miNearestMipmapNearest;
   MLTrees.AddTextureMaterial('Leaf', 'leaf.tga').Material.BlendingMode := bmAlphaTest50;
 
   MLTrees.AddTextureMaterial('Bark', 'zbark_016.jpg').Material.Texture.TextureMode := tmModulate;
@@ -200,16 +192,19 @@ begin
   densityBitmap := TBitmap.Create;
   try
     densityBitmap.PixelFormat := pf24bit;
-    Density := TPicture.Create;
+    density := TPicture.Create;
     try
-      Density.LoadFromFile('volcano_trees.jpg');
-      densityBitmap.Width := Density.Width;
-      densityBitmap.Height := Density.Height;
-      densityBitmap.Canvas.Draw(0, 0, Density.Graphic);
+      density.LoadFromFile('volcano_trees.jpg');
+      densityBitmap.Width := density.Width;
+      densityBitmap.Height := density.Height;
+      densityBitmap.Canvas.Draw(0, 0, density.Graphic);
     finally
-      Density.Free;
+      density.Free;
     end;
-    PFXTrees.CreateParticles(10000);
+
+    // Set directory to load landscapes
+    SetCurrentDir(Path + '\landscape');
+      PFXTrees.CreateParticles(10000);
   finally
     densityBitmap.Free;
   end;
@@ -227,11 +222,14 @@ begin
   camTurn := -60;
   enableRectReflection := False;
   enableTex2DReflection := False;
+
 end;
+
+//----------------------------------------------------------------
 
 procedure TForm1.FormDestroy(Sender: TObject);
 begin
-//  RestoreDefaultMode;
+  // RestoreDefaultMode;
 
   ShowCursor(True);
   nearTrees.Free;
@@ -252,8 +250,7 @@ begin
   SetFocus;
 end;
 
-procedure TForm1.GLCadencerProgress(Sender: TObject; const deltaTime,
-  newTime: Double);
+procedure TForm1.GLCadencerProgress(Sender: TObject; const deltaTime, newTime: Double);
 var
   speed, z: Single;
   nmp: TPoint;
@@ -300,17 +297,21 @@ begin
   SceneViewer.Invalidate;
 end;
 
-procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
+procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
-  case key of
-    VK_ESCAPE: Form1.Close;
-    VK_ADD: if TreesShown < PFXTrees.Particles.ItemCount then
+  case Key of
+    VK_ESCAPE:
+      Form1.Close;
+    VK_ADD:
+      if TreesShown < PFXTrees.Particles.ItemCount then
         TreesShown := TreesShown + 100;
-    VK_SUBTRACT: if TreesShown > 0 then
+    VK_SUBTRACT:
+      if TreesShown > 0 then
         TreesShown := TreesShown - 100;
-    Word('R'): enableTex2DReflection := not enableTex2DReflection;
-    Word('G'): if supportsGLSL then
+    Word('R'):
+      enableTex2DReflection := not enableTex2DReflection;
+    Word('G'):
+      if supportsGLSL then
       begin
         enableGLSL := not enableGLSL;
         enableTex2DReflection := True;
@@ -337,11 +338,10 @@ begin
   Caption := Format('%.2f', [RenderTrees.LastSortTime]);
 end;
 
-procedure TForm1.PFXTreesCreateParticle(Sender: TObject;
-  aParticle: TGLParticle);
+procedure TForm1.PFXTreesCreateParticle(Sender: TObject; aParticle: TGLParticle);
 var
   u, v, p: Single;
-  //   x, y, i, j, dark : Integer;
+  // x, y, i, j, dark : Integer;
   pixelX, pixelY: Integer;
 begin
   repeat
@@ -361,31 +361,29 @@ begin
 
 end;
 
-procedure TForm1.PFXTreesBeginParticles(Sender: TObject;
-  var rci: TGLRenderContextInfo);
+procedure TForm1.PFXTreesBeginParticles(Sender: TObject; var rci: TGLRenderContextInfo);
 begin
-  imposter := SIBTree.ImposterFor(TestTree);
-  imposter.BeginRender(rci);
+  Imposter := SIBTree.ImposterFor(TestTree);
+  Imposter.BeginRender(rci);
 end;
 
-procedure TForm1.PFXTreesRenderParticle(Sender: TObject;
-  aParticle: TGLParticle; var rci: TGLRenderContextInfo);
+procedure TForm1.PFXTreesRenderParticle(Sender: TObject; aParticle: TGLParticle;
+  var rci: TGLRenderContextInfo);
 const
-  cTreeCenteringOffset: TAffineVector = (X:0; Y:30; Z:0);
+  cTreeCenteringOffset: TAffineVector = (X: 0; Y: 30; z: 0);
 var
   d: Single;
   camPos: TGLVector;
 begin
   if not IsVolumeClipped(VectorAdd(aParticle.Position, cTreeCenteringOffset), 30, rci.rcci.frustum)
   then
-  begin
-    ;
+  begin;
     VectorSubtract(rci.cameraPosition, aParticle.Position, camPos);
     d := VectorNorm(camPos);
     if d > Sqr(180) then
     begin
       RotateVectorAroundY(PAffineVector(@camPos)^, aParticle.Tag * cPIdiv180);
-      imposter.Render(rci, VectorMake(aParticle.Position), camPos, 10);
+      Imposter.Render(rci, VectorMake(aParticle.Position), camPos, 10);
     end
     else
     begin
@@ -394,8 +392,7 @@ begin
   end;
 end;
 
-procedure TForm1.PFXTreesEndParticles(Sender: TObject;
-  var rci: TGLRenderContextInfo);
+procedure TForm1.PFXTreesEndParticles(Sender: TObject; var rci: TGLRenderContextInfo);
 var
   aParticle: TGLParticle;
   camPos: TGLVector;
@@ -406,15 +403,14 @@ begin
     aParticle := TGLParticle(nearTrees.First);
     VectorSubtract(rci.cameraPosition, aParticle.Position, camPos);
     RotateVectorAroundY(PAffineVector(@camPos)^, aParticle.Tag * cPIdiv180);
-    imposter.Render(rci, VectorMake(aParticle.Position), camPos, 10);
+    Imposter.Render(rci, VectorMake(aParticle.Position), camPos, 10);
     nearTrees.Delete(0);
   end;
 
-  imposter.EndRender(rci);
+  Imposter.EndRender(rci);
 end;
 
-procedure TForm1.DOTreesRender(Sender: TObject;
-  var rci: TGLRenderContextInfo);
+procedure TForm1.DOTreesRender(Sender: TObject; var rci: TGLRenderContextInfo);
 var
   i: Integer;
   particle: TGLParticle;
@@ -426,13 +422,14 @@ begin
     particle := TGLParticle(nearTrees[i]);
     TreeModelMatrix := MatrixMultiply(CreateTranslationMatrix(particle.Position),
       rci.PipelineTransformation.ViewMatrix^);
-    TreeModelMatrix := MatrixMultiply(CreateScaleMatrix(VectorMake(10, 10, 10)),
-      TreeModelMatrix);
+    TreeModelMatrix := MatrixMultiply(CreateScaleMatrix(VectorMake(10, 10, 10)), TreeModelMatrix);
     TreeModelMatrix := MatrixMultiply(CreateRotationMatrixY(DegToRad(-particle.Tag)),
       TreeModelMatrix);
-    TreeModelMatrix := MatrixMultiply(CreateRotationMatrixX(DegToRad(Cos(GLCadencer.CurrentTime + particle.ID * 15) * 0.2)),
+    TreeModelMatrix := MatrixMultiply
+      (CreateRotationMatrixX(DegToRad(Cos(GLCadencer.CurrentTime + particle.ID * 15) * 0.2)),
       TreeModelMatrix);
-    TreeModelMatrix := MatrixMultiply(CreateRotationMatrixZ(DegToRad(Cos(GLCadencer.CurrentTime * 1.3 + particle.ID * 15) * 0.2)),
+    TreeModelMatrix := MatrixMultiply
+      (CreateRotationMatrixZ(DegToRad(Cos(GLCadencer.CurrentTime * 1.3 + particle.ID * 15) * 0.2)),
       TreeModelMatrix);
     TestTree.AbsoluteMatrix := TreeModelMatrix;
     TestTree.Render(rci);
@@ -448,8 +445,7 @@ begin
   b := 0;
 end;
 
-function TForm1.SIBTreeLoadingImposter(Sender: TObject;
-  impostoredObject: TGLBaseSceneObject;
+function TForm1.SIBTreeLoadingImposter(Sender: TObject; impostoredObject: TGLBaseSceneObject;
   destImposter: TImposter): TGLBitmap32;
 var
   bmp: TBitmap;
@@ -472,8 +468,8 @@ begin
   bmp.Free;
 end;
 
-procedure TForm1.SIBTreeImposterLoaded(Sender: TObject;
-  impostoredObject: TGLBaseSceneObject; destImposter: TImposter);
+procedure TForm1.SIBTreeImposterLoaded(Sender: TObject; impostoredObject: TGLBaseSceneObject;
+  destImposter: TImposter);
 var
   bmp32: TGLBitmap32;
   bmp: TBitmap;
@@ -494,14 +490,13 @@ begin
   Result := TreesShown;
 end;
 
-procedure TForm1.PFXTreesProgress(Sender: TObject;
-  const progressTime: TGLProgressTimes; var defaultProgress: Boolean);
+procedure TForm1.PFXTreesProgress(Sender: TObject; const progressTime: TGLProgressTimes;
+  var defaultProgress: Boolean);
 begin
   defaultProgress := False;
 end;
 
-procedure TForm1.DOInitializeReflectionRender(Sender: TObject;
-  var rci: TGLRenderContextInfo);
+procedure TForm1.DOInitializeReflectionRender(Sender: TObject; var rci: TGLRenderContextInfo);
 var
   w, h: Integer;
   refMat: TGLMatrix;
@@ -530,7 +525,7 @@ begin
 
   GL.Enable(GL_CLIP_PLANE0);
   SetPlane(clipPlane, PlaneMake(AffineVectorMake(0, 1, 0), VectorNegate(YVector)));
-  GL.ClipPlane(GL_CLIP_PLANE0, @clipPlane);
+  GL.clipPlane(GL_CLIP_PLANE0, @clipPlane);
 
   cameraPosBackup := rci.cameraPosition;
   cameraDirectionBackup := rci.cameraDirection;
@@ -600,8 +595,7 @@ begin
   GL.Clear(GL_COLOR_BUFFER_BIT + GL_DEPTH_BUFFER_BIT + GL_STENCIL_BUFFER_BIT);
 end;
 
-procedure TForm1.DOClassicWaterPlaneRender(Sender: TObject;
-  var rci: TGLRenderContextInfo);
+procedure TForm1.DOClassicWaterPlaneRender(Sender: TObject; var rci: TGLRenderContextInfo);
 const
   cWaveScale = 7;
   cWaveSpeed = 0.02;
@@ -611,7 +605,7 @@ var
   tWave: Single;
   pos: TAffineVector;
   tex: TTexPoint;
-  x, y: Integer;
+  X, Y: Integer;
 begin
   if enableGLSL and enableTex2DReflection then
     Exit;
@@ -625,8 +619,8 @@ begin
   tex0Matrix := IdentityHmgMatrix;
   tex0Matrix.X.X := 3 * cWaveScale;
   tex0Matrix.Y.Y := 4 * cWaveScale;
-  tex0Matrix.W.X := tWave * 1.1;
-  tex0Matrix.W.Y := tWave * 1.06;
+  tex0Matrix.w.X := tWave * 1.1;
+  tex0Matrix.w.Y := tWave * 1.06;
   rci.GLStates.SetGLTextureMatrix(tex0Matrix);
 
   rci.GLStates.ActiveTexture := 1;
@@ -636,8 +630,8 @@ begin
   tex1Matrix := IdentityHmgMatrix;
   tex1Matrix.X.X := cWaveScale;
   tex1Matrix.Y.Y := cWaveScale;
-  tex1Matrix.W.X := tWave * 0.83;
-  tex1Matrix.W.Y := tWave * 0.79;
+  tex1Matrix.w.X := tWave * 0.83;
+  tex1Matrix.w.Y := tWave * 0.79;
   rci.GLStates.SetGLTextureMatrix(tex1Matrix);
 
   if enableTex2DReflection then
@@ -651,38 +645,38 @@ begin
   rci.GLStates.ActiveTexture := 0;
 
   {
-  if enableTex2DReflection then
-  begin
+    if enableTex2DReflection then
+    begin
     //SetupTextureCombiners('Tex0:=Tex1*Tex0;'#13#10
     GetTextureCombiners('Tex0:=Tex1*Tex0;'#13#10
-      + 'Tex1:=Tex0+Col;'#13#10
-      + 'Tex2:=Tex1+Tex2-0.5;');
+    + 'Tex1 := Tex0+Col;'#13#10
+    + 'Tex2 := Tex1+Tex2-0.5;');
     GL.Color4f(0.0, 0.3, 0.3, 1);
-  end
-  else
-  begin
+    end
+    else
+    begin
     //SetupTextureCombiners('Tex0:=Tex1*Tex0;'#13#10
     GetTextureCombiners('Tex0:=Tex1*Tex0;'#13#10
-      + 'Tex1:=Tex0+Col;');
+    + 'Tex1:=Tex0+Col;');
     GL.Color4f(0.0, 0.4, 0.7, 1);
-  end;
+    end;
   }
   GL.Color4f(0.0, 0.4, 0.7, 1);
 
   rci.GLStates.Disable(stCullFace);
-  for y := -10 to 10 - 1 do
+  for Y := -10 to 10 - 1 do
   begin
     GL.Begin_(GL_QUAD_STRIP);
-    for x := -10 to 10 do
+    for X := -10 to 10 do
     begin
-      SetVector(pos, x * 1500, 0, y * 1500);
-      tex := TexPointMake(x, y);
+      SetVector(pos, X * 1500, 0, Y * 1500);
+      tex := TexPointMake(X, Y);
       GL.MultiTexCoord2fv(GL_TEXTURE0, @tex);
       GL.MultiTexCoord2fv(GL_TEXTURE1, @tex);
       GL.MultiTexCoord3fv(GL_TEXTURE2, @pos);
       GL.Vertex3fv(@pos);
-      SetVector(pos, x * 1500, 0, (y + 1) * 1500);
-      tex := TexPointMake(x, (y + 1));
+      SetVector(pos, X * 1500, 0, (Y + 1) * 1500);
+      tex := TexPointMake(X, (Y + 1));
       GL.MultiTexCoord3fv(GL_TEXTURE0, @tex);
       GL.MultiTexCoord3fv(GL_TEXTURE1, @tex);
       GL.MultiTexCoord3fv(GL_TEXTURE2, @pos);
@@ -694,20 +688,20 @@ begin
   rci.GLStates.ResetGLTextureMatrix;
 end;
 
-procedure TForm1.DOGLSLWaterPlaneRender(Sender: TObject;
-  var rci: TGLRenderContextInfo);
+procedure TForm1.DOGLSLWaterPlaneRender(Sender: TObject; var rci: TGLRenderContextInfo);
 var
-  x, y: Integer;
+  X, Y: Integer;
 begin
-  if not (enableGLSL and enableTex2DReflection) then
+  if not(enableGLSL and enableTex2DReflection) then
     Exit;
-
   if not Assigned(reflectionProgram) then
   begin
+    SetCurrentDir(Path + '\shader');
     reflectionProgram := TGLProgramHandle.CreateAndAllocate;
-
-    reflectionProgram.AddShader(TGLVertexShaderHandle, string(LoadAnsiStringFromFile('water_vp.glsl')),True);
-    reflectionProgram.AddShader(TGLFragmentShaderHandle, string(LoadAnsiStringFromFile('water_fp.glsl')),True);
+    reflectionProgram.AddShader(TGLVertexShaderHandle,
+      string(LoadAnsiStringFromFile('water_vp.glsl')), True);
+    reflectionProgram.AddShader(TGLFragmentShaderHandle,
+      string(LoadAnsiStringFromFile('water_fp.glsl')), True);
     if not reflectionProgram.LinkProgram then
       raise Exception.Create(reflectionProgram.InfoLog);
     if not reflectionProgram.ValidateProgram then
@@ -725,13 +719,13 @@ begin
   rci.GLStates.TextureBinding[1, ttTexture2D] := MLWater.Materials[1].Material.Texture.Handle;
   reflectionProgram.Uniform1i['WaveMap'] := 1;
 
-  for y := -10 to 10 - 1 do
+  for Y := -10 to 10 - 1 do
   begin
     GL.Begin_(GL_QUAD_STRIP);
-    for x := -10 to 10 do
+    for X := -10 to 10 do
     begin
-      GL.Vertex3f(x * 1500, 0, y * 1500);
-      GL.Vertex3f(x * 1500, 0, (y + 1) * 1500);
+      GL.Vertex3f(X * 1500, 0, Y * 1500);
+      GL.Vertex3f(X * 1500, 0, (Y + 1) * 1500);
     end;
     GL.End_;
   end;
@@ -742,14 +736,10 @@ end;
 
 // SetupReflectionMatrix
 //
-
 function TForm1.GetTextureReflectionMatrix: TGLMatrix;
 const
-  cBaseMat: TGLMatrix =
-  (V:((X:0.5; Y:0;   Z:0; W:0),
-      (X:0;   Y:0.5; Z:0; W:0),
-      (X:0;   Y:0; Z:1; W:0),
-      (X:0.5; Y:0.5; Z:0; W:1)));
+  cBaseMat: TGLMatrix = (v: ((X: 0.5; Y: 0; z: 0; w: 0), (X: 0; Y: 0.5; z: 0; w: 0), (X: 0; Y: 0;
+    z: 1; w: 0), (X: 0.5; Y: 0.5; z: 0; w: 1)));
 
 var
   w, h: Single;
@@ -769,10 +759,9 @@ begin
   Result := MatrixMultiply(CreateScaleMatrix(VectorMake(w, h, 0)), Result);
   with CurrentGLContext.PipelineTransformation do
     Result := MatrixMultiply(ViewProjectionMatrix^, Result);
-//  Camera.ApplyPerspective(SceneViewer.Buffer.ViewPort, SceneViewer.Width, SceneViewer.Height, 96);
-//  Camera.Apply;
+  // Camera.ApplyPerspective(SceneViewer.Buffer.ViewPort, SceneViewer.Width, SceneViewer.Height, 96);
+  // Camera.Apply;
   Result := MatrixMultiply(CreateScaleMatrix(VectorMake(1, -1, 1)), Result);
 end;
 
 end.
-

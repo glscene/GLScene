@@ -2,12 +2,12 @@ object Form1: TForm1
   Left = 412
   Top = 123
   Caption = 'Earth'
-  ClientHeight = 684
-  ClientWidth = 879
+  ClientHeight = 568
+  ClientWidth = 775
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
@@ -15,27 +15,24 @@ object Form1: TForm1
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 879
-    Height = 684
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 775
+    Height = 568
     Camera = Camera
     BeforeRender = GLSceneViewerBeforeRender
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 153.668411254882800000
+    FieldOfView = 148.535995483398400000
     PenAsTouch = False
     Align = alClient
     OnDblClick = GLSceneViewerDblClick
     OnMouseDown = GLSceneViewerMouseDown
     OnMouseMove = GLSceneViewerMouseMove
     TabOrder = 0
+    ExplicitWidth = 739
+    ExplicitHeight = 559
   end
   object Scene: TGLScene
     ObjectsSorting = osNone
@@ -75,7 +72,7 @@ object Form1: TForm1
     object dcEarth: TGLDummyCube
       ObjectsSorting = osNone
       CubeSize = 1.000000000000000000
-      object CameraControler: TGLCamera
+      object Cameracontroller: TGLCamera
         DepthOfView = 100.000000000000000000
         FocalLength = 50.000000000000000000
         TargetObject = dcEarth

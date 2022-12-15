@@ -43,7 +43,8 @@ uses
   Sounds.BASS,
   Sounds.BASSImport,
   GLS.FireFX,
-  GLS.FileWAV;
+  GLS.FileWAV,
+  GLS.Utils;
 
 type
   TMain = class(TForm)
@@ -120,11 +121,12 @@ type
     procedure FormMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
   public
+    Path: TFileName;
     mx, my: Integer;
     FireLight: Single;
     inPreview, inSaver: Boolean;
     bStream: Cardinal;
-    function LoadTexture(Matname, Filename: string): TGLLibMaterial;
+    function LoadCubemap(Matname, Filename: string): TGLLibMaterial;
   end;
 
 var
@@ -134,7 +136,7 @@ implementation
 
 {$R *.dfm}
 
-function TMain.LoadTexture(Matname, Filename: string): TGLLibMaterial;
+function TMain.LoadCubemap(Matname, Filename: string): TGLLibMaterial;
 begin
   Result := MaterialLibraryCM.AddTextureMaterial(Matname, Filename);
   Result.Material.Texture.Disabled := False;
@@ -142,22 +144,23 @@ begin
 end;
 
 procedure TMain.FormCreate(Sender: TObject);
-var
-  DataPath: String;
 begin
+  Path := GetCurrentAssetPath();
 
   Randomize;
-  DataPath := ExtractFilePath(ParamStr(0)) + 'data';
-  SetCurrentDir(DataPath);
-
-  // Skybox textures
-  //...
-
+  // Load static models
+  SetCurrentDir(Path + '\model');
   FFFirTree.LoadFromFile('firtree.3ds');
   FFFirePlace.LoadFromFile('fireplace.3ds');
 
+  // Loading cubemaps from .dds files to TGLComposite image
+  //... LoadCubemap(); // not implemented
+
   FireLight := 0.5;
   FTYear.Text := '';
+
+  // Set current dir for audio files
+  SetCurrentDir(Path + '\audio');
 end;
 
 procedure TMain.FormResize(Sender: TObject);
@@ -242,7 +245,7 @@ var
   isArrived: Boolean;
 
 begin
-  TheChristmas := False;
+  TheChristmas := true;   // Merry Christmas or Happy New Year!
   Caption := Format('%.1f FPS', [Viewer.FramesPerSecond]);
   Viewer.ResetPerformanceMonitor;
   if SMBASS.Active and (bStream = 0) then
