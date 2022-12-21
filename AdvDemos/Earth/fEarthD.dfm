@@ -31,10 +31,8 @@ object Form1: TForm1
     OnMouseDown = GLSceneViewerMouseDown
     OnMouseMove = GLSceneViewerMouseMove
     TabOrder = 0
-    ExplicitWidth = 739
-    ExplicitHeight = 559
   end
-  object Scene: TGLScene
+  object GLScene: TGLScene
     ObjectsSorting = osNone
     Left = 16
     Top = 16
@@ -90,11 +88,11 @@ object Form1: TForm1
         Direction.Coordinates = {0000803F000000000000008000000000}
         Up.Coordinates = {00000000000000000000803F00000000}
       end
-      object DCMoon: TGLDummyCube
+      object dcMoon: TGLDummyCube
         Up.Coordinates = {FC9D7FB10000803F0000000000000000}
         CubeSize = 1.000000000000000000
-        object SPMoon: TGLSphere
-          Material.MaterialLibrary = MatLib
+        object SphereMoon: TGLSphere
+          Material.MaterialLibrary = GLMatLib
           Material.LibMaterialName = 'moon'
           Direction.Coordinates = {DAD031BE000000005B1C7CBF00000000}
           Position.Coordinates = {CDCCECC100000000000000000000803F}
@@ -105,9 +103,9 @@ object Form1: TForm1
           Stacks = 32
         end
       end
-      object SPEarth: TGLSphere
-        Material.MaterialLibrary = MatLib
-        Material.LibMaterialName = 'earthDay'
+      object SphereEarth: TGLSphere
+        Material.MaterialLibrary = GLMatLib
+        Material.LibMaterialName = 'earth'
         Direction.Coordinates = {000000000000803F0000000000000000}
         TurnAngle = -150.000000000000000000
         Up.Coordinates = {00000000000000800000803F00000000}
@@ -121,21 +119,21 @@ object Form1: TForm1
         Blend = False
       end
     end
-    object LSSun: TGLLightSource
+    object LightSourceSun: TGLLightSource
       ConstAttenuation = 1.000000000000000000
       Position.Coordinates = {00D0044600D00446000000000000803F}
       Specular.Color = {0000803F0000803F0000803F0000803F}
       SpotCutOff = 180.000000000000000000
-      object GLLensFlare1: TGLLensFlare
+      object LensFlareSun: TGLLensFlare
         Seed = 1465
         FlareIsNotOccluded = True
       end
     end
   end
-  object Cadencer: TGLCadencer
-    Scene = Scene
+  object GLCadencer: TGLCadencer
+    Scene = GLScene
     MaxDeltaTime = 0.050000000000000000
-    OnProgress = CadencerProgress
+    OnProgress = GLCadencerProgress
     Left = 22
     Top = 92
   end
@@ -144,10 +142,10 @@ object Form1: TForm1
     Left = 348
     Top = 22
   end
-  object MatLib: TGLMaterialLibrary
+  object GLMatLib: TGLMaterialLibrary
     Materials = <
       item
-        Name = 'earthDay'
+        Name = 'earth'
         Tag = 0
         Material.FrontProperties.Diffuse.Color = {0000803F0000803F0000803F0000803F}
         Material.Texture.Image.Picture.Data = {
@@ -3483,7 +3481,7 @@ object Form1: TForm1
         Material.Texture.FilteringQuality = tfAnisotropic
         Material.Texture.Disabled = False
         Texture2Name = 'earthNight'
-        Shader = EarthCombiner
+        Shader = GLEarthCombiner
       end
       item
         Name = 'earthNight'
@@ -6929,7 +6927,7 @@ object Form1: TForm1
     Left = 134
     Top = 102
   end
-  object EarthCombiner: TGLTexCombineShader
+  object GLEarthCombiner: TGLTexCombineShader
     Combiners.Strings = (
       'Tex0:=Tex0;'
       'Tex1:=InterPolate(Tex0, Tex1, PrimaryColor);'

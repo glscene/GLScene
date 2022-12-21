@@ -2,20 +2,19 @@ object RFaceEditor: TRFaceEditor
   Left = 0
   Top = 0
   Width = 305
-  Height = 180
+  Height = 186
   AutoSize = True
   TabOrder = 0
-  PixelsPerInch = 96
   object Label1: TLabel
     Left = 0
-    Top = 0
+    Top = 6
     Width = 60
     Height = 20
     Caption = 'Shininess'
   end
   object PageControl: TPageControl
     Left = 0
-    Top = 50
+    Top = 56
     Width = 305
     Height = 130
     ActivePage = TSEmission
@@ -78,25 +77,28 @@ object RFaceEditor: TRFaceEditor
       end
     end
   end
-  object Edit: TEdit
-    Left = 219
-    Top = 3
-    Width = 41
-    Height = 21
+  inline TBEShininess: TRTrackBarEdit
+    Left = 50
+    Top = 0
+    Width = 201
+    Height = 33
     TabOrder = 1
-    Text = '0'
-  end
-  object TrackBar: TTrackBar
-    Left = 63
-    Top = 3
-    Width = 150
-    Height = 20
-    Max = 255
-    PageSize = 10
-    Frequency = 32
-    TabOrder = 2
-    ThumbLength = 10
-    TickMarks = tmTopLeft
+    ExplicitLeft = 50
+    ExplicitWidth = 201
+    ExplicitHeight = 33
+    inherited TrackBar: TTrackBar
+      Left = -2
+      Top = 1
+      Max = 128
+      Frequency = 16
+      OnChange = TBEShininessTrackBarChange
+      ExplicitLeft = -2
+      ExplicitTop = 1
+    end
+    inherited Edit: TEdit
+      Left = 160
+      ExplicitLeft = 160
+    end
   end
   object ImageList: TImageList
     Left = 264

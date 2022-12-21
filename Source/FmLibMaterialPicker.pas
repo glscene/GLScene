@@ -72,8 +72,7 @@ begin
   begin
     materialLibrary.SetNamesToTStrings(LBMaterials.Items);
     ItemIndex := Items.IndexOf(materialName);
-    if (ItemIndex < 0) and (Items.Count > 0) then
-      ItemIndex := 0;
+    if (ItemIndex < 0) and (Items.Count > 0) then ItemIndex := 0;
     BBOk.Enabled := (Items.Count > 0);
   end;
   LBMaterialsClick(Self);

@@ -269,11 +269,7 @@ var
   Color: TColor32;
   ColorStr: string;
 begin
-{$IFDEF COMPILER2005_UP}
   FormatSettings.DecimalSeparator := '.';
-{$ELSE}
-  DecimalSeparator := '.';
-{$ENDIF}
   Gradient.ClearColorStops;
   for i := 0 to s.Count - 1 do
   begin

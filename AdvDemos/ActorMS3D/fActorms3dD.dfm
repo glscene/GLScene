@@ -232,6 +232,7 @@ object FormActorms3d: TFormActorms3d
       item
         Name = 'floor_parquet'
         Tag = 0
+        Material.BackProperties.Emission.Color = {CFCE4E3F00000000000000000000803F}
         Material.Texture.ImageClassName = 'TGLBlankImage'
         Material.Texture.Image.ColorFormat = 6408
         Material.Texture.Disabled = False

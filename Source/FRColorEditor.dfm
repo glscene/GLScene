@@ -7,7 +7,6 @@ object RColorEditor: TRColorEditor
   TabOrder = 0
   TabStop = True
   OnResize = FrameResize
-  PixelsPerInch = 96
   object Label1: TLabel
     Left = 0
     Top = 2
@@ -155,7 +154,6 @@ object RColorEditor: TRColorEditor
     TabOrder = 5
     Text = '0'
     OnChange = AlphaEditChange
-    OnDblClick = PAPreviewDblClick
   end
   object ColorDialog: TColorDialog
     Left = 232

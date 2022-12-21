@@ -145,6 +145,7 @@ void _fastcall TForm1::LoadTexture(String AName, String ext)
 	img->LoadFromStream(strm);
 }
 
+// ---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject* Sender)
 {
 	TFileName Path = GetCurrentAssetPath();
@@ -163,9 +164,12 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
 	SetCurrentDir(Path + "//skin//");
 	Actor1->Material->LibMaterialName = MatLib->Materials->Items[4]->Name;  //"Woman4_skin";
 
+	// Loading map for the earth
+	SetCurrentDir(Path + "//map");
+	Globus->Material->Texture->Image->LoadFromFile("earth.jpg");
+
 	// Loading other textures as assets directly to objects
 	SetCurrentDir(Path + "//texture//");
-	Globus->Material->Texture->Image->LoadFromFile("Earth.jpg");
 	GLPlane1->Material->Texture->Image->LoadFromFile("floor_parquet.jpg");
 
 

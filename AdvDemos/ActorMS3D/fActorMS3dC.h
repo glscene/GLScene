@@ -53,7 +53,7 @@ __published:	// IDE-managed Components
 	TGLLightSource *Light2;
 	TGLSphere *Globus;
 	TGLFBORenderer *GLFrameBuffer;
-	TGLDummyCube *Root;
+	TGLDummyCube *dcRoot;
 	TGLLightSource *GLLightSource1;
 	TGLDirectOpenGL *GLDirectOpenGL1;
 	TGLActor *Actor1;

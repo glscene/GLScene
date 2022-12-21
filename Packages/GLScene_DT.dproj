@@ -120,8 +120,6 @@
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="VclSmp.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
-        <DCCReference Include="..\Source\FRFaceEditor.pas"/>
-        <DCCReference Include="..\Source\FRMaterialPreview.pas"/>
         <DCCReference Include="..\Source\FRColorEditor.pas">
             <Form>RColorEditor</Form>
             <DesignClass>TFrame</DesignClass>
@@ -159,9 +157,27 @@
         </DCCReference>
         <DCCReference Include="..\Source\GLS.SceneRegister.pas"/>
         <DCCReference Include="..\Source\GLS.XCollectionRegister.pas"/>
-        <DCCReference Include="..\Source\FmMaterialEditor.pas"/>
         <DCCReference Include="..\Source\FmLibMaterialPicker.pas">
             <Form>GLLibMaterialPickerForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Source\FRTrackBarEdit.pas">
+            <Form>RTrackBarEdit</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\Source\FRFaceEditor.pas">
+            <Form>RFaceEditor</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\Source\FRMaterialPreview.pas">
+            <Form>RMaterialPreview</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\Source\FmMaterialEditor.pas">
+            <Form>GLMaterialEditorForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <RcCompile Include="..\Resources\GLScene.rc">

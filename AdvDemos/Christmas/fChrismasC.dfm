@@ -67,16 +67,16 @@ object Form1: TForm1
     object Camera: TGLCamera
       DepthOfView = 100.000000000000000000
       FocalLength = 50.000000000000000000
-      TargetObject = DCFire
+      TargetObject = dcCameraTarget
       Position.Coordinates = {0000C0400000803F0000E0400000803F}
     end
-    object DCFirTree: TGLDummyCube
+    object dcFirTree: TGLDummyCube
       Position.Coordinates = {000000000000B0C0000000000000803F}
       Scale.Coordinates = {0000A0400000A0400000A04000000000}
       CubeSize = 1.000000000000000000
-      object DCTree: TGLDummyCube
+      object dcTree: TGLDummyCube
         CubeSize = 1.000000000000000000
-        object FFFirTree: TGLFreeForm
+        object ffFirTree: TGLFreeForm
           Material.BackProperties.Ambient.Color = {000000000000003E000000000000803F}
           Material.BackProperties.Diffuse.Color = {000000000000003E000000000000803F}
           Material.FrontProperties.Ambient.Color = {000000000000003E000000000000803F}
@@ -85,12 +85,12 @@ object Form1: TForm1
           Direction.Coordinates = {000000000000803F0000000000000000}
           Up.Coordinates = {0000803F000000000000008000000000}
         end
-        object POFirTree2: TGLProxyObject
-          MasterObject = FFFirTree
+        object poFirTree2: TGLProxyObject
+          MasterObject = ffFirTree
           Direction.Coordinates = {0000003F00000000D7B35D3F00000000}
         end
-        object POFirTree3: TGLProxyObject
-          MasterObject = FFFirTree
+        object poFirTree3: TGLProxyObject
+          MasterObject = ffFirTree
           Direction.Coordinates = {D8B35D3F00000000FFFFFF3E00000000}
         end
         object GLCube3: TGLCube
@@ -108,7 +108,7 @@ object Form1: TForm1
           CubeSize = {0000003F0AD7A33CCDCCCC3D}
         end
       end
-      object DCDecoWhite: TGLDummyCube
+      object dcDecoWhite: TGLDummyCube
         CubeSize = 1.000000000000000000
         object POWhiteBall1: TGLProxyObject
           MasterObject = SPWhiteBall
@@ -123,7 +123,7 @@ object Form1: TForm1
           Position.Coordinates = {CDCCCCBD9A99993E9A99993E0000803F}
         end
       end
-      object DCDecoGold: TGLDummyCube
+      object dcDecoGold: TGLDummyCube
         CubeSize = 1.000000000000000000
         object POGoldBall1: TGLProxyObject
           MasterObject = SPGoldBall
@@ -138,7 +138,7 @@ object Form1: TForm1
           Position.Coordinates = {CDCCCC3D6666A63FCDCCCCBD0000803F}
         end
       end
-      object DCLensFlares: TGLDummyCube
+      object dcLensFlares: TGLDummyCube
         CubeSize = 1.000000000000000000
         object GLLensFlare1: TGLLensFlare
           Seed = 1534
@@ -189,11 +189,11 @@ object Form1: TForm1
         end
       end
     end
-    object DCCameraTarget: TGLDummyCube
+    object dcCameraTarget: TGLDummyCube
       Position.Coordinates = {00008040000000C0000000C00000803F}
       CubeSize = 1.000000000000000000
     end
-    object FFFirePlace: TGLFreeForm
+    object ffFirePlace: TGLFreeForm
       Position.Coordinates = {0000C040000080C00000C0C00000803F}
       Scale.Coordinates = {9A99993E9A99993E9A99993E00000000}
       MaterialLibrary = MaterialLibrary
@@ -336,7 +336,7 @@ object Form1: TForm1
         end
       end
     end
-    object DCGifts: TGLDummyCube
+    object dcGifts: TGLDummyCube
       Visible = False
       CubeSize = 1.000000000000000000
       object GLCube1: TGLCube
@@ -558,7 +558,7 @@ object Form1: TForm1
         CubeSize = {000040403333333F0000803F}
       end
     end
-    object DCBalls: TGLDummyCube
+    object dcBalls: TGLDummyCube
       Visible = False
       CubeSize = 1.000000000000000000
       object SPWhiteBall: TGLSphere
@@ -576,7 +576,7 @@ object Form1: TForm1
         Stacks = 9
       end
     end
-    object LSRoom: TGLLightSource
+    object LightSourceRoom: TGLLightSource
       Ambient.Color = {0000803F0000803F0000803F0000803F}
       ConstAttenuation = 1.000000000000000000
       LinearAttenuation = 0.003000000026077032
@@ -592,7 +592,7 @@ object Form1: TForm1
       Up.Coordinates = {0000000000000000000080BF00000000}
       Height = 16.000000000000000000
       Width = 20.000000000000000000
-      ShadowingObject = DCTree
+      ShadowingObject = dcTree
       ShadowedLight = LSFire
       ShadowColor.Color = {0000000000000000000000009A99993E}
     end
@@ -605,7 +605,7 @@ object Form1: TForm1
       Elements = [feGlow]
       Position.Coordinates = {0000C040000080C0000040C00000803F}
     end
-    object FTCongratulations: TGLFlatText
+    object ftCongratulations: TGLFlatText
       Position.Coordinates = {666686407B142E3E000040C00000803F}
       Scale.Coordinates = {0AD7A33C0AD7A33C0AD7A33C00000000}
       BitmapFont = WindowsBitmapFont
@@ -615,7 +615,7 @@ object Form1: TForm1
       ModulateColor.Color = {295C4F3F8FC2353F1F856B3E0000803F}
       Options = []
     end
-    object FTYear: TGLFlatText
+    object ftYear: TGLFlatText
       Position.Coordinates = {CDCCAC40CDCC8CBF000040C00000803F}
       Scale.Coordinates = {0AD7A33C0AD7A33C0AD7A33C00000000}
       BitmapFont = WindowsBitmapFont
@@ -625,7 +625,7 @@ object Form1: TForm1
       ModulateColor.Color = {295C4F3F8FC2353F1F856B3E0000803F}
       Options = []
     end
-    object FTCountDown: TGLFlatText
+    object ftCountDown: TGLFlatText
       Position.Coordinates = {CDCC8C409A99D9BF000040C00000803F}
       Scale.Coordinates = {8FC2753C8FC2753C8FC2753C00000000}
       BitmapFont = WindowsBitmapFont
@@ -5424,17 +5424,16 @@ object Form1: TForm1
     FireDir.Coordinates = {000000009A99993E0000000000000000}
     InitialDir.Coordinates = {00000000CDCC4C3E0000000000000000}
     Cadencer = Cadencer
-    MaxParticles = 128
-    ParticleSize = 0.150000005960464500
+    ParticleSize = 0.200000002980232200
     InnerColor.Color = {0000803FF8FEFE3E000000000000803F}
-    FireDensity = 0.600000023841857900
-    FireEvaporation = 0.860000014305114700
-    ParticleLife = 2
+    FireDensity = 1.000000000000000000
+    FireEvaporation = 1.000000000000000000
+    ParticleLife = 5
     FireBurst = 1.000000000000000000
-    FireRadius = 0.100000001490116100
+    FireRadius = 0.800000011920929000
     Disabled = False
     Paused = False
-    ParticleInterval = 0.039999999105930330
+    ParticleInterval = 0.009999999776482582
     UseInterval = True
     Reference = CYLog
     Left = 24

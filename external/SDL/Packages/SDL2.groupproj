@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{DB6EE1DF-F389-4BFA-BB88-1CAFF1EADAED}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="SDL2_RT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SDL2_DT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SDL2_Frame.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SDL2_RT">
+        <MSBuild Projects="SDL2_RT.dproj"/>
+    </Target>
+    <Target Name="SDL2_RT:Clean">
+        <MSBuild Projects="SDL2_RT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SDL2_RT:Make">
+        <MSBuild Projects="SDL2_RT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SDL2_DT">
+        <MSBuild Projects="SDL2_DT.dproj"/>
+    </Target>
+    <Target Name="SDL2_DT:Clean">
+        <MSBuild Projects="SDL2_DT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SDL2_DT:Make">
+        <MSBuild Projects="SDL2_DT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SDL2_Frame">
+        <MSBuild Projects="SDL2_Frame.dproj"/>
+    </Target>
+    <Target Name="SDL2_Frame:Clean">
+        <MSBuild Projects="SDL2_Frame.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SDL2_Frame:Make">
+        <MSBuild Projects="SDL2_Frame.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SDL2_RT;SDL2_DT;SDL2_Frame"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SDL2_RT:Clean;SDL2_DT:Clean;SDL2_Frame:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SDL2_RT:Make;SDL2_DT:Make;SDL2_Frame:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

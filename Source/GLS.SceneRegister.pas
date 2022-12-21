@@ -395,6 +395,7 @@ uses
   GLS.FileASE,
   GLS.FileB3D,
   GLS.FileGL2,
+  GLS.FileGLTF,
   GLS.FileGTS,
   GLS.FileLMTS,
   GLS.FileLWO,

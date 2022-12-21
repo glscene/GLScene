@@ -51,20 +51,20 @@ type
     Scene: TGLScene;
     Viewer: TGLSceneViewer;
     Camera: TGLCamera;
-    DCFirTree: TGLDummyCube;
+    dcFirTree: TGLDummyCube;
     FFFirTree: TGLFreeForm;
     LSRoom: TGLLightSource;
     POFirTree2: TGLProxyObject;
     POFirTree3: TGLProxyObject;
     Cadencer: TGLCadencer;
-    DCCameraTarget: TGLDummyCube;
+    dcCameraTarget: TGLDummyCube;
     FFFirePlace: TGLFreeForm;
     MaterialLibrary: TGLMaterialLibrary;
     LSFire: TGLLightSource;
     PFXFire: TGLPolygonPFXManager;
-    DCFireSource: TGLDummyCube;
+    dcFireSource: TGLDummyCube;
     ParticleFXRenderer: TGLParticleFXRenderer;
-    CYLog: TGLCylinder;
+    cyLog: TGLCylinder;
     DCLensFlares: TGLDummyCube;
     LensFlare1: TGLLensFlare;
     LensFlare2: TGLLensFlare;
@@ -73,7 +73,7 @@ type
     SMBASS: TGLSMBASS;
     SoundLibrary: TGLSoundLibrary;
     DCDecoWhite: TGLDummyCube;
-    DCBalls: TGLDummyCube;
+    dcBalls: TGLDummyCube;
     SPWhiteBall: TGLSphere;
     POWhiteBall1: TGLProxyObject;
     SPGoldBall: TGLSphere;
@@ -89,21 +89,20 @@ type
     PFXTree: TGLPolygonPFXManager;
     WindowsBitmapFont: TGLWindowsBitmapFont;
     Cube1: TGLCube;
-    DCGifts: TGLDummyCube;
+    dcGifts: TGLDummyCube;
     Cube2: TGLCube;
     ShadowPlane: TGLShadowPlane;
     DCTree: TGLDummyCube;
     Cube3: TGLCube;
     Cube4: TGLCube;
-    DCFire: TGLDummyCube;
+    dcFire: TGLDummyCube;
     ScreenSaver: TGLScreenSaver;
     Timer: TTimer;
     HUDSprite: TGLHUDSprite;
-    FTCountDown: TGLFlatText;
-    FTYear: TGLFlatText;
-    FTCongratulations: TGLFlatText;
+    ftCountDown: TGLFlatText;
+    ftYear: TGLFlatText;
+    ftCongratulations: TGLFlatText;
     FireFXManager: TGLFireFXManager;
-    MaterialLibraryCM: TGLMaterialLibrary;
     procedure FormCreate(Sender: TObject);
     procedure CadencerProgress(Sender: TObject;
       const deltaTime, newTime: Double);
@@ -126,7 +125,6 @@ type
     FireLight: Single;
     inPreview, inSaver: Boolean;
     bStream: Cardinal;
-    function LoadCubemap(Matname, Filename: string): TGLLibMaterial;
   end;
 
 var
@@ -136,13 +134,6 @@ implementation
 
 {$R *.dfm}
 
-function TMain.LoadCubemap(Matname, Filename: string): TGLLibMaterial;
-begin
-  Result := MaterialLibraryCM.AddTextureMaterial(Matname, Filename);
-  Result.Material.Texture.Disabled := False;
-  Result.Material.Texture.TextureMode := tmDecal;
-end;
-
 procedure TMain.FormCreate(Sender: TObject);
 begin
   Path := GetCurrentAssetPath();
@@ -150,11 +141,8 @@ begin
   Randomize;
   // Load static models
   SetCurrentDir(Path + '\model');
-  FFFirTree.LoadFromFile('firtree.3ds');
-  FFFirePlace.LoadFromFile('fireplace.3ds');
-
-  // Loading cubemaps from .dds files to TGLComposite image
-  //... LoadCubemap(); // not implemented
+  ffFirTree.LoadFromFile('firtree.3ds');
+  ffFirePlace.LoadFromFile('fireplace.3ds');
 
   FireLight := 0.5;
   FTYear.Text := '';
@@ -258,16 +246,16 @@ begin
   if TheChristmas then
   begin
     t := EncodeDate(Y, 12, 25) - Now();
-    FTCongratulations.Text := 'Merry Christmas!';
+    ftCongratulations.Text := 'Merry Christmas!';
   end
   else
   begin
     t := EncodeDate(Y + 1, 01, 01) - Now();
-    FTCongratulations.Text := 'Happy New Year!';
-    FTYear.Text := IntToStr(Y + 1);
+    ftCongratulations.Text := 'Happy New Year!';
+    ftYear.Text := IntToStr(Y + 1);
   end;
   if (t < 1) and (t > -1) then
-    DCGifts.Visible := True;
+    dcGifts.Visible := True;
   if t >= 2 then
   begin
     buf := IntToStr(Trunc(t)) + ' days, ';
@@ -276,7 +264,7 @@ begin
       buf := buf + IntToStr(i) + ' hours...'
     else
       buf := buf + IntToStr(i) + ' hour...';
-    FTCountDown.Text := buf;
+    ftCountDown.Text := buf;
   end
   else
   begin
@@ -289,12 +277,12 @@ begin
         buf := buf + IntToStr(i) + ' minutes...'
       else
         buf := buf + IntToStr(i) + ' minute...';
-      FTCountDown.Text := buf;
+      ftCountDown.Text := buf;
     end
     else
     begin
       t := t * 60;
-      FTCountDown.Text := IntToStr(Trunc(t)) + ' minutes, ' +
+      ftCountDown.Text := IntToStr(Trunc(t)) + ' minutes, ' +
         IntToStr(Round(Frac(t) * 60)) + ' seconds...';
     end;
   end;

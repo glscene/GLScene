@@ -45,6 +45,7 @@ type
     procedure PAPreviewDblClick(Sender: TObject);
     procedure ColorEditorPaintBoxPaint(Sender: TObject);
     procedure FrameResize(Sender: TObject);
+    procedure RTrackBarEdit1EditChange(Sender: TObject);
     procedure ColorEditorPaintBoxMouseDown(Sender: TObject;
       Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
     procedure ColorEditorPaintBoxMouseMove(Sender: TObject;
@@ -186,6 +187,13 @@ begin
   GreenEdit.Height := 18;
   BlueEdit.Height := 18;
   AlphaEdit.Height := 18;
+
+end;
+
+procedure TRColorEditor.RTrackBarEdit1EditChange(Sender: TObject);
+begin
+//  RTrackBarEdit1.EditChange(Sender);
+
 end;
 
 function ColorValueToColorViewPosition(ColorValue : integer) : integer;

@@ -66,6 +66,10 @@ object GLLibMaterialPickerForm: TGLLibMaterialPickerForm
     ExplicitLeft = 157
     ExplicitTop = 25
     ExplicitHeight = 222
+    inherited GLSceneViewer: TGLSceneViewer
+      Top = 19
+      ExplicitTop = 19
+    end
     inherited CBObject: TComboBox
       Height = 21
       ExplicitHeight = 21
@@ -73,10 +77,6 @@ object GLLibMaterialPickerForm: TGLLibMaterialPickerForm
     inherited CBBackground: TComboBox
       Height = 21
       ExplicitHeight = 21
-    end
-    inherited GLSceneViewer: TGLSceneViewer
-      Top = 19
-      ExplicitTop = 19
     end
     inherited GLScene: TGLScene
       inherited World: TGLDummyCube

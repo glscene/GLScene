@@ -37,20 +37,20 @@ uses
 
 type
   TForm1 = class(TForm)
-    Scene: TGLScene;
+    GLScene: TGLScene;
     GLSceneViewer: TGLSceneViewer;
     Camera: TGLCamera;
-    SPEarth: TGLSphere;
-    LSSun: TGLLightSource;
+    SphereEarth: TGLSphere;
+    LightSourceSun: TGLLightSource;
     DirectOpenGL: TGLDirectOpenGL;
-    Cadencer: TGLCadencer;
+    GLCadencer: TGLCadencer;
     Timer1: TTimer;
-    SPMoon: TGLSphere;
+    SphereMoon: TGLSphere;
     dcEarth: TGLDummyCube;
-    DCMoon: TGLDummyCube;
-    GLLensFlare1: TGLLensFlare;
-    MatLib: TGLMaterialLibrary;
-    EarthCombiner: TGLTexCombineShader;
+    dcMoon: TGLDummyCube;
+    LensFlareSun: TGLLensFlare;
+    GLMatLib: TGLMaterialLibrary;
+    GLEarthCombiner: TGLTexCombineShader;
     Cameracontroller: TGLCamera;
     SkyDome: TGLSkyDome;
     ConstellationLines: TGLLines;
@@ -58,7 +58,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure DirectOpenGLRender(Sender: TObject; var rci: TGLRenderContextInfo);
     procedure Timer1Timer(Sender: TObject);
-    procedure CadencerProgress(Sender: TObject; const deltaTime, newTime: Double);
+    procedure GLCadencerProgress(Sender: TObject; const deltaTime, newTime: Double);
     procedure GLSceneViewerMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
       X, Y: Integer);
     procedure GLSceneViewerMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
@@ -124,10 +124,10 @@ end;
 
 procedure TForm1.GLSceneViewerBeforeRender(Sender: TObject);
 begin
-  GLLensFlare1.PreRender(Sender as TGLSceneBuffer);
+  LensFlareSun.PreRender(Sender as TGLSceneBuffer);
   // if no multitexturing or no combiner support, turn off city lights
-  MatLib.Materials[0].Shader := EarthCombiner;
-  MatLib.Materials[0].Texture2Name := 'earthNight';
+  GLMatLib.Materials[0].Shader := GLEarthCombiner;
+  GLMatLib.Materials[0].Texture2Name := 'earthNight';
 end;
 
 function TForm1.AtmosphereColor(const rayStart, rayEnd: TGLVector): TGLColorVector;
@@ -212,7 +212,7 @@ var
   cosCache, sinCache: array [0 .. cSlices] of Single;
   pVertex, pColor: PVectorArray;
 begin
-  sunPos := LSSun.AbsolutePosition;
+  sunPos := LightSourceSun.AbsolutePosition;
   eyePos := Camera.AbsolutePosition;
 
   diskNormal := VectorNegate(eyePos);
@@ -339,14 +339,14 @@ begin
   GLSceneViewer.ResetPerformanceMonitor;
 end;
 
-procedure TForm1.CadencerProgress(Sender: TObject; const deltaTime, newTime: Double);
+procedure TForm1.GLCadencerProgress(Sender: TObject; const deltaTime, newTime: Double);
 // var
 // d : Double;
 // p : TAffineVector;
 begin
   // d := GMTDateTimeToJulianDay(Now-2+newTime*timeMultiplier);
   // make earth rotate
-  SPEarth.TurnAngle := SPEarth.TurnAngle + deltaTime * TimeMultiplier;
+  SphereEarth.TurnAngle := SphereEarth.TurnAngle + deltaTime * TimeMultiplier;
   { p := ComputePlanetPosition(cSunOrbitalElements, d);
     ScaleVector(p, 0.5*cAUToKilometers*(1/cEarthRadius));
     LSSun.Position.AsAffineVector:=p; }
@@ -356,8 +356,8 @@ begin
   { p := ComputePlanetPosition(cMoonOrbitalElements, d);
     ScaleVector(p, 0.5*cAUToKilometers*(1/cEarthRadius)); }
 
-  DCMoon.TurnAngle := DCMoon.TurnAngle + deltaTime * TimeMultiplier / 29.5;
-  SPMoon.TurnAngle := 180 - DCMoon.TurnAngle;
+  dcMoon.TurnAngle := dcMoon.TurnAngle + deltaTime * TimeMultiplier / 29.5;
+  SphereMoon.TurnAngle := 180 - dcMoon.TurnAngle;
 
   // honour camera movements
   if (dmy <> 0) or (dmx <> 0) then
@@ -450,10 +450,10 @@ begin
       Close;
     'm', 'M':
       begin
-        Camera.MoveTo(SPMoon);
-        Cameracontroller.MoveTo(SPMoon);
-        Camera.TargetObject := SPMoon;
-        Cameracontroller.TargetObject := SPMoon;
+        Camera.MoveTo(SphereMoon);
+        Cameracontroller.MoveTo(SphereMoon);
+        Camera.TargetObject := SphereMoon;
+        Cameracontroller.TargetObject := SphereMoon;
       end;
     'e', 'E':
       begin
@@ -468,7 +468,7 @@ begin
         GLSceneViewer.Cursor := crHourGlass;
         try
           SetCurrentDir(Path + '\map');
-          with MatLib do
+          with GLMatLib do
           begin
             LoadHighResTexture(Materials[0], 'earth_ocean_ice_4096.jpg');
             LoadHighResTexture(Materials[1], 'earth_ocean_ice_lights_4096.jpg');

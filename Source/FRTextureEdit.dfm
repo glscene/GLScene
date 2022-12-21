@@ -6,7 +6,6 @@ object RTextureEdit: TRTextureEdit
   ParentShowHint = False
   ShowHint = True
   TabOrder = 0
-  PixelsPerInch = 96
   DesignSize = (
     230
     187)
@@ -73,7 +72,7 @@ object RTextureEdit: TRTextureEdit
     Left = 75
     Top = 48
     Width = 154
-    Height = 21
+    Height = 28
     Style = csDropDownList
     TabOrder = 0
     OnChange = CBMagFilterChange
@@ -82,7 +81,7 @@ object RTextureEdit: TRTextureEdit
     Left = 75
     Top = 72
     Width = 154
-    Height = 21
+    Height = 28
     Style = csDropDownList
     TabOrder = 1
     OnChange = CBMinFilterChange
@@ -91,7 +90,7 @@ object RTextureEdit: TRTextureEdit
     Left = 75
     Top = 120
     Width = 154
-    Height = 21
+    Height = 28
     Style = csDropDownList
     TabOrder = 2
     OnChange = CBTextureModeChange
@@ -100,7 +99,7 @@ object RTextureEdit: TRTextureEdit
     Left = 75
     Top = 144
     Width = 154
-    Height = 21
+    Height = 28
     Style = csDropDownList
     TabOrder = 3
     OnChange = CBTextureWrapChange
@@ -118,7 +117,7 @@ object RTextureEdit: TRTextureEdit
     Left = 75
     Top = 0
     Width = 138
-    Height = 21
+    Height = 28
     Style = csDropDownList
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 5
@@ -128,7 +127,7 @@ object RTextureEdit: TRTextureEdit
     Left = 75
     Top = 24
     Width = 154
-    Height = 21
+    Height = 28
     Style = csDropDownList
     TabOrder = 6
     OnChange = CBImageAlphaChange
@@ -137,7 +136,7 @@ object RTextureEdit: TRTextureEdit
     Left = 75
     Top = 96
     Width = 154
-    Height = 21
+    Height = 28
     Style = csDropDownList
     TabOrder = 7
     OnChange = CBFilteringQualityChange

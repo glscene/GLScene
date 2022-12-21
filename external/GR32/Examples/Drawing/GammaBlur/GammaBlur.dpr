@@ -1,7 +1,5 @@
 program GammaBlur;
-
 {$R 'Media.res' 'Media.rc'}
-
 uses
   Forms,
   fGammaBlur in 'fGammaBlur.pas' {FormGammaBlur};

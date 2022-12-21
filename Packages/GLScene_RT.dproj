@@ -200,7 +200,6 @@
         <DCCReference Include="..\Source\GLS.FileDDS.pas"/>
         <DCCReference Include="..\Source\GLS.FileDXF.pas"/>
         <DCCReference Include="..\Source\GLS.FileGL2.pas"/>
-        <DCCReference Include="..\Source\GLS.FileGLB.pas"/>
         <DCCReference Include="..\Source\GLS.FileGLTF.pas"/>
         <DCCReference Include="..\Source\GLS.FileGRD.pas"/>
         <DCCReference Include="..\Source\GLS.FileGTS.pas"/>

@@ -1,1 +1,0 @@
-The directory for external DLL libraries

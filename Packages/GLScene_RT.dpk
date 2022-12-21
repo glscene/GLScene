@@ -95,7 +95,6 @@ contains
   GLS.FileDDS in '..\Source\GLS.FileDDS.pas',
   GLS.FileDXF in '..\Source\GLS.FileDXF.pas',
   GLS.FileGL2 in '..\Source\GLS.FileGL2.pas',
-  GLS.FileGLB in '..\Source\GLS.FileGLB.pas',
   GLS.FileGLTF in '..\Source\GLS.FileGLTF.pas',
   GLS.FileGRD in '..\Source\GLS.FileGRD.pas',
   GLS.FileGTS in '..\Source\GLS.FileGTS.pas',

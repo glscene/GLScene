@@ -126,17 +126,17 @@ object Form1: TForm1
       DepthOfView = 20.000000000000000000
       FocalLength = 70.000000000000000000
       Position.Coordinates = {0000A0400000A0400000A0400000803F}
-      object Light2: TGLLightSource
-        Ambient.Color = {6666663F6666663F6666663F0000803F}
-        ConstAttenuation = 0.600000023841857900
-        Diffuse.Color = {CDCC4C3FCDCC4C3FCDCC4C3F0000803F}
-        Specular.Color = {0000803F0000803F0000803F0000803F}
-        SpotCutOff = 80.000000000000000000
-        SpotDirection.Coordinates = {00000000000000000000803F00000000}
-        SpotExponent = 1.000000000000000000
-        object Globus: TGLSphere
-          Material.Texture.Disabled = False
-          Radius = 0.500000000000000000
+      object Globus: TGLSphere
+        Material.Texture.Disabled = False
+        Radius = 0.500000000000000000
+        object Light2: TGLLightSource
+          Ambient.Color = {6666663F6666663F6666663F0000803F}
+          ConstAttenuation = 0.600000023841857900
+          Diffuse.Color = {CDCC4C3FCDCC4C3FCDCC4C3F0000803F}
+          Specular.Color = {0000803F0000803F0000803F0000803F}
+          SpotCutOff = 80.000000000000000000
+          SpotDirection.Coordinates = {00000000000000000000803F00000000}
+          SpotExponent = 1.000000000000000000
         end
       end
     end
@@ -147,24 +147,24 @@ object Form1: TForm1
       MaterialLibrary = MatLib
       ClearOptions = [coDepthBufferClear, coUseBufferBackground]
       Camera = GLCamera2
-      RootObject = Root
+      RootObject = dcRoot
       EnabledRenderBuffers = []
       BeforeRender = GLFrameBufferBeforeRender
       AfterRender = GLFrameBufferAfterRender
     end
-    object Root: TGLDummyCube
+    object dcRoot: TGLDummyCube
       CubeSize = 1.000000000000000000
+      object GLDirectOpenGL1: TGLDirectOpenGL
+        UseBuildList = False
+        OnRender = GLDirectOpenGL1Render
+        Blend = False
+      end
       object GLLightSource1: TGLLightSource
         Ambient.Color = {CDCC0C3FCDCC0C3FCDCC0C3F0000803F}
         ConstAttenuation = 1.000000000000000000
         Position.Coordinates = {0000A040000080400000A0400000803F}
         Shining = False
         SpotCutOff = 80.000000000000000000
-      end
-      object GLDirectOpenGL1: TGLDirectOpenGL
-        UseBuildList = False
-        OnRender = GLDirectOpenGL1Render
-        Blend = False
       end
       object Actor1: TGLActor
         Material.BackProperties.Ambient.Color = {8D8C0C3FCDCC4C3E8180003D0000803F}

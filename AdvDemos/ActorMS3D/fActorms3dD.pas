@@ -152,9 +152,11 @@ begin
   // Actor1.Material.LibMaterialName :=  'Woman4_skin';
   Actor1.Material.Texture.Image.LoadFromFile('Woman_skin.jpg');
 
+	// Loading map for the earth
+	SetCurrentDir(Path + '\map');
+ 	Globus.Material.Texture.Image.LoadFromFile('earth.jpg');
 	// Loading other textures as assets directly to objects
 	SetCurrentDir(Path + '\texture');
-	Globus.Material.Texture.Image.LoadFromFile('Earth.jpg');
 	GLPlane1.Material.Texture.Image.LoadFromFile('floor_parquet.jpg');
   // Loading a lightspot image
   MatLib.AddTextureMaterial('Lightspot','Flare1.bmp');

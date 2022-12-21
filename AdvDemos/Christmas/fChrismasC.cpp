@@ -48,10 +48,10 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
 	Randomize();
 
 	SetCurrentDir(Path + "\\model");
-	FFFirTree->LoadFromFile("firtree.3ds");
-	FFFirePlace->LoadFromFile("fireplace.3ds");
+	ffFirTree->LoadFromFile("firtree.3ds");
+	ffFirePlace->LoadFromFile("fireplace.3ds");
 	fireLight = 0.5;
-	FTYear->Text = "";
+	ftYear->Text = "";
 
 	// Set current dir for audio files
 	SetCurrentDir(Path + "\\audio");
@@ -100,17 +100,18 @@ void __fastcall TForm1::TimerTimer(TObject* Sender)
 	// t = EncodeDate(y+1, 01, 01) - Now(); //Happy New Year!
 	if (TheChristmas) {
 		t = EncodeDate(y, 12, 25) - Now();
-        FTCongratulations->Text = "Merry Christmas!";
+		ftCongratulations->Text = "Merry Christmas!";
     } else {
         t = EncodeDate(y + 1, 01, 01) - Now();
-        FTCongratulations->Text = "Happy New Year!";
-        FTYear->Text = IntToStr(y + 1);
-    }
+		ftCongratulations->Text = "Happy New Year!";
+		ftYear->Text = IntToStr(y + 1);
+	}
+	if ((double)t < 0)
+		ftCountDown->Text = "Merry Christmas!";
 
-    if ((double)t < 0)
-        FTCountDown->Text = "Merry Christmas!";
-    if (((double)t < 1) && ((double)t > -1))
-        DCGifts->Visible = true;
+	// t = 0; // true Christmas or New Year event
+	if (((double)t < 1) && ((double)t > -1))
+		dcGifts->Visible = true;
     if ((double)t >= 2) {
         buf = IntToStr(Floor((double)t)) + " days, ";
         i = (Int)(Frac((double)t) * 24);
@@ -118,30 +119,30 @@ void __fastcall TForm1::TimerTimer(TObject* Sender)
             buf = buf + IntToStr(i) + " hours...";
         else
             buf = buf + IntToStr(i) + " hour...";
-        FTCountDown->Text = buf;
+		ftCountDown->Text = buf;
     } else {
         t = (double)t * 24;
         if ((double)t > 1) {
-            buf = IntToStr((int)t) + " hours, ";
+			buf = IntToStr((int)t) + " hours, ";
             i = RoundInt(Frac((double)t) * 60);
             if (i > 1)
                 buf = buf + IntToStr(i) + " minutes...";
             else
-                buf = buf + IntToStr(i) + " minute...";
-            FTCountDown->Text = buf;
-        } else {
-            t = (double)t * 60;
-            i = RoundInt(((double)t - Floor(t)) * 60);
-            FTCountDown->Text =
-                IntToStr((int)t) + " minutes, " + IntToStr(i) + " seconds...";
-        }
-    }
+				buf = buf + IntToStr(i) + " minute...";
+			ftCountDown->Text = buf;
+		} else {
+			t = (double)t * 60;
+			i = RoundInt(((double)t - Floor(t)) * 60);
+			ftCountDown->Text =
+				IntToStr((int)t) + " minutes, " + IntToStr(i) + " seconds...";
+		}
+	}
 }
 
 // ---------------------------------------------------------------------------
 
 void __fastcall TForm1::CadencerProgress(
-    TObject* Sender, const double deltaTime, const double newTime)
+	TObject* Sender, const double deltaTime, const double newTime)
 {
     fireLight = ClampValue(fireLight + Random() * 0.4 - 0.2, 0, 1);
     LSFire->Diffuse->Color =
@@ -149,7 +150,7 @@ void __fastcall TForm1::CadencerProgress(
     LSFire->Position->Y = fireLight * 0.1;
 
     if (inPreview)
-        HUDSprite->Visible = false;
+		HUDSprite->Visible = false;
     if (Visible) {
         HUDSprite->Material->FrontProperties->Diffuse->Alpha =
             HUDSprite->Material->FrontProperties->Diffuse->Alpha -
@@ -157,7 +158,7 @@ void __fastcall TForm1::CadencerProgress(
         if (HUDSprite->Material->FrontProperties->Diffuse->Alpha < 0.01)
             HUDSprite->Visible = false;
     }
-    DCFirTree->Turn(deltaTime);
+	dcFirTree->Turn(deltaTime);
     Viewer->Invalidate();
 }
 

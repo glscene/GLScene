@@ -5,7 +5,19 @@ object RMaterialPreview: TRMaterialPreview
   Height = 230
   AutoSize = True
   TabOrder = 0
-  PixelsPerInch = 96
+  object GLSceneViewer: TGLSceneViewer
+    Left = 0
+    Top = 27
+    Width = 202
+    Height = 203
+    Camera = Camera
+    FieldOfView = 71.615516662597660000
+    PenAsTouch = False
+    OnMouseDown = SceneViewerMouseDown
+    OnMouseMove = SceneViewerMouseMove
+    OnMouseWheel = SceneViewerMouseWheel
+    TabOrder = 2
+  end
   object CBObject: TComboBox
     Left = 0
     Top = 0
@@ -35,16 +47,6 @@ object RMaterialPreview: TRMaterialPreview
       'on a blue background'
       'on a red background'
       'on a green background')
-  end
-  object GLSceneViewer: TGLSceneViewer
-    Left = 0
-    Top = 27
-    Width = 202
-    Height = 203
-    Camera = Camera
-    FieldOfView = 71.615516662597660000
-    PenAsTouch = False
-    TabOrder = 2
   end
   object GLScene: TGLScene
     ObjectsSorting = osNone

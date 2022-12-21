@@ -42,7 +42,7 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
         Left = 0
         Top = 0
         Width = 305
-        Height = 180
+        Height = 186
         AutoSize = True
         TabOrder = 0
         inherited Label1: TLabel
@@ -68,10 +68,6 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
             ExplicitTop = 24
             ExplicitHeight = 102
           end
-        end
-        inherited Edit: TEdit
-          Height = 21
-          ExplicitHeight = 21
         end
         inherited ImageList: TImageList
           Top = 0
@@ -85,7 +81,7 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
         Left = 0
         Top = 0
         Width = 305
-        Height = 180
+        Height = 186
         AutoSize = True
         TabOrder = 0
         inherited Label1: TLabel
@@ -111,10 +107,6 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
             ExplicitTop = 24
             ExplicitHeight = 102
           end
-        end
-        inherited Edit: TEdit
-          Height = 21
-          ExplicitHeight = 21
         end
       end
     end

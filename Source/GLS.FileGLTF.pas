@@ -3,7 +3,7 @@
 //
 unit GLS.FileGLTF;
 
-(* glTF/GLB formats implementation. *)
+(* glTF/glb formats implementation. *)
 
 interface
 
@@ -25,12 +25,20 @@ uses
 type
   (* The glTF format is a runtime asset delivery format
     for GL APIs: WebGL, OpenGL ES OpenGL and Vulkan. *)
-  TGLTFVectorFile = class(TGLVectorFile)
+  TGLglTFVectorFile = class(TGLVectorFile)
   public
     class function Capabilities: TGLDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
     procedure SaveToStream(aStream: TStream); override;
   end;
+
+
+{$IFDEF USE_MULTITHREAD}
+  threadvar
+{$ELSE}
+  var
+{$ENDIF}
+  glTFUseEmbeddedColors: Boolean;
 
 // ------------------------------------------------------------------
 implementation
@@ -41,12 +49,12 @@ implementation
 // ------------------
 
 
-class function TGLTFVectorFile.Capabilities: TGLDataFileCapabilities;
+class function TGLglTFVectorFile.Capabilities: TGLDataFileCapabilities;
 begin
   Result := [dfcRead, dfcWrite];
 end;
 
-procedure TGLTFVectorFile.LoadFromStream(aStream: TStream);
+procedure TGLglTFVectorFile.LoadFromStream(aStream: TStream);
 
   procedure AllocateMaterial(const name: String);
   var
@@ -95,13 +103,19 @@ begin
   tl := TStringList.Create;
   try
     sl.LoadFromStream(aStream);
-    /// then reading glts/glb file for GLS skeleton
+    /// then reading glTF/GLB files to assign in TGLSkeletonMeshObject
+    if sl[0] <> 'gltf' then 
+      raise Exception.Create('GLB extention required');
+    if sl[1] <> 'nodes' then
+      raise Exception.Create('nodes not found');
+
 (*
-    if sl[0] <> 'version 1' then
-      raise Exception.Create('GLTF version 1 required');
+    if sl[1] <> 'glb' then  // needs also .bin and .png files for anim and textures 
+      raise Exception.Create('GLTF extention required');
     if sl[1] <> 'nodes' then
       raise Exception.Create('nodes not found');
 *)
+
     if sl.IndexOf('triangles') >= 0 then
     begin
       mesh := TGLSkeletonMeshObject.CreateOwned(Owner.MeshObjects);
@@ -110,7 +124,7 @@ begin
     else if Owner.MeshObjects.Count > 0 then
       mesh := (Owner.MeshObjects[0] as TGLSkeletonMeshObject)
     else
-      raise Exception.Create('Cant load GLTF with an animation');
+      raise Exception.Create('Cant load glTF with an animation');
     // read skeleton nodes
     i := 2;
     if Owner.Skeleton.RootBones.Count = 0 then
@@ -132,7 +146,14 @@ begin
         end;
         Inc(i);
       end;
+    end
+    else
+    begin
+      // animation file, skip structure
+      while sl[i] <> 'end' do
+        Inc(i);
     end;
+	
     Inc(i);
     if sl[i] <> 'skeleton' then
       raise Exception.Create('skeleton not found');
@@ -253,7 +274,7 @@ begin
   end;
 end;
 
-procedure TGLTFVectorFile.SaveToStream(aStream: TStream);
+procedure TGLglTFVectorFile.SaveToStream(aStream: TStream);
 var
   str, nodes: TStrings;
   i, j, k, l, b: Integer;
@@ -345,7 +366,9 @@ end;
 initialization
 // ------------------------------------------------------------------
 
-RegisterVectorFileFormat('gltf', 'ASCII glTF files', TGLTFVectorFile);
-RegisterVectorFileFormat('glb', 'Binary glTF files', TGLTFVectorFile);
+glTFUseEmbeddedColors := False;
+
+RegisterVectorFileFormat('gltf', 'ASCII glTF files', TGLglTFVectorFile);
+RegisterVectorFileFormat('glb', 'Binary glTF files', TGLglTFVectorFile);
 
 end.

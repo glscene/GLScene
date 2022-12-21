@@ -45,7 +45,7 @@ type
 
 type
 
-  TglSTLVectorFile = class(TglVectorFile)
+  TGLSTLVectorFile = class(TGLVectorFile)
   public
     class function Capabilities: TGLDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
