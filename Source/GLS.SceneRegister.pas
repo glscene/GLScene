@@ -168,7 +168,7 @@ type
     procedure GetValues(Proc: TGetStrProc); override;
   end;
 
-  (*  Selection editor for TGLSoundLibrary 
+  (*  Selection editor for TGLSoundLibrary
     Allows units to be added to the uses clause automatically when
     sound files are loaded into a TGLSoundLibrary at design-time. *)
   TGLSoundLibrarySelectionEditor = class(TSelectionEditor)
@@ -969,9 +969,7 @@ var
   Int: IGLMaterialLibrarySupported;
 begin
 
-  if FmMaterialEditor.GLMaterialEditorForm.Execute(
-    TGLMaterial(GetOrdValue))
-  then
+  if FmMaterialEditor.GLMaterialEditorForm.Execute(TGLMaterial(GetOrdValue)) then
     Modified;
 end;
 
@@ -1002,7 +1000,6 @@ begin
   if not Assigned(ml) then
     ShowMessage('Select the material library first.')
   else
-//  if FmMaterialEditor.GLMaterialEditorForm.ExecutePicker(buf, ml) then
   if GLLibMaterialPickerForm.Execute(buf, ml) then
     SetStrValue(buf);
 end;
@@ -1430,10 +1427,10 @@ begin
     ['*Frame*', 'Interval', 'OverlaySkeleton', 'UseMeshmaterials']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLActor,  ['OverlaySkeleton']);
 
-  // GLMesh 
+  // GLMesh
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLMeshMode), TypeInfo(TGLVertexMode)]);
 
-  // GLGraph 
+  // GLGraph
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLHeightFieldOptions)]);
   RegisterPropertiesInCategory(strVisualCategoryName, [TypeInfo(TGLHeightFieldColorMode), TypeInfo(TGLSamplingScale),
     TypeInfo(TGLXYZGridLinesStyle), TypeInfo(TGLXYZGridParts)]);
@@ -1456,7 +1453,7 @@ begin
   RegisterPropertiesInCategory(strOpenGLCategoryName,
     [TypeInfo(TGLMirrorOptions), TypeInfo(TGLBaseSceneObject)]);
 
-  // GLParticleFX 
+  // GLParticleFX
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLBlendingMode)]);
   RegisterPropertiesInCategory(strVisualCategoryName,
     [TypeInfo(TGLBlendingMode), TypeInfo(TPFXLifeColors), TypeInfo(TSpriteColorMode)]);
@@ -1468,11 +1465,11 @@ begin
   RegisterPropertiesInCategory(strVisualCategoryName, TGLPolygonPFXManager, ['NbSides']);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLPointLightPFXManager, ['TexMapSize']);
 
-  // GLTerrainRenderer 
+  // GLTerrainRenderer
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLHeightDataSource)]);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLTerrainRenderer, ['*CLOD*', 'QualityDistance', 'Tile*']);
 
-  // GLzBuffer 
+  // GLzBuffer
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLMemoryViewer),
     TypeInfo(TGLSceneViewer), TypeInfo(TOptimise)]);
   RegisterPropertiesInCategory(strVisualCategoryName, [TypeInfo(TOptimise)]);
@@ -1509,7 +1506,7 @@ begin
   RegisterPropertiesInCategory(strVisualCategoryName, TGLThorFXManager,
     ['Core', 'Glow*', 'Paused', 'Target', 'Vibrate', 'Wildness']);
 
-  // GLBitmapFont 
+  // GLBitmapFont
   RegisterPropertiesInCategory(strOpenGLCategoryName, [TypeInfo(TGLMagFilter), TypeInfo(TGLMinFilter)]);
   RegisterPropertiesInCategory(strLocalizableCategoryName, [TypeInfo(TGLBitmapFontRanges)]);
   RegisterPropertiesInCategory(strLocalizableCategoryName, TGLBitmapFontRange, ['*ASCII']);

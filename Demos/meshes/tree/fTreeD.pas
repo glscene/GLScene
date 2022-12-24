@@ -25,7 +25,7 @@ uses
   GLS.VectorFileObjects,
   GLS.AsyncTimer,
   GLS.Cadencer,
- 
+
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
@@ -93,10 +93,9 @@ type
     AsyncTimer1: TGLAsyncTimer;
     GLCadencer1: TGLCadencer;
     miFPS: TMenuItem;
-    procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
+    procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
       X, Y: Integer);
+    procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure TrackBar1Change(Sender: TObject);
     procedure TrackBar2Change(Sender: TObject);
     procedure TrackBar3Change(Sender: TObject);
@@ -122,8 +121,7 @@ type
     procedure ExportMaterialLibrary1Click(Sender: TObject);
     procedure TrackBar12Change(Sender: TObject);
     procedure AsyncTimer1Timer(Sender: TObject);
-    procedure GLCadencer1Progress(Sender: TObject;
-      const deltaTime, newTime: Double);
+    procedure GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
   public
     mx, my: Integer;
     GLTree1: TGLTree;
@@ -184,8 +182,8 @@ end;
 procedure TFormTree.FormCreate(Sender: TObject);
 begin
   var Path: TFileName := GetCurrentAssetPath();
-  SetCurrentDir(Path  + '\texture');
-  
+  SetCurrentDir(Path + '\texture');
+
   // Set up default textures
   with GLMaterialLibrary1.AddTextureMaterial('LeafFront', 'maple_multi.tga') do
   begin
@@ -214,8 +212,7 @@ begin
   my := Y;
 end;
 
-procedure TFormTree.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
-  X, Y: Integer);
+procedure TFormTree.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
 begin
   if ssLeft in Shift then
     GLCamera1.MoveAroundTarget(my - Y, mx - X)
@@ -385,8 +382,7 @@ begin
   miFPS.Caption := 'Tree Editor - ' + GLSceneViewer1.FramesPerSecondText;
 end;
 
-procedure TFormTree.GLCadencer1Progress(Sender: TObject;
-  const deltaTime, newTime: Double);
+procedure TFormTree.GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
 begin
   GLSceneViewer1.Invalidate;
 end;

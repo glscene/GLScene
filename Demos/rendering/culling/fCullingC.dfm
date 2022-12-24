@@ -24,8 +24,6 @@ object Form1: TForm1
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 610
-    ExplicitHeight = 501
   end
   object Panel2: TPanel
     Left = 681
@@ -34,8 +32,6 @@ object Form1: TForm1
     Height = 516
     Align = alRight
     TabOrder = 1
-    ExplicitLeft = 416
-    ExplicitHeight = 342
     DesignSize = (
       153
       516)

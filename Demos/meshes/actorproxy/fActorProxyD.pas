@@ -40,8 +40,8 @@ type
     GLMaterialLibrary1: TGLMaterialLibrary;
     GLCadencer1: TGLCadencer;
     GLCamera1: TGLCamera;
-    InvisibleDummyCube: TGLDummyCube;
-    GLDummyCube2: TGLDummyCube;
+    dcInvisible: TGLDummyCube;
+    dcShow: TGLDummyCube;
     MasterActor: TGLActor;
     GLActorProxy1: TGLActorProxy;
     GLArrowLine1: TGLArrowLine;
@@ -53,6 +53,7 @@ type
     GLArrowLine2: TGLArrowLine;
     Panel1: TPanel;
     cbActorsAreTurning: TCheckBox;
+    chbShowMasterActor: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure GLCadencer1Progress(Sender: TObject; const deltaTime,
       newTime: Double);
@@ -152,6 +153,10 @@ begin
        GLActorProxy1.Turn(-deltaTime *130);
        GLActorProxy2.Turn(deltaTime *100);
      end;
+
+   	// show master actor
+  	dcInvisible.Visible := chbShowMasterActor.Checked;
+
 
      DoRaycastStuff;
 end;

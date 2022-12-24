@@ -36,11 +36,11 @@ class TForm1 : public TForm
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
 	TPanel *Panel1;
-	TCheckBox *cbActorsAreTurning;
+	TCheckBox *chbActorsAreTurning;
 	TGLScene *GLScene1;
-	TGLDummyCube *InvisibleDummyCube;
+	TGLDummyCube *dcInvisible;
 	TGLActor *MasterActor;
-	TGLDummyCube *GLDummyCube2;
+	TGLDummyCube *dcShow;
 	TGLActorProxy *GLActorProxy1;
 	TGLArrowLine *GLArrowLine1;
 	TGLActorProxy *GLActorProxy2;
@@ -52,6 +52,7 @@ __published:	// IDE-managed Components
 	TGLMaterialLibrary *GLMaterialLibrary1;
 	TGLCadencer *GLCadencer1;
 	TTimer *Timer1;
+	TCheckBox *chbShowMasterActor;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall GLCadencer1Progress(TObject *Sender, const double deltaTime, const double newTime);
 	void __fastcall GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift, int X,

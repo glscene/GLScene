@@ -104,17 +104,20 @@ void __fastcall TForm1::DoRaycastStuff()
 void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
 		  const double newTime)
 {
-	 // Align object to hand
-	 * GLArrowLine1->Matrix  = GLActorProxy1->BoneMatrix("Bip01 R Finger1");
-	 * GLArrowLine2->Matrix  = GLActorProxy2->BoneMatrix("Bip01 R Finger1");
+    // Align object to hand
+    *GLArrowLine1->Matrix = GLActorProxy1->BoneMatrix("Bip01 R Finger1");
+    *GLArrowLine2->Matrix = GLActorProxy2->BoneMatrix("Bip01 R Finger1");
 
-	 // turn actors
-	 if (cbActorsAreTurning->Checked)
-	 {
-	   GLActorProxy1->Turn(-deltaTime *130);
-	   GLActorProxy2->Turn(deltaTime *100);
-	 }
-	 DoRaycastStuff();
+    // turn actors
+    if (chbActorsAreTurning->Checked) {
+        GLActorProxy1->Turn(-deltaTime * 130);
+        GLActorProxy2->Turn(deltaTime * 100);
+    }
+
+	// show master actor
+	dcInvisible->Visible = chbShowMasterActor->Checked;
+
+    DoRaycastStuff();
 }
 
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
@@ -123,4 +126,6 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
    GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------
+
+
 

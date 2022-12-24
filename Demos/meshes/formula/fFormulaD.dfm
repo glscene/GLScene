@@ -3,28 +3,24 @@ object FormFormula: TFormFormula
   Top = 110
   BorderWidth = 5
   Caption = 'Formula'
-  ClientHeight = 349
-  ClientWidth = 754
+  ClientHeight = 279
+  ClientWidth = 603
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 21
-    Width = 371
-    Height = 328
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 17
+    Width = 297
+    Height = 262
     Camera = GLCamera1
-    FieldOfView = 117.253990173339800000
+    FieldOfView = 105.286758422851600000
     PenAsTouch = False
     Align = alLeft
     OnMouseDown = GLSceneViewer1MouseDown
@@ -32,16 +28,12 @@ object FormFormula: TFormFormula
     TabOrder = 0
   end
   object GLSceneViewer2: TGLSceneViewer
-    Left = 383
-    Top = 21
-    Width = 371
-    Height = 328
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 306
+    Top = 17
+    Width = 297
+    Height = 262
     Camera = GLCamera2
-    FieldOfView = 117.253990173339800000
+    FieldOfView = 105.286758422851600000
     PenAsTouch = False
     Align = alRight
     OnMouseDown = GLSceneViewer1MouseDown
@@ -51,37 +43,25 @@ object FormFormula: TFormFormula
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 754
-    Height = 21
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 603
+    Height = 17
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 2
     object Label1: TLabel
       Left = 0
       Top = 0
-      Width = 371
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 297
+      Height = 13
       Alignment = taCenter
       AutoSize = False
       Caption = 'FPS1'
     end
     object Label2: TLabel
-      Left = 380
+      Left = 304
       Top = 0
-      Width = 371
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 297
+      Height = 13
       Alignment = taCenter
       AutoSize = False
       Caption = 'FPS2'

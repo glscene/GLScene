@@ -26,6 +26,8 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
 {
 	int i, j;
 	TFileName Path = GetCurrentAssetPath();
+	SetCurrentDir(Path  + "\\texture");
+
 	GLMaterialLibrary->TexturePaths = GetCurrentDir();
 
 	GLMaterialLibrary->LibMaterialByName("beigemarble")
@@ -35,47 +37,25 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
 	GLMaterialLibrary->LibMaterialByName("walkway")
 		->Material->Texture->Image->LoadFromFile("walkway.jpg");
 
-	// fill the tiled area with random tiles
-	RandSeed = 0;
-
-   for (i=-20;i<=20;i++)
-	 for (j=-20;j<=20;j++) {
-	 // GLTilePlane->Tiles->Item[i][j] = 1; //Random(GLMaterialLibrary->Materials->Count-1)+1;
-	 }
-
-	// set all tile materials to anisotropic,
-	// add them to the material selection combo
-	for (i = 0; i < (GLMaterialLibrary->Materials->Count - 1); i++) {
-		GLMaterialLibrary->Materials->Items[i]
-			->Material->Texture->FilteringQuality = tfAnisotropic;
-		CBMaterial->Items->Add(GLMaterialLibrary->Materials->Items[i]->Name);
-	}
-	CBMaterial->ItemIndex = 0;
-
-/*
-
   // fill the tiled area with random tiles
-  RandSeed := 0;
-  for i := -20 to 20 do
-	for j := -20 to 20 do
-	  GLTilePlane.Tiles[i, j] := Random(GLMaterialLibrary.Materials.Count - 1) + 1;
+    RandSeed = 0;
+    for (int i = -20; i < 20; i++)
+        for (int j = -20; j < 20; j++)
+            GLTilePlane->Tiles[i][j] =
+                Random(GLMaterialLibrary->Materials.Count - 1) + 1;
 
-  // set all tile materials to anisotropic,
-  // add them to the material selection combo
-  for i := 0 to GLMaterialLibrary.Materials.Count - 1 do
-  begin
-	GLMaterialLibrary.Materials[i].Material.Texture.FilteringQuality :=
-	  tfAnisotropic;
-	CBMaterial.Items.Add(GLMaterialLibrary.Materials[i].Name);
-  end;
-  CBMaterial.ItemIndex := 0;
- */
-
+    // set all tile materials to anisotropic add them to the material selection combo
+    for (i = 0; GLMaterialLibrary->Materials->Count - 1; i++) {
+        GLMaterialLibrary->Materials->Items[i]
+            ->Material->Texture->FilteringQuality = tfAnisotropic;
+        CBMaterial->Items->Add(GLMaterialLibrary->Materials->Items[i]->Name);
+    }
+    CBMaterial->ItemIndex = 0;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
-          TPoint &MousePos, bool &Handled)
+		  TPoint &MousePos, bool &Handled)
 {
   GLCamera->AdjustDistanceToTarget(Power(1.1, WheelDelta / 120));
 }
@@ -89,4 +69,5 @@ void __fastcall TForm1::GLDirectOpenGLRender(TObject *Sender, TGLRenderContextIn
   glClear(GL_DEPTH_BUFFER_BIT);
 }
 //---------------------------------------------------------------------------
+
 

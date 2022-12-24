@@ -78,7 +78,8 @@ void __fastcall TForm1::AddMushRooms()
 	 proxy->RollAngle = Random(360);
 	 proxy->PitchAngle = -90;
    }
-   MushRoomCounter = MushRoomCounter + cNbMushrooms; // Inc(mushroomCounter, cNbMushrooms);
+
+   MushRoomCounter = MushRoomCounter + cNbMushrooms;
 }
 
 

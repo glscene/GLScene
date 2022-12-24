@@ -1,13 +1,12 @@
 object RFaceEditor: TRFaceEditor
   Left = 0
   Top = 0
-  Width = 305
-  Height = 186
-  AutoSize = True
+  Width = 355
+  Height = 247
   TabOrder = 0
   object Label1: TLabel
-    Left = 0
-    Top = 6
+    Left = 3
+    Top = 214
     Width = 60
     Height = 20
     Caption = 'Shininess'
@@ -55,11 +54,29 @@ object RFaceEditor: TRFaceEditor
       inline CEEmission: TRColorEditor
         Left = 0
         Top = 0
-        Width = 289
-        Height = 95
+        Width = 341
+        Height = 98
         AutoSize = True
         TabOrder = 0
         TabStop = True
+        ExplicitWidth = 341
+        ExplicitHeight = 98
+        inherited ColorEditorPaintBox: TPaintBox
+          Width = 341
+          Height = 98
+          ExplicitWidth = 341
+          ExplicitHeight = 98
+        end
+        inherited Panel1: TPanel
+          Left = 52
+          Top = 3
+          ExplicitLeft = 52
+          ExplicitTop = 3
+        end
+        inherited ColorDialog: TColorDialog
+          Left = 264
+          Top = 72
+        end
       end
     end
     object TSSpecular: TTabSheet
@@ -99,6 +116,29 @@ object RFaceEditor: TRFaceEditor
       Left = 160
       ExplicitLeft = 160
     end
+  end
+  object TrackBar: TTrackBar
+    Left = 69
+    Top = 213
+    Width = 150
+    Height = 20
+    Max = 128
+    PageSize = 10
+    Frequency = 16
+    TabOrder = 2
+    ThumbLength = 10
+    TickMarks = tmTopLeft
+    OnChange = TrackBarChange
+  end
+  object Edit: TEdit
+    Left = 222
+    Top = 213
+    Width = 41
+    Height = 28
+    TabOrder = 3
+    Text = '0'
+    OnChange = EditChange
+    OnExit = TrackBarChange
   end
   object ImageList: TImageList
     Left = 264

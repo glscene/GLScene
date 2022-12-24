@@ -53,11 +53,11 @@ contains
   FmInfo in '..\Source\FmInfo.pas' {GLInfoForm},
   GLS.SceneRegister in '..\Source\GLS.SceneRegister.pas',
   GLS.XCollectionRegister in '..\Source\GLS.XCollectionRegister.pas',
-  FmLibMaterialPicker in '..\Source\FmLibMaterialPicker.pas' {GLLibMaterialPickerForm},
   FRTrackBarEdit in '..\Source\FRTrackBarEdit.pas' {RTrackBarEdit: TFrame},
   FRFaceEditor in '..\Source\FRFaceEditor.pas' {RFaceEditor: TFrame},
   FRMaterialPreview in '..\Source\FRMaterialPreview.pas' {RMaterialPreview: TFrame},
-  FmMaterialEditor in '..\Source\FmMaterialEditor.pas' {GLMaterialEditorForm};
+  FmMaterialEditor in '..\Source\FmMaterialEditor.pas' {GLMaterialEditorForm},
+  FmLibMaterialPicker in '..\Source\FmLibMaterialPicker.pas' {GLLibMaterialPickerForm};
 
 end.
 

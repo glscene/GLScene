@@ -28,6 +28,9 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::BULoadClick(TObject *Sender)
 {
    TFileName Path = GetCurrentAssetPath();
+   SetCurrentDir(Path + "\\modelext");
+
+
    BUSubdivide->Enabled = true;
 
 //   GLFreeForm1->LoadFromFile("polyhedron.3ds");

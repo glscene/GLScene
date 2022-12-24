@@ -165,8 +165,7 @@ begin
 
   // Normally actors for Quake II Model have one number of frames
   // for all states 198 for actors and 172 for weapon,
-  // frames 173 to 198 are for death
-  // I use this for Hide and show weapon.
+  // frames 173 to 198 are for death. We use this for Hide and show weapon.
   Actor2.Visible := (Actor1.NextFrameIndex < 173);
   if Actor2.Visible then
     Actor2.Synchronize(Actor1);

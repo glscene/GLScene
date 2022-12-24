@@ -2,63 +2,83 @@ object FormActorProxy: TFormActorProxy
   Left = 285
   Top = 192
   Caption = 'Actor Proxy'
-  ClientHeight = 437
-  ClientWidth = 590
+  ClientHeight = 571
+  ClientWidth = 650
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 590
-    Height = 410
+    Width = 650
+    Height = 544
     Camera = GLCamera1
     Buffer.BackgroundColor = 4194304
-    FieldOfView = 152.586074829101600000
+    FieldOfView = 159.167938232421900000
     PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 591
+    ExplicitHeight = 414
   end
   object Panel1: TPanel
     Left = 0
-    Top = 410
-    Width = 590
+    Top = 544
+    Width = 650
     Height = 27
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 410
+    ExplicitWidth = 590
     object cbActorsAreTurning: TCheckBox
-      Left = 13
-      Top = 5
+      Left = 1
+      Top = 1
       Width = 116
-      Height = 17
+      Height = 25
+      Align = alLeft
       Caption = 'Actors are turning'
       Checked = True
       State = cbChecked
       TabOrder = 0
+      ExplicitLeft = 13
+      ExplicitTop = 5
+      ExplicitHeight = 17
+    end
+    object chbShowMasterActor: TCheckBox
+      Left = 532
+      Top = 1
+      Width = 117
+      Height = 25
+      Align = alRight
+      Caption = 'Show master actor'
+      TabOrder = 1
+      ExplicitLeft = 472
     end
   end
   object GLScene1: TGLScene
     Left = 48
     Top = 24
-    object InvisibleDummyCube: TGLDummyCube
+    object dcInvisible: TGLDummyCube
       Visible = False
       CubeSize = 1.000000000000000000
       object MasterActor: TGLActor
         Material.MaterialLibrary = GLMaterialLibrary1
         Material.LibMaterialName = 'Mat2'
         Direction.Coordinates = {000000000000803F0000000000000000}
+        Position.Coordinates = {00000000000080BF000000000000803F}
         Scale.Coordinates = {CDCC4C3DCDCC4C3DCDCC4C3D00000000}
         Up.Coordinates = {0000000000000000000080BF00000000}
         Interval = 50
       end
     end
-    object GLDummyCube2: TGLDummyCube
+    object dcShow: TGLDummyCube
       CubeSize = 1.000000000000000000
       object GLActorProxy1: TGLActorProxy
         MasterObject = MasterActor

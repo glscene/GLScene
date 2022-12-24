@@ -2,24 +2,21 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Subdivide'
-  ClientHeight = 380
-  ClientWidth = 567
+  ClientHeight = 494
+  ClientWidth = 672
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
-  WindowState = wsMaximized
-  PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 450
+    Left = 555
     Top = 0
     Width = 2
-    Height = 380
+    Height = 494
     Align = alRight
     AutoSize = False
     ExplicitLeft = 382
@@ -28,26 +25,30 @@ object Form1: TForm1
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 450
-    Height = 380
+    Width = 555
+    Height = 494
     Camera = GLCamera1
     Buffer.BackgroundColor = 13619151
     Buffer.FaceCulling = False
-    FieldOfView = 150.512878417968800000
+    FieldOfView = 157.112609863281300000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 536
+    ExplicitHeight = 490
   end
   object Panel1: TPanel
-    Left = 452
+    Left = 557
     Top = 0
     Width = 115
-    Height = 380
+    Height = 494
     Align = alRight
     BevelOuter = bvLowered
     TabOrder = 1
+    ExplicitLeft = 452
+    ExplicitHeight = 380
     object LASubdivideTime: TLabel
       Left = 8
       Top = 168

@@ -12,7 +12,6 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   ShowHint = True
-  PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
     Left = 8
@@ -42,9 +41,11 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
         Left = 0
         Top = 0
         Width = 305
-        Height = 186
+        Height = 241
         AutoSize = True
         TabOrder = 0
+        ExplicitWidth = 305
+        ExplicitHeight = 241
         inherited Label1: TLabel
           Width = 45
           Height = 13
@@ -68,6 +69,16 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
             ExplicitTop = 24
             ExplicitHeight = 102
           end
+        end
+        inherited TBEShininess: TRTrackBarEdit
+          inherited Edit: TEdit
+            Height = 21
+            ExplicitHeight = 21
+          end
+        end
+        inherited Edit: TEdit
+          Height = 21
+          ExplicitHeight = 21
         end
         inherited ImageList: TImageList
           Top = 0
@@ -81,9 +92,11 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
         Left = 0
         Top = 0
         Width = 305
-        Height = 186
+        Height = 241
         AutoSize = True
         TabOrder = 0
+        ExplicitWidth = 305
+        ExplicitHeight = 241
         inherited Label1: TLabel
           Width = 45
           Height = 13
@@ -107,6 +120,16 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
             ExplicitTop = 24
             ExplicitHeight = 102
           end
+        end
+        inherited TBEShininess: TRTrackBarEdit
+          inherited Edit: TEdit
+            Height = 21
+            ExplicitHeight = 21
+          end
+        end
+        inherited Edit: TEdit
+          Height = 21
+          ExplicitHeight = 21
         end
       end
     end

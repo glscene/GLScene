@@ -12,7 +12,7 @@ uses
   Vcl.Dialogs,
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
-  
+
   GLS.Scene,
   GLS.Context,
   GLS.VectorTypes,
@@ -24,7 +24,7 @@ uses
   GLS.Cadencer,
   GLS.Imposter,
   GLS.SkyDome,
- 
+
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.RenderContextInfo;
@@ -48,14 +48,11 @@ type
     CBSampleSize: TComboBox;
     Label2: TLabel;
     LabelFPS: TLabel;
-    procedure GLDirectOpenGL1Render(Sender: TObject;
-      var rci: TGLRenderContextInfo);
-    procedure GLCadencer1Progress(Sender: TObject;
-      const deltaTime, newTime: Double);
+    procedure GLDirectOpenGL1Render(Sender: TObject; var rci: TGLRenderContextInfo);
+    procedure GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
-    procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
-      X, Y: Integer);
+    procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure CBSampleSizeChange(Sender: TObject);
     procedure CBShowImposterClick(Sender: TObject);
     procedure CBShowTeapotClick(Sender: TObject);
@@ -93,8 +90,7 @@ begin
   impBuilder.RequestImposterFor(GLTeapot1);
 end;
 
-procedure TFormImposter.GLDirectOpenGL1Render(Sender: TObject;
-  var rci: TGLRenderContextInfo);
+procedure TFormImposter.GLDirectOpenGL1Render(Sender: TObject; var rci: TGLRenderContextInfo);
 var
   camPos, pos: TGLVector;
   imp: TImposter;
@@ -115,8 +111,7 @@ begin
   imp.EndRender(rci);
 end;
 
-procedure TFormImposter.GLCadencer1Progress(Sender: TObject;
-  const deltaTime, newTime: Double);
+procedure TFormImposter.GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
 begin
   GLSceneViewer1.Invalidate;
 end;
@@ -133,8 +128,7 @@ begin
 
 end;
 
-procedure TFormImposter.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
-  X, Y: Integer);
+procedure TFormImposter.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
 begin
   if ssLeft in Shift then
   begin

@@ -3,43 +3,34 @@ object FormSubdivide: TFormSubdivide
   Top = 100
   BorderWidth = 2
   Caption = 'Subdivide'
-  ClientHeight = 511
-  ClientWidth = 773
+  ClientHeight = 409
+  ClientWidth = 618
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   ShowHint = True
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object Label1: TLabel
-    Left = 626
+    Left = 501
     Top = 0
-    Width = 3
-    Height = 511
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 2
+    Height = 409
     Align = alRight
     AutoSize = False
   end
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 626
-    Height = 511
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 501
+    Height = 409
     Camera = GLCamera1
     Buffer.BackgroundColor = 13619151
     Buffer.FaceCulling = False
-    FieldOfView = 157.854904174804700000
+    FieldOfView = 152.521591186523400000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -47,93 +38,65 @@ object FormSubdivide: TFormSubdivide
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 629
+    Left = 503
     Top = 0
-    Width = 144
-    Height = 511
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 115
+    Height = 409
     Align = alRight
     BevelOuter = bvLowered
     TabOrder = 1
     object LASubdivideTime: TLabel
-      Left = 10
-      Top = 210
-      Width = 121
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 168
+      Width = 97
+      Height = 13
       Alignment = taCenter
       AutoSize = False
       Caption = 'LASubdivideTime'
     end
     object BULoad: TButton
-      Left = 20
-      Top = 10
-      Width = 104
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 8
+      Width = 83
+      Height = 25
       Caption = 'Load'
       TabOrder = 0
       OnClick = BULoadClick
     end
     object BUSubdivide: TButton
-      Left = 10
-      Top = 140
-      Width = 124
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 112
+      Width = 99
+      Height = 25
       Caption = 'Subdivide'
       Enabled = False
       TabOrder = 1
       OnClick = BUSubdivideClick
     end
     object TrackBar1: TTrackBar
-      Left = 10
-      Top = 180
-      Width = 121
-      Height = 21
+      Left = 8
+      Top = 144
+      Width = 97
+      Height = 17
       Hint = 'Subdivision smoothness'
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Position = 5
       TabOrder = 2
-      ThumbLength = 13
+      ThumbLength = 10
     end
     object RBWireFrame: TRadioButton
-      Left = 20
-      Top = 50
-      Width = 101
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 40
+      Width = 81
+      Height = 17
       Caption = 'Wireframe'
       TabOrder = 3
       OnClick = RBWireFrameClick
     end
     object RBSolid: TRadioButton
-      Left = 20
-      Top = 70
-      Width = 111
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 56
+      Width = 89
+      Height = 17
       Caption = 'Solid'
       Checked = True
       TabOrder = 4
@@ -141,14 +104,10 @@ object FormSubdivide: TFormSubdivide
       OnClick = RBSolidClick
     end
     object CBAnimate: TCheckBox
-      Left = 20
-      Top = 100
-      Width = 101
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 80
+      Width = 81
+      Height = 17
       Caption = 'Animate'
       TabOrder = 5
       OnClick = CBAnimateClick

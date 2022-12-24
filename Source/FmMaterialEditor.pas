@@ -45,8 +45,6 @@ type
     Label2: TLabel;
     CBPolygonMode: TComboBox;
     procedure OnMaterialChanged(Sender: TObject);
-  private
-     
   public
     constructor Create(AOwner: TComponent); override;
     function Execute(AMaterial: TGLMaterial): Boolean;

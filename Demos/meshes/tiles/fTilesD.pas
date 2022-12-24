@@ -74,9 +74,7 @@ type
     procedure CBShowGridClick(Sender: TObject);
     procedure CBSortByMaterialsClick(Sender: TObject);
   private
-     
   public
-     
     mx, my: Integer;
     tileX, tileY: Integer;
     mip, translateOffset: TGLVector;

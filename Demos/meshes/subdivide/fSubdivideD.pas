@@ -53,14 +53,12 @@ type
     LASubdivideTime: TLabel;
     GLLightSource1: TGLLightSource;
     procedure BULoadClick(Sender: TObject);
-    procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
+    procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
       X, Y: Integer);
+    procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure BUSubdivideClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
-    procedure GLCadencer1Progress(Sender: TObject;
-      const deltaTime, newTime: Double);
+    procedure GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
     procedure RBWireFrameClick(Sender: TObject);
     procedure RBSolidClick(Sender: TObject);
     procedure CBAnimateClick(Sender: TObject);
@@ -78,8 +76,8 @@ implementation
 procedure TFormSubdivide.BULoadClick(Sender: TObject);
 begin
   var Path: TFileName := GetCurrentAssetPath();
-  SetCurrentDir(Path  + '\model');
-  
+  SetCurrentDir(Path + '\modelext');
+
   BUSubdivide.Enabled := True;
 
   // GLFreeForm1.LoadFromFile('polyhedron.3ds');
@@ -87,17 +85,14 @@ begin
   // GLFreeForm1.LoadFromFile('trinityrage.smd');
   // GLFreeForm1.LoadFromFile('HighPolyObject.3ds');
 
-  {
+  (*
     GLActor1.LoadFromFile('trinityrage.smd');
     GLActor1.AddDataFromFile('run.smd');
     GLActor1.Animations[1].MakeSkeletalTranslationStatic;
     GLActor1.SwitchToAnimation(GLActor1.Animations[1]);
-  }
+  *)
 
   GLActor1.LoadFromFile('waste.md2');
-  
-  SetCurrentDir(Path  + '\texture');
-  
   GLActor1.Material.Texture.Image.LoadFromFile('waste.jpg');
   GLActor1.Material.Texture.Enabled := True;
   GLActor1.SwitchToAnimation(GLActor1.Animations[0]);
@@ -177,8 +172,7 @@ begin
 
         morphNorms := GLS.MeshUtils.BuildNormals(morphTris, bufRemap);
 
-        SubdivideTriangles(TrackBar1.Position * 0.1, morphTris, bufRemap,
-          morphNorms);
+        SubdivideTriangles(TrackBar1.Position * 0.1, morphTris, bufRemap, morphNorms);
 
         buf := TGLAffineVectorList.Create;
         try
@@ -232,15 +226,15 @@ begin
   GLActor1.StructureChanged;
 end;
 
-procedure TFormSubdivide.GLSceneViewer1MouseDown(Sender: TObject;
-  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+procedure TFormSubdivide.GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
 begin
   mx := X;
   my := Y;
 end;
 
-procedure TFormSubdivide.GLSceneViewer1MouseMove(Sender: TObject;
-  Shift: TShiftState; X, Y: Integer);
+procedure TFormSubdivide.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
+  X, Y: Integer);
 begin
   if Shift = [ssLeft] then
   begin
@@ -271,8 +265,7 @@ begin
   GLSceneViewer1.ResetPerformanceMonitor;
 end;
 
-procedure TFormSubdivide.GLCadencer1Progress(Sender: TObject;
-  const deltaTime, newTime: Double);
+procedure TFormSubdivide.GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
 begin
   GLSceneViewer1.Invalidate;
 end;

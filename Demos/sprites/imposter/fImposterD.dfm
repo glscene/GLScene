@@ -2,89 +2,64 @@ object FormImposter: TFormImposter
   Left = 110
   Top = 65
   Caption = 'Imposter'
-  ClientHeight = 416
-  ClientWidth = 671
+  ClientHeight = 333
+  ClientWidth = 537
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 488
-    Height = 416
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 390
+    Height = 333
     Camera = GLCamera1
     Buffer.ContextOptions = [roDoubleBuffer, roRenderToWindow, roDestinationAlpha]
-    FieldOfView = 142.799865722656300000
+    FieldOfView = 134.394241333007800000
     PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 488
+    Left = 390
     Top = 0
-    Width = 183
-    Height = 416
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 147
+    Height = 333
     Align = alRight
     BevelOuter = bvLowered
     TabOrder = 1
     object LabelTexSize: TLabel
-      Left = 10
-      Top = 10
-      Width = 49
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 8
+      Width = 38
+      Height = 13
       Caption = 'TexSize'
     end
     object Label2: TLabel
-      Left = 10
-      Top = 100
-      Width = 76
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 80
+      Width = 58
+      Height = 13
       Caption = 'Sample Size'
     end
     object LabelFPS: TLabel
-      Left = 8
-      Top = 150
-      Width = 26
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 6
+      Top = 120
+      Width = 20
+      Height = 13
       Caption = 'FPS'
     end
     object CBShowTeapot: TCheckBox
-      Left = 10
-      Top = 40
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 32
+      Width = 97
+      Height = 17
       Caption = 'Show Teapot'
       Checked = True
       State = cbChecked
@@ -92,14 +67,10 @@ object FormImposter: TFormImposter
       OnClick = CBShowTeapotClick
     end
     object CBShowImposter: TCheckBox
-      Left = 10
-      Top = 65
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 52
+      Width = 97
+      Height = 17
       Caption = 'Show Imposters'
       Checked = True
       State = cbChecked
@@ -107,14 +78,10 @@ object FormImposter: TFormImposter
       OnClick = CBShowImposterClick
     end
     object CBSampleSize: TComboBox
-      Left = 90
-      Top = 95
-      Width = 61
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 72
+      Top = 76
+      Width = 49
+      Height = 21
       Style = csDropDownList
       ItemIndex = 3
       TabOrder = 2
