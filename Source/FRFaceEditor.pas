@@ -21,10 +21,11 @@ uses
   VCL.Controls,
   VCL.Graphics,
 
+  FRTrackBarEdit,
   FRColorEditor,
   GLS.Texture,
   GLS.Material,
-  GLS.State, FRTrackBarEdit;
+  GLS.State;
 
 type
   TRFaceEditor = class(TFrame)
@@ -35,14 +36,11 @@ type
     TSSpecular: TTabSheet;
     CEAmbiant: TRColorEditor;
     Label1: TLabel;
+    TBEShininess: TRTrackBarEdit;
     ImageList: TImageList;
     CEDiffuse: TRColorEditor;
     CEEmission: TRColorEditor;
     CESpecular: TRColorEditor;
-    TrackBar: TTrackBar;
-    Edit: TEdit;
-    procedure TrackBarChange(Sender: TObject);
-    procedure EditChange(Sender: TObject);
     procedure TBEShininessTrackBarChange(Sender: TObject);
   private
     FOnChange: TNotifyEvent;
@@ -79,18 +77,6 @@ destructor TRFaceEditor.Destroy;
 begin
   FFaceProperties.Free;
   inherited;
-end;
-
-procedure TRFaceEditor.EditChange(Sender: TObject);
-var
-  i: Integer;
-begin
-  try
-    i := StrToInt(Edit.Text);
-    TrackBar.Position := i;
-  except
-    // ignore
-  end;
 end;
 
 procedure TRFaceEditor.OnColorChange(Sender: TObject);
@@ -139,16 +125,11 @@ procedure TRFaceEditor.TBEShininessTrackBarChange(Sender: TObject);
 begin
   if not Updating then
   begin
-//    TBEShininess.TrackBarChange(Sender);
-    FFaceProperties.Shininess := TrackBar.Position;  // TBEShininess.Value;
+    TBEShininess.TrackBarChange(Sender);
+    FFaceProperties.Shininess := TBEShininess.Value;
     if Assigned(FOnChange) then
       FOnChange(Self);
   end;
-end;
-
-procedure TRFaceEditor.TrackBarChange(Sender: TObject);
-begin
-  Edit.Text := IntToStr(TrackBar.Position);
 end;
 
 procedure TRFaceEditor.SetGLFaceProperties(const val: TGLFaceProperties);
@@ -159,7 +140,7 @@ begin
     CEDiffuse.Color := val.Diffuse.Color;
     CEEmission.Color := val.Emission.Color;
     CESpecular.Color := val.Specular.Color;
-///    TBEShininess.Value := val.Shininess;
+    TBEShininess.Value := val.Shininess;
   finally
     Updating := False;
   end;

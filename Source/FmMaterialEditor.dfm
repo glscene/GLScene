@@ -11,6 +11,7 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   ShowHint = True
   TextHeight = 13
   object Label1: TLabel
@@ -41,11 +42,11 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
         Left = 0
         Top = 0
         Width = 305
-        Height = 241
+        Height = 227
         AutoSize = True
         TabOrder = 0
         ExplicitWidth = 305
-        ExplicitHeight = 241
+        ExplicitHeight = 227
         inherited Label1: TLabel
           Width = 45
           Height = 13
@@ -53,17 +54,18 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
           ExplicitHeight = 13
         end
         inherited PageControl: TPageControl
+          ActivePage = FEFront.TSAmbient
           inherited TSAmbient: TTabSheet
-            ExplicitTop = 24
-            ExplicitHeight = 102
+            ExplicitTop = 25
+            ExplicitHeight = 101
           end
           inherited TSDiffuse: TTabSheet
             ExplicitTop = 24
             ExplicitHeight = 102
           end
           inherited TSEmission: TTabSheet
-            ExplicitTop = 25
-            ExplicitHeight = 101
+            ExplicitTop = 24
+            ExplicitHeight = 102
           end
           inherited TSSpecular: TTabSheet
             ExplicitTop = 24
@@ -75,10 +77,6 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
             Height = 21
             ExplicitHeight = 21
           end
-        end
-        inherited Edit: TEdit
-          Height = 21
-          ExplicitHeight = 21
         end
         inherited ImageList: TImageList
           Top = 0
@@ -92,11 +90,11 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
         Left = 0
         Top = 0
         Width = 305
-        Height = 241
+        Height = 227
         AutoSize = True
         TabOrder = 0
         ExplicitWidth = 305
-        ExplicitHeight = 241
+        ExplicitHeight = 227
         inherited Label1: TLabel
           Width = 45
           Height = 13
@@ -126,10 +124,6 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
             Height = 21
             ExplicitHeight = 21
           end
-        end
-        inherited Edit: TEdit
-          Height = 21
-          ExplicitHeight = 21
         end
       end
     end
@@ -240,7 +234,7 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
       Left = 16
       Top = 22
       Width = 202
-      Height = 230
+      Height = 229
       AutoSize = True
       TabOrder = 0
       ExplicitLeft = 16
@@ -265,10 +259,6 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
             Material.MaterialLibrary = nil
             Material.LibMaterialName = ''
           end
-          inherited Cone: TGLCone
-            Material.MaterialLibrary = nil
-            Material.LibMaterialName = ''
-          end
           inherited Teapot: TGLTeapot
             Material.MaterialLibrary = nil
             Material.LibMaterialName = ''
@@ -277,10 +267,6 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
         end
         inherited Light: TGLDummyCube
           Position.Coordinates = {0000000000004040000020410000803F}
-          inherited LightSource: TGLLightSource
-            Position.Coordinates = {0000000000004040000020410000803F}
-            Specular.Color = {0000803F0000803F0000803F0000803F}
-          end
           inherited FireSphere: TGLSphere
             Material.FrontProperties.Ambient.Color = {A3A2223FCDCC4C3ECDCC4C3E0000803F}
             Material.FrontProperties.Emission.Color = {D3D2523FA1A0203F000000000000803F}
@@ -288,6 +274,9 @@ object GLMaterialEditorForm: TGLMaterialEditorForm
         end
         inherited Camera: TGLCamera
           Position.Coordinates = {0000000000000000000020410000803F}
+          inherited LightSource: TGLLightSource
+            Specular.Color = {0000803F0000803F0000803F0000803F}
+          end
         end
       end
       inherited GLMaterialLibrary: TGLMaterialLibrary

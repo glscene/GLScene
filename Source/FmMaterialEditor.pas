@@ -3,7 +3,7 @@
 //
 unit FmMaterialEditor;
 
-(*  Editor window for a material (with preview) *)
+(* Editor window for a material (with preview) *)
 
 interface
 
@@ -22,6 +22,7 @@ uses
   GLS.State,
   GLS.Material,
   GLS.Texture,
+  FRTrackBarEdit,
   FRMaterialPreview,
   FRColorEditor,
   FRFaceEditor,
@@ -53,9 +54,10 @@ type
 function GLMaterialEditorForm: TGLMaterialEditorForm;
 procedure ReleaseMaterialEditorForm;
 
-//----------------------------------------------
+// ----------------------------------------------
 implementation
-//----------------------------------------------
+
+// ----------------------------------------------
 
 {$R *.dfm}
 
@@ -78,16 +80,15 @@ begin
   end;
 end;
 
-
 constructor TGLMaterialEditorForm.Create(AOwner: TComponent);
 var
   I: Integer;
 begin
   inherited;
-  for i := 0 to Integer(High(TGLBlendingMode)) do
-    CBBlending.Items.Add(GetEnumName(TypeInfo(TGLBlendingMode), i));
-  for i := 0 to Integer(High(TGLPolygonMode)) do
-    CBPolygonMode.Items.Add(GetEnumName(TypeInfo(TGLPolygonMode), i));
+  for I := 0 to Integer(High(TGLBlendingMode)) do
+    CBBlending.Items.Add(GetEnumName(TypeInfo(TGLBlendingMode), I));
+  for I := 0 to Integer(High(TGLPolygonMode)) do
+    CBPolygonMode.Items.Add(GetEnumName(TypeInfo(TGLPolygonMode), I));
 
   FEFront.OnChange := OnMaterialChanged;
   FEBack.OnChange := OnMaterialChanged;
@@ -101,7 +102,7 @@ begin
     FEFront.FaceProperties := FrontProperties;
     FEBack.FaceProperties := BackProperties;
     RTextureEdit.Texture := Texture;
-    CBPolygonMode.ItemIndex:=Integer(PolygonMode);
+    CBPolygonMode.ItemIndex := Integer(PolygonMode);
     CBBlending.ItemIndex := Integer(BlendingMode);
   end;
   MPPreview.Material := AMaterial;
@@ -115,28 +116,35 @@ begin
       BlendingMode := TGLBlendingMode(CBBlending.ItemIndex);
       PolygonMode := TGLPolygonMode(CBPolygonMode.ItemIndex);
     end;
+
 end;
 
 procedure TGLMaterialEditorForm.OnMaterialChanged(Sender: TObject);
 begin
-  with MPPreview.Material do
+  with MPPreview do
   begin
-    FrontProperties := FEFront.FaceProperties;
-    BackProperties := FEBack.FaceProperties;
-    Texture := RTextureEdit.Texture;
-    BlendingMode := TGLBlendingMode(CBBlending.ItemIndex);
-    PolygonMode := TGLPolygonMode(CBPolygonMode.ItemIndex);
+    Material.FrontProperties := FEFront.FaceProperties;
+    Material.BackProperties := FEBack.FaceProperties;
+    Material.Texture := RTextureEdit.Texture;
+    Material.BlendingMode := TGLBlendingMode(CBBlending.ItemIndex);
+    Material.PolygonMode := TGLPolygonMode(CBPolygonMode.ItemIndex);
+    Cube.Material := Material;
+    Sphere.Material := Material;
+    TeaPot.Material := Material;
+
   end;
+
   MPPreview.GLSceneViewer.Invalidate;
+
 end;
 
 // ------------------------------------------------------------------
 initialization
+
 // ------------------------------------------------------------------
 
 finalization
 
-  ReleaseMaterialEditorForm;
+ReleaseMaterialEditorForm;
 
 end.
-

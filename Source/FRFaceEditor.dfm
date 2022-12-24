@@ -67,16 +67,6 @@ object RFaceEditor: TRFaceEditor
           ExplicitWidth = 341
           ExplicitHeight = 98
         end
-        inherited Panel1: TPanel
-          Left = 52
-          Top = 3
-          ExplicitLeft = 52
-          ExplicitTop = 3
-        end
-        inherited ColorDialog: TColorDialog
-          Left = 264
-          Top = 72
-        end
       end
     end
     object TSSpecular: TTabSheet
@@ -116,29 +106,6 @@ object RFaceEditor: TRFaceEditor
       Left = 160
       ExplicitLeft = 160
     end
-  end
-  object TrackBar: TTrackBar
-    Left = 69
-    Top = 213
-    Width = 150
-    Height = 20
-    Max = 128
-    PageSize = 10
-    Frequency = 16
-    TabOrder = 2
-    ThumbLength = 10
-    TickMarks = tmTopLeft
-    OnChange = TrackBarChange
-  end
-  object Edit: TEdit
-    Left = 222
-    Top = 213
-    Width = 41
-    Height = 28
-    TabOrder = 3
-    Text = '0'
-    OnChange = EditChange
-    OnExit = TrackBarChange
   end
   object ImageList: TImageList
     Left = 264

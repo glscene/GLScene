@@ -41,7 +41,6 @@ type
     LightSource: TGLLightSource;
     CBBackground: TComboBox;
     BackGroundSprite: TGLHUDSprite;
-    Cone: TGLCone;
     Teapot: TGLTeapot;
     World: TGLDummyCube;
     Light: TGLDummyCube;
@@ -98,8 +97,7 @@ begin
   i := CBObject.ItemIndex;
   Cube.Visible := i = 0;
   Sphere.Visible := i = 1;
-  Cone.Visible := i = 2;
-  Teapot.Visible := i = 3;
+  Teapot.Visible := i = 2;
 end;
 
 procedure TRMaterialPreview.CBBackgroundChange(Sender: TObject);

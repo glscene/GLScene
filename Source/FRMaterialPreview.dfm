@@ -2,22 +2,9 @@ object RMaterialPreview: TRMaterialPreview
   Left = 0
   Top = 0
   Width = 202
-  Height = 230
+  Height = 229
   AutoSize = True
   TabOrder = 0
-  object GLSceneViewer: TGLSceneViewer
-    Left = 0
-    Top = 27
-    Width = 202
-    Height = 203
-    Camera = Camera
-    FieldOfView = 71.615516662597660000
-    PenAsTouch = False
-    OnMouseDown = SceneViewerMouseDown
-    OnMouseMove = SceneViewerMouseMove
-    OnMouseWheel = SceneViewerMouseWheel
-    TabOrder = 2
-  end
   object CBObject: TComboBox
     Left = 0
     Top = 0
@@ -29,7 +16,6 @@ object RMaterialPreview: TRMaterialPreview
     Items.Strings = (
       'Cube'
       'Sphere'
-      'Cone'
       'Teapot')
   end
   object CBBackground: TComboBox
@@ -47,6 +33,16 @@ object RMaterialPreview: TRMaterialPreview
       'on a blue background'
       'on a red background'
       'on a green background')
+  end
+  object GLSceneViewer: TGLSceneViewer
+    Left = 0
+    Top = 26
+    Width = 202
+    Height = 203
+    Camera = Camera
+    FieldOfView = 71.615516662597660000
+    PenAsTouch = False
+    TabOrder = 2
   end
   object GLScene: TGLScene
     ObjectsSorting = osNone
@@ -140,12 +136,6 @@ object RMaterialPreview: TRMaterialPreview
         Material.LibMaterialName = 'LibMaterial'
         Radius = 0.800000011920929000
       end
-      object Cone: TGLCone
-        Material.MaterialLibrary = GLMaterialLibrary
-        Material.LibMaterialName = 'LibMaterial'
-        BottomRadius = 0.500000000000000000
-        Height = 1.000000000000000000
-      end
       object Teapot: TGLTeapot
         Material.MaterialLibrary = GLMaterialLibrary
         Material.LibMaterialName = 'LibMaterial'
@@ -155,11 +145,6 @@ object RMaterialPreview: TRMaterialPreview
     object Light: TGLDummyCube
       Position.Coordinates = {0000000000004040000020410000803F}
       CubeSize = 1.000000000000000000
-      object LightSource: TGLLightSource
-        ConstAttenuation = 1.000000000000000000
-        Specular.Color = {0000803F0000803F0000803F0000803F}
-        SpotCutOff = 180.000000000000000000
-      end
       object FireSphere: TGLSphere
         Material.BackProperties.Shininess = 47
         Material.FrontProperties.Ambient.Color = {A3A2223FCDCC4C3ECDCC4C3E0000803F}
@@ -172,6 +157,11 @@ object RMaterialPreview: TRMaterialPreview
       FocalLength = 140.000000000000000000
       TargetObject = Cube
       Position.Coordinates = {0000000000000000000020410000803F}
+      object LightSource: TGLLightSource
+        ConstAttenuation = 1.000000000000000000
+        Specular.Color = {0000803F0000803F0000803F0000803F}
+        SpotCutOff = 180.000000000000000000
+      end
     end
   end
   object GLMaterialLibrary: TGLMaterialLibrary
