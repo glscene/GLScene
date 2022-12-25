@@ -374,6 +374,7 @@
         <DCCReference Include="..\Source\PasJSON.pas"/>
         <DCCReference Include="..\Source\PasDblStrUtils.pas"/>
         <DCCReference Include="..\Source\GLS.ModuleLoader.pas"/>
+        <DCCReference Include="..\Source\GLS.SmartObjects.pas"/>
         <None Include="..\Source\GLScene.inc"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

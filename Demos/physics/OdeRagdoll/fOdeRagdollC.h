@@ -26,6 +26,7 @@
 #include "Physics.ODEUtils.hpp"
 #include "Physics.ODEImport.hpp"
 #include "Physics.ODERagdoll.hpp"
+#include "GLS.Utils.hpp"
 
 //---------------------------------------------------------------------------
 //Physic World ODE
@@ -63,6 +64,7 @@ __published:	// IDE-managed Components
 	TGLCadencer *GLCadencer1;
 	TGLWindowsBitmapFont *GLWindowsBitmapFont1;
 	TGLMaterialLibrary *GLMaterialLibrary1;
+	void __fastcall FormCreate(TObject *Sender);
 private:	// User declarations
 	int my,mx;
 	TWorld_ODE *WorldODE;

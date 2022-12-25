@@ -268,7 +268,8 @@ contains
   PasGLTF in '..\Source\PasGLTF.pas',
   PasJSON in '..\Source\PasJSON.pas',
   PasDblStrUtils in '..\Source\PasDblStrUtils.pas',
-  GLS.ModuleLoader in '..\Source\GLS.ModuleLoader.pas';
+  GLS.ModuleLoader in '..\Source\GLS.ModuleLoader.pas',
+  GLS.SmartObjects in '..\Source\GLS.SmartObjects.pas';
 
 end.
 

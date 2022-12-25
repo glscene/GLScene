@@ -144,7 +144,7 @@ implementation
 procedure TFormClothify.FormCreate(Sender: TObject);
 begin
   var Path: TFileName := GetCurrentAssetPath();
-  SetCurrentDir(Path  + '\model');
+  SetCurrentDir(Path  + '\modelext');
   
   ComboBox_MeshName.ItemIndex := 0;
   ComboBox_ConstraintType.ItemIndex := 0;

@@ -210,7 +210,7 @@ var // rootBone,
 
 begin
   var Path: TFileName := GetCurrentAssetPath();
-  SetCurrentDir(Path  + '\model');
+  SetCurrentDir(Path  + '\modelext');
   
   //Execute Create physic and RagdollPlayer
   WorldODE := TWorld_ODE.create;

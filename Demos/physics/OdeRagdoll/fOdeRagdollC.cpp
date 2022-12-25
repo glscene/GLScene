@@ -18,6 +18,7 @@
 #pragma link "GLS.VectorFileObjects"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.WindowsFont"
+#pragma link "GLS.Utils"
 
 #pragma resource "*.dfm"
 
@@ -74,3 +75,12 @@ __fastcall TWorld_ODE::TWorld_ODE(TObject *AOwner)
 ///-  (TGLSphere*)(PdxGeom(Ground_box2)->data)->Radius = 5;
   PositionSceneObject((TGLSphere*)(PdxGeom(Ground_box2)->data), Ground_box2);
 }
+void __fastcall TfRagDoll::FormCreate(TObject *Sender)
+{
+  TFileName Path = GetCurrentAssetPath();
+  SetCurrentDir(Path  + "\\modelext");
+  //
+
+}
+//---------------------------------------------------------------------------
+

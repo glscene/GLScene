@@ -10,6 +10,7 @@ object fRagDoll: TfRagDoll
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  OnCreate = FormCreate
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0

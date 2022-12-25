@@ -35,6 +35,8 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
    TFileName Path = GetCurrentAssetPath();
+   SetCurrentDir(Path  + "\\texture");
+
    // Set up the visuals
    GLBitmapHDS1->MaxPoolSize = 8*1024*1024;
    GLBitmapHDS1->Picture->LoadFromFile("terrain.bmp");
@@ -51,7 +53,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
-          const double newTime)
+		  const double newTime)
 {
    float speed, interpolated_height;
 
@@ -59,7 +61,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
    if (IsKeyDown(VK_SHIFT))
 	  speed = 50*deltaTime;
    else
-      speed = 10*deltaTime;
+	  speed = 10*deltaTime;
    if (IsKeyDown(VK_UP))
 		GLNavigator1->MoveForward(speed);
    if (IsKeyDown(VK_DOWN))

@@ -13,8 +13,8 @@ package GLScene_Physics_RT;
 {$LONGSTRINGS ON}
 {$OPENSTRINGS ON}
 {$OPTIMIZATION OFF}
-{$OVERFLOWCHECKS OFF}
-{$RANGECHECKS OFF}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
 {$REFERENCEINFO ON}
 {$SAFEDIVIDE OFF}
 {$STACKFRAMES ON}
@@ -25,7 +25,7 @@ package GLScene_Physics_RT;
 {$IMAGEBASE $400000}
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'GLScene NGD Manager'}
+{$DESCRIPTION 'GLScene Physics Managers'}
 {$RUNONLY}
 {$IMPLICITBUILD ON}
 
@@ -45,7 +45,11 @@ contains
   Physics.SPIInertias in '..\Source\Physics.SPIInertias.pas',
   Physics.SPIJoints in '..\Source\Physics.SPIJoints.pas',
   Physics.SPIManager in '..\Source\Physics.SPIManager.pas',
-  Physics.PhysXImport in '..\Source\Physics.PhysXImport.pas';
+  Physics.PhysXImport in '..\Source\Physics.PhysXImport.pas',
+  NGD.Import in '..\Source\NGD.Import.pas',
+  NGD.Manager in '..\Source\NGD.Manager.pas',
+  NGD.NewtonImport in '..\Source\NGD.NewtonImport.pas',
+  NGD.Ragdoll in '..\Source\NGD.Ragdoll.pas';
 
 end.
 
