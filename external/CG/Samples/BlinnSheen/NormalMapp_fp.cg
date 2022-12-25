@@ -1,0 +1,105 @@
+struct fragin 
+{
+    float2 texcoords            : TEXCOORD0;
+    float4 tangentToEyeMat0     : TEXCOORD4;
+    float3 tangentToEyeMat1     : TEXCOORD5;
+    float3 tangentToEyeMat2     : TEXCOORD6;
+    float3 eyeSpacePosition     : TEXCOORD7;
+};
+
+// i is the incident ray
+// n is the surface normal
+// eta is the ratio of indices of refraction
+// r is the reflected ray
+// t is the transmitted ray
+
+float fresnel( float3 i, float3 n, float eta )
+{
+    float result;
+    float c1;
+    float cs2;
+    float tflag;
+    float3 t;
+    
+    // Refraction vector courtesy Paul Heckbert.
+    c1 = dot(-i,n);
+    cs2 = 1.0-eta*eta*(1.0-c1*c1);
+    tflag = (float) (cs2 >= 0.0);
+    t = tflag * (((eta*c1-sqrt(cs2))*n) + eta*i);
+    // t is already unit length or (0,0,0)
+
+    // Compute Fresnel terms
+    // (From Global Illumination Compendeum.)
+    float ndott;
+    float cosr_div_cosi;
+    float cosi_div_cosr;
+    float fs;
+    float fp;
+    float kr;
+
+    ndott = dot(-n,t);
+    cosr_div_cosi = ndott / c1;
+    cosi_div_cosr = c1 / ndott;
+    fs = (cosr_div_cosi - eta) / (cosr_div_cosi + eta);
+    fs = fs * fs;
+    fp = (cosi_div_cosr - eta) / (cosi_div_cosr + eta);
+    fp = fp * fp;
+    kr = 0.5 * (fs+fp);
+    result = tflag*kr + (1-tflag);
+
+    return result;
+}
+
+float4 main( fragin In,
+    uniform sampler2D diffuseMap    : TEXUNIT0,
+    uniform sampler2D normalMap     : TEXUNIT1,
+    uniform float3 eyeSpaceLightPosition ) : COLOR
+{
+    float bscale = In.tangentToEyeMat0.w;
+
+    float  eta        = (1.0/1.4);                  // ratio of indices of refraction (air/skin)
+    float  m          = 34;                         // specular exponent
+    float4 kd = tex2D( diffuseMap, In.texcoords );      // diffuse color
+
+    // Get eye-space eye vector.
+    float3 v = normalize( -In.eyeSpacePosition );
+
+    // Get eye-space light and halfangle vectors.
+    float3 l = normalize( eyeSpaceLightPosition - In.eyeSpacePosition );
+    float3 h = normalize( v + l );
+
+    // Get tangent-space normal vector from normal map.
+    // Uncompress vectors ([0, 1] -> [-1, 1])
+    float3 tangentSpaceNormal = 2.0f * (float3)(tex2D( normalMap, In.texcoords ).rgb - 0.5f);
+
+    float3 bumpscale = float3( bscale, bscale, 1.0 );
+    tangentSpaceNormal = tangentSpaceNormal * bumpscale;
+
+    // Transform it into eye-space.
+    float3 n;
+    n[0] = dot( In.tangentToEyeMat0.xyz, tangentSpaceNormal );
+    n[1] = dot( In.tangentToEyeMat1, tangentSpaceNormal );
+    n[2] = dot( In.tangentToEyeMat2, tangentSpaceNormal );
+    n = normalize( n );
+
+    // Compute the lighting equation coefficients.
+    float ndotl = max( dot(n,l), 0 );   // clamp 0 to 1
+    float ndoth = max( dot(n,h), 0 );   // clamp 0 to 1
+    float flag  = (float)(ndotl > 0);   // if (ndotl <= 0) specular = 0
+
+    // Compute sheen contribution.
+    // This is basically Blinn model weighted by fresnel reflection coefficient.
+    // The fresnel increase the effect along the edges and helps model light that
+    // enters the backside of thin edges and is transmitted toward the front.
+    // Basically a "rim" lighting technique.
+    float4 sheen;
+    float  Kr;
+
+    Kr = fresnel( -v, n, eta );
+    Kr = smoothstep( 0.0, 0.5, Kr );
+
+    sheen = 1.5 * Kr * ( ndotl * (0.2 + pow( ndoth, m )) );
+
+    return  sheen + ( kd * ndotl );
+}
+

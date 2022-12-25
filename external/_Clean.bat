@@ -1,4 +1,6 @@
 @echo off
+del *.exe /s  
+del *.scr /s
 del *.bpl /s
 del *.dcp /s
 del *.hpp /s

@@ -8,7 +8,7 @@
         <AppType>Package</AppType>
         <FrameworkType>VCL</FrameworkType>
         <ProjectVersion>19.4</ProjectVersion>
-        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <Platform Condition="'$(Platform)'==''">Win64</Platform>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -118,20 +118,20 @@
         <DCC_Optimize>false</DCC_Optimize>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <DCC_ObjOutput>..\lib\$(Platform)</DCC_ObjOutput>
-        <DCC_BpiOutput>..\lib\$(Platform)</DCC_BpiOutput>
-        <DCC_HppOutput>..\include\$(Platform)</DCC_HppOutput>
+        <DCC_ObjOutput>..\..\..\lib\$(Platform)</DCC_ObjOutput>
+        <DCC_BpiOutput>..\..\..\lib\$(Platform)</DCC_BpiOutput>
+        <DCC_HppOutput>..\..\..\include\$(Platform)</DCC_HppOutput>
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
-        <DCC_DcuOutput>..\lib\$(Platform)</DCC_DcuOutput>
+        <DCC_DcuOutput>..\..\..\lib\$(Platform)</DCC_DcuOutput>
         <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
-        <DCC_DcuOutput>..\lib\$(Platform)</DCC_DcuOutput>
-        <DCC_BpiOutput>..\lib\$(Platform)</DCC_BpiOutput>
-        <DCC_HppOutput>..\include\$(Platform)</DCC_HppOutput>
-        <DCC_ObjOutput>..\lib\$(Platform)</DCC_ObjOutput>
+        <DCC_DcuOutput>..\..\..\lib\$(Platform)</DCC_DcuOutput>
+        <DCC_BpiOutput>..\..\..\lib\$(Platform)</DCC_BpiOutput>
+        <DCC_HppOutput>..\..\..\include\$(Platform)</DCC_HppOutput>
+        <DCC_ObjOutput>..\..\..\lib\$(Platform)</DCC_ObjOutput>
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -167,10 +167,12 @@
                     <Source Name="MainSource">SDL2_RT.dpk</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k270.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp270.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k270.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp270.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GBComps.bpl">Geoblock - Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GBE3D.bpl">File C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GBE3D.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k280.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp280.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k280.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp280.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Platforms>

@@ -1,0 +1,27 @@
+struct fragmentIN 
+{
+  float4 HPosition : POSITION;
+  float4 TexCoord : TEXCOORD0;
+};
+
+struct fragmentOUT 
+{
+  float4 Color : COLOR;
+};
+
+fragmentOUT main(
+  fragmentIN IN,
+  uniform sampler2D channel1,
+  uniform float w
+) 
+{
+  fragmentOUT OUT;
+
+  float2 tex = IN.TexCoord.xy;
+  float4 col1;
+  col1 = f4tex2D(channel1, tex);
+
+  OUT.Color.rgb = col1 * w;
+
+  return OUT;
+}

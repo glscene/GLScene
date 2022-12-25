@@ -1,0 +1,20 @@
+struct v2f 
+{
+  float2 Position    : POSITION;  
+  float2 TexCoord1   : TEXCOORD0; 
+  float2 TexCoord2   : TEXCOORD1; 
+  float3 LightVector : COLOR0;   
+};
+float4 main(v2f IN,
+    uniform sampler2D tex1,
+    uniform sampler2D tex2, uniform float4 lightcolor) : COLOR
+{  
+     
+  float4 Color1 = tex2D(tex1,IN.TexCoord1);   
+  float3 bumpNormal = ((tex2D(tex2,IN.TexCoord2))-0.5)*2;      
+  float3 lightVector = ((IN.LightVector)-0.5)*2;     
+  float light = dot(bumpNormal,lightVector);
+     
+  return Color1*light*lightcolor*2;
+}
+

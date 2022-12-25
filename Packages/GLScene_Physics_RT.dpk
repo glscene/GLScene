@@ -13,8 +13,8 @@ package GLScene_Physics_RT;
 {$LONGSTRINGS ON}
 {$OPENSTRINGS ON}
 {$OPTIMIZATION OFF}
-{$OVERFLOWCHECKS ON}
-{$RANGECHECKS ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
 {$REFERENCEINFO ON}
 {$SAFEDIVIDE OFF}
 {$STACKFRAMES ON}
@@ -25,7 +25,7 @@ package GLScene_Physics_RT;
 {$IMAGEBASE $400000}
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'GLScene Physics Managers'}
+{$DESCRIPTION 'GLScene NGD Manager'}
 {$RUNONLY}
 {$IMPLICITBUILD ON}
 
@@ -35,10 +35,6 @@ requires
   GLScene_RT;
 
 contains
-  Physics.NGDImport in '..\Source\Physics.NGDImport.pas',
-  Physics.NGDManager in '..\Source\Physics.NGDManager.pas',
-  Physics.NGDRagdoll in '..\Source\Physics.NGDRagdoll.pas',
-  Physics.NewtonImport in '..\Source\Physics.NewtonImport.pas',
   Physics.ODEImport in '..\Source\Physics.ODEImport.pas',
   Physics.ODEManager in '..\Source\Physics.ODEManager.pas',
   Physics.ODERagdoll in '..\Source\Physics.ODERagdoll.pas',

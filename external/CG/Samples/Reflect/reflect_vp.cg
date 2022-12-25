@@ -1,0 +1,34 @@
+struct app2vert
+{
+    float4 Position     : POSITION;
+    float4 Normal       : NORMAL;
+    float2 TexCoord0    : TEXCOORD0;
+    float3 TexCoord1    : TEXCOORD1;
+};
+
+struct vert2frag
+{
+    float4 HPosition    : POSITION;
+    float4 Color0       : COLOR0;
+    float2 TexCoord0    : TEXCOORD0;
+    float3 TexCoord1    : TEXCOORD1;
+};
+
+vert2frag main(app2vert IN,
+               uniform float4x4 ModelViewProj,
+               uniform float4x4 ModelView ,
+               uniform float4x4 ModelViewIT)
+{
+    vert2frag OUT;
+
+    OUT.HPosition = mul(ModelViewProj, IN.Position);
+    OUT.TexCoord0 = IN.TexCoord0;
+
+    float3 normal = normalize(mul(ModelViewIT, IN.Normal).xyz);
+    float3 eyeToVert = normalize(mul(ModelView, IN.Position).xyz);
+
+    // reflect the eye vector across the normal vector for reflection
+    OUT.TexCoord1 = reflect(eyeToVert,normal);
+
+    return OUT;
+}

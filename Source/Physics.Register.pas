@@ -10,7 +10,6 @@ interface
 uses
   System.Classes,
   Physics.ODEManager,
-  Physics.NGDManager,
   Physics.SPIManager;
 
 procedure Register;
@@ -21,11 +20,8 @@ implementation
 
 procedure Register;
 begin
-  RegisterClasses([TGLODEManager, TGLODEJointList,  TGLODEJoints, TGLODEElements,
-                   TGLNGDManager, TGLNGDDynamic, TGLNGDStatic,
-                   TGLSPIManager]);
-  RegisterComponents('GLScene Physics Managers',[TGLODEManager,TGLODEJointList,
-                                TGLNGDManager, TGLSPIManager]);
+  RegisterClasses([TGLODEManager, TGLODEJointList,  TGLODEJoints, TGLODEElements, TGLSPIManager]);
+  RegisterComponents('GLScene Physics Managers',[TGLODEManager,TGLODEJointList, TGLSPIManager]);
 end;
 
 end.

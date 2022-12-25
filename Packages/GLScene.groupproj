@@ -21,10 +21,22 @@
         <Projects Include="GLScene_Physics_DT.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="GLScene_Cg_RT.dproj">
+        <Projects Include="..\External\CG\Packages\GLScene_Cg_RT.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="GLScene_Cg_DT.dproj">
+        <Projects Include="..\External\CG\Packages\GLScene_Cg_DT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\External\Newton\Packages\GLScene_Newton_RT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\External\Newton\Packages\GLScene_Newton_DT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\External\GPU\Packages\GLScene_GPU_RT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\External\GPU\Packages\GLScene_GPU_DT.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -90,31 +102,67 @@
         <MSBuild Projects="GLScene_Physics_DT.dproj" Targets="Make"/>
     </Target>
     <Target Name="GLScene_Cg_RT">
-        <MSBuild Projects="GLScene_Cg_RT.dproj"/>
+        <MSBuild Projects="..\External\CG\Packages\GLScene_Cg_RT.dproj"/>
     </Target>
     <Target Name="GLScene_Cg_RT:Clean">
-        <MSBuild Projects="GLScene_Cg_RT.dproj" Targets="Clean"/>
+        <MSBuild Projects="..\External\CG\Packages\GLScene_Cg_RT.dproj" Targets="Clean"/>
     </Target>
     <Target Name="GLScene_Cg_RT:Make">
-        <MSBuild Projects="GLScene_Cg_RT.dproj" Targets="Make"/>
+        <MSBuild Projects="..\External\CG\Packages\GLScene_Cg_RT.dproj" Targets="Make"/>
     </Target>
     <Target Name="GLScene_Cg_DT">
-        <MSBuild Projects="GLScene_Cg_DT.dproj"/>
+        <MSBuild Projects="..\External\CG\Packages\GLScene_Cg_DT.dproj"/>
     </Target>
     <Target Name="GLScene_Cg_DT:Clean">
-        <MSBuild Projects="GLScene_Cg_DT.dproj" Targets="Clean"/>
+        <MSBuild Projects="..\External\CG\Packages\GLScene_Cg_DT.dproj" Targets="Clean"/>
     </Target>
     <Target Name="GLScene_Cg_DT:Make">
-        <MSBuild Projects="GLScene_Cg_DT.dproj" Targets="Make"/>
+        <MSBuild Projects="..\External\CG\Packages\GLScene_Cg_DT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLScene_Newton_RT">
+        <MSBuild Projects="..\External\Newton\Packages\GLScene_Newton_RT.dproj"/>
+    </Target>
+    <Target Name="GLScene_Newton_RT:Clean">
+        <MSBuild Projects="..\External\Newton\Packages\GLScene_Newton_RT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLScene_Newton_RT:Make">
+        <MSBuild Projects="..\External\Newton\Packages\GLScene_Newton_RT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLScene_Newton_DT">
+        <MSBuild Projects="..\External\Newton\Packages\GLScene_Newton_DT.dproj"/>
+    </Target>
+    <Target Name="GLScene_Newton_DT:Clean">
+        <MSBuild Projects="..\External\Newton\Packages\GLScene_Newton_DT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLScene_Newton_DT:Make">
+        <MSBuild Projects="..\External\Newton\Packages\GLScene_Newton_DT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLScene_GPU_RT">
+        <MSBuild Projects="..\External\GPU\Packages\GLScene_GPU_RT.dproj"/>
+    </Target>
+    <Target Name="GLScene_GPU_RT:Clean">
+        <MSBuild Projects="..\External\GPU\Packages\GLScene_GPU_RT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLScene_GPU_RT:Make">
+        <MSBuild Projects="..\External\GPU\Packages\GLScene_GPU_RT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLScene_GPU_DT">
+        <MSBuild Projects="..\External\GPU\Packages\GLScene_GPU_DT.dproj"/>
+    </Target>
+    <Target Name="GLScene_GPU_DT:Clean">
+        <MSBuild Projects="..\External\GPU\Packages\GLScene_GPU_DT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLScene_GPU_DT:Make">
+        <MSBuild Projects="..\External\GPU\Packages\GLScene_GPU_DT.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="GLScene_RT;GLScene_DT;GLScene_Sounds_RT;GLScene_Sounds_DT;GLScene_Physics_RT;GLScene_Physics_DT;GLScene_Cg_RT;GLScene_Cg_DT"/>
+        <CallTarget Targets="GLScene_RT;GLScene_DT;GLScene_Sounds_RT;GLScene_Sounds_DT;GLScene_Physics_RT;GLScene_Physics_DT;GLScene_Cg_RT;GLScene_Cg_DT;GLScene_Newton_RT;GLScene_Newton_DT;GLScene_GPU_RT;GLScene_GPU_DT"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="GLScene_RT:Clean;GLScene_DT:Clean;GLScene_Sounds_RT:Clean;GLScene_Sounds_DT:Clean;GLScene_Physics_RT:Clean;GLScene_Physics_DT:Clean;GLScene_Cg_RT:Clean;GLScene_Cg_DT:Clean"/>
+        <CallTarget Targets="GLScene_RT:Clean;GLScene_DT:Clean;GLScene_Sounds_RT:Clean;GLScene_Sounds_DT:Clean;GLScene_Physics_RT:Clean;GLScene_Physics_DT:Clean;GLScene_Cg_RT:Clean;GLScene_Cg_DT:Clean;GLScene_Newton_RT:Clean;GLScene_Newton_DT:Clean;GLScene_GPU_RT:Clean;GLScene_GPU_DT:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="GLScene_RT:Make;GLScene_DT:Make;GLScene_Sounds_RT:Make;GLScene_Sounds_DT:Make;GLScene_Physics_RT:Make;GLScene_Physics_DT:Make;GLScene_Cg_RT:Make;GLScene_Cg_DT:Make"/>
+        <CallTarget Targets="GLScene_RT:Make;GLScene_DT:Make;GLScene_Sounds_RT:Make;GLScene_Sounds_DT:Make;GLScene_Physics_RT:Make;GLScene_Physics_DT:Make;GLScene_Cg_RT:Make;GLScene_Cg_DT:Make;GLScene_Newton_RT:Make;GLScene_Newton_DT:Make;GLScene_GPU_RT:Make;GLScene_GPU_DT:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
