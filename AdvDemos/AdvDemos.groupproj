@@ -54,9 +54,6 @@
         <Projects Include="Quake3Demo\Q3DemoC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="D:\XYZ_FITiPM\3D Mod\2022_СТУДЕНТЫ_1901\Костенко\Лаб №13 Костенко Артем 12001901\LR13_2\VRsupport.cbproj">
-            <Dependencies/>
-        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -218,23 +215,14 @@
     <Target Name="Q3DemoC:Make">
         <MSBuild Projects="Quake3Demo\Q3DemoC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="VRsupport">
-        <MSBuild Projects="D:\XYZ_FITiPM\3D Mod\2022_СТУДЕНТЫ_1901\Костенко\Лаб №13 Костенко Артем 12001901\LR13_2\VRsupport.cbproj"/>
-    </Target>
-    <Target Name="VRsupport:Clean">
-        <MSBuild Projects="D:\XYZ_FITiPM\3D Mod\2022_СТУДЕНТЫ_1901\Костенко\Лаб №13 Костенко Артем 12001901\LR13_2\VRsupport.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="VRsupport:Make">
-        <MSBuild Projects="D:\XYZ_FITiPM\3D Mod\2022_СТУДЕНТЫ_1901\Костенко\Лаб №13 Костенко Артем 12001901\LR13_2\VRsupport.cbproj" Targets="Make"/>
-    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Actorms3dD;ActorMS3dC;ArchipelagoD;ArchipelagoC;ChristmasD;ChristmasC;EarthD;EarthC;ForestD;GLSViewerD;IntensityMeshD;IntensityMeshC;PanoViewerD;PanoViewerC;TtbD;Q3DemoD;Q3DemoC;VRsupport"/>
+        <CallTarget Targets="Actorms3dD;ActorMS3dC;ArchipelagoD;ArchipelagoC;ChristmasD;ChristmasC;EarthD;EarthC;ForestD;GLSViewerD;IntensityMeshD;IntensityMeshC;PanoViewerD;PanoViewerC;TtbD;Q3DemoD;Q3DemoC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Actorms3dD:Clean;ActorMS3dC:Clean;ArchipelagoD:Clean;ArchipelagoC:Clean;ChristmasD:Clean;ChristmasC:Clean;EarthD:Clean;EarthC:Clean;ForestD:Clean;GLSViewerD:Clean;IntensityMeshD:Clean;IntensityMeshC:Clean;PanoViewerD:Clean;PanoViewerC:Clean;TtbD:Clean;Q3DemoD:Clean;Q3DemoC:Clean;VRsupport:Clean"/>
+        <CallTarget Targets="Actorms3dD:Clean;ActorMS3dC:Clean;ArchipelagoD:Clean;ArchipelagoC:Clean;ChristmasD:Clean;ChristmasC:Clean;EarthD:Clean;EarthC:Clean;ForestD:Clean;GLSViewerD:Clean;IntensityMeshD:Clean;IntensityMeshC:Clean;PanoViewerD:Clean;PanoViewerC:Clean;TtbD:Clean;Q3DemoD:Clean;Q3DemoC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Actorms3dD:Make;ActorMS3dC:Make;ArchipelagoD:Make;ArchipelagoC:Make;ChristmasD:Make;ChristmasC:Make;EarthD:Make;EarthC:Make;ForestD:Make;GLSViewerD:Make;IntensityMeshD:Make;IntensityMeshC:Make;PanoViewerD:Make;PanoViewerC:Make;TtbD:Make;Q3DemoD:Make;Q3DemoC:Make;VRsupport:Make"/>
+        <CallTarget Targets="Actorms3dD:Make;ActorMS3dC:Make;ArchipelagoD:Make;ArchipelagoC:Make;ChristmasD:Make;ChristmasC:Make;EarthD:Make;EarthC:Make;ForestD:Make;GLSViewerD:Make;IntensityMeshD:Make;IntensityMeshC:Make;PanoViewerD:Make;PanoViewerC:Make;TtbD:Make;Q3DemoD:Make;Q3DemoC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
