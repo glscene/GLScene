@@ -1,5 +1,5 @@
 //
-// The graphics rendering engine GLScene http://glscene.org
+// The multimedia graphics platform GLScene https://github.com/glscene
 //
 unit GLS.Utils;
 
@@ -641,7 +641,7 @@ begin
   path := LowerCase(ExtractFilePath(ParamStr(0)));
   p := Pos('glscene', path);
   Delete(path, p + 7, Length(path));
-  path := IncludeTrailingPathDelimiter(path) + 'asset';
+  path := IncludeTrailingPathDelimiter(path) + 'examples\assets';
   SetCurrentDir(path);
 end;
 
@@ -650,7 +650,7 @@ begin
   var path: string := LowerCase(ExtractFilePath(ParamStr(0)));
   var p: integer := Pos('glscene', path);
   Delete(path, p + 7, Length(path));
-  path := IncludeTrailingPathDelimiter(path) + 'asset';
+  path := IncludeTrailingPathDelimiter(path) + 'examples\assets';
   SetCurrentDir(path);
   Result := path;
 end;

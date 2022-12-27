@@ -7,6 +7,4 @@ The version includes bug fixes, improvements
 in GPU Computing using CUDA/OpenCL components 
 to develop OpenGL applications for Win32/Win64. 
 
-2023
--------------------------------------------------
 GLS Team

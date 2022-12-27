@@ -1,7 +1,6 @@
 //
-// The graphics rendering engine GLScene http://glscene.org
+// The multimedia graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.Language;
 
 (*
@@ -15,8 +14,8 @@ interface
 {$I GLScene.inc}
 
 uses
-  System.Classes, 
-  System.IniFiles, 
+  System.Classes,
+  System.IniFiles,
   System.SysUtils,
   GLS.Utils;
 
@@ -94,7 +93,7 @@ var
   S: TStringList;
   I: integer;
 begin
-  If Language = '' then
+  if Language = '' then
     Exit;
   if not FileExists(string(Language)) then
   begin
