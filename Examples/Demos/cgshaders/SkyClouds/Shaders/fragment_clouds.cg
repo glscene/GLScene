@@ -1,0 +1,40 @@
+struct fragmentIN 
+{
+  float4 HPosition : POSITION;
+  float4 TexCoord : TEXCOORD0;
+};
+
+struct fragmentOUT 
+{
+  float4 Color : COLOR;
+};
+
+fragmentOUT main(
+  fragmentIN IN,
+
+  uniform sampler2D channel1,
+  uniform sampler2D channel2,
+  uniform float w1,
+  uniform float w2,
+  uniform float redoffset1,
+  uniform float redoffset2
+
+) 
+{
+  fragmentOUT OUT;
+
+  float2 tex = IN.TexCoord.xy;
+  float4 col1, col2;
+  col1 = f4tex2D(channel1, tex*32);
+  col2 = f4tex2D(channel2, tex*32);
+
+  col1.r = col1.r + redoffset1.r;
+  col2.r = col2.r + redoffset2.r;
+
+
+  OUT.Color.rgb = col1 * w1 + col2 * w2;
+  OUT.Color.a = col1.a * w1 + col2.a * w2;
+
+
+  return OUT;
+}

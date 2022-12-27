@@ -1,0 +1,264 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{B690B0F4-1F1B-4DD5-9210-6099D2BFF2BB}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="boxedin\BoxedinD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="boxedin\boxedinC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="BoxSphere\BoxSphereD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="BoxSphere\BoxSphereC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="facevsface\FacevsFaceD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="facevsface\FacevsfaceC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="meshhit\MeshHitD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="meshhit\MeshhitC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OcclusionQuery\OcclusionQueryD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OcclusionQuery\OcclusionQueryC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="octree\OctreeD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="octree\OctreeC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="RayBox\RayBoxD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="RayBox\RayBoxC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Raycast\RayCastD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Raycast\RaycastC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="sphere\SphereD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="sphere\SphereC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TriangleBox\TriangleBoxD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TriangleBox\TriangleBoxC.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BoxedinD">
+        <MSBuild Projects="boxedin\BoxedinD.dproj"/>
+    </Target>
+    <Target Name="BoxedinD:Clean">
+        <MSBuild Projects="boxedin\BoxedinD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BoxedinD:Make">
+        <MSBuild Projects="boxedin\BoxedinD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="boxedinC">
+        <MSBuild Projects="boxedin\boxedinC.cbproj"/>
+    </Target>
+    <Target Name="boxedinC:Clean">
+        <MSBuild Projects="boxedin\boxedinC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="boxedinC:Make">
+        <MSBuild Projects="boxedin\boxedinC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="BoxSphereD">
+        <MSBuild Projects="BoxSphere\BoxSphereD.dproj"/>
+    </Target>
+    <Target Name="BoxSphereD:Clean">
+        <MSBuild Projects="BoxSphere\BoxSphereD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BoxSphereD:Make">
+        <MSBuild Projects="BoxSphere\BoxSphereD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="BoxSphereC">
+        <MSBuild Projects="BoxSphere\BoxSphereC.cbproj"/>
+    </Target>
+    <Target Name="BoxSphereC:Clean">
+        <MSBuild Projects="BoxSphere\BoxSphereC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BoxSphereC:Make">
+        <MSBuild Projects="BoxSphere\BoxSphereC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="FacevsFaceD">
+        <MSBuild Projects="facevsface\FacevsFaceD.dproj"/>
+    </Target>
+    <Target Name="FacevsFaceD:Clean">
+        <MSBuild Projects="facevsface\FacevsFaceD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FacevsFaceD:Make">
+        <MSBuild Projects="facevsface\FacevsFaceD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="FacevsfaceC">
+        <MSBuild Projects="facevsface\FacevsfaceC.cbproj"/>
+    </Target>
+    <Target Name="FacevsfaceC:Clean">
+        <MSBuild Projects="facevsface\FacevsfaceC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FacevsfaceC:Make">
+        <MSBuild Projects="facevsface\FacevsfaceC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MeshHitD">
+        <MSBuild Projects="meshhit\MeshHitD.dproj"/>
+    </Target>
+    <Target Name="MeshHitD:Clean">
+        <MSBuild Projects="meshhit\MeshHitD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MeshHitD:Make">
+        <MSBuild Projects="meshhit\MeshHitD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MeshhitC">
+        <MSBuild Projects="meshhit\MeshhitC.cbproj"/>
+    </Target>
+    <Target Name="MeshhitC:Clean">
+        <MSBuild Projects="meshhit\MeshhitC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MeshhitC:Make">
+        <MSBuild Projects="meshhit\MeshhitC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="OcclusionQueryD">
+        <MSBuild Projects="OcclusionQuery\OcclusionQueryD.dproj"/>
+    </Target>
+    <Target Name="OcclusionQueryD:Clean">
+        <MSBuild Projects="OcclusionQuery\OcclusionQueryD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OcclusionQueryD:Make">
+        <MSBuild Projects="OcclusionQuery\OcclusionQueryD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OcclusionQueryC">
+        <MSBuild Projects="OcclusionQuery\OcclusionQueryC.cbproj"/>
+    </Target>
+    <Target Name="OcclusionQueryC:Clean">
+        <MSBuild Projects="OcclusionQuery\OcclusionQueryC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OcclusionQueryC:Make">
+        <MSBuild Projects="OcclusionQuery\OcclusionQueryC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="OctreeD">
+        <MSBuild Projects="octree\OctreeD.dproj"/>
+    </Target>
+    <Target Name="OctreeD:Clean">
+        <MSBuild Projects="octree\OctreeD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OctreeD:Make">
+        <MSBuild Projects="octree\OctreeD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OctreeC">
+        <MSBuild Projects="octree\OctreeC.cbproj"/>
+    </Target>
+    <Target Name="OctreeC:Clean">
+        <MSBuild Projects="octree\OctreeC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OctreeC:Make">
+        <MSBuild Projects="octree\OctreeC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="RayBoxD">
+        <MSBuild Projects="RayBox\RayBoxD.dproj"/>
+    </Target>
+    <Target Name="RayBoxD:Clean">
+        <MSBuild Projects="RayBox\RayBoxD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RayBoxD:Make">
+        <MSBuild Projects="RayBox\RayBoxD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="RayBoxC">
+        <MSBuild Projects="RayBox\RayBoxC.cbproj"/>
+    </Target>
+    <Target Name="RayBoxC:Clean">
+        <MSBuild Projects="RayBox\RayBoxC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RayBoxC:Make">
+        <MSBuild Projects="RayBox\RayBoxC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="RayCastD">
+        <MSBuild Projects="Raycast\RayCastD.dproj"/>
+    </Target>
+    <Target Name="RayCastD:Clean">
+        <MSBuild Projects="Raycast\RayCastD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RayCastD:Make">
+        <MSBuild Projects="Raycast\RayCastD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="RaycastC">
+        <MSBuild Projects="Raycast\RaycastC.cbproj"/>
+    </Target>
+    <Target Name="RaycastC:Clean">
+        <MSBuild Projects="Raycast\RaycastC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RaycastC:Make">
+        <MSBuild Projects="Raycast\RaycastC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="SphereD">
+        <MSBuild Projects="sphere\SphereD.dproj"/>
+    </Target>
+    <Target Name="SphereD:Clean">
+        <MSBuild Projects="sphere\SphereD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SphereD:Make">
+        <MSBuild Projects="sphere\SphereD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SphereC">
+        <MSBuild Projects="sphere\SphereC.cbproj"/>
+    </Target>
+    <Target Name="SphereC:Clean">
+        <MSBuild Projects="sphere\SphereC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SphereC:Make">
+        <MSBuild Projects="sphere\SphereC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="TriangleBoxD">
+        <MSBuild Projects="TriangleBox\TriangleBoxD.dproj"/>
+    </Target>
+    <Target Name="TriangleBoxD:Clean">
+        <MSBuild Projects="TriangleBox\TriangleBoxD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TriangleBoxD:Make">
+        <MSBuild Projects="TriangleBox\TriangleBoxD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TriangleBoxC">
+        <MSBuild Projects="TriangleBox\TriangleBoxC.cbproj"/>
+    </Target>
+    <Target Name="TriangleBoxC:Clean">
+        <MSBuild Projects="TriangleBox\TriangleBoxC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TriangleBoxC:Make">
+        <MSBuild Projects="TriangleBox\TriangleBoxC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BoxedinD;boxedinC;BoxSphereD;BoxSphereC;FacevsFaceD;FacevsfaceC;MeshHitD;MeshhitC;OcclusionQueryD;OcclusionQueryC;OctreeD;OctreeC;RayBoxD;RayBoxC;RayCastD;RaycastC;SphereD;SphereC;TriangleBoxD;TriangleBoxC"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BoxedinD:Clean;boxedinC:Clean;BoxSphereD:Clean;BoxSphereC:Clean;FacevsFaceD:Clean;FacevsfaceC:Clean;MeshHitD:Clean;MeshhitC:Clean;OcclusionQueryD:Clean;OcclusionQueryC:Clean;OctreeD:Clean;OctreeC:Clean;RayBoxD:Clean;RayBoxC:Clean;RayCastD:Clean;RaycastC:Clean;SphereD:Clean;SphereC:Clean;TriangleBoxD:Clean;TriangleBoxC:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BoxedinD:Make;boxedinC:Make;BoxSphereD:Make;BoxSphereC:Make;FacevsFaceD:Make;FacevsfaceC:Make;MeshHitD:Make;MeshhitC:Make;OcclusionQueryD:Make;OcclusionQueryC:Make;OctreeD:Make;OctreeC:Make;RayBoxD:Make;RayBoxC:Make;RayCastD:Make;RaycastC:Make;SphereD:Make;SphereC:Make;TriangleBoxD:Make;TriangleBoxC:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

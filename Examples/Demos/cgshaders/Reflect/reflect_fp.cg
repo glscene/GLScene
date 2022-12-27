@@ -1,0 +1,15 @@
+void main(float2 texCoord  : TEXCOORD0,
+          float3 R         : TEXCOORD1,
+          out float4 color : COLOR,
+          uniform float reflectivity,
+          uniform sampler2D decalMap,
+          uniform samplerCUBE environmentMap)
+{
+  // Fetch reflected environment color
+  float4 reflectedColor = texCUBE(environmentMap, R);
+  // Fetch the decal base color
+  float4 decalColor = tex2D(decalMap, texCoord);
+  color = lerp(decalColor,reflectedColor, reflectivity);
+
+}
+

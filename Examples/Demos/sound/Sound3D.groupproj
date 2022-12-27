@@ -1,0 +1,96 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{06A86CCA-3D7E-448C-A112-8A25B35AA76B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="3DSound\SoundAroundD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="3DSound\SoundAroundC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="3DSoundBASS\SoundBASS.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="3DSoundFMOD\SoundFMOD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="3DSoundOpenAL\SoundOpenAL.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="3DSoundWaveOut\SoundWaveOut.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SoundAroundD">
+        <MSBuild Projects="3DSound\SoundAroundD.dproj"/>
+    </Target>
+    <Target Name="SoundAroundD:Clean">
+        <MSBuild Projects="3DSound\SoundAroundD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SoundAroundD:Make">
+        <MSBuild Projects="3DSound\SoundAroundD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SoundAroundC">
+        <MSBuild Projects="3DSound\SoundAroundC.cbproj"/>
+    </Target>
+    <Target Name="SoundAroundC:Clean">
+        <MSBuild Projects="3DSound\SoundAroundC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SoundAroundC:Make">
+        <MSBuild Projects="3DSound\SoundAroundC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="SoundBASS">
+        <MSBuild Projects="3DSoundBASS\SoundBASS.dproj"/>
+    </Target>
+    <Target Name="SoundBASS:Clean">
+        <MSBuild Projects="3DSoundBASS\SoundBASS.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SoundBASS:Make">
+        <MSBuild Projects="3DSoundBASS\SoundBASS.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SoundFMOD">
+        <MSBuild Projects="3DSoundFMOD\SoundFMOD.dproj"/>
+    </Target>
+    <Target Name="SoundFMOD:Clean">
+        <MSBuild Projects="3DSoundFMOD\SoundFMOD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SoundFMOD:Make">
+        <MSBuild Projects="3DSoundFMOD\SoundFMOD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SoundOpenAL">
+        <MSBuild Projects="3DSoundOpenAL\SoundOpenAL.dproj"/>
+    </Target>
+    <Target Name="SoundOpenAL:Clean">
+        <MSBuild Projects="3DSoundOpenAL\SoundOpenAL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SoundOpenAL:Make">
+        <MSBuild Projects="3DSoundOpenAL\SoundOpenAL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SoundWaveOut">
+        <MSBuild Projects="3DSoundWaveOut\SoundWaveOut.dproj"/>
+    </Target>
+    <Target Name="SoundWaveOut:Clean">
+        <MSBuild Projects="3DSoundWaveOut\SoundWaveOut.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SoundWaveOut:Make">
+        <MSBuild Projects="3DSoundWaveOut\SoundWaveOut.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SoundAroundD;SoundAroundC;SoundBASS;SoundFMOD;SoundOpenAL;SoundWaveOut"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SoundAroundD:Clean;SoundAroundC:Clean;SoundBASS:Clean;SoundFMOD:Clean;SoundOpenAL:Clean;SoundWaveOut:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SoundAroundD:Make;SoundAroundC:Make;SoundBASS:Make;SoundFMOD:Make;SoundOpenAL:Make;SoundWaveOut:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

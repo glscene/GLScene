@@ -1,0 +1,33 @@
+//
+// Fragment Program
+//
+// - Blends four textures
+//
+
+struct vert2Frag
+{
+    float4 Position : POSITION;
+    float4 Tex0     : TEXCOORD0;
+    float4 Tex1     : TEXCOORD1;
+    float4 Tex2     : TEXCOORD2;
+    float4 Tex3     : TEXCOORD3;
+};
+
+fragout main( vert2Frag IN,
+              uniform sampler2D Map0,
+              uniform sampler2D Map1,
+              uniform sampler2D Map2,
+              uniform sampler2D Map3,
+			  uniform float4 weights
+            )
+{
+    fragout OUT;
+
+    OUT.col  = f4tex2D(Map0,IN.Tex0.xyz) * weights[0];
+    OUT.col += f4tex2D(Map1,IN.Tex1.xyz) * weights[1];
+    OUT.col += f4tex2D(Map2,IN.Tex2.xyz) * weights[2];
+    OUT.col += f4tex2D(Map3,IN.Tex3.xyz) * weights[3];
+
+    return OUT;
+}
+

@@ -1,0 +1,43 @@
+struct interpolants
+{
+    float2 texcoords            : TEXCOORD0;
+    float4 tangentToEyeMat0     : TEXCOORD4;
+    float3 tangentToEyeMat1     : TEXCOORD5;
+    float3 tangentToEyeMat2     : TEXCOORD6;
+    float4 eyeSpacePosition     : TEXCOORD7;
+};
+
+void main(in float4 oPosition   : POSITION,
+          in float2 texcoord0   : TEXCOORD0,
+          in float3 tangent     : TEXCOORD1,//TANGENT,
+          in float3 binormal    : TEXCOORD2,//BINORMAL,
+          in float3 normal      : NORMAL,
+
+          out float4 hPosition  : POSITION,
+          out float4 color      : COLOR0,
+          out interpolants OUT,
+
+          uniform float bumpScale,
+          uniform float4x4 modelViewProj,
+          uniform float4x4 modelView)
+{
+
+    hPosition = mul(modelViewProj, oPosition);
+    color = float4(1.0, 1.0, 1.0, 1.0);
+
+    OUT.texcoords = texcoord0;
+    OUT.eyeSpacePosition = mul(modelView, oPosition);
+
+    OUT.tangentToEyeMat0.x = dot(modelView[0].xyz, tangent);
+    OUT.tangentToEyeMat0.y = dot(modelView[0].xyz, binormal);
+    OUT.tangentToEyeMat0.z = dot(modelView[0].xyz, normal);
+    OUT.tangentToEyeMat0.w = bumpScale;
+        
+    OUT.tangentToEyeMat1.x = dot(modelView[1].xyz, tangent);
+    OUT.tangentToEyeMat1.y = dot(modelView[1].xyz, binormal);
+    OUT.tangentToEyeMat1.z = dot(modelView[1].xyz, normal);
+
+    OUT.tangentToEyeMat2.x = dot(modelView[2].xyz, tangent);
+    OUT.tangentToEyeMat2.y = dot(modelView[2].xyz, binormal);
+    OUT.tangentToEyeMat2.z = dot(modelView[2].xyz, normal);
+}

@@ -1,0 +1,161 @@
+# ==========================================================================================
+# Add terms that should not be translated to this file.
+# It works in conjunction with ggexclude.cfg. First try to exclude stuff via ggexclude.cfg.
+# Things that still make it through the ggexclude sieve should then be added here.
+# Make sure to leave a blank line after each entry!
+# ==========================================================================================
+
+msgid "OK"
+msgstr ""
+
+msgid "GLSL"
+msgstr ""
+
+msgid "glsl"
+msgstr ""
+
+# Font Names
+msgid "Arial"
+msgstr ""
+
+msgid "Courier New"
+msgstr ""
+
+msgid "Courier New 10pt"
+msgstr ""
+
+msgid "Marlett"
+msgstr ""
+
+msgid "MS Shell Dlg 2"
+msgstr ""
+
+msgid "MS Sans Serif"
+msgstr ""
+
+msgid "Tahoma"
+msgstr ""
+
+msgid "Terminal"
+msgstr ""
+
+msgid "Terminal 8pt"
+msgstr ""
+
+msgid "Webdings"
+msgstr ""
+
+# Percentages
+msgid "100%"
+msgstr ""
+
+msgid "1000%"
+msgstr ""
+
+#Units
+msgid "nm"
+msgstr ""
+
+msgid "mm"
+msgstr ""
+
+msgid "cm"
+msgstr ""
+
+msgid "km"
+msgstr ""
+
+msgid "ly"
+msgstr ""
+
+msgid "pc"
+msgstr ""
+
+msgid "kpc"
+msgstr ""
+
+# Other untranslatable things
+msgid "..."
+msgstr ""
+
+msgid "<"
+msgstr ""
+
+msgid "-"
+msgstr ""
+
+msgid " "
+msgstr ""
+
+msgid "#"
+msgstr ""
+
+msgid "!"
+msgstr ""
+
+msgid "@"
+msgstr ""
+
+msgid "&"
+msgstr ""
+
+msgid "version"
+msgstr ""
+
+msgid "GLScene"
+msgstr ""
+
+msgid "Windows"
+msgstr ""
+
+msgid "Linux"
+msgstr ""
+
+msgid "Android"
+msgstr ""
+
+msgid "Mac OS"
+msgstr ""
+
+msgid "UTF-8"
+msgstr ""
+
+msgid "LOCALE"
+msgstr ""
+
+msgid "UNICODE"
+msgstr ""
+
+msgid "Exception class: %s"
+msgstr ""
+
+msgid "Exception message: %s"
+msgstr ""
+
+msgid "System   : %s %s, Version: %d.%d, Build: %x, \"%s\""
+msgstr ""
+
+msgid "Processor: %s, %s, %d MHz"
+msgstr ""
+
+msgid "Memory: %d; free %d"
+msgstr ""
+
+msgid "Display  : %dx%d pixels, %d bpp"
+msgstr ""
+
+msgid "Thread: %s"
+msgstr ""
+
+msgid "()[]{}<>"
+msgstr ""
+
+msgid "@"
+msgstr ""
+
+msgid "&"
+msgstr ""
+
+msgid "glscene@gmail.com"
+msgstr ""
+

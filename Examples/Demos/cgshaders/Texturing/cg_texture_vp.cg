@@ -1,0 +1,48 @@
+//
+// Vertex Program
+//
+// - Calculates texture coordinate offsets
+//
+
+struct appin
+{
+    float4 Pos  : POSITION;
+    float4 Tex  : TEXCOORD0;
+};
+
+struct vertout
+{
+    float4 HPosition : POSITION;
+    float4 Tex0      : TEXCOORD0;
+    float4 Tex1      : TEXCOORD1;
+    float4 Tex2      : TEXCOORD2;
+    float4 Tex3      : TEXCOORD3;
+};
+
+vertout main( appin IN,
+              uniform float4x4 ModelViewProj,
+              uniform float4   shifts
+            )
+{
+    vertout OUT;
+
+    OUT.HPosition = mul(ModelViewProj, IN.Pos);
+
+    OUT.Tex0.x = IN.Tex.x + shifts[0];
+    OUT.Tex0.y = IN.Tex.y;
+    OUT.Tex0.z = IN.Tex.z;
+
+    OUT.Tex1.x = IN.Tex.x;
+    OUT.Tex1.y = IN.Tex.y + shifts[1];
+    OUT.Tex1.z = IN.Tex.z;
+
+    OUT.Tex2.x = IN.Tex.x + shifts[2];
+    OUT.Tex2.y = IN.Tex.y;
+    OUT.Tex2.z = IN.Tex.z;
+
+    OUT.Tex3.x = IN.Tex.x;
+    OUT.Tex3.y = IN.Tex.y + shifts[3];
+    OUT.Tex3.z = IN.Tex.z;
+
+    return OUT;
+}

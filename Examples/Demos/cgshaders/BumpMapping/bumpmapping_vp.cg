@@ -1,0 +1,37 @@
+struct appdata
+{
+    float4 Position : POSITION;   
+    float3 Normal   : NORMAL;     
+    float2 TexCoord1 : TEXCOORD0; 
+    float2 TexCoord2 : TEXCOORD1; 
+};
+
+struct vfconn
+{
+    float4 Position    : POSITION;  
+    float2 TexCoord1   : TEXCOORD0; 
+    float2 TexCoord2   : TEXCOORD1; 
+    float3 LightVector : COLOR0;    
+};
+
+vfconn main(appdata IN,
+            uniform float4x4 ModelViewProj,
+    uniform float3 lightpos)
+{
+    vfconn OUT;  
+
+    OUT.Position = mul(ModelViewProj, IN.Position);
+    OUT.TexCoord1 = IN.TexCoord1;
+    OUT.TexCoord2 = IN.TexCoord2;     
+    float3 normal = IN.Normal;
+    float3 binormal = cross(lightpos,normal);
+    float3 tang = cross(binormal,normal);
+    float3x3 t;
+    t[0] = tang;
+    t[1] = binormal;
+    t[2] = normal;
+    float3 light = mul(t,normalize(lightpos - IN.Position));
+    OUT.LightVector =0.5*light + 0.5;  
+
+    return OUT;
+} 
