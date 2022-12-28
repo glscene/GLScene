@@ -27,11 +27,12 @@ uses
   CG.Shader,
   GLS.FileTGA,
   GLS.Keyboard,
-  XPMan,
   GLS.Material,
   GLS.Coordinates,
-  
-  GLS.BaseClasses;
+  GLS.BaseClasses,
+  GLS.Utils,
+
+  GLS.SimpleNavigation;
 
 type
 
@@ -60,6 +61,8 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
+    GLSimpleNavigation1: TGLSimpleNavigation;
+    PanelFPS: TPanel;
     procedure CgCloudsApplyVP(CgProgram: TCgProgram; Sender: TObject);
     procedure CgSunUnApplyFP(CgProgram: TCgProgram);
     procedure CgSunApplyFP(CgProgram: TCgProgram; Sender: TObject);
@@ -92,7 +95,7 @@ type
 
 var
   MainForm: TMainForm;
-  dirSelf, dirTextures, dirShaders: String;
+  dirSelf, dirTextures, dirShaders: TFileName;
 
 const
   Coeff = 0.1;
@@ -105,9 +108,10 @@ implementation
 // ---------------------------FormCreate--------------------
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
-  GetDir(0, dirSelf);
-  dirTextures := dirSelf + '\Textures\';
-  dirShaders := dirSelf + '\Shaders\';
+  // GetDir(0, dirSelf);
+  dirSelf := GetCurrentAssetPath();  // current assets
+  dirTextures := dirSelf + '\texture\';
+  dirShaders := dirSelf + '\shader\';
 
   CreateMaterials;
   AssignMaterials;
@@ -120,7 +124,7 @@ begin
 
   WeatherMode := 0;
   ClientWidth := 1024;
-  ClientHeight := 768;
+  ClientHeight := 712;
   Position := poScreenCenter;
   GLSV.Align := alClient;
   Timer.Enabled := True;
@@ -130,17 +134,17 @@ end;
 procedure TMainForm.CreateMaterials;
 begin
   CgBackground.FragmentProgram.LoadFromFile
-    (dirShaders + 'fragment_background.cg');
+    (dirShaders + 'fragment_bkground.cg');
   CgClouds.FragmentProgram.LoadFromFile(dirShaders + 'fragment_clouds.cg');
   CgMasser.FragmentProgram.LoadFromFile(dirShaders + 'fragment_moon.cg');
   CgSecunda.FragmentProgram.LoadFromFile(dirShaders + 'fragment_moon.cg');
   CgSun.FragmentProgram.LoadFromFile(dirShaders + 'fragment_moon.cg');
 
   // day background
-  MatLib.AddTextureMaterial('bg_day', dirTextures + 'bg_day.tga');
+  MatLib.AddTextureMaterial('day', dirTextures + 'tx_day.tga');
 
   // night background
-  MatLib.AddTextureMaterial('bg_night', dirTextures + 'bg_night.tga');
+  MatLib.AddTextureMaterial('night', dirTextures + 'tx_night.tga');
 
   // main skybox material
   with MatLib.Materials.Add do
@@ -165,7 +169,7 @@ begin
   MatLib.AddTextureMaterial('masser', dirTextures + 'tx_masser_three_wan.tga');
   MatLib.AddTextureMaterial('secunda',
     dirTextures + 'tx_secunda_three_wan.tga');
-  MatLib.AddTextureMaterial('sun', dirTextures + 'sun.tga');
+  MatLib.AddTextureMaterial('sun', dirTextures + 'tx_sun.tga');
 
   with MatLib.Materials.Add do
   begin
@@ -256,7 +260,7 @@ end;
 // ---------------------------TimerTimer--------------------
 procedure TMainForm.TimerTimer(Sender: TObject);
 begin
-  Caption := GLSV.FramesPerSecondText(2);
+  PanelFPS.Caption := GLSV.FramesPerSecondText(2);
   GLSV.ResetPerformanceMonitor;
 end;
 
@@ -327,13 +331,13 @@ end;
 // ---------------------------HandleKeys--------------------
 procedure TMainForm.HandleKeys;
 begin
-  if IsKeyDown('c') then
+  if IsKeyDown('c') then           // weather1
     WeatherMode := 0
-  else if IsKeyDown('s') then
+  else if IsKeyDown('s') then      // weather2
     WeatherMode := 1
-  else if IsKeyDown('n') then
+  else if IsKeyDown('n') then      // night
     DayMode := 2
-  else if IsKeyDown('d') then
+  else if IsKeyDown('d') then      // day
     DayMode := 1
   else
 
@@ -346,12 +350,12 @@ var
 begin
   with CgProgram.ParamByName('channel1') do
   begin
-    SetAsTexture2d(MatLib.LibMaterialByName('bg_day').Material.Texture.Handle);
+    SetAsTexture2d(MatLib.LibMaterialByName('day').Material.Texture.Handle);
     EnableTexture;
   end;
   with CgProgram.ParamByName('channel2') do
   begin
-    SetAsTexture2d(MatLib.LibMaterialByName('bg_night')
+    SetAsTexture2d(MatLib.LibMaterialByName('night')
       .Material.Texture.Handle);
     EnableTexture;
   end;

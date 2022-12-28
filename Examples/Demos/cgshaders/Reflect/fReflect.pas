@@ -27,7 +27,7 @@ uses
   Cg.Import,
   Cg.GL, 
   GLS.VectorGeometry, 
-  GLS.Cadencer, 
+  GLS.Cadencer,
   GLS.VectorFileObjects, 
   GLS.File3DS,
   GLS.Graph, 
@@ -35,6 +35,7 @@ uses
   GLS.GeomObjects, 
   GLS.Material, 
   GLS.Coordinates,
+  GLS.Utils,
    
   GLS.BaseClasses;
 
@@ -125,10 +126,10 @@ type
     procedure CgShader1ApplyFP(CgProgram: TCgProgram; Sender: TObject);
     procedure CgShader1ApplyVP(CgProgram: TCgProgram; Sender: TObject);
   private
-     
+
     procedure CreateCubeMap;
   public
-     
+
     mx, my: Integer;
   end;
 
@@ -140,23 +141,47 @@ implementation
 
 {$R *.dfm}
 
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path + '\model');
+
+  // load a flat plane model for the water FreeForm
+  plane.LoadFromFile('plane.3ds');
+
+ // Load Cg shaders for proggy
+  SetCurrentDir(Path + '\shader');
+  with CgShader1 do
+  begin
+    VertexProgram.LoadFromFile('reflect_vp.cg');
+    MemoVertCode.Lines.Assign(VertexProgram.Code);
+    FragmentProgram.LoadFromFile('reflect_fp.cg');
+    MemoFragCode.Lines.Assign(FragmentProgram.Code);
+
+    VertexProgram.Enabled := false;
+    FragmentProgram.Enabled := false;
+  end;
+
+  ButtonApplyFP.Enabled := false;
+  ButtonApplyVP.Enabled := false;
+
+  ref := 0;
+
+  CreateCubeMap;
+end;
+
+
 procedure TForm1.CgShader1ApplyFP(CgProgram: TCgProgram; Sender: TObject);
 begin
   with CgProgram, GLMaterialLibrary1 do
   begin
     ParamByName('reflectivity').SetAsScalar(ref); // float
 
-    with ParamByName('decalMap') do
-    begin
-      SetAsTexture2D(materials[1].Material.Texture.Handle); // sampler2D
-      EnableTexture;
-    end;
+    ParamByName('decalMap').SetAsTexture2D(materials[1].Material.Texture.Handle); // sampler2D
+    ParamByName('decalMap').EnableTexture;
 
-    with ParamByName('environmentMap') do
-    begin
-      SetAsTextureCUBE(materials[0].Material.Texture.Handle); // samplerCUBE
-      EnableTexture;
-    end;
+    ParamByName('environmentMap').SetAsTextureCUBE(materials[0].Material.Texture.Handle); // samplerCUBE
+    ParamByName('environmentMap').EnableTexture;
   end;
 end;
 
@@ -181,32 +206,6 @@ begin
     ParamByName('decalMap').DisableTexture;
     ParamByName('environmentMap').DisableTexture;
   end;
-end;
-
-procedure TForm1.FormCreate(Sender: TObject);
-begin
-  // load a flat plane model for the water FreeForm
-  plane.LoadFromFile('plane.3ds');
-
-  // Load Cg proggy
-  with CgShader1 do
-  begin
-    VertexProgram.LoadFromFile('reflect_vp.cg');
-    MemoVertCode.Lines.Assign(VertexProgram.Code);
-
-    FragmentProgram.LoadFromFile('reflect_fp.cg');
-    MemoFragCode.Lines.Assign(FragmentProgram.Code);
-
-    VertexProgram.Enabled := false;
-    FragmentProgram.Enabled := false;
-  end;
-
-  ButtonApplyFP.Enabled := false;
-  ButtonApplyVP.Enabled := false;
-
-  ref := 0;
-
-  CreateCubeMap;
 end;
 
 procedure TForm1.CreateCubeMap;

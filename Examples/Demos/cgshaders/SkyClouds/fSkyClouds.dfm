@@ -1,7 +1,7 @@
 object MainForm: TMainForm
   Left = 436
   Top = 247
-  Caption = 'MainForm'
+  Caption = 'Sky Clouds'
   ClientHeight = 515
   ClientWidth = 792
   Color = clBtnFace
@@ -12,25 +12,23 @@ object MainForm: TMainForm
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  OnMouseWheel = FormMouseWheel
   TextHeight = 13
   object GLSV: TGLSceneViewer
-    Left = 74
+    Left = 105
     Top = 0
-    Width = 718
+    Width = 687
     Height = 515
     Camera = cam
     FieldOfView = 141.469467163085900000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSVMouseDown
-    OnMouseMove = GLSVMouseMove
     TabOrder = 0
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 74
+    Width = 105
     Height = 515
     Align = alLeft
     Alignment = taRightJustify
@@ -69,6 +67,14 @@ object MainForm: TMainForm
       Width = 26
       Height = 13
       Caption = 'Keys:'
+    end
+    object PanelFPS: TPanel
+      Left = 3
+      Top = 136
+      Width = 96
+      Height = 41
+      Caption = 'FPS'
+      TabOrder = 0
     end
   end
   object GLScene: TGLScene
@@ -171,5 +177,24 @@ object MainForm: TMainForm
     OnUnApplyFP = CgSunUnApplyFP
     Left = 554
     Top = 244
+  end
+  object GLSimpleNavigation1: TGLSimpleNavigation
+    Form = Owner
+    GLSceneViewer = GLSV
+    KeyCombinations = <
+      item
+        ShiftState = [ssLeft, ssRight]
+        Action = snaZoom
+      end
+      item
+        ShiftState = [ssLeft]
+        Action = snaMoveAroundTarget
+      end
+      item
+        ShiftState = [ssRight]
+        Action = snaMoveAroundTarget
+      end>
+    Left = 136
+    Top = 224
   end
 end

@@ -9,6 +9,9 @@
         <Projects Include="BombShader\BombShaderC.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="BlinnSheen\CgBlinnSheen.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="cellshading\CgCellShaderD.dproj">
             <Dependencies/>
         </Projects>
@@ -27,19 +30,16 @@
         <Projects Include="texturing\CgTextureC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="BlinnSheen\Cg_BlinnSheen.dproj">
+        <Projects Include="BumpMapping\CgBumpMapping.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="BumpMapping\Cg_BumpMapping.dproj">
+        <Projects Include="Distortion\CgDistTexture.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Distortion\DistortionTexture.dproj">
+        <Projects Include="Reflect\CgReflect.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Reflect\Reflect.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="SkyClouds\SkyClouds.dproj">
+        <Projects Include="SkyClouds\CgSkyClouds.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -67,6 +67,15 @@
     </Target>
     <Target Name="BombShaderC:Make">
         <MSBuild Projects="BombShader\BombShaderC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="CgBlinnSheen">
+        <MSBuild Projects="BlinnSheen\CgBlinnSheen.dproj"/>
+    </Target>
+    <Target Name="CgBlinnSheen:Clean">
+        <MSBuild Projects="BlinnSheen\CgBlinnSheen.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CgBlinnSheen:Make">
+        <MSBuild Projects="BlinnSheen\CgBlinnSheen.dproj" Targets="Make"/>
     </Target>
     <Target Name="CgCellShaderD">
         <MSBuild Projects="cellshading\CgCellShaderD.dproj"/>
@@ -122,59 +131,50 @@
     <Target Name="CgTextureC:Make">
         <MSBuild Projects="texturing\CgTextureC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Cg_BlinnSheen">
-        <MSBuild Projects="BlinnSheen\Cg_BlinnSheen.dproj"/>
+    <Target Name="CgBumpMapping">
+        <MSBuild Projects="BumpMapping\CgBumpMapping.dproj"/>
     </Target>
-    <Target Name="Cg_BlinnSheen:Clean">
-        <MSBuild Projects="BlinnSheen\Cg_BlinnSheen.dproj" Targets="Clean"/>
+    <Target Name="CgBumpMapping:Clean">
+        <MSBuild Projects="BumpMapping\CgBumpMapping.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Cg_BlinnSheen:Make">
-        <MSBuild Projects="BlinnSheen\Cg_BlinnSheen.dproj" Targets="Make"/>
+    <Target Name="CgBumpMapping:Make">
+        <MSBuild Projects="BumpMapping\CgBumpMapping.dproj" Targets="Make"/>
     </Target>
-    <Target Name="Cg_BumpMapping">
-        <MSBuild Projects="BumpMapping\Cg_BumpMapping.dproj"/>
+    <Target Name="CgDistTexture">
+        <MSBuild Projects="Distortion\CgDistTexture.dproj"/>
     </Target>
-    <Target Name="Cg_BumpMapping:Clean">
-        <MSBuild Projects="BumpMapping\Cg_BumpMapping.dproj" Targets="Clean"/>
+    <Target Name="CgDistTexture:Clean">
+        <MSBuild Projects="Distortion\CgDistTexture.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Cg_BumpMapping:Make">
-        <MSBuild Projects="BumpMapping\Cg_BumpMapping.dproj" Targets="Make"/>
+    <Target Name="CgDistTexture:Make">
+        <MSBuild Projects="Distortion\CgDistTexture.dproj" Targets="Make"/>
     </Target>
-    <Target Name="DistortionTexture">
-        <MSBuild Projects="Distortion\DistortionTexture.dproj"/>
+    <Target Name="CgReflect">
+        <MSBuild Projects="Reflect\CgReflect.dproj"/>
     </Target>
-    <Target Name="DistortionTexture:Clean">
-        <MSBuild Projects="Distortion\DistortionTexture.dproj" Targets="Clean"/>
+    <Target Name="CgReflect:Clean">
+        <MSBuild Projects="Reflect\CgReflect.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="DistortionTexture:Make">
-        <MSBuild Projects="Distortion\DistortionTexture.dproj" Targets="Make"/>
+    <Target Name="CgReflect:Make">
+        <MSBuild Projects="Reflect\CgReflect.dproj" Targets="Make"/>
     </Target>
-    <Target Name="Reflect">
-        <MSBuild Projects="Reflect\Reflect.dproj"/>
+    <Target Name="CgSkyClouds">
+        <MSBuild Projects="SkyClouds\CgSkyClouds.dproj"/>
     </Target>
-    <Target Name="Reflect:Clean">
-        <MSBuild Projects="Reflect\Reflect.dproj" Targets="Clean"/>
+    <Target Name="CgSkyClouds:Clean">
+        <MSBuild Projects="SkyClouds\CgSkyClouds.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Reflect:Make">
-        <MSBuild Projects="Reflect\Reflect.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="SkyClouds">
-        <MSBuild Projects="SkyClouds\SkyClouds.dproj"/>
-    </Target>
-    <Target Name="SkyClouds:Clean">
-        <MSBuild Projects="SkyClouds\SkyClouds.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="SkyClouds:Make">
-        <MSBuild Projects="SkyClouds\SkyClouds.dproj" Targets="Make"/>
+    <Target Name="CgSkyClouds:Make">
+        <MSBuild Projects="SkyClouds\CgSkyClouds.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="BombShaderD;BombShaderC;CgCellShaderD;CgCellShaderC;CgSimpleD;CgSimpleC;CgTextureD;CgTextureC;Cg_BlinnSheen;Cg_BumpMapping;DistortionTexture;Reflect;SkyClouds"/>
+        <CallTarget Targets="BombShaderD;BombShaderC;CgBlinnSheen;CgCellShaderD;CgCellShaderC;CgSimpleD;CgSimpleC;CgTextureD;CgTextureC;CgBumpMapping;CgDistTexture;CgReflect;CgSkyClouds"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="BombShaderD:Clean;BombShaderC:Clean;CgCellShaderD:Clean;CgCellShaderC:Clean;CgSimpleD:Clean;CgSimpleC:Clean;CgTextureD:Clean;CgTextureC:Clean;Cg_BlinnSheen:Clean;Cg_BumpMapping:Clean;DistortionTexture:Clean;Reflect:Clean;SkyClouds:Clean"/>
+        <CallTarget Targets="BombShaderD:Clean;BombShaderC:Clean;CgBlinnSheen:Clean;CgCellShaderD:Clean;CgCellShaderC:Clean;CgSimpleD:Clean;CgSimpleC:Clean;CgTextureD:Clean;CgTextureC:Clean;CgBumpMapping:Clean;CgDistTexture:Clean;CgReflect:Clean;CgSkyClouds:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="BombShaderD:Make;BombShaderC:Make;CgCellShaderD:Make;CgCellShaderC:Make;CgSimpleD:Make;CgSimpleC:Make;CgTextureD:Make;CgTextureC:Make;Cg_BlinnSheen:Make;Cg_BumpMapping:Make;DistortionTexture:Make;Reflect:Make;SkyClouds:Make"/>
+        <CallTarget Targets="BombShaderD:Make;BombShaderC:Make;CgBlinnSheen:Make;CgCellShaderD:Make;CgCellShaderC:Make;CgSimpleD:Make;CgSimpleC:Make;CgTextureD:Make;CgTextureC:Make;CgBumpMapping:Make;CgDistTexture:Make;CgReflect:Make;CgSkyClouds:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

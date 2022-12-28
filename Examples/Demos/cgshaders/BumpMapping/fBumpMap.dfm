@@ -25,7 +25,6 @@ object BumpDemo_frm: TBumpDemo_frm
     FieldOfView = 145.189712524414100000
     PenAsTouch = False
     Align = alClient
-    OnMouseMove = SceneViewerMouseMove
     TabOrder = 0
   end
   object Shaders_ctrl: TPageControl
@@ -162,5 +161,25 @@ object BumpDemo_frm: TBumpDemo_frm
     ThreadPriority = tpNormal
     Left = 440
     Top = 72
+  end
+  object GLSimpleNavigation1: TGLSimpleNavigation
+    Form = Owner
+    GLSceneViewer = SceneViewer
+    FormCaption = 'Cg BumpMapping - %FPS'
+    KeyCombinations = <
+      item
+        ShiftState = [ssLeft, ssRight]
+        Action = snaZoom
+      end
+      item
+        ShiftState = [ssLeft]
+        Action = snaMoveAroundTarget
+      end
+      item
+        ShiftState = [ssRight]
+        Action = snaMoveAroundTarget
+      end>
+    Left = 688
+    Top = 120
   end
 end

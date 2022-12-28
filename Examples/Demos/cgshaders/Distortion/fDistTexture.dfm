@@ -1,7 +1,7 @@
 object Form1: TForm1
   Left = 375
   Top = 237
-  Caption = 'Cg_Grayscale Texture Distortion'
+  Caption = 'Cg Texture Distortion'
   ClientHeight = 613
   ClientWidth = 951
   Color = clBtnFace

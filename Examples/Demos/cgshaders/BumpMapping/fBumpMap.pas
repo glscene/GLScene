@@ -29,7 +29,8 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.TextureFormat;
+  GLS.TextureFormat,
+  GLS.Utils, GLS.SimpleNavigation;
 
 type
   TBumpDemo_frm = class(TForm)
@@ -54,6 +55,7 @@ type
     Cube_2: TGLCube;
     Timer: TGLAsyncTimer;
     GLSphere1: TGLSphere;
+    GLSimpleNavigation1: TGLSimpleNavigation;
     procedure VP_cbClick(Sender: TObject);
     procedure FP_cbClick(Sender: TObject);
     procedure FP_btnClick(Sender: TObject);
@@ -108,15 +110,19 @@ end;
 
 procedure TBumpDemo_frm.FormCreate(Sender: TObject);
 begin
-  SetCurrentDir(ExtractFilePath(ParamStr(0)));
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path + '\shader');
   FP_Memo.Lines.LoadFromFile('BumpMapping_fp.cg');
   VP_Memo.Lines.LoadFromFile('BumpMapping_vp.cg');
   with MaterialLibrary do
     begin
-      AddTextureMaterial('c_tex','c_tex.jpg');
-      AddTextureMaterial('c_normal','c_normal.jpg');
-      AddTextureMaterial('c2_tex','c2_tex.jpg');
-      AddTextureMaterial('c2_normal','c2_normal.jpg');
+      SetCurrentDir(Path + '\map');
+      AddTextureMaterial('c_tex','earth.jpg');
+
+      SetCurrentDir(Path + '\texture');
+      AddTextureMaterial('c_normal','earthnormals.jpg');
+      AddTextureMaterial('c2_tex','walkway.jpg');
+      AddTextureMaterial('c2_normal','walkwaynorm.jpg');
       Materials[0].Material.Texture.FilteringQuality := tfAnisotropic;
       Materials[1].Material.Texture.FilteringQuality := tfAnisotropic;
       Materials[2].Material.Texture.FilteringQuality := tfAnisotropic;

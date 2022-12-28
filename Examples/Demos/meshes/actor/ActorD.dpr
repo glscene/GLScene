@@ -1,6 +1,6 @@
-{: This sample illustrates basic actor use.
+(* This sample illustrates basic actor using.
 
-	I'm using the GLScene built-in Actor Load from File, Load Texture,
+   Use the GLScene built-in Actor Load from File, Load Texture,
    add one weapon, and animate both. The sensation is how both are one.
    Both weapon and actor are just TGLActor objects, the role is different.
    In the sample, it is possible change the animation of the actor and
@@ -21,13 +21,13 @@
    The stuff used for this sample is free, and information about this is in
    the waste.txt text file (see "media" directory).
 
-   Special Thanks to Eric Grange an Roger Cao for your help
-}
+   Special Thanks to Eric Grange an Roger Cao for help
+*)
 program ActorD;
 
 uses
   Forms,
-  fActorD in 'fActorD.pas' {FormActor};
+  fActorD in 'fActorD.pas';
 
 {$R *.RES}
 

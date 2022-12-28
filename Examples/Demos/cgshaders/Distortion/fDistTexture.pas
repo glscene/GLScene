@@ -24,12 +24,13 @@ uses
   CG.Shader,
   GLS.Material,
   GLS.Coordinates,
-  
+
   GLS.BaseClasses,
   GLS.RenderContextInfo,
+  GLS.Utils,
 
-  Cg.Import,
-  Cg.GL;
+  CG.Import,
+  CG.GL;
 
 type
   TForm1 = class(TForm)
@@ -45,14 +46,11 @@ type
     GLPlane1: TGLPlane;
     backGround: TGLPlane;
     procedure FormCreate(Sender: TObject);
-    procedure GLDirectOpenGL1Render(Sender: TObject;
-      var rci: TGLRenderContextInfo);
-    procedure GLCadencer1Progress(Sender: TObject;
-      const deltaTime, newTime: Double);
+    procedure GLDirectOpenGL1Render(Sender: TObject; var rci: TGLRenderContextInfo);
+    procedure GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
     procedure filterShaderApplyFP(CgProgram: TCgProgram; Sender: TObject);
     procedure filterShaderApplyVP(CgProgram: TCgProgram; Sender: TObject);
-    procedure viewerMouseMove(Sender: TObject; Shift: TShiftState;
-      X, Y: Integer);
+    procedure viewerMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
   private
   end;
 
@@ -60,22 +58,26 @@ var
   Form1: TForm1;
   refract: TGLTextureHandle;
 
-//------------------------------------------
+  // ------------------------------------------
 implementation
-//------------------------------------------
+
+// ------------------------------------------
 
 {$R *.dfm}
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path + '\shader');
+
   // Load the shader
   filterShader.VertexProgram.LoadFromFile('filterV.c');
   filterShader.FragmentProgram.LoadFromFile('filterF.c');
 
   // Load the texture for the background plane
-  matLib.Materials[1].Material.Texture.Image.LoadFromFile('backGround.bmp');
-
-end; // formCreate
+  SetCurrentDir(Path + '\texture');
+  matLib.Materials[1].Material.Texture.Image.LoadFromFile('parquet.bmp');
+end;
 
 (*
   Initialize refract texture used for the screen filter. Remember
@@ -99,15 +101,14 @@ begin
     must be modified this case so you need to recreate the texture, otherwise
     it crashes. I was too lazy for that so that's why you can't resize
     the form *)
-  glCopyTexImage2d(GL_TEXTURE_RECTANGLE_NV, 0, GL_RGBA8, 0, 0,
-    Form1.viewer.ClientWidth, Form1.viewer.ClientHeight, 0);
+  glCopyTexImage2d(GL_TEXTURE_RECTANGLE_NV, 0, GL_RGBA8, 0, 0, Form1.viewer.ClientWidth,
+    Form1.viewer.ClientHeight, 0);
 end; // initialize
 
 var
   initialized: boolean = false;
 
-procedure TForm1.GLDirectOpenGL1Render(Sender: TObject;
-  var rci: TGLRenderContextInfo);
+procedure TForm1.GLDirectOpenGL1Render(Sender: TObject; var rci: TGLRenderContextInfo);
 begin
   if not initialized then
   begin
@@ -121,13 +122,12 @@ begin
 
   // Take a snapshot for the refract texture
   glBindTexture(GL_TEXTURE_RECTANGLE_NV, refract.Handle);
-  glCopyTexSubImage2D(GL_TEXTURE_RECTANGLE_NV, 0, 0, 0, 0, 0,
-    viewer.ClientWidth, viewer.ClientHeight);
+  glCopyTexSubImage2D(GL_TEXTURE_RECTANGLE_NV, 0, 0, 0, 0, 0, viewer.ClientWidth,
+    viewer.ClientHeight);
   glDisable(GL_TEXTURE_RECTANGLE_NV);
 end; // Render
 
-procedure TForm1.GLCadencer1Progress(Sender: TObject;
-  const deltaTime, newTime: Double);
+procedure TForm1.GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
 begin
   GLCube1.PitchAngle := GLCube1.PitchAngle + 0.3;
   GLCube1.TurnAngle := GLCube1.TurnAngle + 0.5;
@@ -158,13 +158,11 @@ procedure TForm1.filterShaderApplyVP(CgProgram: TCgProgram; Sender: TObject);
 begin
   with CgProgram do
   begin
-    paramByName('MVP').SetAsStateMatrix(CG_GL_MODELVIEW_PROJECTION_MATRIX,
-      CG_GL_MATRIX_IDENTITY);
+    paramByName('MVP').SetAsStateMatrix(CG_GL_MODELVIEW_PROJECTION_MATRIX, CG_GL_MATRIX_IDENTITY);
   end;
 end; // apply Vertex program
 
-procedure TForm1.viewerMouseMove(Sender: TObject; Shift: TShiftState;
-  X, Y: Integer);
+procedure TForm1.viewerMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
 begin
   cursorX := X / viewer.ClientWidth;
   cursorY := 1 - (Y / viewer.ClientHeight);
