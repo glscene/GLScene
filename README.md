@@ -1,6 +1,6 @@
 # GLScene
-GLScene is a graphic engine based on OpenGL and VCL components for Delphi and C++ Builder. 
-It provides the tools and class library allowing description and rendering 3D scenes
-for Win32/Win64 applications.
-Additional support of CG, FMOD,  BASS,  ODE, NGD, CUDA, OpenCL, GR32 and SDL2 libraries.
-Support of GPU Computing using CUDA/OpenCL components. 
+GLScene is a multimedia graphics platform for creating geometric objects and virtual characters with AI.
+GLScene is based on OpenGL and VCL components for Delphi & C++ Builder allowing rendering 3D scenes for Win32/Win64 applications.
+Provides support for sound FMOD, BASS, WAVE and physical ODE, NGD libraries. 
+Integration with external libraries such as Graphics32 image processing, SDL2 multimedia content, 
+as well as for generation of tetrahedral meshes using TetGen, CGAL based on GPU parallel computing with CUDA/OpenCL components continues. 
