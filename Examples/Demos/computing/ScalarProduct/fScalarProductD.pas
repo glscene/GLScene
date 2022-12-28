@@ -41,10 +41,11 @@ type
     _Z13scalarProdGPUPfS_S_ii_elementN: TCUDAFuncParam;
     procedure Button1Click(Sender: TObject);
     procedure scalarProdGPUParameterSetup(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
-     
+    Path: TFileName;
   public
-     
+
   end;
 
 var
@@ -61,6 +62,15 @@ const
      but strongly preferred to be a multiple of warp size
      to meet memory coalescing constraints *)
   ELEMENT_N = 4096;
+
+
+procedure TFormSP.FormCreate(Sender: TObject);
+begin
+  Path := GetCurrentAssetPath();
+  SetCurrentDir(Path + '\texture');
+  pgm := TGLPGMImage.Create;
+end;
+
 
 procedure scalarProdCPU(hC, hA, hB: TCUDAMemData; vectorN, elementN: Integer);
 var

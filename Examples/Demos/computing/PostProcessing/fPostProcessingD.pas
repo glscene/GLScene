@@ -38,6 +38,7 @@ uses
   GLS.Context,
   GLSL.CustomShader,
   GLSL.Shader,
+  GLS.Utils,
   GLS.Texture;
 
 type
@@ -90,7 +91,7 @@ type
     procedure TrackBar1Change(Sender: TObject);
     procedure GLCUDA1OpenGLInteropInit(out Context: TGLContext);
   private
-
+    Path: TFileName;
   public
     Radius: Integer;
     Threshold: Single;
@@ -106,6 +107,10 @@ implementation
 
 procedure TFormPP.FormCreate(Sender: TObject);
 begin
+  Path := GetCurrentAssetPath();
+  // Load lena image as texture
+  SetCurrentDir(Path  + '\texture');
+
   Radius := 8;
   Threshold := 0.8;
   Highlight := 0.4;

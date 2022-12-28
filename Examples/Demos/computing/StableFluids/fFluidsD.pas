@@ -56,6 +56,7 @@ type
     procedure GLCadencer1Progress(Sender: TObject; const deltaTime,
       newTime: Double);
   private
+    Path: TFileName;
     clicked: Boolean;
     lastx: Integer;
     lasty: Integer;
@@ -162,6 +163,7 @@ var
   i, j: Integer;
   pos: FloatElement.TVector2;
 begin
+
   ParticlesDim := 512;
   ComplexPadWidth := ParticlesDim div 2 + 1;
   RealPadWidth := 2 * ComplexPadWidth;

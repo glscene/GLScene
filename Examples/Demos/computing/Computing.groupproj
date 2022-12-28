@@ -12,6 +12,15 @@
         <Projects Include="ScalarProduct\ScalarProductD.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="SimpleCUDATexture\SimpleTextureD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="StableFluids\FluidsD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="VertexDataGeneration\VertexGeneration.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -47,14 +56,41 @@
     <Target Name="ScalarProductD:Make">
         <MSBuild Projects="ScalarProduct\ScalarProductD.dproj" Targets="Make"/>
     </Target>
+    <Target Name="SimpleTextureD">
+        <MSBuild Projects="SimpleCUDATexture\SimpleTextureD.dproj"/>
+    </Target>
+    <Target Name="SimpleTextureD:Clean">
+        <MSBuild Projects="SimpleCUDATexture\SimpleTextureD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SimpleTextureD:Make">
+        <MSBuild Projects="SimpleCUDATexture\SimpleTextureD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="FluidsD">
+        <MSBuild Projects="StableFluids\FluidsD.dproj"/>
+    </Target>
+    <Target Name="FluidsD:Clean">
+        <MSBuild Projects="StableFluids\FluidsD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FluidsD:Make">
+        <MSBuild Projects="StableFluids\FluidsD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="VertexGeneration">
+        <MSBuild Projects="VertexDataGeneration\VertexGeneration.dproj"/>
+    </Target>
+    <Target Name="VertexGeneration:Clean">
+        <MSBuild Projects="VertexDataGeneration\VertexGeneration.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VertexGeneration:Make">
+        <MSBuild Projects="VertexDataGeneration\VertexGeneration.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="FastFourierD;PostProcessingD;ScalarProductD"/>
+        <CallTarget Targets="FastFourierD;PostProcessingD;ScalarProductD;SimpleTextureD;FluidsD;VertexGeneration"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="FastFourierD:Clean;PostProcessingD:Clean;ScalarProductD:Clean"/>
+        <CallTarget Targets="FastFourierD:Clean;PostProcessingD:Clean;ScalarProductD:Clean;SimpleTextureD:Clean;FluidsD:Clean;VertexGeneration:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="FastFourierD:Make;PostProcessingD:Make;ScalarProductD:Make"/>
+        <CallTarget Targets="FastFourierD:Make;PostProcessingD:Make;ScalarProductD:Make;SimpleTextureD:Make;FluidsD:Make;VertexGeneration:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

@@ -69,6 +69,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
   private
+    Path: TFileName;
     DemoMode: TDemoMode;
     FTimer: Cardinal;
     procedure Load1DBmp(out buf: TByteDynArray);
@@ -86,6 +87,47 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFormFFT.FormCreate(Sender: TObject);
+var
+  bmp: TBitmap;
+  pPal: PLogPalette;
+begin
+  Path := GetCurrentAssetPath();
+  // Load lena image as texture
+  SetCurrentDir(Path  + '\texture');
+
+  if not InitCUTIL then
+  begin
+    MessageDlg('Can''t load cutil32.dll', mtError, [mbOk], 0);
+    Application.Terminate;
+  end;
+
+  cutCreateTimer( FTimer );
+
+  DemoMode := dmNone;
+  GetMem(pPal, 1028);
+  // create a gray custom bitmap and assign it to both images
+  bmp := TBitmap.Create;
+  bmp.PixelFormat := pf8bit;
+  /// ? Make8BitPal(pPal);
+  bmp.Palette := CreatePalette(pPal^);
+  bmp.Height := 256;
+  bmp.Width := 256;
+  Image1.Picture.Bitmap := bmp;
+  Image2.Picture.Bitmap := bmp;
+  bmp.Free;
+  FreeMem(pPal);
+  Image1.Picture.Bitmap.Canvas.Brush.Color := clBlack;
+  Image1.Picture.Bitmap.Canvas.Pen.Color := clWhite;
+  Image2.Picture.Bitmap.Canvas.Brush.Color := clBlack;
+  Image2.Picture.Bitmap.Canvas.Pen.Color := clWhite;
+
+  // Force CUFFT initialization
+  FFTPlan1D.Execute(Signal1D, Signal1D);
+end;
+
+
 // ============================== 1D CASE ===========================
 
 procedure TFormFFT.But1DFFTClick(Sender: TObject);
@@ -437,41 +479,6 @@ begin
     k[2] := i;
     pal^.palPalEntry[i] := TPaletteEntry(j);
   end;
-end;
-
-procedure TFormFFT.FormCreate(Sender: TObject);
-var
-  bmp: TBitmap;
-  pPal: PLogPalette;
-begin
-  if not InitCUTIL then
-  begin
-    MessageDlg('Can''t load cutil32.dll', mtError, [mbOk], 0);
-    Application.Terminate;
-  end;
-
-  cutCreateTimer( FTimer );
-
-  DemoMode := dmNone;
-  GetMem(pPal, 1028);
-  // create a gray custom bitmap and assign it to both images
-  bmp := TBitmap.Create;
-  bmp.PixelFormat := pf8bit;
-  Make8BitPal(pPal);
-  bmp.Palette := CreatePalette(pPal^);
-  bmp.Height := 256;
-  bmp.Width := 256;
-  Image1.Picture.Bitmap := bmp;
-  Image2.Picture.Bitmap := bmp;
-  bmp.Free;
-  FreeMem(pPal);
-  Image1.Picture.Bitmap.Canvas.Brush.Color := clBlack;
-  Image1.Picture.Bitmap.Canvas.Pen.Color := clWhite;
-  Image2.Picture.Bitmap.Canvas.Brush.Color := clBlack;
-  Image2.Picture.Bitmap.Canvas.Pen.Color := clWhite;
-
-  // Force CUFFT initialization
-  FFTPlan1D.Execute(Signal1D, Signal1D);
 end;
 
 procedure TFormFFT.FormDestroy(Sender: TObject);

@@ -196,8 +196,7 @@ object FormPP: TFormPP
       Code.Strings = (
         #9'.version 1.4'
         #9'.target sm_13'
-        
-          #9'// compiled with C:\Program Files\NVIDIA GPU Computing Toolkit\' +
+        #9'// compiled with C:\Program Files\NVIDIA GPU Computing Toolkit\' +
           'CUDA\v3.2\\bin/../open64/lib//be.exe'
         #9'// nvopencc 3.2 built on 2010-11-06'
         ''
@@ -217,8 +216,7 @@ object FormPP: TFormPP
         #9'//  -m2'#9'(Report advisories)'
         #9'//-----------------------------------------------------------'
         ''
-        
-          #9'.file'#9'1'#9'"C:/Users/YARUNA~1/AppData/Local/Temp/tmpxft_00000994_0' +
+        #9'.file'#9'1'#9'"C:/Users/YARUNA~1/AppData/Local/Temp/tmpxft_00000994_0' +
           '0000000-10_temp.cudafe2.gpu"'
         
           #9'.file'#9'2'#9'"C:\Program Files\Microsoft Visual Studio 9.0\VC\INCLUD' +
@@ -559,7 +557,7 @@ object FormPP: TFormPP
         ' //<loop> Part of loop body line 112, head labeled $Lt_0_7682'
         #9'mov.s32 '#9'%r168, %r160;'
         '$Lt_0_8450:'
-        
+
           ' //<loop> Loop body line 113, nesting depth: 2, estimated iterat' +
           'ions: unknown'
         #9'.loc'#9'16'#9'114'#9'0'

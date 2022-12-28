@@ -1,7 +1,7 @@
 The release of GLScene v.2023 for Delphi & C++Builder
 using Delphi Community Edition of Embarcadero RAD Studio.
 
-The version includes bug fixes, nentralized access to assets for examples.
+The version includes bug fixes, centralized access to assets for examples.
 Support for sound OpenAL, FMOD, BASS, WAVE and physical ODE, NGD libraries is provided
 as well as extended interaction with third-party software like image processing Graphics32, 
 direct media layer SDL2,  tetrahedral meshing generator TetGen, open-source TensorFlow for machine learning and AI on neural networks,  and computer geometry algorithms library CGAL. 

@@ -42,6 +42,7 @@ type
     TextureArray: TCUDAMemData;
     ResultData: TCUDAMemData;
     pgm: TGLPGMImage;
+    Path: TFileName;
     procedure TurnPictureParameterSetup(Sender: TObject);
   end;
 
@@ -61,6 +62,14 @@ implementation
 const
   TestFileName = 'lena_bw.pgm';
   OutFileName  = 'lena_bw_out.pgm';
+
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  Path := GetCurrentAssetPath();
+  SetCurrentDir(Path + '\texture');
+  pgm := TGLPGMImage.Create;
+end;
 
 procedure TForm1.Button1Click(Sender: TObject);
 var
@@ -95,12 +104,6 @@ begin
   pgm.SaveToFile( OutFileName );
   Memo1.Lines.Add(Format('Saving result to %s - done', [OutFileName]));
   bmp32.Free;
-end;
-
-procedure TForm1.FormCreate(Sender: TObject);
-begin
-  SetCurrentDirToAsset();
-  pgm := TGLPGMImage.Create;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
