@@ -24,38 +24,39 @@ uses
   GLS.HeightData,
   GLS.HeightTileFileHDS,
   GLS.Texture,
-  GLS.HUDObjects, 
+  GLS.HUDObjects,
   GLS.Material,
-  GLS.SkyDome, 
-  GLS.SceneViewer, 
+  GLS.SkyDome,
+  GLS.SceneViewer,
   GLS.WindowsFont,
-  GLS.BitmapFont, 
-  GLS.Coordinates, 
-  GLS.RenderContextInfo, 
+  GLS.BitmapFont,
+  GLS.Coordinates,
+  GLS.RenderContextInfo,
   GLS.Color,
-  GLS.VectorFileObjects, 
-  GLS.BaseClasses, 
-  GLS.VectorLists, 
+  GLS.VectorFileObjects,
+  GLS.BaseClasses,
+  GLS.VectorLists,
   GLS.VectorTypes,
-  GLS.VectorGeometry, 
-  GLS.Keyboard, 
-  GLS.OpenGLTokens, 
-  GLS.Context, 
-  GLS.State, 
+  GLS.VectorGeometry,
+  GLS.Keyboard,
+  GLS.OpenGLTokens,
+  GLS.Context,
+  GLS.State,
   GLS.TextureFormat,
-  GLS.File3DS;
+  GLS.File3DS,
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)
     GLSceneViewer1: TGLSceneViewer;
     GLScene1: TGLScene;
-    GLCamera: TGLCamera;
-    DCCamera: TGLDummyCube;
+    Camera: TGLCamera;
+    dcCamera: TGLDummyCube;
     TerrainRenderer: TGLTerrainRenderer;
     Timer1: TTimer;
     GLCadencer: TGLCadencer;
     MaterialLibrary: TGLMaterialLibrary;
-    HTFPS: TGLHUDText;
+    htFPS: TGLHUDText;
     SkyDome: TGLSkyDome;
     GLHeightTileFileHDS1: TGLHeightTileFileHDS;
     BFSmall: TGLWindowsBitmapFont;
@@ -66,11 +67,11 @@ type
     GLMemoryViewer1: TGLMemoryViewer;
     MLSailBoat: TGLMaterialLibrary;
     FFSailBoat: TGLFreeForm;
-    LSSun: TGLLightSource;
+    lsSun: TGLLightSource;
     BFLarge: TGLWindowsBitmapFont;
     HTHelp: TGLHUDText;
-    DOWake: TGLDirectOpenGL;
-    GLDummyCube1: TGLDummyCube;
+    doWake: TGLDirectOpenGL;
+    dcSailBoat: TGLDummyCube;
     procedure Timer1Timer(Sender: TObject);
     procedure GLCadencerProgress(Sender: TObject; const deltaTime,
       newTime: Double);
@@ -79,9 +80,9 @@ type
     procedure GLCustomHDS1MarkDirtyEvent(const area: TRect);
     procedure GLCustomHDS1StartPreparingData(heightData: TGLHeightData);
     procedure GLSceneViewerBeforeRender(Sender: TObject);
-    procedure DOWakeProgress(Sender: TObject; const deltaTime,
+    procedure doWakeProgress(Sender: TObject; const deltaTime,
       newTime: Double);
-    procedure DOWakeRender(Sender: TObject; var rci: TGLRenderContextInfo);
+    procedure doWakeRender(Sender: TObject; var rci: TGLRenderContextInfo);
     procedure TerrainRendererHeightDataPostRender(var rci: TGLRenderContextInfo;
       var HeightDatas: TList);
   public
@@ -91,13 +92,15 @@ type
     WaterPlane: Boolean;
     WasAboveWater: Boolean;
     HelpOpacity: Single;
-    DataPath : String;
     WakeVertices: TGLAffineVectorList;
     WakeStretch: TGLAffineVectorList;
     WakeTime: TGLSingleList;
     procedure ResetMousePos;
     function WaterPhase(const px, py: Single): Single;
     function WaterHeight(const px, py: Single): Single;
+  private
+    DataPath : TFileName;
+    AssetPath : TFileName;
   end;
 
 var
@@ -118,11 +121,12 @@ var
   name: string;
   libMat: TGLLibMaterial;
 begin
+  AssetPath := GetCurrentAssetPath() + '\texture';
+// SetCurrentDir(AssetPath); // for loading from assets dir
+
   DataPath := ExtractFilePath(ParamStr(0));
-  //Delete(DataPath, Length(DataPath) - 12, 12); // del if Win32\Debug\
   DataPath := DataPath + 'Data\';
   SetCurrentDir(DataPath);
-
   MaterialLibrary.TexturePaths := DataPath;
   MLSailBoat.TexturePaths := DataPath;
 
@@ -210,16 +214,16 @@ begin
     speed := 100 * deltaTime
   else
     speed := 20 * deltaTime;
-  with GLCamera.Position do
+  with Camera.Position do
   begin
     if IsKeyDown(VK_UP) then
-      DCCamera.Position.AddScaledVector(speed, GLCamera.AbsoluteVectorToTarget);
+      DCCamera.Position.AddScaledVector(speed, Camera.AbsoluteVectorToTarget);
     if IsKeyDown(VK_DOWN) then
-      DCCamera.Position.AddScaledVector(-speed, GLCamera.AbsoluteVectorToTarget);
+      DCCamera.Position.AddScaledVector(-speed, Camera.AbsoluteVectorToTarget);
     if IsKeyDown(VK_LEFT) then
-      DCCamera.Position.AddScaledVector(-speed, GLCamera.AbsoluteRightVectorToTarget);
+      DCCamera.Position.AddScaledVector(-speed, Camera.AbsoluteRightVectorToTarget);
     if IsKeyDown(VK_RIGHT) then
-      DCCamera.Position.AddScaledVector(speed, GLCamera.AbsoluteRightVectorToTarget);
+      DCCamera.Position.AddScaledVector(speed, Camera.AbsoluteRightVectorToTarget);
     if IsKeyDown(VK_PRIOR) then
       CamHeight := CamHeight + speed;
     if IsKeyDown(VK_NEXT) then
@@ -238,17 +242,17 @@ begin
   if IsKeyDown(VK_LBUTTON) then
   begin
     alpha := DCCamera.Position.Y;
-    DCCamera.Position.AddScaledVector(speed, GLCamera.AbsoluteVectorToTarget);
+    DCCamera.Position.AddScaledVector(speed, Camera.AbsoluteVectorToTarget);
     CamHeight := CamHeight + DCCamera.Position.Y - alpha;
   end;
   if IsKeyDown(VK_RBUTTON) then
   begin
     alpha := DCCamera.Position.Y;
-    DCCamera.Position.AddScaledVector(-speed, GLCamera.AbsoluteVectorToTarget);
+    DCCamera.Position.AddScaledVector(-speed, Camera.AbsoluteVectorToTarget);
     CamHeight := CamHeight + DCCamera.Position.Y - alpha;
   end;
   GetCursorPos(newMousePos);
-  GLCamera.MoveAroundTarget((Screen.Height div 2 - newMousePos.Y) * 0.25,
+  Camera.MoveAroundTarget((Screen.Height div 2 - newMousePos.Y) * 0.25,
     (Screen.Width div 2 - newMousePos.X) * 0.25);
   ResetMousePos;
 
@@ -262,7 +266,7 @@ begin
     Y := terrainHeight + CamHeight;
   end;
   // adjust fog distance/color for air/water
-  if (GLCamera.AbsolutePosition.Y > surfaceHeight) or (not WaterPlane) then
+  if (Camera.AbsolutePosition.Y > surfaceHeight) or (not WaterPlane) then
   begin
     if not WasAboveWater then
     begin
@@ -274,7 +278,7 @@ begin
         FogStart := 500;
       end;
       GLSceneViewer1.Buffer.BackgroundColor := clWhite;
-      GLCamera.DepthOfView := 1000;
+      Camera.DepthOfView := 1000;
       WasAboveWater := True;
     end;
   end
@@ -290,7 +294,7 @@ begin
         FogStart := 0;
       end;
       GLSceneViewer1.Buffer.BackgroundColor := clNavy;
-      GLCamera.DepthOfView := 100;
+      Camera.DepthOfView := 100;
       WasAboveWater := False;
     end;
   end;
@@ -405,7 +409,7 @@ end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);
 begin
-  HTFPS.Text := Format('%.1f FPS - %d - %d',
+  htFPS.Text := Format('%.1f FPS - %d - %d',
     [GLSceneViewer1.FramesPerSecond,
     TerrainRenderer.LastTriangleCount,
       WaterPolyCount]);
@@ -526,7 +530,7 @@ begin
   Result := (cWaterLevel + Sin(alpha) * cWaveAmplitude) * (TerrainRenderer.Scale.Z * (1 / 128));
 end;
 
-procedure TForm1.DOWakeProgress(Sender: TObject; const deltaTime,
+procedure TForm1.doWakeProgress(Sender: TObject; const deltaTime,
   newTime: Double);
 var
   i: Integer;
@@ -577,7 +581,7 @@ begin
   end;
 end;
 
-procedure TForm1.DOWakeRender(Sender: TObject; var rci: TGLRenderContextInfo);
+procedure TForm1.doWakeRender(Sender: TObject; var rci: TGLRenderContextInfo);
 var
   i: Integer;
   p: PAffineVector;

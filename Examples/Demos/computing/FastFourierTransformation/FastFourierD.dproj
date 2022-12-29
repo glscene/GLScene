@@ -128,9 +128,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="uCPUFFT.pas"/>
-        <DCCReference Include="fFourier_D.pas">
-            <Form>FormFFT</Form>
-        </DCCReference>
+        <DCCReference Include="fFourier_D.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

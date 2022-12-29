@@ -3,16 +3,16 @@
         <ProjectGuid>{02A55F1F-28A9-4F0B-BC74-BAC6D4030B89}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="ActorMS3D\Actorms3dD.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="ActorMS3D\ActorMS3dC.cbproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="Archipelago\ArchipelagoD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Archipelago\ArchipelagoC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ActorMS3D\Actorms3dD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ActorMS3D\ActorMS3dC.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Christmas\ChristmasD.dproj">
@@ -62,24 +62,6 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="Actorms3dD">
-        <MSBuild Projects="ActorMS3D\Actorms3dD.dproj"/>
-    </Target>
-    <Target Name="Actorms3dD:Clean">
-        <MSBuild Projects="ActorMS3D\Actorms3dD.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="Actorms3dD:Make">
-        <MSBuild Projects="ActorMS3D\Actorms3dD.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="ActorMS3dC">
-        <MSBuild Projects="ActorMS3D\ActorMS3dC.cbproj"/>
-    </Target>
-    <Target Name="ActorMS3dC:Clean">
-        <MSBuild Projects="ActorMS3D\ActorMS3dC.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="ActorMS3dC:Make">
-        <MSBuild Projects="ActorMS3D\ActorMS3dC.cbproj" Targets="Make"/>
-    </Target>
     <Target Name="ArchipelagoD">
         <MSBuild Projects="Archipelago\ArchipelagoD.dproj"/>
     </Target>
@@ -97,6 +79,24 @@
     </Target>
     <Target Name="ArchipelagoC:Make">
         <MSBuild Projects="Archipelago\ArchipelagoC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Actorms3dD">
+        <MSBuild Projects="ActorMS3D\Actorms3dD.dproj"/>
+    </Target>
+    <Target Name="Actorms3dD:Clean">
+        <MSBuild Projects="ActorMS3D\Actorms3dD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Actorms3dD:Make">
+        <MSBuild Projects="ActorMS3D\Actorms3dD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ActorMS3dC">
+        <MSBuild Projects="ActorMS3D\ActorMS3dC.cbproj"/>
+    </Target>
+    <Target Name="ActorMS3dC:Clean">
+        <MSBuild Projects="ActorMS3D\ActorMS3dC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ActorMS3dC:Make">
+        <MSBuild Projects="ActorMS3D\ActorMS3dC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="ChristmasD">
         <MSBuild Projects="Christmas\ChristmasD.dproj"/>
@@ -216,13 +216,13 @@
         <MSBuild Projects="Quake3Demo\Q3DemoC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="Actorms3dD;ActorMS3dC;ArchipelagoD;ArchipelagoC;ChristmasD;ChristmasC;EarthD;EarthC;ForestD;GLSViewerD;IntensityMeshD;IntensityMeshC;PanoViewerD;PanoViewerC;TtbD;Q3DemoD;Q3DemoC"/>
+        <CallTarget Targets="ArchipelagoD;ArchipelagoC;Actorms3dD;ActorMS3dC;ChristmasD;ChristmasC;EarthD;EarthC;ForestD;GLSViewerD;IntensityMeshD;IntensityMeshC;PanoViewerD;PanoViewerC;TtbD;Q3DemoD;Q3DemoC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Actorms3dD:Clean;ActorMS3dC:Clean;ArchipelagoD:Clean;ArchipelagoC:Clean;ChristmasD:Clean;ChristmasC:Clean;EarthD:Clean;EarthC:Clean;ForestD:Clean;GLSViewerD:Clean;IntensityMeshD:Clean;IntensityMeshC:Clean;PanoViewerD:Clean;PanoViewerC:Clean;TtbD:Clean;Q3DemoD:Clean;Q3DemoC:Clean"/>
+        <CallTarget Targets="ArchipelagoD:Clean;ArchipelagoC:Clean;Actorms3dD:Clean;ActorMS3dC:Clean;ChristmasD:Clean;ChristmasC:Clean;EarthD:Clean;EarthC:Clean;ForestD:Clean;GLSViewerD:Clean;IntensityMeshD:Clean;IntensityMeshC:Clean;PanoViewerD:Clean;PanoViewerC:Clean;TtbD:Clean;Q3DemoD:Clean;Q3DemoC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Actorms3dD:Make;ActorMS3dC:Make;ArchipelagoD:Make;ArchipelagoC:Make;ChristmasD:Make;ChristmasC:Make;EarthD:Make;EarthC:Make;ForestD:Make;GLSViewerD:Make;IntensityMeshD:Make;IntensityMeshC:Make;PanoViewerD:Make;PanoViewerC:Make;TtbD:Make;Q3DemoD:Make;Q3DemoC:Make"/>
+        <CallTarget Targets="ArchipelagoD:Make;ArchipelagoC:Make;Actorms3dD:Make;ActorMS3dC:Make;ChristmasD:Make;ChristmasC:Make;EarthD:Make;EarthC:Make;ForestD:Make;GLSViewerD:Make;IntensityMeshD:Make;IntensityMeshC:Make;PanoViewerD:Make;PanoViewerC:Make;TtbD:Make;Q3DemoD:Make;Q3DemoC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

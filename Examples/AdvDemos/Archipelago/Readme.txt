@@ -1,4 +1,4 @@
-Archipelago GLScene demo v1.01 (http://glscene.org)
+Archipelago GLScene demo v2.2 (http://glscene.org)
 
 >>>>>> BEFORE starting the demo: <<<<<<
 

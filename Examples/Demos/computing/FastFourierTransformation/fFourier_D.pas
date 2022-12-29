@@ -35,6 +35,9 @@ type
 
   TFormFFT = class(TForm)
     Panel1: TPanel;
+    Panel2: TPanel;
+    Label1: TLabel;
+
     But1DFFT: TButton;
     But2DFFT: TButton;
     BLenna: TButton;
@@ -47,8 +50,6 @@ type
     RBPhase: TRadioButton;
     RBReal: TRadioButton;
     RBImag: TRadioButton;
-    Panel2: TPanel;
-    Label1: TLabel;
     LDemoMode: TLabel;
     Label2: TLabel;
     Image2: TImage;

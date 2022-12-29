@@ -1,5 +1,5 @@
 //
-// The graphics rendering engine GLScene http://glscene.org
+// The graphics platform GLScene https://github.com/glscene
 //
 unit fSplitterD;
 
@@ -14,14 +14,16 @@ uses
   Vcl.Dialogs,
   Vcl.Imaging.Jpeg,
   Vcl.StdCtrls,
-  Vcl.ComCtrls;
+  Vcl.ComCtrls,
+
+  GLS.Utils;
 
 type
   TForm1 = class(TForm)
-    EDFile: TEdit;
+    EditFile: TEdit;
     Button1: TButton;
     EDTileSize: TEdit;
-    EDMask: TEdit;
+    EditMask: TEdit;
     ProgressBar: TProgressBar;
     Label1: TLabel;
     LAAction: TLabel;
@@ -30,9 +32,9 @@ type
     RBLow: TRadioButton;
     procedure Button1Click(Sender: TObject);
   private
-     
+    PathJpgIn, PathJpgOut: TFileName;
   public
-     
+
   end;
 
 var
@@ -52,7 +54,8 @@ var
   s, sd, f: Integer;
   x, y: Integer;
 begin
-  SetCurrentDir(ExtractFilePath(ParamStr(0)));
+  PathJpgIn := GetCurrentAssetPath() + '\map';
+  SetCurrentDir(PathJpgIn);
 
   s := StrToInt(EDTileSize.Text);
   pic := TPicture.Create;
@@ -86,7 +89,7 @@ begin
   LAAction.Caption := 'Loading Jpeg texture...';
   LAAction.Visible := True;
   Refresh;
-  pic.LoadFromFile(EDFile.Text);
+  pic.LoadFromFile(EditFile.Text);
   x := 0;
   while x < pic.Width do
   begin
@@ -103,7 +106,11 @@ begin
         bmp.Canvas.Draw(-x, -y, pic.Graphic);
       LAAction.Caption := Format('Generating tile %d-%d...', [x div s, y div s]);
       Refresh;
-      bmp.SaveToFile(Format(EDMask.Text, [x div s, y div s]));
+
+      PathJpgOut := ExtractFilePath(ParamStr(0));
+      SetCurrentDir(PathJpgOut);
+
+      bmp.SaveToFile(Format(EditMask.Text, [x div s, y div s]));
       ProgressBar.StepBy(1);
 
       Inc(y, s);

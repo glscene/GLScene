@@ -4,28 +4,23 @@ object Form1: TForm1
   Align = alClient
   BorderStyle = bsNone
   Caption = 'Form1'
-  ClientHeight = 500
-  ClientWidth = 754
+  ClientHeight = 400
+  ClientWidth = 603
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 754
-    Height = 500
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
-    Camera = GLCamera
+    Width = 603
+    Height = 400
+    Camera = Camera
     BeforeRender = GLSceneViewerBeforeRender
     Buffer.FogEnvironment.FogColor.Color = {0000803F0000803F0000803F0000803F}
     Buffer.FogEnvironment.FogStart = 500.000000000000000000
@@ -34,49 +29,37 @@ object Form1: TForm1
     Buffer.BackgroundColor = clGray
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     Buffer.FogEnable = True
-    FieldOfView = 146.601516723632800000
+    FieldOfView = 138.887908935546900000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object PAProgress: TPanel
-    Left = 250
-    Top = 210
-    Width = 231
-    Height = 61
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 200
+    Top = 168
+    Width = 185
+    Height = 49
     BorderWidth = 6
     TabOrder = 1
     Visible = False
     object Label1: TLabel
       Left = 7
       Top = 7
-      Width = 217
-      Height = 25
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 171
+      Height = 20
       Align = alTop
       Alignment = taCenter
       AutoSize = False
       Caption = 'Loading && compressing textures'
-      ExplicitLeft = 9
-      ExplicitTop = 9
-      ExplicitWidth = 214
+      ExplicitLeft = 6
+      ExplicitTop = 6
+      ExplicitWidth = 173
     end
     object ProgressBar: TProgressBar
       Left = 7
-      Top = 32
-      Width = 217
-      Height = 22
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Top = 27
+      Width = 171
+      Height = 15
       Align = alClient
       Max = 16
       TabOrder = 0
@@ -105,13 +88,13 @@ object Form1: TForm1
       Stars = <>
       Options = [sdoTwinkle]
     end
-    object DCCamera: TGLDummyCube
+    object dcCamera: TGLDummyCube
       Position.Coordinates = {0000000000000041000000000000803F}
       CubeSize = 1.000000000000000000
-      object GLCamera: TGLCamera
+      object Camera: TGLCamera
         DepthOfView = 1000.000000000000000000
         FocalLength = 75.000000000000000000
-        TargetObject = DCCamera
+        TargetObject = dcCamera
         Position.Coordinates = {000000000000803F000040400000803F}
         Left = 264
         Top = 160
@@ -129,13 +112,13 @@ object Form1: TForm1
       OnHeightDataPostRender = TerrainRendererHeightDataPostRender
       ContourWidth = 0
     end
-    object DOWake: TGLDirectOpenGL
-      OnProgress = DOWakeProgress
+    object doWake: TGLDirectOpenGL
+      OnProgress = doWakeProgress
       UseBuildList = False
-      OnRender = DOWakeRender
+      OnRender = doWakeRender
       Blend = False
     end
-    object LSSun: TGLLightSource
+    object lsSun: TGLLightSource
       Ambient.Color = {9A99993E9A99993E9A99993E0000803F}
       ConstAttenuation = 1.000000000000000000
       Diffuse.Color = {CDCC4C3FCDCC4C3FCDCC4C3F0000803F}
@@ -144,7 +127,7 @@ object Form1: TForm1
       SpotCutOff = 180.000000000000000000
       SpotDirection.Coordinates = {0000803F0000803F0000003F00000000}
     end
-    object HTFPS: TGLHUDText
+    object htFPS: TGLHUDText
       Position.Coordinates = {000096420000C841000000000000803F}
       BitmapFont = BFSmall
       Rotation = 0.000000000000000000
@@ -154,7 +137,7 @@ object Form1: TForm1
       BitmapFont = BFLarge
       Rotation = 0.000000000000000000
     end
-    object GLDummyCube1: TGLDummyCube
+    object dcSailBoat: TGLDummyCube
       Position.Coordinates = {000048C200007041000048420000803F}
       CubeSize = 1.000000000000000000
       object FFSailBoat: TGLFreeForm
