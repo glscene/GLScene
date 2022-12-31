@@ -75,7 +75,20 @@ var
   newActor: TGLActor;
 begin
   var Path: TFileName := GetCurrentAssetPath();
-  SetCurrentDir(Path + '\texture');
+  SetCurrentDir(Path + '\modelext');
+  // Actors are used as standalone, med-polycount objects
+  // that aren't T&L friendly (all geometry must be sent to
+  // the hardware at each frame)
+  ACReference.LoadFromFile('waste.md2');
+  for i := -3 to 3 do
+    for j := -3 to 3 do
+    begin
+      newActor := (DCActors.AddNewChild(TGLActor) as TGLActor);
+      newActor.Assign(ACReference);
+      newActor.Position.SetPoint(i * 10, 0, j * 10);
+      newActor.CurrentFrame := (i + 2) + (j + 2) * 5;
+    end;
+
   GLMaterialLibrary.Materials[0].Material.Texture.Image.LoadFromFile('waste.jpg');
   // Spheres are used as standalone, high-polycount objects
   // that are highly T&L friendly
@@ -87,19 +100,7 @@ begin
       newSphere.Slices := 32;
       newSphere.Stacks := 32;
     end;
-  // Actors are used as standalone, med-polycount objects
-  // that aren't T&L friendly (all geometry must be sent to
-  // the hardware at each frame)
-  SetCurrentDir(Path + '\model');
-  ACReference.LoadFromFile('waste.md2');
-  for i := -3 to 3 do
-    for j := -3 to 3 do
-    begin
-      newActor := (DCActors.AddNewChild(TGLActor) as TGLActor);
-      newActor.Assign(ACReference);
-      newActor.Position.SetPoint(i * 10, 0, j * 10);
-      newActor.CurrentFrame := (i + 2) + (j + 2) * 5;
-    end;
+
   ACReference.Visible := False;
 end;
 
@@ -116,7 +117,6 @@ end;
 
 procedure TFormCulling.Timer1Timer(Sender: TObject);
 begin
-  Caption := Format('Culling - %.1f FPS', [Viewer.FramesPerSecond]);
   Viewer.ResetPerformanceMonitor;
 end;
 

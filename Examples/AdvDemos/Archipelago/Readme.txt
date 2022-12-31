@@ -2,7 +2,7 @@ Archipelago GLScene demo v2.2 (http://glscene.org)
 
 >>>>>> BEFORE starting the demo: <<<<<<
 
-  "splitter.exe" from the data subdirectory will be run, 
+  "splitter.exe" from the ..\assets\map subdirectory will be run, 
   to cut the big .jpg into many .bmp (textures). 
   Uses 48MB of disk space for full-resolution textures
   (recommended if you have a board with 64+ MB of memory).

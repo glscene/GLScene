@@ -24,6 +24,10 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
   int s, sd, f;
   int x, y;
 
+
+  PathJpgIn = GetCurrentAssetPath() + "\\map";
+  SetCurrentDir(PathJpgIn);
+
   s = StrToInt(EDTileSize->Text);
   pic = new TPicture();
 
@@ -61,7 +65,11 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
           bmp->Canvas->StretchDraw(Rect(0, 0, sd, sd), bmp2);
        } else bmp->Canvas->Draw(-x, -y, pic->Graphic);
        LAAction->Caption = Format("Generating tile %d-%d...", ARRAYOFCONST((x/s, y/s)));
-       Refresh();
+	   Refresh();
+
+	   PathJpgOut = ExtractFilePath(ParamStr(0));
+	   SetCurrentDir(PathJpgOut);
+
        bmp->SaveToFile(Format(EDMask->Text, ARRAYOFCONST((x/s, y/s))));
        ProgressBar->StepBy(1);
 

@@ -19,7 +19,7 @@ object Form1: TForm1
     Width = 484
     Height = 386
     Camera = GLCamera1
-    Buffer.BackgroundColor = clBlack
+    Buffer.BackgroundColor = clTeal
     Buffer.AmbientColor.Color = {0000000000000000000000000000803F}
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aa2x

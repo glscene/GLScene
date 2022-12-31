@@ -24,8 +24,6 @@ object FormCulling: TFormCulling
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 578
-    ExplicitHeight = 498
   end
   object Panel2: TPanel
     Left = 712
@@ -34,8 +32,6 @@ object FormCulling: TFormCulling
     Height = 556
     Align = alRight
     TabOrder = 1
-    ExplicitLeft = 504
-    ExplicitHeight = 486
     DesignSize = (
       132
       556)

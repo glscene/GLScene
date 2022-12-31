@@ -37,11 +37,10 @@ void __fastcall TMainForm::GLCadencer1Progress(TObject *Sender, const double del
 void __fastcall TMainForm::FormCreate(TObject *Sender)
 {
   TFileName Path = GetCurrentAssetPath();
-  SetCurrentDir(Path  + "\\model");
-
+  SetCurrentDir(Path  + "\\modelext");
   GLActor1->LoadFromFile("waste.md2");
 
-  SetCurrentDir(Path  + "\\texture");
+  GLMaterialLibrary1->TexturePaths = GetCurrentDir();
   GLActor1->Material->Texture->Image->LoadFromFile("waste.jpg");
   GLActor1->Material->Texture->Enabled = True;
 ///  GLActor1->SwitchToAnimation(GLActor1->Animations[0]);

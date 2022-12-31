@@ -10,15 +10,13 @@ object Form1: TForm1
   Font.Height = -10
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
-  PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
     Left = 0
     Top = 0
     Width = 451
-    Height = 36
+    Height = 30
     Margins.Left = 2
     Margins.Top = 2
     Margins.Right = 2
@@ -26,14 +24,14 @@ object Form1: TForm1
     Align = alTop
     Caption = 
       'This utility will generate 16 1024x1024 BMP '#13#10'textures from the ' +
-      #39'TextureMap.jpg'#39' files.'
+      #39'ArchipelagoMap.jpg'#39' files.'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -15
+    Font.Height = -12
     Font.Name = 'Arial'
     Font.Style = [fsBold]
     ParentFont = False
-    ExplicitWidth = 306
+    ExplicitWidth = 250
   end
   object LAAction: TLabel
     Left = 42
@@ -58,7 +56,7 @@ object Form1: TForm1
     Margins.Bottom = 2
     Enabled = False
     TabOrder = 0
-    Text = 'TextureMap.jpg'
+    Text = 'ArchipelagoMap.jpg'
     Visible = False
   end
   object Button1: TButton
@@ -125,9 +123,7 @@ object Form1: TForm1
     Margins.Right = 2
     Margins.Bottom = 2
     Caption = 'Full Resolution (64 MB graphics memory)'
-    Checked = True
     TabOrder = 5
-    TabStop = True
   end
   object RBHalf: TRadioButton
     Left = 42
@@ -151,6 +147,8 @@ object Form1: TForm1
     Margins.Right = 2
     Margins.Bottom = 2
     Caption = 'Low Resolution (4 MB)'
+    Checked = True
     TabOrder = 7
+    TabStop = True
   end
 end

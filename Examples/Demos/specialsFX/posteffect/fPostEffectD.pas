@@ -82,12 +82,10 @@ end;
 procedure TFormPostEffect.FormCreate(Sender: TObject);
 begin
   var Path: TFileName := GetCurrentAssetPath();
-  SetCurrentDir(Path  + '\model');
-
-  GLMaterialLibrary1.TexturePaths := GetCurrentDir();
+  SetCurrentDir(Path  + '\modelext');
   GLActor1.LoadFromFile('waste.md2');
 
-  SetCurrentDir(Path  + '\texture');
+  GLMaterialLibrary1.TexturePaths := GetCurrentDir();
   GLActor1.Material.Texture.Image.LoadFromFile('waste.jpg');
   GLActor1.Material.Texture.Enabled := True;
   GLActor1.SwitchToAnimation(GLActor1.Animations[0]);

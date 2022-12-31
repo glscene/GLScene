@@ -16,6 +16,7 @@ __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
 {
   float r;
   TFileName Path = GetCurrentAssetPath();
+  SetCurrentDir(Path  + "\\modelext");
   GLActor1->LoadFromFile("waste.md2");
   r = GLActor1->BoundingSphereRadius();
   GLActor1->Scale->SetVector(2.5 / r, 2.5 / r, 2.5 / r);

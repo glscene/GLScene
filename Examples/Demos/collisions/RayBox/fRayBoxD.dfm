@@ -30,8 +30,6 @@ object FormRayBox: TFormRayBox
     OnMouseDown = ViewerMouseDown
     OnMouseMove = ViewerMouseMove
     TabOrder = 0
-    ExplicitWidth = 573
-    ExplicitHeight = 374
   end
   object Panel1: TPanel
     Left = 0
@@ -40,7 +38,6 @@ object FormRayBox: TFormRayBox
     Height = 41
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 560
     object Label1: TLabel
       Left = 296
       Top = 12

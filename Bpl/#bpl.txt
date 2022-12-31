@@ -1,0 +1,2 @@
+Directory for BPL packages or put them in
+C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl

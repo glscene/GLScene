@@ -16,11 +16,11 @@ object Form1: TForm1
   object Label1: TLabel
     Left = 8
     Top = 8
-    Width = 276
+    Width = 280
     Height = 32
     Caption = 
       'This utility will generate 16 1024x1024 BMP '#13#10'textures from the ' +
-      #39'TextureMap.jpg'#39' files.'
+      #39'ArchipelagoMap.jpg'#39' files.'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13

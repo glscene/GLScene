@@ -13,7 +13,7 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
   Vcl.Imaging.Jpeg,
-  
+
   GLS.Scene,
   GLS.VectorTypes,
   GLS.VectorGeometry,
@@ -24,7 +24,7 @@ uses
   GLS.GeomObjects,
   GLS.Texture,
   GLS.Objects,
- 
+
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
@@ -47,18 +47,16 @@ type
     GLTexturedCelShader: TGLCelShader;
     GLColoredCelShader: TGLCelShader;
     GLTorus1: TGLTorus;
-    procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
+    procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
       X, Y: Integer);
+    procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure FormCreate(Sender: TObject);
     procedure AsyncTimer1Timer(Sender: TObject);
-    procedure GLCadencer1Progress(Sender: TObject;
-      const deltaTime, newTime: Double);
+    procedure GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
   private
-     
+
   public
-     
+
     mx, my, lx, ly: Integer;
   end;
 
@@ -72,14 +70,13 @@ implementation
 procedure TFormCelShading.FormCreate(Sender: TObject);
 begin
   var Path: TFileName := GetCurrentAssetPath();
-  SetCurrentDir(Path  + '\model');
+  SetCurrentDir(Path + '\modelext');
   GLActor1.LoadFromFile('waste.md2');
-  var r: Single := GLActor1.BoundingSphereRadius;
+  var
+    r: Single := GLActor1.BoundingSphereRadius;
   GLActor1.Scale.SetVector(2.5 / r, 2.5 / r, 2.5 / r);
   GLActor1.AnimationMode := aamLoop;
-  SetCurrentDir(Path  + '\texture'); 
-  GLMaterialLibrary1.Materials[0].Material.Texture.Image.LoadFromFile
-    ('wastecell.jpg');
+  GLMaterialLibrary1.Materials[0].Material.Texture.Image.LoadFromFile('wastecell.jpg');
 end;
 
 procedure TFormCelShading.GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
@@ -105,8 +102,7 @@ begin
   GLSceneViewer1.ResetPerformanceMonitor;
 end;
 
-procedure TFormCelShading.GLCadencer1Progress(Sender: TObject;
-  const deltaTime, newTime: Double);
+procedure TFormCelShading.GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
 begin
   if IsKeyDown(VK_LBUTTON) then
   begin

@@ -112,7 +112,9 @@ var
   X, Y, z: Integer;
   sphere: TGLSphere;
 begin
-  SetCurrentDirToAssets;
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path  + '\modelext');
+
   // Dynamically construct an array of spheres, and make them shadow casters
   // Note that as the spheres are children of the shadowvolume component,
   // they are thus also shadow receivers. If they were created as child of

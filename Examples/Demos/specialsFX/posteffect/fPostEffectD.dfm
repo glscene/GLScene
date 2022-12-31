@@ -32,7 +32,6 @@ object FormPostEffect: TFormPostEffect
     Height = 33
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 487
     object Label2: TLabel
       Left = 8
       Top = 10
@@ -72,8 +71,6 @@ object FormPostEffect: TFormPostEffect
     PenAsTouch = False
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 629
-    ExplicitHeight = 366
   end
   object GLScene1: TGLScene
     Left = 32

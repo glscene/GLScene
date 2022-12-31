@@ -23,6 +23,7 @@
 #include <Jpeg.hpp>
 #include "GLS.FileMD2.hpp"
 #include "GLS.Utils.hpp"
+#include "GLS.SimpleNavigation.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
@@ -48,6 +49,7 @@ class TForm1 : public TForm
     TRadioButton* RBSpheres;
     TRadioButton* RBActors;
     TLabel* LabelFPS;
+	TGLSimpleNavigation *GLSimpleNavigation1;
     void __fastcall RBSpheresClick(TObject* Sender);
     void __fastcall GLCadencerProgress(
         TObject* Sender, const double deltaTime, const double newTime);
