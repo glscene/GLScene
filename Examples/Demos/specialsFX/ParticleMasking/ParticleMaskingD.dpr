@@ -1,10 +1,10 @@
-{
-Demo of ParticleMasking
+(*
+  Demo of ParticleMasking
 
-Version History:
-  29/01/2007 - DaStr - Initial version (a bit modified demo by Kenneth Poulter)
+  History:
+    29/01/2007 - DaStr - Initial version (a bit modified demo by Kenneth Poulter)
+*)
 
-}
 
 program ParticleMaskingD;
 

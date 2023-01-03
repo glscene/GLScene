@@ -2,6 +2,7 @@
   GLAtmosphere Demo.
   Note: object "Not_a_planet" is used to test atmosphere transparency issues.
 *)
+
 program AtmosphereD;
 
 uses

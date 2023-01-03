@@ -1,4 +1,5 @@
-{: Beer demo.
+(*
+   Beer demo.
 
    The scene is defined in the DFM, the code only takes care of loading
    meshes, textures and reacting to mouse clicks.
@@ -7,7 +8,8 @@
    of faces in the 3DS model does the rest.
 
    Original idea by Vitomir Savic.
-}
+*)
+
 program BeerD;
 
 uses

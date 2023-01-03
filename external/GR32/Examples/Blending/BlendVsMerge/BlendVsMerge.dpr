@@ -2,7 +2,7 @@ program BlendVsMerge;
 {$R 'Media.res' 'Media.rc'}
 uses
   Forms,
-  fMainD in 'fMainD.pas' {MainForm};
+  fMain in 'fMain.pas' {MainForm};
 
 begin
   Application.Initialize;

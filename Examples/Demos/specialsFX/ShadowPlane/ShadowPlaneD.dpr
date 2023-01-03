@@ -1,4 +1,4 @@
-{: Simple projective shadows.
+(* Simple projective shadows.
 
    The TGLShadowPlane component allows to render simple projective shadows.
    They have the benefit of being quite fast, but as the name says, your shadows
@@ -13,7 +13,7 @@
    Tiles in the plane and removing 'psSingleQuad' from the style. Lighting
    is computed per-vertex, this changes increase drastically the number of
    vertices that make up the planes, thus allowing for better lighting.
-}
+*)
 program ShadowPlaneD;
 
 uses

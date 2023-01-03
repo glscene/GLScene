@@ -26,8 +26,8 @@ type
   TGLOptions = class(TGLDialog)
     CheckBoxAxis: TCheckBox;
     Label1: TLabel;
-    RadioGroupLanguage: TRadioGroup;
     PanelBackground: TPanel;
+    RadioGroupLanguage: TRadioGroup;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RadioGroupLanguageClick(Sender: TObject);
@@ -129,7 +129,6 @@ end;
 
 
 procedure TGLOptions.PanelBackgroundClick(Sender: TObject);
-
 begin
    dmGLSViewer.ColorDialog.Color := PanelBackground.Color;
    if dmGLSViewer.ColorDialog.Execute then

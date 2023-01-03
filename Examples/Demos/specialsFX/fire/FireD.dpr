@@ -1,4 +1,5 @@
-{: The fire special effect basic sample.
+(*
+   The fire special effect basic sample.
 
    If you look at the code you won't see anything fancy. The FireFX is a dynamic
    special effect (driven by a cadencer). Making use of it means two things :
@@ -11,7 +12,8 @@
    This effect looks cool but is fill-rate hungry, but un-textured fillrate
    hungry, ie. video card memory bandwith is not an issue. Anyway, you can
    always make it look nice with smaller and/or less particles.
-}
+*)
+
 program FireD;
 
 uses

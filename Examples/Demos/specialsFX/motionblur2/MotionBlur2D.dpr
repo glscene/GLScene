@@ -1,8 +1,9 @@
-{: A Demo of the TGLMotionBlur component
-   Version history
-    02/03/07 - DaStr - Updated GLSimpleNavigation component
-    25/02/07 - Dave Gravel - Initial version
-}
+(*
+   A Demo of the TGLMotionBlur component
+
+   History
+     25/02/07 - Dave Gravel - Initial version
+*)
 program MotionBlur2D;
 
 uses

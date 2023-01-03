@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 73
   Top = 86
   Caption = 'Shadow Volumes'
-  ClientHeight = 441
-  ClientWidth = 695
+  ClientHeight = 601
+  ClientWidth = 865
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,8 +16,8 @@ object Form1: TForm1
   object GLSceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 536
-    Height = 441
+    Width = 706
+    Height = 601
     Margins.Left = 2
     Margins.Top = 2
     Margins.Right = 2
@@ -25,18 +25,17 @@ object Form1: TForm1
     Camera = GLCamera
     Buffer.BackgroundColor = clBlack
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
-    FieldOfView = 154.447631835937500000
+    FieldOfView = 161.106277465820300000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewerMouseDown
-    OnMouseMove = GLSceneViewerMouseMove
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 536
+    Left = 706
     Top = 0
     Width = 159
-    Height = 441
+    Height = 601
     Margins.Left = 2
     Margins.Top = 2
     Margins.Right = 2
@@ -53,7 +52,7 @@ object Form1: TForm1
     TabOrder = 1
     DesignSize = (
       159
-      441)
+      601)
     object LabelFPS: TLabel
       Left = 44
       Top = 16
@@ -73,7 +72,7 @@ object Form1: TForm1
     end
     object Label2: TLabel
       Left = 16
-      Top = 301
+      Top = 461
       Width = 108
       Height = 15
       Margins.Left = 2
@@ -82,6 +81,7 @@ object Form1: TForm1
       Margins.Bottom = 2
       Anchors = [akLeft, akBottom]
       Caption = 'Shadow Resolution'
+      ExplicitTop = 301
     end
     object CBShowVolumes: TCheckBox
       Left = 16
@@ -193,7 +193,7 @@ object Form1: TForm1
     end
     object ScrollBar_ShadowResolution: TScrollBar
       Left = 16
-      Top = 320
+      Top = 480
       Width = 89
       Height = 17
       Margins.Left = 2
@@ -204,7 +204,7 @@ object Form1: TForm1
       Max = 21
       Min = 3
       PageSize = 0
-      Position = 3
+      Position = 12
       TabOrder = 8
       OnChange = ScrollBar_ShadowResolutionChange
     end
@@ -225,6 +225,16 @@ object Form1: TForm1
   object GLScene1: TGLScene
     Left = 40
     Top = 16
+    object DCCamera: TGLDummyCube
+      CubeSize = 1.000000000000000000
+      object GLCamera: TGLCamera
+        DepthOfView = 1.000000015047466E30
+        FocalLength = 50.000000000000000000
+        TargetObject = DCCamera
+        CameraStyle = csInfinitePerspective
+        Position.Coordinates = {0000704100002041000070410000803F}
+      end
+    end
     object DCLight1Turn: TGLDummyCube
       CubeSize = 1.000000000000000000
       object DCLight1Pitch: TGLDummyCube
@@ -244,16 +254,6 @@ object Form1: TForm1
             Stacks = 11
           end
         end
-      end
-    end
-    object DCCamera: TGLDummyCube
-      CubeSize = 1.000000000000000000
-      object GLCamera: TGLCamera
-        DepthOfView = 1.000000015047466E30
-        FocalLength = 50.000000000000000000
-        TargetObject = DCCamera
-        CameraStyle = csInfinitePerspective
-        Position.Coordinates = {000020410000E0400000A0400000803F}
       end
     end
     object DCLight2: TGLDummyCube
@@ -371,8 +371,8 @@ object Form1: TForm1
         Height = 6.000000000000000000
         TopRadius = 0.800000011920929000
       end
-      object GLSphere4: TGLSphere
-        Position.Coordinates = {00000000000000000000C0C00000803F}
+      object GLBigSphere: TGLSphere
+        Position.Coordinates = {00000000000080400000A0C00000803F}
         Radius = 2.000000000000000000
         object GLSphere_Shadow: TGLSphere
           Visible = False
@@ -405,5 +405,25 @@ object Form1: TForm1
   object GLMaterialLibrary1: TGLMaterialLibrary
     Left = 40
     Top = 96
+  end
+  object GLSimpleNavigation1: TGLSimpleNavigation
+    Form = Owner
+    GLSceneViewer = GLSceneViewer
+    FormCaption = 'Shadow Volumes - %FPS'
+    KeyCombinations = <
+      item
+        ShiftState = [ssLeft, ssRight]
+        Action = snaZoom
+      end
+      item
+        ShiftState = [ssLeft]
+        Action = snaMoveAroundTarget
+      end
+      item
+        ShiftState = [ssRight]
+        Action = snaMoveAroundTarget
+      end>
+    Left = 80
+    Top = 216
   end
 end

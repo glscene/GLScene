@@ -6,6 +6,7 @@
 // ---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GLS.FileSMD"
+#pragma link "GLS.SimpleNavigation"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
@@ -40,6 +41,7 @@ __fastcall TForm1::TForm1(TComponent * Owner) : TForm(Owner) {
 	GLFreeForm->LoadFromFile("trinityrage.smd");
 	GLFreeForm->BuildSilhouetteConnectivityData();
 	GLShadowVolume->Occluders->AddCaster(GLFreeForm, 0, scmRecursivelyVisible);
+	ScrollBar_ShadowResolutionChange(NULL);
 }
 
 // ---------------------------------------------------------------------------
@@ -137,7 +139,7 @@ void __fastcall TForm1::Button_GenerateSilhouetteClick(TObject * Sender) {
 	TGLSilhouetteParameters silhouetteParameters;
 	TGLSilhouette *Silhouette;
 	int i;
-	TGLSceneObject *Target = GLSphere4;
+	TGLSceneObject *Target = GLBigSphere;
 
 	silhouetteParameters.CappingRequired = false;
 	SetVector(silhouetteParameters.SeenFrom,

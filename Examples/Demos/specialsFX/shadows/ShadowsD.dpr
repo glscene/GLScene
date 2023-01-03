@@ -1,6 +1,6 @@
-{:
+(*
   Shadow casting with GLzBuffer by Rene Lindsay.
-}
+*)
 program ShadowsD;
 
 uses

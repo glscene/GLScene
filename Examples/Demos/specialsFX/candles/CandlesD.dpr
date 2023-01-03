@@ -1,4 +1,5 @@
-{: FireFX and simulated "wind".
+(*
+   FireFX and simulated "wind".
 
    This samples showcases a bare-bones "birthday cake" with three candles,
    you can adjust wind strength with the horizontal slider, but beware, if the
@@ -9,7 +10,8 @@
    The candles are duplicated with a TGLProxyObject each.
    Particles in a FireFX are submitted to a uniform acceleration, specified with
    the "FireDir" property, and the "wind" slider directly adjusts it.
-}
+*)
+
 program CandlesD;
 
 uses

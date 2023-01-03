@@ -18,6 +18,7 @@
 #include "GLS.BitmapFont.hpp"
 #include "GLS.WindowsFont.hpp"
 #include "GLS.BaseClasses.hpp"
+
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

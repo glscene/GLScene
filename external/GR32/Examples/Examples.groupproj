@@ -3,6 +3,15 @@
         <ProjectGuid>{20C180FF-6F9D-4193-A625-00097B293694}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
+        <Projects Include="Blending\BlendVsMerge\BlendVsMerge.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Blending\PixelCombine\PixelCombine.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Blending\TextureBlend\TextureBlend.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="Drawing\AntiAliasing\AntiAliasing.dproj">
             <Dependencies/>
         </Projects>
@@ -12,7 +21,7 @@
         <Projects Include="Drawing\Blurs\Blurs.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="General\ByteMaps\ByteMaps.dproj">
+        <Projects Include="Drawing\Clipper\ClipperDemo.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Drawing\CubicSpline\CubicSpline.dproj">
@@ -36,16 +45,13 @@
         <Projects Include="Drawing\GradSampler\GradSampler.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Drawing\LineStippling\LineStippling.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="Drawing\Lion\Lion.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Drawing\MeshGradients\MeshGradients.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="Blending\TextureBlend\TextureBlend.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="Blending\PixelCombine\PixelCombine.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Drawing\Polygons\Polygons.dproj">
@@ -57,10 +63,25 @@
         <Projects Include="Drawing\SvgPath\SvgPath.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Drawing\ScatterPlot\ScatterPlot.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Drawing\TextVPR\TextVPR.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="General\ByteMaps\ByteMaps.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="General\Color Picker\ColorPicker.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="General\Image32\Image32.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="General\Mandelbrot\Mandelbrot.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="General\Rotate\Rotate.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Layers\ImgView_Layers\ImgView_Layers.dproj">
@@ -75,6 +96,9 @@
         <Projects Include="Resampling\NestedSampling\NestedSampling.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Resampling\PixelF\PixelF.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="Resampling\Resamplers\Resamplers.dproj">
             <Dependencies/>
         </Projects>
@@ -87,6 +111,21 @@
         <Projects Include="Transformation\Visualization\Visualization.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Drawing\VertexReduction\LineSimplification.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Drawing\Grow\Grow.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Drawing\Benchmark\Benchmark.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="General\PNG Explorer\PngExplorer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="General\PNG Image32\PNG_GR32_Demo.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -95,6 +134,33 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
+    <Target Name="BlendVsMerge">
+        <MSBuild Projects="Blending\BlendVsMerge\BlendVsMerge.dproj"/>
+    </Target>
+    <Target Name="BlendVsMerge:Clean">
+        <MSBuild Projects="Blending\BlendVsMerge\BlendVsMerge.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BlendVsMerge:Make">
+        <MSBuild Projects="Blending\BlendVsMerge\BlendVsMerge.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PixelCombine">
+        <MSBuild Projects="Blending\PixelCombine\PixelCombine.dproj"/>
+    </Target>
+    <Target Name="PixelCombine:Clean">
+        <MSBuild Projects="Blending\PixelCombine\PixelCombine.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PixelCombine:Make">
+        <MSBuild Projects="Blending\PixelCombine\PixelCombine.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TextureBlend">
+        <MSBuild Projects="Blending\TextureBlend\TextureBlend.dproj"/>
+    </Target>
+    <Target Name="TextureBlend:Clean">
+        <MSBuild Projects="Blending\TextureBlend\TextureBlend.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TextureBlend:Make">
+        <MSBuild Projects="Blending\TextureBlend\TextureBlend.dproj" Targets="Make"/>
+    </Target>
     <Target Name="AntiAliasing">
         <MSBuild Projects="Drawing\AntiAliasing\AntiAliasing.dproj"/>
     </Target>
@@ -122,14 +188,14 @@
     <Target Name="Blurs:Make">
         <MSBuild Projects="Drawing\Blurs\Blurs.dproj" Targets="Make"/>
     </Target>
-    <Target Name="ByteMaps">
-        <MSBuild Projects="General\ByteMaps\ByteMaps.dproj"/>
+    <Target Name="ClipperDemo">
+        <MSBuild Projects="Drawing\Clipper\ClipperDemo.dproj"/>
     </Target>
-    <Target Name="ByteMaps:Clean">
-        <MSBuild Projects="General\ByteMaps\ByteMaps.dproj" Targets="Clean"/>
+    <Target Name="ClipperDemo:Clean">
+        <MSBuild Projects="Drawing\Clipper\ClipperDemo.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="ByteMaps:Make">
-        <MSBuild Projects="General\ByteMaps\ByteMaps.dproj" Targets="Make"/>
+    <Target Name="ClipperDemo:Make">
+        <MSBuild Projects="Drawing\Clipper\ClipperDemo.dproj" Targets="Make"/>
     </Target>
     <Target Name="CubicSpline">
         <MSBuild Projects="Drawing\CubicSpline\CubicSpline.dproj"/>
@@ -194,6 +260,15 @@
     <Target Name="GradSampler:Make">
         <MSBuild Projects="Drawing\GradSampler\GradSampler.dproj" Targets="Make"/>
     </Target>
+    <Target Name="LineStippling">
+        <MSBuild Projects="Drawing\LineStippling\LineStippling.dproj"/>
+    </Target>
+    <Target Name="LineStippling:Clean">
+        <MSBuild Projects="Drawing\LineStippling\LineStippling.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LineStippling:Make">
+        <MSBuild Projects="Drawing\LineStippling\LineStippling.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Lion">
         <MSBuild Projects="Drawing\Lion\Lion.dproj"/>
     </Target>
@@ -211,24 +286,6 @@
     </Target>
     <Target Name="MeshGradients:Make">
         <MSBuild Projects="Drawing\MeshGradients\MeshGradients.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="TextureBlend">
-        <MSBuild Projects="Blending\TextureBlend\TextureBlend.dproj"/>
-    </Target>
-    <Target Name="TextureBlend:Clean">
-        <MSBuild Projects="Blending\TextureBlend\TextureBlend.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="TextureBlend:Make">
-        <MSBuild Projects="Blending\TextureBlend\TextureBlend.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="PixelCombine">
-        <MSBuild Projects="Blending\PixelCombine\PixelCombine.dproj"/>
-    </Target>
-    <Target Name="PixelCombine:Clean">
-        <MSBuild Projects="Blending\PixelCombine\PixelCombine.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="PixelCombine:Make">
-        <MSBuild Projects="Blending\PixelCombine\PixelCombine.dproj" Targets="Make"/>
     </Target>
     <Target Name="Polygons">
         <MSBuild Projects="Drawing\Polygons\Polygons.dproj"/>
@@ -257,6 +314,33 @@
     <Target Name="SvgPath:Make">
         <MSBuild Projects="Drawing\SvgPath\SvgPath.dproj" Targets="Make"/>
     </Target>
+    <Target Name="ScatterPlot">
+        <MSBuild Projects="Drawing\ScatterPlot\ScatterPlot.dproj"/>
+    </Target>
+    <Target Name="ScatterPlot:Clean">
+        <MSBuild Projects="Drawing\ScatterPlot\ScatterPlot.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ScatterPlot:Make">
+        <MSBuild Projects="Drawing\ScatterPlot\ScatterPlot.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TextVPR">
+        <MSBuild Projects="Drawing\TextVPR\TextVPR.dproj"/>
+    </Target>
+    <Target Name="TextVPR:Clean">
+        <MSBuild Projects="Drawing\TextVPR\TextVPR.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TextVPR:Make">
+        <MSBuild Projects="Drawing\TextVPR\TextVPR.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ByteMaps">
+        <MSBuild Projects="General\ByteMaps\ByteMaps.dproj"/>
+    </Target>
+    <Target Name="ByteMaps:Clean">
+        <MSBuild Projects="General\ByteMaps\ByteMaps.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ByteMaps:Make">
+        <MSBuild Projects="General\ByteMaps\ByteMaps.dproj" Targets="Make"/>
+    </Target>
     <Target Name="ColorPicker">
         <MSBuild Projects="General\Color Picker\ColorPicker.dproj"/>
     </Target>
@@ -274,6 +358,24 @@
     </Target>
     <Target Name="Image32:Make">
         <MSBuild Projects="General\Image32\Image32.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Mandelbrot">
+        <MSBuild Projects="General\Mandelbrot\Mandelbrot.dproj"/>
+    </Target>
+    <Target Name="Mandelbrot:Clean">
+        <MSBuild Projects="General\Mandelbrot\Mandelbrot.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Mandelbrot:Make">
+        <MSBuild Projects="General\Mandelbrot\Mandelbrot.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Rotate">
+        <MSBuild Projects="General\Rotate\Rotate.dproj"/>
+    </Target>
+    <Target Name="Rotate:Clean">
+        <MSBuild Projects="General\Rotate\Rotate.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Rotate:Make">
+        <MSBuild Projects="General\Rotate\Rotate.dproj" Targets="Make"/>
     </Target>
     <Target Name="ImgView_Layers">
         <MSBuild Projects="Layers\ImgView_Layers\ImgView_Layers.dproj"/>
@@ -311,6 +413,15 @@
     <Target Name="NestedSampling:Make">
         <MSBuild Projects="Resampling\NestedSampling\NestedSampling.dproj" Targets="Make"/>
     </Target>
+    <Target Name="PixelF">
+        <MSBuild Projects="Resampling\PixelF\PixelF.dproj"/>
+    </Target>
+    <Target Name="PixelF:Clean">
+        <MSBuild Projects="Resampling\PixelF\PixelF.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PixelF:Make">
+        <MSBuild Projects="Resampling\PixelF\PixelF.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Resamplers">
         <MSBuild Projects="Resampling\Resamplers\Resamplers.dproj"/>
     </Target>
@@ -347,14 +458,59 @@
     <Target Name="Visualization:Make">
         <MSBuild Projects="Transformation\Visualization\Visualization.dproj" Targets="Make"/>
     </Target>
+    <Target Name="LineSimplification">
+        <MSBuild Projects="Drawing\VertexReduction\LineSimplification.dproj"/>
+    </Target>
+    <Target Name="LineSimplification:Clean">
+        <MSBuild Projects="Drawing\VertexReduction\LineSimplification.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LineSimplification:Make">
+        <MSBuild Projects="Drawing\VertexReduction\LineSimplification.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Grow">
+        <MSBuild Projects="Drawing\Grow\Grow.dproj"/>
+    </Target>
+    <Target Name="Grow:Clean">
+        <MSBuild Projects="Drawing\Grow\Grow.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Grow:Make">
+        <MSBuild Projects="Drawing\Grow\Grow.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Benchmark">
+        <MSBuild Projects="Drawing\Benchmark\Benchmark.dproj"/>
+    </Target>
+    <Target Name="Benchmark:Clean">
+        <MSBuild Projects="Drawing\Benchmark\Benchmark.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Benchmark:Make">
+        <MSBuild Projects="Drawing\Benchmark\Benchmark.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PngExplorer">
+        <MSBuild Projects="General\PNG Explorer\PngExplorer.dproj"/>
+    </Target>
+    <Target Name="PngExplorer:Clean">
+        <MSBuild Projects="General\PNG Explorer\PngExplorer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PngExplorer:Make">
+        <MSBuild Projects="General\PNG Explorer\PngExplorer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PNG_GR32_Demo">
+        <MSBuild Projects="General\PNG Image32\PNG_GR32_Demo.dproj"/>
+    </Target>
+    <Target Name="PNG_GR32_Demo:Clean">
+        <MSBuild Projects="General\PNG Image32\PNG_GR32_Demo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PNG_GR32_Demo:Make">
+        <MSBuild Projects="General\PNG Image32\PNG_GR32_Demo.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="AntiAliasing;ArrowHead;Blurs;ByteMaps;CubicSpline;Curves;GammaCorrection;GammaBlur;GradFills;GradLines;GradSampler;Lion;MeshGradients;TextureBlend;PixelCombine;Polygons;RenderText;SvgPath;ColorPicker;Image32;ImgView_Layers;RotLayer;Sprites;NestedSampling;Resamplers;ImgWarping;Transform;Visualization"/>
+        <CallTarget Targets="BlendVsMerge;PixelCombine;TextureBlend;AntiAliasing;ArrowHead;Blurs;ClipperDemo;CubicSpline;Curves;GammaCorrection;GammaBlur;GradFills;GradLines;GradSampler;LineStippling;Lion;MeshGradients;Polygons;RenderText;SvgPath;ScatterPlot;TextVPR;ByteMaps;ColorPicker;Image32;Mandelbrot;Rotate;ImgView_Layers;RotLayer;Sprites;NestedSampling;PixelF;Resamplers;ImgWarping;Transform;Visualization;LineSimplification;Grow;Benchmark;PngExplorer;PNG_GR32_Demo"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="AntiAliasing:Clean;ArrowHead:Clean;Blurs:Clean;ByteMaps:Clean;CubicSpline:Clean;Curves:Clean;GammaCorrection:Clean;GammaBlur:Clean;GradFills:Clean;GradLines:Clean;GradSampler:Clean;Lion:Clean;MeshGradients:Clean;TextureBlend:Clean;PixelCombine:Clean;Polygons:Clean;RenderText:Clean;SvgPath:Clean;ColorPicker:Clean;Image32:Clean;ImgView_Layers:Clean;RotLayer:Clean;Sprites:Clean;NestedSampling:Clean;Resamplers:Clean;ImgWarping:Clean;Transform:Clean;Visualization:Clean"/>
+        <CallTarget Targets="BlendVsMerge:Clean;PixelCombine:Clean;TextureBlend:Clean;AntiAliasing:Clean;ArrowHead:Clean;Blurs:Clean;ClipperDemo:Clean;CubicSpline:Clean;Curves:Clean;GammaCorrection:Clean;GammaBlur:Clean;GradFills:Clean;GradLines:Clean;GradSampler:Clean;LineStippling:Clean;Lion:Clean;MeshGradients:Clean;Polygons:Clean;RenderText:Clean;SvgPath:Clean;ScatterPlot:Clean;TextVPR:Clean;ByteMaps:Clean;ColorPicker:Clean;Image32:Clean;Mandelbrot:Clean;Rotate:Clean;ImgView_Layers:Clean;RotLayer:Clean;Sprites:Clean;NestedSampling:Clean;PixelF:Clean;Resamplers:Clean;ImgWarping:Clean;Transform:Clean;Visualization:Clean;LineSimplification:Clean;Grow:Clean;Benchmark:Clean;PngExplorer:Clean;PNG_GR32_Demo:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="AntiAliasing:Make;ArrowHead:Make;Blurs:Make;ByteMaps:Make;CubicSpline:Make;Curves:Make;GammaCorrection:Make;GammaBlur:Make;GradFills:Make;GradLines:Make;GradSampler:Make;Lion:Make;MeshGradients:Make;TextureBlend:Make;PixelCombine:Make;Polygons:Make;RenderText:Make;SvgPath:Make;ColorPicker:Make;Image32:Make;ImgView_Layers:Make;RotLayer:Make;Sprites:Make;NestedSampling:Make;Resamplers:Make;ImgWarping:Make;Transform:Make;Visualization:Make"/>
+        <CallTarget Targets="BlendVsMerge:Make;PixelCombine:Make;TextureBlend:Make;AntiAliasing:Make;ArrowHead:Make;Blurs:Make;ClipperDemo:Make;CubicSpline:Make;Curves:Make;GammaCorrection:Make;GammaBlur:Make;GradFills:Make;GradLines:Make;GradSampler:Make;LineStippling:Make;Lion:Make;MeshGradients:Make;Polygons:Make;RenderText:Make;SvgPath:Make;ScatterPlot:Make;TextVPR:Make;ByteMaps:Make;ColorPicker:Make;Image32:Make;Mandelbrot:Make;Rotate:Make;ImgView_Layers:Make;RotLayer:Make;Sprites:Make;NestedSampling:Make;PixelF:Make;Resamplers:Make;ImgWarping:Make;Transform:Make;Visualization:Make;LineSimplification:Make;Grow:Make;Benchmark:Make;PngExplorer:Make;PNG_GR32_Demo:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

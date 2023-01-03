@@ -1,2 +1,3 @@
-Directory for DCP packages or put them in
-C:\Users\Public\Documents\Embarcadero\Studio\22.0\Dcp
+Remove packages to $(BDSCOMMONDIR)\Dcp directory 
+to install on C++Builder Personality
+Embarcadero RAD Studio Community Edition

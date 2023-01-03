@@ -1,7 +1,6 @@
 //
 //  uSettings for GLSViewer
 //
-
 unit uSettings;
 
 interface

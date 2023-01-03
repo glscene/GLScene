@@ -1,6 +1,7 @@
-{: WaterPlane demo
+(*
+  WaterPlane demo
+*)
 
-}
 program WaterPlaneD;
 
 uses

@@ -2,7 +2,8 @@ inherited GLOptions: TGLOptions
   HelpContext = 0
   Caption = 'Options'
   OnClose = FormClose
-  PixelsPerInch = 96
+  ExplicitLeft = 3
+  ExplicitTop = 3
   TextHeight = 16
   inherited PanelMiddle: TPanel
     object Label1: TLabel [0]
@@ -13,7 +14,9 @@ inherited GLOptions: TGLOptions
       Caption = 'Background'
     end
     inherited Memo: TMemo
-      TabOrder = 3
+      TabOrder = 2
+      ExplicitLeft = 1
+      ExplicitTop = 1
     end
     object CheckBoxAxis: TCheckBox
       Left = 96
@@ -23,6 +26,19 @@ inherited GLOptions: TGLOptions
       Caption = 'Show Axes'
       TabOrder = 0
       OnClick = CheckBoxAxisClick
+    end
+    object PanelBackground: TPanel
+      Left = 375
+      Top = 27
+      Width = 25
+      Height = 25
+      Hint = 'Click to change background colour'
+      BevelInner = bvLowered
+      BevelOuter = bvLowered
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 1
+      OnClick = PanelBackgroundClick
     end
     object RadioGroupLanguage: TRadioGroup
       Left = 96
@@ -39,21 +55,8 @@ inherited GLOptions: TGLOptions
         'French'
         'German'
         'Italian')
-      TabOrder = 1
+      TabOrder = 3
       OnClick = RadioGroupLanguageClick
-    end
-    object PanelBackground: TPanel
-      Left = 375
-      Top = 27
-      Width = 25
-      Height = 25
-      Hint = 'Click to change background colour'
-      BevelInner = bvLowered
-      BevelOuter = bvLowered
-      Color = clWhite
-      ParentBackground = False
-      TabOrder = 2
-      OnClick = PanelBackgroundClick
     end
   end
   inherited PanelBottom: TPanel

@@ -1,6 +1,6 @@
-{
+(*
  Demo showing GLTrail object
-}
+*)
 program TrailsD;
 
 uses

@@ -1,7 +1,6 @@
 //
 //  uGlobals for GLSViewer
 //
-
 unit uGlobals;
 
 interface
@@ -12,7 +11,7 @@ uses
 
 
 const
-  //cRegistryKey = 'Software\GLSViewer';
+  // cRegistryKey = 'Software\GLSViewer';
   RegGLSViewer = PathDelim + 'SOFTWARE' + PathDelim + 'GLSViewer' + PathDelim;
 
 

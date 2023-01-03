@@ -1,0 +1,1004 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2023-01-02 19:19+0300\n"
+"PO-Revision-Date: 2023-01-02 19:30+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-Basepath: ../../../Source\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#. dmGLSViewer..odTextures..DefaultExt
+#. dmGLSViewer..sdTextures..DefaultExt
+#: dGLSViewer.dfm:22 dGLSViewer.dfm:29
+msgid "glml"
+msgstr ""
+
+#. dmGLSViewer..odTextures..Filter
+#. dmGLSViewer..sdTextures..Filter
+#: dGLSViewer.dfm:23 dGLSViewer.dfm:30
+msgid "GLScene Material Library (*.glml)|*.glml|All files (*.*)|*.*"
+msgstr "Библиотека материалов GLScene (*.glml)|*.glml|All files (*.*)|*.*"
+
+#. dmGLSViewer..opDialog....Filter
+#: dGLSViewer.dfm:47
+msgid ""
+"All (*.tga;*.dds;*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.jpg;*.jpeg;*.gif;*.png;*."
+"tif;*.tiff;*.ico;*.emf;*.wmf)|*.tga;*.dds;*.gif;*.png;*.jpg;*.jpeg;*.bmp;*."
+"jpg;*.jpeg;*.gif;*.png;*.tif;*.tiff;*.ico;*.emf;*.wmf|Targa (*.tga)|*.tga|"
+"Microsoft DirectDraw Surface (*.dds)|*.dds|GIF Image (*.gif)|*.gif|Portable "
+"Network Graphics (*.png)|*.png|JPEG Image File (*.jpg)|*.jpg|JPEG Image File "
+"(*.jpeg)|*.jpeg|Bitmaps (*.bmp)|*.bmp|JPEG Images (*.jpg)|*.jpg|JPEG Images "
+"(*.jpeg)|*.jpeg|GIF Images (*.gif)|*.gif|PNG Images (*.png)|*.png|TIFF "
+"Images (*.tif)|*.tif|TIFF Images (*.tiff)|*.tiff|Icons (*.ico)|*.ico|"
+"Enhanced Metafiles (*.emf)|*.emf|Metafiles (*.wmf)|*.wmf"
+msgstr ""
+
+#. GLAbout..Caption
+#: fGLAbout.dfm:2
+msgid "About"
+msgstr "О программе"
+
+#. GLAbout..PanelTop..LabelVersion..Caption
+#: fGLAbout.dfm:137
+msgid "version"
+msgstr "версия"
+
+#. GLAbout..PanelTop..LabelVersion..Font.Name
+#. GLAbout..PanelMiddle..LabelCopyright..Font.Name
+#. GLAbout..PanelMiddle..FreeAndOpenSource..Font.Name
+#. GLForm..Font.Name
+#. MainForm..Font.Name
+#: fGLAbout.dfm:141 fGLAbout.dfm:194 fGLAbout.dfm:2415 fGLForm.dfm:11
+#: fMain.dfm:11
+msgid "MS Sans Serif"
+msgstr ""
+
+#. GLAbout..PanelTop..LabelGeoblock..Caption
+#: fGLAbout.dfm:151
+msgid "GLScene Viewer"
+msgstr ""
+
+#. GLAbout..PanelTop..LabelGeoblock..Font.Name
+#: fGLAbout.dfm:155
+msgid "Times New Roman"
+msgstr ""
+
+#. GLAbout..PanelTop..Label2..Caption
+#: fGLAbout.dfm:166
+msgid "Based on Eric Grange's GLSViewer for GLScene"
+msgstr ""
+
+#. GLAbout..PanelTop..StaticTextVersion..Caption
+#: fGLAbout.dfm:173
+msgid "Info"
+msgstr ""
+
+#. GLAbout..PanelMiddle..LabelCopyright..Caption
+#: fGLAbout.dfm:190
+msgid "Copyright"
+msgstr ""
+
+#. GLAbout..PanelMiddle..imgOpenGL..Hint
+#: fGLAbout.dfm:204
+msgid "www.opengl.org"
+msgstr ""
+
+#. GLAbout..PanelMiddle..imgSourceForge..Hint
+#: fGLAbout.dfm:389
+msgid "www.sourceforge.net/projects/glscene"
+msgstr ""
+
+#. GLAbout..PanelMiddle..imgGLScene..Hint
+#: fGLAbout.dfm:554
+msgid "www.glscene.org"
+msgstr ""
+
+#. GLAbout..PanelMiddle..Label1..Caption
+#: fGLAbout.dfm:2397
+msgid "GLScene Team"
+msgstr ""
+
+#. GLAbout..PanelMiddle..Label3..Caption
+#: fGLAbout.dfm:2404
+msgid "3D view, 3D file formats support:"
+msgstr ""
+
+#. GLAbout..PanelMiddle..FreeAndOpenSource..Caption
+#: fGLAbout.dfm:2411
+msgid "Open source software"
+msgstr ""
+
+#. GLDialog..Caption
+#: fGLDialog.dfm:3
+msgid "GLScene Dialog"
+msgstr ""
+
+#. GLDialog..PanelBottom..ButtonOK..Caption
+#: fGLDialog.dfm:52
+msgid "OK"
+msgstr ""
+
+#. GLDialog..PanelBottom..ButtonCancel..Caption
+#: fGLDialog.dfm:61
+msgid "Cancel"
+msgstr ""
+
+#. GLDialog..PanelBottom..ButtonHelp..Caption
+#. MainForm..ActionManager..acHelpContents..Category
+#. MainForm..ActionManager..acHelpTopicSearch..Category
+#. MainForm..ActionManager..acHelpOnHelp..Category
+#. MainForm..ActionManager..acHelpGLSHomePage..Category
+#. MainForm..ActionManager..acHelpAbout..Category
+#: fGLDialog.dfm:70 fMain.dfm:1946 fMain.dfm:1953 fMain.dfm:1960 fMain.dfm:1966
+#: fMain.dfm:1971
+msgid "Help"
+msgstr ""
+
+#. GLOptions..Caption
+#: fGLOptions.dfm:3
+msgid "Options"
+msgstr "Опции"
+
+#. GLOptions..PanelMiddle..Label1..Caption
+#: fGLOptions.dfm:13
+msgid "Background"
+msgstr "Фон"
+
+#. GLOptions..PanelMiddle..CheckBoxAxis..Caption
+#: fGLOptions.dfm:23
+msgid "Show Axes"
+msgstr "Показать оси"
+
+#. GLOptions..PanelMiddle..RadioGroupLanguage..Caption
+#: fGLOptions.dfm:32
+msgid "Language"
+msgstr "Язык"
+
+#. GLOptions..PanelMiddle..RadioGroupLanguage....Items.Strings
+#: fGLOptions.dfm:36
+msgid "English"
+msgstr "Английский"
+
+#. GLOptions..PanelMiddle..RadioGroupLanguage....Items.Strings
+#: fGLOptions.dfm:37
+msgid "Russian"
+msgstr ""
+
+#. GLOptions..PanelMiddle..RadioGroupLanguage....Items.Strings
+#: fGLOptions.dfm:38
+msgid "Spanish"
+msgstr "Испанский"
+
+#. GLOptions..PanelMiddle..RadioGroupLanguage....Items.Strings
+#: fGLOptions.dfm:39
+msgid "French"
+msgstr "Французский"
+
+#. GLOptions..PanelMiddle..RadioGroupLanguage....Items.Strings
+#: fGLOptions.dfm:40
+msgid "German"
+msgstr "Немецкий"
+
+#. GLOptions..PanelMiddle..RadioGroupLanguage....Items.Strings
+#: fGLOptions.dfm:41
+msgid "Italian"
+msgstr "Итальянский"
+
+#. GLOptions..PanelMiddle..PanelBackground..Hint
+#: fGLOptions.dfm:50
+msgid "Click to change background colour"
+msgstr ""
+
+#: fGLOptions.pas:148
+msgid "Reload to change language"
+msgstr ""
+
+#. MainForm..Caption
+#: fMain.dfm:4
+msgid "GLSViewer"
+msgstr ""
+
+#. MainForm..StatusBar......Text
+#: fMain.dfm:140
+msgid "X"
+msgstr ""
+
+#. MainForm..StatusBar......Text
+#: fMain.dfm:144
+msgid "Y"
+msgstr ""
+
+#. MainForm..StatusBar......Text
+#: fMain.dfm:148
+msgid "Z"
+msgstr ""
+
+#. MainForm..StatusBar......Text
+#: fMain.dfm:152
+msgid "Model"
+msgstr "Модель"
+
+#. MainForm..ControlBar..atbTools..Caption
+#. MainForm..ActionManager..acToolsOptions..Category
+#. MainForm..ActionManager..acToolsFaceCulling..Category
+#. MainForm..ActionManager..acToolsTexturing..Category
+#. MainForm..ActionManager..acToolsLighting..Category
+#. MainForm..ActionManager..acToolsNaviCube..Category
+#. MainForm..ActionManager..acToolsCustomize..Category
+#. MainForm..ActionManager..acToolsShowFPS..Category
+#. MainForm..ActionManager..acToolsInfo..Category
+#: fMain.dfm:188 fMain.dfm:1789 fMain.dfm:1795 fMain.dfm:1800 fMain.dfm:1808
+#: fMain.dfm:1816 fMain.dfm:1823 fMain.dfm:1828 fMain.dfm:2067
+msgid "Tools"
+msgstr "Инструменты"
+
+#. MainForm..ControlBar..atbTools..Font.Name
+#. MainForm..ControlBar..atbView..Font.Name
+#. MainForm..ControlBar..atbFile..Font.Name
+#: fMain.dfm:197 fMain.dfm:217 fMain.dfm:237
+msgid "Tahoma"
+msgstr ""
+
+#. MainForm..ControlBar..atbView..Caption
+#. MainForm..ActionManager..acViewSmoothShading..Category
+#. MainForm..ActionManager..acViewFlatShading..Category
+#. MainForm..ActionManager..acViewFlatLines..Category
+#. MainForm..ActionManager..acViewHiddenLines..Category
+#. MainForm..ActionManager..acViewWireFrame..Category
+#. MainForm..ActionManager..acViewZoomIn..Category
+#. MainForm..ActionManager..acViewZoomOut..Category
+#. MainForm..ActionManager..acViewReset..Category
+#. MainForm..ActionManager..acPoints..Category
+#. MainForm..ActionManager..acSpheres..Category
+#: fMain.dfm:208 fMain.dfm:1833 fMain.dfm:1843 fMain.dfm:1853 fMain.dfm:1863
+#: fMain.dfm:1873 fMain.dfm:1883 fMain.dfm:1890 fMain.dfm:1897 fMain.dfm:2060
+#: fMain.dfm:2074
+msgid "View"
+msgstr "Вид"
+
+#. MainForm..ControlBar..atbFile..Caption
+#. MainForm..ActionManager..acFileOpen..Category
+#. MainForm..ActionManager..acFilePick..Category
+#. MainForm..ActionManager..acFileOpenTexLib..Category
+#. MainForm..ActionManager..acFileSaveAs..Category
+#. MainForm..ActionManager..acFileSaveTextures..Category
+#. MainForm..ActionManager..acFileExit..Category
+#: fMain.dfm:228 fMain.dfm:1904 fMain.dfm:1912 fMain.dfm:1919 fMain.dfm:1925
+#: fMain.dfm:1933 fMain.dfm:1940
+msgid "File"
+msgstr "Файл"
+
+#. MainForm..amMenuBar..Caption
+#: fMain.dfm:252
+msgid "ActionMainMenuBar"
+msgstr ""
+
+#. MainForm..amMenuBar..Font.Name
+#: fMain.dfm:261
+msgid "Segoe UI"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1032 fMain.dfm:1261 fMain.dfm:1362 fMain.dfm:1629 fMain.dfm:1742
+msgid "&Pick texture..."
+msgstr "&Загрузить текстуру..."
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1037 fMain.dfm:1370 fMain.dfm:1625
+msgid "Op&en Texture Library..."
+msgstr "От&крыть список текстур..."
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1041 fMain.dfm:1267 fMain.dfm:1374 fMain.dfm:1597 fMain.dfm:1620
+#: fMain.dfm:1748
+msgid "&Save As..."
+msgstr "&Сохранить как..."
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1046 fMain.dfm:1379 fMain.dfm:1616
+msgid "S&ave Textures..."
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1049 fMain.dfm:1065 fMain.dfm:1105 fMain.dfm:1132 fMain.dfm:1150
+#: fMain.dfm:1161 fMain.dfm:1172 fMain.dfm:1236 fMain.dfm:1306 fMain.dfm:1366
+#: fMain.dfm:1382 fMain.dfm:1398 fMain.dfm:1453 fMain.dfm:1552 fMain.dfm:1578
+#: fMain.dfm:1695
+msgid "-"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1053 fMain.dfm:1386 fMain.dfm:1612
+msgid "E&xit"
+msgstr "В&ыход"
+
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1055 fMain.dfm:1388
+msgid "&File"
+msgstr "&Файл"
+
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1091 fMain.dfm:1424
+msgid "&Edit"
+msgstr "&Правка"
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1097 fMain.dfm:1728
+msgid "&Points"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#: fMain.dfm:1102
+msgid "Sph&eres"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1113 fMain.dfm:1283 fMain.dfm:1434 fMain.dfm:1672
+msgid "&Flat Shading"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1118 fMain.dfm:1289 fMain.dfm:1439 fMain.dfm:1678
+msgid "F&lat Shading with Lines"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1123 fMain.dfm:1295 fMain.dfm:1444 fMain.dfm:1684
+msgid "&Hidden Lines"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1128 fMain.dfm:1301 fMain.dfm:1449 fMain.dfm:1690
+msgid "&Wireframe"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1136 fMain.dfm:1310 fMain.dfm:1457 fMain.dfm:1699
+msgid "&Zoom In"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1141 fMain.dfm:1316 fMain.dfm:1462 fMain.dfm:1705
+msgid "Z&oom Out"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1146 fMain.dfm:1322 fMain.dfm:1467 fMain.dfm:1711
+msgid "&Reset View"
+msgstr ""
+
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1152 fMain.dfm:1470
+msgid "&View"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#: fMain.dfm:1158 fMain.dfm:1508
+msgid "&Optimize Mesh"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#: fMain.dfm:1165 fMain.dfm:1512
+msgid "&Invert Normals"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#: fMain.dfm:1169 fMain.dfm:1516
+msgid "&Reverse Rendering Order"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#: fMain.dfm:1176 fMain.dfm:1520
+msgid "&Convert to Indexed Triangles"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#: fMain.dfm:1180 fMain.dfm:1524
+msgid "&Stripify"
+msgstr ""
+
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1182 fMain.dfm:1526
+msgid "&Processing"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#: fMain.dfm:1188 fMain.dfm:1532
+msgid "&Options..."
+msgstr "&Опции..."
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#: fMain.dfm:1192 fMain.dfm:1536
+msgid "&Face Culling"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1196 fMain.dfm:1333 fMain.dfm:1540 fMain.dfm:1643
+msgid "&Texturing"
+msgstr "&Тесктурирование"
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1201 fMain.dfm:1339 fMain.dfm:1545 fMain.dfm:1649
+msgid "&Lighting"
+msgstr "&Освещение"
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1206 fMain.dfm:1717
+msgid "&Navi Cube"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#: fMain.dfm:1214 fMain.dfm:1556
+msgid "&Show FPS"
+msgstr ""
+
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1216 fMain.dfm:1558
+msgid "&Tools"
+msgstr "&Настройки"
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#: fMain.dfm:1233 fMain.dfm:1575
+msgid "&GLScene Home Page"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#. MainForm..ActionManager..............Caption
+#: fMain.dfm:1240 fMain.dfm:1582
+msgid "&About..."
+msgstr ""
+
+#. MainForm..ActionManager..........Caption
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1242 fMain.dfm:1584
+msgid "&Help"
+msgstr ""
+
+#. MainForm..ActionManager..................Caption
+#: fMain.dfm:1478
+msgid "&Default"
+msgstr ""
+
+#. MainForm..ActionManager..................Caption
+#: fMain.dfm:1482
+msgid "&MSAA 2X"
+msgstr ""
+
+#. MainForm..ActionManager..................Caption
+#: fMain.dfm:1486
+msgid "M&SAA 4X"
+msgstr ""
+
+#. MainForm..ActionManager..................Caption
+#: fMain.dfm:1490
+msgid "MS&AA 8X"
+msgstr ""
+
+#. MainForm..ActionManager..................Caption
+#: fMain.dfm:1494
+msgid "MSAA &16X"
+msgstr ""
+
+#. MainForm..ActionManager..................Caption
+#: fMain.dfm:1498
+msgid "&CSAA 8X"
+msgstr ""
+
+#. MainForm..ActionManager..................Caption
+#: fMain.dfm:1502
+msgid "CSAA 1&6X"
+msgstr ""
+
+#. MainForm..ActionManager..............Caption
+#: fMain.dfm:1504
+msgid "&Antialiasing"
+msgstr ""
+
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1655
+msgid "&Info..."
+msgstr ""
+
+#. MainForm..ActionManager..........Caption
+#: fMain.dfm:1723
+msgid "Po&ints"
+msgstr ""
+
+#. MainForm..ActionManager..StyleName
+#: fMain.dfm:1757
+msgid "Platform Default"
+msgstr ""
+
+#. MainForm..ActionManager..acOptimizeMesh..Category
+#. MainForm..ActionManager..acProcessInvertNormals..Category
+#. MainForm..ActionManager..acReverseRendering..Category
+#. MainForm..ActionManager..acConvertToTriangles..Category
+#. MainForm..ActionManager..acProcessStripify..Category
+#: fMain.dfm:1759 fMain.dfm:1765 fMain.dfm:1771 fMain.dfm:1777 fMain.dfm:1783
+msgid "Processing"
+msgstr ""
+
+#. MainForm..ActionManager..acOptimizeMesh..Caption
+#: fMain.dfm:1760
+msgid "Optimize Mesh"
+msgstr ""
+
+#. MainForm..ActionManager..acOptimizeMesh..Hint
+#: fMain.dfm:1761
+msgid "Optimize mesh"
+msgstr ""
+
+#. MainForm..ActionManager..acProcessInvertNormals..Caption
+#: fMain.dfm:1766
+msgid "Invert Normals"
+msgstr ""
+
+#. MainForm..ActionManager..acProcessInvertNormals..Hint
+#: fMain.dfm:1767
+msgid "Invert normals"
+msgstr ""
+
+#. MainForm..ActionManager..acReverseRendering..Caption
+#: fMain.dfm:1772
+msgid "Reverse Rendering Order"
+msgstr ""
+
+#. MainForm..ActionManager..acReverseRendering..Hint
+#: fMain.dfm:1773
+msgid "Reverse rendering order"
+msgstr ""
+
+#. MainForm..ActionManager..acConvertToTriangles..Caption
+#: fMain.dfm:1778
+msgid "Convert to Indexed Triangles"
+msgstr ""
+
+#. MainForm..ActionManager..acConvertToTriangles..Hint
+#: fMain.dfm:1779
+msgid "Convert  to indexed triangles"
+msgstr ""
+
+#. MainForm..ActionManager..acProcessStripify..Caption
+#. MainForm..ActionManager..acProcessStripify..Hint
+#: fMain.dfm:1784 fMain.dfm:1785
+msgid "Stripify"
+msgstr ""
+
+#. MainForm..ActionManager..acToolsOptions..Caption
+#: fMain.dfm:1790
+msgid "Options..."
+msgstr ""
+
+#. MainForm..ActionManager..acToolsOptions..Hint
+#: fMain.dfm:1791
+msgid "Tools|Options..."
+msgstr ""
+
+#. MainForm..ActionManager..acToolsFaceCulling..Caption
+#: fMain.dfm:1796
+msgid "Face Culling"
+msgstr ""
+
+#. MainForm..ActionManager..acToolsTexturing..Caption
+#. MainForm..ActionManager..acToolsTexturing..Hint
+#: fMain.dfm:1801 fMain.dfm:1803
+msgid "Texturing"
+msgstr ""
+
+#. MainForm..ActionManager..acToolsLighting..Caption
+#. MainForm..ActionManager..acToolsLighting..Hint
+#: fMain.dfm:1809 fMain.dfm:1811
+msgid "Lighting"
+msgstr ""
+
+#. MainForm..ActionManager..acToolsNaviCube..Caption
+#. MainForm..ActionManager..acToolsNaviCube..Hint
+#: fMain.dfm:1817 fMain.dfm:1818
+msgid "Navi Cube"
+msgstr ""
+
+#. MainForm..ActionManager..acToolsCustomize..Caption
+#: fMain.dfm:1824
+msgid "&Customize..."
+msgstr ""
+
+#. MainForm..ActionManager..acToolsShowFPS..Caption
+#: fMain.dfm:1829
+msgid "Show FPS"
+msgstr ""
+
+#. MainForm..ActionManager..acViewSmoothShading..Caption
+#: fMain.dfm:1835
+msgid "&Smooth Shading"
+msgstr ""
+
+#. MainForm..ActionManager..acViewSmoothShading..Hint
+#: fMain.dfm:1838
+msgid "Smooth shading|Smooth shading"
+msgstr ""
+
+#. MainForm..ActionManager..acViewFlatShading..Caption
+#: fMain.dfm:1845
+msgid "Flat Shading"
+msgstr ""
+
+#. MainForm..ActionManager..acViewFlatShading..Hint
+#: fMain.dfm:1848
+msgid "Flat Shading|Flat Shading"
+msgstr ""
+
+#. MainForm..ActionManager..acViewFlatLines..Caption
+#. MainForm..ActionManager..acViewFlatLines..Hint
+#: fMain.dfm:1855 fMain.dfm:1858
+msgid "Flat Shading with Lines"
+msgstr ""
+
+#. MainForm..ActionManager..acViewHiddenLines..Caption
+#. MainForm..ActionManager..acViewHiddenLines..Hint
+#: fMain.dfm:1865 fMain.dfm:1868
+msgid "Hidden Lines"
+msgstr ""
+
+#. MainForm..ActionManager..acViewWireFrame..Caption
+#. MainForm..ActionManager..acViewWireFrame..Hint
+#: fMain.dfm:1875 fMain.dfm:1878
+msgid "Wireframe"
+msgstr ""
+
+#. MainForm..ActionManager..acViewZoomIn..Caption
+#. MainForm..ActionManager..acViewZoomIn..Hint
+#: fMain.dfm:1884 fMain.dfm:1885
+msgid "Zoom In"
+msgstr ""
+
+#. MainForm..ActionManager..acViewZoomOut..Caption
+#. MainForm..ActionManager..acViewZoomOut..Hint
+#: fMain.dfm:1891 fMain.dfm:1892
+msgid "Zoom Out"
+msgstr ""
+
+#. MainForm..ActionManager..acViewReset..Caption
+#. MainForm..ActionManager..acViewReset..Hint
+#: fMain.dfm:1898 fMain.dfm:1899
+msgid "Reset View"
+msgstr ""
+
+#. MainForm..ActionManager..acFileOpen..Caption
+#: fMain.dfm:1905
+msgid "&Open..."
+msgstr ""
+
+#. MainForm..ActionManager..acFileOpen..Hint
+#: fMain.dfm:1907
+msgid "Open"
+msgstr ""
+
+#. MainForm..ActionManager..acFilePick..Caption
+#: fMain.dfm:1913
+msgid "Pick texture..."
+msgstr ""
+
+#. MainForm..ActionManager..acFilePick..Hint
+#: fMain.dfm:1914
+msgid "Pick texture"
+msgstr ""
+
+#. MainForm..ActionManager..acFileOpenTexLib..Caption
+#: fMain.dfm:1920
+msgid "Open Texture Library..."
+msgstr ""
+
+#. MainForm..ActionManager..acFileOpenTexLib..Hint
+#: fMain.dfm:1921
+msgid "Open texture library"
+msgstr ""
+
+#. MainForm..ActionManager..acFileSaveAs..Caption
+#: fMain.dfm:1926
+msgid "Save As..."
+msgstr "Сокранить как..."
+
+#. MainForm..ActionManager..acFileSaveAs..Hint
+#: fMain.dfm:1927
+msgid "Save as"
+msgstr ""
+
+#. MainForm..ActionManager..acFileSaveTextures..Caption
+#: fMain.dfm:1934
+msgid "Save Textures..."
+msgstr ""
+
+#. MainForm..ActionManager..acFileSaveTextures..Hint
+#: fMain.dfm:1936
+msgid "Save textures..."
+msgstr ""
+
+#. MainForm..ActionManager..acFileExit..Caption
+#. MainForm..ActionManager..acFileExit..Hint
+#: fMain.dfm:1941 fMain.dfm:1942
+msgid "Exit"
+msgstr ""
+
+#. MainForm..ActionManager..acHelpContents..Caption
+#: fMain.dfm:1947
+msgid "&Contents"
+msgstr ""
+
+#. MainForm..ActionManager..acHelpContents..Hint
+#: fMain.dfm:1949
+msgid "Contents|Help Contents"
+msgstr ""
+
+#. MainForm..ActionManager..acHelpTopicSearch..Caption
+#: fMain.dfm:1954
+msgid "&Topic Search"
+msgstr ""
+
+#. MainForm..ActionManager..acHelpTopicSearch..Hint
+#: fMain.dfm:1956
+msgid "Help|Topic Search"
+msgstr ""
+
+#. MainForm..ActionManager..acHelpOnHelp..Caption
+#: fMain.dfm:1961
+msgid "&Help on Help"
+msgstr ""
+
+#. MainForm..ActionManager..acHelpOnHelp..Hint
+#: fMain.dfm:1963
+msgid "Help|Help on help"
+msgstr ""
+
+#. MainForm..ActionManager..acHelpGLSHomePage..Caption
+#: fMain.dfm:1967
+msgid "GLScene Home Page"
+msgstr ""
+
+#. MainForm..ActionManager..acHelpGLSHomePage..Hint
+#: fMain.dfm:1968
+msgid "Help|Home page"
+msgstr ""
+
+#. MainForm..ActionManager..acHelpAbout..Caption
+#: fMain.dfm:1972
+msgid "About..."
+msgstr "О программе..."
+
+#. MainForm..ActionManager..acHelpAbout..Hint
+#: fMain.dfm:1973
+msgid "Help|About..."
+msgstr ""
+
+#. MainForm..ActionManager..acAADefault..Category
+#. MainForm..ActionManager..acAA2X..Category
+#. MainForm..ActionManager..acAA4X..Category
+#. MainForm..ActionManager..acAA8X..Category
+#. MainForm..ActionManager..acAA16X..Category
+#. MainForm..ActionManager..acCSA8X..Category
+#. MainForm..ActionManager..acCSA16X..Category
+#: fMain.dfm:1977 fMain.dfm:1986 fMain.dfm:1992 fMain.dfm:2039 fMain.dfm:2044
+#: fMain.dfm:2050 fMain.dfm:2055
+msgid "Antialiasing"
+msgstr ""
+
+#. MainForm..ActionManager..acAADefault..Caption
+#: fMain.dfm:1979
+msgid "Default"
+msgstr ""
+
+#. MainForm..ActionManager..acAADefault..Hint
+#: fMain.dfm:1982
+msgid "Default|Default antialiacing"
+msgstr ""
+
+#. MainForm..ActionManager..acAA2X..Caption
+#: fMain.dfm:1988
+msgid "MSAA 2X"
+msgstr ""
+
+#. MainForm..ActionManager..acAA4X..Caption
+#: fMain.dfm:1994
+msgid "MSAA 4X"
+msgstr ""
+
+#. MainForm..ActionManager..acEditUndo..Category
+#. MainForm..ActionManager..acEditCut..Category
+#. MainForm..ActionManager..acEditCopy..Category
+#. MainForm..ActionManager..acEditPaste..Category
+#. MainForm..ActionManager..acEditSelectAll..Category
+#. MainForm..ActionManager..acEditDelete..Category
+#: fMain.dfm:1998 fMain.dfm:2005 fMain.dfm:2012 fMain.dfm:2019 fMain.dfm:2026
+#: fMain.dfm:2032
+msgid "Edit"
+msgstr "Правка"
+
+#. MainForm..ActionManager..acEditUndo..Caption
+#: fMain.dfm:1999
+msgid "&Undo"
+msgstr ""
+
+#. MainForm..ActionManager..acEditUndo..Hint
+#: fMain.dfm:2000
+msgid "Undo|Reverts"
+msgstr ""
+
+#. MainForm..ActionManager..acEditCut..Caption
+#: fMain.dfm:2006
+msgid "Cu&t"
+msgstr ""
+
+#. MainForm..ActionManager..acEditCut..Hint
+#: fMain.dfm:2007
+msgid "Cut|Cut the selection and puts it on the Clipboard"
+msgstr ""
+
+#. MainForm..ActionManager..acEditCopy..Caption
+#: fMain.dfm:2013
+msgid "&Copy"
+msgstr ""
+
+#. MainForm..ActionManager..acEditCopy..Hint
+#: fMain.dfm:2014
+msgid "Copy|Copies the selection and puts it on the Clipboard"
+msgstr ""
+
+#. MainForm..ActionManager..acEditPaste..Caption
+#: fMain.dfm:2020
+msgid "&Paste"
+msgstr ""
+
+#. MainForm..ActionManager..acEditPaste..Hint
+#: fMain.dfm:2021
+msgid "Paste|Inserts Clipboard contents"
+msgstr ""
+
+#. MainForm..ActionManager..acEditSelectAll..Caption
+#: fMain.dfm:2027
+msgid "Select &All"
+msgstr ""
+
+#. MainForm..ActionManager..acEditSelectAll..Hint
+#: fMain.dfm:2028
+msgid "Select All|Selects the entire document"
+msgstr ""
+
+#. MainForm..ActionManager..acEditDelete..Caption
+#: fMain.dfm:2033
+msgid "&Delete"
+msgstr ""
+
+#. MainForm..ActionManager..acEditDelete..Hint
+#: fMain.dfm:2034
+msgid "Delete|Erases the selection"
+msgstr ""
+
+#. MainForm..ActionManager..acAA8X..Caption
+#: fMain.dfm:2040
+msgid "MSAA 8X"
+msgstr ""
+
+#. MainForm..ActionManager..acAA16X..Caption
+#: fMain.dfm:2046
+msgid "MSAA 16X"
+msgstr ""
+
+#. MainForm..ActionManager..acCSA8X..Caption
+#: fMain.dfm:2051
+msgid "CSAA 8X"
+msgstr ""
+
+#. MainForm..ActionManager..acCSA16X..Caption
+#: fMain.dfm:2056
+msgid "CSAA 16X"
+msgstr ""
+
+#. MainForm..ActionManager..acPoints..Caption
+#. MainForm..ActionManager..acPoints..Hint
+#: fMain.dfm:2061 fMain.dfm:2062
+msgid "Points"
+msgstr "Точки"
+
+#. MainForm..ActionManager..acToolsInfo..Caption
+#: fMain.dfm:2068
+msgid "Info..."
+msgstr ""
+
+#. MainForm..ActionManager..acToolsInfo..Hint
+#: fMain.dfm:2069
+msgid "Info of objects"
+msgstr ""
+
+#. MainForm..ActionManager..acSpheres..Caption
+#: fMain.dfm:2075
+msgid "Spheres"
+msgstr "Сферы"
+
+#. MainForm..GLSimpleNavigation..FormCaption
+#: fMain.dfm:2889
+msgid "GLSViewer - %FPS"
+msgstr ""
+
+#: fMain.pas:389
+msgid "Unsupported or unspecified file extension."
+msgstr ""

@@ -66,9 +66,9 @@ begin
   MatLib.AddTextureMaterial('wood', 'ashwood.jpg').
     Material.FaceCulling := fcNoCull;
 
-  MatLib.AddTextureMaterial('stone', 'walkway.jpg').
+  MatLib.AddTextureMaterial('grass', 'grass.jpg').
     Material.FrontProperties.Emission.Color := clrGray50;
-  MatLib.AddTextureMaterial('stone', 'walkway.jpg').
+  MatLib.AddTextureMaterial('grass', 'grass.jpg').
     Material.FaceCulling := fcNoCull;
 
   Torus1.Material.Texture.Disabled := False;
@@ -92,10 +92,10 @@ begin
     glVertex3f(0.5, 0, 0.5);
   glEnd;
   MatLib.UnApplyMaterial(rci);
-  // 2nd quad, textured with 'stone'
+  // 2nd quad, textured with 'grass'
   // we could apply the material "manually", but this can be usefull if you want to have
   // some dynamic material control
-  MatLib.ApplyMaterial('stone', rci);
+  MatLib.ApplyMaterial('grass', rci);
   glBegin(GL_QUADS);
     glTexCoord2f(0, 1);
     glVertex3f(0.5, -0.5, -0.5);

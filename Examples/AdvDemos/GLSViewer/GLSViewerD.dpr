@@ -10,7 +10,7 @@ uses
   dGLSViewer in 'Source\dGLSViewer.pas' {dmGLSViewer: TDataModule},
   fGLAbout in 'Source\fGLAbout.pas' {GLAbout},
   fGLOptions in 'Source\fGLOptions.pas' {GLOptions},
-  GnuGettext in 'Source\GnuGettext.pas';
+  gnugettext in 'Locale\gnugettext.pas';
 
 {$R *.res}
 

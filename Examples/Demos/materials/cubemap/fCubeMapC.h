@@ -44,6 +44,7 @@ __published:	// IDE-managed Components
           int Y);
 	void __fastcall FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
           TPoint &MousePos, bool &Handled);
+	void __fastcall FormCreate(TObject *Sender);
 private:	// User declarations
 	int mx,my;
 	bool CubmapSupported;

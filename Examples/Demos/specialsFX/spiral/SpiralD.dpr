@@ -1,4 +1,4 @@
-{: PFX and FullScreen demo.
+(* PFX and FullScreen demo.
 
    A basic sample for the PFX and the possibility to specify several colors
    to use throughout the life of the particles, additionnally it shows how
@@ -17,7 +17,7 @@
    For both windowed and full-screen modes, dragging the mouse with the right
    button pressed will move the camera so you may appreciate the 3D nature of
    the particle system. :)
-}
+*)
 program SpiralD;
 
 uses

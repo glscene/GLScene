@@ -70,7 +70,7 @@ type
     GLCube1: TGLCube;
     GLMaterialLibrary1: TGLMaterialLibrary;
     GLCylinder1: TGLCylinder;
-    GLSphere4: TGLSphere;
+    GLBigSphere: TGLSphere;
     GLSphere_Shadow: TGLSphere;
     Label2: TLabel;
     ScrollBar_ShadowResolution: TScrollBar;
@@ -235,7 +235,7 @@ var
   i: Integer;
   Target: TGLSceneObject;
 begin
-  Target := GLSphere4;
+  Target := GLBigSphere;
   SilhouetteParameters.CappingRequired := false;
   SetVector(SilhouetteParameters.SeenFrom, GLLines1.AbsoluteToLocal(GLCamera.AbsolutePosition));
   SilhouetteParameters.Style := ssOmni;

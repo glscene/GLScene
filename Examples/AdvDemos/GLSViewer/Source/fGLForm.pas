@@ -57,12 +57,25 @@ begin
   LocalePath := ExtractFileDir(ParamStr(0)); // Path to GLSViewer
   LocalePath := LocalePath + PathDelim + 'Locale' + PathDelim;
 
-  Textdomain('glsviewer');
-  BindTextDomain ('glsviewer', LocalePath);
-
   ReadIniFile;
   if (LangID <> LANG_ENGLISH) then
   begin
+    Textdomain('glsviewer');
+    BindTextDomain ('glsviewer', LocalePath);
+    AddDomainForResourceString('language');
+    BindTextDomain ('language', LocalePath);
+
+    //TP_GlobalIgnoreClass(TTable);
+    //TP_GlobalIgnoreClass(TFields);
+    //TP_GlobalIgnoreClass(TFont);
+    //TP_GlobalIgnoreClass(TListBox);
+    //TP_GlobalIgnoreClass(TStaticText);
+    //TP_GlobalIgnoreClass(TGLLibMaterial);
+    //TP_GlobalIgnoreClass(TGLMaterialLibrary);
+    TP_IgnoreClass(TFont);
+    TP_GlobalIgnoreClassProperty(TAction, 'Category');
+    // Removing the upper line will cause long loading but Action.Category translation
+
     case LangID of
       LANG_RUSSIAN:
       begin
@@ -96,7 +109,6 @@ begin
     UseLanguage('en');
     Application.HelpFile := UpperCase(LocalePath + 'en'+ PathDelim+'GLSViewer.chm');
   end;
-  TP_IgnoreClass(TFont);
   TranslateComponent(Self);
   //TP_GlobalIgnoreClass(TGLLibMaterial);
   //TP_GlobalIgnoreClass(TGLMaterialLibrary);

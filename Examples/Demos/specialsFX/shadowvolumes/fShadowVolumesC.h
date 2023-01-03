@@ -19,6 +19,7 @@
 #include "GLS.ShadowVolume.hpp"
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.SceneViewer.hpp"
+#include "GLS.SimpleNavigation.hpp"
 
 #pragma hdrstop
 
@@ -61,12 +62,13 @@ __published:                   // IDE-managed Components
   TGLCube *GLCube1;
   TGLMaterialLibrary *GLMaterialLibrary1;
   TGLCylinder *GLCylinder1;
-  TGLSphere *GLSphere4;
+	TGLSphere *GLBigSphere;
   TGLSphere *GLSphere_Shadow;
   TLabel *Label2;
   TScrollBar *ScrollBar_ShadowResolution;
   TButton *Button_GenerateSilhouette;
   TGLLines *GLLines1;
+	TGLSimpleNavigation *GLSimpleNavigation1;
   void __fastcall GLCadencer1Progress(TObject * Sender, const double deltaTime,
                                       const double newTime);
   void __fastcall CBShowVolumesClick(TObject * Sender);

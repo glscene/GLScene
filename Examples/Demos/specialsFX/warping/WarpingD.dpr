@@ -1,4 +1,5 @@
-{: Demonstrates how to use texture coordinates to warp an image.
+(*
+   Demonstrates how to use texture coordinates to warp an image.
 
    Load an image (preferably with dimensions a power of two, not too big,
    and less than 256x256 if you have and old hardware, all TNT, GeForce,
@@ -13,7 +14,8 @@
    All the warping code is in the TForm1.HeightFieldGetHeight event (the two
    warping codes actually), the rest are just utility methods to load/save,
    adjust settings etc.
-}
+*)
+
 program WarpingD;
 
 uses

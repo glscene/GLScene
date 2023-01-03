@@ -1,4 +1,5 @@
-{: An FireFX demo showcasing use of explosions.
+(*
+   An FireFX demo showcasing use of explosions.
 
    In this sample, a small sphere is thrusted upward (with a gravity-like
    deceleration) with a small fire trail, explodes (in one of two styles,
@@ -15,7 +16,8 @@
    Note that to have trail effects, you must adjust the Reference property of
    a FireFX manager. It is unadjusted, the particles will not be "left behind",
    which is convenient for static fireplaces, but not for trials.
-}
+*)
+
 program BoomD;
 
 uses

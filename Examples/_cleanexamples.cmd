@@ -1,4 +1,5 @@
 echo off
+
 del *.exe /s  
 del *.scr /s
 del *.dcu /s 
@@ -35,7 +36,7 @@ del *.spider /s
 
 rem delete cpp builder files
 
-rem del *.hpp /s
+del *.hpp /s
 del *.#00 /s
 del *.pch /s
 del *.tds /s
@@ -46,12 +47,9 @@ del *.ils /s
 del *.pdi /s
 del *.vlb /s
 
-
-echo _
 echo ************************************************
 echo             Don't delete some files
 echo ************************************************
-echo _
 
 attrib +R "AdvDemos/Q3Demo/Model/animation.cfg"
 rem del *.cfg /s  - there are quake's animations
@@ -73,3 +71,4 @@ for /r %1 %%R in (Release_Build) do if exist "%%R" (rd /s /q "%%R")
 for /r %1 %%R in (__history) do if exist "%%R" (rd /s /q "%%R")
 for /r %1 %%R in (__recovery) do if exist "%%R" (rd /s /q "%%R")
 for /r %1 %%R in (__astcache) do if exist "%%R" (rd /s /q "%%R")
+for /r %1 %%R in (staticobjs) do if exist "%%R" (rd /s /q "%%R")

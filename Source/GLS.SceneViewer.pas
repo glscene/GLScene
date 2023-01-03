@@ -22,8 +22,6 @@ uses
   GLS.WindowsContext,
   GLS.Context;
 
-
-
 type
   TTouchEvent = procedure(X, Y, TouchWidth, TouchHeight : integer; TouchID : Cardinal;
                           TouchCount : integer; FromPen : boolean) of object;

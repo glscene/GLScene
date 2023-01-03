@@ -2,9 +2,6 @@
 #include <vcl.h>
 #pragma hdrstop
 USEFORM("fMainC.cpp", Form1);
-USEFORMNS("fMainD.pas", Fmaind, MainForm);
-//---------------------------------------------------------------------------
-//---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {

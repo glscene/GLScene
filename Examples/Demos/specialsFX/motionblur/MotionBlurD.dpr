@@ -1,4 +1,5 @@
-{: Simple motion blur demo.
+(*
+   Simple motion blur demo.
 
    This demo illustrates a simple technique to obtain a motion blur: using
    a plane that covers all the viewport that is used to transparently blend
@@ -12,8 +13,9 @@
    control mechanism (relying on VSync isn't such a control mechanism,
    VSync frequency is a user setting that depends on the machine and monitor).
 
-   Original demo by Piotr Szturmaj.
-}
+   History:
+     Original demo by Piotr Szturmaj.
+*)
 program MotionBlurD;
 
 uses

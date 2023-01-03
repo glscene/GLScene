@@ -8,14 +8,18 @@
 #pragma link "GLS.Behaviours"
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Coordinates"
-
 #pragma link "GLS.GeomObjects"
 #pragma link "GLS.Material"
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
+#pragma link "GLS.RenderContextInfo"
+
 #pragma link "GLS.Context"
+#pragma link "GLS.State"
+
 #pragma resource "*.dfm"
+
 TForm1 *Form1;
 
 // ---------------------------------------------------------------------------
@@ -25,6 +29,8 @@ __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {
 // ---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender) {
 	TFileName Path = GetCurrentAssetPath();
+	SetCurrentDir(Path  + "\\texture");
+
 	// dynamically create 2 materials and load 2 textures
 	GLMaterialLibrary->AddTextureMaterial("wood", "ashwood.jpg")
 		->Material->FrontProperties->Emission->Color = clrGray50;
@@ -44,7 +50,7 @@ void __fastcall TForm1::DirectOpenGL1Render(TObject *Sender,
 {
 	glDisable(GL_CULL_FACE);
 	// 1st quad, textured with 'wood', using standard method
-	GLMaterialLibrary->ApplyMaterial("wood", rci);
+	GLMaterialLibrary->ApplyMaterial("stone", rci);
 	glBegin(GL_QUADS);
 	glTexCoord2f(0, 1);
 	glVertex3f(0.5, 0.5, -0.5);
@@ -56,10 +62,11 @@ void __fastcall TForm1::DirectOpenGL1Render(TObject *Sender,
 	glVertex3f(0.5, 0, 0.5);
 	glEnd;
 	GLMaterialLibrary->UnApplyMaterial(rci);
+
 	// 2nd quad, textured with 'stone'
 	// we could apply the material "manually", but this can be usefull if you want to have
 	// some dynamic material control
-	GLMaterialLibrary->ApplyMaterial("stone", rci);
+	GLMaterialLibrary->ApplyMaterial("wood", rci); // umbalanced context activations ?
 	glBegin(GL_QUADS);
 	glTexCoord2f(0, 1);
 	glVertex3f(0.5, -0.5, -0.5);

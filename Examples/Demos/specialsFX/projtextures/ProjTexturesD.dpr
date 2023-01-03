@@ -1,4 +1,4 @@
-{: Projected Textures example.
+(* Projected Textures example.
 
    Controls:
      Left Mouse Button: Rotate
@@ -24,8 +24,8 @@
    creating an "illumination mask". Then the scene is blended
    to this mask, so that only lit pixels are drawn. This can
    be used to create a projected-texture only illumination system.
+*)
 
-}
 program ProjTexturesD;
 
 uses

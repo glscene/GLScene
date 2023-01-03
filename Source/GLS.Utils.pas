@@ -641,7 +641,7 @@ begin
   path := LowerCase(ExtractFilePath(ParamStr(0)));
   p := Pos('glscene', path);
   Delete(path, p + 7, Length(path));
-  path := IncludeTrailingPathDelimiter(path) + 'examples\assets';
+  path := IncludeTrailingPathDelimiter(path) + 'assets';
   SetCurrentDir(path);
 end;
 
@@ -650,7 +650,7 @@ begin
   var path: string := LowerCase(ExtractFilePath(ParamStr(0)));
   var p: integer := Pos('glscene', path);
   Delete(path, p + 7, Length(path));
-  path := IncludeTrailingPathDelimiter(path) + 'examples\assets';
+  path := IncludeTrailingPathDelimiter(path) + 'assets';
   SetCurrentDir(path);
   Result := path;
 end;

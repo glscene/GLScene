@@ -1,4 +1,6 @@
-// Simple effects gallery.
+(*
+ Simple gallery of effects.
+*)
 program PFXGalleryD;
 
 uses

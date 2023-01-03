@@ -6,7 +6,7 @@
 #include "fMegaCubeC.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLS.BaseClasses"
+
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Coordinates"
 

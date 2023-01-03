@@ -319,7 +319,7 @@ object FormShadowVolumes: TFormShadowVolumes
         Height = 6.000000000000000000
         TopRadius = 0.800000011920929000
       end
-      object GLSphere4: TGLSphere
+      object GLBigSphere: TGLSphere
         Position.Coordinates = {00000000000080400000A0C00000803F}
         Radius = 2.000000000000000000
         object GLSphere_Shadow: TGLSphere
