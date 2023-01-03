@@ -3,8 +3,8 @@ object NavForm: TNavForm
   Top = 328
   BorderStyle = bsDialog
   Caption = 'Nav Form'
-  ClientHeight = 192
-  ClientWidth = 192
+  ClientHeight = 199
+  ClientWidth = 205
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,7 +12,7 @@ object NavForm: TNavForm
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   FormStyle = fsStayOnTop
-  Position = poDesktopCenter
+  Position = poScreenCenter
   TextHeight = 13
   object Image: TImage32
     Left = 0

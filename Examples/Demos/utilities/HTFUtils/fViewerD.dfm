@@ -109,8 +109,6 @@ object ViewerForm: TViewerForm
     OnMouseMove = PaintBoxMouseMove
     OnMouseUp = PaintBoxMouseUp
     OnResize = PaintBoxResize
-    ExplicitTop = 46
-    ExplicitHeight = 416
   end
   object StatusBar: TStatusBar
     Left = 0

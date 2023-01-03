@@ -1,4 +1,4 @@
-{: Basic viewer for HTF Content.
+(* Basic viewer for HTF Content.
 
    Gives basic time stats for HTF data extraction and rendering (there is NO
    cache, each tile is reloaded each time from the disk, ie. those are the
@@ -6,13 +6,13 @@
    when "moving at high speed").
 
    Requires the Graphics32 library (http://www.g32.org).
-}
+*)
 program HTFViewerD;
 
 uses
   Forms,
-  fViewer in 'fViewer.pas' {ViewerForm},
-  fNavD in 'fNavD.pas' {NavForm};
+  fNavD in 'fNavD.pas' {NavForm},
+  fViewerD in 'fViewerD.pas' {ViewerForm};
 
 {$R *.res}
 

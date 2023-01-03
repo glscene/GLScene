@@ -19,7 +19,8 @@ uses
   Vcl.ImgList,
   Vcl.ToolWin,
   Vcl.Menus,
-  // GR32
+
+
   GR32_Image,
   GR32,
 
@@ -66,6 +67,7 @@ type
     procedure ACNavMapUpdate(Sender: TObject);
     procedure ACPaletteExecute(Sender: TObject);
   private
+    Path: TFileName;
   public
     htf: TGLHeightTileFile;
     bmpTile: TBitmap32;
@@ -154,13 +156,15 @@ begin
   end;
 end;
 
+//----------------------------------------------------------------
+
 procedure TViewerForm.FormCreate(Sender: TObject);
 var
   i: Integer;
   sr: TSearchRec;
   mi: TMenuItem;
   sl: TStringList;
-  AppDir: String;
+  AppDir: TFileName;
 
 begin
   bmpTile := TBitmap32.Create;
@@ -206,9 +210,8 @@ procedure TViewerForm.ACOpenExecute(Sender: TObject);
 var
   i: Integer;
 begin
-  var Path: TFileName := GetCurrentAssetPath();
-  SetCurrentDir(Path  + '\landscape');
-  OpenDialog.InitialDir := GetCurrentDir;
+  Path := GetCurrentAssetPath() + '\landscape';
+  OpenDialog.InitialDir := Path;
   if OpenDialog.Execute then
   begin
     htf.Free;

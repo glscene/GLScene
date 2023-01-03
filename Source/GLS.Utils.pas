@@ -635,22 +635,25 @@ end;
 
 procedure SetCurrentDirToAsset();
 var
-  path: String;
+  path: TFileName;
   p: Integer;
 begin
   path := LowerCase(ExtractFilePath(ParamStr(0)));
   p := Pos('glscene', path);
   Delete(path, p + 7, Length(path));
-  path := IncludeTrailingPathDelimiter(path) + 'assets';
+  path := IncludeTrailingPathDelimiter(path) + 'examples\assets';
   SetCurrentDir(path);
 end;
 
 function GetCurrentAssetPath(): TFileName;
+var
+  path: TFileName;
+  p: Integer;
 begin
-  var path: string := LowerCase(ExtractFilePath(ParamStr(0)));
-  var p: integer := Pos('glscene', path);
+  path := LowerCase(ExtractFilePath(ParamStr(0)));
+  p := Pos('glscene', path);
   Delete(path, p + 7, Length(path));
-  path := IncludeTrailingPathDelimiter(path) + 'assets';
+  path := IncludeTrailingPathDelimiter(path) + 'examples\assets';
   SetCurrentDir(path);
   Result := path;
 end;
