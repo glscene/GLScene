@@ -1,7 +1,7 @@
 //
-// The multimedia graphics platform GLScene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
-unit NGD.Manager;
+unit Physics.NGDManager;
 
 (*
   The Newton Game Dynamics Manager for GLScene.
@@ -17,10 +17,10 @@ uses
   System.Math, // Samevalue isZero to compare single
   System.Types,
 
-  NGD.Import,
+  Physics.NGDImport,
 
   /// NGD.Joints,            // old joints
-  /// NGD.NewtonImport,      // new version 4.0
+  /// Physics.NewtonImport,      // new version 4.0
 
   GLS.VectorTypes,
   GLS.VectorGeometry, // PGLVector TGLVector TGLMatrix PGLMatrix NullHmgVector...

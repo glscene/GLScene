@@ -14,7 +14,7 @@
 
 #include "GLS.GeomObjects.hpp"
 #include "GLS.HUDObjects.hpp"
-#include "NGD.Manager.hpp"
+#include "Physics.NGDManager.hpp"
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SimpleNavigation.hpp"
@@ -49,6 +49,7 @@ __published:	// IDE-managed Components
 	TGLSimpleNavigation *GLSimpleNavigation1;
 	TGLNGDManager *GLNGDManager1;
 	TGLBitmapFont *GLBitmapFont1;
+	TGLSimpleNavigation *GLSimpleNavigation2;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall GLCadencer1Progress(TObject *Sender, const double deltaTime, const double newTime);
 	void __fastcall GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,

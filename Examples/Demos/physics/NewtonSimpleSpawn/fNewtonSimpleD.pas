@@ -21,7 +21,7 @@ uses
   GLS.Color,
  
   GLS.BaseClasses,
-  NGD.Manager,
+  Physics.NGDManager,
   GLS.GeomObjects,
   GLS.BitmapFont,
   GLS.WindowsFont,

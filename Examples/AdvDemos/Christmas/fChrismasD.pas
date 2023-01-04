@@ -39,7 +39,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.Color,
-  GLS.Sound,
+  GLS.SoundManager,
   Sounds.BASS,
   Sounds.BASSImport,
   GLS.FireFX,

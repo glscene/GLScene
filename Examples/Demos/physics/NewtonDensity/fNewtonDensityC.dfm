@@ -235,4 +235,24 @@ object Form1: TForm1
     Left = 400
     Top = 104
   end
+  object GLSimpleNavigation2: TGLSimpleNavigation
+    Form = Owner
+    GLSceneViewer = GLSceneViewer1
+    FormCaption = 'Newton Density - %FPS'
+    KeyCombinations = <
+      item
+        ShiftState = [ssLeft, ssRight]
+        Action = snaZoom
+      end
+      item
+        ShiftState = [ssLeft]
+        Action = snaMoveAroundTarget
+      end
+      item
+        ShiftState = [ssRight]
+        Action = snaMoveAroundTarget
+      end>
+    Left = 472
+    Top = 224
+  end
 end

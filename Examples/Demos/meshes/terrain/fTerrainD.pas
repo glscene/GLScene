@@ -30,7 +30,7 @@ uses
   GLS.Keyboard,
   GLS.SkyDome,
   GLS.SceneViewer,
-  GLS.Sound,
+  GLS.SoundManager,
   Sounds.BASS,
   GLS.VectorGeometry,
   GLS.LensFlare,

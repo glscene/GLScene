@@ -14,7 +14,7 @@ uses
   GLS.SimpleNavigation,
   GLS.Scene,
   GLS.Coordinates,
-  NGD.Manager,
+  Physics.NGDManager,
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.Cadencer,

@@ -10,7 +10,7 @@
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Coordinates"
 
-#pragma link "NGD.Manager"
+#pragma link "Physics.NGDManager"
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
 #pragma link "GLS.SimpleNavigation"

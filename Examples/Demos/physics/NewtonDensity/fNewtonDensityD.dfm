@@ -29,7 +29,7 @@ object FormNewtonDensity: TFormNewtonDensity
     Left = 16
     Top = 103
     Width = 75
-    Height = 21
+    Height = 22
     EditorEnabled = False
     MaxValue = 20
     MinValue = 0
@@ -40,7 +40,7 @@ object FormNewtonDensity: TFormNewtonDensity
     Left = 16
     Top = 159
     Width = 75
-    Height = 21
+    Height = 22
     EditorEnabled = False
     MaxValue = 10
     MinValue = 0
@@ -51,7 +51,7 @@ object FormNewtonDensity: TFormNewtonDensity
     Left = 16
     Top = 215
     Width = 75
-    Height = 21
+    Height = 22
     EditorEnabled = False
     MaxValue = 10
     MinValue = 0
@@ -238,5 +238,25 @@ object FormNewtonDensity: TFormNewtonDensity
     Font.Style = []
     Left = 412
     Top = 152
+  end
+  object GLSimpleNavigation2: TGLSimpleNavigation
+    Form = Owner
+    GLSceneViewer = GLSceneViewer1
+    FormCaption = 'Density - %FPS'
+    KeyCombinations = <
+      item
+        ShiftState = [ssLeft, ssRight]
+        Action = snaZoom
+      end
+      item
+        ShiftState = [ssLeft]
+        Action = snaMoveAroundTarget
+      end
+      item
+        ShiftState = [ssRight]
+        Action = snaMoveAroundTarget
+      end>
+    Left = 64
+    Top = 256
   end
 end

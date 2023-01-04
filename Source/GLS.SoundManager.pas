@@ -1,8 +1,7 @@
 //
-// The multimedia graphics platform GLScene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
-
-unit GLS.Sound;
+unit GLS.SoundManager;
 
 (* Base classes and interface for Sound System *)
 

@@ -17,7 +17,7 @@ uses
   GLS.VectorGeometry,
   GLS.Cadencer,
   GLS.Objects,
-  GLS.Sound,
+  GLS.SoundManager,
   Sounds.BASS,
   GLS.SceneViewer,
   GLS.GeomObjects,

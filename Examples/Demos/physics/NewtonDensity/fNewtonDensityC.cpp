@@ -14,7 +14,7 @@
 
 #pragma link "GLS.GeomObjects"
 #pragma link "GLS.HUDObjects"
-#pragma link "NGD.Manager"
+#pragma link "Physics.NGDManager"
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
 #pragma link "GLS.SimpleNavigation"

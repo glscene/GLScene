@@ -14,7 +14,7 @@ uses
 
   GLS.Scene,
   GLS.VectorTypes,
-  NGD.Manager,
+  Physics.NGDManager,
   GLS.Objects,
   GLS.Coordinates,
   GLS.Cadencer,
@@ -66,11 +66,8 @@ type
       X, Y: Integer);
     procedure FormCreate(Sender: TObject);
   private
-
     point3d, FPaneNormal: TGLVector;
-
   public
-
     PickJoint: TGLNGDJoint;
     MousePoint: TPoint;
   end;
@@ -93,17 +90,14 @@ var
   point2d, GotoPoint3d: TGLVector;
 begin
   GLNGDManager1.Step(deltaTime);
-
   if IsKeyDown(VK_LBUTTON) then
   begin
     point2d := VectorMake(MousePoint.X, GLSceneViewer1.Height -
       MousePoint.Y, 0, 0);
-
     // Move the body to the new position
     if GLSceneViewer1.Buffer.ScreenVectorIntersectWithPlane(point2d, point3d,
       FPaneNormal, GotoPoint3d) then
       PickJoint.KinematicControllerPick(GotoPoint3d, paMove);
-
   end
   else
     PickJoint.KinematicControllerPick(GotoPoint3d, paDetach);
@@ -117,13 +111,11 @@ var
 begin
   if Button = TMouseButton(mbLeft) then
   begin
-
     pickedobj := GLSceneViewer1.Buffer.GetPickedObject(X, Y);
     if Assigned(pickedobj) and Assigned(GetNGDDynamic(pickedobj)) then
       PickJoint.ParentObject := pickedobj
     else
       exit;
-
     point3d := VectorMake(GLSceneViewer1.Buffer.PixelRayToWorld(X, Y));
     // Attach the body
     PickJoint.KinematicControllerPick(point3d, paAttach);

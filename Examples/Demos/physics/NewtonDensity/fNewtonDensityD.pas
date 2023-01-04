@@ -16,7 +16,7 @@ uses
   
   GLS.Scene,
   GLS.VectorTypes,
-  NGD.Manager,
+  Physics.NGDManager,
   GLS.Objects,
   GLS.PersistentClasses,
   GLS.Coordinates,
@@ -29,7 +29,7 @@ uses
   GLS.HUDObjects,
   GLS.BitmapFont,
   GLS.WindowsFont,
-  NGD.Import,
+  Physics.NGDImport,
   GLS.GeomObjects;
 
 type
@@ -59,6 +59,7 @@ type
     obj: TGLDummyCube;
     GLCapsule1: TGLCapsule;
     GLWindowsBitmapFont1: TGLWindowsBitmapFont;
+    GLSimpleNavigation2: TGLSimpleNavigation;
     procedure GLCadencer1Progress(Sender: TObject;
       const deltaTime, newTime: Double);
     procedure FormCreate(Sender: TObject);

@@ -1,7 +1,7 @@
 //
-// The multimedia graphics platform GLScene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
-unit NGD.Ragdoll;
+unit Physics.NGDRagdoll;
 
 (* The Ragdoll extension using Newton Game Dynamics Engine *)
 
@@ -13,7 +13,7 @@ uses
   GLS.VectorGeometry,
   GLS.VectorTypes,
   GLS.VectorFileObjects,
-  NGD.Import;
+  Physics.NGDImport;
 
 type
   TNewtonRagdoll = class

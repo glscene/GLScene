@@ -23,8 +23,6 @@ object Form1: TForm1
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 526
-    ExplicitHeight = 404
   end
   object Panel1: TPanel
     Left = 0
@@ -34,7 +32,6 @@ object Form1: TForm1
     Align = alLeft
     Caption = ' '
     TabOrder = 1
-    ExplicitHeight = 385
     object Button1: TButton
       Left = 14
       Top = 8
@@ -106,8 +103,8 @@ object Form1: TForm1
     object Floor: TGLCube
       BehavioursData = {
         0458434F4C02010201060C54474C4E47445374617469630200060C5374617469
-        6320466C6F6F720200020112000000000800090500000000000AD7A3F83F1200
-        000000}
+        6320466C6F6F7202000201060D474C4E47444D616E6167657231080009050000
+        0000000AD7A3F83F1200000000}
       CubeSize = {000020410000003F00002041}
     end
     object GLDummyCube1: TGLDummyCube

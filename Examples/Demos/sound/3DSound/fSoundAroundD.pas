@@ -19,7 +19,7 @@ uses
   GLS.VectorGeometry,
   GLS.SceneViewer,
   GLS.GeomObjects,
-  GLS.Sound,
+  GLS.SoundManager,
   Sounds.FMOD,
   Sounds.BASS,
   Sounds.OpenAL,

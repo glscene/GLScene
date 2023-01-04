@@ -1,7 +1,7 @@
 //
-// The multimedia graphics platform GLScene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
-unit NGD.Import;
+unit Physics.NGDImport;
 
 (* Copyright (c) <2003-2014> <Julio Jerez, Newton Game Dynamics>
   *
