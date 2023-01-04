@@ -83,7 +83,6 @@
         <DCC_ObjOutput>..\lib\$(Platform)</DCC_ObjOutput>
         <DCC_HppOutput>..\include\$(Platform)</DCC_HppOutput>
         <DCC_UsePackage>vclimg;vcl;rtl;VclSmp;$(DCC_UsePackage)</DCC_UsePackage>
-        <DCC_DcuOutput>..\lib\$(Platform)</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <DCC_Namespace>Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
@@ -93,7 +92,6 @@
         <DCC_BpiOutput>..\lib\$(Platform)</DCC_BpiOutput>
         <DCC_ObjOutput>..\lib\$(Platform)</DCC_ObjOutput>
         <DCC_HppOutput>..\include\$(Platform)</DCC_HppOutput>
-        <DCC_DcuOutput>..\lib\$(Platform)</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -126,14 +124,12 @@
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
         <DCC_Description>GLScene Engine</DCC_Description>
-        <DCC_DcuOutput>..\lib\$(Platform)</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <DCC_BpiOutput>..\lib\$(Platform)</DCC_BpiOutput>
         <DCC_HppOutput>..\include\$(Platform)</DCC_HppOutput>
         <DCC_ObjOutput>..\lib\$(Platform)</DCC_ObjOutput>
-        <DCC_DcuOutput>..\lib\$(Platform)</DCC_DcuOutput>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -168,6 +164,7 @@
         <DCCReference Include="..\Source\GLS.AsyncHDS.pas"/>
         <DCCReference Include="..\Source\GLS.AsyncTimer.pas"/>
         <DCCReference Include="..\Source\GLS.Atmosphere.pas"/>
+        <DCCReference Include="..\Source\GLS.ArchiveManager.pas"/>
         <DCCReference Include="..\Source\GLS.BaseClasses.pas"/>
         <DCCReference Include="..\Source\GLS.BaseMeshSilhouette.pas"/>
         <DCCReference Include="..\Source\GLS.Behaviours.pas"/>
@@ -239,11 +236,11 @@
         <DCCReference Include="..\Source\GLS.FileDEL.pas"/>
         <DCCReference Include="..\Source\GLS.FileVOR.pas"/>
         <DCCReference Include="..\Source\GLS.FullScreenViewer.pas"/>
-        <DCCReference Include="..\Source\GLS.PolygonTesselation.pas"/>
+        <DCCReference Include="..\Source\GLS.Keyboard.pas"/>
         <DCCReference Include="..\Source\GLS.GameMenu.pas"/>
         <DCCReference Include="..\Source\GLS.GeomObjects.pas"/>
         <DCCReference Include="..\Source\GLS.GeometryBB.pas"/>
-        <DCCReference Include="..\Source\GLS.Keyboard.pas"/>
+        <DCCReference Include="..\Source\GLS.Generics.pas"/>
         <DCCReference Include="..\Source\GLS.Gizmo.pas"/>
         <DCCReference Include="..\Source\GLS.GizmoEx.pas"/>
         <DCCReference Include="..\Source\GLS.Graph.pas"/>
@@ -273,6 +270,7 @@
         <DCCReference Include="..\Source\GLS.MeshUtils.pas"/>
         <DCCReference Include="..\Source\GLS.Mirror.pas"/>
         <DCCReference Include="..\Source\GLS.Movement.pas"/>
+        <DCCReference Include="..\Source\GLS.ModuleLoader.pas"/>
         <DCCReference Include="..\Source\GLS.MultiPolygon.pas"/>
         <DCCReference Include="..\Source\GLS.MultiProxy.pas"/>
         <DCCReference Include="..\Source\GLS.MultiSampleImage.pas"/>
@@ -281,22 +279,21 @@
         <DCCReference Include="..\Source\GLS.ObjectManager.pas"/>
         <DCCReference Include="..\Source\GLS.Objects.pas"/>
         <DCCReference Include="..\Source\GLS.Octree.pas"/>
-        <DCCReference Include="..\Source\GLS.RGBE.pas"/>
         <DCCReference Include="..\Source\GLS.ParametricSurfaces.pas"/>
         <DCCReference Include="..\Source\GLS.ParticleFX.pas"/>
         <DCCReference Include="..\Source\GLS.Particles.pas"/>
         <DCCReference Include="..\Source\GLS.Perlin.pas"/>
         <DCCReference Include="..\Source\GLS.PerlinPFX.pas"/>
+        <DCCReference Include="..\Source\GLS.PolygonTesselation.pas"/>
         <DCCReference Include="..\Source\GLS.Portal.pas"/>
         <DCCReference Include="..\Source\GLSL.PostEffects.pas"/>
         <DCCReference Include="..\Source\GLS.ProcTextures.pas"/>
         <DCCReference Include="..\Source\GLS.ProxyObjects.pas"/>
-        <DCCReference Include="..\Source\GLS.ROAMPatch.pas"/>
         <DCCReference Include="..\Source\GLS.Ragdoll.pas"/>
         <DCCReference Include="..\Source\GLS.RandomHDS.pas"/>
+        <DCCReference Include="..\Source\GLS.RGBE.pas"/>
         <DCCReference Include="..\Source\GLS.RenderContextInfo.pas"/>
-        <DCCReference Include="..\Source\GLS.ArchiveManager.pas"/>
-        <DCCReference Include="..\Source\GLS.Generics.pas"/>
+        <DCCReference Include="..\Source\GLS.ROAMPatch.pas"/>
         <DCCReference Include="..\Source\GLSL.AsmShader.pas"/>
         <DCCReference Include="..\Source\GLSL.BumpShaders.pas"/>
         <DCCReference Include="..\Source\GLSL.DiffuseSpecularShader.pas"/>
@@ -326,12 +323,13 @@
         <DCCReference Include="..\Source\GLS.SimpleNavigation.pas"/>
         <DCCReference Include="..\Source\GLS.SkyDome.pas"/>
         <DCCReference Include="..\Source\GLS.SmoothNavigator.pas"/>
-        <DCCReference Include="..\Source\GLS.Sound.pas"/>
+        <DCCReference Include="..\Source\GLS.SoundManager.pas"/>
         <DCCReference Include="..\Source\GLS.SoundFileObjects.pas"/>
         <DCCReference Include="..\Source\GLS.SpacePartition.pas"/>
         <DCCReference Include="..\Source\GLS.State.pas"/>
         <DCCReference Include="..\Source\GLS.SpaceText.pas"/>
         <DCCReference Include="..\Source\GLS.SceneViewer.pas"/>
+        <DCCReference Include="..\Source\GLS.SmartObjects.pas"/>
         <DCCReference Include="..\Source\GLS.TerrainRenderer.pas"/>
         <DCCReference Include="..\Source\GLS.TexLensFlare.pas"/>
         <DCCReference Include="..\Source\GLS.Texture.pas"/>
@@ -375,9 +373,6 @@
         <DCCReference Include="..\Source\PasGLTF.pas"/>
         <DCCReference Include="..\Source\PasJSON.pas"/>
         <DCCReference Include="..\Source\PasDblStrUtils.pas"/>
-        <DCCReference Include="..\Source\GLS.ModuleLoader.pas"/>
-        <DCCReference Include="..\Source\GLS.SmartObjects.pas"/>
-        <None Include="..\Source\GLScene.inc"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -399,11 +394,12 @@
                     <Source Name="MainSource">GLScene_RT.dpk</Source>
                 </Source>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GLScene_Physics_DT.bpl">GLScene Physics Managers</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GBComps.bpl">Geoblock - Components</Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GEdgeIO.bpl">File C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GEdgeIO.bpl not found</Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GEdgeIODB.bpl">File C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GEdgeIODB.bpl not found</Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\VirtualTreesD22.bpl">File C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\VirtualTreesD22.bpl not found</Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GLScene_Newton_DT.bpl">File C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GLScene_Newton_DT.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GBComps.bpl">File C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GBComps.bpl not found</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k280.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp280.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k280.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
