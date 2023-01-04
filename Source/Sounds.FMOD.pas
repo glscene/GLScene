@@ -1,5 +1,5 @@
 //
-// The multimedia graphics platform GLScene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
 unit Sounds.FMOD;
 
@@ -19,7 +19,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.Sound,
+  GLS.SoundManager,
   GLS.Scene,
   GLS.VectorTypes,
   GLS.VectorGeometry,

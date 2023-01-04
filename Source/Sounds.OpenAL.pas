@@ -1,5 +1,5 @@
 //
-// The multimedia graphics platform GLScene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
 unit Sounds.OpenAL;
 
@@ -32,7 +32,7 @@ uses
   GLS.Scene,
   GLS.VectorGeometry,
   GLS.Coordinates,
-  GLS.Sound,
+  GLS.SoundManager,
   GLS.SoundFileObjects;
 
 type

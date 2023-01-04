@@ -18,7 +18,7 @@ interface
 uses
   Winapi.Windows;
 
-// Functions
+// libraries
 const
 {$IFDEF MSWINDOWS}
   {$IFDEF WIN32}

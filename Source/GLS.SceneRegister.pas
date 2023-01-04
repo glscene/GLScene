@@ -1,5 +1,5 @@
 //
-// The multimedia graphics platform GLScene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
 unit GLS.SceneRegister;
 (*
@@ -427,7 +427,7 @@ uses
   GLS.FileBMP,
   GLS.FileTGA,
 
-  GLS.Sound,
+  GLS.SoundManager,
   GLS.SoundFileObjects,
   GLS.SpaceText,
   GLS.Joystick,

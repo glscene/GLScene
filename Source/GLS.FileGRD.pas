@@ -1,5 +1,5 @@
 //
-// The multimedia graphics platform GLScene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
 unit GLS.FileGRD;
 

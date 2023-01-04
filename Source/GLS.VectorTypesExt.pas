@@ -1,5 +1,5 @@
 //
-// The multimedia graphics platform GLScene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
 unit GLS.VectorTypesExt;
 
@@ -21,6 +21,7 @@ type
   TIntegerArray = array of Integer;
   TVertexArray = array of TVector3f;
 
+  TDoubleArray = array of Double;
   TVectorExt = array of Extended;
   TMatrixExt = array of array of Extended;
 

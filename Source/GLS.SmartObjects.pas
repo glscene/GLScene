@@ -1,5 +1,5 @@
 ﻿//
-// The multimedia graphics platform GLScene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
 unit GLS.SmartObjects;
 
@@ -45,7 +45,9 @@ uses
   GLS.RenderContextInfo,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.VectorFileObjects;
+  GLS.VectorFileObjects,
+  GLS.SoundManager,
+  GLS.SoundFileObjects;
 
 
 type

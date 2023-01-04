@@ -1,10 +1,10 @@
 //
-// The multimedia graphics platform GLScene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
 unit Sounds.BASS;
 
 (*
-  BASS based sound-manager http://www.un4seen.com/music/, free for freeware
+  BASS based sound-engine http://www.un4seen.com/music/, free for freeware
   Unsupported feature(s) : sound source velocity,
   looping (sounds are played either once or forever)
   source priorities (not relevant, channels are not limited)
@@ -19,8 +19,8 @@ uses
   System.SysUtils,
   Vcl.Forms,
 
-  GLS.Sound,
   GLS.Scene,
+  GLS.SoundManager,
   GLS.VectorTypes,
   GLS.VectorGeometry,
 

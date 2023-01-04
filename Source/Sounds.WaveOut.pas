@@ -1,5 +1,5 @@
 //
-// The multimedia graphics platform GLScene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
 unit Sounds.WaveOut;
 
@@ -14,7 +14,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.Sound,
+  GLS.SoundManager,
   GLS.SoundFileObjects;
 
 type
