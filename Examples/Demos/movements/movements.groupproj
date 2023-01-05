@@ -51,6 +51,9 @@
         <Projects Include="SmoothNavigator\SmoothNaviC.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="tweening\TweeningD.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -203,14 +206,23 @@
     <Target Name="SmoothNaviC:Make">
         <MSBuild Projects="SmoothNavigator\SmoothNaviC.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="TweeningD">
+        <MSBuild Projects="tweening\TweeningD.dproj"/>
+    </Target>
+    <Target Name="TweeningD:Clean">
+        <MSBuild Projects="tweening\TweeningD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TweeningD:Make">
+        <MSBuild Projects="tweening\TweeningD.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="ColumnD;ColumnC;EventsD;EventsC;HierarchD;HierarchC;ManualD;ManualC;ObjmoveD;ObjmoveC;PointtoD;PointtoC;PongD;PongC;SmoothNaviD;SmoothNaviC"/>
+        <CallTarget Targets="ColumnD;ColumnC;EventsD;EventsC;HierarchD;HierarchC;ManualD;ManualC;ObjmoveD;ObjmoveC;PointtoD;PointtoC;PongD;PongC;SmoothNaviD;SmoothNaviC;TweeningD"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ColumnD:Clean;ColumnC:Clean;EventsD:Clean;EventsC:Clean;HierarchD:Clean;HierarchC:Clean;ManualD:Clean;ManualC:Clean;ObjmoveD:Clean;ObjmoveC:Clean;PointtoD:Clean;PointtoC:Clean;PongD:Clean;PongC:Clean;SmoothNaviD:Clean;SmoothNaviC:Clean"/>
+        <CallTarget Targets="ColumnD:Clean;ColumnC:Clean;EventsD:Clean;EventsC:Clean;HierarchD:Clean;HierarchC:Clean;ManualD:Clean;ManualC:Clean;ObjmoveD:Clean;ObjmoveC:Clean;PointtoD:Clean;PointtoC:Clean;PongD:Clean;PongC:Clean;SmoothNaviD:Clean;SmoothNaviC:Clean;TweeningD:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ColumnD:Make;ColumnC:Make;EventsD:Make;EventsC:Make;HierarchD:Make;HierarchC:Make;ManualD:Make;ManualC:Make;ObjmoveD:Make;ObjmoveC:Make;PointtoD:Make;PointtoC:Make;PongD:Make;PongC:Make;SmoothNaviD:Make;SmoothNaviC:Make"/>
+        <CallTarget Targets="ColumnD:Make;ColumnC:Make;EventsD:Make;EventsC:Make;HierarchD:Make;HierarchC:Make;ManualD:Make;ManualC:Make;ObjmoveD:Make;ObjmoveC:Make;PointtoD:Make;PointtoC:Make;PongD:Make;PongC:Make;SmoothNaviD:Make;SmoothNaviC:Make;TweeningD:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

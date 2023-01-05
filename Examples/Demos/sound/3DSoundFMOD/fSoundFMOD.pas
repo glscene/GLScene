@@ -20,7 +20,7 @@ uses
   Sounds.FMOD,
   GLS.SceneViewer,
   GLS.GeomObjects,
- 
+
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.FileWAV,
@@ -28,9 +28,8 @@ uses
   GLS.VectorGeometry,
   GLS.Utils;
 
-
 type
-  TFormSoundFMOF = class(TForm)
+  TFormSoundFMOD = class(TForm)
     GLScene: TGLScene;
     GLSceneViewer: TGLSceneViewer;
     GLCamera1: TGLCamera;
@@ -54,8 +53,7 @@ type
     Button1: TButton;
     btnHowl: TButton;
     LabelFPS: TLabel;
-    procedure SphereProgress(Sender: TObject; const deltaTime,
-      newTime: Double);
+    procedure SphereProgress(Sender: TObject; const deltaTime, newTime: Double);
     procedure TimerTimer(Sender: TObject);
     procedure TrackBarChange(Sender: TObject);
     procedure TrackBar1Change(Sender: TObject);
@@ -63,85 +61,87 @@ type
     procedure Button1Click(Sender: TObject);
     procedure btnHowlClick(Sender: TObject);
   private
-     
+
   public
-     
+
   end;
 
 var
-  FormSoundFMOF: TFormSoundFMOF;
+  FormSoundFMOD: TFormSoundFMOD;
 
 implementation
 
 {$R *.DFM}
 
-procedure TFormSoundFMOF.FormCreate(Sender: TObject);
+procedure TFormSoundFMOD.FormCreate(Sender: TObject);
 begin
-   var Path: TFileName := GetCurrentAssetPath();
-   SetCurrentDir(Path  + '\audio');
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path + '\audio');
 
-   // Load our sound sample
-   GLSoundLibrary.Samples.AddFile('drumloop.wav','drumloop.wav');
-   GLSoundLibrary.Samples.AddFile('chimes.wav','chimes.wav');
-   GLSoundLibrary.Samples.AddFile('howl.mp3','howl.mp3');
+  // Load our sound sample
+  GLSoundLibrary.Samples.AddFile('drumloop.wav', 'drumloop.wav');
+  GLSoundLibrary.Samples.AddFile('chimes.wav', 'chimes.wav');
+  GLSoundLibrary.Samples.AddFile('howl.mp3', 'howl.mp3');
 end;
 
-procedure TFormSoundFMOF.SphereProgress(Sender: TObject; const deltaTime,
-  newTime: Double);
+procedure TFormSoundFMOD.SphereProgress(Sender: TObject; const deltaTime, newTime: Double);
 var
-   alpha : Single;
+  alpha: Single;
 begin
-   // Move the red sphere (sound source) along an elliptic path
-   alpha:=60*DegToRad(newTime);
-   TGLSphere(Sender).Position.SetPoint(sin(alpha)*2, 0.5, cos(alpha)*5);
+  // Move the red sphere (sound source) along an elliptic path
+  alpha := 60 * DegToRad(newTime);
+  TGLSphere(Sender).Position.SetPoint(sin(alpha) * 2, 0.5, cos(alpha) * 5);
 end;
 
-procedure TFormSoundFMOF.TrackBarChange(Sender: TObject);
+procedure TFormSoundFMOD.TrackBarChange(Sender: TObject);
 begin
-   // Rotate the listener around the vertical axis
-   DummyCube.TurnAngle:=TrackBar.Position;
-   Application.ProcessMessages;
+  // Rotate the listener around the vertical axis
+  DummyCube.TurnAngle := TrackBar.Position;
+  Application.ProcessMessages;
 end;
 
-procedure TFormSoundFMOF.TrackBar1Change(Sender: TObject);
+procedure TFormSoundFMOD.TrackBar1Change(Sender: TObject);
 begin
-   // Move the listener forward/back
-   Mickey.Position.Z:=TrackBar1.Position/10;
-   Application.ProcessMessages;
+  // Move the listener forward/back
+  Mickey.Position.Z := TrackBar1.Position / 10;
+  Application.ProcessMessages;
 end;
 
-procedure TFormSoundFMOF.TimerTimer(Sender: TObject);
+procedure TFormSoundFMOD.TimerTimer(Sender: TObject);
 var
-   mngName : String;
+  mngName: String;
 begin
-   // some stats
-   if ActiveSoundManager is TGLSMFMOD then
-      mngName:='FMOD'
-   else mngName:='';
-   if ActiveSoundManager<>nil then
-      LabelFPS.Caption:=Format('%.2f FPS, %s CPU use : %.2f%%',
-                      [GLSceneViewer.FramesPerSecond, mngName,
-                       ActiveSoundManager.CPUUsagePercent])
-   else LabelFPS.Caption:='No active sound manager.';
-   GLSceneViewer.ResetPerformanceMonitor;
+  // some stats
+  if ActiveSoundManager is TGLSMFMOD then
+    mngName := 'FMOD'
+  else
+    mngName := '';
+  if ActiveSoundManager <> nil then
+    LabelFPS.Caption := Format('%.2f FPS, %s CPU use : %.2f%%',
+      [GLSceneViewer.FramesPerSecond, mngName, ActiveSoundManager.CPUUsagePercent])
+  else
+    LabelFPS.Caption := 'No active sound manager.';
+  GLSceneViewer.ResetPerformanceMonitor;
 end;
 
-procedure TFormSoundFMOF.Button1Click(Sender: TObject);
+procedure TFormSoundFMOD.Button1Click(Sender: TObject);
 begin
-   with TGLBSoundEmitter.Create(Sphere.Behaviours) do begin
-      Source.SoundLibrary:=GLSoundLibrary;
-      Source.SoundName:='chimes.wav';
-      Playing:=True;
-   end;
+  with TGLBSoundEmitter.Create(Sphere.Behaviours) do
+  begin
+    Source.SoundLibrary := GLSoundLibrary;
+    Source.SoundName := 'chimes.wav';
+    Playing := True;
+  end;
 end;
 
-procedure TFormSoundFMOF.btnHowlClick(Sender: TObject);
+procedure TFormSoundFMOD.btnHowlClick(Sender: TObject);
 begin
-   with TGLBSoundEmitter.Create(Sphere.Behaviours) do begin
-      Source.SoundLibrary:=GLSoundLibrary;
-      Source.SoundName:='howl.mp3';
-      Playing:=True;
-   end;       
+  with TGLBSoundEmitter.Create(Sphere.Behaviours) do
+  begin
+    Source.SoundLibrary := GLSoundLibrary;
+    Source.SoundName := 'howl.mp3';
+    Playing := True;
+  end;
 end;
 
 end.

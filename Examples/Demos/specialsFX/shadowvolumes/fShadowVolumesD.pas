@@ -131,7 +131,7 @@ begin
           GLShadowVolume.Occluders.AddCaster(sphere, 0, scmParentVisible);
         end;
   DCSpheres.MoveTo(GLShadowVolume);
-  GLFreeForm.LoadFromFile('trinityrage.smd');
+  GLFreeForm.LoadFromFile('trinityrage.smd'); //with chrome_glass.bmp & chrome_buckle.bmp
   GLFreeForm.BuildSilhouetteConnectivityData;
   GLShadowVolume.Occluders.AddCaster(GLFreeForm);
   CBBlueLightClick(Self);

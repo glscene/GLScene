@@ -32,13 +32,13 @@ uses
 type
   TFormMultiMat = class(TForm)
     GLScene1: TGLScene;
-    GLMaterialLibrary1: TGLMaterialLibrary;
+    GLMatLib1: TGLMaterialLibrary;
     GLSceneViewer1: TGLSceneViewer;
     GLCamera1: TGLCamera;
     GLDummyCube1: TGLDummyCube;
     GLCube1: TGLCube;
     GLLightSource1: TGLLightSource;
-    GLMaterialLibrary2: TGLMaterialLibrary;
+    GLMatLib2: TGLMaterialLibrary;
     GLMultiMaterialShader1: TGLMultiMaterialShader;
     GLCadencer1: TGLCadencer;
     GLTexCombineShader1: TGLTexCombineShader;
@@ -64,45 +64,50 @@ var
 implementation
 
 {$R *.dfm}
-{ TForm1 }
 
 procedure TFormMultiMat.FormCreate(Sender: TObject);
+var
+  Path: TFileName;
+  LibMat: TGLLibMaterial;
 begin
-  var Path: TFileName := GetCurrentAssetPath();
+  Path := GetCurrentAssetPath();
   SetCurrentDir(Path  + '\texture');
-  // Add the specular pass
-  with GLMaterialLibrary1.AddTextureMaterial('specular', 'glscene_alpha.bmp') do
+
+	// GLMatLib1 is the source of the first image
+	// Add the specular material using tmModulate for shiny text
+  GLMatLib1.AddTextureMaterial('specular', 'glscene_alpha.bmp');
+  GLMatLib1.Materials.GetLibMaterialByName('specular').Material.Texture.TextureMode := tmModulate;
+  // use TextureMode := tmBlend; for shiny background
+  GLMatLib1.Materials.GetLibMaterialByName('specular').Material.BlendingMode := bmAdditive;
+  GLMatLib1.Materials.GetLibMaterialByName('specular').Texture2Name := 'specular_tex2';
+
+  (* or with delphi with do more short
+  with GLMatLib1.AddTextureMaterial('specular', 'glscene_alpha.bmp') do
   begin
-    // tmBlend for shiny background
-    // Material.Texture.TextureMode := tmBlend;
-    // tmModulate for shiny text
     Material.Texture.TextureMode := tmModulate;
     Material.BlendingMode := bmAdditive;
     Texture2Name := 'specular_tex2';
   end;
-  with GLMaterialLibrary1.AddTextureMaterial('specular_tex2', 'chrome_buckle.bmp') do
-  begin
-    Material.Texture.MappingMode := tmmCubeMapReflection;
-    Material.Texture.ImageBrightness := 0.3;
-  end;
+  //*)
 
-  // GLMaterialLibrary2 is the source of the GLMultiMaterialShader passes.
-  // Pass 1 : Base texture
-  GLMaterialLibrary2.AddTextureMaterial('Pass1', 'glscene.bmp'); // }
+  GLMatLib1.AddTextureMaterial('specular_tex2', 'rainbow.bmp');
+  GLMatLib1.Materials.GetLibMaterialByName('specular_tex2').Material.Texture.MappingMode := tmmCubeMapReflection;
+  GLMatLib1.Materials.GetLibMaterialByName('specular_tex2').Material.Texture.ImageBrightness := 0.3;
 
-  // Pass 2 : Add a bit of detail
-  with GLMaterialLibrary2.AddTextureMaterial('Pass2', 'detailmap.jpg') do
-  begin
-    Material.Texture.TextureMode := tmBlend;
-    Material.BlendingMode := bmAdditive;
-  end; // }
+  // GLMatLib2 is the source of the GLMultiMaterialShader passes.
 
-  // Pass 3 : And a little specular reflection
-  with TGLLibMaterial.Create(GLMaterialLibrary2.Materials) do
-  begin
-    Material.MaterialLibrary := GLMaterialLibrary1;
-    Material.LibMaterialName := 'specular';
-  end; // }
+  // Pass 1: Base texture
+  GLMatLib2.AddTextureMaterial('Pass1', 'glscene.bmp'); // or use glscene_delphi.bmp  
+
+  // Pass 2: Add a bit of detail
+  GLMatLib2.AddTextureMaterial('Pass2', 'detailmap.jpg');
+  GLMatLib2.Materials.GetLibMaterialByName('Pass2').Material.Texture.TextureMode := tmBlend;
+  GLMatLib2.Materials.GetLibMaterialByName('Pass2').Material.BlendingMode := bmAdditive;
+
+  // Pass 3: And a little specular reflection
+  LibMat := TGLLibMaterial.Create(GLMatLib2.Materials);
+  LibMat.Material.MaterialLibrary := GLMatLib1;
+  LibMat.Material.LibMaterialName := 'specular';
 
   // This isn't limited to 3, try adding some more passes!
 end;

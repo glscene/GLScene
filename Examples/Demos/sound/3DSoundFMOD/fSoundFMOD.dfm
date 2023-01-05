@@ -1,36 +1,34 @@
-object FormSoundFMOF: TFormSoundFMOF
+object FormSoundFMOD: TFormSoundFMOD
   Left = 209
   Top = 92
   Caption = 'Sound FMOD'
-  ClientHeight = 347
-  ClientWidth = 475
+  ClientHeight = 373
+  ClientWidth = 538
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer: TGLSceneViewer
     Left = 0
     Top = 66
-    Width = 475
-    Height = 254
+    Width = 538
+    Height = 280
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
     Buffer.AntiAliasing = aaNone
-    FieldOfView = 137.020797729492200000
+    FieldOfView = 140.692352294921900000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object TrackBar: TTrackBar
     Left = 0
-    Top = 320
-    Width = 475
+    Top = 346
+    Width = 538
     Height = 27
     Align = alBottom
     Max = 180
@@ -45,7 +43,7 @@ object FormSoundFMOF: TFormSoundFMOF
   object TrackBar1: TTrackBar
     Left = 0
     Top = 33
-    Width = 475
+    Width = 538
     Height = 33
     Align = alTop
     Max = 50
@@ -60,13 +58,13 @@ object FormSoundFMOF: TFormSoundFMOF
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 475
+    Width = 538
     Height = 33
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 3
     DesignSize = (
-      475
+      538
       33)
     object LabelFPS: TLabel
       Left = 8
@@ -76,7 +74,7 @@ object FormSoundFMOF: TFormSoundFMOF
       Caption = 'FPS'
     end
     object Button1: TButton
-      Left = 384
+      Left = 447
       Top = 4
       Width = 83
       Height = 25
@@ -86,7 +84,7 @@ object FormSoundFMOF: TFormSoundFMOF
       OnClick = Button1Click
     end
     object btnHowl: TButton
-      Left = 295
+      Left = 358
       Top = 4
       Width = 83
       Height = 25

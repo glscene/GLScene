@@ -1,10 +1,9 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.AnimationUtils;
 
-(* Main purpose is to give an easy way to create an interpolation. *)
+(* Main purpose is to give an easy way to create a linear interpolation *)
 
 interface
 
@@ -600,8 +599,6 @@ begin
   end;
 end;
 
-
-
 (*
    Easing equation function for an elastic (exponentially decaying sine wave) easing out: decelerating from zero velocity.
  
@@ -670,8 +667,6 @@ begin
     end;
   end;
 end;
-
-
 
 (*
    Easing equation function for an elastic (exponentially decaying sine wave) easing out/in: deceleration until halfway, then acceleration.
@@ -773,8 +768,6 @@ begin
   else
     Result := easeInBack((t*2)-d, b+c/2, c/2, d);
 end;
-
-
 
 (*
    Easing equation function for a bounce (exponentially decaying parabolic bounce) easing out: decelerating from zero velocity.

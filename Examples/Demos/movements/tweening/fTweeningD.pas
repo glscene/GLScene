@@ -1,4 +1,4 @@
-unit TweeningFm;
+unit fTweeningD;
 
 interface
 
@@ -22,7 +22,7 @@ uses
   GLS.Objects,
   GLS.Coordinates,
   GLS.SceneViewer,
- 
+
   GLS.BaseClasses,
   GLS.Cadencer,
   GLS.AnimationUtils,
@@ -46,8 +46,12 @@ type
     Diff: Double;
   end;
 
-  // You can customize TAnimation for your own purpose, you can add InitialXValue for your custom data (Matrix or anything else).
-  // Note that you will maybe have to create your own Tweener function to use your custom Current/Target type.
+  (*
+     You can customize TAnimation for your own purpose,
+     you can add InitialXValue for your custom data (Matrix or anything else).
+     Note that you will maybe have to create your own Tweener function
+     to use your custom Current/Target type.
+  *)
   TAnimation = record
     State: TAnimationState;
     Time: TAnimationTime;

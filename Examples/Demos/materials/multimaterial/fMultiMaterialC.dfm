@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'MultiMaterial'
-  ClientHeight = 410
-  ClientWidth = 526
+  ClientHeight = 532
+  ClientWidth = 734
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,16 +17,18 @@ object Form1: TForm1
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 526
-    Height = 410
+    Width = 734
+    Height = 532
     Camera = GLCamera1
     Buffer.BackgroundColor = clTeal
-    FieldOfView = 152.586074829101600000
+    FieldOfView = 158.708679199218800000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 527
+    ExplicitHeight = 411
   end
   object GLScene1: TGLScene
     Left = 24
@@ -36,6 +38,7 @@ object Form1: TForm1
       object GLCamera1: TGLCamera
         DepthOfView = 100.000000000000000000
         FocalLength = 50.000000000000000000
+        SceneScale = 2.000000000000000000
         TargetObject = GLDummyCube1
         Position.Coordinates = {0000803F000040400000A0C00000803F}
         object GLLightSource1: TGLLightSource
@@ -45,12 +48,12 @@ object Form1: TForm1
       end
     end
     object GLCube1: TGLCube
-      Material.MaterialLibrary = GLMaterialLibrary1
+      Material.MaterialLibrary = GLMatLib1
       Material.LibMaterialName = 'MultipassMat'
       CubeSize = {000000400000004000000040}
     end
   end
-  object GLMaterialLibrary1: TGLMaterialLibrary
+  object GLMatLib1: TGLMaterialLibrary
     Materials = <
       item
         Name = 'MultipassMat'
@@ -60,12 +63,12 @@ object Form1: TForm1
     Left = 120
     Top = 8
   end
-  object GLMaterialLibrary2: TGLMaterialLibrary
+  object GLMatLib2: TGLMaterialLibrary
     Left = 120
     Top = 64
   end
   object GLMultiMaterialShader1: TGLMultiMaterialShader
-    MaterialLibrary = GLMaterialLibrary2
+    MaterialLibrary = GLMatLib2
     VisibleAtDesignTime = False
     ShaderStyle = ssReplace
     Left = 240

@@ -42,12 +42,12 @@ program SoundFMOD;
 
 uses
   Forms,
-  fSoundFMOD in 'fSoundFMOD.pas' {FormSoundFMOF};
+  fSoundFMOD in 'fSoundFMOD.pas' {FormSoundFMOD};
 
 {$R *.RES}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TFormSoundFMOF, FormSoundFMOF);
+  Application.CreateForm(TFormSoundFMOD, FormSoundFMOD);
   Application.Run;
 end.

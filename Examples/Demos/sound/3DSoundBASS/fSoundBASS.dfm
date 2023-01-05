@@ -2,121 +2,93 @@ object FormSoundBASS: TFormSoundBASS
   Left = 209
   Top = 92
   Caption = 'Sound BASS'
-  ClientHeight = 434
-  ClientWidth = 594
+  ClientHeight = 407
+  ClientWidth = 536
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer: TGLSceneViewer
     Left = 0
-    Top = 83
-    Width = 594
-    Height = 317
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 66
+    Width = 536
+    Height = 314
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
     Buffer.AntiAliasing = aaNone
-    FieldOfView = 144.983474731445300000
+    FieldOfView = 144.669631958007800000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object TrackBar: TTrackBar
     Left = 0
-    Top = 400
-    Width = 594
-    Height = 34
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 380
+    Width = 536
+    Height = 27
     Align = alBottom
     Max = 180
     Min = -180
     PageSize = 45
     Frequency = 45
     TabOrder = 1
-    ThumbLength = 13
+    ThumbLength = 10
     TickMarks = tmBoth
     OnChange = TrackBarChange
   end
   object TrackBar1: TTrackBar
     Left = 0
-    Top = 41
-    Width = 594
-    Height = 42
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 33
+    Width = 536
+    Height = 33
     Align = alTop
     Max = 50
     Min = -50
     PageSize = 45
     Frequency = 10
     TabOrder = 2
-    ThumbLength = 13
+    ThumbLength = 10
     TickMarks = tmBoth
     OnChange = TrackBar1Change
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 594
-    Height = 41
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 536
+    Height = 33
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 3
     DesignSize = (
-      594
-      41)
+      536
+      33)
     object LabelFPS: TLabel
-      Left = 30
-      Top = 9
-      Width = 26
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 24
+      Top = 7
+      Width = 20
+      Height = 13
       Caption = 'FPS'
     end
-    object Button1: TButton
-      Left = 480
-      Top = 5
-      Width = 104
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+    object btnChimes: TButton
+      Left = 445
+      Top = 4
+      Width = 83
+      Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Chimes (WAV)'
       TabOrder = 0
-      OnClick = Button1Click
+      OnClick = btnChimesClick
     end
     object btnHowl: TButton
-      Left = 369
-      Top = 3
-      Width = 104
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 356
+      Top = 2
+      Width = 83
+      Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Howl (MP3)'
       TabOrder = 1

@@ -50,7 +50,7 @@ type
     Torus1: TGLTorus;
     TrackBar1: TTrackBar;
     Panel1: TPanel;
-    Button1: TButton;
+    btnChimes: TButton;
     btnHowl: TButton;
     LabelFPS: TLabel;
     procedure SphereProgress(Sender: TObject; const deltaTime, newTime: Double);
@@ -58,7 +58,7 @@ type
     procedure TrackBarChange(Sender: TObject);
     procedure TrackBar1Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure btnChimesClick(Sender: TObject);
     procedure btnHowlClick(Sender: TObject);
   private
 
@@ -125,7 +125,7 @@ begin
   GLSceneViewer.ResetPerformanceMonitor;
 end;
 
-procedure TFormSoundBASS.Button1Click(Sender: TObject);
+procedure TFormSoundBASS.btnChimesClick(Sender: TObject);
 begin
   with TGLBSoundEmitter.Create(Sphere.Behaviours) do
   begin

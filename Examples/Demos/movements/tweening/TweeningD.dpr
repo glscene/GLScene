@@ -8,11 +8,11 @@
 
 *)
 
-program Tweening;
+program TweeningD;
 
 uses
   Forms,
-  TweeningFm in 'TweeningFm.pas' {FormTweening};
+  fTweeningD in 'fTweeningD.pas' {FormTweening};
 
 {$R *.res}
 

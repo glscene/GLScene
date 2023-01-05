@@ -35,8 +35,8 @@ __published:	// IDE-managed Components
 	TGLCamera *GLCamera1;
 	TGLLightSource *GLLightSource1;
 	TGLCube *GLCube1;
-	TGLMaterialLibrary *GLMaterialLibrary1;
-	TGLMaterialLibrary *GLMaterialLibrary2;
+	TGLMaterialLibrary *GLMatLib1;
+	TGLMaterialLibrary *GLMatLib2;
 	TGLMultiMaterialShader *GLMultiMaterialShader1;
 	TGLCadencer *GLCadencer1;
 	TGLTexCombineShader *GLTexCombineShader1;

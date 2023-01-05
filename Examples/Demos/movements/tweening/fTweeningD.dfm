@@ -2,41 +2,42 @@ object FormTweening: TFormTweening
   Left = 325
   Top = 237
   Caption = 'Tweener'
-  ClientHeight = 482
-  ClientWidth = 716
+  ClientHeight = 624
+  ClientWidth = 792
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 129
-    Width = 716
-    Height = 353
+    Width = 792
+    Height = 495
     Camera = GLCamera1
     Buffer.BackgroundColor = clMedGray
     Buffer.Lighting = False
-    FieldOfView = 148.366622924804700000
+    FieldOfView = 157.157623291015600000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     TabOrder = 0
+    ExplicitWidth = 859
+    ExplicitHeight = 353
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 716
+    Width = 792
     Height = 129
     Align = alTop
     BevelOuter = bvLowered
     TabOrder = 1
+    ExplicitWidth = 716
     object Label2: TLabel
       Left = 6
       Top = 77
@@ -162,8 +163,8 @@ object FormTweening: TFormTweening
     end
   end
   object GLScene1: TGLScene
-    Left = 544
-    Top = 8
+    Left = 24
+    Top = 146
     object GLCamera1: TGLCamera
       DepthOfView = 100.000000000000000000
       FocalLength = 50.000000000000000000
@@ -208,8 +209,8 @@ object FormTweening: TFormTweening
   end
   object GLCadencer1: TGLCadencer
     Scene = GLScene1
-    Left = 576
-    Top = 8
+    Left = 24
+    Top = 226
   end
   object GLWindowsBitmapFont1: TGLWindowsBitmapFont
     Font.Charset = DEFAULT_CHARSET
@@ -217,7 +218,7 @@ object FormTweening: TFormTweening
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
-    Left = 608
-    Top = 8
+    Left = 160
+    Top = 146
   end
 end

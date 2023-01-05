@@ -2,118 +2,89 @@ object FormSoundAround: TFormSoundAround
   Left = 209
   Top = 92
   Caption = 'Sound Around'
-  ClientHeight = 459
-  ClientWidth = 601
+  ClientHeight = 367
+  ClientWidth = 481
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer: TGLSceneViewer
     Left = 0
-    Top = 91
-    Width = 601
-    Height = 334
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 73
+    Width = 481
+    Height = 267
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
     Buffer.AntiAliasing = aaNone
-    FieldOfView = 146.664474487304700000
+    FieldOfView = 138.934951782226600000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object TrackBar: TTrackBar
     Left = 0
-    Top = 425
-    Width = 601
-    Height = 34
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 340
+    Width = 481
+    Height = 27
     Align = alBottom
     Max = 180
     Min = -180
     PageSize = 45
     Frequency = 45
     TabOrder = 1
-    ThumbLength = 13
+    ThumbLength = 10
     TickMarks = tmBoth
     OnChange = TrackBarChange
   end
   object TrackBar1: TTrackBar
     Left = 0
-    Top = 51
-    Width = 601
-    Height = 40
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 41
+    Width = 481
+    Height = 32
     Align = alTop
     Max = 50
     Min = -50
     PageSize = 45
     Frequency = 10
     TabOrder = 2
-    ThumbLength = 13
+    ThumbLength = 10
     TickMarks = tmBoth
     OnChange = TrackBar1Change
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 601
-    Height = 51
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 481
+    Height = 41
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 3
     DesignSize = (
-      601
-      51)
+      481
+      41)
     object Label1: TLabel
-      Left = 13
-      Top = 10
-      Width = 102
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 10
+      Top = 8
+      Width = 82
+      Height = 13
       Caption = 'Sound Manager :'
     end
     object LabelFPS: TLabel
-      Left = 13
-      Top = 34
-      Width = 26
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 10
+      Top = 27
+      Width = 20
+      Height = 13
       Caption = 'FPS'
     end
     object RBBass: TRadioButton
-      Left = 123
-      Top = 8
-      Width = 71
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 98
+      Top = 6
+      Width = 57
+      Height = 17
       Caption = 'BASS'
       Checked = True
       TabOrder = 0
@@ -121,55 +92,39 @@ object FormSoundAround: TFormSoundAround
       OnClick = RBFMODClick
     end
     object RBFMOD: TRadioButton
-      Left = 201
-      Top = 8
-      Width = 72
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 161
+      Top = 6
+      Width = 57
+      Height = 17
       Caption = 'FMOD'
       TabOrder = 1
       OnClick = RBFMODClick
     end
     object Button1: TButton
-      Left = 488
-      Top = 3
-      Width = 103
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 390
+      Top = 2
+      Width = 83
+      Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Chimes (WAV)'
       TabOrder = 2
       OnClick = Button1Click
     end
     object btnHowl: TButton
-      Left = 376
-      Top = 3
-      Width = 104
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 301
+      Top = 2
+      Width = 83
+      Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Howl (MP3)'
       TabOrder = 3
       OnClick = btnHowlClick
     end
     object RBOpenAL: TRadioButton
-      Left = 280
-      Top = 8
-      Width = 81
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 224
+      Top = 6
+      Width = 65
+      Height = 17
       Caption = 'OpenAL'
       TabOrder = 4
       OnClick = RBFMODClick

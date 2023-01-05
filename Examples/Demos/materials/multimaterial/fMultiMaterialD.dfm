@@ -2,8 +2,8 @@ object FormMultiMat: TFormMultiMat
   Left = 225
   Top = 115
   Caption = 'Multi Material'
-  ClientHeight = 280
-  ClientWidth = 428
+  ClientHeight = 449
+  ClientWidth = 620
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,14 +16,17 @@ object FormMultiMat: TFormMultiMat
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 428
-    Height = 280
+    Width = 620
+    Height = 449
     Camera = GLCamera1
-    FieldOfView = 140.692352294921900000
+    Buffer.BackgroundColor = clTeal
+    FieldOfView = 154.888351440429700000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     TabOrder = 0
+    ExplicitWidth = 447
+    ExplicitHeight = 312
   end
   object GLScene1: TGLScene
     Left = 24
@@ -33,7 +36,7 @@ object FormMultiMat: TFormMultiMat
       object GLCamera1: TGLCamera
         DepthOfView = 100.000000000000000000
         FocalLength = 50.000000000000000000
-        SceneScale = 2.000000000000000000
+        SceneScale = 3.000000000000000000
         TargetObject = GLDummyCube1
         Position.Coordinates = {0000803F000040400000A0C00000803F}
         object GLLightSource1: TGLLightSource
@@ -43,30 +46,28 @@ object FormMultiMat: TFormMultiMat
       end
     end
     object GLCube1: TGLCube
-      Material.MaterialLibrary = GLMaterialLibrary1
+      Material.MaterialLibrary = GLMatLib1
       Material.LibMaterialName = 'MultipassMat'
       Scale.Coordinates = {0000003F0000003F0000003F00000000}
       CubeSize = {000000400000004000000040}
     end
   end
-  object GLMaterialLibrary1: TGLMaterialLibrary
+  object GLMatLib1: TGLMaterialLibrary
     Materials = <
       item
         Name = 'MultipassMat'
         Tag = 0
         Shader = GLMultiMaterialShader1
       end>
-    TexturePaths = '..\..\media'
     Left = 120
     Top = 8
   end
-  object GLMaterialLibrary2: TGLMaterialLibrary
-    TexturePaths = '..\..\media'
+  object GLMatLib2: TGLMaterialLibrary
     Left = 120
     Top = 64
   end
   object GLMultiMaterialShader1: TGLMultiMaterialShader
-    MaterialLibrary = GLMaterialLibrary2
+    MaterialLibrary = GLMatLib2
     VisibleAtDesignTime = False
     ShaderStyle = ssReplace
     Left = 240
