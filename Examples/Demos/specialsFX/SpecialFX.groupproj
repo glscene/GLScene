@@ -57,6 +57,9 @@
         <Projects Include="ParticleMasking\ParticleMaskingC.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="PFXCursor\PfxCursor.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="PFXGallery\PFXGalleryD.dproj">
             <Dependencies/>
         </Projects>
@@ -296,6 +299,15 @@
     <Target Name="ParticleMaskingC:Make">
         <MSBuild Projects="ParticleMasking\ParticleMaskingC.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="PfxCursor">
+        <MSBuild Projects="PFXCursor\PfxCursor.dproj"/>
+    </Target>
+    <Target Name="PfxCursor:Clean">
+        <MSBuild Projects="PFXCursor\PfxCursor.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PfxCursor:Make">
+        <MSBuild Projects="PFXCursor\PfxCursor.dproj" Targets="Make"/>
+    </Target>
     <Target Name="PFXGalleryD">
         <MSBuild Projects="PFXGallery\PFXGalleryD.dproj"/>
     </Target>
@@ -504,13 +516,13 @@
         <MSBuild Projects="waterplane\WaterPlaneC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="AtmosphereD;AtmosphereC;BeerD;BeerC;BoomD;BoomC;CandlesD;CandlesC;FireD;FireC;MeshExplosionD;MeshExplosionC;MotionBlurD;MotionBlurC;MotionBlur2D;MotionBlur2C;ParticleMaskingD;ParticleMaskingC;PFXGalleryD;PFXGalleryC;PostEffectD;PostEffectC;ProjTexturesD;ProjTexturesC;ShadowFBOD;ShadowFBOC;ShadowPlaneD;ShadowPlaneC;ShadowsD;ShadowsC;ShadowVolumesD;ShadowVolumesC;SpiralD;SpiralC;ThorD;ThorC;TrailsD;WarpingD;WarpingC;WaterPlaneD;WaterPlaneC"/>
+        <CallTarget Targets="AtmosphereD;AtmosphereC;BeerD;BeerC;BoomD;BoomC;CandlesD;CandlesC;FireD;FireC;MeshExplosionD;MeshExplosionC;MotionBlurD;MotionBlurC;MotionBlur2D;MotionBlur2C;ParticleMaskingD;ParticleMaskingC;PfxCursor;PFXGalleryD;PFXGalleryC;PostEffectD;PostEffectC;ProjTexturesD;ProjTexturesC;ShadowFBOD;ShadowFBOC;ShadowPlaneD;ShadowPlaneC;ShadowsD;ShadowsC;ShadowVolumesD;ShadowVolumesC;SpiralD;SpiralC;ThorD;ThorC;TrailsD;WarpingD;WarpingC;WaterPlaneD;WaterPlaneC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="AtmosphereD:Clean;AtmosphereC:Clean;BeerD:Clean;BeerC:Clean;BoomD:Clean;BoomC:Clean;CandlesD:Clean;CandlesC:Clean;FireD:Clean;FireC:Clean;MeshExplosionD:Clean;MeshExplosionC:Clean;MotionBlurD:Clean;MotionBlurC:Clean;MotionBlur2D:Clean;MotionBlur2C:Clean;ParticleMaskingD:Clean;ParticleMaskingC:Clean;PFXGalleryD:Clean;PFXGalleryC:Clean;PostEffectD:Clean;PostEffectC:Clean;ProjTexturesD:Clean;ProjTexturesC:Clean;ShadowFBOD:Clean;ShadowFBOC:Clean;ShadowPlaneD:Clean;ShadowPlaneC:Clean;ShadowsD:Clean;ShadowsC:Clean;ShadowVolumesD:Clean;ShadowVolumesC:Clean;SpiralD:Clean;SpiralC:Clean;ThorD:Clean;ThorC:Clean;TrailsD:Clean;WarpingD:Clean;WarpingC:Clean;WaterPlaneD:Clean;WaterPlaneC:Clean"/>
+        <CallTarget Targets="AtmosphereD:Clean;AtmosphereC:Clean;BeerD:Clean;BeerC:Clean;BoomD:Clean;BoomC:Clean;CandlesD:Clean;CandlesC:Clean;FireD:Clean;FireC:Clean;MeshExplosionD:Clean;MeshExplosionC:Clean;MotionBlurD:Clean;MotionBlurC:Clean;MotionBlur2D:Clean;MotionBlur2C:Clean;ParticleMaskingD:Clean;ParticleMaskingC:Clean;PfxCursor:Clean;PFXGalleryD:Clean;PFXGalleryC:Clean;PostEffectD:Clean;PostEffectC:Clean;ProjTexturesD:Clean;ProjTexturesC:Clean;ShadowFBOD:Clean;ShadowFBOC:Clean;ShadowPlaneD:Clean;ShadowPlaneC:Clean;ShadowsD:Clean;ShadowsC:Clean;ShadowVolumesD:Clean;ShadowVolumesC:Clean;SpiralD:Clean;SpiralC:Clean;ThorD:Clean;ThorC:Clean;TrailsD:Clean;WarpingD:Clean;WarpingC:Clean;WaterPlaneD:Clean;WaterPlaneC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="AtmosphereD:Make;AtmosphereC:Make;BeerD:Make;BeerC:Make;BoomD:Make;BoomC:Make;CandlesD:Make;CandlesC:Make;FireD:Make;FireC:Make;MeshExplosionD:Make;MeshExplosionC:Make;MotionBlurD:Make;MotionBlurC:Make;MotionBlur2D:Make;MotionBlur2C:Make;ParticleMaskingD:Make;ParticleMaskingC:Make;PFXGalleryD:Make;PFXGalleryC:Make;PostEffectD:Make;PostEffectC:Make;ProjTexturesD:Make;ProjTexturesC:Make;ShadowFBOD:Make;ShadowFBOC:Make;ShadowPlaneD:Make;ShadowPlaneC:Make;ShadowsD:Make;ShadowsC:Make;ShadowVolumesD:Make;ShadowVolumesC:Make;SpiralD:Make;SpiralC:Make;ThorD:Make;ThorC:Make;TrailsD:Make;WarpingD:Make;WarpingC:Make;WaterPlaneD:Make;WaterPlaneC:Make"/>
+        <CallTarget Targets="AtmosphereD:Make;AtmosphereC:Make;BeerD:Make;BeerC:Make;BoomD:Make;BoomC:Make;CandlesD:Make;CandlesC:Make;FireD:Make;FireC:Make;MeshExplosionD:Make;MeshExplosionC:Make;MotionBlurD:Make;MotionBlurC:Make;MotionBlur2D:Make;MotionBlur2C:Make;ParticleMaskingD:Make;ParticleMaskingC:Make;PfxCursor:Make;PFXGalleryD:Make;PFXGalleryC:Make;PostEffectD:Make;PostEffectC:Make;ProjTexturesD:Make;ProjTexturesC:Make;ShadowFBOD:Make;ShadowFBOC:Make;ShadowPlaneD:Make;ShadowPlaneC:Make;ShadowsD:Make;ShadowsC:Make;ShadowVolumesD:Make;ShadowVolumesC:Make;SpiralD:Make;SpiralC:Make;ThorD:Make;ThorC:Make;TrailsD:Make;WarpingD:Make;WarpingC:Make;WaterPlaneD:Make;WaterPlaneC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

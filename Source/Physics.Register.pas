@@ -11,7 +11,7 @@ uses
   System.Classes,
   Physics.ODEManager,
   Physics.NGDManager,
-  Physics.GLxManager;
+  Physics.SPIManager;
 
 procedure Register;
 
@@ -22,9 +22,9 @@ implementation
 procedure Register;
 begin
   RegisterClasses([TGLODEManager, TGLODEJointList, TGLODEJoints, TGLODEElements,
-    TGLNGDManager, TGLNGDDynamic, TGLNGDStatic, TGLxManager]);
-  RegisterComponents('GLScene Physics Managers', [TGLODEManager, TGLODEJointList, TGLNGDManager,
-  TGLxManager]);
+    TGLNGDManager, TGLNGDDynamic, TGLNGDStatic, TGLSPIManager]);
+  RegisterComponents('GLScene Physics Managers', [TGLODEManager, TGLODEJointList, 
+                    TGLNGDManager, TGLSPIManager]);
 end;
 
 end.

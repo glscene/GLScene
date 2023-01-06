@@ -27,24 +27,27 @@ object FormCubeMap: TFormCubeMap
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
-    ExplicitWidth = 539
-    ExplicitHeight = 373
   end
-  object ButtonApply: TButton
-    Left = 224
-    Top = 312
-    Width = 163
+  object btnApply: TButton
+    Left = 232
+    Top = 16
+    Width = 131
     Height = 25
-    Caption = 'Apply Cube Environment Map'
+    Caption = 'Apply Cube Map'
     TabOrder = 1
-    OnClick = ButtonApplyClick
+    OnClick = btnApplyClick
   end
   object GLScene1: TGLScene
     Left = 8
     Top = 8
+    object GLLightSource1: TGLLightSource
+      ConstAttenuation = 1.000000000000000000
+      Position.Coordinates = {0000E0400000A040000040400000803F}
+      SpotCutOff = 180.000000000000000000
+    end
     object DummyCube1: TGLDummyCube
       Position.Coordinates = {000000C0000000C0000000C00000803F}
-      CubeSize = 0.800000011920929000
+      CubeSize = 1.000000000000000000
       VisibleAtRunTime = True
       object Teapot1: TGLTeapot
         Material.BackProperties.Ambient.Color = {ADAC2C3FCDCC4C3ECDCC4C3E0000803F}
@@ -59,11 +62,24 @@ object FormCubeMap: TFormCubeMap
         Material.Texture.TextureMode = tmReplace
         Position.Coordinates = {00000000000080BE000000000000803F}
       end
-    end
-    object GLLightSource1: TGLLightSource
-      ConstAttenuation = 1.000000000000000000
-      Position.Coordinates = {0000E0400000A040000040400000803F}
-      SpotCutOff = 180.000000000000000000
+      object Cylinder1: TGLCylinder
+        Position.Coordinates = {000000BF000000000000803F0000803F}
+        Scale.Coordinates = {0000003F0000003F0000003F00000000}
+        BottomRadius = 0.500000000000000000
+        Height = 1.000000000000000000
+        TopRadius = 0.500000000000000000
+      end
+      object Cone1: TGLCone
+        Position.Coordinates = {0000803F00000000000000BF0000803F}
+        Scale.Coordinates = {9A99193F9A99193F9A99193F00000000}
+        BottomRadius = 0.500000000000000000
+        Height = 1.000000000000000000
+      end
+      object Plane1: TGLPlane
+        Position.Coordinates = {0000000000000000000000BF0000803F}
+        Height = 1.000000000000000000
+        Width = 1.000000000000000000
+      end
     end
     object GLCamera1: TGLCamera
       DepthOfView = 100.000000000000000000

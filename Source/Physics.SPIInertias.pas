@@ -1,7 +1,7 @@
 //
-// The graphics platform GLScene https://github.com/glscene
+// The graphics rendering engine GLScene http://glscene.org
 //
-unit Physics.GLxInertias;
+unit Physics.SPIInertias;
 
 interface
 
@@ -16,14 +16,14 @@ uses
   GLS.BaseClasses,
   GLS.VectorGeometry,
   GLS.VectorTypes,
-  GLS.VectorTypesExt,
+  Physics.SPIManager,
   GLS.Coordinates,
   GLS.Strings,
-  GLS.Behaviours,
-  Physics.GLxManager;
+  GLS.Behaviours;
 
 type
-  TGLxParticleInertia = class(TGLxBaseInertia)
+  TGLParticleInertia = class(TGLBaseInertia)
+  // modified from TGLBInertia
   private
     FMass: Single;
     FTranslationSpeed: TGLCoordinates;
@@ -37,11 +37,12 @@ type
     fForce: TAffineVector;
     LinearPosition: TAffineVector;
     LinearMomentum: TAffineVector;
-    procedure StateToArray(var StateArray: TDoubleArray; StatePos: Integer); override;
-    procedure ArrayToState( { var } StateArray: TDoubleArray; StatePos: Integer); override;
-    procedure CalcStateDot(var StateArray: TDoubleArray; StatePos: Integer); override;
+    procedure StateToArray(var StateArray: TStateArray; StatePos: Integer); override;
+    procedure ArrayToState( { var } StateArray: TStateArray; StatePos: Integer); override;
+    procedure CalcStateDot(var StateArray: TStateArray; StatePos: Integer); override;
     procedure RemoveForces(); override;
-    procedure CalculateForceFieldForce(ForceFieldEmitter: TGLxBaseForceFieldEmitter); override;
+    procedure CalculateForceFieldForce(ForceFieldEmitter
+      : TGLBaseForceFieldEmitter); override;
     procedure CalcAuxiliary(); override;
     procedure SetUpStartingState(); override;
     function CalculateKE(): Real; override;
@@ -70,7 +71,8 @@ type
     procedure SurfaceBounce(const surfaceNormal: TGLVector; restitution: Single);
   published
     property Mass: Single read FMass write FMass;
-    property TranslationSpeed: TGLCoordinates read FTranslationSpeed write SetTranslationSpeed;
+    property TranslationSpeed: TGLCoordinates read FTranslationSpeed
+      write SetTranslationSpeed;
 
     (* Enable/Disable damping (damping has a high cpu-cycle cost).
       Damping is enabled by default. *)
@@ -79,13 +81,14 @@ type
       Note that it is not "exactly" applied, ie. if damping would stop
       your object after 0.5 time unit, and your progression steps are
       of 1 time unit, there will be an integration error of 0.5 time unit. *)
-    property TranslationDamping: TGLDamping read FTranslationDamping write SetTranslationDamping;
+    property TranslationDamping: TGLDamping read FTranslationDamping
+      write SetTranslationDamping;
   end;
 
-  TGLxRigidBodyInertia = class;
+  TGLRigidBodyInertia = class;
 
-  (* Stores Inertia Tensor for TGLxRigidBodyInertia model *)
-  TGLxInertiaTensor = class(TGLUpdateAbleObject)
+  (* Stores Inertia Tensor for TGLRigidBodyInertia model *)
+  TGLInertiaTensor = class(TGLUpdateAbleObject)
   private
     fm11, fm12, fm13, fm21, fm22, fm23, fm31, fm32, fm33: Single;
   public
@@ -107,12 +110,12 @@ type
   end;
 
   (* A more complex model than TGLBInertia for Inertia *)
-  TGLxRigidBodyInertia = class(TGLxParticleInertia)
+  TGLRigidBodyInertia = class(TGLParticleInertia)
   private
     fDensity: Real;
     fBodyInertiaTensor: TAffineMAtrix;
     fBodyInverseInertiaTensor: TAffineMAtrix;
-    fInertiaTensor: TGLxInertiaTensor;
+    fInertiaTensor: TGLInertiaTensor;
     InverseInertiaTensor: TAffineMAtrix;
     // LinearVelocity:TAffineVector;
     fRotationSpeed: TGLCoordinates;
@@ -128,11 +131,15 @@ type
     AngularOrientation: TQuaternion; // As Quat will help improve accuracy
     R: TMatrix3f; // corresponds to AngularOrientation
     AngularMomentum: TAffineVector;
-    procedure StateToArray(var StateArray: TDoubleArray; StatePos: Integer); override;
-    procedure ArrayToState( (* var *) StateArray: TDoubleArray; StatePos: Integer); override;
-    procedure CalcStateDot(var StateArray: TDoubleArray; StatePos: Integer); override;
+    procedure StateToArray(var StateArray: TStateArray;
+      StatePos: Integer); override;
+    procedure ArrayToState( (* var *) StateArray: TStateArray;
+      StatePos: Integer); override;
+    procedure CalcStateDot(var StateArray: TStateArray;
+      StatePos: Integer); override;
     procedure ApplyImpulse(j, xpos, ypos, zpos, x, y, z: Real); overload;
-    procedure ApplyImpulse(j: Single; position, normal: TAffineVector); overload;
+    procedure ApplyImpulse(j: Single; position, normal: TAffineVector);
+      overload;
     procedure ApplyDamping(damping: TGLDamping); override;
     // function CalcLinearPositionDot():TAffineVector;
     // function CalcLinearMomentumDot():TAffineVector;
@@ -158,42 +165,44 @@ type
     procedure ApplyForce(pos, Force: TAffineVector); override;
     procedure ApplyLocalForce(pos, Force: TVector3f); override;
     procedure ApplyLocalImpulse(xpos, ypos, zpos, x, y, z: Real);
-    procedure SetInertiaTensor(newVal: TGLxInertiaTensor);
+    procedure SetInertiaTensor(newVal: TGLInertiaTensor);
     procedure SetRotationSpeed(const val: TGLCoordinates);
     procedure SetRotationDamping(const val: TGLDamping);
   published
     property Density: Real read fDensity write fDensity;
-    property InertiaTensor: TGLxInertiaTensor read fInertiaTensor write SetInertiaTensor;
-    property RotationSpeed: TGLCoordinates read fRotationSpeed write SetRotationSpeed;
-    property RotationDamping: TGLDamping read FRotationDamping write SetRotationDamping;
+    property InertiaTensor: TGLInertiaTensor read fInertiaTensor
+      write SetInertiaTensor;
+    property RotationSpeed: TGLCoordinates read fRotationSpeed
+      write SetRotationSpeed;
+    property RotationDamping: TGLDamping read FRotationDamping
+      write SetRotationDamping;
   end;
 
-(* Returns or creates the TGLxParticleInertia within the given behaviours.
-   This helper function is convenient way to access a TGLxParticleInertia. *)
-function GetOrCreateParticleInertia(Behaviours: TGLBehaviours): TGLxParticleInertia; overload;
-(* Returns or creates the TGLxParticleInertia within the given object's behaviours.
-   This helper function is convenient way to access a TGLxParticleInertia. *)
-function GetOrCreateParticleInertia(obj: TGLBaseSceneObject): TGLxParticleInertia; overload;
-(* Returns or creates the TGLxRigidBodyInertia within the given behaviours.
-   This helper function is convenient way to access a TGLxRigidBodyInertia. *)
-function GetOrCreateRigidBodyInertia(Behaviours: TGLBehaviours): TGLxRigidBodyInertia; overload;
-(* Returns or creates the TGLxRigidBodyInertia within the given object's behaviours.
-   This helper function is convenient way to access a TGLxRigidBodyInertia. *)
-function GetOrCreateRigidBodyInertia(obj: TGLBaseSceneObject): TGLxRigidBodyInertia; overload;
+(* Returns or creates the TGLParticleInertia within the given behaviours.
+   This helper function is convenient way to access a TGLParticleInertia. *)
+function GetOrCreateParticleInertia(behaviours: TGLBehaviours): TGLParticleInertia; overload;
+(* Returns or creates the TGLParticleInertia within the given object's behaviours.
+  This helper function is convenient way to access a TGLParticleInertia. *)
+function GetOrCreateParticleInertia(obj: TGLBaseSceneObject): TGLParticleInertia; overload;
+(* Returns or creates the TGLRigidBodyInertia within the given behaviours.
+  This helper function is convenient way to access a TGLRigidBodyInertia. *)
+function GetOrCreateRigidBodyInertia(behaviours: TGLBehaviours): TGLRigidBodyInertia; overload;
+(* Returns or creates the TGLRigidBodyInertia within the given object's behaviours.
+  This helper function is convenient way to access a TGLRigidBodyInertia. *)
+function GetOrCreateRigidBodyInertia(obj: TGLBaseSceneObject): TGLRigidBodyInertia; overload;
 
 const
   DebugMode = false;
 
-  // ------------------------------------------------------------------
+// ------------------------------------------------------------------
 implementation
-
 // ------------------------------------------------------------------
 
 // ------------------
-// ------------------ TGLxParticleInertia ------------------
+// ------------------ TGLParticleInertia ------------------
 // ------------------
 
-constructor TGLxParticleInertia.Create(aOwner: TXCollection);
+constructor TGLParticleInertia.Create(aOwner: TXCollection);
 begin
   inherited Create(aOwner);
   FMass := 1;
@@ -204,29 +213,29 @@ begin
   FTranslationDamping := TGLDamping.Create(Self);
 end;
 
-destructor TGLxParticleInertia.Destroy;
+destructor TGLParticleInertia.Destroy;
 begin
   FTranslationDamping.Free;
   FTranslationSpeed.Free;
   inherited Destroy;
 end;
 
-procedure TGLxParticleInertia.Assign(Source: TPersistent);
+procedure TGLParticleInertia.Assign(Source: TPersistent);
 begin
   if Source.ClassType = Self.ClassType then
   begin
-    FMass := TGLxParticleInertia(Source).FMass;
-    FTranslationSpeed.Assign(TGLxParticleInertia(Source).FTranslationSpeed);
-    LinearPosition := TGLxParticleInertia(Source).LinearPosition;
-    LinearMomentum := TGLxParticleInertia(Source).LinearMomentum;
+    FMass := TGLParticleInertia(Source).FMass;
+    FTranslationSpeed.Assign(TGLParticleInertia(Source).FTranslationSpeed);
+    LinearPosition := TGLParticleInertia(Source).LinearPosition;
+    LinearMomentum := TGLParticleInertia(Source).LinearMomentum;
     // FDampingEnabled:=TGLInertia(Source).DampingEnabled;
-    FTranslationDamping.Assign(TGLxParticleInertia(Source).TranslationDamping);
+    FTranslationDamping.Assign(TGLParticleInertia(Source).TranslationDamping);
     // FRotationDamping.Assign(TGLBInertia(Source).RotationDamping);
   end;
   inherited Assign(Source);
 end;
 
-procedure TGLxParticleInertia.WriteToFiler(writer: TWriter);
+procedure TGLParticleInertia.WriteToFiler(writer: TWriter);
 begin
   inherited;
   with writer do
@@ -241,7 +250,7 @@ begin
   end;
 end;
 
-procedure TGLxParticleInertia.ReadFromFiler(reader: TReader);
+procedure TGLParticleInertia.ReadFromFiler(reader: TReader);
 begin
   inherited;
   with reader do
@@ -258,19 +267,19 @@ begin
   SetUpStartingState();
 end;
 
-procedure TGLxParticleInertia.SetTranslationSpeed(const val: TGLCoordinates);
+procedure TGLParticleInertia.SetTranslationSpeed(const val: TGLCoordinates);
 begin
   FTranslationSpeed.Assign(val);
   LinearMomentum := VectorScale(FTranslationSpeed.AsAffineVector, FMass);
 end;
 
-procedure TGLxParticleInertia.SetUpStartingState();
+procedure TGLParticleInertia.SetUpStartingState();
 begin
   LinearPosition := OwnerBaseSceneObject.position.AsAffineVector;
   LinearMomentum := VectorScale(TranslationSpeed.AsAffineVector, Mass);
 end;
 
-procedure TGLxParticleInertia.CalcAuxiliary( { RBody:TGLRigidBody } );
+procedure TGLParticleInertia.CalcAuxiliary( { RBody:TGLRigidBody } );
 begin
   TranslationSpeed.AsAffineVector := VectorScale(LinearMomentum, 1 / Mass);
   // OwnerBaseSceneObject.Matrix:=QuaternionToMatrix(AngularOrientation);
@@ -280,48 +289,49 @@ begin
   // OwnerBaseSceneObject.position.z:=LinearPosition[2];
 end;
 
-procedure TGLxParticleInertia.RemoveForces();
+procedure TGLParticleInertia.RemoveForces();
 begin
   fForce := nullVector;
 end;
 
-procedure TGLxParticleInertia.CalculateForceFieldForce(ForceFieldEmitter: TGLxBaseForceFieldEmitter);
+procedure TGLParticleInertia.CalculateForceFieldForce(ForceFieldEmitter
+  : TGLBaseForceFieldEmitter);
 begin
   ForceFieldEmitter.CalculateForceField(Self.OwnerBaseSceneObject);
 end;
 
-function TGLxParticleInertia.CalculateKE(): Real;
+function TGLParticleInertia.CalculateKE(): Real;
 begin
   Result := 1 / (2 * Mass) * VectorNorm(LinearMomentum);
 end;
 
-function TGLxParticleInertia.CalculatePE(): Real;
+function TGLParticleInertia.CalculatePE(): Real;
 begin
   // need to find potentials due to fields acting on body
   // may be easier to do via ForceFieldEmitters?
   Result := 0;
 end;
 
-procedure TGLxParticleInertia.SetForce(x, y, z: Real);
+procedure TGLParticleInertia.SetForce(x, y, z: Real);
 begin
   fForce.x := x;
   fForce.y := y;
   fForce.z := z;
 end;
 
-procedure TGLxParticleInertia.ApplyForce(x, y, z: Real);
+procedure TGLParticleInertia.ApplyForce(x, y, z: Real);
 begin
-  fForce.x := fForce.x + x;
-  fForce.y := fForce.y + y;
-  fForce.z := fForce.z + z;
+  fForce.X := fForce.X + x;
+  fForce.Y := fForce.Y + y;
+  fForce.Z := fForce.Z + z;
 end;
 
-procedure TGLxParticleInertia.ApplyForce(Force: TAffineVector);
+procedure TGLParticleInertia.ApplyForce(Force: TAffineVector);
 begin
   fForce := VectorAdd(fForce, Force);
 end;
 
-procedure TGLxParticleInertia.ApplyForce(pos, Force: TAffineVector);
+procedure TGLParticleInertia.ApplyForce(pos, Force: TAffineVector);
 // var
 // abspos:TAffineVector;
 begin
@@ -331,7 +341,7 @@ begin
   // fForce:=VectorAdd(fForce,force);
 end;
 
-procedure TGLxParticleInertia.ApplyLocalForce(pos, Force: TAffineVector);
+procedure TGLParticleInertia.ApplyLocalForce(pos, Force: TAffineVector);
 // var
 // abspos:TAffineVector;
 // absForce:TAffineVector;
@@ -342,21 +352,21 @@ begin
   fForce := VectorAdd(fForce, Force);
 end;
 
-procedure TGLxParticleInertia.ApplyImpulse(j, x, y, z: Real);
+procedure TGLParticleInertia.ApplyImpulse(j, x, y, z: Real);
 begin
   // V2 = V1 + (j/M)n
   // V2.M = V1.M +j.n
-  LinearMomentum.x := LinearMomentum.x + j * x;
-  LinearMomentum.y := LinearMomentum.y + j * y;
-  LinearMomentum.z := LinearMomentum.z + j * z;
+  LinearMomentum.X := LinearMomentum.X + j * x;
+  LinearMomentum.Y := LinearMomentum.Y + j * y;
+  LinearMomentum.Z := LinearMomentum.Z + j * z;
 end;
 
-procedure TGLxParticleInertia.ApplyImpulse(j: Single; normal: TAffineVector);
+procedure TGLParticleInertia.ApplyImpulse(j: Single; normal: TAffineVector);
 begin
   CombineVector(LinearMomentum, normal, j);
 end;
 
-procedure TGLxParticleInertia.ApplyDamping(damping: TGLDamping);
+procedure TGLParticleInertia.ApplyDamping(damping: TGLDamping);
 var
   velocity: TAffineVector;
   v: Real;
@@ -372,56 +382,58 @@ begin
   ApplyForce(dampingForce);
 end;
 
-procedure TGLxParticleInertia.SetTranslationDamping(const val: TGLDamping);
+procedure TGLParticleInertia.SetTranslationDamping(const val: TGLDamping);
 begin
   FTranslationDamping.Assign(val);
 end;
 
-class function TGLxParticleInertia.FriendlyName: String;
+class function TGLParticleInertia.FriendlyName: String;
 begin
   Result := 'Particle Inertia';
 end;
 
-class function TGLxParticleInertia.FriendlyDescription: String;
+class function TGLParticleInertia.FriendlyDescription: String;
 begin
   Result := 'A simple translation inertia';
 end;
 
-class function TGLxParticleInertia.UniqueItem: Boolean;
+class function TGLParticleInertia.UniqueItem: Boolean;
 begin
   Result := True;
 end;
 
-function TGLxParticleInertia.CalcLinearPositionDot(): TAffineVector;
+function TGLParticleInertia.CalcLinearPositionDot(): TAffineVector;
 begin
   Result := VectorScale(LinearMomentum, 1 / FMass);
-  // Result := FTranslationSpeed.AsAffineVector;
+  // Result:=FTranslationSpeed.AsAffineVector;
 end;
 
-function TGLxParticleInertia.CalcLinearMomentumDot(): TAffineVector;
+function TGLParticleInertia.CalcLinearMomentumDot(): TAffineVector;
 begin
   Result := fForce;
 end;
 
-procedure TGLxParticleInertia.StateToArray(var StateArray: TDoubleArray; StatePos: Integer);
+procedure TGLParticleInertia.StateToArray(var StateArray: TStateArray;
+  StatePos: Integer);
 begin
   // SetLength(Result,StateSize);
-  StateArray[StatePos] := LinearPosition.x; // position
-  StateArray[StatePos + 1] := LinearPosition.y;
-  StateArray[StatePos + 2] := LinearPosition.z;
-  StateArray[StatePos + 3] := LinearMomentum.x; // momentum
-  StateArray[StatePos + 4] := LinearMomentum.y;
-  StateArray[StatePos + 5] := LinearMomentum.z;
+  StateArray[StatePos] := LinearPosition.X; // position
+  StateArray[StatePos + 1] := LinearPosition.Y;
+  StateArray[StatePos + 2] := LinearPosition.Z;
+  StateArray[StatePos + 3] := LinearMomentum.X; // momentum
+  StateArray[StatePos + 4] := LinearMomentum.Y;
+  StateArray[StatePos + 5] := LinearMomentum.Z;
 end;
 
-procedure TGLxParticleInertia.ArrayToState(StateArray: TDoubleArray; StatePos: Integer);
+procedure TGLParticleInertia.ArrayToState(StateArray: TStateArray;
+  StatePos: Integer);
 begin
-  LinearPosition.x := StateArray[StatePos];
-  LinearPosition.y := StateArray[StatePos + 1];
-  LinearPosition.z := StateArray[StatePos + 2];
-  LinearMomentum.x := StateArray[StatePos + 3];
-  LinearMomentum.y := StateArray[StatePos + 4];
-  LinearMomentum.z := StateArray[StatePos + 5];
+  LinearPosition.X := StateArray[StatePos];
+  LinearPosition.Y := StateArray[StatePos + 1];
+  LinearPosition.Z := StateArray[StatePos + 2];
+  LinearMomentum.X := StateArray[StatePos + 3];
+  LinearMomentum.Y := StateArray[StatePos + 4];
+  LinearMomentum.Z := StateArray[StatePos + 5];
   // TODO change?
   (* OwnerBaseSceneObject.position.x:=StateArray[StatePos];//position
     OwnerBaseSceneObject.position.y:=StateArray[StatePos+1];
@@ -432,26 +444,28 @@ begin
   *)
 end;
 
-procedure TGLxParticleInertia.CalcStateDot(var StateArray: TDoubleArray; StatePos: Integer);
+procedure TGLParticleInertia.CalcStateDot(var StateArray: TStateArray;
+  StatePos: Integer);
 var
   LinPos, LinMom: TAffineVector;
 begin
   LinPos := CalcLinearPositionDot();
   LinMom := CalcLinearMomentumDot();
-  StateArray[StatePos] := LinPos.x;
-  StateArray[StatePos + 1] := LinPos.y;
-  StateArray[StatePos + 2] := LinPos.z;
-  StateArray[StatePos + 3] := LinMom.x;
-  StateArray[StatePos + 4] := LinMom.y;
-  StateArray[StatePos + 5] := LinMom.z;
+  StateArray[StatePos] := LinPos.X;
+  StateArray[StatePos + 1] := LinPos.Y;
+  StateArray[StatePos + 2] := LinPos.Z;
+  StateArray[StatePos + 3] := LinMom.X;
+  StateArray[StatePos + 4] := LinMom.Y;
+  StateArray[StatePos + 5] := LinMom.Z;
 end;
 
-procedure TGLxParticleInertia.MirrorTranslation;
+procedure TGLParticleInertia.MirrorTranslation;
 begin
   FTranslationSpeed.Invert;
 end;
 
-procedure TGLxParticleInertia.SurfaceBounce(const surfaceNormal: TGLVector; restitution: Single);
+procedure TGLParticleInertia.SurfaceBounce(const surfaceNormal: TGLVector;
+  restitution: Single);
 var
   f: Single;
 begin
@@ -460,33 +474,35 @@ begin
   if f < 0 then
   begin
     // remove the non-complying part of the speed vector
-    FTranslationSpeed.AddScaledVector(-f / VectorNorm(surfaceNormal) * (1 + restitution),
-      surfaceNormal);
+    FTranslationSpeed.AddScaledVector(-f / VectorNorm(surfaceNormal) *
+      (1 + restitution), surfaceNormal);
   end;
 end;
 
-function GetOrCreateParticleInertia(Behaviours: TGLBehaviours): TGLxParticleInertia;
+function GetOrCreateParticleInertia(behaviours: TGLBehaviours)
+  : TGLParticleInertia;
 var
   i: Integer;
 begin
-  i := Behaviours.IndexOfClass(TGLxParticleInertia);
+  i := behaviours.IndexOfClass(TGLParticleInertia);
   if i >= 0 then
-    Result := TGLxParticleInertia(Behaviours[i])
+    Result := TGLParticleInertia(behaviours[i])
   else
-    Result := TGLxParticleInertia.Create(Behaviours);
+    Result := TGLParticleInertia.Create(behaviours);
 end;
 
-function GetOrCreateParticleInertia(obj: TGLBaseSceneObject): TGLxParticleInertia;
+function GetOrCreateParticleInertia(obj: TGLBaseSceneObject)
+  : TGLParticleInertia;
 begin
-  Result := GetOrCreateParticleInertia(obj.Behaviours);
+  Result := GetOrCreateParticleInertia(obj.behaviours);
 end;
 
 
 // -----------------------------------------------------------------------
-// ------------ TGLxInertiaTensor
+// ------------ TGLInertiaTensor
 // -----------------------------------------------------------------------
 
-constructor TGLxInertiaTensor.Create(aOwner: TPersistent);
+constructor TGLInertiaTensor.Create(aOwner: TPersistent);
 begin
   inherited Create(aOwner);
   fm11 := 1;
@@ -494,26 +510,26 @@ begin
   fm33 := 1;
 end;
 
-destructor TGLxInertiaTensor.Destroy;
+destructor TGLInertiaTensor.Destroy;
 begin
   inherited Destroy;
 end;
 
-procedure TGLxInertiaTensor.Assign(Source: TPersistent);
+procedure TGLInertiaTensor.Assign(Source: TPersistent);
 begin
   inherited;
-  fm11 := TGLxInertiaTensor(Source).fm11;
-  fm12 := TGLxInertiaTensor(Source).fm12;
-  fm13 := TGLxInertiaTensor(Source).fm13;
-  fm21 := TGLxInertiaTensor(Source).fm21;
-  fm22 := TGLxInertiaTensor(Source).fm22;
-  fm23 := TGLxInertiaTensor(Source).fm23;
-  fm31 := TGLxInertiaTensor(Source).fm31;
-  fm32 := TGLxInertiaTensor(Source).fm32;
-  fm33 := TGLxInertiaTensor(Source).fm33;
+  fm11 := TGLInertiaTensor(Source).fm11;
+  fm12 := TGLInertiaTensor(Source).fm12;
+  fm13 := TGLInertiaTensor(Source).fm13;
+  fm21 := TGLInertiaTensor(Source).fm21;
+  fm22 := TGLInertiaTensor(Source).fm22;
+  fm23 := TGLInertiaTensor(Source).fm23;
+  fm31 := TGLInertiaTensor(Source).fm31;
+  fm32 := TGLInertiaTensor(Source).fm32;
+  fm33 := TGLInertiaTensor(Source).fm33;
 end;
 
-procedure TGLxInertiaTensor.WriteToFiler(writer: TWriter);
+procedure TGLInertiaTensor.WriteToFiler(writer: TWriter);
 begin
   inherited;
   with writer do
@@ -531,7 +547,7 @@ begin
   end;
 end;
 
-procedure TGLxInertiaTensor.ReadFromFiler(reader: TReader);
+procedure TGLInertiaTensor.ReadFromFiler(reader: TReader);
 begin
   inherited;
   with reader do
@@ -549,45 +565,46 @@ begin
   end;
 end;
 
-// --------------------------
-// TGLxRigidBodyInertia
-// --------------------------
-procedure TGLxRigidBodyInertia.SetInertiaTensor(newVal: TGLxInertiaTensor);
+//--------------------------
+// TGLRigidBodyInertia
+//--------------------------
+procedure TGLRigidBodyInertia.SetInertiaTensor(newVal: TGLInertiaTensor);
 begin
   fInertiaTensor := newVal;
 end;
 
-procedure TGLxRigidBodyInertia.SetRotationSpeed(const val: TGLCoordinates);
+procedure TGLRigidBodyInertia.SetRotationSpeed(const val: TGLCoordinates);
 begin
   AngularMomentum := VectorTransform(val.AsAffineVector, fBodyInertiaTensor);
   fRotationSpeed.Assign(val);
 end;
 
-procedure TGLxRigidBodyInertia.SetRotationDamping(const val: TGLDamping);
+procedure TGLRigidBodyInertia.SetRotationDamping(const val: TGLDamping);
 begin
   FRotationDamping.Assign(val);
 end;
 
-procedure TGLxRigidBodyInertia.ApplyImpulse(j, xpos, ypos, zpos, x, y, z: Real);
+procedure TGLRigidBodyInertia.ApplyImpulse(j, xpos, ypos, zpos, x, y, z: Real);
 begin
   // V2 = V1 + (j/M)n
   // V2.M = V1.M +j.n
-  LinearMomentum.x := LinearMomentum.x + j * x;
-  LinearMomentum.y := LinearMomentum.y + j * y;
-  LinearMomentum.z := LinearMomentum.z + j * z;
+  LinearMomentum.X := LinearMomentum.X + j * x;
+  LinearMomentum.Y := LinearMomentum.Y + j * y;
+  LinearMomentum.Z := LinearMomentum.Z + j * z;
 
-  AngularMomentum.x := AngularMomentum.x + j * x * xpos;
-  AngularMomentum.y := AngularMomentum.y + j * y * ypos;
-  AngularMomentum.z := AngularMomentum.z + j * z * zpos;
+  AngularMomentum.X := AngularMomentum.X + j * x * xpos;
+  AngularMomentum.Y := AngularMomentum.Y + j * y * ypos;
+  AngularMomentum.Z := AngularMomentum.Z + j * z * zpos;
 end;
 
-procedure TGLxRigidBodyInertia.ApplyImpulse(j: Single; position, normal: TAffineVector);
+procedure TGLRigidBodyInertia.ApplyImpulse(j: Single;
+  position, normal: TAffineVector);
 begin
   CombineVector(LinearMomentum, normal, j);
   CombineVector(AngularMomentum, VectorCrossProduct(position, normal), j); // ?
 end;
 
-procedure TGLxRigidBodyInertia.ApplyDamping(damping: TGLDamping);
+procedure TGLRigidBodyInertia.ApplyDamping(damping: TGLDamping);
 var
   velocity, angularvelocity: TAffineVector;
   v, angularv: Real;
@@ -610,15 +627,17 @@ begin
   angularv := VectorLength(angularvelocity);
   // F = -Normalised(V)*( Constant + (Linear)*(V) + (Quadtratic)*(V)*(V) )
   angulardampingForce := VectorScale(VectorNormalize(angularvelocity),
-    -(RotationDamping.Constant + RotationDamping.Linear * v + RotationDamping.Quadratic * v * v));
+    -(RotationDamping.Constant + RotationDamping.Linear * v +
+    RotationDamping.Quadratic * v * v));
   // ScaleVector(AngularMomentum,0.999);
   // ScaleVector(AngularVelocity,Damping.Constant);
   // dampingForce:=VectorScale(VectorNormalize(velocity),-(Damping.Constant+Damping.Linear*v+Damping.Quadratic*v*v));
-  ApplyTorque(angulardampingForce.x, angulardampingForce.y, angulardampingForce.z);
+  ApplyTorque(angulardampingForce.X, angulardampingForce.Y, angulardampingForce.Z);
 
 end;
 
-procedure TGLxRigidBodyInertia.CalcStateDot(var StateArray: TDoubleArray; StatePos: Integer);
+procedure TGLRigidBodyInertia.CalcStateDot(var StateArray: TStateArray;
+  StatePos: Integer);
 var
   LinPos, LinMom, AngMom: TAffineVector;
   AngPos: TQuaternion;
@@ -628,36 +647,36 @@ begin
   AngPos := CalcAngularOrientationDot();
   AngMom := CalcAngularVelocityDot();
   // SetLength(Result,StateSize);
-  StateArray[StatePos] := LinPos.x;
-  StateArray[StatePos + 1] := LinPos.y;
-  StateArray[StatePos + 2] := LinPos.z;
-  StateArray[StatePos + 3] := LinMom.x;
-  StateArray[StatePos + 4] := LinMom.y;
-  StateArray[StatePos + 5] := LinMom.z;
-  StateArray[StatePos + 6] := AngPos.imagPart.x;
-  StateArray[StatePos + 7] := AngPos.imagPart.y;
-  StateArray[StatePos + 8] := AngPos.imagPart.z;
+  StateArray[StatePos] := LinPos.X;
+  StateArray[StatePos + 1] := LinPos.Y;
+  StateArray[StatePos + 2] := LinPos.Z;
+  StateArray[StatePos + 3] := LinMom.X;
+  StateArray[StatePos + 4] := LinMom.Y;
+  StateArray[StatePos + 5] := LinMom.Z;
+  StateArray[StatePos + 6] := AngPos.imagPart.X;
+  StateArray[StatePos + 7] := AngPos.imagPart.Y;
+  StateArray[StatePos + 8] := AngPos.imagPart.Z;
   StateArray[StatePos + 9] := AngPos.RealPart;
-  StateArray[StatePos + 10] := AngMom.x;
-  StateArray[StatePos + 11] := AngMom.y;
-  StateArray[StatePos + 12] := AngMom.z;
+  StateArray[StatePos + 10] := AngMom.X;
+  StateArray[StatePos + 11] := AngMom.Y;
+  StateArray[StatePos + 12] := AngMom.Z;
 end;
 
-function TGLxRigidBodyInertia.CalculateKE(): Real;
+function TGLRigidBodyInertia.CalculateKE(): Real;
 begin
   // Result:= "Linear KE" + "Angular KE"
   // only linear part so far
   Result := 1 / (2 * Mass) * VectorNorm(LinearMomentum);
 end;
 
-function TGLxRigidBodyInertia.CalculatePE(): Real;
+function TGLRigidBodyInertia.CalculatePE(): Real;
 begin
   // need to find potentials due to fields acting on body
   // may be easier to do via forcefieldemitters?
   Result := 0;
 end;
 
-function TGLxRigidBodyInertia.CalcAngularOrientationDot(): TQuaternion;
+function TGLRigidBodyInertia.CalcAngularOrientationDot(): TQuaternion;
 var
   q1: TQuaternion;
 begin
@@ -666,20 +685,21 @@ begin
   Result := QuaternionMultiply(q1, AngularOrientation);
 end;
 
-function TGLxRigidBodyInertia.CalcAngularVelocityDot(): TAffineVector;
+function TGLRigidBodyInertia.CalcAngularVelocityDot(): TAffineVector;
 begin
   Result := fTorque;
 end;
 
-function TGLxRigidBodyInertia.QuaternionToString(Quat: TQuaternion): String;
+function TGLRigidBodyInertia.QuaternionToString(Quat: TQuaternion): String;
 begin
-  Result := '<Quaternion><imagPart>' + FloatToSTr(Quat.imagPart.x) + ',' +
-    FloatToSTr(Quat.imagPart.y) + ',' + FloatToSTr(Quat.imagPart.z) + '</imagPart><realPart>' +
-    FloatToSTr(Quat.RealPart) + '</realPart><Quaternion>';
+  Result := '<Quaternion><imagPart>' + FloatToSTr(Quat.imagPart.X) + ',' +
+    FloatToSTr(Quat.imagPart.Y) + ',' + FloatToSTr(Quat.imagPart.Z) +
+    '</imagPart><realPart>' + FloatToSTr(Quat.RealPart) +
+    '</realPart><Quaternion>';
 end;
 
 (*
-  function TGLxRigidBodyInertia.Star(Vector:TAffineVector):TGLMatrix;
+ function TGLRigidBodyInertia.Star(Vector:TAffineVector):TGLMatrix;
   begin
   Result.X.X:=0;             Result[0][1]:=-Vector[2];  Result[0][2]:=Vector[1];  Result[0][3]:=0;
   Result[1][0]:=Vector[2];   Result[1][1]:=0;           Result[1][2]:=-Vector[0]; Result[1][3]:=0;
@@ -688,34 +708,34 @@ end;
   end;
 *)
 
-procedure TGLxRigidBodyInertia.SetTorque(x, y, z: Real);
+procedure TGLRigidBodyInertia.SetTorque(x, y, z: Real);
 begin
-  fTorque.x := x;
-  fTorque.y := y;
-  fTorque.z := z;
+  fTorque.X := x;
+  fTorque.Y := y;
+  fTorque.Z := z;
 end;
 
-procedure TGLxRigidBodyInertia.ApplyTorque(x, y, z: Real);
+procedure TGLRigidBodyInertia.ApplyTorque(x, y, z: Real);
 begin
-  fTorque.x := fTorque.x + x;
-  fTorque.y := fTorque.y + y;
-  fTorque.z := fTorque.z + z;
+  fTorque.X := fTorque.X + x;
+  fTorque.Y := fTorque.Y + y;
+  fTorque.Z := fTorque.Z + z;
 end;
 
 (*
-  procedure TGLxRigidBodyInertia.ApplyImpulse(x,y,z:Real);
+procedure TGLRigidBodyInertia.ApplyImpulse(x,y,z:Real);
   begin
   //
   end;
 *)
 
-procedure TGLxRigidBodyInertia.RemoveForces();
+procedure TGLRigidBodyInertia.RemoveForces();
 begin
   fForce := nullVector;
   fTorque := nullVector;
 end;
 
-procedure TGLxRigidBodyInertia.ApplyForce(pos, Force: TVector3f);
+procedure TGLRigidBodyInertia.ApplyForce(pos, Force: TVector3f);
 var
   abspos: TAffineVector;
 begin
@@ -724,7 +744,7 @@ begin
   fForce := VectorAdd(fForce, Force);
 end;
 
-procedure TGLxRigidBodyInertia.ApplyLocalForce(pos, Force: TVector3f);
+procedure TGLRigidBodyInertia.ApplyLocalForce(pos, Force: TVector3f);
 var
   abspos: TAffineVector;
   absForce: TAffineVector;
@@ -735,24 +755,25 @@ begin
   fForce := VectorAdd(fForce, absForce);
 end;
 
-procedure TGLxRigidBodyInertia.ApplyLocalImpulse(xpos, ypos, zpos, x, y, z: Real);
+procedure TGLRigidBodyInertia.ApplyLocalImpulse(xpos, ypos, zpos, x, y,
+  z: Real);
 begin
   //
 end;
 
-procedure TGLxRigidBodyInertia.SetUpStartingState();
+procedure TGLRigidBodyInertia.SetUpStartingState();
 begin
   //
   inherited SetUpStartingState();
-  fBodyInertiaTensor.x.x := InertiaTensor.fm11;
-  fBodyInertiaTensor.x.y := InertiaTensor.fm12;
-  fBodyInertiaTensor.x.z := InertiaTensor.fm13;
-  fBodyInertiaTensor.y.x := InertiaTensor.fm21;
-  fBodyInertiaTensor.y.y := InertiaTensor.fm22;
-  fBodyInertiaTensor.y.z := InertiaTensor.fm23;
-  fBodyInertiaTensor.z.x := InertiaTensor.fm31;
-  fBodyInertiaTensor.z.y := InertiaTensor.fm32;
-  fBodyInertiaTensor.z.z := InertiaTensor.fm33;
+  fBodyInertiaTensor.X.X := InertiaTensor.fm11;
+  fBodyInertiaTensor.X.Y := InertiaTensor.fm12;
+  fBodyInertiaTensor.X.Z := InertiaTensor.fm13;
+  fBodyInertiaTensor.Y.X := InertiaTensor.fm21;
+  fBodyInertiaTensor.Y.Y  := InertiaTensor.fm22;
+  fBodyInertiaTensor.Y.Z  := InertiaTensor.fm23;
+  fBodyInertiaTensor.Z.X := InertiaTensor.fm31;
+  fBodyInertiaTensor.Z.Y := InertiaTensor.fm32;
+  fBodyInertiaTensor.Z.Z  := InertiaTensor.fm33;
 
   fBodyInverseInertiaTensor := fBodyInertiaTensor;
 
@@ -760,11 +781,12 @@ begin
   // Messagedlg('setting BodyIit: '+Format('%f,%f,%f,%f,%f,%f,%f,%f,%f',[fBodyInverseInertiaTensor[0][0],fBodyInverseInertiaTensor[0][1],fBodyInverseInertiaTensor[0][2],fBodyInverseInertiaTensor[1][0],fBodyInverseInertiaTensor[1][1],fBodyInverseInertiaTensor[1][2],fBodyInverseInertiaTensor[2][0],fBodyInverseInertiaTensor[2][1],fBodyInverseInertiaTensor[2][2]]),mtinformation,[mbok],0);
 
   AngularOrientation := IdentityQuaternion;
-  AngularMomentum := VectorTransform(RotationSpeed.AsAffineVector, fBodyInertiaTensor);
+  AngularMomentum := VectorTransform(RotationSpeed.AsAffineVector,
+    fBodyInertiaTensor);
 
 end;
 
-procedure TGLxRigidBodyInertia.CalcAuxiliary();
+procedure TGLRigidBodyInertia.CalcAuxiliary();
 var
   IRt: TAffineMAtrix;
   Rt: TAffineMAtrix;
@@ -781,7 +803,8 @@ begin
   IRt := MatrixMultiply(fBodyInverseInertiaTensor, Rt);
   InverseInertiaTensor := MatrixMultiply(R, IRt);
 
-  RotationSpeed.AsAffineVector := VectorTransform(AngularMomentum, InverseInertiaTensor);
+  RotationSpeed.AsAffineVector := VectorTransform(AngularMomentum,
+    InverseInertiaTensor);
   TranslationSpeed.AsAffineVector := VectorScale(LinearMomentum, 1 / Mass);
 
   Scale := OwnerBaseSceneObject.Scale.AsAffineVector;
@@ -792,76 +815,80 @@ begin
   // OwnerBaseSceneObject.Matrix:=QuaternionToMatrix(AngularOrientation);
   OwnerBaseSceneObject.Scale.AsAffineVector := Scale;
 
-  OwnerBaseSceneObject.position.x := LinearPosition.x; // position
-  OwnerBaseSceneObject.position.y := LinearPosition.y;
-  OwnerBaseSceneObject.position.z := LinearPosition.z;
+  OwnerBaseSceneObject.position.x := LinearPosition.X; // position
+  OwnerBaseSceneObject.position.y := LinearPosition.Y;
+  OwnerBaseSceneObject.position.z := LinearPosition.Z;
   OwnerBaseSceneObject.EndUpdate;
 
 end;
 
-procedure TGLxRigidBodyInertia.StateToArray(var StateArray: TDoubleArray; StatePos: Integer);
+procedure TGLRigidBodyInertia.StateToArray(var StateArray: TStateArray;
+  StatePos: Integer);
 begin
   // with State do
   begin
     // copy Linear Position
-    StateArray[StatePos] := LinearPosition.x;
-    StateArray[StatePos + 1] := LinearPosition.y;
-    StateArray[StatePos + 2] := LinearPosition.z;
+    StateArray[StatePos] := LinearPosition.X;
+    StateArray[StatePos + 1] := LinearPosition.Y;
+    StateArray[StatePos + 2] := LinearPosition.Z;
     // copy Linear Momentum
-    StateArray[StatePos + 3] := LinearMomentum.x;
-    StateArray[StatePos + 4] := LinearMomentum.y;
-    StateArray[StatePos + 5] := LinearMomentum.z;
+    StateArray[StatePos + 3] := LinearMomentum.X;
+    StateArray[StatePos + 4] := LinearMomentum.Y;
+    StateArray[StatePos + 5] := LinearMomentum.Z;
     // copy Angular Orientation
-    StateArray[StatePos + 6] := AngularOrientation.imagPart.x;
-    StateArray[StatePos + 7] := AngularOrientation.imagPart.y;
-    StateArray[StatePos + 8] := AngularOrientation.imagPart.z;
+    StateArray[StatePos + 6] := AngularOrientation.imagPart.X;
+    StateArray[StatePos + 7] := AngularOrientation.imagPart.Y;
+    StateArray[StatePos + 8] := AngularOrientation.imagPart.Z;
     StateArray[StatePos + 9] := AngularOrientation.RealPart;
     // copy Angular Momentum
-    StateArray[StatePos + 10] := AngularMomentum.x;
-    StateArray[StatePos + 11] := AngularMomentum.y;
-    StateArray[StatePos + 12] := AngularMomentum.z;
+    StateArray[StatePos + 10] := AngularMomentum.X;
+    StateArray[StatePos + 11] := AngularMomentum.Y;
+    StateArray[StatePos + 12] := AngularMomentum.Z;
   end;
 end;
 
-procedure TGLxRigidBodyInertia.ArrayToState( { var } StateArray: TDoubleArray; StatePos: Integer);
+procedure TGLRigidBodyInertia.ArrayToState( { var } StateArray: TStateArray;
+  StatePos: Integer);
 begin
   // restore Linear Position
-  LinearPosition.x := StateArray[StatePos];
-  LinearPosition.y := StateArray[StatePos + 1];
-  LinearPosition.z := StateArray[StatePos + 2];
+  LinearPosition.X := StateArray[StatePos];
+  LinearPosition.Y := StateArray[StatePos + 1];
+  LinearPosition.Z := StateArray[StatePos + 2];
   // restore Linear Momentum
-  LinearMomentum.x := StateArray[StatePos + 3];
-  LinearMomentum.y := StateArray[StatePos + 4];
-  LinearMomentum.z := StateArray[StatePos + 5];
+  LinearMomentum.X := StateArray[StatePos + 3];
+  LinearMomentum.Y := StateArray[StatePos + 4];
+  LinearMomentum.Z := StateArray[StatePos + 5];
   // restore Angular Orientation
-  AngularOrientation.imagPart.x := StateArray[StatePos + 6];
-  AngularOrientation.imagPart.y := StateArray[StatePos + 7];
-  AngularOrientation.imagPart.z := StateArray[StatePos + 8];
+  AngularOrientation.imagPart.X := StateArray[StatePos + 6];
+  AngularOrientation.imagPart.Y := StateArray[StatePos + 7];
+  AngularOrientation.imagPart.Z := StateArray[StatePos + 8];
   AngularOrientation.RealPart := StateArray[StatePos + 9];
   // restore Angular Momentum
-  AngularMomentum.x := StateArray[StatePos + 10];
-  AngularMomentum.y := StateArray[StatePos + 11];
-  AngularMomentum.z := StateArray[StatePos + 12];
+  AngularMomentum.X := StateArray[StatePos + 10];
+  AngularMomentum.Y := StateArray[StatePos + 11];
+  AngularMomentum.Z := StateArray[StatePos + 12];
 end;
 
-procedure TGLxRigidBodyInertia.SetLinearDamping(const val: TGLDamping);
+procedure TGLRigidBodyInertia.SetLinearDamping(const val: TGLDamping);
 begin
   // FLinearDamping.Assign(val);
 end;
 
-procedure TGLxRigidBodyInertia.SetAngularDamping(const val: TGLDamping);
+
+procedure TGLRigidBodyInertia.SetAngularDamping(const val: TGLDamping);
 begin
   // FAngularDamping.Assign(val);
 end;
 
-constructor TGLxRigidBodyInertia.Create(aOwner: TXCollection);
+
+constructor TGLRigidBodyInertia.Create(aOwner: TXCollection);
 begin
   inherited Create(aOwner);
   Mass := 1;
   fDensity := 1;
   StateSize := 13;
 
-  fInertiaTensor := TGLxInertiaTensor.Create(Self);
+  fInertiaTensor := TGLInertiaTensor.Create(Self);
   fRotationSpeed := TGLCoordinates.CreateInitialized(Self, VectorMake(0, 0, 0));
 
   // LinearPosition:=OwnerBaseSceneObject.Position.AsAffineVector;
@@ -882,7 +909,7 @@ begin
   // SetDESolver(ssEuler);
 end;
 
-destructor TGLxRigidBodyInertia.Destroy;
+destructor TGLRigidBodyInertia.Destroy;
 begin
   // FLinearDamping.Free;
   // FAngularDamping.Free;
@@ -893,57 +920,58 @@ begin
   inherited Destroy;
 end;
 
-procedure TGLxRigidBodyInertia.Assign(Source: TPersistent);
+procedure TGLRigidBodyInertia.Assign(Source: TPersistent);
 begin
   if Source.ClassType = Self.ClassType then
   begin
-    // FRigidBody.Assign(TGLxRigidBodyInertia(Source));
+    // FRigidBody.Assign(TGLRigidBodyInertia(Source));
 
-    Mass := TGLxRigidBodyInertia(Source).Mass;
-    fDensity := TGLxRigidBodyInertia(Source).fDensity;
-    fBodyInertiaTensor := TGLxRigidBodyInertia(Source).fBodyInertiaTensor;
-    fBodyInverseInertiaTensor := TGLxRigidBodyInertia(Source).fBodyInverseInertiaTensor;
+    Mass := TGLRigidBodyInertia(Source).Mass;
+    fDensity := TGLRigidBodyInertia(Source).fDensity;
+    fBodyInertiaTensor := TGLRigidBodyInertia(Source).fBodyInertiaTensor;
+    fBodyInverseInertiaTensor := TGLRigidBodyInertia(Source)
+      .fBodyInverseInertiaTensor;
 
-    InertiaTensor.Assign(TGLxRigidBodyInertia(Source).InertiaTensor);
+    InertiaTensor.Assign(TGLRigidBodyInertia(Source).InertiaTensor);
 
-    LinearPosition := TGLxRigidBodyInertia(Source).LinearPosition;
-    AngularOrientation := TGLxRigidBodyInertia(Source).AngularOrientation;
+    LinearPosition := TGLRigidBodyInertia(Source).LinearPosition;
+    AngularOrientation := TGLRigidBodyInertia(Source).AngularOrientation;
 
-    LinearMomentum := TGLxRigidBodyInertia(Source).LinearMomentum;
-    AngularMomentum := TGLxRigidBodyInertia(Source).AngularMomentum;
+    LinearMomentum := TGLRigidBodyInertia(Source).LinearMomentum;
+    AngularMomentum := TGLRigidBodyInertia(Source).AngularMomentum;
 
-    // TranslationSpeed.AsAffineVector:=TGLxRigidBodyInertia(Source).TranslationSpeed.AsAffineVector;
-    RotationSpeed.Assign(TGLxRigidBodyInertia(Source).RotationSpeed);
+    // TranslationSpeed.AsAffineVector:=TGLRigidBodyInertia(Source).TranslationSpeed.AsAffineVector;
+    RotationSpeed.Assign(TGLRigidBodyInertia(Source).RotationSpeed);
 
-    // fForce:=TGLxRigidBodyInertia(Source).fForce;
-    fTorque := TGLxRigidBodyInertia(Source).fTorque;
+    // fForce:=TGLRigidBodyInertia(Source).fForce;
+    fTorque := TGLRigidBodyInertia(Source).fTorque;
 
-    // fInverseInertiaTensor:=TGLxRigidBodyInertia(Source).fInverseInertiaTensor;
+    // fInverseInertiaTensor:=TGLRigidBodyInertia(Source).fInverseInertiaTensor;
 
-    // RigidBody.fTorque:=TGLxRigidBodyInertia(Source).fTorque;
-    // RigidBody.fForce:=TGLxRigidBodyInertia(Source).fForce;
+    // RigidBody.fTorque:=TGLRigidBodyInertia(Source).fTorque;
+    // RigidBody.fForce:=TGLRigidBodyInertia(Source).fForce;
 
-    FRotationDamping.Assign(TGLxRigidBodyInertia(Source).FRotationDamping);
+    FRotationDamping.Assign(TGLRigidBodyInertia(Source).FRotationDamping);
 
-    // DampingEnabled:=TGLxRigidBodyInertia(Source).DampingEnabled;
-    // FTranslationDamping.Assign(TGLxRigidBodyInertia(Source).LinearDamping);
-    // FRotationDamping.Assign(TGLxRigidBodyInertia(Source).AngularDamping);
+    // DampingEnabled:=TGLRigidBodyInertia(Source).DampingEnabled;
+    // FTranslationDamping.Assign(TGLRigidBodyInertia(Source).LinearDamping);
+    // FRotationDamping.Assign(TGLRigidBodyInertia(Source).AngularDamping);
 
   end;
   inherited Assign(Source);
 end;
 
-class function TGLxRigidBodyInertia.FriendlyName: String;
+class function TGLRigidBodyInertia.FriendlyName: String;
 begin
   Result := 'Rigid Body Inertia';
 end;
 
-class function TGLxRigidBodyInertia.FriendlyDescription: String;
+class function TGLRigidBodyInertia.FriendlyDescription: String;
 begin
   Result := 'An inertia model for rigid bodies';
 end;
 
-class function TGLxRigidBodyInertia.UniqueItem: Boolean;
+class function TGLRigidBodyInertia.UniqueItem: Boolean;
 begin
   Result := True;
 end;
@@ -953,7 +981,7 @@ end;
 // **************************************************************************
 
 (*
-  procedure TGLxRigidBodyInertia.DoProgress(const progressTime : TProgressTimes);
+procedure TGLRigidBodyInertia.DoProgress(const progressTime : TProgressTimes);
   var
   TempScale:TaffineVector;
   UndampedLinearMomentum,DampedLinearMomentum:Real;
@@ -1005,7 +1033,7 @@ end;
   end;
 *)
 
-procedure TGLxRigidBodyInertia.WriteToFiler(writer: TWriter);
+procedure TGLRigidBodyInertia.WriteToFiler(writer: TWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -1038,7 +1066,7 @@ begin
   end;
 end;
 
-procedure TGLxRigidBodyInertia.ReadFromFiler(reader: TReader);
+procedure TGLRigidBodyInertia.ReadFromFiler(reader: TReader);
 begin
   inherited ReadFromFiler(reader);
   with reader do
@@ -1073,20 +1101,22 @@ begin
   SetUpStartingState();
 end;
 
-function GetOrCreateRigidBodyInertia(Behaviours: TGLBehaviours): TGLxRigidBodyInertia;
+function GetOrCreateRigidBodyInertia(behaviours: TGLBehaviours)
+  : TGLRigidBodyInertia;
 var
   i: Integer;
 begin
-  i := Behaviours.IndexOfClass(TGLxRigidBodyInertia);
+  i := behaviours.IndexOfClass(TGLRigidBodyInertia);
   if i >= 0 then
-    Result := TGLxRigidBodyInertia(Behaviours[i])
+    Result := TGLRigidBodyInertia(behaviours[i])
   else
-    Result := TGLxRigidBodyInertia.Create(Behaviours);
+    Result := TGLRigidBodyInertia.Create(behaviours);
 end;
 
-function GetOrCreateRigidBodyInertia(obj: TGLBaseSceneObject): TGLxRigidBodyInertia;
+function GetOrCreateRigidBodyInertia(obj: TGLBaseSceneObject)
+  : TGLRigidBodyInertia;
 begin
-  Result := GetOrCreateRigidBodyInertia(obj.Behaviours);
+  Result := GetOrCreateRigidBodyInertia(obj.behaviours);
 end;
 
 // ------------------------------------------------------------------
@@ -1094,7 +1124,7 @@ initialization
 // ------------------------------------------------------------------
 
 // class registrations
-RegisterXCollectionItemClass(TGLxParticleInertia);
-RegisterXCollectionItemClass(TGLxRigidBodyInertia);
+RegisterXCollectionItemClass(TGLParticleInertia);
+RegisterXCollectionItemClass(TGLRigidBodyInertia);
 
 end.

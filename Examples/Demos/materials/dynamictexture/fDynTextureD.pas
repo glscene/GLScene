@@ -23,7 +23,7 @@ uses
   GLS.RenderContextInfo, 
   GLS.Context, 
   GLS.DynamicTexture, 
-  GLS.Utils;
+  GLS.Utils, GLS.Navigator, GLS.SimpleNavigation;
 
 type
   TFormDynamicTexture = class(TForm)
@@ -37,6 +37,7 @@ type
     GLDirectOpenGL1: TGLDirectOpenGL;
     Cadencer: TGLCadencer;
     Timer: TTimer;
+    GLSimpleNavigation1: TGLSimpleNavigation;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormResize(Sender: TObject);
     procedure FormCreate(Sender: TObject);

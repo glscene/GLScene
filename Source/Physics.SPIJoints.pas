@@ -1,7 +1,7 @@
 //
-// The graphics platform GLScene https://github.com/glscene
+// The graphics rendering engine GLScene http://glscene.org
 //
-unit Physics.GLxJoints;
+unit Physics.SPIJoints;
 
 (*
   This unit isn't used at all at the moment, just putting down some ideas
@@ -35,15 +35,15 @@ type
     //     X(n) = Common normal between joint axis Z(n-1) & Z(n)
   *)
 
-  TGLxBaseJoint = class(TObject)
+  TGLBaseJoint = class(TObject)
   end;
 
-  TGLxBaseLink = class(TObject)
+  TGLBaseLink = class(TObject)
   end;
 
-  TGLxJoint = class(TGLxBaseJoint)
-    Link1: TGLxBaseLink; // if Link1 is nil, assumed to be base
-    Link2: TGLxBaseLink; // if Link2 is nil, assumed to be wrist
+  TGLJoint = class(TGLBaseJoint)
+    Link1: TGLBaseLink; // if Link1 is nil, assumed to be base
+    Link2: TGLBaseLink; // if Link2 is nil, assumed to be wrist
     // Object1:TGLBaseSceneObject;
     // Object2:TGLBaseSceneObject;
   end;
@@ -51,7 +51,7 @@ type
   // Links are mainly for used for Serial-Link manipulators
 
   // Direct & Inverse Kinematics algorithms are planned
-  TGLxLink = class(TGLxBaseLink)
+  TGLLink = class(TGLBaseLink)
     // Link Parameters
     fLinkLength: Real; // Length of common normal which is orthogonal to both
     // joint axes Z[n-1] and Z[n] (a.k.a.  L)
@@ -91,7 +91,7 @@ type
   // \_/
   //
 *)
-  TGLxType1Link = class(TGLxLink)
+  TGLType1Link = class(TGLLink)
     Length: Real; // fixed
     Angle: Real; // variable
 (*
@@ -120,7 +120,7 @@ type
   // |___.___|
   //
 *)
-  TGLxType2Link = class(TGLxLink)
+  TGLType2Link = class(TGLLink)
     Length: Real; // fixed
     Angle: Real; // variable
     constructor Create(Length, Angle: Real);
@@ -139,7 +139,7 @@ type
   // _|_|_
   // |__.__|
 *)
-  TGLxType3Link = class(TGLxLink)
+  TGLType3Link = class(TGLLink)
     Length: Real; // fixed
     Angle: Real; // variable
 (*
@@ -153,7 +153,7 @@ type
     constructor Create(Length, Angle: Real);
   end;
 
-  TGLxType4Link = class(TGLxLink)
+  TGLType4Link = class(TGLLink)
     Length: Real; // fixed
     Angle: Real; // variable
     constructor Create(Length, Angle: Real);
@@ -176,42 +176,42 @@ type
   // V
   //
 *)
-  TGLxType5Link = class(TGLxLink)
+  TGLType5Link = class(TGLLink)
     Length: Real; // variable
     constructor Create(Length, Angle: Real);
   end;
 
-  TGLxType6Link = class(TGLxLink)
+  TGLType6Link = class(TGLLink)
     Length: Real; // fixed
     Angle: Real; // variable
     constructor Create(Length, Angle: Real);
   end;
 
-  TGLxType7Link = class(TGLxLink)
+  TGLType7Link = class(TGLLink)
     Length: Real; // fixed
     Angle: Real; // variable
     constructor Create(Length, Angle: Real);
   end;
 
-  TGLxType8Link = class(TGLxLink)
+  TGLType8Link = class(TGLLink)
     Length: Real; // variable
     constructor Create(Length, Angle: Real);
   end;
 
-  TGLxPrismaticJoint = class(TGLxJoint)
+  TGLPrismaticJoint = class(TGLJoint)
   end;
 
-  TGLxRevoluteJoint = class(TGLxJoint)
+  TGLRevoluteJoint = class(TGLJoint)
   end;
 
-  TGLxBallAndSocketJoint = class(TGLxJoint)
+  TGLBallAndSocketJoint = class(TGLJoint)
   end;
 
 //======================================================================
 implementation
 //======================================================================
 
-constructor TGLxLink.Create(LinkLength, TwistAngle, LinkAngle,
+constructor TGLLink.Create(LinkLength, TwistAngle, LinkAngle,
   LinkDistance: Real);
 begin
   fLinkLength := LinkLength;
@@ -220,42 +220,42 @@ begin
   fLinkDistance := LinkDistance;
 end;
 
-constructor TGLxType1Link.Create(Length, Angle: Real);
+constructor TGLType1Link.Create(Length, Angle: Real);
 begin
   inherited Create(Length, 0, Angle, 0);
 end;
 
-constructor TGLxType2Link.Create(Length, Angle: Real);
+constructor TGLType2Link.Create(Length, Angle: Real);
 begin
   inherited Create(Length, 0, Angle, 0);
 end;
 
-constructor TGLxType3Link.Create(Length, Angle: Real);
+constructor TGLType3Link.Create(Length, Angle: Real);
 begin
   inherited Create(Length, 0, Angle, 0);
 end;
 
-constructor TGLxType4Link.Create(Length, Angle: Real);
+constructor TGLType4Link.Create(Length, Angle: Real);
 begin
   inherited Create(Length, 0, Angle, 0);
 end;
 
-constructor TGLxType5Link.Create(Length, Angle: Real);
+constructor TGLType5Link.Create(Length, Angle: Real);
 begin
   inherited Create(Length, 0, Angle, 0);
 end;
 
-constructor TGLxType6Link.Create(Length, Angle: Real);
+constructor TGLType6Link.Create(Length, Angle: Real);
 begin
   inherited Create(Length, 0, Angle, 0);
 end;
 
-constructor TGLxType7Link.Create(Length, Angle: Real);
+constructor TGLType7Link.Create(Length, Angle: Real);
 begin
   inherited Create(Length, 0, Angle, 0);
 end;
 
-constructor TGLxType8Link.Create(Length, Angle: Real);
+constructor TGLType8Link.Create(Length, Angle: Real);
 begin
   inherited Create(Length, 0, Angle, 0);
 end;

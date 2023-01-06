@@ -25,8 +25,6 @@ object FormMultiMat: TFormMultiMat
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     TabOrder = 0
-    ExplicitWidth = 447
-    ExplicitHeight = 312
   end
   object GLScene1: TGLScene
     Left = 24

@@ -13,7 +13,6 @@ object Form1: TForm1
   Position = poScreenCenter
   OnCreate = FormCreate
   OnResize = FormResize
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
@@ -179,15 +178,13 @@ object Form1: TForm1
       end
       item
         Name = 'Surround'
-        Tag = 0
+        Tag = 1
         Material.MaterialOptions = [moNoLighting]
-        Material.Texture.ImageClassName = 'TGLCompositeImage'
-        Material.Texture.Image.Width = 256
-        Material.Texture.Image.Height = 256
-        Material.Texture.Image.Depth = 0
-        Material.Texture.TextureWrap = twSeparate
+        Material.Texture.MagFilter = maNearest
+        Material.Texture.MinFilter = miNearest
         Material.Texture.TextureWrapS = twMirrorRepeat
         Material.Texture.TextureWrapR = twMirrorRepeat
+        Material.Texture.Compression = tcNone
         Material.Texture.Disabled = False
         TextureScale.Coordinates = {000080400000803F0000803F00000000}
       end

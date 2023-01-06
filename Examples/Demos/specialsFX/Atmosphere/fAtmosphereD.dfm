@@ -25,8 +25,6 @@ object FormAtmosphere: TFormAtmosphere
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 495
-    ExplicitHeight = 485
   end
   object Panel1: TPanel
     Left = 0
@@ -35,7 +33,6 @@ object FormAtmosphere: TFormAtmosphere
     Height = 475
     Align = alLeft
     TabOrder = 1
-    ExplicitHeight = 485
     object Label1: TLabel
       Left = 13
       Top = 368

@@ -2,26 +2,29 @@ object FormSimpleNavigation: TFormSimpleNavigation
   Left = 326
   Top = 126
   Caption = 'Simple Navigation'
-  ClientHeight = 268
-  ClientWidth = 395
+  ClientHeight = 357
+  ClientWidth = 514
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 395
-    Height = 268
+    Width = 514
+    Height = 357
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 139.075454711914100000
+    FieldOfView = 148.703598022460900000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 492
+    ExplicitHeight = 338
   end
   object GLScene1: TGLScene
     Left = 48

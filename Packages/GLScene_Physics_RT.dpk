@@ -35,19 +35,21 @@ requires
   GLScene_RT;
 
 contains
+  Physics.NewtonImport in '..\Source\Physics.NewtonImport.pas',
+  Physics.NGDManager in '..\Source\Physics.NGDManager.pas',
+  Physics.NGDRagdoll in '..\Source\Physics.NGDRagdoll.pas',
+  Physics.NGDImport in '..\Source\Physics.NGDImport.pas',
   Physics.ODEImport in '..\Source\Physics.ODEImport.pas',
   Physics.ODEManager in '..\Source\Physics.ODEManager.pas',
   Physics.ODERagdoll in '..\Source\Physics.ODERagdoll.pas',
   Physics.ODESkeletonColliders in '..\Source\Physics.ODESkeletonColliders.pas',
   Physics.ODEUtils in '..\Source\Physics.ODEUtils.pas',
-  Physics.GLxInertias in '..\Source\Physics.GLxInertias.pas',
-  Physics.GLxJoints in '..\Source\Physics.GLxJoints.pas',
-  Physics.GLxManager in '..\Source\Physics.GLxManager.pas',
-  Physics.PhysXImport in '..\Source\Physics.PhysXImport.pas',
-  Physics.NGDImport in '..\Source\Physics.NGDImport.pas',
-  Physics.NGDManager in '..\Source\Physics.NGDManager.pas',
-  Physics.NewtonImport in '..\Source\Physics.NewtonImport.pas',
-  Physics.NGDRagdoll in '..\Source\Physics.NGDRagdoll.pas';
+  Physics.SPIFields in '..\Source\Physics.SPIFields.pas',
+  Physics.SPIForces in '..\Source\Physics.SPIForces.pas',
+  Physics.SPIInertias in '..\Source\Physics.SPIInertias.pas',
+  Physics.SPIJoints in '..\Source\Physics.SPIJoints.pas',
+  Physics.SPIManager in '..\Source\Physics.SPIManager.pas',
+  Physics.PhysXImport in '..\Source\Physics.PhysXImport.pas';
 
 end.
 

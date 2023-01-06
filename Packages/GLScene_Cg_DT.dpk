@@ -34,8 +34,8 @@ requires
   rtl,
   designide,
   VclSmp,
-  GLScene_DT,
-  GLScene_Cg_RT;
+  GLScene_Cg_RT,
+  GLScene_DT;
 
 contains
   Cg.Register in '..\Source\Cg.Register.pas';

@@ -28,23 +28,21 @@ object Form1: TForm1
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
-    ExplicitWidth = 540
-    ExplicitHeight = 384
   end
-  object Button1: TButton
-    Left = 200
+  object btnApply: TButton
+    Left = 240
     Top = 16
-    Width = 163
+    Width = 105
     Height = 25
-    Caption = 'Apply Cube Environment Map'
+    Caption = 'Apply Cube Map'
     TabOrder = 1
-    OnClick = Button1Click
+    OnClick = btnApplyClick
   end
   object GLScene1: TGLScene
     Left = 24
     Top = 8
     object DummyCube1: TGLDummyCube
-      CubeSize = 0.800000011920929000
+      CubeSize = 1.000000000000000000
       VisibleAtRunTime = True
     end
     object GLLightSource1: TGLLightSource
@@ -54,6 +52,12 @@ object Form1: TForm1
     end
     object Teapot1: TGLTeapot
       Material.Texture.TextureMode = tmReplace
+    end
+    object Plane1: TGLPlane
+      Position.Coordinates = {0000000000000000000000BF0000803F}
+      Up.Coordinates = {0000803F000000000000008000000000}
+      Height = 1.000000000000000000
+      Width = 1.000000000000000000
     end
     object GLCamera1: TGLCamera
       DepthOfView = 100.000000000000000000

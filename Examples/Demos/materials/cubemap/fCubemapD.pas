@@ -1,5 +1,7 @@
 unit fCubemapD;
+
 interface
+
 uses
   System.SysUtils,
   System.Classes,
@@ -13,11 +15,13 @@ uses
   GLS.SceneViewer,
   GLS.Objects,
   GLS.Texture,
+  GLS.FileDDS,
   GLS.Context,
   GLS.Utils,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.GeomObjects;
+
 type
   TFormCubeMap = class(TForm)
     GLScene1: TGLScene;
@@ -25,31 +29,38 @@ type
     GLCamera1: TGLCamera;
     DummyCube1: TGLDummyCube;
     GLLightSource1: TGLLightSource;
-    ButtonApply: TButton;
+    btnApply: TButton;
     Teapot1: TGLTeapot;
-    procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
+    Cylinder1: TGLCylinder;
+    Cone1: TGLCone;
+    Plane1: TGLPlane;
+    procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
       X, Y: Integer);
-    procedure GLSceneViewer1MouseDown(Sender: TObject;
-      Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
-    procedure ButtonApplyClick(Sender: TObject);
+    procedure btnApplyClick(Sender: TObject);
     procedure GLSceneViewer1BeforeRender(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
+    Path: TFileName;
     CubmapSupported: Boolean;
-    CubemapPath: TFilename;
+    CubemapPath: TFileName;
     Cubemap: TGLTexture;
   public
     mx, my: Integer;
   end;
+
 var
   FormCubeMap: TFormCubeMap;
+
 implementation
+
 {$R *.dfm}
+
 procedure TFormCubeMap.FormCreate(Sender: TObject);
 begin
   // Our cube map images are here
-  var Path: TFileName := GetCurrentAssetPath();
-  SetCurrentDir(Path  + '\cubemap');  
+  Path := GetCurrentAssetPath();
+  SetCurrentDir(Path + '\cubemap');
 end;
 
 procedure TFormCubeMap.GLSceneViewer1BeforeRender(Sender: TObject);
@@ -57,7 +68,8 @@ begin
   CubmapSupported := GL.ARB_texture_cube_map;
   GLSceneViewer1.BeforeRender := nil;
 end;
-procedure TFormCubeMap.ButtonApplyClick(Sender: TObject);
+
+procedure TFormCubeMap.btnApplyClick(Sender: TObject);
 begin
   // Cube map warning message
   // If you don't check and turn off cube maps yourself in your apps when
@@ -92,26 +104,37 @@ begin
     // That's all folks, let us see the thing!
     Disabled := False;
   end;
-  ButtonApply.Visible := False;
+
+  // apply .dds cubemaps to next objects
+  DDStex(Cylinder1.Material.Texture, 'skybox.dds');
+  Cylinder1.Material.Texture.MappingMode := tmmEyeLinear;
+  DDStex(Cone1.Material.Texture, 'skybox.dds');
+  Cone1.Material.Texture.MappingMode := tmmEyeLinear;
+  DDStex(Plane1.Material.Texture, 'skybox.dds');
+  Plane1.Material.Texture.MappingMode := tmmEyeLinear;
+
+  btnApply.Visible := False;
 end;
+
 // standard issue handlers for mouse movement
-procedure TFormCubeMap.GLSceneViewer1MouseDown(Sender: TObject;
-  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
-begin
-  mx := x;
-  my := y;
-end;
-procedure TFormCubeMap.GLSceneViewer1MouseMove(Sender: TObject;
+procedure TFormCubeMap.GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
+begin
+  mx := X;
+  my := Y;
+end;
+
+procedure TFormCubeMap.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
 begin
   if Shift <> [] then
   begin
     if ssLeft in Shift then
-      GLCamera1.MoveAroundTarget(my - y, mx - x)
+      GLCamera1.MoveAroundTarget(my - Y, mx - X)
     else
-      GLCamera1.RotateTarget(my - y, mx - x);
-    mx := x;
-    my := y;
+      GLCamera1.RotateTarget(my - Y, mx - X);
+    mx := X;
+    my := Y;
   end;
 end;
+
 end.

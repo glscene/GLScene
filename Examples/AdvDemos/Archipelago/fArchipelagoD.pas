@@ -17,7 +17,7 @@ uses
   Vcl.Dialogs, 
   Vcl.Imaging.Jpeg,
 
-  GLS.Scene, 
+  GLS.Scene,
   GLS.Cadencer, 
   GLS.Objects, 
   GLS.TerrainRenderer,
@@ -44,7 +44,7 @@ uses
   GLS.State,
   GLS.TextureFormat,
   GLS.File3DS,
-  GLS.Utils;
+  GLS.Utils, GLS.Navigator;
 
 type
   TForm1 = class(TForm)
@@ -85,6 +85,7 @@ type
     procedure doWakeRender(Sender: TObject; var rci: TGLRenderContextInfo);
     procedure TerrainRendererHeightDataPostRender(var rci: TGLRenderContextInfo;
       var HeightDatas: TList);
+    procedure FormShow(Sender: TObject);
   public
     FullScreen: Boolean;
     CamHeight: Single;
@@ -450,6 +451,12 @@ begin
   Key := #0;
 end;
 
+procedure TForm1.FormShow(Sender: TObject);
+begin
+  TerrainRenderer.Up.SetVector(0, 0, 1);
+  TerrainRenderer.Direction.SetVector(0, 1, 0);
+end;
+
 procedure TForm1.GLCustomHDS1MarkDirtyEvent(const area: TRect);
 begin
   GLHeightTileFileHDS1.MarkDirty(area);
@@ -463,7 +470,7 @@ var
 begin
 
   htfHD := GLHeightTileFileHDS1.GetData(heightData.XLeft, heightData.YTop, heightData.Size, heightData.DataType);
-  if (htfHD.DataState = hdsNone) then //or (htfHD.HeightMax<=cWaterLevel-cWaterOpaqueDepth) then
+  if (htfHD.DataState = hdsNone) then //or (htfHD.HeightMax <= cWaterLevel - cWaterOpaqueDepth) then
     heightData.DataState := hdsNone
   else
   begin

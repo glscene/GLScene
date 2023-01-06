@@ -97,8 +97,12 @@ var
 begin
   var Path: TFileName := GetCurrentAssetPath();
   SetCurrentDir(Path  + '\texture');
-  GLMaterialLibrary1.TextureByName('Surround').Image.LoadFromFile('WheatFld.JPG');
-    SetCurrentDir(Path  + '\shader');
+
+  // loadable only for Persistent Images
+  GLMaterialLibrary1.TextureByName('Surround').Image.LoadFromFile('wheatfld.jpg');
+  GLMaterialLibrary1.TextureByName('Surround').Disabled := False;
+
+  SetCurrentDir(Path  + '\shader');
   GLSLShader1.LoadShaderPrograms('OIT_vtx.glsl','OIT_frag.glsl');
   GLSLShader1.Enabled := true;
 

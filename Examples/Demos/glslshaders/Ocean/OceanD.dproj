@@ -127,8 +127,6 @@
         <DCCReference Include="fOceanD.pas">
             <Form>Form1</Form>
         </DCCReference>
-        <None Include="..\..\..\media\Shaders\ocean_fp.glsl"/>
-        <None Include="..\..\..\media\Shaders\Shader.Vert"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -161,18 +159,6 @@
                 <Platform value="Win64">True</Platform>
             </Platforms>
             <Deployment Version="3">
-                <DeployFile LocalName="..\..\..\media\Shaders\ocean_fp.glsl" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="..\..\..\media\Shaders\Shader.Vert" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\OceanD.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>OceanD.exe</RemoteName>

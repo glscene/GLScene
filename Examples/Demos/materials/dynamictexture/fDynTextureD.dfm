@@ -2,35 +2,32 @@ object FormDynamicTexture: TFormDynamicTexture
   Left = 407
   Top = 201
   Caption = 'Dynamic Texture'
-  ClientHeight = 453
-  ClientWidth = 548
+  ClientHeight = 415
+  ClientWidth = 600
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnResize = FormResize
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object SceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 548
-    Height = 453
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 600
+    Height = 415
     Camera = GLCamera1
     Buffer.BackgroundColor = clGray
-    FieldOfView = 155.103134155273400000
+    FieldOfView = 152.904129028320300000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 440
+    ExplicitHeight = 362
   end
   object Scene: TGLScene
     Left = 64
@@ -80,5 +77,25 @@ object FormDynamicTexture: TFormDynamicTexture
     OnTimer = TimerTimer
     Left = 160
     Top = 88
+  end
+  object GLSimpleNavigation1: TGLSimpleNavigation
+    Form = Owner
+    GLSceneViewer = SceneViewer
+    FormCaption = 'Dynamic Texture - %FPS'
+    KeyCombinations = <
+      item
+        ShiftState = [ssLeft, ssRight]
+        Action = snaZoom
+      end
+      item
+        ShiftState = [ssLeft]
+        Action = snaMoveAroundTarget
+      end
+      item
+        ShiftState = [ssRight]
+        Action = snaMoveAroundTarget
+      end>
+    Left = 392
+    Top = 24
   end
 end
