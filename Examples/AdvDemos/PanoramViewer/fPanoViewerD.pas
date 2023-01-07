@@ -60,12 +60,12 @@ type
       const deltaTime, newTime: Double);
     procedure FormCreate(Sender: TObject);
   private
-
+    Path: TFileName;
     mx, my: Integer;
-    pitch, yaw: single; // in degree
+    pitch, yaw: single; // in degrees
     procedure PanCameraAround(dx, dy: single);
   public
-     
+
   end;
 
 var
@@ -74,6 +74,15 @@ var
 implementation
 
 {$R *.DFM}
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  Path := ExtractFilePath(ParamStr(0)); // or GetCurrentAssetPath() + '\Panorama';
+  GetDir(0, Path);
+  OpenPictureDialog1.InitialDir := Path + '\Panorama';
+  OpenPictureDialog1.FileName := 'sejourstmathieu2048.jpg';
+end;
+
 
 procedure TForm1.GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
@@ -100,8 +109,6 @@ end;
 
 procedure TForm1.BtnLoadClick(Sender: TObject);
 begin
-  var Path: TFileName := GetCurrentAssetPath();
-  OpenPictureDialog1.InitialDir := Path + '\Panorama';
   with OpenPictureDialog1 do
     if Execute then
       GLMaterialLibrary1.Materials[0].Material.Texture.Image.LoadFromFile
@@ -139,12 +146,6 @@ begin
   if IsKeyDown(VK_DOWN) then
     dy := dy - delta;
   PanCameraAround(dx, dy);
-end;
-
-procedure TForm1.FormCreate(Sender: TObject);
-begin
-  OpenPictureDialog1.InitialDir := ExtractFilePath(ParamStr(0));
-  OpenPictureDialog1.FileName := 'sejourstmathieu2048.jpg';
 end;
 
 procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word;

@@ -34,7 +34,7 @@ type
     GLSceneViewer: TGLSceneViewer;
     GLCamera1: TGLCamera;
     DummyCube: TGLDummyCube;
-    Sphere: TGLSphere;
+    SphereSound: TGLSphere;
     GLLightSource: TGLLightSource;
     GLSoundLibrary: TGLSoundLibrary;
     GLSMBASS: TGLSMBASS;
@@ -53,7 +53,7 @@ type
     btnChimes: TButton;
     btnHowl: TButton;
     LabelFPS: TLabel;
-    procedure SphereProgress(Sender: TObject; const deltaTime, newTime: Double);
+    procedure SphereSoundProgress(Sender: TObject; const deltaTime, newTime: Double);
     procedure TimerTimer(Sender: TObject);
     procedure TrackBarChange(Sender: TObject);
     procedure TrackBar1Change(Sender: TObject);
@@ -83,7 +83,7 @@ begin
   GLSoundLibrary.Samples.AddFile('howl.mp3', 'howl.mp3');
 end;
 
-procedure TFormSoundBASS.SphereProgress(Sender: TObject;
+procedure TFormSoundBASS.SphereSoundProgress(Sender: TObject;
   const deltaTime, newTime: Double);
 var
   alpha: Single;

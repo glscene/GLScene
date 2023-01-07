@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 201
   Top = 129
   Caption = 'Simple Spherical Pano Viewer - Use mouse or arrow keys to pan'
-  ClientHeight = 267
-  ClientWidth = 504
+  ClientHeight = 351
+  ClientWidth = 533
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,14 +13,15 @@ object Form1: TForm1
   KeyPreview = True
   Position = poScreenCenter
   WindowState = wsMaximized
+  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnMouseWheel = FormMouseWheel
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 46
-    Width = 504
-    Height = 221
+    Width = 533
+    Height = 305
     Cursor = crHandPoint
     Margins.Left = 2
     Margins.Top = 2
@@ -29,19 +30,18 @@ object Form1: TForm1
     Camera = GLCamera1
     Buffer.FaceCulling = False
     Buffer.Lighting = False
-    FieldOfView = 140.200408935546900000
+    FieldOfView = 150.605361938476600000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
-    ExplicitWidth = 634
-    ExplicitHeight = 299
+    ExplicitHeight = 291
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 504
+    Width = 533
     Height = 46
     Margins.Left = 2
     Margins.Top = 2
@@ -57,7 +57,7 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    ExplicitWidth = 634
+    ExplicitWidth = 504
     object LabelYaw: TLabel
       Left = 249
       Top = 8

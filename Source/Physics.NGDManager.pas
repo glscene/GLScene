@@ -1481,8 +1481,7 @@ begin
   if (FOwnerBaseSceneObject is TGLCube) then
   begin
     with (FOwnerBaseSceneObject as TGLCube) do
-      Result := NewtonCreateBox(FManager.FNewtonWorld, CubeWidth, CubeHeight, CubeDepth, 0,
-        @collisionOffsetMatrix);
+      Result := NewtonCreateBox(FManager.FNewtonWorld, CubeWidth, CubeHeight, CubeDepth, 0, @collisionOffsetMatrix);
   end
 
   else if (FOwnerBaseSceneObject is TGLSphere) then

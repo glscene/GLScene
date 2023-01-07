@@ -55,11 +55,13 @@ class TForm1 : public TForm
     void __fastcall FormKeyDown(TObject* Sender, WORD &Key, TShiftState Shift);
     void __fastcall FormMouseWheel(TObject* Sender, TShiftState Shift,
         int WheelDelta, TPoint &MousePos, bool &Handled);
+	void __fastcall FormCreate(TObject *Sender);
   private: // User declarations
     int mx, my;
     float pitch, yaw; // in degree
     void PanCameraAround(float dx, float dy);
   public: // User declarations
+    TFileName Path;
     __fastcall TForm1(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
