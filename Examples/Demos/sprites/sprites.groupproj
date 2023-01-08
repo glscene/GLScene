@@ -9,6 +9,9 @@
         <Projects Include="caterpillar\CaterpillarC.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="fountainparticles\FountainParticlesD.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="imposter\ImposterD.dproj">
             <Dependencies/>
         </Projects>
@@ -47,6 +50,15 @@
     <Target Name="CaterpillarC:Make">
         <MSBuild Projects="caterpillar\CaterpillarC.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="FountainParticlesD">
+        <MSBuild Projects="fountainparticles\FountainParticlesD.dproj"/>
+    </Target>
+    <Target Name="FountainParticlesD:Clean">
+        <MSBuild Projects="fountainparticles\FountainParticlesD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FountainParticlesD:Make">
+        <MSBuild Projects="fountainparticles\FountainParticlesD.dproj" Targets="Make"/>
+    </Target>
     <Target Name="ImposterD">
         <MSBuild Projects="imposter\ImposterD.dproj"/>
     </Target>
@@ -84,13 +96,13 @@
         <MSBuild Projects="particles\ParticlesC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="CaterpillarD;CaterpillarC;ImposterD;ImposterC;ParticlesD;ParticlesC"/>
+        <CallTarget Targets="CaterpillarD;CaterpillarC;FountainParticlesD;ImposterD;ImposterC;ParticlesD;ParticlesC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="CaterpillarD:Clean;CaterpillarC:Clean;ImposterD:Clean;ImposterC:Clean;ParticlesD:Clean;ParticlesC:Clean"/>
+        <CallTarget Targets="CaterpillarD:Clean;CaterpillarC:Clean;FountainParticlesD:Clean;ImposterD:Clean;ImposterC:Clean;ParticlesD:Clean;ParticlesC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="CaterpillarD:Make;CaterpillarC:Make;ImposterD:Make;ImposterC:Make;ParticlesD:Make;ParticlesC:Make"/>
+        <CallTarget Targets="CaterpillarD:Make;CaterpillarC:Make;FountainParticlesD:Make;ImposterD:Make;ImposterC:Make;ParticlesD:Make;ParticlesC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

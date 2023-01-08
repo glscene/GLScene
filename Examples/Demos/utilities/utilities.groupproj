@@ -6,6 +6,9 @@
         <Projects Include="ArchiveEdit\ArchiveEditD.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="GLInfo\GLInfosD.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="fontgen\FontgenD.dproj">
             <Dependencies/>
         </Projects>
@@ -52,6 +55,15 @@
     </Target>
     <Target Name="ArchiveEditD:Make">
         <MSBuild Projects="ArchiveEdit\ArchiveEditD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLInfosD">
+        <MSBuild Projects="GLInfo\GLInfosD.dproj"/>
+    </Target>
+    <Target Name="GLInfosD:Clean">
+        <MSBuild Projects="GLInfo\GLInfosD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLInfosD:Make">
+        <MSBuild Projects="GLInfo\GLInfosD.dproj" Targets="Make"/>
     </Target>
     <Target Name="FontgenD">
         <MSBuild Projects="fontgen\FontgenD.dproj"/>
@@ -144,13 +156,13 @@
         <MSBuild Projects="ScreenSaver\ScreenSaverC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="ArchiveEditD;FontgenD;FontgenC;HTFViewerD;JoystickD;KeymapD;LanguageD;RecorderD;TerrainPackD;ScreenSaverD;ScreenSaverC"/>
+        <CallTarget Targets="ArchiveEditD;GLInfosD;FontgenD;FontgenC;HTFViewerD;JoystickD;KeymapD;LanguageD;RecorderD;TerrainPackD;ScreenSaverD;ScreenSaverC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ArchiveEditD:Clean;FontgenD:Clean;FontgenC:Clean;HTFViewerD:Clean;JoystickD:Clean;KeymapD:Clean;LanguageD:Clean;RecorderD:Clean;TerrainPackD:Clean;ScreenSaverD:Clean;ScreenSaverC:Clean"/>
+        <CallTarget Targets="ArchiveEditD:Clean;GLInfosD:Clean;FontgenD:Clean;FontgenC:Clean;HTFViewerD:Clean;JoystickD:Clean;KeymapD:Clean;LanguageD:Clean;RecorderD:Clean;TerrainPackD:Clean;ScreenSaverD:Clean;ScreenSaverC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ArchiveEditD:Make;FontgenD:Make;FontgenC:Make;HTFViewerD:Make;JoystickD:Make;KeymapD:Make;LanguageD:Make;RecorderD:Make;TerrainPackD:Make;ScreenSaverD:Make;ScreenSaverC:Make"/>
+        <CallTarget Targets="ArchiveEditD:Make;GLInfosD:Make;FontgenD:Make;FontgenC:Make;HTFViewerD:Make;JoystickD:Make;KeymapD:Make;LanguageD:Make;RecorderD:Make;TerrainPackD:Make;ScreenSaverD:Make;ScreenSaverC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
