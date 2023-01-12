@@ -198,7 +198,6 @@ object GLSceneEditorForm: TGLSceneEditorForm
       ImageIndex = 14
       Style = tbsCheck
       Visible = False
-      OnClick = TBGalleryPanelClick
     end
     object TBCharacterPanels: TToolButton
       Left = 167
@@ -275,35 +274,39 @@ object GLSceneEditorForm: TGLSceneEditorForm
       Action = acInfo
     end
   end
-  object PAGallery: TPanel
-    Left = 257
+  object PATreeAll: TPanel
+    Left = 0
     Top = 26
-    Width = 277
+    Width = 249
     Height = 498
-    Align = alRight
+    Align = alLeft
     TabOrder = 1
     Visible = False
-    object GalleryListView: TListView
+    object TreeAll: TTreeView
       Left = 1
       Top = 1
-      Width = 275
+      Width = 247
       Height = 496
       Align = alClient
-      Columns = <>
+      Indent = 19
       TabOrder = 0
+      OnChange = TreeAllChange
+      ExplicitWidth = 275
     end
   end
   object PATree: TPanel
-    Left = 0
+    Left = 249
     Top = 26
-    Width = 257
+    Width = 285
     Height = 498
     Align = alClient
     TabOrder = 2
+    ExplicitLeft = 0
+    ExplicitWidth = 257
     object Tree: TTreeView
       Left = 1
       Top = 1
-      Width = 255
+      Width = 283
       Height = 273
       Align = alClient
       HideSelection = False
@@ -319,18 +322,20 @@ object GLSceneEditorForm: TGLSceneEditorForm
       OnKeyDown = TreeKeyDown
       OnMouseDown = TreeMouseDown
       OnMouseMove = TreeMouseMove
+      ExplicitWidth = 255
     end
     object PABehaviours: TPanel
       Left = 1
       Top = 274
-      Width = 255
+      Width = 283
       Height = 112
       Align = alBottom
       TabOrder = 1
+      ExplicitWidth = 255
       object ToolBarBehaviours: TToolBar
         Left = 1
         Top = 1
-        Width = 253
+        Width = 281
         Height = 30
         AutoSize = True
         ButtonHeight = 30
@@ -340,6 +345,7 @@ object GLSceneEditorForm: TGLSceneEditorForm
         ShowCaptions = True
         ShowHint = False
         TabOrder = 0
+        ExplicitWidth = 253
         object TBAddBehaviours: TToolButton
           Left = 0
           Top = 0
@@ -353,7 +359,7 @@ object GLSceneEditorForm: TGLSceneEditorForm
       object BehavioursListView: TListView
         Left = 1
         Top = 31
-        Width = 253
+        Width = 281
         Height = 80
         Align = alClient
         Columns = <
@@ -372,19 +378,21 @@ object GLSceneEditorForm: TGLSceneEditorForm
         OnEnter = BehavioursListViewEnter
         OnKeyDown = TreeKeyDown
         OnSelectItem = BehavioursListViewSelectItem
+        ExplicitWidth = 253
       end
     end
     object PAEffects: TPanel
       Left = 1
       Top = 386
-      Width = 255
+      Width = 283
       Height = 111
       Align = alBottom
       TabOrder = 2
+      ExplicitWidth = 255
       object EffectsListView: TListView
         Left = 1
         Top = 31
-        Width = 253
+        Width = 281
         Height = 79
         Align = alClient
         Columns = <
@@ -403,11 +411,12 @@ object GLSceneEditorForm: TGLSceneEditorForm
         OnEnter = EffectsListViewEnter
         OnKeyDown = TreeKeyDown
         OnSelectItem = BehavioursListViewSelectItem
+        ExplicitWidth = 253
       end
       object ToolBarEffects: TToolBar
         Left = 1
         Top = 1
-        Width = 253
+        Width = 281
         Height = 30
         AutoSize = True
         ButtonHeight = 30
@@ -417,6 +426,7 @@ object GLSceneEditorForm: TGLSceneEditorForm
         ShowCaptions = True
         ShowHint = False
         TabOrder = 1
+        ExplicitWidth = 253
         object TBAddEffects: TToolButton
           Left = 0
           Top = 0

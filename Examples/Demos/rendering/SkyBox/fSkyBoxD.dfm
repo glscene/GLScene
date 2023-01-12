@@ -26,8 +26,6 @@ object FormSkyBox: TFormSkyBox
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 728
-    ExplicitHeight = 507
   end
   object GLScene1: TGLScene
     Left = 32

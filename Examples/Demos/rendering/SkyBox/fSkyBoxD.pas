@@ -120,7 +120,8 @@ begin
   end;
 
   // Moon
-  LoadTexture('Moon', 'moonmap.jpg').Material.Texture.TextureMode := tmModulate;
+  SetCurrentDir(Path  + '\map');
+  LoadTexture('Moon', 'moon.jpg').Material.Texture.TextureMode := tmModulate;
 
   // -----------------------------------------
   // Assign materials to objects

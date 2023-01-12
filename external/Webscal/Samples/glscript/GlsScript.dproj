@@ -1,13 +1,13 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{5A48DEA7-EB2A-44B3-B12E-545815F42B11}</ProjectGuid>
-        <MainSource>DwsShader.dpr</MainSource>
+        <ProjectGuid>{EDC27C2D-CADA-4489-8DE0-C0FB6C6F9057}</ProjectGuid>
+        <MainSource>GlsScript.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
         <FrameworkType>VCL</FrameworkType>
-        <ProjectVersion>19.3</ProjectVersion>
+        <ProjectVersion>19.4</ProjectVersion>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
@@ -42,7 +42,7 @@
     <PropertyGroup Condition="'$(Base)'!=''">
         <DCC_S>false</DCC_S>
         <DCC_F>false</DCC_F>
-        <SanitizedProjectName>dwsshader</SanitizedProjectName>
+        <SanitizedProjectName>GlsScript</SanitizedProjectName>
         <VerInfo_Locale>1049</VerInfo_Locale>
         <DCC_K>false</DCC_K>
         <DCC_E>false</DCC_E>
@@ -83,7 +83,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="DwsShaderFm.pas"/>
+        <DCCReference Include="GlsScriptFm.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -102,7 +102,7 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">DwsShader.dpr</Source>
+                    <Source Name="MainSource">GlsScript.dpr</Source>
                 </Source>
             </Delphi.Personality>
             <Platforms>

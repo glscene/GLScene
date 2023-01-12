@@ -67,9 +67,7 @@ type
       const deltaTime, newTime: Double);
     procedure CheckBox1Click(Sender: TObject);
   private
-     
   public
-     
     mx, my: Integer;
   end;
 

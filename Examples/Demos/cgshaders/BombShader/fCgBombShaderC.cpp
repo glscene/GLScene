@@ -54,7 +54,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   // First loading static models from asset directory
   SetCurrentDir(Path  + "\\model");
   ffTeapot->LoadFromFile("Teapot.3ds");
-  ffSphere1->LoadFromFile("Sphere_little.3DS");
+  ffSphere1->LoadFromFile("Sphere.3DS");
   ffSphere2->LoadFromFile("Sphere_big.3DS");
   ffSphere2->Scale->Scale(20);
 

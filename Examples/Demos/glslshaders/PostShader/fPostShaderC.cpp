@@ -67,7 +67,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   Sphere_big->LoadFromFile("Sphere_big.3DS");
   Sphere_big->Scale->Scale(70);
 
-  Sphere_little->LoadFromFile("Sphere_little.3ds");
+  Sphere_little->LoadFromFile("Sphere.3ds");
   Sphere_little->Scale->Scale(4);
 
   // Then loading textures.

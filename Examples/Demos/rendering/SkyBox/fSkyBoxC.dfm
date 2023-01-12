@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Sky Box'
-  ClientHeight = 460
-  ClientWidth = 572
+  ClientHeight = 469
+  ClientWidth = 682
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,15 +15,17 @@ object Form1: TForm1
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 572
-    Height = 460
+    Width = 682
+    Height = 469
     Camera = GLCamera1
     Buffer.BackgroundColor = 7168
     Buffer.AmbientColor.Color = {0000803F0000803F0000803F0000803F}
-    FieldOfView = 160.268386840820300000
+    FieldOfView = 160.639801025390600000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 624
+    ExplicitHeight = 467
   end
   object GLScene1: TGLScene
     Left = 32

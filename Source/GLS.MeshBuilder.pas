@@ -38,8 +38,8 @@ type
   end;
 
   (*
-    Properties of a sphere with two hemisphere parts
-    using 5 points to make each hemisphere
+    Properties of a sphere with two hemispheres
+    using 5 points to make each hemisphere part
   *)
   TGLSphereProperties = record
     Normal3f: TVector3f;

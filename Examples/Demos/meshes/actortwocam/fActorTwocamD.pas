@@ -67,6 +67,7 @@ type
       const deltaTime, newTime: Double);
     procedure CBMouseLookClick(Sender: TObject);
   private
+    Path: TFileName;
     procedure AddMushrooms;
     procedure HandleKeys(const deltaTime: Double);
   end;
@@ -88,7 +89,7 @@ const
 
 procedure TFormActorTwocam.FormCreate(Sender: TObject);
 begin
-  var Path: TFileName := GetCurrentAssetPath();
+  Path := GetCurrentAssetPath();
   SetCurrentDir(Path  + '\model');
   // Load static mushroom mesh
   ffMushroom.LoadFromFile('mushroom.3ds');

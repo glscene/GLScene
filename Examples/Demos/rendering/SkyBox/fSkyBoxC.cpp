@@ -63,7 +63,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender) {
 	// Add transparency to clouds
 	SetCurrentDir(Path  + "\\texture");
 	LoadTexture("Clouds", "Clouds.jpg")->Material->BlendingMode = bmTransparency;
-   	LoadTexture("Clouds", "Clouds.jpg")->Material->FrontProperties->Diffuse->Alpha = 0.2;
+	LoadTexture("Clouds", "Clouds.jpg")->Material->FrontProperties->Diffuse->Alpha = 0.2;
 
 	// scale the clouds texture
 	LoadTexture("Clouds", "Clouds.jpg")->TextureScale->X = 8;
@@ -81,6 +81,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender) {
 		tmModulate;
 
 	// Moon
+	SetCurrentDir(Path  + "\\map");
 	LoadTexture("Moon", "moonmap.jpg")->Material->Texture->TextureMode =
 		tmModulate;
 

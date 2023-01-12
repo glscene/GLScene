@@ -5,6 +5,8 @@ interface
 uses
   Winapi.Windows,
   Winapi.Messages,
+  Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.SysUtils,
   System.Classes,
   Vcl.Graphics,
@@ -82,7 +84,6 @@ implementation
 {$R *.dfm}
 
 uses 
-  OpenGLx, 
   GLS.Context;
 
 procedure TForm1.FormCreate(Sender: TObject);

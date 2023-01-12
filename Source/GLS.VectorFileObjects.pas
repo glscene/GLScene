@@ -5976,7 +5976,7 @@ begin
   if fileName <> '' then
   begin
     try
-      fs := TFileStream.Create(fileName, fmOpenRead + fmShareDenyWrite);
+      fs := TBufferedFileStream.Create(fileName, fmOpenRead + fmShareDenyWrite);
       LoadFromStream(fileName, fs);
       FLastLoadedFilename := filename;
     finally

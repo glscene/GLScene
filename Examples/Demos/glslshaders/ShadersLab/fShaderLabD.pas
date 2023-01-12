@@ -787,14 +787,14 @@ end;
 
 procedure TFormShaderLab.cbxObjectsChange(Sender: TObject);
 begin
-  // Then load textures
+  // Then load models
   SetCurrentDir(Path + '\model');
   case cbxObjects.ItemIndex of
     0:
       begin
         GLSphere1.Visible := False;
         GLTorus1.Visible := False;
-        FreeForm.LoadFromFile('models\suzanne-blender.obj');
+        FreeForm.LoadFromFile('suzanne-blender.obj');
         GlassShader.OwnerObject := FreeForm;
         FreeForm.Visible := true;
 
@@ -803,7 +803,7 @@ begin
       begin
         GLSphere1.Visible := False;
         GLTorus1.Visible := False;
-        FreeForm.LoadFromFile('models\torus-knot2.obj');
+        FreeForm.LoadFromFile('torus-knot2.obj');
         GlassShader.OwnerObject := FreeForm;
         FreeForm.Visible := true;
       end;
@@ -811,7 +811,7 @@ begin
       begin
         GLSphere1.Visible := False;
         GLTorus1.Visible := False;
-        FreeForm.LoadFromFile('models\sputnik.obj');
+        FreeForm.LoadFromFile('pyramid.obj');
         GlassShader.OwnerObject := FreeForm;
         FreeForm.Visible := true;
       end;
@@ -819,7 +819,7 @@ begin
       begin
         GLSphere1.Visible := False;
         GLTorus1.Visible := False;
-        FreeForm.LoadFromFile('models\rectangle_spiral.obj');
+        FreeForm.LoadFromFile('rectangle_spiral.obj');
         GlassShader.OwnerObject := FreeForm;
         FreeForm.Visible := true;
       end;
@@ -827,7 +827,7 @@ begin
       begin
         GLSphere1.Visible := False;
         GLTorus1.Visible := False;
-        FreeForm.LoadFromFile('models\geode.obj');
+        FreeForm.LoadFromFile('geode.obj');
         GlassShader.OwnerObject := FreeForm;
         FreeForm.Visible := true;
       end;
@@ -835,7 +835,7 @@ begin
       begin
         GLSphere1.Visible := False;
         GLTorus1.Visible := False;
-        FreeForm.LoadFromFile('models\syamil_19.obj');
+        FreeForm.LoadFromFile('syamil_19.obj');
         GlassShader.OwnerObject := FreeForm;
         FreeForm.Visible := true;
       end;

@@ -66,6 +66,7 @@ type
     procedure GLCadencer1Progress(Sender: TObject; const deltaTime,
       newTime: Double);
   private
+    Path: TFileName;
   end;
 
 var
@@ -86,7 +87,7 @@ var
 
 procedure TFormFPSMovement.FormCreate(Sender: TObject);
 begin
-  var Path: TFileName := GetCurrentAssetPath();
+  Path := GetCurrentAssetPath();
   SetCurrentDir(Path  + '\model');
   Map1.LoadFromFile('map.3ds');
   Map1.BuildOctree();
@@ -129,7 +130,7 @@ begin
     begin
       Map1.UseMeshMaterials := false;
       Map1.Material.PolygonMode := pmLines;
-      map2.UseMeshMaterials := false;
+      Map2.UseMeshMaterials := false;
       Map2.Material.PolygonMode := pmLines;
     end
     else
@@ -189,9 +190,9 @@ begin
     behav.turnVertical(70 * deltatime);
 
   //update mouse view
-  xangle := mouse.CursorPos.X - screen.Width / 2;
-  yangle := mouse.CursorPos.Y - screen.Height / 2;
-  setcursorpos(screen.width div 2, screen.Height div 2);
+  xangle := Mouse.CursorPos.X - Screen.Width / 2;
+  yangle := Mouse.CursorPos.Y - Screen.Height / 2;
+  SetCursorPos(Screen.width div 2, Screen.Height div 2);
   behav.TurnHorizontal(xangle * 40 * deltaTime);
   behav.TurnVertical(-yangle * 20 * deltaTime);
 

@@ -27,8 +27,6 @@ object FormFPSMovement: TFormFPSMovement
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 712
-    ExplicitHeight = 475
   end
   object GLScene1: TGLScene
     Left = 40
@@ -261,7 +259,7 @@ object FormFPSMovement: TFormFPSMovement
         ShiftState = [ssRight]
         Action = snaMoveAroundTarget
       end>
-    Left = 128
-    Top = 152
+    Left = 152
+    Top = 192
   end
 end

@@ -103,11 +103,10 @@ type
     TBSeparator4: TToolButton;
     TBExpand: TToolButton;
     acExpand: TAction;
-    PAGallery: TPanel;
+    PATreeAll: TPanel;
     PATree: TPanel;
     Tree: TTreeView;
     TBInfo: TToolButton;
-    GalleryListView: TListView;
     PABehaviours: TPanel;
     ToolBarBehaviours: TToolBar;
     TBAddBehaviours: TToolButton;
@@ -117,10 +116,14 @@ type
     ToolBarEffects: TToolBar;
     TBAddEffects: TToolButton;
     TBGalleryPanel: TToolButton;
+    TreeAll: TTreeView;
     procedure FormCreate(Sender: TObject);
     procedure TreeEditing(Sender: TObject; Node: TTreeNode; var AllowEdit: Boolean);
     procedure TreeDragOver(Sender, Source: TObject; X, Y: Integer; State: TDragState; var Accept: Boolean);
     procedure TreeDragDrop(Sender, Source: TObject; X, Y: Integer);
+
+    procedure TreeAllChange(Sender: TObject; Node: TTreeNode); // or onclick to simply select
+
     procedure TreeChange(Sender: TObject; Node: TTreeNode);
     procedure TreeMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
     procedure TreeEnter(Sender: TObject);
@@ -150,9 +153,8 @@ type
     procedure acStayOnTopExecute(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure acExpandExecute(Sender: TObject);
-    procedure TBGalleryPanelClick(Sender: TObject);
   private
-    FSelectedItems: Integer; //
+    FSelectedItems: Integer;
     FScene: TGLScene;
     FObjectNode, FSceneObjects: TTreeNode;
     FCurrentDesigner: IDesigner;
@@ -161,8 +163,13 @@ type
     FPasteSelection: IDesignerSelections;
     procedure ReadScene;
     procedure ResetTree;
-    // adds the given scene object as well as its children to the tree structure and returns
-    // the last add node (e.g. for selection)
+
+    (* Adds All scene objects to the TreeAll the same as in menu toolbar TBAddObjects
+       for moving selection to current list of active objects in Tree *)
+    function AddNodesAll(ANode: TTreeNode; AObject: TGLBaseSceneObject): TTreeNode;
+
+    (* Adds the given scene object as well as its children to the Tree and returns
+      the last add node (e.g. for selection) *)
     function AddNodes(ANode: TTreeNode; AObject: TGLBaseSceneObject): TTreeNode;
     procedure AddObjectClick(Sender: TObject);
     procedure AddBehaviourClick(Sender: TObject);
@@ -176,7 +183,6 @@ type
     function IsPastePossible: Boolean;
     procedure ShowBehaviours(BaseSceneObject: TGLBaseSceneObject);
     procedure ShowEffects(BaseSceneObject: TGLBaseSceneObject);
-    procedure ShowGallery(BaseSceneObject: TGLBaseSceneObject);
     procedure ShowBehavioursAndEffects(BaseSceneObject: TGLBaseSceneObject);
     procedure EnableAndDisableActions();
     function CanPaste(obj, destination: TGLBaseSceneObject): Boolean;
@@ -290,9 +296,9 @@ begin
   FScene := Scene;
   FCurrentDesigner := Designer;
   ResetTree;
+  // TreeView.Items.Clear;
   BehavioursListView.Items.Clear;
   EffectsListView.Items.Clear;
-  GalleryListView.Items.Clear;
 
   if Assigned(FScene) then
   begin
@@ -566,7 +572,6 @@ begin
   end;
 end;
 
-
 procedure TGLSceneEditorForm.SetBehavioursSubItems(parent: TMenuItem;
   XCollection: TXCollection);
 begin
@@ -693,6 +698,24 @@ begin
     n.Text := (Sender as TGLBaseSceneObject).Name;
 end;
 
+procedure TGLSceneEditorForm.TreeAllChange(Sender: TObject; Node: TTreeNode);
+var
+  selNode : TTreeNode;
+  BaseSceneObject1: TGLBaseSceneObject;
+begin
+  // not implemented yet
+  (*
+  if Assigned(FCurrentDesigner) then
+  begin
+    if Node <> nil then
+    begin
+      BaseSceneObject1 := TGLBaseSceneObject(Node.data);
+    end;
+    EnableAndDisableActions();
+  end;
+  *)
+end;
+
 procedure TGLSceneEditorForm.TreeChange(Sender: TObject; Node: TTreeNode);
 var
   // selNode : TTreeNode;
@@ -700,7 +723,6 @@ var
 begin
   if Assigned(FCurrentDesigner) then
   begin
-
     if Node <> nil then
     begin
       BaseSceneObject1 := TGLBaseSceneObject(Node.data);
@@ -709,7 +731,6 @@ begin
         ShowBehavioursAndEffects(BaseSceneObject1);
       end;
     end;
-
     EnableAndDisableActions();
   end;
 end;
@@ -771,28 +792,26 @@ begin
   EffectsListView.Items.EndUpdate;
 end;
 
-procedure TGLSceneEditorForm.ShowGallery(BaseSceneObject: TGLBaseSceneObject);
+function TGLSceneEditorForm.AddNodesAll(ANode: TTreeNode; AObject: TGLBaseSceneObject): TTreeNode;
 var
   I: Integer;
-  DisplayedName: string;
+  CurrentNode: TTreeNode;
 begin
- // GalleryListView.LargeImages := ObjectManager.ObjectIcons;
-  GalleryListView.Items.Clear;
-  GalleryListView.Items.BeginUpdate;
-  if Assigned(BaseSceneObject) then
+  if IsSubComponent(AObject) then
   begin
-    for I := 0 to BaseSceneObject.Count - 1 do
-    begin
-      with GalleryListView.Items.Add do
-      begin
-        DisplayedName := BaseSceneObject.Name;
-        if DisplayedName = '' then
-          DisplayedName := '(unnamed)';
-        Caption := IntToStr(I) + ' - ' + DisplayedName;
-      end;
-    end;
+    Result := Tree.Selected;
+    Exit;
+  end
+  else
+  begin
+    Result := Tree.Items.AddChildObject(ANode, AObject.Name, AObject);
+    Result.ImageIndex := ObjectManager.GetImageIndex
+      (TGLSceneObjectClass(AObject.ClassType));
+    Result.SelectedIndex := Result.ImageIndex;
+    CurrentNode := Result;
+    for I := 0 to AObject.Count - 1 do
+      Result := AddNodes(CurrentNode, AObject[I]);
   end;
-  GalleryListView.Items.EndUpdate;
 end;
 
 procedure TGLSceneEditorForm.ShowBehavioursAndEffects(BaseSceneObject
@@ -800,7 +819,6 @@ procedure TGLSceneEditorForm.ShowBehavioursAndEffects(BaseSceneObject
 begin
   ShowBehaviours(BaseSceneObject);
   ShowEffects(BaseSceneObject);
-  ShowGallery(BaseSceneObject);
 end;
 
 
@@ -1470,17 +1488,6 @@ begin
     Height := Height + PABehaviours.Height + PAEffects.Height
   else
     Height := Height - PABehaviours.Height - PAEffects.Height;
-end;
-
-procedure TGLSceneEditorForm.TBGalleryPanelClick(Sender: TObject);
-begin
-  //yet not ready to populate with LargeImages 32x32
-  PAGallery.Visible := TBGalleryPanel.Down;
-  if PAGallery.Visible then
-    Width := Width + PATree.Width
-  else
-    Width := Width - PATree.Width;
-
 end;
 
 procedure TGLSceneEditorForm.TreeKeyDown(Sender: TObject; var Key: Word;
