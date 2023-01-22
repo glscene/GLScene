@@ -2,8 +2,8 @@ object FormDCE: TFormDCE
   Left = 192
   Top = 114
   Caption = 'GLScene Dynamic Collision Engine'
-  ClientHeight = 444
-  ClientWidth = 600
+  ClientHeight = 631
+  ClientWidth = 898
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,14 +18,14 @@ object FormDCE: TFormDCE
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 600
-    Height = 444
+    Width = 898
+    Height = 631
     Camera = GLCamera1
     Buffer.FogEnvironment.FogStart = 50.000000000000000000
     Buffer.FogEnvironment.FogEnd = 250.000000000000000000
     Buffer.BackgroundColor = clBlack
     Buffer.FogEnable = True
-    FieldOfView = 154.614669799804700000
+    FieldOfView = 161.989471435546900000
     PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
@@ -40,7 +40,7 @@ object FormDCE: TFormDCE
       SpotCutOff = 180.000000000000000000
     end
     object Terrain: TGLTerrainRenderer
-      Material.MaterialLibrary = GLMatlLib
+      Material.MaterialLibrary = GLMatLib
       HeightDataSource = GLBitmapHDS1
       TilesPerTexture = 1.000000000000000000
       ContourWidth = 0
@@ -51,7 +51,7 @@ object FormDCE: TFormDCE
     end
     object Ground: TGLPlane
       Material.FrontProperties.Diffuse.Color = {D3D2D23EC7C6463FC7C6C63E0000803F}
-      Material.MaterialLibrary = GLMatlLib
+      Material.MaterialLibrary = GLMatLib
       Direction.Coordinates = {000000000000803F0000000000000000}
       Position.Coordinates = {00000000000010C0000000000000803F}
       Scale.Coordinates = {0000FA430000FA430000803F00000000}
@@ -118,7 +118,7 @@ object FormDCE: TFormDCE
         end
       end
       object GLActor1: TGLActor
-        Material.MaterialLibrary = GLMatlLib
+        Material.MaterialLibrary = GLMatLib
         Interval = 100
       end
       object GLSphere1: TGLSphere
@@ -130,20 +130,24 @@ object FormDCE: TFormDCE
       end
     end
     object GLHUDText1: TGLHUDText
-      Position.Coordinates = {0000804000000000000000000000803F}
+      Position.Coordinates = {0000204100000000000000000000803F}
+      BitmapFont = GLWindowsBitmapFont1
+      Rotation = 0.000000000000000000
+    end
+    object HUDTextCoords: TGLHUDText
+      Position.Coordinates = {000020410000A041000000000000803F}
+      BitmapFont = GLWindowsBitmapFont1
+      Rotation = 0.000000000000000000
+    end
+    object Help: TGLHUDText
+      Position.Coordinates = {0000204100002042000000000000803F}
       BitmapFont = GLWindowsBitmapFont1
       Rotation = 0.000000000000000000
     end
     object HelpShadow: TGLHUDText
-      Position.Coordinates = {000030410000F841000000000000803F}
-      BitmapFont = GLWindowsBitmapFont1
+      Position.Coordinates = {0000304100002442000000000000803F}
       Rotation = 0.000000000000000000
       ModulateColor.Color = {A19E9E3ECFBC3C3ECFBC3C3E0000803F}
-    end
-    object Help: TGLHUDText
-      Position.Coordinates = {000020410000F041000000000000803F}
-      BitmapFont = GLWindowsBitmapFont1
-      Rotation = 0.000000000000000000
     end
   end
   object GLCadencer1: TGLCadencer
@@ -167,7 +171,7 @@ object FormDCE: TFormDCE
     Left = 24
     Top = 72
   end
-  object GLMatlLib: TGLMaterialLibrary
+  object GLMatLib: TGLMaterialLibrary
     Left = 96
     Top = 72
   end

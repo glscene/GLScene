@@ -26,6 +26,7 @@
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.WindowsFont"
 
+#pragma link "GLS.SimpleNavigation"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
@@ -51,9 +52,8 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void TForm1::Load()
 {
   TFileName Path = GetCurrentAssetPath();
+  // Load texture material for terrain
   SetCurrentDir(Path + "\\texture");
-
-  //Load Materials
   GLMatLib->AddTextureMaterial("Terrain", "snow512.jpg");
 
   //Load Terrain
@@ -95,6 +95,26 @@ void TForm1::Load()
   GLSphere1->Scale->Assign(GetOrCreateDCEDynamic(Player)->Size);
 //  GetOrCreateDCEDynamic(Player)->OnCollision = PlayerBehaviours0Collision;
 }
+
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormShow(TObject *Sender)
+{
+  Load();
+  GLCadencer1->Enabled = true;
+  Help->Text =
+   "Mouse Drag - Look\n\r\
+	A,W,S,D - movement\n\r\
+	SPACE - Jump\n\r\
+	F1 - Add one ball\n\r\
+	F2 - Add 10 balls\n\r\
+	F3 - Add 20 mushrooms\n\r\
+	F4 - Change ground to box\n\r\
+	F5 - Toggle step mode\n\r\
+	RETURN - Reset";
+}
+
+
 //---------------------------------------------------------------------------
 void TForm1::AddBall()
 {
@@ -280,23 +300,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
   HelpShadow->ModulateColor->Alpha = Help->ModulateColor->Alpha;
   HelpShadow->Text = Help->Text;
 }
-//---------------------------------------------------------------------------
 
-void __fastcall TForm1::FormShow(TObject *Sender)
-{
-  Load();
-  GLCadencer1->Enabled = true;
-  Help->Text =
-   "Mouse Drag - Look\n\r\
-	A,W,S,D - movement\n\r\
-	SPACE - Jump\n\r\
-	F1 - Add one ball\n\r\
-	F2 - Add 10 balls\n\r\
-	F3 - Add 20 mushrooms\n\r\
-	F4 - Change ground to box\n\r\
-	F5 - Toggle step mode\n\r\
-	RETURN - Reset";
-}
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Timer1Timer(TObject *Sender)

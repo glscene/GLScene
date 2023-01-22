@@ -11,7 +11,6 @@ uses
   Vcl.Forms,
   Vcl.ExtCtrls,
 
-  
   GLS.Scene,
   GLS.Objects,
   GLS.VectorGeometry,
@@ -34,8 +33,7 @@ type
     GLCadencer1: TGLCadencer;
     GLSimpleNavigation1: TGLSimpleNavigation;
     procedure FormCreate(Sender: TObject);
-    procedure GLCadencer1Progress(Sender: TObject;
-      const deltaTime, newTime: Double);
+    procedure GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
   private
   end;
 
@@ -69,20 +67,22 @@ begin
         cube.CubeDepth := cubeSize;
         with cube.Material.FrontProperties do
         begin
-          Diffuse.Color := VectorLerp(clrYellow, clrRed, (x * x + y * y + z * z)
-            / (cSize * cSize * 3));
+          Diffuse.Color := VectorLerp(clrYellow, clrRed, (x * x + y * y + z * z) /
+            (cSize * cSize * 3));
 
           // uncomment following lines to stress OpenGL with more color changes calls
 
-           Ambient.Color:=VectorLerp(clrYellow, clrRed, (x*x+y*y+z*z)/(cSize*cSize*3));
-           Emission.Color:=VectorLerp(clrYellow, clrRed, (x*x+y*y+z*z)/(cSize*cSize*3));
-           Specular.Color:=VectorLerp(clrYellow, clrRed, (x*x+y*y+z*z)/(cSize*cSize*3));
+          Ambient.Color := VectorLerp(clrYellow, clrRed, (x * x + y * y + z * z) /
+            (cSize * cSize * 3));
+          Emission.Color := VectorLerp(clrYellow, clrRed, (x * x + y * y + z * z) /
+            (cSize * cSize * 3));
+          Specular.Color := VectorLerp(clrYellow, clrRed, (x * x + y * y + z * z) /
+            (cSize * cSize * 3));
         end;
       end;
 end;
 
-procedure TFormMegacube.GLCadencer1Progress(Sender: TObject;
-  const deltaTime, newTime: Double);
+procedure TFormMegacube.GLCadencer1Progress(Sender: TObject; const deltaTime, newTime: Double);
 begin
   DummyCube1.TurnAngle := 90 * newTime; // 90° per second
 end;

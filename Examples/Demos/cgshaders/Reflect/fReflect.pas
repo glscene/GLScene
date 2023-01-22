@@ -324,11 +324,8 @@ end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);
 begin
-  with GLSceneViewer1 do
-  begin
-    Caption := Format('Cg Reflect - %.1f fps', [FramesPerSecond]);
-    ResetPerformanceMonitor;
-  end;
+  Caption := Format('Cg Reflect - %.1f fps', [GLSceneViewer1.FramesPerSecond]);
+  ResetPerformanceMonitor;
 end;
 
 procedure TForm1.FormKeyPress(Sender: TObject; var Key: Char);

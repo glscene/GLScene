@@ -40,6 +40,7 @@
 #include "GLS.EllipseCollision.hpp"
 #include "GLS.Utils.hpp"
 #include "GLS.DCE.hpp"
+#include "GLS.SimpleNavigation.hpp"
 
 
 //---------------------------------------------------------------------------

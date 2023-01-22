@@ -52,7 +52,7 @@ type
     GLDCEManager1: TGLDCEManager;
     Terrain: TGLTerrainRenderer;
     GLBitmapHDS1: TGLBitmapHDS;
-    GLMatlLib: TGLMaterialLibrary;
+    GLMatLib: TGLMaterialLibrary;
     GLLightSource1: TGLLightSource;
     GLActor1: TGLActor;
     GLSphere1: TGLSphere;
@@ -68,6 +68,7 @@ type
     Help: TGLHUDText;
     HelpShadow: TGLHUDText;
     Ground: TGLPlane;
+    HUDTextCoords: TGLHUDText;
     procedure FormShow(Sender: TObject);
     procedure GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
       X, Y: Integer);
@@ -94,13 +95,15 @@ var
 
 const
   cForce: Single = 250;
-  cSpread = 200;
+  cSpread: Integer = 200;
   cNbMushrooms = 20;
 
 implementation
 
 {$R *.dfm}
-{ TForm1 }
+
+
+//-----------------------------------------------------------------
 
 procedure TFormDCE.Load;
 begin
@@ -108,33 +111,32 @@ begin
 
   // Load texture material for terrain
   SetCurrentDir(Path  + '\texture');
-  GLMatlLib.AddTextureMaterial('Terrain', 'snow512.jpg');
+  GLMatLib.AddTextureMaterial('Terrain', 'snow512.jpg');
 
   // Load Terrain
   GLBitmapHDS1.MaxPoolSize := 8 * 1024 * 1024;
   GLBitmapHDS1.Picture.LoadFromFile('terrain.bmp');
   Terrain.Direction.SetVector(0, 1, 0);
-  //Terrain.Material.LibMaterialName := 'Terrain';
+  Terrain.Material.LibMaterialName := 'Terrain';
   Terrain.TilesPerTexture := 256 / Terrain.TileSize;
   Terrain.Scale.SetVector(1, 1, 0.02);
 
   Ground.Material.LibMaterialName := 'Terrain';
 
-  // Load static models
+  // Load static mushroom mesh
   SetCurrentDir(Path + '\model');
-  // Mushroom mesh
   // Always use AutoScaling property or you may get some problems
   moMushroom.AutoScaling.SetPoint(0.1, 0.1, 0.1);
   moMushroom.LoadFromFile('Mushroom.3ds');
   moMushroom.Direction.SetVector(0, 1, 0);
-  moMushroom.BuildOctree;
+  moMushroom.BuildOctree();
 
   // Load player
-  Player.Position.SetPoint(0, 3, 0);
+  Player.Position.SetPoint(0.0, 3.0, 0.0);
 
   // Load dyn modelexts with textures and animations
   SetCurrentDir(Path + '\modelext');
-  GLMatlLib.AddTextureMaterial('Actor', 'waste.jpg');
+  GLMatLib.AddTextureMaterial('Actor', 'waste.jpg');
   GLActor1.LoadFromFile('Waste.md2');
   GLActor1.Direction.SetVector(0, 1, 0);
   GLActor1.Up.SetVector(1, 0, 0);
@@ -151,11 +153,84 @@ begin
   GetOrCreateDCEDynamic(Player).OnCollision := PlayerBehaviours0Collision;
 end;
 
+//-----------------------------------------------------------------
+
+procedure TFormDCE.FormShow(Sender: TObject);
+begin
+  Load;
+  GLCadencer1.Enabled := true;
+  Help.Text := 'Mouse Drag - Look' + #13 + 'A,W,S,D - movement' + #13 +
+    'SPACE - Jump' + #13 + 'F1 - Add one ball' + #13 + 'F2 - Add 10 balls' + #13
+    + 'F3 - Add 20 mushrooms' + #13 + 'F4 - Change ground to box' + #13 +
+    'F5 - Toggle step mode' + #13 + 'RETURN - Reset';
+end;
+
+//-----------------------------------------------------------------
+
+procedure TFormDCE.AddBall;
+var
+  Ball: TGLSphere;
+  S: Single;
+begin
+  Ball := TGLSphere(Balls.AddNewChild(TGLSphere));
+  Ball.Tag := 1; // set the identifier of a ball
+  Ball.Radius := 1;
+  S := (100 + Random(900)) / 500;
+  Ball.Scale.SetVector(S, S, S);
+  Ball.Position.SetPoint(Random(40) - Random(40), 4 + Random(10),
+    Random(40) - Random(40));
+  Ball.Material.FrontProperties.Diffuse.SetColor((100 + Random(900)) / 1000,
+    (100 + Random(900)) / 1000, (100 + Random(900)) / 1000);
+  GetOrCreateDCEDynamic(Ball).Manager := GLDCEManager1;
+  GetOrCreateDCEDynamic(Ball).BounceFactor := 0.75;
+  GetOrCreateDCEDynamic(Ball).Friction := 0.1;
+  GetOrCreateDCEDynamic(Ball).SlideOrBounce := csbBounce;
+  GetOrCreateDCEDynamic(Ball).Size.Assign(Ball.Scale);
+end;
+
+//-----------------------------------------------------------------
+
+procedure TFormDCE.AddMushrooms;
+var
+  i: Integer;
+  proxy: TGLFreeFormProxy;
+  S: TGLVector;
+  f: Single;
+begin
+  // spawn some more mushrooms using proxy objects
+  for i := 0 to cNbMushrooms - 1 do
+  begin
+    // create a new proxy and set its MasterObject property
+    proxy := TGLFreeFormProxy(Mushrooms.AddNewChild(TGLFreeFormProxy));
+    proxy.ProxyOptions := [pooObjects];
+    proxy.MasterObject := moMushroom;
+    // retrieve reference attitude
+    proxy.Direction := moMushroom.Direction;
+    proxy.Up := moMushroom.Up;
+    // randomize scale
+    S := moMushroom.Scale.AsVector;
+    f := (2 * Random + 1);
+    ScaleVector(S, f);
+    proxy.Scale.AsVector := S;
+    // randomize position
+    proxy.Position.SetPoint(Random(cSpread) - (cSpread / 2), moMushroom.Position.Z +
+      1.5 * f, Random(cSpread) - (cSpread / 2));
+    // randomize orientation
+    proxy.RollAngle := Random(360);
+    proxy.TransformationChanged;
+    GetOrCreateDCEStatic(proxy).Manager := GLDCEManager1;
+    GetOrCreateDCEStatic(proxy).BounceFactor := 0.75;
+    GetOrCreateDCEStatic(proxy).Friction := 10;
+    GetOrCreateDCEStatic(proxy).Shape := csFreeform;
+  end;
+end;
+
+//-----------------------------------------------------------------
+
 procedure TFormDCE.HandleKeys;
 var
   Force: TAffineVector;
 begin
-
   Force := NullVector;
   if IsKeyDown('w') or IsKeyDown('z') then
     Force.Z := cForce;
@@ -163,11 +238,12 @@ begin
     Force.Z := -cForce;
   if IsKeyDown('a') or IsKeyDown('q') then
     Force.X := cForce;
-  if IsKeyDown('d') then
+  if IsKeyDown('d') or IsKeyDown('e') then
     Force.X := -cForce;
-
   GetOrCreateDCEDynamic(Player).ApplyAccel(Force);
 end;
+
+//-----------------------------------------------------------------
 
 procedure TFormDCE.HandleAnimation;
 var
@@ -195,97 +271,7 @@ begin
     GLActor1.SwitchToAnimation(anim);
 end;
 
-procedure TFormDCE.AddBall;
-var
-  Ball: TGLSphere;
-  S: Single;
-begin
-  Ball := TGLSphere(Balls.AddNewChild(TGLSphere));
-  with Ball do
-  begin
-    Tag := 1; // set the identifier of a ball
-    Radius := 1;
-    S := (100 + Random(900)) / 500;
-    Scale.SetVector(S, S, S);
-    Position.SetPoint(Random(40) - Random(40), 4 + Random(10),
-      Random(40) - Random(40));
-    Material.FrontProperties.Diffuse.SetColor((100 + Random(900)) / 1000,
-      (100 + Random(900)) / 1000, (100 + Random(900)) / 1000);
-  end;
-  with GetOrCreateDCEDynamic(Ball) do
-  begin
-    Manager := GLDCEManager1;
-    BounceFactor := 0.75;
-    Friction := 0.1;
-    SlideOrBounce := csbBounce;
-    Size.Assign(Ball.Scale);
-  end;
-end;
-
-procedure TFormDCE.AddMushrooms;
-var
-  i: Integer;
-  proxy: TGLFreeFormProxy;
-  S: TGLVector;
-  f: Single;
-begin
-  // spawn some more mushrooms using proxy objects
-  for i := 0 to cNbMushrooms - 1 do
-  begin
-    // create a new proxy and set its MasterObject property
-    proxy := TGLFreeFormProxy(Mushrooms.AddNewChild(TGLFreeFormProxy));
-    with proxy do
-    begin
-      ProxyOptions := [pooObjects];
-      MasterObject := moMushroom;
-      // retrieve reference attitude
-      Direction := moMushroom.Direction;
-      Up := moMushroom.Up;
-      // randomize scale
-      S := moMushroom.Scale.AsVector;
-      f := (2 * Random + 1);
-      ScaleVector(S, f);
-      Scale.AsVector := S;
-      // randomize position
-      Position.SetPoint(Random(cSpread) - (cSpread / 2), moMushroom.Position.Z +
-        1.5 * f, Random(cSpread) - (cSpread / 2));
-      // randomize orientation
-      RollAngle := Random(360);
-      TransformationChanged;
-    end;
-    with GetOrCreateDCEStatic(proxy) do
-    begin
-      Manager := GLDCEManager1;
-      BounceFactor := 0.75;
-      Friction := 10;
-      Shape := csFreeform;
-    end;
-
-  end;
-end;
-
-procedure TFormDCE.FormShow(Sender: TObject);
-begin
-  Load;
-  GLCadencer1.Enabled := true;
-  Help.Text := 'Mouse Drag - Look' + #13 + 'A,W,S,D - movement' + #13 +
-    'SPACE - Jump' + #13 + 'F1 - Add one ball' + #13 + 'F2 - Add 10 balls' + #13
-    + 'F3 - Add 20 mushrooms' + #13 + 'F4 - Change ground to box' + #13 +
-    'F5 - Toggle step mode' + #13 + 'RETURN - Reset';
-end;
-
-procedure TFormDCE.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
-  X, Y: Integer);
-begin
-  // Mouse look
-  if ssLeft in Shift then
-  begin
-    GLCamera1.MoveAroundTarget((my - Y), 0);
-    Player.Turn(-(mx - X));
-  end;
-  mx := X;
-  my := Y;
-end;
+//-----------------------------------------------------------------
 
 procedure TFormDCE.GLCadencer1Progress(Sender: TObject;
   const deltaTime, newTime: Double);
@@ -301,10 +287,31 @@ begin
     Help.ModulateColor.Alpha := 0.25;
   HelpShadow.ModulateColor.Alpha := Help.ModulateColor.Alpha;
   HelpShadow.Text := Help.Text;
+
+  HUDTextCoords.Text := 'X: ' + FloatToStrF(Player.Position.X, ffFixed, 7, 2) + '   ' +
+                        'Y: ' + FloatToStrF(Player.Position.Y, ffFixed, 7, 2) + '   ' +
+                        'Z: ' + FloatToStrF(Player.Position.Z, ffFixed, 7, 2);
 end;
 
-procedure TFormDCE.FormKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
+
+//-----------------------------------------------------------------
+
+procedure TFormDCE.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
+  X, Y: Integer);
+begin
+  // Mouse look
+  if ssLeft in Shift then
+  begin
+    GLCamera1.MoveAroundTarget((my - Y), 0);
+    Player.Turn(-(mx - X));
+  end;
+  mx := X;
+  my := Y;
+end;
+
+//-----------------------------------------------------------------
+
+procedure TFormDCE.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 var
   i: Integer;
 begin
@@ -341,7 +348,11 @@ begin
     GetOrCreateDCEStatic(Terrain).Active := true;
     GetOrCreateDCEStatic(Ground).Active := False;
   end;
+  if Key = VK_ESCAPE then
+    Halt;
 end;
+
+//-----------------------------------------------------------------
 
 procedure TFormDCE.PlayerBehaviours0Collision(Sender: TObject;
   ObjectCollided: TGLBaseSceneObject; CollisionInfo: TDCECollision);
@@ -352,8 +363,7 @@ begin
   // You can use the Tag, TagFloat, Name, Class
   if ObjectCollided.Tag = 1 then
   begin
-    v := AffineVectorMake(VectorSubtract(ObjectCollided.AbsolutePosition,
-      Player.AbsolutePosition));
+    v := AffineVectorMake(VectorSubtract(ObjectCollided.AbsolutePosition, Player.AbsolutePosition));
     NormalizeVector(v);
     ScaleVector(v, 400);
     GetOrCreateDCEDynamic(ObjectCollided).StopAbsAccel;
@@ -361,20 +371,7 @@ begin
   end;
 end;
 
-procedure TFormDCE.Timer1Timer(Sender: TObject);
-var
-  S: string;
-begin
-  if GLDCEManager1.ManualStep then
-    S := 'Manual'
-  else
-    S := 'Automatic';
-  GLHUDText1.Text :=
-    Format('FPS: %.1f - Dynamics: %d - Statics: %d - Step mode: %s',
-    [GLSceneViewer1.FramesPerSecond, GLDCEManager1.DynamicCount,
-    GLDCEManager1.StaticCount, S]);
-  GLSceneViewer1.ResetPerformanceMonitor;
-end;
+//-----------------------------------------------------------------
 
 procedure TFormDCE.GLDirectOpenGL1Render(Sender: TObject;
   var rci: TGLRenderContextInfo);
@@ -411,10 +408,26 @@ begin
       glBegin(GL_POINTS);
       glVertex3f(p.X + n.X, p.Y + n.Y, p.Z + n.Z);
       glEnd;
-
     end; // }
 
   SetLength(debug_tri, 0);
 end;
+
+//-----------------------------------------------------------------
+
+procedure TFormDCE.Timer1Timer(Sender: TObject);
+var
+  S: string;
+begin
+  if GLDCEManager1.ManualStep then
+    S := 'Manual'
+  else
+    S := 'Automatic';
+  GLHUDText1.Text := Format('FPS: %.1f - Dynamics: %d - Statics: %d - Step mode: %s',
+    [GLSceneViewer1.FramesPerSecond, GLDCEManager1.DynamicCount, GLDCEManager1.StaticCount, S]);
+
+  GLSceneViewer1.ResetPerformanceMonitor;
+end;
+
 
 end.
