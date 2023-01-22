@@ -33,9 +33,7 @@ uses
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.HUDObjects,
-  GLS.SimpleNavigation,
-  GLS.Navigator,
-  GLS.SmoothNavigator;
+  GLS.Navigator;
 
 type
   TFormObjmove = class(TForm)
@@ -64,7 +62,6 @@ type
     GroupBox1: TGroupBox;
     ShowAxes: TCheckBox;
     StatusBar1: TStatusBar;
-    GLSmoothNavigator1: TGLSmoothNavigator;
     procedure ScnMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure ScnMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
@@ -95,6 +92,8 @@ implementation
 
 {$R *.DFM}
 
+//------------------------------------------------------------------
+
 procedure TFormObjmove.FormCreate(Sender: TObject);
 begin
   UpdateHudText;
@@ -106,6 +105,8 @@ begin
   Cube.Position.Y := 1;
   Cube.Position.Z := 1;
 end;
+
+//------------------------------------------------------------------
 
 function TFormObjmove.MouseWorldPos(X, Y: Integer): TGLVector;
 var
@@ -125,6 +126,8 @@ begin
   else
     SetVector(Result, NullVector);
 end;
+
+//------------------------------------------------------------------
 
 procedure TFormObjmove.ProcessPick(pick: TGLBaseSceneObject);
 begin
@@ -152,6 +155,8 @@ begin
   UpdateHudText;
 end;
 
+//------------------------------------------------------------------
+
 procedure TFormObjmove.ScnMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 var
@@ -166,6 +171,8 @@ begin
   if Assigned(CurrentPick) then
     lastMouseWorldPos := MouseWorldPos(X, Y);
 end;
+
+//------------------------------------------------------------------
 
 procedure TFormObjmove.ScnMouseMove(Sender: TObject; Shift: TShiftState;
   X, Y: Integer);
@@ -192,11 +199,15 @@ begin
   Dec(ScnMouseMoveCnt);
 end;
 
+//------------------------------------------------------------------
+
 procedure TFormObjmove.ShowAxesClick(Sender: TObject);
 begin
   // Unselect all
   ProcessPick(nil);
 end;
+
+//------------------------------------------------------------------
 
 procedure TFormObjmove.FormMouseWheel(Sender: TObject; Shift: TShiftState;
   WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
@@ -206,6 +217,8 @@ begin
   if WheelDelta <> 0 then
     GLCamera.AdjustDistanceToTarget(Power(1.1, -WheelDelta / 120));
 end;
+
+//------------------------------------------------------------------
 
 procedure TFormObjmove.FormKeyPress(Sender: TObject; var Key: Char);
 begin
@@ -220,6 +233,8 @@ begin
     end;
 end;
 
+//------------------------------------------------------------------
+
 procedure TFormObjmove.UpdateHudText;
 var
   objPos, winPos: TAffineVector;
@@ -229,7 +244,7 @@ begin
     SetVector(objPos, CurrentPick.AbsolutePosition);
 
     TopText.Text := Format(
-      'New Object Position: Xn: %4.4f, Yn: %4.4f, Zn: %4.4f',
+      'New Object Position: Xn: %4.3f, Yn: %4.3f, Zn: %4.3f',
       [objPos.X, objPos.Y, objPos.Z]);
 
     winPos := Scn.Buffer.WorldToScreen(objPos);
@@ -248,6 +263,8 @@ begin
     ObjText.Visible := false;
   end;
 end;
+
+//------------------------------------------------------------------
 
 procedure TFormObjmove.FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin

@@ -2,43 +2,34 @@ object FormCursor: TFormCursor
   Left = 201
   Top = 119
   Caption = 'Cursor'
-  ClientHeight = 390
-  ClientWidth = 484
+  ClientHeight = 312
+  ClientWidth = 387
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Menu = MainMenu1
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object Bevel1: TBevel
     Left = 0
     Top = 0
-    Width = 484
-    Height = 4
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 387
+    Height = 3
     Align = alTop
     Shape = bsTopLine
   end
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 4
-    Width = 484
-    Height = 362
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 3
+    Width = 387
+    Height = 290
     Camera = GLCamera1
     AfterRender = GLSceneViewer1AfterRender
     Buffer.DepthTest = False
-    FieldOfView = 149.115112304687500000
+    FieldOfView = 141.948791503906300000
     PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
@@ -46,13 +37,9 @@ object FormCursor: TFormCursor
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 366
-    Width = 484
-    Height = 24
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 293
+    Width = 387
+    Height = 19
     Panels = <>
   end
   object GLScene1: TGLScene

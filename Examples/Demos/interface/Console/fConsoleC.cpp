@@ -33,7 +33,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::OnHelloCommand(const TGLConsoleCommand *ConsoleCommand,
 		  const TGLCustomConsole *Console, TGLUserInputCommand &Command)
 {
- /// Console->AddLine("Hi, dude!");    // yet not works!
+  Console->AddLine("Hi, dude!");
 }
 
 //---------------------------------------------------------------------------
@@ -50,7 +50,7 @@ void __fastcall TForm1::OnCommand(const TGLConsoleCommand *ConsoleCommand,
   {
 	for (i = 1; i< (Command.CommandCount - 1); i++)
 	  Str = Str + Command.Strings[i];
-///	Console->AddLine("You just typed: " + Str);
+	Console->AddLine("You just typed: " + Str);
 	Command.UnknownCommand = false;
   }
   else
@@ -61,9 +61,9 @@ void __fastcall TForm1::OnCommand(const TGLConsoleCommand *ConsoleCommand,
 									 // get used to puting this line in every
 									 // command you recognize :)
   }
-///  if (Command.UnknownCommand)
-///	GLConsole1->AddLine(" - Current supported external commands are: \r\
-///					 echo and exit!");
+  if (Command.UnknownCommand)
+	GLConsole1->AddLine(" - Current supported external commands are: \r\
+					 echo and exit!");
 }
 
 //---------------------------------------------------------------------------
@@ -77,6 +77,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 
   //optional stuff:
   TFileName Path = GetCurrentAssetPath();
+  SetCurrentDir(Path  + "\\texture");
   GLConsole1->HudSprite->Material->Texture->Image->LoadFromFile("GLScene.bmp");
   GLConsole1->AddLine("Console started");
   GLConsole1->HUDSpriteColor = clWhite;
@@ -84,17 +85,20 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 
   //two ways of processing commands:
 	 //1) manual
-///  GLConsole1->OnCommandIssued = OnCommand;
+   GLConsole1->OnCommandIssued = OnCommand;
 	 //2)using built-in objects (prefered)
-	GLConsole1->Commands->Add()->CommandName = "hello";
-	GLConsole1->Commands->Add()->ShortHelp = "Says hi to you too";
-	GLConsole1->Commands->Add()->LongHelp->Add("Well, the console really does say - Hi, dude - to you, because");
-	GLConsole1->Commands->Add()->LongHelp->Add("it is roude not to greet someone, when he says - hello - to you ;)");
-///	GLConsole1->Commands->Add()->OnCommand = OnHelloCommand;
+   GLConsole1->Commands->Add()->CommandName = "hello";
+   GLConsole1->Commands->Add()->ShortHelp = "Says hi to you too";
+   GLConsole1->Commands->Add()->LongHelp->Add("Well, the console really does say - Hi, dude - to you, because");
+   GLConsole1->Commands->Add()->LongHelp->Add("it is roude not to greet someone, when he says - hello - to you ;)");
+   GLConsole1->Commands->Add()->OnCommand = OnHelloCommand;
 
   //register additional commands to enable auto-completion function
   GLConsole1->AdditionalCommands->Add("echo");
   GLConsole1->AdditionalCommands->Add("exit");
+
+  // for console saved output and loading .ini files
+  SetCurrentDir(Path  + "\\script");
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,

@@ -2,12 +2,12 @@ object FormConsole: TFormConsole
   Left = 258
   Top = 155
   Caption = 'Console'
-  ClientHeight = 521
-  ClientWidth = 814
+  ClientHeight = 417
+  ClientWidth = 651
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
@@ -16,34 +16,25 @@ object FormConsole: TFormConsole
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
   OnResize = FormResize
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object Splitter1: TSplitter
-    Left = 261
+    Left = 209
     Top = 0
-    Width = 553
-    Height = 521
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 442
+    Height = 417
     Align = alClient
     Beveled = True
     MinSize = 40
   end
   object Viewer: TGLSceneViewer
-    Left = 261
+    Left = 209
     Top = 0
-    Width = 553
-    Height = 521
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 442
+    Height = 417
     Camera = GLCamera1
     Buffer.BackgroundColor = clMoneyGreen
     Buffer.AmbientColor.Color = {9A99993E9A99993E9A99993E0000803F}
-    FieldOfView = 158.269744873046900000
+    FieldOfView = 153.029327392578100000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ViewerMouseDown
@@ -52,69 +43,45 @@ object FormConsole: TFormConsole
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 261
-    Height = 521
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 209
+    Height = 417
     Align = alLeft
     Caption = 'Panel1'
     TabOrder = 1
     object Splitter2: TSplitter
       Left = 1
-      Top = 291
-      Width = 259
-      Height = 229
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Top = 233
+      Width = 207
+      Height = 183
       Align = alClient
     end
     object GroupBox1: TGroupBox
       Left = 1
-      Top = 291
-      Width = 259
-      Height = 229
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Top = 233
+      Width = 207
+      Height = 183
       Align = alClient
       Caption = 'Console options'
       TabOrder = 0
       object Label1: TLabel
-        Left = 76
-        Top = 99
-        Width = 115
-        Height = 16
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 61
+        Top = 79
+        Width = 88
+        Height = 13
         Caption = ' Typed Commands'
       end
       object Label2: TLabel
-        Left = 86
-        Top = 128
-        Width = 91
-        Height = 16
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 69
+        Top = 102
+        Width = 73
+        Height = 13
         Caption = 'Console Output'
       end
       object CheckBox1: TCheckBox
-        Left = 10
-        Top = 20
-        Width = 245
-        Height = 21
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 8
+        Top = 16
+        Width = 196
+        Height = 17
         TabStop = False
         Caption = 'AutoCompleteCommandsOnKeyPress'
         TabOrder = 0
@@ -123,14 +90,10 @@ object FormConsole: TFormConsole
         OnKeyPress = FormKeyPress
       end
       object CheckBox2: TCheckBox
-        Left = 10
-        Top = 40
-        Width = 241
-        Height = 21
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 8
+        Top = 32
+        Width = 193
+        Height = 17
         TabStop = False
         Caption = 'AutoCompleteCommandsOnEnter'
         TabOrder = 1
@@ -139,14 +102,10 @@ object FormConsole: TFormConsole
         OnKeyPress = FormKeyPress
       end
       object CheckBox3: TCheckBox
-        Left = 10
-        Top = 60
-        Width = 244
-        Height = 21
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 8
+        Top = 48
+        Width = 195
+        Height = 17
         TabStop = False
         Caption = 'ShowConsoleHelpIfUnknownCommand'
         TabOrder = 2
@@ -155,14 +114,10 @@ object FormConsole: TFormConsole
         OnKeyPress = FormKeyPress
       end
       object Button1: TButton
-        Left = 10
-        Top = 90
-        Width = 55
-        Height = 31
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 8
+        Top = 72
+        Width = 44
+        Height = 25
         Caption = 'Save'
         TabOrder = 3
         TabStop = False
@@ -171,14 +126,10 @@ object FormConsole: TFormConsole
         OnKeyPress = FormKeyPress
       end
       object Button2: TButton
-        Left = 10
-        Top = 120
-        Width = 55
-        Height = 31
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 8
+        Top = 96
+        Width = 44
+        Height = 25
         Caption = 'Save'
         TabOrder = 4
         TabStop = False
@@ -187,28 +138,20 @@ object FormConsole: TFormConsole
         OnKeyPress = FormKeyPress
       end
       object Button6: TButton
-        Left = 194
-        Top = 89
-        Width = 55
-        Height = 31
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 155
+        Top = 71
+        Width = 44
+        Height = 25
         Caption = 'Load'
         TabOrder = 5
         TabStop = False
         OnClick = Button6Click
       end
       object Button7: TButton
-        Left = 194
-        Top = 119
-        Width = 55
-        Height = 31
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
+        Left = 155
+        Top = 95
+        Width = 44
+        Height = 25
         Caption = 'Load'
         TabOrder = 6
         TabStop = False
@@ -218,21 +161,18 @@ object FormConsole: TFormConsole
     object ListBox1: TListBox
       Left = 1
       Top = 1
-      Width = 259
-      Height = 290
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Width = 207
+      Height = 232
       TabStop = False
       Style = lbOwnerDrawFixed
       Align = alTop
       Enabled = False
       Font.Charset = RUSSIAN_CHARSET
       Font.Color = clWindowText
-      Font.Height = -14
+      Font.Height = -11
       Font.Name = 'MS Sans Serif'
       Font.Style = []
+      ItemHeight = 13
       Items.Strings = (
         'Instructions:'
         '  Click anywhere'

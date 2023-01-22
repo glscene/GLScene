@@ -63,7 +63,7 @@ var
 implementation
 
 uses
-  fWinTexture;
+  fWinTextureD;
 
 {$R *.DFM}
 

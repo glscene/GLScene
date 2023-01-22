@@ -2,8 +2,8 @@ object FormObjmove: TFormObjmove
   Left = 87
   Top = 128
   Caption = 'Moving Objects with Mouse'
-  ClientHeight = 502
-  ClientWidth = 666
+  ClientHeight = 629
+  ClientWidth = 1001
   Color = clBtnFace
   ParentFont = True
   KeyPreview = True
@@ -14,13 +14,13 @@ object FormObjmove: TFormObjmove
   OnKeyUp = FormKeyUp
   TextHeight = 20
   object Scn: TGLSceneViewer
-    Left = 161
+    Left = 169
     Top = 0
-    Width = 505
-    Height = 484
+    Width = 832
+    Height = 611
     Camera = GLCamera
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 29.538454055786130000
+    FieldOfView = 36.816364288330080000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ScnMouseDown
@@ -31,42 +31,44 @@ object FormObjmove: TFormObjmove
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 161
-    Height = 484
+    Width = 169
+    Height = 611
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 1
     object Label2: TLabel
       Left = 0
       Top = 0
-      Width = 161
-      Height = 60
+      Width = 169
+      Height = 40
       Align = alTop
-      Caption = 'Select and move with the mouse any of the cubes.'
+      Caption = 'Select and move cubes with mouse'
       ShowAccelChar = False
       WordWrap = True
-      ExplicitWidth = 146
+      ExplicitWidth = 156
     end
     object Label3: TLabel
       Left = 0
-      Top = 60
-      Width = 161
+      Top = 40
+      Width = 169
       Height = 40
       Align = alTop
       Caption = 'Default movement is on the XY plane.'
       ShowAccelChar = False
       WordWrap = True
+      ExplicitTop = 60
       ExplicitWidth = 159
     end
     object Label4: TLabel
       Left = 0
-      Top = 100
-      Width = 161
+      Top = 80
+      Width = 169
       Height = 40
       Align = alTop
       Caption = 'Shift + Drag moves on the XZ plane.'
       ShowAccelChar = False
       WordWrap = True
+      ExplicitTop = 100
       ExplicitWidth = 153
     end
     object Button1: TButton
@@ -79,12 +81,14 @@ object FormObjmove: TFormObjmove
     end
     object GroupBox1: TGroupBox
       Left = 0
-      Top = 140
-      Width = 161
+      Top = 120
+      Width = 169
       Height = 42
       Align = alTop
       Caption = 'Options'
       TabOrder = 1
+      ExplicitLeft = -6
+      ExplicitTop = 152
       object ShowAxes: TCheckBox
         Left = 5
         Top = 18
@@ -100,10 +104,12 @@ object FormObjmove: TFormObjmove
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 484
-    Width = 666
+    Top = 611
+    Width = 1001
     Height = 18
     Panels = <>
+    ExplicitTop = 484
+    ExplicitWidth = 666
   end
   object GLScene1: TGLScene
     Left = 296
@@ -164,9 +170,9 @@ object FormObjmove: TFormObjmove
     end
     object YArrow: TGLArrowLine
       Material.FrontProperties.Ambient.Color = {000000000000003F000000000000803F}
-      Direction.Coordinates = {24DE4C320000803F2CBD3B3300000000}
+      Direction.Coordinates = {000000000000803F0000000000000000}
       Position.Coordinates = {000080BFCDCCCC3D000080BF0000803F}
-      Up.Coordinates = {2EBD3BB32CBD3BB30000803F00000000}
+      Up.Coordinates = {2EBD3BB3000000000000803F00000000}
       BottomRadius = 0.009999999776482582
       Height = 2.200000047683716000
       TopRadius = 0.009999999776482582
@@ -247,16 +253,10 @@ object FormObjmove: TFormObjmove
   object GLWindowsBitmapFont1: TGLWindowsBitmapFont
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
-    Font.Height = -11
+    Font.Height = -15
     Font.Name = 'Tahoma'
     Font.Style = []
     Left = 448
     Top = 8
-  end
-  object GLSmoothNavigator1: TGLSmoothNavigator
-    MovingObject = DummyCube
-    MoveAroundParams.TargetObject = DummyCube
-    Left = 448
-    Top = 72
   end
 end

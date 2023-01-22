@@ -113,9 +113,9 @@ implementation
 
 procedure TFormGuiPaint.FormCreate(Sender: TObject);
 begin
-  var Path: TFileName := GetCurrentAssetPath();
-  SetCurrentDir(Path  + '\texture');
-  GLMaterialLibrary1.TexturePaths := GetCurrentDir();
+  var Path: TFileName := GetCurrentAssetPath()  + '\button';
+  SetCurrentDir(Path);
+  GLMaterialLibrary1.TexturePaths := Path;
   GLCanvas.MaxInvalidRenderCount := 40;
   StartX := -1;
 end;

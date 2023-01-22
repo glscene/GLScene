@@ -133,7 +133,8 @@ begin
   Console.HudSprite.Material.Texture.Image.LoadFromFile('GLScene.bmp');
   Console.AddLine('Console started');
   Console.HUDSpriteColor := clWhite;
-  Console.FontColor := clBlue;
+  Console.FontColor := clBlack;
+  Console.Size := 1;
 
   // two ways of processing commands:
   // 1) manual
@@ -150,6 +151,8 @@ begin
   // register additional commands to enable auto-completion function
   Console.AdditionalCommands.Add('echo');
   Console.AdditionalCommands.Add('exit');
+  // for console saved output and loading .ini files
+  SetCurrentDir(Path  + '\script');
 end;
 
 procedure TFormConsole.GLCadencer1Progress(Sender: TObject;

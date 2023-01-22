@@ -3,49 +3,43 @@ object FormCamera: TFormCamera
   Top = 129
   BorderWidth = 6
   Caption = 'Camera'
-  ClientHeight = 525
-  ClientWidth = 581
+  ClientHeight = 450
+  ClientWidth = 602
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   OnKeyPress = FormKeyPress
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 120
   DesignSize = (
-    581
-    525)
-  TextHeight = 16
+    602
+    450)
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 581
-    Height = 525
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 602
+    Height = 450
     Camera = GLCamera1
     VSync = vsmSync
     Buffer.BackgroundColor = clTeal
-    FieldOfView = 158.431411743164100000
+    FieldOfView = 154.942382812500000000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 509
+    ExplicitHeight = 427
   end
   object RadioGroup1: TRadioGroup
-    Left = 5
-    Top = 435
-    Width = 226
-    Height = 91
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 4
+    Top = 378
+    Width = 181
+    Height = 73
     Anchors = [akLeft, akBottom]
     Caption = 'Style'
     ItemIndex = 0
@@ -56,16 +50,13 @@ object FormCamera: TFormCamera
       'Custom')
     TabOrder = 1
     OnClick = RadioGroup1Click
+    ExplicitTop = 348
   end
   object RadioGroup2: TRadioGroup
-    Left = 386
-    Top = 455
-    Width = 182
-    Height = 71
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 446
+    Top = 394
+    Width = 145
+    Height = 57
     Anchors = [akRight, akBottom]
     Caption = 'Keep mode'
     ItemIndex = 0
@@ -74,6 +65,8 @@ object FormCamera: TFormCamera
       'Vertical')
     TabOrder = 2
     OnClick = RadioGroup2Click
+    ExplicitLeft = 309
+    ExplicitTop = 364
   end
   object GLScene1: TGLScene
     Left = 32

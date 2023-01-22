@@ -2,34 +2,32 @@ object FormWinFont: TFormWinFont
   Left = 129
   Top = 112
   Caption = 'Windows Font'
-  ClientHeight = 479
-  ClientWidth = 870
+  ClientHeight = 446
+  ClientWidth = 742
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Menu = MainMenu1
+  Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 870
-    Height = 479
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 742
+    Height = 446
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 156.415664672851600000
+    FieldOfView = 154.724838256835900000
     PenAsTouch = False
     Align = alClient
     OnClick = GLSceneViewer1Click
     TabOrder = 0
+    ExplicitWidth = 733
+    ExplicitHeight = 414
   end
   object GLScene1: TGLScene
     ObjectsSorting = osNone

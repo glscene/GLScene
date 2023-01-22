@@ -27,7 +27,10 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  TFileName Path = GetCurrentAssetPath();
+  TFileName Path = GetCurrentAssetPath() + "\\button";
+  SetCurrentDir(Path);
+  GLMaterialLibrary1->TexturePaths = Path;
+
   GLMaterialLibrary1->TexturePaths = GetCurrentDir();
   GLCanvas->MaxInvalidRenderCount = 40;
   StartX = -1;
@@ -141,9 +144,6 @@ void __fastcall TForm1::GLCanvasMouseUp(TObject *Sender, TMouseButton Button, TS
   }
 }
 //---------------------------------------------------------------------------
-
-
-
 
 void __fastcall TForm1::GLCanvasRender(TGLCustomControl *Sender, TBitmap *Bitmap)
 

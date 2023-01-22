@@ -1,14 +1,15 @@
 @echo off delete exe and xml docs
-
 del *.exe /s  
 del *.scr /s
 del *.xml /s
 
-@echo off delete delphi units
+@echo off delete delphi units but not packages
+rem del *.bpl /s
+rem del *.dcp /s
 del *.dcu /s
 del *.bak /s
 
-@echo off delete C++ includes and libs
+@echo off not delete C++ includes and libs
 rem del *.hpp /s
 rem del *.bpi /s
 rem del *.lib /s
