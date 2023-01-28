@@ -12,9 +12,14 @@ Make sure to checkout the introduction tutorial included in the help folder.
 GLScene includes more than many components and a variety of founding classes. 
 The library comes with a comfortable set of demos showcasing the ease of use and demonstrating RAD wasn't done 
 at the expense of CPU horsepower. Advanced demos and samples can be found in the project repository 
-at http://sourceforge/projects/glscene/
+at http://sourceforge/projects/glscene/ and https://github.com/glscene.
 The GLScene Sound System allows positional 3D audio via low-level APIs like 
 FMOD, BASS, OpenAL and WaveOut.
+Compile options (activated/deactivated in GLS.Scene.inc, all are inactive by default):
+The option DEFINE GLS_Graphics32_SUPPORT controls support Alex Denissov's Graphics32 library 
+(http://www.graphics32.org), once activated in GLScene.inc, TGLBitmap32 will redirect 
+assignments from TBitmap32.
+
 See http://www.glscene.org for more details.
 
 ---------------------------------------------------------
@@ -22,15 +27,10 @@ See http://www.glscene.org for more details.
 To Install GLScene follow the instruction in installation directory. 
 To compile GLScene see Installation instruction and after having installed all the necessary units 
 and updated your environment library paths open and install the packages appropriate to the corresponding directory. 
-Check your RAD Studio paths for duplicates or old .pas/.dcu that's where the problem lies 99% of the time.
+Check your RAD Studio paths for duplicates or old .pas/.dcu/.lib/.hpp that's where the problem lies 99% of the time.
 If you have installed a current version, make sure no files of the previous version remains, 
-some files may have been renamed, moved or removed in between versions with CleanForRelease.bat. 
+some files may have been renamed, moved or removed in between versions with _cleanrelease.cmd. 
  
-Compile options (activated/deactivated in GLScene.inc, all are inactive by default):
-The option DEFINE GLS_Graphics32_SUPPORT controls support Alex Denissov's Graphics32 library 
-(http://www.graphics32.org), once activated in GLScene.inc, TGLBitmap32 will redirect 
-assignments from TBitmap32.
-
 --------------------------------------------------------------
 
 GLSTeam
