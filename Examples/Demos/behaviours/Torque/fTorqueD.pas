@@ -119,7 +119,6 @@ begin
     pickedObject.Material.FrontProperties.Emission.Color := clrYellow;
     ShowMessage('You clicked the ' + pickedObject.Name);
     pickedObject.BuildList(rci);
-///    HUDText.Text := 'Calculated Volume:+ '#13#10 + 'Vertices:'#13#10#13#10 + 'Faces:'#13#10#13#10 + 'Edges:';
     pickedObject.Material.FrontProperties.Emission.Color := oldColor;
   end;
 end;
