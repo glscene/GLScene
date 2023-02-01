@@ -1,1 +1,1 @@
-Win32 bpl packages
+Win32 dir includes *.bpl packages

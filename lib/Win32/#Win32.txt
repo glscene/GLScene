@@ -1,1 +1,1 @@
-Win32 libs
+Win32 dir includes *lib/bpi files

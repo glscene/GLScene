@@ -1,1 +1,1 @@
-Win32 dcp packages
+Win32 dir includes *.dcp packages

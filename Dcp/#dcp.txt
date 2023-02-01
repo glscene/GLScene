@@ -1,3 +1,0 @@
-Remove packages to $(BDSCOMMONDIR)\Dcp directory 
-to install on C++Builder Personality
-Embarcadero RAD Studio Community Edition
