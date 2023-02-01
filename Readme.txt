@@ -8,5 +8,5 @@ TensorFlow, FNN and CIA for OpenAI on neural networks.
 The hierarchy of spatial smart objects with sense properties has been expanded. 
 Includes improvements in GPU parallel computing using CUDA/OpenCL components 
 for developing OpenGL applications for Win32/Win64.
-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------
 GLS Team
