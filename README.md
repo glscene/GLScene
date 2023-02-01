@@ -8,5 +8,4 @@ Supported GPU parallel computing using CUDA/OpenCL components.
 
 This is the official GitHub fork of the original SourceForge repository. 
 The latter can still be found at http://sf.net/projects/glscene
-
 GLS Team
