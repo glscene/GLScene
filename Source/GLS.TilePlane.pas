@@ -68,9 +68,8 @@ type
     destructor Destroy; override;
     procedure WriteToFiler(writer: TGLVirtualWriter); override;
     procedure ReadFromFiler(reader: TGLVirtualReader); override;
-    property Tile[col, row: Integer]: Integer read GetTile
-      write SetTile; default;
-    property Row[index: Integer]: TGLTiledAreaRow read GetRow;
+    property Tile[col, row: Integer]: Integer read GetTile write SetTile; default;
+    property row[index: Integer]: TGLTiledAreaRow read GetRow;
     property RowMin: Integer read FRowMin write SetRowMin;
     property RowMax: Integer read FRowMax write SetRowMax;
     procedure Pack;
@@ -94,8 +93,7 @@ type
     procedure SetTiles(const val: TGLTiledArea);
     procedure SetMaterialLibrary(const val: TGLMaterialLibrary);
     procedure SetSortByMaterials(const val: Boolean);
-    procedure Notification(AComponent: TComponent;
-      Operation: TOperation); override;
+    procedure Notification(AComponent: TComponent; Operation: TOperation); override;
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -108,8 +106,7 @@ type
       This property should ideally be left always at its default, True,
       except for debugging and performance measurement, which is why
       it's only public and not published. *)
-    property SortByMaterials: Boolean read FSortByMaterials
-      write SetSortByMaterials;
+    property SortByMaterials: Boolean read FSortByMaterials write SetSortByMaterials;
   published
     // If True the tiles are rendered without writing to the ZBuffer.
     property NoZWrite: Boolean read FNoZWrite write SetNoZWrite;
@@ -117,8 +114,7 @@ type
       The lower 16 bits of the tile integer value is understood as being
       the index of the tile's material in the library (material of
       index zero is thus unused). *)
-    property MaterialLibrary: TGLMaterialLibrary read FMaterialLibrary
-      write SetMaterialLibrary;
+    property MaterialLibrary: TGLMaterialLibrary read FMaterialLibrary write SetMaterialLibrary;
   end;
 
 // -------------------------------------------------------------
@@ -520,8 +516,7 @@ begin
   StructureChanged;
 end;
 
-procedure TGLTilePlane.Notification(AComponent: TComponent;
-  Operation: TOperation);
+procedure TGLTilePlane.Notification(AComponent: TComponent; Operation: TOperation);
 begin
   if Operation = opRemove then
   begin
@@ -649,6 +644,7 @@ end;
 
 // -------------------------------------------------------------
 initialization
+
 // -------------------------------------------------------------
 
 RegisterClasses([TGLTilePlane, TGLTiledAreaRow, TGLTiledArea]);

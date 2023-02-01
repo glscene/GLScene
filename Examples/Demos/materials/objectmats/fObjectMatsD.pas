@@ -64,6 +64,8 @@ type
     PolyRight: TGLPolygon;
     PolyBack: TGLPolygon;
     GLPolygon4: TGLPolygon;
+    GLDisk1: TGLDisk;
+    polyTriangle: TGLPolygon;
     procedure FormCreate(Sender: TObject);
     procedure dcPlaneCubeProgress(Sender: TObject; const DeltaTime, NewTime: Double);
     procedure GLCadencer1Progress(Sender: TObject; const DeltaTime, NewTime: Double);
@@ -136,6 +138,8 @@ begin
       2: dcPlaneCube.RollAngle := -90 * NewTime;
       3: GLPoints1.TurnAngle := 90 * NewTime;
       4: dcPolyCube.PitchAngle := -90 * NewTime;
+      5: GLDisk1.RollAngle := -90 * NewTime;
+      6: PolyTriangle.TurnAngle := -90 * NewTime;
     end;
   end;
 end;

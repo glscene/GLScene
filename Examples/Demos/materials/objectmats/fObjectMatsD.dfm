@@ -36,14 +36,16 @@ object FormMO: TFormMO
       Left = 24
       Top = 120
       Width = 145
-      Height = 121
+      Height = 177
       ItemIndex = 0
       Items.Strings = (
         'Cube'
         'Hexahedra'
         'PlaneCube'
         'PointsCube'
-        'PolyCube')
+        'PolyCube'
+        'Disk'
+        'Polygon')
       TabOrder = 0
     end
     object chbRotate: TCheckBox
@@ -81,6 +83,33 @@ object FormMO: TFormMO
     object dcCubes: TGLDummyCube
       CubeSize = 100.000000000000000000
       VisibleAtRunTime = True
+      object polyTriangle: TGLPolygon
+        Material.MaterialLibrary = GLMaterialLibrary1
+        Material.LibMaterialName = 'txEarth'
+        Direction.Coordinates = {0000803F000000000000000000000000}
+        Position.Coordinates = {00000000000040C0000040C00000803F}
+        Up.Coordinates = {00000000000080BF0000000000000000}
+        Nodes = <
+          item
+            X = 1.000000000000000000
+            Z = 1.000000000000000000
+          end
+          item
+            X = 1.000000000000000000
+          end
+          item
+            Z = 1.000000000000000000
+          end>
+      end
+      object GLDisk1: TGLDisk
+        Material.MaterialLibrary = GLMaterialLibrary1
+        Material.LibMaterialName = 'txEarth'
+        Direction.Coordinates = {000000000000803F0000000000000000}
+        Position.Coordinates = {00000000000080C0000000000000803F}
+        Up.Coordinates = {0000000000000000000080BF00000000}
+        OuterRadius = 1.000000000000000000
+        SweepAngle = 360.000000000000000000
+      end
       object GLCube1: TGLCube
         Material.MaterialLibrary = GLMaterialLibrary1
         Material.LibMaterialName = 'txEarth'
