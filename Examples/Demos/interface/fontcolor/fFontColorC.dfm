@@ -10,6 +10,7 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
@@ -35,7 +36,7 @@ object Form1: TForm1
     object Teapot1: TGLTeapot
       Material.FrontProperties.Diffuse.Color = {9D9C1C3FB3B2323F0000803F0000803F}
     end
-    object HUDText1: TGLHUDText
+    object HUDTextFadingOut: TGLHUDText
       Position.Coordinates = {0000484300008C42000000000000803F}
       BitmapFont = BitmapFont
       Text = 'FADING OUT'
@@ -43,7 +44,7 @@ object Form1: TForm1
       Alignment = taCenter
       ModulateColor.Color = {0000803F0000803F0000803F3333333F}
     end
-    object HUDText2: TGLHUDText
+    object HUDTextTheEnd: TGLHUDText
       Position.Coordinates = {0000484300009143000000000000803F}
       BitmapFont = BitmapFont
       Text = 'THE END'
@@ -51,7 +52,7 @@ object Form1: TForm1
       Alignment = taCenter
       ModulateColor.Color = {0000803FF8FEFE3E000000003333333F}
     end
-    object HUDText3: TGLHUDText
+    object HUDTextRedRed: TGLHUDText
       Position.Coordinates = {000048430000A041000000000000803F}
       BitmapFont = BitmapFont
       Text = 'RED RED'
@@ -59,7 +60,7 @@ object Form1: TForm1
       Alignment = taCenter
       ModulateColor.Color = {0000803F00000000000000000000803F}
     end
-    object HUDText4: TGLHUDText
+    object HUDTextTransparent: TGLHUDText
       Position.Coordinates = {0000484300007A43000000000000803F}
       BitmapFont = BitmapFont
       Text = 'TRANSPARENT'

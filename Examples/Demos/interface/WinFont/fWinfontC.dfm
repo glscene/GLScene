@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 0
   Caption = 'Windows Font'
   ClientHeight = 387
-  ClientWidth = 531
+  ClientWidth = 747
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,12 +11,13 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   Menu = MainMenu1
+  Position = poScreenCenter
   OnCreate = FormCreate
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 531
+    Width = 747
     Height = 387
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
@@ -25,6 +26,7 @@ object Form1: TForm1
     Align = alClient
     OnClick = GLSceneViewer1Click
     TabOrder = 0
+    ExplicitWidth = 657
   end
   object GLScene1: TGLScene
     ObjectsSorting = osNone

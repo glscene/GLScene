@@ -100,7 +100,7 @@ public:
 	DYNAMIC void __fastcall WriteToFiler(Gls::Persistentclasses::TGLVirtualWriter* writer);
 	DYNAMIC void __fastcall ReadFromFiler(Gls::Persistentclasses::TGLVirtualReader* reader);
 	__property int Tile[int col][int row] = {read=GetTile, write=SetTile/*, default*/};
-	__property TGLTiledAreaRow* Row[int index] = {read=GetRow};
+	__property TGLTiledAreaRow* row[int index] = {read=GetRow};
 	__property int RowMin = {read=FRowMin, write=SetRowMin, nodefault};
 	__property int RowMax = {read=FRowMax, write=SetRowMax, nodefault};
 	void __fastcall Pack();

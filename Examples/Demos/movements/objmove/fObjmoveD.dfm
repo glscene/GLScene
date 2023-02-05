@@ -8,7 +8,6 @@ object FormObjmove: TFormObjmove
   ParentFont = True
   KeyPreview = True
   Position = poScreenCenter
-  WindowState = wsMaximized
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnKeyUp = FormKeyUp
@@ -56,8 +55,7 @@ object FormObjmove: TFormObjmove
       Caption = 'Default movement is on the XY plane.'
       ShowAccelChar = False
       WordWrap = True
-      ExplicitTop = 60
-      ExplicitWidth = 159
+      ExplicitWidth = 163
     end
     object Label4: TLabel
       Left = 0
@@ -68,7 +66,6 @@ object FormObjmove: TFormObjmove
       Caption = 'Shift + Drag moves on the XZ plane.'
       ShowAccelChar = False
       WordWrap = True
-      ExplicitTop = 100
       ExplicitWidth = 153
     end
     object Button1: TButton
@@ -87,8 +84,6 @@ object FormObjmove: TFormObjmove
       Align = alTop
       Caption = 'Options'
       TabOrder = 1
-      ExplicitLeft = -6
-      ExplicitTop = 152
       object ShowAxes: TCheckBox
         Left = 5
         Top = 18
@@ -108,8 +103,6 @@ object FormObjmove: TFormObjmove
     Width = 1001
     Height = 18
     Panels = <>
-    ExplicitTop = 484
-    ExplicitWidth = 666
   end
   object GLScene1: TGLScene
     Left = 296
@@ -194,10 +187,10 @@ object FormObjmove: TFormObjmove
     end
     object TxtX: TGLSpaceText
       Direction.Coordinates = {F30435BFF30435BF0000000000000000}
-      Position.Coordinates = {CDCCCC3F000080BF000080BF0000803F}
+      Position.Coordinates = {0000C03F000080BF000080BF0000803F}
       Scale.Coordinates = {9A99993E9A99993E9A99993E00000000}
       Up.Coordinates = {00000000000000000000803F00000000}
-      Extrusion = 0.300000011920929000
+      Extrusion = 0.200000002980232200
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -212,7 +205,7 @@ object FormObjmove: TFormObjmove
       Position.Coordinates = {000080BF9A99D93F000080BF0000803F}
       Scale.Coordinates = {9A99993E9A99993E9A99993E00000000}
       Up.Coordinates = {00000000000000000000803F00000000}
-      Extrusion = 0.300000011920929000
+      Extrusion = 0.200000002980232200
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -224,7 +217,7 @@ object FormObjmove: TFormObjmove
     end
     object TxtZ: TGLSpaceText
       Direction.Coordinates = {F304353FF304353F0000000000000000}
-      Position.Coordinates = {000000C0000000C0000000000000803F}
+      Position.Coordinates = {000000C0000000C0CDCCCCBE0000803F}
       Scale.Coordinates = {9A99993E9A99993E9A99993E00000000}
       Up.Coordinates = {00000080000000000000803F00000000}
       Extrusion = 0.200000002980232200

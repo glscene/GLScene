@@ -2,8 +2,8 @@ object FormSoundBASS: TFormSoundBASS
   Left = 209
   Top = 92
   Caption = 'Sound BASS'
-  ClientHeight = 407
-  ClientWidth = 536
+  ClientHeight = 411
+  ClientWidth = 639
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,20 +16,20 @@ object FormSoundBASS: TFormSoundBASS
   object GLSceneViewer: TGLSceneViewer
     Left = 0
     Top = 66
-    Width = 536
-    Height = 314
+    Width = 639
+    Height = 318
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
     Buffer.AntiAliasing = aaNone
-    FieldOfView = 144.669631958007800000
+    FieldOfView = 145.086883544921900000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object TrackBar: TTrackBar
     Left = 0
-    Top = 380
-    Width = 536
+    Top = 384
+    Width = 639
     Height = 27
     Align = alBottom
     Max = 180
@@ -44,7 +44,7 @@ object FormSoundBASS: TFormSoundBASS
   object TrackBar1: TTrackBar
     Left = 0
     Top = 33
-    Width = 536
+    Width = 639
     Height = 33
     Align = alTop
     Max = 50
@@ -59,13 +59,13 @@ object FormSoundBASS: TFormSoundBASS
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 536
+    Width = 639
     Height = 33
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 3
     DesignSize = (
-      536
+      639
       33)
     object LabelFPS: TLabel
       Left = 24
@@ -75,7 +75,7 @@ object FormSoundBASS: TFormSoundBASS
       Caption = 'FPS'
     end
     object btnChimes: TButton
-      Left = 445
+      Left = 548
       Top = 4
       Width = 83
       Height = 25
@@ -85,7 +85,7 @@ object FormSoundBASS: TFormSoundBASS
       OnClick = btnChimesClick
     end
     object btnHowl: TButton
-      Left = 356
+      Left = 459
       Top = 2
       Width = 83
       Height = 25

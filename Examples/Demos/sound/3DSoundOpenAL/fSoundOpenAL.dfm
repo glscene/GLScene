@@ -2,35 +2,33 @@ object Form1: TForm1
   Left = 209
   Top = 92
   Caption = 'Sound OpenAL'
-  ClientHeight = 347
-  ClientWidth = 475
+  ClientHeight = 407
+  ClientWidth = 638
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer: TGLSceneViewer
     Left = 0
     Top = 66
-    Width = 475
-    Height = 254
+    Width = 638
+    Height = 314
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
     Buffer.AntiAliasing = aaNone
-    FieldOfView = 137.020797729492200000
+    FieldOfView = 144.669631958007800000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object TrackBar: TTrackBar
     Left = 0
-    Top = 320
-    Width = 475
+    Top = 380
+    Width = 638
     Height = 27
     Align = alBottom
     Max = 180
@@ -45,7 +43,7 @@ object Form1: TForm1
   object TrackBar1: TTrackBar
     Left = 0
     Top = 33
-    Width = 475
+    Width = 638
     Height = 33
     Align = alTop
     Max = 50
@@ -60,13 +58,13 @@ object Form1: TForm1
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 475
+    Width = 638
     Height = 33
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 3
     DesignSize = (
-      475
+      638
       33)
     object LabelFPS: TLabel
       Left = 8
@@ -75,24 +73,23 @@ object Form1: TForm1
       Height = 13
       Caption = 'FPS'
     end
-    object Button1: TButton
-      Left = 384
+    object btnChimes: TButton
+      Left = 547
       Top = 3
       Width = 83
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Chimes (WAV)'
       TabOrder = 0
-      OnClick = Button1Click
+      OnClick = btnChimesClick
     end
     object btnHowl: TButton
-      Left = 295
+      Left = 458
       Top = 3
       Width = 83
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Howl (MP3)'
-      Enabled = False
       TabOrder = 1
       OnClick = btnHowlClick
     end
@@ -137,6 +134,12 @@ object Form1: TForm1
         Radius = 0.500000000000000000
         Slices = 9
         Stacks = 9
+        BehavioursData = {
+          0458434F4C02010201061054474C42536F756E64456D69747465720200060D53
+          6F756E6420456D69747465720200020002000200050000000000000080FF3F05
+          0000000000000080FF3F0500000000000000C805400500000000000000B40740
+          0500000000000000B407400500000000000000000000060E474C536F756E644C
+          69627261727912000000000808020109}
         object Sphere2: TGLSphere
           Position.Coordinates = {CDCCCC3ECDCC4C3E000000000000803F}
           Radius = 0.300000011920929000

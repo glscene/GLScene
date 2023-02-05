@@ -60,7 +60,7 @@ procedure TFormBmpFont.FormCreate(Sender: TObject);
 begin
   // Load the font bitmap from asset dir
   var Path: TFileName := GetCurrentAssetPath();
-  SetCurrentDir(Path  + '\texture');
+  SetCurrentDir(Path  + '\font');
   BitmapFont1.Glyphs.LoadFromFile('darkgold_font.bmp');
   // sorry, couldn't resist...
   {$IFDEF WIN32}

@@ -644,7 +644,6 @@ end;
 
 // -------------------------------------------------------------
 initialization
-
 // -------------------------------------------------------------
 
 RegisterClasses([TGLTilePlane, TGLTiledAreaRow, TGLTiledArea]);

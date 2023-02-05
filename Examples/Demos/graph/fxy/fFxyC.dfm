@@ -2,28 +2,31 @@ object Form1: TForm1
   Left = 192
   Top = 121
   Caption = 'Fxy '
-  ClientHeight = 670
-  ClientWidth = 846
+  ClientHeight = 536
+  ClientWidth = 677
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   WindowState = wsMaximized
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 568
-    Height = 670
+    Width = 454
+    Height = 536
+    Margins.Left = 2
+    Margins.Top = 2
+    Margins.Right = 2
+    Margins.Bottom = 2
     Camera = Camera
     Buffer.BackgroundColor = clTeal
     Buffer.AntiAliasing = aa4xHQ
-    FieldOfView = 132.487487792968800000
+    FieldOfView = 122.320289611816400000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ViewerMouseDown
@@ -31,74 +34,83 @@ object Form1: TForm1
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 568
+    Left = 454
     Top = 0
-    Width = 278
-    Height = 670
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 223
+    Height = 536
     Align = alRight
     TabOrder = 1
     object Label1: TLabel
-      Left = 83
-      Top = 50
-      Width = 101
-      Height = 16
+      Left = 66
+      Top = 40
+      Width = 80
+      Height = 13
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Caption = 'XYZ grid position'
     end
     object TrackBar1: TTrackBar
-      Left = 216
-      Top = 89
-      Width = 45
-      Height = 321
+      Left = 173
+      Top = 71
+      Width = 36
+      Height = 257
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Min = -10
       Orientation = trVertical
       TabOrder = 0
-      ThumbLength = 25
       OnChange = TrackBar1Change
     end
     object TrackBar2: TTrackBar
-      Left = 36
-      Top = 89
-      Width = 45
-      Height = 321
+      Left = 29
+      Top = 71
+      Width = 36
+      Height = 257
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Min = -10
       Orientation = trVertical
       TabOrder = 1
-      ThumbLength = 25
       OnChange = TrackBar2Change
     end
     object TrackBar3: TTrackBar
-      Left = 126
-      Top = 89
-      Width = 45
-      Height = 321
+      Left = 101
+      Top = 71
+      Width = 36
+      Height = 257
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Min = -10
       Orientation = trVertical
       TabOrder = 2
-      ThumbLength = 25
       OnChange = TrackBar3Change
     end
     object CheckBox1: TCheckBox
-      Left = 80
-      Top = 14
-      Width = 121
-      Height = 21
+      Left = 64
+      Top = 11
+      Width = 97
+      Height = 17
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Caption = 'Centered Grids'
       TabOrder = 3
       OnClick = CheckBox1Click
     end
     object RadioGroup1: TRadioGroup
-      Left = 20
-      Top = 431
-      Width = 271
-      Height = 132
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 345
+      Width = 217
+      Height = 105
       Caption = 'Formula'
       ItemIndex = 3
       Items.Strings = (
@@ -109,6 +121,14 @@ object Form1: TForm1
       TabOrder = 4
       OnClick = RadioGroup1Click
     end
+  end
+  object Edit1: TEdit
+    Left = 112
+    Top = 72
+    Width = 121
+    Height = 21
+    TabOrder = 2
+    Text = 'Edit1'
   end
   object GLScene1: TGLScene
     Left = 80

@@ -60,6 +60,7 @@ __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner)
     // apply texture map scale (our heightmap size is 256)
     TerrainRenderer1->TilesPerTexture = 256.0 / TerrainRenderer1->TileSize;
     // Load Bitmap Font
+	SetCurrentDir(Path + "\\font");
     BitmapFont1->Glyphs->LoadFromFile("darkgold_font.bmp");
 
     // Load and setup sound samples

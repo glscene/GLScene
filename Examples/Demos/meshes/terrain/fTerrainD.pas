@@ -110,6 +110,7 @@ begin
   // apply texture map scale (our heightmap size is 256)
   TerrainRenderer1.TilesPerTexture := 256 / TerrainRenderer1.TileSize;
   // Load Bitmap Font
+  SetCurrentDir(Path  + '\font');
   BitmapFont1.Glyphs.LoadFromFile('darkgold_font.bmp');
 
   // Load and setup sound samples

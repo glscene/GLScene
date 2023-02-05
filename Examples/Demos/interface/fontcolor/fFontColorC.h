@@ -27,10 +27,10 @@ __published:	// IDE-managed Components
 	TGLScene *GLScene1;
 	TGLLightSource *GLLightSource1;
 	TGLTeapot *Teapot1;
-	TGLHUDText *HUDText1;
-	TGLHUDText *HUDText2;
-	TGLHUDText *HUDText3;
-	TGLHUDText *HUDText4;
+	TGLHUDText *HUDTextFadingOut;
+	TGLHUDText *HUDTextTheEnd;
+	TGLHUDText *HUDTextRedRed;
+	TGLHUDText *HUDTextTransparent;
 	TGLCamera *GLCamera1;
 	TGLBitmapFont *BitmapFont;
 	TGLTimeEventsMGR *GLTimeEventsMGR1;

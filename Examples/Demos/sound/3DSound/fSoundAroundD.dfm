@@ -2,8 +2,8 @@ object FormSoundAround: TFormSoundAround
   Left = 209
   Top = 92
   Caption = 'Sound Around'
-  ClientHeight = 367
-  ClientWidth = 481
+  ClientHeight = 459
+  ClientWidth = 649
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,20 +15,20 @@ object FormSoundAround: TFormSoundAround
   object GLSceneViewer: TGLSceneViewer
     Left = 0
     Top = 73
-    Width = 481
-    Height = 267
+    Width = 649
+    Height = 359
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
     Buffer.AntiAliasing = aaNone
-    FieldOfView = 138.934951782226600000
+    FieldOfView = 148.869476318359400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object TrackBar: TTrackBar
     Left = 0
-    Top = 340
-    Width = 481
+    Top = 432
+    Width = 649
     Height = 27
     Align = alBottom
     Max = 180
@@ -43,7 +43,7 @@ object FormSoundAround: TFormSoundAround
   object TrackBar1: TTrackBar
     Left = 0
     Top = 41
-    Width = 481
+    Width = 649
     Height = 32
     Align = alTop
     Max = 50
@@ -58,13 +58,13 @@ object FormSoundAround: TFormSoundAround
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 481
+    Width = 649
     Height = 41
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 3
     DesignSize = (
-      481
+      649
       41)
     object Label1: TLabel
       Left = 10
@@ -101,7 +101,7 @@ object FormSoundAround: TFormSoundAround
       OnClick = RBFMODClick
     end
     object Button1: TButton
-      Left = 390
+      Left = 558
       Top = 2
       Width = 83
       Height = 25
@@ -111,7 +111,7 @@ object FormSoundAround: TFormSoundAround
       OnClick = Button1Click
     end
     object btnHowl: TButton
-      Left = 301
+      Left = 469
       Top = 2
       Width = 83
       Height = 25
@@ -143,15 +143,7 @@ object FormSoundAround: TFormSoundAround
     MaxChannels = 32
     MasterVolume = 1.000000000000000000
     Listener = Mickey
-    Sources = <
-      item
-        SoundLibrary = GLSoundLibrary
-        Volume = 1.000000000000000000
-        MinDistance = 1.000000000000000000
-        MaxDistance = 100.000000000000000000
-        InsideConeAngle = 360.000000000000000000
-        OutsideConeAngle = 360.000000000000000000
-      end>
+    Sources = <>
     Cadencer = GLCadencer1
     Left = 288
     Top = 80
@@ -167,9 +159,7 @@ object FormSoundAround: TFormSoundAround
     Top = 80
   end
   object GLSoundLibrary: TGLSoundLibrary
-    Samples = <
-      item
-      end>
+    Samples = <>
     Left = 216
     Top = 80
   end
@@ -236,6 +226,12 @@ object FormSoundAround: TFormSoundAround
       Radius = 0.500000000000000000
       Slices = 9
       Stacks = 9
+      BehavioursData = {
+        0458434F4C02010201061054474C42536F756E64456D69747465720200120000
+        00000200020002000200050000000000000080FF3F050000000000000080FF3F
+        0500000000000000C805400500000000000000B407400500000000000000B407
+        400500000000000000000000060E474C536F756E644C696272617279060C6472
+        756D6C6F6F702E7761760808020309}
       object Disk1: TGLDisk
         Direction.Coordinates = {000000000000803F2EBD3BB300000000}
         Position.Coordinates = {00000000000080BF000000000000803F}

@@ -61,7 +61,7 @@ type
     procedure btnChimesClick(Sender: TObject);
     procedure btnHowlClick(Sender: TObject);
   private
-
+    Path: TFileName;
   public
 
   end;
@@ -75,7 +75,7 @@ implementation
 
 procedure TFormSoundBASS.FormCreate(Sender: TObject);
 begin
-  var Path: TFileName := GetCurrentAssetPath();
+  Path := GetCurrentAssetPath();
   SetCurrentDir(Path  + '\audio');
   // Load our sound samples
   GLSoundLibrary.Samples.AddFile('drumloop.wav', 'drumloop.wav');
@@ -118,8 +118,7 @@ begin
     mngName := '';
   if ActiveSoundManager <> nil then
     LabelFPS.Caption := Format('%.2f FPS, %s CPU use : %.2f%%',
-      [GLSceneViewer.FramesPerSecond, mngName,
-      ActiveSoundManager.CPUUsagePercent])
+      [GLSceneViewer.FramesPerSecond, mngName, ActiveSoundManager.CPUUsagePercent])
   else
     LabelFPS.Caption := 'No active sound manager.';
   GLSceneViewer.ResetPerformanceMonitor;
@@ -127,7 +126,7 @@ end;
 
 procedure TFormSoundBASS.btnChimesClick(Sender: TObject);
 begin
-  with TGLBSoundEmitter.Create(Sphere.Behaviours) do
+  with TGLBSoundEmitter.Create(SphereSound.Behaviours) do
   begin
     Source.SoundLibrary := GLSoundLibrary;
     Source.SoundName := 'chimes.wav';
@@ -137,7 +136,7 @@ end;
 
 procedure TFormSoundBASS.btnHowlClick(Sender: TObject);
 begin
-  with TGLBSoundEmitter.Create(Sphere.Behaviours) do
+  with TGLBSoundEmitter.Create(SphereSound.Behaviours) do
   begin
     Source.SoundLibrary := GLSoundLibrary;
     Source.SoundName := 'howl.mp3';

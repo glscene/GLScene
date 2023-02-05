@@ -2,35 +2,35 @@ object FormSoundWaveout: TFormSoundWaveout
   Left = 209
   Top = 92
   Caption = 'Sound WaveOut'
-  ClientHeight = 347
-  ClientWidth = 475
+  ClientHeight = 424
+  ClientWidth = 596
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer: TGLSceneViewer
     Left = 0
     Top = 66
-    Width = 475
-    Height = 254
+    Width = 596
+    Height = 331
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
     Buffer.AntiAliasing = aaNone
-    FieldOfView = 137.020797729492200000
+    FieldOfView = 146.379318237304700000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 550
+    ExplicitHeight = 296
   end
   object TrackBar: TTrackBar
     Left = 0
-    Top = 320
-    Width = 475
+    Top = 397
+    Width = 596
     Height = 27
     Align = alBottom
     Max = 180
@@ -41,11 +41,13 @@ object FormSoundWaveout: TFormSoundWaveout
     ThumbLength = 10
     TickMarks = tmBoth
     OnChange = TrackBarChange
+    ExplicitTop = 320
+    ExplicitWidth = 475
   end
   object TrackBar1: TTrackBar
     Left = 0
     Top = 33
-    Width = 475
+    Width = 596
     Height = 33
     Align = alTop
     Max = 50
@@ -56,17 +58,19 @@ object FormSoundWaveout: TFormSoundWaveout
     ThumbLength = 10
     TickMarks = tmBoth
     OnChange = TrackBar1Change
+    ExplicitWidth = 475
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 475
+    Width = 596
     Height = 33
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 3
+    ExplicitWidth = 475
     DesignSize = (
-      475
+      596
       33)
     object LabelFPS: TLabel
       Left = 8
@@ -76,7 +80,7 @@ object FormSoundWaveout: TFormSoundWaveout
       Caption = 'FPS'
     end
     object Button1: TButton
-      Left = 384
+      Left = 505
       Top = 4
       Width = 83
       Height = 25
@@ -84,9 +88,10 @@ object FormSoundWaveout: TFormSoundWaveout
       Caption = 'Chimes (WAV)'
       TabOrder = 0
       OnClick = Button1Click
+      ExplicitLeft = 384
     end
     object btnHowl: TButton
-      Left = 295
+      Left = 416
       Top = 2
       Width = 83
       Height = 25
@@ -94,6 +99,7 @@ object FormSoundWaveout: TFormSoundWaveout
       Caption = 'Howl (MP3)'
       TabOrder = 1
       OnClick = btnHowlClick
+      ExplicitLeft = 295
     end
   end
   object GLSMWaveOut: TGLSMWaveOut

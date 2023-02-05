@@ -14,6 +14,8 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.StdCtrls.hpp>
+#include <System.ImageList.hpp>
+#include <Vcl.ImgList.hpp>
 
 //---------------------------------------------------------------------------
 class TForm1:public TForm
@@ -34,6 +36,7 @@ __published:                   // IDE-managed Components
 	TLabel *Label1;
 	TCheckBox *CheckBox1;
 	TRadioGroup *RadioGroup1;
+	TEdit *Edit1;
   void __fastcall CheckBox1Click(TObject * Sender);
   void __fastcall TrackBar1Change(TObject * Sender);
   void __fastcall ViewerMouseDown(TObject * Sender, TMouseButton Button,

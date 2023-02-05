@@ -45,6 +45,8 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
    SPMoon->Material->Texture->Image->LoadFromFile("moon.bmp");
    SPSun->Material->Texture->Image->LoadFromFile("flare1.bmp");
    TerrainRenderer1->TilesPerTexture = (float)256/TerrainRenderer1->TileSize;
+   
+   SetCurrentDir(Path + "\\font");
    BitmapFont1->Glyphs->LoadFromFile("darkgold_font.bmp");
    GLSceneViewer1->Buffer->BackgroundColor = clWhite;
    GLNavigator1->TurnHorizontal(90);

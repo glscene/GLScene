@@ -30,7 +30,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 {
    // Load the font bitmap from media dir
    TFileName Path = GetCurrentAssetPath();
-   SetCurrentDir(Path  + "\\texture");
+   SetCurrentDir(Path  + "\\font");
    BitmapFont1->Glyphs->LoadFromFile("darkgold_font.bmp");
    // sorry, couldn't resist...
 
