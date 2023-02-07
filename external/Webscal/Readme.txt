@@ -1,2 +1,1 @@
-Webscal is a language for building web applications based on DWS, WebGL and Vulcan.
-Under development.
+Webscal is a package for building web applications based on DWS, WebGL and Vulcan.
