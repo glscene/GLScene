@@ -1,4 +1,4 @@
-unit fReflect;
+unit fReflectD;
 
 interface
 
@@ -126,10 +126,8 @@ type
     procedure CgShader1ApplyFP(CgProgram: TCgProgram; Sender: TObject);
     procedure CgShader1ApplyVP(CgProgram: TCgProgram; Sender: TObject);
   private
-
     procedure CreateCubeMap;
   public
-
     mx, my: Integer;
   end;
 
@@ -325,7 +323,6 @@ end;
 procedure TForm1.Timer1Timer(Sender: TObject);
 begin
   Caption := Format('Cg Reflect - %.1f fps', [GLSceneViewer1.FramesPerSecond]);
-  ResetPerformanceMonitor;
 end;
 
 procedure TForm1.FormKeyPress(Sender: TObject; var Key: Char);

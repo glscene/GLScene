@@ -11,12 +11,12 @@ program PostShaderD;
 
 uses
   Forms,
-  fPostShaderD in 'fPostShaderD.pas' {PostShaderDemoForm};
+  fPostShaderD in 'fPostShaderD.pas' {FormPostShader};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TPostShaderDemoForm, PostShaderDemoForm);
+  Application.CreateForm(TFormPostShader, FormPostShader);
   Application.Run;
 end.

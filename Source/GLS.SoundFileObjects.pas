@@ -1,7 +1,6 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.SoundFileObjects;
 
 (*
@@ -214,7 +213,7 @@ end;
 
 procedure TGLSoundFile.PlayOnWaveOut;
 begin
-  // GLSM.SoundFileObjects.PlayOnWaveOut(PCMData, LengthInSamples, Sampling);
+///  PlayOnWaveOut(PCMData, LengthInSamples, Sampling); ?
 end;
 
 function TGLSoundFile.LengthInSamples: Integer;

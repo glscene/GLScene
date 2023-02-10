@@ -5,11 +5,11 @@ n - night
 c - clear weather
 s - cloudy weather
 *)
-program CgSkyClouds;
+program CgCloudSkyD;
 
 uses
   Forms,
-  fSkyClouds in 'fSkyClouds.pas';
+  fCloudSkyD in 'fCloudSkyD.pas' {MainForm};
 
 {$R *.res}
 

@@ -13,6 +13,7 @@ del *.bak /s
 rem del *.hpp /s
 rem del *.bpi /s
 rem del *.lib /s
+rem del *.a /s
 
 @echo off delete debug files
 del *.ddp /s
@@ -26,7 +27,6 @@ del *.bk? /s
 del *.mps /s
 del *.rst /s
 del *.s /s
-del *.a /s
 del *.map /s
 del *.drc /s
 del *.local /s

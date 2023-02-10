@@ -81,47 +81,47 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
 //
 void __fastcall TForm1::GLCustomHDSStartPreparingData(TGLHeightData* HeightData)
 {
-	int x, y;
+    int x, y;
 	TByteRaster rasterLine;
-	TGLHeightDataType oldType;
-	TByteVector* b;
+    TGLHeightDataType oldType;
+//	TByteVector* b;
+	Byte b;
 	float d, dy;
 
-	b = new(TByteVector);
-	HeightData->DataState = hdsPreparing;
+//    b = new (TByteVector);
+    HeightData->DataState = hdsPreparing;
 	// retrieve data
-	oldType = HeightData->DataType;
+    oldType = HeightData->DataType;
 	HeightData->Allocate(hdtByte);
-	// Cheap texture changed (32 is our tileSize = 2^5)
-	// This basicly picks a texture for each tile depending on the tile's position
-	switch ((((HeightData->XLeft ^ HeightData->YTop) << 5) && 3)) {
-		case 0, 3:
-			HeightData->MaterialName = "BW";
-			break;
-		case 1:
-			HeightData->MaterialName = "Blue";
-			break;
-		case 2:
-			HeightData->MaterialName = "Red";
-			break;
-		default:;
-	}
-	// 'Cheap' elevation data : this is just a formula z=f(x, y)
-	for (y = HeightData->YTop; y < HeightData->YTop + HeightData->Size - 1; y++)
-	{
-		rasterLine = HeightData->ByteRaster[y - HeightData->YTop];
-		dy = y * y;
-        for (x = HeightData->XLeft;
-             x < HeightData->XLeft + HeightData->Size - 1; x++) {
-            d = sqrt(x * x + dy);
-			b = (float)RoundInt(128 + 128 * Sin(d * 0.2) / (d * 0.1 + 1));
-			rasterLine[x - HeightData->XLeft] = b;
-        }
+    // Cheap texture changed (32 is our tileSize = 2^5)
+    // This basicly picks a texture for each tile depending on the tile's position
+    switch ((((HeightData->XLeft ^ HeightData->YTop) << 5) && 3)) {
+        case 0, 3:
+            HeightData->MaterialName = "BW";
+            break;
+        case 1:
+            HeightData->MaterialName = "Blue";
+            break;
+        case 2:
+            HeightData->MaterialName = "Red";
+            break;
+        default:;
     }
+    // 'Cheap' elevation data : this is just a formula z=f(x, y)
+    for (y = HeightData->YTop; y < HeightData->YTop + HeightData->Size - 1; y++)
+    {
+        rasterLine = HeightData->ByteRaster[y - HeightData->YTop];
+        dy = y * y;
+        for (x = HeightData->XLeft;
+			 x < HeightData->XLeft + HeightData->Size - 1; x++) {
+            d = sqrt(x * x + dy);
+			b = RoundInt(128 + 128 * Sin(d * 0.2) / (d * 0.1 + 1));
+			rasterLine[x - HeightData->XLeft] = b;
+		}
+	}
 	if (oldType != hdtByte)
 		HeightData->DataType = oldType;
 
-	///inherited;
 }
 //---------------------------------------------------------------------------
 // Movement, mouse handling etc.
@@ -150,7 +150,7 @@ void __fastcall TForm1::Timer1Timer(TObject* Sender)
     Caption =
         "Synthetic Terrain " +
         Format("%.1f FPS - %d", ARRAYOFCONST((GLSceneViewer1->FramesPerSecond(),
-                                    TerrainRenderer1->LastTriangleCount)));
+									TerrainRenderer1->LastTriangleCount)));
     GLSceneViewer1->ResetPerformanceMonitor();
 }
 
@@ -165,7 +165,7 @@ void __fastcall TForm1::FormKeyPress(TObject* Sender, System::WideChar &Key)
                 GLSceneViewer1->Buffer->FogEnvironment->FogEnd =
                     GLSceneViewer1->Buffer->FogEnvironment->FogEnd * 1.2;
                 GLSceneViewer1->Buffer->FogEnvironment->FogStart =
-					GLSceneViewer1->Buffer->FogEnvironment->FogStart * 1.2;
+                    GLSceneViewer1->Buffer->FogEnvironment->FogStart * 1.2;
             }
             break;
         case '-':
@@ -179,7 +179,7 @@ void __fastcall TForm1::FormKeyPress(TObject* Sender, System::WideChar &Key)
             break;
         case '*':
             if (TerrainRenderer1->CLODPrecision > 5)
-                TerrainRenderer1->CLODPrecision =
+				TerrainRenderer1->CLODPrecision =
                     RoundInt(TerrainRenderer1->CLODPrecision * 0.8);
             break;
         case '/':
@@ -239,5 +239,4 @@ void __fastcall TForm1::GLCadencer1Progress(
         FCamHeight;
 }
 //---------------------------------------------------------------------------
-
 

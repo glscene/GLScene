@@ -24,7 +24,6 @@
 #include "GLS.ParticleFX.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.ShadowPlane.hpp"
-#include "GLS.Sound.hpp"
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.WindowsFont.hpp"
@@ -38,6 +37,7 @@
 #include "GLS.FireFX.hpp"
 #include "GLS.BaseClasses.hpp"
 #include "GLS.Utils.hpp"
+#include "GLS.SoundManager.hpp"
 
 //-----------------
 

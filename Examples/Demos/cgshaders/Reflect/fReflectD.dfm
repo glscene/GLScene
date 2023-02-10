@@ -38,7 +38,7 @@ object Form1: TForm1
       Top = 2
       Width = 365
       Height = 436
-      ActivePage = TabSheet2
+      ActivePage = TabSheet3
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText

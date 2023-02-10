@@ -2,8 +2,8 @@ object FormCgBombShader: TFormCgBombShader
   Left = 387
   Top = 217
   Caption = 'Cg Bomb Shader'
-  ClientHeight = 419
-  ClientWidth = 562
+  ClientHeight = 461
+  ClientWidth = 778
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,19 +18,21 @@ object FormCgBombShader: TFormCgBombShader
     Left = 209
     Top = 0
     Width = 0
-    Height = 419
+    Height = 461
     Color = clBtnShadow
     ParentColor = False
+    ExplicitHeight = 419
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
     Width = 209
-    Height = 419
+    Height = 461
     Align = alLeft
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 0
+    ExplicitHeight = 419
     object ComboBox1: TComboBox
       Left = 16
       Top = 341
@@ -232,8 +234,8 @@ object FormCgBombShader: TFormCgBombShader
   object Panel9: TPanel
     Left = 209
     Top = 0
-    Width = 353
-    Height = 419
+    Width = 569
+    Height = 461
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -242,17 +244,21 @@ object FormCgBombShader: TFormCgBombShader
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 1
+    ExplicitWidth = 353
+    ExplicitHeight = 419
     object GLSceneViewer1: TGLSceneViewer
       Left = 1
       Top = 1
-      Width = 351
-      Height = 417
+      Width = 567
+      Height = 459
       Camera = GLCamera1
       Buffer.AntiAliasing = aa4x
-      FieldOfView = 148.195465087890600000
+      FieldOfView = 155.418640136718800000
       PenAsTouch = False
       Align = alClient
       TabOrder = 0
+      ExplicitWidth = 499
+      ExplicitHeight = 439
     end
   end
   object GLScene1: TGLScene

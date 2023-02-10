@@ -2,41 +2,42 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Box Sphere Intersection'
-  ClientHeight = 454
-  ClientWidth = 552
+  ClientHeight = 470
+  ClientWidth = 829
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 96
   TextHeight = 13
   object Viewer: TGLSceneViewer
     Left = 180
     Top = 0
-    Width = 372
-    Height = 454
+    Width = 649
+    Height = 470
     Camera = GLCamera1
     Buffer.BackgroundColor = clTeal
-    FieldOfView = 149.907211303710900000
+    FieldOfView = 155.977050781250000000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ViewerMouseDown
     OnMouseMove = ViewerMouseMove
     TabOrder = 0
+    ExplicitWidth = 645
+    ExplicitHeight = 454
   end
   object Panel2: TPanel
     Left = 0
     Top = 0
     Width = 180
-    Height = 454
+    Height = 470
     Align = alLeft
     TabOrder = 1
+    ExplicitHeight = 454
     object Label5: TLabel
       Left = 10
       Top = 134

@@ -24,8 +24,6 @@ object FormSoundWaveout: TFormSoundWaveout
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 550
-    ExplicitHeight = 296
   end
   object TrackBar: TTrackBar
     Left = 0
@@ -41,8 +39,6 @@ object FormSoundWaveout: TFormSoundWaveout
     ThumbLength = 10
     TickMarks = tmBoth
     OnChange = TrackBarChange
-    ExplicitTop = 320
-    ExplicitWidth = 475
   end
   object TrackBar1: TTrackBar
     Left = 0
@@ -58,7 +54,6 @@ object FormSoundWaveout: TFormSoundWaveout
     ThumbLength = 10
     TickMarks = tmBoth
     OnChange = TrackBar1Change
-    ExplicitWidth = 475
   end
   object Panel1: TPanel
     Left = 0
@@ -68,7 +63,6 @@ object FormSoundWaveout: TFormSoundWaveout
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 3
-    ExplicitWidth = 475
     DesignSize = (
       596
       33)
@@ -88,7 +82,6 @@ object FormSoundWaveout: TFormSoundWaveout
       Caption = 'Chimes (WAV)'
       TabOrder = 0
       OnClick = Button1Click
-      ExplicitLeft = 384
     end
     object btnHowl: TButton
       Left = 416
@@ -99,7 +92,6 @@ object FormSoundWaveout: TFormSoundWaveout
       Caption = 'Howl (MP3)'
       TabOrder = 1
       OnClick = btnHowlClick
-      ExplicitLeft = 295
     end
   end
   object GLSMWaveOut: TGLSMWaveOut

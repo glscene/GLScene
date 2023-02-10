@@ -556,7 +556,7 @@ begin
 
   VertexDisplacementShader := TGLSLVertexDisplacementShader.Create(self);
   MaterialLibrary.LibMaterialByName('ExplosionTexture').Material.Texture.Image.LoadFromFile
-    ('FireGrade2.png');
+    ('FireGrade.png');
   VertexDisplacementShader.MaterialLibrary := MaterialLibrary;
   VertexDisplacementShader.MainTextureName := 'ExplosionTexture';
   VertexDisplacementShader.Enabled := False;

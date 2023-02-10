@@ -14,7 +14,7 @@
 #include "GLS.LensFlare.hpp"
 #include "GLS.VectorGeometry.hpp"
 #include "Sounds.BASS.hpp"
-#include "GLS.Sound.hpp"
+#include "GLS.SoundManager.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.SkyDome.hpp"
 #include "GLS.BitmapFont.hpp"
@@ -32,6 +32,7 @@
 #include "GLS.FileMP3.hpp"
 #include "Jpeg.hpp"
 #include "GLS.Utils.hpp"
+#include "GLS.SoundManager.hpp"
 //---------------------------------------------------------------------------
 class TForm1:public TForm
 {

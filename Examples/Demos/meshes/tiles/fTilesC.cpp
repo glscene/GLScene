@@ -21,7 +21,9 @@
 TForm1* Form1;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {}
+
 //---------------------------------------------------------------------------
+
 void __fastcall TForm1::FormCreate(TObject* Sender)
 {
 	int i, j;
@@ -29,7 +31,6 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
 	SetCurrentDir(Path  + "\\texture");
 
 	GLMaterialLibrary->TexturePaths = GetCurrentDir();
-
 	GLMaterialLibrary->LibMaterialByName("beigemarble")
 		->Material->Texture->Image->LoadFromFile("beigemarble.jpg");
 	GLMaterialLibrary->LibMaterialByName("marbletiles")
@@ -38,19 +39,18 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
 		->Material->Texture->Image->LoadFromFile("walkway.jpg");
 
   // fill the tiled area with random tiles
-    RandSeed = 0;
-    for (int i = -20; i < 20; i++)
-        for (int j = -20; j < 20; j++)
-            GLTilePlane->Tiles[i][j] =
-                Random(GLMaterialLibrary->Materials.Count - 1) + 1;
+	RandSeed = 0;
+	for (int i = -20; i < 20; i++)
+		for (int j = -20; j < 20; j++)
+			GLTilePlane->Tiles[i][j] =  Random(GLMaterialLibrary->Materials->Count - 1) + 1;
 
-    // set all tile materials to anisotropic add them to the material selection combo
-    for (i = 0; GLMaterialLibrary->Materials->Count - 1; i++) {
-        GLMaterialLibrary->Materials->Items[i]
-            ->Material->Texture->FilteringQuality = tfAnisotropic;
-        CBMaterial->Items->Add(GLMaterialLibrary->Materials->Items[i]->Name);
-    }
-    CBMaterial->ItemIndex = 0;
+	// set all tile materials to anisotropic add them to the material selection combo
+	for (i = 0; GLMaterialLibrary->Materials->Count - 1; i++) {
+		GLMaterialLibrary->Materials->Items[i]
+			->Material->Texture->FilteringQuality = tfAnisotropic;
+		CBMaterial->Items->Add(GLMaterialLibrary->Materials->Items[i]->Name);
+	}
+	CBMaterial->ItemIndex = 0;
 }
 //---------------------------------------------------------------------------
 
@@ -62,7 +62,6 @@ void __fastcall TForm1::FormMouseWheel(TObject *Sender, TShiftState Shift, int W
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::GLDirectOpenGLRender(TObject *Sender, TGLRenderContextInfo &rci)
-
 {
   // we clear the depth buffer, so that the grid is always in front of the
   // tile plane and won't Z-Fight with it

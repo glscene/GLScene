@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 192
   Top = 106
   Caption = 'Tree Editor'
-  ClientHeight = 388
-  ClientWidth = 579
+  ClientHeight = 464
+  ClientWidth = 762
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,31 +12,30 @@ object Form1: TForm1
   Font.Style = []
   Menu = MainMenu1
   Position = poScreenCenter
-  WindowState = wsMaximized
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 153
     Top = 0
-    Width = 426
-    Height = 388
+    Width = 609
+    Height = 464
     Camera = GLCamera1
-    FieldOfView = 151.095138549804700000
+    FieldOfView = 155.675598144531300000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
-    ExplicitWidth = 575
-    ExplicitHeight = 503
+    ExplicitWidth = 576
+    ExplicitHeight = 445
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
     Width = 153
-    Height = 388
+    Height = 464
     Align = alLeft
     TabOrder = 1
-    ExplicitHeight = 503
+    ExplicitHeight = 388
     object Label1: TLabel
       Left = 8
       Top = 112

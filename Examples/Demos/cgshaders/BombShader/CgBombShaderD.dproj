@@ -1,6 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{71499B42-5987-4544-AFE5-46E377F21393}</ProjectGuid>
+        <ProjectGuid>{DA98DD99-4191-40C8-9624-05550F4F451F}</ProjectGuid>
         <MainSource>CgBombShaderD.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>

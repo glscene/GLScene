@@ -39,7 +39,7 @@ uses
   GLS.File3DS;
 
 type
-  TPostShaderDemoForm = class(TForm)
+  TFormPostShader = class(TForm)
     Scene: TGLScene;
     Viewer: TGLSceneViewer;
     Cadencer: TGLCadencer;
@@ -134,7 +134,7 @@ type
   end;
 
 var
-  PostShaderDemoForm: TPostShaderDemoForm;
+  FormPostShader: TFormPostShader;
 
   //Shaders
   BlurShader: TGLSLPostBlurShader;
@@ -151,7 +151,7 @@ implementation
 
 {$R *.dfm}
 
-procedure TPostShaderDemoForm.FormCreate(Sender: TObject);
+procedure TFormPostShader.FormCreate(Sender: TObject);
 begin
   // First load animated models with textures
   var Path: TFileName := GetCurrentAssetPath();
@@ -256,7 +256,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.CadencerProgress(Sender: TObject;
+procedure TFormPostShader.CadencerProgress(Sender: TObject;
   const deltaTime, newTime: double);
 begin
   Viewer.Invalidate;
@@ -274,7 +274,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.LightCubeProgress(Sender: TObject;
+procedure TFormPostShader.LightCubeProgress(Sender: TObject;
   const deltaTime, newTime: double);
 begin
   if LightMovingCheckBox.Checked then
@@ -284,7 +284,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.ShaderCheckListBoxClick(Sender: TObject);
+procedure TFormPostShader.ShaderCheckListBoxClick(Sender: TObject);
 var
   I: Integer;
 begin
@@ -296,7 +296,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.tbBlurValueChange(Sender: TObject);
+procedure TFormPostShader.tbBlurValueChange(Sender: TObject);
 begin
   BlurShader.Threshold := tbBlurValue.Position / 100;
   lblBlurValue.Caption := FloatToStrF(BlurShader.Threshold, ffFixed, 5, 2);
@@ -304,7 +304,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.tbDreamThresholdChange(Sender: TObject);
+procedure TFormPostShader.tbDreamThresholdChange(Sender: TObject);
 begin
   DreamVisionShader.Threshold := tbDreamThreshold.Position / 100;
   lblDreamThreshold.Caption := FloatToStrF(DreamVisionShader.Threshold,
@@ -313,7 +313,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.tbFrostFactorChange(Sender: TObject);
+procedure TFormPostShader.tbFrostFactorChange(Sender: TObject);
 begin
   FrostShader.RandFactor := tbFrostFactor.Position;
   lblFrostFactor.Caption := FloatToStrF(FrostShader.RandFactor, ffFixed, 5, 2);
@@ -321,7 +321,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.tbFrostRandChange(Sender: TObject);
+procedure TFormPostShader.tbFrostRandChange(Sender: TObject);
 begin
   FrostShader.RandScale := tbFrostRand.Position;
   lblFrostRand.Caption := FloatToStrF(FrostShader.RandScale, ffFixed, 5, 2);
@@ -329,7 +329,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.tblNightThresholdChange(Sender: TObject);
+procedure TFormPostShader.tblNightThresholdChange(Sender: TObject);
 begin
   NightVisionShader.LuminanceThreshold := tblNightThreshold.Position / 100;
   lblNight.Caption := FloatToStrF(NightVisionShader.LuminanceThreshold,
@@ -338,7 +338,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.tbNightAmplificationChange(Sender: TObject);
+procedure TFormPostShader.tbNightAmplificationChange(Sender: TObject);
 begin
   NightVisionShader.ColorAmplification := tbNightAmplification.Position / 100;
   lblNightAmplification.Caption :=
@@ -347,7 +347,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.tbPixelateHeightChange(Sender: TObject);
+procedure TFormPostShader.tbPixelateHeightChange(Sender: TObject);
 begin
   PixelateShader.PixelHeight := tbPixelateHeight.Position;
   lblPixelateHeight.Caption := FloatToStrF(PixelateShader.PixelHeight,
@@ -356,7 +356,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.tbPixelateWidthChange(Sender: TObject);
+procedure TFormPostShader.tbPixelateWidthChange(Sender: TObject);
 begin
   PixelateShader.PixelWidth := tbPixelateWidth.Position;
   lblPixelateWidth.Caption := FloatToStrF(PixelateShader.PixelWidth,
@@ -365,7 +365,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.tbPosterizeColorsChange(Sender: TObject);
+procedure TFormPostShader.tbPosterizeColorsChange(Sender: TObject);
 begin
   PosterizeShader.NumColors := tbPosterizeColors.Position;
   lblPosterizeColors.Caption := FloatToStrF(PosterizeShader.NumColors,
@@ -374,7 +374,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.tbPosterizeGammaChange(Sender: TObject);
+procedure TFormPostShader.tbPosterizeGammaChange(Sender: TObject);
 begin
   PosterizeShader.Gamma := tbPosterizeGamma.Position / 100;
   lblPosterizeGamma.Caption := FloatToStrF(PosterizeShader.Gamma,
@@ -383,7 +383,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.tbThermalIntensityChange(Sender: TObject);
+procedure TFormPostShader.tbThermalIntensityChange(Sender: TObject);
 begin
   ThermalVisionShader.Intensity := tbThermalIntensity.Position / 100;
   lblThermalIntensity.Caption := FloatToStrF(ThermalVisionShader.Intensity,
@@ -392,7 +392,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.tbThermalThresholdChange(Sender: TObject);
+procedure TFormPostShader.tbThermalThresholdChange(Sender: TObject);
 begin
   ThermalVisionShader.Threshold := tbThermalThreshold.Position / 100;
   lblThermalThreshold.Caption := FloatToStrF(ThermalVisionShader.Threshold,
@@ -401,7 +401,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.tbTroubleFreqChange(Sender: TObject);
+procedure TFormPostShader.tbTroubleFreqChange(Sender: TObject);
 begin
   TroubleShader.Freq := tbTroubleFreq.Position / 100;
   lblTroubleFreq.Caption := FloatToStrF(TroubleShader.Freq, ffFixed, 5, 2);
@@ -409,7 +409,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.tbTroubleHeightChange(Sender: TObject);
+procedure TFormPostShader.tbTroubleHeightChange(Sender: TObject);
 begin
   TroubleShader.PixelY := tbTroubleHeight.Position;
   lblTroubleHeight.Caption := FloatToStrF(TroubleShader.PixelY, ffFixed, 5, 2);
@@ -417,7 +417,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.tbTroubleWidthChange(Sender: TObject);
+procedure TFormPostShader.tbTroubleWidthChange(Sender: TObject);
 begin
   TroubleShader.PixelX := tbTroubleWidth.Position;
   lblTroubleWidth.Caption := FloatToStrF(TroubleShader.PixelX, ffFixed, 5, 2);
@@ -425,7 +425,7 @@ end;
 
 //-------------------------------------------------------
 
-procedure TPostShaderDemoForm.FormClose(Sender: TObject;
+procedure TFormPostShader.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   Cadencer.Enabled := false;

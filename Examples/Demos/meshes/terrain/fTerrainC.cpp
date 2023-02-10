@@ -13,7 +13,7 @@
 #pragma link "GLS.LensFlare"
 #pragma link "GLS.VectorGeometry"
 #pragma link "Sounds.BASS"
-#pragma link "GLS.Sound"
+#pragma link "GLS.SoundManager"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.SkyDome"
 #pragma link "GLS.BitmapFont"
@@ -30,6 +30,7 @@
 
 #pragma link "GLS.Material"
 #pragma link "GLS.FileMP3"
+#pragma link "GLS.SoundManager"
 #pragma resource "*.dfm"
 TForm1* Form1;
 

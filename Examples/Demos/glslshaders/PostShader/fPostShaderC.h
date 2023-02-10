@@ -37,7 +37,7 @@
 #include "Cg.PostTransformationShader.hpp"
 
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormPostShader : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *Viewer;
@@ -64,23 +64,23 @@ __published:	// IDE-managed Components
 	TGLCadencer *Cadencer;
 	TGLMaterialLibrary *MaterialLibrary;
 	TGLSimpleNavigation *GLSimpleNavigation1;
+	void __fastcall tbBlurValueChange(TObject *Sender);
+	void __fastcall tbDreamThresholdChange(TObject *Sender);
+	void __fastcall tbThermalIntensityChange(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall CadencerProgress(TObject *Sender, const double deltaTime, const double newTime);
 	void __fastcall LightCubeProgress(TObject *Sender, const double deltaTime, const double newTime);
 	void __fastcall ShaderCheckListBoxClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall tbThermalThresholdChange(TObject *Sender);
-	void __fastcall tbBlurValueChange(TObject *Sender);
-	void __fastcall tbDreamThresholdChange(TObject *Sender);
-	void __fastcall tbThermalIntensityChange(TObject *Sender);
 private:	// User declarations
 	int mx, my;
 	TGLSLPostBlurShader *BlurShader;
 	TGLCGPostTransformationShader *TransformationShader;
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormPostShader(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormPostShader *FormPostShader;
 //---------------------------------------------------------------------------
 #endif

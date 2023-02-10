@@ -1,4 +1,4 @@
-object PostShaderDemoForm: TPostShaderDemoForm
+object FormPostShader: TFormPostShader
   Left = 261
   Top = 176
   Caption = 'GLSL Post Shader'
@@ -29,8 +29,6 @@ object PostShaderDemoForm: TPostShaderDemoForm
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 510
-    ExplicitHeight = 519
   end
   object Panel1: TPanel
     Left = 0
@@ -39,8 +37,6 @@ object PostShaderDemoForm: TPostShaderDemoForm
     Height = 29
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 507
-    ExplicitWidth = 661
     object LightMovingCheckBox: TCheckBox
       Left = 8
       Top = 8
@@ -71,8 +67,6 @@ object PostShaderDemoForm: TPostShaderDemoForm
     Height = 523
     Align = alRight
     TabOrder = 2
-    ExplicitLeft = 438
-    ExplicitHeight = 507
     object Label1: TLabel
       Left = 16
       Top = 8

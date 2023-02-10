@@ -26,7 +26,7 @@
 #pragma link "GLSL.PostEffects"
 #pragma resource "*.dfm"
 
-TForm1 *Form1;
+TFormPostShader *FormPostShader;
 
   //Shaders
   TGLSLPostBlurShader *BlurShader;
@@ -41,12 +41,12 @@ TForm1 *Form1;
 
 
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormPostShader::TFormPostShader(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
+void __fastcall TFormPostShader::FormCreate(TObject *Sender)
 {
   // First load models.
   TFileName Path = GetCurrentAssetPath();
@@ -150,7 +150,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TForm1::CadencerProgress(TObject *Sender, const double deltaTime,
+void __fastcall TFormPostShader::CadencerProgress(TObject *Sender, const double deltaTime,
 		  const double newTime)
 {
   Viewer->Invalidate();
@@ -166,7 +166,7 @@ void __fastcall TForm1::CadencerProgress(TObject *Sender, const double deltaTime
 	NightVisionShader->ElapsedTime = newTime; // 20*deltaTime;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::LightCubeProgress(TObject *Sender, const double deltaTime,
+void __fastcall TFormPostShader::LightCubeProgress(TObject *Sender, const double deltaTime,
 		  const double newTime)
 {
   if (LightMovingCheckBox->Checked)
@@ -174,7 +174,7 @@ void __fastcall TForm1::LightCubeProgress(TObject *Sender, const double deltaTim
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TForm1::ShaderCheckListBoxClick(TObject *Sender)
+void __fastcall TFormPostShader::ShaderCheckListBoxClick(TObject *Sender)
 {
   int I;
   if (ShaderCheckListBox->Items->Count != 0)
@@ -185,12 +185,11 @@ void __fastcall TForm1::ShaderCheckListBoxClick(TObject *Sender)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::tbBlurValueChange(TObject *Sender)
+void __fastcall TFormPostShader::tbBlurValueChange(TObject *Sender)
 {
 /*
   BlurShader->Threshold = tbBlurValue->Position / 100;
   lblBlurValue->Caption = FloatToStrF(BlurShader->Threshold, ffFixed, 5, 2);
-
 
   if (BigBlurThickness->Checkbox = Checked)
 	BlurShader->Threshold = 0.005;
@@ -200,28 +199,28 @@ void __fastcall TForm1::tbBlurValueChange(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::tbDreamThresholdChange(TObject *Sender)
+void __fastcall TFormPostShader::tbDreamThresholdChange(TObject *Sender)
 {
 //
 }
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::tbThermalThresholdChange(TObject *Sender)
+void __fastcall TFormPostShader::tbThermalThresholdChange(TObject *Sender)
 {
 //
 }
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::tbThermalIntensityChange(TObject *Sender)
+void __fastcall TFormPostShader::tbThermalIntensityChange(TObject *Sender)
 {
 //
 }
 
 
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
+void __fastcall TFormPostShader::FormClose(TObject *Sender, TCloseAction &Action)
 {
   Cadencer->Enabled = false;
 }

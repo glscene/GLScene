@@ -2,114 +2,83 @@ object FormBoxSphere: TFormBoxSphere
   Left = 281
   Top = 115
   Caption = 'Box Sphere Intersection'
-  ClientHeight = 588
-  ClientWidth = 700
+  ClientHeight = 470
+  ClientWidth = 745
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Arial'
   Font.Style = []
   KeyPreview = True
+  Position = poScreenCenter
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnMouseWheel = FormMouseWheel
   OnResize = FormResize
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 14
   object Viewer: TGLSceneViewer
-    Left = 225
+    Left = 180
     Top = 0
-    Width = 475
-    Height = 588
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 565
+    Height = 470
     Camera = GLCamera1
     Buffer.BackgroundColor = clTeal
-    FieldOfView = 156.222686767578100000
+    FieldOfView = 155.977050781250000000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ViewerMouseDown
     OnMouseMove = ViewerMouseMove
     TabOrder = 0
+    ExplicitWidth = 557
   end
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 225
-    Height = 588
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 180
+    Height = 470
     Align = alLeft
     TabOrder = 1
     object Label5: TLabel
-      Left = 13
-      Top = 168
-      Width = 73
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 10
+      Top = 134
+      Width = 56
+      Height = 14
       Caption = 'Sphere pos'
     end
     object Label3: TLabel
-      Left = 20
-      Top = 10
-      Width = 76
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 8
+      Width = 59
+      Height = 14
       Caption = 'Box position'
     end
     object Label4: TLabel
-      Left = 120
-      Top = 10
-      Width = 60
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 96
+      Top = 8
+      Width = 48
+      Height = 14
       Caption = 'Box scale'
     end
     object Label1: TLabel
-      Left = 10
-      Top = 480
-      Width = 44
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 384
+      Width = 33
+      Height = 14
       Caption = 'Result:'
     end
     object Label7: TLabel
-      Left = 120
-      Top = 170
-      Width = 89
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 96
+      Top = 136
+      Width = 68
+      Height = 14
       Caption = 'Sphere radius'
     end
     object CheckBox06: TCheckBox
-      Left = 10
-      Top = 364
-      Width = 100
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 291
+      Width = 80
+      Height = 17
       Caption = 'Grid'
       Checked = True
       State = cbChecked
@@ -117,14 +86,10 @@ object FormBoxSphere: TFormBoxSphere
       OnClick = CheckBox04Click
     end
     object CheckBox04: TCheckBox
-      Left = 10
-      Top = 303
-      Width = 100
-      Height = 23
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 242
+      Width = 80
+      Height = 19
       Caption = 'Box visible'
       Checked = True
       State = cbChecked
@@ -132,27 +97,19 @@ object FormBoxSphere: TFormBoxSphere
       OnClick = CheckBox04Click
     end
     object CheckBox05: TCheckBox
-      Left = 10
-      Top = 334
-      Width = 100
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 267
+      Width = 80
+      Height = 17
       Caption = 'Axis'
       TabOrder = 2
       OnClick = CheckBox04Click
     end
     object CheckBox07: TCheckBox
-      Left = 10
-      Top = 393
-      Width = 121
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 314
+      Width = 97
+      Height = 17
       Caption = 'Sphere visible '
       Checked = True
       State = cbChecked
@@ -160,293 +117,205 @@ object FormBoxSphere: TFormBoxSphere
       OnClick = CheckBox04Click
     end
     object Edit1: TEdit
-      Left = 13
-      Top = 31
-      Width = 70
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 10
+      Top = 25
+      Width = 56
+      Height = 22
       TabOrder = 4
       Text = '12'
       OnChange = Edit1Change
     end
     object Edit2: TEdit
-      Left = 13
-      Top = 60
-      Width = 70
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 10
+      Top = 48
+      Width = 56
+      Height = 22
       TabOrder = 5
       Text = '9'
       OnChange = Edit1Change
     end
     object Edit3: TEdit
-      Left = 13
-      Top = 90
-      Width = 70
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 10
+      Top = 72
+      Width = 56
+      Height = 22
       TabOrder = 6
       Text = '6'
       OnChange = Edit1Change
     end
     object UpDown1: TUpDown
-      Left = 83
-      Top = 31
-      Width = 27
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 66
+      Top = 25
+      Width = 22
+      Height = 22
       Associate = Edit1
       Min = -100
       Position = 12
       TabOrder = 7
     end
     object UpDown2: TUpDown
-      Left = 83
-      Top = 60
-      Width = 27
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 66
+      Top = 48
+      Width = 22
+      Height = 22
       Associate = Edit2
       Min = -100
       Position = 9
       TabOrder = 8
     end
     object UpDown3: TUpDown
-      Left = 83
-      Top = 90
-      Width = 27
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 66
+      Top = 72
+      Width = 22
+      Height = 22
       Associate = Edit3
       Min = -100
       Position = 6
       TabOrder = 9
     end
     object Edit4: TEdit
-      Left = 114
-      Top = 30
-      Width = 70
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 91
+      Top = 24
+      Width = 56
+      Height = 22
       TabOrder = 10
       Text = '10'
       OnChange = Edit1Change
     end
     object Edit5: TEdit
-      Left = 114
-      Top = 60
-      Width = 70
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 91
+      Top = 48
+      Width = 56
+      Height = 22
       TabOrder = 11
       Text = '10'
       OnChange = Edit1Change
     end
     object Edit6: TEdit
-      Left = 114
-      Top = 90
-      Width = 70
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 91
+      Top = 72
+      Width = 56
+      Height = 22
       TabOrder = 12
       Text = '10'
       OnChange = Edit1Change
     end
     object UpDown4: TUpDown
-      Left = 184
-      Top = 30
-      Width = 27
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 147
+      Top = 24
+      Width = 22
+      Height = 22
       Associate = Edit4
       Position = 10
       TabOrder = 13
     end
     object UpDown5: TUpDown
-      Left = 184
-      Top = 60
-      Width = 27
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 147
+      Top = 48
+      Width = 22
+      Height = 22
       Associate = Edit5
       Position = 10
       TabOrder = 14
     end
     object UpDown6: TUpDown
-      Left = 184
-      Top = 90
-      Width = 27
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 147
+      Top = 72
+      Width = 22
+      Height = 22
       Associate = Edit6
       Position = 10
       TabOrder = 15
     end
     object Edit7: TEdit
-      Left = 13
-      Top = 190
-      Width = 70
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 10
+      Top = 152
+      Width = 56
+      Height = 22
       TabOrder = 16
       Text = '7'
       OnChange = Edit1Change
     end
     object Edit8: TEdit
-      Left = 13
-      Top = 220
-      Width = 70
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 10
+      Top = 176
+      Width = 56
+      Height = 22
       TabOrder = 17
       Text = '-1'
       OnChange = Edit1Change
     end
     object Edit9: TEdit
-      Left = 13
-      Top = 250
-      Width = 70
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 10
+      Top = 200
+      Width = 56
+      Height = 22
       TabOrder = 18
       Text = '6'
       OnChange = Edit1Change
     end
     object UpDown7: TUpDown
-      Left = 83
-      Top = 190
-      Width = 27
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 66
+      Top = 152
+      Width = 22
+      Height = 22
       Associate = Edit7
       Min = -100
       Position = 7
       TabOrder = 19
     end
     object UpDown8: TUpDown
-      Left = 83
-      Top = 220
-      Width = 27
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 66
+      Top = 176
+      Width = 22
+      Height = 22
       Associate = Edit8
       Min = -100
       Position = -1
       TabOrder = 20
     end
     object UpDown9: TUpDown
-      Left = 83
-      Top = 250
-      Width = 27
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 66
+      Top = 200
+      Width = 22
+      Height = 22
       Associate = Edit9
       Min = -100
       Position = 6
       TabOrder = 21
     end
     object Edit10: TEdit
-      Left = 116
-      Top = 190
-      Width = 70
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 93
+      Top = 152
+      Width = 56
+      Height = 22
       TabOrder = 22
       Text = '5'
       OnChange = Edit1Change
     end
     object UpDown10: TUpDown
-      Left = 186
-      Top = 190
-      Width = 28
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 149
+      Top = 152
+      Width = 22
+      Height = 22
       Associate = Edit10
       Position = 5
       TabOrder = 23
     end
     object Button3: TButton
-      Left = 50
-      Top = 430
-      Width = 94
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 40
+      Top = 344
+      Width = 75
+      Height = 25
       Caption = 'Recalc'
       TabOrder = 24
       OnClick = Button3Click
     end
     object Button4: TButton
-      Left = 14
-      Top = 123
-      Width = 197
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 11
+      Top = 98
+      Width = 158
+      Height = 25
       Caption = 'Random box rotation'
       Default = True
       TabOrder = 25

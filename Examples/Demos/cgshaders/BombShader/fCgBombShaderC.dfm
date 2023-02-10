@@ -2,22 +2,22 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Cg Bomb Shader'
-  ClientHeight = 420
-  ClientWidth = 565
+  ClientHeight = 507
+  ClientWidth = 835
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  WindowState = wsMaximized
+  Position = poScreenCenter
   OnCreate = FormCreate
   TextHeight = 13
   object Splitter1: TSplitter
     Left = 209
     Top = 0
     Width = 0
-    Height = 420
+    Height = 507
     Color = clBtnShadow
     ParentColor = False
     ExplicitHeight = 397
@@ -26,11 +26,12 @@ object Form1: TForm1
     Left = 0
     Top = 0
     Width = 209
-    Height = 420
+    Height = 507
     Align = alLeft
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 0
+    ExplicitHeight = 420
     object ComboBox1: TComboBox
       Left = 16
       Top = 344
@@ -232,8 +233,8 @@ object Form1: TForm1
   object Panel9: TPanel
     Left = 209
     Top = 0
-    Width = 356
-    Height = 420
+    Width = 626
+    Height = 507
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -242,17 +243,21 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 1
+    ExplicitWidth = 356
+    ExplicitHeight = 420
     object GLSceneViewer1: TGLSceneViewer
       Left = 1
       Top = 1
-      Width = 354
-      Height = 418
+      Width = 624
+      Height = 505
       Camera = GLCamera1
       Buffer.AntiAliasing = aa4x
-      FieldOfView = 148.451522827148400000
+      FieldOfView = 157.598403930664100000
       PenAsTouch = False
       Align = alClient
       TabOrder = 0
+      ExplicitWidth = 454
+      ExplicitHeight = 426
     end
   end
   object GLScene1: TGLScene

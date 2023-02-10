@@ -12,6 +12,7 @@ object FormManual: TFormManual
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   OnResize = FormResize
   DesignSize = (
     585
@@ -28,8 +29,6 @@ object FormManual: TFormManual
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 500
-    ExplicitHeight = 356
   end
   object TrackBar: TTrackBar
     Left = 0
@@ -43,8 +42,6 @@ object FormManual: TFormManual
     TabOrder = 1
     ThumbLength = 15
     OnChange = TrackBarChange
-    ExplicitTop = 354
-    ExplicitWidth = 499
   end
   object CBPlay: TCheckBox
     Left = 230
@@ -56,7 +53,6 @@ object FormManual: TFormManual
     Checked = True
     State = cbChecked
     TabOrder = 2
-    ExplicitTop = 16
   end
   object StaticText1: TStaticText
     Left = 16

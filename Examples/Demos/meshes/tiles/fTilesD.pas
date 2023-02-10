@@ -88,6 +88,8 @@ implementation
 
 {$R *.dfm}
 
+//------------------------------------------------------
+
 procedure TFormTiles.FormCreate(Sender: TObject);
 var
   i, j: Integer;
@@ -117,6 +119,8 @@ begin
   CBMaterial.ItemIndex := 0;
 end;
 
+//------------------------------------------------------
+
 procedure TFormTiles.GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
@@ -134,11 +138,15 @@ begin
   end;
 end;
 
+//------------------------------------------------------
+
 procedure TFormTiles.FormMouseWheel(Sender: TObject; Shift: TShiftState;
   WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
 begin
   GLCamera.AdjustDistanceToTarget(Power(1.1, WheelDelta / 120));
 end;
+
+//------------------------------------------------------
 
 procedure TFormTiles.GLCadencer1Progress(Sender: TObject;
   const deltaTime, newTime: Double);
@@ -204,6 +212,8 @@ begin
   GLSceneViewer1.Invalidate;
 end;
 
+//------------------------------------------------------
+
 procedure TFormTiles.GLDirectOpenGLRender(Sender: TObject;
   var rci: TGLRenderContextInfo);
 begin
@@ -212,21 +222,29 @@ begin
   glClear(GL_DEPTH_BUFFER_BIT);
 end;
 
+//------------------------------------------------------
+
 procedure TFormTiles.BUPackClick(Sender: TObject);
 begin
   // packing a tile area removes unused area from the in-memory structures
   GLTilePlane.Tiles.Pack;
 end;
 
+//------------------------------------------------------
+
 procedure TFormTiles.CBShowGridClick(Sender: TObject);
 begin
   GLXYZGrid.Visible := CBShowGrid.Checked;
 end;
 
+//------------------------------------------------------
+
 procedure TFormTiles.CBSortByMaterialsClick(Sender: TObject);
 begin
   GLTilePlane.SortByMaterials := CBSortByMaterials.Checked;
 end;
+
+//------------------------------------------------------
 
 procedure TFormTiles.Timer1Timer(Sender: TObject);
 begin

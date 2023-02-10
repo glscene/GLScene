@@ -19,7 +19,6 @@
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
 #pragma link "GLS.ShadowPlane"
-#pragma link "GLS.Sound"
 #pragma link "GLS.VectorFileObjects"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.WindowsFont"
@@ -35,6 +34,7 @@
 #pragma link "GLS.FileWAV"
 #pragma link "GLS.LensFlare"
 #pragma link "GLS.ParticleFX"
+#pragma link "GLS.SoundManager"
 #pragma resource "*.dfm"
 TForm1* Form1;
 

@@ -147,7 +147,7 @@
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="fPostShaderC.cpp">
-            <Form>Form1</Form>
+            <Form>FormPostShader</Form>
             <FormType>dfm</FormType>
             <DependentOn>fPostShaderC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

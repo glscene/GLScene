@@ -1,9 +1,9 @@
-object Form1: TForm1
+object FormPostShader: TFormPostShader
   Left = 261
   Top = 176
   Caption = 'GLSL Post Shader'
   ClientHeight = 620
-  ClientWidth = 769
+  ClientWidth = 900
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,7 +17,7 @@ object Form1: TForm1
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 546
+    Width = 677
     Height = 591
     Camera = Camera
     Buffer.BackgroundColor = clBackground
@@ -25,7 +25,7 @@ object Form1: TForm1
     Buffer.AntiAliasing = aaNone
     Buffer.DepthPrecision = dp24bits
     Buffer.ColorDepth = cd24bits
-    FieldOfView = 153.215011596679700000
+    FieldOfView = 155.188858032226600000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -33,7 +33,7 @@ object Form1: TForm1
   object Panel1: TPanel
     Left = 0
     Top = 591
-    Width = 769
+    Width = 900
     Height = 29
     Align = alBottom
     TabOrder = 1
@@ -61,7 +61,7 @@ object Form1: TForm1
     end
   end
   object Panel2: TPanel
-    Left = 546
+    Left = 677
     Top = 0
     Width = 223
     Height = 591

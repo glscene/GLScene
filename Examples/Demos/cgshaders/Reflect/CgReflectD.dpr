@@ -1,10 +1,10 @@
 { Simple Cg Shader Cubemap Demo (incomplete)}
-program CgReflect;
+program CgReflectD;
 
 
 uses
   Forms,
-  fReflect in 'fReflect.pas' {Form1};
+  fReflectD in 'fReflectD.pas' {Form1};
 
 {$R *.res}
 

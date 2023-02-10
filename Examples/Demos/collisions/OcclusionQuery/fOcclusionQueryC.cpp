@@ -11,12 +11,13 @@
 #pragma link "GLS.BaseClasses"
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Coordinates"
+#pragma link "GLS.Context"
+
 
 #pragma link "GLS.GeomObjects"
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
-#pragma link "GLS.Context"
 
 #pragma resource "*.dfm"
 
@@ -25,15 +26,6 @@ TForm1 *Form1;
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
-}
-
-//---------------------------------------------------------------------------
-void __fastcall TForm1::FormDestroy(TObject *Sender)
-{
-  // Delete the queries
-  TimerQuery->Free();
-  OcclusionQuery->Free();
-  bOcclusionQuery->Free();
 }
 
 //---------------------------------------------------------------------------
@@ -107,8 +99,7 @@ void __fastcall TForm1::OGLEndQueriesRender(TObject *Sender, TGLRenderContextInf
   samplesPassed = OcclusionQuery->PixelCount();
 
   while (! TimerQuery->IsResultAvailable()) ;// wait
-	// would normally do something in this period before checking if
-	// result is available
+	// would normally do something in this period before checking if result is available
   timeTaken = TimerQuery->Time();
 	// Use this line instead of the one above to use 64 bit timer, to allow
 	// recording time periods more than a couple of seconds (requires Delphi 7+)
@@ -141,4 +132,14 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
   LabelFPS->Caption = GLSceneViewer1->FramesPerSecondText(0);
   GLSceneViewer1->ResetPerformanceMonitor();
 }
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormDestroy(TObject *Sender)
+{
+  // Delete the queries
+  TimerQuery->Free();
+  OcclusionQuery->Free();
+  bOcclusionQuery->Free();
+}
+
 //---------------------------------------------------------------------------

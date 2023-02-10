@@ -148,6 +148,7 @@ object FormTorque: TFormTorque
       end
       object Dodecahedron: TGLDodecahedron
         Material.FrontProperties.Diffuse.Color = {0000803F00000000000000000000803F}
+        Material.BlendingMode = bmTransparency
         Position.Coordinates = {0000000000000000000000C00000803F}
         Scale.Coordinates = {9A99993F9A99993F9A99993F00000000}
       end

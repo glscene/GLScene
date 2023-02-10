@@ -83,13 +83,8 @@ implementation
 
 {$R *.dfm}
 
-procedure TFormOcclusionQuery.FormDestroy(Sender: TObject);
-begin
-  // Delete the queries
-  TimerQuery.Free;
-  OcclusionQuery.Free;
-  bOcclusionQuery.Free;
-end;
+
+//------------------------------------------------------------------------------
 
 procedure TFormOcclusionQuery.GLCadencer1Progress(Sender: TObject; const deltaTime,
   newTime: Double);
@@ -167,9 +162,8 @@ begin
 
   if timerQuerySupported then
   begin
-    while not TimerQuery.IsResultAvailable do
-      { wait }; // would normally do something in this period before checking if
-    // result is available
+    while not TimerQuery.IsResultAvailable do ; (* wait *) 
+	// would normally do something in this period before checking if result is available
     timeTaken := TimerQuery.Time;
     // Use this line instead of the one above to use 64 bit timer, to allow
     // recording time periods more than a couple of seconds (requires Delphi 7+)
@@ -199,6 +193,14 @@ begin
 
   LabelFPS.Caption := GLSceneViewer1.FramesPerSecondText(0);
   GLSceneViewer1.ResetPerformanceMonitor;
+end;
+
+procedure TFormOcclusionQuery.FormDestroy(Sender: TObject);
+begin
+  // Delete the queries
+  TimerQuery.Free;
+  OcclusionQuery.Free;
+  bOcclusionQuery.Free;
 end;
 
 end.
