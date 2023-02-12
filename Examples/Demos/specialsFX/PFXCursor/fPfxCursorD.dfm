@@ -34,8 +34,6 @@ object Form1: TForm1
     Height = 516
     Align = alRight
     TabOrder = 1
-    ExplicitLeft = 592
-    ExplicitTop = 8
     object RadioGroup1: TRadioGroup
       Left = 18
       Top = 232

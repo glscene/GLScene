@@ -103,8 +103,7 @@ var
   m: TPoint;
   v: TGLVector;
 begin
-  with mouse.CursorPos do
-    cur.Position.SetPoint(x - left, y - top, 0);
+  cur.Position.SetPoint(Mouse.CursorPos.X - left, Mouse.CursorPos.Y - top, 0);
   cur.Rotation := cur.Rotation - deltaTime * 50;
   v := cur.AbsolutePosition;
   v.y := vp.Height - v.y;
@@ -160,7 +159,7 @@ end;
 
 procedure TForm1.stPerlinClick(Sender: TObject);
 begin
-
+  //
 end;
 
 //
@@ -168,7 +167,7 @@ end;
 //
 procedure TForm1.GLAsyncTimer1Timer(Sender: TObject);
 begin
-  caption := 'PFX Cursor Demo: ' + vp.FramesPerSecondText(2) +
+  Caption := 'PFX Cursor Demo: ' + vp.FramesPerSecondText(2) +
     ' / use the mouse left and right buttons';
   vp.ResetPerformanceMonitor;
 end;

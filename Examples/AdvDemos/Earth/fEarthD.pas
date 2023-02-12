@@ -318,16 +318,13 @@ begin
   sl := TStringList.Create;
   line := TStringList.Create;
   sl.LoadFromFile('Constellations.dat');
-  /// sl.LoadFromFile('Constellation_borders.dat');
   for i := 0 to sl.Count - 1 do
   begin
     line.CommaText := sl[i];
     pos1 := LonLatToPos(StrToFloatDef(line[0], 0), StrToFloatDef(line[1], 0));
     ConstellationLines.AddNode(pos1);
-    /// ConstellationBorders.AddNode(pos1);
     pos2 := LonLatToPos(StrToFloatDef(line[2], 0), StrToFloatDef(line[3], 0));
     ConstellationLines.AddNode(pos2);
-    /// ConstellationBorders.AddNode(pos2);
   end;
   sl.Free;
   line.Free;
@@ -473,13 +470,6 @@ begin
             LoadHighResTexture(Materials[0], 'earth_ocean_ice_4096.jpg');
             LoadHighResTexture(Materials[1], 'earth_ocean_ice_lights_4096.jpg');
             LoadHighResTexture(Materials[2], 'moon_2048.jpg');
-          end;
-          SetCurrentDir(Path + '\data');
-          if FileExists('Hipparcos_9.0.stars') then
-          begin
-            SkyDome.Stars.Clear;
-            SkyDome.Stars.LoadStarsFile('Hipparcos_9.0.stars');
-            SkyDome.StructureChanged;
           end;
           GLSceneViewer.Buffer.AntiAliasing := aa2x;
         finally
