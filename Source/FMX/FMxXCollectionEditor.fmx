@@ -1,0 +1,96 @@
+object XCollectionEditorForm: TXCollectionEditorForm
+  Left = 0
+  Top = 0
+  Caption = 'FCollection Editor'
+  ClientHeight = 452
+  ClientWidth = 312
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnHide = FormHide
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 312.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object TBAdd: TButton
+      PopupMenu = PMToolBar
+      Position.Y = 8.000000000000000000
+      Size.Width = 65.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'arrowdowntoolbuttonborderedright'
+      TabOrder = 0
+      Text = 'TBAdd'
+    end
+    object Button1: TButton
+      Action = ACRemove
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 64.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 73.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+    end
+    object Button2: TButton
+      Action = ACMoveUp
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 136.000000000000000000
+      Position.Y = 8.000000000000000000
+      TabOrder = 2
+    end
+    object Button3: TButton
+      Action = ACMoveDown
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 216.000000000000000000
+      Position.Y = 8.000000000000000000
+      TabOrder = 3
+    end
+  end
+  object ListView: TListView
+    ItemAppearanceClassName = 'TListItemAppearance'
+    ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    Align = Client
+    Size.Width = 312.000000000000000000
+    Size.Height = 412.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    OnChange = ListViewChange
+  end
+  object PMListView: TPopupMenu
+    Left = 48
+    Top = 120
+  end
+  object PMToolBar: TPopupMenu
+    Left = 48
+    Top = 176
+  end
+  object ActionList: TActionList
+    Left = 136
+    Top = 120
+    object ACRemove: TAction
+      Text = 'Remove item'
+      Hint = 'Remove item'
+      OnExecute = ACRemoveExecute
+    end
+    object ACMoveUp: TAction
+      Text = 'Move up'
+      Hint = 'Move up'
+      OnExecute = ACMoveUpExecute
+    end
+    object ACMoveDown: TAction
+      Text = 'Move down'
+      Hint = 'Move down'
+      OnExecute = ACMoveDownExecute
+    end
+  end
+end

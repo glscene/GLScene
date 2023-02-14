@@ -1,2 +1,2 @@
-TCgShader BITMAP components\TCgShader.bmp
-TCgBombShader BITMAP components\TCgBombShader.bmp
+TCgShader BITMAP vcl\components\TCgShader.bmp
+TCgBombShader BITMAP vcl\components\TCgBombShader.bmp

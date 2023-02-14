@@ -1,0 +1,348 @@
+object ShaderUniformEditorForm: TShaderUniformEditorForm
+  Left = 0
+  Top = 0
+  Caption = 'Autofill of uniforms'
+  ClientHeight = 428
+  ClientWidth = 548
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  object Label1: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 16.000000000000000000
+    Text = 'Available Uniforms'
+  end
+  object LBUniforms: TListBox
+    Position.X = 16.000000000000000000
+    Position.Y = 40.000000000000000000
+    Size.Width = 241.000000000000000000
+    Size.Height = 361.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    OnClick = LBUniformsClick
+    DisableFocusEffect = True
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    OnKeyDown = LBUniformsKeyDown
+    Viewport.Width = 237.000000000000000000
+    Viewport.Height = 357.000000000000000000
+  end
+  object Label2: TLabel
+    Position.X = 280.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 217.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Avaiblable Value'
+  end
+  object AutoSetBox: TComboBox
+    Position.X = 280.000000000000000000
+    Position.Y = 40.000000000000000000
+    Size.Width = 241.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    OnChange = AutoSetBoxChange
+  end
+  object Label3: TLabel
+    Position.X = 280.000000000000000000
+    Position.Y = 80.000000000000000000
+    Size.Width = 217.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Texture Image/Attachment'
+  end
+  object Label4: TLabel
+    Position.X = 280.000000000000000000
+    Position.Y = 144.000000000000000000
+    Size.Width = 217.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Texture Sampler'
+  end
+  object TextureBox: TComboBox
+    Position.X = 280.000000000000000000
+    Position.Y = 104.000000000000000000
+    Size.Width = 241.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    OnChange = TextureBoxChange
+  end
+  object SamplerBox: TComboBox
+    Position.X = 280.000000000000000000
+    Position.Y = 168.000000000000000000
+    Size.Width = 241.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    OnChange = SamplerBoxChange
+  end
+  object RedGroup: TGroupBox
+    Position.X = 280.000000000000000000
+    Position.Y = 232.000000000000000000
+    Size.Width = 65.000000000000000000
+    Size.Height = 169.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'RED'
+    TabOrder = 11
+    OnClick = ColorGroupClick
+    object RadioButton1: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      Text = 'R'
+    end
+    object RadioButton2: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 48.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = 'G'
+    end
+    object RadioButton3: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 72.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'B'
+    end
+    object RadioButton4: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 96.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'A'
+    end
+    object RadioButton5: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 120.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = '0'
+    end
+    object RadioButton6: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 144.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = '1'
+    end
+  end
+  object Label5: TLabel
+    Position.X = 280.000000000000000000
+    Position.Y = 208.000000000000000000
+    Size.Width = 217.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Swizzle of texture color components '
+  end
+  object GreenGroup: TGroupBox
+    Position.X = 341.000000000000000000
+    Position.Y = 232.000000000000000000
+    Size.Width = 65.000000000000000000
+    Size.Height = 169.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'GREEN'
+    TabOrder = 10
+    OnClick = ColorGroupClick
+    object RadioButton7: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      Text = 'R'
+    end
+    object RadioButton8: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 48.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = 'G'
+    end
+    object RadioButton9: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 72.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'B'
+    end
+    object RadioButton10: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 96.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'A'
+    end
+    object RadioButton11: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 120.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = '0'
+    end
+    object RadioButton12: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 144.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = '1'
+    end
+  end
+  object BlueGroup: TGroupBox
+    Position.X = 401.000000000000000000
+    Position.Y = 232.000000000000000000
+    Size.Width = 65.000000000000000000
+    Size.Height = 169.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'BLUE'
+    TabOrder = 9
+    OnClick = ColorGroupClick
+    object RadioButton13: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      Text = 'R'
+    end
+    object RadioButton14: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 48.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = 'G'
+    end
+    object RadioButton15: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 72.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'B'
+    end
+    object RadioButton16: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 96.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'A'
+    end
+    object RadioButton17: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 120.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = '0'
+    end
+    object RadioButton18: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 144.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = '1'
+    end
+  end
+  object AlphaGroup: TGroupBox
+    Position.X = 461.000000000000000000
+    Position.Y = 231.000000000000000000
+    Size.Width = 65.000000000000000000
+    Size.Height = 169.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'ALPHA'
+    TabOrder = 8
+    OnClick = ColorGroupClick
+    object RadioButton19: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      Text = 'R'
+    end
+    object RadioButton20: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 48.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = 'G'
+    end
+    object RadioButton21: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 72.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'B'
+    end
+    object RadioButton22: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 96.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'A'
+    end
+    object RadioButton23: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 120.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = '0'
+    end
+    object RadioButton24: TRadioButton
+      Position.X = 8.000000000000000000
+      Position.Y = 144.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = '1'
+    end
+  end
+end

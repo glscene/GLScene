@@ -1,3 +1,3 @@
-TGLSMBASS BITMAP components\TGLSMBASS.bmp
-TGLSMFMOD BITMAP components\TGLSMFMOD.bmp
-TGLSMOpenAL BITMAP components\TGLSMOpenAL.bmp
+TglSMBASS BITMAP vcl\components\TglSMBASS.bmp
+TglSMFMOD BITMAP vcl\components\TglSMFMOD.bmp
+TglSMOpenAL BITMAP vcl\components\TglSMOpenAL.bmp

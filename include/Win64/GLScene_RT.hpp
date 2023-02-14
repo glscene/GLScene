@@ -244,7 +244,7 @@
 #include <GLS.Strings.hpp>
 #include <GLS.XCollection.hpp>
 #include <GLS.XOpenGL.hpp>
-#include <OpenGL.InitVCL.hpp>
+#include <GLS.InitOpenGL.hpp>
 #include <PasGLTF.hpp>
 #include <PasJSON.hpp>
 #include <PasDblStrUtils.hpp>

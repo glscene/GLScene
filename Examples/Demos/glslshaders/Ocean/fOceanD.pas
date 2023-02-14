@@ -106,6 +106,7 @@ begin
   Cubemap.FilteringQuality := tfAnisotropic;
   Cubemap.Disabled := False;
 
+
   with MatLib.LibMaterialByName('cubeMap').Material.Texture do
   begin
     ImageClassName := TGLCubeMapImage.ClassName;

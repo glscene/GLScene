@@ -266,10 +266,10 @@ contains
   GLS.Strings in '..\Source\GLS.Strings.pas',
   GLS.XCollection in '..\Source\GLS.XCollection.pas',
   GLS.XOpenGL in '..\Source\GLS.XOpenGL.pas',
-  OpenGL.InitVCL in '..\Source\OpenGL.InitVCL.pas',
-  PasGLTF in '..\Source\PasGLTF.pas',
-  PasJSON in '..\Source\PasJSON.pas',
-  PasDblStrUtils in '..\Source\PasDblStrUtils.pas';
+  GLS.InitOpenGL in '..\Source\VCL\GLS.InitOpenGL.pas',
+  PasGLTF in '..\Source\Common\PasGLTF.pas',
+  PasJSON in '..\Source\Common\PasJSON.pas',
+  PasDblStrUtils in '..\Source\Common\PasDblStrUtils.pas';
 
 end.
 

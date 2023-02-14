@@ -1,5 +1,5 @@
 //
-// The graphics rendering engine GLScene http://glscene.org
+// The graphics platform Scene https://github.com/glscene
 //
 
 {$DEFINE GLSCENE}

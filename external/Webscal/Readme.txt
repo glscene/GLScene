@@ -1,1 +1,0 @@
-Webscal is a package for building web applications based on DWS, WebGL and Vulcan.

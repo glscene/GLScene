@@ -1,0 +1,951 @@
+object InfoForm: TInfoForm
+  Left = 0
+  Top = 0
+  Caption = 'Scene Info'
+  ClientHeight = 420
+  ClientWidth = 540
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnClose = FormClose
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object TabControl: TTabControl
+    Align = Top
+    Size.Width = 540.000000000000000000
+    Size.Height = 382.000000000000000000
+    Size.PlatformDefault = False
+    TabIndex = 4
+    TabOrder = 0
+    TabPosition = PlatformDefault
+    Sizes = (
+      540s
+      356s
+      540s
+      356s
+      540s
+      356s
+      540s
+      356s
+      540s
+      356s)
+    object TabItemScene: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 52.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Scene'
+      ExplicitSize.cx = 65.000000000000000000
+      ExplicitSize.cy = 24.000000000000000000
+      object ImageControl1: TImageControl
+        Align = Client
+        Size.Width = 540.000000000000000000
+        Size.Height = 356.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+      end
+      object Label10: TLabel
+        AutoSize = True
+        StyledSettings = [FontColor]
+        Position.X = 232.000000000000000000
+        Position.Y = 216.000000000000000000
+        Size.Width = 56.799987792968750000
+        Size.Height = 19.199996948242190000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Default'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        TextSettings.WordWrap = False
+        Text = 'Version :'
+        TabOrder = 1
+      end
+      object TextInfo: TText
+        Position.X = 80.000000000000000000
+        Position.Y = 56.000000000000000000
+        Size.Width = 409.000000000000000000
+        Size.Height = 88.000000000000000000
+        Size.PlatformDefault = False
+        Stretch = True
+        Text = 'Graphic Scene Engine for Delphi and C++Builder'
+        OnClick = TextInfoClick
+      end
+    end
+    object TabItemInformation: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 82.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Information'
+      ExplicitSize.cx = 82.000000000000000000
+      ExplicitSize.cy = 24.000000000000000000
+      object ScrollBoxInfo: TScrollBox
+        Align = Client
+        Size.Width = 540.000000000000000000
+        Size.Height = 356.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Viewport.Width = 524.000000000000000000
+        Viewport.Height = 356.000000000000000000
+        object LabelCommon: TLabel
+          Align = Top
+          StyledSettings = [Family]
+          Size.Width = 524.000000000000000000
+          Size.Height = 21.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claMaroon
+          TextSettings.HorzAlign = Center
+          Text = 'Common'
+          TabOrder = 0
+        end
+        object Label1: TLabel
+          AutoSize = True
+          Position.X = 24.000000000000000000
+          Position.Y = 32.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Vendor :'
+          TabOrder = 1
+        end
+        object Label2: TLabel
+          AutoSize = True
+          Position.X = 24.000000000000000000
+          Position.Y = 55.000000000000000000
+          Size.Width = 54.400001525878910000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Renderer :'
+          TabOrder = 2
+        end
+        object Label3: TLabel
+          AutoSize = True
+          Position.X = 24.000000000000000000
+          Position.Y = 78.000000000000000000
+          Size.Width = 69.599998474121090000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Version Info :'
+          TabOrder = 3
+        end
+        object Label4: TLabel
+          AutoSize = True
+          Position.X = 24.000000000000000000
+          Position.Y = 102.000000000000000000
+          Size.Width = 92.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Double buffered :'
+          TabOrder = 4
+        end
+        object Label5: TLabel
+          AutoSize = True
+          Position.X = 24.000000000000000000
+          Position.Y = 125.000000000000000000
+          Size.Width = 85.599998474121090000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Stereo enabled :'
+          TabOrder = 5
+        end
+        object Label6: TLabel
+          AutoSize = True
+          Position.X = 24.000000000000000000
+          Position.Y = 148.000000000000000000
+          Size.Width = 108.000000000000000000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Buffer switch mode :'
+          TabOrder = 6
+        end
+        object Label7: TLabel
+          AutoSize = True
+          Position.X = 24.000000000000000000
+          Position.Y = 172.000000000000000000
+          Size.Width = 72.000000000000000000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Acceleration :'
+          TabOrder = 7
+        end
+        object CopyLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 148.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 8
+        end
+        object AccLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 172.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 9
+        end
+        object StereoLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 125.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 10
+        end
+        object DoubleLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 102.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 11
+        end
+        object VersionLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 78.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 12
+        end
+        object RendererLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 55.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 13
+        end
+        object VendorLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 32.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 14
+        end
+        object LabelDepths: TLabel
+          StyledSettings = [Family]
+          Position.X = 16.000000000000000000
+          Position.Y = 197.000000000000000000
+          Size.Width = 497.000000000000000000
+          Size.Height = 21.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claMaroon
+          TextSettings.HorzAlign = Center
+          Text = 'Buffers and pixel depths'
+          TabOrder = 15
+        end
+        object Label9: TLabel
+          AutoSize = True
+          Position.X = 24.000000000000000000
+          Position.Y = 224.000000000000000000
+          Size.Width = 69.599998474121090000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Color buffer :'
+          TabOrder = 16
+        end
+        object ColorLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 224.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 17
+        end
+        object Label11: TLabel
+          AutoSize = True
+          Position.X = 24.000000000000000000
+          Position.Y = 247.000000000000000000
+          Size.Width = 73.599998474121090000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Depth buffer :'
+          TabOrder = 18
+        end
+        object DepthLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 247.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 19
+        end
+        object Label13: TLabel
+          AutoSize = True
+          Position.X = 24.000000000000000000
+          Position.Y = 270.000000000000000000
+          Size.Width = 76.000000000000000000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Stencil buffer :'
+          TabOrder = 20
+        end
+        object StencilLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 270.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 21
+        end
+        object Label15: TLabel
+          AutoSize = True
+          Position.X = 24.000000000000000000
+          Position.Y = 294.000000000000000000
+          Size.Width = 113.600006103515600000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Accumulation buffer :'
+          TabOrder = 22
+        end
+        object AccumLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 294.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 23
+        end
+        object Label17: TLabel
+          AutoSize = True
+          Position.X = 24.000000000000000000
+          Position.Y = 317.000000000000000000
+          Size.Width = 94.400001525878910000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Auxilliary buffers :'
+          TabOrder = 24
+        end
+        object AuxLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 317.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 25
+        end
+        object Label19: TLabel
+          AutoSize = True
+          Position.X = 24.000000000000000000
+          Position.Y = 340.000000000000000000
+          Size.Width = 56.000000000000000000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Subpixels :'
+          TabOrder = 26
+        end
+        object SubLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 340.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 27
+        end
+        object Label21: TLabel
+          AutoSize = True
+          Position.X = 24.000000000000000000
+          Position.Y = 364.000000000000000000
+          Size.Width = 108.800003051757800000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Supported overlays :'
+          TabOrder = 28
+        end
+        object OverlayLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 364.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 29
+        end
+        object Label23: TLabel
+          AutoSize = True
+          Position.X = 24.000000000000000000
+          Position.Y = 388.000000000000000000
+          Size.Width = 116.800003051757800000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Supported underlays :'
+          TabOrder = 30
+        end
+        object UnderlayLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 388.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 31
+        end
+        object LabelMaxValues: TLabel
+          StyledSettings = [Family]
+          Position.X = 16.000000000000000000
+          Position.Y = 405.000000000000000000
+          Size.Width = 481.000000000000000000
+          Size.Height = 21.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.FontColor = claMaroon
+          TextSettings.HorzAlign = Center
+          Text = 'Maximum values'
+          TabOrder = 32
+        end
+        object Label8: TLabel
+          AutoSize = True
+          Position.X = 32.000000000000000000
+          Position.Y = 510.000000000000000000
+          Size.Width = 66.400001525878910000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'List nesting :'
+          TabOrder = 33
+        end
+        object ViewLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 556.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 34
+        end
+        object Label26: TLabel
+          AutoSize = True
+          Position.X = 32.000000000000000000
+          Position.Y = 556.000000000000000000
+          Size.Width = 119.199996948242200000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Viewport Dimensions :'
+          TabOrder = 35
+        end
+        object ModelLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 533.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 36
+        end
+        object Label28: TLabel
+          AutoSize = True
+          Position.X = 32.000000000000000000
+          Position.Y = 533.000000000000000000
+          Size.Width = 94.400001525878910000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Modelview stack :'
+          TabOrder = 37
+        end
+        object ListLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 510.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 38
+        end
+        object LightLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 486.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 39
+        end
+        object Label31: TLabel
+          AutoSize = True
+          Position.X = 32.000000000000000000
+          Position.Y = 486.000000000000000000
+          Size.Width = 76.000000000000000000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Light sources :'
+          TabOrder = 40
+        end
+        object EvalLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 463.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 41
+        end
+        object Label33: TLabel
+          AutoSize = True
+          Position.X = 32.000000000000000000
+          Position.Y = 463.000000000000000000
+          Size.Width = 92.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Evaluation order :'
+          TabOrder = 42
+        end
+        object ClipLabel: TLabel
+          AutoSize = True
+          Position.X = 192.000000000000000000
+          Position.Y = 440.000000000000000000
+          Size.Width = 16.800003051757810000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 43
+        end
+        object Label35: TLabel
+          AutoSize = True
+          Position.X = 32.000000000000000000
+          Position.Y = 440.000000000000000000
+          Size.Width = 64.000000000000000000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Clip planes :'
+          TabOrder = 44
+        end
+        object Label36: TLabel
+          AutoSize = True
+          Position.X = 248.000000000000000000
+          Position.Y = 486.000000000000000000
+          Size.Width = 89.600006103515630000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Projection stack :'
+          TabOrder = 45
+        end
+        object Label37: TLabel
+          AutoSize = True
+          Position.X = 248.000000000000000000
+          Position.Y = 440.000000000000000000
+          Size.Width = 68.000000000000000000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Name stack :'
+          TabOrder = 46
+        end
+        object NameLabel: TLabel
+          AutoSize = True
+          Position.X = 400.000000000000000000
+          Position.Y = 440.000000000000000000
+          Size.Width = 16.799987792968750000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 47
+        end
+        object Label39: TLabel
+          AutoSize = True
+          Position.X = 248.000000000000000000
+          Position.Y = 463.000000000000000000
+          Size.Width = 84.000000000000000000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Pixel map table:'
+          TabOrder = 48
+        end
+        object PixelLabel: TLabel
+          AutoSize = True
+          Position.X = 400.000000000000000000
+          Position.Y = 463.000000000000000000
+          Size.Width = 16.799987792968750000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 49
+        end
+        object ProjLabel: TLabel
+          AutoSize = True
+          Position.X = 400.000000000000000000
+          Position.Y = 486.000000000000000000
+          Size.Width = 16.799987792968750000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 50
+        end
+        object TexSizeLabel: TLabel
+          AutoSize = True
+          Position.X = 400.000000000000000000
+          Position.Y = 510.000000000000000000
+          Size.Width = 16.799987792968750000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 51
+        end
+        object Label43: TLabel
+          AutoSize = True
+          Position.X = 248.000000000000000000
+          Position.Y = 533.000000000000000000
+          Size.Width = 74.399993896484380000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Texture stack :'
+          TabOrder = 52
+        end
+        object TexStackLabel: TLabel
+          AutoSize = True
+          Position.X = 400.000000000000000000
+          Position.Y = 533.000000000000000000
+          Size.Width = 16.799987792968750000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 53
+        end
+        object Label45: TLabel
+          AutoSize = True
+          Position.X = 248.000000000000000000
+          Position.Y = 556.000000000000000000
+          Size.Width = 73.600006103515630000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Texture units :'
+          TabOrder = 54
+        end
+        object TexUnitsLabel: TLabel
+          AutoSize = True
+          Position.X = 400.000000000000000000
+          Position.Y = 556.000000000000000000
+          Size.Width = 16.799987792968750000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = '???'
+          TabOrder = 55
+        end
+        object Label47: TLabel
+          AutoSize = True
+          Position.X = 248.000000000000000000
+          Position.Y = 510.000000000000000000
+          Size.Width = 64.000000000000000000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.WordWrap = False
+          Text = 'Texture size:'
+          TabOrder = 56
+        end
+      end
+    end
+    object TabItemExtensions: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 135.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Supported extensions'
+      ExplicitSize.cx = 135.000000000000000000
+      ExplicitSize.cy = 24.000000000000000000
+      object ListBoxExtensions: TListBox
+        Align = Client
+        Size.Width = 540.000000000000000000
+        Size.Height = 356.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        OnDblClick = ListBoxExtensionsDblClick
+        DisableFocusEffect = True
+        DefaultItemStyles.ItemStyle = ''
+        DefaultItemStyles.GroupHeaderStyle = ''
+        DefaultItemStyles.GroupFooterStyle = ''
+        Viewport.Width = 536.000000000000000000
+        Viewport.Height = 352.000000000000000000
+      end
+    end
+    object TabItemContributors: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 87.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Contributors'
+      ExplicitSize.cx = 87.000000000000000000
+      ExplicitSize.cy = 24.000000000000000000
+      object MemoContributors: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Lines.Strings = (
+          'Aaron Hochwimmer'
+          'Alan Rose'
+          'Alejandro Leon Escalera'
+          'Alexandre Hirzel'
+          'Arvydas Juskevicius'
+          'Brian Johns'
+          'Burkhard Carstens'
+          'Da Stranger'
+          'Daniel Bartlett'
+          'Dave Kerr'
+          'Davor Slutej'
+          'Degiovani'
+          'Eric Grange'
+          'Eric Hardinge'
+          'Eric Pascual'
+          'Erick Schuitema'
+          'Ivan Lee Herring,'
+          'Jerome Delauney'
+          'Joen A. Joensen'
+          'Joen Joensen'
+          'Kenneth Poulter'
+          'Lionel Reynaud'
+          'Lukasz Sokol'
+          'Marcus Oblak'
+          'Matheus Degiovani'
+          'Mattias Fagerlund'
+          'Mike Lischke'
+          'Nelson Chu'
+          'Pavel Vassiliev'
+          'Paul van Dinther'
+          'Phil Scadden'
+          'Philipp Pammler'
+          'Pierre Lemerle'
+          'Piotr Szturmaj'
+          'Rene Lindsay'
+          'Roshal Sasha'
+          'Rustam Asmandiarov'
+          'Sandor Domokos'
+          'Solerman Kaplon'
+          'Sternas Stefanos'
+          'Stuart Gooding'
+          'Uwe Raabe'
+          'YarUnderoaker'
+          'Zsolt Laky')
+        TextSettings.HorzAlign = Center
+        Align = Client
+        Size.Width = 540.000000000000000000
+        Size.Height = 356.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Viewport.Width = 540.000000000000000000
+        Viewport.Height = 356.000000000000000000
+      end
+    end
+    object TabItemAbout: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 53.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'About'
+      ExplicitSize.cx = 53.000000000000000000
+      ExplicitSize.cy = 24.000000000000000000
+      object MemoAbout: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Lines.Strings = (
+          '***'
+          'GXScene is a graphic extended engine based on OpenGL & Vulkan '
+          
+            'and designed with FMX component libraries for Delph &  C++ Build' +
+            'er. '
+          
+            'External Physics, Volume Sound, GPU computing, Mesh Generating a' +
+            'nd Game APIs'
+          
+            'tool kits are included with support of glTF/GLB formats for mode' +
+            'ls and scenes. '
+          'It allows description and rendering 3D scenes in an easy, '
+          'no-hassle, yet powerful manner to develop crossplatform'
+          'for Win32/Win64, Mac OS X, iOS, Android and Linux applications.'
+          'License: MPL 2.0'
+          '***'
+          '')
+        TextSettings.HorzAlign = Center
+        Align = Top
+        Size.Width = 540.000000000000000000
+        Size.Height = 233.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Viewport.Width = 536.000000000000000000
+        Viewport.Height = 229.000000000000000000
+      end
+      object LabelOfficial: TLabel
+        AutoSize = True
+        Position.X = 48.000000000000000000
+        Position.Y = 264.000000000000000000
+        Size.Width = 43.199996948242190000
+        Size.Height = 16.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.WordWrap = False
+        Text = 'Official :'
+        TabOrder = 1
+      end
+      object WebSiteLbl: TLabel
+        AutoSize = True
+        StyledSettings = [Family, Size, Style]
+        Position.X = 144.000000000000000000
+        Position.Y = 264.000000000000000000
+        Size.Width = 95.199996948242190000
+        Size.Height = 16.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.FontColor = claBlue
+        TextSettings.WordWrap = False
+        Text = 'http://glscene.org'
+        TabOrder = 2
+        OnClick = WebSiteLblClick
+      end
+      object LabelDevelopment: TLabel
+        AutoSize = True
+        Position.X = 48.000000000000000000
+        Position.Y = 288.000000000000000000
+        Size.Width = 77.599998474121090000
+        Size.Height = 16.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.WordWrap = False
+        Text = 'Development :'
+        TabOrder = 3
+      end
+      object DevSiteLbl: TLabel
+        AutoSize = True
+        StyledSettings = [Family, Size, Style]
+        Position.X = 144.000000000000000000
+        Position.Y = 288.000000000000000000
+        Size.Width = 237.600006103515600000
+        Size.Height = 16.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.FontColor = claBlue
+        TextSettings.WordWrap = False
+        Text = 'http://www.sourceforge.net/projects/glscene'
+        TabOrder = 5
+      end
+      object Label12: TLabel
+        AutoSize = True
+        StyledSettings = [Family, Size, Style]
+        Position.X = 144.000000000000000000
+        Position.Y = 312.000000000000000000
+        Size.Width = 144.000000000000000000
+        Size.Height = 16.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.FontColor = claBlue
+        TextSettings.WordWrap = False
+        Text = 'https://github.com/glscene'
+        TabOrder = 4
+      end
+    end
+  end
+  object ButtonClose: TButton
+    Position.X = 232.000000000000000000
+    Position.Y = 390.000000000000000000
+    TabOrder = 1
+    Text = 'Close'
+    OnClick = ButtonCloseClick
+  end
+end

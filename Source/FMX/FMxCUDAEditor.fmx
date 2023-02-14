@@ -1,0 +1,122 @@
+object CUDAEditorForm: TCUDAEditorForm
+  Left = 0
+  Top = 0
+  Caption = 'CUDA Editor'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 640.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object SBOpen: TSpeedButton
+      Size.Width = 41.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'cornerbuttonstyle'
+      object Image1: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 16711935
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              00A949444154384F9D90011280200804B597EBCFFC997108054AD6B4337985DC
+              A125504AE924EE91DA2B59B41324F81C9AC78EEE3FA28E2F84611C304F8F348F
+              23F1623986C426AF3112309A6A2D3C09C3546BADB21FC323F806D40493BEEB74
+              AD214C8A8EEB0491198A743103EEB0987F00BCD98620FC3AAA0101182EACE655
+              3DB64203EE6693BA45AEA0DC6664B5D6B63A8313A08CB553D356D1C72EC32FF3
+              7CD125F5816F3FE89D944E66519EDE7304D7620000000049454E44AE426082}
+          end>
+        Align = Client
+        Size.Width = 41.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object SBSave: TSpeedButton
+      Position.X = 40.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'cornerbuttonstyle'
+      object Image2: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 16711935
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              00E949444154384FBD903B0A02311086FF98A007B0B0B0B295C546C14388EC15
+              6CF41E769EC0421BAF60E12104EDF60C82D576627427318F157C445750FC20C3
+              CC64E6CF64F03B46D052CAC263EBF20E47C9599B6C3BAF185B7723C29CCD05E4
+              40224912970A1145112A8B0AB035C1CCF73E09145128F0F709FC12BFE06E8265
+              77E9C277C4EBF8F5173EE69DC0AE9F426B85933C02FA0CCE35186348D3035AD3
+              26788D83F6F47A074A11EAE32A1A93BA8934CAE51284B037A6294050E08A10DC
+              5806220265994F3EF024705B28CCEB8A1432CA9C4808BF038BDD8361DE59B930
+              C470D3F34EFEFF1F005C003749849CB1BC2E190000000049454E44AE426082}
+          end>
+        Align = Client
+        Size.Width = 41.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object SBHelp: TSpeedButton
+      Position.X = 88.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'cornerbuttonstyle'
+      object Image3: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 16711935
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              00C549444154384F631870C008A53141C0B6FF0CF7EE4139402023C3C0B02D00
+              433D7603F4A6FC67C8C9867280E0FF7F0686DFBF191866CD6660B89483DB5230
+              3099FB9F6116500708830C020110DDF5FE3F43F30B841814609A0632E0D77708
+              1BD93690460F0F06861D3B50C40938070A409A9D9D19187EFC6060B8789181E1
+              580209068034DBD93230FCFCC9C070F2144618E03700A4D9D28281E1D72F0686
+              B3E7B006201394C60DBE7EC3A999388016EA5407F89DE5BC1261FBDE70AC6A09
+              87C120070C0C005FEB47B75B2269BF0000000049454E44AE426082}
+          end>
+        Align = Client
+        Size.Width = 41.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+  end
+  object ListBox1: TListBox
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 440.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    DisableFocusEffect = True
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    Viewport.Width = 636.000000000000000000
+    Viewport.Height = 436.000000000000000000
+  end
+end

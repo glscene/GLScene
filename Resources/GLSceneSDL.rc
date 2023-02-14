@@ -1,2 +1,2 @@
-TSDLViewer BITMAP components\TSDLViewer.bmp
-TSDLWindow BITMAP components\TSDLWindow.bmp
+TglSDLViewer BITMAP vcl\components\TglSDLViewer.bmp
+TglSDLWindow BITMAP vcl\components\TglSDLWindow.bmp

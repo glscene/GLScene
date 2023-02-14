@@ -1,0 +1,144 @@
+object TextureEditFrame: TTextureEditFrame
+  Size.Width = 320.000000000000000000
+  Size.Height = 228.000000000000000000
+  Size.PlatformDefault = False
+  object LabelImage: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Image'
+  end
+  object LabelImageAlpha: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 48.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'ImageAlpha'
+  end
+  object LabelMagFilter: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 72.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'MagFilter'
+  end
+  object LabelMinFilter: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 96.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'MinFilter'
+  end
+  object LabelFilterQuality: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 120.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'FilterQuality'
+  end
+  object LabelTextureMode: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 144.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'TextureMode'
+  end
+  object LabelTextureWrap: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 168.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'TextureWrap'
+  end
+  object CBImageClass: TComboBox
+    Position.X = 144.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 13
+    OnChange = CBImageClassChange
+  end
+  object CBImageAlpha: TComboBox
+    Position.X = 144.000000000000000000
+    Position.Y = 41.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 12
+    OnChange = CBImageAlphaChange
+  end
+  object CBMagFilter: TComboBox
+    Position.X = 144.000000000000000000
+    Position.Y = 66.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 11
+    OnChange = CBMagFilterChange
+  end
+  object CBMinFilter: TComboBox
+    Position.X = 144.000000000000000000
+    Position.Y = 92.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 10
+    OnChange = CBMinFilterChange
+  end
+  object CBFilteringQuality: TComboBox
+    Position.X = 144.000000000000000000
+    Position.Y = 117.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    OnChange = CBFilteringQualityChange
+  end
+  object CBTextureMode: TComboBox
+    Position.X = 144.000000000000000000
+    Position.Y = 142.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 8
+    OnChange = CBTextureModeChange
+  end
+  object CBTextureWrap: TComboBox
+    Position.X = 144.000000000000000000
+    Position.Y = 168.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    OnChange = CBTextureWrapChange
+  end
+  object CBDisabled: TCheckBox
+    Position.X = 16.000000000000000000
+    Position.Y = 200.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 14
+    Text = 'Disabled'
+    OnClick = CBDisabledClick
+  end
+  object SBEditImage: TSpeedButton
+    Position.X = 256.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 25.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'cornerbuttonstyle'
+    Text = '...'
+    OnClick = SBEditImageClick
+  end
+end
