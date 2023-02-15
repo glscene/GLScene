@@ -1,19 +1,21 @@
-@echo off delete exe and xml docs
+@echo off delete exe and res file 
 del *.exe /s  
 del *.scr /s
 del *.xml /s
+del *.res /s
 
 @echo off delete delphi units but not packages
-rem del *.bpl /s
-rem del *.dcp /s
+del *.bpl /s
+del *.dcp /s
+del *.rsm /s
 del *.dcu /s
 del *.bak /s
 
 @echo off not delete C++ includes and libs
-rem del *.hpp /s
-rem del *.bpi /s
-rem del *.lib /s
-rem del *.a /s
+del *.hpp /s
+del *.bpi /s
+del *.lib /s
+del *.a /s
 
 @echo off delete debug files
 del *.ddp /s
@@ -58,11 +60,6 @@ echo ************************************************
 attrib +R "AdvDemos/Q3Demo/Model/animation.cfg"
 rem del *.cfg /s - there are quake's animations
 attrib -R "AdvDemos/Q3Demo/Model/animation.cfg"
-
-rem del *.res /s  - some apps load/save resources in RES files
-rem del *.ico /s  - some projects have own icos
-rem del *.cur /s  - cursors
-rem del *.obj /s  - obj models in assets or resources for lazarus
 
 echo---------------------------------------------------------
 

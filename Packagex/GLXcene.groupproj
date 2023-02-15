@@ -1,0 +1,168 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{BFDB680A-FEDB-4FD1-BBFD-57E3ACB26851}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="GLXcene_RT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLXcene_Sounds_RT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLXcene_Physics_RT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLXcene_Cg_RT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLXcene_GPU_RT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLXcene_Scripts_RT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLXcene_DT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLXcene_Cg_DT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLXcene_Sounds_DT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLXcene_Physics_DT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLXcene_Scripts_DT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLXcene_GPU_DT.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="GLXcene_RT">
+        <MSBuild Projects="GLXcene_RT.dproj"/>
+    </Target>
+    <Target Name="GLXcene_RT:Clean">
+        <MSBuild Projects="GLXcene_RT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLXcene_RT:Make">
+        <MSBuild Projects="GLXcene_RT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLXcene_Sounds_RT">
+        <MSBuild Projects="GLXcene_Sounds_RT.dproj"/>
+    </Target>
+    <Target Name="GLXcene_Sounds_RT:Clean">
+        <MSBuild Projects="GLXcene_Sounds_RT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLXcene_Sounds_RT:Make">
+        <MSBuild Projects="GLXcene_Sounds_RT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLXcene_Physics_RT">
+        <MSBuild Projects="GLXcene_Physics_RT.dproj"/>
+    </Target>
+    <Target Name="GLXcene_Physics_RT:Clean">
+        <MSBuild Projects="GLXcene_Physics_RT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLXcene_Physics_RT:Make">
+        <MSBuild Projects="GLXcene_Physics_RT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLXcene_Cg_RT">
+        <MSBuild Projects="GLXcene_Cg_RT.dproj"/>
+    </Target>
+    <Target Name="GLXcene_Cg_RT:Clean">
+        <MSBuild Projects="GLXcene_Cg_RT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLXcene_Cg_RT:Make">
+        <MSBuild Projects="GLXcene_Cg_RT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLXcene_GPU_RT">
+        <MSBuild Projects="GLXcene_GPU_RT.dproj"/>
+    </Target>
+    <Target Name="GLXcene_GPU_RT:Clean">
+        <MSBuild Projects="GLXcene_GPU_RT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLXcene_GPU_RT:Make">
+        <MSBuild Projects="GLXcene_GPU_RT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLXcene_Scripts_RT">
+        <MSBuild Projects="GLXcene_Scripts_RT.dproj"/>
+    </Target>
+    <Target Name="GLXcene_Scripts_RT:Clean">
+        <MSBuild Projects="GLXcene_Scripts_RT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLXcene_Scripts_RT:Make">
+        <MSBuild Projects="GLXcene_Scripts_RT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLXcene_DT">
+        <MSBuild Projects="GLXcene_DT.dproj"/>
+    </Target>
+    <Target Name="GLXcene_DT:Clean">
+        <MSBuild Projects="GLXcene_DT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLXcene_DT:Make">
+        <MSBuild Projects="GLXcene_DT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLXcene_Cg_DT">
+        <MSBuild Projects="GLXcene_Cg_DT.dproj"/>
+    </Target>
+    <Target Name="GLXcene_Cg_DT:Clean">
+        <MSBuild Projects="GLXcene_Cg_DT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLXcene_Cg_DT:Make">
+        <MSBuild Projects="GLXcene_Cg_DT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLXcene_Sounds_DT">
+        <MSBuild Projects="GLXcene_Sounds_DT.dproj"/>
+    </Target>
+    <Target Name="GLXcene_Sounds_DT:Clean">
+        <MSBuild Projects="GLXcene_Sounds_DT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLXcene_Sounds_DT:Make">
+        <MSBuild Projects="GLXcene_Sounds_DT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLXcene_Physics_DT">
+        <MSBuild Projects="GLXcene_Physics_DT.dproj"/>
+    </Target>
+    <Target Name="GLXcene_Physics_DT:Clean">
+        <MSBuild Projects="GLXcene_Physics_DT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLXcene_Physics_DT:Make">
+        <MSBuild Projects="GLXcene_Physics_DT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLXcene_Scripts_DT">
+        <MSBuild Projects="GLXcene_Scripts_DT.dproj"/>
+    </Target>
+    <Target Name="GLXcene_Scripts_DT:Clean">
+        <MSBuild Projects="GLXcene_Scripts_DT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLXcene_Scripts_DT:Make">
+        <MSBuild Projects="GLXcene_Scripts_DT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLXcene_GPU_DT">
+        <MSBuild Projects="GLXcene_GPU_DT.dproj"/>
+    </Target>
+    <Target Name="GLXcene_GPU_DT:Clean">
+        <MSBuild Projects="GLXcene_GPU_DT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLXcene_GPU_DT:Make">
+        <MSBuild Projects="GLXcene_GPU_DT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="GLXcene_RT;GLXcene_Sounds_RT;GLXcene_Physics_RT;GLXcene_Cg_RT;GLXcene_GPU_RT;GLXcene_Scripts_RT;GLXcene_DT;GLXcene_Cg_DT;GLXcene_Sounds_DT;GLXcene_Physics_DT;GLXcene_Scripts_DT;GLXcene_GPU_DT"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="GLXcene_RT:Clean;GLXcene_Sounds_RT:Clean;GLXcene_Physics_RT:Clean;GLXcene_Cg_RT:Clean;GLXcene_GPU_RT:Clean;GLXcene_Scripts_RT:Clean;GLXcene_DT:Clean;GLXcene_Cg_DT:Clean;GLXcene_Sounds_DT:Clean;GLXcene_Physics_DT:Clean;GLXcene_Scripts_DT:Clean;GLXcene_GPU_DT:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="GLXcene_RT:Make;GLXcene_Sounds_RT:Make;GLXcene_Physics_RT:Make;GLXcene_Cg_RT:Make;GLXcene_GPU_RT:Make;GLXcene_Scripts_RT:Make;GLXcene_DT:Make;GLXcene_Cg_DT:Make;GLXcene_Sounds_DT:Make;GLXcene_Physics_DT:Make;GLXcene_Scripts_DT:Make;GLXcene_GPU_DT:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -123,7 +123,7 @@
         <DCC_ObjOutput>..\lib\$(Platform)</DCC_ObjOutput>
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <VerInfo_Keys>CompanyName=;FileVersion=2023.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
-        <DCC_Description>GLScene Engine</DCC_Description>
+        <DCC_Description>GLScene Graphics</DCC_Description>
         <VerInfo_MajorVer>2023</VerInfo_MajorVer>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
@@ -370,7 +370,6 @@
         <DCCReference Include="..\Source\GLS.Strings.pas"/>
         <DCCReference Include="..\Source\GLS.XCollection.pas"/>
         <DCCReference Include="..\Source\GLS.XOpenGL.pas"/>
-        <DCCReference Include="..\Source\VCL\GLS.InitOpenGL.pas"/>
         <DCCReference Include="..\Source\Common\PasGLTF.pas"/>
         <DCCReference Include="..\Source\Common\PasJSON.pas"/>
         <DCCReference Include="..\Source\Common\PasDblStrUtils.pas"/>

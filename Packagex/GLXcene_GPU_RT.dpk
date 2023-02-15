@@ -1,0 +1,54 @@
+package GLXcene_GPU_RT;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'GLXcene GPU Computing'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  fmx,
+  GLXcene_RT;
+
+contains
+  CUDAx.RunTime in '..\Source\FMX\CUDAx.RunTime.pas',
+  CUDAx.Utility in '..\Source\FMX\CUDAx.Utility.pas',
+  CUDAx.API in '..\Source\FMX\CUDAx.API.pas',
+  CUDAx.Compiler in '..\Source\FMX\CUDAx.Compiler.pas',
+  CUDAx.Context in '..\Source\FMX\CUDAx.Context.pas',
+  CUDAx.FFTPlan in '..\Source\FMX\CUDAx.FFTPlan.pas',
+  CUDAx.Graphics in '..\Source\FMX\CUDAx.Graphics.pas',
+  CUDAx.Parser in '..\Source\FMX\CUDAx.Parser.pas',
+  CUDAx.DataAccess in '..\Source\FMX\CUDAx.DataAccess.pas',
+  CUDAx.Import in '..\Source\FMX\CUDAx.Import.pas',
+  OpenCLx.Import in '..\Source\FMX\OpenCLx.Import.pas',
+  OpenCLx.GL in '..\Source\FMX\OpenCLx.GL.pas',
+  OpenCLx.Platform in '..\Source\FMX\OpenCLx.Platform.pas',
+  CUDAx.FourierTransform in '..\Source\FMX\CUDAx.FourierTransform.pas',
+  CUDAx.ParallelPrimitives in '..\Source\FMX\CUDAx.ParallelPrimitives.pas';
+
+end.

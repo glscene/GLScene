@@ -22,8 +22,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXL.OpenGLx,
-  Import.SDL2,
+  SDL.Import,
+  GLX.OpenGL,
   GLX.XOpenGL,
   GLX.Scene,
   GLX.Context,

@@ -18,7 +18,6 @@ del *.a /s
 del *.map /s
 del *.rsm /s
 del *.drc /s
-del *.2007 /s
 del *.local /s
 
 rem delete more files
@@ -57,9 +56,6 @@ attrib -R "AdvDemos/Q3Demo/Model/animation.cfg"
 
 rem  - some apps may load/save resources in RES files
 del *.res /s
-rem del *.ico /s  - some projects have own icos
-rem del *.cur /s  - cursors
-rem del *.obj /s  - obj models and resources for lazarus
 
 echo---------------------------------------------------------
 echo delete debug and Platform directories with all subdirectories and files 

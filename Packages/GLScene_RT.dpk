@@ -25,7 +25,7 @@ package GLScene_RT;
 {$IMAGEBASE $400000}
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'GLScene Engine'}
+{$DESCRIPTION 'GLScene Graphics'}
 {$RUNONLY}
 {$IMPLICITBUILD ON}
 
@@ -266,7 +266,6 @@ contains
   GLS.Strings in '..\Source\GLS.Strings.pas',
   GLS.XCollection in '..\Source\GLS.XCollection.pas',
   GLS.XOpenGL in '..\Source\GLS.XOpenGL.pas',
-  GLS.InitOpenGL in '..\Source\VCL\GLS.InitOpenGL.pas',
   PasGLTF in '..\Source\Common\PasGLTF.pas',
   PasJSON in '..\Source\Common\PasJSON.pas',
   PasDblStrUtils in '..\Source\Common\PasDblStrUtils.pas';

@@ -1,0 +1,49 @@
+package GLXcene_Sounds_RT;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'GLXcene Sound Managers'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  GLXcene_RT;
+
+contains
+  Soundx.BASSImport in '..\Source\FMX\Soundx.BASSImport.pas',
+  Soundx.FMODImport in '..\Source\FMX\Soundx.FMODImport.pas',
+  Soundx.FMOD in '..\Source\FMX\Soundx.FMOD.pas',
+  Soundx.FMODErrors in '..\Source\FMX\Soundx.FMODErrors.pas',
+  Soundx.FMODPresets in '..\Source\FMX\Soundx.FMODPresets.pas',
+  Soundx.FMODTypes in '..\Source\FMX\Soundx.FMODTypes.pas',
+  Soundx.SMFMOD in '..\Source\FMX\Soundx.SMFMOD.pas',
+  Soundx.SMOpenAL in '..\Source\FMX\Soundx.SMOpenAL.pas',
+  Soundx.SMWaveOut in '..\Source\FMX\Soundx.SMWaveOut.pas',
+  Soundx.OpenALImport in '..\Source\FMX\Soundx.OpenALImport.pas',
+  Soundx.SMBASS in '..\Source\FMX\Soundx.SMBASS.pas';
+
+end.

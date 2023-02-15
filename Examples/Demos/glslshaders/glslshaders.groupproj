@@ -57,10 +57,10 @@
         <Projects Include="SkyboxShader\SkyboxShaderD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Morph\GLSL_Morph.dproj">
+        <Projects Include="Morph\MorphD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Shadertoy\GLSL_Shadertoy.dproj">
+        <Projects Include="Shadertoy\ShadertoyD.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -233,32 +233,32 @@
     <Target Name="SkyboxShaderD:Make">
         <MSBuild Projects="SkyboxShader\SkyboxShaderD.dproj" Targets="Make"/>
     </Target>
-    <Target Name="GLSL_Morph">
-        <MSBuild Projects="Morph\GLSL_Morph.dproj"/>
+    <Target Name="MorphD">
+        <MSBuild Projects="Morph\MorphD.dproj"/>
     </Target>
-    <Target Name="GLSL_Morph:Clean">
-        <MSBuild Projects="Morph\GLSL_Morph.dproj" Targets="Clean"/>
+    <Target Name="MorphD:Clean">
+        <MSBuild Projects="Morph\MorphD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="GLSL_Morph:Make">
-        <MSBuild Projects="Morph\GLSL_Morph.dproj" Targets="Make"/>
+    <Target Name="MorphD:Make">
+        <MSBuild Projects="Morph\MorphD.dproj" Targets="Make"/>
     </Target>
-    <Target Name="GLSL_Shadertoy">
-        <MSBuild Projects="Shadertoy\GLSL_Shadertoy.dproj"/>
+    <Target Name="ShadertoyD">
+        <MSBuild Projects="Shadertoy\ShadertoyD.dproj"/>
     </Target>
-    <Target Name="GLSL_Shadertoy:Clean">
-        <MSBuild Projects="Shadertoy\GLSL_Shadertoy.dproj" Targets="Clean"/>
+    <Target Name="ShadertoyD:Clean">
+        <MSBuild Projects="Shadertoy\ShadertoyD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="GLSL_Shadertoy:Make">
-        <MSBuild Projects="Shadertoy\GLSL_Shadertoy.dproj" Targets="Make"/>
+    <Target Name="ShadertoyD:Make">
+        <MSBuild Projects="Shadertoy\ShadertoyD.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="BumpShaderD;BumpShaderC;DiffuseShaderD;DiffuseShaderC;LiningShadersD;LiningShadersC;MandelbrotD;OceanD;OceanC;PostShaderD;PostShaderC;ProjectTextureD;ProjectTextureC;ShaderCompD;ShaderCompC;SimpleShaderC;ShadersLabD;SkyboxShaderD;GLSL_Morph;GLSL_Shadertoy"/>
+        <CallTarget Targets="BumpShaderD;BumpShaderC;DiffuseShaderD;DiffuseShaderC;LiningShadersD;LiningShadersC;MandelbrotD;OceanD;OceanC;PostShaderD;PostShaderC;ProjectTextureD;ProjectTextureC;ShaderCompD;ShaderCompC;SimpleShaderC;ShadersLabD;SkyboxShaderD;MorphD;ShadertoyD"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="BumpShaderD:Clean;BumpShaderC:Clean;DiffuseShaderD:Clean;DiffuseShaderC:Clean;LiningShadersD:Clean;LiningShadersC:Clean;MandelbrotD:Clean;OceanD:Clean;OceanC:Clean;PostShaderD:Clean;PostShaderC:Clean;ProjectTextureD:Clean;ProjectTextureC:Clean;ShaderCompD:Clean;ShaderCompC:Clean;SimpleShaderC:Clean;ShadersLabD:Clean;SkyboxShaderD:Clean;GLSL_Morph:Clean;GLSL_Shadertoy:Clean"/>
+        <CallTarget Targets="BumpShaderD:Clean;BumpShaderC:Clean;DiffuseShaderD:Clean;DiffuseShaderC:Clean;LiningShadersD:Clean;LiningShadersC:Clean;MandelbrotD:Clean;OceanD:Clean;OceanC:Clean;PostShaderD:Clean;PostShaderC:Clean;ProjectTextureD:Clean;ProjectTextureC:Clean;ShaderCompD:Clean;ShaderCompC:Clean;SimpleShaderC:Clean;ShadersLabD:Clean;SkyboxShaderD:Clean;MorphD:Clean;ShadertoyD:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="BumpShaderD:Make;BumpShaderC:Make;DiffuseShaderD:Make;DiffuseShaderC:Make;LiningShadersD:Make;LiningShadersC:Make;MandelbrotD:Make;OceanD:Make;OceanC:Make;PostShaderD:Make;PostShaderC:Make;ProjectTextureD:Make;ProjectTextureC:Make;ShaderCompD:Make;ShaderCompC:Make;SimpleShaderC:Make;ShadersLabD:Make;SkyboxShaderD:Make;GLSL_Morph:Make;GLSL_Shadertoy:Make"/>
+        <CallTarget Targets="BumpShaderD:Make;BumpShaderC:Make;DiffuseShaderD:Make;DiffuseShaderC:Make;LiningShadersD:Make;LiningShadersC:Make;MandelbrotD:Make;OceanD:Make;OceanC:Make;PostShaderD:Make;PostShaderC:Make;ProjectTextureD:Make;ProjectTextureC:Make;ShaderCompD:Make;ShaderCompC:Make;SimpleShaderC:Make;ShadersLabD:Make;SkyboxShaderD:Make;MorphD:Make;ShadertoyD:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
