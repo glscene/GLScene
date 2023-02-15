@@ -1,7 +1,7 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-unit Physics.ODEImport;
+unit ODE.Import;
 
 (* ************************************************************************
   *                                                                       *
@@ -55,7 +55,7 @@ interface
 
 uses
   System.Classes,
-  GLS.ModuleLoader;
+  ModuleLoader;
 
 const
 

@@ -271,7 +271,7 @@
         <DCCReference Include="..\Source\GLS.MeshUtils.pas"/>
         <DCCReference Include="..\Source\GLS.Mirror.pas"/>
         <DCCReference Include="..\Source\GLS.Movement.pas"/>
-        <DCCReference Include="..\Source\GLS.ModuleLoader.pas"/>
+        <DCCReference Include="..\Source\Common\ModuleLoader.pas"/>
         <DCCReference Include="..\Source\GLS.MultiPolygon.pas"/>
         <DCCReference Include="..\Source\GLS.MultiProxy.pas"/>
         <DCCReference Include="..\Source\GLS.MultiSampleImage.pas"/>
@@ -373,6 +373,7 @@
         <DCCReference Include="..\Source\Common\PasGLTF.pas"/>
         <DCCReference Include="..\Source\Common\PasJSON.pas"/>
         <DCCReference Include="..\Source\Common\PasDblStrUtils.pas"/>
+        <DCCReference Include="..\Source\VCL\GLS.InitOpenGL.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

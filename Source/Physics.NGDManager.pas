@@ -17,7 +17,7 @@ uses
   System.Math, // Samevalue isZero to compare single
   System.Types,
 
-  Physics.NGDImport,
+  NGD.Import,
 
   /// NGD.Joints,            // old joints
   /// Physics.NewtonImport,      // new version 4.0

@@ -34,7 +34,7 @@ uses
   GLS.Coordinates,
 
   GLS.BaseClasses,
-  Physics.ODEImport,
+  ODE.Import,
   Physics.ODERagdoll,
   GLS.FileSMD,
   Physics.ODEUtils,

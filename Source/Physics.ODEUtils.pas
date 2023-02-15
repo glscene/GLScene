@@ -18,7 +18,7 @@ uses
   System.SysUtils,
   System.Classes,
 
-  Physics.ODEImport,
+  ODE.Import,
   GLS.OpenGLTokens,
   GLS.Context,
   GLS.VectorGeometry,

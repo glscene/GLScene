@@ -292,7 +292,7 @@
         <DCCReference Include="..\Source\FMX\GLX.ObjectManager.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.Objects.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.Octree.pas"/>
-        <DCCReference Include="..\Source\FMX\OpenGLx.InitFMX.pas"/>
+        <DCCReference Include="..\Source\FMX\GLX.InitOpenGL.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.OutlineShader.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.ParametricSurfaces.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.ParticleFX.pas"/>
@@ -379,7 +379,7 @@
         <DCCReference Include="..\Source\FMX\GLX.GeometryBB.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.GeometryCoordinates.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.OpenGL.pas"/>
-        <DCCReference Include="..\Source\Common\Scene.Vulkan.pas"/>
+        <DCCReference Include="..\Source\Common\Vulkan.Import.pas"/>
         <DCCReference Include="..\Source\FMX\GLSLx.Parameter.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

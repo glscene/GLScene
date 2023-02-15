@@ -14,12 +14,14 @@
 
 #include "GLS.GeomObjects.hpp"
 #include "GLS.HUDObjects.hpp"
+#include "NGD.Import.hpp"
 #include "Physics.NGDManager.hpp"
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SimpleNavigation.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.BitmapFont.hpp";
+
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

@@ -29,7 +29,7 @@ uses
   GLS.HUDObjects,
   GLS.BitmapFont,
   GLS.WindowsFont,
-  Physics.NGDImport,
+  NGD.Import,
   GLS.GeomObjects;
 
 type

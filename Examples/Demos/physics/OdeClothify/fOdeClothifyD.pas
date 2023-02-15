@@ -43,7 +43,7 @@ uses
   GLS.Context,
   GLS.BaseClasses,
 
-  Physics.ODEImport,
+  ODE.Import,
   Physics.ODEUtils;
 
 type

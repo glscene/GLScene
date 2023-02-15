@@ -16,7 +16,7 @@ uses
   Vcl.ComCtrls,
   Vcl.ExtCtrls,
 
-  Physics.ODEImport,
+  ODE.Import,
   Physics.ODEManager,
   GLS.Scene,
   GLS.VectorTypes,

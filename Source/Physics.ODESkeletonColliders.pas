@@ -14,7 +14,7 @@ uses
   GLS.PersistentClasses,
   GLS.VectorGeometry,
   GLS.VectorFileObjects,
-  Physics.ODEImport;
+  ODE.Import;
 
 type
 

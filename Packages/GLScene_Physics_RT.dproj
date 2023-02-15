@@ -145,11 +145,11 @@
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
-        <DCCReference Include="..\Source\Physics.NewtonImport.pas"/>
+        <DCCReference Include="..\Source\Common\Newton.Import.pas"/>
+        <DCCReference Include="..\Source\Common\NGD.Import.pas"/>
+        <DCCReference Include="..\Source\Common\ODE.Import.pas"/>
         <DCCReference Include="..\Source\Physics.NGDManager.pas"/>
         <DCCReference Include="..\Source\Physics.NGDRagdoll.pas"/>
-        <DCCReference Include="..\Source\Physics.NGDImport.pas"/>
-        <DCCReference Include="..\Source\Physics.ODEImport.pas"/>
         <DCCReference Include="..\Source\Physics.ODEManager.pas"/>
         <DCCReference Include="..\Source\Physics.ODERagdoll.pas"/>
         <DCCReference Include="..\Source\Physics.ODESkeletonColliders.pas"/>
@@ -159,7 +159,7 @@
         <DCCReference Include="..\Source\Physics.SPIInertias.pas"/>
         <DCCReference Include="..\Source\Physics.SPIJoints.pas"/>
         <DCCReference Include="..\Source\Physics.SPIManager.pas"/>
-        <DCCReference Include="..\Source\Physics.PhysXImport.pas"/>
+        <DCCReference Include="..\Source\Common\PhysX.Import.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

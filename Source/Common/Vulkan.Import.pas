@@ -1,7 +1,7 @@
 //
 // The graphics platform GLXcene https://github.com/glscene
 //
-unit Scene.Vulkan;
+unit Vulkan.Import;
 
 (*
 ** Copyright (c) 2015-2017 The Khronos Group Inc.

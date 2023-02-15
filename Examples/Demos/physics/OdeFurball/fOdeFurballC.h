@@ -15,7 +15,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Cadencer.hpp"
 
-#include "Physics.ODEImport.hpp"
+#include "ODE.Import.hpp"
 #include "Physics.ODEUtils.hpp"
 #include <GLS.Navigator.hpp>
 #include <GLS.ShadowPlane.hpp>

@@ -1,7 +1,7 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-unit Physics.PhysXImport;
+unit PhysX.Import;
 
 interface
 

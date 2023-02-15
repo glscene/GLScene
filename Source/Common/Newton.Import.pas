@@ -18,7 +18,7 @@
 *
 * 3. This notice may not be removed or altered from any source distribution.
 *)
-unit Physics.NewtonImport;
+unit Newton.Import;
 
 // Define double to use newton in double precision
 {.$DEFINE USE_DOUBLE_PRECISION}

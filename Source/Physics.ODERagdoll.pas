@@ -16,7 +16,7 @@ uses
   GLS.Texture,
   GLS.VectorFileObjects,
 
-  Physics.ODEImport,
+  ODE.Import,
   Physics.ODEUtils;
 
 const

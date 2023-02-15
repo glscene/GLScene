@@ -172,7 +172,7 @@ contains
   GLX.ObjectManager in '..\Source\FMX\GLX.ObjectManager.pas',
   GLX.Objects in '..\Source\FMX\GLX.Objects.pas',
   GLX.Octree in '..\Source\FMX\GLX.Octree.pas',
-  OpenGLx.InitFMX in '..\Source\FMX\OpenGLx.InitFMX.pas',
+  GLX.InitOpenGL in '..\Source\FMX\GLX.InitOpenGL.pas',
   GLX.OutlineShader in '..\Source\FMX\GLX.OutlineShader.pas',
   GLX.ParametricSurfaces in '..\Source\FMX\GLX.ParametricSurfaces.pas',
   GLX.ParticleFX in '..\Source\FMX\GLX.ParticleFX.pas',
@@ -259,7 +259,7 @@ contains
   GLX.GeometryBB in '..\Source\FMX\GLX.GeometryBB.pas',
   GLX.GeometryCoordinates in '..\Source\FMX\GLX.GeometryCoordinates.pas',
   GLX.OpenGL in '..\Source\FMX\GLX.OpenGL.pas',
-  Scene.Vulkan in '..\Source\Common\Scene.Vulkan.pas',
+  Vulkan.Import in '..\Source\Common\Vulkan.Import.pas',
   GLSLx.Parameter in '..\Source\FMX\GLSLx.Parameter.pas';
 
 end.

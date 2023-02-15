@@ -167,7 +167,7 @@ contains
   GLS.MeshUtils in '..\Source\GLS.MeshUtils.pas',
   GLS.Mirror in '..\Source\GLS.Mirror.pas',
   GLS.Movement in '..\Source\GLS.Movement.pas',
-  GLS.ModuleLoader in '..\Source\GLS.ModuleLoader.pas',
+  ModuleLoader in '..\Source\Common\ModuleLoader.pas',
   GLS.MultiPolygon in '..\Source\GLS.MultiPolygon.pas',
   GLS.MultiProxy in '..\Source\GLS.MultiProxy.pas',
   GLS.MultiSampleImage in '..\Source\GLS.MultiSampleImage.pas',
@@ -268,7 +268,8 @@ contains
   GLS.XOpenGL in '..\Source\GLS.XOpenGL.pas',
   PasGLTF in '..\Source\Common\PasGLTF.pas',
   PasJSON in '..\Source\Common\PasJSON.pas',
-  PasDblStrUtils in '..\Source\Common\PasDblStrUtils.pas';
+  PasDblStrUtils in '..\Source\Common\PasDblStrUtils.pas',
+  GLS.InitOpenGL in '..\Source\VCL\GLS.InitOpenGL.pas';
 
 end.
 

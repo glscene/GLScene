@@ -23,7 +23,7 @@ uses
  
   GLS.Coordinates,
   GLS.BaseClasses,
-  Physics.ODEImport;
+  ODE.Import;
 
 type
   TFormOdeMachine = class(TForm)

@@ -24,6 +24,10 @@
 #pragma package(smart_init)
 //---------------------------------------------------------------------------
 
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
+#pragma link "GLS.Objects"
+#pragma link "GLS.ShadowPlane"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
