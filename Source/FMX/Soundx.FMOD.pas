@@ -34,7 +34,7 @@ uses
   Winapi.Windows,
 {$ENDIF}
   FMX.Dialogs,
-  Soundx.FMODTypes;
+  FMOD.Types;
 
 // ===============================================================================================
 // FUNCTION PROTOTYPES

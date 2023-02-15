@@ -24,9 +24,9 @@ uses
   GLS.VectorTypes,
   GLS.VectorGeometry,
 
-  Sounds.FMODImport,
-  Sounds.FMODTypes,
-  Sounds.FMODPresets;
+  FMOD.Import,
+  FMOD.Types,
+  FMOD.Presets;
 
 type
 

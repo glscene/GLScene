@@ -1,16 +1,16 @@
 //
+// The graphics platform GLScene https://github.com/glscene
 //
-// The graphics platform GLXcene https://github.com/glscene
-//
-//
-(*===============================================================================================
- FMOD Main header file. Copyright (c), Firelight Technologies Pty, Ltd. 1999-2004.
- ===============================================================================================
+unit FMOD.errors;
+
+(* ===============================================================================================
+  FMOD Main header file. Copyright (c), Firelight Technologies Pty, Ltd. 1999-2004.
+  ===============================================================================================
 
   NOTE: For the demos to run you must have either fmod.dll (in Windows)
   or libfmod-3.75.so (in Linux) installed.
 
-  In Winapi.Windows, copy the fmod.dll file found in the api directory to either of
+  In Windows, copy the fmod.dll file found in the api directory to either of
   the following locations (in order of preference)
   - your application directory
   - Windows\System (95/98) or WinNT\System32 (NT/2000/XP)
@@ -21,26 +21,26 @@
   a symbolic link between libfmod-3.75.so and libfmod.so. This is done with
   the following command (assuming you are in /usr/lib/)...
   ln -s libfmod-3.75.so libfmod.so.
-
-===============================================================================================*)
-
-unit Soundx.FMODErrors;
+*)
 
 interface
 
 uses
-  Soundx.FMODTypes;
+  FMOD.Types;
 
-{
+(*
   Disable warning for unsafe types in Delphi 7
-}
+*)
+
 {$IFDEF VER150}
 {$WARN UNSAFE_TYPE OFF}
 {$ENDIF}
 
 function FMOD_ErrorString(ErrorCode: TFModErrors): PChar;
 
+//---------------------------------------
 implementation
+//---------------------------------------
 
 function FMOD_ErrorString(ErrorCode: TFModErrors): PChar;
 begin

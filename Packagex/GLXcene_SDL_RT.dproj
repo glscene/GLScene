@@ -72,7 +72,7 @@
         <DCCReference Include="fmx.dcp"/>
         <DCCReference Include="GLXcene_RT.dcp"/>
         <DCCReference Include="..\Source\Common\SDL.Import.pas"/>
-        <DCCReference Include="..\Source\FMX\GLX.SDLWindow.pas"/>
+        <DCCReference Include="..\Source\FMX\SDLx.Window.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -95,11 +95,7 @@
                 </Source>
             </Delphi.Personality>
             <Platforms>
-                <Platform value="Android">False</Platform>
-                <Platform value="iOSDevice32">False</Platform>
-                <Platform value="iOSSimulator">False</Platform>
                 <Platform value="Linux64">True</Platform>
-                <Platform value="OSX32">False</Platform>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
             </Platforms>

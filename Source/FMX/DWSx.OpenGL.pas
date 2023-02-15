@@ -1,7 +1,7 @@
 //
 // The graphics rendering platform GLScene http://glscene.org
 //
-unit DWX.OpenGL;
+unit DWSx.OpenGL;
 (*
    DelphiWebScript symbol creation for OpenGL procedures and functions.
    This unit is still under development.

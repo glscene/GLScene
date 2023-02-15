@@ -1,7 +1,7 @@
 //
-// The graphics rendering engine GLScene http://glscene.org
+// The graphics platform GLScene https://github.com/glscene
 //
-unit Soundx.FMODtypes;
+unit FMOD.types;
 
 (*=============================================================================================== 
   FMOD Types header file. Copyright (c), Firelight Technologies Pty, Ltd. 1999-2004.              
@@ -31,9 +31,9 @@ uses
   Winapi.Windows;
 {$ENDIF}
 
-(*=============================================================================================== 
-  DEFINITIONS                                                                                     
- ===============================================================================================*) 
+(*===============================================================================================
+  DEFINITIONS
+ ===============================================================================================*)
 
 (*
   Force four-byte enums

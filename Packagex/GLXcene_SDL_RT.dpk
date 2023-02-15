@@ -13,8 +13,8 @@ package GLXcene_SDL_RT;
 {$LONGSTRINGS ON}
 {$OPENSTRINGS ON}
 {$OPTIMIZATION OFF}
-{$OVERFLOWCHECKS OFF}
-{$RANGECHECKS OFF}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
 {$REFERENCEINFO ON}
 {$SAFEDIVIDE OFF}
 {$STACKFRAMES ON}
@@ -36,7 +36,7 @@ requires
 
 contains
   SDL.Import in '..\Source\Common\SDL.Import.pas',
-  GLX.SDLWindow in '..\Source\FMX\GLX.SDLWindow.pas';
+  SDLx.Window in '..\Source\FMX\SDLx.Window.pas';
 
 end.
 

@@ -27,6 +27,7 @@ package GLXcene_DT;
 {$ENDIF IMPLICITBUILDING}
 {$DESCRIPTION 'GLXcene Graphics'}
 {$RUNONLY}
+{$DESIGNONLY}
 {$IMPLICITBUILD ON}
 
 requires

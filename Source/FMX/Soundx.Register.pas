@@ -1,7 +1,7 @@
 //
-// The graphics platform GLScene https://github.com/glscene
+// The graphics platform GLXcene https://github.com/glscene
 //
-unit Sounds.SoundRegister;
+unit Soundx.Register;
 
 (* Design time registration code for the Sounds *)
 
@@ -10,10 +10,10 @@ interface
 uses
   System.Classes,
 
-  Sounds.BASS,
-  Sounds.FMOD,
-  Sounds.OpenAL,
-  Sounds.WaveOut;
+  Soundx.SMBASS,
+  Soundx.SMFMOD,
+  Soundx.SMOpenAL,
+  Soundx.SMWaveOut;
 
 procedure Register;
 
@@ -23,7 +23,7 @@ implementation
 
 procedure Register;
 begin
-  RegisterComponents('GLScene',[TGLSMBASS,TGLSMFMOD,TGLSMOpenAL,TGLSMWaveOut]);
+  RegisterComponents('GLXcene',[TgxSMBASS,TgxSMFMOD,TgxSMOpenAL,TgxSMWaveOut]);
 end;
 
 end.

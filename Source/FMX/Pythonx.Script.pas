@@ -16,7 +16,7 @@ uses
   GXL.ScriptBase,
   GXL.Manager,
 
-  Python.Engine;
+  Python.Engine; // from ... current version of pyscript
 
 type
   (* This class only adds manager registration logic to the TPythonEngine

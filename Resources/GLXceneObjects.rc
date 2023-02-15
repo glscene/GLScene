@@ -1,6 +1,6 @@
-glx_camera BITMAP objects\glx_camera.bmp
-glx_lights BITMAP objects\glx_lights.bmp
-glx_objects BITMAP objects\glx_objects.bmp
+glx_camera BITMAP fmx\objects\glx_camera.bmp
+glx_lights BITMAP fmx\objects\glx_lights.bmp
+glx_objects BITMAP fmx\objects\glx_objects.bmp
 glx_root BITMAP fmx\objects\glx_root.bmp
 glx_cross BITMAP fmx\objects\glx_cross.bmp
 

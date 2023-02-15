@@ -136,7 +136,7 @@
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
         <DCCReference Include="..\Source\VCL\SDL.Window.pas"/>
-        <DCCReference Include="..\Source\VCL\SDL.Import.pas"/>
+        <DCCReference Include="..\Source\Common\SDL.Import.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -169,9 +169,9 @@
                 <Platform value="Win64">True</Platform>
             </Platforms>
             <Deployment Version="3">
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GLScene_SDL_rt.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GLScene_SDL_RT.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>GLScene_SDL_rt.bpl</RemoteName>
+                        <RemoteName>GLScene_SDL_RT.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

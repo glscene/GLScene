@@ -1,10 +1,7 @@
 //
-//
 // The graphics platform GLXcene https://github.com/glscene
 //
-//
-
-unit GLX.SDLContext;
+unit SDLx.Context;
 
 (*
    SDL specific Context and Viewer.
@@ -27,7 +24,7 @@ uses
   GLX.XOpenGL,
   GLX.Scene,
   GLX.Context,
-  GLX.SDLWindow;
+  SDLx.Window;
 
 type
 

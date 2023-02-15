@@ -309,7 +309,6 @@ uses
   GLX.VectorTypes,
   GLX.VectorGeometry,
   GLX.ApplicationFileIO,
-  GLX.Strings,
 
   GLX.AsmShader,
   GLX.AsyncHDS,

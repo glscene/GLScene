@@ -1,48 +1,50 @@
 //
-// The graphics rendering platform GLScene http://glscene.org
+// Graphic Scene Engine, http://glscene.org
 //
-unit DWX.Script;
-
-(* DelphiWebScript implementation for the GLXcene scripting layer *)
+(*
+  DelphiWebScript implementation
+*)
+unit DWSx.Script;
 
 interface
 
 uses
   System.Classes,
   System.SysUtils,
+  dwsComp,
+  dwsExprs,
+  dwsSymbols,
 
   GLX.XCollection,
-  GXLX.ScriptBase,
-  GLX.Manager,
-
-  dwsComp, // dwxComp,...
-  dwsExprs,
-  dwsSymbols;
+  GLX.ScriptBase,
+  GLX.Manager;
 
 type
-  (* This class only adds manager registration logic to the TDelphiWebScriptII
-    class to enable the XCollection items (ie. TGLScriptDWS) retain it's
-    assigned compiler from design to run -time. *)
-  TGLDelphiWebScript = class(TDelphiWebScript)
+  (*
+    This class only adds manager registration logic to the TDelphiWebScriptII
+    class to enable the XCollection items (ie. TgxScriptDWS) retain it's
+    assigned compiler from design to run -time.
+  *)
+  TgxDelphiWebScript = class(TDelphiWebScriptII)
   public
     constructor Create(AOnwer: TComponent); override;
     destructor Destroy; override;
   end;
 
-  // Implements DelphiWebScript scripting functionality through the abstracted GXL.ScriptBase
+  (* Implements DelphiWebScriptII scripting functionality through the
+    abstracted GLX.ScriptBase . *)
   TgxScriptDWS = class(TgxScriptBase)
   private
-    FDWSProgram: TProgram;
-    FCompiler: TGLDelphiWebScript;
+    FDWS2Program: TProgram;
+    FCompiler: TgxDelphiWebScriptII;
     FCompilerName: String;
   protected
-    procedure SetCompiler(const Value: TGLDelphiWebScriptII);
+    procedure SetCompiler(const Value: TgxDelphiWebScriptII);
     procedure ReadFromFiler(reader: TReader); override;
     procedure WriteToFiler(writer: TWriter); override;
     procedure Loaded; override;
-    procedure Notification(AComponent: TComponent;
-      Operation: TOperation); override;
-    function GetState: TGLScriptState; override;
+    procedure Notification(AComponent: TComponent; Operation: TOperation); override;
+    function GetState: TgxScriptState; override;
   public
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
@@ -57,30 +59,39 @@ type
     class function ItemCategory: String; override;
     property DWS2Program: TProgram read FDWS2Program;
   published
-    property Compiler: TGLDelphiWebScriptII read FCompiler write SetCompiler;
+    property Compiler: TgxDelphiWebScriptII read FCompiler write SetCompiler;
+
   end;
 
 procedure Register;
 
 // --------------------------------------------------
 implementation
+
 // --------------------------------------------------
 
 // ---------------
 // --------------- Miscellaneous ---------------
 // ---------------
 
+procedure Register;
+begin
+  RegisterClasses([TgxDelphiWebScriptII, TgxScriptDWS]);
+  RegisterComponents('GLXcene DWSx', [TgxDelphiWebScript]);
+end;
+
+
 // ----------
-// ---------- TGLDelphiWebScript ----------
+// ---------- TgxDelphiWebScript ----------
 // ----------
 
-constructor TGLDelphiWebScript.Create(AOnwer: TComponent);
+constructor TgxDelphiWebScript.Create(AOnwer: TComponent);
 begin
   inherited;
   RegisterManager(Self);
 end;
 
-destructor TGLDelphiWebScript.Destroy;
+destructor TgxDelphiWebScript.Destroy;
 begin
   DeregisterManager(Self);
   inherited;
@@ -88,25 +99,25 @@ end;
 
 
 // ---------------
-// --------------- TGLScriptDWS ---------------
+// --------------- TgxScriptDWS ---------------
 // ---------------
 
-destructor TGLScriptDWS.Destroy;
+destructor TgxScriptDWS.Destroy;
 begin
   Invalidate;
   inherited;
 end;
 
-procedure TGLScriptDWS.Assign(Source: TPersistent);
+procedure TgxScriptDWS.Assign(Source: TPersistent);
 begin
   inherited;
-  if Source is TGLScriptDWS then
+  if Source is TgxScriptDWS then
   begin
-    Compiler := TGLScriptDWS(Source).Compiler;
+    Compiler := TgxScriptDWS(Source).Compiler;
   end;
 end;
 
-procedure TGLScriptDWS.ReadFromFiler(reader: TReader);
+procedure TgxScriptDWS.ReadFromFiler(reader: TReader);
 var
   archiveVersion: Integer;
 begin
@@ -120,7 +131,7 @@ begin
   end;
 end;
 
-procedure TGLScriptDWS.WriteToFiler(writer: TWriter);
+procedure TgxScriptDWS.WriteToFiler(writer: TWriter);
 begin
   inherited;
   writer.WriteInteger(0); // archiveVersion
@@ -134,43 +145,42 @@ begin
   end;
 end;
 
-procedure TGLScriptDWS.Loaded;
+procedure TgxScriptDWS.Loaded;
 var
   temp: TComponent;
 begin
   inherited;
   if FCompilerName <> '' then
   begin
-    temp := FindManager(TGLDelphiWebScript, FCompilerName);
+    temp := FindManager(TgxDelphiWebScript, FCompilerName);
     if Assigned(temp) then
-      Compiler := TGLDelphiWebScript(temp);
+      Compiler := TgxDelphiWebScript(temp);
     FCompilerName := '';
   end;
 end;
 
-procedure TGLScriptDWS.Notification(AComponent: TComponent;
-  Operation: TOperation);
+procedure TgxScriptDWS.Notification(AComponent: TComponent; Operation: TOperation);
 begin
   if (AComponent = Compiler) and (Operation = opRemove) then
     Compiler := nil;
 end;
 
-class function TGLScriptDWS.FriendlyName: String;
+class function TgxScriptDWS.FriendlyName: String;
 begin
-  Result := 'GLScriptDWS';
+  Result := 'GLX.ScriptDWS';
 end;
 
-class function TGLScriptDWS.FriendlyDescription: String;
+class function TgxScriptDWS.FriendlyDescription: String;
 begin
   Result := 'DelphiWebScript script';
 end;
 
-class function TGLScriptDWS.ItemCategory: String;
+class function TgxScriptDWS.ItemCategory: String;
 begin
   Result := '';
 end;
 
-procedure TGLScriptDWS.Compile;
+procedure TgxScriptDWS.Compile;
 begin
   Invalidate;
   if Assigned(Compiler) then
@@ -179,7 +189,7 @@ begin
     raise Exception.Create('No compiler assigned!');
 end;
 
-procedure TGLScriptDWS.Execute;
+procedure TgxScriptDWS.Execute;
 begin
   if (State = ssUncompiled) then
     Compile
@@ -189,7 +199,7 @@ begin
     FDWS2Program.Execute;
 end;
 
-procedure TGLScriptDWS.Invalidate;
+procedure TgxScriptDWS.Invalidate;
 begin
   if (State <> ssUncompiled) or Assigned(FDWSProgram) then
   begin
@@ -198,7 +208,7 @@ begin
   end;
 end;
 
-procedure TGLScriptDWS.Start;
+procedure TgxScriptDWS.Start;
 begin
   if (State = ssUncompiled) then
     Compile;
@@ -206,13 +216,13 @@ begin
     FDWS2Program.BeginProgram(False);
 end;
 
-procedure TGLScriptDWS.Stop;
+procedure TgxScriptDWS.Stop;
 begin
   if (State = ssRunning) then
     FDWS2Program.EndProgram;
 end;
 
-function TGLScriptDWS.Call(aName: String; aParams: array of Variant): Variant;
+function TgxScriptDWS.Call(aName: String; aParams: array of Variant): Variant;
 var
   Symbol: TSymbol;
   Output: IInfo;
@@ -231,15 +241,15 @@ begin
           Result := Output.Value;
       end
       else
-        raise Exception.Create('Expected TFuncSymbol but found ' +
-          Symbol.ClassName + ' for ' + aName);
+        raise Exception.Create('Expected TFuncSymbol but found ' + Symbol.ClassName +
+          ' for ' + aName);
     end
     else
       raise Exception.Create('Symbol not found for ' + aName);
   end;
 end;
 
-procedure TGLScriptDWS.SetCompiler(const Value: TGLDelphiWebScript);
+procedure TgxScriptDWS.SetCompiler(const Value: TgxDelphiWebScript);
 begin
   if Value <> FCompiler then
   begin
@@ -248,7 +258,7 @@ begin
   end;
 end;
 
-function TGLScriptDWS.GetState: TGLScriptState;
+function TgxScriptDWS.GetState: TgxScriptState;
 begin
   Result := ssUncompiled;
   if Assigned(FDWSProgram) then
@@ -263,32 +273,25 @@ begin
       begin
         if FDWSProgram.Msgs.HasCompilerErrors then
           Result := ssCompileErrors
-        else if FDWSProgram.Msgs.HasExecutionErrors then
+        else if FDWS2Program.Msgs.HasExecutionErrors then
           Result := ssRunningErrors;
-        Errors.Text := FDWSProgram.Msgs.AsInfo;
+        Errors.Text := FDWS2Program.Msgs.AsInfo;
       end;
     end;
   end;
 end;
 
-
-procedure Register;
-begin
-  RegisterClasses([TgxDelphiWebScript, TgxScriptDWS]);
-  RegisterComponents('GLXcene DWS', [TGLDelphiWebScript]);
-end;
-
-
 // --------------------------------------------------
 initialization
+
 // --------------------------------------------------
 
-RegisterXCollectionItemClass(TGLScriptDWS);
+RegisterXCollectionItemClass(TgxScriptDWS);
 
 // --------------------------------------------------
 finalization
 // --------------------------------------------------
 
-UnregisterXCollectionItemClass(TGLScriptDWS);
+UnregisterXCollectionItemClass(TgxScriptDWS);
 
 end.

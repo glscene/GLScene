@@ -38,6 +38,6 @@ requires
   GLScene_Sounds_RT;
 
 contains
-  Sounds.SoundRegister in '..\Source\Sounds.SoundRegister.pas';
+  Sounds.Register in '..\Source\VCL\Sounds.Register.pas';
 
 end.

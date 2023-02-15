@@ -36,7 +36,7 @@ requires
 
 contains
   SDL.Window in '..\Source\VCL\SDL.Window.pas',
-  SDL.Import in '..\Source\VCL\SDL.Import.pas';
+  SDL.Import in '..\Source\Common\SDL.Import.pas';
 
 end.
 

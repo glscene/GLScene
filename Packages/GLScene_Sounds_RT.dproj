@@ -144,16 +144,16 @@
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
-        <DCCReference Include="..\Source\Sounds.FMODImport.pas"/>
-        <DCCReference Include="..\Source\Sounds.FMODpresets.pas"/>
-        <DCCReference Include="..\Source\Sounds.FMODtypes.pas"/>
-        <DCCReference Include="..\Source\Sounds.FMODerrors.pas"/>
-        <DCCReference Include="..\Source\Sounds.OpenALImport.pas"/>
-        <DCCReference Include="..\Source\Sounds.BASS.pas"/>
-        <DCCReference Include="..\Source\Sounds.FMOD.pas"/>
-        <DCCReference Include="..\Source\Sounds.OpenAL.pas"/>
-        <DCCReference Include="..\Source\Sounds.WaveOut.pas"/>
-        <DCCReference Include="..\Source\Sounds.BASSImport.pas"/>
+        <DCCReference Include="..\Source\Common\FMOD.Import.pas"/>
+        <DCCReference Include="..\Source\Common\FMOD.presets.pas"/>
+        <DCCReference Include="..\Source\Common\FMOD.types.pas"/>
+        <DCCReference Include="..\Source\Common\FMOD.errors.pas"/>
+        <DCCReference Include="..\Source\Common\BASS.Import.pas"/>
+        <DCCReference Include="..\Source\Common\OpenAL.Import.pas"/>
+        <DCCReference Include="..\Source\VCL\Sounds.FMOD.pas"/>
+        <DCCReference Include="..\Source\VCL\Sounds.BASS.pas"/>
+        <DCCReference Include="..\Source\VCL\Sounds.OpenAL.pas"/>
+        <DCCReference Include="..\Source\VCL\Sounds.WaveOut.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

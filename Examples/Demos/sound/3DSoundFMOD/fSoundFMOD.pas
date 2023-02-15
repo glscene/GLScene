@@ -61,7 +61,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure btnHowlClick(Sender: TObject);
   private
-
+    Path: TFileName;
   public
 
   end;
@@ -75,7 +75,7 @@ implementation
 
 procedure TFormSoundFMOD.FormCreate(Sender: TObject);
 begin
-  var Path: TFileName := GetCurrentAssetPath();
+  Path := GetCurrentAssetPath();
   SetCurrentDir(Path + '\audio');
 
   // Load our sound sample

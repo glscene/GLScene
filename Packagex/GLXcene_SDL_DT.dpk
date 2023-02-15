@@ -14,8 +14,8 @@ package GLXcene_SDL_DT;
 {$LONGSTRINGS ON}
 {$OPENSTRINGS ON}
 {$OPTIMIZATION OFF}
-{$OVERFLOWCHECKS OFF}
-{$RANGECHECKS OFF}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
 {$REFERENCEINFO ON}
 {$SAFEDIVIDE OFF}
 {$STACKFRAMES ON}
@@ -39,7 +39,7 @@ requires
   GLXcene_SDL_RT;
 
 contains
-  GLX.SDLContext in '..\Source\FMX\GLX.SDLContext.pas';
+  SDLx.Context in '..\Source\FMX\SDLx.Context.pas';
 
 end.
 

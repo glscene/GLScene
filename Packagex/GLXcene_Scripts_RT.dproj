@@ -73,12 +73,12 @@
         <DCCReference Include="GLXcene_RT.dcp"/>
         <DCCReference Include="dws_Runtime.dcp"/>
         <DCCReference Include="..\Source\FMX\Pythonx.Script.pas"/>
-        <DCCReference Include="..\Source\FMX\DWX.Classes.pas"/>
-        <DCCReference Include="..\Source\FMX\DWX.HelperFunc.pas"/>
-        <DCCReference Include="..\Source\FMX\DWX.Objects.pas"/>
-        <DCCReference Include="..\Source\FMX\DWX.OpenGL.pas"/>
-        <DCCReference Include="..\Source\FMX\DWX.Script.pas"/>
-        <DCCReference Include="..\Source\FMX\DWX.VectorGeometry.pas"/>
+        <DCCReference Include="..\Source\FMX\DWSx.Classes.pas"/>
+        <DCCReference Include="..\Source\FMX\DWSx.HelperFunc.pas"/>
+        <DCCReference Include="..\Source\FMX\DWSx.Objects.pas"/>
+        <DCCReference Include="..\Source\FMX\DWSx.OpenGL.pas"/>
+        <DCCReference Include="..\Source\FMX\DWSx.Script.pas"/>
+        <DCCReference Include="..\Source\FMX\DWSx.VectorGeometry.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -101,11 +101,7 @@
                 </Source>
             </Delphi.Personality>
             <Platforms>
-                <Platform value="Android">False</Platform>
-                <Platform value="iOSDevice32">False</Platform>
-                <Platform value="iOSSimulator">False</Platform>
                 <Platform value="Linux64">True</Platform>
-                <Platform value="OSX32">False</Platform>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
             </Platforms>

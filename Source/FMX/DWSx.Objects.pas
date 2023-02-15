@@ -1,7 +1,7 @@
 //
 // The graphics rendering platform GLXcene http://glscene.org
 //
-unit DWX.Objects;
+unit DWSx.Objects;
 (*
   Base classes and logic for DelphiWebScript enabled objects
 *)
@@ -18,7 +18,7 @@ uses
   GLX.BaseClasses,
   GLX.Manager,
 
-  DWX.Script,
+  DWSx.Script,
 
   dwsComp, // dwxComp,...
   dwsExprs,

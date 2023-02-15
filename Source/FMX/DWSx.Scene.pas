@@ -1,7 +1,7 @@
 //
 // The graphics rendering platform GLScene http://glscene.org
 //
-unit DWX.Scene;
+unit DWSx.Scene;
 
 (*
   DelphiWebScript symbol creation for base FMX classes.
@@ -21,8 +21,8 @@ uses
   GLX.VectorGeometry,
   GLX.Coordinates,
 
-  DWX.HelperFunc,
-  dwsExprs,  // dwxExprs, ...
+  DWSx.HelperFunc,
+  dwsExprs,  // dwxExprs, ... ?
   dwsSymbols,
   dwsComp,
   dwsCompStrings,

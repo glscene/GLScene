@@ -26,8 +26,7 @@ uses
   GLX.Sound,
   GLX.Scene,
   GLX.VectorGeometry,
-
-  Soundx.BASSImport;
+  BASS.Import;
 
 type
 

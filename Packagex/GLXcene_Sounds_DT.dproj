@@ -112,7 +112,7 @@
         <DCCReference Include="fmx.dcp"/>
         <DCCReference Include="GLXcene_RT.dcp"/>
         <DCCReference Include="GLXcene_Sounds_RT.dcp"/>
-        <DCCReference Include="..\Source\FMX\GLX.SoundRegister.pas"/>
+        <DCCReference Include="..\Source\FMX\Soundx.Register.pas"/>
         <RcCompile Include="..\Resources\GLXceneSounds.rc">
             <Form>GLXceneSounds.res</Form>
         </RcCompile>

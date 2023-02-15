@@ -1,7 +1,7 @@
 //
 // The graphics rendering platform GLScene http://glscene.org
 //
-unit DWX.VectorGeometry;
+unit DWSx.VectorGeometry;
 
 (* DelphiWebScript symbol creation for GLS.VectorGeometry types and functions *)
 

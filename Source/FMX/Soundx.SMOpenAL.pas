@@ -29,7 +29,8 @@ uses
   FMX.Forms,
   FMX.Dialogs,
 
-  Soundx.OpenALImport,  // al, alut, alTypes
+  OpenAL.Import,  // al, alut, alTypes
+
   GLX.VectorTypes,
   GLX.VectorGeometry,
   GLX.Sound,

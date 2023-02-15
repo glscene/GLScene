@@ -38,6 +38,6 @@ requires
   GLXcene_Scripts_RT;
 
 contains
-  DWX.Scene in '..\Source\FMX\DWX.Scene.pas';
+  DWSx.Scene in '..\Source\FMX\DWSx.Scene.pas';
 
 end.

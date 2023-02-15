@@ -1,7 +1,7 @@
 //
 // The graphics rendering platform GLScene http://glscene.org
 //
-unit DWX.HelperFunc;
+unit DWSx.HelperFunc;
 
 (*
   Helper functions for creating class, properties and

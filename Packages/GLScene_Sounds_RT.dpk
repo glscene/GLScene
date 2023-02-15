@@ -35,15 +35,15 @@ requires
   GLScene_RT;
 
 contains
-  Sounds.FMODImport in '..\Source\Sounds.FMODImport.pas',
-  Sounds.FMODpresets in '..\Source\Sounds.FMODpresets.pas',
-  Sounds.FMODtypes in '..\Source\Sounds.FMODtypes.pas',
-  Sounds.FMODerrors in '..\Source\Sounds.FMODerrors.pas',
-  Sounds.OpenALImport in '..\Source\Sounds.OpenALImport.pas',
-  Sounds.BASS in '..\Source\Sounds.BASS.pas',
-  Sounds.FMOD in '..\Source\Sounds.FMOD.pas',
-  Sounds.OpenAL in '..\Source\Sounds.OpenAL.pas',
-  Sounds.WaveOut in '..\Source\Sounds.WaveOut.pas',
-  Sounds.BASSImport in '..\Source\Sounds.BASSImport.pas';
+  FMOD.Import in '..\Source\Common\FMOD.Import.pas',
+  FMOD.presets in '..\Source\Common\FMOD.presets.pas',
+  FMOD.types in '..\Source\Common\FMOD.types.pas',
+  FMOD.errors in '..\Source\Common\FMOD.errors.pas',
+  BASS.Import in '..\Source\Common\BASS.Import.pas',
+  OpenAL.Import in '..\Source\Common\OpenAL.Import.pas',
+  Sounds.FMOD in '..\Source\VCL\Sounds.FMOD.pas',
+  Sounds.BASS in '..\Source\VCL\Sounds.BASS.pas',
+  Sounds.OpenAL in '..\Source\VCL\Sounds.OpenAL.pas',
+  Sounds.WaveOut in '..\Source\VCL\Sounds.WaveOut.pas';
 
 end.

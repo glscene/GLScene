@@ -38,7 +38,7 @@
  * the terms of any one of the MPL, the GPL or the LGPL.
  *)
 
-unit Sounds.OpenALImport;
+unit OpenAL.Import;
 
 interface
 
@@ -46,7 +46,9 @@ interface
 
 uses
   System.SysUtils
-  {$IFDEF MSWINDOWS},  Winapi.Windows{$ENDIF};
+  {$IFDEF MSWINDOWS},
+  Winapi.Windows
+  {$ENDIF};
 
 { $ DEFINE ALUT} //define ALUT to use alut.dll
 

@@ -34,16 +34,16 @@ requires
   GLXcene_RT;
 
 contains
-  Soundx.BASSImport in '..\Source\FMX\Soundx.BASSImport.pas',
-  Soundx.FMODImport in '..\Source\FMX\Soundx.FMODImport.pas',
   Soundx.FMOD in '..\Source\FMX\Soundx.FMOD.pas',
-  Soundx.FMODErrors in '..\Source\FMX\Soundx.FMODErrors.pas',
-  Soundx.FMODPresets in '..\Source\FMX\Soundx.FMODPresets.pas',
-  Soundx.FMODTypes in '..\Source\FMX\Soundx.FMODTypes.pas',
   Soundx.SMFMOD in '..\Source\FMX\Soundx.SMFMOD.pas',
   Soundx.SMOpenAL in '..\Source\FMX\Soundx.SMOpenAL.pas',
   Soundx.SMWaveOut in '..\Source\FMX\Soundx.SMWaveOut.pas',
-  Soundx.OpenALImport in '..\Source\FMX\Soundx.OpenALImport.pas',
-  Soundx.SMBASS in '..\Source\FMX\Soundx.SMBASS.pas';
+  Soundx.SMBASS in '..\Source\FMX\Soundx.SMBASS.pas',
+  FMOD.errors in '..\Source\Common\FMOD.errors.pas',
+  FMOD.Import in '..\Source\Common\FMOD.Import.pas',
+  FMOD.presets in '..\Source\Common\FMOD.presets.pas',
+  FMOD.types in '..\Source\Common\FMOD.types.pas',
+  BASS.Import in '..\Source\Common\BASS.Import.pas',
+  OpenAL.Import in '..\Source\Common\OpenAL.Import.pas';
 
 end.

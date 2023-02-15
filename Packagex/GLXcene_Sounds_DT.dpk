@@ -37,6 +37,6 @@ requires
   GLXcene_Sounds_RT;
 
 contains
-  GLX.SoundRegister in '..\Source\FMX\GLX.SoundRegister.pas';
+  Soundx.Register in '..\Source\FMX\Soundx.Register.pas';
 
 end.

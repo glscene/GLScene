@@ -13,8 +13,8 @@ package GLXcene_Scripts_RT;
 {$LONGSTRINGS ON}
 {$OPENSTRINGS ON}
 {$OPTIMIZATION OFF}
-{$OVERFLOWCHECKS OFF}
-{$RANGECHECKS OFF}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
 {$REFERENCEINFO ON}
 {$SAFEDIVIDE OFF}
 {$STACKFRAMES ON}
@@ -37,11 +37,11 @@ requires
 
 contains
   Pythonx.Script in '..\Source\FMX\Pythonx.Script.pas',
-  DWX.Classes in '..\Source\FMX\DWX.Classes.pas',
-  DWX.HelperFunc in '..\Source\FMX\DWX.HelperFunc.pas',
-  DWX.Objects in '..\Source\FMX\DWX.Objects.pas',
-  DWX.OpenGL in '..\Source\FMX\DWX.OpenGL.pas',
-  DWX.Script in '..\Source\FMX\DWX.Script.pas',
-  DWX.VectorGeometry in '..\Source\FMX\DWX.VectorGeometry.pas';
+  DWSx.Classes in '..\Source\FMX\DWSx.Classes.pas',
+  DWSx.HelperFunc in '..\Source\FMX\DWSx.HelperFunc.pas',
+  DWSx.Objects in '..\Source\FMX\DWSx.Objects.pas',
+  DWSx.OpenGL in '..\Source\FMX\DWSx.OpenGL.pas',
+  DWSx.Script in '..\Source\FMX\DWSx.Script.pas',
+  DWSx.VectorGeometry in '..\Source\FMX\DWSx.VectorGeometry.pas';
 
 end.

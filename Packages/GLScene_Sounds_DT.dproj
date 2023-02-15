@@ -110,7 +110,7 @@
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
         <DCCReference Include="GLScene_Sounds_RT.dcp"/>
-        <DCCReference Include="..\Source\Sounds.SoundRegister.pas"/>
+        <DCCReference Include="..\Source\VCL\Sounds.Register.pas"/>
         <RcCompile Include="..\Resources\GLSceneSounds.rc">
             <Form>GLSceneSounds.res</Form>
         </RcCompile>

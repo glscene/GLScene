@@ -1,7 +1,7 @@
 //
 // The graphics platform GLXcene https://github.com/glscene
 //
-unit GLX.SDLWindow;
+unit SDLx.Window;
 
 (*
   Non visual wrapper around basic SDL window features.

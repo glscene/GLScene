@@ -74,7 +74,7 @@
         <DCCReference Include="dws.Runtime.dcp"/>
         <DCCReference Include="GLXcene_RT.dcp"/>
         <DCCReference Include="GLXcene_Scripts_RT.dcp"/>
-        <DCCReference Include="..\Source\FMX\DWX.Scene.pas"/>
+        <DCCReference Include="..\Source\FMX\DWSx.Scene.pas"/>
         <RcCompile Include="..\Resources\GLXceneDWS.rc">
             <Form>GLXceneDWS.res</Form>
         </RcCompile>

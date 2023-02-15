@@ -1,7 +1,7 @@
 //
 // The graphics rendering platform GLScene http://glscene.org
 //
-unit DWX.Classes;
+unit DWSx.Classes;
 
 (* DelphiWebScript symbol creation for base FMX classes. *)
 
@@ -385,7 +385,7 @@ end;
 
 procedure Register;
 begin
-  RegisterComponents('GLXcene DWS', [TdwxClassesUnit]);
+  RegisterComponents('GLXcene DWSx', [TdwxClassesUnit]);
 end;
 
 

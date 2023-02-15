@@ -1,14 +1,16 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
+unit FMOD.presets;
+
 (*===============================================================================================
- FMOD presets header file. Copyright (c), FireLight Technologies Pty, Ltd. 1999-2004.
- ===============================================================================================
+  FMOD presets header file. Copyright (c), FireLight Technologies Pty, Ltd. 1999-2004.
+  ===============================================================================================
 
   NOTE: For the demos to run you must have either fmod.dll (in Windows)
   or libfmod-3.75.so (in Linux) installed.
 
-  In Winapi.Windows, copy the fmod.dll file found in the api directory to either of
+  In Windows, copy the fmod.dll file found in the api directory to either of
   the following locations (in order of preference)
   - your application directory
   - Windows\System (95/98) or WinNT\System32 (NT/2000/XP)
@@ -21,12 +23,10 @@
   ln -s libfmod-3.75.so libfmod.so.
 *)
 
-unit Soundx.FMODPresets;
-
 interface
 
 uses
-  Soundx.FMODTypes;
+  FMOD.Types;
 
 (*
 [DEFINE_START]
@@ -79,14 +79,13 @@ const
   FSOUND_PRESET_PSYCHOTIC:        TFSoundReverbProperties = (Environment: 25; EnvSize: 1.0;   EnvDiffusion: 0.50;   Room: -1000;  RoomHF: -151;   RoomLF: 0;  DecayTime: 7.56;  DecayHFRatio: 0.91; DecayLFRatio: 1.0;  Reflections: -626;  ReflectionsDelay: 0.020;  ReflectionsPan: (0.0, 0.0, 0.0);  Reverb: 774;  ReverbDelay: 0.030; ReverbPan: (0.0, 0.0, 0.0); EchoTime: 0.250;  EchoDepth: 0.00;  ModulationTime: 4.00; ModulationDepth: 1.000; AirAbsorptionHF: -5.0;  HFReference: 5000.0;  LFReference: 250.0; RoomRolloffFactor: 0.0; Diffusion: 100.0; Density: 100.0; Flags: $1f);
 
 (* PlayStation 2 Only presets *)
-(* Delphi/Kylix cannot create PlayStation 2 executables, so there is no need to
-   convert the PlayStation 2 presets. *)
+(* Delphi cannot create PlayStation 2 executables, so there is no need in the PlayStation 2 presets. *)
 {$J-}
 
 (* [DEFINE_END] *)
 
-//---------------------------------------------
+//--------------------------------------------
 implementation
-//---------------------------------------------
+//--------------------------------------------
 
 end.

@@ -58,7 +58,6 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <RuntimeOnlyPackage>true</RuntimeOnlyPackage>
         <VerInfo_Locale>1049</VerInfo_Locale>
         <DCC_Description>GLScene FMX OpenGL 3D library</DCC_Description>
         <DCC_E>false</DCC_E>
@@ -73,6 +72,7 @@
         <DCC_S>false</DCC_S>
         <DCC_N>false</DCC_N>
         <GenDll>true</GenDll>
+        <DesignOnlyPackage>true</DesignOnlyPackage>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_Description>GLSceneVKS Vulkan 3D library</DCC_Description>
