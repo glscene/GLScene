@@ -149,21 +149,21 @@
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="fmx.dcp"/>
         <DCCReference Include="GLXcene_RT.dcp"/>
-        <DCCReference Include="..\Source\FMX\CUDAx.RunTime.pas"/>
-        <DCCReference Include="..\Source\FMX\CUDAx.Utility.pas"/>
         <DCCReference Include="..\Source\FMX\CUDAx.API.pas"/>
         <DCCReference Include="..\Source\FMX\CUDAx.Compiler.pas"/>
         <DCCReference Include="..\Source\FMX\CUDAx.Context.pas"/>
         <DCCReference Include="..\Source\FMX\CUDAx.FFTPlan.pas"/>
         <DCCReference Include="..\Source\FMX\CUDAx.Graphics.pas"/>
-        <DCCReference Include="..\Source\FMX\CUDAx.Parser.pas"/>
-        <DCCReference Include="..\Source\FMX\CUDAx.DataAccess.pas"/>
-        <DCCReference Include="..\Source\FMX\CUDAx.Import.pas"/>
-        <DCCReference Include="..\Source\FMX\OpenCLx.Import.pas"/>
-        <DCCReference Include="..\Source\FMX\OpenCLx.GL.pas"/>
-        <DCCReference Include="..\Source\FMX\OpenCLx.Platform.pas"/>
-        <DCCReference Include="..\Source\FMX\CUDAx.FourierTransform.pas"/>
-        <DCCReference Include="..\Source\FMX\CUDAx.ParallelPrimitives.pas"/>
+        <DCCReference Include="..\Source\Common\OpenCL.GL.pas"/>
+        <DCCReference Include="..\Source\Common\OpenCL.Import.pas"/>
+        <DCCReference Include="..\Source\Common\OpenCL.Platform.pas"/>
+        <DCCReference Include="..\Source\Common\CUDA.Import.pas"/>
+        <DCCReference Include="..\Source\Common\CUDA.DataAccess.pas"/>
+        <DCCReference Include="..\Source\Common\CUDA.FourierTransform.pas"/>
+        <DCCReference Include="..\Source\Common\CUDA.ParallelPrimitives.pas"/>
+        <DCCReference Include="..\Source\Common\CUDA.Parser.pas"/>
+        <DCCReference Include="..\Source\Common\CUDA.Runtime.pas"/>
+        <DCCReference Include="..\Source\Common\CUDA.Utility.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -202,12 +202,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libpcre.dylib" Class="DependencyModule">
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libpcre.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>

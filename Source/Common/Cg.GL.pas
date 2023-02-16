@@ -87,8 +87,6 @@
  *)
 unit Cg.GL;
 
-{$I GLScene.inc}
-
 interface
 
 uses

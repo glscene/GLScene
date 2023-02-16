@@ -55,7 +55,7 @@ rem del *.cfg /s  - there are quake's animations
 attrib -R "AdvDemos/Q3Demo/Model/animation.cfg"
 
 rem  - some apps may load/save resources in RES files
-del *.res /s
+del *.res /s 
 
 echo---------------------------------------------------------
 echo delete debug and Platform directories with all subdirectories and files 

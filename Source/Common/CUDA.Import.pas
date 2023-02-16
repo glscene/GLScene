@@ -1,7 +1,7 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
-unit CUDAx.Import;
+unit CUDA.Import;
 
 (*
  * Copyright 1993-2020 NVIDIA Corporation.  All rights reserved.
@@ -38,15 +38,14 @@ unit CUDAx.Import;
  * the above Disclaimer and U.S. Government End Users Notice.
  *)
 
-
 interface
 
-{.$DEFINE CUDA_DEBUG_MODE}
-
 uses
-  Winapi.Windows,
-  System.SysUtils,
-  FMX.Dialogs;
+{$IFDEF MSWINDOWS}
+  Winapi.Windows;
+{$ELSE}
+  Windows;
+{$ENDIF}
 
 const
   CUDAAPIDLL = 'nvcuda.dll';
@@ -604,250 +603,181 @@ type
 {$ENDIF}
 
 type
-
-  TcuInit = function(Flags: Cardinal): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuDriverGetVersion = function(out driverVersion: Integer): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuDeviceGet = function(var device: TCUdevice; ordinal: Integer): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuDeviceGetCount = function(var count: Integer): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuDeviceGetName = function(name: PAnsiChar; len: Integer; dev: TCUdevice): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuDeviceComputeCapability = function(var major: Integer; var minor: Integer; dev: TCUdevice): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuDeviceTotalMem = function(bytes: PSize_t; dev: TCUdevice): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuDeviceGetProperties = function(var prop: TCUdevprop; dev: TCUdevice): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuDeviceGetAttribute = function(pi: PSize_t; attrib: TCUdevice_attribute; dev: TCUdevice): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuCtxCreate = function(var pctx: PCUcontext; Flags: Cardinal; dev: TCUdevice): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuCtxDestroy = function(ctx: PCUcontext): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuCtxAttach = function(var pctx: PCUcontext; Flags: Cardinal): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuCtxDetach = function(ctx: PCUcontext): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuCtxPushCurrent = function(ctx: PCUcontext): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuCtxPopCurrent = function(var pctx: PCUcontext): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuCtxGetDevice = function(var device: TCUdevice): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuCtxSynchronize = function: TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuModuleLoad = function(var module: PCUmodule; const fname: PAnsiChar): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuModuleLoadData = function(var module: PCUmodule; const image: PAnsiChar): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuModuleLoadDataEx = function(var module: PCUmodule; var image; numOptions: Cardinal; var options: TCUjit_option; var optionValues): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuModuleLoadFatBinary = function(var module: PCUmodule; var fatCubin): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuModuleUnload = function(hmod: PCUmodule): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuModuleGetFunction = function(out hfunc: PCUfunction; hmod: PCUmodule; const name: PAnsiChar): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuModuleGetGlobal = function(out dptr: TCUdeviceptr; var bytes: Cardinal; hmod: PCUmodule; const name: PAnsiChar): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuModuleGetTexRef = function(out pTexRef: PCUtexref; hmod: PCUmodule; const name: PAnsiChar): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemGetInfo = function(var free: Cardinal; var total: Cardinal): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemAlloc = function(var dptr: TCUdeviceptr; bytesize: Cardinal): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemAllocPitch = function(var dptr: TCUdeviceptr; var pPitch: Cardinal; WidthInBytes: Cardinal; Height: Cardinal; ElementSizeBytes: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemFree = function(dptr: TCUdeviceptr): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemGetAddressRange = function(var pbase: TCUdeviceptr; var psize: Cardinal; dptr: TCUdeviceptr): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemAllocHost = function(var pp; bytesize: Cardinal): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemFreeHost = function(p: Pointer): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemHostAlloc = function(var pp: Pointer; bytesize: Cardinal; Flags: Cardinal): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemHostGetDevicePointer = function(var pdptr: TCUdeviceptr; p: Pointer; Flags: Cardinal): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemHostGetFlags = function(var pFlags: Cardinal; var p): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpyHtoD = function(dstDevice: TCUdeviceptr; const srcHost: Pointer; ByteCount: Cardinal): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpyDtoH = function(const dstHost: Pointer; srcDevice: TCUdeviceptr; ByteCount: Cardinal): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpyDtoD = function(dstDevice: TCUdeviceptr; srcDevice: TCUdeviceptr; ByteCount: Cardinal): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpyDtoDAsync = function(dstDevice: TCUdeviceptr; srcDevice: TCUdeviceptr; ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpyDtoA = function(dstArray: PCUarray; dstIndex: Cardinal; srcDevice: TCUdeviceptr; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpyAtoD = function(dstDevice: TCUdeviceptr; hSrc: PCUarray; SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpyHtoA = function(dstArray: PCUarray; dstIndex: Cardinal; pSrc: Pointer; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpyAtoH = function(dstHost: Pointer; srcArray: PCUarray; SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpyAtoA = function(dstArray: PCUarray; dstIndex: Cardinal; srcArray: PCUarray; SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpy2D = function(const pCopy: PCUDA_MEMCPY2D): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpy2DUnaligned = function(var pCopy: TCUDA_MEMCPY2D): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpy3D = function(var pCopy: TCUDA_MEMCPY3D): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpyHtoDAsync = function(dstDevice: TCUdeviceptr; var srcHost; ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpyDtoHAsync = function(var dstHost; srcDevice: TCUdeviceptr; ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpyHtoAAsync = function(dstArray: PCUarray; dstIndex: Cardinal; var pSrc; ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpyAtoHAsync = function(var dstHost; srcArray: PCUstream; SrcIndex: Cardinal; ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpy2DAsync = function(var pCopy: TCUDA_MEMCPY2D; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemcpy3DAsync = function(var pCopy: TCUDA_MEMCPY3D; hStream: PCUstream)
-    : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemsetD8 = function(dstDevice: TCUdeviceptr; ub: Byte; N: Cardinal)
-    : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemsetD16 = function(dstDevice: TCUdeviceptr; uw: Word; N: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuMemsetD32 = function(dstDevice: TCUdeviceptr; ui: Cardinal; N: Cardinal)
-    : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+  TcuInit = function(Flags: Cardinal): TCUresult;stdcall;
+  TcuDriverGetVersion = function(out driverVersion: Integer): TCUresult;stdcall;
+  TcuDeviceGet = function(var device: TCUdevice; ordinal: Integer): TCUresult;stdcall;
+  TcuDeviceGetCount = function(var count: Integer): TCUresult;stdcall;
+  TcuDeviceGetName = function(name: PAnsiChar; len: Integer; dev: TCUdevice): TCUresult;stdcall;
+  TcuDeviceComputeCapability = function(var major: Integer; var minor: Integer; dev: TCUdevice): TCUresult;stdcall;
+  TcuDeviceTotalMem = function(bytes: PSize_t; dev: TCUdevice): TCUresult;stdcall;
+  TcuDeviceGetProperties = function(var prop: TCUdevprop; dev: TCUdevice): TCUresult;stdcall;
+  TcuDeviceGetAttribute = function(pi: PSize_t; attrib: TCUdevice_attribute; dev: TCUdevice): TCUresult;stdcall;
+  TcuCtxCreate = function(var pctx: PCUcontext; Flags: Cardinal; dev: TCUdevice): TCUresult;stdcall;
+  TcuCtxDestroy = function(ctx: PCUcontext): TCUresult;stdcall;
+  TcuCtxAttach = function(var pctx: PCUcontext; Flags: Cardinal): TCUresult;stdcall;
+  TcuCtxDetach = function(ctx: PCUcontext): TCUresult;stdcall;
+  TcuCtxPushCurrent = function(ctx: PCUcontext): TCUresult;stdcall;
+  TcuCtxPopCurrent = function(var pctx: PCUcontext): TCUresult;stdcall;
+  TcuCtxGetDevice = function(var device: TCUdevice): TCUresult;stdcall;
+  TcuCtxSynchronize = function: TCUresult;stdcall;
+  TcuModuleLoad = function(var module: PCUmodule; const fname: PAnsiChar): TCUresult;stdcall;
+  TcuModuleLoadData = function(var module: PCUmodule; const image: PAnsiChar): TCUresult;stdcall;
+  TcuModuleLoadDataEx = function(var module: PCUmodule; var image;
+    numOptions: Cardinal; var options: TCUjit_option; var optionValues): TCUresult;stdcall;
+  TcuModuleLoadFatBinary = function(var module: PCUmodule; var fatCubin): TCUresult;stdcall;
+  TcuModuleUnload = function(hmod: PCUmodule): TCUresult;stdcall;
+  TcuModuleGetFunction = function(out hfunc: PCUfunction; hmod: PCUmodule;
+    const name: PAnsiChar): TCUresult;stdcall;
+  TcuModuleGetGlobal = function(out dptr: TCUdeviceptr; var bytes: Cardinal;
+    hmod: PCUmodule; const name: PAnsiChar): TCUresult;stdcall;
+  TcuModuleGetTexRef = function(out pTexRef: PCUtexref; hmod: PCUmodule;
+    const name: PAnsiChar): TCUresult;stdcall;
+  TcuMemGetInfo = function(var free: Cardinal; var total: Cardinal): TCUresult;stdcall;
+  TcuMemAlloc = function(var dptr: TCUdeviceptr; bytesize: Cardinal): TCUresult;stdcall;
+  TcuMemAllocPitch = function(var dptr: TCUdeviceptr; var pPitch: Cardinal;
+    WidthInBytes: Cardinal; Height: Cardinal; ElementSizeBytes: Cardinal): TCUresult;stdcall;
+  TcuMemFree = function(dptr: TCUdeviceptr): TCUresult;stdcall;
+  TcuMemGetAddressRange = function(var pbase: TCUdeviceptr; var psize: Cardinal;
+    dptr: TCUdeviceptr): TCUresult;stdcall;
+  TcuMemAllocHost = function(var pp; bytesize: Cardinal): TCUresult;stdcall;
+  TcuMemFreeHost = function(p: Pointer): TCUresult;stdcall;
+  TcuMemHostAlloc = function(var pp: Pointer; bytesize: Cardinal; Flags: Cardinal): TCUresult;stdcall;
+  TcuMemHostGetDevicePointer = function(var pdptr: TCUdeviceptr; p: Pointer; Flags: Cardinal): TCUresult;stdcall;
+  TcuMemHostGetFlags = function(var pFlags: Cardinal; var p): TCUresult;stdcall;
+  TcuMemcpyHtoD = function(dstDevice: TCUdeviceptr; const srcHost: Pointer;
+    ByteCount: Cardinal): TCUresult;stdcall;
+  TcuMemcpyDtoH = function(const dstHost: Pointer; srcDevice: TCUdeviceptr;
+    ByteCount: Cardinal): TCUresult;stdcall;
+  TcuMemcpyDtoD = function(dstDevice: TCUdeviceptr; srcDevice: TCUdeviceptr;
+    ByteCount: Cardinal): TCUresult;stdcall;
+  TcuMemcpyDtoDAsync = function(dstDevice: TCUdeviceptr;
+    srcDevice: TCUdeviceptr; ByteCount: Cardinal; hStream: PCUstream): TCUresult;stdcall;
+  TcuMemcpyDtoA = function(dstArray: PCUarray; dstIndex: Cardinal;
+    srcDevice: TCUdeviceptr; ByteCount: Cardinal): TCUresult;stdcall;
+  TcuMemcpyAtoD = function(dstDevice: TCUdeviceptr; hSrc: PCUarray;
+    SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;stdcall;
+  TcuMemcpyHtoA = function(dstArray: PCUarray; dstIndex: Cardinal;
+    pSrc: Pointer; ByteCount: Cardinal): TCUresult;stdcall;
+  TcuMemcpyAtoH = function(dstHost: Pointer; srcArray: PCUarray;
+    SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;stdcall;
+  TcuMemcpyAtoA = function(dstArray: PCUarray; dstIndex: Cardinal;
+    srcArray: PCUarray; SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;stdcall;
+  TcuMemcpy2D = function(const pCopy: PCUDA_MEMCPY2D): TCUresult;stdcall;
+  TcuMemcpy2DUnaligned = function(var pCopy: TCUDA_MEMCPY2D): TCUresult;stdcall;
+  TcuMemcpy3D = function(var pCopy: TCUDA_MEMCPY3D): TCUresult;stdcall;
+  TcuMemcpyHtoDAsync = function(dstDevice: TCUdeviceptr; var srcHost;
+    ByteCount: Cardinal; hStream: PCUstream): TCUresult;stdcall;
+  TcuMemcpyDtoHAsync = function(var dstHost; srcDevice: TCUdeviceptr;
+    ByteCount: Cardinal; hStream: PCUstream): TCUresult;stdcall;
+  TcuMemcpyHtoAAsync = function(dstArray: PCUarray; dstIndex: Cardinal;
+    var pSrc; ByteCount: Cardinal; hStream: PCUstream): TCUresult;stdcall;
+  TcuMemcpyAtoHAsync = function(var dstHost; srcArray: PCUstream;
+    SrcIndex: Cardinal; ByteCount: Cardinal; hStream: PCUstream): TCUresult;stdcall;
+  TcuMemcpy2DAsync = function(var pCopy: TCUDA_MEMCPY2D; hStream: PCUstream): TCUresult;stdcall;
+  TcuMemcpy3DAsync = function(var pCopy: TCUDA_MEMCPY3D; hStream: PCUstream): TCUresult;stdcall;
+  TcuMemsetD8 = function(dstDevice: TCUdeviceptr; ub: Byte; N: Cardinal): TCUresult;stdcall;
+  TcuMemsetD16 = function(dstDevice: TCUdeviceptr; uw: Word; N: Cardinal): TCUresult;stdcall;
+  TcuMemsetD32 = function(dstDevice: TCUdeviceptr; ui: Cardinal; N: Cardinal): TCUresult;stdcall;
   TcuMemsetD2D8 = function(dstDevice: TCUdeviceptr; dstPitch: Cardinal;
-    ub: Byte; Width: Cardinal; Height: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    ub: Byte; Width: Cardinal; Height: Cardinal): TCUresult;stdcall;
   TcuMemsetD2D16 = function(dstDevice: TCUdeviceptr; dstPitch: Cardinal;
-    uw: Word; Width: Cardinal; Height: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    uw: Word; Width: Cardinal; Height: Cardinal): TCUresult;stdcall;
   TcuMemsetD2D32 = function(dstDevice: TCUdeviceptr; dstPitch: Cardinal;
-    ui: Cardinal; Width: Cardinal; Height: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    ui: Cardinal; Width: Cardinal; Height: Cardinal): TCUresult;stdcall;
   TcuFuncSetBlockShape = function(hfunc: PCUfunction; x: Integer; y: Integer;
-    z: Integer): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuFuncSetSharedSize = function(hfunc: PCUfunction; bytes: Cardinal)
-    : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    z: Integer): TCUresult;stdcall;
+  TcuFuncSetSharedSize = function(hfunc: PCUfunction; bytes: Cardinal): TCUresult;stdcall;
   TcuFuncGetAttribute = function(var pi: Integer; attrib: TCUfunction_attribute;
-    hfunc: PCUfunction): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    hfunc: PCUfunction): TCUresult;stdcall;
   TcuArrayCreate = function(var pHandle: PCUarray;
-    var pAllocateArray: TCUDA_ARRAY_DESCRIPTOR): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    var pAllocateArray: TCUDA_ARRAY_DESCRIPTOR): TCUresult;stdcall;
   TcuArrayGetDescriptor = function(var pArrayDescriptor: TCUDA_ARRAY_DESCRIPTOR;
-    hArray: PCUarray): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuArrayDestroy = function(hArray: PCUarray): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    hArray: PCUarray): TCUresult;stdcall;
+  TcuArrayDestroy = function(hArray: PCUarray): TCUresult;stdcall;
   TcuArray3DCreate = function(var pHandle: PCUarray;
-    var pAllocateArray: TCUDA_ARRAY3D_DESCRIPTOR): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    var pAllocateArray: TCUDA_ARRAY3D_DESCRIPTOR): TCUresult;stdcall;
   TcuArray3DGetDescriptor = function(var pArrayDescriptor
-    : TCUDA_ARRAY3D_DESCRIPTOR; hArray: PCUarray): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuTexRefCreate = function(var pTexRef: PCUtexref): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuTexRefDestroy = function(hTexRef: PCUtexref): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    : TCUDA_ARRAY3D_DESCRIPTOR; hArray: PCUarray): TCUresult;stdcall;
+  TcuTexRefCreate = function(var pTexRef: PCUtexref): TCUresult;stdcall;
+  TcuTexRefDestroy = function(hTexRef: PCUtexref): TCUresult;stdcall;
   TcuTexRefSetArray = function(hTexRef: PCUtexref; hArray: PCUarray;
-    Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    Flags: Cardinal): TCUresult;stdcall;
   TcuTexRefSetAddress = function(var ByteOffset: Cardinal; hTexRef: PCUtexref;
-    dptr: TCUdeviceptr; bytes: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    dptr: TCUdeviceptr; bytes: Cardinal): TCUresult;stdcall;
   TcuTexRefSetAddress2D = function(hTexRef: PCUtexref;
     var desc: TCUDA_ARRAY_DESCRIPTOR; dptr: TCUdeviceptr; Pitch: Cardinal)
-    : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    : TCUresult;stdcall;
   TcuTexRefSetFormat = function(hTexRef: PCUtexref; fmt: TCUarray_format;
-    NumPackedComponents: Integer): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    NumPackedComponents: Integer): TCUresult;stdcall;
   TcuTexRefSetAddressMode = function(hTexRef: PCUtexref; dim: Integer;
-    am: TCUaddress_mode): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    am: TCUaddress_mode): TCUresult;stdcall;
   TcuTexRefSetFilterMode = function(hTexRef: PCUtexref; fm: TCUfilter_mode)
-    : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuTexRefSetFlags = function(hTexRef: PCUtexref; Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuTexRefGetAddress = function(var pdptr: TCUdeviceptr; hTexRef: PCUtexref)
-    : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuTexRefGetArray = function(var phArray: PCUarray; hTexRef: PCUtexref)
-    : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    : TCUresult;stdcall;
+  TcuTexRefSetFlags = function(hTexRef: PCUtexref; Flags: Cardinal): TCUresult;stdcall;
+  TcuTexRefGetAddress = function(var pdptr: TCUdeviceptr; hTexRef: PCUtexref): TCUresult;stdcall;
+  TcuTexRefGetArray = function(var phArray: PCUarray; hTexRef: PCUtexref): TCUresult;stdcall;
   TcuTexRefGetAddressMode = function(var pam: TCUaddress_mode;
-    hTexRef: PCUtexref; dim: Integer): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuTexRefGetFilterMode = function(var pfm: TCUfilter_mode; hTexRef: PCUtexref)
-    : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    hTexRef: PCUtexref; dim: Integer): TCUresult;stdcall;
+  TcuTexRefGetFilterMode = function(var pfm: TCUfilter_mode; hTexRef: PCUtexref): TCUresult;stdcall;
   TcuTexRefGetFormat = function(var pFormat: TCUarray_format;
-    var pNumChannels: Integer; hTexRef: PCUtexref): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuTexRefGetFlags = function(var pFlags: Cardinal; hTexRef: PCUtexref)
-    : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuParamSetSize = function(hfunc: PCUfunction; numbytes: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    var pNumChannels: Integer; hTexRef: PCUtexref): TCUresult;stdcall;
+  TcuTexRefGetFlags = function(var pFlags: Cardinal; hTexRef: PCUtexref): TCUresult;stdcall;
+  TcuParamSetSize = function(hfunc: PCUfunction; numbytes: Cardinal): TCUresult;stdcall;
   TcuParamSeti = function(hfunc: PCUfunction; offset: Integer; value: Cardinal)
-    : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    : TCUresult;stdcall;
   TcuParamSetf = function(hfunc: PCUfunction; offset: Integer; value: Single)
-    : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    : TCUresult;stdcall;
   TcuParamSetv = function(hfunc: PCUfunction; offset: Integer; var ptr;
-    numbytes: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    numbytes: Cardinal): TCUresult;stdcall;
   TcuParamSetTexRef = function(hfunc: PCUfunction; texunit: Integer;
-    hTexRef: PCUtexref): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuLaunch = function(f: PCUfunction): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    hTexRef: PCUtexref): TCUresult;stdcall;
+  TcuLaunch = function(f: PCUfunction): TCUresult;stdcall;
   TcuLaunchGrid = function(f: PCUfunction; grid_width: Integer;
-    grid_height: Integer): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    grid_height: Integer): TCUresult;stdcall;
   TcuLaunchGridAsync = function(f: PCUfunction; grid_width: Integer;
-    grid_height: Integer; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuEventCreate = function(var phEvent: PCUevent; Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuEventRecord = function(hEvent: PCUevent; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuEventQuery = function(hEvent: PCUevent): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuEventSynchronize = function(hEvent: PCUevent): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuEventDestroy = function(hEvent: PCUevent): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    grid_height: Integer; hStream: PCUstream): TCUresult;stdcall;
+  TcuEventCreate = function(var phEvent: PCUevent; Flags: Cardinal): TCUresult;stdcall;
+  TcuEventRecord = function(hEvent: PCUevent; hStream: PCUstream): TCUresult;stdcall;
+  TcuEventQuery = function(hEvent: PCUevent): TCUresult;stdcall;
+  TcuEventSynchronize = function(hEvent: PCUevent): TCUresult;stdcall;
+  TcuEventDestroy = function(hEvent: PCUevent): TCUresult;stdcall;
   TcuEventElapsedTime = function(var pMilliseconds: Single; hStart: PCUevent;
-    hEnd: PCUevent): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuStreamCreate = function(var phStream: PCUstream; Flags: Cardinal)
-    : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuStreamQuery = function(hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuStreamSynchronize = function(hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuStreamDestroy = function(hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    hEnd: PCUevent): TCUresult;stdcall;
+  TcuStreamCreate = function(var phStream: PCUstream; Flags: Cardinal): TCUresult;stdcall;
+  TcuStreamQuery = function(hStream: PCUstream): TCUresult;stdcall;
+  TcuStreamSynchronize = function(hStream: PCUstream): TCUresult;stdcall;
+  TcuStreamDestroy = function(hStream: PCUstream): TCUresult;stdcall;
   TcuGLCtxCreate = function(var pctx: PCUcontext; Flags: Cardinal;
-    device: TCUdevice): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    device: TCUdevice): TCUresult;stdcall;
   TcuGraphicsGLRegisterBuffer = function(var pCudaResource: PCUgraphicsResource;
-    buffer: Cardinal; Flags: TCUgraphicsMapResourceFlags): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    buffer: Cardinal; Flags: TCUgraphicsMapResourceFlags): TCUresult;stdcall;
   TcuGraphicsGLRegisterImage = function(var pCudaResource: PCUgraphicsResource;
-    image, target: Cardinal; Flags: TCUgraphicsMapResourceFlags): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuWGLGetDevice = function(var pDevice: TCUdevice; hGpu: HGPUNV): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuGraphicsUnregisterResource = function(resource: PCUgraphicsResource)
-    : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    image, target: Cardinal; Flags: TCUgraphicsMapResourceFlags): TCUresult;stdcall;
+  TcuWGLGetDevice = function(var pDevice: TCUdevice; hGpu: HGPUNV): TCUresult;stdcall;
+  TcuGraphicsUnregisterResource = function(resource: PCUgraphicsResource): TCUresult;stdcall;
   TcuGraphicsSubResourceGetMappedArray = function(var pArray: PCUarray;
     resource: PCUgraphicsResource; arrayIndex: Cardinal; mipLevel: Cardinal)
-    : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    : TCUresult;stdcall;
   TcuGraphicsResourceGetMappedPointer = function(var pDevPtr: TCUdeviceptr;
-    out psize: Cardinal; resource: PCUgraphicsResource): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    out psize: Cardinal; resource: PCUgraphicsResource): TCUresult;stdcall;
   TcuGraphicsResourceSetMapFlags = function(resource: PCUgraphicsResource;
-    Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    Flags: Cardinal): TCUresult;stdcall;
   TcuGraphicsMapResources = function(count: Cardinal;
-    resources: PPCUgraphicsResource; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    resources: PPCUgraphicsResource; hStream: PCUstream): TCUresult;stdcall;
   TcuGraphicsUnmapResources = function(count: Cardinal;
-    resources: PPCUgraphicsResource; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuGLInit = procedure();{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuGLRegisterBufferObject = function(buffer: Cardinal): TCUresult;{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuGLMapBufferObject = function(var dptr: TCUdeviceptr; var size: Cardinal; buffer: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuGLUnmapBufferObject = function(buffer: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuGLUnregisterBufferObject = function(buffer: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
-  TcuGLSetBufferObjectMapFlags = function(buffer: Cardinal; Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    resources: PPCUgraphicsResource; hStream: PCUstream): TCUresult;stdcall;
+  TcuGLInit = procedure();stdcall;
+  TcuGLRegisterBufferObject = function(buffer: Cardinal): TCUresult;stdcall;
+  TcuGLMapBufferObject = function(var dptr: TCUdeviceptr; var size: Cardinal;
+    buffer: Cardinal): TCUresult;stdcall;
+  TcuGLUnmapBufferObject = function(buffer: Cardinal): TCUresult;stdcall;
+  TcuGLUnregisterBufferObject = function(buffer: Cardinal): TCUresult;stdcall;
+  TcuGLSetBufferObjectMapFlags = function(buffer: Cardinal; Flags: Cardinal)
+    : TCUresult;stdcall;
   TcuGLMapBufferObjectAsync = function(var dptr: TCUdeviceptr;
-    var size: Cardinal; buffer: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    var size: Cardinal; buffer: Cardinal; hStream: PCUstream): TCUresult;stdcall;
   TcuGLUnmapBufferObjectAsync = function(buffer: Cardinal; hStream: PCUstream)
-    : TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+    : TCUresult;stdcall;
 
 var
   cuInit: TcuInit;
@@ -978,6 +908,9 @@ function Get_CUDA_API_Error_String(AError: TCUresult): string;
 //==============================================================
 implementation
 //==============================================================
+
+resourcestring
+  cudasFuncRetErr = '%s return error: %s';
 
 const
   INVALID_MODULEHANDLE = 0;
@@ -1116,7 +1049,7 @@ const
   cuGLMapBufferObjectAsyncName = 'cuGLMapBufferObjectAsync';
   cuGLUnmapBufferObjectAsyncName = 'cuGLUnmapBufferObjectAsync';
 
-{$IFDEF CUDA_DEBUG_MODE}
+{$IFDEF USE_CUDA_DEBUG_MODE}
 
 var
   cuInit_: TcuInit;
@@ -1237,1145 +1170,1035 @@ var
   cuGLMapBufferObjectAsync_: TcuGLMapBufferObjectAsync;
   cuGLUnmapBufferObjectAsync_: TcuGLUnmapBufferObjectAsync;
 
-function cuInitShell(Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuInitShell(Flags: Cardinal): TCUresult;stdcall;
 begin
   Result := cuInit_(Flags);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuInitName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuInitName, Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuDriverGetVersionShell(out driverVersion: Integer): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuDriverGetVersionShell(out driverVersion: Integer): TCUresult;stdcall;
 begin
   Result := cuDriverGetVersion_(driverVersion);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuDriverGetVersionName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuDriverGetVersionName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuDeviceGetShell(var device: TCUdevice; ordinal: Integer): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuDeviceGetShell(var device: TCUdevice; ordinal: Integer): TCUresult;stdcall;
 begin
   Result := cuDeviceGet_(device, ordinal);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuDeviceGet_Name, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuDeviceGet_Name, Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuDeviceGetCountShell(var count: Integer): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuDeviceGetCountShell(var count: Integer): TCUresult;stdcall;
 begin
   Result := cuDeviceGetCount_(count);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuDeviceGetCountName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuDeviceGetCountName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuDeviceGetNameShell(name: PAnsiChar; len: Integer; dev: TCUdevice)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuDeviceGetName_(name, len, dev);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuDeviceGetNameName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuDeviceGetNameName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuDeviceComputeCapabilityShell(var major: Integer; var minor: Integer;
-  dev: TCUdevice): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  dev: TCUdevice): TCUresult;stdcall;
 begin
   Result := cuDeviceComputeCapability_(major, minor, dev);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuDeviceComputeCapabilityName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuDeviceComputeCapabilityName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuDeviceTotalMemShell(bytes: PSize_t; dev: TCUdevice): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuDeviceTotalMemShell(bytes: PSize_t; dev: TCUdevice): TCUresult;stdcall;
 begin
   Result := cuDeviceTotalMem_(bytes, dev);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuDeviceTotalMemName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuDeviceTotalMemName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuDeviceGetPropertiesShell(var prop: TCUdevprop; dev: TCUdevice)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+stdcall;
 begin
   Result := cuDeviceGetProperties_(prop, dev);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuDeviceGetPropertiesName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuDeviceGetPropertiesName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuDeviceGetAttributeShell(pi: PSize_t; attrib: TCUdevice_attribute;
-  dev: TCUdevice): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  dev: TCUdevice): TCUresult;stdcall;
 begin
   Result := cuDeviceGetAttribute_(pi, attrib, dev);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuDeviceGetAttributeName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuDeviceGetAttributeName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuCtxCreateShell(var pctx: PCUcontext; Flags: Cardinal; dev: TCUdevice)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuCtxCreate_(pctx, Flags, dev);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuCtxCreateName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuCtxCreateName, Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuCtxDestroyShell(ctx: PCUcontext): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuCtxDestroyShell(ctx: PCUcontext): TCUresult;stdcall;
 begin
   Result := cuCtxDestroy_(ctx);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuCtxDestroyName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuCtxDestroyName, Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuCtxAttachShell(var pctx: PCUcontext; Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuCtxAttachShell(var pctx: PCUcontext; Flags: Cardinal): TCUresult;stdcall;
 begin
   Result := cuCtxAttach_(pctx, Flags);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuCtxAttachName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuCtxAttachName, Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuCtxDetachShell(ctx: PCUcontext): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuCtxDetachShell(ctx: PCUcontext): TCUresult;stdcall;
 begin
   Result := cuCtxDetach_(ctx);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuCtxDetachName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuCtxDetachName, Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuCtxPushCurrentShell(ctx: PCUcontext): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuCtxPushCurrentShell(ctx: PCUcontext): TCUresult;stdcall;
 begin
   Result := cuCtxPushCurrent_(ctx);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuCtxPushCurrentName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuCtxPushCurrentName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuCtxPopCurrentShell(var pctx: PCUcontext): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuCtxPopCurrentShell(var pctx: PCUcontext): TCUresult;stdcall;
 begin
   Result := cuCtxPopCurrent_(pctx);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuCtxPopCurrentName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuCtxPopCurrentName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuCtxGetDeviceShell(var device: TCUdevice): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuCtxGetDeviceShell(var device: TCUdevice): TCUresult;stdcall;
 begin
   Result := cuCtxGetDevice_(device);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuCtxGetDeviceName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuCtxGetDeviceName, Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuCtxSynchronizeShell: TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuCtxSynchronizeShell: TCUresult;stdcall;
 begin
   Result := cuCtxSynchronize_;
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuCtxSynchronizeName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuCtxSynchronizeName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuModuleLoadShell(var module: PCUmodule; const fname: PAnsiChar)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuModuleLoad_(module, fname);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuModuleLoadName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuModuleLoadName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuModuleLoadDataShell(var module: PCUmodule; const image: PAnsiChar)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuModuleLoadData_(module, image);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuModuleLoadDataName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuModuleLoadDataName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuModuleLoadDataExShell(var module: PCUmodule; var image;
   numOptions: Cardinal; var options: TCUjit_option; var optionValues)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuModuleLoadDataEx_(module, image, numOptions, options,
     optionValues);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuModuleLoadDataExName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuModuleLoadDataExName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuModuleLoadFatBinaryShell(var module: PCUmodule; var fatCubin)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuModuleLoadFatBinary_(module, fatCubin);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuModuleLoadFatBinaryName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuModuleLoadFatBinaryName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuModuleUnloadShell(hmod: PCUmodule): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuModuleUnloadShell(hmod: PCUmodule): TCUresult;stdcall;
 begin
   Result := cuModuleUnload_(hmod);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuModuleUnloadName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuModuleUnloadName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuModuleGetFunctionShell(out hfunc: PCUfunction; hmod: PCUmodule;
-  const name: PAnsiChar): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  const name: PAnsiChar): TCUresult;stdcall;
 begin
   Result := cuModuleGetFunction_(hfunc, hmod, name);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuModuleGetFunctionName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuModuleGetFunctionName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuModuleGetGlobalShell(out dptr: TCUdeviceptr; var bytes: Cardinal;
-  hmod: PCUmodule; const name: PAnsiChar): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  hmod: PCUmodule; const name: PAnsiChar): TCUresult;stdcall;
 begin
   Result := cuModuleGetGlobal_(dptr, bytes, hmod, name);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuModuleGetGlobalName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuModuleGetGlobalName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuModuleGetTexRefShell(out pTexRef: PCUtexref; hmod: PCUmodule;
-  const name: PAnsiChar): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  const name: PAnsiChar): TCUresult;stdcall;
 begin
   Result := cuModuleGetTexRef_(pTexRef, hmod, name);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuModuleGetTexRefName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuModuleGetTexRefName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuMemGetInfoShell(var free: Cardinal; var total: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuMemGetInfoShell(var free: Cardinal; var total: Cardinal): TCUresult;stdcall;
 begin
   Result := cuMemGetInfo_(free, total);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemGetInfoName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemGetInfoName, Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuMemAllocShell(var dptr: TCUdeviceptr; bytesize: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuMemAllocShell(var dptr: TCUdeviceptr; bytesize: Cardinal): TCUresult;stdcall;
 begin
   Result := cuMemAlloc_(dptr, bytesize);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemAllocName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemAllocName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemAllocPitchShell(var dptr: TCUdeviceptr; var pPitch: Cardinal;
   WidthInBytes: Cardinal; Height: Cardinal; ElementSizeBytes: Cardinal)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuMemAllocPitch_(dptr, pPitch, WidthInBytes, Height,
     ElementSizeBytes);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuMemAllocPitchName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuMemAllocPitchName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuMemFreeShell(dptr: TCUdeviceptr): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuMemFreeShell(dptr: TCUdeviceptr): TCUresult;stdcall;
 begin
   Result := cuMemFree_(dptr);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemFreeName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemFreeName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemGetAddressRangeShell(var pbase: TCUdeviceptr; var psize: Cardinal;
-  dptr: TCUdeviceptr): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  dptr: TCUdeviceptr): TCUresult;stdcall;
 begin
   Result := cuMemGetAddressRange_(pbase, psize, dptr);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuMemGetAddressRangeName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuMemGetAddressRangeName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuMemAllocHostShell(var pp; bytesize: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuMemAllocHostShell(var pp; bytesize: Cardinal): TCUresult;stdcall;
 begin
   Result := cuMemAllocHost_(pp, bytesize);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemAllocHostName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemAllocHostName, Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuMemFreeHostShell(p: Pointer): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuMemFreeHostShell(p: Pointer): TCUresult;stdcall;
 begin
   Result := cuMemFreeHost_(p);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemFreeHostName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemFreeHostName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemHostAllocShell(var pp: Pointer; bytesize: Cardinal; Flags: Cardinal)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuMemHostAlloc_(pp, bytesize, Flags);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemHostAllocName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemHostAllocName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemHostGetDevicePointerShell(var pdptr: TCUdeviceptr; p: Pointer;
-  Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  Flags: Cardinal): TCUresult;stdcall;
 begin
   Result := cuMemHostGetDevicePointer_(pdptr, p, Flags);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuMemHostGetDevicePointerName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuMemHostGetDevicePointerName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuMemHostGetFlagsShell(var pFlags: Cardinal; var p): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuMemHostGetFlagsShell(var pFlags: Cardinal; var p): TCUresult;stdcall;
 begin
   Result := cuMemHostGetFlags_(pFlags, p);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuMemHostGetFlagsName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuMemHostGetFlagsName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemcpyHtoDShell(dstDevice: TCUdeviceptr; const srcHost: Pointer;
-  ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  ByteCount: Cardinal): TCUresult;stdcall;
 begin
   Result := cuMemcpyHtoD_(dstDevice, srcHost, ByteCount);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemcpyHtoDName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemcpyHtoDName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemcpyDtoHShell(const dstHost: Pointer; srcDevice: TCUdeviceptr;
-  ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  ByteCount: Cardinal): TCUresult;stdcall;
 begin
   Result := cuMemcpyDtoH_(dstHost, srcDevice, ByteCount);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemcpyDtoHName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemcpyDtoHName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemcpyDtoDShell(dstDevice: TCUdeviceptr; srcDevice: TCUdeviceptr;
-  ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  ByteCount: Cardinal): TCUresult;stdcall;
 begin
   Result := cuMemcpyDtoD_(dstDevice, srcDevice, ByteCount);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemcpyDtoDName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemcpyDtoDName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemcpyDtoDAsyncShell(dstDevice: TCUdeviceptr;
-  srcDevice: TCUdeviceptr; ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  srcDevice: TCUdeviceptr; ByteCount: Cardinal; hStream: PCUstream): TCUresult;stdcall;
 begin
   Result := cuMemcpyDtoDAsync_(dstDevice, srcDevice, ByteCount, hStream);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuMemcpyDtoDAsyncName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuMemcpyDtoDAsyncName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemcpyDtoAShell(dstArray: PCUarray; dstIndex: Cardinal;
-  srcDevice: TCUdeviceptr; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  srcDevice: TCUdeviceptr; ByteCount: Cardinal): TCUresult;stdcall;
 begin
   Result := cuMemcpyDtoA_(dstArray, dstIndex, srcDevice, ByteCount);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemcpyDtoAName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemcpyDtoAName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemcpyAtoDShell(dstDevice: TCUdeviceptr; hSrc: PCUarray;
-  SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;stdcall;
 begin
   Result := cuMemcpyAtoD_(dstDevice, hSrc, SrcIndex, ByteCount);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemcpyAtoDName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemcpyAtoDName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemcpyHtoAShell(dstArray: PCUarray; dstIndex: Cardinal;
-  pSrc: Pointer; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  pSrc: Pointer; ByteCount: Cardinal): TCUresult;stdcall;
 begin
   Result := cuMemcpyHtoA_(dstArray, dstIndex, pSrc, ByteCount);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemcpyHtoAName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemcpyHtoAName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemcpyAtoHShell(dstHost: Pointer; srcArray: PCUarray;
-  SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;stdcall;
 begin
   Result := cuMemcpyAtoH_(dstHost, srcArray, SrcIndex, ByteCount);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemcpyAtoHName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemcpyAtoHName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemcpyAtoAShell(dstArray: PCUarray; dstIndex: Cardinal;
-  srcArray: PCUarray; SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  srcArray: PCUarray; SrcIndex: Cardinal; ByteCount: Cardinal): TCUresult;stdcall;
 begin
   Result := cuMemcpyAtoA_(dstArray, dstIndex, srcArray, SrcIndex, ByteCount);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemcpyAtoAName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemcpyAtoAName, Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuMemcpy2DShell(const pCopy: PCUDA_MEMCPY2D): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuMemcpy2DShell(const pCopy: PCUDA_MEMCPY2D): TCUresult;stdcall;
 begin
   Result := cuMemcpy2D_(pCopy);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemcpy2DName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemcpy2DName, Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuMemcpy2DUnalignedShell(var pCopy: TCUDA_MEMCPY2D): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuMemcpy2DUnalignedShell(var pCopy: TCUDA_MEMCPY2D): TCUresult;stdcall;
 begin
   Result := cuMemcpy2DUnaligned_(pCopy);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuMemcpy2DUnalignedName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuMemcpy2DUnalignedName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuMemcpy3DShell(var pCopy: TCUDA_MEMCPY3D): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuMemcpy3DShell(var pCopy: TCUDA_MEMCPY3D): TCUresult;stdcall;
 begin
   Result := cuMemcpy3D_(pCopy);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemcpy3DName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemcpy3DName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemcpyHtoDAsyncShell(dstDevice: TCUdeviceptr; var srcHost;
-  ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  ByteCount: Cardinal; hStream: PCUstream): TCUresult;stdcall;
 begin
   Result := cuMemcpyHtoDAsync_(dstDevice, srcHost, ByteCount, hStream);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuMemcpyHtoDAsyncName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuMemcpyHtoDAsyncName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemcpyDtoHAsyncShell(var dstHost; srcDevice: TCUdeviceptr;
-  ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  ByteCount: Cardinal; hStream: PCUstream): TCUresult;stdcall;
 begin
   Result := cuMemcpyDtoHAsync_(dstHost, srcDevice, ByteCount, hStream);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuMemcpyDtoHAsyncName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuMemcpyDtoHAsyncName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemcpyHtoAAsyncShell(dstArray: PCUarray; dstIndex: Cardinal;
-  var pSrc; ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  var pSrc; ByteCount: Cardinal; hStream: PCUstream): TCUresult;stdcall;
 begin
   Result := cuMemcpyHtoAAsync_(dstArray, dstIndex, pSrc, ByteCount, hStream);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuMemcpyHtoAAsyncName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuMemcpyHtoAAsyncName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemcpyAtoHAsyncShell(var dstHost; srcArray: PCUstream;
-  SrcIndex: Cardinal; ByteCount: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  SrcIndex: Cardinal; ByteCount: Cardinal; hStream: PCUstream): TCUresult;stdcall;
 begin
   Result := cuMemcpyAtoHAsync_(dstHost, srcArray, SrcIndex, ByteCount, hStream);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuMemcpyAtoHAsyncName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuMemcpyAtoHAsyncName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemcpy2DAsyncShell(var pCopy: TCUDA_MEMCPY2D; hStream: PCUstream)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuMemcpy2DAsync_(pCopy, hStream);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuMemcpy2DAsyncName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuMemcpy2DAsyncName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemcpy3DAsyncShell(var pCopy: TCUDA_MEMCPY3D; hStream: PCUstream)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuMemcpy3DAsync_(pCopy, hStream);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuMemcpy3DAsyncName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuMemcpy3DAsyncName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemsetD8Shell(dstDevice: TCUdeviceptr; ub: Byte; N: Cardinal)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuMemsetD8_(dstDevice, ub, N);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemsetD8Name, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemsetD8Name, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemsetD16Shell(dstDevice: TCUdeviceptr; uw: Word; N: Cardinal)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuMemsetD16_(dstDevice, uw, N);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemsetD16Name, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemsetD16Name, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemsetD32Shell(dstDevice: TCUdeviceptr; ui: Cardinal; N: Cardinal)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuMemsetD32_(dstDevice, ui, N);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemsetD32Name, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemsetD32Name, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemsetD2D8Shell(dstDevice: TCUdeviceptr; dstPitch: Cardinal;
-  ub: Byte; Width: Cardinal; Height: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  ub: Byte; Width: Cardinal; Height: Cardinal): TCUresult;stdcall;
 begin
   Result := cuMemsetD2D8_(dstDevice, dstPitch, ub, Width, Height);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemsetD2D8Name, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemsetD2D8Name, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemsetD2D16Shell(dstDevice: TCUdeviceptr; dstPitch: Cardinal;
-  uw: Word; Width: Cardinal; Height: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  uw: Word; Width: Cardinal; Height: Cardinal): TCUresult;stdcall;
 begin
   Result := cuMemsetD2D16_(dstDevice, dstPitch, uw, Width, Height);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemsetD2D16Name, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemsetD2D16Name, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuMemsetD2D32Shell(dstDevice: TCUdeviceptr; dstPitch: Cardinal;
-  ui: Cardinal; Width: Cardinal; Height: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  ui: Cardinal; Width: Cardinal; Height: Cardinal): TCUresult;stdcall;
 begin
   Result := cuMemsetD2D32_(dstDevice, dstPitch, ui, Width, Height);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuMemsetD2D32Name, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuMemsetD2D32Name, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuFuncSetBlockShapeShell(hfunc: PCUfunction; x: Integer; y: Integer;
-  z: Integer): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  z: Integer): TCUresult;stdcall;
 begin
   Result := cuFuncSetBlockShape_(hfunc, x, y, z);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuFuncSetBlockShapeName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuFuncSetBlockShapeName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuFuncSetSharedSizeShell(hfunc: PCUfunction; bytes: Cardinal)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+stdcall;
 begin
   Result := cuFuncSetSharedSize_(hfunc, bytes);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuFuncSetSharedSizeName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuFuncSetSharedSizeName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuFuncGetAttributeShell(var pi: Integer; attrib: TCUfunction_attribute;
-  hfunc: PCUfunction): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  hfunc: PCUfunction): TCUresult;stdcall;
 begin
   Result := cuFuncGetAttribute_(pi, attrib, hfunc);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuFuncGetAttributeName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuFuncGetAttributeName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuArrayCreateShell(var pHandle: PCUarray;
-  var pAllocateArray: TCUDA_ARRAY_DESCRIPTOR): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  var pAllocateArray: TCUDA_ARRAY_DESCRIPTOR): TCUresult;stdcall;
 begin
   Result := cuArrayCreate_(pHandle, pAllocateArray);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuArrayCreateName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuArrayCreateName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuArrayGetDescriptorShell(var pArrayDescriptor: TCUDA_ARRAY_DESCRIPTOR;
-  hArray: PCUarray): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  hArray: PCUarray): TCUresult;stdcall;
 begin
   Result := cuArrayGetDescriptor_(pArrayDescriptor, hArray);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuArrayGetDescriptorName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuArrayGetDescriptorName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuArrayDestroyShell(hArray: PCUarray): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuArrayDestroyShell(hArray: PCUarray): TCUresult;stdcall;
 begin
   Result := cuArrayDestroy_(hArray);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuArrayDestroyName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuArrayDestroyName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuArray3DCreateShell(var pHandle: PCUarray;
-  var pAllocateArray: TCUDA_ARRAY3D_DESCRIPTOR): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  var pAllocateArray: TCUDA_ARRAY3D_DESCRIPTOR): TCUresult;stdcall;
 begin
   Result := cuArray3DCreate_(pHandle, pAllocateArray);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuArray3DCreateName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuArray3DCreateName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuArray3DGetDescriptorShell(var pArrayDescriptor
-  : TCUDA_ARRAY3D_DESCRIPTOR; hArray: PCUarray): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUDA_ARRAY3D_DESCRIPTOR; hArray: PCUarray): TCUresult;stdcall;
 begin
   Result := cuArray3DGetDescriptor_(pArrayDescriptor, hArray);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuArray3DGetDescriptorName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuArray3DGetDescriptorName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuTexRefCreateShell(var pTexRef: PCUtexref): TCUresult;
-{$IFDEF MSWINDOWS}stdcall;{$ELSE}cdecl;{$ENDIF}
+function cuTexRefCreateShell(var pTexRef: PCUtexref): TCUresult;stdcall;
 begin
   Result := cuTexRefCreate_(pTexRef);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuTexRefCreateName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuTexRefCreateName, Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuTexRefDestroyShell(hTexRef: PCUtexref): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuTexRefDestroyShell(hTexRef: PCUtexref): TCUresult;stdcall;
 begin
   Result := cuTexRefDestroy_(hTexRef);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuTexRefDestroyName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuTexRefDestroyName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuTexRefSetArrayShell(hTexRef: PCUtexref; hArray: PCUarray;
-  Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  Flags: Cardinal): TCUresult;stdcall;
 begin
   Result := cuTexRefSetArray_(hTexRef, hArray, Flags);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuTexRefSetArrayName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuTexRefSetArrayName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuTexRefSetAddressShell(var ByteOffset: Cardinal; hTexRef: PCUtexref;
-  dptr: TCUdeviceptr; bytes: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  dptr: TCUdeviceptr; bytes: Cardinal): TCUresult;stdcall;
 begin
   Result := cuTexRefSetAddress_(ByteOffset, hTexRef, dptr, bytes);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuTexRefSetAddressName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuTexRefSetAddressName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuTexRefSetAddress2DShell(hTexRef: PCUtexref;
   var desc: TCUDA_ARRAY_DESCRIPTOR; dptr: TCUdeviceptr; Pitch: Cardinal)
   : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+stdcall;
 begin
   Result := cuTexRefSetAddress2D_(hTexRef, desc, dptr, Pitch);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuTexRefSetAddress2DName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuTexRefSetAddress2DName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuTexRefSetFormatShell(hTexRef: PCUtexref; fmt: TCUarray_format;
-  NumPackedComponents: Integer): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  NumPackedComponents: Integer): TCUresult;stdcall;
 begin
   Result := cuTexRefSetFormat_(hTexRef, fmt, NumPackedComponents);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuTexRefSetFormatName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuTexRefSetFormatName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuTexRefSetAddressModeShell(hTexRef: PCUtexref; dim: Integer;
-  am: TCUaddress_mode): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  am: TCUaddress_mode): TCUresult;stdcall;
 begin
   Result := cuTexRefSetAddressMode_(hTexRef, dim, am);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuTexRefSetAddressModeName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuTexRefSetAddressModeName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuTexRefSetFilterModeShell(hTexRef: PCUtexref; fm: TCUfilter_mode)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuTexRefSetFilterMode_(hTexRef, fm);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuTexRefSetFilterModeName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuTexRefSetFilterModeName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuTexRefSetFlagsShell(hTexRef: PCUtexref; Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}begin
+function cuTexRefSetFlagsShell(hTexRef: PCUtexref; Flags: Cardinal): TCUresult;stdcall;
+begin
   Result := cuTexRefSetFlags_(hTexRef, Flags);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuTexRefSetFlagsName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuTexRefSetFlagsName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuTexRefGetAddressShell(var pdptr: TCUdeviceptr; hTexRef: PCUtexref)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuTexRefGetAddress_(pdptr, hTexRef);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuTexRefGetAddressName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuTexRefGetAddressName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuTexRefGetArrayShell(var phArray: PCUarray; hTexRef: PCUtexref)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuTexRefGetArray_(phArray, hTexRef);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuTexRefGetArrayName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuTexRefGetArrayName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuTexRefGetAddressModeShell(var pam: TCUaddress_mode;
-  hTexRef: PCUtexref; dim: Integer): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  hTexRef: PCUtexref; dim: Integer): TCUresult;stdcall;
 begin
   Result := cuTexRefGetAddressMode_(pam, hTexRef, dim);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuTexRefGetAddressModeName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuTexRefGetAddressModeName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuTexRefGetFilterModeShell(var pfm: TCUfilter_mode; hTexRef: PCUtexref)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuTexRefGetFilterMode_(pfm, hTexRef);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuTexRefGetFilterModeName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuTexRefGetFilterModeName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuTexRefGetFormatShell(var pFormat: TCUarray_format;
-  var pNumChannels: Integer; hTexRef: PCUtexref): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  var pNumChannels: Integer; hTexRef: PCUtexref): TCUresult;stdcall;
 begin
   Result := cuTexRefGetFormat_(pFormat, pNumChannels, hTexRef);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuTexRefGetFormatName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuTexRefGetFormatName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuTexRefGetFlagsShell(var pFlags: Cardinal; hTexRef: PCUtexref)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuTexRefGetFlags_(pFlags, hTexRef);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuTexRefGetFlagsName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuTexRefGetFlagsName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuParamSetSizeShell(hfunc: PCUfunction; numbytes: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuParamSetSizeShell(hfunc: PCUfunction; numbytes: Cardinal): TCUresult;stdcall;
 begin
   Result := cuParamSetSize_(hfunc, numbytes);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuParamSetSizeName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuParamSetSizeName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuParamSetiShell(hfunc: PCUfunction; offset: Integer; value: Cardinal)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuParamSeti_(hfunc, offset, value);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuParamSetiName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuParamSetiName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuParamSetfShell(hfunc: PCUfunction; offset: Integer; value: Single)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuParamSetf_(hfunc, offset, value);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuParamSetfName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuParamSetfName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuParamSetvShell(hfunc: PCUfunction; offset: Integer; var ptr;
-  numbytes: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  numbytes: Cardinal): TCUresult;stdcall;
 begin
   Result := cuParamSetv_(hfunc, offset, ptr, numbytes);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuParamSetvName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuParamSetvName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuParamSetTexRefShell(hfunc: PCUfunction; texunit: Integer;
-  hTexRef: PCUtexref): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  hTexRef: PCUtexref): TCUresult;stdcall;
 begin
   Result := cuParamSetTexRef_(hfunc, texunit, hTexRef);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuParamSetTexRefName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuParamSetTexRefName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuLaunchShell(f: PCUfunction): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuLaunchShell(f: PCUfunction): TCUresult;stdcall;
 begin
   Result := cuLaunch_(f);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuLaunchName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuLaunchName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuLaunchGridShell(f: PCUfunction; grid_width: Integer;
-  grid_height: Integer): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  grid_height: Integer): TCUresult;stdcall;
 begin
   Result := cuLaunchGrid_(f, grid_width, grid_height);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuLaunchGridName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuLaunchGridName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuLaunchGridAsyncShell(f: PCUfunction; grid_width: Integer;
-  grid_height: Integer; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  grid_height: Integer; hStream: PCUstream): TCUresult;stdcall;
 begin
   Result := cuLaunchGridAsync_(f, grid_width, grid_height, hStream);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuLaunchGridAsyncName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuLaunchGridAsyncName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuEventCreateShell(var phEvent: PCUevent; Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuEventCreateShell(var phEvent: PCUevent; Flags: Cardinal): TCUresult;stdcall;
 begin
   Result := cuEventCreate_(phEvent, Flags);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuEventCreateName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuEventCreateName, Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuEventRecordShell(hEvent: PCUevent; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuEventRecordShell(hEvent: PCUevent; hStream: PCUstream): TCUresult;stdcall;
 begin
   Result := cuEventRecord_(hEvent, hStream);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuEventRecordName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuEventRecordName, Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuEventQueryShell(hEvent: PCUevent): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuEventQueryShell(hEvent: PCUevent): TCUresult;stdcall;
 begin
   Result := cuEventQuery_(hEvent);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuEventQueryName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuEventQueryName, Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuEventSynchronizeShell(hEvent: PCUevent): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuEventSynchronizeShell(hEvent: PCUevent): TCUresult;stdcall;
 begin
   Result := cuEventSynchronize_(hEvent);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuEventSynchronizeName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuEventSynchronizeName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuEventDestroyShell(hEvent: PCUevent): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuEventDestroyShell(hEvent: PCUevent): TCUresult;stdcall;
 begin
   Result := cuEventDestroy_(hEvent);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuEventDestroyName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuEventDestroyName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuEventElapsedTimeShell(var pMilliseconds: Single; hStart: PCUevent;
-  hEnd: PCUevent): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  hEnd: PCUevent): TCUresult;stdcall;
 begin
   Result := cuEventElapsedTime_(pMilliseconds, hStart, hEnd);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuEventElapsedTimeName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuEventElapsedTimeName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuStreamCreateShell(var phStream: PCUstream; Flags: Cardinal)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuStreamCreate_(phStream, Flags);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuStreamCreateName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuStreamCreateName, Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuStreamQueryShell(hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuStreamQueryShell(hStream: PCUstream): TCUresult;stdcall;
 begin
   Result := cuStreamQuery_(hStream);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuStreamQueryName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuStreamQueryName, Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuStreamSynchronizeShell(hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuStreamSynchronizeShell(hStream: PCUstream): TCUresult;stdcall;
 begin
   Result := cuStreamSynchronize_(hStream);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuStreamSynchronizeName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuStreamSynchronizeName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuStreamDestroyShell(hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+stdcall;
 begin
   Result := cuStreamDestroy_(hStream);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuStreamDestroyName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuStreamDestroyName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuGLCtxCreateShell(var pctx: PCUcontext; Flags: Cardinal;
   device: TCUdevice): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+stdcall;
 begin
   Result := cuGLCtxCreate_(pctx, Flags, device);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuGLCtxCreateName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuGLCtxCreateName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuGraphicsGLRegisterBufferShell(var pCudaResource: PCUgraphicsResource;
   buffer: Cardinal; Flags: TCUgraphicsMapResourceFlags): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+stdcall;
 begin
   Result := cuGraphicsGLRegisterBuffer_(pCudaResource, buffer, Flags);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuGraphicsGLRegisterBufferName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuGraphicsGLRegisterBufferName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuGraphicsGLRegisterImageShell(var pCudaResource: PCUgraphicsResource;
-  image, target: Cardinal; Flags: TCUgraphicsMapResourceFlags): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  image, target: Cardinal; Flags: TCUgraphicsMapResourceFlags): TCUresult;stdcall;
 begin
   Result := cuGraphicsGLRegisterImage_(pCudaResource, image, target, Flags);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuGraphicsGLRegisterImageName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuGraphicsGLRegisterImageName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuWGLGetDeviceShell(var pDevice: TCUdevice; hGpu: HGPUNV): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuWGLGetDeviceShell(var pDevice: TCUdevice; hGpu: HGPUNV): TCUresult;stdcall;
 begin
   Result := cuWGLGetDevice_(pDevice, hGpu);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
-      [cuWGLGetDeviceName, Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
+      [cuWGLGetDeviceName, Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuGraphicsUnregisterResourceShell(resource: PCUgraphicsResource)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuGraphicsUnregisterResource_(resource);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuGraphicsUnregisterResourceName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuGraphicsUnregisterResourceName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuGraphicsSubResourceGetMappedArrayShell(var pArray: PCUarray;
   resource: PCUgraphicsResource; arrayIndex: Cardinal; mipLevel: Cardinal)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuGraphicsSubResourceGetMappedArray_(pArray, resource, arrayIndex,
     mipLevel);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
       [cuGraphicsSubResourceGetMappedArrayName,
-      Get_CUDA_API_Error_String(Result)]))
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuGraphicsResourceGetMappedPointerShell(var pDevPtr: TCUdeviceptr;
-  out psize: Cardinal; resource: PCUgraphicsResource): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  out psize: Cardinal; resource: PCUgraphicsResource): TCUresult;stdcall;
 begin
   Result := cuGraphicsResourceGetMappedPointer_(pDevPtr, psize, resource);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr,
+    GLSLogger.LogErrorFmt(cudasFuncRetErr,
       [cuGraphicsResourceGetMappedPointerName,
-      Get_CUDA_API_Error_String(Result)]))
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuGraphicsResourceSetMapFlagsShell(resource: PCUgraphicsResource;
-  Flags: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  Flags: Cardinal): TCUresult;stdcall;
 begin
   Result := cuGraphicsResourceSetMapFlags_(resource, Flags);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuGraphicsResourceSetMapFlagsName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuGraphicsResourceSetMapFlagsName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuGraphicsMapResourcesShell(count: Cardinal;
-  resources: PPCUgraphicsResource; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  resources: PPCUgraphicsResource; hStream: PCUstream): TCUresult;stdcall;
 begin
   Result := cuGraphicsMapResources_(count, resources, hStream);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuGraphicsMapResourcesName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuGraphicsMapResourcesName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuGraphicsUnmapResourcesShell(count: Cardinal;
-  resources: PPCUgraphicsResource; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  resources: PPCUgraphicsResource; hStream: PCUstream): TCUresult;stdcall;
 begin
   Result := cuGraphicsUnmapResources_(count, resources, hStream);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuGraphicsUnmapResourcesName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuGraphicsUnmapResourcesName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuGLRegisterBufferObjectShell(buffer: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuGLRegisterBufferObjectShell(buffer: Cardinal): TCUresult;stdcall;
 begin
   Result := cuGLRegisterBufferObject_(buffer);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuGLRegisterBufferObjectName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuGLRegisterBufferObjectName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuGLMapBufferObjectShell(var dptr: TCUdeviceptr; var size: Cardinal;
-  buffer: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  buffer: Cardinal): TCUresult;stdcall;
 begin
   Result := cuGLMapBufferObject_(dptr, size, buffer);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuGLMapBufferObjectName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuGLMapBufferObjectName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuGLUnmapBufferObjectShell(buffer: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuGLUnmapBufferObjectShell(buffer: Cardinal): TCUresult;stdcall;
 begin
   Result := cuGLUnmapBufferObject_(buffer);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuGLUnmapBufferObjectName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuGLUnmapBufferObjectName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-function cuGLUnregisterBufferObjectShell(buffer: Cardinal): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+function cuGLUnregisterBufferObjectShell(buffer: Cardinal): TCUresult;stdcall;
 begin
   Result := cuGLUnregisterBufferObject_(buffer);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuGLUnregisterBufferObjectName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuGLUnregisterBufferObjectName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuGLSetBufferObjectMapFlagsShell(buffer: Cardinal; Flags: Cardinal)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuGLSetBufferObjectMapFlags_(buffer, Flags);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuGLSetBufferObjectMapFlagsName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuGLSetBufferObjectMapFlagsName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuGLMapBufferObjectAsyncShell(var dptr: TCUdeviceptr;
-  var size: Cardinal; buffer: Cardinal; hStream: PCUstream): TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  var size: Cardinal; buffer: Cardinal; hStream: PCUstream): TCUresult;stdcall;
 begin
   Result := cuGLMapBufferObjectAsync_(dptr, size, buffer, hStream);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuGLMapBufferObjectAsyncName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuGLMapBufferObjectAsyncName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
 function cuGLUnmapBufferObjectAsyncShell(buffer: Cardinal; hStream: PCUstream)
-  : TCUresult;
-{$IFDEF MSWINDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
+  : TCUresult;stdcall;
 begin
   Result := cuGLUnmapBufferObjectAsync_(buffer, hStream);
   if Result <> CUDA_SUCCESS then
-    ShowMessage(Format(strFuncRetErr, [cuGLUnmapBufferObjectAsyncName,
-      Get_CUDA_API_Error_String(Result)]))
+    GLSLogger.LogErrorFmt(cudasFuncRetErr, [cuGLUnmapBufferObjectAsyncName,
+      Get_CUDA_API_Error_String(Result)])
 end;
 
-{$ENDIF CUDA_DEBUG_MODE}
+{$ENDIF GLS_CUDA_DEBUG_MODE}
 
 function GetProcAddressCUDA(ProcName: PAnsiChar): Pointer;
 var
@@ -2416,16 +2239,15 @@ begin
 
   if CUDAHandle = INVALID_MODULEHANDLE then
     Exit;
-	
-{$IFNDEF CUDA_DEBUG_MODE}
+
+{$IFNDEF USE_CUDA_DEBUG_MODE}
 
   cuInit := GetProcAddressCUDA(cuInitName);
   cuDriverGetVersion := GetProcAddressCUDA(cuDriverGetVersionName);
   cuDeviceGet := GetProcAddressCUDA(cuDeviceGet_Name);
   cuDeviceGetCount := GetProcAddressCUDA(cuDeviceGetCountName);
   cuDeviceGetName := GetProcAddressCUDA(cuDeviceGetNameName);
-  cuDeviceComputeCapability := GetProcAddressCUDA
-    (cuDeviceComputeCapabilityName);
+  cuDeviceComputeCapability := GetProcAddressCUDA(cuDeviceComputeCapabilityName);
   cuDeviceTotalMem := GetProcAddressCUDA(cuDeviceTotalMemName);
   cuDeviceGetProperties := GetProcAddressCUDA(cuDeviceGetPropertiesName);
   cuDeviceGetAttribute := GetProcAddressCUDA(cuDeviceGetAttributeName);
@@ -2453,8 +2275,7 @@ begin
   cuMemAllocHost := GetProcAddressCUDA(cuMemAllocHostName);
   cuMemFreeHost := GetProcAddressCUDA(cuMemFreeHostName);
   cuMemHostAlloc := GetProcAddressCUDA(cuMemHostAllocName);
-  cuMemHostGetDevicePointer := GetProcAddressCUDA
-    (cuMemHostGetDevicePointerName);
+  cuMemHostGetDevicePointer := GetProcAddressCUDA(cuMemHostGetDevicePointerName);
   cuMemHostGetFlags := GetProcAddressCUDA(cuMemHostGetFlagsName);
   cuMemcpyHtoD := GetProcAddressCUDA(cuMemcpyHtoDName);
   cuMemcpyDtoH := GetProcAddressCUDA(cuMemcpyDtoHName);
@@ -2522,32 +2343,23 @@ begin
   cuStreamSynchronize := GetProcAddressCUDA(cuStreamSynchronizeName);
   cuStreamDestroy := GetProcAddressCUDA(cuStreamDestroyName);
   cuGLCtxCreate := GetProcAddressCUDA(cuGLCtxCreateName);
-  cuGraphicsGLRegisterBuffer := GetProcAddressCUDA
-    (cuGraphicsGLRegisterBufferName);
-  cuGraphicsGLRegisterImage := GetProcAddressCUDA
-    (cuGraphicsGLRegisterImageName);
+  cuGraphicsGLRegisterBuffer := GetProcAddressCUDA(cuGraphicsGLRegisterBufferName);
+  cuGraphicsGLRegisterImage := GetProcAddressCUDA(cuGraphicsGLRegisterImageName);
   cuWGLGetDevice := GetProcAddressCUDA(cuWGLGetDeviceName);
-  cuGraphicsUnregisterResource :=
-    GetProcAddressCUDA(cuGraphicsUnregisterResourceName);
-  cuGraphicsSubResourceGetMappedArray :=
-    GetProcAddressCUDA(cuGraphicsSubResourceGetMappedArrayName);
-  cuGraphicsResourceGetMappedPointer :=
-    GetProcAddressCUDA(cuGraphicsResourceGetMappedPointerName);
-  cuGraphicsResourceSetMapFlags :=
-    GetProcAddressCUDA(cuGraphicsResourceSetMapFlagsName);
+  cuGraphicsUnregisterResource := GetProcAddressCUDA(cuGraphicsUnregisterResourceName);
+  cuGraphicsSubResourceGetMappedArray := GetProcAddressCUDA(cuGraphicsSubResourceGetMappedArrayName);
+  cuGraphicsResourceGetMappedPointer := GetProcAddressCUDA(cuGraphicsResourceGetMappedPointerName);
+  cuGraphicsResourceSetMapFlags := GetProcAddressCUDA(cuGraphicsResourceSetMapFlagsName);
   cuGraphicsMapResources := GetProcAddressCUDA(cuGraphicsMapResourcesName);
   cuGraphicsUnmapResources := GetProcAddressCUDA(cuGraphicsUnmapResourcesName);
   cuGLInit := GetProcAddressCUDA(cuGLInitName);
   cuGLRegisterBufferObject := GetProcAddressCUDA(cuGLRegisterBufferObjectName);
   cuGLMapBufferObject := GetProcAddressCUDA(cuGLMapBufferObjectName);
   cuGLUnmapBufferObject := GetProcAddressCUDA(cuGLUnmapBufferObjectName);
-  cuGLUnregisterBufferObject := GetProcAddressCUDA
-    (cuGLUnregisterBufferObjectName);
-  cuGLSetBufferObjectMapFlags :=
-    GetProcAddressCUDA(cuGLSetBufferObjectMapFlagsName);
+  cuGLUnregisterBufferObject := GetProcAddressCUDA(cuGLUnregisterBufferObjectName);
+  cuGLSetBufferObjectMapFlags := GetProcAddressCUDA(cuGLSetBufferObjectMapFlagsName);
   cuGLMapBufferObjectAsync := GetProcAddressCUDA(cuGLMapBufferObjectAsyncName);
-  cuGLUnmapBufferObjectAsync := GetProcAddressCUDA
-    (cuGLUnmapBufferObjectAsyncName);
+  cuGLUnmapBufferObjectAsync := GetProcAddressCUDA(cuGLUnmapBufferObjectAsyncName);
 {$ELSE}
   cuInit_ := GetProcAddressCUDA(cuInitName);
   cuInit := cuInitShell;
@@ -2559,8 +2371,7 @@ begin
   cuDeviceGetCount := cuDeviceGetCountShell;
   cuDeviceGetName_ := GetProcAddressCUDA(cuDeviceGetNameName);
   cuDeviceGetName := cuDeviceGetNameShell;
-  cuDeviceComputeCapability_ := GetProcAddressCUDA
-    (cuDeviceComputeCapabilityName);
+  cuDeviceComputeCapability_ := GetProcAddressCUDA(cuDeviceComputeCapabilityName);
   cuDeviceComputeCapability := cuDeviceComputeCapabilityShell;
   cuDeviceTotalMem_ := GetProcAddressCUDA(cuDeviceTotalMemName);
   cuDeviceTotalMem := cuDeviceTotalMemShell;
@@ -2616,8 +2427,7 @@ begin
   cuMemFreeHost := cuMemFreeHostShell;
   cuMemHostAlloc_ := GetProcAddressCUDA(cuMemHostAllocName);
   cuMemHostAlloc := cuMemHostAllocShell;
-  cuMemHostGetDevicePointer_ := GetProcAddressCUDA
-    (cuMemHostGetDevicePointerName);
+  cuMemHostGetDevicePointer_ := GetProcAddressCUDA(cuMemHostGetDevicePointerName);
   cuMemHostGetDevicePointer := cuMemHostGetDevicePointerShell;
   cuMemHostGetFlags_ := GetProcAddressCUDA(cuMemHostGetFlagsName);
   cuMemHostGetFlags := cuMemHostGetFlagsShell;
@@ -2753,26 +2563,19 @@ begin
   cuStreamDestroy := cuStreamDestroyShell;
   cuGLCtxCreate_ := GetProcAddressCUDA(cuGLCtxCreateName);
   cuGLCtxCreate := cuGLCtxCreateShell;
-  cuGraphicsGLRegisterBuffer_ :=
-    GetProcAddressCUDA(cuGraphicsGLRegisterBufferName);
+  cuGraphicsGLRegisterBuffer_ := GetProcAddressCUDA(cuGraphicsGLRegisterBufferName);
   cuGraphicsGLRegisterBuffer := cuGraphicsGLRegisterBufferShell;
-  cuGraphicsGLRegisterImage_ := GetProcAddressCUDA
-    (cuGraphicsGLRegisterImageName);
+  cuGraphicsGLRegisterImage_ := GetProcAddressCUDA(cuGraphicsGLRegisterImageName);
   cuGraphicsGLRegisterImage := cuGraphicsGLRegisterImageShell;
   cuWGLGetDevice_ := GetProcAddressCUDA(cuWGLGetDeviceName);
   cuWGLGetDevice := cuWGLGetDeviceShell;
-  cuGraphicsUnregisterResource_ :=
-    GetProcAddressCUDA(cuGraphicsUnregisterResourceName);
+  cuGraphicsUnregisterResource_ := GetProcAddressCUDA(cuGraphicsUnregisterResourceName);
   cuGraphicsUnregisterResource := cuGraphicsUnregisterResourceShell;
-  cuGraphicsSubResourceGetMappedArray_ :=
-    GetProcAddressCUDA(cuGraphicsSubResourceGetMappedArrayName);
-  cuGraphicsSubResourceGetMappedArray :=
-    cuGraphicsSubResourceGetMappedArrayShell;
-  cuGraphicsResourceGetMappedPointer_ :=
-    GetProcAddressCUDA(cuGraphicsResourceGetMappedPointerName);
+  cuGraphicsSubResourceGetMappedArray_ := GetProcAddressCUDA(cuGraphicsSubResourceGetMappedArrayName);
+  cuGraphicsSubResourceGetMappedArray := cuGraphicsSubResourceGetMappedArrayShell;
+  cuGraphicsResourceGetMappedPointer_ := GetProcAddressCUDA(cuGraphicsResourceGetMappedPointerName);
   cuGraphicsResourceGetMappedPointer := cuGraphicsResourceGetMappedPointerShell;
-  cuGraphicsResourceSetMapFlags_ :=
-    GetProcAddressCUDA(cuGraphicsResourceSetMapFlagsName);
+  cuGraphicsResourceSetMapFlags_ := GetProcAddressCUDA(cuGraphicsResourceSetMapFlagsName);
   cuGraphicsResourceSetMapFlags := cuGraphicsResourceSetMapFlagsShell;
   cuGraphicsMapResources_ := GetProcAddressCUDA(cuGraphicsMapResourcesName);
   cuGraphicsMapResources := cuGraphicsMapResourcesShell;
@@ -2785,20 +2588,19 @@ begin
   cuGLMapBufferObject := cuGLMapBufferObjectShell;
   cuGLUnmapBufferObject_ := GetProcAddressCUDA(cuGLUnmapBufferObjectName);
   cuGLUnmapBufferObject := cuGLUnmapBufferObjectShell;
-  cuGLUnregisterBufferObject_ :=
-    GetProcAddressCUDA(cuGLUnregisterBufferObjectName);
+  cuGLUnregisterBufferObject_ := GetProcAddressCUDA(cuGLUnregisterBufferObjectName);
   cuGLUnregisterBufferObject := cuGLUnregisterBufferObjectShell;
-  cuGLSetBufferObjectMapFlags_ :=
-    GetProcAddressCUDA(cuGLSetBufferObjectMapFlagsName);
+  cuGLSetBufferObjectMapFlags_ := GetProcAddressCUDA(cuGLSetBufferObjectMapFlagsName);
   cuGLSetBufferObjectMapFlags := cuGLSetBufferObjectMapFlagsShell;
   cuGLMapBufferObjectAsync_ := GetProcAddressCUDA(cuGLMapBufferObjectAsyncName);
   cuGLMapBufferObjectAsync := cuGLMapBufferObjectAsyncShell;
-  cuGLUnmapBufferObjectAsync_ :=
-    GetProcAddressCUDA(cuGLUnmapBufferObjectAsyncName);
+  cuGLUnmapBufferObjectAsync_ := GetProcAddressCUDA(cuGLUnmapBufferObjectAsyncName);
   cuGLUnmapBufferObjectAsync := cuGLUnmapBufferObjectAsyncShell;
-{$ENDIF USE_CUDA_DEBUG_MODE}
+{$ENDIF GLS_CUDA_DEBUG_MODE}
   cuDriverGetVersion(V);
-  ShowMessage(Format('%s version %d is loaded', [CUDAAPIDLL, V]));
+  {$IFDEF USE_LOGGING}
+    LogInfoFmt('%s version %d is loaded', [CUDAAPIDLL, V]);
+  {$ENDIF}
   Result := True;
 end;
 

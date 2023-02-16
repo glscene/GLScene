@@ -1,10 +1,15 @@
 ﻿//
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
-unit OpenCLx.Platform;
+unit OpenCL.Platform;
 
 (*
- * Copyright (c) 2008-2020 The Khronos Group Inc.
+  Conversion of OpenCL header file: cl_platform.h to CL_Platform.pas,
+  from http://www.khronos.org/registry/cl/.
+*)
+
+(****************************************************************************
+ * Copyright (c) 2008-2023 The Khronos Group Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and/or associated documentation files (the
@@ -29,9 +34,18 @@ unit OpenCLx.Platform;
  * CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
- *)
+ **************************************************************************)
 
 interface
+
+{$IFDEF MSWINDOWS}
+   {$DEFINE CL_APT_ENTRY}
+const
+   CL_APT_CALL = 'stdcall';
+   CL_CALLBACK = 'stdcall';
+
+{$ENDIF}
+
 
 (*
  * Deprecation flags refer to the last version of the header in which the
@@ -325,8 +339,6 @@ type
   Tcl_double16 = array [0 .. 15] of Tcl_double;
   // There are no vector types for half
 
-//-----------------------------------
 implementation
-//-----------------------------------
 
 end.

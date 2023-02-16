@@ -35,20 +35,20 @@ requires
   GLXcene_RT;
 
 contains
-  CUDAx.RunTime in '..\Source\FMX\CUDAx.RunTime.pas',
-  CUDAx.Utility in '..\Source\FMX\CUDAx.Utility.pas',
   CUDAx.API in '..\Source\FMX\CUDAx.API.pas',
   CUDAx.Compiler in '..\Source\FMX\CUDAx.Compiler.pas',
   CUDAx.Context in '..\Source\FMX\CUDAx.Context.pas',
   CUDAx.FFTPlan in '..\Source\FMX\CUDAx.FFTPlan.pas',
   CUDAx.Graphics in '..\Source\FMX\CUDAx.Graphics.pas',
-  CUDAx.Parser in '..\Source\FMX\CUDAx.Parser.pas',
-  CUDAx.DataAccess in '..\Source\FMX\CUDAx.DataAccess.pas',
-  CUDAx.Import in '..\Source\FMX\CUDAx.Import.pas',
-  OpenCLx.Import in '..\Source\FMX\OpenCLx.Import.pas',
-  OpenCLx.GL in '..\Source\FMX\OpenCLx.GL.pas',
-  OpenCLx.Platform in '..\Source\FMX\OpenCLx.Platform.pas',
-  CUDAx.FourierTransform in '..\Source\FMX\CUDAx.FourierTransform.pas',
-  CUDAx.ParallelPrimitives in '..\Source\FMX\CUDAx.ParallelPrimitives.pas';
+  OpenCL.GL in '..\Source\Common\OpenCL.GL.pas',
+  OpenCL.Import in '..\Source\Common\OpenCL.Import.pas',
+  OpenCL.Platform in '..\Source\Common\OpenCL.Platform.pas',
+  CUDA.Import in '..\Source\Common\CUDA.Import.pas',
+  CUDA.DataAccess in '..\Source\Common\CUDA.DataAccess.pas',
+  CUDA.FourierTransform in '..\Source\Common\CUDA.FourierTransform.pas',
+  CUDA.ParallelPrimitives in '..\Source\Common\CUDA.ParallelPrimitives.pas',
+  CUDA.Parser in '..\Source\Common\CUDA.Parser.pas',
+  CUDA.Runtime in '..\Source\Common\CUDA.Runtime.pas',
+  CUDA.Utility in '..\Source\Common\CUDA.Utility.pas';
 
 end.

@@ -108,11 +108,11 @@
         </DelphiCompile>
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="GLXcene_RT.dcp"/>
-        <DCCReference Include="..\Source\FMX\CGx.Import.pas"/>
-        <DCCReference Include="..\Source\FMX\CGx.GL.pas"/>
         <DCCReference Include="..\Source\FMX\CGx.Shader.pas"/>
         <DCCReference Include="..\Source\FMX\CGx.BombShader.pas"/>
         <DCCReference Include="..\Source\FMX\CGx.PostTransformationShader.pas"/>
+        <DCCReference Include="..\Source\Common\Cg.Import.pas"/>
+        <DCCReference Include="..\Source\Common\Cg.GL.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

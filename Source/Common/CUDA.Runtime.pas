@@ -42,13 +42,11 @@ unit CUDA.Runtime;
 
 interface
 
-{$I GLScene.inc}
-
 uses
+{$IFDEF MSWINDOWS}
   Winapi.Windows,
-
-  CUDA.Import,
-  GLS.Logger;
+{$ENDIF}
+  CUDA.Import;
 
 const
 {$IFDEF WIN32}
@@ -763,7 +761,7 @@ begin
   cudaWGLGetDevice := CUDARTGetProcAddress('cudaWGLGetDevice');
 
   cudaRuntimeGetVersion(V);
-  GLSLogger.LogInfoFmt('%s version %d is loaded', [LibName, V]);
+  /// GLSLogger.LogInfoFmt('%s version %d is loaded', [LibName, V]);
   Result := True;
 end;
 

@@ -1,28 +1,27 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
-unit CUDAx.DataAccess;
+unit CUDA.DataAccess;
+
+(* CUDA data access implementation *)
 
 interface
 
-{$I GLX.Scene.inc}
-
 uses
-  System.SysUtils,
-  FMX.Dialogs,
-  GLX.Strings,
-  GLX.Utils;
+  System.SysUtils;
 
 type
+  THalfFloat = type Word;
+
 
   GCUDAHostElementAccess<TScalar> = class
-  public
-  const
+  public const
     ElementSize = SizeOf(TScalar);
+
   type
-    TVector2 = array[0..1] of TScalar;
-    TVector3 = array[0..2] of TScalar;
-    TVector4 = array[0..3] of TScalar;
+    TVector2 = array [0 .. 1] of TScalar;
+    TVector3 = array [0 .. 2] of TScalar;
+    TVector4 = array [0 .. 3] of TScalar;
   private
     class procedure CheckElementSize(ACNum: Cardinal); inline;
     class function GetScalar: TScalar;
@@ -42,7 +41,7 @@ type
 
   UByteElement = GCUDAHostElementAccess<Byte>;
   ByteElement = GCUDAHostElementAccess<ShortInt>;
-  UShortElement= GCUDAHostElementAccess<Word>;
+  UShortElement = GCUDAHostElementAccess<Word>;
   ShortElement = GCUDAHostElementAccess<SmallInt>;
   UIntElement = GCUDAHostElementAccess<LongWord>;
   IntElement = GCUDAHostElementAccess<LongInt>;
@@ -54,9 +53,9 @@ procedure SetElementAccessAddress(AValue: PByte; ASize: Cardinal);
 function GetElementAccessAddress: PByte;
 function GetElementAccessSize: Cardinal;
 
-//--------------------------------------------
+// -----------------------------------------------
 implementation
-//--------------------------------------------
+// -----------------------------------------------
 
 threadvar
   vElementAccessAddress: PByte;
@@ -78,11 +77,12 @@ begin
   vElementAccessElementSize := ASize;
 end;
 
-class procedure GCUDAHostElementAccess<TScalar>.CheckElementSize(ACNum: Cardinal);
+class procedure GCUDAHostElementAccess<TScalar>.CheckElementSize
+  (ACNum: Cardinal);
 begin
   if GetElementAccessSize <> ACNum * SizeOf(TScalar) then
   begin
-    ShowMessage(strSizeMismatch);
+    /// GLSLogger.LogError(strSizeMismatch);
     Abort;
   end;
 end;
@@ -96,43 +96,47 @@ end;
 class function GCUDAHostElementAccess<TScalar>.GetVector2: TVector2;
 begin
   CheckElementSize(2);
-  Move(GetElementAccessAddress^, Result, 2*SizeOf(TScalar));
+  Move(GetElementAccessAddress^, Result, 2 * SizeOf(TScalar));
 end;
 
 class function GCUDAHostElementAccess<TScalar>.GetVector3: TVector3;
 begin
   CheckElementSize(3);
-  Move(GetElementAccessAddress^, Result, 3*SizeOf(TScalar));
+  Move(GetElementAccessAddress^, Result, 3 * SizeOf(TScalar));
 end;
 
 class function GCUDAHostElementAccess<TScalar>.GetVector4: TVector4;
 begin
   CheckElementSize(4);
-  Move(GetElementAccessAddress^, Result, 4*SizeOf(TScalar));
+  Move(GetElementAccessAddress^, Result, 4 * SizeOf(TScalar));
 end;
 
-class procedure GCUDAHostElementAccess<TScalar>.SetScalar(const AValue: TScalar);
+class procedure GCUDAHostElementAccess<TScalar>.SetScalar
+  (const AValue: TScalar);
 begin
   CheckElementSize(1);
   Move(AValue, GetElementAccessAddress^, SizeOf(TScalar));
 end;
 
-class procedure GCUDAHostElementAccess<TScalar>.SetVector2(const AValue: TVector2);
+class procedure GCUDAHostElementAccess<TScalar>.SetVector2
+  (const AValue: TVector2);
 begin
   CheckElementSize(2);
-  Move(AValue, GetElementAccessAddress^, 2*SizeOf(TScalar));
+  Move(AValue, GetElementAccessAddress^, 2 * SizeOf(TScalar));
 end;
 
-class procedure GCUDAHostElementAccess<TScalar>.SetVector3(const AValue: TVector3);
+class procedure GCUDAHostElementAccess<TScalar>.SetVector3
+  (const AValue: TVector3);
 begin
   CheckElementSize(3);
-  Move(AValue, GetElementAccessAddress^, 3*SizeOf(TScalar));
+  Move(AValue, GetElementAccessAddress^, 3 * SizeOf(TScalar));
 end;
 
-class procedure GCUDAHostElementAccess<TScalar>.SetVector4(const AValue: TVector4);
+class procedure GCUDAHostElementAccess<TScalar>.SetVector4
+  (const AValue: TVector4);
 begin
   CheckElementSize(4);
-  Move(AValue, GetElementAccessAddress^, 4*SizeOf(TScalar));
+  Move(AValue, GetElementAccessAddress^, 4 * SizeOf(TScalar));
 end;
 
 end.

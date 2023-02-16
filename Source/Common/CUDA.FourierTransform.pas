@@ -43,10 +43,11 @@ unit CUDA.FourierTransform;
 interface
 
 uses
+{$IFDEF MSWINDOWS}
   Winapi.Windows,
-
-  GLS.VectorTypes,
-  GLS.Strings,
+{$ELSE}
+  Windows,
+{$ENDIF}
 
   CUDA.Import,
   CUDA.RunTime;
@@ -73,7 +74,6 @@ type
 
   /// cufftHandle is a handle type used to store and access CUFFT plans.
   TcufftHandle = type Cardinal;
-
   TcufftReal = Single;
   PcufftReal = ^TcufftReal;
 
@@ -82,10 +82,19 @@ type
   TcufftDoubleReal = Double;
 
   PcufftDoubleComplex = ^TcufftDoubleComplex;
-  TcufftDoubleComplex = TVector2d;
+  TcufftDoubleComplex = record
+    case Integer of
+      0 : (V: array[0..1] of Double);
+      1 : (X: Double;
+           Y: Double);
+    end;
 
   PcufftComplex = ^TcufftComplex;
-  TcufftComplex = TVector2f;
+  TcufftComplex = record
+    case Integer of
+      0 : (V: array[0..1] of Single);
+      1 : (X,Y: Single);
+  end;
 
   TcufftResult = type Byte;
 

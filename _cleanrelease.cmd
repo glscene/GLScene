@@ -62,11 +62,11 @@ rem del *.cfg /s - there are quake's animations
 attrib -R "AdvDemos/Q3Demo/Model/animation.cfg"
 
 echo---------------------------------------------------------
-
-echo delete all .svn directories with subdirectories and files 
-for /r %1 %%R in (.svn) do if exist "%%R" (rd /s /q "%%R")
-echo delete all .git directories with subdirectories and files 
-for /r %1 %%R in (.git) do if exist "%%R" (rd /s /q "%%R")
+ 
+rem echo delete all .svn directories with subdirectories and files 
+rem for /r %1 %%R in (.svn) do if exist "%%R" (rd /s /q "%%R")
+rem echo delete all .git directories with subdirectories and files 
+rem for /r %1 %%R in (.git) do if exist "%%R" (rd /s /q "%%R")
 
 echo---------------------------------------------------------
 

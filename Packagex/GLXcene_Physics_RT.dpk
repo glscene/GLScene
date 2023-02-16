@@ -42,13 +42,13 @@ contains
   Physix.ODESkeletonColliders in '..\Source\FMX\Physix.ODESkeletonColliders.pas',
   Physix.ODEUtils in '..\Source\FMX\Physix.ODEUtils.pas',
   Physix.ODERagdoll in '..\Source\FMX\Physix.ODERagdoll.pas',
-  Physix.ModuleLoader in '..\Source\FMX\Physix.ModuleLoader.pas',
   Physix.NGDManager in '..\Source\FMX\Physix.NGDManager.pas',
-  Physix.NewtonImport in '..\Source\FMX\Physix.NewtonImport.pas',
-  Physix.PhysX in '..\Source\FMX\Physix.PhysX.pas',
   Physix.NGDRagdoll in '..\Source\FMX\Physix.NGDRagdoll.pas',
-  Physix.ODEImport in '..\Source\FMX\Physix.ODEImport.pas',
-  Physix.NGDImport in '..\Source\FMX\Physix.NGDImport.pas';
+  Newton.Import in '..\Source\Common\Newton.Import.pas',
+  NGD.Import in '..\Source\Common\NGD.Import.pas',
+  ODE.Import in '..\Source\Common\ODE.Import.pas',
+  ModuleLoader in '..\Source\Common\ModuleLoader.pas',
+  PhysX.Import in '..\Source\Common\PhysX.Import.pas';
 
 end.
 

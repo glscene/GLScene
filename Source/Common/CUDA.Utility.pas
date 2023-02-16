@@ -3,12 +3,16 @@
 //
 unit CUDA.Utility;
 
-(* CUDA Utility Wraper of cutil *)
+(* CUDA Utility Wraper of cutil. Note:  *)
 
 interface
 
 uses
+{$IFDEF MSWINDOWS}
   Winapi.Windows;
+{$ELSE}
+  Windows; // or for LINUX
+{$ENDIF}
 
 const
 {$IFDEF WIN64}
@@ -65,7 +69,6 @@ const
   INVALID_MODULEHANDLE = 0;
 
 {$IFDEF MSWINDOWS}
-// ************** Windows specific ********************
 var
   CUTILHandle: HINST = INVALID_MODULEHANDLE;
 {$ELSE}
