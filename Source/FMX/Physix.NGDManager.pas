@@ -11,19 +11,17 @@ unit Physix.NGDManager;
 
 interface
 
-{$I GLX.Scene.inc}
+{.$I GLX.Scene.inc}
 
 uses
   System.Classes, // TComponent Tlist TWriter TReader TPersistent
   System.SysUtils, // System utilities
   System.Math, // Samevalue isZero to compare single
   System.Types,
-  Physix.NGDImport,
 
+  NGD.Import,
   GLX.VectorTypes,
-
-  GLX.VectorGeometry,
-  // PgxVector TgxVector TgxMatrix PgxMatrix NullHmgVector...
+  GLX.VectorGeometry, // PgxVector TgxVector TgxMatrix PgxMatrix NullHmgVector...
   GLX.VectorLists, // TgxAffineVectorList for Tree
   GLX.XCollection, // TXCollection file function
   GLX.GeometryBB,

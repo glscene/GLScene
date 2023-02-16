@@ -17,7 +17,7 @@ uses
   System.SysUtils,
   System.Classes,
 
-  Physix.ODEImport,
+  ODE.Import,
   GLX.VectorGeometry,
   GLX.VectorTypes,
   GLX.VectorLists,

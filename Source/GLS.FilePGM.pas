@@ -13,7 +13,7 @@ uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
-  
+
   GLS.Context,
   GLS.Graphics,
   GLS.TextureFormat,
@@ -21,7 +21,6 @@ uses
   GLS.ApplicationFileIO,
 
   CUDA.Utility;
-
 
 type
 
@@ -32,14 +31,14 @@ type
     procedure SaveToFile(const filename: string); override;
     procedure LoadFromStream(stream: TStream); override;
     procedure SaveToStream(stream: TStream); override;
-    procedure AssignFromTexture(textureContext: TGLContext;
-      const textureHandle: Cardinal; textureTarget: TGLTextureTarget;
-      const CurrentFormat: Boolean; const intFormat: TGLInternalFormat);
-      reintroduce;
+    procedure AssignFromTexture(textureContext: TGLContext; const textureHandle: Cardinal;
+      textureTarget: TGLTextureTarget; const CurrentFormat: Boolean;
+      const intFormat: TGLInternalFormat); reintroduce;
   end;
 
-// ------------------------------------------------------------------
+  // ------------------------------------------------------------------
 implementation
+
 // ------------------------------------------------------------------
 
 // ------------------
@@ -90,8 +89,8 @@ begin
       EInvalidRasterFile.Create(strCUTILFailed);
       exit;
     end;
-  if not cutSavePGMf(PAnsiChar(AnsiString(filename)), System.PSingle(fData),
-    FLOD[0].Width, FLOD[0].Height) then
+  if not cutSavePGMf(PAnsiChar(AnsiString(filename)), System.PSingle(fData), FLOD[0].Width,
+    FLOD[0].Height) then
     raise EInvalidRasterFile.Create('Saving to file failed');
 end;
 
@@ -105,9 +104,9 @@ begin
   Assert(false, 'Stream saving not supported');
 end;
 
-procedure TGLPGMImage.AssignFromTexture(textureContext: TGLContext;
-  const textureHandle: Cardinal; textureTarget: TGLTextureTarget;
-  const CurrentFormat: Boolean; const intFormat: TGLInternalFormat);
+procedure TGLPGMImage.AssignFromTexture(textureContext: TGLContext; const textureHandle: Cardinal;
+  textureTarget: TGLTextureTarget; const CurrentFormat: Boolean;
+  const intFormat: TGLInternalFormat);
 var
   oldContext: TGLContext;
   contextActivate: Boolean;
@@ -136,13 +135,11 @@ begin
     fColorFormat := GL_LUMINANCE;
     fDataType := GL_FLOAT;
     // Check level existence
-    gl.GetTexLevelParameteriv(glTarget, 0, GL_TEXTURE_INTERNAL_FORMAT,
-      @texFormat);
+    gl.GetTexLevelParameteriv(glTarget, 0, GL_TEXTURE_INTERNAL_FORMAT, @texFormat);
     if texFormat > 1 then
     begin
       gl.GetTexLevelParameteriv(glTarget, 0, GL_TEXTURE_WIDTH, @FLOD[0].Width);
-      gl.GetTexLevelParameteriv(glTarget, 0, GL_TEXTURE_HEIGHT,
-        @FLOD[0].Height);
+      gl.GetTexLevelParameteriv(glTarget, 0, GL_TEXTURE_HEIGHT, @FLOD[0].Height);
       FLOD[0].Depth := 0;
       residentFormat := OpenGLFormatToInternalFormat(texFormat);
       if CurrentFormat then
@@ -175,9 +172,10 @@ begin
   Result := [dfcRead, dfcWrite];
 end;
 
-//------------------------------------------------
+// ------------------------------------------------
 initialization
-//------------------------------------------------
+
+// ------------------------------------------------
 
 RegisterRasterFormat('pgm', 'Portable Graymap', TGLPGMImage);
 

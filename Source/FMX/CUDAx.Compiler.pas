@@ -22,7 +22,7 @@ uses
 
   GLX.ApplicationFileIO,
   GLX.Strings,
-  CUDAx.Parser;
+  CUDA.Parser;
 
 type
   TgxSCUDACompilerOutput = (codeUndefined, codePtx, codeCubin, codeGpu);

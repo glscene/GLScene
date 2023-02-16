@@ -4,9 +4,8 @@
 unit CUDA.Compiler;
 
 (*
-  Component allows to compile the CUDA-source (*.cu) file.
-  in design- and runtime.
-  To work requires the presence of CUDA Toolkit 3.X and MS Visual Studio C++.
+  Component allows to compile the CUDA-source (*.cu) file in design- and runtime.
+  To work requires the presence of CUDA Toolkit 4.X and MS Visual Studio C++.
 *)
 
 interface
@@ -18,6 +17,7 @@ uses
   System.UITypes,
   System.SysUtils,
   System.Classes,
+
   Vcl.Forms,
   VCL.Dialogs,
 
@@ -143,7 +143,7 @@ begin
     if FileExists(path + 'nvcc.exe') then
       FNVCCPath := path;
   end;
-  path := 'C:\Program Files\Microsoft Visual Studio 2015\VC\bin\';
+  path := 'C:\Program Files\Microsoft Visual Studio 2019\VC\bin\'; // check path for current VC
   if FileExists(path + 'cl.exe') then
     FCppCompilerPath := path
   else

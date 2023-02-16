@@ -21,13 +21,14 @@ uses
   GLX.Context,
   GLX.Graphics,
 
-  CUDAx.Import,
-  CUDAx.Runtime,
-  CUDAx.Parser,
-  CUDAx.FourierTransform,
+  CUDA.Import,
+  CUDA.Runtime,
+  CUDA.Parser,
+  CUDA.FourierTransform,
+  CUDA.DataAccess,
+
   CUDAx.Compiler,
   CUDAx.Context,
-  CUDAx.DataAccess,
 
   GLX.Utils;
 

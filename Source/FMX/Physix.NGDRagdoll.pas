@@ -11,7 +11,7 @@ uses
   GLX.VectorGeometry,
   GLX.VectorTypes,
   GLX.VectorFileObjects,
-  Physix.NGDImport;
+  NGD.Import;
 
 type
   TNewtonRagdoll = class
@@ -54,7 +54,6 @@ function GetBoneParent(actor: TgxActor; bone: integer): integer;
 
 // =====================================
 implementation
-
 // =====================================
 
 function TNewtonRagdoll.TranslatePos;

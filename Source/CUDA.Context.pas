@@ -40,7 +40,6 @@ type
       write SetMaxDimComponent;
     property ReadOnlyValue: Boolean read FReadOnly write FReadOnly;
   published
-    { Published Properties }
     property SizeX: Integer index 0 read GetDimComponent write SetDimComponent
       default 1;
     property SizeY: Integer index 1 read GetDimComponent write SetDimComponent
@@ -68,8 +67,8 @@ type
     constructor Create; reintroduce;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
-    {  Returns in bytes the total amount of memory
-      available on the device dev in bytes. }
+    (*  Returns in bytes the total amount of memory
+      available on the device dev in bytes. *)
     function TotalMemory: Cardinal;
   published
     property Name: string read GetName;
@@ -298,8 +297,7 @@ begin
       cuDeviceGetAttribute(@fDeviceProperties.TextureAlignment, CU_DEVICE_ATTRIBUTE_TEXTURE_ALIGNMENT, fHandle);
       cuDeviceGetAttribute(@fDeviceProperties.DeviceOverlap, CU_DEVICE_ATTRIBUTE_GPU_OVERLAP, fHandle);
       cuDeviceGetAttribute(@fDeviceProperties.DeviceOverlap, CU_DEVICE_ATTRIBUTE_MULTIPROCESSOR_COUNT, fHandle);
-      fGFlops := fDeviceProperties.MultiProcessorCount *
-        fDeviceProperties.ClockRate;
+      fGFlops := fDeviceProperties.MultiProcessorCount * fDeviceProperties.ClockRate;
       fMaxThreadsDim.FXYZ[0] := fDeviceProperties.MaxThreadsDim[0];
       fMaxThreadsDim.FXYZ[1] := fDeviceProperties.MaxThreadsDim[1];
       fMaxThreadsDim.FXYZ[2] := fDeviceProperties.MaxThreadsDim[2];

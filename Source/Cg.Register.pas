@@ -19,7 +19,7 @@ uses
 
   Cg.Import,
   Cg.GL,
-  GLS.SceneRegister,  // TGLLibMaterialNameProperty
+  GLS.SceneRegister,  // using TGLLibMaterialNameProperty
   Cg.Shader,
   Cg.BombShader;
 

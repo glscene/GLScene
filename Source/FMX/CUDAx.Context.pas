@@ -5,18 +5,19 @@ unit CUDAx.Context;
 
 interface
 
-{$I GLX.Scene.inc}
+{.$I GLX.Scene.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   FMX.Dialogs,
 
+  CUDA.Import,
+  CUDA.RunTime,
+
   GLX.Strings,
   GLX.Generics,
   GLX.BaseClasses,
-  CUDAx.Import,
-  CUDAx.RunTime,
   GLX.Context;
 
 type

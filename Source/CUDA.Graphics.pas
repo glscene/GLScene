@@ -79,6 +79,8 @@ type
   TFeedBackMeshPrimitive = (fbmpPoint, fbmpLine, fbmpTriangle);
   TFeedBackMeshLaunching = (fblCommon, fblOnePerAtttribute);
 
+  //====================================================
+
   TCUDACustomFeedBackMesh = class(TGLBaseSceneObject)
   private
     FGeometryResource: TCUDAGraphicResource;

@@ -25,10 +25,9 @@ uses
   GLX.Material,
   GLX.TextureFormat,
 
-  CGx.Import,
-  CGx.GL;
+  CG.Import,
+  CG.GL;
 
-{.$I GLXcene.inc}
 { .$DEFINE OutputCompilerWarnings }
 
 (* Define OutputCompilerWarnings to output CG compiler warnings to a file. Useful

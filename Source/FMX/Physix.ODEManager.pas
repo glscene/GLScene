@@ -35,7 +35,7 @@ uses
   GLX.TerrainRenderer,
   GLX.Graph,
 
-  Physix.ODEImport,
+  ODE.Import,
   Physix.ODEUtils;
 
 type

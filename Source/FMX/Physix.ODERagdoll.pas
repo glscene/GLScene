@@ -8,7 +8,7 @@ unit Physix.ODERagdoll;
 interface
 
 uses
-  Physix.ODEImport,
+  ODE.Import,
   Physix.ODEUtils,
 
   GLX.VectorTypes,

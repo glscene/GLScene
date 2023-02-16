@@ -11,7 +11,7 @@ uses
   System.Classes,
   FMX.Dialogs,
 
-  CUDAx.Import,
+  CUDA.Import,
   CUDAx.API,
 
   GLX.Context,

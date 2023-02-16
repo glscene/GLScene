@@ -5,17 +5,18 @@ unit CUDAx.FFTPlan;
 
 interface
 
-{$I GLX.Scene.inc}
+{.$I GLX.Scene.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   FMX.Dialogs,
   
-  CUDAx.Import,
+  CUDA.Import,
+  CUDA.FourierTransform,
+
   CUDAx.API,
   CUDAx.Context,
-  CUDAx.FourierTransform,
   GLX.Strings;
 
 type

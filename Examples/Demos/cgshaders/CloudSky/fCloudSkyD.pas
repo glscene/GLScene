@@ -24,15 +24,15 @@ uses
   GLS.VectorGeometry,
   GLS.SkyDome,
   GLS.Texture,
-  CG.Shader,
   GLS.FileTGA,
   GLS.Keyboard,
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.Utils,
+  GLS.SimpleNavigation,
 
-  GLS.SimpleNavigation;
+  Cg.Shader;
 
 type
 

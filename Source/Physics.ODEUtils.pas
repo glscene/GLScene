@@ -108,15 +108,21 @@ begin
   m.W.W := 1; //}
 end;
 
+//----------------------------------------------------
+
 procedure ODERToGLSceneMatrix(var m: TGLMatrix; R: PdMatrix3; pos: PdVector3);
 begin
   ODERToGLSceneMatrix(m, TdMatrix3_As3x4(R^), pos^);
 end;
 
+//----------------------------------------------------
+
 procedure ODERToGLSceneMatrix(var m: TGLMatrix; R: TdMatrix3; pos: TdVector3);
 begin
   ODERToGLSceneMatrix(m, TdMatrix3_As3x4(R), pos);
 end;
+
+//----------------------------------------------------
 
 procedure DrawBox(Sides: TdVector3);
 var
@@ -163,6 +169,8 @@ begin
   gl.End_();
 end;
 
+//----------------------------------------------------
+
 function GLSceneMatrixToODER(m: TGLMatrix): TdMatrix3;
 begin
   TransposeMatrix(m);
@@ -177,10 +185,14 @@ begin
   Result[10] := m.Z.Z;
 end;
 
+//----------------------------------------------------
+
 procedure dsDrawBox(pos: PdVector3; R: PdMatrix3; Sides: TdVector3);
 begin
   dsDrawBox(pos^, r^, Sides);
 end;
+
+//----------------------------------------------------
 
 procedure dsDrawBox(pos: TdVector3; R: TdMatrix3; Sides: TdVector3);
 begin
@@ -215,6 +227,8 @@ end;
 
 (*$WARNINGS OFF*)
 
+//----------------------------------------------------
+
 function ConvertdVector3ToVector3f(R: TdVector3): TVector3f;
 begin
   result.X := R[0];
@@ -222,12 +236,16 @@ begin
   result.Z := R[2];
 end;
 
+//----------------------------------------------------
+
 function ConvertdVector3ToVector3f(R: PdVector3): TVector3f;
 begin
   result.X := R[0];
   result.Y := R[1];
   result.Z := R[2];
 end;
+
+//----------------------------------------------------
 
 function ConvertdVector3ToVector4f(R: TdVector3): TVector4f; overload;
 begin
@@ -237,6 +255,8 @@ begin
   result.W := 0;
 end;
 
+//----------------------------------------------------
+
 function ConvertdVector3ToVector4f(R: PdVector3): TVector4f; overload;
 begin
   result.X := R[0];
@@ -245,12 +265,16 @@ begin
   result.W := 0;
 end;
 
+//----------------------------------------------------
+
 function ConvertdVector3ToAffineVector(R: PdVector3): TAffineVector; overload;
 begin
   result.X := R[0];
   result.Y := R[1];
   result.Z := R[2];
 end;
+
+//----------------------------------------------------
 
 function ConvertdVector3ToAffineVector(R: TdVector3): TAffineVector; overload;
 begin
@@ -259,12 +283,16 @@ begin
   result.Z := R[2];
 end;
 
+//----------------------------------------------------
+
 function ConvertVector3fTodVector3(R: TVector3f): TdVector3;
 begin
   result[0] := R.X;
   result[1] := R.Y;
   result[2] := R.Z;
 end;
+
+//----------------------------------------------------
 
 function ConvertVector3fToPdVector3(R: TVector3f): PdVector3;
 begin
@@ -273,6 +301,8 @@ begin
   result[2] := R.Z;
 end;
 
+//----------------------------------------------------
+
 function ConvertVector4fTodVector3(R: TVector4f): TdVector3;
 begin
   result[0] := R.X;
@@ -280,6 +310,8 @@ begin
   result[2] := R.Z;
   result[3] := 0;
 end;
+
+//----------------------------------------------------
 
 function ConvertVector4fToPdVector3(R: TVector4f): PdVector3;
 begin
@@ -296,11 +328,15 @@ begin
   result := ConvertdVector3ToVector3f(dBodyGetPosition(Body));
 end;
 
+//----------------------------------------------------
+
 procedure PositionSceneObjectForGeom(Geom: PdxGeom);
 begin
   if Assigned(Geom.Data) then
     PositionSceneObject(TGLBaseSceneObject(Geom.Data), Geom);
 end;
+
+//----------------------------------------------------
 
 function GLMatrixFromGeom(Geom: PdxGeom): TGLMatrix;
 var
@@ -344,6 +380,8 @@ begin
   end;
 end;
 
+//----------------------------------------------------
+
 function GLDirectionFromGeom(Geom: PdxGeom): TGLVector;
 var
   m: TGLMatrix;
@@ -352,6 +390,8 @@ begin
 
   result := VectorNormalize(m.Z);
 end;
+
+//----------------------------------------------------
 
 procedure PositionSceneObject(GLBaseSceneObject: TGLBaseSceneObject; Geom: PdxGeom);
 var
@@ -372,6 +412,8 @@ begin
   Cube.CubeHeight := Sides[1]; // 1
   Cube.CubeDepth := Sides[2]; // 2
 end;
+
+//----------------------------------------------------
 
 procedure CopyPosFromGeomToGL(Geom: PdxGeom; GLBaseSceneObject: TGLBaseSceneObject);
 var
@@ -405,6 +447,8 @@ begin
   dGeomSetRotation(Geom, R^);
 end;
 
+//----------------------------------------------------
+
 function CreateGeomFromCube(Cube: TGLCube; Space: PdxSpace): PdxGeom;
 var
   Geom: PdxGeom;
@@ -413,6 +457,8 @@ begin
   CopyPosFromGeomToGL(Geom, Cube);
   result := Geom;
 end;
+
+//----------------------------------------------------
 
 function CreateBodyFromCube(var Geom: PdxGeom; Cube: TGLCube; World: PdxWorld; Space: PdxSpace): PdxBody;
 var
@@ -428,6 +474,8 @@ begin
     result := Body;
   end;
 end;
+
+//----------------------------------------------------
 
 function CreateTriMeshFromBaseMesh(
   GLBaseMesh: TGLBaseMesh;
@@ -507,6 +555,8 @@ begin
   end;
 end;
 
+//----------------------------------------------------
+
 procedure CopyBodyFromCube(Body: PdxBody; var Geom: PdxGeom; Cube: TGLCube;
   Space: PdxSpace);
 var
@@ -524,6 +574,8 @@ begin
 
   Geom.data := Cube;
 end;
+
+//----------------------------------------------------
 
 function dBodyToBodyDistance(Body1, Body2: PdxBody): TdReal;
 begin
@@ -548,6 +600,8 @@ begin
     if Assigned(GeomList[i].data) then
       PositionSceneObject(TGLBaseSceneObject(GeomList[i].data), GeomList[i]);
 end;
+
+//----------------------------------------------------
 
 function CreateODEPlaneFromGLPlane(Plane: TGLPlane; Space: PdxSpace): PdxGeom;
 var

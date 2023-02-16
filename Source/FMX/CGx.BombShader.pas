@@ -22,7 +22,7 @@ uses
   GLX.TextureFormat,
   GLX.State,
 
-  CGx.GL,
+  CG.GL,
   CGx.Shader;
 
 type

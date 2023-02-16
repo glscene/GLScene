@@ -24,8 +24,8 @@ uses
 
   GLSLx.CustomShader,
 
-  CGx.Import,
-  CGx.GL,
+  Cg.GL,
+  Cg.Import,
   CGx.Shader;
 
 type

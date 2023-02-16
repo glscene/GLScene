@@ -3,7 +3,7 @@
 //
 unit GLX.Strings;
 
-(* String constants that are used in many GLXcene units *)
+(* String constants as resourcestring *)
 
 interface
 
@@ -209,8 +209,7 @@ resourcestring
   strThreadBusy = 'Unable to create CUDA context - thread is busy by another context';
   strMakeFloatingFail = 'Unable to make context floating after creation';
   strUnbalansedUsage = 'Unbalansed CUDA context usage';
-  strInvalidGLContext = 'Unable to create CUDA context with OpenGL interop' +
-    ' - OpenGL context not ready';
+  strInvalidGLContext = 'Unable to create CUDA context with OpenGL interop' + ' - context not ready';
   strFFTFuncRetErr = '%s return error: %s';
   strFailToBindArrayToTex = 'Unable to bind CUDA array to OpenGL unmaped t' + 'exture';
   strOutOfAttribSize = 'The amount of device''s data less then size of att' + 'ribute''s data.';
