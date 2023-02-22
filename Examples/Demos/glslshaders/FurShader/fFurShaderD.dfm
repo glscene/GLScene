@@ -32,7 +32,6 @@ object FormFur: TFormFur
     OnMouseDown = GLViewerMouseDown
     OnMouseMove = GLViewerMouseMove
     TabOrder = 0
-    ExplicitWidth = 731
   end
   object GLScene1: TGLScene
     Left = 24

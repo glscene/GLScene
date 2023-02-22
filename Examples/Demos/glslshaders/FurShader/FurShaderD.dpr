@@ -1,3 +1,6 @@
+(*
+   Thor's fur coat rotation created by Trinix
+*)
 program FurShaderD;
 
 uses

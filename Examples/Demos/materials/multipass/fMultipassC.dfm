@@ -10,9 +10,7 @@ object Form1: TForm1
   Font.Height = -10
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
-  WindowState = wsMaximized
-  PixelsPerInch = 96
+  Position = poScreenCenter
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0

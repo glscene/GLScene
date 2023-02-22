@@ -1,4 +1,3 @@
-(* Created by Trinix *)
 unit fFurShaderD;
 
 interface
