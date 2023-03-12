@@ -7,7 +7,7 @@ unit FmShaderUniformEditor;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.SysUtils,
@@ -20,7 +20,7 @@ uses
   VCL.StdCtrls,
   VCL.ExtCtrls,
   VCL.Buttons,
-  GLS.Strings,
+  Scene.Strings,
   GLSL.ShaderParameter,
   GLS.TextureFormat,
   GLS.VectorGeometry;

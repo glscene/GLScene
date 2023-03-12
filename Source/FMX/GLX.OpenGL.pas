@@ -23,7 +23,7 @@ unit GLX.OpenGL;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.SysUtils,

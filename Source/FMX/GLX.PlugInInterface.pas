@@ -10,7 +10,7 @@ unit GLX.PlugInInterface;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 type
   TPIServiceType = (stRaw, stObject, stBitmap, stTexture, stImport, stExport);

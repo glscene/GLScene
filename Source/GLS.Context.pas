@@ -7,7 +7,7 @@ unit GLS.Context;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -29,7 +29,7 @@ uses
   GLS.OpenGLAdapter,
   GLS.XOpenGL,
   GLS.VectorGeometry,
-  GLS.Strings,
+  Scene.Strings,
   GLS.VectorTypes,
   GLS.State,
   GLS.PipelineTransformation,

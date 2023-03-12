@@ -3,7 +3,7 @@
 //
 unit GLX.PAKArchive;
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 interface
 

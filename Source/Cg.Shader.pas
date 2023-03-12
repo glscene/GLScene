@@ -17,7 +17,7 @@ uses
   GLS.VectorLists,
   GLS.VectorTypes,
   GLS.Texture,
-  GLS.Strings,
+  Scene.Strings,
   GLS.Cadencer,
   GLS.Context,
   GLS.BaseClasses,

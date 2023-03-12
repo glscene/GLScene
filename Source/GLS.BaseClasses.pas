@@ -11,7 +11,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.Strings,
+  Scene.Strings,
   GLS.PersistentClasses;
 
 type

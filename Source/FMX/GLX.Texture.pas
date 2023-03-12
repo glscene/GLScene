@@ -7,7 +7,7 @@ unit GLX.Texture;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -22,7 +22,7 @@ uses
   GLX.VectorTypes,
   GLX.VectorGeometry,
   GLX.BaseClasses,
-  GLX.Strings,
+  Scene.Strings,
   GLX.ApplicationFileIO,
 
   GLX.Graphics,

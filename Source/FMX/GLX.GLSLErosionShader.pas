@@ -9,7 +9,7 @@ unit GLX.GLSLErosionShader;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

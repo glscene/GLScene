@@ -15,7 +15,7 @@ unit GLX.XOpenGL;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,

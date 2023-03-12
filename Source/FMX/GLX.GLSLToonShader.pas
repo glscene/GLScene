@@ -13,7 +13,7 @@ unit GLX.GLSLToonShader;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL, 

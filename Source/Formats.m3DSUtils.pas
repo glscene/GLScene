@@ -11,7 +11,7 @@ unit Formats.m3DSUtils;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 {$R-}
 
 uses
@@ -21,7 +21,7 @@ uses
   Formats.m3DSTypes,
   Formats.m3DSConst,
 
-  GLS.Strings;
+  Scene.Strings;
 
 // functions to retrieve global settings of a specific 3DS database
 function GetAtmosphere(const Source: TFile3DS; var DB: TDatabase3DS): TAtmosphere3DS;

@@ -5,14 +5,14 @@ unit GLX.FileJPEG;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
   GLX.VectorGeometry,
-  GLX.Strings,
+  Scene.Strings,
   GLX.Context,
   GLX.Graphics,
   GLX.TextureFormat,

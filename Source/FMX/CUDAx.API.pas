@@ -17,7 +17,7 @@ uses
   GLX.VectorGeometry,
   GLX.VectorTypes,
   GLX.VectorLists,
-  GLX.Strings,
+  Scene.Strings,
   GLX.Context,
   GLX.Graphics,
 

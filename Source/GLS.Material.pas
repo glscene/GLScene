@@ -8,7 +8,7 @@ unit GLS.Material;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,
@@ -32,7 +32,7 @@ uses
   GLS.ApplicationFileIO,
   GLS.Graphics,
   GLS.Utils,
-  GLS.Strings,
+  Scene.Strings,
   GLS.Logger;
 
 {$UNDEF USE_MULTITHREAD}

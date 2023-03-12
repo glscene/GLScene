@@ -7,7 +7,7 @@ unit GLX.RenderContextInfo;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   GLX.VectorTypes,

@@ -15,7 +15,7 @@ unit GLS.SpaceText;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 {$IFDEF UNIX}{$MESSAGE Error 'Unit not supported'} {$ENDIF}
 
 uses
@@ -36,7 +36,7 @@ uses
   GLS.Texture,
   GLS.Context,
   GLS.VectorGeometry,
-  GLS.Strings,
+  Scene.Strings,
   GLS.RenderContextInfo,
   GLS.State;
 

@@ -14,7 +14,7 @@ unit GLX.FileOBJ;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,7 +25,7 @@ uses
 
   GLX.XOpenGL,
   GLX.VectorTypes,
-  GLX.Strings,
+  Scene.Strings,
   GLX.Context,
   GLX.MeshUtils,
   GLX.Utils,

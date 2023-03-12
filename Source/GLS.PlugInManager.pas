@@ -8,7 +8,7 @@ unit GLS.PlugInManager;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.Windows,

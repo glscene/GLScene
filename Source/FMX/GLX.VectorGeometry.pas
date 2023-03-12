@@ -25,7 +25,7 @@ unit GLX.VectorGeometry;
 *)
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.SysUtils,

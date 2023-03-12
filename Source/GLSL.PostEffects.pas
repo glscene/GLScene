@@ -8,7 +8,7 @@ unit GLSL.PostEffects;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -22,7 +22,7 @@ uses
   GLS.PersistentClasses,
   GLS.Texture,
   GLS.Graphics,
-  GLS.Strings,
+  Scene.Strings,
   GLSL.CustomShader,
   GLS.VectorGeometry,
   GLS.RenderContextInfo,

@@ -7,7 +7,7 @@ unit GLSL.Shader;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,

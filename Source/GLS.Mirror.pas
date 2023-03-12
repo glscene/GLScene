@@ -9,7 +9,7 @@ unit GLS.Mirror;
 *)
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,

@@ -8,7 +8,7 @@ unit Formats.OCT;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

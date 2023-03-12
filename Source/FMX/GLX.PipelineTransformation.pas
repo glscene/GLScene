@@ -5,7 +5,7 @@ unit GLX.PipelineTransformation;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -14,7 +14,7 @@ uses
 
   GLX.VectorGeometry,
   GLX.VectorTypes,
-  GLX.Strings;
+  Scene.Strings;
 
 const
   MAX_MATRIX_STACK_DEPTH = 128;

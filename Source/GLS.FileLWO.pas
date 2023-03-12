@@ -7,7 +7,7 @@ unit GLS.FileLWO;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

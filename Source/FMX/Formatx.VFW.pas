@@ -46,7 +46,7 @@ interface
 
 {.$UNDEF UNICODE}
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
     Winapi.Windows,

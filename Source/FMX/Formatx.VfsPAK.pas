@@ -10,13 +10,13 @@ unit Formatx.VfsPAK;
 *)
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,
   System.Contnrs,
   System.SysUtils,
-  GLX.Strings,
+  Scene.Strings,
   GLX.ApplicationFileIO;
 
 const

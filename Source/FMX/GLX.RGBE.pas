@@ -7,7 +7,7 @@ unit GLX.RGBE;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,
@@ -16,7 +16,7 @@ uses
 
   GLX.VectorTypes,
   GLX.VectorGeometry,
-  GLX.Strings;
+  Scene.Strings;
 
 // Standard conversion from float pixels to rgbe pixels
 procedure Float2rgbe(var RGBE: TVector4b; const Red, Green, Blue: Single);

@@ -23,7 +23,7 @@ unit GLS.State;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 { .$DEFINE USE_CACHE_MISS_CHECK }
 
 uses

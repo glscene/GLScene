@@ -21,7 +21,7 @@ unit GLSLx.DiffuseSpecularShader;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,
@@ -30,7 +30,7 @@ uses
   GLX.Texture,
   GLX.Scene,
   GLX.VectorGeometry,
-  GLX.Strings,
+  Scene.Strings,
   GLSLx.CustomShader,
   GLSLx.Shader,
   GLX.Color,

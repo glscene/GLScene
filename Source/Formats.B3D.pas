@@ -7,7 +7,7 @@ unit Formats.B3D;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 {$R-}
 
 uses

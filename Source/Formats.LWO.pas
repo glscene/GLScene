@@ -206,7 +206,7 @@ Notes for improvement of this unit:
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

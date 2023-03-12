@@ -3,12 +3,14 @@
 //
 unit GLX.TextureFormat;
 
+(* Texture formats and functions *)
+
 interface
 
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
-  GLX.Strings;
+  Scene.Strings;
 
 type
   // Texture addressing rules
@@ -252,9 +254,6 @@ function IsTargetSupportMipmap(const glTarget: Cardinal): Boolean; overload;
 //---------------------------------------------------------------------------
 implementation
 //---------------------------------------------------------------------------
-
-uses
-  GLX.Context;
 
 type
 
@@ -529,7 +528,6 @@ begin
     GL_COMPRESSED_SIGNED_LUMINANCE_LATC1_EXT: Result := 8;
     GL_COMPRESSED_LUMINANCE_ALPHA_LATC2_EXT: Result := 16;
     GL_COMPRESSED_SIGNED_LUMINANCE_ALPHA_LATC2_EXT: Result := 16;
-///-    GL_COMPRESSED_LUMINANCE_ALPHA_3DC_ATI: Result := 16;
     GL_COMPRESSED_RED_RGTC1: Result := 8;
     GL_COMPRESSED_SIGNED_RED_RGTC1: Result := 8;
     GL_COMPRESSED_RG_RGTC2: Result := 16;

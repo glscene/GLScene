@@ -13,7 +13,7 @@ unit GLX.GeomObjects;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,

@@ -10,7 +10,7 @@ unit GLX.Octree;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

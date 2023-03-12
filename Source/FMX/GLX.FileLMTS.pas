@@ -5,7 +5,7 @@ unit GLX.FileLMTS;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

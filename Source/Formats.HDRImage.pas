@@ -12,7 +12,7 @@ unit Formats.HDRImage;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.Windows,

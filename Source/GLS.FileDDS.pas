@@ -7,7 +7,7 @@ unit GLS.FileDDS;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -26,7 +26,7 @@ uses
   GLS.ApplicationFileIO,
   GLS.VectorGeometry,
   GLS.Material,
-  GLS.Strings;
+  Scene.Strings;
 
 type
 

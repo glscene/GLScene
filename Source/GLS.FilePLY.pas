@@ -7,7 +7,7 @@ unit GLS.FilePLY;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

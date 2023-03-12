@@ -7,7 +7,7 @@ unit GLX.ROAMPatch;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.SysUtils,
@@ -17,7 +17,7 @@ uses
   GLX.XOpenGL,
   GLX.VectorGeometry,
   GLX.VectorLists,
-  GLX.Strings,
+  Scene.Strings,
   GLX.HeightData,
   GLX.Isolines,
   GLX.Context;

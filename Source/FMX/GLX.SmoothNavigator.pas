@@ -20,7 +20,7 @@ unit GLX.SmoothNavigator;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.Types,

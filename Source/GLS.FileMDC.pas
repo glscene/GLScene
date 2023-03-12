@@ -16,7 +16,7 @@ unit GLS.FileMDC;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes, 

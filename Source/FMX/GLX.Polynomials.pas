@@ -13,7 +13,7 @@ unit GLX.Polynomials;
 *)
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   GLX.VectorGeometry;

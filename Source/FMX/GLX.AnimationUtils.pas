@@ -7,7 +7,7 @@ unit GLX.AnimationUtils;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.SysUtils,

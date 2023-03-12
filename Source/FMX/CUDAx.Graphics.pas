@@ -222,7 +222,7 @@ implementation
 
 uses
   System.SysUtils,
-  GLX.Strings,
+  Scene.Strings,
   GLX.TextureFormat;
 
 

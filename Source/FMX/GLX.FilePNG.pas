@@ -5,7 +5,7 @@ unit GLX.FilePNG;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,

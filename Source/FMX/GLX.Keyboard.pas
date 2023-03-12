@@ -13,7 +13,7 @@ unit GLX.Keyboard;
 *)
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.Windows,

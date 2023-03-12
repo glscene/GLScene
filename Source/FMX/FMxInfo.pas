@@ -29,7 +29,7 @@ uses
   GLX.OpenGL,
   GLX.Scene,
   GLX.Context,
-  GLX.Strings;
+  Scene.Strings;
 
 type
   TInfoForm = class(TForm)

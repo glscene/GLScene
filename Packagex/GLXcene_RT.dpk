@@ -35,16 +35,14 @@ requires
 
 contains
   Formatx.B3D in '..\Source\FMX\Formatx.B3D.pas',
-  Formatx.m3DS in '..\Source\FMX\Formatx.m3DS.pas',
-  Formatx.m3DSConst in '..\Source\FMX\Formatx.m3DSConst.pas',
-  Formatx.m3DSTypes in '..\Source\FMX\Formatx.m3DSTypes.pas',
-  Formatx.m3DSUtils in '..\Source\FMX\Formatx.m3DSUtils.pas',
+  Formats.m3DS in '..\Source\Formats.m3DS.pas',
+  Formats.m3DSConst in '..\Source\Formats.m3DSConst.pas',
+  Formats.m3DSTypes in '..\Source\Formats.m3DSTypes.pas',
+  Formats.m3DSUtils in '..\Source\Formats.m3DSUtils.pas',
   Formatx.DDSImage in '..\Source\FMX\Formatx.DDSImage.pas',
   Formatx.HDRImage in '..\Source\FMX\Formatx.HDRImage.pas',
   Formatx.LWObjects in '..\Source\FMX\Formatx.LWObjects.pas',
   Formatx.MD3 in '..\Source\FMX\Formatx.MD3.pas',
-  Formatx.O3TCImage in '..\Source\FMX\Formatx.O3TCImage.pas',
-  Formatx.OCT in '..\Source\FMX\Formatx.OCT.pas',
   Formatx.Q3MD3 in '..\Source\FMX\Formatx.Q3MD3.pas',
   Formatx.X in '..\Source\FMX\Formatx.X.pas',
   Formatx.DXTC in '..\Source\FMX\Formatx.DXTC.pas',
@@ -116,7 +114,6 @@ contains
   GLX.FileMS3D in '..\Source\FMX\GLX.FileMS3D.pas',
   GLX.FileNMF in '..\Source\FMX\GLX.FileNMF.pas',
   GLX.FileNurbs in '..\Source\FMX\GLX.FileNurbs.pas',
-  GLX.FileO3TC in '..\Source\FMX\GLX.FileO3TC.pas',
   GLX.FileOBJ in '..\Source\FMX\GLX.FileOBJ.pas',
   GLX.FileOCT in '..\Source\FMX\GLX.FileOCT.pas',
   GLX.FilePLY in '..\Source\FMX\GLX.FilePLY.pas',
@@ -249,7 +246,6 @@ contains
   GLX.RGBE in '..\Source\FMX\GLX.RGBE.pas',
   GLX.SpacePartition in '..\Source\FMX\GLX.SpacePartition.pas',
   GLX.Spline in '..\Source\FMX\GLX.Spline.pas',
-  GLX.Strings in '..\Source\FMX\GLX.Strings.pas',
   GLX.VectorTypesExt in '..\Source\FMX\GLX.VectorTypesExt.pas',
   GLX.VectorGeometry in '..\Source\FMX\GLX.VectorGeometry.pas',
   GLX.VectorLists in '..\Source\FMX\GLX.VectorLists.pas',
@@ -259,7 +255,10 @@ contains
   GLX.GeometryBB in '..\Source\FMX\GLX.GeometryBB.pas',
   GLX.GeometryCoordinates in '..\Source\FMX\GLX.GeometryCoordinates.pas',
   GLX.OpenGL in '..\Source\FMX\GLX.OpenGL.pas',
+  Scene.Strings in '..\Source\Scene.Strings.pas',
   Vulkan.Import in '..\Source\Common\Vulkan.Import.pas',
-  GLSLx.Parameter in '..\Source\FMX\GLSLx.Parameter.pas';
+  GLSLx.Parameter in '..\Source\FMX\GLSLx.Parameter.pas',
+  GLX.File3DS in '..\Source\FMX\GLX.File3DS.pas',
+  Formatx.OCT in '..\Source\FMX\Formatx.OCT.pas';
 
 end.

@@ -10,7 +10,7 @@ unit GLX.Trail;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,
@@ -24,7 +24,7 @@ uses
   GLX.Mesh,
   GLX.Objects,
   GLX.Material,
-  GLX.Strings,
+  Scene.Strings,
   GLX.BaseClasses;
 
 const

@@ -16,8 +16,6 @@
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.RenderContextInfo.hpp"
-#include <gl\gl.h>
-
 
 
 //---------------------------------------------------------------------------

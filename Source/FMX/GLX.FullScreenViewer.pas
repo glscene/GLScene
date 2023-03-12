@@ -7,7 +7,7 @@ unit GLX.FullScreenViewer;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.Messages,

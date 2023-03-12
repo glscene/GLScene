@@ -14,7 +14,7 @@ unit GLS.Graphics;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -40,7 +40,7 @@ uses
   GLS.TextureFormat,
   GLS.VectorGeometry,
   GLS.Utils,
-  GLS.Strings,
+  Scene.Strings,
   GLS.Logger;
 
 {$DEFINE PRF_HACK_PASSES}

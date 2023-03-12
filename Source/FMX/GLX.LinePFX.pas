@@ -7,7 +7,7 @@ unit GLX.LinePFX;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,

@@ -8,7 +8,7 @@ unit GLX.RegisterXCollection;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

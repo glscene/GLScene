@@ -24,7 +24,7 @@ uses
   GLSLx.Parameter,
   GLX.TextureFormat,
   GLX.VectorGeometry,
-  GLX.Strings;
+  Scene.Strings;
 
 type
   TShaderUniformEditorForm = class(TForm)

@@ -8,7 +8,7 @@ unit GLS.Blur;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -167,7 +167,7 @@ implementation
 uses
   GLS.Coordinates,
   GLS.PersistentClasses,
-  GLS.Strings,
+  Scene.Strings,
   GLS.OpenGLAdapter;
 
 const

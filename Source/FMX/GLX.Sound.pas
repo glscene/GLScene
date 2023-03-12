@@ -21,7 +21,7 @@ uses
   GLX.BaseClasses,
   GLX.Utils;
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 type
 

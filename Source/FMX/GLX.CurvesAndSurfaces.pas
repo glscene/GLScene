@@ -7,12 +7,12 @@ unit GLX.CurvesAndSurfaces;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.SysUtils,
   System.Math,
-  GLX.Strings,
+  Scene.Strings,
   GLX.VectorGeometry,
   GLX.VectorLists;
 

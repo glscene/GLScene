@@ -7,7 +7,7 @@ unit FRColorEditor;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   WinApi.Windows, 

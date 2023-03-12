@@ -28,7 +28,7 @@ unit GLS.SpacePartition;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,

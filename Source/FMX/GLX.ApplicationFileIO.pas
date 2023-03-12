@@ -8,7 +8,7 @@ unit GLX.ApplicationFileIO;
 *)
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.Windows,
@@ -16,7 +16,7 @@ uses
   System.SysUtils,
 
   GLX.BaseClasses,
-  GLX.Strings;
+  Scene.Strings;
 
 const
   RC_DDS_Type = RT_RCDATA;

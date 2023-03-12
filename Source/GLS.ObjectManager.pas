@@ -15,7 +15,7 @@ unit GLS.ObjectManager;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

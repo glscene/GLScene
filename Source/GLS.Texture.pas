@@ -7,7 +7,7 @@ unit GLS.Texture;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -33,7 +33,7 @@ uses
   GLS.TextureFormat,
   GLS.ApplicationFileIO,
   GLS.Utils,
-  GLS.Strings;
+  Scene.Strings;
 
 const
   cDefaultNormalMapScale = 0.125;

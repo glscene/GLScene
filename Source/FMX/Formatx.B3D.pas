@@ -7,7 +7,7 @@ unit Formatx.B3D;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 {$R-}
 
 uses

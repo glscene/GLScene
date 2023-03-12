@@ -11,7 +11,7 @@ unit GLS.FileQ3BSP;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

@@ -1,14 +1,13 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLSL.PhongShader;
 
 (*  An ARBvp1.0 + ARBfp1.0 shader that implements phong shading. *)
 
 interface
 
-{$I GLScene.inc }
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,

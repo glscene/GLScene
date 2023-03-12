@@ -17,7 +17,7 @@ uses
 
   CUDAx.API,
   CUDAx.Context,
-  GLX.Strings;
+  Scene.Strings;
 
 type
 

@@ -7,7 +7,7 @@ unit GLX.MaterialScript;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.SysUtils,

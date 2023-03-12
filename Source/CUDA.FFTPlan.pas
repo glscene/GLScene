@@ -7,7 +7,7 @@ unit CUDA.FFTPlan;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,
@@ -18,7 +18,7 @@ uses
   CUDA.APIComps,
   CUDA.FourierTransform,
 
-  GLS.Strings,
+  Scene.Strings,
   GLS.Logger;
 
 type

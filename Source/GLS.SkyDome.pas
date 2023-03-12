@@ -7,7 +7,7 @@ unit GLS.SkyDome;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,

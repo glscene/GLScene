@@ -21,7 +21,7 @@ unit GLS.Tree;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,

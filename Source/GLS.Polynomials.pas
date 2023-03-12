@@ -22,7 +22,7 @@ unit GLS.Polynomials;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   GLS.VectorGeometry;

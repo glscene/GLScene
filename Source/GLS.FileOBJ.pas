@@ -10,7 +10,7 @@ unit GLS.FileOBJ;
 *)
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 {.$DEFINE STATS} // Define to display statistics after loading.
 
@@ -102,7 +102,7 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLS.Strings,
+  Scene.Strings,
   GLS.OpenGLTokens,
   GLS.XOpenGL,
   GLS.Context,

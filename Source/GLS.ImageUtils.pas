@@ -1,7 +1,6 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.ImageUtils;
 
 (* Main purpose is as a fallback in cases where there is no other way to process images *)
@@ -16,7 +15,7 @@ unit GLS.ImageUtils;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -24,9 +23,8 @@ uses
   System.SysUtils,
   System.Classes,
   System.Math,
-
   GLS.OpenGLTokens,
-  GLS.Strings,
+  Scene.Strings,
   GLS.TextureFormat,
   GLS.VectorGeometry,
   GLS.Utils;
@@ -80,7 +78,6 @@ procedure AlphaGammaBrightCorrection(const ASrc: Pointer; AColorFormat: Cardinal
 //------------------------------------------------------------------------------
 implementation
 //------------------------------------------------------------------------------
-
 const
   cSuperBlack: TIntermediateFormat = (R: 0.0; G: 0.0; B: 0.0; A: 0.0);
 
@@ -4424,7 +4421,7 @@ type
   end;
 
 const
-  cConvertTable: array [0 .. 36] of TConvertTableRec = (
+  cConvertTable: array [0 .. 35] of TConvertTableRec = (
     (type_: GL_UNSIGNED_BYTE; proc1: UbyteToImf; proc2: ImfToUbyte),
 
     (type_: GL_UNSIGNED_BYTE_3_3_2; proc1: Ubyte332ToImf; proc2: UnsupportedFromImf),
@@ -4488,8 +4485,6 @@ const
     (type_: GL_COMPRESSED_LUMINANCE_ALPHA_LATC2_EXT; proc1: LATC2_ToImf; proc2: UnsupportedFromImf),
 
     (type_: GL_COMPRESSED_SIGNED_LUMINANCE_ALPHA_LATC2_EXT; proc1: SLATC2_ToImf; proc2: UnsupportedFromImf),
-
-    (type_: GL_COMPRESSED_LUMINANCE_ALPHA_3DC_ATI; proc1: UnsupportedToImf; proc2: UnsupportedFromImf),
 
     (type_: GL_COMPRESSED_RED_RGTC1; proc1: RGTC1_ToImf; proc2: UnsupportedFromImf),
 

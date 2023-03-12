@@ -20,7 +20,7 @@ unit Sounds.OpenAL;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

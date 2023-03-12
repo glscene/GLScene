@@ -7,7 +7,7 @@ unit GLS.Color;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Types,

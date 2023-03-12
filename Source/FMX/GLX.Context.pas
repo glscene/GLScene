@@ -10,7 +10,7 @@ unit GLX.Context;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -30,7 +30,7 @@ uses
  // GXL.OpenGLx,
   GLX.Generics,
   GLX.VectorGeometry,
-  GLX.Strings,
+  Scene.Strings,
   GLX.VectorTypes,
   GLX.State,
   GLX.PipelineTransformation,

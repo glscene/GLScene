@@ -7,7 +7,7 @@ unit GLS.VectorLists;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

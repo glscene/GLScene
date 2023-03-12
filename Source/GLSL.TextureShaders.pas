@@ -31,7 +31,7 @@ uses
   GLS.VectorGeometry,
   GLS.Color,
   GLS.Material,
-  GLS.Strings,
+  Scene.Strings,
   GLS.VectorFileObjects,
   GLS.XOpenGL,
   GLS.State,

@@ -10,7 +10,7 @@ unit GLX.VectorFileObjects;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -26,7 +26,7 @@ uses
   GLX.PersistentClasses,
   GLX.VectorTypes,
   GLX.VectorGeometry,
-  GLX.Strings,
+  Scene.Strings,
   GLX.GeometryBB,
   GLX.ApplicationFileIO,
 

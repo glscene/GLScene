@@ -25,7 +25,7 @@ unit GLS.DCE;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,
@@ -45,7 +45,7 @@ uses
   GLS.MultiProxy,
   GLS.Manager,
   GLS.VectorTypes,
-  GLS.Strings;
+  Scene.Strings;
 
 type
   // Only csEllipsoid can have dynamic behaviour

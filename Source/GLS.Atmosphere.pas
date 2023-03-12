@@ -11,7 +11,7 @@ unit GLS.Atmosphere;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -24,7 +24,7 @@ uses
   GLS.Cadencer,
   GLS.VectorGeometry,
   GLS.Context,
-  GLS.Strings,
+  Scene.Strings,
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.State,

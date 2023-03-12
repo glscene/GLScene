@@ -11,7 +11,7 @@ unit GLS.Octree;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Math,

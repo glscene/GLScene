@@ -8,7 +8,7 @@ unit GLS.FileDEL;
 *)
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

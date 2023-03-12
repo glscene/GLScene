@@ -39,7 +39,7 @@ unit GLS.Console;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.Windows,
@@ -58,7 +58,7 @@ uses
   GLS.Context,
   GLS.Texture,
   GLS.Utils,
-  GLS.Strings,
+  Scene.Strings,
   GLS.Material,
   GLS.VectorTypes;
 

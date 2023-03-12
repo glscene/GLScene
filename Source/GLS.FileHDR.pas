@@ -8,7 +8,7 @@ unit GLS.FileHDR;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,

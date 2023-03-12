@@ -12,7 +12,7 @@ unit GLSLx.CustomShader;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,7 +25,7 @@ uses
   GLX.Texture, 
   GLX.Cadencer, 
   GLX.Scene,
-  GLX.Strings, 
+  Scene.Strings, 
   GLX.Context,
   GLX.RenderContextInfo,
   GLX.Material,

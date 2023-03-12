@@ -15,7 +15,7 @@ unit GLX.MeshCSG;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.SysUtils, 

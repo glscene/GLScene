@@ -7,7 +7,7 @@ unit GLX.AVIRecorder;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.Windows,

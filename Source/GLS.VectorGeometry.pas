@@ -25,7 +25,7 @@ unit GLS.VectorGeometry;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.SysUtils,

@@ -24,7 +24,7 @@ unit GLS.MaterialMultiProxy;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -36,7 +36,7 @@ uses
   GLS.Texture,
   GLS.Material,
   GLS.Silhouette,
-  GLS.Strings,
+  Scene.Strings,
   GLS.PersistentClasses,
   GLS.RenderContextInfo,
   GLS.BaseClasses,

@@ -7,7 +7,7 @@ unit Formatx.TGA;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,7 +16,7 @@ uses
   System.SysUtils,
 
   GLX.ApplicationFileIO,
-  GLX.Strings,
+  Scene.Strings,
 
   GLX.Context,
   GLX.Graphics,

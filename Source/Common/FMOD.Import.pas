@@ -25,7 +25,7 @@ unit FMOD.Import;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
 

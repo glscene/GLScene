@@ -7,7 +7,7 @@ unit GLX.Cadencer;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.Windows,

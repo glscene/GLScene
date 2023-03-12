@@ -13,7 +13,7 @@ unit GLX.VerletTypes;
 *)
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

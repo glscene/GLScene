@@ -16,7 +16,7 @@ unit GLX.Objects;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -32,7 +32,7 @@ uses
   GLX.VectorGeometry,
   GLX.VectorTypes,
   GLX.VectorLists,
-  GLX.Strings,
+  Scene.Strings,
 
   GLX.Scene,
   GLX.Context,

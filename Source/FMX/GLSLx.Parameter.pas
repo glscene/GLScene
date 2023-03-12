@@ -5,7 +5,7 @@ unit GLSLx.Parameter;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 {$M-}
 
 uses

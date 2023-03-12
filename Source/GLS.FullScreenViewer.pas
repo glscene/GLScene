@@ -8,7 +8,7 @@ unit GLS.FullScreenViewer;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.Windows,

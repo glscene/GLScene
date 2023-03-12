@@ -18,7 +18,7 @@ unit GLX.Feedback;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -31,7 +31,7 @@ uses
   GLX.VectorGeometry,
   GLX.VectorLists,
   GLX.VectorTypes,
-  GLX.Strings,
+  Scene.Strings,
   GLX.Scene,
   GLX.VectorFileObjects,
   GLX.Texture,

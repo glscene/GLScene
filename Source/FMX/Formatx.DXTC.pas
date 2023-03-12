@@ -7,7 +7,7 @@ unit Formatx.DXTC;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 {$Z4}  // Minimum enum size = dword
 

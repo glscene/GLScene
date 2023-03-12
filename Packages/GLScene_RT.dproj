@@ -215,8 +215,6 @@
         <DCCReference Include="..\Source\GLS.FileMS3D.pas"/>
         <DCCReference Include="..\Source\GLS.FileNMF.pas"/>
         <DCCReference Include="..\Source\GLS.FileNurbs.pas"/>
-        <DCCReference Include="..\Source\GLS.FileO3TC.pas"/>
-        <DCCReference Include="..\Source\GLS.FileO3TCImage.pas"/>
         <DCCReference Include="..\Source\GLS.FileOBJ.pas"/>
         <DCCReference Include="..\Source\GLS.FileOCT.pas"/>
         <DCCReference Include="..\Source\GLS.FilePAK.pas"/>
@@ -367,7 +365,7 @@
         <DCCReference Include="..\Source\GLS.VectorTypes.pas"/>
         <DCCReference Include="..\Source\GLS.ScriptBase.pas"/>
         <DCCReference Include="..\Source\GLS.Spline.pas"/>
-        <DCCReference Include="..\Source\GLS.Strings.pas"/>
+        <DCCReference Include="..\Source\Scene.Strings.pas"/>
         <DCCReference Include="..\Source\GLS.XCollection.pas"/>
         <DCCReference Include="..\Source\GLS.XOpenGL.pas"/>
         <DCCReference Include="..\Source\Common\PasGLTF.pas"/>

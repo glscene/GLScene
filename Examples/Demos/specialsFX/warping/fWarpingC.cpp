@@ -20,14 +20,24 @@
 TForm1 *Form1;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
-        : TForm(Owner)
+		: TForm(Owner)
 {
-  TFileName Path = GetCurrentAssetPath();
+  PathToTexture = GetCurrentAssetPath() + "\\texture";
 }
+
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormCreate(TObject *Sender)
+{
+   warpX = -1000;
+   warpY = -1000;
+   warpRadius = 20;
+}
+
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::HeightFieldGetHeight(const float x, const float y,
-      float &z, TVector4f &color, TTexPoint &texPoint)
+	  float &z, TVector4f &color, TTexPoint &texPoint)
 {
    // Here is the warping function
    // it basicly converts current pixel coords (x, y) to deformed coords (dx, dy)
@@ -37,11 +47,11 @@ void __fastcall TForm1::HeightFieldGetHeight(const float x, const float y,
 
    switch (warpEffect)
    {
-      case 0 : { // the "zoom" effect
-         d = 1.0-exp(-sqrt((x-warpX)*(x-warpX)+(y-warpY)*(y-warpY))/warpRadius);
-         dx = x*d+warpX*(1-d);
-         dy = y*d+warpY*(1-d);
-         break;
+	  case 0 : { // the "zoom" effect
+		 d = 1.0-exp(-sqrt((x-warpX)*(x-warpX)+(y-warpY)*(y-warpY))/warpRadius);
+		 dx = x*d+warpX*(1-d);
+		 dy = y*d+warpY*(1-d);
+		 break;
       }
       case 1 : { // the "spin" effect
 		 vec.X = x-warpX;
@@ -87,7 +97,7 @@ void __fastcall TForm1::MIOpenImageFileClick(TObject *Sender)
          GLCamera->FocalLength = 100.0/picture->Width;
       }
       __finally
-      {
+	  {
          delete picture;
       }
    }
@@ -116,7 +126,7 @@ void __fastcall TForm1::MISaveCurrentImageClick(TObject *Sender)
    }
    __finally
    {
-      delete bmp32;
+	  delete bmp32;
    }
 }
 //---------------------------------------------------------------------------
@@ -144,14 +154,9 @@ void __fastcall TForm1::GLSceneViewerMouseMove(TObject *Sender,
       GLSceneViewer->Refresh();
    }
 }
+
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
-{
-   warpX = -1000;
-   warpY = -1000;
-   warpRadius = 20;        
-}
-//---------------------------------------------------------------------------
+
 void __fastcall TForm1::MIQualityOptionClick(TObject *Sender)
 {
    ((TMenuItem *) Sender)->Checked = true;

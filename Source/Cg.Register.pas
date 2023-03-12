@@ -7,7 +7,7 @@ unit Cg.Register;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

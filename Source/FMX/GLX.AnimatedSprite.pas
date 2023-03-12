@@ -7,7 +7,7 @@ unit GLX.AnimatedSprite;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -21,7 +21,7 @@ uses
   GLX.VectorTypes,
   GLX.VectorGeometry,
   GLX.PersistentClasses,
-  GLX.Strings,
+  Scene.Strings,
 
   GLX.Scene,
   GLX.Context,

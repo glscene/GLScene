@@ -9,7 +9,7 @@ unit Formats.MD2;
 interface
 
 {$R-}
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

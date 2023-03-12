@@ -21,7 +21,7 @@ unit GLSL.ProjectedTextures;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

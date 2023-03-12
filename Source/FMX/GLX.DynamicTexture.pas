@@ -10,7 +10,7 @@ unit GLX.DynamicTexture;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -21,7 +21,7 @@ uses
   System.Types,
 
   GLX.VectorGeometry,
-  GLX.Strings,
+  Scene.Strings,
 
   GLX.Context,
   GLX.Texture,

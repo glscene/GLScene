@@ -11,7 +11,7 @@ unit GLS.BumpmapHDS;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

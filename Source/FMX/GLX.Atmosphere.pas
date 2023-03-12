@@ -13,7 +13,7 @@ unit GLX.Atmosphere;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,7 +25,7 @@ uses
   GLX.Cadencer,
   GLX.VectorGeometry,
   GLX.Context,
-  GLX.Strings,
+  Scene.Strings,
   GLX.Color,
   GLX.RenderContextInfo,
   GLX.State,

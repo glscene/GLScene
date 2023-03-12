@@ -7,7 +7,7 @@ unit GLX.Scene;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -32,7 +32,7 @@ uses
   GLX.PersistentClasses,
   GLX.GeometryBB,
   GLX.ApplicationFileIO,
-  GLX.Strings,
+  Scene.Strings,
 
   GLX.Context,
   GLX.Silhouette,

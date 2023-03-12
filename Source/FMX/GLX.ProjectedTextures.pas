@@ -7,7 +7,7 @@ unit GLX.ProjectedTextures;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,

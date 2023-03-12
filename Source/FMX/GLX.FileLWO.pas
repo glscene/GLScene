@@ -7,7 +7,7 @@ unit GLX.FileLWO;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.SysUtils,

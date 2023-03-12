@@ -9,7 +9,7 @@ unit GLX.VectorTypesExt;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.Types,

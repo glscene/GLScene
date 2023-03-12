@@ -8,7 +8,7 @@ unit Formatx.MD2;
 interface
 
 {$R-}
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

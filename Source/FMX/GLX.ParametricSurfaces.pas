@@ -28,7 +28,7 @@ unit GLX.ParametricSurfaces;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,

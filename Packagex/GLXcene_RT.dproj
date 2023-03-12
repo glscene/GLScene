@@ -155,16 +155,14 @@
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="fmx.dcp"/>
         <DCCReference Include="..\Source\FMX\Formatx.B3D.pas"/>
-        <DCCReference Include="..\Source\FMX\Formatx.m3DS.pas"/>
-        <DCCReference Include="..\Source\FMX\Formatx.m3DSConst.pas"/>
-        <DCCReference Include="..\Source\FMX\Formatx.m3DSTypes.pas"/>
-        <DCCReference Include="..\Source\FMX\Formatx.m3DSUtils.pas"/>
+        <DCCReference Include="..\Source\Formats.m3DS.pas"/>
+        <DCCReference Include="..\Source\Formats.m3DSConst.pas"/>
+        <DCCReference Include="..\Source\Formats.m3DSTypes.pas"/>
+        <DCCReference Include="..\Source\Formats.m3DSUtils.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.DDSImage.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.HDRImage.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.LWObjects.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.MD3.pas"/>
-        <DCCReference Include="..\Source\FMX\Formatx.O3TCImage.pas"/>
-        <DCCReference Include="..\Source\FMX\Formatx.OCT.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.Q3MD3.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.X.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.DXTC.pas"/>
@@ -236,7 +234,6 @@
         <DCCReference Include="..\Source\FMX\GLX.FileMS3D.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.FileNMF.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.FileNurbs.pas"/>
-        <DCCReference Include="..\Source\FMX\GLX.FileO3TC.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.FileOBJ.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.FileOCT.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.FilePLY.pas"/>
@@ -369,7 +366,6 @@
         <DCCReference Include="..\Source\FMX\GLX.RGBE.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.SpacePartition.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.Spline.pas"/>
-        <DCCReference Include="..\Source\FMX\GLX.Strings.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.VectorTypesExt.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.VectorGeometry.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.VectorLists.pas"/>
@@ -379,8 +375,11 @@
         <DCCReference Include="..\Source\FMX\GLX.GeometryBB.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.GeometryCoordinates.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.OpenGL.pas"/>
+        <DCCReference Include="..\Source\Scene.Strings.pas"/>
         <DCCReference Include="..\Source\Common\Vulkan.Import.pas"/>
         <DCCReference Include="..\Source\FMX\GLSLx.Parameter.pas"/>
+        <DCCReference Include="..\Source\FMX\GLX.File3DS.pas"/>
+        <DCCReference Include="..\Source\FMX\Formatx.OCT.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -9,7 +9,7 @@ unit GLS.Canvas;
 *)
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,

@@ -28,7 +28,7 @@ unit GLSL.BumpShaders;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -53,7 +53,7 @@ uses
   GLS.Scene,
   GLS.Context,
   GLS.Cadencer,
-  GLS.Strings,
+  Scene.Strings,
   GLSL.Shader,
   GLSL.CustomShader,
   GLS.Utils;

@@ -17,7 +17,7 @@ unit GLX.ImageUtils;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -26,7 +26,7 @@ uses
   System.Classes,
   System.Math,
 
-  GLX.Strings,
+  Scene.Strings,
   GLX.VectorGeometry,
 
   GLX.Utils,

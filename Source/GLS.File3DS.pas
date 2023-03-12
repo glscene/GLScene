@@ -7,15 +7,15 @@ unit GLS.File3DS;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Math,
-
+  
+  Scene.Strings,
   GLS.OpenGLTokens,
-  GLS.Strings,
   GLS.Scene,
   GLS.Objects,
   GLS.VectorFileObjects,
@@ -288,7 +288,6 @@ implementation
 const
   cGLFILE3DS_FIXDEFAULTUPAXISY_ROTATIONVALUE = PI / 2;
   CGLFILE3DS_DEFAULT_FRAME = 0;
-
 function AnimKeysClassTypeToClass(const AAnimKeysClassType: TGLFile3DSAnimKeysClassType): TClass;
 begin
   case AAnimKeysClassType of

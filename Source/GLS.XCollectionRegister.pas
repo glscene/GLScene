@@ -7,7 +7,7 @@ unit GLS.XCollectionRegister;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

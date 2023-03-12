@@ -18,7 +18,7 @@ unit GLS.MaterialEx;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -47,7 +47,7 @@ uses
   GLS.TextureCombiners,
   GLSL.ShaderParameter,
   GLS.ApplicationFileIO,
-  GLS.Strings,
+  Scene.Strings,
   GLS.ImageUtils,
   GLS.Utils,
   GLS.XOpenGL,

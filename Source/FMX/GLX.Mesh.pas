@@ -13,7 +13,7 @@ unit GLX.Mesh;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -26,7 +26,7 @@ uses
   GLX.XOpenGL,
   GLX.BaseClasses,
   GLX.VectorTypes,
-  GLX.Strings,
+  Scene.Strings,
   GLX.Context,
   GLX.Scene,
   GLX.VectorGeometry,

@@ -7,7 +7,7 @@ unit GLX.Coordinates;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,7 +18,7 @@ uses
   GLX.VectorGeometry,
   GLX.VectorTypes,
   GLX.BaseClasses,
-  GLX.Strings;
+  Scene.Strings;
 
 type
   (* Identifies the type of data stored within a TgxCustomCoordinates.

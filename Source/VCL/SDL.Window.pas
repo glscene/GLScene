@@ -14,7 +14,7 @@ unit SDL.Window;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

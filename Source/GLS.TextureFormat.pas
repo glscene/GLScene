@@ -12,8 +12,8 @@ uses
   Winapi.OpenGLext,
 
   GLS.VectorTypes,
-  GLS.OpenGLTokens,
-  GLS.Strings;
+//  GLS.OpenGLTokens,
+  Scene.Strings;
 
 type
   // Texture addressing rules
@@ -128,7 +128,6 @@ type
     tfCOMPRESSED_SIGNED_LUMINANCE_LATC1,
     tfCOMPRESSED_LUMINANCE_ALPHA_LATC2,
     tfCOMPRESSED_SIGNED_LUMINANCE_ALPHA_LATC2,
-    tfCOMPRESSED_LUMINANCE_ALPHA_3DC,
     tfRGBA32UI,
     tfRGB32UI,
     tfALPHA32UI,
@@ -229,8 +228,7 @@ procedure FindCompatibleDataFormat(intFormat: TGLInternalFormat; out dFormat:
   TGLuint; out dType: TGLUint);
 (* Give a compressed openGL texture format from GLScene texture format
   if format is have not compression than return same openGL format *)
-function CompressedInternalFormatToOpenGL(intFormat: TGLInternalFormat):
-  Integer;
+function CompressedInternalFormatToOpenGL(intFormat: TGLInternalFormat): Integer;
 // True if texture target supported
 function IsTargetSupported(glTarget: Cardinal): Boolean; overload;
 function IsTargetSupported(target: TGLTextureTarget): Boolean; overload;
@@ -262,7 +260,6 @@ implementation
 
 uses
   GLS.Context;
-
 
 type
 
@@ -376,7 +373,6 @@ const
     (IntFmt: GL_COMPRESSED_SIGNED_LUMINANCE_LATC1_EXT; ClrFmt: GL_COMPRESSED_SIGNED_LUMINANCE_LATC1_EXT; DataFmt: GL_COMPRESSED_SIGNED_LUMINANCE_LATC1_EXT; RBit: 0; GBit: 0; BBit: 0; ABit: 0; LBit: 8; DBit: 0; Sign: True; Flt: False; Fix: False; Comp: True),
     (IntFmt: GL_COMPRESSED_LUMINANCE_ALPHA_LATC2_EXT; ClrFmt: GL_COMPRESSED_LUMINANCE_ALPHA_LATC2_EXT; DataFmt: GL_COMPRESSED_LUMINANCE_ALPHA_LATC2_EXT; RBit: 0; GBit: 0; BBit: 0; ABit: 8; LBit: 8; DBit: 0; Sign: False; Flt: False; Fix: False; Comp: True),
     (IntFmt: GL_COMPRESSED_SIGNED_LUMINANCE_ALPHA_LATC2_EXT; ClrFmt: GL_COMPRESSED_SIGNED_LUMINANCE_ALPHA_LATC2_EXT; DataFmt: GL_COMPRESSED_SIGNED_LUMINANCE_ALPHA_LATC2_EXT; RBit: 0; GBit: 0; BBit: 0; ABit: 8; LBit: 8; DBit: 0; Sign: True; Flt: False; Fix: False; Comp: True),
-    (IntFmt: GL_COMPRESSED_LUMINANCE_ALPHA_3DC_ATI; ClrFmt: GL_COMPRESSED_LUMINANCE_ALPHA_3DC_ATI; DataFmt: GL_COMPRESSED_LUMINANCE_ALPHA_3DC_ATI; RBit: 0; GBit: 0; BBit: 0; ABit: 8; LBit: 8; DBit: 0; Sign: False; Flt: False; Fix: False; Comp: True),
     (IntFmt: GL_RGBA32UI; ClrFmt: GL_RGBA_INTEGER; DataFmt: GL_UNSIGNED_INT; RBit: 32; GBit: 32; BBit: 32; ABit: 32; LBit: 0; DBit: 0; Sign: False; Flt: False; Fix: True; Comp: False),
     (IntFmt: GL_RGB32UI; ClrFmt: GL_RGB_INTEGER; DataFmt: GL_UNSIGNED_INT; RBit: 32; GBit: 32; BBit: 32; ABit: 0; LBit: 0; DBit: 0; Sign: False; Flt: False; Fix: True; Comp: False),
     (IntFmt: GL_ALPHA32UI_EXT; ClrFmt: GL_ALPHA_INTEGER; DataFmt: GL_UNSIGNED_INT; RBit: 0; GBit: 0; BBit: 0; ABit: 32; LBit: 0; DBit: 0; Sign: False; Flt: False; Fix: True; Comp: False),
@@ -538,7 +534,6 @@ begin
     GL_COMPRESSED_SIGNED_LUMINANCE_LATC1_EXT: Result := 8;
     GL_COMPRESSED_LUMINANCE_ALPHA_LATC2_EXT: Result := 16;
     GL_COMPRESSED_SIGNED_LUMINANCE_ALPHA_LATC2_EXT: Result := 16;
-    GL_COMPRESSED_LUMINANCE_ALPHA_3DC_ATI: Result := 16;
     GL_COMPRESSED_RED_RGTC1: Result := 8;
     GL_COMPRESSED_SIGNED_RED_RGTC1: Result := 8;
     GL_COMPRESSED_RG_RGTC2: Result := 16;
@@ -691,12 +686,6 @@ begin
     tfCOMPRESSED_SIGNED_LUMINANCE_ALPHA_LATC2)) then
   begin
     Result := GL.EXT_texture_compression_latc;
-    EXIT;
-  end;
-
-  if intFormat = tfCOMPRESSED_LUMINANCE_ALPHA_3DC then
-  begin
-    Result := GL.ATI_texture_compression_3dc;
     EXIT;
   end;
 
@@ -858,11 +847,6 @@ begin
       begin
         colorFormat := GL_LUMINANCE_ALPHA;
         internalFormat := tfSIGNED_LUMINANCE8_ALPHA8;
-      end;
-    tfCOMPRESSED_LUMINANCE_ALPHA_3DC:
-      begin
-        colorFormat := GL_LUMINANCE_ALPHA;
-        internalFormat := tfLUMINANCE8_ALPHA8;
       end;
     tfCOMPRESSED_RED_RGTC1:
       begin

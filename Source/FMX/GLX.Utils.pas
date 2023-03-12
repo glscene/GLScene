@@ -7,7 +7,7 @@ unit GLX.Utils;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.Windows,
@@ -29,7 +29,7 @@ uses
 
 
   GLX.VectorGeometry,
-  GLX.Strings,
+  Scene.Strings,
   GLX.ApplicationFileIO;
 
 type

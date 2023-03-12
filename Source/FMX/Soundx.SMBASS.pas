@@ -14,7 +14,7 @@ unit Soundx.SMBASS;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.Windows,

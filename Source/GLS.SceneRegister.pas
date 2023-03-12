@@ -8,7 +8,7 @@ unit GLS.SceneRegister;
 *)
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   WinApi.Windows,
@@ -31,7 +31,7 @@ uses
   GLS.Color,
   GLS.ObjectManager,
   GLS.PluginManager,
-  GLS.Strings;
+  Scene.Strings;
 
 type
   TGLLibMaterialNameProperty = class(TStringProperty)
@@ -420,7 +420,6 @@ uses
 
 //----------------- Raster file format
   GLS.FileDDS,
-  GLS.FileO3TC,
   GLS.FileHDR,
   GLS.FileJPEG,
   GLS.FilePNG,

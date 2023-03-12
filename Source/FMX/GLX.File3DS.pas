@@ -1,23 +1,21 @@
 //
-//
 // The graphics platform GLXcene https://github.com/glscene
 //
-//
-
 unit GLX.File3DS;
 
 (* 3DStudio 3DS vector file format implementation *)
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Math,
-
-  GXL.OpenGLx,
+  
+  Scene.Strings,
+  GLX.OpenGL,
   GLX.Scene,
   GLX.Objects,
   GLX.VectorFileObjects,
@@ -26,15 +24,14 @@ uses
   GLX.VectorGeometry,
   GLX.Context,
   GLX.PersistentClasses,
-  GLX.Strings,
   GLX.File3DSSceneObjects,
   GLX.VectorTypes,
   GLX.VectorLists,
   GLX.RenderContextInfo,
   GLX.Material,
 
-  Formats.File3DS,
-  Formats.File3DSTypes;
+  Formats.m3DS,
+  Formats.m3DSTypes;
 
 type
 
@@ -57,17 +54,12 @@ type
     FKeys: array of TKeyHeader3DS;
     procedure InterpolateFrame(var I: integer; var w: real; const AFrame: real);
   protected
-    function InterpolateValue(const AValues: array of single;
-      const AFrame: real): single; overload;
-    function InterpolateValue(const AValues: array of TAffineVector;
-      const AFrame: real): TAffineVector; overload;
-    function InterpolateValue(const AValues: array of TKFRotKey3DS;
-      const AFrame: real): TgxMatrix; overload;
+    function InterpolateValue(const AValues: array of single; const AFrame: real): single; overload;
+    function InterpolateValue(const AValues: array of TAffineVector; const AFrame: real): TAffineVector; overload;
+    function InterpolateValue(const AValues: array of TKFRotKey3DS; const AFrame: real): TgxMatrix; overload;
   public
-    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList;
-      const AData: Pointer); virtual;
-    procedure Apply(var DataTransf: TgxFile3DSAnimationData; const AFrame: real);
-      virtual; abstract;
+    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList; const AData: Pointer); virtual;
+    procedure Apply(var DataTransf: TgxFile3DSAnimationData; const AFrame: real); virtual; abstract;
     procedure Assign(Source: TPersistent); override;
     procedure WriteToFiler(Writer: TgxVirtualWriter); override;
     procedure ReadFromFiler(Reader: TgxVirtualReader); override;
@@ -77,10 +69,8 @@ type
   private
     FScale: array of TAffineVector;
   public
-    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList;
-      const AData: Pointer); override;
-    procedure Apply(var DataTransf: TgxFile3DSAnimationData;
-      const AFrame: real); override;
+    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList; const AData: Pointer); override;
+    procedure Apply(var DataTransf: TgxFile3DSAnimationData; const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
     procedure WriteToFiler(Writer: TgxVirtualWriter); override;
     procedure ReadFromFiler(Reader: TgxVirtualReader); override;
@@ -90,10 +80,8 @@ type
   private
     FRot: array of TKFRotKey3DS;
   public
-    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList;
-      const AData: Pointer); override;
-    procedure Apply(var DataTransf: TgxFile3DSAnimationData;
-      const AFrame: real); override;
+    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList; const AData: Pointer); override;
+    procedure Apply(var DataTransf: TgxFile3DSAnimationData; const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
     procedure WriteToFiler(Writer: TgxVirtualWriter); override;
     procedure ReadFromFiler(Reader: TgxVirtualReader); override;
@@ -103,10 +91,8 @@ type
   private
     FPos: array of TAffineVector;
   public
-    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList;
-      const AData: Pointer); override;
-    procedure Apply(var DataTransf: TgxFile3DSAnimationData;
-      const AFrame: real); override;
+    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList; const AData: Pointer); override;
+    procedure Apply(var DataTransf: TgxFile3DSAnimationData; const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
     procedure WriteToFiler(Writer: TgxVirtualWriter); override;
     procedure ReadFromFiler(Reader: TgxVirtualReader); override;
@@ -116,10 +102,8 @@ type
   private
     FCol: array of TAffineVector;
   public
-    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList;
-      const AData: Pointer); override;
-    procedure Apply(var DataTransf: TgxFile3DSAnimationData;
-      const AFrame: real); override;
+    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList; const AData: Pointer); override;
+    procedure Apply(var DataTransf: TgxFile3DSAnimationData; const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
     procedure WriteToFiler(Writer: TgxVirtualWriter); override;
     procedure ReadFromFiler(Reader: TgxVirtualReader); override;
@@ -129,10 +113,8 @@ type
   private
     FTPos: array of TAffineVector;
   public
-    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList;
-      const AData: Pointer); override;
-    procedure Apply(var DataTransf: TgxFile3DSAnimationData;
-      const AFrame: real); override;
+    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList; const AData: Pointer); override;
+    procedure Apply(var DataTransf: TgxFile3DSAnimationData; const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
     procedure WriteToFiler(Writer: TgxVirtualWriter); override;
     procedure ReadFromFiler(Reader: TgxVirtualReader); override;
@@ -142,10 +124,8 @@ type
   private
     FFall: array of single;
   public
-    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList;
-      const AData: Pointer); override;
-    procedure Apply(var DataTransf: TgxFile3DSAnimationData;
-      const AFrame: real); override;
+    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList; const AData: Pointer); override;
+    procedure Apply(var DataTransf: TgxFile3DSAnimationData; const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
     procedure WriteToFiler(Writer: TgxVirtualWriter); override;
     procedure ReadFromFiler(Reader: TgxVirtualReader); override;
@@ -155,10 +135,8 @@ type
   private
     FHot: array of single;
   public
-    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList;
-      const AData: Pointer); override;
-    procedure Apply(var DataTransf: TgxFile3DSAnimationData;
-      const AFrame: real); override;
+    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList; const AData: Pointer); override;
+    procedure Apply(var DataTransf: TgxFile3DSAnimationData; const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
     procedure WriteToFiler(Writer: TgxVirtualWriter); override;
     procedure ReadFromFiler(Reader: TgxVirtualReader); override;
@@ -168,10 +146,8 @@ type
   private
     FRoll: array of single;
   public
-    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList;
-      const AData: Pointer); override;
-    procedure Apply(var DataTransf: TgxFile3DSAnimationData;
-      const AFrame: real); override;
+    procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList; const AData: Pointer); override;
+    procedure Apply(var DataTransf: TgxFile3DSAnimationData; const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
     procedure WriteToFiler(Writer: TgxVirtualWriter); override;
     procedure ReadFromFiler(Reader: TgxVirtualReader); override;
@@ -193,8 +169,7 @@ type
   end;
 
   // Used only for serialization. There probably is a more efficient way to do it.
-  TgxFile3DSAnimKeysClassType = (ctScale, ctRot, ctPos, ctCol, ctTPos,
-    ctFall, ctHot, ctRoll);
+  TgxFile3DSAnimKeysClassType = (ctScale, ctRot, ctPos, ctCol, ctTPos, ctFall, ctHot, ctRoll);
 
   // A 3ds-specific TgxMorphableMeshObject.
   TgxFile3DSDummyObject = class(TgxMorphableMeshObject)
@@ -209,11 +184,9 @@ type
     procedure LoadAnimation(const AData: Pointer); virtual;
     procedure SetFrame(const AFrame: real); virtual;
     procedure MorphTo(morphTargetIndex: integer); override;
-    procedure Lerp(morphTargetIndex1, morphTargetIndex2: integer;
-      lerpFactor: single); override;
+    procedure Lerp(morphTargetIndex1, morphTargetIndex2: integer; lerpFactor: single); override;
     procedure GetExtents(out min, max: TAffineVector); override;
-    function ExtractTriangles(texCoords: TgxAffineVectorList = nil;
-      normals: TgxAffineVectorList = nil): TgxAffineVectorList;
+    function ExtractTriangles(texCoords: TgxAffineVectorList = nil; normals: TgxAffineVectorList = nil): TgxAffineVectorList;
       override;
     procedure WriteToFiler(Writer: TgxVirtualWriter); override;
     procedure ReadFromFiler(Reader: TgxVirtualReader); override;
@@ -319,12 +292,7 @@ const
   cGLFILE3DS_FIXDEFAULTUPAXISY_ROTATIONVALUE = PI/2;
   CGLFILE3DS_DEFAULT_FRAME = 0;
 
-{$IFDEF VXS_REGIONS}{$REGION 'Misc functions'}{$ENDIF}
-
-// AnimKeysClassTypeToClass
-
-function AnimKeysClassTypeToClass(
-  const AAnimKeysClassType: TgxFile3DSAnimKeysClassType): TClass;
+function AnimKeysClassTypeToClass(const AAnimKeysClassType: TgxFile3DSAnimKeysClassType): TClass;
 begin
   case AAnimKeysClassType of
     ctScale: Result := TgxFile3DSScaleAnimationKeys;
@@ -343,10 +311,7 @@ begin
   end;
 end;
 
-// ClassToAnimKeysClassType
-
-function ClassToAnimKeysClassType(
-  const AAnimKeysClass: TClass): TgxFile3DSAnimKeysClassType;
+function ClassToAnimKeysClassType(const AAnimKeysClass: TClass): TgxFile3DSAnimKeysClassType;
 begin
   if AAnimKeysClass.InheritsFrom(TgxFile3DSScaleAnimationKeys) then
     Result := ctScale
@@ -371,8 +336,6 @@ begin
   end;
 end;
 
-// MakeRotationQuaternion
-
 function MakeRotationQuaternion(const axis: TAffineVector; angle: single): TQuaternion;
 var
   v: TgxVector;
@@ -389,8 +352,6 @@ begin
   Result.ImagPart := AffineVectorMake(v);
   Result.RealPart := v.W;
 end;
-
-// QuaternionToRotateMatrix
 
 function QuaternionToRotateMatrix(const Quaternion: TQuaternion): TgxMatrix;
 var
@@ -439,8 +400,7 @@ end;
 // ------------------ Support classes ------------------
 // ------------------
 
-procedure TgxFile3DSAnimationKeys.InterpolateFrame(var I: integer;
-  var w: real; const AFrame: real);
+procedure TgxFile3DSAnimationKeys.InterpolateFrame(var I: integer; var w: real; const AFrame: real);
 begin
   w := 1;
   I := 0;
@@ -457,8 +417,7 @@ begin
   end;
 end;
 
-function TgxFile3DSAnimationKeys.InterpolateValue(const AValues: array of single;
-  const AFrame: real): single;
+function TgxFile3DSAnimationKeys.InterpolateValue(const AValues: array of single; const AFrame: real): single;
 var
   I: integer;
   w: real;
@@ -478,8 +437,7 @@ begin
   Result := Lerp(start, stop, w);
 end;
 
-function TgxFile3DSAnimationKeys.InterpolateValue(const AValues: array of TAffineVector;
-  const AFrame: real): TAffineVector;
+function TgxFile3DSAnimationKeys.InterpolateValue(const AValues: array of TAffineVector; const AFrame: real): TAffineVector;
 var
   I: integer;
   w: real;
@@ -499,8 +457,7 @@ begin
   Result := VectorLerp(start, stop, w);
 end;
 
-function TgxFile3DSAnimationKeys.InterpolateValue(const AValues: array of TKFRotKey3DS;
-  const AFrame: real): TgxMatrix;
+function TgxFile3DSAnimationKeys.InterpolateValue(const AValues: array of TKFRotKey3DS; const AFrame: real): TgxMatrix;
 var
   I: integer;
   w: real;
@@ -512,27 +469,21 @@ begin
   while (FNumKeys > I) and ((FKeys[I].Time) <= AFrame) do
   begin
     with AValues[I] do
-      Result := MatrixMultiply(Result, CreateRotationMatrix(
-        AffineVectorMake(X, Y, Z), Angle));
+      Result := MatrixMultiply(Result, CreateRotationMatrix(AffineVectorMake(X, Y, Z), Angle));
     Inc(I);
   end;
 
   InterpolateFrame(I, w, AFrame);
 
   // Then interpolate this matrix
-  if (FNumKeys > I) and ((FKeys[I].Time) > AFrame) and
-    ((FKeys[I - 1].Time) < AFrame) then
+  if (FNumKeys > I) and ((FKeys[I].Time) > AFrame) and ((FKeys[I - 1].Time) < AFrame) then
   begin
     with AValues[I] do
-    begin
-      Result := MatrixMultiply(Result, CreateRotationMatrix(
-        AffineVectorMake(X, Y, Z), AngleLerp(0, Angle, w)));
-    end;
+      Result := MatrixMultiply(Result, CreateRotationMatrix(AffineVectorMake(X, Y, Z), AngleLerp(0, Angle, w)));
   end;
 end;
 
-procedure TgxFile3DSAnimationKeys.LoadData(const ANumKeys: integer;
-  const Keys: PKeyHeaderList; const AData: Pointer);
+procedure TgxFile3DSAnimationKeys.LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList; const AData: Pointer);
 var
   I: integer;
 begin
@@ -682,8 +633,7 @@ begin
   end;
 end;
 
-procedure TgxFile3DSRotationAnimationKeys.Apply(var DataTransf: TgxFile3DSAnimationData;
-  const AFrame: real);
+procedure TgxFile3DSRotationAnimationKeys.Apply(var DataTransf: TgxFile3DSAnimationData; const AFrame: real);
 begin
   if FNumKeys > 0 then
     DataTransf.ModelMatrix := MatrixMultiply(DataTransf.ModelMatrix,
@@ -1536,14 +1486,15 @@ begin
   inherited;
 end;
 
-// Capabilities
 
+
+// ------------------
+// ------------------ TGL3DSVectorFile ------------------
+// ------------------
 class function Tgx3DSVectorFile.Capabilities: TgxDataFileCapabilities;
 begin
   Result := [dfcRead];
 end;
-
-// LoadFromStream
 
 procedure Tgx3DSVectorFile.LoadFromStream(aStream: TStream);
 type
@@ -1719,8 +1670,7 @@ var
       Result := '';
   end;
 
-  function GetOrAllocateLightMap(materials: TMaterialList;
-  const Name: string): integer;
+  function GetOrAllocateLightMap(materials: TMaterialList; const Name: string): integer;
   var
     material: PMaterial3DS;
     matLib: TgxMaterialLibrary;
@@ -1827,8 +1777,7 @@ var
 
 
         if boolY then
-          Result := MatrixMultiply(Result, CreateRotationMatrix(
-            AffineVectorMake(0, 1, 0), -pi));
+          Result := MatrixMultiply(Result, CreateRotationMatrix(AffineVectorMake(0, 1, 0), -pi));
 
       end
       else
@@ -2129,8 +2078,7 @@ begin
                     begin
                       // this vertex must be smoothed, check if there's already
                       // a (duplicated) vertex for this smoothing group
-                      TargetVertex :=
-                        GetSmoothIndex(CurrentIndex, SmoothingGroup, SmoothIndices);
+                      TargetVertex := GetSmoothIndex(CurrentIndex, SmoothingGroup, SmoothIndices);
                       if (TargetVertex < 0) then
                       begin
                         if (CurrentVertexCount < High(FaceRec[Vertex])) then

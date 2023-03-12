@@ -16,7 +16,7 @@ unit GLX.GLSLGoochShader;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

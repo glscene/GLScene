@@ -10,7 +10,7 @@ unit GLS.FileOCT;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

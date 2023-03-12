@@ -1,13 +1,34 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
-unit GLX.Strings;
+unit Scene.Strings;
 
-(* String constants as resourcestring *)
+(*
+  String constants that are used for internationalization
+
+  To build your project with a single language's translations in the executable
+  itself, define one of the next languages
+
+Language             $DEFINE    2-character locale id
+  -------------------  ---------- ---------------------
+  English              LANG_EN    en
+  French               LANG_FR    fr
+  German               LANG_DE    de
+  Italian              LANG_IT    it
+  Japanese             LANG_JP    jp
+  Russian              LANG_RU    ru
+  Spanish              LANG_ES    es
+*)
 
 interface
 
+{$DEFINE LANG_EN}
+
+var
+  Language: Integer;
+
 resourcestring
+
   // General
   strDot = '.';
   strError   = 'Error!';
@@ -17,9 +38,11 @@ resourcestring
   strNothing = 'Nothing';
   strStateCashMissing = 'States cash missing: ';
   strUnknownArchiveVersion = 'Unknown archive version: ';
+  strObjectsNotSupported = 'Linked object not supported';
+
 
   // SceneEdit
-  strSceneEditor = 'Scene Editor';
+  strGLSceneEditor = 'GLScene Editor';
 
   // SceneViewer
   strNoRenderingContext = 'Could not create a rendering context';
@@ -50,12 +73,11 @@ resourcestring
   strUnbalancedContexActivations = 'Unbalanced context activations';
   strUnableToCreateLegacyContext = 'Unable to create legacy context';
 
-  // GLX.InitOpenGX
-  strOpenGXError = 'OpenGX error - %s';
+  // InitOpenGL
+  strOpenGLError = 'OpenGL error - %s';
 
   // File3DS
   str3DSMapNotFound = 'Loading %s map texture failed: %s in %s';
-
   strError3DS_NO_MEM = 'Not enough memory to complete operation.';
   strError3DS_INVALID_ARG = 'The argument passed to the function is invalid.'#13+
                          'Usually caused by a nil pointer or an out of range numeric argument.';
@@ -99,10 +121,14 @@ resourcestring
   // Material
   strCyclicRefMat = 'Cyclic reference detected in material "%s"';
 
+  // Octree
+  strOctreeMustBePreparedBeforeUse = 'Octree must be prepared before use';
+
   // PersistentClasses
   strInvalidFileSignature = 'Invalid file signature';
   strBrokenObjectListArchive = 'Broken ObjectList archive';
   strListIndexError = 'Invalid list index';
+
 
   // SceneContext
   strForwardContextFailed = 'Can not create forward compatible context: #%X, %s';
@@ -117,8 +143,8 @@ resourcestring
   strOESRC_created = 'OpenGL ES 2.0 context seccussfuly created';
   strPBufferRC_created = 'Backward compatible core PBuffer context successfully created';
 
-  // SceneRegister string parameters
-  strOpenVXCategoryName = 'OpenGL';
+  // SceneRegister, strings additional to Designintf
+  strOpenGLCategoryName = 'OpenGL';
   strLayoutCategoryName = 'Layout';
   strLocalizableCategoryName = 'Localizable';
   strVisualCategoryName = 'Visual';
@@ -163,7 +189,7 @@ resourcestring
   strUnknownType       = 'Unknown type!';
   strUnsupportedType   = 'Unsupported type!';
 
-  // Object categories in GLXceneRegistry
+  // Object categories in GLScene Registry
   strOCBasicGeometry = 'Basic geometry';
   strOCAdvancedGeometry = 'Advanced geometry';
   strOCMeshObjects = 'Mesh objects';
@@ -201,7 +227,7 @@ resourcestring
   strOnlyHostData = 'Only host data or mapped device or array data can be written/read';
   strOutOfRange = 'Indexes out of range';
   strSizeMismatch = 'Element size mismatch';
-  strCUDAEditor = 'GLXcene CUDA Component Editor';
+  strCUDAEditor = 'Scene CUDA Component Editor';
   strRequireFreeThread = 'CUFFT functions require context-free thread';
   strBadPlanSize = 'MemData size less then Plan size';
   strContextNotInit = 'Context not initialized';
@@ -209,7 +235,8 @@ resourcestring
   strThreadBusy = 'Unable to create CUDA context - thread is busy by another context';
   strMakeFloatingFail = 'Unable to make context floating after creation';
   strUnbalansedUsage = 'Unbalansed CUDA context usage';
-  strInvalidGLContext = 'Unable to create CUDA context with OpenGL interop' + ' - context not ready';
+  strInvalidGLContext = 'Unable to create CUDA context with OpenGL interop' +
+    ' - OpenGL context not ready';
   strFFTFuncRetErr = '%s return error: %s';
   strFailToBindArrayToTex = 'Unable to bind CUDA array to OpenGL unmaped t' + 'exture';
   strOutOfAttribSize = 'The amount of device''s data less then size of att' + 'ribute''s data.';
@@ -217,10 +244,11 @@ resourcestring
   strSourceFileNotFound = 'Source file not found';
   strSuccessCompilation = 'Successful compilation:' + #10#13 + '%s';
 
+
 //---------------------------------------------------------
 implementation
 //---------------------------------------------------------
 
-end.
 
+end.
 

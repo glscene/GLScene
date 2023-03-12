@@ -7,7 +7,7 @@ unit GLX.DCEMisc;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   GLX.Coordinates,

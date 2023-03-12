@@ -7,7 +7,7 @@ unit CGx.Register;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   System.Classes,

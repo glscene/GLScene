@@ -19,7 +19,7 @@ unit GLX.Tree;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -32,7 +32,7 @@ uses
   GLX.VectorLists,
   GLX.ApplicationFileIO,
   GLX.VectorTypes,
-  GLX.Strings,
+  Scene.Strings,
   GLX.Scene,
   GLX.VectorFileObjects,
   GLX.RenderContextInfo,

@@ -22,7 +22,7 @@ unit GLS.TexturedHDS;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Types,

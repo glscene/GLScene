@@ -14,7 +14,7 @@ unit Formatx.DDSImage;
 *)
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,

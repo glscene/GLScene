@@ -13,7 +13,7 @@ unit GLS.ParticleFX;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,

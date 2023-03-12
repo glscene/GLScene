@@ -149,7 +149,7 @@
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="fFxyC.cpp">
-            <Form>Form1</Form>
+            <Form>FormPlot</Form>
             <DependentOn>fFxyC.h</DependentOn>
             <BuildOrder>3</BuildOrder>
         </CppCompile>

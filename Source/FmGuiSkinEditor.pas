@@ -7,7 +7,7 @@ unit FmGuiSkinEditor;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.Windows, 

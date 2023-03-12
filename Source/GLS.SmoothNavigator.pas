@@ -22,7 +22,7 @@ unit GLS.SmoothNavigator;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   System.Types,

@@ -10,7 +10,7 @@ unit GLS.ApplicationFileIO;
 
 interface
 
-{$I GLScene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.Windows,
@@ -18,7 +18,7 @@ uses
   System.SysUtils,
 
   GLS.BaseClasses,
-  GLS.Strings,
+  Scene.Strings,
   GLS.Logger;
 
 const

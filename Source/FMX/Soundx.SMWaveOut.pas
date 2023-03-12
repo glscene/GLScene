@@ -9,7 +9,7 @@ unit Soundx.SMWaveOut;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses 
   System.Classes, 

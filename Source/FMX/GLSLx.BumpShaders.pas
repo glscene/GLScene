@@ -27,7 +27,7 @@ unit GLSLx.BumpShaders;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -44,7 +44,7 @@ uses
   GLX.Texture,
   GLX.Scene,
   GLX.Cadencer,
-  GLX.Strings,
+  Scene.Strings,
   GLX.Color,
   GLX.RenderContextInfo,
   GLX.Material,

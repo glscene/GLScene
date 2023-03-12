@@ -26,13 +26,15 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
+void __fastcall TForm1::FormCreate(TObject* Sender)
 {
-   int i;
-   // generate a bunch of random points
-   for (i=1; i < 1000; i++)
-	  GLPoints->Positions->Add((float)(Random()-0.5)*5,
-			  (float)(Random()-0.5)*5, (float)(Random()-0.5)*5);
+    int i;
+    // generate a bunch of random points
+    for (i = 1; i < 1000; i++) {
+		GLPoints->Positions->Add((float)(Random() - 0.5) * 5,
+			(float)(Random() - 0.5) * 5, (float)(Random() - 0.5) * 5);
+		GLPoints->Colors->Add(Random(), Random(), Random(), 0.8);
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::DirectOpenGLRender(TObject *Sender, TGLRenderContextInfo &rci)
@@ -95,3 +97,4 @@ void __fastcall TForm1::FormMouseWheel(TObject *Sender, TShiftState Shift, int W
    GLPlane->Position->Y = GLPlane->Position->Y+WheelDelta*0.001;
 }
 //---------------------------------------------------------------------------
+

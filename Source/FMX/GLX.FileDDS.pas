@@ -7,7 +7,7 @@ unit GLX.FileDDS;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,7 +18,7 @@ uses
 
   GLX.VectorGeometry,
   GLX.RGBE,
-  GLX.Strings,
+  Scene.Strings,
   GLX.ApplicationFileIO,
 
   GLX.Context,

@@ -14,7 +14,7 @@ uses
   System.Math,
 
   GLX.VectorGeometry,
-  GLX.Strings,
+  Scene.Strings,
 
   GLX.Texture,
   GLX.Graphics,

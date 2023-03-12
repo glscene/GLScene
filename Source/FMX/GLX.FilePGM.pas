@@ -4,7 +4,7 @@
 
 unit GLX.FilePGM;
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 interface
 

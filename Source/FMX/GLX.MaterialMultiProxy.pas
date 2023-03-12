@@ -23,7 +23,7 @@ unit GLX.MaterialMultiProxy;
 
 interface
 
-{$I GLX.Scene.inc}
+{$I Scene.inc}
 
 uses
   Winapi.OpenGL,
@@ -34,7 +34,7 @@ uses
   GLX.PersistentClasses,
   GLX.VectorTypes,
   GLX.VectorGeometry,
-  GLX.Strings,
+  Scene.Strings,
   GLX.Texture,
   GLX.Material,
   GLX.Silhouette,
