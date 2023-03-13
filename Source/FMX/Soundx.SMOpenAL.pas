@@ -21,7 +21,7 @@ unit Soundx.SMOpenAL;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -313,7 +313,7 @@ end;
 
 procedure TgxSMOpenAL.UpdateSources;
 var
-  pos, dir, up, vel: TgxVector;
+  pos, dir, up, vel: TVector4f;
   DirUp: array [0 .. 5] of TALfloat; // orientation
 begin
   ListenerCoordinates(pos, vel, dir, up);

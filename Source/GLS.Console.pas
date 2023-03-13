@@ -39,7 +39,7 @@ unit GLS.Console;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.Windows,
@@ -58,7 +58,7 @@ uses
   GLS.Context,
   GLS.Texture,
   GLS.Utils,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.Material,
   GLS.VectorTypes;
 

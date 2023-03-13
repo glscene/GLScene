@@ -13,7 +13,7 @@ unit Soundx.SMFMOD;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -71,7 +71,7 @@ type
 
   // VectorToFMODVector
   //
-procedure VectorToFMODVector(const aVector: TgxVector; var aFMODVector: TFSoundVector);
+procedure VectorToFMODVector(const aVector: TVector4f; var aFMODVector: TFSoundVector);
 begin
   aFMODVector.x := aVector.x;
   aFMODVector.y := aVector.y;
@@ -259,7 +259,7 @@ end;
 procedure TgxSMFMOD.UpdateSource(aSource: TgxBaseSoundSource);
 var
   p: PFMODInfo;
-  objPos, objVel: TgxVector;
+  objPos, objVel: TVector4f;
   position, velocity: TFSoundVector;
 begin
   if (sscSample in aSource.Changes) then
@@ -352,7 +352,7 @@ end;
 //
 procedure TgxSMFMOD.UpdateSources;
 var
-  objPos, objVel, objDir, objUp: TgxVector;
+  objPos, objVel, objDir, objUp: TVector4f;
   position, velocity, fwd, top: TFSoundVector;
 begin
   // update listener

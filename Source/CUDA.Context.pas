@@ -10,7 +10,7 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.BaseClasses,
   GLS.Context,
   GLS.Generics,

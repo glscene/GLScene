@@ -7,7 +7,7 @@ unit Sounds.WaveOut;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.MMSystem,

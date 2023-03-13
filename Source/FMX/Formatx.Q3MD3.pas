@@ -32,7 +32,7 @@ type
   public
     procedure LoadFromFile(FileName: String);
     procedure LoadFromStream(AStream: TStream);
-    function GetTransform(TagName: string; Frame: Integer): TgxMatrix;
+    function GetTransform(TagName: string; Frame: Integer): TMatrix4f;
     property TagCount: Integer read FNumTags;
     property FrameCount: Integer read FNumFrames;
     property Tags[index: Integer]: TMD3Tag read GetTag;
@@ -305,7 +305,7 @@ begin
   result := FTags[index];
 end;
 
-function TMD3TagList.GetTransform(TagName: string; Frame: Integer): TgxMatrix;
+function TMD3TagList.GetTransform(TagName: string; Frame: Integer): TMatrix4f;
 var
   TagIdx, i, j: Integer;
   Tag: TMD3Tag;

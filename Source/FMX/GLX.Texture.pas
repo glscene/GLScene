@@ -7,7 +7,7 @@ unit GLX.Texture;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,8 +18,8 @@ uses
   FMX.Graphics,
   FMX.Objects,
 
-  Scenario.TextureFormat,
-  Scenario.Strings,
+  Scena.TextureFormat,
+  Scena.Strings,
 
   GLX.XOpenGL,
   GLX.VectorTypes,
@@ -472,12 +472,12 @@ type
     procedure Apply(var rci: TgxRenderContextInfo);
     procedure UnApply(var rci: TgxRenderContextInfo);
     // Applies to TEXTURE1
-    procedure ApplyAsTexture2(var rci: TgxRenderContextInfo; textureMatrix: PgxMatrix = nil);
+    procedure ApplyAsTexture2(var rci: TgxRenderContextInfo; textureMatrix: PMatrix4f = nil);
     procedure UnApplyAsTexture2(var rci: TgxRenderContextInfo;
       reloadIdentityTextureMatrix: boolean);
     {N=1 for TEXTURE0, N=2 for TEXTURE1, etc. }
     procedure ApplyAsTextureN(n: Integer; var rci: TgxRenderContextInfo;
-      textureMatrix: PgxMatrix = nil);
+      textureMatrix: PMatrix4f = nil);
     procedure UnApplyAsTextureN(n: Integer; var rci: TgxRenderContextInfo;
       reloadIdentityTextureMatrix: boolean);
     procedure Assign(Source: TPersistent); override;
@@ -617,7 +617,7 @@ type
     FTextureIndex: Integer;
     FTextureOffset, FTextureScale: TgxCoordinates;
     FTextureMatrixIsIdentity: Boolean;
-    FTextureMatrix: TgxMatrix;
+    FTextureMatrix: TMatrix4f;
     FApplied: Boolean;
      //implementing IInterface
     function QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
@@ -2393,7 +2393,7 @@ procedure TgxTexture.Apply(var rci: TgxRenderContextInfo);
 
   procedure SetCubeMapTextureMatrix;
   var
-    m, mm: TgxMatrix;
+    m, mm: TMatrix4f;
   begin
     // compute model view matrix for proper viewing
     case MappingMode of
@@ -2487,7 +2487,7 @@ begin
 end;
 
 procedure TgxTexture.ApplyAsTexture2(var rci: TgxRenderContextInfo; textureMatrix:
-  PgxMatrix = nil);
+  PMatrix4f = nil);
 begin
   ApplyAsTextureN(2, rci, textureMatrix);
 end;
@@ -2499,9 +2499,9 @@ begin
 end;
 
 procedure TgxTexture.ApplyAsTextureN(n: Integer; var rci: TgxRenderContextInfo;
-  textureMatrix: PgxMatrix = nil);
+  textureMatrix: PMatrix4f = nil);
 var
-  m: TgxMatrix;
+  m: TMatrix4f;
 begin
   if not Disabled then
   begin

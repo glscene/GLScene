@@ -25,7 +25,7 @@ package GLScene_RT;
 {$IMAGEBASE $400000}
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'GLScene Graphics'}
+{$DESCRIPTION 'GLScene Platform'}
 {$RUNONLY}
 {$IMPLICITBUILD ON}
 
@@ -36,12 +36,12 @@ requires
   xmlrtl;
 
 contains
-  Formats.m3DSConst in '..\Source\Formats.m3DSConst.pas',
-  Formats.m3DSTypes in '..\Source\Formats.m3DSTypes.pas',
-  Formats.m3DSUtils in '..\Source\Formats.m3DSUtils.pas',
+  Formats.m3DSConst in '..\Source\Common\Formats.m3DSConst.pas',
+  Formats.m3DSTypes in '..\Source\Common\Formats.m3DSTypes.pas',
+  Formats.m3DSUtils in '..\Source\Common\Formats.m3DSUtils.pas',
   Formats.DDSImage in '..\Source\Formats.DDSImage.pas',
   Formats.DXTC in '..\Source\Formats.DXTC.pas',
-  Formats.m3DS in '..\Source\Formats.m3DS.pas',
+  Formats.m3DS in '..\Source\Common\Formats.m3DS.pas',
   Formats.HDRImage in '..\Source\Formats.HDRImage.pas',
   Formats.Q3BSP in '..\Source\Formats.Q3BSP.pas',
   Formats.B3D in '..\Source\Formats.B3D.pas',
@@ -52,7 +52,7 @@ contains
   Formats.OCT in '..\Source\Formats.OCT.pas',
   Formats.TGA in '..\Source\Formats.TGA.pas',
   Formats.X in '..\Source\Formats.X.pas',
-  Formats.VFW in '..\Source\Formats.VFW.pas',
+  Formats.VFW in '..\Source\Common\Formats.VFW.pas',
   Formats.VRML in '..\Source\Formats.VRML.pas',
   GLS.AVIRecorder in '..\Source\GLS.AVIRecorder.pas',
   GLS.AnimatedSprite in '..\Source\GLS.AnimatedSprite.pas',
@@ -229,7 +229,7 @@ contains
   GLS.TexLensFlare in '..\Source\GLS.TexLensFlare.pas',
   GLS.Texture in '..\Source\GLS.Texture.pas',
   GLS.TextureCombiners in '..\Source\GLS.TextureCombiners.pas',
-  Scenario.TextureFormat in '..\Source\Scenario.TextureFormat.pas',
+  Scena.TextureFormat in '..\Source\Common\Scena.TextureFormat.pas',
   GLS.TextureImageEditors in '..\Source\GLS.TextureImageEditors.pas',
   GLS.TexturedHDS in '..\Source\GLS.TexturedHDS.pas',
   GLS.ThorFX in '..\Source\GLS.ThorFX.pas',
@@ -261,7 +261,7 @@ contains
   GLS.VectorTypes in '..\Source\GLS.VectorTypes.pas',
   GLS.ScriptBase in '..\Source\GLS.ScriptBase.pas',
   GLS.Spline in '..\Source\GLS.Spline.pas',
-  Scenario.Strings in '..\Source\Scenario.Strings.pas',
+  Scena.Strings in '..\Source\Common\Scena.Strings.pas',
   GLS.XCollection in '..\Source\GLS.XCollection.pas',
   GLS.XOpenGL in '..\Source\GLS.XOpenGL.pas',
   PasGLTF in '..\Source\Common\PasGLTF.pas',

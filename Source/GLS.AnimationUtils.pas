@@ -7,7 +7,7 @@ unit GLS.AnimationUtils;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.SysUtils, 

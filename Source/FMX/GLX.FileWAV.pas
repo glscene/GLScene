@@ -7,7 +7,7 @@ unit GLX.FileWAV;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.MMSystem,

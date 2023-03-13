@@ -7,7 +7,7 @@ unit GLS.Utils;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.Windows,
@@ -21,7 +21,7 @@ uses
   Vcl.Dialogs,
   Vcl.ExtDlgs,
   GLS.VectorGeometry,
-  Scenario.Strings;
+  Scena.Strings;
 
 type
   THalfFloat = type Word;

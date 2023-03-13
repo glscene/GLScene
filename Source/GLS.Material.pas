@@ -8,7 +8,7 @@ unit GLS.Material;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -27,12 +27,12 @@ uses
   GLS.Coordinates,
   GLS.PersistentClasses,
   GLS.State,
-  Scenario.TextureFormat, 
+  Scena.TextureFormat, 
   GLS.XOpenGL,
   GLS.ApplicationFileIO,
   GLS.Graphics,
   GLS.Utils,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.Logger;
 
 {$UNDEF USE_MULTITHREAD}

@@ -7,7 +7,7 @@ unit GLX.Skydome;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -238,7 +238,7 @@ function StarRecordPositionZUp(const starRecord: TgxStarRecord): TAffineVector;
 function StarRecordPositionYUp(const starRecord: TgxStarRecord): TAffineVector;
 // Computes star color from BV index (RGB) and magnitude (alpha).
 function StarRecordColor(const starRecord: TgxStarRecord; bias: Single)
-  : TgxVector;
+  : TVector4f;
 
 // ------------------------------------------------------------------
 implementation
@@ -262,13 +262,13 @@ begin
 end;
 
 function StarRecordColor(const starRecord: TgxStarRecord; bias: Single)
-  : TgxVector;
+  : TVector4f;
 const
   // very *rough* approximation
-  cBVm035: TgxVector = (X: 0.7; Y: 0.8; Z: 1.0; W: 1);
-  cBV015: TgxVector = (X: 1.0; Y: 1.0; Z: 1.0; W: 1);
-  cBV060: TgxVector = (X: 1.0; Y: 1.0; Z: 0.7; W: 1);
-  cBV135: TgxVector = (X: 1.0; Y: 0.8; Z: 0.7; W: 1);
+  cBVm035: TVector4f = (X: 0.7; Y: 0.8; Z: 1.0; W: 1);
+  cBV015: TVector4f = (X: 1.0; Y: 1.0; Z: 1.0; W: 1);
+  cBV060: TVector4f = (X: 1.0; Y: 1.0; Z: 0.7; W: 1);
+  cBV135: TVector4f = (X: 1.0; Y: 0.8; Z: 0.7; W: 1);
 var
   bvIndex100: Integer;
 begin
@@ -392,7 +392,7 @@ procedure TgxSkyDomeBand.BuildList(var rci: TgxRenderContextInfo);
   var
     i: Integer;
     f, r, r2: Single;
-    vertex1, vertex2: TgxVector;
+    vertex1, vertex2: TVector4f;
   begin
     vertex1.W := 1;
     if start = -90 then
@@ -1176,7 +1176,7 @@ var
   // coordinates system note: X is forward, Y is left and Z is up
   // always rendered as sphere of radius 1
 
-  function CalculateCosGamma(const p: TgxVector): Single;
+  function CalculateCosGamma(const p: TVector4f): Single;
   begin
     Result := 1 - VectorAngleCosine(PAffineVector(@p)^, sunPos);
   end;
@@ -1185,7 +1185,7 @@ var
   var
     i: Integer;
     r, thetaStart: Single;
-    vertex1: TgxVector;
+    vertex1: TVector4f;
     Color: TgxColorVector;
   begin
     r := 0;
@@ -1212,7 +1212,7 @@ var
   var
     i: Integer;
     r, r2, thetaStart, thetaStop: Single;
-    vertex1, vertex2: TgxVector;
+    vertex1, vertex2: TVector4f;
     Color: TgxColorVector;
   begin
     vertex1.W := 1;

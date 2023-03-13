@@ -17,7 +17,7 @@ uses
   GLS.OpenGLTokens, 
   GLS.Graphics, 
   GLS.Texture, 
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 type
 

@@ -7,7 +7,7 @@ unit GLS.FileDDS;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,14 +19,14 @@ uses
   GLS.Context,
   GLS.Graphics,
   GLS.Texture,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.CompositeImage,
   GLS.MultiSampleImage,
   GLS.RGBE,
   GLS.ApplicationFileIO,
   GLS.VectorGeometry,
   GLS.Material,
-  Scenario.Strings;
+  Scena.Strings;
 
 type
 

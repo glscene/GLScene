@@ -8,7 +8,7 @@ unit GLS.MaterialScript;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.SysUtils,
@@ -17,7 +17,7 @@ uses
 
   GLS.VectorTypes,
   GLS.Texture,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.Graphics,
   GLS.Utils,
   GLS.Color,

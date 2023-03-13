@@ -12,15 +12,16 @@ unit GLS.MultiSampleImage;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
   System.Classes,
 
+  GLS.OpenGLTokens,
   GLS.VectorTypes,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.Context,
   GLS.Texture,
   GLS.Graphics;

@@ -11,7 +11,7 @@ unit GLX.Mirror;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -79,7 +79,7 @@ type
       ARenderSelf, ARenderChildren: Boolean); override;
     procedure BuildList(var ARci: TgxRenderContextInfo); override;
     procedure Assign(Source: TPersistent); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
   published
     { Selects the object to mirror. If nil, the whole scene is mirrored. }
     property MirrorObject: TgxBaseSceneObject read FMirrorObject write
@@ -140,10 +140,10 @@ procedure TgxMirror.DoRender(var ARci: TgxRenderContextInfo;
   ARenderSelf, ARenderChildren: Boolean);
 var
   oldProxySubObject: Boolean;
-  refMat, curMat, ModelMat: TgxMatrix;
+  refMat, curMat, ModelMat: TMatrix4f;
   clipPlane: TDoubleHmgPlane;
   bgColor: TgxColorVector;
-  cameraPosBackup, cameraDirectionBackup: TgxVector;
+  cameraPosBackup, cameraDirectionBackup: TVector4f;
   CurrentBuffer: TgxSceneBuffer;
 begin
   if FRendering then
@@ -307,7 +307,7 @@ end;
 
 procedure TgxMirror.ClearZBufferArea(aBuffer: TgxSceneBuffer);
 var
-  worldMat: TgxMatrix;
+  worldMat: TMatrix4f;
   p: TAffineVector;
 begin
   with aBuffer do
@@ -409,7 +409,7 @@ begin
 end;
 
 
-function TgxMirror.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxMirror.AxisAlignedDimensionsUnscaled: TVector4f;
 begin
   Result := VectorMake(0.5 * Abs(FWidth),
     0.5 * Abs(FHeight), 0);

@@ -7,7 +7,7 @@ unit GLX.AnimationUtils;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.SysUtils,
@@ -61,7 +61,7 @@ type
   );
 
   function Tweener(Current, Target: TAffineVector; Time, Duration: Single; EaseType: TEaseType): TAffineVector; overload;
-  function Tweener(Current, Target: TgxVector; Time, Duration: Single; EaseType: TEaseType): TgxVector; overload;
+  function Tweener(Current, Target: TVector4f; Time, Duration: Single; EaseType: TEaseType): TVector4f; overload;
   function Tweener(Current, Target: TVector2f; Time, Duration: Single; EaseType: TEaseType): TVector2f; overload;
   function Tweener(Current, Target: Single; Time, Duration: Single; EaseType: TEaseType): Single; overload;
 
@@ -912,7 +912,7 @@ begin
   end;
 end;
 
-function Tweener(Current, Target: TgxVector; Time, Duration: Single; EaseType: TEaseType): TgxVector;
+function Tweener(Current, Target: TVector4f; Time, Duration: Single; EaseType: TEaseType): TVector4f;
 var
   i: integer;
   EaseFunction : TEaseFunction;

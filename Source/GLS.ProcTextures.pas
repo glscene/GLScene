@@ -15,7 +15,7 @@ uses
   
   GLS.Texture,
   GLS.Graphics,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.VectorGeometry;
 
 const

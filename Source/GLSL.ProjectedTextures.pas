@@ -21,7 +21,7 @@ unit GLSL.ProjectedTextures;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -35,7 +35,7 @@ uses
   GLS.Context,
   GLS.Color,
   GLS.RenderContextInfo,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.VectorTypes;
 
 type

@@ -7,7 +7,7 @@ unit GLX.VectorLists;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -129,7 +129,7 @@ type
     constructor Create; override;
     procedure Assign(Src: TPersistent); override;
     function Add(const item: TAffineVector): Integer; overload;
-    function Add(const item: TgxVector): Integer; overload;
+    function Add(const item: TVector4f): Integer; overload;
     procedure Add(const i1, i2: TAffineVector); overload;
     procedure Add(const i1, i2, i3: TAffineVector); overload;
     function Add(const item: TVector2f): Integer; overload;
@@ -161,10 +161,10 @@ type
     procedure CombineItem(Index: Integer; const vector: TAffineVector; const f: Single);
     {Transforms all items by the matrix as if they were points. 
      ie. the translation component of the matrix is honoured. }
-    procedure TransformAsPoints(const matrix: TgxMatrix);
+    procedure TransformAsPoints(const matrix: TMatrix4f);
     {Transforms all items by the matrix as if they were vectors. 
      ie. the translation component of the matrix is not honoured. }
-    procedure TransformAsVectors(const matrix: TgxMatrix); overload;
+    procedure TransformAsVectors(const matrix: TMatrix4f); overload;
     procedure TransformAsVectors(const matrix: TAffineMatrix); overload;
     procedure Normalize; override;
     procedure Lerp(const list1, list2: TgxBaseVectorList; lerpFactor: Single); override;
@@ -172,33 +172,33 @@ type
     procedure Scale(const factors: TAffineVector); overload;
   end;
 
-  (* A list of TgxVector.
-   Similar to TList, but using TgxVector as items.
+  (* A list of TVector4f.
+   Similar to TList, but using TVector4f as items.
    The list has stack-like push/pop methods. *)
   TgxVectorList = class(TgxBaseVectorList)
   private
     FList: PVectorArray;
   protected
-    function Get(Index: Integer): TgxVector;
-    procedure Put(Index: Integer; const item: TgxVector);
+    function Get(Index: Integer): TVector4f;
+    procedure Put(Index: Integer; const item: TVector4f);
     procedure SetCapacity(NewCapacity: Integer); override;
   public
     constructor Create; override;
     procedure Assign(Src: TPersistent); override;
-    function Add(const item: TgxVector): Integer; overload;
+    function Add(const item: TVector4f): Integer; overload;
     function Add(const item: TAffineVector; w: Single): Integer; overload;
     function Add(const X, Y, Z, w: Single): Integer; overload;
     procedure Add(const i1, i2, i3: TAffineVector; w: Single); overload;
     function AddVector(const item: TAffineVector): Integer; overload;
     function AddPoint(const item: TAffineVector): Integer; overload;
     function AddPoint(const X, Y: Single; const Z: Single = 0): Integer; overload;
-    procedure Push(const Val: TgxVector);
-    function Pop: TgxVector;
-    function IndexOf(const item: TgxVector): Integer;
-    function FindOrAdd(const item: TgxVector): Integer;
+    procedure Push(const Val: TVector4f);
+    function Pop: TVector4f;
+    function IndexOf(const item: TVector4f): Integer;
+    function FindOrAdd(const item: TVector4f): Integer;
     function FindOrAddPoint(const item: TAffineVector): Integer;
-    procedure Insert(Index: Integer; const item: TgxVector);
-    property Items[Index: Integer]: TgxVector read Get write Put; default;
+    procedure Insert(Index: Integer; const item: TVector4f);
+    property Items[Index: Integer]: TVector4f read Get write Put; default;
     property List: PVectorArray read FList;
     procedure Lerp(const list1, list2: TgxBaseVectorList; lerpFactor: Single); override;
   end;
@@ -1190,7 +1190,7 @@ begin
   Inc(FRevision);
 end;
 
-function TgxAffineVectorList.Add(const item: TgxVector): Integer;
+function TgxAffineVectorList.Add(const item: TVector4f): Integer;
 begin
   Result := Add(PAffineVector(@item)^);
 end;
@@ -1444,7 +1444,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TgxAffineVectorList.TransformAsPoints(const matrix: TgxMatrix);
+procedure TgxAffineVectorList.TransformAsPoints(const matrix: TMatrix4f);
 var
   I: Integer;
 begin
@@ -1453,7 +1453,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TgxAffineVectorList.TransformAsVectors(const matrix: TgxMatrix);
+procedure TgxAffineVectorList.TransformAsVectors(const matrix: TMatrix4f);
 var
   m: TAffineMatrix;
 begin
@@ -1516,7 +1516,7 @@ end;
 
 constructor TgxVectorList.Create;
 begin
-  FItemSize := SizeOf(TgxVector);
+  FItemSize := SizeOf(TVector4f);
   inherited Create;
   FGrowthDelta := cDefaultListGrowthDelta;
 end;
@@ -1527,13 +1527,13 @@ begin
   begin
     inherited;
     if (Src is TgxVectorList) then
-      System.Move(TgxVectorList(Src).FList^, FList^, FCount * SizeOf(TgxVector));
+      System.Move(TgxVectorList(Src).FList^, FList^, FCount * SizeOf(TVector4f));
   end
   else
     Clear;
 end;
 
-function TgxVectorList.Add(const item: TgxVector): Integer;
+function TgxVectorList.Add(const item: TVector4f): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -1580,7 +1580,7 @@ begin
   Result := Add(PointMake(X, Y, Z));
 end;
 
-function TgxVectorList.Get(Index: Integer): TgxVector;
+function TgxVectorList.Get(Index: Integer): TVector4f;
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1588,7 +1588,7 @@ begin
   Result := FList^[Index];
 end;
 
-procedure TgxVectorList.Insert(Index: Integer; const Item: TgxVector);
+procedure TgxVectorList.Insert(Index: Integer; const Item: TVector4f);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1597,12 +1597,12 @@ begin
     SetCapacity(FCapacity + FGrowthDelta);
   if Index < FCount then
     System.Move(FList[Index], FList[Index + 1],
-      (FCount - Index) * SizeOf(TgxVector));
+      (FCount - Index) * SizeOf(TVector4f));
   FList^[Index] := Item;
   Inc(FCount);
 end;
 
-procedure TgxVectorList.Put(Index: Integer; const Item: TgxVector);
+procedure TgxVectorList.Put(Index: Integer; const Item: TVector4f);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1616,12 +1616,12 @@ begin
   FList := PVectorArray(FBaseList);
 end;
 
-procedure TgxVectorList.Push(const Val: TgxVector);
+procedure TgxVectorList.Push(const Val: TVector4f);
 begin
   Add(Val);
 end;
 
-function TgxVectorList.Pop: TgxVector;
+function TgxVectorList.Pop: TVector4f;
 begin
   if FCount > 0 then
   begin
@@ -1632,7 +1632,7 @@ begin
     Result := NullHmgVector;
 end;
 
-function TgxVectorList.IndexOf(const item: TgxVector): Integer;
+function TgxVectorList.IndexOf(const item: TVector4f): Integer;
 var
   I: Integer;
 begin
@@ -1645,7 +1645,7 @@ begin
     end;
 end;
 
-function TgxVectorList.FindOrAdd(const item: TgxVector): Integer;
+function TgxVectorList.FindOrAdd(const item: TVector4f): Integer;
 begin
   Result := IndexOf(item);
   if Result < 0 then
@@ -1654,7 +1654,7 @@ end;
 
 function TgxVectorList.FindOrAddPoint(const item: TAffineVector): Integer;
 var
-  ptItem: TgxVector;
+  ptItem: TVector4f;
 begin
   MakePoint(ptItem, item);
   Result := IndexOf(ptItem);

@@ -7,7 +7,7 @@ unit GLX.FileBMP;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,7 +18,7 @@ uses
 
   GLX.Context,
   GLX.Graphics,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLX.ApplicationFileIO;
 
 type

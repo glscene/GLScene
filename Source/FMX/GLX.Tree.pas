@@ -19,7 +19,7 @@ unit GLX.Tree;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -32,7 +32,7 @@ uses
   GLX.VectorLists,
   GLX.ApplicationFileIO,
   GLX.VectorTypes,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.Scene,
   GLX.VectorFileObjects,
   GLX.RenderContextInfo,
@@ -55,7 +55,7 @@ type
     constructor Create(AOwner: TgxTree);
     destructor Destroy; override;
     procedure BuildList(var rci: TgxRenderContextInfo);
-    procedure AddNew(matrix: TgxMatrix);
+    procedure AddNew(matrix: TMatrix4f);
     procedure Clear;
     property Owner: TgxTree read FOwner;
     property Count: Integer read FCount;
@@ -73,12 +73,12 @@ type
     FParent: TgxTreeBranch;
     FBranchID: Integer;
     FParentID: Integer;
-    FMatrix: TgxMatrix;
+    FMatrix: TMatrix4f;
     FLower: TgxIntegerList;
     FUpper: TgxIntegerList;
     FCentralLeader: Boolean;
     procedure BuildBranch(branchNoise: TgxTreeBranchNoise;
-      const matrix: TgxMatrix; TexCoordY, Twist: Single; Level: Integer);
+      const matrix: TMatrix4f; TexCoordY, Twist: Single; Level: Integer);
   public
     constructor Create(AOwner: TgxTreeBranches; AParent: TgxTreeBranch);
     destructor Destroy; override;
@@ -87,7 +87,7 @@ type
     property Center: TgxTreeBranch read FCenter;
     property Right: TgxTreeBranch read FRight;
     property Parent: TgxTreeBranch read FParent;
-    property matrix: TgxMatrix read FMatrix;
+    property matrix: TMatrix4f read FMatrix;
     property Lower: TgxIntegerList read FLower;
     property Upper: TgxIntegerList read FUpper;
   end;
@@ -162,7 +162,7 @@ type
     FLeafBackMaterialName: TgxLibMaterialName;
     FBranchMaterialName: TgxLibMaterialName;
     FRebuildTree: Boolean;
-    FAxisAlignedDimensionsCache: TgxVector;
+    FAxisAlignedDimensionsCache: TVector4f;
   protected
     procedure SetDepth(const Value: Integer);
     procedure SetBranchFacets(const Value: Integer);
@@ -199,7 +199,7 @@ type
     procedure ForceTotalRebuild;
     procedure Clear;
     procedure GetExtents(var min, max: TAffineVector);
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
     procedure LoadFromStream(aStream: TStream);
     procedure SaveToStream(aStream: TStream);
     procedure LoadFromFile(aFileName: String);
@@ -281,10 +281,10 @@ begin
   inherited;
 end;
 
-procedure TgxTreeLeaves.AddNew(matrix: TgxMatrix);
+procedure TgxTreeLeaves.AddNew(matrix: TMatrix4f);
 var
   radius: Single;
-  pos: TgxVector;
+  pos: TVector4f;
 begin
   radius := Owner.LeafSize;
   Inc(FCount);
@@ -397,7 +397,7 @@ begin
 end;
 
 procedure TgxTreeBranch.BuildBranch(branchNoise: TgxTreeBranchNoise;
-  const matrix: TgxMatrix; TexCoordY, Twist: Single; Level: Integer);
+  const matrix: TMatrix4f; TexCoordY, Twist: Single; Level: Integer);
 var
   i: Integer;
   Tree: TgxTree;
@@ -411,7 +411,7 @@ var
   LeftBranchNoise: TgxTreeBranchNoise;
   CenterBranchNoise: TgxTreeBranchNoise;
   RightBranchNoise: TgxTreeBranchNoise;
-  LeftMatrix, RightMatrix, CenterMatrix: TgxMatrix;
+  LeftMatrix, RightMatrix, CenterMatrix: TMatrix4f;
   central_leader: Boolean;
 begin
   Assert(Assigned(FOwner), 'Incorrect use of TgxTreeBranch');
@@ -833,7 +833,7 @@ procedure TgxTree.BuildMesh(GLBaseMesh: TgxBaseMesh);
     Frame: TgxSkeletonFrame);
   var
     trans: TTransformations;
-    mat: TgxMatrix;
+    mat: TMatrix4f;
     rot, pos: TAffineVector;
   begin
     bone.Name := 'Branch' + IntToStr(Branch.FBranchID);
@@ -1332,7 +1332,7 @@ begin
   max.Z := MaxFloat([lmin.Z, lmax.Z, bmin.Z, bmax.Z]);
 end;
 
-function TgxTree.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxTree.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   dMin, dMax: TAffineVector;
 begin

@@ -7,7 +7,7 @@ unit GLX.WindowsFont;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,

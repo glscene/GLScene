@@ -7,7 +7,7 @@ unit FRFaceEditor;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   WinApi.Windows,

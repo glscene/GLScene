@@ -7,7 +7,7 @@ unit GLX.Collision;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -162,7 +162,7 @@ end;
 
 function FastCheckPointVsEllipsoid(obj1, obj2: TgxBaseSceneObject): Boolean;
 var
-  v: TgxVector;
+  v: TVector4f;
 begin
   // calc vector expressed in local coordinates (for obj2)
   v := VectorTransform(obj1.AbsolutePosition, obj2.InvAbsoluteMatrix);
@@ -179,7 +179,7 @@ end;
 
 function FastCheckPointVsCube(obj1, obj2: TgxBaseSceneObject): Boolean;
 var
-  v: TgxVector;
+  v: TVector4f;
 begin
   // calc vector expressed in local coordinates (for obj2)
   v := VectorTransform(obj1.AbsolutePosition, obj2.InvAbsoluteMatrix);
@@ -203,8 +203,8 @@ end;
 
 function FastCheckSphereVsEllipsoid(obj1, obj2: TgxBaseSceneObject): Boolean;
 var
-  v: TgxVector;
-  aad: TgxVector;
+  v: TVector4f;
+  aad: TVector4f;
 begin
   // express in local coordinates (for obj2)
   v := VectorTransform(obj1.AbsolutePosition, obj2.InvAbsoluteMatrix);
@@ -220,8 +220,8 @@ end;
 
 function FastCheckSphereVsCube(obj1, obj2: TgxBaseSceneObject): Boolean;
 var
-  v: TgxVector;
-  aad: TgxVector;
+  v: TVector4f;
+  aad: TVector4f;
   r, r2: Single;
 begin
   // express in local coordinates (for cube "obj2")
@@ -312,7 +312,7 @@ end;
 
 function FastCheckEllipsoidVsEllipsoid(obj1, obj2: TgxBaseSceneObject): Boolean;
 var
-  v1, v2: TgxVector;
+  v1, v2: TVector4f;
 begin
   // express in local coordinates (for obj2)
   v1 := VectorTransform(obj1.AbsolutePosition, obj2.InvAbsoluteMatrix);
@@ -333,8 +333,8 @@ end;
 function FastCheckEllipsoidVsCube(obj1, obj2: TgxBaseSceneObject): Boolean;
 { current implementation assumes Ellipsoid as Sphere }
 var
-  v: TgxVector;
-  aad: TgxVector;
+  v: TVector4f;
+  aad: TVector4f;
 begin
   // express in local coordinates (for obj2)
   v := VectorTransform(obj1.AbsolutePosition, obj2.InvAbsoluteMatrix);
@@ -363,7 +363,7 @@ begin
   Result := FastCheckEllipsoidVsCube(obj2, obj1);
 end;
 
-procedure InitArray(v: TgxVector; var pt: array of TgxVector);
+procedure InitArray(v: TVector4f; var pt: array of TVector4f);
 // calculate the cube edge points from the axis aligned dimension
 begin
   pt[0] := VectorMake(-v.X, -v.Y, -v.Z, 1);
@@ -381,7 +381,7 @@ function DoCubesIntersectPrim(obj1, obj2: TgxBaseSceneObject): Boolean;
 // else, for each "wire" in then wireframe of the "cube" obj1, check if it
 // intersects with one of the "planes" of "cube" obj2
 
-  function CheckWire(p0, p1, pl: TgxVector): Boolean;
+  function CheckWire(p0, p1, pl: TVector4f): Boolean;
   // check "wire" line (p0,p1) for intersection with each plane, given from
   // axis aligned dimensions pl
   // - calculate "direction" d: p0 -> p1
@@ -394,7 +394,7 @@ function DoCubesIntersectPrim(obj1, obj2: TgxBaseSceneObject): Boolean;
   // - do the same for opposite plane -pl[I]
   var
     t: Single;
-    d, s: TgxVector;
+    d, s: TVector4f;
     i, j, k: Integer;
   begin
     Result := true;
@@ -438,10 +438,10 @@ const
   cWires: array [0 .. 11, 0 .. 1] of Integer = ((0, 1), (1, 2), (2, 3), (3, 0),
     (4, 5), (5, 6), (6, 7), (7, 4), (0, 4), (1, 5), (2, 6), (3, 7));
 var
-  pt1: array [0 .. 7] of TgxVector;
-  M: TgxMatrix;
+  pt1: array [0 .. 7] of TVector4f;
+  M: TMatrix4f;
   i: Integer;
-  aad: TgxVector;
+  aad: TVector4f;
 begin
   Result := true;
   aad := obj2.AxisAlignedDimensionsUnscaled; // DanB experiment
@@ -465,7 +465,7 @@ end;
 
 function FastCheckCubeVsCube(obj1, obj2: TgxBaseSceneObject): Boolean;
 { var
-  aad1,aad2 : TgxVector;
+  aad1,aad2 : TVector4f;
   D1,D2,D : Double;
 }
 begin
@@ -506,7 +506,7 @@ end;
 function FastCheckCubeVsFace(obj1, obj2: TgxBaseSceneObject): Boolean;
 // var
 // triList : TgxAffineVectorList;
-// m1to2, m2to1 : TgxMatrix;
+// m1to2, m2to1 : TMatrix4f;
 // i:integer;
 begin
   if (obj2 is TgxFreeForm) then
@@ -543,7 +543,7 @@ var
   i: Integer;
   triList: TgxAffineVectorList;
   tri: PTriangle;
-  m1to2, m2to1: TgxMatrix;
+  m1to2, m2to1: TMatrix4f;
   AABB2: TAABB;
 begin
   Result := false;
@@ -599,7 +599,7 @@ end;
 function IntersectCubes(obj1, obj2: TgxBaseSceneObject): Boolean;
 var
   aabb1, AABB2: TAABB;
-  m1to2, m2to1: TgxMatrix;
+  m1to2, m2to1: TMatrix4f;
 begin
   // Calc AABBs
   aabb1 := obj1.AxisAlignedBoundingBoxUnscaled;

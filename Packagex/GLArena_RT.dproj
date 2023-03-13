@@ -4,7 +4,7 @@
         <MainSource>GLArena_RT.dpk</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <TargetedPlatforms>130</TargetedPlatforms>
+        <TargetedPlatforms>131</TargetedPlatforms>
         <AppType>Package</AppType>
         <FrameworkType>FMX</FrameworkType>
         <ProjectVersion>19.4</ProjectVersion>
@@ -376,11 +376,10 @@
         <DCCReference Include="..\Source\FMX\GLX.GeometryBB.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.GeometryCoordinates.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.OpenGL.pas"/>
-        <DCCReference Include="..\Source\Scenario.Strings.pas"/>
         <DCCReference Include="..\Source\Common\Vulkan.Import.pas"/>
         <DCCReference Include="..\Source\FMX\GLSLx.Parameter.pas"/>
-        <DCCReference Include="..\Source\Scenario.TextureFormat.pas"/>
-        <None Include="..\Source\Scenario.inc"/>
+        <DCCReference Include="..\Source\Common\Scena.Strings.pas"/>
+        <None Include="..\Source\Common\Scena.inc"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -410,7 +409,7 @@
             </Delphi.Personality>
             <Platforms>
                 <Platform value="Linux64">True</Platform>
-                <Platform value="Win32">False</Platform>
+                <Platform value="Win32">True</Platform>
                 <Platform value="Win64">True</Platform>
             </Platforms>
             <Deployment Version="3">
@@ -419,12 +418,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libpcre.dylib" Class="DependencyModule">
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libpcre.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>

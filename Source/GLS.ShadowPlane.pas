@@ -12,7 +12,7 @@ unit GLS.ShadowPlane;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -29,7 +29,7 @@ uses
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.State,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.Context,
   GLS.Material,
   GLS.Texture,

@@ -1,14 +1,13 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit Formats.TGA;
 
 (* Graphic engine friendly loading of TGA image. *)
 
 interface
 
-{.$I GLScene.inc}
+{.$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,7 +18,7 @@ uses
   GLS.Context,
   GLS.Graphics,
   GLS.ApplicationFileIO,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 type
 

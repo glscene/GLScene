@@ -12,7 +12,7 @@ unit GLS.ShadowVolume;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,

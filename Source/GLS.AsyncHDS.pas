@@ -19,7 +19,7 @@ unit GLS.AsyncHDS;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,

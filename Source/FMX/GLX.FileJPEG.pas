@@ -5,17 +5,17 @@ unit GLX.FileJPEG;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
   GLX.VectorGeometry,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.Context,
   GLX.Graphics,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLX.ApplicationFileIO;
 
 type

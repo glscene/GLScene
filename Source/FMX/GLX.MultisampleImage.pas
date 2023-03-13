@@ -12,7 +12,7 @@ unit GLX.MultisampleImage;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -22,7 +22,7 @@ uses
   GLX.Context,
   GLX.Texture,
   GLX.Graphics,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 type
 

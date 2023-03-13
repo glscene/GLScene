@@ -21,6 +21,9 @@ interface
 
 
 type
+
+// ===========  Vectors  ============
+
   //2
   TVector2d = record
     case Integer of
@@ -91,6 +94,7 @@ type
       0 : (V: array[0..2] of Single);
       1 : (X,Y,Z: Single);
   end;
+
   TVector3h = record
     case Integer of
       0 : (V: array[0..2] of Word);
@@ -143,11 +147,14 @@ type
       0 : (V: array[0..3] of Double);
       1 : (X,Y,Z,W: Double);
   end;
+
+  PVector4f = ^TVector4f;
   TVector4f = record
     case Integer of
       0 : (V: array[0..3] of Single);
       1 : (X,Y,Z,W: Single);
   end;
+  
   TVector4h = record
     case Integer of
       0 : (V: array[0..3] of Word);
@@ -194,8 +201,10 @@ type
       1 : (X,Y,Z,W: Pointer);
   end;
 
- PgxVector = ^TgxVector;
- TgxVector = TVector4f;
+// The vector by default
+
+
+// ===========  Matrices  ============
 
  TMatrix2d = record
     case Integer of
@@ -284,6 +293,9 @@ type
       0 : (V: array[0..3] of TVector4d);
       1 : (X,Y,Z,W: TVector4d);
   end;
+
+  // the matrix by default
+  PMatrix4f = ^TMatrix4f;
   TMatrix4f = record
     case Integer of
       0 : (V: array[0..3] of TVector4f);
@@ -338,12 +350,9 @@ type
   end;
 
 
-  PgxMatrix = ^TgxMatrix;
-  TgxMatrix = TMatrix4f;
-
-//-----------------------------------------------  
+//-----------------------------------------------
 implementation
-//-----------------------------------------------  
+//-----------------------------------------------
 
 end.
 

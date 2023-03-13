@@ -7,7 +7,7 @@ unit GLX.RenderContextInfo;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   GLX.VectorTypes,
@@ -53,8 +53,8 @@ type
   TgxVisibilityCulling = (vcInherited, vcNone, vcObjectBased, vcHierarchical);
 
   TgxRenderContextClippingInfo = record
-    origin: TgxVector;
-    clippingDirection: TgxVector;
+    origin: TVector4f;
+    clippingDirection: TVector4f;
     viewPortRadius: Single; // viewport bounding radius per distance unit
     nearClippingDistance: Single;
     farClippingDistance: Single;
@@ -65,8 +65,8 @@ type
   TgxRenderContextInfo = record
     scene: TObject; //usually TgxScene
     buffer: TObject; //usually TgxSceneBuffer
-    cameraPosition: TgxVector;
-    cameraDirection, cameraUp: TgxVector;
+    cameraPosition: TVector4f;
+    cameraDirection, cameraUp: TVector4f;
     viewPortSize: TgxSize;
     renderDPI: Integer;
     materialLibrary: TObject; //usually TgxMaterialLibrary;

@@ -7,7 +7,7 @@ unit FRMaterialPreview;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Types,

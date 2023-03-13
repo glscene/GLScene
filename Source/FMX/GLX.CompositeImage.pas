@@ -16,7 +16,7 @@ uses
 
   GLX.Graphics,
   GLX.Texture,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLX.Context;
 
 type

@@ -7,7 +7,7 @@ unit GLX.LensFlare;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -29,7 +29,7 @@ uses
   GLX.RenderContextInfo,
   GLX.State,
   GLX.Utils,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 type
 
@@ -446,7 +446,7 @@ var
   screenPos: TAffineVector;
   flareInViewPort, dynamicSize: Boolean;
   oldSeed: LongInt;
-  projMatrix: TgxMatrix;
+  projMatrix: TMatrix4f;
   CurrentBuffer: TgxSceneBuffer;
 begin
   if (rci.drawState = dsPicking) then

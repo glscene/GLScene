@@ -1,7 +1,6 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit Formats.HDRImage;
 
 (*
@@ -12,7 +11,7 @@ unit Formats.HDRImage;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.Windows,
@@ -21,6 +20,7 @@ uses
   Vcl.Graphics,
 
   GLS.VectorTypes,
+  GLS.OpenGLTokens,
   GLS.VectorGeometry,
   GLS.Graphics;
 
@@ -38,7 +38,7 @@ implementation
 
 uses
   GLS.FileHDR,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 // ------------------
 // ------------------ THDRImage ------------------

@@ -8,7 +8,7 @@ unit GLS.AsyncTimer;
 *)
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,

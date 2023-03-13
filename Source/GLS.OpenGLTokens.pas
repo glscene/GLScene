@@ -7,7 +7,7 @@ unit GLS.OpenGLTokens;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGLext,
@@ -15,6 +15,100 @@ uses
   System.SysUtils,
 
   GLS.VectorTypes;
+
+
+// ===========  OpenGL types  ============
+
+type
+
+  TGLboolean = BYTEBOOL;
+  PGLboolean = ^TGLboolean;
+
+  TGLbitfield = LongWord;  // UINT
+  PGLbitfield = ^TGLbitfield;
+
+  TGLbyte = ShortInt;
+  PGLbyte = ^TGLbyte;
+
+  TGLshort = SmallInt;
+  PGLshort = ^TGLshort;
+
+  TGLint = Integer;
+  PGLint = System.PInteger;
+
+  TGLsizei = Integer;
+  PGLsizei = System.PInteger;
+
+  TGLint64 = Int64;
+  PGLint64 = System.PInt64;
+
+  TGLint64EXT = Int64;
+  PGLint64EXT = System.PInt64;
+
+  TGLuint64 = UInt64;
+  PGLuint64 = System.PUInt64;
+
+  TGLuint64EXT = UInt64;
+  PGLuint64EXT = System.PUInt64;
+
+  TGLubyte = Byte;
+  PGLubyte = System.PByte;
+
+  TGLushort = Word;
+  PGLushort = System.PWord;
+
+  TGLenum = Cardinal;
+  PGLenum = ^TGLenum;
+
+  TGLuint = Cardinal;
+  PGLuint = System.PCardinal;
+
+  TGLfloat = Single;
+
+  TGLdouble = Double;
+  PGLdouble = System.PDouble;
+
+  PGLclampf = System.PSingle;
+
+  TGLclampd = Double;
+  PGLclampd = System.PDouble;
+
+  PGLPCharArray = ^PAnsiChar;
+
+  PGLvoid = Pointer;
+  PGLPointer = ^PGLvoid;
+
+  TGLhandleARB = Cardinal;
+  PGLhandleARB = ^TGLhandleARB;
+
+  // the size of these depend on platform (32bit or 64bit)
+  TGLintptr = NativeInt;
+  PGLintptr = ^TGLintptr;
+
+  TGLsizeiptr = NativeInt;
+  PGLsizeiptr = ^TGLsizeiptr;
+
+  TGLsync = NativeInt;
+  PGLsync = ^TGLsync;
+
+  TGLchar = Byte;
+  PGLchar = MarshaledAString;
+
+  TGLhalf = WORD;
+  PGLhalf = ^TGLhalf;
+
+// ========= Windows types ==============
+
+  PWGLswap = ^TWGLswap;
+  _WGLSWAP = packed record
+    hdc: HDC;
+    uiFlags: UINT;
+  end;
+
+  TWGLswap = _WGLSWAP;
+  WGLSWAP = _WGLSWAP;
+  HPBUFFERARB = type UINT_PTR;
+
 
 type
 

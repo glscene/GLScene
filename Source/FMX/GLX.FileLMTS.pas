@@ -5,7 +5,7 @@ unit GLX.FileLMTS;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -83,7 +83,7 @@ type
   TMaterialInfo = record
     FShininess, BShininess: TgxShininess;
     FAmbient, FDiffuse, FEmission, FSpecular, BAmbient, BDiffuse, BEmission,
-      BSpecular: TgxVector;
+      BSpecular: TVector4f;
     ImageAlpha: TgxTextureImageAlpha;
     magFilter: TgxMagFilter;
     minFilter: TgxMinFilter;
@@ -106,7 +106,7 @@ implementation
 //====================================================================
 
 uses
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 // ------------------
 // ------------------ TgxLMTSVectorFile ------------------

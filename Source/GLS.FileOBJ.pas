@@ -10,7 +10,7 @@ unit GLS.FileOBJ;
 *)
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 {.$DEFINE STATS} // Define to display statistics after loading.
 
@@ -102,7 +102,7 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  Scenario.Strings,
+  Scena.Strings,
   GLS.OpenGLTokens,
   GLS.XOpenGL,
   GLS.Context,

@@ -7,7 +7,7 @@ unit GLX.PlugInManager;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.Windows,

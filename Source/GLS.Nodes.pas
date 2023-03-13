@@ -7,7 +7,7 @@ unit GLS.Nodes;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,

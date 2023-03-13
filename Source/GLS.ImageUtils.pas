@@ -15,7 +15,7 @@ unit GLS.ImageUtils;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,8 +25,8 @@ uses
   System.Math,
 
   GLS.OpenGLTokens,
-  Scenario.Strings,
-  Scenario.TextureFormat,
+  Scena.Strings,
+  Scena.TextureFormat,
   GLS.VectorGeometry,
   GLS.Utils;
 

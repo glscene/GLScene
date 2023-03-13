@@ -19,7 +19,7 @@ uses
   GLS.VectorTypes,
   GLS.VectorGeometry,
   GLS.Material,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.Utils;
 
 type

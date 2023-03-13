@@ -7,7 +7,7 @@ unit GLX.BitmapFont;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -31,7 +31,7 @@ uses
   GLX.Color,
   GLX.BaseClasses,
   GLX.RenderContextInfo,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLX.VectorTypes;
 
 type
@@ -191,7 +191,7 @@ type
     procedure RenderString(var ARci: TgxRenderContextInfo;
       const aText: UnicodeString; aAlignment: TAlignment;
       aLayout: TgxTextLayout; const aColor: TgxColorVector;
-      aPosition: PgxVector = nil; aReverseY: boolean = False); overload; virtual;
+      aPosition: PVector4f = nil; aReverseY: boolean = False); overload; virtual;
     (* A simpler canvas-style TextOut helper for RenderString.
       The rendering is reversed along Y by default, to allow direct use
       with TgxCanvas *)
@@ -835,7 +835,7 @@ end;
 
 procedure TgxCustomBitmapFont.RenderString(var ARci: TgxRenderContextInfo;
   const aText: UnicodeString; aAlignment: TAlignment; aLayout: TgxTextLayout;
-  const aColor: TgxColorVector; aPosition: PgxVector = nil;
+  const aColor: TgxColorVector; aPosition: PVector4f = nil;
   aReverseY: boolean = False);
 
   function AlignmentAdjustement(p: Integer): Single;
@@ -878,7 +878,7 @@ var
   i, chi: Integer;
   pch: PCharInfo;
   TopLeft, BottomRight: TTexPoint;
-  vTopLeft, vBottomRight: TgxVector;
+  vTopLeft, vBottomRight: TVector4f;
   deltaV, spaceDeltaH: Single;
   currentChar: WideChar;
 begin
@@ -969,7 +969,7 @@ end;
 procedure TgxCustomBitmapFont.TextOut(var rci: TgxRenderContextInfo; X, Y: Single;
   const Text: UnicodeString; const Color: TgxColorVector);
 var
-  V: TgxVector;
+  V: TVector4f;
 begin
   V.X := X;
   V.Y := Y;

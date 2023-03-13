@@ -7,7 +7,7 @@ unit GLX.TilePlane;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,

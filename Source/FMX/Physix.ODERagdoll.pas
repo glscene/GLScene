@@ -90,7 +90,7 @@ type
     FBody: PdxBody;
     FGeom: PdxGeom;
     FJointId: TdJointID;
-    procedure AlignBodyToMatrix(Mat: TgxMatrix);
+    procedure AlignBodyToMatrix(Mat: TMatrix4f);
   protected
     procedure Start; override;
     procedure Align; override;
@@ -251,7 +251,7 @@ begin
   FRagdoll := aOwner.FRagdoll;
 end;
 
-procedure TgxODERagdollBone.AlignBodyToMatrix(Mat: TgxMatrix); // By Stuart Gooding
+procedure TgxODERagdollBone.AlignBodyToMatrix(Mat: TMatrix4f); // By Stuart Gooding
 var
   R: TdMatrix3;
 begin
@@ -281,7 +281,7 @@ var
 
   function RotateAxis(Axis: TAffineVector): TAffineVector;
   var
-    absMat: TgxMatrix;
+    absMat: TMatrix4f;
   begin
     absMat := ReferenceMatrix;
     absMat.W := NullHmgVector;

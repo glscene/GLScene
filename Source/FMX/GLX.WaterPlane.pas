@@ -7,7 +7,7 @@ unit GLX.WaterPlane;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -79,10 +79,10 @@ type
     procedure DoProgress(const progressTime: TgxProgressTimes); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     procedure Assign(Source: TPersistent); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
     procedure CreateRippleAtGridPos(X, Y: Integer);
     procedure CreateRippleAtWorldPos(const X, Y, z: Single); overload;
-    procedure CreateRippleAtWorldPos(const pos: TgxVector); overload;
+    procedure CreateRippleAtWorldPos(const pos: TVector4f); overload;
     procedure CreateRippleRandom;
     procedure Reset;
     // CPU time (in seconds) taken by the last iteration step.
@@ -208,16 +208,16 @@ end;
 
 procedure TgxWaterPlane.CreateRippleAtWorldPos(const X, Y, z: Single);
 var
-  vv: TgxVector;
+  vv: TVector4f;
 begin
   vv := AbsoluteToLocal(PointMake(X, Y, z));
   CreateRippleAtGridPos(Round((vv.X + 0.5) * Resolution),
     Round((vv.z + 0.5) * Resolution));
 end;
 
-procedure TgxWaterPlane.CreateRippleAtWorldPos(const pos: TgxVector);
+procedure TgxWaterPlane.CreateRippleAtWorldPos(const pos: TVector4f);
 var
-  vv: TgxVector;
+  vv: TVector4f;
 begin
   vv := AbsoluteToLocal(PointMake(pos));
   CreateRippleAtGridPos(Round((vv.X + 0.5) * Resolution),
@@ -479,7 +479,7 @@ begin
   inherited Assign(Source);
 end;
 
-function TgxWaterPlane.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxWaterPlane.AxisAlignedDimensionsUnscaled: TVector4f;
 begin
   Result.X := 0.5 * Abs(Resolution);
   Result.Y := 0;

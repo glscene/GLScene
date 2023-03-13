@@ -7,7 +7,7 @@ unit GLX.ProxyObjects;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,7 +19,7 @@ uses
   GLX.PersistentClasses,
   GLX.VectorGeometry,
   GLX.VectorTypes,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.Scene,
   GLX.Texture,
   GLX.VectorFileObjects,
@@ -101,14 +101,14 @@ type
   public
     (* If the MasterObject is a FreeForm, you can raycast against the Octree,
        which is alot faster.  You must build the octree before using. *)
-    function OctreeRayCastIntersect(const rayStart, rayVector: TgxVector;
-      intersectPoint: PgxVector = nil;
-      intersectNormal: PgxVector = nil): Boolean;
+    function OctreeRayCastIntersect(const rayStart, rayVector: TVector4f;
+      intersectPoint: PVector4f = nil;
+      intersectNormal: PVector4f = nil): Boolean;
     // WARNING: This function is not yet 100% reliable with scale+rotation.
-    function OctreeSphereSweepIntersect(const rayStart, rayVector: TgxVector;
+    function OctreeSphereSweepIntersect(const rayStart, rayVector: TVector4f;
       const velocity, radius, modelscale: Single;
-      intersectPoint: PgxVector = nil;
-      intersectNormal: PgxVector = nil): Boolean;
+      intersectPoint: PVector4f = nil;
+      intersectNormal: PVector4f = nil): Boolean;
   published
    // Redeclare as TgxFreeForm.
     property MasterObject: TgxFreeForm read GetMasterFreeFormObject write
@@ -118,7 +118,7 @@ type
   // An object containing the bone matrix for TgxActorProxy.
   TBoneMatrixObj = class
   public
-    Matrix: TgxMatrix;
+    Matrix: TMatrix4f;
     BoneName: string;
     BoneIndex: integer;
   end;
@@ -174,13 +174,13 @@ type
     property CurrentTime: TgxProgressTimes read FCurrentTime;
     { Gets the Bones Matrix in the current animation frame.
      (since the masterobject is shared between all proxies, each proxy will have it's bones matrices) }
-    function BoneMatrix(BoneIndex: integer): TgxMatrix; overload;
-    function BoneMatrix(BoneName: string): TgxMatrix; overload;
+    function BoneMatrix(BoneIndex: integer): TMatrix4f; overload;
+    function BoneMatrix(BoneName: string): TMatrix4f; overload;
     procedure BoneMatricesClear;
     { A standard version of the RayCastIntersect function. }
-    function RayCastIntersect(const rayStart, rayVector: TgxVector;
-      intersectPoint: PgxVector = nil;
-      intersectNormal: PgxVector = nil): Boolean; override;
+    function RayCastIntersect(const rayStart, rayVector: TVector4f;
+      intersectPoint: PVector4f = nil;
+      intersectNormal: PVector4f = nil): Boolean; override;
     (* Raycasts on self, but actually on the "RefActor" Actor.
        Note that the "RefActor" parameter does not necessarily have to be
        the same Actor refernced by the MasterObject property:
@@ -188,9 +188,9 @@ type
        while using a high-poly Actor in the "MasterObject" property,
        of course we assume that the two Masterobject Actors have same animations. *)
     function RayCastIntersectEx(RefActor: TgxActor; const rayStart, rayVector:
-      TgxVector;
-      intersectPoint: PgxVector = nil;
-      intersectNormal: PgxVector = nil): Boolean; overload;
+      TVector4f;
+      intersectPoint: PVector4f = nil;
+      intersectNormal: PVector4f = nil): Boolean; overload;
   published
     property AnimationMode: TgxActorProxyAnimationMode read FAnimationMode write
       FAnimationMode default pamInherited;
@@ -299,11 +299,11 @@ end;
 // ------------------
 
 function TgxFreeFormProxy.OctreeRayCastIntersect(const rayStart, rayVector:
-  TgxVector;
-  intersectPoint: PgxVector = nil;
-  intersectNormal: PgxVector = nil): Boolean;
+  TVector4f;
+  intersectPoint: PVector4f = nil;
+  intersectNormal: PVector4f = nil): Boolean;
 var
-  localRayStart, localRayVector: TgxVector;
+  localRayStart, localRayVector: TVector4f;
 begin
   if Assigned(MasterObject) then
   begin
@@ -337,12 +337,12 @@ begin
 end;
 
 function TgxFreeFormProxy.OctreeSphereSweepIntersect(const rayStart, rayVector:
-  TgxVector;
+  TVector4f;
   const velocity, radius, modelscale: Single;
-  intersectPoint: PgxVector = nil;
-  intersectNormal: PgxVector = nil): Boolean;
+  intersectPoint: PVector4f = nil;
+  intersectNormal: PVector4f = nil): Boolean;
 var
-  localRayStart, localRayVector: TgxVector;
+  localRayStart, localRayVector: TVector4f;
   localVelocity, localRadius: single;
 begin
   Result := False;
@@ -395,13 +395,13 @@ end;
 // ------------------ TgxActorProxy ------------------
 // ------------------
 
-function TgxActorProxy.BoneMatrix(BoneIndex: integer): TgxMatrix;
+function TgxActorProxy.BoneMatrix(BoneIndex: integer): TMatrix4f;
 begin
   if BoneIndex < FBonesMatrices.count then
     result := TBoneMatrixObj(FBonesMatrices.Objects[BoneIndex]).Matrix;
 end;
 
-function TgxActorProxy.BoneMatrix(BoneName: string): TgxMatrix;
+function TgxActorProxy.BoneMatrix(BoneName: string): TMatrix4f;
 var
   i: Integer;
 begin
@@ -625,8 +625,8 @@ begin
   end;
 end;
 
-function TgxActorProxy.RayCastIntersect(const rayStart, rayVector: TgxVector;
-  intersectPoint, intersectNormal: PgxVector): Boolean;
+function TgxActorProxy.RayCastIntersect(const rayStart, rayVector: TVector4f;
+  intersectPoint, intersectNormal: PVector4f): Boolean;
 begin
   if MasterObject <> nil then
     Result := RayCastIntersectEx(GetMasterActorObject, rayStart, rayVector,
@@ -641,9 +641,9 @@ type
   TgxDummyActor = class(TgxActor);
 
 function TgxActorProxy.RayCastIntersectEx(RefActor: TgxActor; const rayStart,
-  rayVector: TgxVector; intersectPoint, intersectNormal: PgxVector): Boolean;
+  rayVector: TVector4f; intersectPoint, intersectNormal: PVector4f): Boolean;
 var
-  localRayStart, localRayVector: TgxVector;
+  localRayStart, localRayVector: TVector4f;
   cf, sf, ef: Integer;
   cfd: Single;
   HaspooTransformation: boolean;

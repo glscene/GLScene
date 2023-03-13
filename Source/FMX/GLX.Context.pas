@@ -10,7 +10,7 @@ unit GLX.Context;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -30,11 +30,11 @@ uses
  // GXL.OpenGLx,
   GLX.Generics,
   GLX.VectorGeometry,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.VectorTypes,
   GLX.State,
   GLX.PipelineTransformation,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 // Buffer ID's for Multiple-Render-Targets (using GL_ATI_draw_buffers)
 const
@@ -825,14 +825,14 @@ type
     procedure SetUniform2f(const index: string; const val: TVector2f);
     function GetUniform3f(const index: string): TAffineVector;
     procedure SetUniform3f(const index: string; const val: TAffineVector);
-    function GetUniform4f(const index: string): TgxVector;
-    procedure SetUniform4f(const index: string; const val: TgxVector);
+    function GetUniform4f(const index: string): TVector4f;
+    procedure SetUniform4f(const index: string; const val: TVector4f);
     function GetUniformMatrix2fv(const index: string): TMatrix2f;
     procedure SetUniformMatrix2fv(const index: string; const val: TMatrix2f);
     function GetUniformMatrix3fv(const index: string): TMatrix3f;
     procedure SetUniformMatrix3fv(const index: string; const val: TMatrix3f);
-    function GetUniformMatrix4fv(const index: string): TgxMatrix;
-    procedure SetUniformMatrix4fv(const index: string; const val: TgxMatrix);
+    function GetUniformMatrix4fv(const index: string): TMatrix4f;
+    procedure SetUniformMatrix4fv(const index: string; const val: TMatrix4f);
     function GetUniformTextureHandle(const index: string; const TextureIndex: Integer; const TextureTarget: TGLTextureTarget): Cardinal;
     procedure SetUniformTextureHandle(const index: string; const TextureIndex: Integer; const TextureTarget: TGLTextureTarget; const Value: Cardinal);
     procedure SetUniformBuffer(const index: string; Value: TgxUniformBufferHandle);
@@ -877,10 +877,10 @@ type
     property Uniform1f[const index: string]: Single read GetUniform1f write SetUniform1f;
     property Uniform2f[const index: string]: TVector2f read GetUniform2f write SetUniform2f;
     property Uniform3f[const index: string]: TAffineVector read GetUniform3f write SetUniform3f;
-    property Uniform4f[const index: string]: TgxVector read GetUniform4f write SetUniform4f;
+    property Uniform4f[const index: string]: TVector4f read GetUniform4f write SetUniform4f;
     property UniformMatrix2fv[const index: string]: TMatrix2f read GetUniformMatrix2fv write SetUniformMatrix2fv;
     property UniformMatrix3fv[const index: string]: TMatrix3f read GetUniformMatrix3fv write SetUniformMatrix3fv;
-    property UniformMatrix4fv[const index: string]: TgxMatrix read GetUniformMatrix4fv write SetUniformMatrix4fv;
+    property UniformMatrix4fv[const index: string]: TMatrix4f read GetUniformMatrix4fv write SetUniformMatrix4fv;
     property UniformTextureHandle[const index: string; const TextureIndex: Integer; const TextureTarget: TGLTextureTarget]
       : LongWord read GetUniformTextureHandle write SetUniformTextureHandle;
     property UniformBuffer[const index: string]: TgxUniformBufferHandle write SetUniformBuffer;
@@ -3179,12 +3179,12 @@ begin
   glUniform3f(GetUniformLocation(index), val.X, val.Y, val.Z);
 end;
 
-function TgxProgramHandle.GetUniform4f(const index: string): TgxVector;
+function TgxProgramHandle.GetUniform4f(const index: string): TVector4f;
 begin
   glGetUniformfv(GetHandle, GetUniformLocation(index), @Result);
 end;
 
-procedure TgxProgramHandle.SetUniform4f(const index: string; const val: TgxVector);
+procedure TgxProgramHandle.SetUniform4f(const index: string; const val: TVector4f);
 begin
   glUniform4f(GetUniformLocation(index), val.X, val.Y, val.Z, val.W);
 end;
@@ -3209,12 +3209,12 @@ begin
   glUniformMatrix3fv(GetUniformLocation(index), 1,  0, @val);
 end;
 
-function TgxProgramHandle.GetUniformMatrix4fv(const index: string): TgxMatrix;
+function TgxProgramHandle.GetUniformMatrix4fv(const index: string): TMatrix4f;
 begin
   glGetUniformfv(GetHandle, GetUniformLocation(index), @Result);
 end;
 
-procedure TgxProgramHandle.SetUniformMatrix4fv(const index: string; const val: TgxMatrix);
+procedure TgxProgramHandle.SetUniformMatrix4fv(const index: string; const val: TMatrix4f);
 begin
   glUniformMatrix4fv(GetUniformLocation(index), 1,  0, @val);
 end;

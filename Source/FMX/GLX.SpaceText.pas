@@ -13,7 +13,7 @@ unit GLX.SpaceText;
 *)
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,7 +25,7 @@ uses
   FMX.Graphics,
 
   GLX.VectorGeometry,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.VectorTypes,
   GLX.Scene,
   GLX.Texture,
@@ -120,8 +120,8 @@ type
     procedure NotifyFontChanged;
     procedure NotifyChange(sender: TObject); override;
     procedure DefaultHandler(var Message); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
-    function BarycenterAbsolutePosition: TgxVector; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
+    function BarycenterAbsolutePosition: TVector4f; override;
   published
     (* Adjusts the 3D font extrusion.
       If Extrusion=0, the characters will be flat (2D), values >0 will
@@ -613,10 +613,10 @@ begin
   end;
 end;
 
-function TgxSpaceText.BarycenterAbsolutePosition: TgxVector;
+function TgxSpaceText.BarycenterAbsolutePosition: TVector4f;
 var
   lWidth, lHeightMax, lHeightMin: Single;
-  AdjustVector: TgxVector;
+  AdjustVector: TVector4f;
 begin
   TextMetrics(Text, lWidth, lHeightMax, lHeightMin);
 
@@ -655,7 +655,7 @@ begin
   Result := LocalToAbsolute(AdjustVector);
 end;
 
-function TgxSpaceText.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxSpaceText.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   lWidth, lHeightMax, lHeightMin: Single;
   charScale: Single;

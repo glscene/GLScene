@@ -31,7 +31,7 @@ uses
   FMX.ListView,
 
   GLX.Scene,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.Behaviours,
   GLX.XCollection;
 

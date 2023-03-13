@@ -16,7 +16,7 @@ unit GLX.Objects;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -32,7 +32,7 @@ uses
   GLX.VectorGeometry,
   GLX.VectorTypes,
   GLX.VectorLists,
-  Scenario.Strings,
+  Scena.Strings,
 
   GLX.Scene,
   GLX.Context,
@@ -83,14 +83,14 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TgxVector;
-      intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil): Boolean; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
+    function RayCastIntersect(const rayStart, rayVector: TVector4f;
+      intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean; override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     procedure DoRender(var rci: TgxRenderContextInfo;
       renderSelf, renderChildren: Boolean); override;
     procedure StructureChanged; override;
-    function BarycenterAbsolutePosition: TgxVector; override;
+    function BarycenterAbsolutePosition: TVector4f; override;
   published
     property CubeSize: Single read FCubeSize write SetCubeSize;
     property EdgeColor: TgxColor read FEdgeColor write SetEdgeColor;
@@ -154,15 +154,15 @@ type
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     function GenerateSilhouette(const silhouetteParameters
       : TgxSilhouetteParameters): TgxSilhouette; override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TgxVector;
-      intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil): Boolean; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
+    function RayCastIntersect(const rayStart, rayVector: TVector4f;
+      intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean; override;
     (* Computes the screen coordinates of the smallest rectangle encompassing the plane.
       Returned extents are NOT limited to any physical screen extents. *)
     function ScreenRect(aBuffer: TgxSceneBuffer): TRect;
     (* Computes the signed distance to the point.
       Point coordinates are expected in absolute coordinates. *)
-    function PointDistance(const aPoint: TgxVector): Single;
+    function PointDistance(const aPoint: TVector4f): Single;
   published
     property Height: Single read FHeight write SetHeight;
     property Width: Single read FWidth write SetWidth;
@@ -197,7 +197,7 @@ type
     constructor Create(AOwner: TComponent); override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
     procedure SetSize(const Width, Height: Single);
     // Set width and height to "size"
     procedure SetSquareSize(const Size: Single);
@@ -393,10 +393,10 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
     procedure AddNode(const coords: TgxCoordinates); overload;
     procedure AddNode(const X, Y, Z: Single); overload;
-    procedure AddNode(const Value: TgxVector); overload;
+    procedure AddNode(const Value: TVector4f); overload;
     procedure AddNode(const Value: TAffineVector); overload;
   published
     // Default color for nodes. lnaInvisible and lnaAxes ignore this setting.
@@ -481,9 +481,9 @@ type
     function GenerateSilhouette(const SilhouetteParameters: TgxSilhouetteParameters): TgxSilhouette; override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     procedure Assign(Source: TPersistent); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TgxVector; intersectPoint: PgxVector = nil;
-	  intersectNormal: PgxVector = nil): Boolean; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
+    function RayCastIntersect(const rayStart, rayVector: TVector4f; intersectPoint: PVector4f = nil;
+	  intersectNormal: PVector4f = nil): Boolean; override;
   published
     property CubeWidth: Single index 0 read GetCubeWHD write SetCubeWHD stored False;
     property CubeHeight: Single index 1 read GetCubeWHD write SetCubeWHD stored False;
@@ -548,9 +548,9 @@ type
     constructor Create(AOwner: TComponent); override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TgxVector;
-      intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil)
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
+    function RayCastIntersect(const rayStart, rayVector: TVector4f;
+      intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil)
       : Boolean; override;
     function GenerateSilhouette(const silhouetteParameters
       : TgxSilhouetteParameters): TgxSilhouette; override;
@@ -585,7 +585,7 @@ type
     procedure NotifyChange(Sender: TObject); override;
     procedure AddNode(const coords: TgxCoordinates); overload;
     procedure AddNode(const X, Y, Z: Single); overload;
-    procedure AddNode(const Value: TgxVector); overload;
+    procedure AddNode(const Value: TVector4f); overload;
     procedure AddNode(const Value: TAffineVector); overload;
   published
     // The nodes list.
@@ -625,9 +625,9 @@ type
     constructor Create(AOwner: TComponent); override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TgxVector;
-      intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil)
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
+    function RayCastIntersect(const rayStart, rayVector: TVector4f;
+      intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil)
       : Boolean; override;
     function GenerateSilhouette(const silhouetteParameters
       : TgxSilhouetteParameters): TgxSilhouette; override;
@@ -748,7 +748,7 @@ begin
   inherited Assign(Source);
 end;
 
-function TgxDummyCube.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxDummyCube.AxisAlignedDimensionsUnscaled: TVector4f;
 begin
   Result.X := 0.5 * Abs(FCubeSize);
   Result.Y := Result.X;
@@ -756,8 +756,8 @@ begin
   Result.W := 0;
 end;
 
-function TgxDummyCube.RayCastIntersect(const rayStart, rayVector: TgxVector;
-  intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil): Boolean;
+function TgxDummyCube.RayCastIntersect(const rayStart, rayVector: TVector4f;
+  intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean;
 begin
   Result := False;
 end;
@@ -805,7 +805,7 @@ begin
   inherited;
 end;
 
-function TgxDummyCube.BarycenterAbsolutePosition: TgxVector;
+function TgxDummyCube.BarycenterAbsolutePosition: TVector4f;
 var
   i: Integer;
 begin
@@ -893,17 +893,17 @@ begin
   inherited Assign(Source);
 end;
 
-function TgxPlane.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxPlane.AxisAlignedDimensionsUnscaled: TVector4f;
 begin
   Result.X := 0.5 * Abs(FWidth);
   Result.Y := 0.5 * Abs(FHeight);
   Result.Z := 0;
 end;
 
-function TgxPlane.RayCastIntersect(const rayStart, rayVector: TgxVector;
-  intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil): Boolean;
+function TgxPlane.RayCastIntersect(const rayStart, rayVector: TVector4f;
+  intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean;
 var
-  locRayStart, locRayVector, ip: TgxVector;
+  locRayStart, locRayVector, ip: TVector4f;
   t: Single;
 begin
   locRayStart := AbsoluteToLocal(rayStart);
@@ -1118,7 +1118,7 @@ end;
 
 function TgxPlane.ScreenRect(aBuffer: TgxSceneBuffer): TRect;
 var
-  v: array [0 .. 3] of TgxVector;
+  v: array [0 .. 3] of TVector4f;
   buf: TgxSceneBuffer;
   hw, hh: Single;
 begin
@@ -1141,7 +1141,7 @@ begin
     FillChar(Result, SizeOf(TRect), 0);
 end;
 
-function TgxPlane.PointDistance(const aPoint: TgxVector): Single;
+function TgxPlane.PointDistance(const aPoint: TVector4f): Single;
 begin
   Result := VectorDotProduct(VectorSubtract(aPoint, AbsolutePosition),
     AbsoluteDirection);
@@ -1265,7 +1265,7 @@ begin
   inherited Assign(Source);
 end;
 
-function TgxSprite.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxSprite.AxisAlignedDimensionsUnscaled: TVector4f;
 begin
   Result.X := 0.5 * Abs(FWidth);
   Result.Y := 0.5 * Abs(FHeight);
@@ -1278,7 +1278,7 @@ procedure TgxSprite.BuildList(var rci: TgxRenderContextInfo);
 var
   vx, vy: TAffineVector;
   w, h: Single;
-  mat: TgxMatrix;
+  mat: TMatrix4f;
   u0, v0, u1, v1: Integer;
 begin
   if FAlphaChannel <> 1 then
@@ -1583,7 +1583,7 @@ end;
 procedure TgxPoints.BuildList(var rci: TgxRenderContextInfo);
 var
   n: Integer;
-  v: TgxVector;
+  v: TVector4f;
 begin
   n := FPositions.Count;
   if n = 0 then
@@ -1997,7 +1997,7 @@ begin
   glPopMatrix;
 end;
 
-function TgxNodedLines.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxNodedLines.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   i: Integer;
 begin
@@ -2028,7 +2028,7 @@ begin
   StructureChanged;
 end;
 
-procedure TgxNodedLines.AddNode(const Value: TgxVector);
+procedure TgxNodedLines.AddNode(const Value: TVector4f);
 var
   n: TgxNode;
 begin
@@ -2128,9 +2128,9 @@ var
   A, B, C: Single;
   f: Single;
   Spline: TCubicSpline;
-  vertexColor: TgxVector;
+  vertexColor: TVector4f;
   nodeBuffer: array of TAffineVector;
-  colorBuffer: array of TgxVector;
+  colorBuffer: array of TVector4f;
    nurbsRenderer : GLUNurbsObj;
 begin
   if Nodes.Count > 1 then
@@ -2525,7 +2525,7 @@ begin
   inherited Assign(Source);
 end;
 
-function TgxCube.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxCube.AxisAlignedDimensionsUnscaled: TVector4f;
 begin
   Result.X := FCubeSize.X * 0.5;
   Result.Y := FCubeSize.Y * 0.5;
@@ -2533,12 +2533,12 @@ begin
   Result.W := 0;
 end;
 
-function TgxCube.RayCastIntersect(const rayStart, rayVector: TgxVector;
-  intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil): Boolean;
+function TgxCube.RayCastIntersect(const rayStart, rayVector: TVector4f;
+  intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean;
 var
-  p: array [0 .. 5] of TgxVector;
-  rv: TgxVector;
-  rs, r: TgxVector;
+  p: array [0 .. 5] of TVector4f;
+  rv: TVector4f;
+  rs, r: TVector4f;
   i: Integer;
   t: Single;
   eSize: TAffineVector;
@@ -2855,11 +2855,11 @@ begin
   rci.gxStates.PopAttrib;
 end;
 
-function TgxSphere.RayCastIntersect(const rayStart, rayVector: TgxVector;
-  intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil): Boolean;
+function TgxSphere.RayCastIntersect(const rayStart, rayVector: TVector4f;
+  intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean;
 var
-  i1, i2: TgxVector;
-  localStart, localVector: TgxVector;
+  i1, i2: TVector4f;
+  localStart, localVector: TVector4f;
 begin
   // compute coefficients of quartic polynomial
   SetVector(localStart, AbsoluteToLocal(rayStart));
@@ -3018,7 +3018,7 @@ begin
   inherited Assign(Source);
 end;
 
-function TgxSphere.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxSphere.AxisAlignedDimensionsUnscaled: TVector4f;
 begin
   Result.X := Abs(FRadius);
   Result.Y := Result.X;
@@ -3113,7 +3113,7 @@ begin
   StructureChanged;
 end;
 
-procedure TgxPolygonBase.AddNode(const Value: TgxVector);
+procedure TgxPolygonBase.AddNode(const Value: TVector4f);
 var
   n: TgxNode;
 begin
@@ -3418,11 +3418,11 @@ end;
 
 // This will probably not work, karamba
 // RayCastSphereIntersect -> RayCastSuperellipsoidIntersect ??????
-function TgxSuperellipsoid.RayCastIntersect(const rayStart, rayVector: TgxVector;
-  intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil): Boolean;
+function TgxSuperellipsoid.RayCastIntersect(const rayStart, rayVector: TVector4f;
+  intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean;
 var
-  i1, i2: TgxVector;
-  localStart, localVector: TgxVector;
+  i1, i2: TVector4f;
+  localStart, localVector: TVector4f;
 begin
   // compute coefficients of quartic polynomial
   SetVector(localStart, AbsoluteToLocal(rayStart));
@@ -3600,7 +3600,7 @@ begin
   inherited Assign(Source);
 end;
 
-function TgxSuperellipsoid.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxSuperellipsoid.AxisAlignedDimensionsUnscaled: TVector4f;
 begin
   Result.X := Abs(FRadius);
   Result.Y := Result.X;

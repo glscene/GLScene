@@ -11,7 +11,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  Scenario.Strings,
+  Scena.Strings,
   GLX.PersistentClasses;
 
 type

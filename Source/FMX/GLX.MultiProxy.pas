@@ -93,8 +93,8 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure DoRender(var rci: TgxRenderContextInfo; renderSelf, renderChildren: Boolean); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TgxVector; intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil)
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
+    function RayCastIntersect(const rayStart, rayVector: TVector4f; intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil)
       : Boolean; override;
     function GenerateSilhouette(const silhouetteParameters: TgxSilhouetteParameters): TgxSilhouette; override;
   published
@@ -363,7 +363,7 @@ begin
     Result := nil;
 end;
 
-function TgxMultiProxy.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxMultiProxy.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   master: TgxBaseSceneObject;
 begin
@@ -376,10 +376,10 @@ begin
     Result := inherited AxisAlignedDimensionsUnscaled;
 end;
 
-function TgxMultiProxy.RayCastIntersect(const rayStart, rayVector: TgxVector; intersectPoint: PgxVector = nil;
-  intersectNormal: PgxVector = nil): Boolean;
+function TgxMultiProxy.RayCastIntersect(const rayStart, rayVector: TVector4f; intersectPoint: PVector4f = nil;
+  intersectNormal: PVector4f = nil): Boolean;
 var
-  localRayStart, localRayVector: TgxVector;
+  localRayStart, localRayVector: TVector4f;
   master: TgxBaseSceneObject;
 begin
   master := PrimaryMaster;

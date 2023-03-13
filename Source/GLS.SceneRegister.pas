@@ -8,7 +8,7 @@ unit GLS.SceneRegister;
 *)
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   WinApi.Windows,
@@ -31,7 +31,7 @@ uses
   GLS.Color,
   GLS.ObjectManager,
   GLS.PluginManager,
-  Scenario.Strings;
+  Scena.Strings;
 
 type
   TGLLibMaterialNameProperty = class(TStringProperty)

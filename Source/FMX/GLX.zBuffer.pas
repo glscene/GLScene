@@ -24,7 +24,7 @@ unit GLX.zBuffer;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -45,7 +45,7 @@ uses
   GLX.Color,
   GLX.RenderContextInfo,
   GLX.State,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 
 type
@@ -350,7 +350,7 @@ end;
 procedure TgxZBuffer.DoCalcVectors;
 var
   axs: TAffineVector;
-  Hnorm, hcvec: TgxVector;
+  Hnorm, hcvec: TVector4f;
   vec: TAffineVector;
   w, h: integer;
   wrp: single;
@@ -479,7 +479,7 @@ function TgxZBuffer.PixelToWorld(const x, y: Integer): TAffineVector;
 var
   z, dst: single;
   fy: integer;
-  camvec: TgxVector;
+  camvec: TVector4f;
 begin
   // if (Cardinal(x)<Cardinal(FWidth)) and (Cardinal(y)<Cardinal(FWidth)) then begin       //xres,yres?
   if (x < FWidth) and (y < FHeight) then
@@ -503,7 +503,7 @@ end;
 function TgxZBuffer.WorldToPixel(const aPoint: TAffineVector; out pixX, pixY:
   integer; out pixZ: single): boolean;
 var
-  camPos: TgxVector;
+  camPos: TVector4f;
   x, y, z, v0, v1, zscal: single;
 begin
   //---Takes x,y,z world coordinate.
@@ -540,7 +540,7 @@ end;
 function TgxZBuffer.WorldToPixelZ(const aPoint: TAffineVector; out pixX, pixY:
   integer; out pixZ: single): boolean; //OVERLOAD
 var
-  camPos: TgxVector;
+  camPos: TVector4f;
   x, y, z, v0, v1, zscal: single;
 begin
   //---Takes x,y,z world coordinate.
@@ -579,7 +579,7 @@ end;
 function TgxZBuffer.WorldToPixelZ(const aPoint: TAffineVector; out pixX, pixY:
   single; out pixZ: single): boolean; //OVERLOAD
 var
-  camPos: TgxVector;
+  camPos: TVector4f;
   x, y, z, invZ, v0, v1, zscal: single;
 begin
   //---Takes x,y,z world coordinate. (aPoint)
@@ -619,7 +619,7 @@ end;
 function TgxZBuffer.OrthWorldToPixelZ(const aPoint: TAffineVector; out pixX,
   pixY: single; out pixZ: single): boolean;
 var
-  camPos: TgxVector;
+  camPos: TVector4f;
   x, y, z: single;
 begin
   campos := cam.AbsolutePosition;

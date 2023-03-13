@@ -7,7 +7,7 @@ unit GLS.Collision;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,

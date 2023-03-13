@@ -7,7 +7,7 @@ unit GLX.FireFX;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -28,14 +28,14 @@ uses
   GLX.RenderContextInfo,
   GLX.State,
   GLX.PipelineTransformation,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 type
 
   PFireParticle = ^TFireParticle;
   TFireParticle = record
-    Position: TgxVector;
-    Speed: TgxVector;
+    Position: TVector4f;
+    Speed: TVector4f;
     Alpha: Single;
     TimeToLive, LifeLength: Single;
   end;
@@ -77,7 +77,7 @@ type
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
     procedure CalcFire(deltaTime: Double; ParticleInterval, ParticleLife: Single;
       FireAlpha: Single);
-    procedure AffParticle3d(Color2: TgxColorVector; const mat: TgxMatrix);
+    procedure AffParticle3d(Color2: TgxColorVector; const mat: TMatrix4f);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -375,7 +375,7 @@ procedure TgxFireFXManager.IsotropicExplosion(minInitialSpeed, maxInitialSpeed, 
   nbParticles: Integer = -1);
 var
   n: Integer;
-  tmp, refPos: TgxVector;
+  tmp, refPos: TVector4f;
 begin
   if nbParticles < 0 then
     n := MaxInt
@@ -409,7 +409,7 @@ procedure TgxFireFXManager.RingExplosion(minInitialSpeed, maxInitialSpeed, lifeB
   nbParticles: Integer = -1);
 var
   n: Integer;
-  tmp, refPos: TgxVector;
+  tmp, refPos: TVector4f;
   fx, fy, d: Single;
 begin
   if nbParticles < 0 then
@@ -447,7 +447,7 @@ procedure TgxFireFXManager.CalcFire(deltaTime: Double;
 var
   N, I: Integer;
   Fdelta: Single;
-  tmp, refPos: TgxVector;
+  tmp, refPos: TVector4f;
 begin
   // Process live stuff
   N := 0;
@@ -506,9 +506,9 @@ begin
   end;
 end;
 
-procedure TgxFireFXManager.AffParticle3d(Color2: TgxColorVector; const mat: TgxMatrix);
+procedure TgxFireFXManager.AffParticle3d(Color2: TgxColorVector; const mat: TMatrix4f);
 var
-  vx, vy: TgxVector;
+  vx, vy: TVector4f;
   i: Integer;
 begin
   for i := 0 to 2 do
@@ -632,7 +632,7 @@ procedure TgxBFireFX.Render(var rci: TgxRenderContextInfo);
 var
   n: Integer;
   i: Integer;
-  innerColor: TgxVector;
+  innerColor: TVector4f;
   lastTr: TAffineVector;
   distList: TgxSingleList;
   objList: TList;

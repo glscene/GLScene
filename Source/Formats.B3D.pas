@@ -7,7 +7,7 @@ unit Formats.B3D;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 {$R-}
 
 uses

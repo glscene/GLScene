@@ -8,7 +8,7 @@ unit GLS.ProxyObjects;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -22,7 +22,7 @@ uses
   GLS.VectorGeometry,
   GLS.Texture,
   GLS.VectorFileObjects,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.RenderContextInfo,
   GLS.BaseClasses,
   GLS.Material,

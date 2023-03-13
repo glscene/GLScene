@@ -42,7 +42,7 @@ uses
   GLS.OpenGLTokens,
   GLS.Context,
   GLS.State,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.File3DS,
   GLS.Utils,
   GLS.Navigator;

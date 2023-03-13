@@ -7,7 +7,7 @@ unit CUDA.EditorFm;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.Windows, 
@@ -27,7 +27,7 @@ uses
   Vcl.ToolWin,
   DesignIntf,
   VCLEditors,
-  Scenario.Strings,
+  Scena.Strings,
 
   CUDA.APIComps,
   CUDA.FFTPlan,

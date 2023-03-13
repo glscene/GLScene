@@ -7,7 +7,7 @@ unit GLX.Color;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -44,8 +44,8 @@ type
     procedure DefineProperties(Filer: TFiler); override;
     procedure ReadData(Stream: TStream);
     procedure WriteData(Stream: TStream);
-    function GetHSVA: TgxVector;
-    procedure SetHSVA(const hsva: TgxVector);
+    function GetHSVA: TVector4f;
+    procedure SetHSVA(const hsva: TVector4f);
   public
     constructor Create(AOwner: TPersistent); override;
     constructor CreateInitialized(AOwner: TPersistent;
@@ -60,7 +60,7 @@ type
     property Color: TgxColorVector read FColor write SetColorVector;
     property DirectColor: TgxColorVector read FColor write SetDirectColorVector;
     property AsWinColor: TColor read GetAsWinColor write SetAsWinColor;
-    property HSVA: TgxVector read GetHSVA write SetHSVA;
+    property HSVA: TVector4f read GetHSVA write SetHSVA;
     property DefaultColor: TgxColorVector read FColor;
   published
     property Red: Single index 0 read GetColorComponent write SetColorComponent
@@ -611,7 +611,7 @@ begin
   NotifyChange(Self);
 end;
 
-function TgxColor.GetHSVA: TgxVector;
+function TgxColor.GetHSVA: TVector4f;
 var
   delta, min: Single;
 const
@@ -647,7 +647,7 @@ begin
   Result.W := alpha;
 end;
 
-procedure TgxColor.SetHSVA(const hsva: TgxVector);
+procedure TgxColor.SetHSVA(const hsva: TVector4f);
 var
   f, hTemp, p, q, t: Single;
 const

@@ -7,7 +7,7 @@ unit GLS.Texture;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -30,10 +30,10 @@ uses
   GLS.RenderContextInfo,
   GLS.PersistentClasses,
   GLS.PipelineTransformation,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.ApplicationFileIO,
   GLS.Utils,
-  Scenario.Strings;
+  Scena.Strings;
 
 const
   cDefaultNormalMapScale = 0.125;

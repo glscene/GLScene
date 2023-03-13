@@ -14,11 +14,11 @@ uses
   System.Math,
 
   GLX.VectorGeometry,
-  Scenario.Strings,
+  Scena.Strings,
 
   GLX.Texture,
   GLX.Graphics,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 const
   GRADIENT_TABLE_SIZE = 256;

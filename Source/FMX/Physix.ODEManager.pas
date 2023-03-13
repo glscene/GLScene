@@ -9,7 +9,7 @@ unit Physix.ODEManager;
 *)
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -198,7 +198,7 @@ type
     procedure Loaded; override;
     procedure SetManager(Value: TgxODEManager);
     procedure SetSurface(Value: TgxODECollisionSurface);
-    function GetAbsoluteMatrix: TgxMatrix;
+    function GetAbsoluteMatrix: TMatrix4f;
   public
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
@@ -206,7 +206,7 @@ type
     procedure Render(var rci: TgxRenderContextInfo); virtual;
     procedure Reinitialize;
     property Initialized: Boolean read FInitialized;
-    property AbsoluteMatrix: TgxMatrix read GetAbsoluteMatrix;
+    property AbsoluteMatrix: TMatrix4f read GetAbsoluteMatrix;
   published
     property Manager: TgxODEManager read FManager write SetManager;
     property Surface: TgxODECollisionSurface read FSurface write SetSurface;
@@ -228,7 +228,7 @@ type
     procedure ReadFromFiler(reader: TReader); override;
     procedure SetMass(const Value: TdMass);
     function GetMass: TdMass;
-    procedure AlignBodyToMatrix(Mat: TgxMatrix);
+    procedure AlignBodyToMatrix(Mat: TMatrix4f);
     procedure SetEnabled(const Value: Boolean);
     function GetEnabled: Boolean;
     procedure RegisterJoint(Joint: TgxODEJointBase);
@@ -300,7 +300,7 @@ type
     FPosition, 
 	FDirection, 
 	FUp: TgxCoordinates;
-    FLocalMatrix: TgxMatrix;
+    FLocalMatrix: TMatrix4f;
     FRealignODE, 
 	FInitialized, 
 	FDynamic, 
@@ -315,13 +315,13 @@ type
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
     function IsODEInitialized: Boolean;
-    procedure AlignGeomElementToMatrix(Mat: TgxMatrix); virtual;
+    procedure AlignGeomElementToMatrix(Mat: TMatrix4f); virtual;
     procedure SetGeomElement(aGeom: PdxGeom);
     procedure RebuildMatrix;
     procedure RebuildVectors;
     procedure SetDensity(const Value: TdReal);
-    procedure SetMatrix(const Value: TgxMatrix);
-    function GetMatrix: TgxMatrix;
+    procedure SetMatrix(const Value: TMatrix4f);
+    function GetMatrix: TMatrix4f;
     procedure SetPosition(const Value: TgxCoordinates);
     procedure SetDirection(const Value: TgxCoordinates);
     procedure SetUp(const Value: TgxCoordinates);
@@ -329,9 +329,9 @@ type
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
     procedure Render(var rci: TgxRenderContextInfo); virtual;
-    function AbsoluteMatrix: TgxMatrix;
+    function AbsoluteMatrix: TMatrix4f;
     function AbsolutePosition: TAffineVector;
-    property Matrix: TgxMatrix read GetMatrix write SetMatrix;
+    property Matrix: TMatrix4f read GetMatrix write SetMatrix;
     property GeomTransform: PdxGeom read FGeomTransform;
     property Geom: PdxGeom read FGeomElement;
     property Initialized: Boolean read FInitialized;
@@ -476,7 +476,7 @@ type
     procedure Initialize; override;
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
-    procedure AlignGeomElementToMatrix(Mat: TgxMatrix); override;
+    procedure AlignGeomElementToMatrix(Mat: TMatrix4f); override;
   public
     class function FriendlyName: String; override;
     class function FriendlyDescription: String; override;
@@ -808,7 +808,7 @@ type
     FGeom: PdxGeom;
     FContactList,
       FContactCache: TList;
-    FTransform: TgxMatrix;
+    FTransform: TMatrix4f;
     FContactResolution: Single;
     FRenderContacts: Boolean;
     FContactRenderPoints: TgxAffineVectorList;
@@ -831,7 +831,7 @@ type
     function ApplyContacts(o1, o2: PdxGeom; flags: Integer;
       contact: PdContactGeom; skip: Integer): Integer;
     // Set the transform used that transforms contact points generated with AddContact
-    procedure SetTransform(ATransform: TgxMatrix);
+    procedure SetTransform(ATransform: TMatrix4f);
     procedure SetContactResolution(const Value: Single);
     procedure SetRenderContacts(const Value: Boolean);
     procedure SetPointSize(const Value: Single);
@@ -1052,7 +1052,7 @@ var
   i, j, res: Integer;
   pos: PdVector3;
   R: PdMatrix3;
-  rmat, mat: TgxMatrix;
+  rmat, mat: TMatrix4f;
   rad, dx, dy, dz: TdReal;
 begin
   Result := 0;
@@ -1098,7 +1098,7 @@ var
   s: TdVector3;
   pos: PdVector3;
   R: PdMatrix3;
-  mat: TgxMatrix;
+  mat: TMatrix4f;
 begin
   Result := 0;
   Collider := GetColliderFromGeom(o1);
@@ -1178,7 +1178,7 @@ var
   i, j, res: Integer;
   pos: PdVector3;
   R: PdMatrix3;
-  mat, rmat: TgxMatrix;
+  mat, rmat: TMatrix4f;
   rad, len, dx, dy, dz: TdReal;
 begin
   Result := 0;
@@ -1225,7 +1225,7 @@ var
   i, j, res: Integer;
   pos: PdVector3;
   R: PdMatrix3;
-  mat: TgxMatrix;
+  mat: TMatrix4f;
   rad, len, dx, dy: TdReal;
 begin
   Result := 0;
@@ -2031,7 +2031,7 @@ begin
   FSurface.Assign(Value);
 end;
 
-function TgxODEBehaviour.GetAbsoluteMatrix: TgxMatrix;
+function TgxODEBehaviour.GetAbsoluteMatrix: TMatrix4f;
 begin
   Result := IdentityHMGMatrix;
   if Assigned(Owner.Owner) then
@@ -2061,7 +2061,7 @@ end;
 
 procedure TgxODEDynamic.Render(var rci: TgxRenderContextInfo);
 var
-  Mat: TgxMatrix;
+  Mat: TMatrix4f;
 begin
   if Assigned(Owner.Owner) then
   begin
@@ -2184,7 +2184,7 @@ procedure TgxODEDynamic.AlignObject;
 var
   Pos: PdVector3;
   R: PdMatrix3;
-  m: TgxMatrix;
+  m: TMatrix4f;
 begin
   Pos := dBodyGetPosition(Body);
   R := dBodyGetRotation(Body);
@@ -2194,7 +2194,7 @@ begin
   OwnerBaseSceneObject.Matrix^ := m;
 end;
 
-procedure TgxODEDynamic.AlignBodyToMatrix(Mat: TgxMatrix);
+procedure TgxODEDynamic.AlignBodyToMatrix(Mat: TMatrix4f);
 var
   R: TdMatrix3;
 begin
@@ -2346,7 +2346,7 @@ end;
 
 procedure TgxODEStatic.Render(var rci: TgxRenderContextInfo);
 var
-  Mat: TgxMatrix;
+  Mat: TMatrix4f;
 begin
   if Assigned(Owner.Owner) then
   begin
@@ -2609,9 +2609,9 @@ begin
   NotifyChange(Self);
 end;
 
-function TgxODEElementBase.AbsoluteMatrix: TgxMatrix;
+function TgxODEElementBase.AbsoluteMatrix: TMatrix4f;
 var
-  Mat: TgxMatrix;
+  Mat: TMatrix4f;
 begin
   Mat := IdentityHMGMatrix;
   if Owner.Owner is TgxODEBehaviour then
@@ -2624,7 +2624,7 @@ begin
   Result := AffineVectorMake(AbsoluteMatrix.W);
 end;
 
-procedure TgxODEElementBase.AlignGeomElementToMatrix(Mat: TgxMatrix);
+procedure TgxODEElementBase.AlignGeomElementToMatrix(Mat: TMatrix4f);
 var
   R: TdMatrix3;
 begin
@@ -2688,7 +2688,7 @@ end;
 
 procedure TgxODEElementBase.CoordinateChanged(Sender: TObject);
 var
-  rightVector: TgxVector;
+  rightVector: TVector4f;
 begin
   if FIsCalculating then
     Exit;
@@ -2737,7 +2737,7 @@ begin
   ODERebuild;
 end;
 
-function TgxODEElementBase.GetMatrix: TgxMatrix;
+function TgxODEElementBase.GetMatrix: TMatrix4f;
 begin
   Result := FLocalMatrix;
 end;
@@ -2762,7 +2762,7 @@ begin
   FDensity := Value;
 end;
 
-procedure TgxODEElementBase.SetMatrix(const Value: TgxMatrix);
+procedure TgxODEElementBase.SetMatrix(const Value: TMatrix4f);
 begin
   FLocalMatrix := Value;
   RebuildVectors;
@@ -3618,7 +3618,7 @@ begin
       Result := True;
 end;
 
-procedure TgxODEElementPlane.AlignGeomElementToMatrix(Mat: TgxMatrix);
+procedure TgxODEElementPlane.AlignGeomElementToMatrix(Mat: TMatrix4f);
 var
   d: Single;
 begin
@@ -4385,7 +4385,7 @@ end;
 
 procedure TgxODEJointHinge.AxisChange(Sender: TObject);
 var
-  vec: TgxVector;
+  vec: TVector4f;
 begin
   vec := FAxis.DirectVector;
   NormalizeVector(vec);
@@ -4573,7 +4573,7 @@ end;
 
 procedure TgxODEJointSlider.AxisChange(Sender: TObject);
 var
-  vec: TgxVector;
+  vec: TVector4f;
 begin
   vec := FAxis.DirectVector;
   NormalizeVector(vec);
@@ -4753,7 +4753,7 @@ end;
 
 procedure TgxODEJointHinge2.Axis1Change(Sender: TObject);
 var
-  vec: TgxVector;
+  vec: TVector4f;
 begin
   vec := FAxis1.DirectVector;
   NormalizeVector(vec);
@@ -4764,7 +4764,7 @@ end;
 
 procedure TgxODEJointHinge2.Axis2Change(Sender: TObject);
 var
-  vec: TgxVector;
+  vec: TVector4f;
 begin
   vec := FAxis2.DirectVector;
   NormalizeVector(vec);
@@ -4939,7 +4939,7 @@ end;
 
 procedure TgxODEJointUniversal.Axis1Change(Sender: TObject);
 var
-  vec: TgxVector;
+  vec: TVector4f;
 begin
   vec := FAxis1.DirectVector;
   NormalizeVector(vec);
@@ -4950,7 +4950,7 @@ end;
 
 procedure TgxODEJointUniversal.Axis2Change(Sender: TObject);
 var
-  vec: TgxVector;
+  vec: TVector4f;
 begin
   vec := FAxis2.DirectVector;
   NormalizeVector(vec);
@@ -5204,7 +5204,7 @@ begin
   end;
 end;
 
-procedure TgxODECustomCollider.SetTransform(ATransform: TgxMatrix);
+procedure TgxODECustomCollider.SetTransform(ATransform: TMatrix4f);
 begin
   FTransform := ATransform;
 end;
@@ -5330,9 +5330,9 @@ end;
 function TgxODEHeightField.Collide(aPos: TAffineVector; var Depth: Single;
   var cPos, cNorm: TAffineVector): Boolean;
 
-  function AbsoluteToLocal(vec: TgxVector): TgxVector;
+  function AbsoluteToLocal(vec: TVector4f): TVector4f;
   var
-    mat: TgxMatrix;
+    mat: TMatrix4f;
   begin
     if Owner.Owner is TgxHeightField then
       Result := TgxHeightField(Owner.Owner).AbsoluteToLocal(vec)
@@ -5347,9 +5347,9 @@ function TgxODEHeightField.Collide(aPos: TAffineVector; var Depth: Single;
       Assert(False);
   end;
 
-  function LocalToAbsolute(vec: TgxVector): TgxVector;
+  function LocalToAbsolute(vec: TVector4f): TVector4f;
   var
-    mat: TgxMatrix;
+    mat: TMatrix4f;
   begin
     if Owner.Owner is TgxHeightField then
       Result := TgxHeightField(Owner.Owner).LocalToAbsolute(vec)
@@ -5363,9 +5363,9 @@ function TgxODEHeightField.Collide(aPos: TAffineVector; var Depth: Single;
       Assert(False);
   end;
 
-  function GetHeight(pos: TgxVector; var height: Single): Boolean;
+  function GetHeight(pos: TVector4f; var height: Single): Boolean;
   var
-    dummy1: TgxVector;
+    dummy1: TVector4f;
     dummy2: TTexPoint;
   begin
     Result := False;
@@ -5388,7 +5388,7 @@ function TgxODEHeightField.Collide(aPos: TAffineVector; var Depth: Single;
 const
   cDelta = 0.1;
 var
-  localPos: TgxVector;
+  localPos: TVector4f;
   height: Single;
   temp1, temp2: TAffineVector;
 begin

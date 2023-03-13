@@ -124,7 +124,7 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
     bonename: String;
     pos: TAffineVector;
     quat: TQuaternion;
-    mat, rmat: TgxMatrix;
+    mat, rmat: TMatrix4f;
     ParentBoneID: Integer;
     bone, parentbone: TgxSkeletonBone;
   begin
@@ -205,7 +205,7 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
     VertexWeighted: TgxAffineVectorList;
     blendedVert, transformedVert: TAffineVector;
     i, j, k: Integer;
-    mat: TgxMatrix;
+    mat: TMatrix4f;
   begin
     VertexWeightID := TgxIntegerList.Create;
     VertexWeightCount := TgxIntegerList.Create;

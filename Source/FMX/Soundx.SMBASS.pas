@@ -14,7 +14,7 @@ unit Soundx.SMBASS;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.Windows,
@@ -73,7 +73,7 @@ type
 
   // VectorToBASSVector
   //
-procedure VectorToBASSVector(const aVector: TgxVector;
+procedure VectorToBASSVector(const aVector: TVector4f;
   var aBASSVector: BASS_3DVECTOR);
 begin
   aBASSVector.x := aVector.x;
@@ -182,7 +182,7 @@ procedure TgxSMBASS.UpdateSource(aSource: TgxBaseSoundSource);
 var
   i: Integer;
   p: PBASSInfo;
-  objPos, objOri, objVel: TgxVector;
+  objPos, objOri, objVel: TVector4f;
   position, orientation, velocity: BASS_3DVECTOR;
   res: Boolean;
 begin
@@ -296,7 +296,7 @@ end;
 
 procedure TgxSMBASS.UpdateSources;
 var
-  objPos, objVel, objDir, objUp: TgxVector;
+  objPos, objVel, objDir, objUp: TVector4f;
   position, velocity, fwd, top: BASS_3DVECTOR;
 begin
   // update listener

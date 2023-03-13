@@ -7,14 +7,14 @@ unit GLX.File3DS;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Math,
   
-  Scenario.Strings,
+  Scena.Strings,
   GLX.OpenGL,
   GLX.Scene,
   GLX.Objects,
@@ -39,8 +39,8 @@ type
 
   // A record that holds all the information that is used during 3ds animation.
   TgxFile3DSAnimationData = packed record
-    ModelMatrix: TgxMatrix;
-    Color: TgxVector;            // Omni Light.
+    ModelMatrix: TMatrix4f;
+    Color: TVector4f;            // Omni Light.
     TargetPos: TAffineVector;  // Spot Light.
     SpotLightCutOff: single;
     HotSpot: single;
@@ -56,7 +56,7 @@ type
   protected
     function InterpolateValue(const AValues: array of single; const AFrame: real): single; overload;
     function InterpolateValue(const AValues: array of TAffineVector; const AFrame: real): TAffineVector; overload;
-    function InterpolateValue(const AValues: array of TKFRotKey3DS; const AFrame: real): TgxMatrix; overload;
+    function InterpolateValue(const AValues: array of TKFRotKey3DS; const AFrame: real): TMatrix4f; overload;
   public
     procedure LoadData(const ANumKeys: integer; const Keys: PKeyHeaderList; const AData: Pointer); virtual;
     procedure Apply(var DataTransf: TgxFile3DSAnimationData; const AFrame: real); virtual; abstract;
@@ -338,7 +338,7 @@ end;
 
 function MakeRotationQuaternion(const axis: TAffineVector; angle: single): TQuaternion;
 var
-  v: TgxVector;
+  v: TVector4f;
   halfAngle, invAxisLengthMult: single;
 begin
   halfAngle := (angle) / 2;
@@ -353,11 +353,11 @@ begin
   Result.RealPart := v.W;
 end;
 
-function QuaternionToRotateMatrix(const Quaternion: TQuaternion): TgxMatrix;
+function QuaternionToRotateMatrix(const Quaternion: TQuaternion): TMatrix4f;
 var
   wx, wy, wz, xx, yy, yz, xy, xz, zz, x2, y2, z2: single;
-  quat: TgxVector;
-  m: TgxMatrix;
+  quat: TVector4f;
+  m: TMatrix4f;
 begin
   quat := VectorMake(Quaternion.ImagPart);
   quat.W := Quaternion.RealPart;
@@ -457,7 +457,7 @@ begin
   Result := VectorLerp(start, stop, w);
 end;
 
-function TgxFile3DSAnimationKeys.InterpolateValue(const AValues: array of TKFRotKey3DS; const AFrame: real): TgxMatrix;
+function TgxFile3DSAnimationKeys.InterpolateValue(const AValues: array of TKFRotKey3DS; const AFrame: real): TMatrix4f;
 var
   I: integer;
   w: real;
@@ -1159,8 +1159,8 @@ var
   aScale: TgxFile3DSScaleAnimationKeys;
   aRot: TgxFile3DSRotationAnimationKeys;
   aPos: TgxFile3DSPositionAnimationKeys;
-  Mat : TgxMatrix;
-  RotMat : TgxMatrix;
+  Mat : TMatrix4f;
+  RotMat : TMatrix4f;
   AffVect : TAffineVector;
 begin
   inherited;
@@ -1514,7 +1514,7 @@ var
   function GetOrAllocateMaterial(materials: TMaterialList; const Name: string): string;
   var
     material: PMaterial3DS;
-    specColor: TgxVector;
+    specColor: TVector4f;
     matLib: TgxMaterialLibrary;
     libMat, SecondMaterial: TgxLibMaterial;
   begin
@@ -1718,14 +1718,14 @@ var
 
   //----------------------------------------------------------------------
 
-  function InvertMeshMatrix(Objects: TObjectList; const Name: string): TgxMatrix;
+  function InvertMeshMatrix(Objects: TObjectList; const Name: string): TMatrix4f;
     // constructs a 4x4 matrix from 3x4 local mesh matrix given by Name and
     // inverts it so it can be used for the keyframer stuff
   var
     I, Index: integer;
     boolY: boolean;
-    m: TgxMatrix;
-    v4: TgxVector;
+    m: TMatrix4f;
+    v4: TVector4f;
     factor: single;
   begin
     with Objects do

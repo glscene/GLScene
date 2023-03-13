@@ -7,14 +7,14 @@ unit Formatx.VRML;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   GLX.VectorTypes,
   GLX.VectorLists,
-  Scenario.Strings;
+  Scena.Strings;
 
 type
   TVRMLNode = class

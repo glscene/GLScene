@@ -10,7 +10,7 @@ unit GLX.DynamicTexture;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -20,11 +20,11 @@ uses
   System.SysUtils,
 
   GLX.VectorGeometry,
-  Scenario.Strings,
+  Scena.Strings,
 
   GLX.Context,
   GLX.Texture,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLX.Graphics;
 
 type

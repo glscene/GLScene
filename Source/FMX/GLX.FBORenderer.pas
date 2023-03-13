@@ -7,7 +7,7 @@ unit GLX.FBORenderer;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -28,7 +28,7 @@ uses
   GLX.RenderContextInfo,
   GLX.State,
   GLX.PipelineTransformation,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLX.VectorTypes,
   GLX.MultisampleImage;
 
@@ -79,7 +79,7 @@ type
     FPostGenerateMipmap: Boolean;
     FMaxSize: Integer;
     FMaxAttachment: Integer;
-    FStoreCamera: array [0 .. 2] of TgxVector;
+    FStoreCamera: array [0 .. 2] of TVector4f;
     FOnSetTextureTargets: TSetTextureTargetsEvent;
     // implementing IGLMaterialLibrarySupported
     function GetMaterialLibrary: TgxAbstractMaterialLibrary;

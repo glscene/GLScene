@@ -23,7 +23,7 @@ unit GLX.ExplosionFx;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -170,7 +170,7 @@ procedure TgxBExplosionFx.CacheInfo;
 var
   Face: integer;
   p1, p2, p3, v1, v2, posi: TAffineVector;
-  Normal: TgxVector;
+  Normal: TVector4f;
 begin
   // make sure we can explode this object
   if not OwnerBaseSceneObject.InheritsFrom(TgxBaseMesh) then begin
@@ -223,7 +223,7 @@ procedure TgxBExplosionFX.Render(var rci : TgxRenderContextInfo);
 var
   Face: integer;
   dir, p1, p2, p3: TAffineVector;
-  mat: TgxMatrix;
+  mat: TMatrix4f;
 
 begin
   if not FEnabled then

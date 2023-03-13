@@ -23,7 +23,7 @@ unit GLX.MaterialMultiProxy;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -34,7 +34,7 @@ uses
   GLX.PersistentClasses,
   GLX.VectorTypes,
   GLX.VectorGeometry,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.Texture,
   GLX.Material,
   GLX.Silhouette,
@@ -125,8 +125,8 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure DoRender(var rci: TgxRenderContextInfo; renderSelf, renderChildren: Boolean); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TgxVector; intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil): Boolean; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
+    function RayCastIntersect(const rayStart, rayVector: TVector4f; intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean; override;
     function GenerateSilhouette(const silhouetteParameters: TgxSilhouetteParameters): TgxSilhouette; override;
   published
     property MasterObjects: TgxMaterialMultiProxyMasters read FMasterObjects write SetMasterObjects;
@@ -451,7 +451,7 @@ begin
     Result := nil;
 end;
 
-function TgxMaterialMultiProxy.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxMaterialMultiProxy.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   Master: TgxBaseSceneObject;
 begin
@@ -462,10 +462,10 @@ begin
     Result := inherited AxisAlignedDimensionsUnscaled;
 end;
 
-function TgxMaterialMultiProxy.RayCastIntersect(const rayStart, rayVector: TgxVector;
-  intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil): Boolean;
+function TgxMaterialMultiProxy.RayCastIntersect(const rayStart, rayVector: TVector4f;
+  intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean;
 var
-  localRayStart, localRayVector: TgxVector;
+  localRayStart, localRayVector: TVector4f;
   Master: TgxBaseSceneObject;
 begin
   Master := PrimaryMaster;

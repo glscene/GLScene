@@ -10,7 +10,7 @@ unit GLX.Gizmo;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -20,7 +20,7 @@ uses
   GLX.PersistentClasses,
   GLX.VectorGeometry,
   GLX.VectorTypes,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.Scene,
   GLX.Color,
   GLX.Objects,
@@ -44,11 +44,11 @@ type
     FOldLibMaterialName: string;
     FOldAutoScaling: TgxCoordinates;
     FEffectedObject: TgxCustomSceneObject;
-    FOldMatr: TgxMatrix;
-    FOldMatrix: TgxMatrix;
+    FOldMatr: TMatrix4f;
+    FOldMatrix: TMatrix4f;
     procedure SetEffectedObject(const Value: TgxCustomSceneObject);
     procedure SetOldAutoScaling(const Value: TgxCoordinates);
-    procedure SetOldMatrix(const Value: TgxMatrix);
+    procedure SetOldMatrix(const Value: TMatrix4f);
   protected
     procedure DoUndo; virtual;
     function GetParent: TgxGizmoUndoCollection;
@@ -60,7 +60,7 @@ type
       Operation: TOperation); virtual;
     procedure AssignFromObject(const AObject: TgxCustomSceneObject);
     // TODO: create a special type for Matrix.
-    property OldMatrix: TgxMatrix read FOldMatrix write SetOldMatrix;
+    property OldMatrix: TMatrix4f read FOldMatrix write SetOldMatrix;
   published
     property EffectedObject: TgxCustomSceneObject read FEffectedObject
       write SetEffectedObject;
@@ -97,9 +97,9 @@ type
     gpRotateGizmo);
 
   TgxGizmoAcceptEvent = procedure(Sender: TObject; var Obj: TgxBaseSceneObject;
-    var Accept: Boolean; var Dimensions: TgxVector) of object;
+    var Accept: Boolean; var Dimensions: TVector4f) of object;
   TgxGizmoUpdateEvent = procedure(Sender: TObject; Obj: TgxBaseSceneObject;
-    Axis: TgxGizmoAxis; Operation: TgxGizmoOperation; var Vector: TgxVector)
+    Axis: TgxGizmoAxis; Operation: TgxGizmoOperation; var Vector: TVector4f)
     of object;
 
   TgxGizmoPickMode = (pmGetPickedObjects, pmRayCast);
@@ -107,7 +107,7 @@ type
   TgxGizmoRayCastHitData = class(TPersistent)
   public
     Obj: TgxBaseSceneObject;
-    Point: TgxVector;
+    Point: TVector4f;
   end;
 
   TgxGizmoPickCube = class(TgxCube)
@@ -162,8 +162,8 @@ type
     Rx, Ry: Integer;
     dglEnable, dglDisable, dgtEnable, dgtDisable, dgcEnable, dgcDisable,
       dglaEnable, dglaDisable, dgliEnable, dgliDisable: TgxDirectOpenGL;
-    LastMousePos: TgxVector;
-    ObjDimensions: TgxVector;
+    LastMousePos: TVector4f;
+    ObjDimensions: TVector4f;
     FOnBeforeSelect: TgxGizmoAcceptEvent;
     FOnBeforeUpdate: TgxGizmoUpdateEvent;
     FOnSelectionLost: TNotifyEvent;
@@ -183,7 +183,7 @@ type
     procedure SetExcludeObjectsList(const AValue: TStrings);
     procedure DirectGLDisable(Sender: TObject; var Rci: TgxRenderContextInfo);
     procedure DirectGLEnable(Sender: TObject; var Rci: TgxRenderContextInfo);
-    function MouseWorldPos(const X, Y: Integer): TgxVector;
+    function MouseWorldPos(const X, Y: Integer): TVector4f;
     function CheckObjectInExcludeList(const Obj: TgxBaseSceneObject): Boolean;
     procedure UpdateVisibleInfoLabels;
     procedure SetGizmoThickness(const Value: Single);
@@ -204,9 +204,9 @@ type
     procedure ViewerMouseDown(const X, Y: Integer);
     procedure ViewerMouseUp(const X, Y: Integer);
     procedure UpdateGizmo; overload;
-    procedure UpdateGizmo(const NewDimensions: TgxVector); overload;
+    procedure UpdateGizmo(const NewDimensions: TVector4f); overload;
     procedure SetVisible(const AValue: Boolean);
-    function GetPickedObjectPoint(const Obj: TgxBaseSceneObject): TgxVector;
+    function GetPickedObjectPoint(const Obj: TgxBaseSceneObject): TVector4f;
     procedure LooseSelection; virtual;
     procedure UndoAdd(const AObject: TgxCustomSceneObject);
     property RootGizmo: TgxBaseSceneObject read FRootGizmo write SetRootGizmo;
@@ -275,7 +275,7 @@ implementation
 procedure RotateAroundArbitraryAxis(const AnObject: TgxBaseSceneObject;
   const Axis, Origin: TAffineVector; const Angle: Single);
 var
-  M, M1, M2, M3: TgxMatrix;
+  M, M1, M2, M3: TMatrix4f;
 begin
   M1 := CreateTranslationMatrix(VectorNegate(Origin));
   M2 := CreateRotationMatrix(Axis, Angle * PI / 180);
@@ -880,7 +880,7 @@ begin
     Rci.gxStates.Enable(StDepthTest);
 end;
 
-function TgxGizmo.GetPickedObjectPoint(const Obj: TgxBaseSceneObject): TgxVector;
+function TgxGizmo.GetPickedObjectPoint(const Obj: TgxBaseSceneObject): TVector4f;
 var
   T: Integer;
   R: TgxGizmoRayCastHitData;
@@ -900,7 +900,7 @@ function TgxGizmo.InternalGetPickedObjects(const X1, Y1, X2, Y2: Integer;
   const GuessCount: Integer): TgxPickList;
 var
   T: Integer;
-  RayStart, RayVector, IPoint, INormal: TgxVector;
+  RayStart, RayVector, IPoint, INormal: TVector4f;
   O: TgxBaseSceneObject;
   Dist: Single;
   HitData: TgxGizmoRayCastHitData;
@@ -1065,9 +1065,9 @@ begin
   end;
 end;
 
-function TgxGizmo.MouseWorldPos(const X, Y: Integer): TgxVector;
+function TgxGizmo.MouseWorldPos(const X, Y: Integer): TVector4f;
 var
-  V: TgxVector;
+  V: TVector4f;
   InvertedY: Integer;
 begin
   InvertedY := Round(Viewer.Height) - Y;
@@ -1116,7 +1116,7 @@ end;
 procedure TgxGizmo.ViewerMouseMove(const X, Y: Integer);
 var
   PickList: TgxPickList;
-  MousePos: TgxVector;
+  MousePos: TVector4f;
 
   function IndexOf(Obj: TgxBaseSceneObject): Integer;
   var
@@ -1131,7 +1131,7 @@ var
       end;
   end;
 
-  function LightLine(const Line: TgxLines; const Dark: TgxVector;
+  function LightLine(const Line: TgxLines; const Dark: TVector4f;
     const Axis: TgxGizmoAxis; AlterStyle: Boolean = False): Boolean;
   var
     PickObj: TgxBaseSceneObject;
@@ -1173,7 +1173,7 @@ var
     end;
   end;
 
-  function LightTorus(const Torus: TgxGizmoPickTorus; const Dark: TgxVector;
+  function LightTorus(const Torus: TgxGizmoPickTorus; const Dark: TVector4f;
     const Axis: TgxGizmoAxis; AlterStyle: Boolean = False): Boolean;
   begin
     if IndexOf(Torus) > -1 then
@@ -1198,7 +1198,7 @@ var
     end;
   end;
 
-  function LightCube(const Cube: TgxCube; const Dark: TgxVector;
+  function LightCube(const Cube: TgxCube; const Dark: TVector4f;
     const Axis: TgxGizmoAxis; AlterStyle: Boolean = False): Boolean;
   begin
     if IndexOf(Cube) > -1 then
@@ -1223,10 +1223,10 @@ var
     end;
   end;
 
-  procedure OpeMove(MousePos: TgxVector);
+  procedure OpeMove(MousePos: TVector4f);
   var
-    Vec1, Vec2: TgxVector;
-    QuantizedMousePos, QuantizedMousePos2: TgxVector;
+    Vec1, Vec2: TVector4f;
+    QuantizedMousePos, QuantizedMousePos2: TVector4f;
     T: Integer;
   begin
     for T := 0 to 3 do
@@ -1268,9 +1268,9 @@ var
 
   procedure OpeRotate(const X, Y: Integer);
   var
-    Vec1: TgxVector;
+    Vec1: TVector4f;
     RotV: TAffineVector;
-    Pmat: TgxMatrix;
+    Pmat: TMatrix4f;
 
   begin
     Vec1.X := 0;
@@ -1348,10 +1348,10 @@ var
     end;
   end;
 
-  procedure OpeScale(const MousePos: TgxVector);
+  procedure OpeScale(const MousePos: TVector4f);
   var
-    Vec1, Vec2: TgxVector;
-    QuantizedMousePos, QuantizedMousePos2: TgxVector;
+    Vec1, Vec2: TVector4f;
+    QuantizedMousePos, QuantizedMousePos2: TVector4f;
     T: Integer;
   begin
     for T := 0 to 3 do
@@ -1486,7 +1486,7 @@ var
   Pick: TgxPickList;
   I: Integer;
   Accept: Boolean;
-  Dimensions: TgxVector;
+  Dimensions: TVector4f;
   GotPick: Boolean;
   PickedObj: TgxBaseSceneObject;
 begin
@@ -1643,7 +1643,7 @@ begin
   _GZOrootVisibleInfoLabels.Scale.AsVector := VectorMake(D, D, D);
 end;
 
-procedure TgxGizmo.UpdateGizmo(const NewDimensions: TgxVector);
+procedure TgxGizmo.UpdateGizmo(const NewDimensions: TVector4f);
 begin
   ObjDimensions := NewDimensions;
   UpdateGizmo;
@@ -1755,7 +1755,7 @@ begin
   FOldAutoScaling.Assign(Value);
 end;
 
-procedure TgxGizmoUndoItem.SetOldMatrix(const Value: TgxMatrix);
+procedure TgxGizmoUndoItem.SetOldMatrix(const Value: TMatrix4f);
 begin
   FOldMatrix := Value;
 end;

@@ -8,7 +8,7 @@ unit GLS.PerlinPFX;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,

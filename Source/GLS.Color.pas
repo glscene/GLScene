@@ -7,7 +7,7 @@ unit GLS.Color;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Types,

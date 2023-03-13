@@ -10,7 +10,7 @@ unit GLX.GLSLShader;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -23,7 +23,7 @@ uses
   GLX.Context,
   GLX.CustomShader,
   GLX.RenderContextInfo,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLX.GLSLParameter;
 
 type
@@ -95,7 +95,7 @@ type
     function GetAsVector1f: Single; override;
     function GetAsVector2f: TVector2f; override;
     function GetAsVector3f: TVector3f; override;
-    function GetAsVector4f: TgxVector; override;
+    function GetAsVector4f: TVector4f; override;
     function GetAsVector1i: Integer; override;
     function GetAsVector2i: TVector2i; override;
     function GetAsVector3i: TVector3i; override;
@@ -472,7 +472,7 @@ begin
   glGetUniformiv(FGLSLProg.Handle, FParameterID, @Result);
 end;
 
-function TgxGLSLShaderParameter.GetAsVector4f: TgxVector;
+function TgxGLSLShaderParameter.GetAsVector4f: TVector4f;
 begin
   glGetUniformfv(FGLSLProg.Handle, FParameterID, @Result);
 end;

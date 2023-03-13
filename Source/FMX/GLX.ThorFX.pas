@@ -7,7 +7,7 @@ unit GLX.ThorFX;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -30,13 +30,13 @@ uses
   GLX.RenderContextInfo,
   GLX.Manager,
   GLX.State,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 type
   PThorpoint = ^TThorpoint;
 
   TThorpoint = record
-    Position: TgxVector; // Position
+    Position: TVector4f; // Position
     Size: single; // particle size
   end;
 
@@ -297,7 +297,7 @@ end;
 procedure TgxThorFXManager.CalcThor;
 var
   N: integer;
-  vec, axs, nvec: TgxVector;
+  vec, axs, nvec: TVector4f;
   dist: single;
   a, b: single;
   len: single;
@@ -471,14 +471,14 @@ procedure TgxBThorFX.Render(var rci: TgxRenderContextInfo);
 var
   N: integer;
   i: integer;
-  // absPos :TgxVector;
-  InnerColor: TgxVector;
+  // absPos :TVector4f;
+  InnerColor: TVector4f;
   distList: TgxSingleList;
   objList: TList;
   fp: PThorpoint;
-  mat: TgxMatrix;
+  mat: TMatrix4f;
 
-  vx, vy: TgxVector;
+  vx, vy: TVector4f;
   m: integer;
   Icol, Ocol, Ccol: TgxColorVector;
   Ppos, Ppos2: TAffineVector;

@@ -15,7 +15,7 @@ unit GLS.ObjectManager;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,

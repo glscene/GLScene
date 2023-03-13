@@ -7,7 +7,7 @@ unit GLX.Imposter;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -28,7 +28,7 @@ uses
   GLX.BaseClasses,
   GLX.State,
   GLX.PipelineTransformation,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLX.Utils;
 
 type
@@ -71,22 +71,22 @@ type
     FAspectRatio: Single;
     FModulated: Boolean;
   protected
-    FVx, FVy: TgxVector;
-    FStaticOffset: TgxVector;
-    FQuad: array[0..3] of TgxVector;
+    FVx, FVy: TVector4f;
+    FStaticOffset: TVector4f;
+    FQuad: array[0..3] of TVector4f;
     FStaticScale: Single;
     procedure PrepareTexture(var rci: TgxRenderContextInfo); virtual;
-    procedure RenderQuad(const texExtents, objPos: TgxVector; size: Single);
+    procedure RenderQuad(const texExtents, objPos: TVector4f; size: Single);
   public
     constructor Create(aBuilder: TgxImposterBuilder); virtual;
     destructor Destroy; override;
     procedure BeginRender(var rci: TgxRenderContextInfo); virtual;
     procedure Render(var rci: TgxRenderContextInfo;
-      const objPos, localCameraPos: TgxVector;
+      const objPos, localCameraPos: TVector4f;
       size: Single); virtual;
     procedure EndRender(var rci: TgxRenderContextInfo); virtual;
     procedure RenderOnce(var rci: TgxRenderContextInfo;
-      const objPos, localCameraPos: TgxVector;
+      const objPos, localCameraPos: TVector4f;
       size: Single);
     property AspectRatio: Single read FAspectRatio write FAspectRatio;
     property Builder: TgxImposterBuilder read FBuilder;
@@ -244,7 +244,7 @@ type
   TStaticImposter = class(TImposter)
   public
     procedure Render(var rci: TgxRenderContextInfo;
-      const objPos, localCameraPos: TgxVector;
+      const objPos, localCameraPos: TVector4f;
       size: Single); override;
   end;
 
@@ -419,7 +419,7 @@ end;
 
 procedure TImposter.BeginRender(var rci: TgxRenderContextInfo);
 var
-  mat: TgxMatrix;
+  mat: TMatrix4f;
   filter: GLEnum;
   fx, fy, yOffset, cosAlpha, dynScale: Single;
 begin
@@ -501,17 +501,17 @@ begin
 end;
 
 procedure TImposter.Render(var rci: TgxRenderContextInfo;
-  const objPos, localCameraPos: TgxVector;
+  const objPos, localCameraPos: TVector4f;
   size: Single);
 const
-  cQuadTexExtents: TgxVector = (X:0; Y:0; Z:1; W:1);
+  cQuadTexExtents: TVector4f = (X:0; Y:0; Z:1; W:1);
 begin
   RenderQuad(cQuadTexExtents, objPos, size);
 end;
 
-procedure TImposter.RenderQuad(const texExtents, objPos: TgxVector; size: Single);
+procedure TImposter.RenderQuad(const texExtents, objPos: TVector4f; size: Single);
 var
-  pos: TgxVector;
+  pos: TVector4f;
 begin
   VectorCombine(objPos, FQuad[0], size, pos);
   glTexCoord2f(texExtents.Z, texExtents.W);
@@ -534,7 +534,7 @@ begin
 end;
 
 procedure TImposter.RenderOnce(var rci: TgxRenderContextInfo;
-  const objPos, localCameraPos: TgxVector;
+  const objPos, localCameraPos: TVector4f;
   size: Single);
 begin
   BeginRender(rci);
@@ -932,14 +932,14 @@ end;
 // ----------
 
 procedure TStaticImposter.Render(var rci: TgxRenderContextInfo;
-  const objPos, localCameraPos: TgxVector;
+  const objPos, localCameraPos: TVector4f;
   size: Single);
 var
   azimuthAngle: Single;
   i: Integer;
   x, y: Word;
   bestCorona: TgxStaticImposterBuilderCorona;
-  texExtents: TgxVector;
+  texExtents: TVector4f;
   tdx, tdy: Single;
   siBuilder: TgxStaticImposterBuilder;
 begin // inherited; exit;
@@ -1122,11 +1122,11 @@ procedure TgxStaticImposterBuilder.Render(var rci: TgxRenderContextInfo;
 var
   i, coronaIdx, curSample: Integer;
   radius: Single;
-  cameraDirection, cameraOffset: TgxVector;
+  cameraDirection, cameraOffset: TVector4f;
   xDest, xSrc, yDest, ySrc: Integer;
   corona: TgxStaticImposterBuilderCorona;
   fx, fy, yOffset: Single;
-  LM: TgxMatrix;
+  LM: TMatrix4f;
 begin
   FTextureSize := ComputeOptimalTextureSize;
   if (FTextureSize.X <= 0) and (FTextureSize.Y <= 0) then
@@ -1305,8 +1305,8 @@ procedure TgxDynamicImposterBuilder.DoRender(var rci : TgxRenderContextInfo;
 var
   i, size, Left, Top, Width, Height : Integer;
   imposter : TgxImposter;
-  mat, projection, modelview : TgxMatrix;
-  BackColor, pos, temp : TgxVector;
+  mat, projection, modelview : TMatrix4f;
+  BackColor, pos, temp : TVector4f;
   rad : Single;
   AABB : TAABB;
 begin
@@ -1457,7 +1457,7 @@ end;
 procedure TgxImposter.DoRender(var ARci: TgxRenderContextInfo;
   ARenderSelf, ARenderChildren: Boolean);
 var
-  camPos: TgxVector;
+  camPos: TVector4f;
   imposter: TImposter;
 begin
   if ARenderSelf and Assigned(Builder) and Assigned(ImpostoredObject) then
@@ -1506,15 +1506,15 @@ begin
 end;
 
 {
-function TgxImposter.AxisAlignedDimensionsUnscaled : TgxVector;
+function TgxImposter.AxisAlignedDimensionsUnscaled : TVector4f;
 begin
    Result:=NullHMGVector;
 end;
 
-function TgxImposter.CalcError(NewMatrix : TgxMatrix) : Single;
+function TgxImposter.CalcError(NewMatrix : TMatrix4f) : Single;
 var
    i : Integer;
-   mat : TgxMatrix;
+   mat : TMatrix4f;
    err : Single;
 begin
    err:=0;

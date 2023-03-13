@@ -7,7 +7,7 @@ unit GLX.EllipseCollision;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   GLX.VectorGeometry,
@@ -29,7 +29,7 @@ type
 
   // Object collision properties
   TECObjectInfo = record
-    AbsoluteMatrix: TgxMatrix;
+    AbsoluteMatrix: TMatrix4f;
     Solid: Boolean;
     IsDynamic: Boolean;
     ObjectID: Integer;

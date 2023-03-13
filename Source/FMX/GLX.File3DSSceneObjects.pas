@@ -65,7 +65,7 @@ type
 
   TgxFile3DSFreeForm = class(TgxFreeForm)
   private
-    FTransfMat, FScaleMat, ParentMatrix: TgxMatrix;
+    FTransfMat, FScaleMat, ParentMatrix: TMatrix4f;
 
     FS_Rot3DS: TgxCoordinates4;
     FRot3DS: TgxCoordinates4;
@@ -75,13 +75,13 @@ type
   protected
     procedure DefineProperties(Filer: TFiler); override;
   public
-    FRefMat: TgxMatrix;
+    FRefMat: TMatrix4f;
     constructor Create(AOWner: TComponent); override;
     destructor Destroy; override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     procedure CoordinateChanged(Sender: TgxCustomCoordinates); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
-    function BarycenterAbsolutePosition: TgxVector; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
+    function BarycenterAbsolutePosition: TVector4f; override;
   published
     property S_Rot3DS: TgxCoordinates4 read FS_Rot3DS;
     property Rot3DS: TgxCoordinates4 read FRot3DS;
@@ -97,7 +97,7 @@ implementation
 
 function MakeRotationQuaternion(const axis: TAffineVector; angle: Single): TQuaternion;
 var
-  v: TgxVector;
+  v: TVector4f;
   halfAngle, invAxisLengthMult: Single;
 begin
   halfAngle := (angle) / 2;
@@ -112,11 +112,11 @@ begin
   Result.RealPart := v.W;
 end;
 
-function QuaternionToRotateMatrix(const Quaternion: TQuaternion): TgxMatrix;
+function QuaternionToRotateMatrix(const Quaternion: TQuaternion): TMatrix4f;
 var
   wx, wy, wz, xx, yy, yz, xy, xz, zz, x2, y2, z2: Single;
-  quat: TgxVector;
-  m: TgxMatrix;
+  quat: TVector4f;
+  m: TMatrix4f;
 begin
   quat := VectorMake(Quaternion.ImagPart);
   quat.W := Quaternion.RealPart;
@@ -370,7 +370,7 @@ end;
 
 procedure TgxFile3DSFreeForm.ReadMesh(Stream: TStream);
 var
-  v: TgxVector;
+  v: TVector4f;
   virt: TBinaryReader;
 begin
   virt := TBinaryReader.Create(Stream);
@@ -390,7 +390,7 @@ end;
 procedure TgxFile3DSFreeForm.WriteMesh(Stream: TStream);
 var
   virt: TBinaryWriter;
-  v: TgxVector;
+  v: TVector4f;
 begin
   virt := TBinaryWriter.Create(Stream);
 
@@ -452,10 +452,10 @@ begin
   end;
 end;
 
-function TgxFile3DSFreeForm.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxFile3DSFreeForm.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   dMin, dMax: TAffineVector;
-  mat: TgxMatrix;
+  mat: TMatrix4f;
 begin
   MeshObjects.GetExtents(dMin, dMax);
   mat := ParentMatrix;
@@ -471,10 +471,10 @@ begin
   Result.W := 0;
 end;
 
-function TgxFile3DSFreeForm.BarycenterAbsolutePosition: TgxVector;
+function TgxFile3DSFreeForm.BarycenterAbsolutePosition: TVector4f;
 var
   dMin, dMax: TAffineVector;
-  mat: TgxMatrix;
+  mat: TMatrix4f;
 begin
   MeshObjects.GetExtents(dMin, dMax);
   mat := ParentMatrix;

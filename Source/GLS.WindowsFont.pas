@@ -7,7 +7,7 @@ unit GLS.WindowsFont;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,

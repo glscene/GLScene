@@ -41,7 +41,7 @@ uses
   GLS.XOpenGL,
   GLS.BaseClasses,
   GLS.TextureCombiners,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.Material,
   GLS.Coordinates,
   GLS.TerrainRenderer,

@@ -7,7 +7,7 @@ unit GLS.GameMenu;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,

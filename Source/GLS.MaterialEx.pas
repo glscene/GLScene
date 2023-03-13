@@ -18,7 +18,7 @@ unit GLS.MaterialEx;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -42,12 +42,12 @@ uses
   GLS.Graphics,
   GLS.PersistentClasses,
   GLS.State,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.XCollection,
   GLS.TextureCombiners,
   GLSL.ShaderParameter,
   GLS.ApplicationFileIO,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.ImageUtils,
   GLS.Utils,
   GLS.XOpenGL,

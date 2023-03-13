@@ -7,7 +7,7 @@ unit GLX.AnimatedSprite;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -21,7 +21,7 @@ uses
   GLX.VectorTypes,
   GLX.VectorGeometry,
   GLX.PersistentClasses,
-  Scenario.Strings,
+  Scena.Strings,
 
   GLX.Scene,
   GLX.Context,
@@ -673,7 +673,7 @@ procedure TgxAnimatedSprite.BuildList(var rci: TgxRenderContextInfo);
 var
   vx, vy: TAffineVector;
   w, h, temp: Single;
-  mat: TgxMatrix;
+  mat: TMatrix4f;
   u0, v0, u1, v1: Single;
   x0, y0, x1, y1, TexWidth, TexHeight: Integer;
   Anim: TgxSpriteAnimation;

@@ -126,7 +126,7 @@ type
       BoneIndices     : array of Integer;
       CompBonePool    : array of TgxACompQuatBone;
       function GetCompressedMatrix(Frame,Bone : Integer):TgxACompQuatBone;
-      function GetUnCompressedMatrix(Frame,Bone : Integer):TgxMatrix;
+      function GetUnCompressedMatrix(Frame,Bone : Integer):TMatrix4f;
       procedure LoadFromStream(aStream : TStream);
   end;
 
@@ -135,7 +135,7 @@ function G2_GetVertBoneIndex(vert:TgxMVertex; iWeightNum:Integer):Integer;
 function G2_GetVertBoneWeight(vert:TgxMVertex; iWeightNum:Cardinal;
   var fTotalWeight:Single; const iNumWeights:Cardinal):single;
 
-procedure MC_UnCompressQuat(var mat : TgxMatrix; const comp : TgxACompQuatBone);
+procedure MC_UnCompressQuat(var mat : TMatrix4f; const comp : TgxACompQuatBone);
 
 // ------------------------------------------------------------------
 implementation
@@ -189,7 +189,7 @@ end;
 // Adapted from matcomp.c
 // void MC_UnCompressQuat(float mat[3][4],const unsigned char * comp)
 
-procedure MC_UnCompressQuat(var mat : TgxMatrix; const comp : TgxACompQuatBone);
+procedure MC_UnCompressQuat(var mat : TMatrix4f; const comp : TgxACompQuatBone);
 begin
   mat:=QuaternionToMatrix(QuaternionMake([comp[1]-32726,comp[2]-32726,comp[3]-32726],comp[0]-32726));
   mat.W:=VectorMake(comp[4]/64-512,comp[5]/64-512,comp[6]/64-512,1);
@@ -277,7 +277,7 @@ begin
   Result:=CompBonePool[BoneIndices[Frame*AnimHeader.numBones+Bone]];
 end;
 
-function TFileGLA.GetUnCompressedMatrix(Frame, Bone: Integer): TgxMatrix;
+function TFileGLA.GetUnCompressedMatrix(Frame, Bone: Integer): TMatrix4f;
 begin
   MC_UnCompressQuat(Result,CompBonePool[BoneIndices[Frame*AnimHeader.numBones+Bone]]);
 end;

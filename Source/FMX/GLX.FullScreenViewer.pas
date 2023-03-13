@@ -7,7 +7,7 @@ unit GLX.FullScreenViewer;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.Messages,

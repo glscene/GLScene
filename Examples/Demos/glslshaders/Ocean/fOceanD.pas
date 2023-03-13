@@ -36,7 +36,7 @@ uses
   GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.SimpleNavigation,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.Color;
 
 type

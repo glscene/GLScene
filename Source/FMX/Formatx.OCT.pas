@@ -7,7 +7,7 @@ unit Formatx.OCT;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -78,7 +78,7 @@ type
     procedure SaveToStream(aStream: TStream);
     procedure AddTriangles(vertexCoords: TgxAffineVectorList;
       texMapCoords: TgxAffineVectorList; const textureName: String);
-    procedure AddLight(const lightPos: TAffineVector; const lightColor: TgxVector;
+    procedure AddLight(const lightPos: TAffineVector; const lightColor: TVector4f;
       lightIntensity: Integer);
   end;
 
@@ -177,7 +177,7 @@ begin
 end;
 
 procedure TOCTFile.AddLight(const lightPos: TAffineVector;
-  const lightColor: TgxVector; lightIntensity: Integer);
+  const lightColor: TVector4f; lightIntensity: Integer);
 var
   n: Integer;
 begin

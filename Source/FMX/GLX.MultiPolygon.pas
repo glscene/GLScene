@@ -20,7 +20,7 @@ unit GLX.MultiPolygon;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -122,7 +122,7 @@ type
     FContours: TgxContours;
     FOutline: TgxPolygonList;
     FContoursNormal: TAffineVector;
-    FAxisAlignedDimensionsCache: TgxVector;
+    FAxisAlignedDimensionsCache: TVector4f;
     procedure SetContours(const Value: TgxContours);
     function GetPath(i: Integer): TgxContourNodes;
     procedure SetPath(i: Integer; const value: TgxContourNodes);
@@ -140,12 +140,12 @@ type
     procedure Assign(Source: TPersistent); override;
     procedure AddNode(const i: Integer; const coords: TgxCoordinates); overload;
     procedure AddNode(const i: Integer; const X, Y, Z: Single); overload;
-    procedure AddNode(const i: Integer; const value: TgxVector); overload;
+    procedure AddNode(const i: Integer; const value: TVector4f); overload;
     procedure AddNode(const i: Integer; const value: TAffineVector); overload;
     property Path[i: Integer]: TgxContourNodes read GetPath write SetPath;
     property Outline: TgxPolygonList read GetOutline;
     property ContoursNormal: TAffineVector read FContoursNormal write SetContoursNormal;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
     procedure StructureChanged; override;
   published
     property Contours: TgxContours read FContours write SetContours;
@@ -425,7 +425,7 @@ begin
   end;
 end;
 
-procedure TgxMultiPolygonBase.AddNode(const i: Integer; const value: TgxVector);
+procedure TgxMultiPolygonBase.AddNode(const i: Integer; const value: TVector4f);
 begin
   Path[i].AddNode(value);
 end;
@@ -747,7 +747,7 @@ begin
   FContoursNormal := Value;
 end;
 
-function TgxMultiPolygonBase.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxMultiPolygonBase.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   dMin, dMax: TAffineVector;
 begin

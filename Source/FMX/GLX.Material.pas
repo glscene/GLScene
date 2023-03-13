@@ -7,7 +7,7 @@ unit GLX.Material;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -21,7 +21,7 @@ uses
   GLX.VectorTypes,
   GLX.VectorGeometry,
   GLX.PersistentClasses,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.ApplicationFileIO,
 
   GLX.RenderContextInfo,
@@ -31,7 +31,7 @@ uses
   GLX.Color,
   GLX.Coordinates,
   GLX.State,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLX.Graphics,
   GLX.Utils;
 
@@ -441,7 +441,7 @@ type
     FTextureRotate: Single;
     FTextureMatrixIsIdentity: Boolean;
     FTextureOverride: Boolean;
-    FTextureMatrix: TgxMatrix;
+    FTextureMatrix: TMatrix4f;
     FTexture2Name: TgxLibMaterialName;
     FShader: TgxShader;
     libMatTexture2: TgxLibMaterial; // internal cache
@@ -450,7 +450,7 @@ type
     procedure SetMaterial(const val: TgxMaterial);
     procedure SetTextureOffset(const val: TgxCoordinates);
     procedure SetTextureScale(const val: TgxCoordinates);
-    procedure SetTextureMatrix(const Value: TgxMatrix);
+    procedure SetTextureMatrix(const Value: TMatrix4f);
     procedure SetTexture2Name(const val: TgxLibMaterialName);
     procedure SetShader(const val: TgxShader);
     procedure SetTextureRotate(Value: Single);
@@ -468,7 +468,7 @@ type
     // Restore non-standard material states that were altered
     function UnApply(var ARci: TgxRenderContextInfo): Boolean; override;
     procedure NotifyUsersOfTexMapChange;
-    property TextureMatrix: TgxMatrix read FTextureMatrix write SetTextureMatrix;
+    property TextureMatrix: TMatrix4f read FTextureMatrix write SetTextureMatrix;
     property TextureMatrixIsIdentity: Boolean read FTextureMatrixIsIdentity;
     procedure NotifyTexMapChange(Sender: TObject);
     function Blended: Boolean; override;
@@ -1902,9 +1902,9 @@ begin
   CalculateTextureMatrix;
 end;
 
-procedure TgxLibMaterial.SetTextureMatrix(const Value: TgxMatrix);
+procedure TgxLibMaterial.SetTextureMatrix(const Value: TMatrix4f);
 begin
-  FTextureMatrixIsIdentity := CompareMem(@Value.X, @IdentityHmgMatrix.X, SizeOf(TgxMatrix));
+  FTextureMatrixIsIdentity := CompareMem(@Value.X, @IdentityHmgMatrix.X, SizeOf(TMatrix4f));
   FTextureMatrix := Value;
   FTextureOverride := True;
   NotifyUsers;

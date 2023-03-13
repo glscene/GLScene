@@ -21,14 +21,14 @@ uses
   GLX.Coordinates,
   GLX.Spline;
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 type
   TgxNode = class(TCollectionItem)
   private
-    FCoords: TgxVector;
+    FCoords: TVector4f;
     FTagObject: TObject;
-    procedure SetAsVector(const Value: TgxVector);
+    procedure SetAsVector(const Value: TVector4f);
     procedure SetAsAffineVector(const Value: TAffineVector);
     function GetAsAffineVector: TAffineVector;
     procedure SetCoordinate(AIndex: Integer; AValue: Single);
@@ -44,7 +44,7 @@ type
     (* The coordinates viewed as a vector.
       Assigning a value to this property will trigger notification events,
       if you don't want so, use DirectVector instead. *)
-    property AsVector: TgxVector read FCoords write SetAsVector;
+    property AsVector: TVector4f read FCoords write SetAsVector;
     (* The coordinates viewed as an affine vector.
       Assigning a value to this property will trigger notification events,
       if you don't want so, use DirectVector instead.
@@ -75,7 +75,7 @@ type
     procedure EndUpdate; override;
     procedure AddNode(const Coords: TgxCustomCoordinates); overload;
     procedure AddNode(const X, Y, Z: Single); overload;
-    procedure AddNode(const Value: TgxVector); overload;
+    procedure AddNode(const Value: TVector4f); overload;
     procedure AddNode(const Value: TAffineVector); overload;
     procedure AddXYArc(XRadius, YRadius: Single; StartAngle, StopAngle: Single; NbSegments: Integer;
       const Center: TAffineVector);
@@ -149,7 +149,7 @@ begin
   Result := @FCoords;
 end;
 
-procedure TgxNode.SetAsVector(const Value: TgxVector);
+procedure TgxNode.SetAsVector(const Value: TVector4f);
 begin
   FCoords := Value;
   (Collection as TgxNodes).NotifyChange;
@@ -276,7 +276,7 @@ begin
   Add.AsVector := PointMake(X, Y, Z);
 end;
 
-procedure TgxNodes.AddNode(const Value: TgxVector);
+procedure TgxNodes.AddNode(const Value: TVector4f);
 begin
   Add.AsVector := Value;
 end;

@@ -24,7 +24,7 @@ unit GLX.DCE;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -36,7 +36,7 @@ uses
   GLX.BaseClasses,
   GLX.Manager,
   GLX.VectorTypes,
-  Scenario.Strings,
+  Scena.Strings,
 
   GLX.Scene,
   GLX.VectorFileObjects,
@@ -245,7 +245,7 @@ implementation
 
 function RotateVectorByObject(obj: TgxBaseSceneObject; v: TAffineVector): TAffineVector;
 var
-  v2: TgxVector;
+  v2: TVector4f;
 begin
   SetVector(v2, v);
   SetVector(result, VectorTransform(v2, obj.Matrix^));

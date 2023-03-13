@@ -7,7 +7,7 @@ unit GLS.Coordinates;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Math,

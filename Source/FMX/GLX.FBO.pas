@@ -7,7 +7,7 @@ unit GLX.FBO;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,7 +25,7 @@ uses
   GLX.RenderContextInfo,
   GLX.MultisampleImage,
   GLX.Graphics,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 
 const

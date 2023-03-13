@@ -12,12 +12,12 @@ unit GLS.PersistentClasses;
 *)
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
   System.SysUtils,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.Utils;
 
 type

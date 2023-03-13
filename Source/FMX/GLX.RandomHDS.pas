@@ -103,12 +103,12 @@ type
   end;
 
   TMapOfSingle = array of array of single;
-  TMapOfVector = array of array of TgxVector;
+  TMapOfVector = array of array of TVector4f;
 
   TgxBaseRandomHDS = class;
 
   // Function type to use for topography-based texture
-  TOnDrawTexture = function(const Sender: TgxBaseRandomHDS; x, y: integer; z: double; Normal: TgxVector): TgxColorVector of object;
+  TOnDrawTexture = function(const Sender: TgxBaseRandomHDS; x, y: integer; z: double; Normal: TVector4f): TgxColorVector of object;
 
   TSingleClamp = procedure(var x, y: single) of object;
   TIntegerClamp = procedure(var x, y: integer) of object;
@@ -129,7 +129,7 @@ type
     FSize: integer;
     FMaterialName: string;
     FLighting: boolean;
-    FLightDirection: TgxVector;
+    FLightDirection: TVector4f;
     FTerrainRenderer: TgxTerrainRenderer;
     FLightColor: TgxColorVector;
     FShadows: boolean;
@@ -145,11 +145,11 @@ type
     FPrimerLandscape: boolean;
     FLandTileInfo: TLandTileInfo;
     FOnDrawTexture: TOnDrawTexture;
-    function OnDrawTextureDefault(const Sender: TgxBaseRandomHDS; x, y: integer; z: double; Normal: TgxVector): TgxColorVector;
+    function OnDrawTextureDefault(const Sender: TgxBaseRandomHDS; x, y: integer; z: double; Normal: TVector4f): TgxColorVector;
     procedure SetSeed(const Value: integer);
     procedure SetMaterialName(const Value: string);
     procedure SetLighting(const Value: boolean);
-    procedure SetLightDirection(const Value: TgxVector);
+    procedure SetLightDirection(const Value: TVector4f);
     procedure SetTerrainRenderer(const Value: TgxTerrainRenderer); virtual; abstract;
     procedure SetLightColor(const Value: TgxColorVector);
     procedure SetShadows(const Value: boolean);
@@ -179,7 +179,7 @@ type
     // Usually white, but you can generate e.g.sunset ambiance by setting it to red
     property LightColor: TgxColorVector read FLightColor write SetLightColor;
     // Light is parallel (sun light)
-    property LightDirection: TgxVector read FLightDirection write SetLightDirection;
+    property LightDirection: TVector4f read FLightDirection write SetLightDirection;
     (* This function must be supplied by the user. Here he/she can define which
       colour to use depending on coordinates, elevation and normal. This provides
       a great flexibility. If no function is supplied (OnDrawTexture=nil), a default
@@ -269,7 +269,7 @@ type
       - Compute the casted shadows
       - Perform a basic smoothing if TextureScale>1 *)
     procedure BuildLightMap; overload;
-    procedure BuildLightMap(const aLightDirection: TgxVector); overload;
+    procedure BuildLightMap(const aLightDirection: TVector4f); overload;
     // Normals are needed for lighting and slope-based textures
     procedure BuildNormals;
     (* For every pixel of the texture, computes slope and interpolated height and
@@ -329,7 +329,7 @@ type
     property MaxHeight: single read FMaxHeight;
     property MinHeight: single read FMinHeight;
     // Vector normal to the terrain at the position
-    function Normal(const Position: TgxVector): TgxVector;
+    function Normal(const Position: TVector4f): TVector4f;
     // Max height - min height
     property RangeHeight: single read FRangeHeight;
     (* Scale of the Terrain Renderer. They are set so as giving a identical
@@ -740,7 +740,7 @@ begin
   Result := FLandTileInfo;
 end;
 
-function TgxBaseRandomHDS.OnDrawTextureDefault(const Sender: TgxBaseRandomHDS; x, y: integer; z: double; Normal: TgxVector)
+function TgxBaseRandomHDS.OnDrawTextureDefault(const Sender: TgxBaseRandomHDS; x, y: integer; z: double; Normal: TVector4f)
   : TgxColorVector;
 begin
   if z > Sender.SeaLevel * VSF then
@@ -789,9 +789,9 @@ begin
   FLightColor := Value;
 end;
 
-procedure TgxBaseRandomHDS.SetLightDirection(const Value: TgxVector);
+procedure TgxBaseRandomHDS.SetLightDirection(const Value: TVector4f);
 var
-  v: TgxVector;
+  v: TVector4f;
 begin
   v := Value;
   NormalizeVector(v);
@@ -963,8 +963,8 @@ var
   i, j, k, m, n: integer;
   x, y: single;
   t: single;
-  v1, v2: TgxVector;
-  l: TgxVector;
+  v1, v2: TVector4f;
+  l: TVector4f;
   Shade: single;
 begin
   if FSize = 0 then
@@ -1052,7 +1052,7 @@ begin
   end; // if
 end;
 
-procedure TgxCustomRandomHDS.BuildLightMap(const aLightDirection: TgxVector);
+procedure TgxCustomRandomHDS.BuildLightMap(const aLightDirection: TVector4f);
 begin
   FLightDirection := aLightDirection;
   BuildLightMap;
@@ -1062,9 +1062,9 @@ procedure TgxCustomRandomHDS.BuildNormals;
 var
   i, j: integer;
   z0: single;
-  v1, v2: TgxVector;
-  n1: TgxVector;
-  Normal: TgxVector;
+  v1, v2: TVector4f;
+  n1: TVector4f;
+  Normal: TVector4f;
 begin
   FTask := 'Normal computation';
 
@@ -1831,7 +1831,7 @@ begin
   Result := (x >= 0) and (x <= FSize) and (y >= 0) and (y <= FSize);
 end;
 
-function TgxCustomRandomHDS.Normal(const Position: TgxVector): TgxVector;
+function TgxCustomRandomHDS.Normal(const Position: TVector4f): TVector4f;
 var
   x, y: integer;
 begin

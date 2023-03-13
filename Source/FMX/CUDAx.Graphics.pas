@@ -222,8 +222,8 @@ implementation
 
 uses
   System.SysUtils,
-  Scenario.Strings,
-  Scenario.TextureFormat;
+  Scena.Strings,
+  Scena.TextureFormat;
 
 
 // ------------------

@@ -12,7 +12,7 @@ unit GLS.GizmoEx;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -27,7 +27,7 @@ uses
   GLS.Objects,
   GLS.VectorGeometry,
   GLS.Material,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.GeomObjects,
   GLS.BitmapFont,
   GLS.SceneViewer,

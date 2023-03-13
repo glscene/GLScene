@@ -7,7 +7,7 @@ unit FmShaderUniformEditor;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.SysUtils,
@@ -20,9 +20,9 @@ uses
   VCL.StdCtrls,
   VCL.ExtCtrls,
   VCL.Buttons,
-  Scenario.Strings,
+  Scena.Strings,
   GLSL.ShaderParameter,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.VectorGeometry;
 
 type

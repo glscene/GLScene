@@ -17,18 +17,18 @@ uses
   GLS.VectorLists,
   GLS.VectorTypes,
   GLS.Texture,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.Cadencer,
   GLS.Context,
   GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.Material,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
 
   Cg.Import,
   Cg.GL;
 
-{.$I GLScene.inc}
+{.$I Scena.inc}
 { .$DEFINE OutputCompilerWarnings }
 
 (* Define OutputCompilerWarnings to output Cg compiler warnings to a file. Useful

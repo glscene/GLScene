@@ -8,7 +8,7 @@ unit GLS.FilePNG;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -17,11 +17,11 @@ uses
   VCL.Imaging.pngimage,
 
   GLS.OpenGLTokens,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.Context,
   GLS.Graphics,
   GLS.ApplicationFileIO,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 type
 

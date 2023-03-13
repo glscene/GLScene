@@ -1,7 +1,7 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-unit Scenario.Strings;
+unit Scena.Strings;
 
 (*
   String constants that are used for internationalization

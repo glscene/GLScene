@@ -7,7 +7,7 @@ unit GLX.FileMS3D;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -406,7 +406,7 @@ var
 
   function AddRotations(rot, baserot: TAffineVector): TAffineVector;
   var
-    mat1, mat2, rmat: TgxMatrix;
+    mat1, mat2, rmat: TMatrix4f;
     s, c: Single;
     Trans: TTransformations;
   begin

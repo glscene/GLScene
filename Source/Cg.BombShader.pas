@@ -7,7 +7,7 @@ unit Cg.BombShader;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -16,10 +16,10 @@ uses
   GLS.Texture,
   GLS.Cadencer,
   GLS.Context,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.Material,
   GLS.RenderContextInfo,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.State,
 
   Cg.GL,

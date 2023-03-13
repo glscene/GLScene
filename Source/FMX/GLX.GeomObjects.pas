@@ -13,7 +13,7 @@ unit GLX.GeomObjects;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
@@ -94,9 +94,9 @@ type
     constructor Create(AOwner: TComponent); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     procedure Assign(Source: TPersistent); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TgxVector;
-      intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil)
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
+    function RayCastIntersect(const rayStart, rayVector: TVector4f;
+      intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil)
       : Boolean; override;
   published
     // Allows defining a "hole" in the disk.
@@ -158,9 +158,9 @@ type
     constructor Create(AOwner: TComponent); override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TgxVector;
-      intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil)
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
+    function RayCastIntersect(const rayStart, rayVector: TVector4f;
+      intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil)
       : Boolean; override;
   published
     property Parts: TgxConeParts read FParts write SetParts
@@ -187,11 +187,11 @@ type
     constructor Create(AOwner: TComponent); override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TgxVector;
-      intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil)
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
+    function RayCastIntersect(const rayStart, rayVector: TVector4f;
+      intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil)
       : Boolean; override;
-    procedure Align(const startPoint, endPoint: TgxVector); overload;
+    procedure Align(const startPoint, endPoint: TVector4f); overload;
     procedure Align(const startObj, endObj: TgxBaseSceneObject); overload;
     procedure Align(const startPoint, endPoint: TAffineVector); overload;
   published
@@ -222,11 +222,11 @@ type
     constructor Create(AOwner: TComponent); override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TgxVector;
-      intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil)
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
+    function RayCastIntersect(const rayStart, rayVector: TVector4f;
+      intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil)
       : Boolean; override;
-    procedure Align(const startPoint, endPoint: TgxVector); overload;
+    procedure Align(const startPoint, endPoint: TVector4f); overload;
     procedure Align(const startObj, endObj: TgxBaseSceneObject); overload;
     procedure Align(const startPoint, endPoint: TAffineVector); overload;
   published
@@ -259,9 +259,9 @@ type
     constructor Create(AOwner: TComponent); override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TgxVector;
-      intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil)
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
+    function RayCastIntersect(const rayStart, rayVector: TVector4f;
+      intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil)
       : Boolean; override;
   published
     property BottomInnerRadius: Single read FBottomInnerRadius
@@ -295,9 +295,9 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
-    function RayCastIntersect(const rayStart, rayVector: TgxVector;
-      intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil): Boolean; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
+    function RayCastIntersect(const rayStart, rayVector: TVector4f;
+      intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean; override;
   published
     property MajorRadius: Single read FMajorRadius write SetMajorRadius;
     property MinorRadius: Single read FMinorRadius write SetMinorRadius;
@@ -473,7 +473,7 @@ type
     function TopDepth: Single;
     function TopWidth: Single;
     function AxisAlignedBoundingBoxUnscaled: TAABB;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
   published
     property ApexHeight: Single read FApexHeight write SetApexHeight
       stored False;
@@ -496,7 +496,7 @@ type
     FGrid: Cardinal;
   public
     constructor Create(AOwner: TComponent); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     procedure DoRender(var ARci: TgxRenderContextInfo;
       ARenderSelf, ARenderChildren: Boolean); override;
@@ -794,7 +794,7 @@ begin
   inherited Assign(Source);
 end;
 
-function TgxDisk.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxDisk.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   r: Single;
 begin
@@ -802,13 +802,13 @@ begin
   Result := VectorMake(r, r, 0);
 end;
 
-function TgxDisk.RayCastIntersect(const rayStart, rayVector: TgxVector;
-  intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil): Boolean;
+function TgxDisk.RayCastIntersect(const rayStart, rayVector: TVector4f;
+  intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean;
 var
-  ip: TgxVector;
+  ip: TVector4f;
   d: Single;
   angle, beginAngle, endAngle: Single;
-  localIntPoint: TgxVector;
+  localIntPoint: TVector4f;
 begin
   Result := False;
   if SweepAngle > 0 then
@@ -1055,7 +1055,7 @@ begin
   inherited Assign(Source);
 end;
 
-function TgxCone.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxCone.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   r: Single;
 begin
@@ -1069,10 +1069,10 @@ begin
   Result := 0;
 end;
 
-function TgxCone.RayCastIntersect(const rayStart, rayVector: TgxVector;
-  intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil): Boolean;
+function TgxCone.RayCastIntersect(const rayStart, rayVector: TVector4f;
+  intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean;
 var
-  ip, localRayStart, localRayVector: TgxVector;
+  ip, localRayStart, localRayVector: TVector4f;
   poly: array [0 .. 2] of Double;
   roots: TDoubleArray;
   minRoot: Double;
@@ -1228,7 +1228,7 @@ begin
   inherited Assign(Source);
 end;
 
-function TgxCylinder.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxCylinder.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   r, r1: Single;
 begin
@@ -1240,12 +1240,12 @@ begin
   // ScaleVector(Result, Scale.AsVector);
 end;
 
-function TgxCylinder.RayCastIntersect(const rayStart, rayVector: TgxVector;
-  intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil): Boolean;
+function TgxCylinder.RayCastIntersect(const rayStart, rayVector: TVector4f;
+  intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean;
 const
   cOne: Single = 1;
 var
-  locRayStart, locRayVector, ip: TgxVector;
+  locRayStart, locRayVector, ip: TVector4f;
   poly: array [0 .. 2] of Double;
   roots: TDoubleArray;
   minRoot: Double;
@@ -1362,7 +1362,7 @@ begin
     SetLength(roots, 0);
 end;
 
-procedure TgxCylinder.Align(const startPoint, endPoint: TgxVector);
+procedure TgxCylinder.Align(const startPoint, endPoint: TVector4f);
 var
   dir: TAffineVector;
 begin
@@ -1589,7 +1589,7 @@ begin
   inherited Assign(Source);
 end;
 
-function TgxCapsule.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxCapsule.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   r, r1: Single;
 begin
@@ -1601,12 +1601,12 @@ begin
   // ScaleVector(Result, Scale.AsVector);
 end;
 
-function TgxCapsule.RayCastIntersect(const rayStart, rayVector: TgxVector;
-  intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil): Boolean;
+function TgxCapsule.RayCastIntersect(const rayStart, rayVector: TVector4f;
+  intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean;
 const
   cOne: Single = 1;
 var
-  locRayStart, locRayVector, ip: TgxVector;
+  locRayStart, locRayVector, ip: TVector4f;
   poly: array [0 .. 2] of Double;
   roots: TDoubleArray;
   minRoot: Double;
@@ -1720,7 +1720,7 @@ begin
     SetLength(roots, 0);
 end;
 
-procedure TgxCapsule.Align(const startPoint, endPoint: TgxVector);
+procedure TgxCapsule.Align(const startPoint, endPoint: TVector4f);
 var
   dir: TAffineVector;
 begin
@@ -1838,7 +1838,7 @@ begin
   inherited Assign(Source);
 end;
 
-function TgxAnnulus.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxAnnulus.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   r, r1: Single;
 begin
@@ -1849,12 +1849,12 @@ begin
   Result := VectorMake(r, 0.5 * FHeight, r);
 end;
 
-function TgxAnnulus.RayCastIntersect(const rayStart, rayVector: TgxVector;
-  intersectPoint, intersectNormal: PgxVector): Boolean;
+function TgxAnnulus.RayCastIntersect(const rayStart, rayVector: TVector4f;
+  intersectPoint, intersectNormal: PVector4f): Boolean;
 const
   cOne: Single = 1;
 var
-  locRayStart, locRayVector, ip: TgxVector;
+  locRayStart, locRayVector, ip: TVector4f;
   poly: array [0 .. 2] of Double;
   t, tr2, invRayVector1: Single;
   tPlaneMin, tPlaneMax: Single;
@@ -2340,7 +2340,7 @@ begin
   end;
 end;
 
-function TgxTorus.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxTorus.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   r, r1: Single;
 begin
@@ -2349,15 +2349,15 @@ begin
   Result := VectorMake(r + r1, r + r1, r1); // Danb
 end;
 
-function TgxTorus.RayCastIntersect(const rayStart, rayVector: TgxVector;
-  intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil): Boolean;
+function TgxTorus.RayCastIntersect(const rayStart, rayVector: TVector4f;
+  intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean;
 var
   i: integer;
   fRo2, fRi2, fDE, fVal, r, nearest: Double;
   polynom: array [0 .. 4] of Double;
   polyRoots: TDoubleArray;
-  localStart, localVector: TgxVector;
-  vi, vc: TgxVector;
+  localStart, localVector: TVector4f;
+  vi, vc: TVector4f;
 begin
   // compute coefficients of quartic polynomial
   fRo2 := Sqr(MajorRadius);
@@ -3426,7 +3426,7 @@ begin
   end;
 end;
 
-function TgxFrustrum.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxFrustrum.AxisAlignedDimensionsUnscaled: TVector4f;
 begin
   Result.X := FBaseWidth * 0.5;
   Result.Y := FHeight * 0.5;
@@ -3512,7 +3512,7 @@ begin
   FGrid := 5;
 end;
 
-function TgxTeapot.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxTeapot.AxisAlignedDimensionsUnscaled: TVector4f;
 begin
   SetVector(Result, 0.55, 0.25, 0.35);
 end;
@@ -3622,7 +3622,7 @@ end;
 procedure TgxTeapot.DoRender(var ARci: TgxRenderContextInfo;
   ARenderSelf, ARenderChildren: Boolean);
 const
-  M: TgxMatrix = (
+  M: TMatrix4f = (
   X:(X:0.150000005960464; Y:0; Z:0; W:0);
   Y:(X:0; Y:-6.55670850946422e-09; Z:-0.150000005960464; W:0);
   Z:(X:0; Y:0.150000005960464; Z:-6.55670850946422e-09; W:0);

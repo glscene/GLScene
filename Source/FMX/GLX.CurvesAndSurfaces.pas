@@ -7,12 +7,12 @@ unit GLX.CurvesAndSurfaces;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.SysUtils,
   System.Math,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.VectorGeometry,
   GLX.VectorLists;
 

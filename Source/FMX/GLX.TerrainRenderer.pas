@@ -12,7 +12,7 @@ unit GLX.TerrainRenderer;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -102,11 +102,11 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    function RayCastIntersect(const rayStart, rayVector: TgxVector; intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil)
+    function RayCastIntersect(const rayStart, rayVector: TVector4f; intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil)
       : Boolean; override;
     (* Interpolates height for the given point.
       Expects a point expressed in absolute coordinates. *)
-    function InterpolatedHeight(const p: TgxVector): single; overload; virtual;
+    function InterpolatedHeight(const p: TVector4f): single; overload; virtual;
     function InterpolatedHeight(const p: TAffineVector): single; overload;
     // Triangle count for the last render.
     property LastTriangleCount: Integer read FLastTriangleCount;
@@ -263,14 +263,14 @@ begin
     HeightDataSource.Clear;
 end;
 
-function TgxTerrainRenderer.RayCastIntersect(const rayStart, rayVector: TgxVector; intersectPoint: PgxVector = nil;
-  intersectNormal: PgxVector = nil): Boolean;
+function TgxTerrainRenderer.RayCastIntersect(const rayStart, rayVector: TVector4f; intersectPoint: PVector4f = nil;
+  intersectNormal: PVector4f = nil): Boolean;
 var
-  p1, d, p2, p3: TgxVector;
+  p1, d, p2, p3: TVector4f;
   step, i, h, minH, maxH, p1height: single;
   startedAbove: Boolean;
   failSafe: Integer;
-  AbsX, AbsY, AbsZ: TgxVector;
+  AbsX, AbsY, AbsZ: TVector4f;
 begin
   Result := False;
   if Assigned(HeightDataSource) then
@@ -382,9 +382,9 @@ begin
   end;
 end;
 
-function TgxTerrainRenderer.InterpolatedHeight(const p: TgxVector): single;
+function TgxTerrainRenderer.InterpolatedHeight(const p: TVector4f): single;
 var
-  pLocal: TgxVector;
+  pLocal: TVector4f;
 begin
   if Assigned(HeightDataSource) then
   begin
@@ -402,7 +402,7 @@ end;
 
 procedure TgxTerrainRenderer.BuildList(var rci: TgxRenderContextInfo);
 var
-  vEye, vEyeDirection: TgxVector;
+  vEye, vEyeDirection: TVector4f;
   tilePos, AbsTilePos, Observer: TAffineVector;
   DeltaX, nbX, iX: Integer;
   DeltaY, nbY, iY: Integer;

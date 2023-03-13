@@ -15,7 +15,7 @@ unit GLSL.ShaderCombiner;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -23,7 +23,7 @@ uses
   GLS.Material,
   GLS.Scene,
   GLS.VectorGeometry,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.RenderContextInfo;
 
 type

@@ -1,7 +1,7 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-unit Scenario.TextureFormat;
+unit Scena.TextureFormat;
 
 (* Texture formats and functions *)
 
@@ -12,7 +12,7 @@ uses
   Winapi.OpenGLext,
 
   GLS.OpenGLTokens,
-  Scenario.Strings;
+  Scena.Strings;
 
 type
   // Texture addressing rules

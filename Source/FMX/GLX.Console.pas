@@ -35,7 +35,7 @@ unit GLX.Console;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.Windows,
@@ -48,7 +48,7 @@ uses
 
   GLX.VectorTypes,
   GLX.PersistentClasses,
-  Scenario.Strings,
+  Scena.Strings,
 
   GLX.Coordinates,
   GLX.Scene,

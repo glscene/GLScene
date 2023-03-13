@@ -7,7 +7,7 @@ unit GLX.TextureCombiners;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,

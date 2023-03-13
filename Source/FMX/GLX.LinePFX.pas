@@ -7,7 +7,7 @@ unit GLX.LinePFX;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -110,7 +110,7 @@ end;
 procedure TgxLinePFXManager.InitializeRendering(var rci: TgxRenderContextInfo);
 var
    i : Integer;
-   matrix : TgxMatrix;
+   matrix : TMatrix4f;
 begin
    inherited;
    glGetFloatv(GL_MODELVIEW_MATRIX, @matrix);

@@ -18,7 +18,7 @@ unit GLX.Feedback;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -31,7 +31,7 @@ uses
   GLX.VectorGeometry,
   GLX.VectorLists,
   GLX.VectorTypes,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.Scene,
   GLX.VectorFileObjects,
   GLX.Texture,
@@ -196,7 +196,7 @@ procedure TgxFeedback.BuildMeshFromBuffer(
 var
   value: Single;
   i, j, LCount, skip: Integer;
-  vertex, color, texcoord: TgxVector;
+  vertex, color, texcoord: TVector4f;
   tempVertices, tempNormals, tempTexCoords: TgxAffineVectorList;
   tempColors: TgxVectorList;
   tempIndices: TgxIntegerList;

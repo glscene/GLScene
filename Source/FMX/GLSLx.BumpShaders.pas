@@ -27,7 +27,7 @@ unit GLSLx.BumpShaders;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -44,7 +44,7 @@ uses
   GLX.Texture,
   GLX.Scene,
   GLX.Cadencer,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.Color,
   GLX.RenderContextInfo,
   GLX.Material,
@@ -54,7 +54,7 @@ uses
 
   GLSLx.CustomShader,
   GLSLx.Shader,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 type
   TBumpMethod = (bmDot3TexCombiner, bmBasicARBFP);
@@ -1584,7 +1584,7 @@ procedure TgxBumpShader.DoLightPass(var rci: TgxRenderContextInfo;
 var
   dummyHandle, tempHandle: Integer;
   lightPos, lightAtten,
-    materialDiffuse, lightDiffuse, lightSpecular: TgxVector;
+    materialDiffuse, lightDiffuse, lightSpecular: TVector4f;
 begin
   FVertexProgramHandle.Enable;
   FVertexProgramHandle.Bind;
@@ -1753,7 +1753,7 @@ end;
 
 function TgxBumpShader.DoUnApply(var rci: TgxRenderContextInfo): Boolean;
 var
-  ambient, LMaterialAmbient: TgxVector;
+  ambient, LMaterialAmbient: TVector4f;
 begin
   Result := False;
   if (csDesigning in ComponentState) and not DesignTimeEnabled then

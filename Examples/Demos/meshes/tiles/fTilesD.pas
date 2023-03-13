@@ -31,7 +31,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.RenderContextInfo,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.Keyboard,
   GLS.Utils,
   GLS.SimpleNavigation;

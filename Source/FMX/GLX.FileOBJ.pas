@@ -14,7 +14,7 @@ unit GLX.FileOBJ;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,7 +25,7 @@ uses
 
   GLX.XOpenGL,
   GLX.VectorTypes,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.Context,
   GLX.MeshUtils,
   GLX.Utils,
@@ -94,7 +94,7 @@ type
   public
     procedure Prepare;
     function MaterialStringProperty(const materialName, propertyName: string): string;
-    function MaterialVectorProperty(const materialName, propertyName: string; const defaultValue: TgxVector): TgxVector;
+    function MaterialVectorProperty(const materialName, propertyName: string; const defaultValue: TVector4f): TVector4f;
   end;
 
 var
@@ -1315,7 +1315,7 @@ begin
   Result := '';
 end;
 
-function TgxMTLFile.MaterialVectorProperty(const materialName, propertyName: string; const defaultValue: TgxVector): TgxVector;
+function TgxMTLFile.MaterialVectorProperty(const materialName, propertyName: string; const defaultValue: TVector4f): TVector4f;
 var
   i: Integer;
   sl: TStringList;

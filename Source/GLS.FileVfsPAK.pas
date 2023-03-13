@@ -14,14 +14,14 @@ unit GLS.FileVfsPAK;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
   System.Contnrs,
   System.SysUtils,
 
-  Scenario.Strings,
+  Scena.Strings,
   GLS.ApplicationFileIO;
 
 const

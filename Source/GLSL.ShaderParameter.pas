@@ -8,17 +8,17 @@ unit GLSL.ShaderParameter;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 {$M-}
 
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
   System.Classes,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.OpenGLTokens,
   GLS.VectorTypes, 
-  Scenario.TextureFormat, 
+  Scena.TextureFormat, 
   GLS.RenderContextInfo;
 
 type

@@ -13,7 +13,7 @@ unit GLX.ShadowVolume;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -360,7 +360,7 @@ end;
 function TgxShadowVolumeLight.SetupScissorRect(worldAABB: PAABB; var rci:
   TgxRenderContextInfo): Boolean;
 var
-  mvp: TgxMatrix;
+  mvp: TMatrix4f;
   ls: TgxLightSource;
   aabb: TAABB;
   clipRect: TClipRect;
@@ -619,7 +619,7 @@ var
   silParams: TgxSilhouetteParameters;
   worldAABB: TAABB;
   pWorldAABB: PAABB;
-  PM: TgxMatrix;
+  PM: TMatrix4f;
 begin
   if not Active then
   begin

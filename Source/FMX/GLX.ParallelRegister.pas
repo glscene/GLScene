@@ -19,7 +19,7 @@ uses
   STREDIT,
   }
 
-  Scenario.Strings;
+  Scena.Strings;
 
 procedure Register;
 

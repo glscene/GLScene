@@ -17,7 +17,7 @@ unit GLX.ImageUtils;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -26,11 +26,11 @@ uses
   System.Classes,
   System.Math,
 
-  Scenario.Strings,
+  Scena.Strings,
   GLX.VectorGeometry,
 
   GLX.Utils,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 var
   vImageScaleFilterWidth: Integer = 5; // Relative sample radius for filtering

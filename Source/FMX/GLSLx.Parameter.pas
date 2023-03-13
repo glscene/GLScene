@@ -5,7 +5,7 @@ unit GLSLx.Parameter;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 {$M-}
 
 uses
@@ -14,7 +14,7 @@ uses
   System.Classes,
 
   GLX.VectorTypes,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLX.RenderContextInfo;
 
 type

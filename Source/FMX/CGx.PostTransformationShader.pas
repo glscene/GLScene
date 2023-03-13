@@ -9,7 +9,7 @@ unit CGx.PostTransformationShader;
 *)
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -20,7 +20,7 @@ uses
   GLX.Context,
   GLX.Scene,
   GLX.RenderContextInfo,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
 
   GLSLx.CustomShader,
 

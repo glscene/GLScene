@@ -12,7 +12,7 @@ unit GLX.SimpleNavigation;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Types,
@@ -27,7 +27,7 @@ uses
   GLX.VectorGeometry,
   GLX.Scene,
   GLX.SceneViewer,
-  Scenario.Strings;
+  Scena.Strings;
 
 type
 

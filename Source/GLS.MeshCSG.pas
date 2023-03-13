@@ -12,7 +12,7 @@ unit GLS.MeshCSG;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.SysUtils,

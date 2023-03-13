@@ -7,7 +7,7 @@ unit GLS.RenderContextInfo;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   GLS.PersistentClasses,

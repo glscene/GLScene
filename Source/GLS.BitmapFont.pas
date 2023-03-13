@@ -8,7 +8,7 @@ unit GLS.BitmapFont;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpengL,
@@ -29,7 +29,7 @@ uses
   GLS.Color,
   GLS.BaseClasses,
   GLS.RenderContextInfo,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.VectorTypes,
   GLS.PersistentClasses;
 

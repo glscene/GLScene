@@ -7,7 +7,7 @@ unit Formatx.TGA;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,11 +16,11 @@ uses
   System.SysUtils,
 
   GLX.ApplicationFileIO,
-  Scenario.Strings,
+  Scena.Strings,
 
   GLX.Context,
   GLX.Graphics,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 type
 

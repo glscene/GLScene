@@ -7,7 +7,7 @@ unit GLS.VectorFileObjects;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -26,7 +26,7 @@ uses
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.Silhouette,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.Texture,
   GLS.Material,
   GLS.Mesh,
@@ -41,7 +41,7 @@ uses
   GLS.RenderContextInfo,
   GLS.Coordinates,
   GLS.BaseClasses,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 type
   TGLMeshObjectList = class;

@@ -7,7 +7,7 @@ unit GLSL.PhongShader;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,

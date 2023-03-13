@@ -10,7 +10,7 @@ unit GLS.SoundFileObjects;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.MMSystem,

@@ -23,7 +23,7 @@ uses
   GLS.FileWAV,
   GLS.Utils;
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 type
 

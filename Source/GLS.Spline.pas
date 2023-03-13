@@ -11,7 +11,7 @@ uses
   GLS.VectorTypes,
   GLS.VectorGeometry;
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 type
 

@@ -19,7 +19,7 @@ unit GLS.HeightData;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.Windows, // to CreateMonochromeBitmap

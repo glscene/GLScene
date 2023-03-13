@@ -10,7 +10,7 @@ unit GLX.FileMD2;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,

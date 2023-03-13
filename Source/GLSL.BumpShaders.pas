@@ -28,7 +28,7 @@ unit GLSL.BumpShaders;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -47,13 +47,13 @@ uses
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.State,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
 
   GLS.Texture,
   GLS.Scene,
   GLS.Context,
   GLS.Cadencer,
-  Scenario.Strings,
+  Scena.Strings,
   GLSL.Shader,
   GLSL.CustomShader,
   GLS.Utils;

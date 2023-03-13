@@ -12,7 +12,7 @@ unit GLX.GLSLGlassShader;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL, 
@@ -28,7 +28,7 @@ uses
   GLX.RenderContextInfo, 
   GLX.VectorGeometry, 
   GLX.Coordinates, 
-  Scenario.TextureFormat, 
+  Scena.TextureFormat, 
   GLX.Color, 
   GLX.Texture, 
   GLX.Material, 

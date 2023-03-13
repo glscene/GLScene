@@ -10,7 +10,7 @@ unit GLX.VectorFileObjects;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -26,7 +26,7 @@ uses
   GLX.PersistentClasses,
   GLX.VectorTypes,
   GLX.VectorGeometry,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.GeometryBB,
   GLX.ApplicationFileIO,
 
@@ -40,7 +40,7 @@ uses
   GLX.Color,
   GLX.RenderContextInfo,
   GLX.Coordinates,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLX.State,
   GLX.Utils;
 
@@ -179,7 +179,7 @@ type
   private
     FSkeleton: TgxSkeleton; // not persistent
   protected
-    FGlobalMatrix: TgxMatrix;
+    FGlobalMatrix: TMatrix4f;
     function GetSkeletonBone(Index: Integer): TgxSkeletonBone;
     procedure AfterObjectCreatedByReader(Sender: TObject); override;
   public
@@ -208,7 +208,7 @@ type
     procedure ReadFromFiler(reader: TgxVirtualReader); override;
     // Render skeleton wireframe
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
-    property GlobalMatrix: TgxMatrix read FGlobalMatrix write FGlobalMatrix;
+    property GlobalMatrix: TMatrix4f read FGlobalMatrix write FGlobalMatrix;
   end;
 
   (* A skeleton bone or node and its children.
@@ -241,16 +241,16 @@ type
     function BoneByID(anID: Integer): TgxSkeletonBone; override;
     function BoneByName(const aName: string): TgxSkeletonBone; override;
     // Set the bone's matrix. Becareful using this.
-    procedure SetGlobalMatrix(Matrix: TgxMatrix); // Ragdoll
+    procedure SetGlobalMatrix(Matrix: TMatrix4f); // Ragdoll
     // Set the bone's GlobalMatrix. Used for Ragdoll.
-    procedure SetGlobalMatrixForRagDoll(RagDollMatrix: TgxMatrix); // Ragdoll
+    procedure SetGlobalMatrixForRagDoll(RagDollMatrix: TMatrix4f); // Ragdoll
     (* Calculates the global matrix for the bone and its sub-bone.
       Call this function directly only the RootBone. *)
     procedure PrepareGlobalMatrices; override;
     (* Global Matrix for the bone in the current frame.
       Global matrices must be prepared by invoking PrepareGlobalMatrices
       on the root bone. *)
-    property GlobalMatrix: TgxMatrix read FGlobalMatrix;
+    property GlobalMatrix: TMatrix4f read FGlobalMatrix;
     // Free all sub bones and reset BoneID and Name.
     procedure Clean; override;
   end;
@@ -266,11 +266,11 @@ type
     FOwner: TgxSkeletonColliderList;
     FBone: TgxSkeletonBone;
     FBoneID: Integer;
-    FLocalMatrix, FGlobalMatrix: TgxMatrix;
+    FLocalMatrix, FGlobalMatrix: TMatrix4f;
     FAutoUpdate: Boolean;
   protected
     procedure SetBone(const val: TgxSkeletonBone);
-    procedure SetLocalMatrix(const val: TgxMatrix);
+    procedure SetLocalMatrix(const val: TMatrix4f);
   public
     constructor Create; override;
     constructor CreateOwned(aOwner: TgxSkeletonColliderList);
@@ -285,10 +285,10 @@ type
     property Bone: TgxSkeletonBone read FBone write SetBone;
     (* Offset and orientation of the collider in the associated
       bone's space. *)
-    property LocalMatrix: TgxMatrix read FLocalMatrix write SetLocalMatrix;
+    property LocalMatrix: TMatrix4f read FLocalMatrix write SetLocalMatrix;
     (* Global offset and orientation of the collider. This
       gets set in the AlignCollider method. *)
-    property GlobalMatrix: TgxMatrix read FGlobalMatrix;
+    property GlobalMatrix: TMatrix4f read FGlobalMatrix;
     property AutoUpdate: Boolean read FAutoUpdate write FAutoUpdate;
   end;
 
@@ -471,16 +471,16 @@ type
     procedure GetExtents(out min, max: TAffineVector); overload; virtual;
     procedure GetExtents(out aabb: TAABB); overload; virtual;
     // Barycenter from vertices data
-    function GetBarycenter: TgxVector;
+    function GetBarycenter: TVector4f;
     // Precalculate whatever is needed for rendering, called once
     procedure Prepare; virtual;
     function PointInObject(const aPoint: TAffineVector): Boolean; virtual;
     // Returns the triangle data for a given triangle
     procedure GetTriangleData(tri: Integer; list: TgxAffineVectorList; var v0, v1, v2: TAffineVector); overload;
-    procedure GetTriangleData(tri: Integer; list: TgxVectorList; var v0, v1, v2: TgxVector); overload;
+    procedure GetTriangleData(tri: Integer; list: TgxVectorList; var v0, v1, v2: TVector4f); overload;
     // Sets the triangle data of a given triangle
     procedure SetTriangleData(tri: Integer; list: TgxAffineVectorList; const v0, v1, v2: TAffineVector); overload;
-    procedure SetTriangleData(tri: Integer; list: TgxVectorList; const v0, v1, v2: TgxVector); overload;
+    procedure SetTriangleData(tri: Integer; list: TgxVectorList; const v0, v1, v2: TVector4f); overload;
     (* Build the tangent space from the mesh object's vertex, normal
       and texcoord data, filling the binormals and tangents where
       specified. *)
@@ -855,9 +855,9 @@ type
     FNormalsOrientation: TMeshNormalsOrientation;
     FMaterialLibrary: TgxMaterialLibrary;
     FLightmapLibrary: TgxMaterialLibrary;
-    FAxisAlignedDimensionsCache: TgxVector;
+    FAxisAlignedDimensionsCache: TVector4f;
     FBaryCenterOffsetChanged: Boolean;
-    FBaryCenterOffset: TgxVector;
+    FBaryCenterOffset: TVector4f;
     FUseMeshMaterials: Boolean;
     FOverlaySkeleton: Boolean;
     FIgnoreMissingTextures: Boolean;
@@ -901,10 +901,10 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
-    function BarycenterOffset: TgxVector;
-    function BarycenterPosition: TgxVector;
-    function BarycenterAbsolutePosition: TgxVector; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
+    function BarycenterOffset: TVector4f;
+    function BarycenterPosition: TVector4f;
+    function BarycenterAbsolutePosition: TVector4f; override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     procedure DoRender(var rci: TgxRenderContextInfo; renderSelf, renderChildren: Boolean); override;
     procedure StructureChanged; override;
@@ -914,7 +914,7 @@ type
       (ie. invalid collision detection). Use with caution. *)
     procedure StructureChangedNoPrepare;
     // BEWARE! Utterly inefficient implementation!
-    function RayCastIntersect(const rayStart, rayVector: TgxVector; intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil)
+    function RayCastIntersect(const rayStart, rayVector: TVector4f; intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil)
       : Boolean; override;
     function GenerateSilhouette(const SilhouetteParameters: TgxSilhouetteParameters): TgxSilhouette; override;
     (* This method allows fast shadow volumes for GLActors.
@@ -1011,15 +1011,15 @@ type
   public
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
-    function OctreeRayCastIntersect(const rayStart, rayVector: TgxVector; intersectPoint: PgxVector = nil;
-      intersectNormal: PgxVector = nil): Boolean;
-    function OctreeSphereSweepIntersect(const rayStart, rayVector: TgxVector; const velocity, radius: Single;
-      intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil): Boolean;
+    function OctreeRayCastIntersect(const rayStart, rayVector: TVector4f; intersectPoint: PVector4f = nil;
+      intersectNormal: PVector4f = nil): Boolean;
+    function OctreeSphereSweepIntersect(const rayStart, rayVector: TVector4f; const velocity, radius: Single;
+      intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean;
     function OctreeTriangleIntersect(const v1, v2, v3: TAffineVector): Boolean;
     (* Returns true if Point is inside the free form - this will only work
       properly on closed meshes. Requires that Octree has been prepared. *)
-    function OctreePointInMesh(const Point: TgxVector): Boolean;
-    function OctreeAABBIntersect(const aabb: TAABB; objMatrix, invObjMatrix: TgxMatrix;
+    function OctreePointInMesh(const Point: TVector4f): Boolean;
+    function OctreeAABBIntersect(const aabb: TAABB; objMatrix, invObjMatrix: TMatrix4f;
       triangles: TgxAffineVectorList = nil): Boolean;
     // TODO:  function OctreeSphereIntersect
     (* Octree support *experimental*.
@@ -1800,7 +1800,7 @@ function TgxSkeletonFrame.LocalMatrixList: PMatrixArray;
 var
   i: Integer;
   s, c: Single;
-  mat, rmat: TgxMatrix;
+  mat, rmat: TMatrix4f;
   quat: TQuaternion;
 begin
   if not Assigned(FLocalMatrixList) then
@@ -1808,7 +1808,7 @@ begin
     case FTransformMode of
       sftRotation:
         begin
-          FLocalMatrixList := AllocMem(SizeOf(TgxMatrix) * Rotation.Count);
+          FLocalMatrixList := AllocMem(SizeOf(TMatrix4f) * Rotation.Count);
           for i := 0 to Rotation.Count - 1 do
           begin
             if Rotation[i].X <> 0 then
@@ -1838,7 +1838,7 @@ begin
         end;
       sftQuaternion:
         begin
-          FLocalMatrixList := AllocMem(SizeOf(TgxMatrix) * Quaternion.Count);
+          FLocalMatrixList := AllocMem(SizeOf(TMatrix4f) * Quaternion.Count);
           for i := 0 to Quaternion.Count - 1 do
           begin
             quat := Quaternion[i];
@@ -1868,7 +1868,7 @@ procedure TgxSkeletonFrame.ConvertQuaternionsToRotations(KeepQuaternions: Boolea
 var
   i: Integer;
   t: TTransformations;
-  m: TgxMatrix;
+  m: TMatrix4f;
 begin
   Rotation.Clear;
   for i := 0 to Quaternion.Count - 1 do
@@ -1886,7 +1886,7 @@ end;
 procedure TgxSkeletonFrame.ConvertRotationsToQuaternions(KeepRotations: Boolean = True);
 var
   i: Integer;
-  mat, rmat: TgxMatrix;
+  mat, rmat: TMatrix4f;
   s, c: Single;
 begin
   Quaternion.Clear;
@@ -2251,12 +2251,12 @@ begin
   inherited;
 end;
 
-procedure TgxSkeletonBone.SetGlobalMatrix(Matrix: TgxMatrix); // ragdoll
+procedure TgxSkeletonBone.SetGlobalMatrix(Matrix: TMatrix4f); // ragdoll
 begin
   FGlobalMatrix := Matrix;
 end;
 
-procedure TgxSkeletonBone.SetGlobalMatrixForRagDoll(RagDollMatrix: TgxMatrix);
+procedure TgxSkeletonBone.SetGlobalMatrixForRagDoll(RagDollMatrix: TMatrix4f);
 // ragdoll
 begin
   FGlobalMatrix := MatrixMultiply(RagDollMatrix, Skeleton.Owner.InvAbsoluteMatrix);
@@ -2293,7 +2293,7 @@ begin
       WriteInteger(FBone.BoneID)
     else
       WriteInteger(-1);
-    Write(FLocalMatrix, SizeOf(TgxMatrix));
+    Write(FLocalMatrix, SizeOf(TMatrix4f));
   end;
 end;
 
@@ -2307,7 +2307,7 @@ begin
     with reader do
     begin
       FBoneID := ReadInteger;
-      Read(FLocalMatrix, SizeOf(TgxMatrix));
+      Read(FLocalMatrix, SizeOf(TMatrix4f));
     end
   else
     RaiseFilerException(archiveVersion);
@@ -2315,7 +2315,7 @@ end;
 
 procedure TgxSkeletonCollider.AlignCollider;
 var
-  mat: TgxMatrix;
+  mat: TMatrix4f;
 begin
   if Assigned(FBone) then
   begin
@@ -2336,7 +2336,7 @@ begin
     FBone := val;
 end;
 
-procedure TgxSkeletonCollider.SetLocalMatrix(const val: TgxMatrix);
+procedure TgxSkeletonCollider.SetLocalMatrix(const val: TMatrix4f);
 begin
   FLocalMatrix := val;
 end;
@@ -3036,7 +3036,7 @@ begin
   aabb := FExtentCache;
 end;
 
-function TgxMeshObject.GetBarycenter: TgxVector;
+function TgxMeshObject.GetBarycenter: TVector4f;
 var
   dMin, dMax: TAffineVector;
 begin
@@ -3210,7 +3210,7 @@ begin
   end;
 end;
 
-procedure TgxMeshObject.GetTriangleData(tri: Integer; list: TgxVectorList; var v0, v1, v2: TgxVector);
+procedure TgxMeshObject.GetTriangleData(tri: Integer; list: TgxVectorList; var v0, v1, v2: TVector4f);
 var
   i, LastCount, Count: Integer;
   fg: TfgxVertexIndexList;
@@ -3362,7 +3362,7 @@ begin
   end;
 end;
 
-procedure TgxMeshObject.SetTriangleData(tri: Integer; list: TgxVectorList; const v0, v1, v2: TgxVector);
+procedure TgxMeshObject.SetTriangleData(tri: Integer; list: TgxVectorList; const v0, v1, v2: TVector4f);
 var
   i, LastCount, Count: Integer;
   fg: TfgxVertexIndexList;
@@ -3485,7 +3485,7 @@ procedure TgxMeshObject.BuildTangentSpace(buildBinormals: Boolean = True; buildT
 var
   i, j: Integer;
   v, n, t: array [0 .. 2] of TAffineVector;
-  tangent, binormal: array [0 .. 2] of TgxVector;
+  tangent, binormal: array [0 .. 2] of TVector4f;
   vt, tt: TAffineVector;
   interp, dot: Single;
 
@@ -3667,7 +3667,7 @@ begin
             if FUseVBO then
               FTexCoordsVBO[i].Bind;
             glClientActiveTexture(GL_TEXTURE0 + i);
-            glTexCoordPointer(4, GL_FLOAT, SizeOf(TgxVector), tlists[i]);
+            glTexCoordPointer(4, GL_FLOAT, SizeOf(TVector4f), tlists[i]);
             glEnableClientState(GL_TEXTURE_COORD_ARRAY);
           end;
         end;
@@ -3870,7 +3870,7 @@ begin
 
     if FColorsVBO.IsDataNeedUpdate then
     begin
-      FColorsVBO.BindBufferData(Colors.list, SizeOf(TgxVector) * Colors.Count, BufferUsage);
+      FColorsVBO.BindBufferData(Colors.list, SizeOf(TVector4f) * Colors.Count, BufferUsage);
       FColorsVBO.NotifyDataUpdated;
       FColorsVBO.UnBind;
     end;
@@ -3926,7 +3926,7 @@ begin
 
       if FTexCoordsVBO[i].IsDataNeedUpdate then
       begin
-        FTexCoordsVBO[i].BindBufferData(TexCoordsEx[i].list, SizeOf(TgxVector) * TexCoordsEx[i].Count, BufferUsage);
+        FTexCoordsVBO[i].BindBufferData(TexCoordsEx[i].list, SizeOf(TVector4f) * TexCoordsEx[i].Count, BufferUsage);
         FTexCoordsVBO[i].NotifyDataUpdated;
         FTexCoordsVBO[i].UnBind;
       end;
@@ -4772,9 +4772,9 @@ procedure TgxSkeletonMeshObject.PrepareBoneMatrixInvertedMeshes;
 var
   i, k, boneIndex: Integer;
   invMesh: TgxBaseMeshObject;
-  invMat: TgxMatrix;
+  invMat: TMatrix4f;
   Bone: TgxSkeletonBone;
-  p: TgxVector;
+  p: TVector4f;
 begin
   // cleanup existing stuff
   for i := 0 to FBoneMatrixInvertedMeshes.Count - 1 do
@@ -4852,7 +4852,7 @@ procedure TgxSkeletonMeshObject.ApplyCurrentSkeletonFrame(normalize: Boolean);
 var
   i, j, BoneID: Integer;
   refVertices, refNormals: TgxAffineVectorList;
-  n, nt: TgxVector;
+  n, nt: TVector4f;
   Bone: TgxSkeletonBone;
   Skeleton: TgxSkeleton;
   tempvert, tempnorm: TAffineVector;
@@ -6041,7 +6041,7 @@ begin
   inherited;
 end;
 
-function TgxBaseMesh.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxBaseMesh.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   dMin, dMax: TAffineVector;
 begin
@@ -6056,7 +6056,7 @@ begin
   SetVector(Result, FAxisAlignedDimensionsCache);
 end;
 
-function TgxBaseMesh.BarycenterOffset: TgxVector;
+function TgxBaseMesh.BarycenterOffset: TVector4f;
 var
   dMin, dMax: TAffineVector;
 begin
@@ -6073,12 +6073,12 @@ begin
   Result := FBaryCenterOffset;
 end;
 
-function TgxBaseMesh.BarycenterPosition: TgxVector;
+function TgxBaseMesh.BarycenterPosition: TVector4f;
 begin
   Result := VectorAdd(Position.DirectVector, BarycenterOffset);
 end;
 
-function TgxBaseMesh.BarycenterAbsolutePosition: TgxVector;
+function TgxBaseMesh.BarycenterAbsolutePosition: TVector4f;
 begin
   Result := LocalToAbsolute(BarycenterPosition);
 end;
@@ -6257,12 +6257,12 @@ begin
   inherited StructureChanged;
 end;
 
-function TgxBaseMesh.RayCastIntersect(const rayStart, rayVector: TgxVector; intersectPoint: PgxVector = nil;
-  intersectNormal: PgxVector = nil): Boolean;
+function TgxBaseMesh.RayCastIntersect(const rayStart, rayVector: TVector4f; intersectPoint: PVector4f = nil;
+  intersectNormal: PVector4f = nil): Boolean;
 var
   i: Integer;
   tris: TgxAffineVectorList;
-  locRayStart, locRayVector, iPoint, iNormal: TgxVector;
+  locRayStart, locRayVector, iPoint, iNormal: TVector4f;
   d, minD: Single;
 begin
   // BEWARE! Utterly inefficient implementation!
@@ -6393,10 +6393,10 @@ begin
   end;
 end;
 
-function TgxFreeForm.OctreeRayCastIntersect(const rayStart, rayVector: TgxVector; intersectPoint: PgxVector = nil;
-  intersectNormal: PgxVector = nil): Boolean;
+function TgxFreeForm.OctreeRayCastIntersect(const rayStart, rayVector: TVector4f; intersectPoint: PVector4f = nil;
+  intersectNormal: PVector4f = nil): Boolean;
 var
-  locRayStart, locRayVector: TgxVector;
+  locRayStart, locRayVector: TVector4f;
 begin
   Assert(Assigned(FOctree), 'Octree must have been prepared and setup before use.');
   SetVector(locRayStart, AbsoluteToLocal(rayStart));
@@ -6415,11 +6415,11 @@ begin
   end;
 end;
 
-function TgxFreeForm.OctreePointInMesh(const Point: TgxVector): Boolean;
+function TgxFreeForm.OctreePointInMesh(const Point: TVector4f): Boolean;
 const
   cPointRadiusStep = 10000;
 var
-  rayStart, rayVector, hitPoint, hitNormal: TgxVector;
+  rayStart, rayVector, hitPoint, hitNormal: TVector4f;
   BRad: double;
   HitCount: Integer;
   hitDot: double;
@@ -6470,10 +6470,10 @@ begin
   end;
 end;
 
-function TgxFreeForm.OctreeSphereSweepIntersect(const rayStart, rayVector: TgxVector; const velocity, radius: Single;
-  intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil): Boolean;
+function TgxFreeForm.OctreeSphereSweepIntersect(const rayStart, rayVector: TVector4f; const velocity, radius: Single;
+  intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean;
 var
-  locRayStart, locRayVector: TgxVector;
+  locRayStart, locRayVector: TVector4f;
 begin
   Assert(Assigned(FOctree), 'Octree must have been prepared and setup before use.');
   SetVector(locRayStart, AbsoluteToLocal(rayStart));
@@ -6504,10 +6504,10 @@ begin
   Result := Octree.TriangleIntersect(t1, t2, t3);
 end;
 
-function TgxFreeForm.OctreeAABBIntersect(const aabb: TAABB; objMatrix, invObjMatrix: TgxMatrix;
+function TgxFreeForm.OctreeAABBIntersect(const aabb: TAABB; objMatrix, invObjMatrix: TMatrix4f;
   triangles: TgxAffineVectorList = nil): Boolean;
 var
-  m1to2, m2to1: TgxMatrix;
+  m1to2, m2to1: TMatrix4f;
 begin
   Assert(Assigned(FOctree), 'Octree must have been prepared and setup before use.');
 

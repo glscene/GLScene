@@ -10,7 +10,7 @@ unit GLS.DynamicTexture;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -23,7 +23,7 @@ uses
   GLS.Utils,
   GLS.Context,
   GLS.Texture,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.Graphics;
 
 type

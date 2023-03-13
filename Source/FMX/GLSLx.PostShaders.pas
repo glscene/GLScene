@@ -7,7 +7,7 @@ unit GLSLx.PostShaders;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -21,7 +21,7 @@ uses
   GLSLx.Shader,
   GLSLx.CustomShader,
   GLX.RenderContextInfo,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 // Custom class for GLSLxPostBlurShader. A shader that blurs the entire scene }
 type

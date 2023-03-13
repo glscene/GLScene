@@ -8,7 +8,7 @@ unit GLS.SceneForm;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.Windows,

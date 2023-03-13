@@ -7,7 +7,7 @@ unit GLS.VectorLists;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,

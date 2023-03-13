@@ -11,7 +11,7 @@ uses
   GLX.VectorTypes,
   GLX.VectorGeometry;
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 type
 
@@ -60,9 +60,9 @@ type
     procedure SplineAffineVector(const t: Single;
       var vector: TAffineVector); overload;
     // Calculates vector at time t.
-    function SplineVector(const t: Single): TgxVector; overload;
+    function SplineVector(const t: Single): TVector4f; overload;
     // Calculates vector at time t.
-    procedure SplineVector(const t: Single; var vector: TgxVector); overload;
+    procedure SplineVector(const t: Single; var vector: TVector4f); overload;
 
     // Calculates X component slope at time t.
     function SplineSlopeX(const t: Single): Single;
@@ -273,7 +273,7 @@ begin
   vector.Z := MATValeurSpline(matZ, t, FNb);
 end;
 
-function TCubicSpline.SplineVector(const t: Single): TgxVector;
+function TCubicSpline.SplineVector(const t: Single): TVector4f;
 begin
   Result.X := MATValeurSpline(matX, t, FNb);
   Result.Y := MATValeurSpline(matY, t, FNb);
@@ -281,7 +281,7 @@ begin
   Result.W := MATValeurSpline(matW, t, FNb);
 end;
 
-procedure TCubicSpline.SplineVector(const t: Single; var vector: TgxVector);
+procedure TCubicSpline.SplineVector(const t: Single; var vector: TVector4f);
 begin
   vector.X := MATValeurSpline(matX, t, FNb);
   vector.Y := MATValeurSpline(matY, t, FNb);

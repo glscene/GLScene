@@ -11,7 +11,7 @@ unit GLSLx.AsmShader;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -40,7 +40,7 @@ type
     function GetAsVector2i: TVector2i; override;
     function GetAsVector3f: TVector3f; override;
     function GetAsVector3i: TVector3i; override;
-    function GetAsVector4f: TgxVector; override;
+    function GetAsVector4f: TVector4f; override;
     function GetAsVector4i: TVector4i; override;
 
     procedure SetAsVector1f(const Value: Single); override;

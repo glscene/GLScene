@@ -7,7 +7,7 @@ unit GLX.Graph;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,

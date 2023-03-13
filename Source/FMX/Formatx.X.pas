@@ -7,13 +7,13 @@ unit Formatx.X;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  Scenario.Strings,
+  Scena.Strings,
 
   GLX.VectorTypes,
   GLX.VectorGeometry,
@@ -72,11 +72,11 @@ type
 
   TDXFrame = class(TDXNode)
   private
-    FMatrix: TgxMatrix;
+    FMatrix: TMatrix4f;
   public
     constructor Create; override;
-    function GlobalMatrix: TgxMatrix;
-    property Matrix: TgxMatrix read FMatrix write FMatrix;
+    function GlobalMatrix: TMatrix4f;
+    property Matrix: TMatrix4f read FMatrix write FMatrix;
   end;
 
   TDXMesh = class(TDXNode)
@@ -257,7 +257,7 @@ var
     Result := StrToFloatDef(str, 0);
   end;
 
-  function ReadMatrix: TgxMatrix;
+  function ReadMatrix: TMatrix4f;
   var
     i, j: Integer;
   begin
@@ -294,7 +294,7 @@ var
     end;
   end;
 
-  function ReadVector4f: TgxVector;
+  function ReadVector4f: TVector4f;
   var
     str: String;
   begin
@@ -670,7 +670,7 @@ begin
   FMatrix := IdentityHMGMatrix;
 end;
 
-function TDXFrame.GlobalMatrix: TgxMatrix;
+function TDXFrame.GlobalMatrix: TMatrix4f;
 begin
   if Owner is TDXFrame then
     Result := MatrixMultiply(TDXFrame(Owner).GlobalMatrix, FMatrix)

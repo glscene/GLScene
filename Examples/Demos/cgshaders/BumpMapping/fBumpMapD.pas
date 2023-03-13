@@ -29,7 +29,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.Utils, GLS.SimpleNavigation;
 
 type

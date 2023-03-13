@@ -26,7 +26,7 @@ unit Soundx.FMOD;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.SysUtils,

@@ -36,7 +36,7 @@ uses
   GLX.Scene,
   GLX.SceneViewer,
   GLX.SceneRegister,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.XCollection;
 
 type

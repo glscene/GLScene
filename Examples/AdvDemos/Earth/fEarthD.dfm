@@ -48,7 +48,10 @@ object Form1: TForm1
           StopColor.Color = {938C0C3E938C0C3E938E0E3F0000803F}
           Stacks = 4
         end>
-      Stars = <>
+      Stars = <
+        item
+          Color = clBlack
+        end>
       object ConstellationLines: TGLLines
         Direction.Coordinates = {0000803F000000000000008000000000}
         Scale.Coordinates = {00A00C4600A00C4600A00C4600000000}

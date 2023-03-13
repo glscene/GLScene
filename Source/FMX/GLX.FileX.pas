@@ -7,7 +7,7 @@ unit GLX.FileX;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -47,7 +47,7 @@ var
   var
     i, j, k, l, vertcount: integer;
     mo: TgxMeshObject;
-    mat: TgxMatrix;
+    mat: TMatrix4f;
     libmat: TgxLibMaterial;
     fg: TFGVertexNormalTexIndexList;
     str: String;

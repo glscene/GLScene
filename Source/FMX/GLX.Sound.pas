@@ -21,7 +21,7 @@ uses
   GLX.BaseClasses,
   GLX.Utils;
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 type
 
@@ -235,7 +235,7 @@ type
     FPause: Boolean;
     FMasterVolume: Single;
     FListener: TgxBaseSceneObject;
-    FLastListenerPosition: TgxVector;
+    FLastListenerPosition: TVector4f;
     FSources: TgxSoundSources;
     FMaxChannels: Integer;
     FOutputFrequency: Integer;
@@ -271,7 +271,7 @@ type
     procedure Loaded; override;
     procedure DefineProperties(Filer: TFiler); override;
     procedure ListenerCoordinates(var position, velocity, direction, up:
-      TgxVector);
+      TVector4f);
     function DoActivate: Boolean; virtual;
     // Invoked AFTER all sources have been stopped
     procedure DoDeActivate; virtual;
@@ -1282,9 +1282,9 @@ begin
 end;
 
 procedure TgxSoundManager.ListenerCoordinates(var position, velocity, direction,
-  up: TgxVector);
+  up: TVector4f);
 var
-  right: TgxVector;
+  right: TVector4f;
 begin
   if Listener <> nil then
   begin

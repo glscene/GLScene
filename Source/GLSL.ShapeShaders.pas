@@ -11,7 +11,7 @@ unit GLSL.ShapeShaders;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -29,7 +29,7 @@ uses
   GLS.Coordinates,
   GLS.VectorGeometry,
   GLS.VectorTypes,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.Color,
   GLS.Texture,
   GLS.Material,

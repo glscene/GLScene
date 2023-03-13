@@ -53,7 +53,7 @@ unit GLS.Gizmo;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -66,7 +66,7 @@ uses
   GLS.Objects,
   GLS.VectorGeometry,
   GLS.Material,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.GeomObjects,
   GLS.BitmapFont,
   GLS.SceneViewer,

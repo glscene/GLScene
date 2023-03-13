@@ -7,7 +7,7 @@ unit GLX.FileASE;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -91,13 +91,13 @@ type
   private
     FFaces: TgxASEFaceList;
     FVertices: TgxAffineVectorList;
-    FMatrix: TgxMatrix;
+    FMatrix: TMatrix4f;
     FInheritedPosition: TAffineVector;
     FInheritedScale: TAffineVector;
     FInheritedRotation: TAffineVector;
     FRotationAngle: Single;
     FRotationAxis: TAffineVector;
-    FPosition: TgxVector;
+    FPosition: TVector4f;
     FScale: TAffineVector;
     FScaleAxisAngle: Single;
     FScaleAxis: TAffineVector;
@@ -114,11 +114,11 @@ type
     property Vertices: TgxAffineVectorList read FVertices;
     property TextChannel[Channel: Integer]: TgxAffineVectorList read GetTextChannel;
     property TextChannelsCount: Integer read FTexChannelsCount;
-    property Matrix: TgxMatrix read FMatrix;
+    property Matrix: TMatrix4f read FMatrix;
     property InheritedPosition: TAffineVector read FInheritedPosition;
     property InheritedRotation: TAffineVector read FInheritedRotation;
     property InheritedScale: TAffineVector read FInheritedScale;
-    property Position: TgxVector read FPosition;
+    property Position: TVector4f read FPosition;
     property RotationAxis: TAffineVector read FRotationAxis;
     property RotationAngle: Single read FRotationAngle;
     property Scale: TAffineVector read FScale;
@@ -678,7 +678,7 @@ procedure CopyASEToMesh(aASEMesh: TgxASEMeshObject; aMesh: TgxMeshObject; aASEMa
   function GetOrAllocateMaterial(const aIndex, aSubID: Integer): string;
   var
     material : TgxASEMaterial;
-    specColor : TgxVector;
+    specColor : TVector4f;
     matLib : TgxMaterialLibrary;
     libMat : TgxLibMaterial;
     TM: TgxASEMaterialTextureMap;

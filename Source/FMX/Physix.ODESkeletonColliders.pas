@@ -137,7 +137,7 @@ end;
 procedure TSCODEBase.AlignCollider;
 var
   R: TdMatrix3;
-  Mat: TgxMatrix;
+  Mat: TMatrix4f;
 begin
   inherited;
   if Assigned(FGeom) then

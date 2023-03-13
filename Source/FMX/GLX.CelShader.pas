@@ -11,7 +11,7 @@ unit GLX.CelShader;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -30,7 +30,7 @@ uses
   GLX.RenderContextInfo,
   GLX.Material,
   GLX.State,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 type
   { Cel shading options.
@@ -218,7 +218,7 @@ end;
 
 procedure TgxCelShader.DoApply(var rci: TgxRenderContextInfo; Sender: TObject);
 var
-  light: TgxVector;
+  light: TVector4f;
 begin
   if (csDesigning in ComponentState) then
     exit;

@@ -20,7 +20,7 @@ unit GLSLx.ProjectedTextures;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -33,7 +33,7 @@ uses
   GLX.Context,
   GLX.Color,
   GLX.RenderContextInfo,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLX.PipelineTransformation,
   GLX.VectorTypes;
 
@@ -55,7 +55,7 @@ type
     FUseQuadraticAttenuation: boolean;
   protected
     ProjectedTexturesObject: TgxSLProjectedTextures;
-    TexMatrix: TgxMatrix;
+    TexMatrix: TMatrix4f;
     procedure SetupTexMatrix;
     procedure SetStyle(val: TgxSLProjectedTexturesStyle);
     procedure SetUseAttenuation(val: boolean);
@@ -189,7 +189,7 @@ end;
 
 procedure TgxSLTextureEmitter.SetupTexMatrix;
 const
-  cBaseMat: TgxMatrix = (V:((X:0.5; Y:0;   Z:0; W:0),
+  cBaseMat: TMatrix4f = (V:((X:0.5; Y:0;   Z:0; W:0),
                           (X:0;   Y:0.5; Z:0; W:0),
                           (X:0;   Y:0;   Z:1; W:0),
                           (X:0.5; Y:0.5; Z:0; W:1)));

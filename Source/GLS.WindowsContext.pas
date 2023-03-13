@@ -7,7 +7,7 @@ unit GLS.WindowsContext;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,7 +25,7 @@ uses
   GLS.Context,
   GLS.State,
   GLS.Logger,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.VectorGeometry;
 
 type

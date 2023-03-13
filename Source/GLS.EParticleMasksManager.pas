@@ -25,7 +25,7 @@ unit GLS.EParticleMasksManager;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Types,

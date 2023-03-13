@@ -7,7 +7,7 @@ unit GLS.Scene;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.Windows,
@@ -23,7 +23,7 @@ uses
   GLS.OpenGLTokens,
   GLS.XOpenGL,
   GLS.XCollection,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.Context,
   GLS.VectorGeometry,
   GLS.Silhouette,
@@ -39,7 +39,7 @@ uses
   GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.Material,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.Selection,
   GLS.VectorTypes,
   GLS.ApplicationFileIO,

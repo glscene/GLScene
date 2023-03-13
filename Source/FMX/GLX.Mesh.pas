@@ -13,7 +13,7 @@ unit GLX.Mesh;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -26,7 +26,7 @@ uses
   GLX.XOpenGL,
   GLX.BaseClasses,
   GLX.VectorTypes,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.Context,
   GLX.Scene,
   GLX.VectorGeometry,
@@ -51,7 +51,7 @@ type
 
   TgxVertexData = packed record
     textCoord: TTexPoint;
-    color: TgxVector;
+    color: TVector4f;
     normal: TAffineVector;
     coord: TVertex;
   end;
@@ -170,7 +170,7 @@ type
     FVertices: TgxVertexList;
     FMode: TMeshMode;
     FVertexMode: TVertexMode;
-    FAxisAlignedDimensionsCache: TgxVector;
+    FAxisAlignedDimensionsCache: TVector4f;
 
   protected
     
@@ -189,7 +189,7 @@ type
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     procedure CalcNormals(Frontface: TgxFaceWinding);
     property Vertices: TgxVertexList read FVertices write SetVertices;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
     procedure StructureChanged; override;
 
   published
@@ -741,7 +741,7 @@ begin
     inherited Assign(Source);
 end;
 
-function TgxMesh.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxMesh.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   dMin, dMax: TAffineVector;
 begin

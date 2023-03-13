@@ -7,7 +7,7 @@ unit GLSL.Shader;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -22,7 +22,7 @@ uses
   GLS.Context,
   GLSL.CustomShader,
   GLS.RenderContextInfo,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLSL.ShaderParameter,
   GLS.Material,
   GLS.State;

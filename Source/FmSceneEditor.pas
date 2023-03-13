@@ -7,7 +7,7 @@ unit FmSceneEditor;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   WinApi.Windows,
@@ -33,7 +33,7 @@ uses
 
   GLS.Scene,
   GLS.SceneViewer,
-  Scenario.Strings,
+  Scena.Strings,
   FmInfo,
   GLS.XCollection,
 

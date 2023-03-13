@@ -86,8 +86,8 @@ type
 
   TgxMoveToPosJob = class(TgxCameraJob)
   private
-    FInitialPos    : TgxVector;
-    FFinalPos      : TgxVector;
+    FInitialPos    : TVector4f;
+    FFinalPos      : TVector4f;
   public
     X : Double;
     Y : Double;
@@ -97,14 +97,14 @@ type
     procedure Init; override;
 
     // Properties.
-    property InitialPos: TgxVector read FInitialPos;
-    property FinalPos: TgxVector read FFinalPos;    
+    property InitialPos: TVector4f read FInitialPos;
+    property FinalPos: TVector4f read FFinalPos;    
   end;
 
   TgxZoomToDistanceJob = class(TgxCameraJob)
   private
-    FInitialPos    : TgxVector;
-    FFinalPos      : TgxVector;
+    FInitialPos    : TVector4f;
+    FFinalPos      : TVector4f;
   public
     Distance : Double;
     Time : Double;
@@ -112,19 +112,19 @@ type
     procedure Init; override;
 
     // Properties.
-    property InitialPos: TgxVector read FInitialPos;
-    property FinalPos: TgxVector read FFinalPos;
+    property InitialPos: TVector4f read FInitialPos;
+    property FinalPos: TVector4f read FFinalPos;
   end;
 
   TgxOrbitToPosJob = class(TgxCameraJob)
   private
-    FFinalPos: TgxVector; // Yep, FFinalPos is stored in relative coordinates.
+    FFinalPos: TVector4f; // Yep, FFinalPos is stored in relative coordinates.
     FRotateSpeed: TVector2f;
-    FCameraUpVector: TgxVector;
+    FCameraUpVector: TVector4f;
 
     // Absolute Coordinates, can even be not normalized by radius.
     // Procesed in Init, not used anywhere else.
-    FTargetPosition: TgxVector;
+    FTargetPosition: TVector4f;
     FTime : Double;
   public
     procedure Step; override;
@@ -132,9 +132,9 @@ type
 
     // Properties.
     property RotateSpeed: TVector2f read FRotateSpeed;
-    property CameraUpVector: TgxVector read FCameraUpVector;
-    property TargetPosition: TgxVector read FTargetPosition;
-    property FinalPos: TgxVector read FFinalPos;
+    property CameraUpVector: TVector4f read FCameraUpVector;
+    property TargetPosition: TVector4f read FTargetPosition;
+    property FinalPos: TVector4f read FFinalPos;
     property Time: Double read FTime;
   end;
 
@@ -142,7 +142,7 @@ type
   private
     FCutoffAngle: Single;
     FNeedToRecalculateZoom: Boolean;
-    FShouldBeMatrix: TgxMatrix;
+    FShouldBeMatrix: TMatrix4f;
     FSmoothNavigator: TgxNavigatorSmoothChangeVector;
   public
     constructor Create(const AJoblist : TgxCameraJobList); override;
@@ -153,12 +153,12 @@ type
 
   TgxOrbitToPosAdvJob = class(TgxCameraJob)
   private
-    FInitialPos    : TgxVector;
-    FFinalPos      : TgxVector;
-    FInitialUp     : TgxVector;
-    FInitialDir    : TgxVector;
+    FInitialPos    : TVector4f;
+    FFinalPos      : TVector4f;
+    FInitialUp     : TVector4f;
+    FInitialDir    : TVector4f;
 
-    FRotAxis : TgxVector;
+    FRotAxis : TVector4f;
     FAngle   : Double;
   public
     X : Double;
@@ -170,15 +170,15 @@ type
     procedure Init; override;
 
     // Properties.
-    property InitialPos: TgxVector read FInitialPos;
-    property InitialUp: TgxVector read FInitialUp;
-    property InitialDir: TgxVector read FInitialDir;
-    property FinalPos: TgxVector read FFinalPos;
+    property InitialPos: TVector4f read FInitialPos;
+    property InitialUp: TVector4f read FInitialUp;
+    property InitialDir: TVector4f read FInitialDir;
+    property FinalPos: TVector4f read FFinalPos;
   end;
 
   TgxSmoothOrbitToPosAdvJob = class(TgxOrbitToPosAdvJob)
   private
-    FPreviousPosition: TgxVector;
+    FPreviousPosition: TVector4f;
     FSmoothNavigator: TgxNavigatorSmoothChangeVector;
     FRestoreUpVector: Boolean;
   public
@@ -236,9 +236,9 @@ type
 
     // Same as OrbitToPos(), but makes use of SmoothNavigator to make
     // sure all camera movements are smooth.
-    function OrbitToPosSmooth(const ATargetPosition: TgxVector; const ATime: Double;
+    function OrbitToPosSmooth(const ATargetPosition: TVector4f; const ATime: Double;
       const ASmoothNavigator: TgxNavigatorSmoothChangeVector; const AFNeedToRecalculateZoom: Boolean;
-      const ACameraUpVector: PgxVector = nil): TgxSmoothOrbitToPos;
+      const ACameraUpVector: PVector4f = nil): TgxSmoothOrbitToPos;
 
     //Same function as OrbitToPos but support all camera states
     //PreferUpAxis value is to setup if function use Camera Up based rotation axis
@@ -425,9 +425,9 @@ begin
 end;
 
 
-function TgxCameraController.OrbitToPosSmooth(const ATargetPosition: TgxVector; const ATime: Double;
+function TgxCameraController.OrbitToPosSmooth(const ATargetPosition: TVector4f; const ATime: Double;
   const ASmoothNavigator: TgxNavigatorSmoothChangeVector; const AFNeedToRecalculateZoom: Boolean;
-  const ACameraUpVector: PgxVector = nil): TgxSmoothOrbitToPos;
+  const ACameraUpVector: PVector4f = nil): TgxSmoothOrbitToPos;
 begin
   Result := TgxSmoothOrbitToPos.Create(FCameraJobList);
 
@@ -601,7 +601,7 @@ end;
 
 procedure TgxMoveToPosJob.Step;
 var
-  Vect : TgxVector;
+  Vect : TVector4f;
 begin
   if FElapsedTime < FProceedTime then
   begin
@@ -633,7 +633,7 @@ end;
 
 procedure TgxZoomToDistanceJob.Step;
 var
-  Vect : TgxVector;
+  Vect : TVector4f;
 begin
   if FElapsedTime < FProceedTime then
   begin
@@ -700,8 +700,8 @@ end;
 
 procedure TgxOrbitToPosAdvJob.Init;
 var
-  Right: TgxVector;
-  lAbsVectorToTarget: TgxVector;
+  Right: TVector4f;
+  lAbsVectorToTarget: TVector4f;
 begin
 
   FProceedTime := time;
@@ -753,7 +753,7 @@ end;
 
 procedure TgxOrbitToPosAdvJob.Step;
 var
-  tempUp, tempDir, tempPos : TgxVector;
+  tempUp, tempDir, tempPos : TVector4f;
 begin
 
   if FElapsedTime < FProceedTime then
@@ -800,7 +800,7 @@ end;
 
 procedure TgxSmoothOrbitToPosAdvJob.Init;
 var
-  Right: TgxVector;
+  Right: TVector4f;
 begin
   FProceedTime := time;
   FInitialPos:= VectorSubtract(FPreviousPosition, FJobList.FController.FCameraTarget.AbsolutePosition);
@@ -850,7 +850,7 @@ end;
 
 procedure TgxSmoothOrbitToPosAdvJob.Step;
 var
-  tempUp, tempDir, tempPos : TgxVector;
+  tempUp, tempDir, tempPos : TVector4f;
 begin
 
   if FElapsedTime < FProceedTime then
@@ -915,14 +915,14 @@ end;
 procedure TgxSmoothOrbitToPos.Step;
 var
   lCurrentDistanceToTarget: Single;
-  lTargetPosition: TgxVector;
-  lCurrentMatrix: TgxMatrix;
+  lTargetPosition: TVector4f;
+  lCurrentMatrix: TMatrix4f;
   lAngle: Single;
-  lAbsTargetPosition: TgxVector;
+  lAbsTargetPosition: TVector4f;
 
   procedure RestoreDistanceToTarget();
   var
-    lDirection: TgxVector;
+    lDirection: TVector4f;
   begin
     lDirection := VectorNormalize(VectorSubtract(
       FJobList.FController.FCameraTarget.AbsolutePosition,
@@ -934,7 +934,7 @@ var
   end;
 
 
-  procedure SetTargetValueRelative(const AAbsolutePosition: TgxVector);
+  procedure SetTargetValueRelative(const AAbsolutePosition: TVector4f);
   begin
     if FJobList.FController.FCamera.Parent = nil then
       FSmoothNavigator.TargetValue.DirectVector := AAbsolutePosition
@@ -944,7 +944,7 @@ var
 
   procedure ApplyDistanceToResult();
   var
-    lDirection, lNewTargetPosition: TgxVector;
+    lDirection, lNewTargetPosition: TVector4f;
   begin
     lDirection := VectorNormalize(VectorSubtract(
       FJobList.FController.FCameraTarget.AbsolutePosition,

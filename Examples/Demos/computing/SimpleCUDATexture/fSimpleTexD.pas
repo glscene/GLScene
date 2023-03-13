@@ -23,7 +23,7 @@ uses
   CUDA.Utility,
 
   GLS.Graphics,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 type
   TForm1 = class(TForm)

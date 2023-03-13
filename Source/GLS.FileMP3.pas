@@ -8,7 +8,7 @@ unit GLS.FileMP3;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes, 

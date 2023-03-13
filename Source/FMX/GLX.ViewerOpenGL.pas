@@ -7,7 +7,7 @@ unit GLX.ViewerOpenGL;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -27,7 +27,7 @@ uses
 
   GLX.Scene,
   GLX.Context,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLX.WinContext;
 
 type

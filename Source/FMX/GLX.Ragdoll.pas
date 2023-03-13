@@ -47,10 +47,10 @@ type
     FBoundBoneDelta: TAffineVector; //Stores the diference from the bone.GlobalMatrix to the center of the bone's bounding box
     FOrigin: TAffineVector;
     FSize: TAffineVector;
-    FBoneMatrix: TgxMatrix;
+    FBoneMatrix: TMatrix4f;
     FJoint: TgxRagdolJoint;
-    FOriginalMatrix: TgxMatrix; //Stores the Bone.GlobalMatrix before the ragdoll start
-    FReferenceMatrix: TgxMatrix; //Stores the first bone matrix to be used as reference
+    FOriginalMatrix: TMatrix4f; //Stores the Bone.GlobalMatrix before the ragdoll start
+    FReferenceMatrix: TMatrix4f; //Stores the first bone matrix to be used as reference
     FAnchor: TAffineVector; //The position of the joint
     procedure CreateBoundingBox;
     procedure SetAnchor(Anchor: TAffineVector);
@@ -77,8 +77,8 @@ type
     property BoneID : Integer read FBoneID write FBoneID;
     property Origin : TAffineVector read FOrigin;
     property Size : TAffineVector read FSize;
-    property BoneMatrix : TgxMatrix read FBoneMatrix;
-    property ReferenceMatrix : TgxMatrix read FReferenceMatrix;
+    property BoneMatrix : TMatrix4f read FBoneMatrix;
+    property ReferenceMatrix : TMatrix4f read FReferenceMatrix;
     property Anchor : TAffineVector read FAnchor;
     property Joint : TgxRagdolJoint read FJoint write FJoint;
     property Items[Index: Integer] : TgxRagdolBone read GetRagdollBone; default;
@@ -158,7 +158,7 @@ var
   i, j: integer;
   BoneVertices : TgxAffineVectorList;
   BoneVertex, max,min: TAffineVector;
-  invMat, mat: TgxMatrix;
+  invMat, mat: TMatrix4f;
 begin
   bone := Ragdoll.Owner.Skeleton.BoneByID(FBoneID);
 
@@ -224,7 +224,7 @@ procedure TgxRagdolBone.AlignToSkeleton;
 var
   o: TAffineVector;
   bone: TgxSkeletonBone;
-  mat, posMat: TgxMatrix;
+  mat, posMat: TMatrix4f;
   noBounds: Boolean;
 begin
   bone := Ragdoll.Owner.Skeleton.BoneByID(FBoneID);

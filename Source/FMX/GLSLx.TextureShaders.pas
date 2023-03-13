@@ -31,7 +31,7 @@ uses
   GLX.VectorGeometry,
   GLX.Color,
   GLX.Material,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.VectorFileObjects,
   GLX.State,
   GLX.PersistentClasses,
@@ -45,7 +45,7 @@ type
 
   TgxShaderTextureSharingMaterial = class(TInterfacedCollectionItem, IgxMaterialLibrarySupported)
   private
-    FTextureMatrix: TgxMatrix;
+    FTextureMatrix: TMatrix4f;
     FNeedToUpdateTextureMatrix: Boolean;
     FTextureMatrixIsUnitary: Boolean;
     FLibMaterial: TgxLibMaterial;
@@ -70,7 +70,7 @@ type
     procedure SetLibMaterial(const Value: TgxLibMaterial);
     procedure SetTexOffset(const Value: TgxCoordinates2);
     procedure SetTexScale(const Value: TgxCoordinates2);
-    function GetTextureMatrix: TgxMatrix;
+    function GetTextureMatrix: TMatrix4f;
     function GetTextureMatrixIsUnitary: Boolean;
   protected
     procedure coordNotifychange(Sender: TObject);
@@ -85,7 +85,7 @@ type
     constructor Create(Collection: TCollection); override;
     destructor Destroy; override;
     property LibMaterial: TgxLibMaterial read FLibMaterial write SetLibMaterial;
-    property TextureMatrix: TgxMatrix read GetTextureMatrix;
+    property TextureMatrix: TMatrix4f read GetTextureMatrix;
     property TextureMatrixIsUnitary: Boolean read GetTextureMatrixIsUnitary;
   published
     property TexOffset: TgxCoordinates2 read FTexOffset write SetTexOffset;
@@ -374,7 +374,7 @@ begin
   Result := FMaterialLibrary;
 end;
 
-function TgxShaderTextureSharingMaterial.GetTextureMatrix: TgxMatrix;
+function TgxShaderTextureSharingMaterial.GetTextureMatrix: TMatrix4f;
 begin
   if FNeedToUpdateTextureMatrix then
   begin

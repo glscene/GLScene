@@ -8,7 +8,7 @@ unit GLS.Trail;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -22,7 +22,7 @@ uses
   GLS.Mesh,
   GLS.Objects,
   GLS.Material,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.BaseClasses;
 
 

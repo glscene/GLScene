@@ -33,10 +33,10 @@ procedure DrawBox(Sides: TdVector3);
 procedure setTransform(pos: TdVector3; R: TdMatrix3);
 procedure dsDrawBox(pos: PdVector3; R: PdMatrix3; Sides: TdVector3); overload;
 procedure dsDrawBox(pos: TdVector3; R: TdMatrix3; Sides: TdVector3); overload;
-procedure ODERToSceneMatrix(var m: TgxMatrix; R: TdMatrix3; pos: TdVector3); overload;
-procedure ODERToSceneMatrix(var m: TgxMatrix; R: PdMatrix3; pos: PdVector3); overload;
-procedure ODERToSceneMatrix(var m: TgxMatrix; R: TdMatrix3_As3x4; pos:  TdVector3); overload;
-function SceneMatrixToODER(m: TgxMatrix): TdMatrix3;
+procedure ODERToSceneMatrix(var m: TMatrix4f; R: TdMatrix3; pos: TdVector3); overload;
+procedure ODERToSceneMatrix(var m: TMatrix4f; R: PdMatrix3; pos: PdVector3); overload;
+procedure ODERToSceneMatrix(var m: TMatrix4f; R: TdMatrix3_As3x4; pos:  TdVector3); overload;
+function SceneMatrixToODER(m: TMatrix4f): TdMatrix3;
 
 // Converting between ODE and Scene formats
 function ConvertdVector3ToVector3f(R: TdVector3): TVector3f; overload;
@@ -68,11 +68,11 @@ function CreateBodyFromCube(var Geom: PdxGeom; Cube: TgxCube; World: PdxWorld;  
 function CreateTriMeshFromBaseMesh(BaseMesh: TgxBaseMesh; Space: PdxSpace;
   var Vertices: PdVector3Array; var Indices: PdIntegerArray): PdxGeom;
 
-function SceneMatrixFromGeom(Geom: PdxGeom): TgxMatrix;
-function SceneDirectionFromGeom(Geom: PdxGeom): TgxVector;
+function SceneMatrixFromGeom(Geom: PdxGeom): TMatrix4f;
+function SceneDirectionFromGeom(Geom: PdxGeom): TVector4f;
 function CreateODEPlaneFromScenePlane(Plane: TgxPlane; Space: PdxSpace): PdxGeom;
 procedure RenderGeomList(GeomList: TGeomList);
-function RandomColorVector: TgxVector;
+function RandomColorVector: TVector4f;
 
 {.$ EXTERNALSYM GL_ZERO}
 
@@ -80,7 +80,7 @@ function RandomColorVector: TgxVector;
 implementation
 //---------------------------------------------------------------------------
 
-procedure ODERToSceneMatrix(var m: TgxMatrix; R: TdMatrix3_As3x4; pos: TdVector3); overload;
+procedure ODERToSceneMatrix(var m: TMatrix4f; R: TdMatrix3_As3x4; pos: TdVector3); overload;
 begin
   m.X.X := r[0][0];
   m.X.Y := r[0][1];
@@ -103,12 +103,12 @@ begin
   m.W.W := 1; //}
 end;
 
-procedure ODERToSceneMatrix(var m: TgxMatrix; R: PdMatrix3; pos: PdVector3);
+procedure ODERToSceneMatrix(var m: TMatrix4f; R: PdMatrix3; pos: PdVector3);
 begin
   ODERToSceneMatrix(m, TdMatrix3_As3x4(R^), pos^);
 end;
 
-procedure ODERToSceneMatrix(var m: TgxMatrix; R: TdMatrix3; pos: TdVector3);
+procedure ODERToSceneMatrix(var m: TMatrix4f; R: TdMatrix3; pos: TdVector3);
 begin
   ODERToSceneMatrix(m, TdMatrix3_As3x4(R), pos);
 end;
@@ -158,7 +158,7 @@ begin
   glEnd();
 end;
 
-function SceneMatrixToODER(m: TgxMatrix): TdMatrix3;
+function SceneMatrixToODER(m: TMatrix4f): TdMatrix3;
 begin
   TransposeMatrix(m);
   Result[0] := m.X.X;
@@ -297,7 +297,7 @@ begin
     PositionSceneObject(TgxBaseSceneObject(Geom.Data), Geom);
 end;
 
-function SceneMatrixFromGeom(Geom: PdxGeom): TgxMatrix;
+function SceneMatrixFromGeom(Geom: PdxGeom): TMatrix4f;
 var
   pos, Pos2: PdVector3;
   R, R2: PdMatrix3;
@@ -339,9 +339,9 @@ begin
   end;
 end;
 
-function SceneDirectionFromGeom(Geom: PdxGeom): TgxVector;
+function SceneDirectionFromGeom(Geom: PdxGeom): TVector4f;
 var
-  m: TgxMatrix;
+  m: TMatrix4f;
 begin
   m := SceneMatrixFromGeom(Geom);
 
@@ -370,8 +370,8 @@ end;
 
 procedure CopyPosFromGeomToGX(Geom: PdxGeom; BaseSceneObject: TgxBaseSceneObject);
 var
-  v: TgxVector;
-  m: TgxMatrix;
+  v: TVector4f;
+  m: TMatrix4f;
   R: PdMatrix3;
   pos: PdVector3;
 begin
@@ -533,7 +533,7 @@ end;
 
 function CreateODEPlaneFromScenePlane(Plane: TgxPlane; Space: PdxSpace): PdxGeom;
 var
-  Pos, Direction: TgxVector;
+  Pos, Direction: TVector4f;
   d: single;
 begin
   Direction := Plane.AbsoluteDirection;
@@ -546,7 +546,7 @@ begin
   result := dCreatePlane(space, Direction.X, Direction.Y, Direction.Z, d);
 end;
 
-function RandomColorVector: TgxVector;
+function RandomColorVector: TVector4f;
 begin
   result := VectorMake(Random, Random, Random, 1);
 end;

@@ -13,7 +13,7 @@ unit GLX.Atmosphere;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,7 +25,7 @@ uses
   GLX.Cadencer,
   GLX.VectorGeometry,
   GLX.Context,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.Color,
   GLX.RenderContextInfo,
   GLX.State,
@@ -90,7 +90,7 @@ type
     // Main rendering procedure.
     procedure DoRender(var rci: TgxRenderContextInfo; renderSelf, renderChildren: Boolean); override;
     // Used to determine extents.
-    function AxisAlignedDimensionsUnscaled : TgxVector; override;
+    function AxisAlignedDimensionsUnscaled : TVector4f; override;
   end;
 
   TgxAtmosphere = class(TgxCustomAtmosphere)
@@ -165,14 +165,14 @@ end;
 procedure TgxCustomAtmosphere.DoRender(var rci: TgxRenderContextInfo; renderSelf, renderChildren: Boolean);
 var
   radius, invAtmosphereHeight:    Single;
-  sunPos, eyePos, lightingVector: TgxVector;
-  diskNormal, diskRight, diskUp:  TgxVector;
+  sunPos, eyePos, lightingVector: TVector4f;
+  diskNormal, diskRight, diskUp:  TVector4f;
 
 
-  function AtmosphereColor(const rayStart, rayEnd: TgxVector): TgxColorVector;
+  function AtmosphereColor(const rayStart, rayEnd: TVector4f): TgxColorVector;
   var
     I, n:     Integer;
-    atmPoint, normal: TgxVector;
+    atmPoint, normal: TVector4f;
     altColor: TgxColorVector;
     alt, rayLength, contrib, decay, intensity, invN: Single;
   begin
@@ -214,10 +214,10 @@ var
   end;
 
 
-  function ComputeColor(var rayDest: TgxVector; mayHitGround: Boolean): TgxColorVector;
+  function ComputeColor(var rayDest: TVector4f; mayHitGround: Boolean): TgxColorVector;
   var
-    ai1, ai2, pi1, pi2: TgxVector;
-    rayVector: TgxVector;
+    ai1, ai2, pi1, pi2: TVector4f;
+    rayVector: TVector4f;
   begin
     rayVector := VectorNormalize(VectorSubtract(rayDest, eyePos));
     if RayCastSphereIntersect(eyePos, rayVector, NullHmgPoint,
@@ -363,7 +363,7 @@ begin
   if FSun <> nil then FSun.FreeNotification(Self);
 end;
 
-function TgxCustomAtmosphere.AxisAlignedDimensionsUnscaled : TgxVector;
+function TgxCustomAtmosphere.AxisAlignedDimensionsUnscaled : TVector4f;
 begin
   Result.X := FAtmosphereRadius;
   Result.Y := Result.X;
@@ -431,8 +431,8 @@ begin
     SetLength(sinCache, FSlices + 1);
     PrepareSinCosCache(sinCache, cosCache, 0, 360);
 
-    GetMem(pVertex, 2 * (FSlices + 1) * SizeOf(TgxVector));
-    GetMem(pColor, 2 * (FSlices + 1) * SizeOf(TgxVector));
+    GetMem(pVertex, 2 * (FSlices + 1) * SizeOf(TVector4f));
+    GetMem(pColor, 2 * (FSlices + 1) * SizeOf(TVector4f));
   end
   else
     raise EGLAtmosphereException.Create('Slices must be more than 0!');

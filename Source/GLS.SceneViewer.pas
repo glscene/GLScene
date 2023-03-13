@@ -7,7 +7,7 @@ unit GLS.SceneViewer;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   WinApi.Windows,

@@ -16,7 +16,7 @@ unit GLX.HeightTileFile;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,

@@ -15,7 +15,7 @@ unit GLX.Extrusion;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -65,7 +65,7 @@ type
     FTriangleCount: Integer;
     FNormalDirection: TgxNormalDirection;
     FParts: TgxRevolutionSolidParts;
-    FAxisAlignedDimensionsCache: TgxVector;
+    FAxisAlignedDimensionsCache: TVector4f;
   protected
     procedure SetStartAngle(const val: Single);
     procedure SetStopAngle(const val: Single);
@@ -82,7 +82,7 @@ type
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     // Number of triangles used for rendering.
     property TriangleCount: Integer read FTriangleCount;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
     procedure StructureChanged; override;
   published
     (* Parts of the rotation solid to be generated for rendering.
@@ -125,7 +125,7 @@ type
     FHeight: Single;
     FMinSmoothAngle: Single;
     FMinSmoothAngleCos: Single;
-    FAxisAlignedDimensionsCache: TgxVector;
+    FAxisAlignedDimensionsCache: TVector4f;
     procedure SetHeight(const Value: Single);
     procedure SetMinSmoothAngle(const Value: Single);
   protected
@@ -140,7 +140,7 @@ type
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     // Number of triangles used for rendering.
     property TriangleCount: Integer read FTriangleCount;
-    function AxisAlignedDimensionsUnscaled: TgxVector; override;
+    function AxisAlignedDimensionsUnscaled: TVector4f; override;
     procedure StructureChanged; override;
   published
     property Parts: TgxExtrusionSolidParts read FParts write SetParts default [espOutside];
@@ -632,7 +632,7 @@ begin
   end;
 end;
 
-function TgxRevolutionSolid.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxRevolutionSolid.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   maxRadius: Single;
   maxHeight: Single;
@@ -958,7 +958,7 @@ const
     row^.center := center;
   end;
 
-  procedure RenderDisk(row: PRowData; const center: TgxVector; const normal: TAffineVector; invert: Boolean;
+  procedure RenderDisk(row: PRowData; const center: TVector4f; const normal: TAffineVector; invert: Boolean;
     TextCoordTileS: Single);
   var
     i: Integer;
@@ -1652,7 +1652,7 @@ begin
   end;
 end;
 
-function TgxExtrusionSolid.AxisAlignedDimensionsUnscaled: TgxVector;
+function TgxExtrusionSolid.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   dMin, dMax: TAffineVector;
 begin

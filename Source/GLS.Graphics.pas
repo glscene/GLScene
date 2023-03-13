@@ -14,7 +14,7 @@ unit GLS.Graphics;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -30,6 +30,7 @@ uses
 
   {$IFDEF USE_GRAPHICS32} GR32, {$ENDIF}
 
+  GLS.OpenGLTokens,
   GLS.VectorTypes,
   GLS.State,
   GLS.ApplicationFileIO,
@@ -37,10 +38,10 @@ uses
   GLS.Context,
   GLS.ImageUtils,
   GLS.Color,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.VectorGeometry,
   GLS.Utils,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.Logger;
 
 {$DEFINE PRF_HACK_PASSES}

@@ -10,7 +10,7 @@ unit GLX.Behaviours;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -90,9 +90,9 @@ type
     procedure DoProgress(const progressTime: TgxProgressTimes); override;
     // Adds time-proportionned acceleration to the speed.
     procedure ApplyTranslationAcceleration(const deltaTime: double;
-      const accel: TgxVector);
+      const accel: TVector4f);
     // Applies a timed force to the inertia. If Mass is null, nothing is done.
-    procedure ApplyForce(const deltaTime: double; const force: TgxVector);
+    procedure ApplyForce(const deltaTime: double; const force: TVector4f);
     (* Applies a timed torque to the inertia (yuck!).
       This gets a "yuck!" because it is as false as the rest of the rotation  model. *)
     procedure ApplyTorque(const deltaTime: double;
@@ -102,7 +102,7 @@ type
     (* Bounce speed as if hitting a surface.
       restitution is the coefficient of restituted energy (1=no energy loss,
       0=no bounce). The normal is NOT assumed to be normalized. *)
-    procedure SurfaceBounce(const surfaceNormal: TgxVector; restitution: single);
+    procedure SurfaceBounce(const surfaceNormal: TVector4f; restitution: single);
   published
     property Mass: single read FMass write FMass;
     property TranslationSpeed: TgxCoordinates
@@ -408,7 +408,7 @@ end;
 
 procedure TgxBInertia.DoProgress(const progressTime: TgxProgressTimes);
 var
-  trnVector: TgxVector;
+  trnVector: TVector4f;
   speed, newSpeed: double;
 
   procedure ApplyRotationDamping(var rotationSpeed: single);
@@ -468,13 +468,13 @@ begin
 end;
 
 procedure TgxBInertia.ApplyTranslationAcceleration(const deltaTime: double;
-  const accel: TgxVector);
+  const accel: TVector4f);
 begin
   FTranslationSpeed.AsVector := VectorCombine(FTranslationSpeed.AsVector,
     accel, 1, deltaTime);
 end;
 
-procedure TgxBInertia.ApplyForce(const deltaTime: double; const force: TgxVector);
+procedure TgxBInertia.ApplyForce(const deltaTime: double; const force: TVector4f);
 begin
   if Mass <> 0 then
     FTranslationSpeed.AsVector :=
@@ -500,7 +500,7 @@ begin
   FTranslationSpeed.Invert;
 end;
 
-procedure TgxBInertia.SurfaceBounce(const surfaceNormal: TgxVector; restitution: single);
+procedure TgxBInertia.SurfaceBounce(const surfaceNormal: TVector4f; restitution: single);
 var
   f: single;
 begin

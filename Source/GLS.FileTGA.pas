@@ -13,7 +13,7 @@ unit GLS.FileTGA;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,

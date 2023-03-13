@@ -17,7 +17,7 @@ unit Formats.m3DS;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 {$ALIGN ON}
 {$MINENUMSIZE 4}
 {$RANGECHECKS OFF}

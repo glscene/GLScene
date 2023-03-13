@@ -5,7 +5,7 @@ unit GLS.FilePGM;
 
 (* PGM image loader *)
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 interface
 
@@ -16,8 +16,8 @@ uses
 
   GLS.Context,
   GLS.Graphics,
-  Scenario.TextureFormat,
-  Scenario.Strings,
+  Scena.TextureFormat,
+  Scena.Strings,
   GLS.ApplicationFileIO,
 
   CUDA.Utility;

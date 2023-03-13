@@ -14,7 +14,7 @@ unit GLX.Graphics;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.Windows,
@@ -40,8 +40,8 @@ uses
   GLX.ImageUtils,
   GLX.Utils,
   GLX.Color,
-  Scenario.TextureFormat,
-  Scenario.Strings;
+  Scena.TextureFormat,
+  Scena.Strings;
 
 type
   TgxPixel24 = packed record

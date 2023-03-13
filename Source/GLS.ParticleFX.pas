@@ -13,7 +13,7 @@ unit GLS.ParticleFX;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -41,7 +41,7 @@ uses
   GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.Manager,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 const
   cPFXNbRegions = 128; // number of distance regions

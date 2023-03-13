@@ -7,7 +7,7 @@ unit GLX.XCollection;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 {.$DEFINE DEBUG_XCOLLECTION }  // on define the most apps will not work
 
@@ -15,7 +15,7 @@ uses
   System.Classes,
   System.SysUtils,
   System.Types,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.PersistentClasses
   {$IFDEF DEBUG_XCOLLECTION}, System.TypInfo {$ENDIF};
 

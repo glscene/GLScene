@@ -12,7 +12,7 @@ unit GLX.ShadowPlane;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -33,7 +33,7 @@ uses
   GLX.Color,
   GLX.RenderContextInfo,
   GLX.State,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 type
 
@@ -133,10 +133,10 @@ procedure TgxShadowPlane.DoRender(var ARci: TgxRenderContextInfo;
   ARenderSelf, ARenderChildren: Boolean);
 var
   oldProxySubObject, oldIgnoreMaterials: Boolean;
-  shadowMat: TgxMatrix;
+  shadowMat: TMatrix4f;
   sr, ds: TRect;
   CurrentBuffer: TgxSceneBuffer;
-  ModelMat: TgxMatrix;
+  ModelMat: TMatrix4f;
 begin
   if FRendering then
     Exit;

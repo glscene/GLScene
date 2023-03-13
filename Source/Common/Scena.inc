@@ -1,12 +1,13 @@
 //
-// The graphics platform Scene https://github.com/glscene
+// The graphics platform GLScene https://github.com/glscene
 //
 
-{$DEFINE SCENARIO}
+// .$DEFINE SCENA for VCL & ARENA for FMX
+{$DEFINE SCENA}
+{.$DEFINE ARENA}
 
 //
 // Additionnal support & dependencies
-// .$DEFINE VCL vs FMX
 //
 
 // Activate support Graphics32 library

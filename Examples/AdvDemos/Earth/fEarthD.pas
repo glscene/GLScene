@@ -31,7 +31,7 @@ uses
   GLS.State,
   GLS.Utils,
   GLS.Context,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLSL.TextureShaders,
   GLS.BaseClasses;
 

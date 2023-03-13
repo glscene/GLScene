@@ -20,10 +20,9 @@ unit GLX.OpenGL;
  rights reserved under the Copyright Laws of the United States.
  ------------------------------------------------------------- *)
 
-
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.SysUtils,

@@ -12,7 +12,7 @@ unit GLSLx.CustomShader;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,12 +25,12 @@ uses
   GLX.Texture, 
   GLX.Cadencer, 
   GLX.Scene,
-  Scenario.Strings, 
+  Scena.Strings, 
   GLX.Context,
   GLX.RenderContextInfo,
   GLX.Material,
   GLX.VectorLists, 
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLSLx.Parameter;
 
 const
@@ -175,7 +175,7 @@ type
     function GetAsVector1f: Single; virtual; abstract;
     function GetAsVector2f: TVector2f; virtual; abstract;
     function GetAsVector3f: TVector3f; virtual; abstract;
-    function GetAsVector4f: TgxVector; virtual; abstract;
+    function GetAsVector4f: TVector4f; virtual; abstract;
 
     function GetAsVector1i: Integer; virtual; abstract;
     function GetAsVector2i: TVector2i; virtual; abstract;
@@ -242,7 +242,7 @@ type
     procedure SetToTextureOf(const Texture: TgxTexture; const TextureIndex: Integer); overload;
 
     // friendly properties.
-    property AsVector: TgxVector read GetAsVector4f write SetAsVector4f;
+    property AsVector: TVector4f read GetAsVector4f write SetAsVector4f;
     property AsAffineVector: TAffineVector read GetAsVector3f write SetAsVector3f;
 
     // Standard types.

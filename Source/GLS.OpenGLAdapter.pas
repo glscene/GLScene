@@ -7,7 +7,7 @@ unit GLS.OpenGLAdapter;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,7 +16,7 @@ uses
   System.SysUtils,
 
   GLS.OpenGLTokens,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.Logger,
   GLS.VectorGeometry,
   GLS.VectorTypes;

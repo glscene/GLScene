@@ -11,7 +11,7 @@ unit GLS.Octree;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Math,

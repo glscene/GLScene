@@ -7,7 +7,7 @@ unit GLX.FPSMovement;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -33,12 +33,12 @@ uses
 
 type
   TContactPoint = record
-    intPoint, intNormal: TgxVector;
+    intPoint, intNormal: TVector4f;
   end;
 
   TCollisionState = class
   public
-    Position: TgxVector;
+    Position: TVector4f;
     Contact: TContactPoint;
     Time: Int64;
   end;
@@ -93,7 +93,7 @@ type
 
     procedure SetNavigator(value: TgxNavigator);
     procedure setScene(value: TgxScene);
-    procedure DrawArrows(intPoint, intNormal, Ray: TgxVector;
+    procedure DrawArrows(intPoint, intNormal, Ray: TVector4f;
       Arrow1, Arrow2: TgxArrowLine);
   protected
     procedure Loaded; override;
@@ -112,12 +112,12 @@ type
        limit iterations to 4 or 5 for now, may need to be higher
       for more complex maps or fast motion *)
     function SphereSweepAndSlide(freeform: TgxFreeForm;
-      behaviour: TgxBFPSMovement; SphereStart: TgxVector;
-      var Velocity, newPosition: TgxVector; sphereRadius: single)
+      behaviour: TgxBFPSMovement; SphereStart: TVector4f;
+      var Velocity, newPosition: TVector4f; sphereRadius: single)
       : boolean; overload;
 
     procedure SphereSweepAndSlide(behaviour: TgxBFPSMovement;
-      SphereStart: TgxVector; var Velocity, newPosition: TgxVector;
+      SphereStart: TVector4f; var Velocity, newPosition: TVector4f;
       sphereRadius: single); overload;
 
   published
@@ -138,7 +138,7 @@ type
       ArrowLine6: TgxArrowLine;
     dirGl: TgxDirectOpenGL;
     tickCount: Int64;
-    oldPosition: TgxVector;
+    oldPosition: TVector4f;
     FGravityEnabled: boolean;
     FSphereRadius: single;
     FShowArrows: boolean;
@@ -151,7 +151,7 @@ type
     procedure ReadFromFiler(reader: TReader); override;
     procedure Loaded; override;
   public
-    Velocity: TgxVector;
+    Velocity: TVector4f;
     constructor Create(aOwner: TXCollection); override;
     destructor Destroy; override;
     procedure DoProgress(const progressTime: TgxProgressTimes); override;
@@ -432,7 +432,7 @@ begin
   end;
 end;
 
-procedure TgxFPSMovementManager.DrawArrows(intPoint, intNormal, Ray: TgxVector;
+procedure TgxFPSMovementManager.DrawArrows(intPoint, intNormal, Ray: TVector4f;
   Arrow1, Arrow2: TgxArrowLine);
 begin
   Arrow1.Position.AsVector := intPoint;
@@ -447,7 +447,7 @@ begin
 end;
 
 procedure TgxFPSMovementManager.SphereSweepAndSlide(behaviour: TgxBFPSMovement;
-  SphereStart: TgxVector; var Velocity, newPosition: TgxVector;
+  SphereStart: TVector4f; var Velocity, newPosition: TVector4f;
   sphereRadius: single);
 var
   i: integer;
@@ -463,14 +463,14 @@ begin
 end;
 
 function TgxFPSMovementManager.SphereSweepAndSlide(freeform: TgxFreeForm;
-  behaviour: TgxBFPSMovement; SphereStart: TgxVector;
-  var Velocity, newPosition: TgxVector; sphereRadius: single): boolean;
+  behaviour: TgxBFPSMovement; SphereStart: TVector4f;
+  var Velocity, newPosition: TVector4f; sphereRadius: single): boolean;
 var
-  oldPosition, Ray: TgxVector;
+  oldPosition, Ray: TVector4f;
   vel, slidedistance: single;
-  intPoint, intNormal: TgxVector;
+  intPoint, intNormal: TVector4f;
   newDirection, newRay, collisionPosition, pointOnSphere,
-    point2OnSphere: TgxVector;
+    point2OnSphere: TVector4f;
   i: integer;
   CollisionState: TCollisionState;
   SphereRadiusRel: single; // mrqzzz
@@ -809,7 +809,7 @@ end;
 
 procedure TgxBFPSMovement.DoProgress(const progressTime: TgxProgressTimes);
 var
-  newPosition: TgxVector;
+  newPosition: TVector4f;
   CollisionState: TCollisionState;
 begin
   inherited DoProgress(progressTime);

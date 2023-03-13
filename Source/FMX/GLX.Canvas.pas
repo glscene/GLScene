@@ -11,7 +11,7 @@ unit GLX.Canvas;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -49,7 +49,7 @@ type
     FCurrentPos: TAffineVector;
     FPenColor: TColor;
     FPenWidth: Integer;
-    FCurrentPenColorVector: TgxVector;
+    FCurrentPenColorVector: TVector4f;
     FArcDirection: TgxArcDirection;
   protected
     procedure BackupOpenGLStates;
@@ -69,7 +69,7 @@ type
       UpdateCurrentPos: Boolean); overload;
   public
     constructor Create(bufferSizeX, bufferSizeY: Integer;
-      const baseTransform: TgxMatrix); overload;
+      const baseTransform: TMatrix4f); overload;
     constructor Create(bufferSizeX, bufferSizeY: Integer); overload;
     destructor Destroy; override;
     (* Stops the current internal primitive.
@@ -180,9 +180,9 @@ const
 // ------------------
 
 constructor TgxCanvas.Create(bufferSizeX, bufferSizeY: Integer;
-  const baseTransform: TgxMatrix);
+  const baseTransform: TMatrix4f);
 var
-  PM: TgxMatrix;
+  PM: TMatrix4f;
 begin
   FBufferSizeX := bufferSizeX;
   FBufferSizeY := bufferSizeY;
@@ -257,7 +257,7 @@ end;
 
 procedure TgxCanvas.InvertYAxis;
 var
-  mat: TgxMatrix;
+  mat: TMatrix4f;
 begin
   mat := IdentityHmgMatrix;
   mat.Y.Y := -1;

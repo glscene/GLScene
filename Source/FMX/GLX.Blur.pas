@@ -7,7 +7,7 @@ unit GLX.Blur;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -32,8 +32,8 @@ uses
   GLX.Graphics,
   GLX.Context,
   GLX.State,
-  Scenario.Strings,
-  Scenario.TextureFormat,
+  Scena.Strings,
+  Scena.TextureFormat,
   GLX.BaseClasses,
   GLX.RenderContextInfo;
 

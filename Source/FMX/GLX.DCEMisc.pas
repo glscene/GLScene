@@ -7,7 +7,7 @@ unit GLX.DCEMisc;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   GLX.Coordinates,
@@ -93,7 +93,7 @@ procedure ECAddFreeForm(var MovePack: TECMovePack; FreeForm: TgxBaseSceneObject;
   Solid: Boolean; ObjectID: Integer);
 var
   i, count : Integer;
-  Pos: TgxVector;
+  Pos: TVector4f;
   Master: TgxBaseSceneObject;
   d1,d2: Single;
 begin

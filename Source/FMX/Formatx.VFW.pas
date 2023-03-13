@@ -46,7 +46,7 @@ interface
 
 {.$UNDEF UNICODE}
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
     Winapi.Windows,

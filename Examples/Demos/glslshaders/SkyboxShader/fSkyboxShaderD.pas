@@ -17,7 +17,7 @@ uses
   GLS.Objects,
   GLS.GeomObjects,
   GLS.Texture,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.CompositeImage,
   GLS.Material,
   GLS.Coordinates,

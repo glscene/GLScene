@@ -4,7 +4,7 @@
 
 unit GLX.FilePGM;
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 interface
 
@@ -12,7 +12,7 @@ uses
   System.Classes, System.SysUtils,
   Winapi.OpenGL, Winapi.OpenGLext,
 
-  GLX.Context, GLX.Graphics, Scenario.TextureFormat,
+  GLX.Context, GLX.Graphics, Scena.TextureFormat,
   GLX.ApplicationFileIO;
 
 type

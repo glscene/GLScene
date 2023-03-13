@@ -19,7 +19,7 @@ unit GLX.HeightData;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.Windows, // for CreateMonochromeBitmap

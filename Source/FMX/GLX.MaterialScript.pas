@@ -7,7 +7,7 @@ unit GLX.MaterialScript;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.SysUtils,
@@ -17,7 +17,7 @@ uses
 
   GLX.VectorTypes,
   GLX.Texture,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLX.Graphics,
   GLX.Utils,
   GLX.Color,

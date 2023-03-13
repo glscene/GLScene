@@ -12,7 +12,7 @@ unit GLX.Movement;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -26,7 +26,7 @@ uses
   GLX.VectorTypes,
   GLX.VectorGeometry,
   GLX.Spline,
-  Scenario.Strings,
+  Scena.Strings,
 
   GLX.Scene,
   GLX.Objects,
@@ -36,15 +36,15 @@ type
 
   TgxPathNode = class (TCollectionItem)
   private
-    FPosition: TgxVector;
-    FScale: TgxVector;
-    FRotation: TgxVector;
-    FDirection: TgxVector;
-    FUp: TgxVector;
+    FPosition: TVector4f;
+    FScale: TVector4f;
+    FRotation: TVector4f;
+    FDirection: TVector4f;
+    FUp: TVector4f;
     FSpeed: single;
-    procedure SetPositionAsVector(const Value: TgxVector);
-    procedure SetRotationAsVector(const Value: TgxVector);
-    procedure SetScaleAsVector(const Value: TgxVector);
+    procedure SetPositionAsVector(const Value: TVector4f);
+    procedure SetRotationAsVector(const Value: TVector4f);
+    procedure SetScaleAsVector(const Value: TVector4f);
     function GetPositionCoordinate(const Index: Integer): Single;
     procedure SetPositionCoordinate(const Index: integer; const AValue: Single);
     function GetRotationCoordinate(const Index: Integer): Single;
@@ -71,11 +71,11 @@ type
     // Warning: does not take speed into account.
     function EqualNode(const aNode: TgxPathNode): boolean;
     // Rotation.X means PitchAngle, Rotation.Y means TurnAngle, Rotation.Z means RollAngle.
-    property RotationAsVector: TgxVector Read FRotation Write SetRotationAsVector;
-    property PositionAsVector: TgxVector Read FPosition Write SetPositionAsVector;
-    property ScaleAsVector: TgxVector Read FScale Write SetScaleAsVector;
-    property UpAsVector: TgxVector read FUp write FUp;
-    property DirectionAsVector: TgxVector read FDirection write FDirection;
+    property RotationAsVector: TVector4f Read FRotation Write SetRotationAsVector;
+    property PositionAsVector: TVector4f Read FPosition Write SetPositionAsVector;
+    property ScaleAsVector: TVector4f Read FScale Write SetScaleAsVector;
+    property UpAsVector: TVector4f read FUp write FUp;
+    property DirectionAsVector: TVector4f read FDirection write FDirection;
   published
     property X: Single index 0 Read GetPositionCoordinate Write SetPositionCoordinate;
     property Y: Single index 1 Read GetPositionCoordinate Write SetPositionCoordinate;
@@ -299,19 +299,19 @@ begin
   inherited Destroy;
 end;
 
-procedure TgxPathNode.SetPositionAsVector(const Value: TgxVector);
+procedure TgxPathNode.SetPositionAsVector(const Value: TVector4f);
 begin
   FPosition := Value;
     (Collection as TgxPathNodes).NotifyChange;
 end;
 
-procedure TgxPathNode.SetRotationAsVector(const Value: TgxVector);
+procedure TgxPathNode.SetRotationAsVector(const Value: TVector4f);
 begin
   FRotation := Value;
     (Collection as TgxPathNodes).NotifyChange;
 end;
 
-procedure TgxPathNode.SetScaleAsVector(const Value: TgxVector);
+procedure TgxPathNode.SetScaleAsVector(const Value: TVector4f);
 begin
   FScale := Value;
     (Collection as TgxPathNodes).NotifyChange;

@@ -7,7 +7,7 @@ unit GLX.ProjectedTextures;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -123,14 +123,14 @@ end;
 
 procedure TgxTextureEmitter.SetupTexMatrix(var ARci: TgxRenderContextInfo);
 const
-  cBaseMat: TgxMatrix =
+  cBaseMat: TMatrix4f =
   (V:((X:0.5; Y:0;   Z:0; W:0),
           (X:0;   Y:0.5; Z:0; W:0),
           (X:0;   Y:0; Z:1; W:0),
           (X:0.5; Y:0.5; Z:0; W:1)));
 
 var
-  PM: TgxMatrix;
+  PM: TMatrix4f;
 begin
   // Set the projector's "perspective" (i.e. the "spotlight cone"):.
   PM := MatrixMultiply(CreatePerspectiveMatrix(FFOVy, FAspect, 0.1, 1), cBaseMat);

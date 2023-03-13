@@ -7,7 +7,7 @@ unit GLX.PerlinPFX;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -101,7 +101,7 @@ type
     function Noise(const x, y: Single): Single; overload;
     function Noise(const x, y, z: Single): Single; overload;
     function Noise(const v: TAffineVector): Single; overload;
-    function Noise(const v: TgxVector): Single; overload;
+    function Noise(const v: TVector4f): Single; overload;
   end;
 
 
@@ -429,7 +429,7 @@ begin
   Result := Noise(AffineVectorMake(x, y, z));
 end;
 
-function TgxPerlin3DNoise.Noise(const v: TgxVector): Single;
+function TgxPerlin3DNoise.Noise(const v: TVector4f): Single;
 begin
   Result := Noise(PAffineVector(@v)^);
 end;

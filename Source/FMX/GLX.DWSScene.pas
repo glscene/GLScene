@@ -320,7 +320,7 @@ type
 
 // GetVectorFromInfo
 //
-function GetVectorFromInfo(Info : IInfo) : TgxVector;
+function GetVectorFromInfo(Info : IInfo) : TVector4f;
 begin
   Result:=VectorMake(Info.Element([0]).Value,
                      Info.Element([1]).Value,
@@ -328,7 +328,7 @@ begin
                      Info.Element([3]).Value);
 end;
 
-procedure SetInfoFromVector(Info : IInfo; vec : TgxVector);
+procedure SetInfoFromVector(Info : IInfo; vec : TVector4f);
 var
   i : Integer;
 begin
@@ -336,7 +336,7 @@ begin
     Info.Element([i]).Value:=vec[i];
 end;
 
-function GetMatrixFromInfo(Info : IInfo) : TgxMatrix;
+function GetMatrixFromInfo(Info : IInfo) : TMatrix4f;
 var
   i : Integer;
 begin
@@ -347,7 +347,7 @@ begin
                           Info.Element([i]).Element([3]).Value);
 end;
 
-procedure SetInfoFromMatrix(Info : IInfo; mat : TgxMatrix);
+procedure SetInfoFromMatrix(Info : IInfo; mat : TMatrix4f);
 var
   i,j : Integer;
 begin
@@ -432,7 +432,7 @@ end;
 // TgxCoordinates.AsVector write access
 procedure TgxCoordinatesSetAsVectorMethod.Execute(var ExternalObject: TObject);
 var
-  v : TgxVector;
+  v : TVector4f;
 begin
   ValidateExternalObject(ExternalObject, TgxCoordinates);
   v:=GetVectorFromInfo(Info.Vars['Value']);
@@ -442,7 +442,7 @@ end;
 // TgxCoordinates.AsVector read access
 procedure TgxCoordinatesGetAsVectorMethod.Execute(var ExternalObject: TObject);
 var
-  v : TgxVector;
+  v : TVector4f;
 begin
   ValidateExternalObject(ExternalObject, TgxCoordinates);
   v:=TgxCoordinates(ExternalObject).AsVector;
@@ -459,7 +459,7 @@ end;
 // TgxCoordinates.Translate
 procedure TgxCoordinatesTranslateMethod.Execute(var ExternalObject: TObject);
 var
-  v : TgxVector;
+  v : TVector4f;
 begin
   ValidateExternalObject(ExternalObject, TgxCoordinates);
   v:=GetVectorFromInfo(Info.Vars['translationVector']);
@@ -469,7 +469,7 @@ end;
 // TgxCoordinates.AddScaledVector
 procedure TgxCoordinatesAddScaledVectorMethod.Execute(var ExternalObject: TObject);
 var
-  v : TgxVector;
+  v : TVector4f;
 begin
   ValidateExternalObject(ExternalObject, TgxCoordinates);
   v:=GetVectorFromInfo(Info.Vars['translationVector']);
@@ -479,7 +479,7 @@ end;
 // TgxCoordinates.Rotate
 procedure TgxCoordinatesRotateMethod.Execute(var ExternalObject: TObject);
 var
-  v : TgxVector;
+  v : TVector4f;
 begin
   ValidateExternalObject(ExternalObject, TgxCoordinates);
   v:=GetVectorFromInfo(Info.Vars['anAxis']);
@@ -510,7 +510,7 @@ end;
 // TgxCoordinates.Equals
 procedure TgxCoordinatesEqualsMethod.Execute(var ExternalObject: TObject);
 var
-  v : TgxVector;
+  v : TVector4f;
 begin
   ValidateExternalObject(ExternalObject, TgxCoordinates);
   v:=GetVectorFromInfo(Info.Vars['aVector']);
@@ -816,17 +816,17 @@ begin
   if not Assigned(ClassSym.Members.FindLocal('SetToZero')) then
     TgxCoordinatesSetToZeroMethod.Create(mkProcedure, [], 0, 'SetToZero', [], '', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('SetAsVector')) then
-    TgxCoordinatesSetAsVectorMethod.Create(mkProcedure, [], 0, 'SetAsVector', ['Value', 'TgxVector'], '', ClassSym, SymbolTable);
+    TgxCoordinatesSetAsVectorMethod.Create(mkProcedure, [], 0, 'SetAsVector', ['Value', 'TVector4f'], '', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('GetAsVector')) then
-    TgxCoordinatesGetAsVectorMethod.Create(mkFunction, [], 0, 'GetAsVector', [], 'TgxVector', ClassSym, SymbolTable);
+    TgxCoordinatesGetAsVectorMethod.Create(mkFunction, [], 0, 'GetAsVector', [], 'TVector4f', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('GetAsString')) then
     TgxCoordinatesGetAsStringMethod.Create(mkFunction, [], 0, 'GetAsString', [], 'String', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('Translate')) then
-    TgxCoordinatesTranslateMethod.Create(mkProcedure, [], 0, 'Translate', ['translationVector', 'TgxVector'], '', ClassSym, SymbolTable);
+    TgxCoordinatesTranslateMethod.Create(mkProcedure, [], 0, 'Translate', ['translationVector', 'TVector4f'], '', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('AddScaledVector')) then
-    TgxCoordinatesAddScaledVectorMethod.Create(mkProcedure, [], 0, 'AddScaledVector', ['factor', 'Float', 'translationVector', 'TgxVector'], '', ClassSym, SymbolTable);
+    TgxCoordinatesAddScaledVectorMethod.Create(mkProcedure, [], 0, 'AddScaledVector', ['factor', 'Float', 'translationVector', 'TVector4f'], '', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('Rotate')) then
-    TgxCoordinatesRotateMethod.Create(mkProcedure, [], 0, 'Rotate', ['anAxis', 'TgxVector', 'anAngle', 'Float'], '', ClassSym, SymbolTable);
+    TgxCoordinatesRotateMethod.Create(mkProcedure, [], 0, 'Rotate', ['anAxis', 'TVector4f', 'anAngle', 'Float'], '', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('Normalize')) then
     TgxCoordinatesNormalizeMethod.Create(mkProcedure, [], 0, 'Normalize', [], '', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('Invert')) then
@@ -834,13 +834,13 @@ begin
   if not Assigned(ClassSym.Members.FindLocal('Scale')) then
     TgxCoordinatesScaleMethod.Create(mkProcedure, [], 0, 'Scale', ['factor', 'Float'], '', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('Equals')) then
-    TgxCoordinatesEqualsMethod.Create(mkFunction, [], 0, 'Equals', ['aVector', 'TgxVector'], 'Boolean', ClassSym, SymbolTable);
+    TgxCoordinatesEqualsMethod.Create(mkFunction, [], 0, 'Equals', ['aVector', 'TVector4f'], 'Boolean', ClassSym, SymbolTable);
 
   // Properties
   AddPropertyToClass('X', 'Float', 'GetX', 'SetX', '', False, ClassSym, SymbolTable);
   AddPropertyToClass('Y', 'Float', 'GetY', 'SetY', '', False, ClassSym, SymbolTable);
   AddPropertyToClass('Z', 'Float', 'GetZ', 'SetZ', '', False, ClassSym, SymbolTable);
-  AddPropertyToClass('AsVector', 'TgxVector', 'GetAsVector', 'SetAsVector', '', False, ClassSym, SymbolTable);
+  AddPropertyToClass('AsVector', 'TVector4f', 'GetAsVector', 'SetAsVector', '', False, ClassSym, SymbolTable);
   AddPropertyToClass('AsString', 'String', 'GetAsString', '', '', False, ClassSym, SymbolTable);
 end;
 
@@ -859,25 +859,25 @@ begin
   if not Assigned(ClassSym.Members.FindLocal('GetVisible')) then
     TgxBaseSceneObjectGetVisibleMethod.Create(mkFunction, [], 0, 'GetVisible', [], 'Boolean', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('SetMatrix')) then
-    TgxBaseSceneObjectSetMatrixMethod.Create(mkProcedure, [], 0, 'SetMatrix', ['Value', 'TgxMatrix'], '', ClassSym, SymbolTable);
+    TgxBaseSceneObjectSetMatrixMethod.Create(mkProcedure, [], 0, 'SetMatrix', ['Value', 'TMatrix4f'], '', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('GetMatrix')) then
-    TgxBaseSceneObjectGetMatrixMethod.Create(mkFunction, [], 0, 'GetMatrix', [], 'TgxMatrix', ClassSym, SymbolTable);
+    TgxBaseSceneObjectGetMatrixMethod.Create(mkFunction, [], 0, 'GetMatrix', [], 'TMatrix4f', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('AbsoluteMatrix')) then
-    TgxBaseSceneObjectAbsoluteMatrixMethod.Create(mkFunction, [], 0, 'AbsoluteMatrix', [], 'TgxMatrix', ClassSym, SymbolTable);
+    TgxBaseSceneObjectAbsoluteMatrixMethod.Create(mkFunction, [], 0, 'AbsoluteMatrix', [], 'TMatrix4f', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('InvAbsoluteMatrix')) then
-    TgxBaseSceneObjectInvAbsoluteMatrixMethod.Create(mkFunction, [], 0, 'InvAbsoluteMatrix', [], 'TgxMatrix', ClassSym, SymbolTable);
+    TgxBaseSceneObjectInvAbsoluteMatrixMethod.Create(mkFunction, [], 0, 'InvAbsoluteMatrix', [], 'TMatrix4f', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('SetAbsolutePosition')) then
-    TgxBaseSceneObjectSetAbsolutePositionMethod.Create(mkProcedure, [], 0, 'SetAbsolutePosition', ['Value', 'TgxVector'], '', ClassSym, SymbolTable);
+    TgxBaseSceneObjectSetAbsolutePositionMethod.Create(mkProcedure, [], 0, 'SetAbsolutePosition', ['Value', 'TVector4f'], '', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('GetAbsolutePosition')) then
-    TgxBaseSceneObjectGetAbsolutePositionMethod.Create(mkFunction, [], 0, 'GetAbsolutePosition', [], 'TgxVector', ClassSym, SymbolTable);
+    TgxBaseSceneObjectGetAbsolutePositionMethod.Create(mkFunction, [], 0, 'GetAbsolutePosition', [], 'TVector4f', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('SetAbsoluteUp')) then
-    TgxBaseSceneObjectSetAbsoluteUpMethod.Create(mkProcedure, [], 0, 'SetAbsoluteUp', ['Value', 'TgxVector'], '', ClassSym, SymbolTable);
+    TgxBaseSceneObjectSetAbsoluteUpMethod.Create(mkProcedure, [], 0, 'SetAbsoluteUp', ['Value', 'TVector4f'], '', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('GetAbsoluteUp')) then
-    TgxBaseSceneObjectGetAbsoluteUpMethod.Create(mkFunction, [], 0, 'GetAbsoluteUp', [], 'TgxVector', ClassSym, SymbolTable);
+    TgxBaseSceneObjectGetAbsoluteUpMethod.Create(mkFunction, [], 0, 'GetAbsoluteUp', [], 'TVector4f', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('SetAbsoluteDirection')) then
-    TgxBaseSceneObjectSetAbsoluteDirectionMethod.Create(mkProcedure, [], 0, 'SetAbsoluteDirection', ['Value', 'TgxVector'], '', ClassSym, SymbolTable);
+    TgxBaseSceneObjectSetAbsoluteDirectionMethod.Create(mkProcedure, [], 0, 'SetAbsoluteDirection', ['Value', 'TVector4f'], '', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('GetAbsoluteDirection')) then
-    TgxBaseSceneObjectGetAbsoluteDirectionMethod.Create(mkFunction, [], 0, 'GetAbsoluteDirection', [], 'TgxVector', ClassSym, SymbolTable);
+    TgxBaseSceneObjectGetAbsoluteDirectionMethod.Create(mkFunction, [], 0, 'GetAbsoluteDirection', [], 'TVector4f', ClassSym, SymbolTable);
 
   if not Assigned(ClassSym.Members.FindLocal('SetPosition')) then
     TgxBaseSceneObjectSetPositionMethod.Create(mkProcedure, [], 0, 'SetPosition', ['Value', 'TgxCoordinates'], '', ClassSym, SymbolTable);
@@ -921,10 +921,10 @@ begin
 
   // Properties
   AddPropertyToClass('Visible', 'Boolean', 'GetVisible', 'SetVisible', '', False, ClassSym, SymbolTable);
-  AddPropertyToClass('Matrix', 'TgxMatrix', 'GetMatrix', 'SetMatrix', '', False, ClassSym, SymbolTable);
-  AddPropertyToClass('AbsolutePosition', 'TgxVector', 'GetAbsolutePosition', 'SetAbsolutePosition', '', False, ClassSym, SymbolTable);
-  AddPropertyToClass('AbsoluteUp', 'TgxVector', 'GetAbsoluteUp', 'SetAbsoluteUp', '', False, ClassSym, SymbolTable);
-  AddPropertyToClass('AbsoluteDirection', 'TgxVector', 'GetAbsoluteDirection', 'SetAbsoluteDirection', '', False, ClassSym, SymbolTable);
+  AddPropertyToClass('Matrix', 'TMatrix4f', 'GetMatrix', 'SetMatrix', '', False, ClassSym, SymbolTable);
+  AddPropertyToClass('AbsolutePosition', 'TVector4f', 'GetAbsolutePosition', 'SetAbsolutePosition', '', False, ClassSym, SymbolTable);
+  AddPropertyToClass('AbsoluteUp', 'TVector4f', 'GetAbsoluteUp', 'SetAbsoluteUp', '', False, ClassSym, SymbolTable);
+  AddPropertyToClass('AbsoluteDirection', 'TVector4f', 'GetAbsoluteDirection', 'SetAbsoluteDirection', '', False, ClassSym, SymbolTable);
   AddPropertyToClass('Position', 'TgxBaseSceneObject', 'GetPosition', 'SetPosition', '', False, ClassSym, SymbolTable);
   AddPropertyToClass('Direction', 'TgxBaseSceneObject', 'GetDirection', 'SetDirection', '', False, ClassSym, SymbolTable);
   AddPropertyToClass('Up', 'TgxBaseSceneObject', 'GetUp', 'SetUp', '', False, ClassSym, SymbolTable);

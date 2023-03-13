@@ -5,7 +5,7 @@ unit GLS.VectorTypesExt;
 
 interface
 
-{ .$I GLScene.inc }
+{.$I GLScene.inc}
 
 uses
   System.Types,

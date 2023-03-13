@@ -20,7 +20,7 @@ unit GLX.SmoothNavigator;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Types,
@@ -112,8 +112,8 @@ type
   end;
 
   TgxNavigatorSmoothChangeVector = class;
-  TgxNavigatorSmoothChangeVectorGetEvent = function(const ASender: TgxNavigatorSmoothChangeVector): TgxVector of object;
-  TgxNavigatorSmoothChangeVectorSetEvent = procedure(const ASender: TgxNavigatorSmoothChangeVector; const AValue: TgxVector) of object;
+  TgxNavigatorSmoothChangeVectorGetEvent = function(const ASender: TgxNavigatorSmoothChangeVector): TVector4f of object;
+  TgxNavigatorSmoothChangeVectorSetEvent = procedure(const ASender: TgxNavigatorSmoothChangeVector; const AValue: TVector4f) of object;
 
   { Smoothly change any Vector4f value, so it will become TargetValue in the end.  }
   TgxNavigatorSmoothChangeVector = class(TgxNavigatorSmoothChangeItem)
@@ -328,10 +328,10 @@ type
     function MoveAroundTarget(const PitchDelta, TurnDelta : Single; const ADeltaTime: Double): Boolean; virtual;
     function MoveObjectAround(const AObject: TgxBaseSceneObject; PitchDelta, TurnDelta : Single; ADeltaTime: Double): Boolean; virtual;
     // Uses AdjustDistanceParams.
-    function AdjustDistanceToPoint(const  APoint: TgxVector; const DistanceRatio : Single; ADeltaTime: Double): Boolean; virtual;
+    function AdjustDistanceToPoint(const  APoint: TVector4f; const DistanceRatio : Single; ADeltaTime: Double): Boolean; virtual;
     function AdjustDistanceToTarget(const DistanceRatio : Single; const ADeltaTime: Double): Boolean; virtual;
     // Uses AdjustDistanceParamsEx.
-    function AdjustDistanceToPointEx(const  APoint: TgxVector; ADeltaTime: Double): Boolean; virtual;
+    function AdjustDistanceToPointEx(const  APoint: TVector4f; ADeltaTime: Double): Boolean; virtual;
     function AdjustDistanceToTargetEx(const ADeltaTime: Double): Boolean; virtual;
     // Uses CustomAnimatedItems.
     procedure AnimateCustomItems(const ADeltaTime: Double); virtual;
@@ -698,7 +698,7 @@ var
   FinalPitch: Single;
   FinalTurn:  Single;
 
-  lUp: TgxVector;
+  lUp: TVector4f;
 begin
   Result := False;
   FinalPitch := 0;
@@ -735,13 +735,13 @@ begin
 end;
 
 
-function TgxSmoothNavigator.AdjustDistanceToPoint(const APoint: TgxVector;
+function TgxSmoothNavigator.AdjustDistanceToPoint(const APoint: TVector4f;
   const DistanceRatio: Single; ADeltaTime: Double): Boolean;
 
   // Based on TgxCamera.AdjustDistanceToTarget
   procedure DoAdjustDistanceToPoint(const DistanceRatio: Single);
   var
-    vect: TgxVector;
+    vect: TVector4f;
   begin
     vect := VectorSubtract(MovingObject.AbsolutePosition, APoint);
     ScaleVector(vect, (distanceRatio - 1));
@@ -794,17 +794,17 @@ begin
   FAdjustDistanceParams.Assign(Value);
 end;
 
-function TgxSmoothNavigator.AdjustDistanceToPointEx(const APoint: TgxVector;
+function TgxSmoothNavigator.AdjustDistanceToPointEx(const APoint: TVector4f;
   ADeltaTime: Double): Boolean;
 
 var
-  lAbsolutePosition: TgxVector;
+  lAbsolutePosition: TVector4f;
   lCurrentDistance: Single;
   lDistanceDifference, lTempCurrentDistance: Single;
 
   procedure DoAdjustDistanceToPoint(const DistanceValue: Single);
   var
-    vect: TgxVector;
+    vect: TVector4f;
   begin
     vect := VectorSubtract(APoint, lAbsolutePosition);
     NormalizeVector(vect);
@@ -1549,14 +1549,14 @@ end;
 
 function TgxNavigatorSmoothChangeVector.Proceed(ADeltaTime: Double): Boolean;
 var
-  lAbsolutePosition: TgxVector;
+  lAbsolutePosition: TVector4f;
   lCurrentDistance: Single;
   lTotalDistanceToTravelThisTime, lDistanceToTravelThisTime: Single;
   lMaxExpectedDeltaTime: Double;
 
   procedure DoAdjustDistanceToPoint();
   var
-    vect: TgxVector;
+    vect: TVector4f;
   begin
     vect := VectorScale(VectorNormalize(VectorSubtract(FTargetValue.DirectVector, lAbsolutePosition)), lTotalDistanceToTravelThisTime);
     AddVector(vect, lAbsolutePosition);

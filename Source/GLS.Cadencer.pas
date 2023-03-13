@@ -7,7 +7,7 @@ unit GLS.Cadencer;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.Windows,

@@ -21,7 +21,7 @@ uses
 
   NGD.Import,
   GLX.VectorTypes,
-  GLX.VectorGeometry, // PgxVector TgxVector TgxMatrix PgxMatrix NullHmgVector...
+  GLX.VectorGeometry, // PVector4f TVector4f TMatrix4f PMatrix4f NullHmgVector...
   GLX.VectorLists, // TgxAffineVectorList for Tree
   GLX.XCollection, // TXCollection file function
   GLX.GeometryBB,
@@ -185,7 +185,7 @@ type
     function GetConstraintCount: Integer;
     procedure AddNode(const coords: TgxCustomCoordinates); overload;
     procedure AddNode(const X, Y, Z: Single); overload;
-    procedure AddNode(const Value: TgxVector); overload;
+    procedure AddNode(const Value: TVector4f); overload;
     procedure AddNode(const Value: TAffineVector); overload;
     procedure RebuildAllMaterial;
     procedure RebuildAllJoint(Sender: TObject);
@@ -235,7 +235,7 @@ type
     FInitialized: Boolean;
     FNewtonBody: PNewtonBody;
     FCollision: PNewtonCollision;
-    FNewtonBodyMatrix: TgxMatrix; // Position and Orientation
+    FNewtonBodyMatrix: TMatrix4f; // Position and Orientation
     FContinuousCollisionMode: Boolean; // Default=False
     FNewtonCollisions: TgxNGDCollisions;
     FCollisionIteratorEvent: TCollisionIteratorEvent;
@@ -253,9 +253,9 @@ type
     procedure ReadFromFiler(reader: TReader); override;
     procedure Loaded; override;
     procedure SetManager(Value: TgxNGDManager);
-    procedure SetNewtonBodyMatrix(const Value: TgxMatrix);
+    procedure SetNewtonBodyMatrix(const Value: TMatrix4f);
     procedure SetContinuousCollisionMode(const Value: Boolean);
-    function GetNewtonBodyMatrix: TgxMatrix;
+    function GetNewtonBodyMatrix: TMatrix4f;
     function GetNewtonBodyAABB: TAABB;
     procedure UpdCollision; virtual;
     procedure Render; virtual;
@@ -289,7 +289,7 @@ type
     procedure Reinitialize;
     property Initialized: Boolean read FInitialized;
     class function UniqueItem: Boolean; override;
-    property NewtonBodyMatrix: TgxMatrix read GetNewtonBodyMatrix
+    property NewtonBodyMatrix: TMatrix4f read GetNewtonBodyMatrix
       write SetNewtonBodyMatrix;
     property NewtonBodyAABB: TAABB read GetNewtonBodyAABB;
     procedure Serialize(filename: string);
@@ -362,16 +362,16 @@ type
   public
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
-    procedure AddImpulse(const veloc, pointposit: TgxVector);
-    function GetOmega: TgxVector;
-    procedure SetOmega(const Omega: TgxVector);
-    function GetVelocity: TgxVector;
-    procedure SetVelocity(const Velocity: TgxVector);
+    procedure AddImpulse(const veloc, pointposit: TVector4f);
+    function GetOmega: TVector4f;
+    procedure SetOmega(const Omega: TVector4f);
+    function GetVelocity: TVector4f;
+    procedure SetVelocity(const Velocity: TVector4f);
     class function FriendlyName: string; override;
     property CustomForceAndTorqueEvent: TApplyForceAndTorqueEvent
       read FCustomForceAndTorqueEvent write FCustomForceAndTorqueEvent;
-    property Velocity: TgxVector read GetVelocity write SetVelocity;
-    property Omega: TgxVector read GetOmega write SetOmega;
+    property Velocity: TVector4f read GetVelocity write SetVelocity;
+    property Omega: TVector4f read GetOmega write SetOmega;
   published
     property Force: TgxCoordinates read FForce write FForce;
     property Torque: TgxCoordinates read FTorque write FTorque;
@@ -629,7 +629,7 @@ type
   public
     constructor Create(Collection: TCollection); override;
     destructor Destroy; override;
-    procedure KinematicControllerPick(pickpoint: TgxVector;
+    procedure KinematicControllerPick(pickpoint: TVector4f;
       PickedActions: TgxNGDPickedActions);
   published
     property BallAndSocketOptions: TgxNGDJointPivot read FBallAndSocketOptions
@@ -779,7 +779,7 @@ end;
 // ------------------------------------------------------------------
 { TgxNGDManager }
 // ------------------------------------------------------------------
-procedure TgxNGDManager.AddNode(const Value: TgxVector);
+procedure TgxNGDManager.AddNode(const Value: TVector4f);
 begin
   if Assigned(FGLLines) then
   begin
@@ -819,7 +819,7 @@ end;
 
 constructor TgxNGDManager.Create(AOwner: TComponent);
 var
-  minworld, maxworld: TgxVector;
+  minworld, maxworld: TVector4f;
 begin
   inherited;
   FNGDBehaviours := TgxNGDBehaviourList.Create;
@@ -1092,7 +1092,7 @@ procedure TgxNGDManager.RebuildAllJoint(Sender: TObject);
 
   procedure BuildCustomBallAndSocket(Joint: TgxNGDJoint);
   var
-    pinAndPivot: TgxMatrix;
+    pinAndPivot: TMatrix4f;
   begin
     with Joint do
       if Assigned(FParentObject) and Assigned(FChildObject) then
@@ -1117,7 +1117,7 @@ procedure TgxNGDManager.RebuildAllJoint(Sender: TObject);
 
   procedure BuildCustomHinge(Joint: TgxNGDJoint);
   var
-    pinAndPivot: TgxMatrix;
+    pinAndPivot: TMatrix4f;
     bso: TgxBaseSceneObject;
   begin
     { Newton wait from FPinAndPivotMatrix a structure like that:
@@ -1156,7 +1156,7 @@ procedure TgxNGDManager.RebuildAllJoint(Sender: TObject);
 
   procedure BuildCustomSlider(Joint: TgxNGDJoint);
   var
-    pinAndPivot: TgxMatrix;
+    pinAndPivot: TMatrix4f;
     bso: TgxBaseSceneObject;
 
   begin
@@ -1426,19 +1426,19 @@ end;
 
 function TgxNGDBehaviour.GetBBoxCollision: PNewtonCollision;
 var
-  vc: array [0 .. 7] of TgxVector;
+  vc: array [0 .. 7] of TVector4f;
   I: Integer;
 begin
   for I := 0 to 8 - 1 do
     vc[I] := AABBToBB(FOwnerBaseSceneObject.AxisAlignedBoundingBoxEx).BBox[I];
   Result := NewtonCreateConvexHull(FManager.FNewtonWorld, 8, @vc[0],
-    SizeOf(TgxVector), 0.01, 0, nil);
+    SizeOf(TVector4f), 0.01, 0, nil);
 end;
 
 function TgxNGDBehaviour.GetBSphereCollision: PNewtonCollision;
 var
   boundingSphere: TBSphere;
-  collisionOffsetMatrix: TgxMatrix;
+  collisionOffsetMatrix: TMatrix4f;
 begin
   AABBToBSphere(FOwnerBaseSceneObject.AxisAlignedBoundingBoxEx, boundingSphere);
 
@@ -1535,7 +1535,7 @@ begin
     Result := GetNullCollision;
 end;
 
-function TgxNGDBehaviour.GetNewtonBodyMatrix: TgxMatrix;
+function TgxNGDBehaviour.GetNewtonBodyMatrix: TMatrix4f;
 begin
   if Assigned(FManager) then
     NewtonBodyGetmatrix(FNewtonBody, @FNewtonBodyMatrix);
@@ -1570,7 +1570,7 @@ end;
 
 function TgxNGDBehaviour.GetPrimitiveCollision: PNewtonCollision;
 var
-  collisionOffsetMatrix: TgxMatrix; // For cone capsule and cylinder
+  collisionOffsetMatrix: TMatrix4f; // For cone capsule and cylinder
 begin
   collisionOffsetMatrix := IdentityHmgMatrix;
 
@@ -1764,7 +1764,7 @@ end;
 
 procedure TgxNGDBehaviour.Render;
 var
-  M: TgxMatrix;
+  M: TMatrix4f;
 begin
   // Rebuild collision in design time
   if (csDesigning in FOwnerBaseSceneObject.ComponentState) then
@@ -1857,7 +1857,7 @@ begin
   end;
 end;
 
-procedure TgxNGDBehaviour.SetNewtonBodyMatrix(const Value: TgxMatrix);
+procedure TgxNGDBehaviour.SetNewtonBodyMatrix(const Value: TMatrix4f);
 begin
   FNewtonBodyMatrix := Value;
   if Assigned(FManager) then
@@ -1963,7 +1963,7 @@ end;
 // TgxNGDDynamic
 // -------------------------------------
 
-procedure TgxNGDDynamic.AddImpulse(const veloc, pointposit: TgxVector);
+procedure TgxNGDDynamic.AddImpulse(const veloc, pointposit: TVector4f);
 begin
   if Assigned(FNewtonBody) then
     NewtonBodyAddImpulse(FNewtonBody, @veloc, @pointposit);
@@ -2113,7 +2113,7 @@ procedure TgxNGDDynamic.Render;
     cnt: PNewtonJoint;
     thisContact: PNewtonJoint;
     material: PNewtonMaterial;
-    pos, nor: TgxVector;
+    pos, nor: TVector4f;
   begin
     FManager.FCurrentColor := FManager.DebugOption.ContactColor;
     cnt := NewtonBodyGetFirstContactJoint(FNewtonBody);
@@ -2135,9 +2135,9 @@ procedure TgxNGDDynamic.Render;
     end;
   end;
 
-  function GetAbsCom(): TgxVector;
+  function GetAbsCom(): TVector4f;
   var
-    M: TgxMatrix;
+    M: TMatrix4f;
   begin
     NewtonBodyGetCentreOfMass(FNewtonBody, @Result);
     M := IdentityHmgMatrix;
@@ -2149,8 +2149,8 @@ procedure TgxNGDDynamic.Render;
 
   procedure DrawForce;
   var
-    pos: TgxVector;
-    nor: TgxVector;
+    pos: TVector4f;
+    nor: TVector4f;
   begin
     pos := GetAbsCom;
 
@@ -2183,7 +2183,7 @@ procedure TgxNGDDynamic.Render;
 
   procedure DrawCoM;
   var
-    com: TgxVector;
+    com: TVector4f;
     size: Single;
   begin
     FManager.FCurrentColor := FManager.DebugOption.CenterOfMassColor;
@@ -2228,8 +2228,8 @@ end;
 
 procedure TgxNGDDynamic.SetDensity(const Value: Single);
 var
-  inertia: TgxVector;
-  origin: TgxVector;
+  inertia: TVector4f;
+  origin: TVector4f;
 begin
   if Assigned(FManager) then
     if Value >= 0 then
@@ -2263,22 +2263,22 @@ begin
       NewtonBodySetLinearDamping(FNewtonBody, FLinearDamping);
 end;
 
-function TgxNGDDynamic.GetOmega: TgxVector;
+function TgxNGDDynamic.GetOmega: TVector4f;
 begin
   NewtonBodyGetOmega(FNewtonBody, @Result);
 end;
 
-procedure TgxNGDDynamic.SetOmega(const Omega: TgxVector);
+procedure TgxNGDDynamic.SetOmega(const Omega: TVector4f);
 begin
   NewtonBodySetOmega(FNewtonBody, @Omega);
 end;
 
-function TgxNGDDynamic.GetVelocity: TgxVector;
+function TgxNGDDynamic.GetVelocity: TVector4f;
 begin
   NewtonBodyGetVelocity(FNewtonBody, @Result);
 end;
 
-procedure TgxNGDDynamic.SetVelocity(const Velocity: TgxVector);
+procedure TgxNGDDynamic.SetVelocity(const Velocity: TVector4f);
 begin
   NewtonBodySetVelocity(FNewtonBody, @Velocity);
 end;
@@ -2403,7 +2403,7 @@ end;
 procedure TgxNGDDynamic.OnApplyForceAndTorqueEvent(const cbody: PNewtonBody;
   timestep: dFloat; threadIndex: Integer);
 var
-  worldGravity: TgxVector;
+  worldGravity: TVector4f;
 begin
 
   // Read Only: We get the force and torque resulting from every interaction on this body
@@ -2450,7 +2450,7 @@ begin
     else
       // Make the Position and orientation of the glscene-Object relative to the
       // NewtonBody position and orientation.
-      FOwnerBaseSceneObject.AbsoluteMatrix := PgxMatrix(cmatrix)^;
+      FOwnerBaseSceneObject.AbsoluteMatrix := PMatrix4f(cmatrix)^;
 end;
 
 // ------------------------------------------------------------------
@@ -2681,7 +2681,7 @@ begin
   end;
 end;
 
-procedure TgxNGDJoint.KinematicControllerPick(pickpoint: TgxVector;
+procedure TgxNGDJoint.KinematicControllerPick(pickpoint: TVector4f;
   PickedActions: TgxNGDPickedActions);
 begin
   (* CustomDestroyJoint(FNewtonUserJoint);  //from dJointLibrary.dll
@@ -2730,7 +2730,7 @@ end;
 
 procedure TgxNGDJoint.Render;
 
-  procedure DrawPivot(pivot: TgxVector);
+  procedure DrawPivot(pivot: TVector4f);
   var
     size: Single;
   begin
@@ -2744,14 +2744,14 @@ procedure TgxNGDJoint.Render;
     FManager.AddNode(VectorAdd(pivot, VectorMake(-size, 0, 0)));
   end;
 
-  procedure DrawPin(pin, pivot: TgxVector);
+  procedure DrawPin(pin, pivot: TVector4f);
   begin
     FManager.FCurrentColor := FManager.DebugOption.JointAxisColor;
     FManager.AddNode(VectorAdd(pivot, pin));
     FManager.AddNode(VectorAdd(pivot, VectorNegate(pin)));
   end;
 
-  procedure DrawJoint(pivot: TgxVector);
+  procedure DrawJoint(pivot: TVector4f);
   begin
     FManager.FCurrentColor := FManager.DebugOption.CustomColor;
     FManager.AddNode(FParentObject.AbsolutePosition);
@@ -2762,7 +2762,7 @@ procedure TgxNGDJoint.Render;
 
   procedure DrawKinematic;
   var
-    pickedMatrix: TgxMatrix;
+    pickedMatrix: TMatrix4f;
     size: Single;
   begin
     size := FManager.DebugOption.DotAxisSize;

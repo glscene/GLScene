@@ -36,7 +36,7 @@ uses
   GLS.RenderContextInfo,
   GLS.Graphics,
   GLS.State,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 type
   TForm1 = class(TForm)

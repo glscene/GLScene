@@ -7,7 +7,7 @@ unit GLX.FileDDS;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,12 +18,12 @@ uses
 
   GLX.VectorGeometry,
   GLX.RGBE,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.ApplicationFileIO,
 
   GLX.Context,
   GLX.Graphics,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   Formatx.DXTC;
 
 type

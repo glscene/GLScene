@@ -7,7 +7,7 @@ unit GLS.EllipseCollision;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   GLS.VectorGeometry,

@@ -29,7 +29,7 @@
 #include "GLS.RenderContextInfo.hpp"
 #include "GLS.Graphics.hpp"
 #include "GLS.State.hpp"
-#include "Scenario.TextureFormat.hpp"
+#include "Scena.TextureFormat.hpp"
 #include "GLSL.UserShader.hpp"
 
 //---------------------------------------------------------------------------

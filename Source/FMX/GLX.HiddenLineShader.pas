@@ -11,7 +11,7 @@ unit GLX.HiddenLineShader;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,

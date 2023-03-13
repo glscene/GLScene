@@ -17,13 +17,13 @@ uses
   GLX.VectorLists,
   GLX.VectorTypes,
   GLX.Texture,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.Cadencer,
   GLX.Context,
   GLX.BaseClasses,
   GLX.RenderContextInfo,
   GLX.Material,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
 
   CG.Import,
   CG.GL;
@@ -198,7 +198,7 @@ type
     property Direction: TCGenum read FDirection write FDirection;
     property Variability: TCGenum read FVariability write FVariability;
     // GLScene-friendly properties
-    property AsVector: TgxVector write SetAsVector4f; // position f.i.
+    property AsVector: TVector4f write SetAsVector4f; // position f.i.
     property AsAffineVector: TAffineVector write SetAsVector3f; // normal f.i.
     property AsVector2f: TVector2f write SetAsVector2f; // texCoord f.i.
   end;

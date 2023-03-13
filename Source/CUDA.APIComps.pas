@@ -7,7 +7,7 @@ unit CUDA.APIComps;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Types,
@@ -21,7 +21,7 @@ uses
   GLS.VectorTypes,
   GLS.VectorLists,
   GLS.Graphics,
-  Scenario.Strings,
+  Scena.Strings,
   GLS.Utils,
 
   CUDA.Import,

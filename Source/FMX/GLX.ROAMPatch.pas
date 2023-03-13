@@ -7,7 +7,7 @@ unit GLX.ROAMPatch;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.SysUtils,
@@ -17,7 +17,7 @@ uses
   GLX.XOpenGL,
   GLX.VectorGeometry,
   GLX.VectorLists,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.HeightData,
   GLX.Isolines,
   GLX.Context;
@@ -177,7 +177,7 @@ procedure DrawContours(Vertices: TgxAffineVectorList; VertexIndices: TgxIntegerL
 var
   i: Integer;
   Contours: TgxAffineVectorList;
-  CurColor: TgxVector;
+  CurColor: TVector4f;
 
 begin
   if ContourInterval > 0 then

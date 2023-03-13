@@ -17,7 +17,7 @@ uses
 
   CUDAx.API,
   CUDAx.Context,
-  Scenario.Strings;
+  Scena.Strings;
 
 type
 

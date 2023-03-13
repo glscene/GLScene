@@ -10,7 +10,7 @@ unit GLX.GizmoEx;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -27,7 +27,7 @@ uses
   GLX.VectorTypes,
   GLX.VectorGeometry,
   GLX.PersistentClasses,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.Scene,
   GLX.Color,
   GLX.Material,
@@ -53,16 +53,16 @@ type
 
   TgxGizmoExObjectItem = class(TCollectionItem)
   private
-    FOldAutoScaling: TgxVector;
+    FOldAutoScaling: TVector4f;
     FEffectedObject: TgxBaseSceneObject;
     FParentOldObject: TgxBaseSceneObject;
     FIndexOldObject: Integer;
     FNameOldObject: string;
     FReturnObject: Boolean;
-    FOldMatrix: TgxMatrix;
+    FOldMatrix: TMatrix4f;
     FGizmoTmpRoot: TgxBaseSceneObject;
     procedure SetEffectedObject(const Value: TgxBaseSceneObject);
-    procedure SetOldMatrix(const Value: TgxMatrix);
+    procedure SetOldMatrix(const Value: TMatrix4f);
   protected
     procedure DoUndo;
     function GetParent: TgxGizmoExObjectCollection;
@@ -74,7 +74,7 @@ type
     procedure Notification(AComponent: TComponent; Operation: TOperation); virtual;
     procedure AssignFromObject(const AObject: TgxBaseSceneObject; AssignAndRemoveObj: Boolean = False);
     // TODO: create a special type for Matrix.
-    property OldMatrix: TgxMatrix read FOldMatrix write SetOldMatrix;
+    property OldMatrix: TMatrix4f read FOldMatrix write SetOldMatrix;
   published
     property EffectedObject: TgxBaseSceneobject read FEffectedObject write SetEffectedObject;
   end;
@@ -301,7 +301,7 @@ type
     fLastCursorPos: TPoint;
     fChangeRate: TAffineVector;   //total rotate angle
     FEnableLoopCursorMoving: Boolean;
-    lastMousePos: TgxVector;
+    lastMousePos: TVector4f;
     FOnUpdate: TNotifyEvent;
     FOnSelect: TgxGizmoExAcceptEvent;
     FOnOperationChange: TNotifyEvent;
@@ -330,7 +330,7 @@ type
     procedure SetHistoryStepsCount(aValue: Integer);
     procedure SetExcludeObjectsList(const AValue: TStrings);
     procedure SetExcludeClassNameList(const AValue: TStrings);
-    function MouseWorldPos(const X, Y: Integer): TgxVector;
+    function MouseWorldPos(const X, Y: Integer): TVector4f;
     function CheckObjectInExcludeList(const Obj: TgxBaseSceneObject): Boolean;
     function CheckClassNameInExcludeList(const Obj: TgxBaseSceneObject): Boolean;
     procedure UpdateVisibleInfoLabels;
@@ -456,7 +456,7 @@ implementation
 
 procedure RotateAroundArbitraryAxis(const anObject: TgxBaseSceneObject; const Axis, Origin: TAffineVector; const angle: Single);
 var
-  M, M1, M2, M3: TgxMatrix;
+  M, M1, M2, M3: TMatrix4f;
 begin
   M1 := CreateTranslationMatrix(VectorNegate(Origin));
   M2 := CreateRotationMatrix(Axis, Angle * PI / 180);
@@ -2088,7 +2088,7 @@ procedure TgxGizmoEx.InternalRender(Sender: TObject; var rci: TgxRenderContextIn
   var
     I, J:    Byte;
     BB:      THmgBoundingBox;
-    AVector: TgxVector;
+    AVector: TVector4f;
   begin
     if aObject = nil then
       Exit;
@@ -2111,11 +2111,11 @@ procedure TgxGizmoEx.InternalRender(Sender: TObject; var rci: TgxRenderContextIn
   end;
 
   //test#12 result is positive, but only for 2d
-  procedure ShowText(const Text: UnicodeString; Position: TgxVector; Scale: TgxVector; Color: TgxVector);
+  procedure ShowText(const Text: UnicodeString; Position: TVector4f; Scale: TVector4f; Color: TVector4f);
   var
     FLayout: TgxTextLayout;
     FAlignment: TAlignment;
-    wm:   TgxMatrix;
+    wm:   TMatrix4f;
     I, J: Integer;
   begin
     if not Assigned(FLabelFont) and (Text = '') then
@@ -2873,7 +2873,7 @@ function TgxGizmoEx.InternalGetPickedObjects(const x1, y1, x2, y2: Integer; cons
   var
     t:    Integer;
     dist: Single;
-    rayStart, rayVector, iPoint, iNormal: TgxVector;
+    rayStart, rayVector, iPoint, iNormal: TVector4f;
   begin
     SetVector(rayStart, Viewer.Camera.AbsolutePosition);
     SetVector(rayVector, Viewer.Buffer.ScreenToVector(AffineVectorMake(X, Viewer.Height - Y, 0)));
@@ -3048,9 +3048,9 @@ begin
 
 end;
 
-function TgxGizmoEx.MouseWorldPos(const X, Y: Integer): TgxVector;
+function TgxGizmoEx.MouseWorldPos(const X, Y: Integer): TVector4f;
 var
-  v: TgxVector;
+  v: TVector4f;
   InvertedY: Integer;
 begin
   InvertedY := Round(Viewer.Height) - Y;
@@ -3072,7 +3072,7 @@ end;
 
 procedure TgxGizmoEx.ActivatingElements(PickList: TgxPickList);
 
-  procedure ActlightRotateLine(const line: TgxLines; const dark: TgxVector);
+  procedure ActlightRotateLine(const line: TgxLines; const dark: TVector4f);
   var
     v: TVector4f;
     I: Integer;
@@ -3094,7 +3094,7 @@ procedure TgxGizmoEx.ActivatingElements(PickList: TgxPickList);
     end;
   end;
 
-  procedure DeActlightRotateLine(const line: TgxLines; const dark: TgxVector);
+  procedure DeActlightRotateLine(const line: TgxLines; const dark: TVector4f);
   var
     v: TVector4f;
     I: Integer;
@@ -3123,7 +3123,7 @@ procedure TgxGizmoEx.ActivatingElements(PickList: TgxPickList);
     line.Options := [];
   end;
 
-  procedure DeActlightLine(const line: TgxLines; const dark: TgxVector; alterStyle: Boolean = False);
+  procedure DeActlightLine(const line: TgxLines; const dark: TVector4f; alterStyle: Boolean = False);
   begin
     with  line.LineColor do
       if (AsWinColor = FSelectedColor.AsWinColor) then
@@ -3135,13 +3135,13 @@ procedure TgxGizmoEx.ActivatingElements(PickList: TgxPickList);
       end;
   end;
 
-  procedure ActlightRotateArrowLine(const line: TgxLines; Color: TgxVector);
+  procedure ActlightRotateArrowLine(const line: TgxLines; Color: TVector4f);
   begin
     line.LineColor.color := Color;
     line.Options := [];
   end;
 
-  procedure DeActlightRotateArrowLine(const line: TgxLines; const dark: TgxVector);
+  procedure DeActlightRotateArrowLine(const line: TgxLines; const dark: TVector4f);
   begin
     if not VectorEquals(line.LineColor.Color, dark) then
     begin
@@ -3166,19 +3166,19 @@ procedure TgxGizmoEx.ActivatingElements(PickList: TgxPickList);
     FlatText.ModulateColor.Color := FSelectedColor.Color;
   end;
 
-  procedure DeActlightText(const FlatText: TgxFlatText; const dark: TgxVector);
+  procedure DeActlightText(const FlatText: TgxFlatText; const dark: TVector4f);
   begin
     with FlatText.ModulateColor do
       if AsWinColor = FSelectedColor.AsWinColor then
         Color := dark;
   end;
 
-  procedure ActlightTextRotate(const FlatText: TgxFlatText; Color: TgxVector);
+  procedure ActlightTextRotate(const FlatText: TgxFlatText; Color: TVector4f);
   begin
     FlatText.ModulateColor.Color := Color;
   end;
 
-  procedure DeActlightTextRotate(const FlatText: TgxFlatText; const dark: TgxVector);
+  procedure DeActlightTextRotate(const FlatText: TgxFlatText; const dark: TVector4f);
   begin
     with FlatText.ModulateColor do
       if not VectorEquals(Color, dark) then
@@ -3430,7 +3430,7 @@ end;
 procedure TgxGizmoEx.ViewerMouseMove(const X, Y: Integer);
 var
   pickList:  TgxPickList;
-  mousePos:  TgxVector;
+  mousePos:  TVector4f;
   includeCh: Boolean;
 
   function FindParent(parent: TgxBaseSceneObject): Boolean;
@@ -3444,10 +3444,10 @@ var
     end;
   end;
 
-  procedure OpeMove(mousePos: TgxVector);
+  procedure OpeMove(mousePos: TVector4f);
   var
-    vec1, vec2: TgxVector;
-    quantizedMousePos, quantizedMousePos2: TgxVector;
+    vec1, vec2: TVector4f;
+    quantizedMousePos, quantizedMousePos2: TVector4f;
     I: Integer;
   begin
     if VectorNorm(lastMousePos) = 0 then
@@ -3530,12 +3530,12 @@ var
 
   procedure OpeRotate(const X, Y: Integer);
   var
-    vec1: TgxVector;
+    vec1: TVector4f;
     rotV: TAffineVector;
-    pmat: TgxMatrix;
+    pmat: TMatrix4f;
     I:    Integer;
     IncludeCh: Boolean;
-    v:    TgxVector;
+    v:    TVector4f;
   begin
 
     vec1.X := 0;
@@ -3629,10 +3629,10 @@ var
       end;
   end;
 
-  procedure OpeScale(const mousePos: TgxVector);
+  procedure OpeScale(const mousePos: TVector4f);
   var
-    vec1, vec2: TgxVector;
-    quantizedMousePos, quantizedMousePos2: TgxVector;
+    vec1, vec2: TVector4f;
+    quantizedMousePos, quantizedMousePos2: TVector4f;
     t: Integer;
   begin
     if VectorNorm(lastMousePos) = 0 then
@@ -3850,9 +3850,9 @@ end;
 
 procedure TgxGizmoEx.ViewerMouseDown(const X, Y: Integer);
 
-  function SetInitialDiskPostition(aObject, aObject2: TgxCustomSceneObject): TgxVector;
+  function SetInitialDiskPostition(aObject, aObject2: TgxCustomSceneObject): TVector4f;
   var
-    rayStart, rayVector, iPoint, iNormal: TgxVector;
+    rayStart, rayVector, iPoint, iNormal: TVector4f;
   begin
     if (Viewer = nil) then
       Exit;
@@ -4010,7 +4010,7 @@ end;
 procedure TgxGizmoEx.UpdateGizmo;
 var
   d: Single;
-  v: TgxVector;
+  v: TVector4f;
   I: Integer;
 begin
   if not Assigned(RootGizmo)   or
@@ -4288,7 +4288,7 @@ begin
   FEffectedObject := Value;
 end;
 
-procedure TgxGizmoExObjectItem.SetOldMatrix(const Value: TgxMatrix);
+procedure TgxGizmoExObjectItem.SetOldMatrix(const Value: TMatrix4f);
 begin
   FOldMatrix := Value;
 end;

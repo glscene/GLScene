@@ -7,7 +7,7 @@ unit GLSLx.PhongShader;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -212,7 +212,7 @@ end;
 
 procedure TgxPhongShader.DoAmbientPass(var rci: TgxRenderContextInfo);
 var
-  ambient, materialAmbient: TgxVector;
+  ambient, materialAmbient: TVector4f;
 begin
   rci.gxStates.Disable(stLighting);
 
@@ -224,7 +224,7 @@ end;
 
 procedure TgxPhongShader.DoLightPass(lightID: Cardinal);
 var
-  LightParam: TgxVector;
+  LightParam: TVector4f;
 begin
   Self.ApplyShaderPrograms();
 

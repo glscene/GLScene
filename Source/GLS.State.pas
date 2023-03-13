@@ -23,7 +23,7 @@ unit GLS.State;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 { .$DEFINE USE_CACHE_MISS_CHECK }
 
 uses
@@ -35,7 +35,7 @@ uses
   GLS.OpenGLTokens,
   GLS.VectorTypes,
   GLS.VectorGeometry,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLS.Utils;
 
 const

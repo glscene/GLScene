@@ -7,7 +7,7 @@ unit GLX.Windows;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,7 +25,7 @@ uses
   GLX.VectorGeometry,
   GLX.PersistentClasses,
   GLX.BaseClasses,
-  Scenario.Strings,
+  Scena.Strings,
   GLX.Scene,
   GLX.Coordinates,
   GLX.HUDObjects,
@@ -1766,7 +1766,7 @@ end;
 procedure TgxBaseFontControl.WriteTextAt(var rci: TgxRenderContextInfo; const X,
   Y: Single; const Data: UnicodeString; const Color: TgxColorVector);
 var
-  Position: TgxVector;
+  Position: TVector4f;
 begin
   if Assigned(BitmapFont) then
   begin
@@ -1781,7 +1781,7 @@ end;
 procedure TgxBaseFontControl.WriteTextAt(var rci: TgxRenderContextInfo; const X1,
   Y1, X2, Y2: Single; const Data: UnicodeString; const Color: TgxColorVector);
 var
-  Position: TgxVector;
+  Position: TVector4f;
 begin
   if Assigned(BitmapFont) then
   begin
@@ -2966,7 +2966,7 @@ procedure TgxLabel.InternalRender(var rci: TgxRenderContextInfo; renderSelf,
   renderChildren: Boolean);
 
 var
-  TekstPos: TgxVector;
+  TekstPos: TVector4f;
   Tekst: UnicodeString;
   TextColor: TgxColorVector;
 begin

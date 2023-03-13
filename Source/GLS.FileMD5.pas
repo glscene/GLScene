@@ -8,7 +8,7 @@ unit GLS.FileMD5;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Classes,

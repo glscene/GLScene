@@ -17,7 +17,7 @@ uses
   GLX.ApplicationFileIO,
   GLX.VectorFileObjects,
   GLX.Texture,
-  Scenario.TextureFormat,
+  Scena.TextureFormat,
   GLX.Material,
   Formatx.B3D;
 
@@ -54,11 +54,11 @@ var
   Vertex: PVertexData;
   Triangles: PTRISChunk;
   V, V1: TAffineVector;
-  Matrix: TgxMatrix;
+  Matrix: TMatrix4f;
   MatLib: TgxMaterialLibrary;
   LightLib: TgxMaterialLibrary;
   RotQuat: TQuaternion;
-  RotMat: TgxMatrix;
+  RotMat: TMatrix4f;
 
   function GetOrAllocateMaterial(MaterialNum: Integer; AMat: TB3DMaterial;
     ATex: TB3DTexture; ALightmap: TB3DTexture): string;

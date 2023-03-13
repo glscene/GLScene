@@ -7,7 +7,7 @@ unit GLX.Navigator;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   System.Types,
@@ -45,7 +45,7 @@ type
   TgxNavigator = class(TComponent)
   private
     FObject: TgxBaseSceneObject;
-    FVirtualRight: TgxVector;
+    FVirtualRight: TVector4f;
     FVirtualUp: TgxCoordinates;
     FUseVirtualUp: boolean;
     FAutoUpdateObject: boolean;
@@ -61,7 +61,7 @@ type
     procedure SetObject(NewObject: TgxBaseSceneObject); virtual;
     procedure SetUseVirtualUp(UseIt: boolean);
     procedure SetVirtualUp(Up: TgxCoordinates);
-    function CalcRight: TgxVector;
+    function CalcRight: TVector4f;
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -188,7 +188,7 @@ begin
   inherited;
 end;
 
-function    TgxNavigator.CalcRight : TgxVector;
+function    TgxNavigator.CalcRight : TVector4f;
 
 begin
   If Assigned(FObject) then
@@ -201,7 +201,7 @@ end;
 
 procedure   TgxNavigator.TurnHorizontal(Angle : Single);
 var
-  T : TgxVector;
+  T : TVector4f;
   U : TAffineVector;
   TempVal : Single;
 
@@ -237,7 +237,7 @@ var
   ExpectedAngle : Single;
   CosAngle, SinAngle : Single;
   TempVal : Single;
-  Direction : TgxVector;
+  Direction : TVector4f;
 
 begin
   ExpectedAngle := FCurrentVAngle+Angle;
@@ -302,8 +302,8 @@ end;
 Procedure TgxNavigator.Straighten;
 
 Var
-  R : TgxVector;
-  D : TgxVector;
+  R : TVector4f;
+  D : TVector4f;
   A : Single;
 
 Begin

@@ -13,7 +13,7 @@ unit GLX.ParticleFX;
 
 interface
 
-{$I Scenario.inc}
+{$I Scena.inc}
 
 uses
   Winapi.OpenGL,
@@ -40,7 +40,7 @@ uses
   GLX.Coordinates,
   GLX.RenderContextInfo,
   GLX.PipelineTransformation,
-  Scenario.TextureFormat;
+  Scena.TextureFormat;
 
 const
   cPFXNbRegions = 128; // number of distance regions
@@ -748,7 +748,7 @@ procedure RndVector(const dispersion: TgxSourcePFXDispersionMode;
   dispersionRange: TgxCoordinates);
 var
   f2, fsq: Single;
-  p: TgxVector;
+  p: TVector4f;
 begin
   f2 := 2 * f;
   if Assigned(dispersionRange) then
@@ -1934,7 +1934,7 @@ var
   list: PGLParticleArray;
   doFriction, doPack: Boolean;
   frictionScale: Single;
-  //pos4: TgxVector;
+  //pos4: TVector4f;
 begin
   maxAge := MaxParticleAge;
   accelVector := Acceleration.AsAffineVector;
@@ -2303,7 +2303,7 @@ procedure TgxLifeColoredPFXManager.RotateVertexBuf(buf: TgxAffineVectorList;
   lifeTime: Single; const axis: TAffineVector; offsetAngle: Single);
 var
   rotateAngle: Single;
-  rotMatrix: TgxMatrix;
+  rotMatrix: TMatrix4f;
   diff: Single;
   lifeRotationApplied: Boolean;
 begin
@@ -2438,7 +2438,7 @@ end;
 procedure TgxPolygonPFXManager.InitializeRendering(var rci: TgxRenderContextInfo);
 var
   i: Integer;
-  matrix: TgxMatrix;
+  matrix: TMatrix4f;
   s, c: Single;
 begin
   inherited;
@@ -2648,7 +2648,7 @@ end;
 procedure TgxBaseSpritePFXManager.InitializeRendering(var rci: TgxRenderContextInfo);
 var
   i: Integer;
-  matrix: TgxMatrix;
+  matrix: TMatrix4f;
   s, c, w, h: Single;
 begin
   inherited;

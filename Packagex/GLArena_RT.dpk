@@ -256,9 +256,8 @@ contains
   GLX.GeometryBB in '..\Source\FMX\GLX.GeometryBB.pas',
   GLX.GeometryCoordinates in '..\Source\FMX\GLX.GeometryCoordinates.pas',
   GLX.OpenGL in '..\Source\FMX\GLX.OpenGL.pas',
-  Scenario.Strings in '..\Source\Scenario.Strings.pas',
   Vulkan.Import in '..\Source\Common\Vulkan.Import.pas',
   GLSLx.Parameter in '..\Source\FMX\GLSLx.Parameter.pas',
-  Scenario.TextureFormat in '..\Source\Scenario.TextureFormat.pas';
+  Scena.Strings in '..\Source\Common\Scena.Strings.pas';
 
 end.
