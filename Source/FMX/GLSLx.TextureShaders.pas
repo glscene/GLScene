@@ -31,7 +31,7 @@ uses
   GLX.VectorGeometry,
   GLX.Color,
   GLX.Material,
-  Scene.Strings,
+  Scenario.Strings,
   GLX.VectorFileObjects,
   GLX.State,
   GLX.PersistentClasses,

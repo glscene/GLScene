@@ -8,7 +8,7 @@ unit GLS.Navigator;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.Windows,
@@ -35,7 +35,7 @@ uses
   GLS.Screen,
   GLS.Material,
   GLS.Texture,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.RenderContextInfo;
 
 type

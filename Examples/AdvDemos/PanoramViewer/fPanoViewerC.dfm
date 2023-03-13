@@ -36,7 +36,6 @@ object Form1: TForm1
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
-    ExplicitHeight = 291
   end
   object Panel1: TPanel
     Left = 0
@@ -57,7 +56,6 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    ExplicitWidth = 504
     object LabelYaw: TLabel
       Left = 249
       Top = 8

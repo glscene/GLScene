@@ -24,7 +24,7 @@ unit GLX.zBuffer;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
@@ -45,7 +45,7 @@ uses
   GLX.Color,
   GLX.RenderContextInfo,
   GLX.State,
-  GLX.TextureFormat;
+  Scenario.TextureFormat;
 
 
 type

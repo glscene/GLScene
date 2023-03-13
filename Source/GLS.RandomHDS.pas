@@ -2724,7 +2724,7 @@ begin
   t := ((GetTickCount - rhdsStartTime) / 10000);
   FTerrainRenderer.MaterialLibrary.ApplyMaterial(FSeaMaterialName, rci);
   repeat
-    // if not WasAboveWater then InverTGLFrontFace;
+    // if not WasAboveWater then InvertFrontFace;
     gl.PushAttrib(GL_ENABLE_BIT);
 
     gl.Disable(GL_LIGHTING);
@@ -2760,7 +2760,7 @@ begin
     end;
     gl.StencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
     gl.PopAttrib;
-    // if not WasAboveWater then InverTGLFrontFace;
+    // if not WasAboveWater then InvertFrontFace;
     // WaterPolyCount:=heightDatas.Count*8;
   until not FTerrainRenderer.MaterialLibrary.UnApplyMaterial(rci);
 end;
@@ -2802,7 +2802,7 @@ begin
 
   FTerrainRenderer.MaterialLibrary.ApplyMaterial(FSeaMaterialName, rci);
   repeat
-    // if not WasAboveWater then InverTGLFrontFace;
+    // if not WasAboveWater then InvertFrontFace;
     gl.PushAttrib(GL_ENABLE_BIT);
 
     gl.Disable(GL_LIGHTING);
@@ -2838,7 +2838,7 @@ begin
     end;
     gl.StencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
     gl.PopAttrib;
-    // if not WasAboveWater then InverTGLFrontFace;
+    // if not WasAboveWater then InvertFrontFace;
     // WaterPolyCount := heightDatas.Count*8;
   until not FTerrainRenderer.MaterialLibrary.UnApplyMaterial(rci);
 end;

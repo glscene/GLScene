@@ -8,7 +8,7 @@ unit GLS.ScreenSaver;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.Windows,

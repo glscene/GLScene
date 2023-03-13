@@ -22,9 +22,9 @@ uses
   FMX.Controls.Presentation,
 
   GLSLx.Parameter,
-  GLX.TextureFormat,
+  Scenario.TextureFormat,
   GLX.VectorGeometry,
-  Scene.Strings;
+  Scenario.Strings;
 
 type
   TShaderUniformEditorForm = class(TForm)

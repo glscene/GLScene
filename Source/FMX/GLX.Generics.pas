@@ -8,7 +8,7 @@ unit GLX.Generics;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 {.$DEFINE GENERIC_PREFIX}
 

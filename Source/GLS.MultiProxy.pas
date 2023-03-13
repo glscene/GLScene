@@ -7,7 +7,7 @@ unit GLS.MultiProxy;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,

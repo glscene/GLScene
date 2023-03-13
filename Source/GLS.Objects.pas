@@ -18,7 +18,7 @@ unit GLS.Objects;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -2723,7 +2723,7 @@ begin
   DoReverse := (FNormalDirection = ndInside);
   rci.GLStates.PushAttrib([sttPolygon]);
   if DoReverse then
-    rci.GLStates.InvertGLFrontFace;
+    rci.GLStates.InvertFrontFace;
 
   // common settings
   AngTop := DegToRad(1.0 * FTop);
@@ -2872,7 +2872,7 @@ begin
     gl.End_;
   end;
   if DoReverse then
-    rci.GLStates.InvertGLFrontFace;
+    rci.GLStates.InvertFrontFace;
   gl.PopMatrix;
   rci.GLStates.PopAttrib;
 end;
@@ -3185,7 +3185,7 @@ var
 begin
   DoReverse := (FNormalDirection = ndInside);
   if DoReverse then
-    rci.GLStates.InvertGLFrontFace;
+    rci.GLStates.InvertFrontFace;
 
   // common settings
   AngTop := DegToRad(1.0 * FTop);
@@ -3435,7 +3435,7 @@ begin
     gl.End_;
   end;
   if DoReverse then
-    rci.GLStates.InvertGLFrontFace;
+    rci.GLStates.InvertFrontFace;
 end;
 
 // This will probably not work

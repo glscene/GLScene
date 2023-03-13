@@ -7,7 +7,7 @@ unit GLX.ProxyObjects;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,7 +19,7 @@ uses
   GLX.PersistentClasses,
   GLX.VectorGeometry,
   GLX.VectorTypes,
-  Scene.Strings,
+  Scenario.Strings,
   GLX.Scene,
   GLX.Texture,
   GLX.VectorFileObjects,

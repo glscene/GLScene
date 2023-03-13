@@ -12,7 +12,7 @@ unit GLS.MultiSampleImage;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -20,11 +20,10 @@ uses
   System.Classes,
 
   GLS.VectorTypes,
-  GLS.OpenGLTokens,
+  Scenario.TextureFormat,
   GLS.Context,
   GLS.Texture,
-  GLS.Graphics,
-  GLS.TextureFormat;
+  GLS.Graphics;
 
 type
   TGLMultisampleImage = class(TGLTextureImage)
@@ -76,7 +75,6 @@ implementation
 // ------------------ TGLMultisampleImage ------------------
 // ------------------
 
- 
 constructor TGLMultisampleImage.Create(AOwner: TPersistent);
 begin
   inherited;

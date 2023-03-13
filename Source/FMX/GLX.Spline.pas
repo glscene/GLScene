@@ -11,7 +11,7 @@ uses
   GLX.VectorTypes,
   GLX.VectorGeometry;
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 type
 

@@ -15,7 +15,7 @@ uses
   GLS.VectorGeometry,
   GLS.Behaviours,
   GLS.Coordinates,
-  Scene.Strings;
+  Scenario.Strings;
 
 type
   TGLForce = class;

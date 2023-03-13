@@ -14,7 +14,7 @@ unit Formatx.DDSImage;
 *)
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -27,7 +27,7 @@ uses
   GLX.VectorGeometry,
   GLX.Graphics,
   GLX.Context,
-  GLX.TextureFormat,
+  Scenario.TextureFormat,
   GLX.FileDDS,
   Formatx.DXTC;
 

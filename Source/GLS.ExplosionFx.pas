@@ -22,7 +22,7 @@ unit GLS.ExplosionFx;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,

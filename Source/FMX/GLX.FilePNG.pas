@@ -5,7 +5,7 @@ unit GLX.FilePNG;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,7 +16,7 @@ uses
 
   GLX.Context,
   GLX.Graphics,
-  GLX.TextureFormat,
+  Scenario.TextureFormat,
   GLX.ApplicationFileIO;
 
 type
@@ -34,9 +34,9 @@ type
     { Assigns from any Texture.}
     procedure AssignFromTexture(textureContext: TgxContext;
       const textureHandle: GLuint;
-      textureTarget: TgxTextureTarget;
+      textureTarget: TGLTextureTarget;
       const CurrentFormat: Boolean;
-      const intFormat: TgxInternalFormat); reintroduce;
+      const intFormat: TGLInternalFormat); reintroduce;
   end;
 
 //==============================================================
@@ -91,14 +91,14 @@ end;
 
 procedure TgxPNGImage.AssignFromTexture(textureContext: TgxContext;
   const textureHandle: GLuint;
-  textureTarget: TgxTextureTarget;
+  textureTarget: TGLTextureTarget;
   const CurrentFormat: Boolean;
-  const intFormat: TgxInternalFormat);
+  const intFormat: TGLInternalFormat);
 var
   oldContext: TgxContext;
   contextActivate: Boolean;
   texFormat: Cardinal;
-  residentFormat: TgxInternalFormat;
+  residentFormat: TGLInternalFormat;
   glTarget: GLEnum;
 begin
   if not ((textureTarget = ttTexture2D)
@@ -128,7 +128,7 @@ begin
       glGetTexLevelParameteriv(glTarget, 0, GL_TEXTURE_WIDTH, @FLOD[0].Width);
       glGetTexLevelParameteriv(glTarget, 0, GL_TEXTURE_HEIGHT, @FLOD[0].Height);
       FLOD[0].Depth := 0;
-      residentFormat := OpenVXFormatToInternalFormat(texFormat);
+      residentFormat := OpenGLFormatToInternalFormat(texFormat);
       if CurrentFormat then
         fInternalFormat := residentFormat
       else

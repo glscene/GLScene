@@ -13,7 +13,7 @@ unit GLX.GLSLToonShader;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL, 
@@ -29,7 +29,7 @@ uses
   GLX.Context, 
   GLX.RenderContextInfo, 
   GLX.Coordinates,
-  GLX.TextureFormat, 
+  Scenario.TextureFormat, 
   GLX.Color, 
   GLX.Texture, 
   GLX.Material, 

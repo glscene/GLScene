@@ -7,7 +7,7 @@ unit GLX.WinContext;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.Windows,
@@ -22,7 +22,7 @@ uses
 
   GLX.Context,
   GLX.State,
-  Scene.Strings,
+  Scenario.Strings,
   GLX.VectorGeometry;
 
 type

@@ -8,7 +8,7 @@ unit GLSL.PostEffects;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -22,12 +22,12 @@ uses
   GLS.PersistentClasses,
   GLS.Texture,
   GLS.Graphics,
-  Scene.Strings,
+  Scenario.Strings,
   GLSL.CustomShader,
   GLS.VectorGeometry,
   GLS.RenderContextInfo,
   GLS.Material,
-  GLS.TextureFormat;
+  Scenario.TextureFormat;
 
 type
   EGLPostShaderHolderException = class(Exception);

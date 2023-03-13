@@ -7,7 +7,7 @@ unit GLX.Imposter;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -28,7 +28,7 @@ uses
   GLX.BaseClasses,
   GLX.State,
   GLX.PipelineTransformation,
-  GLX.TextureFormat,
+  Scenario.TextureFormat,
   GLX.Utils;
 
 type

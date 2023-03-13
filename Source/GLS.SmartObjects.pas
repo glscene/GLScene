@@ -11,7 +11,7 @@ unit GLS.SmartObjects;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -30,7 +30,7 @@ uses
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.Silhouette,
-  Scene.Strings,
+  Scenario.Strings,
   GLS.Texture,
   GLS.Material,
   GLS.Mesh,

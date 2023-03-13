@@ -8,7 +8,7 @@ unit GLX.FileOCT;
 *)
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.SysUtils,
@@ -23,7 +23,7 @@ uses
   GLX.Graphics,
   GLX.State,
   GLX.Utils,
-  GLX.TextureFormat,
+  Scenario.TextureFormat,
 
   Formatx.OCT;
 

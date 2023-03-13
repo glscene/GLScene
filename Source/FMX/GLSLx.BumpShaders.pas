@@ -27,7 +27,7 @@ unit GLSLx.BumpShaders;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -44,7 +44,7 @@ uses
   GLX.Texture,
   GLX.Scene,
   GLX.Cadencer,
-  Scene.Strings,
+  Scenario.Strings,
   GLX.Color,
   GLX.RenderContextInfo,
   GLX.Material,
@@ -54,7 +54,7 @@ uses
 
   GLSLx.CustomShader,
   GLSLx.Shader,
-  GLX.TextureFormat;
+  Scenario.TextureFormat;
 
 type
   TBumpMethod = (bmDot3TexCombiner, bmBasicARBFP);
@@ -653,7 +653,7 @@ begin
   if FSpecularTexture <> nil then
     Param['specMap'].AsTexture2D[2] := FSpecularTexture;
 
-{$IFNDEF VXS_OPTIMIZATIONS}
+{$IFNDEF USE_OPTIMIZATIONS}
   if FNormalTexture <> nil then
 {$ENDIF}
   begin

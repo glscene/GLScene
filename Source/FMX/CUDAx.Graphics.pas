@@ -222,8 +222,8 @@ implementation
 
 uses
   System.SysUtils,
-  Scene.Strings,
-  GLX.TextureFormat;
+  Scenario.Strings,
+  Scenario.TextureFormat;
 
 
 // ------------------

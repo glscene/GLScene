@@ -31,7 +31,7 @@ uses
   GLS.VectorGeometry,
   GLS.Color,
   GLS.Material,
-  Scene.Strings,
+  Scenario.Strings,
   GLS.VectorFileObjects,
   GLS.XOpenGL,
   GLS.State,
@@ -197,7 +197,7 @@ begin
   begin
     if not (GetTextureMatrixIsUnitary) then
     begin
-      rci.GLStates.SetGLTextureMatrix(TextureMatrix);
+      rci.GLStates.SetTextureMatrix(TextureMatrix);
     end;
   end;
 
@@ -516,7 +516,7 @@ begin
   if not FLibMaterial.Material.Texture.Disabled then
     if not (GetTextureMatrixIsUnitary) then
     begin
-      rci.GLStates.ResetGLTextureMatrix;
+      rci.GLStates.ResetTextureMatrix;
     end;
 
   if Assigned(FLibMaterial.Shader) then

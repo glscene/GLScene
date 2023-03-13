@@ -7,7 +7,7 @@ unit GLX.PictureRegisteredFormats;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes, 

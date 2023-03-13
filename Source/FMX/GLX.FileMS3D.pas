@@ -7,7 +7,7 @@ unit GLX.FileMS3D;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,

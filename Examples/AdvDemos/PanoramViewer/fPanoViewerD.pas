@@ -77,9 +77,9 @@ implementation
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  Path := ExtractFilePath(ParamStr(0)); // or GetCurrentAssetPath() + '\Panorama';
-  GetDir(0, Path);
-  OpenPictureDialog1.InitialDir := Path + '\Panorama';
+  Path := GetCurrentAssetPath(); // or Path := ExtractFilePath(ParamStr(0));
+  SetCurrentDir(Path + '\panorana'); // GetDir(0, Path);
+  OpenPictureDialog1.InitialDir := Path + '\panorama';
   OpenPictureDialog1.FileName := 'sejourstmathieu2048.jpg';
 end;
 

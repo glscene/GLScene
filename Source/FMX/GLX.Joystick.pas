@@ -7,7 +7,7 @@ unit GLX.Joystick;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.Windows,
@@ -17,7 +17,7 @@ uses
   System.SysUtils,
   FMX.Forms,
   FMX.Controls,
-  Scene.Strings;
+  Scenario.Strings;
 
 type
   TJoystickButton = (jbButton1, jbButton2, jbButton3, jbButton4);

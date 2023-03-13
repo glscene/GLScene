@@ -77,7 +77,7 @@ unit Formats.VFW;
 interface
 
 {.$UNDEF UNICODE}
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
     Winapi.Windows,

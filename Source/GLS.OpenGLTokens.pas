@@ -7,7 +7,7 @@ unit GLS.OpenGLTokens;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGLext,
@@ -245,6 +245,9 @@ const
   // Vendor/EXT extensions constants, in extension number order
 
   GL_FRAMEBUFFER_INCOMPLETE_DUPLICATE_ATTACHMENT_EXT = $8CD8;
+
+  // GL_ATI_texture_compression_3dc
+  GL_COMPRESSED_LUMINANCE_ALPHA_3DC_ATI = $8837;
 
   // WGL_NV_DX_interop (EXT #407)
   WGL_ACCESS_READ_ONLY_NV                             = $0000;

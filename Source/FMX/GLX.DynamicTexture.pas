@@ -10,22 +10,21 @@ unit GLX.DynamicTexture;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
-
+  System.Types,
   System.Classes,
   System.SysUtils,
-  System.Types,
 
   GLX.VectorGeometry,
-  Scene.Strings,
+  Scenario.Strings,
 
   GLX.Context,
   GLX.Texture,
-  GLX.TextureFormat,
+  Scenario.TextureFormat,
   GLX.Graphics;
 
 type
@@ -54,17 +53,15 @@ type
     property TextureFormat: integer read GetTextureFormat;
   public
     constructor Create(AOwner: TPersistent); override;
+    destructor Destroy; override;
     class function FriendlyName: String; override;
     class function FriendlyDescription: String; override;
     procedure NotifyChange(Sender: TObject); override;
-    (* Must be called before using the Data pointer.
-      Rendering context must be active! *)
+    // Must be called before using the Data pointer. Rendering context must be active!
     procedure BeginUpdate;
-    (* Must be called after data is changed.
-      This will upload the new data. *)
+    // Must be called after data is changed. This will upload the new data
     procedure EndUpdate;
-    (* Pointer to buffer data.  Will be nil
-      outside a BeginUpdate / EndUpdate block. *)
+    // Pointer to buffer data.  Will be nil outside a BeginUpdate / EndUpdate block
     property Data: pointer read FData;
     (* Marks the dirty rectangle inside the texture.  BeginUpdate sets
       it to ((0, 0), (Width, Height)), ie the entire texture.
@@ -72,10 +69,9 @@ type
       Note that the Data pointer is relative to the DirtyRectangle,
       NOT the entire texture. *)
     property DirtyRectangle: TRect read FDirtyRect write SetDirtyRectangle;
-    (* Indicates that the data is stored as BGR(A) instead of
-      RGB(A).  The default is to use BGR(A). *)
+    // Indicates that the data is stored as BGR(A) instead of RGB(A). The default is BGR(A)
     property UseBGR: boolean read FUseBGR write FUseBGR;
-    // Enables or disables use of a PBO. Default is true.
+    // Enables or disables use of a PBO. Default is true
     property UsePBO: boolean read FUsePBO write SetUsePBO;
   end;
 
@@ -90,7 +86,7 @@ implementation
 
 procedure TgxDynamicTextureImage.BeginUpdate;
 var
-  LTarget: TgxTextureTarget;
+  LTarget: TGLTextureTarget;
 begin
   Assert(FUpdating >= 0, 'Unbalanced begin/end update');
 
@@ -165,10 +161,16 @@ begin
   FUsePBO := true;
 end;
 
+destructor TgxDynamicTextureImage.Destroy;
+begin
+  FreePBO;
+  FreeBuffer;
+  inherited Destroy;
+end;
 procedure TgxDynamicTextureImage.EndUpdate;
 var
   d: pointer;
-  LTarget: TgxTextureTarget;
+  LTarget: TGLTextureTarget;
 begin
   Assert(FUpdating > 0, 'Unbalanced begin/end update');
   FUpdating := FUpdating - 1;
@@ -248,10 +250,9 @@ end;
 
 function TgxDynamicTextureImage.GetDataFormat: integer;
 var
-  Data, color: NativeUint;
+  Data, color: Cardinal;
 begin
-  FindCompatibleDataFormat(TgxTexture(OwnerTexture).TextureFormatEx,
-    color, Data);
+  FindCompatibleDataFormat(TgxTexture(OwnerTexture).TextureFormatEx,  color, Data);
   Result := Data;
 end;
 
@@ -262,10 +263,9 @@ end;
 
 function TgxDynamicTextureImage.GetTextureFormat: integer;
 var
-  Data, color: NativeUint;
+  Data, color: Cardinal;
 begin
-  FindCompatibleDataFormat(TgxTexture(OwnerTexture).TextureFormatEx,
-    color, Data);
+  FindCompatibleDataFormat(TgxTexture(OwnerTexture).TextureFormatEx, color, Data);
   if FUseBGR then
     case color of
       GL_RGB:

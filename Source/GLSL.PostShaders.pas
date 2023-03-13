@@ -18,7 +18,7 @@ unit GLSL.PostShaders;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
@@ -29,7 +29,7 @@ uses
   GLS.State,
   GLS.VectorGeometry,
   GLS.RenderContextInfo,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.Context,
   GLS.Material,
   GLSL.Shader,

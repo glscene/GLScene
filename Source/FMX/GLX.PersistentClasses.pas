@@ -16,13 +16,13 @@ unit GLX.PersistentClasses;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  Scene.Strings;
+  Scenario.Strings;
 
 type
   PObject = ^TObject;

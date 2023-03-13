@@ -12,7 +12,7 @@ unit GLS.ShadowVolume;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -789,7 +789,7 @@ begin
         end
         else
         begin
-          SetGLColorWriting(False);
+          SetColorWriting(False);
           Disable(stBlend);
         end;
         Enable(stCullFace);
@@ -886,7 +886,7 @@ begin
         LightDiffuse[LightID] := lightSource.Diffuse.Color;
         LightSpecular[LightID] := lightSource.Specular.Color;
 
-        SetGLColorWriting(True);
+        SetColorWriting(True);
         SetStencilOp(soKeep, soKeep, soKeep);
 
         Enable(stBlend);

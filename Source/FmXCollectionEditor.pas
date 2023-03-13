@@ -8,7 +8,7 @@ unit FmXCollectionEditor;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
@@ -26,7 +26,7 @@ uses
 
   DesignIntf,
 
-  Scene.Strings,
+  Scenario.Strings,
   GLS.Scene,
   GLS.Behaviours,
   GLS.MaterialEx,

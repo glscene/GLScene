@@ -23,7 +23,7 @@ unit GLX.MaterialMultiProxy;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -34,7 +34,7 @@ uses
   GLX.PersistentClasses,
   GLX.VectorTypes,
   GLX.VectorGeometry,
-  Scene.Strings,
+  Scenario.Strings,
   GLX.Texture,
   GLX.Material,
   GLX.Silhouette,

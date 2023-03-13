@@ -8,7 +8,7 @@ unit GLX.SceneRegister;
 *)
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.Windows,
@@ -34,7 +34,7 @@ uses
   DesignMenus,
 
 
-  Scene.Strings,
+  Scenario.Strings,
 
   GLX.Scene,
   GLX.Context,

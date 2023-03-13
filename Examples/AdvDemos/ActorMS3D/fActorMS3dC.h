@@ -21,7 +21,6 @@
 
 #include "GLS.ArchiveManager.hpp"
 #include "GLS.FileZLIB.hpp"
-#include "GLS.TextureFormat.hpp"
 
 #include "GLS.Scene.hpp"
 

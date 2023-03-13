@@ -11,7 +11,7 @@ unit GLS.Logger;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.Windows,

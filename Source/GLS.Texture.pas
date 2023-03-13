@@ -7,7 +7,7 @@ unit GLS.Texture;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -30,10 +30,10 @@ uses
   GLS.RenderContextInfo,
   GLS.PersistentClasses,
   GLS.PipelineTransformation,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.ApplicationFileIO,
   GLS.Utils,
-  Scene.Strings;
+  Scenario.Strings;
 
 const
   cDefaultNormalMapScale = 0.125;
@@ -2402,7 +2402,7 @@ procedure TGLTexture.Apply(var rci: TGLRenderContextInfo);
           m := rci.PipelineTransformation.ViewMatrix^;
           NormalizeMatrix(m);
           TransposeMatrix(m);
-          rci.GLStates.SetGLTextureMatrix(m);
+          rci.GLStates.SetTextureMatrix(m);
         end;
       tmmCubeMapLight0:
         begin
@@ -2415,7 +2415,7 @@ procedure TGLTexture.Apply(var rci: TGLRenderContextInfo);
               NormalizeMatrix(mm);
               TransposeMatrix(mm);
               m := MatrixMultiply(m, mm);
-              rci.GLStates.SetGLTextureMatrix(m);
+              rci.GLStates.SetTextureMatrix(m);
             end;
         end;
       tmmCubeMapCamera:
@@ -2428,7 +2428,7 @@ procedure TGLTexture.Apply(var rci: TGLRenderContextInfo);
           NormalizeMatrix(mm);
           TransposeMatrix(mm);
           m := MatrixMultiply(m, mm);
-          rci.GLStates.SetGLTextureMatrix(m);
+          rci.GLStates.SetTextureMatrix(m);
         end;
     end;
   end;
@@ -2480,7 +2480,7 @@ begin
       ActiveTexture := 0;
       ActiveTextureEnabled[FTextureHandle.Target] := False;
       if FTextureHandle.Target = ttTextureCube then
-        ResetGLTextureMatrix;
+        ResetTextureMatrix;
     end;
     UnApplyMappingMode;
   end;
@@ -2515,13 +2515,13 @@ begin
       TextureBinding[n - 1, FTextureHandle.Target] := Handle;
       ActiveTextureEnabled[FTextureHandle.Target] := True;
       if Assigned(textureMatrix) then
-        SetGLTextureMatrix(textureMatrix^)
+        SetTextureMatrix(textureMatrix^)
       else if FTextureHandle.Target = ttTextureCube then
       begin
         m := rci.PipelineTransformation.ModelViewMatrix^;
         NormalizeMatrix(m);
         TransposeMatrix(m);
-        rci.GLStates.SetGLTextureMatrix(m);
+        rci.GLStates.SetTextureMatrix(m);
       end;
 
       {if not ForwardContext then}
@@ -2550,7 +2550,7 @@ begin
       ActiveTextureEnabled[FTextureHandle.Target] := False;
       UnApplyMappingMode;
       if (FTextureHandle.Target = ttTextureCube) or reloadIdentityTextureMatrix then
-        ResetGLTextureMatrix;
+        ResetTextureMatrix;
       ActiveTexture := 0;
     end;
   end;

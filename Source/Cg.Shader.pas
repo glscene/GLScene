@@ -17,13 +17,13 @@ uses
   GLS.VectorLists,
   GLS.VectorTypes,
   GLS.Texture,
-  Scene.Strings,
+  Scenario.Strings,
   GLS.Cadencer,
   GLS.Context,
   GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.Material,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
 
   Cg.Import,
   Cg.GL;

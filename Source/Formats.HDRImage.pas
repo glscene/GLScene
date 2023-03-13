@@ -12,7 +12,7 @@ unit Formats.HDRImage;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.Windows,
@@ -38,7 +38,7 @@ implementation
 
 uses
   GLS.FileHDR,
-  GLS.TextureFormat;
+  Scenario.TextureFormat;
 
 // ------------------
 // ------------------ THDRImage ------------------

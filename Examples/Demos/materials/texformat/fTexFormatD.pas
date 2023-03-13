@@ -65,7 +65,7 @@ implementation
 {$R *.DFM}
 
 uses
-  GLS.TextureFormat, GLS.Utils;
+  Scenario.TextureFormat, GLS.Utils;
 
 procedure TFormTexFormat.FormCreate(Sender: TObject);
 var

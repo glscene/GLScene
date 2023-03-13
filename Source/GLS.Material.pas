@@ -8,7 +8,7 @@ unit GLS.Material;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
@@ -27,12 +27,12 @@ uses
   GLS.Coordinates,
   GLS.PersistentClasses,
   GLS.State,
-  GLS.TextureFormat, 
+  Scenario.TextureFormat, 
   GLS.XOpenGL,
   GLS.ApplicationFileIO,
   GLS.Graphics,
   GLS.Utils,
-  Scene.Strings,
+  Scenario.Strings,
   GLS.Logger;
 
 {$UNDEF USE_MULTITHREAD}
@@ -1839,14 +1839,14 @@ begin
   begin
     // no multitexturing ("standard" mode)
     if not FTextureMatrixIsIdentity then
-        ARci.GLStates.SetGLTextureMatrix(FTextureMatrix);
+        ARci.GLStates.SetTextureMatrix(FTextureMatrix);
     Material.Apply(ARci);
   end
   else
   begin
     // multitexturing is ON
     if not FTextureMatrixIsIdentity then
-      ARci.GLStates.SetGLTextureMatrix(FTextureMatrix);
+      ARci.GLStates.SetTextureMatrix(FTextureMatrix);
     Material.Apply(ARci);
 
     if not libMatTexture2.FTextureMatrixIsIdentity then
@@ -1904,7 +1904,7 @@ begin
     Material.UnApply(ARci);
     if not Material.Texture.Disabled then
       if not FTextureMatrixIsIdentity then
-        ARci.GLStates.ResetGLTextureMatrix;
+        ARci.GLStates.ResetTextureMatrix;
     if Assigned(FShader) then
     begin
       case Shader.ShaderStyle of

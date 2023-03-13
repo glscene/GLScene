@@ -8,7 +8,7 @@ unit GLS.FBORenderer;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -27,7 +27,7 @@ uses
   GLS.Material,
   GLS.RenderContextInfo,
   GLS.State,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.VectorTypes,
   GLS.MultiSampleImage,
   GLS.Logger;

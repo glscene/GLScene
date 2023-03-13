@@ -7,7 +7,7 @@ unit GLSLx.Shader;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -20,7 +20,7 @@ uses
   GLX.Texture,
   GLX.Context,
   GLX.RenderContextInfo,
-  GLX.TextureFormat,
+  Scenario.TextureFormat,
 
   GLSLx.CustomShader,
   GLSLx.Parameter;
@@ -122,9 +122,9 @@ type
     procedure SetAsMatrix3f(const Value: TMatrix3f); override;
     procedure SetAsMatrix4f(const Value: TMatrix4f); override;
     function GetAsCustomTexture(const TextureIndex: Integer;
-      TextureTarget: TgxTextureTarget): Cardinal; override;
+      TextureTarget: TGLTextureTarget): Cardinal; override;
     procedure SetAsCustomTexture(const TextureIndex: Integer;
-      TextureTarget: TgxTextureTarget; const Value: Cardinal); override;
+      TextureTarget: TGLTextureTarget; const Value: Cardinal); override;
     function GetAsUniformBuffer: GLenum; override;
     procedure SetAsUniformBuffer( UBO: GLenum); override;
    public
@@ -421,7 +421,7 @@ end;
 //------------------------------------------------------------
 
 function TgxGLSLShaderParameter.GetAsCustomTexture(
-  const TextureIndex: Integer; TextureTarget: TgxTextureTarget): Cardinal;
+  const TextureIndex: Integer; TextureTarget: TGLTextureTarget): Cardinal;
 begin
   glGetUniformiv(FGLSLProg.Handle, TextureIndex, @Result);
 end;
@@ -482,7 +482,7 @@ begin
 end;
 
 procedure TgxGLSLShaderParameter.SetAsCustomTexture(
-  const TextureIndex: Integer; TextureTarget: TgxTextureTarget;
+  const TextureIndex: Integer; TextureTarget: TGLTextureTarget;
   const Value: Cardinal);
 begin
   CurrentContext.gxStates.TextureBinding[TextureIndex, TextureTarget] := Value;

@@ -8,7 +8,7 @@ unit GLS.Isolines;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.SysUtils, 

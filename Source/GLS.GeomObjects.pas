@@ -13,7 +13,7 @@ unit GLS.GeomObjects;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -3522,7 +3522,7 @@ begin
     FGrid := 2;
   GRD := FGrid;
 
-  rci.GLStates.InvertGLFrontFace;
+  rci.GLStates.InvertFrontFace;
   gl.Enable(GL_AUTO_NORMAL);
   gl.Enable(GL_MAP2_VERTEX_3);
   gl.Enable(GL_MAP2_TEXTURE_COORD_2);
@@ -3567,7 +3567,7 @@ begin
   gl.Disable(GL_AUTO_NORMAL);
   gl.Disable(GL_MAP2_VERTEX_3);
   gl.Disable(GL_MAP2_TEXTURE_COORD_2);
-  rci.GLStates.InvertGLFrontFace;
+  rci.GLStates.InvertFrontFace;
 end;
 
 procedure TGLTeapot.DoRender(var ARci: TGLRenderContextInfo;

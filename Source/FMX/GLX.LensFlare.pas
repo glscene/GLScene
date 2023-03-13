@@ -7,7 +7,7 @@ unit GLX.LensFlare;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -29,7 +29,7 @@ uses
   GLX.RenderContextInfo,
   GLX.State,
   GLX.Utils,
-  GLX.TextureFormat;
+  Scenario.TextureFormat;
 
 type
 

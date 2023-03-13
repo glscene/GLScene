@@ -41,7 +41,7 @@ uses
   GLS.Color,
   GLS.SoundManager,
   Sounds.BASS,
-  Sounds.BASSImport,
+  BASS.Import,
   GLS.FireFX,
   GLS.FileWAV,
   GLS.Utils;

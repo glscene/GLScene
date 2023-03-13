@@ -24,7 +24,7 @@ unit GLX.DCE;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
@@ -36,7 +36,7 @@ uses
   GLX.BaseClasses,
   GLX.Manager,
   GLX.VectorTypes,
-  Scene.Strings,
+  Scenario.Strings,
 
   GLX.Scene,
   GLX.VectorFileObjects,

@@ -25,7 +25,7 @@ unit GLS.zBuffer;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -44,7 +44,7 @@ uses
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.State,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.VectorTypes,
   GLS.Coordinates,
   GLS.PersistentClasses;

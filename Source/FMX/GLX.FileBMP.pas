@@ -7,7 +7,7 @@ unit GLX.FileBMP;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,7 +18,7 @@ uses
 
   GLX.Context,
   GLX.Graphics,
-  GLX.TextureFormat,
+  Scenario.TextureFormat,
   GLX.ApplicationFileIO;
 
 type
@@ -48,9 +48,9 @@ type
     class function Capabilities: TgxDataFileCapabilities; override;
     procedure AssignFromTexture(textureContext: TgxContext;
       const textureHandle: GLuint;
-      textureTarget: TgxTextureTarget;
+      textureTarget: TGLTextureTarget;
       const CurrentFormat: boolean;
-      const intFormat: TgxInternalFormat); reintroduce;
+      const intFormat: TGLInternalFormat); reintroduce;
   end;
 
 //---------------------------------------------------  
@@ -540,8 +540,8 @@ begin
 end;
 
 procedure TgxBMPImage.AssignFromTexture(textureContext: TgxContext;
-  const textureHandle: GLuint; textureTarget: TgxTextureTarget;
-  const CurrentFormat: boolean; const intFormat: TgxInternalFormat);
+  const textureHandle: GLuint; textureTarget: TGLTextureTarget;
+  const CurrentFormat: boolean; const intFormat: TGLInternalFormat);
 begin
   {$Message Hint 'TgxBMPImage.AssignFromTexture not yet implemented' }
 end;

@@ -8,7 +8,7 @@ unit GLS.FireFX;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -31,7 +31,7 @@ uses
   GLS.Manager,
   GLS.RenderContextInfo,
   GLS.State,
-  GLS.TextureFormat;
+  Scenario.TextureFormat;
 
 type
   PGLFireParticle = ^TGLFireParticle;

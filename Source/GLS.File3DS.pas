@@ -7,14 +7,14 @@ unit GLS.File3DS;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Math,
   
-  Scene.Strings,
+  Scenario.Strings,
   GLS.OpenGLTokens,
   GLS.Scene,
   GLS.Objects,

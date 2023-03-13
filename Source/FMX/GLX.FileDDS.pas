@@ -7,7 +7,7 @@ unit GLX.FileDDS;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,12 +18,12 @@ uses
 
   GLX.VectorGeometry,
   GLX.RGBE,
-  Scene.Strings,
+  Scenario.Strings,
   GLX.ApplicationFileIO,
 
   GLX.Context,
   GLX.Graphics,
-  GLX.TextureFormat,
+  Scenario.TextureFormat,
   Formatx.DXTC;
 
 type
@@ -40,8 +40,8 @@ type
     procedure LoadFromStream(stream: TStream); override;
     procedure SaveToStream(stream: TStream); override;
     // Assigns from any Texture.
-    procedure AssignFromTexture(textureContext: TgxContext; const textureHandle: GLuint; textureTarget: TgxTextureTarget;
-      const CurrentFormat: Boolean; const intFormat: TgxInternalFormat); reintroduce;
+    procedure AssignFromTexture(textureContext: TgxContext; const textureHandle: GLuint;
+      textureTarget: TGLTextureTarget; const CurrentFormat: Boolean; const intFormat: TGLInternalFormat); reintroduce;
   end;
 
 var
@@ -320,13 +320,13 @@ begin
 end;
 
 procedure TgxDDSImage.AssignFromTexture(textureContext: TgxContext; const textureHandle: GLuint;
-  textureTarget: TgxTextureTarget; const CurrentFormat: Boolean; const intFormat: TgxInternalFormat);
+  textureTarget: TGLTextureTarget; const CurrentFormat: Boolean; const intFormat: TGLInternalFormat);
 var
   oldContext: TgxContext;
   contextActivate: Boolean;
   texFormat, texLod, optLod: Cardinal;
   level, faceCount, face: integer;
-  residentFormat: TgxInternalFormat;
+  residentFormat: TGLInternalFormat;
   bCompressed: Boolean;
   vtcBuffer, top, bottom: PGLubyte;
   i, j, k: integer;
@@ -386,7 +386,7 @@ begin
         FLOD[0].Depth := 0;
         if (glTarget = GL_TEXTURE_3D) or (glTarget = GL_TEXTURE_2D_ARRAY) or (glTarget = GL_TEXTURE_CUBE_MAP_ARRAY) then
           glGetTexLevelParameteriv(glTarget, 0, GL_TEXTURE_DEPTH, @FLOD[0].Depth);
-        residentFormat := OpenVXFormatToInternalFormat(texFormat);
+        residentFormat := OpenGLFormatToInternalFormat(texFormat);
         if CurrentFormat then
           fInternalFormat := residentFormat
         else

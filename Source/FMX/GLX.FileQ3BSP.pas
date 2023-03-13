@@ -11,7 +11,7 @@ unit GLX.FileQ3BSP;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
@@ -29,7 +29,7 @@ uses
   GLX.State,
   GLX.Utils,
   GLX.Material,
-  GLX.TextureFormat,
+  Scenario.TextureFormat,
 
   Formatx.Q3BSP;
 

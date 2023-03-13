@@ -11,7 +11,7 @@ unit GLSL.LineShaders;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -119,7 +119,7 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLS.TextureFormat;
+  Scenario.TextureFormat;
 
 // ------------------
 // ------------------ TGLLineSettings ------------------

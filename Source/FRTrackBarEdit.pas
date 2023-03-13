@@ -8,7 +8,7 @@ unit FRTrackBarEdit;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes, 

@@ -9,7 +9,7 @@ unit GLS.Mirror;
 *)
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -176,7 +176,7 @@ begin
               clrBlack, clrBlack, 0);
           end
           else
-            SetGLColorWriting(False);
+            SetColorWriting(False);
 
           Enable(stDepthTest);
           DepthWriteMask := False;
@@ -194,7 +194,7 @@ begin
             ClearZBufferArea(CurrentBuffer);
 
           if not (moOpaque in MirrorOptions) then
-            SetGLColorWriting(True);
+            SetColorWriting(True);
         end;
 
         ARci.PipelineTransformation.Push;
@@ -324,7 +324,7 @@ begin
     with aBuffer.RenderingContext.GLStates do
     begin
       DepthFunc := cfAlways;
-      SetGLColorWriting(False);
+      SetColorWriting(False);
     end;
 
     gl.Begin_(GL_QUADS);
@@ -345,7 +345,7 @@ begin
     with aBuffer.RenderingContext.GLStates do
     begin
       DepthFunc := cfLess;
-      SetGLColorWriting(True);
+      SetColorWriting(True);
     end;
 
     gl.MatrixMode(GL_PROJECTION);

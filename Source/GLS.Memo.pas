@@ -1,14 +1,13 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.Memo;
 
 (* Memo for GLScene *)
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   WinApi.Windows,

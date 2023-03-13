@@ -7,7 +7,7 @@ unit GLX.WaterPlane;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,

@@ -19,7 +19,7 @@ uses
   GLS.Context,
   GLS.Graphics,
   GLS.ApplicationFileIO,
-  GLS.TextureFormat;
+  Scenario.TextureFormat;
 
 type
 

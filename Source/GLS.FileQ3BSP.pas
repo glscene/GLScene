@@ -11,7 +11,7 @@ unit GLS.FileQ3BSP;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
@@ -30,7 +30,7 @@ uses
   GLS.State,
   GLS.Utils,
   GLS.Material,
-  GLS.TextureFormat;
+  Scenario.TextureFormat;
 
 type
 

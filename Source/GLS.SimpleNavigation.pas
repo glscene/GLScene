@@ -13,7 +13,7 @@ unit GLS.SimpleNavigation;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Types,
@@ -29,7 +29,7 @@ uses
   GLS.VectorGeometry,
   GLS.Scene,
   GLS.SceneViewer,
-  Scene.Strings;
+  Scenario.Strings;
 
 type
 

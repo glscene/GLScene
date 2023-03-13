@@ -8,7 +8,7 @@ unit GLS.FileLMTS;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
@@ -108,7 +108,7 @@ implementation
 //---------------------------------------------------
 
 uses
-  GLS.TextureFormat;
+  Scenario.TextureFormat;
 
 // ------------------
 // ------------------ TGLLMTSVectorFile ------------------

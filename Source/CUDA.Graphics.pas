@@ -7,7 +7,7 @@ unit CUDA.Graphics;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -23,8 +23,8 @@ uses
   GLS.Scene,
   GLS.Graphics,
   GLS.Material,
-  Scene.Strings,
-  GLS.TextureFormat,
+  Scenario.Strings,
+  Scenario.TextureFormat,
   GLS.Texture,
   GLSL.Shader,
   GLSL.ShaderParameter,

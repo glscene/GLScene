@@ -4,7 +4,7 @@
         <MainSource>GLScene_RT.dpk</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <TargetedPlatforms>3</TargetedPlatforms>
+        <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Package</AppType>
         <FrameworkType>VCL</FrameworkType>
         <ProjectVersion>19.4</ProjectVersion>
@@ -333,7 +333,7 @@
         <DCCReference Include="..\Source\GLS.TexLensFlare.pas"/>
         <DCCReference Include="..\Source\GLS.Texture.pas"/>
         <DCCReference Include="..\Source\GLS.TextureCombiners.pas"/>
-        <DCCReference Include="..\Source\GLS.TextureFormat.pas"/>
+        <DCCReference Include="..\Source\Scenario.TextureFormat.pas"/>
         <DCCReference Include="..\Source\GLS.TextureImageEditors.pas"/>
         <DCCReference Include="..\Source\GLS.TexturedHDS.pas"/>
         <DCCReference Include="..\Source\GLS.ThorFX.pas"/>
@@ -365,13 +365,14 @@
         <DCCReference Include="..\Source\GLS.VectorTypes.pas"/>
         <DCCReference Include="..\Source\GLS.ScriptBase.pas"/>
         <DCCReference Include="..\Source\GLS.Spline.pas"/>
-        <DCCReference Include="..\Source\Scene.Strings.pas"/>
+        <DCCReference Include="..\Source\Scenario.Strings.pas"/>
         <DCCReference Include="..\Source\GLS.XCollection.pas"/>
         <DCCReference Include="..\Source\GLS.XOpenGL.pas"/>
         <DCCReference Include="..\Source\Common\PasGLTF.pas"/>
         <DCCReference Include="..\Source\Common\PasJSON.pas"/>
         <DCCReference Include="..\Source\Common\PasDblStrUtils.pas"/>
         <DCCReference Include="..\Source\VCL\GLS.InitOpenGL.pas"/>
+        <None Include="..\Source\Scenario.inc"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -401,7 +402,7 @@
             </Delphi.Personality>
             <Platforms>
                 <Platform value="Win32">True</Platform>
-                <Platform value="Win64">True</Platform>
+                <Platform value="Win64">False</Platform>
             </Platforms>
             <Deployment Version="3">
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">

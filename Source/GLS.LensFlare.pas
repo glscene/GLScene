@@ -7,7 +7,7 @@ unit GLS.LensFlare;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -29,7 +29,7 @@ uses
   GLS.State,
   GLS.VectorTypes,
   GLS.Utils,
-  GLS.TextureFormat;
+  Scenario.TextureFormat;
 
 type
 

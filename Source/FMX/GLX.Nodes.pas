@@ -21,7 +21,7 @@ uses
   GLX.Coordinates,
   GLX.Spline;
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 type
   TgxNode = class(TCollectionItem)

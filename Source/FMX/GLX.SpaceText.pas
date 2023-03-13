@@ -13,7 +13,7 @@ unit GLX.SpaceText;
 *)
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,7 +25,7 @@ uses
   FMX.Graphics,
 
   GLX.VectorGeometry,
-  Scene.Strings,
+  Scenario.Strings,
   GLX.VectorTypes,
   GLX.Scene,
   GLX.Texture,

@@ -27,7 +27,7 @@ unit GLS.Isosurface;
 *)
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 // uncomment next line to memorize vertex Density value to further use
 // (i.e. mesh color generation)
 {.$Define UseDensity}

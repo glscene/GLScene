@@ -7,7 +7,7 @@ unit GLS.Particles;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,

@@ -12,7 +12,7 @@ unit GLX.ShadowPlane;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -33,7 +33,7 @@ uses
   GLX.Color,
   GLX.RenderContextInfo,
   GLX.State,
-  GLX.TextureFormat;
+  Scenario.TextureFormat;
 
 type
 

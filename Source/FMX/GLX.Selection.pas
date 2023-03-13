@@ -5,7 +5,7 @@ unit GLX.Selection;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -118,7 +118,7 @@ begin
     Result := TgxSelectRenderModeTechnique;
 end;
 
-{$IFDEF VXS_REGIONS}{$REGION 'TgxPickList'}{$ENDIF}
+{$IFDEF USE_REGIONS}{$REGION 'TgxPickList'}{$ENDIF}
 // ------------------
 // ------------------ TgxPickList ------------------
 // ------------------
@@ -247,9 +247,9 @@ function TgxPickList.GetSubObjects(aValue: Integer): TPickSubobjects;
 begin
   Result := TPickRecord(Items[AValue]).SubObjects;
 end;
-{$IFDEF VXS_REGIONS}{$ENDREGION}{$ENDIF}
+{$IFDEF USE_REGIONS}{$ENDREGION}{$ENDIF}
 
-{$IFDEF VXS_REGIONS}{$REGION 'TgxSelectRenderModeTechnique'}{$ENDIF}
+{$IFDEF USE_REGIONS}{$REGION 'TgxSelectRenderModeTechnique'}{$ENDIF}
 // ------------------
 // ------------------ TgxSelectRenderModeTechnique ------------------
 // ------------------
@@ -351,6 +351,6 @@ begin
   Inc(FCurrentName);
 end;
 
-{$IFDEF VXS_REGIONS}{$ENDREGION}{$ENDIF}
+{$IFDEF USE_REGIONS}{$ENDREGION}{$ENDIF}
 
 end.

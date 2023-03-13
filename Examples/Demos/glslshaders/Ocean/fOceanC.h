@@ -20,7 +20,7 @@
 #include "GLS.SkyDome.hpp"
 #include "GLSL.UserShader.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLS.TextureFormat.hpp"
+#include "Scenario.TextureFormat.hpp"
 #include "GLS.Color.hpp"
 #include "GLS.OpenGLTokens.hpp"
 #include "GLS.OpenGLAdapter.hpp"

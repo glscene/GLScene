@@ -14,7 +14,7 @@ uses
   GLS.VectorFileObjects, 
   GLS.ApplicationFileIO, 
   GLS.Texture, 
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.Material, 
   GLS.VectorTypes, 
   GLS.VectorGeometry, 

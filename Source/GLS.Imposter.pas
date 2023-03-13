@@ -7,7 +7,7 @@ unit GLS.Imposter;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -30,7 +30,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.State,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.Utils;
 
 type

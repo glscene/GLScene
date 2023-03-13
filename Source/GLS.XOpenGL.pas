@@ -14,7 +14,7 @@ unit GLS.XOpenGL;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGLext,

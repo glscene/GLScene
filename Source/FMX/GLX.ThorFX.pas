@@ -7,7 +7,7 @@ unit GLX.ThorFX;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -30,7 +30,7 @@ uses
   GLX.RenderContextInfo,
   GLX.Manager,
   GLX.State,
-  GLX.TextureFormat;
+  Scenario.TextureFormat;
 
 type
   PThorpoint = ^TThorpoint;

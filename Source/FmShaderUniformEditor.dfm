@@ -11,10 +11,8 @@ object GLShaderUniformEditor: TGLShaderUniformEditor
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnDestroy = FormDestroy
-  PixelsPerInch = 96
   TextHeight = 13
   object Labe1: TLabel
     Left = 8

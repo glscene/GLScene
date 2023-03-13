@@ -8,7 +8,7 @@ unit Formatx.HDRImage;
 *)
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -35,7 +35,7 @@ implementation
 
 uses
   GLX.FileHDR,
-  GLX.TextureFormat;
+  Scenario.TextureFormat;
 
 // ------------------
 // ------------------ THDRImage ------------------

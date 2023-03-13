@@ -29,7 +29,6 @@
 
 #pragma link "GLS.ArchiveManager"
 #pragma link "GLS.FileZLIB"
-#pragma link "GLS.TextureFormat"
 
 #pragma link "GLS.Scene"
 #pragma link "GLS.SimpleNavigation"

@@ -8,7 +8,7 @@ unit GLS.Blur;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -31,7 +31,7 @@ uses
   GLS.Context,
   GLS.XOpenGL,
   GLS.State,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.RenderContextInfo;
 
 type
@@ -167,7 +167,7 @@ implementation
 uses
   GLS.Coordinates,
   GLS.PersistentClasses,
-  Scene.Strings,
+  Scenario.Strings,
   GLS.OpenGLAdapter;
 
 const

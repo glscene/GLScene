@@ -18,11 +18,11 @@ uses
   GLX.VectorGeometry,
   GLX.RGBE,
   GLX.ApplicationFileIO,
-  Scene.Strings,
+  Scenario.Strings,
 
   GLX.Context,
   GLX.Graphics,
-  GLX.TextureFormat;
+  Scenario.TextureFormat;
 
 type
 
@@ -43,9 +43,9 @@ type
     procedure LoadFromStream(stream: TStream); override;
     procedure AssignFromTexture(textureContext: TgxContext;
       const textureHandle: GLuint;
-      textureTarget: TgxTextureTarget;
+      textureTarget: TGLTextureTarget;
       const CurrentFormat: Boolean;
-      const intFormat: TgxInternalFormat); reintroduce;
+      const intFormat: TGLInternalFormat); reintroduce;
     property Gamma: Single read fGamma;
     property Exposure: Single read fExposure;
     property ProgramType: Ansistring read GetProgramType write SetProgramType;
@@ -229,12 +229,12 @@ begin
 end;
 
 procedure TgxHDRImage.AssignFromTexture(textureContext: TgxContext; const textureHandle: GLuint;
-  textureTarget: TgxTextureTarget; const CurrentFormat: Boolean; const intFormat: TgxInternalFormat);
+  textureTarget: TGLTextureTarget; const CurrentFormat: Boolean; const intFormat: TGLInternalFormat);
 var
   oldContext: TgxContext;
   contextActivate: Boolean;
   texFormat: Cardinal;
-  residentFormat: TgxInternalFormat;
+  residentFormat: TGLInternalFormat;
   glTarget: GLEnum;
 begin
   glTarget := DecodeTextureTarget(textureTarget);
@@ -264,7 +264,7 @@ begin
       glGetTexLevelParameteriv(glTarget, 0, GL_TEXTURE_WIDTH, @FLOD[0].Width);
       glGetTexLevelParameteriv(glTarget, 0, GL_TEXTURE_HEIGHT, @FLOD[0].Height);
       FLOD[0].Depth := 0;
-      residentFormat := OpenVXFormatToInternalFormat(texFormat);
+      residentFormat := OpenGLFormatToInternalFormat(texFormat);
       if CurrentFormat then
         fInternalFormat := residentFormat
       else
@@ -300,7 +300,6 @@ end;
 initialization
 //-------------------------------------------------------------------
 
-  { Register this Fileformat-Handler }
   RegisterRasterFormat('hdr', 'High Dynamic Range Image', TgxHDRImage);
 
 end.

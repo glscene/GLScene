@@ -9,7 +9,7 @@ unit GLX.GLSLErosionShader;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
@@ -26,7 +26,7 @@ uses
   GLX.Coordinates, 
   GLX.VectorGeometry, 
   GLX.VectorTypes,
-  GLX.TextureFormat, 
+  Scenario.TextureFormat, 
   GLX.Color, 
   GLX.Texture, 
   GLX.Material,

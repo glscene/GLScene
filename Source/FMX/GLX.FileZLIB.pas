@@ -4,7 +4,7 @@
 
 unit GLX.FileZLIB;
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 interface
 

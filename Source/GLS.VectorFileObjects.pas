@@ -7,7 +7,7 @@ unit GLS.VectorFileObjects;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -26,7 +26,7 @@ uses
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.Silhouette,
-  Scene.Strings,
+  Scenario.Strings,
   GLS.Texture,
   GLS.Material,
   GLS.Mesh,
@@ -41,7 +41,7 @@ uses
   GLS.RenderContextInfo,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.TextureFormat;
+  Scenario.TextureFormat;
 
 type
   TGLMeshObjectList = class;
@@ -6355,7 +6355,7 @@ begin
     // set winding
     case FNormalsOrientation of
       mnoDefault:  ; // nothing
-      mnoInvert:  rci.GLStates.InvertGLFrontFace;
+      mnoInvert:  rci.GLStates.InvertFrontFace;
     else
       Assert(False);
     end;
@@ -6393,7 +6393,7 @@ begin
         rci.GLStates.CallList(GetHandle(rci));
     end;
     if FNormalsOrientation <> mnoDefault then
-      rci.GLStates.InvertGLFrontFace;
+      rci.GLStates.InvertFrontFace;
   end;
   if Assigned(LightmapLibrary) then
     xgl.AllowSecondTextureUnit;

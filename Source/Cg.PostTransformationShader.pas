@@ -9,7 +9,7 @@ unit Cg.PostTransformationShader;
 *)
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
@@ -20,7 +20,7 @@ uses
   GLS.Context, 
   GLS.Scene, 
   GLS.RenderContextInfo,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
 
   Cg.Import,
   Cg.GL,

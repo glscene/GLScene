@@ -27,23 +27,23 @@ __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {}
 
 void __fastcall TForm1::FormCreate(TObject* Sender)
 {
-	Path = ExtractFilePath(ParamStr(0)) + "\\Panorama";
-	//or GetCurrentAssetPath() + "\\Panorama";
-	OpenPictureDialog1->InitialDir = Path ;
-	OpenPictureDialog1->FileName = "sejourstmathieu2048.jpg";
+  Path = GetCurrentAssetPath(); // or Path = ExtractFilePath(ParamStr(0));
+  SetCurrentDir(Path + "\\panorana"); // GetDir(0, Path);
+  OpenPictureDialog1->InitialDir = Path + "\\panorama";
+  OpenPictureDialog1->FileName = "sejourstmathieu2048.jpg";
 }
 
 void __fastcall TForm1::BtnLoadClick(TObject* Sender)
 {
 	if (OpenPictureDialog1->Execute())
 		GLMaterialLibrary1->Materials->Items[0]
-            ->Material->Texture->Image->LoadFromFile(
-                OpenPictureDialog1->FileName);
+			->Material->Texture->Image->LoadFromFile(
+				OpenPictureDialog1->FileName);
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::TrackBar1Change(TObject* Sender)
 {
-    GLCamera1->FocalLength = TrackBar1->Position;
+	GLCamera1->FocalLength = TrackBar1->Position;
 }
 
 //---------------------------------------------------------------------------

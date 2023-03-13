@@ -7,7 +7,7 @@ unit GLX.BitmapFont;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -31,7 +31,7 @@ uses
   GLX.Color,
   GLX.BaseClasses,
   GLX.RenderContextInfo,
-  GLX.TextureFormat,
+  Scenario.TextureFormat,
   GLX.VectorTypes;
 
 type

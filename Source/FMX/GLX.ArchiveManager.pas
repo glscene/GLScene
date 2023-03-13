@@ -3,7 +3,7 @@
 //
 unit GLX.ArchiveManager;
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 interface
 
@@ -11,7 +11,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  Scene.Strings,
+  Scenario.Strings,
   GLX.PersistentClasses,
   GLX.ApplicationFileIO;
 

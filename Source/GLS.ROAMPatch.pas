@@ -7,7 +7,7 @@ unit GLS.ROAMPatch;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -22,7 +22,7 @@ uses
   GLS.Context,
   GLS.VectorTypes,
   GLS.Isolines,
-  Scene.Strings;
+  Scenario.Strings;
 
 type
 

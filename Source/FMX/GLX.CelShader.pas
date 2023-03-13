@@ -11,7 +11,7 @@ unit GLX.CelShader;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -30,7 +30,7 @@ uses
   GLX.RenderContextInfo,
   GLX.Material,
   GLX.State,
-  GLX.TextureFormat;
+  Scenario.TextureFormat;
 
 type
   { Cel shading options.

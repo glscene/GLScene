@@ -8,7 +8,7 @@ unit GLS.File3DSSceneObjects;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -255,9 +255,9 @@ procedure TGLFile3DSCamera.DoRender(var rci: TGLRenderContextInfo; renderSelf, r
     //    glTranslatef(0, 0, 0.5);
     //    gluDisk(FQuadDisk[0], 0, 1, 6, 1);
     gl.Translatef(0, 0, -0.5);
-    rci.GLStates.InvertGLFrontFace;
+    rci.GLStates.InvertFrontFace;
     //    gluDisk(FQuadDisk[0], 0, 1, 6, 1);
-    rci.GLStates.InvertGLFrontFace;
+    rci.GLStates.InvertFrontFace;
   end;
 
   procedure BuildFace;

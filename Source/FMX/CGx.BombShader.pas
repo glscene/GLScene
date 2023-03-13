@@ -7,7 +7,7 @@ unit CGx.BombShader;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
@@ -16,10 +16,10 @@ uses
   GLX.Texture,
   GLX.Cadencer,
   GLX.Context,
-  Scene.Strings,
+  Scenario.Strings,
   GLX.Material,
   GLX.RenderContextInfo,
-  GLX.TextureFormat,
+  Scenario.TextureFormat,
   GLX.State,
 
   CG.GL,

@@ -10,7 +10,7 @@ unit GLX.GizmoEx;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -27,7 +27,7 @@ uses
   GLX.VectorTypes,
   GLX.VectorGeometry,
   GLX.PersistentClasses,
-  Scene.Strings,
+  Scenario.Strings,
   GLX.Scene,
   GLX.Color,
   GLX.Material,

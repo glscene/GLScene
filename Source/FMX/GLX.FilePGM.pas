@@ -4,7 +4,7 @@
 
 unit GLX.FilePGM;
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 interface
 
@@ -12,7 +12,7 @@ uses
   System.Classes, System.SysUtils,
   Winapi.OpenGL, Winapi.OpenGLext,
 
-  GLX.Context, GLX.Graphics, GLX.TextureFormat,
+  GLX.Context, GLX.Graphics, Scenario.TextureFormat,
   GLX.ApplicationFileIO;
 
 type
@@ -27,8 +27,8 @@ type
     procedure SaveToStream(stream: TStream); override;
 
     procedure AssignFromTexture(textureContext: TgxContext;
-      const textureHandle: GLEnum; textureTarget: TgxTextureTarget;
-      const CurrentFormat: Boolean; const intFormat: TgxInternalFormat);
+      const textureHandle: GLEnum; textureTarget: TGLTextureTarget;
+      const CurrentFormat: Boolean; const intFormat: TGLInternalFormat);
       reintroduce;
   end;
 
@@ -109,13 +109,13 @@ end;
 // AssignFromTexture
 //
 procedure TgxPGMImage.AssignFromTexture(textureContext: TgxContext;
-  const textureHandle: GLEnum; textureTarget: TgxTextureTarget;
-  const CurrentFormat: Boolean; const intFormat: TgxInternalFormat);
+  const textureHandle: GLEnum; textureTarget: TGLTextureTarget;
+  const CurrentFormat: Boolean; const intFormat: TGLInternalFormat);
 var
   oldContext: TgxContext;
   contextActivate: Boolean;
   texFormat: Cardinal;
-  residentFormat: TgxInternalFormat;
+  residentFormat: TGLInternalFormat;
   glTarget: GLEnum;
 begin
   if not((textureTarget = ttTexture2D) or (textureTarget = ttTextureRect)) then

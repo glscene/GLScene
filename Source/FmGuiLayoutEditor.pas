@@ -5,7 +5,7 @@ unit FmGuiLayoutEditor;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.Windows,
@@ -26,7 +26,7 @@ uses
   
   GLS.BaseClasses,
   GLS.Gui,
-  Scene.Strings;
+  Scenario.Strings;
 
 type
   TGLLayoutEditorForm = class(TForm)

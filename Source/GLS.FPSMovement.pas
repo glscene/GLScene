@@ -7,7 +7,7 @@ unit GLS.FPSMovement;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,

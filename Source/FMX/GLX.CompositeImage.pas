@@ -16,7 +16,7 @@ uses
 
   GLX.Graphics,
   GLX.Texture,
-  GLX.TextureFormat,
+  Scenario.TextureFormat,
   GLX.Context;
 
 type
@@ -32,7 +32,7 @@ type
     function GetWidth: Integer; override;
     function GetHeight: Integer; override;
     function GetDepth: Integer; override;
-    function GetTextureTarget: TgxTextureTarget; override;
+    function GetTextureTarget: TGLTextureTarget; override;
   public
     constructor Create(AOwner: TPersistent); override;
     destructor Destroy; override;
@@ -260,7 +260,7 @@ begin
   Result := 'Image contained any internal formats of OpenGL textures';
 end;
 
-function TgxCompositeImage.GetTextureTarget: TgxTextureTarget;
+function TgxCompositeImage.GetTextureTarget: TGLTextureTarget;
 begin
   if Assigned(fBitmap) then
     Result := fBitmap.GetTextureTarget

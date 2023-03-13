@@ -20,7 +20,7 @@ unit GLSLx.ProjectedTextures;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
@@ -33,7 +33,7 @@ uses
   GLX.Context,
   GLX.Color,
   GLX.RenderContextInfo,
-  GLX.TextureFormat,
+  Scenario.TextureFormat,
   GLX.PipelineTransformation,
   GLX.VectorTypes;
 

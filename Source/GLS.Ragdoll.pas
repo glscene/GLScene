@@ -7,7 +7,7 @@ unit GLS.Ragdoll;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   GLS.Scene,

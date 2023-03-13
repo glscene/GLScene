@@ -15,7 +15,7 @@ uses
   CUDA.Import,
   CUDA.RunTime,
 
-  Scene.Strings,
+  Scenario.Strings,
   GLX.Generics,
   GLX.BaseClasses,
   GLX.Context;

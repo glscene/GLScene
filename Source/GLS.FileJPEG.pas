@@ -8,7 +8,7 @@ unit GLS.FileJPEG;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -21,7 +21,7 @@ uses
   GLS.OpenGLTokens,
   GLS.Context,
   GLS.Graphics,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.ApplicationFileIO,
   GLS.VectorGeometry;
 

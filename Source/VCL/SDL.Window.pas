@@ -14,7 +14,7 @@ unit SDL.Window;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,

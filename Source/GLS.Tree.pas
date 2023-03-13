@@ -21,7 +21,7 @@ unit GLS.Tree;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -338,14 +338,14 @@ begin
         libMat.Apply(rci);
     end;
 
-  rci.GLStates.InvertGLFrontFace;
+  rci.GLStates.InvertFrontFace;
   for i := 0 to (FVertices.Count div 4) - 1 do
   begin
     n := VectorNegate(FNormals[i]);
     gl.Normal3fv(@n);
     gl.DrawArrays(GL_QUADS, 4 * i, 4);
   end;
-  rci.GLStates.InvertGLFrontFace;
+  rci.GLStates.InvertFrontFace;
 
   gl.DisableClientState(GL_VERTEX_ARRAY);
   xgl.DisableClientState(GL_TEXTURE_COORD_ARRAY);

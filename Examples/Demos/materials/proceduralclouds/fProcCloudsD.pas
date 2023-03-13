@@ -24,7 +24,7 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.ProcTextures,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.Coordinates,
   GLS.BaseClasses;
 

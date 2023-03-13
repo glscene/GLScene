@@ -7,7 +7,7 @@ unit GLS.ProjectedTextures;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -137,7 +137,7 @@ begin
   // Set the projector's "perspective" (i.e. the "spotlight cone"):.
   PM := MatrixMultiply(CreatePerspectiveMatrix(FFOVy, FAspect, 0.1, 1), cBaseMat);
   PM := MatrixMultiply(invAbsoluteMatrix, PM);
-  Arci.GLStates.SetGLTextureMatrix(PM);
+  Arci.GLStates.SetTextureMatrix(PM);
 end;
 
 // ------------------

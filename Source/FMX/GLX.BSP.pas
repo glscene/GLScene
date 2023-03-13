@@ -10,7 +10,7 @@ unit GLX.BSP;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.SysUtils,

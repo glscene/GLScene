@@ -12,7 +12,7 @@ unit GLX.Movement;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -26,7 +26,7 @@ uses
   GLX.VectorTypes,
   GLX.VectorGeometry,
   GLX.Spline,
-  Scene.Strings,
+  Scenario.Strings,
 
   GLX.Scene,
   GLX.Objects,

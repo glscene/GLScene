@@ -22,7 +22,7 @@ unit GLSL.DiffuseSpecularShader;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
@@ -33,7 +33,7 @@ uses
   GLS.Scene,
   GLS.PersistentClasses,
   GLS.VectorGeometry,
-  Scene.Strings,
+  Scenario.Strings,
   GLSL.Shader,
   GLSL.CustomShader,
   GLS.Color,

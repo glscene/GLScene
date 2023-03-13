@@ -7,7 +7,7 @@ unit FmShaderUniformEditor;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.SysUtils,
@@ -20,9 +20,9 @@ uses
   VCL.StdCtrls,
   VCL.ExtCtrls,
   VCL.Buttons,
-  Scene.Strings,
+  Scenario.Strings,
   GLSL.ShaderParameter,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.VectorGeometry;
 
 type
@@ -156,7 +156,7 @@ end;
 
 procedure TGLShaderUniformEditor.LBUniformsClick(Sender: TObject);
 var
-  SV: TSwizzleVector;
+  SV: TglSwizzleVector;
   IParam: IShaderParameter;
 begin
   if LBUniforms.ItemIndex >= 0 then
@@ -221,7 +221,7 @@ end;
 
 procedure TGLShaderUniformEditor.ColorGroupClick(Sender: TObject);
 var
-  SV: TSwizzleVector;
+  SV: TglSwizzleVector;
 begin
   if LBUniforms.ItemIndex >= 0 then
   begin

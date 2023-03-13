@@ -7,12 +7,12 @@ unit GLS.Scene;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
+  Winapi.Windows,
   Winapi.OpenGL,
   Winapi.OpenGLext,
-  Winapi.Windows,
   System.Classes,
   System.SysUtils,
   System.UITypes,
@@ -23,7 +23,7 @@ uses
   GLS.OpenGLTokens,
   GLS.XOpenGL,
   GLS.XCollection,
-  Scene.Strings,
+  Scenario.Strings,
   GLS.Context,
   GLS.VectorGeometry,
   GLS.Silhouette,
@@ -39,7 +39,7 @@ uses
   GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.Material,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.Selection,
   GLS.VectorTypes,
   GLS.ApplicationFileIO,
@@ -56,7 +56,7 @@ type
 const
   cDefaultProxyOptions = [pooEffects, pooObjects, pooTransformation];
   GLSCENE_REVISION = '$Revision: 2023$';
-  GLSCENE_VERSION = 'v2.2 %s';
+  GLSCENE_VERSION = 'v2.3 %s';
 
 type
 
@@ -128,8 +128,7 @@ type
   // Interface to objects that need initialization
   IGLInitializable = interface
     ['{EA40AE8E-79B3-42F5-ADF1-7A901B665E12}']
-    procedure InitializeObject(ASender: TObject; const ARci:
-      TGLRenderContextInfo);
+    procedure InitializeObject(ASender: TObject; const ARci: TGLRenderContextInfo);
   end;
 
   // Just a list of objects that support IGLInitializable.
@@ -139,8 +138,7 @@ type
     procedure PutItems(const Index: Integer; const Value: IGLInitializable);
   public
     function Add(const Item: IGLInitializable): Integer;
-    property Items[const Index: Integer]: IGLInitializable read GetItems write
-    PutItems; default;
+    property Items[const Index: Integer]: IGLInitializable read GetItems write PutItems; default;
   end;
 
   (* Base class for all scene objects.
@@ -763,8 +761,7 @@ type
   end;
 
   // Event for user-specific rendering in a TGLDirectOpenGL object.
-  TGLDirectRenderEvent = procedure(Sender: TObject; var rci: TGLRenderContextInfo)
-    of object;
+  TGLDirectRenderEvent = procedure(Sender: TObject; var rci: TGLRenderContextInfo) of object;
 
   (* Provides a way to issue direct OpenGL calls during the rendering.
      You can use this object to do your specific rendering task in its OnRender
@@ -786,7 +783,7 @@ type
     function AxisAlignedDimensionsUnscaled: TGLVector; override;
   published
     (* Specifies if a build list be made.
-       If True, GLScene will generate a build list (OpenGL-side cache),
+       If True, GLScene will generate a build list (side cache),
        ie. OnRender will only be invoked once for the first render, or after
        a StructureChanged call. This is suitable for "static" geometry and
        will usually speed up rendering of things that don't change.
@@ -6423,7 +6420,7 @@ begin
       gl.GetIntegerv(GL_BLUE_BITS, @LColorDepth); // could've used red or green too
       SetState(context, (LColorDepth < 8), stDither);
     end;
-    ResetAllGLTextureMatrix;
+    ResetAllTextureMatrix;
   end;
 end;
 
@@ -6721,8 +6718,7 @@ begin
           Top := 0;
           Width := ABitmap.Width;
           Height := ABitmap.Height;
-          FRenderingContext.GLStates.ViewPort :=
-            Vector4iMake(Left, Top, Width, Height);
+          FRenderingContext.GLStates.ViewPort := Vector4iMake(Left, Top, Width, Height);
         end;
         ClearBuffers;
         FRenderDPI := DPI;
@@ -7431,7 +7427,7 @@ begin
   rci.ignoreMaterials := (roNoColorBuffer in FContextOptions)
     or (rci.drawState = dsPicking);
   rci.amalgamating := rci.drawState = dsPicking;
-  rci.GLStates.SetGLColorWriting(not rci.ignoreMaterials);
+  rci.GLStates.SetColorWriting(not rci.ignoreMaterials);
   if Assigned(FInitiateRendering) then
     FInitiateRendering(Self, rci);
 
@@ -7454,7 +7450,7 @@ begin
   end
   else
     baseObject.Render(rci);
-  rci.GLStates.SetGLColorWriting(True);
+  rci.GLStates.SetColorWriting(True);
   with FAfterRenderEffects do
     if Count > 0 then
       for i := 0 to Count - 1 do
@@ -7743,8 +7739,7 @@ begin
       // For MRT
       gl.ReadBuffer(MRT_BUFFERS[BufferIndex]);
 
-      Buffer.RenderingContext.GLStates.TextureBinding[0,
-        EncodeGLTextureTarget(target)] := handle;
+      Buffer.RenderingContext.GLStates.TextureBinding[0, EncodeGLTextureTarget(target)] := handle;
 
       if target = GL_TEXTURE_CUBE_MAP_ARB then
         target := GL_TEXTURE_CUBE_MAP_POSITIVE_X_ARB + FCubeMapRotIdx;
@@ -7958,7 +7953,7 @@ const
   MaxAxuBufCount = 4; // Current hardware limit = 4
 begin
   if FBufferCount = Value then
-    exit;
+    Exit;
   FBufferCount := Value;
 
   if FBufferCount < 1 then

@@ -3,7 +3,7 @@
 //
 unit Pythonx.Script;
 (*
-  Python implementation for the GLScene scripting layer.
+  Python implementation for the GLArena scripting layer.
   This unit is experimental.
 *)
 interface
@@ -20,7 +20,7 @@ uses
 
 type
   (* This class only adds manager registration logic to the TPythonEngine
-    class to enable the XCollection items (ie. TGLScriptPython) retain it's
+    class to enable the XCollection items (ie. TgxScriptPython) retain it's
     assigned compiler from design to run -time. *)
   TgxPythonEngine = class(TPythonEngine)
   public
@@ -39,9 +39,8 @@ type
     procedure ReadFromFiler(reader: TReader); override;
     procedure WriteToFiler(writer: TWriter); override;
     procedure Loaded; override;
-    procedure Notification(AComponent: TComponent;
-      Operation: TOperation); override;
-    function GetState: TGLScriptState; override;
+    procedure Notification(AComponent: TComponent; Operation: TOperation); override;
+    function GetState: TgxScriptState; override;
   public
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
@@ -101,7 +100,7 @@ begin
   end;
 end;
 
-procedure TGLScriptPython.ReadFromFiler(reader: TReader);
+procedure TgxScriptPython.ReadFromFiler(reader: TReader);
 var
   archiveVersion: Integer;
 begin
@@ -115,7 +114,7 @@ begin
   end;
 end;
 
-procedure TGLScriptPython.WriteToFiler(writer: TWriter);
+procedure TgxScriptPython.WriteToFiler(writer: TWriter);
 begin
   inherited;
   writer.WriteInteger(0); // archiveVersion
@@ -129,7 +128,7 @@ begin
   end;
 end;
 
-procedure TGLScriptPython.Loaded;
+procedure TgxScriptPython.Loaded;
 var
   temp: TComponent;
 begin
@@ -143,29 +142,29 @@ begin
   end;
 end;
 
-procedure TGLScriptPython.Notification(AComponent: TComponent;
+procedure TgxScriptPython.Notification(AComponent: TComponent;
   Operation: TOperation);
 begin
   if (AComponent = Engine) and (Operation = opRemove) then
     Engine := nil;
 end;
 
-class function TGLScriptPython.FriendlyName: String;
+class function TgxScriptPython.FriendlyName: String;
 begin
-  Result := 'TGLScriptPython';
+  Result := 'TgxScriptPython';
 end;
 
-class function TGLScriptPython.FriendlyDescription: String;
+class function TgxScriptPython.FriendlyDescription: String;
 begin
   Result := 'Python script';
 end;
 
-class function TGLScriptPython.ItemCategory: String;
+class function TgxScriptPython.ItemCategory: String;
 begin
   Result := '';
 end;
 
-procedure TGLScriptPython.Compile;
+procedure TgxScriptPython.Compile;
 begin
   Invalidate;
   if Assigned(Engine) then
@@ -178,29 +177,29 @@ begin
     raise Exception.Create('No engine assigned!');
 end;
 
-procedure TGLScriptPython.Execute;
+procedure TgxScriptPython.Execute;
 begin
   Compile;
 end;
 
-procedure TGLScriptPython.Invalidate;
+procedure TgxScriptPython.Invalidate;
 begin
   FStarted := False;
   FCompiled := False;
 end;
 
-procedure TGLScriptPython.Start;
+procedure TgxScriptPython.Start;
 begin
   Compile;
   FStarted := True;
 end;
 
-procedure TGLScriptPython.Stop;
+procedure TgxScriptPython.Stop;
 begin
   FStarted := False;
 end;
 
-function TGLScriptPython.Call(aName: String; aParams: array of Variant)
+function TgxScriptPython.Call(aName: String; aParams: array of Variant)
   : Variant;
 var
   func: PPyObject;
@@ -228,7 +227,7 @@ begin
   end;
 end;
 
-procedure TGLScriptPython.SetEngine(const Value: TGLPythonEngine);
+procedure TgxScriptPython.SetEngine(const Value: TgxPythonEngine);
 begin
   if Value <> FEngine then
   begin
@@ -237,7 +236,7 @@ begin
   end;
 end;
 
-function TGLScriptPython.GetState: TGLScriptState;
+function TgxScriptPython.GetState: TgxScriptState;
 begin
   Result := ssUncompiled;
   if Assigned(Engine) and FCompiled and FStarted then
@@ -246,22 +245,20 @@ end;
 
 procedure Register;
 begin
-  RegisterClasses([TGLPythonEngine, TGLScriptPython]);
-  RegisterComponents('GLScene Python', [TGLPythonEngine]);
+  RegisterClasses([TgxPythonEngine, TgxScriptPython]);
+  RegisterComponents('GLArena Python', [TgxPythonEngine]);
 end;
 
 // --------------------------------------------------
 initialization
-
 // --------------------------------------------------
 
-RegisterXCollectionItemClass(TGLScriptPython);
+RegisterXCollectionItemClass(TgxScriptPython);
 
 // --------------------------------------------------
 finalization
-
 // --------------------------------------------------
 
-UnregisterXCollectionItemClass(TGLScriptPython);
+UnregisterXCollectionItemClass(TgxScriptPython);
 
 end.

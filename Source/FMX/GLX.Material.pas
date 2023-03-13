@@ -7,7 +7,7 @@ unit GLX.Material;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -21,7 +21,7 @@ uses
   GLX.VectorTypes,
   GLX.VectorGeometry,
   GLX.PersistentClasses,
-  Scene.Strings,
+  Scenario.Strings,
   GLX.ApplicationFileIO,
 
   GLX.RenderContextInfo,
@@ -31,7 +31,7 @@ uses
   GLX.Color,
   GLX.Coordinates,
   GLX.State,
-  GLX.TextureFormat,
+  Scenario.TextureFormat,
   GLX.Graphics,
   GLX.Utils;
 
@@ -2537,10 +2537,10 @@ begin
               with libMat.Material.Texture do
               begin
                 Read(BorderColor.AsAddress^, SizeOf(Single) * 4);
-                Compression := TgxTextureCompression(ReadInteger);
+                Compression := TGLTextureCompression(ReadInteger);
                 DepthTextureMode := TgxDepthTextureMode(ReadInteger);
                 Read(EnvColor.AsAddress^, SizeOf(Single) * 4);
-                FilteringQuality := TgxTextureFilteringQuality(ReadInteger);
+                FilteringQuality := TGLTextureFilteringQuality(ReadInteger);
                 ImageAlpha := TgxTextureImageAlpha(ReadInteger);
                 ImageBrightness := ReadFloat;
                 ImageGamma := ReadFloat;
@@ -2553,13 +2553,13 @@ begin
                 MinFilter := TgxMinFilter(ReadInteger);
                 NormalMapScale := ReadFloat;
                 TextureCompareFunc := TgxDepthCompareFunc(ReadInteger);
-                TextureCompareMode := TgxTextureCompareMode(ReadInteger);
-                TextureFormat := TgxTextureFormat(ReadInteger);
+                TextureCompareMode := TGLTextureCompareMode(ReadInteger);
+                TextureFormat := TGLTextureFormat(ReadInteger);
                 TextureMode := TgxTextureMode(ReadInteger);
                 TextureWrap := TgxTextureWrap(ReadInteger);
-                TextureWrapR := TgxSeparateTextureWrap(ReadInteger);
-                TextureWrapS := TgxSeparateTextureWrap(ReadInteger);
-                TextureWrapT := TgxSeparateTextureWrap(ReadInteger);
+                TextureWrapR := TGLSeparateTextureWrap(ReadInteger);
+                TextureWrapS := TGLSeparateTextureWrap(ReadInteger);
+                TextureWrapT := TGLSeparateTextureWrap(ReadInteger);
               end;
             // version 3 end
 

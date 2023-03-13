@@ -4,11 +4,11 @@
         <MainSource>MirrorD.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <TargetedPlatforms>3</TargetedPlatforms>
+        <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
         <FrameworkType>VCL</FrameworkType>
         <ProjectVersion>19.4</ProjectVersion>
-        <Platform Condition="'$(Platform)'==''">Win64</Platform>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -99,7 +99,7 @@
         <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <BT_BuildType>Debug</BT_BuildType>
+        <BT_BuildType>AppStore</BT_BuildType>
         <DCC_DcuOutput>$(Platform)\$(Config)</DCC_DcuOutput>
         <DCC_ExeOutput>$(Platform)\$(Config)</DCC_ExeOutput>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
@@ -161,7 +161,7 @@
             </Delphi.Personality>
             <Platforms>
                 <Platform value="Win32">True</Platform>
-                <Platform value="Win64">True</Platform>
+                <Platform value="Win64">False</Platform>
             </Platforms>
             <Deployment Version="3">
                 <DeployFile LocalName="Win64\Debug\MirrorD.exe" Configuration="Debug" Class="ProjectOutput">

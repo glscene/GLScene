@@ -1,0 +1,47 @@
+package GLArena_Scripts_RT;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'GLArena Scripts'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  fmx,
+  GLArena_RT,
+  dws_Runtime;
+
+contains
+  Pythonx.Script in '..\Source\FMX\Pythonx.Script.pas',
+  DWSx.Classes in '..\Source\FMX\DWSx.Classes.pas',
+  DWSx.HelperFunc in '..\Source\FMX\DWSx.HelperFunc.pas',
+  DWSx.Objects in '..\Source\FMX\DWSx.Objects.pas',
+  DWSx.OpenGL in '..\Source\FMX\DWSx.OpenGL.pas',
+  DWSx.Script in '..\Source\FMX\DWSx.Script.pas',
+  DWSx.VectorGeometry in '..\Source\FMX\DWSx.VectorGeometry.pas';
+
+end.

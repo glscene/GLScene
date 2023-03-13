@@ -7,7 +7,7 @@ unit GLS.ThorFX;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -31,7 +31,7 @@ uses
   GLS.PipelineTransformation,
   GLS.Manager,
   GLS.State,
-  GLS.TextureFormat;
+  Scenario.TextureFormat;
 
 type
   PThorpoint = ^TThorpoint;

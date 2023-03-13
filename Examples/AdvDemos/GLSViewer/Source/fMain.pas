@@ -46,7 +46,7 @@ uses
   GLS.BaseClasses,
   GLS.State,
   GLS.RenderContextInfo,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.Color,
   GLS.Keyboard,
   GLS.Graphics,

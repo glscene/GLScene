@@ -7,7 +7,7 @@ unit GLX.FBO;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,7 +25,7 @@ uses
   GLX.RenderContextInfo,
   GLX.MultisampleImage,
   GLX.Graphics,
-  GLX.TextureFormat;
+  Scenario.TextureFormat;
 
 
 const
@@ -297,7 +297,7 @@ end;
 
 procedure TgxFrameBuffer.AttachTexture(n: Cardinal; Texture: TgxTexture);
 var
-  textarget: TgxTextureTarget;
+  textarget: TGLTextureTarget;
 begin
   Assert(n < MaxColorAttachments);
   Texture.Handle;
@@ -626,7 +626,7 @@ end;
 procedure TgxFrameBuffer.PostRender(const PostGenerateMipmap: Boolean);
 var
   n: Integer;
-  textarget: TgxTextureTarget;
+  textarget: TGLTextureTarget;
 begin
   if (FTextureMipmap > 0) and PostGenerateMipmap then
   begin

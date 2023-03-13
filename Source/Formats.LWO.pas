@@ -206,7 +206,7 @@ Notes for improvement of this unit:
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,

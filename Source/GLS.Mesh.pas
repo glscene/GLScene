@@ -10,7 +10,7 @@ unit GLS.Mesh;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,7 +19,7 @@ uses
   System.SysUtils,
 
   GLS.OpenGLTokens,
-  Scene.Strings,
+  Scenario.Strings,
   GLS.XOpenGL,
   GLS.Context,
   GLS.Scene,

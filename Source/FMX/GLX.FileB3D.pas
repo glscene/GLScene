@@ -17,7 +17,7 @@ uses
   GLX.ApplicationFileIO,
   GLX.VectorFileObjects,
   GLX.Texture,
-  GLX.TextureFormat,
+  Scenario.TextureFormat,
   GLX.Material,
   Formatx.B3D;
 

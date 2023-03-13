@@ -42,9 +42,10 @@ uses
   GLS.OpenGLTokens,
   GLS.Context,
   GLS.State,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.File3DS,
-  GLS.Utils, GLS.Navigator;
+  GLS.Utils,
+  GLS.Navigator;
 
 type
   TForm1 = class(TForm)

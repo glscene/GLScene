@@ -8,7 +8,7 @@ unit FRTextureEdit;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes, 
@@ -19,7 +19,7 @@ uses
   VCL.Buttons, 
   VCL.Controls,
   GLS.Graphics, 
-  GLS.TextureFormat, 
+  Scenario.TextureFormat, 
   GLS.Texture, 
   GLS.State, 
   GLS.TextureImageEditors;

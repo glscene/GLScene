@@ -18,7 +18,7 @@ uses
   GLS.VectorTypes,
   Physics.SPIManager,
   GLS.Coordinates,
-  Scene.Strings,
+  Scenario.Strings,
   GLS.Behaviours;
 
 type

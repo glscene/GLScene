@@ -7,7 +7,7 @@ unit GLX.FireFX;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -28,7 +28,7 @@ uses
   GLX.RenderContextInfo,
   GLX.State,
   GLX.PipelineTransformation,
-  GLX.TextureFormat;
+  Scenario.TextureFormat;
 
 type
 

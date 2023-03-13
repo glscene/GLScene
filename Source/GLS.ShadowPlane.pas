@@ -12,7 +12,7 @@ unit GLS.ShadowPlane;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -29,7 +29,7 @@ uses
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.State,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.Context,
   GLS.Material,
   GLS.Texture,
@@ -171,10 +171,10 @@ begin
         // "Render"  plane and stencil mask
         if (spoTransparent in ShadowOptions) then
         begin
-          SetGLColorWriting(False);
+          SetColorWriting(False);
           DepthWriteMask := False;
           BuildList(ARci);
-          SetGLColorWriting(True);
+          SetColorWriting(True);
         end
         else
         begin

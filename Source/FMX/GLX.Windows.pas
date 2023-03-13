@@ -7,7 +7,7 @@ unit GLX.Windows;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,7 +25,7 @@ uses
   GLX.VectorGeometry,
   GLX.PersistentClasses,
   GLX.BaseClasses,
-  Scene.Strings,
+  Scenario.Strings,
   GLX.Scene,
   GLX.Coordinates,
   GLX.HUDObjects,

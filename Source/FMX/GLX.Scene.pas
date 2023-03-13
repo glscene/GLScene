@@ -7,13 +7,13 @@ unit GLX.Scene;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
+  Winapi.Windows,
   Winapi.OpenGL,
   Winapi.OpenGLext,
 
-  Winapi.Windows,
   System.Classes,
   System.SysUtils,
   System.UITypes,
@@ -32,7 +32,9 @@ uses
   GLX.PersistentClasses,
   GLX.GeometryBB,
   GLX.ApplicationFileIO,
-  Scene.Strings,
+
+  Scenario.TextureFormat,
+  Scenario.Strings,
 
   GLX.Context,
   GLX.Silhouette,
@@ -44,7 +46,6 @@ uses
   GLX.Coordinates,
   GLX.RenderContextInfo,
   GLX.Material,
-  GLX.TextureFormat,
   GLX.Selection,
   GLX.Utils;
 
@@ -89,19 +90,22 @@ type
     roNoColorBufferClear: do not clear the color buffer automatically, if the
     whole viewer is fully repainted each frame, this can improve framerate
     roNoSwapBuffers: don't perform RenderingContext.SwapBuffers after rendering
-    roNoDepthBufferClear: do not clear the depth buffer automatically. Useful for
-    early-z culling.
+    roNoDepthBufferClear: do not clear the depth buffer automatically. Useful for early-z culling.
     roForwardContext: force OpenGL forward context *)
-  TContextOption = (roSoftwareMode, roDoubleBuffer, roStencilBuffer, roRenderToWindow, roTwoSideLighting, roStereo,
-    roDestinationAlpha, roNoColorBuffer, roNoColorBufferClear, roNoSwapBuffers, roNoDepthBufferClear, roDebugContext,
-    roForwardContext, roOpenGL_ES2_Context);
+  TContextOption = (roSoftwareMode, roDoubleBuffer, roStencilBuffer, 
+    roRenderToWindow, roTwoSideLighting, roStereo,
+    roDestinationAlpha, roNoColorBuffer, roNoColorBufferClear, 
+	roNoSwapBuffers, roNoDepthBufferClear, roDebugContext, roForwardContext, roOpenGL_ES2_Context);
   TContextOptions = set of TContextOption;
 
   // IDs for limit determination
-  TLimitType = (limClipPlanes, limEvalOrder, limLights, limListNesting, limModelViewStack, limNameStack, limPixelMapTable,
-    limProjectionStack, limTextureSize, limTextureStack, limViewportDims, limAccumAlphaBits, limAccumBlueBits,
-    limAccumGreenBits, limAccumRedBits, limAlphaBits, limAuxBuffers, limBlueBits, limGreenBits, limRedBits, limIndexBits,
-    limStereo, limDoubleBuffer, limSubpixelBits, limDepthBits, limStencilBits, limNbTextureUnits);
+  TLimitType = (limClipPlanes, limEvalOrder, limLights, limListNesting, 
+    limModelViewStack, limNameStack, limPixelMapTable, limProjectionStack, 
+	limTextureSize, limTextureStack, limViewportDims, limAccumAlphaBits, 
+	limAccumBlueBits, limAccumGreenBits, limAccumRedBits, limAlphaBits, 
+	limAuxBuffers, limBlueBits, limGreenBits, limRedBits, limIndexBits,
+    limStereo, limDoubleBuffer, limSubpixelBits, limDepthBits, limStencilBits, 
+	limNbTextureUnits);
 
   TgxBaseSceneObject = class;
   TgxSceneObjectClass = class of TgxBaseSceneObject;
@@ -123,12 +127,15 @@ type
     this is true for its children too.
     osNoVisibilityCulling : whatever the VisibilityCulling setting,
     it will be ignored and the object rendered *)
-  TgxObjectStyle = (osDirectDraw, osIgnoreDepthBuffer, osNoVisibilityCulling);
+  TgxObjectStyle = (
+    osDirectDraw, 
+	osIgnoreDepthBuffer, 
+	osNoVisibilityCulling);
   TgxObjectStyles = set of TgxObjectStyle;
 
   // Interface to objects that need initialization
   IgxInitializable = interface
-    ['{EA40AE8E-79B3-42F5-ADF1-7A901B665E12}']
+    ['{EA40AE8E-79B3-42F5-ADF2-7A901B665E12}']
     procedure InitializeObject(ASender: TObject; const ARci: TgxRenderContextInfo);
   end;
 
@@ -159,6 +166,7 @@ type
     FAbsoluteMatrix, FInvAbsoluteMatrix: TgxMatrix;
     FLocalMatrix: TgxMatrix;
     FObjectStyle: TgxObjectStyles;
+    FListHandle: TgxListHandle; // created on 1st use
     FPosition: TgxCoordinates;
     FDirection, FUp: TgxCoordinates;
     FScaling: TgxCoordinates;
@@ -225,7 +233,6 @@ type
     function GetDirectAbsoluteMatrix: PgxMatrix;
     function GetLocalMatrix: PgxMatrix; inline;
   protected
-    FListHandle: TgxListHandle;
     procedure Loaded; override;
     procedure SetScene(const Value: TgxScene); virtual;
     procedure DefineProperties(Filer: TFiler); override;
@@ -394,9 +401,12 @@ type
       The BB is calculated  each  time this method is invoked,
       based on the AxisAlignedDimensions of the object and that of its
       children. There is  no  caching scheme for them. *)
-    function BoundingBox(const AIncludeChilden: Boolean = True; const AUseBaryCenter: Boolean = False): THmgBoundingBox;
-    function BoundingBoxUnscaled(const AIncludeChilden: Boolean = True; const AUseBaryCenter: Boolean = False): THmgBoundingBox;
-    function BoundingBoxAbsolute(const AIncludeChilden: Boolean = True; const AUseBaryCenter: Boolean = False): THmgBoundingBox;
+    function BoundingBox(const AIncludeChilden: Boolean = True; const 
+	  AUseBaryCenter: Boolean = False): THmgBoundingBox;
+    function BoundingBoxUnscaled(const AIncludeChilden: Boolean = True; const 
+	  AUseBaryCenter: Boolean = False): THmgBoundingBox;
+    function BoundingBoxAbsolute(const AIncludeChilden: Boolean = True; const 
+	  AUseBaryCenter: Boolean = False): THmgBoundingBox;
     (* Advanced BB functions that use a caching scheme.
       Also they include children and use BaryCenter. *)
     function BoundingBoxPersonalUnscaledEx: THmgBoundingBox;
@@ -420,13 +430,15 @@ type
       is found, non nil parameters should be defined.
       The intersectNormal needs NOT be normalized by the implementations.
       Default value is based on bounding sphere. *)
-    function RayCastIntersect(const rayStart, rayVector: TgxVector; intersectPoint: PgxVector = nil; intersectNormal: PgxVector = nil)
-      : Boolean; virtual;
+    function RayCastIntersect(const rayStart, rayVector: TgxVector; 
+	  intersectPoint: PgxVector = nil; 
+	  intersectNormal: PgxVector = nil): Boolean; virtual;
     (* Request to generate silhouette outlines.
       Default implementation assumes the objects is a sphere of
       AxisAlignedDimensionUnscaled size. Subclasses may choose to return
       nil instead, which will be understood as an empty silhouette. *)
-    function GenerateSilhouette(const silhouetteParameters: TgxSilhouetteParameters): TgxSilhouette; virtual;
+    function GenerateSilhouette(const silhouetteParameters: 
+	  TgxSilhouetteParameters): TgxSilhouette; virtual;
     property Children[Index: Integer]: TgxBaseSceneObject read Get; default;
     property Count: Integer read GetCount;
     property Index: Integer read GetIndex write SetIndex;
@@ -505,8 +517,10 @@ type
     // Orients the object toward a target absolute position
     procedure PointTo(const AAbsolutePosition, AUpVector: TgxVector); overload;
     procedure Render(var ARci: TgxRenderContextInfo);
-    procedure DoRender(var ARci: TgxRenderContextInfo; ARenderSelf, ARenderChildren: Boolean); virtual;
-    procedure RenderChildren(firstChildIndex, lastChildIndex: Integer; var rci: TgxRenderContextInfo);
+    procedure DoRender(var ARci: TgxRenderContextInfo; 
+	  ARenderSelf, ARenderChildren: Boolean); virtual;
+    procedure RenderChildren(firstChildIndex, lastChildIndex: Integer; 
+	  var rci: TgxRenderContextInfo);
     procedure StructureChanged; virtual;
     procedure ClearStructureChanged; inline;
     // Recalculate an orthonormal system
@@ -528,8 +542,10 @@ type
     property Scene: TgxScene read FScene;
     property Visible: Boolean read FVisible write SetVisible default True;
     property Pickable: Boolean read FPickable write SetPickable default True;
-    property ObjectsSorting: TgxObjectsSorting read FObjectsSorting write SetObjectsSorting default osInherited;
-    property VisibilityCulling: TgxVisibilityCulling read FVisibilityCulling write SetVisibilityCulling default vcInherited;
+    property ObjectsSorting: TgxObjectsSorting read FObjectsSorting write 
+	  SetObjectsSorting default osInherited;
+    property VisibilityCulling: TgxVisibilityCulling read FVisibilityCulling 
+	  write SetVisibilityCulling default vcInherited;
     property OnProgress: TgxProgressEvent read FOnProgress write FOnProgress;
     property OnPicked: TNotifyEvent read FOnPicked write FOnPicked;
     property OnAddedToParent: TNotifyEvent read FOnAddedToParent write FOnAddedToParent;
@@ -692,7 +708,8 @@ type
     have no material of their own. *)
   TgxImmaterialSceneObject = class(TgxCustomSceneObject)
   public
-    procedure DoRender(var ARci: TgxRenderContextInfo; ARenderSelf, ARenderChildren: Boolean); override;
+    procedure DoRender(var ARci: TgxRenderContextInfo; 
+	  ARenderSelf, ARenderChildren: Boolean); override;
   published
     property ObjectsSorting;
     property VisibilityCulling;
@@ -722,11 +739,13 @@ type
     FCamInvarianceMode: TgxCameraInvarianceMode;
   protected
     procedure SetCamInvarianceMode(const val: TgxCameraInvarianceMode);
-    property CamInvarianceMode: TgxCameraInvarianceMode read FCamInvarianceMode write SetCamInvarianceMode;
+    property CamInvarianceMode: TgxCameraInvarianceMode read FCamInvarianceMode 
+	  write SetCamInvarianceMode;
   public
     constructor Create(AOwner: TComponent); override;
     procedure Assign(Source: TPersistent); override;
-    procedure DoRender(var ARci: TgxRenderContextInfo; ARenderSelf, ARenderChildren: Boolean); override;
+    procedure DoRender(var ARci: TgxRenderContextInfo; 
+	  ARenderSelf, ARenderChildren: Boolean); override;
   end;
 
   // Base class for standard scene objects. Publishes the Material property.
@@ -807,7 +826,8 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    procedure RegisterCallBack(renderEvent: TDirectRenderEvent; renderPointFreed: TNotifyEvent);
+    procedure RegisterCallBack(renderEvent: TDirectRenderEvent; 
+	  renderPointFreed: TNotifyEvent);
     procedure UnRegisterCallBack(renderEvent: TDirectRenderEvent);
     procedure Clear;
   end;
@@ -6350,38 +6370,22 @@ begin
         else
           Result := Round(VP[1]);
       end;
-    limAccumAlphaBits:
-      glGetIntegerv(GL_ACCUM_ALPHA_BITS, @Result);
-    limAccumBlueBits:
-      glGetIntegerv(GL_ACCUM_BLUE_BITS, @Result);
-    limAccumGreenBits:
-      glGetIntegerv(GL_ACCUM_GREEN_BITS, @Result);
-    limAccumRedBits:
-      glGetIntegerv(GL_ACCUM_RED_BITS, @Result);
-    limAlphaBits:
-      glGetIntegerv(GL_ALPHA_BITS, @Result);
-    limAuxBuffers:
-      glGetIntegerv(GL_AUX_BUFFERS, @Result);
-    limDepthBits:
-      glGetIntegerv(GL_DEPTH_BITS, @Result);
-    limStencilBits:
-      glGetIntegerv(GL_STENCIL_BITS, @Result);
-    limBlueBits:
-      glGetIntegerv(GL_BLUE_BITS, @Result);
-    limGreenBits:
-      glGetIntegerv(GL_GREEN_BITS, @Result);
-    limRedBits:
-      glGetIntegerv(GL_RED_BITS, @Result);
-    limIndexBits:
-      glGetIntegerv(GL_INDEX_BITS, @Result);
-    limStereo:
-      glGetIntegerv(GL_STEREO, @Result);
-    limDoubleBuffer:
-      glGetIntegerv(GL_DOUBLEBUFFER, @Result);
-    limSubpixelBits:
-      glGetIntegerv(GL_SUBPIXEL_BITS, @Result);
-    limNbTextureUnits:
-      glGetIntegerv(GL_MAX_TEXTURE_UNITS_ARB, @Result);
+    limAccumAlphaBits: glGetIntegerv(GL_ACCUM_ALPHA_BITS, @Result);
+    limAccumBlueBits: glGetIntegerv(GL_ACCUM_BLUE_BITS, @Result);
+    limAccumGreenBits: glGetIntegerv(GL_ACCUM_GREEN_BITS, @Result);
+    limAccumRedBits: glGetIntegerv(GL_ACCUM_RED_BITS, @Result);
+    limAlphaBits: glGetIntegerv(GL_ALPHA_BITS, @Result);
+    limAuxBuffers: glGetIntegerv(GL_AUX_BUFFERS, @Result);
+    limDepthBits: glGetIntegerv(GL_DEPTH_BITS, @Result);
+    limStencilBits: glGetIntegerv(GL_STENCIL_BITS, @Result);
+    limBlueBits: glGetIntegerv(GL_BLUE_BITS, @Result);
+    limGreenBits: glGetIntegerv(GL_GREEN_BITS, @Result);
+    limRedBits: glGetIntegerv(GL_RED_BITS, @Result);
+    limIndexBits: glGetIntegerv(GL_INDEX_BITS, @Result);
+    limStereo: glGetIntegerv(GL_STEREO, @Result);
+    limDoubleBuffer: glGetIntegerv(GL_DOUBLEBUFFER, @Result);
+    limSubpixelBits: glGetIntegerv(GL_SUBPIXEL_BITS, @Result);
+    limNbTextureUnits: glGetIntegerv(GL_MAX_TEXTURE_UNITS_ARB, @Result);
   else
     Result := 0;
   end;
@@ -6487,7 +6491,7 @@ end;
 procedure TgxSceneBuffer.CopyToTexture(aTexture: TgxTexture; xSrc, ySrc, AWidth, AHeight: Integer; xDest, yDest: Integer;
   glCubeFace: GLEnum = 0);
 var
-  bindTarget: TgxTextureTarget;
+  bindTarget: TGLTextureTarget;
 begin
   if RenderingContext <> nil then
   begin
@@ -7545,17 +7549,20 @@ var
       glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buf);
       case aTexture.MinFilter of
         miNearest, miLinear:
-          glTexImage2d(target, 0, aTexture.OpenGLTextureFormat, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, buf);
+          glTexImage2d(target, 0, aTexture.OpenGLTextureFormat, width, height, 
+		    0, GL_RGBA, GL_UNSIGNED_BYTE, buf);
       else
         if (target = GL_TEXTURE_2D) then
         begin
           // hardware-accelerated when supported
           glTexParameteri(target, GL_GENERATE_MIPMAP_SGIS, GL_TRUE);
-          glTexImage2d(target, 0, aTexture.OpenGLTextureFormat, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, buf);
+          glTexImage2d(target, 0, aTexture.OpenGLTextureFormat, width, height, 
+		    0, GL_RGBA, GL_UNSIGNED_BYTE, buf);
         end
         else
         begin
-          glTexImage2d(target, 0, aTexture.OpenGLTextureFormat, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, buf);
+          glTexImage2d(target, 0, aTexture.OpenGLTextureFormat, width, height, 
+		    0, GL_RGBA, GL_UNSIGNED_BYTE, buf);
           glGenerateMipmap(target);
         end;
       end;
@@ -7592,7 +7599,7 @@ begin
       // For MRT
       glReadBuffer(MRT_BUFFERS[BufferIndex]);
 
-      Buffer.RenderingContext.gxStates.TextureBinding[0, EncodeTextureTarget(target)] := Handle;
+      Buffer.RenderingContext.gxStates.TextureBinding[0, EncodeGLTextureTarget(target)] := Handle;
 
       if target = GL_TEXTURE_CUBE_MAP_ARB then
         target := GL_TEXTURE_CUBE_MAP_POSITIVE_X_ARB + FCubeMapRotIdx;
@@ -7610,36 +7617,36 @@ end;
 
 procedure TgxNonVisualViewer.SetupCubeMapCamera(Sender: TObject);
 
-{
-  const
-  cFaceMat: array[0..5] of TgxMatrix =
+(*
+const
+  cFaceMat: array[0..5] of TGLMatrix =
   (
-  (X: (X:0; Y:0; Z:-1; W:0);
-  Y: (X:0; Y:-1; Z:0; W:0);
-  Z: (X:-1; Y:0; Z:0; W:0);
-  W: (X:0; Y:0; Z:0; W:1)),
-  (X:(X:2.4335928828e-08; Y:0; Z:1; W:0);
-  Y:(X:0; Y:-1; Z:0; W:0);
-  Z:(X:1; Y:0; Z:-2.4335928828e-08; W:0);
-  W:(X:0; Y:0; Z:0; W:1)),
-  (X:(X:1; Y:1.2167964414e-08; Z:-1.4805936071e-16; W:0);
-  Y:(X:0; Y:-1.2167964414e-08; Z:-1; W:0);
-  Z:(X:-1.2167964414e-08; Y:1; Z:-1.2167964414e-08; W:0);
-  W:(X:0; Y:0; Z:0; W:1)),
-  (X:(X:1; Y:-1.2167964414e-08; Z:-1.4805936071e-16; W:0);
-  Y:(X:0; Y:-1.2167964414e-08; Z:1; W:0);
-  Z:(X:-1.2167964414e-08; Y:-1; Z:-1.2167964414e-08; W:0);
-  W:(X:0; Y:0; Z:0; W:1)),
-  (X:(X:1; Y:0; Z:-1.2167964414e-08; W:0);
-  Y:(X:0; Y:-1; Z:0; W:0);
-  Z:(X:-1.2167964414e-08; Y:0; Z:-1; W:0);
-  W:(X:0; Y:0; Z:0; W:1)),
-  (X:(X:-1; Y:0; Z:-1.2167964414e-08; W:0);
-  Y:(X:0; Y:-1; Z:0; W:0);
-  Z:(X:-1.2167964414e-08; Y:0; Z:1; W:0);
-  W:(X:0; Y:0; Z:0; W:1))
+    (X: (X:0; Y:0; Z:-1; W:0);
+     Y: (X:0; Y:-1; Z:0; W:0);
+     Z: (X:-1; Y:0; Z:0; W:0);
+     W: (X:0; Y:0; Z:0; W:1)),
+    (X:(X:2.4335928828e-08; Y:0; Z:1; W:0);
+     Y:(X:0; Y:-1; Z:0; W:0);
+     Z:(X:1; Y:0; Z:-2.4335928828e-08; W:0);
+     W:(X:0; Y:0; Z:0; W:1)),
+    (X:(X:1; Y:1.2167964414e-08; Z:-1.4805936071e-16; W:0);
+     Y:(X:0; Y:-1.2167964414e-08; Z:-1; W:0);
+     Z:(X:-1.2167964414e-08; Y:1; Z:-1.2167964414e-08; W:0);
+     W:(X:0; Y:0; Z:0; W:1)),
+    (X:(X:1; Y:-1.2167964414e-08; Z:-1.4805936071e-16; W:0);
+     Y:(X:0; Y:-1.2167964414e-08; Z:1; W:0);
+     Z:(X:-1.2167964414e-08; Y:-1; Z:-1.2167964414e-08; W:0);
+     W:(X:0; Y:0; Z:0; W:1)),
+    (X:(X:1; Y:0; Z:-1.2167964414e-08; W:0);
+     Y:(X:0; Y:-1; Z:0; W:0);
+     Z:(X:-1.2167964414e-08; Y:0; Z:-1; W:0);
+     W:(X:0; Y:0; Z:0; W:1)),
+    (X:(X:-1; Y:0; Z:-1.2167964414e-08; W:0);
+     Y:(X:0; Y:-1; Z:0; W:0);
+     Z:(X:-1.2167964414e-08; Y:0; Z:1; W:0);
+     W:(X:0; Y:0; Z:0; W:1))
   );
-}
+*)
 
 var
   TM: TgxMatrix;
@@ -7649,7 +7656,7 @@ begin
   begin
     SetProjectionMatrix(CreatePerspectiveMatrix(90, 1, FCubeMapZNear, FCubeMapZFar));
     TM := CreateTranslationMatrix(FCubeMapTranslation);
-    { SetViewMatrix(MatrixMultiply(cFaceMat[FCubeMapRotIdx], TM)); }
+  (* SetViewMatrix(MatrixMultiply(cFaceMat[FCubeMapRotIdx], TM)); *)
   end;
 end;
 
@@ -7676,7 +7683,8 @@ begin
     while FCubeMapRotIdx < 6 do
     begin
       Render;
-      Buffer.CopyToTexture(cubeMapTexture, 0, 0, width, height, 0, 0, GL_TEXTURE_CUBE_MAP_POSITIVE_X + FCubeMapRotIdx);
+      Buffer.CopyToTexture(cubeMapTexture, 0, 0, Width, Height, 0, 0,
+        GL_TEXTURE_CUBE_MAP_POSITIVE_X + FCubeMapRotIdx);
       Inc(FCubeMapRotIdx);
     end;
   finally
@@ -7778,8 +7786,8 @@ end;
 constructor TgxMemoryViewer.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
-  width := 256;
-  height := 256;
+  Width := 256;
+  Height := 256;
   FBufferCount := 1;
 end;
 
@@ -7787,7 +7795,7 @@ procedure TgxMemoryViewer.InstantiateRenderingContext;
 begin
   if FBuffer.RenderingContext = nil then
   begin
-    FBuffer.SetViewPort(0, 0, width, height);
+    FBuffer.SetViewPort(0, 0, Width, Height);
     FBuffer.CreateRC(HWND(0), True, FBufferCount);
   end;
 end;
@@ -7799,8 +7807,6 @@ begin
 end;
 
 procedure TgxMemoryViewer.SetBufferCount(const Value: Integer);
-// var
-// MaxAxuBufCount : integer;
 const
   MaxAxuBufCount = 4; // Current hardware limit = 4
 begin

@@ -7,7 +7,7 @@ unit GLSLx.PostEffects;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,7 +16,7 @@ uses
 
   GLX.PersistentClasses,
   GLX.VectorGeometry,
-  Scene.Strings,
+  Scenario.Strings,
   GLX.Scene,
   GLX.Texture,
   GLX.Graphics,
@@ -24,7 +24,7 @@ uses
   GLX.Context,
   GLX.RenderContextInfo,
   GLX.Material,
-  GLX.TextureFormat;
+  Scenario.TextureFormat;
 
 type
   EGLPostShaderHolderException = class(Exception);
@@ -64,7 +64,7 @@ type
     FShaders: TgxPostShaderCollection;
     FTempTexture: TgxTextureHandle;
     FPreviousViewportSize: TgxSize;
-    FTempTextureTarget: TgxTextureTarget;
+    FTempTextureTarget: TGLTextureTarget;
     procedure SetShaders(const Value: TgxPostShaderCollection);
   protected
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
@@ -75,7 +75,7 @@ type
     procedure DoRender(var rci : TgxRenderContextInfo;
                        renderSelf, renderChildren : Boolean); override;
   published
-    property TempTextureTarget: TgxTextureTarget read FTempTextureTarget write FTempTextureTarget default ttTexture2d;
+    property TempTextureTarget: TGLTextureTarget read FTempTextureTarget write FTempTextureTarget default ttTexture2d;
     property Shaders: TgxPostShaderCollection read FShaders write SetShaders;
 
     // Publish some stuff from TgxBaseSceneObject.

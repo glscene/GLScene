@@ -11,7 +11,7 @@ unit GLS.Movement;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
@@ -25,7 +25,7 @@ uses
   GLS.XCollection,
   GLS.Spline,
   GLS.Objects,
-  Scene.Strings,
+  Scenario.Strings,
   GLS.BaseClasses,
   GLS.Utils;
 

@@ -7,13 +7,13 @@ unit Formatx.X;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  Scene.Strings,
+  Scenario.Strings,
 
   GLX.VectorTypes,
   GLX.VectorGeometry,

@@ -31,7 +31,7 @@
 #include "Sounds.BASS.hpp"
 #include "GLS.FileWAV.hpp"
 #include "Jpeg.hpp"
-#include "Sounds.BassImport.hpp"
+#include "Bass.Import.hpp"
 #include "GLS.FileMP3.hpp"
 #include "GLS.ThorFX.hpp"
 #include "GLS.FireFX.hpp"

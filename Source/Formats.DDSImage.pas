@@ -16,7 +16,7 @@ unit Formats.DDSImage;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.Windows,
@@ -29,7 +29,7 @@ uses
   GLS.Graphics,
   GLS.Context,
   GLS.FileDDS,
-  GLS.TextureFormat;
+  Scenario.TextureFormat;
 
 type
 

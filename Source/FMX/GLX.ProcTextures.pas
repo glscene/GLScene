@@ -14,11 +14,11 @@ uses
   System.Math,
 
   GLX.VectorGeometry,
-  Scene.Strings,
+  Scenario.Strings,
 
   GLX.Texture,
   GLX.Graphics,
-  GLX.TextureFormat;
+  Scenario.TextureFormat;
 
 const
   GRADIENT_TABLE_SIZE = 256;
@@ -41,7 +41,7 @@ type
     function GetWidth: Integer; override;
     function GetHeight: Integer; override;
     function GetDepth: Integer; override;
-    function GetTextureTarget: TgxTextureTarget; override;
+    function GetTextureTarget: TGLTextureTarget; override;
     function Noise(x, y: Single): Single;
     procedure SetMinCut(const val: Byte);
     procedure SetSeamless(const val: Boolean);
@@ -252,7 +252,7 @@ begin
   Result := 1;
 end;
 
-function TgxProcTextureNoise.GetTextureTarget: TgxTextureTarget;
+function TgxProcTextureNoise.GetTextureTarget: TGLTextureTarget;
 begin
   Result := ttTexture2D;
 end;

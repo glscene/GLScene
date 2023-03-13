@@ -12,7 +12,7 @@ unit GLSLx.CustomShader;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,12 +25,12 @@ uses
   GLX.Texture, 
   GLX.Cadencer, 
   GLX.Scene,
-  Scene.Strings, 
+  Scenario.Strings, 
   GLX.Context,
   GLX.RenderContextInfo,
   GLX.Material,
   GLX.VectorLists, 
-  GLX.TextureFormat,
+  Scenario.TextureFormat,
   GLSLx.Parameter;
 
 const
@@ -74,9 +74,9 @@ type
   ['{68A62362-AF0A-4CE8-A9E1-714FE02AFA4A}']
     // Called on every pass.
     procedure DoUseTempTexture(const TempTexture: TgxTextureHandle;
-      TextureTarget: TgxTextureTarget);
+      TextureTarget: TGLTextureTarget);
     // Called to determine if it is compatible.
-    function GetTextureTarget: TgxTextureTarget;
+    function GetTextureTarget: TGLTextureTarget;
   end;
 
   // A pure abstract class, must be overriden.
@@ -223,9 +223,9 @@ type
       const Value: TgxTexture);
 
     function GetAsCustomTexture(const TextureIndex: Integer;
-      TextureTarget: TgxTextureTarget): Cardinal; virtual; abstract;
+      TextureTarget: TGLTextureTarget): Cardinal; virtual; abstract;
     procedure SetAsCustomTexture(const TextureIndex: Integer;
-      TextureTarget: TgxTextureTarget; const Value: Cardinal); virtual; abstract;
+      TextureTarget: TGLTextureTarget; const Value: Cardinal); virtual; abstract;
 
     function GetAsUniformBuffer: GLenum; virtual; abstract;
     procedure SetAsUniformBuffer(UBO: GLenum); virtual; abstract;
@@ -280,7 +280,7 @@ type
     property AsTextureRect[const TextureIndex: Integer]: TgxTexture write SetAsTextureRect;
     property AsTextureCube[const TextureIndex: Integer]: TgxTexture write SetAsTextureCube;
 
-    property AsCustomTexture[const TextureIndex: Integer; TextureTarget: TgxTextureTarget]: Cardinal read GetAsCustomTexture write SetAsCustomTexture;
+    property AsCustomTexture[const TextureIndex: Integer; TextureTarget: TGLTextureTarget]: Cardinal read GetAsCustomTexture write SetAsCustomTexture;
 
     property AsUniformBuffer: GLenum read GetAsUniformBuffer write SetAsUniformBuffer;
   end;
@@ -299,7 +299,7 @@ procedure UnApplyBlendingModeEx;
 procedure InitTexture(
   const TextureHandle: Cardinal;
   const TextureSize: TgxSize;
-  const TextureTarget: TgxTextureTarget = ttTexture2D);
+  const TextureTarget: TGLTextureTarget = ttTexture2D);
 // Probably need to give them proper names, instead of numbers... 
 procedure DrawTexturedScreenQuad;
 procedure DrawTexturedScreenQuad2(const ViewPortSize: TgxSize);
@@ -486,7 +486,7 @@ end;
 procedure InitTexture(
   const TextureHandle: Cardinal;
   const TextureSize: TgxSize;
-  const TextureTarget: TgxTextureTarget = ttTexture2D);
+  const TextureTarget: TGLTextureTarget = ttTexture2D);
 var
   glTarget: GLEnum;
 begin

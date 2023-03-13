@@ -5,22 +5,25 @@ unit GLX.State;
 
 (* Tools for managing an application-side cache of OpenGL state *)
 
-// TODO: Proper client-side pushing + popping of state, in OpenGL 3+ contexts,
-//       rather than using glPushAttrib + glPopAttrib.
-// TODO: Proper support for textures, taking into account that they probably
-//       won't be linked to texture units in some future version of OpenGL.
-// TODO: Once more of GLScene is cache-aware, enable some of the checks before
-//       changing OpenGL state (where we will gain a speed increase).
-// DONE: Cache some relevant legacy state
-// TODO: improve binding objects to binding points
-// TODO: decide how to implement the new Enable* options (without going above
-//       32 elements in sets if possible, which would be slower in 32bit Delphi)
-// DONE: remove stTexture1D, 2D, etc from TgxState if possible, since they are
-//       per texture-unit + also deprecated in OpenGL 3+
+(*
+ TODO: Proper client-side pushing + popping of state, in OpenGL 3+ contexts,
+ rather than using glPushAttrib + glPopAttrib.
+ TODO: Proper support for textures, taking into account that they probably
+ won't be linked to texture units in some future version of OpenGL.
+ TODO: Once more of GLScene is cache-aware, enable some of the checks before
+ changing OpenGL state (where we will gain a speed increase).
+ DONE: Cache some relevant legacy state
+ TODO: improve binding objects to binding points
+ TODO: decide how to implement the new Enable* options (without going above
+ 32 elements in sets if possible, which would be slower in 32bit Delphi)
+ DONE: remove stTexture1D, 2D, etc from TGLState if possible, since they are
+ per texture-unit + also deprecated in OpenGL 3+
+ *)
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
+{ .$DEFINE USE_CACHE_MISS_CHECK }
 
 uses
   Winapi.OpenGL,
@@ -29,11 +32,11 @@ uses
   System.Classes,
   System.SysUtils,
 
+  Scenario.Strings,
+  Scenario.TextureFormat,
   GLX.VectorTypes,
   GLX.VectorGeometry,
-  Scene.Strings,
-  GLX.Utils,
-  GLX.TextureFormat;
+  GLX.Utils;
 
 const
   VERTEX_ATTR_NUM = 16;
@@ -260,12 +263,12 @@ type
     FMaxTextureImageUnits: Cardinal;
     FMaxTextureAnisotropy: Cardinal;
     FMaxSamples: Cardinal;
-    FTextureBinding: array[0..MAX_HARDWARE_TEXTURE_UNIT - 1, TgxTextureTarget] of Cardinal;
-    FTextureBindingTime: array[0..MAX_HARDWARE_TEXTURE_UNIT - 1, TgxTextureTarget] of Double;
+    FTextureBinding: array[0..MAX_HARDWARE_TEXTURE_UNIT - 1, TGLTextureTarget] of Cardinal;
+    FTextureBindingTime: array[0..MAX_HARDWARE_TEXTURE_UNIT - 1, TGLTextureTarget] of Double;
     FSamplerBinding: array[0..MAX_HARDWARE_TEXTURE_UNIT - 1] of Cardinal;
     // Active texture state
     FActiveTexture: GLint; // 0 .. Max_texture_units
-    FActiveTextureEnabling: array[0..MAX_HARDWARE_TEXTURE_UNIT - 1, TgxTextureTarget] of Boolean;
+    FActiveTextureEnabling: array[0..MAX_HARDWARE_TEXTURE_UNIT - 1, TGLTextureTarget] of Boolean;
     // Pixel operation state
     FEnableScissorTest: GLboolean;
     FScissorBox: TVector4i;
@@ -411,14 +414,14 @@ type
     function GetMaxTextureImageUnits: GLuint;
     function GetMaxTextureAnisotropy: GLuint;
     function GetMaxSamples: GLuint;
-    function GetTextureBinding(Index: Integer; target: TgxTextureTarget):
+    function GetTextureBinding(Index: Integer; target: TGLTextureTarget):
       GLuint;
-    function GetTextureBindingTime(Index: Integer; target: TgxTextureTarget):
+    function GetTextureBindingTime(Index: Integer; target: TGLTextureTarget):
       Double;
-    procedure SetTextureBinding(Index: Integer; target: TgxTextureTarget;
+    procedure SetTextureBinding(Index: Integer; target: TGLTextureTarget;
       const Value: GLuint);
-    function GetActiveTextureEnabled(Target: TgxTextureTarget): Boolean;
-    procedure SetActiveTextureEnabled(Target: TgxTextureTarget; const Value:
+    function GetActiveTextureEnabled(Target: TGLTextureTarget): Boolean;
+    procedure SetActiveTextureEnabled(Target: TGLTextureTarget; const Value:
       Boolean);
     function GetSamplerBinding(Index: GLuint): GLuint;
     procedure SetSamplerBinding(Index: GLuint; const Value: GLuint);
@@ -562,28 +565,17 @@ type
     // Lighting states
     property FixedFunctionPipeLight: Boolean read FFFPLight write SetFFPLight;
     property MaxLights: Integer read GetMaxLights;
-    property LightEnabling[Index: Integer]: Boolean read GetLightEnabling write
-    SetLightEnabling;
-    property LightPosition[Index: Integer]: TgxVector read GetLightPosition write
-    SetLightPosition;
-    property LightSpotDirection[Index: Integer]: TAffineVector read GetLightSpotDirection write
-    SetLightSpotDirection;
-    property LightAmbient[Index: Integer]: TgxVector read GetLightAmbient write
-    SetLightAmbient;
-    property LightDiffuse[Index: Integer]: TgxVector read GetLightDiffuse write
-    SetLightDiffuse;
-    property LightSpecular[Index: Integer]: TgxVector read GetLightSpecular write
-    SetLightSpecular;
-    property LightSpotCutoff[Index: Integer]: Single read GetSpotCutoff write
-    SetSpotCutoff;
-    property LightSpotExponent[Index: Integer]: Single read GetSpotExponent write
-    SetSpotExponent;
-    property LightConstantAtten[Index: Integer]: Single read GetConstantAtten
-    write SetConstantAtten;
-    property LightLinearAtten[Index: Integer]: Single read GetLinearAtten write
-    SetLinearAtten;
-    property LightQuadraticAtten[Index: Integer]: Single read GetQuadAtten write
-    SetQuadAtten;
+    property LightEnabling[Index: Integer]: Boolean read GetLightEnabling write SetLightEnabling;
+    property LightPosition[Index: Integer]: TgxVector read GetLightPosition write SetLightPosition;
+    property LightSpotDirection[Index: Integer]: TAffineVector read GetLightSpotDirection write SetLightSpotDirection;
+    property LightAmbient[Index: Integer]: TgxVector read GetLightAmbient write SetLightAmbient;
+    property LightDiffuse[Index: Integer]: TgxVector read GetLightDiffuse write SetLightDiffuse;
+    property LightSpecular[Index: Integer]: TgxVector read GetLightSpecular write SetLightSpecular;
+    property LightSpotCutoff[Index: Integer]: Single read GetSpotCutoff write SetSpotCutoff;
+    property LightSpotExponent[Index: Integer]: Single read GetSpotExponent write SetSpotExponent;
+    property LightConstantAtten[Index: Integer]: Single read GetConstantAtten write SetConstantAtten;
+    property LightLinearAtten[Index: Integer]: Single read GetLinearAtten write SetLinearAtten;
+    property LightQuadraticAtten[Index: Integer]: Single read GetQuadAtten write SetQuadAtten;
     function GetLightIndicesAsAddress: PGLInt;
     function GetLightStateAsAddress: Pointer;
     property LightNumber: Integer read FLightNumber;
@@ -593,78 +585,57 @@ type
     // Vertex Array Data state
     (* The currently bound array buffer (calling glVertexAttribPointer
        locks this buffer to the currently bound VBO). *)
-    property VertexArrayBinding: GLuint read FVertexArrayBinding write
-      SetVertexArrayBinding;
+    property VertexArrayBinding: GLuint read FVertexArrayBinding write SetVertexArrayBinding;
     // The currently bound vertex buffer object (VAO).
-    property ArrayBufferBinding: GLuint read GetArrayBufferBinding write
-      SetArrayBufferBinding;
+    property ArrayBufferBinding: GLuint read GetArrayBufferBinding write SetArrayBufferBinding;
     // The currently bound element buffer object (EBO).
-    property ElementBufferBinding: GLuint read GetElementBufferBinding write
-      SetElementBufferBinding;
+    property ElementBufferBinding: GLuint read GetElementBufferBinding write SetElementBufferBinding;
     // Determines whether primitive restart is turned on or off.
-    property EnablePrimitiveRestart: GLboolean read GetEnablePrimitiveRestart
-      write SetEnablePrimitiveRestart;
+    property EnablePrimitiveRestart: GLboolean read GetEnablePrimitiveRestart write SetEnablePrimitiveRestart;
     // The index Value that causes a primitive restart.
-    property PrimitiveRestartIndex: GLuint read GetPrimitiveRestartIndex write
-      SetPrimitiveRestartIndex;
+    property PrimitiveRestartIndex: GLuint read GetPrimitiveRestartIndex write SetPrimitiveRestartIndex;
     // The currently bound texture buffer object (TBO).
-    property TextureBufferBinding: GLuint read FTextureBufferBinding write
-      SetTextureBufferBinding;
-    // Transformation state The viewport.
+    property TextureBufferBinding: GLuint read FTextureBufferBinding write SetTextureBufferBinding;
+    // Transformation state
     property ViewPort: TVector4i read FViewPort write SetViewPort;
     // Modifies the near + far clipping planes.
     procedure SetDepthRange(const ZNear, ZFar: GLclampd);
     // The near clipping plane distance.
-    property DepthRangeNear: GLclampd read GetDepthRangeNear write
-      SetDepthRangeNear;
+    property DepthRangeNear: GLclampd read GetDepthRangeNear write SetDepthRangeNear;
     // The far clipping plane distance.
-    property DepthRangeFar: GLclampd read GetDepthRangeFar write
-      SetDepthRangeFar;
+    property DepthRangeFar: GLclampd read GetDepthRangeFar write SetDepthRangeFar;
     // Enables/Disables each of the clip distances, used in shaders.
-    property EnableClipDistance[Index: Cardinal]: GLboolean read
-    GetEnableClipDistance write SetEnableClipDistance;
+    property EnableClipDistance[Index: Cardinal]: GLboolean read GetEnableClipDistance write SetEnableClipDistance;
     // Enables/Disables depth clamping.
-    property EnableDepthClamp: GLboolean read FEnableDepthClamp write
-      SetEnableDepthClamp;
+    property EnableDepthClamp: GLboolean read FEnableDepthClamp write SetEnableDepthClamp;
     // Coloring state. Controls read color clamping.
-    property ClampReadColor: GLEnum read FClampReadColor write
-      SetClampReadColor;
+    property ClampReadColor: GLEnum read FClampReadColor write SetClampReadColor;
     (* The provoking vertex used in flat shading.  All the vertices of each
        primitive will the same value determined by this property. *)
-    property ProvokingVertex: GLEnum read FProvokingVertex write
-      SetProvokingVertex;
+    property ProvokingVertex: GLEnum read FProvokingVertex write SetProvokingVertex;
     // Rasterization state
     (* The default point size, used when EnableProgramPointSize = false. *)
     property PointSize: Single read FPointSize write SetPointSize;
     // If multisampling is enabled, this can control when points are faded out.
-    property PointFadeThresholdSize: Single read FPointFadeThresholdSize write
-      SetPointFadeThresholdSize;
+    property PointFadeThresholdSize: Single read FPointFadeThresholdSize write SetPointFadeThresholdSize;
     // The texture coordinate origin of point sprites.
-    property PointSpriteCoordOrigin: GLEnum read FPointSpriteCoordOrigin write
-      SetPointSpriteCoordOrigin;
+    property PointSpriteCoordOrigin: GLEnum read FPointSpriteCoordOrigin write SetPointSpriteCoordOrigin;
     // The line width.
     property LineWidth: Single read FLineWidth write SetLineWidth;
     // The line stipple.
-    property LineStippleFactor: GLint read FLineStippleFactor write
-      SetLineStippleFactor;
+    property LineStippleFactor: GLint read FLineStippleFactor write SetLineStippleFactor;
     // The line stipple.
-    property LineStipplePattern: GLushort read FLineStipplePattern write
-      SetLineStipplePattern;
+    property LineStipplePattern: GLushort read FLineStipplePattern write SetLineStipplePattern;
     // Enable/Disable line smoothing.
-    property EnableLineSmooth: GLboolean read FEnableLineSmooth write
-      SetEnableLineSmooth;
+    property EnableLineSmooth: GLboolean read FEnableLineSmooth write SetEnableLineSmooth;
     // Enable/Disable face culling.
-    property EnableCullFace: GLboolean read FEnableCullFace write
-      SetEnableCullFace;
+    property EnableCullFace: GLboolean read FEnableCullFace write SetEnableCullFace;
     // Selects which faces to cull: front, back or front+back.
-    property CullFaceMode: TgxCullFaceMode read FCullFaceMode write
-      SetCullFaceMode;
+    property CullFaceMode: TgxCullFaceMode read FCullFaceMode write SetCullFaceMode;
     // The winding direction that indicates a front facing primitive.
-    property FrontFace: {GLEnum} TgxFaceWinding read FFrontFace write
-    SetFrontFace;
+    property FrontFace: {GLEnum} TgxFaceWinding read FFrontFace write SetFrontFace;
     // Enables/Disables polygon smoothing.
-    property EnablePolygonSmooth: GLboolean read FEnablePolygonSmooth write
-      SetEnablePolygonSmooth;
+    property EnablePolygonSmooth: GLboolean read FEnablePolygonSmooth write SetEnablePolygonSmooth;
     // Whether polygons appear filled, lines or points.
     property PolygonMode: TgxPolygonMode read FPolygonMode write SetPolygonMode;
     // Scales the maximum depth of the polygon.
@@ -672,56 +643,40 @@ type
       SetPolygonOffsetFactor;
     (* Scales an implementation-dependent constant that relates to the usable
        resolution of the depth buffer. *)
-    property PolygonOffsetUnits: Single read FPolygonOffsetUnits write
-      SetPolygonOffsetUnits;
+    property PolygonOffsetUnits: Single read FPolygonOffsetUnits write SetPolygonOffsetUnits;
     // Set polygon offset.
     procedure SetPolygonOffset(const factor, units: Single);
     // Enable/Disable polygon offset for polygons in point mode.
-    property EnablePolygonOffsetPoint: GLboolean read FEnablePolygonOffsetPoint
-      write SetEnablePolygonOffsetPoint;
+    property EnablePolygonOffsetPoint: GLboolean read FEnablePolygonOffsetPoint write SetEnablePolygonOffsetPoint;
     // Enable/Disable polygon offset for polygons in line mode.
-    property EnablePolygonOffsetLine: GLboolean read FEnablePolygonOffsetLine
-      write SetEnablePolygonOffsetLine;
+    property EnablePolygonOffsetLine: GLboolean read FEnablePolygonOffsetLine write SetEnablePolygonOffsetLine;
     // Enable/Disable polygon offset for polygons in fill mode.
-    property EnablePolygonOffsetFill: GLboolean read FEnablePolygonOffsetFill
-      write SetEnablePolygonOffsetFill;
+    property EnablePolygonOffsetFill: GLboolean read FEnablePolygonOffsetFill write SetEnablePolygonOffsetFill;
     // Multisample state
-    { Enable/Disable multisampling. }
-    property EnableMultisample: GLboolean read FEnableMultisample write
-      SetEnableMultisample;
-    { Enable/Disable sample alpha to coverage. }
-    property EnableSampleAlphaToCoverage: GLboolean read
-      FEnableSampleAlphaToCoverage write SetEnableSampleAlphaToCoverage;
-    { Enable/Disable sample alpha to one. }
-    property EnableSampleAlphaToOne: GLboolean read FEnableSampleAlphaToOne
-      write SetEnableSampleAlphaToOne;
-    { Enable/Disable sample coverage. }
-    property EnableSampleCoverage: GLboolean read FEnableSampleCoverage write
-      SetEnableSampleCoverage;
-    { Sample coverage Value. }
-    property SampleCoverageValue: Single read FSampleCoverageValue write
-      SetSampleCoverageValue;
-    { Inverts sample coverage Value. }
-    property SampleCoverageInvert: GLboolean read FSampleCoverageInvert write
-      SetSampleCoverageInvert;
-    { Set sample coverage. }
+    // Enable/Disable multisampling
+    property EnableMultisample: GLboolean read FEnableMultisample write SetEnableMultisample;
+    // Enable/Disable sample alpha to coverage
+    property EnableSampleAlphaToCoverage: GLboolean read FEnableSampleAlphaToCoverage write SetEnableSampleAlphaToCoverage;
+    // Enable/Disable sample alpha to one
+    property EnableSampleAlphaToOne: GLboolean read FEnableSampleAlphaToOne write SetEnableSampleAlphaToOne;
+    // Enable/Disable sample coverage
+    property EnableSampleCoverage: GLboolean read FEnableSampleCoverage write SetEnableSampleCoverage;
+    // Sample coverage Value
+    property SampleCoverageValue: Single read FSampleCoverageValue write SetSampleCoverageValue;
+    // Inverts sample coverage Value
+    property SampleCoverageInvert: GLboolean read FSampleCoverageInvert write SetSampleCoverageInvert;
+    // Set sample coverage
     procedure SetSampleCoverage(const Value: Single; invert: GLboolean);
-    { Enable/Disable sample mask. }
-    property EnableSampleMask: GLboolean read FEnableSampleMask write
-      SetEnableSampleMask;
-    { Sample mask values. }
-    property SampleMaskValue[Index: Integer]: GLbitfield read GetSampleMaskValue
-    write SetSampleMaskValue;
+    // Enable/Disable sample mask
+    property EnableSampleMask: GLboolean read FEnableSampleMask write SetEnableSampleMask;
+    // Sample mask values
+    property SampleMaskValue[Index: Integer]: GLbitfield read GetSampleMaskValue write SetSampleMaskValue;
     // Textures
-    { Textures bound to each texture unit + binding point. }
-    property TextureBinding[Index: Integer; target: TgxTextureTarget]: GLuint
-      read GetTextureBinding write SetTextureBinding;
-    property TextureBindingTime[Index: Integer; target: TgxTextureTarget]: Double
-      read GetTextureBindingTime;
-    property ActiveTextureEnabled[Target: TgxTextureTarget]: Boolean read
-    GetActiveTextureEnabled write SetActiveTextureEnabled;
-    property SamplerBinding[Index: GLuint]: GLuint read GetSamplerBinding
-      write SetSamplerBinding;
+    // Textures bound to each texture unit + binding point. 
+    property TextureBinding[Index: Integer; target: TGLTextureTarget]: GLuint read GetTextureBinding write SetTextureBinding;
+    property TextureBindingTime[Index: Integer; target: TGLTextureTarget]: Double read GetTextureBindingTime;
+    property ActiveTextureEnabled[Target: TGLTextureTarget]: Boolean read GetActiveTextureEnabled write SetActiveTextureEnabled;
+    property SamplerBinding[Index: GLuint]: GLuint read GetSamplerBinding write SetSamplerBinding;
     property MaxTextureSize: GLuint read GetMaxTextureSize;
     property Max3DTextureSize: GLuint read GetMax3DTextureSize;
     property MaxCubeTextureSize: GLuint read GetMaxCubeTextureSize;
@@ -731,109 +686,93 @@ type
     property MaxSamples: GLuint read GetMaxSamples;
     // TODO: GL_TEXTURE_BUFFER_DATA_STORE_BINDING ?
     // Active texture
-    { The active texture unit.  Valid values are 0 .. Max texture units. }
+    (* The active texture unit.  Valid values are 0 .. Max texture units. *)
     property ActiveTexture: GLint read FActiveTexture write SetActiveTexture;
     // Pixel operations
-    { Enables/Disables scissor test. }
-    property EnableScissorTest: GLboolean read FEnableScissorTest write
-      SetEnableScissorTest;
-    { The bounding box used in scissor test. }
+    (* Enables/Disables scissor test. *)
+    property EnableScissorTest: GLboolean read FEnableScissorTest write SetEnableScissorTest;
+    // The bounding box used in scissor test.
     property ScissorBox: TVector4i read FScissorBox write SetScissorBox;
-    { Enables/Disables stencil test. }
-    property EnableStencilTest: GLboolean read FEnableStencilTest write
-      SetEnableStencilTest;
-    { The stencil function.  Determines the comparison function to be used
-       when comparing the reference + stored stencil values.  }
+    // Enables/Disables stencil test.
+    property EnableStencilTest: GLboolean read FEnableStencilTest write SetEnableStencilTest;
+    (* The stencil function.  Determines the comparison function to be used
+      when comparing the reference + stored stencil values. *)
     property StencilFunc: TgxStencilFunction read FStencilFunc;
     // write SetStencilFunc;
-  { The stencil value mask.  Masks both the reference + stored stencil values. }
+    (* The stencil value mask.  Masks both the reference + stored stencil values *)
     property StencilValueMask: GLuint read FStencilValueMask;
     // write SetStencilValueMask;
-  { The stencil reference value.  Clamped to 0..255 with an 8 bit stencil. }
+    (* The stencil reference value.  Clamped to 0..255 with an 8 bit stencil. *)
     property StencilRef: GLint read FStencilRef; // write SetStencilRef;
-    { The operation to perform when stencil test fails. }
+    // The operation to perform when stencil test fails.
     property StencilFail: TgxStencilOp read FStencilFail; // write SetStencilFail;
-    { The operation to perform when stencil test passes + depth test fails. }
+    // The operation to perform when stencil test passes + depth test fails.
     property StencilPassDepthFail: TgxStencilOp read FStencilPassDepthFail;
     // write SetStencilPassDepthFail;
-  { The operation to perform when stencil test passes + depth test passes. }
+    (* The operation to perform when stencil test passes + depth test passes. *)
     property StencilPassDepthPass: TgxStencilOp read FStencilPassDepthPass;
     // write SetStencilPassDepthPass;
-
-  { The stencil back function.  Determines the comparison function to be
-     used when comparing the reference + stored stencil values on back
-     facing primitives. }
+    (* The stencil back function.  Determines the comparison function to be
+      used when comparing the reference + stored stencil values on back facing primitives. *)
     property StencilBackFunc: TgxStencilFunction read FStencilBackFunc;
     // write SetStencilBackFunc;
-  { The stencil back value mask.  Masks both the reference + stored stencil
-     values. }
+    (* The stencil back value mask.  Masks both the reference + stored stencil values. *)
     property StencilBackValueMask: GLuint read FStencilBackValueMask;
     // write SetStencilBackValueMask;
-  { The stencil back reference value.  Clamped to 0..255 with an 8 bit
-     stencil. }
+    (* The stencil back reference value.  Clamped to 0..255 with an 8 bit stencil. *)
     property StencilBackRef: GLuint read FStencilBackRef;
     // write SetStencilBackRef;
-  { The operation to perform when stencil test fails on back facing
-     primitives. }
+    (* The operation to perform when stencil test fails on back facing primitives. *)
     property StencilBackFail: TgxStencilOp read FStencilBackFail;
     // write SetStencilBackFail;
-  { The operation to perform when stencil test passes + depth test fails on
-     back facing primitives. }
-    property StencilBackPassDepthFail: TgxStencilOp read
-      FStencilBackPassDepthFail;
+    (* The operation to perform when stencil test passes + depth test fails on
+      back facing primitives. *)
+    property StencilBackPassDepthFail: TgxStencilOp read FStencilBackPassDepthFail;
     // write SetStencilBackPassDepthFail;
   { The operation to perform when stencil test passes + depth test passes on
      back facing primitives. }
-    property StencilBackPassDepthPass: TgxStencilOp read
-      FStencilBackPassDepthPass;
+    property StencilBackPassDepthPass: TgxStencilOp read FStencilBackPassDepthPass;
     // write SetStencilBackPassDepthPass;
   { Used to set stencil Function, Reference + Mask values, for both front +
      back facing primitives. }
-    procedure SetStencilFunc(const func: TgxStencilFunction; const ref: GLint;
-      const mask: GLuint);
-    { Used to set stencil Function, Reference + Mask values for either the
-       front or back facing primitives (or both, which is the same as calling
-       SetStencilFunc). }
-    procedure SetStencilFuncSeparate(const face: TgxCullFaceMode;
-      const func: TgxStencilFunction; const ref: GLint; const mask: GLuint);
+    procedure SetStencilFunc(const func: TgxStencilFunction; const ref: GLint; const mask: GLuint);
+    (* Used to set stencil Function, Reference + Mask values for either the
+      front or back facing primitives (or both, which is the same as calling
+      SetStencilFunc). *)
+    procedure SetStencilFuncSeparate(const face: TgxCullFaceMode; const func: TgxStencilFunction; const ref: GLint; 
+	   const mask: GLuint);  inline;
     { Used to set the StencilFail, StencilPassDepthFail + StencilPassDepthPass
        in one go. }
-    procedure SetStencilOp(const fail, zfail, zpass: TgxStencilOp);
+    procedure SetStencilOp(const fail, zfail, zpass: TgxStencilOp); inline;
     { Used to set the StencilFail, StencilPassDepthFail + StencilPassDepthPass
        in one go, for either front or back facing primitives. }
-    procedure SetStencilOpSeparate(const face: TgxCullFaceMode; const sfail,
-      dpfail, dppass: TgxStencilOp);
+    procedure SetStencilOpSeparate(const face: TgxCullFaceMode; const sfail, dpfail, dppass: TgxStencilOp);
 
     { Enables/disables depth testing. }
-    property EnableDepthTest: GLboolean read FEnableDepthTest write
-      SetEnableDepthTest;
+    property EnableDepthTest: GLboolean read FEnableDepthTest write SetEnableDepthTest;
     { The depth function.  Used to determine whether to keep a fragment or
        discard it, depending on the current value stored in the depth buffer. }
     property DepthFunc: TgxDepthFunction read FDepthFunc write SetDepthFunc;
     { Enables/disables blending for each draw buffer. }
-    property EnableBlend[Index: Integer]: GLboolean read GetEnableBlend write
-    SetEnableBlend;
+    property EnableBlend[Index: Integer]: GLboolean read GetEnableBlend write SetEnableBlend;
     { The weighting factor used in blending equation, for source RGB. }
     property BlendSrcRGB: TgxBlendFunction read FBlendSrcRGB;
     // write SetBlendSrcRGB;
-  { The weighting factor used in blending equation, for source alpha. }
+    (* The weighting factor used in blending equation, for source alpha. *)
     property BlendSrcAlpha: TgxBlendFunction read FBlendSrcAlpha;
     // write SetBlendSrcAlpha;
-  { The weighting factor used in blending equation, for destination RGB. }
+    (* The weighting factor used in blending equation, for destination RGB. *)
     property BlendDstRGB: TgxDstBlendFunction read FBlendDstRGB;
     // write SetBlendDstRGB;
   { The weighting factor used in blending equation, for destination alpha. }
     property BlendDstAlpha: TgxDstBlendFunction read FBlendDstAlpha;
     // write SetBlendDstAlpha;
-  { Sets the weighting factors to be used by the blending equation, for
-     both color + alpha. }
-    procedure SetBlendFunc(const Src: TgxBlendFunction;
-      const Dst: TgxDstBlendFunction);
+  { Sets the weighting factors to be used by the blending equation, for both color + alpha. }
+    procedure SetBlendFunc(const Src: TgxBlendFunction; const Dst: TgxDstBlendFunction);
     { Sets the weighting factors to be used by the blending equation, with
        separate values used for color + alpha components. }
-    procedure SetBlendFuncSeparate(const SrcRGB: TgxBlendFunction;
-      const DstRGB: TgxDstBlendFunction; const SrcAlpha: TgxBlendFunction;
-      const DstAlpha: TgxDstBlendFunction);
+    procedure SetBlendFuncSeparate(const SrcRGB: TgxBlendFunction; const DstRGB: TgxDstBlendFunction; 
+	  const SrcAlpha: TgxBlendFunction; const DstAlpha: TgxDstBlendFunction); inline;
     { The blending equation.  Determines how the incoming source fragment's
        RGB are combined with the destination RGB. }
     property BlendEquationRGB: TgxBlendEquation read FBlendEquationRGB;
@@ -842,21 +781,18 @@ type
      alpha values are combined with the destination alpha values. }
     property BlendEquationAlpha: TgxBlendEquation read FBlendEquationAlpha;
     // write SetBlendEquationAlpha;
-  { Sets the blend equation for RGB + alpha to the same value. }
+    // Sets the blend equation for RGB + alpha to the same value.
     procedure SetBlendEquation(const mode: TgxBlendEquation);
-    { Sets the blend equations for RGB + alpha separately. }
-    procedure SetBlendEquationSeparate(const modeRGB, modeAlpha:
-      TgxBlendEquation);
+    // Sets the blend equations for RGB + alpha separately.
+    procedure SetBlendEquationSeparate(const modeRGB, modeAlpha: TgxBlendEquation);
     { A constant blend color, that can be used in the blend equation. }
     property BlendColor: TgxVector read FBlendColor write SetBlendColor;
     { Enables/disables framebuffer SRGB. }
-    property EnableFramebufferSRGB: GLboolean read FEnableFramebufferSRGB write
-      SetEnableFramebufferSRGB;
-    { Enables/disables dithering. }
+    property EnableFramebufferSRGB: GLboolean read FEnableFramebufferSRGB write SetEnableFramebufferSRGB;
+    // Enables/disables dithering.
     property EnableDither: GLboolean read FEnableDither write SetEnableDither;
-    { Enables/disables color logic op. }
-    property EnableColorLogicOp: GLboolean read FEnableColorLogicOp write
-      SetEnableColorLogicOp;
+    // Enables/disables color logic op.
+    property EnableColorLogicOp: GLboolean read FEnableColorLogicOp write SetEnableColorLogicOp;
     { Logic op mode. }
     property LogicOpMode: TgxLogicOp read FLogicOpMode write SetLogicOpMode;
     // Framebuffer control
@@ -866,162 +802,124 @@ type
     { Set the color write mask for all draw buffers. }
     procedure SetColorMask(mask: TgxColorMask);
     { The depth write mask. }
-    property DepthWriteMask: Boolean read FDepthWriteMask write
-      SetDepthWriteMask;
+    property DepthWriteMask: Boolean read FDepthWriteMask write SetDepthWriteMask;
     { The stencil write mask. }
-    property StencilWriteMask: GLuint read FStencilWriteMask write
-      SetStencilWriteMask;
+    property StencilWriteMask: GLuint read FStencilWriteMask write SetStencilWriteMask;
     { The stencil back write mask. }
-    property StencilBackWriteMask: GLuint read FStencilBackWriteMask write
-      SetStencilBackWriteMask;
+    property StencilBackWriteMask: GLuint read FStencilBackWriteMask write SetStencilBackWriteMask;
     { The color clear value. }
-    property ColorClearValue: TgxVector read FColorClearValue write
-      SetColorClearValue;
+    property ColorClearValue: TgxVector read FColorClearValue write SetColorClearValue;
     { The depth clear value. }
-    property DepthClearValue: Single read FDepthClearValue write
-      SetDepthClearValue;
-    { The stencil clear value. }
-    property StencilClearValue: GLuint read FStencilClearValue write
-      SetStencilClearValue;
-    // Framebuffer
-    { Framebuffer to be used for draw operations, 0 = default framebuffer. }
-    property DrawFrameBuffer: GLuint read FDrawFrameBuffer write
-      SetDrawFrameBuffer;
-    { Framebuffer to be used for read operations, 0 = default framebuffer. }
+    property DepthClearValue: Single read FDepthClearValue write SetDepthClearValue;
+    // The stencil clear value.
+    property StencilClearValue: GLuint read FStencilClearValue write SetStencilClearValue;
+    // Framebuffer to be used for draw operations, 0 = default framebuffer.
+    property DrawFrameBuffer: GLuint read FDrawFrameBuffer write SetDrawFrameBuffer;
+    // Framebuffer to be used for read operations, 0 = default framebuffer.
     property ReadFrameBuffer: GLuint read FReadFrameBuffer write SetReadFrameBuffer;
-    { set both draw + read framebuffer. }
+    // set both draw + read framebuffer.
     procedure SetFrameBuffer(const Value: GLuint);
     //property FrameBuffer: GLuint read FDrawFrameBuffer write SetFrameBuffer;
     { Currently bound render buffer. }
     property RenderBuffer: GLuint read FRenderBuffer write SetRenderBuffer;
     // Pixels
-    { Controls whether byte swapping occurs during pixel unpacking. }
-    property UnpackSwapBytes: GLboolean read FUnpackSwapBytes write
-      SetUnpackSwapBytes;
-    { Whether unpacked data is required with LSB (least significant bit) first. }
-    property UnpackLSBFirst: GLboolean read FUnpackLSBFirst write
-      SetUnpackLSBFirst;
+    (* Controls whether byte swapping occurs during pixel unpacking. *)
+    property UnpackSwapBytes: GLboolean read FUnpackSwapBytes write SetUnpackSwapBytes;
+    // Whether unpacked data is required with LSB (least significant bit) first.
+    property UnpackLSBFirst: GLboolean read FUnpackLSBFirst write SetUnpackLSBFirst;
     { Unpack image height. }
-    property UnpackImageHeight: GLuint read FUnpackImageHeight write
-      SetUnpackImageHeight;
+    property UnpackImageHeight: GLuint read FUnpackImageHeight write SetUnpackImageHeight;
     { Unpack skip images. }
-    property UnpackSkipImages: GLuint read FUnpackSkipImages write
-      SetUnpackSkipImages;
+    property UnpackSkipImages: GLuint read FUnpackSkipImages write SetUnpackSkipImages;
     { Unpack row length. }
-    property UnpackRowLength: GLuint read FUnpackRowLength write
-      SetUnpackRowLength;
+    property UnpackRowLength: GLuint read FUnpackRowLength write SetUnpackRowLength;
     { Unpack skip rows. }
-    property UnpackSkipRows: GLuint read FUnpackSkipRows write
-      SetUnpackSkipRows;
+    property UnpackSkipRows: GLuint read FUnpackSkipRows write SetUnpackSkipRows;
     { Unpack skip pixels. }
-    property UnpackSkipPixels: GLuint read FUnpackSkipPixels write
-      SetUnpackSkipPixels;
+    property UnpackSkipPixels: GLuint read FUnpackSkipPixels write SetUnpackSkipPixels;
     { Unpack alignment. }
-    property UnpackAlignment: GLuint read FUnpackAlignment write
-      SetUnpackAlignment;
+    property UnpackAlignment: GLuint read FUnpackAlignment write SetUnpackAlignment;
     { Controls whether byte swapping occurs during pixel packing. }
-    property PackSwapBytes: GLboolean read FPackSwapBytes write
-      SetPackSwapBytes;
+    property PackSwapBytes: GLboolean read FPackSwapBytes write SetPackSwapBytes;
     { Whether packed data is required with LSB (least significant bit) first. }
     property PackLSBFirst: GLboolean read FPackLSBFirst write SetPackLSBFirst;
-    { Pack image height. }
-    property PackImageHeight: GLuint read FPackImageHeight write
-      SetPackImageHeight;
-    { Pack skip images. }
-    property PackSkipImages: GLuint read FPackSkipImages write
-      SetPackSkipImages;
-    { Pack row length. }
+    // Pack image height
+    property PackImageHeight: GLuint read FPackImageHeight write SetPackImageHeight;
+    // Pack skip images
+    property PackSkipImages: GLuint read FPackSkipImages write SetPackSkipImages;
+    // Pack row length
     property PackRowLength: GLuint read FPackRowLength write SetPackRowLength;
-    { Pack skip rows. }
+    // Pack skip rows
     property PackSkipRows: GLuint read FPackSkipRows write SetPackSkipRows;
-    { Pack skip pixels. }
-    property PackSkipPixels: GLuint read FPackSkipPixels write
-      SetPackSkipPixels;
-    { Pack alignment. }
+    // Pack skip pixels
+    property PackSkipPixels: GLuint read FPackSkipPixels write SetPackSkipPixels;
+    // Pack alignment
     property PackAlignment: GLuint read FPackAlignment write SetPackAlignment;
-    { Buffer bound for pixel packing (eg. ReadPixels). }
-    property PixelPackBufferBinding: GLuint read FPixelPackBufferBinding
-      write SetPixelPackBufferBinding;
-    { Buffer bound for pixel unpacking (eg. Tex*Image). }
+    // Buffer bound for pixel packing (eg. ReadPixels)
+    property PixelPackBufferBinding: GLuint read FPixelPackBufferBinding write SetPixelPackBufferBinding;
+    // Buffer bound for pixel unpacking (eg. Tex*Image)
     property PixelUnpackBufferBinding: GLuint read FPixelUnpackBufferBinding write SetPixelUnpackBufferBinding;
-    // Program
-    { Currently bound program. }
+    // Currently bound program
     property CurrentProgram: GLuint read FCurrentProgram write SetCurrentProgram;
     property MaxTextureUnits: GLuint read GetMaxTextureUnits;
-    { Currently bound uniform buffer. }
+    // Currently bound uniform buffer
     property UniformBufferBinding: GLuint read FUniformBufferBinding write SetUniformBufferBinding;
-
-    procedure SetBufferIndexedBinding(const Value: GLuint; ATarget: TgxBufferBindingTarget; AIndex: GLuint; ABufferSize: PGLsizei); overload;
-    procedure SetBufferIndexedBinding(const Value: GLuint; ATarget: TgxBufferBindingTarget; AIndex: GLuint; AOffset: GLint; ARangeSize: PGLsizei); overload;
-    // Vector + Geometry Shader state
-    { Default values to be used when a vertex array is not used for that  attribute. }
-    property CurrentVertexAttrib[Index: Integer]: TgxVector
-    read GetCurrentVertexAttrib write SetCurrentVertexAttrib;
-    { Enables/disables program point size. }
-    property EnableProgramPointSize: GLboolean read FEnableProgramPointSize
-      write SetEnableProgramPointSize;
-    // Transform Feedback state
-    { Currently bound transform feedbac buffer. }
-    property TransformFeedbackBufferBinding: GLuint
-      read FTransformFeedbackBufferBinding write
-      SetTransformFeedbackBufferBinding;
-    // Hints
-    { Line smooth hint. }
-    property LineSmoothHint: TgxHintType read FLineSmoothHint write
-      SetLineSmoothHint;
-    { Polygon smooth hint. }
-    property PolygonSmoothHint: TgxHintType read FPolygonSmoothHint write
-      SetPolygonSmoothHint;
-    { Texture compression hint. }
-    property TextureCompressionHint: TgxHintType
-      read FTextureCompressionHint write SetTextureCompressionHint;
-    { Fragment shader derivative hint. }
-    property FragmentShaderDerivitiveHint: TgxHintType
-      read FFragmentShaderDerivitiveHint write SetFragmentShaderDerivitiveHint;
-    property MultisampleFilterHint: TgxHintType read FMultisampleFilterHint
-      write SetMultisampleFilterHint;
-    // Misc
-    { Current queries. }
+    procedure SetBufferIndexedBinding(const Value: GLuint; ATarget: TgxBufferBindingTarget; AIndex: GLuint; 
+	  ABufferSize: PGLsizei); overload;
+    procedure SetBufferIndexedBinding(const Value: GLuint; ATarget: TgxBufferBindingTarget; AIndex: GLuint; 
+	   AOffset: GLint; ARangeSize: PGLsizei); overload;
+    // Default values to be used when a vertex array is not used for that attribute
+    property CurrentVertexAttrib[Index: Integer]: TgxVector read GetCurrentVertexAttrib write SetCurrentVertexAttrib;
+    // Enables/disables program point size
+    property EnableProgramPointSize: GLboolean read FEnableProgramPointSize write SetEnableProgramPointSize;
+    // Currently bound transform feedbac buffer
+    property TransformFeedbackBufferBinding: GLuint read FTransformFeedbackBufferBinding 
+	  write SetTransformFeedbackBufferBinding;
+    // Line smooth hint
+    property LineSmoothHint: TgxHintType read FLineSmoothHint write SetLineSmoothHint;
+    // Polygon smooth hint
+    property PolygonSmoothHint: TgxHintType read FPolygonSmoothHint write SetPolygonSmoothHint;
+    // Texture compression hint
+    property TextureCompressionHint: TgxHintType read FTextureCompressionHint write SetTextureCompressionHint;
+    // Fragment shader derivitive hint
+    property FragmentShaderDerivitiveHint: TgxHintType read FFragmentShaderDerivitiveHint write SetFragmentShaderDerivitiveHint;
+    property MultisampleFilterHint: TgxHintType read FMultisampleFilterHint write SetMultisampleFilterHint;
+    // Current queries. Misc
     property CurrentQuery[Index: TgxQueryType]: GLuint read GetCurrentQuery;
-    { Begins a query of "Target" type.  "Value" must be a valid query object. }
+    // Begins a query of "Target" type.  "Value" must be a valid query object
     procedure BeginQuery(const Target: TgxQueryType; const Value: GLuint);
     { Ends current query of type "Target". }
-    procedure EndQuery(const Target: TgxQueryType);
+    procedure EndQuery(const Target: TgxQueryType); inline;
     { The buffer currently bound to the copy read buffer binding point, this
        is an extra binding point provided so that you don't need to overwrite
        other binding points to copy between buffers. }
-    property CopyReadBufferBinding: GLuint read FCopyReadBufferBinding
-      write SetCopyReadBufferBinding;
+    property CopyReadBufferBinding: GLuint read FCopyReadBufferBinding write SetCopyReadBufferBinding;
     { The buffer currently bound to the copy write buffer binding point, this
        is an extra binding point provided so that you don't need to overwrite
        other binding points to copy between buffers. }
-    property CopyWriteBufferBinding: GLuint read FCopyWriteBufferBinding
-      write SetCopyWriteBufferBinding;
+    property CopyWriteBufferBinding: GLuint read FCopyWriteBufferBinding write SetCopyWriteBufferBinding;
     { Enables/Disables seamless texture cube maps. }
-    property EnableTextureCubeMapSeamless: GLboolean read
-      FEnableTextureCubeMapSeamless write SetEnableTextureCubeMapSeamless;
-    { Indicates the current presence within the list. }
+    property EnableTextureCubeMapSeamless: GLboolean read FEnableTextureCubeMapSeamless write SetEnableTextureCubeMapSeamless;
+    // Indicates the current presence within the list
     property InsideList: Boolean read FInsideList;
-    { Begin new display list. }
-    procedure NewList(list: GLuint; mode: GLEnum);
-    { End display list. }
-    procedure EndList;
-    { Call display list. }
-    procedure CallList(list: GLuint);
-    { Defines the OpenGL texture matrix.
-       Assumed texture mode is GL_MODELVIEW. }
-    procedure SetTextureMatrix(const matrix: TgxMatrix);
-    procedure ResetTextureMatrix;
-    procedure ResetAllTextureMatrix;
+    // Begin new display list
+    procedure NewList(list: GLuint; mode: GLEnum); inline;
+    // End display list
+    procedure EndList; inline;
+    // Call display list
+    procedure CallList(list: Cardinal); inline;
+    // Defines the OpenGL texture matrix. Assumed texture mode is GL_MODELVIEW.
+    procedure SetTextureMatrix(const matrix: TgxMatrix); inline;
+    procedure ResetTextureMatrix; inline;
+    procedure ResetAllTextureMatrix; inline;
     // note: needs to change to per draw-buffer
-    procedure SetColorWriting(flag: Boolean);
-    { Inverts front face winding (CCW/CW). }
-    procedure InvertFrontFace;
+    procedure SetColorWriting(flag: Boolean); inline;
+    // Inverts front face winding (CCW/CW)
+    procedure InvertFrontFace; inline;
     // read only properties
     property States: TgxStates read FStates;
-    { True for ignore deprecated and removed features in OpenGL 3x }
-    property ForwardContext: Boolean read FForwardContext
-      write SetForwardContext;
+    // True for ignore deprecated and removed features in OpenGL 3x
+    property ForwardContext: Boolean read FForwardContext write SetForwardContext;
   end;
 
 type
@@ -1069,7 +967,7 @@ const
     (GLConst: GL_DEPTH_CLAMP; IsDeprecated: False)
     );
 
-  cGLTexTypeToGLEnum: array[TgxTextureTarget] of GLEnum =
+  cGLTexTypeToGLEnum: array[TGLTextureTarget] of GLEnum =
     (0, GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_3D, GL_TEXTURE_1D_ARRAY,
     GL_TEXTURE_2D_ARRAY, GL_TEXTURE_RECTANGLE, GL_TEXTURE_BUFFER,
     GL_TEXTURE_CUBE_MAP, GL_TEXTURE_2D_MULTISAMPLE,
@@ -1182,7 +1080,7 @@ begin
     FLightStates.Specular[I] := clrBlack;
     FLightStates.SpotDirection[I] := VectorMake(0.0, 0.0, -1.0, 0.0);
     FSpotCutoff[I] := 180.0;
-    FlightStates.SpotCosCutoffExponent[I].X := -1;
+    FLightStates.SpotCosCutoffExponent[I].X := -1;
     FLightStates.SpotCosCutoffExponent[I].Y := 0;
     FLightStates.Attenuation[I] := NullHmgVector;
   end;
@@ -1191,7 +1089,7 @@ begin
 
   for I := High(FTextureMatrixIsIdentity) downto 0 do
     FTextureMatrixIsIdentity[I] := False;
-  FForwardContext := False;
+  // FForwardContext := False;
 
   // Vertex Array Data state
   FVertexArrayBinding := 0;
@@ -1283,9 +1181,9 @@ begin
 
   FLogicOpMode := loCopy;
 
-// Framebuffer control state
-// for I := 0 to Length(FColorWriteMask) - 1 do
-//    FColorWriteMask[i] := [ccRed, ccGreen, ccBlue, ccAlpha];
+  // Framebuffer control state
+  // for I := 0 to Length(FColorWriteMask) - 1 do
+  // FColorWriteMask[i] := [ccRed, ccGreen, ccBlue, ccAlpha];
   FillChar(FColorWriteMask, sizeof(FColorWriteMask), $F);
   FDepthWriteMask := True;
   FStencilWriteMask := $FFFFFFFF;
@@ -1363,9 +1261,9 @@ end;
 
 procedure TgxStateCache.Enable(const aState: TgxState);
 begin
-  if cGLStateToGLEnum[aState].IsDeprecated and FForwardContext then
-    exit;
-  if not (aState in FStates) or FInsideList then
+  { if cGLStateToGLEnum[aState].GLDeprecated and FForwardContext then
+    exit; }
+  if not(aState in FStates) or FInsideList then
   begin
     if FInsideList then
       Include(FListStates[FCurrentList], sttEnable)
@@ -1377,16 +1275,16 @@ end;
 
 procedure TgxStateCache.Disable(const aState: TgxState);
 begin
-  if cGLStateToGLEnum[aState].IsDeprecated and FForwardContext then
-    exit;
+  { if cGLStateToGLEnum[aState].GLDeprecated and FForwardContext then
+    exit; }
   if (aState in FStates) or FInsideList then
   begin
     if FInsideList then
       Include(FListStates[FCurrentList], sttEnable)
     else
       Exclude(FStates, aState);
-{$IFDEF VXS_CACHE_MISS_CHECK}
-    if not glIsEnabled(cGLStateToGLEnum[aState].VXConst) then
+{$IFDEF USE_CACHE_MISS_CHECK}
+    if not glIsEnabled(cGLStateToGLEnum[aState].GLConst) then
       ShowMessages(strStateCashMissing + 'Disable');
 {$ENDIF}
     glDisable(cGLStateToGLEnum[aState].GLConst);
@@ -1412,16 +1310,16 @@ end;
 
 procedure TgxStateCache.PerformEnable(const aState: TgxState);
 begin
-  if cGLStateToGLEnum[aState].IsDeprecated and FForwardContext then
-    exit;
+  { if cGLStateToGLEnum[aState].GLDeprecated and FForwardContext then
+    exit; }
   Include(FStates, aState);
   glEnable(cGLStateToGLEnum[aState].GLConst);
 end;
 
 procedure TgxStateCache.PerformDisable(const aState: TgxState);
 begin
-  if cGLStateToGLEnum[aState].IsDeprecated and FForwardContext then
-    exit;
+  { if cGLStateToGLEnum[aState].GLDeprecated and FForwardContext then
+    exit; }
   Exclude(FStates, aState);
   glDisable(cGLStateToGLEnum[aState].GLConst);
 end;
@@ -1540,7 +1438,7 @@ procedure TgxStateCache.SetMaterialDiffuseColor(const aFace: GLEnum; const diffu
 var
   i: Integer;
 begin
-  if FForwardContext then Exit;
+  { if FForwardContext then Exit; }
 
   if not(stLighting in FStates) then
   begin
@@ -1830,8 +1728,7 @@ begin
   end;
 end;
 
-procedure TgxStateCache.SetCurrentVertexAttrib(Index: Integer;
-  const Value: TgxVector);
+procedure TgxStateCache.SetCurrentVertexAttrib(Index: Integer; const Value: TgxVector);
 begin
   if not VectorEquals(Value, FCurrentVertexAttrib[Index]) then
   begin
@@ -1940,8 +1837,7 @@ begin
   end;
 end;
 
-procedure TgxStateCache.SetEnableClipDistance(Index: Cardinal;
-  const Value: GLboolean);
+procedure TgxStateCache.SetEnableClipDistance(Index: Cardinal; const Value: GLboolean);
 begin
   if FEnableClipDistance[Index] <> Value then
   begin
@@ -2104,8 +2000,7 @@ end;
 
 procedure TgxStateCache.SetFrameBuffer(const Value: GLuint);
 begin
-  if (Value <> FDrawFrameBuffer) or (Value <> FReadFrameBuffer)
-    or FInsideList then
+  if (Value <> FDrawFrameBuffer) or (Value <> FReadFrameBuffer) or FInsideList then
   begin
     FDrawFrameBuffer := Value;
     FReadFrameBuffer := Value;
@@ -2130,8 +2025,7 @@ procedure TgxStateCache.SetAlphaFunction(func: TgxComparisonFunction;
 begin
   if FForwardContext then
     exit;
-  if (FAlphaFunc <> func) or (FAlphaRef <> ref)
-    or FInsideList then
+  if (FAlphaFunc <> func) or (FAlphaRef <> ref) or FInsideList then
   begin
     if FInsideList then
       Include(FListStates[FCurrentList], sttColorBuffer)
@@ -2174,8 +2068,7 @@ begin
   Result := FEnableBlend[Index];
 end;
 
-function TgxStateCache.GetEnableClipDistance(
-  ClipDistance: Cardinal): GLboolean;
+function TgxStateCache.GetEnableClipDistance(ClipDistance: Cardinal): GLboolean;
 begin
   Result := FEnableClipDistance[ClipDistance];
 end;
@@ -2260,13 +2153,12 @@ begin
   Result := FMaxSamples;
 end;
 
-function TgxStateCache.GetTextureBinding(Index: Integer;
-  target: TgxTextureTarget): GLuint;
+function TgxStateCache.GetTextureBinding(Index: Integer; target: TGLTextureTarget): GLuint;
 begin
   Result := FTextureBinding[Index, target];
 end;
 
-function TgxStateCache.GetTextureBindingTime(Index: Integer; target: TgxTextureTarget):
+function TgxStateCache.GetTextureBindingTime(Index: Integer; target: TGLTextureTarget):
   Double;
 begin
   Result := FTextureBindingTime[Index, target];
@@ -2307,7 +2199,7 @@ end;
 procedure TgxStateCache.ResetTextureMatrix;
 begin
   if FForwardContext then
-    exit;
+    Exit;
   glMatrixMode(GL_TEXTURE);
   glLoadIdentity;
   FTextureMatrixIsIdentity[ActiveTexture] := True;
@@ -2538,8 +2430,7 @@ end;
 
 procedure TgxStateCache.SetPolygonOffset(const factor, units: Single);
 begin
-  if (factor <> FPolygonOffsetFactor) or (units <> FPolygonOffsetUnits)
-    or FInsideList then
+  if (factor <> FPolygonOffsetFactor) or (units <> FPolygonOffsetUnits) or FInsideList then
   begin
     if FInsideList then
       Include(FListStates[FCurrentList], sttPolygon)
@@ -2615,8 +2506,7 @@ begin
   end;
 end;
 
-procedure TgxStateCache.SetSampleCoverage(const Value: Single;
-  invert: GLboolean);
+procedure TgxStateCache.SetSampleCoverage(const Value: Single; invert: GLboolean);
 begin
   if (Value <> FSampleCoverageValue) or (invert <> FSampleCoverageInvert)
     or FInsideList then
@@ -2771,15 +2661,13 @@ begin
           end;
       end;
 
-    glStencilFuncSeparate(cGLCullFaceModeToGLEnum[face],
-      cGLComparisonFunctionToGLEnum[func], ref, mask);
+    glStencilFuncSeparate(cGLCullFaceModeToGLEnum[face], cGLComparisonFunctionToGLEnum[func], ref, mask);
   end;
 end;
 
 procedure TgxStateCache.SetStencilFunc(const func: TgxStencilFunction; const ref: GLint; const mask: GLuint);
 begin
-  if (func <> FStencilFunc) or (ref <> FStencilRef) or (mask <>
-    FStencilValueMask) or FInsideList then
+  if (func <> FStencilFunc) or (ref <> FStencilRef) or (mask <> FStencilValueMask) or FInsideList then
   begin
     if FInsideList then
       Include(FListStates[FCurrentList], sttStencilBuffer)
@@ -2794,11 +2682,11 @@ begin
 end;
 
 procedure TgxStateCache.SetStencilOp(const fail, zfail, zpass: TgxStencilOp);
-{$IFDEF VXS_CACHE_MISS_CHECK}
+{$IFDEF USE_CACHE_MISS_CHECK}
 var I: GLuint;
 {$ENDIF}
 begin
-{$IFDEF VXS_CACHE_MISS_CHECK}
+{$IFDEF USE_CACHE_MISS_CHECK}
   glGetIntegerv(GL_STENCIL_FAIL, @I);
   if cGLStencilOpToGLEnum[FStencilFail] <> I then
     ShowMessages(strStateCashMissing + 'Stencil fail');
@@ -2826,8 +2714,7 @@ begin
   end;
 end;
 
-procedure TgxStateCache.SetStencilOpSeparate(const face: TgxCullFaceMode;
-  const sfail, dpfail, dppass: TgxStencilOp);
+procedure TgxStateCache.SetStencilOpSeparate(const face: TgxCullFaceMode; const sfail, dpfail, dppass: TgxStencilOp);
 begin
   if FInsideList then
     Include(FListStates[FCurrentList], sttStencilBuffer)
@@ -2863,11 +2750,11 @@ begin
 end;
 
 procedure TgxStateCache.SetStencilWriteMask(const Value: GLuint);
-{$IFDEF VXS_CACHE_MISS_CHECK}
+{$IFDEF USE_CACHE_MISS_CHECK}
 var I: GLuint;
 {$ENDIF}
 begin
-{$IFDEF VXS_CACHE_MISS_CHECK}
+{$IFDEF USE_CACHE_MISS_CHECK}
   glGetIntegerv(GL_STENCIL_WRITEMASK, @I);
   if FStencilWriteMask <> I then
     ShowMessages(strStateCashMissing + 'Stencil write mask');
@@ -2882,8 +2769,7 @@ begin
   end;
 end;
 
-procedure TgxStateCache.SetTextureBinding(Index: Integer; target:
-  TgxTextureTarget;
+procedure TgxStateCache.SetTextureBinding(Index: Integer; target: TGLTextureTarget;
   const Value: GLuint);
 var
   lastActiveTexture: GLuint;
@@ -2904,13 +2790,13 @@ begin
   FTextureBindingTime[Index, target] := AppTime;
 end;
 
-function TgxStateCache.GetActiveTextureEnabled(Target: TgxTextureTarget):
+function TgxStateCache.GetActiveTextureEnabled(Target: TGLTextureTarget):
   Boolean;
 begin
   Result := FActiveTextureEnabling[FActiveTexture][Target];
 end;
 
-procedure TgxStateCache.SetActiveTextureEnabled(Target: TgxTextureTarget;
+procedure TgxStateCache.SetActiveTextureEnabled(Target: TGLTextureTarget;
   const Value: Boolean);
 var
   glTarget: GLEnum;
@@ -2918,8 +2804,7 @@ begin
   glTarget := DecodeTextureTarget(Target);
   if FForwardContext or not IsTargetSupported(glTarget) then
     exit;
-  if (Value <> FActiveTextureEnabling[FActiveTexture][Target])
-    or FInsideList then
+  if (Value <> FActiveTextureEnabling[FActiveTexture][Target]) or FInsideList then
   begin
     if FInsideList then
       Include(FListStates[FCurrentList], sttEnable)
@@ -2953,8 +2838,7 @@ begin
   end;
 end;
 
-procedure TgxStateCache.SetEnableTextureCubeMapSeamless(const Value:
-  GLboolean);
+procedure TgxStateCache.SetEnableTextureCubeMapSeamless(const Value: GLboolean);
 begin
   if Value <> FEnableTextureCubeMapSeamless then
   begin
@@ -2998,8 +2882,8 @@ end;
 
 procedure TgxStateCache.CallList(list: GLuint);
 begin
-  while High(FListStates) < Integer(list) do
-    SetLength(FListStates, 2 * Length(FListStates));
+  // while High(FListStates) < Integer(list) do
+  // SetLength(FListStates, 2 * Length(FListStates));
 
   if FListStates[list - 1] <> [] then
   begin
@@ -3045,8 +2929,7 @@ begin
     end;
 end;
 
-procedure TgxStateCache.SetBufferIndexedBinding(const Value: GLuint;
-  ATarget: TgxBufferBindingTarget; AIndex: GLuint;
+procedure TgxStateCache.SetBufferIndexedBinding(const Value: GLuint; ATarget: TgxBufferBindingTarget; AIndex: GLuint;
     AOffset: GLint; ARangeSize: PGLsizei);
 begin
   Assert(not FInsideList);
@@ -3158,15 +3041,15 @@ end;
 
 procedure TgxStateCache.SetFFPLight(Value: Boolean);
 begin
-  FFFPLight := Value and not FForwardContext;
+  FFFPLight := Value { and not FForwardContext};
 end;
 
 function TgxStateCache.GetMaxLights: Integer;
 begin
   if FMaxLights = 0 then
-  if FForwardContext then
+ (* if FForwardContext then
     FMaxLights := MAX_HARDWARE_LIGHT
-  else
+  else *)
     glGetIntegerv(GL_MAX_LIGHTS, @FMaxLights);
   Result := FMaxLights;
 end;
@@ -3405,8 +3288,7 @@ end;
 
 procedure TgxStateCache.SetSpotExponent(I: Integer; const Value: Single);
 begin
-  if (Value <> FLightStates.SpotCosCutoffExponent[I].Y )
-    or FInsideList then
+  if (Value <> FLightStates.SpotCosCutoffExponent[I].Y ) or FInsideList then
   begin
     if FInsideList then
       Include(FListStates[FCurrentList], sttLighting)
@@ -3555,11 +3437,11 @@ end;
 
 procedure TgxStateCache.ResetTexture(const TextureUnit: Integer);
 var
-  t: TgxTextureTarget;
+  t: TGLTextureTarget;
   glTarget: GLEnum;
 begin
   glActiveTexture(GL_TEXTURE0 + TextureUnit);
-  for t := Low(TgxTextureTarget) to High(TgxTextureTarget) do
+  for t := Low(TGLTextureTarget) to High(TGLTextureTarget) do
   begin
     glTarget := DecodeTextureTarget(t);
     if IsTargetSupported(glTarget) then
@@ -3575,13 +3457,13 @@ end;
 procedure TgxStateCache.ResetCurrentTexture;
 var
   a: GLint;
-  t: TgxTextureTarget;
+  t: TGLTextureTarget;
   glTarget: GLEnum;
 begin
   for a := MaxTextureImageUnits - 1 to 0 do
   begin
     glActiveTexture(GL_TEXTURE0 + a);
-    for t := Low(TgxTextureTarget) to High(TgxTextureTarget) do
+    for t := Low(TGLTextureTarget) to High(TGLTextureTarget) do
     begin
       glTarget := DecodeTextureTarget(t);
       if IsTargetSupported(glTarget) then

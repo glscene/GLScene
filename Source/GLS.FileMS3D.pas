@@ -8,7 +8,7 @@ unit GLS.FileMS3D;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Math,

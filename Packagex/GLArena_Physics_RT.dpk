@@ -1,0 +1,55 @@
+//
+// The graphics rendering engine GXScene  http://glscene.org
+//
+package GLArena_Physics_RT;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'GLArena Physics Managers'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  fmx,
+  GLArena_RT;
+
+contains
+  Physix.ODEManager in '..\Source\FMX\Physix.ODEManager.pas',
+  Physix.ODESkeletonColliders in '..\Source\FMX\Physix.ODESkeletonColliders.pas',
+  Physix.ODEUtils in '..\Source\FMX\Physix.ODEUtils.pas',
+  Physix.ODERagdoll in '..\Source\FMX\Physix.ODERagdoll.pas',
+  Physix.NGDManager in '..\Source\FMX\Physix.NGDManager.pas',
+  Physix.NGDRagdoll in '..\Source\FMX\Physix.NGDRagdoll.pas',
+  Newton.Import in '..\Source\Common\Newton.Import.pas',
+  NGD.Import in '..\Source\Common\NGD.Import.pas',
+  ODE.Import in '..\Source\Common\ODE.Import.pas',
+  ModuleLoader in '..\Source\Common\ModuleLoader.pas',
+  PhysX.Import in '..\Source\Common\PhysX.Import.pas';
+
+end.
+
+

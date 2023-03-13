@@ -7,7 +7,7 @@ unit GLS.Context;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -29,11 +29,11 @@ uses
   GLS.OpenGLAdapter,
   GLS.XOpenGL,
   GLS.VectorGeometry,
-  Scene.Strings,
+  Scenario.Strings,
+  Scenario.TextureFormat,
   GLS.VectorTypes,
   GLS.State,
   GLS.PipelineTransformation,
-  GLS.TextureFormat,
   GLS.Logger;
 
 // Buffer ID's for Multiple-Render-Targets (using GL_ATI_draw_buffers)

@@ -7,7 +7,7 @@ unit GLS.VerletClothify;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,

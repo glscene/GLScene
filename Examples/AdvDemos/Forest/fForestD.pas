@@ -41,7 +41,7 @@ uses
   GLS.XOpenGL,
   GLS.BaseClasses,
   GLS.TextureCombiners,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.Material,
   GLS.Coordinates,
   GLS.TerrainRenderer,
@@ -621,7 +621,7 @@ begin
   tex0Matrix.Y.Y := 4 * cWaveScale;
   tex0Matrix.w.X := tWave * 1.1;
   tex0Matrix.w.Y := tWave * 1.06;
-  rci.GLStates.SetGLTextureMatrix(tex0Matrix);
+  rci.GLStates.SetTextureMatrix(tex0Matrix);
 
   rci.GLStates.ActiveTexture := 1;
   rci.GLStates.TextureBinding[0, ttTexture2D] := MLWater.Materials[0].Material.Texture.Handle;
@@ -632,14 +632,14 @@ begin
   tex1Matrix.Y.Y := cWaveScale;
   tex1Matrix.w.X := tWave * 0.83;
   tex1Matrix.w.Y := tWave * 0.79;
-  rci.GLStates.SetGLTextureMatrix(tex1Matrix);
+  rci.GLStates.SetTextureMatrix(tex1Matrix);
 
   if enableTex2DReflection then
   begin
     rci.GLStates.ActiveTexture := 2;
     rci.GLStates.TextureBinding[2, mirrorTexType] := mirrorTexture.Handle;
     rci.GLStates.ActiveTextureEnabled[ttTexture2D] := True;
-    rci.GLStates.SetGLTextureMatrix(GetTextureReflectionMatrix);
+    rci.GLStates.SetTextureMatrix(GetTextureReflectionMatrix);
   end;
 
   rci.GLStates.ActiveTexture := 0;
@@ -685,7 +685,7 @@ begin
     GL.End_;
   end;
 
-  rci.GLStates.ResetGLTextureMatrix;
+  rci.GLStates.ResetTextureMatrix;
 end;
 
 procedure TForm1.DOGLSLWaterPlaneRender(Sender: TObject; var rci: TGLRenderContextInfo);
@@ -713,7 +713,7 @@ begin
   reflectionProgram.Uniform4f['EyePos'] := Camera.AbsolutePosition;
 
   rci.GLStates.TextureBinding[0, mirrorTexType] := mirrorTexture.Handle;
-  rci.GLStates.SetGLTextureMatrix(GetTextureReflectionMatrix);
+  rci.GLStates.SetTextureMatrix(GetTextureReflectionMatrix);
   reflectionProgram.Uniform1i['ReflectionMap'] := 0;
 
   rci.GLStates.TextureBinding[1, ttTexture2D] := MLWater.Materials[1].Material.Texture.Handle;

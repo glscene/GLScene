@@ -5,7 +5,7 @@ unit GLX.FileLMTS;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
@@ -106,7 +106,7 @@ implementation
 //====================================================================
 
 uses
-  GLX.TextureFormat;
+  Scenario.TextureFormat;
 
 // ------------------
 // ------------------ TgxLMTSVectorFile ------------------

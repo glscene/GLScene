@@ -19,7 +19,7 @@ unit GLX.GLSLSemShader;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
@@ -35,7 +35,7 @@ uses
   GLX.RenderContextInfo, 
   GLX.VectorGeometry, 
   GLX.Coordinates, 
-  GLX.TextureFormat, 
+  Scenario.TextureFormat, 
   GLX.Color, 
   GLX.Texture, 
   GLX.Material, 

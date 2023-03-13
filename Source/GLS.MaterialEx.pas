@@ -18,7 +18,7 @@ unit GLS.MaterialEx;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -42,12 +42,12 @@ uses
   GLS.Graphics,
   GLS.PersistentClasses,
   GLS.State,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.XCollection,
   GLS.TextureCombiners,
   GLSL.ShaderParameter,
   GLS.ApplicationFileIO,
-  Scene.Strings,
+  Scenario.Strings,
   GLS.ImageUtils,
   GLS.Utils,
   GLS.XOpenGL,
@@ -195,7 +195,7 @@ type
     FWidth: Integer;
     FHeight: Integer;
     FDepth: Integer;
-    FSwizzles: TSwizzleVector;
+    FSwizzles: TglSwizzleVector;
     FApplicableSampler: TGLTextureSampler;
     FLastSampler: TGLTextureSampler;
     function GetTextureTarget: TGLTextureTarget;
@@ -377,7 +377,7 @@ type
         shader or fixed-function pipeline. *)
   TGLTextureSwizzling = class(TGLUpdateAbleObject)
   private
-    FSwizzles: TSwizzleVector;
+    FSwizzles: TglSwizzleVector;
     function GetSwizzle(AIndex: Integer): TGLTextureSwizzle;
     procedure SetSwizzle(AIndex: Integer; AValue: TGLTextureSwizzle);
     function StoreSwizzle(AIndex: Integer): Boolean;
@@ -729,11 +729,11 @@ type
     function GetAutoSetMethod: string; virtual;
     function GetTextureName: string; virtual;
     function GetSamplerName: string; virtual;
-    function GetTextureSwizzle: TSwizzleVector; virtual;
+    function GetTextureSwizzle: TglSwizzleVector; virtual;
     procedure SetTextureName(const AValue: string); virtual;
     procedure SetSamplerName(const AValue: string); virtual;
     procedure SetAutoSetMethod(const AValue: string); virtual;
-    procedure SetTextureSwizzle(const AValue: TSwizzleVector); virtual;
+    procedure SetTextureSwizzle(const AValue: TglSwizzleVector); virtual;
     function GetFloat: Single; virtual;
     function GetVec2: TVector2f; virtual;
     function GetVec3: TVector3f; virtual;
@@ -856,16 +856,16 @@ type
     FLibTexture: TGLAbstractTexture;
     FLibSampler: TGLTextureSampler;
     FTarget: TGLTextureTarget;
-    FSwizzling: TSwizzleVector;
+    FSwizzling: TglSwizzleVector;
   protected
     FLibTexureName: TGLMaterialComponentName;
     FLibSamplerName: TGLMaterialComponentName;
     function GetTextureName: string; override;
     function GetSamplerName: string; override;
-    function GetTextureSwizzle: TSwizzleVector; override;
+    function GetTextureSwizzle: TglSwizzleVector; override;
     procedure SetTextureName(const AValue: string); override;
     procedure SetSamplerName(const AValue: string); override;
-    procedure SetTextureSwizzle(const AValue: TSwizzleVector); override;
+    procedure SetTextureSwizzle(const AValue: TglSwizzleVector); override;
     procedure WriteToFiler(AWriter: TWriter); override;
     procedure ReadFromFiler(AReader: TReader); override;
     procedure Loaded;
@@ -880,7 +880,7 @@ type
     property LibSamplerName: TGLMaterialComponentName read GetSamplerName
       write SetSamplerName;
     property GLSLSampler: TGLSLSamplerType read GetGLSLSamplerType;
-    property Swizzling: TSwizzleVector read GetTextureSwizzle write
+    property Swizzling: TglSwizzleVector read GetTextureSwizzle write
       SetTextureSwizzle;
   end;
 
@@ -3519,7 +3519,7 @@ begin
       end;
 
       if not FTextureMatrixIsIdentity and (MappingMode = tmmUser) then
-        ARci.GLStates.SetGLTextureMatrix(FTextureMatrix);
+        ARci.GLStates.SetTextureMatrix(FTextureMatrix);
 
       if ARci.currentMaterialLevel < mlSM3 then
       begin
@@ -4003,7 +4003,7 @@ begin
     if ARci.currentMaterialLevel < mlSM3 then
     begin
       if not FTextureMatrixIsIdentity and (MappingMode = tmmUser) then
-        ARci.GLStates.SetGLTextureMatrix(IdentityHmgMatrix);
+        ARci.GLStates.SetTextureMatrix(IdentityHmgMatrix);
       UnApplyMappingMode;
     end;
   end;
@@ -5532,7 +5532,7 @@ begin
     Result := strNothing;
 end;
 
-function TGLShaderUniformTexture.GetTextureSwizzle: TSwizzleVector;
+function TGLShaderUniformTexture.GetTextureSwizzle: TglSwizzleVector;
 begin
   Result := FSwizzling;
 end;
@@ -5644,8 +5644,7 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TGLShaderUniformTexture.SetTextureSwizzle(const AValue:
-  TSwizzleVector);
+procedure TGLShaderUniformTexture.SetTextureSwizzle(const AValue: TglSwizzleVector);
 begin
   FSwizzling := AValue;
 end;
@@ -5739,7 +5738,7 @@ begin
   Result := strNothing;
 end;
 
-function TGLAbstractShaderUniform.GetTextureSwizzle: TSwizzleVector;
+function TGLAbstractShaderUniform.GetTextureSwizzle: TglSwizzleVector;
 begin
   Result := cDefaultSwizzleVector;
 end;
@@ -5837,8 +5836,7 @@ procedure TGLAbstractShaderUniform.SetTextureName(const AValue: string);
 begin
 end;
 
-procedure TGLAbstractShaderUniform.SetTextureSwizzle(const AValue:
-  TSwizzleVector);
+procedure TGLAbstractShaderUniform.SetTextureSwizzle(const AValue: TglSwizzleVector);
 begin
 end;
 

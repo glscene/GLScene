@@ -12,7 +12,7 @@ unit GLX.MultisampleImage;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -22,7 +22,7 @@ uses
   GLX.Context,
   GLX.Texture,
   GLX.Graphics,
-  GLX.TextureFormat;
+  Scenario.TextureFormat;
 
 type
 
@@ -41,13 +41,13 @@ type
     function GetWidth: Integer; override;
     function GetHeight: Integer; override;
     function GetDepth: Integer; override;
-    function GetTextureTarget: TgxTextureTarget; override;
+    function GetTextureTarget: TGLTextureTarget; override;
   public
     constructor Create(AOwner: TPersistent); override;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     class function IsSelfLoading: Boolean; override;
-    procedure LoadTexture(AInternalFormat: TgxInternalFormat); override;
+    procedure LoadTexture(AInternalFormat: TGLInternalFormat); override;
     function GetBitmap32: TgxBitmap32; override;
     procedure ReleaseBitmap32; override;
     procedure SaveToFile(const fileName: string); override;
@@ -214,7 +214,7 @@ begin
   Result := 'Image for rendering to texture with antialiasing';
 end;
 
-function TgxMultisampleImage.GetTextureTarget: TgxTextureTarget;
+function TgxMultisampleImage.GetTextureTarget: TGLTextureTarget;
 begin
   if fDepth > 0 then
     Result := ttTexture2DMultisampleArray
@@ -227,9 +227,9 @@ begin
   Result := True;
 end;
 
-procedure TgxMultisampleImage.LoadTexture(AInternalFormat: TgxInternalFormat);
+procedure TgxMultisampleImage.LoadTexture(AInternalFormat: TGLInternalFormat);
 var
-  target: TgxTextureTarget;
+  target: TGLTextureTarget;
   maxSamples, maxSize: GLint;
 begin
   // Check smaples count range
@@ -262,7 +262,7 @@ begin
       glTexImage2DMultisample(
         DecodeTextureTarget(target),
         SamplesCount,
-        InternalFormatToOpenVXFormat(AInternalFormat),
+        InternalFormatToOpenGLFormat(AInternalFormat),
         Width,
         Height,
         FFixedSamplesLocation);
@@ -271,7 +271,7 @@ begin
       glTexImage3DMultisample(
         DecodeTextureTarget(target),
         SamplesCount,
-        InternalFormatToOpenVXFormat(AInternalFormat),
+        InternalFormatToOpenGLFormat(AInternalFormat),
         Width,
         Height,
         Depth,

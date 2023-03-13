@@ -7,7 +7,7 @@ unit GLS.GeometryBB;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.SysUtils,

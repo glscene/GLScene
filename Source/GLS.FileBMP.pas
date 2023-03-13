@@ -8,7 +8,7 @@ unit GLS.FileBMP;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -20,7 +20,7 @@ uses
   GLS.Context,
   GLS.Graphics,
   GLS.ApplicationFileIO,
-  GLS.TextureFormat;
+  Scenario.TextureFormat;
 
 type
 

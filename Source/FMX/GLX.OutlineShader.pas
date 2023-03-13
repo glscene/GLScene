@@ -16,7 +16,7 @@ unit GLX.OutlineShader;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -28,7 +28,7 @@ uses
   GLX.RenderContextInfo,
   GLX.Context,
   GLX.State,
-  GLX.TextureFormat;
+  Scenario.TextureFormat;
 
 type
 

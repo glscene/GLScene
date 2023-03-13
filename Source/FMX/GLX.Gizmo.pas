@@ -10,7 +10,7 @@ unit GLX.Gizmo;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
@@ -20,7 +20,7 @@ uses
   GLX.PersistentClasses,
   GLX.VectorGeometry,
   GLX.VectorTypes,
-  Scene.Strings,
+  Scenario.Strings,
   GLX.Scene,
   GLX.Color,
   GLX.Objects,

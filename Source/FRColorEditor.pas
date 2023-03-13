@@ -7,7 +7,7 @@ unit FRColorEditor;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   WinApi.Windows, 

@@ -1,7 +1,6 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit Formats.MD2;
 
 (* Loading methods for MD2 file format *)
@@ -9,13 +8,12 @@ unit Formats.MD2;
 interface
 
 {$R-}
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
   System.SysUtils,
    
-  GLS.VectorGeometry, 
   GLS.VectorTypes;
 
 const

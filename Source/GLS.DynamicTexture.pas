@@ -10,7 +10,7 @@ unit GLS.DynamicTexture;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -23,7 +23,7 @@ uses
   GLS.Utils,
   GLS.Context,
   GLS.Texture,
-  GLS.TextureFormat,
+  Scenario.TextureFormat,
   GLS.Graphics;
 
 type
@@ -255,8 +255,7 @@ function TGLDynamicTextureImage.GetDataFormat: integer;
 var
   Data, color: Cardinal;
 begin
-  FindCompatibleDataFormat(TGLTexture(OwnerTexture).TextureFormatEx,
-    color, Data);
+  FindCompatibleDataFormat(TGLTexture(OwnerTexture).TextureFormatEx, color, Data);
   Result := Data;
 end;
 
@@ -269,8 +268,7 @@ function TGLDynamicTextureImage.GetTextureFormat: integer;
 var
   Data, color: Cardinal;
 begin
-  FindCompatibleDataFormat(TGLTexture(OwnerTexture).TextureFormatEx,
-    color, Data);
+  FindCompatibleDataFormat(TGLTexture(OwnerTexture).TextureFormatEx, color, Data);
   if FUseBGR then
     case color of
       GL_RGB:

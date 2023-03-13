@@ -16,7 +16,7 @@ unit GLX.Objects;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,
@@ -32,7 +32,7 @@ uses
   GLX.VectorGeometry,
   GLX.VectorTypes,
   GLX.VectorLists,
-  Scene.Strings,
+  Scenario.Strings,
 
   GLX.Scene,
   GLX.Context,
@@ -992,7 +992,7 @@ end;
 
 procedure TgxPlane.BuildList(var rci: TgxRenderContextInfo);
 
-  procedure EmitVertex(ptr: PVertexRec); {$IFDEF VXS_INLINE}inline;{$ENDIF}
+  procedure EmitVertex(ptr: PVertexRec); {$IFDEF USE_INLINE}inline;{$ENDIF}
   begin
     glTexCoord2fv(@ptr^.TexCoord);
     glVertex3fv(@ptr^.Position);

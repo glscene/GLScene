@@ -10,7 +10,7 @@ unit GLX.SkyBox;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   Winapi.OpenGL,

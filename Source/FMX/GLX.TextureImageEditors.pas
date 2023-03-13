@@ -7,7 +7,7 @@ unit GLX.TextureImageEditors;
 
 interface
 
-{$I Scene.inc}
+{$I Scenario.inc}
 
 uses
   System.Classes,
