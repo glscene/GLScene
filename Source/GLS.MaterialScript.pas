@@ -15,7 +15,7 @@ uses
   System.Classes,
   VCL.StdCtrls,
 
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Texture,
   Scena.TextureFormat,
   GLS.Graphics,

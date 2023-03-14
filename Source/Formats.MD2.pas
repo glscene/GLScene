@@ -14,7 +14,7 @@ uses
   System.Classes,
   System.SysUtils,
    
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 const
   MAX_MD2_TRIANGLES = 4096;

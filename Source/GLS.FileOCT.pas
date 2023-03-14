@@ -23,7 +23,7 @@ uses
   GLS.State,
   Scena.TextureFormat,
   GLS.VectorFileObjects,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.ApplicationFileIO,
   Formats.OCT;
 

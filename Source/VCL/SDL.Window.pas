@@ -21,12 +21,12 @@ uses
   System.SysUtils,
   System.SyncObjs,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.OpenGLAdapter,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.State,
   GLS.Context,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   SDL.Import;
 
 type

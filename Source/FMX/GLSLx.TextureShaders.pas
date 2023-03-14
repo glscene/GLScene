@@ -25,10 +25,10 @@ uses
   GLX.Scene,
   GLX.Context,
   GLX.Texture,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.XOpenGL,
 
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Color,
   GLX.Material,
   Scena.Strings,

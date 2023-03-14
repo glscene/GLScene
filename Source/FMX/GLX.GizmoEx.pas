@@ -24,8 +24,8 @@ uses
   FMX.TextLayout,
 
   GLX.GeometryBB,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.PersistentClasses,
   Scena.Strings,
   GLX.Scene,

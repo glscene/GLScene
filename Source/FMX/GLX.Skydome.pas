@@ -17,8 +17,8 @@ uses
   System.Math,
   FMX.Graphics,
 
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.Scene,
   GLX.Context,
   GLX.State,
@@ -693,7 +693,7 @@ begin
     else
       coord.Z := Random * 2 - 1;
     // calculate RA and Dec
-    star.DEC := ArcSine(coord.Z) * c180divPI;
+    star.DEC := ArcSin(coord.Z) * c180divPI;
     star.RA := Random * 360 - 180;
     // pick a color
     star.Color := Color;
@@ -727,7 +727,7 @@ begin
     else
       coord.Z := Random * 2 - 1;
     // calculate RA and Dec
-    star.DEC := ArcSine(coord.Z) * c180divPI;
+    star.DEC := ArcSin(coord.Z) * c180divPI;
     star.RA := Random * 360 - 180;
     // pick a color
     star.Color := RGB2Color(RandomTT(ColorMin.X, ColorMax.X),

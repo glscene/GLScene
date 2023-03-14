@@ -22,9 +22,9 @@ uses
   GLS.Scene,
   GLS.Coordinates,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.SmoothNavigator,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
 

@@ -26,7 +26,7 @@ uses
   VCL.ExtCtrls,
 
   GLS.SceneForm,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Scene,
   GLS.SceneViewer,
   Scena.Strings;

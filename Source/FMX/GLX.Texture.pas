@@ -22,8 +22,8 @@ uses
   Scena.Strings,
 
   GLX.XOpenGL,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.BaseClasses,
   GLX.ApplicationFileIO,
 

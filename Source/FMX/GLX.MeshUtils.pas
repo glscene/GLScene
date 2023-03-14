@@ -15,8 +15,8 @@ uses
   System.Math,
   GLX.PersistentClasses,
   GLX.VectorLists,
-  GLX.VectorGeometry,
-  GLX.VectorTypes;
+  Scena.VectorGeometry,
+  Scena.VectorTypes;
 
 (* Converts a triangle strips into a triangle list.
   Vertices are added to list, based on the content of strip. Both non-indexed

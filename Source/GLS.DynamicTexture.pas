@@ -19,7 +19,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Utils,
   GLS.Context,
   GLS.Texture,
@@ -79,7 +79,7 @@ implementation
 // ---------------------------------------------------------
 
 uses
-  GLS.VectorGeometry;
+  Scena.VectorGeometry;
 
 // ----------------------------------
 // TGLDynamicTextureImage

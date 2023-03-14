@@ -21,10 +21,10 @@ uses
   GLS.TerrainRenderer,
   GLS.HeightData,
   GLS.Cadencer,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Texture,
   GLS.SceneViewer,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
 
   GLS.Material,
   GLS.Coordinates,

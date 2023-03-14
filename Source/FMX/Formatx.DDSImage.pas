@@ -24,12 +24,12 @@ uses
   FMX.Graphics,
   FMX.Types,
   
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Graphics,
   GLX.Context,
   Scena.TextureFormat,
   GLX.FileDDS,
-  Formatx.DXTC;
+  Formats.DXTC;
 
 
 type

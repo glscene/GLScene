@@ -11,7 +11,7 @@ uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   Scena.Strings;
 
 type

@@ -24,7 +24,7 @@ uses
   GLX.State, 
   GLX.Context, 
   GLX.RenderContextInfo, 
-  GLX.VectorGeometry, 
+  Scena.VectorGeometry, 
   GLX.Coordinates,
   Scena.TextureFormat, 
   GLX.Color, 

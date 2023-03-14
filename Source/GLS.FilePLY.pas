@@ -13,7 +13,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.VectorLists,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,

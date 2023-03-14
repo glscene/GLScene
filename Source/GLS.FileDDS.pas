@@ -24,7 +24,7 @@ uses
   GLS.MultiSampleImage,
   GLS.RGBE,
   GLS.ApplicationFileIO,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Material,
   Scena.Strings;
 

@@ -21,7 +21,7 @@ uses
 
   GLX.Material,
   GLX.Scene,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   Scena.Strings,
   GLX.RenderContextInfo;
 

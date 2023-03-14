@@ -34,11 +34,13 @@ requires
   fmx;
 
 contains
+  Formats.m3DS in '..\Source\Common\Formats.m3DS.pas',
+  Formats.m3DSConst in '..\Source\Common\Formats.m3DSConst.pas',
+  Formats.m3DSTypes in '..\Source\Common\Formats.m3DSTypes.pas',
+  Formats.m3DSUtils in '..\Source\Common\Formats.m3DSUtils.pas',
+  Formats.VFW in '..\Source\Common\Formats.VFW.pas',
+  Formats.DXTC in '..\Source\Common\Formats.DXTC.pas',
   Formatx.B3D in '..\Source\FMX\Formatx.B3D.pas',
-  Formats.m3DS in '..\Source\Formats.m3DS.pas',
-  Formats.m3DSConst in '..\Source\Formats.m3DSConst.pas',
-  Formats.m3DSTypes in '..\Source\Formats.m3DSTypes.pas',
-  Formats.m3DSUtils in '..\Source\Formats.m3DSUtils.pas',
   Formatx.DDSImage in '..\Source\FMX\Formatx.DDSImage.pas',
   Formatx.HDRImage in '..\Source\FMX\Formatx.HDRImage.pas',
   Formatx.LWObjects in '..\Source\FMX\Formatx.LWObjects.pas',
@@ -46,7 +48,6 @@ contains
   Formatx.Q3MD3 in '..\Source\FMX\Formatx.Q3MD3.pas',
   Formatx.OCT in '..\Source\FMX\Formatx.OCT.pas',
   Formatx.X in '..\Source\FMX\Formatx.X.pas',
-  Formatx.DXTC in '..\Source\FMX\Formatx.DXTC.pas',
   Formatx.GL2 in '..\Source\FMX\Formatx.GL2.pas',
   Formatx.MD2 in '..\Source\FMX\Formatx.MD2.pas',
   Formatx.Q3BSP in '..\Source\FMX\Formatx.Q3BSP.pas',
@@ -246,11 +247,7 @@ contains
   GLX.Polynomials in '..\Source\FMX\GLX.Polynomials.pas',
   GLX.RGBE in '..\Source\FMX\GLX.RGBE.pas',
   GLX.SpacePartition in '..\Source\FMX\GLX.SpacePartition.pas',
-  GLX.Spline in '..\Source\FMX\GLX.Spline.pas',
-  GLX.VectorTypesExt in '..\Source\FMX\GLX.VectorTypesExt.pas',
-  GLX.VectorGeometry in '..\Source\FMX\GLX.VectorGeometry.pas',
   GLX.VectorLists in '..\Source\FMX\GLX.VectorLists.pas',
-  GLX.VectorTypes in '..\Source\FMX\GLX.VectorTypes.pas',
   GLX.XCollection in '..\Source\FMX\GLX.XCollection.pas',
   GLX.XOpenGL in '..\Source\FMX\GLX.XOpenGL.pas',
   GLX.GeometryBB in '..\Source\FMX\GLX.GeometryBB.pas',
@@ -258,6 +255,11 @@ contains
   GLX.OpenGL in '..\Source\FMX\GLX.OpenGL.pas',
   Vulkan.Import in '..\Source\Common\Vulkan.Import.pas',
   GLSLx.Parameter in '..\Source\FMX\GLSLx.Parameter.pas',
-  Scena.Strings in '..\Source\Common\Scena.Strings.pas';
+  Scena.Strings in '..\Source\Common\Scena.Strings.pas',
+  Scena.VectorTypes in '..\Source\Common\Scena.VectorTypes.pas',
+  Scena.VectorTypesExt in '..\Source\Common\Scena.VectorTypesExt.pas',
+  Scena.VectorGeometry in '..\Source\Common\Scena.VectorGeometry.pas',
+  Scena.Spline in '..\Source\Common\Scena.Spline.pas',
+  Scena.TextureFormat in '..\Source\Common\Scena.TextureFormat.pas';
 
 end.

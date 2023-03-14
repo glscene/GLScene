@@ -22,10 +22,10 @@ uses
   System.SysUtils,
   FMX.Forms,
 
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.Sound,
   GLX.Scene,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   BASS.Import;
 
 type

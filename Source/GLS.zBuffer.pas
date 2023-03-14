@@ -33,10 +33,10 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.XOpenGL,
   GLS.Scene,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Graphics,
   GLS.Objects,
   GLS.Context,
@@ -45,7 +45,7 @@ uses
   GLS.RenderContextInfo,
   GLS.State,
   Scena.TextureFormat,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Coordinates,
   GLS.PersistentClasses;
 

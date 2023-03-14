@@ -15,7 +15,7 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Texture,
   GLS.SkyDome,
 

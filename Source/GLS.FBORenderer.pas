@@ -16,8 +16,8 @@ uses
   System.Classes,
   System.SysUtils,
   
-  GLS.OpenGLTokens,
-  GLS.VectorGeometry,
+  Scena.OpenGLTokens,
+  Scena.VectorGeometry,
   GLS.PersistentClasses,
   GLS.PipelineTransformation,
   GLS.Scene,
@@ -28,7 +28,7 @@ uses
   GLS.RenderContextInfo,
   GLS.State,
   Scena.TextureFormat,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.MultiSampleImage,
   GLS.Logger;
 

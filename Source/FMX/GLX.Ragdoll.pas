@@ -8,9 +8,9 @@ unit GLX.Ragdoll;
 interface
 
 uses
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.PersistentClasses,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   GLX.Scene,
   GLX.Objects,

@@ -13,7 +13,7 @@ uses
   Winapi.OpenGLext,
   System.Classes,
 
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   Scena.TextureFormat,
   GLX.RenderContextInfo;
 

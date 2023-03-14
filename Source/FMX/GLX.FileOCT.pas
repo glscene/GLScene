@@ -16,7 +16,7 @@ uses
   FMX.Graphics,
 
   GLX.VectorFileObjects,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.ApplicationFileIO,
   GLX.Texture,
   GLX.Material,

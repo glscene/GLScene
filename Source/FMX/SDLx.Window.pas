@@ -22,9 +22,9 @@ uses
   System.SyncObjs,
 
   GLX.OpenGL,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.Context,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   SDL.Import;
 
 type

@@ -13,9 +13,9 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Scene,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.XCollection,
   GLS.BaseClasses,
   GLS.Coordinates;

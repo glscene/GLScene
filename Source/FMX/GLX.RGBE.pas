@@ -14,8 +14,8 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   Scena.Strings;
 
 // Standard conversion from float pixels to rgbe pixels

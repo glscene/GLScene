@@ -20,8 +20,8 @@ uses
 
   GLX.VectorFileObjects,
   GLX.ApplicationFileIO,
-  GLX.VectorGeometry,
-  GLX.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLX.VectorLists,
   GLX.BSP,
   GLX.Texture,

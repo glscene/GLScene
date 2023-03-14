@@ -20,7 +20,7 @@ uses
   Vcl.Controls,
   Vcl.Dialogs,
   Vcl.ExtDlgs,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   Scena.Strings;
 
 type

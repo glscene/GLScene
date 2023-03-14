@@ -32,7 +32,7 @@ uses
   System.SysUtils,
   
   GLS.Scene,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Texture,
   GLS.Material,
   GLS.Silhouette,
@@ -41,7 +41,7 @@ uses
   GLS.RenderContextInfo,
   GLS.BaseClasses,
   GLS.Context,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.PipelineTransformation;
 
 type

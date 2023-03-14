@@ -22,13 +22,13 @@ uses
   GLX.PersistentClasses,
   GLX.Scene,
   GLX.PipelineTransformation,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Context,
   GLX.Material,
   GLX.Color,
   GLX.RenderContextInfo,
   GLX.State,
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 
 type

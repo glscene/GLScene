@@ -14,7 +14,7 @@ uses
   Vcl.ExtCtrls,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Objects,
   GLS.Extrusion,
   GLS.Cadencer,

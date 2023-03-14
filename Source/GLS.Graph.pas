@@ -15,10 +15,10 @@ uses
   System.SysUtils,
   
   GLS.Scene,
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Context,
   GLS.XOpenGL,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Material,
   GLS.Objects,
   GLS.VectorLists,
@@ -26,7 +26,7 @@ uses
   GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.State,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
 

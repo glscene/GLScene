@@ -11,7 +11,7 @@ uses
   System.Classes,
 
   GLX.VectorFileObjects,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   GLX.ApplicationFileIO;
 

@@ -32,9 +32,9 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.OpenGLTokens,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   Scena.TextureFormat,
   GLS.Utils;
 

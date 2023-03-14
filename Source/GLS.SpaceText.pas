@@ -30,12 +30,12 @@ uses
   VCL.Graphics,
   VCL.Controls,
 
-  GLS.VectorTypes,
-  GLS.OpenGLTokens,
+  Scena.VectorTypes,
+  Scena.OpenGLTokens,
   GLS.Scene,
   GLS.Texture,
   GLS.Context,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   Scena.Strings,
   GLS.RenderContextInfo,
   GLS.State;

@@ -29,8 +29,8 @@ uses
   GLX.XOpenGL,
   GLX.BaseClasses,
   GLX.PersistentClasses,
-  GLX.VectorGeometry,
-  GLX.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLX.VectorLists,
   Scena.Strings,
 
@@ -659,7 +659,7 @@ implementation
 // -------------------------------------------------------------
 
 uses
-  GLX.Spline,
+  Scena.Spline,
   GLX.State;
 
 procedure CubeWireframeBuildList(var rci: TgxRenderContextInfo; Size: Single;

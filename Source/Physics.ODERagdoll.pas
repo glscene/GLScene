@@ -8,8 +8,8 @@ unit Physics.ODERagdoll;
 interface
 
 uses
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.Ragdoll,
   GLS.Scene,
   GLS.Objects,

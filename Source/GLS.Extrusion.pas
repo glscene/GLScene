@@ -18,17 +18,17 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Context,
   GLS.Objects,
   GLS.Scene,
   GLS.MultiPolygon,
   GLS.Color,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.RenderContextInfo,
   GLS.Nodes,
   GLS.State,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
 
@@ -247,7 +247,7 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLS.Spline,
+  Scena.Spline,
   GLS.VectorLists,
   GLS.XOpenGL;
 

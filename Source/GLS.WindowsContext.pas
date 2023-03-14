@@ -18,15 +18,15 @@ uses
   System.Classes,
   Vcl.Forms,
 
-  GLS.VectorTypes,
-  GLS.OpenGLTokens,
+  Scena.VectorTypes,
+  Scena.OpenGLTokens,
   GLS.OpenGLAdapter,
   GLS.PipelineTransformation,
   GLS.Context,
   GLS.State,
   GLS.Logger,
   Scena.Strings,
-  GLS.VectorGeometry;
+  Scena.VectorGeometry;
 
 type
   // A context driver for standard Windows OpenGL (via MS OpenGL).

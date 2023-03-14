@@ -11,9 +11,9 @@ uses
   System.Classes,
 
   ODE.Import,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.PersistentClasses,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorFileObjects;
 
 type

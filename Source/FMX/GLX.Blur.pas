@@ -18,11 +18,11 @@ uses
   System.UITypes,
   FMX.Graphics,
 
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.PersistentClasses,
   GLX.Scene,
   GLX.Coordinates,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Objects,
   GLX.BitmapFont,
   GLX.Texture,

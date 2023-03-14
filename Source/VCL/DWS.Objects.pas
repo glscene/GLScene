@@ -12,7 +12,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Scene,
   GLS.XCollection,
   GLS.BaseClasses,

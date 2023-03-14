@@ -28,10 +28,10 @@ uses
   System.Math,
 
   GLX.XOpenGL,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   GLX.ApplicationFileIO,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   Scena.Strings,
   GLX.Scene,
   GLX.VectorFileObjects,

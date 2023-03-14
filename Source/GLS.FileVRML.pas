@@ -17,8 +17,8 @@ uses
   GLS.VectorFileObjects,
   GLS.Material,
   GLS.ApplicationFileIO,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.VectorLists,
   Formats.VRML,
   GLS.MeshUtils;

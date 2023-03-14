@@ -21,8 +21,8 @@ uses
 
   GLS.SoundManager,
   GLS.Scene,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
 
   FMOD.Import,
   FMOD.Types,

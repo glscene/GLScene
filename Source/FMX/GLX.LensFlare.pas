@@ -19,8 +19,8 @@ uses
 
   GLX.PersistentClasses,
   GLX.BaseClasses,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.Scene,
   GLX.Objects,
   GLX.PipelineTransformation,

@@ -12,8 +12,8 @@ uses
   System.Sysutils,
   FMX.Dialogs,
 
-  GLX.VectorGeometry,
-  GLX.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   Scena.Strings;
 
 const

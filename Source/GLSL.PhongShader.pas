@@ -16,10 +16,10 @@ uses
   System.SysUtils,
 
   GLS.Texture,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.VectorLists,
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Context,
   GLSL.AsmShader,
   GLS.RenderContextInfo,

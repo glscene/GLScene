@@ -16,7 +16,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.Scene,
   GLX.Coordinates,
   GLX.Material,

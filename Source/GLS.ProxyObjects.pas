@@ -15,11 +15,11 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Scene,
   GLS.XCollection,
   GLS.PipelineTransformation,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Texture,
   GLS.VectorFileObjects,
   Scena.Strings,
@@ -28,7 +28,7 @@ uses
   GLS.Material,
   GLS.Context,
   GLS.PersistentClasses,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
   EGLProxyException = class(Exception);

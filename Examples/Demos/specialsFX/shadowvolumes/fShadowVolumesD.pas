@@ -23,10 +23,10 @@ uses
   GLS.VectorLists,
   GLS.FileSMD,
   GLS.Texture,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.GeomObjects,
   GLS.Silhouette,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Material,
   GLS.Coordinates,
 

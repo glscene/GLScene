@@ -12,8 +12,8 @@ interface
 uses
   GLS.Scene,
   GLS.PersistentClasses,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.VectorFileObjects,
   GLS.VectorLists,
   GLS.Objects;

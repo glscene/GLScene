@@ -13,7 +13,7 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   Scena.Strings,
 
   GLX.Texture,

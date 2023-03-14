@@ -12,10 +12,10 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
-  GLS.VectorGeometry,
+  Scena.OpenGLTokens,
+  Scena.VectorGeometry,
   GLS.VectorLists,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Texture,
   Scena.Strings,
   GLS.Cadencer,

@@ -26,9 +26,9 @@ uses
   GLX.RenderContextInfo,
   GLX.VectorLists,
   GLX.Utils,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.ApplicationFileIO,
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 type
 

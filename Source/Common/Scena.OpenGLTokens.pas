@@ -1,7 +1,7 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-unit GLS.OpenGLTokens;
+unit Scena.OpenGLTokens;
 
 (* OpenGL tokens *)
 
@@ -14,7 +14,7 @@ uses
   Winapi.Windows,
   System.SysUtils,
 
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 
 // ===========  OpenGL types  ============
@@ -64,6 +64,7 @@ type
   PGLuint = System.PCardinal;
 
   TGLfloat = Single;
+  PGLfloat = System.PSingle;
 
   TGLdouble = Double;
   PGLdouble = System.PDouble;
@@ -109,10 +110,6 @@ type
   WGLSWAP = _WGLSWAP;
   HPBUFFERARB = type UINT_PTR;
 
-
-type
-
-  PGLfloat = System.PSingle;  // It's should be here!
 
 type
   PHGPUNV = ^HGPUNV;

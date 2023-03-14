@@ -17,8 +17,8 @@ uses
   System.Classes,
   GLX.Scene,
   GLX.VectorFileObjects,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.VectorLists;
 
 procedure BuildCube(Mesh: TgxMeshObject; Position, Scale: TAffineVector);

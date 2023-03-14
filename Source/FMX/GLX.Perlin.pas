@@ -21,7 +21,7 @@ uses
   System.Math,
   FMX.Graphics,
 
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Utils,
   GLX.HeightData;
 

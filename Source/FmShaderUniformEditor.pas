@@ -23,7 +23,7 @@ uses
   Scena.Strings,
   GLSL.ShaderParameter,
   Scena.TextureFormat,
-  GLS.VectorGeometry;
+  Scena.VectorGeometry;
 
 type
   TGLShaderUniformEditor = class(TForm)

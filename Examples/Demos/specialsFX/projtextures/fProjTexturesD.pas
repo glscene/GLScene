@@ -17,12 +17,12 @@ uses
   
   GLS.Cadencer,
   GLS.Scene,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.SceneViewer,
   GLS.Texture,
   GLS.FileTGA,
   GLS.Objects,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.ProjectedTextures,
   GLS.HUDObjects,
  

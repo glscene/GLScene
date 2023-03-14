@@ -24,9 +24,9 @@ uses
   System.SysUtils,
   FMX.Graphics,
 
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   Scena.Strings,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.Scene,
   GLX.Texture,
   GLX.Context,

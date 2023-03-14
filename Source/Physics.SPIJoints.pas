@@ -11,9 +11,9 @@ unit Physics.SPIJoints;
 interface
 
 uses
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Scene,
-  GLS.VectorGeometry;
+  Scena.VectorGeometry;
 
 type
 

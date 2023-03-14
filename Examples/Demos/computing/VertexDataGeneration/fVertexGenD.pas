@@ -12,8 +12,8 @@ uses
   Vcl.Dialogs,
 
   GLS.Scene,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.PipelineTransformation,
   GLS.Cadencer,
   GLS.SceneViewer,

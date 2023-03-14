@@ -13,13 +13,13 @@ uses
   GLX.Coordinates,
   GLX.VectorFileObjects,
   GLX.EllipseCollision,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   GLX.Scene,
   GLX.TerrainRenderer,
   GLX.ProxyObjects,
   GLX.MultiProxy,
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 //Calculate and set the collision range
 procedure ECSetCollisionRange(var MovePack: TECMovePack);

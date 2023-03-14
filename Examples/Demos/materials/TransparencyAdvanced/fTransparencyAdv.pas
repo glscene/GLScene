@@ -12,9 +12,9 @@ uses
   Vcl.Forms, Vcl.Dialogs,
   Vcl.Imaging.Jpeg,
 
-  GLS.OpenGLTokens,
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  Scena.OpenGLTokens,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLS.Context,
   GLS.State,
   GLS.Color,

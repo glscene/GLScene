@@ -15,8 +15,8 @@ uses
 
   Scena.Strings,
 
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   GLX.PersistentClasses;
 

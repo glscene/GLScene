@@ -21,7 +21,7 @@ uses
   System.Math,
   Vcl.Graphics,
 
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.HeightData;
 
 type

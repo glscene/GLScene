@@ -13,13 +13,13 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.XOpenGL,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Context,
   GLX.BaseClasses,
   GLX.Coordinates,
-  GLX.Spline;
+  Scena.Spline;
 
 {$I Scena.inc}
 

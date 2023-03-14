@@ -28,7 +28,7 @@ uses
   FMX.Forms,
 
 
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   Scena.Strings,
   GLX.ApplicationFileIO;
 

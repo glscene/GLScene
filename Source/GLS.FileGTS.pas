@@ -13,7 +13,7 @@ interface
 uses
   System.Classes,
 
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.VectorLists,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO;

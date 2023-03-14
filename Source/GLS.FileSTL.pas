@@ -21,8 +21,8 @@ uses
   System.SysUtils,
   GLS.ApplicationFileIO,
 
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.VectorLists,
   GLS.VectorFileObjects,
   GLS.Utils;

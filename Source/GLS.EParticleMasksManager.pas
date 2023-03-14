@@ -37,8 +37,8 @@ uses
   GLS.Texture,
   GLS.Material,
   GLS.Scene,
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLS.ParticleFX,
   GLS.Coordinates;
 

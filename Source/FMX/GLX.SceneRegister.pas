@@ -305,9 +305,9 @@ uses
 //  FSceneEditor,
 
   GLX.BaseClasses,
-  GLX.VectorTypesExt,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypesExt,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.ApplicationFileIO,
 
   GLX.AsmShader,

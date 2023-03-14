@@ -27,7 +27,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Utils;
 
 type

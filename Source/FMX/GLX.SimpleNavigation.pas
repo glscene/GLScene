@@ -24,7 +24,7 @@ uses
   FMX.Controls,
   FMX.ExtCtrls,
   FMX.Types,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Scene,
   GLX.SceneViewer,
   Scena.Strings;

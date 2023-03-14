@@ -29,9 +29,9 @@ uses
 
  // GXL.OpenGLx,
   GLX.Generics,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   Scena.Strings,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.State,
   GLX.PipelineTransformation,
   Scena.TextureFormat;

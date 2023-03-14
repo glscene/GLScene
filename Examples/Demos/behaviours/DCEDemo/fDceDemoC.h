@@ -35,7 +35,7 @@
 #include "GLS.RenderContextInfo.hpp"
 #include "GLS.Keyboard.hpp"
 #include "GLS.State.hpp"
-#include "GLS.VectorGeometry.hpp"
+#include "Scena.VectorGeometry.hpp"
 #include "GLS.Context.hpp"
 #include "GLS.EllipseCollision.hpp"
 #include "GLS.Utils.hpp"

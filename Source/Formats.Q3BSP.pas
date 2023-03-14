@@ -11,7 +11,7 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 const
   FACE_POLYGON = 1;

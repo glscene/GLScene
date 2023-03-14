@@ -29,7 +29,7 @@ uses
 
   GLX.Texture,
   GLX.Scene,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   Scena.Strings,
   GLSLx.CustomShader,
   GLSLx.Shader,

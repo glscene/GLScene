@@ -18,17 +18,17 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   Scena.Strings,
   GLS.XOpenGL,
   GLS.Context,
   GLS.Scene,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.State,
   GLS.Color,
   GLS.BaseClasses,
   GLS.RenderContextInfo,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
   TGLMeshMode = (mmTriangleStrip, mmTriangleFan, mmTriangles, mmQuadStrip,

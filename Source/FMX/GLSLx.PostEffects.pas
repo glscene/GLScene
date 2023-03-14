@@ -15,7 +15,7 @@ uses
   System.SysUtils,
 
   GLX.PersistentClasses,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   Scena.Strings,
   GLX.Scene,
   GLX.Texture,

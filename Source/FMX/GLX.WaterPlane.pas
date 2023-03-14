@@ -18,8 +18,8 @@ uses
   FMX.Types,
   FMX.Graphics,
 
-  GLX.VectorGeometry,
-  GLX.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLX.VectorLists,
   GLX.PersistentClasses,
   GLX.BaseClasses,

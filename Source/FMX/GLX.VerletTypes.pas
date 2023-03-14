@@ -20,14 +20,14 @@ uses
   System.SysUtils,
   System.Types,
 
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.PersistentClasses,
 
   GLX.BaseClasses,
   GLX.Objects,
   GLX.Scene,
   GLX.Coordinates,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   GLX.VectorFileObjects,
   GLX.SpacePartition,

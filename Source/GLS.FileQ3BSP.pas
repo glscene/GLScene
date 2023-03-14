@@ -20,8 +20,8 @@ uses
 
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLS.VectorLists,
   Formats.Q3BSP,
   GLS.MeshBSP,

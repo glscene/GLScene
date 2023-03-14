@@ -40,8 +40,8 @@
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.BaseClasses.hpp"
 #include "GLS.VectorLists.hpp"
-#include "GLS.VectorTypes.hpp"
-#include "GLS.VectorGeometry.hpp"
+#include "Scena.VectorTypes.hpp"
+#include "Scena.VectorGeometry.hpp"
 
 #include "GLS.Keyboard.hpp"
 #include "GLS.Context.hpp"

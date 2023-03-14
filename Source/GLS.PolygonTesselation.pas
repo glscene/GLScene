@@ -15,12 +15,12 @@ uses
   System.SysUtils,
   
   GLS.OpenGLAdapter,
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.PersistentClasses,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.VectorFileObjects,
   GLS.VectorLists,
-  GLS.VectorGeometry;
+  Scena.VectorGeometry;
 
 (* Tesselates the polygon outlined by the Vertexes. And adds them to the first
    facegroup of the Mesh. *)

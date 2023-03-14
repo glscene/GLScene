@@ -17,10 +17,10 @@ uses
   System.Classes,
   System.Math,
 
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.VectorFileObjects,
   GLX.Material,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   GLX.Color,
   GLX.RenderContextInfo;

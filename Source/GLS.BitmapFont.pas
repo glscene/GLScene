@@ -18,9 +18,9 @@ uses
   Vcl.Graphics,
   Vcl.StdCtrls,
   
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Scene,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Context,
   GLS.Texture,
   GLS.State,
@@ -30,7 +30,7 @@ uses
   GLS.BaseClasses,
   GLS.RenderContextInfo,
   Scena.TextureFormat,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.PersistentClasses;
 
 type

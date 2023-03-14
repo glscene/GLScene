@@ -18,8 +18,8 @@ uses
   FMX.Graphics,
 
   GLX.XOpenGL,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.PersistentClasses,
   Scena.Strings,
   GLX.ApplicationFileIO,

@@ -15,7 +15,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Scene,
   GLS.State,
   GLS.Context,
@@ -24,7 +24,7 @@ uses
   GLS.Graphics,
   Scena.Strings,
   GLSL.CustomShader,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.RenderContextInfo,
   GLS.Material,
   Scena.TextureFormat;

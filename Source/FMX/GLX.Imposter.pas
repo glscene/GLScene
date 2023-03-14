@@ -18,8 +18,8 @@ uses
 
   GLX.Scene,
   GLX.Context,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.PersistentClasses,
   GLX.Graphics,
   GLX.Color,

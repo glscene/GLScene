@@ -17,7 +17,7 @@ uses
   GLX.XOpenGL,
   GLX.Scene,
   GLX.Context,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Material,
   GLX.Objects,
   GLX.VectorLists,
@@ -25,7 +25,7 @@ uses
   GLX.BaseClasses,
   GLX.RenderContextInfo,
   GLX.State,
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 type
 

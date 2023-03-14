@@ -34,7 +34,7 @@ uses
 
   GLS.Scene,
   GLS.XCollection,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.VectorLists,
   GLS.VectorFileObjects,
   GLS.EllipseCollision,
@@ -44,7 +44,7 @@ uses
   GLS.ProxyObjects,
   GLS.MultiProxy,
   GLS.Manager,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   Scena.Strings;
 
 type

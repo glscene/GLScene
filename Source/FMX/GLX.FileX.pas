@@ -13,10 +13,10 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.VectorFileObjects,
   GLX.ApplicationFileIO,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Texture,
   GLX.VectorLists,
   GLX.Material,

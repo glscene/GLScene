@@ -16,7 +16,7 @@ uses
 
   GLS.Cadencer,
   GLS.Scene,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Objects,
   GLS.Particles,
   GLS.SceneViewer,
@@ -26,7 +26,7 @@ uses
 
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.VectorGeometry;
+  Scena.VectorGeometry;
 
 type
   TFormMultiProxy = class(TForm)

@@ -17,9 +17,9 @@ uses
   System.SysUtils,
   VCL.Graphics,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.OpenGLTokens,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.BaseClasses,
   GLS.Scene,
   GLS.Objects,

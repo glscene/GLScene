@@ -25,7 +25,7 @@ uses
   GLS.Scene,
   GLS.Color,
   GLS.Objects,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Material,
   Scena.Strings,
   GLS.GeomObjects,
@@ -35,7 +35,7 @@ uses
   GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.GeometryBB,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Canvas,
   GLS.PersistentClasses,
   GLS.Screen,
@@ -476,7 +476,7 @@ uses
   GLS.Context,
   GLS.PipelineTransformation,
 
-  GLS.OpenGLTokens;
+  Scena.OpenGLTokens;
 
 procedure RotateAroundArbitraryAxis(const anObject: TGLBaseSceneObject; const Axis, Origin: TAffineVector; const angle: Single);
 var

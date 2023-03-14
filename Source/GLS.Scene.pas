@@ -20,12 +20,12 @@ uses
   Vcl.Graphics,
   Vcl.Controls,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.XOpenGL,
   GLS.XCollection,
   Scena.Strings,
   GLS.Context,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Silhouette,
   GLS.PersistentClasses,
   GLS.PipelineTransformation,
@@ -41,7 +41,7 @@ uses
   GLS.Material,
   Scena.TextureFormat,
   GLS.Selection,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.ApplicationFileIO,
   GLS.Utils,
   GLS.Logger;

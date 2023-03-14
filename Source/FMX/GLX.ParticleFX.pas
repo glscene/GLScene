@@ -23,9 +23,9 @@ uses
   System.Math,
 
   GLX.XCollection,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.PersistentClasses,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   GLX.Manager,
   GLX.Scene,

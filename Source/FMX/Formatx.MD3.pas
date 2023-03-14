@@ -9,7 +9,7 @@ interface
 
 uses
   System.Classes,
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 type
   // Quake3 MD3 structure types

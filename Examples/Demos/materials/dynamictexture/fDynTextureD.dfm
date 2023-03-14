@@ -26,8 +26,6 @@ object FormDynamicTexture: TFormDynamicTexture
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 440
-    ExplicitHeight = 362
   end
   object Scene: TGLScene
     Left = 64

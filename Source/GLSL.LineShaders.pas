@@ -17,8 +17,8 @@ uses
   Winapi.OpenGL,
   System.Classes,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
+  Scena.OpenGLTokens,
+  Scena.VectorTypes,
   GLS.Scene,
   GLS.Color,
   GLS.Material,

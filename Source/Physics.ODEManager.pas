@@ -17,10 +17,10 @@ uses
   System.Math,
   System.Types,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
+  Scena.OpenGLTokens,
+  Scena.VectorTypes,
   GLS.VectorLists,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.PipelineTransformation,
   GLS.PersistentClasses,
   GLS.Manager,

@@ -32,9 +32,9 @@ interface
 
 uses
   Winapi.OpenGL,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.CurvesAndSurfaces,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   GLX.PersistentClasses,
   GLX.VectorFileObjects,

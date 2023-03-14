@@ -14,8 +14,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
+  Scena.OpenGLTokens,
+  Scena.VectorTypes,
   GLS.Coordinates,
 
   GLS.Scene,

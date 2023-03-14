@@ -13,8 +13,8 @@ uses
   GLX.VectorFileObjects,
   GLX.Utils,
   GLX.ApplicationFileIO,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.VectorLists;
 
 type

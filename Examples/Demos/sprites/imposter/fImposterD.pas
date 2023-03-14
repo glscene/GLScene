@@ -15,11 +15,11 @@ uses
 
   GLS.Scene,
   GLS.Context,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.GeomObjects,
   GLS.Objects,
   GLS.SceneViewer,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Texture,
   GLS.Cadencer,
   GLS.Imposter,

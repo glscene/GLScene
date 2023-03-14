@@ -8,7 +8,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GLS.SceneViewer"
-#pragma link "GLS.VectorGeometry"
+#pragma link "Scena.VectorGeometry"
 #pragma link "GLS.Behaviours"
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Particles"

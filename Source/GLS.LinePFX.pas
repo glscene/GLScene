@@ -15,15 +15,15 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.ParticleFX,
   GLS.Texture,
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.Context,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
 

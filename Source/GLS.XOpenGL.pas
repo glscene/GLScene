@@ -19,8 +19,8 @@ interface
 uses
   Winapi.OpenGLext,
 
-  GLS.VectorTypes,
-  GLS.OpenGLTokens,
+  Scena.VectorTypes,
+  Scena.OpenGLTokens,
   GLS.State;
 
 type

@@ -25,13 +25,13 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.OpenGLAdapter,
-  GLS.Spline,
+  Scena.Spline,
   GLS.XOpenGL,
   GLS.Context,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.Scene,
@@ -177,7 +177,7 @@ type
     FPageSize: Integer; // number of entries per page
     FArrSize: Integer; // size of one page
     FUsedEntries: Integer; // used entries in actual page
-    FAktArray: GLS.VectorGeometry.PByteArray; // pointer to actual page
+    FAktArray: Scena.VectorGeometry.PByteArray; // pointer to actual page
     procedure CreatePage; // creates new page
   public
     constructor Create(APageSize, AEntrySize: Integer);

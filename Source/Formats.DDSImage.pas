@@ -24,9 +24,9 @@ uses
   System.SysUtils,
   Vcl.Graphics,
 
-  GLS.VectorTypes,
-  GLS.OpenGLTokens,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.OpenGLTokens,
+  Scena.VectorGeometry,
   GLS.Graphics,
   GLS.Context,
   GLS.FileDDS,

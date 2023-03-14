@@ -14,8 +14,8 @@ uses
   System.SysUtils,
   System.Types,
 
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLS.VectorLists,
   GLS.Utils;
 

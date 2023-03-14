@@ -14,7 +14,7 @@ uses
 
   GLX.Context,
   GLX.VectorLists,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.BaseClasses,
   GLX.PersistentClasses;
 

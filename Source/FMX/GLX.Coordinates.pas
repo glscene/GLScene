@@ -15,8 +15,8 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLX.VectorGeometry,
-  GLX.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLX.BaseClasses,
   Scena.Strings;
 
@@ -487,17 +487,17 @@ end;
 
 function TgxCustomCoordinates.VectorLength: Single;
 begin
-  Result := GLX.VectorGeometry.VectorLength(FCoords);
+  Result := Scena.VectorGeometry.VectorLength(FCoords);
 end;
 
 function TgxCustomCoordinates.VectorNorm: Single;
 begin
-  Result := GLX.VectorGeometry.VectorNorm(FCoords);
+  Result := Scena.VectorGeometry.VectorNorm(FCoords);
 end;
 
 function TgxCustomCoordinates.MaxXYZ: Single;
 begin
-  Result := GLX.VectorGeometry.MaxXYZComponent(FCoords);
+  Result := Scena.VectorGeometry.MaxXYZComponent(FCoords);
 end;
 
 function TgxCustomCoordinates.Equals(const AVector: TVector4f): Boolean;
@@ -508,28 +508,28 @@ end;
 procedure TgxCustomCoordinates.SetVector(const X, Y: Single; Z: Single = 0);
 begin
   Assert(FStyle = csVector, csVectorHelp);
-  GLX.VectorGeometry.SetVector(FCoords, X, Y, Z);
+  Scena.VectorGeometry.SetVector(FCoords, X, Y, Z);
   NotifyChange(Self);
 end;
 
 procedure TgxCustomCoordinates.SetVector(const V: TAffineVector);
 begin
   Assert(FStyle = csVector, csVectorHelp);
-  GLX.VectorGeometry.SetVector(FCoords, V);
+  Scena.VectorGeometry.SetVector(FCoords, V);
   NotifyChange(Self);
 end;
 
 procedure TgxCustomCoordinates.SetVector(const V: TVector4f);
 begin
   Assert(FStyle = csVector, csVectorHelp);
-  GLX.VectorGeometry.SetVector(FCoords, V);
+  Scena.VectorGeometry.SetVector(FCoords, V);
   NotifyChange(Self);
 end;
 
 procedure TgxCustomCoordinates.SetVector(const X, Y, Z, W: Single);
 begin
   Assert(FStyle = csVector, csVectorHelp);
-  GLX.VectorGeometry.SetVector(FCoords, X, Y, Z, W);
+  Scena.VectorGeometry.SetVector(FCoords, X, Y, Z, W);
   NotifyChange(Self);
 end;
 
@@ -665,7 +665,7 @@ end;
 
 function TgxCustomCoordinates.GetAsAffineVector: TAffineVector;
 begin
-  GLX.VectorGeometry.SetVector(Result, FCoords);
+  Scena.VectorGeometry.SetVector(Result, FCoords);
 end;
 
 function TgxCustomCoordinates.GetAsPoint2D: TVector2f;

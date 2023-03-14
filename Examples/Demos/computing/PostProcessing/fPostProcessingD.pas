@@ -14,7 +14,7 @@ uses
   Vcl.Dialogs,
   Vcl.ComCtrls,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Scene,
   GLS.Coordinates,
   GLS.Objects,

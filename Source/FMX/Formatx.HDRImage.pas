@@ -17,7 +17,7 @@ uses
   System.SysUtils,
   FMX.Graphics,
 
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Graphics;
 
 type

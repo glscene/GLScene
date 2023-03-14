@@ -25,13 +25,13 @@ uses
   GLS.Generics,
 {$ENDIF}
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.OpenGLAdapter,
   GLS.XOpenGL,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   Scena.Strings,
   Scena.TextureFormat,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.State,
   GLS.PipelineTransformation,
   GLS.Logger;

@@ -13,15 +13,15 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.PersistentClasses,
   GLS.Context,
   GLS.Scene,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Silhouette,
   GLS.RenderContextInfo,
   GLS.BaseClasses,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
 

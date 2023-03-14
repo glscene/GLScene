@@ -12,14 +12,14 @@ uses
   Vcl.ExtCtrls,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Objects,
   GLS.PersistentClasses,
   GLS.PipelineTransformation,
   GLS.GeomObjects,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Cadencer,
   GLS.Context,
   GLS.SceneViewer;

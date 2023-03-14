@@ -14,15 +14,15 @@ uses
   System.SysUtils,
   System.Types,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Scene,
   GLS.XCollection,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.VectorLists,
   GLS.VectorFileObjects,
   GLS.GeometryBB,
   GLS.Manager,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
 

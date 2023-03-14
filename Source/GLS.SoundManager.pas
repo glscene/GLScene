@@ -12,11 +12,11 @@ uses
   System.SysUtils,
   System.Types,
 
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.SoundFileObjects,
   GLS.Scene,
   GLS.XCollection,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Cadencer,
   GLS.BaseClasses,
   GLS.FileMP3,

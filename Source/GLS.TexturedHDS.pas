@@ -28,7 +28,7 @@ uses
   System.Types,
   System.Classes,
 
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Coordinates,
   GLS.HeightData,
   GLS.Material;

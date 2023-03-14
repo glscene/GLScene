@@ -11,8 +11,8 @@ uses
   ODE.Import,
   Physix.ODEUtils,
 
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.Ragdoll,
   GLX.Scene,
   GLX.Objects,

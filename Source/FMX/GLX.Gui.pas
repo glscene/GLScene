@@ -16,13 +16,13 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.Scene,
   GLX.BitmapFont,
   GLX.Material,
   GLX.Context,
   GLX.PersistentClasses,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Coordinates,
   GLX.BaseClasses;
 

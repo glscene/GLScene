@@ -14,8 +14,8 @@ uses
   System.Classes,
   System.Math,
 
-  GLX.VectorTypes,
-  GLX.VectorGeometry;
+  Scena.VectorTypes,
+  Scena.VectorGeometry;
 
 type
 

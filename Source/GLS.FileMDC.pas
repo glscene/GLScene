@@ -25,7 +25,7 @@ uses
   GLS.VectorFileObjects, 
   GLS.Material, 
   GLS.ApplicationFileIO,
-  GLS.VectorGeometry;
+  Scena.VectorGeometry;
 
 const
   MDCFILE_IDENTITY = 'IDPC';

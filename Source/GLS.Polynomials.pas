@@ -25,7 +25,7 @@ interface
 {$I Scena.inc}
 
 uses
-  GLS.VectorGeometry;
+  Scena.VectorGeometry;
 
 type
   TDoubleArray = array of Double;

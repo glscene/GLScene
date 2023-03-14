@@ -17,8 +17,8 @@ uses
   System.Classes,
 
   GLS.Scene,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.VectorFileObjects,

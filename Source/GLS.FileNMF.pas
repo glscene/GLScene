@@ -16,10 +16,10 @@ interface
 uses
   System.Classes,
 
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.VectorFileObjects,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.VectorLists,
   GLS.ApplicationFileIO;
 

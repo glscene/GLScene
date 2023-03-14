@@ -16,14 +16,14 @@ uses
   System.Classes,
   System.SysUtils,
   
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Context,
   GLS.Graphics,
   Scena.TextureFormat,
   GLS.ApplicationFileIO,
   GLS.RGBE,
-  GLS.VectorTypes,
-  GLS.VectorGeometry;
+  Scena.VectorTypes,
+  Scena.VectorGeometry;
 
 
 type

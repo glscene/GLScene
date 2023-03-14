@@ -34,10 +34,10 @@ interface
 {.$Define UseDensity}
 
 uses
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorLists,
-  GLX.VectorTypes,
-  GLX.VectorTypesExt,
+  Scena.VectorTypes,
+  Scena.VectorTypesExt,
 
   GLX.Mesh,
   GLX.VectorFileObjects;

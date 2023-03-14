@@ -20,14 +20,14 @@ uses
   System.SysUtils,
   System.Types,
 
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.PersistentClasses,
 
   GLS.BaseClasses,
   GLS.Objects,
   GLS.Scene,
   GLS.Coordinates,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.VectorLists,
   GLS.SpacePartition,
   GLS.GeometryBB,

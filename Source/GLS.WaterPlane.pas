@@ -19,15 +19,15 @@ uses
   System.Classes,
   Vcl.Graphics,
 
-  GLS.OpenGLTokens,
-  GLS.VectorGeometry,
+  Scena.OpenGLTokens,
+  Scena.VectorGeometry,
   GLS.Scene,
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.BaseClasses,
   GLS.Context,
   GLS.RenderContextInfo,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Utils;
 
 type

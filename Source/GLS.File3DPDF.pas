@@ -15,9 +15,9 @@ uses
   System.SysUtils,
   System.StrUtils,
 
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.VectorLists,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,

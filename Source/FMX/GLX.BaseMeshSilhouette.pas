@@ -11,7 +11,7 @@ interface
 
 uses
   System.Classes,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   GLX.VectorFileObjects,
   GLX.Silhouette;

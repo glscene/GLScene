@@ -3,7 +3,7 @@
 //
 unit DWSx.VectorGeometry;
 
-(* DelphiWebScript symbol creation for GLS.VectorGeometry types and functions *)
+(* DelphiWebScript symbol creation for Scena.VectorGeometry types and functions *)
 
 interface
 
@@ -13,7 +13,7 @@ uses
   dwsSymbols,
   dwsComp,
   dwsFunctions,
-  GLX.VectorGeometry;
+  Scena.VectorGeometry;
 
 type
   TdwxVectorGeometryUnit = class(TdwxUnitComponent)
@@ -246,7 +246,7 @@ end;
 constructor TdwsVectorGeometryUnit.Create(AOwner: TComponent);
 begin
   inherited;
-  FUnitName := 'GLS.VectorGeometry';
+  FUnitName := 'Scena.VectorGeometry';
 end;
 
 procedure TVectorMakeFunction.Execute;

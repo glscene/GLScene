@@ -13,7 +13,7 @@ uses
   GLS.VectorFileObjects, 
   GLS.Material, 
   GLS.ApplicationFileIO,
-  GLS.VectorGeometry, 
+  Scena.VectorGeometry, 
   Formats.MD3,
   GLS.Texture;
 

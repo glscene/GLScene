@@ -22,7 +22,7 @@ uses
 
   GLS.Material,
   GLS.Scene,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   Scena.Strings,
   GLS.RenderContextInfo;
 

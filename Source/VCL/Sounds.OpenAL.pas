@@ -28,9 +28,9 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
 
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Scene,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Coordinates,
   GLS.SoundManager,
   GLS.SoundFileObjects;

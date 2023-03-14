@@ -24,8 +24,8 @@ uses
   FMX.Controls.Presentation,
   FMX.Objects,
 
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.Color,
   GLX.Texture;
 

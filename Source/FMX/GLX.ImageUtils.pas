@@ -27,7 +27,7 @@ uses
   System.Math,
 
   Scena.Strings,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
 
   GLX.Utils,
   Scena.TextureFormat;

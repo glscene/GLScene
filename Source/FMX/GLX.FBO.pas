@@ -16,7 +16,7 @@ uses
   System.SysUtils,
   FMX.Dialogs,
 
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.Scene,
   GLX.Context,
   GLX.State,

@@ -10,7 +10,7 @@
 #include <GLS.GeomObjects.hpp>
 #include <GLS.SceneViewer.hpp>
 #include <GLS.Cadencer.hpp>
-#include <GLS.VectorGeometry.hpp>
+#include <Scena.VectorGeometry.hpp>
 #include <GLS.Scene.hpp>
 #include <GLS.Objects.hpp>
 #include "GLS.BaseClasses.hpp"

@@ -17,11 +17,11 @@ uses
   System.Math,
   Vcl.Graphics,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Scene,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Graphics,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Color,
   GLS.Material,
   GLS.RenderContextInfo;

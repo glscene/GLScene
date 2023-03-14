@@ -15,11 +15,11 @@ uses
   System.Classes,
   System.Math,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.ParticleFX,
   GLS.Graphics,
-  GLS.VectorTypes,
-  GLS.VectorGeometry;
+  Scena.VectorTypes,
+  Scena.VectorGeometry;
 
 
 const

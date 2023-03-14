@@ -16,8 +16,8 @@ interface
 uses
   System.Math,
   System.Classes,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.VectorLists,
   GLS.GeometryBB,
   GLS.Context;

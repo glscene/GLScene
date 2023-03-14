@@ -17,8 +17,8 @@ uses
   System.Classes,
 
   GLX.XOpenGL,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.Scene,
   GLX.Material,
   GLX.RenderContextInfo;

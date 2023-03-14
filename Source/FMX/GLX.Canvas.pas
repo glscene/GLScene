@@ -21,10 +21,10 @@ uses
   System.Math,
   FMX.Graphics,
 
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Color,
   GLX.Context,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.State;
 
 type

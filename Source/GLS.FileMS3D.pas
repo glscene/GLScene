@@ -16,11 +16,11 @@ uses
   System.SysUtils, 
    
   GLS.VectorFileObjects,
-  GLS.VectorTypes, 
+  Scena.VectorTypes, 
   GLS.Material, 
   GLS.Color, 
   GLS.Texture,
-  GLS.VectorGeometry, 
+  Scena.VectorGeometry, 
   GLS.VectorLists, 
   GLS.ApplicationFileIO;
   

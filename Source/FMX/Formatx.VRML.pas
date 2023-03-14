@@ -12,7 +12,7 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.VectorLists,
   Scena.Strings;
 

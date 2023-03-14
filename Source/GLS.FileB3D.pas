@@ -16,8 +16,8 @@ uses
   GLS.Texture, 
   Scena.TextureFormat,
   GLS.Material, 
-  GLS.VectorTypes, 
-  GLS.VectorGeometry, 
+  Scena.VectorTypes, 
+  Scena.VectorGeometry, 
   GLS.VectorLists,
   Formats.B3D;
 

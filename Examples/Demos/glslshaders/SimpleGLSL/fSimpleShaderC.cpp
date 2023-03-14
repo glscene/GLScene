@@ -22,7 +22,7 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.Texture"
 #pragma link "GLSL.UserShader"
-#pragma link "GLS.OpenGLTokens"
+#pragma link "Scena.OpenGLTokens"
 #pragma link "GLS.VectorFileObjects"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.WindowsFont"

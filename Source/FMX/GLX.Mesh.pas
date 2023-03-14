@@ -25,11 +25,11 @@ uses
 
   GLX.XOpenGL,
   GLX.BaseClasses,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   Scena.Strings,
   GLX.Context,
   GLX.Scene,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.State,
   GLX.Color,
   GLX.RenderContextInfo;

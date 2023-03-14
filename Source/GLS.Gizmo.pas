@@ -64,7 +64,7 @@ uses
   GLS.PersistentClasses,
   GLS.Color,
   GLS.Objects,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Material,
   Scena.Strings,
   GLS.GeomObjects,
@@ -75,7 +75,7 @@ uses
   GLS.RenderContextInfo,
   GLS.State,
   GLS.Selection,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
   TGLGizmoUndoCollection = class;

@@ -46,7 +46,7 @@ uses
   System.UIConsts,
   FMX.Graphics,
 
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.PersistentClasses,
   Scena.Strings,
 

@@ -15,11 +15,11 @@ uses
   GLX.PersistentClasses,
   GLX.Context,
   GLX.Scene,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Silhouette,
   GLX.RenderContextInfo,
   GLX.BaseClasses,
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 type
 

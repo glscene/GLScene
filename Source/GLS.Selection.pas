@@ -14,10 +14,10 @@ uses
   System.SysUtils,
   System.Classes,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Context,
   GLS.VectorLists,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.BaseClasses,
   GLS.PersistentClasses;
 

@@ -22,7 +22,7 @@ uses
   GLS.VectorFileObjects,
   GLS.Graph,
   GLS.GeomObjects,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,

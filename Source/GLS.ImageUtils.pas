@@ -24,10 +24,10 @@ uses
   System.Classes,
   System.Math,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   Scena.Strings,
   Scena.TextureFormat,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Utils;
 
 var

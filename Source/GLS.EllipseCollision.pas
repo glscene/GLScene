@@ -10,10 +10,10 @@ interface
 {$I Scena.inc}
 
 uses
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Octree,
   GLS.VectorLists,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
   // The Ellipsoid collision class

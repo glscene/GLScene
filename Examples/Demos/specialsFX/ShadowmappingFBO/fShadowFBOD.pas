@@ -16,9 +16,9 @@ uses
   Vcl.ExtCtrls,
   Vcl.Imaging.Jpeg,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Scene,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Context,
   GLS.Objects,
   GLS.HUDObjects,
@@ -30,7 +30,7 @@ uses
   GLS.Cadencer,
   GLSL.CustomShader,
   GLSL.Shader,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Coordinates,
  
   GLS.BaseClasses,

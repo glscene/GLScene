@@ -17,8 +17,8 @@ uses
 
   GLX.VectorFileObjects,
   GLX.VectorLists,
-  GLX.VectorGeometry,
-  GLX.VectorTypes;
+  Scena.VectorGeometry,
+  Scena.VectorTypes;
 
 (* Tesselates the polygon outlined by the Vertexes.
   And addeds them to the first facegroup of the Mesh. *)

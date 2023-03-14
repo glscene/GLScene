@@ -31,12 +31,12 @@ uses
   GLS.Scene,
   GLS.PersistentClasses,
   GLS.Texture,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Context,
   GLS.Color,
   GLS.RenderContextInfo,
   Scena.TextureFormat,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
   TGLSLProjectedTexturesStyle = (ptsLight, ptsShadow);

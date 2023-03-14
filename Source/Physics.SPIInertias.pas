@@ -14,8 +14,8 @@ uses
   GLS.XCollection,
   GLS.Scene,
   GLS.BaseClasses,
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   Physics.SPIManager,
   GLS.Coordinates,
   Scena.Strings,
@@ -998,7 +998,7 @@ procedure TGLRigidBodyInertia.DoProgress(const progressTime : TProgressTimes);
   begin
   UndampedLinearMomentum:=VectorLength(LinearMomentum);
   DampedLinearMomentum:=TranslationDamping.Calculate(UndampedLinearMomentum,deltaTime);
-  {   if GLS.VectorGeometry.vSIMD=1 then
+  {   if Scena.VectorGeometry.vSIMD=1 then
   //  RigidBody.LinearMomentum:=VectorScale(VectorNormalize(RigidBody.LinearMomentum),DampedLinearMomentum)
   else
   }        begin

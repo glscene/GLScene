@@ -14,7 +14,7 @@ uses
   Vcl.Dialogs,
 
   GLS.XCollection,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Scene,
   Physics.SPIForces,
   GLS.Behaviours;

@@ -15,11 +15,11 @@ uses
   System.Classes,
   System.Math,
 
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Scene,
   GLX.Coordinates,
   GLX.Screen,
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 type
 

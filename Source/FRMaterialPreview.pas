@@ -19,7 +19,7 @@ uses
   Vcl.Controls,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Objects,
   GLS.Texture,
   GLS.HUDObjects,

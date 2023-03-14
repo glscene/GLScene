@@ -15,7 +15,7 @@ uses
   FMX.StdCtrls,
   FMX.Memo,
 
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.Texture,
   Scena.TextureFormat,
   GLX.Graphics,

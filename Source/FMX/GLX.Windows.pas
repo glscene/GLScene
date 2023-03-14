@@ -21,8 +21,8 @@ uses
   FMX.Graphics,
   FMX.Types,
 
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.PersistentClasses,
   GLX.BaseClasses,
   Scena.Strings,

@@ -20,9 +20,9 @@ uses
   System.Math,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.VectorFileObjects,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.MeshBSP,
   GLS.VectorLists;
 

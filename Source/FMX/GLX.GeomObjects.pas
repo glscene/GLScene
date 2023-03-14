@@ -23,11 +23,11 @@ uses
   GLX.Scene,
   GLX.State,
   GLX.PersistentClasses,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.Silhouette,
 
   GLX.GeometryBB,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Polynomials,
   GLX.VectorFileObjects,
   GLX.PipelineTransformation,

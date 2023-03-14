@@ -27,7 +27,7 @@ uses
   GLSL.PostEffects,
  
   GLS.MeshUtils,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,

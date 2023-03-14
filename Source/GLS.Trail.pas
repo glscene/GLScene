@@ -15,9 +15,9 @@ uses
   System.SysUtils,
   
   GLS.Scene,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.MeshUtils,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.VectorFileObjects,
   GLS.Mesh,
   GLS.Objects,

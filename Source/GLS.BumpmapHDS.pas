@@ -20,14 +20,14 @@ uses
   System.UITypes,
   Vcl.Graphics,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Coordinates,
   GLS.HeightData,
   GLS.Graphics,
   GLS.Color,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.VectorLists,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Texture,
   GLS.Material,
   GLS.Utils;

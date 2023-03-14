@@ -15,11 +15,11 @@ uses
   Winapi.Windows,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   Scena.Strings,
   GLS.Logger,
-  GLS.VectorGeometry,
-  GLS.VectorTypes;
+  Scena.VectorGeometry,
+  Scena.VectorTypes;
 
 const
   {$IFDEF CROSSVCL}

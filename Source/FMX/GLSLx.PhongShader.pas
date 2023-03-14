@@ -15,9 +15,9 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.Texture, 
-  GLX.VectorGeometry, 
+  Scena.VectorGeometry, 
   GLX.VectorLists, 
   GLX.Context,
   GLX.RenderContextInfo,

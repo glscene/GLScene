@@ -19,7 +19,7 @@ uses
   VCL.Controls,
   VCL.Menus,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Utils,
   GLS.Context,
   GLS.Scene,

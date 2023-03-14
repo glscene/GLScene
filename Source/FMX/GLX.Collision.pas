@@ -15,12 +15,12 @@ uses
 
   GLX.XCollection,
   GLX.Scene,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   GLX.VectorFileObjects,
   GLX.GeometryBB,
   GLX.Manager,
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 type
   TgxBCollision = class;

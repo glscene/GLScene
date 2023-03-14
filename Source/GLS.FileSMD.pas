@@ -16,8 +16,8 @@ uses
   GLS.Texture,
   GLS.PersistentClasses,
   GLS.ApplicationFileIO,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.Material,
   Scena.Strings,
   GLS.Utils;

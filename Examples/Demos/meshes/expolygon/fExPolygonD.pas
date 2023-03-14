@@ -11,9 +11,9 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
 
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.BaseClasses,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Scene, GLS.Objects,
   GLS.GeomObjects,
   GLS.Texture,

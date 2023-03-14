@@ -10,7 +10,7 @@
 #pragma link "Physics.ODEUtils"
 #pragma link "GLS.Navigator"
 #pragma link "GLS.ShadowPlane"
-#pragma link "GLS.VectorGeometry"
+#pragma link "Scena.VectorGeometry"
 #pragma link "GLS.Extrusion"
 #pragma link "GLS.Texture"
 #pragma link "GLS.Cadencer"

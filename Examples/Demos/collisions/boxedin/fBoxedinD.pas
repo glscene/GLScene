@@ -14,10 +14,10 @@ uses
   Vcl.ComCtrls,
 
   GLS.Keyboard,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Scene,
   GLS.VectorFileObjects,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Objects,
   GLS.SceneViewer,
   GLS.Cadencer,

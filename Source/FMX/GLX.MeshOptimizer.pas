@@ -11,8 +11,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLX.VectorGeometry,
-  GLX.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLX.VectorFileObjects,
   GLX.PersistentClasses,
   GLX.VectorLists,

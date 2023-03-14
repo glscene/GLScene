@@ -18,12 +18,12 @@ uses
   Vcl.Graphics,
   Vcl.Imaging.Jpeg,
   
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Context,
   GLS.Graphics,
   Scena.TextureFormat,
   GLS.ApplicationFileIO,
-  GLS.VectorGeometry;
+  Scena.VectorGeometry;
 
 
 type

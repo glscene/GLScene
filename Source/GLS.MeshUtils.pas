@@ -16,8 +16,8 @@ uses
 
   GLS.PersistentClasses,
   GLS.VectorLists,
-  GLS.VectorGeometry,
-  GLS.VectorTypes;
+  Scena.VectorGeometry,
+  Scena.VectorTypes;
 
 (* 
   Converts a triangle strips into a triangle list.

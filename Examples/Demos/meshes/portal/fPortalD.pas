@@ -18,7 +18,7 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Texture,
   GLS.VectorFileObjects,
   GLS.PersistentClasses,

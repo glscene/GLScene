@@ -18,11 +18,11 @@ uses
   System.SysUtils,
 
   GLS.PersistentClasses,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.VectorFileObjects,
   GLS.Scene,
   GLS.Material,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.RenderContextInfo;
 
 type

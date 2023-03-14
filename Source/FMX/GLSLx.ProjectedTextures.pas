@@ -29,13 +29,13 @@ uses
   GLX.PersistentClasses,
   GLX.Scene,
   GLX.Texture,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Context,
   GLX.Color,
   GLX.RenderContextInfo,
   Scena.TextureFormat,
   GLX.PipelineTransformation,
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 type
   TgxSLProjectedTexturesStyle = (ptsLight, ptsShadow);

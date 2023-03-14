@@ -34,8 +34,8 @@ uses
 
   Scena.Strings,
   Scena.TextureFormat,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.Utils;
 
 const

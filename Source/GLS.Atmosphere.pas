@@ -18,17 +18,17 @@ uses
   System.SysUtils,
   System.Classes,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Scene,
   GLS.Objects,
   GLS.Cadencer,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Context,
   Scena.Strings,
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.State,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
   EGLAtmosphereException = class(Exception);

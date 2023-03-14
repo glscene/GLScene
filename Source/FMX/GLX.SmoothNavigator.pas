@@ -27,9 +27,9 @@ uses
   System.Classes,
 
   GLX.XCollection,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.Navigator,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Scene,
   GLX.Coordinates,
   GLX.Screen,
@@ -727,7 +727,7 @@ begin
 
     if (Abs(FinalPitch) > FCutOff) or (Abs(FinalTurn) > FCutOff) then
     begin
-      MovingObject.AbsolutePosition := GLX.VectorGeometry.MoveObjectAround(
+      MovingObject.AbsolutePosition := Scena.VectorGeometry.MoveObjectAround(
         MovingObject.AbsolutePosition, lUp, AObject.AbsolutePosition, FinalPitch, FinalTurn);
       Result := True;
     end;

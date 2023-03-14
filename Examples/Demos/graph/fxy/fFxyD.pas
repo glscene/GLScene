@@ -17,8 +17,8 @@ uses
   GLS.Objects,
   GLS.Graph,
   GLS.Scene,
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLS.SceneViewer,
 
   GLS.Coordinates,

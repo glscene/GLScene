@@ -18,8 +18,8 @@ uses
   System.Math,
 
   GLX.XCollection,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.PersistentClasses,
   Scena.Strings,
 

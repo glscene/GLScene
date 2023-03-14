@@ -19,7 +19,7 @@ uses
 
   GLX.XOpenGL,
   GLX.XCollection,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Manager,
 
   GLX.Scene,
@@ -31,7 +31,7 @@ uses
   GLX.Coordinates,
   GLX.RenderContextInfo,
   GLX.State,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.TerrainRenderer,
   GLX.Graph,
 

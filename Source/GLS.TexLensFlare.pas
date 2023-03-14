@@ -16,15 +16,15 @@ uses
   
   GLS.Scene,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Objects,
   GLS.Texture,
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Context,
   GLS.RenderContextInfo,
   GLS.BaseClasses,
   GLS.State,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
 

@@ -17,7 +17,7 @@ uses
  
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.VectorGeometry;
+  Scena.VectorGeometry;
 
 type
   TForm1 = class(TForm)

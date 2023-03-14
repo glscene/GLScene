@@ -36,10 +36,10 @@ implementation
 //============================================
 
 uses
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Texture,
   GLS.Material,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
   PVector3f = ^TVector3f;

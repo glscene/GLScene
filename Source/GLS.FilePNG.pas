@@ -16,7 +16,7 @@ uses
   System.SysUtils,
   VCL.Imaging.pngimage,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   Scena.Strings,
   GLS.Context,
   GLS.Graphics,

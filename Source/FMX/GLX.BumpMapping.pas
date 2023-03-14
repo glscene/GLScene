@@ -12,9 +12,9 @@ uses
   FMX.Graphics,
 
   GLX.Color,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorLists,
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 type
   TNormalMapSpace = (nmsObject, nmsTangent);

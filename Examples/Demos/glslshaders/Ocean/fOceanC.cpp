@@ -19,7 +19,7 @@
 #pragma link "GLS.SkyDome"
 #pragma link "GLSL.UserShader"
 #pragma link "GLS.SceneViewer"
-#pragma link "GLS.OpenGLTokens"
+#pragma link "Scena.OpenGLTokens"
 #pragma link "GLS.OpenGLAdapter"
 
 #pragma resource "*.dfm"

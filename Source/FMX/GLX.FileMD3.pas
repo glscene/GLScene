@@ -12,7 +12,7 @@ uses
   System.SysUtils,
 
   GLX.ApplicationFileIO,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorFileObjects,
   GLX.Material,
   GLX.Texture,

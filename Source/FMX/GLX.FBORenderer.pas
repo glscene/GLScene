@@ -18,7 +18,7 @@ uses
   FMX.Dialogs,
 
   GLX.PersistentClasses,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Scene,
   GLX.Texture,
   GLX.Context,
@@ -29,7 +29,7 @@ uses
   GLX.State,
   GLX.PipelineTransformation,
   Scena.TextureFormat,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.MultisampleImage;
 
 type

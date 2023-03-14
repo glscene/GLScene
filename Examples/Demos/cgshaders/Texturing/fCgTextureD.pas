@@ -20,11 +20,11 @@ uses
   Cg.Shader,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Objects,
   GLS.SceneViewer,
   GLS.Texture,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Cadencer,
   GLS.Graph,
  

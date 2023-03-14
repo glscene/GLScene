@@ -12,9 +12,9 @@ interface
 uses
   System.SysUtils,
 
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorLists,
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 type
   // Structure for storing Bounding Boxes

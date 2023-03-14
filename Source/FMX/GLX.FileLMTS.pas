@@ -12,10 +12,10 @@ uses
   System.SysUtils,
   FMX.Graphics,
 
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.ApplicationFileIO,
   GLX.VectorLists,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.PersistentClasses,
   GLX.VectorFileObjects,
   GLX.Graphics,

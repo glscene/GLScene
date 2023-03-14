@@ -28,7 +28,7 @@ uses
   FMX.Objects,
   FMX.Graphics,
 
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.BaseClasses,
   GLX.ApplicationFileIO,
   GLX.Utils,

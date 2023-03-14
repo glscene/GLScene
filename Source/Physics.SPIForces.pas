@@ -9,10 +9,10 @@ uses
   System.Classes,
   Vcl.Dialogs,
 
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.XCollection,
   GLS.Scene,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Behaviours,
   GLS.Coordinates,
   Scena.Strings;

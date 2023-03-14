@@ -15,11 +15,11 @@ uses
   System.Math,
 
   GLX.VectorFileObjects,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.Material,
   GLX.Color,
   GLX.Texture,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   GLX.ApplicationFileIO;
 

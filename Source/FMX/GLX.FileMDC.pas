@@ -22,7 +22,7 @@ uses
   GLX.VectorFileObjects,
   GLX.Material,
   GLX.ApplicationFileIO,
-  GLX.VectorGeometry;
+  Scena.VectorGeometry;
 
 const
   MDCFILE_IDENTITY = 'IDPC';

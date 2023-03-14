@@ -20,8 +20,8 @@ uses
   System.SysUtils,
 
   GLX.XOpenGL,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   GLX.Scene,
   GLX.HeightData,

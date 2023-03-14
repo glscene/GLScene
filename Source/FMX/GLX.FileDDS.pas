@@ -16,7 +16,7 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.RGBE,
   Scena.Strings,
   GLX.ApplicationFileIO,
@@ -24,7 +24,7 @@ uses
   GLX.Context,
   GLX.Graphics,
   Scena.TextureFormat,
-  Formatx.DXTC;
+  Formats.DXTC;
 
 type
 

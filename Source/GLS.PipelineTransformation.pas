@@ -12,8 +12,8 @@ interface
 uses
   Winapi.OpenGL,
 
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.Logger;
 
 const

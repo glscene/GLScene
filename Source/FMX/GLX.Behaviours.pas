@@ -17,9 +17,9 @@ uses
   System.SysUtils,
 
   GLX.XCollection,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.Scene,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.BaseClasses,
   GLX.Coordinates;
 

@@ -12,7 +12,7 @@ interface
 
 uses
   System.Math,
-  GLX.VectorGeometry;
+  Scena.VectorGeometry;
 
 (* Convert Cylindrical to Cartesian with no checks. Single version with theta in rad
   Ref: http://mathworld.wolfram.com/CylindricalCoordinates.html *)

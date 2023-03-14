@@ -20,8 +20,8 @@ uses
   System.Types,
 
   NGD.Import,
-  GLX.VectorTypes,
-  GLX.VectorGeometry, // PVector4f TVector4f TMatrix4f PMatrix4f NullHmgVector...
+  Scena.VectorTypes,
+  Scena.VectorGeometry, // PVector4f TVector4f TMatrix4f PMatrix4f NullHmgVector...
   GLX.VectorLists, // TgxAffineVectorList for Tree
   GLX.XCollection, // TXCollection file function
   GLX.GeometryBB,

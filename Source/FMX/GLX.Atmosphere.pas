@@ -23,13 +23,13 @@ uses
   GLX.Scene,
   GLX.Objects,
   GLX.Cadencer,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Context,
   Scena.Strings,
   GLX.Color,
   GLX.RenderContextInfo,
   GLX.State,
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 type
    EGLAtmosphereException = class(Exception);

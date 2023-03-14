@@ -20,7 +20,7 @@ uses
   GLS.Texture,
   GLS.SceneViewer,
   GLS.MeshUtils,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.VectorLists,
   GLS.Cadencer,
 

@@ -154,11 +154,13 @@
         </DelphiCompile>
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="fmx.dcp"/>
+        <DCCReference Include="..\Source\Common\Formats.m3DS.pas"/>
+        <DCCReference Include="..\Source\Common\Formats.m3DSConst.pas"/>
+        <DCCReference Include="..\Source\Common\Formats.m3DSTypes.pas"/>
+        <DCCReference Include="..\Source\Common\Formats.m3DSUtils.pas"/>
+        <DCCReference Include="..\Source\Common\Formats.VFW.pas"/>
+        <DCCReference Include="..\Source\Common\Formats.DXTC.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.B3D.pas"/>
-        <DCCReference Include="..\Source\Formats.m3DS.pas"/>
-        <DCCReference Include="..\Source\Formats.m3DSConst.pas"/>
-        <DCCReference Include="..\Source\Formats.m3DSTypes.pas"/>
-        <DCCReference Include="..\Source\Formats.m3DSUtils.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.DDSImage.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.HDRImage.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.LWObjects.pas"/>
@@ -166,7 +168,6 @@
         <DCCReference Include="..\Source\FMX\Formatx.Q3MD3.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.OCT.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.X.pas"/>
-        <DCCReference Include="..\Source\FMX\Formatx.DXTC.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.GL2.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.MD2.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.Q3BSP.pas"/>
@@ -366,11 +367,7 @@
         <DCCReference Include="..\Source\FMX\GLX.Polynomials.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.RGBE.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.SpacePartition.pas"/>
-        <DCCReference Include="..\Source\FMX\GLX.Spline.pas"/>
-        <DCCReference Include="..\Source\FMX\GLX.VectorTypesExt.pas"/>
-        <DCCReference Include="..\Source\FMX\GLX.VectorGeometry.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.VectorLists.pas"/>
-        <DCCReference Include="..\Source\FMX\GLX.VectorTypes.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.XCollection.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.XOpenGL.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.GeometryBB.pas"/>
@@ -379,7 +376,11 @@
         <DCCReference Include="..\Source\Common\Vulkan.Import.pas"/>
         <DCCReference Include="..\Source\FMX\GLSLx.Parameter.pas"/>
         <DCCReference Include="..\Source\Common\Scena.Strings.pas"/>
-        <None Include="..\Source\Common\Scena.inc"/>
+        <DCCReference Include="..\Source\Common\Scena.VectorTypes.pas"/>
+        <DCCReference Include="..\Source\Common\Scena.VectorTypesExt.pas"/>
+        <DCCReference Include="..\Source\Common\Scena.VectorGeometry.pas"/>
+        <DCCReference Include="..\Source\Common\Scena.Spline.pas"/>
+        <DCCReference Include="..\Source\Common\Scena.TextureFormat.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -418,12 +419,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libpcre.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libpcre.dylib" Class="DependencyModule">
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>

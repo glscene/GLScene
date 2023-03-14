@@ -14,8 +14,8 @@ uses
 
   GLX.Texture,
   GLX.Scene,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.Context,
   GLX.Material,
   GLSLx.Shader,

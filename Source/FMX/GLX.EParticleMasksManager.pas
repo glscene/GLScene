@@ -40,8 +40,8 @@ uses
   GLX.Texture,
   GLX.Material,
   GLX.Scene,
-  GLX.VectorGeometry,
-  GLX.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLX.ParticleFX,
   GLX.Coordinates;
 

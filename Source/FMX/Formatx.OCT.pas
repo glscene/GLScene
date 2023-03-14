@@ -13,8 +13,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   GLX.MeshUtils;
 

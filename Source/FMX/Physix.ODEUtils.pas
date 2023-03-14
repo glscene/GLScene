@@ -18,8 +18,8 @@ uses
   System.Classes,
 
   ODE.Import,
-  GLX.VectorGeometry,
-  GLX.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLX.VectorLists,
   GLX.PersistentClasses,
   GLX.Scene,

@@ -18,9 +18,9 @@ uses
   Vcl.Imaging.jpeg,
   Vcl.Imaging.pngimage,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.OpenGLTokens,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.BaseClasses,
   GLS.Graphics,
   GLS.Context,

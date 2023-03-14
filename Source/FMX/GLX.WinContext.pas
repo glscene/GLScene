@@ -23,7 +23,7 @@ uses
   GLX.Context,
   GLX.State,
   Scena.Strings,
-  GLX.VectorGeometry;
+  Scena.VectorGeometry;
 
 type
   // A context driver for standard Windows OpenGL

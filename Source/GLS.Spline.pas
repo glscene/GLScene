@@ -1,15 +1,15 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-unit GLS.Spline;
+unit Scena.Spline;
 
 (* Cubic spline interpolation functions *)
 
 interface
 
 uses
-  GLS.VectorTypes,
-  GLS.VectorGeometry;
+  Scena.VectorTypes,
+  Scena.VectorGeometry;
 
 {$I Scena.inc}
 

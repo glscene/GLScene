@@ -32,8 +32,8 @@ uses
 
   GLX.BaseClasses,
   GLX.PersistentClasses,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   Scena.Strings,
   GLX.Texture,
   GLX.Material,

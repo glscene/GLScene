@@ -56,10 +56,10 @@ uses
   Vcl.Imaging.jpeg,
   Vcl.Forms,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Scene,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.HeightData,
   GLS.TerrainRenderer,
   GLS.Texture,
@@ -2615,7 +2615,7 @@ end;
 procedure TGLFractalArchipelago.fOnCreateDefaultTile(heightData: TGLHeightData);
 var
   x, y: integer;
-  rasterLine: GLS.VectorGeometry.PSingleArray;
+  rasterLine: Scena.VectorGeometry.PSingleArray;
   oldType: TGLHeightDataType;
 begin
   with heightData do

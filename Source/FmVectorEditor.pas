@@ -21,9 +21,9 @@ uses
   VCL.Graphics,
   VCL.Controls,
 
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Utils,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
   TGLVectorEditorForm = class(TForm)

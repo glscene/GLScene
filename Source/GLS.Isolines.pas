@@ -16,16 +16,16 @@ uses
   System.Math,
   System.Generics.Collections,
 
-  GLS.VectorGeometry, 
+  Scena.VectorGeometry, 
   GLS.VectorLists, 
   GLS.Objects, 
   GLS.MultiPolygon,  
   GLS.Coordinates,
-  GLS.VectorTypesExt,
+  Scena.VectorTypesExt,
   GLS.Color, 
-  GLS.Spline, 
+  Scena.Spline, 
   GLS.SpaceText, 
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.VectorFileObjects;
 
 type

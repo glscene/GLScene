@@ -16,7 +16,7 @@ uses
   GLS.Texture,
   GLS.Graphics,
   Scena.TextureFormat,
-  GLS.VectorGeometry;
+  Scena.VectorGeometry;
 
 const
   GRADIENT_TABLE_SIZE = 256;

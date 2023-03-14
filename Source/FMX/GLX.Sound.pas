@@ -13,10 +13,10 @@ uses
   System.Types,
 
   GLX.XCollection,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.SoundFileObjects,
   GLX.Scene,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Cadencer,
   GLX.BaseClasses,
   GLX.Utils;

@@ -14,13 +14,13 @@ uses
   Winapi.OpenGLext,
   System.SysUtils,
   
-  GLS.OpenGLTokens, 
+  Scena.OpenGLTokens, 
   GLS.XOpenGL, 
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.HeightData, 
   GLS.VectorLists, 
   GLS.Context,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Isolines,
   Scena.Strings;
 

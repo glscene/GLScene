@@ -30,8 +30,8 @@ uses
   Winapi.OpenGLext,
 
   GLX.XCollection,
-  GLX.VectorGeometry,
-  GLX.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLX.VectorLists,
 
   GLX.Scene,

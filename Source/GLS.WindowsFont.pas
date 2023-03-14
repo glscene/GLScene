@@ -25,10 +25,10 @@ uses
   GLS.RenderContextInfo,
   GLS.VectorLists,
   GLS.Utils,
-  GLS.VectorGeometry,
-  GLS.OpenGLTokens,
+  Scena.VectorGeometry,
+  Scena.OpenGLTokens,
   GLS.ApplicationFileIO,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
 

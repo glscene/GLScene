@@ -18,11 +18,11 @@ uses
   System.Math,
   Vcl.Graphics,
 
-  GLS.OpenGLTokens,
-  GLS.VectorGeometry,
+  Scena.OpenGLTokens,
+  Scena.VectorGeometry,
   GLS.Color,
   GLS.Context,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.State;
 
 type

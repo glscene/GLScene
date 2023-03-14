@@ -16,7 +16,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Context,
   GLS.Graphics,
   GLS.ApplicationFileIO,

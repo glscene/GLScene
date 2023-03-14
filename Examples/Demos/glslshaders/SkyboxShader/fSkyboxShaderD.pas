@@ -9,11 +9,11 @@ uses
   Vcl.Forms,
   Vcl.Controls,
 
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.Scene,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Objects,
   GLS.GeomObjects,
   GLS.Texture,

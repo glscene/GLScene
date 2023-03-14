@@ -19,8 +19,8 @@ uses
   Winapi.OpenGLext,
   System.Classes,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
+  Scena.OpenGLTokens,
+  Scena.VectorTypes,
   Scena.TextureFormat,
   GLS.Context,
   GLS.Texture,

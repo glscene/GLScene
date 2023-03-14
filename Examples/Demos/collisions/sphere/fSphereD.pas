@@ -14,7 +14,7 @@ uses
   Vcl.StdCtrls,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Objects,
   GLS.Collision,
   GLS.SceneViewer,

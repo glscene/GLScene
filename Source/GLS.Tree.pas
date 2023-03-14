@@ -29,11 +29,11 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Scene,
   GLS.State,
   GLS.Material,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.VectorLists,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
@@ -41,7 +41,7 @@ uses
   GLS.PersistentClasses,
   GLS.XOpenGL,
   GLS.Context,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Utils;
 
 type

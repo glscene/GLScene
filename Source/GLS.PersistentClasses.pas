@@ -67,7 +67,7 @@ type
   (*Interface for persistent objects.
      This interface does not really allow polymorphic persistence,
      but is rather intended as a way to unify persistence calls for iterators *)
-  IGLPersistentObject = interface(IInterface)
+  IPersistentObject = interface(IInterface)
   ['{A9A0198A-F11B-4325-A92C-2F24DB41652B}']
     procedure WriteToFiler(writer: TGLVirtualWriter);
     procedure ReadFromFiler(reader: TGLVirtualReader);
@@ -81,7 +81,7 @@ type
      polymorphic construction (don't forget to register your subclasses).
      Note that TGLPersistentObject implements IUnknown, but does *not* implement
      reference counting *)
-  TGLPersistentObject = class(TPersistent, IGLPersistentObject)
+  TGLPersistentObject = class(TPersistent, IPersistentObject)
   protected
     procedure RaiseFilerException(const archiveVersion: Integer);
     function QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
@@ -800,6 +800,8 @@ begin
   Result := FList^[Index];
 end;
 
+// IndexOf
+//
 function TGLPersistentObjectList.IndexOf(Item: TObject): Integer;
 var
   I: Integer;

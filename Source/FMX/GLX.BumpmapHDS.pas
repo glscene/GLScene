@@ -21,11 +21,11 @@ uses
   GLX.HeightData,
   GLX.Graphics,
   GLX.Coordinates,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Texture,
   GLX.Material,
   GLX.Utils,
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 type
   TgxBumpmapHDS = class;

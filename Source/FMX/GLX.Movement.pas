@@ -23,9 +23,9 @@ uses
   GLX.XCollection,
   GLX.PersistentClasses,
   GLX.BaseClasses,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
-  GLX.Spline,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.Spline,
   Scena.Strings,
 
   GLX.Scene,

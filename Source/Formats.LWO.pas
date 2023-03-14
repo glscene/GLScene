@@ -213,7 +213,7 @@ uses
   System.SysUtils,
   System.IOUtils,
   System.Math,
-  GLS.VectorGeometry;
+  Scena.VectorGeometry;
 
 type
 

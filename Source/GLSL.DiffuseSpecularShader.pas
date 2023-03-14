@@ -28,11 +28,11 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Texture,
   GLS.Scene,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   Scena.Strings,
   GLSL.Shader,
   GLSL.CustomShader,

@@ -15,8 +15,8 @@ uses
   GLX.VectorFileObjects,
   GLX.ApplicationFileIO,
   GLX.Material,
-  GLX.VectorGeometry,
-  GLX.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLX.VectorLists,
 
   Formats.FileGL2;

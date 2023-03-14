@@ -22,9 +22,9 @@ uses
   System.Classes,
   FMX.Effects,
 
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.PersistentClasses,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Scene,
   GLX.PipelineTransformation,
   GLX.Context,

@@ -18,7 +18,7 @@ uses
   System.SysUtils,
 
   GLX.Scene,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Coordinates,
 
   DWSx.HelperFunc,
@@ -821,7 +821,7 @@ begin
   with FDependencies do
   begin
     Add('Classes');
-    Add('GLS.VectorGeometry');
+    Add('Scena.VectorGeometry');
   end;
 end;
 

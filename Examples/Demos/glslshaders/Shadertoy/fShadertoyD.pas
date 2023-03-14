@@ -12,7 +12,7 @@ uses
   Vcl.Forms,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.BaseClasses,
   GLS.Objects,
   GLS.Cadencer,
@@ -20,8 +20,8 @@ uses
   GLS.Keyboard,
   GLS.RenderContextInfo,
   GLS.OpenGLAdapter,
-  GLS.OpenGLTokens,
-  GLS.VectorGeometry,
+  Scena.OpenGLTokens,
+  Scena.VectorGeometry,
 
   GLS.AsyncTimer,
   GLS.Context,

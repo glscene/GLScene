@@ -13,9 +13,9 @@ uses
   System.SysUtils,
 
   GLX.OpenGL, // GL_ARB_vertex_buffer_object
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.XOpenGL,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   Scena.Strings,
   GLX.HeightData,

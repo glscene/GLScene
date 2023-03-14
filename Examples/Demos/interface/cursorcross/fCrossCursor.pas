@@ -18,8 +18,8 @@ uses
   GLS.Objects,
   GLS.GeomObjects,
   GLS.SceneViewer,
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLS.FileTGA,
   GLS.Coordinates,
   GLS.GLS.BaseClasses;

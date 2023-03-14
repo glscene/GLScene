@@ -33,7 +33,7 @@ uses
 
   GLX.OpenGL,
 
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.PersistentClasses,
   GLX.ApplicationFileIO,
   GLX.Context,

@@ -12,9 +12,9 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.VectorFileObjects,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.VectorLists,
   GLS.ApplicationFileIO,
   GLS.ParametricSurfaces,

@@ -14,8 +14,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLS.BaseClasses;
 
 type
@@ -485,12 +485,12 @@ end;
 
 function TGLCustomCoordinates.VectorLength: Single;
 begin
-  Result := GLS.VectorGeometry.VectorLength(FCoords);
+  Result := Scena.VectorGeometry.VectorLength(FCoords);
 end;
 
 function TGLCustomCoordinates.VectorNorm: Single;
 begin
-  Result := GLS.VectorGeometry.VectorNorm(FCoords);
+  Result := Scena.VectorGeometry.VectorNorm(FCoords);
 end;
 
 function TGLCustomCoordinates.MaxXYZ: Single;
@@ -506,28 +506,28 @@ end;
 procedure TGLCustomCoordinates.SetVector(const X, Y: Single; Z: Single = 0);
 begin
   Assert(FStyle = csVector, csVectorHelp);
-  GLS.VectorGeometry.SetVector(FCoords, X, Y, Z);
+  Scena.VectorGeometry.SetVector(FCoords, X, Y, Z);
   NotifyChange(Self);
 end;
 
 procedure TGLCustomCoordinates.SetVector(const V: TAffineVector);
 begin
   Assert(FStyle = csVector, csVectorHelp);
-  GLS.VectorGeometry.SetVector(FCoords, V);
+  Scena.VectorGeometry.SetVector(FCoords, V);
   NotifyChange(Self);
 end;
 
 procedure TGLCustomCoordinates.SetVector(const V: TGLVector);
 begin
   Assert(FStyle = csVector, csVectorHelp);
-  GLS.VectorGeometry.SetVector(FCoords, V);
+  Scena.VectorGeometry.SetVector(FCoords, V);
   NotifyChange(Self);
 end;
 
 procedure TGLCustomCoordinates.SetVector(const X, Y, Z, W: Single);
 begin
   Assert(FStyle = csVector, csVectorHelp);
-  GLS.VectorGeometry.SetVector(FCoords, X, Y, Z, W);
+  Scena.VectorGeometry.SetVector(FCoords, X, Y, Z, W);
   NotifyChange(Self);
 end;
 
@@ -581,7 +581,7 @@ end;
 procedure TGLCustomCoordinates.SetPoint2D(const X, Y: Single);
 begin
   Assert(FStyle = CsPoint2D, CsPoint2DHelp);
-  GLS.VectorGeometry.MakeVector(FCoords, X, Y, 0);
+  Scena.VectorGeometry.MakeVector(FCoords, X, Y, 0);
   NotifyChange(Self);
 end;
 
@@ -663,7 +663,7 @@ end;
 
 function TGLCustomCoordinates.GetAsAffineVector: TAffineVector;
 begin
-  GLS.VectorGeometry.SetVector(Result, FCoords);
+  Scena.VectorGeometry.SetVector(Result, FCoords);
 end;
 
 function TGLCustomCoordinates.GetAsPoint2D: TVector2f;

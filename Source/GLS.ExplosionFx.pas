@@ -27,11 +27,11 @@ interface
 uses
   Winapi.OpenGL,
 
-  GLS.OpenGLTokens,
-  GLS.VectorGeometry,
+  Scena.OpenGLTokens,
+  Scena.VectorGeometry,
   GLS.Scene,
   GLS.VectorFileObjects,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.VectorLists,
   GLS.XCollection,
   GLS.Coordinates,

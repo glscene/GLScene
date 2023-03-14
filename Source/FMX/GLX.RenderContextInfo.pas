@@ -10,9 +10,9 @@ interface
 {$I Scena.inc}
 
 uses
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.PersistentClasses,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.State,
   GLX.PipelineTransformation,
   GLX.Color;

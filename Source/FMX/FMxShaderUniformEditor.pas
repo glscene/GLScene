@@ -23,7 +23,7 @@ uses
 
   GLSLx.Parameter,
   Scena.TextureFormat,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   Scena.Strings;
 
 type

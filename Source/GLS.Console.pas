@@ -60,7 +60,7 @@ uses
   GLS.Utils,
   Scena.Strings,
   GLS.Material,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 const
   CONSOLE_MAX_COMMANDS = 120;

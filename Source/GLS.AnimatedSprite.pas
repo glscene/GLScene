@@ -15,10 +15,10 @@ uses
   System.SysUtils,
   System.Math,
    
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Scene,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.Material,
   GLS.PersistentClasses,
   GLS.XCollection,

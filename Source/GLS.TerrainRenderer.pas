@@ -19,19 +19,19 @@ uses
   System.SysUtils,
   System.Types,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Scene,
   GLS.Coordinates,
   GLS.HeightData,
   GLS.Material,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Context,
   GLS.ROAMPatch,
   GLS.VectorLists,
   GLS.RenderContextInfo,
   GLS.XOpenGL,
   GLS.Utils,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Texture;
 
 const

@@ -16,18 +16,18 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.Scene,
   GLS.PersistentClasses,
   GLS.PipelineTransformation,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Objects,
   GLS.Context,
   GLS.Color,
   GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.State,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Utils,
   Scena.TextureFormat;
 

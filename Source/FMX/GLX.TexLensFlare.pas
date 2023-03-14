@@ -15,7 +15,7 @@ uses
   System.Classes,
 
   GLX.Scene,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.PersistentClasses,
   GLX.Objects,
   GLX.Texture,
@@ -23,7 +23,7 @@ uses
   GLX.RenderContextInfo,
   GLX.BaseClasses,
   GLX.State,
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 type
 

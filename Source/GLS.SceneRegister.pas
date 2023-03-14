@@ -286,7 +286,7 @@ uses
   FmSceneEditor,
 
   GLS.ApplicationFileIO,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.ScriptBase,
 
   GLS.AnimatedSprite,

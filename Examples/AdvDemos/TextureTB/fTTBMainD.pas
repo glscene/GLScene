@@ -32,7 +32,7 @@ uses
   GLS.BaseClasses,
   GLS.Texture,
   GLS.Graphics,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.State,
   GLS.Utils;
 

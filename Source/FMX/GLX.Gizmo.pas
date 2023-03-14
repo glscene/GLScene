@@ -18,8 +18,8 @@ uses
   FMX.TextLayout,
 
   GLX.PersistentClasses,
-  GLX.VectorGeometry,
-  GLX.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   Scena.Strings,
   GLX.Scene,
   GLX.Color,

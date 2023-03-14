@@ -13,13 +13,13 @@ uses
   Winapi.OpenGL,
   System.Classes,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.OpenGLAdapter,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.Context,
   GLS.BaseClasses,
-  GLS.Spline,
+  Scena.Spline,
   GLS.Coordinates;
 
 type

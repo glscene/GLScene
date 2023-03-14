@@ -17,9 +17,9 @@ uses
   FMX.Graphics,
 
   GLX.XCollection,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.Context,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Scene,
   GLX.Coordinates,
   GLX.VectorFileObjects,

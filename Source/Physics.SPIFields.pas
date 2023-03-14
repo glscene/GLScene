@@ -1,14 +1,13 @@
 //
 // The graphics rendering engine GLScene http://glscene.org
 //
-
 unit Physics.SPIFields;
 
 interface
 
 uses
   System.Classes,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.XCollection,
   GLS.Scene,
   GLS.Coordinates,

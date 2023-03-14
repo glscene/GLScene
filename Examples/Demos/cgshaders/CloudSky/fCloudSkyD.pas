@@ -21,7 +21,7 @@ uses
   GLS.SceneViewer,
   GLS.AsyncTimer,
   GLS.Cadencer,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.SkyDome,
   GLS.Texture,
   GLS.FileTGA,

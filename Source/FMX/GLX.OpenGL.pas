@@ -30,7 +30,7 @@ uses
  {$IFDEF MSWINDOWS}
      Winapi.Windows,
  {$ELSE} X, XLib, XUtil, {$ENDIF}
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 const
 {$IFDEF MSWINDOWS}

@@ -22,10 +22,10 @@ uses
   VCL.Controls, 
   VCL.Graphics,
    
-  GLS.VectorGeometry, 
+  Scena.VectorGeometry, 
   GLS.Color, 
   GLS.Texture, 
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
   TRColorEditor = class(TFrame)

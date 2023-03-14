@@ -26,10 +26,10 @@ uses
   System.Math,
 
   GLX.XOpenGL,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.VectorLists,
-  GLX.VectorGeometry,
-  GLX.Spline,
+  Scena.VectorGeometry,
+  Scena.Spline,
 
   GLX.Context,
   GLX.Objects,

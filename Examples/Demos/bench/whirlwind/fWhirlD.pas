@@ -19,7 +19,7 @@ uses
   GLS.BaseClasses,
   GLS.Scene,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.SceneViewer,
   GLS.Particles,
   GLS.Cadencer,

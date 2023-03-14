@@ -15,7 +15,7 @@ interface
 uses
   System.SysUtils,
   System.Math,
-  GLS.VectorGeometry;
+  Scena.VectorGeometry;
 
 type
 

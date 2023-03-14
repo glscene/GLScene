@@ -14,8 +14,8 @@ interface
 
 uses
   System.Classes,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   GLX.GeometryBB,
   GLX.Context;

@@ -18,11 +18,13 @@ uses
   System.Math,
   VCL.Consts,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
+  Scena.VectorTypes,
+  Scena.VectorTypesExt,
+  Scena.TextureFormat,
+
+  Scena.VectorGeometry,
   GLS.Scene,
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
-  GLS.VectorTypesExt,
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.Silhouette,
@@ -40,8 +42,7 @@ uses
   GLS.Selection,
   GLS.RenderContextInfo,
   GLS.Coordinates,
-  GLS.BaseClasses,
-  Scena.TextureFormat;
+  GLS.BaseClasses;
 
 type
   TGLMeshObjectList = class;

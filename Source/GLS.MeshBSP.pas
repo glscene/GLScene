@@ -19,11 +19,11 @@ uses
 
   GLS.VectorFileObjects,
   GLS.Material,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.VectorLists,
   GLS.Color,
   GLS.RenderContextInfo,
-  GLS.VectorTypes;
+  Scena.VectorTypes;
 
 type
 

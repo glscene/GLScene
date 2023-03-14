@@ -28,9 +28,9 @@ uses
   System.SysUtils,
 
   GLX.PersistentClasses,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorLists,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   Scena.Strings,
   GLX.Scene,
   GLX.VectorFileObjects,

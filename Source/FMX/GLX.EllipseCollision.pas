@@ -10,10 +10,10 @@ interface
 {$I Scena.inc}
 
 uses
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Octree,
   GLX.VectorLists,
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 type
   TECPlane = class

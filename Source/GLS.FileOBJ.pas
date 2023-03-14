@@ -20,10 +20,10 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.ApplicationFileIO,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Scene,  
   GLS.VectorFileObjects,
   GLS.VectorLists,  
@@ -103,7 +103,7 @@ implementation
 
 uses
   Scena.Strings,
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.XOpenGL,
   GLS.Context,
   GLS.MeshUtils;

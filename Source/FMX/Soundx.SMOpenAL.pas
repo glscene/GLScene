@@ -31,8 +31,8 @@ uses
 
   OpenAL.Import,  // al, alut, alTypes
 
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.Sound,
   GLX.Scene,
   GLX.SoundFileObjects;

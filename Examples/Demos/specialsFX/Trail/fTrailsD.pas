@@ -14,9 +14,18 @@ uses
   Vcl.ComCtrls,
   Vcl.ExtCtrls,
   
-  GLS.Cadencer, GLS.Scene, GLS.Objects, GLS.GeomObjects,
-  GLS.SceneViewer,GLS.Trail,GLS.Texture, GLS.VectorGeometry, GLS.Mesh, GLS.VectorTypes,
-  GLS.Coordinates, GLS.BaseClasses;
+  GLS.Cadencer, 
+  GLS.Scene, 
+  GLS.Objects, 
+  GLS.GeomObjects,
+  GLS.SceneViewer,
+  GLS.Trail,
+  GLS.Texture, 
+  Scena.VectorGeometry, 
+  GLS.Mesh, 
+  Scena.VectorTypes,
+  GLS.Coordinates, 
+  GLS.BaseClasses;
 
 type
   TFormTrails = class(TForm)

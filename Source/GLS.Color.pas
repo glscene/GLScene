@@ -17,8 +17,8 @@ uses
   Vcl.Dialogs,
   Vcl.Graphics,
 
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.PersistentClasses,
   GLS.BaseClasses,
   GLS.Utils;

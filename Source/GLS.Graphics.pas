@@ -30,8 +30,8 @@ uses
 
   {$IFDEF USE_GRAPHICS32} GR32, {$ENDIF}
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
+  Scena.OpenGLTokens,
+  Scena.VectorTypes,
   GLS.State,
   GLS.ApplicationFileIO,
   GLS.PersistentClasses,
@@ -39,7 +39,7 @@ uses
   GLS.ImageUtils,
   GLS.Color,
   Scena.TextureFormat,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Utils,
   Scena.Strings,
   GLS.Logger;

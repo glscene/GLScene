@@ -33,12 +33,12 @@ interface
 uses
   Winapi.OpenGL,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.OpenGLAdapter,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.VectorFileObjects,
   GLS.CurvesAndSurfaces,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.Texture,

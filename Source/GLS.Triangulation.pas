@@ -14,7 +14,7 @@ uses
   System.Types,
   Vcl.Dialogs,
 
-  GLS.VectorGeometry;
+  Scena.VectorGeometry;
 
 // Set these as applicable
 const

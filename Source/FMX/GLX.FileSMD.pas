@@ -14,8 +14,8 @@ uses
   GLX.VectorFileObjects,
   GLX.Texture,
   GLX.ApplicationFileIO,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.Material,
   GLX.Utils;
 

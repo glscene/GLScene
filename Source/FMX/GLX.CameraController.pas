@@ -30,10 +30,10 @@ uses
   
   GLX.PersistentClasses,
   GLX.Scene,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Coordinates,
   GLX.SmoothNavigator, 
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 type
 

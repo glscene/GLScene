@@ -21,7 +21,7 @@ uses
   GLS.Graph,
   GLS.Utils,
   GLS.Context,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.GeomObjects,
   GLS.Coordinates,
   GLS.Objects,

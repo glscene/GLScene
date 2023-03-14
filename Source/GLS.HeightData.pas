@@ -30,7 +30,7 @@ uses
 
   GLS.ApplicationFileIO,
   GLS.Utils,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Material,
   GLS.BaseClasses;
 

@@ -33,9 +33,9 @@ uses
 
   GLX.OpenGL,
   GLX.XOpenGL,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.PersistentClasses,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Scene,
   GLX.Coordinates,
   GLX.Graphics,

@@ -31,11 +31,11 @@ uses
   System.SysUtils,
 
   GLX.XCollection,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   GLX.BaseClasses,
   GLX.Manager,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   Scena.Strings,
 
   GLX.Scene,

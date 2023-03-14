@@ -20,8 +20,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.Texture,
   GLX.Context,
   GLX.Graphics,

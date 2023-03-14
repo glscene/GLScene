@@ -29,10 +29,10 @@ uses
   System.SysUtils,
 
   GLX.XOpenGL,
-  GLX.Spline,
+  Scena.Spline,
   GLX.Context,
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.VectorLists,
   GLX.PersistentClasses,
   GLX.Scene,

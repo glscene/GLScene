@@ -13,8 +13,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
   GLS.Graph,

@@ -17,7 +17,7 @@ uses
   GLX.XCollection,
   GLX.BaseClasses,
   GLX.PersistentClasses,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Scene,
   GLX.Context,
   GLX.Color,

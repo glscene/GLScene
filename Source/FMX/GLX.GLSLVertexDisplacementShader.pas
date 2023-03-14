@@ -29,7 +29,7 @@ uses
   
   GXL.OpenGLx, 
   GLX.BaseClasses, 
-  GLX.VectorGeometry, 
+  Scena.VectorGeometry, 
   GLX.Scene, 
   GLX.CrossPlatform, 
   GLX.State,

@@ -14,11 +14,11 @@ uses
   System.Classes,
 
   GLX.XOpenGL,
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.Scene,
   GLX.PersistentClasses,
   GLX.Texture,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.RenderContextInfo,
   GLX.State,
   GLX.Context;

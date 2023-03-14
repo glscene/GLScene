@@ -5,10 +5,8 @@ unit Soundx.SMFMOD;
 
 (*
   FMOD based sound-manager (http://www.fmod.org/, free for freeware).
-  Unsupported feature(s) :
-  sound source velocity
-  looping (sounds are played either once or forever)
-  sound cones
+  Unsupported feature(s) : sound source velocity looping
+  (sounds are played either once or forever) sound cones
 *)
 
 interface
@@ -23,10 +21,10 @@ uses
   FMOD.Types,
   FMOD.Presets,
 
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.Sound,
   GLX.Scene,
-  GLX.VectorGeometry;
+  Scena.VectorGeometry;
 
 type
 

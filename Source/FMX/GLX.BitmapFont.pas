@@ -22,7 +22,7 @@ uses
   GLX.XOpenGL,
   GLX.PersistentClasses,
   GLX.Scene,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Context,
   GLX.Texture,
   GLX.State,
@@ -32,7 +32,7 @@ uses
   GLX.BaseClasses,
   GLX.RenderContextInfo,
   Scena.TextureFormat,
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 type
 

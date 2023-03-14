@@ -24,7 +24,7 @@ uses
   Vcl.Menus,
   Vcl.Imaging.jpeg,
 
-  GLS.OpenGLTokens,
+  Scena.OpenGLTokens,
   GLS.OpenGLAdapter,
   GLS.Scene,
   GLS.SceneViewer,

@@ -19,8 +19,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.VectorLists;
 
 type

@@ -30,11 +30,11 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLX.VectorTypes,
+  Scena.VectorTypes,
   GLX.VectorLists,
   GLX.HeightData,
   GLX.Graphics,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Texture,
   GLX.Coordinates,
   GLX.Material;

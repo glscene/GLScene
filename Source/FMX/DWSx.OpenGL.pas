@@ -17,7 +17,7 @@ uses
   System.Variants,
   
   GLX.Context,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   
   dwsExprs,
   dwsSymbols,
@@ -2026,7 +2026,7 @@ begin
   inherited;
   FUnitName := 'OpenGLx';
   FDependencies.Add('GLS.Context');
-  FDependencies.Add('GLS.VectorGeometry');
+  FDependencies.Add('Scena.VectorGeometry');
 end;
 
 procedure TGLPushAttrib.Execute;

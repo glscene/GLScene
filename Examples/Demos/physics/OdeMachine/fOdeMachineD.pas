@@ -14,7 +14,7 @@ uses
   GLS.Objects,
   GLS.SceneViewer,
   Physics.ODEManager,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Cadencer,
   GLS.GeomObjects,
   GLS.HUDObjects,

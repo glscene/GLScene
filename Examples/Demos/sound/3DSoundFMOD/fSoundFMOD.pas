@@ -14,7 +14,7 @@ uses
 
   GLS.Cadencer,
   GLS.Scene,
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.Objects,
   GLS.SoundManager,
   Sounds.FMOD,
@@ -25,7 +25,7 @@ uses
   GLS.BaseClasses,
   GLS.FileWAV,
   GLS.FileMP3,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Utils;
 
 type

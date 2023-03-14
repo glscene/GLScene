@@ -24,8 +24,8 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.GeometryBB,
   GLX.PersistentClasses;
 

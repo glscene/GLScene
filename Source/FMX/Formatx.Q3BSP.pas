@@ -10,7 +10,7 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-  GLX.VectorTypes;
+  Scena.VectorTypes;
 
 const FACE_POLYGON = 1;
 const MAX_TEXTURES = 1000;

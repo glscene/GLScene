@@ -17,8 +17,8 @@ uses
   System.UITypes,
   FMX.Dialogs,
 
-  GLX.VectorTypes,
-  GLX.VectorGeometry,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLX.PersistentClasses,
   GLX.BaseClasses;
 

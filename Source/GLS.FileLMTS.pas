@@ -15,11 +15,11 @@ uses
   System.SysUtils,
   Vcl.Graphics,
 
-  GLS.VectorTypes,
+  Scena.VectorTypes,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
   GLS.VectorLists,
-  GLS.VectorGeometry,
+  Scena.VectorGeometry,
   GLS.Texture,
   GLS.PersistentClasses,
   GLS.Graphics,

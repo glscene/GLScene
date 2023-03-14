@@ -15,7 +15,7 @@ uses
 
   GLX.XOpenGL,
   GLX.Scene,
-  GLX.VectorGeometry,
+  Scena.VectorGeometry,
   GLX.Context,
   GLX.Material,
   GLX.Objects,
