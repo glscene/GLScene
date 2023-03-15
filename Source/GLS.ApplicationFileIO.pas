@@ -19,7 +19,7 @@ uses
 
   GLS.BaseClasses,
   Scena.Strings,
-  GLS.Logger;
+  Scena.Logger;
 
 const
   GLS_RC_DDS_Type = RT_RCDATA;

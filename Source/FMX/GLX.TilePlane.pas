@@ -38,8 +38,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TgxVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgxVirtualReader); override;
+    procedure WriteToFiler(writer: TVirtualWriter); override;
+    procedure ReadFromFiler(reader: TVirtualReader); override;
     property Cell[col: Integer]: Integer read GetCell write SetCell; default;
     property ColMin: Integer read FColMin write SetColMin;
     property ColMax: Integer read FColMax write SetColMax;
@@ -65,8 +65,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TgxVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgxVirtualReader); override;
+    procedure WriteToFiler(writer: TVirtualWriter); override;
+    procedure ReadFromFiler(reader: TVirtualReader); override;
     property Tile[col, row: Integer]: Integer read GetTile
       write SetTile; default;
     property row[index: Integer]: TgxTiledAreaRow read GetRow;
@@ -142,7 +142,7 @@ begin
   inherited;
 end;
 
-procedure TgxTiledAreaRow.WriteToFiler(writer: TgxVirtualWriter);
+procedure TgxTiledAreaRow.WriteToFiler(writer: TVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -153,7 +153,7 @@ begin
   end;
 end;
 
-procedure TgxTiledAreaRow.ReadFromFiler(reader: TgxVirtualReader);
+procedure TgxTiledAreaRow.ReadFromFiler(reader: TVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -311,7 +311,7 @@ end;
 
 // WriteToFiler
 //
-procedure TgxTiledArea.WriteToFiler(writer: TgxVirtualWriter);
+procedure TgxTiledArea.WriteToFiler(writer: TVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -324,7 +324,7 @@ end;
 
 // ReadFromFiler
 //
-procedure TgxTiledArea.ReadFromFiler(reader: TgxVirtualReader);
+procedure TgxTiledArea.ReadFromFiler(reader: TVirtualReader);
 var
   archiveVersion: Integer;
 begin

@@ -93,7 +93,7 @@ type
     procedure GetExtents(var min, max: TAffineVector);
   end;
 
-  TGLPolygonList = class(TGLPersistentObjectList)
+  TGLPolygonList = class(TPersistentObjectList)
   private
     FAktList: TGLAffineVectorList;
     function GetList(I: Integer): TGLAffineVectorList;

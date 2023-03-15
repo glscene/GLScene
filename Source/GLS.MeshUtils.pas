@@ -144,7 +144,7 @@ procedure WeldVertices(vertices: TGLAffineVectorList; indicesMap: TGLIntegerList
   the agglomerated list of the triangles that couldn't be stripified. 
 *)
 function StripifyMesh(indices: TGLIntegerList; maxVertexIndex: Integer;
-  agglomerateLoneTriangles: Boolean = False): TGLPersistentObjectList;
+  agglomerateLoneTriangles: Boolean = False): TPersistentObjectList;
 (* 
   Increases indices coherency wrt vertex caches.
   The indices parameters is understood as vertex indices of a triangles set,
@@ -1033,7 +1033,7 @@ begin
 end;
 
 function StripifyMesh(indices: TGLIntegerList; maxVertexIndex: Integer;
-  agglomerateLoneTriangles: Boolean = False): TGLPersistentObjectList;
+  agglomerateLoneTriangles: Boolean = False): TPersistentObjectList;
 var
   accountedTriangles: array of ByteBool;
   vertexTris: array of TGLIntegerList;
@@ -1105,7 +1105,7 @@ var
   loneTriangles: TGLIntegerList;
 begin
   Assert((indices.Count mod 3) = 0, 'indices count is not a multiple of 3!');
-  Result := TGLPersistentObjectList.Create;
+  Result := TPersistentObjectList.Create;
   // direct access and cache vars
   indicesList := indices.list;
   indicesCount := indices.Count;

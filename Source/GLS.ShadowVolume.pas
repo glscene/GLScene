@@ -34,7 +34,7 @@ uses
   GLS.VectorLists,
   GLS.State,
   Scena.VectorTypes,
-  GLS.Logger;
+  Scena.Logger;
 
 
 type
@@ -119,7 +119,7 @@ type
   // Specifies an individual shadow casting light.
   TGLShadowVolumeLight = class(TGLShadowVolumeCaster)
   private
-    FSilhouettes: TGLPersistentObjectList;
+    FSilhouettes: TPersistentObjectList;
   protected
     function GetLightSource: TGLLightSource;
     procedure SetLightSource(const ls: TGLLightSource);
@@ -326,7 +326,7 @@ end;
 constructor TGLShadowVolumeLight.Create(ACollection: TCollection);
 begin
   inherited Create(ACollection);
-  FSilhouettes := TGLPersistentObjectList.Create;
+  FSilhouettes := TPersistentObjectList.Create;
 end;
 
 destructor TGLShadowVolumeLight.Destroy;

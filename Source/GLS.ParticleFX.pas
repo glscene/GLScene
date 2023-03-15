@@ -57,7 +57,7 @@ type
      The class implements properties for position, velocity and time, whatever
      you need in excess of that will have to be placed in subclasses (this
      class should remain as compact as possible). *)
-  TGLParticle = class(TGLPersistentObject)
+  TGLParticle = class(TPersistentObject)
   private
     FID, FTag: Integer;
     FManager: TGLParticleFXManager; // NOT persistent
@@ -73,8 +73,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGLVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGLVirtualReader); override;
+    procedure WriteToFiler(writer: TVirtualWriter); override;
+    procedure ReadFromFiler(reader: TVirtualReader); override;
     property Manager: TGLParticleFXManager read FManager write FManager;
     // Particle's ID, given at birth. ID is a value unique per manager.
     property ID: Integer read FID;
@@ -105,10 +105,10 @@ type
   (* List of particles.
    This list is managed with particles and performance in mind, make sure to
    check methods doc. *)
-  TGLParticleList = class(TGLPersistentObject)
+  TGLParticleList = class(TPersistentObject)
   private
     FOwner: TGLParticleFXManager; // NOT persistent
-    FItemList: TGLPersistentObjectList;
+    FItemList: TPersistentObjectList;
     FDirectList: PGLParticleArray; // NOT persistent
   protected
     function GetItems(index: Integer): TGLParticle;
@@ -117,8 +117,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGLVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGLVirtualReader); override;
+    procedure WriteToFiler(writer: TVirtualWriter); override;
+    procedure ReadFromFiler(reader: TVirtualReader); override;
     // Refers owner manager
     property Owner: TGLParticleFXManager read FOwner write FOwner;
     property Items[index: Integer]: TGLParticle read GetItems write SetItems; default;
@@ -816,7 +816,7 @@ begin
     FVelocity.V[Index] := aValue;
 end;
 
-procedure TGLParticle.WriteToFiler(writer: TGLVirtualWriter);
+procedure TGLParticle.WriteToFiler(writer: TVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -829,7 +829,7 @@ begin
   end;
 end;
 
-procedure TGLParticle.ReadFromFiler(reader: TGLVirtualReader);
+procedure TGLParticle.ReadFromFiler(reader: TVirtualReader);
 var
   archiveVersion: integer;
 begin
@@ -854,7 +854,7 @@ end;
 constructor TGLParticleList.Create;
 begin
   inherited Create;
-  FItemList := TGLPersistentObjectList.Create;
+  FItemList := TPersistentObjectList.Create;
   FitemList.GrowthDelta := 64;
   FDirectList := nil;
 end;
@@ -865,7 +865,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TGLParticleList.WriteToFiler(writer: TGLVirtualWriter);
+procedure TGLParticleList.WriteToFiler(writer: TVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -875,7 +875,7 @@ begin
   end;
 end;
 
-procedure TGLParticleList.ReadFromFiler(reader: TGLVirtualReader);
+procedure TGLParticleList.ReadFromFiler(reader: TVirtualReader);
 var
   archiveVersion: integer;
 begin

@@ -56,7 +56,7 @@ type
   TCUDAComponent = class(TCUDAHandlesMaster)
   private
     FMaster: TCUDAComponent;
-    FItems: TGLPersistentObjectList;
+    FItems: TPersistentObjectList;
     procedure SetMaster(AMaster: TCUDAComponent);
     function GetItem(const i: Integer): TCUDAComponent;
     function GetItemsCount: Integer;
@@ -1062,7 +1062,7 @@ end;
 procedure TCUDAComponent.AddItem(AItem: TCUDAComponent);
 begin
   if not Assigned(FItems) then
-    FItems := TGLPersistentObjectList.Create;
+    FItems := TPersistentObjectList.Create;
   FItems.Add(AItem);
 end;
 

@@ -115,7 +115,7 @@ type
   private
     FBackColor: TGLColor;
     FBuildOffset: TGLCoordinates;
-    FImposterRegister: TGLPersistentObjectList;
+    FImposterRegister: TPersistentObjectList;
     FRenderPoint: TGLRenderPoint;
     FImposterOptions: TImposterOptions;
     FAlphaTreshold: Single;
@@ -129,7 +129,7 @@ type
     procedure SetBuildOffset(AValue: TGLCoordinates);
     procedure SetImposterReference(AValue: TImposterReference);
     procedure InitializeImpostorTexture(const TextureSize: TPoint);
-    property ImposterRegister: TGLPersistentObjectList read FImposterRegister;
+    property ImposterRegister: TPersistentObjectList read FImposterRegister;
     procedure UnregisterImposter(imposter: TImposter);
     function CreateNewImposter: TImposter; virtual;
     procedure PrepareImposters(Sender: TObject; var rci: TGLRenderContextInfo);
@@ -547,7 +547,7 @@ end;
 constructor TGLImposterBuilder.Create(AOwner: TComponent);
 begin
   inherited;
-  FImposterRegister := TGLPersistentObjectList.Create;
+  FImposterRegister := TPersistentObjectList.Create;
   FBackColor := TGLColor.CreateInitialized(Self, clrTransparent);
   FBuildOffset := TGLCoordinates.CreateInitialized(Self, NullHmgPoint, CsPoint);
   FImposterOptions := cDefaultImposterOptions;

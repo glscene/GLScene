@@ -51,7 +51,7 @@ uses
   GLS.ImageUtils,
   GLS.Utils,
   GLS.XOpenGL,
-  GLS.Logger;
+  Scena.Logger;
 
 type
 
@@ -73,16 +73,16 @@ type
       IGLMaterialLibrarySupported)
   private
     FNameHashKey: Integer;
-    FUserList: TGLPersistentObjectList;
+    FUserList: TPersistentObjectList;
     FDefferedInit: Boolean;
     FNotifying: Boolean;
     FIsValid: Boolean;
-    function GetUserList: TGLPersistentObjectList;
+    function GetUserList: TPersistentObjectList;
     function GetMaterialLibraryEx: TGLMaterialLibraryEx;
   protected
     procedure SetName(const AValue: TGLMaterialComponentName); override;
     procedure NotifyChange(Sender: TObject); virtual;
-    property UserList: TGLPersistentObjectList read GetUserList;
+    property UserList: TPersistentObjectList read GetUserList;
     procedure DoOnPrepare(Sender: TGLContext); virtual; abstract;
   public
     destructor Destroy; override;
@@ -892,12 +892,12 @@ type
     FShaders: array[TGLShaderType] of TGLShaderEx;
     FIsValid: Boolean;
     FInfoLog: string;
-    FUniforms: TGLPersistentObjectList;
+    FUniforms: TPersistentObjectList;
     FAutoFill: Boolean;
     function GetLibShaderName(AType: TGLShaderType): string;
     procedure SetLibShaderName(AType: TGLShaderType; const AValue: string);
     function GetUniform(const AName: string): IShaderParameter;
-    class procedure ReleaseUniforms(AList: TGLPersistentObjectList);
+    class procedure ReleaseUniforms(AList: TPersistentObjectList);
     property LibVertexShaderName: TGLMaterialComponentName index shtVertex
       read GetLibShaderName write SetLibShaderName;
     property LibFragmentShaderName: TGLMaterialComponentName index shtFragment
@@ -1324,11 +1324,11 @@ begin
     Result := 0;
 end;
 
-function TGLBaseMaterialCollectionItem.GetUserList: TGLPersistentObjectList;
+function TGLBaseMaterialCollectionItem.GetUserList: TPersistentObjectList;
 begin
   if FUserList = nil then
   begin
-    FUserList := TGLPersistentObjectList.Create;
+    FUserList := TPersistentObjectList.Create;
     FNotifying := False;
   end;
   Result := FUserList;
@@ -4418,7 +4418,7 @@ begin
   FHandle := TGLProgramHandle.Create;
   FHandle.OnPrapare := DoOnPrepare;
   FEnabled := False;
-  FUniforms := TGLPersistentObjectList.Create;
+  FUniforms := TPersistentObjectList.Create;
   FAutoFill := True;
 end;
 
@@ -4447,7 +4447,7 @@ end;
 procedure TGLBaseShaderModel.DoOnPrepare(Sender: TGLContext);
 var
   T: TGLShaderType;
-  LUniforms: TGLPersistentObjectList;
+  LUniforms: TPersistentObjectList;
   LUniform, LUniform2: TGLShaderUniform;
   ID: Cardinal;
   I, J, C: Integer;
@@ -4537,7 +4537,7 @@ begin
               end;
 
               // Get uniforms
-              LUniforms := TGLPersistentObjectList.Create;
+              LUniforms := TPersistentObjectList.Create;
 
               gl.GetProgramiv(ID, GL_ACTIVE_UNIFORMS, @C);
               for I := 0 to C - 1 do
@@ -4826,7 +4826,7 @@ begin
 end;
 
 class procedure TGLBaseShaderModel.ReleaseUniforms(
-  AList: TGLPersistentObjectList);
+  AList: TPersistentObjectList);
 var
   I: Integer;
 begin

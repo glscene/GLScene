@@ -42,7 +42,7 @@ uses
   Scena.VectorGeometry,
   GLS.Utils,
   Scena.Strings,
-  GLS.Logger;
+  Scena.Logger;
 
 {$DEFINE PRF_HACK_PASSES}
 
@@ -322,7 +322,7 @@ type
   end;
 
   // Stores registered raster file formats.
-  TGLRasterFileFormatsList = class(TGLPersistentObjectList)
+  TGLRasterFileFormatsList = class(TPersistentObjectList)
   public
     destructor Destroy; override;
     procedure Add(const Ext, Desc: string; DescID: Integer; AClass:

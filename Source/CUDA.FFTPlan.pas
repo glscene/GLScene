@@ -19,7 +19,7 @@ uses
   CUDA.FourierTransform,
 
   Scena.Strings,
-  GLS.Logger;
+  Scena.Logger;
 
 type
 

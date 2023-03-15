@@ -33,7 +33,7 @@ uses
   GLS.Graphics,
   GLS.Utils,
   Scena.Strings,
-  GLS.Logger;
+  Scena.Logger;
 
 {$UNDEF USE_MULTITHREAD}
 type
@@ -596,8 +596,8 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure DestroyHandles;
-    procedure WriteToFiler(writer: TGLVirtualWriter);
-    procedure ReadFromFiler(reader: TGLVirtualReader);
+    procedure WriteToFiler(writer: TVirtualWriter);
+    procedure ReadFromFiler(reader: TVirtualReader);
     procedure SaveToStream(aStream: TStream); virtual;
     procedure LoadFromStream(aStream: TStream); virtual;
     procedure AddMaterialsFromStream(aStream: TStream);
@@ -2404,7 +2404,7 @@ begin
   Result := (FMaterials.Count > 0);
 end;
 
-procedure TGLMaterialLibrary.WriteToFiler(writer: TGLVirtualWriter);
+procedure TGLMaterialLibrary.WriteToFiler(writer: TVirtualWriter);
 var
   i, j: Integer;
   libMat: TGLLibMaterial;
@@ -2574,7 +2574,7 @@ begin
   end;
 end;
 
-procedure TGLMaterialLibrary.ReadFromFiler(reader: TGLVirtualReader);
+procedure TGLMaterialLibrary.ReadFromFiler(reader: TVirtualReader);
 var
   archiveVersion: Integer;
   libMat: TGLLibMaterial;
@@ -2746,9 +2746,9 @@ end;
 
 procedure TGLMaterialLibrary.SaveToStream(aStream: TStream);
 var
-  wr: TGLBinaryWriter;
+  wr: TBinaryWriter;
 begin
-  wr := TGLBinaryWriter.Create(aStream);
+  wr := TBinaryWriter.Create(aStream);
   try
     Self.WriteToFiler(wr);
   finally
@@ -2758,9 +2758,9 @@ end;
 
 procedure TGLMaterialLibrary.LoadFromStream(aStream: TStream);
 var
-  rd: TGLBinaryReader;
+  rd: TBinaryReader;
 begin
-  rd := TGLBinaryReader.Create(aStream);
+  rd := TBinaryReader.Create(aStream);
   try
     Self.ReadFromFiler(rd);
   finally

@@ -14,7 +14,7 @@ uses
 
   Scena.VectorTypes,
   Scena.VectorGeometry,
-  GLS.Logger;
+  Scena.Logger;
 
 const
   MAX_MATRIX_STACK_DEPTH = 128;

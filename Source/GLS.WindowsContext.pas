@@ -24,7 +24,7 @@ uses
   GLS.PipelineTransformation,
   GLS.Context,
   GLS.State,
-  GLS.Logger,
+  Scena.Logger,
   Scena.Strings,
   Scena.VectorGeometry;
 

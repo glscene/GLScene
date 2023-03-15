@@ -34,7 +34,7 @@ uses
   GLS.Texture,
   GLS.Material,
   GLS.Mesh,
-  GLS.Logger,
+  Scena.Logger,
   GLS.Octree,
   GLS.GeometryBB,
   GLS.ApplicationFileIO,
@@ -62,7 +62,7 @@ type
   TGLCyborgThinks = class(TCollection);
 
   // A list of thinking periods for TGLCyborgThinkingMode
-  TGLCyborgThinksList = class(TGLPersistentObjectList);
+  TGLCyborgThinksList = class(TPersistentObjectList);
 
 const
   cDefaultCyborgOptions = [coCollide];

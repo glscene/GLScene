@@ -44,7 +44,7 @@ uses
   Scena.VectorTypes,
   GLS.ApplicationFileIO,
   GLS.Utils,
-  GLS.Logger;
+  Scena.Logger;
 
 type
   //Defines which features are taken from the master object.
@@ -169,7 +169,7 @@ type
     FBoundingBoxPersonalUnscaled: THmgBoundingBox;
     FBoundingBoxOfChildren: THmgBoundingBox;
     FBoundingBoxIncludingChildren: THmgBoundingBox;
-    FChildren: TGLPersistentObjectList; // created on 1st use
+    FChildren: TPersistentObjectList; // created on 1st use
     FVisible: Boolean;
     FUpdateCount: Integer;
     FShowAxes: Boolean;
@@ -186,7 +186,7 @@ type
     FTagObject: TObject;
     FTagFloat: Single;
 
-    objList: TGLPersistentObjectList;
+    objList: TPersistentObjectList;
     distList: TGLSingleList;
     ///  FOriginalFiler: TFiler;   //used to allow persistent events in behaviours & effects
     (* If somebody could look at DefineProperties, ReadBehaviours, ReadEffects
@@ -1136,7 +1136,7 @@ type
     FUpdateCount: Integer;
     FObjects: TGLSceneRootObject;
     FBaseContext: TGLContext; //reference, not owned!
-    FLights, FBuffers: TGLPersistentObjectList;
+    FLights, FBuffers: TPersistentObjectList;
     FCurrentGLCamera: TGLCamera;
     FCurrentBuffer: TGLSceneBuffer;
     FObjectsSorting: TGLObjectsSorting;
@@ -1192,7 +1192,7 @@ type
     // Load the scene from a text files. See LoadFromFile for details.
     procedure LoadFromTextFile(const fileName: string);
     property CurrentGLCamera: TGLCamera read FCurrentGLCamera;
-    property Lights: TGLPersistentObjectList read FLights;
+    property Lights: TPersistentObjectList read FLights;
     property Objects: TGLSceneRootObject read FObjects;
     property CurrentBuffer: TGLSceneBuffer read FCurrentBuffer;
     (* List of objects that request to be initialized when rendering context is active.
@@ -1271,7 +1271,7 @@ type
     // Internal state
     FRendering: Boolean;
     FRenderingContext: TGLContext;
-    FAfterRenderEffects: TGLPersistentObjectList;
+    FAfterRenderEffects: TPersistentObjectList;
     FViewMatrixStack: array of TGLMatrix;
     FProjectionMatrixStack: array of TGLMatrix;
     FBaseProjectionMatrix: TGLMatrix;
@@ -1884,14 +1884,14 @@ begin
   FPickable := True;
   FObjectsSorting := osInherited;
   FVisibilityCulling := vcInherited;
-  FChildren := TGLPersistentObjectList.Create;
+  FChildren := TPersistentObjectList.Create;
 
   fBBChanges := [oBBcChild, oBBcStructure];
   FBoundingBoxPersonalUnscaled := NullBoundingBox;
   FBoundingBoxOfChildren := NullBoundingBox;
   FBoundingBoxIncludingChildren := NullBoundingBox;
   distList := TGLSingleList.Create;
-  objList := TGLPersistentObjectList.Create;
+  objList := TPersistentObjectList.Create;
 end;
 
 constructor TGLBaseSceneObject.CreateAsChild(aParentOwner: TGLBaseSceneObject);
@@ -3246,7 +3246,7 @@ end;
 procedure TGLBaseSceneObject.RecTransformationChanged;
 var
   i: Integer;
-  list: PGLPointerObjectList;
+  list: PPointerObjectList;
   matSet: TGLObjectChanges;
 begin
   matSet := [ocAbsoluteMatrix, ocInvAbsoluteMatrix];
@@ -3739,7 +3739,7 @@ procedure TGLBaseSceneObject.RenderChildren(firstChildIndex, lastChildIndex:
 var
   i: Integer;
 
-  plist: PGLPointerObjectList;
+  plist: PPointerObjectList;
   obj: TGLBaseSceneObject;
   oldSorting: TGLObjectsSorting;
   oldCulling: TGLVisibilityCulling;
@@ -5583,7 +5583,7 @@ begin
   FCurrentBuffer := nil;
   FObjects := TGLSceneRootObject.Create(Self);
   FObjects.Name := 'ObjectRoot';
-  FLights := TGLPersistentObjectList.Create;
+  FLights := TPersistentObjectList.Create;
   FObjectsSorting := osRenderBlendedLast;
   FVisibilityCulling := vcNone;
   // actual maximum number of lights is stored in TGLSceneViewer
@@ -5663,7 +5663,7 @@ end;
 procedure TGLScene.AddBuffer(aBuffer: TGLSceneBuffer);
 begin
   if not Assigned(FBuffers) then
-    FBuffers := TGLPersistentObjectList.Create;
+    FBuffers := TPersistentObjectList.Create;
   if FBuffers.IndexOf(aBuffer) < 0 then
   begin
     FBuffers.Add(aBuffer);
@@ -6197,7 +6197,7 @@ begin
   FShadeModel := smDefault;
   FFogEnable := False;
   FLayer := clMainPlane;
-  FAfterRenderEffects := TGLPersistentObjectList.Create;
+  FAfterRenderEffects := TPersistentObjectList.Create;
   FContextOptions := [roDoubleBuffer, roRenderToWindow, roDebugContext];
   ResetPerformanceMonitor;
 end;

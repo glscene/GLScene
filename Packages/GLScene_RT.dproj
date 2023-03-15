@@ -178,7 +178,7 @@
         <DCCReference Include="..\Source\GLS.Canvas.pas"/>
         <DCCReference Include="..\Source\GLS.Collision.pas"/>
         <DCCReference Include="..\Source\GLS.Color.pas"/>
-        <DCCReference Include="..\Source\GLS.CompositeImage.pas"/>
+        <DCCReference Include="..\Source\VCL\GLS.CompositeImage.pas"/>
         <DCCReference Include="..\Source\GLS.Console.pas"/>
         <DCCReference Include="..\Source\GLS.Context.pas"/>
         <DCCReference Include="..\Source\GLS.Coordinates.pas"/>
@@ -192,13 +192,13 @@
         <DCCReference Include="..\Source\GLS.FBORenderer.pas"/>
         <DCCReference Include="..\Source\GLS.FPSMovement.pas"/>
         <DCCReference Include="..\Source\GLS.Feedback.pas"/>
-        <DCCReference Include="..\Source\GLS.File3DS.pas"/>
+        <DCCReference Include="..\Source\VCL\GLS.File3DS.pas"/>
         <DCCReference Include="..\Source\GLS.File3DSSceneObjects.pas"/>
         <DCCReference Include="..\Source\GLS.File3DPDF.pas"/>
         <DCCReference Include="..\Source\GLS.FileASE.pas"/>
         <DCCReference Include="..\Source\GLS.FileB3D.pas"/>
         <DCCReference Include="..\Source\GLS.FileBMP.pas"/>
-        <DCCReference Include="..\Source\GLS.FileDDS.pas"/>
+        <DCCReference Include="..\Source\VCL\GLS.FileDDS.pas"/>
         <DCCReference Include="..\Source\GLS.FileDXF.pas"/>
         <DCCReference Include="..\Source\GLS.FileGL2.pas"/>
         <DCCReference Include="..\Source\GLS.FileGLTF.pas"/>
@@ -240,7 +240,7 @@
         <DCCReference Include="..\Source\GLS.GameMenu.pas"/>
         <DCCReference Include="..\Source\GLS.GeomObjects.pas"/>
         <DCCReference Include="..\Source\GLS.GeometryBB.pas"/>
-        <DCCReference Include="..\Source\GLS.Generics.pas"/>
+        <DCCReference Include="..\Source\Common\Scena.Generics.pas"/>
         <DCCReference Include="..\Source\GLS.Gizmo.pas"/>
         <DCCReference Include="..\Source\GLS.GizmoEx.pas"/>
         <DCCReference Include="..\Source\GLS.Graph.pas"/>
@@ -256,7 +256,7 @@
         <DCCReference Include="..\Source\GLS.Joystick.pas"/>
         <DCCReference Include="..\Source\GLS.LensFlare.pas"/>
         <DCCReference Include="..\Source\GLS.LinePFX.pas"/>
-        <DCCReference Include="..\Source\GLS.Logger.pas"/>
+        <DCCReference Include="..\Source\Common\Scena.Logger.pas"/>
         <DCCReference Include="..\Source\GLS.Manager.pas"/>
         <DCCReference Include="..\Source\GLS.Material.pas"/>
         <DCCReference Include="..\Source\GLS.MaterialEx.pas"/>
@@ -308,7 +308,7 @@
         <DCCReference Include="..\Source\GLSL.ShapeShaders.pas"/>
         <DCCReference Include="..\Source\GLSL.ShaderParameter.pas"/>
         <DCCReference Include="..\Source\GLSL.Shader.pas"/>
-        <DCCReference Include="..\Source\GLS.Language.pas"/>
+        <DCCReference Include="..\Source\VCL\GLS.Language.pas"/>
         <DCCReference Include="..\Source\GLS.Memo.pas"/>
         <DCCReference Include="..\Source\GLS.ProjectedTextures.pas"/>
         <DCCReference Include="..\Source\GLS.Scene.pas"/>
@@ -341,7 +341,7 @@
         <DCCReference Include="..\Source\GLS.Trail.pas"/>
         <DCCReference Include="..\Source\GLS.Tree.pas"/>
         <DCCReference Include="..\Source\GLS.Triangulation.pas"/>
-        <DCCReference Include="..\Source\GLS.Utils.pas"/>
+        <DCCReference Include="..\Source\VCL\GLS.Utils.pas"/>
         <DCCReference Include="..\Source\GLS.VectorFileObjects.pas"/>
         <DCCReference Include="..\Source\GLS.VerletTypes.pas"/>
         <DCCReference Include="..\Source\GLS.VerletClothify.pas"/>
@@ -354,7 +354,7 @@
         <DCCReference Include="..\Source\GLS.PersistentClasses.pas"/>
         <DCCReference Include="..\Source\GLS.PipelineTransformation.pas"/>
         <DCCReference Include="..\Source\GLS.Polynomials.pas"/>
-        <DCCReference Include="..\Source\GLS.CrossXML.pas"/>
+        <DCCReference Include="..\Source\Common\Scena.CrossXML.pas"/>
         <DCCReference Include="..\Source\GLS.Silhouette.pas"/>
         <DCCReference Include="..\Source\GLS.PlugInManager.pas"/>
         <DCCReference Include="..\Source\GLS.VectorLists.pas"/>

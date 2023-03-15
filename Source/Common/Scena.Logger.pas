@@ -1,10 +1,10 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-unit GLS.Logger;
+unit Scena.Logger;
 
 (*
-  Activate USE_LOGGING in "GLScene.inc" to turn on inner GLScene logger.
+  Activate USE_LOGGING in "Scena.inc" to turn on inner Scene logger.
   You may have only one instance of TGLSLogger
   To obtain it, call UserLog() function from any unit.
 *)

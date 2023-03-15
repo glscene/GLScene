@@ -572,8 +572,8 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure DestroyHandles;
-    procedure WriteToFiler(writer: TgxVirtualWriter);
-    procedure ReadFromFiler(reader: TgxVirtualReader);
+    procedure WriteToFiler(writer: TVirtualWriter);
+    procedure ReadFromFiler(reader: TVirtualReader);
     procedure SaveToStream(aStream: TStream); virtual;
     procedure LoadFromStream(aStream: TStream); virtual;
     procedure AddMaterialsFromStream(aStream: TStream);
@@ -2320,7 +2320,7 @@ begin
   Result := (FMaterials.Count > 0);
 end;
 
-procedure TgxMaterialLibrary.WriteToFiler(writer: TgxVirtualWriter);
+procedure TgxMaterialLibrary.WriteToFiler(writer: TVirtualWriter);
 var
   i, j: Integer;
   libMat: TgxLibMaterial;
@@ -2488,7 +2488,7 @@ begin
   end;
 end;
 
-procedure TgxMaterialLibrary.ReadFromFiler(reader: TgxVirtualReader);
+procedure TgxMaterialLibrary.ReadFromFiler(reader: TVirtualReader);
 var
   archiveVersion: Integer;
   libMat: TgxLibMaterial;

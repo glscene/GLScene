@@ -6,8 +6,8 @@ unit GLX.PersistentClasses;
 (*
    Base persistence classes.
 
-   These classes are used in GLXcene, but are designed for generic purpose.
-   They implement a slightly different persistence mechanism than that of the VCL/FMX,
+   These classes are used in GLArena, but are designed for generic purpose.
+   They implement a slightly different persistence mechanism than that of the FMX,
    allowing for object-level versioning (100% backward compatibility) and full
    polymorphic persistence.
 
@@ -28,7 +28,7 @@ type
   PObject = ^TObject;
 
   // Virtual layer similar to VCL's TReader (but reusable) }
-  TgxVirtualReader = class
+  TVirtualReader = class
   private
     FStream: TStream;
   public
@@ -48,7 +48,7 @@ type
   end;
 
   // Virtual layer similar to VCL's TWriter (but reusable)
-  TgxVirtualWriter = class
+  TVirtualWriter = class
   private
     FStream: TStream;
   public
@@ -64,17 +64,16 @@ type
     procedure WriteTStrings(const aStrings: TStrings; storeObjects: Boolean = True);
   end;
 
-  TVirtualReaderClass = class of TgxVirtualReader;
-  TVirtualWriterClass = class of TgxVirtualWriter;
+  TVirtualReaderClass = class of TVirtualReader;
+  TVirtualWriterClass = class of TVirtualWriter;
 
   (* Interface for persistent objects.
      This interface does not really allow polymorphic persistence,
-     but is rather intended as a way to unify persistence calls
-     for iterators. *)
+     but is rather intended as a way to unify persistence calls for iterators. *)
   IgxPersistentObject = interface(IInterface)
   ['{A9A0198A-F11B-4325-A92C-2F24DB41652B}']
-    procedure WriteToFiler(writer: TgxVirtualWriter);
-    procedure ReadFromFiler(reader: TgxVirtualReader);
+    procedure WriteToFiler(writer: TVirtualWriter);
+    procedure ReadFromFiler(reader: TVirtualReader);
   end;
 
     (* Base class for persistent objects.
@@ -93,15 +92,15 @@ type
     function _Release: Integer; stdcall;
   public
     constructor Create; virtual;
-    constructor CreateFromFiler(reader: TgxVirtualReader);
+    constructor CreateFromFiler(reader: TVirtualReader);
     destructor Destroy; override;
     procedure Assign(source: TPersistent); override;
     function CreateClone: TgxPersistentObject; virtual;
     class function FileSignature: string; virtual;
     class function FileVirtualWriter: TVirtualWriterClass; virtual;
     class function FileVirtualReader: TVirtualReaderClass; virtual;
-    procedure WriteToFiler(writer: TgxVirtualWriter); virtual;
-    procedure ReadFromFiler(reader: TgxVirtualReader); virtual;
+    procedure WriteToFiler(writer: TVirtualWriter); virtual;
+    procedure ReadFromFiler(reader: TVirtualReader); virtual;
     procedure SaveToStream(stream: TStream; writerClass: TVirtualWriterClass = nil); virtual;
     procedure LoadFromStream(stream: TStream; readerClass: TVirtualReaderClass = nil); virtual;
     procedure SaveToFile(const fileName: string; writerClass: TVirtualWriterClass = nil); virtual;
@@ -129,7 +128,7 @@ type
     FList: PgxPointerObjectList;
     FCount: Integer;
     FCapacity: Integer;
-    FGrowthDelta: integer;
+    FGrowthDelta: Integer;
   protected
     procedure Error; virtual;
     function Get(Index: Integer): TObject;
@@ -146,9 +145,9 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TgxVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgxVirtualReader); override;
-    procedure ReadFromFilerWithEvent(reader: TgxVirtualReader;
+    procedure WriteToFiler(writer: TVirtualWriter); override;
+    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure ReadFromFilerWithEvent(reader: TVirtualReader;
       afterSenderObjectCreated: TNotifyEvent);
     function Add(const item: TObject): Integer;
     procedure AddNils(nbVals: Cardinal);
@@ -193,7 +192,7 @@ type
   end;
 
   // Wraps a TReader-compatible reader.
-  TBinaryReader = class(TgxVirtualReader)
+  TBinaryReader = class(TVirtualReader)
   protected
     function ReadValue: TValueType;
     function ReadWideString(vType: TValueType): WideString;
@@ -210,7 +209,7 @@ type
   end;
 
   // Wraps a TWriter-compatible writer.
-  TBinaryWriter = class(TgxVirtualWriter)
+  TBinaryWriter = class(TVirtualWriter)
   protected
     procedure WriteAnsiString(const aString: AnsiString); virtual;
     procedure WriteWideString(const aString: WideString); virtual;
@@ -225,7 +224,7 @@ type
   end;
 
   // Reads object persistence in Text format.
-  TTextReader = class(TgxVirtualReader)
+  TTextReader = class(TVirtualReader)
   private
     FValueType: string;
     FData: string;
@@ -244,7 +243,7 @@ type
   end;
 
   // Writes object persistence in Text format.
-  TTextWriter = class(TgxVirtualWriter)
+  TTextWriter = class(TVirtualWriter)
   private
     FIndentLevel: Integer;
   protected
@@ -324,11 +323,11 @@ const
 
 procedure RaiseFilerException(aClass: TClass; archiveVersion: Integer);
 begin
-  raise EFilerException.Create(aClass.ClassName + strUnknownArchiveVersion + IntToStr(archiveVersion));
+  raise EFilerException.Create(aClass.ClassName + 
+    strUnknownArchiveVersion + IntToStr(archiveVersion));
 end;
 
 function UTF8ToWideString(const s: AnsiString): WideString;
-// Based on Mike Lischke's function (Unicode.pas unit, http://www.delphi-gems.com)
 const
   bytesFromUTF8: packed array[0..255] of Byte = (
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -402,20 +401,20 @@ begin
 end;
 
 // ------------------
-// ------------------ TgxVirtualReader ------------------
+// ------------------ TVirtualReader ------------------
 // ------------------
 
-constructor TgxVirtualReader.Create(Stream: TStream);
+constructor TVirtualReader.Create(Stream: TStream);
 begin
   FStream := Stream;
 end;
 
-procedure TgxVirtualReader.ReadTypeError;
+procedure TVirtualReader.ReadTypeError;
 begin
   raise EReadError.CreateFmt('%s, read type error', [ClassName]);
 end;
 
-procedure TgxVirtualReader.ReadTStrings(aStrings: TStrings);
+procedure TVirtualReader.ReadTStrings(aStrings: TStrings);
 var
   i: Integer;
   objectsStored: Boolean;
@@ -440,15 +439,15 @@ begin
 end;
 
 // ------------------
-// ------------------ TgxVirtualWriter ------------------
+// ------------------ TVirtualWriter ------------------
 // ------------------
 
-constructor TgxVirtualWriter.Create(Stream: TStream);
+constructor TVirtualWriter.Create(Stream: TStream);
 begin
   FStream := Stream;
 end;
 
-procedure TgxVirtualWriter.WriteTStrings(const aStrings: TStrings;
+procedure TVirtualWriter.WriteTStrings(const aStrings: TStrings;
   storeObjects: Boolean = True);
 var
   i: Integer;
@@ -480,7 +479,7 @@ begin
   inherited Create;
 end;
 
-constructor TgxPersistentObject.CreateFromFiler(reader: TgxVirtualReader);
+constructor TgxPersistentObject.CreateFromFiler(reader: TVirtualReader);
 begin
   Create;
   ReadFromFiler(reader);
@@ -531,13 +530,13 @@ begin
   Result := TBinaryReader;
 end;
 
-procedure TgxPersistentObject.WriteToFiler(writer: TgxVirtualWriter);
+procedure TgxPersistentObject.WriteToFiler(writer: TVirtualWriter);
 begin
   // nothing
   Assert(Assigned(writer));
 end;
 
-procedure TgxPersistentObject.ReadFromFiler(reader: TgxVirtualReader);
+procedure TgxPersistentObject.ReadFromFiler(reader: TVirtualReader);
 begin
   // nothing
   Assert(Assigned(reader));
@@ -570,7 +569,7 @@ end;
 
 procedure TgxPersistentObject.SaveToStream(stream: TStream; writerClass: TVirtualWriterClass = nil);
 var
-  wr: TgxVirtualWriter;
+  wr: TVirtualWriter;
   fileSig: AnsiString;
 begin
   if writerClass = nil then
@@ -590,7 +589,7 @@ end;
 
 procedure TgxPersistentObject.LoadFromStream(stream: TStream; readerClass: TVirtualReaderClass = nil);
 var
-  rd: TgxVirtualReader;
+  rd: TVirtualReader;
   sig: AnsiString;
 begin
   if readerClass = nil then
@@ -1042,7 +1041,7 @@ begin
   end;
 end;
 
-procedure TgxPersistentObjectList.WriteToFiler(writer: TgxVirtualWriter);
+procedure TgxPersistentObjectList.WriteToFiler(writer: TVirtualWriter);
 (*
    Object List Filer Format :
 
@@ -1107,7 +1106,7 @@ begin
   end;
 end;
 
-procedure TgxPersistentObjectList.ReadFromFilerWithEvent(reader: TgxVirtualReader; afterSenderObjectCreated: TNotifyEvent);
+procedure TgxPersistentObjectList.ReadFromFilerWithEvent(reader: TVirtualReader; afterSenderObjectCreated: TNotifyEvent);
 var
   obj: TgxPersistentObject;
   m: TPersistentObjectClass;
@@ -1166,7 +1165,7 @@ begin
   end;
 end;
 
-procedure TgxPersistentObjectList.ReadFromFiler(reader: TgxVirtualReader);
+procedure TgxPersistentObjectList.ReadFromFiler(reader: TVirtualReader);
 begin
   ReadFromFilerWithEvent(reader, AfterObjectCreatedByReader);
 end;

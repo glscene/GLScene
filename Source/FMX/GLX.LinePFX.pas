@@ -33,8 +33,8 @@ type
          FLength : Single;
       protected
       public
-         procedure WriteToFiler(writer : TgxVirtualWriter); override;
-         procedure ReadFromFiler(reader : TgxVirtualReader); override;
+         procedure WriteToFiler(writer : TVirtualWriter); override;
+         procedure ReadFromFiler(reader : TVirtualReader); override;
          { Direction of the line. }
          property Direction : TAffineVector read FDirection write FDirection;
          { Length of the line }
@@ -187,7 +187,7 @@ end;
 // ------------------ TgxLineParticle ------------------
 // ------------------
 
-procedure TgxLineParticle.WriteToFiler(writer : TgxVirtualWriter);
+procedure TgxLineParticle.WriteToFiler(writer : TVirtualWriter);
 begin
    inherited WriteToFiler(writer);
    with writer do begin
@@ -197,7 +197,7 @@ begin
    end;
 end;
 
-procedure TgxLineParticle.ReadFromFiler(reader : TgxVirtualReader);
+procedure TgxLineParticle.ReadFromFiler(reader : TVirtualReader);
 var
    archiveVersion : integer;
 begin

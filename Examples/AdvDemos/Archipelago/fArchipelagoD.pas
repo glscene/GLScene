@@ -367,7 +367,7 @@ begin
     with rci.GLStates do
     begin
       if not WasAboveWater then
-        InvertGLFrontFace;
+        InvertFrontFace;
       Disable(stLighting);
       Disable(stNormalize);
       SetStencilFunc(cfAlways, 1, 255);
@@ -404,7 +404,7 @@ begin
     end;
 
     if not WasAboveWater then
-      rci.GLStates.InvertGLFrontFace;
+      rci.GLStates.InvertFrontFace;
     WaterPolyCount := heightDatas.Count * 8;
   until not MaterialLibrary.UnApplyMaterial(rci);
 end;
@@ -617,7 +617,7 @@ begin
       Disable(stDepthTest);
 
       if not WasAboveWater then
-        InvertGLFrontFace;
+        InvertFrontFace;
 
       glBegin(GL_TRIANGLE_STRIP);
       for i := 0 to WakeVertices.Count - 1 do
@@ -637,7 +637,7 @@ begin
       glEnd;
 
       if not WasAboveWater then
-        InvertGLFrontFace;
+        InvertFrontFace;
       Disable(stStencilTest);
     end;
 

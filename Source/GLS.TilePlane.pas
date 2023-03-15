@@ -27,7 +27,7 @@ uses
 
 type
   // Stores row information for a tiled area.
-  TGLTiledAreaRow = class(TGLPersistentObject)
+  TGLTiledAreaRow = class(TPersistentObject)
   private
     FColMin, FColMax: Integer;
     FData: TGLIntegerList;
@@ -39,8 +39,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGLVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGLVirtualReader); override;
+    procedure WriteToFiler(writer: TVirtualWriter); override;
+    procedure ReadFromFiler(reader: TVirtualReader); override;
     property Cell[col: Integer]: Integer read GetCell write SetCell; default;
     property ColMin: Integer read FColMin write SetColMin;
     property ColMax: Integer read FColMax write SetColMax;
@@ -53,10 +53,10 @@ type
   (* Stores tile information in a tiled area.
     Each tile stores an integer value with zero the default value,
     assumed as "empty". *)
-  TGLTiledArea = class(TGLPersistentObject)
+  TGLTiledArea = class(TPersistentObject)
   private
     FRowMin, FRowMax: Integer;
-    FRows: TGLPersistentObjectList;
+    FRows: TPersistentObjectList;
   protected
     procedure SetRowMin(const val: Integer);
     procedure SetRowMax(const val: Integer);
@@ -66,8 +66,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGLVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGLVirtualReader); override;
+    procedure WriteToFiler(writer: TVirtualWriter); override;
+    procedure ReadFromFiler(reader: TVirtualReader); override;
     property Tile[col, row: Integer]: Integer read GetTile write SetTile; default;
     property row[index: Integer]: TGLTiledAreaRow read GetRow;
     property RowMin: Integer read FRowMin write SetRowMin;
@@ -139,7 +139,7 @@ begin
   inherited;
 end;
 
-procedure TGLTiledAreaRow.WriteToFiler(writer: TGLVirtualWriter);
+procedure TGLTiledAreaRow.WriteToFiler(writer: TVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -150,7 +150,7 @@ begin
   end;
 end;
 
-procedure TGLTiledAreaRow.ReadFromFiler(reader: TGLVirtualReader);
+procedure TGLTiledAreaRow.ReadFromFiler(reader: TVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -284,7 +284,7 @@ end;
 constructor TGLTiledArea.Create;
 begin
   inherited;
-  FRows := TGLPersistentObjectList.Create;
+  FRows := TPersistentObjectList.Create;
   FRowMax := -1;
 end;
 
@@ -294,7 +294,7 @@ begin
   inherited;
 end;
 
-procedure TGLTiledArea.WriteToFiler(writer: TGLVirtualWriter);
+procedure TGLTiledArea.WriteToFiler(writer: TVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -305,7 +305,7 @@ begin
   end;
 end;
 
-procedure TGLTiledArea.ReadFromFiler(reader: TGLVirtualReader);
+procedure TGLTiledArea.ReadFromFiler(reader: TVirtualReader);
 var
   archiveVersion: Integer;
 begin

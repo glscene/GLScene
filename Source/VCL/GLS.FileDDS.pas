@@ -19,12 +19,12 @@ uses
   GLS.Context,
   GLS.Graphics,
   GLS.Texture,
+  Scena.VectorGeometry,
   Scena.TextureFormat,
   GLS.CompositeImage,
   GLS.MultiSampleImage,
   GLS.RGBE,
   GLS.ApplicationFileIO,
-  Scena.VectorGeometry,
   GLS.Material,
   Scena.Strings;
 

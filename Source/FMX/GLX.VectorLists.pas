@@ -52,8 +52,8 @@ type
     constructor Create; override;
     destructor Destroy; override;
     procedure Assign(Src: TPersistent); override;
-    procedure WriteToFiler(writer: TgxVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgxVirtualReader); override;
+    procedure WriteToFiler(writer: TVirtualWriter); override;
+    procedure ReadFromFiler(reader: TVirtualReader); override;
     procedure AddNulls(nbVals: Cardinal);
     procedure InsertNulls(Index: Integer; nbVals: Cardinal);
     procedure AdjustCapacityToAtLeast(const size: Integer);
@@ -93,8 +93,8 @@ type
   protected
     function GetItemAddress(Index: Integer): PFloatArray;
   public
-    procedure WriteToFiler(writer: TgxVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgxVirtualReader); override;
+    procedure WriteToFiler(writer: TVirtualWriter); override;
+    procedure ReadFromFiler(reader: TVirtualReader); override;
     procedure GetExtents(out min, max: TAffineVector); virtual;
     function Sum: TAffineVector; virtual;
     procedure Normalize; virtual;
@@ -720,7 +720,7 @@ begin
   AWriter.WriteString(lOutputText);
 end;
 
-procedure TgxBaseList.WriteToFiler(writer: TgxVirtualWriter);
+procedure TgxBaseList.WriteToFiler(writer: TVirtualWriter);
 begin
   inherited;
   with writer do
@@ -733,7 +733,7 @@ begin
   end;
 end;
 
-procedure TgxBaseList.ReadFromFiler(reader: TgxVirtualReader);
+procedure TgxBaseList.ReadFromFiler(reader: TVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -981,7 +981,7 @@ end;
 // ------------------ TgxBaseVectorList ------------------
 // ------------------
 
-procedure TgxBaseVectorList.WriteToFiler(writer: TgxVirtualWriter);
+procedure TgxBaseVectorList.WriteToFiler(writer: TVirtualWriter);
 begin
   inherited;
   if Self is TgxTexPointList then
@@ -993,7 +993,7 @@ begin
   end;
 end;
 
-procedure TgxBaseVectorList.ReadFromFiler(reader: TgxVirtualReader);
+procedure TgxBaseVectorList.ReadFromFiler(reader: TVirtualReader);
 var
   archiveVersion: Integer;
 begin

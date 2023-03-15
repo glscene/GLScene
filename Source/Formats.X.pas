@@ -47,7 +47,7 @@ type
 
   TDXMaterialList = class;
 
-  TDXMaterial = class(TGLPersistentObject)
+  TDXMaterial = class(TPersistentObject)
   private
     FDiffuse: TVector4f;
     FSpecPower: Single;

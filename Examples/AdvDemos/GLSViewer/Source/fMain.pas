@@ -812,7 +812,7 @@ var
   I: Integer;
   mo: TGLMeshObject;
   fg: TFGVertexIndexList;
-  strips: TGLPersistentObjectList;
+  strips: TPersistentObjectList;
 begin
   acConvertToTriangles.Execute;
   mo := ffObject.MeshObjects[0];

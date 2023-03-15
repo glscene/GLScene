@@ -47,7 +47,6 @@ void __fastcall TForm1::FormCreate(TObject *Sender) {
 	String DataPath;
 
 	DataPath = ExtractFilePath(ParamStr(0));
-//	DataPath = ExtractFilePath(Application->ExeName);
 	DataPath += "Data\\";
 	SetCurrentDir(DataPath);
 	MaterialLibrary->TexturePaths = DataPath;
@@ -417,7 +416,7 @@ void __fastcall TForm1::TerrainRendererHeightDataPostRender
 		MaterialLibrary->ApplyMaterial("water", rci);
 		do {
 			if (!WasAboveWater)
-				rci.GLStates->InvertGLFrontFace();
+				rci.GLStates->InvertFrontFace();
 			glPushAttrib(GL_ENABLE_BIT);
 
 			glDisable(GL_LIGHTING);
@@ -457,7 +456,7 @@ void __fastcall TForm1::TerrainRendererHeightDataPostRender
 			glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
 			glPopAttrib();
 			if (!WasAboveWater)
-				rci.GLStates->InvertGLFrontFace();
+				rci.GLStates->InvertFrontFace();
 			WaterPolyCount = HeightDatas->Count * 8;
 		}
 		while (MaterialLibrary->UnApplyMaterial(rci));
@@ -535,7 +534,7 @@ void __fastcall TForm1::DOWakeRender(TObject *Sender, TGLRenderContextInfo &rci)
 			glDisable(GL_DEPTH_TEST);
 
 			if (!WasAboveWater)
-				rci.GLStates->InvertGLFrontFace();
+				rci.GLStates->InvertFrontFace();
 
 			glBegin(GL_TRIANGLE_STRIP);
 			n = WakeVertices->Count;
@@ -554,7 +553,7 @@ void __fastcall TForm1::DOWakeRender(TObject *Sender, TGLRenderContextInfo &rci)
 			glEnd();
 
 			if (!WasAboveWater)
-				rci.GLStates->InvertGLFrontFace();
+				rci.GLStates->InvertFrontFace();
 
 			glPopAttrib();
 			glDisable(stStencilTest);

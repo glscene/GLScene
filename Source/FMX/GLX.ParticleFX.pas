@@ -72,8 +72,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TgxVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgxVirtualReader); override;
+    procedure WriteToFiler(writer: TVirtualWriter); override;
+    procedure ReadFromFiler(reader: TVirtualReader); override;
     property Manager: TgxParticleFXManager read FManager write FManager;
     (* Particle's ID, given at birth.
        ID is a value unique per manager. *)
@@ -118,8 +118,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TgxVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgxVirtualReader); override;
+    procedure WriteToFiler(writer: TVirtualWriter); override;
+    procedure ReadFromFiler(reader: TVirtualReader); override;
     // Refers owner manager
     property Owner: TgxParticleFXManager read FOwner write FOwner;
     property Items[index: Integer]: TgxParticle read GetItems write SetItems; default;
@@ -812,7 +812,7 @@ begin
     FVelocity.V[Index] := aValue;
 end;
 
-procedure TgxParticle.WriteToFiler(writer: TgxVirtualWriter);
+procedure TgxParticle.WriteToFiler(writer: TVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -826,7 +826,7 @@ begin
 end;
 
 
-procedure TgxParticle.ReadFromFiler(reader: TgxVirtualReader);
+procedure TgxParticle.ReadFromFiler(reader: TVirtualReader);
 var
   archiveVersion: integer;
 begin
@@ -862,7 +862,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TgxParticleList.WriteToFiler(writer: TgxVirtualWriter);
+procedure TgxParticleList.WriteToFiler(writer: TVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -872,7 +872,7 @@ begin
   end;
 end;
 
-procedure TgxParticleList.ReadFromFiler(reader: TgxVirtualReader);
+procedure TgxParticleList.ReadFromFiler(reader: TVirtualReader);
 var
   archiveVersion: integer;
 begin

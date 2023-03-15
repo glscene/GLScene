@@ -15,8 +15,8 @@ uses
   System.SysUtils,
 
   Scena.VectorGeometry,
-  Scena.VectorTypes,
-  GLS.BaseClasses;
+  GLS.BaseClasses,
+  Scena.VectorTypes;
 
 type
 
@@ -246,8 +246,7 @@ procedure ProlateSpheroidal_Cartesian(const xi, eta, phi, a: single;
   the x-axis, which is relabeled the z-axis. The third set of coordinates
   consists of planes passing through this axis.
   The coordinate system is parameterised by parameter a. A default value of a=1 is
-  suggesed:
-  Ref: http://mathworld.wolfram.com/ProlateSpheroidalCoordinates.html *)
+  suggesed: Ref: http://mathworld.wolfram.com/ProlateSpheroidalCoordinates.html *)
 procedure ProlateSpheroidal_Cartesian(const xi, eta, phi, a: double;
   var x, y, z: double); overload;
 (* Convert Prolate-Spheroidal to Cartesian [single](with error check). eta,phi in rad

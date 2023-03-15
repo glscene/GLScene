@@ -25,7 +25,9 @@ uses
   System.SysUtils,
 
   Scena.OpenGLTokens,
+  Scena.VectorTypes,
   Scena.VectorGeometry,
+
   GLS.PersistentClasses,
   GLS.PipelineTransformation,
   GLS.VectorLists,
@@ -35,8 +37,7 @@ uses
   GLS.RenderContextInfo,
   GLS.Context,
   GLS.State,
-  GLS.MeshUtils,
-  Scena.VectorTypes;
+  GLS.MeshUtils;
 
 type
   TGLFeedbackMode = (fm2D, fm3D, fm3DColor, fm3DColorTexture, fm4DColorTexture);

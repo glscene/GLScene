@@ -42,7 +42,7 @@ const
    private
      FLocks: packed array of ByteBool;
      FPositions, FVelocity: packed array of Single;
-     FPlaneQuadIndices: TGLPersistentObjectList;
+     FPlaneQuadIndices: TPersistentObjectList;
      FPlaneQuadTexCoords: TGLTexPointList;
      FPlaneQuadVertices: TGLAffineVectorList;
      FPlaneQuadNormals: TGLAffineVectorList;
@@ -132,7 +132,7 @@ begin
   FMaximumCatchupIterations := 1;
   FOptions := cDefaultWaterPlaneOptions;
 
-  FPlaneQuadIndices := TGLPersistentObjectList.Create;
+  FPlaneQuadIndices := TPersistentObjectList.Create;
   FPlaneQuadTexCoords := TGLTexPointList.Create;
   FPlaneQuadVertices := TGLAffineVectorList.Create;
   FPlaneQuadNormals := TGLAffineVectorList.Create;

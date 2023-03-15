@@ -85,8 +85,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGLVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGLVirtualReader); override;
+    procedure WriteToFiler(writer: TVirtualWriter); override;
+    procedure ReadFromFiler(reader: TVirtualReader); override;
     procedure BuildList(var mrci: TGLRenderContextInfo); override;
     procedure Prepare; override;
     procedure Clear; override;
@@ -154,8 +154,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGLVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGLVirtualReader); override;
+    procedure WriteToFiler(writer: TVirtualWriter); override;
+    procedure ReadFromFiler(reader: TVirtualReader); override;
     procedure BuildList(var mrci: TGLRenderContextInfo); override;
     procedure Prepare; override;
     property CountU: Integer read FCountU write FCountU;
@@ -198,7 +198,7 @@ begin
   inherited;
 end;
 
-procedure TMOParametricSurface.WriteToFiler(writer: TGLVirtualWriter);
+procedure TMOParametricSurface.WriteToFiler(writer: TVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -220,7 +220,7 @@ begin
   end;
 end;
 
-procedure TMOParametricSurface.ReadFromFiler(reader: TGLVirtualReader);
+procedure TMOParametricSurface.ReadFromFiler(reader: TVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -460,7 +460,7 @@ begin
   inherited;
 end;
 
-procedure TFGBezierSurface.WriteToFiler(writer: TGLVirtualWriter);
+procedure TFGBezierSurface.WriteToFiler(writer: TVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -478,7 +478,7 @@ begin
   end;
 end;
 
-procedure TFGBezierSurface.ReadFromFiler(reader: TGLVirtualReader);
+procedure TFGBezierSurface.ReadFromFiler(reader: TVirtualReader);
 var
   archiveVersion: Integer;
 begin

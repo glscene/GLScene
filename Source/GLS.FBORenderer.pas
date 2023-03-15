@@ -30,7 +30,7 @@ uses
   Scena.TextureFormat,
   Scena.VectorTypes,
   GLS.MultiSampleImage,
-  GLS.Logger;
+  Scena.Logger;
 
 const
   MaxColorAttachments = 32;

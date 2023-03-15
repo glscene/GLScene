@@ -13,7 +13,7 @@ uses
   Scena.Strings,
   GLS.BaseClasses,
   GLS.Context,
-  GLS.Generics,
+  Scena.Generics,
 
   CUDA.Import,
   CUDA.RunTime;

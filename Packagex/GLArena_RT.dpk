@@ -260,6 +260,7 @@ contains
   Scena.VectorTypesExt in '..\Source\Common\Scena.VectorTypesExt.pas',
   Scena.VectorGeometry in '..\Source\Common\Scena.VectorGeometry.pas',
   Scena.Spline in '..\Source\Common\Scena.Spline.pas',
-  Scena.TextureFormat in '..\Source\Common\Scena.TextureFormat.pas';
+  Scena.TextureFormat in '..\Source\Common\Scena.TextureFormat.pas',
+  Scena.Logger in '..\Source\Common\Scena.Logger.pas';
 
 end.

@@ -1,7 +1,7 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-unit GLS.Generics;
+unit Scena.Generics;
 
 (* Cross IDE generic classes collection. *)
 
@@ -12,7 +12,7 @@ interface
 uses
   System.SysUtils,
   System.Classes,
-  SyncObjs;
+  System.SyncObjs;
 
 const
   MaxListSize = Maxint div 16;

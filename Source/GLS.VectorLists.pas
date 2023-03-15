@@ -22,7 +22,7 @@ type
   TGLBaseListOptions = set of TGLBaseListOption;
 
   // Base class for lists, introduces common behaviours
-  TGLBaseList = class(TGLPersistentObject)
+  TGLBaseList = class(TPersistentObject)
   private
     FCount: Integer;
     FCapacity: Integer;
@@ -52,8 +52,8 @@ type
     constructor Create; override;
     destructor Destroy; override;
     procedure Assign(Src: TPersistent); override;
-    procedure WriteToFiler(writer: TGLVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGLVirtualReader); override;
+    procedure WriteToFiler(writer: TVirtualWriter); override;
+    procedure ReadFromFiler(reader: TVirtualReader); override;
     procedure AddNulls(nbVals: Cardinal);
     procedure InsertNulls(Index: Integer; nbVals: Cardinal);
     procedure AdjustCapacityToAtLeast(const size: Integer);
@@ -93,8 +93,8 @@ type
   protected
     function GetItemAddress(Index: Integer): PFloatArray; inline;
   public
-    procedure WriteToFiler(writer: TGLVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGLVirtualReader); override;
+    procedure WriteToFiler(writer: TVirtualWriter); override;
+    procedure ReadFromFiler(reader: TVirtualReader); override;
     procedure GetExtents(out min, max: TAffineVector); virtual;
     function Sum: TAffineVector;
     procedure Normalize; virtual;
@@ -503,7 +503,7 @@ procedure QuickSortLists(startIndex, endIndex: Integer; refList: TGLSingleList; 
 procedure QuickSortLists(startIndex, endIndex: Integer; refList: TGLSingleList; objList: TGLBaseList); overload;
 (* Sort the refList in ascending order, ordering objList on the way.
    Use if, and *ONLY* if refList contains only values superior or equal to 1 *)
-procedure FastQuickSortLists(startIndex, endIndex: Integer; const refList: TGLSingleList; const objList: TGLPersistentObjectList);
+procedure FastQuickSortLists(startIndex, endIndex: Integer; const refList: TGLSingleList; const objList: TPersistentObjectList);
 
 // ------------------------------------------------------------------
 implementation
@@ -617,7 +617,7 @@ begin
   end;
 end;
 
-procedure FastQuickSortLists(startIndex, endIndex: Integer; const refList: TGLSingleList; const objList: TGLPersistentObjectList);
+procedure FastQuickSortLists(startIndex, endIndex: Integer; const refList: TGLSingleList; const objList: TPersistentObjectList);
 var
   ppl:      PIntegerArray;
   oTemp:    Pointer;
@@ -745,7 +745,7 @@ begin
   AWriter.WriteString(lOutputText);
 end;
 
-procedure TGLBaseList.WriteToFiler(writer: TGLVirtualWriter);
+procedure TGLBaseList.WriteToFiler(writer: TVirtualWriter);
 begin
   inherited;
   with writer do
@@ -758,7 +758,7 @@ begin
   end;
 end;
 
-procedure TGLBaseList.ReadFromFiler(reader: TGLVirtualReader);
+procedure TGLBaseList.ReadFromFiler(reader: TVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -1006,7 +1006,7 @@ end;
 // ------------------ TGLBaseVectorList ------------------
 // ------------------
 
-procedure TGLBaseVectorList.WriteToFiler(writer: TGLVirtualWriter);
+procedure TGLBaseVectorList.WriteToFiler(writer: TVirtualWriter);
 begin
   inherited;
   if Self is TGLTexPointList then
@@ -1018,7 +1018,7 @@ begin
   end;
 end;
 
-procedure TGLBaseVectorList.ReadFromFiler(reader: TGLVirtualReader);
+procedure TGLBaseVectorList.ReadFromFiler(reader: TVirtualReader);
 var
   archiveVersion: Integer;
 begin

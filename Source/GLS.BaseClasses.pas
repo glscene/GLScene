@@ -37,7 +37,7 @@ type
   end;
 
   // An abstract class describing the "update" interface.
-  TGLUpdateAbleObject = class(TGLInterfacedPersistent, IGLNotifyAble)
+  TGLUpdateAbleObject = class(TInterfacedPersistent, IGLNotifyAble)
   private
     FOwner: TPersistent;
     FUpdating: Integer;

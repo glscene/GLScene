@@ -22,7 +22,7 @@ uses
   VCL.Consts,
 
 {$IFDEF USE_SERVICE_CONTEXT}
-  GLS.Generics,
+  Scena.Generics,
 {$ENDIF}
 
   Scena.OpenGLTokens,
@@ -34,7 +34,7 @@ uses
   Scena.VectorTypes,
   GLS.State,
   GLS.PipelineTransformation,
-  GLS.Logger;
+  Scena.Logger;
 
 // Buffer ID's for Multiple-Render-Targets (using GL_ATI_draw_buffers)
 const

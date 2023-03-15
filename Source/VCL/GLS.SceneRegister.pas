@@ -432,7 +432,7 @@ uses
   GLS.Joystick,
   GLS.ScreenSaver,
   GLS.FullScreenViewer,
-  GLS.Logger;
+  Scena.Logger;
 
 var
   vObjectManager: TGLObjectManager;

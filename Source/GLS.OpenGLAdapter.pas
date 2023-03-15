@@ -17,7 +17,7 @@ uses
 
   Scena.OpenGLTokens,
   Scena.Strings,
-  GLS.Logger,
+  Scena.Logger,
   Scena.VectorGeometry,
   Scena.VectorTypes;
 

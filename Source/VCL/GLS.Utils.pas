@@ -17,7 +17,6 @@ uses
   System.UITypes,
   Vcl.Forms,
   Vcl.Graphics,
-  Vcl.Controls,
   Vcl.Dialogs,
   Vcl.ExtDlgs,
   Scena.VectorGeometry,
