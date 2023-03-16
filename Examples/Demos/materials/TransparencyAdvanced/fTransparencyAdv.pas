@@ -37,7 +37,7 @@ uses
   GLS.HUDObjects,
   GLS.BitmapFont,
   GLS.WindowsFont,
-  GLS.Keyboard,
+  Scena.Keyboard,
   GLS.CompositeImage,
 
   GLS.Utils;

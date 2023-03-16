@@ -22,16 +22,17 @@ uses
   
   Scena.VectorGeometry,
   Scena.VectorTypes,
+  Scena.OpenGLTokens,
+  Scena.TextureFormat,
+  Scena.Strings,
+
   GLS.Texture,
   GLS.Cadencer,
-  Scena.OpenGLTokens,
   GLS.Scene,
-  Scena.Strings,
   GLS.Context,
   GLS.RenderContextInfo,
   GLS.Material,
   GLS.VectorLists,
-  Scena.TextureFormat,
   GLSL.ShaderParameter;
 
 const

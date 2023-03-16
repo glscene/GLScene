@@ -19,7 +19,7 @@ uses
   Scena.OpenGLTokens,
   Scena.VectorGeometry,
   GLS.PersistentClasses,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLS.Scene,
   GLS.Texture,
   GLS.Context,

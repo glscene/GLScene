@@ -27,7 +27,7 @@ uses
   GLX.Coordinates,
   GLX.BaseClasses,
   GLX.State,
-  GLX.PipelineTransformation,
+  Scena.PipelineTransformation,
   Scena.TextureFormat,
   GLX.Utils;
 

@@ -22,7 +22,7 @@ uses
   GLS.Objects,
   Scena.VectorTypes,
   GLS.SceneViewer,
-  GLS.Keyboard,
+  Scena.Keyboard,
 
   GLS.Utils,
   GLS.GizmoEx,

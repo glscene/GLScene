@@ -15,7 +15,7 @@ uses
   Scena.VectorTypes,
   GLS.Objects,
   GLS.PersistentClasses,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLS.GeomObjects,
   GLS.Coordinates,
   GLS.BaseClasses,

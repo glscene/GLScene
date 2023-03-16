@@ -29,7 +29,7 @@ uses
   Scena.VectorGeometry,
 
   GLS.PersistentClasses,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLS.VectorLists,
   GLS.Scene,
   GLS.VectorFileObjects,

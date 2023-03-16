@@ -23,7 +23,7 @@ uses
   Scena.VectorTypes,
   Scena.VectorGeometry,
   GLS.PersistentClasses,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLS.Graphics,
   GLS.Color,
   GLS.RenderContextInfo,

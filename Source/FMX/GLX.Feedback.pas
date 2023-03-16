@@ -38,7 +38,7 @@ uses
   GLX.RenderContextInfo,
   GLX.Context,
   GLX.State,
-  GLX.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLX.MeshUtils;
 
 type

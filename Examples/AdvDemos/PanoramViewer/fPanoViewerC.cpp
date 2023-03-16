@@ -16,7 +16,7 @@
 #pragma link "GLS.Coordinates"
 
 #pragma link "GLS.Material"
-#pragma link "GLS.KeyBoard"
+#pragma link "Scena.Keyboard"
 #pragma resource "*.dfm"
 TForm1* Form1;
 //---------------------------------------------------------------------------

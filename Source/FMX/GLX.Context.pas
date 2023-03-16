@@ -28,12 +28,11 @@ uses
   FMX.Dialogs,
 
  // GXL.OpenGLx,
-  GLX.Generics,
+  Scena.VectorTypes,
   Scena.VectorGeometry,
   Scena.Strings,
-  Scena.VectorTypes,
   GLX.State,
-  GLX.PipelineTransformation,
+  Scena.PipelineTransformation,
   Scena.TextureFormat;
 
 // Buffer ID's for Multiple-Render-Targets (using GL_ATI_draw_buffers)
@@ -116,7 +115,7 @@ type
   protected
     FGLX: TgxAbstractMultitextureCoordinator;
     FgxStates: TgxStateCache;
-    FTransformation: TgxTransformation;
+    FTransformation: TGLTransformation;
     FAcceleration: TgxContextAcceleration;
     FLayer: TgxContextLayer;
 {$IFDEF USE_MULTITHREAD}
@@ -142,7 +141,7 @@ type
     destructor Destroy; override;
     // An application-side cache of global per-context OpenGL states and parameters
     property GXStates: TgxStateCache read FgxStates;
-    property PipelineTransformation: TgxTransformation read FTransformation;
+    property PipelineTransformation: TGLTransformation read FTransformation;
     // Context manager reference
     property Manager: TgxContextManager read FManager;
     // Color bits for the rendering context
@@ -1035,7 +1034,7 @@ begin
   FSharedContexts.Add(Self);
   FAcceleration := chaUnknown;
   FgxStates := TgxStateCache.Create;
-  FTransformation := TgxTransformation.Create;
+  FTransformation := TGLTransformation.Create;
   FTransformation.LoadMatricesEnabled := True;
   GXContextManager.RegisterContext(Self);
   FIsPraparationNeed := True;

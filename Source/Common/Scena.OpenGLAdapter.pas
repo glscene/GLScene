@@ -1,7 +1,7 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-unit GLS.OpenGLAdapter;
+unit Scena.OpenGLAdapter;
 
 (* OpenGL adapter *)
 

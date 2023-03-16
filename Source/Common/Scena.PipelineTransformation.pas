@@ -1,7 +1,7 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-unit GLS.PipelineTransformation;
+unit Scena.PipelineTransformation;
 
 (* Pipeline transformations *)
 

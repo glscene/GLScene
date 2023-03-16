@@ -17,7 +17,7 @@ uses
   GLS.Objects,
   GLS.Cadencer,
   GLS.SceneViewer,
-  GLS.Keyboard,
+  Scena.Keyboard,
   GLS.RenderContextInfo,
   GLS.OpenGLAdapter,
   Scena.OpenGLTokens,

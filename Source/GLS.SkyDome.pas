@@ -18,10 +18,10 @@ uses
   Vcl.Graphics,
 
   Scena.OpenGLTokens,
-  GLS.Scene,
-  Scena.VectorGeometry,
-  GLS.Graphics,
   Scena.VectorTypes,
+  Scena.VectorGeometry,
+  GLS.Scene,
+  GLS.Graphics,
   GLS.Color,
   GLS.Material,
   GLS.RenderContextInfo;

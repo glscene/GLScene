@@ -28,7 +28,7 @@ uses
   Scena.VectorGeometry,
   GLS.Silhouette,
   GLS.PersistentClasses,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLS.State,
   GLS.Graphics,
   GLS.GeometryBB,

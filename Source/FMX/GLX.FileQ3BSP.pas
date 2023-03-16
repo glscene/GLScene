@@ -31,7 +31,7 @@ uses
   GLX.Material,
   Scena.TextureFormat,
 
-  Formatx.Q3BSP;
+  Formats.Q3BSP;
 
 type
 

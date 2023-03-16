@@ -36,7 +36,7 @@ uses
   GLSL.CustomShader,
   GLSL.Shader,
   GLS.Utils,
-  GLS.KeyBoard,
+  Scena.Keyboard,
   GLS.SoundManager,
   Sounds.BASS,
   GLS.FileWAV,

@@ -17,7 +17,7 @@ uses
   System.Math,
   
   Scena.OpenGLTokens,
-  GLS.OpenGLAdapter,
+  Scena.OpenGLAdapter,
   Scena.VectorGeometry,
   GLS.Context,
   GLS.Scene,

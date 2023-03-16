@@ -156,9 +156,6 @@
         <DCCReference Include="..\Source\Vcl\FmSceneEditor.pas">
             <Form>GLSceneEditorForm</Form>
         </DCCReference>
-        <DCCReference Include="..\Source\Vcl\FmPlugInManagerEditor.pas">
-            <Form>GLPlugInManagerEditorForm</Form>
-        </DCCReference>
         <DCCReference Include="..\Source\Vcl\FmXCollectionEditor.pas">
             <Form>GLXCollectionEditorForm</Form>
         </DCCReference>

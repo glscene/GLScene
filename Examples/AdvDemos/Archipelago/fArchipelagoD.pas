@@ -38,7 +38,7 @@ uses
   GLS.VectorLists,
   Scena.VectorTypes,
   Scena.VectorGeometry,
-  GLS.Keyboard,
+  Scena.Keyboard,
   Scena.OpenGLTokens,
   GLS.Context,
   GLS.State,

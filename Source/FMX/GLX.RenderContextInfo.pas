@@ -14,7 +14,7 @@ uses
   GLX.PersistentClasses,
   Scena.VectorGeometry,
   GLX.State,
-  GLX.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLX.Color;
 
 type
@@ -76,7 +76,7 @@ type
     objectsSorting: TgxObjectsSorting;
     visibilityCulling: TgxVisibilityCulling;
     gxStates: TgxStateCache;
-    PipelineTransformation: TgxTransformation;
+    PipelineTransformation: TGLTransformation;
     rcci: TgxRenderContextClippingInfo;
     sceneAmbientColor: TgxColorVector;
     bufferFaceCull: Boolean;

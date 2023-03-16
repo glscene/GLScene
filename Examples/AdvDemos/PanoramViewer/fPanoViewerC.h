@@ -22,7 +22,7 @@
 #include "GLS.Coordinates.hpp"
 #include "GLS.Material.hpp"
 
-#include "GLS.KeyBoard.hpp"
+#include "Scena.Keyboard.hpp"
 #include "GLS.FileJPEG.hpp"
 #include "GLS.Utils.hpp"
 

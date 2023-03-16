@@ -23,7 +23,7 @@ uses
   GLS.Cadencer,
   GLS.Scene,
   GLS.Context,
-  GLS.Keyboard,
+  Scena.Keyboard,
   GLS.Utils,
   GLS.FileTGA,
   GLS.HUDObjects,

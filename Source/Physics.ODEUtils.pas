@@ -20,11 +20,11 @@ uses
 
   ODE.Import,
   Scena.OpenGLTokens,
-  GLS.Context,
+  Scena.VectorTypes,
   Scena.VectorGeometry,
   GLS.Scene,
+  GLS.Context,
   GLS.PersistentClasses,
-  Scena.VectorTypes,
   GLS.VectorLists,
   GLS.Coordinates,
   GLS.Objects,

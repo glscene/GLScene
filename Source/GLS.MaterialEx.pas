@@ -30,7 +30,7 @@ uses
 
   Scena.OpenGLTokens,
   GLS.RenderContextInfo,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLS.BaseClasses,
   GLS.Context,
   Scena.VectorTypes,

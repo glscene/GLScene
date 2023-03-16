@@ -30,7 +30,6 @@ uses
   GLS.Scene,
   GLS.Color,
   GLS.ObjectManager,
-  GLS.PluginManager,
   Scena.Strings;
 
 type

@@ -25,7 +25,7 @@ uses
   GLS.SkyDome,
   GLS.Texture,
   GLS.FileTGA,
-  GLS.Keyboard,
+  Scena.Keyboard,
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,

@@ -25,7 +25,7 @@
 #include "GLS.Navigator.hpp"
 #include "GLS.SkyDome.hpp"
 #include "GLS.VectorFileObjects.hpp"
-#include "GLS.Keyboard.hpp"
+#include "Scena.Keyboard.hpp"
 #include "Scena.VectorGeometry.hpp"
 
 //---------------------------------------------------------------------------

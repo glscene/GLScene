@@ -28,7 +28,7 @@ uses
   GLS.BaseClasses,
   GLS.Coordinates,
   GLS.RenderContextInfo,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLS.Manager,
   GLS.State,
   Scena.TextureFormat;

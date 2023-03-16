@@ -18,7 +18,7 @@ uses
 
   GLX.XCollection,
   GLX.Scene,
-  GLX.PipelineTransformation,
+  Scena.PipelineTransformation,
   Scena.VectorGeometry,
   GLX.Context,
   GLX.VectorLists,

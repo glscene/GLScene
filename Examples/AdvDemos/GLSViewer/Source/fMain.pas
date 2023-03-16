@@ -48,7 +48,7 @@ uses
   GLS.RenderContextInfo,
   Scena.TextureFormat,
   GLS.Color,
-  GLS.Keyboard,
+  Scena.Keyboard,
   GLS.Graphics,
   GLS.PersistentClasses,
   GLS.MeshUtils,

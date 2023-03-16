@@ -30,7 +30,7 @@ uses
   Scena.VectorGeometry,
   GLX.Polynomials,
   GLX.VectorFileObjects,
-  GLX.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLX.Material,
   GLX.Texture,
 

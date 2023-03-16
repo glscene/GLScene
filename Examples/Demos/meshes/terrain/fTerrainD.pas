@@ -27,7 +27,7 @@ uses
   GLS.Cadencer,
   GLS.Texture,
   GLS.BitmapFont,
-  GLS.Keyboard,
+  Scena.Keyboard,
   GLS.SkyDome,
   GLS.SceneViewer,
   GLS.SoundManager,

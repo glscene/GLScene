@@ -23,7 +23,7 @@ uses
   System.Classes,
 
   GLX.Scene,
-  GLX.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLX.VectorLists,
   GLX.State, 
   Scena.VectorTypes,

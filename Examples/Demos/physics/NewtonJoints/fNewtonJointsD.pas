@@ -23,7 +23,7 @@ uses
   GLS.BaseClasses,
   Scena.VectorGeometry,
   GLS.SimpleNavigation,
-  GLS.Keyboard,
+  Scena.Keyboard,
   GLS.GeomObjects,
   GLS.HUDObjects,
   GLS.BitmapFont,

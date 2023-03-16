@@ -37,7 +37,7 @@ uses
   GLS.RenderContextInfo,
   GLS.SimpleNavigation,
   GLS.VectorFileObjects,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLS.FileMD2,
   Formats.DDSImage,
   GLS.FileOBJ,

@@ -17,7 +17,7 @@
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
-#pragma link "GLS.Keyboard"
+#pragma link "Scena.Keyboard"
 #pragma link "GLS.VerletTypes"
 
 //---------------------------------------------------------------------------

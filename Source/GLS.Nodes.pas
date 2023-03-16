@@ -14,7 +14,7 @@ uses
   System.Classes,
 
   Scena.OpenGLTokens,
-  GLS.OpenGLAdapter,
+  Scena.OpenGLAdapter,
   Scena.VectorTypes,
   Scena.VectorGeometry,
   GLS.Context,

@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 
 #include <vcl.h>
-#include <GLS.Keyboard.hpp>
+#include <Scena.Keyboard.hpp>
 #include <stdlib.h>
 
 #pragma hdrstop
@@ -24,7 +24,7 @@
 #pragma link "GLS.Objects"
 #pragma link "GLS.TerrainRenderer"
 #pragma link "GLS.Scene"
-#pragma link "GLS.Keyboard"
+#pragma link "Scena.Keyboard"
 #pragma link "GLS.BaseClasses"
 #pragma link "GLS.Coordinates"
 

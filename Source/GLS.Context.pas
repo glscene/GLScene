@@ -26,14 +26,14 @@ uses
 {$ENDIF}
 
   Scena.OpenGLTokens,
-  GLS.OpenGLAdapter,
+  Scena.OpenGLAdapter,
   GLS.XOpenGL,
   Scena.VectorGeometry,
   Scena.Strings,
   Scena.TextureFormat,
   Scena.VectorTypes,
   GLS.State,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   Scena.Logger;
 
 // Buffer ID's for Multiple-Render-Targets (using GL_ATI_draw_buffers)

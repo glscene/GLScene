@@ -30,7 +30,7 @@ uses
   GLX.Graphics,
   GLX.Context,
   GLX.State,
-  GLX.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLX.Color,
   GLX.Coordinates,
   GLX.RenderContextInfo,

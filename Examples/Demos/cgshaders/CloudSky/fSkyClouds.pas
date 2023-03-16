@@ -26,7 +26,7 @@ uses
   GLS.Texture,
   CG.Shader,
   GLS.FileTGA,
-  GLS.Keyboard,
+  Scena.Keyboard,
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,

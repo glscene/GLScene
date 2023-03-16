@@ -21,7 +21,7 @@
 #include "GLS.Coordinates.hpp"
 #include "GLS.FullScreenViewer.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLS.Keyboard.hpp"
+#include "Scena.Keyboard.hpp"
 #include "GLS.FullScreenViewer.hpp"
 
 //---------------------------------------------------------------------------

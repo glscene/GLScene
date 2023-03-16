@@ -42,7 +42,7 @@ uses
   GLS.BaseClasses,
   GLS.Context,
   Scena.VectorTypes,
-  GLS.PipelineTransformation;
+  Scena.PipelineTransformation;
 
 type
   TGLMaterialMultiProxy = class;

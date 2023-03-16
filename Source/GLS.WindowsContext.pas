@@ -20,8 +20,8 @@ uses
 
   Scena.VectorTypes,
   Scena.OpenGLTokens,
-  GLS.OpenGLAdapter,
-  GLS.PipelineTransformation,
+  Scena.OpenGLAdapter,
+  Scena.PipelineTransformation,
   GLS.Context,
   GLS.State,
   Scena.Logger,

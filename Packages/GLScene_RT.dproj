@@ -148,10 +148,10 @@
         <DCCReference Include="..\Source\Common\ModuleLoader.pas"/>
         <DCCReference Include="..\Source\Formats.DDSImage.pas"/>
         <DCCReference Include="..\Source\Formats.HDRImage.pas"/>
-        <DCCReference Include="..\Source\Formats.Q3BSP.pas"/>
+        <DCCReference Include="..\Source\Common\Formats.Q3BSP.pas"/>
         <DCCReference Include="..\Source\Formats.B3D.pas"/>
-        <DCCReference Include="..\Source\Formats.GL2.pas"/>
-        <DCCReference Include="..\Source\Formats.LWO.pas"/>
+        <DCCReference Include="..\Source\Common\Formats.GL2.pas"/>
+        <DCCReference Include="..\Source\Common\Formats.LWO.pas"/>
         <DCCReference Include="..\Source\Formats.MD2.pas"/>
         <DCCReference Include="..\Source\Formats.MD3.pas"/>
         <DCCReference Include="..\Source\Formats.OCT.pas"/>
@@ -236,7 +236,7 @@
         <DCCReference Include="..\Source\GLS.FileDEL.pas"/>
         <DCCReference Include="..\Source\GLS.FileVOR.pas"/>
         <DCCReference Include="..\Source\GLS.FullScreenViewer.pas"/>
-        <DCCReference Include="..\Source\GLS.Keyboard.pas"/>
+        <DCCReference Include="..\Source\Common\Scena.Keyboard.pas"/>
         <DCCReference Include="..\Source\GLS.GameMenu.pas"/>
         <DCCReference Include="..\Source\GLS.GeomObjects.pas"/>
         <DCCReference Include="..\Source\GLS.GeometryBB.pas"/>
@@ -253,7 +253,7 @@
         <DCCReference Include="..\Source\GLS.Imposter.pas"/>
         <DCCReference Include="..\Source\GLS.Isolines.pas"/>
         <DCCReference Include="..\Source\GLS.Isosurface.pas"/>
-        <DCCReference Include="..\Source\GLS.Joystick.pas"/>
+        <DCCReference Include="..\Source\VCL\GLS.Joystick.pas"/>
         <DCCReference Include="..\Source\GLS.LensFlare.pas"/>
         <DCCReference Include="..\Source\GLS.LinePFX.pas"/>
         <DCCReference Include="..\Source\Common\Scena.Logger.pas"/>
@@ -350,13 +350,12 @@
         <DCCReference Include="..\Source\GLS.WindowsContext.pas"/>
         <DCCReference Include="..\Source\GLS.WindowsFont.pas"/>
         <DCCReference Include="..\Source\GLS.zBuffer.pas"/>
-        <DCCReference Include="..\Source\GLS.OpenGLAdapter.pas"/>
+        <DCCReference Include="..\Source\Common\Scena.OpenGLAdapter.pas"/>
         <DCCReference Include="..\Source\GLS.PersistentClasses.pas"/>
-        <DCCReference Include="..\Source\GLS.PipelineTransformation.pas"/>
+        <DCCReference Include="..\Source\Common\Scena.PipelineTransformation.pas"/>
         <DCCReference Include="..\Source\GLS.Polynomials.pas"/>
         <DCCReference Include="..\Source\Common\Scena.CrossXML.pas"/>
         <DCCReference Include="..\Source\GLS.Silhouette.pas"/>
-        <DCCReference Include="..\Source\GLS.PlugInManager.pas"/>
         <DCCReference Include="..\Source\GLS.VectorLists.pas"/>
         <DCCReference Include="..\Source\GLS.ScriptBase.pas"/>
         <DCCReference Include="..\Source\GLS.XCollection.pas"/>

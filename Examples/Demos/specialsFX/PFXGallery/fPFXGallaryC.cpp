@@ -23,7 +23,7 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.SpaceText"
 #pragma link "GLS.SceneViewer"
-#include "GLS.Keyboard.hpp"
+#include "Scena.Keyboard.hpp"
 
 #pragma resource "*.dfm"
 TForm1 *Form1;

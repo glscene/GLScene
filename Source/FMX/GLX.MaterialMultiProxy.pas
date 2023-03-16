@@ -41,7 +41,7 @@ uses
   GLX.Scene,
   GLX.RenderContextInfo,
   GLX.Context,
-  GLX.PipelineTransformation;
+  Scena.PipelineTransformation;
 
 type
 

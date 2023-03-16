@@ -14,7 +14,7 @@ uses
   Winapi.OpenGL,
   System.SysUtils,
   
-  GLS.OpenGLAdapter,
+  Scena.OpenGLAdapter,
   Scena.OpenGLTokens,
   GLS.PersistentClasses,
   Scena.VectorTypes,

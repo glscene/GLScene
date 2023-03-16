@@ -51,7 +51,6 @@ contains
   FmShaderUniformEditor in '..\Source\Vcl\FmShaderUniformEditor.pas' {GLShaderUniformEditor},
   FmVectorEditor in '..\Source\Vcl\FmVectorEditor.pas' {GLVectorEditorForm},
   FmSceneEditor in '..\Source\Vcl\FmSceneEditor.pas' {GLSceneEditorForm},
-  FmPlugInManagerEditor in '..\Source\Vcl\FmPlugInManagerEditor.pas' {GLPlugInManagerEditorForm},
   FmXCollectionEditor in '..\Source\Vcl\FmXCollectionEditor.pas' {GLXCollectionEditorForm},
   FmInfo in '..\Source\Vcl\FmInfo.pas' {GLInfoForm},
   GLS.SceneRegister in '..\Source\VCL\GLS.SceneRegister.pas',

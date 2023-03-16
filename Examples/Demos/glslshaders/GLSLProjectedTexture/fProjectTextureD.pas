@@ -26,7 +26,7 @@ uses
   GLS.FileLMTS,
   GLS.Context,
   Scena.VectorGeometry,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLSL.ProjectedTextures,
 
   GLS.Graphics,

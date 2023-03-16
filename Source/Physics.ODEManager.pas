@@ -21,7 +21,7 @@ uses
   Scena.VectorTypes,
   GLS.VectorLists,
   Scena.VectorGeometry,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLS.PersistentClasses,
   GLS.Manager,
   GLS.XCollection,

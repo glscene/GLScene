@@ -40,7 +40,7 @@ uses
   GLS.ApplicationFileIO,
   GLS.Context,
   GLS.Color,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLS.Selection,
   GLS.RenderContextInfo,
   GLS.Coordinates,

@@ -29,7 +29,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.FileMD2,
-  GLS.Keyboard,
+  Scena.Keyboard,
   GLS.Utils,
   GLSL.ShapeShaders;
 

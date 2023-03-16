@@ -14,7 +14,7 @@ uses
   GLS.Scene,
   Scena.VectorTypes,
   Scena.VectorGeometry,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLS.Cadencer,
   GLS.SceneViewer,
  

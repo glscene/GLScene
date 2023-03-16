@@ -18,7 +18,7 @@ uses
   Scena.OpenGLTokens,
   GLS.Scene,
   GLS.XCollection,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   Scena.VectorGeometry,
   GLS.Texture,
   GLS.VectorFileObjects,

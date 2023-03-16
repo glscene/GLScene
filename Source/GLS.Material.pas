@@ -19,6 +19,9 @@ uses
   Scena.OpenGLTokens,
   Scena.VectorTypes,
   Scena.VectorGeometry,
+  Scena.TextureFormat,
+  Scena.Strings,
+
   GLS.RenderContextInfo,
   GLS.BaseClasses,
   GLS.Context,
@@ -27,12 +30,10 @@ uses
   GLS.Coordinates,
   GLS.PersistentClasses,
   GLS.State,
-  Scena.TextureFormat, 
   GLS.XOpenGL,
   GLS.ApplicationFileIO,
   GLS.Graphics,
   GLS.Utils,
-  Scena.Strings,
   Scena.Logger;
 
 {$UNDEF USE_MULTITHREAD}

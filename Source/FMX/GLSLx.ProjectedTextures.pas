@@ -34,7 +34,7 @@ uses
   GLX.Color,
   GLX.RenderContextInfo,
   Scena.TextureFormat,
-  GLX.PipelineTransformation,
+  Scena.PipelineTransformation,
   Scena.VectorTypes;
 
 type

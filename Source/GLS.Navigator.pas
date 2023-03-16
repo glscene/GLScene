@@ -1,7 +1,6 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.Navigator;
 
 (* Unit for navigating GLBaseObjects and GLSceneViewer. *)
@@ -29,7 +28,7 @@ uses
   GLS.PersistentClasses,
   Scena.VectorTypes,
   Scena.VectorGeometry,
-  GLS.Keyboard,
+  Scena.Keyboard,
   GLS.HudObjects,
   GLS.Coordinates,
   GLS.Screen,
@@ -944,7 +943,6 @@ end;
 
 // ------------------------------------------------
 initialization
-
 // ------------------------------------------------
 
 sW2 := Screen.Width div 2;

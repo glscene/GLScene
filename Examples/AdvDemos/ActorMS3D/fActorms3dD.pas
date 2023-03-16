@@ -15,7 +15,7 @@ uses
   Vcl.Imaging.jpeg,
   Vcl.Imaging.pngimage,
 
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLS.VectorLists,
   GLS.Cadencer,
   GLS.SceneViewer,

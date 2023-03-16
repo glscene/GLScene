@@ -38,7 +38,7 @@ uses
 
   GLX.Context,
   GLX.Silhouette,
-  GLX.PipeLineTransformation,
+  Scena.PipelineTransformation,
   GLX.State,
   GLX.Graphics,
   GLX.Texture,
@@ -83,8 +83,7 @@ type
     roDoubleBuffer: enables double-buffering.
     roRenderToWindows: ignored (legacy).
     roTwoSideLighting: enables two-side lighting model.
-    roStereo: enables stereo support in the driver
-	  (dunno if it works, I don't have a stereo device to test...)
+    roStereo: enables stereo support in the driver (it needs a stereo device to test...)
     roDestinationAlpha: request an Alpha channel for the rendered output
     roNoColorBuffer: don't request a color buffer (color depth setting ignored)
     roNoColorBufferClear: do not clear the color buffer automatically, if the

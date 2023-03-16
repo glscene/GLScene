@@ -34,7 +34,7 @@ uses
   Winapi.OpenGL,
 
   Scena.OpenGLTokens,
-  GLS.OpenGLAdapter,
+  Scena.OpenGLAdapter,
   Scena.VectorTypes,
   GLS.VectorFileObjects,
   GLS.CurvesAndSurfaces,

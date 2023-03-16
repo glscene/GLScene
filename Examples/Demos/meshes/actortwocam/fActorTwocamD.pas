@@ -33,7 +33,7 @@ uses
   GLS.BaseClasses,
   GLS.Utils,
   Scena.VectorGeometry,
-  GLS.Keyboard,
+  Scena.Keyboard,
   GLS.PersistentClasses, GLS.DCE;
 
 type
@@ -133,7 +133,7 @@ var
   moving: String;
   boost: Single;
 begin
-  // This function uses asynchronous keyboard check (see GLS.Keyboard.pas)
+  // This function uses asynchronous keyboard check (see Scena.Keyboard.pas)
   if IsKeyDown(VK_ESCAPE) then
     Close;
   if IsKeyDown('A') then

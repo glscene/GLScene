@@ -474,7 +474,7 @@ implementation
 
 uses
   GLS.Context,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
 
   Scena.OpenGLTokens;
 

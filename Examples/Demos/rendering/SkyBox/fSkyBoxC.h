@@ -19,7 +19,7 @@
 #include "GLS.SimpleNavigation.hpp"
 #include "GLS.SkyDome.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLS.Keyboard.hpp"
+#include "Scena.Keyboard.hpp"
 #include "JPeg.hpp"
 #include "GLS.FileJPEG.hpp"
 #include "GLS.Utils.hpp"

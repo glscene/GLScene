@@ -100,7 +100,7 @@ function BBToAABB(const ABB: THmgBoundingBox): TAABB;
 function AABBToBB(const AnAABB: TAABB): THmgBoundingBox; overload;
 // Transforms an AABB to a BB. 
 function AABBToBB(const AnAABB: TAABB; const M: TGLMatrix): THmgBoundingBox; overload;
-//  Adds delta to min and max of the AABB. 
+//  Adds delta to min and max of the AABB.
 procedure OffsetAABB(var Aabb: TAABB; const Delta: TAffineVector); overload;
 procedure OffsetAABB(var Aabb: TAABB; const Delta: TGLVector); overload;
 //  Adds delta to min and max of the BB.
@@ -157,7 +157,7 @@ function BSphereToAABB(const Center: TGLVector; Radius: Single): TAABB; overload
 
 // Determines to which extent one AABB contains another AABB 
 function AABBContainsAABB(const MainAABB, TestAABB: TAABB): TSpaceContains;
-// Determines to which extent a BSphere contains an AABB 
+// Determines to which extent a BSphere contains an AABB
 function BSphereContainsAABB(const MainBSphere: TBSphere; const TestAABB: TAABB): TSpaceContains;
 // Determines to which extent one BSphere contains another BSphere 
 function BSphereContainsBSphere(const MainBSphere, TestBSphere: TBSphere): TSpaceContains;

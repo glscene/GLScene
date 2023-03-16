@@ -27,7 +27,7 @@ uses
   Scena.VectorGeometry,
   GLS.BaseClasses,
   GLS.PersistentClasses,
-  GLS.Keyboard,
+  Scena.Keyboard,
 
   GLS.Material,
   GLS.Scene,

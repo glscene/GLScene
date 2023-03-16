@@ -29,7 +29,7 @@ uses
   GLS.ShadowPlane,
   GLS.Navigator,
   GLS.VerletTypes,
-  GLS.Keyboard,
+  Scena.Keyboard,
   GLS.Color,
  
   GLS.Coordinates,

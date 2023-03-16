@@ -26,7 +26,7 @@ uses
   GLS.Silhouette,
   GLS.PersistentClasses,
   GLS.Coordinates,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLS.GeometryBB,
   GLS.Color,
   GLS.Selection,

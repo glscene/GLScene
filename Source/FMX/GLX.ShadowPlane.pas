@@ -26,7 +26,7 @@ uses
   GLX.PersistentClasses,
   Scena.VectorGeometry,
   GLX.Scene,
-  GLX.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLX.Context,
   GLX.Objects,
   GLX.Utils,

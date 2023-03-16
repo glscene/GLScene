@@ -22,11 +22,11 @@ uses
   System.SyncObjs,
 
   Scena.OpenGLTokens,
-  GLS.OpenGLAdapter,
+  Scena.VectorGeometry,
+  Scena.OpenGLAdapter,
   Scena.VectorTypes,
   GLS.State,
   GLS.Context,
-  Scena.VectorGeometry,
   SDL.Import;
 
 type

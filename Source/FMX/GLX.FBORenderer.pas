@@ -27,7 +27,7 @@ uses
   GLX.Material,
   GLX.RenderContextInfo,
   GLX.State,
-  GLX.PipelineTransformation,
+  Scena.PipelineTransformation,
   Scena.TextureFormat,
   Scena.VectorTypes,
   GLX.MultisampleImage;

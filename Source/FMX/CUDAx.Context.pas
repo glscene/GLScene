@@ -16,7 +16,7 @@ uses
   CUDA.RunTime,
 
   Scena.Strings,
-  GLX.Generics,
+  Scena.Generics,
   GLX.BaseClasses,
   GLX.Context;
 

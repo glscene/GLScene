@@ -20,15 +20,15 @@ uses
 
   Scena.OpenGLTokens,
   Scena.Strings,
+  Scena.VectorGeometry,
+  Scena.VectorTypes,
   GLS.XOpenGL,
   GLS.Context,
   GLS.Scene,
-  Scena.VectorGeometry,
   GLS.State,
   GLS.Color,
   GLS.BaseClasses,
-  GLS.RenderContextInfo,
-  Scena.VectorTypes;
+  GLS.RenderContextInfo;
 
 type
   TGLMeshMode = (mmTriangleStrip, mmTriangleFan, mmTriangles, mmQuadStrip,

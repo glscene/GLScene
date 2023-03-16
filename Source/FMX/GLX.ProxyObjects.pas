@@ -26,7 +26,7 @@ uses
   GLX.RenderContextInfo,
   GLX.Material,
   GLX.Context,
-  GLX.PipelineTransformation;
+  Scena.PipelineTransformation;
 
 type
   EProxyException = class(Exception);

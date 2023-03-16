@@ -169,7 +169,7 @@ uses
   GLS.Coordinates,
   GLS.PersistentClasses,
   Scena.Strings,
-  GLS.OpenGLAdapter;
+  Scena.OpenGLAdapter;
 
 const
   EPS = 0.001;

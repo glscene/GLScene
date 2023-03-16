@@ -40,7 +40,7 @@ uses
   GLX.Color,
   GLX.RenderContextInfo,
   GLX.Nodes,
-  GLX.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLX.Coordinates;
 
 const

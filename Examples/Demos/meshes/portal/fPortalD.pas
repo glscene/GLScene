@@ -30,7 +30,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.Keyboard,
+  Scena.Keyboard,
   GLS.Utils, GLS.SimpleNavigation;
 
 type

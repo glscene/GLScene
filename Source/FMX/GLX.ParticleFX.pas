@@ -39,7 +39,7 @@ uses
   GLX.BaseClasses,
   GLX.Coordinates,
   GLX.RenderContextInfo,
-  GLX.PipelineTransformation,
+  Scena.PipelineTransformation,
   Scena.TextureFormat;
 
 const

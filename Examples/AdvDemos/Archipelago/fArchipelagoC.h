@@ -43,7 +43,7 @@
 #include "Scena.VectorTypes.hpp"
 #include "Scena.VectorGeometry.hpp"
 
-#include "GLS.Keyboard.hpp"
+#include "Scena.Keyboard.hpp"
 #include "GLS.Context.hpp"
 #include "GLS.State.hpp"
 #include "Scena.TextureFormat.hpp"

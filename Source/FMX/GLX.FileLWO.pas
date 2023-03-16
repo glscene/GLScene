@@ -19,7 +19,7 @@ uses
   GLX.Material,
   GLX.VectorFileObjects,
 
-  Formatx.LWObjects;
+  Formats.LWO;
 
 type
   TgxLWOVectorFile = class(TgxVectorFile)

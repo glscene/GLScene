@@ -158,21 +158,19 @@
         <DCCReference Include="..\Source\Common\Formats.m3DSConst.pas"/>
         <DCCReference Include="..\Source\Common\Formats.m3DSTypes.pas"/>
         <DCCReference Include="..\Source\Common\Formats.m3DSUtils.pas"/>
-        <DCCReference Include="..\Source\Common\Formats.VFW.pas"/>
         <DCCReference Include="..\Source\Common\Formats.DXTC.pas"/>
+        <DCCReference Include="..\Source\Common\Formats.GL2.pas"/>
+        <DCCReference Include="..\Source\Common\Formats.LWO.pas"/>
+        <DCCReference Include="..\Source\Common\Formats.VFW.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.B3D.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.DDSImage.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.HDRImage.pas"/>
-        <DCCReference Include="..\Source\FMX\Formatx.LWObjects.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.MD3.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.Q3MD3.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.OCT.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.X.pas"/>
-        <DCCReference Include="..\Source\FMX\Formatx.GL2.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.MD2.pas"/>
-        <DCCReference Include="..\Source\FMX\Formatx.Q3BSP.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.TGA.pas"/>
-        <DCCReference Include="..\Source\FMX\Formatx.VFW.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.VRML.pas"/>
         <DCCReference Include="..\Source\FMX\Formatx.VfsPAK.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.AnimatedSprite.pas"/>
@@ -300,8 +298,6 @@
         <DCCReference Include="..\Source\FMX\GLX.Perlin.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.PerlinPFX.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.PictureRegisteredFormats.pas"/>
-        <DCCReference Include="..\Source\FMX\GLX.PipelineTransformation.pas"/>
-        <DCCReference Include="..\Source\FMX\GLX.PlugInManager.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.Portal.pas"/>
         <DCCReference Include="..\Source\FMX\GLSLx.PostEffects.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.ProcTextures.pas"/>
@@ -358,12 +354,9 @@
         <DCCReference Include="..\Source\FMX\GLX.ArchiveManager.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.BaseClasses.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.CurvesAndSurfaces.pas"/>
-        <DCCReference Include="..\Source\FMX\GLX.Generics.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.PAKArchive.pas"/>
-        <DCCReference Include="..\Source\FMX\GLX.Keyboard.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.Manager.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.PersistentClasses.pas"/>
-        <DCCReference Include="..\Source\FMX\GLX.PlugInInterface.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.Polynomials.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.RGBE.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.SpacePartition.pas"/>
@@ -382,6 +375,10 @@
         <DCCReference Include="..\Source\Common\Scena.Spline.pas"/>
         <DCCReference Include="..\Source\Common\Scena.TextureFormat.pas"/>
         <DCCReference Include="..\Source\Common\Scena.Logger.pas"/>
+        <DCCReference Include="..\Source\Common\Formats.Q3BSP.pas"/>
+        <DCCReference Include="..\Source\Common\Scena.Keyboard.pas"/>
+        <DCCReference Include="..\Source\Common\Scena.PipelineTransformation.pas"/>
+        <DCCReference Include="..\Source\Common\Scena.Generics.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

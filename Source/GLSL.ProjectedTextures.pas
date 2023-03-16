@@ -27,7 +27,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLS.Scene,
   GLS.PersistentClasses,
   GLS.Texture,

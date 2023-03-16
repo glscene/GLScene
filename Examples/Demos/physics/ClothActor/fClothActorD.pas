@@ -26,7 +26,7 @@ uses
   GLS.VerletTypes,
   GLS.VerletClothify,
   GLS.ShadowVolume,
-  GLS.Keyboard,
+  Scena.Keyboard,
   Scena.VectorGeometry,
   GLS.GeometryBB,
   GLS.SpacePartition,

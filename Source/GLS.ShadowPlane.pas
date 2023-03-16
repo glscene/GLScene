@@ -21,7 +21,7 @@ uses
 
   Scena.OpenGLTokens,
   GLS.PersistentClasses,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   Scena.VectorTypes,
   GLS.Scene,
   Scena.VectorGeometry,

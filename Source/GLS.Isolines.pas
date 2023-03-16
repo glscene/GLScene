@@ -17,15 +17,16 @@ uses
   System.Generics.Collections,
 
   Scena.VectorGeometry, 
-  GLS.VectorLists, 
-  GLS.Objects, 
-  GLS.MultiPolygon,  
-  GLS.Coordinates,
-  Scena.VectorTypesExt,
-  GLS.Color, 
-  Scena.Spline, 
-  GLS.SpaceText, 
   Scena.VectorTypes,
+  Scena.VectorTypesExt,
+  Scena.Spline,
+
+  GLS.VectorLists,
+  GLS.Objects,
+  GLS.MultiPolygon,
+  GLS.Coordinates,
+  GLS.Color,
+  GLS.SpaceText,
   GLS.VectorFileObjects;
 
 type

@@ -29,7 +29,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.Keyboard, GLS.ShadowHDS;
+  Scena.Keyboard, GLS.ShadowHDS;
 
 type
   TFormSynthTerrain = class(TForm)

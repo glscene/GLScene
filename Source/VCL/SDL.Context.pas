@@ -19,7 +19,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLAdapter,
+  Scena.OpenGLAdapter,
   GLS.XOpenGL,
   GLS.Context,
   GLS.Scene,

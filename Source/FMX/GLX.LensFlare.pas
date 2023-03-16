@@ -23,7 +23,7 @@ uses
   Scena.VectorGeometry,
   GLX.Scene,
   GLX.Objects,
-  GLX.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLX.Context,
   GLX.Color,
   GLX.RenderContextInfo,

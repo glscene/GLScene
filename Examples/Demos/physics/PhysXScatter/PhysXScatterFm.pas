@@ -21,7 +21,7 @@ uses
   Scena.VectorTypes,
   GLS.SceneViewer,
   GLS.Color,
-  GLS.Keyboard,
+  Scena.Keyboard,
   GLS.BaseClasses,
   Scena.VectorGeometry,
   GLS.GeomObjects,

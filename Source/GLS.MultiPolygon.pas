@@ -26,7 +26,7 @@ uses
   System.SysUtils,
 
   Scena.OpenGLTokens,
-  GLS.OpenGLAdapter,
+  Scena.OpenGLAdapter,
   Scena.Spline,
   GLS.XOpenGL,
   GLS.Context,

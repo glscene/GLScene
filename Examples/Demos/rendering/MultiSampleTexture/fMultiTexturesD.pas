@@ -35,7 +35,7 @@ uses
   GLS.SimpleNavigation,
   GLS.State,
   GLS.Context,
-  GLS.Keyboard,
+  Scena.Keyboard,
   GLS.MultiSampleImage;
 
 type

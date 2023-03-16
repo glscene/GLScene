@@ -14,7 +14,7 @@ uses
 
   GLS.Cadencer, 
   GLS.SceneViewer, 
-  GLS.Keyboard, 
+  Scena.Keyboard, 
   Scena.VectorGeometry, 
   GLS.GeomObjects,
   GLS.Scene, 

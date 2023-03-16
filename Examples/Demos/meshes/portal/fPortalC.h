@@ -20,7 +20,7 @@
 #include "GLS.Portal.hpp"
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLS.Keyboard.hpp"
+#include "Scena.Keyboard.hpp"
 #include "JPeg.hpp"
 
 //---------------------------------------------------------------------------

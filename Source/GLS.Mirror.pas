@@ -16,7 +16,7 @@ uses
   System.Classes,
   
   Scena.OpenGLTokens,
-  GLS.OpenGLAdapter,
+  Scena.OpenGLAdapter,
   GLS.Scene,
   Scena.VectorGeometry,
   GLS.Context,
@@ -26,7 +26,7 @@ uses
   GLS.State,
   Scena.VectorTypes,
   GLS.PersistentClasses,
-  GLS.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLS.XCollection,
   GLS.Texture;
 

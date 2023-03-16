@@ -32,7 +32,7 @@ uses
   GLS.BaseClasses,
   GLS.RenderContextInfo,
   Scena.TextureFormat,
-  GLS.Keyboard,
+  Scena.Keyboard,
   GLS.Utils,
   GLS.SimpleNavigation;
 

@@ -41,7 +41,7 @@ uses
   GLX.Canvas,
   GLX.Screen,
   GLX.State,
-  GLX.PipelineTransformation,
+  Scena.PipelineTransformation,
   GLX.Selection,
   GLX.Utils,
   GLX.Context;

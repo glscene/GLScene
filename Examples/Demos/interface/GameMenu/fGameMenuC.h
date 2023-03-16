@@ -24,7 +24,7 @@
 #include "GLS.GameMenu.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.Texture.hpp"
-#include "GLS.Keyboard.hpp"
+#include "Scena.Keyboard.hpp"
 
 #include "GLS.Material.hpp"
 #include "GLS.Coordinates.hpp"

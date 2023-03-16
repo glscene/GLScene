@@ -26,7 +26,7 @@
 #include "GLS.WindowsFont.hpp"
 #include "GLS.State.hpp"
 #include "GLS.Context.hpp"
-#include "GLS.Keyboard.hpp"
+#include "Scena.Keyboard.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

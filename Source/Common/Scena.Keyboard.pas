@@ -1,7 +1,7 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-unit GLS.Keyboard;
+unit Scena.Keyboard;
 
 (*
   Provides on demand state of any key on the keyboard as well as a set of
