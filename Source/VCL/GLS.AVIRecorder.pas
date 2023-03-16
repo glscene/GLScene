@@ -1,7 +1,6 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.AVIRecorder;
 
 (* Component to make it easy to record GLScene frames into an AVI file *)

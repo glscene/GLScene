@@ -1,7 +1,6 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.CameraController;
 
 (*
@@ -19,12 +18,13 @@ uses
   System.Contnrs,
   System.Types,
 
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
+
   GLS.Scene,
   GLS.Coordinates,
   GLS.PersistentClasses,
-  Scena.VectorGeometry,
-  GLS.SmoothNavigator,
-  Scena.VectorTypes;
+  GLS.SmoothNavigator;
 
 type
 

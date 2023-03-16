@@ -27,13 +27,13 @@ uses
 
   Scena.OpenGLTokens,
   Scena.OpenGLAdapter,
-  GLS.XOpenGL,
   Scena.VectorGeometry,
   Scena.Strings,
   Scena.TextureFormat,
   Scena.VectorTypes,
-  GLS.State,
   Scena.PipelineTransformation,
+  GLS.State,
+  GLS.XOpenGL,
   Scena.Logger;
 
 // Buffer ID's for Multiple-Render-Targets (using GL_ATI_draw_buffers)

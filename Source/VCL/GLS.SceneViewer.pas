@@ -3,7 +3,7 @@
 //
 unit GLS.SceneViewer;
 
-(* Windows specific Scene viewer *)
+(* Component for windows specific Scene viewer *)
 
 interface
 

@@ -1,7 +1,6 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.PolygonTesselation;
 
 (* Code to generate triangle strips and fans for polygons. *)
@@ -13,10 +12,9 @@ interface
 uses
   Winapi.OpenGL,
   System.SysUtils,
-  
+
   Scena.OpenGLAdapter,
   Scena.OpenGLTokens,
-  GLS.PersistentClasses,
   Scena.VectorTypes,
   GLS.VectorFileObjects,
   GLS.VectorLists,

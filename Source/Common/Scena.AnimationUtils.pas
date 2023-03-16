@@ -1,7 +1,7 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-unit GLS.AnimationUtils;
+unit Scena.AnimationUtils;
 
 (* Main purpose is to give an easy way to create a linear interpolation *)
 

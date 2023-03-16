@@ -1,5 +1,5 @@
 ﻿//
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.Skydome;
 
@@ -24,6 +24,7 @@ uses
   GLX.State,
   GLX.Graphics,
   GLX.Color,
+  GLX.Material,
   GLX.RenderContextInfo;
 
 type
@@ -34,6 +35,60 @@ type
     VMagnitude: Byte; // x10 builtin factor
   end;
   PgxStarRecord = ^TgxStarRecord;
+
+// ------------------------- SkyBox class -------------------------
+
+TgxSkyBoxStyle = (sbsFull, sbsTopHalf, sbsBottomHalf, sbTopTwoThirds, sbsTopHalfClamped);
+
+  TgxSkyBox = class(TgxCameraInvariantObject, IgxMaterialLibrarySupported)
+  private
+    FMatNameTop: string;
+    FMatNameRight: string;
+    FMatNameFront: string;
+    FMatNameLeft: string;
+    FMatNameBack: string;
+    FMatNameBottom: string;
+    FMatNameClouds: string;
+    FMaterialLibrary: TgxMaterialLibrary;
+    FCloudsPlaneOffset: Single;
+    FCloudsPlaneSize: Single;
+    FStyle: TgxSkyBoxStyle;
+    //implementing IgxMaterialLibrarySupported
+    function GetMaterialLibrary: TgxAbstractMaterialLibrary;
+  protected
+    procedure SetMaterialLibrary(const Value: TgxMaterialLibrary);
+    procedure SetMatNameBack(const Value: string);
+    procedure SetMatNameBottom(const Value: string);
+    procedure SetMatNameFront(const Value: string);
+    procedure SetMatNameLeft(const Value: string);
+    procedure SetMatNameRight(const Value: string);
+    procedure SetMatNameTop(const Value: string);
+    procedure SetMatNameClouds(const Value: string);
+    procedure SetCloudsPlaneOffset(const Value: single);
+    procedure SetCloudsPlaneSize(const Value: single);
+    procedure SetStyle(const value: TgxSkyBoxStyle);
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+    procedure DoRender(var ARci: TgxRenderContextInfo;
+      ARenderSelf, ARenderChildren: Boolean); override;
+    procedure BuildList(var ARci: TgxRenderContextInfo); override;
+    procedure Notification(AComponent: TComponent; Operation: TOperation); override;
+  published
+    property MaterialLibrary: TgxMaterialLibrary read FMaterialLibrary write SetMaterialLibrary;
+    property MatNameTop: TgxLibMaterialName read FMatNameTop write SetMatNameTop;
+    property MatNameBottom: TgxLibMaterialName read FMatNameBottom write SetMatNameBottom;
+    property MatNameLeft: TgxLibMaterialName read FMatNameLeft write SetMatNameLeft;
+    property MatNameRight: TgxLibMaterialName read FMatNameRight write SetMatNameRight;
+    property MatNameFront: TgxLibMaterialName read FMatNameFront write SetMatNameFront;
+    property MatNameBack: TgxLibMaterialName read FMatNameBack write SetMatNameBack;
+    property MatNameClouds: TgxLibMaterialName read FMatNameClouds write SetMatNameClouds;
+    property CloudsPlaneOffset: Single read FCloudsPlaneOffset write SetCloudsPlaneOffset;
+    property CloudsPlaneSize: Single read FCloudsPlaneSize write SetCloudsPlaneSize;
+    property Style: TgxSkyBoxStyle read FStyle write FStyle default sbsFull;
+  end;
+
+//--------------------- SkyDome classes -----------------------------
 
   TgxSkyDomeBand = class(TCollectionItem)
   private
@@ -76,8 +131,7 @@ type
     constructor Create(AOwner: TComponent);
     function Add: TgxSkyDomeBand;
     function FindItemID(ID: Integer): TgxSkyDomeBand;
-    property Items[index: Integer]: TgxSkyDomeBand read GetItems
-      write SetItems; default;
+    property Items[index: Integer]: TgxSkyDomeBand read GetItems write SetItems; default;
     procedure NotifyChange;
     procedure BuildList(var rci: TgxRenderContextInfo);
   end;
@@ -95,13 +149,13 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
   published
-    { Right Ascension, in degrees. }
+    // Right Ascension, in degrees.
     property RA: Single read FRA write FRA;
-    { Declination, in degrees. }
+    // Declination, in degrees.
     property DEC: Single read FDec write FDec;
-    { Absolute magnitude. }
+    // Absolute magnitude.
     property Magnitude: Single read FMagnitude write FMagnitude;
-    { Color of the star. }
+    // Color of the star.
     property Color: TColor read FColor write FColor;
   end;
 
@@ -116,23 +170,20 @@ type
     constructor Create(AOwner: TComponent);
     function Add: TgxSkyDomeStar;
     function FindItemID(ID: Integer): TgxSkyDomeStar;
-    property Items[index: Integer]: TgxSkyDomeStar read GetItems
-      write SetItems; default;
+    property Items[index: Integer]: TgxSkyDomeStar read GetItems write SetItems; default;
     procedure BuildList(var rci: TgxRenderContextInfo; twinkle: Boolean);
-    { Adds nb random stars of the given color.
-      Stars are homogenously scattered on the complete sphere, not only the band defined or visible dome. }
-    procedure AddRandomStars(const nb: Integer; const Color: TColor;
-      const limitToTopDome: Boolean = False); overload;
-    procedure AddRandomStars(const nb: Integer;
-      const ColorMin, ColorMax: TVector3b;
+    (* Adds nb random stars of the given color.
+      Stars are homogenously scattered on the complete sphere, not only the band defined or visible dome. *)
+    procedure AddRandomStars(const nb: Integer; const Color: TColor; const limitToTopDome: Boolean = False); overload;
+    procedure AddRandomStars(const nb: Integer; const ColorMin, ColorMax: TVector3b;
       const Magnitude_min, Magnitude_max: Single;
       const limitToTopDome: Boolean = False); overload;
-    { Load a 'stars' file, which is made of TgxStarRecord.
-      Not that '.stars' files should already be sorted by magnitude and color. }
+    (* Load a 'stars' file, which is made of TGLStarRecord.
+       Not that '.stars' files should already be sorted by magnitude and color. *)
     procedure LoadStarsFile(const starsFileName: string);
   end;
 
-  TgxSkyDomeOption = (sdoTwinkle);
+  TgxSkyDomeOption = (sdoEquatorialGrid, sdoEclipticGrid, sdoGalacticGrid, sdoSupergalacticGrid, sdoTwinkle);
   TgxSkyDomeOptions = set of TgxSkyDomeOption;
 
   (* Renders a sky dome always centered on the camera.
@@ -140,10 +191,7 @@ type
     depth buffering and overwrites everything. All children of a skydome
     are rendered in the skydome's coordinate system.
     The skydome is described by "bands", each "band" is an horizontal cut
-    of a sphere, and you can have as many bands as you wish.
-    Estimated CPU cost (K7-500, GeForce SDR, default bands):
-    800x600 fullscreen filled: 4.5 ms (220 FPS, worst case)
-    Geometry cost (0% fill): 0.7 ms (1300 FPS, best case) *)
+    of a sphere, and you can have as many bands as you wish. *)
   TgxSkyDome = class(TgxCameraInvariantObject)
   private
     FOptions: TgxSkyDomeOptions;
@@ -161,22 +209,19 @@ type
   published
     property Bands: TgxSkyDomeBands read FBands write SetBands;
     property Stars: TgxSkyDomeStars read FStars write SetStars;
-    property Options: TgxSkyDomeOptions read FOptions write SetOptions
-      default [];
+    property Options: TgxSkyDomeOptions read FOptions write SetOptions default [];
   end;
 
-  TEarthSkydomeOption = (esoFadeStarsWithSun, esoRotateOnTwelveHours,
-    esoDepthTest);
+  TEarthSkydomeOption = (esoFadeStarsWithSun, esoRotateOnTwelveHours, esoDepthTest);
   TEarthSkydomeOptions = set of TEarthSkydomeOption;
 
-  { Render a skydome like what can be seen on earth.
+  (* Render a skydome like what can be seen on earth.
     Color is based on sun position and turbidity, to "mimic" atmospheric
-    Rayleigh and Mie scatterings. The colors can be adjusted to render
-    weird/extra-terrestrial atmospheres too.
+    Rayleigh and Mie scatterings. The colors can be adjusted to render exoplanet atmospheres too.
     The default slices/stacks values make for an average quality rendering,
     for a very clean rendering, use 64/64 (more is overkill in most cases).
     The complexity is quite high though, making a T&L 3D board a necessity
-    for using TgxEarthSkyDome. }
+    for using TgxEarthSkyDome. *)
   TgxEarthSkyDome = class(TgxSkyDome)
   private
     FSunElevation: Single;
@@ -215,19 +260,17 @@ type
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     procedure SetSunAtTime(HH, MM: Single);
   published
-    { Elevation of the sun, measured in degrees. }
+    // Elevation of the sun, measured in degrees
     property SunElevation: Single read FSunElevation write SetSunElevation;
-    { Expresses the purity of air.  Value range is from 1 (pure atmosphere) to 120 (very nebulous) }
+    // Expresses the purity of air. Value range is from 1 (pure atmosphere) to 120 (very nebulous)
     property Turbidity: Single read FTurbidity write SetTurbidity;
-    property SunZenithColor: TgxColor read FSunZenithColor
-      write SetSunZenithColor;
+    property SunZenithColor: TgxColor read FSunZenithColor write SetSunZenithColor;
     property SunDawnColor: TgxColor read FSunDawnColor write SetSunDawnColor;
     property HazeColor: TgxColor read FHazeColor write SetHazeColor;
     property SkyColor: TgxColor read FSkyColor write SetSkyColor;
     property NightColor: TgxColor read FNightColor write SetNightColor;
     property DeepColor: TgxColor read FDeepColor write SetDeepColor;
-    property ExtendedOptions: TEarthSkydomeOptions read FExtendedOptions
-      write FExtendedOptions;
+    property ExtendedOptions: TEarthSkydomeOptions read FExtendedOptions write FExtendedOptions;
     property Slices: Integer read FSlices write SetSlices default 24;
     property Stacks: Integer read FStacks write SetStacks default 48;
   end;
@@ -237,13 +280,349 @@ function StarRecordPositionZUp(const starRecord: TgxStarRecord): TAffineVector;
 // Computes position on the unit sphere of a star record (Y=up).
 function StarRecordPositionYUp(const starRecord: TgxStarRecord): TAffineVector;
 // Computes star color from BV index (RGB) and magnitude (alpha).
-function StarRecordColor(const starRecord: TgxStarRecord; bias: Single)
-  : TVector4f;
+function StarRecordColor(const starRecord: TgxStarRecord; bias: Single): TVector4f;
 
 // ------------------------------------------------------------------
 implementation
-
 // ------------------------------------------------------------------
+
+
+// ------------------
+// ------------------ TgxSkyBox ------------------
+// ------------------
+
+constructor TgxSkyBox.Create(AOwner: TComponent);
+begin
+  inherited Create(AOwner);
+  CamInvarianceMode := cimPosition;
+  ObjectStyle := ObjectStyle + [osDirectDraw, osNoVisibilityCulling];
+  FCloudsPlaneOffset := 0.2;
+    // this should be set far enough to avoid near plane clipping
+  FCloudsPlaneSize := 32;
+    // the bigger, the more this extends the clouds cap to the horizon
+end;
+
+destructor TgxSkyBox.Destroy;
+begin
+  inherited;
+end;
+
+function TgxSkyBox.GetMaterialLibrary: TgxAbstractMaterialLibrary;
+begin
+  Result := FMaterialLibrary;
+end;
+
+procedure TgxSkyBox.Notification(AComponent: TComponent; Operation: TOperation);
+begin
+  if (Operation = opRemove) and (AComponent = FMaterialLibrary) then
+    MaterialLibrary := nil;
+  inherited;
+end;
+
+procedure TgxSkyBox.DoRender(var ARci: TgxRenderContextInfo; ARenderSelf,
+  ARenderChildren: Boolean);
+begin
+  Arci.gxStates.DepthWriteMask := False;
+  Arci.ignoreDepthRequests := true;
+  inherited;
+  Arci.ignoreDepthRequests := False;
+end;
+
+procedure TgxSkyBox.BuildList(var ARci: TgxRenderContextInfo);
+var
+  f, cps, cof1: Single;
+  oldStates: TgxStates;
+  libMat: TgxLibMaterial;
+begin
+  if FMaterialLibrary = nil then
+    Exit;
+
+  with ARci.gxStates do
+  begin
+    oldStates := States;
+    Disable(stDepthTest);
+    Disable(stLighting);
+    Disable(stFog);
+  end;
+
+  glPushMatrix;
+  f := ARci.rcci.farClippingDistance * 0.5;
+  glScalef(f, f, f);
+
+  try
+    case Style of
+      sbsFull: ;
+      sbsTopHalf, sbsTopHalfClamped:
+        begin
+          glTranslatef(0, 0.5, 0);
+          glScalef(1, 0.5, 1);
+        end;
+      sbsBottomHalf:
+        begin
+          glTranslatef(0, -0.5, 0);
+          glScalef(1, 0.5, 1);
+        end;
+      sbTopTwoThirds:
+        begin
+          glTranslatef(0, 1 / 3, 0);
+          glScalef(1, 2 / 3, 1);
+        end;
+    end;
+
+    // FRONT
+    libMat := MaterialLibrary.LibMaterialByName(FMatNameFront);
+    if libMat <> nil then
+    begin
+      libMat.Apply(ARci);
+      repeat
+        glBegin(GL_QUADS);
+        glTexCoord2f(0.002, 0.998);
+        glVertex3f(-1, 1, -1);
+        glTexCoord2f(0.002, 0.002);
+        glVertex3f(-1, -1, -1);
+        glTexCoord2f(0.998, 0.002);
+        glVertex3f(1, -1, -1);
+        glTexCoord2f(0.998, 0.998);
+        glVertex3f(1, 1, -1);
+        if Style = sbsTopHalfClamped then
+        begin
+          glTexCoord2f(0.002, 0.002);
+          glVertex3f(-1, -1, -1);
+          glTexCoord2f(0.002, 0.002);
+          glVertex3f(-1, -3, -1);
+          glTexCoord2f(0.998, 0.002);
+          glVertex3f(1, -3, -1);
+          glTexCoord2f(0.998, 0.002);
+          glVertex3f(1, -1, -1);
+        end;
+        glEnd;
+      until not libMat.UnApply(ARci);
+    end;
+    // BACK
+    libMat := MaterialLibrary.LibMaterialByName(FMatNameBack);
+    if libMat <> nil then
+    begin
+      libMat.Apply(ARci);
+      repeat
+        glBegin(GL_QUADS);
+        glTexCoord2f(0.002, 0.998);
+        glVertex3f(1, 1, 1);
+        glTexCoord2f(0.002, 0.002);
+        glVertex3f(1, -1, 1);
+        glTexCoord2f(0.998, 0.002);
+        glVertex3f(-1, -1, 1);
+        glTexCoord2f(0.998, 0.998);
+        glVertex3f(-1, 1, 1);
+        if Style = sbsTopHalfClamped then
+        begin
+          glTexCoord2f(0.002, 0.002);
+          glVertex3f(1, -1, 1);
+          glTexCoord2f(0.002, 0.002);
+          glVertex3f(1, -3, 1);
+          glTexCoord2f(0.998, 0.002);
+          glVertex3f(-1, -3, 1);
+          glTexCoord2f(0.998, 0.002);
+          glVertex3f(-1, -1, 1);
+        end;
+        glEnd;
+      until not libMat.UnApply(ARci);
+    end;
+    // TOP
+    libMat := MaterialLibrary.LibMaterialByName(FMatNameTop);
+    if libMat <> nil then
+    begin
+      libMat.Apply(ARci);
+      repeat
+        glBegin(GL_QUADS);
+        glTexCoord2f(0.002, 0.998);
+        glVertex3f(-1, 1, 1);
+        glTexCoord2f(0.002, 0.002);
+        glVertex3f(-1, 1, -1);
+        glTexCoord2f(0.998, 0.002);
+        glVertex3f(1, 1, -1);
+        glTexCoord2f(0.998, 0.998);
+        glVertex3f(1, 1, 1);
+        glEnd;
+      until not libMat.UnApply(ARci);
+    end;
+    // BOTTOM
+    libMat := MaterialLibrary.LibMaterialByName(FMatNameBottom);
+    if libMat <> nil then
+    begin
+      libMat.Apply(ARci);
+      repeat
+        glBegin(GL_QUADS);
+        glTexCoord2f(0.002, 0.998);
+        glVertex3f(-1, -1, -1);
+        glTexCoord2f(0.002, 0.002);
+        glVertex3f(-1, -1, 1);
+        glTexCoord2f(0.998, 0.002);
+        glVertex3f(1, -1, 1);
+        glTexCoord2f(0.998, 0.998);
+        glVertex3f(1, -1, -1);
+        glEnd;
+      until not libMat.UnApply(ARci);
+    end;
+    // LEFT
+    libMat := MaterialLibrary.LibMaterialByName(FMatNameLeft);
+    if libMat <> nil then
+    begin
+      libMat.Apply(ARci);
+      repeat
+        glBegin(GL_QUADS);
+        glTexCoord2f(0.002, 0.998);
+        glVertex3f(-1, 1, 1);
+        glTexCoord2f(0.002, 0.002);
+        glVertex3f(-1, -1, 1);
+        glTexCoord2f(0.998, 0.002);
+        glVertex3f(-1, -1, -1);
+        glTexCoord2f(0.998, 0.998);
+        glVertex3f(-1, 1, -1);
+        if Style = sbsTopHalfClamped then
+        begin
+          glTexCoord2f(0.002, 0.002);
+          glVertex3f(-1, -1, 1);
+          glTexCoord2f(0.002, 0.002);
+          glVertex3f(-1, -3, 1);
+          glTexCoord2f(0.998, 0.002);
+          glVertex3f(-1, -3, -1);
+          glTexCoord2f(0.998, 0.002);
+          glVertex3f(-1, -1, -1);
+        end;
+        glEnd;
+      until not libMat.UnApply(ARci);
+    end;
+    // RIGHT
+    libMat := MaterialLibrary.LibMaterialByName(FMatNameRight);
+    if libMat <> nil then
+    begin
+      libMat.Apply(ARci);
+      repeat
+        glBegin(GL_QUADS);
+        glTexCoord2f(0.002, 0.998);
+        glVertex3f(1, 1, -1);
+        glTexCoord2f(0.002, 0.002);
+        glVertex3f(1, -1, -1);
+        glTexCoord2f(0.998, 0.002);
+        glVertex3f(1, -1, 1);
+        glTexCoord2f(0.998, 0.998);
+        glVertex3f(1, 1, 1);
+        if Style = sbsTopHalfClamped then
+        begin
+          glTexCoord2f(0.002, 0.002);
+          glVertex3f(1, -1, -1);
+          glTexCoord2f(0.002, 0.002);
+          glVertex3f(1, -3, -1);
+          glTexCoord2f(0.998, 0.002);
+          glVertex3f(1, -3, 1);
+          glTexCoord2f(0.998, 0.002);
+          glVertex3f(1, -1, 1);
+        end;
+        glEnd;
+      until not libMat.UnApply(ARci);
+    end;
+    // CLOUDS CAP PLANE
+    libMat := MaterialLibrary.LibMaterialByName(FMatNameClouds);
+    if libMat <> nil then
+    begin
+      // pre-calculate possible values to speed up
+      cps := FCloudsPlaneSize * 0.5;
+      cof1 := FCloudsPlaneOffset;
+
+      libMat.Apply(ARci);
+      repeat
+        glBegin(GL_QUADS);
+        glTexCoord2f(0, 1);
+        glVertex3f(-cps, cof1, cps);
+        glTexCoord2f(0, 0);
+        glVertex3f(-cps, cof1, -cps);
+        glTexCoord2f(1, 0);
+        glVertex3f(cps, cof1, -cps);
+        glTexCoord2f(1, 1);
+        glVertex3f(cps, cof1, cps);
+        glEnd;
+      until not libMat.UnApply(ARci);
+    end;
+
+    glPopMatrix;
+    if stLighting in oldStates then
+      ARci.gxStates.Enable(stLighting);
+    if stFog in oldStates then
+      ARci.gxStates.Enable(stFog);
+    if stDepthTest in oldStates then
+      ARci.gxStates.Enable(stDepthTest);
+
+  finally
+  end;
+end;
+
+procedure TgxSkyBox.SetCloudsPlaneOffset(const Value: single);
+begin
+  FCloudsPlaneOffset := Value;
+  StructureChanged;
+end;
+
+procedure TgxSkyBox.SetCloudsPlaneSize(const Value: single);
+begin
+  FCloudsPlaneSize := Value;
+  StructureChanged;
+end;
+
+procedure TgxSkyBox.SetStyle(const value: TgxSkyBoxStyle);
+begin
+  FStyle := value;
+  StructureChanged;
+end;
+
+procedure TgxSkyBox.SetMaterialLibrary(const value: TgxMaterialLibrary);
+begin
+  FMaterialLibrary := value;
+  StructureChanged;
+end;
+
+procedure TgxSkyBox.SetMatNameBack(const Value: string);
+begin
+  FMatNameBack := Value;
+  StructureChanged;
+end;
+
+procedure TgxSkyBox.SetMatNameBottom(const Value: string);
+begin
+  FMatNameBottom := Value;
+  StructureChanged;
+end;
+
+procedure TgxSkyBox.SetMatNameClouds(const Value: string);
+begin
+  FMatNameClouds := Value;
+  StructureChanged;
+end;
+
+procedure TgxSkyBox.SetMatNameFront(const Value: string);
+begin
+  FMatNameFront := Value;
+  StructureChanged;
+end;
+
+procedure TgxSkyBox.SetMatNameLeft(const Value: string);
+begin
+  FMatNameLeft := Value;
+  StructureChanged;
+end;
+
+procedure TgxSkyBox.SetMatNameRight(const Value: string);
+begin
+  FMatNameRight := Value;
+  StructureChanged;
+end;
+
+procedure TgxSkyBox.SetMatNameTop(const Value: string);
+begin
+  FMatNameTop := Value;
+  StructureChanged;
+end;
+
+//--------------------- SkyDome Region ------------------------------
 
 function StarRecordPositionYUp(const starRecord: TgxStarRecord): TAffineVector;
 var
@@ -261,8 +640,7 @@ begin
   SinCosine(starRecord.RA * (0.01 * PI / 180), f, Result.X, Result.Y);
 end;
 
-function StarRecordColor(const starRecord: TgxStarRecord; bias: Single)
-  : TVector4f;
+function StarRecordColor(const starRecord: TgxStarRecord; bias: Single): TVector4f;
 const
   // very *rough* approximation
   cBVm035: TVector4f = (X: 0.7; Y: 0.8; Z: 1.0; W: 1);
@@ -288,7 +666,6 @@ begin
   // the actual factor is 2.512, and not used here
   Result.W := PowerSingle(1.2, -(starRecord.VMagnitude * 0.1 - bias));
 end;
-
 
 // ------------------
 // ------------------ TgxSkyDomeBand ------------------
@@ -702,6 +1079,7 @@ begin
   end;
 end;
 
+//------------------------------------------------------------
 procedure TgxSkyDomeStars.AddRandomStars(const nb: Integer;
   const ColorMin, ColorMax: TVector3b;
   const Magnitude_min, Magnitude_max: Single;

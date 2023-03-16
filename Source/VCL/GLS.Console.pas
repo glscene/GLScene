@@ -1,7 +1,6 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.Console;
 
 (*
@@ -48,6 +47,9 @@ uses
   System.TypInfo,
   Vcl.Graphics,
 
+  Scena.VectorTypes,
+  Scena.Strings,
+
   GLS.Scene,
   GLS.Coordinates,
   GLS.Objects,
@@ -58,9 +60,7 @@ uses
   GLS.Context,
   GLS.Texture,
   GLS.Utils,
-  Scena.Strings,
-  GLS.Material,
-  Scena.VectorTypes;
+  GLS.Material;
 
 const
   CONSOLE_MAX_COMMANDS = 120;
@@ -160,10 +160,10 @@ type
     procedure SortCommands(const Ascending: Boolean = True);
     function CommandExists(const Command: string): Boolean;
     function GetCommandIndex(const Command: string): Integer;
-    // General list stuff.
+    // General list stuff
     function LastConsoleCommand: TGLConsoleCommand;
     function Add: TGLConsoleCommand; overload;
-    // Standard stuff.
+    // Standard stuff
     constructor Create(const AOwner: TGLCustomConsole);
     destructor Destroy; override;
     property Items[const Index: Integer]: TGLConsoleCommand read GetItems;

@@ -73,8 +73,7 @@ type
     procedure DoRender(var ARci: TGLRenderContextInfo;
       ARenderSelf, ARenderChildren: Boolean); override;
     procedure BuildList(var ARci: TGLRenderContextInfo); override;
-    procedure Notification(AComponent: TComponent; Operation: TOperation);
-      override;
+    procedure Notification(AComponent: TComponent; Operation: TOperation); override;
   published
     property MaterialLibrary: TGLMaterialLibrary read FMaterialLibrary write SetMaterialLibrary;
     property MatNameTop: TGLLibMaterialName read FMatNameTop write SetMatNameTop;
@@ -153,7 +152,7 @@ type
     // Right Ascension, in degrees.
     property RA: Single read FRA write FRA;
     // Declination, in degrees.
-    property Dec: Single read FDec write FDec;
+    property DEC: Single read FDec write FDec;
     // Absolute magnitude.
     property Magnitude: Single read FMagnitude write FMagnitude;
     // Color of the star.
@@ -177,7 +176,8 @@ type
       Stars are homogenously scattered on the complete sphere, not only the band defined or visible dome. *)
     procedure AddRandomStars(const nb: Integer; const color: TColor; const limitToTopDome: Boolean = False); overload;
     procedure AddRandomStars(const nb: Integer; const ColorMin, ColorMax:TVector3b;
-      const Magnitude_min, Magnitude_max: Single;const limitToTopDome: Boolean = False); overload;
+	   const Magnitude_min, Magnitude_max: Single;
+	   const limitToTopDome: Boolean = False); overload;
     (* Load a 'stars' file, which is made of TGLStarRecord.
        Not that '.stars' files should already be sorted by magnitude and color. *)
     procedure LoadStarsFile(const starsFileName: string);
@@ -236,7 +236,7 @@ type
     FDeepColor: TGLColor;
     FSlices, FStacks: Integer;
     FExtendedOptions: TGLEarthSkydomeOptions;
-    FMorning: boolean;
+    FMorning: Boolean;
   protected
     procedure Loaded; override;
     procedure SetSunElevation(const val: Single);
@@ -262,7 +262,7 @@ type
   published
     // Elevation of the sun, measured in degrees
     property SunElevation: Single read FSunElevation write SetSunElevation;
-    // Expresses the purity of air. Value range is from 1 (pure athmosphere) to 120 (very nebulous)
+    // Expresses the purity of air. Value range is from 1 (pure atmosphere) to 120 (very nebulous)
     property Turbidity: Single read FTurbidity write SetTurbidity;
     property SunZenithColor: TGLColor read FSunZenithColor write SetSunZenithColor;
     property SunDawnColor: TGLColor read FSunDawnColor write SetSunDawnColor;
@@ -280,7 +280,7 @@ function StarRecordPositionZUp(const starRecord: TGLStarRecord): TAffineVector;
 // Computes position on the unit sphere of a star record (Y=up)
 function StarRecordPositionYUp(const starRecord: TGLStarRecord): TAffineVector;
 // Computes star color from BV index (RGB) and magnitude (alpha)
-function StarRecordColor(const starRecord: TGLStarRecord; bias: Single): TGLVector;
+function StarRecordColor(const starRecord: TGLStarRecord; bias: Single): TVector4f;
 
 // ------------------------------------------------------------------
 implementation
@@ -630,7 +630,6 @@ begin
   StructureChanged;
 end;
 
-
 //--------------------- SkyDome Region ------------------------------
 
 function StarRecordPositionYUp(const starRecord: TGLStarRecord): TAffineVector;
@@ -649,14 +648,13 @@ begin
   SinCosine(starRecord.RA * (0.01 * PI / 180), f, Result.X, Result.Y);
 end;
 
-function StarRecordColor(const starRecord: TGLStarRecord; bias: Single)
-  : TGLVector;
+function StarRecordColor(const starRecord: TGLStarRecord; bias: Single): TVector4f;
 const
   // very *rough* approximation
-  cBVm035: TGLVector = (X: 0.7; Y: 0.8; Z: 1.0; W: 1);
-  cBV015: TGLVector = (X: 1.0; Y: 1.0; Z: 1.0; W: 1);
-  cBV060: TGLVector = (X: 1.0; Y: 1.0; Z: 0.7; W: 1);
-  cBV135: TGLVector = (X: 1.0; Y: 0.8; Z: 0.7; W: 1);
+  cBVm035: TVector4f = (X: 0.7; Y: 0.8; Z: 1.0; W: 1);
+  cBV015: TVector4f = (X: 1.0; Y: 1.0; Z: 1.0; W: 1);
+  cBV060: TVector4f = (X: 1.0; Y: 1.0; Z: 0.7; W: 1);
+  cBV135: TVector4f = (X: 1.0; Y: 0.8; Z: 0.7; W: 1);
 var
   bvIndex100: Integer;
 begin
@@ -771,8 +769,8 @@ end;
 
 procedure TGLSkyDomeBand.BuildList(var rci: TGLRenderContextInfo);
 // coordinates system note: X is forward, Y is left and Z is up
-
 // always rendered as sphere of radius 1
+
   procedure RenderBand(start, stop: Single;
     const colStart, colStop: TGLColorVector);
   var

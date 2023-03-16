@@ -320,7 +320,6 @@
         <DCCReference Include="..\Source\FMX\GLX.ShadowVolume.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.Silhouette.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.SimpleNavigation.pas"/>
-        <DCCReference Include="..\Source\FMX\GLX.SkyBox.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.Skydome.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.SmoothNavigator.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.Sound.pas"/>
@@ -349,7 +348,6 @@
         <DCCReference Include="..\Source\FMX\GLX.WindowsFont.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.zBuffer.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.ViewerOpenGL.pas"/>
-        <DCCReference Include="..\Source\FMX\GLX.AnimationUtils.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.ApplicationFileIO.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.ArchiveManager.pas"/>
         <DCCReference Include="..\Source\FMX\GLX.BaseClasses.pas"/>
@@ -368,6 +366,7 @@
         <DCCReference Include="..\Source\FMX\GLX.OpenGL.pas"/>
         <DCCReference Include="..\Source\Common\Vulkan.Import.pas"/>
         <DCCReference Include="..\Source\FMX\GLSLx.Parameter.pas"/>
+        <DCCReference Include="..\Source\Common\Scena.AnimationUtils.pas"/>
         <DCCReference Include="..\Source\Common\Scena.Strings.pas"/>
         <DCCReference Include="..\Source\Common\Scena.VectorTypes.pas"/>
         <DCCReference Include="..\Source\Common\Scena.VectorTypesExt.pas"/>

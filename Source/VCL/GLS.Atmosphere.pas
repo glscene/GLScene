@@ -22,13 +22,13 @@ uses
   GLS.Scene,
   GLS.Objects,
   GLS.Cadencer,
+  Scena.VectorTypes,
   Scena.VectorGeometry,
   GLS.Context,
   Scena.Strings,
   GLS.Color,
   GLS.RenderContextInfo,
-  GLS.State,
-  Scena.VectorTypes;
+  GLS.State;
 
 type
   EGLAtmosphereException = class(Exception);

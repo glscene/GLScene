@@ -19,10 +19,10 @@ uses
   Vcl.Graphics,
 
   Scena.OpenGLTokens,
+  Scena.VectorTypes,
   Scena.VectorGeometry,
   GLS.Color,
   GLS.Context,
-  Scena.VectorTypes,
   GLS.State;
 
 type
