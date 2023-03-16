@@ -23,8 +23,6 @@ uses
   VCL.StdCtrls, 
   VCL.ExtCtrls;
 
-
-
 type
   TBorderType = (btRaised, btLowered, btFlatRaised, btFlatLowered);
   TCommand = Integer;

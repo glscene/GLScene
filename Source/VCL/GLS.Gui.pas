@@ -17,12 +17,13 @@ uses
 
   Scena.OpenGLTokens,
   Scena.VectorTypes,
+  Scena.VectorGeometry,
+
   GLS.Scene,
   GLS.BitmapFont,
   GLS.Material,
   GLS.Context,
   GLS.PersistentClasses,
-  Scena.VectorGeometry,
   GLS.Coordinates,
   GLS.BaseClasses;
 

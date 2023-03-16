@@ -28,9 +28,9 @@ uses
   System.Types,
   Vcl.Graphics,
 
+  Scena.VectorGeometry,
   GLS.ApplicationFileIO,
   GLS.Utils,
-  Scena.VectorGeometry,
   GLS.Material,
   GLS.BaseClasses;
 
@@ -40,8 +40,7 @@ type
   PByteRaster = ^TByteRaster;
   TSmallintArray = array [0 .. MaxInt div (2 * SizeOf(SmallInt))] of SmallInt;
   PSmallIntArray = ^TSmallintArray;
-  TSmallIntRaster = array [0 .. MaxInt div (2 * SizeOf(Pointer))
-    ] of PSmallIntArray;
+  TSmallIntRaster = array [0 .. MaxInt div (2 * SizeOf(Pointer))] of PSmallIntArray;
   PSmallIntRaster = ^TSmallIntRaster;
   TSingleRaster = array [0 .. MaxInt div (2 * SizeOf(Pointer))] of PSingleArray;
   PSingleRaster = ^TSingleRaster;

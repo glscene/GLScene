@@ -1,7 +1,6 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.GizmoEx;
 
 (*
@@ -129,12 +128,9 @@ type
   TInfoLabelCoordType = (ilcChanging, ilcChangeRate);
 
   TGLGizmoExAxis = (gaNone, gaX, gaY, gaZ, gaXY, gaXZ, gaYZ, gaXYZ);
-
-  TGLGizmoExSelectionRegion = (gsrRectangular, gsrCircular, gsrFence,
-    gsrLasso);
+  TGLGizmoExSelectionRegion = (gsrRectangular, gsrCircular, gsrFence, gsrLasso);
 
   TGLGizmoExReferenceCoordinateSystem = (rcsView, rcsLocal);
-
   TGLGizmoExSelRec = array of TPoint;
 
   TGLGizmoExOperation = (gopMove, gopRotate, gopScale, gopNone);
@@ -221,9 +217,7 @@ type
   TGLGizmoEx = class(TComponent)
   private
     FUIBaseGizmo: TGLBaseSceneObject;
-
     FUIRootHelpers: TGLBaseSceneObject;
-
     FUIRootSelect: TGLBaseSceneObject; // for None
     FUIRootMovement: TGLBaseSceneObject; // for Move
     FUIRootRotate: TGLBaseSceneObject; //for Rotate
@@ -233,7 +227,6 @@ type
     FUIRootVisibleInfoLabels: TGLBaseSceneObject;
     FInterfaceRender: TGLDirectOpenGL;
     FInternalRender: TGLDirectOpenGL;
-
     FUISelectLineX, FUISelectLineY, FUISelectLineZ: TGLGizmoExUILines;  //  For None (Select)
 
     //IC- Invisible Control
@@ -253,15 +246,12 @@ type
 
     //ForScale
     FUIScaleArrowX, FUIScaleArrowY, FUIScaleArrowZ: TGLGizmoExUISphere; // For Scale
-
     FUIScaleLineX, FUIScaleLineY, FUIScaleLineZ, FUIScaleLineXY, FUIScaleLineYZ, FUIScaleLineXZ: TGLGizmoExUILines;
-
     FUIICScaleLineX, FUIICScaleLineY, FUIICScaleLineZ, FUIICScaleLineXY, FUIICScaleLineXZ, FUIICScaleLineYZ, FUIICScaleLineXYZ: TGLGizmoExUIFrustrum;
     FUIScalePlaneXY, FUIScalePlaneXZ, FUIScalePlaneYZ, FUIScalePlaneXYZ: TGLGizmoExUIPolyGon; // For Move
 
     FUIAxisLabelX, FUIAxisLabelY, FUIAxisLabelZ: TGLGizmoExUIFlatText;
     FUIVisibleInfoLabels: TGLGizmoExUIFlatText;
-
     FRootGizmo: TGLBaseSceneObject;
     FRootObjects: TGLBaseSceneObject;
     FGizmoTmpRoot: TGLBaseSceneObject;
@@ -1131,7 +1121,7 @@ begin
   with FUIRotateLineX do
   begin
     Options := [loUseNodeColorForLines];
-    //Для исправления проблем с прозрачностью
+    // To fix transparency issues
     lineColor.Alpha := 0.1;
     Nodecolor.Color := clrred;
     Nodecolor.Alpha := 0.1;
@@ -1214,7 +1204,7 @@ begin
   with FUIRotateLineY do
   begin
     Options := [loUseNodeColorForLines];
-    //Для исправления проблем с прозрачностью
+    // To fix transparency issues
     lineColor.Alpha := 0.1;
     Nodecolor.Color := clrLime;
     Nodecolor.Alpha := 0.1;
@@ -1298,7 +1288,7 @@ begin
   with FUIRotateLineZ do
   begin
     Options := [loUseNodeColorForLines];
-    //to correct transparency problem
+    // to correct transparency problem
     lineColor.Alpha := 0.1;
     Nodecolor.Color := clrBlue;
     Nodecolor.Alpha := 0.1;
@@ -2949,7 +2939,6 @@ begin
   end;
 end;
 
-
 procedure TGLGizmoEx.Loaded;
 begin
   inherited;
@@ -3598,7 +3587,6 @@ var
     for I := 0 to FSelectedObjects.Count - 1 do
       with FSelectedObjects do
       begin
-
         case Ord(FReferenceCoordSystem) of
           0: v := FUIRootHelpers.AbsolutePosition;
           1: v := TGLBaseSceneObject(Hit[I]).AbsolutePosition;
@@ -3826,10 +3814,8 @@ var
   end;
 
 begin
-
   if (not Enabled) or (RootGizmo = nil) or (RootObjects = nil) then
     Exit;
-
   if not FShowMultiSelecting then
   begin
 
@@ -3911,13 +3897,10 @@ begin
      not Assigned(RootObjects) or
      not Assigned(Viewer)      then
     Exit;
-
   mx := X;
   my := Y;
-
   pick := InternalGetPickedObjects(X - 1, Y - 1, X + 1, Y + 1);
   gotPick := False;
-
   for I := 0 to pick.Count - 1 do
     if (pick.Hit[I] is TGLGizmoExUIDisk) or
       (pick.Hit[I] is TGLGizmoExUISphere) or
@@ -4021,7 +4004,7 @@ begin
   if operation = gopNone then
   begin
     pick := InternalGetPickedObjects(X - 1, Y - 1, X + 1, Y + 1, 8);
-    //очистка списка если кликнули в пустоту
+    // clearing the list if clicked into the void
     if not FCanAddObjToSelectionList and not FCanRemoveObjFromSelectionList and (pick.Count = 0) then
       ClearSelection;
 
@@ -4063,7 +4046,7 @@ begin
       OnUpdate(self);
 
     v := VectorMake(0, 0, 0);
-    //устанавливаем гизмо в нужную позицию!
+    // set the gizmo to the right position!
     for  I := 0 to FSelectedObjects.Count - 1 do
       VectorAdd(v, TGLBaseSceneObject(FSelectedObjects.Hit[I]).AbsolutePosition, v);
 
@@ -4233,7 +4216,7 @@ begin
   UpdateGizmo;
 end;
 
-////////////////////////////////////////////////////////////
+//===========================================================================================
 
 procedure TGLGizmoExObjectItem.AssignFromObject(const AObject: TGLBaseSceneObject; AssignAndRemoveObj: Boolean = False);
 begin
@@ -4329,7 +4312,9 @@ begin
   FOldMatrix := Value;
 end;
 
-{ TGLGizmoExUndoCollection }
+//==================================
+//     TGLGizmoExUndoCollection
+//=================================
 
 function TGLGizmoExObjectCollection.Add: TGLGizmoExObjectItem;
 begin
@@ -4377,7 +4362,7 @@ begin
     GetItems(I).DoUndo;
 end;
 
-/////////////////////////////////////////////////////////////
+//==================================================================
 
 constructor TGLGizmoExActionHistoryItem.Create(AOwner: TCollection);
 begin
@@ -4403,7 +4388,9 @@ begin
     FGizmoObjectCollection := aValue;
 end;
 
-{ TGLGizmoExUndoCollection }
+//=======================================
+//      TGLGizmoExUndoCollection
+//=======================================
 
 constructor TGLGizmoExActionHistoryCollection.Create(AOwner: TPersistent; ItemClass: TCollectionItemClass);
 begin

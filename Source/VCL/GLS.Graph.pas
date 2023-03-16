@@ -16,17 +16,18 @@ uses
   
   GLS.Scene,
   Scena.OpenGLTokens,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
+
   GLS.Context,
   GLS.XOpenGL,
-  Scena.VectorGeometry,
   GLS.Material,
   GLS.Objects,
   GLS.VectorLists,
   GLS.Color,
   GLS.BaseClasses,
   GLS.RenderContextInfo,
-  GLS.State,
-  Scena.VectorTypes;
+  GLS.State;
 
 type
 

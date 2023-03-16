@@ -32,16 +32,17 @@ uses
 
   Scena.OpenGLTokens,
   Scena.VectorTypes,
+  Scena.TextureFormat,
+  Scena.VectorGeometry,
+  Scena.Strings,
+
   GLS.State,
   GLS.ApplicationFileIO,
   GLS.PersistentClasses,
   GLS.Context,
   GLS.ImageUtils,
   GLS.Color,
-  Scena.TextureFormat,
-  Scena.VectorGeometry,
   GLS.Utils,
-  Scena.Strings,
   Scena.Logger;
 
 {$DEFINE PRF_HACK_PASSES}

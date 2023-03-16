@@ -1,8 +1,7 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
-unit GLS.Polynomials;
+unit Scena.Polynomials;
 
 (*
   Utility functions for manipulationg and solving polynomials.

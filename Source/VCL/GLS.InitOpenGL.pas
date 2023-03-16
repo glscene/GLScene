@@ -12,8 +12,8 @@ uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
   Winapi.Windows,
-  System.SysUtils,
-  Vcl.Forms;
+  Vcl.Forms,
+  System.SysUtils;
 
 type
   TGLOpenGL = class

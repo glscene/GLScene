@@ -1,7 +1,6 @@
 ﻿//
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.SceneForm;
 
 (*  GLScene form loader *)

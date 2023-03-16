@@ -22,17 +22,18 @@ uses
 
   Scena.OpenGLTokens,
   Scena.OpenGLAdapter,
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.PipelineTransformation,
+  Scena.Polynomials,
+
   GLS.Scene,
   GLS.State,
   GLS.PersistentClasses,
-  Scena.VectorGeometry,
   GLS.VectorLists,
-  GLS.Polynomials,
   GLS.Silhouette,
-  Scena.VectorTypes,
   GLS.GeometryBB,
   GLS.VectorFileObjects,
-  Scena.PipelineTransformation,
   GLS.Material,
   GLS.Texture,
 

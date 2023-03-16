@@ -1,33 +1,12 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.Gizmo;
 
 (*
   Invisible component for helping to Move, Rotate and Scale an Object
-  under GLScene (usefull for an Editor). 
+  under GLScene (usefull for an Editor).
 *)
-//
-// Original Header:
-//
-// ------------------------------------------------------------------------------
-// Unit : GLS.Gizmo  RC 1.0
-// ------------------------------------------------------------------------------
-// Original Author : ???????  (GLS.Gizmo In an ODEEditor)
-// ------------------------------------------------------------------------------
-// Modified by     : J.Delauney
-// Web Site        : http://KheopsInteractive.cjb.net
-// EMail           : wmkheops@free.fr
-// Date            : 08/05/2005
-//
-// Modified by     : Marcus Oblak (8/3/2007)
-// - Corrected moving/rotating for children objects
-// - Better quantization for mouse operations (MoveCoef,RotationCoef)
-// - Added ScaleCoef
-// - Added GizmoThickness
-//
-// If you make some changes, please send your new version. Thanks
 // ------------------------------------------------------------------------------
 // Description :
 // Invisible component for helping to Move, Rotate and Scale an Object
@@ -40,14 +19,13 @@ unit GLS.Gizmo;
 // - Add Interactive Camera Movements
 // - Adding Extended Controls with Keys
 // - Maybe An Undo Function
-// - Others Ideas ???
 // ------------------------------------------------------------------------------
 // Bugs Known :
 // - When you change the BoundingBoxColor and LabelInfosColor
 // The New Color is not Updated immediately, only after a new Click
 // (see in UpdateGizmo, SetBoundingBoxColor
 // and SetLabelInfosColor Procedures)
-// -  DaStr: Bounding Box is not always drawn correctly because it does not
+// -  Bounding Box is not always drawn correctly because it does not
 // use objects' BarryCenter. For Example, if you select Space Text.
 // ------------------------------------------------------------------------------
 
@@ -60,13 +38,15 @@ uses
   System.SysUtils,
   Vcl.StdCtrls,
 
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
+  Scena.Strings,
+
   GLS.Scene,
   GLS.PersistentClasses,
   GLS.Color,
   GLS.Objects,
-  Scena.VectorGeometry,
   GLS.Material,
-  Scena.Strings,
   GLS.GeomObjects,
   GLS.BitmapFont,
   GLS.SceneViewer,
@@ -74,8 +54,7 @@ uses
   GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.State,
-  GLS.Selection,
-  Scena.VectorTypes;
+  GLS.Selection;
 
 type
   TGLGizmoUndoCollection = class;
@@ -217,8 +196,7 @@ type
     FLabelFont: TGLCustomBitmapFont;
     procedure SetRootGizmo(const AValue: TGLBaseSceneObject);
     procedure SetGizmoElements(const AValue: TGLGizmoElements);
-    procedure SeTGLGizmoVisibleInfoLabels(const AValue
-      : TGLGizmoVisibleInfoLabels);
+    procedure SeTGLGizmoVisibleInfoLabels(const AValue: TGLGizmoVisibleInfoLabels);
     procedure SetBoundingBoxColor(const AValue: TGLColor);
     procedure SetSelectedColor(const AValue: TGLColor);
     procedure SetVisibleInfoLabelsColor(const AValue: TGLColor);
@@ -284,16 +262,15 @@ type
     property NoZWrite: Boolean read FNoZWrite write FNoZWrite;
     property GizmoThickness: Single read FGizmoThickness
       write SeTGLGizmoThickness;
-    {  Indicates whether the gizmo is enabled or not.
+    (*  Indicates whether the gizmo is enabled or not.
       WARNING: When loading/editing (possibly whenever a structureChanged
       call is made) a model, sometimes the gizmo will trigger a
       bug if the mouse is inside the glscene Viewer. To prevent that,
       remember to disable the gizmo before loading, then process windows
-      messages (i.e. application.processMessage) and then enable the gizmo
-      again. }
-    {  Warning Enable is ReadOnly property if you set to False, Gizmo is not Hidden
+      messages (i.e. application.processMessage) and then enable the gizmo again.
+      Warning Enable is ReadOnly property if you set to False, Gizmo is not Hidden
       use Visible instead if you want to Hide, if you want to Hide but keep enabled
-      see the VisibleGizmo property }
+      see the VisibleGizmo property *)
     property Enabled: Boolean read FEnabled write FEnabled default False;
     property LabelFont: TGLCustomBitmapFont read FLabelFont write SetLabelFont
       default nil;
@@ -301,9 +278,8 @@ type
       write FOnBeforeSelect;
     property OnSelectionLost: TNotifyEvent read FOnSelectionLost
       write FOnSelectionLost;
-    {  Called before an Update is applied. The "vector" parameter is the difference
-      that will be applied to the object, according to the axis and
-      operation selected. }
+    (*  Called before an Update is applied. The "vector" parameter is the difference
+      that will be applied to the object, according to the axis and operation selected. *)
     property OnBeforeUpdate: TGLGizmoUpdateEvent read FOnBeforeUpdate
       write FOnBeforeUpdate;
     property PickMode: TGLGizmoPickMode read FPickMode write FPickMode

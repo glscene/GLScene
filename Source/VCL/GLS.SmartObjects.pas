@@ -5,8 +5,8 @@ unit GLS.SmartObjects;
 
 (*
   The smart spatial objects that have sences and artifitial intelligence
-  to interact with player, base geometric and other smart objects of GLScene:
-  TGLGerm, TGLSmartCells, TGLSmartSwarm, TGLCyborg, TGLCyborgNet
+  to interact with player, base geometric and other smart objects:
+  TGLGerm, TGLSmartCells, TGLSmartSwarm, TGLSmartNet, TGLCyborg, TGLCyborgs
 *)
 
 interface
@@ -23,24 +23,25 @@ uses
   VCL.Consts,
 
   Scena.OpenGLTokens,
-  GLS.Scene,
   Scena.VectorGeometry,
   Scena.VectorTypes,
   Scena.VectorTypesExt,
+  Scena.Strings,
+  Scena.PipelineTransformation,
+  Scena.Logger,
+
+  GLS.Scene,
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.Silhouette,
-  Scena.Strings,
   GLS.Texture,
   GLS.Material,
   GLS.Mesh,
-  Scena.Logger,
   GLS.Octree,
   GLS.GeometryBB,
   GLS.ApplicationFileIO,
   GLS.Context,
   GLS.Color,
-  Scena.PipelineTransformation,
   GLS.Selection,
   GLS.RenderContextInfo,
   GLS.Coordinates,

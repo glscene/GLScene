@@ -3,7 +3,7 @@
 //
 unit GLS.SkyDome;
 
-(* Skydome object *)
+(* Skydome object with celestial grids *)
 
 interface
 
@@ -38,8 +38,7 @@ type
 
 // ------------------------- SkyBox class -------------------------
 
-  TGLSkyBoxStyle = (sbsFull, sbsTopHalf, sbsBottomHalf, sbTopTwoThirds,
-    sbsTopHalfClamped);
+  TGLSkyBoxStyle = (sbsFull, sbsTopHalf, sbsBottomHalf, sbTopTwoThirds, sbsTopHalfClamped);
 
   TGLSkyBox = class(TGLCameraInvariantObject, IGLMaterialLibrarySupported)
   private
@@ -77,26 +76,16 @@ type
     procedure Notification(AComponent: TComponent; Operation: TOperation);
       override;
   published
-    property MaterialLibrary: TGLMaterialLibrary read FMaterialLibrary write
-      SetMaterialLibrary;
-    property MatNameTop: TGLLibMaterialName read FMatNameTop write
-      SetMatNameTop;
-    property MatNameBottom: TGLLibMaterialName read FMatNameBottom write
-      SetMatNameBottom;
-    property MatNameLeft: TGLLibMaterialName read FMatNameLeft write
-      SetMatNameLeft;
-    property MatNameRight: TGLLibMaterialName read FMatNameRight write
-      SetMatNameRight;
-    property MatNameFront: TGLLibMaterialName read FMatNameFront write
-      SetMatNameFront;
-    property MatNameBack: TGLLibMaterialName read FMatNameBack write
-      SetMatNameBack;
-    property MatNameClouds: TGLLibMaterialName read FMatNameClouds write
-      SetMatNameClouds;
-    property CloudsPlaneOffset: Single read FCloudsPlaneOffset write
-      SetCloudsPlaneOffset;
-    property CloudsPlaneSize: Single read FCloudsPlaneSize write
-      SetCloudsPlaneSize;
+    property MaterialLibrary: TGLMaterialLibrary read FMaterialLibrary write SetMaterialLibrary;
+    property MatNameTop: TGLLibMaterialName read FMatNameTop write SetMatNameTop;
+    property MatNameBottom: TGLLibMaterialName read FMatNameBottom write SetMatNameBottom;
+    property MatNameLeft: TGLLibMaterialName read FMatNameLeft write SetMatNameLeft;
+    property MatNameRight: TGLLibMaterialName read FMatNameRight write SetMatNameRight;
+    property MatNameFront: TGLLibMaterialName read FMatNameFront write SetMatNameFront;
+    property MatNameBack: TGLLibMaterialName read FMatNameBack write SetMatNameBack;
+    property MatNameClouds: TGLLibMaterialName read FMatNameClouds write SetMatNameClouds;
+    property CloudsPlaneOffset: Single read FCloudsPlaneOffset write SetCloudsPlaneOffset;
+    property CloudsPlaneSize: Single read FCloudsPlaneSize write SetCloudsPlaneSize;
     property Style: TGLSkyBoxStyle read FStyle write FStyle default sbsFull;
   end;
 
@@ -143,8 +132,7 @@ type
     constructor Create(AOwner: TComponent);
     function Add: TGLSkyDomeBand;
     function FindItemID(ID: Integer): TGLSkyDomeBand;
-    property Items[index: Integer]: TGLSkyDomeBand read GetItems write SetItems;
-    default;
+    property Items[index: Integer]: TGLSkyDomeBand read GetItems write SetItems; default;
     procedure NotifyChange;
     procedure BuildList(var rci: TGLRenderContextInfo);
   end;
@@ -183,8 +171,7 @@ type
     constructor Create(AOwner: TComponent);
     function Add: TGLSkyDomeStar;
     function FindItemID(ID: Integer): TGLSkyDomeStar;
-    property Items[index: Integer]: TGLSkyDomeStar read GetItems write SetItems;
-    default;
+    property Items[index: Integer]: TGLSkyDomeStar read GetItems write SetItems; default;
     procedure BuildList(var rci: TGLRenderContextInfo; twinkle: Boolean);
     (* Adds nb random stars of the given color.
       Stars are homogenously scattered on the complete sphere, not only the band defined or visible dome. *)
@@ -196,7 +183,7 @@ type
     procedure LoadStarsFile(const starsFileName: string);
   end;
 
-  TGLSkyDomeOption = (sdoTwinkle);
+  TGLSkyDomeOption = (sdoEquatorialGrid, sdoEclipticGrid, sdoGalacticGrid, sdoSupergalacticGrid, sdoTwinkle);
   TGLSkyDomeOptions = set of TGLSkyDomeOption;
 
   (* Renders a sky dome always centered on the camera.
@@ -225,13 +212,12 @@ type
     property Options: TGLSkyDomeOptions read FOptions write SetOptions default [];
   end;
 
-  TEarthSkydomeOption = (esoFadeStarsWithSun, esoRotateOnTwelveHours, esoDepthTest);
-  TEarthSkydomeOptions = set of TEarthSkydomeOption;
+  TGLEarthSkydomeOption = (esoFadeStarsWithSun, esoRotateOnTwelveHours, esoDepthTest);
+  TGLEarthSkydomeOptions = set of TGLEarthSkydomeOption;
 
   (* Render a skydome like what can be seen on earth.
      Color is based on sun position and turbidity, to "mimic" atmospheric
-     Rayleigh and Mie scatterings. The colors can be adjusted to render
-     weird/exoplanet atmospheres too.
+     Rayleigh and Mie scatterings. The colors can be adjusted to render exoplanet atmospheres too.
      The default slices/stacks values make for an average quality rendering,
      for a very clean rendering, use 64/64 (more is overkill in most cases).
      The complexity is quite high though, making a T&L 3D board a necessity
@@ -249,7 +235,7 @@ type
     FNightColor: TGLColor;
     FDeepColor: TGLColor;
     FSlices, FStacks: Integer;
-    FExtendedOptions: TEarthSkydomeOptions;
+    FExtendedOptions: TGLEarthSkydomeOptions;
     FMorning: boolean;
   protected
     procedure Loaded; override;
@@ -276,7 +262,7 @@ type
   published
     // Elevation of the sun, measured in degrees
     property SunElevation: Single read FSunElevation write SetSunElevation;
-    // Expresses the purity of air.  Value range is from 1 (pure athmosphere) to 120 (very nebulous)
+    // Expresses the purity of air. Value range is from 1 (pure athmosphere) to 120 (very nebulous)
     property Turbidity: Single read FTurbidity write SetTurbidity;
     property SunZenithColor: TGLColor read FSunZenithColor write SetSunZenithColor;
     property SunDawnColor: TGLColor read FSunDawnColor write SetSunDawnColor;
@@ -284,7 +270,7 @@ type
     property SkyColor: TGLColor read FSkyColor write SetSkyColor;
     property NightColor: TGLColor read FNightColor write SetNightColor;
     property DeepColor: TGLColor read FDeepColor write SetDeepColor;
-    property ExtendedOptions: TEarthSkydomeOptions read FExtendedOptions write FExtendedOptions;
+    property ExtendedOptions: TGLEarthSkydomeOptions read FExtendedOptions write FExtendedOptions;
     property Slices: Integer read FSlices write SetSlices default 24;
     property Stacks: Integer read FStacks write SetStacks default 48;
   end;
@@ -1224,12 +1210,30 @@ begin
   StructureChanged;
 end;
 
+//--------- Options to draw grids and twinkle stars --------
+
 procedure TGLSkyDome.SetOptions(const val: TGLSkyDomeOptions);
 begin
   if val <> FOptions then
   begin
     FOptions := val;
-    if sdoTwinkle in FOptions then
+    if sdoEquatorialGrid in FOptions then
+    begin
+      // DrawEquatorialGrid();
+    end
+    else if sdoEclipticGrid in FOptions then
+    begin
+      // DrawEclipticGrid();
+    end
+    else if sdoGalacticGrid in FOptions then
+    begin
+      // DrawGalacticGrid();
+    end
+    else if sdoSupergalacticGrid in FOptions then
+    begin
+      // DrawGalacticGrid();
+    end
+    else if sdoTwinkle in FOptions then
       ObjectStyle := ObjectStyle + [osDirectDraw]
     else
     begin
