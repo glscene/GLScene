@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit FMxShaderMemo;
 
@@ -61,7 +61,7 @@ implementation
 {$R *.fmx}
 
 const
-  cRegistryKey = 'Software\GLXcene\GLXceneShaderEdit';
+  cRegistryKey = 'Software\GLArena\GLXceneShaderEdit';
 
 var
   vShaderEditor: TShaderMemoForm;

@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit Soundx.Register;
 
@@ -23,7 +23,7 @@ implementation
 
 procedure Register;
 begin
-  RegisterComponents('GLXcene',[TgxSMBASS,TgxSMFMOD,TgxSMOpenAL,TgxSMWaveOut]);
+  RegisterComponents('GLArena',[TgxSMBASS,TgxSMFMOD,TgxSMOpenAL,TgxSMWaveOut]);
 end;
 
 end.

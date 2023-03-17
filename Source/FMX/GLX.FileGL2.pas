@@ -25,13 +25,13 @@ type
 
   TgxGLMVectorFile = class (TgxVectorFile)
     public
-      class function Capabilities : TgxDataFileCapabilities; override;
+      class function Capabilities : TDataFileCapabilities; override;
       procedure LoadFromStream(aStream : TStream); override;
   end;
 
   TgxGLAVectorFile = class (TgxVectorFile)
     public
-      class function Capabilities : TgxDataFileCapabilities; override;
+      class function Capabilities : TDataFileCapabilities; override;
       procedure LoadFromStream(aStream : TStream); override;
   end;
 
@@ -49,7 +49,7 @@ implementation
 // ------------------ TgxGLMVectorFile ------------------
 // ------------------
 
-class function TgxGLMVectorFile.Capabilities : TgxDataFileCapabilities;
+class function TgxGLMVectorFile.Capabilities : TDataFileCapabilities;
 begin
   Result:=[dfcRead];
 end;
@@ -159,7 +159,7 @@ end;
 
 // Capabilities
 //
-class function TgxGLAVectorFile.Capabilities : TgxDataFileCapabilities;
+class function TgxGLAVectorFile.Capabilities : TDataFileCapabilities;
 begin
   Result:=[dfcRead];
 end;

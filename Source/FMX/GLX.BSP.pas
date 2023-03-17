@@ -1,10 +1,10 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.BSP;
 
 (*
-  Binary Space Partion mesh support for GLXcene.
+  Binary Space Partion mesh support for GLArena.
   The classes of this unit are designed to operate within a TgxBaseMesh.
 *)
 

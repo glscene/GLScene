@@ -35,7 +35,7 @@ uses
   GLS.CompositeImage,
 
   GLS.FileJPEG,
-  GLS.FilePAK,
+  GLS.PAKArchive,
   GLS.FileZLIB,
 
   GLS.FileMS3D,

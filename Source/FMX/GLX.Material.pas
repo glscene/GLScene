@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.Material;
 
@@ -2008,7 +2008,7 @@ begin
       for i := 0 to FTexturePathList.Count - 1 do
       begin
         tryName := IncludeTrailingPathDelimiter(FTexturePathList[i]) + textureFileName;
-        if (Assigned(vAFIOCreateFileStream) and FileStreamExists(tryName)) or FileExists(tryName) then
+        if (Assigned(vGXAFIOCreateFileStream) and FileStreamExists(tryName)) or FileExists(tryName) then
         begin
           textureFileName := tryName;
           Break;

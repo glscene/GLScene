@@ -1,10 +1,10 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit Physix.NGDManager;
 
 (*
-  The Newton Game Dynamics Manager for GLXcene.
+  The Newton Game Dynamics Manager for GLArena.
   Notes:
   This code is still under development so any part of it may change at anytime.
 *)

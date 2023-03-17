@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileOCT;
 (*
@@ -32,7 +32,7 @@ type
   // The OCT vector file (FSRad output).
   TgxOCTgxVectorFile = class(TgxVectorFile)
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
   end;
 
@@ -52,7 +52,7 @@ implementation
 // ------------------ TgxOCTgxVectorFile ------------------
 // ------------------
 
-class function TgxOCTgxVectorFile.Capabilities: TgxDataFileCapabilities;
+class function TgxOCTgxVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead];
 end;

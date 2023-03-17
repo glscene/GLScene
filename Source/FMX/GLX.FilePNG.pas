@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FilePNG;
 
@@ -24,7 +24,7 @@ type
   TgxPNGImage = class(TgxBaseImage)
   private
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
 
     procedure LoadFromFile(const filename: string); override;
     procedure SaveToFile(const filename: string); override;
@@ -155,7 +155,7 @@ begin
   end;
 end;
 
-class function TgxPNGImage.Capabilities: TgxDataFileCapabilities;
+class function TgxPNGImage.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead, dfcWrite];
 end;
@@ -164,7 +164,7 @@ end;
 initialization
 //----------------------------------------------------------
 
-  { Register this Fileformat-Handler with GLXcene }
+  { Register this Fileformat-Handler with GLArena }
   RegisterRasterFormat('png', 'Portable Network Graphic', TgxPNGImage);
 
 end.

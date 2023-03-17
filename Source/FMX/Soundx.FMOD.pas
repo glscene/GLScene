@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 (*==========================================================================================
  FMOD Main header file. Copyright (c), FireLight Technologies Pty, Ltd. 1999-2003.

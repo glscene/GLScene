@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileSTL;
 
@@ -52,7 +52,7 @@ type
     Original Binary importer code by Paul M. Bearne, Text importer by Adem. *)
   TgxSTLVectorFile = class(TgxVectorFile)
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
     procedure SaveToStream(aStream: TStream); override;
   end;
@@ -75,7 +75,7 @@ const
 // ------------------ TgxSTLVectorFile ------------------
 // ------------------
 
-class function TgxSTLVectorFile.Capabilities: TgxDataFileCapabilities;
+class function TgxSTLVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead, dfcWrite];
 end;
@@ -249,7 +249,7 @@ var
   dataFace: TSTLFace;
   list: TgxAffineVectorList;
 const
-  cHeaderTag = 'GLXcene STL export';
+  cHeaderTag = 'GLArena STL export';
 begin
   list := Owner.MeshObjects.ExtractTriangles;
   try

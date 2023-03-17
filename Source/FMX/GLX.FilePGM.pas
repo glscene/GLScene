@@ -19,7 +19,7 @@ type
 
   TgxPGMImage = class(TgxBaseImage)
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
 
     procedure LoadFromFile(const filename: string); override;
     procedure SaveToFile(const filename: string); override;
@@ -175,7 +175,7 @@ end;
 
 // Capabilities
 //
-class function TgxPGMImage.Capabilities: TgxDataFileCapabilities;
+class function TgxPGMImage.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead, dfcWrite];
 end;

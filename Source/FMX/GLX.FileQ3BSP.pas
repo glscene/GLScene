@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileQ3BSP;
 
@@ -38,7 +38,7 @@ type
   // The Q3BSP vector file (Quake III BSP).
   TgxQ3BSPVectorFile = class(TgxVectorFile)
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
   end;
 
@@ -56,7 +56,7 @@ implementation
 // ------------------ TgxSTLVectorFile ------------------
 // ------------------
 
-class function TgxQ3BSPVectorFile.Capabilities: TgxDataFileCapabilities;
+class function TgxQ3BSPVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead];
 end;

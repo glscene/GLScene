@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileDXF;
 
@@ -66,7 +66,7 @@ type
     procedure ReadEntityPolyLine(basemesh: TgxBaseMesh);
     procedure ReadEntities(basemesh: TgxBaseMesh);
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
   end;
 
@@ -126,7 +126,7 @@ const
     result := (S.Position >= S.Size);
   end;
 
-  class function TgxDXFVectorFile.Capabilities: TgxDataFileCapabilities;
+  class function TgxDXFVectorFile.Capabilities: TDataFileCapabilities;
   begin
     result := [dfcRead];
   end;

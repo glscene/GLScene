@@ -40,15 +40,15 @@ contains
   CUDAx.Context in '..\Source\FMX\CUDAx.Context.pas',
   CUDAx.FFTPlan in '..\Source\FMX\CUDAx.FFTPlan.pas',
   CUDAx.Graphics in '..\Source\FMX\CUDAx.Graphics.pas',
-  OpenCL.GL in '..\Source\Common\OpenCL.GL.pas',
-  OpenCL.Import in '..\Source\Common\OpenCL.Import.pas',
-  OpenCL.Platform in '..\Source\Common\OpenCL.Platform.pas',
-  CUDA.Import in '..\Source\Common\CUDA.Import.pas',
-  CUDA.DataAccess in '..\Source\Common\CUDA.DataAccess.pas',
-  CUDA.FourierTransform in '..\Source\Common\CUDA.FourierTransform.pas',
-  CUDA.ParallelPrimitives in '..\Source\Common\CUDA.ParallelPrimitives.pas',
-  CUDA.Parser in '..\Source\Common\CUDA.Parser.pas',
-  CUDA.Runtime in '..\Source\Common\CUDA.Runtime.pas',
-  CUDA.Utility in '..\Source\Common\CUDA.Utility.pas';
+  OpenCL.GL in '..\Source\OpenCL.GL.pas',
+  OpenCL.Import in '..\Source\OpenCL.Import.pas',
+  OpenCL.Platform in '..\Source\OpenCL.Platform.pas',
+  CUDA.Import in '..\Source\CUDA.Import.pas',
+  CUDA.DataAccess in '..\Source\CUDA.DataAccess.pas',
+  CUDA.FourierTransform in '..\Source\CUDA.FourierTransform.pas',
+  CUDA.ParallelPrimitives in '..\Source\CUDA.ParallelPrimitives.pas',
+  CUDA.Parser in '..\Source\CUDA.Parser.pas',
+  CUDA.Runtime in '..\Source\CUDA.Runtime.pas',
+  CUDA.Utility in '..\Source\CUDA.Utility.pas';
 
 end.

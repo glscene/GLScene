@@ -1,5 +1,5 @@
 ﻿//
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.ArchiveManager;
 
@@ -655,8 +655,8 @@ begin
   inherited Create(AOwner);
   FArchives := TLibArchives.Create(self);
   vArchiveManager := Self;
-  vAFIOCreateFileStream := ArcCreateFileStream;
-  vAFIOFileStreamExists := ArcFileStreamExists;
+  vGXAFIOCreateFileStream := ArcCreateFileStream;
+  vGXAFIOFileStreamExists := ArcFileStreamExists;
 end;
 
 destructor TgxSArchiveManager.Destroy;

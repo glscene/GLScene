@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileGTS;
 
@@ -25,7 +25,7 @@ type
     http://gts.sourceforge.net/ *)
   TgxGTSVectorFile = class(TgxVectorFile)
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
   end;
 
@@ -40,7 +40,7 @@ uses
 // ------------------ TgxGTSVectorFile ------------------
 // ------------------
 
-class function TgxGTSVectorFile.Capabilities: TgxDataFileCapabilities;
+class function TgxGTSVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead];
 end;

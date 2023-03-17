@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileSMD;
 
@@ -28,7 +28,7 @@ type
     (the one with mesh data) be read first. *)
   TgxSMDVectorFile = class(TgxVectorFile)
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
     procedure SaveToStream(aStream: TStream); override;
   end;
@@ -41,7 +41,7 @@ implementation
 // ------------------ TgxSMDVectorFile ------------------
 // ------------------
 
-class function TgxSMDVectorFile.Capabilities: TgxDataFileCapabilities;
+class function TgxSMDVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead, dfcWrite];
 end;

@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FullScreenViewer;
 
@@ -189,7 +189,7 @@ const
 
 procedure Register;
 begin
-  RegisterComponents('GLXcene', [TgxFullScreenViewer]);
+  RegisterComponents('GLArena', [TgxFullScreenViewer]);
 end;
 
 // ------------------

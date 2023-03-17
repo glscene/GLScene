@@ -77,7 +77,7 @@ implementation
 procedure Register;
 begin
   RegisterClasses([TgxDelphiWebScriptII, TgxScriptDWS]);
-  RegisterComponents('GLXcene DWSx', [TgxDelphiWebScript]);
+  RegisterComponents('GLArena DWSx', [TgxDelphiWebScript]);
 end;
 
 

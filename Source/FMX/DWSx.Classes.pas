@@ -385,7 +385,7 @@ end;
 
 procedure Register;
 begin
-  RegisterComponents('GLXcene DWSx', [TdwxClassesUnit]);
+  RegisterComponents('GLArena DWSx', [TdwxClassesUnit]);
 end;
 
 

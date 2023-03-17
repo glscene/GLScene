@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit FMxGuiLayoutEditor;
 
@@ -126,7 +126,7 @@ var
 begin
   if Items_list.ItemIndex = -1 then
     Exit;
-  { TODO : E2003 Undeclared identifier: 'GuiLayout1' - GLXcene not installed}
+  { TODO : E2003 Undeclared identifier: 'GuiLayout1' - GLArena not installed}
   (*Name_edit.Text := GuiLayout1.GuiComponents[Items_list.ItemIndex].Name;*)
   Elements_grid.Selected := 0;    //in VCL Row
   Elements_grid.ColumnIndex := 0; //in VCL Col

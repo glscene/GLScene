@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.SceneRegister;
 (*
@@ -1464,17 +1464,17 @@ end;
 
 procedure Register;
 begin
-  RegisterComponents('GLXcene', [TgxScene, TgxSceneViewer, TgxMemoryViewer,
+  RegisterComponents('GLArena', [TgxScene, TgxSceneViewer, TgxMemoryViewer,
     TgxMaterialLibrary, TgxMaterialLibraryEx, TgxCadencer, TgxGuiLayout,
     TgxBitmapFont, TgxWindowsBitmapFont, TgxScriptLibrary, TgxSoundLibrary,
     TgxFullScreenViewer]);
 
-  RegisterComponents('GLXcene PFX', [TgxCustomPFXManager, TgxPolygonPFXManager,
+  RegisterComponents('GLArena PFX', [TgxCustomPFXManager, TgxPolygonPFXManager,
     TgxPointLightPFXManager, TgxCustomSpritePFXManager, TgxPerlinPFXManager,
     TgxLinePFXManager, TgxFireFXManager, TgxThorFXManager,
     TgxEParticleMasksManager]);
 
-  RegisterComponents('GLXcene Utils', [TgxAsyncTimer, TgxStaticImposterBuilder,
+  RegisterComponents('GLArena Utils', [TgxAsyncTimer, TgxStaticImposterBuilder,
     TgxCollisionManager, TgxAnimationControler, TgxAVIRecorder, TgxDCEManager,
     TgxFPSMovementManager, TgxMaterialScripter, TgxUserInterface, TgxNavigator,
     TgxSmoothNavigator, TgxSmoothUserInterface, TgxTimeEventsMGR,
@@ -1482,11 +1482,11 @@ begin
     TgxCameraController, TgxSLanguage, TgxSLogger, TgxSArchiveManager,
     TgxJoystick, TgxScreenSaver, TgxSSynHiMemo]);
 
-  RegisterComponents('GLXcene Terrain', [TgxBitmapHDS, TgxCustomHDS,
+  RegisterComponents('GLArena Terrain', [TgxBitmapHDS, TgxCustomHDS,
     TgxHeightTileFileHDS, TgxBumpmapHDS, TgxPerlinHDS, TgxTexturedHDS,
     TgxAsyncHDS, TgxShadowHDS]);
 
-  RegisterComponents('GLXcene Shaders', [TgxTexCombineShader, TgxPhongShader,
+  RegisterComponents('GLArena Shaders', [TgxTexCombineShader, TgxPhongShader,
     TgxUserShader, TgxHiddenLineShader, TgxCelShader, TgxOutlineShader,
     TgxMultiMaterialShader, TgxBumpShader, TgxGLSLShader,
     TgxSLDiffuseSpecularShader, TgxSLBumpShader, TgxAsmShader,

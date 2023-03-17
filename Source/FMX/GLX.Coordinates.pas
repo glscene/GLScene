@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.Coordinates;
 
@@ -150,7 +150,7 @@ type
   TgxCoordinates = TgxCoordinates3;
 
   (* Actually Sender should be TgxCustomCoordinates, but that would require
-   changes in a some other GLXcene units and some other projects that use
+   changes in a some other GLArena units and some other projects that use
    TsnCoordinatesUpdateAbleComponent *)
   ICoordinatesUpdateAble = interface(IInterface)
     ['{ACB98D20-8905-43A7-AFA5-225CF5FA6FF5}']

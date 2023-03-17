@@ -3,8 +3,7 @@
 //
 unit GLS.SceneRegister;
 (*
-  Registration unit for library components, property editors and
-  IDE experts.
+  Registration unit for library components, property editors and IDE experts.
 *)
 interface
 
@@ -135,11 +134,10 @@ type
 
   (* Editor copied from DsgnIntf.
     Could have been avoided, if only that guy at Borland didn't chose to
-    publish only half of the stuff (and that's not the only class with
-    that problem, most of the subitems handling code in TGLSceneBaseObject is
-    here for the same reason...), the "protected" wasn't meant just to lure
-    programmers into code they can't reuse... Arrr! and he did that again
-    in D6! Grrr... *)
+    publish only half of the stuff (and that's not the only class with that problem,
+    most of the subitems handling code in TGLSceneBaseObject is here for the same reason...),
+    the "protected" wasn't meant just to lure programmers into code they can't reuse...
+    Arrr! and he did that again in D7! Grrr... *)
   TGLReuseableDefaultEditor = class(TComponentEditor, IDefaultEditor)
   protected
     FFirst: IProperty;
@@ -167,17 +165,17 @@ type
     procedure GetValues(Proc: TGetStrProc); override;
   end;
 
-  (*  Selection editor for TGLSoundLibrary
-    Allows units to be added to the uses clause automatically when
-    sound files are loaded into a TGLSoundLibrary at design-time. *)
+  (* Selection editor for TGLSoundLibrary
+     Allows units to be added to the uses clause automatically when
+     sound files are loaded into a TGLSoundLibrary at design-time. *)
   TGLSoundLibrarySelectionEditor = class(TSelectionEditor)
   public
     procedure RequiresUnits(Proc: TGetStrProc); override;
   end;
 
-  (*  Selection editor for TGLBaseSceneObject.
-    Allows units to be added to the uses clause automatically when
-    behaviours/effects are added to a TGLBaseSceneObject at design-time. *)
+  (* Selection editor for TGLBaseSceneObject.
+     Allows units to be added to the uses clause automatically when
+     behaviours/effects are added to a TGLBaseSceneObject at design-time. *)
   TGLBaseSceneObjectSelectionEditor = class(TSelectionEditor)
   public
     procedure RequiresUnits(Proc: TGetStrProc); override;
@@ -644,7 +642,7 @@ begin
   Modified;
 end;
 
-//----------------- TGLColorproperty -----------------------------------------------------------------------------------
+//----------------- TGLColorproperty --------------------------------------------------------------
 
 procedure TGLColorProperty.Edit;
 var
@@ -755,6 +753,7 @@ begin
 end;
 
 //----------------- TGLSoundFileProperty -----------------------------------------
+
 function TGLSoundFileProperty.GetAttributes: TPropertyAttributes;
 begin
   Result := [paDialog];
@@ -1103,6 +1102,8 @@ begin
   Result := 1
 end;
 
+//--------------------- TGLMaterialComponentNameProperty ------------------
+
 procedure TGLMaterialComponentNameProperty.Edit;
 var
   LOwner: IGLMaterialLibrarySupported;
@@ -1123,6 +1124,8 @@ begin
   Result := [paValueList];
 end;
 
+//------------------------ TGLLibTextureNameProperty --------------------------
+
 procedure TGLLibTextureNameProperty.GetValues(Proc: TGetStrProc);
 var
   LOwner: IGLMaterialLibrarySupported;
@@ -1136,6 +1139,8 @@ begin
   end;
 end;
 
+//------------------- TGLLibSamplerNameProperty -------------------------
+
 procedure TGLLibSamplerNameProperty.GetValues(Proc: TGetStrProc);
 var
   LOwner: IGLMaterialLibrarySupported;
@@ -1144,6 +1149,8 @@ begin
     TGLMaterialLibraryEx(LOwner.GetMaterialLibrary)
       .GetNames(Proc, TGLTextureSampler);
 end;
+
+//------------------- TGLLibCombinerNameProperty -------------------------
 
 procedure TGLLibCombinerNameProperty.GetValues(Proc: TGetStrProc);
 var
@@ -1171,6 +1178,8 @@ begin
       .GetNames(Proc, TGLFrameBufferAttachment);
 end;
 
+//------------------------- TGLLibAsmProgNameProperty ---------------------------
+
 procedure TGLLibAsmProgNameProperty.GetValues(Proc: TGetStrProc);
 var
   LOwner: IGLMaterialLibrarySupported;
@@ -1179,6 +1188,8 @@ begin
     TGLMaterialLibraryEx(LOwner.GetMaterialLibrary)
       .GetNames(Proc, TGLASMVertexProgram);
 end;
+
+//------------------------- TPictureFileProperty --------------------------------
 
 function TPictureFileProperty.GetAttributes: TPropertyAttributes;
 begin
@@ -1195,6 +1206,8 @@ begin
   end;
   Modified;
 end;
+
+// -------------------- TShaderFileProperty ------------------------------
 
 procedure TShaderFileProperty.Edit;
 var
@@ -1218,6 +1231,8 @@ begin
   Result := [paDialog];
 end;
 
+//----------------------- TAsmProgFileProperty ----------------------------------
+
 procedure TAsmProgFileProperty.Edit;
 var
   ODialog: TOpenDialog;
@@ -1239,6 +1254,8 @@ function TAsmProgFileProperty.GetAttributes: TPropertyAttributes;
 begin
   Result := [paDialog];
 end;
+
+//------------------------ TUniformAutoSetProperty ----------------------------
 
 function TUniformAutoSetProperty.GetAttributes: TPropertyAttributes;
 begin
@@ -1269,6 +1286,8 @@ begin
     end;
   end;
 end;
+
+//----------------------- TGLShaderEditorProperty -----------------------------
 
 function TGLShaderEditorProperty.GetAttributes: TPropertyAttributes;
 begin

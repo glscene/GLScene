@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit Physix.ODERegister;
 
@@ -20,7 +20,7 @@ implementation
 procedure Register;
 begin
   RegisterClasses([TgxODEManager, TgxODEJointList, TgxODEJoints, TgxODEElements]);
-  RegisterComponents('GLXcene',[TgxODEManager,TgxODEJointList]);
+  RegisterComponents('GLArena',[TgxODEManager,TgxODEJointList]);
 end;
 
 end.

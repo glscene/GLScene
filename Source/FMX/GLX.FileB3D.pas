@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileB3D;
 
@@ -24,7 +24,7 @@ uses
 type
   TgxB3DVectorFile = class(TgxVectorFile)
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(AStream: TStream); override;
   end;
 
@@ -33,7 +33,7 @@ implementation
 // ------------------------------------------------------------------
 
 // ------------------------------ TgxB3DVectorFile ------------------------------
-class function TgxB3DVectorFile.Capabilities: TgxDataFileCapabilities;
+class function TgxB3DVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [DfcRead];
 end;

@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.Mesh;
 
@@ -152,7 +152,7 @@ type
       ie. meshes that are updated for each frame (the default build list
       mode is faster on static meshes).
       Be aware that the "Locked" state enforcement is not very strict
-      to avoid performance hits, and GLXcene may not always notify you
+      to avoid performance hits, and GLArena may not always notify you
       that you're doing things you shouldn't on a locked list! }
     property Locked: Boolean read GetLocked write SetLocked;
     procedure EnterLockSection;

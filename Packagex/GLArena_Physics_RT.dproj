@@ -162,17 +162,17 @@
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="fmx.dcp"/>
         <DCCReference Include="GLArena_RT.dcp"/>
+        <DCCReference Include="..\Source\Newton.Import.pas"/>
+        <DCCReference Include="..\Source\NGD.Import.pas"/>
+        <DCCReference Include="..\Source\ODE.Import.pas"/>
+        <DCCReference Include="..\Source\ModuleLoader.pas"/>
+        <DCCReference Include="..\Source\PhysX.Import.pas"/>
         <DCCReference Include="..\Source\FMX\Physix.ODEManager.pas"/>
         <DCCReference Include="..\Source\FMX\Physix.ODESkeletonColliders.pas"/>
         <DCCReference Include="..\Source\FMX\Physix.ODEUtils.pas"/>
         <DCCReference Include="..\Source\FMX\Physix.ODERagdoll.pas"/>
         <DCCReference Include="..\Source\FMX\Physix.NGDManager.pas"/>
         <DCCReference Include="..\Source\FMX\Physix.NGDRagdoll.pas"/>
-        <DCCReference Include="..\Source\Common\Newton.Import.pas"/>
-        <DCCReference Include="..\Source\Common\NGD.Import.pas"/>
-        <DCCReference Include="..\Source\Common\ODE.Import.pas"/>
-        <DCCReference Include="..\Source\Common\ModuleLoader.pas"/>
-        <DCCReference Include="..\Source\Common\PhysX.Import.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

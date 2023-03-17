@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileOBJ;
 
@@ -61,7 +61,7 @@ type
     procedure Error(const msg: string);
     procedure CalcMissingOBJNormals(mesh: TgxMeshObject);
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
     procedure SaveToStream(aStream: TStream); override;
   end;
@@ -520,7 +520,7 @@ begin
   raise E;
 end;
 
-class function TgxOBJVectorFile.Capabilities: TgxDataFileCapabilities;
+class function TgxOBJVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead, dfcWrite];
 end;

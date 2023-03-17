@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit Formatx.TGA;
 
@@ -30,7 +30,7 @@ type
     procedure SaveToFile(const filename: string); override;
     procedure LoadFromStream(stream: TStream); override;
     procedure SaveToStream(stream: TStream); override;
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure AssignFromTexture(textureContext: TgxContext;
       const textureHandle: GLuint;
       textureTarget: TGLTextureTarget;
@@ -276,7 +276,7 @@ begin
 {$MESSAGE Hint 'TgxTGAImage.AssignFromTexture not yet implemented' }
 end;
 
-class function TgxTGAImage.Capabilities: TgxDataFileCapabilities;
+class function TgxTGAImage.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead {, dfcWrite}];
 end;

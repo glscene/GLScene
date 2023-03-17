@@ -1,9 +1,9 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit Physix.ODEManager;
 (*
-  An ODE Manager for GLXcene.
+  An ODE Manager for GLArena.
   Notes:
   This code is still under development so any part of it may change at anytime.
 *)

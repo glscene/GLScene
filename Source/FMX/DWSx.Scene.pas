@@ -1056,7 +1056,7 @@ end;
 
 procedure Register;
 begin
-  RegisterComponents('GLXcene DWX', [TdwxGLSceneUnit]);
+  RegisterComponents('GLArena DWX', [TdwxGLSceneUnit]);
 end;
 
 

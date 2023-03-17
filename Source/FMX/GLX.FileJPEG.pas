@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileJPEG;
 
@@ -30,7 +30,7 @@ type
     procedure SetSmoothing(const AValue: boolean);
   public
     constructor Create; override;
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromFile(const filename: string); override;
     procedure SaveToFile(const filename: string); override;
     procedure LoadFromStream(stream: TStream); override;
@@ -113,7 +113,7 @@ begin
     FSmoothing := AValue;
 end;
 
-class function TgxJPEGImage.Capabilities: TgxDataFileCapabilities;
+class function TgxJPEGImage.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead { , dfcWrite } ];
 end;

@@ -135,8 +135,8 @@
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
+        <DCCReference Include="..\Source\SDL.Import.pas"/>
         <DCCReference Include="..\Source\VCL\SDL.Window.pas"/>
-        <DCCReference Include="..\Source\Common\SDL.Import.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

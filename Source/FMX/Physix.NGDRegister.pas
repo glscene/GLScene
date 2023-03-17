@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit Physix.NGDRegister;
 
@@ -20,7 +20,7 @@ implementation
 procedure register;
 begin
   RegisterClasses([TgxNGDManager, TgxNGDDynamic, TgxNGDStatic]);
-  RegisterComponents('GLXcene', [TgxNGDManager]);
+  RegisterComponents('GLArena', [TgxNGDManager]);
 end;
 
 end.

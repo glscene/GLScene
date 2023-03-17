@@ -30,7 +30,7 @@ type
    TgxFileDAE = class(TgxVectorFile)
       public
          
-         class function Capabilities : TgxDataFileCapabilities; override;
+         class function Capabilities : TDataFileCapabilities; override;
          procedure LoadFromStream(aStream : TStream); override;
    end;
 
@@ -44,7 +44,7 @@ implementation
 
 // Capabilities
 //
-class function TgxFileDAE.Capabilities : TgxDataFileCapabilities;
+class function TgxFileDAE.Capabilities : TDataFileCapabilities;
 begin
    Result:=[dfcRead];
 end;

@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit SDLx.Context;
 
@@ -96,7 +96,7 @@ implementation
 
 procedure Register;
 begin
-  RegisterComponents('GLXcene', [TgxSDLViewer]);
+  RegisterComponents('GLArena', [TgxSDLViewer]);
 end;
 
 // ------------------

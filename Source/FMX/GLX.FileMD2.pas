@@ -1,6 +1,6 @@
 //
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 //
 
@@ -28,7 +28,7 @@ type
     Based on code by Roger Cao. *)
   TgxMD2VectorFile = class(TgxVectorFile)
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
   end;
 
@@ -40,7 +40,7 @@ implementation
 // ------------------ TgxMD2VectorFile ------------------
 // ------------------
 
-class function TgxMD2VectorFile.Capabilities: TgxDataFileCapabilities;
+class function TgxMD2VectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead];
 end;

@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.ApplicationFileIO;
 (*
@@ -59,7 +59,7 @@ type
   end;
 
   TgxDataFileCapability = (dfcRead, dfcWrite);
-  TgxDataFileCapabilities = set of TgxDataFileCapability;
+  TDataFileCapabilities = set of TgxDataFileCapability;
 
   (* Abstract base class for data file formats interfaces.
     This class declares base file-related behaviours, ie. ability to load/save
@@ -79,7 +79,7 @@ type
 	constructor Create(AOwner: TPersistent); virtual;
     destructor Destroy; override;
     // Describes what the TgxDataFile is capable of. Default value is [dfcRead].
-    class function Capabilities: TgxDataFileCapabilities; virtual;
+    class function Capabilities: TDataFileCapabilities; virtual;
     (* Duplicates Self and returns a copy.
       Subclasses should override this method to duplicate their data. *)
     function CreateCopy(AOwner: TPersistent): TgxDataFile; virtual;
@@ -101,13 +101,12 @@ type
 function ApplicationFileIODefined: Boolean;
 // Queries is a file stream corresponding to the fileName exists.
 function FileStreamExists(const fileName: string): Boolean;
-function CreateResourceStream(const ResName: string; ResType: PChar)
-  : TgxResourceStream;
+function CreateResourceStream(const ResName: string; ResType: PChar): TgxResourceStream;
 function StrToResType(const AStrRes: string): TgxApplicationResource;
 
 var
-  vAFIOCreateFileStream: TgxAFIOCreateFileStream = nil;
-  vAFIOFileStreamExists: TgxAFIOFileStreamExists = nil;
+  vGXAFIOCreateFileStream: TgxAFIOCreateFileStream = nil;
+  vGXAFIOFileStreamExists: TgxAFIOFileStreamExists = nil;
 
 // ---------------------------------------------------------------------
 implementation
@@ -118,14 +117,13 @@ var
 
 function ApplicationFileIODefined: Boolean;
 begin
-  Result := (Assigned(vAFIOCreateFileStream) and Assigned(vAFIOFileStreamExists)
-    ) or Assigned(vAFIO);
+  Result := (Assigned(vGxAFIOCreateFileStream) and Assigned(vGxAFIOFileStreamExists)) or Assigned(vAFIO);
 end;
 
 function FileStreamExists(const fileName: string): Boolean;
 begin
-  if Assigned(vAFIOFileStreamExists) then
-    Result := vAFIOFileStreamExists(fileName)
+  if Assigned(vGxAFIOFileStreamExists) then
+    Result := vGxAFIOFileStreamExists(fileName)
   else
   begin
     if Assigned(vAFIO) and Assigned(vAFIO.FOnFileStreamExists) then
@@ -197,7 +195,7 @@ begin
    inherited;
 end;
 
-class function TgxDataFile.Capabilities : TgxDataFileCapabilities;
+class function TgxDataFile.Capabilities : TDataFileCapabilities;
 begin
   Result := [dfcRead];
 end;

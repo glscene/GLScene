@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileVRML;
 
@@ -26,7 +26,7 @@ type
 
   TgxVRMLVectorFile = class(TgxVectorFile)
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
   end;
 
@@ -154,7 +154,7 @@ end;
 // ------------------ TgxVRMLVectorFile ------------------
 // ------------------
 
-class function TgxVRMLVectorFile.Capabilities: TgxDataFileCapabilities;
+class function TgxVRMLVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead];
 end;

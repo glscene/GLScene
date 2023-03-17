@@ -1,12 +1,12 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.Canvas;
 
 (*
    Implements a basic Canvas-like interface over for OpenGL
    This class can be used for generic OpenGL applications and has no dependencies
-   to the GLXcene core units (only to base units).
+   to the GLArena core units (only to base units).
 *)
 
 interface

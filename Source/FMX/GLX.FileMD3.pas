@@ -1,9 +1,9 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileMD3;
 
-(* Code for loading animated MD3 files into GLXcene FreeForms and Actors *)
+(* Code for loading animated MD3 files into GLArena FreeForms and Actors *)
 
 interface
 
@@ -23,7 +23,7 @@ type
 
   TgxMD3VectorFile = class (TgxVectorFile)
     public
-      class function Capabilities : TgxDataFileCapabilities; override;
+      class function Capabilities : TDataFileCapabilities; override;
       procedure LoadFromStream(aStream : TStream); override;
   end;
 
@@ -35,7 +35,7 @@ implementation
 // ------------------ TgxMD3VectorFile ------------------
 // ------------------
 
-class function TgxMD3VectorFile.Capabilities : TgxDataFileCapabilities;
+class function TgxMD3VectorFile.Capabilities : TDataFileCapabilities;
 begin
   Result:=[dfcRead];
 end;

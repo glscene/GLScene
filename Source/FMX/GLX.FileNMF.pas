@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileNMF;
 
@@ -43,7 +43,7 @@ type
 type
   TgxNMFVectorFile = class(TgxVectorFile)
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
     procedure SaveToStream(aStream: TStream); override;
   end;
@@ -95,7 +95,7 @@ end;
 // ------------------ TgxNMFVectorFile ------------------
 // ------------------
 
-class function TgxNMFVectorFile.Capabilities: TgxDataFileCapabilities;
+class function TgxNMFVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead, dfcWrite];
 end;

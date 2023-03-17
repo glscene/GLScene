@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.EParticleMasksManager;
 
@@ -11,7 +11,7 @@ unit GLX.EParticleMasksManager;
    Module Number: 37
 
    Description: This is merely an addon to GLX.Scene, since i don't want to edit GLScene's source code directly
-                and make changes (since GLXcene's source code constantly changes). What the manager does
+                and make changes (since GLArena's source code constantly changes). What the manager does
                 is to provide a basic tool for newly created particles to be modified (their position currently).
                 Their position is set from 3 different masks, which create a "virtual" 3d object... meaning,
                 an actual 3d object is not created, but an outline for particles or any other objects are positioned.
@@ -21,7 +21,7 @@ unit GLX.EParticleMasksManager;
 
                 The images should be
 
-   Licenses: Removed. Donated to GLXcene's Code Base as long as the author (Kenneth Poulter) is not altered in this file.
+   Licenses: Removed. Donated to GLArena's Code Base as long as the author (Kenneth Poulter) is not altered in this file.
              Theft of code also is not allowed, although alterations are allowed.
  *)
 

@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileLMTS;
 
@@ -96,7 +96,7 @@ type
 
   TgxLMTSVectorFile = class(TgxVectorFile)
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
     procedure SaveToStream(aStream: TStream); override;
   end;
@@ -112,7 +112,7 @@ uses
 // ------------------ TgxLMTSVectorFile ------------------
 // ------------------
 
-class function TgxLMTSVectorFile.Capabilities: TgxDataFileCapabilities;
+class function TgxLMTSVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead, dfcWrite];
 end;

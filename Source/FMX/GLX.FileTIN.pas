@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileTIN;
 
@@ -27,7 +27,7 @@ type
     This format is encountered in the DEM/DTED world and used in place of grids. *)
   TgxTINVectorFile = class(TgxVectorFile)
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
   end;
 
@@ -39,7 +39,7 @@ implementation
 // ------------------ TgxTINVectorFile ------------------
 // ------------------
 
-class function TgxTINVectorFile.Capabilities: TgxDataFileCapabilities;
+class function TgxTINVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead];
 end;

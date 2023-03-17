@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.Scene;
 
@@ -793,7 +793,7 @@ type
     function AxisAlignedDimensionsUnscaled: TVector4f; override;
   published
     (* Specifies if a build list be made.
-      If True, GLXcene will generate a build list (side cache),
+      If True, GLArena will generate a build list (side cache),
       ie. OnRender will only be invoked once for the first render, or after
       a StructureChanged call. This is suitable for "static" geometry and
       will usually speed up rendering of things that don't change.

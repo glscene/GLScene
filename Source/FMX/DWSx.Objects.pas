@@ -1,5 +1,5 @@
 //
-// The graphics rendering platform GLXcene http://glscene.org
+// The graphics platform GLArena https://github.com/glscene
 //
 unit DWSx.Objects;
 (*

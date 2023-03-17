@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileWAV;
 
@@ -30,7 +30,7 @@ type
   protected
   public
     function CreateCopy(AOwner: TPersistent): TgxDataFile; override;
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(Stream: TStream); override;
     procedure SaveToStream(Stream: TStream); override;
     procedure PlayOnWaveOut; override;
@@ -72,7 +72,7 @@ begin
   end;
 end;
 
-class function TgxWAVFile.Capabilities: TgxDataFileCapabilities;
+class function TgxWAVFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead, dfcWrite];
 end;

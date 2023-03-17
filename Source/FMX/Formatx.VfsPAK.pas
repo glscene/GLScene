@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit Formatx.VfsPAK;
 (*
@@ -16,8 +16,8 @@ uses
   System.Classes,
   System.Contnrs,
   System.SysUtils,
-  Scena.Strings,
-  GLX.ApplicationFileIO;
+  GLX.ApplicationFileIO,
+  Scena.Strings;
 
 const
   SIGN = 'PACK'; // Signature for uncompressed - raw pak.
@@ -191,8 +191,8 @@ begin
   FStreamList := TObjectList.Create(True);
   FFilesLists := TObjectList.Create(True);
   ActiveVfsPAK := Self;
-  vAFIOCreateFileStream := PAKCreateFileStream;
-  vAFIOFileStreamExists := PAKFileStreamExists;
+  vGXAFIOCreateFileStream := PAKCreateFileStream;
+  vGXAFIOFileStreamExists := PAKFileStreamExists;
   FCompressionLevel := None;
   FCompressed := False;
 end;
@@ -207,8 +207,8 @@ end;
 
 destructor TgxVfsPAK.Destroy;
 begin
-  vAFIOCreateFileStream := nil;
-  vAFIOFileStreamExists := nil;
+  vGXAFIOCreateFileStream := nil;
+  vGXAFIOFileStreamExists := nil;
   SetLength(FHeaderList, 0);
   FPakFiles.Free;
   // Objects are automatically freed by TObjectList

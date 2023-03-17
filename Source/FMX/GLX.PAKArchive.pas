@@ -1,11 +1,13 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.PAKArchive;
 
-{$I Scena.inc}
+(* Methods of PAK Archiving for Archive Editor in utilities *)
 
 interface
+
+{$I Scena.inc}
 
 uses
   System.Classes,
@@ -16,7 +18,7 @@ uses
 const
   SIGN = 'PACK';
 
-Type
+type
 
   TPakHeader = record
     Signature: array [0 .. 3] of AnsiChar;
@@ -133,8 +135,7 @@ end;
 
 function TPAKArchive.GetContent(Stream: TStream; index: integer): TStream;
 begin
-  FStream.Seek(FHeader.DirOffset + SizeOf(TFileSection) * index,
-    soFromBeginning);
+  FStream.Seek(FHeader.DirOffset + SizeOf(TFileSection) * index, soFromBeginning);
   FStream.Read(Dir, SizeOf(TFileSection));
   FStream.Seek(Dir.FilePos, soFromBeginning);
   Result := Stream;
@@ -156,8 +157,7 @@ end;
 
 function TPAKArchive.GetContentSize(index: integer): integer;
 begin
-  FStream.Seek(FHeader.DirOffset + SizeOf(TFileSection) * index,
-    soFromBeginning);
+  FStream.Seek(FHeader.DirOffset + SizeOf(TFileSection) * index, soFromBeginning);
   FStream.Read(Dir, SizeOf(Dir));
   Result := Dir.FileLength;
 end;
@@ -224,8 +224,7 @@ var
   f: TFileSection;
 begin
   Temp := TMemoryStream.Create;
-  FStream.Seek(FHeader.DirOffset + SizeOf(TFileSection) * index,
-    soFromBeginning);
+  FStream.Seek(FHeader.DirOffset + SizeOf(TFileSection) * index, soFromBeginning);
   FStream.ReadBuffer(Dir, SizeOf(TFileSection));
   FStream.Seek(Dir.FilePos + Dir.FileLength, soFromBeginning);
   Temp.CopyFrom(FStream, FStream.Size - FStream.Position);
@@ -236,8 +235,7 @@ begin
   for I := 0 to ContentCount - 1 do
     if I > index then
     begin
-      FStream.Seek(FHeader.DirOffset + SizeOf(TFileSection) * I,
-        soFromBeginning);
+      FStream.Seek(FHeader.DirOffset + SizeOf(TFileSection) * I, soFromBeginning);
       FStream.ReadBuffer(f, SizeOf(TFileSection));
       FStream.Position := FStream.Position - SizeOf(TFileSection);
       f.FilePos := f.FilePos - Dir.FileLength;
@@ -288,8 +286,10 @@ begin
     Extract(FContentList.IndexOf(ContentName), NewName);
 end;
 
+//----------------------------------------
 initialization
+//----------------------------------------
 
-RegisterArchiveFormat('pak', 'GLXcene PAK File', TPAKArchive);
+RegisterArchiveFormat('pak', 'PAK File', TPAKArchive);
 
 end.

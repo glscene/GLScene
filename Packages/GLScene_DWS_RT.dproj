@@ -144,12 +144,13 @@
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
         <DCCReference Include="DWS.RunTime.dcp"/>
-        <DCCReference Include="..\Source\VCL\DWS.Classes.pas"/>
-        <DCCReference Include="..\Source\VCL\DWS.HelperFunc.pas"/>
-        <DCCReference Include="..\Source\VCL\DWS.Objects.pas"/>
-        <DCCReference Include="..\Source\VCL\DWS.OpenGL.pas"/>
-        <DCCReference Include="..\Source\VCL\DWS.Script.pas"/>
-        <DCCReference Include="..\Source\VCL\DWS.VectorGeometry.pas"/>
+        <DCCReference Include="..\Source\Vcl\Pythons.Script.pas"/>
+        <DCCReference Include="..\Source\Vcl\DWS.Classes.pas"/>
+        <DCCReference Include="..\Source\Vcl\DWS.HelperFunc.pas"/>
+        <DCCReference Include="..\Source\Vcl\DWS.Objects.pas"/>
+        <DCCReference Include="..\Source\Vcl\DWS.OpenGL.pas"/>
+        <DCCReference Include="..\Source\Vcl\DWS.Script.pas"/>
+        <DCCReference Include="..\Source\Vcl\DWS.VectorGeometry.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

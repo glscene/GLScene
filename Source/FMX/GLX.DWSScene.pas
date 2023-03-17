@@ -767,7 +767,7 @@ end;
 
 procedure Register;
 begin
-  RegisterComponents('GLXcene Dws', [TDwsGLXceneUnit]);
+  RegisterComponents('GLArena Dws', [TDwsGLXceneUnit]);
 end;
 
 
@@ -778,7 +778,7 @@ end;
 constructor TDwsGLXceneUnit.Create(AOwner: TComponent);
 begin
   inherited;
-  FUnitName:='GLXcene';
+  FUnitName:='GLArena';
   with FDependencies do begin
     Add('Classes');
     Add('Scena.VectorGeometry');

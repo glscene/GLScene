@@ -111,7 +111,7 @@
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
         <DCCReference Include="GLScene_Physics_RT.dcp"/>
-        <DCCReference Include="..\Source\Physics.Register.pas"/>
+        <DCCReference Include="..\Source\Vcl\Physics.Register.pas"/>
         <RcCompile Include="..\Resources\GLScenePhysics.rc">
             <Form>GLScenePhysics.res</Form>
         </RcCompile>

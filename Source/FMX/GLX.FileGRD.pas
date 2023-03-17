@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileGRD;
 
@@ -28,7 +28,7 @@ type
    public
     HeightField: TgxHeightField;
     Nodes: array of TSingleArray;
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
    private
     StrVal: String;
@@ -52,7 +52,7 @@ const
   dSURFBLANKVAL = 1.70141E38; // default value in Surfer for blanking
   NODATA_value =  -9999; //default value in GIS ArcInfo for blanking
 
-class function TgxGRDVectorFile.Capabilities: TgxDataFileCapabilities;
+class function TgxGRDVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead];
 end;

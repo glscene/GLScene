@@ -145,21 +145,21 @@
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
-        <DCCReference Include="..\Source\Common\Newton.Import.pas"/>
-        <DCCReference Include="..\Source\Common\NGD.Import.pas"/>
-        <DCCReference Include="..\Source\Common\ODE.Import.pas"/>
-        <DCCReference Include="..\Source\Physics.NGDManager.pas"/>
-        <DCCReference Include="..\Source\Physics.NGDRagdoll.pas"/>
-        <DCCReference Include="..\Source\Physics.ODEManager.pas"/>
-        <DCCReference Include="..\Source\Physics.ODERagdoll.pas"/>
-        <DCCReference Include="..\Source\Physics.ODESkeletonColliders.pas"/>
-        <DCCReference Include="..\Source\Physics.ODEUtils.pas"/>
-        <DCCReference Include="..\Source\Physics.SPIFields.pas"/>
-        <DCCReference Include="..\Source\Physics.SPIForces.pas"/>
-        <DCCReference Include="..\Source\Physics.SPIInertias.pas"/>
-        <DCCReference Include="..\Source\Physics.SPIJoints.pas"/>
-        <DCCReference Include="..\Source\Physics.SPIManager.pas"/>
-        <DCCReference Include="..\Source\Common\PhysX.Import.pas"/>
+        <DCCReference Include="..\Source\Newton.Import.pas"/>
+        <DCCReference Include="..\Source\NGD.Import.pas"/>
+        <DCCReference Include="..\Source\ODE.Import.pas"/>
+        <DCCReference Include="..\Source\PhysX.Import.pas"/>
+        <DCCReference Include="..\Source\Vcl\Physics.NGDManager.pas"/>
+        <DCCReference Include="..\Source\Vcl\Physics.NGDRagdoll.pas"/>
+        <DCCReference Include="..\Source\Vcl\Physics.ODEManager.pas"/>
+        <DCCReference Include="..\Source\Vcl\Physics.ODERagdoll.pas"/>
+        <DCCReference Include="..\Source\Vcl\Physics.ODESkeletonColliders.pas"/>
+        <DCCReference Include="..\Source\Vcl\Physics.ODEUtils.pas"/>
+        <DCCReference Include="..\Source\Vcl\Physics.SPIFields.pas"/>
+        <DCCReference Include="..\Source\Vcl\Physics.SPIForces.pas"/>
+        <DCCReference Include="..\Source\Vcl\Physics.SPIInertias.pas"/>
+        <DCCReference Include="..\Source\Vcl\Physics.SPIJoints.pas"/>
+        <DCCReference Include="..\Source\Vcl\Physics.SPIManager.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

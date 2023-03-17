@@ -108,7 +108,7 @@
         <DCCReference Include="vclimg.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
         <DCCReference Include="GLScene_SDL_rt.dcp"/>
-        <DCCReference Include="..\Source\VCL\SDL.Context.pas"/>
+        <DCCReference Include="..\Source\Vcl\SDL.Context.pas"/>
         <RcCompile Include="..\Resources\GLSceneSDL.rc">
             <Form>GLSceneSDL.res</Form>
         </RcCompile>

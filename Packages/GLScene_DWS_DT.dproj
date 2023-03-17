@@ -100,8 +100,8 @@
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
-        <DCCReference Include="GLScene_DWS_RT.dcp"/>
-        <DCCReference Include="..\Source\VCL\DWS.Scene.pas"/>
+        <DCCReference Include="GLScene_DWS_rt.dcp"/>
+        <DCCReference Include="..\Source\Vcl\DWS.Scene.pas"/>
         <RcCompile Include="D:\Resources\GLSceneDWS.rc">
             <Form>GLSceneDWS.res</Form>
         </RcCompile>

@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileDDS;
 
@@ -17,7 +17,7 @@ uses
   System.Math,
 
   Scena.VectorGeometry,
-  GLX.RGBE,
+  Scena.RGBE,
   Scena.Strings,
   GLX.ApplicationFileIO,
 
@@ -34,7 +34,7 @@ type
   private
     procedure flipSurface(chgData: PGLubyte; w, h, d: integer);
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromFile(const filename: string); override;
     procedure SaveToFile(const filename: string); override;
     procedure LoadFromStream(stream: TStream); override;
@@ -552,7 +552,7 @@ begin
   end;
 end;
 
-class function TgxDDSImage.Capabilities: TgxDataFileCapabilities;
+class function TgxDDSImage.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead, dfcWrite];
 end;

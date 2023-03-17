@@ -1,6 +1,6 @@
 //
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 //
 

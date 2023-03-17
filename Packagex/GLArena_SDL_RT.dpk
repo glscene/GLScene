@@ -35,7 +35,7 @@ requires
   GLArena_RT;
 
 contains
-  SDL.Import in '..\Source\Common\SDL.Import.pas',
+  SDL.Import in '..\Source\SDL.Import.pas',
   SDLx.Window in '..\Source\FMX\SDLx.Window.pas';
 
 end.

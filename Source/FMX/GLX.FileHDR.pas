@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileHDR;
 
@@ -16,7 +16,7 @@ uses
 
   Scena.VectorTypes,
   Scena.VectorGeometry,
-  GLX.RGBE,
+  Scena.RGBE,
   GLX.ApplicationFileIO,
   Scena.Strings,
 
@@ -38,7 +38,7 @@ type
     // defaults to 1.0
     fProgramType: string[16];
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromFile(const filename: string); override;
     procedure LoadFromStream(stream: TStream); override;
     procedure AssignFromTexture(textureContext: TgxContext;
@@ -291,7 +291,7 @@ begin
   end;
 end;
 
-class function TgxHDRImage.Capabilities: TgxDataFileCapabilities;
+class function TgxHDRImage.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead { , dfcWrite } ];
 end;

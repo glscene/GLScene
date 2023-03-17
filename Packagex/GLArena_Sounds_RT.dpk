@@ -39,11 +39,11 @@ contains
   Soundx.SMOpenAL in '..\Source\FMX\Soundx.SMOpenAL.pas',
   Soundx.SMWaveOut in '..\Source\FMX\Soundx.SMWaveOut.pas',
   Soundx.SMBASS in '..\Source\FMX\Soundx.SMBASS.pas',
-  FMOD.errors in '..\Source\Common\FMOD.errors.pas',
-  FMOD.Import in '..\Source\Common\FMOD.Import.pas',
-  FMOD.presets in '..\Source\Common\FMOD.presets.pas',
-  FMOD.types in '..\Source\Common\FMOD.types.pas',
-  BASS.Import in '..\Source\Common\BASS.Import.pas',
-  OpenAL.Import in '..\Source\Common\OpenAL.Import.pas';
+  FMOD.errors in '..\Source\FMOD.errors.pas',
+  FMOD.Import in '..\Source\FMOD.Import.pas',
+  FMOD.presets in '..\Source\FMOD.presets.pas',
+  FMOD.types in '..\Source\FMOD.types.pas',
+  BASS.Import in '..\Source\BASS.Import.pas',
+  OpenAL.Import in '..\Source\OpenAL.Import.pas';
 
 end.

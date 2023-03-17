@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileMD5;
 
@@ -32,7 +32,7 @@ type
     function ReadLine: String;
 
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
   end;
 
@@ -63,7 +63,7 @@ begin
   until (Result <> '') or (FCurrentPos >= FMD5String.Count);
 end;
 
-class function TgxMD5VectorFile.Capabilities: TgxDataFileCapabilities;
+class function TgxMD5VectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead];
 end;

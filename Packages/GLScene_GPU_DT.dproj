@@ -114,9 +114,9 @@
         <DCCReference Include="VclSmp.dcp"/>
         <DCCReference Include="GLScene_DT.dcp"/>
         <DCCReference Include="GLScene_GPU_RT.dcp"/>
-        <DCCReference Include="..\Source\CUDA.PropEditors.pas"/>
-        <DCCReference Include="..\Source\CUDA.Register.pas"/>
-        <DCCReference Include="..\Source\CUDA.EditorFm.pas"/>
+        <DCCReference Include="..\Source\Vcl\CUDA.PropEditors.pas"/>
+        <DCCReference Include="..\Source\Vcl\CUDA.Register.pas"/>
+        <DCCReference Include="..\Source\Vcl\CUDA.EditorFm.pas"/>
         <RcCompile Include="..\Resources\GLSceneGPU.rc">
             <Form>GLSceneGPU.res</Form>
         </RcCompile>

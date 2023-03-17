@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.VectorFileObjects;
 
@@ -838,13 +838,13 @@ type
 
   TgxVectorFileClass = class of TgxVectorFile;
 
-  (* GLSM ( GLXcene Mesh) vector file.
+  (* GLSM ( GLArena Mesh) vector file.
     This corresponds to the 'native' Scene format, and object persistence
     stream, which should be the 'fastest' of all formats to load, and supports
-    all of GLXcene features. *)
+    all of GLArena features. *)
   TgxGLSMVectorFile = class(TgxVectorFile)
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
     procedure SaveToStream(aStream: TStream); override;
   end;
@@ -5744,7 +5744,7 @@ end;
 // ------------------ TgxGLSMVectorFile ------------------
 // ------------------
 
-class function TgxGLSMVectorFile.Capabilities: TgxDataFileCapabilities;
+class function TgxGLSMVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead, dfcWrite];
 end;
@@ -7374,7 +7374,7 @@ initialization
 
 // ------------------------------------------------------------------
 
-RegisterVectorFileFormat('glsm', 'GLXcene Mesh', TgxGLSMVectorFile);
+RegisterVectorFileFormat('glsm', 'GLArena Mesh', TgxGLSMVectorFile);
 
 RegisterClasses([TgxFreeForm, TgxActor, TgxSkeleton, TgxSkeletonFrame, TgxSkeletonBone, TgxSkeletonMeshObject, TgxMeshObject,
   TgxSkeletonFrameList, TgxMeshMorphTarget, TgxMorphableMeshObject, TgxFaceGroup, TfgxVertexIndexList,

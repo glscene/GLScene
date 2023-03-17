@@ -107,7 +107,7 @@
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="fmx.dcp"/>
         <DCCReference Include="GLArena_RT.dcp"/>
-        <DCCReference Include="..\Source\Common\SDL.Import.pas"/>
+        <DCCReference Include="..\Source\SDL.Import.pas"/>
         <DCCReference Include="..\Source\FMX\SDLx.Window.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

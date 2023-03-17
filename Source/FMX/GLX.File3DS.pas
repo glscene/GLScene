@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.File3DS;
 
@@ -252,7 +252,7 @@ type
   Tgx3DSVectorFile = class(TgxVectorFile)
   public
 
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
   end;
 
@@ -1491,7 +1491,7 @@ end;
 // ------------------
 // ------------------ TGL3DSVectorFile ------------------
 // ------------------
-class function Tgx3DSVectorFile.Capabilities: TgxDataFileCapabilities;
+class function Tgx3DSVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead];
 end;

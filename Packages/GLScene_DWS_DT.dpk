@@ -37,6 +37,6 @@ requires
   GLScene_DWS_rt;
 
 contains
-  DWS.Scene in '..\Source\VCL\DWS.Scene.pas';
+  DWS.Scene in '..\Source\Vcl\DWS.Scene.pas';
 
 end.

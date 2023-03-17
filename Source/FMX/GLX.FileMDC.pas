@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileMDC;
 
@@ -119,7 +119,7 @@ type
 type
   TgxMDCVectorFile = class(TgxVectorFile)
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(AStream: TStream); override;
   end;
 
@@ -131,7 +131,7 @@ implementation
 // ------------------ TgxMDCVectorFile ------------------
 // ------------------
 
-class function TgxMDCVectorFile.Capabilities: TgxDataFileCapabilities;
+class function TgxMDCVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [DfcRead];
 end;

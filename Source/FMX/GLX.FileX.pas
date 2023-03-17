@@ -1,5 +1,5 @@
 //
-// The graphics platform GLXcene https://github.com/glscene
+// The graphics platform GLArena https://github.com/glscene
 //
 unit GLX.FileX;
 
@@ -26,7 +26,7 @@ uses
 type
   TgxXVectorFile = class(TgxVectorFile)
   public
-    class function Capabilities: TgxDataFileCapabilities; override;
+    class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
   end;
 
@@ -34,7 +34,7 @@ type
 implementation
 // ==========================================================
 
-class function TgxXVectorFile.Capabilities: TgxDataFileCapabilities;
+class function TgxXVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead];
 end;

@@ -35,8 +35,8 @@ requires
   GLScene_RT;
 
 contains
-  SDL.Window in '..\Source\VCL\SDL.Window.pas',
-  SDL.Import in '..\Source\Common\SDL.Import.pas';
+  SDL.Import in '..\Source\SDL.Import.pas',
+  SDL.Window in '..\Source\VCL\SDL.Window.pas';
 
 end.
 

@@ -1,5 +1,5 @@
 //
-// The graphics rendering engine GLXcene http://glscene.org
+// The graphics platform GLArena https://github.com/glscene
 //
 unit CGx.Register;
 
@@ -31,7 +31,7 @@ implementation
 
 procedure Register;
 begin
-  RegisterComponents('GLXcene Shaders', [TCGxShader, TCGxBombShader]);
+  RegisterComponents('GLArena Shaders', [TCGxShader, TCGxBombShader]);
   RegisterPropertyEditor(TypeInfo(TgxLibMaterialName), TCGxBombShader, '',
              TgxLibMaterialNameProperty);
 end;
