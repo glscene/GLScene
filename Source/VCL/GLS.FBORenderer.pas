@@ -1,7 +1,6 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.FBORenderer;
 
 (* Implements FBO support *)
@@ -15,9 +14,12 @@ uses
   Winapi.OpenGLext,
   System.Classes,
   System.SysUtils,
-  
+
   Scena.OpenGLTokens,
+  Scena.TextureFormat,
+  Scena.VectorTypes,
   Scena.VectorGeometry,
+
   GLS.PersistentClasses,
   Scena.PipelineTransformation,
   GLS.Scene,
@@ -27,8 +29,6 @@ uses
   GLS.Material,
   GLS.RenderContextInfo,
   GLS.State,
-  Scena.TextureFormat,
-  Scena.VectorTypes,
   GLS.MultiSampleImage,
   Scena.Logger;
 

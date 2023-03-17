@@ -63,7 +63,7 @@ type
   TGLCyborgThinks = class(TCollection);
 
   // A list of thinking periods for TGLCyborgThinkingMode
-  TGLCyborgThinksList = class(TPersistentObjectList);
+  TGLCyborgThinksList = class(TGLPersistentObjectList);
 
 const
   cDefaultCyborgOptions = [coCollide];

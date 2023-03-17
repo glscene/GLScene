@@ -38,7 +38,7 @@ type
 
   (* List class for object picking.
      This list is used to store the results of a PickObjects call. *)
-  TGLPickList = class(TPersistentObjectList)
+  TGLPickList = class(TGLPersistentObjectList)
   private
     function GetFar(aValue: Integer): Single;
     function GetHit(aValue: Integer): TObject;

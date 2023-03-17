@@ -22,6 +22,7 @@ uses
   Scena.VectorTypes,
   Scena.OpenGLTokens,
   Scena.VectorGeometry,
+  Scena.TextureFormat,
   GLS.Graphics;
 
 type
@@ -37,8 +38,7 @@ implementation
 //--------------------------------------------------------------------
 
 uses
-  GLS.FileHDR,
-  Scena.TextureFormat;
+  GLS.FileHDR;
 
 // ------------------
 // ------------------ THDRImage ------------------

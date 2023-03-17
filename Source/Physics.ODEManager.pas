@@ -67,7 +67,7 @@ type
     FOnCustomCollision: TGLODECustomCollisionEvent;
     FNumContactJoints,
 	FMaxContacts: Integer;
-    FODEBehaviours: TPersistentObjectList;
+    FODEBehaviours: TGLPersistentObjectList;
     FRFContactList: TList;
     FIterations: Integer;
     FSolver: TGLODESolverMethod;
@@ -1297,7 +1297,7 @@ begin
 
   inherited;
 
-  FODEBehaviours:= TPersistentObjectList.Create;
+  FODEBehaviours:= TGLPersistentObjectList.Create;
   FRFContactList:= TList.Create;
 
   FGravity:= TGLCoordinates.CreateInitialized(Self, NullHmgPoint, csVector);

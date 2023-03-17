@@ -1,7 +1,6 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.FileHDR;
 
 (* HDR File support *)
@@ -17,13 +16,14 @@ uses
   System.SysUtils,
   
   Scena.OpenGLTokens,
-  GLS.Context,
-  GLS.Graphics,
   Scena.TextureFormat,
-  GLS.ApplicationFileIO,
-  GLS.RGBE,
+  Scena.RGBE,
   Scena.VectorTypes,
-  Scena.VectorGeometry;
+  Scena.VectorGeometry,
+
+  GLS.Context,
+  GLS.ApplicationFileIO,
+  GLS.Graphics;
 
 
 type

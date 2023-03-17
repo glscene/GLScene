@@ -572,8 +572,8 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure DestroyHandles;
-    procedure WriteToFiler(writer: TVirtualWriter);
-    procedure ReadFromFiler(reader: TVirtualReader);
+    procedure WriteToFiler(writer: TgxVirtualWriter);
+    procedure ReadFromFiler(reader: TgxVirtualReader);
     procedure SaveToStream(aStream: TStream); virtual;
     procedure LoadFromStream(aStream: TStream); virtual;
     procedure AddMaterialsFromStream(aStream: TStream);
@@ -2320,7 +2320,7 @@ begin
   Result := (FMaterials.Count > 0);
 end;
 
-procedure TgxMaterialLibrary.WriteToFiler(writer: TVirtualWriter);
+procedure TgxMaterialLibrary.WriteToFiler(writer: TgxVirtualWriter);
 var
   i, j: Integer;
   libMat: TgxLibMaterial;
@@ -2488,7 +2488,7 @@ begin
   end;
 end;
 
-procedure TgxMaterialLibrary.ReadFromFiler(reader: TVirtualReader);
+procedure TgxMaterialLibrary.ReadFromFiler(reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
   libMat: TgxLibMaterial;
@@ -2661,9 +2661,9 @@ end;
 
 procedure TgxMaterialLibrary.SaveToStream(aStream: TStream);
 var
-  wr: TBinaryWriter;
+  wr: TgxBinaryWriter;
 begin
-  wr := TBinaryWriter.Create(aStream);
+  wr := TgxBinaryWriter.Create(aStream);
   try
     Self.WriteToFiler(wr);
   finally
@@ -2673,9 +2673,9 @@ end;
 
 procedure TgxMaterialLibrary.LoadFromStream(aStream: TStream);
 var
-  rd: TBinaryReader;
+  rd: TgxBinaryReader;
 begin
-  rd := TBinaryReader.Create(aStream);
+  rd := TgxBinaryReader.Create(aStream);
   try
     Self.ReadFromFiler(rd);
   finally

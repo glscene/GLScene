@@ -48,7 +48,7 @@ type
   TgxMaterialMultiProxy = class;
 
   // MasterObject description for a MultiProxy object.
-  TgxMaterialMultiProxyMaster = class(TInterfacedCollectionItem, IgxMaterialLibrarySupported)
+  TgxMaterialMultiProxyMaster = class(TgxInterfacedCollectionItem, IgxMaterialLibrarySupported)
   private
     FMasterObject: TgxBaseSceneObject;
     FMasterLibMaterial: TgxLibMaterial;

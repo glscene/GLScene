@@ -324,18 +324,18 @@ end;
 
 procedure TgxFile3DSActor.ReadMesh(Stream: TStream);
 var
-  virt: TBinaryReader;
+  virt: TgxBinaryReader;
 begin
-  virt := TBinaryReader.Create(Stream);
+  virt := TgxBinaryReader.Create(Stream);
   MeshOBjects.ReadFromFiler(virt);
   virt.Free;
 end;
 
 procedure TgxFile3DSActor.WriteMesh(Stream: TStream);
 var
-  virt: TBinaryWriter;
+  virt: TgxBinaryWriter;
 begin
-  virt := TBinaryWriter.Create(Stream);
+  virt := TgxBinaryWriter.Create(Stream);
   MeshOBjects.WriteToFiler(virt);
   virt.Free;
 end;
@@ -371,9 +371,9 @@ end;
 procedure TgxFile3DSFreeForm.ReadMesh(Stream: TStream);
 var
   v: TVector4f;
-  virt: TBinaryReader;
+  virt: TgxBinaryReader;
 begin
-  virt := TBinaryReader.Create(Stream);
+  virt := TgxBinaryReader.Create(Stream);
 
   virt.read(FRefMat, sizeof(FRefMat));
   virt.read(v, sizeof(v));
@@ -389,10 +389,10 @@ end;
 
 procedure TgxFile3DSFreeForm.WriteMesh(Stream: TStream);
 var
-  virt: TBinaryWriter;
+  virt: TgxBinaryWriter;
   v: TVector4f;
 begin
-  virt := TBinaryWriter.Create(Stream);
+  virt := TgxBinaryWriter.Create(Stream);
 
   virt.write(FRefMat, sizeof(FRefMat));
   v := S_Rot3DS.AsVector;

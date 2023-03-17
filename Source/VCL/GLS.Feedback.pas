@@ -27,9 +27,9 @@ uses
   Scena.OpenGLTokens,
   Scena.VectorTypes,
   Scena.VectorGeometry,
+  Scena.PipelineTransformation,
 
   GLS.PersistentClasses,
-  Scena.PipelineTransformation,
   GLS.VectorLists,
   GLS.Scene,
   GLS.VectorFileObjects,

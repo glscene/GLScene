@@ -510,10 +510,10 @@ var
   TmpElement: TgxGuiElement;
   TmpAlignment: TGUIAlignments;
   Version: Integer;
-  Data: TBinaryReader;
+  Data: TgxBinaryReader;
 
 begin
-  Data := TBinaryReader.Create(Stream);
+  Data := TgxBinaryReader.Create(Stream);
   try
 
     Version := Data.ReadInteger;
@@ -561,10 +561,10 @@ var
   Alignments, XC, YC: Integer;
   TmpElement: TgxGuiElement;
   TmpAlignment: TGUIAlignments;
-  Data: TBinaryWriter;
+  Data: TgxBinaryWriter;
 
 begin
-  Data := TBinaryWriter.Create(Stream);
+  Data := TgxBinaryWriter.Create(Stream);
   try
     Data.WriteInteger(1);
     Data.WriteInteger(FGuiComponents.Count);

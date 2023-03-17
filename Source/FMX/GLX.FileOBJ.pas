@@ -163,8 +163,8 @@ type
     procedure Assign(Source: TPersistent); override;
     constructor CreateOwned(aOwner: TgxFaceGroups); override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgxVirtualReader); override;
     procedure Add(VertexIdx, NormalIdx, TexCoordIdx: Integer);
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
     procedure AddToTriangles(aList: TgxAffineVectorList; aTexCoords: TgxAffineVectorList = nil;
@@ -1361,7 +1361,7 @@ begin
     inherited;
 end;
 
-procedure TOBJFGVertexNormalTexIndexList.ReadFromFiler(reader: TVirtualReader);
+procedure TOBJFGVertexNormalTexIndexList.ReadFromFiler(reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -1384,7 +1384,7 @@ begin
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TOBJFGVertexNormalTexIndexList.WriteToFiler(writer: TVirtualWriter);
+procedure TOBJFGVertexNormalTexIndexList.WriteToFiler(writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do

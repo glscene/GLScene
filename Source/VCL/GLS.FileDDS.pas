@@ -23,7 +23,7 @@ uses
   Scena.TextureFormat,
   GLS.CompositeImage,
   GLS.MultiSampleImage,
-  GLS.RGBE,
+//  GLS.RGBE,
   GLS.ApplicationFileIO,
   GLS.Material,
   Scena.Strings;

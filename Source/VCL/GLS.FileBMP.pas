@@ -1,7 +1,6 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.FileBMP;
 
 (* Graphic engine friendly loading of BMP image *)
@@ -17,10 +16,11 @@ uses
   System.SysUtils,
 
   Scena.OpenGLTokens,
+  Scena.TextureFormat,
+
   GLS.Context,
   GLS.Graphics,
-  GLS.ApplicationFileIO,
-  Scena.TextureFormat;
+  GLS.ApplicationFileIO;
 
 type
 
@@ -70,44 +70,44 @@ const
 type
 
   TBitMapFileHeader = packed record
-    {00+02 :File type}
+    // 00+02: File type
     bfType: word;
-    {02+04 :File size in bytes}
+    // 02+04: File size in bytes
     bfSize: longint;
-    {06+04 : Reserved}
+    // 06+04: Reserved
     bfReserved: longint;
-    {10+04 : Offset of image data : size if the file hieder + the info header + palette}
+    // 10+04: Offset of image data: size if the file hieder + the info header + palette
     bfOffset: longint;
   end;
   PBitMapFileHeader = ^TBitMapFileHeader;
 
   TBitMapInfoHeader = packed record
-    {14+04 : Size of the bitmap info header : sould be 40=$28}
+    //14+04: Size of the bitmap info header : sould be 40=$28
     Size: longint;
-    {18+04 : Image width in pixels}
+    //18+04: Image width in pixels
     Width: longint;
-    {22+04 : Image height in pixels}
+    //22+04: Image height in pixels
     Height: longint;
-    {26+02 : Number of image planes : should be 1 always}
+    //26+02: Number of image planes : should be 1 always
     Planes: word;
-    {28+02 : Color resolution : Number of bits per pixel (1,4,8,16,24,32)}
+    //28+02: Color resolution : Number of bits per pixel (1,4,8,16,24,32)
     BitCount: word;
-    {30+04 : Compression Type}
+    //30+04: Compression Type
     Compression: longint;
-    {34+04 : Size of image data (not headers nor palette): can be 0 if no compression}
+    //34+04: Size of image data (not headers nor palette): can be 0 if no compression
     SizeImage: longint;
-    {38+04 : Horizontal resolution in pixel/meter}
+    //38+04: Horizontal resolution in pixel/meter
     XPelsPerMeter: Longint;
-    {42+04 : Vertical resolution in pixel/meter}
+    //42+04: Vertical resolution in pixel/meter
     YPelsPerMeter: Longint;
-    {46+04 : Number of colors used}
+    //46+04: Number of colors used
     ClrUsed: longint;
-    {50+04 : Number of imprtant colors used : usefull for displaying on VGA256}
+    //50+04: Number of imprtant colors used: usefull for displaying on VGA256
     ClrImportant: longint;
   end;
   PBitMapInfoHeader = ^TBitMapInfoHeader;
 
- 
+
 procedure TGLBMPImage.LoadFromFile(const filename: string);
 var
   fs: TStream;
@@ -309,7 +309,7 @@ begin
     else // Seems to me that this is dangerous.
       Stream.Read(LPalette[0], nPalette * SizeOf(TGLPixel32));
   end
-  else if LInfo.ClrUsed > 0 then { Skip palette }
+  else if LInfo.ClrUsed > 0 then // Skip palette
     Stream.Position := Stream.Position + LInfo.ClrUsed * 3;
 
   UnMipmap;
@@ -383,34 +383,34 @@ var
   nibline: PByteArray;
   even: boolean;
 begin
-  tmpsize := FReadSize * 2; { ReadSize is in bytes, while nibline is made of nibbles, so it's 2*readsize long }
-  getmem(nibline, tmpsize);
+  tmpsize := FReadSize * 2; // ReadSize is in bytes, while nibline is made of nibbles, so it's 2*readsize long
+  GetMem(nibline, tmpsize);
   try
     i := 0;
     while true do
     begin
-      { let's see if we must skip pixels because of delta... }
+      // let's see if we must skip pixels because of delta...
       if FDeltaY <> -1 then
       begin
         if Row = FDeltaY then
-          j := FDeltaX { If we are on the same line, skip till DeltaX }
+          j := FDeltaX // If we are on the same line, skip till DeltaX
         else
-          j := tmpsize; { else skip up to the end of this line }
+          j := tmpsize; // else skip up to the end of this line
         while (i < j) do
         begin
           NibLine[i] := 0;
           inc(i);
         end;
 
-        if Row = FDeltaY then { we don't need delta anymore }
+        if Row = FDeltaY then // we don't need delta anymore
           FDeltaY := -1
         else
-          break; { skipping must continue on the next line, we are finished here }
+          break; // skipping must continue on the next line, we are finished here
       end;
 
       Stream.Read(b0, 1);
       Stream.Read(b1, 1);
-      if b0 <> 0 then { number of repetitions }
+      if b0 <> 0 then // number of repetitions
       begin
         if b0 + i > tmpsize then
           raise EInvalidRasterFile.Create('Bad BMP RLE chunk at row ' + inttostr(row) + ', col ' + inttostr(i) + ', file offset $' + inttohex(Stream.Position, 16));
@@ -428,17 +428,17 @@ begin
       end
       else
         case b1 of
-          0: break; { end of line }
-          1: break; { end of file }
+          0: break; // end of line
+          1: break; // end of file
           2:
-            begin { Next pixel position. Skipped pixels should be left untouched, but we set them to zero }
+            begin // Next pixel position. Skipped pixels should be left untouched, but we set them to zero
               Stream.Read(b0, 1);
               Stream.Read(b1, 1);
               FDeltaX := i + b0;
               FDeltaY := Row + b1;
             end
         else
-          begin { absolute mode }
+          begin // absolute mode
             if b1 + i > tmpsize then
               raise EInvalidRasterFile.Create('Bad BMP RLE chunk at row ' + inttostr(row) + ', col ' + inttostr(i) + ', file offset $' + inttohex(Stream.Position, 16));
             j := i + b1;
@@ -455,14 +455,14 @@ begin
               inc(i);
               even := not even;
             end;
-            { aligned on 2 bytes boundary: see rle8 for details  }
+            // aligned on 2 bytes boundary: see rle8 for details
             b1 := b1 + (b1 mod 2);
             if (b1 mod 4) <> 0 then
               Stream.Seek(1, soFromCurrent);
           end;
         end;
     end;
-    { pack the nibline into the linebuf }
+    // pack the nibline into the linebuf
     for i := 0 to FReadSize - 1 do
       FLineBuffer[i] := (NibLine[i * 2] shl 4) or NibLine[i * 2 + 1];
   finally
@@ -478,28 +478,28 @@ begin
   i := 0;
   while true do
   begin
-    { let's see if we must skip pixels because of delta... }
+    // let's see if we must skip pixels because of delta...
     if FDeltaY <> -1 then
     begin
       if Row = FDeltaY then
-        j := FDeltaX { If we are on the same line, skip till DeltaX }
+        j := FDeltaX // If we are on the same line, skip till DeltaX
       else
-        j := FReadSize; { else skip up to the end of this line }
+        j := FReadSize; // else skip up to the end of this line
       while (i < j) do
       begin
         FLineBuffer[i] := 0;
         inc(i);
       end;
 
-      if Row = FDeltaY then { we don't need delta anymore }
+      if Row = FDeltaY then // we don't need delta anymore
         FDeltaY := -1
       else
-        break; { skipping must continue on the next line, we are finished here }
+        break; // skipping must continue on the next line, we are finished here
     end;
 
     Stream.Read(b0, 1);
     Stream.Read(b1, 1);
-    if b0 <> 0 then { number of repetitions }
+    if b0 <> 0 then // number of repetitions
     begin
       if b0 + i > FReadSize then
         raise EInvalidRasterFile.Create('Bad BMP RLE chunk at row ' + inttostr(row) + ', col ' + inttostr(i) + ', file offset $' + inttohex(Stream.Position, 16));
@@ -512,23 +512,23 @@ begin
     end
     else
       case b1 of
-        0: break; { end of line }
-        1: break; { end of file }
+        0: break; // end of line
+        1: break; // end of file
         2:
-          begin { Next pixel position. Skipped pixels should be left untouched, but we set them to zero }
+          begin // Next pixel position. Skipped pixels should be left untouched, but we set them to zero
             Stream.Read(b0, 1);
             Stream.Read(b1, 1);
             FDeltaX := i + b0;
             FDeltaY := Row + b1;
           end
       else
-        begin { absolute mode }
+        begin // absolute mode
           if b1 + i > FReadSize then
             raise EInvalidRasterFile.Create('Bad BMP RLE chunk at row ' + inttostr(row) + ', col ' + inttostr(i) + ', file offset $' + inttohex(Stream.Position, 16));
           Stream.Read(FLineBuffer[i], b1);
           inc(i, b1);
-          { aligned on 2 bytes boundary: every group starts on a 2 bytes boundary, but absolute group
-            could end on odd address if there is a odd number of elements, so we pad it  }
+          // aligned on 2 bytes boundary: every group starts on a 2 bytes boundary, but absolute group
+          // could end on odd address if there is a odd number of elements, so we pad it
           if (b1 mod 2) <> 0 then
             Stream.Seek(1, soFromCurrent);
         end;
@@ -550,14 +550,13 @@ end;
 
 class function TGLBMPImage.Capabilities: TGLDataFileCapabilities;
 begin
-  Result := [dfcRead {, dfcWrite}];
+  Result := [dfcRead (*, dfcWrite*)];
 end;
 
 //=============================================================
 initialization
 //=============================================================
 
-  { Register this Fileformat-Handler with GLScene }
   RegisterRasterFormat('bmp', 'Bitmap Image File', TGLBMPImage);
 
 end.

@@ -111,7 +111,7 @@ type
     Path: TFileName;
     TestTree: TGLTree;
     TreesShown: Integer;
-    nearTrees: TPersistentObjectList;
+    nearTrees: TGLPersistentObjectList;
     Imposter: TImposter;
     densityBitmap: TBitmap;
     mirrorTexture: TGLTextureHandle;
@@ -217,7 +217,7 @@ begin
   SetCursorPos(lmp.X, lmp.Y);
   ShowCursor(False);
 
-  nearTrees := TPersistentObjectList.Create;
+  nearTrees := TGLPersistentObjectList.Create;
 
   camTurn := -60;
   enableRectReflection := False;

@@ -43,7 +43,7 @@ uses
 type
   TGLTextureSharingShader = class;
 
-  TGLTextureSharingShaderMaterial = class(TInterfacedCollectionItem, IGLMaterialLibrarySupported)
+  TGLTextureSharingShaderMaterial = class(TGLInterfacedCollectionItem, IGLMaterialLibrarySupported)
   private
     FTextureMatrix: TGLMatrix;
     FNeedToUpdateTextureMatrix: Boolean;

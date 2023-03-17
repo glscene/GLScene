@@ -1,7 +1,6 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.PerlinPFX;
 
 (* PFX particle effects revolving around the use of Perlin noise *)

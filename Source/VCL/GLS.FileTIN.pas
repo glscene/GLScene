@@ -3,7 +3,7 @@
 //
 unit GLS.FileTIN;
 
-(* TIN (Triangular Irregular Network) vector file format implementation *)
+(* Import of TIN (Triangular Irregular Network) vector file format implementation *)
 
 interface
 

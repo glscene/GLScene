@@ -1,7 +1,6 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit Formats.MD3;
 
 (* File loading methods for the MD3 file format *)
@@ -130,7 +129,7 @@ begin
 
   // Read in the Tags
   SetLength(Tags,ModelHeader.numFrames*ModelHeader.numTags);
-  if ModelHeader.numTags > 0 then 
+  if ModelHeader.numTags > 0 then
      aStream.Read(Tags[0],sizeof(TMD3Tag)*ModelHeader.numFrames*ModelHeader.numTags);
 
   // Read in the Mesh data

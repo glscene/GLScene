@@ -3,7 +3,7 @@
 //
 unit Formats.X;
 
-(* Simple X format support for Microsoft's favorite format *)
+(* Loading simple X format files for Microsoft's favorite format *)
 
 interface
 
@@ -47,7 +47,7 @@ type
 
   TDXMaterialList = class;
 
-  TDXMaterial = class(TPersistentObject)
+  TDXMaterial = class(TGLPersistentObject)
   private
     FDiffuse: TVector4f;
     FSpecPower: Single;

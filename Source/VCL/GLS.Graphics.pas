@@ -323,7 +323,7 @@ type
   end;
 
   // Stores registered raster file formats.
-  TGLRasterFileFormatsList = class(TPersistentObjectList)
+  TGLRasterFileFormatsList = class(TGLPersistentObjectList)
   public
     destructor Destroy; override;
     procedure Add(const Ext, Desc: string; DescID: Integer; AClass:

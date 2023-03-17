@@ -56,7 +56,7 @@ type
     A base class for mesh objects. The class introduces a set of vertices and
     normals for the object but does no rendering of its own
   *)
-  TGLBaseMeshObject = class(TPersistentObject)
+  TGLBaseMeshObject = class(TGLPersistentObject)
   private
     FName: string;
     FVertices: TGLAffineVectorList;
@@ -70,8 +70,8 @@ type
     constructor Create; override;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     // Clears all mesh object data, submeshes, facegroups, etc.
     procedure Clear; virtual;
     // Translates all the vertices by the given delta.
@@ -118,7 +118,7 @@ type
     so that the local matrices will be recalculated (the call to Flush does
     not recalculate the matrices, but marks the current ones as dirty)
   *)
-  TGLSkeletonFrame = class(TPersistentObject)
+  TGLSkeletonFrame = class(TGLPersistentObject)
   private
     FOwner: TGLSkeletonFrameList;
     FName: string;
@@ -135,8 +135,8 @@ type
     constructor CreateOwned(aOwner: TGLSkeletonFrameList);
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     property Owner: TGLSkeletonFrameList read FOwner;
     property Name: string read FName write FName;
     // Position values for the joints.
@@ -163,7 +163,7 @@ type
   end;
 
   // A list of TGLSkeletonFrame objects
-  TGLSkeletonFrameList = class(TPersistentObjectList)
+  TGLSkeletonFrameList = class(TGLPersistentObjectList)
   private
     FOwner: TPersistent;
   protected
@@ -171,7 +171,7 @@ type
   public
     constructor CreateOwned(aOwner: TPersistent);
     destructor Destroy; override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     // As the name states; Convert Quaternions to Rotations or vice-versa.
     procedure ConvertQuaternionsToRotations(KeepQuaternions: Boolean = True; SetTransformMode: Boolean = True);
     procedure ConvertRotationsToQuaternions(KeepRotations: Boolean = True; SetTransformMode: Boolean = True);
@@ -184,7 +184,7 @@ type
   TGLSkeletonBone = class;
 
   // A list of skeleton bones
-  TGLSkeletonBoneList = class(TPersistentObjectList)
+  TGLSkeletonBoneList = class(TGLPersistentObjectList)
   private
     FSkeleton: TGLSkeleton; // not persistent
   protected
@@ -195,8 +195,8 @@ type
     constructor CreateOwned(aOwner: TGLSkeleton);
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     property Skeleton: TGLSkeleton read FSkeleton;
     property Items[Index: Integer]: TGLSkeletonBone read GetSkeletonBone; default;
     // Returns a bone by its BoneID, nil if not found.
@@ -213,8 +213,8 @@ type
   // This list store skeleton root bones exclusively
   TGLSkeletonRootBoneList = class(TGLSkeletonBoneList)
   public
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     // Render skeleton wireframe
     procedure BuildList(var mrci: TGLRenderContextInfo); override;
     property GlobalMatrix: TGLMatrix read FGlobalMatrix write FGlobalMatrix;
@@ -239,8 +239,8 @@ type
     constructor CreateOwned(aOwner: TGLSkeletonBoneList);
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     // Render skeleton wireframe
     procedure BuildList(var mrci: TGLRenderContextInfo); override;
     property Owner: TGLSkeletonBoneList read FOwner;
@@ -278,7 +278,7 @@ type
     to create skeleton driven Verlet Constraints, ODE Geoms, etc.
     Overriden classes should be named as TSCxxxxx.
   *)
-  TGLSkeletonCollider = class(TPersistentObject)
+  TGLSkeletonCollider = class(TGLPersistentObject)
   private
     FOwner: TGLSkeletonColliderList;
     FBone: TGLSkeletonBone;
@@ -291,8 +291,8 @@ type
   public
     constructor Create; override;
     constructor CreateOwned(AOwner: TGLSkeletonColliderList);
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     (* This method is used to align the colliders and their
       derived objects to their associated skeleton bone.
       Override to set up descendant class alignment properties. *)
@@ -309,7 +309,7 @@ type
   end;
 
   // List class for storing TGLSkeletonCollider objects
-  TGLSkeletonColliderList = class(TPersistentObjectList)
+  TGLSkeletonColliderList = class(TGLPersistentObjectList)
   private
     FOwner: TPersistent;
   protected
@@ -317,7 +317,7 @@ type
   public
     constructor CreateOwned(AOwner: TPersistent);
     destructor Destroy; override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     procedure Clear; override;
     // Calls AlignCollider for each collider in the list.
     procedure AlignColliders;
@@ -340,7 +340,7 @@ type
   (* Main skeleton object. This class stores the bones hierarchy and animation frames.
     It is also responsible for maintaining the "CurrentFrame" and allowing
     various frame blending operations. *)
-  TGLSkeleton = class(TPersistentObject)
+  TGLSkeleton = class(TGLPersistentObject)
   private
     FOwner: TGLBaseMesh;
     FRootBones: TGLSkeletonRootBoneList;
@@ -360,8 +360,8 @@ type
     constructor CreateOwned(aOwner: TGLBaseMesh);
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     property Owner: TGLBaseMesh read FOwner;
     property RootBones: TGLSkeletonRootBoneList read FRootBones write SetRootBones;
     property Frames: TGLSkeletonFrameList read FFrames write SetFrames;
@@ -477,8 +477,8 @@ type
     constructor Create; override;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     procedure Clear; override;
     function ExtractTriangles(texCoords: TGLAffineVectorList = nil;
 	  Normals: TGLAffineVectorList = nil): TGLAffineVectorList; override;
@@ -537,7 +537,7 @@ type
   end;
 
   // A list of TGLMeshObject objects.
-  TGLMeshObjectList = class(TPersistentObjectList)
+  TGLMeshObjectList = class(TGLPersistentObjectList)
   private
     FOwner: TGLBaseMesh;
     // Returns True if all its MeshObjects use VBOs.
@@ -548,7 +548,7 @@ type
   public
     constructor CreateOwned(aOwner: TGLBaseMesh);
     destructor Destroy; override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     procedure PrepareMaterialLibraryCache(matLib: TGLMaterialLibrary);
     procedure DropMaterialLibraryCache;
     (* Prepare the texture and materials before rendering.
@@ -592,13 +592,13 @@ type
   public
     constructor CreateOwned(aOwner: TGLMeshMorphTargetList);
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     property Owner: TGLMeshMorphTargetList read FOwner;
   end;
 
   // A list of TGLMeshMorphTarget objects. 
-  TGLMeshMorphTargetList = class(TPersistentObjectList)
+  TGLMeshMorphTargetList = class(TGLPersistentObjectList)
   private
     FOwner: TPersistent;
   protected
@@ -606,7 +606,7 @@ type
   public
     constructor CreateOwned(AOwner: TPersistent);
     destructor Destroy; override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     procedure Translate(const delta: TAffineVector);
     property Owner: TPersistent read FOwner;
     procedure Clear; override;
@@ -621,8 +621,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     procedure Clear; override;
     procedure Translate(const delta: TAffineVector); override;
     procedure MorphTo(morphTargetIndex: Integer); virtual;
@@ -666,8 +666,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     procedure Clear; override;
     property VerticesBonesWeights: PGLVerticesBoneWeights read FVerticesBonesWeights;
     property VerticeBoneWeightCount: Integer read FVerticeBoneWeightCount write SetVerticeBoneWeightCount;
@@ -687,7 +687,7 @@ type
     Subclasses implement the actual behaviours, and should have at least
     one "Add" method, taking in parameters all that is required to describe
     a single base facegroup element. *)
-  TGLFaceGroup = class(TPersistentObject)
+  TGLFaceGroup = class(TGLPersistentObject)
   private
     FOwner: TGLFaceGroups;
     FMaterialName: string;
@@ -701,8 +701,8 @@ type
   public
     constructor CreateOwned(aOwner: TGLFaceGroups); virtual;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     procedure PrepareMaterialLibraryCache(matLib: TGLMaterialLibrary);
     procedure DropMaterialLibraryCache;
     procedure BuildList(var mrci: TGLRenderContextInfo); virtual; abstract;
@@ -750,8 +750,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     procedure BuildList(var mrci: TGLRenderContextInfo); override;
     procedure AddToTriangles(aList: TGLAffineVectorList; aTexCoords: TGLAffineVectorList = nil;
       aNormals: TGLAffineVectorList = nil); override;
@@ -780,8 +780,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     procedure BuildList(var mrci: TGLRenderContextInfo); override;
     procedure AddToTriangles(aList: TGLAffineVectorList; aTexCoords: TGLAffineVectorList = nil;
       aNormals: TGLAffineVectorList = nil); override;
@@ -801,8 +801,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     procedure BuildList(var mrci: TGLRenderContextInfo); override;
     procedure AddToTriangles(aList: TGLAffineVectorList; aTexCoords: TGLAffineVectorList = nil;
       aNormals: TGLAffineVectorList = nil); override;
@@ -812,7 +812,7 @@ type
   end;
 
   // A list of TGLFaceGroup objects. 
-  TGLFaceGroups = class(TPersistentObjectList)
+  TGLFaceGroups = class(TGLPersistentObjectList)
   private
     FOwner: TGLMeshObject;
   protected
@@ -820,7 +820,7 @@ type
   public
     constructor CreateOwned(aOwner: TGLMeshObject);
     destructor Destroy; override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     procedure PrepareMaterialLibraryCache(matLib: TGLMaterialLibrary);
     procedure DropMaterialLibraryCache;
     property Owner: TGLMeshObject read FOwner;
@@ -1295,7 +1295,7 @@ type
   end;
 
   // Stores registered vector file formats 
-  TGLVectorFileFormatsList = class(TPersistentObjectList)
+  TGLVectorFileFormatsList = class(TGLPersistentObjectList)
   public
     destructor Destroy; override;
     procedure Add(const Ext, Desc: string; DescID: Integer; AClass: TGLVectorFileClass);
@@ -1549,7 +1549,7 @@ begin
     inherited; // Die!
 end;
 
-procedure TGLBaseMeshObject.WriteToFiler(writer: TVirtualWriter);
+procedure TGLBaseMeshObject.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -1562,7 +1562,7 @@ begin
   end;
 end;
 
-procedure TGLBaseMeshObject.ReadFromFiler(reader: TVirtualReader);
+procedure TGLBaseMeshObject.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -1841,7 +1841,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TGLSkeletonFrame.WriteToFiler(writer: TVirtualWriter);
+procedure TGLSkeletonFrame.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -1855,7 +1855,7 @@ begin
   end;
 end;
 
-procedure TGLSkeletonFrame.ReadFromFiler(reader: TVirtualReader);
+procedure TGLSkeletonFrame.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -2021,7 +2021,7 @@ begin
   inherited;
 end;
 
-procedure TGLSkeletonFrameList.ReadFromFiler(reader: TVirtualReader);
+procedure TGLSkeletonFrameList.ReadFromFiler(reader: TGLVirtualReader);
 var
   i: Integer;
 begin
@@ -2094,7 +2094,7 @@ begin
   inherited;
 end;
 
-procedure TGLSkeletonBoneList.WriteToFiler(writer: TVirtualWriter);
+procedure TGLSkeletonBoneList.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -2104,7 +2104,7 @@ begin
   end;
 end;
 
-procedure TGLSkeletonBoneList.ReadFromFiler(reader: TVirtualReader);
+procedure TGLSkeletonBoneList.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion, i: Integer;
 begin
@@ -2182,7 +2182,7 @@ end;
 // ------------------ TGLSkeletonRootBoneList ------------------
 // ------------------
 
-procedure TGLSkeletonRootBoneList.WriteToFiler(writer: TVirtualWriter);
+procedure TGLSkeletonRootBoneList.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -2192,7 +2192,7 @@ begin
   end;
 end;
 
-procedure TGLSkeletonRootBoneList.ReadFromFiler(reader: TVirtualReader);
+procedure TGLSkeletonRootBoneList.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion, i: Integer;
 begin
@@ -2247,7 +2247,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TGLSkeletonBone.WriteToFiler(writer: TVirtualWriter);
+procedure TGLSkeletonBone.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -2259,7 +2259,7 @@ begin
   end;
 end;
 
-procedure TGLSkeletonBone.ReadFromFiler(reader: TVirtualReader);
+procedure TGLSkeletonBone.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion, i: Integer;
 begin
@@ -2383,7 +2383,7 @@ begin
     FOwner.Add(Self);
 end;
 
-procedure TGLSkeletonCollider.WriteToFiler(writer: TVirtualWriter);
+procedure TGLSkeletonCollider.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -2397,7 +2397,7 @@ begin
   end;
 end;
 
-procedure TGLSkeletonCollider.ReadFromFiler(reader: TVirtualReader);
+procedure TGLSkeletonCollider.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -2463,7 +2463,7 @@ begin
   Result := TGLSkeletonCollider(inherited Get(index));
 end;
 
-procedure TGLSkeletonColliderList.ReadFromFiler(reader: TVirtualReader);
+procedure TGLSkeletonColliderList.ReadFromFiler(reader: TGLVirtualReader);
 var
   i: Integer;
 begin
@@ -2525,7 +2525,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TGLSkeleton.WriteToFiler(writer: TVirtualWriter);
+procedure TGLSkeleton.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -2541,7 +2541,7 @@ begin
   end;
 end;
 
-procedure TGLSkeleton.ReadFromFiler(reader: TVirtualReader);
+procedure TGLSkeleton.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -2969,7 +2969,7 @@ begin
   end;
 end;
 
-procedure TGLMeshObject.WriteToFiler(writer: TVirtualWriter);
+procedure TGLMeshObject.WriteToFiler(writer: TGLVirtualWriter);
 var
   i: Integer;
 begin
@@ -2992,7 +2992,7 @@ begin
   end;
 end;
 
-procedure TGLMeshObject.ReadFromFiler(reader: TVirtualReader);
+procedure TGLMeshObject.ReadFromFiler(reader: TGLVirtualReader);
 var
   i, Count, archiveVersion: Integer;
   lOldLightMapTexCoords: TGLTexPointList;
@@ -4206,7 +4206,7 @@ begin
   inherited;
 end;
 
-procedure TGLMeshObjectList.ReadFromFiler(reader: TVirtualReader);
+procedure TGLMeshObjectList.ReadFromFiler(reader: TGLVirtualReader);
 var
   i: Integer;
   mesh: TGLMeshObject;
@@ -4517,7 +4517,7 @@ begin
   inherited;
 end;
 
-procedure TGLMeshMorphTarget.WriteToFiler(writer: TVirtualWriter);
+procedure TGLMeshMorphTarget.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -4527,7 +4527,7 @@ begin
   end;
 end;
 
-procedure TGLMeshMorphTarget.ReadFromFiler(reader: TVirtualReader);
+procedure TGLMeshMorphTarget.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -4558,7 +4558,7 @@ begin
   inherited;
 end;
 
-procedure TGLMeshMorphTargetList.ReadFromFiler(reader: TVirtualReader);
+procedure TGLMeshMorphTargetList.ReadFromFiler(reader: TGLVirtualReader);
 var
   i: Integer;
 begin
@@ -4609,7 +4609,7 @@ begin
   inherited;
 end;
 
-procedure TGLMorphableMeshObject.WriteToFiler(writer: TVirtualWriter);
+procedure TGLMorphableMeshObject.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -4619,7 +4619,7 @@ begin
   end;
 end;
 
-procedure TGLMorphableMeshObject.ReadFromFiler(reader: TVirtualReader);
+procedure TGLMorphableMeshObject.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -4714,7 +4714,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TGLSkeletonMeshObject.WriteToFiler(writer: TVirtualWriter);
+procedure TGLSkeletonMeshObject.WriteToFiler(writer: TGLVirtualWriter);
 var
   i: Integer;
 begin
@@ -4730,7 +4730,7 @@ begin
   end;
 end;
 
-procedure TGLSkeletonMeshObject.ReadFromFiler(reader: TVirtualReader);
+procedure TGLSkeletonMeshObject.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion, i: Integer;
 begin
@@ -5097,7 +5097,7 @@ begin
   inherited;
 end;
 
-procedure TGLFaceGroup.WriteToFiler(writer: TVirtualWriter);
+procedure TGLFaceGroup.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -5116,7 +5116,7 @@ begin
   end;
 end;
 
-procedure TGLFaceGroup.ReadFromFiler(reader: TVirtualReader);
+procedure TGLFaceGroup.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -5224,7 +5224,7 @@ begin
   inherited;
 end;
 
-procedure TFGVertexIndexList.WriteToFiler(writer: TVirtualWriter);
+procedure TFGVertexIndexList.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -5235,7 +5235,7 @@ begin
   end;
 end;
 
-procedure TFGVertexIndexList.ReadFromFiler(reader: TVirtualReader);
+procedure TFGVertexIndexList.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -5501,7 +5501,7 @@ begin
   inherited;
 end;
 
-procedure TFGVertexNormalTexIndexList.WriteToFiler(writer: TVirtualWriter);
+procedure TFGVertexNormalTexIndexList.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -5512,7 +5512,7 @@ begin
   end;
 end;
 
-procedure TFGVertexNormalTexIndexList.ReadFromFiler(reader: TVirtualReader);
+procedure TFGVertexNormalTexIndexList.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -5614,7 +5614,7 @@ begin
   inherited;
 end;
 
-procedure TFGIndexTexCoordList.WriteToFiler(writer: TVirtualWriter);
+procedure TFGIndexTexCoordList.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -5624,7 +5624,7 @@ begin
   end;
 end;
 
-procedure TFGIndexTexCoordList.ReadFromFiler(reader: TVirtualReader);
+procedure TFGIndexTexCoordList.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -5767,7 +5767,7 @@ begin
   inherited;
 end;
 
-procedure TGLFaceGroups.ReadFromFiler(reader: TVirtualReader);
+procedure TGLFaceGroups.ReadFromFiler(reader: TGLVirtualReader);
 var
   i: Integer;
 begin

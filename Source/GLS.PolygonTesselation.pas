@@ -3,7 +3,7 @@
 //
 unit GLS.PolygonTesselation;
 
-(* Code to generate triangle strips and fans for polygons. *)
+(* Code to generate triangle strips and fans for polygons *)
 
 interface
 
@@ -16,9 +16,9 @@ uses
   Scena.OpenGLAdapter,
   Scena.OpenGLTokens,
   Scena.VectorTypes,
+  Scena.VectorGeometry,
   GLS.VectorFileObjects,
-  GLS.VectorLists,
-  Scena.VectorGeometry;
+  GLS.VectorLists;
 
 (* Tesselates the polygon outlined by the Vertexes. And adds them to the first
    facegroup of the Mesh. *)
@@ -70,14 +70,14 @@ end;
 function AllocNewVertex: PAffineVector;
 begin
   Inc(TessExtraVertices);
-  
+
   // Allocate more memory if needed
   if TessExtraVertices > TessVerticesCount then
   begin
     TessVerticesCount := TessVerticesCount * 2;
     Reallocmem(TessVertices, TessVerticesCount * SizeOf(TAffineVector));
   end;
-  
+
   Result := @TessVertices[TessExtraVertices - 1];
 end;
 
@@ -102,7 +102,7 @@ begin
   end
   else
     TessMesh := Mesh.MeshObjects[0];
-	
+
   // vertices count.
   TessVerticesCount := Vertexes.Count;
   // allocate extra buffer used by GLU in complex polygons.

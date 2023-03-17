@@ -28,7 +28,7 @@ type
   PObject = ^TObject;
 
   // Virtual layer similar to VCL's TReader (but reusable) }
-  TVirtualReader = class
+  TgxVirtualReader = class
   private
     FStream: TStream;
   public
@@ -48,7 +48,7 @@ type
   end;
 
   // Virtual layer similar to VCL's TWriter (but reusable)
-  TVirtualWriter = class
+  TgxVirtualWriter = class
   private
     FStream: TStream;
   public
@@ -64,16 +64,16 @@ type
     procedure WriteTStrings(const aStrings: TStrings; storeObjects: Boolean = True);
   end;
 
-  TVirtualReaderClass = class of TVirtualReader;
-  TVirtualWriterClass = class of TVirtualWriter;
+  TgxVirtualReaderClass = class of TgxVirtualReader;
+  TgxVirtualWriterClass = class of TgxVirtualWriter;
 
   (* Interface for persistent objects.
      This interface does not really allow polymorphic persistence,
      but is rather intended as a way to unify persistence calls for iterators. *)
   IgxPersistentObject = interface(IInterface)
   ['{A9A0198A-F11B-4325-A92C-2F24DB41652B}']
-    procedure WriteToFiler(writer: TVirtualWriter);
-    procedure ReadFromFiler(reader: TVirtualReader);
+    procedure WriteToFiler(writer: TgxVirtualWriter);
+    procedure ReadFromFiler(reader: TgxVirtualReader);
   end;
 
     (* Base class for persistent objects.
@@ -92,24 +92,24 @@ type
     function _Release: Integer; stdcall;
   public
     constructor Create; virtual;
-    constructor CreateFromFiler(reader: TVirtualReader);
+    constructor CreateFromFiler(reader: TgxVirtualReader);
     destructor Destroy; override;
     procedure Assign(source: TPersistent); override;
     function CreateClone: TgxPersistentObject; virtual;
     class function FileSignature: string; virtual;
-    class function FileVirtualWriter: TVirtualWriterClass; virtual;
-    class function FileVirtualReader: TVirtualReaderClass; virtual;
-    procedure WriteToFiler(writer: TVirtualWriter); virtual;
-    procedure ReadFromFiler(reader: TVirtualReader); virtual;
-    procedure SaveToStream(stream: TStream; writerClass: TVirtualWriterClass = nil); virtual;
-    procedure LoadFromStream(stream: TStream; readerClass: TVirtualReaderClass = nil); virtual;
-    procedure SaveToFile(const fileName: string; writerClass: TVirtualWriterClass = nil); virtual;
-    procedure LoadFromFile(const fileName: string; readerClass: TVirtualReaderClass = nil); virtual;
-    function SaveToString(writerClass: TVirtualWriterClass = nil): string; virtual;
-    procedure LoadFromString(const data: string; readerClass: TVirtualReaderClass = nil); virtual;
+    class function FileVirtualWriter: TgxVirtualWriterClass; virtual;
+    class function FileVirtualReader: TgxVirtualReaderClass; virtual;
+    procedure WriteToFiler(writer: TgxVirtualWriter); virtual;
+    procedure ReadFromFiler(reader: TgxVirtualReader); virtual;
+    procedure SaveToStream(stream: TStream; writerClass: TgxVirtualWriterClass = nil); virtual;
+    procedure LoadFromStream(stream: TStream; readerClass: TgxVirtualReaderClass = nil); virtual;
+    procedure SaveToFile(const fileName: string; writerClass: TgxVirtualWriterClass = nil); virtual;
+    procedure LoadFromFile(const fileName: string; readerClass: TgxVirtualReaderClass = nil); virtual;
+    function SaveToString(writerClass: TgxVirtualWriterClass = nil): string; virtual;
+    procedure LoadFromString(const data: string; readerClass: TgxVirtualReaderClass = nil); virtual;
   end;
 
-  TPersistentObjectClass = class of TgxPersistentObject;
+  TGLPersistentObjectClass = class of TgxPersistentObject;
   TgxPointerObjectList = array[0..MaxInt div (2*SizeOf(Pointer))] of TObject;
   PgxPointerObjectList = ^TgxPointerObjectList;
   TObjectListSortCompare = function(item1, item2: TObject): Integer;
@@ -145,9 +145,9 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
-    procedure ReadFromFilerWithEvent(reader: TVirtualReader;
+    procedure WriteToFiler(writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgxVirtualReader); override;
+    procedure ReadFromFilerWithEvent(reader: TgxVirtualReader;
       afterSenderObjectCreated: TNotifyEvent);
     function Add(const item: TObject): Integer;
     procedure AddNils(nbVals: Cardinal);
@@ -192,7 +192,7 @@ type
   end;
 
   // Wraps a TReader-compatible reader.
-  TBinaryReader = class(TVirtualReader)
+  TgxBinaryReader = class(TgxVirtualReader)
   protected
     function ReadValue: TValueType;
     function ReadWideString(vType: TValueType): WideString;
@@ -209,7 +209,7 @@ type
   end;
 
   // Wraps a TWriter-compatible writer.
-  TBinaryWriter = class(TVirtualWriter)
+  TgxBinaryWriter = class(TgxVirtualWriter)
   protected
     procedure WriteAnsiString(const aString: AnsiString); virtual;
     procedure WriteWideString(const aString: WideString); virtual;
@@ -224,7 +224,7 @@ type
   end;
 
   // Reads object persistence in Text format.
-  TTextReader = class(TVirtualReader)
+  TgxTextReader = class(TgxVirtualReader)
   private
     FValueType: string;
     FData: string;
@@ -243,7 +243,7 @@ type
   end;
 
   // Writes object persistence in Text format.
-  TTextWriter = class(TVirtualWriter)
+  TgxTextWriter = class(TgxVirtualWriter)
   private
     FIndentLevel: Integer;
   protected
@@ -271,7 +271,7 @@ type
   end;
 
   // TPersistent thet inplements IInterface.
-  TInterfacedPersistent = class(TPersistent, IInterface)
+  TgxInterfacedPersistent = class(TPersistent, IInterface)
   protected
     // Implementing IInterface.
     function QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
@@ -280,7 +280,7 @@ type
   end;
 
   // TCollectionItem thet inplements IInterface.
-  TInterfacedCollectionItem = class(TCollectionItem, IInterface)
+  TgxInterfacedCollectionItem = class(TCollectionItem, IInterface)
   protected
     // Implementing IInterface.
     function QueryInterface(const IID: TGUID; out Obj): HResult; virtual; stdcall;
@@ -302,9 +302,6 @@ function UTF8ToWideString(const s: AnsiString): WideString;
 // ------------------------------------------------------------------
 implementation
 // ------------------------------------------------------------------
-
-uses
-  GLX.ApplicationFileIO;
 
 const
   cDefaultListGrowthDelta = 16;
@@ -401,20 +398,20 @@ begin
 end;
 
 // ------------------
-// ------------------ TVirtualReader ------------------
+// ------------------ TgxVirtualReader ------------------
 // ------------------
 
-constructor TVirtualReader.Create(Stream: TStream);
+constructor TgxVirtualReader.Create(Stream: TStream);
 begin
   FStream := Stream;
 end;
 
-procedure TVirtualReader.ReadTypeError;
+procedure TgxVirtualReader.ReadTypeError;
 begin
   raise EReadError.CreateFmt('%s, read type error', [ClassName]);
 end;
 
-procedure TVirtualReader.ReadTStrings(aStrings: TStrings);
+procedure TgxVirtualReader.ReadTStrings(aStrings: TStrings);
 var
   i: Integer;
   objectsStored: Boolean;
@@ -439,15 +436,15 @@ begin
 end;
 
 // ------------------
-// ------------------ TVirtualWriter ------------------
+// ------------------ TgxVirtualWriter ------------------
 // ------------------
 
-constructor TVirtualWriter.Create(Stream: TStream);
+constructor TgxVirtualWriter.Create(Stream: TStream);
 begin
   FStream := Stream;
 end;
 
-procedure TVirtualWriter.WriteTStrings(const aStrings: TStrings;
+procedure TgxVirtualWriter.WriteTStrings(const aStrings: TStrings;
   storeObjects: Boolean = True);
 var
   i: Integer;
@@ -479,7 +476,7 @@ begin
   inherited Create;
 end;
 
-constructor TgxPersistentObject.CreateFromFiler(reader: TVirtualReader);
+constructor TgxPersistentObject.CreateFromFiler(reader: TgxVirtualReader);
 begin
   Create;
   ReadFromFiler(reader);
@@ -511,7 +508,7 @@ end;
 
 function TgxPersistentObject.CreateClone: TgxPersistentObject;
 begin
-  Result := TPersistentObjectClass(Self.ClassType).Create;
+  Result := TGLPersistentObjectClass(Self.ClassType).Create;
   Result.Assign(Self);
 end;
 
@@ -520,23 +517,23 @@ begin
   Result := '';
 end;
 
-class function TgxPersistentObject.FileVirtualWriter: TVirtualWriterClass;
+class function TgxPersistentObject.FileVirtualWriter: TgxVirtualWriterClass;
 begin
-  Result := TBinaryWriter;
+  Result := TgxBinaryWriter;
 end;
 
-class function TgxPersistentObject.FileVirtualReader: TVirtualReaderClass;
+class function TgxPersistentObject.FileVirtualReader: TgxVirtualReaderClass;
 begin
-  Result := TBinaryReader;
+  Result := TgxBinaryReader;
 end;
 
-procedure TgxPersistentObject.WriteToFiler(writer: TVirtualWriter);
+procedure TgxPersistentObject.WriteToFiler(writer: TgxVirtualWriter);
 begin
   // nothing
   Assert(Assigned(writer));
 end;
 
-procedure TgxPersistentObject.ReadFromFiler(reader: TVirtualReader);
+procedure TgxPersistentObject.ReadFromFiler(reader: TgxVirtualReader);
 begin
   // nothing
   Assert(Assigned(reader));
@@ -567,13 +564,13 @@ begin
   Result := 0;
 end;
 
-procedure TgxPersistentObject.SaveToStream(stream: TStream; writerClass: TVirtualWriterClass = nil);
+procedure TgxPersistentObject.SaveToStream(stream: TStream; writerClass: TgxVirtualWriterClass = nil);
 var
-  wr: TVirtualWriter;
+  wr: TgxVirtualWriter;
   fileSig: AnsiString;
 begin
   if writerClass = nil then
-    writerClass := TBinaryWriter;
+    writerClass := TgxBinaryWriter;
   wr := writerClass.Create(stream);
   try
     if FileSignature <> '' then
@@ -587,13 +584,13 @@ begin
   end;
 end;
 
-procedure TgxPersistentObject.LoadFromStream(stream: TStream; readerClass: TVirtualReaderClass = nil);
+procedure TgxPersistentObject.LoadFromStream(stream: TStream; readerClass: TgxVirtualReaderClass = nil);
 var
-  rd: TVirtualReader;
+  rd: TgxVirtualReader;
   sig: AnsiString;
 begin
   if readerClass = nil then
-    readerClass := TBinaryReader;
+    readerClass := TgxBinaryReader;
   rd := readerClass.Create(stream);
   try
     if FileSignature <> '' then
@@ -609,7 +606,7 @@ begin
   end;
 end;
 
-procedure TgxPersistentObject.SaveToFile(const fileName: string; writerClass: TVirtualWriterClass = nil);
+procedure TgxPersistentObject.SaveToFile(const fileName: string; writerClass: TgxVirtualWriterClass = nil);
 var
   fs: TStream;
 begin
@@ -623,7 +620,7 @@ begin
   end;
 end;
 
-procedure TgxPersistentObject.LoadFromFile(const fileName: string; readerClass: TVirtualReaderClass = nil);
+procedure TgxPersistentObject.LoadFromFile(const fileName: string; readerClass: TgxVirtualReaderClass = nil);
 var
   fs: TStream;
 begin
@@ -637,7 +634,7 @@ begin
   end;
 end;
 
-function TgxPersistentObject.SaveToString(writerClass: TVirtualWriterClass = nil): string;
+function TgxPersistentObject.SaveToString(writerClass: TgxVirtualWriterClass = nil): string;
 var
   ss: TStringStream;
 begin
@@ -650,7 +647,7 @@ begin
   end;
 end;
 
-procedure TgxPersistentObject.LoadFromString(const data: string; readerClass: TVirtualReaderClass = nil);
+procedure TgxPersistentObject.LoadFromString(const data: string; readerClass: TgxVirtualReaderClass = nil);
 var
   ss: TStringStream;
 begin
@@ -1041,7 +1038,7 @@ begin
   end;
 end;
 
-procedure TgxPersistentObjectList.WriteToFiler(writer: TVirtualWriter);
+procedure TgxPersistentObjectList.WriteToFiler(writer: TgxVirtualWriter);
 (*
    Object List Filer Format :
 
@@ -1106,10 +1103,10 @@ begin
   end;
 end;
 
-procedure TgxPersistentObjectList.ReadFromFilerWithEvent(reader: TVirtualReader; afterSenderObjectCreated: TNotifyEvent);
+procedure TgxPersistentObjectList.ReadFromFilerWithEvent(reader: TgxVirtualReader; afterSenderObjectCreated: TNotifyEvent);
 var
   obj: TgxPersistentObject;
-  m: TPersistentObjectClass;
+  m: TGLPersistentObjectClass;
   version: integer;
   objTypes: TList;
 begin
@@ -1134,7 +1131,7 @@ begin
               Cardinal(vaInt64) + 1 { vaUTF8String }:
               begin
                 // Unknown class, to be registered
-                m := TPersistentObjectClass(FindClass(ReadString));
+                m := TGLPersistentObjectClass(FindClass(ReadString));
                 objTypes.Add(m);
                 obj := m.Create;
                 if Assigned(afterSenderObjectCreated) then
@@ -1145,7 +1142,7 @@ begin
             Cardinal(vaInt8), Cardinal(vaInt16), Cardinal(vaInt32):
               begin
                 // known class, direct retrieve
-                m := TPersistentObjectClass(objTypes[ReadInteger]);
+                m := TGLPersistentObjectClass(objTypes[ReadInteger]);
                 obj := m.Create;
                 if Assigned(afterSenderObjectCreated) then
                   afterSenderObjectCreated(obj);
@@ -1165,7 +1162,7 @@ begin
   end;
 end;
 
-procedure TgxPersistentObjectList.ReadFromFiler(reader: TVirtualReader);
+procedure TgxPersistentObjectList.ReadFromFiler(reader: TgxVirtualReader);
 begin
   ReadFromFilerWithEvent(reader, AfterObjectCreatedByReader);
 end;
@@ -1233,15 +1230,15 @@ begin
 end;
 
 // ------------------
-// ------------------ TBinaryReader ------------------
+// ------------------ TgxBinaryReader ------------------
 // ------------------
 
-procedure TBinaryReader.Read(var Buf; Count: Longint);
+procedure TgxBinaryReader.Read(var Buf; Count: Longint);
 begin
   FStream.Read(Buf, Count);
 end;
 
-function TBinaryReader.ReadValue: TValueType;
+function TgxBinaryReader.ReadValue: TValueType;
 var
   b: byte;
 begin
@@ -1249,7 +1246,7 @@ begin
   Result := TValueType(b);
 end;
 
-function TBinaryReader.NextValue: TValueType;
+function TgxBinaryReader.NextValue: TValueType;
 var
   pos: Int64;
 begin
@@ -1258,7 +1255,7 @@ begin
   FStream.Position := pos;
 end;
 
-function TBinaryReader.ReadInteger: Integer;
+function TgxBinaryReader.ReadInteger: Integer;
 var
   tempShort: ShortInt;
   tempSmallInt: SmallInt;
@@ -1281,7 +1278,7 @@ begin
   end;
 end;
 
-function TBinaryReader.ReadBoolean: Boolean;
+function TgxBinaryReader.ReadBoolean: Boolean;
 begin
   case ReadValue of
     vaTrue: Result := True;
@@ -1292,7 +1289,7 @@ begin
   end;
 end;
 
-function TBinaryReader.ReadString: string;
+function TgxBinaryReader.ReadString: string;
 var
   n: Cardinal;
   vType: TValueType;
@@ -1318,7 +1315,7 @@ begin
   Result := string(tempString);
 end;
 
-function TBinaryReader.ReadWideString(vType: TValueType): WideString;
+function TgxBinaryReader.ReadWideString(vType: TValueType): WideString;
 var
   n: Cardinal;
   utf8buf: AnsiString;
@@ -1345,7 +1342,7 @@ begin
   end;
 end;
 
-function TBinaryReader.ReadFloat: Extended;
+function TgxBinaryReader.ReadFloat: Extended;
 {$IFDEF WIN64}
 var
    C  :TExtended80Rec; // Temporary variable to store 10 bytes floating point number in a Win64 application
@@ -1367,33 +1364,33 @@ begin
   {$ENDIF}
 end;
 
-procedure TBinaryReader.ReadListBegin;
+procedure TgxBinaryReader.ReadListBegin;
 begin
   if ReadValue <> vaList then
     ReadTypeError;
 end;
 
-procedure TBinaryReader.ReadListEnd;
+procedure TgxBinaryReader.ReadListEnd;
 begin
   if ReadValue <> vaNull then
     ReadTypeError;
 end;
 
-function TBinaryReader.EndOfList: Boolean;
+function TgxBinaryReader.EndOfList: Boolean;
 begin
   Result := (NextValue = vaNull);
 end;
 
 // ------------------
-// ------------------ TBinaryWriter ------------------
+// ------------------ TgxBinaryWriter ------------------
 // ------------------
 
-procedure TBinaryWriter.Write(const Buf; Count: Longint);
+procedure TgxBinaryWriter.Write(const Buf; Count: Longint);
 begin
   FStream.Write(Buf, Count);
 end;
 
-procedure TBinaryWriter.WriteInteger(anInteger: Integer);
+procedure TgxBinaryWriter.WriteInteger(anInteger: Integer);
 type
   TIntStruct = packed record
     typ: byte;
@@ -1420,14 +1417,14 @@ begin
   end;
 end;
 
-procedure TBinaryWriter.WriteBoolean(aBoolean: Boolean);
+procedure TgxBinaryWriter.WriteBoolean(aBoolean: Boolean);
 const
   cBoolToType: array[False..True] of byte = (byte(vaFalse), byte(vaTrue));
 begin
   Write(cBoolToType[aBoolean], 1);
 end;
 
-procedure TBinaryWriter.WriteAnsiString(const aString: AnsiString);
+procedure TgxBinaryWriter.WriteAnsiString(const aString: AnsiString);
 type
   TStringHeader = packed record
     typ: Byte;
@@ -1452,7 +1449,7 @@ begin
   end;
 end;
 
-procedure TBinaryWriter.WriteWideString(const aString: WideString);
+procedure TgxBinaryWriter.WriteWideString(const aString: WideString);
 type
   TStringHeader = packed record
     typ: Byte;
@@ -1468,7 +1465,7 @@ begin
     Write(aString[1], sh.length * SizeOf(WideChar));
 end;
 
-procedure TBinaryWriter.WriteString(const aString: string);
+procedure TgxBinaryWriter.WriteString(const aString: string);
 begin
 {$IFDEF UNICODE}
   // TODO: should really check if the string can be simplified to: vaString / vaLString / vaUTF8String
@@ -1478,7 +1475,7 @@ begin
 {$ENDIF}
 end;
 
-procedure TBinaryWriter.WriteFloat(const aFloat: Extended);
+procedure TgxBinaryWriter.WriteFloat(const aFloat: Extended);
 type
   TExtendedStruct = packed record
     typ: Byte;
@@ -1502,14 +1499,14 @@ begin
   {$ENDIF}
 end;
 
-procedure TBinaryWriter.WriteListBegin;
+procedure TgxBinaryWriter.WriteListBegin;
 const
   buf: byte = byte(vaList);
 begin
   Write(buf, 1);
 end;
 
-procedure TBinaryWriter.WriteListEnd;
+procedure TgxBinaryWriter.WriteListEnd;
 const
   buf: byte = byte(vaNull);
 begin
@@ -1517,10 +1514,10 @@ begin
 end;
 
 // ------------------
-// ------------------ TTextReader ------------------
+// ------------------ TgxTextReader ------------------
 // ------------------
 
-procedure TTextReader.ReadLine(const requestedType: string = '');
+procedure TgxTextReader.ReadLine(const requestedType: string = '');
 var
   line: string;
   c: Byte;
@@ -1551,7 +1548,7 @@ begin
         + requestedType + '", found "FValueType".');
 end;
 
-procedure TTextReader.Read(var Buf; Count: Longint);
+procedure TgxTextReader.Read(var Buf; Count: Longint);
 
   function HexCharToInt(const c: Char): Integer;
   begin
@@ -1576,7 +1573,7 @@ begin
   end;
 end;
 
-function TTextReader.NextValue: TValueType;
+function TgxTextReader.NextValue: TValueType;
 var
   p: Int64;
 begin
@@ -1602,19 +1599,19 @@ begin
   Stream.Position := p;
 end;
 
-function TTextReader.ReadInteger: Integer;
+function TgxTextReader.ReadInteger: Integer;
 begin
   ReadLine(cVTInteger);
   Result := StrToInt(FData);
 end;
 
-function TTextReader.ReadBoolean: Boolean;
+function TgxTextReader.ReadBoolean: Boolean;
 begin
   ReadLine(cVTBoolean);
   Result := (FData = cTrue);
 end;
 
-function TTextReader.ReadString: string;
+function TgxTextReader.ReadString: string;
 var
   i: Integer;
 begin
@@ -1635,7 +1632,7 @@ begin
   Assert(FData[i] = '.', 'Invalid stored string.');
 end;
 
-function TTextReader.ReadFloat: Extended;
+function TgxTextReader.ReadFloat: Extended;
 var
   oldDc: Char;
 begin
@@ -1646,17 +1643,17 @@ begin
   FormatSettings.DecimalSeparator := oldDc;
 end;
 
-procedure TTextReader.ReadListBegin;
+procedure TgxTextReader.ReadListBegin;
 begin
   ReadLine(cVTListBegin);
 end;
 
-procedure TTextReader.ReadListEnd;
+procedure TgxTextReader.ReadListEnd;
 begin
   ReadLine(cVTListEnd);
 end;
 
-function TTextReader.EndOfList: Boolean;
+function TgxTextReader.EndOfList: Boolean;
 var
   p: Int64;
 begin
@@ -1667,20 +1664,20 @@ begin
 end;
 
 // ------------------
-// ------------------ TTextWriter ------------------
+// ------------------ TgxTextWriter ------------------
 // ------------------
 
-constructor TTextWriter.Create(aStream: TStream);
+constructor TgxTextWriter.Create(aStream: TStream);
 begin
   inherited;
 end;
 
-destructor TTextWriter.Destroy;
+destructor TgxTextWriter.Destroy;
 begin
   inherited;
 end;
 
-procedure TTextWriter.WriteLine(const valueType, data: string);
+procedure TgxTextWriter.WriteLine(const valueType, data: string);
 var
   buf: AnsiString;
 begin
@@ -1689,7 +1686,7 @@ begin
   Stream.Write(buf[1], Length(buf));
 end;
 
-procedure TTextWriter.Write(const Buf; Count: Longint);
+procedure TgxTextWriter.Write(const Buf; Count: Longint);
 const
   cNibbleToHex: PChar = '0123456789ABCDEF';
 var
@@ -1708,12 +1705,12 @@ begin
   WriteLine(cVTRaw, data);
 end;
 
-procedure TTextWriter.WriteInteger(anInteger: Integer);
+procedure TgxTextWriter.WriteInteger(anInteger: Integer);
 begin
   WriteLine(cVTInteger, IntToStr(anInteger));
 end;
 
-procedure TTextWriter.WriteBoolean(aBoolean: Boolean);
+procedure TgxTextWriter.WriteBoolean(aBoolean: Boolean);
 begin
   if aBoolean then
     WriteLine(cVTBoolean, cTrue)
@@ -1721,7 +1718,7 @@ begin
     WriteLine(cVTBoolean, cFalse);
 end;
 
-procedure TTextWriter.WriteString(const aString: string);
+procedure TgxTextWriter.WriteString(const aString: string);
 var
   i: Integer;
   s: string;
@@ -1735,18 +1732,18 @@ begin
   WriteLine(cVTString, s + '.');
 end;
 
-procedure TTextWriter.WriteFloat(const aFloat: Extended);
+procedure TgxTextWriter.WriteFloat(const aFloat: Extended);
 begin
   WriteLine(cVTInteger, FloatToStr(aFloat));
 end;
 
-procedure TTextWriter.WriteListBegin;
+procedure TgxTextWriter.WriteListBegin;
 begin
   WriteLine(cVTListBegin, '');
   Inc(FIndentLevel, 3);
 end;
 
-procedure TTextWriter.WriteListEnd;
+procedure TgxTextWriter.WriteListEnd;
 begin
   Dec(FIndentLevel, 3);
   WriteLine(cVTListEnd, '');
@@ -1767,20 +1764,20 @@ begin
 end;
 
 // ------------------
-// ------------------ TInterfacedPersistent ------------------
+// ------------------ TgxInterfacedPersistent ------------------
 // ------------------
 
-function TInterfacedPersistent._AddRef: Integer; stdcall;
+function TgxInterfacedPersistent._AddRef: Integer; stdcall;
 begin
   Result := -1; //ignore
 end;
 
-function TInterfacedPersistent._Release: Integer; stdcall;
+function TgxInterfacedPersistent._Release: Integer; stdcall;
 begin
   Result := -1; //ignore
 end;
 
-function TInterfacedPersistent.QueryInterface(const IID: TGUID;
+function TgxInterfacedPersistent.QueryInterface(const IID: TGUID;
   out Obj): HResult; stdcall;
 begin
   if GetInterface(IID, Obj) then
@@ -1790,21 +1787,21 @@ begin
 end;
 
 // ------------------
-// ------------------ TInterfacedCollectionItem ------------------
+// ------------------ TgxInterfacedCollectionItem ------------------
 // ------------------
 
 
-function TInterfacedCollectionItem._AddRef: Integer; stdcall;
+function TgxInterfacedCollectionItem._AddRef: Integer; stdcall;
 begin
   Result := -1; //ignore
 end;
 
-function TInterfacedCollectionItem._Release: Integer; stdcall;
+function TgxInterfacedCollectionItem._Release: Integer; stdcall;
 begin
   Result := -1; //ignore
 end;
 
-function TInterfacedCollectionItem.QueryInterface(const IID: TGUID;
+function TgxInterfacedCollectionItem.QueryInterface(const IID: TGUID;
     out Obj): HResult; stdcall;
 begin
   if GetInterface(IID, Obj) then

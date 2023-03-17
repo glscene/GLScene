@@ -26,7 +26,7 @@ type
   PObject = ^TObject;
 
   //Virtual layer similar to VCL's TReader (but reusable)
-  TVirtualReader = class
+  TGLVirtualReader = class
   private
     FStream: TStream;
   public
@@ -46,7 +46,7 @@ type
   end;
 
   //Virtual layer similar to VCL's TWriter (but reusable)
-  TVirtualWriter = class
+  TGLVirtualWriter = class
   private
     FStream: TStream;
   public
@@ -62,16 +62,16 @@ type
     procedure WriteTStrings(const aStrings: TStrings; storeObjects: Boolean = True);
   end;
 
-  TVirtualReaderClass = class of TVirtualReader;
-  TVirtualWriterClass = class of TVirtualWriter;
+  TGLVirtualReaderClass = class of TGLVirtualReader;
+  TGLVirtualWriterClass = class of TGLVirtualWriter;
 
   (*Interface for persistent objects.
      This interface does not really allow polymorphic persistence,
      but is rather intended as a way to unify persistence calls for iterators *)
-  IPersistentObject = interface(IInterface)
+  IGLPersistentObject = interface(IInterface)
   ['{A9A0198A-F11B-4325-A92C-2F24DB41652B}']
-    procedure WriteToFiler(writer: TVirtualWriter);
-    procedure ReadFromFiler(reader: TVirtualReader);
+    procedure WriteToFiler(writer: TGLVirtualWriter);
+    procedure ReadFromFiler(reader: TGLVirtualReader);
   end;
 
   (* Base class for persistent objects.
@@ -80,9 +80,9 @@ type
      file or string), assignment and cloning.
      The other requirement being the use of a virtual constructor, which allows
      polymorphic construction (don't forget to register your subclasses).
-     Note that TPersistentObject implements IUnknown, but does *not* implement
+     Note that TGLPersistentObject implements IUnknown, but does *not* implement
      reference counting *)
-  TPersistentObject = class(TPersistent, IPersistentObject)
+  TGLPersistentObject = class(TPersistent, IGLPersistentObject)
   protected
     procedure RaiseFilerException(const archiveVersion: Integer);
     function QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
@@ -90,24 +90,24 @@ type
     function _Release: Integer; stdcall;
   public
     constructor Create; virtual;
-    constructor CreateFromFiler(reader: TVirtualReader);
+    constructor CreateFromFiler(reader: TGLVirtualReader);
     destructor Destroy; override;
     procedure Assign(source: TPersistent); override;
-    function CreateClone: TPersistentObject; dynamic;
+    function CreateClone: TGLPersistentObject; dynamic;
     class function FileSignature: string; virtual;
-    class function FileVirtualWriter: TVirtualWriterClass; virtual;
-    class function FileVirtualReader: TVirtualReaderClass; virtual;
-    procedure WriteToFiler(writer: TVirtualWriter); dynamic;
-    procedure ReadFromFiler(reader: TVirtualReader); dynamic;
-    procedure SaveToStream(stream: TStream; writerClass: TVirtualWriterClass = nil); dynamic;
-    procedure LoadFromStream(stream: TStream; readerClass: TVirtualReaderClass = nil); dynamic;
-    procedure SaveToFile(const fileName: string; writerClass: TVirtualWriterClass = nil); dynamic;
-    procedure LoadFromFile(const fileName: string; readerClass: TVirtualReaderClass = nil); dynamic;
-    function SaveToString(writerClass: TVirtualWriterClass = nil): string; dynamic;
-    procedure LoadFromString(const data: string; readerClass: TVirtualReaderClass = nil); dynamic;
+    class function FileVirtualWriter: TGLVirtualWriterClass; virtual;
+    class function FileVirtualReader: TGLVirtualReaderClass; virtual;
+    procedure WriteToFiler(writer: TGLVirtualWriter); dynamic;
+    procedure ReadFromFiler(reader: TGLVirtualReader); dynamic;
+    procedure SaveToStream(stream: TStream; writerClass: TGLVirtualWriterClass = nil); dynamic;
+    procedure LoadFromStream(stream: TStream; readerClass: TGLVirtualReaderClass = nil); dynamic;
+    procedure SaveToFile(const fileName: string; writerClass: TGLVirtualWriterClass = nil); dynamic;
+    procedure LoadFromFile(const fileName: string; readerClass: TGLVirtualReaderClass = nil); dynamic;
+    function SaveToString(writerClass: TGLVirtualWriterClass = nil): string; dynamic;
+    procedure LoadFromString(const data: string; readerClass: TGLVirtualReaderClass = nil); dynamic;
   end;
 
-  TPersistentObjectClass = class of TPersistentObject;
+  TGLPersistentObjectClass = class of TGLPersistentObject;
 
   PPointerObjectList = ^TPointerObjectList;
   TPointerObjectList = array[0..MaxInt div (2*SizeOf(Pointer))] of TObject;
@@ -119,11 +119,11 @@ type
     persistence of contained data. Unlike the VCL's TObjectList, this one
     does NOT free its objects upon destruction or Clear, use Clean and CleanFree
     for that, and as such can be used for object referral lists too.
-    But only TPersistentObject items will be streamed appropriately.
+    But only TGLPersistentObject items will be streamed appropriately.
     The list can be used in a stack-like fashion with Push & Pop, and can
     perform basic boolean set operations.
     Note: the IndexOf implementation is up to 3 times faster than that of TList *)
-  TPersistentObjectList = class(TPersistentObject)
+  TGLPersistentObjectList = class(TGLPersistentObject)
   private
     FList: PPointerObjectList;
     FCount: Integer;
@@ -145,9 +145,9 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TVirtualWriter); override;
-    procedure ReadFromFiler(reader: TVirtualReader); override;
-    procedure ReadFromFilerWithEvent(reader: TVirtualReader;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
+    procedure ReadFromFilerWithEvent(reader: TGLVirtualReader;
       afterSenderObjectCreated: TNotifyEvent);
     function Add(const item: TObject): Integer; inline;
     procedure AddNils(nbVals: Cardinal);
@@ -162,7 +162,7 @@ type
     procedure DeleteAndFreeItems(index: Integer; nbVals: Cardinal);
     function RemoveAndFree(item: TObject): Integer;
     property GrowthDelta: integer read FGrowthDelta write FGrowthDelta;
-    function Expand: TPersistentObjectList;
+    function Expand: TGLPersistentObjectList;
     property Items[Index: Integer]: TObject read Get write Put; default;
     property Count: Integer read FCount write SetCount;
     property List: PPointerObjectList read FList;
@@ -186,13 +186,13 @@ type
     procedure Push(item: TObject);
     function Pop: TObject;
     procedure PopAndFree;
-    function AddObjects(const objectList: TPersistentObjectList): Integer;
-    procedure RemoveObjects(const objectList: TPersistentObjectList);
+    function AddObjects(const objectList: TGLPersistentObjectList): Integer;
+    procedure RemoveObjects(const objectList: TGLPersistentObjectList);
     procedure Sort(compareFunc: TObjectListSortCompare);
   end;
 
   //Wraps a TReader-compatible reader.
-  TBinaryReader = class(TVirtualReader)
+  TGLBinaryReader = class(TGLVirtualReader)
   protected
     function ReadValue: TValueType;
     function ReadWideString(vType: TValueType): WideString;
@@ -209,7 +209,7 @@ type
   end;
 
   //Wraps a TWriter-compatible writer.
-  TBinaryWriter = class(TVirtualWriter)
+  TGLBinaryWriter = class(TGLVirtualWriter)
   protected
     procedure WriteAnsiString(const aString: AnsiString); virtual;
     procedure WriteWideString(const aString: WideString); virtual;
@@ -224,7 +224,7 @@ type
   end;
 
   //Reads object persistence in Text format.
-  TTextReader = class(TVirtualReader)
+  TGLTextReader = class(TGLVirtualReader)
   private
     FValueType: string;
     FData: string;
@@ -243,7 +243,7 @@ type
   end;
 
   //Writes object persistence in Text format.
-  TTextWriter = class(TVirtualWriter)
+  TGLTextWriter = class(TGLVirtualWriter)
   private
     FIndentLevel: Integer;
   protected
@@ -261,7 +261,7 @@ type
   end;
 
   //TPersistent which has knowledge of its owner.
-  TOwnedPersistent = class(TPersistent)
+  TGLOwnedPersistent = class(TPersistent)
   private
     FOwner: TPersistent;
   protected
@@ -271,7 +271,7 @@ type
   end;
 
   //TPersistent that inplements IInterface.
-  TInterfacedPersistent = class(TPersistent, IInterface)
+  TGLInterfacedPersistent = class(TPersistent, IInterface)
   protected
     // Implementing IInterface.
     function QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
@@ -280,7 +280,7 @@ type
   end;
 
   //TCollectionItem thet inplements IInterface.
-  TInterfacedCollectionItem = class(TCollectionItem, IInterface)
+  TGLInterfacedCollectionItem = class(TCollectionItem, IInterface)
   protected
     // Implementing IInterface.
     function QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
@@ -394,20 +394,20 @@ begin
 end;
 
 // ------------------
-// ------------------ TVirtualReader ------------------
+// ------------------ TGLVirtualReader ------------------
 // ------------------
 
-constructor TVirtualReader.Create(Stream: TStream);
+constructor TGLVirtualReader.Create(Stream: TStream);
 begin
   FStream := Stream;
 end;
 
-procedure TVirtualReader.ReadTypeError;
+procedure TGLVirtualReader.ReadTypeError;
 begin
   raise EReadError.CreateFmt('%s, read type error', [ClassName]);
 end;
 
-procedure TVirtualReader.ReadTStrings(aStrings: TStrings);
+procedure TGLVirtualReader.ReadTStrings(aStrings: TStrings);
 var
   i: Integer;
   objectsStored: Boolean;
@@ -432,15 +432,15 @@ begin
 end;
 
 // ------------------
-// ------------------ TVirtualWriter ------------------
+// ------------------ TGLVirtualWriter ------------------
 // ------------------
 
-constructor TVirtualWriter.Create(Stream: TStream);
+constructor TGLVirtualWriter.Create(Stream: TStream);
 begin
   FStream := Stream;
 end;
 
-procedure TVirtualWriter.WriteTStrings(const aStrings: TStrings;
+procedure TGLVirtualWriter.WriteTStrings(const aStrings: TStrings;
   storeObjects: Boolean = True);
 var
   i: Integer;
@@ -464,26 +464,26 @@ begin
 end;
 
 // ------------------
-// ------------------ TPersistentObject ------------------
+// ------------------ TGLPersistentObject ------------------
 // ------------------
 
-constructor TPersistentObject.Create;
+constructor TGLPersistentObject.Create;
 begin
   inherited Create;
 end;
 
-constructor TPersistentObject.CreateFromFiler(reader: TVirtualReader);
+constructor TGLPersistentObject.CreateFromFiler(reader: TGLVirtualReader);
 begin
   Create;
   ReadFromFiler(reader);
 end;
 
-destructor TPersistentObject.Destroy;
+destructor TGLPersistentObject.Destroy;
 begin
   inherited Destroy;
 end;
 
-procedure TPersistentObject.Assign(source: TPersistent);
+procedure TGLPersistentObject.Assign(source: TPersistent);
 var
   ms: TStringStream; // faster than a TMemoryStream...
 begin
@@ -491,7 +491,7 @@ begin
   begin
     ms := TStringStream.Create('');
     try
-      TPersistentObject(source).SaveToStream(ms);
+      TGLPersistentObject(source).SaveToStream(ms);
       ms.Position := 0;
       LoadFromStream(ms);
     finally
@@ -502,45 +502,45 @@ begin
     inherited;
 end;
 
-function TPersistentObject.CreateClone: TPersistentObject;
+function TGLPersistentObject.CreateClone: TGLPersistentObject;
 begin
-  Result := TPersistentObjectClass(Self.ClassType).Create;
+  Result := TGLPersistentObjectClass(Self.ClassType).Create;
   Result.Assign(Self);
 end;
 
-class function TPersistentObject.FileSignature: string;
+class function TGLPersistentObject.FileSignature: string;
 begin
   Result := '';
 end;
 
-class function TPersistentObject.FileVirtualWriter: TVirtualWriterClass;
+class function TGLPersistentObject.FileVirtualWriter: TGLVirtualWriterClass;
 begin
-  Result := TBinaryWriter;
+  Result := TGLBinaryWriter;
 end;
 
-class function TPersistentObject.FileVirtualReader: TVirtualReaderClass;
+class function TGLPersistentObject.FileVirtualReader: TGLVirtualReaderClass;
 begin
-  Result := TBinaryReader;
+  Result := TGLBinaryReader;
 end;
 
-procedure TPersistentObject.WriteToFiler(writer: TVirtualWriter);
+procedure TGLPersistentObject.WriteToFiler(writer: TGLVirtualWriter);
 begin
   // nothing
   Assert(Assigned(writer));
 end;
 
-procedure TPersistentObject.ReadFromFiler(reader: TVirtualReader);
+procedure TGLPersistentObject.ReadFromFiler(reader: TGLVirtualReader);
 begin
   // nothing
   Assert(Assigned(reader));
 end;
 
-procedure TPersistentObject.RaiseFilerException(const archiveVersion: Integer);
+procedure TGLPersistentObject.RaiseFilerException(const archiveVersion: Integer);
 begin
   raise EFilerException.Create(ClassName + strUnknownArchiveVersion + IntToStr(archiveVersion)); //IGNORE
 end;
 
-function TPersistentObject.QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
+function TGLPersistentObject.QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
 begin
   if GetInterface(IID, Obj) then
     Result := S_OK
@@ -548,25 +548,25 @@ begin
     Result := E_NOINTERFACE;
 end;
 
-function TPersistentObject._AddRef: Integer; stdcall;
+function TGLPersistentObject._AddRef: Integer; stdcall;
 begin
   // ignore
   Result := 1;
 end;
 
-function TPersistentObject._Release: Integer; stdcall;
+function TGLPersistentObject._Release: Integer; stdcall;
 begin
   // ignore
   Result := 0;
 end;
 
-procedure TPersistentObject.SaveToStream(stream: TStream; writerClass: TVirtualWriterClass = nil);
+procedure TGLPersistentObject.SaveToStream(stream: TStream; writerClass: TGLVirtualWriterClass = nil);
 var
-  wr: TVirtualWriter;
+  wr: TGLVirtualWriter;
   fileSig: AnsiString;
 begin
   if writerClass = nil then
-    writerClass := TBinaryWriter;
+    writerClass := TGLBinaryWriter;
   wr := writerClass.Create(stream);
   try
     if FileSignature <> '' then
@@ -580,13 +580,13 @@ begin
   end;
 end;
 
-procedure TPersistentObject.LoadFromStream(stream: TStream; readerClass: TVirtualReaderClass = nil);
+procedure TGLPersistentObject.LoadFromStream(stream: TStream; readerClass: TGLVirtualReaderClass = nil);
 var
-  rd: TVirtualReader;
+  rd: TGLVirtualReader;
   sig: AnsiString;
 begin
   if readerClass = nil then
-    readerClass := TBinaryReader;
+    readerClass := TGLBinaryReader;
   rd := readerClass.Create(stream);
   try
     if FileSignature <> '' then
@@ -602,7 +602,7 @@ begin
   end;
 end;
 
-procedure TPersistentObject.SaveToFile(const fileName: string; writerClass: TVirtualWriterClass = nil);
+procedure TGLPersistentObject.SaveToFile(const fileName: string; writerClass: TGLVirtualWriterClass = nil);
 var
   fs: TStream;
 begin
@@ -616,7 +616,7 @@ begin
   end;
 end;
 
-procedure TPersistentObject.LoadFromFile(const fileName: string; readerClass: TVirtualReaderClass = nil);
+procedure TGLPersistentObject.LoadFromFile(const fileName: string; readerClass: TGLVirtualReaderClass = nil);
 var
   fs: TStream;
 begin
@@ -630,7 +630,7 @@ begin
   end;
 end;
 
-function TPersistentObject.SaveToString(writerClass: TVirtualWriterClass = nil): string;
+function TGLPersistentObject.SaveToString(writerClass: TGLVirtualWriterClass = nil): string;
 var
   ss: TStringStream;
 begin
@@ -643,7 +643,7 @@ begin
   end;
 end;
 
-procedure TPersistentObject.LoadFromString(const data: string; readerClass: TVirtualReaderClass = nil);
+procedure TGLPersistentObject.LoadFromString(const data: string; readerClass: TGLVirtualReaderClass = nil);
 var
   ss: TStringStream;
 begin
@@ -656,22 +656,22 @@ begin
 end;
 
 // ------------------
-// ------------------ TPersistentObjectList ------------------
+// ------------------ TGLPersistentObjectList ------------------
 // ------------------
 
-constructor TPersistentObjectList.Create;
+constructor TGLPersistentObjectList.Create;
 begin
   inherited Create;
   FGrowthDelta := cDefaultListGrowthDelta;
 end;
 
-destructor TPersistentObjectList.Destroy;
+destructor TGLPersistentObjectList.Destroy;
 begin
   Clear;
   inherited Destroy;
 end;
 
-function TPersistentObjectList.Add(const item: TObject): Integer;
+function TGLPersistentObjectList.Add(const item: TObject): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -680,7 +680,7 @@ begin
   Inc(FCount);
 end;
 
-procedure TPersistentObjectList.AddNils(nbVals: Cardinal);
+procedure TGLPersistentObjectList.AddNils(nbVals: Cardinal);
 begin
   if Integer(nbVals) + Count > Capacity then
     SetCapacity(Integer(nbVals) + Count);
@@ -688,7 +688,7 @@ begin
   FCount := FCount + Integer(nbVals);
 end;
 
-function TPersistentObjectList.AddObjects(const objectList: TPersistentObjectList): Integer;
+function TGLPersistentObjectList.AddObjects(const objectList: TGLPersistentObjectList): Integer;
 begin
   if Assigned(objectList) then
   begin
@@ -701,7 +701,7 @@ begin
     Result := 0;
 end;
 
-procedure TPersistentObjectList.RemoveObjects(const objectList: TPersistentObjectList);
+procedure TGLPersistentObjectList.RemoveObjects(const objectList: TGLPersistentObjectList);
 var
   i: Integer;
 begin
@@ -709,7 +709,7 @@ begin
     Remove(objectList[i]);
 end;
 
-procedure TPersistentObjectList.Clear;
+procedure TGLPersistentObjectList.Clear;
 begin
   if Assigned(Self) and Assigned(FList) then
   begin
@@ -718,7 +718,7 @@ begin
   end;
 end;
 
-procedure TPersistentObjectList.Delete(index: Integer);
+procedure TGLPersistentObjectList.Delete(index: Integer);
 begin
 {$IFOPT R+}
   if Cardinal(Index) >= Cardinal(FCount) then
@@ -729,7 +729,7 @@ begin
     System.Move(FList[index + 1], FList[index], (FCount - index) * SizeOf(TObject));
 end;
 
-procedure TPersistentObjectList.DeleteItems(index: Integer; nbVals: Cardinal);
+procedure TGLPersistentObjectList.DeleteItems(index: Integer; nbVals: Cardinal);
 begin
 {$IFOPT R+}
   Assert(Cardinal(index) < Cardinal(FCount));
@@ -746,7 +746,7 @@ begin
   end;
 end;
 
-procedure TPersistentObjectList.Exchange(index1, index2: Integer);
+procedure TGLPersistentObjectList.Exchange(index1, index2: Integer);
 var
   item: TObject;
   locList: PPointerObjectList;
@@ -762,14 +762,14 @@ begin
   locList^[index2] := item;
 end;
 
-function TPersistentObjectList.Expand: TPersistentObjectList;
+function TGLPersistentObjectList.Expand: TGLPersistentObjectList;
 begin
   if FCount = FCapacity then
     SetCapacity(FCapacity + FGrowthDelta);
   Result := Self;
 end;
 
-function TPersistentObjectList.GetFirst: TObject;
+function TGLPersistentObjectList.GetFirst: TObject;
 begin
 {$IFOPT R+}
   if Cardinal(FCount) = 0 then
@@ -778,7 +778,7 @@ begin
   Result := FList^[0];
 end;
 
-procedure TPersistentObjectList.SetFirst(item: TObject);
+procedure TGLPersistentObjectList.SetFirst(item: TObject);
 begin
 {$IFOPT R+}
   if Cardinal(FCount) = 0 then
@@ -787,12 +787,12 @@ begin
   FList^[0] := item;
 end;
 
-procedure TPersistentObjectList.Error;
+procedure TGLPersistentObjectList.Error;
 begin
   raise EListError.Create(strListIndexError);
 end;
 
-function TPersistentObjectList.Get(Index: Integer): TObject;
+function TGLPersistentObjectList.Get(Index: Integer): TObject;
 begin
 {$IFOPT R+}
   if Cardinal(Index) >= Cardinal(FCount) then
@@ -803,7 +803,7 @@ end;
 
 // IndexOf
 //
-function TPersistentObjectList.IndexOf(Item: TObject): Integer;
+function TGLPersistentObjectList.IndexOf(Item: TObject): Integer;
 var
   I: Integer;
 begin
@@ -821,7 +821,7 @@ begin
   end;
 end;
 
-procedure TPersistentObjectList.Insert(index: Integer; item: TObject);
+procedure TGLPersistentObjectList.Insert(index: Integer; item: TObject);
 begin
 {$IFOPT R+}
   if Cardinal(index) > Cardinal(FCount) then
@@ -836,7 +836,7 @@ begin
   Inc(FCount);
 end;
 
-procedure TPersistentObjectList.InsertNils(index: Integer; nbVals: Cardinal);
+procedure TGLPersistentObjectList.InsertNils(index: Integer; nbVals: Cardinal);
 var
   nc: Integer;
 begin
@@ -856,7 +856,7 @@ begin
   end;
 end;
 
-function TPersistentObjectList.GetLast: TObject;
+function TGLPersistentObjectList.GetLast: TObject;
 begin
 {$IFOPT R+}
   if Cardinal(FCount) = 0 then
@@ -865,7 +865,7 @@ begin
   Result := FList^[FCount - 1];
 end;
 
-procedure TPersistentObjectList.SetLast(item: TObject);
+procedure TGLPersistentObjectList.SetLast(item: TObject);
 begin
 {$IFOPT R+}
   if Cardinal(FCount) = 0 then
@@ -874,7 +874,7 @@ begin
   FList^[FCount - 1] := item;
 end;
 
-procedure TPersistentObjectList.Move(CurIndex, NewIndex: Integer);
+procedure TGLPersistentObjectList.Move(CurIndex, NewIndex: Integer);
 var
   item: Pointer;
 begin
@@ -901,7 +901,7 @@ begin
   end;
 end;
 
-procedure TPersistentObjectList.Put(Index: Integer; Item: TObject);
+procedure TGLPersistentObjectList.Put(Index: Integer; Item: TObject);
 begin
 {$IFOPT R+}
   if Cardinal(Index) >= Cardinal(FCount) then
@@ -910,14 +910,14 @@ begin
   FList^[Index] := Item;
 end;
 
-function TPersistentObjectList.Remove(item: TObject): Integer;
+function TGLPersistentObjectList.Remove(item: TObject): Integer;
 begin
   Result := IndexOf(item);
   if Result >= 0 then
     Delete(Result);
 end;
 
-procedure TPersistentObjectList.Pack;
+procedure TGLPersistentObjectList.Pack;
 var
   i, j, n: Integer;
   p: PPointerObjectList;
@@ -947,7 +947,7 @@ begin
   SetCount(n + 1);
 end;
 
-procedure TPersistentObjectList.SetCapacity(newCapacity: Integer);
+procedure TGLPersistentObjectList.SetCapacity(newCapacity: Integer);
 begin
   if newCapacity <> FCapacity then
   begin
@@ -958,13 +958,13 @@ begin
   end;
 end;
 
-procedure TPersistentObjectList.RequiredCapacity(aCapacity: Integer);
+procedure TGLPersistentObjectList.RequiredCapacity(aCapacity: Integer);
 begin
   if FCapacity < aCapacity then
     SetCapacity(aCapacity);
 end;
 
-procedure TPersistentObjectList.SetCount(newCount: Integer);
+procedure TGLPersistentObjectList.SetCount(newCount: Integer);
 begin
   if newCount > FCapacity then
     SetCapacity(newCount);
@@ -973,7 +973,7 @@ begin
   FCount := NewCount;
 end;
 
-procedure TPersistentObjectList.DeleteAndFree(index: Integer);
+procedure TGLPersistentObjectList.DeleteAndFree(index: Integer);
 var
   obj: TObject;
 begin
@@ -982,7 +982,7 @@ begin
   obj.Free;
 end;
 
-procedure TPersistentObjectList.DeleteAndFreeItems(index: Integer; nbVals: Cardinal);
+procedure TGLPersistentObjectList.DeleteAndFreeItems(index: Integer; nbVals: Cardinal);
 var
   i, n: Integer;
 begin
@@ -997,7 +997,7 @@ begin
   DeleteItems(index, nbVals);
 end;
 
-function TPersistentObjectList.RemoveAndFree(item: TObject): Integer;
+function TGLPersistentObjectList.RemoveAndFree(item: TObject): Integer;
 begin
   Result := IndexOf(item);
   if Result >= 0 then
@@ -1007,7 +1007,7 @@ begin
   end;
 end;
 
-procedure TPersistentObjectList.DoClean;
+procedure TGLPersistentObjectList.DoClean;
 var
   i: Integer;
 begin
@@ -1021,13 +1021,13 @@ begin
   end;
 end;
 
-procedure TPersistentObjectList.Clean;
+procedure TGLPersistentObjectList.Clean;
 begin
   DoClean;
   Clear;
 end;
 
-procedure TPersistentObjectList.CleanFree;
+procedure TGLPersistentObjectList.CleanFree;
 begin
   if Self <> nil then
   begin
@@ -1036,7 +1036,7 @@ begin
   end;
 end;
 
-procedure TPersistentObjectList.WriteToFiler(writer: TVirtualWriter);
+procedure TGLPersistentObjectList.WriteToFiler(writer: TGLVirtualWriter);
 (*
    Object List Filer Format :
       Integer (Version)
@@ -1066,9 +1066,9 @@ begin
           WriteBoolean(False);
           WriteInteger(0);
         end
-        else if (FList^[i] is TPersistentObject) then
+        else if (FList^[i] is TGLPersistentObject) then
         begin
-          // yeah, a TPersistentObject
+          // yeah, a TGLPersistentObject
           aType := FList^[i].ClassType;
           objId := objTypes.IndexOf(aType);
           if objId < 0 then
@@ -1082,7 +1082,7 @@ begin
             // class already registered
             WriteInteger(objId);
           end;
-          TPersistentObject(FList^[i]).WriteToFiler(writer);
+          TGLPersistentObject(FList^[i]).WriteToFiler(writer);
         end
         else
         begin
@@ -1098,10 +1098,10 @@ begin
   end;
 end;
 
-procedure TPersistentObjectList.ReadFromFilerWithEvent(reader: TVirtualReader; afterSenderObjectCreated: TNotifyEvent);
+procedure TGLPersistentObjectList.ReadFromFilerWithEvent(reader: TGLVirtualReader; afterSenderObjectCreated: TNotifyEvent);
 var
-  obj: TPersistentObject;
-  m: TPersistentObjectClass;
+  obj: TGLPersistentObject;
+  m: TGLPersistentObjectClass;
   version: integer;
   objTypes: TList;
 begin
@@ -1126,7 +1126,7 @@ begin
               Cardinal(vaInt64) + 1 { vaUTF8String }:
               begin
                 // Unknown class, to be registered
-                m := TPersistentObjectClass(FindClass(ReadString));
+                m := TGLPersistentObjectClass(FindClass(ReadString));
                 objTypes.Add(m);
                 obj := m.Create;
                 if Assigned(afterSenderObjectCreated) then
@@ -1137,7 +1137,7 @@ begin
             Cardinal(vaInt8), Cardinal(vaInt16), Cardinal(vaInt32):
               begin
                 // known class, direct retrieve
-                m := TPersistentObjectClass(objTypes[ReadInteger]);
+                m := TGLPersistentObjectClass(objTypes[ReadInteger]);
                 obj := m.Create;
                 if Assigned(afterSenderObjectCreated) then
                   afterSenderObjectCreated(obj);
@@ -1157,22 +1157,22 @@ begin
   end;
 end;
 
-procedure TPersistentObjectList.ReadFromFiler(reader: TVirtualReader);
+procedure TGLPersistentObjectList.ReadFromFiler(reader: TGLVirtualReader);
 begin
   ReadFromFilerWithEvent(reader, AfterObjectCreatedByReader);
 end;
 
-procedure TPersistentObjectList.AfterObjectCreatedByReader(Sender: TObject);
+procedure TGLPersistentObjectList.AfterObjectCreatedByReader(Sender: TObject);
 begin
   // nothing
 end;
 
-procedure TPersistentObjectList.Push(item: TObject);
+procedure TGLPersistentObjectList.Push(item: TObject);
 begin
   Add(item);
 end;
 
-function TPersistentObjectList.Pop: TObject;
+function TGLPersistentObjectList.Pop: TObject;
 begin
   if FCount > 0 then
   begin
@@ -1183,7 +1183,7 @@ begin
     Result := nil;
 end;
 
-procedure TPersistentObjectList.PopAndFree;
+procedure TGLPersistentObjectList.PopAndFree;
 begin
   Pop.Free;
 end;
@@ -1218,22 +1218,22 @@ begin
   until I >= R;
 end;
 
-procedure TPersistentObjectList.Sort(compareFunc: TObjectListSortCompare);
+procedure TGLPersistentObjectList.Sort(compareFunc: TObjectListSortCompare);
 begin
   if Count > 1 then
     POListQuickSort(FList, 0, Count - 1, compareFunc);
 end;
 
 // ------------------
-// ------------------ TBinaryReader ------------------
+// ------------------ TGLBinaryReader ------------------
 // ------------------
 
-procedure TBinaryReader.Read(var Buf; Count: Longint);
+procedure TGLBinaryReader.Read(var Buf; Count: Longint);
 begin
   FStream.Read(Buf, Count);
 end;
 
-function TBinaryReader.ReadValue: TValueType;
+function TGLBinaryReader.ReadValue: TValueType;
 var
   b: byte;
 begin
@@ -1241,7 +1241,7 @@ begin
   Result := TValueType(b);
 end;
 
-function TBinaryReader.NextValue: TValueType;
+function TGLBinaryReader.NextValue: TValueType;
 var
   pos: Int64;
 begin
@@ -1250,7 +1250,7 @@ begin
   FStream.Position := pos;
 end;
 
-function TBinaryReader.ReadInteger: Integer;
+function TGLBinaryReader.ReadInteger: Integer;
 var
   tempShort: ShortInt;
   tempSmallInt: SmallInt;
@@ -1273,7 +1273,7 @@ begin
   end;
 end;
 
-function TBinaryReader.ReadBoolean: Boolean;
+function TGLBinaryReader.ReadBoolean: Boolean;
 begin
   case ReadValue of
     vaTrue: Result := True;
@@ -1284,7 +1284,7 @@ begin
   end;
 end;
 
-function TBinaryReader.ReadString: string;
+function TGLBinaryReader.ReadString: string;
 var
   n: Cardinal;
   vType: TValueType;
@@ -1310,7 +1310,7 @@ begin
   Result := string(tempString);
 end;
 
-function TBinaryReader.ReadWideString(vType: TValueType): WideString;
+function TGLBinaryReader.ReadWideString(vType: TValueType): WideString;
 var
   n: Cardinal;
   utf8buf: AnsiString;
@@ -1337,7 +1337,7 @@ begin
   end;
 end;
 
-function TBinaryReader.ReadFloat: Extended;
+function TGLBinaryReader.ReadFloat: Extended;
 {$IFDEF WIN64}
 var
    C: TExtended80Rec; // Temporary variable to store 10 bytes floating point number in a Win64 application
@@ -1360,33 +1360,33 @@ begin
   {$ENDIF}
 end;
 
-procedure TBinaryReader.ReadListBegin;
+procedure TGLBinaryReader.ReadListBegin;
 begin
   if ReadValue <> vaList then
     ReadTypeError;
 end;
 
-procedure TBinaryReader.ReadListEnd;
+procedure TGLBinaryReader.ReadListEnd;
 begin
   if ReadValue <> vaNull then
     ReadTypeError;
 end;
 
-function TBinaryReader.EndOfList: Boolean;
+function TGLBinaryReader.EndOfList: Boolean;
 begin
   Result := (NextValue = vaNull);
 end;
 
 // ------------------
-// ------------------ TBinaryWriter ------------------
+// ------------------ TGLBinaryWriter ------------------
 // ------------------
 
-procedure TBinaryWriter.Write(const Buf; Count: Longint);
+procedure TGLBinaryWriter.Write(const Buf; Count: Longint);
 begin
   FStream.Write(Buf, Count);
 end;
 
-procedure TBinaryWriter.WriteInteger(anInteger: Integer);
+procedure TGLBinaryWriter.WriteInteger(anInteger: Integer);
 type
   TIntStruct = packed record
     typ: byte;
@@ -1413,14 +1413,14 @@ begin
   end;
 end;
 
-procedure TBinaryWriter.WriteBoolean(aBoolean: Boolean);
+procedure TGLBinaryWriter.WriteBoolean(aBoolean: Boolean);
 const
   cBoolToType: array[False..True] of byte = (byte(vaFalse), byte(vaTrue));
 begin
   Write(cBoolToType[aBoolean], 1);
 end;
 
-procedure TBinaryWriter.WriteAnsiString(const aString: AnsiString);
+procedure TGLBinaryWriter.WriteAnsiString(const aString: AnsiString);
 type
   TStringHeader = packed record
     typ: Byte;
@@ -1445,7 +1445,7 @@ begin
   end;
 end;
 
-procedure TBinaryWriter.WriteWideString(const aString: WideString);
+procedure TGLBinaryWriter.WriteWideString(const aString: WideString);
 type
   TStringHeader = packed record
     typ: Byte;
@@ -1461,7 +1461,7 @@ begin
     Write(aString[1], sh.length * SizeOf(WideChar));
 end;
 
-procedure TBinaryWriter.WriteString(const aString: string);
+procedure TGLBinaryWriter.WriteString(const aString: string);
 begin
 {$IFDEF UNICODE}
   // TODO: should really check if the string can be simplified to: vaString / vaLString / vaUTF8String
@@ -1471,7 +1471,7 @@ begin
 {$ENDIF}
 end;
 
-procedure TBinaryWriter.WriteFloat(const aFloat: Extended);
+procedure TGLBinaryWriter.WriteFloat(const aFloat: Extended);
 type
   TExtendedStruct = packed record
     typ: Byte;
@@ -1495,14 +1495,14 @@ begin
   {$ENDIF}
 end;
 
-procedure TBinaryWriter.WriteListBegin;
+procedure TGLBinaryWriter.WriteListBegin;
 const
   buf: byte = byte(vaList);
 begin
   Write(buf, 1);
 end;
 
-procedure TBinaryWriter.WriteListEnd;
+procedure TGLBinaryWriter.WriteListEnd;
 const
   buf: byte = byte(vaNull);
 begin
@@ -1510,10 +1510,10 @@ begin
 end;
 
 // ------------------
-// ------------------ TTextReader ------------------
+// ------------------ TGLTextReader ------------------
 // ------------------
 
-procedure TTextReader.ReadLine(const requestedType: string = '');
+procedure TGLTextReader.ReadLine(const requestedType: string = '');
 var
   line: string;
   c: Byte;
@@ -1544,7 +1544,7 @@ begin
         + requestedType + '", found "FValueType".');
 end;
 
-procedure TTextReader.Read(var Buf; Count: Longint);
+procedure TGLTextReader.Read(var Buf; Count: Longint);
 
   function HexCharToInt(const c: Char): Integer;
   begin
@@ -1569,7 +1569,7 @@ begin
   end;
 end;
 
-function TTextReader.NextValue: TValueType;
+function TGLTextReader.NextValue: TValueType;
 var
   p: Int64;
 begin
@@ -1595,19 +1595,19 @@ begin
   Stream.Position := p;
 end;
 
-function TTextReader.ReadInteger: Integer;
+function TGLTextReader.ReadInteger: Integer;
 begin
   ReadLine(cVTInteger);
   Result := StrToInt(FData);
 end;
 
-function TTextReader.ReadBoolean: Boolean;
+function TGLTextReader.ReadBoolean: Boolean;
 begin
   ReadLine(cVTBoolean);
   Result := (FData = cTrue);
 end;
 
-function TTextReader.ReadString: string;
+function TGLTextReader.ReadString: string;
 var
   i: Integer;
 begin
@@ -1628,7 +1628,7 @@ begin
   Assert(FData[i] = '.', 'Invalid stored string.');
 end;
 
-function TTextReader.ReadFloat: Extended;
+function TGLTextReader.ReadFloat: Extended;
 var
   oldDc: Char;
 begin
@@ -1639,17 +1639,17 @@ begin
   FormatSettings.DecimalSeparator := oldDc;
 end;
 
-procedure TTextReader.ReadListBegin;
+procedure TGLTextReader.ReadListBegin;
 begin
   ReadLine(cVTListBegin);
 end;
 
-procedure TTextReader.ReadListEnd;
+procedure TGLTextReader.ReadListEnd;
 begin
   ReadLine(cVTListEnd);
 end;
 
-function TTextReader.EndOfList: Boolean;
+function TGLTextReader.EndOfList: Boolean;
 var
   p: Int64;
 begin
@@ -1660,20 +1660,20 @@ begin
 end;
 
 // ------------------
-// ------------------ TTextWriter ------------------
+// ------------------ TGLTextWriter ------------------
 // ------------------
 
-constructor TTextWriter.Create(aStream: TStream);
+constructor TGLTextWriter.Create(aStream: TStream);
 begin
   inherited;
 end;
 
-destructor TTextWriter.Destroy;
+destructor TGLTextWriter.Destroy;
 begin
   inherited;
 end;
 
-procedure TTextWriter.WriteLine(const valueType, data: string);
+procedure TGLTextWriter.WriteLine(const valueType, data: string);
 var
   buf: AnsiString;
 begin
@@ -1682,7 +1682,7 @@ begin
   Stream.Write(buf[1], Length(buf));
 end;
 
-procedure TTextWriter.Write(const Buf; Count: Longint);
+procedure TGLTextWriter.Write(const Buf; Count: Longint);
 const
   cNibbleToHex: PChar = '0123456789ABCDEF';
 var
@@ -1701,12 +1701,12 @@ begin
   WriteLine(cVTRaw, data);
 end;
 
-procedure TTextWriter.WriteInteger(anInteger: Integer);
+procedure TGLTextWriter.WriteInteger(anInteger: Integer);
 begin
   WriteLine(cVTInteger, IntToStr(anInteger));
 end;
 
-procedure TTextWriter.WriteBoolean(aBoolean: Boolean);
+procedure TGLTextWriter.WriteBoolean(aBoolean: Boolean);
 begin
   if aBoolean then
     WriteLine(cVTBoolean, cTrue)
@@ -1714,7 +1714,7 @@ begin
     WriteLine(cVTBoolean, cFalse);
 end;
 
-procedure TTextWriter.WriteString(const aString: string);
+procedure TGLTextWriter.WriteString(const aString: string);
 var
   i: Integer;
   s: string;
@@ -1728,52 +1728,52 @@ begin
   WriteLine(cVTString, s + '.');
 end;
 
-procedure TTextWriter.WriteFloat(const aFloat: Extended);
+procedure TGLTextWriter.WriteFloat(const aFloat: Extended);
 begin
   WriteLine(cVTInteger, FloatToStr(aFloat));
 end;
 
-procedure TTextWriter.WriteListBegin;
+procedure TGLTextWriter.WriteListBegin;
 begin
   WriteLine(cVTListBegin, '');
   Inc(FIndentLevel, 3);
 end;
 
-procedure TTextWriter.WriteListEnd;
+procedure TGLTextWriter.WriteListEnd;
 begin
   Dec(FIndentLevel, 3);
   WriteLine(cVTListEnd, '');
 end;
 
 // ------------------
-// ------------------ TOwnedPersistent ------------------
+// ------------------ TGLOwnedPersistent ------------------
 // ------------------
 
-constructor TOwnedPersistent.Create(AOwner: TPersistent);
+constructor TGLOwnedPersistent.Create(AOwner: TPersistent);
 begin
   FOwner := AOwner;
 end;
 
-function TOwnedPersistent.GetOwner: TPersistent;
+function TGLOwnedPersistent.GetOwner: TPersistent;
 begin
   Result := FOwner;
 end;
 
 // ------------------
-// ------------------ TInterfacedPersistent ------------------
+// ------------------ TGLInterfacedPersistent ------------------
 // ------------------
 
-function TInterfacedPersistent._AddRef: Integer; stdcall;
+function TGLInterfacedPersistent._AddRef: Integer; stdcall;
 begin
   Result := -1; //ignore
 end;
 
-function TInterfacedPersistent._Release: Integer; stdcall;
+function TGLInterfacedPersistent._Release: Integer; stdcall;
 begin
   Result := -1; //ignore
 end;
 
-function TInterfacedPersistent.QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
+function TGLInterfacedPersistent.QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
 begin
   if GetInterface(IID, Obj) then
     Result := S_OK
@@ -1782,21 +1782,21 @@ begin
 end;
 
 // ------------------
-// ------------------ TInterfacedCollectionItem ------------------
+// ------------------ TGLInterfacedCollectionItem ------------------
 // ------------------
 
 
-function TInterfacedCollectionItem._AddRef: Integer; stdcall;
+function TGLInterfacedCollectionItem._AddRef: Integer; stdcall;
 begin
   Result := -1; //ignore
 end;
 
-function TInterfacedCollectionItem._Release: Integer; stdcall;
+function TGLInterfacedCollectionItem._Release: Integer; stdcall;
 begin
   Result := -1; //ignore
 end;
 
-function TInterfacedCollectionItem.QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
+function TGLInterfacedCollectionItem.QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
 begin
   if GetInterface(IID, Obj) then
     Result := S_OK
@@ -1808,6 +1808,6 @@ end;
 initialization
 // ------------------------------------------------------------------
 
-  RegisterClass(TPersistentObjectList);
+  RegisterClass(TGLPersistentObjectList);
 
 end.

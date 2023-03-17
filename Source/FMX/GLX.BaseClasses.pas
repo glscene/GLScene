@@ -37,7 +37,7 @@ type
   end;
 
   // An abstract class describing the "update" interface.
-  TgxUpdateAbleObject = class(TInterfacedPersistent, IgxNotifyAble)
+  TgxUpdateAbleObject = class(TgxInterfacedPersistent, IgxNotifyAble)
   private
     FOwner: TPersistent;
     FUpdating: Integer;

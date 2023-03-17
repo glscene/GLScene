@@ -672,8 +672,8 @@ type
   private
     FVerletConstraint: TgxVerletConstraint;
   public
-    procedure WriteToFiler(Writer: TVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TVirtualReader); override;
+    procedure WriteToFiler(Writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TgxVirtualReader); override;
     procedure AddToVerletWorld(VerletWorld: TgxVerletWorld); virtual;
     // The verlet constraint is created through the AddToVerletWorld procedure
     property VerletConstraint: TgxVerletConstraint read FVerletConstraint;
@@ -687,8 +687,8 @@ type
     procedure SetRadius(const Val: Single);
   public
     constructor Create; override;
-    procedure WriteToFiler(Writer: TVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TVirtualReader); override;
+    procedure WriteToFiler(Writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TgxVirtualReader); override;
     procedure AddToVerletWorld(VerletWorld: TgxVerletWorld); override;
     procedure AlignCollider; override;
     property Radius: Single read FRadius write SetRadius;
@@ -703,8 +703,8 @@ type
     procedure SetLength(const Val: Single);
   public
     constructor Create; override;
-    procedure WriteToFiler(Writer: TVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TVirtualReader); override;
+    procedure WriteToFiler(Writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TgxVirtualReader); override;
     procedure AddToVerletWorld(VerletWorld: TgxVerletWorld); override;
     procedure AlignCollider; override;
     property Radius: Single read FRadius write SetRadius;
@@ -2610,13 +2610,13 @@ end;
 // ------------------
 // ------------------ TgxVerletSkeletonCollider ------------------
 // ------------------
-procedure TgxVerletSkeletonCollider.WriteToFiler(Writer: TVirtualWriter);
+procedure TgxVerletSkeletonCollider.WriteToFiler(Writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(Writer);
   Writer.WriteInteger(0); // Archive Version 0
 end;
 
-procedure TgxVerletSkeletonCollider.ReadFromFiler(Reader: TVirtualReader);
+procedure TgxVerletSkeletonCollider.ReadFromFiler(Reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -2645,14 +2645,14 @@ begin
   AlignCollider;
 end;
 
-procedure TgxVerletSphere.WriteToFiler(Writer: TVirtualWriter);
+procedure TgxVerletSphere.WriteToFiler(Writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(Writer);
   Writer.WriteInteger(0); // Archive Version 0
   Writer.WriteFloat(FRadius);
 end;
 
-procedure TgxVerletSphere.ReadFromFiler(Reader: TVirtualReader);
+procedure TgxVerletSphere.ReadFromFiler(Reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -2701,7 +2701,7 @@ begin
   AlignCollider;
 end;
 
-procedure TgxVerletCapsule.WriteToFiler(Writer: TVirtualWriter);
+procedure TgxVerletCapsule.WriteToFiler(Writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(Writer);
   Writer.WriteInteger(0); // Archive Version 0
@@ -2709,7 +2709,7 @@ begin
   Writer.WriteFloat(FLength);
 end;
 
-procedure TgxVerletCapsule.ReadFromFiler(Reader: TVirtualReader);
+procedure TgxVerletCapsule.ReadFromFiler(Reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
 begin

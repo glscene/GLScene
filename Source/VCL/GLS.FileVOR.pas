@@ -3,8 +3,8 @@
 //
 unit GLS.FileVOR;
 (*
-  Supports to import TetGen files from http://wias-berlin.de/software/tetgen/fformats.html 
-  combined in a VOR ASCII file for Voronoi polyhedralization.
+  Import for VOR ASCII files of TetGen software from http://wias-berlin.de/software/tetgen/fformats.html
+  is supported for Voronoi polyhedralization.
 *)
 interface
 

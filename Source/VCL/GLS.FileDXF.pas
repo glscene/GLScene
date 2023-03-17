@@ -49,7 +49,7 @@ type
     // procedure DoProgress (Stage: TGLProgressStage; PercentDone: single; RedrawNow: Boolean; const Msg: string);
     function NeedMesh(basemesh: TGLBaseMesh; layer: STRING): TGLMeshObject;
     function NeedFaceGroup(m: TGLMeshObject; fgmode: TGLFaceGroupMeshMode;
-      fgmat: STRING): TFGVertexIndexList;
+      fgmat: String): TFGVertexIndexList;
     procedure NeedMeshAndFaceGroup(basemesh: TGLBaseMesh; layer: STRING;
       fgmode: TGLFaceGroupMeshMode; fgmat: STRING; var m: TGLMeshObject;
       var fg: TFGVertexIndexList);

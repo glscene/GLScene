@@ -45,11 +45,9 @@ contains
   Formatx.B3D in '..\Source\FMX\Formatx.B3D.pas',
   Formatx.DDSImage in '..\Source\FMX\Formatx.DDSImage.pas',
   Formatx.HDRImage in '..\Source\FMX\Formatx.HDRImage.pas',
-  Formatx.MD3 in '..\Source\FMX\Formatx.MD3.pas',
   Formatx.Q3MD3 in '..\Source\FMX\Formatx.Q3MD3.pas',
   Formatx.OCT in '..\Source\FMX\Formatx.OCT.pas',
   Formatx.X in '..\Source\FMX\Formatx.X.pas',
-  Formatx.MD2 in '..\Source\FMX\Formatx.MD2.pas',
   Formatx.TGA in '..\Source\FMX\Formatx.TGA.pas',
   Formatx.VRML in '..\Source\FMX\Formatx.VRML.pas',
   Formatx.VfsPAK in '..\Source\FMX\Formatx.VfsPAK.pas',
@@ -257,6 +255,8 @@ contains
   Formats.Q3BSP in '..\Source\Common\Formats.Q3BSP.pas',
   Scena.Keyboard in '..\Source\Common\Scena.Keyboard.pas',
   Scena.PipelineTransformation in '..\Source\Common\Scena.PipelineTransformation.pas',
-  Scena.Generics in '..\Source\Common\Scena.Generics.pas';
+  Scena.Generics in '..\Source\Common\Scena.Generics.pas',
+  Formats.MD2 in '..\Source\Common\Formats.MD2.pas',
+  Formats.MD3 in '..\Source\Common\Formats.MD3.pas';
 
 end.

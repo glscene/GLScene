@@ -1,7 +1,7 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-unit GLS.RGBE;
+unit Scena.RGBE;
 
 (* GLScene RGBE utils *)
 

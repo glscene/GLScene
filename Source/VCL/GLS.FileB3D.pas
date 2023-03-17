@@ -11,14 +11,16 @@ uses
   System.Classes, 
   System.SysUtils,
    
-  GLS.VectorFileObjects, 
-  GLS.ApplicationFileIO, 
-  GLS.Texture, 
+  Scena.VectorTypes,
+  Scena.VectorGeometry,
   Scena.TextureFormat,
-  GLS.Material, 
-  Scena.VectorTypes, 
-  Scena.VectorGeometry, 
+
+  GLS.VectorFileObjects,
+  GLS.ApplicationFileIO,
+  GLS.Texture,
+  GLS.Material,
   GLS.VectorLists,
+
   Formats.B3D;
 
 type

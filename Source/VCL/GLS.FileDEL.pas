@@ -15,10 +15,11 @@ uses
   System.SysUtils,
 
   Scena.VectorTypes,
+  Scena.VectorTypesExt,
+  Scena.VectorGeometry,
+
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
-  Scena.VectorGeometry,
-  Scena.VectorTypesExt,
   GLS.Utils;
 
 

@@ -72,7 +72,7 @@ type
   end;
 
   // The list of registered classes
-  TGLArchiveFileFormatsList = class(TPersistentObjectList)
+  TGLArchiveFileFormatsList = class(TGLPersistentObjectList)
   public
     destructor Destroy; override;
     procedure Add(const Ext, Desc: string; DescID: integer;

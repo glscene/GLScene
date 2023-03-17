@@ -1,7 +1,6 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.File3DSSceneObjects;
 
 (* 3ds-specific scene objects. *)
@@ -15,14 +14,14 @@ uses
   System.Classes,
   System.SysUtils,
   System.Math,
-  
+
   Scena.OpenGLTokens,
   Scena.OpenGLAdapter,
+  Scena.VectorTypes,
   Scena.VectorGeometry,
   GLS.Context,
   GLS.Scene,
   GLS.VectorFileObjects,
-  Scena.VectorTypes,
   GLS.PersistentClasses,
   GLS.Coordinates,
   GLS.RenderContextInfo,
@@ -329,18 +328,18 @@ end;
 
 procedure TGLFile3DSActor.ReadMesh(Stream: TStream);
 var
-  virt: TBinaryReader;
+  virt: TGLBinaryReader;
 begin
-  virt := TBinaryReader.Create(Stream);
+  virt := TGLBinaryReader.Create(Stream);
   MeshOBjects.ReadFromFiler(virt);
   virt.Free;
 end;
 
 procedure TGLFile3DSActor.WriteMesh(Stream: TStream);
 var
-  virt: TBinaryWriter;
+  virt: TGLBinaryWriter;
 begin
-  virt := TBinaryWriter.Create(Stream);
+  virt := TGLBinaryWriter.Create(Stream);
   MeshOBjects.WriteToFiler(virt);
   virt.Free;
 end;
@@ -376,9 +375,9 @@ end;
 procedure TGLFile3DSFreeForm.ReadMesh(Stream: TStream);
 var
   v: TGLVector;
-  virt: TBinaryReader;
+  virt: TGLBinaryReader;
 begin
-  virt := TBinaryReader.Create(Stream);
+  virt := TGLBinaryReader.Create(Stream);
 
   virt.read(FRefMat, sizeof(FRefMat));
   virt.read(v, sizeof(v));
@@ -394,10 +393,10 @@ end;
 
 procedure TGLFile3DSFreeForm.WriteMesh(Stream: TStream);
 var
-  virt: TBinaryWriter;
+  virt: TGLBinaryWriter;
   v: TGLVector;
 begin
-  virt := TBinaryWriter.Create(Stream);
+  virt := TGLBinaryWriter.Create(Stream);
 
   virt.write(FRefMat, sizeof(FRefMat));
   v := S_Rot3DS.AsVector;
@@ -497,7 +496,10 @@ begin
   Result := LocalToAbsolute(Result);
 end;
 
+//--------------------------------------------
 initialization
+//--------------------------------------------
+
   RegisterClasses([TGLFile3DSLight, TGLFile3DSCamera, TGLFile3DSActor, TGLFile3DSFreeForm]);
 
 end.

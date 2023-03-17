@@ -119,7 +119,7 @@ type
   // Specifies an individual shadow casting light.
   TGLShadowVolumeLight = class(TGLShadowVolumeCaster)
   private
-    FSilhouettes: TPersistentObjectList;
+    FSilhouettes: TGLPersistentObjectList;
   protected
     function GetLightSource: TGLLightSource;
     procedure SetLightSource(const ls: TGLLightSource);
@@ -326,7 +326,7 @@ end;
 constructor TGLShadowVolumeLight.Create(ACollection: TCollection);
 begin
   inherited Create(ACollection);
-  FSilhouettes := TPersistentObjectList.Create;
+  FSilhouettes := TGLPersistentObjectList.Create;
 end;
 
 destructor TGLShadowVolumeLight.Destroy;

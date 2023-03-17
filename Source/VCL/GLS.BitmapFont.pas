@@ -1,7 +1,6 @@
 //
 // The graphics platform GLScene https://github.com/glscene
 //
-
 unit GLS.BitmapFont;
 
 (* Bitmap Fonts management classes *)
@@ -19,8 +18,11 @@ uses
   Vcl.StdCtrls,
   
   Scena.OpenGLTokens,
-  GLS.Scene,
+  Scena.TextureFormat,
+  Scena.VectorTypes,
   Scena.VectorGeometry,
+
+  GLS.Scene,
   GLS.Context,
   GLS.Texture,
   GLS.State,
@@ -29,8 +31,6 @@ uses
   GLS.Color,
   GLS.BaseClasses,
   GLS.RenderContextInfo,
-  Scena.TextureFormat,
-  Scena.VectorTypes,
   GLS.PersistentClasses;
 
 type

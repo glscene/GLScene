@@ -3,7 +3,7 @@
 //
 unit Formats.TGA;
 
-(* Graphic engine friendly loading of TGA image. *)
+(* Graphic engine friendly loading of TGA image *)
 
 interface
 
