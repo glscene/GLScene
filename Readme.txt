@@ -7,9 +7,5 @@ direct media layer SDL2. Physics ODE and NGD libraries is provided.
 Includes improvements in GPU parallel computing using CUDA/OpenCL components 
 for developing OpenGL applications for Win32/Win64.
 The hierarchy of spatial objects with smart properties has been expanded. 
-Includes beta version of GLArena based on FMX components 
-in this release only as run-time packages.
-
-2023
 -----------------------------------------------------------
 GLS Team
