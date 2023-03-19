@@ -20,7 +20,7 @@
 #include "GLS.Cadencer.hpp"
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.ShadowPlane.hpp"
-#include "Scena.VectorGeometry.hpp"
+#include "GLS.VectorGeometry.hpp"
 #include "GLS.Texture.hpp"
 #include "GLS.ParticleFX.hpp"
 #include "GLS.Material.hpp"

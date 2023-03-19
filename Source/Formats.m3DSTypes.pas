@@ -16,7 +16,7 @@ unit Formats.m3DSTypes;
 
 interface
 
-{.$I Scena.inc}
+{.$I GLS.inc}
 
 uses
    System.Classes, // for TStringList

@@ -14,14 +14,14 @@ uses
   GLS.PersistentClasses,
   GLS.Objects,
   GLS.Texture,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.Color,
 
   GLS.Coordinates,
   GLS.BaseClasses,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.FPSMovement;
 
 type

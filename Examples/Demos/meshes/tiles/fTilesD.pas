@@ -16,12 +16,12 @@ uses
   Vcl.Imaging.Jpeg,
   Vcl.StdCtrls,
 
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Objects,
   GLS.Graph,
   GLS.Scene,
   GLS.SceneViewer,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.TilePlane,
   GLS.Texture,
   GLS.Cadencer,
@@ -31,8 +31,8 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.RenderContextInfo,
-  Scena.TextureFormat,
-  Scena.Keyboard,
+  GLS.TextureFormat,
+  GLS.Keyboard,
   GLS.Utils,
   GLS.SimpleNavigation;
 

@@ -13,11 +13,11 @@ uses
   Vcl.StdCtrls,
 
   GLS.Scene,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Objects,
   GLS.PersistentClasses,
   GLS.Texture,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
 
   GLS.Material,
   GLS.Coordinates,

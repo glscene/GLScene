@@ -11,8 +11,8 @@ uses
   Vcl.Graphics,
   Vcl.Dialogs,
 
-  Scena.VectorTypes,
-  Scena.VectorGeometry,
+  GLS.VectorTypes,
+  GLS.VectorGeometry,
   GLS.Scene,
   GLS.Objects,
   GLS.VectorFileObjects,

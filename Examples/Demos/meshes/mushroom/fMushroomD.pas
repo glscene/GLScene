@@ -13,8 +13,8 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
 
-  Scena.VectorTypes,
-  Scena.VectorGeometry,
+  GLS.VectorTypes,
+  GLS.VectorGeometry,
   GLS.Texture,
   GLS.Scene,
   GLS.VectorFileObjects,

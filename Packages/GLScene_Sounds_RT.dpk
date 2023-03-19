@@ -41,9 +41,9 @@ contains
   FMOD.errors in '..\Source\FMOD.errors.pas',
   BASS.Import in '..\Source\BASS.Import.pas',
   OpenAL.Import in '..\Source\OpenAL.Import.pas',
-  Sounds.FMOD in '..\Source\VCL\Sounds.FMOD.pas',
-  Sounds.BASS in '..\Source\VCL\Sounds.BASS.pas',
-  Sounds.OpenAL in '..\Source\VCL\Sounds.OpenAL.pas',
-  Sounds.WaveOut in '..\Source\VCL\Sounds.WaveOut.pas';
+  Sounds.FMOD in '..\Source\Sounds.FMOD.pas',
+  Sounds.BASS in '..\Source\Sounds.BASS.pas',
+  Sounds.OpenAL in '..\Source\Sounds.OpenAL.pas',
+  Sounds.WaveOut in '..\Source\Sounds.WaveOut.pas';
 
 end.

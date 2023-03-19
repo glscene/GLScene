@@ -25,7 +25,7 @@ unit FMOD.Import;
 
 interface
 
-{$I Scena.inc}
+{$I GLS.Scene.inc}
 
 uses
 

@@ -39,17 +39,17 @@ contains
   NGD.Import in '..\Source\NGD.Import.pas',
   ODE.Import in '..\Source\ODE.Import.pas',
   PhysX.Import in '..\Source\PhysX.Import.pas',
-  Physics.NGDManager in '..\Source\Vcl\Physics.NGDManager.pas',
-  Physics.NGDRagdoll in '..\Source\Vcl\Physics.NGDRagdoll.pas',
-  Physics.ODEManager in '..\Source\Vcl\Physics.ODEManager.pas',
-  Physics.ODERagdoll in '..\Source\Vcl\Physics.ODERagdoll.pas',
-  Physics.ODESkeletonColliders in '..\Source\Vcl\Physics.ODESkeletonColliders.pas',
-  Physics.ODEUtils in '..\Source\Vcl\Physics.ODEUtils.pas',
-  Physics.SPIFields in '..\Source\Vcl\Physics.SPIFields.pas',
-  Physics.SPIForces in '..\Source\Vcl\Physics.SPIForces.pas',
-  Physics.SPIInertias in '..\Source\Vcl\Physics.SPIInertias.pas',
-  Physics.SPIJoints in '..\Source\Vcl\Physics.SPIJoints.pas',
-  Physics.SPIManager in '..\Source\Vcl\Physics.SPIManager.pas';
+  Physics.NGDManager in '..\Source\Physics.NGDManager.pas',
+  Physics.NGDRagdoll in '..\Source\Physics.NGDRagdoll.pas',
+  Physics.ODEManager in '..\Source\Physics.ODEManager.pas',
+  Physics.ODERagdoll in '..\Source\Physics.ODERagdoll.pas',
+  Physics.ODESkeletonColliders in '..\Source\Physics.ODESkeletonColliders.pas',
+  Physics.ODEUtils in '..\Source\Physics.ODEUtils.pas',
+  Physics.SPIFields in '..\Source\Physics.SPIFields.pas',
+  Physics.SPIForces in '..\Source\Physics.SPIForces.pas',
+  Physics.SPIInertias in '..\Source\Physics.SPIInertias.pas',
+  Physics.SPIJoints in '..\Source\Physics.SPIJoints.pas',
+  Physics.SPIManager in '..\Source\Physics.SPIManager.pas';
 
 end.
 

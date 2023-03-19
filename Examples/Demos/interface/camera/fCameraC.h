@@ -17,7 +17,7 @@
 #include "GLS.Scene.hpp"
 #include "GLS.GeomObjects.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "Scena.Keyboard.hpp"
+#include "GLS.Keyboard.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

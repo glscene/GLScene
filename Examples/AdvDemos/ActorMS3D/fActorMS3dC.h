@@ -24,7 +24,7 @@
 
 #include "GLS.Scene.hpp"
 
-#include "Scena.VectorGeometry.hpp"
+#include "GLS.VectorGeometry.hpp"
 
 #include "GLS.SimpleNavigation.hpp"
 #include "GLS.VectorFileObjects.hpp"

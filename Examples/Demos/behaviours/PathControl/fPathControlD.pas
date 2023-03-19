@@ -16,12 +16,12 @@ uses
   
   GLS.Scene,
   GLS.Objects,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.Cadencer,
   GLS.Behaviours,
   GLS.Graph,
   GLS.Movement,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.SceneViewer,
  
   GLS.Coordinates,

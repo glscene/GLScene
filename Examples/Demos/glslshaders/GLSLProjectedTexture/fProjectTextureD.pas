@@ -14,7 +14,7 @@ uses
   Vcl.ExtCtrls,
 
   GLS.Scene,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Objects,
   GLS.Texture,
   GLS.SceneViewer,
@@ -25,8 +25,8 @@ uses
   GLS.Utils,
   GLS.FileLMTS,
   GLS.Context,
-  Scena.VectorGeometry,
-  Scena.PipelineTransformation,
+  GLS.VectorGeometry,
+  GLS.PipelineTransformation,
   GLSL.ProjectedTextures,
 
   GLS.Graphics,

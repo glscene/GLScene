@@ -18,7 +18,7 @@ uses
   GLS.Objects,
   GLS.SceneViewer,
   GLS.Texture,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.Cadencer,
   GLSL.MultiMaterialShader,
   GLSL.TextureShaders,

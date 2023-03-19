@@ -16,7 +16,7 @@ unit Formats.DDSImage;
 
 interface
 
-{$I Scena.inc}
+{$I GLS.Scene.inc}
 
 uses
   Winapi.Windows,
@@ -24,13 +24,13 @@ uses
   System.SysUtils,
   Vcl.Graphics,
 
-  Scena.VectorTypes,
-  Scena.OpenGLTokens,
-  Scena.VectorGeometry,
+  GLS.VectorTypes,
+  GLS.OpenGLTokens,
+  GLS.VectorGeometry,
   GLS.Graphics,
   GLS.Context,
   GLS.FileDDS,
-  Scena.TextureFormat;
+  GLS.TextureFormat;
 
 type
 

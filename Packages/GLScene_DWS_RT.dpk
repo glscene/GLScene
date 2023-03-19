@@ -36,12 +36,12 @@ requires
   DWS.RunTime;
 
 contains
-  Pythons.Script in '..\Source\Vcl\Pythons.Script.pas',
-  DWS.Classes in '..\Source\Vcl\DWS.Classes.pas',
-  DWS.HelperFunc in '..\Source\Vcl\DWS.HelperFunc.pas',
-  DWS.Objects in '..\Source\Vcl\DWS.Objects.pas',
-  DWS.OpenGL in '..\Source\Vcl\DWS.OpenGL.pas',
-  DWS.Script in '..\Source\Vcl\DWS.Script.pas',
-  DWS.VectorGeometry in '..\Source\Vcl\DWS.VectorGeometry.pas';
+  Pythons.Script in '..\Source\Pythons.Script.pas',
+  DWS.Classes in '..\Source\DWS.Classes.pas',
+  DWS.HelperFunc in '..\Source\DWS.HelperFunc.pas',
+  DWS.Objects in '..\Source\DWS.Objects.pas',
+  DWS.OpenGL in '..\Source\DWS.OpenGL.pas',
+  DWS.Script in '..\Source\DWS.Script.pas',
+  DWS.VectorGeometry in '..\Source\DWS.VectorGeometry.pas';
 
 end.

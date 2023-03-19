@@ -15,7 +15,7 @@ uses
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
 
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.VectorLists,
   GLS.Scene,
   GLS.Objects,
@@ -25,7 +25,7 @@ uses
   GLS.Color,
   GLS.State,
   GLS.SceneViewer,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.Graph,
   GLS.GeomObjects,
  

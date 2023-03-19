@@ -18,7 +18,7 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLS.Scene,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Texture,
   GLS.VectorFileObjects,
   GLS.PersistentClasses,
@@ -30,7 +30,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  Scena.Keyboard,
+  GLS.Keyboard,
   GLS.Utils, GLS.SimpleNavigation;
 
 type

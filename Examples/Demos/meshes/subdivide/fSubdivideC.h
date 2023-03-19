@@ -24,7 +24,7 @@
 #include "GLS.SceneViewer.hpp"
 
 #include "GLS.MeshUtils.hpp"
-#include "Scena.VectorGeometry.hpp"
+#include "GLS.VectorGeometry.hpp"
 
 #include "GLS.FileTGA.hpp"
 #include "GLS.FileObj.hpp"

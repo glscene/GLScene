@@ -4,7 +4,7 @@
 #include <tchar.h>
 
 #include <stdlib.h>
-#include <Scena.Keyboard.hpp>
+#include <GLS.Keyboard.hpp>
 #pragma hdrstop
 
 #include "fBoxC.h"
@@ -19,8 +19,8 @@
 #pragma link "GLS.VectorFileObjects"
 #pragma link "GLS.Scene"
 #pragma link "GLS.File3DS"
-#pragma link "Scena.VectorGeometry"
-#pragma link "Scena.Keyboard"
+#pragma link "GLS.VectorGeometry"
+#pragma link "GLS.Keyboard"
 #pragma link "GLS.Coordinates"
 
 #pragma link "GLS.BaseClasses"

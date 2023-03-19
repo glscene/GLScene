@@ -133,12 +133,12 @@
         <DCCReference Include="..\Source\CUDA.ParallelPrimitives.pas"/>
         <DCCReference Include="..\Source\CUDA.Runtime.pas"/>
         <DCCReference Include="..\Source\CUDA.FourierTransform.pas"/>
-        <DCCReference Include="..\Source\Vcl\CUDA.Compiler.pas"/>
-        <DCCReference Include="..\Source\Vcl\CUDA.Context.pas"/>
-        <DCCReference Include="..\Source\Vcl\CUDA.FFTPlan.pas"/>
-        <DCCReference Include="..\Source\Vcl\CUDA.Graphics.pas"/>
-        <DCCReference Include="..\Source\Vcl\GLS.FilePGM.pas"/>
-        <DCCReference Include="..\Source\Vcl\CUDA.APIComps.pas"/>
+        <DCCReference Include="..\Source\CUDA.Compiler.pas"/>
+        <DCCReference Include="..\Source\CUDA.Context.pas"/>
+        <DCCReference Include="..\Source\CUDA.FFTPlan.pas"/>
+        <DCCReference Include="..\Source\CUDA.Graphics.pas"/>
+        <DCCReference Include="..\Source\GLS.FilePGM.pas"/>
+        <DCCReference Include="..\Source\CUDA.APIComps.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

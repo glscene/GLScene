@@ -16,14 +16,14 @@ uses
   GLS.VectorFileObjects,
   GLS.Objects,
   GLS.SceneViewer,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Cadencer,
   GLS.GeomObjects,
  
   GLS.Coordinates,
   GLS.Utils,
   GLS.BaseClasses,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.VectorLists,
   GLS.File3DS;
 

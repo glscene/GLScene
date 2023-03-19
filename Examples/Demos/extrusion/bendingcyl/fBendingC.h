@@ -16,9 +16,9 @@
 #include "GLS.Extrusion.hpp"
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
-#include "Scena.VectorGeometry.hpp"
+#include "GLS.VectorGeometry.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "Scena.Spline.hpp"
+#include "GLS.Spline.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

@@ -22,12 +22,12 @@ uses
   Vcl.Imaging.Jpeg,
   Vcl.Imaging.PngImage,
 
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.VectorLists,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.BaseClasses,
   GLS.PersistentClasses,
-  Scena.Keyboard,
+  GLS.Keyboard,
 
   GLS.Material,
   GLS.Scene,
@@ -41,7 +41,7 @@ uses
 
   GLS.State,
   GLS.RenderContextInfo,
-  Scena.TextureFormat,
+  GLS.TextureFormat,
   GLS.Color,
   GLS.Graphics,
   GLS.MeshUtils,

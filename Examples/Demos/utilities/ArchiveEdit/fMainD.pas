@@ -22,9 +22,9 @@ uses
   GLS.SceneViewer,
 
   GLS.BaseClasses,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Scene,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.SimpleNavigation,
   GLS.Material,
   GLS.VectorFileObjects,

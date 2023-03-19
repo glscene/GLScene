@@ -13,7 +13,7 @@ uses
   Vcl.ExtCtrls,
   
   GLS.Scene,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.HUDObjects,
   GLS.Objects,
   GLS.Cadencer,

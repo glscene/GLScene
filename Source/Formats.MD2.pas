@@ -8,13 +8,13 @@ unit Formats.MD2;
 interface
 
 {$R-}
-{$I Scena.inc}
+{$I GLS.Scene.inc}
 
 uses
   System.Classes,
   System.SysUtils,
    
-  Scena.VectorTypes;
+  GLS.VectorTypes;
 
 const
   MAX_MD2_TRIANGLES = 4096;

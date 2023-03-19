@@ -96,12 +96,11 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="GLSceneDWS.res"/>
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
         <DCCReference Include="GLScene_DWS_rt.dcp"/>
-        <DCCReference Include="..\Source\Vcl\DWS.Scene.pas"/>
+        <DCCReference Include="..\Source\DWS.Scene.pas"/>
         <RcCompile Include="D:\Resources\GLSceneDWS.rc">
             <Form>GLSceneDWS.res</Form>
         </RcCompile>

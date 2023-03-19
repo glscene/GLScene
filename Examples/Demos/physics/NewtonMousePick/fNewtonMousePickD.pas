@@ -12,7 +12,7 @@ uses
   Vcl.Dialogs,
 
   GLS.Scene,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Objects,
   Physics.NGDManager,
   GLS.Coordinates,
@@ -20,7 +20,7 @@ uses
   GLS.SceneViewer,
  
   GLS.BaseClasses,
-  Scena.VectorGeometry;
+  GLS.VectorGeometry;
 
 type
   TFormNewtonMousePick = class(TForm)

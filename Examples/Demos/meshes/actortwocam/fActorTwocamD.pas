@@ -16,7 +16,7 @@ uses
   Vcl.Forms,
 
   GLS.Scene,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Objects,
   GLS.Cadencer,
   GLS.VectorFileObjects,
@@ -32,8 +32,8 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.Utils,
-  Scena.VectorGeometry,
-  Scena.Keyboard,
+  GLS.VectorGeometry,
+  GLS.Keyboard,
   GLS.PersistentClasses, GLS.DCE;
 
 type
@@ -133,7 +133,7 @@ var
   moving: String;
   boost: Single;
 begin
-  // This function uses asynchronous keyboard check (see Scena.Keyboard.pas)
+  // This function uses asynchronous keyboard check (see GLS.Keyboard.pas)
   if IsKeyDown(VK_ESCAPE) then
     Close;
   if IsKeyDown('A') then

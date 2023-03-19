@@ -39,8 +39,8 @@ requires
   GLScene_GPU_RT;
 
 contains
-  CUDA.PropEditors in '..\Source\Vcl\CUDA.PropEditors.pas',
-  CUDA.Register in '..\Source\Vcl\CUDA.Register.pas',
-  CUDA.EditorFm in '..\Source\Vcl\CUDA.EditorFm.pas';
+  CUDA.PropEditors in '..\Source\CUDA.PropEditors.pas',
+  CUDA.Register in '..\Source\CUDA.Register.pas',
+  CUDA.EditorFm in '..\Source\CUDA.EditorFm.pas';
 
 end.

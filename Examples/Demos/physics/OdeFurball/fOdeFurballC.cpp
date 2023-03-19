@@ -10,14 +10,14 @@
 #pragma link "Physics.ODEUtils"
 #pragma link "GLS.Navigator"
 #pragma link "GLS.ShadowPlane"
-#pragma link "Scena.VectorGeometry"
+#pragma link "GLS.VectorGeometry"
 #pragma link "GLS.Extrusion"
 #pragma link "GLS.Texture"
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
-#pragma link "Scena.Keyboard"
+#pragma link "GLS.Keyboard"
 #pragma link "GLS.VerletTypes"
 
 //---------------------------------------------------------------------------

@@ -29,9 +29,9 @@ uses
   GLS.Material,
   GLS.Coordinates,
 
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.BaseClasses,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.Navigator,
   GLS.SmoothNavigator,
   GLS.Graph;

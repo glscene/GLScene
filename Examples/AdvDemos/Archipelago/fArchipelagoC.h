@@ -40,13 +40,13 @@
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.BaseClasses.hpp"
 #include "GLS.VectorLists.hpp"
-#include "Scena.VectorTypes.hpp"
-#include "Scena.VectorGeometry.hpp"
+#include "GLS.VectorTypes.hpp"
+#include "GLS.VectorGeometry.hpp"
 
-#include "Scena.Keyboard.hpp"
+#include "GLS.Keyboard.hpp"
 #include "GLS.Context.hpp"
 #include "GLS.State.hpp"
-#include "Scena.TextureFormat.hpp"
+#include "GLS.TextureFormat.hpp"
 #include "GLS.File3DS.hpp"
 
 //---------------------------------------------------------------------------

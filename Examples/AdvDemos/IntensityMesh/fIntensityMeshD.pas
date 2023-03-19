@@ -16,7 +16,7 @@ uses
   Vcl.ExtCtrls,
 
   GLS.Scene,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.VectorFileObjects,
   GLS.VectorLists,
   GLS.SceneViewer,
@@ -24,7 +24,7 @@ uses
   GLS.Texture,
   GLSL.UserShader,
   GLS.HUDObjects,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.Context,
   GLS.Objects,
   GLS.BitmapFont,
@@ -36,7 +36,7 @@ uses
   GLS.RenderContextInfo,
   GLS.Graphics,
   GLS.State,
-  Scena.TextureFormat;
+  GLS.TextureFormat;
 
 type
   TForm1 = class(TForm)

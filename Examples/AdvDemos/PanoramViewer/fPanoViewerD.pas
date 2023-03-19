@@ -22,13 +22,13 @@ uses
   GLS.Scene,
   GLS.Objects,
   GLS.Texture,
-  Scena.Keyboard,
+  GLS.Keyboard,
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.Utils;
 
 type

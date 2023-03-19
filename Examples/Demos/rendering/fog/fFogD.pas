@@ -17,7 +17,7 @@ uses
   Vcl.StdCtrls,
 
   GLS.Scene,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Objects,
   GLS.Cadencer,
   GLS.SceneViewer,

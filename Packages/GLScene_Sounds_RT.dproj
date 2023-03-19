@@ -150,10 +150,10 @@
         <DCCReference Include="..\Source\FMOD.errors.pas"/>
         <DCCReference Include="..\Source\BASS.Import.pas"/>
         <DCCReference Include="..\Source\OpenAL.Import.pas"/>
-        <DCCReference Include="..\Source\VCL\Sounds.FMOD.pas"/>
-        <DCCReference Include="..\Source\VCL\Sounds.BASS.pas"/>
-        <DCCReference Include="..\Source\VCL\Sounds.OpenAL.pas"/>
-        <DCCReference Include="..\Source\VCL\Sounds.WaveOut.pas"/>
+        <DCCReference Include="..\Source\Sounds.FMOD.pas"/>
+        <DCCReference Include="..\Source\Sounds.BASS.pas"/>
+        <DCCReference Include="..\Source\Sounds.OpenAL.pas"/>
+        <DCCReference Include="..\Source\Sounds.WaveOut.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

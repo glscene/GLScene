@@ -16,13 +16,13 @@ uses
 
   
   GLS.Scene,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.PersistentClasses,
   GLS.VectorFileObjects,
   GLS.Objects,
   GLS.SceneViewer,
   GLS.ParametricSurfaces,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.VectorLists,
   GLS.Texture,
  

@@ -12,7 +12,7 @@ uses
   Vcl.Controls,
 
   GLS.Scene,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Context,
   GLS.SceneViewer,
   GLS.Cadencer,

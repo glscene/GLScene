@@ -42,7 +42,7 @@ unit OpenAL.Import;
 
 interface
 
-{$I Scena.inc}
+{$I GLS.Scene.inc}
 
 uses
   System.SysUtils

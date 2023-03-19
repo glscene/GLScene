@@ -512,7 +512,7 @@ void __fastcall TForm1::DOWakeProgress(TObject *Sender, const double deltaTime,
 // ---------------------------------------------------------------------------
 void __fastcall TForm1::DOWakeRender(TObject *Sender, TGLRenderContextInfo &rci) {
 	int i, n;
-	Scena::Vectortypes::TVector3f p;
+	Vectortypes::TVector3f p;
 	TGLVector sbp;
 	float c;
 

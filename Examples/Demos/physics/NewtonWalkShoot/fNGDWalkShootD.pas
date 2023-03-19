@@ -13,7 +13,7 @@ uses
   Vcl.Dialogs,
 
   GLS.Scene,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.Objects,
@@ -28,9 +28,9 @@ uses
   GLS.GeomObjects,
   GLS.HUDObjects,
   GLS.File3DS,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.Material,
-  Scena.Keyboard,
+  GLS.Keyboard,
   GLS.Utils;
 
 type

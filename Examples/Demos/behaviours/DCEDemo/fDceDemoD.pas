@@ -29,18 +29,18 @@ uses
   GLS.WindowsFont,
   GLS.HUDObjects,
   GLS.Coordinates,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.FileMD2,
   GLS.File3DS,
   GLS.Context,
   GLS.EllipseCollision,
   GLS.RenderContextInfo,
-  Scena.Keyboard,
+  GLS.Keyboard,
   GLS.ProxyObjects,
   GLS.State,
   GLS.Utils,
   GLS.BaseClasses,
-  Scena.VectorTypes;
+  GLS.VectorTypes;
 
 type
   TFormDCE = class(TForm)

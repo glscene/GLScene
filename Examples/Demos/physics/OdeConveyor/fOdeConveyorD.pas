@@ -19,15 +19,15 @@ uses
   ODE.Import,
   Physics.ODEManager,
   GLS.Scene,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Objects,
   GLS.Cadencer,
   GLS.Coordinates,
  
   GLS.BaseClasses,
   GLS.SceneViewer,
-  Scena.VectorGeometry,
-  Scena.Keyboard,
+  GLS.VectorGeometry,
+  GLS.Keyboard,
   GLS.SimpleNavigation;
 
 type

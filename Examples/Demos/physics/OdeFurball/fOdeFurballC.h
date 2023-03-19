@@ -23,7 +23,7 @@
 #include "GLS.Texture.hpp"
 #include "GLS.Objects.hpp"
 #include "GLS.BaseClasses.hpp"
-#include "Scena.Keyboard.hpp"
+#include "GLS.Keyboard.hpp"
 #include "GLS.Coordinates.hpp"
 
 #include "GLS.VerletTypes.hpp"

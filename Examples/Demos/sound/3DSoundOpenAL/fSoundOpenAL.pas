@@ -14,7 +14,7 @@ uses
 
   GLS.Cadencer,
   GLS.Scene,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Objects,
   GLS.SoundManager,
   GLS.SceneViewer,
@@ -22,7 +22,7 @@ uses
   Sounds.OpenAL,
   
 
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.FileWAV,

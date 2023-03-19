@@ -21,7 +21,7 @@
 #include "GLS.Coordinates.hpp"
 
 #include "GLS.Material.hpp"          // Pascal unit
-#include "Scena.Keyboard.hpp"
+#include "GLS.Keyboard.hpp"
 #include "GLS.FileMD2.hpp"
 #include "GLS.Utils.hpp"
 

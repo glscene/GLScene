@@ -25,8 +25,8 @@
 #include "GLS.Navigator.hpp"
 #include "GLS.SkyDome.hpp"
 #include "GLS.VectorFileObjects.hpp"
-#include "Scena.Keyboard.hpp"
-#include "Scena.VectorGeometry.hpp"
+#include "GLS.Keyboard.hpp"
+#include "GLS.VectorGeometry.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

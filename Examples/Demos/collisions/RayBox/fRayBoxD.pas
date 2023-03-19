@@ -17,13 +17,13 @@ uses
   Vcl.StdCtrls,
 
   GLS.Scene,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Objects,
   GLS.Cadencer,
   GLS.VectorFileObjects,
   GLS.SceneViewer,
   GLS.Texture,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
 
   GLS.Material,
   GLS.Coordinates,

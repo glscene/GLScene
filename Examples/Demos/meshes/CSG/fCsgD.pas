@@ -30,7 +30,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.State,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.Utils;
 
 type

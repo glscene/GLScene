@@ -27,7 +27,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Utils.hpp"
 #include "JPeg.hpp"
-#include "Scena.Keyboard.hpp"
+#include "GLS.Keyboard.hpp"
 #include "Physics.ODEManager.hpp"
 
 //---------------------------------------------------------------------------

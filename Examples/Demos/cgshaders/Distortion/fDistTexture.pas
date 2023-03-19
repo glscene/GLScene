@@ -13,7 +13,7 @@ uses
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
 
-  Scena.OpenGLTokens,
+  GLS.OpenGLTokens,
   GLS.Cadencer,
   GLS.Texture,
   GLS.SceneViewer,

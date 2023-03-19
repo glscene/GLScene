@@ -11,8 +11,8 @@ uses
   Vcl.Graphics,
 
   GLS.Scene,
-  Scena.VectorGeometry,
-  Scena.VectorTypes,
+  GLS.VectorGeometry,
+  GLS.VectorTypes,
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.BaseClasses,

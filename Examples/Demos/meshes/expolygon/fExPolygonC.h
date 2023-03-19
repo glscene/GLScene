@@ -16,7 +16,7 @@
 #include "GLS.GeomObjects.hpp"
 #include "GLS.Texture.hpp"
 #include "GLS.MultiPolygon.hpp"
-#include "Scena.VectorGeometry.hpp"
+#include "GLS.VectorGeometry.hpp"
 #include "GLS.SceneViewer.hpp"
 
 #include "GLS.Material.hpp"

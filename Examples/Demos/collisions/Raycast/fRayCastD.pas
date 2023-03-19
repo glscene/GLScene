@@ -16,8 +16,8 @@ uses
 
   GLS.Scene,
   GLS.Objects,
-  Scena.VectorTypes,
-  Scena.VectorGeometry,
+  GLS.VectorTypes,
+  GLS.VectorGeometry,
   GLS.BaseClasses,
   GLS.Polynomials,
   GLS.Texture,

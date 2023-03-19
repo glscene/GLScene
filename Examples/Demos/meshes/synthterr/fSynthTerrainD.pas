@@ -21,15 +21,15 @@ uses
   GLS.TerrainRenderer,
   GLS.HeightData,
   GLS.Cadencer,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Texture,
   GLS.SceneViewer,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
 
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  Scena.Keyboard, GLS.ShadowHDS;
+  GLS.Keyboard, GLS.ShadowHDS;
 
 type
   TFormSynthTerrain = class(TForm)

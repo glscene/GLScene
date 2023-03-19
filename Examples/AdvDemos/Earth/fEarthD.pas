@@ -15,8 +15,8 @@ uses
   Vcl.ExtCtrls,
   Vcl.Imaging.Jpeg,
 
-  Scena.VectorTypes,
-  Scena.VectorGeometry,
+  GLS.VectorTypes,
+  GLS.VectorGeometry,
   GLS.Material,
   GLS.Cadencer,
   GLS.LensFlare,
@@ -31,7 +31,7 @@ uses
   GLS.State,
   GLS.Utils,
   GLS.Context,
-  Scena.TextureFormat,
+  GLS.TextureFormat,
   GLSL.TextureShaders,
   GLS.BaseClasses;
 

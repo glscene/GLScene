@@ -47,12 +47,12 @@ contains
   CUDA.ParallelPrimitives in '..\Source\CUDA.ParallelPrimitives.pas',
   CUDA.Runtime in '..\Source\CUDA.Runtime.pas',
   CUDA.FourierTransform in '..\Source\CUDA.FourierTransform.pas',
-  CUDA.Compiler in '..\Source\Vcl\CUDA.Compiler.pas',
-  CUDA.Context in '..\Source\Vcl\CUDA.Context.pas',
-  CUDA.FFTPlan in '..\Source\Vcl\CUDA.FFTPlan.pas',
-  CUDA.Graphics in '..\Source\Vcl\CUDA.Graphics.pas',
-  GLS.FilePGM in '..\Source\Vcl\GLS.FilePGM.pas',
-  CUDA.APIComps in '..\Source\Vcl\CUDA.APIComps.pas';
+  CUDA.Compiler in '..\Source\CUDA.Compiler.pas',
+  CUDA.Context in '..\Source\CUDA.Context.pas',
+  CUDA.FFTPlan in '..\Source\CUDA.FFTPlan.pas',
+  CUDA.Graphics in '..\Source\CUDA.Graphics.pas',
+  GLS.FilePGM in '..\Source\GLS.FilePGM.pas',
+  CUDA.APIComps in '..\Source\CUDA.APIComps.pas';
 
 end.
 

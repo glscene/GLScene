@@ -10,7 +10,7 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-  Scena.VectorTypes;
+  GLS.VectorTypes;
 
 const
   FACE_POLYGON = 1;

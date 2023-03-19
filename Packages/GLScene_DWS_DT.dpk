@@ -1,7 +1,6 @@
 package GLScene_DWS_DT;
 
 {$R *.res}
-{$R 'GLSceneDWS.res'}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
 {$ALIGN 8}
 {$ASSERTIONS ON}
@@ -37,6 +36,6 @@ requires
   GLScene_DWS_rt;
 
 contains
-  DWS.Scene in '..\Source\Vcl\DWS.Scene.pas';
+  DWS.Scene in '..\Source\DWS.Scene.pas';
 
 end.

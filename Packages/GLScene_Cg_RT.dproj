@@ -127,9 +127,9 @@
         <DCCReference Include="GLScene_RT.dcp"/>
         <DCCReference Include="..\Source\Cg.GL.pas"/>
         <DCCReference Include="..\Source\Cg.Import.pas"/>
-        <DCCReference Include="..\Source\Vcl\Cg.Shader.pas"/>
-        <DCCReference Include="..\Source\Vcl\Cg.BombShader.pas"/>
-        <DCCReference Include="..\Source\Vcl\Cg.PostTransformationShader.pas"/>
+        <DCCReference Include="..\Source\Cg.Shader.pas"/>
+        <DCCReference Include="..\Source\Cg.BombShader.pas"/>
+        <DCCReference Include="..\Source\Cg.PostTransformationShader.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

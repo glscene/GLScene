@@ -13,13 +13,13 @@ uses
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
   
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Scene,
   GLS.Objects,
   GLS.Cadencer,
   GLS.FireFX,
   GLS.Behaviours,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.SceneViewer,
  
   GLS.Coordinates,

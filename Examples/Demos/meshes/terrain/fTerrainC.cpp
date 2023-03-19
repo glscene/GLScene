@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 
 #include <vcl.h>
-#include <Scena.Keyboard.hpp>
+#include <GLS.Keyboard.hpp>
 #include <stdlib.h>
 
 #pragma hdrstop
@@ -11,7 +11,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GLS.LensFlare"
-#pragma link "Scena.VectorGeometry"
+#pragma link "GLS.VectorGeometry"
 #pragma link "Sounds.BASS"
 #pragma link "GLS.SoundManager"
 #pragma link "GLS.SceneViewer"
@@ -24,7 +24,7 @@
 #pragma link "GLS.Objects"
 #pragma link "GLS.TerrainRenderer"
 #pragma link "GLS.Scene"
-#pragma link "Scena.Keyboard"
+#pragma link "GLS.Keyboard"
 #pragma link "GLS.BaseClasses"
 #pragma link "GLS.Coordinates"
 

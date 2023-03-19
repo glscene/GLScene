@@ -19,7 +19,7 @@ uses
 
   
   GLS.Scene,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Objects,
   GLS.TerrainRenderer,
   GLS.HeightData,
@@ -27,12 +27,12 @@ uses
   GLS.Cadencer,
   GLS.Texture,
   GLS.BitmapFont,
-  Scena.Keyboard,
+  GLS.Keyboard,
   GLS.SkyDome,
   GLS.SceneViewer,
   GLS.SoundManager,
   Sounds.BASS,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.LensFlare,
   GLS.Material,
   GLS.Coordinates,

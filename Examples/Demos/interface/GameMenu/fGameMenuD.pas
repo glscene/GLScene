@@ -18,7 +18,7 @@ uses
   
   GLS.Scene,
   GLS.Objects,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.SceneViewer,
   GLS.GeomObjects,
   GLS.BitmapFont,
@@ -26,7 +26,7 @@ uses
   GLS.GameMenu,
   GLS.Cadencer,
   GLS.Texture,
-  Scena.Keyboard,
+  GLS.Keyboard,
  
   GLS.Material,
   GLS.Coordinates,

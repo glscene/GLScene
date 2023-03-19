@@ -15,7 +15,7 @@ uses
   Vcl.Imaging.Jpeg,
 
 
-  Scena.OpenGLTokens,
+  GLS.OpenGLTokens,
  
   GLS.Scene,
   GLS.Objects,
@@ -25,9 +25,9 @@ uses
   GLS.Texture,
   GLSL.UserShader,
   GLS.Context,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.Graph,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.State,
   GLS.Material,
   GLS.Coordinates,

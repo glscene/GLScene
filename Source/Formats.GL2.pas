@@ -14,8 +14,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  Scena.VectorGeometry,
-  Scena.VectorTypes;
+  GLS.VectorGeometry,
+  GLS.VectorTypes;
 
 type
   TGLMHeader = record

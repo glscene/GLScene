@@ -10,7 +10,7 @@
 #include <Buttons.hpp>
 #include <ExtCtrls.hpp>
 
-#include <Scena.VectorGeometry.hpp>
+#include <GLS.VectorGeometry.hpp>
 #include <GLS.Behaviours.hpp>
 #include <GLS.SceneViewer.hpp>
 #include <GLS.Objects.hpp>
@@ -21,7 +21,7 @@
 #include "GLS.Coordinates.hpp"
 #include "GLS.FullScreenViewer.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "Scena.Keyboard.hpp"
+#include "GLS.Keyboard.hpp"
 #include "GLS.FullScreenViewer.hpp"
 
 //---------------------------------------------------------------------------

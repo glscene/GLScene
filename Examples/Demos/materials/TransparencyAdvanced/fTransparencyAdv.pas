@@ -12,9 +12,9 @@ uses
   Vcl.Forms, Vcl.Dialogs,
   Vcl.Imaging.Jpeg,
 
-  Scena.OpenGLTokens,
-  Scena.VectorGeometry,
-  Scena.VectorTypes,
+  GLS.OpenGLTokens,
+  GLS.VectorGeometry,
+  GLS.VectorTypes,
   GLS.Context,
   GLS.State,
   GLS.Color,
@@ -37,7 +37,7 @@ uses
   GLS.HUDObjects,
   GLS.BitmapFont,
   GLS.WindowsFont,
-  Scena.Keyboard,
+  GLS.Keyboard,
   GLS.CompositeImage,
 
   GLS.Utils;

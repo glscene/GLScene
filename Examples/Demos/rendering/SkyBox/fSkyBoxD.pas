@@ -15,14 +15,14 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLS.Scene,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.Texture,
   GLS.SkyDome,
 
   GLS.Cadencer,
   GLS.Navigator,
   GLS.SceneViewer,
-  Scena.Keyboard,
+  GLS.Keyboard,
   GLS.LensFlare,
   GLS.Objects,
   GLS.Material,

@@ -17,7 +17,7 @@ uses
   Vcl.Imaging.Jpeg,
 
   //GLScene
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.SceneViewer,
   GLS.Cadencer,
   GLS.Scene,
@@ -29,7 +29,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  Scena.TextureFormat,
+  GLS.TextureFormat,
   GLS.Utils, GLS.SimpleNavigation;
 
 type

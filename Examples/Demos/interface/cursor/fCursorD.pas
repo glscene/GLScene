@@ -19,7 +19,7 @@ uses
 
   GLS.Scene,
   GLS.Objects,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.PersistentClasses,
   GLS.Particles,
   GLS.Texture,

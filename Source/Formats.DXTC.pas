@@ -10,7 +10,7 @@ unit Formats.DXTC;
 
 interface
 
-{$I Scena.inc}
+{$I GLS.Scene.inc}
 {$Z4}  // Minimum enum size = dword
 
 uses
@@ -18,7 +18,7 @@ uses
   Winapi.OpenGLext,
   System.SysUtils,
 
-  Scena.TextureFormat;
+  GLS.TextureFormat;
 
 const
   DDSD_CAPS = $00000001;

@@ -14,19 +14,19 @@ uses
   Vcl.ExtCtrls,
   Vcl.ComCtrls,
 
-  Scena.OpenGLTokens,
+  GLS.OpenGLTokens,
   GLS.SceneViewer,
   GLS.Scene,
   GLS.Texture,
   GLS.Objects,
   GLS.Context,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.GeomObjects,
   GLS.Cadencer,
   GLSL.UserShader,
   GLS.Utils,
   GLS.Graph,
-  Scena.VectorTypes,
+  GLS.VectorTypes,
   GLS.SkyDome,
   GLS.VectorLists,
   GLS.FileDDS,
@@ -36,7 +36,7 @@ uses
   GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.SimpleNavigation,
-  Scena.TextureFormat,
+  GLS.TextureFormat,
   GLS.Color;
 
 type

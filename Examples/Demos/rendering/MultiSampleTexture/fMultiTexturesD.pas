@@ -29,13 +29,13 @@ uses
   GLS.HUDObjects,
   GLS.GeomObjects,
   GLS.FBORenderer,
-  Scena.VectorGeometry,
-  Scena.VectorTypes,
+  GLS.VectorGeometry,
+  GLS.VectorTypes,
   GLS.Texture,
   GLS.SimpleNavigation,
   GLS.State,
   GLS.Context,
-  Scena.Keyboard,
+  GLS.Keyboard,
   GLS.MultiSampleImage;
 
 type

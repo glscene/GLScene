@@ -19,7 +19,7 @@ uses
   GLS.VectorFileObjects,
   GLS.Scene,
   GLS.Objects,
-  Scena.VectorGeometry,
+  GLS.VectorGeometry,
   GLS.SceneViewer,
   GLS.FileMD2,
   GLS.GeomObjects,

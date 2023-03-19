@@ -16,7 +16,7 @@
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "Scena.VectorGeometry.hpp"
+#include "GLS.VectorGeometry.hpp"
 #include "GLS.Polynomials.hpp"
 
 //---------------------------------------------------------------------------

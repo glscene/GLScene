@@ -205,14 +205,14 @@ Notes for improvement of this unit:
 
 interface
 
-{$I Scena.inc}
+{$I GLS.Scene.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.IOUtils,
   System.Math,
-  Scena.VectorGeometry;
+  GLS.VectorGeometry;
 
 type
 
