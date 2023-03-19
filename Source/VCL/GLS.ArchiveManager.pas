@@ -1,5 +1,5 @@
 ﻿//
-// The graphics platform GLScene https://github.com/glscene
+// The graphics engine GLScene https://github.com/glscene
 //
 unit GLS.ArchiveManager;
 

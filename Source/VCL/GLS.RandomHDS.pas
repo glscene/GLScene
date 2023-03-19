@@ -1,5 +1,5 @@
 //
-// The graphics platform GLScene https://github.com/glscene
+// The graphics engine GLScene https://github.com/glscene
 //
 unit GLS.RandomHDS;
 
@@ -1402,7 +1402,7 @@ end;
 
 procedure TGLCustomRandomHDS.DoErosionByFraction;
 begin
-
+  // not implemented
 end;
 
 procedure TGLCustomRandomHDS.DoErosionByLife;
@@ -1418,7 +1418,7 @@ begin
     FTaskProgress := Round(y / (FSize) * 100);
     for x := 0 to FSize do
     begin
-      Application.ProcessMessages;
+     (* Application.ProcessMessages; *)
       z := FHeight[x, y] * FErosionByLife.Robustness;
       z1 := FErosionByLife.Robustness;
       for i := 0 to 7 do
@@ -1459,7 +1459,7 @@ begin
     FTaskProgress := Round(y0 / (FSize) * 100);
     for x0 := 0 to FSize do
     begin
-      Application.ProcessMessages;
+     (* Application.ProcessMessages; *)
       x := x0;
       y := y0;
       z := StandardisedHeight(x, y);
@@ -1733,7 +1733,7 @@ begin
   begin
     for j := 0 to FSize do
     begin
-      Application.ProcessMessages;
+     (* Application.ProcessMessages; *)
       if abs(FHeight[i, j] - FSeaLevel) < FErosionBySea.BeachHeight * VSF then
       begin
         FHeight[i, j] := FSeaLevel + (FHeight[i, j] - FSeaLevel) * 0.3;
