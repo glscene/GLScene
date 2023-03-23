@@ -1,7 +1,6 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-
 unit GLSL.UserShader;
 
 (*

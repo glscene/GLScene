@@ -183,7 +183,7 @@ type
     procedure LoadStarsFile(const starsFileName: string);
   end;
 
-  TGLSkyDomeOption = (sdoEquatorialGrid, sdoEclipticGrid, sdoGalacticGrid, sdoSupergalacticGrid, sdoTwinkle);
+  TGLSkyDomeOption = (sdoTwinkle);
   TGLSkyDomeOptions = set of TGLSkyDomeOption;
 
   (* Renders a sky dome always centered on the camera.
@@ -1215,23 +1215,7 @@ begin
   if val <> FOptions then
   begin
     FOptions := val;
-    if sdoEquatorialGrid in FOptions then
-    begin
-      // DrawEquatorialGrid();
-    end
-    else if sdoEclipticGrid in FOptions then
-    begin
-      // DrawEclipticGrid();
-    end
-    else if sdoGalacticGrid in FOptions then
-    begin
-      // DrawGalacticGrid();
-    end
-    else if sdoSupergalacticGrid in FOptions then
-    begin
-      // DrawGalacticGrid();
-    end
-    else if sdoTwinkle in FOptions then
+    if sdoTwinkle in FOptions then
       ObjectStyle := ObjectStyle + [osDirectDraw]
     else
     begin

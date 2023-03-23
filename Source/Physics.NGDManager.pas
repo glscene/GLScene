@@ -9,7 +9,7 @@ unit Physics.NGDManager;
 *)
 interface
 
-{ .$I GLScene.inc }
+{.$I GLS.Scene.inc }
 
 uses
   System.Classes, // TComponent TList TWriter TReader TPersistent

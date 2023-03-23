@@ -94,8 +94,7 @@ type
        by ringVectorX/Y, which should be of unit length (but you may not
        make them of unit length if you want "elliptic" rings). *)
     procedure RingExplosion(minInitialSpeed, maxInitialSpeed, lifeBoostFactor: Single;
-      const ringVectorX, ringVectorY: TAffineVector;
-      nbParticles: Integer = -1);
+      const ringVectorX, ringVectorY: TAffineVector; nbParticles: Integer = -1);
     // Current Nb of particles.
     property ParticleCount: Integer read NP;
     procedure DoProgress(const progressTime: TGLProgressTimes); override;
@@ -425,8 +424,7 @@ end;
 
 
 procedure TGLFireFXManager.RingExplosion(minInitialSpeed, maxInitialSpeed, lifeBoostFactor: Single;
-  const ringVectorX, ringVectorY: TAffineVector;
-  nbParticles: Integer = -1);
+  const ringVectorX, ringVectorY: TAffineVector; nbParticles: Integer = -1);
 var
   n: Integer;
   tmp, refPos: TGLVector;
