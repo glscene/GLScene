@@ -266,7 +266,8 @@ contains
   GLS.VectorGeometry in '..\Source\GLS.VectorGeometry.pas',
   GLS.VectorTypes in '..\Source\GLS.VectorTypes.pas',
   GLS.VectorTypesExt in '..\Source\GLS.VectorTypesExt.pas',
-  GLS.Logger in '..\Source\GLS.Logger.pas';
+  GLS.Logger in '..\Source\GLS.Logger.pas',
+  GLS.SolarSystem in '..\Source\GLS.SolarSystem.pas';
 
 end.
 

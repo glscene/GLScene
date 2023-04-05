@@ -13,13 +13,13 @@ program EarthD;
 
 uses
   Forms,
-  fEarthD in 'fEarthD.pas',
-  USolarSystem in 'USolarSystem.pas';
+  fEarthD in 'fEarthD.pas' {FormEarth},
+  GLS.SolarSystem in 'GLS.SolarSystem.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormEarth, FormEarth);
   Application.Run;
 end.

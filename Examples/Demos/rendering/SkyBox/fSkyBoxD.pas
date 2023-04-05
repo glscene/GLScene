@@ -55,7 +55,6 @@ type
     GLSkyBox2: TGLSkyBox;
     GLSphere1: TGLSphere;
     GLSphere2: TGLSphere;
-    GLSimpleNavigation1: TGLSimpleNavigation;
     procedure FormCreate(Sender: TObject);
     procedure GLCadencer1Progress(Sender: TObject;
       const deltaTime, newTime: Double);
@@ -63,6 +62,7 @@ type
     procedure HandleKeys(d: Double);
     function LoadTexture(Matname, Filename: string): TGLLibMaterial;
   public
+    PathToAsset: TFileName;
   end;
 
 var
@@ -79,10 +79,12 @@ begin
   Result.Material.Texture.TextureMode := tmDecal;
 end;
 
+//------------------------------------------------
+
 procedure TFormSkyBox.FormCreate(Sender: TObject);
 begin
-  var Path: TFileName := GetCurrentAssetPath();
-  SetCurrentDir(Path  + '\cubemap');
+  PathToAsset := GetCurrentAssetPath();
+  SetCurrentDir(PathToAsset  + '\cubemap');
   GLMatLibCubeMap.TexturePaths := GetCurrentDir();
 
   // Skybox cubemaps
@@ -94,7 +96,7 @@ begin
   LoadTexture('Back', 'icecraterbk.jpg');
 
   // back to folder with textures
-  SetCurrentDir(Path  + '\texture');
+  SetCurrentDir(PathToAsset  + '\texture');
   with LoadTexture('Clouds', 'Clouds.jpg') do
   begin
     // Add transparency to clouds
@@ -120,7 +122,7 @@ begin
   end;
 
   // Moon
-  SetCurrentDir(Path  + '\map');
+  SetCurrentDir(PathToAsset  + '\map');
   LoadTexture('Moon', 'moon.jpg').Material.Texture.TextureMode := tmModulate;
 
   // -----------------------------------------
@@ -141,6 +143,8 @@ begin
   //GLUserInterface1.MouseLookActive := true;
 end;
 
+//------------------------------------------------
+
 procedure TFormSkyBox.GLCadencer1Progress(Sender: TObject;
   const deltaTime, newTime: Double);
 begin
@@ -160,6 +164,8 @@ begin
   GLUserInterface1.MouseUpdate;
   GLSceneViewer1.Invalidate;
 end;
+
+//------------------------------------------------
 
 procedure TFormSkyBox.HandleKeys(d: Double);
 begin

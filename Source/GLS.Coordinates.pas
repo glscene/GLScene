@@ -225,6 +225,9 @@ procedure Spherical_Cartesian(const r, theta, phi: double; var x, y, z: double;
   Ref: http://mathworld.wolfram.com/SphericalCoordinates.html
   NB: Could be optimised by using jclmath.pas unit *)
 procedure Cartesian_Spherical(const x, y, z: single; var r, theta, phi: single); overload;
+(* Convert Cartesian to Spherical, no checks, single
+  Ref: http://mathworld.wolfram.com/SphericalCoordinates.html
+  NB: Could be optimised by using fastmath.pas unit *)
 procedure Cartesian_Spherical(const v: TAffineVector; var r, theta, phi: single); overload;
 (* convert Cartesian to Spherical, no checks, double
   Ref: http://mathworld.wolfram.com/SphericalCoordinates.html

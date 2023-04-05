@@ -36,7 +36,7 @@ uses
   GLS.BaseClasses;
 
 type
-  TForm1 = class(TForm)
+  TFormEarth = class(TForm)
     GLScene: TGLScene;
     GLSceneViewer: TGLSceneViewer;
     Camera: TGLCamera;
@@ -85,7 +85,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FormEarth: TFormEarth;
 
 const
   cOpacity: Single = 5;
@@ -106,14 +106,14 @@ implementation
 
 uses
   // accurate movements left for later... or the astute reader
-  USolarSystem;
+  GLS.SolarSystem;
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TFormEarth.FormCreate(Sender: TObject);
 var
   FileName: TFileName;
 begin
   Path := GetCurrentAssetPath();
-  SetCurrentDir(Path + '\Data');
+  SetCurrentDir(Path + '\data');
   FileName := 'Yale_BSC.stars';
   SkyDome.Bands.Clear;
   if FileExists(FileName) then
@@ -122,7 +122,9 @@ begin
   TimeMultiplier := 1;
 end;
 
-procedure TForm1.GLSceneViewerBeforeRender(Sender: TObject);
+//--------------------------------------------------------------------------------
+
+procedure TFormEarth.GLSceneViewerBeforeRender(Sender: TObject);
 begin
   LensFlareSun.PreRender(Sender as TGLSceneBuffer);
   // if no multitexturing or no combiner support, turn off city lights
@@ -130,7 +132,9 @@ begin
   GLMatLib.Materials[0].Texture2Name := 'earthNight';
 end;
 
-function TForm1.AtmosphereColor(const rayStart, rayEnd: TGLVector): TGLColorVector;
+//--------------------------------------------------------------------------------
+
+function TFormEarth.AtmosphereColor(const rayStart, rayEnd: TGLVector): TGLColorVector;
 var
   i, n: Integer;
   atmPoint, normal: TGLVector;
@@ -175,9 +179,9 @@ begin
   Result.W := n * contrib * cOpacity * 0.1;
 end;
 
-// ---------------------------------------------------------
-//
-function TForm1.ComputeColor(var rayDest: TGLVector; mayHitGround: Boolean): TGLColorVector;
+//--------------------------------------------------------------------------------
+
+function TFormEarth.ComputeColor(var rayDest: TGLVector; mayHitGround: Boolean): TGLColorVector;
 var
   ai1, ai2, pi1, pi2: TGLVector;
   rayVector: TGLVector;
@@ -203,7 +207,9 @@ begin
     Result := clrTransparent;
 end;
 
-procedure TForm1.DirectOpenGLRender(Sender: TObject; var rci: TGLRenderContextInfo);
+//--------------------------------------------------------------------------------
+
+procedure TFormEarth.DirectOpenGLRender(Sender: TObject; var rci: TGLRenderContextInfo);
 
 const
   cSlices = 60;
@@ -297,7 +303,7 @@ begin
   FreeMem(pColor);
 end;
 
-function TForm1.LonLatToPos(lon, lat: Single): TAffineVector;
+function TFormEarth.LonLatToPos(lon, lat: Single): TAffineVector;
 var
   f: Single;
 begin
@@ -305,9 +311,9 @@ begin
   SinCosine(lon * (360 / 24 * PI / 180), f, Result.X, Result.Z);
 end;
 
-// -------------------------------------------
-//
-procedure TForm1.LoadConstellationLines;
+//--------------------------------------------------------------------------------
+
+procedure TFormEarth.LoadConstellationLines;
 var
   sl, line: TStrings;
   pos1, pos2: TAffineVector;
@@ -330,13 +336,15 @@ begin
   line.Free;
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
+procedure TFormEarth.Timer1Timer(Sender: TObject);
 begin
   Caption := Format('Earth ' + '%.1f FPS', [GLSceneViewer.FramesPerSecond]);
   GLSceneViewer.ResetPerformanceMonitor;
 end;
 
-procedure TForm1.GLCadencerProgress(Sender: TObject; const deltaTime, newTime: Double);
+//--------------------------------------------------------------------------------
+
+procedure TFormEarth.GLCadencerProgress(Sender: TObject; const deltaTime, newTime: Double);
 // var
 // d : Double;
 // p : TAffineVector;
@@ -381,14 +389,16 @@ begin
   end;
 end;
 
-procedure TForm1.GLSceneViewerMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+//--------------------------------------------------------------------------------
+
+procedure TFormEarth.GLSceneViewerMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
   X, Y: Integer);
 begin
   mx := X;
   my := Y;
 end;
 
-procedure TForm1.GLSceneViewerMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+procedure TFormEarth.GLSceneViewerMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
 begin
   if Shift = [ssLeft] then
   begin
@@ -401,7 +411,7 @@ begin
   my := Y;
 end;
 
-procedure TForm1.FormMouseWheel(Sender: TObject; Shift: TShiftState; WheelDelta: Integer;
+procedure TFormEarth.FormMouseWheel(Sender: TObject; Shift: TShiftState; WheelDelta: Integer;
   MousePos: TPoint; var Handled: Boolean);
 var
   f: Single;
@@ -414,7 +424,7 @@ begin
   Handled := True;
 end;
 
-procedure TForm1.GLSceneViewerDblClick(Sender: TObject);
+procedure TFormEarth.GLSceneViewerDblClick(Sender: TObject);
 begin
   GLSceneViewer.OnMouseMove := nil;
   if WindowState = wsMaximized then
@@ -430,7 +440,9 @@ begin
   GLSceneViewer.OnMouseMove := GLSceneViewerMouseMove;
 end;
 
-procedure TForm1.FormKeyPress(Sender: TObject; var Key: Char);
+//--------------------------------------------------------------------------------
+
+procedure TFormEarth.FormKeyPress(Sender: TObject; var Key: Char);
 
   procedure LoadHighResTexture(LibMat: TGLLibMaterial; const FileName: string);
   begin

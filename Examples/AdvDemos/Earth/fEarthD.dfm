@@ -1,4 +1,4 @@
-object Form1: TForm1
+object FormEarth: TFormEarth
   Left = 412
   Top = 123
   Caption = 'Earth'

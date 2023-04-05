@@ -1,7 +1,7 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-unit USolarSystem;
+unit GLS.SolarSystem;
 
 (*
   Solar system planetary elements and positions utility unit.
@@ -10,6 +10,7 @@ unit USolarSystem;
   Coordinates system takes Z as "up", ie. normal to the ecliptic plane,
   "axis" around which the planets turn.
 *)
+
 interface
 
 uses
@@ -40,8 +41,7 @@ type
   end;
 
 const
-
-  // geocentric sun elements (?)
+  // geocentric sun elements 
   cSunOrbitalElements: TOrbitalElementsData = (NConst: 0.0; NVar: 0.0;
     iConst: 0.0; iVar: 0.0; wConst: 282.9404; wVar: 4.70935E-5;
     aConst: 1.000000; aVar: 0.0; // (AU)
@@ -96,15 +96,15 @@ const
     eConst: 0.008606; eVar: 2.15E-9; MConst: 260.2471; MVar: 0.005995147);
 
   cAUToKilometers = 149.6E6; // astronomical units to kilometers
-  cEarthRadius = 6400; // earth radius in kilometers
+  cEarthRadius = 6371; // average earth radius in kilometers
 
-// Converts a TDateTime (GMT+0) into the julian day used for computations.
+// Converts a TDateTime (GMT+0) into the Julian day used for computations.
 function GMTDateTimeToJulianDay(const dt: TDateTime): Double;
-// Compute orbital elements for given julian day.
+// Compute orbital elements for given Julian day.
 function ComputeOrbitalElements(const oeData: TOrbitalElementsData;
   const d: Double): TOrbitalElements;
 
-// Compute the planet position for given julian day (in AU).
+// Compute the planet position for given Julian day (in AU).
 function ComputePlanetPosition(const orbitalElements: TOrbitalElements)
   : TAffineVector; overload;
 function ComputePlanetPosition(const orbitalElementsData: TOrbitalElementsData;
@@ -119,6 +119,8 @@ begin
   Result := dt - EncodeDate(2000, 1, 1);
 end;
 
+//--------------------------------------------------------------------------------
+
 function ComputeOrbitalElements(const oeData: TOrbitalElementsData;
   const d: Double): TOrbitalElements;
 begin
@@ -132,6 +134,8 @@ begin
     M := MConst + MVar * d;
   end;
 end;
+
+//--------------------------------------------------------------------------------
 
 function ComputePlanetPosition(const orbitalElements: TOrbitalElements)
   : TAffineVector;
@@ -175,6 +179,8 @@ begin
   // zh = r * ( sin(v+w) * sin(i) )
   Result.Z := r * (svw * si);
 end;
+
+//--------------------------------------------------------------------------------
 
 function ComputePlanetPosition(const orbitalElementsData: TOrbitalElementsData;
   const d: Double): TAffineVector;

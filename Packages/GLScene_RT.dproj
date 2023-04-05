@@ -371,6 +371,7 @@
         <DCCReference Include="..\Source\GLS.VectorTypes.pas"/>
         <DCCReference Include="..\Source\GLS.VectorTypesExt.pas"/>
         <DCCReference Include="..\Source\GLS.Logger.pas"/>
+        <DCCReference Include="..\Source\GLS.SolarSystem.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

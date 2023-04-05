@@ -164,24 +164,4 @@ object FormSkyBox: TFormSkyBox
     Left = 296
     Top = 24
   end
-  object GLSimpleNavigation1: TGLSimpleNavigation
-    Form = Owner
-    GLSceneViewer = GLSceneViewer1
-    FormCaption = 'GLScene SkyBox - %FPS'
-    KeyCombinations = <
-      item
-        ShiftState = [ssLeft, ssRight]
-        Action = snaZoom
-      end
-      item
-        ShiftState = [ssLeft]
-        Action = snaMoveAroundTarget
-      end
-      item
-        ShiftState = [ssRight]
-        Action = snaMoveAroundTarget
-      end>
-    Left = 296
-    Top = 88
-  end
 end

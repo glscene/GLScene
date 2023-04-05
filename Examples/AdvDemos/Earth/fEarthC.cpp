@@ -17,9 +17,9 @@
 #pragma link "GLS.SkyDome"
 #pragma link "GLSL.TextureShaders"
 #pragma resource "*.dfm"
-TForm3 *Form3;
+TfrmEarth *frmEarth;
 //---------------------------------------------------------------------------
-__fastcall TForm3::TForm3(TComponent* Owner)
+__fastcall TfrmEarth::TfrmEarth(TComponent* Owner)
 	: TForm(Owner)
 {
 }

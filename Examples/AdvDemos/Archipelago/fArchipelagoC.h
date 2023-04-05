@@ -30,6 +30,10 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.SkyDome.hpp"
 #include "GLS.TerrainRenderer.hpp"
+
+#include "GLS.VectorLists.hpp"
+#include "GLS.VectorTypes.hpp"
+#include "GLS.VectorGeometry.hpp"
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.WindowsFont.hpp"
 
@@ -37,11 +41,6 @@
 
 #include "GLS.RoamPatch.hpp"
 #include "GLS.RenderContextInfo.hpp"
-#include "GLS.VectorFileObjects.hpp"
-#include "GLS.BaseClasses.hpp"
-#include "GLS.VectorLists.hpp"
-#include "GLS.VectorTypes.hpp"
-#include "GLS.VectorGeometry.hpp"
 
 #include "GLS.Keyboard.hpp"
 #include "GLS.Context.hpp"

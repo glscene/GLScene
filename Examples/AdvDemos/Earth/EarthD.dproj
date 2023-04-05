@@ -119,7 +119,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="fEarthD.pas">
-            <Form>Form1</Form>
+            <Form>FormEarth</Form>
         </DCCReference>
         <DCCReference Include="USolarSystem.pas"/>
         <BuildConfiguration Include="Base">

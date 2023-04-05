@@ -3,8 +3,8 @@ object Form1: TForm1
   Top = 166
   BorderStyle = bsNone
   Caption = 'Form1'
-  ClientHeight = 413
-  ClientWidth = 505
+  ClientHeight = 457
+  ClientWidth = 611
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,8 +22,8 @@ object Form1: TForm1
   object SceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 505
-    Height = 413
+    Width = 611
+    Height = 457
     Camera = Camera
     Buffer.FogEnvironment.FogColor.Color = {9CC4403FFED4583F48E17A3F0000803F}
     Buffer.FogEnvironment.FogStart = 3500.000000000000000000
@@ -33,10 +33,12 @@ object Form1: TForm1
     Buffer.FogEnable = True
     Buffer.Lighting = False
     Buffer.AntiAliasing = aaNone
-    FieldOfView = 152.777770996093800000
+    FieldOfView = 155.314346313476600000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 507
+    ExplicitHeight = 415
   end
   object GLScene: TGLScene
     ObjectsSorting = osNone

@@ -45,6 +45,7 @@ del *.ilf /s
 del *.ils /s
 del *.pdi /s
 del *.vlb /s
+del *.obj /s
 
 echo ************************************************
 echo             Don't delete some files

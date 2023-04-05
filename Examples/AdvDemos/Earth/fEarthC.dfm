@@ -1,4 +1,4 @@
-object Form3: TForm3
+object frmEarth: TfrmEarth
   Left = 0
   Top = 0
   Caption = 'Earth'
@@ -10,6 +10,7 @@ object Form3: TForm3
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poScreenCenter
   TextHeight = 15
   object GLSceneViewer: TGLSceneViewer
     Left = 0

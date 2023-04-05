@@ -19,7 +19,7 @@
 #include "GLSL.TextureShaders.hpp"
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------
-class TForm3 : public TForm
+class TfrmEarth : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer;
@@ -42,9 +42,9 @@ __published:	// IDE-managed Components
 	TGLTexCombineShader *EarthCombiner;
 private:	// User declarations
 public:		// User declarations
-	__fastcall TForm3(TComponent* Owner);
+	__fastcall TfrmEarth(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm3 *Form3;
+extern PACKAGE TfrmEarth *frmEarth;
 //---------------------------------------------------------------------------
 #endif
