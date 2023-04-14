@@ -8,7 +8,6 @@ GLS Team
 ---------------------------
 
 
-![Village1](https://user-images.githubusercontent.com/66052716/232074382-7d05c080-4642-4635-bc7d-ca3fc7094149.jpg)
 
 
 
