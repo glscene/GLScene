@@ -121,7 +121,6 @@
         <DCCReference Include="fEarthD.pas">
             <Form>FormEarth</Form>
         </DCCReference>
-        <DCCReference Include="USolarSystem.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

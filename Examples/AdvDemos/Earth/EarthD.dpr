@@ -13,8 +13,7 @@ program EarthD;
 
 uses
   Forms,
-  fEarthD in 'fEarthD.pas' {FormEarth},
-  GLS.SolarSystem in 'GLS.SolarSystem.pas';
+  fEarthD in 'fEarthD.pas' {FormEarth};
 
 {$R *.res}
 

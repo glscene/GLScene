@@ -37,6 +37,7 @@ object FormEarth: TFormEarth
     Left = 16
     Top = 16
     object SkyDome: TGLSkyDome
+      Up.Coordinates = {0000803F000000000000000000000000}
       Bands = <
         item
           StartColor.Color = {0000803F0000803F0000803F0000803F}
@@ -63,10 +64,6 @@ object FormEarth: TFormEarth
         Nodes = <>
         NodesAspect = lnaInvisible
         SplineMode = lsmSegments
-        Options = []
-      end
-      object ConstellationBorders: TGLLines
-        Nodes = <>
         Options = []
       end
     end

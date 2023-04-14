@@ -3,161 +3,121 @@ object FormHeightField: TFormHeightField
   Top = 94
   BorderWidth = 4
   Caption = 'Height Field'
-  ClientHeight = 455
-  ClientWidth = 753
+  ClientHeight = 440
+  ClientWidth = 653
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 544
-    Height = 455
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 486
+    Height = 440
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 132.543212890625000000
+    FieldOfView = 131.112091064453100000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 435
+    ExplicitHeight = 366
   end
   object Panel1: TPanel
-    Left = 544
+    Left = 486
     Top = 0
-    Width = 209
-    Height = 455
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 167
+    Height = 440
     Align = alRight
     TabOrder = 1
+    ExplicitLeft = 435
+    ExplicitHeight = 364
     object Label1: TLabel
-      Left = 60
-      Top = 10
-      Width = 53
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 48
+      Top = 8
+      Width = 44
+      Height = 13
       Caption = 'X extents'
     end
     object Label2: TLabel
-      Left = 60
-      Top = 73
-      Width = 54
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 48
+      Top = 58
+      Width = 44
+      Height = 13
       Caption = 'Y extents'
     end
     object Label3: TLabel
-      Left = 70
-      Top = 135
-      Width = 28
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 56
+      Top = 108
+      Width = 22
+      Height = 13
       Caption = 'Step'
     end
     object Label4: TLabel
-      Left = 24
-      Top = 346
-      Width = 70
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 19
+      Top = 277
+      Width = 54
+      Height = 13
       Caption = 'Color Mode'
     end
     object LabelFPS: TLabel
-      Left = 18
-      Top = 450
-      Width = 26
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 14
+      Top = 408
+      Width = 20
+      Height = 17
       Caption = 'FPS'
     end
     object TrackBar1: TTrackBar
       Left = 0
-      Top = 24
-      Width = 161
-      Height = 41
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Top = 19
+      Width = 129
+      Height = 33
       Max = 50
       Position = 10
       TabOrder = 0
-      ThumbLength = 13
+      ThumbLength = 10
       TickMarks = tmBoth
       OnChange = TrackBar1Change
     end
     object TrackBar2: TTrackBar
       Left = 0
-      Top = 86
-      Width = 161
-      Height = 42
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Top = 69
+      Width = 129
+      Height = 33
       Max = 50
       Position = 10
       TabOrder = 1
-      ThumbLength = 13
+      ThumbLength = 10
       TickMarks = tmBoth
       OnChange = TrackBar2Change
     end
     object TrackBar3: TTrackBar
       Left = 0
-      Top = 150
-      Width = 161
-      Height = 41
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Top = 120
+      Width = 129
+      Height = 33
       Max = 160
       Min = 10
       Frequency = 10
       Position = 80
       TabOrder = 2
-      ThumbLength = 13
+      ThumbLength = 10
       TickMarks = tmBoth
       OnChange = TrackBar3Change
     end
     object RadioGroup1: TRadioGroup
-      Left = 40
-      Top = 199
-      Width = 101
-      Height = 111
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 32
+      Top = 159
+      Width = 81
+      Height = 89
       Caption = 'Formula'
       ItemIndex = 0
       Items.Strings = (
@@ -168,14 +128,10 @@ object FormHeightField: TFormHeightField
       OnClick = RadioGroup1Click
     end
     object CheckBox1: TCheckBox
-      Left = 20
-      Top = 318
-      Width = 91
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 254
+      Width = 73
+      Height = 17
       Caption = 'Two-sided'
       Checked = True
       State = cbChecked
@@ -183,14 +139,10 @@ object FormHeightField: TFormHeightField
       OnClick = CheckBox1Click
     end
     object ComboBox1: TComboBox
-      Left = 20
-      Top = 370
-      Width = 101
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 296
+      Width = 81
+      Height = 21
       Style = csDropDownList
       TabOrder = 5
       OnChange = ComboBox1Change
@@ -200,14 +152,10 @@ object FormHeightField: TFormHeightField
         'diffuse')
     end
     object CheckBox2: TCheckBox
-      Left = 20
-      Top = 404
-      Width = 81
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 323
+      Width = 65
+      Height = 17
       Caption = 'Lighting'
       Checked = True
       State = cbChecked
@@ -219,6 +167,7 @@ object FormHeightField: TFormHeightField
     Left = 40
     Top = 24
     object HeightField1: TGLHeightField
+      Material.BlendingMode = bmTransparency
       Direction.Coordinates = {000000000000803F2EBD3BB300000000}
       Scale.Coordinates = {00004040000040400000404000000000}
       Up.Coordinates = {000000002EBD3BB3000080BF00000000}

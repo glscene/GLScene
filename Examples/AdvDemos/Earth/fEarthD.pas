@@ -54,7 +54,6 @@ type
     Cameracontroller: TGLCamera;
     SkyDome: TGLSkyDome;
     ConstellationLines: TGLLines;
-    ConstellationBorders: TGLLines;
     procedure FormCreate(Sender: TObject);
     procedure DirectOpenGLRender(Sender: TObject; var rci: TGLRenderContextInfo);
     procedure Timer1Timer(Sender: TObject);
@@ -103,10 +102,6 @@ implementation
 // -----------------------------------------
 
 {$R *.dfm}
-
-uses
-  // accurate movements left for later... or the astute reader
-  GLS.SolarSystem;
 
 procedure TFormEarth.FormCreate(Sender: TObject);
 var
@@ -303,6 +298,8 @@ begin
   FreeMem(pColor);
 end;
 
+//--------------------------------------------------------------------------------
+
 function TFormEarth.LonLatToPos(lon, lat: Single): TAffineVector;
 var
   f: Single;
@@ -317,13 +314,12 @@ procedure TFormEarth.LoadConstellationLines;
 var
   sl, line: TStrings;
   pos1, pos2: TAffineVector;
-
-var
   i: Integer;
+
 begin
   sl := TStringList.Create;
   line := TStringList.Create;
-  sl.LoadFromFile('Constellations.dat');
+  sl.LoadFromFile('ConstellationLines.dat');
   for i := 0 to sl.Count - 1 do
   begin
     line.CommaText := sl[i];
@@ -335,6 +331,8 @@ begin
   sl.Free;
   line.Free;
 end;
+
+//--------------------------------------------------------------------------------
 
 procedure TFormEarth.Timer1Timer(Sender: TObject);
 begin
@@ -411,6 +409,8 @@ begin
   my := Y;
 end;
 
+//--------------------------------------------------------------------------------
+
 procedure TFormEarth.FormMouseWheel(Sender: TObject; Shift: TShiftState; WheelDelta: Integer;
   MousePos: TPoint; var Handled: Boolean);
 var
@@ -423,6 +423,8 @@ begin
   end;
   Handled := True;
 end;
+
+//--------------------------------------------------------------------------------
 
 procedure TFormEarth.GLSceneViewerDblClick(Sender: TObject);
 begin
@@ -479,8 +481,8 @@ begin
           SetCurrentDir(Path + '\map');
           with GLMatLib do
           begin
-            LoadHighResTexture(Materials[0], 'earth_ocean_ice_4096.jpg');
-            LoadHighResTexture(Materials[1], 'earth_ocean_ice_lights_4096.jpg');
+            LoadHighResTexture(Materials[0], 'land_ocean_ice_4096.jpg');
+            LoadHighResTexture(Materials[1], 'land_ocean_ice_lights_4096.jpg');
             LoadHighResTexture(Materials[2], 'moon_2048.jpg');
           end;
           GLSceneViewer.Buffer.AntiAliasing := aa2x;

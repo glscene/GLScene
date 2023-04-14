@@ -7,31 +7,31 @@
             <Dependencies/>
         </Projects>
         <Projects Include="GLScene_DT.dproj">
-            <Dependencies/>
+            <Dependencies>GLScene_RT.dproj</Dependencies>
         </Projects>
         <Projects Include="GLScene_Sounds_RT.dproj">
-            <Dependencies/>
+            <Dependencies>GLScene_RT.dproj</Dependencies>
         </Projects>
         <Projects Include="GLScene_Sounds_DT.dproj">
-            <Dependencies/>
+            <Dependencies>GLScene_Sounds_RT.dproj;GLScene_RT.dproj</Dependencies>
         </Projects>
         <Projects Include="GLScene_Physics_RT.dproj">
-            <Dependencies/>
+            <Dependencies>GLScene_RT.dproj</Dependencies>
         </Projects>
         <Projects Include="GLScene_Physics_DT.dproj">
-            <Dependencies/>
+            <Dependencies>GLScene_Physics_RT.dproj;GLScene_RT.dproj</Dependencies>
         </Projects>
         <Projects Include="GLScene_Cg_RT.dproj">
-            <Dependencies/>
+            <Dependencies>GLScene_RT.dproj</Dependencies>
         </Projects>
         <Projects Include="GLScene_Cg_DT.dproj">
-            <Dependencies/>
+            <Dependencies>GLScene_Cg_RT.dproj;GLScene_DT.dproj</Dependencies>
         </Projects>
         <Projects Include="GLScene_GPU_RT.dproj">
-            <Dependencies/>
+            <Dependencies>GLScene_Cg_RT.dproj</Dependencies>
         </Projects>
         <Projects Include="GLScene_GPU_DT.dproj">
-            <Dependencies/>
+            <Dependencies>GLScene_GPU_RT.dproj;GLScene_DT.dproj</Dependencies>
         </Projects>
     </ItemGroup>
     <ProjectExtensions>
@@ -50,85 +50,85 @@
     <Target Name="GLScene_RT:Make">
         <MSBuild Projects="GLScene_RT.dproj" Targets="Make"/>
     </Target>
-    <Target Name="GLScene_DT">
+    <Target Name="GLScene_DT" DependsOnTargets="GLScene_RT">
         <MSBuild Projects="GLScene_DT.dproj"/>
     </Target>
-    <Target Name="GLScene_DT:Clean">
+    <Target Name="GLScene_DT:Clean" DependsOnTargets="GLScene_RT:Clean">
         <MSBuild Projects="GLScene_DT.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="GLScene_DT:Make">
+    <Target Name="GLScene_DT:Make" DependsOnTargets="GLScene_RT:Make">
         <MSBuild Projects="GLScene_DT.dproj" Targets="Make"/>
     </Target>
-    <Target Name="GLScene_Sounds_RT">
+    <Target Name="GLScene_Sounds_RT" DependsOnTargets="GLScene_RT">
         <MSBuild Projects="GLScene_Sounds_RT.dproj"/>
     </Target>
-    <Target Name="GLScene_Sounds_RT:Clean">
+    <Target Name="GLScene_Sounds_RT:Clean" DependsOnTargets="GLScene_RT:Clean">
         <MSBuild Projects="GLScene_Sounds_RT.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="GLScene_Sounds_RT:Make">
+    <Target Name="GLScene_Sounds_RT:Make" DependsOnTargets="GLScene_RT:Make">
         <MSBuild Projects="GLScene_Sounds_RT.dproj" Targets="Make"/>
     </Target>
-    <Target Name="GLScene_Sounds_DT">
+    <Target Name="GLScene_Sounds_DT" DependsOnTargets="GLScene_Sounds_RT;GLScene_RT">
         <MSBuild Projects="GLScene_Sounds_DT.dproj"/>
     </Target>
-    <Target Name="GLScene_Sounds_DT:Clean">
+    <Target Name="GLScene_Sounds_DT:Clean" DependsOnTargets="GLScene_Sounds_RT:Clean;GLScene_RT:Clean">
         <MSBuild Projects="GLScene_Sounds_DT.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="GLScene_Sounds_DT:Make">
+    <Target Name="GLScene_Sounds_DT:Make" DependsOnTargets="GLScene_Sounds_RT:Make;GLScene_RT:Make">
         <MSBuild Projects="GLScene_Sounds_DT.dproj" Targets="Make"/>
     </Target>
-    <Target Name="GLScene_Physics_RT">
+    <Target Name="GLScene_Physics_RT" DependsOnTargets="GLScene_RT">
         <MSBuild Projects="GLScene_Physics_RT.dproj"/>
     </Target>
-    <Target Name="GLScene_Physics_RT:Clean">
+    <Target Name="GLScene_Physics_RT:Clean" DependsOnTargets="GLScene_RT:Clean">
         <MSBuild Projects="GLScene_Physics_RT.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="GLScene_Physics_RT:Make">
+    <Target Name="GLScene_Physics_RT:Make" DependsOnTargets="GLScene_RT:Make">
         <MSBuild Projects="GLScene_Physics_RT.dproj" Targets="Make"/>
     </Target>
-    <Target Name="GLScene_Physics_DT">
+    <Target Name="GLScene_Physics_DT" DependsOnTargets="GLScene_Physics_RT;GLScene_RT">
         <MSBuild Projects="GLScene_Physics_DT.dproj"/>
     </Target>
-    <Target Name="GLScene_Physics_DT:Clean">
+    <Target Name="GLScene_Physics_DT:Clean" DependsOnTargets="GLScene_Physics_RT:Clean;GLScene_RT:Clean">
         <MSBuild Projects="GLScene_Physics_DT.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="GLScene_Physics_DT:Make">
+    <Target Name="GLScene_Physics_DT:Make" DependsOnTargets="GLScene_Physics_RT:Make;GLScene_RT:Make">
         <MSBuild Projects="GLScene_Physics_DT.dproj" Targets="Make"/>
     </Target>
-    <Target Name="GLScene_Cg_RT">
+    <Target Name="GLScene_Cg_RT" DependsOnTargets="GLScene_RT">
         <MSBuild Projects="GLScene_Cg_RT.dproj"/>
     </Target>
-    <Target Name="GLScene_Cg_RT:Clean">
+    <Target Name="GLScene_Cg_RT:Clean" DependsOnTargets="GLScene_RT:Clean">
         <MSBuild Projects="GLScene_Cg_RT.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="GLScene_Cg_RT:Make">
+    <Target Name="GLScene_Cg_RT:Make" DependsOnTargets="GLScene_RT:Make">
         <MSBuild Projects="GLScene_Cg_RT.dproj" Targets="Make"/>
     </Target>
-    <Target Name="GLScene_Cg_DT">
+    <Target Name="GLScene_Cg_DT" DependsOnTargets="GLScene_Cg_RT;GLScene_DT">
         <MSBuild Projects="GLScene_Cg_DT.dproj"/>
     </Target>
-    <Target Name="GLScene_Cg_DT:Clean">
+    <Target Name="GLScene_Cg_DT:Clean" DependsOnTargets="GLScene_Cg_RT:Clean;GLScene_DT:Clean">
         <MSBuild Projects="GLScene_Cg_DT.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="GLScene_Cg_DT:Make">
+    <Target Name="GLScene_Cg_DT:Make" DependsOnTargets="GLScene_Cg_RT:Make;GLScene_DT:Make">
         <MSBuild Projects="GLScene_Cg_DT.dproj" Targets="Make"/>
     </Target>
-    <Target Name="GLScene_GPU_RT">
+    <Target Name="GLScene_GPU_RT" DependsOnTargets="GLScene_Cg_RT">
         <MSBuild Projects="GLScene_GPU_RT.dproj"/>
     </Target>
-    <Target Name="GLScene_GPU_RT:Clean">
+    <Target Name="GLScene_GPU_RT:Clean" DependsOnTargets="GLScene_Cg_RT:Clean">
         <MSBuild Projects="GLScene_GPU_RT.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="GLScene_GPU_RT:Make">
+    <Target Name="GLScene_GPU_RT:Make" DependsOnTargets="GLScene_Cg_RT:Make">
         <MSBuild Projects="GLScene_GPU_RT.dproj" Targets="Make"/>
     </Target>
-    <Target Name="GLScene_GPU_DT">
+    <Target Name="GLScene_GPU_DT" DependsOnTargets="GLScene_GPU_RT;GLScene_DT">
         <MSBuild Projects="GLScene_GPU_DT.dproj"/>
     </Target>
-    <Target Name="GLScene_GPU_DT:Clean">
+    <Target Name="GLScene_GPU_DT:Clean" DependsOnTargets="GLScene_GPU_RT:Clean;GLScene_DT:Clean">
         <MSBuild Projects="GLScene_GPU_DT.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="GLScene_GPU_DT:Make">
+    <Target Name="GLScene_GPU_DT:Make" DependsOnTargets="GLScene_GPU_RT:Make;GLScene_DT:Make">
         <MSBuild Projects="GLScene_GPU_DT.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">

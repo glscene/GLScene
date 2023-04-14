@@ -30,8 +30,6 @@ object Form1: TForm1
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
-    ExplicitWidth = 460
-    ExplicitHeight = 363
   end
   object GLScene1: TGLScene
     Left = 16
@@ -53,7 +51,6 @@ object Form1: TForm1
         end>
       NodesAspect = lnaCube
       NodeSize = 0.500000000000000000
-      SplineMode = lsmBezierSpline
       Options = [loUseNodeColorForLines]
     end
     object GLCamera1: TGLCamera
