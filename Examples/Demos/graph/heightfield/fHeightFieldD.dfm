@@ -28,8 +28,6 @@ object FormHeightField: TFormHeightField
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
-    ExplicitWidth = 435
-    ExplicitHeight = 366
   end
   object Panel1: TPanel
     Left = 486
@@ -38,8 +36,6 @@ object FormHeightField: TFormHeightField
     Height = 440
     Align = alRight
     TabOrder = 1
-    ExplicitLeft = 435
-    ExplicitHeight = 364
     object Label1: TLabel
       Left = 48
       Top = 8
@@ -72,7 +68,7 @@ object FormHeightField: TFormHeightField
       Left = 14
       Top = 408
       Width = 20
-      Height = 17
+      Height = 13
       Caption = 'FPS'
     end
     object TrackBar1: TTrackBar
@@ -167,7 +163,7 @@ object FormHeightField: TFormHeightField
     Left = 40
     Top = 24
     object HeightField1: TGLHeightField
-      Material.BlendingMode = bmTransparency
+      Material.FrontProperties.Emission.Color = {0000000000000000000000000000003F}
       Direction.Coordinates = {000000000000803F2EBD3BB300000000}
       Scale.Coordinates = {00004040000040400000404000000000}
       Up.Coordinates = {000000002EBD3BB3000080BF00000000}

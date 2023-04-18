@@ -123,6 +123,7 @@ object FormFxy: TFormFxy
       Top = 168
     end
     object HeightField1: TGLHeightField
+      Material.BlendingMode = bmTransparency
       Direction.Coordinates = {0044F4970000803F2EBD3BB300000000}
       ShowAxes = True
       Up.Coordinates = {0000803F583DAF262EBD3B3300000000}

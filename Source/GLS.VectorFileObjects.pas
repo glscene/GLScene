@@ -458,7 +458,7 @@ type
     procedure SetColors(const val: TGLVectorList);
     procedure BufferArrays;
     procedure DeclareArraysToOpenGL(var mrci: TGLRenderContextInfo;
-	  EvenIfAlreadyDeclared: Boolean = False);
+   	  EvenIfAlreadyDeclared: Boolean = False);
     procedure DisableOpenGLArrays(var mrci: TGLRenderContextInfo);
     procedure EnableLightMapArray(var mrci: TGLRenderContextInfo);
     procedure DisableLightMapArray(var mrci: TGLRenderContextInfo);
@@ -481,7 +481,7 @@ type
     procedure ReadFromFiler(reader: TGLVirtualReader); override;
     procedure Clear; override;
     function ExtractTriangles(texCoords: TGLAffineVectorList = nil;
-	  Normals: TGLAffineVectorList = nil): TGLAffineVectorList; override;
+	    Normals: TGLAffineVectorList = nil): TGLAffineVectorList; override;
     // Returns number of triangles in the mesh object.
     function TriangleCount: Integer; virtual;
     procedure PrepareMaterialLibraryCache(matLib: TGLMaterialLibrary);
@@ -5976,8 +5976,8 @@ begin
   FLastLoadedFilename := '';
   if fileName <> '' then
   begin
+    fs := TBufferedFileStream.Create(fileName, fmOpenRead + fmShareDenyWrite);
     try
-      fs := TBufferedFileStream.Create(fileName, fmOpenRead + fmShareDenyWrite);
       LoadFromStream(fileName, fs);
       FLastLoadedFilename := filename;
     finally
@@ -6025,8 +6025,8 @@ var
 begin
   if fileName <> '' then
   begin
+    fs := TFileStream.Create(fileName, fmCreate);
     try
-      fs := TFileStream.Create(fileName, fmCreate);
       SaveToStream(fileName, fs);
     finally
       fs.Free;

@@ -55,7 +55,7 @@ interface
 
 uses
   System.Classes,
-  ModuleLoader;
+  GLS.ModuleLoader;
 
 const
 

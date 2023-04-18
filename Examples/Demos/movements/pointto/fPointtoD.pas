@@ -22,7 +22,7 @@ uses
   GLS.GeomObjects,
  
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLS.BaseClasses, GLS.SimpleNavigation;
 
 type
   TFormPointto = class(TForm)
@@ -40,6 +40,7 @@ type
     Lines1: TGLLines;
     Plane1: TGLPlane;
     Lines2: TGLLines;
+    GLSimpleNavigation1: TGLSimpleNavigation;
     procedure GLCadencer1Progress(Sender: TObject; const deltaTime,
       newTime: Double);
   private

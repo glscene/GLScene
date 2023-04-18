@@ -259,13 +259,20 @@ end;
 
 function Str2Float(const S: string): Single;
 var
+  DSeparator: Char;
   fs: TFormatSettings;
-begin                                                                                                           fs.DecimalSeparator := ',';
-  if not TryStrToFloat(S, Result, fs) then
-  begin
-    fs.DecimalSeparator := '.';
+begin
+  DSeparator := fs.DecimalSeparator;                                                                                                   fs.DecimalSeparator := ',';
+  try
+    fs.DecimalSeparator := ',';
     if not TryStrToFloat(S, Result, fs) then
-      Result := 0;
+    begin
+      fs.DecimalSeparator := '.';
+      if not TryStrToFloat(S, Result, fs) then
+        Result := 0;
+    end;
+  finally
+    fs.DecimalSeparator := DSeparator;
   end;
 end;
 

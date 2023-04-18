@@ -27,7 +27,6 @@ uses
   GLS.RenderContextInfo;
 
 type
-
    TGLStarRecord = packed record
       RA : Word;              // Right Ascension, x100 builtin factor, degrees
       DEC : SmallInt;         // Declination, x100 builtin factor, degrees
@@ -177,7 +176,7 @@ type
     procedure AddRandomStars(const nb: Integer; const color: TColor; const LimitToTopDome: Boolean = False); overload;
     procedure AddRandomStars(const nb: Integer; const ColorMin, ColorMax:TVector3b;
 	   const Magnitude_min, Magnitude_max: Single;
-	   const limitToTopDome: Boolean = False); overload;
+	   const LimitToTopDome: Boolean = False); overload;
     (* Load a 'stars' file, which is made of TGLStarRecord.
        Not that '.stars' files should already be sorted by magnitude and color. *)
     procedure LoadStarsFile(const starsFileName: string);

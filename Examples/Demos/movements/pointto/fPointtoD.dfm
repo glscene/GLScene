@@ -24,8 +24,6 @@ object FormPointto: TFormPointto
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 479
-    ExplicitHeight = 325
   end
   object GLScene1: TGLScene
     Left = 16
@@ -126,6 +124,26 @@ object FormPointto: TFormPointto
     Scene = GLScene1
     OnProgress = GLCadencer1Progress
     Left = 56
+    Top = 16
+  end
+  object GLSimpleNavigation1: TGLSimpleNavigation
+    Form = Owner
+    GLSceneViewer = GLSceneViewer1
+    FormCaption = 'Point To - %FPS'
+    KeyCombinations = <
+      item
+        ShiftState = [ssLeft, ssRight]
+        Action = snaZoom
+      end
+      item
+        ShiftState = [ssLeft]
+        Action = snaMoveAroundTarget
+      end
+      item
+        ShiftState = [ssRight]
+        Action = snaMoveAroundTarget
+      end>
+    Left = 176
     Top = 16
   end
 end
