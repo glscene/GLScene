@@ -88,12 +88,16 @@ implementation
 
 {$R *.DFM}
 
+//-------------------------------------------------------------------
+
 procedure TFormClouds.FormCreate(Sender: TObject);
 begin
   CBFormat.ItemIndex := 3;
   CBCompression.ItemIndex := 0;
   CBFormatChange(Sender);
 end;
+
+//-------------------------------------------------------------------
 
 procedure TFormClouds.GLCadencer1Progress(Sender: TObject;
   const deltaTime, newTime: Double);
@@ -103,6 +107,8 @@ begin
       .NoiseAnimate(deltaTime);
 end;
 
+//-------------------------------------------------------------------
+
 procedure TFormClouds.TrackBar1Change(Sender: TObject);
 begin
   Plane.XTiles := TrackBar1.Position;
@@ -110,11 +116,15 @@ begin
   // EnvColor clrLightBlue   TextureMode Blend
 end;
 
+//-------------------------------------------------------------------
+
 procedure TFormClouds.Timer1Timer(Sender: TObject);
 begin
   LabelFPS.Caption := GLSceneViewer1.FramesPerSecondText();
   GLSceneViewer1.ResetPerformanceMonitor();
 end;
+
+//-------------------------------------------------------------------
 
 procedure TFormClouds.GLSceneViewer1AfterRender(Sender: TObject);
 var
@@ -133,7 +143,8 @@ begin
   newSelection := False;
 end;
 
-//----------------------------------------------------------------------
+//-------------------------------------------------------------------
+
 procedure TFormClouds.CBFormatChange(Sender: TObject);
 var
   s: String;
@@ -188,6 +199,8 @@ begin
   newSelection := True;
 end;
 
+//-------------------------------------------------------------------
+
 procedure TFormClouds.CloudFileOpenBtnClick(Sender: TObject);
 begin
   OpenDialog1.Filter := 'Cloud base (*.clb)|*.clb';
@@ -196,6 +209,8 @@ begin
   if OpenDialog1.Execute() then
     CloudFileUsedEdit.Text := OpenDialog1.FileName;
 end;
+
+//-------------------------------------------------------------------
 
 procedure TFormClouds.MakeAndSaveCloudNoiseFileClick(Sender: TObject);
 var
@@ -244,7 +259,7 @@ var
     SaveDialog1.Filename := '*.clb';
     if (SaveDialog1.Execute()) then
     begin
-      if UpperCase(ExtractFileExt(SaveDialog1.Filename)) = '.CLB' then
+      if UpperCase(ExtractFileExt(SaveDialog1.Filename)) = '.clb' then
       begin
         Application.ProcessMessages;
         Randomize();

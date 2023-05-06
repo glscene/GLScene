@@ -146,7 +146,7 @@
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="fTexFormatC.cpp">
-            <Form>Form1</Form>
+            <Form>FormFormats</Form>
             <FormType>dfm</FormType>
             <DependentOn>fTexFormatC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

@@ -20,6 +20,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Utils.hpp"
 #include "Jpeg.hpp"
+#include "GLS.SimpleNavigation.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
@@ -31,8 +32,8 @@ __published:	// IDE-managed Components
 	TLabel *Label3;
 	TLabel *Label4;
 	TMemo *Memo1;
-	TButton *Button1;
-	TButton *Button2;
+	TButton *ButtonLoadScript;
+	TButton *ButtonExecuteScript;
 	TMemo *Memo2;
 	TGLSceneViewer *GLSceneViewer1;
 	TGLScene *GLScene1;
@@ -44,10 +45,12 @@ __published:	// IDE-managed Components
 	TOpenDialog *OpenDialog1;
 	TGLMaterialScripter *GLMaterialScripter1;
 	TGLCadencer *GLCadencer1;
+	TGLSimpleNavigation *GLSimpleNavigation1;
 	void __fastcall FormCreate(TObject *Sender);
-	void __fastcall Button1Click(TObject *Sender);
-	void __fastcall Button2Click(TObject *Sender);
+	void __fastcall ButtonLoadScriptClick(TObject *Sender);
+	void __fastcall ButtonExecuteScriptClick(TObject *Sender);
 private:	// User declarations
+	TFileName PathToData;
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
 };

@@ -1,42 +1,43 @@
-object Form1: TForm1
+object FormHeightField: TFormHeightField
   Left = 0
   Top = 0
   Caption = 'Height Field'
-  ClientHeight = 445
-  ClientWidth = 543
+  ClientHeight = 446
+  ClientWidth = 600
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   WindowState = wsMaximized
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 96
   TextHeight = 13
-  object GLSceneViewer1: TGLSceneViewer
+  object GLSceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 398
-    Height = 445
+    Width = 455
+    Height = 446
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 126.639793395996100000
+    FieldOfView = 131.694168090820300000
     PenAsTouch = False
     Align = alClient
-    OnMouseDown = GLSceneViewer1MouseDown
-    OnMouseMove = GLSceneViewer1MouseMove
+    OnMouseDown = GLSceneViewerMouseDown
+    OnMouseMove = GLSceneViewerMouseMove
     TabOrder = 0
+    ExplicitWidth = 442
   end
   object Panel1: TPanel
-    Left = 398
+    Left = 455
     Top = 0
     Width = 145
-    Height = 445
+    Height = 446
     Align = alRight
     TabOrder = 1
+    ExplicitLeft = 398
+    ExplicitHeight = 445
     object Label1: TLabel
       Left = 48
       Top = 8

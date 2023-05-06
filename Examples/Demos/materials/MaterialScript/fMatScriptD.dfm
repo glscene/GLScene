@@ -94,6 +94,8 @@ object FormMatScript: TFormMatScript
     PenAsTouch = False
     Align = alClient
     TabOrder = 1
+    ExplicitLeft = 12
+    ExplicitTop = -40
   end
   object GLScene1: TGLScene
     Left = 24

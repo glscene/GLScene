@@ -18,10 +18,10 @@ object ViewerForm: TViewerForm
     Left = 0
     Top = 0
     Width = 629
-    Height = 56
+    Height = 26
     AutoSize = True
     BorderWidth = 1
-    ButtonWidth = 197
+    ButtonWidth = 41
     Caption = 'ToolBar'
     Images = ImageList
     TabOrder = 0
@@ -31,12 +31,12 @@ object ViewerForm: TViewerForm
       Action = ACOpen
     end
     object ToolButton3: TToolButton
-      Left = 197
+      Left = 41
       Top = 0
       Action = ACExit
     end
     object ToolButton2: TToolButton
-      Left = 394
+      Left = 82
       Top = 0
       Width = 8
       Caption = 'ToolButton2'
@@ -44,22 +44,21 @@ object ViewerForm: TViewerForm
       Style = tbsSeparator
     end
     object ToolButton6: TToolButton
-      Left = 402
+      Left = 90
       Top = 0
       Action = ACNavMap
     end
     object ToolButton5: TToolButton
-      Left = 0
+      Left = 131
       Top = 0
       Width = 8
       Caption = 'ToolButton5'
       ImageIndex = 3
-      Wrap = True
       Style = tbsSeparator
     end
     object TBGrid: TToolButton
-      Left = 0
-      Top = 30
+      Left = 139
+      Top = 0
       Hint = 'Toggle Grid'
       Caption = 'TBGrid'
       Down = True
@@ -68,25 +67,25 @@ object ViewerForm: TViewerForm
       OnClick = TBGridClick
     end
     object ToolButton7: TToolButton
-      Left = 197
-      Top = 30
+      Left = 180
+      Top = 0
       Action = ACPalette
       DropdownMenu = PMPalettes
       Style = tbsDropDown
     end
     object ToolButton4: TToolButton
-      Left = 413
-      Top = 30
+      Left = 240
+      Top = 0
       Width = 8
       Caption = 'ToolButton4'
       ImageIndex = 2
       Style = tbsSeparator
     end
     object LAMap: TLabel
-      Left = 421
-      Top = 30
+      Left = 248
+      Top = 0
       Width = 49
-      Height = 16
+      Height = 22
       Caption = ' No map'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -99,9 +98,9 @@ object ViewerForm: TViewerForm
   end
   object PaintBox: TPaintBox32
     Left = 0
-    Top = 56
+    Top = 26
     Width = 629
-    Height = 406
+    Height = 436
     Cursor = crCross
     Align = alClient
     TabOrder = 1
@@ -109,6 +108,8 @@ object ViewerForm: TViewerForm
     OnMouseMove = PaintBoxMouseMove
     OnMouseUp = PaintBoxMouseUp
     OnResize = PaintBoxResize
+    ExplicitTop = 56
+    ExplicitHeight = 406
   end
   object StatusBar: TStatusBar
     Left = 0

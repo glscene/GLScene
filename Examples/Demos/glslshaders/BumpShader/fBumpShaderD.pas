@@ -137,10 +137,12 @@ begin
   Sphere_little.MeshObjects.BuildTangentSpace;
 
   // Then load textures
+  SetCurrentDir(Path + '\map');
+  MaterialLibrary.LibMaterialByName('Earth').Material.Texture.Image.LoadFromFile('earth.jpg');
   SetCurrentDir(Path  + '\texture');
-  MaterialLibrary.LibMaterialByName('Earth').Material.Texture.Image.LoadFromFile('Earth.jpg');
-  MaterialLibrary.LibMaterialByName('EarthGross').Material.Texture.Image.LoadFromFile('EarthSpec.dds');
   MaterialLibrary.LibMaterialByName('EarthNormals').Material.Texture.Image.LoadFromFile('EarthNormals.jpg');
+  SetCurrentDir(Path  + '\cubemap');
+  MaterialLibrary.LibMaterialByName('EarthGross').Material.Texture.Image.LoadFromFile('EarthSpec.dds');
 
   // Create Shader
   MultiLightShader := TGLSLMLBumpShader.Create(Self);

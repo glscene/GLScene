@@ -1,4 +1,4 @@
-object Form1: TForm1
+object FormSplines: TFormSplines
   Left = 217
   Top = 127
   Caption = 'Splines'

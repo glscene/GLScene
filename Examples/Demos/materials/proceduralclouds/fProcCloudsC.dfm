@@ -10,6 +10,7 @@ object FormCloudsC: TFormCloudsC
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer

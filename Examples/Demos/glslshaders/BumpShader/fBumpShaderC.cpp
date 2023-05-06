@@ -79,8 +79,9 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   Sphere_little->MeshObjects->BuildTangentSpace();
 
   // Then load textures
-  SetCurrentDir(Path + "\\texture");
+  SetCurrentDir(Path + "\\map");
   MaterialLibrary->LibMaterialByName("Earth")->Material->Texture->Image->LoadFromFile("Earth.jpg");
+  SetCurrentDir(Path + "\\texture");
   MaterialLibrary->LibMaterialByName("EarthNormals")->Material->Texture->Image->LoadFromFile("EarthNormals.jpg");
 
   // And cubemaps
@@ -189,10 +190,11 @@ void __fastcall TForm1::ViewerMouseDown(TObject *Sender, TMouseButton Button, TS
   mx = X;
   my = Y;
 }
+
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::ViewerMouseMove(TObject *Sender, TShiftState Shift, int X,
-          int Y)
+		  int Y)
 {
   if (Shift.Contains(ssRight) && Shift.Contains(ssLeft))
 	Camera->AdjustDistanceToTarget(Power(1.01, Y - my));
@@ -201,8 +203,8 @@ void __fastcall TForm1::ViewerMouseMove(TObject *Sender, TShiftState Shift, int 
 	Camera->MoveAroundTarget(my - Y, mx - X);
   mx = X;
   my = Y;
-
 }
+
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Timer1Timer(TObject *Sender)

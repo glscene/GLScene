@@ -51,9 +51,8 @@ type
     procedure FormResize(Sender: TObject);
     procedure GLSceneViewer1AfterRender(Sender: TObject);
   private
-     
+    PathToData: TFileName;
   public
-     
     newSelection: Boolean;
   end;
 
@@ -72,8 +71,8 @@ var
   sr: TSearchRec;
   i: Integer;
 begin
-  var Path: TFileName := GetCurrentAssetPath();
-  SetCurrentDir(Path  + '\texture');
+  PathToData := GetCurrentAssetPath();
+  SetCurrentDir(PathToData  + '\texture');
   // collect JPeg textures from the asset directory
   i := FindFirst('*.jpg', faAnyFile, sr);
   while i = 0 do

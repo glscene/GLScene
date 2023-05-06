@@ -1,4 +1,4 @@
-object Form1: TForm1
+object FormPoints: TFormPoints
   Left = 0
   Top = 0
   Caption = 'Points'
@@ -26,8 +26,6 @@ object Form1: TForm1
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
-    ExplicitWidth = 539
-    ExplicitHeight = 406
   end
   object Panel1: TPanel
     Left = 0
@@ -36,7 +34,6 @@ object Form1: TForm1
     Height = 23
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 487
     object LabelFPS: TLabel
       Left = 266
       Top = 5

@@ -1,4 +1,4 @@
-object FormPlot: TFormPlot
+object FormFxy: TFormFxy
   Left = 192
   Top = 121
   Caption = 'Fxy '
@@ -10,6 +10,7 @@ object FormPlot: TFormPlot
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   WindowState = wsMaximized
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
@@ -32,8 +33,6 @@ object FormPlot: TFormPlot
     OnMouseDown = ViewerMouseDown
     OnMouseMove = ViewerMouseMove
     TabOrder = 0
-    ExplicitWidth = 455
-    ExplicitHeight = 537
   end
   object Panel1: TPanel
     Left = 563
@@ -42,12 +41,11 @@ object FormPlot: TFormPlot
     Height = 564
     Align = alRight
     TabOrder = 1
-    ExplicitLeft = 579
     object LabelX: TLabel
       Left = 34
       Top = 48
-      Width = 15
-      Height = 19
+      Width = 7
+      Height = 13
       Margins.Left = 2
       Margins.Top = 2
       Margins.Right = 2

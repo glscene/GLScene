@@ -18,7 +18,7 @@
 #include <Vcl.ImgList.hpp>
 
 //---------------------------------------------------------------------------
-class TFormPlot : public TForm
+class TFormFxy : public TForm
 {
   __published: // IDE-managed Components
     TGLScene* GLScene1;
@@ -63,10 +63,10 @@ class TFormPlot : public TForm
 	void __fastcall Formula3(const float x, const float y, float &z,
         TVector4f &color, TTexPoint &texPoint);
   public: // User declarations
-    __fastcall TFormPlot(TComponent* Owner);
+    __fastcall TFormFxy(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TFormPlot* FormPlot;
+extern PACKAGE TFormFxy* FormFxy;
 //---------------------------------------------------------------------------
 #endif
 

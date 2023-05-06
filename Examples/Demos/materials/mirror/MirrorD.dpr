@@ -1,4 +1,4 @@
-{: GLMirror demo and sample.
+(* GLMirror demo and sample.
 
    Depiste its simplistic look, this sample showcases all the dos and don'ts
    of reflections with TGLMirror, this is a powerfull mirroring component,
@@ -19,23 +19,22 @@
    There is also a variety of settings to the right of the screen, those adjust
    internal options that have a direct impact of what the mirror will be able
    to do right, and how much time rendering will take. The scene contains three
-   groups of objects of interest:<ul>
-   <li>non-reflecting ones: green torus and cylinder, these are behind the mirror,
+   groups of objects of interest:
+    - non-reflecting ones: green torus and cylinder, these are behind the mirror,
       there are no particular issues with non-reflecting objects in front of a
       mirror (except objects not reflecting...), but by playing with the settings
       (ClearZBuffer especially) you'll notice they cause some artifacts if improperly
       handled.
-   <li>teapot group: those are reflected. See how disabling stencil will cause
+    - teapot group: those are reflected. See how disabling stencil will cause
       the reflected teapot to be visible outside of the mirror. If your mirror
       is in a wall (opaque on all sides around the mirror), you may not have to
       care about stenciling (the wall will overdraw mirror images).
-   <li>lone inclined gray cylinder: this one is a don't, it's an object that is
+   -  lone inclined gray cylinder: this one is a don't, it's an object that is
       reflecting but that goes through the mirror... well, you can do it,
       but you have to activate PlaneClip, otherwise objects on the other side
       of the mirror get reflected on the "wrong" side... (uncheck the option
       and see for yourself). PlaneClip is better avoided, it can make your FPS
       drop significantly on some 3D boards.
-   </ul>
 
    In addition to being opaque, transparent or semi-transparent, the mirror
    can also be textured as usual.
@@ -45,12 +44,13 @@
       The glEval-based teapot also performs (relatively) poorly on those boards,
       while on an old-fashioned TNT2 f.i., plane clipping has a negligible
       performance impact.
-}
+*)
+
 program MirrorD;
 
 uses
   Forms,
-  fMirrorD in 'fMirrorD.pas' {FormMirror};
+  fMirrorD in 'fMirrorD.pas';
 
 {$R *.RES}
 

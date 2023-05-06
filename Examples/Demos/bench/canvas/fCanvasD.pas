@@ -55,7 +55,6 @@ type
       var rci: TGLRenderContextInfo);
     procedure BUArcClick(Sender: TObject);
   private
-
     procedure PaintTheBox;
     procedure Bench;
   public
@@ -84,6 +83,8 @@ const
   cNbTextOuts = 20000;
   cNbArcs = 20000;
 
+//-----------------------------------------------------------------
+
 procedure TFormCanvas.BULinesClick(Sender: TObject);
 begin
   vWhat := wLines;
@@ -91,17 +92,23 @@ begin
 end;
 
 
+//-----------------------------------------------------------------
+
 procedure TFormCanvas.BUEllipsesClick(Sender: TObject);
 begin
   vWhat := wEllipses;
   Bench;
 end;
+
+//-----------------------------------------------------------------
+
 procedure TFormCanvas.BUArcClick(Sender: TObject);
 begin
   vWhat := wArcs;
   Bench;
 end;
 
+//-----------------------------------------------------------------
 
 procedure TFormCanvas.BURectsClick(Sender: TObject);
 begin
@@ -109,17 +116,23 @@ begin
   Bench;
 end;
 
+//-----------------------------------------------------------------
+
 procedure TFormCanvas.BUPointsClick(Sender: TObject);
 begin
   vWhat := wPoints;
   Bench;
 end;
 
+//-----------------------------------------------------------------
+
 procedure TFormCanvas.BUTextOutClick(Sender: TObject);
 begin
   vWhat := wTextOut;
   Bench;
 end;
+
+//-----------------------------------------------------------------
 
 procedure TFormCanvas.Bench;
 var
@@ -145,6 +158,8 @@ begin
   PaintTheBox;
   lbGDI.Caption := Format('GDI: %.1f msec', [StopPrecisionTimer(t) * 1000]);
 end;
+
+//-----------------------------------------------------------------
 
 procedure TFormCanvas.GLDirectOpenGL1Render(Sender: TObject;
   var rci: TGLRenderContextInfo);
@@ -209,6 +224,8 @@ begin
   end;
   GLCanvas.Free;
 end;
+
+//-----------------------------------------------------------------
 
 procedure TFormCanvas.PaintTheBox;
 var

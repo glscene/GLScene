@@ -1,4 +1,4 @@
-/*: This is a quick demo for the TGLLines object and spline functionality.
+/* This is a quick demo for the TGLLines object and spline functionality.
 
    TGLLines can handle normal lines and cubic splines, each node can have a
    different color, and the line can be color-interpolated.
@@ -22,15 +22,15 @@
 #pragma link "GLS.Coordinates"
 
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormSplines *FormSplines;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
+__fastcall TFormSplines::TFormSplines(TComponent * Owner):TForm(Owner)
 {
 }
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::MoveCenterNodeTo(int x, int y)
+void __fastcall TFormSplines::MoveCenterNodeTo(int x, int y)
 {
   GLLines1->Nodes->Items[1]->AsAffineVector =
     GLSceneViewer1->Buffer->ScreenToWorld(x, y);
@@ -38,7 +38,7 @@ void __fastcall TForm1::MoveCenterNodeTo(int x, int y)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLSceneViewer1MouseDown(TObject * Sender,
+void __fastcall TFormSplines::GLSceneViewer1MouseDown(TObject * Sender,
                                                 TMouseButton Button,
                                                 TShiftState Shift, int X, int Y)
 {
@@ -47,7 +47,7 @@ void __fastcall TForm1::GLSceneViewer1MouseDown(TObject * Sender,
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLSceneViewer1MouseMove(TObject * Sender,
+void __fastcall TFormSplines::GLSceneViewer1MouseMove(TObject * Sender,
                                                 TShiftState Shift, int X, int Y)
 {
   if(Shift.Contains(ssShift))

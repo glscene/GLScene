@@ -2,38 +2,40 @@ object Form1: TForm1
   Left = 192
   Top = 126
   Caption = 'Transparency'
-  ClientHeight = 405
-  ClientWidth = 610
+  ClientHeight = 481
+  ClientWidth = 691
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
+  Position = poScreenCenter
   Scaled = False
-  WindowState = wsMaximized
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 408
-    Height = 405
+    Width = 489
+    Height = 481
     Camera = GLCamera1
     Buffer.BackgroundColor = 13224393
-    FieldOfView = 146.991271972656300000
+    FieldOfView = 151.983581542968800000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 437
+    ExplicitHeight = 434
   end
   object Panel1: TPanel
-    Left = 408
+    Left = 489
     Top = 0
     Width = 202
-    Height = 405
+    Height = 481
     Align = alRight
     TabOrder = 1
+    ExplicitLeft = 408
+    ExplicitHeight = 405
     object Label1: TLabel
       Left = 7
       Top = 10

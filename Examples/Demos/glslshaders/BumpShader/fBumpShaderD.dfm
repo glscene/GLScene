@@ -2,8 +2,8 @@ object FormBumpShader: TFormBumpShader
   Left = 261
   Top = 176
   Caption = 'GLSL Bump Shader'
-  ClientHeight = 437
-  ClientWidth = 646
+  ClientHeight = 605
+  ClientWidth = 856
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,28 +18,32 @@ object FormBumpShader: TFormBumpShader
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 475
-    Height = 437
+    Width = 685
+    Height = 605
     Camera = Camera
     Buffer.BackgroundColor = clBackground
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aaNone
     Buffer.DepthPrecision = dp24bits
     Buffer.ColorDepth = cd24bits
-    FieldOfView = 146.866317749023400000
+    FieldOfView = 155.745819091796900000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ViewerMouseDown
     OnMouseMove = ViewerMouseMove
     TabOrder = 0
+    ExplicitWidth = 478
+    ExplicitHeight = 438
   end
   object Panel1: TPanel
-    Left = 475
+    Left = 685
     Top = 0
     Width = 171
-    Height = 437
+    Height = 605
     Align = alRight
     TabOrder = 1
+    ExplicitLeft = 475
+    ExplicitHeight = 437
     object LightMovingCheckBox: TCheckBox
       Left = 8
       Top = 8
@@ -163,6 +167,8 @@ object FormBumpShader: TFormBumpShader
         Material.FrontProperties.Diffuse.Color = {E6E5653F8180003DCDCC4C3F0000803F}
         Material.FrontProperties.Emission.Color = {F4F3733FEEED6D3F000000000000803F}
         Radius = 10.000000000000000000
+        Slices = 64
+        Stacks = 64
       end
     end
     object LightCube2: TGLDummyCube
@@ -182,6 +188,8 @@ object FormBumpShader: TFormBumpShader
         Material.FrontProperties.Diffuse.Color = {EAE9693FCDCC4C3FCDCC4C3F0000803F}
         Material.FrontProperties.Emission.Color = {F0EF6F3F00000000000000000000803F}
         Radius = 10.000000000000000000
+        Slices = 64
+        Stacks = 64
       end
     end
     object WorldCube: TGLDummyCube
@@ -238,14 +246,16 @@ object FormBumpShader: TFormBumpShader
         Up.Coordinates = {00000000000000000000803F00000000}
         Visible = False
         Radius = 50.000000000000000000
+        Slices = 64
+        Stacks = 64
       end
     end
     object Camera: TGLCamera
       DepthOfView = 500.000000000000000000
       FocalLength = 65.000000000000000000
-      TargetObject = GLXYZGrid1
+      TargetObject = WorldCube
       CameraStyle = csInfinitePerspective
-      Position.Coordinates = {0000000000007A43000048430000803F}
+      Position.Coordinates = {0000000000007A430000FA430000803F}
       Direction.Coordinates = {00000000000080BF0000000000000000}
       Up.Coordinates = {00000000000000000000803F00000000}
     end

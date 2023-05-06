@@ -50,6 +50,7 @@ object FormTentacles: TFormTentacles
       end
       object Pipe1: TGLPipe
         Nodes = <>
+        SplineMode = lsmBezierSpline
         Radius = 1.000000000000000000
       end
       object Pipe2: TGLPipe

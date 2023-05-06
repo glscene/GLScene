@@ -55,7 +55,8 @@ implementation
 {$R *.DFM}
 
 uses
-  Unit2;
+  fScreenSaver2D;
+
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin

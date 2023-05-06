@@ -1,35 +1,33 @@
-object Form1: TForm1
+object FormSplines: TFormSplines
   Left = 198
   Top = 140
   BorderWidth = 5
   Caption = 'Splines'
-  ClientHeight = 481
-  ClientWidth = 629
+  ClientHeight = 436
+  ClientWidth = 587
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  PixelsPerInch = 120
-  TextHeight = 16
+  Position = poScreenCenter
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 629
-    Height = 481
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 587
+    Height = 436
     Camera = GLCamera1
     Buffer.BackgroundColor = clTeal
-    FieldOfView = 168.130828857421900000
+    FieldOfView = 166.915924072265600000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 533
+    ExplicitHeight = 402
   end
   object GLScene1: TGLScene
     Left = 16

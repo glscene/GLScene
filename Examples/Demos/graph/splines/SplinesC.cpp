@@ -11,14 +11,14 @@
 
 #include <vcl.h>
 #pragma hdrstop
-USEFORM("fSplinesC.cpp", Form1);
+USEFORM("fSplinesC.cpp", FormSplines);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
         try
         {
                  Application->Initialize();
-                 Application->CreateForm(__classid(TForm1), &Form1);
+                 Application->CreateForm(__classid(TFormSplines), &FormSplines);
 		Application->Run();
         }
         catch (Exception &exception)

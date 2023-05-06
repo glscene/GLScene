@@ -21,10 +21,10 @@
 #include "GLS.Texture.hpp"
 #include "GLS.SceneViewer.hpp"
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormHeightField : public TForm
 {
 __published:	// IDE-managed Components
-	TGLSceneViewer *GLSceneViewer1;
+	TGLSceneViewer *GLSceneViewer;
 	TPanel *Panel1;
 	TLabel *Label1;
 	TLabel *Label2;
@@ -51,9 +51,9 @@ __published:	// IDE-managed Components
 	void __fastcall ComboBox1Change(TObject *Sender);
 	void __fastcall CheckBox1Click(TObject *Sender);
 	void __fastcall TrackBar1Change(TObject *Sender);
-	void __fastcall GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+	void __fastcall GLSceneViewerMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
-	void __fastcall GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift, int X,
+	void __fastcall GLSceneViewerMouseMove(TObject *Sender, TShiftState Shift, int X,
           int Y);
 	void __fastcall TrackBar2Change(TObject *Sender);
 	void __fastcall TrackBar3Change(TObject *Sender);
@@ -72,9 +72,9 @@ private:	// User declarations
 	void __fastcall Formula3(const float x, const float y, float &z,
 		  TVector4f &color, TTexPoint &texPoint);
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormHeightField(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormHeightField *FormHeightField;
 //---------------------------------------------------------------------------
 #endif

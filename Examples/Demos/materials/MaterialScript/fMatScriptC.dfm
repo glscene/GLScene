@@ -10,9 +10,7 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 346
@@ -57,23 +55,23 @@ object Form1: TForm1
       ScrollBars = ssVertical
       TabOrder = 0
     end
-    object Button1: TButton
+    object ButtonLoadScript: TButton
       Left = 72
       Top = 232
       Width = 161
       Height = 25
-      Caption = 'Load a Script'
+      Caption = 'Load Script'
       TabOrder = 1
-      OnClick = Button1Click
+      OnClick = ButtonLoadScriptClick
     end
-    object Button2: TButton
+    object ButtonExecuteScript: TButton
       Left = 72
       Top = 264
       Width = 161
       Height = 25
       Caption = 'Execute Script'
       TabOrder = 2
-      OnClick = Button2Click
+      OnClick = ButtonExecuteScriptClick
     end
     object Memo2: TMemo
       Left = 8
@@ -687,5 +685,25 @@ object Form1: TForm1
     Scene = GLScene1
     Left = 248
     Top = 16
+  end
+  object GLSimpleNavigation1: TGLSimpleNavigation
+    Form = Owner
+    GLSceneViewer = GLSceneViewer1
+    FormCaption = 'Material Script - %FPS'
+    KeyCombinations = <
+      item
+        ShiftState = [ssLeft, ssRight]
+        Action = snaZoom
+      end
+      item
+        ShiftState = [ssLeft]
+        Action = snaMoveAroundTarget
+      end
+      item
+        ShiftState = [ssRight]
+        Action = snaMoveAroundTarget
+      end>
+    Left = 86
+    Top = 183
   end
 end

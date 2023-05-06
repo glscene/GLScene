@@ -216,3 +216,4 @@ void __fastcall TFormCloudsC::MakeAndSaveCloudNoiseFileClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+

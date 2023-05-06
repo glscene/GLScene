@@ -14,7 +14,7 @@
 #include "GLS.Coordinates.hpp"
 
 //---------------------------------------------------------------------------
-class TForm1:public TForm
+class TFormSplines:public TForm
 {
 __published:                   // IDE-managed Components
   TGLScene * GLScene1;
@@ -28,12 +28,12 @@ __published:                   // IDE-managed Components
                                           int X, int Y);
 private:                       // User declarations
 public:                        // User declarations
-    __fastcall TForm1(TComponent * Owner);
+    __fastcall TFormSplines(TComponent * Owner);
 
   void __fastcall MoveCenterNodeTo(int x, int y);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormSplines *FormSplines;
 //---------------------------------------------------------------------------
 #endif
 

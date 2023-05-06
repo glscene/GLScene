@@ -16,7 +16,7 @@
 #include "GLS.SceneViewer.hpp"
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormFormats : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
@@ -48,11 +48,12 @@ __published:	// IDE-managed Components
 	void __fastcall CBCompressionChange(TObject *Sender);
 	void __fastcall CBFormatChange(TObject *Sender);
 private:	// User declarations
+	TFileName PathToData;
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormFormats(TComponent* Owner);
     bool newSelection;
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormFormats *FormFormats;
 //---------------------------------------------------------------------------
 #endif

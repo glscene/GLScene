@@ -153,7 +153,7 @@
     <ItemGroup>
         <CppCompile Include="fSplinesC.cpp">
             <BuildOrder>2</BuildOrder>
-            <Form>Form1</Form>
+            <Form>FormSplines</Form>
             <DependentOn>fSplinesC.h</DependentOn>
             <BuildOrder>0</BuildOrder>
         </CppCompile>

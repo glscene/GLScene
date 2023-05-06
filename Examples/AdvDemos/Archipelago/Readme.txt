@@ -1,4 +1,5 @@
-Archipelago GLScene demo v2.2 (http://glscene.org)
+Archipelago demo v2.3 
+https://github.com/glscene/GLScene/tree/master/Examples/AdvDemos/Archipelago
 
 >>>>>> BEFORE starting the demo: <<<<<<
 

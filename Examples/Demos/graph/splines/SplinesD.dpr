@@ -12,12 +12,12 @@ program SplinesD;
 
 uses
   Forms,
-  fSplinesD in 'fSplinesD.pas' {Form1};
+  fSplinesD in 'fSplinesD.pas' {FormSplines};
 
 {$R *.RES}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormSplines, FormSplines);
   Application.Run;
 end.

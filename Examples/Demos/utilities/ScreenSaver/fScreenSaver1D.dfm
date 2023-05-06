@@ -2,35 +2,32 @@ object Form1: TForm1
   Left = 175
   Top = 114
   Caption = 'Screen Saver'
-  ClientHeight = 460
-  ClientWidth = 660
+  ClientHeight = 285
+  ClientWidth = 419
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   WindowState = wsMaximized
   OnCreate = FormCreate
   OnResize = FormResize
   OnShow = FormShow
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 660
-    Height = 460
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 419
+    Height = 285
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 155.470458984375000000
+    FieldOfView = 141.330383300781300000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 528
+    ExplicitHeight = 368
   end
   object GLScene1: TGLScene
     Left = 24

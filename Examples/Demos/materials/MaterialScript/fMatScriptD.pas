@@ -22,6 +22,7 @@ uses
   GLS.BaseClasses,
   GLS.Utils,
   GLS.SimpleNavigation;
+
 type
   TFormMatScript = class(TForm)
     Panel1: TPanel;
@@ -48,7 +49,7 @@ type
     procedure ButtonExecuteScriptClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
-    Path: TFileName;
+    PathToData: TFileName;
   public
   end;
 var
@@ -59,19 +60,20 @@ implementation
 {$R *.dfm}
 procedure TFormMatScript.FormCreate(Sender: TObject);
 begin
-   Path := GetCurrentAssetPath();
-   SetCurrentDir(Path);  // ..glscene\assets
-   GLMaterialLibrary1.TexturePaths := Path{ + '\texture'};
+   PathToData := GetCurrentAssetPath();
+   SetCurrentDir(PathToData);  // ..glscene\assets
+   GLMaterialLibrary1.TexturePaths := PathToData;
    GLMaterialScripter1.DebugMemo := Memo2;
    GLCube1.Material.MaterialLibrary := GLMaterialLibrary1;
 end;
 
 procedure TFormMatScript.ButtonLoadScriptClick(Sender: TObject);
 begin
-   OpenDialog1.InitialDir := Path + '\script';
+   OpenDialog1.InitialDir := PathToData  + '\script';
    if OpenDialog1.Execute then
       if FileExists(Opendialog1.FileName) then
       Memo1.Lines.LoadFromFile(Opendialog1.FileName);
+   SetCurrentDir(PathToData);
 end;
 
 procedure TFormMatScript.ButtonExecuteScriptClick(Sender: TObject);

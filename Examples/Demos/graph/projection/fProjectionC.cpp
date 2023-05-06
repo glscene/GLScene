@@ -19,14 +19,14 @@
 #pragma link "GLS.BaseClasses"
 
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormProjection *FormProjection;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormProjection::TFormProjection(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject* Sender)
+void __fastcall TFormProjection::FormCreate(TObject* Sender)
 {
     int i;
     // generate a bunch of random points
@@ -37,7 +37,7 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
 	}
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::DirectOpenGLRender(TObject *Sender, TGLRenderContextInfo &rci)
+void __fastcall TFormProjection::DirectOpenGLRender(TObject *Sender, TGLRenderContextInfo &rci)
 
 {
    int i;
@@ -74,13 +74,13 @@ void __fastcall TForm1::DirectOpenGLRender(TObject *Sender, TGLRenderContextInfo
    glEnd();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::SceneViewerMouseDown(TObject *Sender, TMouseButton Button,
+void __fastcall TFormProjection::SceneViewerMouseDown(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y)
 {
    mx = X; my = Y;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::SceneViewerMouseMove(TObject *Sender, TShiftState Shift, int X,
+void __fastcall TFormProjection::SceneViewerMouseMove(TObject *Sender, TShiftState Shift, int X,
           int Y)
 {
    if (Shift.Contains(ssLeft))
@@ -91,7 +91,7 @@ void __fastcall TForm1::SceneViewerMouseMove(TObject *Sender, TShiftState Shift,
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
+void __fastcall TFormProjection::FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
           TPoint &MousePos, bool &Handled)
 {
    GLPlane->Position->Y = GLPlane->Position->Y+WheelDelta*0.001;

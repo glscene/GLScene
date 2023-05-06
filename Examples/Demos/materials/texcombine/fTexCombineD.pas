@@ -61,7 +61,7 @@ type
     procedure CBTex0Click(Sender: TObject);
     procedure PAPrimaryClick(Sender: TObject);
   private
-
+    PathToData: TFileName;
   public
 
   end;
@@ -76,15 +76,15 @@ implementation
 procedure TFormTexCombine.FormCreate(Sender: TObject);
 begin
   // load the textures
-  var Path: TFileName := GetCurrentAssetPath();
-  SetCurrentDir(Path  + '\texture');
+  PathToData := GetCurrentAssetPath();
+  SetCurrentDir(PathToData  + '\texture');
   Image1.Picture.LoadFromFile('beigemarble.jpg');
   GLMaterialLibrary.Materials.Items[0].Material.Texture.Image.Assign(Image1.Picture);
   Image2.Picture.LoadFromFile('flare1.bmp');
   GLMaterialLibrary.Materials.Items[1].Material.Texture.Image.Assign(Image2.Picture);
   Image3.Picture.LoadFromFile('clover.jpg');
   GLMaterialLibrary.Materials.Items[2].Material.Texture.Image.Assign(Image3.Picture);
-    Image4.Picture.LoadFromFile('concrete.jpg');
+  Image4.Picture.LoadFromFile('concrete.jpg');
   GLMaterialLibrary.Materials.Items[3].Material.Texture.Image.Assign(Image4.Picture);
   BUApplyClick(Sender);
   Application.HintHidePause := 30000;
@@ -94,23 +94,21 @@ procedure TFormTexCombine.BUApplyClick(Sender: TObject);
 begin
   // Apply new combiner code
   // Depending on shader and hardware, errors may be triggered during render
-  GLTexCombineShader.Combiners.Clear;
+  GLTexCombineShader.Combiners.Clear();
   GLTexCombineShader.Combiners.AddStrings(MECombiner.Lines);
 end;
 
 procedure TFormTexCombine.SceneViewerPostRender(Sender: TObject);
-var
-  n: Integer;
 begin
   // disable whatever texture units are not supported by the local hardware
-  n := SceneViewer.Buffer.LimitOf[limNbTextureUnits];
+  var n: integer := SceneViewer.Buffer.LimitOf[limNbTextureUnits];
   PATex1.Visible := (n < 2);
   CBTex1.Enabled := (n >= 2);
   PATex2.Visible := (n < 3);
   CBTex2.Enabled := (n >= 3);
   PATex3.Visible := (n < 4);
   CBTex3.Enabled := (n >= 4);
-  CBTex1.Checked := CBTex1.Checked and CBTex1.Enabled;
+  CBTex1.Checked := (CBTex1.Checked and CBTex1.Enabled);
 end;
 
 procedure TFormTexCombine.CBTex0Click(Sender: TObject);
@@ -128,11 +126,11 @@ procedure TFormTexCombine.PAPrimaryClick(Sender: TObject);
 begin
   // Allow choosing the primary color
   ColorDialog.Color := PAPrimary.Color;
-  if ColorDialog.Execute then
+  if (ColorDialog.Execute()) then
   begin
     PAPrimary.Color := ColorDialog.Color;
     GLMaterialLibrary.Materials[0].Material.FrontProperties.Diffuse.AsWinColor := ColorDialog.Color;
-    SceneViewer.Invalidate;
+    SceneViewer.Invalidate();
   end;
 end;
 

@@ -15,14 +15,14 @@
 #pragma link "GLS.Coordinates"
 
 #pragma resource "*.dfm"
-TFormPlot* FormPlot;
+TFormFxy* FormFxy;
 
 //---------------------------------------------------------------------------
 
-__fastcall TFormPlot::TFormPlot(TComponent* Owner) : TForm(Owner) {}
+__fastcall TFormFxy::TFormFxy(TComponent* Owner) : TForm(Owner) {}
 
 //---------------------------------------------------------------------------
-void __fastcall TFormPlot::Formula0(const float x, const float y, float &z,
+void __fastcall TFormFxy::Formula0(const float x, const float y, float &z,
 	TVector4f &color, TTexPoint &texPoint)
 {
 	// 0ro formula
@@ -32,7 +32,7 @@ void __fastcall TFormPlot::Formula0(const float x, const float y, float &z,
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TFormPlot::Formula1(const float x, const float y, float &z,
+void __fastcall TFormFxy::Formula1(const float x, const float y, float &z,
 	TVector4f &color, TTexPoint &texPoint)
 {
 	// 1st formula
@@ -42,7 +42,7 @@ void __fastcall TFormPlot::Formula1(const float x, const float y, float &z,
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TFormPlot::Formula2(const float x, const float y, float &z,
+void __fastcall TFormFxy::Formula2(const float x, const float y, float &z,
 	TVector4f &color, TTexPoint &texPoint)
 {
 	// 2nd formula
@@ -52,7 +52,7 @@ void __fastcall TFormPlot::Formula2(const float x, const float y, float &z,
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TFormPlot::Formula3(const float x, const float y, float &z,
+void __fastcall TFormFxy::Formula3(const float x, const float y, float &z,
 	TVector4f &color, TTexPoint &texPoint)
 {
 	// 3rd formula
@@ -63,14 +63,14 @@ void __fastcall TFormPlot::Formula3(const float x, const float y, float &z,
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFormPlot::FormCreate(TObject* Sender)
+void __fastcall TFormFxy::FormCreate(TObject* Sender)
 {
 	rgFormulaClick(Sender);
 }
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFormPlot::chbCenterClick(TObject* Sender)
+void __fastcall TFormFxy::chbCenterClick(TObject* Sender)
 {
 	if (chbCenter->Checked) {
 		XZGrid->YSamplingScale->Origin = 0;
@@ -85,26 +85,26 @@ void __fastcall TFormPlot::chbCenterClick(TObject* Sender)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFormPlot::TrackBarYChange(TObject* Sender)
+void __fastcall TFormFxy::TrackBarYChange(TObject* Sender)
 {
 	XYGrid->ZSamplingScale->Origin = -((float)TrackBarY->Position / 10);
 }
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFormPlot::TrackBarXChange(TObject* Sender)
+void __fastcall TFormFxy::TrackBarXChange(TObject* Sender)
 {
 	XZGrid->YSamplingScale->Origin = -((float)TrackBarX->Position / 10);
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TFormPlot::TrackBarZChange(TObject* Sender)
+void __fastcall TFormFxy::TrackBarZChange(TObject* Sender)
 {
 	YZGrid->XSamplingScale->Origin = -((float)TrackBarZ->Position / 10);
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TFormPlot::ViewerMouseDown(
+void __fastcall TFormFxy::ViewerMouseDown(
 	TObject* Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
 {
 	mx = X;
@@ -112,7 +112,7 @@ void __fastcall TFormPlot::ViewerMouseDown(
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TFormPlot::ViewerMouseMove(
+void __fastcall TFormFxy::ViewerMouseMove(
 	TObject* Sender, TShiftState Shift, int X, int Y)
 {
 	if (Shift.Contains(ssLeft))
@@ -124,7 +124,7 @@ void __fastcall TFormPlot::ViewerMouseMove(
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TFormPlot::FormMouseWheel(TObject* Sender, TShiftState Shift,
+void __fastcall TFormFxy::FormMouseWheel(TObject* Sender, TShiftState Shift,
 	int WheelDelta, TPoint &MousePos, bool &Handled)
 {
 	Camera->AdjustDistanceToTarget(Power(1.1, (WheelDelta / 120.0)));
@@ -132,7 +132,7 @@ void __fastcall TFormPlot::FormMouseWheel(TObject* Sender, TShiftState Shift,
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFormPlot::rgFormulaClick(TObject *Sender)
+void __fastcall TFormFxy::rgFormulaClick(TObject *Sender)
 {
 	switch (rgFormula->ItemIndex) {
 		case 0:
@@ -153,7 +153,7 @@ void __fastcall TFormPlot::rgFormulaClick(TObject *Sender)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFormPlot::rgPolygonModeClick(TObject* Sender)
+void __fastcall TFormFxy::rgPolygonModeClick(TObject* Sender)
 {
 	switch (rgPolygonMode->ItemIndex) {
 		case 0:

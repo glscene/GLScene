@@ -10,6 +10,7 @@ object FormClouds: TFormClouds
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
@@ -186,7 +187,7 @@ object FormClouds: TFormClouds
       OnClick = CBFormatChange
     end
     object RBDouble: TRadioButton
-      Left = 79
+      Left = 82
       Top = 286
       Width = 58
       Height = 17

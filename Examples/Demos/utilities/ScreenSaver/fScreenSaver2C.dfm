@@ -3,30 +3,25 @@ object Form2: TForm2
   Top = 0
   BorderStyle = bsNone
   Caption = 'Form2'
-  ClientHeight = 414
-  ClientWidth = 630
+  ClientHeight = 331
+  ClientWidth = 504
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 17
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 630
-    Height = 414
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 504
+    Height = 331
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 152.841094970703100000
+    FieldOfView = 146.379318237304700000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -34,14 +29,10 @@ object Form2: TForm2
     TabOrder = 0
   end
   object Button1: TButton
-    Left = 370
-    Top = 340
-    Width = 94
-    Height = 31
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 296
+    Top = 272
+    Width = 75
+    Height = 25
     Cancel = True
     Caption = 'Ok'
     Default = True
@@ -51,14 +42,10 @@ object Form2: TForm2
     TabOrder = 1
   end
   object Button2: TButton
-    Left = 160
-    Top = 348
-    Width = 121
-    Height = 23
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 128
+    Top = 278
+    Width = 97
+    Height = 19
     Caption = 'Define Password'
     ParentShowHint = False
     ShowHint = False

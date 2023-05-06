@@ -1,4 +1,4 @@
-object Form1: TForm1
+object FormProjection: TFormProjection
   Left = 0
   Top = 0
   Caption = 'Projection'

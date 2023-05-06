@@ -22,7 +22,8 @@ uses
   GLS.SceneViewer,
 
   GLS.Coordinates,
-  GLS.BaseClasses, GLS.AsyncTimer;
+  GLS.BaseClasses,
+  GLS.AsyncTimer;
 
 type
   TFormFxy = class(TForm)

@@ -18,6 +18,7 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 
+#pragma link "GLS.SimpleNavigation"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -28,25 +29,28 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-   TFileName Path = GetCurrentAssetPath();
-   GLMaterialScripter1->DebugMemo = Memo2;;
+   PathToData = GetCurrentAssetPath(); // not use ExtractFilePath(Application->ExeName)
+   SetCurrentDir(PathToData);     // ..glscene\assets
+   GLMaterialLibrary1->TexturePaths = PathToData;
+   GLMaterialScripter1->DebugMemo = Memo2;
    GLCube1->Material->MaterialLibrary = GLMaterialLibrary1;
-   SetCurrentDir(ExtractFilePath(Application->ExeName));
+
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button1Click(TObject *Sender)
+void __fastcall TForm1::ButtonLoadScriptClick(TObject *Sender)
 {
-   OpenDialog1->InitialDir = ExtractFilePath(Application->ExeName);
+   OpenDialog1->InitialDir = PathToData  + "\\script";
    if (OpenDialog1->Execute())
    {
 	  if (FileExists(OpenDialog1->FileName))
 	  Memo1->Lines->LoadFromFile(OpenDialog1->FileName);
    }
+   SetCurrentDir(PathToData);
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button2Click(TObject *Sender)
+void __fastcall TForm1::ButtonExecuteScriptClick(TObject *Sender)
 {
    GLMaterialLibrary1->Materials->Clear();
    GLCube1->Material->MaterialLibrary = GLMaterialLibrary1;

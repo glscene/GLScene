@@ -20,7 +20,6 @@ uses
   Vcl.ToolWin,
   Vcl.Menus,
 
-
   GR32_Image,
   GR32,
 
@@ -56,14 +55,13 @@ type
     procedure ACOpenExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure PaintBoxResize(Sender: TObject);
-    procedure PaintBoxMouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure PaintBoxMouseMove(Sender: TObject; Shift: TShiftState;
+    procedure PaintBoxMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
       X, Y: Integer);
+    procedure PaintBoxMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure TBGridClick(Sender: TObject);
     procedure ACNavMapExecute(Sender: TObject);
-    procedure PaintBoxMouseUp(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
+    procedure PaintBoxMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer);
     procedure ACNavMapUpdate(Sender: TObject);
     procedure ACPaletteExecute(Sender: TObject);
   private
@@ -77,11 +75,11 @@ type
 
 var
   ViewerForm: TViewerForm;
-
-var
   heightColor: array [Low(SmallInt) .. High(SmallInt)] of TColor32;
 
+//----------------------------------------------------------------
 implementation
+//----------------------------------------------------------------
 
 {$R *.dfm}
 
@@ -156,7 +154,7 @@ begin
   end;
 end;
 
-//----------------------------------------------------------------
+// ----------------------------------------------------------------
 
 procedure TViewerForm.FormCreate(Sender: TObject);
 var
@@ -195,16 +193,22 @@ begin
   end;
 end;
 
+// ----------------------------------------------------------------
+
 procedure TViewerForm.FormDestroy(Sender: TObject);
 begin
   htf.Free;
   bmpTile.Free;
 end;
 
+// ----------------------------------------------------------------
+
 procedure TViewerForm.ACExitExecute(Sender: TObject);
 begin
   Close;
 end;
+
+// ----------------------------------------------------------------
 
 procedure TViewerForm.ACOpenExecute(Sender: TObject);
 var
@@ -223,6 +227,8 @@ begin
     PaintBox.Invalidate;
   end;
 end;
+
+// ----------------------------------------------------------------
 
 procedure TViewerForm.PrepareBitmap;
 var
@@ -252,13 +258,9 @@ begin
     for i := 0 to tileList.Count - 1 do
     begin
       tileInfo := PGLHeightTileInfo(tileList[i]);
-
       QueryPerformanceCounter(start);
-
       tile := htf.GetTile(tileInfo.left, tileInfo.top);
-
       QueryPerformanceCounter(lap);
-
       bmpTile.Width := tileInfo.Width;
       bmpTile.Height := tileInfo.Height;
       for ty := 0 to tileInfo.Height - 1 do
@@ -269,9 +271,7 @@ begin
           scanLine[tx] := heightColor[dataRow[tx]];
       end;
       bmp.Draw(tileInfo.left - curX, tileInfo.top - curY, bmpTile);
-
       QueryPerformanceCounter(stop);
-
       htfTime := htfTime + lap - start;
       drawTime := drawTime + stop - lap;
     end;
@@ -281,8 +281,8 @@ begin
       for i := 0 to tileList.Count - 1 do
         with PGLHeightTileInfo(tileList[i])^ do
         begin
-          bmp.FrameRectS(left - curX, top - curY, left + Width - curX + 1,
-            top + Height - curY + 1, clWhite32);
+          bmp.FrameRectS(left - curX, top - curY, left + Width - curX + 1, top + Height - curY + 1,
+            clWhite32);
         end;
     end;
   finally
@@ -300,22 +300,25 @@ begin
     PrepareBitmap;
 end;
 
-procedure TViewerForm.PaintBoxMouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TViewerForm.PaintBoxMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   mx := X;
   my := Y;
   Screen.Cursor := crSizeAll;
 end;
 
-procedure TViewerForm.PaintBoxMouseUp(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+//----------------------------------------------------------------
+
+procedure TViewerForm.PaintBoxMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   Screen.Cursor := crDefault;
 end;
 
-procedure TViewerForm.PaintBoxMouseMove(Sender: TObject; Shift: TShiftState;
-  X, Y: Integer);
+//----------------------------------------------------------------
+
+procedure TViewerForm.PaintBoxMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
 var
   tileIdx, n: Integer;
   tileInfo: PGLHeightTileInfo;
@@ -357,11 +360,15 @@ begin
   end;
 end;
 
+//----------------------------------------------------------------
+
 procedure TViewerForm.TBGridClick(Sender: TObject);
 begin
   PrepareBitmap;
   PaintBox.Invalidate;
 end;
+
+//----------------------------------------------------------------
 
 procedure TViewerForm.ACNavMapExecute(Sender: TObject);
 begin
@@ -374,10 +381,14 @@ begin
   end;
 end;
 
+//----------------------------------------------------------------
+
 procedure TViewerForm.ACNavMapUpdate(Sender: TObject);
 begin
   ACNavMap.Enabled := Assigned(htf);
 end;
+
+//----------------------------------------------------------------
 
 procedure TViewerForm.ACPaletteExecute(Sender: TObject);
 begin

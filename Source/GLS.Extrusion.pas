@@ -70,7 +70,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
-    {Number of triangles used for rendering. }
+    // Number of triangles used for rendering.
     property TriangleCount: Integer read FTriangleCount;
     function AxisAlignedDimensionsUnscaled: TGLVector; override;
     procedure StructureChanged; override;
@@ -795,7 +795,7 @@ begin
   FNodes := TGLPipeNodes.Create(Self);
 end;
 
- 
+
 destructor TGLPipe.Destroy;
 begin
   inherited Destroy;

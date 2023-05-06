@@ -10,11 +10,11 @@
   10/04/2007 -LIN- Added support for DTED DEM files.
                    Added Flip/Rotate. (Use Rotate 270 for DTED files.)
 }
-program TerrainPackD;
+program HTFPackD;
 
 uses
   Forms,
-  fTerrainPackD in 'fTerrainPackD.pas' {MainForm},
+  fHTFpackD in 'fHTFpackD.pas' {MainForm},
   fNavD in 'fNavD.pas' {NavForm},
   fViewerD in 'fViewerD.pas' {ViewerForm};
 

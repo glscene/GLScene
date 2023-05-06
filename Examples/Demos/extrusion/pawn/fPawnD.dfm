@@ -3,30 +3,25 @@ object FormPawn: TFormPawn
   Top = 89
   BorderWidth = 3
   Caption = 'Pawn'
-  ClientHeight = 474
-  ClientWidth = 638
+  ClientHeight = 379
+  ClientWidth = 510
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 476
-    Height = 474
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 381
+    Height = 379
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 156.173950195312500000
+    FieldOfView = 150.438476562500000000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -34,86 +29,58 @@ object FormPawn: TFormPawn
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 476
+    Left = 381
     Top = 0
-    Width = 162
-    Height = 474
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 129
+    Height = 379
     Align = alRight
     TabOrder = 1
     object Label1: TLabel
-      Left = 29
-      Top = 10
-      Width = 75
-      Height = 24
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 23
+      Top = 8
+      Width = 59
+      Height = 18
       Caption = 'Options'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -20
+      Font.Height = -16
       Font.Name = 'Arial'
       Font.Style = [fsBold, fsItalic]
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 48
-      Top = 186
-      Width = 37
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 38
+      Top = 149
+      Width = 28
+      Height = 13
       Caption = 'Slices'
     end
     object Label4: TLabel
-      Left = 50
-      Top = 256
-      Width = 55
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 40
+      Top = 205
+      Width = 42
+      Height = 13
       Caption = 'Divisions'
     end
     object Label2: TLabel
-      Left = 55
-      Top = 309
-      Width = 28
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 44
+      Top = 247
+      Width = 22
+      Height = 13
       Caption = 'Stop'
     end
     object LabelTri: TLabel
-      Left = 20
-      Top = 390
-      Width = 57
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 312
+      Width = 43
+      Height = 13
       Caption = 'Triangles'
     end
     object CheckBox1: TCheckBox
-      Left = 11
-      Top = 61
-      Width = 142
-      Height = 22
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 9
+      Top = 49
+      Width = 113
+      Height = 17
       Caption = 'Spline interpolation'
       Checked = True
       State = cbChecked
@@ -121,14 +88,10 @@ object FormPawn: TFormPawn
       OnClick = CheckBox1Click
     end
     object CheckBox2: TCheckBox
-      Left = 11
-      Top = 90
-      Width = 142
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 9
+      Top = 72
+      Width = 113
+      Height = 17
       Caption = 'Normals smoothing'
       Checked = True
       State = cbChecked
@@ -136,14 +99,10 @@ object FormPawn: TFormPawn
       OnClick = CheckBox2Click
     end
     object CheckBox3: TCheckBox
-      Left = 11
-      Top = 121
-      Width = 142
-      Height = 22
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 9
+      Top = 97
+      Width = 113
+      Height = 17
       Caption = 'Texture map'
       Checked = True
       State = cbChecked
@@ -151,14 +110,10 @@ object FormPawn: TFormPawn
       OnClick = CheckBox3Click
     end
     object CheckBox4: TCheckBox
-      Left = 11
-      Top = 150
-      Width = 142
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 9
+      Top = 120
+      Width = 113
+      Height = 17
       Caption = 'Modulate texture'
       Checked = True
       State = cbChecked
@@ -166,54 +121,42 @@ object FormPawn: TFormPawn
       OnClick = CheckBox4Click
     end
     object TrackBar2: TTrackBar
-      Left = 11
-      Top = 210
-      Width = 142
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 9
+      Top = 168
+      Width = 113
+      Height = 17
       Max = 64
       Min = 4
       Frequency = 16
       Position = 24
       TabOrder = 4
-      ThumbLength = 13
+      ThumbLength = 10
       OnChange = TrackBar2Change
     end
     object TrackBar3: TTrackBar
-      Left = 11
-      Top = 280
-      Width = 142
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 9
+      Top = 224
+      Width = 113
+      Height = 17
       Max = 30
       Min = 1
       Frequency = 10
       Position = 10
       TabOrder = 5
-      ThumbLength = 13
+      ThumbLength = 10
       OnChange = TrackBar3Change
     end
     object TrackBar1: TTrackBar
-      Left = 11
-      Top = 333
-      Width = 142
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 9
+      Top = 266
+      Width = 113
+      Height = 17
       Max = 360
       Min = 30
       Frequency = 45
       Position = 360
       TabOrder = 6
-      ThumbLength = 13
+      ThumbLength = 10
       OnChange = TrackBar1Change
     end
   end

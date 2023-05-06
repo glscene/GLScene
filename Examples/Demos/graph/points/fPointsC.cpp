@@ -14,18 +14,18 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormPoints *FormPoints;
 
 const int
    cNbPoints = 200;
 
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormPoints::TFormPoints(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
+void __fastcall TFormPoints::FormCreate(TObject *Sender)
 {
    // allocate points in the 1st point set
    GLPoints1->Positions->Count = cNbPoints;
@@ -38,7 +38,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
+void __fastcall TFormPoints::GLCadencer1Progress(TObject *Sender, const double deltaTime,
           const double newTime)
 {
    int i;
@@ -70,14 +70,14 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
+void __fastcall TFormPoints::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y)
 {
  mx = X; my = Y;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
+void __fastcall TFormPoints::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
           int X, int Y)
 {
   if (Shift.Contains(ssLeft) || Shift.Contains(ssRight))
@@ -89,24 +89,24 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::CBAnimateClick(TObject *Sender)
+void __fastcall TFormPoints::CBAnimateClick(TObject *Sender)
 {
    GLPoints1->Static = !CBAnimate->Checked;
    GLPoints2->Static = !CBAnimate->Checked;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::CBPointParamsClick(TObject *Sender)
+void __fastcall TFormPoints::CBPointParamsClick(TObject *Sender)
 {
    GLPoints1->PointParameters->Enabled = CBPointParams->Checked;
    GLPoints2->PointParameters->Enabled = CBPointParams->Checked;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Timer1Timer(TObject *Sender)
+void __fastcall TFormPoints::Timer1Timer(TObject *Sender)
 {
-   LabelFPS->Caption = Format("%.1f FPS",
-     ARRAYOFCONST ((GLSceneViewer1->FramesPerSecond())));
+   LabelFPS->Caption = //Format("%.1f FPS", ARRAYOFCONST ((
+	  GLSceneViewer1->FramesPerSecond(); //)))
    GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------

@@ -20,7 +20,7 @@ uses
   GLS.VectorGeometry;
 
 type
-  TForm1 = class(TForm)
+  TFormSplines = class(TForm)
     GLScene1: TGLScene;
     GLSceneViewer1: TGLSceneViewer;
     GLCamera1: TGLCamera;
@@ -35,24 +35,24 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FormSplines: TFormSplines;
 
 implementation
 
 {$R *.DFM}
 
-procedure TForm1.MoveCenterNodeTo(x, y : Integer);
+procedure TFormSplines.MoveCenterNodeTo(x, y : Integer);
 begin
    Lines1.Nodes[1].AsAffineVector:=GLSceneViewer1.Buffer.ScreenToWorld(x, y);
 end;
 
-procedure TForm1.GLSceneViewer1MouseDown(Sender: TObject;
+procedure TFormSplines.GLSceneViewer1MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
    MoveCenterNodeTo(x, y);
 end;
 
-procedure TForm1.GLSceneViewer1MouseMove(Sender: TObject;
+procedure TFormSplines.GLSceneViewer1MouseMove(Sender: TObject;
   Shift: TShiftState; X, Y: Integer);
 begin
    if Shift<>[] then

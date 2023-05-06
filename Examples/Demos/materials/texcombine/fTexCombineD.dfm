@@ -3,207 +3,151 @@ object FormTexCombine: TFormTexCombine
   Top = 103
   BorderStyle = bsDialog
   Caption = 'Texure Combine'
-  ClientHeight = 528
-  ClientWidth = 726
+  ClientHeight = 422
+  ClientWidth = 581
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object Image1: TImage
-    Left = 10
-    Top = 100
-    Width = 160
-    Height = 160
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 8
+    Top = 80
+    Width = 128
+    Height = 128
     Stretch = True
   end
   object Image2: TImage
-    Left = 190
-    Top = 100
-    Width = 160
-    Height = 160
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 152
+    Top = 80
+    Width = 128
+    Height = 128
     Stretch = True
   end
   object Image3: TImage
-    Left = 370
-    Top = 100
-    Width = 160
-    Height = 160
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 296
+    Top = 80
+    Width = 128
+    Height = 128
     Stretch = True
   end
   object Label1: TLabel
-    Left = 330
-    Top = 28
-    Width = 87
-    Height = 24
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 264
+    Top = 22
+    Width = 68
+    Height = 19
     Caption = 'Textures'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -21
+    Font.Height = -17
     Font.Name = 'Arial'
     Font.Style = [fsBold]
     ParentFont = False
   end
   object Image4: TImage
-    Left = 550
-    Top = 100
-    Width = 160
-    Height = 160
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 440
+    Top = 80
+    Width = 128
+    Height = 128
     Stretch = True
   end
   object Label3: TLabel
-    Left = 10
-    Top = 270
-    Width = 38
-    Height = 16
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 8
+    Top = 216
+    Width = 30
+    Height = 13
     Caption = 'Result'
   end
   object Label4: TLabel
-    Left = 250
-    Top = 270
-    Width = 147
-    Height = 16
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 200
+    Top = 216
+    Width = 115
+    Height = 13
     Caption = 'Texture Combiners code'
   end
   object Label2: TLabel
-    Left = 10
-    Top = 50
-    Width = 87
-    Height = 16
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 8
+    Top = 40
+    Width = 67
+    Height = 13
     Caption = 'Primary Color :'
   end
   object SceneViewer: TGLSceneViewer
-    Left = 10
-    Top = 290
-    Width = 225
-    Height = 225
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 8
+    Top = 234
+    Width = 180
+    Height = 180
     Camera = GLCamera
     PostRender = SceneViewerPostRender
     Buffer.BackgroundColor = clGray
     Buffer.Lighting = False
-    FieldOfView = 132.075027465820300000
+    FieldOfView = 121.890792846679700000
     PenAsTouch = False
     TabOrder = 0
   end
   object BUApply: TButton
-    Left = 250
-    Top = 484
-    Width = 94
-    Height = 31
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 200
+    Top = 387
+    Width = 75
+    Height = 25
     Caption = 'Apply'
     TabOrder = 1
     OnClick = BUApplyClick
   end
   object PATex1: TPanel
-    Left = 220
-    Top = 155
-    Width = 101
-    Height = 51
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 176
+    Top = 124
+    Width = 81
+    Height = 41
     BevelOuter = bvLowered
     Caption = 'Unavailable'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 8421440
-    Font.Height = -15
+    Font.Height = -12
     Font.Name = 'Arial'
     Font.Style = [fsBold, fsItalic]
     ParentFont = False
     TabOrder = 2
   end
   object PATex2: TPanel
-    Left = 400
-    Top = 155
-    Width = 101
-    Height = 51
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 320
+    Top = 124
+    Width = 81
+    Height = 41
     BevelOuter = bvLowered
     Caption = 'Unavailable'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 8421440
-    Font.Height = -15
+    Font.Height = -12
     Font.Name = 'Arial'
     Font.Style = [fsBold, fsItalic]
     ParentFont = False
     TabOrder = 3
   end
   object PATex3: TPanel
-    Left = 580
-    Top = 155
-    Width = 101
-    Height = 51
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 464
+    Top = 124
+    Width = 81
+    Height = 41
     BevelOuter = bvLowered
     Caption = 'Unavailable'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 8421440
-    Font.Height = -15
+    Font.Height = -12
     Font.Name = 'Arial'
     Font.Style = [fsBold, fsItalic]
     ParentFont = False
     TabOrder = 4
   end
   object CBTex0: TCheckBox
-    Left = 10
-    Top = 80
-    Width = 71
-    Height = 20
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 8
+    Top = 64
+    Width = 57
+    Height = 16
     Caption = 'Tex0'
     Checked = True
     State = cbChecked
@@ -211,14 +155,10 @@ object FormTexCombine: TFormTexCombine
     OnClick = CBTex0Click
   end
   object CBTex1: TCheckBox
-    Left = 190
-    Top = 80
-    Width = 91
-    Height = 20
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 152
+    Top = 64
+    Width = 73
+    Height = 16
     Caption = 'Tex1'
     Checked = True
     State = cbChecked
@@ -226,40 +166,28 @@ object FormTexCombine: TFormTexCombine
     OnClick = CBTex0Click
   end
   object CBTex2: TCheckBox
-    Left = 370
-    Top = 80
-    Width = 71
-    Height = 20
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 296
+    Top = 64
+    Width = 57
+    Height = 16
     Caption = 'Tex2'
     TabOrder = 7
     OnClick = CBTex0Click
   end
   object CBTex3: TCheckBox
-    Left = 550
-    Top = 80
-    Width = 71
-    Height = 20
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 440
+    Top = 64
+    Width = 57
+    Height = 16
     Caption = 'Tex3'
     TabOrder = 8
     OnClick = CBTex0Click
   end
   object Panel1: TPanel
-    Left = 250
-    Top = 290
-    Width = 461
-    Height = 181
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 200
+    Top = 232
+    Width = 369
+    Height = 145
     BevelOuter = bvLowered
     BorderWidth = 1
     Caption = 'Panel1'
@@ -267,8 +195,8 @@ object FormTexCombine: TFormTexCombine
     object MECombiner: TMemo
       Left = 2
       Top = 2
-      Width = 457
-      Height = 177
+      Width = 365
+      Height = 141
       Hint = 
         'Syntax Examples:'#13#10#13#10'   Tex1:=Tex0;   // replace texture 1 with t' +
         'exture 0'#13#10'   Tex1:=Tex0+Tex1; // additive blending between textu' +
@@ -279,15 +207,11 @@ object FormTexCombine: TFormTexCombine
         'imaryColor); // interpolation between textures 0 and 1 using pri' +
         'mary color as factor'#13#10'   Tex1:=Dot3(Tex0, Tex1); // dot3 product' +
         ' between textures 0 and 1'
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
       Align = alClient
       BorderStyle = bsNone
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -14
+      Font.Height = -11
       Font.Name = 'Courier New'
       Font.Style = []
       Lines.Strings = (
@@ -301,22 +225,19 @@ object FormTexCombine: TFormTexCombine
     end
   end
   object PAPrimary: TPanel
-    Left = 101
-    Top = 48
-    Width = 30
-    Height = 21
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
-    Color = 13421772
+    Left = 81
+    Top = 38
+    Width = 24
+    Height = 17
+    Ctl3D = True
+    ParentCtl3D = False
     TabOrder = 10
     OnClick = PAPrimaryClick
     OnDblClick = PAPrimaryClick
   end
   object GLScene: TGLScene
-    Left = 64
-    Top = 272
+    Left = 128
+    Top = 12
     object GLDummyCube: TGLDummyCube
       CubeSize = 1.000000000000000000
     end
@@ -359,16 +280,16 @@ object FormTexCombine: TFormTexCombine
         Name = 'Tex3'
         Tag = 0
       end>
-    Left = 32
-    Top = 272
+    Left = 80
+    Top = 124
   end
   object GLTexCombineShader: TGLTexCombineShader
     DesignTimeEnabled = False
     MaterialLibrary = GLMaterialLibrary
     LibMaterial3Name = 'Tex2'
     LibMaterial4Name = 'Tex3'
-    Left = 96
-    Top = 272
+    Left = 336
+    Top = 252
   end
   object ColorDialog: TColorDialog
     Options = [cdFullOpen, cdSolidColor, cdAnyColor]

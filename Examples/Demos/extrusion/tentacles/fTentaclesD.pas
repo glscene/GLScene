@@ -72,20 +72,17 @@ begin
     if (DCBase.Children[k] is TGLPipe) then
     begin
       pipe := TGLPipe(DCBase.Children[k]);
-      with pipe do
-      begin
-        Nodes.Clear;
-        for i := 1 to cNbNodes do
-          Nodes.AddNode(0, i / 8, 0);
-        Radius := 0.1;
-        // enable per-node coloring in the TGLPipe
-        NodesColorMode := pncmDiffuse;
-        // divisions between nodes (for spline interpolation)
-        Division := 3;
-        // No geometry compilation/cacheing, render directly
-        // (geometry changes completely from frame to frame)
-        ObjectStyle := ObjectStyle + [osDirectDraw];
-      end;
+      pipe.Nodes.Clear;
+      for i := 1 to cNbNodes do
+        pipe.Nodes.AddNode(0, i / 8, 0);
+      pipe.Radius := 0.1;
+      // enable per-node coloring in the TGLPipe
+      pipe.NodesColorMode := pncmDiffuse;
+      // divisions between nodes (for spline interpolation)
+      pipe.Division := 3;
+      // No geometry compilation/cacheing, render directly
+      // (geometry changes completely from frame to frame)
+      pipe.ObjectStyle := pipe.ObjectStyle + [osDirectDraw];
     end;
 end;
 

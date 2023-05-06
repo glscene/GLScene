@@ -19,7 +19,7 @@
 
 
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormProjection : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *SceneViewer;
@@ -43,9 +43,9 @@ __published:	// IDE-managed Components
 private:	// User declarations
     int mx, my;
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormProjection(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormProjection *FormProjection;
 //---------------------------------------------------------------------------
 #endif

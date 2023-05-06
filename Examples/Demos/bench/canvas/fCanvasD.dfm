@@ -11,6 +11,7 @@ object FormCanvas: TFormCanvas
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   TextHeight = 13
   object PaintBox: TPaintBox
     Left = 272
