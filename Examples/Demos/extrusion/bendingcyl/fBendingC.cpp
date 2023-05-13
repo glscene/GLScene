@@ -3,6 +3,7 @@
 #include <vcl.h>
 #include <tchar.h>
 #include <math.h>
+#include <string.h>
 
 #pragma hdrstop
 
@@ -18,17 +19,17 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormBending *FormBending;
 
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormBending::TFormBending(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
 
 
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
+void __fastcall TFormBending::GLCadencer1Progress(TObject *Sender, const double deltaTime,
 		  const double newTime)
 {
    Pipe1->Nodes->Items[2]->X = 1*sin(newTime*5); //used 5 instead of  M_PI/180 or cPIdiv180
@@ -46,7 +47,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::CBSplineClick(TObject *Sender)
+void __fastcall TFormBending::CBSplineClick(TObject *Sender)
 {
    if (CBSpline->Checked)
 	  Pipe1->SplineMode = lsmCubicSpline;
@@ -54,13 +55,13 @@ void __fastcall TForm1::CBSplineClick(TObject *Sender)
 	  Pipe1->SplineMode = lsmLines;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
+void __fastcall TFormBending::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y)
 {
  my = X; my = Y;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
+void __fastcall TFormBending::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
 		  int X, int Y)
 {
   if (Shift.Contains(ssLeft))
@@ -69,11 +70,15 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
 }
 //---------------------------------------------------------------------------
 
-
-void __fastcall TForm1::Timer1Timer(TObject *Sender)
+void __fastcall TFormBending::Timer1Timer(TObject *Sender)
 {
+/*
   PanelFPS->Caption = Format("%d Triangles, %.1f FPS",
 	 ARRAYOFCONST((Pipe1->TriangleCount, GLSceneViewer1->FramesPerSecond())));
+*/
+  String s1 = Pipe1->TriangleCount;
+  String s2 = GLSceneViewer1->FramesPerSecond();
+  PanelFPS->Caption = s1 + " " + s2;
   GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------

@@ -4,7 +4,7 @@
 #include <tchar.h>
 #pragma hdrstop
 
-#include "fMainC.h"
+#include "fVolcanoC.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GLS.BaseClasses"
@@ -17,19 +17,19 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormVolcano *FormVolcano;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormVolcano::TFormVolcano(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
+void __fastcall TFormVolcano::FormCreate(TObject *Sender)
 {
    RadioGroup1Click(Sender);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::RadioGroup1Click(TObject *Sender)
+void __fastcall TFormVolcano::RadioGroup1Click(TObject *Sender)
 {
    TGLSourcePFXEffect *source;
 
@@ -47,17 +47,20 @@ void __fastcall TForm1::RadioGroup1Click(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
+void __fastcall TFormVolcano::GLCadencer1Progress(TObject *Sender, const double deltaTime,
           const double newTime)
 {
    GLSceneViewer1->Invalidate();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Timer1Timer(TObject *Sender)
+void __fastcall TFormVolcano::Timer1Timer(TObject *Sender)
 {
+/*
    Panel1->Caption = Format("%.1f FPS - %3d Particles - Depth Sort: %.2f msec",
    ARRAYOFCONST((GLSceneViewer1->FramesPerSecond(), PFXVolcano->Particles->ItemCount()+PFXBlue->Particles->ItemCount(),
 					 PFXRenderer->LastSortTime)));
+*/
+   Panel1->Caption = GLSceneViewer1->FramesPerSecond();
    GLSceneViewer1->ResetPerformanceMonitor();
 
 }

@@ -58,32 +58,29 @@ type
       newTime: Double);
     procedure Timer1Timer(Sender: TObject);
   private
-     
   public
-     
     mousex, mousey: integer;
   end;
 
 var
   FormOctreedemo: TFormOctreedemo;
 
+//---------------------------------------------------------------------
 implementation
+//---------------------------------------------------------------------
 
 {$R *.dfm}
 
 procedure TFormOctreedemo.FormCreate(Sender: TObject);
-var
-   t : Int64;
 begin
    // Load high poly mesh (10,000 triangles).
    var Path: TFileName := GetCurrentAssetPath();
    SetCurrentDir(Path  + '\model');
    FreeForm1.LoadFromFile('HighPolyObject.3ds');
 
-   t:=StartPrecisionTimer;
+   var t: Int64 := StartPrecisionTimer;
 
    FreeForm1.BuildOctree;
-
    LABuild.Caption:=Format('Build time: %.3f ms', [StopPrecisionTimer(t)*1000]);
 
    with FreeForm1.Octree do begin
@@ -95,6 +92,8 @@ begin
    mousex:= -1;
    mousey:= -1;
 end;
+
+//---------------------------------------------------------------------
 
 procedure TFormOctreedemo.GLSceneViewer2MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
@@ -126,12 +125,16 @@ begin
    Label5.Hint:=Format('Intersect Time: %.3f ms', [StopPrecisionTimer(t)*1000]);
 end;
 
+//---------------------------------------------------------------------
+
 procedure TFormOctreedemo.GLSceneViewer2MouseMove(Sender: TObject;
   Shift: TShiftState; X, Y: Integer);
 begin
    mousex:=x;
    mousey:=y;
 end;
+
+//---------------------------------------------------------------------
 
 procedure TFormOctreedemo.GLCadencer1Progress(Sender: TObject; const deltaTime,
   newTime: Double);
@@ -141,6 +144,8 @@ begin
 
    FreeForm1.RollAngle:=5*newTime; // 45° per second
 end;
+
+//---------------------------------------------------------------------
 
 procedure TFormOctreedemo.Timer1Timer(Sender: TObject);
 begin

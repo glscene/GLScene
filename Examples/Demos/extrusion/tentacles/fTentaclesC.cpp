@@ -6,7 +6,7 @@
 
 #pragma hdrstop
 
-#include "fTentacleC.h"
+#include "fTentaclesC.h"
 // ---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GLS.BaseClasses"
@@ -18,14 +18,14 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
-TForm1* Form1;
+TFormTentacles* FormTentacles;
 
 // ---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {}
+__fastcall TFormTentacles::TFormTentacles(TComponent* Owner) : TForm(Owner) {}
 // ---------------------------------------------------------------------------
 const int cNbNodes = 32;
 
-void __fastcall TForm1::FormCreate(TObject* Sender)
+void __fastcall TFormTentacles::FormCreate(TObject* Sender)
 {
 	int i, k;
     TGLPipe* pipe;
@@ -50,7 +50,7 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
 }
 
 // ---------------------------------------------------------------------------
-void __fastcall TForm1::GLCadencer1Progress(
+void __fastcall TFormTentacles::GLCadencer1Progress(
     TObject* Sender, const double deltaTime, const double newTime)
 {
     int i, k;
@@ -77,15 +77,17 @@ void __fastcall TForm1::GLCadencer1Progress(
             }
             pipe->Nodes->EndUpdate();
         }
-    Sphere1->Radius = 1.4 + Sin(2 * t) * 0.1;
+	Sphere1->Radius = 1.4 + Sin(2 * t) * 0.1;
 }
 
 // ---------------------------------------------------------------------------
-void __fastcall TForm1::Timer1Timer(TObject* Sender)
+void __fastcall TFormTentacles::Timer1Timer(TObject* Sender)
 {
-    // standard FPS counter
-    PanelFPS->Caption =
-        Format("%.1f FPS", ARRAYOFCONST((GLSceneViewer1->FramesPerSecond())));
+/*
+	PanelFPS->Caption =
+		Format("%.1f FPS", ARRAYOFCONST((GLSceneViewer1->FramesPerSecond())));
+*/
+	PanelFPS->Caption = GLSceneViewer1->FramesPerSecond();
     GLSceneViewer1->ResetPerformanceMonitor();
 }
 // ---------------------------------------------------------------------------

@@ -38,8 +38,6 @@ var
   IsDesignTime: Boolean = False;
   vProjectTargetName: TProjectTargetNameFunc;
 
-// Sets a current dir to asset
-procedure SetCurrentDirToAsset();
 // Get a current path to asset
 function GetCurrentAssetPath(): TFileName;
 
@@ -639,29 +637,17 @@ begin
   end;
 end;
 
-procedure SetCurrentDirToAsset();
-var
-  path: TFileName;
-  p: Integer;
-begin
-  path := LowerCase(ExtractFilePath(ParamStr(0)));
-  p := Pos('glscene', path);
-  Delete(path, p + 7, Length(path));
-  path := IncludeTrailingPathDelimiter(path) + 'assets';
-  SetCurrentDir(path);
-end;
-
 function GetCurrentAssetPath(): TFileName;
 var
-  path: TFileName;
-  p: Integer;
+  Path: TFileName;
+  N: Integer;
 begin
-  path := LowerCase(ExtractFilePath(ParamStr(0)));
-  p := Pos('glscene', path);
-  Delete(path, p + 7, Length(path));
-  path := IncludeTrailingPathDelimiter(path) + 'assets';
-  SetCurrentDir(path);
-  Result := path;
+  Path := LowerCase(ExtractFilePath(ParamStr(0)));
+  N := Pos('examples', Path); // if 'glscene' dirname then N + 7
+  Delete(Path, N, Length(path));
+  Path := IncludeTrailingPathDelimiter(Path) + 'assets';
+  SetCurrentDir(Path);
+  Result := Path;
 end;
 
 procedure RaiseLastOSError;

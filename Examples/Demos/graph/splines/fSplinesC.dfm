@@ -51,6 +51,7 @@ object FormSplines: TFormSplines
         end>
       NodesAspect = lnaCube
       NodeSize = 0.500000000000000000
+      SplineMode = lsmBezierSpline
       Options = [loUseNodeColorForLines]
     end
     object GLCamera1: TGLCamera

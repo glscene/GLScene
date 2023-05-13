@@ -36,11 +36,8 @@ type
     procedure tvGraphClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
   private
-
   public
-
   end;
 
 var
@@ -54,8 +51,6 @@ procedure TFormGraphD.FormCreate(Sender: TObject);
 begin
   // Fxy
   FormFxy := TFormFxy.Create(tsFxy);
-  FormFxy.Top := 10;
-  FormFxy.Left := 10;
   FormFxy.Parent := tsFxy;
   FormFxy.Align := alClient;
   FormFxy.BorderStyle := bsNone;
@@ -63,8 +58,6 @@ begin
 
   // HeightField
   FormHeightField := TFormHeightField.Create(tsHeightField);
-  FormHeightField.Top := 10;
-  FormHeightField.Left := 10;
   FormHeightField.Parent := tsHeightField;
   FormHeightField.Align := alClient;
   FormHeightField.BorderStyle := bsNone;
@@ -72,8 +65,6 @@ begin
 
   // Points
   FormPoints := TFormPoints.Create(tsPoints);
-  FormPoints.Top := 10;
-  FormPoints.Left := 10;
   FormPoints.Parent := tsPoints;
   FormPoints.Align := alClient;
   FormPoints.BorderStyle := bsNone;
@@ -81,8 +72,6 @@ begin
 
    // Projection
   FormProjection := TFormProjection.Create(tsProjection);
-  FormProjection.Top := 10;
-  FormProjection.Left := 10;
   FormProjection.Parent := tsProjection;
   FormProjection.Align := alClient;
   FormProjection.BorderStyle := bsNone;
@@ -90,13 +79,10 @@ begin
 
   // Splines
   FormSplines := TFormSplines.Create(tsSplines);
-  FormSplines.Top := 10;
-  FormSplines.Left := 10;
   FormSplines.Parent := tsSplines;
   FormSplines.Align := alClient;
   FormSplines.BorderStyle := bsNone;
   FormSplines.Show;
-
 end;
 
 procedure TFormGraphD.FormShow(Sender: TObject);
@@ -120,15 +106,5 @@ begin
       PageControl.ActivePage := tsSplines;
   end;
 end;
-
-procedure TFormGraphD.FormDestroy(Sender: TObject);
-begin
-  FormFxy.Free;
-  FormHeightField.Free;
-  FormPoints.Free;
-  FormProjection.Free;
-  FormSplines.Free;
-end;
-
 
 end.

@@ -15,20 +15,21 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormPawn *FormPawn;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormPawn::TFormPawn(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
+void __fastcall TFormPawn::FormCreate(TObject *Sender)
 {
-  TFileName Path = GetCurrentAssetPath();
+  TFileName PathToData = GetCurrentAssetPath();
+  SetCurrentDir(PathToData + "\\texture");
   RotationSolid1->Material->Texture->Image->LoadFromFile("ashwood.jpg");
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::CheckBox1Click(TObject *Sender)
+void __fastcall TFormPawn::CheckBox1Click(TObject *Sender)
 {
    if (CheckBox1->Checked)
 	  RotationSolid1->SplineMode = lsmCubicSpline;
@@ -36,7 +37,7 @@ void __fastcall TForm1::CheckBox1Click(TObject *Sender)
       RotationSolid1->SplineMode = lsmLines;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::CheckBox2Click(TObject *Sender)
+void __fastcall TFormPawn::CheckBox2Click(TObject *Sender)
 {
   if (CheckBox2->Checked)
 	  RotationSolid1->Normals = nsSmooth;
@@ -44,13 +45,13 @@ void __fastcall TForm1::CheckBox2Click(TObject *Sender)
 	  RotationSolid1->Normals = nsFlat;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::CheckBox3Click(TObject *Sender)
+void __fastcall TFormPawn::CheckBox3Click(TObject *Sender)
 {
    RotationSolid1->Material->Texture->Disabled = !CheckBox3->Checked;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::CheckBox4Click(TObject *Sender)
+void __fastcall TFormPawn::CheckBox4Click(TObject *Sender)
 {
   if (CheckBox4->Checked)
 	RotationSolid1->Material->Texture->TextureMode = tmModulate;
@@ -58,7 +59,7 @@ void __fastcall TForm1::CheckBox4Click(TObject *Sender)
     RotationSolid1->Material->Texture->TextureMode = tmDecal;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::TrackBar1Change(TObject *Sender)
+void __fastcall TFormPawn::TrackBar1Change(TObject *Sender)
 {
    RotationSolid1->StopAngle = TrackBar1->Position;
    if (TrackBar1->Position==360)
@@ -69,32 +70,32 @@ void __fastcall TForm1::TrackBar1Change(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::TrackBar2Change(TObject *Sender)
+void __fastcall TFormPawn::TrackBar2Change(TObject *Sender)
 {
   RotationSolid1->Slices = TrackBar2->Position;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::TrackBar3Change(TObject *Sender)
+void __fastcall TFormPawn::TrackBar3Change(TObject *Sender)
 {
    RotationSolid1->Division = TrackBar3->Position;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Timer1Timer(TObject *Sender)
+void __fastcall TFormPawn::Timer1Timer(TObject *Sender)
 {
   LabelTri->Caption = Format("%d Triangles", ARRAYOFCONST((RotationSolid1->TriangleCount)));
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
+void __fastcall TFormPawn::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y)
 {
    mx = X; my = Y;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
+void __fastcall TFormPawn::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
           int X, int Y)
 {
    if (Shift.Contains(ssLeft))

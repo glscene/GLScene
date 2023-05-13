@@ -139,7 +139,7 @@
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="fPawnC.cpp">
-            <Form>Form1</Form>
+            <Form>FormPawn</Form>
             <FormType>dfm</FormType>
             <DependentOn>fPawnC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

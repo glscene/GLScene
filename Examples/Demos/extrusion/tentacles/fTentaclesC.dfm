@@ -1,4 +1,4 @@
-object Form1: TForm1
+object FormTentacles: TFormTentacles
   Left = 0
   Top = 0
   Caption = 'Tentacles'
@@ -24,8 +24,6 @@ object Form1: TForm1
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 663
-    ExplicitHeight = 446
   end
   object PanelFPS: TPanel
     Left = 208

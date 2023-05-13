@@ -138,16 +138,16 @@
         <Defines>NDEBUG;$(Defines)</Defines>
     </PropertyGroup>
     <ItemGroup>
-        <CppCompile Include="fTentacleC.cpp">
-            <Form>Form1</Form>
+        <CppCompile Include="fTentaclesC.cpp">
+            <Form>FormTentacles</Form>
             <FormType>dfm</FormType>
-            <DependentOn>fTentacleC.h</DependentOn>
+            <DependentOn>fTentaclesC.h</DependentOn>
             <BuildOrder>2</BuildOrder>
         </CppCompile>
         <CppCompile Include="TentacleC.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
-        <FormResources Include="fTentacleC.dfm"/>
+        <FormResources Include="fTentaclesC.dfm"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -1,38 +1,53 @@
 //---------------------------------------------------------------------------
 
-#ifndef fMainCH
-#define fMainCH
+#ifndef fTentaclesCH
+#define fTentaclesCH
 //---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
-#include "GLS.BaseClasses.hpp"
-#include "GLS.Cadencer.hpp"
-#include "GLS.Coordinates.hpp"
+#include <Vcl.ExtCtrls.hpp>
 
-#include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
-#include "GLS.SimpleNavigation.hpp"
+#include "GLS.Objects.hpp"
+#include "GLS.Extrusion.hpp"
+#include "GLS.Cadencer.hpp"
+#include "GLS.VectorGeometry.hpp"
+#include "GLS.Texture.hpp"
 #include "GLS.SceneViewer.hpp"
+#include "GLS.Color.hpp"
+
+#include "GLS.Coordinates.hpp"
+#include "GLS.BaseClasses.hpp"
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormTentacles : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
+	TPanel *PanelFPS;
 	TGLScene *GLScene1;
-	TGLDummyCube *DummyCube1;
+	TGLDummyCube *DCBase;
+	TGLSphere *Sphere1;
+	TGLPipe *Pipe1;
+	TGLPipe *Pipe2;
+	TGLPipe *Pipe3;
+	TGLPipe *Pipe4;
+	TGLPipe *Pipe5;
 	TGLLightSource *GLLightSource1;
+	TGLDummyCube *DCTarget;
 	TGLCamera *GLCamera1;
 	TGLCadencer *GLCadencer1;
-	TGLSimpleNavigation *GLSimpleNavigation1;
+	TTimer *Timer1;
+	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall GLCadencer1Progress(TObject *Sender, const double deltaTime, const double newTime);
+	void __fastcall Timer1Timer(TObject *Sender);
 
 private:	// User declarations
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormTentacles(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormTentacles *FormTentacles;
 //---------------------------------------------------------------------------
 #endif

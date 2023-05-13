@@ -4,7 +4,7 @@
 #include <tchar.h>
 #pragma hdrstop
 
-#include "fMainC.h"
+#include "fSmokingC.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GLS.BaseClasses"
@@ -17,26 +17,28 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormSmoking *FormSmoking;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormSmoking::TFormSmoking(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLCadencerProgress(TObject *Sender, const double deltaTime,
+void __fastcall TFormSmoking::GLCadencerProgress(TObject *Sender, const double deltaTime,
           const double newTime)
 {
   SmokePFX->Rotation = newTime;
   GLSceneViewer->Invalidate();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::TimerTimer(TObject *Sender)
+void __fastcall TFormSmoking::TimerTimer(TObject *Sender)
 {
-   Panel1->Caption =
-	Format("%.1f FPS",
+   /*
+   Panel1->Caption = Format("%.1f FPS",
 	ARRAYOFCONST((GLSceneViewer->FramesPerSecond(), SmokePFX->ParticleCount()+FlamePFX->ParticleCount(),
 					 ParticleFXRenderer->LastSortTime)));
+   */
+   Panel1->Caption = GLSceneViewer->FramesPerSecond();
    GLSceneViewer->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------

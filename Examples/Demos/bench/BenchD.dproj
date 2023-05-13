@@ -46,7 +46,6 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_E>false</DCC_E>
         <DCC_N>false</DCC_N>
         <DCC_S>false</DCC_S>
@@ -103,7 +102,31 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="fBenchD.pas">
-            <Form>FormBenchD</Form>
+            <Form>frmBench</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="canvas\fCanvasD.pas">
+            <Form>FormCanvas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="megacube\fMegaCubeD.pas">
+            <Form>FormMegacube</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="megaglasscube\fMegaglassD.pas">
+            <Form>FormMegaglasscube</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="smoking\fSmokingD.pas">
+            <Form>FormSmoking</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="volcano\fVolcanoD.pas">
+            <Form>FormVolcano</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="whirlwind\fWhirlD.pas">
+            <Form>FormWhirl</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

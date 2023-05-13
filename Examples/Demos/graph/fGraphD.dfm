@@ -13,7 +13,6 @@ object FormGraphD: TFormGraphD
   Menu = MainMenu
   Position = poScreenCenter
   OnCreate = FormCreate
-  OnDestroy = FormDestroy
   OnShow = FormShow
   TextHeight = 15
   object PanelLeft: TPanel
@@ -51,7 +50,6 @@ object FormGraphD: TFormGraphD
     ActivePage = tsProjection
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 608
     object tsFxy: TTabSheet
       Caption = 'Fxy'
       TabVisible = False

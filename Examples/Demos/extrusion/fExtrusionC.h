@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 
-#ifndef fGraphCH
-#define fGraphCH
+#ifndef fExtrusionCH
+#define fExtrusionCH
 //---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include <Vcl.Controls.hpp>
@@ -11,35 +11,33 @@
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Menus.hpp>
 
-#include "fGraphC.h"
-#include "fFxyC.h"
-#include "fHeightFieldC.h"
-#include "fPointsC.h"
-#include "fProjectionC.h"
-#include "fSplinesC.h"
-
+#include "fBendingC.h"
+#include "fCutoutStarC.h"
+#include "fNutsnBoltsC.h"
+#include "fPawnC.h"
+#include "fTentaclesC.h"
 
 //---------------------------------------------------------------------------
-class TFormGraph : public TForm
+class TfrmExtrusionC : public TForm
 {
 __published:	// IDE-managed Components
 	TPanel *PanelLeft;
-	TTreeView *tvGraph;
+	TTreeView *tvExtrusion;
 	TPageControl *PageControl;
-	TTabSheet *tsFxy;
-	TTabSheet *tsHeightField;
-	TTabSheet *tsPoints;
-	TTabSheet *tsProjection;
-	TTabSheet *tsSplines;
+	TTabSheet *tsBending;
+	TTabSheet *tsCutoutStar;
+	TTabSheet *tsNutsnBolts;
+	TTabSheet *tsPawn;
+	TTabSheet *tsTentacles;
 	TMainMenu *MainMenu;
 	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall tvExtrusionClick(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
-	void __fastcall tvGraphClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
-	__fastcall TFormGraph(TComponent* Owner);
+	__fastcall TfrmExtrusionC(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TFormGraph *FormGraph;
+extern PACKAGE TfrmExtrusionC *frmExtrusionC;
 //---------------------------------------------------------------------------
 #endif

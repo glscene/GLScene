@@ -24,7 +24,7 @@ uses
   GLS.BaseClasses;
 
 type
-  TForm1 = class(TForm)
+  TFormSmoking = class(TForm)
     GLSceneViewer: TGLSceneViewer;
     GLScene: TGLScene;
     GLCamera: TGLCamera;
@@ -46,20 +46,20 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FormSmoking: TFormSmoking;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm1.GLCadencerProgress(Sender: TObject; const deltaTime,
+procedure TFormSmoking.GLCadencerProgress(Sender: TObject; const deltaTime,
   newTime: Double);
 begin
    SmokePFX.Rotation:=newTime;
    GLSceneViewer.Invalidate;
 end;
 
-procedure TForm1.TimerTimer(Sender: TObject);
+procedure TFormSmoking.TimerTimer(Sender: TObject);
 begin
    Panel1.Caption := GLSceneViewer.FramesPerSecondText
             +Format(' - %d Particles - %.3f ms Sort',

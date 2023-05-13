@@ -1,4 +1,4 @@
-object Form1: TForm1
+object FormMegacube: TFormMegacube
   Left = 0
   Top = 0
   Caption = 'Mega Cube'

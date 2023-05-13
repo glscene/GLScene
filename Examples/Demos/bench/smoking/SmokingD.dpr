@@ -10,12 +10,12 @@ program SmokingD;
 
 uses
   Forms,
-  fSmokingD in 'fSmokingD.pas' {Form1};
+  fSmokingD in 'fSmokingD.pas' {FormSmoking};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormSmoking, FormSmoking);
   Application.Run;
 end.

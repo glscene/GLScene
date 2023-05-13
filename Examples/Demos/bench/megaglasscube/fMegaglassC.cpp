@@ -4,7 +4,7 @@
 #include <tchar.h>
 #pragma hdrstop
 
-#include "fMainC.h"
+#include "fMegaglassC.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GLS.BaseClasses"
@@ -16,13 +16,13 @@
 #pragma link "GLS.SimpleNavigation"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormMegaglasscube *FormMegaglasscube;
 
 const int
   cSize = 10;
 
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormMegaglasscube::TFormMegaglasscube(TComponent* Owner)
 	: TForm(Owner)
 {
   int x, y, z;
@@ -49,7 +49,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
+void __fastcall TFormMegaglasscube::GLCadencer1Progress(TObject *Sender, const double deltaTime,
 		  const double newTime)
 {
   DummyCube1->TurnAngle = 90 * newTime; // 90° per second

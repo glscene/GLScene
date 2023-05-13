@@ -142,7 +142,7 @@
             <BuildOrder>0</BuildOrder>
         </CppCompile>
         <CppCompile Include="fCutoutstarC.cpp">
-            <Form>Form1</Form>
+            <Form>FormCutoutstar</Form>
             <FormType>dfm</FormType>
             <DependentOn>fCutoutstarC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

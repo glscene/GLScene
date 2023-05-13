@@ -124,7 +124,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="fSmokingD.pas">
-            <Form>Form1</Form>
+            <Form>FormSmoking</Form>
         </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

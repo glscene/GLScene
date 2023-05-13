@@ -3,37 +3,37 @@
         <ProjectGuid>{E0C70AF5-D1F7-41A0-A60F-F71B530ED67A}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
+        <Projects Include="GraphD.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="GraphC.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="fxy\FxyC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="points\PointsC.cbproj">
+        <Projects Include="fxy\FxyD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="heightfield\HeightfieldC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="projection\ProjectionC.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="splines\SplinesC.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="GraphD.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="fxy\FxyD.dproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="heightfield\HeightFieldD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="points\PointsC.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="points\PointsD.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="projection\ProjectionC.cbproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="projection\ProjectionD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="splines\SplinesC.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="splines\SplinesD.dproj">
@@ -47,6 +47,15 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
+    <Target Name="GraphD">
+        <MSBuild Projects="GraphD.dproj"/>
+    </Target>
+    <Target Name="GraphD:Clean">
+        <MSBuild Projects="GraphD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GraphD:Make">
+        <MSBuild Projects="GraphD.dproj" Targets="Make"/>
+    </Target>
     <Target Name="GraphC">
         <MSBuild Projects="GraphC.cbproj"/>
     </Target>
@@ -65,14 +74,14 @@
     <Target Name="FxyC:Make">
         <MSBuild Projects="fxy\FxyC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="PointsC">
-        <MSBuild Projects="points\PointsC.cbproj"/>
+    <Target Name="FxyD">
+        <MSBuild Projects="fxy\FxyD.dproj"/>
     </Target>
-    <Target Name="PointsC:Clean">
-        <MSBuild Projects="points\PointsC.cbproj" Targets="Clean"/>
+    <Target Name="FxyD:Clean">
+        <MSBuild Projects="fxy\FxyD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="PointsC:Make">
-        <MSBuild Projects="points\PointsC.cbproj" Targets="Make"/>
+    <Target Name="FxyD:Make">
+        <MSBuild Projects="fxy\FxyD.dproj" Targets="Make"/>
     </Target>
     <Target Name="HeightfieldC">
         <MSBuild Projects="heightfield\HeightfieldC.cbproj"/>
@@ -83,42 +92,6 @@
     <Target Name="HeightfieldC:Make">
         <MSBuild Projects="heightfield\HeightfieldC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="ProjectionC">
-        <MSBuild Projects="projection\ProjectionC.cbproj"/>
-    </Target>
-    <Target Name="ProjectionC:Clean">
-        <MSBuild Projects="projection\ProjectionC.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="ProjectionC:Make">
-        <MSBuild Projects="projection\ProjectionC.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="SplinesC">
-        <MSBuild Projects="splines\SplinesC.cbproj"/>
-    </Target>
-    <Target Name="SplinesC:Clean">
-        <MSBuild Projects="splines\SplinesC.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="SplinesC:Make">
-        <MSBuild Projects="splines\SplinesC.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="GraphD">
-        <MSBuild Projects="GraphD.dproj"/>
-    </Target>
-    <Target Name="GraphD:Clean">
-        <MSBuild Projects="GraphD.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="GraphD:Make">
-        <MSBuild Projects="GraphD.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="FxyD">
-        <MSBuild Projects="fxy\FxyD.dproj"/>
-    </Target>
-    <Target Name="FxyD:Clean">
-        <MSBuild Projects="fxy\FxyD.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="FxyD:Make">
-        <MSBuild Projects="fxy\FxyD.dproj" Targets="Make"/>
-    </Target>
     <Target Name="HeightFieldD">
         <MSBuild Projects="heightfield\HeightFieldD.dproj"/>
     </Target>
@@ -127,6 +100,15 @@
     </Target>
     <Target Name="HeightFieldD:Make">
         <MSBuild Projects="heightfield\HeightFieldD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PointsC">
+        <MSBuild Projects="points\PointsC.cbproj"/>
+    </Target>
+    <Target Name="PointsC:Clean">
+        <MSBuild Projects="points\PointsC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PointsC:Make">
+        <MSBuild Projects="points\PointsC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="PointsD">
         <MSBuild Projects="points\PointsD.dproj"/>
@@ -137,6 +119,15 @@
     <Target Name="PointsD:Make">
         <MSBuild Projects="points\PointsD.dproj" Targets="Make"/>
     </Target>
+    <Target Name="ProjectionC">
+        <MSBuild Projects="projection\ProjectionC.cbproj"/>
+    </Target>
+    <Target Name="ProjectionC:Clean">
+        <MSBuild Projects="projection\ProjectionC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProjectionC:Make">
+        <MSBuild Projects="projection\ProjectionC.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="ProjectionD">
         <MSBuild Projects="projection\ProjectionD.dproj"/>
     </Target>
@@ -145,6 +136,15 @@
     </Target>
     <Target Name="ProjectionD:Make">
         <MSBuild Projects="projection\ProjectionD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SplinesC">
+        <MSBuild Projects="splines\SplinesC.cbproj"/>
+    </Target>
+    <Target Name="SplinesC:Clean">
+        <MSBuild Projects="splines\SplinesC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SplinesC:Make">
+        <MSBuild Projects="splines\SplinesC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="SplinesD">
         <MSBuild Projects="splines\SplinesD.dproj"/>
@@ -156,13 +156,13 @@
         <MSBuild Projects="splines\SplinesD.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="GraphC;FxyC;PointsC;HeightfieldC;ProjectionC;SplinesC;GraphD;FxyD;HeightFieldD;PointsD;ProjectionD;SplinesD"/>
+        <CallTarget Targets="GraphD;GraphC;FxyC;FxyD;HeightfieldC;HeightFieldD;PointsC;PointsD;ProjectionC;ProjectionD;SplinesC;SplinesD"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="GraphC:Clean;FxyC:Clean;PointsC:Clean;HeightfieldC:Clean;ProjectionC:Clean;SplinesC:Clean;GraphD:Clean;FxyD:Clean;HeightFieldD:Clean;PointsD:Clean;ProjectionD:Clean;SplinesD:Clean"/>
+        <CallTarget Targets="GraphD:Clean;GraphC:Clean;FxyC:Clean;FxyD:Clean;HeightfieldC:Clean;HeightFieldD:Clean;PointsC:Clean;PointsD:Clean;ProjectionC:Clean;ProjectionD:Clean;SplinesC:Clean;SplinesD:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="GraphC:Make;FxyC:Make;PointsC:Make;HeightfieldC:Make;ProjectionC:Make;SplinesC:Make;GraphD:Make;FxyD:Make;HeightFieldD:Make;PointsD:Make;ProjectionD:Make;SplinesD:Make"/>
+        <CallTarget Targets="GraphD:Make;GraphC:Make;FxyC:Make;FxyD:Make;HeightfieldC:Make;HeightFieldD:Make;PointsC:Make;PointsD:Make;ProjectionC:Make;ProjectionD:Make;SplinesC:Make;SplinesD:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

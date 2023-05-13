@@ -3,6 +3,12 @@
         <ProjectGuid>{D71908F6-3D2B-4A41-9B43-C56E0586929C}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
+        <Projects Include="ExtrusionD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ExtrusionC.cbproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="bendingcyl\BendingD.dproj">
             <Dependencies/>
         </Projects>
@@ -18,7 +24,7 @@
         <Projects Include="nutsnbolts\NutsnBoltsD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="nutsnbolts\NutsnboltC.cbproj">
+        <Projects Include="nutsnbolts\NutsnBoltsC.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="pawn\PawnD.dproj">
@@ -41,6 +47,24 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
+    <Target Name="ExtrusionD">
+        <MSBuild Projects="ExtrusionD.dproj"/>
+    </Target>
+    <Target Name="ExtrusionD:Clean">
+        <MSBuild Projects="ExtrusionD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ExtrusionD:Make">
+        <MSBuild Projects="ExtrusionD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ExtrusionC">
+        <MSBuild Projects="ExtrusionC.cbproj"/>
+    </Target>
+    <Target Name="ExtrusionC:Clean">
+        <MSBuild Projects="ExtrusionC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ExtrusionC:Make">
+        <MSBuild Projects="ExtrusionC.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="BendingD">
         <MSBuild Projects="bendingcyl\BendingD.dproj"/>
     </Target>
@@ -86,14 +110,14 @@
     <Target Name="NutsnBoltsD:Make">
         <MSBuild Projects="nutsnbolts\NutsnBoltsD.dproj" Targets="Make"/>
     </Target>
-    <Target Name="NutsnboltC">
-        <MSBuild Projects="nutsnbolts\NutsnboltC.cbproj"/>
+    <Target Name="NutsnBoltsC">
+        <MSBuild Projects="nutsnbolts\NutsnBoltsC.cbproj"/>
     </Target>
-    <Target Name="NutsnboltC:Clean">
-        <MSBuild Projects="nutsnbolts\NutsnboltC.cbproj" Targets="Clean"/>
+    <Target Name="NutsnBoltsC:Clean">
+        <MSBuild Projects="nutsnbolts\NutsnBoltsC.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="NutsnboltC:Make">
-        <MSBuild Projects="nutsnbolts\NutsnboltC.cbproj" Targets="Make"/>
+    <Target Name="NutsnBoltsC:Make">
+        <MSBuild Projects="nutsnbolts\NutsnBoltsC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="PawnD">
         <MSBuild Projects="pawn\PawnD.dproj"/>
@@ -132,13 +156,13 @@
         <MSBuild Projects="tentacles\TentacleC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="BendingD;BendingC;CutoutStarD;CutoutstarC;NutsnBoltsD;NutsnboltC;PawnD;PawnC;TentaclesD;TentacleC"/>
+        <CallTarget Targets="ExtrusionD;ExtrusionC;BendingD;BendingC;CutoutStarD;CutoutstarC;NutsnBoltsD;NutsnBoltsC;PawnD;PawnC;TentaclesD;TentacleC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="BendingD:Clean;BendingC:Clean;CutoutStarD:Clean;CutoutstarC:Clean;NutsnBoltsD:Clean;NutsnboltC:Clean;PawnD:Clean;PawnC:Clean;TentaclesD:Clean;TentacleC:Clean"/>
+        <CallTarget Targets="ExtrusionD:Clean;ExtrusionC:Clean;BendingD:Clean;BendingC:Clean;CutoutStarD:Clean;CutoutstarC:Clean;NutsnBoltsD:Clean;NutsnBoltsC:Clean;PawnD:Clean;PawnC:Clean;TentaclesD:Clean;TentacleC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="BendingD:Make;BendingC:Make;CutoutStarD:Make;CutoutstarC:Make;NutsnBoltsD:Make;NutsnboltC:Make;PawnD:Make;PawnC:Make;TentaclesD:Make;TentacleC:Make"/>
+        <CallTarget Targets="ExtrusionD:Make;ExtrusionC:Make;BendingD:Make;BendingC:Make;CutoutStarD:Make;CutoutstarC:Make;NutsnBoltsD:Make;NutsnBoltsC:Make;PawnD:Make;PawnC:Make;TentaclesD:Make;TentacleC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

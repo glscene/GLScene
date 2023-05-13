@@ -1,4 +1,4 @@
-object Form1: TForm1
+object FormCanvas: TFormCanvas
   Left = 0
   Top = 0
   Caption = 'Canvas'

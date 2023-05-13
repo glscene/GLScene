@@ -4,7 +4,7 @@
 #pragma hdrstop
 #include <tchar.h>
 //---------------------------------------------------------------------------
-USEFORM("fWhirlC.cpp", FormWhirlC);
+USEFORM("fWhirlC.cpp", FormWhirl);
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
@@ -12,7 +12,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 	{
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
-		Application->CreateForm(__classid(TFormWhirlC), &FormWhirlC);
+		Application->CreateForm(__classid(TFormWhirl), &FormWhirl);
 		Application->Run();
 	}
 	catch (Exception &exception)

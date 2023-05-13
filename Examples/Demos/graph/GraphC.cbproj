@@ -125,7 +125,7 @@
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="fGraphC.cpp">
-            <Form>FormGraphC</Form>
+            <Form>FormGraph</Form>
             <FormType>dfm</FormType>
             <DependentOn>fGraphC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

@@ -1,10 +1,10 @@
 object FormCanvas: TFormCanvas
   Left = 151
   Top = 105
-  BorderStyle = bsDialog
+  BorderStyle = bsSizeToolWin
   Caption = 'GLCanvas vs GDI'
-  ClientHeight = 329
-  ClientWidth = 537
+  ClientHeight = 338
+  ClientWidth = 543
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

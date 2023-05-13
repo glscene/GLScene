@@ -21,15 +21,15 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
-TFormWhirlC *FormWhirlC;
+TFormWhirl *FormWhirl;
 //---------------------------------------------------------------------------
-__fastcall TFormWhirlC::TFormWhirlC(TComponent* Owner)
+__fastcall TFormWhirl::TFormWhirl(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TFormWhirlC::GLParticles1ActivateParticle(TObject *Sender, TGLBaseSceneObject *particle)
+void __fastcall TFormWhirl::GLParticles1ActivateParticle(TObject *Sender, TGLBaseSceneObject *particle)
 
 {
 	float r, alpha, cr, sr;
@@ -43,14 +43,14 @@ void __fastcall TFormWhirlC::GLParticles1ActivateParticle(TObject *Sender, TGLBa
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TFormWhirlC::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
+void __fastcall TFormWhirl::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y)
 {
   mx = X; my = Y;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TFormWhirlC::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
+void __fastcall TFormWhirl::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
 		  int X, int Y)
 {
   if (Shift.Contains(ssLeft))
@@ -61,7 +61,7 @@ void __fastcall TFormWhirlC::GLSceneViewer1MouseMove(TObject *Sender, TShiftStat
 //---------------------------------------------------------------------------
 
 
-void __fastcall TFormWhirlC::GLDummyCube1Progress(TObject *Sender, const double deltaTime,
+void __fastcall TFormWhirl::GLDummyCube1Progress(TObject *Sender, const double deltaTime,
           const double newTime)
 {
   if (newTime-(GLParticles1->TagFloat)>3)
@@ -70,17 +70,20 @@ void __fastcall TFormWhirlC::GLDummyCube1Progress(TObject *Sender, const double 
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TFormWhirlC::GLCadencer1Progress(TObject *Sender, const double deltaTime,
+void __fastcall TFormWhirl::GLCadencer1Progress(TObject *Sender, const double deltaTime,
           const double newTime)
 {
   GLParticles1->CreateParticle();
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TFormWhirlC::Timer1Timer(TObject *Sender)
+void __fastcall TFormWhirl::Timer1Timer(TObject *Sender)
 {
-  Panel1->Caption = Format("%d particles, %.1f FPS",
+/*
+   Panel1->Caption = Format("%d particles, %.1f FPS",
 	  ARRAYOFCONST((GLParticles1->Count, GLSceneViewer1->FramesPerSecond())));
+*/
+   Panel1->Caption = GLSceneViewer1->FramesPerSecond();
    GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------

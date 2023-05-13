@@ -1,4 +1,4 @@
-object FormGraphC: TFormGraphC
+object FormGraph: TFormGraph
   Left = 0
   Top = 0
   Caption = 'Graph C'
@@ -13,7 +13,6 @@ object FormGraphC: TFormGraphC
   Menu = MainMenu
   Position = poScreenCenter
   OnCreate = FormCreate
-  OnDestroy = FormDestroy
   OnShow = FormShow
   TextHeight = 15
   object PanelLeft: TPanel
@@ -23,7 +22,6 @@ object FormGraphC: TFormGraphC
     Height = 571
     Align = alLeft
     TabOrder = 0
-    ExplicitHeight = 512
     object tvGraph: TTreeView
       Left = 1
       Top = 1
@@ -42,7 +40,6 @@ object FormGraphC: TFormGraphC
         FFFFFFFFFF000000000000000000000000010A500072006F006A006500630074
         0069006F006E002C0000000000000000000000FFFFFFFFFFFFFFFF0000000000
         000000000000000107530070006C0069006E0065007300}
-      ExplicitHeight = 510
     end
   end
   object PageControl: TPageControl
@@ -52,8 +49,6 @@ object FormGraphC: TFormGraphC
     Height = 571
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 608
-    ExplicitHeight = 512
     object tsFxy: TTabSheet
       Caption = 'Fxy'
       TabVisible = False

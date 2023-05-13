@@ -4,7 +4,12 @@
 #pragma hdrstop
 #include <tchar.h>
 //---------------------------------------------------------------------------
-USEFORM("fMainC.cpp", Form1);
+USEFORM("fExtrusionC.cpp", frmExtrusionC);
+USEFORM("bendingcyl\fBendingC.cpp", FormBending);
+USEFORM("cutoutstar\fCutoutstarC.cpp", FormCutoutstar);
+USEFORM("nutsnbolts\fNutsnBoltsC.cpp", FormNutsnBolts);
+USEFORM("pawn\fPawnC.cpp", FormPawn);
+USEFORM("tentacles\fTentaclesC.cpp", FormTentacles);
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
@@ -12,7 +17,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 	{
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
-		Application->CreateForm(__classid(TForm1), &Form1);
+		Application->CreateForm(__classid(TfrmExtrusionC), &frmExtrusionC);
 		Application->Run();
 	}
 	catch (Exception &exception)

@@ -4,7 +4,7 @@
 #pragma hdrstop
 #include <tchar.h>
 //---------------------------------------------------------------------------
-USEFORM("fPawnC.cpp", FormPawn);
+USEFORM("fMegaglassC.cpp", FormMegaglasscube);
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
@@ -12,7 +12,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 	{
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
-		Application->CreateForm(__classid(TFormPawn), &FormPawn);
+		Application->CreateForm(__classid(TFormMegaglasscube), &FormMegaglasscube);
 		Application->Run();
 	}
 	catch (Exception &exception)

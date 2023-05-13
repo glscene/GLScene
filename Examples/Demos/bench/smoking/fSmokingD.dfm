@@ -1,43 +1,34 @@
-object Form1: TForm1
+object FormSmoking: TFormSmoking
   Left = 170
   Top = 57
   Caption = 'Smoking'
-  ClientHeight = 478
-  ClientWidth = 661
+  ClientHeight = 382
+  ClientWidth = 529
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 661
-    Height = 434
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 529
+    Height = 347
     Camera = GLCamera
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 154.049331665039100000
+    FieldOfView = 147.847686767578100000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object Panel1: TPanel
     Left = 0
-    Top = 434
-    Width = 661
-    Height = 44
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 347
+    Width = 529
+    Height = 35
     Align = alBottom
     Caption = 'FPS'
     TabOrder = 1

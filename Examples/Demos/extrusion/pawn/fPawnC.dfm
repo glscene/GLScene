@@ -1,40 +1,43 @@
-object Form1: TForm1
+object FormPawn: TFormPawn
   Left = 0
   Top = 0
   Caption = 'Pawn'
-  ClientHeight = 403
-  ClientWidth = 548
+  ClientHeight = 426
+  ClientWidth = 614
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
+  Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 419
-    Height = 403
+    Width = 485
+    Height = 426
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 152.128311157226600000
+    FieldOfView = 153.578933715820300000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 419
+    ExplicitHeight = 404
   end
   object Panel1: TPanel
-    Left = 419
+    Left = 485
     Top = 0
     Width = 129
-    Height = 403
+    Height = 426
     Align = alRight
     TabOrder = 1
+    ExplicitLeft = 419
+    ExplicitHeight = 403
     object Label1: TLabel
       Left = 23
       Top = 8

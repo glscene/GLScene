@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 
-#ifndef fNutsnboltCH
-#define fNutsnboltCH
+#ifndef fNutsnBoltsCH
+#define fNutsnBoltsCH
 //---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include <Vcl.Controls.hpp>
@@ -16,7 +16,7 @@
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormNutsnBolts : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
@@ -41,9 +41,9 @@ __published:	// IDE-managed Components
 private:	// User declarations
     int mx, my;
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormNutsnBolts(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormNutsnBolts *FormNutsnBolts;
 //---------------------------------------------------------------------------
 #endif

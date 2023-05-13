@@ -19,11 +19,11 @@
 	  5      15972      68.2     K7-1145    GF2 Pro       32Bits (vs 110.4 for megacube)
    --- 26/01/02 --- Introduced bench
 }
-program MegaglasscubeD;
+program MegaglassD;
 
 uses
   Forms,
-  fMegaglassCubeD in 'fMegaglassCubeD.pas' {FormMegaglasscube};
+  fMegaglassD in 'fMegaglassD.pas' {FormMegaglasscube};
 
 {$R *.RES}
 

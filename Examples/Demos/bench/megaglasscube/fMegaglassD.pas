@@ -1,4 +1,4 @@
-unit fMegaglassCubeD;
+unit fMegaglassD;
 
 interface
 

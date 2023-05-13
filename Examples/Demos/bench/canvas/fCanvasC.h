@@ -4,6 +4,7 @@
 #define fCanvasCH
 //---------------------------------------------------------------------------
 #include <System.Classes.hpp>
+#include <System.Uitypes.hpp>
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
@@ -20,7 +21,7 @@
 #include "GLS.BaseClasses.hpp"
 
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormCanvas : public TForm
 {
 __published:	// IDE-managed Components
 	TBevel *Bevel1;
@@ -54,9 +55,9 @@ private:	// User declarations
 	void Bench();
 
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormCanvas(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormCanvas *FormCanvas;
 //---------------------------------------------------------------------------
 #endif

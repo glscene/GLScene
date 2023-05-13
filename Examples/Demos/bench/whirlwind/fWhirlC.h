@@ -18,7 +18,7 @@
 #include "GLS.SceneViewer.hpp"
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------
-class TFormWhirlC : public TForm
+class TFormWhirl : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
@@ -45,9 +45,9 @@ __published:	// IDE-managed Components
 private:	// User declarations
     int mx, my;
 public:		// User declarations
-	__fastcall TFormWhirlC(TComponent* Owner);
+	__fastcall TFormWhirl(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TFormWhirlC *FormWhirlC;
+extern PACKAGE TFormWhirl *FormWhirl;
 //---------------------------------------------------------------------------
 #endif

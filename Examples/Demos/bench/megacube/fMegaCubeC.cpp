@@ -15,18 +15,19 @@
 #pragma link "GLS.SimpleNavigation"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
-TForm1 *Form1;
-//---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
-	: TForm(Owner)
-{
-}
+TFormMegacube *FormMegacube;
 
 const int
   cSize = 5;
 
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
+__fastcall TFormMegacube::TFormMegacube(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TFormMegacube::FormCreate(TObject *Sender)
 {
   int x, y, z;
   TGLCube *cube;
@@ -45,7 +46,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 		cube->CubeHeight = cubeSize;
 		cube->CubeDepth = cubeSize;
 		cube->Material->FrontProperties->Diffuse->Color =
-  		  VectorLerp(clrYellow, clrRed, (float)(x * x + y * y + z * z)/(cSize * cSize * 3));
+		  VectorLerp(clrYellow, clrRed, (float)(x * x + y * y + z * z)/(cSize * cSize * 3));
 
 	  // uncomment following lines to stress OpenGL with more color changes calls
 
@@ -55,7 +56,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	  }
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
+void __fastcall TFormMegacube::GLCadencer1Progress(TObject *Sender, const double deltaTime,
           const double newTime)
 {
   DummyCube1->TurnAngle = 90 * newTime; // 90° per second

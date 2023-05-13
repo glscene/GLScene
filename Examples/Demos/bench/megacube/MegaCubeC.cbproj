@@ -123,7 +123,7 @@
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="fMegaCubeC.cpp">
-            <Form>Form1</Form>
+            <Form>FormMegacube</Form>
             <FormType>dfm</FormType>
             <DependentOn>fMegaCubeC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

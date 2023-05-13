@@ -124,7 +124,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="fWhirlD.pas">
-            <Form>FormWhirlD</Form>
+            <Form>FormWhirl</Form>
         </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

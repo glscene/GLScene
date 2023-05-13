@@ -28,7 +28,7 @@ uses
   GLS.Behaviours;
 
 type
-  TFormWhirlD = class(TForm)
+  TFormWhirl = class(TForm)
     GLSceneViewer1: TGLSceneViewer;
     Panel1: TPanel;
     Timer1: TTimer;
@@ -56,13 +56,15 @@ type
   end;
 
 var
-  FormWhirlD: TFormWhirlD;
+  FormWhirl: TFormWhirl;
 
+//----------------------------------------------------------------------
 implementation
+//----------------------------------------------------------------------
 
 {$R *.dfm}
 
-procedure TFormWhirlD.GLParticles1ActivateParticle(Sender: TObject;
+procedure TFormWhirl.GLParticles1ActivateParticle(Sender: TObject;
   Particle: TGLBaseSceneObject);
 var
   r, alpha, cr, sr: Single;
@@ -75,14 +77,18 @@ begin
   TGLCustomSceneObject(Particle).TagFloat := GLCadencer1.CurrentTime;
 end;
 
-procedure TFormWhirlD.GLSceneViewer1MouseDown(Sender: TObject;
+//----------------------------------------------------------------------
+
+procedure TFormWhirl.GLSceneViewer1MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
   mx := X;
   my := Y;
 end;
 
-procedure TFormWhirlD.GLSceneViewer1MouseMove(Sender: TObject;
+//----------------------------------------------------------------------
+
+procedure TFormWhirl.GLSceneViewer1MouseMove(Sender: TObject;
   Shift: TShiftState; X, Y: Integer);
 begin
   if Shift <> [] then
@@ -93,7 +99,9 @@ begin
   end;
 end;
 
-procedure TFormWhirlD.GLDummyCube1Progress(Sender: TObject;
+//----------------------------------------------------------------------
+
+procedure TFormWhirl.GLDummyCube1Progress(Sender: TObject;
   const deltaTime, newTime: Double);
 begin
   with TGLCustomSceneObject(Sender) do
@@ -103,14 +111,18 @@ begin
   end;
 end;
 
-procedure TFormWhirlD.Timer1Timer(Sender: TObject);
+//----------------------------------------------------------------------
+
+procedure TFormWhirl.Timer1Timer(Sender: TObject);
 begin
   Panel1.Caption := Format('%d particles, %.1f FPS',
     [GLParticles1.Count, GLSceneViewer1.FramesPerSecond]);
   GLSceneViewer1.ResetPerformanceMonitor;
 end;
 
-procedure TFormWhirlD.GLCadencer1Progress(Sender: TObject;
+//----------------------------------------------------------------------
+
+procedure TFormWhirl.GLCadencer1Progress(Sender: TObject;
   const deltaTime, newTime: Double);
 begin
   GLParticles1.CreateParticle;

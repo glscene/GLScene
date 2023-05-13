@@ -21,7 +21,7 @@
 #include "GLS.Spline.hpp"
 
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormBending : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
@@ -47,9 +47,9 @@ __published:	// IDE-managed Components
 private:	// User declarations
 	int mx, my;
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormBending(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormBending *FormBending;
 //---------------------------------------------------------------------------
 #endif

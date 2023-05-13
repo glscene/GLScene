@@ -19,14 +19,14 @@
 
 
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormCutoutstar *FormCutoutstar;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormCutoutstar::TFormCutoutstar(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
+void __fastcall TFormCutoutstar::FormCreate(TObject *Sender)
 {
    int i;
    float r, x, y;
@@ -47,7 +47,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
+void __fastcall TFormCutoutstar::GLCadencer1Progress(TObject *Sender, const double deltaTime,
 		  const double newTime)
 {
    float x, y;
@@ -67,11 +67,13 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Timer1Timer(TObject *Sender)
+void __fastcall TFormCutoutstar::Timer1Timer(TObject *Sender)
 {
-   // Standard FPS counter
+/*
    PanelFPS->Caption = Format("%.1f FPS",
 	 ARRAYOFCONST((GLSceneViewer1->FramesPerSecond())));
+*/
+   PanelFPS->Caption = GLSceneViewer1->FramesPerSecond();
    GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------

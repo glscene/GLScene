@@ -56,14 +56,14 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
         <ProjectType>CppVCLApplication</ProjectType>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;GLScene_RT.lib;xmlrtl.lib;vclimg.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <Multithreaded>true</Multithreaded>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
-        <IncludePath>D:\GLScene\Examples\Demos\bench\;$(IncludePath)</IncludePath>
-        <ILINK_LibraryPath>D:\GLScene\Examples\Demos\bench\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>whirlwind\;volcano\;smoking\;megaglasscube\;megacube\;canvas\;D:\GLScene\Examples\Demos\bench\;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>whirlwind\;volcano\;smoking\;megaglasscube\;megacube\;canvas\;D:\GLScene\Examples\Demos\bench\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <SanitizedProjectName>BenchC</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
@@ -108,7 +108,7 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
         <ILINK_LibraryPath>$(BDSLIB)\$(PLATFORM)$(CC_SUFFIX)\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
-        <LinkPackageImports>rtl.bpi;vcl.bpi</LinkPackageImports>
+        <LinkPackageImports>rtl.bpi;vcl.bpi;GLScene_RT.bpi;xmlrtl.bpi;vclimg.bpi</LinkPackageImports>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
@@ -125,13 +125,55 @@
         <CppCompile Include="BenchC.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
+        <CppCompile Include="canvas\fCanvasC.cpp">
+            <Form>FormCanvas</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>canvas\fCanvasC.h</DependentOn>
+            <BuildOrder>2</BuildOrder>
+        </CppCompile>
         <CppCompile Include="fBenchC.cpp">
-            <Form>FormBenchC</Form>
+            <Form>frmBench</Form>
             <FormType>dfm</FormType>
             <DependentOn>fBenchC.h</DependentOn>
             <BuildOrder>2</BuildOrder>
         </CppCompile>
+        <CppCompile Include="megacube\fMegaCubeC.cpp">
+            <Form>Form1</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>megacube\fMegaCubeC.h</DependentOn>
+            <BuildOrder>3</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="megaglasscube\fMegaglassC.cpp">
+            <Form>FormMegaglasscube</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>megaglasscube\fMegaglassC.h</DependentOn>
+            <BuildOrder>4</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="smoking\fSmokingC.cpp">
+            <Form>FormSmoking</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>smoking\fSmokingC.h</DependentOn>
+            <BuildOrder>5</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="volcano\fVolcanoC.cpp">
+            <Form>FormVolcano</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>volcano\fVolcanoC.h</DependentOn>
+            <BuildOrder>6</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="whirlwind\fWhirlC.cpp">
+            <Form>FormWhirl</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>whirlwind\fWhirlC.h</DependentOn>
+            <BuildOrder>7</BuildOrder>
+        </CppCompile>
+        <FormResources Include="megaglasscube\fMegaglassC.dfm"/>
+        <FormResources Include="smoking\fSmokingC.dfm"/>
+        <FormResources Include="volcano\fVolcanoC.dfm"/>
+        <FormResources Include="whirlwind\fWhirlC.dfm"/>
+        <FormResources Include="canvas\fCanvasC.dfm"/>
         <FormResources Include="fBenchC.dfm"/>
+        <FormResources Include="megacube\fMegaCubeC.dfm"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -219,13 +261,13 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\BenchC.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="BenchC.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>BenchC.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\BenchC.tds" Configuration="Debug" Class="DebugSymbols">
+                <DeployFile LocalName="BenchC.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
                         <RemoteName>BenchC.tds</RemoteName>
                         <Overwrite>true</Overwrite>
