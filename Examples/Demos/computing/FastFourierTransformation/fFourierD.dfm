@@ -13,37 +13,16 @@ object Form4: TForm4
   Position = poScreenCenter
   TextHeight = 15
   object Panel1: TPanel
-    Left = 668
-    Top = 56
+    Left = 44
+    Top = 35
     Width = 221
     Height = 409
     Caption = 'Panel1'
     TabOrder = 0
-    object Label4: TLabel
-      Left = 64
-      Top = 64
-      Width = 34
-      Height = 15
-      Caption = 'Label4'
-    end
-    object Label3: TLabel
-      Left = 56
-      Top = 32
-      Width = 34
-      Height = 15
-      Caption = 'Label3'
-    end
-    object Label5: TLabel
-      Left = 72
-      Top = 88
-      Width = 34
-      Height = 15
-      Caption = 'Label5'
-    end
   end
   object Panel2: TPanel
-    Left = 32
-    Top = 65
+    Left = 640
+    Top = 53
     Width = 209
     Height = 391
     Caption = 'Panel2'

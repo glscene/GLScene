@@ -4,6 +4,7 @@ interface
 
 uses
   Winapi.OpenGL,
+  Winapi.OpenGLext,
   System.SysUtils,
   System.Classes,
   System.Math,

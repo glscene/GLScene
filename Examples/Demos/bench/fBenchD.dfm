@@ -48,7 +48,6 @@ object frmBench: TfrmBench
     Top = 0
     Width = 761
     Height = 566
-    ActivePage = tsCanvas
     Align = alClient
     TabOrder = 1
     object tsCanvas: TTabSheet

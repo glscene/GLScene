@@ -12,6 +12,9 @@ uses
   Vcl.Dialogs,
   Vcl.StdCtrls,
 
+  GLS.Utils,
+  GLS.FilePGM,
+
   CUDA.Compiler,
   CUDA.Context,
   CUDA.APIComps,
@@ -50,6 +53,7 @@ type
 
 var
   FormSP: TFormSP;
+  pgm: TGLPGMImage;
 
 implementation
 
