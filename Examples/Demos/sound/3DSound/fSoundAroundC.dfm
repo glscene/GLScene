@@ -104,7 +104,7 @@ object Form1: TForm1
       OnClick = RBFMODClick
     end
     object Button1: TButton
-      Left = 441
+      Left = 425
       Top = 22
       Width = 82
       Height = 25
@@ -114,7 +114,7 @@ object Form1: TForm1
       OnClick = Button1Click
     end
     object btnHowl: TButton
-      Left = 441
+      Left = 425
       Top = 2
       Width = 83
       Height = 25

@@ -18,7 +18,6 @@
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
 #include "Sounds.BASS.hpp"
-#include "Sounds.BASSImport.hpp"
 #include "Sounds.FMOD.hpp"
 #include "Sounds.OpenAL.hpp"
 #include "GLS.SceneViewer.hpp"

@@ -4,18 +4,7 @@
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
     <PropertyGroup/>
-    <ItemGroup Condition="'$(Platform)'=='Win64'">
-        <DeployFile Include="Win64\Debug\MirrorD.exe" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>MirrorD\</RemoteDir>
-            <RemoteName>MirrorD.exe</RemoteName>
-            <DeployClass>ProjectOutput</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-            <Required>True</Required>
-        </DeployFile>
-    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='Win64'"/>
     <ItemGroup Condition="'$(Platform)'=='Win32'">
         <DeployFile Include="$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png" Condition="'$(Config)'=='Debug'">
             <RemoteDir>MirrorD\Assets\</RemoteDir>
@@ -55,5 +44,4 @@
             <Required>True</Required>
         </DeployFile>
     </ItemGroup>
-    <ItemGroup Condition="'$(Platform)'=='Linux64'"/>
 </Project>

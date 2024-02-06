@@ -34,8 +34,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   B->RenderWidth = 256;
   B->RenderHeight = 256;
   // Load texture for objects
-  GLMaterialLibrary1->Materials->Items[0]->Material->Texture->
-  Image->LoadFromFile("marbletiles.jpg");
+  GLMaterialLibrary1->Materials->Items[0]->Material->Texture->Image->LoadFromFile("marbletiles.jpg");
   ComboBox1->ItemIndex = 2;
   ComboBox1Change(this);
 }

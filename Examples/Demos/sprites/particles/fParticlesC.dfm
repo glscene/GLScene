@@ -25,8 +25,7 @@ object FormStars: TFormStars
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 592
-    ExplicitHeight = 419
+    ExplicitWidth = 733
   end
   object GLScene1: TGLScene
     Left = 8

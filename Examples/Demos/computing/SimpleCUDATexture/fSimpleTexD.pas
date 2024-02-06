@@ -26,7 +26,7 @@ uses
   GLS.TextureFormat;
 
 type
-  TFormST = class(TForm)
+  TForm1 = class(TForm)
     GLCUDA1: TGLCUDA;
     GLCUDADevice1: TGLCUDADevice;
     GLCUDACompiler1: TGLCUDACompiler;
@@ -50,7 +50,7 @@ type
   TGLBitmap32 = TGLImage;   // comment if supported Graphics32
 
 var
-  FormST: TFormST;
+  Form1: TForm1;
   Angle : Single = 0.5;    // angle to rotate image by (in radians)
 
 //-----------------------------------------
@@ -64,14 +64,14 @@ const
   OutFileName  = 'lena_bw_out.pgm';
 
 
-procedure TFormST.FormCreate(Sender: TObject);
+procedure TForm1.FormCreate(Sender: TObject);
 begin
   Path := GetCurrentAssetPath();
   SetCurrentDir(Path + '\texture');
   pgm := TGLPGMImage.Create;
 end;
 
-procedure TFormST.Button1Click(Sender: TObject);
+procedure TForm1.Button1Click(Sender: TObject);
 var
   timer: Cardinal;
   bmp32: TGLBitmap32;
@@ -106,12 +106,12 @@ begin
   bmp32.Free;
 end;
 
-procedure TFormST.FormDestroy(Sender: TObject);
+procedure TForm1.FormDestroy(Sender: TObject);
 begin
    pgm.Destroy;
 end;
 
-procedure TFormST.TurnPictureParameterSetup(Sender: TObject);
+procedure TForm1.TurnPictureParameterSetup(Sender: TObject);
 begin
   with TurnPicture do
   begin

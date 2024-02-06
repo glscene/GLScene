@@ -280,8 +280,10 @@ begin
       ftCountDown.Text := buf;
     end
     else
-    begin
+    begin    //minutes and seconds
       t := t * 60;
+ 			i := Round((t - Floor(t)) * 60);
+
       ftCountDown.Text := IntToStr(Trunc(t)) + ' minutes, ' +
         IntToStr(Round(Frac(t) * 60)) + ' seconds...';
     end;

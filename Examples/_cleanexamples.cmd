@@ -18,6 +18,7 @@ del *.a /s
 del *.map /s
 del *.rsm /s
 del *.drc /s
+del *.vrc /s
 del *.local /s
 
 rem delete more files

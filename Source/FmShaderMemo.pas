@@ -19,7 +19,6 @@ uses
   System.Variants,
   System.Classes,
   System.Win.Registry,
-  System.ImageList,
   VCL.Controls,
   VCL.Forms,
   VCL.ComCtrls,
@@ -31,7 +30,7 @@ uses
   VCL.ExtCtrls,
   VCL.StdCtrls,
   VCL.Graphics,
-
+   
   GLS.Memo;
 
 type

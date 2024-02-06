@@ -80,7 +80,6 @@ implementation
 constructor TFormGuidemo.Create(AOwner: TComponent);
 begin
   inherited;
-  SetCurrentDirToAsset();
   GLForm1.Caption := 'Unicode caption...'#$0699#$069A#$963f#$54c0;
   WindowsBitmapFont1.EnsureString(GLForm1.Caption);
 end;

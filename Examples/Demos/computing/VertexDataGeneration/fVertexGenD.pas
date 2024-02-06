@@ -34,7 +34,7 @@ uses
   GLSL.Shader;
 
 type
-  TFormVDG = class(TForm)
+  TForm1 = class(TForm)
     GLScene1: TGLScene;
     GLSceneViewer1: TGLSceneViewer;
     GLCadencer1: TGLCadencer;
@@ -61,13 +61,13 @@ type
   end;
 
 var
-  FormVDG: TFormVDG;
+  Form1: TForm1;
 
 implementation
 
 {$R *.dfm}
 
-procedure TFormVDG.FormCreate(Sender: TObject);
+procedure TForm1.FormCreate(Sender: TObject);
 begin
   FieldWidth := 256;
   FieldHeight := 256;
@@ -77,19 +77,19 @@ begin
   MakeDotField.Grid.SizeY := FieldWidth div MakeDotField.BlockShape.SizeY;
 end;
 
-procedure TFormVDG.GLCUDA1OpenGLInteropInit(out Context: TGLContext);
+procedure TForm1.GLCUDA1OpenGLInteropInit(out Context: TGLContext);
 begin
   Context := GLSceneViewer1.Buffer.RenderingContext;
 end;
 
-procedure TFormVDG.GLSLShader1Apply(Shader: TGLCustomGLSLShader);
+procedure TForm1.GLSLShader1Apply(Shader: TGLCustomGLSLShader);
 begin
   with GLSceneViewer1.Buffer.RenderingContext.PipelineTransformation do
     Shader.Param['ModelViewProjectionMatrix'].AsMatrix4f :=
       MatrixMultiply(ModelViewMatrix^, ProjectionMatrix^);
 end;
 
-procedure TFormVDG.MakeVertexBufferParameterSetup(Sender: TObject);
+procedure TForm1.MakeVertexBufferParameterSetup(Sender: TObject);
 begin
   with MakeDotField do
   begin
@@ -100,7 +100,7 @@ begin
   end;
 end;
 
-procedure TFormVDG.GLCadencer1Progress(Sender: TObject;
+procedure TForm1.GLCadencer1Progress(Sender: TObject;
   const deltaTime, newTime: Double);
 begin
   GLSceneViewer1.Invalidate;

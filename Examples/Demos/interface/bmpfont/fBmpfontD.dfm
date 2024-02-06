@@ -1,31 +1,39 @@
 object FormBmpFont: TFormBmpFont
   Left = 166
   Top = 102
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Bitmap Font'
-  ClientHeight = 378
-  ClientWidth = 519
+  ClientHeight = 662
+  ClientWidth = 922
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 519
-    Height = 378
+    Width = 922
+    Height = 662
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 150.363708496093800000
+    FieldOfView = 162.819976806640600000
     PenAsTouch = False
     Align = alClient
     OnClick = GLSceneViewer1Click
     TabOrder = 0
-    ExplicitWidth = 533
-    ExplicitHeight = 415
   end
   object GLScene1: TGLScene
     ObjectsSorting = osNone

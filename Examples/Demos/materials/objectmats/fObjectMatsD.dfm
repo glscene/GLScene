@@ -1,42 +1,59 @@
 object FormMO: TFormMO
   Left = 0
   Top = 0
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Object Materials'
-  ClientHeight = 614
-  ClientWidth = 906
+  ClientHeight = 1075
+  ClientWidth = 1600
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -12
+  Font.Height = -21
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 15
+  PixelsPerInch = 168
+  TextHeight = 30
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 724
-    Height = 614
+    Width = 1281
+    Height = 1075
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clTeal
-    FieldOfView = 154.310821533203100000
+    FieldOfView = 165.159973144531300000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 724
+    Left = 1281
     Top = 0
-    Width = 182
-    Height = 614
+    Width = 319
+    Height = 1075
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alRight
     TabOrder = 1
     object RadioGroup1: TRadioGroup
-      Left = 24
-      Top = 120
-      Width = 145
-      Height = 177
+      Left = 42
+      Top = 210
+      Width = 254
+      Height = 310
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       ItemIndex = 0
       Items.Strings = (
         'Cube'
@@ -49,10 +66,14 @@ object FormMO: TFormMO
       TabOrder = 0
     end
     object chbRotate: TCheckBox
-      Left = 32
-      Top = 111
-      Width = 97
-      Height = 17
+      Left = 56
+      Top = 194
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Rotate'
       TabOrder = 1
     end

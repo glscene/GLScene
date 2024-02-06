@@ -34,6 +34,7 @@ object FormBoxedin: TFormBoxedin
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitWidth = 560
     object Label1: TLabel
       Left = 282
       Top = 5

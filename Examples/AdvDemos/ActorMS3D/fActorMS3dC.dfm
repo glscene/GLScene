@@ -37,6 +37,7 @@ object Form1: TForm1
     Height = 65
     Align = alTop
     TabOrder = 1
+    ExplicitWidth = 944
     object Button2: TButton
       Left = 374
       Top = 13

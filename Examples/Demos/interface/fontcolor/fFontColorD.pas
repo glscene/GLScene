@@ -10,7 +10,7 @@ uses
   Vcl.Controls,
   Vcl.Forms,
   Vcl.Dialogs,
-  
+
   GLS.SceneViewer,
   GLS.Scene,
   GLS.Objects,
@@ -21,7 +21,7 @@ uses
   GLS.Cadencer,
   GLS.TimeEventsMgr,
   GLS.GeomObjects,
- 
+
   GLS.Coordinates,
   GLS.Utils,
   GLS.BaseClasses;
@@ -45,63 +45,68 @@ type
     procedure GLTimeEventsMGR1Events2Event(event: TTimeEvent);
     procedure FormCreate(Sender: TObject);
   private
-     
+
   public
-     
+
   end;
 
 var
   FormFontColor: TFormFontColor;
 
-const FadeOutMax = 100;
-      FadeInMax  = 100;
-      OverallTrans = 0.7;
+const
+  FadeOutMax = 100;
+  FadeInMax = 100;
+  OverallTrans = 0.7;
 
 implementation
 
 {$R *.dfm}
 
 var
-  FadeOutCount : integer;
-  FadeInCount : integer;
-  OriginalColor : TVector4f;
+  FadeOutCount: integer;
+  FadeInCount: integer;
+  OriginalColor: TVector4f;
 
 procedure TFormFontColor.FormCreate(Sender: TObject);
 begin
-   var Path: TFileName := GetCurrentAssetPath();
-   SetCurrentDir(Path  + '\font');
-   BitmapFont.Glyphs.LoadFromFile('toonfont.bmp');
+  var Path: TFileName := GetCurrentAssetPath();
+  SetCurrentDir(Path + '\font');
+  BitmapFont.Glyphs.LoadFromFile('toonfont.bmp');
 end;
 
 procedure TFormFontColor.GLTimeEventsMGR1Events0Event(event: TTimeEvent);
 begin
-   if FadeOutCount < 0 then exit;
+  if FadeOutCount < 0 then
+    exit;
 
-   HUDText1.ModulateColor.Color:=VectorMake(1, 1, 1, (FadeOutCount/FadeOutMax)*OverallTrans);
-   dec(FadeOutCount);
+  HUDText1.ModulateColor.Color := VectorMake(1, 1, 1,
+    (FadeOutCount / FadeOutMax) * OverallTrans);
+  dec(FadeOutCount);
 end;
 
 procedure TFormFontColor.GLTimeEventsMGR1Events1Event(event: TTimeEvent);
 begin
-   FadeOutCount:=FadeOutMax;
-   FadeInCount:=0;
+  FadeOutCount := FadeOutMax;
+  FadeInCount := 0;
 
-   OriginalColor:=HUDText2.ModulateColor.Color;
+  OriginalColor := HUDText2.ModulateColor.Color;
 
-   HUDText1.ModulateColor.Color:=VectorMake(1, 1, 1, (FadeOutCount/FadeOutMax)*OverallTrans);
-   HUDText2.ModulateColor.Color:=VectorMake(1, 1, 1, 0);
+  HUDText1.ModulateColor.Color := VectorMake(1, 1, 1,
+    (FadeOutCount / FadeOutMax) * OverallTrans);
+  HUDText2.ModulateColor.Color := VectorMake(1, 1, 1, 0);
 end;
 
 procedure TFormFontColor.GLTimeEventsMGR1Events2Event(event: TTimeEvent);
 var
-   NewColor : TVector4f;
+  NewColor: TVector4f;
 begin
-   if FadeInCount >= FadeInMax then exit;
+  if FadeInCount >= FadeInMax then
+    exit;
 
-   NewColor:=VectorScale(OriginalColor, FadeInCount/FadeInMax);
+  NewColor := VectorScale(OriginalColor, FadeInCount / FadeInMax);
 
-   HUDText2.ModulateColor.Color:=NewColor;
-   Inc(FadeInCount);
+  HUDText2.ModulateColor.Color := NewColor;
+  Inc(FadeInCount);
 end;
 
 end.

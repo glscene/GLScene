@@ -7,7 +7,7 @@ uses
   System.Classes,
   Vcl.Controls, 
   Vcl.Forms, 
-  Vcl.StdCtrls,
+  Vcl.StdCtrls, 
   Vcl.Graphics,
 
   GLS.Scene,
@@ -38,7 +38,7 @@ uses
   CUDA.DataAccess;
 
 type
-  TFormSF = class(TForm)
+  TForm1 = class(TForm)
     GLScene1: TGLScene;
     GLSceneViewer1: TGLSceneViewer;
     GLCadencer1: TGLCadencer;
@@ -149,7 +149,7 @@ type
   end;
 
 var
-  FormSF: TFormSF;
+  Form1: TForm1;
 
 implementation
 
@@ -158,7 +158,7 @@ implementation
 var
   InitPosition : Boolean = False;
 
-procedure TFormSF.FormCreate(Sender: TObject);
+procedure TForm1.FormCreate(Sender: TObject);
 var
   i, j: Integer;
   pos: FloatElement.TVector2;
@@ -211,7 +211,7 @@ begin
   clicked := false;
 end;
 
-procedure TFormSF.GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
+procedure TForm1.GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
   lastX := X;
@@ -220,7 +220,7 @@ begin
   ResetButton.MouseDown(Sender, TMouseButton(Button), Shift, X, Y);
 end;
 
-procedure TFormSF.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState; X,
+procedure TForm1.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState; X,
   Y: Integer);
 var
   nx, ny: Integer;
@@ -251,19 +251,19 @@ begin
   ResetButton.MouseMove(Sender, Shift, X, Y);
 end;
 
-procedure TFormSF.GLSceneViewer1MouseUp(Sender: TObject; Button: TMouseButton;
+procedure TForm1.GLSceneViewer1MouseUp(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
   clicked := false;
   ResetButton.MouseUp(Sender, TMouseButton(Button), Shift, X, Y);
 end;
 
-procedure TFormSF.GLCUDA1OpenGLInteropInit(out Context: TGLContext);
+procedure TForm1.GLCUDA1OpenGLInteropInit(out Context: TGLContext);
 begin
   Context := GLSceneViewer1.Buffer.RenderingContext;
 end;
 
-procedure TFormSF.BeforeKernelLaunch(
+procedure TForm1.BeforeKernelLaunch(
   Sender: TGLVertexAttribute);
 begin
   if not InitPosition then
@@ -286,7 +286,7 @@ begin
   // Look at ParticleRenderer.VertexAttributes[0].KernelFunction
 end;
 
-procedure TFormSF.addForcesParameterSetup(Sender: TObject);
+procedure TForm1.addForcesParameterSetup(Sender: TObject);
 begin
   with addForces do
   begin
@@ -304,7 +304,7 @@ begin
   end;
 end;
 
-procedure TFormSF.advectVelocityParameterSetup(Sender: TObject);
+procedure TForm1.advectVelocityParameterSetup(Sender: TObject);
 begin
   VelocityField.CopyTo(ArrayOfTexture);
   with advectVelocity do
@@ -321,7 +321,7 @@ begin
   end;
 end;
 
-procedure TFormSF.diffuseProjectParameterSetup(Sender: TObject);
+procedure TForm1.diffuseProjectParameterSetup(Sender: TObject);
 begin
   with diffuseProject do
   begin
@@ -335,7 +335,7 @@ begin
   end;
 end;
 
-procedure TFormSF.updateVelocityParameterSetup(Sender: TObject);
+procedure TForm1.updateVelocityParameterSetup(Sender: TObject);
 begin
   with updateVelocity do
   begin
@@ -351,7 +351,7 @@ begin
   end;
 end;
 
-procedure TFormSF.advectParticlesParameterSetup(Sender: TObject);
+procedure TForm1.advectParticlesParameterSetup(Sender: TObject);
 begin
   with advectParticles do
   begin
@@ -365,19 +365,19 @@ begin
   end;
 end;
 
-procedure TFormSF.ResetButtonButtonClick(Sender: TObject);
+procedure TForm1.ResetButtonButtonClick(Sender: TObject);
 begin
   InitPosition := false;
 end;
 
-procedure TFormSF.GLCadencer1Progress(Sender: TObject; const DeltaTime,
+procedure TForm1.GLCadencer1Progress(Sender: TObject; const DeltaTime,
   newTime: Double);
 begin
   Self.DeltaTime := 5*DeltaTime;
   GLSceneViewer1.Invalidate;
 end;
 
-procedure TFormSF.FluidShaderApply(Shader: TGLCustomGLSLShader);
+procedure TForm1.FluidShaderApply(Shader: TGLCustomGLSLShader);
 begin
   with CurrentGLContext.GLStates do
   begin
