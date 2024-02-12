@@ -56,13 +56,13 @@ object FormMO: TFormMO
       Margins.Bottom = 5
       ItemIndex = 0
       Items.Strings = (
-        'Cube'
+        'MapCube'
         'Hexahedra'
         'PlaneCube'
-        'PointsCube'
+        'PointCube'
         'PolyCube'
-        'Disk'
-        'Polygon')
+        'MapDisk'
+        'PolyDodehedron')
       TabOrder = 0
     end
     object chbRotate: TCheckBox
@@ -75,68 +75,96 @@ object FormMO: TFormMO
       Margins.Right = 5
       Margins.Bottom = 5
       Caption = 'Rotate'
+      Checked = True
+      State = cbChecked
       TabOrder = 1
     end
   end
   object GLScene1: TGLScene
     Left = 174
     Top = 95
+    object dcDodecahedron: TGLDummyCube
+      Position.Coordinates = {0000000000000040000080C00000803F}
+      CubeSize = 2.000000000000000000
+      VisibleAtRunTime = True
+      object Dodecahedron: TGLDodecahedron
+      end
+      object dcPolyDodec: TGLDummyCube
+        CubeSize = 1.000000000000000000
+        object DodPolygon1: TGLPolygon
+          Nodes = <>
+        end
+        object DodPolygon2: TGLPolygon
+          Nodes = <>
+        end
+        object DodPolygon3: TGLPolygon
+          Nodes = <>
+        end
+        object DodPolygon4: TGLPolygon
+          Nodes = <>
+        end
+        object DodPolygon5: TGLPolygon
+          Nodes = <>
+        end
+        object DodPolygon6: TGLPolygon
+          Nodes = <>
+        end
+        object DodPolygon7: TGLPolygon
+          Nodes = <>
+        end
+        object DodPolygon8: TGLPolygon
+          Nodes = <>
+        end
+        object DodPolygon9: TGLPolygon
+          Nodes = <>
+        end
+        object DodPolygon10: TGLPolygon
+          Nodes = <>
+        end
+        object DodPolygon11: TGLPolygon
+          Nodes = <>
+        end
+        object DodPolygon12: TGLPolygon
+          Nodes = <>
+        end
+      end
+    end
     object GLCamera1: TGLCamera
       DepthOfView = 10000000000.000000000000000000
       FocalLength = 70.000000000000000000
-      TargetObject = dcCubes
+      TargetObject = dcCube
       Position.Coordinates = {0000404000004040000040400000803F}
       object GLLightSource1: TGLLightSource
         ConstAttenuation = 1.000000000000000000
         SpotCutOff = 180.000000000000000000
       end
     end
-    object GLDummyCube1: TGLDummyCube
-      CubeSize = 1.000000000000000000
+    object dcCube: TGLDummyCube
+      CubeSize = 10.000000000000000000
       VisibleAtRunTime = True
-      object GLPolygon1: TGLPolygon
-        Nodes = <>
+      object plBottom: TGLPlane
+        Direction.Coordinates = {000000000000803F0000000000000000}
+        Position.Coordinates = {000000000000A0C0000000000000803F}
+        Up.Coordinates = {0000000000000000000080BF00000000}
+        Height = 10.000000000000000000
+        Width = 10.000000000000000000
       end
-      object GLActor1: TGLActor
-        Interval = 100
-      end
-    end
-    object dcCubes: TGLDummyCube
-      CubeSize = 100.000000000000000000
-      VisibleAtRunTime = True
-      object polyTriangle: TGLPolygon
-        Material.MaterialLibrary = GLMaterialLibrary1
-        Material.LibMaterialName = 'txEarth'
-        Direction.Coordinates = {0000803F000000000000000000000000}
-        Position.Coordinates = {00000000000040C0000040C00000803F}
-        Up.Coordinates = {00000000000080BF0000000000000000}
-        Nodes = <
-          item
-            X = 1.000000000000000000
-            Z = 1.000000000000000000
-          end
-          item
-            X = 1.000000000000000000
-          end
-          item
-            Z = 1.000000000000000000
-          end>
-      end
-      object GLDisk1: TGLDisk
-        Material.MaterialLibrary = GLMaterialLibrary1
+      object DiskMap: TGLDisk
+        Material.MaterialLibrary = GLMatLibCube
         Material.LibMaterialName = 'txEarth'
         Direction.Coordinates = {000000000000803F0000000000000000}
         Position.Coordinates = {00000000000080C0000000000000803F}
         Up.Coordinates = {0000000000000000000080BF00000000}
         OuterRadius = 1.000000000000000000
+        Slices = 32
         SweepAngle = 360.000000000000000000
       end
-      object GLCube1: TGLCube
-        Material.MaterialLibrary = GLMaterialLibrary1
+      object CubeMap: TGLCube
+        Material.MaterialLibrary = GLMatLibCube
         Material.LibMaterialName = 'txEarth'
       end
       object GLHexahedron1: TGLHexahedron
-        Material.MaterialLibrary = GLMaterialLibrary1
+        Material.MaterialLibrary = GLMatLibCube
         Material.LibMaterialName = 'mtOrange'
         Position.Coordinates = {0000000000000040000000000000803F}
         Scale.Coordinates = {0000003F0000003F0000003F00000000}
@@ -146,22 +174,22 @@ object FormMO: TFormMO
         OnProgress = dcPlaneCubeProgress
         CubeSize = 1.000000000000000000
         object PlaneFront: TGLPlane
-          Material.MaterialLibrary = GLMaterialLibrary1
+          Material.MaterialLibrary = GLMatLibCube
           Material.LibMaterialName = 'mtRed'
           Position.Coordinates = {00000000000000000000003F0000803F}
           Height = 1.000000000000000000
           Width = 1.000000000000000000
         end
-        object GLPlaneBack: TGLPlane
-          Material.MaterialLibrary = GLMaterialLibrary1
+        object PlaneBack: TGLPlane
+          Material.MaterialLibrary = GLMatLibCube
           Material.LibMaterialName = 'mtGreen'
           Direction.Coordinates = {0000000000000000000080BF00000000}
           Position.Coordinates = {0000000000000000000000BF0000803F}
           Height = 1.000000000000000000
           Width = 1.000000000000000000
         end
-        object GLPlaneBottom: TGLPlane
-          Material.MaterialLibrary = GLMaterialLibrary1
+        object PlaneBottom: TGLPlane
+          Material.MaterialLibrary = GLMatLibCube
           Material.LibMaterialName = 'mtBlue'
           Direction.Coordinates = {00000000000080BF0000000000000000}
           Position.Coordinates = {00000000000000BF000000000000803F}
@@ -169,8 +197,8 @@ object FormMO: TFormMO
           Height = 1.000000000000000000
           Width = 1.000000000000000000
         end
-        object GLPlaneTop: TGLPlane
-          Material.MaterialLibrary = GLMaterialLibrary1
+        object PlaneTop: TGLPlane
+          Material.MaterialLibrary = GLMatLibCube
           Material.LibMaterialName = 'mtYellow'
           Direction.Coordinates = {000000000000803F0000000000000000}
           Position.Coordinates = {000000000000003F000000000000803F}
@@ -178,16 +206,16 @@ object FormMO: TFormMO
           Height = 1.000000000000000000
           Width = 1.000000000000000000
         end
-        object GLPlaneRight: TGLPlane
-          Material.MaterialLibrary = GLMaterialLibrary1
+        object PlaneRight: TGLPlane
+          Material.MaterialLibrary = GLMatLibCube
           Material.LibMaterialName = 'mtOrange'
           Direction.Coordinates = {0000803F000000000000000000000000}
           Position.Coordinates = {0000003F00000000000000000000803F}
           Height = 1.000000000000000000
           Width = 1.000000000000000000
         end
-        object GLPlaneLeft: TGLPlane
-          Material.MaterialLibrary = GLMaterialLibrary1
+        object PlaneLeft: TGLPlane
+          Material.MaterialLibrary = GLMatLibCube
           Material.LibMaterialName = 'mtViolet'
           Direction.Coordinates = {000080BF000000000000000000000000}
           Position.Coordinates = {000000BF00000000000000000000803F}
@@ -209,7 +237,7 @@ object FormMO: TFormMO
         Scale.Coordinates = {0000003F0000003F0000003F00000000}
         CubeSize = 1.000000000000000000
         object PolyBottom: TGLPolygon
-          Material.MaterialLibrary = GLMaterialLibrary1
+          Material.MaterialLibrary = GLMatLibCube
           Material.LibMaterialName = 'mtViolet'
           Nodes = <
             item
@@ -234,7 +262,7 @@ object FormMO: TFormMO
             end>
         end
         object PolyLeft: TGLPolygon
-          Material.MaterialLibrary = GLMaterialLibrary1
+          Material.MaterialLibrary = GLMatLibCube
           Material.LibMaterialName = 'mtOrange'
           Nodes = <
             item
@@ -259,7 +287,7 @@ object FormMO: TFormMO
             end>
         end
         object PolyTop: TGLPolygon
-          Material.MaterialLibrary = GLMaterialLibrary1
+          Material.MaterialLibrary = GLMatLibCube
           Material.LibMaterialName = 'mtYellow'
           Nodes = <
             item
@@ -284,7 +312,7 @@ object FormMO: TFormMO
             end>
         end
         object PolyRight: TGLPolygon
-          Material.MaterialLibrary = GLMaterialLibrary1
+          Material.MaterialLibrary = GLMatLibCube
           Material.LibMaterialName = 'mtBlue'
           Nodes = <
             item
@@ -309,7 +337,7 @@ object FormMO: TFormMO
             end>
         end
         object PolyBack: TGLPolygon
-          Material.MaterialLibrary = GLMaterialLibrary1
+          Material.MaterialLibrary = GLMatLibCube
           Material.LibMaterialName = 'mtGreen'
           Nodes = <
             item
@@ -333,8 +361,8 @@ object FormMO: TFormMO
               Z = -1.000000000000000000
             end>
         end
-        object GLPolygon4: TGLPolygon
-          Material.MaterialLibrary = GLMaterialLibrary1
+        object PolyFront: TGLPolygon
+          Material.MaterialLibrary = GLMatLibCube
           Material.LibMaterialName = 'mtRed'
           Nodes = <
             item
@@ -361,7 +389,7 @@ object FormMO: TFormMO
       end
     end
     object GLMesh1: TGLMesh
-      Material.MaterialLibrary = GLMaterialLibrary1
+      Material.MaterialLibrary = GLMatLibCube
       Material.LibMaterialName = 'mtRed'
       Position.Coordinates = {0000000000000040000000000000803F}
       Scale.Coordinates = {0000003F0000003F0000003F00000000}
@@ -378,7 +406,7 @@ object FormMO: TFormMO
     Left = 564
     Top = 28
   end
-  object GLMaterialLibrary1: TGLMaterialLibrary
+  object GLMatLibCube: TGLMaterialLibrary
     Materials = <
       item
         Name = 'mtRed'

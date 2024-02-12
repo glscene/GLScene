@@ -4,11 +4,11 @@
 unit GLS.GeomObjects;
 
 (*
-  Geometric objects:
-   - TGLTetrahedron, TGLOctahedron, TGLHexahedron, TGLDodecahedron, TGLIcosahedron;
-   - TGLDisk, TGLCylinderBase, TGLCone, TGLCylinder, TGLCapsule, TGLAnnulus,
-     TGLTorus, TGLArrowLine, TGLArrowArc, TGLPolygon, TGLFrustum;
-   - TGLTeapot;
+  Geometric objects.
+  The registered classes are:
+    [TGLDodecahedron, TGLIcosahedron, TGLHexahedron, TGLOctahedron, TGLTetrahedron,
+    TGLCylinder, TGLCone, TGLTorus, TGLDisk, TGLArrowLine, TGLAnnulus,
+    TGLFrustrum, TGLPolygon, TGLCapsule, TGLArrowArc, TGLTeapot]
 *)
 
 interface
@@ -3612,7 +3612,6 @@ initialization
 
 RegisterClasses([TGLDodecahedron, TGLIcosahedron, TGLHexahedron,
     TGLOctahedron, TGLTetrahedron]);
-
 RegisterClasses([TGLCylinder, TGLCone, TGLTorus, TGLDisk, TGLArrowLine,
   TGLAnnulus, TGLFrustrum, TGLPolygon, TGLCapsule, TGLArrowArc, TGLTeapot]);
 

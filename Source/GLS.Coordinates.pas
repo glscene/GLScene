@@ -3,7 +3,12 @@
 //
 unit GLS.Coordinates;
 
-(* Coordinate related classes and functions *)
+(*
+  Coordinate related classes and functions.
+  The registered classes are:
+    [TGLCoordinates2, TGLCoordinates3, TGLCoordinates4]
+*)
+
 
 interface
 

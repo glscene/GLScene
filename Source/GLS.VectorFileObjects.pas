@@ -3,7 +3,18 @@
 //
 unit GLS.VectorFileObjects;
 
-(* Vector File related objects *)
+(*
+  Vector File related objects.
+  The registered classes are:
+    [TGLFreeForm, TGLActor, TGLSkeleton, TGLSkeletonFrame, TGLSkeletonBone,
+    TGLSkeletonMeshObject, TGLMeshObject, TGLSkeletonFrameList, TGLMeshMorphTarget,
+    TGLMorphableMeshObject, TGLFaceGroup, TFGVertexIndexList,
+    TFGVertexNormalTexIndexList, TGLAnimationControler,
+    TFGIndexTexCoordList, TGLSkeletonCollider, TGLSkeletonColliderList
+    TGLBaseMeshObject, TGLSkeleton, TGLMeshObject, TGLSkeletonMeshObject;
+    TGLFaceGroup, TGLVectorFile, TGLSMVectorFile, TGLFreeForm;
+    TGLActor, TGLVectorFileFormat, TGLVectorFileFormatsList]
+*)
 
 interface
 

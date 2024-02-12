@@ -1,27 +1,36 @@
 object FormTorque: TFormTorque
   Left = 125
   Top = 119
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   BorderWidth = 5
   Caption = 'Torque'
-  ClientHeight = 407
-  ClientWidth = 751
+  ClientHeight = 712
+  ClientWidth = 1314
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 78
-    Width = 751
-    Height = 288
+    Top = 137
+    Width = 1314
+    Height = 504
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 110.444335937500000000
+    FieldOfView = 136.711135864257800000
     PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
@@ -30,59 +39,87 @@ object FormTorque: TFormTorque
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 751
-    Height = 78
+    Width = 1314
+    Height = 137
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alTop
     TabOrder = 1
     object lHexahedron: TLabel
-      Left = 280
-      Top = 8
-      Width = 116
-      Height = 39
+      Left = 490
+      Top = 14
+      Width = 162
+      Height = 72
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Alignment = taCenter
       Caption = 'Hexahedron has a small constant'#13#10'and linear damping'
       WordWrap = True
     end
     object lDodecahedron: TLabel
-      Left = 472
-      Top = 8
-      Width = 94
-      Height = 52
+      Left = 826
+      Top = 14
+      Width = 162
+      Height = 96
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Alignment = taCenter
       Caption = 'Dodecahedron has a'#13#10'small constant and'#13#10'quadratic damping'
       WordWrap = True
     end
     object lOctagedron: TLabel
-      Left = 128
-      Top = 8
-      Width = 85
-      Height = 39
+      Left = 224
+      Top = 14
+      Width = 140
+      Height = 96
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Alignment = taCenter
       Caption = 'Octahedron has a'#13#10'only quadratic damping'
       WordWrap = True
     end
     object lTetrahedron: TLabel
-      Left = 8
-      Top = 10
-      Width = 84
-      Height = 39
+      Left = 14
+      Top = 18
+      Width = 144
+      Height = 72
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Tetrahedron has an only quadratic damping'
       WordWrap = True
     end
     object lIcosahedron: TLabel
-      Left = 604
-      Top = 8
-      Width = 117
-      Height = 39
+      Left = 1057
+      Top = 14
+      Width = 203
+      Height = 72
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Alignment = taCenter
       Caption = 'Icosahedron has a small constant'#13#10'and linear damping'
       WordWrap = True
     end
     object CheckBox1: TCheckBox
-      Left = 8
-      Top = 55
-      Width = 81
-      Height = 17
+      Left = 14
+      Top = 96
+      Width = 142
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Double Mass'
       TabOrder = 0
       OnClick = CheckBox1Click
@@ -90,9 +127,13 @@ object FormTorque: TFormTorque
   end
   object PanelBottom: TPanel
     Left = 0
-    Top = 366
-    Width = 751
-    Height = 41
+    Top = 641
+    Width = 1314
+    Height = 71
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alBottom
     Caption = 
       'Move your mouse over an object and it will start spinning. Click' +

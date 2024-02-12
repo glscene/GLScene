@@ -33,7 +33,7 @@ uses
   GLS.Context,
   GLS.TextureFormat,
   GLSL.TextureShaders,
-  GLS.BaseClasses;
+  GLS.BaseClasses, Vcl.Menus, Vcl.ComCtrls;
 
 type
   TFormEarth = class(TForm)
@@ -44,7 +44,7 @@ type
     LightSourceSun: TGLLightSource;
     DirectOpenGL: TGLDirectOpenGL;
     GLCadencer: TGLCadencer;
-    Timer1: TTimer;
+    Timer: TTimer;
     SphereMoon: TGLSphere;
     dcEarth: TGLDummyCube;
     dcMoon: TGLDummyCube;
@@ -54,9 +54,28 @@ type
     Cameracontroller: TGLCamera;
     SkyDome: TGLSkyDome;
     ConstellationLines: TGLLines;
+    MainMenu: TMainMenu;
+    File1: TMenuItem;
+    New1: TMenuItem;
+    Open1: TMenuItem;
+    Save1: TMenuItem;
+    SaveAs1: TMenuItem;
+    Exit1: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    miView: TMenuItem;
+    miCore: TMenuItem;
+    Hide1: TMenuItem;
+    Show1: TMenuItem;
+    N3: TMenuItem;
+    Help1: TMenuItem;
+    Contents1: TMenuItem;
+    About1: TMenuItem;
+    PanelLeft: TPanel;
+    tvPlanets: TTreeView;
     procedure FormCreate(Sender: TObject);
     procedure DirectOpenGLRender(Sender: TObject; var rci: TGLRenderContextInfo);
-    procedure Timer1Timer(Sender: TObject);
+    procedure TimerTimer(Sender: TObject);
     procedure GLCadencerProgress(Sender: TObject; const deltaTime, newTime: Double);
     procedure GLSceneViewerMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
       X, Y: Integer);
@@ -66,6 +85,7 @@ type
     procedure GLSceneViewerDblClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure GLSceneViewerBeforeRender(Sender: TObject);
+    procedure Exit1Click(Sender: TObject);
   public
     ConstellationsAlpha: Single;
     TimeMultiplier: Single;
@@ -334,7 +354,7 @@ end;
 
 //--------------------------------------------------------------------------------
 
-procedure TFormEarth.Timer1Timer(Sender: TObject);
+procedure TFormEarth.TimerTimer(Sender: TObject);
 begin
   Caption := Format('Earth ' + '%.1f FPS', [GLSceneViewer.FramesPerSecond]);
   GLSceneViewer.ResetPerformanceMonitor;
@@ -496,6 +516,11 @@ begin
     '0' .. '9':
       TimeMultiplier := Power(Integer(Key) - Integer('0'), 3);
   end;
+end;
+
+procedure TFormEarth.Exit1Click(Sender: TObject);
+begin
+  Close;
 end;
 
 end.

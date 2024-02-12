@@ -1,36 +1,104 @@
 object FormEarth: TFormEarth
   Left = 412
   Top = 123
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Earth'
-  ClientHeight = 568
-  ClientWidth = 775
+  ClientHeight = 994
+  ClientWidth = 1356
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
+  Menu = MainMenu
   Position = poScreenCenter
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnMouseWheel = FormMouseWheel
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer: TGLSceneViewer
-    Left = 0
+    Left = 226
     Top = 0
-    Width = 775
-    Height = 568
+    Width = 1130
+    Height = 994
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = Camera
     BeforeRender = GLSceneViewerBeforeRender
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 148.535995483398400000
+    FieldOfView = 161.711547851562500000
     PenAsTouch = False
     Align = alClient
     OnDblClick = GLSceneViewerDblClick
     OnMouseDown = GLSceneViewerMouseDown
     OnMouseMove = GLSceneViewerMouseMove
     TabOrder = 0
+  end
+  object PanelLeft: TPanel
+    Left = 0
+    Top = 0
+    Width = 226
+    Height = 994
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
+    Align = alLeft
+    TabOrder = 1
+    ExplicitLeft = 14
+    ExplicitTop = 14
+    ExplicitHeight = 952
+    object tvPlanets: TTreeView
+      Left = 1
+      Top = 1
+      Width = 224
+      Height = 992
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
+      Align = alClient
+      Indent = 33
+      TabOrder = 0
+      Items.NodeData = {
+        070900000009540054007200650065004E006F00640065002D00000000000000
+        00000000FFFFFFFFFFFFFFFF0000000000000000000000000001074D00650072
+        0063007500720079000000290000000000000000000000FFFFFFFFFFFFFFFF00
+        0000000000000000000000000105560065006E00750073000000290000000000
+        000000000000FFFFFFFFFFFFFFFF000000000000000000010000000105450061
+        007200740068000000270000000000000000000000FFFFFFFFFFFFFFFF000000
+        0000000000000000000001044D006F006F006E00000027000000000000000000
+        0000FFFFFFFFFFFFFFFF0000000000000000000200000001044D006100720073
+        000000290000000000000000000000FFFFFFFFFFFFFFFF000000000000000000
+        000000000105440065006D006F0073000000290000000000000000000000FFFF
+        FFFFFFFFFFFF00000000000000000000000000010546006F0062006F00730000
+        002D0000000000000000000000FFFFFFFFFFFFFFFF0000000000000000000400
+        000001074A007500700069007400650072000000230000000000000000000000
+        FFFFFFFFFFFFFFFF00000000000000000000000000010249006F0000002B0000
+        000000000000000000FFFFFFFFFFFFFFFF000000000000000000000000000106
+        4500750072006F007000610000002F0000000000000000000000FFFFFFFFFFFF
+        FFFF000000000000000000000000000108430061006C006C006900730074006F
+        0000002D0000000000000000000000FFFFFFFFFFFFFFFF000000000000000000
+        000000000107470061006E0069006D006500640000002B000000000000000000
+        0000FFFFFFFFFFFFFFFF00000000000000000002000000010653006100740075
+        0072006E0000002D0000000000000000000000FFFFFFFFFFFFFFFF0000000000
+        0000000000000000010745006E00630065006C00610064000000290000000000
+        000000000000FFFFFFFFFFFFFFFF000000000000000000000000000105540069
+        00740061006E0000002B0000000000000000000000FFFFFFFFFFFFFFFF000000
+        0000000000000000000001065500720061006E007500730000002D0000000000
+        000000000000FFFFFFFFFFFFFFFF0000000000000000000000000001074E0065
+        007000740075006E0065000000290000000000000000000000FFFFFFFFFFFFFF
+        FF00000000000000000000000000010550006C00750074006F00}
+      ExplicitHeight = 950
+    end
   end
   object GLScene: TGLScene
     ObjectsSorting = osNone
@@ -137,8 +205,8 @@ object FormEarth: TFormEarth
     Left = 22
     Top = 92
   end
-  object Timer1: TTimer
-    OnTimer = Timer1Timer
+  object Timer: TTimer
+    OnTimer = TimerTimer
     Left = 348
     Top = 22
   end
@@ -6935,5 +7003,58 @@ object FormEarth: TFormEarth
     DesignTimeEnabled = False
     Left = 112
     Top = 16
+  end
+  object MainMenu: TMainMenu
+    Left = 504
+    Top = 28
+    object File1: TMenuItem
+      Caption = '&File'
+      object New1: TMenuItem
+        Caption = '&New'
+      end
+      object N2: TMenuItem
+        Caption = '-'
+      end
+      object Open1: TMenuItem
+        Caption = '&Open...'
+      end
+      object Save1: TMenuItem
+        Caption = '&Save'
+      end
+      object SaveAs1: TMenuItem
+        Caption = 'Save &As...'
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object Exit1: TMenuItem
+        Caption = 'E&xit'
+        OnClick = Exit1Click
+      end
+    end
+    object miView: TMenuItem
+      Caption = '&View'
+      object miCore: TMenuItem
+        Caption = '&Core'
+      end
+      object N3: TMenuItem
+        Caption = '-'
+      end
+      object Hide1: TMenuItem
+        Caption = '&Hide'
+      end
+      object Show1: TMenuItem
+        Caption = '&Show...'
+      end
+    end
+    object Help1: TMenuItem
+      Caption = '&Help'
+      object Contents1: TMenuItem
+        Caption = '&Contents'
+      end
+      object About1: TMenuItem
+        Caption = '&About...'
+      end
+    end
   end
 end

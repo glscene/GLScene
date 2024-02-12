@@ -4,6 +4,8 @@
 unit GLS.PersistentClasses;
 (*
    Base persistence classes.
+   The registered class is:
+     [TGLPersistentObjectList]
 
    These classes are used in GLScene but are designed for generic purpose.
    They implement a slightly different persistence mechanism then that of the VCL,

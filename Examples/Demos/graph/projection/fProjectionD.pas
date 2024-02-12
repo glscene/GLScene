@@ -17,6 +17,7 @@ uses
   GLS.SceneViewer,
   GLS.Texture,
   GLS.VectorGeometry,
+  GLS.VectorLists,
   GLS.GeomObjects,
   GLS.RenderContextInfo,
   GLS.State,

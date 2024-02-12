@@ -3,7 +3,10 @@
 //
 unit GLS.Graph;
 
-(* Graph plotting objects for GLScene *)
+(*
+  Graph plotting objects:
+  - TGLSamplingScale, TGLHeightField, TGLXYZGrid;
+*)
 
 interface
 

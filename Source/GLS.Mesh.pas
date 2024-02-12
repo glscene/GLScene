@@ -4,8 +4,11 @@
 unit GLS.Mesh;
 
 (*
-  This unit is for simple meshes and legacy support,
-  GLS.VectorFileObjects implements more efficient (though more complex) mesh tools.
+  The unit is for simple meshes and legacy support, while GLS.VectorFileObjects
+  implements more efficient though more complex mesh tools.
+
+  The registered class is:
+   [TGLMesh]
 *)
 
 interface
@@ -89,7 +92,7 @@ type
     constructor Create(AOwner: TPersistent); override;
     destructor Destroy; override;
     function CreateInterpolatedCoords(list2: TGLVertexList; lerpFactor: Single): TGLVertexList;
-    //  Adds a vertex to the list, fastest method. 
+    //  Adds a vertex to the list, fastest method.
     procedure AddVertex(const vertexData: TGLVertexData); overload;
     //  Adds a vertex to the list, fastest method for adding a triangle. 
     procedure AddVertex3(const vd1, vd2, vd3: TGLVertexData); overload;
@@ -123,7 +126,7 @@ type
     function SumVertexCoords: TAffineVector;
     //  Calculates the extents of the vertice coords. 
     procedure GetExtents(var min, max: TAffineVector);
-    //  Normalizes all normals. 
+    //  Normalizes all normals.
     procedure NormalizeNormals;
     //  Translate all coords by given vector 
     procedure Translate(const v: TAffineVector);

@@ -3,7 +3,11 @@
 //
 unit GLS.Scene;
 
-(* Base classes and structures *)
+(*
+  Base classes and structures. The registered classes are:
+   [TGLScene, TGLLightSource, TGLCamera, TGLProxyObject,
+    TGLRenderPoint, TGLMemoryViewer, TGLDirectOpenGL]
+*)
 
 interface
 
@@ -47,7 +51,7 @@ uses
   GLS.Logger;
 
 type
-  //Defines which features are taken from the master object.
+  // Defines which features are taken from the master object.
   TGLProxyObjectOption = (pooEffects, pooObjects, pooTransformation);
   TGLProxyObjectOptions = set of TGLProxyObjectOption;
   TGLCameraInvarianceMode = (cimNone, cimPosition, cimOrientation);
@@ -55,8 +59,8 @@ type
 
 const
   cDefaultProxyOptions = [pooEffects, pooObjects, pooTransformation];
-  GLSCENE_REVISION = '$Revision: 2023$';
-  GLSCENE_VERSION = 'v2.3 %s';
+  GLSCENE_REVISION = '$Revision: 2024$';
+  GLSCENE_VERSION = 'v2.4 %s';
 
 type
 

@@ -35,13 +35,12 @@ type
     GLSceneViewer1: TGLSceneViewer;
     GLCamera1: TGLCamera;
     GLLightSource1: TGLLightSource;
-    GLDummyCube1: TGLDummyCube;
-    GLActor1: TGLActor;
+    dcDodecahedron: TGLDummyCube;
     GLCadencer1: TGLCadencer;
-    GLMaterialLibrary1: TGLMaterialLibrary;
-    GLPolygon1: TGLPolygon;
-    dcCubes: TGLDummyCube;
-    GLCube1: TGLCube;
+    GLMatLibCube: TGLMaterialLibrary;
+    DodPolygon12: TGLPolygon;
+    dcCube: TGLDummyCube;
+    CubeMap: TGLCube;
     GLHexahedron1: TGLHexahedron;
     Panel1: TPanel;
     RadioGroup1: TRadioGroup;
@@ -49,11 +48,11 @@ type
     ffSphere: TGLFreeForm;
     dcPlaneCube: TGLDummyCube;
     PlaneFront: TGLPlane;
-    GLPlaneBack: TGLPlane;
-    GLPlaneBottom: TGLPlane;
-    GLPlaneTop: TGLPlane;
-    GLPlaneRight: TGLPlane;
-    GLPlaneLeft: TGLPlane;
+    PlaneBack: TGLPlane;
+    PlaneBottom: TGLPlane;
+    PlaneTop: TGLPlane;
+    PlaneRight: TGLPlane;
+    PlaneLeft: TGLPlane;
     GLMesh1: TGLMesh;
     chbRotate: TCheckBox;
     GLPoints1: TGLPoints;
@@ -63,9 +62,22 @@ type
     PolyTop: TGLPolygon;
     PolyRight: TGLPolygon;
     PolyBack: TGLPolygon;
-    GLPolygon4: TGLPolygon;
-    GLDisk1: TGLDisk;
-    polyTriangle: TGLPolygon;
+    PolyFront: TGLPolygon;
+    DiskMap: TGLDisk;
+    plBottom: TGLPlane;
+    Dodecahedron: TGLDodecahedron;
+    DodPolygon1: TGLPolygon;
+    DodPolygon2: TGLPolygon;
+    DodPolygon3: TGLPolygon;
+    DodPolygon5: TGLPolygon;
+    DodPolygon6: TGLPolygon;
+    DodPolygon7: TGLPolygon;
+    DodPolygon8: TGLPolygon;
+    DodPolygon9: TGLPolygon;
+    DodPolygon10: TGLPolygon;
+    DodPolygon11: TGLPolygon;
+    dcPolyDodec: TGLDummyCube;
+    DodPolygon4: TGLPolygon;
     procedure FormCreate(Sender: TObject);
     procedure dcPlaneCubeProgress(Sender: TObject; const DeltaTime, NewTime: Double);
     procedure GLCadencer1Progress(Sender: TObject; const DeltaTime, NewTime: Double);
@@ -119,8 +131,8 @@ procedure TFormMO.FormCreate(Sender: TObject);
 begin
   Path := GetCurrentAssetPath();
   SetCurrentDir(Path + '\map');
-  GLCube1.Material.Texture.Disabled := False;
-  GLCube1.Material.Texture.Image.LoadFromFile('earth.jpg');
+  CubeMap.Material.Texture.Disabled := False;
+  CubeMap.Material.Texture.Image.LoadFromFile('earth.jpg');
 //  GLMaterialLibrary1.Materials[6].Material.Texture.Image.LoadFromFile('earth.jpg');
 //  GLMaterialLibrary1.LibMaterialByName('txEarth').Material.Texture.Image.LoadFromFile('earth.jpg');
   PointsCube(Self);
@@ -133,20 +145,20 @@ begin
   if chbRotate.Checked then
   begin
     case RadioGroup1.ItemIndex of
-      0: GLCube1.TurnAngle := 90 * NewTime;
+      0: CubeMap.TurnAngle := 90 * NewTime;
       1: GLHexahedron1.TurnAngle := 90 * NewTime;
       2: dcPlaneCube.RollAngle := -90 * NewTime;
       3: GLPoints1.TurnAngle := 90 * NewTime;
       4: dcPolyCube.PitchAngle := -90 * NewTime;
-      5: GLDisk1.RollAngle := -90 * NewTime;
-      6: PolyTriangle.TurnAngle := -90 * NewTime;
+      5: DiskMap.RollAngle := -90 * NewTime;
+      6: Dodecahedron.TurnAngle := -90 * NewTime;
     end;
   end;
 end;
 
 procedure TFormMO.dcPlaneCubeProgress(Sender: TObject; const DeltaTime, NewTime: Double);
 begin
- // dcPlaneCube.MoveObjectAround(GLCamera1.TargetObject, sin(NewTime) * DeltaTime * 10, DeltaTime * 20);
+  dcPlaneCube.MoveObjectAround(GLCamera1.TargetObject, sin(NewTime) * DeltaTime * 10, DeltaTime * 20);
 end;
 
 
