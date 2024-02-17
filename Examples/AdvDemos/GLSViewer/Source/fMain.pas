@@ -192,6 +192,7 @@ type
     procedure acToolsInfoExecute(Sender: TObject);
     procedure snViewerMouseLeave(Sender: TObject);
   private
+    AssetPath: TFileName;
     procedure DoResetCamera;
     procedure SetupFreeFormShading;
     procedure ApplyShadeModeToMaterial(aMaterial: TGLMaterial);
@@ -300,7 +301,7 @@ procedure TMainForm.FormCreate(Sender: TObject);
 begin
   inherited;
  // SetCurrentDir(ExtractFilePath(ParamStr(0)));
-  SetCurrentDirToAsset();
+  AssetPath := GetCurrentAssetPath();
 
   NaviCube := TGLNaviCube.CreateAsChild(Scene.Objects);
   NaviCube.SceneViewer := snViewer;
@@ -316,6 +317,7 @@ begin
   if not nthShow then
   begin
     // using formats supported by gls
+    dmGLSViewer.OpenDialog.InitialDir := AssetPath + '\model';;
     dmGLSViewer.OpenDialog.Filter := VectorFileFormatsFilter;
     dmGLSViewer.SaveDialog.Filter := VectorFileFormatsSaveFilter;
     ApplyFSAA;
@@ -327,11 +329,9 @@ begin
   end;
 end;
 
-procedure TMainForm.acFileExitExecute(Sender: TObject);
-begin
-  Close;
-end;
-
+//
+// OpenDialog
+//
 procedure TMainForm.acFileOpenExecute(Sender: TObject);
 begin
   NaviCube.ActiveMouse := False;
@@ -343,6 +343,7 @@ procedure TMainForm.acFileOpenTexLibExecute(Sender: TObject);
 var
   I: Integer;
 begin
+  dmGLSViewer.ODTextures.InitialDir := AssetPath + '\texture';;
   if dmGLSViewer.ODTextures.Execute then
     with MaterialLib do
     begin
@@ -357,6 +358,7 @@ end;
 
 procedure TMainForm.acFilePickExecute(Sender: TObject);
 begin
+  dmGLSViewer.ODTextures.InitialDir := AssetPath + '\texture';;
   if dmGLSViewer.opDialog.Execute then
   begin
     with MaterialLib.Materials do
@@ -1017,6 +1019,11 @@ begin
 end;
 *)
 
+procedure TMainForm.acFileExitExecute(Sender: TObject);
+begin
+  Close;
+end;
+
 procedure TMainForm.CadencerProgress(Sender: TObject;
   const deltaTime, newTime: Double);
 begin
@@ -1064,5 +1071,6 @@ begin
     end;
   inherited;
 end;
+
 
 end.
