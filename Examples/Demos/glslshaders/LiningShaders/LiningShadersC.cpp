@@ -4,7 +4,7 @@
 #pragma hdrstop
 #include <tchar.h>
 //---------------------------------------------------------------------------
-USEFORM("fLiningShadersC.cpp", Form1);
+USEFORM("fLiningShadersC.cpp", FormLining);
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
@@ -12,7 +12,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 	{
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
-		Application->CreateForm(__classid(TForm1), &Form1);
+		Application->CreateForm(__classid(TFormLining), &FormLining);
 		Application->Run();
 	}
 	catch (Exception &exception)

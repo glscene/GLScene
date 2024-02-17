@@ -1,86 +1,115 @@
 object FormShadowVolumes: TFormShadowVolumes
   Left = 73
   Top = 86
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Shadow Volumes'
-  ClientHeight = 441
-  ClientWidth = 695
+  ClientHeight = 772
+  ClientWidth = 1216
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnResize = FormResize
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 560
-    Height = 441
+    Width = 980
+    Height = 772
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera
     Buffer.BackgroundColor = clBlack
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
-    FieldOfView = 154.447631835937500000
+    FieldOfView = 165.238723754882800000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewerMouseDown
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 560
+    Left = 980
     Top = 0
-    Width = 135
-    Height = 441
+    Width = 236
+    Height = 772
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alRight
     BevelInner = bvLowered
     BevelOuter = bvNone
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
+    Font.Height = -19
     Font.Name = 'Arial'
     Font.Style = []
     ParentFont = False
     TabOrder = 1
     DesignSize = (
-      135
-      441)
+      236
+      772)
     object Label1: TLabel
-      Left = 8
-      Top = 8
-      Width = 119
-      Height = 18
+      Left = 14
+      Top = 14
+      Width = 214
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Shadow Volumes'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
+      Font.Height = -26
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 16
-      Top = 368
-      Width = 94
-      Height = 14
+      Left = 28
+      Top = 644
+      Width = 163
+      Height = 22
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Anchors = [akLeft, akBottom]
       Caption = 'Shadow Resolution'
     end
     object CBShowVolumes: TCheckBox
-      Left = 16
-      Top = 192
-      Width = 97
-      Height = 17
+      Left = 28
+      Top = 336
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Show Volumes'
       TabOrder = 0
       OnClick = CBShowVolumesClick
     end
     object RBZFail: TRadioButton
-      Left = 16
-      Top = 88
-      Width = 97
-      Height = 17
+      Left = 28
+      Top = 154
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Z-Fail (capped)'
       Checked = True
       TabOrder = 1
@@ -88,37 +117,53 @@ object FormShadowVolumes: TFormShadowVolumes
       OnClick = RBZFailClick
     end
     object RBZPass: TRadioButton
-      Left = 16
-      Top = 112
-      Width = 73
-      Height = 17
+      Left = 28
+      Top = 196
+      Width = 128
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Z-Pass'
       TabOrder = 2
       OnClick = RBZFailClick
     end
     object RBNoShadows: TRadioButton
-      Left = 16
-      Top = 56
-      Width = 97
-      Height = 17
+      Left = 28
+      Top = 98
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'No shadows'
       TabOrder = 3
       OnClick = RBZFailClick
     end
     object RBDarkening: TRadioButton
-      Left = 16
-      Top = 144
-      Width = 105
-      Height = 17
+      Left = 28
+      Top = 252
+      Width = 184
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Darkening (faked)'
       TabOrder = 4
       OnClick = RBZFailClick
     end
     object CBMainLight: TCheckBox
-      Left = 16
-      Top = 232
-      Width = 97
-      Height = 17
+      Left = 28
+      Top = 406
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Main Light'
       Checked = True
       State = cbChecked
@@ -126,10 +171,14 @@ object FormShadowVolumes: TFormShadowVolumes
       OnClick = CBMainLightClick
     end
     object CBBlueLight: TCheckBox
-      Left = 16
-      Top = 257
-      Width = 97
-      Height = 17
+      Left = 28
+      Top = 450
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Blue Light'
       Checked = True
       State = cbChecked
@@ -137,10 +186,14 @@ object FormShadowVolumes: TFormShadowVolumes
       OnClick = CBBlueLightClick
     end
     object CBRedLight: TCheckBox
-      Left = 16
-      Top = 280
-      Width = 97
-      Height = 17
+      Left = 28
+      Top = 490
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Red Light'
       Checked = True
       State = cbChecked
@@ -148,10 +201,14 @@ object FormShadowVolumes: TFormShadowVolumes
       OnClick = CBRedLightClick
     end
     object ScrollBar_ShadowResolution: TScrollBar
-      Left = 16
-      Top = 388
-      Width = 89
-      Height = 17
+      Left = 28
+      Top = 679
+      Width = 156
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Anchors = [akLeft, akBottom]
       Max = 21
       Min = 3
@@ -161,10 +218,14 @@ object FormShadowVolumes: TFormShadowVolumes
       OnChange = ScrollBar_ShadowResolutionChange
     end
     object Button_GenerateSilhouette: TButton
-      Left = 16
-      Top = 328
-      Width = 105
-      Height = 25
+      Left = 28
+      Top = 574
+      Width = 184
+      Height = 44
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Generate Silhouette'
       TabOrder = 9
       OnClick = Button_GenerateSilhouetteClick

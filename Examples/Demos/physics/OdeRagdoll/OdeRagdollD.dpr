@@ -1,4 +1,4 @@
-{
+(*
   GLRagdoll Demo by Lucas Goraieb
 
   This demo shows how to use ODE skinned ragdolls in GLScene.
@@ -7,12 +7,8 @@
   Also this should not be the official demo, it really need some cleanup and
   some improvements, I hope someone do this soon.
 
-  This demo is based on Dave Gravel's ODE Ragdoll.
-
-  Version history:
-
-  <li> 21/11/2009 - DaStr - Added to the CVS
-}
+  This demo is based on Dave Gravel's Ragdoll added by DaStr 21/11/2009
+*)
 
 program OdeRagdollD;
 

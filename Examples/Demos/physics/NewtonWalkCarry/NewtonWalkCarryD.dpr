@@ -1,10 +1,7 @@
-{ : Walk and carry demo.
-
-  <b>History : </b><font size=-1><ul>
-  <li>31/01/11 - Yar - Updated after Huge update GLNGDManager (by Dev)
-  <li>25/12/10 - Dev - Created
-  </ul>
-}
+(*
+  Walk and carry demo.
+  Created by Dev 25/12/10
+*)
 program NewtonWalkCarryD;
 
 uses

@@ -3,12 +3,6 @@
         <ProjectGuid>{503B7578-1619-4BE5-ABDF-7CA291825FFD}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="BenchD.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="BenchC.cbproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="canvas\CanvasD.dproj">
             <Dependencies/>
         </Projects>
@@ -53,24 +47,6 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="BenchD">
-        <MSBuild Projects="BenchD.dproj"/>
-    </Target>
-    <Target Name="BenchD:Clean">
-        <MSBuild Projects="BenchD.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="BenchD:Make">
-        <MSBuild Projects="BenchD.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="BenchC">
-        <MSBuild Projects="BenchC.cbproj"/>
-    </Target>
-    <Target Name="BenchC:Clean">
-        <MSBuild Projects="BenchC.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="BenchC:Make">
-        <MSBuild Projects="BenchC.cbproj" Targets="Make"/>
-    </Target>
     <Target Name="CanvasD">
         <MSBuild Projects="canvas\CanvasD.dproj"/>
     </Target>
@@ -180,13 +156,13 @@
         <MSBuild Projects="whirlwind\WhirlwindC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="BenchD;BenchC;CanvasD;CanvasC;MegacubeD;MegaCubeC;MegaglassD;MegaglassC;SmokingD;SmokingC;VolcanoD;VolcanoC;WhirlwindD;WhirlwindC"/>
+        <CallTarget Targets="CanvasD;CanvasC;MegacubeD;MegaCubeC;MegaglassD;MegaglassC;SmokingD;SmokingC;VolcanoD;VolcanoC;WhirlwindD;WhirlwindC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="BenchD:Clean;BenchC:Clean;CanvasD:Clean;CanvasC:Clean;MegacubeD:Clean;MegaCubeC:Clean;MegaglassD:Clean;MegaglassC:Clean;SmokingD:Clean;SmokingC:Clean;VolcanoD:Clean;VolcanoC:Clean;WhirlwindD:Clean;WhirlwindC:Clean"/>
+        <CallTarget Targets="CanvasD:Clean;CanvasC:Clean;MegacubeD:Clean;MegaCubeC:Clean;MegaglassD:Clean;MegaglassC:Clean;SmokingD:Clean;SmokingC:Clean;VolcanoD:Clean;VolcanoC:Clean;WhirlwindD:Clean;WhirlwindC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="BenchD:Make;BenchC:Make;CanvasD:Make;CanvasC:Make;MegacubeD:Make;MegaCubeC:Make;MegaglassD:Make;MegaglassC:Make;SmokingD:Make;SmokingC:Make;VolcanoD:Make;VolcanoC:Make;WhirlwindD:Make;WhirlwindC:Make"/>
+        <CallTarget Targets="CanvasD:Make;CanvasC:Make;MegacubeD:Make;MegaCubeC:Make;MegaglassD:Make;MegaglassC:Make;SmokingD:Make;SmokingC:Make;VolcanoD:Make;VolcanoC:Make;WhirlwindD:Make;WhirlwindC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

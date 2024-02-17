@@ -1,4 +1,5 @@
-{ : ODE Conveyor belt demo.
+(*
+  ODE Conveyor belt demo.
 
   This demo demontrates how to use the Motion1 parameter of ODE.
 
@@ -34,10 +35,8 @@
   Teflon 	        Teflon 	  0.04[8] 	    0.04[8]
   Wood 	          Wood 	    0.25-0.5[7] 	0.2 (wet)[7]
 
-  <b>History : </b><font size=-1><ul>
-  <li>19/09/10 - YP - Created by Yann Papouin
-  </ul>
-}
+  Created by Yann Papouin 19/09/10
+*)
 program OdeConveyorD;
 
 uses

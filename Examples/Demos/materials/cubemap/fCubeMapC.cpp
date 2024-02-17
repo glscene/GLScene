@@ -15,6 +15,7 @@
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.Texture"
 #pragma link "GLS.FileDDS"
+#pragma link "GLS.VectorFileObjects"
 #pragma resource "*.dfm"
 TForm1* Form1;
 

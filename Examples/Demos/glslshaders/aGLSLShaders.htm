@@ -78,47 +78,60 @@ ul
  <li class=MsoNormal><span lang=FR><a href="BumpShader/BumpShaderD.dpr"><b>Bump
      shader</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal><span lang=FR>GLSL bump shader.</span></li>
+  <li class=MsoNormal><span lang=FR>Bump shader.</span></li>
   <li class=MsoNormal><span lang=FR>requires a GLSL capable card</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=416 height=302 src=BumpShader.jpg></p>
+<p class=MsoNormal><img border=0 width=416 height=302 src=BumpShader/BumpShader.jpg></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="bunnybump/BunnyBumpD.dpr"><b>Bump Bunny</b></a><b>
+     :</b> </span></li>
+ <ul style='margin-top:0cm' type=circle>
+  <li class=MsoNormal><span lang=FR>Using the GLBumpShader for object space
+      bump mapping. </span></li>
+  <li class=MsoNormal><span lang=FR>There are currently 2 bump methods: a dot3
+      texture combiner and a basic ARB fragment program. </span></li>
+  <li class=MsoNormal><span lang=FR>Specular: Blinn or Phong</span></li>
+  <li class=MsoNormal><span lang=FR>Demonstrates checking for card capability
+      and responding with program limiting changes.</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><img border=0 width=626 height=521 src=bunnybump/BunnyBump.jpg></p>
+
 
 <ul style='margin-top:0cm' type=disc>
  <li class=MsoNormal><span lang=FR><a
-     href="DiffuseSpecularShader/DiffuseShaderD.dpr"><b>Diffuse specular shader</b></a><b>&nbsp;:</b></span></li>
+     href="DiffuseShader/DiffuseShaderD.dpr"><b>Diffuse specular shader</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>GLSL diffuse specular shader.</span></li>
   <li class=MsoNormal><span lang=FR>requires a GLSL capable card</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=421 height=314 src=DiffuseShader.jpg></p>
+<p class=MsoNormal><img border=0 width=421 height=314 src=DiffuseShader/DiffuseShader.jpg></p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal><span lang=FR><a href="GLSLShaderComponent/ShaderCompD.dpr"><b>GLSL
-     shader component</b></a><b>&nbsp;:</b></span></li>
+ <li class=MsoNormal><span lang=FR><a
+     href="Mandelbrot/MandelbrotD.dpr"><b>Mandelbrot</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
-  <li class=MsoNormal><span lang=FR>demonstrates TGLSLShader, the GLSL shader
-      component.</span></li>
-  <li class=MsoNormal><span lang=FR>can include your own GLSL shaders</span></li>
-  <li class=MsoNormal><span lang=FR>requires a GLSL capable card</span></li>
+  <li class=MsoNormal><span lang=FR>Mandelbrot fractal with GLSL shader.</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=438 height=316 src=ShaderComponent.jpg></p>
+<p class=MsoNormal><img border=0 width=421 height=314 src=Mandelbrot/Mandelbrot.jpg></p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal><span lang=FR><a href="OceanShader/OceanD.dpr"><b>Ocean</b></a><b>&nbsp;:</b></span></li>
+ <li class=MsoNormal><span lang=FR><a href="Ocean/OceanD.dpr"><b>Ocean</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>GLSL shader ocean. Yes, it’s almost real
       ocean waves. </span></li>
   <li class=MsoNormal><span lang=FR>requires a GLSL capable card</span></li>
  </ul>
 </ul>
-
-<p class=MsoNormal><img border=0 width=453 height=348 src=Ocean.jpg></p>
+<p class=MsoNormal><img border=0 width=453 height=348 src=Ocean/Ocean.jpg></p>
 
 <ul style='margin-top:0cm' type=disc>
  <li class=MsoNormal><span lang=FR><a href="PostShader/PostShaderD.dpr"><b>PostShader</b></a><b>&nbsp;:</b></span></li>
@@ -129,10 +142,10 @@ ul
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=460 height=358 src=PostShader.jpg></p>
+<p class=MsoNormal><img border=0 width=460 height=358 src=PostShader/PostShader.jpg></p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal><span lang=FR><a href="ShadersLab/ShadersLabD.dpr"><b>ShadersLab</b></a><b>&nbsp;:</b></span></li>
+ <li class=MsoNormal><span lang=FR><a href="ShadersLab/ShadersLabD.dpr"><b>Shaders Lab</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>Shaders Lab.</span></li>
   <li class=MsoNormal><span lang=FR>requires a GLSL capable card (Opengl 2.0
@@ -157,19 +170,43 @@ ul
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=494 height=374 src=ShadersLab.jpg></p>
+<p class=MsoNormal><img border=0 width=494 height=374 src=ShadersLab/ShadersLab.jpg></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="ShaderComponent/ShaderCompD.dpr"><b>GLSL
+     shader component</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
+  <li class=MsoNormal><span lang=FR>demonstrates TGLSLShader, the GLSL shader
+      component.</span></li>
+  <li class=MsoNormal><span lang=FR>can include your own GLSL shaders</span></li>
+  <li class=MsoNormal><span lang=FR>requires a GLSL capable card</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><img border=0 width=438 height=316 src=ShaderComponent/ShaderComponent.jpg></p>
+
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="ShaderToy/ShaderToyD.dpr"><b>Eiffie shader</b></a><b>&nbsp;:</b></span></li>
+ <ul style='margin-top:0cm' type=circle>
+  <li class=MsoNormal><span lang=FR>The GLSL shader from shadertoy site.</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><img border=0 width=438 height=316 src=ShaderToy/ShaderToy.jpg></p>
+
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
 <ul style='margin-top:0cm' type=disc>
- <li class=MsoNormal><span lang=FR><a href="SkyboxShader/SkyboxShaderD.dpr"><b>SkyboxShader</b></a><b>&nbsp;:</b></span></li>
+ <li class=MsoNormal><span lang=FR><a href="SkyboxShader/SkyboxShaderD.dpr"><b>Skybox Shader</b></a><b>&nbsp;:</b></span></li>
  <ul style='margin-top:0cm' type=circle>
   <li class=MsoNormal><span lang=FR>GLSL skybox shader. </span></li>
   <li class=MsoNormal><span lang=FR>There are a sphere and thor with cubemaps.</span></li>
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=484 height=366 src=SkyboxShader.jpg></p>
+<p class=MsoNormal><img border=0 width=484 height=366 src=SkyboxShader/SkyboxShader.jpg></p>
 
 <p class=MsoNormal><span lang=FR><a href="../demos.htm">Back</a></span></p>
 

@@ -9,13 +9,13 @@
         <Projects Include="ArchiveEdit\ArchiveEditD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="GLInfo\GLInfosD.dproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="fontgen\FontgenD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="fontgen\FontgenC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GLInfos\GLInfosD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="HTFUtils\HTFViewerD.dproj">
@@ -68,15 +68,6 @@
     <Target Name="ArchiveEditD:Make">
         <MSBuild Projects="ArchiveEdit\ArchiveEditD.dproj" Targets="Make"/>
     </Target>
-    <Target Name="GLInfosD">
-        <MSBuild Projects="GLInfo\GLInfosD.dproj"/>
-    </Target>
-    <Target Name="GLInfosD:Clean">
-        <MSBuild Projects="GLInfo\GLInfosD.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="GLInfosD:Make">
-        <MSBuild Projects="GLInfo\GLInfosD.dproj" Targets="Make"/>
-    </Target>
     <Target Name="FontgenD">
         <MSBuild Projects="fontgen\FontgenD.dproj"/>
     </Target>
@@ -94,6 +85,15 @@
     </Target>
     <Target Name="FontgenC:Make">
         <MSBuild Projects="fontgen\FontgenC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="GLInfosD">
+        <MSBuild Projects="GLInfos\GLInfosD.dproj"/>
+    </Target>
+    <Target Name="GLInfosD:Clean">
+        <MSBuild Projects="GLInfos\GLInfosD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLInfosD:Make">
+        <MSBuild Projects="GLInfos\GLInfosD.dproj" Targets="Make"/>
     </Target>
     <Target Name="HTFViewerD">
         <MSBuild Projects="HTFUtils\HTFViewerD.dproj"/>
@@ -168,13 +168,13 @@
         <MSBuild Projects="ScreenSaver\ScreenSaverC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="ArchiverD;ArchiveEditD;GLInfosD;FontgenD;FontgenC;HTFViewerD;HTFPackD;JoystickD;KeymapD;LanguageD;RecorderD;ScreenSaverD;ScreenSaverC"/>
+        <CallTarget Targets="ArchiverD;ArchiveEditD;FontgenD;FontgenC;GLInfosD;HTFViewerD;HTFPackD;JoystickD;KeymapD;LanguageD;RecorderD;ScreenSaverD;ScreenSaverC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ArchiverD:Clean;ArchiveEditD:Clean;GLInfosD:Clean;FontgenD:Clean;FontgenC:Clean;HTFViewerD:Clean;HTFPackD:Clean;JoystickD:Clean;KeymapD:Clean;LanguageD:Clean;RecorderD:Clean;ScreenSaverD:Clean;ScreenSaverC:Clean"/>
+        <CallTarget Targets="ArchiverD:Clean;ArchiveEditD:Clean;FontgenD:Clean;FontgenC:Clean;GLInfosD:Clean;HTFViewerD:Clean;HTFPackD:Clean;JoystickD:Clean;KeymapD:Clean;LanguageD:Clean;RecorderD:Clean;ScreenSaverD:Clean;ScreenSaverC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ArchiverD:Make;ArchiveEditD:Make;GLInfosD:Make;FontgenD:Make;FontgenC:Make;HTFViewerD:Make;HTFPackD:Make;JoystickD:Make;KeymapD:Make;LanguageD:Make;RecorderD:Make;ScreenSaverD:Make;ScreenSaverC:Make"/>
+        <CallTarget Targets="ArchiverD:Make;ArchiveEditD:Make;FontgenD:Make;FontgenC:Make;GLInfosD:Make;HTFViewerD:Make;HTFPackD:Make;JoystickD:Make;KeymapD:Make;LanguageD:Make;RecorderD:Make;ScreenSaverD:Make;ScreenSaverC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

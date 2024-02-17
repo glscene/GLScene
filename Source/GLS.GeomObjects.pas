@@ -407,10 +407,10 @@ type
   TGLPolygonParts = set of TGLPolygonPart;
 
   (* A basic polygon object.
-    The curve is described by the Nodes and SplineMode properties, should be
+    The contour is described by the Nodes and SplineMode properties, it should be
     planar and is automatically tessellated.
     Texture coordinates are deduced from X and Y coordinates only.
-    This object allows only for polygons described by a single curve, if you
+    This object allows only for polygons described by a single contour, if you
     need "complex polygons" with holes, patches and cutouts, see GLS.MultiPolygon. *)
   TGLPolygon = class(TGLPolygonBase)
   private
@@ -3610,9 +3610,9 @@ end;
 initialization
 // -------------------------------------------------------------
 
-RegisterClasses([TGLDodecahedron, TGLIcosahedron, TGLHexahedron,
-    TGLOctahedron, TGLTetrahedron]);
-RegisterClasses([TGLCylinder, TGLCone, TGLTorus, TGLDisk, TGLArrowLine,
-  TGLAnnulus, TGLFrustrum, TGLPolygon, TGLCapsule, TGLArrowArc, TGLTeapot]);
+RegisterClasses(
+ [TGLDodecahedron, TGLIcosahedron, TGLHexahedron, TGLOctahedron, TGLTetrahedron,
+  TGLCylinder, TGLCone, TGLTorus, TGLDisk, TGLArrowLine, TGLAnnulus,
+  TGLFrustrum, TGLPolygon, TGLCapsule, TGLArrowArc, TGLTeapot]);
 
 end.

@@ -3,7 +3,12 @@
 //
 unit GLS.VectorLists;
 
-(*  Misc. lists of vectors and entities *)
+(*
+  Misc. lists of vectors and entities
+  The registered classes are:
+    [TGLAffineVectorList, TGLVectorList, TGLTexPointList,
+     TGLSingleList, TGLDoubleList, TGL4ByteList, TGLLongWordList]
+*)
 
 interface
 

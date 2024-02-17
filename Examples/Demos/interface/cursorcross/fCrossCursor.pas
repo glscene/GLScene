@@ -22,7 +22,7 @@ uses
   GLS.VectorTypes,
   GLS.FileTGA,
   GLS.Coordinates,
-  GLS.GLS.BaseClasses;
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)
@@ -78,16 +78,19 @@ end;
 
 procedure TForm1.GLCadencer1Progress(Sender: TObject; const deltaTime,
   newTime: Double);
-var v:TVector4f;
+var
+  v: TVector4f;
 begin
-  PlaneTarget.Roll(deltatime*50);
+  PlaneTarget.Roll(deltaTime * 50);
 
-  if _look then begin
-    vp.Buffer.ScreenVectorIntersectWithPlane(vectormake(_mx,vp.height-_my,0),player.AbsolutePosition,player.AbsoluteUp,v);
-    PlaneTarget.AbsolutePosition:=v;
-    player.PointTo(v,player.AbsoluteUp);
-    _look:=false;
-    end;
+  if _look then
+  begin
+    vp.Buffer.ScreenVectorIntersectWithPlane(vectormake(_mx, vp.height - _my,
+      0), Player.AbsolutePosition, Player.AbsoluteUp, v);
+    PlaneTarget.AbsolutePosition := v;
+    Player.PointTo(v, Player.AbsoluteUp);
+    _look := false;
+  end;
 end;
 
 end.

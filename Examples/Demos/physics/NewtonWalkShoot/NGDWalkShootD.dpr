@@ -6,9 +6,9 @@
   Press Middle Mouse to grab.
   Press MouseLeft to shoot.
   Hold MouseRight to look
-
   Body has two Upvectors joint, one in Y one in X.
-  04/02/11 - FP - Created by Franck Papouin
+
+  Created by Franck Papouin 04/02/11
 *)
 program NGDWalkShootD;
 

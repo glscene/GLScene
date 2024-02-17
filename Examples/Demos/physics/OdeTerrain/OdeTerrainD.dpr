@@ -1,7 +1,8 @@
-{:  Ode Terrain
-     Getting a GLODEManager and GLTerrainRenderer talking.
-    Use '1' -> '5' keys to drop objects onto Terrain.
-}
+(*
+  Ode Terrain
+  Getting a GLODEManager and GLTerrainRenderer talking.
+  Use '1' -> '5' keys to drop objects onto Terrain.
+*)
 program OdeTerrainD;
 
 uses

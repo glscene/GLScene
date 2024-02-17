@@ -11,9 +11,9 @@ copy "%~dp0cgGL.dll" %SystemRoot%\System32\
 
 echo Copying SDL2 DLLs
 rem win32
-copy "%~dp0sdl2_32.dll" %SystemRoot%\SysWOW64\sdl2_32.dll
+copy "%~dp0sdl2.dll" %SystemRoot%\SysWOW64\sdl2.dll
 rem win64
-copy "%~dp0sdl2_64.dll" %SystemRoot%\System32\sdl2_64.dll
+copy "%~dp0sdl2.dll" %SystemRoot%\System32\sdl2.dll
 
 echo Copying Sound DLLs
 rem win32

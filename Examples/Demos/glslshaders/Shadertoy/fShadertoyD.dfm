@@ -1,43 +1,52 @@
-object Form1: TForm1
+object FormEiffie: TFormEiffie
   Left = 193
   Top = 127
-  ClientHeight = 399
-  ClientWidth = 640
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
+  ClientHeight = 698
+  ClientWidth = 1134
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnResize = FormResize
-  TextHeight = 13
-  object vp: TGLSceneViewer
+  PixelsPerInch = 168
+  TextHeight = 24
+  object SceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 640
-    Height = 399
+    Width = 1134
+    Height = 698
     Cursor = crHandPoint
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = cam
     Buffer.BackgroundColor = 15000804
     Buffer.AmbientColor.Color = {0000000000000000000000000000803F}
-    FieldOfView = 117.945869445800800000
+    FieldOfView = 142.050003051757800000
     PenAsTouch = False
     Align = alClient
-    OnClick = vpClick
+    OnClick = SceneViewerClick
     TabOrder = 0
   end
-  object GLScene1: TGLScene
-    Left = 8
+  object GLScene: TGLScene
+    Left = 64
     Top = 8
-    object dc_cam: TGLDummyCube
+    object dcCamera: TGLDummyCube
       CubeSize = 1.000000000000000000
       EdgeColor.Color = {00000000000000000000803F0000803F}
       object cam: TGLCamera
         DepthOfView = 1000.000000000000000000
         FocalLength = 120.000000000000000000
-        TargetObject = dc_cam
+        TargetObject = dcCamera
         Position.Coordinates = {000080400000C040000040400000803F}
       end
     end
@@ -51,18 +60,18 @@ object Form1: TForm1
       end
     end
   end
-  object cad: TGLCadencer
-    Scene = GLScene1
+  object GLCadencer: TGLCadencer
+    Scene = GLScene
     Mode = cmApplicationIdle
     SleepLength = 1
-    OnProgress = cadProgress
-    Left = 40
-    Top = 8
+    OnProgress = GLCadencerProgress
+    Left = 54
+    Top = 134
   end
-  object at: TGLAsyncTimer
+  object GLAsyncTimer: TGLAsyncTimer
     Enabled = True
-    OnTimer = atTimer
-    Left = 72
+    OnTimer = GLAsyncTimerTimer
+    Left = 226
     Top = 8
   end
 end

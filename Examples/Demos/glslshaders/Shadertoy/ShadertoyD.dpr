@@ -2,12 +2,12 @@ program ShadertoyD;
 
 uses
   Forms,
-  fShadertoyD in 'fShadertoyD.pas' {Form1};
+  fShadertoyD in 'fShadertoyD.pas' {FormEiffie};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormEiffie, FormEiffie);
   Application.Run;
 end.

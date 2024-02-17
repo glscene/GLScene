@@ -1,25 +1,34 @@
 object MainForm: TMainForm
-  Left = 436
-  Top = 247
+  Left = 307
+  Top = 542
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Sky Clouds'
-  ClientHeight = 515
-  ClientWidth = 792
+  ClientHeight = 788
+  ClientWidth = 1100
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -10
+  Font.Height = -18
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSV: TGLSceneViewer
-    Left = 105
+    Left = 127
     Top = 0
-    Width = 687
-    Height = 515
+    Width = 973
+    Height = 788
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = cam
-    FieldOfView = 141.469467163085900000
+    FieldOfView = 154.265792846679700000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSVMouseDown
@@ -28,51 +37,79 @@ object MainForm: TMainForm
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 105
-    Height = 515
+    Width = 127
+    Height = 788
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alLeft
     Alignment = taRightJustify
     TabOrder = 1
     object Label1: TLabel
-      Left = 3
-      Top = 105
-      Width = 45
-      Height = 13
+      Left = 5
+      Top = 184
+      Width = 79
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'N = Night'
     end
     object Label2: TLabel
-      Left = 3
-      Top = 48
-      Width = 39
-      Height = 13
+      Left = 5
+      Top = 84
+      Width = 66
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'D = Day'
     end
     object Label3: TLabel
-      Left = 2
-      Top = 67
-      Width = 66
-      Height = 13
+      Left = 4
+      Top = 117
+      Width = 115
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'C = Weather1'
     end
     object Label4: TLabel
-      Left = 2
-      Top = 86
-      Width = 66
-      Height = 13
+      Left = 4
+      Top = 151
+      Width = 114
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'S = Weather2'
     end
     object Label5: TLabel
-      Left = 16
-      Top = 8
-      Width = 26
-      Height = 13
+      Left = 28
+      Top = 14
+      Width = 46
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Keys:'
     end
     object PanelFPS: TPanel
-      Left = 3
-      Top = 136
-      Width = 96
-      Height = 41
+      Left = 5
+      Top = 238
+      Width = 168
+      Height = 72
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'FPS'
       TabOrder = 0
     end

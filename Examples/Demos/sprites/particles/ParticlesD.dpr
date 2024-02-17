@@ -1,4 +1,5 @@
-{: Basic particle system.
+(*
+   Basic particle system.
 
    This is a very basic use of the particle systems in GLScene : colored
    alos (sprites) are created randomly with fade-in and fade-out effects, and
@@ -20,7 +21,8 @@
    size to avoid slowdown. This one could make a nice screen-saver, this is
    left as an exercice to reader (hint : you just need to drop 1 component,
    type in 3 characters and press CTRL+F9).
-}
+*)
+
 program ParticlesD;
 
 uses

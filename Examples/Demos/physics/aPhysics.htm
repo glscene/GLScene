@@ -82,7 +82,81 @@ ul
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=549 height=406 src=ClothActor.jpg></p>
+<p class=MsoNormal><img border=0 width=549 height=406 src=ClothActor/ClothActor.jpg></p>
+
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="NewtonDensity/NewtonDensityD.dpr"><b>NewtonDensity
+     </b></a><b>&nbsp;: </b></span></li>
+ <ul style='margin-top:0cm' type=circle>
+  <li class=MsoNormal><span lang=FR>  This demo explains how to use customForceAndTorque, 
+  and show the newton api buoyancy effect as example. Density unit is the number of mass unit per volume unit: D=M/V
+  Body volume is calculated by Newton, and Mass is the product result of Density*Volume.
+  If fluidDensity=bodyDensity, the body will be immerged like a submarine. </span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><img border=0 width=549 height=406 src=NewtonDensity/NewtonDensity.jpg></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="NewtonJoints/NewtonJointsD.dpr"><b>NewtonJoints
+     </b></a><b>&nbsp;: </b></span></li>
+ <ul style='margin-top:0cm' type=circle>
+  <li class=MsoNormal><span lang=FR>   This example show Joints.
+  Mouse1 to pick, Mouse2 to move camera. When you create Joints with TGLNGD, 
+  it's better if one of the two bodies is static.
+  In debug view (If ShowJoint is true in manager), the blues lines represent
+  pins direction, aquamarine dot represent pivot point, and aqua is connections
+  between BaseSceneObjects. However if you create multiples connected joints
+  (ex: FLOOR<--HINGE-->CUBE<--HINGE-->SPHERE), the debug view won't match 
+  to bodies positions because Joints are represented in global space.
+. </span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><img border=0 width=549 height=406 src=NewtonJoints/NewtonJoints.jpg></p>
+
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="NewtonMaterial/NewtonMaterialD.dpr"><b>NewtonMaterial
+     </b></a><b>&nbsp;: </b></span></li>
+ <ul style='margin-top:0cm' type=circle>
+  <li class=MsoNormal><span lang=FR>    This demo demonstrates how to use material (or surface) effects with newton.
+  Manager owns SurfaceItems and SurfacePair list where we can adjust elasticity,friction... between two SurfaceItems. 
+  We set SurfaceItems for each NGDBehaviours, and in SurfacePair, we choose the two group-id wich perform these effects.
+  Actually we can't set surfaceItem on behaviour (or on surfacePair) in design time. 
+  This must be done in runtime. </span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><img border=0 width=549 height=406 src=NewtonMaterial/NewtonMaterial.jpg></p>
+
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="NewtonPick/NewtonMousePickD.dpr"><b>NewtonPick
+     </b></a><b>&nbsp;: </b></span></li>
+ <ul style='margin-top:0cm' type=circle>
+  <li class=MsoNormal><span lang=FR>      This example show how to move a body by calling the pick function of joint.
+  Change kinematicControllerOptions.PickModeLinear to feel the difference. 
+  Most of the code must be written by developer in mouse events. </span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><img border=0 width=549 height=406 src=NewtonPick/NewtonMousePick.jpg></p>
+
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal><span lang=FR><a href="NewtonSimple/NewtonSimpleD.dpr"><b>NewtonSimple
+     </b></a><b>&nbsp;: </b></span></li>
+ <ul style='margin-top:0cm' type=circle>
+  <li class=MsoNormal><span lang=FR>        This is the simplest example of how to create dynamic body suported by NGD.
+  To execute the simulation we need to indicate to the physics engine the time
+  elapsed for update in GLCadencer1Progress. The floor is static, so it can't move. </span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal><img border=0 width=549 height=406 src=NewtonSimple/NewtonSimple.jpg></p>
+
 
 <ul style='margin-top:0cm' type=disc>
  <li class=MsoNormal><span lang=FR><a href="OdeClothify/OdeClothifyD.dpr"><b>OdeClothify
@@ -95,7 +169,7 @@ ul
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=500 height=362 src=OdeClothify.jpg></p>
+<p class=MsoNormal><img border=0 width=500 height=362 src=OdeClothify/OdeClothify.jpg></p>
 
 <ul style='margin-top:0cm' type=disc>
  <li class=MsoNormal><span lang=FR><a href="OdeFurball/OdeFurballD.dpr"><b>Ode
@@ -107,7 +181,7 @@ ul
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=505 height=345 src=OdeFurBall.jpg></p>
+<p class=MsoNormal><img border=0 width=505 height=345 src=OdeFurball/OdeFurBall.jpg></p>
 
 <ul style='margin-top:0cm' type=disc>
  <li class=MsoNormal><span lang=FR><a href="OdeMachine/OdeMachineD.dpr"><b>Ode
@@ -119,7 +193,7 @@ ul
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=507 height=356 src=OdeMachine.jpg></p>
+<p class=MsoNormal><img border=0 width=507 height=356 src=OdeMachine/OdeMachine.jpg></p>
 
 <ul style='margin-top:0cm' type=disc>
  <li class=MsoNormal><span lang=FR><a href="OdeRagdoll/OdeRagdollD.dpr"><b><span
@@ -132,7 +206,7 @@ ul
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=505 height=364 src=OdeRagdoll.jpg></p>
+<p class=MsoNormal><img border=0 width=505 height=364 src=OdeRagdoll/OdeRagdoll.jpg></p>
 
 <ul style='margin-top:0cm' type=disc>
  <li class=MsoNormal><span lang=FR><a href="OdeSimple/OdeSimpleD.dpr"><b>Ode
@@ -143,7 +217,7 @@ ul
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=515 height=379 src=OdeSimple.jpg></p>
+<p class=MsoNormal><img border=0 width=515 height=379 src=OdeSimple/OdeSimple.jpg></p>
 
 <ul style='margin-top:0cm' type=disc>
  <li class=MsoNormal><span lang=FR><a href="OdeTerrain/OdeTerrainD.dpr"><b>Ode
@@ -156,7 +230,7 @@ ul
  </ul>
 </ul>
 
-<p class=MsoNormal><img border=0 width=526 height=389 src=OdeTerrain.jpg></p>
+<p class=MsoNormal><img border=0 width=526 height=389 src=OdeTerrain/OdeTerrain.jpg></p>
 
 <p class=MsoNormal><span lang=FR><a href="../../../demos.htm">Back </a></span></p>
 

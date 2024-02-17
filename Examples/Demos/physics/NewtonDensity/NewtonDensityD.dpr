@@ -1,7 +1,7 @@
-{ : Newton Game Dynamics Physics Engine demo.
+(* Newton Game Dynamics Physics Engine demo.
 
-  This demo explain how to use customForceAndTorque, and show the newton api
-  buoyancy effect as exemple.
+  This demo explains how to use customForceAndTorque and show the newton api
+  buoyancy effect as example.
 
   Density unit is the number of mass unit per volume unit: D=M/V
   Body volume is calculated by Newton, and Mass is the product result of
@@ -19,11 +19,8 @@
   The middle mouse button shoot a small cube with impulse.
   You can see the result when the cube hit the paper ball or the lead ball.
 
-  <b>History : </b><font size=-1><ul>
-  <li>31/01/11 - FP - Update for GLNGDManager
-  <li>17/09/10 - FP - Created by Franck Papouin
-  </ul>
-}
+  Updated for GLScene by Franck Papouin 31/01/11
+*)
 program NewtonDensityD;
 
 uses

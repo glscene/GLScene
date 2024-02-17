@@ -1,41 +1,55 @@
 object FormFurball: TFormFurball
   Left = 192
   Top = 114
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Fur Ball'
-  ClientHeight = 393
-  ClientWidth = 632
+  ClientHeight = 688
+  ClientWidth = 1106
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
+  PixelsPerInch = 168
   DesignSize = (
-    632
-    393)
-  TextHeight = 13
+    1106
+    688)
+  TextHeight = 24
   object Label_FPS: TLabel
-    Left = 607
-    Top = 2
-    Width = 20
-    Height = 13
+    Left = 1061
+    Top = 4
+    Width = 36
+    Height = 24
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Alignment = taRightJustify
     Anchors = [akLeft, akTop, akRight]
     Caption = 'FPS'
   end
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 49
-    Width = 632
-    Height = 344
+    Top = 86
+    Width = 1106
+    Height = 602
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clSilver
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aa4xHQ
-    FieldOfView = 135.709640502929700000
+    FieldOfView = 153.816207885742200000
     PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
@@ -44,30 +58,46 @@ object FormFurball: TFormFurball
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 632
-    Height = 49
+    Width = 1106
+    Height = 86
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alTop
     TabOrder = 1
     object Label1: TLabel
-      Left = 327
-      Top = 2
-      Width = 160
-      Height = 13
+      Left = 572
+      Top = 4
+      Width = 265
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '(Steer with A/D W/S UP/DOWN)'
     end
     object CheckBox_LockBall: TCheckBox
-      Left = 8
+      Left = 14
       Top = 0
-      Width = 65
-      Height = 17
+      Width = 114
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '&Lock Ball'
       TabOrder = 0
     end
     object CheckBox_Inertia: TCheckBox
-      Left = 8
-      Top = 16
-      Width = 65
-      Height = 17
+      Left = 14
+      Top = 28
+      Width = 114
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Fur &Inertia'
       Checked = True
       State = cbChecked
@@ -75,10 +105,14 @@ object FormFurball: TFormFurball
       OnClick = CheckBox_InertiaClick
     end
     object CheckBox_FurGravity: TCheckBox
-      Left = 80
+      Left = 140
       Top = 0
-      Width = 81
-      Height = 17
+      Width = 142
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Fur &Gravity'
       Checked = True
       State = cbChecked
@@ -86,10 +120,14 @@ object FormFurball: TFormFurball
       OnClick = CheckBox_FurGravityClick
     end
     object CheckBox_WindResistence: TCheckBox
-      Left = 160
+      Left = 280
       Top = 0
-      Width = 105
-      Height = 17
+      Width = 184
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '&Wind Resistence'
       Checked = True
       State = cbChecked
@@ -97,31 +135,43 @@ object FormFurball: TFormFurball
       OnClick = CheckBox_WindResistenceClick
     end
     object TrackBar_WindForce: TTrackBar
-      Left = 160
-      Top = 16
-      Width = 105
-      Height = 17
+      Left = 280
+      Top = 28
+      Width = 184
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 100
       Position = 50
       TabOrder = 4
-      ThumbLength = 10
+      ThumbLength = 18
       TickStyle = tsNone
       OnChange = TrackBar_WindForceChange
     end
     object CheckBox_Bald: TCheckBox
-      Left = 272
+      Left = 476
       Top = 0
-      Width = 49
-      Height = 17
+      Width = 86
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '&Bald'
       TabOrder = 5
       OnClick = CheckBox_BaldClick
     end
     object CheckBox_Shadows: TCheckBox
-      Left = 496
+      Left = 868
       Top = 0
-      Width = 65
-      Height = 17
+      Width = 114
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '&Shadows'
       TabOrder = 6
       OnClick = CheckBox_ShadowsClick

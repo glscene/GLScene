@@ -1,6 +1,6 @@
-{ : Newton Game Dynamics Physics Engine demo.
+(* Newton Game Dynamics Physics Engine demo.
 
-  This exemple show Joints.
+  This example show Joints.
   Mouse1 to pick, Mouse2 to move camera.
 
   When you create Joints with TGLNGD, it's better if one of the two bodies is
@@ -11,14 +11,10 @@
   However if you create multiples connected joints
   (ex: FLOOR<--HINGE-->CUBE<--HINGE-->SPHERE),
   the debug view won't match to bodies positions because Joints are
-  represented in global space. Debug view was made for design time.
+  represented in global space.
 
-
-  <b>History : </b><font size=-1><ul>
-  <li>31/01/11 - FP - Update for GLNGDManager
-  <li>20/09/10 - FP - Created by Franck Papouin
-  </ul>
-}
+  Update for GLScene by Franck Papouin 20/09/10
+*)
 program NewtonJointsD;
 
 uses

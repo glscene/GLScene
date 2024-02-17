@@ -1,27 +1,36 @@
 object FormActor: TFormActor
   Left = 145
   Top = 99
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Actor'
-  ClientHeight = 487
-  ClientWidth = 683
+  ClientHeight = 852
+  ClientWidth = 1195
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 38
-    Width = 683
-    Height = 430
+    Top = 67
+    Width = 1195
+    Height = 752
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = Camera
     Buffer.BackgroundColor = clSilver
-    FieldOfView = 56.516059875488280000
+    FieldOfView = 86.457061767578130000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -30,28 +39,40 @@ object FormActor: TFormActor
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 468
-    Width = 683
-    Height = 19
+    Top = 819
+    Width = 1195
+    Height = 33
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Panels = <
       item
-        Width = 200
+        Width = 350
       end>
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 683
-    Height = 38
+    Width = 1195
+    Height = 67
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alTop
     BevelOuter = bvLowered
     TabOrder = 2
     object SBPlay: TSpeedButton
-      Left = 188
-      Top = 8
-      Width = 23
-      Height = 24
+      Left = 329
+      Top = 14
+      Width = 40
+      Height = 42
       Hint = 'Play Actor'
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Glyph.Data = {
         76010000424D7601000000000000760000002800000020000000100000000100
         04000000000000010000130B0000130B00001000000000000000000000000000
@@ -71,11 +92,15 @@ object FormActor: TFormActor
       OnClick = SBPlayClick
     end
     object SBStop: TSpeedButton
-      Left = 214
-      Top = 8
-      Width = 23
-      Height = 24
+      Left = 375
+      Top = 14
+      Width = 40
+      Height = 42
       Hint = 'Stop Actor'
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Enabled = False
       Glyph.Data = {
         76010000424D7601000000000000760000002800000020000000100000000100
@@ -96,11 +121,15 @@ object FormActor: TFormActor
       OnClick = SBStopClick
     end
     object SBFrameToFrame: TSpeedButton
-      Left = 240
-      Top = 8
-      Width = 23
-      Height = 24
+      Left = 420
+      Top = 14
+      Width = 40
+      Height = 42
       Hint = 'Play Frame to Frame'
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Glyph.Data = {
         76010000424D7601000000000000760000002800000020000000100000000100
         04000000000000010000130B0000130B00001000000000000000000000000000
@@ -120,25 +149,37 @@ object FormActor: TFormActor
       OnClick = SBFrameToFrameClick
     end
     object lblAnimation: TLabel
-      Left = 8
-      Top = 14
-      Width = 52
-      Height = 13
+      Left = 14
+      Top = 25
+      Width = 94
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Animation :'
     end
     object lblDiskSlices: TLabel
-      Left = 466
-      Top = 12
-      Width = 52
-      Height = 13
+      Left = 816
+      Top = 21
+      Width = 90
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Disk Slices'
     end
     object cbxAnimations: TComboBox
-      Left = 64
-      Top = 10
-      Width = 109
-      Height = 21
+      Left = 112
+      Top = 18
+      Width = 191
+      Height = 32
       Hint = 'Change State'
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Style = csDropDownList
       ParentShowHint = False
       ShowHint = True
@@ -146,19 +187,27 @@ object FormActor: TFormActor
       OnChange = cbxAnimationsChange
     end
     object BBLoadWeapon: TBitBtn
-      Left = 351
-      Top = 8
-      Width = 89
-      Height = 24
+      Left = 614
+      Top = 14
+      Width = 156
+      Height = 42
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Load Weapon'
       TabOrder = 1
       OnClick = BBLoadWeaponClick
     end
     object chbSmooth: TCheckBox
-      Left = 280
-      Top = 11
-      Width = 65
-      Height = 17
+      Left = 490
+      Top = 19
+      Width = 114
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Smooth'
       Checked = True
       State = cbChecked
@@ -166,10 +215,14 @@ object FormActor: TFormActor
       OnClick = chbSmoothClick
     end
     object cbxDiskSlices: TComboBox
-      Left = 540
-      Top = 11
-      Width = 93
-      Height = 21
+      Left = 945
+      Top = 19
+      Width = 163
+      Height = 32
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       TabOrder = 3
       OnChange = cbxDiskSlicesChange
       Items.Strings = (
@@ -207,7 +260,7 @@ object FormActor: TFormActor
         InnerRadius = 2.000000000000000000
         Loops = 1
         OuterRadius = 5.000000000000000000
-        Slices = 3
+        Slices = 5
         SweepAngle = 360.000000000000000000
       end
     end

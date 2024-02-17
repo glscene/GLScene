@@ -25,6 +25,7 @@
 #include "GLS.Context.hpp"
 #include "GLS.Texture.hpp"
 #include "GLS.FileDDS.hpp"
+#include "GLS.VectorFileObjects.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

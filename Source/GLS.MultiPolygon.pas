@@ -1,10 +1,12 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-
 unit GLS.MultiPolygon;
 
-(* Object with support for complex polygons. 
+(* Object with support for complex polygons.
+   The registered class is:
+      [TGLMultiPolygon]
+
    When the tesselator finds an intersection of edges it wants us to give him some storage
    for this new vertex, and he wants a pointer (see tessCombine). The pointers taken from
    TGLAffineVectorList become invalid after enlarging the capacity (makes a ReAllocMem), which

@@ -3,22 +3,17 @@
 //
 unit SDL.Import;
 {*******************************************************************************
-
+  Simple DirectMedia Layer
+  
   SDL2.pas        v1.0  29/07/2013 first version for DelphiXE
                   v1.1  27/08/2013 add MACOS compability
                   v1.2  31/05/2014 delete sdl2.inc
-
-  Simple DirectMedia Layer
-  Copyright (C) 1997-2013 Sam Lantinga <slouken@libsdl.org>
-
+				  v2.3  15/02/2024 for Windows
+    
+  For v.1.x: 
   Pascal-Header-Conversion SDL from the JEDI-Team written by Domenique Louis and others.
-  Pascal-Header-Conversion SDL2 from the Copyright (C) 2012/13 Tim Blume aka End.
-
-  convert SDL/SDL2 to SDL2 for DelphiXE by Kotai 2013/2014  www.remakesonline.com
-
   The initial developer of this Pascal code was :
   Dominqiue Louis <Dominique@SavageSoftware.com.au>
-
 
 *******************************************************************************}
 
@@ -46,9 +41,9 @@ const
 
   {$IFDEF MSWINDOWS}
    {$IFDEF WIN64}
-     SDL_LibName = 'sdl2_64.dll';
+     SDL_LibName = 'sdl2.dll';
    {$ELSE}
-     SDL_LibName = 'sdl2_32.dll';
+     SDL_LibName = 'sdl2.dll';
    {$ENDIF}
   {$ENDIF}
 

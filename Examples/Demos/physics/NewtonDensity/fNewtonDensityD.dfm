@@ -1,35 +1,48 @@
 object FormNewtonDensity: TFormNewtonDensity
   Left = 0
   Top = 0
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Density'
-  ClientHeight = 398
-  ClientWidth = 572
+  ClientHeight = 697
+  ClientWidth = 1001
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 23
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 572
-    Height = 398
+    Width = 1001
+    Height = 697
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
-    FieldOfView = 151.792068481445300000
+    FieldOfView = 163.670745849609400000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     TabOrder = 0
   end
   object SpinEdit1: TSpinEdit
-    Left = 16
-    Top = 103
-    Width = 75
-    Height = 22
+    Left = 28
+    Top = 180
+    Width = 131
+    Height = 34
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     EditorEnabled = False
     MaxValue = 20
     MinValue = 0
@@ -37,10 +50,14 @@ object FormNewtonDensity: TFormNewtonDensity
     Value = 1
   end
   object SpinEdit2: TSpinEdit
-    Left = 16
-    Top = 159
-    Width = 75
-    Height = 22
+    Left = 28
+    Top = 278
+    Width = 131
+    Height = 34
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     EditorEnabled = False
     MaxValue = 10
     MinValue = 0
@@ -48,10 +65,14 @@ object FormNewtonDensity: TFormNewtonDensity
     Value = 1
   end
   object SpinEdit3: TSpinEdit
-    Left = 16
-    Top = 215
-    Width = 75
-    Height = 22
+    Left = 28
+    Top = 376
+    Width = 131
+    Height = 34
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     EditorEnabled = False
     MaxValue = 10
     MinValue = 0
