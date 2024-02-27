@@ -32,7 +32,6 @@ type
     Label1: TLabel;
     Label3: TLabel;
     FreeAndOpenSource: TLabel;
-    Label2: TLabel;
     procedure imgSourceForgeDblClick(Sender: TObject);
     procedure imgGLSceneDblClick(Sender: TObject);
     procedure imgOpenGLDblClick(Sender: TObject);

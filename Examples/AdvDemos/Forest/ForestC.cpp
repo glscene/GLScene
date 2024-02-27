@@ -4,12 +4,7 @@
 #pragma hdrstop
 #include <tchar.h>
 //---------------------------------------------------------------------------
-USEFORM("fcGraph.cpp", FormGraph);
-USEFORM("fxy\fFxyC.cpp", FormPlot);
-USEFORM("heightfield\fHeightfieldC.cpp", Form1);
-USEFORM("points\fPointsC.cpp", FormPoints);
-USEFORM("projection\fProjectionC.cpp", FormProjection);
-USEFORM("splines\fSplinesC.cpp", FormSplines);
+USEFORM("fForestC.cpp", FormForest);
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
@@ -17,7 +12,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 	{
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
-		Application->CreateForm(__classid(TFormGraph), &FormGraph);
+		Application->CreateForm(__classid(TFormForest), &FormForest);
 		Application->Run();
 	}
 	catch (Exception &exception)

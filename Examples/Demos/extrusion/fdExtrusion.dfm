@@ -7,7 +7,7 @@ object frmExtrusionD: TfrmExtrusionD
   Margins.Bottom = 5
   Caption = 'Extrusion'
   ClientHeight = 977
-  ClientWidth = 1502
+  ClientWidth = 1149
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -59,7 +59,7 @@ object frmExtrusionD: TfrmExtrusionD
   object PageControl: TPageControl
     Left = 226
     Top = 0
-    Width = 1276
+    Width = 923
     Height = 977
     Margins.Left = 5
     Margins.Top = 5
@@ -68,6 +68,7 @@ object frmExtrusionD: TfrmExtrusionD
     ActivePage = tsTentacles
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 1276
     object tsBending: TTabSheet
       Margins.Left = 5
       Margins.Top = 5

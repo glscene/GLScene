@@ -52,7 +52,7 @@ implementation
 
 uses
   GnuGettext,
-  fMain;
+  fGLSViewer;
 
 
 procedure TGLOptions.FormCreate(Sender: TObject);
@@ -122,9 +122,9 @@ end;
 procedure TGLOptions.CheckBoxAxisClick(Sender: TObject);
 begin
   if CheckBoxAxis.Checked then
-    MainForm.DCAxis.Visible := True
+    FormGLSViewer.DCAxis.Visible := True
   else
-    MainForm.DCAxis.Visible := False;
+    FormGLSViewer.DCAxis.Visible := False;
 end;
 
 
@@ -134,7 +134,7 @@ begin
    if dmGLSViewer.ColorDialog.Execute then
    begin
      PanelBackground.Color :=  dmGLSViewer.ColorDialog.Color;
-     MainForm.ApplyBgColor;
+     FormGLSViewer.ApplyBgColor;
    end;
 end;
 

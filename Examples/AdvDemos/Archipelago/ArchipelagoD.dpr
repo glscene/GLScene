@@ -1,6 +1,7 @@
-{: Archipelago GLScene demo.
+(* 
+   Archipelago GLScene advdemo.
 
-   This demo illustrates several GLScene components:
+   This advdemo illustrates several GLScene components:
    - TerrainRenderer, used with a material library
    - TerrainRenderer's OnHeightDataPostRender, used to render sea surface
    - HeightTileFileHDS, used as primary elevation datasource
@@ -10,15 +11,13 @@
    Note that both custom OpenGL rendering sections are interrelated, the sea
    surface rendering code also setups the stencil buffer, which is used by
    the wake rendering code.
-
+   Eric Grange
+   
    Credits:
    - Terrain elevation map and textures : Mattias Fagerlund
-     (http://www.cambrianlabs.com/Mattias/)
-   - Sailboat model and textures : Daniel Polli / Daniel@dansteph.com
-     (http://virtualsailor.dansteph.com)
+   - Sailboat model and textures : Daniel Polli 
+*)
 
-   Eric Grange (http://glscene.org)
-}
 program ArchipelagoD;
 
 uses

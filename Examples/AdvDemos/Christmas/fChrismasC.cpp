@@ -87,7 +87,7 @@ void __fastcall TForm1::TimerTimer(TObject* Sender)
 
 	// if (miMerryCristmas->Checked)
 	TheChristmas = false; // Merry Christmas or Happy New Year!
-    ///Caption = Format("%.1f FPS", ARRAYOFCONST((Viewer->FramesPerSecond())));
+	Caption = Viewer->FramesPerSecond();
 	Viewer->ResetPerformanceMonitor();
 
 	if ((GLSMBASS->Active) && (bStream == 0)) {
@@ -101,8 +101,8 @@ void __fastcall TForm1::TimerTimer(TObject* Sender)
 	if (TheChristmas) {
 		t = EncodeDate(y, 12, 25) - Now();
 		ftCongratulations->Text = "Merry Christmas!";
-	} else {
-		t = EncodeDate(y + 1, 01, 01) - Now();
+    } else {
+        t = EncodeDate(y + 1, 01, 01) - Now();
 		ftCongratulations->Text = "Happy New Year!";
 		ftYear->Text = IntToStr(y + 1);
 	}
@@ -121,7 +121,7 @@ void __fastcall TForm1::TimerTimer(TObject* Sender)
             buf = buf + IntToStr(i) + " hour...";
 		ftCountDown->Text = buf;
     } else {
-        t = (double)t * 24;
+		t = (double)t * 24;
         if ((double)t > 1) {
 			buf = IntToStr((int)t) + " hours, ";
             i = RoundInt(Frac((double)t) * 60);
@@ -130,9 +130,9 @@ void __fastcall TForm1::TimerTimer(TObject* Sender)
             else
 				buf = buf + IntToStr(i) + " minute...";
 			ftCountDown->Text = buf;
-		} else {     // minutes and seconds
+		} else {
 			t = (double)t * 60;
-			i = RoundInt(((double)t - Frac((double)t)) * 60); // ?Floor
+			i = RoundInt((double)t - Frac((double)t) * 60); // Floor(t) ambiguous
 			ftCountDown->Text =
 				IntToStr((int)t) + " minutes, " + IntToStr(i) + " seconds...";
 		}

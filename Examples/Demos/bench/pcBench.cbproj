@@ -170,10 +170,10 @@
         <FormResources Include="smoking\fSmokingC.dfm"/>
         <FormResources Include="volcano\fVolcanoC.dfm"/>
         <FormResources Include="whirlwind\fWhirlC.dfm"/>
+        <FormResources Include="canvas\fCanvasC.dfm"/>
         <FormResources Include="fcBench.dfm"/>
         <FormResources Include="megacube\fMegaCubeC.dfm"/>
         <FormResources Include="megaglasscube\fMegaglassC.dfm"/>
-        <FormResources Include="canvas\fCanvasC.dfm"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

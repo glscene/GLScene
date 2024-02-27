@@ -1,31 +1,39 @@
-object Form1: TForm1
+object FormIntensutyMesh: TFormIntensutyMesh
   Left = 61
   Top = 69
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Intensity Mesh'
-  ClientHeight = 423
-  ClientWidth = 629
+  ClientHeight = 740
+  ClientWidth = 1115
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
-  WindowState = wsMaximized
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 542
-    Height = 423
+    Width = 963
+    Height = 740
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera
     Buffer.BackgroundColor = clTeal
     Buffer.ContextOptions = [roDoubleBuffer, roRenderToWindow, roStereo]
     Buffer.FaceCulling = False
     Buffer.Lighting = False
-    FieldOfView = 153.398193359375000000
+    FieldOfView = 164.607894897460900000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -33,27 +41,39 @@ object Form1: TForm1
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 542
+    Left = 963
     Top = 0
-    Width = 87
-    Height = 423
+    Width = 152
+    Height = 740
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alRight
     TabOrder = 1
     DesignSize = (
-      87
-      423)
+      152
+      740)
     object Label1: TLabel
-      Left = 8
-      Top = 64
-      Width = 63
-      Height = 13
+      Left = 14
+      Top = 112
+      Width = 108
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Palette Scale'
     end
     object CBWireFrame: TCheckBox
-      Left = 8
-      Top = 32
-      Width = 73
-      Height = 17
+      Left = 14
+      Top = 56
+      Width = 128
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Wireframe'
       Checked = True
       State = cbChecked
@@ -61,19 +81,27 @@ object Form1: TForm1
       OnClick = CBWireFrameClick
     end
     object CBSmooth: TCheckBox
-      Left = 8
-      Top = 8
-      Width = 57
-      Height = 17
+      Left = 14
+      Top = 14
+      Width = 100
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Smooth'
       TabOrder = 1
       OnClick = CBSmoothClick
     end
     object TBScale: TTrackBar
-      Left = 26
-      Top = 88
-      Width = 31
-      Height = 323
+      Left = 46
+      Top = 154
+      Width = 54
+      Height = 565
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Anchors = [akLeft, akTop, akBottom]
       Max = 200
       Orientation = trVertical
@@ -81,7 +109,7 @@ object Form1: TForm1
       Frequency = 10
       Position = 50
       TabOrder = 2
-      ThumbLength = 15
+      ThumbLength = 26
       OnChange = TBScaleChange
     end
   end

@@ -1,14 +1,18 @@
 object Form1: TForm1
   Left = 541
   Top = 166
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   BorderStyle = bsNone
   Caption = 'Form1'
-  ClientHeight = 457
-  ClientWidth = 611
+  ClientHeight = 800
+  ClientWidth = 1069
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   WindowState = wsMaximized
@@ -18,12 +22,17 @@ object Form1: TForm1
   OnKeyDown = FormKeyDown
   OnResize = FormResize
   OnShow = FormShow
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object SceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 611
-    Height = 457
+    Width = 1069
+    Height = 800
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = Camera
     Buffer.FogEnvironment.FogColor.Color = {9CC4403FFED4583F48E17A3F0000803F}
     Buffer.FogEnvironment.FogStart = 3500.000000000000000000
@@ -33,12 +42,10 @@ object Form1: TForm1
     Buffer.FogEnable = True
     Buffer.Lighting = False
     Buffer.AntiAliasing = aaNone
-    FieldOfView = 155.314346313476600000
+    FieldOfView = 165.749969482421900000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 507
-    ExplicitHeight = 415
   end
   object GLScene: TGLScene
     ObjectsSorting = osNone

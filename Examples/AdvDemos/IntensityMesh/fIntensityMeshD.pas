@@ -39,7 +39,7 @@ uses
   GLS.TextureFormat;
 
 type
-  TForm1 = class(TForm)
+  TFormIntensutyMesh = class(TForm)
     GLScene1: TGLScene;
     GLSceneViewer1: TGLSceneViewer;
     GLCamera: TGLCamera;
@@ -75,7 +75,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FormIntensutyMesh: TFormIntensutyMesh;
 
 implementation
 
@@ -99,7 +99,7 @@ var
   DataNodes: array of TDataNode;
   DataPrimitives: array of TDataPrimitive;
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TFormIntensutyMesh.FormCreate(Sender: TObject);
 var
   mo: TGLMeshObject;
   fgQuads, fgTris: TFGVertexIndexList;
@@ -152,7 +152,7 @@ begin
   TBScaleChange(Self);
 end;
 
-procedure TForm1.GLUserShaderDoUnApply(Sender: TObject; Pass: Integer;
+procedure TFormIntensutyMesh.GLUserShaderDoUnApply(Sender: TObject; Pass: Integer;
   var rci: TGLRenderContextInfo; var Continue: Boolean);
 begin
   if not CBWireFrame.Checked then
@@ -184,7 +184,7 @@ begin
   end;
 end;
 
-procedure TForm1.CBSmoothClick(Sender: TObject);
+procedure TFormIntensutyMesh.CBSmoothClick(Sender: TObject);
 var
   tex: TGLTexture;
 begin
@@ -202,7 +202,7 @@ begin
   end;
 end;
 
-procedure TForm1.GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
+procedure TFormIntensutyMesh.GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
   mx := X;
@@ -210,7 +210,7 @@ begin
   GLSceneViewer1.SetFocus;
 end;
 
-procedure TForm1.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
+procedure TFormIntensutyMesh.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
   X, Y: Integer);
 begin
   if ssLeft in Shift then
@@ -226,7 +226,7 @@ begin
   my := Y;
 end;
 
-procedure TForm1.TBScaleChange(Sender: TObject);
+procedure TFormIntensutyMesh.TBScaleChange(Sender: TObject);
 begin
   with GLMaterialLibrary1.Materials[0] do
     TextureScale.X := TBScale.Position / 100;
@@ -234,13 +234,13 @@ begin
   GLSceneViewer1.Invalidate;
 end;
 
-procedure TForm1.FormMouseWheel(Sender: TObject; Shift: TShiftState;
+procedure TFormIntensutyMesh.FormMouseWheel(Sender: TObject; Shift: TShiftState;
   WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
 begin
   GLCamera.AdjustDistanceToTarget(Power(1.03, WheelDelta / 120));
 end;
 
-procedure TForm1.CBWireFrameClick(Sender: TObject);
+procedure TFormIntensutyMesh.CBWireFrameClick(Sender: TObject);
 begin
   GLSceneViewer1.Invalidate;
 end;

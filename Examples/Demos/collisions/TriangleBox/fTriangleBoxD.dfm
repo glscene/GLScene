@@ -1,13 +1,17 @@
 object FormTriangleBox: TFormTriangleBox
   Left = 281
   Top = 112
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Triangle and Box Intersection'
-  ClientHeight = 549
-  ClientWidth = 865
+  ClientHeight = 961
+  ClientWidth = 1528
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'Arial'
   Font.Style = []
   KeyPreview = True
@@ -16,35 +20,45 @@ object FormTriangleBox: TFormTriangleBox
   OnKeyPress = FormKeyPress
   OnMouseWheel = FormMouseWheel
   OnResize = FormResize
-  TextHeight = 14
+  PixelsPerInch = 168
+  TextHeight = 22
   object Viewer: TGLSceneViewer
-    Left = 175
+    Left = 306
     Top = 0
-    Width = 690
-    Height = 549
+    Width = 1222
+    Height = 961
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 159.353576660156300000
+    FieldOfView = 168.118560791015600000
     PenAsTouch = False
     Align = alClient
     OnMouseMove = ViewerMouseMove
     TabOrder = 0
-    ExplicitWidth = 523
-    ExplicitHeight = 486
   end
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 175
-    Height = 549
+    Width = 306
+    Height = 961
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alLeft
     TabOrder = 1
-    ExplicitHeight = 443
     object CheckBoxGrid: TCheckBox
-      Left = 8
-      Top = 170
-      Width = 80
-      Height = 17
+      Left = 14
+      Top = 298
+      Width = 140
+      Height = 29
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Grid'
       Checked = True
       State = cbChecked
@@ -52,59 +66,83 @@ object FormTriangleBox: TFormTriangleBox
       OnClick = CheckBoxVisibleClick
     end
     object ButtonFindIntersect: TButton
-      Left = 6
-      Top = 80
-      Width = 162
-      Height = 25
+      Left = 11
+      Top = 140
+      Width = 283
+      Height = 44
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Find next with intersection'
       Default = True
       TabOrder = 3
       OnClick = ButtonFindIntersectClick
     end
     object CheckBoxPosition: TCheckBox
-      Left = 8
-      Top = 11
-      Width = 120
-      Height = 17
+      Left = 14
+      Top = 19
+      Width = 210
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Change box position'
       Checked = True
       State = cbChecked
       TabOrder = 0
     end
     object CheckBoxScale: TCheckBox
-      Left = 8
-      Top = 34
-      Width = 120
-      Height = 17
+      Left = 14
+      Top = 60
+      Width = 210
+      Height = 29
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Change box scale'
       Checked = True
       State = cbChecked
       TabOrder = 1
     end
     object CheckBoxTriangle: TCheckBox
-      Left = 8
-      Top = 57
-      Width = 120
-      Height = 17
+      Left = 14
+      Top = 100
+      Width = 210
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Change triangle'
       Checked = True
       State = cbChecked
       TabOrder = 2
     end
     object ButtonNotFindIntersect: TButton
-      Left = 6
-      Top = 112
-      Width = 162
-      Height = 25
+      Left = 11
+      Top = 196
+      Width = 283
+      Height = 44
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Find next without intersection'
       TabOrder = 4
       OnClick = ButtonNotFindIntersectClick
     end
     object CheckBoxVisible: TCheckBox
-      Left = 8
-      Top = 146
-      Width = 80
-      Height = 19
+      Left = 14
+      Top = 256
+      Width = 140
+      Height = 33
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Box visible'
       Checked = True
       State = cbChecked
@@ -112,10 +150,14 @@ object FormTriangleBox: TFormTriangleBox
       OnClick = CheckBoxVisibleClick
     end
     object CheckBoxAxis: TCheckBox
-      Left = 8
-      Top = 192
-      Width = 80
-      Height = 17
+      Left = 14
+      Top = 336
+      Width = 140
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Axis'
       Checked = True
       State = cbChecked
@@ -123,10 +165,14 @@ object FormTriangleBox: TFormTriangleBox
       OnClick = CheckBoxVisibleClick
     end
     object RadioGroupCoPolygon: TRadioGroup
-      Left = 16
-      Top = 236
-      Width = 112
-      Height = 105
+      Left = 28
+      Top = 413
+      Width = 196
+      Height = 184
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Coplanar Polygon'
       ItemIndex = 0
       Items.Strings = (
@@ -177,7 +223,7 @@ object FormTriangleBox: TFormTriangleBox
       YSamplingScale.Step = 3.000000000000000000
       ZSamplingScale.Step = 0.100000001490116100
     end
-    object GLPolygon1: TGLPolygon
+    object Triangle: TGLPolygon
       Material.FrontProperties.Diffuse.Color = {000000000000803F000000000000803F}
       Nodes = <
         item
@@ -190,7 +236,7 @@ object FormTriangleBox: TFormTriangleBox
           Z = 1.000000000000000000
         end>
     end
-    object GLPolygon2: TGLPolygon
+    object Polygon: TGLPolygon
       Nodes = <>
     end
     object GLLines1: TGLLines

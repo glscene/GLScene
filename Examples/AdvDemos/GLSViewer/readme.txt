@@ -1,8 +1,5 @@
 GLSViewer
 
-http://sourceforge.net/projects/glscene
-http://glscene.org
-
 A fast 3D mesh viewer. 
 Released as Freeware and open-sourced
 under Mozilla PL (http://mozilla.org)
@@ -17,8 +14,9 @@ hidden lines removal, texturing and antialiasing
 GLSViewer was made and packaged with the following
 tools and libraries:
 
-- RAD Studio (http://edn.embarcadero.com/delphi/)
-- GLScene (http://glscene.net; http://sf.net/projects/glscene)
+http://glscene.org
+https://sourceforge.net/projects/glscene
+https://github.com/glscene
 
 Enjoy.
 

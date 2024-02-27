@@ -19,12 +19,12 @@ program IntensityMeshD;
 
 uses
   Forms,
-  fIntensityMeshD in 'fIntensityMeshD.pas' {Form1};
+  fIntensityMeshD in 'fIntensityMeshD.pas' {FormIntensutyMesh};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormIntensutyMesh, FormIntensutyMesh);
   Application.Run;
 end.

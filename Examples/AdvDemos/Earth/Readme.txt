@@ -6,7 +6,7 @@ a stars background and optional constellation lines.
 
 The only technical part lies with the atmospheric effect, which
 is raytraced on key points, and then interpolated in between. 
-Yes, I know earth atmosphere's is much thinner, but a thicker 
+Yes, the earth atmosphere's is much thinner, but a thicker 
 atmosphere looks better :)
 
 Requirements:
@@ -59,5 +59,5 @@ Known issues:
   (underclocking), they can put a lot of strain on these during AGP 
   texturing.
 
-Eric Grange
-http://glscene.org
+Eric Grange 
+& GLS Team

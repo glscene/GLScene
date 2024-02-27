@@ -51,12 +51,12 @@ type
     CheckBoxScale: TCheckBox;
     CheckBoxTriangle: TCheckBox;
     ButtonNotFindIntersect: TButton;
-    GLPolygon1: TGLPolygon;
+    Triangle: TGLPolygon;
     CheckBoxVisible: TCheckBox;
     GLPoints1: TGLPoints;
     CheckBoxAxis: TCheckBox;
     GLLines2: TGLLines;
-    GLPolygon2: TGLPolygon;
+    Polygon: TGLPolygon;
     RadioGroupCoPolygon: TRadioGroup;
     procedure GLCadencerProgress(Sender: TObject; const deltaTime,
       newTime: Double);
@@ -106,18 +106,18 @@ end;
 
 procedure TFormTriangleBox.DrawCoplanarPolygon;
 begin
-  GLPolygon2.Nodes.Clear;
-  GLPolygon2.Material.FrontProperties.Ambient.RandomColor;
+  Polygon.Nodes.Clear;
+  Polygon.Material.FrontProperties.Ambient.RandomColor;
   PolygonPos[0] := AffineVectorMake(-5,-5,0);
   PolygonPos[1] := AffineVectorMake(5,-5,0);
   PolygonPos[2] := AffineVectorMake(5,5,0);
   PolygonPos[3] := AffineVectorMake(-5,5,0);
   PolygonPos[4] := AffineVectorMake(0,0,0);
-  GLPolygon2.AddNode(PolygonPos[0]);
-  GLPolygon2.AddNode(PolygonPos[1]);
-  GLPolygon2.AddNode(PolygonPos[2]);
-  GLPolygon2.AddNode(PolygonPos[3]);
-  GLPolygon2.AddNode(PolygonPos[4]);
+  Polygon.AddNode(PolygonPos[0]);
+  Polygon.AddNode(PolygonPos[1]);
+  Polygon.AddNode(PolygonPos[2]);
+  Polygon.AddNode(PolygonPos[3]);
+  Polygon.AddNode(PolygonPos[4]);
 end;
 
 procedure TFormTriangleBox.MakeRandomData;
@@ -148,9 +148,9 @@ end;
 procedure TFormTriangleBox.RadioGroupCoPolygonClick(Sender: TObject);
 begin
   case RadioGroupCoPolygon.ItemIndex of
-     0: GLPolygon2.Material.PolygonMode := pmFill;
-     1: GLPolygon2.Material.PolygonMode := pmLines;
-     2: GLPolygon2.Material.PolygonMode := pmPoints;
+     0: Polygon.Material.PolygonMode := pmFill;
+     1: Polygon.Material.PolygonMode := pmLines;
+     2: Polygon.Material.PolygonMode := pmPoints;
   end;
 end;
 
@@ -158,12 +158,12 @@ procedure TFormTriangleBox.DrawResult;
 var
   i : Integer;
 begin
-  GLPolygon1.Nodes.Clear;
-  GLPolygon1.Material.FrontProperties.Emission.Color := clrGreen;
-  GLPolygon1.Material.BackProperties.Emission.Color := clrGreen;
-  GLPolygon1.AddNode(TriangePos[0]);
-  GLPolygon1.AddNode(TriangePos[1]);
-  GLPolygon1.AddNode(TriangePos[2]);
+  Triangle.Nodes.Clear;
+  Triangle.Material.FrontProperties.Emission.Color := clrGreen;
+  Triangle.Material.BackProperties.Emission.Color := clrGreen;
+  Triangle.AddNode(TriangePos[0]);
+  Triangle.AddNode(TriangePos[1]);
+  Triangle.AddNode(TriangePos[2]);
 
   GLPoints1.Positions.Clear;
   GLPoints1.Colors.Add(1, 0, 1, 1); //magenta

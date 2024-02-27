@@ -163,12 +163,12 @@
             <DependentOn>tentacles\fTentaclesC.h</DependentOn>
             <BuildOrder>6</BuildOrder>
         </CppCompile>
-        <FormResources Include="nutsnbolts\fNutsnBoltsC.dfm"/>
         <FormResources Include="pawn\fPawnC.dfm"/>
         <FormResources Include="tentacles\fTentaclesC.dfm"/>
-        <FormResources Include="fcExtrusion.dfm"/>
+        <FormResources Include="nutsnbolts\fNutsnBoltsC.dfm"/>
         <FormResources Include="bendingcyl\fBendingC.dfm"/>
         <FormResources Include="cutoutstar\fCutoutstarC.dfm"/>
+        <FormResources Include="fcExtrusion.dfm"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -263,13 +263,13 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName=".\Win32\Debug\ExtrusionC.tds" Configuration="Debug" Class="DebugSymbols"/>
+                <DeployFile LocalName=".\Win32\Debug\pcExtrusion.exe" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName=".\Win32\Debug\pcExtrusion.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>pcExtrusion.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\pcExtrusion.exe" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName=".\Win32\Debug\pcExtrusion.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
                         <RemoteName>pcExtrusion.tds</RemoteName>

@@ -1,5 +1,4 @@
-Archipelago demo v2.3 
-https://github.com/glscene/GLScene/tree/master/Examples/AdvDemos/Archipelago
+Archipelago demo 
 
 >>>>>> BEFORE starting the demo: <<<<<<
 
@@ -33,10 +32,6 @@ Movements and camera orientation are controled by arrow keys and
 the mouse respectively, camera altitude is controled with 
 pageup/pagedown. Exit with the ESC key.
 
-Approximative framerates at startup camera angle & position:
-- Athlon XP 1800+ / GF4 Ti 4200: >210 FPS
-- Athlon XP 1800+ / GF2 Pro: >140 FPS
-
 Credits and kindly contributed resources by:
 
 - Terrain elevation map and textures : Mattias Fagerlund
@@ -60,5 +55,4 @@ Changes to v1.01:
 - added warning for graphics boards memory requirements
 - splitter.exe includes basic (low quality) resampling support
 
-Eric Grange 
-http://glscene.org
+GLS Team

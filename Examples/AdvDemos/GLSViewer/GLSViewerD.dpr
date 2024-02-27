@@ -4,7 +4,7 @@ uses
   Forms,
   fGLForm in 'Source\fGLForm.pas' {GLForm},
   fGLDialog in 'Source\fGLDialog.pas' {GLDialog},
-  fMain in 'Source\fMain.pas' {MainForm},
+  fGLSViewer in 'Source\fGLSViewer.pas' {FormGLSViewer},
   uGlobals in 'Source\uGlobals.pas',
   uSettings in 'Source\uSettings.pas',
   dGLSViewer in 'Source\dGLSViewer.pas' {dmGLSViewer: TDataModule},
@@ -17,7 +17,7 @@ uses
 begin
   Application.Initialize;
   Application.Title := 'GLSViewer';
-  Application.CreateForm(TMainForm, MainForm);
+  Application.CreateForm(TFormGLSViewer, FormGLSViewer);
   Application.CreateForm(TdmGLSViewer, dmGLSViewer);
   Application.Run;
 end.

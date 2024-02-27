@@ -3,10 +3,10 @@ inherited GLDialog: TGLDialog
   Caption = 'GLScene Dialog'
   ClientHeight = 362
   ClientWidth = 484
+  StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 500
   ExplicitHeight = 401
-  PixelsPerInch = 96
-  TextHeight = 16
+  TextHeight = 20
   object PanelTop: TPanel
     Left = 0
     Top = 0
@@ -33,8 +33,6 @@ inherited GLDialog: TGLDialog
         ''
         '')
       TabOrder = 0
-      ExplicitLeft = 2
-      ExplicitTop = 2
     end
   end
   object PanelBottom: TPanel

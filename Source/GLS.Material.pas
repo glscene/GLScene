@@ -1,7 +1,6 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-
 unit GLS.Material;
 
 (* Handles all the material + material library stuff *)
@@ -412,9 +411,9 @@ type
     FName: TGLLibMaterialName;
     FNameHashKey: Integer;
     FTag: Integer;
-	// Used for recursivity protection
-    FNotifying: Boolean; 
-    {implementing IGLMaterialLibrarySupported}
+	  // Used for recursivity protection
+    FNotifying: Boolean;
+    (* implementing IGLMaterialLibrarySupported *)
     function GetMaterialLibrary: TGLAbstractMaterialLibrary;
     // Implementing IInterface
     function QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
@@ -485,7 +484,7 @@ type
     procedure Assign(Source: TPersistent); override;
     procedure PrepareBuildList;
     procedure Apply(var ARci: TGLRenderContextInfo); override;
-    { Restore non-standard material states that were altered}
+    // Restore non-standard material states that were altered
     function UnApply(var ARci: TGLRenderContextInfo): Boolean; override;
     procedure NotifyUsersOfTexMapChange;
     property TextureMatrix: TGLMatrix read FTextureMatrix write SetTextureMatrix;
@@ -511,7 +510,7 @@ type
        if not supported). *)
     property Texture2Name: TGLLibMaterialName read FTexture2Name write
       SetTexture2Name;
-    {Optionnal shader for the material. }
+    // Optionnal shader for the material.
     property Shader: TGLShader read FShader write SetShader;
   end;
 

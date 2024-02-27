@@ -6,8 +6,8 @@ object FormGraph: TFormGraph
   Margins.Right = 5
   Margins.Bottom = 5
   Caption = 'Graph'
-  ClientHeight = 952
-  ClientWidth = 1579
+  ClientHeight = 721
+  ClientWidth = 1153
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,18 +24,19 @@ object FormGraph: TFormGraph
     Left = 0
     Top = 0
     Width = 226
-    Height = 952
+    Height = 721
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5
     Margins.Bottom = 5
     Align = alLeft
     TabOrder = 0
+    ExplicitHeight = 952
     object tvGraph: TTreeView
       Left = 1
       Top = 1
       Width = 224
-      Height = 950
+      Height = 719
       Margins.Left = 5
       Margins.Top = 5
       Margins.Right = 5
@@ -54,13 +55,14 @@ object FormGraph: TFormGraph
         FF00000000000000000000000000010A500072006F006A006500630074006900
         6F006E0000002D0000000000000000000000FFFFFFFFFFFFFFFF000000000000
         000000000000000107530070006C0069006E0065007300}
+      ExplicitHeight = 950
     end
   end
   object PageControl: TPageControl
     Left = 226
     Top = 0
-    Width = 1353
-    Height = 952
+    Width = 927
+    Height = 721
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5
@@ -68,6 +70,8 @@ object FormGraph: TFormGraph
     ActivePage = tsProjection
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 1353
+    ExplicitHeight = 952
     object tsFxy: TTabSheet
       Margins.Left = 5
       Margins.Top = 5

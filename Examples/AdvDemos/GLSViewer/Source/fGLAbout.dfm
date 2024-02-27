@@ -1,7 +1,8 @@
 inherited GLAbout: TGLAbout
   Caption = 'About'
-  ClientHeight = 323
-  ClientWidth = 446
+  ClientHeight = 383
+  ClientWidth = 506
+  Font.Height = -19
   Icon.Data = {
     0000010002002020000001000800A80800002600000010100000010008006805
     0000CE0800002800000020000000400000000100080000000000800400000000
@@ -117,31 +118,29 @@ inherited GLAbout: TGLAbout
     00000509030000000000000000000000000000050000FFFF0000FC3F0000F00F
     0000C003000000000000000000000000000080010000C0030000C0070000000F
     00000019000080200000C2600000E7F10000FFFB0000}
-  ExplicitLeft = 3
-  ExplicitTop = 3
-  ExplicitWidth = 464
-  ExplicitHeight = 370
-  PixelsPerInch = 96
-  TextHeight = 16
+  StyleElements = [seFont, seClient, seBorder]
+  ExplicitWidth = 522
+  ExplicitHeight = 422
+  TextHeight = 24
   inherited PanelTop: TPanel
-    Width = 446
+    Width = 506
     Height = 89
-    ExplicitWidth = 446
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitWidth = 498
     ExplicitHeight = 89
     object LabelVersion: TLabel
-      Left = -32
+      Left = 102
       Top = 63
-      Width = 44
-      Height = 16
+      Width = 50
+      Height = 20
       Anchors = [akTop, akRight]
       Caption = 'version'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
+      Font.Height = -16
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
-      ExplicitLeft = 144
     end
     object LabelGeoblock: TLabel
       Left = 102
@@ -157,30 +156,23 @@ inherited GLAbout: TGLAbout
       ParentFont = False
       IsControl = True
     end
-    object Label2: TLabel
-      Left = 75
-      Top = 41
-      Width = 289
-      Height = 16
-      Alignment = taCenter
-      Caption = 'Based on Eric Grange'#39's GLSViewer for GLScene'
-    end
     object StaticTextVersion: TStaticText
-      Left = 228
-      Top = 63
-      Width = 25
-      Height = 20
+      Left = 219
+      Top = 61
+      Width = 34
+      Height = 28
       Caption = 'Info'
       TabOrder = 0
     end
   end
   inherited PanelMiddle: TPanel
     Top = 89
-    Width = 446
-    Height = 189
+    Width = 506
+    Height = 249
+    StyleElements = [seFont, seClient, seBorder]
     ExplicitTop = 89
-    ExplicitWidth = 446
-    ExplicitHeight = 189
+    ExplicitWidth = 498
+    ExplicitHeight = 224
     object LabelCopyright: TLabel [0]
       Left = 102
       Top = 159
@@ -2392,15 +2384,15 @@ inherited GLAbout: TGLAbout
     object Label1: TLabel [4]
       Left = 288
       Top = 159
-      Width = 95
-      Height = 16
+      Width = 133
+      Height = 24
       Caption = 'GLScene Team'
     end
     object Label3: TLabel [5]
       Left = 123
       Top = 28
-      Width = 188
-      Height = 16
+      Width = 265
+      Height = 24
       Caption = '3D view, 3D file formats support:'
     end
     object FreeAndOpenSource: TLabel [6]
@@ -2417,31 +2409,31 @@ inherited GLAbout: TGLAbout
       ParentFont = False
     end
     inherited Memo: TMemo
-      Width = 444
-      Height = 187
+      Width = 504
+      Height = 247
       TabOrder = 1
       Visible = False
-      ExplicitLeft = 1
-      ExplicitTop = 1
-      ExplicitWidth = 444
-      ExplicitHeight = 187
+      StyleElements = [seFont, seClient, seBorder]
+      ExplicitWidth = 496
+      ExplicitHeight = 222
     end
     object PanelYears: TPanel
       Left = 187
-      Top = 158
-      Width = 77
+      Top = 200
+      Width = 144
       Height = 17
       BevelOuter = bvNone
-      Caption = ' '#169'  2002, 2021'
+      Caption = ' '#169'  2002, 2024'
       TabOrder = 0
     end
   end
   inherited PanelBottom: TPanel
-    Top = 278
-    Width = 446
+    Top = 338
+    Width = 506
     Height = 45
-    ExplicitTop = 278
-    ExplicitWidth = 446
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitTop = 313
+    ExplicitWidth = 498
     ExplicitHeight = 45
   end
 end

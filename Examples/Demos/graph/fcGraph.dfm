@@ -6,8 +6,8 @@ object FormGraph: TFormGraph
   Margins.Right = 5
   Margins.Bottom = 5
   Caption = 'Graph'
-  ClientHeight = 999
-  ClientWidth = 1544
+  ClientHeight = 758
+  ClientWidth = 1238
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,7 +24,7 @@ object FormGraph: TFormGraph
     Left = 0
     Top = 0
     Width = 226
-    Height = 999
+    Height = 758
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5
@@ -35,7 +35,7 @@ object FormGraph: TFormGraph
       Left = 1
       Top = 1
       Width = 224
-      Height = 997
+      Height = 756
       Margins.Left = 5
       Margins.Top = 5
       Margins.Right = 5
@@ -59,8 +59,8 @@ object FormGraph: TFormGraph
   object PageControl: TPageControl
     Left = 226
     Top = 0
-    Width = 1318
-    Height = 999
+    Width = 1012
+    Height = 758
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5
