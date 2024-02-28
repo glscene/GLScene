@@ -67,7 +67,8 @@ uses
   fGLDialog,
   dGLSViewer,
   GLS.SimpleNavigation,
-  Vcl.StdStyleActnCtrls;
+  Vcl.StdStyleActnCtrls, Vcl.VirtualImageList, Vcl.BaseImageCollection,
+  Vcl.ImageCollection;
 
 type
   TFormGLSViewer = class(TGLForm)
@@ -145,6 +146,12 @@ type
     PanelLeft: TPanel;
     tvScene: TTreeView;
     ImageListObjects: TImageList;
+    acSaveTreeView: TAction;
+    acLoadTreeView: TAction;
+    SaveDialog: TSaveDialog;
+    OpenDialog: TOpenDialog;
+    ImageCollection: TImageCollection;
+    VirtualImageList: TVirtualImageList;
     procedure FormCreate(Sender: TObject);
     procedure snViewerMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -199,6 +206,8 @@ type
     procedure acHelpGLSHomePageExecute(Sender: TObject);
     procedure acHelpContentsExecute(Sender: TObject);
     procedure acHelpTopicSearchExecute(Sender: TObject);
+    procedure acSaveTreeViewExecute(Sender: TObject);
+    procedure acLoadTreeViewExecute(Sender: TObject);
   private
     AssetPath: TFileName;
     procedure DoResetCamera;
@@ -860,6 +869,21 @@ begin
   finally
     strips.Free;
   end;
+end;
+
+procedure TFormGLSViewer.acSaveTreeViewExecute(Sender: TObject);
+begin
+  if SaveDialog.Execute then
+  begin
+    tvScene.SaveToFile(SaveDialog.FileName);
+//    CurrentStar := GetCurrentDir();
+  end;
+end;
+
+procedure TFormGLSViewer.acLoadTreeViewExecute(Sender: TObject);
+begin
+  inherited;
+  //
 end;
 
 procedure TFormGLSViewer.acViewFlatShadingExecute(Sender: TObject);
