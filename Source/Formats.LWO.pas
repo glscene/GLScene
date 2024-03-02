@@ -1532,20 +1532,15 @@ begin
     begin
       CurPols.Add(GetChunkClass(CurId, TLWChunk).Create);
 
-      with CurPols[CurPols.Count - 1] do
-      begin
-        FID := CurId;
-        LoadFromStream(AStream);
-      end;
+      CurPols[CurPols.Count - 1].FID := CurId;
+      LoadFromStream(AStream);
     end
     else if (CurId = ID_VMAP) or (CurId = ID_VMAD) then
     begin
       CurPnts.Add(GetChunkClass(CurId, TLWChunk).Create);
-      with CurPnts[CurPnts.Count - 1] do
-      begin
-        FID := CurId;
-        LoadFromStream(AStream);
-      end;
+
+      CurPnts[CurPnts.Count - 1].FID := CurId;
+      LoadFromStream(AStream);
     end
     else
     begin
@@ -1553,12 +1548,9 @@ begin
         (CurId = ID_CLIP) then
         CurItems := Chunks;
       CurItems.Add(GetChunkClass(CurId, TLWChunk).Create);
-      with CurItems[CurItems.Count - 1] do
-      begin
-        FID := CurId;
-        LoadFromStream(AStream);
-      end;
 
+      CurItems[CurItems.Count - 1].FID := CurId;
+      LoadFromStream(AStream);
     end;
 
     if CurId = ID_LAYR then
