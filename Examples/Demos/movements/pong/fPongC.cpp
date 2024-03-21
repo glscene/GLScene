@@ -17,14 +17,14 @@
 #pragma link "GLS.SpaceText"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormPong *FormPong;
 
 // ---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {
+__fastcall TFormPong::TFormPong(TComponent* Owner) : TForm(Owner) {
 }
 // ---------------------------------------------------------------------------
 
-void __fastcall TForm1::ResetGame() {
+void __fastcall TFormPong::ResetGame() {
 	float angle;
 	// places the ball in the mat center, resets score and ball speed
 	angle = DegToRad((float)(45 + Random(90)));
@@ -34,14 +34,14 @@ void __fastcall TForm1::ResetGame() {
 	Ball->Position->AsVector = NullHmgPoint;
 }
 
-void __fastcall TForm1::FormCreate(TObject *Sender) {
+void __fastcall TFormPong::FormCreate(TObject *Sender) {
 	Randomize();
 	GLSceneViewer1->Cursor = crNone;
 	ResetGame();
 }
 
 // ---------------------------------------------------------------------------
-void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender,
+void __fastcall TFormPong::GLSceneViewer1MouseMove(TObject *Sender,
 	TShiftState Shift, int X, int Y) {
 	const float cPadMinMax = 6.25;
 	float px;
@@ -60,7 +60,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender,
 }
 
 // ---------------------------------------------------------------------------
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender,
+void __fastcall TFormPong::GLCadencer1Progress(TObject *Sender,
 	const double deltaTime, const double newTime) {
 	TGLVector newBallPos;
 	// gameOver is True as soon as the ball is behind the pad, but we don't end
@@ -103,11 +103,10 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender,
 }
 
 // ---------------------------------------------------------------------------
-void __fastcall TForm1::Timer1Timer(TObject *Sender) {
+void __fastcall TFormPong::Timer1Timer(TObject *Sender) {
 	// update performance monitor
 	// %s : Name,
-	Caption = Format("%.2f FPS",
-		ARRAYOFCONST((GLSceneViewer1->FramesPerSecond())));
+	Caption = GLSceneViewer1->FramesPerSecond();
 	GLSceneViewer1->ResetPerformanceMonitor();
 	// display score window when game is over and the ball is well out of the board
 	if (gameOver && (Ball->Position->Y < -6)) {

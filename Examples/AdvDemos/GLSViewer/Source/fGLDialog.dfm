@@ -14,6 +14,7 @@ inherited GLDialog: TGLDialog
     Height = 35
     Align = alTop
     TabOrder = 0
+    ExplicitWidth = 476
   end
   object PanelMiddle: TPanel
     Left = 0
@@ -22,6 +23,8 @@ inherited GLDialog: TGLDialog
     Height = 286
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 476
+    ExplicitHeight = 261
     object Memo: TMemo
       Left = 1
       Top = 1
@@ -33,6 +36,8 @@ inherited GLDialog: TGLDialog
         ''
         '')
       TabOrder = 0
+      ExplicitWidth = 474
+      ExplicitHeight = 259
     end
   end
   object PanelBottom: TPanel
@@ -42,6 +47,8 @@ inherited GLDialog: TGLDialog
     Height = 41
     Align = alBottom
     TabOrder = 2
+    ExplicitTop = 296
+    ExplicitWidth = 476
     object ButtonOK: TButton
       Left = 144
       Top = 6

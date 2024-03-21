@@ -1,96 +1,89 @@
-object Form1: TForm1
+object FormObjmove: TFormObjmove
   Left = 0
   Top = 0
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Moving Objects with Mouse'
-  ClientHeight = 452
-  ClientWidth = 548
+  ClientHeight = 791
+  ClientWidth = 1057
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
+  Position = poScreenCenter
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnKeyUp = FormKeyUp
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 96
-  TextHeight = 13
-  object Scn: TGLSceneViewer
-    Left = 161
+  PixelsPerInch = 168
+  TextHeight = 23
+  object Scene: TGLSceneViewer
+    Left = 0
     Top = 0
-    Width = 387
-    Height = 433
+    Width = 1057
+    Height = 686
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 51.630752563476560000
+    FieldOfView = 81.226181030273440000
     PenAsTouch = False
     Align = alClient
-    OnMouseDown = ScnMouseDown
-    OnMouseMove = ScnMouseMove
+    OnMouseDown = SceneMouseDown
+    OnMouseMove = SceneMouseMove
     TabOrder = 0
   end
   object Panel1: TPanel
     Left = 0
-    Top = 0
-    Width = 161
-    Height = 433
-    Align = alLeft
+    Top = 686
+    Width = 1057
+    Height = 72
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
+    Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitHeight = 452
-    object Label2: TLabel
-      Left = 0
-      Top = 0
-      Width = 158
-      Height = 26
-      Align = alTop
-      Caption = 'Select and move with the mouse any of the cubes.'
-      ShowAccelChar = False
-      WordWrap = True
-    end
-    object Label3: TLabel
-      Left = 0
-      Top = 26
-      Width = 150
-      Height = 26
-      Align = alTop
-      Caption = 'Default movement is on the XY plane.'
-      ShowAccelChar = False
-      WordWrap = True
-    end
-    object Label4: TLabel
-      Left = 0
-      Top = 52
-      Width = 145
-      Height = 26
-      Align = alTop
-      Caption = 'Shift + Drag moves on the XZ plane.'
-      ShowAccelChar = False
-      WordWrap = True
-    end
     object Button1: TButton
-      Left = 618
-      Top = 8
-      Width = 155
-      Height = 25
+      Left = 1082
+      Top = 14
+      Width = 271
+      Height = 44
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Near: (0,0) Eye -> Obj'
       TabOrder = 0
     end
     object GroupBox1: TGroupBox
       Left = 0
-      Top = 78
-      Width = 161
-      Height = 43
-      Align = alTop
+      Top = -3
+      Width = 1057
+      Height = 75
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
+      Align = alBottom
       Caption = 'Options'
       TabOrder = 1
       object ShowAxes: TCheckBox
-        Left = 5
-        Top = 18
-        Width = 145
-        Height = 17
+        Left = 9
+        Top = 32
+        Width = 254
+        Height = 29
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Caption = 'Show selection axes'
         TabOrder = 0
         OnClick = ShowAxesClick
@@ -99,13 +92,20 @@ object Form1: TForm1
   end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 433
-    Width = 548
-    Height = 19
-    Panels = <>
-    ExplicitLeft = 304
-    ExplicitTop = -16
-    ExplicitWidth = 0
+    Top = 758
+    Width = 1057
+    Height = 33
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
+    Panels = <
+      item
+        Text = 
+          'Using mouse to move cubes by default on XY plane and Shift+Drag ' +
+          'moves on XZ plane'
+        Width = 400
+      end>
   end
   object GLScene1: TGLScene
     Left = 296
@@ -229,13 +229,13 @@ object Form1: TForm1
       Direction.Coordinates = {2EF964BF2EF9E43E0000000000000000}
       Up.Coordinates = {00000000000000000000803F00000000}
     end
-    object TopText: TGLHUDText
+    object HUDText: TGLHUDText
       Position.Coordinates = {0000A0400000A040000000000000803F}
       BitmapFont = GLWindowsBitmapFont1
       Text = 'TopText'
       Rotation = 0.000000000000000000
     end
-    object ObjText: TGLHUDText
+    object HUDTextObj: TGLHUDText
       Position.Coordinates = {0000C0400000A841000000000000803F}
       BitmapFont = GLWindowsBitmapFont1
       Text = 'ObjText'
@@ -250,9 +250,5 @@ object Form1: TForm1
     Font.Style = []
     Left = 400
     Top = 8
-  end
-  object GLSmoothNavigator1: TGLSmoothNavigator
-    Left = 400
-    Top = 64
   end
 end

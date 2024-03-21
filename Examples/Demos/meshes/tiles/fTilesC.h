@@ -32,21 +32,21 @@ __published:	// IDE-managed Components
 	TCheckBox *CBShowGrid;
 	TCheckBox *CBSortByMaterials;
 	TGLScene *GLScene;
-	TGLLightSource *GLLightSource;
-	TGLDummyCube *DCTarget;
-	TGLCamera *GLCamera;
-	TGLTilePlane *GLTilePlane;
-	TGLDirectOpenGL *GLDirectOpenGL;
-	TGLXYZGrid *GLXYZGrid;
-	TGLDummyCube *DCSelection;
-	TGLLines *GLLines1;
+	TGLLightSource *LightSource;
+	TGLDummyCube *dcTarget;
+	TGLCamera *Camera;
+	TGLTilePlane *TilePlane;
+	TGLDirectOpenGL *DirectOpenGL;
+	TGLXYZGrid *XYZGrid;
+	TGLDummyCube *dcSelection;
+	TGLLines *Lines;
 	TGLMaterialLibrary *GLMaterialLibrary;
 	TTimer *Timer1;
 	TGLCadencer *GLCadencer1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
           TPoint &MousePos, bool &Handled);
-	void __fastcall GLDirectOpenGLRender(TObject *Sender, TGLRenderContextInfo &rci);
+	void __fastcall DirectOpenGLRender(TObject *Sender, TGLRenderContextInfo &rci);
 
 private:	// User declarations
 	int mx, my;

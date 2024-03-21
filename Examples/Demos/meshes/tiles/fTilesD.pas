@@ -41,25 +41,25 @@ type
     GLScene: TGLScene;
     GLSceneViewer1: TGLSceneViewer;
     GLCamera: TGLCamera;
-    DCTarget: TGLDummyCube;
-    GLXYZGrid: TGLXYZGrid;
+    dcTarget: TGLDummyCube;
+    XYZGrid: TGLXYZGrid;
     Panel1: TPanel;
     GLMaterialLibrary: TGLMaterialLibrary;
-    GLLightSource: TGLLightSource;
+    LightSource: TGLLightSource;
     Timer1: TTimer;
     GLCadencer1: TGLCadencer;
     Label1: TLabel;
     CBMaterial: TComboBox;
-    GLTilePlane: TGLTilePlane;
-    GLDirectOpenGL: TGLDirectOpenGL;
-    DCSelection: TGLDummyCube;
+    TilePlane: TGLTilePlane;
+    DirectOpenGL: TGLDirectOpenGL;
+    dcSelection: TGLDummyCube;
     GLLines1: TGLLines;
     BUPack: TButton;
     Label2: TLabel;
     CBShowGrid: TCheckBox;
     CBSortByMaterials: TCheckBox;
     GLSimpleNavigation1: TGLSimpleNavigation;
-    GLDummyCube1: TGLDummyCube;
+    DummyCube: TGLDummyCube;
     procedure GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure FormMouseWheel(Sender: TObject; Shift: TShiftState;
@@ -68,7 +68,7 @@ type
     procedure Timer1Timer(Sender: TObject);
     procedure GLCadencer1Progress(Sender: TObject;
       const deltaTime, newTime: Double);
-    procedure GLDirectOpenGLRender(Sender: TObject;
+    procedure DirectOpenGLRender(Sender: TObject;
       var rci: TGLRenderContextInfo);
     procedure BUPackClick(Sender: TObject);
     procedure CBShowGridClick(Sender: TObject);
@@ -105,7 +105,7 @@ begin
   RandSeed := 0;
   for i := -20 to 20 do
     for j := -20 to 20 do
-      GLTilePlane.Tiles[i, j] :=
+      TilePlane.Tiles[i, j] :=
         Random(GLMaterialLibrary.Materials.Count - 1) + 1;
 
   // set all tile materials to anisotropic,
@@ -128,13 +128,13 @@ begin
   my := Y;
   if Shift = [ssLeft] then
   begin
-    GLTilePlane.Tiles[tileX, tileY] := CBMaterial.ItemIndex;
-    GLTilePlane.StructureChanged;
+    TilePlane.Tiles[tileX, tileY] := CBMaterial.ItemIndex;
+    TilePlane.StructureChanged;
   end
   else if Shift = [ssRight] then
   begin
-    GLTilePlane.Tiles[tileX, tileY] := 0;
-    GLTilePlane.StructureChanged;
+    TilePlane.Tiles[tileX, tileY] := 0;
+    TilePlane.StructureChanged;
   end;
 end;
 
@@ -196,13 +196,13 @@ begin
       translating := False;
       if IsKeyDown(VK_LBUTTON) then
       begin
-        GLTilePlane.Tiles[tileX, tileY] := CBMaterial.ItemIndex;
-        GLTilePlane.StructureChanged;
+        TilePlane.Tiles[tileX, tileY] := CBMaterial.ItemIndex;
+        TilePlane.StructureChanged;
       end;
       if IsKeyDown(VK_RBUTTON) then
       begin
-        GLTilePlane.Tiles[tileX, tileY] := 0;
-        GLTilePlane.StructureChanged;
+        TilePlane.Tiles[tileX, tileY] := 0;
+        TilePlane.StructureChanged;
       end;
     end;
     mx := mp.X;
@@ -214,7 +214,7 @@ end;
 
 //------------------------------------------------------
 
-procedure TFormTiles.GLDirectOpenGLRender(Sender: TObject;
+procedure TFormTiles.DirectOpenGLRender(Sender: TObject;
   var rci: TGLRenderContextInfo);
 begin
   // we clear the depth buffer, so that the grid is always in front of the
@@ -227,21 +227,21 @@ end;
 procedure TFormTiles.BUPackClick(Sender: TObject);
 begin
   // packing a tile area removes unused area from the in-memory structures
-  GLTilePlane.Tiles.Pack;
+  TilePlane.Tiles.Pack;
 end;
 
 //------------------------------------------------------
 
 procedure TFormTiles.CBShowGridClick(Sender: TObject);
 begin
-  GLXYZGrid.Visible := CBShowGrid.Checked;
+  XYZGrid.Visible := CBShowGrid.Checked;
 end;
 
 //------------------------------------------------------
 
 procedure TFormTiles.CBSortByMaterialsClick(Sender: TObject);
 begin
-  GLTilePlane.SortByMaterials := CBSortByMaterials.Checked;
+  TilePlane.SortByMaterials := CBSortByMaterials.Checked;
 end;
 
 //------------------------------------------------------

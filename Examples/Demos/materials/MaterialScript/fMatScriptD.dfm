@@ -1,84 +1,125 @@
 object FormMatScript: TFormMatScript
   Left = 90
   Top = 97
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Material Script'
-  ClientHeight = 430
-  ClientWidth = 711
+  ClientHeight = 753
+  ClientWidth = 1258
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object Panel1: TPanel
-    Left = 416
+    Left = 742
     Top = 0
-    Width = 295
-    Height = 430
+    Width = 516
+    Height = 753
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alRight
     TabOrder = 0
     object Label1: TLabel
-      Left = 16
-      Top = 200
-      Width = 51
-      Height = 13
+      Left = 28
+      Top = 350
+      Width = 90
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Step One :'
     end
     object Label2: TLabel
-      Left = 16
-      Top = 232
-      Width = 48
-      Height = 13
+      Left = 28
+      Top = 406
+      Width = 82
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Step two :'
     end
     object Label3: TLabel
-      Left = 16
-      Top = 272
-      Width = 234
-      Height = 13
+      Left = 28
+      Top = 476
+      Width = 416
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Debugging(this is not nessessary, just extra info)  :'
     end
     object Label4: TLabel
-      Left = 8
-      Top = 8
-      Width = 68
-      Height = 13
+      Left = 14
+      Top = 14
+      Width = 120
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Script Editing :'
     end
     object Memo1: TMemo
-      Left = 18
-      Top = 27
-      Width = 263
-      Height = 152
+      Left = 32
+      Top = 47
+      Width = 460
+      Height = 266
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       ScrollBars = ssVertical
       TabOrder = 0
     end
     object ButtonLoadScript: TButton
-      Left = 73
-      Top = 193
-      Width = 161
-      Height = 25
+      Left = 128
+      Top = 338
+      Width = 282
+      Height = 44
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Load a Script'
       TabOrder = 1
       OnClick = ButtonLoadScriptClick
     end
     object ButtonExecuteScript: TButton
-      Left = 70
-      Top = 224
-      Width = 161
-      Height = 25
+      Left = 123
+      Top = 392
+      Width = 281
+      Height = 44
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Execute Script'
       TabOrder = 2
       OnClick = ButtonExecuteScriptClick
     end
     object Memo2: TMemo
-      Left = 16
-      Top = 299
-      Width = 265
-      Height = 116
+      Left = 28
+      Top = 523
+      Width = 464
+      Height = 203
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       ScrollBars = ssVertical
       TabOrder = 3
     end
@@ -86,16 +127,18 @@ object FormMatScript: TFormMatScript
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 416
-    Height = 430
+    Width = 742
+    Height = 753
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 152.966857910156300000
+    FieldOfView = 164.648895263671900000
     PenAsTouch = False
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 12
-    ExplicitTop = -40
   end
   object GLScene1: TGLScene
     Left = 24

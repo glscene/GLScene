@@ -31,7 +31,7 @@
 #include "GLS.BaseClasses.hpp"
 
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormActorProxy : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
@@ -64,9 +64,9 @@ private:	// User declarations
 	void __fastcall DoRaycastStuff();
 
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormActorProxy(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormActorProxy *FormActorProxy;
 //---------------------------------------------------------------------------
 #endif

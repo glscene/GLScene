@@ -45,13 +45,16 @@
         <Projects Include="pong\PongC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="SmoothNavigator\SmoothNaviD.dproj">
+        <Projects Include="smoothnavi\SmoothNaviD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="SmoothNavigator\SmoothNaviC.cbproj">
+        <Projects Include="smoothnavi\SmoothNaviC.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="tweening\TweeningD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="tweening\TweeningC.cbproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -189,22 +192,22 @@
         <MSBuild Projects="pong\PongC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="SmoothNaviD">
-        <MSBuild Projects="SmoothNavigator\SmoothNaviD.dproj"/>
+        <MSBuild Projects="smoothnavi\SmoothNaviD.dproj"/>
     </Target>
     <Target Name="SmoothNaviD:Clean">
-        <MSBuild Projects="SmoothNavigator\SmoothNaviD.dproj" Targets="Clean"/>
+        <MSBuild Projects="smoothnavi\SmoothNaviD.dproj" Targets="Clean"/>
     </Target>
     <Target Name="SmoothNaviD:Make">
-        <MSBuild Projects="SmoothNavigator\SmoothNaviD.dproj" Targets="Make"/>
+        <MSBuild Projects="smoothnavi\SmoothNaviD.dproj" Targets="Make"/>
     </Target>
     <Target Name="SmoothNaviC">
-        <MSBuild Projects="SmoothNavigator\SmoothNaviC.cbproj"/>
+        <MSBuild Projects="smoothnavi\SmoothNaviC.cbproj"/>
     </Target>
     <Target Name="SmoothNaviC:Clean">
-        <MSBuild Projects="SmoothNavigator\SmoothNaviC.cbproj" Targets="Clean"/>
+        <MSBuild Projects="smoothnavi\SmoothNaviC.cbproj" Targets="Clean"/>
     </Target>
     <Target Name="SmoothNaviC:Make">
-        <MSBuild Projects="SmoothNavigator\SmoothNaviC.cbproj" Targets="Make"/>
+        <MSBuild Projects="smoothnavi\SmoothNaviC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="TweeningD">
         <MSBuild Projects="tweening\TweeningD.dproj"/>
@@ -215,14 +218,23 @@
     <Target Name="TweeningD:Make">
         <MSBuild Projects="tweening\TweeningD.dproj" Targets="Make"/>
     </Target>
+    <Target Name="TweeningC">
+        <MSBuild Projects="tweening\TweeningC.cbproj"/>
+    </Target>
+    <Target Name="TweeningC:Clean">
+        <MSBuild Projects="tweening\TweeningC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TweeningC:Make">
+        <MSBuild Projects="tweening\TweeningC.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="ColumnD;ColumnC;EventsD;EventsC;HierarchD;HierarchC;ManualD;ManualC;ObjmoveD;ObjmoveC;PointtoD;PointtoC;PongD;PongC;SmoothNaviD;SmoothNaviC;TweeningD"/>
+        <CallTarget Targets="ColumnD;ColumnC;EventsD;EventsC;HierarchD;HierarchC;ManualD;ManualC;ObjmoveD;ObjmoveC;PointtoD;PointtoC;PongD;PongC;SmoothNaviD;SmoothNaviC;TweeningD;TweeningC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ColumnD:Clean;ColumnC:Clean;EventsD:Clean;EventsC:Clean;HierarchD:Clean;HierarchC:Clean;ManualD:Clean;ManualC:Clean;ObjmoveD:Clean;ObjmoveC:Clean;PointtoD:Clean;PointtoC:Clean;PongD:Clean;PongC:Clean;SmoothNaviD:Clean;SmoothNaviC:Clean;TweeningD:Clean"/>
+        <CallTarget Targets="ColumnD:Clean;ColumnC:Clean;EventsD:Clean;EventsC:Clean;HierarchD:Clean;HierarchC:Clean;ManualD:Clean;ManualC:Clean;ObjmoveD:Clean;ObjmoveC:Clean;PointtoD:Clean;PointtoC:Clean;PongD:Clean;PongC:Clean;SmoothNaviD:Clean;SmoothNaviC:Clean;TweeningD:Clean;TweeningC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ColumnD:Make;ColumnC:Make;EventsD:Make;EventsC:Make;HierarchD:Make;HierarchC:Make;ManualD:Make;ManualC:Make;ObjmoveD:Make;ObjmoveC:Make;PointtoD:Make;PointtoC:Make;PongD:Make;PongC:Make;SmoothNaviD:Make;SmoothNaviC:Make;TweeningD:Make"/>
+        <CallTarget Targets="ColumnD:Make;ColumnC:Make;EventsD:Make;EventsC:Make;HierarchD:Make;HierarchC:Make;ManualD:Make;ManualC:Make;ObjmoveD:Make;ObjmoveC:Make;PointtoD:Make;PointtoC:Make;PongD:Make;PongC:Make;SmoothNaviD:Make;SmoothNaviC:Make;TweeningD:Make;TweeningC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

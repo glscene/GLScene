@@ -24,12 +24,12 @@ program MultiTextureD;
 
 uses
   Forms,
-  fMultiTextureD in 'fMultiTextureD.pas' {Form1};
+  fMultiTextureD in 'fMultiTextureD.pas' {FormMultiTexture};
 
 {$R *.RES}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormMultiTexture, FormMultiTexture);
   Application.Run;
 end.

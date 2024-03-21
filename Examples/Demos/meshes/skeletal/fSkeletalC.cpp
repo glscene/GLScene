@@ -19,14 +19,14 @@
 #pragma link "GLS.FileSMD"
 
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormSkeletal *FormSkeletal;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormSkeletal::TFormSkeletal(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
+void __fastcall TFormSkeletal::FormCreate(TObject *Sender)
 {
    TFileName Path = GetCurrentAssetPath();
 	SetCurrentDir(Path + "\\modelext");
@@ -60,47 +60,47 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
+void __fastcall TFormSkeletal::FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
           TPoint &MousePos, bool &Handled)
 {
   GLCamera1 = GLSceneViewer1->Camera;
   GLCamera1->AdjustDistanceToTarget(Power(1.1, WheelDelta / 120));
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::RBWalkClick(TObject *Sender)
+void __fastcall TFormSkeletal::RBWalkClick(TObject *Sender)
 {
    // user requested 'walk'
    baseAnimation = "walk";
    Actor1->SwitchToAnimation(baseAnimation, true);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::RBRunClick(TObject *Sender)
+void __fastcall TFormSkeletal::RBRunClick(TObject *Sender)
 {
    // user requested 'run'
    baseAnimation = "run";
    Actor1->SwitchToAnimation(baseAnimation, true);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::BULongJumpClick(TObject *Sender)
+void __fastcall TFormSkeletal::BULongJumpClick(TObject *Sender)
 {
    // Smoothly switch to Long Jump
    Actor1->SwitchToAnimation(3, true);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::BUHighJumpClick(TObject *Sender)
+void __fastcall TFormSkeletal::BUHighJumpClick(TObject *Sender)
 {
    // Smoothly switch to High Jump
    Actor1->SwitchToAnimation(4, true);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Actor1EndFrameReached(TObject *Sender)
+void __fastcall TFormSkeletal::Actor1EndFrameReached(TObject *Sender)
 {
    // If we weren't walking, switch back to walk
    if (Actor1->CurrentAnimation() != baseAnimation)
 	  Actor1->SwitchToAnimation(baseAnimation, true);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::CBBlendClick(TObject *Sender)
+void __fastcall TFormSkeletal::CBBlendClick(TObject *Sender)
 {
    // Enable/disable blending by binding or unbinding the animation controler
    // to the actor
@@ -113,27 +113,27 @@ void __fastcall TForm1::CBBlendClick(TObject *Sender)
 	 AnimationControler1->Actor = NULL;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::TrackBar1Change(TObject *Sender)
+void __fastcall TFormSkeletal::TrackBar1Change(TObject *Sender)
 {
    // Blending along the controler's animation is just a matter of adjusting
    // the ratio, with 0 = first frame and 1 = last frame.
    AnimationControler1->Ratio = TrackBar1->Position*0.01;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::CheckBox1Click(TObject *Sender)
+void __fastcall TFormSkeletal::CheckBox1Click(TObject *Sender)
 {
    Actor1->OverlaySkeleton = CheckBox1->Checked;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
+void __fastcall TFormSkeletal::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y)
 {
    mx = X; my = Y;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
+void __fastcall TFormSkeletal::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
           int X, int Y)
 {
    if (Shift.Contains(ssLeft) || Shift.Contains(ssRight))
@@ -143,14 +143,14 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
    }
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Timer1Timer(TObject *Sender)
+void __fastcall TFormSkeletal::Timer1Timer(TObject *Sender)
 {
    LabelFPS->Caption = Format("%.1f FPS",
 	 ARRAYOFCONST ((GLSceneViewer1->FramesPerSecond())));
    GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
+void __fastcall TFormSkeletal::GLCadencer1Progress(TObject *Sender, const double deltaTime,
           const double newTime)
 {
   GLScene1->NotifyChange(NULL);

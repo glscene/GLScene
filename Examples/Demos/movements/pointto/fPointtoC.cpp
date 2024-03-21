@@ -17,15 +17,15 @@
 #pragma link "GLS.Coordinates"
 
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormPointto *FormPointto;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
+__fastcall TFormPointto::TFormPointto(TComponent * Owner):TForm(Owner)
 {
 }
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLCadencer1Progress(TObject * Sender,
+void __fastcall TFormPointto::GLCadencer1Progress(TObject * Sender,
                                             const double deltaTime,
                                             const double newTime)
 {

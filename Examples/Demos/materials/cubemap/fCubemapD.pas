@@ -80,30 +80,33 @@ begin
     ShowMessage('Your graphics board does not support cube maps...');
     Exit;
   end;
+
   with Teapot1.Material.Texture do
   begin
     // We need a CubeMapImage, which unlike the "regular Images" stores
     // multiple images.
     ImageClassName := TGLCubeMapImage.ClassName;
-    with Image as TGLCubeMapImage do
-    begin
-      // Load all 6 texture map components of the cube map
-      // The 'PX', 'NX', etc. refer to 'positive X', 'negative X', etc.
-      // and follow the RenderMan specs/conventions
-      Picture[cmtPX].LoadFromFile('cm_left.jpg');
-      Picture[cmtNX].LoadFromFile('cm_right.jpg');
-      Picture[cmtPY].LoadFromFile('cm_top.jpg');
-      Picture[cmtNY].LoadFromFile('cm_bottom.jpg');
-      Picture[cmtPZ].LoadFromFile('cm_back.jpg');
-      Picture[cmtNZ].LoadFromFile('cm_front.jpg');
-    end;
+    // The 'PX', 'NX', etc. refer to 'positive X', 'negative X', etc.
+    // and follow the RenderMan specs/conventions
+
+    (Image as TGLCubeMapImage).Picture[cmtPX].LoadFromFile('cm_left.jpg');
+    (Image as TGLCubeMapImage).Picture[cmtNX].LoadFromFile('cm_right.jpg');
+    (Image as TGLCubeMapImage).Picture[cmtPY].LoadFromFile('cm_top.jpg');
+    (Image as TGLCubeMapImage).Picture[cmtNY].LoadFromFile('cm_bottom.jpg');
+    (Image as TGLCubeMapImage).Picture[cmtPZ].LoadFromFile('cm_back.jpg');
+    (Image as TGLCubeMapImage).Picture[cmtNZ].LoadFromFile('cm_front.jpg');
     // Select reflection cube map environment mapping
     // This is the mode you'll most commonly use with cube maps, normal cube
     // map generation is also supported (used for diffuse environment lighting)
+
     MappingMode := tmmCubeMapReflection;
     // That's all folks, let us see the thing!
     Disabled := False;
   end;
+(* *)
+
+//  DDStex(Teapot1.Material.Texture, 'skybox.dds');
+//  Teapot1.Material.Texture.MappingMode := tmmEyeLinear;
 
   // apply .dds cubemaps to next objects
   DDStex(Cylinder1.Material.Texture, 'skybox.dds');

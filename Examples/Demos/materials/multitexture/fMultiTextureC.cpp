@@ -16,17 +16,17 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormMultiTexture *FormMultiTexture;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormMultiTexture::TFormMultiTexture(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
+void __fastcall TFormMultiTexture::FormCreate(TObject *Sender)
 {
    TFileName Path = GetCurrentAssetPath();
-   SetCurrentDir(S  + '\\texture');
+   SetCurrentDir(Path  + "\\texture");
    // prepare images to merge in the multitexture
    Image1->Picture->LoadFromFile("ashwood.jpg");
    GLMaterialLibrary1->Materials->Items[0]->Material->Texture->Image->Assign(Image1->Picture);
@@ -34,7 +34,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
    GLMaterialLibrary1->Materials->Items[1]->Material->Texture->Image->Assign(Image2->Picture);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Image1Click(TObject *Sender)
+void __fastcall TFormMultiTexture::Image1Click(TObject *Sender)
 {
    // load a new Image1
    if (OpenPictureDialog1->Execute()) {
@@ -43,7 +43,7 @@ void __fastcall TForm1::Image1Click(TObject *Sender)
    }
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Image2Click(TObject *Sender)
+void __fastcall TFormMultiTexture::Image2Click(TObject *Sender)
 {
    // load a new Image2
    if (OpenPictureDialog1->Execute())  {
@@ -52,7 +52,7 @@ void __fastcall TForm1::Image2Click(TObject *Sender)
    }
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::TrackBar1Change(TObject *Sender)
+void __fastcall TFormMultiTexture::TrackBar1Change(TObject *Sender)
 {
    // adjust scale
    GLMaterialLibrary1->Materials->Items[1]->TextureScale->X = TrackBar1->Position/10;

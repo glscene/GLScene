@@ -1,83 +1,124 @@
 object Form1: TForm1
   Left = 0
   Top = 0
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Material Script'
-  ClientHeight = 508
-  ClientWidth = 735
+  ClientHeight = 889
+  ClientWidth = 1300
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'Tahoma'
   Font.Style = []
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 23
   object Panel1: TPanel
-    Left = 346
+    Left = 620
     Top = 0
-    Width = 389
-    Height = 508
+    Width = 680
+    Height = 889
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alRight
     TabOrder = 0
     object Label1: TLabel
-      Left = 16
-      Top = 240
-      Width = 52
-      Height = 13
+      Left = 28
+      Top = 420
+      Width = 91
+      Height = 23
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Step One :'
     end
     object Label2: TLabel
-      Left = 16
-      Top = 272
-      Width = 50
-      Height = 13
+      Left = 28
+      Top = 476
+      Width = 87
+      Height = 23
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Step two :'
     end
     object Label3: TLabel
-      Left = 16
-      Top = 296
-      Width = 247
-      Height = 13
+      Left = 28
+      Top = 518
+      Width = 428
+      Height = 23
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Debugging(this is not nessessary, just extra info)  :'
     end
     object Label4: TLabel
-      Left = 8
-      Top = 8
-      Width = 69
-      Height = 13
+      Left = 14
+      Top = 14
+      Width = 125
+      Height = 23
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Script Editing :'
     end
     object Memo1: TMemo
-      Left = 8
-      Top = 24
-      Width = 377
-      Height = 201
+      Left = 14
+      Top = 42
+      Width = 660
+      Height = 352
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       ScrollBars = ssVertical
       TabOrder = 0
     end
     object ButtonLoadScript: TButton
-      Left = 72
-      Top = 232
-      Width = 161
-      Height = 25
+      Left = 126
+      Top = 406
+      Width = 282
+      Height = 44
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Load Script'
       TabOrder = 1
       OnClick = ButtonLoadScriptClick
     end
     object ButtonExecuteScript: TButton
-      Left = 72
-      Top = 264
-      Width = 161
-      Height = 25
+      Left = 126
+      Top = 462
+      Width = 282
+      Height = 44
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Execute Script'
       TabOrder = 2
       OnClick = ButtonExecuteScriptClick
     end
     object Memo2: TMemo
-      Left = 8
-      Top = 312
-      Width = 377
-      Height = 153
+      Left = 14
+      Top = 546
+      Width = 660
+      Height = 268
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       ScrollBars = ssVertical
       TabOrder = 3
     end
@@ -85,11 +126,15 @@ object Form1: TForm1
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 346
-    Height = 508
+    Width = 620
+    Height = 889
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 147.759582519531300000
+    FieldOfView = 161.675308227539100000
     PenAsTouch = False
     Align = alClient
     TabOrder = 1
@@ -654,6 +699,8 @@ object Form1: TForm1
         F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5
         F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5F5
         F5F5}
+      Material.Texture.Disabled = False
+      Material.MaterialLibrary = GLMaterialLibrary1
     end
     object GLCamera1: TGLCamera
       DepthOfView = 100.000000000000000000

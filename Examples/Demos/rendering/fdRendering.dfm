@@ -6,8 +6,8 @@ object FormRendering: TFormRendering
   Margins.Right = 5
   Margins.Bottom = 5
   Caption = 'Rendering'
-  ClientHeight = 814
-  ClientWidth = 1138
+  ClientHeight = 615
+  ClientWidth = 1060
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,18 +21,19 @@ object FormRendering: TFormRendering
     Left = 0
     Top = 0
     Width = 226
-    Height = 814
+    Height = 615
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5
     Margins.Bottom = 5
     Align = alLeft
     TabOrder = 0
+    ExplicitHeight = 814
     object tvBench: TTreeView
       Left = 1
       Top = 1
       Width = 224
-      Height = 812
+      Height = 613
       Margins.Left = 5
       Margins.Top = 5
       Margins.Right = 5
@@ -71,80 +72,23 @@ object FormRendering: TFormRendering
         00000000000000FFFFFFFFFFFFFFFF0000000000000000000000000001065300
         6B00790042006F00780000002F0000000000000000000000FFFFFFFFFFFFFFFF
         00000000000000000000000000010854006F004200690074006D0061007000}
+      ExplicitHeight = 812
     end
   end
-  object PageControl: TPageControl
+  object PanelRendering: TPanel
     Left = 226
     Top = 0
-    Width = 912
-    Height = 814
+    Width = 834
+    Height = 615
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5
     Margins.Bottom = 5
     Align = alClient
     TabOrder = 1
-    object tsOne: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'One'
-      TabVisible = False
-    end
-    object tsTwo: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Two'
-      ImageIndex = 1
-      TabVisible = False
-    end
-    object tsThree: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Three'
-      ImageIndex = 2
-      TabVisible = False
-    end
-    object tsFour: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Four'
-      ImageIndex = 3
-      TabVisible = False
-    end
-    object tsFive: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Five'
-      ImageIndex = 4
-      TabVisible = False
-    end
-    object tsSix: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Six'
-      ImageIndex = 5
-      TabVisible = False
-    end
-    object tsSeven: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Seven'
-      ImageIndex = 6
-      TabVisible = False
-    end
+    ExplicitLeft = 476
+    ExplicitTop = 280
+    ExplicitWidth = 324
+    ExplicitHeight = 72
   end
 end

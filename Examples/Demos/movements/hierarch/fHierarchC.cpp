@@ -14,11 +14,11 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
-TForm1* Form1;
+TFormHierarch* FormHierarch;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {}
+__fastcall TFormHierarch::TFormHierarch(TComponent* Owner) : TForm(Owner) {}
 //---------------------------------------------------------------------------
-void __fastcall TForm1::TrackBarChange(TObject* Sender)
+void __fastcall TFormHierarch::TrackBarChange(TObject* Sender)
 {
     int t;
 
@@ -33,7 +33,7 @@ void __fastcall TForm1::TrackBarChange(TObject* Sender)
     Cube3->TurnAngle = 4 * t;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLCadencer1Progress(
+void __fastcall TFormHierarch::GLCadencer1Progress(
     TObject* Sender, const double deltaTime, const double newTime)
 {
     if (CBPlay->Checked && Visible)
@@ -42,12 +42,12 @@ void __fastcall TForm1::GLCadencer1Progress(
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::FormResize(TObject* Sender)
+void __fastcall TFormHierarch::FormResize(TObject* Sender)
 {
     GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCloseQuery(TObject* Sender, bool &CanClose)
+void __fastcall TFormHierarch::FormCloseQuery(TObject* Sender, bool &CanClose)
 {
     // We need to stop playing here :
     // 	since the timer is asynchronous, if we don't stop play,

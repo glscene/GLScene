@@ -93,7 +93,7 @@ end;
 procedure TFormGraph.tvGraphClick(Sender: TObject);
 begin
   tvGraph.Items[0].DropHighlighted := False;
-   case tvGraph.Selected.Index of
+  case tvGraph.Selected.Index of
     0:
       PageControl.ActivePage := tsFxy;
     1:

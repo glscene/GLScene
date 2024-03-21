@@ -104,11 +104,10 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="fdObjectMats.pas">
+        <DCCReference Include="fObjMaterialD.pas">
             <Form>FormMO</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="GLS.Polyhedra.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

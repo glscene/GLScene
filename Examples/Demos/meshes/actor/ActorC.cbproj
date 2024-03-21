@@ -152,7 +152,7 @@
             <BuildOrder>0</BuildOrder>
         </CppCompile>
         <CppCompile Include="fActorC.cpp">
-            <Form>Form1</Form>
+            <Form>FormActor</Form>
             <FormType>dfm</FormType>
             <DependentOn>fActorC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

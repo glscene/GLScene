@@ -1,27 +1,36 @@
 object FormCubeMap: TFormCubeMap
   Left = 135
   Top = 85
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Cube Map'
-  ClientHeight = 422
-  ClientWidth = 592
+  ClientHeight = 739
+  ClientWidth = 1036
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 592
-    Height = 422
+    Width = 1036
+    Height = 739
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     BeforeRender = GLSceneViewer1BeforeRender
     Buffer.BackgroundColor = clTeal
-    FieldOfView = 70.239997863769530000
+    FieldOfView = 101.853157043457000000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -29,10 +38,14 @@ object FormCubeMap: TFormCubeMap
     TabOrder = 0
   end
   object btnApply: TButton
-    Left = 232
-    Top = 16
-    Width = 131
-    Height = 25
+    Left = 406
+    Top = 28
+    Width = 229
+    Height = 44
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Apply Cube Map'
     TabOrder = 1
     OnClick = btnApplyClick
@@ -56,7 +69,6 @@ object FormCubeMap: TFormCubeMap
         Material.FrontProperties.Ambient.Color = {A7A6263FCDCC4C3ECDCC4C3E0000803F}
         Material.FrontProperties.Shininess = 46
         Material.FrontProperties.Specular.Color = {0000000000000000000000007F6A1C3F}
-        Material.Texture.ImageClassName = 'TGLCubeMapImage'
         Material.Texture.ImageAlpha = tiaAlphaFromIntensity
         Material.Texture.MinFilter = miNearest
         Material.Texture.TextureMode = tmReplace

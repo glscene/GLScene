@@ -2,8 +2,7 @@ program ObjMaterialD;
 
 uses
   Vcl.Forms,
-  fdObjectMats in 'fdObjectMats.pas' {FormMO},
-  GLS.Polyhedra in 'GLS.Polyhedra.pas';
+  fObjMaterialD in 'fObjMaterialD.pas' {FormMO};
 
 {$R *.res}
 

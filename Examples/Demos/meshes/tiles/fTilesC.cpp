@@ -61,12 +61,13 @@ void __fastcall TForm1::FormMouseWheel(TObject *Sender, TShiftState Shift, int W
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLDirectOpenGLRender(TObject *Sender, TGLRenderContextInfo &rci)
+void __fastcall TForm1::DirectOpenGLRender(TObject *Sender, TGLRenderContextInfo &rci)
 {
   // we clear the depth buffer, so that the grid is always in front of the
   // tile plane and won't Z-Fight with it
   glClear(GL_DEPTH_BUFFER_BIT);
 }
 //---------------------------------------------------------------------------
+
 
 

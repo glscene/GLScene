@@ -1,285 +1,399 @@
 object Form1: TForm1
   Left = 192
   Top = 106
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Tree Editor'
-  ClientHeight = 464
-  ClientWidth = 762
+  ClientHeight = 812
+  ClientWidth = 1348
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Menu = MainMenu1
   Position = poScreenCenter
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer1: TGLSceneViewer
-    Left = 153
+    Left = 268
     Top = 0
-    Width = 609
-    Height = 464
+    Width = 1080
+    Height = 812
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
-    FieldOfView = 155.675598144531300000
+    FieldOfView = 165.958435058593800000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
-    ExplicitWidth = 576
-    ExplicitHeight = 445
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 153
-    Height = 464
+    Width = 268
+    Height = 812
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alLeft
     TabOrder = 1
-    ExplicitHeight = 388
     object Label1: TLabel
-      Left = 8
-      Top = 112
-      Width = 62
-      Height = 13
+      Left = 14
+      Top = 196
+      Width = 108
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Branch Twist'
     end
     object Label2: TLabel
-      Left = 8
-      Top = 32
-      Width = 29
-      Height = 13
+      Left = 14
+      Top = 56
+      Width = 50
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Depth'
     end
     object Label3: TLabel
-      Left = 8
-      Top = 152
-      Width = 64
-      Height = 13
+      Left = 14
+      Top = 266
+      Width = 115
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Branch Angle'
     end
     object Label4: TLabel
-      Left = 8
-      Top = 192
-      Width = 87
-      Height = 13
+      Left = 14
+      Top = 336
+      Width = 155
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Branch Angle Bias'
     end
     object Label5: TLabel
-      Left = 8
-      Top = 232
-      Width = 57
-      Height = 13
+      Left = 14
+      Top = 406
+      Width = 101
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Branch Size'
     end
     object Label6: TLabel
-      Left = 8
-      Top = 272
-      Width = 70
-      Height = 13
+      Left = 14
+      Top = 476
+      Width = 123
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Branch Radius'
     end
     object Label7: TLabel
-      Left = 8
-      Top = 360
-      Width = 64
-      Height = 13
+      Left = 14
+      Top = 630
+      Width = 114
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Branch Noise'
     end
     object Label8: TLabel
-      Left = 8
-      Top = 440
-      Width = 44
-      Height = 13
+      Left = 14
+      Top = 770
+      Width = 76
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Leaf Size'
     end
     object Label9: TLabel
-      Left = 8
-      Top = 480
-      Width = 71
-      Height = 13
+      Left = 14
+      Top = 840
+      Width = 126
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Leaf Threshold'
     end
     object Label10: TLabel
-      Left = 8
-      Top = 72
-      Width = 69
-      Height = 13
+      Left = 14
+      Top = 126
+      Width = 121
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Branch Facets'
       FocusControl = GLSceneViewer1
     end
     object Label11: TLabel
-      Left = 8
-      Top = 8
-      Width = 111
-      Height = 16
+      Left = 14
+      Top = 14
+      Width = 197
+      Height = 28
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Tree properties'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -23
       Font.Name = 'Verdana'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object Label12: TLabel
-      Left = 8
-      Top = 312
-      Width = 68
-      Height = 13
+      Left = 14
+      Top = 546
+      Width = 122
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Random Seed'
     end
     object TrackBar1: TTrackBar
-      Left = 8
-      Top = 48
-      Width = 137
-      Height = 17
+      Left = 14
+      Top = 84
+      Width = 240
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 15
       Position = 10
       TabOrder = 0
-      ThumbLength = 10
+      ThumbLength = 18
       OnChange = TrackBar1Change
     end
     object TrackBar2: TTrackBar
-      Left = 8
-      Top = 128
-      Width = 137
-      Height = 17
+      Left = 14
+      Top = 224
+      Width = 240
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 180
       Position = 45
       TabOrder = 1
-      ThumbLength = 10
+      ThumbLength = 18
       TickStyle = tsManual
       OnChange = TrackBar2Change
     end
     object TrackBar3: TTrackBar
-      Left = 8
-      Top = 168
-      Width = 137
-      Height = 17
+      Left = 14
+      Top = 294
+      Width = 240
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 100
       Position = 40
       TabOrder = 2
-      ThumbLength = 10
+      ThumbLength = 18
       TickStyle = tsManual
       OnChange = TrackBar3Change
     end
     object TrackBar4: TTrackBar
-      Left = 8
-      Top = 208
-      Width = 137
-      Height = 17
+      Left = 14
+      Top = 364
+      Width = 240
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 100
       Position = 60
       TabOrder = 3
-      ThumbLength = 10
+      ThumbLength = 18
       TickStyle = tsManual
       OnChange = TrackBar4Change
     end
     object TrackBar5: TTrackBar
-      Left = 8
-      Top = 248
-      Width = 137
-      Height = 17
+      Left = 14
+      Top = 434
+      Width = 240
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 100
       Position = 10
       TabOrder = 4
-      ThumbLength = 10
+      ThumbLength = 18
       TickStyle = tsManual
       OnChange = TrackBar5Change
     end
     object TrackBar6: TTrackBar
-      Left = 8
-      Top = 288
-      Width = 137
-      Height = 17
+      Left = 14
+      Top = 504
+      Width = 240
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 25
       Position = 3
       TabOrder = 5
-      ThumbLength = 10
+      ThumbLength = 18
       TickStyle = tsManual
       OnChange = TrackBar6Change
     end
     object TrackBar7: TTrackBar
-      Left = 8
-      Top = 376
-      Width = 137
-      Height = 17
+      Left = 14
+      Top = 658
+      Width = 240
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 100
       Position = 70
       TabOrder = 6
-      ThumbLength = 10
+      ThumbLength = 18
       TickStyle = tsManual
       OnChange = TrackBar7Change
     end
     object TrackBar8: TTrackBar
-      Left = 8
-      Top = 456
-      Width = 137
-      Height = 17
+      Left = 14
+      Top = 798
+      Width = 240
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 100
       Position = 20
       TabOrder = 7
-      ThumbLength = 10
+      ThumbLength = 18
       TickStyle = tsManual
       OnChange = TrackBar8Change
     end
     object TrackBar9: TTrackBar
-      Left = 8
-      Top = 496
-      Width = 137
-      Height = 17
+      Left = 14
+      Top = 868
+      Width = 240
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 100
       Position = 20
       TabOrder = 8
-      ThumbLength = 10
+      ThumbLength = 18
       TickStyle = tsManual
       OnChange = TrackBar9Change
     end
     object TrackBar10: TTrackBar
-      Left = 8
-      Top = 88
-      Width = 137
-      Height = 17
+      Left = 14
+      Top = 154
+      Width = 240
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Min = 3
       Position = 6
       TabOrder = 9
-      ThumbLength = 10
+      ThumbLength = 18
       OnChange = TrackBar10Change
     end
     object Edit1: TEdit
-      Left = 8
-      Top = 328
-      Width = 105
-      Height = 21
+      Left = 14
+      Top = 574
+      Width = 184
+      Height = 32
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       TabOrder = 10
     end
     object Button1: TButton
-      Left = 117
-      Top = 328
-      Width = 21
-      Height = 21
+      Left = 205
+      Top = 574
+      Width = 37
+      Height = 37
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'S'
       TabOrder = 11
       OnClick = Button1Click
     end
     object CheckBox1: TCheckBox
-      Left = 8
-      Top = 400
-      Width = 97
-      Height = 17
+      Left = 14
+      Top = 700
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Alignment = taLeftJustify
       Caption = 'Central Leader'
       TabOrder = 12
       OnClick = CheckBox1Click
     end
     object TrackBar11: TTrackBar
-      Left = 8
-      Top = 416
-      Width = 137
-      Height = 17
+      Left = 14
+      Top = 728
+      Width = 240
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 100
       Position = 50
       TabOrder = 13
-      ThumbLength = 10
+      ThumbLength = 18
       TickStyle = tsManual
       OnChange = TrackBar11Change
     end
@@ -308,6 +422,7 @@ object Form1: TForm1
       Visible = False
     end
     object GLPlane1: TGLPlane
+      Material.FrontProperties.Diffuse.Color = {0AD7A33E48E1FA3E1F85EB3E0000803F}
       Height = 10.000000000000000000
       Width = 10.000000000000000000
     end

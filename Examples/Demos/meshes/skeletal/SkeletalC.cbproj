@@ -139,7 +139,7 @@
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="fSkeletalC.cpp">
-            <Form>Form1</Form>
+            <Form>FormSkeletal</Form>
             <FormType>dfm</FormType>
             <DependentOn>fSkeletalC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

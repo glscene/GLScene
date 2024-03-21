@@ -23,7 +23,7 @@ uses
   fTentaclesD;
 
 type
-  TfrmExtrusionD = class(TForm)
+  TFormExtrusion = class(TForm)
     PanelLeft: TPanel;
     tvExtrusion: TTreeView;
     PageControl: TPageControl;
@@ -41,14 +41,14 @@ type
   end;
 
 var
-  frmExtrusionD: TfrmExtrusionD;
+  FormExtrusion: TFormExtrusion;
 
 //--------------------------------------------------------------
 implementation
 //--------------------------------------------------------------
 {$R *.dfm}
 
-procedure TfrmExtrusionD.FormCreate(Sender: TObject);
+procedure TFormExtrusion.FormCreate(Sender: TObject);
 begin
   // Bending
   FormBendingCyl := TFormBendingCyl.Create(tsBending);
@@ -88,12 +88,12 @@ end;
 
 //--------------------------------------------------------------
 
-procedure TfrmExtrusionD.FormShow(Sender: TObject);
+procedure TFormExtrusion.FormShow(Sender: TObject);
 begin
   PageControl.ActivePage := tsBending; //tsPawn;
 end;
 
-procedure TfrmExtrusionD.tvExtrusionClick(Sender: TObject);
+procedure TFormExtrusion.tvExtrusionClick(Sender: TObject);
 begin
    tvExtrusion.Items[0].DropHighlighted := False;
    case tvExtrusion.Selected.Index of

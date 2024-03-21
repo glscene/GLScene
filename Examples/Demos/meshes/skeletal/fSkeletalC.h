@@ -24,7 +24,7 @@
 #include "GLS.Scene.hpp"
 #include "GLS.VectorFileObjects.hpp"
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormSkeletal : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
@@ -70,9 +70,9 @@ private:	// User declarations
 	String baseAnimation;
 	int mx, my;
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormSkeletal(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormSkeletal *FormSkeletal;
 //---------------------------------------------------------------------------
 #endif

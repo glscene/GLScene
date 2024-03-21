@@ -1,161 +1,219 @@
 object FormTweening: TFormTweening
   Left = 325
   Top = 237
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Tweener'
-  ClientHeight = 624
-  ClientWidth = 792
+  ClientHeight = 1092
+  ClientWidth = 1400
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 23
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 129
-    Width = 792
-    Height = 495
+    Top = 226
+    Width = 1400
+    Height = 866
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clMedGray
     Buffer.Lighting = False
-    FieldOfView = 157.157623291015600000
+    FieldOfView = 166.826065063476600000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     TabOrder = 0
-    ExplicitWidth = 859
-    ExplicitHeight = 353
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 792
-    Height = 129
+    Width = 1400
+    Height = 226
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alTop
     BevelOuter = bvLowered
     TabOrder = 1
-    ExplicitWidth = 716
     object Label2: TLabel
-      Left = 6
-      Top = 77
-      Width = 82
-      Height = 13
+      Left = 11
+      Top = 135
+      Width = 149
+      Height = 23
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Time to run (ms):'
     end
     object Label1: TLabel
-      Left = 167
-      Top = 77
-      Width = 82
-      Height = 13
+      Left = 292
+      Top = 135
+      Width = 149
+      Height = 23
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Time to run (ms):'
     end
     object Label3: TLabel
-      Left = 344
-      Top = 46
-      Width = 281
-      Height = 13
+      Left = 602
+      Top = 81
+      Width = 492
+      Height = 22
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       AutoSize = False
       Caption = '- Use CTRL + (Left/Right) mouse to move points A and B'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'Tahoma'
       Font.Style = [fsItalic]
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 344
-      Top = 65
-      Width = 353
-      Height = 13
+      Left = 602
+      Top = 114
+      Width = 618
+      Height = 23
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       AutoSize = False
       Caption = 
         '- Note that tweening can be used for any data (Position, Color, ' +
         'etc.)'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'Tahoma'
       Font.Style = [fsItalic]
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 344
-      Top = 84
-      Width = 353
-      Height = 29
+      Left = 602
+      Top = 147
+      Width = 618
+      Height = 51
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       AutoSize = False
       Caption = 
         '- Note that tweening is time dependant (it will play at the same' +
         ' speed on different computers)'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'Tahoma'
       Font.Style = [fsItalic]
       ParentFont = False
       WordWrap = True
     end
     object Button1: TButton
-      Left = 6
-      Top = 16
-      Width = 155
-      Height = 25
+      Left = 11
+      Top = 28
+      Width = 271
+      Height = 44
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Go to state A'
       TabOrder = 0
       OnClick = Button1Click
     end
     object Button2: TButton
-      Left = 167
-      Top = 16
-      Width = 155
-      Height = 25
+      Left = 292
+      Top = 28
+      Width = 272
+      Height = 44
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Go to state B'
       TabOrder = 1
       OnClick = Button2Click
     end
     object UseCurrentPosition: TCheckBox
-      Left = 328
-      Top = 20
-      Width = 217
-      Height = 17
+      Left = 574
+      Top = 35
+      Width = 380
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Use current position as initial value'
       TabOrder = 2
     end
     object EaseTypeA: TComboBox
-      Left = 6
-      Top = 47
-      Width = 155
-      Height = 21
+      Left = 11
+      Top = 82
+      Width = 271
+      Height = 31
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Style = csDropDownList
       TabOrder = 3
     end
     object EaseTypeB: TComboBox
-      Left = 167
-      Top = 47
-      Width = 155
-      Height = 21
+      Left = 292
+      Top = 82
+      Width = 272
+      Height = 31
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Style = csDropDownList
       TabOrder = 4
     end
     object TimeA: TSpinEdit
-      Left = 94
-      Top = 74
-      Width = 67
-      Height = 22
+      Left = 165
+      Top = 130
+      Width = 117
+      Height = 34
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       MaxValue = 0
       MinValue = 0
       TabOrder = 5
       Value = 1000
     end
     object TimeB: TSpinEdit
-      Left = 255
-      Top = 74
-      Width = 67
-      Height = 22
+      Left = 446
+      Top = 130
+      Width = 118
+      Height = 34
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       MaxValue = 0
       MinValue = 0
       TabOrder = 6

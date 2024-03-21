@@ -1,65 +1,78 @@
 object FormActorProxy: TFormActorProxy
   Left = 285
   Top = 192
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Actor Proxy'
-  ClientHeight = 571
-  ClientWidth = 650
+  ClientHeight = 999
+  ClientWidth = 1152
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 23
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 650
-    Height = 544
+    Width = 1152
+    Height = 952
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = 4194304
-    FieldOfView = 159.167938232421900000
+    FieldOfView = 168.007049560546900000
     PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
-    ExplicitWidth = 591
-    ExplicitHeight = 414
   end
   object Panel1: TPanel
     Left = 0
-    Top = 544
-    Width = 650
-    Height = 27
+    Top = 952
+    Width = 1152
+    Height = 47
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 410
-    ExplicitWidth = 590
     object cbActorsAreTurning: TCheckBox
       Left = 1
       Top = 1
-      Width = 116
-      Height = 25
+      Width = 203
+      Height = 45
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Align = alLeft
       Caption = 'Actors are turning'
       Checked = True
       State = cbChecked
       TabOrder = 0
-      ExplicitLeft = 13
-      ExplicitTop = 5
-      ExplicitHeight = 17
     end
     object chbShowMasterActor: TCheckBox
-      Left = 532
+      Left = 946
       Top = 1
-      Width = 117
-      Height = 25
+      Width = 205
+      Height = 45
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Align = alRight
       Caption = 'Show master actor'
       TabOrder = 1
-      ExplicitLeft = 472
     end
   end
   object GLScene1: TGLScene

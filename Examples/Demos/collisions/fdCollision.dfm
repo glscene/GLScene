@@ -6,8 +6,8 @@ object FormCollisions: TFormCollisions
   Margins.Right = 5
   Margins.Bottom = 5
   Caption = 'Collisions'
-  ClientHeight = 1055
-  ClientWidth = 1425
+  ClientHeight = 750
+  ClientWidth = 1255
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object FormCollisions: TFormCollisions
     Left = 0
     Top = 0
     Width = 226
-    Height = 1055
+    Height = 750
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5
@@ -32,7 +32,7 @@ object FormCollisions: TFormCollisions
       Left = 1
       Top = 1
       Width = 224
-      Height = 1053
+      Height = 748
       Margins.Left = 5
       Margins.Top = 5
       Margins.Right = 5
@@ -61,114 +61,16 @@ object FormCollisions: TFormCollisions
         67006C00650062006F007800}
     end
   end
-  object PageControl: TPageControl
+  object PanelCollisions: TPanel
     Left = 226
     Top = 0
-    Width = 1199
-    Height = 1055
+    Width = 1029
+    Height = 750
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5
     Margins.Bottom = 5
     Align = alClient
     TabOrder = 1
-    object tsBoxedin: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Boxedin'
-      TabVisible = False
-    end
-    object tsBoxSphere: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'BoxSphere'
-      ImageIndex = 1
-      TabVisible = False
-    end
-    object tsFacevface: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Facevface'
-      ImageIndex = 2
-      TabVisible = False
-    end
-    object tsMeshHit: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'MeshHit'
-      ImageIndex = 3
-      TabVisible = False
-    end
-    object tsVolcano: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Volcano'
-      ImageIndex = 4
-      TabVisible = False
-    end
-    object tsOcclusionQuery: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'OcclusionQuery'
-      ImageIndex = 5
-      TabVisible = False
-    end
-    object tsOctree: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Octree'
-      ImageIndex = 6
-      TabVisible = False
-    end
-    object tsRaybox: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Raybox'
-      ImageIndex = 7
-      TabVisible = False
-    end
-    object tsRaycast: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Raycast'
-      ImageIndex = 8
-      TabVisible = False
-    end
-    object tsSphere: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Sphere'
-      ImageIndex = 9
-      TabVisible = False
-    end
-    object tsTriangleBox: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'TriangleBox'
-      ImageIndex = 10
-      TabVisible = False
-    end
   end
 end

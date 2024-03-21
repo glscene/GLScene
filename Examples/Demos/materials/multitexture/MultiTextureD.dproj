@@ -116,7 +116,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="fMultiTextureD.pas">
-            <Form>Form1</Form>
+            <Form>FormMultiTexture</Form>
         </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

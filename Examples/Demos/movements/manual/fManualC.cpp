@@ -14,14 +14,14 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormManual *FormManual;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormManual::TFormManual(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::TrackBarChange(TObject *Sender)
+void __fastcall TFormManual::TrackBarChange(TObject *Sender)
 {
    int t;
 
@@ -39,7 +39,7 @@ void __fastcall TForm1::TrackBarChange(TObject *Sender)
    StaticText1->Caption = IntToStr(int64_t(GLSceneViewer1->FramesPerSecond()))+" FPS";
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
+void __fastcall TFormManual::GLCadencer1Progress(TObject *Sender, const double deltaTime,
           const double newTime)
 {
 	if (CBPlay->Checked && Visible)
@@ -47,7 +47,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
 		TrackBar->Position = ((TrackBar->Position+1) % 360);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormResize(TObject *Sender)
+void __fastcall TFormManual::FormResize(TObject *Sender)
 {
    GLSceneViewer1->ResetPerformanceMonitor();
 }

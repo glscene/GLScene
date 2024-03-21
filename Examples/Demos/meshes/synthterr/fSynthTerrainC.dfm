@@ -1,23 +1,32 @@
 object Form1: TForm1
   Left = 0
   Top = 0
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Synthetic Terrain'
-  ClientHeight = 364
-  ClientWidth = 526
+  ClientHeight = 637
+  ClientWidth = 921
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'Tahoma'
   Font.Style = []
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 23
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 526
-    Height = 364
+    Width = 921
+    Height = 637
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     VSync = vsmSync
     Buffer.FogEnvironment.FogColor.Color = {0000803F0000803F0000803F0000803F}
@@ -27,7 +36,7 @@ object Form1: TForm1
     Buffer.BackgroundColor = clBlack
     Buffer.FogEnable = True
     Buffer.Lighting = False
-    FieldOfView = 149.276763916015600000
+    FieldOfView = 162.156372070312500000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown

@@ -34,6 +34,7 @@ type
     Cube2: TGLCube;
     DummyCube1: TGLDummyCube;
     Cube3: TGLCube;
+    StatusBar: TStatusBar;
     procedure Timer1Timer(Sender: TObject);
     procedure GLTimeEventsMGR1Events0Event(event: TTimeEvent);
     procedure GLTimeEventsMGR1Events1Event(event: TTimeEvent);
@@ -52,7 +53,9 @@ implementation
 
 procedure TFormEvents.Timer1Timer(Sender: TObject);
 begin
-  Caption := 'Events ' + Format('  TIME: %.4f', [GLCadencer1.CurrentTime]);
+  StatusBar.Panels[0].Text := 'Time:';
+  StatusBar.Panels[0].Width := 50;
+	StatusBar.Panels[1].Text := FloatToStrF(GLCadencer1.CurrentTime,ffFixed, 10, 2);
   GLSceneViewer1.ResetPerformanceMonitor;
 end;
 

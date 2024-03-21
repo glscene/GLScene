@@ -120,7 +120,7 @@ type
     procedure FormMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
   public
-    Path: TFileName;
+    AssetPath: TFileName;
     mx, my: Integer;
     FireLight: Single;
     inPreview, inSaver: Boolean;
@@ -136,11 +136,10 @@ implementation
 
 procedure TMain.FormCreate(Sender: TObject);
 begin
-  Path := GetCurrentAssetPath();
-
+  AssetPath := GetCurrentAssetPath();
   Randomize;
   // Load static models
-  SetCurrentDir(Path + '\model');
+  SetCurrentDir(AssetPath + '\model');
   ffFirTree.LoadFromFile('firtree.3ds');
   ffFirePlace.LoadFromFile('fireplace.3ds');
 
@@ -148,7 +147,7 @@ begin
   FTYear.Text := '';
 
   // Set current dir for audio files
-  SetCurrentDir(Path + '\audio');
+  SetCurrentDir(AssetPath + '\audio');
 end;
 
 procedure TMain.FormResize(Sender: TObject);

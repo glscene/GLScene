@@ -34,7 +34,6 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
    GLMaterialLibrary1->TexturePaths = PathToData;
    GLMaterialScripter1->DebugMemo = Memo2;
    GLCube1->Material->MaterialLibrary = GLMaterialLibrary1;
-
 }
 //---------------------------------------------------------------------------
 

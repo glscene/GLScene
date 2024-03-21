@@ -19,14 +19,7 @@ type
   TFormBehaviours = class(TForm)
     PanelLeft: TPanel;
     TreeView: TTreeView;
-    PageControl: TPageControl;
-    tsOne: TTabSheet;
-    tsTwo: TTabSheet;
-    tsThree: TTabSheet;
-    tsFour: TTabSheet;
-    tsFive: TTabSheet;
-    tsSix: TTabSheet;
-    tsSeven: TTabSheet;
+    PanelBehaviours: TPanel;
   private
     { Private declarations }
   public

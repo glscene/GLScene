@@ -1,26 +1,35 @@
-object Form1: TForm1
+object FormActor: TFormActor
   Left = 0
   Top = 0
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Actor'
-  ClientHeight = 439
-  ClientWidth = 573
+  ClientHeight = 768
+  ClientWidth = 1017
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 23
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 38
-    Width = 573
-    Height = 382
+    Top = 67
+    Width = 1017
+    Height = 668
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clSilver
-    FieldOfView = 51.048950195312500000
+    FieldOfView = 79.723762512207030000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -29,28 +38,40 @@ object Form1: TForm1
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 420
-    Width = 573
-    Height = 19
+    Top = 735
+    Width = 1017
+    Height = 33
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Panels = <
       item
-        Width = 200
+        Width = 350
       end>
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 573
-    Height = 38
+    Width = 1017
+    Height = 67
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alTop
     BevelOuter = bvLowered
     TabOrder = 2
     object SBPlay: TSpeedButton
-      Left = 188
-      Top = 8
-      Width = 23
-      Height = 24
+      Left = 329
+      Top = 14
+      Width = 40
+      Height = 42
       Hint = 'Play Actor'
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Glyph.Data = {
         76010000424D7601000000000000760000002800000020000000100000000100
         04000000000000010000130B0000130B00001000000000000000000000000000
@@ -70,11 +91,15 @@ object Form1: TForm1
       OnClick = SBPlayClick
     end
     object SBStop: TSpeedButton
-      Left = 214
-      Top = 8
-      Width = 23
-      Height = 24
+      Left = 375
+      Top = 14
+      Width = 40
+      Height = 42
       Hint = 'Stop Actor'
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Enabled = False
       Glyph.Data = {
         76010000424D7601000000000000760000002800000020000000100000000100
@@ -95,11 +120,15 @@ object Form1: TForm1
       OnClick = SBStopClick
     end
     object SBFrameToFrame: TSpeedButton
-      Left = 240
-      Top = 8
-      Width = 23
-      Height = 24
+      Left = 420
+      Top = 14
+      Width = 40
+      Height = 42
       Hint = 'Play Frame to Frame'
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Glyph.Data = {
         76010000424D7601000000000000760000002800000020000000100000000100
         04000000000000010000130B0000130B00001000000000000000000000000000
@@ -119,25 +148,37 @@ object Form1: TForm1
       OnClick = SBFrameToFrameClick
     end
     object Label1: TLabel
-      Left = 8
-      Top = 14
-      Width = 54
-      Height = 13
+      Left = 14
+      Top = 25
+      Width = 96
+      Height = 23
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Animation :'
     end
     object LabelFPS: TLabel
-      Left = 460
-      Top = 12
-      Width = 18
-      Height = 13
+      Left = 805
+      Top = 21
+      Width = 31
+      Height = 23
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'FPS'
     end
     object CBAnimations: TComboBox
-      Left = 64
-      Top = 10
-      Width = 109
-      Height = 21
+      Left = 112
+      Top = 18
+      Width = 191
+      Height = 31
       Hint = 'Change State'
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Style = csDropDownList
       ParentShowHint = False
       ShowHint = True
@@ -145,19 +186,27 @@ object Form1: TForm1
       OnChange = CBAnimationsChange
     end
     object BBLoadWeapon: TBitBtn
-      Left = 351
-      Top = 8
-      Width = 89
-      Height = 24
+      Left = 614
+      Top = 14
+      Width = 156
+      Height = 42
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Load Weapon'
       TabOrder = 1
       OnClick = BBLoadWeaponClick
     end
     object CBSmooth: TCheckBox
-      Left = 280
-      Top = 11
-      Width = 65
-      Height = 17
+      Left = 490
+      Top = 19
+      Width = 114
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Smooth'
       Checked = True
       State = cbChecked

@@ -110,7 +110,7 @@
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="fMultiTextureC.cpp">
-            <Form>Form1</Form>
+            <Form>FormMultiTexture</Form>
             <FormType>dfm</FormType>
             <DependentOn>fMultiTextureC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

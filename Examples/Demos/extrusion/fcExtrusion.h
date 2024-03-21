@@ -18,7 +18,7 @@
 #include "fTentaclesC.h"
 
 //---------------------------------------------------------------------------
-class TfrmExtrusionC : public TForm
+class TFormExtrusion : public TForm
 {
 __published:	// IDE-managed Components
 	TPanel *PanelLeft;
@@ -35,9 +35,9 @@ __published:	// IDE-managed Components
 	void __fastcall FormShow(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
-	__fastcall TfrmExtrusionC(TComponent* Owner);
+	__fastcall TFormExtrusion(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TfrmExtrusionC *frmExtrusionC;
+extern PACKAGE TFormExtrusion *FormExtrusion;
 //---------------------------------------------------------------------------
 #endif

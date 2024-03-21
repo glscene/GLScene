@@ -1,159 +1,225 @@
 object FormCombine: TFormCombine
   Left = 0
   Top = 0
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Texture Combine'
-  ClientHeight = 459
-  ClientWidth = 609
+  ClientHeight = 803
+  ClientWidth = 1066
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -12
+  Font.Height = -21
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 15
+  PixelsPerInch = 168
+  TextHeight = 30
   object Image1: TImage
-    Left = 8
-    Top = 80
-    Width = 128
-    Height = 128
+    Left = 14
+    Top = 140
+    Width = 224
+    Height = 224
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Stretch = True
   end
   object Image2: TImage
-    Left = 152
-    Top = 80
-    Width = 128
-    Height = 128
+    Left = 266
+    Top = 140
+    Width = 224
+    Height = 224
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Stretch = True
   end
   object Image3: TImage
-    Left = 296
-    Top = 80
-    Width = 128
-    Height = 128
+    Left = 518
+    Top = 140
+    Width = 224
+    Height = 224
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Stretch = True
   end
   object Label1: TLabel
-    Left = 264
-    Top = 22
-    Width = 68
-    Height = 19
+    Left = 462
+    Top = 39
+    Width = 124
+    Height = 35
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Textures'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -17
+    Font.Height = -30
     Font.Name = 'Arial'
     Font.Style = [fsBold]
     ParentFont = False
   end
   object Image4: TImage
-    Left = 440
-    Top = 80
-    Width = 128
-    Height = 128
+    Left = 770
+    Top = 140
+    Width = 224
+    Height = 224
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Stretch = True
   end
   object Label3: TLabel
-    Left = 8
-    Top = 216
-    Width = 32
-    Height = 15
+    Left = 14
+    Top = 378
+    Width = 56
+    Height = 30
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Result'
   end
   object Label4: TLabel
-    Left = 200
-    Top = 216
-    Width = 128
-    Height = 15
+    Left = 350
+    Top = 378
+    Width = 223
+    Height = 30
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Texture Combiners code'
   end
   object Label2: TLabel
-    Left = 8
-    Top = 40
-    Width = 79
-    Height = 15
+    Left = 14
+    Top = 70
+    Width = 136
+    Height = 30
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Primary Color :'
   end
   object Shape1: TShape
-    Left = 104
-    Top = 40
-    Width = 50
-    Height = 18
+    Left = 182
+    Top = 70
+    Width = 88
+    Height = 32
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
+    Pen.Width = 2
     OnMouseDown = Shape1MouseDown
   end
   object SceneViewer: TGLSceneViewer
-    Left = 8
-    Top = 234
-    Width = 180
-    Height = 180
+    Left = 14
+    Top = 410
+    Width = 315
+    Height = 315
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera
     PostRender = SceneViewerPostRender
     Buffer.BackgroundColor = clGray
     Buffer.Lighting = False
-    FieldOfView = 121.890792846679700000
+    FieldOfView = 144.774841308593800000
     PenAsTouch = False
     TabOrder = 0
   end
   object BUApply: TButton
-    Left = 200
-    Top = 387
-    Width = 75
-    Height = 25
+    Left = 350
+    Top = 677
+    Width = 131
+    Height = 44
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Apply'
     TabOrder = 1
     OnClick = BUApplyClick
   end
   object PATex1: TPanel
-    Left = 176
-    Top = 124
-    Width = 81
-    Height = 41
+    Left = 308
+    Top = 217
+    Width = 142
+    Height = 72
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     BevelOuter = bvLowered
     Caption = 'Unavailable'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 8421440
-    Font.Height = -12
+    Font.Height = -21
     Font.Name = 'Arial'
     Font.Style = [fsBold, fsItalic]
     ParentFont = False
     TabOrder = 2
   end
   object PATex2: TPanel
-    Left = 320
-    Top = 124
-    Width = 81
-    Height = 41
+    Left = 560
+    Top = 217
+    Width = 142
+    Height = 72
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     BevelOuter = bvLowered
     Caption = 'Unavailable'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 8421440
-    Font.Height = -12
+    Font.Height = -21
     Font.Name = 'Arial'
     Font.Style = [fsBold, fsItalic]
     ParentFont = False
     TabOrder = 3
   end
   object PATex3: TPanel
-    Left = 464
-    Top = 124
-    Width = 81
-    Height = 41
+    Left = 812
+    Top = 217
+    Width = 142
+    Height = 72
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     BevelOuter = bvLowered
     Caption = 'Unavailable'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 8421440
-    Font.Height = -12
+    Font.Height = -21
     Font.Name = 'Arial'
     Font.Style = [fsBold, fsItalic]
     ParentFont = False
     TabOrder = 4
   end
   object CBTex0: TCheckBox
-    Left = 8
-    Top = 64
-    Width = 57
-    Height = 16
+    Left = 14
+    Top = 112
+    Width = 100
+    Height = 28
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Tex0'
     Checked = True
     State = cbChecked
@@ -161,36 +227,52 @@ object FormCombine: TFormCombine
     OnClick = CBTex0Click
   end
   object CBTex1: TCheckBox
-    Left = 152
-    Top = 64
-    Width = 73
-    Height = 16
+    Left = 266
+    Top = 112
+    Width = 128
+    Height = 28
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Tex1'
     Checked = True
     State = cbChecked
     TabOrder = 6
   end
   object CBTex2: TCheckBox
-    Left = 296
-    Top = 64
-    Width = 57
-    Height = 16
+    Left = 518
+    Top = 112
+    Width = 100
+    Height = 28
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Tex2'
     TabOrder = 7
   end
   object CBTex3: TCheckBox
-    Left = 440
-    Top = 64
-    Width = 57
-    Height = 16
+    Left = 770
+    Top = 112
+    Width = 100
+    Height = 28
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Tex3'
     TabOrder = 8
   end
   object Panel1: TPanel
-    Left = 200
-    Top = 232
-    Width = 369
-    Height = 145
+    Left = 350
+    Top = 406
+    Width = 646
+    Height = 254
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     BevelOuter = bvLowered
     BorderWidth = 1
     Caption = 'Panel1'
@@ -198,8 +280,8 @@ object FormCombine: TFormCombine
     object MECombiner: TMemo
       Left = 2
       Top = 2
-      Width = 365
-      Height = 141
+      Width = 642
+      Height = 250
       Hint = 
         'Syntax Examples:'#13#10#13#10'   Tex1:=Tex0;   // replace texture 1 with t' +
         'exture 0'#13#10'   Tex1:=Tex0+Tex1; // additive blending between textu' +
@@ -210,11 +292,15 @@ object FormCombine: TFormCombine
         'imaryColor); // interpolation between textures 0 and 1 using pri' +
         'mary color as factor'#13#10'   Tex1:=Dot3(Tex0, Tex1); // dot3 product' +
         ' between textures 0 and 1'
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Align = alClient
       BorderStyle = bsNone
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'Courier New'
       Font.Style = []
       Lines.Strings = (

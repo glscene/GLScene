@@ -1,4 +1,4 @@
-object frmExtrusionC: TfrmExtrusionC
+object FormExtrusion: TFormExtrusion
   Left = 0
   Top = 0
   Margins.Left = 5

@@ -16,15 +16,15 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormSmoothnavi *FormSmoothnavi;
 
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormSmoothnavi::TFormSmoothnavi(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
+void __fastcall TFormSmoothnavi::FormCreate(TObject *Sender)
 {
   Navigator = new TGLSmoothNavigator (this);
   Navigator->AngleLock = false;
@@ -52,7 +52,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall  TForm1::CheckControls(double DeltaTime, double newTime)
+void __fastcall  TFormSmoothnavi::CheckControls(double DeltaTime, double newTime)
 {
   bool NeedToAccelerate;
 
@@ -69,7 +69,7 @@ void __fastcall  TForm1::CheckControls(double DeltaTime, double newTime)
 }
 
 
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
+void __fastcall TFormSmoothnavi::GLCadencer1Progress(TObject *Sender, const double deltaTime,
 		  const double newTime)
 {
   GLSceneViewer1->Invalidate();
@@ -101,7 +101,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::FPSTimerTimer(TObject *Sender)
+void __fastcall TFormSmoothnavi::FPSTimerTimer(TObject *Sender)
 {
   Caption = "Smooth Navigator  -  " + GLSceneViewer1->FramesPerSecondText();
   Navigator->AutoScaleParameters(GLSceneViewer1->FramesPerSecond());
@@ -109,7 +109,7 @@ void __fastcall TForm1::FPSTimerTimer(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::MouseLookCheckBoxClick(TObject *Sender)
+void __fastcall TFormSmoothnavi::MouseLookCheckBoxClick(TObject *Sender)
 {
   if (MouseLookCheckBox->Checked)
   {
@@ -131,7 +131,7 @@ void __fastcall TForm1::MouseLookCheckBoxClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::FormKeyPress(TObject *Sender, System::WideChar &Key)
+void __fastcall TFormSmoothnavi::FormKeyPress(TObject *Sender, System::WideChar &Key)
 {
   if (Key == Char(VK_SPACE))
 	MouseLookCheckBoxClick(Sender);
@@ -140,7 +140,7 @@ void __fastcall TForm1::FormKeyPress(TObject *Sender, System::WideChar &Key)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
+void __fastcall TFormSmoothnavi::FormClose(TObject *Sender, TCloseAction &Action)
 {
   GLSceneViewer1->Enabled = false;
   GLCadencer1->Enabled = false;
@@ -152,25 +152,25 @@ void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::RadioButton6Click(TObject *Sender)
+void __fastcall TFormSmoothnavi::RadioButton6Click(TObject *Sender)
 {
   GLCadencer1->FixedDeltaTime = 0;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::RadioButton7Click(TObject *Sender)
+void __fastcall TFormSmoothnavi::RadioButton7Click(TObject *Sender)
 {
   GLCadencer1->FixedDeltaTime = 0.01;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::RadioButton8Click(TObject *Sender)
+void __fastcall TFormSmoothnavi::RadioButton8Click(TObject *Sender)
 {
   GLCadencer1->FixedDeltaTime = 0.1;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
+void __fastcall TFormSmoothnavi::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
           int X, int Y)
 {
   ShiftState =  Shift;
@@ -179,7 +179,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
+void __fastcall TFormSmoothnavi::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y)
 {
   xx = X;
@@ -187,10 +187,10 @@ void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Bu
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
+void __fastcall TFormSmoothnavi::FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
           TPoint &MousePos, bool &Handled)
 {
-  // (WheelDelta / Abs(WheelDelta) is used to deternime the sign.
+  // (WheelDelta / Abs(WheelDelta) is used to determine the sign.
   Navigator->AdjustDistanceParams->AddImpulse((WheelDelta / abs(WheelDelta)));
 }
 //---------------------------------------------------------------------------

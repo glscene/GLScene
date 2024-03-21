@@ -125,7 +125,7 @@ class TForm1 : public TForm
 	float fireLight;
 	bool inPreview, inSaver;
 	Cardinal bStream;
-	TFileName Path;
+	TFileName AssetPath;
   public: // User declarations
     __fastcall TForm1(TComponent* Owner);
 };

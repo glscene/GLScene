@@ -22,7 +22,7 @@
 #include "GLS.SceneViewer.hpp"
 #include <Vcl.ExtCtrls.hpp>
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormPong : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
@@ -53,9 +53,9 @@ private:	// User declarations
 	 bool gameOver;
 	 void __fastcall ResetGame();
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormPong(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormPong *FormPong;
 //---------------------------------------------------------------------------
 #endif

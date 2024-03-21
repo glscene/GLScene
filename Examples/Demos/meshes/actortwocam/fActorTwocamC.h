@@ -29,7 +29,7 @@
 #include "GLS.VectorGeometry.hpp"
 
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormActorTwocam : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
@@ -63,9 +63,9 @@ private:	// User declarations
 	void __fastcall AddMushrooms();
 	void __fastcall HandleKeys(const double deltaTime);
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormActorTwocam(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormActorTwocam *FormActorTwocam;
 //---------------------------------------------------------------------------
 #endif

@@ -27,7 +27,10 @@
         <Projects Include="dyncubemap\DynCubemapD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="fire2D_gr32\Fire2D_GR32.dproj">
+        <Projects Include="fire2D_gr32\Fire_GR32C.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="fire2D_gr32\Fire_GR32D.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="MaterialScript\MatScriptC.cbproj">
@@ -60,7 +63,10 @@
         <Projects Include="multitexture\MultiTextureD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="objectmats\ObjMaterialD.dproj">
+        <Projects Include="objmaterial\ObjMaterialC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="objmaterial\ObjMaterialD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="proceduralclouds\ProcCloudsC.cbproj">
@@ -69,10 +75,10 @@
         <Projects Include="proceduralclouds\ProcCloudsD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="texanim\TexAnimD.dproj">
+        <Projects Include="texanim\TexAnimC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="texanim\TexAnimC.cbproj">
+        <Projects Include="texanim\TexAnimD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="texcombine\TexCombineC.cbproj">
@@ -81,19 +87,22 @@
         <Projects Include="texcombine\TexCombineD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="texformat\TexFormatD.dproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="texformat\TexFormatC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="transparency\TransparencyD.dproj">
+        <Projects Include="texformat\TexFormatD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="transparency\TransparencyC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="TransparencyAdvanced\TransparencyAdv.dproj">
+        <Projects Include="transparency\TransparencyD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TransparAdv\TransparAdvD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TransparAdv\TransparAdvC.cbproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -176,14 +185,23 @@
     <Target Name="DynCubemapD:Make">
         <MSBuild Projects="dyncubemap\DynCubemapD.dproj" Targets="Make"/>
     </Target>
-    <Target Name="Fire2D_GR32">
-        <MSBuild Projects="fire2D_gr32\Fire2D_GR32.dproj"/>
+    <Target Name="Fire_GR32C">
+        <MSBuild Projects="fire2D_gr32\Fire_GR32C.cbproj"/>
     </Target>
-    <Target Name="Fire2D_GR32:Clean">
-        <MSBuild Projects="fire2D_gr32\Fire2D_GR32.dproj" Targets="Clean"/>
+    <Target Name="Fire_GR32C:Clean">
+        <MSBuild Projects="fire2D_gr32\Fire_GR32C.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="Fire2D_GR32:Make">
-        <MSBuild Projects="fire2D_gr32\Fire2D_GR32.dproj" Targets="Make"/>
+    <Target Name="Fire_GR32C:Make">
+        <MSBuild Projects="fire2D_gr32\Fire_GR32C.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Fire_GR32D">
+        <MSBuild Projects="fire2D_gr32\Fire_GR32D.dproj"/>
+    </Target>
+    <Target Name="Fire_GR32D:Clean">
+        <MSBuild Projects="fire2D_gr32\Fire_GR32D.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Fire_GR32D:Make">
+        <MSBuild Projects="fire2D_gr32\Fire_GR32D.dproj" Targets="Make"/>
     </Target>
     <Target Name="MatScriptC">
         <MSBuild Projects="MaterialScript\MatScriptC.cbproj"/>
@@ -275,14 +293,23 @@
     <Target Name="MultiTextureD:Make">
         <MSBuild Projects="multitexture\MultiTextureD.dproj" Targets="Make"/>
     </Target>
+    <Target Name="ObjMaterialC">
+        <MSBuild Projects="objmaterial\ObjMaterialC.cbproj"/>
+    </Target>
+    <Target Name="ObjMaterialC:Clean">
+        <MSBuild Projects="objmaterial\ObjMaterialC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ObjMaterialC:Make">
+        <MSBuild Projects="objmaterial\ObjMaterialC.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="ObjMaterialD">
-        <MSBuild Projects="objectmats\ObjMaterialD.dproj"/>
+        <MSBuild Projects="objmaterial\ObjMaterialD.dproj"/>
     </Target>
     <Target Name="ObjMaterialD:Clean">
-        <MSBuild Projects="objectmats\ObjMaterialD.dproj" Targets="Clean"/>
+        <MSBuild Projects="objmaterial\ObjMaterialD.dproj" Targets="Clean"/>
     </Target>
     <Target Name="ObjMaterialD:Make">
-        <MSBuild Projects="objectmats\ObjMaterialD.dproj" Targets="Make"/>
+        <MSBuild Projects="objmaterial\ObjMaterialD.dproj" Targets="Make"/>
     </Target>
     <Target Name="ProcCloudsC">
         <MSBuild Projects="proceduralclouds\ProcCloudsC.cbproj"/>
@@ -302,15 +329,6 @@
     <Target Name="ProcCloudsD:Make">
         <MSBuild Projects="proceduralclouds\ProcCloudsD.dproj" Targets="Make"/>
     </Target>
-    <Target Name="TexAnimD">
-        <MSBuild Projects="texanim\TexAnimD.dproj"/>
-    </Target>
-    <Target Name="TexAnimD:Clean">
-        <MSBuild Projects="texanim\TexAnimD.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="TexAnimD:Make">
-        <MSBuild Projects="texanim\TexAnimD.dproj" Targets="Make"/>
-    </Target>
     <Target Name="TexAnimC">
         <MSBuild Projects="texanim\TexAnimC.cbproj"/>
     </Target>
@@ -319,6 +337,15 @@
     </Target>
     <Target Name="TexAnimC:Make">
         <MSBuild Projects="texanim\TexAnimC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="TexAnimD">
+        <MSBuild Projects="texanim\TexAnimD.dproj"/>
+    </Target>
+    <Target Name="TexAnimD:Clean">
+        <MSBuild Projects="texanim\TexAnimD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TexAnimD:Make">
+        <MSBuild Projects="texanim\TexAnimD.dproj" Targets="Make"/>
     </Target>
     <Target Name="TexCombineC">
         <MSBuild Projects="texcombine\TexCombineC.cbproj"/>
@@ -338,15 +365,6 @@
     <Target Name="TexCombineD:Make">
         <MSBuild Projects="texcombine\TexCombineD.dproj" Targets="Make"/>
     </Target>
-    <Target Name="TexFormatD">
-        <MSBuild Projects="texformat\TexFormatD.dproj"/>
-    </Target>
-    <Target Name="TexFormatD:Clean">
-        <MSBuild Projects="texformat\TexFormatD.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="TexFormatD:Make">
-        <MSBuild Projects="texformat\TexFormatD.dproj" Targets="Make"/>
-    </Target>
     <Target Name="TexFormatC">
         <MSBuild Projects="texformat\TexFormatC.cbproj"/>
     </Target>
@@ -356,14 +374,14 @@
     <Target Name="TexFormatC:Make">
         <MSBuild Projects="texformat\TexFormatC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="TransparencyD">
-        <MSBuild Projects="transparency\TransparencyD.dproj"/>
+    <Target Name="TexFormatD">
+        <MSBuild Projects="texformat\TexFormatD.dproj"/>
     </Target>
-    <Target Name="TransparencyD:Clean">
-        <MSBuild Projects="transparency\TransparencyD.dproj" Targets="Clean"/>
+    <Target Name="TexFormatD:Clean">
+        <MSBuild Projects="texformat\TexFormatD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="TransparencyD:Make">
-        <MSBuild Projects="transparency\TransparencyD.dproj" Targets="Make"/>
+    <Target Name="TexFormatD:Make">
+        <MSBuild Projects="texformat\TexFormatD.dproj" Targets="Make"/>
     </Target>
     <Target Name="TransparencyC">
         <MSBuild Projects="transparency\TransparencyC.cbproj"/>
@@ -374,23 +392,41 @@
     <Target Name="TransparencyC:Make">
         <MSBuild Projects="transparency\TransparencyC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="TransparencyAdv">
-        <MSBuild Projects="TransparencyAdvanced\TransparencyAdv.dproj"/>
+    <Target Name="TransparencyD">
+        <MSBuild Projects="transparency\TransparencyD.dproj"/>
     </Target>
-    <Target Name="TransparencyAdv:Clean">
-        <MSBuild Projects="TransparencyAdvanced\TransparencyAdv.dproj" Targets="Clean"/>
+    <Target Name="TransparencyD:Clean">
+        <MSBuild Projects="transparency\TransparencyD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="TransparencyAdv:Make">
-        <MSBuild Projects="TransparencyAdvanced\TransparencyAdv.dproj" Targets="Make"/>
+    <Target Name="TransparencyD:Make">
+        <MSBuild Projects="transparency\TransparencyD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TransparAdvD">
+        <MSBuild Projects="TransparAdv\TransparAdvD.dproj"/>
+    </Target>
+    <Target Name="TransparAdvD:Clean">
+        <MSBuild Projects="TransparAdv\TransparAdvD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TransparAdvD:Make">
+        <MSBuild Projects="TransparAdv\TransparAdvD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TransparAdvC">
+        <MSBuild Projects="TransparAdv\TransparAdvC.cbproj"/>
+    </Target>
+    <Target Name="TransparAdvC:Clean">
+        <MSBuild Projects="TransparAdv\TransparAdvC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TransparAdvC:Make">
+        <MSBuild Projects="TransparAdv\TransparAdvC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="CubemapC;CubemapD;CustomQuadC;CustomQuadD;DynTextureC;DynTextureD;DynCubemapC;DynCubemapD;Fire2D_GR32;MatScriptC;MatScriptD;MirrorC;MirrorD;MultiMaterialC;MultiMaterialD;MultipassC;MultipassD;MultiTextureC;MultiTextureD;ObjMaterialD;ProcCloudsC;ProcCloudsD;TexAnimD;TexAnimC;TexCombineC;TexCombineD;TexFormatD;TexFormatC;TransparencyD;TransparencyC;TransparencyAdv"/>
+        <CallTarget Targets="CubemapC;CubemapD;CustomQuadC;CustomQuadD;DynTextureC;DynTextureD;DynCubemapC;DynCubemapD;Fire_GR32C;Fire_GR32D;MatScriptC;MatScriptD;MirrorC;MirrorD;MultiMaterialC;MultiMaterialD;MultipassC;MultipassD;MultiTextureC;MultiTextureD;ObjMaterialC;ObjMaterialD;ProcCloudsC;ProcCloudsD;TexAnimC;TexAnimD;TexCombineC;TexCombineD;TexFormatC;TexFormatD;TransparencyC;TransparencyD;TransparAdvD;TransparAdvC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="CubemapC:Clean;CubemapD:Clean;CustomQuadC:Clean;CustomQuadD:Clean;DynTextureC:Clean;DynTextureD:Clean;DynCubemapC:Clean;DynCubemapD:Clean;Fire2D_GR32:Clean;MatScriptC:Clean;MatScriptD:Clean;MirrorC:Clean;MirrorD:Clean;MultiMaterialC:Clean;MultiMaterialD:Clean;MultipassC:Clean;MultipassD:Clean;MultiTextureC:Clean;MultiTextureD:Clean;ObjMaterialD:Clean;ProcCloudsC:Clean;ProcCloudsD:Clean;TexAnimD:Clean;TexAnimC:Clean;TexCombineC:Clean;TexCombineD:Clean;TexFormatD:Clean;TexFormatC:Clean;TransparencyD:Clean;TransparencyC:Clean;TransparencyAdv:Clean"/>
+        <CallTarget Targets="CubemapC:Clean;CubemapD:Clean;CustomQuadC:Clean;CustomQuadD:Clean;DynTextureC:Clean;DynTextureD:Clean;DynCubemapC:Clean;DynCubemapD:Clean;Fire_GR32C:Clean;Fire_GR32D:Clean;MatScriptC:Clean;MatScriptD:Clean;MirrorC:Clean;MirrorD:Clean;MultiMaterialC:Clean;MultiMaterialD:Clean;MultipassC:Clean;MultipassD:Clean;MultiTextureC:Clean;MultiTextureD:Clean;ObjMaterialC:Clean;ObjMaterialD:Clean;ProcCloudsC:Clean;ProcCloudsD:Clean;TexAnimC:Clean;TexAnimD:Clean;TexCombineC:Clean;TexCombineD:Clean;TexFormatC:Clean;TexFormatD:Clean;TransparencyC:Clean;TransparencyD:Clean;TransparAdvD:Clean;TransparAdvC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="CubemapC:Make;CubemapD:Make;CustomQuadC:Make;CustomQuadD:Make;DynTextureC:Make;DynTextureD:Make;DynCubemapC:Make;DynCubemapD:Make;Fire2D_GR32:Make;MatScriptC:Make;MatScriptD:Make;MirrorC:Make;MirrorD:Make;MultiMaterialC:Make;MultiMaterialD:Make;MultipassC:Make;MultipassD:Make;MultiTextureC:Make;MultiTextureD:Make;ObjMaterialD:Make;ProcCloudsC:Make;ProcCloudsD:Make;TexAnimD:Make;TexAnimC:Make;TexCombineC:Make;TexCombineD:Make;TexFormatD:Make;TexFormatC:Make;TransparencyD:Make;TransparencyC:Make;TransparencyAdv:Make"/>
+        <CallTarget Targets="CubemapC:Make;CubemapD:Make;CustomQuadC:Make;CustomQuadD:Make;DynTextureC:Make;DynTextureD:Make;DynCubemapC:Make;DynCubemapD:Make;Fire_GR32C:Make;Fire_GR32D:Make;MatScriptC:Make;MatScriptD:Make;MirrorC:Make;MirrorD:Make;MultiMaterialC:Make;MultiMaterialD:Make;MultipassC:Make;MultipassD:Make;MultiTextureC:Make;MultiTextureD:Make;ObjMaterialC:Make;ObjMaterialD:Make;ProcCloudsC:Make;ProcCloudsD:Make;TexAnimC:Make;TexAnimD:Make;TexCombineC:Make;TexCombineD:Make;TexFormatC:Make;TexFormatD:Make;TransparencyC:Make;TransparencyD:Make;TransparAdvD:Make;TransparAdvC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

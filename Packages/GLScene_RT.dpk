@@ -45,7 +45,6 @@ contains
   Formats.VFW in '..\Source\Formats.VFW.pas',
   Formats.Q3BSP in '..\Source\Formats.Q3BSP.pas',
   Formats.GL2 in '..\Source\Formats.GL2.pas',
-  Formats.LWO in '..\Source\Formats.LWO.pas',
   Formats.MD2 in '..\Source\Formats.MD2.pas',
   Formats.MD3 in '..\Source\Formats.MD3.pas',
   Formats.B3D in '..\Source\Formats.B3D.pas',
@@ -267,7 +266,10 @@ contains
   GLS.VectorFileObjects in '..\Source\GLS.VectorFileObjects.pas',
   GLS.VerletTypes in '..\Source\GLS.VerletTypes.pas',
   GLS.VerletClothify in '..\Source\GLS.VerletClothify.pas',
-  GLS.VectorTypesExt in '..\Source\GLS.VectorTypesExt.pas';
+  GLS.VectorTypesExt in '..\Source\GLS.VectorTypesExt.pas',
+  Formats.LWO in '..\Source\Formats.LWO.pas',
+  GLS.Polyhedra in '..\Source\GLS.Polyhedra.pas',
+  GLS.CyborgManager in '..\Source\GLS.CyborgManager.pas';
 
 end.
 

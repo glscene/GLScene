@@ -137,33 +137,33 @@ object FormTiles: TFormTiles
   object GLScene: TGLScene
     Left = 24
     Top = 16
-    object GLLightSource: TGLLightSource
+    object LightSource: TGLLightSource
       ConstAttenuation = 1.000000000000000000
       Position.Coordinates = {000048C2000020C20000F0410000803F}
       SpotCutOff = 180.000000000000000000
     end
-    object DCTarget: TGLDummyCube
+    object dcTarget: TGLDummyCube
       CubeSize = 1.000000000000000000
       object GLCamera: TGLCamera
         DepthOfView = 500.000000000000000000
         FocalLength = 50.000000000000000000
         NearPlaneBias = 0.200000002980232200
-        TargetObject = DCTarget
+        TargetObject = dcTarget
         Position.Coordinates = {00000000000080C0000040400000803F}
         Direction.Coordinates = {0000803F000000000000008000000000}
         Up.Coordinates = {00000000000000000000803F00000000}
       end
     end
-    object GLTilePlane: TGLTilePlane
+    object TilePlane: TGLTilePlane
       NoZWrite = False
       MaterialLibrary = GLMaterialLibrary
     end
-    object GLDirectOpenGL: TGLDirectOpenGL
+    object DirectOpenGL: TGLDirectOpenGL
       UseBuildList = False
-      OnRender = GLDirectOpenGLRender
+      OnRender = DirectOpenGLRender
       Blend = False
     end
-    object GLXYZGrid: TGLXYZGrid
+    object XYZGrid: TGLXYZGrid
       AntiAliased = True
       XSamplingScale.Min = -30.000000000000000000
       XSamplingScale.Max = 30.000000000000000000
@@ -175,7 +175,7 @@ object FormTiles: TFormTiles
       ZSamplingScale.Max = 10.000000000000000000
       ZSamplingScale.Step = 1.000000000000000000
     end
-    object DCSelection: TGLDummyCube
+    object dcSelection: TGLDummyCube
       CubeSize = 1.000000000000000000
       object GLLines1: TGLLines
         AntiAliased = True
@@ -202,7 +202,7 @@ object FormTiles: TFormTiles
         Options = []
       end
     end
-    object GLDummyCube1: TGLDummyCube
+    object DummyCube: TGLDummyCube
       CubeSize = 1.000000000000000000
     end
   end
@@ -241,8 +241,8 @@ object FormTiles: TFormTiles
         Material.Texture.Disabled = False
         TextureScale.Coordinates = {0000003F0000003F0000803F00000000}
       end>
-    Left = 24
-    Top = 72
+    Left = 94
+    Top = 212
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer

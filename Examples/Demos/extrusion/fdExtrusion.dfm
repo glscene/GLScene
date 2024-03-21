@@ -1,4 +1,4 @@
-object frmExtrusionD: TfrmExtrusionD
+object FormExtrusion: TFormExtrusion
   Left = 0
   Top = 0
   Margins.Left = 5
@@ -68,7 +68,6 @@ object frmExtrusionD: TfrmExtrusionD
     ActivePage = tsTentacles
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 1276
     object tsBending: TTabSheet
       Margins.Left = 5
       Margins.Top = 5

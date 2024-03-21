@@ -19,14 +19,7 @@ type
   TFormGLSLshaders = class(TForm)
     PanelLeft: TPanel;
     tvBench: TTreeView;
-    PageControl: TPageControl;
-    tsOne: TTabSheet;
-    tsTwo: TTabSheet;
-    tsThree: TTabSheet;
-    tsFour: TTabSheet;
-    tsFive: TTabSheet;
-    tsSix: TTabSheet;
-    tsSeven: TTabSheet;
+    PanelGLSL: TPanel;
   private
     { Private declarations }
   public

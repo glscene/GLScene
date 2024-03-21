@@ -20,7 +20,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "Jpeg.hpp"
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormMultiTexture : public TForm
 {
 __published:	// IDE-managed Components
 	TImage *Image1;
@@ -43,9 +43,9 @@ __published:	// IDE-managed Components
 	void __fastcall TrackBar1Change(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormMultiTexture(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormMultiTexture *FormMultiTexture;
 //---------------------------------------------------------------------------
 #endif

@@ -3,22 +3,25 @@ unit fdMeshes;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.Grids,
-  Vcl.Outline, Vcl.Samples.DirOutln;
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ComCtrls,
+  Vcl.ExtCtrls,
+  Vcl.Grids,
+  Vcl.Samples.DirOutln;
 
 type
   TFormMeshes = class(TForm)
     PanelLeft: TPanel;
     tvBench: TTreeView;
-    PageControl: TPageControl;
-    tsOne: TTabSheet;
-    tsTwo: TTabSheet;
-    tsThree: TTabSheet;
-    tsFour: TTabSheet;
-    tsFive: TTabSheet;
-    tsSix: TTabSheet;
-    tsSeven: TTabSheet;
+    PanelMeshes: TPanel;
   private
     { Private declarations }
   public

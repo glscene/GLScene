@@ -69,12 +69,11 @@ object frmMaterials: TfrmMaterials
         FFFFFFFFFF00000000000000000000000000010954006500780046006F007200
         6D00610074000000370000000000000000000000FFFFFFFFFFFFFFFF00000000
         000000000000000000010C5400720061006E00730070006100720065006E0063
-        0079000000470000000000000000000000FFFFFFFFFFFFFFFF00000000000000
-        00000000000001145400720061006E00730070006100720065006E0063007900
-        41006400760061006E00630065006400}
+        0079000000350000000000000000000000FFFFFFFFFFFFFFFF00000000000000
+        000000000000010B5400720061006E007300700061007200410064007600}
     end
   end
-  object PageControl: TPageControl
+  object PanelMaterials: TPanel
     Left = 226
     Top = 0
     Width = 912
@@ -83,70 +82,7 @@ object frmMaterials: TfrmMaterials
     Margins.Top = 5
     Margins.Right = 5
     Margins.Bottom = 5
-    ActivePage = tsSeven
     Align = alClient
     TabOrder = 1
-    object tsOne: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'One'
-      TabVisible = False
-    end
-    object tsTwo: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Two'
-      ImageIndex = 1
-      TabVisible = False
-    end
-    object tsThree: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Three'
-      ImageIndex = 2
-      TabVisible = False
-    end
-    object tsFour: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Four'
-      ImageIndex = 3
-      TabVisible = False
-    end
-    object tsFive: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Five'
-      ImageIndex = 4
-      TabVisible = False
-    end
-    object tsSix: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Six'
-      ImageIndex = 5
-      TabVisible = False
-    end
-    object tsSeven: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Seven'
-      ImageIndex = 6
-      TabVisible = False
-    end
   end
 end

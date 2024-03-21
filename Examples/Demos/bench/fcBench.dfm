@@ -7,7 +7,7 @@ object FirmBench: TFirmBench
   Margins.Bottom = 5
   Caption = 'Bench'
   ClientHeight = 999
-  ClientWidth = 1470
+  ClientWidth = 1103
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -60,7 +60,7 @@ object FirmBench: TFirmBench
   object PageControl: TPageControl
     Left = 226
     Top = 0
-    Width = 1244
+    Width = 877
     Height = 999
     Margins.Left = 5
     Margins.Top = 5
@@ -69,6 +69,7 @@ object FirmBench: TFirmBench
     ActivePage = tsCanvas
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 1244
     object tsCanvas: TTabSheet
       Margins.Left = 5
       Margins.Top = 5

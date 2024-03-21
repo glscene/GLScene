@@ -21,7 +21,7 @@
 #pragma link "GLS.FileMD2"
 
 #pragma resource "*.dfm"
-TForm1* Form1;
+TFormActorTwocam* FormActorTwocam;
 
 const int cWalkStep = 6; // this is our walking speed, in 3D units / second
 const int cStrafeStep = 6; // this is our strafing speed, in 3D units / second
@@ -31,10 +31,10 @@ const int cSpread = 90;
 const int cNbMushrooms = 15;
 
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {}
+__fastcall TFormActorTwocam::TFormActorTwocam(TComponent* Owner) : TForm(Owner) {}
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::AddMushrooms()
+void __fastcall TFormActorTwocam::AddMushrooms()
 {
     int i;
     TGLProxyObject* proxy;
@@ -68,7 +68,7 @@ void __fastcall TForm1::AddMushrooms()
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject* Sender)
+void __fastcall TFormActorTwocam::FormCreate(TObject* Sender)
 {
 	TFileName Path = GetCurrentAssetPath();
 
@@ -106,13 +106,13 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
 	Disk1->Material->Texture->Image->LoadFromFile("clover.jpg");
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::CBMouseLookClick(TObject* Sender)
+void __fastcall TFormActorTwocam::CBMouseLookClick(TObject* Sender)
 {
 	GLUserInterface1->MouseLookActive = CBMouseLook->Checked;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::HandleKeys(const double deltaTime)
+void __fastcall TFormActorTwocam::HandleKeys(const double deltaTime)
 {
 	String moving;
 	float boost;
@@ -190,7 +190,7 @@ void __fastcall TForm1::HandleKeys(const double deltaTime)
         Actor2->Synchronize(Actor1);
     }
 }
-void __fastcall TForm1::GLCadencer1Progress(
+void __fastcall TFormActorTwocam::GLCadencer1Progress(
     TObject* Sender, const double deltaTime, const double newTime)
 {
     HandleKeys(deltaTime);
@@ -200,10 +200,11 @@ void __fastcall TForm1::GLCadencer1Progress(
     GLUserInterface1->MouseUpdate();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Timer1Timer(TObject* Sender)
+void __fastcall TFormActorTwocam::Timer1Timer(TObject* Sender)
 {
 	Caption = "Actor with Two Cameras " +
-		Format("%.2f FPS", ARRAYOFCONST((GLSceneViewer1->FramesPerSecond())));
+	FloatToStrF(GLSceneViewer1->FramesPerSecond(),ffFixed, 4, 2);
+	  ;
 	GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------

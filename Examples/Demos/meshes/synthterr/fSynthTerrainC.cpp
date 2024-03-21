@@ -81,42 +81,42 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
 //
 void __fastcall TForm1::GLCustomHDSStartPreparingData(TGLHeightData* HeightData)
 {
-    int x, y;
+	int x, y;
 	TByteRaster rasterLine;
-    TGLHeightDataType oldType;
+	TGLHeightDataType oldType;
 //	TByteVector* b;
-	Byte b;
+	int b;
 	float d, dy;
 
-//    b = new (TByteVector);
-    HeightData->DataState = hdsPreparing;
+ //	b = new (Byte);
+	HeightData->DataState = hdsPreparing;
 	// retrieve data
-    oldType = HeightData->DataType;
+	oldType = HeightData->DataType;
 	HeightData->Allocate(hdtByte);
-    // Cheap texture changed (32 is our tileSize = 2^5)
-    // This basicly picks a texture for each tile depending on the tile's position
-    switch ((((HeightData->XLeft ^ HeightData->YTop) << 5) && 3)) {
-        case 0, 3:
-            HeightData->MaterialName = "BW";
-            break;
-        case 1:
-            HeightData->MaterialName = "Blue";
-            break;
-        case 2:
-            HeightData->MaterialName = "Red";
-            break;
-        default:;
-    }
-    // 'Cheap' elevation data : this is just a formula z=f(x, y)
-    for (y = HeightData->YTop; y < HeightData->YTop + HeightData->Size - 1; y++)
-    {
-        rasterLine = HeightData->ByteRaster[y - HeightData->YTop];
-        dy = y * y;
-        for (x = HeightData->XLeft;
+	// Cheap texture changed (32 is our tileSize = 2^5)
+	// This basicly picks a texture for each tile depending on the tile's position
+	switch ((((HeightData->XLeft ^ HeightData->YTop) << 5) && 3)) {
+		case 0, 3:
+			HeightData->MaterialName = "BW";
+			break;
+		case 1:
+			HeightData->MaterialName = "Blue";
+			break;
+		case 2:
+			HeightData->MaterialName = "Red";
+			break;
+		default:;
+	}
+	// 'Cheap' elevation data : this is just a formula z=f(x, y)
+	for (y = HeightData->YTop; y < HeightData->YTop + HeightData->Size - 1; y++)
+	{
+		rasterLine = HeightData->ByteRaster[y - HeightData->YTop];
+		dy = y * y;
+		for (x = HeightData->XLeft;
 			 x < HeightData->XLeft + HeightData->Size - 1; x++) {
-            d = sqrt(x * x + dy);
+			d = sqrt(x * x + dy);
 			b = RoundInt(128 + 128 * Sin(d * 0.2) / (d * 0.1 + 1));
-			rasterLine[x - HeightData->XLeft] = b;
+			rasterLine[x - HeightData->XLeft] = b; /// ???
 		}
 	}
 	if (oldType != hdtByte)

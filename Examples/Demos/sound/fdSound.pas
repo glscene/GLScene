@@ -10,14 +10,7 @@ type
   TfrmSandbox = class(TForm)
     PanelLeft: TPanel;
     tvBench: TTreeView;
-    PageControl: TPageControl;
-    tsOne: TTabSheet;
-    tsTwo: TTabSheet;
-    tsThree: TTabSheet;
-    tsFour: TTabSheet;
-    tsFive: TTabSheet;
-    tsSix: TTabSheet;
-    tsSeven: TTabSheet;
+    PanelSound: TPanel;
   private
     { Private declarations }
   public

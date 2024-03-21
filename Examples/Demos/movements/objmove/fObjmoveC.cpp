@@ -20,37 +20,32 @@
 #pragma link "GLS.Navigator"
 #pragma link "GLS.SmoothNavigator"
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormObjmove *FormObjmove;
 
 const TGLColorVector
   SelectionColor[]  = {0.243, 0.243, 0.243, 1.000};
 
 
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
-	: TForm(Owner)
+void __fastcall TFormObjmove::FormCreate(TObject *Sender)
 {
+  UpdateHUDText();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
-{
-  UpdateHudText();
-}
-//---------------------------------------------------------------------------
-TGLVector __fastcall TForm1::MouseWorldPos(int X, int Y)
+TGLVector __fastcall TFormObjmove::MouseWorldPos(int X, int Y)
 {
   TGLVector v;
   TGLVector Result;
 
-  Y = Scn->Height - Y;
+  Y = Scene->Height - Y;
   if (CurrentPick)
   {
 	SetVector(v, X, Y, 0);
 	if (movingOnZ)
-	  Scn->Buffer->ScreenVectorIntersectWithPlaneXZ(
+	  Scene->Buffer->ScreenVectorIntersectWithPlaneXZ(
 		 v, CurrentPick->Position->Y, Result);
 	else
-	  Scn->Buffer->ScreenVectorIntersectWithPlaneXY(
+	  Scene->Buffer->ScreenVectorIntersectWithPlaneXY(
 		 v, CurrentPick->Position->Z, Result);
   }
   else
@@ -59,33 +54,37 @@ TGLVector __fastcall TForm1::MouseWorldPos(int X, int Y)
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TForm1::UpdateHudText()
+void __fastcall TFormObjmove::UpdateHUDText()
 {
   TAffineVector objPos, winPos;
 
   if (CurrentPick)
   {
-	SetVector(objPos, CurrentPick->AbsolutePosition);
-
-	TopText->Text = Format(
-	  "New Object Position: Xn: %4.4f, Yn: %4.4f, Zn: %4.4f",
+ 	SetVector(objPos, CurrentPick->AbsolutePosition);
+   /*
+	HUDText->Text = Format("New Object Position: Xn: %4.4f, Yn: %4.4f, Zn: %4.4f",
 	  ARRAYOFCONST ((objPos.X, objPos.Y, objPos.Z)));
+   */
+	HUDText->Text = "New Object Position:";
+	HUDText->Text = " Xn: " + FloatToStrF(objPos.X,ffFixed, 4, 4) +
+					" Yn: " + FloatToStrF(objPos.Y,ffFixed, 4, 4) +
+                    " Zn: " + FloatToStrF(objPos.Z,ffFixed, 4, 4);
 
-	winPos = Scn->Buffer->WorldToScreen(objPos);
+	winPos = Scene->Buffer->WorldToScreen(objPos);
 
-	ObjText->Visible = true;
-	ObjText->Text = CurrentPick->Name;
-	ObjText->Position->X = winPos.X + 10;
-	ObjText->Position->Y = Scn->Height - winPos.Y + 10;
+	HUDTextObj->Visible = true;
+	HUDTextObj->Text = CurrentPick->Name;   // outtext for Cube1 or Cube2
+   	HUDTextObj->Position->X = winPos.X + 20;
+	HUDTextObj->Position->Y = Scene->Height - winPos.Y + 20;
   }
   else
   {
-	TopText->Text = "No selected object";
-	ObjText->Visible = false;
+	HUDText->Text = "No selected object";
+	HUDTextObj->Visible = false;
   }
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::ProcessPick(TGLBaseSceneObject* pick)
+void __fastcall TFormObjmove::ProcessPick(TGLBaseSceneObject* pick)
 {
   if (pick)
   {
@@ -105,38 +104,37 @@ void __fastcall TForm1::ProcessPick(TGLBaseSceneObject* pick)
 	{
 	  if (ShowAxes->Checked)
 		CurrentPick->ShowAxes = true;
-//not translated  CurrentPick->Material->FrontProperties->Emission->Color = SelectionColor;
 	}
   }
-  UpdateHudText();
+  UpdateHUDText();
 }
 
-
+//---------------------------------------------------------------------------
+__fastcall TFormObjmove::TFormObjmove(TComponent* Owner)
+	: TForm(Owner)
+{
+}
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::ScnMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+void __fastcall TFormObjmove::SceneMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
 		  int X, int Y)
 {
   TGLBaseSceneObject* pick;
-
   movingOnZ = Shift.Contains(ssShift);
   // If an object is picked...
-  pick = (Scn->Buffer->GetPickedObject(X, Y)); // as TGLCustomSceneObject);
+  pick = (Scene->Buffer->GetPickedObject(X, Y)); // as TGLCustomSceneObject);
   ProcessPick(pick);
-
   // store mouse pos
   if (CurrentPick)
 	lastMouseWorldPos = MouseWorldPos(X, Y);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::ScnMouseMove(TObject *Sender, TShiftState Shift, int X, int Y)
+void __fastcall TFormObjmove::SceneMouseMove(TObject *Sender, TShiftState Shift, int X, int Y)
 
 {
   TGLVector newPos;
-
-  ScnMouseMoveCnt++;
-////not translated  Assert(ScnMouseMoveCnt < 2);
+  SceneMouseMoveCnt++;
   if (Shift.Contains(ssLeft))
   {
 	// handle hold/unhold of shift
@@ -150,18 +148,18 @@ void __fastcall TForm1::ScnMouseMove(TObject *Sender, TShiftState Shift, int X, 
 	  CurrentPick->Position->Translate(VectorSubtract(newPos, lastMouseWorldPos));
 	lastMouseWorldPos = newPos;
 
-	UpdateHudText();
+	UpdateHUDText();
   }
-  ScnMouseMoveCnt--;
+  SceneMouseMoveCnt--;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::ShowAxesClick(TObject *Sender)
+void __fastcall TFormObjmove::ShowAxesClick(TObject *Sender)
 {
   // Unselect all
   ProcessPick(NULL);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
+void __fastcall TFormObjmove::FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
           TPoint &MousePos, bool &Handled)
 {
   // Note that 1 wheel-step induces a WheelDelta of 120,
@@ -170,52 +168,46 @@ void __fastcall TForm1::FormMouseWheel(TObject *Sender, TShiftState Shift, int W
 	GLCamera1->AdjustDistanceToTarget(Power(1.1, -WheelDelta / 120));
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormKeyPress(TObject *Sender, System::WideChar &Key)
+void __fastcall TFormObjmove::FormKeyPress(TObject *Sender, System::WideChar &Key)
 {
   switch (Key)
   {
-	case '2':
-		GLCamera1->MoveAroundTarget(3, 0); break;
-	case '4':
-		GLCamera1->MoveAroundTarget(0, -3);break;
-	case '6':
-		GLCamera1->MoveAroundTarget(0, 3);break;
-	case '8':
-		GLCamera1->MoveAroundTarget(-3, 0);break;
-	case '-':
-		GLCamera1->AdjustDistanceToTarget(1.1);break;
-	case '+':
-		GLCamera1->AdjustDistanceToTarget(1 / 1.1);break;
-  default:
-	  ;
+	case '1': GLCamera1->MoveAroundTarget(3, 0); break;
+	case '2': GLCamera1->MoveAroundTarget(0, -3); break;
+	case '3': GLCamera1->MoveAroundTarget(0, 3); break;
+	case '4': GLCamera1->MoveAroundTarget(-3, 0); break;
+	case '-': GLCamera1->AdjustDistanceToTarget(1.1); break;
+	case '+': GLCamera1->AdjustDistanceToTarget(1 / 1.1); break;
+	default: ; break;
   }
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormKeyUp(TObject *Sender, WORD &Key, TShiftState Shift)
+void __fastcall TFormObjmove::FormKeyUp(
+	TObject* Sender, WORD &Key, TShiftState Shift)
 {
-  if (CurrentPick)
-  {
-  switch (Key)
-    {
-	  case VK_UP:
-		  if (Shift.Contains(ssShift))
-			CurrentPick->Translate(0, 0, 0.3);
-		  else
-			CurrentPick->Translate(-0.3, 0, 0);
-		   break;
-	  case VK_DOWN:
-		  if (Shift.Contains(ssShift))
-			CurrentPick->Translate(0, 0, -0.3);
-		  else
-			CurrentPick->Translate(0.3, 0, 0);
-		   break;
-	  case	VK_LEFT:
-		  CurrentPick->Translate(0, -0.3, 0); break;
-	  case	VK_RIGHT:
-		  CurrentPick->Translate(0, 0.3, 0);  break;
-	  default:
-	  ;
+	if (CurrentPick) {
+		switch (Key) {
+			case VK_UP:
+				if (Shift.Contains(ssShift))
+					CurrentPick->Translate(0, 0, 0.3);
+				else
+					CurrentPick->Translate(-0.3, 0, 0);
+				break;
+			case VK_DOWN:
+				if (Shift.Contains(ssShift))
+					CurrentPick->Translate(0, 0, -0.3);
+				else
+					CurrentPick->Translate(0.3, 0, 0);
+				break;
+			case VK_LEFT:
+				CurrentPick->Translate(0, -0.3, 0);
+				break;
+			case VK_RIGHT:
+				CurrentPick->Translate(0, 0.3, 0);
+				break;
+			default:;
+		}
 	}
-  }
 }
 //---------------------------------------------------------------------------
+

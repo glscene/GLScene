@@ -111,7 +111,7 @@
         </DCCReference>
         <DCCReference Include="Source\uGlobals.pas"/>
         <DCCReference Include="Source\uSettings.pas"/>
-        <DCCReference Include="Source\dGLSViewer.pas">
+        <DCCReference Include="Source\dImages.pas">
             <Form>dmGLSViewer</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
@@ -122,6 +122,11 @@
             <Form>GLOptions</Form>
         </DCCReference>
         <DCCReference Include="Locale\gnugettext.pas"/>
+        <DCCReference Include="Source\dDialogs.pas">
+            <Form>dmDialogs</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -155,6 +160,12 @@
             </Platforms>
             <Deployment Version="4">
                 <DeployFile LocalName="GLSViewerD.exe" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="GLSViewerD.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>GLSViewerD.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>

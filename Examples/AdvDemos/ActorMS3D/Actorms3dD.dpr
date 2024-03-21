@@ -1,4 +1,4 @@
-(* 
+﻿(* 
     This demo shows how easy it is to use milkshape animations in GLScene. The
     animations are courtesy of Carnegie-Mellon's motion capture project. 
 
@@ -9,7 +9,7 @@
     and transparency. To make a texture doublesided, just give it a tiny bit of transparency
     in Milkshape. This will cause the loader to turn off backface culling for any group that
     uses that material. Оne of shader demos was modified by TL a little so the spotlight 
-	will always follow the actor during the animation sequence.
+  	will always follow the actor during the animation sequence.
 	
     Model was made with MS3D, UVMapping and texturing were done with Paintshop and UVMapper Pro
     Note on the animations: There is a flaw in the MakeSkeletalTranslationStatic routine if you

@@ -12,7 +12,7 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "GLS.Scene.hpp"
+#include <GLS.Scene.hpp>
 #include "GLS.Objects.hpp"
 #include "GLS.Graph.hpp"
 #include "GLS.Collision.hpp"
@@ -30,18 +30,13 @@
 #include "GLS.WindowsFont.hpp"
 #include "GLS.HUDObjects.hpp"
 #include <Vcl.ComCtrls.hpp>
-#include "GLS.Navigator.hpp"
-#include "GLS.SmoothNavigator.hpp"
 
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormObjmove : public TForm
 {
 __published:	// IDE-managed Components
-	TGLSceneViewer *Scn;
+	TGLSceneViewer *Scene;
 	TPanel *Panel1;
-	TLabel *Label2;
-	TLabel *Label3;
-	TLabel *Label4;
 	TButton *Button1;
 	TGroupBox *GroupBox1;
 	TCheckBox *ShowAxes;
@@ -58,15 +53,14 @@ __published:	// IDE-managed Components
 	TGLSpaceText *TxtY;
 	TGLSpaceText *TxtZ;
 	TGLCamera *GLCamera1;
-	TGLHUDText *TopText;
-	TGLHUDText *ObjText;
+	TGLHUDText *HUDText;
+	TGLHUDText *HUDTextObj;
 	TGLWindowsBitmapFont *GLWindowsBitmapFont1;
 	TStatusBar *StatusBar;
-	TGLSmoothNavigator *GLSmoothNavigator1;
 	void __fastcall FormCreate(TObject *Sender);
-	void __fastcall ScnMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+	void __fastcall SceneMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
-	void __fastcall ScnMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
+	void __fastcall SceneMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall ShowAxesClick(TObject *Sender);
 	void __fastcall FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
           TPoint &MousePos, bool &Handled);
@@ -77,14 +71,14 @@ private:	// User declarations
 	TGLVector lastMouseWorldPos;
 	bool movingOnZ;
 	TGLCustomSceneObject *CurrentPick;
-	int ScnMouseMoveCnt;
+	int SceneMouseMoveCnt;
 	TGLVector __fastcall MouseWorldPos(int X, int Y);
-	void __fastcall UpdateHudText();
+	void __fastcall UpdateHUDText();
 	void __fastcall ProcessPick(TGLBaseSceneObject* pick);
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormObjmove(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormObjmove *FormObjmove;
 //---------------------------------------------------------------------------
 #endif

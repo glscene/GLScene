@@ -15,7 +15,7 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormColumn *FormColumn;
 
 const int
 	cNbPlanes = 30;
@@ -24,13 +24,13 @@ const int
 
 
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormColumn::TFormColumn(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::FormCreate(TObject *Sender)
+void __fastcall TFormColumn::FormCreate(TObject *Sender)
 {
 	int i;
 	TGLPlane *plane;
@@ -51,7 +51,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	}
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
+void __fastcall TFormColumn::GLCadencer1Progress(TObject *Sender, const double deltaTime,
           const double newTime)
 {
 	int i;
@@ -61,11 +61,10 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
 		DummyCube1->Children[i]->RollAngle = 90*cos(newTime+i*M_PI/cNbPlanes);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Timer1Timer(TObject *Sender)
+void __fastcall TFormColumn::Timer1Timer(TObject *Sender)
 {
 	// update FPS and reset counter for the next second
-	StaticText1->Caption = Format("%.1f FPS",
-	  ARRAYOFCONST ((GLSceneViewer1->FramesPerSecond())));
+	StaticText1->Caption = GLSceneViewer1->FramesPerSecond();
 	GLSceneViewer1->ResetPerformanceMonitor();
 
 }

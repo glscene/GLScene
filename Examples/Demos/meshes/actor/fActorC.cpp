@@ -17,15 +17,15 @@
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.FileMD2"
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormActor *FormActor;
 int mdx, mdy;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormActor::TFormActor(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
+void __fastcall TFormActor::FormCreate(TObject *Sender)
 {
    TFileName Path = GetCurrentAssetPath();
    SetCurrentDir(Path  + "\\texture");
@@ -56,7 +56,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
  }
 
 //---------------------------------------------------------------------------
-void __fastcall TForm1::SBPlayClick(TObject *Sender)
+void __fastcall TFormActor::SBPlayClick(TObject *Sender)
 {
    // start playing
    Actor1->AnimationMode = aamLoop;
@@ -68,7 +68,7 @@ void __fastcall TForm1::SBPlayClick(TObject *Sender)
    SBFrameToFrame->Enabled = False;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::SBStopClick(TObject *Sender)
+void __fastcall TFormActor::SBStopClick(TObject *Sender)
 {
    // stop playing
    Actor1->AnimationMode = aamNone;
@@ -80,7 +80,7 @@ void __fastcall TForm1::SBStopClick(TObject *Sender)
    SBFrameToFrame->Enabled = True;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::CBAnimationsChange(TObject *Sender)
+void __fastcall TFormActor::CBAnimationsChange(TObject *Sender)
 {
    // Change animation
    Actor1->SwitchToAnimation(CBAnimations->Text, True);
@@ -95,14 +95,14 @@ void __fastcall TForm1::CBAnimationsChange(TObject *Sender)
 	  Actor2->Synchronize(Actor1);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::SBFrameToFrameClick(TObject *Sender)
+void __fastcall TFormActor::SBFrameToFrameClick(TObject *Sender)
 {
  // Animate Frame to Frame
  Actor1->NextFrame();
  Actor2->NextFrame();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::BBLoadWeaponClick(TObject *Sender)
+void __fastcall TFormActor::BBLoadWeaponClick(TObject *Sender)
 {
   // Load weapon model and texture
    Actor2->LoadFromFile("WeaponWaste.md2");
@@ -114,21 +114,20 @@ void __fastcall TForm1::BBLoadWeaponClick(TObject *Sender)
    Actor2->Synchronize(Actor1);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
+void __fastcall TFormActor::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y)
 {
  // store mouse coordinates when a button went down
  mdx = X; mdy = Y;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Timer1Timer(TObject *Sender)
+void __fastcall TFormActor::Timer1Timer(TObject *Sender)
 {
-   LabelFPS->Caption = Format("%.1f FPS",
-	ARRAYOFCONST((GLSceneViewer1->FramesPerSecond())));
+   LabelFPS->Caption = GLSceneViewer1->FramesPerSecond();
    GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
+void __fastcall TFormActor::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
 		  int X, int Y)
 {
    // (we're moving around the parent and target dummycube)

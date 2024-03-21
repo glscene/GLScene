@@ -27,7 +27,7 @@
 
 
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormSmoothnavi : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
@@ -77,9 +77,9 @@ private:	// User declarations
 
 
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormSmoothnavi(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormSmoothnavi *FormSmoothnavi;
 //---------------------------------------------------------------------------
 #endif

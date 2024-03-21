@@ -12,12 +12,12 @@ program SmoothNaviD;
 
 uses
   Forms,
-  fSmoothNaviD in 'fSmoothNaviD.pas';
+  fSmoothNaviD in 'fSmoothNaviD.pas' {FormSmoothnavi};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TFormSmoothNavigator, FormSmoothNavigator);
+  Application.CreateForm(TFormSmoothnavi, FormSmoothnavi);
   Application.Run;
 end.

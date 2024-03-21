@@ -3,12 +3,6 @@
         <ProjectGuid>{E0C70AF5-D1F7-41A0-A60F-F71B530ED67A}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="GraphD.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="GraphC.cbproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="fxy\FxyC.cbproj">
             <Dependencies/>
         </Projects>
@@ -47,24 +41,6 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="GraphD">
-        <MSBuild Projects="GraphD.dproj"/>
-    </Target>
-    <Target Name="GraphD:Clean">
-        <MSBuild Projects="GraphD.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="GraphD:Make">
-        <MSBuild Projects="GraphD.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="GraphC">
-        <MSBuild Projects="GraphC.cbproj"/>
-    </Target>
-    <Target Name="GraphC:Clean">
-        <MSBuild Projects="GraphC.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="GraphC:Make">
-        <MSBuild Projects="GraphC.cbproj" Targets="Make"/>
-    </Target>
     <Target Name="FxyC">
         <MSBuild Projects="fxy\FxyC.cbproj"/>
     </Target>
@@ -156,13 +132,13 @@
         <MSBuild Projects="splines\SplinesD.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="GraphD;GraphC;FxyC;FxyD;HeightfieldC;HeightFieldD;PointsC;PointsD;ProjectionC;ProjectionD;SplinesC;SplinesD"/>
+        <CallTarget Targets="FxyC;FxyD;HeightfieldC;HeightFieldD;PointsC;PointsD;ProjectionC;ProjectionD;SplinesC;SplinesD"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="GraphD:Clean;GraphC:Clean;FxyC:Clean;FxyD:Clean;HeightfieldC:Clean;HeightFieldD:Clean;PointsC:Clean;PointsD:Clean;ProjectionC:Clean;ProjectionD:Clean;SplinesC:Clean;SplinesD:Clean"/>
+        <CallTarget Targets="FxyC:Clean;FxyD:Clean;HeightfieldC:Clean;HeightFieldD:Clean;PointsC:Clean;PointsD:Clean;ProjectionC:Clean;ProjectionD:Clean;SplinesC:Clean;SplinesD:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="GraphD:Make;GraphC:Make;FxyC:Make;FxyD:Make;HeightfieldC:Make;HeightFieldD:Make;PointsC:Make;PointsD:Make;ProjectionC:Make;ProjectionD:Make;SplinesC:Make;SplinesD:Make"/>
+        <CallTarget Targets="FxyC:Make;FxyD:Make;HeightfieldC:Make;HeightFieldD:Make;PointsC:Make;PointsD:Make;ProjectionC:Make;ProjectionD:Make;SplinesC:Make;SplinesD:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

@@ -28,7 +28,7 @@ uses
   GLS.Utils;
 
 type
-  TForm1 = class(TForm)
+  TFormMultiTexture = class(TForm)
     GLScene1: TGLScene;
     GLSceneViewer1: TGLSceneViewer;
     Plane1: TGLPlane;
@@ -55,13 +55,13 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FormMultiTexture: TFormMultiTexture;
 
 implementation
 
 {$R *.DFM}
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TFormMultiTexture.FormCreate(Sender: TObject);
 begin
    var Path: TFileName := GetCurrentAssetPath();
    SetCurrentDir(Path  + '\texture');
@@ -74,7 +74,7 @@ begin
    end;
 end;
 
-procedure TForm1.Image1Click(Sender: TObject);
+procedure TFormMultiTexture.Image1Click(Sender: TObject);
 begin
    // load a new Image1
    if OpenPictureDialog1.Execute then
@@ -84,7 +84,7 @@ begin
    end;
 end;
 
-procedure TForm1.Image2Click(Sender: TObject);
+procedure TFormMultiTexture.Image2Click(Sender: TObject);
 begin
    // load a new Image2
    if OpenPictureDialog1.Execute then
@@ -94,7 +94,7 @@ begin
    end;
 end;
 
-procedure TForm1.TrackBar1Change(Sender: TObject);
+procedure TFormMultiTexture.TrackBar1Change(Sender: TObject);
 begin
    // adjust scale
    with GLMaterialLibrary1.Materials[1].TextureScale do
@@ -104,7 +104,7 @@ begin
    end;
 end;
 
-procedure TForm1.CBClampTex2Click(Sender: TObject);
+procedure TFormMultiTexture.CBClampTex2Click(Sender: TObject);
 begin
    with GLMaterialLibrary1.Materials[1].Material.Texture do
       if CBClampTex2.Checked then

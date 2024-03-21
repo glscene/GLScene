@@ -53,9 +53,6 @@ object FormEarth: TFormEarth
     Margins.Bottom = 5
     Align = alLeft
     TabOrder = 1
-    ExplicitLeft = 14
-    ExplicitTop = 14
-    ExplicitHeight = 952
     object tvPlanets: TTreeView
       Left = 1
       Top = 1
@@ -97,7 +94,6 @@ object FormEarth: TFormEarth
         000000000000FFFFFFFFFFFFFFFF0000000000000000000000000001074E0065
         007000740075006E0065000000290000000000000000000000FFFFFFFFFFFFFF
         FF00000000000000000000000000010550006C00750074006F00}
-      ExplicitHeight = 950
     end
   end
   object GLScene: TGLScene

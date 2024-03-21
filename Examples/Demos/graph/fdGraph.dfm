@@ -70,8 +70,6 @@ object FormGraph: TFormGraph
     ActivePage = tsProjection
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 1353
-    ExplicitHeight = 952
     object tsFxy: TTabSheet
       Margins.Left = 5
       Margins.Top = 5

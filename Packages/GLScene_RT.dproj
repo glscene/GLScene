@@ -149,7 +149,6 @@
         <DCCReference Include="..\Source\Formats.VFW.pas"/>
         <DCCReference Include="..\Source\Formats.Q3BSP.pas"/>
         <DCCReference Include="..\Source\Formats.GL2.pas"/>
-        <DCCReference Include="..\Source\Formats.LWO.pas"/>
         <DCCReference Include="..\Source\Formats.MD2.pas"/>
         <DCCReference Include="..\Source\Formats.MD3.pas"/>
         <DCCReference Include="..\Source\Formats.B3D.pas"/>
@@ -372,6 +371,9 @@
         <DCCReference Include="..\Source\GLS.VerletTypes.pas"/>
         <DCCReference Include="..\Source\GLS.VerletClothify.pas"/>
         <DCCReference Include="..\Source\GLS.VectorTypesExt.pas"/>
+        <DCCReference Include="..\Source\Formats.LWO.pas"/>
+        <DCCReference Include="..\Source\GLS.Polyhedra.pas"/>
+        <DCCReference Include="..\Source\GLS.CyborgManager.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -412,6 +414,18 @@
             <Deployment Version="4">
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\Win64\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>GLScene_RT.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\Win64\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win64">
+                        <RemoteName>GLScene_RT.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="OSX32">
                         <Operation>1</Operation>

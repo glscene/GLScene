@@ -145,7 +145,7 @@
             <BuildOrder>0</BuildOrder>
         </CppCompile>
         <CppCompile Include="fActorProxyC.cpp">
-            <Form>Form1</Form>
+            <Form>FormActorProxy</Form>
             <FormType>dfm</FormType>
             <DependentOn>fActorProxyC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

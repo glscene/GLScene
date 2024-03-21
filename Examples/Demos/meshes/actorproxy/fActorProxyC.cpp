@@ -20,14 +20,14 @@
 #pragma link "GLS.FileSMD"
 #pragma link "GLS.BaseClasses"
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormActorProxy *FormActorProxy;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormActorProxy::TFormActorProxy(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
+void __fastcall TFormActorProxy::FormCreate(TObject *Sender)
 {
   int i;
 
@@ -59,7 +59,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
+void __fastcall TFormActorProxy::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
 		  int X, int Y)
 {
 	 mouseX = X;
@@ -67,7 +67,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
  }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::DoRaycastStuff()
+void __fastcall TFormActorProxy::DoRaycastStuff()
 {
    TGLVector rayStart;
    TGLVector rayVector;
@@ -101,7 +101,7 @@ void __fastcall TForm1::DoRaycastStuff()
 
 
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
+void __fastcall TFormActorProxy::GLCadencer1Progress(TObject *Sender, const double deltaTime,
 		  const double newTime)
 {
     // Align object to hand
@@ -120,7 +120,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
     DoRaycastStuff();
 }
 
-void __fastcall TForm1::Timer1Timer(TObject *Sender)
+void __fastcall TFormActorProxy::Timer1Timer(TObject *Sender)
 {
    Panel1->Caption = GLSceneViewer1->FramesPerSecondText(0);
    GLSceneViewer1->ResetPerformanceMonitor();

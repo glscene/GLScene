@@ -3,16 +3,16 @@
         <ProjectGuid>{02A55F1F-28A9-4F0B-BC74-BAC6D4030B89}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="Examples\AdvDemos\Archipelago\ArchipelagoD.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="Examples\AdvDemos\Archipelago\ArchipelagoC.cbproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="Examples\AdvDemos\ActorMS3D\Actorms3dD.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Examples\AdvDemos\ActorMS3D\ActorMS3dC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Examples\AdvDemos\Archipelago\ArchipelagoD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Examples\AdvDemos\Archipelago\ArchipelagoC.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Examples\AdvDemos\Christmas\ChristmasD.dproj">
@@ -45,13 +45,16 @@
         <Projects Include="Examples\AdvDemos\PanoramViewer\PanoViewerC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Examples\AdvDemos\TextureTB\TtbD.dproj">
+        <Projects Include="Examples\AdvDemos\Quake3Actor\QuakeActorD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Examples\AdvDemos\Quake3Demo\Q3DemoD.dproj">
+        <Projects Include="Examples\AdvDemos\Quake3Actor\QuakeActorC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Examples\AdvDemos\Quake3Demo\Q3DemoC.cbproj">
+        <Projects Include="Examples\AdvDemos\TexCombine\TexCombineD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Examples\AdvDemos\TexCombine\TexCombineC.cbproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -62,24 +65,6 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="ArchipelagoD">
-        <MSBuild Projects="Examples\AdvDemos\Archipelago\ArchipelagoD.dproj"/>
-    </Target>
-    <Target Name="ArchipelagoD:Clean">
-        <MSBuild Projects="Examples\AdvDemos\Archipelago\ArchipelagoD.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="ArchipelagoD:Make">
-        <MSBuild Projects="Examples\AdvDemos\Archipelago\ArchipelagoD.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="ArchipelagoC">
-        <MSBuild Projects="Examples\AdvDemos\Archipelago\ArchipelagoC.cbproj"/>
-    </Target>
-    <Target Name="ArchipelagoC:Clean">
-        <MSBuild Projects="Examples\AdvDemos\Archipelago\ArchipelagoC.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="ArchipelagoC:Make">
-        <MSBuild Projects="Examples\AdvDemos\Archipelago\ArchipelagoC.cbproj" Targets="Make"/>
-    </Target>
     <Target Name="Actorms3dD">
         <MSBuild Projects="Examples\AdvDemos\ActorMS3D\Actorms3dD.dproj"/>
     </Target>
@@ -97,6 +82,24 @@
     </Target>
     <Target Name="ActorMS3dC:Make">
         <MSBuild Projects="Examples\AdvDemos\ActorMS3D\ActorMS3dC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="ArchipelagoD">
+        <MSBuild Projects="Examples\AdvDemos\Archipelago\ArchipelagoD.dproj"/>
+    </Target>
+    <Target Name="ArchipelagoD:Clean">
+        <MSBuild Projects="Examples\AdvDemos\Archipelago\ArchipelagoD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ArchipelagoD:Make">
+        <MSBuild Projects="Examples\AdvDemos\Archipelago\ArchipelagoD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ArchipelagoC">
+        <MSBuild Projects="Examples\AdvDemos\Archipelago\ArchipelagoC.cbproj"/>
+    </Target>
+    <Target Name="ArchipelagoC:Clean">
+        <MSBuild Projects="Examples\AdvDemos\Archipelago\ArchipelagoC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ArchipelagoC:Make">
+        <MSBuild Projects="Examples\AdvDemos\Archipelago\ArchipelagoC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="ChristmasD">
         <MSBuild Projects="Examples\AdvDemos\Christmas\ChristmasD.dproj"/>
@@ -188,41 +191,50 @@
     <Target Name="PanoViewerC:Make">
         <MSBuild Projects="Examples\AdvDemos\PanoramViewer\PanoViewerC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="TtbD">
-        <MSBuild Projects="Examples\AdvDemos\TextureTB\TtbD.dproj"/>
+    <Target Name="QuakeActorD">
+        <MSBuild Projects="Examples\AdvDemos\Quake3Actor\QuakeActorD.dproj"/>
     </Target>
-    <Target Name="TtbD:Clean">
-        <MSBuild Projects="Examples\AdvDemos\TextureTB\TtbD.dproj" Targets="Clean"/>
+    <Target Name="QuakeActorD:Clean">
+        <MSBuild Projects="Examples\AdvDemos\Quake3Actor\QuakeActorD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="TtbD:Make">
-        <MSBuild Projects="Examples\AdvDemos\TextureTB\TtbD.dproj" Targets="Make"/>
+    <Target Name="QuakeActorD:Make">
+        <MSBuild Projects="Examples\AdvDemos\Quake3Actor\QuakeActorD.dproj" Targets="Make"/>
     </Target>
-    <Target Name="Q3DemoD">
-        <MSBuild Projects="Examples\AdvDemos\Quake3Demo\Q3DemoD.dproj"/>
+    <Target Name="QuakeActorC">
+        <MSBuild Projects="Examples\AdvDemos\Quake3Actor\QuakeActorC.cbproj"/>
     </Target>
-    <Target Name="Q3DemoD:Clean">
-        <MSBuild Projects="Examples\AdvDemos\Quake3Demo\Q3DemoD.dproj" Targets="Clean"/>
+    <Target Name="QuakeActorC:Clean">
+        <MSBuild Projects="Examples\AdvDemos\Quake3Actor\QuakeActorC.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="Q3DemoD:Make">
-        <MSBuild Projects="Examples\AdvDemos\Quake3Demo\Q3DemoD.dproj" Targets="Make"/>
+    <Target Name="QuakeActorC:Make">
+        <MSBuild Projects="Examples\AdvDemos\Quake3Actor\QuakeActorC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="Q3DemoC">
-        <MSBuild Projects="Examples\AdvDemos\Quake3Demo\Q3DemoC.cbproj"/>
+    <Target Name="TexCombineD">
+        <MSBuild Projects="Examples\AdvDemos\TexCombine\TexCombineD.dproj"/>
     </Target>
-    <Target Name="Q3DemoC:Clean">
-        <MSBuild Projects="Examples\AdvDemos\Quake3Demo\Q3DemoC.cbproj" Targets="Clean"/>
+    <Target Name="TexCombineD:Clean">
+        <MSBuild Projects="Examples\AdvDemos\TexCombine\TexCombineD.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Q3DemoC:Make">
-        <MSBuild Projects="Examples\AdvDemos\Quake3Demo\Q3DemoC.cbproj" Targets="Make"/>
+    <Target Name="TexCombineD:Make">
+        <MSBuild Projects="Examples\AdvDemos\TexCombine\TexCombineD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TexCombineC">
+        <MSBuild Projects="Examples\AdvDemos\TexCombine\TexCombineC.cbproj"/>
+    </Target>
+    <Target Name="TexCombineC:Clean">
+        <MSBuild Projects="Examples\AdvDemos\TexCombine\TexCombineC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TexCombineC:Make">
+        <MSBuild Projects="Examples\AdvDemos\TexCombine\TexCombineC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="ArchipelagoD;ArchipelagoC;Actorms3dD;ActorMS3dC;ChristmasD;ChristmasC;EarthD;EarthC;ForestD;GLSViewerD;IntensityMeshD;IntensityMeshC;PanoViewerD;PanoViewerC;TtbD;Q3DemoD;Q3DemoC"/>
+        <CallTarget Targets="Actorms3dD;ActorMS3dC;ArchipelagoD;ArchipelagoC;ChristmasD;ChristmasC;EarthD;EarthC;ForestD;GLSViewerD;IntensityMeshD;IntensityMeshC;PanoViewerD;PanoViewerC;QuakeActorD;QuakeActorC;TexCombineD;TexCombineC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ArchipelagoD:Clean;ArchipelagoC:Clean;Actorms3dD:Clean;ActorMS3dC:Clean;ChristmasD:Clean;ChristmasC:Clean;EarthD:Clean;EarthC:Clean;ForestD:Clean;GLSViewerD:Clean;IntensityMeshD:Clean;IntensityMeshC:Clean;PanoViewerD:Clean;PanoViewerC:Clean;TtbD:Clean;Q3DemoD:Clean;Q3DemoC:Clean"/>
+        <CallTarget Targets="Actorms3dD:Clean;ActorMS3dC:Clean;ArchipelagoD:Clean;ArchipelagoC:Clean;ChristmasD:Clean;ChristmasC:Clean;EarthD:Clean;EarthC:Clean;ForestD:Clean;GLSViewerD:Clean;IntensityMeshD:Clean;IntensityMeshC:Clean;PanoViewerD:Clean;PanoViewerC:Clean;QuakeActorD:Clean;QuakeActorC:Clean;TexCombineD:Clean;TexCombineC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ArchipelagoD:Make;ArchipelagoC:Make;Actorms3dD:Make;ActorMS3dC:Make;ChristmasD:Make;ChristmasC:Make;EarthD:Make;EarthC:Make;ForestD:Make;GLSViewerD:Make;IntensityMeshD:Make;IntensityMeshC:Make;PanoViewerD:Make;PanoViewerC:Make;TtbD:Make;Q3DemoD:Make;Q3DemoC:Make"/>
+        <CallTarget Targets="Actorms3dD:Make;ActorMS3dC:Make;ArchipelagoD:Make;ArchipelagoC:Make;ChristmasD:Make;ChristmasC:Make;EarthD:Make;EarthC:Make;ForestD:Make;GLSViewerD:Make;IntensityMeshD:Make;IntensityMeshC:Make;PanoViewerD:Make;PanoViewerC:Make;QuakeActorD:Make;QuakeActorC:Make;TexCombineD:Make;TexCombineC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

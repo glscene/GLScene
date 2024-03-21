@@ -19,8 +19,9 @@
 #include "GLS.TimeEventsMgr.hpp"
 #include "GLS.SceneViewer.hpp"
 #include <Vcl.ExtCtrls.hpp>
+#include <Vcl.ComCtrls.hpp>
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormEvents : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
@@ -33,6 +34,7 @@ __published:	// IDE-managed Components
 	TTimer *Timer1;
 	TGLCadencer *GLCadencer1;
 	TGLTimeEventsMGR *GLTimeEventsMGR1;
+	TStatusBar *StatusBar;
 	void __fastcall Timer1Timer(TObject *Sender);
 	void __fastcall GLTimeEventsMGR1Events0Event(TTimeEvent *event);
 	void __fastcall GLTimeEventsMGR1Events1Event(TTimeEvent *event);
@@ -42,9 +44,9 @@ __published:	// IDE-managed Components
 	void __fastcall GLTimeEventsMGR1Events5Event(TTimeEvent *event);
 private:	// User declarations
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormEvents(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormEvents *FormEvents;
 //---------------------------------------------------------------------------
 #endif

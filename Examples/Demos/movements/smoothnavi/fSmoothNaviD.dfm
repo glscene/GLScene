@@ -1,29 +1,39 @@
-object FormSmoothNavigator: TFormSmoothNavigator
+object FormSmoothnavi: TFormSmoothnavi
   Left = 318
   Top = 150
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   ActiveControl = GLSceneViewer1
   Caption = 'Smooth Navigator'
-  ClientHeight = 420
-  ClientWidth = 620
+  ClientHeight = 735
+  ClientWidth = 1099
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnMouseWheel = FormMouseWheel
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 620
-    Height = 373
+    Width = 1099
+    Height = 653
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clNavy
-    FieldOfView = 149.984252929687500000
+    FieldOfView = 162.586807250976600000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -32,33 +42,49 @@ object FormSmoothNavigator: TFormSmoothNavigator
   end
   object Panel3: TPanel
     Left = 0
-    Top = 373
-    Width = 620
-    Height = 47
+    Top = 653
+    Width = 1099
+    Height = 82
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
     object MouseLookCheckBox: TCheckBox
-      Left = 8
-      Top = 6
-      Width = 290
-      Height = 17
+      Left = 14
+      Top = 11
+      Width = 508
+      Height = 29
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Mouse Look Active (toggle by pressing the space bar)'
       TabOrder = 0
       OnClick = MouseLookCheckBoxClick
     end
     object GroupBox2: TGroupBox
-      Left = 288
-      Top = 1
-      Width = 193
-      Height = 46
+      Left = 504
+      Top = 2
+      Width = 338
+      Height = 80
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'FPS'
       TabOrder = 1
       object RadioButton6: TRadioButton
-        Left = 8
-        Top = 16
-        Width = 41
-        Height = 17
+        Left = 14
+        Top = 28
+        Width = 72
+        Height = 30
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Caption = 'Max'
         Checked = True
         TabOrder = 0
@@ -67,20 +93,28 @@ object FormSmoothNavigator: TFormSmoothNavigator
         OnKeyPress = FormKeyPress
       end
       object RadioButton7: TRadioButton
-        Left = 64
-        Top = 16
-        Width = 50
-        Height = 17
+        Left = 112
+        Top = 28
+        Width = 88
+        Height = 30
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Caption = 'Middle'
         TabOrder = 1
         OnClick = RadioButton7Click
         OnKeyPress = FormKeyPress
       end
       object RadioButton8: TRadioButton
-        Left = 136
-        Top = 16
-        Width = 50
-        Height = 17
+        Left = 238
+        Top = 28
+        Width = 88
+        Height = 30
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Caption = 'Low'
         TabOrder = 2
         OnClick = RadioButton8Click
@@ -88,24 +122,36 @@ object FormSmoothNavigator: TFormSmoothNavigator
       end
     end
     object GroupBox1: TGroupBox
-      Left = 488
-      Top = 1
-      Width = 129
-      Height = 46
+      Left = 854
+      Top = 2
+      Width = 226
+      Height = 80
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Controls'
       TabOrder = 2
       object Label1: TLabel
-        Left = 8
-        Top = 13
-        Width = 58
-        Height = 13
+        Left = 14
+        Top = 23
+        Width = 102
+        Height = 24
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Caption = 'Fly = WASD'
       end
       object Panel1: TPanel
-        Left = 7
-        Top = 27
-        Width = 114
-        Height = 17
+        Left = 12
+        Top = 47
+        Width = 200
+        Height = 30
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Alignment = taLeftJustify
         BevelOuter = bvNone
         Caption = 'Accelerate = Hold Shift'

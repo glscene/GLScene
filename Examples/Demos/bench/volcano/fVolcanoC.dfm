@@ -1,34 +1,47 @@
 object FormVolcano: TFormVolcano
   Left = 0
   Top = 0
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Volcano'
-  ClientHeight = 297
-  ClientWidth = 476
+  ClientHeight = 520
+  ClientWidth = 847
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'Tahoma'
   Font.Style = []
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 23
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 392
-    Height = 270
+    Width = 700
+    Height = 473
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 139.353729248046900000
+    FieldOfView = 156.125030517578100000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object RadioGroup1: TRadioGroup
-    Left = 392
+    Left = 700
     Top = 0
-    Width = 84
-    Height = 270
+    Width = 147
+    Height = 473
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alRight
     Caption = 'Mode'
     ItemIndex = 1
@@ -44,9 +57,13 @@ object FormVolcano: TFormVolcano
   end
   object Panel1: TPanel
     Left = 0
-    Top = 270
-    Width = 476
-    Height = 27
+    Top = 473
+    Width = 847
+    Height = 47
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alBottom
     Caption = 'FPS'
     TabOrder = 2

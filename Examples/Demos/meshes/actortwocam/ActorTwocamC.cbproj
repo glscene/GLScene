@@ -142,7 +142,7 @@
             <BuildOrder>0</BuildOrder>
         </CppCompile>
         <CppCompile Include="fActorTwocamC.cpp">
-            <Form>Form1</Form>
+            <Form>FormActorTwocam</Form>
             <FormType>dfm</FormType>
             <DependentOn>fActorTwocamC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

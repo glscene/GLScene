@@ -14,14 +14,14 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
-TfrmExtrusionC *frmExtrusionC;
+TFormExtrusion *FormExtrusion;
 //---------------------------------------------------------------------------
-__fastcall TfrmExtrusionC::TfrmExtrusionC(TComponent* Owner)
+__fastcall TFormExtrusion::TFormExtrusion(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TfrmExtrusionC::FormCreate(TObject *Sender)
+void __fastcall TFormExtrusion::FormCreate(TObject *Sender)
 {
   // Bending
   FormBending = new TFormBending(tsBending);
@@ -61,7 +61,7 @@ void __fastcall TfrmExtrusionC::FormCreate(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmExtrusionC::tvExtrusionClick(TObject *Sender)
+void __fastcall TFormExtrusion::tvExtrusionClick(TObject *Sender)
 {
    switch (tvExtrusion->Selected->Index) {
 	case 0: {
@@ -86,7 +86,7 @@ void __fastcall TfrmExtrusionC::tvExtrusionClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmExtrusionC::FormShow(TObject *Sender)
+void __fastcall TFormExtrusion::FormShow(TObject *Sender)
 {
   PageControl->ActivePage = tsBending;
 }

@@ -31,7 +31,10 @@ uses
   Vcl.ActnMenus,
   Vcl.StdActns,
   Vcl.BandActn,
-  Vcl.PlatformDefaultStyleActnCtrls,
+  Vcl.StdStyleActnCtrls,
+  Vcl.VirtualImageList,
+  Vcl.BaseImageCollection,
+  Vcl.ImageCollection,
 
   GLS.Material,
   GLS.Scene,
@@ -60,15 +63,14 @@ uses
   GLS.MeshBuilder,
   GLS.Navigator,
   GLS.Utils,
+  GLS.SimpleNavigation,
 
   fGLForm,
   fGLAbout,
   fGLOptions,
   fGLDialog,
-  dGLSViewer,
-  GLS.SimpleNavigation,
-  Vcl.StdStyleActnCtrls, Vcl.VirtualImageList, Vcl.BaseImageCollection,
-  Vcl.ImageCollection;
+  dImages,
+  dDialogs;
 
 type
   TFormGLSViewer = class(TGLForm)
@@ -77,13 +79,12 @@ type
     ffObject: TGLFreeForm;
     LightSource: TGLLightSource;
     MaterialLib: TGLMaterialLibrary;
-    CubeExtents: TGLCube;
-    dcTarget: TGLDummyCube;
+    CubeLines: TGLCube;
+    dcObject: TGLDummyCube;
     Camera: TGLCamera;
     dcAxis: TGLDummyCube;
     Cadencer: TGLCadencer;
     Timer: TTimer;
-    LightmapLib: TGLMaterialLibrary;
     snViewer: TGLSceneViewer;
     ActionManager: TActionManager;
     acOptimizeMesh: TAction;
@@ -137,7 +138,7 @@ type
     acPoints: TAction;
     AsyncTimer: TGLAsyncTimer;
     dcWorld: TGLDummyCube;
-    grdXYZ: TGLXYZGrid;
+    XYZGrid: TGLXYZGrid;
     acToolsNaviCube: TAction;
     GLPoints: TGLPoints;
     acToolsInfo: TAction;
@@ -148,10 +149,8 @@ type
     ImageListObjects: TImageList;
     acSaveTreeView: TAction;
     acLoadTreeView: TAction;
-    SaveDialog: TSaveDialog;
     OpenDialog: TOpenDialog;
-    ImageCollection: TImageCollection;
-    VirtualImageList: TVirtualImageList;
+    SaveDialog: TSaveDialog;
     procedure FormCreate(Sender: TObject);
     procedure snViewerMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -208,6 +207,8 @@ type
     procedure acHelpTopicSearchExecute(Sender: TObject);
     procedure acSaveTreeViewExecute(Sender: TObject);
     procedure acLoadTreeViewExecute(Sender: TObject);
+    procedure tvSceneClick(Sender: TObject);
+    procedure acSpheresExecute(Sender: TObject);
   private
     AssetPath: TFileName;
     procedure DoResetCamera;
@@ -275,6 +276,7 @@ type
     function DoUnApply(var rci: TGLRenderContextInfo): Boolean; override;
   end;
 
+//---------------------------------------------------------------------------
 procedure THiddenLineShader.DoApply(var rci: TGLRenderContextInfo;
   Sender: TObject);
 begin
@@ -314,6 +316,7 @@ begin
   end;
 end;
 
+//---------------------------------------------------------------------------
 procedure TFormGLSViewer.FormCreate(Sender: TObject);
 begin
   inherited;
@@ -333,9 +336,9 @@ begin
   if not nthShow then
   begin
     // using formats supported by gls
-    dmGLSViewer.OpenDialog.InitialDir := AssetPath + '\model';;
-    dmGLSViewer.OpenDialog.Filter := VectorFileFormatsFilter;
-    dmGLSViewer.SaveDialog.Filter := VectorFileFormatsSaveFilter;
+    dmDialogs.OpenDialog.InitialDir := AssetPath + '\model';;
+    dmDialogs.OpenDialog.Filter := VectorFileFormatsFilter;
+    dmDialogs.SaveDialog.Filter := VectorFileFormatsSaveFilter;
     ApplyFSAA;
     ApplyFaceCull;
     ApplyFPS;
@@ -345,25 +348,25 @@ begin
   end;
 end;
 
-//
+//---------------------------------------------------------------------------
 // OpenDialog
-//
+//---------------------------------------------------------------------------
 procedure TFormGLSViewer.acFileOpenExecute(Sender: TObject);
 begin
   NaviCube.ActiveMouse := False;
-  if dmGLSViewer.OpenDialog.Execute then
-    DoOpen(dmGLSViewer.OpenDialog.FileName);
+  if dmDialogs.OpenDialog.Execute then
+    DoOpen(dmDialogs.OpenDialog.FileName);
 end;
 
 procedure TFormGLSViewer.acFileOpenTexLibExecute(Sender: TObject);
 var
   I: Integer;
 begin
-  dmGLSViewer.ODTextures.InitialDir := AssetPath + '\texture';;
-  if dmGLSViewer.ODTextures.Execute then
+  dmDialogs.ODTextures.InitialDir := AssetPath + '\texture';;
+  if dmDialogs.ODTextures.Execute then
     with MaterialLib do
     begin
-      LoadFromFile(dmGLSViewer.ODTextures.FileName);
+      LoadFromFile(dmDialogs.ODTextures.FileName);
       for I := 0 to Materials.Count - 1 do
         with Materials[I].Material do
           BackProperties.Assign(FrontProperties);
@@ -374,15 +377,15 @@ end;
 
 procedure TFormGLSViewer.acFilePickExecute(Sender: TObject);
 begin
-  dmGLSViewer.ODTextures.InitialDir := AssetPath + '\texture';;
-  if dmGLSViewer.opDialog.Execute then
+  dmDialogs.ODTextures.InitialDir := AssetPath + '\texture';;
+  if dmDialogs.opDialog.Execute then
   begin
     with MaterialLib.Materials do
     begin
       with Items[Count - 1] do
       begin
         Tag := 1;
-        Material.Texture.Image.LoadFromFile(dmGLSViewer.opDialog.FileName);
+        Material.Texture.Image.LoadFromFile(dmDialogs.opDialog.FileName);
         Material.Texture.Enabled := True;
       end;
     end;
@@ -394,26 +397,26 @@ procedure TFormGLSViewer.acFileSaveAsExecute(Sender: TObject);
 var
   ext: String;
 begin
-  if dmGLSViewer.SaveDialog.Execute then
+  if dmDialogs.SaveDialog.Execute then
   begin
-    ext := ExtractFileExt(dmGLSViewer.SaveDialog.FileName);
+    ext := ExtractFileExt(dmDialogs.SaveDialog.FileName);
     if ext = '' then
-      dmGLSViewer.SaveDialog.FileName :=
-        ChangeFileExt(dmGLSViewer.SaveDialog.FileName,
+      dmDialogs.SaveDialog.FileName :=
+        ChangeFileExt(dmDialogs.SaveDialog.FileName,
         '.' + GetVectorFileFormats.FindExtByIndex
-        (dmGLSViewer.SaveDialog.FilterIndex, False, True));
-    if GetVectorFileFormats.FindFromFileName(dmGLSViewer.SaveDialog.FileName) = nil
+        (dmDialogs.SaveDialog.FilterIndex, False, True));
+    if GetVectorFileFormats.FindFromFileName(dmDialogs.SaveDialog.FileName) = nil
     then
       ShowMessage(_('Unsupported or unspecified file extension.'))
     else
-      ffObject.SaveToFile(dmGLSViewer.SaveDialog.FileName);
+      ffObject.SaveToFile(dmDialogs.SaveDialog.FileName);
   end;
 end;
 
 procedure TFormGLSViewer.acFileSaveTexturesExecute(Sender: TObject);
 begin
-  if dmGLSViewer.SDTextures.Execute then
-    MaterialLib.SaveToFile(dmGLSViewer.SDTextures.FileName);
+  if dmDialogs.SDTextures.Execute then
+    MaterialLib.SaveToFile(dmDialogs.SDTextures.FileName);
 end;
 
 procedure TFormGLSViewer.snViewerBeforeRender(Sender: TObject);
@@ -444,7 +447,7 @@ procedure TFormGLSViewer.DoResetCamera;
 var
   objSize: Single;
 begin
-  dcTarget.Position.AsVector := NullHmgPoint;
+  dcObject.Position.AsVector := NullHmgPoint;
   Camera.Position.SetPoint(0, 4, 5);
   ffObject.Position.AsVector := NullHmgPoint;
   ffObject.Up.Assign(dcAxis.Up);
@@ -563,7 +566,7 @@ begin
   try
     bmp.Width := 16;
     bmp.Height := 16;
-    col := ColorToRGB(dmGLSViewer.ColorDialog.Color);
+    col := ColorToRGB(dmDialogs.ColorDialog.Color);
     snViewer.Buffer.BackgroundColor := col;
     bmp.Canvas.Pen.Color := col xor $FFFFFF;
     bmp.Canvas.Rectangle(0, 0, 16, 16);
@@ -590,6 +593,7 @@ begin
   ffObject.StructureChanged;
 end;
 
+//--------------------------------------------------------------------------
 procedure TFormGLSViewer.AsyncTimerTimer(Sender: TObject);
 begin
   snViewer.ResetPerformanceMonitor;
@@ -648,10 +652,10 @@ begin
   lastFileName := FileName;
   lastLoadWithTextures := acToolsTexturing.Enabled;
   ffObject.GetExtents(min, max);
-  CubeExtents.CubeWidth := max.X - min.X;
-  CubeExtents.CubeHeight := max.Y - min.Y;
-  CubeExtents.CubeDepth := max.Z - min.Z;
-  CubeExtents.Position.AsAffineVector := VectorLerp(min, max, 0.5);
+  CubeLines.CubeWidth := max.X - min.X;
+  CubeLines.CubeHeight := max.Y - min.Y;
+  CubeLines.CubeDepth := max.Z - min.Z;
+  CubeLines.Position.AsAffineVector := VectorLerp(min, max, 0.5);
   StatusBar.Panels[0].Text := 'X: ' + ' ';
   StatusBar.Panels[1].Text := 'Y: ' + ' ';
   StatusBar.Panels[2].Text := 'Z: ' + ' ';
@@ -880,6 +884,12 @@ begin
   end;
 end;
 
+procedure TFormGLSViewer.acSpheresExecute(Sender: TObject);
+begin
+  inherited;
+  // random spheres
+end;
+
 procedure TFormGLSViewer.acLoadTreeViewExecute(Sender: TObject);
 begin
   inherited;
@@ -1096,11 +1106,43 @@ begin
   snViewer.ResetPerformanceMonitor;
 end;
 
+//---------------------------------------------------------------------------
 procedure TFormGLSViewer.tvSceneCheckStateChanged(Sender: TCustomTreeView;
   Node: TTreeNode; CheckState: TNodeCheckState);
 begin
   inherited;
   // Add or removed scene's objects
+end;
+
+//---------------------------------------------------------------------------
+procedure TFormGLSViewer.tvSceneClick(Sender: TObject);
+var
+  ObjectName: String;
+  Cube: TGLCube;
+
+begin
+  ObjectName := tvScene.Selected.Text;
+  case tvScene.Selected.SelectedIndex of
+    4: acPointsExecute(Sender); //Points
+    5: ;  //Lines
+
+    8: // Create  GLCube
+    begin
+    //  Scene.FindSceneObject(Cube);
+      dcObject.ClearStructureChanged;
+      Cube := TGLCube.CreateAsChild(dcObject);
+      Cube.CubeDepth := 0.8;
+      Cube.CubeHeight := 0.8;
+      Cube.CubeWidth := 0.8;
+      Cube.Position.SetPoint(1, 0.2, 0);
+      Cube.Material.FrontProperties.Diffuse.SetColor(1.0,0.5,0.0);
+    end;
+    9: ;  //Frustum
+    10: ;  //Sphere
+  end;
+  //  ase True of
+//
+//  end;
 end;
 
 procedure TFormGLSViewer.ReadIniFile;

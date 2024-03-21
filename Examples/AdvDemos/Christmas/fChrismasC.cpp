@@ -44,17 +44,17 @@ __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {}
 
 void __fastcall TForm1::FormCreate(TObject* Sender)
 {
-	Path = GetCurrentAssetPath();
+	AssetPath = GetCurrentAssetPath();
 	Randomize();
 
-	SetCurrentDir(Path + "\\model");
+	SetCurrentDir(AssetPath + "\\model");
 	ffFirTree->LoadFromFile("firtree.3ds");
 	ffFirePlace->LoadFromFile("fireplace.3ds");
 	fireLight = 0.5;
 	ftYear->Text = "";
 
 	// Set current dir for audio files
-	SetCurrentDir(Path + "\\audio");
+	SetCurrentDir(AssetPath + "\\audio");
 }
 // ---------------------------------------------------------------------------
 
@@ -132,7 +132,7 @@ void __fastcall TForm1::TimerTimer(TObject* Sender)
 			ftCountDown->Text = buf;
 		} else {
 			t = (double)t * 60;
-			i = RoundInt((double)t - Frac((double)t) * 60); // Floor(t) ambiguous
+			i = RoundInt((double)t - Frac((double)t) * 60); // was  Floor(t) - ambiguous
 			ftCountDown->Text =
 				IntToStr((int)t) + " minutes, " + IntToStr(i) + " seconds...";
 		}
@@ -159,7 +159,7 @@ void __fastcall TForm1::CadencerProgress(
             HUDSprite->Visible = false;
     }
 	dcFirTree->Turn(deltaTime);
-    Viewer->Invalidate();
+	Viewer->Invalidate();
 }
 
 // ---------------------------------------------------------------------------
@@ -187,7 +187,7 @@ void __fastcall TForm1::ViewerDblClick(TObject* Sender)
         (BorderStyle != bsNone))
     {
         BorderStyle = bsNone;
-        FormStyle = fsStayOnTop;
+		FormStyle = fsStayOnTop;
         Align = alClient;
     }
 }

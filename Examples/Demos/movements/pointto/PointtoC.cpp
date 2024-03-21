@@ -1,4 +1,4 @@
-/*: Demo/test case for the PointTo method of objects.
+/*  Demo/test case for the PointTo method of objects.
 
    The PointTo method allows to easily orient an object to point toward another
    object, whatever their relative positions in the scene hierarchy.<br>
@@ -12,20 +12,20 @@
 
 #include <vcl.h>
 #pragma hdrstop
-USEFORM("fPointtoC.cpp", Form1);
+USEFORM("fPointtoC.cpp", FormPointto);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
-        try
-        {
-                 Application->Initialize();
-                 Application->CreateForm(__classid(TForm1), &Form1);
+		try
+		{
+				 Application->Initialize();
+				 Application->CreateForm(__classid(TFormPointto), &FormPointto);
 		Application->Run();
-        }
-        catch (Exception &exception)
-        {
-                 Application->ShowException(&exception);
-        }
-        return 0;
+		}
+		catch (Exception &exception)
+		{
+				 Application->ShowException(&exception);
+		}
+		return 0;
 }
 //---------------------------------------------------------------------------

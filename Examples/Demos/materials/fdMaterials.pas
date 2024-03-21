@@ -19,14 +19,7 @@ type
   TfrmMaterials = class(TForm)
     PanelLeft: TPanel;
     tvMaterials: TTreeView;
-    PageControl: TPageControl;
-    tsOne: TTabSheet;
-    tsTwo: TTabSheet;
-    tsThree: TTabSheet;
-    tsFour: TTabSheet;
-    tsFive: TTabSheet;
-    tsSix: TTabSheet;
-    tsSeven: TTabSheet;
+    PanelMaterials: TPanel;
   private
     { Private declarations }
   public
