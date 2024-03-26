@@ -4,9 +4,14 @@
 unit GLS.SmartObjects;
 
 (*
-  The smart spatial objects that have sences and artifitial intelligence
-  to interact with player, base geometric and other smart objects:
-  TGLGerm, TGLSmartCells, TGLSmartSwarm, TGLSmartNet, TGLCyborg, TGLCyborgs
+  These objects have built-in properties and methods to support sound, vision,
+  physics, and finding shortest paths through obstacle terrains. In addition,
+  they have artificial intelligence to conduct dialogues and make
+  independent decisions. The smart spatial objects are used to interact
+  with other smart objects.
+
+  The registered classes:
+   [TGLSmartGerm, TGLSmartCells, TGLSmartSwarm, TGLSmartNet, TGLCyborg, TGLCyborgs]
 *)
 
 interface
@@ -28,7 +33,6 @@ uses
   GLS.VectorTypesExt,
   GLS.Strings,
   GLS.PipelineTransformation,
-  GLS.Logger,
 
   GLS.Scene,
   GLS.VectorLists,
@@ -39,6 +43,8 @@ uses
   GLS.Mesh,
   GLS.Octree,
   GLS.GeometryBB,
+  GLS.Objects,
+  GLS.GeomObjects,
   GLS.ApplicationFileIO,
   GLS.Context,
   GLS.Color,
@@ -53,8 +59,10 @@ uses
 
 type
 
-  TGLCyborgSmartReference = (csrNone, csrWeak, csrStrong);
-  TGLCyborgThinkingMode = (ctmSelf, ctmSleep, ctmOutside, ctmZombie, ctmDeath);
+  TGLSmartSwarmMode = (isNone, isRandom, isTetra, isGrid);
+
+  TGLCyborgReference = (crNone, crWeak, crStrong);
+  TGLCyborgThinkMode = (ctmSelf, ctmSleep, ctmOutside, ctmZombie, ctmDeath);
 
   TGLCyborgOption = (coCollide, coContact, coJoin);
   TGLCyborgSenceOrgans = (csoVision, csoHearing, csoSmell, csoTouch, taste);
@@ -62,7 +70,7 @@ type
   TGLCyborgOptions = set of TGLCyborgOption;
   TGLCyborgThinks = class(TCollection);
 
-  // A list of thinking periods for TGLCyborgThinkingMode
+  // A list of thinking periods for TGLCyborgThinkMode
   TGLCyborgThinksList = class(TGLPersistentObjectList);
 
 const
@@ -76,16 +84,15 @@ type
   TGLCyborg = class(TGLActor)
   private
     FBirthTime, FDeathTime: TDateTime;
-    FSmartReference: TGLCyborgSmartReference;
-    FThinkingMode: TGLCyborgThinkingMode;
+    FReference: TGLCyborgReference;
+    FThinkMode: TGLCyborgThinkMode;
     FControlers: TList;
     FInterval: Integer;
     FOptions: TGLCyborgOptions;
     FThinkings: TGLCyborgThinks;
-    FReference: TGLCyborgSmartReference;
   protected
-    procedure SetReference(val: TGLCyborgSmartReference);
-    procedure SetThinking(const val: TGLCyborgThinkingMode);
+    procedure SetReference(val: TGLCyborgReference);
+    procedure SetThinking(const val: TGLCyborgThinkMode);
     function StoreThinking: Boolean;
     procedure SetOptions(const val: TGLCyborgOptions);
     procedure DoThink; virtual;
@@ -101,12 +108,12 @@ type
     // Indicates whether the cyborg is currently thinking
     function IsThinking: Boolean;
   published
-    // See TGLCyborgThinkingMode.
-    property ThinkingMode: TGLCyborgThinkingMode read FThinkingMode
-	  write FThinkingMode default ctmSelf;
+    // See TGLCyborgThinkMode.
+    property ThinkingMode: TGLCyborgThinkMode read FThinkMode
+	  write FThinkMode default ctmSelf;
     // Reference Frame Animation mode. Allows specifying if the model is primarily morph or skeleton based
-    property SmartReference: TGLCyborgSmartReference read FReference
-      write FSmartReference default csrNone;
+    property SmartReference: TGLCyborgReference read FReference
+      write FReference default crNone;
 
     // Interval between thinking frames, in milliseconds.
     property Interval: Integer read FInterval write FInterval;
@@ -116,13 +123,23 @@ type
     ///property Thinkings: TGLCyborgThinks read FThinkings write SetThinking stored StoreThinking;
   end;
 
-
-    (* Synchronize self thinking with an other thinkers.
-      Copies Start/Current/End Frame values, CurrentFrameDelta,
-      ThinkingMode and FrameInterpolation.
-    procedure Synchronize(ReferenceCyborg: TGLCyborg);
-     *)
-
+  (*
+     Synchronize self thinking with an other thinkers in the swarm
+     Copies Ai/Current/End values,ThinkingMode and GridInterpolation.
+     procedure Synchronize(IntelSwarm: TGLIntelSwarm);
+   *)
+  TGLSwartSwarm = class(TGLPoints)
+  private
+    FBirthTime, FDeathTime: TDateTime;
+    FReference: TGLCyborgReference;
+    FThinkMode: TGLSmartSwarmMode;
+  public
+    constructor Create(aOwner: TComponent); override;
+    destructor Destroy; override;
+    procedure Assign(Source: TPersistent); override;
+  published
+    property ThinkingMode: TGLSmartSwarmMode read FThinkMode;
+  end;
 
 var
   vGLSmartObjectsAllocate: Boolean = True;
@@ -196,12 +213,12 @@ begin
 //
 end;
 
-procedure TGLCyborg.SetReference(val: TGLCyborgSmartReference);
+procedure TGLCyborg.SetReference(val: TGLCyborgReference);
 begin
 //
 end;
 
-procedure TGLCyborg.SetThinking(const val: TGLCyborgThinkingMode);
+procedure TGLCyborg.SetThinking(const val: TGLCyborgThinkMode);
 begin
 //
 end;
@@ -217,11 +234,32 @@ begin
 //
 end;
 
+
 // ------------------------------------------------------------------
+{ TGLSwartSwarm }
+
+procedure TGLSwartSwarm.Assign(Source: TPersistent);
+begin
+  inherited;
+  //
+end;
+
+constructor TGLSwartSwarm.Create(aOwner: TComponent);
+begin
+  inherited;
+  //
+end;
+
+destructor TGLSwartSwarm.Destroy;
+begin
+  //
+  inherited;
+end;
+
 initialization
 // ------------------------------------------------------------------
 
-  RegisterClasses([TGLCyborg{, TGLGerm, TGLCyborgNet, TGLSmartSwarm}]);
+  RegisterClasses([TGLCyborg (*, TGLSmartSwarm*)]);
 
 finalization
 

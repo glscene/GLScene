@@ -44,12 +44,9 @@ type
     PaintBox32: TPaintBox32;
     Cube1: TGLCube;
     GLCadencer1: TGLCadencer;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
     Label5: TLabel;
     GLMaterialLibrary1: TGLMaterialLibrary;
+    Memo1: TMemo;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure AsyncTimer1Timer(Sender: TObject);
@@ -88,11 +85,9 @@ implementation
 
 {$R *.DFM}
 
-(*
-  {.$IFDEF USE_GRAPHICS32}
-  Please rebuild GLScene with ($DEFINE USE_GRAPHICS32} in GLScene.inc
-  {.$ENDIF}
-*)
+  {$IFDEF USE_GRAPHICS32}
+//  Please rebuild GLScene with ($DEFINE USE_GRAPHICS32} in GLScene.inc
+  {$ENDIF}
 
 procedure TFormFire2d_GR32.AsyncTimer1Timer(Sender: TObject);
 begin

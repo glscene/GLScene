@@ -11,7 +11,7 @@ object FormFire2d_GR32: TFormFire2d_GR32
   BorderStyle = bsDialog
   Caption = 'Fire 2D'
   ClientHeight = 686
-  ClientWidth = 1145
+  ClientWidth = 1144
   Color = clBtnFace
   Constraints.MinHeight = 431
   Constraints.MinWidth = 448
@@ -27,71 +27,16 @@ object FormFire2d_GR32: TFormFire2d_GR32
   OnKeyDown = FormKeyDown
   PixelsPerInch = 168
   TextHeight = 23
-  object Label1: TLabel
-    Left = 11
-    Top = 63
-    Width = 424
-    Height = 22
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
-    Caption = 'The 2D fire animation below is a pure 2D animated'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Arial'
-    Font.Style = []
-    ParentFont = False
-  end
-  object Label2: TLabel
-    Left = 14
-    Top = 98
-    Width = 397
-    Height = 22
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
-    Caption = 'texture using Graphics32 (www.graphics32.org)'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Arial'
-    Font.Style = []
-    ParentFont = False
-  end
-  object Label3: TLabel
-    Left = 11
-    Top = 149
-    Width = 395
-    Height = 23
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
-    Caption = 'It is refreshed every 40 ms and used to update'
-  end
-  object Label4: TLabel
-    Left = 11
-    Top = 182
-    Width = 332
-    Height = 23
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
-    Caption = 'the cube'#39's texture you see on the right.'
-  end
   object Label5: TLabel
-    Left = 11
-    Top = 14
-    Width = 228
+    Left = 0
+    Top = 0
+    Width = 1144
     Height = 33
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5
     Margins.Bottom = 5
+    Align = alTop
     Caption = 'Dynamic Texture'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -99,9 +44,12 @@ object FormFire2d_GR32: TFormFire2d_GR32
     Font.Name = 'Arial'
     Font.Style = [fsBold]
     ParentFont = False
+    ExplicitLeft = 9
+    ExplicitTop = 10
+    ExplicitWidth = 228
   end
   object GLSceneViewer1: TGLSceneViewer
-    Left = 459
+    Left = 458
     Top = 0
     Width = 686
     Height = 686
@@ -121,7 +69,7 @@ object FormFire2d_GR32: TFormFire2d_GR32
   end
   object PaintBox32: TPaintBox32
     Left = 0
-    Top = 215
+    Top = 238
     Width = 448
     Height = 448
     Margins.Left = 5
@@ -132,6 +80,25 @@ object FormFire2d_GR32: TFormFire2d_GR32
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     OnMouseUp = GLSceneViewer1MouseUp
+  end
+  object Memo1: TMemo
+    Left = 0
+    Top = 43
+    Width = 448
+    Height = 185
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
+    Lines.Strings = (
+      'The 2D fire animation below is a pure 2D '
+      'animated'
+      'texture using Graphics32 '
+      '(www.graphics32.org)'
+      'It is refreshed every 40 ms and used to '
+      'update'
+      'the cube'#39's texture you see on the right.')
+    TabOrder = 2
   end
   object AsyncTimer1: TGLAsyncTimer
     Interval = 80
