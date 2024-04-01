@@ -47,3 +47,4 @@ contains
   Sounds.WaveOut in '..\Source\Sounds.WaveOut.pas';
 
 end.
+

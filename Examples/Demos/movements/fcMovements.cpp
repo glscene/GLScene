@@ -113,15 +113,6 @@ void __fastcall TFormMovements::tvMovementsClick(TObject *Sender)
 		FormSmoothnavi->Show();
 		break;
 	}
-	case 8: {
-		  // Tweening
-		FormTweening = new TFormTweening(tsMovements);
-		FormTweening->Parent = tsMovements;
-		FormTweening->Align = alClient;
-		FormTweening->BorderStyle = bsNone;
-		FormTweening->Show();
-		break;
-	}
    }
 
 }

@@ -9,6 +9,7 @@
         <FrameworkType>VCL</FrameworkType>
         <ProjectVersion>20.1</ProjectVersion>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <ProjectName Condition="'$(ProjectName)'==''">GLScene_RT</ProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -20,6 +21,11 @@
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
         <Base_Win64>true</Base_Win64>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64x' and '$(Base)'=='true') or '$(Base_Win64x)'!=''">
+        <Base_Win64x>true</Base_Win64x>
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
@@ -93,6 +99,11 @@
         <DCC_ObjOutput>..\lib\$(Platform)</DCC_ObjOutput>
         <DCC_HppOutput>..\include\$(Platform)</DCC_HppOutput>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64x)'!=''">
+        <DCC_Namespace>Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
+        <BT_BuildType>Debug</BT_BuildType>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
         <DCC_DebugInformation>0</DCC_DebugInformation>
@@ -149,6 +160,7 @@
         <DCCReference Include="..\Source\Formats.VFW.pas"/>
         <DCCReference Include="..\Source\Formats.Q3BSP.pas"/>
         <DCCReference Include="..\Source\Formats.GL2.pas"/>
+        <DCCReference Include="..\Source\Formats.LWO.pas"/>
         <DCCReference Include="..\Source\Formats.MD2.pas"/>
         <DCCReference Include="..\Source\Formats.MD3.pas"/>
         <DCCReference Include="..\Source\Formats.B3D.pas"/>
@@ -181,6 +193,7 @@
         <DCCReference Include="..\Source\GLS.Context.pas"/>
         <DCCReference Include="..\Source\GLS.Coordinates.pas"/>
         <DCCReference Include="..\Source\GLS.CrossXML.pas"/>
+        <DCCReference Include="..\Source\GLS.CyborgManager.pas"/>
         <DCCReference Include="..\Source\GLS.CurvesAndSurfaces.pas"/>
         <DCCReference Include="..\Source\GLS.DCE.pas"/>
         <DCCReference Include="..\Source\GLS.DynamicTexture.pas"/>
@@ -285,6 +298,7 @@
         <DCCReference Include="..\Source\GLS.Perlin.pas"/>
         <DCCReference Include="..\Source\GLS.PerlinPFX.pas"/>
         <DCCReference Include="..\Source\GLS.PolygonTesselation.pas"/>
+        <DCCReference Include="..\Source\GLS.Polyhedra.pas"/>
         <DCCReference Include="..\Source\GLS.Portal.pas"/>
         <DCCReference Include="..\Source\GLSL.PostEffects.pas"/>
         <DCCReference Include="..\Source\GLS.ProcTextures.pas"/>
@@ -300,9 +314,9 @@
         <DCCReference Include="..\Source\GLSL.CustomShader.pas"/>
         <DCCReference Include="..\Source\GLSL.LineShaders.pas"/>
         <DCCReference Include="..\Source\GLSL.MultiMaterialShader.pas"/>
-        <DCCReference Include="..\Source\GLSL.PostShaders.pas"/>
-        <DCCReference Include="..\Source\GLSL.ProjectedTextures.pas"/>
         <DCCReference Include="..\Source\GLSL.PhongShader.pas"/>
+        <DCCReference Include="..\Source\GLSL.ProjectedTextures.pas"/>
+        <DCCReference Include="..\Source\GLSL.PostShaders.pas"/>
         <DCCReference Include="..\Source\GLSL.ShaderCombiner.pas"/>
         <DCCReference Include="..\Source\GLSL.TextureShaders.pas"/>
         <DCCReference Include="..\Source\GLSL.UserShader.pas"/>
@@ -371,9 +385,6 @@
         <DCCReference Include="..\Source\GLS.VerletTypes.pas"/>
         <DCCReference Include="..\Source\GLS.VerletClothify.pas"/>
         <DCCReference Include="..\Source\GLS.VectorTypesExt.pas"/>
-        <DCCReference Include="..\Source\Formats.LWO.pas"/>
-        <DCCReference Include="..\Source\GLS.Polyhedra.pas"/>
-        <DCCReference Include="..\Source\GLS.CyborgManager.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -410,6 +421,7 @@
             <Platforms>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">True</Platform>
+                <Platform value="Win64x">False</Platform>
             </Platforms>
             <Deployment Version="4">
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
@@ -1013,6 +1025,9 @@
                     <Platform Name="Win64">
                         <Operation>1</Operation>
                     </Platform>
+                    <Platform Name="Win64x">
+                        <Operation>1</Operation>
+                    </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectiOSDeviceDebug">
                     <Platform Name="iOSDevice32">
@@ -1274,6 +1289,7 @@
                 <ProjectRoot Platform="OSXARM64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="Win64x" Name="$(PROJECTNAME)"/>
             </Deployment>
             <ModelSupport>False</ModelSupport>
         </BorlandProject>

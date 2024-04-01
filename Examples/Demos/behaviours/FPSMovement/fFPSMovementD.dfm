@@ -2,8 +2,8 @@ object FormFPSMovement: TFormFPSMovement
   Left = 209
   Top = 112
   Caption = 'FPSMovement'
-  ClientHeight = 501
-  ClientWidth = 728
+  ClientHeight = 582
+  ClientWidth = 825
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,15 +18,17 @@ object FormFPSMovement: TFormFPSMovement
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 728
-    Height = 501
+    Width = 825
+    Height = 582
     Camera = ThirdPersonCamera
     Buffer.BackgroundColor = clBlack
     Buffer.ShadeModel = smSmooth
-    FieldOfView = 157.424118041992200000
+    FieldOfView = 160.501129150390600000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 728
+    ExplicitHeight = 502
   end
   object GLScene1: TGLScene
     Left = 40
@@ -241,25 +243,5 @@ object FormFPSMovement: TFormFPSMovement
       0458434F4C02010202061454474C4D6170436F6C6C656374696F6E4974656D02
       00060E4650534D6F76656D656E744D61700200020006044D6170310200020006
       0E4650534D6F76656D656E744D61700200020006044D617032}
-  end
-  object GLSimpleNavigation1: TGLSimpleNavigation
-    Form = Owner
-    GLSceneViewer = GLSceneViewer1
-    FormCaption = 'FPSMovement - %FPS'
-    KeyCombinations = <
-      item
-        ShiftState = [ssLeft, ssRight]
-        Action = snaZoom
-      end
-      item
-        ShiftState = [ssLeft]
-        Action = snaMoveAroundTarget
-      end
-      item
-        ShiftState = [ssRight]
-        Action = snaMoveAroundTarget
-      end>
-    Left = 152
-    Top = 192
   end
 end

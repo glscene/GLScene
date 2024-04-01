@@ -70,7 +70,7 @@ uses
   fGLOptions,
   fGLDialog,
   dImages,
-  dDialogs;
+  dDialogs, GLS.GeomObjects;
 
 type
   TFormGLSViewer = class(TGLForm)
@@ -151,6 +151,7 @@ type
     acLoadTreeView: TAction;
     OpenDialog: TOpenDialog;
     SaveDialog: TSaveDialog;
+    procedure AsyncTimerTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure snViewerMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -196,7 +197,6 @@ type
     procedure acViewZoomOutExecute(Sender: TObject);
     procedure acViewZoomInExecute(Sender: TObject);
     procedure acPointsExecute(Sender: TObject);
-    procedure AsyncTimerTimer(Sender: TObject);
     procedure acToolsNaviCubeExecute(Sender: TObject);
     procedure acToolsInfoExecute(Sender: TObject);
     procedure snViewerMouseLeave(Sender: TObject);
@@ -211,6 +211,24 @@ type
     procedure acSpheresExecute(Sender: TObject);
   private
     AssetPath: TFileName;
+
+    Lines: TGLLines;
+    Plane: TGLPlane;
+    Polygon: TGLPolygon;
+    Cube: TGLCube;
+    Frustrum: TGLFrustrum;
+    Sphere: TGLSphere;
+    Disk: TGLDisk;
+    Cone: TGLCone;
+    Cylinder: TGLCylinder;
+    Capsule: TGLCapsule;
+    Dodecahedron: TGLDodecahedron;
+    Icosahedron: TGLIcosahedron;
+    Hexahedron: TGLHexahedron;
+    Octahedron: TGLOctahedron;
+    Tetrahedron: TGLTetrahedron;
+    SuperEllipsoid: TGLSuperEllipsoid;
+
     procedure DoResetCamera;
     procedure SetupFreeFormShading;
     procedure ApplyShadeModeToMaterial(aMaterial: TGLMaterial);
@@ -329,6 +347,10 @@ begin
  // instantiate our specific hidden-lines shader
   hlShader := THiddenLineShader.Create(Self);
   ffObject.IgnoreMissingTextures := True;
+
+  tvScene.FullExpand;
+  tvScene.Select(tvScene.Items[9]);  // goto to Cube
+  tvSceneClick(Self);
 end;
 
 procedure TFormGLSViewer.FormShow(Sender: TObject);
@@ -1118,30 +1140,105 @@ end;
 procedure TFormGLSViewer.tvSceneClick(Sender: TObject);
 var
   ObjectName: String;
-  Cube: TGLCube;
 
 begin
+  dcObject.DeleteChildren;
   ObjectName := tvScene.Selected.Text;
   case tvScene.Selected.SelectedIndex of
-    4: acPointsExecute(Sender); //Points
-    5: ;  //Lines
-
-    8: // Create  GLCube
+    4: //Points
     begin
-    //  Scene.FindSceneObject(Cube);
-      dcObject.ClearStructureChanged;
-      Cube := TGLCube.CreateAsChild(dcObject);
-      Cube.CubeDepth := 0.8;
-      Cube.CubeHeight := 0.8;
-      Cube.CubeWidth := 0.8;
-      Cube.Position.SetPoint(1, 0.2, 0);
-      Cube.Material.FrontProperties.Diffuse.SetColor(1.0,0.5,0.0);
+      acPointsExecute(Sender);
     end;
-    9: ;  //Frustum
-    10: ;  //Sphere
+    5: //Lines
+    begin
+      Lines := TGLLines.CreateAsChild(dcObject);
+      Lines.Material.FrontProperties.Diffuse.RandomColor();
+    end;
+    6: //Plane
+    begin
+      Plane := TGLPlane.CreateAsChild(dcObject);
+      Plane.Direction.SetVector(0, 1, 0);  // vertical - (0, 0, 1); slope - (0.3, 1, 0.1);
+      Plane.Material.FrontProperties.Diffuse.RandomColor();
+    end;
+    7: //Polygon
+    begin
+      Polygon := TGLPolygon.CreateAsChild(dcObject);
+      Polygon.Material.FrontProperties.Diffuse.RandomColor();
+    end;
+    8: // GLCube
+    begin
+      Cube := TGLCube.CreateAsChild(dcObject);
+      // Cube.Position.SetPoint(0, 0, 0);
+      Cube.Material.FrontProperties.Diffuse.RandomColor();
+    end;
+    9: // Frustrum
+    begin
+      Frustrum := TGLFrustrum.CreateAsChild(dcObject);
+      // Frustrum.Position.SetPoint(0, 0, 0);
+      // Frustrum.Material.FrontProperties.Diffuse.Color := clrBlue;
+      Frustrum.Material.FrontProperties.Diffuse.RandomColor();
+      //;
+    end;
+    10: // Sphere
+    begin
+      Sphere := TGLSphere.CreateAsChild(dcObject);
+      // Sphere.Position.SetPoint(0, 0, 0);
+      // Sphere.Material.FrontProperties.Diffuse.Color := clrBlue;
+      Sphere.Material.FrontProperties.Diffuse.RandomColor();
+    end;
+    11: // Disk;
+    begin
+      Disk := TGLDisk.CreateAsChild(dcObject);
+      Disk.Material.FrontProperties.Diffuse.RandomColor();
+    end;
+    12: // Cone
+    begin
+      Cone := TGLCone.CreateAsChild(dcObject);
+      Cone.Material.FrontProperties.Diffuse.RandomColor();
+    end;
+    13: // Cylinder
+    begin
+      Cylinder := TGLCylinder.CreateAsChild(dcObject);
+      Cylinder.Material.FrontProperties.Diffuse.RandomColor();
+    end;
+    14: // Capsule
+    begin
+      Capsule := TGLCapsule.CreateAsChild(dcObject);
+      Capsule.Material.FrontProperties.Diffuse.RandomColor();
+    end;
+    15: // Dodecahedron
+    begin
+      Dodecahedron := TGLDodecahedron.CreateAsChild(dcObject);
+      Dodecahedron.Material.FrontProperties.Diffuse.RandomColor();
+    end;
+    16: // Icosahedron
+    begin
+      Icosahedron := TGLIcosahedron.CreateAsChild(dcObject);
+      Icosahedron.Material.FrontProperties.Diffuse.RandomColor();
+    end;
+    17: // Hexahedron
+    begin
+      Hexahedron := TGLHexahedron.CreateAsChild(dcObject);
+      Hexahedron.Material.FrontProperties.Diffuse.RandomColor();
+    end;
+    18: // Octahedron
+    begin
+      Octahedron := TGLOctahedron.CreateAsChild(dcObject);
+      Octahedron.Material.FrontProperties.Diffuse.Color := clrRed;
+    end;
+    19: // Tetrahedron
+    begin
+      Tetrahedron := TGLTetrahedron.CreateAsChild(dcObject);
+      Tetrahedron.Material.FrontProperties.Diffuse.Color := clrGreen;
+    end;
+    20: // SuperEllipsoid
+    begin
+      SuperEllipsoid := TGLSuperEllipsoid.CreateAsChild(dcObject);
+      SuperEllipsoid.Material.FrontProperties.Diffuse.Color := clrTeal;
+    end;
+    //21...
   end;
-  //  ase True of
-//
+  //  and so on
 //  end;
 end;
 

@@ -27,15 +27,8 @@ type
     PanelLeft: TPanel;
     tvGraph: TTreeView;
     MainMenu: TMainMenu;
-    PageControl: TPageControl;
-    tsFxy: TTabSheet;
-    tsHeightField: TTabSheet;
-    tsPoints: TTabSheet;
-    tsProjection: TTabSheet;
-    tsSplines: TTabSheet;
     procedure tvGraphClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
   public
   end;
@@ -49,45 +42,8 @@ implementation
 
 procedure TFormGraph.FormCreate(Sender: TObject);
 begin
-  // Fxy
-  FormFxy := TFormFxy.Create(tsFxy);
-  FormFxy.Parent := tsFxy;
-  FormFxy.Align := alClient;
-  FormFxy.BorderStyle := bsNone;
-  FormFxy.Show;
-
-  // HeightField
-  FormHeightField := TFormHeightField.Create(tsHeightField);
-  FormHeightField.Parent := tsHeightField;
-  FormHeightField.Align := alClient;
-  FormHeightField.BorderStyle := bsNone;
-  FormHeightField.Show;
-
-  // Points
-  FormPoints := TFormPoints.Create(tsPoints);
-  FormPoints.Parent := tsPoints;
-  FormPoints.Align := alClient;
-  FormPoints.BorderStyle := bsNone;
-  FormPoints.Show;
-
-   // Projection
-  FormProjection := TFormProjection.Create(tsProjection);
-  FormProjection.Parent := tsProjection;
-  FormProjection.Align := alClient;
-  FormProjection.BorderStyle := bsNone;
-  FormProjection.Show;
-
-  // Splines
-  FormSplines := TFormSplines.Create(tsSplines);
-  FormSplines.Parent := tsSplines;
-  FormSplines.Align := alClient;
-  FormSplines.BorderStyle := bsNone;
-  FormSplines.Show;
-end;
-
-procedure TFormGraph.FormShow(Sender: TObject);
-begin
-  PageControl.ActivePage := tsFxy;
+  tvGraph.Select(tvGraph.Items[0]);  // goto to column 0
+  tvGraphClick(Sender);
 end;
 
 procedure TFormGraph.tvGraphClick(Sender: TObject);
@@ -95,15 +51,46 @@ begin
   tvGraph.Items[0].DropHighlighted := False;
   case tvGraph.Selected.Index of
     0:
-      PageControl.ActivePage := tsFxy;
+      begin // Fxy
+        FormFxy := TFormFxy.Create(FormGraph);
+        FormFxy.Parent := FormGraph;
+        FormFxy.Align := alClient;
+        FormFxy.BorderStyle := bsNone;
+        FormFxy.Show;
+      end;
     1:
-      PageControl.ActivePage := tsHeightField;
+      begin // HeightField
+        FormHeightField := TFormHeightField.Create(FormGraph);
+        FormHeightField.Parent := FormGraph;
+        FormHeightField.Align := alClient;
+        FormHeightField.BorderStyle := bsNone;
+        FormHeightField.Show;
+      end;
     2:
-      PageControl.ActivePage := tsPoints;
+      begin // Points
+        FormPoints := TFormPoints.Create(FormGraph);
+        FormPoints.Parent := FormGraph;
+        FormPoints.Align := alClient;
+        FormPoints.BorderStyle := bsNone;
+        FormPoints.Show;
+      end;
     3:
-      PageControl.ActivePage := tsProjection;
+      begin // Projection
+        FormProjection := TFormProjection.Create(FormGraph);
+        FormProjection.Parent := FormGraph;
+        FormProjection.Align := alClient;
+        FormProjection.BorderStyle := bsNone;
+        FormProjection.Show;
+      end;
     4:
-      PageControl.ActivePage := tsSplines;
+      begin
+        // Splines
+        FormSplines := TFormSplines.Create(FormGraph);
+        FormSplines.Parent := FormGraph;
+        FormSplines.Align := alClient;
+        FormSplines.BorderStyle := bsNone;
+        FormSplines.Show;
+      end;
   end;
 end;
 

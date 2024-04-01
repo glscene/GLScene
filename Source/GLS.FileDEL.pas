@@ -47,7 +47,7 @@ const
 
 class function TGLDELVectorFile.Capabilities: TGLDataFileCapabilities;
 begin
-   Result:=[dfcRead];
+   Result := [dfcRead];
 end;
 
 procedure TGLDELVectorFile.LoadFromStream(aStream : TStream);

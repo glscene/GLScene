@@ -12,86 +12,77 @@
 #pragma link "fProjectionC"
 #pragma link "fSplinesC"
 
-
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
-TFormGraph *FormGraph;
+TFormGraph* FormGraph;
 //---------------------------------------------------------------------------
-__fastcall TFormGraph::TFormGraph(TComponent* Owner)
-	: TForm(Owner)
-{
-}
+__fastcall TFormGraph::TFormGraph(TComponent* Owner) : TForm(Owner) {}
+
 //---------------------------------------------------------------------------
+
 void __fastcall TFormGraph::FormCreate(TObject *Sender)
 {
-  // Fxy
-  FormFxy = new TFormFxy(tsFxy);
-  FormFxy->Parent = tsFxy;
-  FormFxy->Align = alClient;
-  FormFxy->BorderStyle = bsNone;
-  FormFxy->Show();
-
-  // HeightField
-  FormHeightField = new TFormHeightField(tsHeightField);
-  FormHeightField->Parent = tsHeightField;
-  FormHeightField->Align = alClient;
-  FormHeightField->BorderStyle = bsNone;
-  FormHeightField->Show();
-
-  // Points
-  FormPoints = new TFormPoints(tsPoints);
-  FormPoints->Parent = tsPoints;
-  FormPoints->Align = alClient;
-  FormPoints->BorderStyle = bsNone;
-  FormPoints->Show();
-
-   // Projection
-  FormProjection = new TFormProjection(tsProjection);
-  FormProjection->Parent = tsProjection;
-  FormProjection->Align = alClient;
-  FormProjection->BorderStyle = bsNone;
-  FormProjection->Show();
-
-  // Splines
-  FormSplines = new TFormSplines(tsSplines);
-  FormSplines->Parent = tsSplines;
-  FormSplines->Align = alClient;
-  FormSplines->BorderStyle = bsNone;
-  FormSplines->Show();
+  tvGraph->Select(tvGraph->Items->Item[2]);  // goto to item 2
 }
+
 //---------------------------------------------------------------------------
 
 void __fastcall TFormGraph::FormShow(TObject *Sender)
 {
-  PageControl->ActivePage = tsFxy;
+  tvGraphClick(this);
 }
+
 //---------------------------------------------------------------------------
 
-void __fastcall TFormGraph::tvGraphClick(TObject *Sender)
+void __fastcall TFormGraph::tvGraphClick(TObject* Sender)
 {
-  ///tvGraph->Items[0]->DropHighlighted = false;
-   switch (tvGraph->Selected->Index) {
-	case 0: {
-	  PageControl->ActivePage = tsFxy; break;
+	switch (tvGraph->Selected->Index) {
+		case 0: { // Fxy
+			FormFxy = new TFormFxy(FormGraph);
+			FormFxy->Parent = FormGraph;
+			FormFxy->Align = alClient;
+			FormFxy->BorderStyle = bsNone;
+			FormFxy->Show();
+			break;
+		}
+		case 1: { // HeightField
+			FormHeightField = new TFormHeightField(FormGraph);
+			FormHeightField->Parent = FormGraph;
+			FormHeightField->Align = alClient;
+			FormHeightField->BorderStyle = bsNone;
+			FormHeightField->Show();
+			break;
+		}
+		case 2: { // Points
+			FormPoints = new TFormPoints(FormGraph);
+			FormPoints->Parent = FormGraph;
+			FormPoints->Align = alClient;
+			FormPoints->BorderStyle = bsNone;
+			FormPoints->Show();
+			break;
+		}
+		case 3: { // Projection
+			FormProjection = new TFormProjection(FormGraph);
+			FormProjection->Parent = FormGraph;
+			FormProjection->Align = alClient;
+			FormProjection->BorderStyle = bsNone;
+			FormProjection->Show();
+			break;
+		}
+		case 4: { // Splines
+			FormSplines = new TFormSplines(FormGraph);
+			FormSplines->Parent = FormGraph;
+			FormSplines->Align = alClient;
+			FormSplines->BorderStyle = bsNone;
+			FormSplines->Show();
+			break;
+		}
+		default: {
+			break;
+		}
 	}
-	case 1: {
-	  PageControl->ActivePage = tsHeightField; break;
-	}
-	case 2: {
-	  PageControl->ActivePage = tsPoints; break;
-	}
-	case 3: {
-	  PageControl->ActivePage = tsProjection; break;
-	}
-	case 4: {
-	  PageControl->ActivePage = tsSplines; break;
-	}
-	default: {
-	  PageControl->ActivePage = tsFxy; break;
-	}
-   }
 }
-//---------------------------------------------------------------------------
 
+//---------------------------------------------------------------------------
 

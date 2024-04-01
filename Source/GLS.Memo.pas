@@ -488,7 +488,7 @@ type
     property InBrackets[Index: integer]: integer read GetInBrackets write SetInBrackets;
     property ValidAttrs[Index: integer]: Boolean read GetValidAttrs write SetValidAttrs;
     property CharAttrs[Index: integer]: string read GetCharAttrs write SetCharAttrs;
-    {events}
+    // events
     property OnGutterClick: TGutterClickEvent read FOnGutterClick write FOnGutterClick;
     property OnGutterDraw: TGutterDrawEvent read FOnGutterDraw write FOnGutterDraw;
     property OnChange: TNotifyEvent read FOnChange write FOnChange;
@@ -539,9 +539,9 @@ type
 
   TGLSMemo = class(TGLSCustomMemo)
   published
-    {TControl }
+    // TControl
     property PopupMenu;
-    {TCustomControl }
+    // TCustomControl
     property Align;
     property Enabled;
     property ShowHint;
@@ -549,7 +549,7 @@ type
     property TabStop;
     property Visible;
     property ReadOnly;
-    {TGLSCustomMemo }
+    // TGLSCustomMemo
     property AutoIndent;
     property GutterColor;
     property GutterWidth;
@@ -565,7 +565,7 @@ type
     property ScrollMode;
     property UndoLimit;
     property DelErase;
-    {Inherited events }
+    // Inherited events
     property OnClick;
     property OnDblClick;
     property OnDragDrop;
@@ -580,7 +580,7 @@ type
     property OnKeyDown;
     property OnKeyPress;
     property OnKeyUp;
-    {Events }
+    // Events
     property OnGutterDraw;
     property OnGutterClick;
     property OnChange;
@@ -683,7 +683,7 @@ type
     property ScrollMode;
     property UndoLimit;
     property DelErase;
-    {Inherited events }
+    // Inherited events
     property OnClick;
     property OnDblClick;
     property OnDragDrop;
@@ -706,7 +706,7 @@ type
     property OnSelectionChange;
     property OnStatusChange;
     property OnUndoChange;
-    {TGLSSyntaxMemo }
+    // TGLSSyntaxMemo
     property LineComment: string read FLineComment write FLineComment;
     property MultiCommentLeft: string read FMultiCommentLeft write FMultiCommentLeft;
     property MultiCommentRight: string read FMultiCommentRight write FMultiCommentRight;
@@ -850,7 +850,7 @@ var
         ver_Platform_Win32_Windows: Result := ver.dwMajorVersion >= 5;
         ver_Platform_Win32_NT: Result := ver.dwMajorVersion >= 4;
       end;
-    { Quick and dirty temporary hack for Windows 98 beta 3 }
+    //  Quick and dirty temporary hack for Windows 98 beta 3
     if (not Result) and (ver.szCSDVersion = ' Beta 3') then
       Result := True;
   end;
@@ -4184,7 +4184,12 @@ begin
   CheckRange(Index);
   P := TCharStyle(Items[Index]);
   P.Free;
+{$IFDEF WIN32}
   inherited;
+{$ELSE}
+/// inherited;
+{$ENDIF}
+
 end;
 //-------------------- GET/SET TEXT COLOR ---------------------------
 
@@ -4816,7 +4821,11 @@ end;
 procedure TGLSMemoUndoList.Delete(Index: Integer);
 begin
   TGLSMemoUndo(Items[Index]).Free;
+{$IFDEF WIN32}
   inherited;
+{$ELSE}
+///  inherited;
+{$ENDIF}
 end;
 
 procedure TGLSMemoUndoList.Undo;

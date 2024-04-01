@@ -59,7 +59,6 @@ type
     BotSphere: TGLSphere;
     Navigator1: TGLNavigator;
     MovManager: TGLFPSMovementManager;
-    GLSimpleNavigation1: TGLSimpleNavigation;
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

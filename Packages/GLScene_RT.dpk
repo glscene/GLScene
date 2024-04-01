@@ -45,6 +45,7 @@ contains
   Formats.VFW in '..\Source\Formats.VFW.pas',
   Formats.Q3BSP in '..\Source\Formats.Q3BSP.pas',
   Formats.GL2 in '..\Source\Formats.GL2.pas',
+  Formats.LWO in '..\Source\Formats.LWO.pas',
   Formats.MD2 in '..\Source\Formats.MD2.pas',
   Formats.MD3 in '..\Source\Formats.MD3.pas',
   Formats.B3D in '..\Source\Formats.B3D.pas',
@@ -77,6 +78,7 @@ contains
   GLS.Context in '..\Source\GLS.Context.pas',
   GLS.Coordinates in '..\Source\GLS.Coordinates.pas',
   GLS.CrossXML in '..\Source\GLS.CrossXML.pas',
+  GLS.CyborgManager in '..\Source\GLS.CyborgManager.pas',
   GLS.CurvesAndSurfaces in '..\Source\GLS.CurvesAndSurfaces.pas',
   GLS.DCE in '..\Source\GLS.DCE.pas',
   GLS.DynamicTexture in '..\Source\GLS.DynamicTexture.pas',
@@ -181,6 +183,7 @@ contains
   GLS.Perlin in '..\Source\GLS.Perlin.pas',
   GLS.PerlinPFX in '..\Source\GLS.PerlinPFX.pas',
   GLS.PolygonTesselation in '..\Source\GLS.PolygonTesselation.pas',
+  GLS.Polyhedra in '..\Source\GLS.Polyhedra.pas',
   GLS.Portal in '..\Source\GLS.Portal.pas',
   GLSL.PostEffects in '..\Source\GLSL.PostEffects.pas',
   GLS.ProcTextures in '..\Source\GLS.ProcTextures.pas',
@@ -196,9 +199,9 @@ contains
   GLSL.CustomShader in '..\Source\GLSL.CustomShader.pas',
   GLSL.LineShaders in '..\Source\GLSL.LineShaders.pas',
   GLSL.MultiMaterialShader in '..\Source\GLSL.MultiMaterialShader.pas',
-  GLSL.PostShaders in '..\Source\GLSL.PostShaders.pas',
-  GLSL.ProjectedTextures in '..\Source\GLSL.ProjectedTextures.pas',
   GLSL.PhongShader in '..\Source\GLSL.PhongShader.pas',
+  GLSL.ProjectedTextures in '..\Source\GLSL.ProjectedTextures.pas',
+  GLSL.PostShaders in '..\Source\GLSL.PostShaders.pas',
   GLSL.ShaderCombiner in '..\Source\GLSL.ShaderCombiner.pas',
   GLSL.TextureShaders in '..\Source\GLSL.TextureShaders.pas',
   GLSL.UserShader in '..\Source\GLSL.UserShader.pas',
@@ -266,10 +269,7 @@ contains
   GLS.VectorFileObjects in '..\Source\GLS.VectorFileObjects.pas',
   GLS.VerletTypes in '..\Source\GLS.VerletTypes.pas',
   GLS.VerletClothify in '..\Source\GLS.VerletClothify.pas',
-  GLS.VectorTypesExt in '..\Source\GLS.VectorTypesExt.pas',
-  Formats.LWO in '..\Source\Formats.LWO.pas',
-  GLS.Polyhedra in '..\Source\GLS.Polyhedra.pas',
-  GLS.CyborgManager in '..\Source\GLS.CyborgManager.pas';
+  GLS.VectorTypesExt in '..\Source\GLS.VectorTypesExt.pas';
 
 end.
 

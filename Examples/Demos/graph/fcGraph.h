@@ -26,16 +26,10 @@ class TFormGraph : public TForm
 __published:	// IDE-managed Components
 	TPanel *PanelLeft;
 	TTreeView *tvGraph;
-	TPageControl *PageControl;
-	TTabSheet *tsFxy;
-	TTabSheet *tsHeightField;
-	TTabSheet *tsPoints;
-	TTabSheet *tsProjection;
-	TTabSheet *tsSplines;
 	TMainMenu *MainMenu;
+	void __fastcall tvGraphClick(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
-	void __fastcall tvGraphClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TFormGraph(TComponent* Owner);

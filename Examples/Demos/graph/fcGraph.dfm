@@ -6,8 +6,8 @@ object FormGraph: TFormGraph
   Margins.Right = 5
   Margins.Bottom = 5
   Caption = 'Graph'
-  ClientHeight = 758
-  ClientWidth = 1238
+  ClientHeight = 718
+  ClientWidth = 1243
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,7 +24,7 @@ object FormGraph: TFormGraph
     Left = 0
     Top = 0
     Width = 226
-    Height = 758
+    Height = 718
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5
@@ -35,7 +35,7 @@ object FormGraph: TFormGraph
       Left = 1
       Top = 1
       Width = 224
-      Height = 756
+      Height = 716
       Margins.Left = 5
       Margins.Top = 5
       Margins.Right = 5
@@ -54,62 +54,10 @@ object FormGraph: TFormGraph
         FF00000000000000000000000000010A500072006F006A006500630074006900
         6F006E0000002D0000000000000000000000FFFFFFFFFFFFFFFF000000000000
         000000000000000107530070006C0069006E0065007300}
-    end
-  end
-  object PageControl: TPageControl
-    Left = 226
-    Top = 0
-    Width = 1012
-    Height = 758
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
-    Align = alClient
-    TabOrder = 1
-    object tsFxy: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Fxy'
-      TabVisible = False
-    end
-    object tsHeightField: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'HeightField'
-      ImageIndex = 1
-      TabVisible = False
-    end
-    object tsPoints: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Points'
-      ImageIndex = 2
-      TabVisible = False
-    end
-    object tsProjection: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Projection'
-      ImageIndex = 3
-      TabVisible = False
-    end
-    object tsSplines: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Splines'
-      ImageIndex = 4
-      TabVisible = False
+      ExplicitLeft = 2
+      ExplicitTop = 2
+      ExplicitWidth = 222
+      ExplicitHeight = 714
     end
   end
   object MainMenu: TMainMenu

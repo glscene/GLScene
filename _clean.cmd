@@ -2,7 +2,7 @@
 del *.exe /s  
 del *.scr /s
 del *.xml /s
-del *.res /s
+rem del *.res /s
 
 @echo off delete delphi units but not packages
 del *.bpl /s

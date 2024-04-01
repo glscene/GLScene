@@ -1532,14 +1532,21 @@ begin
     begin
       CurPols.Add(GetChunkClass(CurId, TLWChunk).Create);
 
+{$IFDEF WIN32}
       CurPols[CurPols.Count - 1].FID := CurId;
+{$ELSE}
+//      CurPols[CurPols.Count - 1].FID := CurId;
+{$ENDIF}
       LoadFromStream(AStream);
     end
     else if (CurId = ID_VMAP) or (CurId = ID_VMAD) then
     begin
       CurPnts.Add(GetChunkClass(CurId, TLWChunk).Create);
-
+{$IFDEF WIN32}
       CurPnts[CurPnts.Count - 1].FID := CurId;
+{$ELSE}
+//      CurPnts[CurPnts.Count - 1].FID := CurId;
+{$ENDIF}
       LoadFromStream(AStream);
     end
     else
@@ -1548,8 +1555,11 @@ begin
         (CurId = ID_CLIP) then
         CurItems := Chunks;
       CurItems.Add(GetChunkClass(CurId, TLWChunk).Create);
-
+{$IFDEF WIN32}
       CurItems[CurItems.Count - 1].FID := CurId;
+{$ELSE}
+//      CurItems[CurItems.Count - 1].FID := CurId;
+{$ENDIF}
       LoadFromStream(AStream);
     end;
 
@@ -1939,7 +1949,11 @@ begin
   begin
     AStream.Read(CurId, 4);
     Items.Add(GetChunkClass(CurId, TLWSubChunk).Create);
-    with Items[Items.Count - 1] do
+{$IFDEF WIN32}
+     with Items[Items.Count - 1] do
+{$ELSE}
+///    with Items[Items.Count - 1] do
+{$ENDIF}
     begin
       FID := CurId;
       LoadFromStream(AStream);
@@ -2342,16 +2356,16 @@ begin
 
     Items.Add(GetChunkClass(CurId, TLWSubChunk).Create);
 
-    with Items[Items.Count - 1] do
+{$IFDEF WIN32}
+     with Items[Items.Count - 1] do
+{$ELSE}
+///    with Items[Items.Count - 1] do
+{$ENDIF}
     begin
-
       FID := CurId;
       LoadFromStream(AStream);
-
     end;
-
   end;
-
 end;
 
 // TLWContentDir
@@ -2425,36 +2439,31 @@ begin
   SubDirs.Assign(Value);
 end;
 
+//--------------------------------------------------------------------------
 initialization
+//--------------------------------------------------------------------------
 
 // Pnts
 RegisterChunkClass(TLWPnts);
-
 // Pols
 RegisterChunkClass(TLWPols);
-
 // VMap
 RegisterChunkClass(TLWVMap);
-
 // Tags
 RegisterChunkClass(TLWTags);
-
 // PTAG
 RegisterChunkClass(TLWPTag);
-
 // SURF
 RegisterChunkClass(TLWSurf);
-
 // LAYR
 RegisterChunkClass(TLWLayr);
-
 // CLIP
 RegisterChunkClass(TLWClip);
 
 finalization
 
-// UnRegisterChunkClasses;
-FreeAndNil(ChunkClasses);
-FreeAndNil(ContentDir);
+  // UnRegisterChunkClasses;
+  FreeAndNil(ChunkClasses);
+  FreeAndNil(ContentDir);
 
 end.

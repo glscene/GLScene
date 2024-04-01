@@ -17,7 +17,6 @@ object FormGraph: TFormGraph
   Menu = MainMenu
   Position = poScreenCenter
   OnCreate = FormCreate
-  OnShow = FormShow
   PixelsPerInch = 168
   TextHeight = 30
   object PanelLeft: TPanel
@@ -31,7 +30,6 @@ object FormGraph: TFormGraph
     Margins.Bottom = 5
     Align = alLeft
     TabOrder = 0
-    ExplicitHeight = 952
     object tvGraph: TTreeView
       Left = 1
       Top = 1
@@ -55,64 +53,6 @@ object FormGraph: TFormGraph
         FF00000000000000000000000000010A500072006F006A006500630074006900
         6F006E0000002D0000000000000000000000FFFFFFFFFFFFFFFF000000000000
         000000000000000107530070006C0069006E0065007300}
-      ExplicitHeight = 950
-    end
-  end
-  object PageControl: TPageControl
-    Left = 226
-    Top = 0
-    Width = 927
-    Height = 721
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
-    ActivePage = tsProjection
-    Align = alClient
-    TabOrder = 1
-    object tsFxy: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Fxy'
-      TabVisible = False
-    end
-    object tsHeightField: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'HeightField'
-      ImageIndex = 1
-      TabVisible = False
-    end
-    object tsPoints: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Points'
-      ImageIndex = 2
-      TabVisible = False
-    end
-    object tsProjection: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Projection'
-      ImageIndex = 3
-      TabVisible = False
-    end
-    object tsSplines: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Caption = 'Splines'
-      ImageIndex = 4
-      TabVisible = False
     end
   end
   object MainMenu: TMainMenu

@@ -47,7 +47,7 @@ implementation
 procedure TFormMovements.FormCreate(Sender: TObject);
 begin
   PageControl.ActivePage := tsMovements;
-  tvMovements.Select(tvMovements.Items[0]);  // goto to column 4
+  tvMovements.Select(tvMovements.Items[0]);  // goto to column 0
   tvMovementsClick(Sender);
 end;
 
