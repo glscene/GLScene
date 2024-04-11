@@ -9,6 +9,7 @@
         <FrameworkType>VCL</FrameworkType>
         <ProjectVersion>20.1</ProjectVersion>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <ProjectName Condition="'$(ProjectName)'==''">CgTextureD</ProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -128,8 +129,6 @@
         <DCCReference Include="fCgTextureD.pas">
             <Form>FormCgTexture</Form>
         </DCCReference>
-        <None Include="..\..\..\Assets\Shader\cg_texture_fp.cg"/>
-        <None Include="..\..\..\Assets\Shader\cg_texture_vp.cg"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -169,6 +168,12 @@
                 <DeployFile LocalName="..\..\..\Assets\Shader\cg_texture_fp.cg" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile LocalName="..\..\..\Assets\Shader\cg_texture_vp.cg" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile LocalName="CgTextureD.exe" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="CgTextureD.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>CgTextureD.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Win64\Debug\CgTextureD.exe" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">
@@ -824,6 +829,9 @@
                     <Platform Name="Win64">
                         <Operation>1</Operation>
                     </Platform>
+                    <Platform Name="Win64x">
+                        <Operation>1</Operation>
+                    </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectiOSDeviceDebug">
                     <Platform Name="iOSDevice32">
@@ -1117,6 +1125,7 @@
                 <ProjectRoot Platform="OSXARM64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="Win64x" Name="$(PROJECTNAME)"/>
             </Deployment>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>

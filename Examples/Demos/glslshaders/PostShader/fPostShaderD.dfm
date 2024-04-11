@@ -1,47 +1,64 @@
 object FormPostShader: TFormPostShader
   Left = 261
   Top = 176
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'GLSL Post Shader'
-  ClientHeight = 552
-  ClientWidth = 785
+  ClientHeight = 966
+  ClientWidth = 1388
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 562
-    Height = 523
+    Width = 998
+    Height = 915
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = Camera
     Buffer.BackgroundColor = clBackground
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aaNone
     Buffer.DepthPrecision = dp24bits
     Buffer.ColorDepth = cd24bits
-    FieldOfView = 152.082229614257800000
+    FieldOfView = 163.827468872070300000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object Panel1: TPanel
     Left = 0
-    Top = 523
-    Width = 785
-    Height = 29
+    Top = 915
+    Width = 1388
+    Height = 51
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alBottom
     TabOrder = 1
     object LightMovingCheckBox: TCheckBox
-      Left = 8
-      Top = 8
-      Width = 97
-      Height = 17
+      Left = 14
+      Top = 14
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Light is Moving'
       Checked = True
       Color = clBtnFace
@@ -50,10 +67,14 @@ object FormPostShader: TFormPostShader
       TabOrder = 0
     end
     object TurnPitchrollCheckBox: TCheckBox
-      Left = 112
-      Top = 8
-      Width = 137
-      Height = 17
+      Left = 196
+      Top = 14
+      Width = 240
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Turn-Pitch-Roll Enabled'
       Checked = True
       State = cbChecked
@@ -61,521 +82,728 @@ object FormPostShader: TFormPostShader
     end
   end
   object Panel2: TPanel
-    Left = 562
+    Left = 998
     Top = 0
-    Width = 223
-    Height = 523
+    Width = 390
+    Height = 915
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alRight
     TabOrder = 2
     object Label1: TLabel
-      Left = 16
-      Top = 8
-      Width = 42
-      Height = 13
+      Left = 28
+      Top = 14
+      Width = 75
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Shaders:'
     end
     object Label2: TLabel
-      Left = 19
-      Top = 139
-      Width = 48
-      Height = 13
+      Left = 33
+      Top = 243
+      Width = 87
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Blur Value'
     end
     object lblBlurValue: TLabel
-      Left = 201
-      Top = 139
-      Width = 15
-      Height = 13
+      Left = 352
+      Top = 243
+      Width = 25
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '0.0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 19
-      Top = 172
-      Width = 88
-      Height = 13
+      Left = 33
+      Top = 301
+      Width = 161
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Thermal Threshold'
     end
     object lblThermalThreshold: TLabel
-      Left = 201
-      Top = 172
-      Width = 15
-      Height = 13
+      Left = 352
+      Top = 301
+      Width = 25
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '0.0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 19
-      Top = 206
-      Width = 80
-      Height = 13
+      Left = 33
+      Top = 361
+      Width = 142
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Thermal Intensity'
     end
     object lblThermalIntensity: TLabel
-      Left = 201
-      Top = 206
-      Width = 15
-      Height = 13
+      Left = 352
+      Top = 361
+      Width = 25
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '0.0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 19
-      Top = 274
-      Width = 75
-      Height = 13
+      Left = 33
+      Top = 480
+      Width = 135
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Night Threshold'
     end
     object lblNight: TLabel
-      Left = 201
-      Top = 274
-      Width = 15
-      Height = 13
+      Left = 352
+      Top = 480
+      Width = 25
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '0.0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label6: TLabel
-      Left = 19
-      Top = 308
-      Width = 87
-      Height = 13
+      Left = 33
+      Top = 539
+      Width = 155
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Night Amplification'
     end
     object lblNightAmplification: TLabel
-      Left = 201
-      Top = 308
-      Width = 15
-      Height = 13
+      Left = 352
+      Top = 539
+      Width = 25
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '0.0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label7: TLabel
-      Left = 19
-      Top = 240
-      Width = 81
-      Height = 13
+      Left = 33
+      Top = 420
+      Width = 147
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Dream Threshold'
     end
     object lblDreamThreshold: TLabel
-      Left = 201
-      Top = 240
-      Width = 15
-      Height = 13
+      Left = 352
+      Top = 420
+      Width = 25
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '0.0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label8: TLabel
-      Left = 19
-      Top = 342
-      Width = 68
-      Height = 13
+      Left = 33
+      Top = 599
+      Width = 119
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Pixelate Width'
     end
     object lblPixelateWidth: TLabel
-      Left = 201
-      Top = 342
-      Width = 6
-      Height = 13
+      Left = 352
+      Top = 599
+      Width = 10
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '1'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label9: TLabel
-      Left = 19
-      Top = 376
-      Width = 71
-      Height = 13
+      Left = 33
+      Top = 658
+      Width = 126
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Pixelate Height'
     end
     object lblPixelateHeight: TLabel
-      Left = 201
-      Top = 376
-      Width = 6
-      Height = 13
+      Left = 352
+      Top = 658
+      Width = 10
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '1'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label10: TLabel
-      Left = 19
-      Top = 410
-      Width = 82
-      Height = 13
+      Left = 33
+      Top = 718
+      Width = 148
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Posterize Gamma'
     end
     object lblPosterizeGamma: TLabel
-      Left = 201
-      Top = 410
-      Width = 15
-      Height = 13
+      Left = 352
+      Top = 718
+      Width = 25
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '0.0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label12: TLabel
-      Left = 19
-      Top = 444
-      Width = 83
-      Height = 13
+      Left = 33
+      Top = 777
+      Width = 150
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Posterize NColors'
     end
     object lblPosterizeColors: TLabel
-      Left = 201
-      Top = 444
-      Width = 15
-      Height = 13
+      Left = 352
+      Top = 777
+      Width = 25
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '0.0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label11: TLabel
-      Left = 19
-      Top = 478
-      Width = 55
-      Height = 13
+      Left = 33
+      Top = 837
+      Width = 97
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Frost Rand '
     end
     object lblFrostRand: TLabel
-      Left = 201
-      Top = 478
-      Width = 15
-      Height = 13
+      Left = 352
+      Top = 837
+      Width = 25
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '0.0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label14: TLabel
-      Left = 6
-      Top = 557
-      Width = 56
-      Height = 13
+      Left = 11
+      Top = 975
+      Width = 100
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Frost Factor'
     end
     object lblFrostFactor: TLabel
-      Left = 188
-      Top = 557
-      Width = 15
-      Height = 13
+      Left = 329
+      Top = 975
+      Width = 25
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '0.0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label13: TLabel
-      Left = 6
-      Top = 601
-      Width = 67
-      Height = 13
+      Left = 11
+      Top = 1052
+      Width = 119
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Trouble Width'
     end
     object lblTroubleWidth: TLabel
-      Left = 188
-      Top = 601
-      Width = 15
-      Height = 13
+      Left = 329
+      Top = 1052
+      Width = 25
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '0.0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label16: TLabel
-      Left = 6
-      Top = 640
-      Width = 70
-      Height = 13
+      Left = 11
+      Top = 1120
+      Width = 126
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Trouble Height'
     end
     object lblTroubleHeight: TLabel
-      Left = 188
-      Top = 640
-      Width = 15
-      Height = 13
+      Left = 329
+      Top = 1120
+      Width = 25
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '0.0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label18: TLabel
-      Left = 6
-      Top = 679
-      Width = 60
-      Height = 13
+      Left = 11
+      Top = 1188
+      Width = 111
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Trouble Freq'
     end
     object lblTroubleFreq: TLabel
-      Left = 188
-      Top = 679
-      Width = 15
-      Height = 13
+      Left = 329
+      Top = 1188
+      Width = 25
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '0.0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object ShaderCheckListBox: TCheckListBox
-      Left = 8
-      Top = 24
-      Width = 207
-      Height = 98
-      ItemHeight = 13
+      Left = 14
+      Top = 42
+      Width = 362
+      Height = 172
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
+      ItemHeight = 30
       TabOrder = 0
       OnClick = ShaderCheckListBoxClick
       OnClickCheck = ShaderCheckListBoxClick
     end
     object tbBlurValue: TTrackBar
-      Left = 104
-      Top = 135
-      Width = 97
-      Height = 27
+      Left = 182
+      Top = 236
+      Width = 170
+      Height = 48
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 100
       Min = 1
       PageSize = 1
       Position = 1
       TabOrder = 1
+      ThumbLength = 35
       TickStyle = tsNone
       OnChange = tbBlurValueChange
     end
     object tbThermalThreshold: TTrackBar
-      Left = 104
-      Top = 170
-      Width = 97
-      Height = 26
+      Left = 182
+      Top = 298
+      Width = 170
+      Height = 45
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 100
       Min = 1
       PageSize = 1
       Position = 1
       TabOrder = 2
+      ThumbLength = 35
       TickStyle = tsNone
       OnChange = tbThermalThresholdChange
     end
     object tbThermalIntensity: TTrackBar
-      Left = 104
-      Top = 203
-      Width = 97
-      Height = 27
+      Left = 182
+      Top = 355
+      Width = 170
+      Height = 48
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 100
       Min = 1
       PageSize = 1
       Position = 1
       TabOrder = 3
+      ThumbLength = 35
       TickStyle = tsNone
       OnChange = tbThermalIntensityChange
     end
     object tblNightThreshold: TTrackBar
-      Left = 104
-      Top = 272
-      Width = 97
-      Height = 27
+      Left = 182
+      Top = 476
+      Width = 170
+      Height = 47
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 100
       Min = 1
       PageSize = 1
       Position = 1
       TabOrder = 4
+      ThumbLength = 35
       TickStyle = tsNone
       OnChange = tblNightThresholdChange
     end
     object tbNightAmplification: TTrackBar
-      Left = 104
-      Top = 306
-      Width = 97
-      Height = 28
+      Left = 182
+      Top = 536
+      Width = 170
+      Height = 49
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 1000
       Min = 1
       PageSize = 1
       Position = 1
       TabOrder = 5
+      ThumbLength = 35
       TickStyle = tsNone
       OnChange = tbNightAmplificationChange
     end
     object tbDreamThreshold: TTrackBar
-      Left = 104
-      Top = 238
-      Width = 97
-      Height = 26
+      Left = 182
+      Top = 417
+      Width = 170
+      Height = 45
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 200
       Min = 1
       PageSize = 1
       Position = 1
       TabOrder = 6
+      ThumbLength = 35
       TickStyle = tsNone
       OnChange = tbDreamThresholdChange
     end
     object tbPixelateWidth: TTrackBar
-      Left = 104
-      Top = 340
-      Width = 97
-      Height = 27
+      Left = 182
+      Top = 595
+      Width = 170
+      Height = 47
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 64
       Min = 1
       PageSize = 1
       Position = 1
       TabOrder = 7
+      ThumbLength = 35
       TickStyle = tsNone
       OnChange = tbPixelateWidthChange
     end
     object tbPixelateHeight: TTrackBar
-      Left = 104
-      Top = 374
-      Width = 97
-      Height = 28
+      Left = 182
+      Top = 655
+      Width = 170
+      Height = 49
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 64
       Min = 1
       PageSize = 1
       Position = 1
       TabOrder = 8
+      ThumbLength = 35
       TickStyle = tsNone
       OnChange = tbPixelateHeightChange
     end
     object tbPosterizeGamma: TTrackBar
-      Left = 104
-      Top = 410
-      Width = 97
-      Height = 26
+      Left = 182
+      Top = 718
+      Width = 170
+      Height = 45
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 300
       Min = 1
       PageSize = 1
       Position = 1
       TabOrder = 9
+      ThumbLength = 35
       TickStyle = tsNone
       OnChange = tbPosterizeGammaChange
     end
     object tbPosterizeColors: TTrackBar
-      Left = 104
-      Top = 443
-      Width = 97
-      Height = 27
+      Left = 182
+      Top = 775
+      Width = 170
+      Height = 48
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 255
       Min = 1
       PageSize = 1
       Position = 1
       TabOrder = 10
+      ThumbLength = 35
       TickStyle = tsNone
       OnChange = tbPosterizeColorsChange
     end
     object tbFrostRand: TTrackBar
-      Left = 104
-      Top = 478
-      Width = 97
-      Height = 26
+      Left = 182
+      Top = 837
+      Width = 170
+      Height = 45
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 500
       Min = 10
       PageSize = 1
       Position = 10
       TabOrder = 11
+      ThumbLength = 35
       TickStyle = tsNone
       OnChange = tbFrostRandChange
     end
     object tbFrostFactor: TTrackBar
-      Left = 91
-      Top = 557
-      Width = 97
-      Height = 27
+      Left = 159
+      Top = 975
+      Width = 170
+      Height = 47
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 250
       Min = 1
       PageSize = 1
       Position = 1
       TabOrder = 12
+      ThumbLength = 35
       TickStyle = tsNone
       OnChange = tbFrostFactorChange
     end
     object tbTroubleWidth: TTrackBar
-      Left = 91
-      Top = 601
-      Width = 91
-      Height = 27
+      Left = 159
+      Top = 1052
+      Width = 160
+      Height = 47
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 64
       Min = 1
       PageSize = 1
       Position = 1
       TabOrder = 13
+      ThumbLength = 35
       TickStyle = tsNone
       OnChange = tbTroubleWidthChange
     end
     object tbTroubleHeight: TTrackBar
-      Left = 91
-      Top = 634
-      Width = 91
-      Height = 27
+      Left = 159
+      Top = 1110
+      Width = 160
+      Height = 47
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 64
       Min = 1
       PageSize = 1
       Position = 1
       TabOrder = 14
+      ThumbLength = 35
       TickStyle = tsNone
       OnChange = tbTroubleHeightChange
     end
     object tbTroubleFreq: TTrackBar
-      Left = 83
-      Top = 679
-      Width = 99
-      Height = 27
+      Left = 145
+      Top = 1188
+      Width = 174
+      Height = 48
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 300
       Min = 1
       PageSize = 1
       Position = 1
       TabOrder = 15
+      ThumbLength = 35
       TickStyle = tsNone
       OnChange = tbTroubleFreqChange
     end

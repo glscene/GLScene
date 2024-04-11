@@ -14,6 +14,8 @@ uses
   Vcl.Forms,
   Vcl.ExtCtrls,
   Vcl.Imaging.Jpeg,
+  Vcl.Menus,
+  Vcl.ComCtrls,
 
   GLS.VectorTypes,
   GLS.VectorGeometry,
@@ -33,14 +35,14 @@ uses
   GLS.Context,
   GLS.TextureFormat,
   GLSL.TextureShaders,
-  GLS.BaseClasses, Vcl.Menus, Vcl.ComCtrls;
+  GLS.BaseClasses;
 
 type
   TFormEarth = class(TForm)
     GLScene: TGLScene;
     GLSceneViewer: TGLSceneViewer;
     Camera: TGLCamera;
-    SphereEarth: TGLSphere;
+    sfPlanet: TGLSphere;
     LightSourceSun: TGLLightSource;
     DirectOpenGL: TGLDirectOpenGL;
     GLCadencer: TGLCadencer;
@@ -73,6 +75,8 @@ type
     About1: TMenuItem;
     PanelLeft: TPanel;
     tvPlanets: TTreeView;
+    miConstLines: TMenuItem;
+    miConstBoundaries: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure DirectOpenGLRender(Sender: TObject; var rci: TGLRenderContextInfo);
     procedure TimerTimer(Sender: TObject);
@@ -86,6 +90,9 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure GLSceneViewerBeforeRender(Sender: TObject);
     procedure Exit1Click(Sender: TObject);
+    procedure tvPlanetsClick(Sender: TObject);
+    procedure miConstLinesClick(Sender: TObject);
+    procedure miConstBoundariesClick(Sender: TObject);
   public
     ConstellationsAlpha: Single;
     TimeMultiplier: Single;
@@ -96,8 +103,7 @@ type
     sunPos, eyePos, lightingVector: TGLVector;
     diskNormal, diskRight, diskUp: TGLVector;
   private
-    Path: TFileName;
-    function LonLatToPos(lon, lat: Single): TAffineVector;
+    FileName, Path: TFileName;
     procedure LoadConstellationLines;
     function AtmosphereColor(const rayStart, rayEnd: TGLVector): TGLColorVector;
     function ComputeColor(var rayDest: TGLVector; mayHitGround: Boolean): TGLColorVector;
@@ -124,10 +130,10 @@ implementation
 {$R *.dfm}
 
 procedure TFormEarth.FormCreate(Sender: TObject);
-var
-  FileName: TFileName;
 begin
   Path := GetCurrentAssetPath();
+
+  // dir for star catalog
   SetCurrentDir(Path + '\data');
   FileName := 'Yale_BSC.stars';
   SkyDome.Bands.Clear;
@@ -135,6 +141,11 @@ begin
     SkyDome.Stars.LoadStarsFile(FileName);
   LoadConstellationLines;
   TimeMultiplier := 1;
+
+  tvPlanets.Select(tvPlanets.Items[3]);
+  tvPlanets.FullExpand;
+  // dir for maps of planets
+  SetCurrentDir(Path + '\map');
 end;
 
 //--------------------------------------------------------------------------------
@@ -320,16 +331,6 @@ end;
 
 //--------------------------------------------------------------------------------
 
-function TFormEarth.LonLatToPos(lon, lat: Single): TAffineVector;
-var
-  f: Single;
-begin
-  SinCosine(lat * (PI / 180), Result.Y, f);
-  SinCosine(lon * (360 / 24 * PI / 180), f, Result.X, Result.Z);
-end;
-
-//--------------------------------------------------------------------------------
-
 procedure TFormEarth.LoadConstellationLines;
 var
   sl, line: TStrings;
@@ -352,12 +353,110 @@ begin
   line.Free;
 end;
 
-//--------------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+procedure TFormEarth.miConstLinesClick(Sender: TObject);
+begin
+  ConstellationsAlpha := 0.5 - ConstellationsAlpha;
+end;
+
+procedure TFormEarth.miConstBoundariesClick(Sender: TObject);
+begin
+  //
+end;
+
+
+//-----------------------------------------------------------------------------
 
 procedure TFormEarth.TimerTimer(Sender: TObject);
 begin
   Caption := Format('Earth ' + '%.1f FPS', [GLSceneViewer.FramesPerSecond]);
   GLSceneViewer.ResetPerformanceMonitor;
+end;
+
+//---------------------------------------------------------------------------
+procedure TFormEarth.tvPlanetsClick(Sender: TObject);
+begin
+  case tvPlanets.Selected.Index of
+     0: begin
+          sfPlanet.Material.Texture.Image.LoadFromFile('sun.jpg');
+          sfPlanet.Radius := 12000;
+        end;
+     1: begin
+          sfPlanet.Material.Texture.Image.LoadFromFile('mercury.jpg');
+          sfPlanet.Radius := 2440;
+        end;
+     2: begin
+          sfPlanet.Material.Texture.Image.LoadFromFile('venus.jpg');
+          sfPlanet.Radius := 6052;
+        end;
+     3: begin
+          sfPlanet.Material.Texture.Image.LoadFromFile('earth.jpg');
+          sfPlanet.Radius := 6371;
+        end;
+     4: begin
+          sfPlanet.Material.Texture.Image.LoadFromFile('moon.jpg');
+          sfPlanet.Radius := 1371;
+        end;
+     5: begin
+          sfPlanet.Material.Texture.Image.LoadFromFile('mars.jpg');
+          sfPlanet.Radius := 3390;
+        end;
+     6: begin
+          sfPlanet.Material.Texture.Image.LoadFromFile('demos.jpg');
+          sfPlanet.Radius := 250;
+        end;
+     7: begin
+          sfPlanet.Material.Texture.Image.LoadFromFile('phobos.jpg');
+          sfPlanet.Radius := 250;
+        end;
+     8: begin
+          sfPlanet.Material.Texture.Image.LoadFromFile('jupiter.jpg');
+          sfPlanet.Radius := 10000; //
+        end;
+     9: begin
+          // Io as jupiter's child Camera.ToTarget;
+          sfPlanet.Material.Texture.Image.LoadFromFile('io.jpg');
+          sfPlanet.Radius := 10000;
+        end;
+     10: begin
+          // Europa as jupiter's child Camera.ToTarget;
+          sfPlanet.Material.Texture.Image.LoadFromFile('europa.jpg');
+          sfPlanet.Radius := 10000;
+        end;
+     11: begin
+          // Callisto as jupiter's child Camera.ToTarget;
+          sfPlanet.Material.Texture.Image.LoadFromFile('callisto.jpg');
+          sfPlanet.Radius := 10000;
+        end;
+     12: begin
+          // Ganimede as jupiter's child Camera.ToTarget;
+          sfPlanet.Material.Texture.Image.LoadFromFile('ganimede.jpg');
+          sfPlanet.Radius := 10000; //
+        end;
+     13: begin
+          sfPlanet.Material.Texture.Image.LoadFromFile('saturn.jpg');
+          sfPlanet.Radius := 9500; //
+          // add Titan and Enceladus as childs
+        end;
+     14: begin
+          sfPlanet.Material.Texture.Image.LoadFromFile('uranus.jpg');
+          sfPlanet.Radius := 7500; // 3390;
+        end;
+     15: begin
+          sfPlanet.Material.Texture.Image.LoadFromFile('neptune.jpg');
+          sfPlanet.Radius := 8000; //24622;
+        end;
+     16: begin
+          sfPlanet.Material.Texture.Image.LoadFromFile('pluto.jpg');
+          sfPlanet.Radius := 2377;
+        end;
+     17: begin
+          // add Charon as child
+          sfPlanet.Material.Texture.Image.LoadFromFile('charon.jpg');
+          sfPlanet.Radius := 1000;
+        end;
+  end;
+
 end;
 
 //--------------------------------------------------------------------------------
@@ -369,7 +468,7 @@ procedure TFormEarth.GLCadencerProgress(Sender: TObject; const deltaTime, newTim
 begin
   // d := GMTDateTimeToJulianDay(Now-2+newTime*timeMultiplier);
   // make earth rotate
-  SphereEarth.TurnAngle := SphereEarth.TurnAngle + deltaTime * TimeMultiplier;
+  sfPlanet.TurnAngle := sfPlanet.TurnAngle + deltaTime * TimeMultiplier;
   { p := ComputePlanetPosition(cSunOrbitalElements, d);
     ScaleVector(p, 0.5*cAUToKilometers*(1/cEarthRadius));
     LSSun.Position.AsAffineVector:=p; }
@@ -498,7 +597,6 @@ begin
       begin
         GLSceneViewer.Cursor := crHourGlass;
         try
-          SetCurrentDir(Path + '\map');
           with GLMatLib do
           begin
             LoadHighResTexture(Materials[0], 'land_ocean_ice_4096.jpg');

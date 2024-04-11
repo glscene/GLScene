@@ -105,8 +105,8 @@ begin
   MaterialLibrary.LibMaterialByName('WasteSkin').Material.Texture.Image.LoadFromFile('waste.jpg');
 
   // Then load textures.
-  SetCurrentDir(Path  + '\texture');
-  MaterialLibrary.LibMaterialByName('Earth').Material.Texture.Image.LoadFromFile('Earth.jpg');
+  SetCurrentDir(Path  + '\map');
+  MaterialLibrary.LibMaterialByName('Earth').Material.Texture.Image.LoadFromFile('earth.jpg');
 
   // Loading scripts from shader directory
   SetCurrentDir(Path  + '\shader');

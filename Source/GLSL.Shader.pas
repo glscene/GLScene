@@ -3,7 +3,7 @@
 //
 unit GLSL.Shader;
 
-(* TGLSLShader is a wrapper for GLS shaders. *)
+(* TGLSLShader is a wrapper for GLS shaders *)
 
 interface
 
@@ -447,8 +447,8 @@ begin
   SetTex(TexParamName, Mat.Material.Texture);
 end;
 
-{ TGLSLShaderParameter }
-
+// TGLSLShaderParameter
+//
 function TGLSLShaderParameter.GetAsCustomTexture(
   const TextureIndex: Integer; TextureTarget: TGLTextureTarget): Cardinal;
 begin

@@ -62,8 +62,8 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   Fighter->Scale->Scale(3);
 
   // Then load textures.
-  SetCurrentDir(Path  + "\\texture");
-  MaterialLibrary->LibMaterialByName("Earth")->Material->Texture->Image->LoadFromFile("Earth.jpg");
+  SetCurrentDir(Path  + "\\map");
+  MaterialLibrary->LibMaterialByName("Earth")->Material->Texture->Image->LoadFromFile("earth.jpg");
  }
 
 //---------------------------------------------------------------------------

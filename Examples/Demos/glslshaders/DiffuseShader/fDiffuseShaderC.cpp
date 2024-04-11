@@ -59,7 +59,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   Sphere_little->Scale->Scale(4);
 
   // Then load textures
-  SetCurrentDir(Path + "\\texture");
+  SetCurrentDir(Path + "\\map");
   MaterialLibrary->LibMaterialByName("Earth")->Material->Texture->Image->LoadFromFile("Earth.jpg");
   MaterialLibrary->LibMaterialByName("Earth")->Shader = DiffuseSpecularShader;
 

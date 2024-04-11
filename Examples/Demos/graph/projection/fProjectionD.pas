@@ -4,8 +4,6 @@ interface
 
 uses
   Winapi.OpenGL,
-  Winapi.OpenGLext,
-
   System.SysUtils,
   System.Classes,
   System.Types,
@@ -18,15 +16,13 @@ uses
   GLS.Texture,
   GLS.VectorGeometry,
   GLS.VectorLists,
-  GLS.GeomObjects,
   GLS.RenderContextInfo,
   GLS.State,
   GLS.VectorTypes,
-  GLS.Graph,
   GLS.Coordinates,
-  GLS.Color,
-
-  GLS.BaseClasses;
+  GLS.BaseClasses,
+  GLS.GeomObjects,
+  GLS.Graph;
 
 type
   TFormProjection = class(TForm)

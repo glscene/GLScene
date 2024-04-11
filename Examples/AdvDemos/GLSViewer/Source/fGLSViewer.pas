@@ -229,6 +229,8 @@ type
     Tetrahedron: TGLTetrahedron;
     SuperEllipsoid: TGLSuperEllipsoid;
 
+    Torus: TGLTorus;
+
     procedure DoResetCamera;
     procedure SetupFreeFormShading;
     procedure ApplyShadeModeToMaterial(aMaterial: TGLMaterial);
@@ -1138,12 +1140,11 @@ end;
 
 //---------------------------------------------------------------------------
 procedure TFormGLSViewer.tvSceneClick(Sender: TObject);
-var
-  ObjectName: String;
 
 begin
   dcObject.DeleteChildren;
-  ObjectName := tvScene.Selected.Text;
+  if tvScene.Selected.Text = 'Cube' then; // another choice
+
   case tvScene.Selected.SelectedIndex of
     4: //Points
     begin
@@ -1165,16 +1166,16 @@ begin
       Polygon := TGLPolygon.CreateAsChild(dcObject);
       Polygon.Material.FrontProperties.Diffuse.RandomColor();
     end;
-    8: // GLCube
+    8: // Cube
     begin
       Cube := TGLCube.CreateAsChild(dcObject);
-      // Cube.Position.SetPoint(0, 0, 0);
+      Cube.Position.SetPoint(0, 0, Random(3));
       Cube.Material.FrontProperties.Diffuse.RandomColor();
     end;
     9: // Frustrum
     begin
       Frustrum := TGLFrustrum.CreateAsChild(dcObject);
-      // Frustrum.Position.SetPoint(0, 0, 0);
+      Frustrum.Position.SetPoint(0, 0, Random(3));
       // Frustrum.Material.FrontProperties.Diffuse.Color := clrBlue;
       Frustrum.Material.FrontProperties.Diffuse.RandomColor();
       //;
@@ -1182,7 +1183,7 @@ begin
     10: // Sphere
     begin
       Sphere := TGLSphere.CreateAsChild(dcObject);
-      // Sphere.Position.SetPoint(0, 0, 0);
+      Sphere.Position.SetPoint(0, 0, Random(3));
       // Sphere.Material.FrontProperties.Diffuse.Color := clrBlue;
       Sphere.Material.FrontProperties.Diffuse.RandomColor();
     end;
@@ -1229,7 +1230,7 @@ begin
     19: // Tetrahedron
     begin
       Tetrahedron := TGLTetrahedron.CreateAsChild(dcObject);
-      Tetrahedron.Material.FrontProperties.Diffuse.Color := clrGreen;
+      Tetrahedron.Material.FrontProperties.Diffuse.RandomColor();
     end;
     20: // SuperEllipsoid
     begin
@@ -1237,6 +1238,11 @@ begin
       SuperEllipsoid.Material.FrontProperties.Diffuse.Color := clrTeal;
     end;
     //21...
+    29: // Torus
+    begin
+      Torus := TGLTorus.CreateAsChild(dcObject);
+      Torus.Material.FrontProperties.Diffuse.RandomColor();
+    end;
   end;
   //  and so on
 //  end;

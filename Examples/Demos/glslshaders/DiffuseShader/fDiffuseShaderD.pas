@@ -106,8 +106,8 @@ begin
   Sphere_little.Scale.Scale(4);
 
   // Loading textures
-  SetCurrentDir(Path + '\texture');
-  MaterialLibrary.LibMaterialByName('Earth').Material.Texture.Image.LoadFromFile('Earth.jpg');
+  SetCurrentDir(Path + '\map');
+  MaterialLibrary.LibMaterialByName('Earth').Material.Texture.Image.LoadFromFile('earth.jpg');
   MaterialLibrary.LibMaterialByName('Earth').Shader := DiffuseSpecularShader;
 
   // This is how a shader is created in runtime.

@@ -1,91 +1,127 @@
 object FormCgTexture: TFormCgTexture
   Left = 205
   Top = 112
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Cg Multi Texturing'
-  ClientHeight = 394
-  ClientWidth = 642
+  ClientHeight = 690
+  ClientWidth = 1138
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnMouseWheel = FormMouseWheel
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object Splitter1: TSplitter
-    Left = 313
+    Left = 548
     Top = 0
-    Height = 394
+    Width = 5
+    Height = 690
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Color = clBtnShadow
+    MinSize = 53
     ParentColor = False
-    ExplicitHeight = 321
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 313
-    Height = 394
+    Width = 548
+    Height = 690
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alLeft
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 0
-    ExplicitHeight = 321
     object PageControl1: TPageControl
       Left = 2
       Top = 2
-      Width = 309
-      Height = 390
+      Width = 544
+      Height = 686
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       ActivePage = TabSheet3
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitHeight = 317
       object TabSheet1: TTabSheet
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Caption = 'Vertex Program'
         object Splitter3: TSplitter
           Left = 0
-          Top = 269
-          Width = 301
-          Height = 3
+          Top = 471
+          Width = 527
+          Height = 5
           Cursor = crVSplit
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Align = alBottom
           Color = clBtnShadow
+          MinSize = 53
           ParentColor = False
-          ExplicitTop = 196
         end
         object Panel2: TPanel
           Left = 0
           Top = 0
-          Width = 301
-          Height = 25
+          Width = 527
+          Height = 44
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
           object LabelVertProfile: TLabel
-            Left = 88
-            Top = 5
-            Width = 63
-            Height = 13
+            Left = 154
+            Top = 9
+            Width = 111
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = 'Using profile:'
           end
           object CBVertexProgram: TCheckBox
-            Left = 6
-            Top = 4
-            Width = 59
-            Height = 17
+            Left = 11
+            Top = 7
+            Width = 103
+            Height = 30
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = 'Enabled'
             Checked = True
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
-            Font.Height = -11
+            Font.Height = -19
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
@@ -96,18 +132,25 @@ object FormCgTexture: TFormCgTexture
         end
         object Panel11: TPanel
           Left = 0
-          Top = 25
-          Width = 301
-          Height = 244
+          Top = 44
+          Width = 527
+          Height = 427
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Align = alClient
           Caption = 'Panel6'
           TabOrder = 1
-          ExplicitHeight = 171
           object Panel12: TPanel
-            Left = 1
-            Top = 1
-            Width = 299
-            Height = 16
+            Left = 2
+            Top = 2
+            Width = 523
+            Height = 28
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Align = alTop
             BevelOuter = bvNone
             Caption = 'Shader Code'
@@ -115,14 +158,18 @@ object FormCgTexture: TFormCgTexture
             TabOrder = 0
           end
           object MemoVertCode: TMemo
-            Left = 1
-            Top = 17
-            Width = 299
-            Height = 201
+            Left = 2
+            Top = 30
+            Width = 523
+            Height = 352
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Align = alClient
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
-            Font.Height = -11
+            Font.Height = -19
             Font.Name = 'Lucida Console'
             Font.Style = []
             ParentFont = False
@@ -130,64 +177,84 @@ object FormCgTexture: TFormCgTexture
             TabOrder = 1
             WordWrap = False
             OnChange = MemoVertCodeChange
-            ExplicitHeight = 128
           end
           object Panel13: TPanel
-            Left = 1
-            Top = 218
-            Width = 299
-            Height = 25
+            Left = 2
+            Top = 382
+            Width = 523
+            Height = 43
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 2
-            ExplicitTop = 145
             DesignSize = (
-              299
-              25)
+              534
+              43)
             object ButtonApplyVP: TButton
-              Left = 226
-              Top = 2
-              Width = 68
-              Height = 20
+              Left = 407
+              Top = 4
+              Width = 119
+              Height = 35
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
               Anchors = [akTop, akRight]
               Caption = 'Apply'
               Enabled = False
               TabOrder = 0
               OnClick = ButtonApplyVPClick
+              ExplicitLeft = 396
             end
           end
         end
         object Panel5: TPanel
           Left = 0
-          Top = 272
-          Width = 301
-          Height = 90
+          Top = 490
+          Width = 536
+          Height = 158
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Align = alBottom
           TabOrder = 2
-          ExplicitTop = 199
+          ExplicitTop = 476
+          ExplicitWidth = 527
           DesignSize = (
-            301
-            90)
+            536
+            158)
           object Label2: TLabel
-            Left = 228
-            Top = 5
-            Width = 30
-            Height = 13
+            Left = 408
+            Top = 9
+            Width = 53
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akTop, akRight]
             Caption = 'Show:'
-            ExplicitLeft = 230
+            ExplicitLeft = 399
           end
           object Memo1: TMemo
             Left = 1
             Top = 1
-            Width = 216
-            Height = 88
+            Width = 387
+            Height = 156
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Align = alLeft
             Anchors = [akLeft, akTop, akRight, akBottom]
             Color = clBtnFace
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
-            Font.Height = -9
+            Font.Height = -16
             Font.Name = 'Lucida Console'
             Font.Style = []
             ParentFont = False
@@ -195,63 +262,97 @@ object FormCgTexture: TFormCgTexture
             ScrollBars = ssBoth
             TabOrder = 0
             WordWrap = False
+            ExplicitLeft = 2
+            ExplicitTop = 2
+            ExplicitWidth = 378
+            ExplicitHeight = 154
           end
           object Button1: TButton
-            Left = 227
-            Top = 21
-            Width = 64
-            Height = 18
+            Left = 406
+            Top = 37
+            Width = 112
+            Height = 31
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akTop, akRight]
             Caption = 'Params'
             TabOrder = 1
             OnClick = Button1Click
+            ExplicitLeft = 397
           end
           object Button4: TButton
-            Left = 227
-            Top = 42
-            Width = 64
-            Height = 18
+            Left = 406
+            Top = 74
+            Width = 112
+            Height = 31
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akTop, akRight]
             Caption = 'Asm'
             TabOrder = 2
             OnClick = Button4Click
+            ExplicitLeft = 397
           end
         end
       end
       object TabSheet2: TTabSheet
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Caption = 'Fragment Program'
         ImageIndex = 1
         object Splitter2: TSplitter
           Left = 0
-          Top = 269
-          Width = 301
-          Height = 3
+          Top = 471
+          Width = 527
+          Height = 5
           Cursor = crVSplit
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Align = alBottom
           Color = clBtnShadow
+          MinSize = 53
           ParentColor = False
-          ExplicitTop = 196
         end
         object Panel4: TPanel
           Left = 0
           Top = 0
-          Width = 301
-          Height = 25
+          Width = 527
+          Height = 44
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
           object LabelFragProfile: TLabel
-            Left = 88
-            Top = 5
-            Width = 63
-            Height = 13
+            Left = 154
+            Top = 9
+            Width = 111
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = 'Using profile:'
           end
           object CBFragmentProgram: TCheckBox
-            Left = 6
-            Top = 4
-            Width = 67
-            Height = 17
+            Left = 11
+            Top = 7
+            Width = 117
+            Height = 30
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = 'Enabled'
             Checked = True
             State = cbChecked
@@ -261,18 +362,25 @@ object FormCgTexture: TFormCgTexture
         end
         object Panel6: TPanel
           Left = 0
-          Top = 25
-          Width = 301
-          Height = 244
+          Top = 44
+          Width = 527
+          Height = 427
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Align = alClient
           Caption = 'Panel6'
           TabOrder = 1
-          ExplicitHeight = 171
           object Panel7: TPanel
-            Left = 1
-            Top = 1
-            Width = 299
-            Height = 16
+            Left = 2
+            Top = 2
+            Width = 523
+            Height = 28
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Align = alTop
             BevelOuter = bvNone
             Caption = 'Shader Code'
@@ -280,14 +388,18 @@ object FormCgTexture: TFormCgTexture
             TabOrder = 0
           end
           object MemoFragCode: TMemo
-            Left = 1
-            Top = 17
-            Width = 299
-            Height = 201
+            Left = 2
+            Top = 30
+            Width = 523
+            Height = 352
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Align = alClient
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
-            Font.Height = -11
+            Font.Height = -19
             Font.Name = 'Lucida Console'
             Font.Style = []
             ParentFont = False
@@ -295,64 +407,84 @@ object FormCgTexture: TFormCgTexture
             TabOrder = 1
             WordWrap = False
             OnChange = MemoFragCodeChange
-            ExplicitHeight = 128
           end
           object Panel3: TPanel
-            Left = 1
-            Top = 218
-            Width = 299
-            Height = 25
+            Left = 2
+            Top = 382
+            Width = 523
+            Height = 43
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 2
-            ExplicitTop = 145
             DesignSize = (
-              299
-              25)
+              534
+              43)
             object ButtonApplyFP: TButton
-              Left = 226
-              Top = 2
-              Width = 68
-              Height = 20
+              Left = 407
+              Top = 4
+              Width = 119
+              Height = 35
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
               Anchors = [akTop, akRight]
               Caption = 'Apply'
               Enabled = False
               TabOrder = 0
               OnClick = ButtonApplyFPClick
+              ExplicitLeft = 396
             end
           end
         end
         object Panel8: TPanel
           Left = 0
-          Top = 272
-          Width = 301
-          Height = 90
+          Top = 490
+          Width = 536
+          Height = 158
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Align = alBottom
           TabOrder = 2
-          ExplicitTop = 199
+          ExplicitTop = 476
+          ExplicitWidth = 527
           DesignSize = (
-            301
-            90)
+            536
+            158)
           object Label1: TLabel
-            Left = 228
-            Top = 5
-            Width = 30
-            Height = 13
+            Left = 408
+            Top = 9
+            Width = 53
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akTop, akRight]
             Caption = 'Show:'
-            ExplicitLeft = 230
+            ExplicitLeft = 399
           end
           object Memo3: TMemo
             Left = 1
             Top = 1
-            Width = 216
-            Height = 88
+            Width = 387
+            Height = 156
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Align = alLeft
             Anchors = [akLeft, akTop, akRight, akBottom]
             Color = clBtnFace
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
-            Font.Height = -11
+            Font.Height = -19
             Font.Name = 'Courier New'
             Font.Style = []
             ParentFont = False
@@ -360,296 +492,422 @@ object FormCgTexture: TFormCgTexture
             ScrollBars = ssBoth
             TabOrder = 0
             WordWrap = False
+            ExplicitLeft = 2
+            ExplicitTop = 2
+            ExplicitWidth = 378
+            ExplicitHeight = 154
           end
           object Button2: TButton
-            Left = 227
-            Top = 21
-            Width = 64
-            Height = 18
+            Left = 406
+            Top = 37
+            Width = 112
+            Height = 31
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akTop, akRight]
             Caption = 'Params'
             TabOrder = 1
             OnClick = Button2Click
+            ExplicitLeft = 397
           end
           object Button3: TButton
-            Left = 227
-            Top = 42
-            Width = 64
-            Height = 18
+            Left = 406
+            Top = 74
+            Width = 112
+            Height = 31
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akTop, akRight]
             Caption = 'Asm'
             TabOrder = 2
             OnClick = Button3Click
+            ExplicitLeft = 397
           end
         end
       end
       object TabSheet3: TTabSheet
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Caption = 'Controls'
         ImageIndex = 2
         DesignSize = (
-          301
-          362)
+          536
+          648)
         object Label16: TLabel
-          Left = 8
-          Top = 272
-          Width = 282
-          Height = 13
+          Left = 14
+          Top = 476
+          Width = 490
+          Height = 23
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Caption = 'Note: NV2x class hardware may not honor negative values'
         end
         object GroupBox1: TGroupBox
-          Left = 8
-          Top = 40
-          Width = 281
-          Height = 105
+          Left = 14
+          Top = 70
+          Width = 501
+          Height = 184
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Anchors = [akLeft, akTop, akRight]
           Caption = ' TexCoord. Shifts '
           TabOrder = 0
           DesignSize = (
-            281
-            105)
+            501
+            184)
           object Label18: TLabel
-            Left = 64
-            Top = 86
-            Width = 193
-            Height = 13
+            Left = 112
+            Top = 151
+            Width = 347
+            Height = 22
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Alignment = taCenter
             Anchors = [akLeft, akTop, akRight]
             AutoSize = False
             Caption = '0'
-            ExplicitWidth = 195
+            ExplicitWidth = 338
           end
           object Label3: TLabel
-            Left = 16
-            Top = 24
-            Width = 27
-            Height = 13
+            Left = 28
+            Top = 42
+            Width = 46
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = 'Tex 0'
           end
           object Label4: TLabel
-            Left = 16
-            Top = 40
-            Width = 27
-            Height = 13
+            Left = 28
+            Top = 70
+            Width = 46
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = 'Tex 1'
           end
           object Label5: TLabel
-            Left = 16
-            Top = 56
-            Width = 27
-            Height = 13
+            Left = 28
+            Top = 98
+            Width = 46
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = 'Tex 2'
           end
           object Label6: TLabel
-            Left = 16
-            Top = 72
-            Width = 27
-            Height = 13
+            Left = 28
+            Top = 126
+            Width = 46
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = 'Tex 3'
           end
           object Label11: TLabel
-            Left = 32
-            Top = 24
-            Width = 3
-            Height = 13
+            Left = 56
+            Top = 42
+            Width = 6
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
           end
           object Label12: TLabel
-            Left = 56
-            Top = 86
-            Width = 10
-            Height = 13
+            Left = 98
+            Top = 151
+            Width = 17
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = '-1'
           end
           object Label14: TLabel
-            Left = 252
-            Top = 86
-            Width = 6
-            Height = 13
+            Left = 450
+            Top = 151
+            Width = 10
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akTop, akRight]
             Caption = '1'
-            ExplicitLeft = 254
+            ExplicitLeft = 441
           end
           object TrackBar1: TTrackBar
-            Left = 56
-            Top = 24
-            Width = 207
-            Height = 15
+            Left = 98
+            Top = 42
+            Width = 371
+            Height = 26
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akLeft, akTop, akRight]
             Max = 100
             Position = 50
             TabOrder = 0
-            ThumbLength = 12
+            ThumbLength = 21
             TickMarks = tmBoth
             TickStyle = tsNone
           end
           object TrackBar2: TTrackBar
-            Left = 56
-            Top = 40
-            Width = 207
-            Height = 15
+            Left = 98
+            Top = 70
+            Width = 371
+            Height = 26
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akLeft, akTop, akRight]
             Max = 100
             Position = 50
             TabOrder = 1
-            ThumbLength = 12
+            ThumbLength = 21
             TickMarks = tmBoth
             TickStyle = tsNone
           end
           object TrackBar3: TTrackBar
-            Left = 56
-            Top = 56
-            Width = 207
-            Height = 15
+            Left = 98
+            Top = 98
+            Width = 371
+            Height = 26
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akLeft, akTop, akRight]
             Max = 100
             Position = 50
             TabOrder = 2
-            ThumbLength = 12
+            ThumbLength = 21
             TickMarks = tmBoth
             TickStyle = tsNone
           end
           object TrackBar4: TTrackBar
-            Left = 56
-            Top = 72
-            Width = 207
-            Height = 15
+            Left = 98
+            Top = 126
+            Width = 371
+            Height = 26
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akLeft, akTop, akRight]
             Max = 100
             Position = 50
             TabOrder = 3
-            ThumbLength = 12
+            ThumbLength = 21
             TickMarks = tmBoth
             TickStyle = tsNone
           end
         end
         object GroupBox2: TGroupBox
-          Left = 8
-          Top = 160
-          Width = 281
-          Height = 105
+          Left = 14
+          Top = 280
+          Width = 501
+          Height = 184
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Anchors = [akLeft, akTop, akRight]
           Caption = ' Blending Weights '
           TabOrder = 1
           DesignSize = (
-            281
-            105)
+            501
+            184)
           object Label17: TLabel
-            Left = 64
-            Top = 86
-            Width = 193
-            Height = 13
+            Left = 112
+            Top = 151
+            Width = 347
+            Height = 22
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Alignment = taCenter
             Anchors = [akLeft, akTop, akRight]
             AutoSize = False
             Caption = '0'
-            ExplicitWidth = 195
+            ExplicitWidth = 338
           end
           object Label7: TLabel
-            Left = 16
-            Top = 24
-            Width = 27
-            Height = 13
+            Left = 28
+            Top = 42
+            Width = 46
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = 'Tex 0'
           end
           object Label8: TLabel
-            Left = 16
-            Top = 40
-            Width = 27
-            Height = 13
+            Left = 28
+            Top = 70
+            Width = 46
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = 'Tex 1'
           end
           object Label9: TLabel
-            Left = 16
-            Top = 56
-            Width = 27
-            Height = 13
+            Left = 28
+            Top = 98
+            Width = 46
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = 'Tex 2'
           end
           object Label10: TLabel
-            Left = 16
-            Top = 72
-            Width = 27
-            Height = 13
+            Left = 28
+            Top = 126
+            Width = 46
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = 'Tex 3'
           end
           object Label13: TLabel
-            Left = 252
-            Top = 86
-            Width = 6
-            Height = 13
+            Left = 450
+            Top = 151
+            Width = 10
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akTop, akRight]
             Caption = '1'
-            ExplicitLeft = 254
+            ExplicitLeft = 441
           end
           object Label15: TLabel
-            Left = 56
-            Top = 86
-            Width = 10
-            Height = 13
+            Left = 98
+            Top = 151
+            Width = 17
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = '-1'
           end
           object TrackBar5: TTrackBar
-            Left = 56
-            Top = 24
-            Width = 207
-            Height = 15
+            Left = 98
+            Top = 42
+            Width = 371
+            Height = 26
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akLeft, akTop, akRight]
             Max = 100
             Position = 75
             TabOrder = 0
-            ThumbLength = 12
+            ThumbLength = 21
             TickMarks = tmBoth
             TickStyle = tsNone
           end
           object TrackBar6: TTrackBar
-            Left = 56
-            Top = 40
-            Width = 207
-            Height = 15
+            Left = 98
+            Top = 70
+            Width = 371
+            Height = 26
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akLeft, akTop, akRight]
             Max = 100
             Position = 75
             TabOrder = 1
-            ThumbLength = 12
+            ThumbLength = 21
             TickMarks = tmBoth
             TickStyle = tsNone
           end
           object TrackBar7: TTrackBar
-            Left = 56
-            Top = 56
-            Width = 207
-            Height = 15
+            Left = 98
+            Top = 98
+            Width = 371
+            Height = 26
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akLeft, akTop, akRight]
             Max = 100
             Position = 75
             TabOrder = 2
-            ThumbLength = 12
+            ThumbLength = 21
             TickMarks = tmBoth
             TickStyle = tsNone
           end
           object TrackBar8: TTrackBar
-            Left = 56
-            Top = 72
-            Width = 207
-            Height = 15
+            Left = 98
+            Top = 126
+            Width = 371
+            Height = 26
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akLeft, akTop, akRight]
             Max = 100
             Position = 65
             TabOrder = 3
-            ThumbLength = 12
+            ThumbLength = 21
             TickMarks = tmBoth
             TickStyle = tsNone
           end
         end
         object CheckBox2: TCheckBox
-          Left = 14
-          Top = 12
-          Width = 131
-          Height = 17
+          Left = 25
+          Top = 21
+          Width = 229
+          Height = 30
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Caption = 'CgShader Enabled'
           Checked = True
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
-          Font.Height = -11
+          Font.Height = -19
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
@@ -661,45 +919,54 @@ object FormCgTexture: TFormCgTexture
     end
   end
   object Panel9: TPanel
-    Left = 316
+    Left = 553
     Top = 0
-    Width = 326
-    Height = 394
+    Width = 585
+    Height = 690
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
+    Font.Height = -33
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 1
-    ExplicitWidth = 249
-    ExplicitHeight = 321
     object PanelFPS: TPanel
       Left = 1
       Top = 1
-      Width = 324
-      Height = 48
+      Width = 583
+      Height = 84
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Align = alTop
       Caption = 'FPS'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -19
+      Font.Height = -33
       Font.Name = 'Trebuchet MS'
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 247
     end
     object GLSceneViewer1: TGLSceneViewer
       Left = 1
-      Top = 49
-      Width = 324
-      Height = 344
+      Top = 85
+      Width = 583
+      Height = 604
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Camera = GLCamera1
       Buffer.Lighting = False
       Buffer.AntiAliasing = aa4xHQ
-      FieldOfView = 145.695159912109400000
+      FieldOfView = 160.533935546875000000
       PenAsTouch = False
       Align = alClient
       OnMouseDown = GLSceneViewer1MouseDown

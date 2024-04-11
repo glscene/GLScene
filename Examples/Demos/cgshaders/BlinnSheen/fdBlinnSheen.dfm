@@ -36,6 +36,8 @@ object FormBlinnSheen: TFormBlinnSheen
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitLeft = -10
+    ExplicitTop = 14
   end
   object CheckBox1: TCheckBox
     Left = 560
@@ -86,8 +88,8 @@ object FormBlinnSheen: TFormBlinnSheen
     OnApplyFP = CgBumpShaderApplyFP
     OnUnApplyFP = CgBumpShaderUnApplyFP
     OnInitialize = CgBumpShaderInitialize
-    Left = 112
-    Top = 72
+    Left = 350
+    Top = 114
   end
   object GLMaterialLibrary1: TGLMaterialLibrary
     Materials = <
@@ -97,20 +99,20 @@ object FormBlinnSheen: TFormBlinnSheen
         Material.Texture.Disabled = False
         Shader = CgBumpShader
       end>
-    Left = 112
+    Left = 364
     Top = 8
   end
   object GLCadencer1: TGLCadencer
     Scene = GLScene1
     OnProgress = GLCadencer1Progress
-    Left = 24
-    Top = 72
+    Left = 150
+    Top = 226
   end
   object AsyncTimer1: TGLAsyncTimer
     Enabled = True
     OnTimer = AsyncTimer1Timer
     ThreadPriority = tpNormal
-    Left = 24
-    Top = 128
+    Left = 360
+    Top = 226
   end
 end

@@ -53,4 +53,10 @@ rem win64
 copy "%~dp0cutil64.dll" %SystemRoot%\System32\
 copy "%~dp0zlib1.dll" %SystemRoot%\System32\
 
+echo Copying GLUT DLL
+rem win32
+copy "%~dp0glut32.dll" %SystemRoot%\SysWOW64\
+rem win64
+copy "%~dp0glut32.dll" %SystemRoot%\System32\
+
 pause

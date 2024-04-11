@@ -173,9 +173,11 @@ begin
   Sphere_little.LoadFromFile('Sphere.3ds');
   Sphere_little.Scale.Scale(4);
 
+  SetCurrentDir(Path  + '\map');
+  MaterialLibrary.LibMaterialByName('Earth').Material.Texture.Image.LoadFromFile('earth.jpg');
+
   // Then load textures.
   SetCurrentDir(Path  + '\texture');
-  MaterialLibrary.LibMaterialByName('Earth').Material.Texture.Image.LoadFromFile('Earth.jpg');
   MaterialLibrary.LibMaterialByName('Noise').Material.Texture.Image.LoadFromFile('Flare1.bmp');
   // MaterialLibrary.LibMaterialByName('Noise').Material.Texture.Image.LoadFromFile('wikiNoise.jpg');
   MaterialLibrary.LibMaterialByName('Mask').Material.Texture.Image.LoadFromFile('wikiMask.jpg');

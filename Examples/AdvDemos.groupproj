@@ -33,6 +33,9 @@
         <Projects Include="AdvDemos\GLSViewer\GLSViewerD.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="AdvDemos\GLSViewer\GLSViewerC.cbproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="AdvDemos\IntensityMesh\IntensityMeshD.dproj">
             <Dependencies/>
         </Projects>
@@ -155,6 +158,15 @@
     <Target Name="GLSViewerD:Make">
         <MSBuild Projects="AdvDemos\GLSViewer\GLSViewerD.dproj" Targets="Make"/>
     </Target>
+    <Target Name="GLSViewerC">
+        <MSBuild Projects="AdvDemos\GLSViewer\GLSViewerC.cbproj"/>
+    </Target>
+    <Target Name="GLSViewerC:Clean">
+        <MSBuild Projects="AdvDemos\GLSViewer\GLSViewerC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GLSViewerC:Make">
+        <MSBuild Projects="AdvDemos\GLSViewer\GLSViewerC.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="IntensityMeshD">
         <MSBuild Projects="AdvDemos\IntensityMesh\IntensityMeshD.dproj"/>
     </Target>
@@ -228,13 +240,13 @@
         <MSBuild Projects="AdvDemos\TexCombine\TexCombineC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="Actorms3dD;ActorMS3dC;ArchipelagoD;ArchipelagoC;ChristmasD;ChristmasC;EarthD;EarthC;ForestD;GLSViewerD;IntensityMeshD;IntensityMeshC;PanoViewerD;PanoViewerC;QuakeActorD;QuakeActorC;TexCombineD;TexCombineC"/>
+        <CallTarget Targets="Actorms3dD;ActorMS3dC;ArchipelagoD;ArchipelagoC;ChristmasD;ChristmasC;EarthD;EarthC;ForestD;GLSViewerD;GLSViewerC;IntensityMeshD;IntensityMeshC;PanoViewerD;PanoViewerC;QuakeActorD;QuakeActorC;TexCombineD;TexCombineC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Actorms3dD:Clean;ActorMS3dC:Clean;ArchipelagoD:Clean;ArchipelagoC:Clean;ChristmasD:Clean;ChristmasC:Clean;EarthD:Clean;EarthC:Clean;ForestD:Clean;GLSViewerD:Clean;IntensityMeshD:Clean;IntensityMeshC:Clean;PanoViewerD:Clean;PanoViewerC:Clean;QuakeActorD:Clean;QuakeActorC:Clean;TexCombineD:Clean;TexCombineC:Clean"/>
+        <CallTarget Targets="Actorms3dD:Clean;ActorMS3dC:Clean;ArchipelagoD:Clean;ArchipelagoC:Clean;ChristmasD:Clean;ChristmasC:Clean;EarthD:Clean;EarthC:Clean;ForestD:Clean;GLSViewerD:Clean;GLSViewerC:Clean;IntensityMeshD:Clean;IntensityMeshC:Clean;PanoViewerD:Clean;PanoViewerC:Clean;QuakeActorD:Clean;QuakeActorC:Clean;TexCombineD:Clean;TexCombineC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Actorms3dD:Make;ActorMS3dC:Make;ArchipelagoD:Make;ArchipelagoC:Make;ChristmasD:Make;ChristmasC:Make;EarthD:Make;EarthC:Make;ForestD:Make;GLSViewerD:Make;IntensityMeshD:Make;IntensityMeshC:Make;PanoViewerD:Make;PanoViewerC:Make;QuakeActorD:Make;QuakeActorC:Make;TexCombineD:Make;TexCombineC:Make"/>
+        <CallTarget Targets="Actorms3dD:Make;ActorMS3dC:Make;ArchipelagoD:Make;ArchipelagoC:Make;ChristmasD:Make;ChristmasC:Make;EarthD:Make;EarthC:Make;ForestD:Make;GLSViewerD:Make;GLSViewerC:Make;IntensityMeshD:Make;IntensityMeshC:Make;PanoViewerD:Make;PanoViewerC:Make;QuakeActorD:Make;QuakeActorC:Make;TexCombineD:Make;TexCombineC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

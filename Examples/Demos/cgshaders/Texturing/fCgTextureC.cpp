@@ -41,6 +41,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   GLMatLib->Materials->Items[0]->Material->Texture->Image->LoadFromFile("moon.bmp");
   GLMatLib->Materials->Items[1]->Material->Texture->Image->LoadFromFile("clover.jpg");
   GLMatLib->Materials->Items[2]->Material->Texture->Image->LoadFromFile("marbletiles.jpg");
+  SetCurrentDir(Path  + "\\map");
   GLMatLib->Materials->Items[3]->Material->Texture->Image->LoadFromFile("earth.jpg");
 }
 //---------------------------------------------------------------------------

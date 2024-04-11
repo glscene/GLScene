@@ -1,23 +1,32 @@
 object FormDiffuseShader: TFormDiffuseShader
   Left = 261
   Top = 176
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'GLSL Diffuse Specular Shader'
-  ClientHeight = 527
-  ClientWidth = 790
+  ClientHeight = 922
+  ClientWidth = 1397
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 629
-    Height = 527
+    Width = 1115
+    Height = 922
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = Camera
     Buffer.FogEnvironment.FogColor.Color = {ACC8483E9A99193FCDCC4C3F9A99993E}
     Buffer.FogEnvironment.FogStart = 50.000000000000000000
@@ -28,23 +37,31 @@ object FormDiffuseShader: TFormDiffuseShader
     Buffer.AntiAliasing = aaNone
     Buffer.DepthPrecision = dp24bits
     Buffer.ColorDepth = cd24bits
-    FieldOfView = 152.285934448242200000
+    FieldOfView = 163.948654174804700000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 629
+    Left = 1115
     Top = 0
-    Width = 161
-    Height = 527
+    Width = 282
+    Height = 922
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alRight
     TabOrder = 1
     object LightMovingCheckBox: TCheckBox
-      Left = 8
-      Top = 8
-      Width = 97
-      Height = 17
+      Left = 14
+      Top = 14
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Light is Moving'
       Checked = True
       Color = clBtnFace
@@ -53,10 +70,14 @@ object FormDiffuseShader: TFormDiffuseShader
       TabOrder = 0
     end
     object ShaderEnabledCheckBox: TCheckBox
-      Left = 8
-      Top = 64
-      Width = 97
-      Height = 17
+      Left = 14
+      Top = 112
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Shader Enabled'
       Checked = True
       State = cbChecked
@@ -64,29 +85,41 @@ object FormDiffuseShader: TFormDiffuseShader
       OnClick = ShaderEnabledCheckBoxClick
     end
     object TurnPitchrollCheckBox: TCheckBox
-      Left = 8
-      Top = 24
-      Width = 137
-      Height = 17
+      Left = 14
+      Top = 42
+      Width = 240
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Turn-Pitch-Roll Enabled'
       Checked = True
       State = cbChecked
       TabOrder = 2
     end
     object RealisticSpecularCheckBox: TCheckBox
-      Left = 8
-      Top = 113
-      Width = 137
-      Height = 17
+      Left = 14
+      Top = 198
+      Width = 240
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Realistic Specular Mode'
       TabOrder = 3
       OnClick = RealisticSpecularCheckBoxClick
     end
     object MultiLightShaderCheckBox: TCheckBox
-      Left = 8
-      Top = 80
-      Width = 113
-      Height = 17
+      Left = 14
+      Top = 140
+      Width = 198
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'MultiLight Shader'
       Checked = True
       State = cbChecked
@@ -94,10 +127,14 @@ object FormDiffuseShader: TFormDiffuseShader
       OnClick = MultiLightShaderCheckBoxClick
     end
     object EnableFogCheckBox: TCheckBox
-      Left = 8
-      Top = 136
-      Width = 137
-      Height = 17
+      Left = 14
+      Top = 238
+      Width = 240
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Enable fog'
       TabOrder = 5
       OnClick = EnableFogCheckBoxClick
