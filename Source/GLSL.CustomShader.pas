@@ -12,8 +12,6 @@ unit GLSL.CustomShader;
 *)
 interface
 
-{$I GLS.Scene.inc}
-
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,

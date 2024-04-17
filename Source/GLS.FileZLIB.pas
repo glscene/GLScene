@@ -208,6 +208,7 @@ begin
    Dir.FilePos := FHeader.DirOffset;
    Dir.CbrMode := compressionLevel;
 
+   //Create a stream for archiving
    compressed := TMemoryStream.Create;
 
    // Archive data to stream

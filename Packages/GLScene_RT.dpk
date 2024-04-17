@@ -167,7 +167,6 @@ contains
   GLS.MeshLines in '..\Source\GLS.MeshLines.pas',
   GLS.MeshUtils in '..\Source\GLS.MeshUtils.pas',
   GLS.Mirror in '..\Source\GLS.Mirror.pas',
-  GLS.ModuleLoader in '..\Source\GLS.ModuleLoader.pas',
   GLS.Movement in '..\Source\GLS.Movement.pas',
   GLS.MultiPolygon in '..\Source\GLS.MultiPolygon.pas',
   GLS.MultiProxy in '..\Source\GLS.MultiProxy.pas',
@@ -269,7 +268,8 @@ contains
   GLS.VectorFileObjects in '..\Source\GLS.VectorFileObjects.pas',
   GLS.VerletTypes in '..\Source\GLS.VerletTypes.pas',
   GLS.VerletClothify in '..\Source\GLS.VerletClothify.pas',
-  GLS.VectorTypesExt in '..\Source\GLS.VectorTypesExt.pas';
+  GLS.VectorTypesExt in '..\Source\GLS.VectorTypesExt.pas',
+  GLS.ModuleLoader in '..\Source\GLS.ModuleLoader.pas';
 
 end.
 

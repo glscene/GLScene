@@ -6,8 +6,8 @@ object FormBlur: TFormBlur
   Margins.Right = 5
   Margins.Bottom = 5
   Caption = 'Blur'
-  ClientHeight = 772
-  ClientWidth = 963
+  ClientHeight = 782
+  ClientWidth = 965
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,8 +21,8 @@ object FormBlur: TFormBlur
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 79
-    Width = 963
-    Height = 693
+    Width = 965
+    Height = 703
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5
@@ -33,7 +33,7 @@ object FormBlur: TFormBlur
     Buffer.FogEnvironment.FogEnd = 3.000000000000000000
     Buffer.BackgroundColor = clBackground
     Buffer.AmbientColor.Color = {0000000000000000000000000000803F}
-    FieldOfView = 163.577774047851600000
+    FieldOfView = 163.808258056640600000
     PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
@@ -42,7 +42,7 @@ object FormBlur: TFormBlur
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 963
+    Width = 965
     Height = 79
     Margins.Left = 5
     Margins.Top = 5

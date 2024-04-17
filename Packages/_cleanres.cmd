@@ -1,4 +1,7 @@
 echo off
+del *.dsk /s
+del *.local /s
+del *.identcache /s
 
 del *.res /s  
 del *.obj /s

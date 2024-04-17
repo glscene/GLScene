@@ -25,7 +25,6 @@ rem delete more files
 
 del *.bak /s
 del *.xml /s
-del *.cvsignore /s
 del *.identcache /s
 del *.otares /s
 del *.tvsconfig /s

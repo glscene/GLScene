@@ -27,8 +27,8 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  TFileName MediaDir;
-  TFileName Path = GetCurrentAssetPath();
+  TFileName Path = GetCurrentAssetPath() + "\\button\\";
+  SetCurrentDir(Path);
 
   GLMaterialLibrary1->TexturePaths = GetCurrentDir();
   GLForm1->Caption = "Unicode caption..."; //#$0699#$069A#$963f#$54c0;

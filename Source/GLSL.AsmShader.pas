@@ -1,7 +1,6 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-
 unit GLSL.AsmShader;
 
 (*
@@ -11,8 +10,6 @@ unit GLSL.AsmShader;
 *)
 
 interface
-
-{$I GLS.Scene.inc}
 
 uses
   System.Classes,

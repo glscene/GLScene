@@ -1,7 +1,6 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-
 unit GLSL.BumpShaders;
 
 (*
@@ -27,8 +26,6 @@ unit GLSL.BumpShaders;
 *)
 
 interface
-
-{$I GLS.Scene.inc}
 
 uses
   Winapi.OpenGL,

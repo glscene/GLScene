@@ -282,7 +282,6 @@
         <DCCReference Include="..\Source\GLS.MeshLines.pas"/>
         <DCCReference Include="..\Source\GLS.MeshUtils.pas"/>
         <DCCReference Include="..\Source\GLS.Mirror.pas"/>
-        <DCCReference Include="..\Source\GLS.ModuleLoader.pas"/>
         <DCCReference Include="..\Source\GLS.Movement.pas"/>
         <DCCReference Include="..\Source\GLS.MultiPolygon.pas"/>
         <DCCReference Include="..\Source\GLS.MultiProxy.pas"/>
@@ -385,6 +384,7 @@
         <DCCReference Include="..\Source\GLS.VerletTypes.pas"/>
         <DCCReference Include="..\Source\GLS.VerletClothify.pas"/>
         <DCCReference Include="..\Source\GLS.VectorTypesExt.pas"/>
+        <DCCReference Include="..\Source\GLS.ModuleLoader.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

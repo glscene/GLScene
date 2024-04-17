@@ -205,7 +205,6 @@ Notes for improvement of this unit:
 
 interface
 
-{$I GLS.Scene.inc}
 
 uses
   System.Classes,
