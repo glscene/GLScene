@@ -9,6 +9,8 @@ uses
   System.Classes,
   System.Types,
   System.Math,
+  System.ImageList,
+
   Vcl.Graphics,
   Vcl.Controls,
   Vcl.Forms,
@@ -35,19 +37,25 @@ uses
   GLS.Context,
   GLS.TextureFormat,
   GLSL.TextureShaders,
-  GLS.BaseClasses;
+  GLS.BaseClasses,
+  GLS.PersistentClasses,
+
+  Vcl.BaseImageCollection,
+  Vcl.ImageCollection,
+  Vcl.ImgList,
+  Vcl.VirtualImageList;
 
 type
   TFormEarth = class(TForm)
     GLScene: TGLScene;
     GLSceneViewer: TGLSceneViewer;
     Camera: TGLCamera;
-    sfPlanet: TGLSphere;
+    sfEarth: TGLSphere;
     LightSourceSun: TGLLightSource;
     DirectOpenGL: TGLDirectOpenGL;
     GLCadencer: TGLCadencer;
     Timer: TTimer;
-    SphereMoon: TGLSphere;
+    sfMoon: TGLSphere;
     dcEarth: TGLDummyCube;
     dcMoon: TGLDummyCube;
     LensFlareSun: TGLLensFlare;
@@ -58,25 +66,41 @@ type
     ConstellationLines: TGLLines;
     MainMenu: TMainMenu;
     File1: TMenuItem;
-    New1: TMenuItem;
     Open1: TMenuItem;
     Save1: TMenuItem;
     SaveAs1: TMenuItem;
     Exit1: TMenuItem;
     N1: TMenuItem;
-    N2: TMenuItem;
     miView: TMenuItem;
-    miCore: TMenuItem;
     Hide1: TMenuItem;
     Show1: TMenuItem;
     N3: TMenuItem;
     Help1: TMenuItem;
-    Contents1: TMenuItem;
     About1: TMenuItem;
     PanelLeft: TPanel;
     tvPlanets: TTreeView;
     miConstLines: TMenuItem;
-    miConstBoundaries: TMenuItem;
+    ImgVirtPlanets: TVirtualImageList;
+    ImgCollectionPlanets: TImageCollection;
+    sfMercury: TGLSphere;
+    dcSolarSystem: TGLDummyCube;
+    sfSun: TGLSphere;
+    sfVenus: TGLSphere;
+    sfMars: TGLSphere;
+    sfJupiter: TGLSphere;
+    sfSaturn: TGLSphere;
+    sfNeptune: TGLSphere;
+    sfUranus: TGLSphere;
+    sfPluto: TGLSphere;
+    sfCharon: TGLSphere;
+    sfEnceladus: TGLSphere;
+    sfTitan: TGLSphere;
+    sfIo: TGLSphere;
+    sfEuropa: TGLSphere;
+    sfCallisto: TGLSphere;
+    sfGanymede: TGLSphere;
+    sfDeimos: TGLSphere;
+    sfPhobos: TGLSphere;
     procedure FormCreate(Sender: TObject);
     procedure DirectOpenGLRender(Sender: TObject; var rci: TGLRenderContextInfo);
     procedure TimerTimer(Sender: TObject);
@@ -93,6 +117,8 @@ type
     procedure tvPlanetsClick(Sender: TObject);
     procedure miConstLinesClick(Sender: TObject);
     procedure miConstBoundariesClick(Sender: TObject);
+    procedure Hide1Click(Sender: TObject);
+    procedure Show1Click(Sender: TObject);
   public
     ConstellationsAlpha: Single;
     TimeMultiplier: Single;
@@ -102,6 +128,7 @@ type
     radius, invAtmosphereHeight: Single;
     sunPos, eyePos, lightingVector: TGLVector;
     diskNormal, diskRight, diskUp: TGLVector;
+    procedure LoadHighResTexture(LibMat: TGLLibMaterial; const FileName: string);
   private
     FileName, Path: TFileName;
     procedure LoadConstellationLines;
@@ -117,7 +144,7 @@ const
   // unrealisticly thick atmospheres look better :)
   cAtmosphereRadius: Single = 0.55;
   // use value slightly lower than actual radius, for antialiasing effect
-  cPlanetRadius: Single = 0.495;
+  cEarthRadius: Single = 0.495;
   cLowAtmColor: TGLColorVector = (X: 1; Y: 1; Z: 1; W: 1);
   cHighAtmColor: TGLColorVector = (X: 0; Y: 0; Z: 1; W: 1);
   cIntDivTable: array [2 .. 20] of Single = (1 / 2, 1 / 3, 1 / 4, 1 / 5, 1 / 6, 1 / 7, 1 / 8, 1 / 9,
@@ -188,7 +215,7 @@ begin
     begin
       // sample on the lit side
       intensity := intensity * contrib;
-      alt := (VectorLength(atmPoint) - cPlanetRadius) * invAtmosphereHeight;
+      alt := (VectorLength(atmPoint) - cEarthRadius) * invAtmosphereHeight;
       VectorLerp(cLowAtmColor, cHighAtmColor, alt, altColor);
       Result.X := Result.X * decay + altColor.X * intensity;
       Result.Y := Result.Y * decay + altColor.Y * intensity;
@@ -205,7 +232,7 @@ begin
   Result.W := n * contrib * cOpacity * 0.1;
 end;
 
-//--------------------------------------------------------------------------------
+//-----------------------------------------------------------------------
 
 function TFormEarth.ComputeColor(var rayDest: TGLVector; mayHitGround: Boolean): TGLColorVector;
 var
@@ -216,7 +243,8 @@ begin
   if RayCastSphereIntersect(eyePos, rayVector, NullHmgPoint, cAtmosphereRadius, ai1, ai2) > 1 then
   begin
     // atmosphere hit
-    if mayHitGround and (RayCastSphereIntersect(eyePos, rayVector, NullHmgPoint, cPlanetRadius, pi1,
+    if mayHitGround and (RayCastSphereIntersect(eyePos, rayVector, NullHmgPoint,
+      cEarthRadius, pi1,
       pi2) > 0) then
     begin
       // hit ground
@@ -233,8 +261,9 @@ begin
     Result := clrTransparent;
 end;
 
-//--------------------------------------------------------------------------------
-
+//------------------------------------------------------------------------
+// DirectOpenGLRender for atmosphere
+//------------------------------------------------------------------------
 procedure TFormEarth.DirectOpenGLRender(Sender: TObject; var rci: TGLRenderContextInfo);
 
 const
@@ -254,7 +283,7 @@ begin
   diskUp := VectorCrossProduct(diskNormal, diskRight);
   NormalizeVector(diskUp);
 
-  invAtmosphereHeight := 1 / (cAtmosphereRadius - cPlanetRadius);
+  invAtmosphereHeight := 1 / (cAtmosphereRadius - cEarthRadius);
   lightingVector := VectorNormalize(sunPos); // sun at infinity
   PrepareSinCosCache(sinCache, cosCache, 0, 360);
 
@@ -268,9 +297,9 @@ begin
   for i := 0 to 13 do
   begin
     if i < 5 then
-      radius := cPlanetRadius * Sqrt(i * (1 / 5))
+      radius := cEarthRadius * Sqrt(i * (1 / 5))
     else
-      radius := cPlanetRadius + (i - 5.1) * (cAtmosphereRadius - cPlanetRadius) * (1 / 6.9);
+      radius := cEarthRadius + (i - 5.1) * (cAtmosphereRadius - cEarthRadius) * (1 / 6.9);
     radius := SphereVisibleRadius(VectorLength(eyePos), radius);
     k0 := (i and 1) * (cSlices + 1);
     k1 := (cSlices + 1) - k0;
@@ -329,8 +358,9 @@ begin
   FreeMem(pColor);
 end;
 
-//--------------------------------------------------------------------------------
-
+//-------------------------------------------------
+// Constellation Lines
+//-------------------------------------------------
 procedure TFormEarth.LoadConstellationLines;
 var
   sl, line: TStrings;
@@ -361,7 +391,7 @@ end;
 
 procedure TFormEarth.miConstBoundariesClick(Sender: TObject);
 begin
-  //
+  ConstellationsAlpha := 0.5 - ConstellationsAlpha;
 end;
 
 
@@ -375,120 +405,123 @@ end;
 
 //---------------------------------------------------------------------------
 procedure TFormEarth.tvPlanetsClick(Sender: TObject);
+var
+  I: Integer;
+
 begin
-  case tvPlanets.Selected.Index of
+  for I := 0 to dcSolarSystem.Count - 1 do
+    dcSolarSystem.Children[I].Visible := False;
+  case tvPlanets.Selected.StateIndex of
      0: begin
-          sfPlanet.Material.Texture.Image.LoadFromFile('sun.jpg');
-          sfPlanet.Radius := 12000;
+          sfSun.Visible := True;
+          Camera.MoveTo(sfSun);
+          Camera.TargetObject := sfSun;
+          Cameracontroller.MoveTo(sfSun);
+          Cameracontroller.TargetObject := sfSun;
         end;
      1: begin
-          sfPlanet.Material.Texture.Image.LoadFromFile('mercury.jpg');
-          sfPlanet.Radius := 2440;
+          sfMercury.Visible := True;
+          Camera.MoveTo(sfMercury);
+          Camera.TargetObject := sfMercury;
         end;
      2: begin
-          sfPlanet.Material.Texture.Image.LoadFromFile('venus.jpg');
-          sfPlanet.Radius := 6052;
+          sfVenus.Visible := True;
         end;
      3: begin
-          sfPlanet.Material.Texture.Image.LoadFromFile('earth.jpg');
-          sfPlanet.Radius := 6371;
+          Camera.MoveTo(sfEarth);
+          Camera.TargetObject := sfEarth;
+          Cameracontroller.MoveTo(sfEarth);
+          Cameracontroller.TargetObject := sfEarth;
         end;
-     4: begin
-          sfPlanet.Material.Texture.Image.LoadFromFile('moon.jpg');
-          sfPlanet.Radius := 1371;
-        end;
+       4: begin
+            Camera.MoveTo(sfMoon);
+            Cameracontroller.MoveTo(sfMoon);
+            Camera.TargetObject := sfMoon;
+            Cameracontroller.TargetObject := sfMoon;
+          end;
      5: begin
-          sfPlanet.Material.Texture.Image.LoadFromFile('mars.jpg');
-          sfPlanet.Radius := 3390;
+          sfMars.Visible := True;
+          Camera.MoveTo(sfMars);
+          Camera.TargetObject := sfMars;
         end;
      6: begin
-          sfPlanet.Material.Texture.Image.LoadFromFile('demos.jpg');
-          sfPlanet.Radius := 250;
+          // to be replaced with ffDeimos
+          sfDeimos.Visible := True;
         end;
      7: begin
-          sfPlanet.Material.Texture.Image.LoadFromFile('phobos.jpg');
-          sfPlanet.Radius := 250;
+          // to be replaced with ffPhobos
+          sfPhobos.Visible := True;
         end;
      8: begin
-          sfPlanet.Material.Texture.Image.LoadFromFile('jupiter.jpg');
-          sfPlanet.Radius := 10000; //
+          sfJupiter.Visible := True;
         end;
      9: begin
-          // Io as jupiter's child Camera.ToTarget;
-          sfPlanet.Material.Texture.Image.LoadFromFile('io.jpg');
-          sfPlanet.Radius := 10000;
+          sfIo.Visible := True;
         end;
      10: begin
-          // Europa as jupiter's child Camera.ToTarget;
-          sfPlanet.Material.Texture.Image.LoadFromFile('europa.jpg');
-          sfPlanet.Radius := 10000;
+          sfEuropa.Visible := True;
         end;
      11: begin
-          // Callisto as jupiter's child Camera.ToTarget;
-          sfPlanet.Material.Texture.Image.LoadFromFile('callisto.jpg');
-          sfPlanet.Radius := 10000;
+          sfCallisto.Visible := True;
         end;
      12: begin
-          // Ganimede as jupiter's child Camera.ToTarget;
-          sfPlanet.Material.Texture.Image.LoadFromFile('ganimede.jpg');
-          sfPlanet.Radius := 10000; //
+          sfGanymede.Visible := True;
         end;
      13: begin
-          sfPlanet.Material.Texture.Image.LoadFromFile('saturn.jpg');
-          sfPlanet.Radius := 9500; //
-          // add Titan and Enceladus as childs
+          // should have rings
+          sfSaturn.Visible := True;
         end;
      14: begin
-          sfPlanet.Material.Texture.Image.LoadFromFile('uranus.jpg');
-          sfPlanet.Radius := 7500; // 3390;
+          sfEnceladus.Visible := True;
         end;
      15: begin
-          sfPlanet.Material.Texture.Image.LoadFromFile('neptune.jpg');
-          sfPlanet.Radius := 8000; //24622;
+          sfTitan.Visible := True;
         end;
      16: begin
-          sfPlanet.Material.Texture.Image.LoadFromFile('pluto.jpg');
-          sfPlanet.Radius := 2377;
+          sfUranus.Visible := True;
         end;
      17: begin
-          // add Charon as child
-          sfPlanet.Material.Texture.Image.LoadFromFile('charon.jpg');
-          sfPlanet.Radius := 1000;
+          sfNeptune.Visible := True;
+        end;
+     18: begin
+          sfPluto.Visible := True;
+        end;
+     19: begin
+          sfCharon.Visible := True;
         end;
   end;
-
 end;
 
 //--------------------------------------------------------------------------------
 
 procedure TFormEarth.GLCadencerProgress(Sender: TObject; const deltaTime, newTime: Double);
-// var
-// d : Double;
-// p : TAffineVector;
+var
+  d : Double;
+  p : TAffineVector;
 begin
-  // d := GMTDateTimeToJulianDay(Now-2+newTime*timeMultiplier);
-  // make earth rotate
-  sfPlanet.TurnAngle := sfPlanet.TurnAngle + deltaTime * TimeMultiplier;
-  { p := ComputePlanetPosition(cSunOrbitalElements, d);
-    ScaleVector(p, 0.5*cAUToKilometers*(1/cEarthRadius));
-    LSSun.Position.AsAffineVector:=p; }
+  d := GMTDateTimeToJulianDay(Now-2+newTime*timeMultiplier);
+  sfEarth.TurnAngle := sfEarth.TurnAngle + deltaTime * TimeMultiplier;
+
+  p := ComputePlanetPosition(cSunOrbitalElements, d);
+  ScaleVector(p, 0.5*cAUToKilometers*(1/cEarthRadius));
+  LensFlareSun.Position.AsAffineVector := p;
 
   // moon rotates on itself and around earth (not sure about the rotation direction!)
 
-  { p := ComputePlanetPosition(cMoonOrbitalElements, d);
-    ScaleVector(p, 0.5*cAUToKilometers*(1/cEarthRadius)); }
+   p := ComputePlanetPosition(cMoonOrbitalElements, d);
+    ScaleVector(p, 0.5*cAUToKilometers*(1/cEarthRadius));
 
   dcMoon.TurnAngle := dcMoon.TurnAngle + deltaTime * TimeMultiplier / 29.5;
-  SphereMoon.TurnAngle := 180 - dcMoon.TurnAngle;
+  sfMoon.TurnAngle := 180 - dcMoon.TurnAngle;
 
-  // honour camera movements
+  // Honour camera movements
   if (dmy <> 0) or (dmx <> 0) then
   begin
     Cameracontroller.MoveAroundTarget(ClampValue(dmy * 0.3, -5, 5), ClampValue(dmx * 0.3, -5, 5));
     dmx := 0;
     dmy := 0;
   end;
-  // this gives us smoother camera movements
+  // This gives us smoother camera movements
   CameraTimeSteps := CameraTimeSteps + deltaTime;
   while CameraTimeSteps > 0.005 do
   begin
@@ -496,7 +529,7 @@ begin
       Cameracontroller.Position.AsVector, 0.05);
     CameraTimeSteps := CameraTimeSteps - 0.005;
   end;
-  // smooth constellation appearance/disappearance
+  // Smooth constellation lines appearance/disappearance
   if ConstellationLines.LineColor.Alpha <> ConstellationsAlpha then
   begin
     ConstellationLines.LineColor.Alpha :=
@@ -526,6 +559,16 @@ begin
     Camera.FocalLength := Camera.FocalLength * Power(1.05, (my - Y) * 0.1);
   mx := X;
   my := Y;
+end;
+
+procedure TFormEarth.Hide1Click(Sender: TObject);
+begin
+  PanelLeft.Visible := False;
+end;
+
+procedure TFormEarth.Show1Click(Sender: TObject);
+begin
+  PanelLeft.Visible := True;
 end;
 
 //--------------------------------------------------------------------------------
@@ -563,27 +606,26 @@ end;
 
 //--------------------------------------------------------------------------------
 
-procedure TFormEarth.FormKeyPress(Sender: TObject; var Key: Char);
-
-  procedure LoadHighResTexture(LibMat: TGLLibMaterial; const FileName: string);
+procedure TFormEarth.LoadHighResTexture(LibMat: TGLLibMaterial; const FileName: string);
+begin
+  if FileExists(FileName) then
   begin
-    if FileExists(FileName) then
-    begin
-      LibMat.Material.Texture.Compression := tcStandard;
-      LibMat.Material.Texture.Image.LoadFromFile(FileName);
-    end;
+    LibMat.Material.Texture.Compression := tcStandard;
+    LibMat.Material.Texture.Image.LoadFromFile(FileName);
   end;
+end;
 
+procedure TFormEarth.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   case Key of
     #27:
-      Close;
+      FormEarth.Close;
     'm', 'M':
       begin
-        Camera.MoveTo(SphereMoon);
-        Cameracontroller.MoveTo(SphereMoon);
-        Camera.TargetObject := SphereMoon;
-        Cameracontroller.TargetObject := SphereMoon;
+        Camera.MoveTo(sfMoon);
+        Cameracontroller.MoveTo(sfMoon);
+        Camera.TargetObject := sfMoon;
+        Cameracontroller.TargetObject := sfMoon;
       end;
     'e', 'E':
       begin
@@ -597,12 +639,9 @@ begin
       begin
         GLSceneViewer.Cursor := crHourGlass;
         try
-          with GLMatLib do
-          begin
-            LoadHighResTexture(Materials[0], 'land_ocean_ice_4096.jpg');
-            LoadHighResTexture(Materials[1], 'land_ocean_ice_lights_4096.jpg');
-            LoadHighResTexture(Materials[2], 'moon_2048.jpg');
-          end;
+          LoadHighResTexture(GLMatLib.Materials[0], 'earth_4096.jpg');
+          LoadHighResTexture(GLMatLib.Materials[1], 'earth_night_4096.jpg');
+          LoadHighResTexture(GLMatLib.Materials[2], 'moon_2048.jpg');
           GLSceneViewer.Buffer.AntiAliasing := aa2x;
         finally
           GLSceneViewer.Cursor := crDefault;

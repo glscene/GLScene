@@ -308,7 +308,7 @@ object FormActorms3d: TFormActorms3d
         Material.Texture.Disabled = False
         Shader = GLSLShader1
       end>
-    Left = 235
-    Top = 105
+    Left = 355
+    Top = 142
   end
 end

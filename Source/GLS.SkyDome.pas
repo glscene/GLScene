@@ -324,8 +324,9 @@ type
     Velocity, VelocityDir: Double;
   end;
 
-  TGLMoonRingData = record // 3ds files and DebrisAsteroid  too
-    Name: String[255]; // Planet_Moon.jpg
+  // 3ds files and DebrisAsteroid too
+  TGLMoonRingData = record
+    Name: String[255];
     Radius: Double;
     ObjectRotation: Double;
     AxisTilt: Double;
@@ -348,7 +349,8 @@ type
     Velocity, VelocityDir: Double;
   end;
 
-  TGLAsteroidData = record // Asteroid Comet spheres..NOT DebrisAsteroid
+  // Asteroid Comet spheres..NOT DebrisAsteroid
+  TGLAsteroidData = record
     Name: String[255];
     Radius: Double;
     ObjectRotation: Double;
