@@ -70,7 +70,8 @@ uses
   fGLOptions,
   fGLDialog,
   dImages,
-  dDialogs, GLS.GeomObjects;
+  dDialogs,
+  GLS.GeomObjects;
 
 type
   TFormGLSViewer = class(TGLForm)
@@ -228,6 +229,8 @@ type
     Octahedron: TGLOctahedron;
     Tetrahedron: TGLTetrahedron;
     SuperEllipsoid: TGLSuperEllipsoid;
+
+    Annulus: TGLAnnulus;
 
     Torus: TGLTorus;
 
@@ -1238,6 +1241,11 @@ begin
       SuperEllipsoid.Material.FrontProperties.Diffuse.Color := clrTeal;
     end;
     //21...
+    24: // Annulus
+    begin
+      Annulus := TGLAnnulus.CreateAsChild(dcObject);
+      Annulus.Material.FrontProperties.Diffuse.RandomColor();
+    end;
     29: // Torus
     begin
       Torus := TGLTorus.CreateAsChild(dcObject);
