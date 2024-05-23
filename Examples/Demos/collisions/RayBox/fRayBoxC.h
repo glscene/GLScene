@@ -24,7 +24,7 @@ __published:	// IDE-managed Components
 	TPanel *Panel1;
 	TLabel *Label1;
 	TLabel *LabelFPS;
-	TButton *Button1;
+	TButton *ButtonTest;
 	TCheckBox *CheckBox1;
 	TCheckBox *CheckBox2;
 	TGLScene *GLScene;
@@ -41,7 +41,7 @@ __published:	// IDE-managed Components
 	TTimer *Timer1;
 	TGLMaterialLibrary *GLMaterialLibrary;
 	void __fastcall FormCreate(TObject *Sender);
-	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall ButtonTestClick(TObject *Sender);
 	void __fastcall CheckBox1Click(TObject *Sender);
 	void __fastcall GLCadencerProgress(TObject *Sender, const double deltaTime, const double newTime);
 	void __fastcall Timer1Timer(TObject *Sender);

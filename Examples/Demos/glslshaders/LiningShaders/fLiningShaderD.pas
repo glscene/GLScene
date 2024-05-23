@@ -27,15 +27,15 @@ type
   TFormLiningShader = class(TForm)
     GLScene1: TGLScene;
     GLSceneViewer1: TGLSceneViewer;
-    GLCamera1: TGLCamera;
-    GLLightSource1: TGLLightSource;
-    Torus1: TGLTorus;
-    Sphere1: TGLSphere;
+    Camera: TGLCamera;
+    LightSource: TGLLightSource;
+    Torus: TGLTorus;
+    Sphere: TGLSphere;
     GLMaterialLibrary1: TGLMaterialLibrary;
-    GLAnnulusOutlined: TGLAnnulus;
-    GLAnnulusPink: TGLAnnulus;
-    GLCubeGreen: TGLCube;
-    GLCubeTransparent: TGLCube;
+    AnnulusOutlined: TGLAnnulus;
+    AnnulusPink: TGLAnnulus;
+    CubeGreen: TGLCube;
+    CubeTransparent: TGLCube;
     GLOutlineShader1: TGLOutlineShader;
     GLHiddenLineShader1: TGLHiddenLineShader;
     GLHiddenLineShader2: TGLHiddenLineShader;
@@ -51,7 +51,7 @@ type
     Label2: TLabel;
     Label3: TLabel;
     GLHiddenLineShader5: TGLHiddenLineShader;
-    GLAnnulusDotted: TGLAnnulus;
+    AnnulusDotted: TGLAnnulus;
     Bevel1: TBevel;
     Panel2: TPanel;
     CheckBox5: TCheckBox;
@@ -132,9 +132,9 @@ procedure TFormLiningShader.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShi
   X, Y: Integer);
 begin
   if Shift = [ssLeft] then
-    GLCamera1.MoveAroundTarget(my - Y, mx - X)
+    Camera.MoveAroundTarget(my - Y, mx - X)
   else if Shift = [ssRight] then
-    GLCamera1.RotateTarget(my - Y, mx - X);
+    Camera.RotateTarget(my - Y, mx - X);
   mx := X;
   my := Y;
 end;

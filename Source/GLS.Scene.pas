@@ -60,7 +60,7 @@ type
 const
   cDefaultProxyOptions = [pooEffects, pooObjects, pooTransformation];
   GLSCENE_REVISION = '$Revision: 2024$';
-  GLSCENE_VERSION = 'v2.4 %s';
+  GLSCENE_VERSION = 'v2.5 %s';
 
 type
 
@@ -80,8 +80,7 @@ type
      roDoubleBuffer: enables double-buffering.
      roRenderToWindows: ignored (legacy).
      roTwoSideLighting: enables two-side lighting model.
-     roStereo: enables stereo support in the driver (dunno if it works,
-         I don't have a stereo device to test...)
+     roStereo: enables stereo support in the driver (need to test with a stereo device...)
      roDestinationAlpha: request an Alpha channel for the rendered output
      roNoColorBuffer: don't request a color buffer (color depth setting ignored)
      roNoColorBufferClear: do not clear the color buffer automatically, if the

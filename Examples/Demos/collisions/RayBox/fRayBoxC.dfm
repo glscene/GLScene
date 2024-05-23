@@ -1,28 +1,37 @@
 object Form1: TForm1
   Left = 0
   Top = 0
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Ray Box'
-  ClientHeight = 390
-  ClientWidth = 518
+  ClientHeight = 683
+  ClientWidth = 921
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'Tahoma'
   Font.Style = []
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnMouseWheel = FormMouseWheel
   OnResize = FormResize
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 23
   object Viewer: TGLSceneViewer
     Left = 0
-    Top = 41
-    Width = 518
-    Height = 349
+    Top = 72
+    Width = 921
+    Height = 611
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 148.022491455078100000
+    FieldOfView = 161.410064697265600000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ViewerMouseDown
@@ -32,39 +41,59 @@ object Form1: TForm1
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 518
-    Height = 41
+    Width = 921
+    Height = 72
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alTop
     TabOrder = 1
     object Label1: TLabel
-      Left = 296
-      Top = 12
-      Width = 34
-      Height = 13
+      Left = 518
+      Top = 21
+      Width = 58
+      Height = 23
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Result:'
     end
     object LabelFPS: TLabel
-      Left = 488
-      Top = 12
-      Width = 18
-      Height = 13
+      Left = 854
+      Top = 21
+      Width = 31
+      Height = 23
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'FPS'
     end
-    object Button1: TButton
-      Left = 8
-      Top = 8
-      Width = 75
-      Height = 25
+    object ButtonTest: TButton
+      Left = 14
+      Top = 14
+      Width = 131
+      Height = 44
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Test!'
       Default = True
       TabOrder = 0
-      OnClick = Button1Click
+      OnClick = ButtonTestClick
     end
     object CheckBox1: TCheckBox
-      Left = 99
-      Top = 12
-      Width = 70
-      Height = 17
+      Left = 173
+      Top = 21
+      Width = 123
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'View box'
       Checked = True
       State = cbChecked
@@ -72,10 +101,14 @@ object Form1: TForm1
       OnClick = CheckBox1Click
     end
     object CheckBox2: TCheckBox
-      Left = 178
-      Top = 12
-      Width = 112
-      Height = 17
+      Left = 312
+      Top = 21
+      Width = 196
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Change pos scale'
       Checked = True
       State = cbChecked

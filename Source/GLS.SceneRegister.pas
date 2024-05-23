@@ -347,7 +347,6 @@ uses
   GLS.ProxyObjects,
   GLS.RenderContextInfo,
   GLS.ArchiveManager,
-  GLS.Language,
   GLS.Memo,
   GLS.SmoothNavigator,
   GLS.Utils,
@@ -1559,8 +1558,7 @@ begin
 	TGLFPSMovementManager, TGLMaterialScripter, TGLUserInterface, TGLNavigator,
 	TGLSmoothNavigator, TGLSmoothUserInterface, TGLTimeEventsMGR,
 	TGLApplicationFileIO, TGLVfsPAK, TGLSimpleNavigation, TGLGizmo,
-	TGLCameraController, TGLSLanguage, TGLSLogger, TGLSArchiveManager,
-	TGLJoystick, TGLScreenSaver, TGLSSynHiMemo]);
+	TGLCameraController, TGLSLogger, TGLSArchiveManager, TGLJoystick, TGLScreenSaver, TGLSSynHiMemo]);
 
   RegisterComponents('GLScene Terrain', [TGLBitmapHDS, TGLCustomHDS,
     TGLHeightTileFileHDS, TGLBumpmapHDS, TGLPerlinHDS, TGLTexturedHDS,

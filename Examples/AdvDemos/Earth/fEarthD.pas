@@ -16,6 +16,7 @@ uses
   Vcl.Forms,
   Vcl.ExtCtrls,
   Vcl.Imaging.Jpeg,
+  Vcl.Imaging.pngimage,
   Vcl.Menus,
   Vcl.ComCtrls,
 
@@ -43,7 +44,7 @@ uses
   Vcl.BaseImageCollection,
   Vcl.ImageCollection,
   Vcl.ImgList,
-  Vcl.VirtualImageList;
+  Vcl.VirtualImageList, GLS.GeomObjects;
 
 type
   TFormEarth = class(TForm)
@@ -101,6 +102,8 @@ type
     sfGanymede: TGLSphere;
     sfDeimos: TGLSphere;
     sfPhobos: TGLSphere;
+    diskSaturnUp: TGLDisk;
+    diskSaturnDn: TGLDisk;
     procedure FormCreate(Sender: TObject);
     procedure DirectOpenGLRender(Sender: TObject; var rci: TGLRenderContextInfo);
     procedure TimerTimer(Sender: TObject);
@@ -414,23 +417,17 @@ begin
   case tvPlanets.Selected.StateIndex of
      0: begin
           sfSun.Visible := True;
-          Camera.MoveTo(sfSun);
-          Camera.TargetObject := sfSun;
-          Cameracontroller.MoveTo(sfSun);
-          Cameracontroller.TargetObject := sfSun;
         end;
      1: begin
           sfMercury.Visible := True;
-          Camera.MoveTo(sfMercury);
-          Camera.TargetObject := sfMercury;
         end;
      2: begin
           sfVenus.Visible := True;
         end;
      3: begin
           Camera.MoveTo(sfEarth);
-          Camera.TargetObject := sfEarth;
           Cameracontroller.MoveTo(sfEarth);
+          Camera.TargetObject := sfEarth;
           Cameracontroller.TargetObject := sfEarth;
         end;
        4: begin
@@ -441,8 +438,6 @@ begin
           end;
      5: begin
           sfMars.Visible := True;
-          Camera.MoveTo(sfMars);
-          Camera.TargetObject := sfMars;
         end;
      6: begin
           // to be replaced with ffDeimos
@@ -470,6 +465,8 @@ begin
      13: begin
           // should have rings
           sfSaturn.Visible := True;
+          diskSaturnUp.Visible := True;
+          diskSaturnDn.Visible := True;
         end;
      14: begin
           sfEnceladus.Visible := True;

@@ -26,7 +26,7 @@ object FormLiningShader: TFormLiningShader
     Margins.Top = 6
     Margins.Right = 6
     Margins.Bottom = 6
-    Camera = GLCamera1
+    Camera = Camera
     Buffer.AntiAliasing = aa4xHQ
     FieldOfView = 159.017044067382800000
     PenAsTouch = False
@@ -34,6 +34,7 @@ object FormLiningShader: TFormLiningShader
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitLeft = -11
   end
   object Panel1: TPanel
     Left = 668
@@ -234,16 +235,16 @@ object FormLiningShader: TFormLiningShader
   end
   object GLScene1: TGLScene
     ObjectsSorting = osRenderFarthestFirst
-    Left = 8
+    Left = 22
     Top = 8
-    object GLLightSource1: TGLLightSource
+    object LightSource: TGLLightSource
       Ambient.Color = {0000803F0000803F0000803F0000803F}
       ConstAttenuation = 1.000000000000000000
       Position.Coordinates = {00002041000000410000E0400000803F}
       Specular.Color = {0000803F0000803F0000803F0000803F}
       SpotCutOff = 180.000000000000000000
     end
-    object Torus1: TGLTorus
+    object Torus: TGLTorus
       Material.MaterialLibrary = GLMaterialLibrary1
       Material.LibMaterialName = 'LibMaterial2'
       Direction.Coordinates = {000000000000803F0000000000000000}
@@ -253,11 +254,11 @@ object FormLiningShader: TFormLiningShader
       StopAngle = 360.000000000000000000
       Parts = [toSides, toStartDisk, toStopDisk]
     end
-    object Sphere1: TGLSphere
+    object Sphere: TGLSphere
       ShowAxes = True
       Radius = 0.500000000000000000
     end
-    object GLAnnulusOutlined: TGLAnnulus
+    object AnnulusOutlined: TGLAnnulus
       Material.MaterialLibrary = GLMaterialLibrary1
       Material.LibMaterialName = 'LibMaterial'
       Position.Coordinates = {0000E04000000000000000000000803F}
@@ -268,7 +269,7 @@ object FormLiningShader: TFormLiningShader
       TopInnerRadius = 0.300000011920929000
       TopRadius = 0.500000000000000000
     end
-    object GLAnnulusPink: TGLAnnulus
+    object AnnulusPink: TGLAnnulus
       Material.MaterialLibrary = GLMaterialLibrary1
       Material.LibMaterialName = 'LibMaterial4'
       Position.Coordinates = {0000E0C000000000000000000000803F}
@@ -279,7 +280,7 @@ object FormLiningShader: TFormLiningShader
       TopInnerRadius = 0.300000011920929000
       TopRadius = 0.500000000000000000
     end
-    object GLAnnulusDotted: TGLAnnulus
+    object AnnulusDotted: TGLAnnulus
       Material.MaterialLibrary = GLMaterialLibrary1
       Material.LibMaterialName = 'LibMaterial1'
       Position.Coordinates = {00000000000000000000E0C00000803F}
@@ -290,22 +291,22 @@ object FormLiningShader: TFormLiningShader
       TopInnerRadius = 0.300000011920929000
       TopRadius = 0.500000000000000000
     end
-    object GLCubeGreen: TGLCube
+    object CubeGreen: TGLCube
       Material.MaterialLibrary = GLMaterialLibrary1
       Material.LibMaterialName = 'LibMaterial5'
       Position.Coordinates = {00000000000000000000E0400000803F}
       Scale.Coordinates = {00000040000000400000004000000000}
     end
-    object GLCubeTransparent: TGLCube
+    object CubeTransparent: TGLCube
       Material.MaterialLibrary = GLMaterialLibrary1
       Material.LibMaterialName = 'LibMaterial3'
       Position.Coordinates = {0000000000008040000000000000803F}
       CubeSize = {000040400000404000004040}
     end
-    object GLCamera1: TGLCamera
+    object Camera: TGLCamera
       DepthOfView = 100.000000000000000000
       FocalLength = 50.000000000000000000
-      TargetObject = Torus1
+      TargetObject = Torus
       Position.Coordinates = {00006041000020410000C0400000803F}
     end
   end
@@ -351,15 +352,15 @@ object FormLiningShader: TFormLiningShader
         Material.BlendingMode = bmTransparency
         Shader = GLHiddenLineShader5
       end>
-    Left = 8
-    Top = 40
+    Left = 22
+    Top = 124
   end
   object GLOutlineShader1: TGLOutlineShader
     LineColor.Color = {0000803F00000000000000000000803F}
     LineSmooth = True
     LineWidth = 4.000000000000000000
-    Left = 8
-    Top = 72
+    Left = 106
+    Top = 380
   end
   object GLHiddenLineShader1: TGLHiddenLineShader
     FrontLine.Width = 1.000000000000000000
@@ -368,7 +369,7 @@ object FormLiningShader: TFormLiningShader
     BackLine.Width = 2.000000000000000000
     LineSmooth = True
     Solid = True
-    Left = 40
+    Left = 446
     Top = 8
   end
   object GLHiddenLineShader2: TGLHiddenLineShader
@@ -378,8 +379,8 @@ object FormLiningShader: TFormLiningShader
     BackLine.Pattern = 65280
     LineSmooth = True
     SurfaceLit = False
-    Left = 40
-    Top = 40
+    Left = 124
+    Top = 65534
   end
   object GLHiddenLineShader3: TGLHiddenLineShader
     FrontLine.Width = 5.000000000000000000
@@ -387,8 +388,8 @@ object FormLiningShader: TFormLiningShader
     BackLine.Width = 5.000000000000000000
     BackLine.Color.Color = {0000003F0000003F0000003F9A99993E}
     LineSmooth = True
-    Left = 40
-    Top = 72
+    Left = 586
+    Top = 16
   end
   object GLHiddenLineShader4: TGLHiddenLineShader
     FrontLine.Width = 2.000000000000000000
@@ -396,7 +397,7 @@ object FormLiningShader: TFormLiningShader
     BackLine.Width = 1.000000000000000000
     BackLine.Color.Color = {E4DB5B3FEBE0E03E9A93133F0000803F}
     LineSmooth = True
-    Left = 72
+    Left = 226
     Top = 8
   end
   object GLHiddenLineShader5: TGLHiddenLineShader
@@ -409,7 +410,7 @@ object FormLiningShader: TFormLiningShader
     Solid = True
     BackgroundColor.Color = {938C0C3E938E0E3F938C0C3E3333333F}
     SurfaceLit = False
-    Left = 72
-    Top = 40
+    Left = 310
+    Top = 12
   end
 end

@@ -1,54 +1,67 @@
 object FormBumpShader: TFormBumpShader
   Left = 261
   Top = 176
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'GLSL Bump Shader'
-  ClientHeight = 605
-  ClientWidth = 856
+  ClientHeight = 1059
+  ClientWidth = 1498
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 685
-    Height = 605
+    Width = 1199
+    Height = 1059
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = Camera
     Buffer.BackgroundColor = clBackground
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
     Buffer.AntiAliasing = aaNone
     Buffer.DepthPrecision = dp24bits
     Buffer.ColorDepth = cd24bits
-    FieldOfView = 155.745819091796900000
+    FieldOfView = 166.003082275390600000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ViewerMouseDown
     OnMouseMove = ViewerMouseMove
     TabOrder = 0
-    ExplicitWidth = 478
-    ExplicitHeight = 438
   end
   object Panel1: TPanel
-    Left = 685
+    Left = 1199
     Top = 0
-    Width = 171
-    Height = 605
+    Width = 299
+    Height = 1059
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alRight
     TabOrder = 1
-    ExplicitLeft = 475
-    ExplicitHeight = 437
     object LightMovingCheckBox: TCheckBox
-      Left = 8
-      Top = 8
-      Width = 97
-      Height = 17
+      Left = 14
+      Top = 14
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Light is Moving'
       Checked = True
       Color = clBtnFace
@@ -57,18 +70,26 @@ object FormBumpShader: TFormBumpShader
       TabOrder = 0
     end
     object RollPitchTurnCheckBox: TCheckBox
-      Left = 8
-      Top = 31
-      Width = 161
-      Height = 17
+      Left = 14
+      Top = 54
+      Width = 282
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Roll / Pitch / Turn Enabled'
       TabOrder = 1
     end
     object ShaderEnabledCheckBox: TCheckBox
-      Left = 8
-      Top = 72
-      Width = 97
-      Height = 17
+      Left = 14
+      Top = 126
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Shader Enabled'
       Checked = True
       State = cbChecked
@@ -76,19 +97,27 @@ object FormBumpShader: TFormBumpShader
       OnClick = ShaderEnabledCheckBoxClick
     end
     object MultiLightShaderCheckBox: TCheckBox
-      Left = 8
-      Top = 88
-      Width = 106
-      Height = 17
+      Left = 14
+      Top = 154
+      Width = 186
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'MultiLight Shader'
       TabOrder = 3
       OnClick = MultiLightShaderCheckBoxClick
     end
     object UseSpecularTextureCheckBox: TCheckBox
-      Left = 8
-      Top = 128
-      Width = 121
-      Height = 17
+      Left = 14
+      Top = 224
+      Width = 212
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Use Specular Texture'
       Checked = True
       State = cbChecked
@@ -96,10 +125,14 @@ object FormBumpShader: TFormBumpShader
       OnClick = UseSpecularTextureCheckBoxClick
     end
     object UseNormalTextureCheckBox: TCheckBox
-      Left = 8
-      Top = 144
-      Width = 121
-      Height = 17
+      Left = 14
+      Top = 252
+      Width = 212
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Use Normal Texture'
       Checked = True
       State = cbChecked
@@ -107,10 +140,14 @@ object FormBumpShader: TFormBumpShader
       OnClick = UseNormalTextureCheckBoxClick
     end
     object ShowNotGLSceneObjectsCheckBox: TCheckBox
-      Left = 6
-      Top = 176
-      Width = 131
-      Height = 17
+      Left = 11
+      Top = 308
+      Width = 229
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Show not GLS objects'
       Checked = True
       State = cbChecked
@@ -196,58 +233,46 @@ object FormBumpShader: TFormBumpShader
       ObjectsSorting = osRenderBlendedLast
       ShowAxes = True
       CubeSize = 1.000000000000000000
-      object Sphere_little: TGLActor
+      object actSphere_lit: TGLActor
         Material.MaterialLibrary = MaterialLibrary
         Material.LibMaterialName = 'Earth'
         Position.Coordinates = {0000000000001643000000000000803F}
         Interval = 100
         AutoCentering = [macCenterX, macCenterY, macCenterZ]
       end
-      object Sphere_big: TGLActor
+      object actSphere_big: TGLActor
         Material.MaterialLibrary = MaterialLibrary
         Material.LibMaterialName = 'Earth'
         Position.Coordinates = {00000000000016C3000000000000803F}
         Interval = 100
         AutoCentering = [macCenterX, macCenterY, macCenterZ]
       end
-      object Teapot: TGLActor
+      object actTeapot: TGLActor
         Material.MaterialLibrary = MaterialLibrary
         Material.LibMaterialName = 'Earth'
         Position.Coordinates = {000016C300000000000000000000803F}
-        Visible = False
         Interval = 100
         AutoCentering = [macCenterX, macCenterY, macCenterZ]
       end
-      object Fighter: TGLActor
+      object actFighter: TGLActor
         Position.Coordinates = {00001643000000000000AA420000803F}
         Visible = False
         Interval = 100
         AutoCentering = [macCenterX, macCenterY, macCenterZ]
         MaterialLibrary = TrinityMatlib
       end
-      object GLCube: TGLCube
+      object Cube: TGLCube
         Material.MaterialLibrary = MaterialLibrary
         Material.LibMaterialName = 'Earth'
         Visible = False
         CubeSize = {000096420000964200009642}
       end
-      object GLDodecahedron: TGLDodecahedron
+      object Dodecahedron: TGLDodecahedron
         Material.MaterialLibrary = MaterialLibrary
         Material.LibMaterialName = 'Earth'
         Position.Coordinates = {00001643000016C3000000000000803F}
         Scale.Coordinates = {0000C8420000C8420000C84200000000}
         Visible = False
-      end
-      object GLSphere: TGLSphere
-        Material.MaterialLibrary = MaterialLibrary
-        Material.LibMaterialName = 'Earth'
-        Direction.Coordinates = {00000000000080BF0000000000000000}
-        Position.Coordinates = {000016C300001643000000000000803F}
-        Up.Coordinates = {00000000000000000000803F00000000}
-        Visible = False
-        Radius = 50.000000000000000000
-        Slices = 64
-        Stacks = 64
       end
     end
     object Camera: TGLCamera
@@ -311,7 +336,7 @@ object FormBumpShader: TFormBumpShader
     SpecularPower = 6.000000000000000000
     SpecularSpread = 1.500000000000000000
     LightPower = 1.000000000000000000
-    Left = 56
+    Left = 224
     Top = 16
   end
   object TrinityMatlib: TGLMaterialLibrary

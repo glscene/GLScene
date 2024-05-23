@@ -62,14 +62,14 @@ type
     Cadencer: TGLCadencer;
     World: TGLDummyCube;
     Camera: TGLCamera;
-    GLLightSource1: TGLLightSource;
-    GLSphere1: TGLSphere;
-    PageControl1: TPageControl;
+    LightSource1: TGLLightSource;
+    Sphere: TGLSphere;
+    PageControl: TPageControl;
     TabSheet1: TTabSheet;
     chkAnimScene: TCheckBox;
     chkLightmoving: TCheckBox;
     chkFurShader: TCheckBox;
-    LightCube: TGLDummyCube;
+    LightCube1: TGLDummyCube;
     lblFurDistance: TLabel;
     tbFurLength: TTrackBar;
     TabSheet2: TTabSheet;
@@ -87,7 +87,7 @@ type
     TabSheet4: TTabSheet;
     chkIvoryShader: TCheckBox;
     LightCube2: TGLDummyCube;
-    GLLightSource2: TGLLightSource;
+    LightSource2: TGLLightSource;
     Label10: TLabel;
     Label11: TLabel;
     cbxFurBlendSrc: TComboBox;
@@ -101,7 +101,7 @@ type
     tbLatticeLightPower: TTrackBar;
     TabSheet5: TTabSheet;
     chkGoochShader: TCheckBox;
-    GLTorus1: TGLTorus;
+    Torus: TGLTorus;
     lblFurLength: TLabel;
     Label7: TLabel;
     tbFurMaxLength: TTrackBar;
@@ -308,7 +308,7 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure chkFurShaderClick(Sender: TObject);
     procedure CadencerProgress(Sender: TObject; const deltaTime, newTime: Double);
-    procedure LightCubeProgress(Sender: TObject; const deltaTime, newTime: Double);
+    procedure LightCube1Progress(Sender: TObject; const deltaTime, newTime: Double);
     procedure tbFurLengthChange(Sender: TObject);
     procedure tbLatticeScaleXChange(Sender: TObject);
     procedure chkLatticeShaderClick(Sender: TObject);
@@ -502,12 +502,12 @@ begin
 
   FreeForm.Material.MaterialLibrary := MaterialLibrary;
   FreeForm.Material.LibMaterialName := 'ShaderMaterial';
-  GLTorus1.Material.MaterialLibrary := MaterialLibrary;
-  GLTorus1.Material.LibMaterialName := 'ShaderMaterial';
-  GLTorus1.Visible := False;
-  GLSphere1.Material.MaterialLibrary := MaterialLibrary;
-  GLSphere1.Material.LibMaterialName := 'ShaderMaterial';
-  GLSphere1.Visible := False;
+  Torus.Material.MaterialLibrary := MaterialLibrary;
+  Torus.Material.LibMaterialName := 'ShaderMaterial';
+  Torus.Visible := False;
+  Sphere.Material.MaterialLibrary := MaterialLibrary;
+  Sphere.Material.LibMaterialName := 'ShaderMaterial';
+  Sphere.Visible := False;
 
   MaterialLibrary.LibMaterialByName('MainTexture').Material.Texture.Image.LoadFromFile
     ('bigtiger.jpg');
@@ -587,19 +587,6 @@ begin
   i := 0;
   j := 0;
   v := 0.0;
-end;
-
-procedure TFormShaderLab.FormDestroy(Sender: TObject);
-begin
-  Cadencer.Enabled := False;
-  FurShader.Free;
-  LatticeShader.Free;
-  IvoryShader.Free;
-  GoochShader.Free;
-  ErosionShader.Free;
-  SEMShader.Free;
-  VertexDisplacementShader.Free;
-  GlassShader.Free;
 end;
 
 procedure TFormShaderLab.FormResize(Sender: TObject);
@@ -792,8 +779,8 @@ begin
   case cbxObjects.ItemIndex of
     0:
       begin
-        GLSphere1.Visible := False;
-        GLTorus1.Visible := False;
+        Sphere.Visible := False;
+        Torus.Visible := False;
         FreeForm.LoadFromFile('suzanne-blender.obj');
         GlassShader.OwnerObject := FreeForm;
         FreeForm.Visible := true;
@@ -801,57 +788,57 @@ begin
       end;
     1:
       begin
-        GLSphere1.Visible := False;
-        GLTorus1.Visible := False;
+        Sphere.Visible := False;
+        Torus.Visible := False;
         FreeForm.LoadFromFile('torus-knot2.obj');
         GlassShader.OwnerObject := FreeForm;
         FreeForm.Visible := true;
       end;
     2:
       begin
-        GLSphere1.Visible := False;
-        GLTorus1.Visible := False;
+        Sphere.Visible := False;
+        Torus.Visible := False;
         FreeForm.LoadFromFile('pyramid.obj');
         GlassShader.OwnerObject := FreeForm;
         FreeForm.Visible := true;
       end;
     3:
       begin
-        GLSphere1.Visible := False;
-        GLTorus1.Visible := False;
+        Sphere.Visible := False;
+        Torus.Visible := False;
         FreeForm.LoadFromFile('rectangle_spiral.obj');
         GlassShader.OwnerObject := FreeForm;
         FreeForm.Visible := true;
       end;
     4:
       begin
-        GLSphere1.Visible := False;
-        GLTorus1.Visible := False;
+        Sphere.Visible := False;
+        Torus.Visible := False;
         FreeForm.LoadFromFile('geode.obj');
         GlassShader.OwnerObject := FreeForm;
         FreeForm.Visible := true;
       end;
     5:
       begin
-        GLSphere1.Visible := False;
-        GLTorus1.Visible := False;
+        Sphere.Visible := False;
+        Torus.Visible := False;
         FreeForm.LoadFromFile('syamil_19.obj');
         GlassShader.OwnerObject := FreeForm;
         FreeForm.Visible := true;
       end;
     6:
       begin
-        GLSphere1.Visible := False;
+        Sphere.Visible := False;
         FreeForm.Visible := False;
-        GLTorus1.Visible := true;
-        GlassShader.OwnerObject := GLTorus1;
+        Torus.Visible := true;
+        GlassShader.OwnerObject := Torus;
       end;
     7:
       begin
-        GLTorus1.Visible := False;
+        Torus.Visible := False;
         FreeForm.Visible := False;
-        GLSphere1.Visible := true;
-        GlassShader.OwnerObject := GLSphere1;
+        Sphere.Visible := true;
+        GlassShader.OwnerObject := Sphere;
 
       end;
   end;
@@ -1013,10 +1000,10 @@ begin
     LightCube2.MoveObjectAround(Camera.TargetObject, sin(newTime) * deltaTime * 20, deltaTime * 10);
 end;
 
-procedure TFormShaderLab.LightCubeProgress(Sender: TObject; const deltaTime, newTime: Double);
+procedure TFormShaderLab.LightCube1Progress(Sender: TObject; const deltaTime, newTime: Double);
 begin
   if chkLightmoving.Checked then
-    LightCube.MoveObjectAround(Camera.TargetObject, sin(newTime) * deltaTime * 10, deltaTime * 20);
+    LightCube1.MoveObjectAround(Camera.TargetObject, sin(newTime) * deltaTime * 10, deltaTime * 20);
 end;
 
 procedure TFormShaderLab.Shape10MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
@@ -1219,6 +1206,9 @@ begin
   end;
 end;
 
+//========================================================================
+//
+//========================================================================
 procedure TFormShaderLab.tbErosionAmbientFChange(Sender: TObject);
 begin
   ErosionShader.AmbientFactor := tbErosionAmbientF.Position / 100;
@@ -1487,6 +1477,19 @@ procedure TFormShaderLab.tbVDTurbChange(Sender: TObject);
 begin
   VertexDisplacementShader.TurbulenceFactor := tbVDTurb.Position / 100;
   lblVDTurb.Caption := FloatToStrF(VertexDisplacementShader.TurbulenceFactor, ffFixed, 5, 3);
+end;
+
+procedure TFormShaderLab.FormDestroy(Sender: TObject);
+begin
+  Cadencer.Enabled := False;
+  FurShader.Free;
+  LatticeShader.Free;
+  IvoryShader.Free;
+  GoochShader.Free;
+  ErosionShader.Free;
+  SEMShader.Free;
+  VertexDisplacementShader.Free;
+  GlassShader.Free;
 end;
 
 end.

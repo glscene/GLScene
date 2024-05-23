@@ -17,7 +17,7 @@ uses
   Vcl.Menus,
   Vcl.Actnlist,
 
-  GnuGettext;
+  gnuGettext;
 
 type
   TGLForm = class(TForm)
@@ -45,9 +45,9 @@ procedure TGLForm.FormCreate(Sender: TObject);
 begin
   inherited;
   SetLanguage;
-  TranslateComponent(Self);
 end;
 
+//----------------------------------------------------------
 procedure TGLForm.SetLanguage;
 var
   LocalePath : TFileName;
@@ -114,8 +114,6 @@ begin
   //TP_GlobalIgnoreClass(TGLMaterialLibrary);
   //TP_GlobalIgnoreClass(TListBox);
   //TP_GlobalIgnoreClassProperty(TAction, 'Category');
-
-  //LoadNewResourceModule(Language);//when using ITE, ENU for English USA
 end;
 
 

@@ -265,7 +265,6 @@
         <DCCReference Include="..\Source\GLS.Isolines.pas"/>
         <DCCReference Include="..\Source\GLS.Isosurface.pas"/>
         <DCCReference Include="..\Source\GLS.Joystick.pas"/>
-        <DCCReference Include="..\Source\GLS.Language.pas"/>
         <DCCReference Include="..\Source\GLS.LensFlare.pas"/>
         <DCCReference Include="..\Source\GLS.LinePFX.pas"/>
         <DCCReference Include="..\Source\GLS.Logger.pas"/>
@@ -371,6 +370,7 @@
         <DCCReference Include="..\Source\GLS.OpenGLTokens.pas"/>
         <DCCReference Include="..\Source\GLS.PipelineTransformation.pas"/>
         <DCCReference Include="..\Source\GLS.Polynomials.pas"/>
+        <DCCReference Include="..\Source\gnugettext.pas"/>
         <DCCReference Include="..\Source\PasGLTF.pas"/>
         <DCCReference Include="..\Source\PasJSON.pas"/>
         <DCCReference Include="..\Source\PasDblStrUtils.pas"/>

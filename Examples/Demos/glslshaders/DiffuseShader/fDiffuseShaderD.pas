@@ -55,7 +55,7 @@ type
     Fighter: TGLActor;
     Teapot: TGLActor;
     Sphere_big: TGLActor;
-    Sphere_little: TGLActor;
+    Sphere: TGLActor;
     MaterialLibrary: TGLMaterialLibrary;
     ShaderEnabledCheckBox: TCheckBox;
     TurnPitchrollCheckBox: TCheckBox;
@@ -102,8 +102,8 @@ begin
   Teapot.Scale.Scale(0.8);
   Sphere_big.LoadFromFile('Sphere_big.3DS'); // Sphere_big
   Sphere_big.Scale.Scale(70);
-  Sphere_little.LoadFromFile('Sphere.3ds'); // Sphere_little
-  Sphere_little.Scale.Scale(4);
+  Sphere.LoadFromFile('Sphere.3ds'); // Sphere_little
+  Sphere.Scale.Scale(4);
 
   // Loading textures
   SetCurrentDir(Path + '\map');
@@ -128,7 +128,7 @@ begin
   begin
     Sphere_big.Pitch(40 * deltaTime);
     Fighter.Turn(40 * deltaTime);
-    Sphere_little.Roll(40 * deltaTime);
+    Sphere.Roll(40 * deltaTime);
     Teapot.Roll(-20 * deltaTime);
   end;
 end;

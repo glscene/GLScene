@@ -1,38 +1,50 @@
 object FormFacevsFace: TFormFacevsFace
   Left = 322
   Top = 162
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   BorderWidth = 3
   Caption = 'Face vs Face'
-  ClientHeight = 558
-  ClientWidth = 797
+  ClientHeight = 977
+  ClientWidth = 1409
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
   OnShow = FormShow
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object Splitter1: TSplitter
-    Left = 678
+    Left = 1201
     Top = 0
-    Width = 4
-    Height = 406
+    Width = 7
+    Height = 711
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alRight
-    ExplicitLeft = 317
-    ExplicitHeight = 229
+    MinSize = 53
   end
   object GLSceneViewer1: TGLSceneViewer
-    Left = 121
+    Left = 212
     Top = 0
-    Width = 557
-    Height = 406
+    Width = 989
+    Height = 711
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera2
     Buffer.BackgroundColor = 8404992
-    FieldOfView = 53.815586090087890000
+    FieldOfView = 83.258186340332030000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -42,47 +54,71 @@ object FormFacevsFace: TFormFacevsFace
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 121
-    Height = 406
+    Width = 212
+    Height = 711
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alLeft
     BevelOuter = bvLowered
     TabOrder = 1
-    ExplicitHeight = 229
     object Shape1: TShape
-      Left = 88
-      Top = 10
-      Width = 25
-      Height = 25
+      Left = 154
+      Top = 18
+      Width = 44
+      Height = 43
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
+      Pen.Width = 2
       Shape = stCircle
     end
     object Label1: TLabel
-      Left = 8
-      Top = 8
-      Width = 61
-      Height = 13
+      Left = 14
+      Top = 14
+      Width = 109
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Collision test:'
     end
     object LATime: TLabel
-      Left = 8
-      Top = 24
-      Width = 73
-      Height = 13
+      Left = 14
+      Top = 42
+      Width = 128
+      Height = 23
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Alignment = taRightJustify
       AutoSize = False
       Caption = 'LATime'
     end
     object Label2: TLabel
-      Left = 8
-      Top = 96
-      Width = 103
-      Height = 13
+      Left = 14
+      Top = 168
+      Width = 186
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Teapot collision mode'
     end
     object cbCollisionMode: TRadioGroup
-      Left = 8
-      Top = 112
-      Width = 105
-      Height = 105
+      Left = 14
+      Top = 196
+      Width = 184
+      Height = 184
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       ItemIndex = 4
       Items.Strings = (
         'cbmPoint'
@@ -96,55 +132,59 @@ object FormFacevsFace: TFormFacevsFace
   end
   object Panel2: TPanel
     Left = 0
-    Top = 406
-    Width = 797
-    Height = 152
+    Top = 711
+    Width = 1409
+    Height = 266
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alBottom
     TabOrder = 2
-    ExplicitTop = 229
-    ExplicitWidth = 531
     object StringGrid1: TStringGrid
       Left = 1
       Top = 1
-      Width = 795
-      Height = 150
+      Width = 1407
+      Height = 264
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Align = alClient
       ColCount = 6
-      DefaultColWidth = 90
-      DefaultRowHeight = 20
+      DefaultColWidth = 158
+      DefaultRowHeight = 35
       RowCount = 6
       TabOrder = 0
-      ExplicitLeft = 8
-      ExplicitTop = 8
-      ExplicitWidth = 553
-      ExplicitHeight = 137
       ColWidths = (
-        90
-        90
-        90
-        90
-        90
-        90)
+        158
+        158
+        158
+        158
+        158
+        158)
       RowHeights = (
-        20
-        20
-        20
-        20
-        20
-        20)
+        35
+        35
+        35
+        35
+        35
+        35)
     end
   end
   object Memo1: TMemo
-    Left = 682
+    Left = 1208
     Top = 0
-    Width = 115
-    Height = 406
+    Width = 201
+    Height = 711
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alRight
     Lines.Strings = (
       'Memo1')
     TabOrder = 3
-    ExplicitLeft = 416
-    ExplicitHeight = 229
   end
   object GLScene1: TGLScene
     Left = 184

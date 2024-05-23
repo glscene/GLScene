@@ -2,18 +2,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "POT-Creation-Date: 2012-12-20 07:34\n"
-"PO-Revision-Date: 2012-12-20 07:34\n"
+"PO-Revision-Date: 2024-05-23 15:09+0300\n"
 "Last-Translator: Somebody <your.email@address.com>\n"
+"Language-Team: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: dxgettext 1.2.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. LibMaterialPicker..Caption
 #: FLibMaterialPicker.dfm:5
@@ -21,9 +23,8 @@ msgid "LibMaterial Picker"
 msgstr ""
 
 #. LibMaterialPicker..Label1..Caption
-#: FLibMaterialPicker.dfm:22
 #. MaterialEditorForm..GroupBox1..Caption
-#: FMaterialEditorForm.dfm:95
+#: FLibMaterialPicker.dfm:22 FMaterialEditorForm.dfm:95
 msgid "Material Preview"
 msgstr ""
 
@@ -50,7 +51,7 @@ msgstr ""
 #. MaterialEditorForm..PageControl1..TSTexture..Caption
 #: FMaterialEditorForm.dfm:67
 msgid "Texture"
-msgstr ""
+msgstr "Textura"
 
 #. RColorEditor..Label1..Caption
 #: FRColorEditor.dfm:15
@@ -228,16 +229,15 @@ msgid "Insert template"
 msgstr ""
 
 #. GLShaderEditor..Panel1..CancelButton..Caption
-#: FShaderMemo.dfm:254
 #. GUISkinEditor..panBottom..Button6..Caption
-#: GuiSkinEditorFormUnit.dfm:72
+#: FShaderMemo.dfm:254 GuiSkinEditorFormUnit.dfm:72
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #. GLShaderEditor..Panel1..CheckButton..Caption
 #: FShaderMemo.dfm:274
 msgid "Check"
-msgstr ""
+msgstr "Controlar"
 
 #. VectorEditorForm..Caption
 #: FVectorEditor.dfm:5
@@ -270,60 +270,51 @@ msgid "Invert"
 msgstr ""
 
 #. GLSceneEditorForm..ToolBar..TBEffectsPanel..Hint
-#: GLSceneEdit.dfm:205
 #. GLSceneEditorForm..ToolBar..TBEffectsPanel..Caption
-#: GLSceneEdit.dfm:206
+#: GLSceneEdit.dfm:205 GLSceneEdit.dfm:206
 msgid "Show Behaviours/Effects"
 msgstr ""
 
 #. GLSceneEditorForm..PABehaviours..Label1..Caption
-#: GLSceneEdit.dfm:334
 #. GLSceneEditorForm..PABehaviours..ToolBar1..TBAddBehaviours..Caption
-#: GLSceneEdit.dfm:406
+#: GLSceneEdit.dfm:334 GLSceneEdit.dfm:406
 msgid "Behaviours"
 msgstr ""
 
 #. GLSceneEditorForm..PABehaviours..Label2..Caption
-#: GLSceneEdit.dfm:343
 #. GLSceneEditorForm..PABehaviours..ToolBar1..TBAddEffects..Caption
-#: GLSceneEdit.dfm:417
+#: GLSceneEdit.dfm:343 GLSceneEdit.dfm:417
 msgid "Effects"
 msgstr ""
 
 #. GLSceneEditorForm..PABehaviours..ToolBar1..TBAddEffects..Hint
-#: GLSceneEdit.dfm:415
 #. GLSceneEditorForm..PopupMenu..MIAddEffect..Caption
-#: GLSceneEdit.dfm:446
 #. GLSceneEditorForm..PopupMenu..MIAddEffect..Hint
-#: GLSceneEdit.dfm:447
+#: GLSceneEdit.dfm:415 GLSceneEdit.dfm:446 GLSceneEdit.dfm:447
 msgid "Add effect"
 msgstr ""
 
 #. GLSceneEditorForm..PopupMenu..MIAddBehaviour..Caption
-#: GLSceneEdit.dfm:441
 #. GLSceneEditorForm..ActionList..ACAddBehaviour..Hint
-#: GLSceneEdit.dfm:493
+#: GLSceneEdit.dfm:441 GLSceneEdit.dfm:493
 msgid "Add behaviour"
 msgstr ""
 
 #. GLSceneEditorForm..ActionList..ACAddCamera..Caption
-#: GLSceneEdit.dfm:480
 #. GLSceneEditorForm..ActionList..ACAddCamera..Hint
-#: GLSceneEdit.dfm:481
+#: GLSceneEdit.dfm:480 GLSceneEdit.dfm:481
 msgid "Add camera"
 msgstr ""
 
 #. GLSceneEditorForm..ActionList..ACAddObject..Caption
-#: GLSceneEdit.dfm:486
 #. GLSceneEditorForm..ActionList..ACAddObject..Hint
-#: GLSceneEdit.dfm:487
+#: GLSceneEdit.dfm:486 GLSceneEdit.dfm:487
 msgid "Add object"
 msgstr ""
 
 #. GLSceneEditorForm..ActionList..ACDeleteObject..Caption
-#: GLSceneEdit.dfm:503
 #. GLSceneEditorForm..ActionList..ACDeleteObject..Hint
-#: GLSceneEdit.dfm:504
+#: GLSceneEdit.dfm:503 GLSceneEdit.dfm:504
 msgid "Delete object"
 msgstr ""
 
@@ -333,16 +324,14 @@ msgid "Delete behaviour"
 msgstr ""
 
 #. GLSceneEditorForm..ActionList..ACMoveUp..Caption
-#: GLSceneEdit.dfm:514
 #. GLSceneEditorForm..ActionList..ACMoveUp..Hint
-#: GLSceneEdit.dfm:515
+#: GLSceneEdit.dfm:514 GLSceneEdit.dfm:515
 msgid "Move object up"
 msgstr ""
 
 #. GLSceneEditorForm..ActionList..ACMoveDown..Caption
-#: GLSceneEdit.dfm:521
 #. GLSceneEditorForm..ActionList..ACMoveDown..Hint
-#: GLSceneEdit.dfm:522
+#: GLSceneEdit.dfm:521 GLSceneEdit.dfm:522
 msgid "Move object down"
 msgstr ""
 
@@ -362,23 +351,20 @@ msgid "OpenGL Info"
 msgstr ""
 
 #. GLSceneEditorForm..ActionList..ACCopy..Caption
-#: GLSceneEdit.dfm:546
 #. GLSceneEditorForm..ActionList..ACCopy..Hint
-#: GLSceneEdit.dfm:547
+#: GLSceneEdit.dfm:546 GLSceneEdit.dfm:547
 msgid "Copy"
-msgstr ""
+msgstr "Копировать"
 
 #. GLSceneEditorForm..ActionList..ACCut..Caption
-#: GLSceneEdit.dfm:553
 #. GLSceneEditorForm..ActionList..ACCut..Hint
-#: GLSceneEdit.dfm:554
+#: GLSceneEdit.dfm:553 GLSceneEdit.dfm:554
 msgid "Cut"
 msgstr ""
 
 #. GLSceneEditorForm..ActionList..ACPaste..Caption
-#: GLSceneEdit.dfm:560
 #. GLSceneEditorForm..ActionList..ACPaste..Hint
-#: GLSceneEdit.dfm:561
+#: GLSceneEdit.dfm:560 GLSceneEdit.dfm:561
 msgid "Paste"
 msgstr ""
 
@@ -398,9 +384,8 @@ msgid "Add OpenGL Image Resource"
 msgstr ""
 
 #. GLSCUDAEditorForm..ToolBar1..DeleteButton..Hint
-#: GLSCUDAEditor.dfm:74
 #. GLSCUDAEditorForm..ToolBar1..DeleteButton..Caption
-#: GLSCUDAEditor.dfm:75
+#: GLSCUDAEditor.dfm:74 GLSCUDAEditor.dfm:75
 msgid "Delete Item"
 msgstr ""
 
@@ -446,14 +431,12 @@ msgstr ""
 
 #. Programmer's name for it: glsDisplayList
 #: GLStrings.pas:32
-msgid "Failed to create a new display list for object "
-"'%s'"
+msgid "Failed to create a new display list for object '%s'"
 msgstr ""
 
 #. Programmer's name for it: glsWrongBitmapCanvas
 #: GLStrings.pas:33
-msgid "Couldn't create a rendering context for the given "
-"bitmap"
+msgid "Couldn't create a rendering context for the given bitmap"
 msgstr ""
 
 #. Programmer's name for it: glsWrongPrinter
@@ -528,39 +511,33 @@ msgstr ""
 
 #. Programmer's name for it: glsMaterialNotFoundInMatlib
 #: GLStrings.pas:58
-msgid "Material not found in current Material "
-"Library!"
+msgid "Material not found in current Material Library!"
 msgstr ""
 
 #. Programmer's name for it: glsMaterialNotFoundInMatlibEx
 #: GLStrings.pas:59
-msgid "Material \"%s\" not found in current Material "
-"Library!"
+msgid "Material \"%s\" not found in current Material Library!"
 msgstr ""
 
 #. GLObjects
 #. Programmer's name for it: glsSphereTopBottom
 #: GLStrings.pas:62
-msgid "The top angle must be higher than the bottom "
-"angle"
+msgid "The top angle must be higher than the bottom angle"
 msgstr ""
 
 #. Programmer's name for it: glsSphereStartStop
 #: GLStrings.pas:63
-msgid "The start angle must be smaller than then stop "
-"angle"
+msgid "The start angle must be smaller than then stop angle"
 msgstr ""
 
 #. Programmer's name for it: glsMaterialNotFound
 #: GLStrings.pas:64
-msgid "Loading failed: could not find material "
-"%s"
+msgid "Loading failed: could not find material %s"
 msgstr ""
 
 #. Programmer's name for it: glsInterleaveNotSupported
 #: GLStrings.pas:65
-msgid "Interleaved Array format not supported yet. "
-"Sorry."
+msgid "Interleaved Array format not supported yet. Sorry."
 msgstr ""
 
 #. common messages
@@ -586,7 +563,8 @@ msgstr ""
 
 #. Programmer's name for it: glsFailedOpenFileFromCurrentDir
 #: GLStrings.pas:72
-msgid "Could not open file: %s\n"
+msgid ""
+"Could not open file: %s\n"
 "(Current directory is %s)"
 msgstr ""
 
@@ -602,8 +580,9 @@ msgstr ""
 
 #. Programmer's name for it: glsUnknownExtension
 #: GLStrings.pas:76
-msgid "Unknown file extension (%s), maybe you forgot to add the support unit "
-"to your uses? (%s?)"
+msgid ""
+"Unknown file extension (%s), maybe you forgot to add the support unit to "
+"your uses? (%s?)"
 msgstr ""
 
 #. Programmer's name for it: glsMissingResource
@@ -689,8 +668,7 @@ msgstr ""
 
 #. Programmer's name for it: glsOCExperimental
 #: GLStrings.pas:98
-msgid "Unknown %s \"%s\" for \"%s\" or program not in "
-"use"
+msgid "Unknown %s \"%s\" for \"%s\" or program not in use"
 msgstr ""
 
 #. Programmer's name for it: gluInvalidColor
@@ -700,20 +678,19 @@ msgstr ""
 
 #. Programmer's name for it: cForwardContextFailed
 #: GLWin32Context.pas:169
-msgid "Can not create forward compatible context: #%X, "
-"%s"
+msgid "Can not create forward compatible context: #%X, %s"
 msgstr ""
 
 #. Programmer's name for it: cBackwardContextFailed
 #: GLWin32Context.pas:170
-msgid "Can not create backward compatible context: #%X, "
-"%s"
+msgid "Can not create backward compatible context: #%X, %s"
 msgstr ""
 
 #. Programmer's name for it: cFailHWRC
 #: GLWin32Context.pas:171
-msgid "Unable to create rendering context with hardware acceleration - down "
-"to software"
+msgid ""
+"Unable to create rendering context with hardware acceleration - down to "
+"software"
 msgstr ""
 
 #. Programmer's name for it: glsTmpRC_Created
@@ -723,26 +700,22 @@ msgstr ""
 
 #. Programmer's name for it: glsDriverNotSupportFRC
 #: GLWin32Context.pas:173
-msgid "Driver not support creating of forward "
-"context"
+msgid "Driver not support creating of forward context"
 msgstr ""
 
 #. Programmer's name for it: glsDriverNotSupportOESRC
 #: GLWin32Context.pas:174
-msgid "Driver not support creating of OpenGL ES 2.0 "
-"context"
+msgid "Driver not support creating of OpenGL ES 2.0 context"
 msgstr ""
 
 #. Programmer's name for it: glsDriverNotSupportDebugRC
 #: GLWin32Context.pas:175
-msgid "Driver not support creating of debug "
-"context"
+msgid "Driver not support creating of debug context"
 msgstr ""
 
 #. Programmer's name for it: glsOESvsForwardRC
 #: GLWin32Context.pas:176
-msgid "OpenGL ES 2.0 context incompatible with Forward context - flag "
-"ignored"
+msgid "OpenGL ES 2.0 context incompatible with Forward context - flag ignored"
 msgstr ""
 
 #. Programmer's name for it: glsFRC_created
@@ -757,8 +730,7 @@ msgstr ""
 
 #. Programmer's name for it: glsPBufferRC_created
 #: GLWin32Context.pas:179
-msgid "Backward compatible core PBuffer context successfully "
-"created"
+msgid "Backward compatible core PBuffer context successfully created"
 msgstr ""
 
 #. Programmer's name for it: strInvalidType
@@ -778,8 +750,7 @@ msgstr ""
 
 #. Programmer's name for it: glsJoystickError
 #: Joystick.pas:124
-msgid "Your system reports a joystick error, can't do anything about "
-"it"
+msgid "Your system reports a joystick error, can't do anything about it"
 msgstr ""
 
 #. Programmer's name for it: rstrOpenGLError
@@ -811,4 +782,3 @@ msgstr ""
 #: XCollection.pas:192
 msgid "Unknown archive version : "
 msgstr ""
-

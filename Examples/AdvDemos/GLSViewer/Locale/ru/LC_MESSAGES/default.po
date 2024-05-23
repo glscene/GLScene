@@ -2,17 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2023-01-02 19:19+0300\n"
-"PO-Revision-Date: 2023-01-02 19:30+0300\n"
+"PO-Revision-Date: 2024-05-23 13:47+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Poedit-Basepath: ../../../Source\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #. dmGLSViewer..odTextures..DefaultExt
@@ -79,7 +79,7 @@ msgstr ""
 #. GLAbout..PanelTop..StaticTextVersion..Caption
 #: fGLAbout.dfm:173
 msgid "Info"
-msgstr ""
+msgstr "Инфо"
 
 #. GLAbout..PanelMiddle..LabelCopyright..Caption
 #: fGLAbout.dfm:190
@@ -129,7 +129,7 @@ msgstr ""
 #. GLDialog..PanelBottom..ButtonCancel..Caption
 #: fGLDialog.dfm:61
 msgid "Cancel"
-msgstr ""
+msgstr "Отмена"
 
 #. GLDialog..PanelBottom..ButtonHelp..Caption
 #. MainForm..ActionManager..acHelpContents..Category
@@ -140,7 +140,7 @@ msgstr ""
 #: fGLDialog.dfm:70 fMain.dfm:1946 fMain.dfm:1953 fMain.dfm:1960 fMain.dfm:1966
 #: fMain.dfm:1971
 msgid "Help"
-msgstr ""
+msgstr "Справка"
 
 #. GLOptions..Caption
 #: fGLOptions.dfm:3
@@ -170,7 +170,7 @@ msgstr "Английский"
 #. GLOptions..PanelMiddle..RadioGroupLanguage....Items.Strings
 #: fGLOptions.dfm:37
 msgid "Russian"
-msgstr ""
+msgstr "Русский"
 
 #. GLOptions..PanelMiddle..RadioGroupLanguage....Items.Strings
 #: fGLOptions.dfm:38
@@ -199,7 +199,7 @@ msgstr ""
 
 #: fGLOptions.pas:148
 msgid "Reload to change language"
-msgstr ""
+msgstr "Перезагрузите для изменения языка"
 
 #. MainForm..Caption
 #: fMain.dfm:4
@@ -318,7 +318,7 @@ msgstr "&Сохранить как..."
 #. MainForm..ActionManager..........Caption
 #: fMain.dfm:1046 fMain.dfm:1379 fMain.dfm:1616
 msgid "S&ave Textures..."
-msgstr ""
+msgstr "Сохранить текстуру"
 
 #. MainForm..ActionManager..............Caption
 #. MainForm..ActionManager..............Caption
@@ -395,7 +395,7 @@ msgstr ""
 #. MainForm..ActionManager..........Caption
 #: fMain.dfm:1123 fMain.dfm:1295 fMain.dfm:1444 fMain.dfm:1684
 msgid "&Hidden Lines"
-msgstr ""
+msgstr "Скрытые линии"
 
 #. MainForm..ActionManager..............Caption
 #. MainForm..ActionManager..........Caption
@@ -433,7 +433,7 @@ msgstr ""
 #. MainForm..ActionManager..........Caption
 #: fMain.dfm:1152 fMain.dfm:1470
 msgid "&View"
-msgstr ""
+msgstr "Вид"
 
 #. MainForm..ActionManager..............Caption
 #. MainForm..ActionManager..............Caption
@@ -527,13 +527,13 @@ msgstr ""
 #. MainForm..ActionManager..............Caption
 #: fMain.dfm:1240 fMain.dfm:1582
 msgid "&About..."
-msgstr ""
+msgstr "&О программе"
 
 #. MainForm..ActionManager..........Caption
 #. MainForm..ActionManager..........Caption
 #: fMain.dfm:1242 fMain.dfm:1584
 msgid "&Help"
-msgstr ""
+msgstr "&Справка"
 
 #. MainForm..ActionManager..................Caption
 #: fMain.dfm:1478
@@ -648,7 +648,7 @@ msgstr ""
 #. MainForm..ActionManager..acToolsOptions..Caption
 #: fMain.dfm:1790
 msgid "Options..."
-msgstr ""
+msgstr "Опции..."
 
 #. MainForm..ActionManager..acToolsOptions..Hint
 #: fMain.dfm:1791
@@ -747,7 +747,7 @@ msgstr ""
 #. MainForm..ActionManager..acFileOpen..Caption
 #: fMain.dfm:1905
 msgid "&Open..."
-msgstr ""
+msgstr "&Открыть..."
 
 #. MainForm..ActionManager..acFileOpen..Hint
 #: fMain.dfm:1907
@@ -896,7 +896,7 @@ msgstr "Правка"
 #. MainForm..ActionManager..acEditUndo..Caption
 #: fMain.dfm:1999
 msgid "&Undo"
-msgstr ""
+msgstr "&Отмена"
 
 #. MainForm..ActionManager..acEditUndo..Hint
 #: fMain.dfm:2000

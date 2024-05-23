@@ -1,27 +1,36 @@
 object FormBoxedin: TFormBoxedin
   Left = 62
   Top = 15
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Boxedin'
-  ClientHeight = 423
-  ClientWidth = 568
+  ClientHeight = 740
+  ClientWidth = 994
   Color = clGray
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer2: TGLSceneViewer
     Left = 0
-    Top = 65
-    Width = 568
-    Height = 358
+    Top = 114
+    Width = 994
+    Height = 626
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera2
     Buffer.BackgroundColor = 8404992
     Buffer.ShadeModel = smFlat
-    FieldOfView = 148.786758422851600000
+    FieldOfView = 161.848007202148400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -29,61 +38,93 @@ object FormBoxedin: TFormBoxedin
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 568
-    Height = 65
+    Width = 994
+    Height = 114
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitWidth = 560
     object Label1: TLabel
-      Left = 282
-      Top = 5
-      Width = 32
-      Height = 13
+      Left = 494
+      Top = 9
+      Width = 56
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Label1'
     end
     object Label2: TLabel
-      Left = 282
-      Top = 24
-      Width = 32
-      Height = 13
+      Left = 494
+      Top = 42
+      Width = 56
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Label2'
     end
     object Label3: TLabel
-      Left = 282
-      Top = 43
-      Width = 32
-      Height = 13
+      Left = 494
+      Top = 75
+      Width = 56
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Label3'
     end
     object Label4: TLabel
-      Left = 160
-      Top = 5
-      Width = 37
-      Height = 13
+      Left = 280
+      Top = 9
+      Width = 66
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Velocity'
     end
     object LabelFPS: TLabel
-      Left = 424
-      Top = 24
-      Width = 20
-      Height = 13
+      Left = 742
+      Top = 42
+      Width = 36
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'FPS'
     end
     object TrackBar1: TTrackBar
-      Left = 89
-      Top = 24
-      Width = 176
-      Height = 25
+      Left = 156
+      Top = 42
+      Width = 308
+      Height = 44
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Max = 50
       Position = 1
       TabOrder = 0
+      ThumbLength = 35
     end
     object Button1: TButton
-      Left = 8
-      Top = 24
-      Width = 75
-      Height = 25
+      Left = 14
+      Top = 42
+      Width = 131
+      Height = 44
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Reset'
       TabOrder = 1
       OnClick = Button1Click
@@ -92,7 +133,7 @@ object FormBoxedin: TFormBoxedin
   object GLScene1: TGLScene
     Left = 48
     Top = 88
-    object GLLightSource1: TGLLightSource
+    object LightSource1: TGLLightSource
       Ambient.Color = {000000001283003F9CC4403F0000803F}
       ConstAttenuation = 1.000000000000000000
       Diffuse.Color = {1283003F1283003F1283003F0000803F}
@@ -144,7 +185,7 @@ object FormBoxedin: TFormBoxedin
       Slices = 24
       Stacks = 24
     end
-    object GLLightSource2: TGLLightSource
+    object LightSource2: TGLLightSource
       Ambient.Color = {000000001283803E1283003F0000803F}
       ConstAttenuation = 1.000000000000000000
       Diffuse.Color = {BEC0403FBEC0403FBEC0403F0000803F}

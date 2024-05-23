@@ -32,7 +32,7 @@ uses
 type
   TFormBoxedin = class(TForm)
     GLScene1: TGLScene;
-    GLLightSource1: TGLLightSource;
+    LightSource1: TGLLightSource;
     DummyCube1: TGLDummyCube;
     FreeForm1: TGLFreeForm;
     Sphere1: TGLSphere;
@@ -43,7 +43,7 @@ type
     Timer1: TTimer;
     DummyCube2: TGLDummyCube;
     Sphere2: TGLSphere;
-    GLLightSource2: TGLLightSource;
+    LightSource2: TGLLightSource;
     Panel1: TPanel;
     Label1: TLabel;
     Label2: TLabel;

@@ -3,19 +3,22 @@ inherited GLOptions: TGLOptions
   Caption = 'Options'
   ClientHeight = 394
   ClientWidth = 521
+  StyleElements = [seFont, seClient, seBorder]
   OnClose = FormClose
-  ExplicitWidth = 545
-  ExplicitHeight = 458
+  ExplicitWidth = 537
+  ExplicitHeight = 433
   TextHeight = 20
   inherited PanelTop: TPanel
     Width = 521
-    ExplicitWidth = 492
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitWidth = 513
   end
   inherited PanelMiddle: TPanel
     Width = 521
     Height = 318
-    ExplicitWidth = 521
-    ExplicitHeight = 318
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitWidth = 513
+    ExplicitHeight = 293
     object Label1: TLabel [0]
       Left = 296
       Top = 33
@@ -27,8 +30,9 @@ inherited GLOptions: TGLOptions
       Width = 519
       Height = 316
       TabOrder = 2
-      ExplicitWidth = 519
-      ExplicitHeight = 316
+      StyleElements = [seFont, seClient, seBorder]
+      ExplicitWidth = 511
+      ExplicitHeight = 291
     end
     object CheckBoxAxis: TCheckBox
       Left = 96
@@ -74,8 +78,9 @@ inherited GLOptions: TGLOptions
   inherited PanelBottom: TPanel
     Top = 353
     Width = 521
-    ExplicitTop = 353
-    ExplicitWidth = 492
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitTop = 328
+    ExplicitWidth = 513
     inherited ButtonOK: TButton
       OnClick = ButtonOKClick
     end

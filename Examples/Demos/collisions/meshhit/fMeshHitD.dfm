@@ -1,53 +1,74 @@
 object FormMeshHit: TFormMeshHit
   Left = 108
   Top = 101
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Mesh Hit'
-  ClientHeight = 277
-  ClientWidth = 562
+  ClientHeight = 485
+  ClientWidth = 998
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object Label1: TLabel
-    Left = 8
-    Top = 8
-    Width = 78
-    Height = 13
+    Left = 14
+    Top = 14
+    Width = 141
+    Height = 24
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Orthogonal View'
   end
   object Label2: TLabel
-    Left = 280
-    Top = 8
-    Width = 82
-    Height = 13
+    Left = 490
+    Top = 14
+    Width = 145
+    Height = 24
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Perspective View'
   end
   object GLSceneViewer1: TGLSceneViewer
-    Left = 8
-    Top = 24
-    Width = 265
-    Height = 241
+    Left = 14
+    Top = 42
+    Width = 464
+    Height = 422
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clGray
-    FieldOfView = 170.512069702148400000
+    FieldOfView = 174.573181152343800000
     PenAsTouch = False
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
   end
   object GLSceneViewer2: TGLSceneViewer
-    Left = 285
-    Top = 27
-    Width = 265
-    Height = 241
+    Left = 499
+    Top = 47
+    Width = 464
+    Height = 422
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera2
     Buffer.BackgroundColor = clGray
-    FieldOfView = 134.929183959960900000
+    FieldOfView = 153.337402343750000000
     PenAsTouch = False
     OnMouseDown = GLSceneViewer2MouseDown
     OnMouseMove = GLSceneViewer2MouseMove

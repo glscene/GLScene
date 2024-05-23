@@ -30,7 +30,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   RayStart = AffineVectorMake(Random()*2 -1, Random()*2 -1, Random()*2 -1);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Button1Click(TObject *Sender)
+void __fastcall TForm1::ButtonTestClick(TObject *Sender)
 {
   TAffineVector iPnt, afScale ;
 	// Change pos.

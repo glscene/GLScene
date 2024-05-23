@@ -63,6 +63,7 @@ uses
   GLS.MeshBuilder,
   GLS.Navigator,
   GLS.Utils,
+  GLS.GeomObjects,
   GLS.SimpleNavigation,
 
   fGLForm,
@@ -70,8 +71,7 @@ uses
   fGLOptions,
   fGLDialog,
   dImages,
-  dDialogs,
-  GLS.GeomObjects;
+  dDialogs;
 
 type
   TFormGLSViewer = class(TGLForm)
@@ -1076,7 +1076,6 @@ begin
     GLPoints.Colors.AddPoint(Color);
   end;
 //  dcWorld.Remove(GLPoints, False);
-//  GLPoints := TGLPoints(dcWorld.AddNewChild(TGLPoints));
 end;
 
 (*

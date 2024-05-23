@@ -859,7 +859,7 @@ object FormPostShader: TFormPostShader
     end
     object WorldCube: TGLDummyCube
       CubeSize = 1.000000000000000000
-      object Fighter: TGLActor
+      object actFighter: TGLActor
         Material.MaterialLibrary = MaterialLibrary
         Material.LibMaterialName = 'Fighter'
         Position.Coordinates = {00001643000000000000A0410000803F}
@@ -867,21 +867,21 @@ object FormPostShader: TFormPostShader
         Interval = 100
         AutoCentering = [macCenterX, macCenterY, macCenterZ]
       end
-      object Teapot: TGLActor
+      object actTeapot: TGLActor
         Material.MaterialLibrary = MaterialLibrary
         Material.LibMaterialName = 'Fighter'
         Position.Coordinates = {000016C300000000000000000000803F}
         Interval = 100
         AutoCentering = [macCenterX, macCenterY, macCenterZ]
       end
-      object Sphere_big: TGLActor
+      object actSphere_big: TGLActor
         Material.MaterialLibrary = MaterialLibrary
         Material.LibMaterialName = 'Earth'
         Position.Coordinates = {00000000000016C3000000000000803F}
         Interval = 100
         AutoCentering = [macCenterX, macCenterY, macCenterZ]
       end
-      object Sphere_little: TGLActor
+      object actSphere_lit: TGLActor
         Material.MaterialLibrary = MaterialLibrary
         Material.LibMaterialName = 'Earth'
         Position.Coordinates = {0000000000001643000000000000803F}

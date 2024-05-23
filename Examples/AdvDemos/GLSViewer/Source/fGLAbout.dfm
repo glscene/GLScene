@@ -129,7 +129,7 @@ inherited GLAbout: TGLAbout
     ExplicitWidth = 498
     ExplicitHeight = 89
     object LabelVersion: TLabel
-      Left = 102
+      Left = 94
       Top = 63
       Width = 50
       Height = 20
@@ -141,6 +141,7 @@ inherited GLAbout: TGLAbout
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
+      ExplicitLeft = 102
     end
     object LabelGeoblock: TLabel
       Left = 102

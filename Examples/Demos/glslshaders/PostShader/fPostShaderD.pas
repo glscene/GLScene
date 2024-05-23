@@ -53,10 +53,10 @@ type
     LightMovingCheckBox: TCheckBox;
     GUICube: TGLDummyCube;
     WorldCube: TGLDummyCube;
-    Fighter: TGLActor;
-    Teapot: TGLActor;
-    Sphere_big: TGLActor;
-    Sphere_little: TGLActor;
+    actFighter: TGLActor;
+    actTeapot: TGLActor;
+    actSphere_big: TGLActor;
+    actSphere_lit: TGLActor;
     MaterialLibrary: TGLMaterialLibrary;
     TurnPitchrollCheckBox: TCheckBox;
     Panel2: TPanel;
@@ -156,22 +156,22 @@ begin
   // First load animated models with textures
   var Path: TFileName := GetCurrentAssetPath();
   SetCurrentDir(Path  + '\modelext');
-  Fighter.LoadFromFile('waste.md2'); // Fighter
-  Fighter.SwitchToAnimation(0, True);
-  Fighter.AnimationMode := aamLoop;
-  Fighter.Scale.Scale(2);
+  actFighter.LoadFromFile('waste.md2'); // Fighter
+  actFighter.SwitchToAnimation(0, True);
+  actFighter.AnimationMode := aamLoop;
+  actFighter.Scale.Scale(2);
   MaterialLibrary.LibMaterialByName('Fighter').Material.Texture.Image.LoadFromFile('Waste.jpg');
 
   // Loading static models
   SetCurrentDir(Path  + '\model');
-  Teapot.LoadFromFile('Teapot.3ds'); // Teapot (no texture coordinates)
-  Teapot.Scale.Scale(0.8);
+  actTeapot.LoadFromFile('Teapot.3ds'); // Teapot (no texture coordinates)
+  actTeapot.Scale.Scale(0.8);
 
-  Sphere_big.LoadFromFile('Sphere_big.3DS');
-  Sphere_big.Scale.Scale(70);
+  actSphere_big.LoadFromFile('Sphere_big.3DS');
+  actSphere_big.Scale.Scale(70);
 
-  Sphere_little.LoadFromFile('Sphere.3ds');
-  Sphere_little.Scale.Scale(4);
+  actSphere_lit.LoadFromFile('Sphere.3ds');
+  actSphere_lit.Scale.Scale(4);
 
   SetCurrentDir(Path  + '\map');
   MaterialLibrary.LibMaterialByName('Earth').Material.Texture.Image.LoadFromFile('earth.jpg');
@@ -264,11 +264,11 @@ begin
   Viewer.Invalidate;
   if TurnPitchrollCheckBox.Checked then
   begin
-    Fighter.Roll(20 * deltaTime);
-    Sphere_big.Pitch(40 * deltaTime);
-    Sphere_big.Turn(40 * deltaTime);
-    Sphere_little.Roll(40 * deltaTime);
-    Teapot.Roll(-20 * deltaTime);
+    actFighter.Roll(20 * deltaTime);
+    actSphere_big.Pitch(40 * deltaTime);
+    actSphere_big.Turn(40 * deltaTime);
+    actSphere_lit.Roll(40 * deltaTime);
+    actTeapot.Roll(-20 * deltaTime);
   end;
   if NightVisionShader.Enabled then
     NightVisionShader.ElapsedTime := newTime; // 20*deltaTime;

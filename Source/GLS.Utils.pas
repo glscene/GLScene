@@ -38,9 +38,8 @@ var
   IsDesignTime: Boolean = False;
   vProjectTargetName: TProjectTargetNameFunc;
 
-// Get a current path to asset
+// Get current path to assets from dir examples
 function GetCurrentAssetPath(): TFileName;
-
 // Copies the values of Source to Dest (converting word values to integer values)
 procedure WordToIntegerArray(Source: PWordArray; Dest: PIntegerArray;
   Count: Cardinal);

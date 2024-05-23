@@ -53,10 +53,10 @@ type
     LightMovingCheckBox: TCheckBox;
     GUICube: TGLDummyCube;
     WorldCube: TGLDummyCube;
-    Fighter: TGLActor;
-    Teapot: TGLActor;
-    Sphere_big: TGLActor;
-    Sphere_little: TGLActor;
+    actFighter: TGLActor;
+    actTeapot: TGLActor;
+    actSphere_big: TGLActor;
+    actSphere_lit: TGLActor;
     MaterialLibrary: TGLMaterialLibrary;
     RollPitchTurnCheckBox: TCheckBox;
     ShaderEnabledCheckBox: TCheckBox;
@@ -68,9 +68,8 @@ type
     UseNormalTextureCheckBox: TCheckBox;
     MyBumpShader: TGLSLBumpShader;
     TrinityMatlib: TGLMaterialLibrary;
-    GLCube: TGLCube;
-    GLDodecahedron: TGLDodecahedron;
-    GLSphere: TGLSphere;
+    Cube: TGLCube;
+    Dodecahedron: TGLDodecahedron;
     ShowNotGLSceneObjectsCheckBox: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure CadencerProgress(Sender: TObject; const DeltaTime, newTime: Double);
@@ -103,38 +102,38 @@ begin
   //First loading modelexts
   var Path: TFileName := GetCurrentAssetPath();
   SetCurrentDir(Path  + '\modelext');
-  Fighter.LoadFromFile('TRINITYrage.smd'); //Fighter
-  Fighter.AddDataFromFile('walk.smd');
-  Fighter.Animations[1].MakeSkeletalTranslationStatic;
-  Fighter.AddDataFromFile('run.smd');
-  Fighter.Animations[2].MakeSkeletalTranslationStatic;
-  Fighter.AddDataFromFile('long_jump.smd');
-  Fighter.AddDataFromFile('jump.smd');
-  Fighter.AddDataFromFile('look_left_right.smd');
-  Fighter.Animations[5].MakeSkeletalRotationDelta;
-  Fighter.SwitchToAnimation(1);
+  actFighter.LoadFromFile('TRINITYrage.smd'); //Fighter
+  actFighter.AddDataFromFile('walk.smd');
+  actFighter.Animations[1].MakeSkeletalTranslationStatic;
+  actFighter.AddDataFromFile('run.smd');
+  actFighter.Animations[2].MakeSkeletalTranslationStatic;
+  actFighter.AddDataFromFile('long_jump.smd');
+  actFighter.AddDataFromFile('jump.smd');
+  actFighter.AddDataFromFile('look_left_right.smd');
+  actFighter.Animations[5].MakeSkeletalRotationDelta;
+  actFighter.SwitchToAnimation(1);
 (*
   // or use a quake md2 model
-  Fighter.LoadFromFile('waste.md2'); //Fighter
-  Fighter.SwitchToAnimation(0, True);
-  Fighter.AnimationMode := aamLoop;
-  Fighter.Scale.Scale(3);
+  actFighter.LoadFromFile('waste.md2'); //Fighter
+  actFighter.SwitchToAnimation(0, True);
+  actFighter.AnimationMode := aamLoop;
+  actFighter.Scale.Scale(3);
 *)
-  Fighter.AnimationMode := aamLoop;
-  Fighter.Scale.Scale(3);
-//  Fighter.MeshObjects.BuildTangentSpace;
+  actFighter.AnimationMode := aamLoop;
+  actFighter.Scale.Scale(3);
+//  actFighter.MeshObjects.BuildTangentSpace;
 
   // Loading static models
   SetCurrentDir(Path  + '\model');
-  Teapot.LoadFromFile('Teapot.3ds'); //Teapot
-  Teapot.Scale.Scale(0.8);
-  //  Teapot.MeshObjects.BuildTangentSpace; does not have texture coordinates...
-  Sphere_big.LoadFromFile('Sphere_big.3DS'); //Sphere_big
-  Sphere_big.Scale.Scale(70);
-  Sphere_big.MeshObjects.BuildTangentSpace;
-  Sphere_little.LoadFromFile('Sphere.3ds'); //Sphere_little
-  Sphere_little.Scale.Scale(4);
-  Sphere_little.MeshObjects.BuildTangentSpace;
+  actTeapot.LoadFromFile('Teapot.3ds'); //Teapot
+  actTeapot.Scale.Scale(0.8);
+  // actTeapotTeapot.MeshObjects.BuildTangentSpace; does not have texture coordinates...
+  actSphere_big.LoadFromFile('Sphere_big.3DS'); //Sphere_big
+  actSphere_big.Scale.Scale(70);
+  actSphere_big.MeshObjects.BuildTangentSpace;
+  actSphere_lit.LoadFromFile('Sphere.3ds'); //Sphere_little
+  actSphere_lit.Scale.Scale(4);
+  actSphere_lit.MeshObjects.BuildTangentSpace;
 
   // Then load textures
   SetCurrentDir(Path + '\map');
@@ -218,11 +217,10 @@ end;
 procedure TFormBumpShader.ShowNotGLSceneObjectsCheckBoxClick(
   Sender: TObject);
 begin
-  Teapot.Visible := ShowNotGLSceneObjectsCheckBox.Checked;
-  Fighter.Visible := ShowNotGLSceneObjectsCheckBox.Checked;
-  GLCube.Visible := ShowNotGLSceneObjectsCheckBox.Checked;
-  GLDodecahedron.Visible := ShowNotGLSceneObjectsCheckBox.Checked;
-  GLSphere.Visible := ShowNotGLSceneObjectsCheckBox.Checked;
+  actTeapot.Visible := ShowNotGLSceneObjectsCheckBox.Checked;
+  actFighter.Visible := ShowNotGLSceneObjectsCheckBox.Checked;
+  Cube.Visible := ShowNotGLSceneObjectsCheckBox.Checked;
+  Dodecahedron.Visible := ShowNotGLSceneObjectsCheckBox.Checked;
 end;
 
 procedure TFormBumpShader.CadencerProgress(Sender: TObject; const DeltaTime, newTime: Double);
@@ -231,14 +229,13 @@ begin
 
   if RollPitchTurnCheckBox.Checked then
   begin
-    Sphere_big.Turn(DeltaTime * 40);
-    Sphere_big.Roll(DeltaTime * 40);
-    Sphere_little.Pitch(DeltaTime * 20);
-    Fighter.Roll(DeltaTime * 20);
-    Teapot.Roll(-DeltaTime * 10);
-    GLCube.Pitch(-DeltaTime * 10);
-    GLDodecahedron.Pitch(DeltaTime * 10);
-    GLSphere.Roll(-DeltaTime * 10);
+    actSphere_big.Turn(DeltaTime * 40);
+    actSphere_big.Roll(DeltaTime * 40);
+    actSphere_lit.Pitch(DeltaTime * 20);
+    actFighter.Roll(DeltaTime * 20);
+    actTeapot.Roll(-DeltaTime * 10);
+    Cube.Pitch(-DeltaTime * 10);
+    Dodecahedron.Pitch(DeltaTime * 10);
   end;
 end;
 

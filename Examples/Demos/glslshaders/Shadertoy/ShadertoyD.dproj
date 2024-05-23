@@ -94,7 +94,6 @@
         <DCCReference Include="fShadertoyD.pas">
             <Form>FormEiffie</Form>
         </DCCReference>
-        <None Include="..\..\..\..\Assets\Shader\eiffie_too-early.fp"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -128,12 +127,6 @@
                 <Platform value="Win64">False</Platform>
             </Platforms>
             <Deployment Version="4">
-                <DeployFile LocalName="..\..\..\..\Assets\Shader\eiffie_too-early.fp" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="ShadertoyD.exe" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="ShadertoyD.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">

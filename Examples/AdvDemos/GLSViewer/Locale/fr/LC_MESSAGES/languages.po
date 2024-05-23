@@ -22,7 +22,7 @@ msgid "Arabic"
 msgstr "Arabe"
 
 msgid "Chinese"
-msgstr ""
+msgstr "China"
 
 msgid "English"
 msgstr "Anglais"

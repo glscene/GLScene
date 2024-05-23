@@ -188,7 +188,7 @@ object FormDiffuseShader: TFormDiffuseShader
       object GLSphere1: TGLSphere
         Material.FrontProperties.Diffuse.Color = {E6E5653F8180003DCDCC4C3F0000803F}
         Material.FrontProperties.Emission.Color = {F4F3733FEEED6D3F000000000000803F}
-        Radius = 10.000000000000000000
+        Radius = 1.000000000000000000
       end
     end
     object LightCube2: TGLDummyCube
@@ -200,7 +200,6 @@ object FormDiffuseShader: TFormDiffuseShader
         ConstAttenuation = 1.000000000000000000
         Diffuse.Color = {DCD8583FC6BF3F3FDCD8583F0000803F}
         LightStyle = lsParallel
-        Shining = False
         Specular.Color = {0000803F0000003F0000003F0000803F}
         SpotCutOff = 180.000000000000000000
         SpotDirection.Coordinates = {0000C842000096430000C84200000000}
@@ -238,17 +237,18 @@ object FormDiffuseShader: TFormDiffuseShader
         Interval = 100
         AutoCentering = [macCenterX, macCenterY, macCenterZ]
       end
+      object Sphere: TGLActor
+        Material.MaterialLibrary = MaterialLibrary
+        Material.LibMaterialName = 'Earth'
+        Position.Coordinates = {0000000000001643000000000000803F}
+        Scale.Coordinates = {CDCCCC3DCDCCCC3DCDCCCC3D00000000}
+        Interval = 100
+        AutoCentering = [macCenterX, macCenterY, macCenterZ]
+      end
       object Sphere_big: TGLActor
         Material.MaterialLibrary = MaterialLibrary
         Material.LibMaterialName = 'Earth'
         Position.Coordinates = {00000000000016C3000000000000803F}
-        Interval = 100
-        AutoCentering = [macCenterX, macCenterY, macCenterZ]
-      end
-      object Sphere_little: TGLActor
-        Material.MaterialLibrary = MaterialLibrary
-        Material.LibMaterialName = 'Earth'
-        Position.Coordinates = {0000000000001643000000000000803F}
         Interval = 100
         AutoCentering = [macCenterX, macCenterY, macCenterZ]
       end
@@ -267,8 +267,8 @@ object FormDiffuseShader: TFormDiffuseShader
     Scene = Scene
     MaxDeltaTime = 0.020000000000000000
     OnProgress = CadencerProgress
-    Left = 24
-    Top = 56
+    Left = 136
+    Top = 14
   end
   object MaterialLibrary: TGLMaterialLibrary
     Materials = <
@@ -293,12 +293,12 @@ object FormDiffuseShader: TFormDiffuseShader
         Material.Texture.TextureMode = tmModulate
         Material.Texture.Disabled = False
       end>
-    Left = 24
-    Top = 88
+    Left = 52
+    Top = 158
   end
   object DiffuseSpecularShader: TGLSLDiffuseSpecularShader
     LightPower = 1.000000000000000000
-    Left = 56
+    Left = 294
     Top = 16
   end
   object GLSimpleNavigation1: TGLSimpleNavigation
@@ -318,7 +318,7 @@ object FormDiffuseShader: TFormDiffuseShader
         ShiftState = [ssRight]
         Action = snaMoveAroundTarget
       end>
-    Left = 56
-    Top = 56
+    Left = 294
+    Top = 112
   end
 end
