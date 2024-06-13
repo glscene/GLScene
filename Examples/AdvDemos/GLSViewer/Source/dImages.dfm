@@ -1,4 +1,4 @@
-object dmGLSViewer: TdmGLSViewer
+object DataModuleImages: TDataModuleImages
   Height = 623
   Width = 955
   PixelsPerInch = 168

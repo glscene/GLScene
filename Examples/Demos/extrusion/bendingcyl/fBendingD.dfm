@@ -1,26 +1,35 @@
 object FormBendingCyl: TFormBendingCyl
   Left = 270
   Top = 106
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   BorderWidth = 3
   Caption = 'Bending Cylinder'
-  ClientHeight = 361
-  ClientWidth = 516
+  ClientHeight = 632
+  ClientWidth = 903
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 516
-    Height = 361
+    Width = 903
+    Height = 632
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 149.033645629882800000
+    FieldOfView = 162.017501831054700000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -28,33 +37,45 @@ object FormBendingCyl: TFormBendingCyl
     TabOrder = 0
   end
   object CBSpline: TCheckBox
-    Left = 112
-    Top = 8
-    Width = 57
-    Height = 17
+    Left = 196
+    Top = 14
+    Width = 100
+    Height = 30
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Splines'
     TabOrder = 1
     OnClick = CBSplineClick
   end
   object CBFat: TCheckBox
-    Left = 200
-    Top = 8
-    Width = 57
-    Height = 17
+    Left = 350
+    Top = 14
+    Width = 100
+    Height = 30
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Fat/Slim'
     TabOrder = 2
   end
   object PanelFPS: TPanel
-    Left = 288
-    Top = 8
-    Width = 129
-    Height = 17
+    Left = 504
+    Top = 14
+    Width = 226
+    Height = 30
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'FPS'
     TabOrder = 3
   end
   object GLScene1: TGLScene
-    Left = 8
-    Top = 8
+    Left = 64
+    Top = 22
     object GLLightSource1: TGLLightSource
       ConstAttenuation = 1.000000000000000000
       Position.Coordinates = {0000484200004842000048420000803F}
@@ -179,12 +200,12 @@ object FormBendingCyl: TFormBendingCyl
   object GLCadencer1: TGLCadencer
     Scene = GLScene1
     OnProgress = GLCadencer1Progress
-    Left = 40
-    Top = 8
+    Left = 166
+    Top = 134
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer
-    Left = 8
-    Top = 40
+    Left = 50
+    Top = 124
   end
 end

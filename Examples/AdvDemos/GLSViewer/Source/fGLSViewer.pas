@@ -57,7 +57,6 @@ uses
   GLS.PersistentClasses,
   GLS.MeshUtils,
   GLS.VectorTypes,
-  GnuGettext,
   GLS.AsyncTimer,
   GLS.Graph,
   GLS.MeshBuilder,
@@ -65,13 +64,19 @@ uses
   GLS.Utils,
   GLS.GeomObjects,
   GLS.SimpleNavigation,
+  GLS.Extrusion,
+  GLS.MultiPolygon,
+  GLS.FileTGA,
+  GLS.Tree,
 
   fGLForm,
   fGLAbout,
   fGLOptions,
   fGLDialog,
   dImages,
-  dDialogs;
+  dDialogs,
+
+  GnuGettext;
 
 type
   TFormGLSViewer = class(TGLForm)
@@ -141,7 +146,7 @@ type
     dcWorld: TGLDummyCube;
     XYZGrid: TGLXYZGrid;
     acToolsNaviCube: TAction;
-    GLPoints: TGLPoints;
+    Points: TGLPoints;
     acToolsInfo: TAction;
     GLSimpleNavigation: TGLSimpleNavigation;
     acSpheres: TAction;
@@ -152,6 +157,11 @@ type
     acLoadTreeView: TAction;
     OpenDialog: TOpenDialog;
     SaveDialog: TSaveDialog;
+    Pipe: TGLPipe;
+    Torus: TGLTorus;
+    Teapot: TGLTeapot;
+    Tree: TGLTree;
+    MLTree: TGLMaterialLibrary;
     procedure AsyncTimerTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure snViewerMouseDown(Sender: TObject; Button: TMouseButton;
@@ -212,7 +222,7 @@ type
     procedure acSpheresExecute(Sender: TObject);
   private
     AssetPath: TFileName;
-
+    TextureDir: TFileName;
     Lines: TGLLines;
     Plane: TGLPlane;
     Polygon: TGLPolygon;
@@ -231,8 +241,11 @@ type
     SuperEllipsoid: TGLSuperEllipsoid;
 
     Annulus: TGLAnnulus;
-
-    Torus: TGLTorus;
+    ArrowLine: TGLArrowLine;
+    ArrowArc: TGLArrowArc;
+    MultiPolygon: TGLMultiPolygon;
+    RevolutionSolid: TGLRevolutionSolid;
+    ExtrusionSolid: TGLExtrusionSolid;
 
     procedure DoResetCamera;
     procedure SetupFreeFormShading;
@@ -249,10 +262,9 @@ type
     hlShader: TGLShader;
     lastFileName: String;
     lastLoadWithTextures: Boolean;
-    Points: TGLPoints;
     procedure ApplyBgColor;
     procedure ReadIniFile; override;
-    procedure WriteIniFile; override;
+    procedure WriteIniFile;
   end;
 
 var
@@ -344,6 +356,8 @@ procedure TFormGLSViewer.FormCreate(Sender: TObject);
 begin
   inherited;
   AssetPath := GetCurrentAssetPath();
+  TextureDir := AssetPath + '\texture';
+  SetCurrentDir(TextureDir);
 
   NaviCube := TGLNaviCube.CreateAsChild(Scene.Objects);
   NaviCube.SceneViewer := snViewer;
@@ -976,7 +990,7 @@ end;
 
 procedure TFormGLSViewer.acToolsOptionsExecute(Sender: TObject);
 begin
-  with TGLOptions.Create(Self) do
+  with TFormOptions.Create(Self) do
     try
       ShowModal;
     finally
@@ -1047,8 +1061,9 @@ begin
   snViewer.Invalidate;
 end;
 
-
+//------------------------------------------------------
 // Show Base and Additional Objects
+//------------------------------------------------------
 procedure TFormGLSViewer.acPointsExecute(Sender: TObject);
 var
   I: Integer;
@@ -1058,22 +1073,21 @@ var
 
 begin
   NumPoints := 10000;
-  GLPoints := TGLPoints(dcWorld.AddNewChild(TGLPoints));
-  GLPoints.Size := 5.0;
-  GLPoints.Style := psSmooth;
+  Points := TGLPoints(dcWorld.AddNewChild(TGLPoints));
+  Points.Size := 5.0;
+  Points.Style := psSmooth;
   for I := 0 to NumPoints - 1 do
   begin
+    X := Random(20) - 10;
+    Y := Random(20) - 10;
+    Z := Random(20) - 10;
+
+    Points.Positions.Add(X * 0.05, Y * 0.05, Z * 0.05);
+    // Fill array of GLPoints
     Color.X := Random();
     Color.Y := Random();
     Color.Z := Random();
-
-    X := Random(10) - 5;
-    Y := Random(10) - 5;
-    Z := Random(10) - 5;
-
-    GLPoints.Positions.Add(X * 0.05, Y * 0.05, Z * 0.05);
-    // Fill array of GLPoints
-    GLPoints.Colors.AddPoint(Color);
+    Points.Colors.AddPoint(Color);
   end;
 //  dcWorld.Remove(GLPoints, False);
 end;
@@ -1088,7 +1102,7 @@ var
 
 begin
   NumPoints := 10000;
-  GLPoints := TGLPoints(dcWorld.AddNewChild(TGLPoints));
+  Points := TGLPoints(dcWorld.AddNewChild(TGLPoints));
   for I := 0 to NumPoints - 1 do
   begin
     Color.X := Random();
@@ -1099,7 +1113,7 @@ begin
     Y := Random(100) - 50;
     Z := Random(100) - 50;
 
-    GLPoints.Positions.Add(X * 0.05, Y * 0.05, Z * 0.05);
+    Points.Positions.Add(X * 0.05, Y * 0.05, Z * 0.05);
     // Fill array of GLPoints
   end;
 end;
@@ -1142,18 +1156,25 @@ end;
 
 //---------------------------------------------------------------------------
 procedure TFormGLSViewer.tvSceneClick(Sender: TObject);
-
+var
+  I: Integer;
 begin
   dcObject.DeleteChildren;
-  if tvScene.Selected.Text = 'Cube' then; // another choice
 
+  // Visibility of all dcWorld.Children
+  for I := 0 to dcWorld.Count -1 do
+    (dcWorld.Children[I] as TGLBaseSceneObject).Visible := False;
+
+  if tvScene.Selected.Text = 'Cube' then; // may be as another choice
   case tvScene.Selected.SelectedIndex of
-    4: //Points
+    4: //Points in dcWorld
     begin
+      Points.Visible := True;
       acPointsExecute(Sender);
     end;
     5: //Lines
     begin
+      // RandomFrom([100])
       Lines := TGLLines.CreateAsChild(dcObject);
       Lines.Material.FrontProperties.Diffuse.RandomColor();
     end;
@@ -1171,21 +1192,18 @@ begin
     8: // Cube
     begin
       Cube := TGLCube.CreateAsChild(dcObject);
-      Cube.Position.SetPoint(0, 0, Random(3));
+    //  Cube.Position.SetPoint(0, 0, Random(3));
       Cube.Material.FrontProperties.Diffuse.RandomColor();
     end;
     9: // Frustrum
     begin
       Frustrum := TGLFrustrum.CreateAsChild(dcObject);
-      Frustrum.Position.SetPoint(0, 0, Random(3));
-      // Frustrum.Material.FrontProperties.Diffuse.Color := clrBlue;
       Frustrum.Material.FrontProperties.Diffuse.RandomColor();
       //;
     end;
     10: // Sphere
     begin
       Sphere := TGLSphere.CreateAsChild(dcObject);
-      Sphere.Position.SetPoint(0, 0, Random(3));
       // Sphere.Material.FrontProperties.Diffuse.Color := clrBlue;
       Sphere.Material.FrontProperties.Diffuse.RandomColor();
     end;
@@ -1223,36 +1241,81 @@ begin
     begin
       Hexahedron := TGLHexahedron.CreateAsChild(dcObject);
       Hexahedron.Material.FrontProperties.Diffuse.RandomColor();
+      Hexahedron.Scale.SetVector(0.5,0.5,0.5);
     end;
     18: // Octahedron
     begin
       Octahedron := TGLOctahedron.CreateAsChild(dcObject);
-      Octahedron.Material.FrontProperties.Diffuse.Color := clrRed;
+      Octahedron.Material.BackProperties.Diffuse.Color := clrRed;
+      Octahedron.Scale.SetVector(0.5,0.5,0.5);
     end;
     19: // Tetrahedron
     begin
       Tetrahedron := TGLTetrahedron.CreateAsChild(dcObject);
-      Tetrahedron.Material.FrontProperties.Diffuse.RandomColor();
+      Tetrahedron.Material.BackProperties.Diffuse.RandomColor();
     end;
     20: // SuperEllipsoid
     begin
       SuperEllipsoid := TGLSuperEllipsoid.CreateAsChild(dcObject);
       SuperEllipsoid.Material.FrontProperties.Diffuse.Color := clrTeal;
     end;
-    //21...
+    //21... Animated sprite
+    22: // ArrowLine
+    begin
+      ArrowLine := TGLArrowLine.CreateAsChild(dcObject);
+      ArrowLine.Material.FrontProperties.Diffuse.RandomColor();
+    end;
+    23: // ArrowArc
+    begin
+      ArrowArc := TGLArrowArc.CreateAsChild(dcObject);
+      ArrowArc.Material.FrontProperties.Diffuse.RandomColor();
+    end;
     24: // Annulus
     begin
       Annulus := TGLAnnulus.CreateAsChild(dcObject);
       Annulus.Material.FrontProperties.Diffuse.RandomColor();
     end;
-    29: // Torus
+    25: // ExtrusionSolid
     begin
-      Torus := TGLTorus.CreateAsChild(dcObject);
+      ExtrusionSolid := TGLExtrusionSolid.CreateAsChild(dcObject);
+      ExtrusionSolid.Material.FrontProperties.Diffuse.RandomColor();
+    end;
+    26: // MultiPolygon
+    begin
+      MultiPolygon := TGLMultiPolygon.CreateAsChild(dcObject);
+      MultiPolygon.Material.FrontProperties.Diffuse.RandomColor();
+    end;
+    27: // Pipe in dcWorld
+    begin
+      Pipe.Visible := True;
+      Pipe.Material.FrontProperties.Diffuse.RandomColor();
+    end;
+    28: // RevolutionSolid
+    begin
+      RevolutionSolid := TGLRevolutionSolid.CreateAsChild(dcObject);
+      RevolutionSolid.Material.FrontProperties.Diffuse.RandomColor();
+    end;
+    29: // Torus in dcWorld
+    begin
+      Torus.Visible := True;
       Torus.Material.FrontProperties.Diffuse.RandomColor();
     end;
+    // 30...
+    79: // Teapot in dcWorld
+    begin
+      Teapot.Visible := True;
+      Teapot.Material.FrontProperties.Diffuse.RandomColor();
+      Teapot.Scale.SetVector(1.5,1.5,1.5);
+    end;
+    80: // Tree in dcWorld
+    begin
+      Tree.Visible := True;
+      Tree.Scale.SetVector(0.5,0.5,0.5);
+      MLTree.AddTextureMaterial('TreeBark', 'zbark_016.jpg').Material.Texture.TextureMode := tmModulate;
+      MLTree.AddTextureMaterial('LeafTexture', 'leaf.tga').Material.Texture.TextureMode := tmModulate;
+      MLTree.AddTextureMaterial('FrutTexture', 'maple_multi.tga').Material.Texture.TextureMode := tmModulate;
+    end;
   end;
-  //  and so on
-//  end;
 end;
 
 procedure TFormGLSViewer.ReadIniFile;

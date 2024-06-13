@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2023-01-02 19:19+0300\n"
-"PO-Revision-Date: 2024-05-23 13:47+0300\n"
+"PO-Revision-Date: 2024-05-29 18:17+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -44,7 +44,7 @@ msgstr ""
 #. GLAbout..Caption
 #: fGLAbout.dfm:2
 msgid "About"
-msgstr "О программе"
+msgstr "&О программе"
 
 #. GLAbout..PanelTop..LabelVersion..Caption
 #: fGLAbout.dfm:137
@@ -195,7 +195,7 @@ msgstr "Итальянский"
 #. GLOptions..PanelMiddle..PanelBackground..Hint
 #: fGLOptions.dfm:50
 msgid "Click to change background colour"
-msgstr ""
+msgstr "Щелкните изменить цвет фона"
 
 #: fGLOptions.pas:148
 msgid "Reload to change language"
@@ -318,7 +318,7 @@ msgstr "&Сохранить как..."
 #. MainForm..ActionManager..........Caption
 #: fMain.dfm:1046 fMain.dfm:1379 fMain.dfm:1616
 msgid "S&ave Textures..."
-msgstr "Сохранить текстуру"
+msgstr "&Сохранить текстуру"
 
 #. MainForm..ActionManager..............Caption
 #. MainForm..ActionManager..............Caption
@@ -366,12 +366,12 @@ msgstr "&Правка"
 #. MainForm..ActionManager..........Caption
 #: fMain.dfm:1097 fMain.dfm:1728
 msgid "&Points"
-msgstr ""
+msgstr "&Точки"
 
 #. MainForm..ActionManager..............Caption
 #: fMain.dfm:1102
 msgid "Sph&eres"
-msgstr ""
+msgstr "&Сферы"
 
 #. MainForm..ActionManager..............Caption
 #. MainForm..ActionManager..........Caption
@@ -395,7 +395,7 @@ msgstr ""
 #. MainForm..ActionManager..........Caption
 #: fMain.dfm:1123 fMain.dfm:1295 fMain.dfm:1444 fMain.dfm:1684
 msgid "&Hidden Lines"
-msgstr "Скрытые линии"
+msgstr "&Скрытые линии"
 
 #. MainForm..ActionManager..............Caption
 #. MainForm..ActionManager..........Caption
@@ -403,7 +403,7 @@ msgstr "Скрытые линии"
 #. MainForm..ActionManager..........Caption
 #: fMain.dfm:1128 fMain.dfm:1301 fMain.dfm:1449 fMain.dfm:1690
 msgid "&Wireframe"
-msgstr ""
+msgstr "&Каркас"
 
 #. MainForm..ActionManager..............Caption
 #. MainForm..ActionManager..........Caption
@@ -503,13 +503,13 @@ msgstr "&Освещение"
 #. MainForm..ActionManager..........Caption
 #: fMain.dfm:1206 fMain.dfm:1717
 msgid "&Navi Cube"
-msgstr ""
+msgstr "&Куб навигации"
 
 #. MainForm..ActionManager..............Caption
 #. MainForm..ActionManager..............Caption
 #: fMain.dfm:1214 fMain.dfm:1556
 msgid "&Show FPS"
-msgstr ""
+msgstr "&Показать ЧКС"
 
 #. MainForm..ActionManager..........Caption
 #. MainForm..ActionManager..........Caption
@@ -602,7 +602,7 @@ msgstr ""
 #. MainForm..ActionManager..acOptimizeMesh..Caption
 #: fMain.dfm:1760
 msgid "Optimize Mesh"
-msgstr ""
+msgstr "Оптимизировать меш"
 
 #. MainForm..ActionManager..acOptimizeMesh..Hint
 #: fMain.dfm:1761
@@ -612,7 +612,7 @@ msgstr ""
 #. MainForm..ActionManager..acProcessInvertNormals..Caption
 #: fMain.dfm:1766
 msgid "Invert Normals"
-msgstr ""
+msgstr "Инвертировать нормали"
 
 #. MainForm..ActionManager..acProcessInvertNormals..Hint
 #: fMain.dfm:1767
@@ -724,7 +724,7 @@ msgstr ""
 #. MainForm..ActionManager..acViewWireFrame..Hint
 #: fMain.dfm:1875 fMain.dfm:1878
 msgid "Wireframe"
-msgstr ""
+msgstr "Каркас"
 
 #. MainForm..ActionManager..acViewZoomIn..Caption
 #. MainForm..ActionManager..acViewZoomIn..Hint
@@ -782,7 +782,7 @@ msgstr "Сокранить как..."
 #. MainForm..ActionManager..acFileSaveAs..Hint
 #: fMain.dfm:1927
 msgid "Save as"
-msgstr ""
+msgstr "Сохранить как"
 
 #. MainForm..ActionManager..acFileSaveTextures..Caption
 #: fMain.dfm:1934
@@ -792,13 +792,13 @@ msgstr ""
 #. MainForm..ActionManager..acFileSaveTextures..Hint
 #: fMain.dfm:1936
 msgid "Save textures..."
-msgstr ""
+msgstr "Сохранить текстуры..."
 
 #. MainForm..ActionManager..acFileExit..Caption
 #. MainForm..ActionManager..acFileExit..Hint
 #: fMain.dfm:1941 fMain.dfm:1942
 msgid "Exit"
-msgstr ""
+msgstr "Выход"
 
 #. MainForm..ActionManager..acHelpContents..Caption
 #: fMain.dfm:1947
@@ -926,7 +926,7 @@ msgstr ""
 #. MainForm..ActionManager..acEditPaste..Caption
 #: fMain.dfm:2020
 msgid "&Paste"
-msgstr ""
+msgstr "&Вставка"
 
 #. MainForm..ActionManager..acEditPaste..Hint
 #: fMain.dfm:2021
@@ -946,7 +946,7 @@ msgstr ""
 #. MainForm..ActionManager..acEditDelete..Caption
 #: fMain.dfm:2033
 msgid "&Delete"
-msgstr ""
+msgstr "&Удалить"
 
 #. MainForm..ActionManager..acEditDelete..Hint
 #: fMain.dfm:2034
@@ -982,7 +982,7 @@ msgstr "Точки"
 #. MainForm..ActionManager..acToolsInfo..Caption
 #: fMain.dfm:2068
 msgid "Info..."
-msgstr ""
+msgstr "Инфо..."
 
 #. MainForm..ActionManager..acToolsInfo..Hint
 #: fMain.dfm:2069

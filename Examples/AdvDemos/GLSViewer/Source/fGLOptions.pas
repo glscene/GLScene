@@ -24,7 +24,7 @@ uses
   fGLDialog;
 
 type
-  TGLOptions = class(TGLDialog)
+  TFormOptions = class(TGLDialog)
     CheckBoxAxis: TCheckBox;
     Label1: TLabel;
     PanelBackground: TPanel;
@@ -36,16 +36,14 @@ type
     procedure PanelBackgroundClick(Sender: TObject);
     procedure CheckBoxAxisClick(Sender: TObject);
   private
-     
   public
-     
     CurLangID : Word;
     procedure ReadIniFile; override;
-    procedure WriteIniFile; override;
+    procedure WriteIniFile;
   end;
 
 var
-  GLOptions: TGLOptions;
+  FormOptions: TFormOptions;
 
 //---------------------------------------------------------------------------
 implementation
@@ -57,19 +55,19 @@ uses
   fGLSViewer;
 
 
-procedure TGLOptions.FormCreate(Sender: TObject);
+procedure TFormOptions.FormCreate(Sender: TObject);
 begin
   inherited;
   ReadIniFile;
 end;
 
-procedure TGLOptions.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TFormOptions.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   WriteIniFile;
   inherited;
 end;
 
-procedure TGLOptions.ReadIniFile;
+procedure TFormOptions.ReadIniFile;
 begin
   inherited;
   IniFile := TIniFile.Create(ChangeFileExt(ParamStr(0), '.ini'));
@@ -82,9 +80,7 @@ begin
         LANG_ENGLISH : RadioGroupLanguage.ItemIndex := 0;
         LANG_RUSSIAN : RadioGroupLanguage.ItemIndex := 1;
         LANG_SPANISH : RadioGroupLanguage.ItemIndex := 2;
-        LANG_FRENCH  : RadioGroupLanguage.ItemIndex := 3;
-        LANG_GERMAN  : RadioGroupLanguage.ItemIndex := 4;
-        LANG_ITALIAN : RadioGroupLanguage.ItemIndex := 5;
+        LANG_ITALIAN : RadioGroupLanguage.ItemIndex := 3;
         else
           RadioGroupLanguage.ItemIndex := 0;
       end;
@@ -93,21 +89,19 @@ begin
     end;
 end;
 
-procedure TGLOptions.RadioGroupLanguageClick(Sender: TObject);
+procedure TFormOptions.RadioGroupLanguageClick(Sender: TObject);
 begin
   case RadioGroupLanguage.ItemIndex of
     0: CurLangID := LANG_ENGLISH;
     1: CurLangID := LANG_RUSSIAN;
     2: CurLangID := LANG_SPANISH;
-    3: CurLangID := LANG_FRENCH;
-    4: CurLangID := LANG_GERMAN;
-    5: CurLangID := LANG_ITALIAN;
+    3: CurLangID := LANG_ITALIAN;
     else
       CurLangID := LANG_ENGLISH;
   end;
 end;
 
-procedure TGLOptions.WriteIniFile;
+procedure TFormOptions.WriteIniFile;
 begin
   IniFile := TIniFile.Create(ChangeFileExt(ParamStr(0), '.ini'));
   with IniFile do
@@ -121,7 +115,7 @@ begin
   inherited;
 end;
 
-procedure TGLOptions.CheckBoxAxisClick(Sender: TObject);
+procedure TFormOptions.CheckBoxAxisClick(Sender: TObject);
 begin
   if CheckBoxAxis.Checked then
     FormGLSViewer.DCAxis.Visible := True
@@ -130,7 +124,7 @@ begin
 end;
 
 
-procedure TGLOptions.PanelBackgroundClick(Sender: TObject);
+procedure TFormOptions.PanelBackgroundClick(Sender: TObject);
 begin
    dmDialogs.ColorDialog.Color := PanelBackground.Color;
    if dmDialogs.ColorDialog.Execute then
@@ -140,14 +134,13 @@ begin
    end;
 end;
 
-procedure TGLOptions.ButtonOKClick(Sender: TObject);
+procedure TFormOptions.ButtonOKClick(Sender: TObject);
 var
   FileName: TFileName;
 begin
   if CurLangID <> LangID then
   begin
-    MessageDlg(_('Reload to change language'),
-      mtInformation, [mbOK], 0);
+    MessageDlg(_('Reload to change language'), mtInformation, [mbOK], 0);
     FileName := ChangeFileExt(ParamStr(0), '.ini');
     if FileExists(UpperCase(FileName)) then
       DeleteFile(UpperCase(FileName)); //to exclude dublicated sections for each language

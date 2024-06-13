@@ -50,27 +50,27 @@ inherited GLDialog: TGLDialog
     ExplicitTop = 296
     ExplicitWidth = 476
     object ButtonOK: TButton
-      Left = 144
+      Left = 126
       Top = 6
-      Width = 75
+      Width = 93
       Height = 25
       Caption = 'OK'
       ModalResult = 1
       TabOrder = 0
     end
     object ButtonCancel: TButton
-      Left = 256
+      Left = 238
       Top = 6
-      Width = 75
+      Width = 93
       Height = 25
       Caption = 'Cancel'
       ModalResult = 2
       TabOrder = 1
     end
     object ButtonHelp: TButton
-      Left = 360
+      Left = 337
       Top = 6
-      Width = 75
+      Width = 98
       Height = 25
       Caption = 'Help'
       TabOrder = 2

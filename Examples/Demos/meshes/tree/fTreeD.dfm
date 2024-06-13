@@ -447,7 +447,6 @@ object FormTree: TFormTree
       end
     end
     object GLFreeForm1: TGLFreeForm
-      Visible = False
       MaterialLibrary = GLMaterialLibrary1
     end
     object GLPlane1: TGLPlane

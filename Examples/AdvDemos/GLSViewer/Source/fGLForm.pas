@@ -27,7 +27,6 @@ type
   public
     IniFile : TIniFile;
     procedure ReadIniFile; virtual;
-    procedure WriteIniFile; virtual;
     procedure SetLanguage;
   end;
 
@@ -43,7 +42,6 @@ implementation
 //
 procedure TGLForm.FormCreate(Sender: TObject);
 begin
-  inherited;
   SetLanguage;
 end;
 
@@ -87,15 +85,10 @@ begin
         UseLanguage('es');
         Application.HelpFile := UpperCase(LocalePath + 'es'+ PathDelim+'GLSViewer.chm');
       end;
-      LANG_GERMAN:
+      LANG_PORTUGUESE:
       begin
-        UseLanguage('de');
-        Application.HelpFile := UpperCase(LocalePath + 'de'+ PathDelim+'GLSViewer.chm');
-      end;
-      LANG_FRENCH:
-      begin
-        UseLanguage('fr');
-        Application.HelpFile := UpperCase(LocalePath + 'fr'+ PathDelim+'GLSViewer.chm');
+        UseLanguage('it');
+        Application.HelpFile := UpperCase(LocalePath + 'it'+ PathDelim+'GLSViewer.chm');
       end
       else
       begin
@@ -123,16 +116,10 @@ begin
   IniFile := TIniFile.Create(ChangeFileExt(ParamStr(0), '.ini'));
   with IniFile do
     try
-      LangID := ReadInteger('GLOptions', 'RadioGroupLanguage', 0);
+      LangID := ReadInteger('FormOptions', 'RadioGroupLanguage', 0);
     finally
       IniFile.Free;
     end;
-end;
-
-
-procedure TGLForm.WriteIniFile;
-begin
-  //
 end;
 
 end.

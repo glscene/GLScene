@@ -1,0 +1,613 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2024-06-02 13:33\n"
+"PO-Revision-Date: 2024-06-04 16:33+0300\n"
+"Last-Translator: Somebody <your.email@address.com>\n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+
+#. FormAbout..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fAbout.dfm:9
+msgid "About"
+msgstr ""
+
+#. FormAbout..Font.Name
+#. FormAbout..Panel1..Font.Name
+#. FormAbout..PageControl..tsInfo..Panel2..Font.Name
+#. FormGalaktika..Font.Name
+#. FormGalaktika..PageControl1..tsDatacat..DBGrid..TitleFont.Name
+#. FormGL..Font.Name
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..Font.Name
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..lbEquals..Font.Name
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..lbMult1..Font.Name
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..lbMult2..Font.Name
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..lbMult3..Font.Name
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..lbMult4..Font.Name
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..lbDivide..Font.Name
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..Label1..Font.Name
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..ButtonCalculate..Font.Name
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..EditLc..Font.Name
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..EditLs..Font.Name
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..EditNs..Font.Name
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..EditNc..Font.Name
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..nbFl..Font.Name
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..nbFb..Font.Name
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..nbFn..Font.Name
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..nbDc..Font.Name
+#: D:/ASTRONOMY/AstrobloQ/src/fAbout.dfm:16
+#: D:/ASTRONOMY/AstrobloQ/src/fAbout.dfm:36
+#: D:/ASTRONOMY/AstrobloQ/src/fAbout.dfm:73
+#: D:/ASTRONOMY/AstrobloQ/src/fGalaktika.dfm:15
+#: D:/ASTRONOMY/AstrobloQ/src/fGalaktika.dfm:783
+#: D:/ASTRONOMY/AstrobloQ/src/fGLForm.dfm:11
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:413
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:440
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:457
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:474
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:491
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:508
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:526
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:545
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:563
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:582
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:602
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:623
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:644
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:679
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:701
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:723
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:772
+msgid "Segoe UI"
+msgstr ""
+
+#. FormAbout..Panel1..Caption
+#. FormGalaktika..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fAbout.dfm:32
+#: D:/ASTRONOMY/AstrobloQ/src/fGalaktika.dfm:8
+msgid "Galaktika"
+msgstr ""
+
+#. FormAbout..PageControl..tsInfo..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fAbout.dfm:58
+msgid "Info"
+msgstr ""
+
+#. FormAbout..PageControl..tsInfo..Panel2..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fAbout.dfm:69
+msgid "v. 0.1"
+msgstr ""
+
+#. FormAbout..PageControl..tsTools..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fAbout.dfm:56223
+msgid "Tools"
+msgstr ""
+
+#. FormAbout..PageControl..tsTools..DelphiButton..Hint
+#: D:/ASTRONOMY/AstrobloQ/src/fAbout.dfm:56231
+msgid "www.github.com"
+msgstr ""
+
+#. FormAbout..PageControl..tsTools..OGLImage..Hint
+#: D:/ASTRONOMY/AstrobloQ/src/fAbout.dfm:56354
+msgid "www.opengl.org"
+msgstr ""
+
+#. FormAbout..PageControl..tsTools..GLSImage..Hint
+#: D:/ASTRONOMY/AstrobloQ/src/fAbout.dfm:56413
+msgid "www.glscene.org"
+msgstr ""
+
+#. FormAbout..PageControl..tsDevelopers..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fAbout.dfm:63724
+msgid "Developers"
+msgstr ""
+
+#. FormAbout..PageControl..tsDevelopers..MemoDevelopers....Lines.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fAbout.dfm:63739
+msgid "Pavel Vassiliev"
+msgstr ""
+
+#. FormAbout..PageControl..tsDevelopers..MemoDevelopers....Lines.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fAbout.dfm:63740
+msgid "Lev Koptyaev"
+msgstr ""
+
+#. FormAbout..PageControl..tsDevelopers..MemoDevelopers....Lines.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fAbout.dfm:63741
+msgid "Danil Wasilyev"
+msgstr ""
+
+
+#. FormSettings..PanelBottom..ButtonOk..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:46
+msgid "Ok"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsInterface..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:117
+msgid "Interface"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsInterface..LabelProgram..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:129
+msgid "Location"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsInterface..LabelData..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:141
+msgid "Database"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsInterface..PanelExePath..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:154
+msgid "AstrobloQ.exe"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsInterface..ButtonBrowsePathData..Hint
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:175
+msgid "Browse|Browse the directory"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsInterface..ButtonBrowsePathData..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:180
+msgid "..."
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsInterface..CheckBoxLoadProject..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:194
+msgid "Loading at start"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsInterface..CheckBoxSaveProject..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:208
+msgid "Save on exit"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsInterface..cbSplashStart..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:222
+msgid "Show splash"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsInterface..rgLanguages..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:230
+msgid "Language"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsInterface..rgLanguages....Items.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:234
+msgid "English"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsInterface..rgLanguages....Items.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:235
+msgid "Russian"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsDisplay..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:245
+msgid "Display"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsDisplay..LabelBackground..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:257
+msgid "Background"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsDisplay..CheckBoxAxis..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:268
+msgid "Axis"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsDisplay..PanelBkg..Hint
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:278
+msgid "Click to change background colour"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsDisplay..CheckBoxCoordinates..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:298
+msgid "Coordinates"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsDisplay..cbxTwoSideLighting..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:312
+msgid "Twoside lighting"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsMaterial..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:321
+msgid "Material"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsMaterial..ListView......Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:336
+msgid "Model"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsMaterial..ListView......Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:343
+msgid "Table"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsMaterial..ButtonModifyMat..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:362
+msgid "Change..."
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:371
+msgid "Galaxy"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..LabelDiameter..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:383
+msgid "Radius"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:409
+msgid "Drake formula"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..lbEquals..Caption
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..StaticText2..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:436
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:755
+msgid "="
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..lbMult1..Caption
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..lbMult2..Caption
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..lbMult3..Caption
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..lbMult4..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:453
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:470
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:487
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:504
+msgid "*"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..lbDivide..Caption
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..Label1..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:521
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:540
+msgid "/"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..ButtonCalculate..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:559
+msgid "Calculate"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..EditLc..TextHint
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:587
+msgid "Avarage life time for civilisation"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..EditLs..Text
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:606
+msgid "10000000000"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..EditLs..TextHint
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:607
+msgid "Mean lifitime for planet"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..EditNs..Hint
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:614
+msgid "Number of stars in MW"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..EditNs..Text
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:627
+msgid "400000000000"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..EditNc..Hint
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:634
+msgid "Number os noospheres"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..StaticTextFl..Hint
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:656
+msgid "Fraction of stars with lithospheres"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..StaticTextFl..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:661
+msgid "Fl"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..StaticTextDc..Hint
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..StaticText2..Hint
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..StaticTextNc..Hint
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:737
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:750
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:789
+msgid "Number of noospheres"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..StaticTextDc..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:742
+msgid "Dc"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..PanelDrake..nbDc..Hint
+#. FormSettings..PanelMain..PageControl..tsFlights..PanelTitle..LabelDistance..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:763
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1135
+msgid "Distance"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..StaticTextNc..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:794
+msgid "Nc"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..StaticTextNs..Hint
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:802
+msgid "Number of galaxy stars"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..StaticTextNs..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:807
+msgid "Ns"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..StaticTextFb..Hint
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:817
+msgid "Fraction of planets with biospheres"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..StaticTextFb..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:822
+msgid "Fb"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..StaticTextFn..Hint
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:832
+msgid "Fraction of planets with noospheres"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..StaticTextFn..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:837
+msgid "Fn"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..StaticTextLc..Hint
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:847
+msgid "Mean lifetime of noospheres"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..StaticTextLc..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:852
+msgid "Lc"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..StaticTextLs..Hint
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:862
+msgid "Mean lifetime of stars"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGalaxy..grbDrakeFormula..StaticTextLs..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:867
+msgid "Ls"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsStars..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:879
+msgid "Stars"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsStars..chlbStarClasses..Font.Name
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:910
+msgid "Tahoma"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsStars..GroupBox2..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:935
+msgid "Constellations"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsStars..GroupBox2..chbConstFigures..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:946
+msgid "Figures"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsStars..GroupBox2..chbConstLines..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:958
+msgid "Lines"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsStars..GroupBox2..chbConstBounds..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:972
+msgid "Borders"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGeneral..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:982
+msgid "General"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGeneral..LabelPrecision..Caption
+#. FormSettings..PanelMain..PageControl..tsGeneral..SpinEditPrecision..Hint
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:994
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1074
+msgid "Precision"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGeneral..gbxCoordinateSys..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1005
+msgid "Coordinate system"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGeneral..gbxCoordinateSys..chbEquatorial..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1018
+msgid "Heliocentric"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGeneral..gbxCoordinateSys..CheckBox2..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1032
+msgid "Galactic"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGeneral..gbxCoordinateSys..CheckBox1..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1044
+msgid "Supergalactic"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGeneral..rgUnits..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1057
+msgid "Units"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGeneral..rgUnits....Items.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1060
+msgid "Astronomical unit"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGeneral..rgUnits....Items.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1061
+msgid "Light year"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGeneral..rgUnits....Items.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1062
+msgid "Kilolight year"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGeneral..rgUnits....Items.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1063
+msgid "Parsec"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsGeneral..rgUnits....Items.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1064
+msgid "Kiloparsec"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsFlights..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1090
+msgid "Flights"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsFlights..PanelTitle..LabelVelocity..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1146
+msgid "Velocity"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsFlights..PanelTitle..LabelFlightTime..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1157
+msgid "Flight time"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsFlights..PanelTitle..SearchBoxA..Text
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1171
+msgid "Sol"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsFlights..PanelTitle..SearchBoxB..Text
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1217
+msgid "TOI-700"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsFlights..PanelTitle..EditDistance..Text
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1231
+msgid "101.4"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsFlights..PanelTitle..stTrackBar..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1242
+msgid "TrackBar"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsFlights..PanelTitle..gbFindPath..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1254
+msgid "Shortest path"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsFlights..PanelTitle..gbFindPath..chbOnTetramesh..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1265
+msgid "Tetranet"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsFlights..PanelTitle..gbFindPath..chbAvoidHazards..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1277
+msgid "Polinet"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsFlights..PanelTitle..gbFindPath..CheckBox4..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1289
+msgid "Galagrid"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsPlanets..Caption
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1302
+msgid "Planets"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsPlanets..chlbPlanetsize....Items.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1316
+msgid "Jupiterlike"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsPlanets..chlbPlanetsize....Items.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1317
+msgid "Neptunelike"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsPlanets..chlbPlanetsize....Items.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1318
+msgid "Superearth"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsPlanets..chlbPlanetsize....Items.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1319
+msgid "Earthlike"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsPlanets..chlbPlanetsize....Items.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1320
+msgid "Plutolike"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsPlanets..CheckListBox1....Items.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1334
+msgid "Gaseous"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsPlanets..CheckListBox1....Items.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1335
+msgid "Watery"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsPlanets..CheckListBox1....Items.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1336
+msgid "Rocky"
+msgstr ""
+
+#. FormSettings..PanelMain..PageControl..tsPlanets..CheckListBox1....Items.Strings
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.dfm:1337
+msgid "Icy"
+msgstr ""
+
+#. --------------------------------------------------------
+#: D:/ASTRONOMY/AstrobloQ/src/fGalaktika.pas:526
+msgid "File exists. Can not overwrite"
+msgstr ""
+
+#: D:/ASTRONOMY/AstrobloQ/src/fSettings.pas:304
+msgid "Reload to change language"
+msgstr ""

@@ -137,14 +137,14 @@
         <DCCReference Include="Source\uGlobals.pas"/>
         <DCCReference Include="Source\uSettings.pas"/>
         <DCCReference Include="Source\dImages.pas">
-            <Form>dmGLSViewer</Form>
+            <Form>DataModuleImages</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="Source\fGLAbout.pas">
             <Form>GLAbout</Form>
         </DCCReference>
         <DCCReference Include="Source\fGLOptions.pas">
-            <Form>GLOptions</Form>
+            <Form>FormOptions</Form>
         </DCCReference>
         <DCCReference Include="Source\dDialogs.pas">
             <Form>dmDialogs</Form>

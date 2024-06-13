@@ -7,6 +7,8 @@ unit GLS.Extrusion;
   Suggestion:
     All extrusion objects use actually the same kind of "parts",
     one common type should do.
+  The registered class is:
+    [TGLRevolutionSolid, TGLExtrusionSolid, TGLPipe]
 *)
 interface
 

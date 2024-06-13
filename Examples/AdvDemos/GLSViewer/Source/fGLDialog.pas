@@ -28,12 +28,9 @@ type
     Memo: TMemo;
     procedure ButtonHelpClick(Sender: TObject);
   public
-     
     function Execute: boolean; virtual;
     procedure ReadIniFile; override;
-    procedure WriteIniFile; override;
   private
-     
   end;
 
 var
@@ -57,12 +54,6 @@ procedure TGLDialog.ReadIniFile;
 begin
   inherited;
   //
-end;
-
-procedure TGLDialog.WriteIniFile;
-begin
-  //
-  inherited;
 end;
 
 end.
