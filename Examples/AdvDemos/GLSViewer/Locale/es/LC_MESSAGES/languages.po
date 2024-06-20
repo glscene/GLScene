@@ -1,0 +1,62 @@
+# GLScene Languages.
+#
+# This file is distributed under the same license as GLScene
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# Pavel Vassiliev <glscene@gmail.com>, 2023
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: GLScene Languages\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"X-Generator: Poedit 1.8.6\n"
+
+msgid "Arabic"
+msgstr "Árabe"
+
+msgid "Chinese"
+msgstr ""
+
+msgid "English"
+msgstr "Inglés"
+
+#. Language of France
+msgid "French"
+msgstr "Francés"
+
+#. Language of Germany
+msgid "German"
+msgstr "Alemán"
+
+#. Language of Greece
+msgid "Greek"
+msgstr "Griego"
+
+#. Language of Italy
+msgid "Italian"
+msgstr "Italiano"
+
+#. Language of Iran
+msgid "Persian"
+msgstr "Persa"
+
+#. Language of Japan
+msgid "Japanese"
+msgstr "Japonés"
+
+#. Language of Portugal
+msgid "Portuguese"
+msgstr "Portugués"
+
+#. Language of Russia
+msgid "Russian"
+msgstr "Ruso"
+
+#. Language of Spain
+msgid "Spanish"
+msgstr "Español"

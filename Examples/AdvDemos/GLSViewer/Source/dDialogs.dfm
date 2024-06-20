@@ -19,7 +19,7 @@ object dmDialogs: TdmDialogs
   object SaveDialog: TSaveDialog
     Options = [ofHideReadOnly, ofPathMustExist, ofEnableSizing]
     Left = 238
-    Top = 154
+    Top = 26
   end
   object opDialog: TOpenPictureDialog
     Filter = 
@@ -41,8 +41,8 @@ object dmDialogs: TdmDialogs
   object ColorDialog: TColorDialog
     Color = 14540253
     Options = [cdFullOpen, cdAnyColor]
-    Left = 249
-    Top = 31
+    Left = 241
+    Top = 167
   end
   object OpenDialog: TOpenDialog
     Options = [ofHideReadOnly, ofFileMustExist, ofEnableSizing]

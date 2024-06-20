@@ -6,8 +6,8 @@ inherited FormOptions: TFormOptions
   Font.Height = -21
   StyleElements = [seFont, seClient, seBorder]
   OnClose = FormClose
-  ExplicitLeft = 2
-  ExplicitTop = 2
+  ExplicitLeft = 4
+  ExplicitTop = 4
   ExplicitWidth = 537
   ExplicitHeight = 352
   TextHeight = 25
@@ -59,13 +59,13 @@ inherited FormOptions: TFormOptions
       TabOrder = 1
       OnClick = PanelBackgroundClick
     end
-    object RadioGroupLanguage: TRadioGroup
+    object rgLanguage: TRadioGroup
       Left = 28
       Top = 84
       Width = 463
       Height = 127
       Caption = 'Language'
-      Columns = 2
+      Columns = 3
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
@@ -75,11 +75,10 @@ inherited FormOptions: TFormOptions
       Items.Strings = (
         'English'
         'Russian'
-        'Spanish'
-        'Italian')
+        'Spanish')
       ParentFont = False
       TabOrder = 3
-      OnClick = RadioGroupLanguageClick
+      OnClick = rgLanguageClick
     end
   end
   inherited PanelBottom: TPanel

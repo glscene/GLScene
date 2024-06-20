@@ -33,7 +33,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::OnHelloCommand(const TGLConsoleCommand *ConsoleCommand,
 		  const TGLCustomConsole *Console, TGLUserInputCommand &Command)
 {
-  Console->AddLine("Hi, dude!");
+  Console->AddLine();
 }
 
 //---------------------------------------------------------------------------

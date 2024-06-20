@@ -17,13 +17,14 @@ uses
   Vcl.VirtualImageList,
 
   GLS.BaseClasses,
-  GLS.Material;
+  GLS.Material, Vcl.Controls;
 
 type
   TDataModuleImages = class(TDataModule)
     VirtualImageList: TVirtualImageList;
     ImageCollection: TImageCollection;
     LightmapLib: TGLMaterialLibrary;
+    ImageListObjects: TImageList;
   private
 
   public

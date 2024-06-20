@@ -3,7 +3,10 @@ unit dDialogs;
 interface
 
 uses
-  System.SysUtils, System.Classes, Vcl.Dialogs, Vcl.ExtDlgs;
+  System.SysUtils,
+  System.Classes,
+  Vcl.Dialogs,
+  Vcl.ExtDlgs;
 
 type
   TdmDialogs = class(TDataModule)

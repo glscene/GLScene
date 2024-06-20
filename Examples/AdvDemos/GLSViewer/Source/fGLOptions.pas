@@ -28,10 +28,10 @@ type
     CheckBoxAxis: TCheckBox;
     Label1: TLabel;
     PanelBackground: TPanel;
-    RadioGroupLanguage: TRadioGroup;
+    rgLanguage: TRadioGroup;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure RadioGroupLanguageClick(Sender: TObject);
+    procedure rgLanguageClick(Sender: TObject);
     procedure ButtonOKClick(Sender: TObject);
     procedure PanelBackgroundClick(Sender: TObject);
     procedure CheckBoxAxisClick(Sender: TObject);
@@ -75,27 +75,25 @@ begin
     try
       CheckBoxAxis.Checked := ReadBool(Name, CheckBoxAxis.Name, True);
       PanelBackground.Color  := ReadInteger(Name, PanelBackground.Name, 0);
-      LangID := ReadInteger(Name, RadioGroupLanguage.Name, 0);
+      LangID := ReadInteger(Name, rgLanguage.Name, 0);
       case LangID of
-        LANG_ENGLISH : RadioGroupLanguage.ItemIndex := 0;
-        LANG_RUSSIAN : RadioGroupLanguage.ItemIndex := 1;
-        LANG_SPANISH : RadioGroupLanguage.ItemIndex := 2;
-        LANG_ITALIAN : RadioGroupLanguage.ItemIndex := 3;
+        LANG_ENGLISH : rgLanguage.ItemIndex := 0;
+        LANG_RUSSIAN : rgLanguage.ItemIndex := 1;
+        LANG_SPANISH : rgLanguage.ItemIndex := 2;
         else
-          RadioGroupLanguage.ItemIndex := 0;
+          rgLanguage.ItemIndex := 0;
       end;
     finally
       IniFile.Free;
     end;
 end;
 
-procedure TFormOptions.RadioGroupLanguageClick(Sender: TObject);
+procedure TFormOptions.rgLanguageClick(Sender: TObject);
 begin
-  case RadioGroupLanguage.ItemIndex of
+  case rgLanguage.ItemIndex of
     0: CurLangID := LANG_ENGLISH;
     1: CurLangID := LANG_RUSSIAN;
     2: CurLangID := LANG_SPANISH;
-    3: CurLangID := LANG_ITALIAN;
     else
       CurLangID := LANG_ENGLISH;
   end;
@@ -107,7 +105,7 @@ begin
   with IniFile do
     try
       WriteBool(Name, CheckBoxAxis.Name, CheckBoxAxis.Checked);
-      WriteInteger(Name, RadioGroupLanguage.Name, CurLangID);
+      WriteInteger(Name, rgLanguage.Name, CurLangID);
       WriteInteger(Name, PanelBackground.Name, PanelBackground.Color);
     finally
       IniFile.Free;

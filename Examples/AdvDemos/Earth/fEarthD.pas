@@ -60,7 +60,7 @@ type
     dcEarth: TGLDummyCube;
     dcMoon: TGLDummyCube;
     LensFlareSun: TGLLensFlare;
-    GLMatLib: TGLMaterialLibrary;
+    GLPlanetMaps: TGLMaterialLibrary;
     GLEarthCombiner: TGLTexCombineShader;
     Cameracontroller: TGLCamera;
     SkyDome: TGLSkyDome;
@@ -81,8 +81,8 @@ type
     PanelLeft: TPanel;
     tvPlanets: TTreeView;
     miConstLines: TMenuItem;
-    ImgVirtPlanets: TVirtualImageList;
-    ImgCollectionPlanets: TImageCollection;
+    VirtPlanetSymbols: TVirtualImageList;
+    PlanetSymbols: TImageCollection;
     sfMercury: TGLSphere;
     dcSolarSystem: TGLDummyCube;
     sfSun: TGLSphere;
@@ -184,8 +184,8 @@ procedure TFormEarth.GLSceneViewerBeforeRender(Sender: TObject);
 begin
   LensFlareSun.PreRender(Sender as TGLSceneBuffer);
   // if no multitexturing or no combiner support, turn off city lights
-  GLMatLib.Materials[0].Shader := GLEarthCombiner;
-  GLMatLib.Materials[0].Texture2Name := 'earthNight';
+  GLPlanetMaps.Materials[0].Shader := GLEarthCombiner;
+  GLPlanetMaps.Materials[0].Texture2Name := 'earthNight';
 end;
 
 //--------------------------------------------------------------------------------
@@ -636,9 +636,9 @@ begin
       begin
         GLSceneViewer.Cursor := crHourGlass;
         try
-          LoadHighResTexture(GLMatLib.Materials[0], 'earth_4096.jpg');
-          LoadHighResTexture(GLMatLib.Materials[1], 'earth_night_4096.jpg');
-          LoadHighResTexture(GLMatLib.Materials[2], 'moon_2048.jpg');
+          LoadHighResTexture(GLPlanetMaps.Materials[0], 'earth_4096.jpg');
+          LoadHighResTexture(GLPlanetMaps.Materials[1], 'earth_night_4096.jpg');
+          LoadHighResTexture(GLPlanetMaps.Materials[2], 'moon_2048.jpg');
           GLSceneViewer.Buffer.AntiAliasing := aa2x;
         finally
           GLSceneViewer.Cursor := crDefault;

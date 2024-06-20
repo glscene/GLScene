@@ -152,16 +152,16 @@ type
     acSpheres: TAction;
     PanelLeft: TPanel;
     tvScene: TTreeView;
-    ImageListObjects: TImageList;
     acSaveTreeView: TAction;
     acLoadTreeView: TAction;
-    OpenDialog: TOpenDialog;
-    SaveDialog: TSaveDialog;
     Pipe: TGLPipe;
     Torus: TGLTorus;
     Teapot: TGLTeapot;
     Tree: TGLTree;
     MLTree: TGLMaterialLibrary;
+    acClear: TAction;
+    acLandscape: TAction;
+    acRoom: TAction;
     procedure AsyncTimerTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure snViewerMouseDown(Sender: TObject; Button: TMouseButton;
@@ -220,6 +220,8 @@ type
     procedure acLoadTreeViewExecute(Sender: TObject);
     procedure tvSceneClick(Sender: TObject);
     procedure acSpheresExecute(Sender: TObject);
+    procedure acLandscapeExecute(Sender: TObject);
+    procedure acRoomExecute(Sender: TObject);
   private
     AssetPath: TFileName;
     TextureDir: TFileName;
@@ -816,6 +818,11 @@ begin
   ffObject.StructureChanged;
 end;
 
+procedure TFormGLSViewer.acRoomExecute(Sender: TObject);
+begin
+  // Room
+end;
+
 procedure TFormGLSViewer.acSaveAsUpdate(Sender: TObject);
 begin
   acFileSaveAs.Enabled := (ffObject.MeshObjects.Count > 0);
@@ -918,10 +925,9 @@ end;
 
 procedure TFormGLSViewer.acSaveTreeViewExecute(Sender: TObject);
 begin
-  if SaveDialog.Execute then
+  if dmDialogs.SaveDialog.Execute then
   begin
-    tvScene.SaveToFile(SaveDialog.FileName);
-//    CurrentStar := GetCurrentDir();
+    tvScene.SaveToFile(dmDialogs.SaveDialog.FileName);
   end;
 end;
 
@@ -929,6 +935,12 @@ procedure TFormGLSViewer.acSpheresExecute(Sender: TObject);
 begin
   inherited;
   // random spheres
+end;
+
+procedure TFormGLSViewer.acLandscapeExecute(Sender: TObject);
+begin
+  inherited;
+  // Hills
 end;
 
 procedure TFormGLSViewer.acLoadTreeViewExecute(Sender: TObject);

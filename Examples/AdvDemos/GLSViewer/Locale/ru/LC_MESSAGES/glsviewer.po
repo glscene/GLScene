@@ -1,0 +1,1337 @@
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2023-01-02 19:19+0300\n"
+"PO-Revision-Date: 2024-06-20 13:50+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 "
+"&& n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.4.4\n"
+"X-Poedit-Basepath: ../../../Source\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#. FormViewer..Caption
+#. FormGLSViewer..Caption
+#: fcGLSViewer.dfm:8 fGLSViewer.dfm:8
+msgid "GLSViewer"
+msgstr ""
+
+#. FormViewer..Font.Name
+#: fcGLSViewer.dfm:15
+msgid "Segoe UI"
+msgstr ""
+
+#. FormViewer..ControlBar..atbTools..Caption
+#. FormViewer..ActionManager..acToolsOptions..Category
+#. FormViewer..ActionManager..acToolsFaceCulling..Category
+#. FormViewer..ActionManager..acToolsTexturing..Category
+#. FormViewer..ActionManager..acToolsLighting..Category
+#. FormViewer..ActionManager..acToolsNaviCube..Category
+#. FormViewer..ActionManager..acToolsCustomize..Category
+#. FormViewer..ActionManager..acToolsShowFPS..Category
+#. FormViewer..ActionManager..acToolsInfo..Category
+#. FormGLSViewer..ControlBar..atbTools..Caption
+#. FormGLSViewer..ActionManager..acToolsOptions..Category
+#. FormGLSViewer..ActionManager..acToolsFaceCulling..Category
+#. FormGLSViewer..ActionManager..acToolsTexturing..Category
+#. FormGLSViewer..ActionManager..acToolsLighting..Category
+#. FormGLSViewer..ActionManager..acToolsNaviCube..Category
+#. FormGLSViewer..ActionManager..acToolsCustomize..Category
+#. FormGLSViewer..ActionManager..acToolsShowFPS..Category
+#. FormGLSViewer..ActionManager..acToolsInfo..Category
+#: fcGLSViewer.dfm:93 fcGLSViewer.dfm:1212 fcGLSViewer.dfm:1217
+#: fcGLSViewer.dfm:1221 fcGLSViewer.dfm:1228 fcGLSViewer.dfm:1235
+#: fcGLSViewer.dfm:1241 fcGLSViewer.dfm:1246 fcGLSViewer.dfm:1468
+#: fGLSViewer.dfm:210 fGLSViewer.dfm:1483 fGLSViewer.dfm:1489
+#: fGLSViewer.dfm:1494 fGLSViewer.dfm:1502 fGLSViewer.dfm:1510
+#: fGLSViewer.dfm:1517 fGLSViewer.dfm:1522 fGLSViewer.dfm:1768
+msgid "Tools"
+msgstr "Инструменты"
+
+#. FormViewer..ControlBar..atbTools..Font.Name
+#. FormViewer..ControlBar..atbView..Font.Name
+#. FormViewer..ControlBar..atbFile..Font.Name
+#. FormGLSViewer..ControlBar..atbTools..Font.Name
+#. FormGLSViewer..ControlBar..atbView..Font.Name
+#. FormGLSViewer..ControlBar..atbFile..Font.Name
+#: fcGLSViewer.dfm:102 fcGLSViewer.dfm:126 fcGLSViewer.dfm:150
+#: fGLSViewer.dfm:219 fGLSViewer.dfm:243 fGLSViewer.dfm:267
+msgid "Tahoma"
+msgstr ""
+
+#. FormViewer..ControlBar..atbView..Caption
+#. FormViewer..ActionManager..acViewSmoothShading..Category
+#. FormViewer..ActionManager..acViewFlatShading..Category
+#. FormViewer..ActionManager..acViewFlatLines..Category
+#. FormViewer..ActionManager..acViewHiddenLines..Category
+#. FormViewer..ActionManager..acViewWireFrame..Category
+#. FormViewer..ActionManager..acViewZoomIn..Category
+#. FormViewer..ActionManager..acViewZoomOut..Category
+#. FormViewer..ActionManager..acViewReset..Category
+#. FormViewer..ActionManager..acPoints..Category
+#. FormViewer..ActionManager..acSpheres..Category
+#. FormGLSViewer..ControlBar..atbView..Caption
+#. FormGLSViewer..ActionManager..acViewSmoothShading..Category
+#. FormGLSViewer..ActionManager..acViewFlatShading..Category
+#. FormGLSViewer..ActionManager..acViewFlatLines..Category
+#. FormGLSViewer..ActionManager..acViewHiddenLines..Category
+#. FormGLSViewer..ActionManager..acViewWireFrame..Category
+#. FormGLSViewer..ActionManager..acViewZoomIn..Category
+#. FormGLSViewer..ActionManager..acViewZoomOut..Category
+#. FormGLSViewer..ActionManager..acViewReset..Category
+#. FormGLSViewer..ActionManager..acPoints..Category
+#. FormGLSViewer..ActionManager..acSpheres..Category
+#. FormGLSViewer..ActionManager..acLandscape..Category
+#. FormGLSViewer..ActionManager..acRoom..Category
+#: fcGLSViewer.dfm:117 fcGLSViewer.dfm:1250 fcGLSViewer.dfm:1259
+#: fcGLSViewer.dfm:1268 fcGLSViewer.dfm:1277 fcGLSViewer.dfm:1286
+#: fcGLSViewer.dfm:1295 fcGLSViewer.dfm:1301 fcGLSViewer.dfm:1307
+#: fcGLSViewer.dfm:1462 fcGLSViewer.dfm:1474 fGLSViewer.dfm:234
+#: fGLSViewer.dfm:1527 fGLSViewer.dfm:1537 fGLSViewer.dfm:1547
+#: fGLSViewer.dfm:1557 fGLSViewer.dfm:1567 fGLSViewer.dfm:1577
+#: fGLSViewer.dfm:1584 fGLSViewer.dfm:1591 fGLSViewer.dfm:1761
+#: fGLSViewer.dfm:1775 fGLSViewer.dfm:1784 fGLSViewer.dfm:1789
+msgid "View"
+msgstr "Вид"
+
+#. FormViewer..ControlBar..atbFile..Caption
+#. FormViewer..ActionManager..acFileOpen..Category
+#. FormViewer..ActionManager..acFilePick..Category
+#. FormViewer..ActionManager..acFileOpenTexLib..Category
+#. FormViewer..ActionManager..acFileSaveAs..Category
+#. FormViewer..ActionManager..acFileSaveTextures..Category
+#. FormViewer..ActionManager..acSaveTreeView..Category
+#. FormViewer..ActionManager..acLoadTreeView..Category
+#. FormViewer..ActionManager..acFileExit..Category
+#. FormGLSViewer..ControlBar..atbFile..Caption
+#. FormGLSViewer..ActionManager..acFileOpen..Category
+#. FormGLSViewer..ActionManager..acFilePick..Category
+#. FormGLSViewer..ActionManager..acFileOpenTexLib..Category
+#. FormGLSViewer..ActionManager..acFileSaveAs..Category
+#. FormGLSViewer..ActionManager..acFileSaveTextures..Category
+#. FormGLSViewer..ActionManager..acSaveTreeView..Category
+#. FormGLSViewer..ActionManager..acLoadTreeView..Category
+#. FormGLSViewer..ActionManager..acFileExit..Category
+#: fcGLSViewer.dfm:141 fcGLSViewer.dfm:1313 fcGLSViewer.dfm:1320
+#: fcGLSViewer.dfm:1326 fcGLSViewer.dfm:1331 fcGLSViewer.dfm:1337
+#: fcGLSViewer.dfm:1343 fcGLSViewer.dfm:1347 fcGLSViewer.dfm:1351
+#: fGLSViewer.dfm:258 fGLSViewer.dfm:1598 fGLSViewer.dfm:1606
+#: fGLSViewer.dfm:1613 fGLSViewer.dfm:1619 fGLSViewer.dfm:1627
+#: fGLSViewer.dfm:1634 fGLSViewer.dfm:1639 fGLSViewer.dfm:1644
+msgid "File"
+msgstr "Файл"
+
+#. FormViewer..amMenuBar..Caption
+#. FormGLSViewer..amMenuBar..Caption
+#: fcGLSViewer.dfm:169 fGLSViewer.dfm:286
+msgid "ActionMainMenuBar"
+msgstr ""
+
+#. FormViewer..amMenuBar..Font.Name
+#. GLAbout..PanelTop..LabelVersion..Font.Name
+#. GLAbout..PanelMiddle..LabelCopyright..Font.Name
+#. GLAbout..PanelMiddle..FreeAndOpenSource..Font.Name
+#. FormOptions..PanelMiddle..rgLanguage..Font.Name
+#. FormGLSViewer..Font.Name
+#. FormGLSViewer..amMenuBar..Font.Name
+#: fcGLSViewer.dfm:178 fGLAbout.dfm:141 fGLAbout.dfm:187
+#: fGLAbout.dfm:2408 fGLOptions.dfm:72 fGLSViewer.dfm:15
+#: fGLSViewer.dfm:295
+msgid "MS Sans Serif"
+msgstr ""
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:499 fcGLSViewer.dfm:702 fcGLSViewer.dfm:803
+#: fcGLSViewer.dfm:1067 fcGLSViewer.dfm:1170 fGLSViewer.dfm:754
+#: fGLSViewer.dfm:968 fGLSViewer.dfm:1069 fGLSViewer.dfm:1333
+#: fGLSViewer.dfm:1436
+msgid "&Pick texture..."
+msgstr "&Загрузить текстуру..."
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:504 fcGLSViewer.dfm:811 fcGLSViewer.dfm:1063
+#: fGLSViewer.dfm:759 fGLSViewer.dfm:1077 fGLSViewer.dfm:1329
+msgid "Op&en Texture Library..."
+msgstr "От&крыть список текстур..."
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:508 fcGLSViewer.dfm:708 fcGLSViewer.dfm:815
+#: fcGLSViewer.dfm:1035 fcGLSViewer.dfm:1058 fcGLSViewer.dfm:1176
+#: fGLSViewer.dfm:763 fGLSViewer.dfm:974 fGLSViewer.dfm:1081
+#: fGLSViewer.dfm:1301 fGLSViewer.dfm:1324 fGLSViewer.dfm:1442
+msgid "&Save As..."
+msgstr "&Сохранить как..."
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:513 fcGLSViewer.dfm:820 fcGLSViewer.dfm:1054
+#: fGLSViewer.dfm:768 fGLSViewer.dfm:1086 fGLSViewer.dfm:1320
+msgid "S&ave Textures..."
+msgstr "&Сохранить текстуру..."
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:516 fcGLSViewer.dfm:539 fcGLSViewer.dfm:579
+#: fcGLSViewer.dfm:606 fcGLSViewer.dfm:624 fcGLSViewer.dfm:677
+#: fcGLSViewer.dfm:747 fcGLSViewer.dfm:807 fcGLSViewer.dfm:823
+#: fcGLSViewer.dfm:839 fcGLSViewer.dfm:894 fcGLSViewer.dfm:993
+#: fcGLSViewer.dfm:1016 fcGLSViewer.dfm:1133 fGLSViewer.dfm:771
+#: fGLSViewer.dfm:794 fGLSViewer.dfm:825 fGLSViewer.dfm:845
+#: fGLSViewer.dfm:872 fGLSViewer.dfm:890 fGLSViewer.dfm:943
+#: fGLSViewer.dfm:1013 fGLSViewer.dfm:1073 fGLSViewer.dfm:1089
+#: fGLSViewer.dfm:1105 fGLSViewer.dfm:1160 fGLSViewer.dfm:1259
+#: fGLSViewer.dfm:1282 fGLSViewer.dfm:1399
+msgid "-"
+msgstr ""
+
+#. FormViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#: fcGLSViewer.dfm:520 fGLSViewer.dfm:775
+msgid "Sa&veTreeView..."
+msgstr ""
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:527 fcGLSViewer.dfm:827 fcGLSViewer.dfm:1050
+#: fGLSViewer.dfm:782 fGLSViewer.dfm:1093 fGLSViewer.dfm:1316
+msgid "E&xit"
+msgstr "В&ыход"
+
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:529 fcGLSViewer.dfm:829 fGLSViewer.dfm:784
+#: fGLSViewer.dfm:1095
+msgid "&File"
+msgstr "&Файл"
+
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:565 fcGLSViewer.dfm:865 fGLSViewer.dfm:820
+#: fGLSViewer.dfm:1131
+msgid "&Edit"
+msgstr "&Правка"
+
+#. FormViewer..ActionManager..............Caption
+#: fcGLSViewer.dfm:571
+msgid "&Points"
+msgstr "&Точки"
+
+#. FormViewer..ActionManager..............Caption
+#: fcGLSViewer.dfm:576
+msgid "Sph&eres"
+msgstr "&Сферы"
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:587 fcGLSViewer.dfm:724 fcGLSViewer.dfm:875
+#: fcGLSViewer.dfm:1110 fGLSViewer.dfm:853 fGLSViewer.dfm:990
+#: fGLSViewer.dfm:1141 fGLSViewer.dfm:1376
+msgid "&Flat Shading"
+msgstr ""
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:592 fcGLSViewer.dfm:730 fcGLSViewer.dfm:880
+#: fcGLSViewer.dfm:1128 fGLSViewer.dfm:858 fGLSViewer.dfm:996
+#: fGLSViewer.dfm:1146 fGLSViewer.dfm:1394
+msgid "F&lat Shading with Lines"
+msgstr ""
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:597 fcGLSViewer.dfm:736 fcGLSViewer.dfm:885
+#: fcGLSViewer.dfm:1116 fGLSViewer.dfm:863 fGLSViewer.dfm:1002
+#: fGLSViewer.dfm:1151 fGLSViewer.dfm:1382
+msgid "&Hidden Lines"
+msgstr "&Скрытые линии"
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:602 fcGLSViewer.dfm:742 fcGLSViewer.dfm:890
+#: fcGLSViewer.dfm:1122 fGLSViewer.dfm:868 fGLSViewer.dfm:1008
+#: fGLSViewer.dfm:1156 fGLSViewer.dfm:1388
+msgid "&Wireframe"
+msgstr "&Каркас"
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:610 fcGLSViewer.dfm:751 fcGLSViewer.dfm:898
+#: fcGLSViewer.dfm:1137 fGLSViewer.dfm:876 fGLSViewer.dfm:1017
+#: fGLSViewer.dfm:1164 fGLSViewer.dfm:1403
+msgid "&Zoom In"
+msgstr ""
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:615 fcGLSViewer.dfm:757 fcGLSViewer.dfm:903
+#: fcGLSViewer.dfm:1143 fGLSViewer.dfm:881 fGLSViewer.dfm:1023
+#: fGLSViewer.dfm:1169 fGLSViewer.dfm:1409
+msgid "Z&oom Out"
+msgstr ""
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:620 fcGLSViewer.dfm:763 fcGLSViewer.dfm:908
+#: fcGLSViewer.dfm:1149 fGLSViewer.dfm:886 fGLSViewer.dfm:1029
+#: fGLSViewer.dfm:1174 fGLSViewer.dfm:1415
+msgid "&Reset View"
+msgstr ""
+
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:626 fcGLSViewer.dfm:911 fGLSViewer.dfm:892
+#: fGLSViewer.dfm:1177
+msgid "&View"
+msgstr "Вид"
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#: fcGLSViewer.dfm:632 fcGLSViewer.dfm:973 fGLSViewer.dfm:898
+#: fGLSViewer.dfm:1239
+msgid "&Options..."
+msgstr "&Опции..."
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#: fcGLSViewer.dfm:636 fcGLSViewer.dfm:977 fGLSViewer.dfm:902
+#: fGLSViewer.dfm:1243
+msgid "&Face Culling"
+msgstr ""
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:640 fcGLSViewer.dfm:774 fcGLSViewer.dfm:981
+#: fcGLSViewer.dfm:1081 fGLSViewer.dfm:906 fGLSViewer.dfm:1040
+#: fGLSViewer.dfm:1247 fGLSViewer.dfm:1347
+msgid "&Texturing"
+msgstr "&Тесктурирование"
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:645 fcGLSViewer.dfm:780 fcGLSViewer.dfm:986
+#: fcGLSViewer.dfm:1087 fGLSViewer.dfm:911 fGLSViewer.dfm:1046
+#: fGLSViewer.dfm:1252 fGLSViewer.dfm:1353
+msgid "&Lighting"
+msgstr "&Освещение"
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:650 fcGLSViewer.dfm:1155 fGLSViewer.dfm:916
+#: fGLSViewer.dfm:1421
+msgid "&Navi Cube"
+msgstr "&Куб навигации"
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#: fcGLSViewer.dfm:658 fcGLSViewer.dfm:997 fGLSViewer.dfm:924
+#: fGLSViewer.dfm:1263
+msgid "&Show FPS"
+msgstr "&Показать ЧКС"
+
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:660 fcGLSViewer.dfm:999 fGLSViewer.dfm:926
+#: fGLSViewer.dfm:1265
+msgid "&Tools"
+msgstr "&Настройки"
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#: fcGLSViewer.dfm:674 fcGLSViewer.dfm:1013 fGLSViewer.dfm:940
+#: fGLSViewer.dfm:1279
+msgid "&GLScene Home Page"
+msgstr ""
+
+#. FormViewer..ActionManager..............Caption
+#. FormViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#: fcGLSViewer.dfm:681 fcGLSViewer.dfm:1020 fGLSViewer.dfm:947
+#: fGLSViewer.dfm:1286
+msgid "&About..."
+msgstr "&О программе..."
+
+#. FormViewer..ActionManager..........Caption
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:683 fcGLSViewer.dfm:1022 fGLSViewer.dfm:949
+#: fGLSViewer.dfm:1288
+msgid "&Help"
+msgstr "&Справка"
+
+#. FormViewer..ActionManager..................Caption
+#. FormGLSViewer..ActionManager..................Caption
+#: fcGLSViewer.dfm:919 fGLSViewer.dfm:1185
+msgid "&Default"
+msgstr ""
+
+#. FormViewer..ActionManager..................Caption
+#. FormGLSViewer..ActionManager..................Caption
+#: fcGLSViewer.dfm:923 fGLSViewer.dfm:1189
+msgid "&MSAA 2X"
+msgstr ""
+
+#. FormViewer..ActionManager..................Caption
+#. FormGLSViewer..ActionManager..................Caption
+#: fcGLSViewer.dfm:927 fGLSViewer.dfm:1193
+msgid "M&SAA 4X"
+msgstr ""
+
+#. FormViewer..ActionManager..................Caption
+#. FormGLSViewer..ActionManager..................Caption
+#: fcGLSViewer.dfm:931 fGLSViewer.dfm:1197
+msgid "MS&AA 8X"
+msgstr ""
+
+#. FormViewer..ActionManager..................Caption
+#. FormGLSViewer..ActionManager..................Caption
+#: fcGLSViewer.dfm:935 fGLSViewer.dfm:1201
+msgid "MSAA &16X"
+msgstr ""
+
+#. FormViewer..ActionManager..................Caption
+#. FormGLSViewer..ActionManager..................Caption
+#: fcGLSViewer.dfm:939 fGLSViewer.dfm:1205
+msgid "&CSAA 8X"
+msgstr ""
+
+#. FormViewer..ActionManager..................Caption
+#. FormGLSViewer..ActionManager..................Caption
+#: fcGLSViewer.dfm:943 fGLSViewer.dfm:1209
+msgid "CSAA 1&6X"
+msgstr ""
+
+#. FormViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#: fcGLSViewer.dfm:945 fGLSViewer.dfm:1211
+msgid "&Antialiasing"
+msgstr ""
+
+#. FormViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#: fcGLSViewer.dfm:949 fGLSViewer.dfm:1215
+msgid "&Optimize Mesh"
+msgstr ""
+
+#. FormViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#: fcGLSViewer.dfm:953 fGLSViewer.dfm:1219
+msgid "&Invert Normals"
+msgstr ""
+
+#. FormViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#: fcGLSViewer.dfm:957 fGLSViewer.dfm:1223
+msgid "&Reverse Rendering Order"
+msgstr ""
+
+#. FormViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#: fcGLSViewer.dfm:961 fGLSViewer.dfm:1227
+msgid "&Convert to Indexed Triangles"
+msgstr ""
+
+#. FormViewer..ActionManager..............Caption
+#. FormGLSViewer..ActionManager..............Caption
+#: fcGLSViewer.dfm:965 fGLSViewer.dfm:1231
+msgid "&Stripify"
+msgstr ""
+
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:967 fGLSViewer.dfm:1233
+msgid "&Processing"
+msgstr ""
+
+#. FormViewer..ActionManager..........Caption
+#. FormGLSViewer..ActionManager..........Caption
+#: fcGLSViewer.dfm:1093 fGLSViewer.dfm:1359
+msgid "&Info..."
+msgstr ""
+
+#. FormViewer..ActionManager..StyleName
+#. FormGLSViewer..ActionManager..StyleName
+#: fcGLSViewer.dfm:1185 fGLSViewer.dfm:1451
+msgid "Standard"
+msgstr ""
+
+#. FormViewer..ActionManager..acOptimizeMesh..Category
+#. FormViewer..ActionManager..acProcessInvertNormals..Category
+#. FormViewer..ActionManager..acReverseRendering..Category
+#. FormViewer..ActionManager..acConvertToTriangles..Category
+#. FormViewer..ActionManager..acProcessStripify..Category
+#. FormGLSViewer..ActionManager..acOptimizeMesh..Category
+#. FormGLSViewer..ActionManager..acProcessInvertNormals..Category
+#. FormGLSViewer..ActionManager..acReverseRendering..Category
+#. FormGLSViewer..ActionManager..acConvertToTriangles..Category
+#. FormGLSViewer..ActionManager..acProcessStripify..Category
+#: fcGLSViewer.dfm:1187 fcGLSViewer.dfm:1192 fcGLSViewer.dfm:1197
+#: fcGLSViewer.dfm:1202 fcGLSViewer.dfm:1207 fGLSViewer.dfm:1453
+#: fGLSViewer.dfm:1459 fGLSViewer.dfm:1465 fGLSViewer.dfm:1471
+#: fGLSViewer.dfm:1477
+msgid "Processing"
+msgstr ""
+
+#. FormViewer..ActionManager..acOptimizeMesh..Caption
+#. FormGLSViewer..ActionManager..acOptimizeMesh..Caption
+#: fcGLSViewer.dfm:1188 fGLSViewer.dfm:1454
+msgid "Optimize Mesh"
+msgstr "Оптимизировать меш"
+
+#. FormViewer..ActionManager..acOptimizeMesh..Hint
+#. FormGLSViewer..ActionManager..acOptimizeMesh..Hint
+#: fcGLSViewer.dfm:1189 fGLSViewer.dfm:1455
+msgid "Optimize mesh"
+msgstr ""
+
+#. FormViewer..ActionManager..acProcessInvertNormals..Caption
+#. FormGLSViewer..ActionManager..acProcessInvertNormals..Caption
+#: fcGLSViewer.dfm:1193 fGLSViewer.dfm:1460
+msgid "Invert Normals"
+msgstr "Инвертировать нормали"
+
+#. FormViewer..ActionManager..acProcessInvertNormals..Hint
+#. FormGLSViewer..ActionManager..acProcessInvertNormals..Hint
+#: fcGLSViewer.dfm:1194 fGLSViewer.dfm:1461
+msgid "Invert normals"
+msgstr ""
+
+#. FormViewer..ActionManager..acReverseRendering..Caption
+#. FormGLSViewer..ActionManager..acReverseRendering..Caption
+#: fcGLSViewer.dfm:1198 fGLSViewer.dfm:1466
+msgid "Reverse Rendering Order"
+msgstr ""
+
+#. FormViewer..ActionManager..acReverseRendering..Hint
+#. FormGLSViewer..ActionManager..acReverseRendering..Hint
+#: fcGLSViewer.dfm:1199 fGLSViewer.dfm:1467
+msgid "Reverse rendering order"
+msgstr ""
+
+#. FormViewer..ActionManager..acConvertToTriangles..Caption
+#. FormGLSViewer..ActionManager..acConvertToTriangles..Caption
+#: fcGLSViewer.dfm:1203 fGLSViewer.dfm:1472
+msgid "Convert to Indexed Triangles"
+msgstr ""
+
+#. FormViewer..ActionManager..acConvertToTriangles..Hint
+#. FormGLSViewer..ActionManager..acConvertToTriangles..Hint
+#: fcGLSViewer.dfm:1204 fGLSViewer.dfm:1473
+msgid "Convert  to indexed triangles"
+msgstr ""
+
+#. FormViewer..ActionManager..acProcessStripify..Caption
+#. FormViewer..ActionManager..acProcessStripify..Hint
+#. FormGLSViewer..ActionManager..acProcessStripify..Caption
+#. FormGLSViewer..ActionManager..acProcessStripify..Hint
+#: fcGLSViewer.dfm:1208 fcGLSViewer.dfm:1209 fGLSViewer.dfm:1478
+#: fGLSViewer.dfm:1479
+msgid "Stripify"
+msgstr ""
+
+#. FormViewer..ActionManager..acToolsOptions..Caption
+#. FormGLSViewer..ActionManager..acToolsOptions..Caption
+#: fcGLSViewer.dfm:1213 fGLSViewer.dfm:1484
+msgid "Options..."
+msgstr "Опции..."
+
+#. FormViewer..ActionManager..acToolsOptions..Hint
+#. FormGLSViewer..ActionManager..acToolsOptions..Hint
+#: fcGLSViewer.dfm:1214 fGLSViewer.dfm:1485
+msgid "Tools|Options..."
+msgstr ""
+
+#. FormViewer..ActionManager..acToolsFaceCulling..Caption
+#. FormGLSViewer..ActionManager..acToolsFaceCulling..Caption
+#: fcGLSViewer.dfm:1218 fGLSViewer.dfm:1490
+msgid "Face Culling"
+msgstr ""
+
+#. FormViewer..ActionManager..acToolsTexturing..Caption
+#. FormViewer..ActionManager..acToolsTexturing..Hint
+#. FormGLSViewer..ActionManager..acToolsTexturing..Caption
+#. FormGLSViewer..ActionManager..acToolsTexturing..Hint
+#: fcGLSViewer.dfm:1222 fcGLSViewer.dfm:1224 fGLSViewer.dfm:1495
+#: fGLSViewer.dfm:1497
+msgid "Texturing"
+msgstr ""
+
+#. FormViewer..ActionManager..acToolsLighting..Caption
+#. FormViewer..ActionManager..acToolsLighting..Hint
+#. FormGLSViewer..ActionManager..acToolsLighting..Caption
+#. FormGLSViewer..ActionManager..acToolsLighting..Hint
+#: fcGLSViewer.dfm:1229 fcGLSViewer.dfm:1231 fGLSViewer.dfm:1503
+#: fGLSViewer.dfm:1505
+msgid "Lighting"
+msgstr ""
+
+#. FormViewer..ActionManager..acToolsNaviCube..Caption
+#. FormViewer..ActionManager..acToolsNaviCube..Hint
+#. FormGLSViewer..ActionManager..acToolsNaviCube..Caption
+#. FormGLSViewer..ActionManager..acToolsNaviCube..Hint
+#: fcGLSViewer.dfm:1236 fcGLSViewer.dfm:1237 fGLSViewer.dfm:1511
+#: fGLSViewer.dfm:1512
+msgid "Navi Cube"
+msgstr ""
+
+#. FormViewer..ActionManager..acToolsCustomize..Caption
+#. FormGLSViewer..ActionManager..acToolsCustomize..Caption
+#: fcGLSViewer.dfm:1242 fGLSViewer.dfm:1518
+msgid "&Customize..."
+msgstr ""
+
+#. FormViewer..ActionManager..acToolsShowFPS..Caption
+#. FormGLSViewer..ActionManager..acToolsShowFPS..Caption
+#: fcGLSViewer.dfm:1247 fGLSViewer.dfm:1523
+msgid "Show FPS"
+msgstr ""
+
+#. FormViewer..ActionManager..acViewSmoothShading..Caption
+#. FormGLSViewer..ActionManager..acViewSmoothShading..Caption
+#: fcGLSViewer.dfm:1252 fGLSViewer.dfm:1529
+msgid "&Smooth Shading"
+msgstr ""
+
+#. FormViewer..ActionManager..acViewSmoothShading..Hint
+#. FormGLSViewer..ActionManager..acViewSmoothShading..Hint
+#: fcGLSViewer.dfm:1255 fGLSViewer.dfm:1532
+msgid "Smooth shading|Smooth shading"
+msgstr ""
+
+#. FormViewer..ActionManager..acViewFlatShading..Caption
+#. FormGLSViewer..ActionManager..acViewFlatShading..Caption
+#: fcGLSViewer.dfm:1261 fGLSViewer.dfm:1539
+msgid "Flat Shading"
+msgstr ""
+
+#. FormViewer..ActionManager..acViewFlatShading..Hint
+#. FormGLSViewer..ActionManager..acViewFlatShading..Hint
+#: fcGLSViewer.dfm:1264 fGLSViewer.dfm:1542
+msgid "Flat Shading|Flat Shading"
+msgstr ""
+
+#. FormViewer..ActionManager..acViewFlatLines..Caption
+#. FormViewer..ActionManager..acViewFlatLines..Hint
+#. FormGLSViewer..ActionManager..acViewFlatLines..Caption
+#. FormGLSViewer..ActionManager..acViewFlatLines..Hint
+#: fcGLSViewer.dfm:1270 fcGLSViewer.dfm:1273 fGLSViewer.dfm:1549
+#: fGLSViewer.dfm:1552
+msgid "Flat Shading with Lines"
+msgstr ""
+
+#. FormViewer..ActionManager..acViewHiddenLines..Caption
+#. FormViewer..ActionManager..acViewHiddenLines..Hint
+#. FormGLSViewer..ActionManager..acViewHiddenLines..Caption
+#. FormGLSViewer..ActionManager..acViewHiddenLines..Hint
+#: fcGLSViewer.dfm:1279 fcGLSViewer.dfm:1282 fGLSViewer.dfm:1559
+#: fGLSViewer.dfm:1562
+msgid "Hidden Lines"
+msgstr ""
+
+#. FormViewer..ActionManager..acViewWireFrame..Caption
+#. FormViewer..ActionManager..acViewWireFrame..Hint
+#. FormGLSViewer..ActionManager..acViewWireFrame..Caption
+#. FormGLSViewer..ActionManager..acViewWireFrame..Hint
+#: fcGLSViewer.dfm:1288 fcGLSViewer.dfm:1291 fGLSViewer.dfm:1569
+#: fGLSViewer.dfm:1572
+msgid "Wireframe"
+msgstr "Каркас"
+
+#. FormViewer..ActionManager..acViewZoomIn..Caption
+#. FormViewer..ActionManager..acViewZoomIn..Hint
+#. FormGLSViewer..ActionManager..acViewZoomIn..Caption
+#. FormGLSViewer..ActionManager..acViewZoomIn..Hint
+#: fcGLSViewer.dfm:1296 fcGLSViewer.dfm:1297 fGLSViewer.dfm:1578
+#: fGLSViewer.dfm:1579
+msgid "Zoom In"
+msgstr ""
+
+#. FormViewer..ActionManager..acViewZoomOut..Caption
+#. FormViewer..ActionManager..acViewZoomOut..Hint
+#. FormGLSViewer..ActionManager..acViewZoomOut..Caption
+#. FormGLSViewer..ActionManager..acViewZoomOut..Hint
+#: fcGLSViewer.dfm:1302 fcGLSViewer.dfm:1303 fGLSViewer.dfm:1585
+#: fGLSViewer.dfm:1586
+msgid "Zoom Out"
+msgstr ""
+
+#. FormViewer..ActionManager..acViewReset..Caption
+#. FormViewer..ActionManager..acViewReset..Hint
+#. FormGLSViewer..ActionManager..acViewReset..Caption
+#. FormGLSViewer..ActionManager..acViewReset..Hint
+#: fcGLSViewer.dfm:1308 fcGLSViewer.dfm:1309 fGLSViewer.dfm:1592
+#: fGLSViewer.dfm:1593
+msgid "Reset View"
+msgstr ""
+
+#. FormViewer..ActionManager..acFileOpen..Caption
+#. FormGLSViewer..ActionManager..acFileOpen..Caption
+#: fcGLSViewer.dfm:1314 fGLSViewer.dfm:1599
+msgid "&Open..."
+msgstr "&Открыть..."
+
+#. FormViewer..ActionManager..acFileOpen..Hint
+#. FormGLSViewer..ActionManager..acFileOpen..Hint
+#: fcGLSViewer.dfm:1316 fGLSViewer.dfm:1601
+msgid "Open"
+msgstr ""
+
+#. FormViewer..ActionManager..acFilePick..Caption
+#. FormGLSViewer..ActionManager..acFilePick..Caption
+#: fcGLSViewer.dfm:1321 fGLSViewer.dfm:1607
+msgid "Pick texture..."
+msgstr ""
+
+#. FormViewer..ActionManager..acFilePick..Hint
+#. FormGLSViewer..ActionManager..acFilePick..Hint
+#: fcGLSViewer.dfm:1322 fGLSViewer.dfm:1608
+msgid "Pick texture"
+msgstr ""
+
+#. FormViewer..ActionManager..acFileOpenTexLib..Caption
+#. FormGLSViewer..ActionManager..acFileOpenTexLib..Caption
+#: fcGLSViewer.dfm:1327 fGLSViewer.dfm:1614
+msgid "Open Texture Library..."
+msgstr ""
+
+#. FormViewer..ActionManager..acFileOpenTexLib..Hint
+#. FormGLSViewer..ActionManager..acFileOpenTexLib..Hint
+#: fcGLSViewer.dfm:1328 fGLSViewer.dfm:1615
+msgid "Open texture library"
+msgstr ""
+
+#. FormViewer..ActionManager..acFileSaveAs..Caption
+#. FormGLSViewer..ActionManager..acFileSaveAs..Caption
+#: fcGLSViewer.dfm:1332 fGLSViewer.dfm:1620
+msgid "Save As..."
+msgstr "Сокранить как..."
+
+#. FormViewer..ActionManager..acFileSaveAs..Hint
+#. FormGLSViewer..ActionManager..acFileSaveAs..Hint
+#: fcGLSViewer.dfm:1333 fGLSViewer.dfm:1621
+msgid "Save as"
+msgstr "Сохранить как"
+
+#. FormViewer..ActionManager..acFileSaveTextures..Caption
+#. FormGLSViewer..ActionManager..acFileSaveTextures..Caption
+#: fcGLSViewer.dfm:1338 fGLSViewer.dfm:1628
+msgid "Save Textures..."
+msgstr ""
+
+#. FormViewer..ActionManager..acFileSaveTextures..Hint
+#. FormGLSViewer..ActionManager..acFileSaveTextures..Hint
+#: fcGLSViewer.dfm:1340 fGLSViewer.dfm:1630
+msgid "Save textures..."
+msgstr "Сохранить текстуры..."
+
+#. FormViewer..ActionManager..acSaveTreeView..Caption
+#. FormGLSViewer..ActionManager..acSaveTreeView..Caption
+#: fcGLSViewer.dfm:1344 fGLSViewer.dfm:1635
+msgid "&SaveTreeView..."
+msgstr ""
+
+#. FormViewer..ActionManager..acLoadTreeView..Caption
+#. FormGLSViewer..ActionManager..acLoadTreeView..Caption
+#: fcGLSViewer.dfm:1348 fGLSViewer.dfm:1640
+msgid "&LoadTreeView..."
+msgstr ""
+
+#. FormViewer..ActionManager..acFileExit..Caption
+#. FormViewer..ActionManager..acFileExit..Hint
+#. FormGLSViewer..ActionManager..acFileExit..Caption
+#. FormGLSViewer..ActionManager..acFileExit..Hint
+#: fcGLSViewer.dfm:1352 fcGLSViewer.dfm:1353 fGLSViewer.dfm:1645
+#: fGLSViewer.dfm:1646
+msgid "Exit"
+msgstr "Выход"
+
+#. FormViewer..ActionManager..acHelpContents..Category
+#. FormViewer..ActionManager..acHelpTopicSearch..Category
+#. FormViewer..ActionManager..acHelpGLSHomePage..Category
+#. FormViewer..ActionManager..acHelpAbout..Category
+#. GLDialog..PanelBottom..ButtonHelp..Caption
+#. FormGLSViewer..ActionManager..acHelpContents..Category
+#. FormGLSViewer..ActionManager..acHelpTopicSearch..Category
+#. FormGLSViewer..ActionManager..acHelpGLSHomePage..Category
+#. FormGLSViewer..ActionManager..acHelpAbout..Category
+#: fcGLSViewer.dfm:1356 fcGLSViewer.dfm:1363 fcGLSViewer.dfm:1370
+#: fcGLSViewer.dfm:1375 fGLDialog.dfm:75 fGLSViewer.dfm:1650
+#: fGLSViewer.dfm:1658 fGLSViewer.dfm:1666 fGLSViewer.dfm:1672
+msgid "Help"
+msgstr "Справка"
+
+#. FormViewer..ActionManager..acHelpContents..Caption
+#. FormGLSViewer..ActionManager..acHelpContents..Caption
+#: fcGLSViewer.dfm:1357 fGLSViewer.dfm:1651
+msgid "&Contents"
+msgstr ""
+
+#. FormViewer..ActionManager..acHelpContents..Hint
+#. FormGLSViewer..ActionManager..acHelpContents..Hint
+#: fcGLSViewer.dfm:1359 fGLSViewer.dfm:1653
+msgid "Contents|Help Contents"
+msgstr ""
+
+#. FormViewer..ActionManager..acHelpTopicSearch..Caption
+#. FormGLSViewer..ActionManager..acHelpTopicSearch..Caption
+#: fcGLSViewer.dfm:1364 fGLSViewer.dfm:1659
+msgid "&Topic Search"
+msgstr ""
+
+#. FormViewer..ActionManager..acHelpTopicSearch..Hint
+#. FormGLSViewer..ActionManager..acHelpTopicSearch..Hint
+#: fcGLSViewer.dfm:1366 fGLSViewer.dfm:1661
+msgid "Help|Topic Search"
+msgstr ""
+
+#. FormViewer..ActionManager..acHelpGLSHomePage..Caption
+#. FormGLSViewer..ActionManager..acHelpGLSHomePage..Caption
+#: fcGLSViewer.dfm:1371 fGLSViewer.dfm:1667
+msgid "GLScene Home Page"
+msgstr ""
+
+#. FormViewer..ActionManager..acHelpGLSHomePage..Hint
+#. FormGLSViewer..ActionManager..acHelpGLSHomePage..Hint
+#: fcGLSViewer.dfm:1372 fGLSViewer.dfm:1668
+msgid "Help|Home page"
+msgstr ""
+
+#. FormViewer..ActionManager..acHelpAbout..Caption
+#. FormGLSViewer..ActionManager..acHelpAbout..Caption
+#: fcGLSViewer.dfm:1376 fGLSViewer.dfm:1673
+msgid "About..."
+msgstr "О программе..."
+
+#. FormViewer..ActionManager..acHelpAbout..Hint
+#. FormGLSViewer..ActionManager..acHelpAbout..Hint
+#: fcGLSViewer.dfm:1377 fGLSViewer.dfm:1674
+msgid "Help|About..."
+msgstr ""
+
+#. FormViewer..ActionManager..acAADefault..Category
+#. FormViewer..ActionManager..acAA2X..Category
+#. FormViewer..ActionManager..acAA4X..Category
+#. FormViewer..ActionManager..acAA8X..Category
+#. FormViewer..ActionManager..acAA16X..Category
+#. FormViewer..ActionManager..acCSA8X..Category
+#. FormViewer..ActionManager..acCSA16X..Category
+#. FormGLSViewer..ActionManager..acAADefault..Category
+#. FormGLSViewer..ActionManager..acAA2X..Category
+#. FormGLSViewer..ActionManager..acAA4X..Category
+#. FormGLSViewer..ActionManager..acAA8X..Category
+#. FormGLSViewer..ActionManager..acAA16X..Category
+#. FormGLSViewer..ActionManager..acCSA8X..Category
+#. FormGLSViewer..ActionManager..acCSA16X..Category
+#: fcGLSViewer.dfm:1380 fcGLSViewer.dfm:1388 fcGLSViewer.dfm:1394
+#: fcGLSViewer.dfm:1441 fcGLSViewer.dfm:1446 fcGLSViewer.dfm:1452
+#: fcGLSViewer.dfm:1457 fGLSViewer.dfm:1678 fGLSViewer.dfm:1687
+#: fGLSViewer.dfm:1693 fGLSViewer.dfm:1740 fGLSViewer.dfm:1745
+#: fGLSViewer.dfm:1751 fGLSViewer.dfm:1756
+msgid "Antialiasing"
+msgstr ""
+
+#. FormViewer..ActionManager..acAADefault..Caption
+#. FormGLSViewer..ActionManager..acAADefault..Caption
+#: fcGLSViewer.dfm:1382 fGLSViewer.dfm:1680
+msgid "Default"
+msgstr ""
+
+#. FormViewer..ActionManager..acAADefault..Hint
+#. FormGLSViewer..ActionManager..acAADefault..Hint
+#: fcGLSViewer.dfm:1385 fGLSViewer.dfm:1683
+msgid "Default|Default antialiacing"
+msgstr ""
+
+#. FormViewer..ActionManager..acAA2X..Caption
+#. FormGLSViewer..ActionManager..acAA2X..Caption
+#: fcGLSViewer.dfm:1390 fGLSViewer.dfm:1689
+msgid "MSAA 2X"
+msgstr ""
+
+#. FormViewer..ActionManager..acAA4X..Caption
+#. FormGLSViewer..ActionManager..acAA4X..Caption
+#: fcGLSViewer.dfm:1396 fGLSViewer.dfm:1695
+msgid "MSAA 4X"
+msgstr ""
+
+#. FormViewer..ActionManager..acEditUndo..Category
+#. FormViewer..ActionManager..acEditCut..Category
+#. FormViewer..ActionManager..acEditCopy..Category
+#. FormViewer..ActionManager..acEditPaste..Category
+#. FormViewer..ActionManager..acEditSelectAll..Category
+#. FormViewer..ActionManager..acEditDelete..Category
+#. FormGLSViewer..ActionManager..acEditUndo..Category
+#. FormGLSViewer..ActionManager..acEditCut..Category
+#. FormGLSViewer..ActionManager..acEditCopy..Category
+#. FormGLSViewer..ActionManager..acEditPaste..Category
+#. FormGLSViewer..ActionManager..acEditSelectAll..Category
+#. FormGLSViewer..ActionManager..acEditDelete..Category
+#. FormGLSViewer..ActionManager..acClear..Category
+#: fcGLSViewer.dfm:1400 fcGLSViewer.dfm:1407 fcGLSViewer.dfm:1414
+#: fcGLSViewer.dfm:1421 fcGLSViewer.dfm:1428 fcGLSViewer.dfm:1434
+#: fGLSViewer.dfm:1699 fGLSViewer.dfm:1706 fGLSViewer.dfm:1713
+#: fGLSViewer.dfm:1720 fGLSViewer.dfm:1727 fGLSViewer.dfm:1733
+#: fGLSViewer.dfm:1780
+msgid "Edit"
+msgstr "Правка"
+
+#. FormViewer..ActionManager..acEditUndo..Caption
+#. FormGLSViewer..ActionManager..acEditUndo..Caption
+#: fcGLSViewer.dfm:1401 fGLSViewer.dfm:1700
+msgid "&Undo"
+msgstr "&Отмена"
+
+#. FormViewer..ActionManager..acEditUndo..Hint
+#. FormGLSViewer..ActionManager..acEditUndo..Hint
+#: fcGLSViewer.dfm:1402 fGLSViewer.dfm:1701
+msgid "Undo|Reverts"
+msgstr ""
+
+#. FormViewer..ActionManager..acEditCut..Caption
+#. FormGLSViewer..ActionManager..acEditCut..Caption
+#: fcGLSViewer.dfm:1408 fGLSViewer.dfm:1707
+msgid "Cu&t"
+msgstr ""
+
+#. FormViewer..ActionManager..acEditCut..Hint
+#. FormGLSViewer..ActionManager..acEditCut..Hint
+#: fcGLSViewer.dfm:1409 fGLSViewer.dfm:1708
+msgid "Cut|Cut the selection and puts it on the Clipboard"
+msgstr ""
+
+#. FormViewer..ActionManager..acEditCopy..Caption
+#. FormGLSViewer..ActionManager..acEditCopy..Caption
+#: fcGLSViewer.dfm:1415 fGLSViewer.dfm:1714
+msgid "&Copy"
+msgstr ""
+
+#. FormViewer..ActionManager..acEditCopy..Hint
+#. FormGLSViewer..ActionManager..acEditCopy..Hint
+#: fcGLSViewer.dfm:1416 fGLSViewer.dfm:1715
+msgid "Copy|Copies the selection and puts it on the Clipboard"
+msgstr ""
+
+#. FormViewer..ActionManager..acEditPaste..Caption
+#. FormGLSViewer..ActionManager..acEditPaste..Caption
+#: fcGLSViewer.dfm:1422 fGLSViewer.dfm:1721
+msgid "&Paste"
+msgstr "&Вставка"
+
+#. FormViewer..ActionManager..acEditPaste..Hint
+#. FormGLSViewer..ActionManager..acEditPaste..Hint
+#: fcGLSViewer.dfm:1423 fGLSViewer.dfm:1722
+msgid "Paste|Inserts Clipboard contents"
+msgstr ""
+
+#. FormViewer..ActionManager..acEditSelectAll..Caption
+#. FormGLSViewer..ActionManager..acEditSelectAll..Caption
+#: fcGLSViewer.dfm:1429 fGLSViewer.dfm:1728
+msgid "Select &All"
+msgstr ""
+
+#. FormViewer..ActionManager..acEditSelectAll..Hint
+#. FormGLSViewer..ActionManager..acEditSelectAll..Hint
+#: fcGLSViewer.dfm:1430 fGLSViewer.dfm:1729
+msgid "Select All|Selects the entire document"
+msgstr ""
+
+#. FormViewer..ActionManager..acEditDelete..Caption
+#. FormGLSViewer..ActionManager..acEditDelete..Caption
+#: fcGLSViewer.dfm:1435 fGLSViewer.dfm:1734
+msgid "&Delete"
+msgstr "&Удалить"
+
+#. FormViewer..ActionManager..acEditDelete..Hint
+#. FormGLSViewer..ActionManager..acEditDelete..Hint
+#: fcGLSViewer.dfm:1436 fGLSViewer.dfm:1735
+msgid "Delete|Erases the selection"
+msgstr ""
+
+#. FormViewer..ActionManager..acAA8X..Caption
+#. FormGLSViewer..ActionManager..acAA8X..Caption
+#: fcGLSViewer.dfm:1442 fGLSViewer.dfm:1741
+msgid "MSAA 8X"
+msgstr ""
+
+#. FormViewer..ActionManager..acAA16X..Caption
+#. FormGLSViewer..ActionManager..acAA16X..Caption
+#: fcGLSViewer.dfm:1448 fGLSViewer.dfm:1747
+msgid "MSAA 16X"
+msgstr ""
+
+#. FormViewer..ActionManager..acCSA8X..Caption
+#. FormGLSViewer..ActionManager..acCSA8X..Caption
+#: fcGLSViewer.dfm:1453 fGLSViewer.dfm:1752
+msgid "CSAA 8X"
+msgstr ""
+
+#. FormViewer..ActionManager..acCSA16X..Caption
+#. FormGLSViewer..ActionManager..acCSA16X..Caption
+#: fcGLSViewer.dfm:1458 fGLSViewer.dfm:1757
+msgid "CSAA 16X"
+msgstr ""
+
+#. FormViewer..ActionManager..acPoints..Caption
+#. FormViewer..ActionManager..acPoints..Hint
+#. FormGLSViewer..ActionManager..acPoints..Hint
+#: fcGLSViewer.dfm:1463 fcGLSViewer.dfm:1464 fGLSViewer.dfm:1763
+msgid "Points"
+msgstr "Точки"
+
+#. FormViewer..ActionManager..acToolsInfo..Caption
+#. FormGLSViewer..ActionManager..acToolsInfo..Caption
+#: fcGLSViewer.dfm:1469 fGLSViewer.dfm:1769
+msgid "Info..."
+msgstr "Инфо..."
+
+#. FormViewer..ActionManager..acToolsInfo..Hint
+#. FormGLSViewer..ActionManager..acToolsInfo..Hint
+#: fcGLSViewer.dfm:1470 fGLSViewer.dfm:1770
+msgid "Info of objects"
+msgstr ""
+
+#. FormViewer..ActionManager..acSpheres..Caption
+#: fcGLSViewer.dfm:1475
+msgid "Spheres"
+msgstr "Сферы"
+
+#. FormViewer..GLSimpleNavigation..FormCaption
+#. FormGLSViewer..GLSimpleNavigation..FormCaption
+#: fcGLSViewer.dfm:2288 fGLSViewer.dfm:2605
+msgid "GLSViewer - %FPS"
+msgstr ""
+
+#. GLAbout..Caption
+#: fGLAbout.dfm:2
+msgid "About"
+msgstr "&О программе"
+
+#. GLAbout..PanelTop..LabelVersion..Caption
+#: fGLAbout.dfm:137
+msgid "version"
+msgstr "версия"
+
+#. GLAbout..PanelTop..LabelGeoblock..Caption
+#: fGLAbout.dfm:151
+msgid "GLScene Viewer"
+msgstr ""
+
+#. GLAbout..PanelTop..LabelGeoblock..Font.Name
+#: fGLAbout.dfm:155
+msgid "Times New Roman"
+msgstr ""
+
+#. GLAbout..PanelMiddle..LabelCopyright..Caption
+#: fGLAbout.dfm:183
+msgid "Copyright"
+msgstr ""
+
+#. GLAbout..PanelMiddle..imgOpenGL..Hint
+#: fGLAbout.dfm:197
+msgid "www.opengl.org"
+msgstr ""
+
+#. GLAbout..PanelMiddle..imgSourceForge..Hint
+#: fGLAbout.dfm:382
+msgid "www.sourceforge.net/projects/glscene"
+msgstr ""
+
+#. GLAbout..PanelMiddle..imgGLScene..Hint
+#: fGLAbout.dfm:547
+msgid "www.glscene.org"
+msgstr ""
+
+#. GLAbout..PanelMiddle..Label1..Caption
+#: fGLAbout.dfm:2390
+msgid "GLScene Team"
+msgstr ""
+
+#. GLAbout..PanelMiddle..Label3..Caption
+#: fGLAbout.dfm:2397
+msgid "3D view, 3D file formats support:"
+msgstr ""
+
+#. GLAbout..PanelMiddle..FreeAndOpenSource..Caption
+#: fGLAbout.dfm:2404
+msgid "Open source software"
+msgstr ""
+
+#. GLDialog..Caption
+#: fGLDialog.dfm:3
+msgid "GLScene Dialog"
+msgstr ""
+
+#. GLDialog..PanelBottom..ButtonOK..Caption
+#: fGLDialog.dfm:57
+msgid "OK"
+msgstr ""
+
+#. GLDialog..PanelBottom..ButtonCancel..Caption
+#: fGLDialog.dfm:66
+msgid "Cancel"
+msgstr "Отмена"
+
+#. FormOptions..Caption
+#: fGLOptions.dfm:3
+msgid "Options"
+msgstr "Опции"
+
+#. FormOptions..PanelMiddle..Label1..Caption
+#: fGLOptions.dfm:30
+msgid "Background"
+msgstr "Фон"
+
+#. FormOptions..PanelMiddle..CheckBoxAxis..Caption
+#: fGLOptions.dfm:45
+msgid "Show Axes"
+msgstr "Показать оси"
+
+#. FormOptions..PanelMiddle..rgLanguage..Caption
+#: fGLOptions.dfm:67
+msgid "Language"
+msgstr "Язык"
+
+#. FormOptions..PanelMiddle..rgLanguage....Items.Strings
+#: fGLOptions.dfm:76
+msgid "English"
+msgstr "Английский"
+
+#. FormOptions..PanelMiddle..rgLanguage....Items.Strings
+#: fGLOptions.dfm:77
+msgid "Russian"
+msgstr "Русский"
+
+#. FormOptions..PanelMiddle..rgLanguage....Items.Strings
+#: fGLOptions.dfm:78
+msgid "Spanish"
+msgstr "Испанский"
+
+#. FormGLSViewer..Scene..dcWorld..Tree..LeafMaterialName
+#: fGLSViewer.dfm:717
+msgid "LeafFront"
+msgstr ""
+
+#. FormGLSViewer..Scene..dcWorld..Tree..LeafBackMaterialName
+#: fGLSViewer.dfm:718
+msgid "LeafBack"
+msgstr ""
+
+#. FormGLSViewer..Scene..dcWorld..Tree..BranchMaterialName
+#. FormGLSViewer..MLTree......Name
+#: fGLSViewer.dfm:719 fGLSViewer.dfm:2625
+msgid "TreeBark"
+msgstr ""
+
+#. FormGLSViewer..ActionManager..............Caption
+#: fGLSViewer.dfm:829
+msgid "R&andom Points"
+msgstr ""
+
+#. FormGLSViewer..ActionManager..............Caption
+#: fGLSViewer.dfm:834
+msgid "Ra&ndom Spheres"
+msgstr ""
+
+#. FormGLSViewer..ActionManager..............Caption
+#: fGLSViewer.dfm:838
+msgid "Lan&dscape Hills"
+msgstr ""
+
+#. FormGLSViewer..ActionManager..............Caption
+#: fGLSViewer.dfm:842
+msgid "Roo&m with Objects"
+msgstr ""
+
+#. FormGLSViewer..ActionManager..acPoints..Caption
+#: fGLSViewer.dfm:1762
+msgid "Random Points"
+msgstr "Случайные точки"
+
+#. FormGLSViewer..ActionManager..acSpheres..Caption
+#: fGLSViewer.dfm:1776
+msgid "Random Spheres"
+msgstr "Случайные сферы"
+
+#. FormGLSViewer..ActionManager..acClear..Caption
+#: fGLSViewer.dfm:1781
+msgid "Clear"
+msgstr ""
+
+#. FormGLSViewer..ActionManager..acLandscape..Caption
+#: fGLSViewer.dfm:1785
+msgid "Landscape Hills"
+msgstr ""
+
+#. FormGLSViewer..ActionManager..acRoom..Caption
+#: fGLSViewer.dfm:1790
+msgid "Room with Objects"
+msgstr "Комната с объектами"
+
+#. FormGLSViewer..MLTree......Material.Texture.ImageClassName
+#. FormGLSViewer..MLTree......Material.Texture.ImageClassName
+#: fGLSViewer.dfm:2627 fGLSViewer.dfm:2633
+msgid "TGLPicFileImage"
+msgstr ""
+
+#. FormGLSViewer..MLTree......Name
+#: fGLSViewer.dfm:2631
+msgid "LeafTexture"
+msgstr ""
+
+#. FormGLSViewer..MLTree......Material.Texture.Image.PictureFileName
+#: fGLSViewer.dfm:2634
+msgid "..\\..\\..\\Texture\\leaf.tga"
+msgstr ""
+
+#. FormGLSViewer..MLTree......Name
+#: fGLSViewer.dfm:2637
+msgid "FruitTexture"
+msgstr ""
+
+#: fGLOptions.pas:141
+msgid "Reload to change language"
+msgstr "Перезагрузите для изменения языка"
+
+#: fGLSViewer.pas:453
+msgid "Unsupported or unspecified file extension."
+msgstr ""
