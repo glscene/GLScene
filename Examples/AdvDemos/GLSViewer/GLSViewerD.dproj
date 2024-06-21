@@ -137,7 +137,7 @@
         <DCCReference Include="Source\uGlobals.pas"/>
         <DCCReference Include="Source\uSettings.pas"/>
         <DCCReference Include="Source\dImages.pas">
-            <Form>DataModuleImages</Form>
+            <Form>dmImages</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="Source\fGLAbout.pas">

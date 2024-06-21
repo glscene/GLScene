@@ -317,7 +317,7 @@ object FormGLSViewer: TFormGLSViewer
       Margins.Right = 5
       Margins.Bottom = 5
       Align = alClient
-      Images = DataModuleImages.ImageListObjects
+      Images = dmImages.ImageListObjects
       Indent = 33
       ParentShowHint = False
       ShowHint = True

@@ -70,9 +70,9 @@ uses
   GLS.Tree,
 
   fGLForm,
+  fGLDialog,
   fGLAbout,
   fGLOptions,
-  fGLDialog,
   dImages,
   dDialogs,
 
@@ -356,7 +356,6 @@ end;
 //---------------------------------------------------------------------------
 procedure TFormGLSViewer.FormCreate(Sender: TObject);
 begin
-  inherited;
   AssetPath := GetCurrentAssetPath();
   TextureDir := AssetPath + '\texture';
   SetCurrentDir(TextureDir);
@@ -372,6 +371,7 @@ begin
   tvScene.FullExpand;
   tvScene.Select(tvScene.Items[9]);  // goto to Cube
   tvSceneClick(Self);
+  inherited;
 end;
 
 procedure TFormGLSViewer.FormShow(Sender: TObject);

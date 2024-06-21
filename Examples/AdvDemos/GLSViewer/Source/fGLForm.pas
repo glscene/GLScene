@@ -63,37 +63,25 @@ begin
     AddDomainForResourceString('language');
     BindTextDomain ('language', LocalePath);
 
-    //TP_GlobalIgnoreClass(TTable);
-    //TP_GlobalIgnoreClass(TFields);
-    //TP_GlobalIgnoreClass(TFont);
     //TP_GlobalIgnoreClass(TListBox);
     //TP_GlobalIgnoreClass(TStaticText);
     //TP_GlobalIgnoreClass(TGLLibMaterial);
     //TP_GlobalIgnoreClass(TGLMaterialLibrary);
-    TP_IgnoreClass(TFont);
-    TP_GlobalIgnoreClassProperty(TAction, 'Category');
+    // TP_IgnoreClass(TFont);
+    // TP_GlobalIgnoreClassProperty(TAction, 'Category');
     // Removing the upper line will cause long loading but Action.Category translation
 
     case LangID of
       LANG_RUSSIAN:
       begin
         UseLanguage('ru');
-        Application.HelpFile := UpperCase(LocalePath + 'ru'+ PathDelim+'GLSViewer.chm');
-      end;
-      LANG_SPANISH:
-      begin
-        UseLanguage('es');
-        Application.HelpFile := UpperCase(LocalePath + 'es'+ PathDelim+'GLSViewer.chm');
-      end;
-      LANG_PORTUGUESE:
-      begin
-        UseLanguage('it');
-        Application.HelpFile := UpperCase(LocalePath + 'it'+ PathDelim+'GLSViewer.chm');
+        // Help based on demos.htm
+        Application.HelpFile := UpperCase(LocalePath + 'ru'+ PathDelim+'Demos.chm');
       end
       else
       begin
         UseLanguage('en');
-        Application.HelpFile := UpperCase(LocalePath + 'en'+ PathDelim+'GLSViewer.chm');
+        Application.HelpFile := UpperCase(LocalePath + 'en'+ PathDelim+'Demos.chm');
       end;
     end;
   end
@@ -103,20 +91,15 @@ begin
     Application.HelpFile := UpperCase(LocalePath + 'en'+ PathDelim+'GLSViewer.chm');
   end;
   TranslateComponent(Self);
-  //TP_GlobalIgnoreClass(TGLLibMaterial);
-  //TP_GlobalIgnoreClass(TGLMaterialLibrary);
-  //TP_GlobalIgnoreClass(TListBox);
-  //TP_GlobalIgnoreClassProperty(TAction, 'Category');
 end;
-
-
 
 procedure TGLForm.ReadIniFile;
 begin
   IniFile := TIniFile.Create(ChangeFileExt(ParamStr(0), '.ini'));
   with IniFile do
     try
-      LangID := ReadInteger('FormOptions', 'RadioGroupLanguage', 0);
+      // use correct argument names
+      LangID := ReadInteger('FormOptions', 'rgLanguage', 0);
     finally
       IniFile.Free;
     end;

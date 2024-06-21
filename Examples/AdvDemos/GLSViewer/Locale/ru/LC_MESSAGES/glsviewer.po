@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2023-01-02 19:19+0300\n"
-"PO-Revision-Date: 2024-06-20 13:50+0300\n"
+"PO-Revision-Date: 2024-06-20 22:36+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -138,12 +138,10 @@ msgstr ""
 #. GLAbout..PanelTop..LabelVersion..Font.Name
 #. GLAbout..PanelMiddle..LabelCopyright..Font.Name
 #. GLAbout..PanelMiddle..FreeAndOpenSource..Font.Name
-#. FormOptions..PanelMiddle..rgLanguage..Font.Name
 #. FormGLSViewer..Font.Name
 #. FormGLSViewer..amMenuBar..Font.Name
-#: fcGLSViewer.dfm:178 fGLAbout.dfm:141 fGLAbout.dfm:187
-#: fGLAbout.dfm:2408 fGLOptions.dfm:72 fGLSViewer.dfm:15
-#: fGLSViewer.dfm:295
+#: fcGLSViewer.dfm:178 fGLAbout.dfm:144 fGLAbout.dfm:188
+#: fGLAbout.dfm:2409 fGLSViewer.dfm:15 fGLSViewer.dfm:295
 msgid "MS Sans Serif"
 msgstr ""
 
@@ -545,7 +543,7 @@ msgstr ""
 #. FormGLSViewer..ActionManager..............Caption
 #: fcGLSViewer.dfm:945 fGLSViewer.dfm:1211
 msgid "&Antialiasing"
-msgstr ""
+msgstr "&Антиалиасинг"
 
 #. FormViewer..ActionManager..............Caption
 #. FormGLSViewer..ActionManager..............Caption
@@ -1147,52 +1145,52 @@ msgid "About"
 msgstr "&О программе"
 
 #. GLAbout..PanelTop..LabelVersion..Caption
-#: fGLAbout.dfm:137
+#: fGLAbout.dfm:140
 msgid "version"
 msgstr "версия"
 
 #. GLAbout..PanelTop..LabelGeoblock..Caption
-#: fGLAbout.dfm:151
+#: fGLAbout.dfm:154
 msgid "GLScene Viewer"
 msgstr ""
 
 #. GLAbout..PanelTop..LabelGeoblock..Font.Name
-#: fGLAbout.dfm:155
+#: fGLAbout.dfm:158
 msgid "Times New Roman"
 msgstr ""
 
 #. GLAbout..PanelMiddle..LabelCopyright..Caption
-#: fGLAbout.dfm:183
+#: fGLAbout.dfm:184
 msgid "Copyright"
 msgstr ""
 
 #. GLAbout..PanelMiddle..imgOpenGL..Hint
-#: fGLAbout.dfm:197
+#: fGLAbout.dfm:198
 msgid "www.opengl.org"
 msgstr ""
 
 #. GLAbout..PanelMiddle..imgSourceForge..Hint
-#: fGLAbout.dfm:382
+#: fGLAbout.dfm:383
 msgid "www.sourceforge.net/projects/glscene"
 msgstr ""
 
 #. GLAbout..PanelMiddle..imgGLScene..Hint
-#: fGLAbout.dfm:547
+#: fGLAbout.dfm:548
 msgid "www.glscene.org"
 msgstr ""
 
 #. GLAbout..PanelMiddle..Label1..Caption
-#: fGLAbout.dfm:2390
+#: fGLAbout.dfm:2391
 msgid "GLScene Team"
 msgstr ""
 
 #. GLAbout..PanelMiddle..Label3..Caption
-#: fGLAbout.dfm:2397
+#: fGLAbout.dfm:2398
 msgid "3D view, 3D file formats support:"
 msgstr ""
 
 #. GLAbout..PanelMiddle..FreeAndOpenSource..Caption
-#: fGLAbout.dfm:2404
+#: fGLAbout.dfm:2405
 msgid "Open source software"
 msgstr ""
 
@@ -1216,35 +1214,35 @@ msgstr "Отмена"
 msgid "Options"
 msgstr "Опции"
 
-#. FormOptions..PanelMiddle..Label1..Caption
-#: fGLOptions.dfm:30
-msgid "Background"
-msgstr "Фон"
-
-#. FormOptions..PanelMiddle..CheckBoxAxis..Caption
-#: fGLOptions.dfm:45
-msgid "Show Axes"
-msgstr "Показать оси"
-
-#. FormOptions..PanelMiddle..rgLanguage..Caption
-#: fGLOptions.dfm:67
+#. FormOptions..rgLanguage..Caption
+#: fGLOptions.dfm:24
 msgid "Language"
 msgstr "Язык"
 
-#. FormOptions..PanelMiddle..rgLanguage....Items.Strings
-#: fGLOptions.dfm:76
+#. FormOptions..rgLanguage....Items.Strings
+#: fGLOptions.dfm:28
 msgid "English"
 msgstr "Английский"
 
-#. FormOptions..PanelMiddle..rgLanguage....Items.Strings
-#: fGLOptions.dfm:77
+#. FormOptions..rgLanguage....Items.Strings
+#: fGLOptions.dfm:29
 msgid "Russian"
 msgstr "Русский"
 
-#. FormOptions..PanelMiddle..rgLanguage....Items.Strings
-#: fGLOptions.dfm:78
+#. FormOptions..rgLanguage....Items.Strings
+#: fGLOptions.dfm:30
 msgid "Spanish"
 msgstr "Испанский"
+
+#. FormOptions..CheckBoxAxis..Caption
+#: fGLOptions.dfm:43
+msgid "Axis"
+msgstr ""
+
+#. FormOptions..ButtonOk..Caption
+#: fGLOptions.dfm:69
+msgid "Ok"
+msgstr ""
 
 #. FormGLSViewer..Scene..dcWorld..Tree..LeafMaterialName
 #: fGLSViewer.dfm:717
@@ -1295,7 +1293,7 @@ msgstr "Случайные сферы"
 #. FormGLSViewer..ActionManager..acClear..Caption
 #: fGLSViewer.dfm:1781
 msgid "Clear"
-msgstr ""
+msgstr "Очситить"
 
 #. FormGLSViewer..ActionManager..acLandscape..Caption
 #: fGLSViewer.dfm:1785

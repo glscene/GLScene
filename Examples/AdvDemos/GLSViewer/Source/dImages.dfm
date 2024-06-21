@@ -1,4 +1,4 @@
-object DataModuleImages: TDataModuleImages
+object dmImages: TdmImages
   Height = 623
   Width = 955
   PixelsPerInch = 168

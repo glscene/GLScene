@@ -7,7 +7,7 @@ uses
   fGLSViewer in 'Source\fGLSViewer.pas' {FormGLSViewer},
   uGlobals in 'Source\uGlobals.pas',
   uSettings in 'Source\uSettings.pas',
-  dImages in 'Source\dImages.pas' {DataModuleImages: TDataModule},
+  dImages in 'Source\dImages.pas' {dmImages: TDataModule},
   fGLAbout in 'Source\fGLAbout.pas' {GLAbout},
   fGLOptions in 'Source\fGLOptions.pas' {FormOptions},
   dDialogs in 'Source\dDialogs.pas' {dmDialogs: TDataModule};
@@ -15,10 +15,10 @@ uses
 {$R *.res}
 
 begin
-  Application.Initialize;
-  Application.Title := 'GLSViewer';
+ // Application.Initialize;
+ // Application.Title := 'GLSViewer';
   Application.CreateForm(TFormGLSViewer, FormGLSViewer);
-  Application.CreateForm(TDataModuleImages, DataModuleImages);
+  Application.CreateForm(TdmImages, dmImages);
   Application.CreateForm(TdmDialogs, dmDialogs);
   Application.Run;
 end.

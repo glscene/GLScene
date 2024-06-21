@@ -17,10 +17,10 @@ uses
   Vcl.ExtCtrls,
   Vcl.Imaging.jpeg,
   //
-  fGLDialog;
+  fGLForm;
 
 type
-  TGLAbout = class(TGLDialog)
+  TGLAbout = class(TGLForm)
     LabelCopyright: TLabel;
     PanelYears: TPanel;
     imgOpenGL: TImage;

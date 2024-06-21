@@ -122,14 +122,17 @@ inherited GLAbout: TGLAbout
   ExplicitWidth = 522
   ExplicitHeight = 422
   TextHeight = 24
-  inherited PanelTop: TPanel
+  object PanelTop: TPanel
+    Left = 0
+    Top = 0
     Width = 506
     Height = 89
-    StyleElements = [seFont, seClient, seBorder]
-    ExplicitWidth = 498
-    ExplicitHeight = 89
+    TabOrder = 0
+    DesignSize = (
+      506
+      89)
     object LabelVersion: TLabel
-      Left = 94
+      Left = 86
       Top = 63
       Width = 50
       Height = 20
@@ -166,15 +169,13 @@ inherited GLAbout: TGLAbout
       TabOrder = 0
     end
   end
-  inherited PanelMiddle: TPanel
+  object PanelMiddle: TPanel
+    Left = 0
     Top = 89
     Width = 506
     Height = 249
-    StyleElements = [seFont, seClient, seBorder]
-    ExplicitTop = 89
-    ExplicitWidth = 498
-    ExplicitHeight = 224
-    object LabelCopyright: TLabel [0]
+    TabOrder = 1
+    object LabelCopyright: TLabel
       Left = 102
       Top = 159
       Width = 57
@@ -188,7 +189,7 @@ inherited GLAbout: TGLAbout
       Font.Style = []
       ParentFont = False
     end
-    object imgOpenGL: TImage [1]
+    object imgOpenGL: TImage
       Left = 40
       Top = 83
       Width = 100
@@ -373,7 +374,7 @@ inherited GLAbout: TGLAbout
       ShowHint = True
       OnDblClick = imgOpenGLDblClick
     end
-    object imgSourceForge: TImage [2]
+    object imgSourceForge: TImage
       Left = 159
       Top = 61
       Width = 136
@@ -538,7 +539,7 @@ inherited GLAbout: TGLAbout
       Transparent = True
       OnDblClick = imgSourceForgeDblClick
     end
-    object imgGLScene: TImage [3]
+    object imgGLScene: TImage
       Left = 308
       Top = 83
       Width = 100
@@ -2382,21 +2383,21 @@ inherited GLAbout: TGLAbout
       Stretch = True
       OnDblClick = imgGLSceneDblClick
     end
-    object Label1: TLabel [4]
+    object Label1: TLabel
       Left = 288
       Top = 159
       Width = 133
       Height = 24
       Caption = 'GLScene Team'
     end
-    object Label3: TLabel [5]
+    object Label3: TLabel
       Left = 123
       Top = 28
       Width = 265
       Height = 24
       Caption = '3D view, 3D file formats support:'
     end
-    object FreeAndOpenSource: TLabel [6]
+    object FreeAndOpenSource: TLabel
       Left = 123
       Top = 6
       Width = 130
@@ -2409,15 +2410,6 @@ inherited GLAbout: TGLAbout
       Font.Style = []
       ParentFont = False
     end
-    inherited Memo: TMemo
-      Width = 504
-      Height = 247
-      TabOrder = 1
-      Visible = False
-      StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 496
-      ExplicitHeight = 222
-    end
     object PanelYears: TPanel
       Left = 187
       Top = 200
@@ -2428,13 +2420,11 @@ inherited GLAbout: TGLAbout
       TabOrder = 0
     end
   end
-  inherited PanelBottom: TPanel
+  object PanelBottom: TPanel
+    Left = 0
     Top = 338
     Width = 506
     Height = 45
-    StyleElements = [seFont, seClient, seBorder]
-    ExplicitTop = 313
-    ExplicitWidth = 498
-    ExplicitHeight = 45
+    TabOrder = 2
   end
 end

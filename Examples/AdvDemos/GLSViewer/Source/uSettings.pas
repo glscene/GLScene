@@ -43,20 +43,16 @@ begin
         WriteString(GeneralSection, 'ExePath', ExePath);  //Don't translate the strings
         WriteInteger(GeneralSection, 'FileVersion', FileVersion);
         WriteString(GeneralSection, 'License', 'MPL');
-        WriteInteger(GeneralSection, 'Language', LANG_ENGLISH); //9, Default installation
-        Language := LANG_ENGLISH;
       end
       else
       begin
         ExePath  := ReadString(GeneralSection, 'ExePath', ExePath);
-        Language := ReadInteger(GeneralSection, 'Language', LANG_ENGLISH);
-        //9, LANG_ENGLISH - Default
       end;
     end;
   finally
     RegIni.Free;
   end;
-{
+(*
   if RegIni.ValueExists(GeneralSection,'SplashStart') then
     SplashStart := RegIni.ReadBool(GeneralSection,'SplashStart',False)
   else
@@ -66,7 +62,7 @@ begin
     TipOfTheDay := RegIni.ReadBool(GeneralSection,'TipOfTheDay', True)
   else
     TipOfTheDay := False;
-}
+*)
 end;
 
 initialization

@@ -20,7 +20,7 @@ uses
   GLS.Material, Vcl.Controls;
 
 type
-  TDataModuleImages = class(TDataModule)
+  TdmImages = class(TDataModule)
     VirtualImageList: TVirtualImageList;
     ImageCollection: TImageCollection;
     LightmapLib: TGLMaterialLibrary;
@@ -32,7 +32,7 @@ type
   end;
 
 var
-  DataModuleImages: TDataModuleImages;
+  dmImages: TdmImages;
 
 implementation
 

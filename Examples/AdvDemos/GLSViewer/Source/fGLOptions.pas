@@ -20,15 +20,14 @@ uses
   //
   dImages,
   dDialogs,
-  fGLForm, 
-  fGLDialog;
+  fGLForm;
 
 type
-  TFormOptions = class(TGLDialog)
-    CheckBoxAxis: TCheckBox;
-    Label1: TLabel;
-    PanelBackground: TPanel;
+  TFormOptions = class(TGLForm)
     rgLanguage: TRadioGroup;
+    CheckBoxAxis: TCheckBox;
+    PanelBackground: TPanel;
+    ButtonOk: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure rgLanguageClick(Sender: TObject);
@@ -59,6 +58,7 @@ procedure TFormOptions.FormCreate(Sender: TObject);
 begin
   inherited;
   ReadIniFile;
+  SetLanguage;
 end;
 
 procedure TFormOptions.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -79,7 +79,6 @@ begin
       case LangID of
         LANG_ENGLISH : rgLanguage.ItemIndex := 0;
         LANG_RUSSIAN : rgLanguage.ItemIndex := 1;
-        LANG_SPANISH : rgLanguage.ItemIndex := 2;
         else
           rgLanguage.ItemIndex := 0;
       end;
@@ -93,7 +92,6 @@ begin
   case rgLanguage.ItemIndex of
     0: CurLangID := LANG_ENGLISH;
     1: CurLangID := LANG_RUSSIAN;
-    2: CurLangID := LANG_SPANISH;
     else
       CurLangID := LANG_ENGLISH;
   end;
