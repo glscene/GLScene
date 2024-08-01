@@ -37,7 +37,7 @@ object GLInfoForm: TGLInfoForm
     Margins.Top = 5
     Margins.Right = 5
     Margins.Bottom = 5
-    ActivePage = TabSheetContributors
+    ActivePage = TabSheetGLScene
     Align = alTop
     TabOrder = 0
     object TabSheetGLScene: TTabSheet
@@ -3813,8 +3813,6 @@ object GLInfoForm: TGLInfoForm
         ReadOnly = True
         ScrollBars = ssVertical
         TabOrder = 0
-        ExplicitLeft = 5
-        ExplicitTop = 56
       end
     end
     object TabSheetAbout: TTabSheet

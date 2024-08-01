@@ -71,14 +71,6 @@ implementation
 
 procedure TFormDynCubeMap.GenerateCubeMap;
 begin
-   // Don't do anything if cube maps aren't supported
-   if not CubmapSupported then begin
-      if not cubeMapWarnDone then
-         ShowMessage('Your graphics hardware does not support cube maps...');
-      cubeMapWarnDone:=True;
-      Exit;
-   end;
-   // Here we generate the new cube map, from CubeMapCamera (a child of the
    // teapot in the scene hierarchy)
    with Teapot1 do begin
       // hide the teapot while rendering the cube map

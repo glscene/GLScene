@@ -39,10 +39,9 @@ type
       X, Y: Integer);
     procedure btnApplyClick(Sender: TObject);
     procedure GLSceneViewer1BeforeRender(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     Path: TFileName;
-    CubmapSupported: Boolean;
     CubemapPath: TFileName;
     Cubemap: TGLTexture;
   public
@@ -56,7 +55,7 @@ implementation
 
 {$R *.dfm}
 
-procedure TFormCubeMap.FormCreate(Sender: TObject);
+procedure TFormCubeMap.FormShow(Sender: TObject);
 begin
   // Our cube map images are here
   Path := GetCurrentAssetPath();
@@ -65,22 +64,11 @@ end;
 
 procedure TFormCubeMap.GLSceneViewer1BeforeRender(Sender: TObject);
 begin
-  CubmapSupported := GL.ARB_texture_cube_map;
   GLSceneViewer1.BeforeRender := nil;
 end;
 
 procedure TFormCubeMap.btnApplyClick(Sender: TObject);
 begin
-  // Cube map warning message
-  // If you don't check and turn off cube maps yourself in your apps when
-  // cube maps aren't supported and will just turn off texturing
-  // (ie. no error generated, just a different output)
-  if not CubmapSupported then
-  begin
-    ShowMessage('Your graphics board does not support cube maps...');
-    Exit;
-  end;
-
   with Teapot1.Material.Texture do
   begin
     // We need a CubeMapImage, which unlike the "regular Images" stores

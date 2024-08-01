@@ -1,5 +1,5 @@
 //
-// The graphics rendering engine GLScene http://glscene.org
+// The graphics engine GLScene https://github.com/glscene
 //
 unit Physics.SPIInertias;
 

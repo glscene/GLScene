@@ -7,8 +7,6 @@ inherited FormOptions: TFormOptions
   StyleElements = [seFont, seClient, seBorder]
   OnClick = rgLanguageClick
   OnClose = FormClose
-  ExplicitLeft = 4
-  ExplicitTop = 4
   ExplicitWidth = 476
   ExplicitHeight = 352
   TextHeight = 25

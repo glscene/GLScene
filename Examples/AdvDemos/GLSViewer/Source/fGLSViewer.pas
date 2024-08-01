@@ -84,7 +84,6 @@ type
     Scene: TGLScene;
     ffObject: TGLFreeForm;
     LightSource: TGLLightSource;
-    MaterialLib: TGLMaterialLibrary;
     CubeLines: TGLCube;
     dcObject: TGLDummyCube;
     Camera: TGLCamera;
@@ -158,7 +157,6 @@ type
     Torus: TGLTorus;
     Teapot: TGLTeapot;
     Tree: TGLTree;
-    MLTree: TGLMaterialLibrary;
     acClear: TAction;
     acLandscape: TAction;
     acRoom: TAction;
@@ -248,6 +246,8 @@ type
     MultiPolygon: TGLMultiPolygon;
     RevolutionSolid: TGLRevolutionSolid;
     ExtrusionSolid: TGLExtrusionSolid;
+
+    Actor: TGLActor;
 
     procedure DoResetCamera;
     procedure SetupFreeFormShading;
@@ -353,7 +353,7 @@ begin
   end;
 end;
 
-//---------------------------------------------------------------------------
+//---------------------------------------------------------------
 procedure TFormGLSViewer.FormCreate(Sender: TObject);
 begin
   AssetPath := GetCurrentAssetPath();
@@ -374,6 +374,7 @@ begin
   inherited;
 end;
 
+//---------------------------------------------------------------
 procedure TFormGLSViewer.FormShow(Sender: TObject);
 begin
   if not nthShow then
@@ -391,9 +392,7 @@ begin
   end;
 end;
 
-//---------------------------------------------------------------------------
-// OpenDialog
-//---------------------------------------------------------------------------
+//---------------------------------------------------------------
 procedure TFormGLSViewer.acFileOpenExecute(Sender: TObject);
 begin
   NaviCube.ActiveMouse := False;
@@ -401,29 +400,30 @@ begin
     DoOpen(dmDialogs.OpenDialog.FileName);
 end;
 
+//---------------------------------------------------------------
 procedure TFormGLSViewer.acFileOpenTexLibExecute(Sender: TObject);
 var
   I: Integer;
 begin
   dmDialogs.ODTextures.InitialDir := AssetPath + '\texture';;
   if dmDialogs.ODTextures.Execute then
-    with MaterialLib do
-    begin
-      LoadFromFile(dmDialogs.ODTextures.FileName);
-      for I := 0 to Materials.Count - 1 do
-        with Materials[I].Material do
-          BackProperties.Assign(FrontProperties);
-      ApplyShadeMode;
-      ApplyTexturing;
-    end;
+  begin
+    dmImages.MaterialLib.LoadFromFile(dmDialogs.ODTextures.FileName);
+    for I := 0 to dmImages.MaterialLib.Materials.Count - 1 do
+      with dmImages.MaterialLib.Materials[I].Material do
+        BackProperties.Assign(FrontProperties);
+    ApplyShadeMode;
+    ApplyTexturing;
+  end;
 end;
 
+//---------------------------------------------------------------
 procedure TFormGLSViewer.acFilePickExecute(Sender: TObject);
 begin
   dmDialogs.ODTextures.InitialDir := AssetPath + '\texture';;
   if dmDialogs.opDialog.Execute then
   begin
-    with MaterialLib.Materials do
+    with dmImages.MaterialLib.Materials do
     begin
       with Items[Count - 1] do
       begin
@@ -436,6 +436,7 @@ begin
   end;
 end;
 
+//---------------------------------------------------------------
 procedure TFormGLSViewer.acFileSaveAsExecute(Sender: TObject);
 var
   ext: String;
@@ -450,7 +451,7 @@ begin
         (dmDialogs.SaveDialog.FilterIndex, False, True));
     if GetVectorFileFormats.FindFromFileName(dmDialogs.SaveDialog.FileName) = nil
     then
-      ShowMessage(_('Unsupported or unspecified file extension.'))
+      ShowMessage(_('Unsupported file extension'))
     else
       ffObject.SaveToFile(dmDialogs.SaveDialog.FileName);
   end;
@@ -459,7 +460,7 @@ end;
 procedure TFormGLSViewer.acFileSaveTexturesExecute(Sender: TObject);
 begin
   if dmDialogs.SDTextures.Execute then
-    MaterialLib.SaveToFile(dmDialogs.SDTextures.FileName);
+    dmImages.MaterialLib.SaveToFile(dmDialogs.SDTextures.FileName);
 end;
 
 procedure TFormGLSViewer.snViewerBeforeRender(Sender: TObject);
@@ -549,7 +550,7 @@ procedure TFormGLSViewer.ApplyShadeMode;
 var
   I: Integer;
 begin
-  with MaterialLib.Materials do
+  with dmImages.MaterialLib.Materials do
     for I := 0 to Count - 1 do
     begin
       ApplyShadeModeToMaterial(Items[I].Material);
@@ -623,7 +624,7 @@ procedure TFormGLSViewer.ApplyTexturing;
 var
   I: Integer;
 begin
-  with MaterialLib.Materials do
+  with dmImages.MaterialLib.Materials do
     for I := 0 to Count - 1 do
     begin
       with Items[I].Material.Texture do
@@ -636,7 +637,7 @@ begin
   ffObject.StructureChanged;
 end;
 
-//--------------------------------------------------------------------------
+//--------------------------------------------------------
 procedure TFormGLSViewer.AsyncTimerTimer(Sender: TObject);
 begin
   snViewer.ResetPerformanceMonitor;
@@ -662,15 +663,15 @@ var
   I: Integer;
   LibMat: TGLLibMaterial;
 begin
-  if MaterialLib.Materials.Count = 0 then
+  if dmImages.MaterialLib.Materials.Count = 0 then
   begin
-    ffObject.Material.MaterialLibrary := MaterialLib;
-    LibMat := MaterialLib.Materials.Add;
+    ffObject.Material.MaterialLibrary := dmImages.MaterialLib;
+    LibMat := dmImages.MaterialLib.Materials.Add;
     ffObject.Material.LibMaterialName := LibMat.Name;
     LibMat.Material.FrontProperties.Diffuse.Red := 0;
   end;
-  for I := 0 to MaterialLib.Materials.Count - 1 do
-    with MaterialLib.Materials[I].Material do
+  for I := 0 to dmImages.MaterialLib.Materials.Count - 1 do
+    with dmImages.MaterialLib.Materials[I].Material do
       BackProperties.Assign(FrontProperties);
   ApplyShadeMode;
   ApplyTexturing;
@@ -686,12 +687,12 @@ begin
     Exit;
   Screen.Cursor := crHourGlass;
   FormGLSViewer.Caption := 'GLSViewer - ' + FileName;
-  MaterialLib.Materials.Clear;
+  dmImages.MaterialLib.Materials.Clear;
   ffObject.MeshObjects.Clear;
   ffObject.LoadFromFile(FileName);
   SetupFreeFormShading;
-  acFileSaveTextures.Enabled := (MaterialLib.Materials.Count > 0);
-  acFileOpenTexLib.Enabled := (MaterialLib.Materials.Count > 0);
+  acFileSaveTextures.Enabled := (dmImages.MaterialLib.Materials.Count > 0);
+  acFileOpenTexLib.Enabled := (dmImages.MaterialLib.Materials.Count > 0);
   lastFileName := FileName;
   lastLoadWithTextures := acToolsTexturing.Enabled;
   ffObject.GetExtents(min, max);
@@ -892,7 +893,7 @@ begin
   finally
     v.Free;
   end;
-  MaterialLib.Materials.Clear;
+  dmImages.MaterialLib.Materials.Clear;
   SetupFreeFormShading;
 end;
 
@@ -1170,6 +1171,10 @@ end;
 procedure TFormGLSViewer.tvSceneClick(Sender: TObject);
 var
   I: Integer;
+  pos1, pos2: TGLVector;
+
+const
+  Nlines = 1000;
 begin
   dcObject.DeleteChildren;
 
@@ -1185,10 +1190,16 @@ begin
       acPointsExecute(Sender);
     end;
     5: //Lines
+    for i := 0 to Nlines - 1 do
     begin
-      // RandomFrom([100])
       Lines := TGLLines.CreateAsChild(dcObject);
-      Lines.Material.FrontProperties.Diffuse.RandomColor();
+      SetVector(pos1, Random()-0.5, Random()-0.5, Random()-0.5);
+      SetVector(pos2, Random()-0.5, Random()-0.5, Random()-0.5);
+      Lines.NodesAspect := lnaInvisible;
+      Lines.AddNode(pos1);
+      Lines.AddNode(pos2);
+      Lines.LineColor.RandomColor;
+      /// e.g. Lines.AddChild(ff);
     end;
     6: //Plane
     begin
@@ -1271,7 +1282,10 @@ begin
       SuperEllipsoid := TGLSuperEllipsoid.CreateAsChild(dcObject);
       SuperEllipsoid.Material.FrontProperties.Diffuse.Color := clrTeal;
     end;
-    //21... Animated sprite
+    21: //Animated sprite
+    begin
+      //
+    end;
     22: // ArrowLine
     begin
       ArrowLine := TGLArrowLine.CreateAsChild(dcObject);
@@ -1307,12 +1321,43 @@ begin
       RevolutionSolid := TGLRevolutionSolid.CreateAsChild(dcObject);
       RevolutionSolid.Material.FrontProperties.Diffuse.RandomColor();
     end;
-    29: // Torus in dcWorld
+    29: // Torus exists in dcWorld
     begin
       Torus.Visible := True;
       Torus.Material.FrontProperties.Diffuse.RandomColor();
     end;
-    // 30...
+    30: //Actor
+    begin
+      Actor := TGLActor.CreateAsChild(dcObject);
+      SetCurrentDir(AssetPath  + '\modelext');
+      Actor.LoadFromFile('waste.md2');
+      Actor.Material.Texture.Disabled := False;
+      Actor.Material.Texture.Image.LoadFromFile('Waste.jpg');
+      Actor.Roll(90);
+      Actor.Pitch(90);
+      Actor.Turn(90);
+      Actor.Scale.Scale(0.05);
+    end;
+    31: //FreeForm
+    begin
+      //
+    end;
+    32: //Mesh
+    begin
+      //
+    end;
+    33: //TilePlane
+    begin
+      //
+    end;
+    34: //Portal
+    begin
+      //
+    end;
+    35: //TerrainRenderer
+    begin
+      //
+    end;
     79: // Teapot in dcWorld
     begin
       Teapot.Visible := True;
@@ -1323,9 +1368,9 @@ begin
     begin
       Tree.Visible := True;
       Tree.Scale.SetVector(0.5,0.5,0.5);
-      MLTree.AddTextureMaterial('TreeBark', 'zbark_016.jpg').Material.Texture.TextureMode := tmModulate;
-      MLTree.AddTextureMaterial('LeafTexture', 'leaf.tga').Material.Texture.TextureMode := tmModulate;
-      MLTree.AddTextureMaterial('FrutTexture', 'maple_multi.tga').Material.Texture.TextureMode := tmModulate;
+      dmImages.MLTree.AddTextureMaterial('TreeBark', 'zbark_016.jpg').Material.Texture.TextureMode := tmModulate;
+      dmImages.MLTree.AddTextureMaterial('LeafTexture', 'leaf.tga').Material.Texture.TextureMode := tmModulate;
+      dmImages.MLTree.AddTextureMaterial('FrutTexture', 'maple_multi.tga').Material.Texture.TextureMode := tmModulate;
     end;
   end;
 end;

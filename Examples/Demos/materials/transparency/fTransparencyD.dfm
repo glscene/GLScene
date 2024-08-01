@@ -1,54 +1,58 @@
-object Form1: TForm1
+object FormTransparency: TFormTransparency
   Left = 200
   Top = 110
+  Margins.Left = 4
+  Margins.Top = 4
+  Margins.Right = 4
+  Margins.Bottom = 4
   Caption = 'Transparency'
-  ClientHeight = 404
-  ClientWidth = 629
+  ClientHeight = 566
+  ClientWidth = 881
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  PixelsPerInch = 120
-  TextHeight = 16
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 380
-    Height = 404
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 532
+    Height = 566
+    Margins.Left = 6
+    Margins.Top = 6
+    Margins.Right = 6
+    Margins.Bottom = 6
     Camera = GLCamera1
     Buffer.BackgroundColor = 13224393
-    FieldOfView = 144.948867797851600000
+    FieldOfView = 154.577728271484400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 380
+    Left = 532
     Top = 0
-    Width = 249
-    Height = 404
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 349
+    Height = 566
+    Margins.Left = 6
+    Margins.Top = 6
+    Margins.Right = 6
+    Margins.Bottom = 6
     Align = alRight
     Caption = ' '
     TabOrder = 1
     object Label1: TLabel
-      Left = 16
-      Top = 10
-      Width = 215
-      Height = 144
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 22
+      Top = 14
+      Width = 307
+      Height = 216
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
       Caption = 
         'With Transparency and  Z-Buffering, '#13#10'ordering your objects is i' +
         'mportant.'#13#10#13#10'In this sample, only the spheres are'#13#10'transparent.'#13 +
@@ -56,74 +60,74 @@ object Form1: TForm1
         ' blending'#13#10'mode make.'
     end
     object Label2: TLabel
-      Left = 26
-      Top = 170
-      Width = 113
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 36
+      Top = 238
+      Width = 159
+      Height = 25
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
       Caption = 'Central objects :'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -14
+      Font.Height = -20
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 30
-      Top = 300
-      Width = 123
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 42
+      Top = 420
+      Width = 173
+      Height = 25
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
       Caption = 'Orbiting spheres :'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -14
+      Font.Height = -20
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object RBSTC: TRadioButton
-      Left = 64
-      Top = 200
-      Width = 171
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 90
+      Top = 280
+      Width = 239
+      Height = 29
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
       Caption = 'Sphere, Torus, Cone'
       TabOrder = 0
       OnClick = RBSTCClick
     end
     object RBTSC: TRadioButton
-      Left = 64
-      Top = 230
-      Width = 171
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 90
+      Top = 322
+      Width = 239
+      Height = 29
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
       Caption = 'Torus, Sphere, Cone'
       TabOrder = 1
       OnClick = RBTSCClick
     end
     object RBTCS: TRadioButton
-      Left = 64
-      Top = 260
-      Width = 171
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 90
+      Top = 364
+      Width = 239
+      Height = 29
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
       Caption = 'Torus, Cone, Sphere'
       Checked = True
       TabOrder = 2
@@ -131,27 +135,27 @@ object Form1: TForm1
       OnClick = RBTCSClick
     end
     object CBAdditive: TCheckBox
-      Left = 66
-      Top = 330
-      Width = 132
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 92
+      Top = 462
+      Width = 185
+      Height = 29
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
       Caption = 'Additive blending'
       TabOrder = 3
       OnClick = CBAdditiveClick
     end
     object CBSorting: TCheckBox
-      Left = 66
-      Top = 360
-      Width = 122
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 92
+      Top = 504
+      Width = 171
+      Height = 29
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
       Caption = 'osFarthestFirst'
       Checked = True
       State = cbChecked

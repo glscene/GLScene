@@ -30,7 +30,7 @@ uses
   GLS.RenderContextInfo;
 
 type
-  TForm1 = class(TForm)
+  TFormTransparency = class(TForm)
     GLSceneViewer1: TGLSceneViewer;
     GLScene1: TGLScene;
     GLCamera1: TGLCamera;
@@ -64,20 +64,20 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FormTransparency: TFormTransparency;
 
 implementation
 
 {$R *.DFM}
 
-procedure TForm1.RBSTCClick(Sender: TObject);
+procedure TFormTransparency.RBSTCClick(Sender: TObject);
 begin
    // we have 3 objects, move up twice and we're on the top !
    CentralSphere.MoveUp;
    CentralSphere.MoveUp;
 end;
 
-procedure TForm1.RBTSCClick(Sender: TObject);
+procedure TFormTransparency.RBTSCClick(Sender: TObject);
 begin
    // we have 3 objects, move down twice and we're on the top,
    // then once down, we're in the middle !
@@ -86,14 +86,14 @@ begin
    CentralSphere.MoveDown;
 end;
 
-procedure TForm1.RBTCSClick(Sender: TObject);
+procedure TFormTransparency.RBTCSClick(Sender: TObject);
 begin
    // we have 3 objects, move down twice and we're on the bottom !
    CentralSphere.MoveDown;
    CentralSphere.MoveDown;
 end;
 
-procedure TForm1.CBAdditiveClick(Sender: TObject);
+procedure TFormTransparency.CBAdditiveClick(Sender: TObject);
 begin
    // adjust blending mode for both orbiting spheres
    if CBAdditive.Checked then
@@ -102,7 +102,7 @@ begin
    OrbitingSphere2.Material.BlendingMode:=OrbitingSphere1.Material.BlendingMode;
 end;
 
-procedure TForm1.CBSortingClick(Sender: TObject);
+procedure TFormTransparency.CBSortingClick(Sender: TObject);
 begin
    // adjust sorting on the parent object
    if CBSorting.Checked then
@@ -110,7 +110,7 @@ begin
    else BaseDummyCube.ObjectsSorting:=osNone;
 end;
 
-procedure TForm1.GLCadencer1Progress(Sender: TObject; const deltaTime,
+procedure TFormTransparency.GLCadencer1Progress(Sender: TObject; const deltaTime,
   newTime: Double);
 var
    alpha : Double;

@@ -15,7 +15,7 @@ object FormCubeMap: TFormCubeMap
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
-  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 168
   TextHeight = 24
   object GLSceneViewer1: TGLSceneViewer
@@ -69,12 +69,14 @@ object FormCubeMap: TFormCubeMap
         Material.FrontProperties.Ambient.Color = {A7A6263FCDCC4C3ECDCC4C3E0000803F}
         Material.FrontProperties.Shininess = 46
         Material.FrontProperties.Specular.Color = {0000000000000000000000007F6A1C3F}
+        Material.Texture.ImageClassName = 'TGLCubeMapImage'
         Material.Texture.ImageAlpha = tiaAlphaFromIntensity
         Material.Texture.MinFilter = miNearest
         Material.Texture.TextureMode = tmReplace
         Position.Coordinates = {00000000000080BE000000000000803F}
       end
       object Cylinder1: TGLCylinder
+        Material.Texture.ImageClassName = 'TGLCubeMapImage'
         Position.Coordinates = {000000BF000000000000803F0000803F}
         Scale.Coordinates = {0000003F0000003F0000003F00000000}
         BottomRadius = 0.500000000000000000
@@ -82,6 +84,7 @@ object FormCubeMap: TFormCubeMap
         TopRadius = 0.500000000000000000
       end
       object Cone1: TGLCone
+        Material.Texture.ImageClassName = 'TGLCubeMapImage'
         Position.Coordinates = {0000803F00000000000000BF0000803F}
         Scale.Coordinates = {9A99193F9A99193F9A99193F00000000}
         BottomRadius = 0.500000000000000000

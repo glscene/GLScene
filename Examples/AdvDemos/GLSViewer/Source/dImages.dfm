@@ -27632,7 +27632,7 @@ object dmImages: TdmImages
     Left = 360
     Top = 26
   end
-  object ImageListObjects: TImageList
+  object ImageListGLS: TImageList
     Left = 352
     Top = 144
     Bitmap = {
@@ -30942,5 +30942,33 @@ object dmImages: TdmImages
       8003E000E0038001C007F000F0038001C00FF001F8038001C03FF003FC038001
       C0FFF80FFFFF8001FFFFFC0FFFFFFFFF00000000000000000000000000000000
       000000000000}
+  end
+  object MaterialLib: TGLMaterialLibrary
+    Left = 590
+    Top = 34
+  end
+  object MLTree: TGLMaterialLibrary
+    Materials = <
+      item
+        Name = 'TreeBark'
+        Tag = 0
+        Material.Texture.ImageClassName = 'TGLPicFileImage'
+        Material.Texture.TextureWrap = twVertical
+      end
+      item
+        Name = 'LeafTexture'
+        Tag = 0
+        Material.Texture.ImageClassName = 'TGLPicFileImage'
+        Material.Texture.Image.PictureFileName = '..\..\..\Texture\leaf.tga'
+      end
+      item
+        Name = 'FruitTexture'
+        Tag = 0
+        Material.Texture.ImageAlpha = tiaSuperBlackTransparent
+        Material.Texture.TextureMode = tmModulate
+        Material.Texture.TextureWrap = twNone
+      end>
+    Left = 586
+    Top = 164
   end
 end

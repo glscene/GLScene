@@ -80,7 +80,7 @@ type
       write SetAtmosphereRadius stored StoreAtmosphereRadius;
     property PlanetRadius: Single read FPlanetRadius write SetPlanetRadius
       stored StorePlanetRadius;
-    // Use value slightly lower than actual radius, for antialiasing effect.
+    // Use value slightly lower than actual radius, for antialiasing effect
     property LowAtmColor: TGLColor read FLowAtmColor write SetLowAtmColor
       stored StoreLowAtmColor;
     property HighAtmColor: TGLColor read FHighAtmColor write SetHighAtmColor
@@ -90,14 +90,14 @@ type
     procedure SetOptimalAtmosphere(const ARadius: Single); // absolute
     procedure SetOptimalAtmosphere2(const ARadius: Single); // relative
     procedure TogleBlendingMode; // changes between 2 blending modes
-    // Standard component stuff.
+    // Standard component stuff
     procedure Assign(Source: TPersistent); override;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    // Main rendering procedure.
+    // Main rendering procedure
     procedure DoRender(var rci: TGLRenderContextInfo;
       renderSelf, renderChildren: Boolean); override;
-    // Used to determine extents.
+    // Used to determine extents
     function AxisAlignedDimensionsUnscaled: TGLVector; override;
   end;
 
@@ -158,8 +158,8 @@ end;
 
 destructor TGLCustomAtmosphere.Destroy;
 begin
-  FLowAtmColor.Free;
-  FHighAtmColor.Free;
+  FreeAndNil(FLowAtmColor);
+  FreeAndNil(FHighAtmColor);
   FreeMem(pVertex);
   FreeMem(pColor);
   inherited;

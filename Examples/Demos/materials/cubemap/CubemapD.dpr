@@ -1,6 +1,6 @@
 (* Basic sample for loading and applying a cube map.
 
-   In this extremely simple demo, with a single teapot, we just setup and
+   In this simple demo, with a teapot and cone, we just setup and
    enabled reflection cube map environment mapping. Cube maps allow higher
    quality reflections than sphere map (no singularity) at the expense of
    memory use (they require 6 images instead of one).

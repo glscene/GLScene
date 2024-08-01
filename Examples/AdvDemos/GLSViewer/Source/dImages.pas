@@ -15,16 +15,19 @@ uses
   System.ImageList,
   Vcl.ImgList,
   Vcl.VirtualImageList,
+  Vcl.Controls,
 
   GLS.BaseClasses,
-  GLS.Material, Vcl.Controls;
+  GLS.Material;
 
 type
   TdmImages = class(TDataModule)
     VirtualImageList: TVirtualImageList;
     ImageCollection: TImageCollection;
     LightmapLib: TGLMaterialLibrary;
-    ImageListObjects: TImageList;
+    ImageListGLS: TImageList;
+    MaterialLib: TGLMaterialLibrary;
+    MLTree: TGLMaterialLibrary;
   private
 
   public

@@ -23,7 +23,9 @@ uses
   GLS.RenderContextInfo, 
   GLS.Context, 
   GLS.DynamicTexture, 
-  GLS.Utils, GLS.Navigator, GLS.SimpleNavigation;
+  GLS.Utils,
+  GLS.Navigator,
+  GLS.SimpleNavigation;
 
 type
   TFormDynamicTexture = class(TForm)

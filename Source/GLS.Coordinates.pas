@@ -309,6 +309,8 @@ procedure BipolarCylindrical_Cartesian(const u, v, z1, a: single;
 procedure BipolarCylindrical_Cartesian(const u, v, z1, a: double;
   var x, y, z: double; var ierr: integer); overload;
 
+
+
 var
   (* Specifies if TGLCustomCoordinates should allocate memory for
     their default values (ie. design-time) or not (run-time) *)
@@ -319,9 +321,9 @@ implementation
 //==================================================================
 
 const
-  csVectorHelp = 'If you are getting assertions here, consider using the SetPoint procedure';
-  csPointHelp = 'If you are getting assertions here, consider using the SetVector procedure';
-  csPoint2DHelp = 'If you are getting assertions here, consider using one of the SetVector or SetPoint procedures';
+  csVectorHelp = 'When getting assertions here use the SetPoint procedure';
+  csPointHelp = 'When getting assertions here use the SetVector procedure';
+  csPoint2DHelp = 'When getting assertions here use one of the SetVector or SetPoint procedures';
 
   // ------------------
   // ------------------ TGLCustomCoordinates ------------------

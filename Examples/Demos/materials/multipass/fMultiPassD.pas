@@ -27,7 +27,7 @@ uses
   GLS.BaseClasses;
 
 type
-  TFormMultiPath = class(TForm)
+  TFormMultiPass = class(TForm)
     GLScene1: TGLScene;
     GLSceneViewer1: TGLSceneViewer;
     GLCamera1: TGLCamera;
@@ -53,7 +53,7 @@ type
   end;
 
 var
-  FormMultiPath: TFormMultiPath;
+  FormMultiPass: TFormMultiPass;
 
 implementation
 
@@ -186,7 +186,7 @@ begin
   end;
 end;
 
-procedure TFormMultiPath.BUBindClick(Sender: TObject);
+procedure TFormMultiPass.BUBindClick(Sender: TObject);
 var
   shader1: THiddenLineShader;
   shader2, shader3: TOutLineShader;
@@ -232,14 +232,14 @@ end;
 // Classic mouse movement bits
 //
 
-procedure TFormMultiPath.GLSceneViewer1MouseDown(Sender: TObject;
+procedure TFormMultiPass.GLSceneViewer1MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
   mx := x;
   my := y;
 end;
 
-procedure TFormMultiPath.GLSceneViewer1MouseMove(Sender: TObject;
+procedure TFormMultiPass.GLSceneViewer1MouseMove(Sender: TObject;
   Shift: TShiftState; X, Y: Integer);
 begin
   if Shift = [ssLeft] then

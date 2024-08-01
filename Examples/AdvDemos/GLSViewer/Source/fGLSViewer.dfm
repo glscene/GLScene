@@ -317,7 +317,7 @@ object FormGLSViewer: TFormGLSViewer
       Margins.Right = 5
       Margins.Bottom = 5
       Align = alClient
-      Images = dmImages.ImageListObjects
+      Images = dmImages.ImageListGLS
       Indent = 33
       ParentShowHint = False
       ShowHint = True
@@ -563,7 +563,6 @@ object FormGLSViewer: TFormGLSViewer
       Direction.Coordinates = {000000000000803F0000008000000000}
       Up.Coordinates = {00000000000000000000803F00000000}
       AutoCentering = [macCenterX, macCenterY, macCenterZ, macUseBarycenter]
-      MaterialLibrary = MaterialLib
     end
     object dcAxis: TGLDummyCube
       Direction.Coordinates = {000000000000803F0000000000000000}
@@ -713,17 +712,11 @@ object FormGLSViewer: TFormGLSViewer
         AutoCenter = False
         AutoRebuild = True
         CenterBranchConstant = 0.500000000000000000
-        MaterialLibrary = MLTree
         LeafMaterialName = 'LeafFront'
         LeafBackMaterialName = 'LeafBack'
         BranchMaterialName = 'TreeBark'
       end
     end
-  end
-  object MaterialLib: TGLMaterialLibrary
-    OnTextureNeeded = MaterialLibTextureNeeded
-    Left = 296
-    Top = 544
   end
   object Cadencer: TGLCadencer
     Scene = Scene
@@ -2618,29 +2611,5 @@ object FormGLSViewer: TFormGLSViewer
       end>
     Left = 552
     Top = 278
-  end
-  object MLTree: TGLMaterialLibrary
-    Materials = <
-      item
-        Name = 'TreeBark'
-        Tag = 0
-        Material.Texture.ImageClassName = 'TGLPicFileImage'
-        Material.Texture.TextureWrap = twVertical
-      end
-      item
-        Name = 'LeafTexture'
-        Tag = 0
-        Material.Texture.ImageClassName = 'TGLPicFileImage'
-        Material.Texture.Image.PictureFileName = '..\..\..\Texture\leaf.tga'
-      end
-      item
-        Name = 'FruitTexture'
-        Tag = 0
-        Material.Texture.ImageAlpha = tiaSuperBlackTransparent
-        Material.Texture.TextureMode = tmModulate
-        Material.Texture.TextureWrap = twNone
-      end>
-    Left = 554
-    Top = 498
   end
 end

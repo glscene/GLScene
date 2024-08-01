@@ -44,7 +44,8 @@ uses
   Vcl.BaseImageCollection,
   Vcl.ImageCollection,
   Vcl.ImgList,
-  Vcl.VirtualImageList, GLS.GeomObjects;
+  Vcl.VirtualImageList,
+  GLS.GeomObjects;
 
 type
   TFormEarth = class(TForm)
