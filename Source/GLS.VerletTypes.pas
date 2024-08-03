@@ -2,14 +2,15 @@
 // The graphics engine GLScene https://github.com/glscene
 //
 unit GLS.VerletTypes;
-
 (*
   Base Verlet modelling/simulation classes.
-  This unit is generic, GLScene-specific sub-classes are in GLVerletClasses.
+  This unit is generic, GLScene-specific sub-classes are in GLS.VerletClothify.
 
   Note that currently, the SatisfyConstraintForEdge methods push the nodes in
   the edge uniformly - it should push the closer node more for correct physics.
   It's a matter of leverage.
+  The registered classes are:
+  [TGLVerletSkeletonCollider, TGLVerletSphere, TGLVerletCapsule]
 *)
 interface
 

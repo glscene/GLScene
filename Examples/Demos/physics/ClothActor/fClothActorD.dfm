@@ -1,28 +1,37 @@
 object FormClothActor: TFormClothActor
   Left = 69
   Top = 116
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Cloth Actor'
-  ClientHeight = 432
-  ClientWidth = 626
+  ClientHeight = 756
+  ClientWidth = 1096
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 626
-    Height = 432
+    Width = 1096
+    Height = 756
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.AmbientColor.Color = {CDCCCC3ECDCCCC3ECDCCCC3E0000803F}
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow, roTwoSideLighting]
-    FieldOfView = 153.933288574218800000
+    FieldOfView = 164.929870605468800000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -30,19 +39,26 @@ object FormClothActor: TFormClothActor
     TabOrder = 0
   end
   object cbShowOctree: TCheckBox
-    Left = 280
-    Top = 17
-    Width = 97
-    Height = 17
+    Left = 490
+    Top = 30
+    Width = 170
+    Height = 30
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Show Octree'
     TabOrder = 1
-    Visible = False
   end
   object StaticTextFPS: TStaticText
-    Left = 16
-    Top = 17
-    Width = 24
-    Height = 17
+    Left = 28
+    Top = 30
+    Width = 40
+    Height = 28
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'FPS'
     TabOrder = 2
   end

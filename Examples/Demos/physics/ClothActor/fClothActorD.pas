@@ -145,9 +145,9 @@ end;
 procedure TFormClothActor.FormCreate(Sender: TObject);
 var
   FloorVC: TGLVerletFloor;
+  Path: TFileName;
 begin
-  var
-    Path: TFileName := GetCurrentAssetPath();
+  Path := GetCurrentAssetPath();
   Randomize;
 
   // Load dynamic models of actors with textures and/or animations
