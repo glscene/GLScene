@@ -4,11 +4,10 @@ It provides a class library and tools for rendering 3D scenes with spatial objec
 freeforms, verlets and virtual intelligent actors 
 Includes additional components for creating mesh objects with materials, shaders, 
 animations, and developing graphics applications with physics
-
-## Requirements
- IDE - Embarcadero RAD Studio
- Visual C++ Redistributable for Visual Studio 2015
-## How to install
+### Requirements
+ IDE - Embarcadero RAD Studio<br>
+ Visual C++ Redistributable for Visual Studio 2015<br>
+### How to install
 1. Download a zip archive of the last release or clone repository:
 git clone https://github.com/glscene/GLScene.git 
 2. Run ...GLScene/External/_setupDLL.cmd as admin to include dynamic libraries
