@@ -8,8 +8,8 @@ animations, and developing graphics applications with physics
  IDE - Embarcadero RAD Studio<br>
  Visual C++ Redistributable for Visual Studio 2015<br>
 ### How to install
-1. Download a zip archive of the last release or clone repository:
-git clone https://github.com/glscene/GLScene.git 
+1. Download a zip archive of the last release or clone repository:<br>
+git clone https://github.com/glscene/GLScene.git<br>
 2. Run ...GLScene/External/_setupDLL.cmd as admin to include dynamic libraries
 3. Configure the IDE settings and paths to sources
 4. Open GLScene.groupproj, compile and install components
