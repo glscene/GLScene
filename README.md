@@ -11,4 +11,4 @@ git clone https://github.com/glscene/GLScene.git<br>
 3. Configure the IDE settings and paths to sources
 4. Open GLScene.groupproj, compile and install components
 5. Run examples for Delphi & C++Builders<br>
-*****
+GLS Team
