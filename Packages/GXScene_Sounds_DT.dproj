@@ -133,6 +133,7 @@
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <DCC_ImageBase>00400000</DCC_ImageBase>
         <SanitizedProjectName>GLScene_RunTime_FMX</SanitizedProjectName>
+        <DCC_UnitSearchPath>..\Unipas;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -142,7 +143,7 @@
         <DCCReference Include="fmx.dcp"/>
         <DCCReference Include="GXScene_RT.dcp"/>
         <DCCReference Include="GXScene_Sounds_RT.dcp"/>
-        <DCCReference Include="..\SourceX\Soundx.Register.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.Sounds.Register.pas"/>
         <RcCompile Include="..\resources\GXSceneSounds.rc">
             <Form>GXSceneSounds.res</Form>
         </RcCompile>

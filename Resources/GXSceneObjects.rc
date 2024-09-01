@@ -1,8 +1,8 @@
-glx_camera BITMAP fmx\objects\glx_camera.bmp
-glx_lights BITMAP fmx\objects\glx_lights.bmp
-glx_objects BITMAP fmx\objects\glx_objects.bmp
-glx_root BITMAP fmx\objects\glx_root.bmp
-glx_cross BITMAP fmx\objects\glx_cross.bmp
+gxs_camera BITMAP fmx\objects\gxs_camera.bmp
+gxs_lights BITMAP fmx\objects\gxs_lights.bmp
+gxs_objects BITMAP fmx\objects\gxs_objects.bmp
+gxs_root BITMAP fmx\objects\gxs_root.bmp
+gxs_cross BITMAP fmx\objects\gxs_cross.bmp
 
 TgxCamera BITMAP fmx\objects\TgxCamera.bmp
 TgxDirectOpenGL BITMAP fmx\objects\TgxDirectOpenGL.bmp

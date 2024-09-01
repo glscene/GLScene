@@ -416,9 +416,9 @@
         <DCCReference Include="..\SourceX\GXSL.ShapeShaders.pas"/>
         <DCCReference Include="..\SourceX\GXSL.LineShaders.pas"/>
         <DCCReference Include="..\SourceX\GXSL.MultiMaterialShader.pas"/>
+        <DCCReference Include="..\Unipas\PasDblStrUtils.dcu"/>
         <DCCReference Include="..\Unipas\PasGLTF.pas"/>
         <DCCReference Include="..\Unipas\PasJSON.pas"/>
-        <DCCReference Include="..\Unipas\PasDblStrUtils.pas"/>
         <None Include="..\Sourcex\GXS.Scene.inc"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

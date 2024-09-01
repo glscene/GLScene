@@ -187,10 +187,10 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="GXScene_RT.dcp"/>
-        <DCCReference Include="..\SourceX\Soundx.FMOD.pas"/>
-        <DCCReference Include="..\SourceX\Soundx.BASS.pas"/>
-        <DCCReference Include="..\SourceX\Soundx.OpenAL.pas"/>
-        <DCCReference Include="..\SourceX\Soundx.WaveOut.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.Sounds.FMOD.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.Sounds.BASS.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.Sounds.OpenAL.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.Sounds.WaveOut.pas"/>
         <DCCReference Include="..\Unipas\OpenAL.Import.pas"/>
         <DCCReference Include="..\Unipas\BASS.Import.pas"/>
         <DCCReference Include="..\Unipas\FMOD.errors.pas"/>

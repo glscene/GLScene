@@ -33,6 +33,6 @@ requires
   GXScene_RT;
 
 contains
-  CGx.Register in '..\SourceX\CGx.Register.pas';
+  GXS.CgRegister in '..\Sourcex\GXS.CgRegister.pas';
 
 end.

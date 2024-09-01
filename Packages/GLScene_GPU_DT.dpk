@@ -41,6 +41,6 @@ requires
 contains
   GLS.CUDA.PropEditors in '..\Source\GLS.CUDA.PropEditors.pas',
   GLS.CUDA.Register in '..\Source\GLS.CUDA.Register.pas',
-  FmCUDAEditor in '..\Source\FmCUDAEditor.pas';
+  FmCUDAEditor in '..\Source\FmCUDAEditor.pas' {GLCUDAEditorForm};
 
 end.

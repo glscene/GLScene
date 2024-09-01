@@ -29,7 +29,7 @@ uses
   ToolsAPI,
   *)
 
-// ToDo DesignTime
+/// ToDo DesignTime
 (*
   DesignIntf,
   DesignEditors,

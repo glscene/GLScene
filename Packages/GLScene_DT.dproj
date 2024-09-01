@@ -118,6 +118,7 @@
         <DCC_Description>GLScene Engine</DCC_Description>
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <VerInfo_MajorVer>2023</VerInfo_MajorVer>
+        <DCC_UnitSearchPath>..\Unipas;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">

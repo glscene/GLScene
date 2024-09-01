@@ -35,19 +35,20 @@ requires
   GXScene_RT;
 
 contains
-  CUDAx.API in '..\SourceX\CUDAx.API.pas',
-  CUDAx.Compiler in '..\SourceX\CUDAx.Compiler.pas',
-  CUDAx.Context in '..\SourceX\CUDAx.Context.pas',
-  CUDAx.FFTPlan in '..\SourceX\CUDAx.FFTPlan.pas',
-  CUDAx.Graphics in '..\SourceX\CUDAx.Graphics.pas',
-  CUDAx.Import in '..\SourceX\CUDAx.Import.pas',
-  CUDAx.DataAccess in '..\SourceX\CUDAx.DataAccess.pas',
-  CUDAx.Parser in '..\SourceX\CUDAx.Parser.pas',
-  CUDAx.FourierTransform in '..\SourceX\CUDAx.FourierTransform.pas',
-  CUDAx.ParallelPrimitives in '..\SourceX\CUDAx.ParallelPrimitives.pas',
-  CUDAx.Runtime in '..\SourceX\CUDAx.Runtime.pas',
+  GXS.CUDA.API in '..\Sourcex\GXS.CUDA.API.pas',
+  GXS.CUDA.Compiler in '..\Sourcex\GXS.CUDA.Compiler.pas',
+  GXS.CUDA.Context in '..\Sourcex\GXS.CUDA.Context.pas',
+  GXS.CUDA.FFTPlan in '..\Sourcex\GXS.CUDA.FFTPlan.pas',
+  GXS.CUDA.Graphics in '..\Sourcex\GXS.CUDA.Graphics.pas',
   OpenCL.GL in '..\Unipas\OpenCL.GL.pas',
   OpenCL.Import in '..\Unipas\OpenCL.Import.pas',
-  OpenCL.Platform in '..\Unipas\OpenCL.Platform.pas';
+  OpenCL.Platform in '..\Unipas\OpenCL.Platform.pas',
+  CUDA.DataAccess in '..\Unipas\CUDA.DataAccess.pas',
+  CUDA.FourierTransform in '..\Unipas\CUDA.FourierTransform.pas',
+  CUDA.Import in '..\Unipas\CUDA.Import.pas',
+  CUDA.ParallelPrimitives in '..\Unipas\CUDA.ParallelPrimitives.pas',
+  CUDA.Parser in '..\Unipas\CUDA.Parser.pas',
+  CUDA.Runtime in '..\Unipas\CUDA.Runtime.pas',
+  CUDA.Utility in '..\Unipas\CUDA.Utility.pas';
 
 end.

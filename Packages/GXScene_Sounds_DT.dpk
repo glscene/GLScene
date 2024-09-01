@@ -36,6 +36,6 @@ requires
   GXScene_Sounds_RT;
 
 contains
-  Soundx.Register in '..\SourceX\Soundx.Register.pas';
+  GXS.Sounds.Register in '..\Sourcex\GXS.Sounds.Register.pas';
 
 end.

@@ -12,11 +12,12 @@ uses
   System.Classes,
   System.TypInfo,
 
+  // ToDo
 ///  DesignEditors,
 ///  DesignIntf,
 
     GXS.XCollection,
-    FxXCollectionEditor;
+    FMxXCollectionEditor;
 
 type
 	TXCollectionProperty = class(TClassProperty)

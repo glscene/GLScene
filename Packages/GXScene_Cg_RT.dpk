@@ -34,9 +34,9 @@ requires
   GXScene_RT;
 
 contains
-  CGx.Shader in '..\SourceX\CGx.Shader.pas',
-  CGx.BombShader in '..\SourceX\CGx.BombShader.pas',
-  CGx.PostTransformationShader in '..\SourceX\CGx.PostTransformationShader.pas',
+  GXS.CgShader in '..\Sourcex\GXS.CgShader.pas',
+  GXS.CgBombShader in '..\Sourcex\GXS.CgBombShader.pas',
+  GXS.CgPostTransformationShader in '..\Sourcex\GXS.CgPostTransformationShader.pas',
   Cg.GL in '..\Unipas\Cg.GL.pas',
   Cg.Import in '..\Unipas\Cg.Import.pas';
 

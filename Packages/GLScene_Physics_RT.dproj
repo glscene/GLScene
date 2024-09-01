@@ -175,17 +175,17 @@
         <DCCReference Include="..\Unipas\NGD.Import.pas"/>
         <DCCReference Include="..\Unipas\ODE.Import.pas"/>
         <DCCReference Include="..\Unipas\PhysX.Import.pas"/>
-        <DCCReference Include="..\Source\Physics.NGDManager.pas"/>
-        <DCCReference Include="..\Source\Physics.NGDRagdoll.pas"/>
-        <DCCReference Include="..\Source\Physics.ODEManager.pas"/>
-        <DCCReference Include="..\Source\Physics.ODERagdoll.pas"/>
-        <DCCReference Include="..\Source\Physics.ODESkeletonColliders.pas"/>
-        <DCCReference Include="..\Source\Physics.ODEUtils.pas"/>
-        <DCCReference Include="..\Source\Physics.SPIFields.pas"/>
-        <DCCReference Include="..\Source\Physics.SPIForces.pas"/>
-        <DCCReference Include="..\Source\Physics.SPIInertias.pas"/>
-        <DCCReference Include="..\Source\Physics.SPIJoints.pas"/>
-        <DCCReference Include="..\Source\Physics.SPIManager.pas"/>
+        <DCCReference Include="..\Source\GLS.NGDManager.pas"/>
+        <DCCReference Include="..\Source\GLS.NGDRagdoll.pas"/>
+        <DCCReference Include="..\Source\GLS.ODEManager.pas"/>
+        <DCCReference Include="..\Source\GLS.ODERagdoll.pas"/>
+        <DCCReference Include="..\Source\GLS.ODESkeletonColliders.pas"/>
+        <DCCReference Include="..\Source\GLS.ODEUtils.pas"/>
+        <DCCReference Include="..\Source\GLS.PhysFields.pas"/>
+        <DCCReference Include="..\Source\GLS.PhysForces.pas"/>
+        <DCCReference Include="..\Source\GLS.PhysInertias.pas"/>
+        <DCCReference Include="..\Source\GLS.PhysJoints.pas"/>
+        <DCCReference Include="..\Source\GLS.PhysManager.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

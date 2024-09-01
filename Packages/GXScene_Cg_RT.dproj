@@ -126,6 +126,7 @@
         <DCC_ObjOutput>..\lib\$(Platform)</DCC_ObjOutput>
         <DCC_HppOutput>..\include\$(Platform)</DCC_HppOutput>
         <DCC_Description>GXScene CG Shaders</DCC_Description>
+        <DCC_UnitSearchPath>..\Unipas;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -139,9 +140,9 @@
         </DelphiCompile>
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="GXScene_RT.dcp"/>
-        <DCCReference Include="..\SourceX\CGx.Shader.pas"/>
-        <DCCReference Include="..\SourceX\CGx.BombShader.pas"/>
-        <DCCReference Include="..\SourceX\CGx.PostTransformationShader.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.CgShader.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.CgBombShader.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.CgPostTransformationShader.pas"/>
         <DCCReference Include="..\Unipas\Cg.GL.pas"/>
         <DCCReference Include="..\Unipas\Cg.Import.pas"/>
         <BuildConfiguration Include="Base">

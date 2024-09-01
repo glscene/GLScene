@@ -264,10 +264,7 @@ contains
   GLS.VectorFileObjects in '..\Source\GLS.VectorFileObjects.pas',
   GLS.VerletTypes in '..\Source\GLS.VerletTypes.pas',
   GLS.VerletClothify in '..\Source\GLS.VerletClothify.pas',
-  GLS.VectorTypesExt in '..\Source\GLS.VectorTypesExt.pas',
-  PasDblStrUtils in '..\Unipas\PasDblStrUtils.pas',
-  PasGLTF in '..\Unipas\PasGLTF.pas',
-  PasJSON in '..\Unipas\PasJSON.pas';
+  GLS.VectorTypesExt in '..\Source\GLS.VectorTypesExt.pas';
 
 end.
 

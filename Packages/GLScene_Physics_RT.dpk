@@ -39,17 +39,17 @@ contains
   NGD.Import in '..\Unipas\NGD.Import.pas',
   ODE.Import in '..\Unipas\ODE.Import.pas',
   PhysX.Import in '..\Unipas\PhysX.Import.pas',
-  Physics.NGDManager in '..\Source\Physics.NGDManager.pas',
-  Physics.NGDRagdoll in '..\Source\Physics.NGDRagdoll.pas',
-  Physics.ODEManager in '..\Source\Physics.ODEManager.pas',
-  Physics.ODERagdoll in '..\Source\Physics.ODERagdoll.pas',
-  Physics.ODESkeletonColliders in '..\Source\Physics.ODESkeletonColliders.pas',
-  Physics.ODEUtils in '..\Source\Physics.ODEUtils.pas',
-  Physics.SPIFields in '..\Source\Physics.SPIFields.pas',
-  Physics.SPIForces in '..\Source\Physics.SPIForces.pas',
-  Physics.SPIInertias in '..\Source\Physics.SPIInertias.pas',
-  Physics.SPIJoints in '..\Source\Physics.SPIJoints.pas',
-  Physics.SPIManager in '..\Source\Physics.SPIManager.pas';
+  GLS.NGDManager in '..\Source\GLS.NGDManager.pas',
+  GLS.NGDRagdoll in '..\Source\GLS.NGDRagdoll.pas',
+  GLS.ODEManager in '..\Source\GLS.ODEManager.pas',
+  GLS.ODERagdoll in '..\Source\GLS.ODERagdoll.pas',
+  GLS.ODESkeletonColliders in '..\Source\GLS.ODESkeletonColliders.pas',
+  GLS.ODEUtils in '..\Source\GLS.ODEUtils.pas',
+  GLS.PhysFields in '..\Source\GLS.PhysFields.pas',
+  GLS.PhysForces in '..\Source\GLS.PhysForces.pas',
+  GLS.PhysInertias in '..\Source\GLS.PhysInertias.pas',
+  GLS.PhysJoints in '..\Source\GLS.PhysJoints.pas',
+  GLS.PhysManager in '..\Source\GLS.PhysManager.pas';
 
 end.
 

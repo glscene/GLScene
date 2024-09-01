@@ -33,10 +33,10 @@ requires
   GXScene_RT;
 
 contains
-  Soundx.FMOD in '..\SourceX\Soundx.FMOD.pas',
-  Soundx.BASS in '..\SourceX\Soundx.BASS.pas',
-  Soundx.OpenAL in '..\SourceX\Soundx.OpenAL.pas',
-  Soundx.WaveOut in '..\SourceX\Soundx.WaveOut.pas',
+  GXS.Sounds.FMOD in '..\Sourcex\GXS.Sounds.FMOD.pas',
+  GXS.Sounds.BASS in '..\Sourcex\GXS.Sounds.BASS.pas',
+  GXS.Sounds.OpenAL in '..\Sourcex\GXS.Sounds.OpenAL.pas',
+  GXS.Sounds.WaveOut in '..\Sourcex\GXS.Sounds.WaveOut.pas',
   OpenAL.Import in '..\Unipas\OpenAL.Import.pas',
   BASS.Import in '..\Unipas\BASS.Import.pas',
   FMOD.errors in '..\Unipas\FMOD.errors.pas',

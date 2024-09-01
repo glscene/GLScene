@@ -92,6 +92,7 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
+        <DCC_UnitSearchPath>..\Unipas;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -100,12 +101,7 @@
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="fmx.dcp"/>
         <DCCReference Include="GXScene_RT.dcp"/>
-        <DCCReference Include="..\SourceX\Physix.ODERegister.pas"/>
-        <DCCReference Include="..\SourceX\Physix.NGDRegister.pas"/>
-        <DCCReference Include="..\SourceX\Physix.ODEManager.pas"/>
-        <RcCompile Include="..\resources\GXScenePhysics.rc">
-            <Form>GXScenePhysics.res</Form>
-        </RcCompile>
+        <DCCReference Include="..\Sourcex\GXS.Physics.Register.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -140,6 +136,12 @@
             </Platforms>
             <Deployment Version="4">
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GXScene_Physics_DT.bpl" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GXScene_Physics_DT.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>GXScene_Physics_DT.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="OSX32">
                         <Operation>1</Operation>

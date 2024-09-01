@@ -142,7 +142,7 @@
         <VerInfo_Keys>CompanyName=;FileVersion=2023.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
         <DCC_Description>GLScene Platform</DCC_Description>
         <VerInfo_MajorVer>2023</VerInfo_MajorVer>
-        <DCC_UnitSearchPath>..\..\GLScene\Unipas;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\Unipas;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
@@ -391,9 +391,6 @@
         <DCCReference Include="..\Source\GLS.VerletTypes.pas"/>
         <DCCReference Include="..\Source\GLS.VerletClothify.pas"/>
         <DCCReference Include="..\Source\GLS.VectorTypesExt.pas"/>
-        <DCCReference Include="..\Unipas\PasDblStrUtils.pas"/>
-        <DCCReference Include="..\Unipas\PasGLTF.pas"/>
-        <DCCReference Include="..\Unipas\PasJSON.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

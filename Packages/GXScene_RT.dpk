@@ -267,8 +267,8 @@ contains
   GXSL.ShapeShaders in '..\SourceX\GXSL.ShapeShaders.pas',
   GXSL.LineShaders in '..\SourceX\GXSL.LineShaders.pas',
   GXSL.MultiMaterialShader in '..\SourceX\GXSL.MultiMaterialShader.pas',
+  PasDblStrUtils,
   PasGLTF in '..\Unipas\PasGLTF.pas',
-  PasJSON in '..\Unipas\PasJSON.pas',
-  PasDblStrUtils in '..\Unipas\PasDblStrUtils.pas';
+  PasJSON in '..\Unipas\PasJSON.pas';
 
 end.

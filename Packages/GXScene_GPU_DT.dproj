@@ -146,6 +146,7 @@
         <DCC_HppOutput>..\include\$(Platform)</DCC_HppOutput>
         <DCC_ObjOutput>..\lib\$(Platform)</DCC_ObjOutput>
         <DCC_Description>GLXcene GPU Computing</DCC_Description>
+        <DCC_UnitSearchPath>..\Unipas;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <Import Project="CBoutput_FMX.optset" Condition="'$(Base)'!='' And Exists('CBoutput_FMX.optset')"/>
     <ItemGroup>
@@ -156,7 +157,7 @@
         <DCCReference Include="fmx.dcp"/>
         <DCCReference Include="GXScene_GPU_RT.dcp"/>
         <DCCReference Include="GXScene_RT.dcp"/>
-        <DCCReference Include="..\SourceX\GPU.ComputingRegister.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.GPURegister.pas"/>
         <DCCReference Include="..\SourceX\FMxCUDAEditor.pas"/>
         <RcCompile Include="..\resources\GXSceneGPU.rc">
             <Form>GXSceneGPU.res</Form>

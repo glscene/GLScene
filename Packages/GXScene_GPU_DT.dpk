@@ -36,7 +36,7 @@ requires
   GXScene_RT;
 
 contains
-  GPU.ComputingRegister in '..\SourceX\GPU.ComputingRegister.pas',
+  GXS.GPURegister in '..\Sourcex\GXS.GPURegister.pas',
   FMxCUDAEditor in '..\SourceX\FMxCUDAEditor.pas';
 
 end.

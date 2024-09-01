@@ -37,7 +37,7 @@ requires
   GLScene_Physics_RT;
 
 contains
-  Physics.Register in '..\Source\Physics.Register.pas';
+  GLS.Physics.Register in '..\Source\GLS.Physics.Register.pas';
 
 end.
 

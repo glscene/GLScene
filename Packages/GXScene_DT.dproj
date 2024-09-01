@@ -88,7 +88,7 @@
         <DCC_S>false</DCC_S>
         <DCC_N>false</DCC_N>
         <GenDll>true</GenDll>
-        <RuntimeOnlyPackage>true</RuntimeOnlyPackage>
+        <DesignOnlyPackage>true</DesignOnlyPackage>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Android)'!=''">
         <VerInfo_Keys>package=com.embarcadero.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=1;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
@@ -174,6 +174,7 @@
         <SanitizedProjectName>GLScene_RunTime_FMX</SanitizedProjectName>
         <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=VKSTeam;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
         <DCC_N>false</DCC_N>
+        <DCC_UnitSearchPath>..\Unipas;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
@@ -184,6 +185,8 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
+        <DCCReference Include="GXSceneObjects.res"/>
+        <DCCReference Include="GXScene.res"/>
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="fmx.dcp"/>
         <DCCReference Include="GXScene_RT.dcp"/>
@@ -202,6 +205,12 @@
         <DCCReference Include="..\SourceX\FMxSceneEditor.pas"/>
         <DCCReference Include="..\SourceX\GXS.SceneRegister.pas"/>
         <DCCReference Include="..\SourceX\GXS.XCollectionRegister.pas"/>
+        <RcCompile Include="..\Resources\GXScene.rc">
+            <Form>GXScene.res</Form>
+        </RcCompile>
+        <RcCompile Include="..\Resources\GXSceneObjects.rc">
+            <Form>GXSceneObjects.res</Form>
+        </RcCompile>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -256,6 +265,12 @@
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\osx64\libcgsqlite3.dylib" Class="DependencyModule"/>
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GXScene_DT.bpl" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GXScene_DT.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>GXScene_DT.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="OSX32">
                         <Operation>1</Operation>

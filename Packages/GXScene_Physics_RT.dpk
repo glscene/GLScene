@@ -38,13 +38,12 @@ requires
   GXScene_RT;
 
 contains
-  Physix.NGDManager in '..\SourceX\Physix.NGDManager.pas',
-  Physix.NGDRagdoll in '..\SourceX\Physix.NGDRagdoll.pas',
-  Physix.ODEManager in '..\SourceX\Physix.ODEManager.pas',
-  Physix.ODERagdoll in '..\SourceX\Physix.ODERagdoll.pas',
-  Physix.ODERegister in '..\SourceX\Physix.ODERegister.pas',
-  Physix.ODESkeletonColliders in '..\SourceX\Physix.ODESkeletonColliders.pas',
-  Physix.ODEUtils in '..\SourceX\Physix.ODEUtils.pas',
+  GXS.NGDManager in '..\Sourcex\GXS.NGDManager.pas',
+  GXS.NGDRagdoll in '..\Sourcex\GXS.NGDRagdoll.pas',
+  GXS.ODEManager in '..\Sourcex\GXS.ODEManager.pas',
+  GXS.ODERagdoll in '..\Sourcex\GXS.ODERagdoll.pas',
+  GXS.ODESkeletonColliders in '..\Sourcex\GXS.ODESkeletonColliders.pas',
+  GXS.ODEUtils in '..\Sourcex\GXS.ODEUtils.pas',
   Newton.Import in '..\Unipas\Newton.Import.pas',
   NGD.Import in '..\Unipas\NGD.Import.pas',
   ODE.Import in '..\Unipas\ODE.Import.pas',

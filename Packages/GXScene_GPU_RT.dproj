@@ -172,6 +172,7 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <DCC_UnitSearchPath>..\Unipas;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -180,20 +181,21 @@
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="fmx.dcp"/>
         <DCCReference Include="GXScene_RT.dcp"/>
-        <DCCReference Include="..\SourceX\CUDAx.API.pas"/>
-        <DCCReference Include="..\SourceX\CUDAx.Compiler.pas"/>
-        <DCCReference Include="..\SourceX\CUDAx.Context.pas"/>
-        <DCCReference Include="..\SourceX\CUDAx.FFTPlan.pas"/>
-        <DCCReference Include="..\SourceX\CUDAx.Graphics.pas"/>
-        <DCCReference Include="..\SourceX\CUDAx.Import.pas"/>
-        <DCCReference Include="..\SourceX\CUDAx.DataAccess.pas"/>
-        <DCCReference Include="..\SourceX\CUDAx.Parser.pas"/>
-        <DCCReference Include="..\SourceX\CUDAx.FourierTransform.pas"/>
-        <DCCReference Include="..\SourceX\CUDAx.ParallelPrimitives.pas"/>
-        <DCCReference Include="..\SourceX\CUDAx.Runtime.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.CUDA.API.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.CUDA.Compiler.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.CUDA.Context.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.CUDA.FFTPlan.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.CUDA.Graphics.pas"/>
         <DCCReference Include="..\Unipas\OpenCL.GL.pas"/>
         <DCCReference Include="..\Unipas\OpenCL.Import.pas"/>
         <DCCReference Include="..\Unipas\OpenCL.Platform.pas"/>
+        <DCCReference Include="..\Unipas\CUDA.DataAccess.pas"/>
+        <DCCReference Include="..\Unipas\CUDA.FourierTransform.pas"/>
+        <DCCReference Include="..\Unipas\CUDA.Import.pas"/>
+        <DCCReference Include="..\Unipas\CUDA.ParallelPrimitives.pas"/>
+        <DCCReference Include="..\Unipas\CUDA.Parser.pas"/>
+        <DCCReference Include="..\Unipas\CUDA.Runtime.pas"/>
+        <DCCReference Include="..\Unipas\CUDA.Utility.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
