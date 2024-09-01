@@ -8,7 +8,7 @@
 #include "GLS.Coordinates.hpp"
 #include "GLS.GeomObjects.hpp"
 #include "GLS.Scene.hpp"
-#include "GLS.SDLContext.hpp"
+#include "GLS.SDL.Context.hpp"
 
 //---------------------------------------------------------------------------
 class TDataModule2 : public TDataModule

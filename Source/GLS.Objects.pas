@@ -3158,7 +3158,6 @@ end;
 // ------------------
 // ------------------ TGLSuperellipsoid ------------------
 // ------------------
-
 constructor TGLSuperellipsoid.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
@@ -3197,7 +3196,7 @@ begin
   StepH := (AngStop - AngStart) / FSlices;
   StepV := (AngTop - AngBottom) / FStacks;
 
-  { Even integer used with the Power function, only produce positive points }
+  // Even integer used with the Power function, only produce positive points
   tc1 := trunc(VCurve);
   tc2 := trunc(HCurve);
   if tc1 mod 2 = 0 then
@@ -3219,7 +3218,7 @@ begin
     if FTopCap = ctCenter then
       gl.Vertex3f(0, 0, 0)
     else
-    begin { FTopCap = ctFlat }
+    begin // FTopCap = ctFlat
       if (Sign(SinP) = 1) or (tc1 = VCurve) then
         SinPc1 := Power(SinP, VCurve)
       else
@@ -3229,7 +3228,7 @@ begin
       N1 := YVector;
       if DoReverse then
         N1.Y := -N1.Y;
-    end; { FTopCap = ctFlat }
+    end; // FTopCap = ctFlat
 
     // v1.Y := SinP;
     if (Sign(SinP) = 1) or (tc1 = VCurve) then
@@ -3380,7 +3379,7 @@ begin
     if FBottomCap = ctCenter then
       gl.Vertex3f(0, 0, 0)
     else
-    begin { FTopCap = ctFlat }
+    begin // FTopCap = ctFlat
       if (Sign(SinP) = 1) or (tc1 = VCurve) then
         SinPc1 := Power(SinP, VCurve)
       else

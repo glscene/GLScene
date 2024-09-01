@@ -1,28 +1,37 @@
-object FormSkyBox: TFormSkyBox
+object FormSkybox: TFormSkybox
   Left = 176
   Top = 73
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Sky Box'
-  ClientHeight = 577
-  ClientWidth = 882
+  ClientHeight = 1010
+  ClientWidth = 1558
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   Visible = True
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 882
-    Height = 577
+    Width = 1558
+    Height = 1010
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = 7168
     Buffer.AmbientColor.Color = {0000803F0000803F0000803F0000803F}
-    FieldOfView = 164.212738037109400000
+    FieldOfView = 170.942352294921900000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -51,6 +60,8 @@ object FormSkyBox: TFormSkyBox
         TurnAngle = 10.500000000000000000
         Up.Coordinates = {CE00D4BE9A8D58BF0519ACBE00000000}
         Radius = 1.000000000000000000
+        Slices = 32
+        Stacks = 32
         object GLSphere2: TGLSphere
           Material.MaterialLibrary = GLMatLibCubeMap
           Direction.Coordinates = {000000000000803F0000000000000000}
@@ -59,6 +70,8 @@ object FormSkyBox: TFormSkyBox
           TurnAngle = 91.500000000000000000
           Up.Coordinates = {0000000000000000000080BF00000000}
           Radius = 0.300000011920929000
+          Slices = 32
+          Stacks = 32
         end
       end
     end

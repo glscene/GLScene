@@ -13,14 +13,14 @@
 #pragma link "GLS.GeomObjects"
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
-#pragma link "Sounds.BASS"
-#pragma link "Sounds.FMOD"
-#pragma link "Sounds.OpenAL"
 #pragma link "GLS.SoundManager"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.FileWAV"
 #pragma link "GLS.FileMP3"
 
+#pragma link "GLS.Sounds.BASS"
+#pragma link "GLS.Sounds.FMOD"
+#pragma link "GLS.Sounds.OpenAL"
 #pragma resource "*.dfm"
 TForm1* Form1;
 int mx, my;
@@ -29,8 +29,8 @@ __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {}
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject* Sender)
 {
-    TFileName Path = GetCurrentAssetPath();
-    SetCurrentDir(Path + "\\audio");
+    TFileName Path = GetCurrentAssetPath() + "\\audio";
+    SetCurrentDir(Path);
 
     // Load our sound samples
     GLSoundLibrary->Samples->AddFile("drumloop.wav", "drumloop.wav");

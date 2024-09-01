@@ -1,0 +1,47 @@
+package GXScene_Sounds_RT;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'GLXcene Sound Managers'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  GXScene_RT;
+
+contains
+  Soundx.FMOD in '..\SourceX\Soundx.FMOD.pas',
+  Soundx.BASS in '..\SourceX\Soundx.BASS.pas',
+  Soundx.OpenAL in '..\SourceX\Soundx.OpenAL.pas',
+  Soundx.WaveOut in '..\SourceX\Soundx.WaveOut.pas',
+  OpenAL.Import in '..\Unipas\OpenAL.Import.pas',
+  BASS.Import in '..\Unipas\BASS.Import.pas',
+  FMOD.errors in '..\Unipas\FMOD.errors.pas',
+  FMOD.Import in '..\Unipas\FMOD.Import.pas',
+  FMOD.presets in '..\Unipas\FMOD.presets.pas',
+  FMOD.types in '..\Unipas\FMOD.types.pas';
+
+end.

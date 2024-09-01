@@ -1,4 +1,4 @@
-{: Simple TGLShader based multipass demo.
+(* Simple TGLShader based multipass demo.
 
    This demo uses a custom TGLShader subclass to implement the classic
    multipass hidden lines rendering technique on a torus: first pass renders
@@ -17,7 +17,7 @@
    passes too: the 1st pass activate lines and gives them a width, the second
    is used to fill the surface (and clear the lines that aren't on edges).
    (TOutLineShader thanks to Delauney Jerome, jdelauney@free.fr)
-}
+*)
 program MultipassD;
 
 uses
@@ -28,6 +28,6 @@ uses
 
 begin
   Application.Initialize;
-  Application.CreateForm(TFormMultiPath, FormMultiPath);
+  Application.CreateForm(TFormMultiPass, FormMultiPass);
   Application.Run;
 end.

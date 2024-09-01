@@ -33,7 +33,7 @@ uses
   GLSL.PostShaders,
   GLSL.PostEffects,
 
-  CG.PostTransformationShader,
+  GLS.CgPostTransformationShader,
   GLS.FileMD2,
   GLS.FileMS3D,
   GLS.File3DS;

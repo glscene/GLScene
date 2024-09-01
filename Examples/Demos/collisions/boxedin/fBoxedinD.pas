@@ -38,7 +38,7 @@ type
     Sphere1: TGLSphere;
     ArrowLine1: TGLArrowLine;
     GLSceneViewer2: TGLSceneViewer;
-    GLCamera2: TGLCamera;
+    Camera: TGLCamera;
     GLCadencer1: TGLCadencer;
     Timer1: TTimer;
     DummyCube2: TGLDummyCube;

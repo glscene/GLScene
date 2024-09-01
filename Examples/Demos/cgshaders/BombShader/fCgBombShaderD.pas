@@ -30,7 +30,7 @@ uses
   GLS.Utils,
 
   GLS.FileMD2,
-  Cg.BombShader;
+  GLS.CgBombShader;
 
 type
   TFormCgBombShader = class(TForm)

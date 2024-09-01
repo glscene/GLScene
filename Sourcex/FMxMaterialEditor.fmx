@@ -1,0 +1,391 @@
+object MaterialEditorForm: TMaterialEditorForm
+  Left = 0
+  Top = 0
+  Caption = 'Material Editor'
+  ClientHeight = 400
+  ClientWidth = 696
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object TabControl1: TTabControl
+    Position.X = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 425.000000000000000000
+    Size.Height = 297.000000000000000000
+    Size.PlatformDefault = False
+    TabIndex = 1
+    TabOrder = 0
+    TabPosition = PlatformDefault
+    Sizes = (
+      425s
+      271s
+      425s
+      271s
+      425s
+      271s)
+    object TIFront: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 48.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Front'
+      ExplicitSize.cx = 48.000000000000000000
+      ExplicitSize.cy = 24.000000000000000000
+      inline FEFront: TFaceEditorFrame
+        Position.X = -8.000000000000000000
+        Size.Width = 433.000000000000000000
+        Size.Height = 232.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        inherited TabControl: TTabControl
+          Sizes = (
+            401s
+            127s
+            401s
+            127s
+            401s
+            127s
+            401s
+            127s)
+          inherited TIAmbient: TTabItem
+            ExplicitSize.cx = 65.000000000000000000
+            ExplicitSize.cy = 24.000000000000000000
+            inherited CEAmbiant: TColorEditorFrame
+              inherited Label1: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label2: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label3: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label4: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+            end
+          end
+          inherited TIDiffuse: TTabItem
+            ExplicitSize.cx = 57.000000000000000000
+            ExplicitSize.cy = 24.000000000000000000
+            inherited CEDiffuse: TColorEditorFrame
+              inherited Label1: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label2: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label3: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label4: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+            end
+          end
+          inherited TIEmission: TTabItem
+            ExplicitSize.cx = 66.000000000000000000
+            ExplicitSize.cy = 24.000000000000000000
+            inherited CEEmission: TColorEditorFrame
+              inherited Label1: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label2: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label3: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label4: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+            end
+          end
+          inherited TISpecular: TTabItem
+            ExplicitSize.cx = 66.000000000000000000
+            ExplicitSize.cy = 24.000000000000000000
+            inherited CESpecular: TColorEditorFrame
+              inherited Label1: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label2: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label3: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label4: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+            end
+          end
+        end
+      end
+    end
+    object TIBack: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 45.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Back'
+      ExplicitSize.cx = 45.000000000000000000
+      ExplicitSize.cy = 24.000000000000000000
+      inline FEBack: TFaceEditorFrame
+        Position.X = -8.000000000000000000
+        Position.Y = 8.000000000000000000
+        Size.Width = 433.000000000000000000
+        Size.Height = 232.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        inherited TabControl: TTabControl
+          Sizes = (
+            401s
+            127s
+            401s
+            127s
+            401s
+            127s
+            401s
+            127s)
+          inherited TIAmbient: TTabItem
+            ExplicitSize.cx = 65.000000000000000000
+            ExplicitSize.cy = 24.000000000000000000
+            inherited CEAmbiant: TColorEditorFrame
+              inherited Label1: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label2: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label3: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label4: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+            end
+          end
+          inherited TIDiffuse: TTabItem
+            ExplicitSize.cx = 57.000000000000000000
+            ExplicitSize.cy = 24.000000000000000000
+            inherited CEDiffuse: TColorEditorFrame
+              inherited Label1: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label2: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label3: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label4: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+            end
+          end
+          inherited TIEmission: TTabItem
+            ExplicitSize.cx = 66.000000000000000000
+            ExplicitSize.cy = 24.000000000000000000
+            inherited CEEmission: TColorEditorFrame
+              inherited Label1: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label2: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label3: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label4: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+            end
+          end
+          inherited TISpecular: TTabItem
+            ExplicitSize.cx = 66.000000000000000000
+            ExplicitSize.cy = 24.000000000000000000
+            inherited CESpecular: TColorEditorFrame
+              inherited Label1: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label2: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label3: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label4: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+            end
+          end
+        end
+      end
+    end
+    object TITexture: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 58.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Texture'
+      ExplicitSize.cx = 59.000000000000000000
+      ExplicitSize.cy = 24.000000000000000000
+      inline RTextureEdit: TTextureEditFrame
+        Align = Client
+        Size.Width = 425.000000000000000000
+        Size.Height = 271.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+      end
+    end
+  end
+  object GroupBox1: TGroupBox
+    Position.X = 440.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 241.000000000000000000
+    Size.Height = 289.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Material Preview'
+    TabOrder = 1
+    inline MPPreview: TMaterialPreviewFrame
+      Position.X = 16.000000000000000000
+      Position.Y = 28.000000000000000000
+      Size.Width = 211.000000000000000000
+      Size.Height = 228.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      inherited LightMaterialSource: TLightMaterialSource
+        Left = 547
+        Top = 168
+      end
+      inherited World: TDummy
+        inherited Teapot: TModel3D
+          Data = {0000}
+        end
+      end
+      inherited Camera: TCamera
+        Left = 544
+        Top = 104
+      end
+    end
+  end
+  object BBOK: TButton
+    ModalResult = 1
+    Position.X = 456.000000000000000000
+    Position.Y = 336.000000000000000000
+    Size.Width = 80.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'cornerbuttonstyle'
+    TabOrder = 7
+    Text = 'OK'
+    object ImageOK: TImage
+      MultiResBitmap.Height = 16
+      MultiResBitmap.Width = 16
+      MultiResBitmap.TransparentColor = 32896
+      MultiResBitmap = <
+        item
+          Width = 16
+          Height = 16
+          PNG = {
+            89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+            61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+            007349444154384F9D8F810E802008058D2FA72F379E9A43C7043957BAC95DEB
+            2959AA2C211780FCF6E37D40C9E02EB0C9201ED865E6B6C502A6CCCDF5030719
+            507B63C8C29101CDA13D129001CD211D09CA80FAE5E08F68D96154B92E21CDE1
+            EB405D1811473640447E010FCE3920A6E55B4AF900199E3F8185674CC3000000
+            0049454E44AE426082}
+          FileName = 'D:\Library\GLScene\Source\Resources\bitmaps\Done.bmp'
+        end>
+      Align = FitLeft
+      Size.Width = 25.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+  object BBCancel: TButton
+    ModalResult = 2
+    Position.X = 568.000000000000000000
+    Position.Y = 336.000000000000000000
+    Size.Width = 80.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'cornerbuttonstyle'
+    TabOrder = 8
+    Text = 'Cancel'
+    object ImageCancel: TImage
+      MultiResBitmap.Height = 18
+      MultiResBitmap.Width = 19
+      MultiResBitmap.TransparentColor = 32896
+      MultiResBitmap = <
+        item
+          Width = 19
+          Height = 18
+          PNG = {
+            89504E470D0A1A0A0000000D4948445200000013000000120806000000B90CE5
+            69000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+            00A649444154384FDD93C10E84300844EBFEB8F8E5CAB060201D9A5EF6B22F9A
+            52998C5074FC17B75EA237567F647C7C2D84D8B705E42E8F630D26B32C169162
+            987386E82B13B4B21715872133D2DCE13BA36C025A41AE8218016A0626C3A031
+            026D9BAA3E4E8F77599E19AD6C416B86363DAC7CDBA4B9BD0130C8D92DBFB397
+            3CC9805458CC3A2354B0338CE500C208E1345DD2660195E19FB4BB3964D334B9
+            0908B7C5BF638C0756E6577F8D03BECA0000000049454E44AE426082}
+          FileName = 'D:\Library\GLScene\Source\Resources\bitmaps\Cancel1.bmp'
+        end>
+      Align = FitLeft
+      Size.Width = 25.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+  object Label1: TLabel
+    Position.X = 24.000000000000000000
+    Position.Y = 328.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Polygon Mode'
+  end
+  object Label2: TLabel
+    Position.X = 24.000000000000000000
+    Position.Y = 360.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Blending Mode'
+  end
+  object CBPolygonMode: TComboBox
+    Position.X = 192.000000000000000000
+    Position.Y = 320.000000000000000000
+    Size.Width = 161.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 11
+    OnChange = OnMaterialChanged
+  end
+  object CBBlending: TComboBox
+    Position.X = 192.000000000000000000
+    Position.Y = 360.000000000000000000
+    Size.Width = 161.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 12
+    OnChange = OnMaterialChanged
+  end
+end

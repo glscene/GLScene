@@ -21,7 +21,7 @@ uses
   GLS.Objects,
   GLS.Context,
   GLS.HUDObjects,
-  CG.Shader,
+  GLS.CgShader,
   GLS.Material,
   GLS.Coordinates,
 

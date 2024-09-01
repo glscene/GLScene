@@ -19,7 +19,7 @@ uses
   GLS.LensFlare,
   GLS.SceneViewer,
   GLS.Texture,
-  GLS.Skydome,
+  GLS.SkyDome,
  
   GLS.Atmosphere,
   GLS.SimpleNavigation,
@@ -37,7 +37,7 @@ type
     GLLightSource1: TGLLightSource;
     Planet: TGLSphere;
     dcPlanet: TGLDummyCube;
-    Not_a_planet: TGLSphere;
+    sfPlanetoid: TGLSphere;
     CameraTarget: TGLDummyCube;
     GLSkyDome1: TGLSkyDome;
     GLSimpleNavigation1: TGLSimpleNavigation;
@@ -85,16 +85,12 @@ implementation
 
 procedure TFormAtmosphere.FormCreate(Sender: TObject);
 begin
-
   AtmosphereLower := TGLAtmosphere.CreateAsChild(dcPlanet);
   AtmosphereLower.Sun := GLLensFlare1;
-  AtmosphereLower.PlanetRadius := 3.4;
-  AtmosphereLower.AtmosphereRadius := 3.8;
   AtmosphereLower.SetOptimalAtmosphere(Planet.Radius);
-  AtmosphereLower.Opacity := 1.2;
 
   GLSkyDome1.Bands.Clear;
-  GLSkyDome1.Stars.AddRandomStars(5000, ConvertColorVector(clrWhite));
+  GLSkyDome1.Stars.AddRandomStars(5000, ConvertColorVector(clrWhite), False);
 end;
 
 procedure TFormAtmosphere.rgAtmosphereClick(Sender: TObject);

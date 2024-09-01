@@ -1,38 +1,45 @@
-object Form1: TForm1
+object FormSkybox: TFormSkybox
   Left = 0
   Top = 0
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Sky Box'
-  ClientHeight = 469
-  ClientWidth = 682
+  ClientHeight = 821
+  ClientWidth = 1208
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'Tahoma'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 23
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 682
-    Height = 469
+    Width = 1208
+    Height = 821
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = 7168
     Buffer.AmbientColor.Color = {0000803F0000803F0000803F0000803F}
-    FieldOfView = 160.639801025390600000
+    FieldOfView = 168.869094848632800000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 624
-    ExplicitHeight = 467
   end
   object GLScene1: TGLScene
     Left = 32
     Top = 24
     object GLSkyBox1: TGLSkyBox
-      Direction.Coordinates = {9598A23144F7DFB20000803F00000000}
-      Up.Coordinates = {1DB356B30000803FB3FA87B300000000}
+      Up.Coordinates = {1DB356B30000803F0000000000000000}
       MaterialLibrary = GLMaterialLibrary1
       MatNameTop = 'Top'
       MatNameBottom = 'Bottom'
@@ -163,25 +170,5 @@ object Form1: TForm1
     GLNavigator = GLNavigator1
     Left = 296
     Top = 24
-  end
-  object GLSimpleNavigation1: TGLSimpleNavigation
-    Form = Owner
-    GLSceneViewer = GLSceneViewer1
-    FormCaption = 'GLScene SkyBox - %FPS'
-    KeyCombinations = <
-      item
-        ShiftState = [ssLeft, ssRight]
-        Action = snaZoom
-      end
-      item
-        ShiftState = [ssLeft]
-        Action = snaMoveAroundTarget
-      end
-      item
-        ShiftState = [ssRight]
-        Action = snaMoveAroundTarget
-      end>
-    Left = 296
-    Top = 88
   end
 end

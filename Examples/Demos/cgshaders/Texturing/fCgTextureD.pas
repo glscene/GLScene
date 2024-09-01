@@ -17,7 +17,7 @@ uses
 
   Cg.Import,
   Cg.GL,
-  Cg.Shader,
+  GLS.CgShader,
 
   GLS.Scene,
   GLS.VectorTypes,

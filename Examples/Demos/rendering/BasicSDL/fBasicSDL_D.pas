@@ -18,7 +18,7 @@ uses
   GLS.Texture,
   GLS.Utils,
 
-  SDL.Context,
+  GLS.SDL.Context,
   SDL.Import;
 
 type
@@ -38,7 +38,7 @@ type
 var
   DataModule1: TDataModule1;
 
-implementation
+implementation //------------------------------------------------------------
 
 {$R *.dfm}
 

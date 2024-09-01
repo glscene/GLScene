@@ -1,4 +1,4 @@
-{:
+(*
  Example using GLSkybox. Use the W,A,S,D keys (or Z,Q,S,D) to move
  and the mouse to look around.
  The scene contains two GLSkyBox objects: GLSkyBox1 and GLSkyBox2 :
@@ -13,17 +13,17 @@
  CloudsPlaneOffset is the distance from the center of the skybox cube (range : 0 to 0.5)
  Note that the moons are children of a GLSkyBox object, and therefore
  they are always rendered relatively to the camera
-}
+*)
 program SkyBoxD;
 
 uses
   Forms,
-  fSkyBoxD in 'fSkyBoxD.pas' {FormSkyBox};
+  fSkyBoxD in 'fSkyBoxD.pas' {FormSkybox};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TFormSkyBox, FormSkyBox);
+  Application.CreateForm(TFormSkybox, FormSkybox);
   Application.Run;
 end.

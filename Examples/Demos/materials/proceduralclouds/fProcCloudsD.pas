@@ -26,7 +26,10 @@ uses
   GLS.ProcTextures,
   GLS.TextureFormat,
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLS.BaseClasses,
+
+  GLS.Utils
+  ;
 
 type
   TFormClouds = class(TForm)
@@ -76,6 +79,7 @@ type
     procedure MakeAndSaveCloudNoiseFileClick(Sender: TObject);
   private
   public
+    PathToCloud: TFileName;
     newSelection: Boolean;
   end;
 
@@ -92,6 +96,10 @@ implementation
 
 procedure TFormClouds.FormCreate(Sender: TObject);
 begin
+  // Our cloud files are here
+  PathToCloud := GetCurrentAssetPath() + '\cloud';
+  SetCurrentDir(PathToCloud);
+
   CBFormat.ItemIndex := 3;
   CBCompression.ItemIndex := 0;
   CBFormatChange(Sender);
@@ -203,8 +211,8 @@ end;
 
 procedure TFormClouds.CloudFileOpenBtnClick(Sender: TObject);
 begin
+  OpenDialog1.InitialDir := PathToCloud;
   OpenDialog1.Filter := 'Cloud base (*.clb)|*.clb';
-  OpenDialog1.InitialDir := ExtractFilePath(ParamStr(0));
   OpenDialog1.FileName := '*.clb';
   if OpenDialog1.Execute() then
     CloudFileUsedEdit.Text := OpenDialog1.FileName;
@@ -253,8 +261,8 @@ var
   end;
 
   begin
+    SaveDialog1.InitialDir := PathToCloud;
     SaveDialog1.Filter := 'Cloud base (*.clb)|*.clb';
-    SaveDialog1.InitialDir := ExtractFilePath(ParamStr(0));
     SaveDialog1.DefaultExt := 'rnd';
     SaveDialog1.Filename := '*.clb';
     if (SaveDialog1.Execute()) then

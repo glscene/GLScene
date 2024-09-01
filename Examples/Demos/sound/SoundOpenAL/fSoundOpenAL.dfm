@@ -204,11 +204,11 @@ object Form1: TForm1
         Width = 0.500000000000000000
       end
     end
-    object Sphere: TGLSphere
+    object SphereSound: TGLSphere
       Material.FrontProperties.Diffuse.Color = {0000803F00000000000000000000803F}
       Material.FrontProperties.Emission.Color = {8180003F00000000000000000000803F}
       Position.Coordinates = {000000400000003F000000000000803F}
-      OnProgress = SphereProgress
+      OnProgress = SphereSoundProgress
       Radius = 0.500000000000000000
       Slices = 9
       Stacks = 9
@@ -249,7 +249,7 @@ object Form1: TForm1
   end
   object Timer: TTimer
     OnTimer = TimerTimer
-    Left = 24
-    Top = 136
+    Left = 486
+    Top = 80
   end
 end

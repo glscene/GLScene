@@ -27,7 +27,7 @@ object FormBoxedin: TFormBoxedin
     Margins.Top = 5
     Margins.Right = 5
     Margins.Bottom = 5
-    Camera = GLCamera2
+    Camera = Camera
     Buffer.BackgroundColor = 8404992
     Buffer.ShadeModel = smFlat
     FieldOfView = 161.848007202148400000
@@ -133,12 +133,26 @@ object FormBoxedin: TFormBoxedin
   object GLScene1: TGLScene
     Left = 48
     Top = 88
+    object Camera: TGLCamera
+      DepthOfView = 1000.000000000000000000
+      FocalLength = 50.000000000000000000
+      TargetObject = Sphere2
+      Position.Coordinates = {0000000000008040000040C00000803F}
+      Direction.Coordinates = {00000000000000800000803F00000000}
+    end
     object LightSource1: TGLLightSource
       Ambient.Color = {000000001283003F9CC4403F0000803F}
       ConstAttenuation = 1.000000000000000000
       Diffuse.Color = {1283003F1283003F1283003F0000803F}
       Position.Coordinates = {00004842000016430000C8420000803F}
       LightStyle = lsOmni
+      Specular.Color = {0000803F0000803F0000803F0000803F}
+      SpotCutOff = 180.000000000000000000
+    end
+    object LightSource2: TGLLightSource
+      Ambient.Color = {000000001283803E1283003F0000803F}
+      ConstAttenuation = 1.000000000000000000
+      Diffuse.Color = {BEC0403FBEC0403FBEC0403F0000803F}
       Specular.Color = {0000803F0000803F0000803F0000803F}
       SpotCutOff = 180.000000000000000000
     end
@@ -185,13 +199,6 @@ object FormBoxedin: TFormBoxedin
       Slices = 24
       Stacks = 24
     end
-    object LightSource2: TGLLightSource
-      Ambient.Color = {000000001283803E1283003F0000803F}
-      ConstAttenuation = 1.000000000000000000
-      Diffuse.Color = {BEC0403FBEC0403FBEC0403F0000803F}
-      Specular.Color = {0000803F0000803F0000803F0000803F}
-      SpotCutOff = 180.000000000000000000
-    end
     object Lines1: TGLLines
       LineColor.Color = {0000803F0000803F0000003F3333733F}
       LineWidth = 3.000000000000000000
@@ -200,13 +207,6 @@ object FormBoxedin: TFormBoxedin
       NodesAspect = lnaCube
       NodeSize = 10.000000000000000000
       Options = [loUseNodeColorForLines]
-    end
-    object GLCamera2: TGLCamera
-      DepthOfView = 1000.000000000000000000
-      FocalLength = 50.000000000000000000
-      TargetObject = Sphere2
-      Position.Coordinates = {0000000000008040000040C00000803F}
-      Direction.Coordinates = {00000000000000800000803F00000000}
     end
   end
   object GLCadencer1: TGLCadencer

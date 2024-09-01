@@ -189,7 +189,7 @@ type
      If you use this object make sure it is rendered *first*, as it ignores
      depth buffering and overwrites everything. All children of a skydome
      are rendered in the skydome's coordinate system.
-     The skydome is described by "bands", each "band" is an horizontal cut
+     The skydome is described by "bands", each "band" is a horizontal cut
      of a sphere, and you can have as many bands as you wish *)
   TGLSkyDome = class(TGLCameraInvariantObject)
   private
@@ -372,7 +372,7 @@ type
   end;
 
   // For recomputation of TOrbitalElementsData
-  TOrbitalElements = record
+  TGLOrbitalElements = record
     N: Double; // longitude of the ascending node
     i: Double; // inclination to the ecliptic (plane of the Earth's orbit)
     w: Double; // argument of perihelion
@@ -457,10 +457,10 @@ const
 function GMTDateTimeToJulianDay(const dt: TDateTime): Double;
 // Compute orbital elements for given Julian day.
 function ComputeOrbitalElements(const oeData: TOrbitalElementsData;
-  const d: Double): TOrbitalElements;
+  const d: Double): TGLOrbitalElements;
 
 // Compute the planet position for given Julian day (in AU).
-function ComputePlanetPosition(const orbitalElements: TOrbitalElements)
+function ComputePlanetPosition(const orbitalElements: TGLOrbitalElements)
   : TAffineVector; overload;
 
 function ComputePlanetPosition(const orbitalElementsData: TOrbitalElementsData;
@@ -496,7 +496,7 @@ end;
 //--------------------------------------------------------------------------------
 
 function ComputeOrbitalElements(const oeData: TOrbitalElementsData;
-  const d: Double): TOrbitalElements;
+  const d: Double): TGLOrbitalElements;
 begin
   with Result, oeData do
   begin
@@ -511,7 +511,7 @@ end;
 
 //--------------------------------------------------------------------------------
 
-function ComputePlanetPosition(const orbitalElements: TOrbitalElements)
+function ComputePlanetPosition(const orbitalElements: TGLOrbitalElements)
   : TAffineVector;
 var
   eccentricAnomaly, eA0: Double;
@@ -559,7 +559,7 @@ end;
 function ComputePlanetPosition(const orbitalElementsData: TOrbitalElementsData;
   const d: Double): TAffineVector;
 var
-  oe: TOrbitalElements;
+  oe: TGLOrbitalElements;
 begin
   oe := ComputeOrbitalElements(orbitalElementsData, d);
   Result := ComputePlanetPosition(oe);

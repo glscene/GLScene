@@ -10,7 +10,8 @@ uses
   dImages in 'Source\dImages.pas' {dmImages: TDataModule},
   fGLAbout in 'Source\fGLAbout.pas' {GLAbout},
   fGLOptions in 'Source\fGLOptions.pas' {FormOptions},
-  dDialogs in 'Source\dDialogs.pas' {dmDialogs: TDataModule};
+  dDialogs in 'Source\dDialogs.pas' {dmDialogs: TDataModule},
+  gnugettext in 'Source\gnugettext.pas';
 
 {$R *.res}
 

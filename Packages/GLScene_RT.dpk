@@ -255,10 +255,6 @@ contains
   GLS.OpenGLTokens in '..\Source\GLS.OpenGLTokens.pas',
   GLS.PipelineTransformation in '..\Source\GLS.PipelineTransformation.pas',
   GLS.Polynomials in '..\Source\GLS.Polynomials.pas',
-  gnugettext in '..\Source\gnugettext.pas',
-  PasGLTF in '..\Source\PasGLTF.pas',
-  PasJSON in '..\Source\PasJSON.pas',
-  PasDblStrUtils in '..\Source\PasDblStrUtils.pas',
   GLS.Spline in '..\Source\GLS.Spline.pas',
   GLS.Strings in '..\Source\GLS.Strings.pas',
   GLS.TextureFormat in '..\Source\GLS.TextureFormat.pas',
@@ -269,7 +265,9 @@ contains
   GLS.VerletTypes in '..\Source\GLS.VerletTypes.pas',
   GLS.VerletClothify in '..\Source\GLS.VerletClothify.pas',
   GLS.VectorTypesExt in '..\Source\GLS.VectorTypesExt.pas',
-  GLS.ModuleLoader in '..\Source\GLS.ModuleLoader.pas';
+  PasDblStrUtils in '..\Unipas\PasDblStrUtils.pas',
+  PasGLTF in '..\Unipas\PasGLTF.pas',
+  PasJSON in '..\Unipas\PasJSON.pas';
 
 end.
 

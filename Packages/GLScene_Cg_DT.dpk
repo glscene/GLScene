@@ -38,6 +38,6 @@ requires
   GLScene_DT;
 
 contains
-  Cg.Register in '..\Source\Cg.Register.pas';
+  GLS.CgRegister in '..\Source\GLS.CgRegister.pas';
 
 end.

@@ -43,7 +43,7 @@ type
 var
   FormMaterials: TFormMaterials;
 
-implementation
+implementation //--------------------------------------------------------------
 
 {$R *.dfm}
 

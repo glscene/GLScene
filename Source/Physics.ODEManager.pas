@@ -8,8 +8,6 @@ unit Physics.ODEManager;
 
 interface
 
-{$I GLS.Scene.inc}
-
 uses
   Winapi.OpenGL,
   System.Classes,

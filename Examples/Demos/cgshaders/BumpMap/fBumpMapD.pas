@@ -16,21 +16,21 @@ uses
   Vcl.ComCtrls,
   Vcl.Imaging.Jpeg,
 
-  //GLScene
+  Cg.GL,
+  GLS.CgShader,
   GLS.VectorTypes,
   GLS.SceneViewer,
   GLS.Cadencer,
   GLS.Scene,
-  Cg.GL,
   GLS.Texture,
-  CG.Shader,
   GLS.Objects,
   GLS.AsyncTimer,
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.TextureFormat,
-  GLS.Utils, GLS.SimpleNavigation;
+  GLS.Utils,
+  GLS.SimpleNavigation;
 
 type
   TFormBumpMap = class(TForm)

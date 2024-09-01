@@ -35,16 +35,16 @@ requires
   GLScene_RT;
 
 contains
-  FMOD.Import in '..\Source\FMOD.Import.pas',
-  FMOD.presets in '..\Source\FMOD.presets.pas',
-  FMOD.types in '..\Source\FMOD.types.pas',
-  FMOD.errors in '..\Source\FMOD.errors.pas',
-  BASS.Import in '..\Source\BASS.Import.pas',
-  OpenAL.Import in '..\Source\OpenAL.Import.pas',
-  Sounds.FMOD in '..\Source\Sounds.FMOD.pas',
-  Sounds.BASS in '..\Source\Sounds.BASS.pas',
-  Sounds.OpenAL in '..\Source\Sounds.OpenAL.pas',
-  Sounds.WaveOut in '..\Source\Sounds.WaveOut.pas';
+  FMOD.Import in '..\Unipas\FMOD.Import.pas',
+  FMOD.presets in '..\Unipas\FMOD.presets.pas',
+  FMOD.types in '..\Unipas\FMOD.types.pas',
+  FMOD.errors in '..\Unipas\FMOD.errors.pas',
+  BASS.Import in '..\Unipas\BASS.Import.pas',
+  OpenAL.Import in '..\Unipas\OpenAL.Import.pas',
+  GLS.Sounds.FMOD in '..\Source\GLS.Sounds.FMOD.pas',
+  GLS.Sounds.BASS in '..\Source\GLS.Sounds.BASS.pas',
+  GLS.Sounds.OpenAL in '..\Source\GLS.Sounds.OpenAL.pas',
+  GLS.Sounds.WaveOut in '..\Source\GLS.Sounds.WaveOut.pas';
 
 end.
 

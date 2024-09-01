@@ -26,8 +26,9 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
-  TFileName Path = GetCurrentAssetPath();
-  GLMaterialLibrary->TexturePaths = GetCurrentDir();
+  TFileName Path = GetCurrentAssetPath() + "\\texture\\";
+  SetCurrentDir(Path);   //!!!
+  GLMaterialLibrary->TexturePaths = Path;
   GLMaterialLibrary->Materials->Items[0]->Material->Texture->Image->LoadFromFile("beigemarble.jpg");
 }
 //---------------------------------------------------------------------------

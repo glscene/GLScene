@@ -29,7 +29,7 @@ uses
   GLS.Utils,
   GLS.FileMD2,
 
-  Cg.Shader;
+  GLS.CgShader;
 
 type
   TFormCellShading = class(TForm)

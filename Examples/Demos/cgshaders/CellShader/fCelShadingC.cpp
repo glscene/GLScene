@@ -10,7 +10,7 @@
 #pragma link "GLS.AsyncTimer"
 #pragma link "GLS.BaseClasses"
 #pragma link "GLS.Cadencer"
-#pragma link "Cg.Shader"
+#pragma link "GLS.CgShader"
 #pragma link "GLS.Coordinates"
 
 #pragma link "GLS.Material"

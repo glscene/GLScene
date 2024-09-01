@@ -1,0 +1,543 @@
+object GUILayoutForm: TGUILayoutForm
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 644
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Align = Top
+    Size.Width = 644.000000000000000000
+    Size.Height = 57.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Open_Image_Button: TButton
+      Position.X = 14.000000000000000000
+      Position.Y = 15.000000000000000000
+      Size.Width = 100.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+      Text = 'Load skin'
+      TextSettings.Trimming = None
+      object ImageLoadSkin: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 65280
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              610000000473424954080808087C0864880000016A49444154388DA5922D53C3
+              4010869F7610B846E288C4B5FD0795C873E03819C7C9CAE2E2385979121989EC
+              4F485D516C5DE5C65D1588345F433B156CC4CDEC659FDDDBF7857FC608C07F94
+              3FC3B442048D9C4EED4EBA7CB1B6A39BA6E4F5697AB14B753C81A005DBEC0D80
+              F1B511ABAF2D92CD113747775B3442B9DBD7B06B80EA08925BA6B9676A17909B
+              76FC26C6ED9B2F8C0DC0AE605B96ED139A1D01D43B88E78B15200B6C7383026A
+              8B6EB9F400FDC47E5FE14301807D36703745F3EFBA49F35FD421A0B9688A5D66
+              5005B77458EB08C1D740BB82E47E003B4DA083E206EA32470801E71C00669112
+              3E95FAEB2F31820F052B67486E27B554A240C2C258C23AA007C58702FB98FC55
+              41A3F2BE7C01268856943B45A3220785A8A40F33FCDA2322B8A567E54C0B697D
+              50C50A39548828AA9D75E5500F9BA633369B0D22C2C2581AE95B1544A11441A4
+              E7FBD8C100922441444E2D93A10A36F39D9DFABE883D9BC59473A6FB57FC02A6
+              28DFFD697BBB120000000049454E44AE426082}
+            FileName = 'D:\VXScene\Source\Resources\bitmaps\LoadSkin.bmp'
+          end>
+        Align = FitLeft
+        Size.Width = 25.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object Open_Button: TButton
+      Position.X = 118.000000000000000000
+      Position.Y = 15.000000000000000000
+      Size.Width = 100.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      Text = 'Open'
+      TextSettings.Trimming = None
+      object ImageOpen: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 255
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              610000000473424954080808087C0864880000018849444154388DA592216F1B
+              411046DF49070EEEB29AD9A0E060CBCE5248CC02030A428B2A195695CA4D4322
+              4795521D74804182D2FC8000331BA66C0F9ACD300FBB82DDB373B52245EDA0B9
+              9D79F3CDB77BF09F91BDB57176B56831C0399CF34C3F8DDFCCF2F9FBBC9D2FD7
+              6D6F583ACF001E96F3F66FA818944C4E26AFAA9C7F894CF6B09CB71F4B8F1BBA
+              08A260F0EB5128DE974CAAE3211D0C9063E086F46080B32A70BB82C5CD2C361B
+              088009D36FD3EC3020158BE200A301502EAACDD1EAD7F7AEF79D6B972578B512
+              C021F6219DC70E4D755FC0E26AD68A01083996940BCFB6098839CEAAFDD8E330
+              01E0791358FC1E270BA9B00E0EEFBAA61743921A06268A6E85FA69C0E5CFAF59
+              8EC535B70AE0A84A8D6C71B08509660ABB98D72BA57837EE5FE23A38468317EA
+              967203DBE93E0F4D20349EFAC77506908B4148DB964305D5BD4F330589A09A22
+              2ADC058FB853A0EE36104218317281E7FBCBBD6D053087241BBAF38879420377
+              8F75FF3F08CD86CD0EB073443B355011C4E29DA80962E05F7F9F7F8B3FC72FD1
+              90721B838E0000000049454E44AE426082}
+            FileName = 'D:\VXScene\Source\Resources\bitmaps\Open.bmp'
+          end>
+        Align = FitLeft
+        Size.Width = 25.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object Save_Button: TButton
+      Position.X = 224.000000000000000000
+      Position.Y = 15.000000000000000000
+      Size.Width = 100.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = 'Save'
+      TextSettings.Trimming = None
+      object ImageSave: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 255
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              610000000473424954080808087C0864880000015C49444154388DC593AD4F03
+              4110C57F6D2A0ED773B595C5D5617B0E492B4910802184FF00594572C1100409
+              92E0EA6A109514D5CAE25A879C713BA24911BB7BBD6B804A36D9647767E6BD37
+              1F0BFFBD6A00E337B701C0C2AB811A608AECBE3941C23DBF3FAC35A2314D1366
+              9F707D53C66F55D86C0DA7674B520F0140BDEA61FCB66CEDED6A305B8C0A883A
+              0469809AEE0D1684C1F110826FBD9CBBB83DC1EA7DC5765388CC25C34FC16A1A
+              3655002952F83B180B2A4D0BB2A20B38E89F74B83C5F2068D13641C259110783
+              4E1B3188D56A44E6A822EB7510B5620E706D9F7304B16AAA5E8113B056906B4C
+              A6B7D54A269026296219986CC123804415911918BDE6747B192F4F6348207FCC
+              D155602EB57B5B83D2F802747B19D9519F34F10A9A074DC4943410A66E0740CC
+              C094E7E90CBEE63CDC0D0158AE9690C0723E01067E025DD41D3E13C0C5D5FB46
+              542AF23029AAED0B1A2FFE43CD3FF2DA370E4DEC456DB63DA40000000049454E
+              44AE426082}
+            FileName = 'D:\VXScene\Source\Resources\bitmaps\Save.bmp'
+          end>
+        Align = FitLeft
+        Size.Width = 25.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object Done_Button: TButton
+      Position.X = 330.000000000000000000
+      Position.Y = 15.000000000000000000
+      Size.Width = 100.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Done'
+      TextSettings.Trimming = None
+      object ImageDone: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.LoadSize = 2
+        MultiResBitmap.TransparentColor = 32896
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              610000000473424954080808087C0864880000006E49444154388D9DD1D10AC0
+              200885E1E39EDC9EDC5D58C3C49A2A045DF87FC146E88E400080DAF1D06B1D30
+              711D70710DF03173010863A61C708901E0F9961AB1026BC923895881B5649164
+              ACC0FC9A1B32A2D578A6CAB241762EAF1BE080FCC4D17302861E70FC6752483F
+              AECF0B199E3F8117EC01B00000000049454E44AE426082}
+            FileName = 'D:\VXScene\Source\Resources\bitmaps\Done.bmp'
+          end>
+        Align = Left
+        Size.Width = 25.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object ButtonZoomIn: TButton
+      Position.X = 532.000000000000000000
+      Position.Y = 14.000000000000000000
+      Size.Width = 25.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      TextSettings.Trimming = None
+      object ImageZoomIn: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.LoadSize = 2
+        MultiResBitmap.TransparentColor = 255
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              610000000473424954080808087C086488000001E949444154388DA592316813
+              5118C77F911B5EA0C33B682107591E74C8050326B82490254ED5CD8283010771
+              D22EA293A336B8B4163493D4A5701D84764BC62C42224472832527047A8116EE
+              06E16E38C81B8473880895262DF8E05BFE8FDFEF7D7CEF83FF3C996597CE4127
+              0D124088799084C81578F2B8F9975B28D8797F9496AB652AB714D12FF0C21880
+              C0F5F1DD1EAD372F3300372E83F73F765255AF51BBAD90066CBD023FD474BD00
+              B3A450E51ADBAFB7D385026D08841438DF427AD398EEDE3CB74D13EF2CC22AD9
+              F867110B0542660912CDF1618E3B4A02B055CDD1FD9C63A6B36088792DEC209E
+              91056A1B3ECE3004E059D7E3C553CDBD9244A099C5F13241883404722D8B9D17
+              DC7D3ECF1BEB826A5E107B3E71125C2EE87FE9A4762147EC8EB0008DC07907ED
+              0D1B80C1579F4F1F76B00B0AF8E71BC74327555187FEB9C520B4F02701396553
+              BC59043D63E4BA78277DEC8262776F37734170EAEEA7967F4C7032C28DE0E8BC
+              825A2F63AE990441804E34524A5A6F5B171E35E6703BB52687F83FC6B811F4A6
+              16AC488AA522CD87CDA5DB6A9C0EDBA9F5DDC1F37CBC244B672AC9AE5668D4AB
+              57C200C660A851B1661C43779AC3CC1769D41B341F5D0D03188186DEC426FA69
+              A20A656AD51A9B0F36AF05C39F213A874E3A4B6698AB269BF7AF0F03FC06B0EB
+              BCF8E1B812830000000049454E44AE426082}
+            FileName = 'D:\VXScene\Source\Resources\bitmaps\ZoomIn.bmp'
+          end>
+        Align = Client
+        Size.Width = 25.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object X_Label: TLabel
+      Position.X = 464.000000000000000000
+      Position.Y = 11.000000000000000000
+      Size.Width = 25.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'X:'
+    end
+    object Y_Label: TLabel
+      Position.X = 464.000000000000000000
+      Position.Y = 27.000000000000000000
+      Size.Width = 25.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Y:'
+    end
+    object ButtonZoomOut: TButton
+      Position.X = 569.000000000000000000
+      Position.Y = 15.000000000000000000
+      Size.Width = 25.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      TextSettings.Trimming = None
+      object ImageZoomOut: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 255
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              610000000473424954080808087C086488000001D749444154388DA592316BDB
+              4018409F8B861338206DD278D0A1822C321D6A4397847648C8D2B553DBD0A56B
+              E81F289E82B74087E2D1190AEED0920C05A98341190CD610E8151CA20C06051A
+              D00D01DD2050171370EB18436F7DBC77DC7D1FFCE769AC82275FA35ACD0C345D
+              840546176072C24DC9F6F3EDC6CAC0F0F3499D572E2FF7DA202099694C05421B
+              922F033A4F037677761B0F96C9D1F7A8CE346CED850801D98D41CD0A06E38CCC
+              82D6B31724A314006B59406B830C03920B4D6A812304BE63B365812E4A7CDFE5
+              5A97F7070A03B26933C94BBA8700E51D7BF70A422910737369C0C6606E4BDC0D
+              9B9D47DE02EB488D2FA0D0FAFE80E739642A43B65BBC797B4DE8394847CCA9C3
+              E90F85D63900FF7C621447B5BB01BEE7529C6738C2014BDCF1EC4AD3FFD82378
+              2881BFC6988CA2DA6B2A6C1513EB16C9B484CA260843DCA6E0E72F453A4EF03D
+              9BFEA77E63E109C928AA6533C5391FA294A2B8CDC867924EBB839EA5A8DF3942
+              084EBF1D2F5C6A015CA647B58DC24987A82C23D12EF18520781270F0FE60E5B6
+              362EC747B5AF065019D269CE44DBC4571E72B343EFB0B75206B0CEC606A90D54
+              86C98D4D3C5B5F06B07203F13480CA50684DF0B84DF743772D19E653181C0F6A
+              2A28AB92FDD7FB6BCB007F009853C5484A3ADF870000000049454E44AE426082}
+            FileName = 'D:\VXScene\Source\Resources\bitmaps\ZoomOut.bmp'
+          end>
+        Align = Client
+        Size.Width = 25.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object ButtonShow: TButton
+      Position.X = 606.000000000000000000
+      Position.Y = 15.000000000000000000
+      Size.Width = 25.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      TextSettings.Trimming = None
+      object ImageShow: TImage
+        MultiResBitmap.LoadSize = 2
+        MultiResBitmap.TransparentColor = 65280
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              610000000473424954080808087C086488000001D349444154388D9593B18B13
+              4118C57F0981044132A042C403E73A41300BFE016E231E36D9038BD8E87696B7
+              A59DB1B3DC3265CA2B2CB6D4CA2D0FB49880620E2CBE1C16AB36DF5AC87463B1
+              494871B9E35E355FF1DEBCF7E61BD8429A4BE08A68AF0FD95482547A553EAD35
+              D998BB9CFD3C23DA6F73ADDBE2C6F516878FEEB42E155893A502F53578C5F4C0
+              FF83A70FFFF262F4E042918E5B08D61AF66FF5F8F459D04AA06700A5FA6D78FF
+              F15B78F6E4FE4E9116409C95616FEF265FBFFCE0F9E3DB7CFFD3452A4544303D
+              43121BF08A7AC083FAA62BF55B4A715686685C0480FCD805F5214CA62ED86416
+              4208412B09723C0B6E9A07AD34A886600F2661F30A651EB7CCC0AC26A5DF856C
+              3C243D880090A2C00C146B4ADCBB0CA96AF0D0D9CE53E671937565ADDF8737AF
+              86CDB070D05364E1606136F6DB5C82F972C9FCB4C66613E4041083793DDB5CD2
+              398FB4569F9F2E294B87AA62AD853803201A0CD15584F31D7865F9ABA62C1D69
+              3A221927CC8A0211412A214D0F51407745500FC58792A374845435CE294992E2
+              9C23BA678922CB6C925EDCC1D1CB11F31559545185284E984C728C8D9A5DF0BA
+              BB83BA86F24450D566795450AFD828A22C0A8C3150ED2811AFC4E3B78D186C1A
+              C7AFE708563FF73F99DAF2F1488080440000000049454E44AE426082}
+            FileName = 'D:\VXScene\Source\Resources\bitmaps\Show.bmp'
+          end>
+        Align = Client
+        Size.Width = 25.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+  end
+  object Panel2: TPanel
+    Align = Left
+    Position.Y = 57.000000000000000000
+    Size.Width = 209.000000000000000000
+    Size.Height = 423.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    object Items_List: TListBox
+      Position.X = 24.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 161.000000000000000000
+      Size.Height = 129.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      OnClick = Items_ListClick
+      DisableFocusEffect = True
+      DefaultItemStyles.ItemStyle = ''
+      DefaultItemStyles.GroupHeaderStyle = ''
+      DefaultItemStyles.GroupFooterStyle = ''
+      Viewport.Width = 157.000000000000000000
+      Viewport.Height = 125.000000000000000000
+    end
+    object Add_Button: TButton
+      Position.X = 16.000000000000000000
+      Position.Y = 160.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Add'
+      TextSettings.Trimming = None
+      object ImageAdd: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 255
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              610000000473424954080808087C086488000000D849444154388DAD90BB0DC2
+              600C84BFA00C414D49073513841128A16388901DA0A46286C0004891A8E85821
+              65D2C545A4D0E4F127BFF340C2957DB6CF77769812270A2377CC965B25E1332E
+              B022810CB6D1127C20B0275CB3F036F34EBBACA37E710641D22C004EE0D8D360
+              D969083265D81FA8838E8254BB667A1EFD81B41B85DF2835EDAC5E7BDE8F6B0D
+              CC9A155503E43A6C13883E50C38AFC1641A22DE78008F131E3B3CB382FC22105
+              0A85402A950CDDE24C45ABEB08082415D16482527A2AA535497B7FE47681CBED
+              DE276A9C60ED1D7E5AFE4B7C010FF843F249F139890000000049454E44AE4260
+              82}
+            FileName = 'D:\VXScene\Source\Resources\bitmaps\Add.bmp'
+          end>
+        Align = FitLeft
+        Size.Width = 25.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object Delete_Button: TButton
+      Position.X = 112.000000000000000000
+      Position.Y = 160.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Delete'
+      TextSettings.Trimming = None
+      object ImageDelete: TImage
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              610000000473424954080808087C086488000000D849444154388DAD90B10DC2
+              400C455F104BB0021DE969E84281444D19468205826000A4A3A0CD0EAC40C975
+              582292290821093E2204AE2CFBFCFFFB073F56F46C5C7ED6F6723A1E00B0DB9F
+              58CC86118082968751E3B1CBCF6A16A8828E92B4EA4D14979F6C819A8875DCAB
+              BA6B2864937494A436C1F618200055555D65CEA4781148D85D0A48E71300E224
+              0D44C0DB116E0A22788175E6DED69F095411C04B605F17B8184B2900795C5EBA
+              04104342EAEE76C49E397DBA23200F77DF4950AF12DD4B194D7CF00FFAEDC17A
+              730841750BC4D3E557C77FA93B4CDAA707C0028AE40000000049454E44AE4260
+              82}
+          end>
+        Align = FitLeft
+        Size.Width = 25.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object Name_Edit: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 3
+      Position.X = 72.000000000000000000
+      Position.Y = 200.000000000000000000
+    end
+    object LabelName: TLabel
+      Position.X = 24.000000000000000000
+      Position.Y = 203.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Name'
+    end
+    object Elements_Grid: TStringGrid
+      CanFocus = True
+      ClipChildren = True
+      Position.X = 40.000000000000000000
+      Position.Y = 240.000000000000000000
+      Size.Width = 121.000000000000000000
+      Size.Height = 100.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      RowHeight = 21.000000000000000000
+      Viewport.Width = 117.000000000000000000
+      Viewport.Height = 75.000000000000000000
+    end
+    object LabelX: TLabel
+      Position.X = 8.000000000000000000
+      Position.Y = 352.000000000000000000
+      Size.Width = 17.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'X'
+    end
+    object LabelY: TLabel
+      Position.X = 8.000000000000000000
+      Position.Y = 384.000000000000000000
+      Size.Width = 17.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Y'
+    end
+    object LabelHeight: TLabel
+      Position.X = 88.000000000000000000
+      Position.Y = 384.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Height'
+    end
+    object LabelWidth: TLabel
+      Position.X = 88.000000000000000000
+      Position.Y = 352.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Width'
+    end
+    object Left_Edit: TSpinBox
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 13
+      Cursor = crIBeam
+      Position.X = 24.000000000000000000
+      Position.Y = 352.000000000000000000
+      Size.Width = 57.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Top_Edit: TSpinBox
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 12
+      Cursor = crIBeam
+      Position.X = 24.000000000000000000
+      Position.Y = 384.000000000000000000
+      Size.Width = 57.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Width_Edit: TSpinBox
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 11
+      Cursor = crIBeam
+      Position.X = 136.000000000000000000
+      Position.Y = 352.000000000000000000
+      Size.Width = 57.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Height_Edit: TSpinBox
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 10
+      Cursor = crIBeam
+      Position.X = 136.000000000000000000
+      Position.Y = 384.000000000000000000
+      Size.Width = 57.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+  object ScrollBox1: TScrollBox
+    Align = Client
+    Size.Width = 435.000000000000000000
+    Size.Height = 423.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+    Viewport.Width = 435.000000000000000000
+    Viewport.Height = 423.000000000000000000
+    object PaintBox1: TPaintBox
+      Size.Width = 225.000000000000000000
+      Size.Height = 225.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Image2: TImage
+      MultiResBitmap = <
+        item
+        end>
+      Size.Width = 153.000000000000000000
+      Size.Height = 153.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Image1: TImage
+      MultiResBitmap = <
+        item
+        end>
+      Size.Width = 185.000000000000000000
+      Size.Height = 185.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 272
+    Top = 88
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 472
+    Top = 88
+  end
+end

@@ -18,7 +18,7 @@ uses
   GLS.Cadencer,
   GLS.Objects,
   GLS.SoundManager,
-  Sounds.BASS,
+  GLS.Sounds.BASS,
   GLS.SceneViewer,
   GLS.GeomObjects,
 
@@ -26,7 +26,8 @@ uses
   GLS.BaseClasses,
   GLS.FileWAV,
   GLS.FileMP3,
-  GLS.Utils;
+  GLS.Utils
+  ;
 
 type
   TFormSoundBASS = class(TForm)
@@ -75,8 +76,8 @@ implementation
 
 procedure TFormSoundBASS.FormCreate(Sender: TObject);
 begin
-  Path := GetCurrentAssetPath();
-  SetCurrentDir(Path  + '\audio');
+  Path := GetCurrentAssetPath() + '\audio';
+  SetCurrentDir(Path);
   // Load our sound samples
   GLSoundLibrary.Samples.AddFile('drumloop.wav', 'drumloop.wav');
   GLSoundLibrary.Samples.AddFile('chimes.wav', 'chimes.wav');

@@ -1,0 +1,118 @@
+object ColorEditorFrame: TColorEditorFrame
+  Size.Width = 372.000000000000000000
+  Size.Height = 132.000000000000000000
+  Size.PlatformDefault = False
+  OnResize = FrameResize
+  object ColorEditorPaintBox: TPaintBox
+    Align = Client
+    Size.Width = 372.000000000000000000
+    Size.Height = 132.000000000000000000
+    Size.PlatformDefault = False
+    OnMouseDown = ColorEditorPaintBoxMouseDown
+    OnMouseMove = ColorEditorPaintBoxMouseMove
+    OnMouseUp = ColorEditorPaintBoxMouseUp
+    OnPaint = ColorEditorPaintBoxPaint
+  end
+  object Panel1: TPanel
+    Align = Client
+    Margins.Left = 3.000000000000000000
+    Margins.Top = 3.000000000000000000
+    Margins.Right = 3.000000000000000000
+    Margins.Bottom = 3.000000000000000000
+    Size.Width = 366.000000000000000000
+    Size.Height = 126.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object AlphaEdit: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Text = '0'
+    Position.X = 160.000000000000000000
+    Position.Y = 80.000000000000000000
+    Size.Width = 49.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    OnChange = AlphaEditChange
+  end
+  object BlueEdit: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Text = '0'
+    Position.X = 160.000000000000000000
+    Position.Y = 56.000000000000000000
+    Size.Width = 49.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    OnChange = BlueEditChange
+  end
+  object GreenEdit: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Text = '0'
+    Position.X = 160.000000000000000000
+    Position.Y = 32.000000000000000000
+    Size.Width = 49.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    OnChange = GreenEditChange
+  end
+  object Label1: TLabel
+    StyledSettings = [Family, Size]
+    Position.X = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 81.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claRed
+    Text = 'Red'
+  end
+  object Label2: TLabel
+    StyledSettings = [Family, Size]
+    Position.X = 8.000000000000000000
+    Position.Y = 32.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claGreen
+    Text = 'Green'
+  end
+  object Label3: TLabel
+    StyledSettings = [Family, Size]
+    Position.X = 8.000000000000000000
+    Position.Y = 56.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claBlue
+    Text = 'Blue'
+  end
+  object Label4: TLabel
+    StyledSettings = [Family, Size, FontColor]
+    Position.X = 8.000000000000000000
+    Position.Y = 80.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    Text = 'Alpha'
+  end
+  object RedEdit: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Text = '0'
+    Position.X = 160.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 49.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    OnChange = RedEditChange
+  end
+  object PAPreview: TColorPanel
+    Color = claWhite
+    Position.X = 216.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 105.000000000000000000
+    Size.Height = 105.000000000000000000
+    Size.PlatformDefault = False
+    OnDblClick = PAPreviewDblClick
+  end
+end

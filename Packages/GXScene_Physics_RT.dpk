@@ -1,0 +1,55 @@
+//
+// The graphics engine GXScene https://github.com/glscene
+//
+package GXScene_Physics_RT;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'GXScene Physics Managers'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  fmx,
+  GXScene_RT;
+
+contains
+  Physix.NGDManager in '..\SourceX\Physix.NGDManager.pas',
+  Physix.NGDRagdoll in '..\SourceX\Physix.NGDRagdoll.pas',
+  Physix.ODEManager in '..\SourceX\Physix.ODEManager.pas',
+  Physix.ODERagdoll in '..\SourceX\Physix.ODERagdoll.pas',
+  Physix.ODERegister in '..\SourceX\Physix.ODERegister.pas',
+  Physix.ODESkeletonColliders in '..\SourceX\Physix.ODESkeletonColliders.pas',
+  Physix.ODEUtils in '..\SourceX\Physix.ODEUtils.pas',
+  Newton.Import in '..\Unipas\Newton.Import.pas',
+  NGD.Import in '..\Unipas\NGD.Import.pas',
+  ODE.Import in '..\Unipas\ODE.Import.pas',
+  PhysX.Import in '..\Unipas\PhysX.Import.pas';
+
+end.
+
+

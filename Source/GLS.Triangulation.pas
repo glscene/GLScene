@@ -2,11 +2,9 @@
 // The graphics engine GLScene https://github.com/glscene
 //
 unit GLS.Triangulation;
-
 (*
   Classes and methods for triangulation of scatter points.
 *)
-
 interface
 
 uses

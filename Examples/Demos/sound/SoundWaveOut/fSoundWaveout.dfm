@@ -99,7 +99,7 @@ object FormSoundWaveout: TFormSoundWaveout
       Margins.Bottom = 5
       Caption = 'FPS'
     end
-    object Button1: TButton
+    object ButtonChimes: TButton
       Left = 884
       Top = 7
       Width = 145
@@ -111,7 +111,7 @@ object FormSoundWaveout: TFormSoundWaveout
       Anchors = [akTop, akRight]
       Caption = 'Chimes (WAV)'
       TabOrder = 0
-      OnClick = Button1Click
+      OnClick = ButtonChimesClick
     end
     object btnHowl: TButton
       Left = 728

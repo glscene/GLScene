@@ -1,88 +1,126 @@
 object FormRef: TFormRef
   Left = 0
   Top = 0
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Reflect'
-  ClientHeight = 515
-  ClientWidth = 918
+  ClientHeight = 901
+  ClientWidth = 1621
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -12
+  Font.Height = -21
   Font.Name = 'Segoe UI'
   Font.Style = []
-  TextHeight = 15
+  PixelsPerInch = 168
+  TextHeight = 30
   object Splitter1: TSplitter
-    Left = 369
+    Left = 646
     Top = 0
-    Height = 515
+    Width = 5
+    Height = 901
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Color = clBtnShadow
+    MinSize = 53
     ParentColor = False
-    ExplicitHeight = 455
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 369
-    Height = 515
+    Width = 646
+    Height = 901
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alLeft
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 8
-    ExplicitHeight = 440
     object PageControl1: TPageControl
       Left = 2
       Top = 2
-      Width = 365
-      Height = 511
+      Width = 642
+      Height = 897
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       ActivePage = TabSheet3
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -19
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitHeight = 436
+      ExplicitLeft = 4
+      ExplicitTop = 4
+      ExplicitWidth = 638
+      ExplicitHeight = 894
       object TabSheet1: TTabSheet
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Caption = 'Vertex Program'
         object Splitter3: TSplitter
           Left = 0
-          Top = 376
-          Width = 357
-          Height = 3
+          Top = 658
+          Width = 625
+          Height = 5
           Cursor = crVSplit
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Align = alBottom
           Color = clBtnShadow
+          MinSize = 53
           ParentColor = False
-          ExplicitTop = 316
         end
         object Panel2: TPanel
           Left = 0
           Top = 0
-          Width = 357
-          Height = 25
+          Width = 625
+          Height = 44
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
           object LabelVertProfile: TLabel
-            Left = 88
-            Top = 5
-            Width = 63
-            Height = 13
+            Left = 154
+            Top = 9
+            Width = 111
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = 'Using profile:'
           end
           object CBVertexProgram: TCheckBox
-            Left = 6
-            Top = 4
-            Width = 59
-            Height = 17
+            Left = 11
+            Top = 7
+            Width = 103
+            Height = 30
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = 'Enabled'
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
-            Font.Height = -11
+            Font.Height = -19
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
@@ -91,18 +129,25 @@ object FormRef: TFormRef
         end
         object Panel11: TPanel
           Left = 0
-          Top = 25
-          Width = 357
-          Height = 351
+          Top = 44
+          Width = 625
+          Height = 614
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Align = alClient
           Caption = 'Panel6'
           TabOrder = 1
-          ExplicitHeight = 276
           object Panel12: TPanel
-            Left = 1
-            Top = 1
-            Width = 355
-            Height = 16
+            Left = 2
+            Top = 2
+            Width = 621
+            Height = 28
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Align = alTop
             BevelOuter = bvNone
             Caption = 'Shader Code'
@@ -110,76 +155,101 @@ object FormRef: TFormRef
             TabOrder = 0
           end
           object MemoVertCode: TMemo
-            Left = 1
-            Top = 17
-            Width = 355
-            Height = 308
+            Left = 2
+            Top = 30
+            Width = 621
+            Height = 539
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Align = alClient
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
-            Font.Height = -11
+            Font.Height = -19
             Font.Name = 'Courier New'
             Font.Style = []
             ParentFont = False
             ScrollBars = ssBoth
             TabOrder = 1
             WordWrap = False
-            ExplicitHeight = 233
           end
           object Panel13: TPanel
-            Left = 1
-            Top = 325
-            Width = 355
-            Height = 25
+            Left = 2
+            Top = 569
+            Width = 621
+            Height = 44
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 2
-            ExplicitTop = 250
             DesignSize = (
-              355
-              25)
+              632
+              44)
             object ButtonApplyVP: TButton
-              Left = 280
-              Top = 2
-              Width = 67
-              Height = 20
+              Left = 501
+              Top = 4
+              Width = 117
+              Height = 35
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
               Anchors = [akTop, akRight]
               Caption = 'Apply'
               Enabled = False
               TabOrder = 0
+              ExplicitLeft = 490
             end
           end
         end
         object Panel5: TPanel
           Left = 0
-          Top = 379
-          Width = 357
-          Height = 104
+          Top = 677
+          Width = 634
+          Height = 182
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Align = alBottom
           TabOrder = 2
-          ExplicitTop = 304
+          ExplicitTop = 663
+          ExplicitWidth = 625
           DesignSize = (
-            357
-            104)
+            634
+            182)
           object Label2: TLabel
-            Left = 284
-            Top = 5
-            Width = 30
-            Height = 13
+            Left = 506
+            Top = 9
+            Width = 53
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akTop, akRight]
             Caption = 'Show:'
+            ExplicitLeft = 497
           end
           object Memo1: TMemo
             Left = 1
             Top = 1
-            Width = 272
-            Height = 102
+            Width = 485
+            Height = 180
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Align = alLeft
             Anchors = [akLeft, akTop, akRight, akBottom]
             Color = clBtnFace
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
-            Font.Height = -11
+            Font.Height = -19
             Font.Name = 'Courier New'
             Font.Style = []
             ParentFont = False
@@ -187,78 +257,120 @@ object FormRef: TFormRef
             ScrollBars = ssBoth
             TabOrder = 0
             WordWrap = False
+            ExplicitLeft = 2
+            ExplicitTop = 2
+            ExplicitWidth = 476
+            ExplicitHeight = 178
           end
           object Button1: TButton
-            Left = 282
-            Top = 21
-            Width = 64
-            Height = 18
+            Left = 503
+            Top = 37
+            Width = 112
+            Height = 31
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akTop, akRight]
             Caption = 'Params'
             TabOrder = 1
+            ExplicitLeft = 494
           end
           object Button4: TButton
-            Left = 282
-            Top = 42
-            Width = 64
-            Height = 18
+            Left = 503
+            Top = 74
+            Width = 112
+            Height = 31
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akTop, akRight]
             Caption = 'Asm'
             TabOrder = 2
+            ExplicitLeft = 494
           end
         end
       end
       object TabSheet2: TTabSheet
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Caption = 'Fragment Program'
         ImageIndex = 1
         object Splitter2: TSplitter
           Left = 0
-          Top = 376
-          Width = 357
-          Height = 3
+          Top = 658
+          Width = 625
+          Height = 5
           Cursor = crVSplit
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Align = alBottom
           Color = clBtnShadow
+          MinSize = 53
           ParentColor = False
-          ExplicitTop = 316
         end
         object Panel4: TPanel
           Left = 0
           Top = 0
-          Width = 357
-          Height = 25
+          Width = 625
+          Height = 44
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 0
           object LabelFragProfile: TLabel
-            Left = 88
-            Top = 5
-            Width = 63
-            Height = 13
+            Left = 154
+            Top = 9
+            Width = 111
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = 'Using profile:'
           end
           object CheckBox1: TCheckBox
-            Left = 6
-            Top = 4
-            Width = 67
-            Height = 17
+            Left = 11
+            Top = 7
+            Width = 117
+            Height = 30
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = 'Enabled'
             TabOrder = 0
           end
         end
         object Panel6: TPanel
           Left = 0
-          Top = 25
-          Width = 357
-          Height = 351
+          Top = 44
+          Width = 625
+          Height = 614
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Align = alClient
           Caption = 'Panel6'
           TabOrder = 1
           object Panel7: TPanel
-            Left = 1
-            Top = 1
-            Width = 355
-            Height = 16
+            Left = 2
+            Top = 2
+            Width = 621
+            Height = 28
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Align = alTop
             BevelOuter = bvNone
             Caption = 'Shader Code'
@@ -266,74 +378,101 @@ object FormRef: TFormRef
             TabOrder = 0
           end
           object MemoFragCode: TMemo
-            Left = 1
-            Top = 17
-            Width = 355
-            Height = 308
+            Left = 2
+            Top = 30
+            Width = 621
+            Height = 539
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Align = alClient
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
-            Font.Height = -11
+            Font.Height = -19
             Font.Name = 'Courier New'
             Font.Style = []
             ParentFont = False
             ScrollBars = ssBoth
             TabOrder = 1
             WordWrap = False
-            ExplicitHeight = 233
           end
           object Panel3: TPanel
-            Left = 1
-            Top = 325
-            Width = 355
-            Height = 25
+            Left = 2
+            Top = 569
+            Width = 621
+            Height = 44
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 2
             DesignSize = (
-              355
-              25)
+              632
+              44)
             object ButtonApplyFP: TButton
-              Left = 280
-              Top = 2
-              Width = 67
-              Height = 20
+              Left = 501
+              Top = 4
+              Width = 117
+              Height = 35
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
               Anchors = [akTop, akRight]
               Caption = 'Apply'
               Enabled = False
               TabOrder = 0
+              ExplicitLeft = 490
             end
           end
         end
         object Panel8: TPanel
           Left = 0
-          Top = 379
-          Width = 357
-          Height = 104
+          Top = 677
+          Width = 634
+          Height = 182
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           Align = alBottom
           TabOrder = 2
+          ExplicitTop = 663
+          ExplicitWidth = 625
           DesignSize = (
-            357
-            104)
+            634
+            182)
           object Label1: TLabel
-            Left = 284
-            Top = 5
-            Width = 30
-            Height = 13
+            Left = 506
+            Top = 9
+            Width = 53
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akTop, akRight]
             Caption = 'Show:'
+            ExplicitLeft = 497
           end
           object Memo3: TMemo
             Left = 1
             Top = 1
-            Width = 272
-            Height = 102
+            Width = 485
+            Height = 180
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Align = alLeft
             Anchors = [akLeft, akTop, akRight, akBottom]
             Color = clBtnFace
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
-            Font.Height = -11
+            Font.Height = -19
             Font.Name = 'Courier New'
             Font.Style = []
             ParentFont = False
@@ -341,83 +480,122 @@ object FormRef: TFormRef
             ScrollBars = ssBoth
             TabOrder = 0
             WordWrap = False
+            ExplicitLeft = 2
+            ExplicitTop = 2
+            ExplicitWidth = 476
+            ExplicitHeight = 178
           end
           object Button2: TButton
-            Left = 282
-            Top = 21
-            Width = 64
-            Height = 18
+            Left = 503
+            Top = 37
+            Width = 112
+            Height = 31
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akTop, akRight]
             Caption = 'Params'
             TabOrder = 1
+            ExplicitLeft = 494
           end
           object Button3: TButton
-            Left = 282
-            Top = 42
-            Width = 64
-            Height = 18
+            Left = 503
+            Top = 74
+            Width = 112
+            Height = 31
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Anchors = [akTop, akRight]
             Caption = 'Asm'
             TabOrder = 2
+            ExplicitLeft = 494
           end
         end
       end
       object TabSheet3: TTabSheet
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Caption = 'Control'
         ImageIndex = 2
         object TrackBar1: TTrackBar
-          Left = 136
-          Top = 8
-          Width = 150
-          Height = 33
+          Left = 238
+          Top = 14
+          Width = 263
+          Height = 58
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           TabOrder = 0
+          ThumbLength = 35
         end
       end
     end
   end
   object Panel9: TPanel
-    Left = 372
+    Left = 651
     Top = 0
-    Width = 546
-    Height = 515
+    Width = 970
+    Height = 901
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
+    Font.Height = -33
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 1
-    ExplicitWidth = 379
-    ExplicitHeight = 440
     object Panel10: TPanel
       Left = 1
       Top = 1
-      Width = 544
-      Height = 48
+      Width = 968
+      Height = 84
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Align = alTop
       Caption = 'Cg CubeMap'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -19
+      Font.Height = -33
       Font.Name = 'Trebuchet MS'
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 377
+      ExplicitLeft = 2
+      ExplicitTop = 2
+      ExplicitWidth = 966
     end
     object GLSceneViewer1: TGLSceneViewer
       Left = 1
-      Top = 49
-      Width = 544
-      Height = 465
+      Top = 85
+      Width = 968
+      Height = 815
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Camera = GLCamera1
       Buffer.FaceCulling = False
       Buffer.AntiAliasing = aa4x
-      FieldOfView = 155.726348876953100000
+      FieldOfView = 166.009613037109400000
       PenAsTouch = False
       Align = alClient
       TabOrder = 1
+      ExplicitLeft = 2
+      ExplicitTop = 86
+      ExplicitWidth = 966
+      ExplicitHeight = 814
     end
   end
   object GLScene1: TGLScene

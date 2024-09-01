@@ -1,31 +1,35 @@
 object FormTrails: TFormTrails
   Left = 222
   Top = 103
+  Margins.Left = 4
+  Margins.Top = 4
+  Margins.Right = 4
+  Margins.Bottom = 4
   Caption = 'Trails'
-  ClientHeight = 551
-  ClientWidth = 618
+  ClientHeight = 771
+  ClientWidth = 874
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 41
-    Width = 618
-    Height = 510
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 57
+    Width = 874
+    Height = 714
+    Margins.Left = 6
+    Margins.Top = 6
+    Margins.Right = 6
+    Margins.Bottom = 6
     Camera = GLCamera1
     Buffer.BackgroundColor = 4194304
-    FieldOfView = 157.812561035156300000
+    FieldOfView = 164.054489135742200000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -35,38 +39,38 @@ object FormTrails: TFormTrails
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 618
-    Height = 41
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 874
+    Height = 57
+    Margins.Left = 6
+    Margins.Top = 6
+    Margins.Right = 6
+    Margins.Bottom = 6
     Align = alTop
     Caption = ' '
     TabOrder = 1
     object Label1: TLabel
-      Left = 10
-      Top = 15
-      Width = 44
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 14
+      Top = 21
+      Width = 61
+      Height = 24
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
       Caption = 'Speed:'
     end
     object TrackBarSpeed: TTrackBar
-      Left = 60
-      Top = 5
-      Width = 166
-      Height = 31
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 84
+      Top = 7
+      Width = 232
+      Height = 43
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
       Position = 1
       TabOrder = 0
-      ThumbLength = 25
+      ThumbLength = 35
     end
   end
   object GLScene1: TGLScene

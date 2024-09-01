@@ -71,8 +71,9 @@ void __fastcall TFormPostShader::FormCreate(TObject *Sender)
   Sphere_little->Scale->Scale(4);
 
   // Then loading textures.
-  SetCurrentDir(Path + "\\texture");
+  SetCurrentDir(Path + "\\map");
   MaterialLibrary->LibMaterialByName("Earth")->Material->Texture->Image->LoadFromFile("Earth.jpg");
+  SetCurrentDir(Path + "\\texture");
   MaterialLibrary->LibMaterialByName("Noise")->Material->Texture->Image->LoadFromFile("Flare1.bmp");
   // MaterialLibrary->LibMaterialByName('Noise')->Material->Texture->Image->LoadFromFile("wikiNoise.jpg");
   MaterialLibrary->LibMaterialByName("Mask")->Material->Texture->Image->LoadFromFile("wikiMask.jpg");

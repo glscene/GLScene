@@ -6,7 +6,7 @@
 #include "fReflectC.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "Cg.Shader"
+#pragma link "GLS.CgShader"
 #pragma link "GLS.BaseClasses"
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Coordinates"

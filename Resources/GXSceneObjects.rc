@@ -1,0 +1,116 @@
+glx_camera BITMAP fmx\objects\glx_camera.bmp
+glx_lights BITMAP fmx\objects\glx_lights.bmp
+glx_objects BITMAP fmx\objects\glx_objects.bmp
+glx_root BITMAP fmx\objects\glx_root.bmp
+glx_cross BITMAP fmx\objects\glx_cross.bmp
+
+TgxCamera BITMAP fmx\objects\TgxCamera.bmp
+TgxDirectOpenGL BITMAP fmx\objects\TgxDirectOpenGL.bmp
+TgxDirectVulkan BITMAP fmx\objects\TgxDirectVulkan.bmp
+TgxDummyCube BITMAP fmx\objects\TgxDummyCube.bmp
+TgxLightSource BITMAP fmx\objects\TgxLightSource.bmp
+
+TgxFeedback BITMAP fmx\objects\TgxFeedback.bmp
+TgxFeedBackMesh BITMAP fmx\objects\TgxFeedBackMesh.bmp
+TgxImposter BITMAP fmx\objects\TgxImposter.bmp
+TgxRenderPoint BITMAP fmx\objects\TgxRenderPoint.bmp
+TgxFBORenderer BITMAP fmx\objects\TgxFBORenderer.bmp
+
+TgxHUDSprite BITMAP fmx\objects\TgxHUDSprite.bmp
+TgxHUDText BITMAP fmx\objects\TgxHUDText.bmp
+TgxResolutionIndependantHUDText BITMAP fmx\objects\TgxResolutionIndependantHUDText.bmp
+TgxAbsoluteHUDText BITMAP fmx\objects\TgxAbsoluteHUDText.bmp
+TgxConsole BITMAP fmx\objects\TgxConsole.bmp
+TgxGameMenu BITMAP fmx\objects\TgxGameMenu.bmp
+
+TgxAdvancedLabel BITMAP fmx\objects\TgxAdvancedLabel.bmp
+TgxBaseControl BITMAP fmx\objects\TgxBaseControl.bmp
+TgxButton BITMAP fmx\objects\TgxButton.bmp
+TgxCheckBox BITMAP fmx\objects\TgxCheckBox.bmp
+TgxCustomControl BITMAP fmx\objects\TgxCustomControl.bmp
+TgxEdit BITMAP fmx\objects\TgxEdit.bmp
+TgxForm BITMAP fmx\objects\TgxForm.bmp
+TgxLabel BITMAP fmx\objects\TgxLabel.bmp
+TgxPanel BITMAP fmx\objects\TgxPanel.bmp
+TgxPopupMenu BITMAP fmx\objects\TgxPopupMenu.bmp
+TgxScrollBar BITMAP fmx\objects\TgxScrollBar.bmp
+TgxStringGrid BITMAP fmx\objects\TgxStringGrid.bmp
+
+TgxCone BITMAP fmx\objects\TgxCone.bmp
+TgxCube BITMAP fmx\objects\TgxCube.bmp
+TgxCylinder BITMAP fmx\objects\TgxCylinder.bmp
+TgxDisk BITMAP fmx\objects\TgxDisk.bmp
+TgxDodecahedron BITMAP fmx\objects\TgxDodecahedron.bmp
+TgxFrustrum BITMAP fmx\objects\TgxFrustrum.bmp
+TgxHexahedron BITMAP fmx\objects\TgxHexahedron.bmp
+TgxIcosahedron BITMAP fmx\objects\TgxIcosahedron.bmp
+TgxTetrahedron BITMAP fmx\objects\TgxTetrahedron.bmp
+TgxOctahedron BITMAP fmx\objects\TgxOctahedron.bmp
+TgxLines BITMAP fmx\objects\TgxLines.bmp
+TgxPlane BITMAP fmx\objects\TgxPlane.bmp
+TgxPoints BITMAP fmx\objects\TgxPoints.bmp
+TgxPolygon BITMAP fmx\objects\TgxPolygon.bmp
+TgxSphere BITMAP fmx\objects\TgxSphere.bmp
+TgxSprite BITMAP fmx\objects\TgxSprite.bmp
+TgxCapsule BITMAP fmx\objects\TgxCapsule.bmp
+TgxSuperellipsoid BITMAP fmx\objects\TgxSuperellipsoid.bmp
+
+TgxAnimatedSprite BITMAP fmx\objects\TgxAnimatedSprite.bmp
+TgxAnnulus BITMAP fmx\objects\TgxAnnulus.bmp
+TgxArrowLine BITMAP fmx\objects\TgxArrowLine.bmp
+TgxArrowArc BITMAP fmx\objects\TgxArrowArc.bmp
+TgxExtrusionSolid BITMAP fmx\objects\TgxExtrusionSolid.bmp
+TgxMultiPolygon BITMAP fmx\objects\TgxMultiPolygon.bmp
+TgxPipe BITMAP fmx\objects\TgxPipe.bmp
+TgxRevolutionSolid BITMAP fmx\objects\TgxRevolutionSolid.bmp
+TgxTorus BITMAP fmx\objects\TgxTorus.bmp
+TgxGeoSphere BITMAP fmx\objects\TgxGeoSphere.bmp
+
+TgxActor BITMAP fmx\objects\TgxActor.bmp
+TgxFreeForm BITMAP fmx\objects\TgxFreeForm.bmp
+TgxMesh BITMAP fmx\objects\TgxMesh.bmp
+TgxPortal BITMAP fmx\objects\TgxPortal.bmp
+TgxTerrainRenderer BITMAP fmx\objects\TgxTerrainRenderer.bmp
+TgxTilePlane BITMAP fmx\objects\TgxTilePlane.bmp
+
+TgxFlatText BITMAP fmx\objects\TgxFlatText.bmp
+TgxHeightfield BITMAP fmx\objects\TgxHeightfield.bmp
+TgxXYZGrid BITMAP fmx\objects\TgxXYZGrid.bmp
+
+TgxParticleFXRenderer BITMAP fmx\objects\TgxParticleFXRenderer.bmp
+TgxParticles BITMAP fmx\objects\TgxParticles.bmp
+
+TgxEarthSkyDome BITMAP fmx\objects\TgxEarthSkyDome.bmp
+TgxSkyDome BITMAP fmx\objects\TgxSkyDome.bmp
+TgxAtmosphere BITMAP fmx\objects\TgxAtmosphere.bmp
+TgxSkyBox BITMAP fmx\objects\TgxSkyBox.bmp
+
+TgxSpaceText BITMAP fmx\objects\TgxSpaceText.bmp
+TgxTeapot BITMAP fmx\objects\TgxTeapot.bmp
+TgxTree BITMAP fmx\objects\TgxTree.bmp
+TgxWaterplane BITMAP fmx\objects\TgxWaterplane.bmp
+
+TgxBlur BITMAP fmx\objects\TgxBlur.bmp
+TgxMotionBlur BITMAP fmx\objects\TgxMotionBlur.bmp
+TgxLensflare BITMAP fmx\objects\TgxLensflare.bmp
+TgxMirror BITMAP fmx\objects\TgxMirror.bmp
+TgxShadowPlane BITMAP fmx\objects\TgxShadowPlane.bmp
+TgxShadowVolume BITMAP fmx\objects\TgxShadowVolume.bmp
+TgxZShadows BITMAP fmx\objects\TgxZShadows.bmp
+TgxTrail BITMAP fmx\objects\TgxTrail.bmp
+TgxTextureLensFlare BITMAP fmx\objects\TgxTextureLensFlare.bmp
+TgxTextureEmitter BITMAP fmx\objects\TgxTextureEmitter.bmp
+TgxSLTextureEmitter BITMAP fmx\objects\TgxSLTextureEmitter.bmp
+TgxProjectedTextures BITMAP fmx\objects\TgxProjectedTextures.bmp
+TgxSLProjectedTextures BITMAP fmx\objects\TgxSLProjectedTextures.bmp
+TgxPostShaderHolder BITMAP fmx\objects\TgxPostShaderHolder.bmp
+TgxPostEffect BITMAP fmx\objects\TgxPostEffect.bmp
+
+TgxActorProxy BITMAP fmx\objects\TgxActorProxy.bmp
+TgxColorProxy BITMAP fmx\objects\TgxColorProxy.bmp
+TgxFreeFormProxy BITMAP fmx\objects\TgxFreeFormProxy.bmp
+TgxMaterialProxy BITMAP fmx\objects\TgxMaterialProxy.bmp
+TgxMaterialMultiProxy BITMAP fmx\objects\TgxMaterialMultiProxy.bmp
+TgxMultiProxy BITMAP fmx\objects\TgxMultiProxy.bmp
+TgxProxyObject BITMAP fmx\objects\TgxProxyObject.bmp
+

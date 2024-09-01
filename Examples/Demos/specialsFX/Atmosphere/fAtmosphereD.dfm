@@ -7,7 +7,7 @@ object FormAtmosphere: TFormAtmosphere
   Margins.Bottom = 5
   Caption = 'Atmosphere'
   ClientHeight = 831
-  ClientWidth = 1187
+  ClientWidth = 1390
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,7 +22,7 @@ object FormAtmosphere: TFormAtmosphere
   object GLSceneViewer1: TGLSceneViewer
     Left = 268
     Top = 0
-    Width = 919
+    Width = 1122
     Height = 831
     Margins.Left = 5
     Margins.Top = 5
@@ -223,14 +223,6 @@ object FormAtmosphere: TFormAtmosphere
   object GLScene1: TGLScene
     Left = 176
     Top = 16
-    object GLCamera1: TGLCamera
-      DepthOfView = 1000.000000000000000000
-      FocalLength = 30.000000000000000000
-      TargetObject = CameraTarget
-      Position.Coordinates = {0000A0400000803F0000A0400000803F}
-      Direction.Coordinates = {00000000000080BF0000000000000000}
-      Up.Coordinates = {00000000000000000000803F00000000}
-    end
     object GLSkyDome1: TGLSkyDome
       Bands = <
         item
@@ -243,7 +235,27 @@ object FormAtmosphere: TFormAtmosphere
           StopColor.Color = {938C0C3E938C0C3E938E0E3F0000803F}
           Stacks = 4
         end>
-      Stars = <>
+      Stars = <
+        item
+          RA = 12.000000000000000000
+          DEC = -15.000000000000000000
+          Magnitude = -1.000000000000000000
+          Color = clRed
+        end
+        item
+          RA = 25.000000000000000000
+          DEC = -20.000000000000000000
+          Color = clYellow
+        end>
+    end
+    object GLCamera1: TGLCamera
+      DepthOfView = 10000.000000000000000000
+      FocalLength = 30.000000000000000000
+      TargetObject = CameraTarget
+      CameraStyle = csInfinitePerspective
+      Position.Coordinates = {0000A0400000803F000020410000803F}
+      Direction.Coordinates = {00000000000080BF0000000000000000}
+      Up.Coordinates = {00000000000000000000803F00000000}
     end
     object CameraTarget: TGLDummyCube
       Position.Coordinates = {0000204100000040000040400000803F}
@@ -251,7 +263,7 @@ object FormAtmosphere: TFormAtmosphere
     end
     object World: TGLDummyCube
       CubeSize = 1.000000000000000000
-      object Not_a_planet: TGLSphere
+      object sfPlanetoid: TGLSphere
         Material.FrontProperties.Diffuse.Color = {E6E5653F8F8E8E3ECDCC4C3F0000803F}
         Position.Coordinates = {0000000000007041000000C00000803F}
         Visible = False

@@ -20,14 +20,14 @@
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.Utils"
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormSkybox *FormSkybox;
 
 // ---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {
+__fastcall TFormSkybox::TFormSkybox(TComponent* Owner) : TForm(Owner) {
 }
 // ---------------------------------------------------------------------------
 
-TGLLibMaterial* __fastcall TForm1::LoadTexture(String Matname, String Filename)
+TGLLibMaterial* __fastcall TFormSkybox::LoadTexture(String Matname, String Filename)
 {
 	GLMaterialLibrary1->AddTextureMaterial(Matname, Filename);
 	GLMaterialLibrary1->Materials->Items[0]
@@ -35,7 +35,7 @@ TGLLibMaterial* __fastcall TForm1::LoadTexture(String Matname, String Filename)
 	return GLMaterialLibrary1->Materials->GetLibMaterialByName(Matname);
 }
 
-void __fastcall TForm1::FormCreate(TObject *Sender) {
+void __fastcall TFormSkybox::FormCreate(TObject *Sender) {
 	TFileName Path = GetCurrentAssetPath();
 	SetCurrentDir(Path  + "\\cubemap");
 	GLMaterialLibrary1->TexturePaths = GetCurrentDir();
@@ -64,7 +64,6 @@ void __fastcall TForm1::FormCreate(TObject *Sender) {
 	SetCurrentDir(Path  + "\\texture");
 	LoadTexture("Clouds", "Clouds.jpg")->Material->BlendingMode = bmTransparency;
 	LoadTexture("Clouds", "Clouds.jpg")->Material->FrontProperties->Diffuse->Alpha = 0.2;
-
 	// scale the clouds texture
 	LoadTexture("Clouds", "Clouds.jpg")->TextureScale->X = 8;
 	LoadTexture("Clouds", "Clouds.jpg")->TextureScale->Y = 8;
@@ -82,7 +81,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender) {
 
 	// Moon
 	SetCurrentDir(Path  + "\\map");
-	LoadTexture("Moon", "moonmap.jpg")->Material->Texture->TextureMode =
+	LoadTexture("Moon", "moon.jpg")->Material->Texture->TextureMode =
 		tmModulate;
 
 	// -----------------------------------------
@@ -105,7 +104,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender) {
 }
 // ---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender,
+void __fastcall TFormSkybox::GLCadencer1Progress(TObject *Sender,
 	const double deltaTime, const double newTime) {
 	// Make clouds Texture slide
 	GLMaterialLibrary1->Materials->GetLibMaterialByName("Clouds")
@@ -127,7 +126,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender,
 }
 // ---------------------------------------------------------------------------
 
-void __fastcall TForm1::HandleKeys(double d) {
+void __fastcall TFormSkybox::HandleKeys(double d) {
 	if (IsKeyDown('W') || IsKeyDown('Z'))
 		GLCamera1->Move(d);
 	if (IsKeyDown('S'))

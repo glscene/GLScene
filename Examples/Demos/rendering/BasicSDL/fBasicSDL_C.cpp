@@ -10,7 +10,7 @@
 #pragma link "GLS.Coordinates"
 #pragma link "GLS.GeomObjects"
 #pragma link "GLS.Scene"
-#pragma link "SDL.Context"
+#pragma link "GLS.SDL.Context"
 
 #pragma resource "*.dfm"
 TDataModule2* DataModule2;

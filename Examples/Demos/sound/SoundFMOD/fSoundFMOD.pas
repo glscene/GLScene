@@ -17,7 +17,7 @@ uses
   GLS.VectorTypes,
   GLS.Objects,
   GLS.SoundManager,
-  Sounds.FMOD,
+  GLS.Sounds.FMOD,
   GLS.SceneViewer,
   GLS.GeomObjects,
 
@@ -75,8 +75,8 @@ implementation
 
 procedure TFormSoundFMOD.FormCreate(Sender: TObject);
 begin
-  Path := GetCurrentAssetPath();
-  SetCurrentDir(Path + '\audio');
+  Path := GetCurrentAssetPath()  + '\audio';
+  SetCurrentDir(Path);
 
   // Load our sound sample
   GLSoundLibrary.Samples.AddFile('drumloop.wav', 'drumloop.wav');

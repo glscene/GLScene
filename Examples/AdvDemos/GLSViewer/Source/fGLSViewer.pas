@@ -68,6 +68,7 @@ uses
   GLS.MultiPolygon,
   GLS.FileTGA,
   GLS.Tree,
+  GLS.SkyDome,
 
   fGLForm,
   fGLDialog,
@@ -223,6 +224,7 @@ type
   private
     AssetPath: TFileName;
     TextureDir: TFileName;
+    // Base objects
     Lines: TGLLines;
     Plane: TGLPlane;
     Polygon: TGLPolygon;
@@ -239,15 +241,21 @@ type
     Octahedron: TGLOctahedron;
     Tetrahedron: TGLTetrahedron;
     SuperEllipsoid: TGLSuperEllipsoid;
-
+    // Advanced objects
     Annulus: TGLAnnulus;
     ArrowLine: TGLArrowLine;
     ArrowArc: TGLArrowArc;
     MultiPolygon: TGLMultiPolygon;
     RevolutionSolid: TGLRevolutionSolid;
     ExtrusionSolid: TGLExtrusionSolid;
-
+    // Mesh objects
     Actor: TGLActor;
+    FreeForm: TGLFreeForm;
+    MeshObject: TGLMeshObject;
+    // Environment objects
+    SkyBox: TGLSkyBox;
+    SkyDome: TGLSkyDome;
+    EarthSkyDome: TGLEarthSkyDome;
 
     procedure DoResetCamera;
     procedure SetupFreeFormShading;
@@ -273,9 +281,7 @@ var
   FormGLSViewer: TFormGLSViewer;
   NaviCube: TGLNaviCube;
 
-//=======================================================================
-implementation
-//=======================================================================
+implementation //-------------------------------------------------------------
 
 {$R *.dfm}
 
@@ -1184,6 +1190,14 @@ begin
 
   if tvScene.Selected.Text = 'Cube' then; // may be as another choice
   case tvScene.Selected.SelectedIndex of
+    0: Camera.ShowAxes := not Camera.ShowAxes;
+    1: LightSource.Shining := not LightSource.Shining;
+    2: begin
+         dcWorld.VisibleAtRunTime := not dcWorld.VisibleAtRunTime;
+         dcObject.VisibleAtRunTime := not dcObject.VisibleAtRunTime;
+         dcAxis.VisibleAtRunTime := not dcAxis.VisibleAtRunTime;
+       end;
+    3:;//Sprite
     4: //Points in dcWorld
     begin
       Points.Visible := True;
@@ -1358,6 +1372,22 @@ begin
     begin
       //
     end;
+    41: //Atmosphere
+    begin
+      //
+    end;
+    42: //SkyBox
+    begin
+      //
+    end;
+    43: //SkyDome
+    begin
+      //
+    end;
+    44: //EarthSkyDome
+    begin
+      //
+    end;
     79: // Teapot in dcWorld
     begin
       Teapot.Visible := True;
@@ -1401,5 +1431,8 @@ begin
   inherited;
 end;
 
+initialization //--------------------------------------------------------------
+
+  FormatSettings.DecimalSeparator := '.';
 
 end.

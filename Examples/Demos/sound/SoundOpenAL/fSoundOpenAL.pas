@@ -19,9 +19,7 @@ uses
   GLS.SoundManager,
   GLS.SceneViewer,
   GLS.GeomObjects,
-  Sounds.OpenAL,
-  
-
+  GLS.Sounds.OpenAL,
   GLS.VectorGeometry,
   GLS.Coordinates,
   GLS.BaseClasses,
@@ -41,7 +39,7 @@ type
     GLCadencer1: TGLCadencer;
     Timer: TTimer;
     Mickey: TGLSphere;
-    Sphere: TGLSphere;
+    SphereSound: TGLSphere;
     Sphere2: TGLSphere;
     Sphere3: TGLSphere;
     Cone1: TGLCone;
@@ -54,7 +52,7 @@ type
     btnChimes: TButton;
     btnHowl: TButton;
     LabelFPS: TLabel;
-    procedure SphereProgress(Sender: TObject; const deltaTime, newTime: Double);
+    procedure SphereSoundProgress(Sender: TObject; const deltaTime, newTime: Double);
     procedure TimerTimer(Sender: TObject);
     procedure TrackBarChange(Sender: TObject);
     procedure TrackBar1Change(Sender: TObject);
@@ -76,15 +74,15 @@ implementation
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  Path := GetCurrentAssetPath();
-  SetCurrentDir(Path + '\audio');
+  Path := GetCurrentAssetPath() + '\audio';
+  SetCurrentDir(Path);
   // Load our sound sample
   GLSoundLibrary.Samples.AddFile('drumloop.wav', 'drumloop.wav');
   GLSoundLibrary.Samples.AddFile('chimes.wav', 'chimes.wav');
   GLSoundLibrary.Samples.AddFile('howl.mp3', 'howl.mp3');
 end;
 
-procedure TForm1.SphereProgress(Sender: TObject; const deltaTime, newTime: Double);
+procedure TForm1.SphereSoundProgress(Sender: TObject; const deltaTime, newTime: Double);
 var
   alpha: Single;
 begin
@@ -126,7 +124,7 @@ end;
 
 procedure TForm1.btnChimesClick(Sender: TObject);
 begin
-  with TGLBSoundEmitter.Create(Sphere.Behaviours) do
+  with TGLBSoundEmitter.Create(SphereSound.Behaviours) do
   begin
     Source.SoundLibrary := GLSoundLibrary;
     Source.SoundName := 'chimes.wav';
@@ -136,7 +134,7 @@ end;
 
 procedure TForm1.btnHowlClick(Sender: TObject);
 begin
-  with TGLBSoundEmitter.Create(Sphere.Behaviours) do
+  with TGLBSoundEmitter.Create(SphereSound.Behaviours) do
   begin
     Source.SoundLibrary := GLSoundLibrary;
     Source.SoundName := 'howl.mp3';

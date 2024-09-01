@@ -25,7 +25,7 @@
 #include "GLS.Utils.hpp"
 
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormSkybox : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
@@ -50,7 +50,6 @@ __published:	// IDE-managed Components
 	TGLNavigator *GLNavigator1;
 	TGLCadencer *GLCadencer1;
 	TGLUserInterface *GLUserInterface1;
-	TGLSimpleNavigation *GLSimpleNavigation1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall GLCadencer1Progress(TObject *Sender, const double deltaTime, const double newTime);
 
@@ -59,9 +58,9 @@ private:	// User declarations
    void __fastcall HandleKeys(double d);
    TGLLibMaterial* __fastcall LoadTexture(String Matname, String Filename);
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormSkybox(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormSkybox *FormSkybox;
 //---------------------------------------------------------------------------
 #endif

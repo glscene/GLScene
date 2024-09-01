@@ -23,7 +23,6 @@
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.WindowsFont"
 #pragma link "GLS.ScreenSaver"
-#pragma link "Sounds.BASS"
 #pragma link "GLS.File3DS"
 #pragma link "GLS.FileWAV"
 #pragma link "GLS.ScreenSaver"
@@ -35,6 +34,7 @@
 #pragma link "GLS.LensFlare"
 #pragma link "GLS.ParticleFX"
 #pragma link "GLS.SoundManager"
+#pragma link "GLS.Sounds.BASS"
 #pragma resource "*.dfm"
 TForm1* Form1;
 

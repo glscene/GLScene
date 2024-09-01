@@ -1,0 +1,54 @@
+package GXScene_DT;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'GXScene Graphics'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  fmx,
+  GXScene_RT;
+
+contains
+  FMxGuiLayoutEditor in '..\SourceX\FMxGuiLayoutEditor.pas',
+  FMxInfo in '..\SourceX\FMxInfo.pas',
+  FRxTextureEdit in '..\SourceX\FRxTextureEdit.pas',
+  FMxXCollectionEditor in '..\SourceX\FMxXCollectionEditor.pas',
+  FMxLibMaterialPicker in '..\SourceX\FMxLibMaterialPicker.pas',
+  FRxMaterialPreview in '..\SourceX\FRxMaterialPreview.pas',
+  FRxFaceEditor in '..\SourceX\FRxFaceEditor.pas',
+  FRxColorEditor in '..\SourceX\FRxColorEditor.pas',
+  FMxMaterialEditor in '..\SourceX\FMxMaterialEditor.pas',
+  FMxShaderMemo in '..\SourceX\FMxShaderMemo.pas',
+  FMxShaderUniformEditor in '..\SourceX\FMxShaderUniformEditor.pas',
+  FMxSkinEditor in '..\SourceX\FMxSkinEditor.pas',
+  FMxSceneEditor in '..\SourceX\FMxSceneEditor.pas',
+  GXS.SceneRegister in '..\SourceX\GXS.SceneRegister.pas',
+  GXS.XCollectionRegister in '..\SourceX\GXS.XCollectionRegister.pas';
+
+end.

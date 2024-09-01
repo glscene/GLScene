@@ -1,45 +1,60 @@
 object Form1: TForm1
   Left = 0
   Top = 0
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Shadow Plane'
-  ClientHeight = 442
-  ClientWidth = 625
+  ClientHeight = 774
+  ClientWidth = 1108
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   WindowState = wsMaximized
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 23
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 625
-    Height = 442
+    Width = 1108
+    Height = 774
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = 8421440
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
-    FieldOfView = 154.503555297851600000
+    FieldOfView = 165.276458740234400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 8
-    Top = 8
-    Width = 121
-    Height = 57
+    Left = 14
+    Top = 14
+    Width = 212
+    Height = 100
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     TabOrder = 1
     object CBShadows: TCheckBox
-      Left = 16
-      Top = 8
-      Width = 97
-      Height = 17
+      Left = 28
+      Top = 14
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Shadows'
       Checked = True
       State = cbChecked
@@ -47,10 +62,14 @@ object Form1: TForm1
       OnClick = CBShadowsClick
     end
     object CBStencil: TCheckBox
-      Left = 16
-      Top = 32
-      Width = 97
-      Height = 17
+      Left = 28
+      Top = 56
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Stencil Buffer'
       Checked = True
       State = cbChecked

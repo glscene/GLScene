@@ -97,7 +97,7 @@ type
 var
   FormMO: TFormMO;
 
-implementation
+implementation //------------------------------------------------------------
 
 {$R *.dfm}
 
@@ -135,8 +135,8 @@ end;
 
 procedure TFormMO.FormCreate(Sender: TObject);
 begin
-  Path := GetCurrentAssetPath();
-  SetCurrentDir(Path + '\map');
+  Path := GetCurrentAssetPath()  + '\map';
+  SetCurrentDir(Path);
   CubeMap.Material.Texture.Disabled := False;
   CubeMap.Material.Texture.Image.LoadFromFile('earth.jpg');
 //  GLMaterialLibrary1.Materials[6].Material.Texture.Image.LoadFromFile('earth.jpg');

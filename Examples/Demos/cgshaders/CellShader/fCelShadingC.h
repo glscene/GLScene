@@ -21,7 +21,7 @@
 #include "GLS.FileMD2.hpp"
 #include "GLS.Utils.hpp"
 #include "Cg.GL.hpp"
-#include "Cg.Shader.hpp"
+#include "GLS.CgShader.hpp"
 #include <Vcl.ComCtrls.hpp>
 
 //---------------------------------------------------------------------------

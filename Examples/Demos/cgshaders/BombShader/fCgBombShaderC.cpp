@@ -20,8 +20,8 @@
 #pragma link "GLS.FileMD2"
 #pragma link "GLS.File3DS"
 
-#pragma link "CG.Shader"
-#pragma link "CG.BombShader"
+#pragma link "GLS.CgShader"
+#pragma link "GLS.CgBombShader"
 
 #pragma resource "*.dfm"
 TForm1 *Form1;

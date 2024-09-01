@@ -20,16 +20,18 @@ uses
   GLS.SceneViewer,
   GLS.GeomObjects,
   GLS.SoundManager,
-  Sounds.FMOD,
-  Sounds.BASS,
-  Sounds.OpenAL,
-  Sounds.WaveOut,
- 
-  GLS.Coordinates,
-  GLS.BaseClasses,
+
+  GLS.Sounds.FMOD,
+  GLS.Sounds.BASS,
+  GLS.Sounds.OpenAL,
+  GLS.Sounds.WaveOut,
   GLS.FileWAV,
   GLS.FileMP3,
-  GLS.Utils;
+
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.Utils
+  ;
 
 type
   TFormSoundAround = class(TForm)
@@ -85,8 +87,8 @@ implementation
 
 procedure TFormSoundAround.FormCreate(Sender: TObject);
 begin
-  Path := GetCurrentAssetPath();
-  SetCurrentDir(Path  + '\audio');
+  Path := GetCurrentAssetPath() + '\audio';
+  SetCurrentDir(Path);
   // Load our sound samples
   GLSoundLibrary.Samples.AddFile('drumloop.wav', 'drumloop.wav');
   GLSoundLibrary.Samples.AddFile('chimes.wav', 'chimes.wav');

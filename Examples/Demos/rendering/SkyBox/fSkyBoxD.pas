@@ -32,7 +32,7 @@ uses
   GLS.Utils;
 
 type
-  TFormSkyBox = class(TForm)
+  TFormSkybox = class(TForm)
     GLScene1: TGLScene;
     GLCamera1: TGLCamera;
     GLMatLibCubeMap: TGLMaterialLibrary;
@@ -66,13 +66,13 @@ type
   end;
 
 var
-  FormSkyBox: TFormSkyBox;
+  FormSkybox: TFormSkybox;
 
 implementation
 
 {$R *.dfm}
 
-function TFormSkyBox.LoadTexture(Matname, Filename: string): TGLLibMaterial;
+function TFormSkybox.LoadTexture(Matname, Filename: string): TGLLibMaterial;
 begin
   Result := GLMatLibCubeMap.AddTextureMaterial(Matname, Filename);
   Result.Material.Texture.Disabled := False;
@@ -81,7 +81,7 @@ end;
 
 //------------------------------------------------
 
-procedure TFormSkyBox.FormCreate(Sender: TObject);
+procedure TFormSkybox.FormCreate(Sender: TObject);
 begin
   PathToAsset := GetCurrentAssetPath();
   SetCurrentDir(PathToAsset  + '\cubemap');
@@ -145,10 +145,10 @@ end;
 
 //------------------------------------------------
 
-procedure TFormSkyBox.GLCadencer1Progress(Sender: TObject;
+procedure TFormSkybox.GLCadencer1Progress(Sender: TObject;
   const deltaTime, newTime: Double);
 begin
-  // Make clouds Texture slide
+  // Make clouds slide
   with GLMatLibCubeMap.Materials.GetLibMaterialByName('Clouds') do
   begin
     TextureOffset.X := TextureOffset.X + deltaTime * 0.02;
@@ -162,12 +162,12 @@ begin
   HandleKeys(deltaTime);
   GLUserInterface1.Mouselook;
   GLUserInterface1.MouseUpdate;
-  GLSceneViewer1.Invalidate;
+  GLSceneViewer1.Invalidate();
 end;
 
 //------------------------------------------------
 
-procedure TFormSkyBox.HandleKeys(d: Double);
+procedure TFormSkybox.HandleKeys(d: Double);
 begin
   if IsKeyDown('W') or IsKeyDown('Z') then
     GLCamera1.Move(d);

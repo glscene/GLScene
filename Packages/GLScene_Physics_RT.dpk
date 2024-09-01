@@ -35,10 +35,10 @@ requires
   GLScene_RT;
 
 contains
-  Newton.Import in '..\Source\Newton.Import.pas',
-  NGD.Import in '..\Source\NGD.Import.pas',
-  ODE.Import in '..\Source\ODE.Import.pas',
-  PhysX.Import in '..\Source\PhysX.Import.pas',
+  Newton.Import in '..\Unipas\Newton.Import.pas',
+  NGD.Import in '..\Unipas\NGD.Import.pas',
+  ODE.Import in '..\Unipas\ODE.Import.pas',
+  PhysX.Import in '..\Unipas\PhysX.Import.pas',
   Physics.NGDManager in '..\Source\Physics.NGDManager.pas',
   Physics.NGDRagdoll in '..\Source\Physics.NGDRagdoll.pas',
   Physics.ODEManager in '..\Source\Physics.ODEManager.pas',

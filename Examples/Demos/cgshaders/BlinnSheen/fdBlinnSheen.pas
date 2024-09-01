@@ -20,7 +20,6 @@ uses
   GLS.Cadencer,
   GLS.VectorTypes,
   GLS.Texture,
-  CG.Shader,
   GLS.SceneViewer,
   GLS.VectorFileObjects,
   GLS.AsyncTimer,
@@ -36,7 +35,8 @@ uses
   GLS.PersistentClasses,
   GLS.Utils,
 
-  Cg.GL;
+  Cg.GL,
+  GLS.CgShader;
 
 type
   TFormBlinnSheen = class(TForm)
@@ -74,7 +74,7 @@ type
 var
   FormBlinnSheen: TFormBlinnSheen;
 
-implementation
+implementation //-------------------------------------------------------------
 
 {$R *.dfm}
 

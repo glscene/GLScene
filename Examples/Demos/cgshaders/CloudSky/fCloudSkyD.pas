@@ -32,7 +32,7 @@ uses
   GLS.Utils,
   GLS.SimpleNavigation,
 
-  Cg.Shader;
+  GLS.CgShader;
 
 type
 

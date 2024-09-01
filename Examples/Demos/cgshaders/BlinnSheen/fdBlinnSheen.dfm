@@ -36,8 +36,6 @@ object FormBlinnSheen: TFormBlinnSheen
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
-    ExplicitLeft = -10
-    ExplicitTop = 14
   end
   object CheckBox1: TCheckBox
     Left = 560

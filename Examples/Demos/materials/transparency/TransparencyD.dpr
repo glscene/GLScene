@@ -1,4 +1,5 @@
-{: A basic sample to demonstrate how transparency & Z-buffer work/fight together.
+(*
+   A basic sample to demonstrate how transparency & Z-buffer work/fight together.
    In this sample, only the sphere are transparent. The form has a few options
    that allow to adjust in which order objects are rendered, and what kind of
    transparency is used.
@@ -20,12 +21,11 @@
    However this effect can be usefull if you want to render mixed, half-transparent
    half-opaque objects.
 
-   They are two ways to order objects in GLScene :<ul>
-   <li>ordering : can be done at design-time in the editor or at runtime with
+   They are two ways to order objects in GLScene :
+      ordering : can be done at design-time in the editor or at runtime with
       MoveUp/MoveDown methods
-   <li>sorting : adjust the ObjectSorting property (see help for more details)
-   </ul>
-}
+     sorting : adjust the ObjectSorting property (see help for more details)
+*)
 program TransparencyD;
 
 uses
@@ -36,6 +36,6 @@ uses
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormTransparency, FormTransparency);
   Application.Run;
 end.

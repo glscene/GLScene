@@ -34,7 +34,7 @@
 // Shader headers
 #include "GLSL.PostShaders.hpp"
 #include "GLSL.PostEffects.hpp"
-#include "Cg.PostTransformationShader.hpp"
+#include "GLS.CgPostTransformationShader.hpp"
 
 //---------------------------------------------------------------------------
 class TFormPostShader : public TForm
@@ -64,6 +64,7 @@ __published:	// IDE-managed Components
 	TGLCadencer *Cadencer;
 	TGLMaterialLibrary *MaterialLibrary;
 	TGLSimpleNavigation *GLSimpleNavigation1;
+	TTrackBar *TrackBar1;
 	void __fastcall tbBlurValueChange(TObject *Sender);
 	void __fastcall tbDreamThresholdChange(TObject *Sender);
 	void __fastcall tbThermalIntensityChange(TObject *Sender);

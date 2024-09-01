@@ -173,7 +173,7 @@
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="fSkyBoxC.cpp">
-            <Form>Form1</Form>
+            <Form>FormSkybox</Form>
             <FormType>dfm</FormType>
             <DependentOn>fSkyBoxC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

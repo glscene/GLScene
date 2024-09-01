@@ -63,6 +63,12 @@
         <Cfg_2>true</Cfg_2>
         <Base>true</Base>
     </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64x' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win64x)'!=''">
+        <Cfg_2_Win64x>true</Cfg_2_Win64x>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <GenPackage>true</GenPackage>
@@ -121,9 +127,14 @@
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
+        <DCC_UnitSearchPath>..\Unipas;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win64x)'!=''">
+        <DCC_UnitSearchPath>..\..\GLScene\Source;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -134,22 +145,22 @@
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="xmlrtl.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
-        <DCCReference Include="..\Source\CUDA.Import.pas"/>
-        <DCCReference Include="..\Source\OpenCL.Platform.pas"/>
-        <DCCReference Include="..\Source\OpenCL.Import.pas"/>
-        <DCCReference Include="..\Source\CUDA.Parser.pas"/>
-        <DCCReference Include="..\Source\CUDA.DataAccess.pas"/>
-        <DCCReference Include="..\Source\OpenCL.GL.pas"/>
-        <DCCReference Include="..\Source\CUDA.Utility.pas"/>
-        <DCCReference Include="..\Source\CUDA.ParallelPrimitives.pas"/>
-        <DCCReference Include="..\Source\CUDA.Runtime.pas"/>
-        <DCCReference Include="..\Source\CUDA.FourierTransform.pas"/>
-        <DCCReference Include="..\Source\CUDA.Compiler.pas"/>
-        <DCCReference Include="..\Source\CUDA.Context.pas"/>
-        <DCCReference Include="..\Source\CUDA.FFTPlan.pas"/>
-        <DCCReference Include="..\Source\CUDA.Graphics.pas"/>
+        <DCCReference Include="..\Unipas\CUDA.Import.pas"/>
+        <DCCReference Include="..\Unipas\OpenCL.Platform.pas"/>
+        <DCCReference Include="..\Unipas\OpenCL.Import.pas"/>
+        <DCCReference Include="..\Unipas\CUDA.Parser.pas"/>
+        <DCCReference Include="..\Unipas\CUDA.DataAccess.pas"/>
+        <DCCReference Include="..\Unipas\OpenCL.GL.pas"/>
+        <DCCReference Include="..\Unipas\CUDA.Utility.pas"/>
+        <DCCReference Include="..\Unipas\CUDA.ParallelPrimitives.pas"/>
+        <DCCReference Include="..\Unipas\CUDA.Runtime.pas"/>
+        <DCCReference Include="..\Unipas\CUDA.FourierTransform.pas"/>
+        <DCCReference Include="..\Source\GLS.CUDA.Compiler.pas"/>
+        <DCCReference Include="..\Source\GLS.CUDA.Context.pas"/>
+        <DCCReference Include="..\Source\GLS.CUDA.FFTPlan.pas"/>
+        <DCCReference Include="..\Source\GLS.CUDA.Graphics.pas"/>
         <DCCReference Include="..\Source\GLS.FilePGM.pas"/>
-        <DCCReference Include="..\Source\CUDA.APIComps.pas"/>
+        <DCCReference Include="..\Source\GLS.CUDA.APIComps.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -171,10 +182,10 @@
                     <Source Name="MainSource">GLScene_GPU_RT.dpk</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k280.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp280.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k280.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp280.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k290.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp290.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k290.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp290.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Platforms>

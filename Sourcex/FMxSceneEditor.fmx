@@ -1,0 +1,1022 @@
+object SceneEditorForm: TSceneEditorForm
+  Left = 0
+  Top = 0
+  Caption = 'Scene Editor'
+  ClientHeight = 632
+  ClientWidth = 600
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  object ToolBar: TToolBar
+    Size.Width = 600.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object TBLoadScene: TSpeedButton
+      Action = ACLoadScene
+      Align = Left
+      Enabled = True
+      ImageIndex = -1
+      Size.Width = 40.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      ParentShowHint = False
+      ShowHint = True
+      StyleLookup = 'cornerbuttonstyle'
+      object ImLoadScene: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 16711935
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              023849444154384FB55241681341147D3BBB63D2D8060D26168B52B0298D8A20
+              E62082DE44B0204AA5C59B78143C68D58BB4A50A010FE241F4E045500A054141
+              04A97810B482288234185D536C68576D5262DA6CD376BBD9F1CF266EBAA027F1
+              C1EE9F3FFFFFF7FFBC19FC2B94BAFD2342E7B8E0410D810D0C5555C02ADA28A7
+              2C5F8DCFC93C4808A60620848DAE9EB42F16B91612C1560D8B5316E68796BD98
+              BBF8381A178AAAA1E3C84530A660B5FC1DB95723A85A16145585A230302D8803
+              533A549AE6DBA9053F81ECDC75E232502DD1E7008248166DD732C689842C35D8
+              7CFD3C62BBC3984917511AA84DC1E4CF85B3441F5921D70E7848056F91DD7F42
+              7F76139F9EDE40CBFA10DA23316C8A86A13F4ACACC3504827C1A153432348D36
+              1C98C667E8CF47B075DF2524DF64D1D7BD1FED1BA3D89968C39EF10F6E99CCAC
+              81A9B0CD3964C7EED7376AE8389C82C6723007AFA2F9CA0086FB7B71F7DE0BBC
+              4D6EC10EE41A1A741E3D03FDF16D6C3B38041EA061141BDABA2A601720E848A4
+              02CCD919B4DEB985AF277B10DB3BEAD76069EE876B43D10A1118D0789E04A562
+              12F2F76D3395A170F6024AD369D797F008A65F3FC4F643C3D4B14C7AD0C9840C
+              35249250E846CCD949741E6BBC112F23BAEB347898F61D57DC1A14858A185D23
+              0778937B947923530FD6E0113445DAA880BA6B24000F528443D09B58AD9830DE
+              8FC178F704F92FE3881F9FF0BA4BB88E1431DE9D82B392417EE2A51B90585928
+              C0AA9490E8CDFA8AD6C223E0C166EA5644A26FF2AFC9FF01C02FAEAEC2C51813
+              29BF0000000049454E44AE426082}
+            FileName = 'D:\VXScene\Resources\bitmaps\LoadScene.bmp'
+          end>
+        Align = Client
+        HitTest = False
+        Size.Width = 40.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object TBInfo: TSpeedButton
+      Action = ACInfo
+      Align = Left
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 557.000000000000000000
+      Size.Width = 40.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      ParentShowHint = False
+      ShowHint = True
+      StyleLookup = 'cornerbuttonstyle'
+      object ImInfo: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 16711935
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              00C549444154384F631870C008A53141C0B6FF0CF7EE4139402023C3C0B02D00
+              433D7603F4A6FC67C8C9867280E0FF7F0686DFBF191866CD6660B89483DB5230
+              3099FB9F6116500708830C020110DDF5FE3F43F30B841814609A0632E0D77708
+              1BD93690460F0F06861D3B50C40938070A409A9D9D19187EFC6060B8789181E1
+              580209068034DBD93230FCFCC9C070F2144618E03700A4D9D28281E1D72F0686
+              B3E7B006201394C60DBE7EC3A999388016EA5407F89DE5BC1261FBDE70AC6A09
+              87C120070C0C005FEB47B75B2269BF0000000049454E44AE426082}
+            FileName = 'D:\VXScene\Resources\bitmaps\Help.bmp'
+          end>
+        Align = Client
+        HitTest = False
+        Size.Width = 40.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object TBPaste: TSpeedButton
+      Action = ACPaste
+      Align = Left
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 513.000000000000000000
+      Size.Width = 40.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      ParentShowHint = False
+      ShowHint = True
+      StyleLookup = 'cornerbuttonstyle'
+      object ImPaste: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 16711935
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              024F49444154384F85534B6B1351183DD399A679D4C4A6ADD6DA8ADA96AA188B
+              490AA2BBE2034410974237FE03170AEE4570D1853F4074A13B172228EEBAD145
+              1115456953EBA2ADD842838F4993D879DDEBB977F298B8F10C27DFF7CDFDBE33
+              676EEE1888A0F4704AAAF8AC725DD7515C4EDFD3F1C8B58F1D33AD420D270A77
+              30FF761DC5D39730716808526A3D2CBC5BC246E93966F271D81F1E7588E8440D
+              4F5E7D81579F3C2C96BE62FCC000C2D1107E20B1B25AC6958B390C6C3FC1DAEB
+              072D912EDD41B88E83FCB12114C66BC8985FC812B9442EA2CFFA8CB30517FB07
+              1D08B1D39808D112905220958CA378EA1C6CF3202AE661728C1C47B57B121BF5
+              3D987FB385EF65BF3111A22500439976A854D565EE6801D3270A28E6C8E3794C
+              E7F210C1309E9667F47A136D01E902C206828A2E334913693293227B2DA45316
+              52310F9BCE3EDCAE2EE81E857F0438AC480422DC46C9CBF502B8BE8FD1D12CCE
+              EFADE2C2C87BDCB8F55837440468DFFFCD49BA502597ED1D894D3BC0568DB142
+              A99E24A64E4EE04C714CF728B405D4EE8AED96033F1058B70516CB06967F002B
+              3FC11CF8664BC45219DDA3107150E7309FAE4408C713E8ED16184C0AF42704B2
+              7189FEB840DC0CB0E3B6FF8988833F1D0E3C5FA2E64854F81ADB7CBBAACB48D6
+              3DAE35F647212250A36F3A50FB40783C7D341132E06D6130371855CE9F06DA02
+              06D39845C674E9B1D3320224AC80B67DC4BA3CF430AA7B1103A1803AD7AB2FE7
+              F06BAD0E7B957B41988918B2BB2C0C67BB30B49BEC3331420EA4BB91E0896DA2
+              E3D36C7ECEF7976FEAFA7F98BB3B6BFC0521500765EA24DF030000000049454E
+              44AE426082}
+            FileName = 'D:\VXScene\Resources\bitmaps\Paste.bmp'
+          end>
+        Align = Client
+        HitTest = False
+        Size.Width = 40.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object TBCopy: TSpeedButton
+      Action = ACCopy
+      Align = Left
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 473.000000000000000000
+      Size.Width = 40.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      ParentShowHint = False
+      ShowHint = True
+      StyleLookup = 'cornerbuttonstyle'
+      object ImCopy: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 16711935
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              01BD49444154384F8592C94A03411086FFC9668CC68C4B1451DC51505C1041F1
+              EC4D2FE22B781717502F9E2388BE831E7C81E4E0D18BE049C105232878539288
+              242699E84CB7353D93761C32F843A8EAEE9ABFABBEB40252E230C9CD584B5F95
+              30F67617449DA74C835A32F7D75219BE7370E17981CF8E529C4ABF19A0DB9F74
+              A62FA1FADE3DBB7419703066801B3A0CFAAD2CCF626EA617035D21E40AE45A43
+              013B42A7F3A71C876E00C9D3337BF757AD519FE8C2CD441A7C318EAB5733B3CE
+              B6D71745746AFF2885DCC4244C2689AD79512847F8A69B879A0DF4AB9438F41F
+              1369605025E38C183859FDCF441A5408C2F347102F796B2A93493AC3F190011E
+              B356AE455A303C3D8AC9D90970AD20EAA401630CC3AA86C1264DACAB4C6E320A
+              6EB33EDC67FDB87D03CE9F8952300CC5C6280DEAEA4388C70288AB56074E267D
+              3103BD511DDD8D3AC6DB2AD0E8B050F81475F25FD8583DB433606C6AC4C14401
+              A76ECC89758A3A75CA0C4E742C09839D8DA53F6F3D3195E455266EBD96A8B348
+              09E57C51ACE5086E39990C44CBE8692CA1BBA1487B45EAECF73E4F032793D698
+              1FED143BD4209AA2218423757655F5D9B9643E92BBEBB4BDF2D6C9F1A6F20382
+              98F517BEF7633B0000000049454E44AE426082}
+            FileName = 'D:\VXScene\Resources\bitmaps\Copy.bmp'
+          end>
+        Align = Client
+        HitTest = False
+        Size.Width = 40.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object TBCut: TSpeedButton
+      Action = ACCut
+      Align = Left
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 433.000000000000000000
+      Size.Width = 40.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      ParentShowHint = False
+      ShowHint = True
+      StyleLookup = 'cornerbuttonstyle'
+      object ImCut: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 16711935
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              019249444154384F63A02AF089CEFF0F6562057E310518F24C501A0C64A5C519
+              F2AABAB01A9292DFFA5F42540CCA43001403FEFFFBCFE06267CEE01591836208
+              88AFAFA1C9C0C4C80815410014035EBC7CC3202B25CEE0E7E100158100635D3D
+              065161518617AF5F41451000C5004B433386C327CE31047A3B3284A756805D11
+              915AF9DF4CDF84E1E19327607974806240795124E3DE43A7187E7CFFC310E6E3
+              CEE01498F6DFC1C29A81959995E1DA9D9B6079A8523840310004362E99C0B87C
+              ED36A0B375198C74B418B839B8186EDCBDCDF0EAF533A80A54C00CA55100B790
+              7883A4982483B2BC32C381E38719AEDEBACAB069F954CC10C40782939BFECF9B
+              BBF63FBBFB2ABC6903C35456AF75FF7FFF6363E06378CD20F9EF09C30B061986
+              4F8C220CAC8C3F197EED08C11F06AC415BFF33323131B07230327C651161B8B9
+              AB96F10BAB10030B3B48F63F035ED7B0FA6FFACFEEB21CAE80DD7525988DAC89
+              C36EE17F768FD52886205C0014FEB907299AB0A4BA1F87E219FFA368C7128D20
+              C0EE06B11D0C802C36CF75083E168329000C0C00A5CE7A2373D9156500000000
+              49454E44AE426082}
+            FileName = 'D:\VXScene\Resources\bitmaps\Cut.bmp'
+          end>
+        Align = Client
+        HitTest = False
+        Size.Width = 40.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object TBDeleteObject: TSpeedButton
+      Action = ACDeleteObject
+      Align = Left
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 393.000000000000000000
+      Size.Width = 40.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      ParentShowHint = False
+      ShowHint = True
+      StyleLookup = 'cornerbuttonstyle'
+      object ImDeleteObject: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 16711935
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              00F149444154384FA5904B1282300C8643A1B8D0856E5D7A04C1FB1F40F404EA
+              C6A5E3469D41A15213A09DD21691F19B81B479FC490A7F536E42495F7B1D0D6B
+              6D2DD41E47C1F8F61DB4E79F45CC3CA7981C91216AA272CCA67A057292F72E19
+              3CD3C89944788A092D4050670E12729CE392702DF2404181D62E26BCA31ED713
+              396715089488030931FAA699F0E67A9DC4398925C8006628B4C8CADEBCCE0A0A
+              9A20441B62F702450E786F222E8EC00993A95D8EFFE5AE081E682989FC758285
+              1EED9A7279AB183E61C36AFFEA8CAD046C7F7DA1204555C44E52F844F40A43C5
+              848A99EB74DEE05BB1C216192CE8A31100F800F2206AC2FBD595600000000049
+              454E44AE426082}
+            FileName = 'D:\VXScene\Resources\bitmaps\DeleteObject.bmp'
+          end>
+        Align = Client
+        HitTest = False
+        Size.Width = 40.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object TBExpand: TSpeedButton
+      Action = ACExpand
+      Align = Left
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 349.000000000000000000
+      Size.Width = 40.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      ParentShowHint = False
+      ShowHint = True
+      StyleLookup = 'cornerbuttonstyle'
+      object ImExpand: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 16711935
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              009249444154384F631870C00822928BABFF83795010E464056511066003FE7F
+              62801B90D258CD509D9D0CE5E107D7AF5F47B800A4C9799F2083D3F51E867D9A
+              25600584C014C963D8BD4016A8AFAF27CB10943068E8AD075118A0B1B111AC0E
+              1B804B805C804D212E9761A8A59917F0391F04E092A09898DBDB8AA29868E783
+              004DBC40C8F9200057801E0B24399F7CC0C00000BA8A48298AEA8CCF00000000
+              49454E44AE426082}
+            FileName = 'D:\VXScene\Resources\bitmaps\ExpandTree.bmp'
+          end>
+        Align = Client
+        HitTest = False
+        Size.Width = 40.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object TBMoveDown: TSpeedButton
+      Action = ACMoveDown
+      Align = Left
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 309.000000000000000000
+      Size.Width = 40.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      ParentShowHint = False
+      ShowHint = True
+      StyleLookup = 'cornerbuttonstyle'
+      object ImMoveDown: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 16711935
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              025249444154384FA5533B6B145114FE6697A828A24414024220A2A8C14221C1
+              1429421A3BB5510C626169102C2C2C2CAC8C95F8136CAD44304137224A08AB56
+              8208222E26EA26E8CEEC635EF7DE99FBF0CCC966130316E219EE9C7BEEB9DF77
+              5E33F85FF1BA1A53F3A7DD819D03745082A547DB1CCAA44875425A405801CF5A
+              B812D09202D5F32B8CE5D799D921373D7C03FB761C44C92B233312A90911663E
+              7CF99D569DF70569B96CD11002EFEA3FF1E9B2EF115FC1E2D04F6045C0D57409
+              F5A4867A5CE37D276B71161981B5D5104643690D2B5D01A57C498AADA10B3F92
+              CF383B781D170FDDC272F291086A68AB5FB83B52C183B13754468EC86444AAA0
+              225340D7080A1126469CB730F3FE12DB774E3D81A4C833A3F36C5F5D3881D012
+              D82AC426479E6E2128EA96D4B4447770F3ED389FDD1F5B647D65E1383A46A1A3
+              25DA5622D20A59B28540D90439393545296ABDB67892CFA75E1F2340C6A9C714
+              3D22A228CF8840B3BF4710650104A57C6FF405D55B454A24175E1DE5B41F4F7C
+              416572898872844EB1CF28CBB81E41432ED314624C5747D97E38FE0121457B3A
+              51637B78AE9FED620AD659786B435827F068D6AB086864CD4CE0DCCBC37CFA6C
+              F22BEB23737B11B90CCA51DDF4E5F4BE3E122630C4D8D4217C1D53A3045AD48B
+              91E7037C6168760F124A595B0A5944ED465E676102A172B4BD18A197202C4BC4
+              656A585961B0B21BAA4FC3DBE650DA4E97BB0B7DB43697E007022B8D04414B20
+              A07DB321D1F1255460600207D3DC589AECFC1BE936E337CAD97F7B9773F4B368
+              414E65E08CFBA3D6CD62082C1EE9BFB9FF4580DFA932809A33856F0000000000
+              49454E44AE426082}
+            FileName = 'D:\VXScene\Resources\bitmaps\DownObject.bmp'
+          end>
+        Align = Client
+        HitTest = False
+        Size.Width = 40.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object TBMoveUp: TSpeedButton
+      Action = ACMoveUp
+      Align = Left
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 269.000000000000000000
+      Size.Width = 40.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      ParentShowHint = False
+      ShowHint = True
+      StyleLookup = 'cornerbuttonstyle'
+      object ImMoveUp: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 16711935
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              026049444154384FA5533B685441143DBB51D458F809C644C522A01042082E09
+              8A1A23A82076B6412C050D82858D2051D45AECFC14A236A2206811C15F611144
+              C1C620881248D44D90DDB79BDD7DEFCDCC7BF3F1BCD99868C0423CCBBC3B7367
+              CE99B99FC5FF22376F31FC62976B6FEDA4230FCB9FB629948911EB8856405881
+              9CB57079A02A05DE1C9DF15CFF393CD6E5467ACEA06DE516E4732D488C446CEA
+              A8276594E5378EA29F67A22D2D162521F0AEF8039F8E9573D4CB541CD693AC48
+              9C8DA7508C26510C27FDBC9654FD2B1292B5D5104643690D2B5D46E57B896C6A
+              78E07BF4195F6AEF31154E603AFA88D33DD7D1B9AA0B92022623F34CC3241455
+              500D93519B0219840911A655A456419A08170B4FBCFFF8F6CBD8B6760011FD75
+              4B326D6852A4F112812C6EC9A445BA860B85C7DE37325EF0F664F7358AEC414D
+              4BCC5989865648A22502CA46BC5DE24AFF53BF3E35BE833E8DE1D7DD7E7DAEF7
+              06FADAF6310485469A50407BFF32FF251A4900C158CFBE1D6432156292EF0C4E
+              E0D2C4091C78B59555D11C29E2E509F70C8CB29EB7F082929C263164A2186B2A
+              3D39C368EF2DF4ADDB8F3A9F5FA7705605EB2C72CD22FC12C8B1D6B30858B24A
+              227077E883F7EE7EBEC9DBAB857BD8D97E10CA316E76CE42F7115EC050B1A2EB
+              28EB10F7879A370F3CEB64D212748DADF1EBDBFD0F7168E39166CD33CCAB78B3
+              F7D166D7D1D18A5AAA582ED6DB31D62CDEAC79D8D60B37929C5F01A48143F452
+              23BCA99B9D580E04664A1182AA40C079A524512B4BA880C9E26153591C9AEBF4
+              2BED9C975C14DF707EB573FCB368C14D65E08CFB23D6DF6148160FF4DFB6FF05
+              C04F5EEA800C88E9B1530000000049454E44AE426082}
+            FileName = 'D:\VXScene\Resources\bitmaps\UpObject.bmp'
+          end>
+        Align = Client
+        HitTest = False
+        Size.Width = 40.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object TBCharacterPanels: TSpeedButton
+      Align = Left
+      Position.X = 225.000000000000000000
+      Size.Width = 40.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      ParentShowHint = False
+      ShowHint = True
+      StyleLookup = 'cornerbuttonstyle'
+      object ImCharacterPanels: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 16711935
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              011349444154384F95932173834010855F3A1517C7C9C848EA5A574B1D71549E
+              A42EF909FC04E28A4B2416476564646565919589E31CBD5D8E164A03E49BD999
+              B7C7BE9DBD3B6E868978BE5F2D174B9B191C07F1710B6E90E779C58B036C9304
+              BB7D6E33400673E8070FB73687EBBA568DD3982371FFDB80783A48ABFA1CCDF4
+              C21A893232D3441BDC50A2B58694B5F9337438FE6A55983A6316EF079CB292D7
+              086E30156AF22C3DBC842B8EE2ABA80F314DD32A0802DCA59A0BC7F850025996
+              412935EB4CF038173F630FE936DCE0549610A2FB6108AA250FD1B905E9086CDE
+              C6759BDE21BEFA750CE936F5359ECF9C5C43E3E96C816846252EE91E711C57D7
+              421EF2F27FB05E87A38FE93F92643FF9355F00F806FB8E91035AB08710000000
+              0049454E44AE426082}
+            FileName = 'D:\VXScene\Resources\bitmaps\CharacterPanels.bmp'
+          end>
+        Align = Client
+        HitTest = False
+        Size.Width = 40.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object TBGalleryPanel: TSpeedButton
+      Action = ACGallery
+      Align = Left
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 185.000000000000000000
+      Size.Width = 40.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      ParentShowHint = False
+      ShowHint = True
+      StyleLookup = 'cornerbuttonstyle'
+      object ImGalleryPanel: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 16711935
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              009049444154384FBD92010E80200845B175308FE6D1BC99F51D18A0A95B5B6F
+              73187DF834A23F291C0D07C71585ABBB26BE0104FA2CE9268095D831ED91A379
+              BBF509411D8FCF59EF718D6129B8F14D41AB7B9B40F225E7CCD787182342D5E8
+              064DAC042377A1D69EF53A21A5240D490C9013F41602847A3CC14D66F06B44A1
+              29067E02CDD67F309BA0731B305DE347882EC4262D8FDB271B7D000000004945
+              4E44AE426082}
+            FileName = 'D:\VXScene\Resources\bitmaps\Gallery.bmp'
+          end>
+        Align = Client
+        HitTest = False
+        Size.Width = 40.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object TBAddObjects: TSpeedButton
+      Action = ACAddObject
+      Align = Left
+      Enabled = True
+      ImageIndex = -1
+      PopupMenu = PMToolBar
+      Position.X = 124.000000000000000000
+      Size.Width = 61.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      ParentShowHint = False
+      ShowHint = True
+      StyleLookup = 'cornerbuttonstyle'
+      object ImAddObjects: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 16711935
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              016549444154384F7D9381B182400C444F1B402A402A103A9092ACC052A403B0
+              02A102A102B102A582F35E74EFEB7CFFDF994CB84BB2D96560E1BEE076BBF971
+              1CC9EE7EBF5B80ED76EBCAB2FC98F945300C83D780F7DECDF36C44D33459E479
+              EEF6FBBD5B04D0B3B4CE172E978B0D13A7D389A657E507DCEF76BBD7E98D200C
+              7936244912A50735A6428A84BAAE5DDBB69EE748C0108064B55A99F4C3E16099
+              B85EAF464486B4691A53FC61814611E8DC755D54212558830885918066A99077
+              ECE0999AB68B841AF71F0A68603B4582670650F5AE807B026591402F9002CC00
+              250452057AB22C73EBF5DA6A4610A47B35A5696ACC40849033A033DF02676004
+              BC282069922A30783E9F8DBC280A0B405E6A3B4D4822CB02402EF7BC9FCD66E3
+              AAAAB21E14705E322CAF802C0BBA63001C8F47AB6181FF22D49F1DC1A30F1F85
+              4987B9EFFBF83502B2BC6B7B5062B3CF150158D1E07F1051F01F67FF44D8CCCF
+              F5F4F315CE3D0069F812FD036C0F220000000049454E44AE426082}
+            FileName = 'D:\VXScene\Resources\bitmaps\AddObject.bmp'
+          end>
+        Align = Left
+        HitTest = False
+        Size.Width = 40.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object ImArrowDown: TImage
+        MultiResBitmap.Height = 21
+        MultiResBitmap.TransparentColor = 12632256
+        MultiResBitmap = <
+          item
+            Width = 21
+            Height = 21
+            PNG = {
+              89504E470D0A1A0A0000000D4948445200000015000000150806000000A917A5
+              96000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              004649444154384FEDD1310A00200C43D17AFF432B810EA26D8DE022E42D9DF2
+              979AC8079ADF55F7CBD81A59149870B8AFA25085D3ED290A51B8DC315198C3EC
+              8672F33C9177CC0636600605DA3E83780000000049454E44AE426082}
+            FileName = 'D:\VXScene\Resources\bitmaps\ArrowDown.bmp'
+          end>
+        Align = Right
+        HitTest = False
+        Position.X = 40.000000000000000000
+        Size.Width = 21.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object TBStayOnTop: TSpeedButton
+      Action = ACStayOnTop
+      Align = Left
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 80.000000000000000000
+      Size.Width = 40.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      ParentShowHint = False
+      ShowHint = True
+      StyleLookup = 'cornerbuttonstyle'
+      object ImStayOnTop: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 16711935
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              012149444154384F6318C6E0CF25C3FF200CE5A200643926B0080EF06CEF79B0
+              6228170C407C90380CE035805D8F83E1EDEBEB701B4178D3D2F30C52CE860C77
+              CEFE03AB61049340B0E7F849149B646EA431A84A2930FC5532677874BE8B81ED
+              E907B0F82F690106457E7B86DBCF1E3068245E6464010996542CF97FE7CA6706
+              3F6F2D0649494986E7CF9F337CBA01345D2F8A81F1EF07064E997A0651C3EF0C
+              8C9CC20CCFAE3C64F8A72DCFB079611ED840B80B408640996020FE2899A1B042
+              8BE1D0FAC70C771F7D611016F9C120C025C2F0E1DB1B06BF684386FE8E6B0CA5
+              CB7E32C20D4007DD51ECFF8DD579C11AEE3E66878A3230087032820D0389810C
+              C01B8830CD208530FCE1FB7F86B76F38A02A08C4024C33940B06304346010C30
+              3000008BCE84787F9BBEEA0000000049454E44AE426082}
+            FileName = 'D:\VXScene\Resources\bitmaps\StayOnTop.bmp'
+          end>
+        Align = Client
+        HitTest = False
+        Size.Width = 40.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object TBSaveScene: TSpeedButton
+      Action = ACSaveScene
+      Align = Left
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 40.000000000000000000
+      Size.Width = 40.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      ParentShowHint = False
+      ShowHint = True
+      StyleLookup = 'cornerbuttonstyle'
+      object ImSaveScene: TImage
+        MultiResBitmap.Height = 16
+        MultiResBitmap.Width = 16
+        MultiResBitmap.TransparentColor = 16711935
+        MultiResBitmap = <
+          item
+            Width = 16
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              00E949444154384FBD903B0A02311086FF98A007B0B0B0B295C546C14388EC15
+              6CF41E769EC0421BAF60E12104EDF60C82D576627427318F157C445750FC20C3
+              CC64E6CF64F03B46D052CAC263EBF20E47C9599B6C3BAF185B7723C29CCD05E4
+              40224912970A1145112A8B0AB035C1CCF73E09145128F0F709FC12BFE06E8265
+              77E9C277C4EBF8F5173EE69DC0AE9F426B85933C02FA0CCE35186348D3035AD3
+              26788D83F6F47A074A11EAE32A1A93BA8934CAE51284B037A6294050E08A10DC
+              5806220265994F3EF024705B28CCEB8A1432CA9C4808BF038BDD8361DE59B930
+              C470D3F34EFEFF1F005C003749849CB1BC2E190000000049454E44AE426082}
+            FileName = 'D:\VXScene\Resources\bitmaps\SaveScene.bmp'
+          end>
+        Align = Client
+        HitTest = False
+        Size.Width = 40.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object TBSeparator1: TSpeedButton
+      Align = Left
+      Position.X = 120.000000000000000000
+      Size.Width = 4.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object TBSeparator2: TSpeedButton
+      Align = Left
+      Position.X = 265.000000000000000000
+      Size.Width = 4.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object TBSeparator3: TSpeedButton
+      Align = Left
+      Position.X = 389.000000000000000000
+      Size.Width = 4.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object TBSeparator4: TSpeedButton
+      Align = Left
+      Position.X = 553.000000000000000000
+      Size.Width = 4.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+  object PATree: TPanel
+    Align = Left
+    Position.Y = 40.000000000000000000
+    Size.Width = 305.000000000000000000
+    Size.Height = 592.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object PAEffects: TPanel
+      Align = Bottom
+      Position.Y = 467.000000000000000000
+      Size.Width = 305.000000000000000000
+      Size.Height = 125.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      object ToolBarEffects: TToolBar
+        Margins.Left = 2.000000000000000000
+        Margins.Top = 2.000000000000000000
+        Margins.Right = 2.000000000000000000
+        Margins.Bottom = 2.000000000000000000
+        Position.X = 2.000000000000000000
+        Position.Y = 2.000000000000000000
+        Size.Width = 301.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object TBAddEffects: TSpeedButton
+          Action = ACAddEffect
+          Align = Left
+          Enabled = True
+          ImageIndex = -1
+          PopupMenu = PMEffectsToolBar
+          Size.Width = 110.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          ParentShowHint = False
+          ShowHint = True
+          StyleLookup = 'cornerbuttonstyle'
+          TextSettings.HorzAlign = Leading
+          object ImArrowDownEff: TImage
+            MultiResBitmap.Height = 21
+            MultiResBitmap.TransparentColor = 12632256
+            MultiResBitmap = <
+              item
+                Width = 21
+                Height = 21
+                PNG = {
+                  89504E470D0A1A0A0000000D4948445200000015000000150806000000A917A5
+                  96000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                  004649444154384FEDD1310A00200C43D17AFF432B810EA26D8DE022E42D9DF2
+                  979AC8079ADF55F7CBD81A59149870B8AFA25085D3ED290A51B8DC315198C3EC
+                  8672F33C9177CC0636600605DA3E83780000000049454E44AE426082}
+                FileName = 'D:\VXScene\Resources\bitmaps\ArrowDown.bmp'
+              end>
+            Align = Right
+            HitTest = False
+            Position.X = 89.000000000000000000
+            Size.Width = 21.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+          end
+        end
+      end
+      object EffectsListView: TListView
+        ItemAppearanceClassName = 'TListItemAppearance'
+        ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+        HeaderAppearanceClassName = 'TListHeaderObjects'
+        FooterAppearanceClassName = 'TListHeaderObjects'
+        Align = Client
+        Margins.Left = 2.000000000000000000
+        Margins.Top = 2.000000000000000000
+        Margins.Right = 2.000000000000000000
+        Margins.Bottom = 2.000000000000000000
+        Size.Width = 301.000000000000000000
+        Size.Height = 77.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+      end
+    end
+    object Tree: TTreeView
+      Align = Client
+      Margins.Left = 2.000000000000000000
+      Margins.Top = 2.000000000000000000
+      Margins.Right = 2.000000000000000000
+      Margins.Bottom = 2.000000000000000000
+      Size.Width = 301.000000000000000000
+      Size.Height = 335.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Viewport.Width = 297.000000000000000000
+      Viewport.Height = 331.000000000000000000
+    end
+    object PABehaviours: TPanel
+      Align = Bottom
+      Position.Y = 339.000000000000000000
+      Size.Width = 305.000000000000000000
+      Size.Height = 128.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      object ToolBarBehaviours: TToolBar
+        Margins.Left = 2.000000000000000000
+        Margins.Top = 2.000000000000000000
+        Margins.Right = 2.000000000000000000
+        Margins.Bottom = 2.000000000000000000
+        Position.X = 2.000000000000000000
+        Position.Y = 2.000000000000000000
+        Size.Width = 301.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object TBAddBehaviours: TSpeedButton
+          Action = ACAddBehaviour
+          Align = Left
+          Enabled = True
+          ImageIndex = -1
+          PopupMenu = PMBehavioursToolBar
+          Size.Width = 110.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          ParentShowHint = False
+          ShowHint = True
+          StyleLookup = 'cornerbuttonstyle'
+          TextSettings.HorzAlign = Leading
+          object ImArrowDownBeh: TImage
+            MultiResBitmap.Height = 21
+            MultiResBitmap.TransparentColor = 12632256
+            MultiResBitmap = <
+              item
+                Width = 21
+                Height = 21
+                PNG = {
+                  89504E470D0A1A0A0000000D4948445200000015000000150806000000A917A5
+                  96000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                  004649444154384FEDD1310A00200C43D17AFF432B810EA26D8DE022E42D9DF2
+                  979AC8079ADF55F7CBD81A59149870B8AFA25085D3ED290A51B8DC315198C3EC
+                  8672F33C9177CC0636600605DA3E83780000000049454E44AE426082}
+                FileName = 'D:\VXScene\Resources\bitmaps\ArrowDown.bmp'
+              end>
+            Align = Right
+            HitTest = False
+            Position.X = 89.000000000000000000
+            Size.Width = 21.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+          end
+        end
+      end
+      object BehavioursListView: TListView
+        ItemAppearanceClassName = 'TListItemAppearance'
+        ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+        HeaderAppearanceClassName = 'TListHeaderObjects'
+        FooterAppearanceClassName = 'TListHeaderObjects'
+        Align = Client
+        Margins.Left = 2.000000000000000000
+        Margins.Top = 2.000000000000000000
+        Margins.Right = 2.000000000000000000
+        Margins.Bottom = 2.000000000000000000
+        Size.Width = 301.000000000000000000
+        Size.Height = 80.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+      end
+    end
+  end
+  object PAGallery: TPanel
+    Align = Client
+    Size.Width = 295.000000000000000000
+    Size.Height = 592.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object GalleryListView: TListView
+      ItemAppearanceClassName = 'TListItemAppearance'
+      ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+      HeaderAppearanceClassName = 'TListHeaderObjects'
+      FooterAppearanceClassName = 'TListHeaderObjects'
+      Align = Client
+      Margins.Left = 2.000000000000000000
+      Margins.Top = 2.000000000000000000
+      Margins.Right = 2.000000000000000000
+      Margins.Bottom = 2.000000000000000000
+      Size.Width = 291.000000000000000000
+      Size.Height = 588.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+    end
+  end
+  object PMToolBar: TPopupMenu
+    Left = 104
+    Top = 72
+  end
+  object PopupMenu: TPopupMenu
+    Left = 176
+    Top = 72
+    object MIAddObject: TMenuItem
+      Action = ACAddObject
+      Enabled = True
+      Text = 'Add object'
+      ImageIndex = -1
+    end
+    object MIAddBehaviour: TMenuItem
+      Action = ACAddBehaviour
+      Enabled = True
+      Text = 'Add behaviour'
+      ImageIndex = -1
+    end
+    object MIAddEffect: TMenuItem
+      Action = ACAddEffect
+      Enabled = True
+      Text = 'Add effect'
+      ImageIndex = -1
+    end
+    object MICut: TMenuItem
+      Action = ACCut
+      Enabled = True
+      Text = 'Cut'
+      ImageIndex = -1
+    end
+    object MICopy: TMenuItem
+      Action = ACCopy
+      Enabled = True
+      Text = 'Copy'
+      ImageIndex = -1
+    end
+    object MIPaste: TMenuItem
+      Action = ACPaste
+      Enabled = True
+      Text = 'Paste'
+      ImageIndex = -1
+    end
+    object MIDelObject: TMenuItem
+      Action = ACDeleteObject
+      Enabled = True
+      Text = 'Delete object'
+      ImageIndex = -1
+    end
+    object MIMoveUp: TMenuItem
+      Action = ACMoveUp
+      Enabled = True
+      Text = 'Move object up'
+      ImageIndex = -1
+    end
+    object MIMoveDown: TMenuItem
+      Action = ACMoveDown
+      Enabled = True
+      Text = 'Move object down'
+      ImageIndex = -1
+    end
+  end
+  object SaveDialog: TSaveDialog
+    Left = 104
+    Top = 136
+  end
+  object OpenDialog: TOpenDialog
+    Left = 32
+    Top = 136
+  end
+  object PMBehavioursToolBar: TPopupMenu
+    Left = 64
+    Top = 200
+  end
+  object PMEffectsToolBar: TPopupMenu
+    Left = 192
+    Top = 200
+  end
+  object BehavioursPopupMenu: TPopupMenu
+    Left = 64
+    Top = 264
+  end
+  object StyleBook: TStyleBook
+    Styles = <
+      item
+      end>
+    Left = 427
+    Top = 66
+  end
+  object ActionList: TActionList
+    Left = 32
+    Top = 72
+    object ACLoadScene: TAction
+      Hint = 'Load whole scene'
+    end
+    object ACSaveScene: TAction
+    end
+    object ACStayOnTop: TAction
+    end
+    object ACAddObject: TAction
+      Hint = 'Add object'
+    end
+    object ACAddBehaviour: TAction
+      Text = 'Behaviours'
+      Hint = 'Add behaviour'
+    end
+    object ACAddEffect: TAction
+      Text = 'Effects'
+      Hint = 'Add effect'
+    end
+    object ACMoveUp: TAction
+      Hint = 'Move object up'
+      ShortCut = 16469
+    end
+    object ACMoveDown: TAction
+      Hint = 'Move object down'
+      ShortCut = 16452
+    end
+    object ACExpand: TAction
+      Hint = 'Expand tree'
+    end
+    object ACDeleteObject: TAction
+      Hint = 'Delete object'
+    end
+    object ACDeleteBehaviour: TAction
+      Hint = 'Delete behaviour'
+    end
+    object ACCopy: TAction
+      Hint = 'Copy'
+      ShortCut = 16451
+    end
+    object ACCut: TAction
+      Hint = 'Cut'
+      ShortCut = 16472
+    end
+    object ACPaste: TAction
+      Hint = 'Paste'
+      ShortCut = 16470
+    end
+    object ACInfo: TAction
+      Hint = 'Info'
+      OnExecute = ACInfoExecute
+    end
+    object ACGallery: TAction
+      Hint = 'Show gallery'
+    end
+  end
+end

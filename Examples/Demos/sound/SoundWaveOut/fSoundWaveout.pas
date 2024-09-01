@@ -18,7 +18,7 @@ uses
   GLS.VectorTypes,
   GLS.VectorGeometry,
   GLS.SoundManager,
-  Sounds.WaveOut,
+  GLS.Sounds.WaveOut,
   GLS.SceneViewer,
   GLS.GeomObjects,
 
@@ -50,7 +50,7 @@ type
     TrackBar1: TTrackBar;
     GLSMWaveOut: TGLSMWaveOut;
     Panel1: TPanel;
-    Button1: TButton;
+    ButtonChimes: TButton;
     btnHowl: TButton;
     LabelFPS: TLabel;
     procedure SphereProgress(Sender: TObject; const deltaTime, newTime: Double);
@@ -58,7 +58,7 @@ type
     procedure TrackBarChange(Sender: TObject);
     procedure TrackBar1Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure ButtonChimesClick(Sender: TObject);
     procedure btnHowlClick(Sender: TObject);
   private
 
@@ -75,12 +75,12 @@ implementation
 
 procedure TFormSoundWaveout.FormCreate(Sender: TObject);
 begin
-  var Path: TFileName := GetCurrentAssetPath();
-  SetCurrentDir(Path  + '\audio');
+  var Path: TFileName := GetCurrentAssetPath() + '\audio';
+  SetCurrentDir(Path);
   // Load our sound sample
   GLSoundLibrary.Samples.AddFile('drumloop.wav', 'drumloop.wav');
   GLSoundLibrary.Samples.AddFile('chimes.wav', 'chimes.wav');
-  GLSoundLibrary.Samples.AddFile('howl.mp3', 'howl.mp3');
+  GLSoundLibrary.Samples.AddFile('sndnudge.wav', 'sndnudge.wav');
 end;
 
 procedure TFormSoundWaveout.SphereProgress(Sender: TObject;
@@ -125,7 +125,7 @@ begin
   GLSceneViewer.ResetPerformanceMonitor;
 end;
 
-procedure TFormSoundWaveout.Button1Click(Sender: TObject);
+procedure TFormSoundWaveout.ButtonChimesClick(Sender: TObject);
 begin
   with TGLBSoundEmitter.Create(Sphere.Behaviours) do
   begin
@@ -140,7 +140,7 @@ begin
   with TGLBSoundEmitter.Create(Sphere.Behaviours) do
   begin
     Source.SoundLibrary := GLSoundLibrary;
-    Source.SoundName := 'howl.mp3';
+    Source.SoundName := 'sndnudge.wav';
     Playing := True;
   end;
 end;
