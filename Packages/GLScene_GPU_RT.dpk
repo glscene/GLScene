@@ -37,22 +37,19 @@ requires
   GLScene_RT;
 
 contains
-  CUDA.Import in '..\Unipas\CUDA.Import.pas',
-  OpenCL.Platform in '..\Unipas\OpenCL.Platform.pas',
-  OpenCL.Import in '..\Unipas\OpenCL.Import.pas',
-  CUDA.Parser in '..\Unipas\CUDA.Parser.pas',
-  CUDA.DataAccess in '..\Unipas\CUDA.DataAccess.pas',
-  OpenCL.GL in '..\Unipas\OpenCL.GL.pas',
-  CUDA.Utility in '..\Unipas\CUDA.Utility.pas',
-  CUDA.ParallelPrimitives in '..\Unipas\CUDA.ParallelPrimitives.pas',
-  CUDA.Runtime in '..\Unipas\CUDA.Runtime.pas',
-  CUDA.FourierTransform in '..\Unipas\CUDA.FourierTransform.pas',
   GLS.CUDA.Compiler in '..\Source\GLS.CUDA.Compiler.pas',
   GLS.CUDA.Context in '..\Source\GLS.CUDA.Context.pas',
   GLS.CUDA.FFTPlan in '..\Source\GLS.CUDA.FFTPlan.pas',
   GLS.CUDA.Graphics in '..\Source\GLS.CUDA.Graphics.pas',
   GLS.FilePGM in '..\Source\GLS.FilePGM.pas',
-  GLS.CUDA.APIComps in '..\Source\GLS.CUDA.APIComps.pas';
+  GLS.CUDA.APIComps in '..\Source\GLS.CUDA.APIComps.pas',
+  CUDA.DataAccess in '..\Source\CUDA.DataAccess.pas',
+  CUDA.FourierTransform in '..\Source\CUDA.FourierTransform.pas',
+  CUDA.Import in '..\Source\CUDA.Import.pas',
+  CUDA.ParallelPrimitives in '..\Source\CUDA.ParallelPrimitives.pas',
+  CUDA.Parser in '..\Source\CUDA.Parser.pas',
+  CUDA.Runtime in '..\Source\CUDA.Runtime.pas',
+  CUDA.Utility in '..\Source\CUDA.Utility.pas';
 
 end.
 

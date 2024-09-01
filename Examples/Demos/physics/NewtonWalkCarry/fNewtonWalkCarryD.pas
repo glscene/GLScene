@@ -39,7 +39,7 @@ uses
   GLS.HUDObjects,
   GLS.Texture,
   GLS.Utils,
-  Physics.NGDManager;
+  GLS.NGDManager;
 
 type
 

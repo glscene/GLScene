@@ -14,7 +14,7 @@ uses
 
   GLS.Scene,
   GLS.VectorTypes,
-  Physics.NGDManager,
+  GLS.NGDManager,
   GLS.Objects,
   GLS.Coordinates,
   GLS.Cadencer,

@@ -15,13 +15,14 @@
 #pragma link "GLS.GeomObjects"
 #pragma link "GLS.HUDObjects"
 #pragma link "NGD.Import"
-#pragma link "Physics.NGDManager"
+#pragma link "GLS.NGDManager"
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
 #pragma link "GLS.SimpleNavigation"
 #pragma link "GLS.SceneViewer"
 
 #pragma link "GLS.BitmapFont"
+#pragma link "GLS.NGDManager"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 

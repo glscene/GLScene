@@ -20,7 +20,7 @@
 #include "GLS.Material.hpp"
 #include "GLS.Navigator.hpp"
 #include "GLS.Objects.hpp"
-#include "Physics.ODEManager.hpp"
+#include "GLS.ODEManager.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SkyDome.hpp"
 #include "GLS.TerrainRenderer.hpp"
@@ -28,7 +28,7 @@
 #include "GLS.Utils.hpp"
 #include "JPeg.hpp"
 #include "GLS.Keyboard.hpp"
-#include "Physics.ODEManager.hpp"
+#include "GLS.ODEManager.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

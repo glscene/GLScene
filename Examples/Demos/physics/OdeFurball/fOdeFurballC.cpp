@@ -7,7 +7,7 @@
 
 #include "fOdeFurballC.h"
 
-#pragma link "Physics.ODEUtils"
+#pragma link "GLS.ODEManager"
 #pragma link "GLS.Navigator"
 #pragma link "GLS.ShadowPlane"
 #pragma link "GLS.VectorGeometry"
@@ -26,8 +26,7 @@
 
 #pragma link "GLS.BaseClasses"
 #pragma link "GLS.Coordinates"
-#pragma link "GLS.Objects"
-#pragma link "GLS.ShadowPlane"
+
 #pragma resource "*.dfm"
 TForm1 *Form1;
 

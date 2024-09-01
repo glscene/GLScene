@@ -13,7 +13,7 @@ uses
   GLS.Scene,
   GLS.Objects,
   GLS.SceneViewer,
-  Physics.ODEManager,
+  GLS.ODEManager,
   GLS.VectorGeometry,
   GLS.Cadencer,
   GLS.GeomObjects,

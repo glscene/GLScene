@@ -24,7 +24,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
 
-  Physics.ODEManager;
+  GLS.ODEManager;
 
 type
   TFormOdeSimple = class(TForm)

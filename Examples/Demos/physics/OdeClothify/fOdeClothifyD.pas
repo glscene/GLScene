@@ -44,7 +44,7 @@ uses
   GLS.BaseClasses,
 
   ODE.Import,
-  Physics.ODEUtils;
+  GLS.ODEUtils;
 
 type
   TFormClothify = class(TForm)

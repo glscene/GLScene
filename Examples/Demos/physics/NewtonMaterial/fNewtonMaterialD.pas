@@ -14,12 +14,12 @@ uses
   GLS.SimpleNavigation,
   GLS.Scene,
   GLS.Coordinates,
-  Physics.NGDManager,
+  GLS.NGDManager,
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.Cadencer,
   GLS.SceneViewer,
- 
+
   GLS.BaseClasses,
   GLS.Objects;
 
@@ -55,7 +55,7 @@ type
 var
   FormNewtonMaterial: TFormNewtonMaterial;
 
-implementation
+implementation //------------------------------------------------------------
 
 {$R *.dfm}
 

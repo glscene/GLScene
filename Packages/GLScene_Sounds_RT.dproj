@@ -147,7 +147,6 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <DCC_Description>GLScene Sound Managers</DCC_Description>
         <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
-        <DCC_UnitSearchPath>..\Unipas;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <DCC_BpiOutput>..\lib\$(Platform)</DCC_BpiOutput>
@@ -170,12 +169,12 @@
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="GLScene_RT.dcp"/>
-        <DCCReference Include="..\Unipas\FMOD.Import.pas"/>
-        <DCCReference Include="..\Unipas\FMOD.presets.pas"/>
-        <DCCReference Include="..\Unipas\FMOD.types.pas"/>
-        <DCCReference Include="..\Unipas\FMOD.errors.pas"/>
-        <DCCReference Include="..\Unipas\BASS.Import.pas"/>
-        <DCCReference Include="..\Unipas\OpenAL.Import.pas"/>
+        <DCCReference Include="..\Source\FMOD.Import.pas"/>
+        <DCCReference Include="..\Source\FMOD.presets.pas"/>
+        <DCCReference Include="..\Source\FMOD.types.pas"/>
+        <DCCReference Include="..\Source\FMOD.errors.pas"/>
+        <DCCReference Include="..\Source\BASS.Import.pas"/>
+        <DCCReference Include="..\Source\OpenAL.Import.pas"/>
         <DCCReference Include="..\Source\GLS.Sounds.FMOD.pas"/>
         <DCCReference Include="..\Source\GLS.Sounds.BASS.pas"/>
         <DCCReference Include="..\Source\GLS.Sounds.OpenAL.pas"/>

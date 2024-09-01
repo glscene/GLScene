@@ -35,9 +35,9 @@ uses
 
   GLS.BaseClasses,
   ODE.Import,
-  Physics.ODERagdoll,
+  GLS.ODERagdoll,
   GLS.FileSMD,
-  Physics.ODEUtils,
+  GLS.ODEUtils,
   GLS.Utils;
 
 

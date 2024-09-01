@@ -15,7 +15,7 @@
 #include "GLS.GeomObjects.hpp"
 #include "GLS.HUDObjects.hpp"
 #include "GLS.Objects.hpp"
-#include "Physics.ODEManager.hpp"
+#include "GLS.ODEManager.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.WindowsFont.hpp"

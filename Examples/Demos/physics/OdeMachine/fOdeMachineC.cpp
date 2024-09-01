@@ -14,7 +14,7 @@
 #pragma link "GLS.GeomObjects"
 #pragma link "GLS.HUDObjects"
 #pragma link "GLS.Objects"
-#pragma link "Physics.ODEManager"
+#pragma link "GLS.ODEManager"
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.WindowsFont"

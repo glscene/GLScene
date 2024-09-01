@@ -35,10 +35,6 @@ requires
   GLScene_RT;
 
 contains
-  Newton.Import in '..\Unipas\Newton.Import.pas',
-  NGD.Import in '..\Unipas\NGD.Import.pas',
-  ODE.Import in '..\Unipas\ODE.Import.pas',
-  PhysX.Import in '..\Unipas\PhysX.Import.pas',
   GLS.NGDManager in '..\Source\GLS.NGDManager.pas',
   GLS.NGDRagdoll in '..\Source\GLS.NGDRagdoll.pas',
   GLS.ODEManager in '..\Source\GLS.ODEManager.pas',
@@ -49,7 +45,11 @@ contains
   GLS.PhysForces in '..\Source\GLS.PhysForces.pas',
   GLS.PhysInertias in '..\Source\GLS.PhysInertias.pas',
   GLS.PhysJoints in '..\Source\GLS.PhysJoints.pas',
-  GLS.PhysManager in '..\Source\GLS.PhysManager.pas';
+  GLS.PhysManager in '..\Source\GLS.PhysManager.pas',
+  ModuleLoader in '..\Source\ModuleLoader.pas',
+  Newton.Import in '..\Source\Newton.Import.pas',
+  NGD.Import in '..\Source\NGD.Import.pas',
+  ODE.Import in '..\Source\ODE.Import.pas';
 
 end.
 

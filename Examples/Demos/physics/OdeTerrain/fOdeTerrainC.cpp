@@ -23,7 +23,7 @@
 #pragma link "GLS.SkyDome"
 #pragma link "GLS.TerrainRenderer"
 #pragma link "GLS.SceneViewer"
-#pragma link "Physics.ODEManager"
+#pragma link "GLS.ODEManager"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------

@@ -30,7 +30,7 @@ uses
   GLS.SceneViewer,
   GLS.VectorGeometry,
   GLS.LensFlare,
-  Physics.ODEManager,
+  GLS.ODEManager,
   GLS.Navigator,
   GLS.GeomObjects,
   GLS.Color,

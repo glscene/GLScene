@@ -19,7 +19,7 @@ uses
   GLS.Objects,
   GLS.Coordinates,
   GLS.Cadencer,
-  Physics.NGDManager,
+  GLS.NGDManager,
   GLS.SimpleNavigation,
   GLS.SceneViewer,
  

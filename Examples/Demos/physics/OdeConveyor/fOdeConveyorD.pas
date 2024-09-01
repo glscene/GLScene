@@ -17,7 +17,7 @@ uses
   Vcl.ExtCtrls,
 
   ODE.Import,
-  Physics.ODEManager,
+  GLS.ODEManager,
   GLS.Scene,
   GLS.VectorTypes,
   GLS.Objects,
@@ -29,7 +29,7 @@ uses
   GLS.VectorGeometry,
   GLS.Keyboard,
   GLS.SimpleNavigation;
-
+ , GLS.ODEManager
 type
   TFormOdeConveyor = class(TForm)
     GLSceneViewer1: TGLSceneViewer;

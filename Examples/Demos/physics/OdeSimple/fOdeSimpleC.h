@@ -19,7 +19,7 @@
 #include "GLS.Objects.hpp"
 #include "GLS.GeomObjects.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "Physics.ODEManager.hpp"
+#include "GLS.ODEManager.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

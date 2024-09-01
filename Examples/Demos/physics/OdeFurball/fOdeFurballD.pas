@@ -17,7 +17,7 @@ uses
   Vcl.Imaging.Jpeg,
 
   ODE.Import,
-  Physics.ODEUtils,
+  GLS.ODEUtils,
   GLS.VectorTypes,
   GLS.SceneViewer,
   GLS.Scene,

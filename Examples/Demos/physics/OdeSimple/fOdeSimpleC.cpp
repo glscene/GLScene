@@ -12,7 +12,7 @@
 
 #pragma link "GLS.Graph"
 #pragma link "GLS.Objects"
-#pragma link "Physics.ODEManager"
+#pragma link "GLS.ODEManager"
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"

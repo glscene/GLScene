@@ -15,7 +15,7 @@
 #include "GLS.Coordinates.hpp"
 
 #include "GLS.Objects.hpp"
-#include "Physics.ODEManager.hpp"
+#include "GLS.ODEManager.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.Utils.hpp"
 #include "GLS.SimpleNavigation.hpp"

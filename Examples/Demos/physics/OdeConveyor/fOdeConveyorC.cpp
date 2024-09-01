@@ -13,7 +13,7 @@
 #pragma link "GLS.Coordinates"
 
 #pragma link "GLS.Objects"
-#pragma link "Physics.ODEManager"
+#pragma link "GLS.ODEManager"
 #pragma link "GLS.Scene"
 #pragma link "GLS.Utils"
 #pragma link "GLS.SimpleNavigation"

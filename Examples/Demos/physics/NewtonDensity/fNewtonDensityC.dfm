@@ -1,35 +1,48 @@
 object Form1: TForm1
   Left = 0
   Top = 0
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Newton Density'
-  ClientHeight = 383
-  ClientWidth = 635
+  ClientHeight = 670
+  ClientWidth = 1125
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 23
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 635
-    Height = 383
+    Width = 1125
+    Height = 670
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
-    FieldOfView = 150.733886718750000000
+    FieldOfView = 163.022109985351600000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     TabOrder = 0
   end
   object SpinEdit1: TSpinEdit
-    Left = 16
-    Top = 103
-    Width = 75
-    Height = 22
+    Left = 28
+    Top = 180
+    Width = 131
+    Height = 31
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     EditorEnabled = False
     MaxValue = 20
     MinValue = 0
@@ -37,10 +50,14 @@ object Form1: TForm1
     Value = 1
   end
   object SpinEdit2: TSpinEdit
-    Left = 16
-    Top = 159
-    Width = 75
-    Height = 22
+    Left = 28
+    Top = 278
+    Width = 131
+    Height = 31
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     EditorEnabled = False
     MaxValue = 10
     MinValue = 0
@@ -48,10 +65,14 @@ object Form1: TForm1
     Value = 1
   end
   object SpinEdit3: TSpinEdit
-    Left = 16
-    Top = 215
-    Width = 75
-    Height = 22
+    Left = 28
+    Top = 376
+    Width = 131
+    Height = 31
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     EditorEnabled = False
     MaxValue = 10
     MinValue = 0
