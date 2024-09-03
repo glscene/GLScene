@@ -14,8 +14,8 @@ uses
   Cg.GL,
 
   GLS.Scene,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.Objects,
   GLS.Cadencer,
   GLS.Texture,

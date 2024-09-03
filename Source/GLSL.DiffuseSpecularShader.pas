@@ -22,18 +22,18 @@ unit GLSL.DiffuseSpecularShader;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Texture,
   GLS.Scene,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
-  GLS.Strings,
+  GLScene.VectorGeometry,
+  GLScene.Strings,
   GLSL.Shader,
   GLSL.CustomShader,
   GLS.Color,

@@ -7,15 +7,15 @@ unit GXS.FileASE;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   GXS.VectorFileObjects,
   GXS.ApplicationFileIO,
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.VectorLists,
   GXS.Texture,
   GXS.Material;

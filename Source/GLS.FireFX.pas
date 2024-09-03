@@ -7,7 +7,7 @@ unit GLS.FireFX;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,14 +15,14 @@ uses
   System.SysUtils,
   System.Types,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Scene,
   GLS.PipelineTransformation,
   GLS.XCollection,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Context,
   GLS.VectorLists,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Cadencer,
   GLS.Color,
   GLS.BaseClasses,

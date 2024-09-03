@@ -36,7 +36,7 @@ uses
   GXS.Scene,
   GXS.SceneViewer,
   GXS.SceneRegister,
-  GXS.Strings,
+  GLScene.Strings,
   GXS.XCollection;
 
 type

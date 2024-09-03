@@ -14,13 +14,13 @@ unit GLS.XOpenGL;
 
 interface
 
-{$I GLS.Scene.inc}
+{.$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGLext,
 
-  GLS.VectorTypes,
-  GLS.OpenGLTokens,
+  GLScene.VectorTypes,
+  GLScene.OpenGLTokens,
   GLS.State;
 
 type

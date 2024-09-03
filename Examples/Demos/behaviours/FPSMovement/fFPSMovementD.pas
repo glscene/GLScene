@@ -30,7 +30,7 @@ uses
   GLS.VectorLists,
   GLS.Octree,
   GLS.File3DS,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.GeomObjects,
   GLS.Material,
   GLS.Coordinates,

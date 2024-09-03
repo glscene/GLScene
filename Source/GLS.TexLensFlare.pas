@@ -8,7 +8,7 @@ unit GLS.TexLensFlare;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,15 +16,15 @@ uses
   
   GLS.Scene,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Objects,
   GLS.Texture,
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Context,
   GLS.RenderContextInfo,
   GLS.BaseClasses,
   GLS.State,
-  GLS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
 

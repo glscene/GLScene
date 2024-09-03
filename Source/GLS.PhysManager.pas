@@ -13,7 +13,7 @@ uses
   Vcl.Dialogs,
 
   GLS.XCollection,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Scene,
   GLS.PhysForces,
   GLS.Behaviours;

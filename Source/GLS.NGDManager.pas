@@ -22,8 +22,8 @@ uses
   /// NGD.Joints,            // old joints
   /// Physics.NewtonImport,      // new version 4.0
 
-  GLS.VectorTypes,
-  GLS.VectorGeometry, // PGLVector TGLVector TGLMatrix PGLMatrix NullHmgVector...
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry, // PGLVector TGLVector TGLMatrix PGLMatrix NullHmgVector...
   GLS.VectorLists, // TGLAffineVectorList for Tree
   GLS.XCollection, // TXCollection file function
   GLS.GeometryBB, // For show debug

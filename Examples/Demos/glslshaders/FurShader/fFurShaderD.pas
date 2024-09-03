@@ -25,8 +25,8 @@ uses
   GLS.Utils,
   GLS.Context,
   GLS.FileOBJ,
-  GLS.VectorGeometry,
-  GLS.OpenGLTokens,
+  GLScene.VectorGeometry,
+  GLS.TextureFormat
   GLS.XOpenGL,
   GLS.Graphics,
   GLS.BaseClasses,

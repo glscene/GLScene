@@ -7,7 +7,7 @@ unit GXS.Graph;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -17,7 +17,7 @@ uses
   GXS.XOpenGL,
   GXS.Scene,
   GXS.Context,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Material,
   GXS.Objects,
   GXS.VectorLists,
@@ -25,7 +25,7 @@ uses
   GXS.BaseClasses,
   GXS.RenderContextInfo,
   GXS.State,
-  GXS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
 

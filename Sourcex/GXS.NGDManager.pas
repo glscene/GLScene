@@ -19,8 +19,8 @@ uses
 
   NGD.Import,
 
-  GXS.VectorTypes,
-  GXS.VectorGeometry, // PVector4f TVector4f TMatrix4f PMatrix4f NullHmgVector...
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry, // PVector4f TVector4f TMatrix4f PMatrix4f NullHmgVector...
   GXS.VectorLists, // TgxAffineVectorList for Tree
   GXS.XCollection, // TXCollection file function
   GXS.GeometryBB,

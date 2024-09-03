@@ -1,20 +1,20 @@
 //
 // The graphics engine GXScene https://github.com/glscene
 //
-unit GXS.OpenGLTokens;
+unit GLScene.OpenGLTokens;
 
 (* OpenGL tokens *)
 
 interface
 
-{$I GXS.Scene.inc}
+{.$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGLext,
   Winapi.Windows,
   System.SysUtils,
 
-  GXS.VectorTypes;
+  GLScene.VectorTypes;
 
 
 // ===========  OpenGL types  ============

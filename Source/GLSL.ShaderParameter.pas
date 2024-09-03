@@ -8,16 +8,16 @@ unit GLSL.ShaderParameter;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 {$M-}
 
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
   System.Classes,
-  GLS.Strings,
-  GLS.OpenGLTokens,
-  GLS.VectorTypes, 
+  GLScene.Strings,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes, 
   GLS.TextureFormat, 
   GLS.RenderContextInfo;
 

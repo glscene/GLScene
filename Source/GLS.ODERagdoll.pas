@@ -8,8 +8,8 @@ unit GLS.ODERagdoll;
 interface
 
 uses
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.Ragdoll,
   GLS.Scene,
   GLS.Objects,

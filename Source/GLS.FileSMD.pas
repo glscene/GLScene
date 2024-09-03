@@ -16,10 +16,10 @@ uses
   GLS.Texture,
   GLS.PersistentClasses,
   GLS.ApplicationFileIO,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.Material,
-  GLS.Strings,
+  GLScene.Strings,
   GLS.Utils;
 
 type

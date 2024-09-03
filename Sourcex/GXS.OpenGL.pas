@@ -22,7 +22,7 @@ unit GXS.OpenGL;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.SysUtils,
@@ -30,7 +30,7 @@ uses
  {$IFDEF MSWINDOWS}
      Winapi.Windows,
  {$ELSE} X, XLib, XUtil, {$ENDIF}
-  GXS.VectorTypes;
+  GLScene.VectorTypes;
 
 const
 {$IFDEF MSWINDOWS}

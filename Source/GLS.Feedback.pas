@@ -17,16 +17,16 @@ unit GLS.Feedback;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.PipelineTransformation,
 
   GLS.PersistentClasses,

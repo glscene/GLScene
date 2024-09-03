@@ -11,8 +11,8 @@ uses
   System.Classes, 
   System.SysUtils,
    
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.TextureFormat,
 
   GLS.VectorFileObjects,

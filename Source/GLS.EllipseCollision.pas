@@ -7,11 +7,11 @@ unit GLS.EllipseCollision;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.Octree,
   GLS.VectorLists;
 

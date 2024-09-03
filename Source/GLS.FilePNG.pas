@@ -7,7 +7,7 @@ unit GLS.FilePNG;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,8 +15,8 @@ uses
   System.SysUtils,
   VCL.Imaging.pngimage,
 
-  GLS.OpenGLTokens,
-  GLS.Strings,
+  GLScene.OpenGLTokens,
+  GLScene.Strings,
   GLS.Context,
   GLS.Graphics,
   GLS.ApplicationFileIO,

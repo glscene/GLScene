@@ -10,7 +10,7 @@ unit GXS.DynamicTexture;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,8 +19,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.VectorGeometry,
-  GXS.Strings,
+  GLScene.VectorGeometry,
+  GLScene.Strings,
 
   GXS.Context,
   GXS.Texture,
@@ -86,7 +86,7 @@ implementation
 
 procedure TgxDynamicTextureImage.BeginUpdate;
 var
-  LTarget: TgxTextureTarget;
+  LTarget: TglTextureTarget;
 begin
   Assert(FUpdating >= 0, 'Unbalanced begin/end update');
 
@@ -170,7 +170,7 @@ end;
 procedure TgxDynamicTextureImage.EndUpdate;
 var
   d: pointer;
-  LTarget: TgxTextureTarget;
+  LTarget: TglTextureTarget;
 begin
   Assert(FUpdating > 0, 'Unbalanced begin/end update');
   FUpdating := FUpdating - 1;

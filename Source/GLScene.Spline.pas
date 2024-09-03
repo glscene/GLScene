@@ -1,20 +1,18 @@
 //
-// The graphics engine GXScene https://github.com/glscene
+// The graphics engine GLScene https://github.com/glscene
 //
-unit GXS.Spline;
+unit GLScene.Spline;
 
 (* Cubic spline interpolation functions *)
 
 interface
 
 uses
-  GXS.VectorTypes,
-  GXS.VectorGeometry;
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry;
 
-{$I GXS.Scene.inc}
 
 type
-
   TCubicSplineMatrix = array of array [0 .. 3] of Single;
 
   (* 3D cubic spline handler class.
@@ -57,9 +55,9 @@ type
     procedure SplineAffineVector(const t: Single;
       var vector: TAffineVector); overload;
     // Calculates vector at time t. 
-    function SplineVector(const t: Single): TGXVector; overload;
+    function SplineVector(const t: Single): TGLVector; overload;
     // Calculates vector at time t. 
-    procedure SplineVector(const t: Single; var vector: TGXVector); overload;
+    procedure SplineVector(const t: Single; var vector: TGLVector); overload;
     // Calculates X component slope at time t. 
     function SplineSlopeX(const t: Single): Single;
     // Calculates Y component slope at time t. 
@@ -81,9 +79,7 @@ type
     function SplineIntersecXY(Z: Single; var X, Y: Single): Boolean;
   end;
 
-// ------------------------------------------------------------------
-implementation
-// ------------------------------------------------------------------
+implementation // ------------------------------------------------------------
 
 procedure VECCholeskyTriDiagResol(const b: array of Single; const nb: Integer;
   var Result: array of Single);
@@ -161,7 +157,7 @@ begin
       i := nb - 1
     else
       i := Integer(Trunc(X));
-    { TODO : the following line looks like a bug... }
+    // TODO : the following line looks like a bug...
     if i = (nb - 1) then
       Dec(i);
     Result := ((spline[i][0] * X + spline[i][1]) * X + spline[i][2]) * X +
@@ -184,7 +180,7 @@ begin
       i := nb - 1
     else
       i := Integer(Trunc(X));
-    { TODO : the following line looks like a bug... }
+    // TODO : the following line looks like a bug...
     if i = (nb - 1) then
       Dec(i);
     Result := (3 * spline[i][0] * X + 2 * spline[i][1]) * X + spline[i][2];
@@ -269,7 +265,7 @@ begin
   vector.Z := MATValeurSpline(matZ, t, FNb);
 end;
 
-function TCubicSpline.SplineVector(const t: Single): TGXVector;
+function TCubicSpline.SplineVector(const t: Single): TGLVector;
 begin
   Result.X := MATValeurSpline(matX, t, FNb);
   Result.Y := MATValeurSpline(matY, t, FNb);
@@ -277,7 +273,7 @@ begin
   Result.W := MATValeurSpline(matW, t, FNb);
 end;
 
-procedure TCubicSpline.SplineVector(const t: Single; var vector: TGXVector);
+procedure TCubicSpline.SplineVector(const t: Single; var vector: TGLVector);
 begin
   vector.X := MATValeurSpline(matX, t, FNb);
   vector.Y := MATValeurSpline(matY, t, FNb);
@@ -488,5 +484,7 @@ begin
   end;
   Result := True;
 end;
+
+//--------------------------------------------------------------------------
 
 end.

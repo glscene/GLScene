@@ -7,18 +7,19 @@ unit GLS.PolygonTesselation;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.SysUtils,
 
   GLS.OpenGLAdapter,
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.VectorFileObjects,
-  GLS.VectorLists;
+  GLS.VectorLists,
+  GLS.PersistentClasses;
 
 (* Tesselates the polygon outlined by the Vertexes. And adds them to the first
    facegroup of the Mesh. *)

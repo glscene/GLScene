@@ -20,8 +20,8 @@ uses
   Vcl.Menus,
   Vcl.ComCtrls,
 
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.Material,
   GLS.Cadencer,
   GLS.LensFlare,

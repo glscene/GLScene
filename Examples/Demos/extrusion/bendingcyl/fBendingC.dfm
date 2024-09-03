@@ -1,25 +1,34 @@
 object FormBending: TFormBending
   Left = 0
   Top = 0
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Bending Cylinder'
-  ClientHeight = 397
-  ClientWidth = 586
+  ClientHeight = 695
+  ClientWidth = 1040
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 23
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 586
-    Height = 397
+    Width = 1040
+    Height = 695
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 151.723861694335900000
+    FieldOfView = 163.624389648437500000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -27,27 +36,39 @@ object FormBending: TFormBending
     TabOrder = 0
   end
   object CBSpline: TCheckBox
-    Left = 120
-    Top = 8
-    Width = 57
-    Height = 17
+    Left = 210
+    Top = 14
+    Width = 100
+    Height = 30
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Splines'
     TabOrder = 1
     OnClick = CBSplineClick
   end
   object CBFat: TCheckBox
-    Left = 376
-    Top = 8
-    Width = 57
-    Height = 17
+    Left = 658
+    Top = 14
+    Width = 100
+    Height = 30
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Fat/Slim'
     TabOrder = 2
   end
   object PanelFPS: TPanel
-    Left = 208
-    Top = 8
-    Width = 129
-    Height = 17
+    Left = 364
+    Top = 14
+    Width = 226
+    Height = 30
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'FPS'
     TabOrder = 3
   end

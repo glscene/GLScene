@@ -7,18 +7,18 @@ unit GLS.PerlinPFX;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.Math,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.ParticleFX,
   GLS.Graphics,
-  GLS.VectorTypes,
-  GLS.VectorGeometry;
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry;
 
 
 const

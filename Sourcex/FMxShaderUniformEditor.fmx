@@ -13,6 +13,7 @@ object ShaderUniformEditorForm: TShaderUniformEditorForm
     Position.X = 16.000000000000000000
     Position.Y = 16.000000000000000000
     Text = 'Available Uniforms'
+    TabOrder = 0
   end
   object LBUniforms: TListBox
     Position.X = 16.000000000000000000
@@ -37,6 +38,7 @@ object ShaderUniformEditorForm: TShaderUniformEditorForm
     Size.Height = 17.000000000000000000
     Size.PlatformDefault = False
     Text = 'Avaiblable Value'
+    TabOrder = 2
   end
   object AutoSetBox: TComboBox
     Position.X = 280.000000000000000000
@@ -54,6 +56,7 @@ object ShaderUniformEditorForm: TShaderUniformEditorForm
     Size.Height = 17.000000000000000000
     Size.PlatformDefault = False
     Text = 'Texture Image/Attachment'
+    TabOrder = 6
   end
   object Label4: TLabel
     Position.X = 280.000000000000000000
@@ -62,6 +65,7 @@ object ShaderUniformEditorForm: TShaderUniformEditorForm
     Size.Height = 17.000000000000000000
     Size.PlatformDefault = False
     Text = 'Texture Sampler'
+    TabOrder = 7
   end
   object TextureBox: TComboBox
     Position.X = 280.000000000000000000
@@ -152,6 +156,7 @@ object ShaderUniformEditorForm: TShaderUniformEditorForm
     Size.Height = 17.000000000000000000
     Size.PlatformDefault = False
     Text = 'Swizzle of texture color components '
+    TabOrder = 12
   end
   object GreenGroup: TGroupBox
     Position.X = 341.000000000000000000

@@ -9,7 +9,7 @@
 #pragma link "GLS.BaseClasses"
 #pragma link "GLS.Coordinates"
 
-#pragma link "GLFullScreenViewer"
+#pragma link "GLS.FullScreenViewer"
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
 #pragma link "GLS.GeomObjects"
@@ -35,8 +35,8 @@ void __fastcall TDataModule1::DataModuleCreate(TObject *Sender)
 	  // Relinquish some of that CPU time
 	   Sleep(1);
 	  // Slowly rotate the teapot and the blue light
-	  Teapot1->TurnAngle = 4*Frac(float(24*(Now())))*3600;
-	  DCBlueLight->RollAngle = 32*Frac(float(24*(Now())))*3600;
+	  Teapot1->TurnAngle = 3600; // 4*Frac(float(24*(Now())))*3600;
+	  DCBlueLight->RollAngle = 3600; // 32*Frac(float(24*(Now())))*3600;
    }
 }
 //---------------------------------------------------------------------------

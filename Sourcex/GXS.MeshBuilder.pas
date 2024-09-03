@@ -17,8 +17,8 @@ uses
   System.Classes,
   GXS.Scene,
   GXS.VectorFileObjects,
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.VectorLists;
 
 procedure BuildCube(Mesh: TgxMeshObject; Position, Scale: TAffineVector);

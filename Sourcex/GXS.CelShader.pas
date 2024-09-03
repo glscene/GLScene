@@ -11,7 +11,7 @@ unit GXS.CelShader;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -20,8 +20,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.Texture,
   GXS.Context,
   GXS.Graphics,

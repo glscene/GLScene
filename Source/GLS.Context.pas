@@ -7,7 +7,7 @@ unit GLS.Context;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,16 +25,16 @@ uses
   GLS.Generics,
 {$ENDIF}
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.OpenGLAdapter,
-  GLS.VectorGeometry,
-  GLS.Strings,
+  GLScene.VectorGeometry,
+  GLScene.Strings,
   GLS.TextureFormat,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.PipelineTransformation,
   GLS.State,
   GLS.XOpenGL,
-  GLS.Logger;
+  GLScene.Logger;
 
 // Buffer ID's for Multiple-Render-Targets (using GL_ATI_draw_buffers)
 const

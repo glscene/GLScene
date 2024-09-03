@@ -11,9 +11,9 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
   Vcl.ExtCtrls,
-  
+
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.HUDObjects,
   GLS.Objects,
   GLS.Cadencer,

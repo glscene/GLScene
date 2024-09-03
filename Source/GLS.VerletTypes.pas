@@ -14,21 +14,21 @@ unit GLS.VerletTypes;
 *)
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Types,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.PersistentClasses,
 
   GLS.BaseClasses,
   GLS.Objects,
   GLS.Scene,
   GLS.Coordinates,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.VectorLists,
   GLS.SpacePartition,
   GLS.GeometryBB,

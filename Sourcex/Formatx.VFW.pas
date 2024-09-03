@@ -78,7 +78,7 @@ interface
 
 {.$UNDEF UNICODE}
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
     Winapi.Windows,

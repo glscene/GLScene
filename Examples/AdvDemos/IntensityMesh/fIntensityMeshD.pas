@@ -16,7 +16,7 @@ uses
   Vcl.ExtCtrls,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.VectorFileObjects,
   GLS.VectorLists,
   GLS.SceneViewer,
@@ -24,7 +24,7 @@ uses
   GLS.Texture,
   GLSL.UserShader,
   GLS.HUDObjects,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Context,
   GLS.Objects,
   GLS.BitmapFont,

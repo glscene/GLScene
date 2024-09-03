@@ -7,11 +7,11 @@ unit GXS.BaseMeshSilhouette;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.VectorLists,
   GXS.VectorFileObjects,
   GXS.Silhouette;

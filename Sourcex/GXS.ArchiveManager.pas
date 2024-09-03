@@ -3,7 +3,7 @@
 //
 unit GXS.ArchiveManager;
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 interface
 
@@ -11,7 +11,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.Strings,
+  GLScene.Strings,
   GXS.PersistentClasses,
   GXS.ApplicationFileIO;
 

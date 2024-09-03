@@ -19,10 +19,10 @@ uses
   System.SysUtils,
   System.SyncObjs,
 
-  GLS.OpenGLTokens,
-  GLS.VectorGeometry,
+  GLScene.OpenGLTokens,
+  GLScene.VectorGeometry,
   GLS.OpenGLAdapter,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.State,
   GLS.Context,
   SDL.Import;

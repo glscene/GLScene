@@ -7,7 +7,7 @@ unit GXS.Scene;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -26,15 +26,15 @@ uses
   GXS.XOpenGL,
   GXS.XCollection,
   GXS.BaseClasses,
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.VectorLists,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.PersistentClasses,
   GXS.GeometryBB,
   GXS.ApplicationFileIO,
 
   GXS.TextureFormat,
-  GXS.Strings,
+  GLScene.Strings,
 
   GXS.Context,
   GXS.Silhouette,
@@ -6490,7 +6490,7 @@ end;
 procedure TgxSceneBuffer.CopyToTexture(aTexture: TgxTexture; xSrc, ySrc, AWidth, AHeight: Integer; xDest, yDest: Integer;
   glCubeFace: GLEnum = 0);
 var
-  bindTarget: TgxTextureTarget;
+  bindTarget: TglTextureTarget;
 begin
   if RenderingContext <> nil then
   begin

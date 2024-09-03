@@ -10,9 +10,9 @@ interface
 uses
   System.Classes,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.VectorFileObjects,
   ODE.Import;
 

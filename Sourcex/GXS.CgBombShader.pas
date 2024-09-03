@@ -14,7 +14,7 @@ uses
   GXS.Texture,
   GXS.Cadencer,
   GXS.Context,
-  GXS.Strings,
+  GLScene.Strings,
   GXS.Material,
   GXS.RenderContextInfo,
   GXS.TextureFormat,

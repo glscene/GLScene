@@ -7,7 +7,7 @@ unit GLS.MeshUtils;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -16,8 +16,8 @@ uses
 
   GLS.PersistentClasses,
   GLS.VectorLists,
-  GLS.VectorGeometry,
-  GLS.VectorTypes;
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes;
 
 (* 
   Converts a triangle strips into a triangle list.

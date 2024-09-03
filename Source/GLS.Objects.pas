@@ -19,7 +19,7 @@ unit GLS.Objects;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -29,15 +29,14 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLS.OpenGLTokens,
-  GLS.OpenGLAdapter,
-  GLS.VectorTypes,
-  GLS.PipelineTransformation,
-  GLS.VectorGeometry,
-  GLS.Spline,
-
-  GLS.VectorLists,
+  GLScene.OpenGLTokens,
+  GLScene.VectorGeometry,
   GLS.Scene,
+  GLS.OpenGLAdapter,
+  GLScene.VectorTypes,
+  GLS.PipelineTransformation,
+  GLScene.Spline,
+  GLS.VectorLists,
   GLS.Context,
   GLS.Silhouette,
   GLS.Color,

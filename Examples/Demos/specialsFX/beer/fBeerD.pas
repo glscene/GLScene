@@ -19,7 +19,7 @@ uses
   GLS.File3DS,
   GLS.Cadencer,
   GLS.GeomObjects,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.ShadowPlane,
   GLS.ParticleFX,
   GLS.PerlinPFX,

@@ -12,7 +12,7 @@ unit GLS.Sounds.BASS;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -21,8 +21,8 @@ uses
 
   GLS.Scene,
   GLS.SoundManager,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
 
   BASS.Import;
 

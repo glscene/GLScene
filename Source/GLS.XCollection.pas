@@ -10,13 +10,13 @@ unit GLS.XCollection;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Types,
-  GLS.Strings,
+  GLScene.Strings,
   GLS.PersistentClasses
 {$IFDEF DEBUG_XCOLLECTION}, System.TypInfo {$ENDIF};
 

@@ -16,7 +16,7 @@ uses
   Vcl.StdCtrls,
   Vcl.Imaging.Jpeg,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Scene,
   GLS.TerrainRenderer,
   GLS.Objects,
@@ -28,7 +28,7 @@ uses
   GLS.BitmapFont,
   GLS.SkyDome,
   GLS.SceneViewer,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.LensFlare,
   GLS.ODEManager,
   GLS.Navigator,

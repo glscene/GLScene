@@ -7,16 +7,16 @@ unit GLS.Collision;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Types,
 
-  GLS.VectorTypes,
-  GLS.OpenGLTokens,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.OpenGLTokens,
+  GLScene.VectorGeometry,
   GLS.Scene,
   GLS.XCollection,
   GLS.VectorLists,

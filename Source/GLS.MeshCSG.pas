@@ -12,7 +12,7 @@ unit GLS.MeshCSG;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.SysUtils,
@@ -20,9 +20,9 @@ uses
   System.Math,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.VectorFileObjects,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.MeshBSP,
   GLS.VectorLists;
 

@@ -14,7 +14,7 @@
 
 #include "GLS.Scene.hpp"
 #include "GLS.Objects.hpp"
-#include "GLS.VectorGeometry.hpp"
+#include "GLScene.VectorGeometry.hpp"
 #include "GLS.Texture.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.Mesh.hpp"

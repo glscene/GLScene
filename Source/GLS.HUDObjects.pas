@@ -7,19 +7,19 @@ unit GLS.HUDObjects;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   Vcl.StdCtrls,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Coordinates,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Objects,
   GLS.BitmapFont,
   GLS.Color,

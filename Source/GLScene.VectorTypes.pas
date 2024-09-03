@@ -1,7 +1,7 @@
 //
-// The graphics engine GXScene https://github.com/glscene
+// The graphics engine GLScene https://github.com/glscene
 //
-unit GXS.VectorTypes;
+unit GLScene.VectorTypes;
 
 (*
    Defines base vector types for use in VectorGeometry unit
@@ -389,16 +389,14 @@ type
   end;
 
 // The vector by default
-  PGXVector = ^TGXVector;
-  TGXVector = TVector4f;
+  PGLVector = ^TGLVector;
+  TGLVector = TVector4f;
 
 // The matrix by default
-  PGXMatrix = ^TGXMatrix;
-  TGXMatrix = TMatrix4f;
+  PGLMatrix = ^TGLMatrix;
+  TGLMatrix = TMatrix4f;
 
-//-----------------------------------------------
-implementation
-//-----------------------------------------------
+implementation //--------------------------------------------------------------
 
 end.
 

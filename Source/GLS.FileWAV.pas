@@ -7,7 +7,7 @@ unit GLS.FileWAV;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.MMSystem,

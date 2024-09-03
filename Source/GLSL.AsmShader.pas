@@ -15,9 +15,9 @@ uses
   System.Classes,
   System.SysUtils,
   
-  GLS.OpenGLTokens,
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  GLScene.OpenGLTokens,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GLS.Texture,
   GLS.Context,
   GLSL.CustomShader,

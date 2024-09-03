@@ -14,8 +14,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.VectorGeometry,
-  GXS.VectorTypes;
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes;
 
 type
   TGLMHeader = record
@@ -111,7 +111,7 @@ type
     BoneIndices: array of integer;
     CompBonePool: array of TGLACompQuatBone;
     function GetCompressedMatrix(Frame, Bone: integer): TGLACompQuatBone;
-    function GetUnCompressedMatrix(Frame, Bone: integer): TGXMatrix;
+    function GetUnCompressedMatrix(Frame, Bone: integer): TGLMatrix;
     procedure LoadFromStream(aStream: TStream);
   end;
 
@@ -120,7 +120,7 @@ function G2_GetVertBoneIndex(const vert: TGLMVertex; iWeightNum: integer): integ
 function G2_GetVertBoneWeight(const vert: TGLMVertex; iWeightNum: Cardinal;
   var fTotalWeight: single; const iNumWeights: Cardinal): single;
 
-procedure MC_UnCompressQuat(var mat: TGXMatrix; const comp: TGLACompQuatBone);
+procedure MC_UnCompressQuat(var mat: TGLMatrix; const comp: TGLACompQuatBone);
 
 // ------------------------------------------------------------------
 implementation
@@ -177,7 +177,7 @@ end;
 // Adapted from matcomp.c
 // void MC_UnCompressQuat(float mat[3][4],const unsigned char * comp)
 
-procedure MC_UnCompressQuat(var mat: TGXMatrix; const comp: TGLACompQuatBone);
+procedure MC_UnCompressQuat(var mat: TGLMatrix; const comp: TGLACompQuatBone);
 begin
   mat := QuaternionToMatrix(QuaternionMake([comp[1] - 32726, comp[2] - 32726, comp[3] - 32726],
     comp[0] - 32726));
@@ -275,7 +275,7 @@ end;
 
 // GetUnCompressedMatrix
 //
-function TFileGLA.GetUnCompressedMatrix(Frame, Bone: integer): TGXMatrix;
+function TFileGLA.GetUnCompressedMatrix(Frame, Bone: integer): TGLMatrix;
 begin
   MC_UnCompressQuat(result, CompBonePool[BoneIndices[Frame * AnimHeader.numBones + Bone]]);
 end;

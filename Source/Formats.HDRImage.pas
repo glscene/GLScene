@@ -11,7 +11,7 @@ unit Formats.HDRImage;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -19,9 +19,9 @@ uses
   System.SysUtils,
   Vcl.Graphics,
 
-  GLS.VectorTypes,
-  GLS.OpenGLTokens,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.OpenGLTokens,
+  GLScene.VectorGeometry,
   GLS.TextureFormat,
   GLS.Graphics;
 

@@ -7,7 +7,7 @@ unit GLS.SceneRegister;
 *)
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   WinApi.Windows,
@@ -29,7 +29,7 @@ uses
   GLS.Scene,
   GLS.Color,
   GLS.ObjectManager,
-  GLS.Strings;
+  GLScene.Strings;
 
 type
   TGLLibMaterialNameProperty = class(TStringProperty)
@@ -283,7 +283,7 @@ uses
   FmSceneEditor,
 
   GLS.ApplicationFileIO,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.ScriptBase,
 
   GLS.AnimatedSprite,
@@ -428,7 +428,7 @@ uses
   GLS.Joystick,
   GLS.ScreenSaver,
   GLS.FullScreenViewer,
-  GLS.Logger;
+  GLScene.Logger;
 
 var
   vObjectManager: TGLObjectManager;

@@ -10,7 +10,7 @@ unit GXS.GizmoEx;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -24,10 +24,10 @@ uses
   FMX.TextLayout,
 
   GXS.GeometryBB,
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.PersistentClasses,
-  GXS.Strings,
+  GLScene.Strings,
   GXS.Scene,
   GXS.Color,
   GXS.Material,

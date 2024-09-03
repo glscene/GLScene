@@ -1,7 +1,7 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-unit GLS.Strings;
+unit GLScene.Strings;
 
 (*
   String constants that are used for internationalization
@@ -245,9 +245,7 @@ resourcestring
   strSuccessCompilation = 'Successful compilation:' + #10#13 + '%s';
 
 
-//---------------------------------------------------------
-implementation
-//---------------------------------------------------------
+implementation //--------------------------------------------------------------
 
 
 end.

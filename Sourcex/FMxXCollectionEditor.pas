@@ -31,7 +31,7 @@ uses
   FMX.ListView,
 
   GXS.Scene,
-  GXS.Strings,
+  GLScene.Strings,
   GXS.Behaviours,
   GXS.XCollection;
 

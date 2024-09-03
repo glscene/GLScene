@@ -14,8 +14,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.VectorGeometry,
-  GLS.VectorTypes;
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes;
 
 type
   TGLMHeader = record

@@ -8,15 +8,15 @@ unit GLS.FileDEL;
 *)
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLS.VectorTypes,
-  GLS.VectorTypesExt,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorTypesExt,
+  GLScene.VectorGeometry,
 
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,

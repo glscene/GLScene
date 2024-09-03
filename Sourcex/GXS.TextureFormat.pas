@@ -1,5 +1,5 @@
 //
-// The graphics engine GXScene https://github.com/glscene
+// The graphics engine GLScene https://github.com/glscene
 //
 unit GXS.TextureFormat;
 
@@ -11,32 +11,33 @@ uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
 
-  GXS.OpenGLTokens,
-  GXS.Strings;
+  GXS.OpenGLAdapter,
+  GLScene.OpenGLTokens,
+  GLScene.Strings;
 
 type
   // Texture addressing rules
-  TgxSeparateTextureWrap = (twRepeat, twClampToEdge, twClampToBorder,
+  TglSeparateTextureWrap = (twRepeat, twClampToEdge, twClampToBorder,
     twMirrorRepeat, twMirrorClampToEdge, twMirrorClampToBorder);
 
   (* Specifies the texture comparison mode for currently bound depth textures.
     That is, a texture whose internal format is tfDEPTH_COMPONENT* *)
-  TgxTextureCompareMode = (tcmNone, tcmCompareRtoTexture);
+  TglTextureCompareMode = (tcmNone, tcmCompareRtoTexture);
 
   // Filtering quality
-  TgxTextureFilteringQuality = (tfIsotropic, tfAnisotropic);
+  TglTextureFilteringQuality = (tfIsotropic, tfAnisotropic);
 
-  TgxTextureTarget =
+  TglTextureTarget =
   (
     ttNoShape, ttTexture1D, ttTexture2D, ttTexture3D, ttTexture1DArray,
     ttTexture2DArray, ttTextureRect, ttTextureBuffer, ttTextureCube,
     ttTexture2DMultisample, ttTexture2DMultisampleArray, ttTextureCubeArray
   );
 
-  TgxTextureSwizzle = (tswRed, tswGreen, tswBlue, tswAlpha, tswZero, tswOne);
-  TgxSwizzleVector = array[0..3] of TgxTextureSwizzle;
+  TglTextureSwizzle = (tswRed, tswGreen, tswBlue, tswAlpha, tswZero, tswOne);
+  TglSwizzleVector = array[0..3] of TglTextureSwizzle;
 
-  TgxInternalFormat = (
+  TglInternalFormat = (
     tfALPHA4,
     tfALPHA8,
     tfALPHA12,
@@ -205,57 +206,55 @@ type
       tcStandard : use standard compression, average quality, average rate
       tcHighQuality : choose a high-quality, low-speed compression
       tcHighSpeed : choose a high-speed, low-quality compression *)
-  TgxInternalCompression = (tcDefault, tcNone, tcStandard, tcHighQuality, tcHighSpeed);
+  TglInternalCompression = (tcDefault, tcNone, tcStandard, tcHighQuality, tcHighSpeed);
 
 var
-  vDefaultTextureFormat: TgxInternalFormat = tfRGBA8;
-  vDefaultTextureCompression: TgxInternalCompression = tcNone;
+  vDefaultTextureFormat: TglInternalFormat = tfRGBA8;
+  vDefaultTextureCompression: TglInternalCompression = tcNone;
 
 const
-  cDefaultSwizzleVector: TgxSwizzleVector = (tswRed, tswGreen, tswBlue, tswAlpha);
+  cDefaultSwizzleVector: TglSwizzleVector = (tswRed, tswGreen, tswBlue, tswAlpha);
 
-// Give a openGL texture format from GXScene texture format
-function InternalFormatToOpenGLFormat(intFormat: TgxInternalFormat): Cardinal;
-// Give a GXScene texture format from openGL texture format
-function OpenGLFormatToInternalFormat(glFormat: Cardinal): TgxInternalFormat;
+// Give a openGL texture format from GLScene texture format
+function InternalFormatToOpenGLFormat(intFormat: TglInternalFormat): Cardinal;
+// Give a GLScene texture format from openGL texture format
+function OpenGLFormatToInternalFormat(glFormat: Cardinal): TglInternalFormat;
 // Give a pixel size in bytes from texture format or data format
-function GetTextureElementSize(intFormat: TgxInternalFormat): Integer; overload;
+function GetTextureElementSize(intFormat: TglInternalFormat): Integer; overload;
 function GetTextureElementSize(colorFormat: Cardinal; dataType: Cardinal):
   Integer; overload;
 // Give compatible openGL image format and data type
-procedure FindCompatibleDataFormat(intFormat: TgxInternalFormat; out dFormat:
+procedure FindCompatibleDataFormat(intFormat: TglInternalFormat; out dFormat:
   Cardinal; out dType: Cardinal);
-(* Give a compressed openGL texture format from GXScene texture format
+(* Give a compressed openGL texture format from GLScene texture format
   if format is have not compression than return same openGL format *)
-function CompressedInternalFormatToOpenGL(intFormat: TgxInternalFormat): Integer;
+function CompressedInternalFormatToOpenGL(intFormat: TglInternalFormat): Integer;
 // True if texture target supported
 function IsTargetSupported(glTarget: Cardinal): Boolean; overload;
-function IsTargetSupported(target: TgxTextureTarget): Boolean; overload;
+function IsTargetSupported(target: TglTextureTarget): Boolean; overload;
 // True if texture format is supported by hardware or software
-function IsFormatSupported(intFormat: TgxInternalFormat): Boolean;
+function IsFormatSupported(intFormat: TglInternalFormat): Boolean;
 // True if texture format is float
-function IsFloatFormat(intFormat: TgxInternalFormat): Boolean; overload;
+function IsFloatFormat(intFormat: TglInternalFormat): Boolean; overload;
 function IsFloatFormat(glFormat: Cardinal): Boolean; overload;
 // True if depth texture
-function IsDepthFormat(intFormat: TgxInternalFormat): boolean; overload;
+function IsDepthFormat(intFormat: TglInternalFormat): boolean; overload;
 function IsDepthFormat(glFormat: Cardinal): Boolean; overload;
 // True if texture compressed
-function IsCompressedFormat(intFormat: TgxInternalFormat): Boolean; overload;
+function IsCompressedFormat(intFormat: TglInternalFormat): Boolean; overload;
 function IsCompressedFormat(glFormat: Cardinal): Boolean; overload;
 // Give generic compressed OpenGL texture format
-function GetGenericCompressedFormat(const intFormat: TgxInternalFormat;
+function GetGenericCompressedFormat(const intFormat: TglInternalFormat;
   const colorFormat: Cardinal; out internalFormat: Cardinal): Boolean;
 // Give uncompressed texture format and OpenGL color format
-function GetUncompressedFormat(const intFormat: TgxInternalFormat;
-  out internalFormat: TgxInternalFormat; out colorFormat: Cardinal): Boolean;
-function DecodeTextureTarget(const TextureTarget: TgxTextureTarget): Cardinal;
-function EncodeGLTextureTarget(const glTarget: Cardinal): TgxTextureTarget;
-function IsTargetSupportMipmap(const TextureTarget: TgxTextureTarget): Boolean; overload;
+function GetUncompressedFormat(const intFormat: TglInternalFormat;
+  out internalFormat: TGLInternalFormat; out colorFormat: Cardinal): Boolean;
+function DecodeTextureTarget(const TextureTarget: TglTextureTarget): Cardinal;
+function EncodeGLTextureTarget(const glTarget: Cardinal): TglTextureTarget;
+function IsTargetSupportMipmap(const TextureTarget: TglTextureTarget): Boolean; overload;
 function IsTargetSupportMipmap(const glTarget: Cardinal): Boolean; overload;
 
-//---------------------------------------------------------------------------
-implementation
-//---------------------------------------------------------------------------
+implementation //--------------------------------------------------------------
 
 uses
   GXS.Context;
@@ -280,7 +279,7 @@ type
 
 const
   // InternalFormat, ColorFormat, DataType
-  cTextureFormatToOpenGL: array[low(TgxInternalFormat)..high(TgxInternalFormat)] of TFormatDesc =
+  cTextureFormatToOpenGL: array[low(TglInternalFormat)..high(TglInternalFormat)] of TFormatDesc =
   (
     (IntFmt: GL_ALPHA4; ClrFmt: GL_ALPHA; DataFmt: GL_UNSIGNED_BYTE; RBit: 0; GBit: 0; BBit: 0; ABit: 4; LBit: 0; DBit: 0; Sign: False; Flt: False; Fix: False; Comp: False),
     (IntFmt: GL_ALPHA8; ClrFmt: GL_ALPHA; DataFmt: GL_UNSIGNED_BYTE; RBit: 0; GBit: 0; BBit: 0; ABit: 8; LBit: 0; DBit: 0; Sign: False; Flt: False; Fix: False; Comp: False),
@@ -443,14 +442,14 @@ const
     (IntFmt: GL_RGBA16_SNORM; ClrFmt: GL_RGBA; DataFmt: GL_SHORT; RBit: 16; GBit: 16; BBit: 16; ABit: 16; LBit: 0; DBit: 0; Sign: False; Flt: False; Fix: False; Comp: False)
     );
 
-function InternalFormatToOpenGLFormat(intFormat: TgxInternalFormat): Cardinal;
+function InternalFormatToOpenGLFormat(intFormat: TGLInternalFormat): Cardinal;
 begin
   Result := cTextureFormatToOpenGL[intFormat].IntFmt;
 end;
 
-function OpenGLFormatToInternalFormat(glFormat: Cardinal): TgxInternalFormat;
+function OpenGLFormatToInternalFormat(glFormat: Cardinal): TGLInternalFormat;
 var
-  i: TgxInternalFormat;
+  i: TGLInternalFormat;
 begin
   Result := tfRGBA8;
   for i := Low(cTextureFormatToOpenGL) to High(cTextureFormatToOpenGL) do
@@ -462,7 +461,7 @@ begin
   Assert(false);
 end;
 
-function GetTextureElementSize(intFormat: TgxInternalFormat): Integer;
+function GetTextureElementSize(intFormat: TGLInternalFormat): Integer;
 begin
   Result := GetTextureElementSize(
     cTextureFormatToOpenGL[intFormat].ClrFmt,
@@ -544,7 +543,8 @@ begin
   end;
 end;
 
-function CompressedInternalFormatToOpenGL(intFormat: TgxInternalFormat): Integer;
+function CompressedInternalFormatToOpenGL(intFormat: TglInternalFormat):
+  Integer;
 begin
   Result := GL_COMPRESSED_RGBA;
   case intFormat of
@@ -561,166 +561,167 @@ begin
   end;
 end;
 
-procedure FindCompatibleDataFormat(intFormat: TgxInternalFormat; out dFormat:
+procedure FindCompatibleDataFormat(intFormat: TglInternalFormat; out dFormat:
   Cardinal; out dType: Cardinal);
 begin
   dFormat := cTextureFormatToOpenGL[intFormat].ClrFmt;
   dType := cTextureFormatToOpenGL[intFormat].DataFmt;
 end;
 
-function IsTargetSupported(target: TgxTextureTarget): Boolean;
+function IsTargetSupported(target: TglTextureTarget): Boolean;
 begin
   Result := IsTargetSupported(DecodeTextureTarget(target));
 end;
 
 function IsTargetSupported(glTarget: Cardinal): Boolean;
 begin
-(*
   case glTarget of
-    GL_TEXTURE_1D: Result := GL.VERSION_1_1 or GL.EXT_texture_object;
-    GL_TEXTURE_2D: Result := GL.VERSION_1_1 or GL.EXT_texture_object;
-    GL_TEXTURE_3D: Result := GL.EXT_texture3D;
-    GL_TEXTURE_RECTANGLE: Result := GL.ARB_texture_rectangle;
+    GL_TEXTURE_1D: Result := True;
+    GL_TEXTURE_2D: Result := True;
+    GL_TEXTURE_3D: Result := True;
+    GL_TEXTURE_RECTANGLE: Result := True;
     GL_TEXTURE_CUBE_MAP,
       GL_TEXTURE_CUBE_MAP_POSITIVE_X,
       GL_TEXTURE_CUBE_MAP_NEGATIVE_X,
       GL_TEXTURE_CUBE_MAP_POSITIVE_Y,
       GL_TEXTURE_CUBE_MAP_NEGATIVE_Y,
       GL_TEXTURE_CUBE_MAP_POSITIVE_Z,
-      GL_TEXTURE_CUBE_MAP_NEGATIVE_Z: Result := GL.ARB_texture_cube_map;
-    GL_TEXTURE_1D_ARRAY: Result := GL.EXT_texture_array;
-    GL_TEXTURE_2D_ARRAY: Result := GL.EXT_texture_array;
-    GL_TEXTURE_CUBE_MAP_ARRAY: Result := GL.ARB_texture_cube_map_array;
-    GL_TEXTURE_BUFFER: Result := GL.ARB_texture_buffer_object;
+      GL_TEXTURE_CUBE_MAP_NEGATIVE_Z: Result := True;
+    GL_TEXTURE_1D_ARRAY: Result := True;
+    GL_TEXTURE_2D_ARRAY: Result := True;
+    GL_TEXTURE_CUBE_MAP_ARRAY: Result := True;
+    GL_TEXTURE_BUFFER: Result := True;
     GL_TEXTURE_2D_MULTISAMPLE,
-      GL_TEXTURE_2D_MULTISAMPLE_ARRAY: Result := GL.ARB_texture_multisample;
+      GL_TEXTURE_2D_MULTISAMPLE_ARRAY: Result := True;
   else
     begin
       Result := false;
       // Assert(False, strErrorEx + strUnknownType);
     end;
   end;
-*)
 end;
 
-function IsFormatSupported(intFormat: TgxInternalFormat): Boolean;
+function IsFormatSupported(intFormat: TGLInternalFormat): Boolean;
 begin
   Result := false;
 
   if ((intFormat >= tfALPHA4) and (intFormat <= tfALPHA16)) or
     ((intFormat >= tfLUMINANCE4) and (intFormat <= tfR16G16B16A16)) then
   begin
-///    Result := GL.VERSION_1_1;
+    // Result := GL.VERSION_1_1;
     EXIT;
   end;
 
   if ((intFormat >= tfDEPTH_COMPONENT16) and (intFormat <= tfDEPTH_COMPONENT32)) then
   begin
-///    Result := GL.ARB_depth_texture;
+    // Result := GL.ARB_depth_texture;
     EXIT;
   end;
 
   if ((intFormat >= tfCOMPRESSED_RGB_S3TC_DXT1) and (intFormat <=
     tfCOMPRESSED_RGBA_S3TC_DXT5)) then
   begin
-///    Result := GL.EXT_texture_compression_s3tc;
+    // Result := GL.EXT_texture_compression_s3tc;
     EXIT;
   end;
 
   if ((intFormat >= tfSIGNED_LUMINANCE8) and (intFormat <=
     tfDSDT8_MAG8_INTENSITY8)) then
   begin
-///    Result := GL.NV_texture_shader;
+    // Result := GL.NV_texture_shader;
     EXIT;
   end;
 
   if ((intFormat = tfHILO8) or (intFormat = tfSIGNED_HILO8)) then
   begin
-///    Result := GL.NV_texture_shader3;
+    // Result := GL.NV_texture_shader3;
     EXIT;
   end;
 
   if ((intFormat >= tfFLOAT_R16) and (intFormat <= tfFLOAT_RGBA32)) then
   begin
-///    Result := GL.NV_float_buffer;
+    // Result := GL.NV_float_buffer;
     EXIT;
   end;
 
   if ((intFormat >= tfRGBA_FLOAT32)
     and (intFormat <= tfLUMINANCE_ALPHA_FLOAT16)) then
   begin
-///    Result := GL.ARB_texture_float or GL.ATI_texture_float;
+    // Result := GL.ARB_texture_float or GL.ATI_texture_float;
     EXIT;
   end;
 
   if intFormat = tfDEPTH24_STENCIL8 then
   begin
-///    Result := GL.EXT_packed_depth_stencil;
+    // Result := GL.EXT_packed_depth_stencil;
     EXIT;
   end;
 
   if ((intFormat = tfDEPTH_COMPONENT32F) or (intFormat = tfDEPTH32F_STENCIL8)) then
   begin
-///    Result := GL.NV_depth_buffer_float;
+    // Result := GL.NV_depth_buffer_float;
     EXIT;
   end;
 
   if ((intFormat >= tfSRGB8) and (intFormat <=
     tfCOMPRESSED_SRGB_ALPHA_S3TC_DXT5)) then
   begin
-///    Result := GL.EXT_texture_sRGB;
+    // Result := GL.EXT_texture_sRGB;
     EXIT;
   end;
 
   if intFormat = tfRGB9_E5 then
   begin
-///    Result := GL.EXT_texture_shared_exponent;
+    // Result := GL.EXT_texture_shared_exponent;
     EXIT;
   end;
 
   if intFormat = tfR11F_G11F_B10F then
   begin
-///    Result := GL.EXT_packed_float;
+    // Result := GL.EXT_packed_float;
     EXIT;
   end;
 
   if ((intFormat >= tfCOMPRESSED_LUMINANCE_LATC1) and (intFormat <=
     tfCOMPRESSED_SIGNED_LUMINANCE_ALPHA_LATC2)) then
   begin
-///    Result := GL.EXT_texture_compression_latc;
+    // Result := GL.EXT_texture_compression_latc;
     EXIT;
   end;
 
   if intFormat = tfCOMPRESSED_LUMINANCE_ALPHA_3DC then
   begin
-///    Result := GL.ATI_texture_compression_3dc;
+    // Result := GL.ATI_texture_compression_3dc;
     EXIT;
   end;
 
   if ((intFormat >= tfRGBA32UI) and (intFormat <= tfLUMINANCE_ALPHA8I)) then
   begin
-///    Result := GL.EXT_texture_integer;
+    // Result := GL.EXT_texture_integer;
     EXIT;
   end;
 
   if ((intFormat >= tfRG32UI) and (intFormat <= tfR32F)) then
-///    Result := GL.ARB_texture_rg;
+  begin
+    // Result := GL.ARB_texture_rg;
+    // EXIT;
+  end;
 
   if ((intFormat >= tfCOMPRESSED_RED_RGTC1) and (intFormat <=
     tfCOMPRESSED_SIGNED_RG_RGTC2)) then
   begin
-///    Result := GL.ARB_texture_compression_rgtc;
+    // Result := GL.ARB_texture_compression_rgtc;
     EXIT;
   end;
 
   if ((intFormat >= tfR8_SNORM) and (intFormat <= tfRGBA16_SNORM)) then
   begin
-///    Result := GL.VERSION_3_1;
+    // Result := GL.VERSION_3_1;
     EXIT;
   end
 end;
 
-function IsFloatFormat(intFormat: TgxInternalFormat): boolean;
+function IsFloatFormat(intFormat: TglInternalFormat): boolean;
 begin
   Result := cTextureFormatToOpenGL[intFormat].Flt;
 end;
@@ -730,7 +731,7 @@ begin
   Result := IsFloatFormat(OpenGLFormatToInternalFormat(glFormat));
 end;
 
-function IsDepthFormat(intFormat: TgxInternalFormat): boolean;
+function IsDepthFormat(intFormat: TGLInternalFormat): boolean;
 begin
   Result := cTextureFormatToOpenGL[intFormat].DBit > 0;
 end;
@@ -740,7 +741,7 @@ begin
   Result := cTextureFormatToOpenGL[OpenGLFormatToInternalFormat(glFormat)].DBit > 0;
 end;
 
-function IsCompressedFormat(intFormat: TgxInternalFormat): boolean;
+function IsCompressedFormat(intFormat: TglInternalFormat): boolean;
 begin
   Result := cTextureFormatToOpenGL[intFormat].Comp;
 end;
@@ -750,7 +751,7 @@ begin
   Result := cTextureFormatToOpenGL[OpenGLFormatToInternalFormat(glFormat)].Comp;
 end;
 
-function GetGenericCompressedFormat(const intFormat: TgxInternalFormat;
+function GetGenericCompressedFormat(const intFormat: TglInternalFormat;
   const colorFormat: Cardinal; out internalFormat: Cardinal): Boolean;
 
 begin
@@ -786,8 +787,8 @@ begin
   Result := true;
 end;
 
-function GetUncompressedFormat(const intFormat: TgxInternalFormat;
-  out internalFormat: TgxInternalFormat; out colorFormat: Cardinal): Boolean;
+function GetUncompressedFormat(const intFormat: TglInternalFormat;
+  out internalFormat: TglInternalFormat; out colorFormat: Cardinal): Boolean;
 begin
   Result := false;
   if not IsCompressedFormat(intFormat) then
@@ -885,9 +886,9 @@ begin
   Result := colorFormat <> 0;
 end;
 
-function DecodeTextureTarget(const TextureTarget: TgxTextureTarget): Cardinal;
+function DecodeTextureTarget(const TextureTarget: TglTextureTarget): Cardinal;
 const
-  cTargetToEnum: array[TgxTextureTarget] of Cardinal =
+  cTargetToEnum: array[TglTextureTarget] of Cardinal =
   (
     0,
     GL_TEXTURE_1D,
@@ -907,7 +908,7 @@ begin
   Result := cTargetToEnum[TextureTarget];
 end;
 
-function EncodeGLTextureTarget(const glTarget: Cardinal): TgxTextureTarget;
+function EncodeGLTextureTarget(const glTarget: Cardinal): TglTextureTarget;
 begin
   case glTarget of
     GL_TEXTURE_1D: Result := ttTexture1d;
@@ -928,7 +929,7 @@ begin
   end;
 end;
 
-function IsTargetSupportMipmap(const TextureTarget: TgxTextureTarget): Boolean;
+function IsTargetSupportMipmap(const TextureTarget: TglTextureTarget): Boolean;
 begin
   Result := (TextureTarget <> ttTextureRect)
     and (TextureTarget <> ttTexture2DMultisample)
@@ -941,6 +942,8 @@ begin
     and (glTarget <> GL_TEXTURE_2D_MULTISAMPLE)
     and (glTarget <> GL_TEXTURE_2D_MULTISAMPLE_ARRAY);
 end;
+
+//----------------------------------------------------------------------------
 
 end.
 

@@ -7,17 +7,17 @@ unit GLS.FileTIN;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
-  GLS.VectorGeometry,
-  GLS.VectorTypesExt,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypesExt,
   GLS.Utils;
 
 

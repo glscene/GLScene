@@ -8,21 +8,21 @@ unit GLS.Trail;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.MeshUtils,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.VectorFileObjects,
   GLS.Mesh,
   GLS.Objects,
   GLS.Material,
-  GLS.Strings,
+  GLScene.Strings,
   GLS.BaseClasses;
 
 

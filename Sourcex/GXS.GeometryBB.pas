@@ -7,14 +7,14 @@ unit GXS.GeometryBB;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.SysUtils,
 
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.VectorLists,
-  GXS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
   // Structure for storing Bounding Boxes

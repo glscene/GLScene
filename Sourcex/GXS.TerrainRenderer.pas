@@ -12,7 +12,7 @@ unit GXS.TerrainRenderer;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -20,8 +20,8 @@ uses
   System.SysUtils,
 
   GXS.XOpenGL,
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.VectorLists,
   GXS.Scene,
   GXS.HeightData,

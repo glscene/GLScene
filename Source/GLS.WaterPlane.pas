@@ -12,22 +12,22 @@ unit GLS.WaterPlane;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   Vcl.Graphics,
 
-  GLS.OpenGLTokens,
-  GLS.VectorGeometry,
+  GLScene.OpenGLTokens,
+  GLScene.VectorGeometry,
   GLS.Scene,
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.BaseClasses,
   GLS.Context,
   GLS.RenderContextInfo,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Utils;
 
 type

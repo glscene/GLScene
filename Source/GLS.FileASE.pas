@@ -7,15 +7,15 @@ unit GLS.FileASE;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
-  GLS.VectorTypes, 
-  GLS.VectorGeometry, 
+  GLScene.VectorTypes, 
+  GLScene.VectorGeometry, 
   GLS.VectorLists,
   GLS.Texture,
   GLS.Material,

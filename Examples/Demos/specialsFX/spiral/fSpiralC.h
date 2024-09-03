@@ -10,7 +10,7 @@
 #include <Buttons.hpp>
 #include <ExtCtrls.hpp>
 
-#include <GLS.VectorGeometry.hpp>
+#include <GLScene.VectorGeometry.hpp>
 #include <GLS.Behaviours.hpp>
 #include <GLS.SceneViewer.hpp>
 #include <GLS.Objects.hpp>

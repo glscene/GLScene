@@ -15,10 +15,10 @@ uses
   Vcl.ExtCtrls,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Objects,
   GLS.SceneViewer,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.VectorLists,
   GLS.Cadencer,
   GLS.Texture,

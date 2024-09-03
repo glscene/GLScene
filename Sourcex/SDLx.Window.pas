@@ -14,7 +14,7 @@ unit SDLx.Window;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -22,9 +22,9 @@ uses
   System.SyncObjs,
 
   GXS.OpenGL,
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.Context,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   SDL.Import;
 
 type

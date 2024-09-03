@@ -7,7 +7,7 @@ unit FmShaderUniformEditor;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.SysUtils,
@@ -20,10 +20,10 @@ uses
   VCL.StdCtrls,
   VCL.ExtCtrls,
   VCL.Buttons,
-  GLS.Strings,
+  GLScene.Strings,
   GLSL.ShaderParameter,
   GLS.TextureFormat,
-  GLS.VectorGeometry;
+  GLScene.VectorGeometry;
 
 type
   TGLShaderUniformEditor = class(TForm)

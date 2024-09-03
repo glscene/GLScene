@@ -7,17 +7,17 @@ unit GXS.ROAMPatch;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.SysUtils,
 
   GXS.OpenGL, // GL_ARB_vertex_buffer_object
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.XOpenGL,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.VectorLists,
-  GXS.Strings,
+  GLScene.Strings,
   GXS.HeightData,
   GXS.Isolines,
   GXS.Context;

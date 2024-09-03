@@ -7,7 +7,7 @@ unit GLS.FullScreenViewer;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -18,7 +18,7 @@ uses
   VCL.Controls,
   VCL.Menus,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Utils,
   GLS.Context,
   GLS.Scene,

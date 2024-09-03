@@ -7,21 +7,21 @@ unit GXS.Nodes;
 
 interface
 
+{.$I GLScene.Defines.inc}
+
 uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
   System.Math,
 
-  GXS.VectorTypes,
-  GXS.XOpenGL,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.Spline,
+  GLScene.VectorGeometry,
   GXS.Context,
+  GXS.XOpenGL,
   GXS.BaseClasses,
-  GXS.Coordinates,
-  GXS.Spline;
-
-{$I GXS.Scene.inc}
+  GXS.Coordinates;
 
 type
   TgxNode = class(TCollectionItem)

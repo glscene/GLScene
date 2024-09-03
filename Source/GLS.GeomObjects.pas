@@ -13,17 +13,17 @@ unit GLS.GeomObjects;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Math,
   System.Classes,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.OpenGLAdapter,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.PipelineTransformation,
   GLS.Polynomials,
 

@@ -16,9 +16,9 @@
 #include "GLS.Extrusion.hpp"
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
-#include "GLS.VectorGeometry.hpp"
+#include "GLScene.VectorGeometry.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLS.Spline.hpp"
+#include "GLScene.Spline.hpp"
 
 //---------------------------------------------------------------------------
 class TFormBending : public TForm

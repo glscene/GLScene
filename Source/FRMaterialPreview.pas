@@ -7,7 +7,7 @@ unit FRMaterialPreview;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Types,
@@ -19,7 +19,7 @@ uses
   Vcl.Controls,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Objects,
   GLS.Texture,
   GLS.HUDObjects,

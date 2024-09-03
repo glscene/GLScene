@@ -7,7 +7,7 @@ unit GXS.LensFlare;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,8 +19,8 @@ uses
 
   GXS.PersistentClasses,
   GXS.BaseClasses,
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.Scene,
   GXS.Objects,
   GXS.PipelineTransformation,

@@ -13,9 +13,9 @@ uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
   System.Classes,
-  GXS.Strings,
-  GXS.OpenGLTokens,
-  GXS.VectorTypes,
+  GLScene.Strings,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
   GXS.TextureFormat,
   GXS.RenderContextInfo;
 
@@ -102,11 +102,11 @@ type
     function GetAutoSetMethod: string;
     function GetTextureName: string;
     function GetSamplerName: string;
-    function GetTextureSwizzle: TgxSwizzleVector;
+    function GetTextureSwizzle: TglSwizzleVector;
     procedure SetTextureName(const AValue: string);
     procedure SetSamplerName(const AValue: string);
     procedure SetAutoSetMethod(const AValue: string);
-    procedure SetTextureSwizzle(const AValue: TgxSwizzleVector);
+    procedure SetTextureSwizzle(const AValue: TglSwizzleVector);
     function GetFloat: Single;
     function GetVec2: TVector2f;
     function GetVec3: TVector3f;
@@ -167,7 +167,7 @@ type
     property AutoSetMethod: string read GetAutoSetMethod write SetAutoSetMethod;
     property TextureName: string read GetTextureName write SetTextureName;
     property SamplerName: string read GetSamplerName write SetSamplerName;
-    property TextureSwizzle: TgxSwizzleVector read GetTextureSwizzle write SetTextureSwizzle;
+    property TextureSwizzle: TglSwizzleVector read GetTextureSwizzle write SetTextureSwizzle;
   end;
 
 const

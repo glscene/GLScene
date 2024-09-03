@@ -2,7 +2,6 @@
 // The graphics engine GXScene https://github.com/glscene
 //
 unit GXS.XOpenGL;
-
 (*
    "Alternate" OpenGL functions to handle multi-texturing.
    Using this functions allows specifying none/one/multiple ARB multi-texture
@@ -12,10 +11,9 @@ unit GXS.XOpenGL;
    This unit is Open-Source under MPL
    The history is logged in a former GLS version of the unit.
 *)
-
 interface
 
-{$I GXS.Scene.inc}
+{.$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,

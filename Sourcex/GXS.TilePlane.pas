@@ -7,7 +7,7 @@ unit GXS.TilePlane;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,7 +15,7 @@ uses
 
   GXS.XOpenGL,
   GXS.Scene,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Context,
   GXS.Material,
   GXS.Objects,

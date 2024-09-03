@@ -14,7 +14,7 @@ uses
   Vcl.Menus,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.HUDObjects,
   GLS.Objects,
   GLS.Cadencer,

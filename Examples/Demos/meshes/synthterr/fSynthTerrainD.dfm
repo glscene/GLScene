@@ -1,24 +1,33 @@
 object FormSynthTerrain: TFormSynthTerrain
   Left = 159
   Top = 120
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Synthetic Terrain'
-  ClientHeight = 453
-  ClientWidth = 755
+  ClientHeight = 793
+  ClientWidth = 1335
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 755
-    Height = 453
+    Width = 1335
+    Height = 793
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     VSync = vsmSync
     Buffer.FogEnvironment.FogColor.Color = {0000803F0000803F0000803F0000803F}
@@ -28,14 +37,12 @@ object FormSynthTerrain: TFormSynthTerrain
     Buffer.BackgroundColor = clBlack
     Buffer.FogEnable = True
     Buffer.Lighting = False
-    FieldOfView = 155.103134155273400000
+    FieldOfView = 165.625488281250000000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
-    ExplicitWidth = 701
-    ExplicitHeight = 443
   end
   object GLScene1: TGLScene
     ObjectsSorting = osNone

@@ -12,7 +12,7 @@ unit GXS.MultisampleImage;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -41,13 +41,13 @@ type
     function GetWidth: Integer; override;
     function GetHeight: Integer; override;
     function GetDepth: Integer; override;
-    function GetTextureTarget: TgxTextureTarget; override;
+    function GetTextureTarget: TglTextureTarget; override;
   public
     constructor Create(AOwner: TPersistent); override;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     class function IsSelfLoading: Boolean; override;
-    procedure LoadTexture(AInternalFormat: TgxInternalFormat); override;
+    procedure LoadTexture(AInternalFormat: TglInternalFormat); override;
     function GetBitmap32: TgxBitmap32; override;
     procedure ReleaseBitmap32; override;
     procedure SaveToFile(const fileName: string); override;
@@ -214,7 +214,7 @@ begin
   Result := 'Image for rendering to texture with antialiasing';
 end;
 
-function TgxMultisampleImage.GetTextureTarget: TgxTextureTarget;
+function TgxMultisampleImage.GetTextureTarget: TglTextureTarget;
 begin
   if fDepth > 0 then
     Result := ttTexture2DMultisampleArray
@@ -227,9 +227,9 @@ begin
   Result := True;
 end;
 
-procedure TgxMultisampleImage.LoadTexture(AInternalFormat: TgxInternalFormat);
+procedure TgxMultisampleImage.LoadTexture(AInternalFormat: TglInternalFormat);
 var
-  target: TgxTextureTarget;
+  target: TglTextureTarget;
   maxSamples, maxSize: GLint;
 begin
   // Check smaples count range

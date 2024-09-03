@@ -10,8 +10,8 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GLS.VectorFileObjects,
   NGD.Import;
 

@@ -1,112 +1,156 @@
 object FormFxy: TFormFxy
   Left = 179
   Top = 106
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   BorderWidth = 4
   Caption = 'Fxy'
-  ClientHeight = 409
-  ClientWidth = 525
+  ClientHeight = 716
+  ClientWidth = 933
   Color = clBtnFace
   DockSite = True
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnMouseWheel = FormMouseWheel
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 356
-    Height = 409
+    Width = 637
+    Height = 716
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clTeal
-    FieldOfView = 109.843315124511700000
+    FieldOfView = 137.143493652343800000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
-    ExplicitWidth = 420
-    ExplicitHeight = 442
   end
   object Panel1: TPanel
-    Left = 356
+    Left = 637
     Top = 0
-    Width = 169
-    Height = 409
+    Width = 296
+    Height = 716
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alRight
     TabOrder = 1
-    ExplicitLeft = 424
-    ExplicitHeight = 461
     object Label1: TLabel
-      Left = 46
-      Top = 343
-      Width = 82
-      Height = 13
+      Left = 81
+      Top = 600
+      Width = 148
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'XYZ Grid position'
     end
     object Label2: TLabel
-      Left = 22
-      Top = 69
-      Width = 7
-      Height = 13
+      Left = 39
+      Top = 121
+      Width = 14
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'X'
     end
     object Label3: TLabel
-      Left = 77
-      Top = 69
-      Width = 7
-      Height = 13
+      Left = 135
+      Top = 121
+      Width = 12
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Y'
     end
     object Label4: TLabel
-      Left = 126
-      Top = 69
-      Width = 7
-      Height = 13
+      Left = 221
+      Top = 121
+      Width = 12
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Z'
     end
     object CBCentered: TCheckBox
-      Left = 48
-      Top = 25
-      Width = 97
-      Height = 17
+      Left = 84
+      Top = 44
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Centered grids'
       TabOrder = 0
       OnClick = CBCenteredClick
     end
     object TBXYPosition: TTrackBar
-      Left = 114
-      Top = 88
-      Width = 45
-      Height = 249
+      Left = 200
+      Top = 154
+      Width = 78
+      Height = 436
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Min = -10
       Orientation = trVertical
       TabOrder = 1
+      ThumbLength = 35
       TickMarks = tmBoth
       OnChange = TBXYPositionChange
     end
     object TBYZPosition: TTrackBar
-      Left = 12
-      Top = 88
-      Width = 45
-      Height = 249
+      Left = 21
+      Top = 154
+      Width = 79
+      Height = 436
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Min = -10
       Orientation = trVertical
       TabOrder = 2
+      ThumbLength = 35
       TickMarks = tmBoth
       OnChange = TBYZPositionChange
     end
     object TBXZPosition: TTrackBar
-      Left = 63
-      Top = 88
-      Width = 45
-      Height = 249
+      Left = 110
+      Top = 154
+      Width = 79
+      Height = 436
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Min = -10
       Orientation = trVertical
       TabOrder = 3
+      ThumbLength = 35
       TickMarks = tmBoth
       OnChange = TBXZPositionChange
     end

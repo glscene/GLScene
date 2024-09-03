@@ -7,7 +7,7 @@ unit GXS.FPSMovement;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -17,9 +17,9 @@ uses
   FMX.Graphics,
 
   GXS.XCollection,
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.Context,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Scene,
   GXS.Coordinates,
   GXS.VectorFileObjects,

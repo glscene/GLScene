@@ -7,7 +7,7 @@ unit GLS.Isolines;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.SysUtils, 
@@ -15,10 +15,10 @@ uses
   System.Math,
   System.Generics.Collections,
 
-  GLS.VectorGeometry, 
-  GLS.VectorTypes,
-  GLS.VectorTypesExt,
-  GLS.Spline,
+  GLScene.VectorGeometry, 
+  GLScene.VectorTypes,
+  GLScene.VectorTypesExt,
+  GLScene.Spline,
 
   GLS.VectorLists,
   GLS.Objects,

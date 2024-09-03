@@ -7,7 +7,7 @@ unit GXS.PolygonTesselation;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -17,8 +17,8 @@ uses
 
   GXS.VectorFileObjects,
   GXS.VectorLists,
-  GXS.VectorGeometry,
-  GXS.VectorTypes;
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes;
 
 (* Tesselates the polygon outlined by the Vertexes.
   And addeds them to the first facegroup of the Mesh. *)

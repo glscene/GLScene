@@ -7,7 +7,7 @@ unit GXS.PAKArchive;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,

@@ -15,7 +15,7 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.VectorFileObjects,
   GLS.Objects,
   GLS.Cadencer,
@@ -27,7 +27,7 @@ uses
   GLS.VerletClothify,
   GLS.ShadowVolume,
   GLS.Keyboard,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.GeometryBB,
   GLS.SpacePartition,
 

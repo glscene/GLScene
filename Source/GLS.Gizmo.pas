@@ -31,16 +31,16 @@ unit GLS.Gizmo;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   Vcl.StdCtrls,
 
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
-  GLS.Strings,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.Strings,
 
   GLS.Scene,
   GLS.PersistentClasses,

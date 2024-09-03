@@ -13,7 +13,7 @@ unit GXS.SpaceText;
 *)
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -24,9 +24,9 @@ uses
   System.SysUtils,
   FMX.Graphics,
 
-  GXS.VectorGeometry,
-  GXS.Strings,
-  GXS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.Strings,
+  GLScene.VectorTypes,
   GXS.Scene,
   GXS.Texture,
   GXS.Context,

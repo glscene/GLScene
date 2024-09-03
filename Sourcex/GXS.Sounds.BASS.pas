@@ -20,10 +20,10 @@ uses
   System.SysUtils,
   FMX.Forms,
 
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.Sound,
   GXS.Scene,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   BASS.Import;
 
 type

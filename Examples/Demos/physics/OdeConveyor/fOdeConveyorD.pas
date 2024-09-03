@@ -19,14 +19,14 @@ uses
   ODE.Import,
   GLS.ODEManager,
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Objects,
   GLS.Cadencer,
   GLS.Coordinates,
  
   GLS.BaseClasses,
   GLS.SceneViewer,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Keyboard,
   GLS.SimpleNavigation;
  , GLS.ODEManager

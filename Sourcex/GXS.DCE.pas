@@ -24,19 +24,19 @@ unit GXS.DCE;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
   GXS.XCollection,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.VectorLists,
   GXS.BaseClasses,
   GXS.Manager,
-  GXS.VectorTypes,
-  GXS.Strings,
+  GLScene.VectorTypes,
+  GLScene.Strings,
 
   GXS.Scene,
   GXS.VectorFileObjects,

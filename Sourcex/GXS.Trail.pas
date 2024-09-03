@@ -10,21 +10,21 @@ unit GXS.Trail;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
   GXS.Scene,
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.MeshUtils,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.VectorFileObjects,
   GXS.Mesh,
   GXS.Objects,
   GXS.Material,
-  GXS.Strings,
+  GLScene.Strings,
   GXS.BaseClasses;
 
 const

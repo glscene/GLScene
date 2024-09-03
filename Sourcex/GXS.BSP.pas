@@ -8,17 +8,17 @@ unit GXS.BSP;
 *)
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.SysUtils,
   System.Classes,
   System.Math,
 
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.VectorFileObjects,
   GXS.Material,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.VectorLists,
   GXS.Color,
   GXS.RenderContextInfo;

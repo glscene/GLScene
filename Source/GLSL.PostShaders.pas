@@ -18,23 +18,23 @@ unit GLSL.PostShaders;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Texture,
   GLS.Scene,
   GLS.State,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.RenderContextInfo,
   GLS.TextureFormat,
   GLS.Context,
   GLS.Material,
   GLSL.Shader,
   GLSL.CustomShader,
-  GLS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
   // Custom class for GLSLPostBlurShader. A shader that blurs the entire scene

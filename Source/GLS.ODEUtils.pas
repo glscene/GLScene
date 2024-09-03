@@ -19,9 +19,9 @@ uses
   System.Classes,
 
   ODE.Import,
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.Scene,
   GLS.Context,
   GLS.PersistentClasses,

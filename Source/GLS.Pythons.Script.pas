@@ -16,7 +16,7 @@ uses
   GLS.ScriptBase,
   GLS.Manager,
 
-  Python.Engine;  // should be in ..\scene dir!
+  Python.Engine;  // should be in ..\source dir!
 
 type
   (* This class only adds manager registration logic to the TPythonEngine

@@ -16,7 +16,7 @@ uses
   Vcl.ComCtrls,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.PersistentClasses,
   GLS.SceneViewer,
   GLS.SkyDome,
@@ -28,7 +28,7 @@ uses
   GLS.Cadencer,
   GLS.Navigator,
   GLS.SpacePartition,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.BitmapFont,
   GLS.GeometryBB,
   GLS.WindowsFont,

@@ -7,22 +7,22 @@ unit GLS.LinePFX;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.ParticleFX,
   GLS.Texture,
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.Context,
-  GLS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
 

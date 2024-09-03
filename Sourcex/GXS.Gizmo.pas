@@ -10,7 +10,7 @@ unit GXS.Gizmo;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -18,9 +18,9 @@ uses
   FMX.TextLayout,
 
   GXS.PersistentClasses,
-  GXS.VectorGeometry,
-  GXS.VectorTypes,
-  GXS.Strings,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.Strings,
   GXS.Scene,
   GXS.Color,
   GXS.Objects,

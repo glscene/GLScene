@@ -14,7 +14,7 @@ uses
   System.Classes,
   
   GLS.Context, 
-  GLS.OpenGLTokens, 
+  GLScene.OpenGLTokens, 
   GLS.Graphics, 
   GLS.Texture, 
   GLS.TextureFormat;

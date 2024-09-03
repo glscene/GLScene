@@ -7,7 +7,7 @@ unit GLS.FileLWO;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -36,10 +36,10 @@ implementation
 //============================================
 
 uses
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Texture,
   GLS.Material,
-  GLS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
   PVector3f = ^TVector3f;

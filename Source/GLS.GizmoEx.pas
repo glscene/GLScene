@@ -11,7 +11,7 @@ unit GLS.GizmoEx;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -24,9 +24,9 @@ uses
   GLS.Scene,
   GLS.Color,
   GLS.Objects,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Material,
-  GLS.Strings,
+  GLScene.Strings,
   GLS.GeomObjects,
   GLS.BitmapFont,
   GLS.SceneViewer,
@@ -34,7 +34,7 @@ uses
   GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.GeometryBB,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Canvas,
   GLS.PersistentClasses,
   GLS.Screen,
@@ -466,7 +466,7 @@ uses
   GLS.Context,
   GLS.PipelineTransformation,
 
-  GLS.OpenGLTokens;
+  GLScene.OpenGLTokens;
 
 procedure RotateAroundArbitraryAxis(const anObject: TGLBaseSceneObject; const Axis, Origin: TAffineVector; const angle: Single);
 var

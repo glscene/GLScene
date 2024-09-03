@@ -28,13 +28,13 @@ unit GXS.ParametricSurfaces;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.CurvesAndSurfaces,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.VectorLists,
   GXS.PersistentClasses,
   GXS.VectorFileObjects,

@@ -11,13 +11,13 @@ unit GLS.Octree;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Math,
   System.Classes,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.VectorLists,
   GLS.GeometryBB,
   GLS.Context;

@@ -11,7 +11,7 @@ uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
 
   GLS.Scene,
   GLS.Objects,
@@ -22,9 +22,9 @@ uses
   GLS.Color,
   GLS.State,
   GLS.Nodes,
-  GLS.VectorGeometry,
-  GLS.Spline,
-  GLS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.Spline,
+  GLScene.VectorTypes,
   GLS.VectorLists,
   GLS.VectorFileObjects,
   GLS.RenderContextInfo;

@@ -8,7 +8,7 @@ unit GLS.TextureCombiners;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,7 +16,7 @@ uses
   System.SysUtils,
   System.Classes,
    
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Context;
 
 

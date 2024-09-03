@@ -14,11 +14,11 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.RGBE,
   GXS.ApplicationFileIO,
-  GXS.Strings,
+  GLScene.Strings,
 
   GXS.Context,
   GXS.Graphics,
@@ -43,9 +43,9 @@ type
     procedure LoadFromStream(stream: TStream); override;
     procedure AssignFromTexture(textureContext: TgxContext;
       const textureHandle: GLuint;
-      textureTarget: TgxTextureTarget;
+      textureTarget: TglTextureTarget;
       const CurrentFormat: Boolean;
-      const intFormat: TgxInternalFormat); reintroduce;
+      const intFormat: TglInternalFormat); reintroduce;
     property Gamma: Single read fGamma;
     property Exposure: Single read fExposure;
     property ProgramType: Ansistring read GetProgramType write SetProgramType;
@@ -229,12 +229,12 @@ begin
 end;
 
 procedure TgxHDRImage.AssignFromTexture(textureContext: TgxContext; const textureHandle: GLuint;
-  textureTarget: TgxTextureTarget; const CurrentFormat: Boolean; const intFormat: TgxInternalFormat);
+  textureTarget: TglTextureTarget; const CurrentFormat: Boolean; const intFormat: TglInternalFormat);
 var
   oldContext: TgxContext;
   contextActivate: Boolean;
   texFormat: Cardinal;
-  residentFormat: TgxInternalFormat;
+  residentFormat: TglInternalFormat;
   glTarget: GLEnum;
 begin
   glTarget := DecodeTextureTarget(textureTarget);

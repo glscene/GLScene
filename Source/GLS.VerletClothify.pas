@@ -7,19 +7,19 @@ unit GLS.VerletClothify;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.VectorFileObjects,
   GLS.VerletTypes,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.VectorLists,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Texture,
   GLS.RenderContextInfo,
   GLS.State,

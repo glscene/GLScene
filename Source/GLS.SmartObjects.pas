@@ -16,7 +16,7 @@ unit GLS.SmartObjects;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -27,11 +27,11 @@ uses
   System.Math,
   VCL.Consts,
 
-  GLS.OpenGLTokens,
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
-  GLS.VectorTypesExt,
-  GLS.Strings,
+  GLScene.OpenGLTokens,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorTypesExt,
+  GLScene.Strings,
   GLS.PipelineTransformation,
 
   GLS.Scene,

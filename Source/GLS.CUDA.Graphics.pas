@@ -7,7 +7,7 @@ unit GLS.CUDA.Graphics;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -23,7 +23,7 @@ uses
   GLS.Scene,
   GLS.Graphics,
   GLS.Material,
-  GLS.Strings,
+  GLScene.Strings,
   GLS.TextureFormat,
   GLS.Texture,
   GLSL.Shader,

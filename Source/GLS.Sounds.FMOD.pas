@@ -13,7 +13,7 @@ unit GLS.Sounds.FMOD;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -21,8 +21,8 @@ uses
 
   GLS.SoundManager,
   GLS.Scene,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
 
   FMOD.Import,
   FMOD.Types,

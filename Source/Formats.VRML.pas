@@ -7,15 +7,15 @@ unit Formats.VRML;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Types,
 
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GLS.VectorLists,
   GLS.Utils;
 

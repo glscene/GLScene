@@ -7,25 +7,25 @@ unit GXS.File3DS;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Math,
   
-  GXS.Strings,
+  GLScene.Strings,
   GXS.OpenGL,
   GXS.Scene,
   GXS.Objects,
   GXS.VectorFileObjects,
   GXS.Texture,
   GXS.ApplicationFileIO,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Context,
   GXS.PersistentClasses,
   GXS.File3DSSceneObjects,
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.VectorLists,
   GXS.RenderContextInfo,
   GXS.Material,

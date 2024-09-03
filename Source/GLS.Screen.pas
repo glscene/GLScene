@@ -13,7 +13,7 @@ uses
   System.SysUtils,
   VCL.Forms,
 
-  GLS.VectorGeometry;
+  GLScene.VectorGeometry;
 
 const
   MaxVideoModes = 200;

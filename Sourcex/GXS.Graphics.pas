@@ -14,7 +14,7 @@ unit GXS.Graphics;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -33,7 +33,7 @@ uses
 
   GXS.OpenGL,
 
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.PersistentClasses,
   GXS.ApplicationFileIO,
   GXS.Context,
@@ -41,7 +41,7 @@ uses
   GXS.Utils,
   GXS.Color,
   GXS.TextureFormat,
-  GXS.Strings;
+  GLScene.Strings;
 
 type
   TgxPixel24 = packed record
@@ -88,7 +88,7 @@ type
     FLOD: TgxImagePiramid;
     fLevelCount: TgxImageLODRange;
     fColorFormat: Cardinal;
-    fInternalFormat: TgxInternalFormat;
+    fInternalFormat: TglInternalFormat;
     fDataType: Cardinal;
     fElementSize: Integer;
     fCubeMap: Boolean;
@@ -115,7 +115,7 @@ type
     constructor Create; reintroduce; virtual;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
-    function GetTextureTarget: TgxTextureTarget;
+    function GetTextureTarget: TGLTextureTarget;
     // Registers the bitmap's content as an OpenGL texture map.
     procedure RegisterAsOpenRXTexture(
       AHandle: TgxTextureHandle;
@@ -128,7 +128,7 @@ type
     function AssignFromTexture(
       AHandle: TgxTextureHandle;
       const CastToFormat: Boolean;
-      const intFormat: TgxInternalFormat = tfRGBA8;
+      const intFormat: TglInternalFormat = tfRGBA8;
       const colorFormat: NativeUInt = 0;
       const dataType: NativeUInt = 0): Boolean; virtual;
     (* Convert vertical cross format of non compressed, non mipmaped image
@@ -172,7 +172,7 @@ type
       read GetLevelStreamingState write SetLevelStreamingState;
     // Number of levels.
     property LevelCount: TgxImageLODRange read fLevelCount;
-    property InternalFormat: TgxInternalFormat read FInternalFormat;
+    property InternalFormat: TglInternalFormat read FInternalFormat;
     property ColorFormat: Cardinal read fColorFormat;
     property DataType: Cardinal read fDataType;
     property ElementSize: Integer read fElementSize;
@@ -243,7 +243,7 @@ type
     // OpenGL color format
     property ColorFormat: Cardinal read fColorFormat;
     // Recommended texture internal format
-    property InternalFormat: TgxInternalFormat read FInternalFormat write
+    property InternalFormat: TglInternalFormat read FInternalFormat write
       FInternalFormat;
     // OpenGL data type
     property DataType: Cardinal read fDataType;
@@ -820,7 +820,7 @@ begin
     inherited; // raise AssingError
 end;
 
-function TgxBaseImage.GetTextureTarget: TgxTextureTarget;
+function TgxBaseImage.GetTextureTarget: TGLTextureTarget;
 begin
   Result := ttTexture2D;
   // Choose a texture target
@@ -1690,7 +1690,7 @@ end;
 function TgxBaseImage.AssignFromTexture(
   AHandle: TgxTextureHandle;
   const CastToFormat: Boolean;
-  const intFormat: TgxInternalFormat = tfRGBA8;
+  const intFormat: TglInternalFormat = tfRGBA8;
   const colorFormat: NativeUInt = 0;
   const dataType: NativeUInt = 0): Boolean;
 var
@@ -1699,7 +1699,7 @@ var
   glTarget: GLEnum;
   level, maxFace, face: Integer;
   lData: PGLubyte;
-  residentFormat: TgxInternalFormat;
+  residentFormat: TglInternalFormat;
   bCompressed: Boolean;
   vtcBuffer, top, bottom: PGLubyte;
   i, j, k: Integer;
@@ -1924,7 +1924,7 @@ begin
       Read(FLOD[0].Depth, SizeOf(Integer));
       Read(fColorFormat, SizeOf(GLenum));
       Read(Temp, SizeOf(Integer));
-      fInternalFormat := TgxInternalFormat(Temp);
+      fInternalFormat := TglInternalFormat(Temp);
       Read(fDataType, SizeOf(GLenum));
       Read(fElementSize, SizeOf(Integer));
       Read(fLevelCount, SizeOf(TgxImageLODRange));

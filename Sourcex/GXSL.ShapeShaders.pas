@@ -16,7 +16,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GXS.Scene,
   GXS.BaseClasses,
   GXS.State,
@@ -24,8 +24,8 @@ uses
   GXS.Graphics,
   GXS.RenderContextInfo,
   GXS.Coordinates,
-  GXS.VectorGeometry,
-  GXS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GXS.TextureFormat,
   GXS.Color,
   GXS.Texture,
@@ -797,7 +797,7 @@ end;
 
 procedure TgxCelShader.DoApply(var rci: TgxRenderContextInfo; Sender: TObject);
 var
-  light: TgxVector;
+  light: TGLVector;
 begin
   if (csDesigning in ComponentState) then
     exit;

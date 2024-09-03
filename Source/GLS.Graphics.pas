@@ -14,7 +14,7 @@ unit GLS.Graphics;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -30,11 +30,11 @@ uses
 
   {$IFDEF USE_GRAPHICS32} GR32, {$ENDIF}
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
   GLS.TextureFormat,
-  GLS.VectorGeometry,
-  GLS.Strings,
+  GLScene.VectorGeometry,
+  GLScene.Strings,
 
   GLS.State,
   GLS.ApplicationFileIO,
@@ -43,7 +43,7 @@ uses
   GLS.ImageUtils,
   GLS.Color,
   GLS.Utils,
-  GLS.Logger;
+  GLScene.Logger;
 
 {$DEFINE PRF_HACK_PASSES}
 

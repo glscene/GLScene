@@ -7,7 +7,7 @@ unit GXS.MaterialScript;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.SysUtils,
@@ -15,7 +15,7 @@ uses
   FMX.StdCtrls,
   FMX.Memo,
 
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.Texture,
   GXS.TextureFormat,
   GXS.Graphics,

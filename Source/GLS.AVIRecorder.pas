@@ -7,7 +7,7 @@ unit GLS.AVIRecorder;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.Windows,

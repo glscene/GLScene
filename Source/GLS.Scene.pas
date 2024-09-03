@@ -11,7 +11,7 @@ unit GLS.Scene;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -24,12 +24,12 @@ uses
   Vcl.Graphics,
   Vcl.Controls,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.XOpenGL,
   GLS.XCollection,
-  GLS.Strings,
+  GLScene.Strings,
   GLS.Context,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Silhouette,
   GLS.PersistentClasses,
   GLS.PipelineTransformation,
@@ -45,10 +45,10 @@ uses
   GLS.Material,
   GLS.TextureFormat,
   GLS.Selection,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.ApplicationFileIO,
   GLS.Utils,
-  GLS.Logger;
+  GLScene.Logger;
 
 type
   // Defines which features are taken from the master object.

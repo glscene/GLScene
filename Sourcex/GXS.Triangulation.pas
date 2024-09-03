@@ -13,7 +13,7 @@ uses
   FMX.Dialogs,
   FMX.Graphics,
   
-  GXS.VectorGeometry;
+  GLScene.VectorGeometry;
 
 // Set these as applicable
 const

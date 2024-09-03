@@ -22,7 +22,7 @@ unit GXS.State;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 { .$DEFINE USE_CACHE_MISS_CHECK }
 
 uses
@@ -32,10 +32,10 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.Strings,
+  GLScene.Strings,
   GXS.TextureFormat,
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.Utils;
 
 const
@@ -263,12 +263,12 @@ type
     FMaxTextureImageUnits: Cardinal;
     FMaxTextureAnisotropy: Cardinal;
     FMaxSamples: Cardinal;
-    FTextureBinding: array[0..MAX_HARDWARE_TEXTURE_UNIT - 1, TgxTextureTarget] of Cardinal;
-    FTextureBindingTime: array[0..MAX_HARDWARE_TEXTURE_UNIT - 1, TgxTextureTarget] of Double;
+    FTextureBinding: array[0..MAX_HARDWARE_TEXTURE_UNIT - 1, TglTextureTarget] of Cardinal;
+    FTextureBindingTime: array[0..MAX_HARDWARE_TEXTURE_UNIT - 1, TglTextureTarget] of Double;
     FSamplerBinding: array[0..MAX_HARDWARE_TEXTURE_UNIT - 1] of Cardinal;
     // Active texture state
     FActiveTexture: GLint; // 0 .. Max_texture_units
-    FActiveTextureEnabling: array[0..MAX_HARDWARE_TEXTURE_UNIT - 1, TgxTextureTarget] of Boolean;
+    FActiveTextureEnabling: array[0..MAX_HARDWARE_TEXTURE_UNIT - 1, TglTextureTarget] of Boolean;
     // Pixel operation state
     FEnableScissorTest: GLboolean;
     FScissorBox: TVector4i;
@@ -414,14 +414,14 @@ type
     function GetMaxTextureImageUnits: GLuint;
     function GetMaxTextureAnisotropy: GLuint;
     function GetMaxSamples: GLuint;
-    function GetTextureBinding(Index: Integer; target: TgxTextureTarget):
+    function GetTextureBinding(Index: Integer; target: TglTextureTarget):
       GLuint;
-    function GetTextureBindingTime(Index: Integer; target: TgxTextureTarget):
+    function GetTextureBindingTime(Index: Integer; target: TglTextureTarget):
       Double;
-    procedure SetTextureBinding(Index: Integer; target: TgxTextureTarget;
+    procedure SetTextureBinding(Index: Integer; target: TglTextureTarget;
       const Value: GLuint);
-    function GetActiveTextureEnabled(Target: TgxTextureTarget): Boolean;
-    procedure SetActiveTextureEnabled(Target: TgxTextureTarget; const Value:
+    function GetActiveTextureEnabled(Target: TglTextureTarget): Boolean;
+    procedure SetActiveTextureEnabled(Target: TglTextureTarget; const Value:
       Boolean);
     function GetSamplerBinding(Index: GLuint): GLuint;
     procedure SetSamplerBinding(Index: GLuint; const Value: GLuint);
@@ -673,9 +673,9 @@ type
     property SampleMaskValue[Index: Integer]: GLbitfield read GetSampleMaskValue write SetSampleMaskValue;
     // Textures
     // Textures bound to each texture unit + binding point. 
-    property TextureBinding[Index: Integer; target: TgxTextureTarget]: GLuint read GetTextureBinding write SetTextureBinding;
-    property TextureBindingTime[Index: Integer; target: TgxTextureTarget]: Double read GetTextureBindingTime;
-    property ActiveTextureEnabled[Target: TgxTextureTarget]: Boolean read GetActiveTextureEnabled write SetActiveTextureEnabled;
+    property TextureBinding[Index: Integer; target: TglTextureTarget]: GLuint read GetTextureBinding write SetTextureBinding;
+    property TextureBindingTime[Index: Integer; target: TglTextureTarget]: Double read GetTextureBindingTime;
+    property ActiveTextureEnabled[Target: TglTextureTarget]: Boolean read GetActiveTextureEnabled write SetActiveTextureEnabled;
     property SamplerBinding[Index: GLuint]: GLuint read GetSamplerBinding write SetSamplerBinding;
     property MaxTextureSize: GLuint read GetMaxTextureSize;
     property Max3DTextureSize: GLuint read GetMax3DTextureSize;
@@ -967,7 +967,7 @@ const
     (GLConst: GL_DEPTH_CLAMP; IsDeprecated: False)
     );
 
-  cGLTexTypeToGLEnum: array[TgxTextureTarget] of GLEnum =
+  cGLTexTypeToGLEnum: array[TglTextureTarget] of GLEnum =
     (0, GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_3D, GL_TEXTURE_1D_ARRAY,
     GL_TEXTURE_2D_ARRAY, GL_TEXTURE_RECTANGLE, GL_TEXTURE_BUFFER,
     GL_TEXTURE_CUBE_MAP, GL_TEXTURE_2D_MULTISAMPLE,
@@ -2153,12 +2153,12 @@ begin
   Result := FMaxSamples;
 end;
 
-function TgxStateCache.GetTextureBinding(Index: Integer; target: TgxTextureTarget): GLuint;
+function TgxStateCache.GetTextureBinding(Index: Integer; target: TglTextureTarget): GLuint;
 begin
   Result := FTextureBinding[Index, target];
 end;
 
-function TgxStateCache.GetTextureBindingTime(Index: Integer; target: TgxTextureTarget):
+function TgxStateCache.GetTextureBindingTime(Index: Integer; target: TglTextureTarget):
   Double;
 begin
   Result := FTextureBindingTime[Index, target];
@@ -2769,7 +2769,7 @@ begin
   end;
 end;
 
-procedure TgxStateCache.SetTextureBinding(Index: Integer; target: TgxTextureTarget;
+procedure TgxStateCache.SetTextureBinding(Index: Integer; target: TglTextureTarget;
   const Value: GLuint);
 var
   lastActiveTexture: GLuint;
@@ -2790,13 +2790,13 @@ begin
   FTextureBindingTime[Index, target] := AppTime;
 end;
 
-function TgxStateCache.GetActiveTextureEnabled(Target: TgxTextureTarget):
+function TgxStateCache.GetActiveTextureEnabled(Target: TglTextureTarget):
   Boolean;
 begin
   Result := FActiveTextureEnabling[FActiveTexture][Target];
 end;
 
-procedure TgxStateCache.SetActiveTextureEnabled(Target: TgxTextureTarget;
+procedure TgxStateCache.SetActiveTextureEnabled(Target: TglTextureTarget;
   const Value: Boolean);
 var
   glTarget: GLEnum;
@@ -3437,11 +3437,11 @@ end;
 
 procedure TgxStateCache.ResetTexture(const TextureUnit: Integer);
 var
-  t: TgxTextureTarget;
+  t: TglTextureTarget;
   glTarget: GLEnum;
 begin
   glActiveTexture(GL_TEXTURE0 + TextureUnit);
-  for t := Low(TgxTextureTarget) to High(TgxTextureTarget) do
+  for t := Low(TglTextureTarget) to High(TglTextureTarget) do
   begin
     glTarget := DecodeTextureTarget(t);
     if IsTargetSupported(glTarget) then
@@ -3457,13 +3457,13 @@ end;
 procedure TgxStateCache.ResetCurrentTexture;
 var
   a: GLint;
-  t: TgxTextureTarget;
+  t: TglTextureTarget;
   glTarget: GLEnum;
 begin
   for a := MaxTextureImageUnits - 1 to 0 do
   begin
     glActiveTexture(GL_TEXTURE0 + a);
-    for t := Low(TgxTextureTarget) to High(TgxTextureTarget) do
+    for t := Low(TglTextureTarget) to High(TglTextureTarget) do
     begin
       glTarget := DecodeTextureTarget(t);
       if IsTargetSupported(glTarget) then

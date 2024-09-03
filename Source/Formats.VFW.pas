@@ -77,7 +77,7 @@ unit Formats.VFW;
 interface
 
 {.$UNDEF UNICODE}
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
     Winapi.Windows,

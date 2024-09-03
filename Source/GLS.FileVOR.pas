@@ -13,8 +13,8 @@ uses
   System.SysUtils,
   GLS.ApplicationFileIO,
 
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.VectorLists,
   GLS.VectorFileObjects,
   GLS.Utils;

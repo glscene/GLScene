@@ -15,7 +15,7 @@ unit GLS.ImageUtils;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -23,10 +23,10 @@ uses
   System.SysUtils,
   System.Classes,
   System.Math,
-  GLS.OpenGLTokens,
-  GLS.Strings,
+  GLScene.OpenGLTokens,
+  GLScene.Strings,
   GLS.TextureFormat,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Utils;
 
 var

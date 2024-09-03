@@ -15,9 +15,9 @@ uses
   GLS.VectorFileObjects,
   GLS.Texture,
   GLS.ApplicationFileIO,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.VectorLists,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Material,
   GLS.Utils,
   PasGLTF;

@@ -13,8 +13,8 @@ uses
   System.Math,
 
   GXS.ApplicationFileIO,
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.VectorLists,
   GXS.VectorFileObjects,
   GXS.Material,

@@ -21,7 +21,7 @@ uses
   FMX.Dialogs,
 
   GXS.ApplicationFileIO,
-  GXS.Strings,
+  GLScene.Strings,
   CUDA.Parser;
 
 type

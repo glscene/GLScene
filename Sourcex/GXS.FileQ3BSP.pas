@@ -11,7 +11,7 @@ unit GXS.FileQ3BSP;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -20,8 +20,8 @@ uses
 
   GXS.VectorFileObjects,
   GXS.ApplicationFileIO,
-  GXS.VectorGeometry,
-  GXS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GXS.VectorLists,
   GXS.BSP,
   GXS.Texture,

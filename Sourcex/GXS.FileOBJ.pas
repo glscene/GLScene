@@ -14,7 +14,7 @@ unit GXS.FileOBJ;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -24,14 +24,14 @@ uses
   System.SysUtils,
 
   GXS.XOpenGL,
-  GXS.VectorTypes,
-  GXS.Strings,
+  GLScene.VectorTypes,
+  GLScene.Strings,
   GXS.Context,
   GXS.MeshUtils,
   GXS.Utils,
   GXS.ApplicationFileIO,
   GXS.PersistentClasses,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Scene,
   GXS.VectorFileObjects,
   GXS.VectorLists,

@@ -11,14 +11,14 @@ unit GLSL.LineShaders;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
   GLS.Scene,
   GLS.Color,
   GLS.Material,

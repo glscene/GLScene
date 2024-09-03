@@ -7,7 +7,7 @@ unit GLS.AnimatedSprite;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,10 +15,10 @@ uses
   System.SysUtils,
   System.Math,
    
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Scene,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.Material,
   GLS.PersistentClasses,
   GLS.XCollection,

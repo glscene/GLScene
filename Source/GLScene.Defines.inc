@@ -2,9 +2,9 @@
 // The graphics platform GLScene https://github.com/glscene
 //
 
-// Define SCENA for VCL & ARENA for FMX
-{$DEFINE USE_SCENA}
-{.$DEFINE USE_ARENA}
+// Define GLS for VCL or GXS for FMX
+{$DEFINE USE_GLS}
+{.$DEFINE USE_GXS}
 
 //
 // Additionnal support & dependencies
@@ -31,9 +31,15 @@
 // Activate OpenGL debug mode
 {.$DEFINE USE_OPENGL_DEBUG}
 
+// Activate support of Windows
+{.$DEFINE MSWINDOWS}
+
 // Avtivate using depricated OpenGL code
 {$DEFINE USE_DEPRECATED}
 
+{$IFDEF MSWINDOWS}
+  {$DEFINE SUPPORT_WGL}
+{$ENDIF}
 
 // Activate Multithread support
 {.$DEFINE USE_MULTITHREAD}
@@ -47,17 +53,10 @@
   {$DEFINE USE_MULTITHREAD}
 {$ENDIF}
 
-// Activate support of Windows
-{$DEFINE MSWINDOWS}
-
 
 //
 // Platform Specific
 //
-
-{$IFDEF MSWINDOWS}
-  {$DEFINE SUPPORT_WGL}
-{$ENDIF}
 
 {$IFNDEF CROSSVCL}
   {$IFDEF LINUX}

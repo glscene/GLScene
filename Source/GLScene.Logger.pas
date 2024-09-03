@@ -1,7 +1,7 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-unit GLS.Logger;
+unit GLScene.Logger;
 
 (*
   Activate USE_LOGGING in "GLS.inc" to turn on inner Scene logger.
@@ -11,7 +11,7 @@ unit GLS.Logger;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.Windows,

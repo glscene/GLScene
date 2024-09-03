@@ -10,16 +10,16 @@ unit GXS.Behaviours;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
   GXS.XCollection,
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.Scene,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.BaseClasses,
   GXS.Coordinates;
 

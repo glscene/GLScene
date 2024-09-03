@@ -15,8 +15,8 @@ uses
   Winapi.OpenGL,
   System.Classes,
 
-  GXS.OpenGLTokens,
-  GXS.VectorTypes,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
   GXS.Scene,
   GXS.Color,
   GXS.Material,

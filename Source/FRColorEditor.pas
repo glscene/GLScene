@@ -7,7 +7,7 @@ unit FRColorEditor;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   WinApi.Windows, 
@@ -22,10 +22,10 @@ uses
   VCL.Controls, 
   VCL.Graphics,
    
-  GLS.VectorGeometry, 
+  GLScene.VectorGeometry, 
   GLS.Color, 
   GLS.Texture, 
-  GLS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
   TRColorEditor = class(TFrame)

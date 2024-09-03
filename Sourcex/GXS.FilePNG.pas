@@ -5,7 +5,7 @@ unit GXS.FilePNG;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -31,12 +31,12 @@ type
     procedure LoadFromStream(stream: TStream); override;
     procedure SaveToStream(stream: TStream); override;
 
-    { Assigns from any Texture.}
+    // Assigns from any Texture
     procedure AssignFromTexture(textureContext: TgxContext;
       const textureHandle: GLuint;
-      textureTarget: TgxTextureTarget;
+      textureTarget: TglTextureTarget;
       const CurrentFormat: Boolean;
-      const intFormat: TgxInternalFormat); reintroduce;
+      const intFormat: TglInternalFormat); reintroduce;
   end;
 
 //==============================================================
@@ -91,14 +91,14 @@ end;
 
 procedure TgxPNGImage.AssignFromTexture(textureContext: TgxContext;
   const textureHandle: GLuint;
-  textureTarget: TgxTextureTarget;
+  textureTarget: TglTextureTarget;
   const CurrentFormat: Boolean;
-  const intFormat: TgxInternalFormat);
+  const intFormat: TglInternalFormat);
 var
   oldContext: TgxContext;
   contextActivate: Boolean;
   texFormat: Cardinal;
-  residentFormat: TgxInternalFormat;
+  residentFormat: TglInternalFormat;
   glTarget: GLEnum;
 begin
   if not ((textureTarget = ttTexture2D)
@@ -164,7 +164,7 @@ end;
 initialization
 //----------------------------------------------------------
 
-  { Register this Fileformat-Handler with GXScene }
+  // Register this Fileformat-Handler with GXScene
   RegisterRasterFormat('png', 'Portable Network Graphic', TgxPNGImage);
 
 end.

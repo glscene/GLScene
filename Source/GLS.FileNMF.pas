@@ -14,10 +14,10 @@ interface
 uses
   System.Classes,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.VectorFileObjects,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.VectorLists,
   GLS.ApplicationFileIO;
 

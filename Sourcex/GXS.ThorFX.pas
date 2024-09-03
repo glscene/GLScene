@@ -7,7 +7,7 @@ unit GXS.ThorFX;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,10 +19,10 @@ uses
   GXS.XCollection,
   GXS.Scene,
   GXS.PipelineTransformation,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Context,
   GXS.VectorLists,
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.Cadencer,
   GXS.Color,
   GXS.BaseClasses,

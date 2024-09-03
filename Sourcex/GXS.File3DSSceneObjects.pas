@@ -13,11 +13,11 @@ uses
   System.SysUtils,
   System.Math,
 
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Context,
   GXS.Scene,
   GXS.VectorFileObjects,
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.PersistentClasses,
   GXS.Coordinates,
   GXS.RenderContextInfo,

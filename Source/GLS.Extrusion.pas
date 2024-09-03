@@ -12,7 +12,7 @@ unit GLS.Extrusion;
 *)
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -20,17 +20,17 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Context,
   GLS.Objects,
   GLS.Scene,
   GLS.MultiPolygon,
   GLS.Color,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.RenderContextInfo,
   GLS.Nodes,
   GLS.State,
-  GLS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
 
@@ -249,7 +249,7 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLS.Spline,
+  GLScene.Spline,
   GLS.VectorLists,
   GLS.XOpenGL;
 

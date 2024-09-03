@@ -20,7 +20,7 @@ uses
   GLS.PersistentClasses,
   GLS.Cadencer,
   GLS.Objects,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.SceneViewer,
   GLS.Keyboard,
 
@@ -29,7 +29,7 @@ uses
 
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.GeomObjects,
   GLS.BitmapFont,
   GLS.WindowsFont,

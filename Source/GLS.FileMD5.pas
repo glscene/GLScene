@@ -7,7 +7,7 @@ unit GLS.FileMD5;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -17,8 +17,8 @@ uses
   GLS.PersistentClasses,
   GLS.Utils,
   GLS.ApplicationFileIO,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.VectorLists;
 
 type

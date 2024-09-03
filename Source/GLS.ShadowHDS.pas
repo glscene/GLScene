@@ -30,13 +30,13 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.VectorLists,
   GLS.HeightData,
   GLS.Graphics,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Texture,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Coordinates,
   GLS.Material;
 

@@ -7,7 +7,7 @@ unit GLS.FPSMovement;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -17,11 +17,11 @@ uses
   System.SysUtils,
   Vcl.Graphics,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Coordinates,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Context,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Scene,
   GLS.VectorFileObjects,
   GLS.VectorLists,

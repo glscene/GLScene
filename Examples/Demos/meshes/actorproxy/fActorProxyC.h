@@ -19,7 +19,7 @@
 #include "GLS.Objects.hpp"
 #include "GLS.GeomObjects.hpp"
 #include "GLS.ProxyObjects.hpp"
-#include "GLS.VectorGeometry.hpp"
+#include "GLScene.VectorGeometry.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.Texture.hpp"
 #include "GLS.Material.hpp"

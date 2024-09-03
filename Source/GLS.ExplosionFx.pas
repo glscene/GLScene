@@ -21,14 +21,14 @@ unit GLS.ExplosionFx;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
 
-  GLS.OpenGLTokens,
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  GLScene.OpenGLTokens,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GLS.Scene,
   GLS.VectorFileObjects,
   GLS.VectorLists,

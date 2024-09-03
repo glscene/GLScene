@@ -16,7 +16,7 @@ uses
   Vcl.Forms,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Objects,
   GLS.Cadencer,
   GLS.VectorFileObjects,
@@ -32,7 +32,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.Utils,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Keyboard,
   GLS.PersistentClasses, GLS.DCE;
 

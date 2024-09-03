@@ -11,9 +11,9 @@ unit GLS.PhysJoints;
 interface
 
 uses
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Scene,
-  GLS.VectorGeometry;
+  GLScene.VectorGeometry;
 
 type
 

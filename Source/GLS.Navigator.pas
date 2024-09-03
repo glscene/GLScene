@@ -7,7 +7,7 @@ unit GLS.Navigator;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -26,8 +26,8 @@ uses
   GLS.Context,
   GLS.BaseClasses,
   GLS.PersistentClasses,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.Keyboard,
   GLS.HudObjects,
   GLS.Coordinates,

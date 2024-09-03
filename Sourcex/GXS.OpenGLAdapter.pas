@@ -7,7 +7,7 @@ unit GXS.OpenGLAdapter;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,10 +15,11 @@ uses
   Winapi.Windows,
   System.SysUtils,
 
-  GXS.Strings,
-  GXS.Logger,
-  GXS.VectorGeometry,
-  GXS.VectorTypes;
+  GLScene.OpenGLTokens,
+  GLScene.Strings,
+  GLScene.Logger,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes;
 
 const
   {$IFDEF CROSSVCL}

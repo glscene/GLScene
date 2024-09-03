@@ -24,7 +24,7 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.SimpleNavigation,
   GLS.Utils,
   GLS.Mesh;

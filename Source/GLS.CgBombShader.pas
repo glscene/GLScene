@@ -14,7 +14,7 @@ uses
   GLS.Texture,
   GLS.Cadencer,
   GLS.Context,
-  GLS.Strings,
+  GLScene.Strings,
   GLS.Material,
   GLS.RenderContextInfo,
   GLS.TextureFormat,

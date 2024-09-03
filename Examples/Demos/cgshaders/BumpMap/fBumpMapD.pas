@@ -18,7 +18,7 @@ uses
 
   Cg.GL,
   GLS.CgShader,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.SceneViewer,
   GLS.Cadencer,
   GLS.Scene,

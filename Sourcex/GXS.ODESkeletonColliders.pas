@@ -12,9 +12,9 @@ uses
 
   ODE.Import,
 
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.PersistentClasses,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.VectorFileObjects;
 
 type

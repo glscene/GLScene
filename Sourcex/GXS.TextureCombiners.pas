@@ -7,7 +7,7 @@ unit GXS.TextureCombiners;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,

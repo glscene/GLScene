@@ -19,7 +19,7 @@ unit GXS.HeightData;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.Windows, // for CreateMonochromeBitmap
@@ -28,7 +28,7 @@ uses
   FMX.Objects,
   FMX.Graphics,
 
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.BaseClasses,
   GXS.ApplicationFileIO,
   GXS.Utils,

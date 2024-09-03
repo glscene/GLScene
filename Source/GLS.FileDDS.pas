@@ -7,7 +7,7 @@ unit GLS.FileDDS;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,14 +19,14 @@ uses
   GLS.Context,
   GLS.Graphics,
   GLS.Texture,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.TextureFormat,
   GLS.CompositeImage,
   GLS.MultiSampleImage,
 //  GLS.RGBE,
   GLS.ApplicationFileIO,
   GLS.Material,
-  GLS.Strings;
+  GLScene.Strings;
 
 type
 

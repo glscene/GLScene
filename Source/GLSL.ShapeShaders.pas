@@ -11,7 +11,7 @@ unit GLSL.ShapeShaders;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,7 +19,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Scene,
   GLS.BaseClasses,
   GLS.State,
@@ -27,8 +27,8 @@ uses
   GLS.Graphics,
   GLS.RenderContextInfo,
   GLS.Coordinates,
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GLS.TextureFormat,
   GLS.Color,
   GLS.Texture,

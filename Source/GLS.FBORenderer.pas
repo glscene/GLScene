@@ -7,7 +7,7 @@ unit GLS.FBORenderer;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,10 +15,10 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.TextureFormat,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
 
   GLS.PersistentClasses,
   GLS.PipelineTransformation,
@@ -30,7 +30,7 @@ uses
   GLS.RenderContextInfo,
   GLS.State,
   GLS.MultiSampleImage,
-  GLS.Logger;
+  GLScene.Logger;
 
 const
   MaxColorAttachments = 32;

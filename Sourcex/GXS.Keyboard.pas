@@ -15,7 +15,7 @@ unit GXS.Keyboard;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.Windows,

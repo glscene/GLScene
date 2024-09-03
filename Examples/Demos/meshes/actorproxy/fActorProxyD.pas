@@ -17,13 +17,13 @@ uses
 
   
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.SceneViewer,
   GLS.VectorFileObjects,
   GLS.Objects,
   GLS.ProxyObjects,
   GLS.GeomObjects,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Cadencer,
   GLS.Texture,
   GLS.Material,

@@ -10,14 +10,14 @@ unit Formatx.VfsPAK;
 *)
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.Contnrs,
   System.SysUtils,
   GXS.ApplicationFileIO,
-  GXS.Strings;
+  GLScene.Strings;
 
 const
   SIGN = 'PACK'; // Signature for uncompressed - raw pak.

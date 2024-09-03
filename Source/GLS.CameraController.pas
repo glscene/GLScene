@@ -18,8 +18,8 @@ uses
   System.Contnrs,
   System.Types,
 
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
 
   GLS.Scene,
   GLS.Coordinates,

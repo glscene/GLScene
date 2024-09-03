@@ -7,7 +7,7 @@ unit GXS.Skydome;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -17,8 +17,8 @@ uses
   System.Math,
   FMX.Graphics,
 
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.Scene,
   GXS.Context,
   GXS.State,

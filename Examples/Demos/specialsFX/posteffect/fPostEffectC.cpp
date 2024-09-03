@@ -13,12 +13,11 @@
 #pragma link "GLS.Coordinates"
 
 #pragma link "GLS.Material"
-#pragma link "GLPostEffects"
 #pragma link "GLS.Scene"
 #pragma link "GLS.SimpleNavigation"
 #pragma link "GLS.VectorFileObjects"
 #pragma link "GLS.SceneViewer"
-#pragma link "GLSL.PostEffects"
+#pragma link "GLSL.PostEffects"  // old #pragma link "GLPostEffects"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 //---------------------------------------------------------------------------
@@ -72,9 +71,9 @@ void __fastcall TMainForm::GLPostEffect1CustomEffect(TObject *Sender, TGLRenderC
   int i;
 
   for (i = 0; i <= 7; i++) {
-	&Buffer[i]->r = (int)(&Buffer[i + 5]->r * 2);
-	&Buffer[i]->g = (int)(&Buffer[i]->g * 1.5);
-	&Buffer[i]->b = (int)(&Buffer[i + 5]->b * 1.5);
+///	&Buffer[i]->r = (int)(&Buffer[i + 5]->r * 2);
+///	&Buffer[i]->g = (int)(&Buffer[i]->g * 1.5);
+///	&Buffer[i]->b = (int)(&Buffer[i + 5]->b * 1.5);
   }
 }
 //---------------------------------------------------------------------------

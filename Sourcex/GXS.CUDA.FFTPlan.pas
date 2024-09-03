@@ -15,7 +15,7 @@ uses
 
   GXS.CUDA.API,
   GXS.CUDA.Context,
-  GXS.Strings;
+  GLScene.Strings;
 
 type
 

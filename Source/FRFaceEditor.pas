@@ -7,7 +7,7 @@ unit FRFaceEditor;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   WinApi.Windows,

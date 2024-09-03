@@ -14,7 +14,7 @@ uses
   Winapi.OpenGLext,
   System.Classes,
   System.SysUtils,
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Context,
   GLS.Graphics,
   GLS.ApplicationFileIO,

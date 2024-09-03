@@ -21,7 +21,7 @@ unit GLSL.ProjectedTextures;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -31,12 +31,12 @@ uses
   GLS.Scene,
   GLS.PersistentClasses,
   GLS.Texture,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Context,
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.TextureFormat,
-  GLS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
   TGLSLProjectedTexturesStyle = (ptsLight, ptsShadow);

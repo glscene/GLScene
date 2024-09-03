@@ -7,12 +7,12 @@ unit GXS.RenderContextInfo;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.PersistentClasses,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.State,
   GXS.PipelineTransformation,
   GXS.Color;

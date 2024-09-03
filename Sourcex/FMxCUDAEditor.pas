@@ -24,7 +24,7 @@ uses
   FMX.StdCtrls,
   FMX.Controls.Presentation,
 
-  GXS.Strings,
+  GLScene.Strings,
   CUDAx.API,
   CUDAx.FFTPlan,
   CUDAx.Graphics;

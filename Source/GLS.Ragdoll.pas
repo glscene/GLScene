@@ -7,13 +7,13 @@ unit GLS.Ragdoll;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   GLS.Scene,
   GLS.PersistentClasses,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.VectorFileObjects,
   GLS.VectorLists,
   GLS.Objects;

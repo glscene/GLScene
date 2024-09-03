@@ -11,7 +11,7 @@ unit GLS.BumpmapHDS;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -20,9 +20,9 @@ uses
   System.UITypes,
   Vcl.Graphics,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
 
   GLS.Coordinates,
   GLS.HeightData,

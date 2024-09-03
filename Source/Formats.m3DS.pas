@@ -17,7 +17,7 @@ unit Formats.m3DS;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 {$ALIGN ON}
 {$MINENUMSIZE 4}
 {$RANGECHECKS OFF}

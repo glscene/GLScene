@@ -222,7 +222,7 @@ implementation
 //-----------------------------------------
 
 uses
-  GXS.Strings,
+  GLScene.Strings,
   GXS.TextureFormat;
 
 

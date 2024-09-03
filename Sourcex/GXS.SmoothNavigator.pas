@@ -20,16 +20,16 @@ unit GXS.SmoothNavigator;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Types,
   System.Classes,
 
   GXS.XCollection,
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.Navigator,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Scene,
   GXS.Coordinates,
   GXS.Screen,
@@ -727,7 +727,7 @@ begin
 
     if (Abs(FinalPitch) > FCutOff) or (Abs(FinalTurn) > FCutOff) then
     begin
-      MovingObject.AbsolutePosition := GXS.VectorGeometry.MoveObjectAround(
+      MovingObject.AbsolutePosition := GLScene.VectorGeometry.MoveObjectAround(
         MovingObject.AbsolutePosition, lUp, AObject.AbsolutePosition, FinalPitch, FinalTurn);
       Result := True;
     end;

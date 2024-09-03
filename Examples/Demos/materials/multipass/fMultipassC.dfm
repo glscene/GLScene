@@ -1,28 +1,33 @@
 object Form1: TForm1
   Left = 343
   Top = 159
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Multipass'
-  ClientHeight = 325
-  ClientWidth = 430
+  ClientHeight = 569
+  ClientWidth = 767
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -10
+  Font.Height = -18
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 430
-    Height = 325
-    Margins.Left = 2
-    Margins.Top = 2
-    Margins.Right = 2
-    Margins.Bottom = 2
+    Width = 767
+    Height = 569
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Camera = GLCamera1
-    FieldOfView = 145.794540405273400000
+    FieldOfView = 160.064468383789100000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -30,14 +35,14 @@ object Form1: TForm1
     TabOrder = 0
   end
   object BUBind: TButton
-    Left = 168
-    Top = 8
-    Width = 75
-    Height = 25
-    Margins.Left = 2
-    Margins.Top = 2
-    Margins.Right = 2
-    Margins.Bottom = 2
+    Left = 294
+    Top = 14
+    Width = 131
+    Height = 44
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Bind Shaders'
     TabOrder = 1
     OnClick = BUBindClick

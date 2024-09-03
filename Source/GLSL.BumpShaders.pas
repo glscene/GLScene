@@ -34,10 +34,10 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
 
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.Material,
   GLS.Graphics,
   GLS.VectorLists,
@@ -50,7 +50,7 @@ uses
   GLS.Scene,
   GLS.Context,
   GLS.Cadencer,
-  GLS.Strings,
+  GLScene.Strings,
   GLSL.Shader,
   GLSL.CustomShader,
   GLS.Utils;

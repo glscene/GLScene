@@ -7,7 +7,7 @@ unit GLS.CUDA.APIComps;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Types,
@@ -17,11 +17,11 @@ uses
   GLS.PersistentClasses,
   GLS.BaseClasses,
   GLS.Context,
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GLS.VectorLists,
   GLS.Graphics,
-  GLS.Strings,
+  GLScene.Strings,
   GLS.Utils,
 
   GLS.CUDA.Compiler,

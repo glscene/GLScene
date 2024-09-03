@@ -211,7 +211,7 @@ uses
   System.SysUtils,
   System.IOUtils,
   System.Math,
-  GLS.VectorGeometry;
+  GLScene.VectorGeometry;
 
 type
 

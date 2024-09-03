@@ -11,7 +11,7 @@ unit GLS.TerrainRenderer;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,19 +19,19 @@ uses
   System.SysUtils,
   System.Types,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Scene,
   GLS.Coordinates,
   GLS.HeightData,
   GLS.Material,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Context,
   GLS.ROAMPatch,
   GLS.VectorLists,
   GLS.RenderContextInfo,
   GLS.XOpenGL,
   GLS.Utils,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Texture;
 
 const

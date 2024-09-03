@@ -7,7 +7,7 @@ unit GLS.ThorFX;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,13 +16,13 @@ uses
   System.Types,
   System.Math,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Scene,
   GLS.XCollection,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Context,
   GLS.VectorLists,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Cadencer,
   GLS.Color,
   GLS.BaseClasses,

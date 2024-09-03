@@ -24,7 +24,7 @@ unit GLS.EParticleMasksManager;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Types,
@@ -33,8 +33,8 @@ uses
   System.Math,
   VCL.Graphics,
 
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
 
   GLS.Texture,
   GLS.Material,

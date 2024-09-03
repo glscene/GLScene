@@ -11,21 +11,21 @@ unit GLS.Movement;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLS.VectorTypes,
-  GLS.OpenGLTokens,
+  GLScene.VectorTypes,
+  GLScene.OpenGLTokens,
   GLS.Scene,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.XCollection,
-  GLS.Spline,
+  GLScene.Spline,
   GLS.Objects,
-  GLS.Strings,
+  GLScene.Strings,
   GLS.BaseClasses,
   GLS.Utils;
 

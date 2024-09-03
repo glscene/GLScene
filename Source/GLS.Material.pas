@@ -7,7 +7,7 @@ unit GLS.Material;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -15,11 +15,11 @@ uses
   System.Types,
   Vcl.Graphics,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.TextureFormat,
-  GLS.Strings,
+  GLScene.Strings,
 
   GLS.RenderContextInfo,
   GLS.BaseClasses,
@@ -33,7 +33,7 @@ uses
   GLS.ApplicationFileIO,
   GLS.Graphics,
   GLS.Utils,
-  GLS.Logger;
+  GLScene.Logger;
 
 {$UNDEF USE_MULTITHREAD}
 type

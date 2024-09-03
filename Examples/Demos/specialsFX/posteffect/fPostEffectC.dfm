@@ -1,46 +1,65 @@
 object MainForm: TMainForm
   Left = 0
   Top = 0
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Post Effect'
-  ClientHeight = 340
-  ClientWidth = 545
+  ClientHeight = 595
+  ClientWidth = 968
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'Tahoma'
   Font.Style = []
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 23
   object Label1: TLabel
-    Left = 543
-    Top = 33
-    Width = 2
-    Height = 307
+    Left = 964
+    Top = 58
+    Width = 4
+    Height = 537
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alRight
     AutoSize = False
-    ExplicitLeft = 497
-    ExplicitHeight = 293
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 545
-    Height = 33
+    Width = 968
+    Height = 58
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alTop
     TabOrder = 0
     object Label2: TLabel
-      Left = 8
-      Top = 10
-      Width = 50
-      Height = 13
+      Left = 14
+      Top = 18
+      Width = 82
+      Height = 23
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'PostEffect'
     end
     object ComboBox1: TComboBox
-      Left = 64
-      Top = 6
-      Width = 145
+      Left = 112
+      Top = 11
+      Width = 254
       Height = 21
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Style = csDropDownList
       ItemIndex = 0
       TabOrder = 0
@@ -59,12 +78,16 @@ object MainForm: TMainForm
   end
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 33
-    Width = 543
-    Height = 307
+    Top = 58
+    Width = 964
+    Height = 537
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = 16776176
-    FieldOfView = 143.915725708007800000
+    FieldOfView = 158.902450561523400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 1

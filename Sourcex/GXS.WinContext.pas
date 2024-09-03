@@ -7,7 +7,7 @@ unit GXS.WinContext;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -22,8 +22,8 @@ uses
 
   GXS.Context,
   GXS.State,
-  GXS.Strings,
-  GXS.VectorGeometry;
+  GLScene.Strings,
+  GLScene.VectorGeometry;
 
 type
   // A context driver for standard Windows OpenGL

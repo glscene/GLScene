@@ -18,7 +18,7 @@ uses
   Vcl.Samples.Spin,
   
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Objects,
   GLS.Coordinates,
   GLS.SceneViewer,
@@ -26,7 +26,7 @@ uses
   GLS.BaseClasses,
   GLS.Cadencer,
   GLS.AnimationUtils,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.BitmapFont,
   GLS.WindowsFont;
 

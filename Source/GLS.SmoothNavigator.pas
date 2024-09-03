@@ -22,7 +22,7 @@ unit GLS.SmoothNavigator;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Types,
@@ -30,9 +30,9 @@ uses
   
   GLS.Scene,
   GLS.PersistentClasses,
-  GLS.VectorTypes, 
+  GLScene.VectorTypes, 
   GLS.Navigator,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Coordinates,
   GLS.Screen, 
   GLS.XCollection;
@@ -725,7 +725,7 @@ begin
 
     if (Abs(FinalPitch) > FCutOff) or (Abs(FinalTurn) > FCutOff) then
     begin
-      MovingObject.AbsolutePosition := GLS.VectorGeometry.MoveObjectAround(
+      MovingObject.AbsolutePosition := GLScene.VectorGeometry.MoveObjectAround(
         MovingObject.AbsolutePosition, lUp, AObject.AbsolutePosition, FinalPitch, FinalTurn);
       Result := True;
     end;

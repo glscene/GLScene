@@ -23,8 +23,8 @@ uses
 
   GXSL.Parameter,
   GXS.TextureFormat,
-  GXS.VectorGeometry,
-  GXS.Strings;
+  GLScene.VectorGeometry,
+  GLScene.Strings;
 
 type
   TShaderUniformEditorForm = class(TForm)
@@ -178,7 +178,7 @@ end;
 
 procedure TShaderUniformEditorForm.LBUniformsClick(Sender: TObject);
 var
-  SV: TgxSwizzleVector;
+  SV: TglSwizzleVector;
   IParam: IgxShaderParameter;
 begin
   if LBUniforms.ItemIndex >= 0 then
@@ -244,14 +244,14 @@ end;
 
 procedure TShaderUniformEditorForm.ColorGroupClick(Sender: TObject);
 var
-  SV: TgxSwizzleVector;
+  SV: TglSwizzleVector;
 begin
   if LBUniforms.ItemIndex >= 0 then
   begin
     if FUniformList[LBUniforms.ItemIndex].GLSLSamplerType = GLSLSamplerUndefined then
       exit;
     SV := FUniformList[LBUniforms.ItemIndex].GetTextureSwizzle;
-    SV[TGroupBox(Sender).Tag] := TgxTextureSwizzle(TGroupBox(Sender).Index);
+    SV[TGroupBox(Sender).Tag] := TglTextureSwizzle(TGroupBox(Sender).Index);
     FUniformList[LBUniforms.ItemIndex].SetTextureSwizzle(SV);
   end;
 end;
@@ -266,9 +266,7 @@ begin
   SamplerBox.Items.Add(S);
 end;
 
-//-----------------------------------------------------------
-initialization
-//-----------------------------------------------------------
+initialization //-----------------------------------------------------------
 
 finalization
   ReleaseShaderUniformEditor;

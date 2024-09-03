@@ -23,7 +23,7 @@ unit GLS.State;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 { .$DEFINE USE_CACHE_MISS_CHECK }
 
 uses
@@ -32,9 +32,9 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.TextureFormat,
   GLS.Utils;
 

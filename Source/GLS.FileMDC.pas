@@ -15,7 +15,7 @@ unit GLS.FileMDC;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes, 
@@ -24,7 +24,7 @@ uses
   GLS.VectorFileObjects, 
   GLS.Material, 
   GLS.ApplicationFileIO,
-  GLS.VectorGeometry;
+  GLScene.VectorGeometry;
 
 const
   MDCFILE_IDENTITY = 'IDPC';

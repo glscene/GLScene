@@ -7,22 +7,22 @@ unit GLS.ROAMPatch;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
   System.SysUtils,
   
-  GLS.OpenGLTokens, 
+  GLScene.OpenGLTokens, 
   GLS.XOpenGL, 
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.HeightData, 
   GLS.VectorLists, 
   GLS.Context,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Isolines,
-  GLS.Strings;
+  GLScene.Strings;
 
 type
 

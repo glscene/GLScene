@@ -90,9 +90,9 @@ begin
     CBMagFilter.Items.Add(GetEnumName(TypeInfo(TgxMagFilter), I));
   for I := 0 to Integer(High(TgxMinFilter)) do
     CBMinFilter.Items.Add(GetEnumName(TypeInfo(TgxMinFilter), I));
-  for I := 0 to Integer(High(TgxTextureFilteringQuality)) do
+  for I := 0 to Integer(High(TglTextureFilteringQuality)) do
     CBFilteringQuality.Items.Add
-      (GetEnumName(TypeInfo(TgxTextureFilteringQuality), I));
+      (GetEnumName(TypeInfo(TglTextureFilteringQuality), I));
   for I := 0 to Integer(High(TgxTextureMode)) do
     CBTextureMode.Items.Add(GetEnumName(TypeInfo(TgxTextureMode), I));
   for I := 0 to Integer(High(TgxTextureWrap)) do
@@ -194,7 +194,7 @@ end;
 
 procedure TTextureEditFrame.CBFilteringQualityChange(Sender: TObject);
 begin
-  FTexture.FilteringQuality := TgxTextureFilteringQuality
+  FTexture.FilteringQuality := TglTextureFilteringQuality
     (CBFilteringQuality.ItemIndex);
   DoOnChange;
 end;

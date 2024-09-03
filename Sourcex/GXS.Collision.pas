@@ -7,7 +7,7 @@ unit GXS.Collision;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -15,12 +15,12 @@ uses
 
   GXS.XCollection,
   GXS.Scene,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.VectorLists,
   GXS.VectorFileObjects,
   GXS.GeometryBB,
   GXS.Manager,
-  GXS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
   TgxBCollision = class;

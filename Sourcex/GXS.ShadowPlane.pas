@@ -12,7 +12,7 @@ unit GXS.ShadowPlane;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -22,9 +22,9 @@ uses
   System.Classes,
   FMX.Effects,
 
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.PersistentClasses,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Scene,
   GXS.PipelineTransformation,
   GXS.Context,

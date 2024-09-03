@@ -10,7 +10,7 @@ unit GLS.FileOCT;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -23,7 +23,7 @@ uses
   GLS.State,
   GLS.TextureFormat,
   GLS.VectorFileObjects,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.ApplicationFileIO,
   Formats.OCT;
 

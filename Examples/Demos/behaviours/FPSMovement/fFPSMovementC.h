@@ -24,7 +24,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Keyboard.hpp"
 #include "GLS.GeomObjects.hpp"
-#include "GLS.VectorGeometry.hpp"
+#include "GLScene.VectorGeometry.hpp"
 #include "GLS.Octree.hpp"
 #include "GLS.VectorLists.hpp"
 #include "GLS.Collision.hpp"

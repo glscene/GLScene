@@ -27,14 +27,14 @@ uses
   GLS.Utils,
   GLS.FileDDS,
   GLS.Context,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.AsyncTimer,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.Material,
   GLS.CompositeImage,
   GLS.VectorLists,
-  GLS.VectorTypes, GLS.SimpleNavigation;
+  GLScene.VectorTypes, GLS.SimpleNavigation;
 
 type
 

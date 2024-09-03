@@ -35,8 +35,8 @@ type
   protected
     procedure DoApply(var rci: TgxRenderContextInfo; Sender: TObject); override;
     // Implementing IPostShader.
-    procedure DoUseTempTexture(const TempTexture: TgxTextureHandle; TextureTarget: TgxTextureTarget);
-    function GetTextureTarget: TgxTextureTarget;
+    procedure DoUseTempTexture(const TempTexture: TgxTextureHandle; TextureTarget: TglTextureTarget);
+    function GetTextureTarget: TglTextureTarget;
   public
     constructor Create(AOwner: TComponent); override;
     property TransformationPower: Single read FTransformationPower write FTransformationPower;
@@ -130,13 +130,13 @@ begin
 end;
 
 procedure TCGxCustomPostTransformationShader.DoUseTempTexture(
-  const TempTexture: TgxTextureHandle; TextureTarget: TgxTextureTarget);
+  const TempTexture: TgxTextureHandle; TextureTarget: TglTextureTarget);
 begin
   FragmentProgram.ParamByName('snapshotTex').SetAsTextureRECT(TempTexture.Handle);
   FragmentProgram.ParamByName('snapshotTex').EnableTexture;
 end;
 
-function TCGxCustomPostTransformationShader.GetTextureTarget: TgxTextureTarget;
+function TCGxCustomPostTransformationShader.GetTextureTarget: TglTextureTarget;
 begin
   Result := ttTextureRect;
 end;

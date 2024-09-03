@@ -7,7 +7,7 @@ unit GXS.FBO;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,7 +16,7 @@ uses
   System.SysUtils,
   FMX.Dialogs,
 
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.Scene,
   GXS.Context,
   GXS.State,
@@ -297,7 +297,7 @@ end;
 
 procedure TgxFrameBuffer.AttachTexture(n: Cardinal; Texture: TgxTexture);
 var
-  textarget: TgxTextureTarget;
+  textarget: TglTextureTarget;
 begin
   Assert(n < MaxColorAttachments);
   Texture.Handle;
@@ -626,7 +626,7 @@ end;
 procedure TgxFrameBuffer.PostRender(const PostGenerateMipmap: Boolean);
 var
   n: Integer;
-  textarget: TgxTextureTarget;
+  textarget: TglTextureTarget;
 begin
   if (FTextureMipmap > 0) and PostGenerateMipmap then
   begin

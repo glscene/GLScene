@@ -19,12 +19,12 @@ uses
   Cg.Shader,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Objects,
   GLS.SceneViewer,
   GLS.Texture,
 
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Cadencer,
   GLS.VectorFileObjects,
   GLS.File3DS,

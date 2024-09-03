@@ -16,12 +16,10 @@ unit GLS.PersistentClasses;
 *)
 interface
 
-{$I GLS.Scene.inc}
-
 uses
   System.Classes,
   System.SysUtils,
-  GLS.Strings;
+  GLScene.Strings;
 
 type
 

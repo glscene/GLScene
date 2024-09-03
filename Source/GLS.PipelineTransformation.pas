@@ -7,14 +7,14 @@ unit GLS.PipelineTransformation;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
 
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
-  GLS.Logger;
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.Logger;
 
 const
   MAX_MATRIX_STACK_DEPTH = 128;

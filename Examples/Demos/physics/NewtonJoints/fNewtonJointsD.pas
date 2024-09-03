@@ -13,7 +13,7 @@ uses
   Vcl.Controls,
 
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.NGDManager,
   GLS.Objects,
   GLS.Coordinates,
@@ -21,7 +21,7 @@ uses
   GLS.SceneViewer,
 
   GLS.BaseClasses,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.SimpleNavigation,
   GLS.Keyboard,
   GLS.GeomObjects,

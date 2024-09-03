@@ -13,7 +13,7 @@ unit GLS.Mesh;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -21,10 +21,10 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
-  GLS.Strings,
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  GLScene.OpenGLTokens,
+  GLScene.Strings,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GLS.XOpenGL,
   GLS.Context,
   GLS.Scene,

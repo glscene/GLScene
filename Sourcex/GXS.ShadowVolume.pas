@@ -13,7 +13,7 @@ unit GXS.ShadowVolume;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -26,8 +26,8 @@ uses
   GXS.PipelineTransformation,
   GXS.VectorLists,
   GXS.State, 
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.Context,
   GXS.Silhouette,
   GXS.PersistentClasses,

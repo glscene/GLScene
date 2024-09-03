@@ -13,7 +13,7 @@ unit GXS.FileMDC;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -22,7 +22,7 @@ uses
   GXS.VectorFileObjects,
   GXS.Material,
   GXS.ApplicationFileIO,
-  GXS.VectorGeometry;
+  GLScene.VectorGeometry;
 
 const
   MDCFILE_IDENTITY = 'IDPC';

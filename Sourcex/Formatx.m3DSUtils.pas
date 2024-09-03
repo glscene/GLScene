@@ -11,7 +11,7 @@ unit Formatx.m3DSUtils;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 {$R-}
 
 uses
@@ -21,7 +21,7 @@ uses
   Formatx.m3DSTypes,
   Formatx.m3DSConst,
 
-  GXS.Strings;
+  GLScene.Strings;
 
 // functions to retrieve global settings of a specific 3DS database
 function GetAtmosphere(const Source: TFile3DS; var DB: TDatabase3DS): TAtmosphere3DS;

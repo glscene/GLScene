@@ -7,7 +7,7 @@ unit GXS.AnimatedSprite;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,10 +18,10 @@ uses
   System.Math,
 
   GXS.XCollection,
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.PersistentClasses,
-  GXS.Strings,
+  GLScene.Strings,
 
   GXS.Scene,
   GXS.Context,

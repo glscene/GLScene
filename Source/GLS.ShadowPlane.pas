@@ -12,19 +12,19 @@ unit GLS.ShadowPlane;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.Types,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.PersistentClasses,
   GLS.PipelineTransformation,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Scene,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Objects,
   GLS.Color,
   GLS.RenderContextInfo,

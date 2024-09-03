@@ -7,7 +7,7 @@ unit GLSL.PhongShader;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,10 +16,10 @@ uses
   System.SysUtils,
 
   GLS.Texture,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.VectorLists,
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Context,
   GLSL.AsmShader,
   GLS.RenderContextInfo,

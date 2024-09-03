@@ -7,7 +7,7 @@ unit GXS.WaterPlane;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,8 +18,8 @@ uses
   FMX.Types,
   FMX.Graphics,
 
-  GXS.VectorGeometry,
-  GXS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GXS.VectorLists,
   GXS.PersistentClasses,
   GXS.BaseClasses,

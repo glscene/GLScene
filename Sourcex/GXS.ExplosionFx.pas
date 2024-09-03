@@ -23,15 +23,15 @@ unit GXS.ExplosionFx;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
 
   GXS.XCollection,
-  GXS.VectorGeometry,
-  GXS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GXS.VectorLists,
 
   GXS.Scene,

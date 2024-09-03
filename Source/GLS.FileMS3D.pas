@@ -7,7 +7,7 @@ unit GLS.FileMS3D;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Math,
@@ -15,11 +15,11 @@ uses
   System.SysUtils, 
    
   GLS.VectorFileObjects,
-  GLS.VectorTypes, 
+  GLScene.VectorTypes, 
   GLS.Material, 
   GLS.Color, 
   GLS.Texture,
-  GLS.VectorGeometry, 
+  GLScene.VectorGeometry, 
   GLS.VectorLists, 
   GLS.ApplicationFileIO;
   

@@ -19,7 +19,7 @@
 #pragma link "GLS.VectorFileObjects"
 #pragma link "GLS.Scene"
 #pragma link "GLS.File3DS"
-#pragma link "GLS.VectorGeometry"
+#pragma link "GLScene.VectorGeometry"
 #pragma link "GLS.Keyboard"
 #pragma link "GLS.Coordinates"
 

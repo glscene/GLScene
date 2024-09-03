@@ -12,7 +12,7 @@ unit GLS.Polyhedra;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -23,12 +23,12 @@ uses
   System.Math,
   VCL.Consts,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
-  GLS.VectorTypesExt,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
+  GLScene.VectorTypesExt,
   GLS.TextureFormat,
 
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Scene,
   GLS.BaseClasses,
   GLS.Objects,
@@ -37,11 +37,11 @@ uses
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.Silhouette,
-  GLS.Strings,
+  GLScene.Strings,
   GLS.Texture,
   GLS.Material,
   GLS.Mesh,
-  GLS.Logger,
+  GLScene.Logger,
   GLS.Octree,
   GLS.GeometryBB,
   GLS.ApplicationFileIO,

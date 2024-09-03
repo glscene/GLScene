@@ -24,7 +24,7 @@ uses
 
   GLS.VectorFileObjects,
   GLS.Octree,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.GeomObjects,
   GLS.BaseClasses,
   GLS.BitmapFont,
@@ -34,7 +34,7 @@ uses
   GLS.File3DS,
   GLS.Navigator,
   GLS.Keyboard,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Color,
   GLS.HUDObjects,
   GLS.Texture,

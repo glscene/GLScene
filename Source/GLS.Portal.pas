@@ -14,18 +14,18 @@ unit GLS.Portal;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
   GLS.PersistentClasses,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.VectorFileObjects,
   GLS.Scene,
   GLS.Material,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.RenderContextInfo;
 
 type

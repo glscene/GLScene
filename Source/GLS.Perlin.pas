@@ -13,7 +13,7 @@ unit GLS.Perlin;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -21,7 +21,7 @@ uses
   System.Math,
   Vcl.Graphics,
 
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.HeightData;
 
 type

@@ -8,7 +8,7 @@ unit GXS.ApplicationFileIO;
 *)
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -16,7 +16,7 @@ uses
   System.SysUtils,
 
   GXS.BaseClasses,
-  GXS.Strings;
+  GLScene.Strings;
 
 const
   RC_DDS_Type = RT_RCDATA;

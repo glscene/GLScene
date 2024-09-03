@@ -13,10 +13,10 @@ uses
 
   GLS.Scene,
   GLS.Objects,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Texture,
   GLS.Cadencer,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.SceneViewer,
   GLS.Color,
   GLS.Coordinates,

@@ -7,7 +7,7 @@ unit GLS.Windows;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,11 +19,11 @@ uses
   Vcl.Controls,
   Vcl.Graphics,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.PersistentClasses,
-  GLS.Strings,
+  GLScene.Strings,
   GLS.Coordinates,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Objects,
   GLS.State,
   GLS.Utils,
@@ -33,7 +33,7 @@ uses
   GLS.Context,
   GLS.BitmapFont,
   GLS.WindowsFont,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Gui,
   GLS.Color,
   GLS.Texture,

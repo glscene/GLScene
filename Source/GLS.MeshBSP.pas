@@ -10,7 +10,7 @@ unit GLS.MeshBSP;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -19,11 +19,11 @@ uses
 
   GLS.VectorFileObjects,
   GLS.Material,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.VectorLists,
   GLS.Color,
   GLS.RenderContextInfo,
-  GLS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
 

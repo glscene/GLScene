@@ -12,12 +12,12 @@ uses
   
   GLS.Objects,
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Blur,
   GLS.SimpleNavigation,
   GLS.Texture,
   GLS.Cadencer,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.GeomObjects,
   GLS.SceneViewer,
  

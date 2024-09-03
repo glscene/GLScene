@@ -7,7 +7,7 @@ unit GLS.SkyDome;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -17,9 +17,9 @@ uses
   System.Math,
   Vcl.Graphics,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.Scene,
   GLS.Graphics,
   GLS.Color,

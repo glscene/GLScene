@@ -40,9 +40,11 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
 
   // fill the tiled area with random tiles
 	RandSeed = 0;
+    TilePlane = new TGLTilePlane (this);
+
 	for (int i = -20; i < 20; i++)
 		for (int j = -20; j < 20; j++)
-			GLTilePlane->Tiles[i][j] =  Random(GLMaterialLibrary->Materials->Count - 1) + 1;
+///?			TilePlane->Tiles[i][j] =  Random(GLMaterialLibrary->Materials->Count - 1) + 1;
 
 	// set all tile materials to anisotropic add them to the material selection combo
 	for (i = 0; GLMaterialLibrary->Materials->Count - 1; i++) {
@@ -51,13 +53,14 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
 		CBMaterial->Items->Add(GLMaterialLibrary->Materials->Items[i]->Name);
 	}
 	CBMaterial->ItemIndex = 0;
+    TilePlane->Free();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
 		  TPoint &MousePos, bool &Handled)
 {
-  GLCamera->AdjustDistanceToTarget(Power(1.1, WheelDelta / 120));
+  Camera->AdjustDistanceToTarget(Power(1.1, WheelDelta / 120));
 }
 //---------------------------------------------------------------------------
 

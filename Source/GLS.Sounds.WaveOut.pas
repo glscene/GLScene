@@ -7,7 +7,7 @@ unit GLS.Sounds.WaveOut;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.MMSystem,

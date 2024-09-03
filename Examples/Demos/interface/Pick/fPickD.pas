@@ -9,7 +9,7 @@ uses
   Vcl.Dialogs,
   Vcl.Forms,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Scene,
   GLS.Objects,
   GLS.Texture,

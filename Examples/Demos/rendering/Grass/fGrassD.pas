@@ -22,7 +22,7 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.Navigator,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Texture,
   GLS.HeightData,
   GLS.TerrainRenderer,
@@ -32,7 +32,7 @@ uses
   GLS.Keyboard,
   GLS.BaseClasses,
   GLS.RenderContextInfo,
-  GLS.OpenGLTokens,
+  GLS.TextureFormat,
   GLS.Utils
   ;
 

@@ -7,7 +7,7 @@ unit GXS.Blur;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,11 +18,11 @@ uses
   System.UITypes,
   FMX.Graphics,
 
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.PersistentClasses,
   GXS.Scene,
   GXS.Coordinates,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Objects,
   GXS.BitmapFont,
   GXS.Texture,
@@ -32,7 +32,7 @@ uses
   GXS.Graphics,
   GXS.Context,
   GXS.State,
-  GXS.Strings,
+  GLScene.Strings,
   GXS.TextureFormat,
   GXS.BaseClasses,
   GXS.RenderContextInfo;

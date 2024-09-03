@@ -59,8 +59,8 @@ uses
 
   GXS.OpenGL,
   GXS.Scene,
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.HeightData,
   GXS.TerrainRenderer,
   GXS.Texture,

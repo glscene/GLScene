@@ -11,7 +11,7 @@ unit GXS.Mirror;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -22,13 +22,13 @@ uses
   GXS.PersistentClasses,
   GXS.Scene,
   GXS.PipelineTransformation,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Context,
   GXS.Material,
   GXS.Color,
   GXS.RenderContextInfo,
   GXS.State,
-  GXS.VectorTypes;
+  GLScene.VectorTypes;
 
 
 type

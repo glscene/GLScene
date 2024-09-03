@@ -7,14 +7,14 @@ unit GXS.AnimationUtils;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.SysUtils, 
   System.Classes, 
   System.Math,
-  GXS.VectorTypes,
-  GXS.VectorGeometry;
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry;
 
 type
 
@@ -61,7 +61,7 @@ type
 
 
   function Tweener(Current, Target: TAffineVector; Time, Duration: Single; EaseType: TEaseType): TAffineVector; overload;
-  function Tweener(Current, Target: TGXVector; Time, Duration: Single; EaseType: TEaseType): TGXVector; overload;
+  function Tweener(Current, Target: TGLVector; Time, Duration: Single; EaseType: TEaseType): TGLVector; overload;
   function Tweener(Current, Target: TVector2f; Time, Duration: Single; EaseType: TEaseType): TVector2f; overload;
   function Tweener(Current, Target: Single; Time, Duration: Single; EaseType: TEaseType): Single; overload;
 
@@ -911,7 +911,7 @@ begin
   end;
 end;
 
-function Tweener(Current, Target: TGXVector; Time, Duration: Single; EaseType: TEaseType): TGXVector;
+function Tweener(Current, Target: TGLVector; Time, Duration: Single; EaseType: TEaseType): TGLVector;
 var
   i: integer;
   EaseFunction : TEaseFunction;

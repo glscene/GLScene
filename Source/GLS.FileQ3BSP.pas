@@ -11,7 +11,7 @@ unit GLS.FileQ3BSP;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -20,8 +20,8 @@ uses
 
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GLS.VectorLists,
   Formats.Q3BSP,
   GLS.MeshBSP,

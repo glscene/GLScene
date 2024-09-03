@@ -9,8 +9,8 @@ interface
 
 uses
   System.SysUtils,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.VectorLists;
 
 type

@@ -7,7 +7,7 @@ unit GXS.Material;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,10 +18,10 @@ uses
   FMX.Graphics,
 
   GXS.XOpenGL,
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.PersistentClasses,
-  GXS.Strings,
+  GLScene.Strings,
   GXS.ApplicationFileIO,
 
   GXS.RenderContextInfo,
@@ -2540,7 +2540,7 @@ begin
                 Compression := TgxTextureCompression(ReadInteger);
                 DepthTextureMode := TgxDepthTextureMode(ReadInteger);
                 Read(EnvColor.AsAddress^, SizeOf(Single) * 4);
-                FilteringQuality := TgxTextureFilteringQuality(ReadInteger);
+                FilteringQuality := TglTextureFilteringQuality(ReadInteger);
                 ImageAlpha := TgxTextureImageAlpha(ReadInteger);
                 ImageBrightness := ReadFloat;
                 ImageGamma := ReadFloat;
@@ -2553,13 +2553,13 @@ begin
                 MinFilter := TgxMinFilter(ReadInteger);
                 NormalMapScale := ReadFloat;
                 TextureCompareFunc := TgxDepthCompareFunc(ReadInteger);
-                TextureCompareMode := TgxTextureCompareMode(ReadInteger);
+                TextureCompareMode := TglTextureCompareMode(ReadInteger);
                 TextureFormat := TgxTextureFormat(ReadInteger);
                 TextureMode := TgxTextureMode(ReadInteger);
                 TextureWrap := TgxTextureWrap(ReadInteger);
-                TextureWrapR := TgxSeparateTextureWrap(ReadInteger);
-                TextureWrapS := TgxSeparateTextureWrap(ReadInteger);
-                TextureWrapT := TgxSeparateTextureWrap(ReadInteger);
+                TextureWrapR := TglSeparateTextureWrap(ReadInteger);
+                TextureWrapS := TglSeparateTextureWrap(ReadInteger);
+                TextureWrapT := TglSeparateTextureWrap(ReadInteger);
               end;
             // version 3 end
 

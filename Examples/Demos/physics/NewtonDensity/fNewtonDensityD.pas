@@ -15,7 +15,7 @@ uses
   Vcl.Samples.Spin,
   
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.NGDManager,
   GLS.Objects,
   GLS.PersistentClasses,
@@ -25,7 +25,7 @@ uses
   GLS.SceneViewer,
 
   GLS.BaseClasses,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.HUDObjects,
   GLS.BitmapFont,
   GLS.WindowsFont,

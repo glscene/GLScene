@@ -35,7 +35,7 @@ unit GXS.Console;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -46,9 +46,9 @@ uses
   System.UIConsts,
   FMX.Graphics,
 
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.PersistentClasses,
-  GXS.Strings,
+  GLScene.Strings,
 
   GXS.Coordinates,
   GXS.Scene,

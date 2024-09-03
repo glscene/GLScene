@@ -12,15 +12,15 @@ unit GLS.MultiSampleImage;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
   System.Classes,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
   GLS.TextureFormat,
   GLS.Context,
   GLS.Texture,

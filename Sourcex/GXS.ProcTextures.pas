@@ -13,8 +13,8 @@ uses
   System.SysUtils,
   System.Math,
 
-  GXS.VectorGeometry,
-  GXS.Strings,
+  GLScene.VectorGeometry,
+  GLScene.Strings,
 
   GXS.Texture,
   GXS.Graphics,
@@ -41,7 +41,7 @@ type
     function GetWidth: Integer; override;
     function GetHeight: Integer; override;
     function GetDepth: Integer; override;
-    function GetTextureTarget: TgxTextureTarget; override;
+    function GetTextureTarget: TglTextureTarget; override;
     function Noise(x, y: Single): Single;
     procedure SetMinCut(const val: Byte);
     procedure SetSeamless(const val: Boolean);
@@ -252,7 +252,7 @@ begin
   Result := 1;
 end;
 
-function TgxProcTextureNoise.GetTextureTarget: TgxTextureTarget;
+function TgxProcTextureNoise.GetTextureTarget: TglTextureTarget;
 begin
   Result := ttTexture2D;
 end;

@@ -7,13 +7,13 @@ unit GXS.CurvesAndSurfaces;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.SysUtils,
   System.Math,
-  GXS.Strings,
-  GXS.VectorGeometry,
+  GLScene.Strings,
+  GLScene.VectorGeometry,
   GXS.VectorLists;
 
 type

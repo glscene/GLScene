@@ -22,7 +22,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.TextureFormat.hpp"
 #include "GLS.Color.hpp"
-#include "GLS.OpenGLTokens.hpp"
+#include "GLScene.OpenGLTokens.hpp"
 #include "GLS.OpenGLAdapter.hpp"
 #include "GLS.Context.hpp"
 #include "GLS.RenderContextInfo.hpp"

@@ -7,7 +7,7 @@ unit GXS.Texture;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,11 +19,11 @@ uses
   FMX.Objects,
 
   GXS.TextureFormat,
-  GXS.Strings,
+  GLScene.Strings,
 
   GXS.XOpenGL,
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.BaseClasses,
   GXS.ApplicationFileIO,
 
@@ -87,7 +87,7 @@ type
     tfRGBAFloat32, // = tfRGBA_FLOAT32_ATI
     tfExtended);
 
-  TgxTextureCompression = TgxInternalCompression;
+  TgxTextureCompression = TglInternalCompression;
 
   TgxTexture = class;
 
@@ -141,8 +141,8 @@ type
     FOnTextureNeeded: TgxTextureNeededEvent;
     FResourceFile: string;
     class function IsSelfLoading: Boolean; virtual;
-    procedure LoadTexture(AInternalFormat: TgxInternalFormat); virtual;
-    function GetTextureTarget: TgxTextureTarget; virtual;
+    procedure LoadTexture(AInternalFormat: TglInternalFormat); virtual;
+    function GetTextureTarget: TglTextureTarget; virtual;
     function GetHeight: Integer; virtual;
     function GetWidth: Integer; virtual;
     function GetDepth: Integer; virtual;
@@ -190,7 +190,7 @@ type
     property Height: Integer read GetHeight;
     property Depth: Integer read GetDepth;
     //Native OpenGL texture target.
-    property NativeTextureTarget: TgxTextureTarget read GetTextureTarget;
+    property NativeTextureTarget: TglTextureTarget read GetTextureTarget;
     property ResourceName: string read GetResourceName;
   end;
 
@@ -218,7 +218,7 @@ type
     function GetWidth: Integer; override;
     function GetHeight: Integer; override;
     function GetDepth: Integer; override;
-    function GetTextureTarget: TgxTextureTarget; override;
+    function GetTextureTarget: TglTextureTarget; override;
   public
     constructor Create(AOwner: TPersistent); override;
     destructor Destroy; override;
@@ -249,7 +249,7 @@ type
     function GetHeight: Integer; override;
     function GetWidth: Integer; override;
     function GetDepth: Integer; override;
-    function GetTextureTarget: TgxTextureTarget; override;
+    function GetTextureTarget: TglTextureTarget; override;
     function GetPicture: TImage;
     procedure SetPicture(const aPicture: TImage);
     procedure PictureChanged(Sender: TObject);
@@ -335,7 +335,7 @@ type
     function GetDepth: Integer; override;
     procedure SetPicture(index: TgxCubeMapTarget; const val: TImage);
     function GetPicture(index: TgxCubeMapTarget): TImage;
-    function GetTextureTarget: TgxTextureTarget; override;
+    function GetTextureTarget: TglTextureTarget; override;
     procedure PictureChanged(Sender: TObject);
   public
     constructor Create(AOwner: TPersistent); override;
@@ -375,7 +375,7 @@ type
   private
     FTextureHandle: TgxTextureHandle;
     FSamplerHandle: TgxVirtualHandle;
-    FTextureFormat: TgxInternalFormat;
+    FTextureFormat: TglInternalFormat;
     FTextureMode: TgxTextureMode;
     FTextureWrap: TgxTextureWrap;
     FMinFilter: TgxMinFilter;
@@ -393,17 +393,17 @@ type
     FOnTextureNeeded: TgxTextureNeededEvent;
     FCompression: TgxTextureCompression;
     FRequiredMemorySize: Integer;
-    FFilteringQuality: TgxTextureFilteringQuality;
+    FFilteringQuality: TglTextureFilteringQuality;
     FTexWidth: Integer;
     FTexHeight: Integer;
     FTexDepth: Integer;
     FEnvColor: TgxColor;
     FBorderColor: TgxColor;
     FNormalMapScale: Single;
-    FTextureWrapS: TgxSeparateTextureWrap;
-    FTextureWrapT: TgxSeparateTextureWrap;
-    FTextureWrapR: TgxSeparateTextureWrap;
-    fTextureCompareMode: TgxTextureCompareMode;
+    FTextureWrapS: TglSeparateTextureWrap;
+    FTextureWrapT: TglSeparateTextureWrap;
+    FTextureWrapR: TglSeparateTextureWrap;
+    fTextureCompareMode: TglTextureCompareMode;
     fTextureCompareFunc: TgxDepthCompareFunc;
     fDepthTextureMode: TgxDepthTextureMode;
     FKeepImageAfterTransfer: Boolean;
@@ -418,15 +418,15 @@ type
     procedure SetMinFilter(AValue: TgxMinFilter);
     procedure SetTextureMode(AValue: TgxTextureMode);
     procedure SetTextureWrap(AValue: TgxTextureWrap);
-    procedure SetTextureWrapS(AValue: TgxSeparateTextureWrap);
-    procedure SetTextureWrapT(AValue: TgxSeparateTextureWrap);
-    procedure SetTextureWrapR(AValue: TgxSeparateTextureWrap);
+    procedure SetTextureWrapS(AValue: TglSeparateTextureWrap);
+    procedure SetTextureWrapT(AValue: TglSeparateTextureWrap);
+    procedure SetTextureWrapR(AValue: TglSeparateTextureWrap);
     function GetTextureFormat: TgxTextureFormat;
     procedure SetTextureFormat(const val: TgxTextureFormat);
-    procedure SetTextureFormatEx(const val: TgxInternalFormat);
+    procedure SetTextureFormatEx(const val: TglInternalFormat);
     function StoreTextureFormatEx: Boolean;
     procedure SetCompression(const val: TgxTextureCompression);
-    procedure SetFilteringQuality(const val: TgxTextureFilteringQuality);
+    procedure SetFilteringQuality(const val: TglTextureFilteringQuality);
     procedure SetMappingMode(const val: TgxTextureMappingMode);
     function GetMappingSCoordinates: TgxCoordinates4;
     procedure SetMappingSCoordinates(const val: TgxCoordinates4);
@@ -446,7 +446,7 @@ type
     procedure SetEnvColor(const val: TgxColor);
     procedure SetBorderColor(const val: TgxColor);
     procedure SetNormalMapScale(const val: Single);
-    procedure SetTextureCompareMode(const val: TgxTextureCompareMode);
+    procedure SetTextureCompareMode(const val: TglTextureCompareMode);
     procedure SetTextureCompareFunc(const val: TgxDepthCompareFunc);
     procedure SetDepthTextureMode(const val: TgxDepthTextureMode);
     function StoreNormalMapScale: Boolean;
@@ -551,16 +551,16 @@ type
     // Wrapping mode for the texture.
     property TextureWrap: TgxTextureWrap read FTextureWrap write SetTextureWrap default twBoth;
     // Wrapping mode for the texture when TextureWrap=twSeparate.
-    property TextureWrapS: TgxSeparateTextureWrap read FTextureWrapS write
+    property TextureWrapS: TglSeparateTextureWrap read FTextureWrapS write
       SetTextureWrapS default twRepeat;
-    property TextureWrapT: TgxSeparateTextureWrap read FTextureWrapT write
+    property TextureWrapT: TglSeparateTextureWrap read FTextureWrapT write
       SetTextureWrapT default twRepeat;
-    property TextureWrapR: TgxSeparateTextureWrap read FTextureWrapR write
+    property TextureWrapR: TglSeparateTextureWrap read FTextureWrapR write
       SetTextureWrapR default twRepeat;
     // Texture format for use by the renderer. See TgxTextureFormat for details.
     property TextureFormat: TgxTextureFormat read GetTextureFormat write
       SetTextureFormat default tfDefault;
-    property TextureFormatEx: TgxInternalFormat read FTextureFormat write
+    property TextureFormatEx: TglInternalFormat read FTextureFormat write
       SetTextureFormatEx stored StoreTextureFormatEx;
     (* Texture compression control.
     If True the compressed TextureFormat variant (the OpenGL ICD must
@@ -571,7 +571,7 @@ type
     You can choose between bilinear and trilinear filetring (anisotropic).
     The OpenGL ICD must support GL_EXT_texture_filter_anisotropic or
     this property is ignored. *)
-    property FilteringQuality: TgxTextureFilteringQuality read FFilteringQuality
+    property FilteringQuality: TglTextureFilteringQuality read FFilteringQuality
       write SetFilteringQuality default tfIsotropic;
     (* Texture coordinates mapping mode.
     This property controls automatic texture coordinates generation. *)
@@ -600,7 +600,7 @@ type
     the intensity of the bumps). *)
     property NormalMapScale: Single read FNormalMapScale write SetNormalMapScale
       stored StoreNormalMapScale;
-     property TextureCompareMode: TgxTextureCompareMode read fTextureCompareMode
+     property TextureCompareMode: TglTextureCompareMode read fTextureCompareMode
       write SetTextureCompareMode default tcmNone;
     property TextureCompareFunc: TgxDepthCompareFunc read fTextureCompareFunc
       write SetTextureCompareFunc default cfLequal;
@@ -698,7 +698,7 @@ const
     (GL_DECAL, GL_MODULATE, GL_BLEND, GL_REPLACE, GL_ADD);
 
   cOldTextureFormatToInternalFormat: array[tfRGB..tfRGBAFloat32] of
-    TgxInternalFormat = (
+    TglInternalFormat = (
     tfRGB8,
     tfRGBA8,
     tfRGB5,
@@ -721,7 +721,7 @@ type
 
 // Dummy methods for CPP
 //
-function TgxTextureImage.GetTextureTarget: TgxTextureTarget;
+function TgxTextureImage.GetTextureTarget: TglTextureTarget;
 begin
 end;
 
@@ -956,7 +956,7 @@ begin
   Result := False;
 end;
 
-procedure TgxTextureImage.LoadTexture(AInternalFormat: TgxInternalFormat);
+procedure TgxTextureImage.LoadTexture(AInternalFormat: TglInternalFormat);
 begin
 end;
 
@@ -1144,7 +1144,7 @@ begin
   Result := 'Blank Image (Width x Height x Depth)';
 end;
 
-function TgxBlankImage.GetTextureTarget: TgxTextureTarget;
+function TgxBlankImage.GetTextureTarget: TglTextureTarget;
 begin
   Result := ttTexture2D;
   // Choose a texture target
@@ -1310,7 +1310,7 @@ begin
   Picture.Assign(aPicture);
 end;
 
-function TgxPictureImage.GetTextureTarget: TgxTextureTarget;
+function TgxPictureImage.GetTextureTarget: TglTextureTarget;
 begin
   Result := ttTexture2D;
 end;
@@ -1718,7 +1718,7 @@ begin
   Invalidate;
 end;
 
-function TgxCubeMapImage.GetTextureTarget: TgxTextureTarget;
+function TgxCubeMapImage.GetTextureTarget: TglTextureTarget;
 begin
   Result := ttTextureCube;
 end;
@@ -2066,7 +2066,7 @@ begin
   end;
 end;
 
-procedure TgxTexture.SetTextureWrapS(AValue: TgxSeparateTextureWrap);
+procedure TgxTexture.SetTextureWrapS(AValue: TglSeparateTextureWrap);
 begin
   if AValue <> FTextureWrapS then
   begin
@@ -2075,7 +2075,7 @@ begin
   end;
 end;
 
-procedure TgxTexture.SetTextureWrapT(AValue: TgxSeparateTextureWrap);
+procedure TgxTexture.SetTextureWrapT(AValue: TglSeparateTextureWrap);
 begin
   if AValue <> FTextureWrapT then
   begin
@@ -2084,7 +2084,7 @@ begin
   end;
 end;
 
-procedure TgxTexture.SetTextureWrapR(AValue: TgxSeparateTextureWrap);
+procedure TgxTexture.SetTextureWrapR(AValue: TglSeparateTextureWrap);
 begin
   if AValue <> FTextureWrapR then
   begin
@@ -2125,7 +2125,7 @@ begin
   end;
 end;
 
-procedure TgxTexture.SetTextureFormatEx(const val: TgxInternalFormat);
+procedure TgxTexture.SetTextureFormatEx(const val: TglInternalFormat);
 begin
   if val <> FTextureFormat then
   begin
@@ -2148,7 +2148,7 @@ begin
   end;
 end;
 
-procedure TgxTexture.SetFilteringQuality(const val: TgxTextureFilteringQuality);
+procedure TgxTexture.SetFilteringQuality(const val: TglTextureFilteringQuality);
 begin
   if val <> FFilteringQuality then
   begin
@@ -2267,7 +2267,7 @@ begin
   Result := (FImage.ClassName <> TgxPersistentImage.ClassName);
 end;
 
-procedure TgxTexture.SetTextureCompareMode(const val: TgxTextureCompareMode);
+procedure TgxTexture.SetTextureCompareMode(const val: TglTextureCompareMode);
 begin
   if val <> fTextureCompareMode then
   begin
@@ -2558,7 +2558,7 @@ end;
 
 function TgxTexture.AllocateHandle: Cardinal;
 var
-  vTarget: TgxTextureTarget;
+  vTarget: TglTextureTarget;
 begin
   vTarget := Image.NativeTextureTarget;
   if (vTarget <> ttNoShape) and (FTextureHandle.Target <> vTarget) then
@@ -2602,26 +2602,26 @@ end;
 function TgxTexture.GetHandle: Cardinal;
 var
   target: Cardinal;
-  LBinding: array[TgxTextureTarget] of Cardinal;
+  LBinding: array[TglTextureTarget] of Cardinal;
 
   procedure StoreBindings;
   var
-    t: TgxTextureTarget;
+    t: TglTextureTarget;
   begin
     with CurrentContext.gxStates do
     begin
       if TextureBinding[ActiveTexture, FTextureHandle.Target] = FTextureHandle.Handle then
         TextureBinding[ActiveTexture, FTextureHandle.Target] := 0;
-      for t := Low(TgxTextureTarget) to High(TgxTextureTarget) do
+      for t := Low(TglTextureTarget) to High(TglTextureTarget) do
         LBinding[t] := TextureBinding[ActiveTexture, t];
     end;
   end;
   procedure RestoreBindings;
   var
-    t: TgxTextureTarget;
+    t: TglTextureTarget;
   begin
     with CurrentContext.gxStates do
-      for t := Low(TgxTextureTarget) to High(TgxTextureTarget) do
+      for t := Low(TglTextureTarget) to High(TglTextureTarget) do
         TextureBinding[ActiveTexture, t] := LBinding[t];
   end;
 

@@ -13,7 +13,7 @@ unit GXS.Mesh;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,11 +25,11 @@ uses
 
   GXS.XOpenGL,
   GXS.BaseClasses,
-  GXS.VectorTypes,
-  GXS.Strings,
+  GLScene.VectorTypes,
+  GLScene.Strings,
   GXS.Context,
   GXS.Scene,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.State,
   GXS.Color,
   GXS.RenderContextInfo;

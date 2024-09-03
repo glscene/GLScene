@@ -296,7 +296,6 @@
         <DCCReference Include="..\SourceX\GXS.Isolines.pas"/>
         <DCCReference Include="..\SourceX\GXS.Isosurface.pas"/>
         <DCCReference Include="..\SourceX\GXS.Joystick.pas"/>
-        <DCCReference Include="..\SourceX\GXS.Logger.pas"/>
         <DCCReference Include="..\SourceX\GXS.LensFlare.pas"/>
         <DCCReference Include="..\SourceX\GXS.LinePFX.pas"/>
         <DCCReference Include="..\SourceX\GXS.Material.pas"/>
@@ -388,16 +387,9 @@
         <DCCReference Include="..\SourceX\GXS.XOpenGL.pas"/>
         <DCCReference Include="..\SourceX\GXS.GeometryBB.pas"/>
         <DCCReference Include="..\SourceX\GXS.GeometryCoordinates.pas"/>
-        <DCCReference Include="..\SourceX\GXS.Strings.pas"/>
-        <DCCReference Include="..\SourceX\GXS.VectorTypes.pas"/>
-        <DCCReference Include="..\SourceX\GXS.VectorTypesExt.pas"/>
-        <DCCReference Include="..\SourceX\GXS.VectorGeometry.pas"/>
-        <DCCReference Include="..\SourceX\GXS.Spline.pas"/>
-        <DCCReference Include="..\SourceX\GXS.TextureFormat.pas"/>
         <DCCReference Include="..\SourceX\GXS.PipelineTransformation.pas"/>
         <DCCReference Include="..\SourceX\GXS.Generics.pas"/>
         <DCCReference Include="..\SourceX\GXS.RGBE.pas"/>
-        <DCCReference Include="..\SourceX\GXS.OpenGLTokens.pas"/>
         <DCCReference Include="..\SourceX\GXS.OpenGL.pas"/>
         <DCCReference Include="..\SourceX\GXS.ViewerOpenGL.pas"/>
         <DCCReference Include="..\SourceX\GXSL.AsmShader.pas"/>
@@ -416,9 +408,19 @@
         <DCCReference Include="..\SourceX\GXSL.ShapeShaders.pas"/>
         <DCCReference Include="..\SourceX\GXSL.LineShaders.pas"/>
         <DCCReference Include="..\SourceX\GXSL.MultiMaterialShader.pas"/>
-        <DCCReference Include="..\Unipas\PasDblStrUtils.dcu"/>
-        <DCCReference Include="..\Unipas\PasGLTF.pas"/>
-        <DCCReference Include="..\Unipas\PasJSON.pas"/>
+        <DCCReference Include="..\Source\PasDblStrUtils.pas"/>
+        <DCCReference Include="..\Source\PasGLTF.pas"/>
+        <DCCReference Include="..\Source\PasJSON.pas"/>
+        <DCCReference Include="..\Source\GLScene.Strings.pas"/>
+        <DCCReference Include="..\Source\GLScene.VectorTypes.pas"/>
+        <DCCReference Include="..\Source\GLScene.VectorTypesExt.pas"/>
+        <DCCReference Include="..\Source\GLScene.VectorGeometry.pas"/>
+        <DCCReference Include="..\Source\GLScene.OpenGLTokens.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.TextureFormat.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.OpenGLAdapter.pas"/>
+        <DCCReference Include="..\Source\GLScene.Logger.pas"/>
+        <DCCReference Include="..\Source\GLScene.Spline.pas"/>
+        <DCCReference Include="..\Source\GLScene.RandomLib.pas"/>
         <None Include="..\Sourcex\GXS.Scene.inc"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

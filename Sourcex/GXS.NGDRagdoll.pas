@@ -8,8 +8,8 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-  GXS.VectorGeometry,
-  GXS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GXS.VectorFileObjects,
   NGD.Import;
 

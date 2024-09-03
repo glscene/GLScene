@@ -15,7 +15,7 @@ unit GLS.Keyboard;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.Windows,

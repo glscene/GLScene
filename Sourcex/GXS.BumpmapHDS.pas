@@ -11,7 +11,7 @@ unit GXS.BumpmapHDS;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -21,11 +21,11 @@ uses
   GXS.HeightData,
   GXS.Graphics,
   GXS.Coordinates,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Texture,
   GXS.Material,
   GXS.Utils,
-  GXS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
   TgxBumpmapHDS = class;

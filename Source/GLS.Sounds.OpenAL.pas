@@ -18,7 +18,7 @@ unit GLS.Sounds.OpenAL;
 *)
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -26,9 +26,9 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Scene,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Coordinates,
   GLS.SoundManager,
   GLS.SoundFileObjects;

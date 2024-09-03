@@ -11,8 +11,8 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GLS.LensFlare"
-#pragma link "GLS.VectorGeometry"
-#pragma link "Sounds.BASS"
+#pragma link "GLScene.VectorGeometry"
+#pragma link "GLS.Sounds.BASS"
 #pragma link "GLS.SoundManager"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.SkyDome"
@@ -307,7 +307,7 @@ void __fastcall TForm1::TISoundTimer(TObject* Sender)
         // wolf howl at some distance, at ground level
         wolfPos = GLCamera1->AbsolutePosition;
         SinCosine(
-            random() * Gls::Vectorgeometry::c2PI, 100 + random(1000), s, c);
+            random() * Glscene::Vectorgeometry::c2PI, 100 + random(1000), s, c);
         wolfPos.X = wolfPos.X + c;
         wolfPos.Z = wolfPos.Z + s;
         wolfPos.Y = TerrainRenderer1->InterpolatedHeight(wolfPos);

@@ -16,7 +16,7 @@ unit GXS.Objects;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -29,10 +29,10 @@ uses
   GXS.XOpenGL,
   GXS.BaseClasses,
   GXS.PersistentClasses,
-  GXS.VectorGeometry,
-  GXS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GXS.VectorLists,
-  GXS.Strings,
+  GLScene.Strings,
 
   GXS.Scene,
   GXS.Context,
@@ -659,7 +659,7 @@ implementation
 // -------------------------------------------------------------
 
 uses
-  GXS.Spline,
+  GLScene.Spline,
   GXS.State;
 
 procedure CubeWireframeBuildList(var rci: TgxRenderContextInfo; Size: Single;

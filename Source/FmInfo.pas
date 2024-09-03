@@ -7,7 +7,7 @@ unit FmInfo;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -24,7 +24,7 @@ uses
   Vcl.Menus,
   Vcl.Imaging.jpeg,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.OpenGLAdapter,
   GLS.Scene,
   GLS.SceneViewer,

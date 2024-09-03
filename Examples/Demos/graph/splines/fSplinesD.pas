@@ -17,7 +17,7 @@ uses
  
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.VectorGeometry;
+  GLScene.VectorGeometry;
 
 type
   TFormSplines = class(TForm)

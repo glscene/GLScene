@@ -7,7 +7,7 @@ unit GLS.BitmapFont;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpengL,
@@ -17,10 +17,10 @@ uses
   Vcl.Graphics,
   Vcl.StdCtrls,
   
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.TextureFormat,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
 
   GLS.Scene,
   GLS.Context,

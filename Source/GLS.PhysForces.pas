@@ -9,13 +9,13 @@ uses
   System.Classes,
   Vcl.Dialogs,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.XCollection,
   GLS.Scene,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Behaviours,
   GLS.Coordinates,
-  GLS.Strings;
+  GLScene.Strings;
 
 type
   TGLForce = class;

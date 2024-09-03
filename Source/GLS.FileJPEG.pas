@@ -7,7 +7,7 @@ unit GLS.FileJPEG;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -17,12 +17,12 @@ uses
   Vcl.Graphics,
   Vcl.Imaging.Jpeg,
   
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Context,
   GLS.Graphics,
   GLS.TextureFormat,
   GLS.ApplicationFileIO,
-  GLS.VectorGeometry;
+  GLScene.VectorGeometry;
 
 
 type

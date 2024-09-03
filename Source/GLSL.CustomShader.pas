@@ -18,11 +18,11 @@ uses
   System.Classes,
   System.SysUtils,
   
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
-  GLS.OpenGLTokens,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.OpenGLTokens,
   GLS.TextureFormat,
-  GLS.Strings,
+  GLScene.Strings,
 
   GLS.Texture,
   GLS.Cadencer,

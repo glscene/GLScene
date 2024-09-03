@@ -14,10 +14,10 @@ uses
 
   GXS.PersistentClasses,
   GXS.BaseClasses,
-  GXS.VectorGeometry,
-  GXS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GXS.VectorLists,
-  GXS.Strings,
+  GLScene.Strings,
   GXS.Context,
   GXS.Graphics,
 

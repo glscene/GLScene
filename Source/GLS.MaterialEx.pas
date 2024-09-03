@@ -18,7 +18,7 @@ unit GLS.MaterialEx;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -28,17 +28,17 @@ uses
   System.Math,
   Vcl.Graphics,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.RenderContextInfo,
   GLS.PipelineTransformation,
   GLS.BaseClasses,
   GLS.Context,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Material,
   GLS.Texture,
   GLS.Color,
   GLS.Coordinates,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Graphics,
   GLS.PersistentClasses,
   GLS.State,
@@ -47,11 +47,11 @@ uses
   GLS.TextureCombiners,
   GLSL.ShaderParameter,
   GLS.ApplicationFileIO,
-  GLS.Strings,
+  GLScene.Strings,
   GLS.ImageUtils,
   GLS.Utils,
   GLS.XOpenGL,
-  GLS.Logger;
+  GLScene.Logger;
 
 type
 

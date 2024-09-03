@@ -14,15 +14,15 @@ unit GXSL.ShaderCombiner;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
 
   GXS.Material,
   GXS.Scene,
-  GXS.VectorGeometry,
-  GXS.Strings,
+  GLScene.VectorGeometry,
+  GLScene.Strings,
   GXS.RenderContextInfo;
 
 type

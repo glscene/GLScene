@@ -13,7 +13,7 @@ uses
   CUDA.Import,
   CUDA.RunTime,
 
-  GXS.Strings,
+  GLScene.Strings,
   GXS.Generics,
   GXS.BaseClasses,
   GXS.Context;

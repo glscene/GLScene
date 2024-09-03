@@ -7,14 +7,14 @@ unit GLS.AnimationUtils;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.SysUtils, 
   System.Classes, 
   System.Math,
-  GLS.VectorTypes,
-  GLS.VectorGeometry;
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry;
 
 type
 

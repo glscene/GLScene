@@ -17,7 +17,7 @@ uses
 
   GXS.XOpenGL,
   GXS.XCollection,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Manager,
 
   GXS.Scene,
@@ -29,7 +29,7 @@ uses
   GXS.Coordinates,
   GXS.RenderContextInfo,
   GXS.State,
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.TerrainRenderer,
   GXS.Graph,
 

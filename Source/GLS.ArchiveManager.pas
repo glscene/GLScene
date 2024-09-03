@@ -5,7 +5,7 @@ unit GLS.ArchiveManager;
 
 (* Archive manager -  the class to work with archives *)
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 interface
 
@@ -15,7 +15,7 @@ uses
 
   GLS.ApplicationFileIO,
   GLS.PersistentClasses,
-  GLS.Strings;
+  GLScene.Strings;
 
 type
 

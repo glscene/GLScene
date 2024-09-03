@@ -11,21 +11,21 @@ unit GLS.Atmosphere;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.SysUtils,
   System.Classes,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Scene,
   GLS.Objects,
   GLS.Cadencer,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.Context,
-  GLS.Strings,
+  GLScene.Strings,
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.State;

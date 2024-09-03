@@ -7,21 +7,21 @@ unit GLS.MultiProxy;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.PersistentClasses,
   GLS.Context,
   GLS.Scene,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Silhouette,
   GLS.RenderContextInfo,
   GLS.BaseClasses,
-  GLS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
 

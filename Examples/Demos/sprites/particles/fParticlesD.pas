@@ -16,10 +16,10 @@ uses
   GLS.Objects,
   GLS.Particles,
   GLS.Behaviours,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.PersistentClasses,
   GLS.Cadencer,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.SceneViewer,
  
   GLS.Coordinates,

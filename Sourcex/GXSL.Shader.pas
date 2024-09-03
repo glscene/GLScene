@@ -7,7 +7,7 @@ unit GXSL.Shader;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,8 +15,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.VectorGeometry,
-  GXS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GXS.Texture,
   GXS.Context,
   GXS.RenderContextInfo,
@@ -122,9 +122,9 @@ type
     procedure SetAsMatrix3f(const Value: TMatrix3f); override;
     procedure SetAsMatrix4f(const Value: TMatrix4f); override;
     function GetAsCustomTexture(const TextureIndex: Integer;
-      TextureTarget: TgxTextureTarget): Cardinal; override;
+      TextureTarget: TglTextureTarget): Cardinal; override;
     procedure SetAsCustomTexture(const TextureIndex: Integer;
-      TextureTarget: TgxTextureTarget; const Value: Cardinal); override;
+      TextureTarget: TglTextureTarget; const Value: Cardinal); override;
     function GetAsUniformBuffer: GLenum; override;
     procedure SetAsUniformBuffer( UBO: GLenum); override;
    public
@@ -421,7 +421,7 @@ end;
 //------------------------------------------------------------
 
 function TGXSLShaderParameter.GetAsCustomTexture(
-  const TextureIndex: Integer; TextureTarget: TgxTextureTarget): Cardinal;
+  const TextureIndex: Integer; TextureTarget: TglTextureTarget): Cardinal;
 begin
   glGetUniformiv(FGXSLProg.Handle, TextureIndex, @Result);
 end;
@@ -482,7 +482,7 @@ begin
 end;
 
 procedure TGXSLShaderParameter.SetAsCustomTexture(
-  const TextureIndex: Integer; TextureTarget: TgxTextureTarget;
+  const TextureIndex: Integer; TextureTarget: TglTextureTarget;
   const Value: Cardinal);
 begin
   CurrentContext.gxStates.TextureBinding[TextureIndex, TextureTarget] := Value;

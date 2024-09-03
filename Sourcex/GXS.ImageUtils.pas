@@ -17,7 +17,7 @@ unit GXS.ImageUtils;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -26,8 +26,8 @@ uses
   System.Classes,
   System.Math,
 
-  GXS.Strings,
-  GXS.VectorGeometry,
+  GLScene.Strings,
+  GLScene.VectorGeometry,
 
   GXS.Utils,
   GXS.TextureFormat;

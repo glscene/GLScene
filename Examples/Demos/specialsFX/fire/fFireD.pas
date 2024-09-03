@@ -19,7 +19,7 @@ uses
   GLS.FireFX,
   GLS.Cadencer,
   GLS.Behaviours,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.SceneViewer,
   GLS.GeomObjects,
 

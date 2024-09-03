@@ -22,13 +22,13 @@ unit GLS.TexturedHDS;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Types,
   System.Classes,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Coordinates,
   GLS.HeightData,
   GLS.Material;

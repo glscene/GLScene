@@ -7,13 +7,13 @@ unit GXS.EllipseCollision;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Octree,
   GXS.VectorLists,
-  GXS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
   TECPlane = class

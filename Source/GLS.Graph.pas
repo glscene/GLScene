@@ -10,7 +10,7 @@ unit GLS.Graph;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,9 +18,9 @@ uses
   System.SysUtils,
   
   GLS.Scene,
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
 
   GLS.Context,
   GLS.XOpenGL,

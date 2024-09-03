@@ -8,27 +8,27 @@ unit GLS.ProxyObjects;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Scene,
   GLS.XCollection,
   GLS.PipelineTransformation,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Texture,
   GLS.VectorFileObjects,
-  GLS.Strings,
+  GLScene.Strings,
   GLS.RenderContextInfo,
   GLS.BaseClasses,
   GLS.Material,
   GLS.Context,
   GLS.PersistentClasses,
-  GLS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
   EGLProxyException = class(Exception);

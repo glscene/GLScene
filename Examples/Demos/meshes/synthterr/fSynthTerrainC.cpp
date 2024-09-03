@@ -10,6 +10,8 @@
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Coordinates"
 
+#pragma link "GLScene.VectorGeometry"
+
 #pragma link "GLS.HeightData"
 #pragma link "GLS.Material"
 #pragma link "GLS.Objects"
@@ -82,13 +84,11 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
 void __fastcall TForm1::GLCustomHDSStartPreparingData(TGLHeightData* HeightData)
 {
 	int x, y;
-	TByteRaster rasterLine;
+	Glscene::Vectorgeometry::PByteArray rasterLine;
 	TGLHeightDataType oldType;
-//	TByteVector* b;
-	int b;
+	Byte b;
 	float d, dy;
 
- //	b = new (Byte);
 	HeightData->DataState = hdsPreparing;
 	// retrieve data
 	oldType = HeightData->DataType;
@@ -110,13 +110,13 @@ void __fastcall TForm1::GLCustomHDSStartPreparingData(TGLHeightData* HeightData)
 	// 'Cheap' elevation data : this is just a formula z=f(x, y)
 	for (y = HeightData->YTop; y < HeightData->YTop + HeightData->Size - 1; y++)
 	{
-		rasterLine = HeightData->ByteRaster[y - HeightData->YTop];
+		rasterLine = *HeightData->ByteRaster[y - HeightData->YTop];
 		dy = y * y;
 		for (x = HeightData->XLeft;
 			 x < HeightData->XLeft + HeightData->Size - 1; x++) {
 			d = sqrt(x * x + dy);
 			b = RoundInt(128 + 128 * Sin(d * 0.2) / (d * 0.1 + 1));
-			rasterLine[x - HeightData->XLeft] = b; /// ???
+			*rasterLine[x - HeightData->XLeft] = b; /// * ???
 		}
 	}
 	if (oldType != hdtByte)

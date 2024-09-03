@@ -7,7 +7,7 @@ unit GLS.WindowsFont;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,10 +25,10 @@ uses
   GLS.RenderContextInfo,
   GLS.VectorLists,
   GLS.Utils,
-  GLS.VectorGeometry,
-  GLS.OpenGLTokens,
+  GLScene.VectorGeometry,
+  GLScene.OpenGLTokens,
   GLS.ApplicationFileIO,
-  GLS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
 

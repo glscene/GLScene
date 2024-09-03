@@ -1,11 +1,9 @@
 //
-// The graphics engine GXScene https://github.com/glscene
+// The graphics engine GLScene https://github.com/glscene
 //
-unit GXS.VectorTypesExt;
+unit GLScene.VectorTypesExt;
 
 interface
-
-{.$I GLScene.inc}
 
 uses
   System.Types,
@@ -14,7 +12,7 @@ uses
   System.Rtti,
   System.Math,
   System.Math.Vectors,
-  GXS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
   // Extended may be replaced with BigDecimals
@@ -1394,5 +1392,7 @@ begin
   Result[2] := xTrunc(FData[2]);
   Result[3] := xTrunc(FData[3]);
 end;
+
+//---------------------------------------------------------------------------
 
 end.

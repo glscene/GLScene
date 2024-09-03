@@ -11,7 +11,7 @@ unit Formats.m3DSUtils;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 {$R-}
 
 uses
@@ -21,7 +21,7 @@ uses
   Formats.m3DSTypes,
   Formats.m3DSConst,
 
-  GLS.Strings;
+  GLScene.Strings;
 
 // functions to retrieve global settings of a specific 3DS database
 function GetAtmosphere(const Source: TFile3DS; var DB: TDatabase3DS): TAtmosphere3DS;
@@ -127,28 +127,26 @@ function FindNamedObjectByIndex(Source: TFile3DS; DB: TDatabase3DS;
 procedure ShowError(const ErrorMessage: string);
 procedure ShowErrorFormatted(const ErrorMessage: string; const Args: array of const);
 
-//-------------------------------------------------
-implementation
-//-------------------------------------------------
+implementation //--------------------------------------------------------------
 
 type
   E3DSError = class(Exception);
 
-//----------------- error handling ------------------------------------------------------------------------------------
+//----------------- error handling --------------------------------------------
 
 procedure ShowError(const ErrorMessage: string);
 begin
   raise E3DSError.Create(ErrorMessage);
 end;
 
-//---------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
 procedure ShowErrorFormatted(const ErrorMessage: string; const Args: array of const);
 begin
   raise E3DSError.CreateFmt(ErrorMessage, Args);
 end;
 
-//----------------- global settings functions -------------------------------------------------------------------------
+//----------------- global settings functions ---------------------------------
 
 function InitMeshSet: TMeshSet3DS;
 
@@ -169,7 +167,7 @@ begin
   end;
 end;
 
-//---------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
 function GetMeshSet(const Source: TFile3DS; var DB: TDatabase3DS): TMeshSet3DS;
 
@@ -302,7 +300,7 @@ begin
   end;
 end;
 
-//---------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
 function InitAtmosphere: TAtmosphere3DS;
 
@@ -328,7 +326,7 @@ begin
   end;
 end;
 
-//---------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
 function GetAtmosphere(const Source: TFile3DS; var DB: TDatabase3DS): TAtmosphere3DS;
 
@@ -455,7 +453,7 @@ begin
   end; // if Assigned(MDataChunk)
 end;
 
-//---------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
 function InitBackground: TBackground3DS;
 
@@ -466,7 +464,7 @@ begin
   Result.VGradient.GradPercent := 0.5;
 end;
 
-//---------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
 function GetBackground(const Source: TFile3DS; var DB: TDatabase3DS): TBackground3DS;
 
@@ -610,7 +608,7 @@ begin
     end;
 end;
 
-//---------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
 function InitViewport: TViewport3DS;
 
@@ -629,7 +627,7 @@ begin
   end;
 end;
 
-//---------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 
 function GetViewportEntry(Source: TFile3DS; Section: PChunk3DS): TViewport3DS;
 
@@ -754,7 +752,7 @@ begin
     end;
 end;
 
-//---------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 
 function GetViewport(const Source: TFile3DS; var DB: TDatabase3DS): TViewport3DS;
 
@@ -777,7 +775,7 @@ begin
   end;
 end;
 
-//----------------- helper funcs for text output ----------------------------------------------------------------------
+//----------------- helper funcs for text output ------------------------------
 
 function ChunkTagToString(Tag: word): string;
 
@@ -1499,7 +1497,7 @@ begin
   Strings.Add(Output);
 end;
 
-//---------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
 procedure DumpChunk(const Source: TFile3DS; var Strings: TStrings;
   Chunk: PChunk3DS; IndentLevel: integer; DumpLevel: TDumpLevel);
@@ -6732,7 +6730,7 @@ begin
   end;
 end;
 
-//---------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 
 function GetKfRelease(const Source: TFile3DS; var DB: TDatabase3DS): TReleaseLevel;
 
@@ -6768,7 +6766,7 @@ begin
   end;
 end;
 
-//---------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
 function GetDatabaseRelease(const Source: TFile3DS; var DB: TDatabase3DS): TReleaseLevel;
 
@@ -6785,7 +6783,7 @@ begin
   end;
 end;
 
-//---------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 
 end.
 

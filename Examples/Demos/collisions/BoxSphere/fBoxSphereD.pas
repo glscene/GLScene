@@ -20,12 +20,12 @@ uses
   
   GLS.Scene,
   GLS.PersistentClasses,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Objects,
   GLS.Cadencer,
   GLS.VectorFileObjects,
   GLS.SceneViewer,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Graph,
   GLS.GeomObjects,
  

@@ -8,13 +8,13 @@ unit Formats.MD2;
 interface
 
 {$R-}
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
    
-  GLS.VectorTypes;
+  GLScene.VectorTypes;
 
 const
   MAX_MD2_TRIANGLES = 4096;

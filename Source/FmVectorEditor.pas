@@ -7,7 +7,7 @@ unit FmVectorEditor;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -21,9 +21,9 @@ uses
   VCL.Graphics,
   VCL.Controls,
 
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Utils,
-  GLS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
   TGLVectorEditorForm = class(TForm)

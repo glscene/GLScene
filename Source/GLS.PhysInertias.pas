@@ -14,11 +14,11 @@ uses
   GLS.XCollection,
   GLS.Scene,
   GLS.BaseClasses,
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GLS.PhysManager,
   GLS.Coordinates,
-  GLS.Strings,
+  GLScene.Strings,
   GLS.Behaviours;
 
 type
@@ -998,7 +998,7 @@ procedure TGLRigidBodyInertia.DoProgress(const progressTime : TProgressTimes);
   begin
   UndampedLinearMomentum:=VectorLength(LinearMomentum);
   DampedLinearMomentum:=TranslationDamping.Calculate(UndampedLinearMomentum,deltaTime);
-  {   if GLS.VectorGeometry.vSIMD=1 then
+  {   if GLScene.VectorGeometry.vSIMD=1 then
   //  RigidBody.LinearMomentum:=VectorScale(VectorNormalize(RigidBody.LinearMomentum),DampedLinearMomentum)
   else
   }        begin

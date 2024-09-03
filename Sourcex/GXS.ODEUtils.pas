@@ -20,8 +20,8 @@ uses
 
   ODE.Import,
 
-  GXS.VectorGeometry,
-  GXS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GXS.VectorLists,
   GXS.PersistentClasses,
   GXS.Scene,

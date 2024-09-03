@@ -7,7 +7,7 @@ unit GXS.ProxyObjects;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -17,9 +17,9 @@ uses
   GXS.XCollection,
   GXS.BaseClasses,
   GXS.PersistentClasses,
-  GXS.VectorGeometry,
-  GXS.VectorTypes,
-  GXS.Strings,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.Strings,
   GXS.Scene,
   GXS.Texture,
   GXS.VectorFileObjects,

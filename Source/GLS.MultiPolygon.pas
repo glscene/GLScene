@@ -19,7 +19,7 @@ unit GLS.MultiPolygon;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -27,13 +27,13 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.OpenGLAdapter,
-  GLS.Spline,
+  GLScene.Spline,
   GLS.XOpenGL,
   GLS.Context,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.Scene,
@@ -179,7 +179,7 @@ type
     FPageSize: Integer; // number of entries per page
     FArrSize: Integer; // size of one page
     FUsedEntries: Integer; // used entries in actual page
-    FAktArray: GLS.VectorGeometry.PByteArray; // pointer to actual page
+    FAktArray: GLScene.VectorGeometry.PByteArray; // pointer to actual page
     procedure CreatePage; // creates new page
   public
     constructor Create(APageSize, AEntrySize: Integer);

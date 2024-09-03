@@ -13,7 +13,7 @@ unit GLS.ParticleFX;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -22,14 +22,14 @@ uses
   System.Types,
   System.Math,
   
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Scene,
   GLS.Utils,
   GLS.PipelineTransformation,
   GLS.State,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.XCollection,
   GLS.Material,
   GLS.Cadencer,

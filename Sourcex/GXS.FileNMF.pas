@@ -11,7 +11,7 @@ uses
   System.Classes,
 
   GXS.VectorFileObjects,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.VectorLists,
   GXS.ApplicationFileIO;
 

@@ -17,7 +17,7 @@ uses
 
   
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.GeomObjects,
   GLS.Objects,
   GLS.Cadencer,

@@ -7,7 +7,7 @@ unit GXS.Utils;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -28,8 +28,8 @@ uses
   FMX.Forms,
 
 
-  GXS.VectorGeometry,
-  GXS.Strings,
+  GLScene.VectorGeometry,
+  GLScene.Strings,
   GXS.ApplicationFileIO;
 
 type

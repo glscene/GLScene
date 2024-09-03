@@ -9,7 +9,7 @@ unit GLS.FileOBJ;
 *)
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 {.$DEFINE STATS} // Define to display statistics after loading.
 
@@ -19,10 +19,10 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.ApplicationFileIO,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Scene,  
   GLS.VectorFileObjects,
   GLS.VectorLists,  
@@ -101,8 +101,8 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLS.Strings,
-  GLS.OpenGLTokens,
+  GLScene.Strings,
+  GLScene.OpenGLTokens,
   GLS.XOpenGL,
   GLS.Context,
   GLS.MeshUtils;

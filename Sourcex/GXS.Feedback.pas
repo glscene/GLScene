@@ -18,7 +18,7 @@ unit GXS.Feedback;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -28,10 +28,10 @@ uses
   System.SysUtils,
 
   GXS.PersistentClasses,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.VectorLists,
-  GXS.VectorTypes,
-  GXS.Strings,
+  GLScene.VectorTypes,
+  GLScene.Strings,
   GXS.Scene,
   GXS.VectorFileObjects,
   GXS.Texture,

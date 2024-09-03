@@ -13,15 +13,15 @@ uses
   System.Types,
 
   GXS.XCollection,
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.SoundFileObjects,
   GXS.Scene,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Cadencer,
   GXS.BaseClasses,
   GXS.Utils;
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 type
 

@@ -7,7 +7,7 @@ unit GLS.WindowsContext;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,15 +18,15 @@ uses
   System.Classes,
   Vcl.Forms,
 
-  GLS.VectorTypes,
-  GLS.OpenGLTokens,
+  GLScene.VectorTypes,
+  GLScene.OpenGLTokens,
   GLS.OpenGLAdapter,
   GLS.PipelineTransformation,
   GLS.Context,
   GLS.State,
-  GLS.Logger,
-  GLS.Strings,
-  GLS.VectorGeometry;
+  GLScene.Logger,
+  GLScene.Strings,
+  GLScene.VectorGeometry;
 
 type
   // A context driver for standard Windows OpenGL (via MS OpenGL).

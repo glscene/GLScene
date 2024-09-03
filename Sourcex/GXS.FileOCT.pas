@@ -8,7 +8,7 @@ unit GXS.FileOCT;
 *)
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.SysUtils,
@@ -16,7 +16,7 @@ uses
   FMX.Graphics,
 
   GXS.VectorFileObjects,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.ApplicationFileIO,
   GXS.Texture,
   GXS.Material,

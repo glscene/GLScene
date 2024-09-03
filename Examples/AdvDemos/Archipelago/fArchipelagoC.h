@@ -32,8 +32,8 @@
 #include "GLS.TerrainRenderer.hpp"
 
 #include "GLS.VectorLists.hpp"
-#include "GLS.VectorTypes.hpp"
-#include "GLS.VectorGeometry.hpp"
+#include "GLScene.VectorTypes.hpp"
+#include "GLScene.VectorGeometry.hpp"
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.WindowsFont.hpp"
 

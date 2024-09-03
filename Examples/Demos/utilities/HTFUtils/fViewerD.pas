@@ -24,7 +24,7 @@ uses
   GR32,
 
   GLS.HeightTileFileHDS,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Utils;
 
 type

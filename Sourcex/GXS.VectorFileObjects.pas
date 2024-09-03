@@ -10,7 +10,7 @@ unit GXS.VectorFileObjects;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -24,9 +24,9 @@ uses
   GXS.BaseClasses,
   GXS.VectorLists,
   GXS.PersistentClasses,
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
-  GXS.Strings,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.Strings,
   GXS.GeometryBB,
   GXS.ApplicationFileIO,
 

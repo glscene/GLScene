@@ -9,8 +9,8 @@ interface
 
 uses
   Winapi.OpenGL,
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.GeometryBB,
   GXS.SpacePartition,
 

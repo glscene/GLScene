@@ -11,7 +11,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.Strings,
+  GLScene.Strings,
   GLS.PersistentClasses;
 
 type
@@ -77,9 +77,7 @@ type
     property OnNotifyChange: TNotifyEvent read FOnNotifyChange write FOnNotifyChange;
   end;
 
-//-------------------------------------------------------------------------
-implementation
-//-------------------------------------------------------------------------
+implementation //---------------------------------------------------------------
 
 //---------------------- TGLUpdateAbleObject -----------------------------------
 

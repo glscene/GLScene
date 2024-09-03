@@ -10,7 +10,7 @@ unit GXS.Context;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -28,9 +28,9 @@ uses
   FMX.Dialogs,
 
  // GXS.OpenGLx,
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
-  GXS.Strings,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.Strings,
   GXS.State,
   GXS.PipelineTransformation,
   GXS.TextureFormat;
@@ -332,14 +332,14 @@ type
   // Manages a handle to a texture.
   TgxTextureHandle = class(TgxContextHandle)
   private
-    FTarget: TgxTextureTarget;
-    procedure SetTarget(ATarget: TgxTextureTarget);
+    FTarget: TglTextureTarget;
+    procedure SetTarget(ATarget: TglTextureTarget);
   protected
     function DoAllocateHandle: LongWord; override;
     procedure DoDestroyHandle(var AHandle: LongWord); override;
     class function IsValid(const ID: LongWord): BYTEBOOL; override;
   public
-    property Target: TgxTextureTarget read FTarget write SetTarget;
+    property Target: TglTextureTarget read FTarget write SetTarget;
   end;
 
   // Manages a handle to a sampler.
@@ -832,8 +832,8 @@ type
     procedure SetUniformMatrix3fv(const index: string; const val: TMatrix3f);
     function GetUniformMatrix4fv(const index: string): TMatrix4f;
     procedure SetUniformMatrix4fv(const index: string; const val: TMatrix4f);
-    function GetUniformTextureHandle(const index: string; const TextureIndex: Integer; const TextureTarget: TgxTextureTarget): Cardinal;
-    procedure SetUniformTextureHandle(const index: string; const TextureIndex: Integer; const TextureTarget: TgxTextureTarget; const Value: Cardinal);
+    function GetUniformTextureHandle(const index: string; const TextureIndex: Integer; const TextureTarget: TglTextureTarget): Cardinal;
+    procedure SetUniformTextureHandle(const index: string; const TextureIndex: Integer; const TextureTarget: TglTextureTarget; const Value: Cardinal);
     procedure SetUniformBuffer(const index: string; Value: TgxUniformBufferHandle);
   protected
     function DoAllocateHandle: LongWord; override;
@@ -880,7 +880,7 @@ type
     property UniformMatrix2fv[const index: string]: TMatrix2f read GetUniformMatrix2fv write SetUniformMatrix2fv;
     property UniformMatrix3fv[const index: string]: TMatrix3f read GetUniformMatrix3fv write SetUniformMatrix3fv;
     property UniformMatrix4fv[const index: string]: TMatrix4f read GetUniformMatrix4fv write SetUniformMatrix4fv;
-    property UniformTextureHandle[const index: string; const TextureIndex: Integer; const TextureTarget: TgxTextureTarget]
+    property UniformTextureHandle[const index: string; const TextureIndex: Integer; const TextureTarget: TglTextureTarget]
       : LongWord read GetUniformTextureHandle write SetUniformTextureHandle;
     property UniformBuffer[const index: string]: TgxUniformBufferHandle write SetUniformBuffer;
   end;
@@ -1931,7 +1931,7 @@ end;
 procedure TgxTextureHandle.DoDestroyHandle(var AHandle: LongWord);
 var
   a: GLint;
-  t: TgxTextureTarget;
+  t: TglTextureTarget;
 begin
   if not vContextActivationFailureOccurred then
   // reset error status
@@ -1939,7 +1939,7 @@ begin
   with GetContext.gxStates do
   begin
     for a := 0 to MaxTextureImageUnits - 1 do
-      for t := Low(TgxTextureTarget) to High(TgxTextureTarget) do
+      for t := Low(TglTextureTarget) to High(TglTextureTarget) do
         if TextureBinding[a, t] = AHandle then
           TextureBinding[a, t] := 0;
   end;
@@ -1952,7 +1952,7 @@ begin
   Result := ByteBool(glIsTexture(ID));
 end;
 
-procedure TgxTextureHandle.SetTarget(ATarget: TgxTextureTarget);
+procedure TgxTextureHandle.SetTarget(ATarget: TglTextureTarget);
 begin
   if FTarget = ttNoShape then
     FTarget := ATarget;
@@ -3259,13 +3259,13 @@ begin
 end;
 
 function TgxProgramHandle.GetUniformTextureHandle(const index: string; const TextureIndex: Integer;
-  const TextureTarget: TgxTextureTarget): Cardinal;
+  const TextureTarget: TglTextureTarget): Cardinal;
 begin
   Result := GetUniform1i(index);
 end;
 
 procedure TgxProgramHandle.SetUniformTextureHandle(const index: string; const TextureIndex: Integer;
-  const TextureTarget: TgxTextureTarget; const Value: LongWord);
+  const TextureTarget: TglTextureTarget; const Value: LongWord);
 begin
   vCurrentContext.gxStates.TextureBinding[0, TextureTarget] := Value;
   SetUniform1i(index, TextureIndex);

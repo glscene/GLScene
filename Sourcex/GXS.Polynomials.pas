@@ -13,10 +13,10 @@ unit GXS.Polynomials;
 *)
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
-  GXS.VectorGeometry;
+  GLScene.VectorGeometry;
 
 type
   TDoubleArray = array of Double;

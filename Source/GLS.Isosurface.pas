@@ -27,18 +27,18 @@ unit GLS.Isosurface;
 *)
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 // uncomment next line to memorize vertex Density value to further use
 // (i.e. mesh color generation)
 {.$Define UseDensity}
 
 uses
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.VectorLists,
   GLS.Mesh,
   GLS.VectorFileObjects,
-  GLS.VectorTypes,
-  GLS.VectorTypesExt;
+  GLScene.VectorTypes,
+  GLScene.VectorTypesExt;
 
 const
   ALLOC_SIZE = 65536;

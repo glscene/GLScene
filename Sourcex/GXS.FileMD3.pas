@@ -12,7 +12,7 @@ uses
   System.SysUtils,
 
   GXS.ApplicationFileIO,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.VectorFileObjects,
   GXS.Material,
   GXS.Texture,

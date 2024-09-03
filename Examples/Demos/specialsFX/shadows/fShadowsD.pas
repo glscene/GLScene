@@ -16,8 +16,8 @@ uses
   Vcl.Imaging.JPeg,
 
   
-  GLS.VectorTypes, 
-  GLS.VectorGeometry, 
+  GLScene.VectorTypes, 
+  GLScene.VectorGeometry, 
   GLS.BaseClasses,
   GLS.Scene, 
   GLS.Graph, 

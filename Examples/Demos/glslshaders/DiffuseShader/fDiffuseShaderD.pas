@@ -18,9 +18,9 @@ uses
   GLS.Scene,
   GLS.Objects,
   GLS.Graph,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Context,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.GeomObjects,
   GLS.VectorFileObjects,
 

@@ -17,10 +17,10 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.PersistentClasses,
   GLS.ApplicationFileIO,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.VectorLists,
   GLS.Scene,
   GLS.Texture,

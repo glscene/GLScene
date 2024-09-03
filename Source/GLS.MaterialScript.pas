@@ -8,14 +8,14 @@ unit GLS.MaterialScript;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.SysUtils,
   System.Classes,
   VCL.StdCtrls,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Texture,
   GLS.TextureFormat,
   GLS.Graphics,

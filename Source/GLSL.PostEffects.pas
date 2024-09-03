@@ -8,23 +8,23 @@ unit GLSL.PostEffects;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Scene,
   GLS.State,
   GLS.Context,
   GLS.PersistentClasses,
   GLS.Texture,
   GLS.Graphics,
-  GLS.Strings,
+  GLScene.Strings,
   GLSL.CustomShader,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.RenderContextInfo,
   GLS.Material,
   GLS.TextureFormat;

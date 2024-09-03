@@ -7,19 +7,19 @@ unit GLS.Nodes;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.OpenGLAdapter,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
   GLS.Context,
   GLS.BaseClasses,
-  GLS.Spline,
+  GLScene.Spline,
   GLS.Coordinates;
 
 type

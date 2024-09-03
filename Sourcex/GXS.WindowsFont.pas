@@ -7,7 +7,7 @@ unit GXS.WindowsFont;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -26,9 +26,9 @@ uses
   GXS.RenderContextInfo,
   GXS.VectorLists,
   GXS.Utils,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.ApplicationFileIO,
-  GXS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
 

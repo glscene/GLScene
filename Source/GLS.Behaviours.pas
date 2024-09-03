@@ -7,15 +7,15 @@ unit GLS.Behaviours;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Scene,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.XCollection,
   GLS.BaseClasses,
   GLS.Coordinates;

@@ -7,12 +7,12 @@ unit GLS.CUDA.Context;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
-  GLS.Strings,
+  GLScene.Strings,
   GLS.BaseClasses,
   GLS.Context,
   GLS.Generics,

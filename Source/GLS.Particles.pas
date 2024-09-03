@@ -7,19 +7,19 @@ unit GLS.Particles;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Scene,
   GLS.XCollection,
   GLS.PersistentClasses,
-  GLS.VectorGeometry,
-  GLS.OpenGLTokens,
+  GLScene.VectorGeometry,
+  GLScene.OpenGLTokens,
   GLS.Context,
   GLS.Color,
   GLS.BaseClasses,

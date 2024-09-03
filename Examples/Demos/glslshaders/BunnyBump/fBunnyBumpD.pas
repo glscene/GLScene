@@ -16,7 +16,7 @@ uses
   Vcl.Imaging.Jpeg,
   
   GLS.Scene,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Objects,
   GLS.Texture,
   GLS.VectorFileObjects,
@@ -27,7 +27,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Context,
   GLS.FileOBJ,
   GLS.Utils,

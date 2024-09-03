@@ -5,17 +5,17 @@ unit GXS.FileLMTS;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   FMX.Graphics,
 
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.ApplicationFileIO,
   GXS.VectorLists,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.PersistentClasses,
   GXS.VectorFileObjects,
   GXS.Graphics,

@@ -12,18 +12,18 @@ uses
   System.SysUtils,
   System.Types,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.SoundFileObjects,
   GLS.Scene,
   GLS.XCollection,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Cadencer,
   GLS.BaseClasses,
   GLS.FileMP3,
   GLS.FileWAV,
   GLS.Utils;
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 type
 

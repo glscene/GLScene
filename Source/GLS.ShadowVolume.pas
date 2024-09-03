@@ -12,16 +12,16 @@ unit GLS.ShadowVolume;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.Scene,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Context,
   GLS.Silhouette,
   GLS.PersistentClasses,
@@ -33,8 +33,8 @@ uses
   GLS.RenderContextInfo,
   GLS.VectorLists,
   GLS.State,
-  GLS.VectorTypes,
-  GLS.Logger;
+  GLScene.VectorTypes,
+  GLScene.Logger;
 
 
 type

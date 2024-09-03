@@ -13,9 +13,9 @@ uses
   Vcl.Dialogs,
   Vcl.Imaging.Jpeg,
 
-  GLS.OpenGLTokens,
-  GLS.VectorGeometry,
-  GLS.VectorTypes,
+  GLS.TextureFormat,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GLS.Context,
   GLS.State,
   GLS.Color,

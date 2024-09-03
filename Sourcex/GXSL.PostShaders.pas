@@ -7,15 +7,15 @@ unit GXSL.PostShaders;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
 
   GXS.Texture,
   GXS.Scene,
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.Context,
   GXS.Material,
   GXSL.Shader,
@@ -30,8 +30,8 @@ type
     FThreshold: Single;
     // Implementing IPostShader.
     procedure DoUseTempTexture(const TempTexture: TgxTextureHandle;
-      TextureTarget: TgxTextureTarget);
-    function GetTextureTarget: TgxTextureTarget;
+      TextureTarget: TglTextureTarget);
+    function GetTextureTarget: TglTextureTarget;
     function StoreThreshold: Boolean;
   protected
     procedure DoApply(var rci: TgxRenderContextInfo; Sender: TObject); override;
@@ -52,8 +52,8 @@ type
     FThreshold : Single;
     Fintensity : Single;
     // Implementing IPostShader.
-    procedure DoUseTempTexture(const TempTexture: TgxTextureHandle;TextureTarget: TgxTextureTarget);
-    function GetTextureTarget: TgxTextureTarget;
+    procedure DoUseTempTexture(const TempTexture: TgxTextureHandle;TextureTarget: TglTextureTarget);
+    function GetTextureTarget: TglTextureTarget;
     function StoreThreshold: Boolean;
     function StoreIntensity: Boolean;
   protected
@@ -76,8 +76,8 @@ type
   private
     FThreshold : Single; // In percent 0..100;
     // Implementing IPostShader.
-    procedure DoUseTempTexture(const TempTexture: TgxTextureHandle;TextureTarget: TgxTextureTarget);
-    function GetTextureTarget: TgxTextureTarget;
+    procedure DoUseTempTexture(const TempTexture: TgxTextureHandle;TextureTarget: TglTextureTarget);
+    function GetTextureTarget: TglTextureTarget;
     function StoreThreshold: Boolean;
   protected
     procedure DoApply(var rci: TgxRenderContextInfo; Sender: TObject); override;
@@ -105,8 +105,8 @@ type
     FMaskTex : TgxTexture;
     FNoiseTexName  : TgxLibMaterialName;
     FMaskTexName        : TgxLibMaterialName;
-    procedure DoUseTempTexture(const TempTexture: TgxTextureHandle;TextureTarget: TgxTextureTarget);
-    function GetTextureTarget: TgxTextureTarget;
+    procedure DoUseTempTexture(const TempTexture: TgxTextureHandle;TextureTarget: TglTextureTarget);
+    function GetTextureTarget: TglTextureTarget;
     function StoreLuminanceThreshold: Boolean;
     function StoreColorAmplification: Boolean;
     procedure SetMaskTexTexture(const Value: TgxTexture);
@@ -150,8 +150,8 @@ type
   private
     FPixelWidth  : Single;
     FPixelHeight : Single;
-    procedure DoUseTempTexture(const TempTexture: TgxTextureHandle;TextureTarget: TgxTextureTarget);
-    function GetTextureTarget: TgxTextureTarget;
+    procedure DoUseTempTexture(const TempTexture: TgxTextureHandle;TextureTarget: TglTextureTarget);
+    function GetTextureTarget: TglTextureTarget;
     function StorePixelWidth: Boolean;
     function StorePixelHeight: Boolean;
   protected
@@ -174,8 +174,8 @@ type
   private
     FGamma  : Single;
     FNumColors : Single;
-    procedure DoUseTempTexture(const TempTexture: TgxTextureHandle;TextureTarget: TgxTextureTarget);
-    function GetTextureTarget: TgxTextureTarget;
+    procedure DoUseTempTexture(const TempTexture: TgxTextureHandle;TextureTarget: TglTextureTarget);
+    function GetTextureTarget: TglTextureTarget;
     function StoreGamma: Boolean;
     function StoreNumColors: Boolean;
   protected
@@ -198,8 +198,8 @@ type
   private
     FRandScale  : Single;
     FRandFactor : Single;
-    procedure DoUseTempTexture(const TempTexture: TgxTextureHandle;TextureTarget: TgxTextureTarget);
-    function GetTextureTarget: TgxTextureTarget;
+    procedure DoUseTempTexture(const TempTexture: TgxTextureHandle;TextureTarget: TglTextureTarget);
+    function GetTextureTarget: TglTextureTarget;
     function StoreRandScale: Boolean;
     function StoreRandFactor: Boolean;
   protected
@@ -230,8 +230,8 @@ type
     FMaterialLibrary: TgxAbstractMaterialLibrary;
     FNoiseTex : TgxTexture;
     FNoiseTexName  : TgxLibMaterialName;
-    procedure DoUseTempTexture(const TempTexture: TgxTextureHandle;TextureTarget: TgxTextureTarget);
-    function GetTextureTarget: TgxTextureTarget;
+    procedure DoUseTempTexture(const TempTexture: TgxTextureHandle;TextureTarget: TglTextureTarget);
+    function GetTextureTarget: TglTextureTarget;
     procedure SetNoiseTexTexture(const Value: TgxTexture);
     function GetNoiseTexName: TgxLibMaterialName;
     procedure SetNoiseTexName(const Value: TgxLibMaterialName);
@@ -355,12 +355,12 @@ begin
 end;
 
 procedure TgxslCustomPostBlurShader.DoUseTempTexture(
-  const TempTexture: TgxTextureHandle; TextureTarget: TgxTextureTarget);
+  const TempTexture: TgxTextureHandle; TextureTarget: TglTextureTarget);
 begin
   Param['Image'].AsCustomTexture[2, TextureTarget] := TempTexture.Handle;
 end;
 
-function TgxslCustomPostBlurShader.GetTextureTarget: TgxTextureTarget;
+function TgxslCustomPostBlurShader.GetTextureTarget: TglTextureTarget;
 begin
   Result := ttTextureRect;
 end;
@@ -444,12 +444,12 @@ begin
 end;
 
 procedure TgxslCustomPostThermalVisionShader.DoUseTempTexture(
-  const TempTexture: TgxTextureHandle; TextureTarget: TgxTextureTarget);
+  const TempTexture: TgxTextureHandle; TextureTarget: TglTextureTarget);
 begin
   Param['ScreenTex'].AsCustomTexture[3, TextureTarget] := TempTexture.Handle;
 end;
 
-function TgxslCustomPostThermalVisionShader.GetTextureTarget: TgxTextureTarget;
+function TgxslCustomPostThermalVisionShader.GetTextureTarget: TglTextureTarget;
 begin
   Result := ttTextureRect; //ttTexture2D;
 end;
@@ -541,12 +541,12 @@ begin
 end;
 
 procedure TgxslCustomPostDreamVisionShader.DoUseTempTexture(
-  const TempTexture: TgxTextureHandle; TextureTarget: TgxTextureTarget);
+  const TempTexture: TgxTextureHandle; TextureTarget: TglTextureTarget);
 begin
   Param['ScreenTex'].AsCustomTexture[2, TextureTarget] := TempTexture.Handle;
 end;
 
-function TgxslCustomPostDreamVisionShader.GetTextureTarget: TgxTextureTarget;
+function TgxslCustomPostDreamVisionShader.GetTextureTarget: TglTextureTarget;
 begin
   Result := ttTextureRect; //ttTexture2D;
 end;
@@ -644,12 +644,12 @@ begin
 end;
 
 procedure TgxslCustomPostNightVisionShader.DoUseTempTexture(
-  const TempTexture: TgxTextureHandle; TextureTarget: TgxTextureTarget);
+  const TempTexture: TgxTextureHandle; TextureTarget: TglTextureTarget);
 begin
   Param['ScreenTex'].AsCustomTexture[7, TextureTarget] := TempTexture.Handle;
 end;
 
-function TgxslCustomPostNightVisionShader.GetTextureTarget: TgxTextureTarget;
+function TgxslCustomPostNightVisionShader.GetTextureTarget: TglTextureTarget;
 begin
   Result := ttTextureRect; //ttTexture2D;
 end;
@@ -821,12 +821,12 @@ begin
 end;
 
 procedure TgxslCustomPostPixelateShader.DoUseTempTexture(
-  const TempTexture: TgxTextureHandle; TextureTarget: TgxTextureTarget);
+  const TempTexture: TgxTextureHandle; TextureTarget: TglTextureTarget);
 begin
   Param['ScreenTex'].AsCustomTexture[3, TextureTarget] := TempTexture.Handle;
 end;
 
-function TgxslCustomPostPixelateShader.GetTextureTarget: TgxTextureTarget;
+function TgxslCustomPostPixelateShader.GetTextureTarget: TglTextureTarget;
 begin
   Result := ttTextureRect; //ttTexture2D;
 end;
@@ -910,12 +910,12 @@ begin
 end;
 
 procedure TgxslCustomPostPosterizeShader.DoUseTempTexture(
-  const TempTexture: TgxTextureHandle; TextureTarget: TgxTextureTarget);
+  const TempTexture: TgxTextureHandle; TextureTarget: TglTextureTarget);
 begin
   Param['ScreenTex'].AsCustomTexture[3, TextureTarget] := TempTexture.Handle;
 end;
 
-function TgxslCustomPostPosterizeShader.GetTextureTarget: TgxTextureTarget;
+function TgxslCustomPostPosterizeShader.GetTextureTarget: TglTextureTarget;
 begin
   Result := ttTextureRect; //ttTexture2D;
 end;
@@ -1005,12 +1005,12 @@ begin
 end;
 
 procedure TgxslCustomPostFrostShader.DoUseTempTexture(
-  const TempTexture: TgxTextureHandle; TextureTarget: TgxTextureTarget);
+  const TempTexture: TgxTextureHandle; TextureTarget: TglTextureTarget);
 begin
   Param['ScreenTex'].AsCustomTexture[3, TextureTarget] := TempTexture.Handle;
 end;
 
-function TgxslCustomPostFrostShader.GetTextureTarget: TgxTextureTarget;
+function TgxslCustomPostFrostShader.GetTextureTarget: TglTextureTarget;
 begin
   Result := ttTextureRect; //ttTexture2D;
 end;
@@ -1176,12 +1176,12 @@ begin
 end;
 
 procedure TgxslCustomPostTroubleShader.DoUseTempTexture(
-  const TempTexture: TgxTextureHandle; TextureTarget: TgxTextureTarget);
+  const TempTexture: TgxTextureHandle; TextureTarget: TglTextureTarget);
 begin
   Param['ScreenTex'].AsCustomTexture[5, TextureTarget] := TempTexture.Handle;
 end;
 
-function TgxslCustomPostTroubleShader.GetTextureTarget: TgxTextureTarget;
+function TgxslCustomPostTroubleShader.GetTextureTarget: TglTextureTarget;
 begin
   Result := ttTextureRect; //ttTexture2D;
 end;

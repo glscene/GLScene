@@ -35,14 +35,14 @@ uses
   System.SysUtils,
 
   GXS.Context,
-  GXS.VectorGeometry,
-  GXS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GXS.VectorLists,
 
   GXS.Texture,
   GXS.Scene,
   GXS.Cadencer,
-  GXS.Strings,
+  GLScene.Strings,
   GXS.Color,
   GXS.RenderContextInfo,
   GXS.Material,

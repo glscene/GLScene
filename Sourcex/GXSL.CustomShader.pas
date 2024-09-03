@@ -18,12 +18,12 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.VectorGeometry,
-  GXS.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.VectorTypes,
   GXS.Texture, 
   GXS.Cadencer, 
   GXS.Scene,
-  GXS.Strings, 
+  GLScene.Strings, 
   GXS.Context,
   GXS.RenderContextInfo,
   GXS.Material,
@@ -72,9 +72,9 @@ type
   ['{68A62362-AF0A-4CE8-A9E1-714FE02AFA4A}']
     // Called on every pass.
     procedure DoUseTempTexture(const TempTexture: TgxTextureHandle;
-      TextureTarget: TgxTextureTarget);
+      TextureTarget: TglTextureTarget);
     // Called to determine if it is compatible.
-    function GetTextureTarget: TgxTextureTarget;
+    function GetTextureTarget: TglTextureTarget;
   end;
 
   // A pure abstract class, must be overriden.
@@ -221,13 +221,13 @@ type
       const Value: TgxTexture);
 
     function GetAsCustomTexture(const TextureIndex: Integer;
-      TextureTarget: TgxTextureTarget): Cardinal; virtual; abstract;
+      TextureTarget: TglTextureTarget): Cardinal; virtual; abstract;
     procedure SetAsCustomTexture(const TextureIndex: Integer;
-      TextureTarget: TgxTextureTarget; const Value: Cardinal); virtual; abstract;
+      TextureTarget: TglTextureTarget; const Value: Cardinal); virtual; abstract;
     function GetAsUniformBuffer: GLenum; virtual; abstract;
     procedure SetAsUniformBuffer(UBO: GLenum); virtual; abstract;
   public
-    
+
 
     { This overloaded SetAsVector accepts open array as input. e.g.
        SetAsVectorF([0.1, 0.2]). Array length must between 1-4. }
@@ -277,7 +277,7 @@ type
     property AsTextureRect[const TextureIndex: Integer]: TgxTexture write SetAsTextureRect;
     property AsTextureCube[const TextureIndex: Integer]: TgxTexture write SetAsTextureCube;
 
-    property AsCustomTexture[const TextureIndex: Integer; TextureTarget: TgxTextureTarget]: Cardinal read GetAsCustomTexture write SetAsCustomTexture;
+    property AsCustomTexture[const TextureIndex: Integer; TextureTarget: TglTextureTarget]: Cardinal read GetAsCustomTexture write SetAsCustomTexture;
 
     property AsUniformBuffer: GLenum read GetAsUniformBuffer write SetAsUniformBuffer;
   end;
@@ -295,8 +295,8 @@ procedure UnApplyBlendingModeEx;
 procedure InitTexture(
   const TextureHandle: Cardinal;
   const TextureSize: TgxSize;
-  const TextureTarget: TgxTextureTarget = ttTexture2D);
-// Probably need to give them proper names, instead of numbers... 
+  const TextureTarget: TglTextureTarget = ttTexture2D);
+// Probably need to give them proper names, instead of numbers...
 procedure DrawTexturedScreenQuad;
 procedure DrawTexturedScreenQuad2(const ViewPortSize: TgxSize);
 procedure DrawTexturedScreenQuad3;
@@ -484,7 +484,7 @@ end;
 procedure InitTexture(
   const TextureHandle: Cardinal;
   const TextureSize: TgxSize;
-  const TextureTarget: TgxTextureTarget = ttTexture2D);
+  const TextureTarget: TglTextureTarget = ttTexture2D);
 var
   glTarget: GLEnum;
 begin
@@ -500,7 +500,7 @@ begin
   glCopyTexImage2D(glTarget, 0, GL_RGBA8, 0, 0, TextureSize.cx, TextureSize.cy, 0);
 end;
 
-{ TgxShaderProgram }
+// TgxShaderProgram
 
 procedure TgxShaderProgram.Apply;
 begin
@@ -519,7 +519,7 @@ begin
     FCode.Assign(TgxShaderProgram(Source).FCode);
   end
   else
-    inherited; //die, die, die!!!
+    inherited; //die!!!
 end;
 
 

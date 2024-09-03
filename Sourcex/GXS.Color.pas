@@ -7,7 +7,7 @@ unit GXS.Color;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -17,8 +17,8 @@ uses
   System.UITypes,
   FMX.Dialogs,
 
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.PersistentClasses,
   GXS.BaseClasses;
 

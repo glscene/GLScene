@@ -24,7 +24,7 @@ unit GXS.zBuffer;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -33,9 +33,9 @@ uses
 
   GXS.OpenGL,
   GXS.XOpenGL,
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.PersistentClasses,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Scene,
   GXS.Coordinates,
   GXS.Graphics,

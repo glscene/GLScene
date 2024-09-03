@@ -7,7 +7,7 @@ unit GLS.FileHDR;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,11 +15,11 @@ uses
   System.Classes,
   System.SysUtils,
   
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.TextureFormat,
   GLS.RGBE,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
 
   GLS.Context,
   GLS.ApplicationFileIO,

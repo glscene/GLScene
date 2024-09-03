@@ -13,7 +13,7 @@ unit GXS.ParticleFX;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -23,9 +23,9 @@ uses
   System.Math,
 
   GXS.XCollection,
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.PersistentClasses,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.VectorLists,
   GXS.Manager,
   GXS.Scene,

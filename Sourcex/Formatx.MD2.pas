@@ -7,7 +7,7 @@ unit Formatx.MD2;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 {$R-}
 
@@ -15,7 +15,7 @@ uses
   System.Classes,
   System.SysUtils,
    
-  GXS.VectorTypes;
+  GLScene.VectorTypes;
 
 const
   MAX_MD2_TRIANGLES = 4096;

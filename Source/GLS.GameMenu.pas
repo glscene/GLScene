@@ -7,15 +7,15 @@ unit GLS.GameMenu;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
   GLS.Coordinates,
 
   GLS.Scene,

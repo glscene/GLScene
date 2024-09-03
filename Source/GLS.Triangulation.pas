@@ -12,7 +12,7 @@ uses
   System.Types,
   Vcl.Dialogs,
 
-  GLS.VectorGeometry;
+  GLScene.VectorGeometry;
 
 // Set these as applicable
 const

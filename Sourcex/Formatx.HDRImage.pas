@@ -8,7 +8,7 @@ unit Formatx.HDRImage;
 *)
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -17,7 +17,7 @@ uses
   System.SysUtils,
   FMX.Graphics,
 
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Graphics;
 
 type

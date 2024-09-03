@@ -14,10 +14,10 @@ uses
   System.Math,
   System.Types,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
   GLS.VectorLists,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.PipelineTransformation,
   GLS.PersistentClasses,
   GLS.Manager,

@@ -28,17 +28,17 @@ unit GLS.ParametricSurfaces;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.OpenGLAdapter,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.VectorFileObjects,
   GLS.CurvesAndSurfaces,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.Texture,

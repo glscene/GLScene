@@ -9,22 +9,22 @@ unit GLS.Mirror;
 *)
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.OpenGLAdapter,
   GLS.Scene,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.Context,
   GLS.Material,
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.State,
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.PersistentClasses,
   GLS.PipelineTransformation,
   GLS.XCollection,

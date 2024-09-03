@@ -10,7 +10,7 @@ unit Formats.DXTC;
 
 interface
 
-{$I GLS.Scene.inc}
+{.$I GLScene.Defines.inc}
 {$Z4}  // Minimum enum size = dword
 
 uses

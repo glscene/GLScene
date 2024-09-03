@@ -16,11 +16,11 @@ uses
   Vcl.ComCtrls,
   Vcl.Grids,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.Scene,
   GLS.Objects,
   GLS.SceneViewer,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.SpaceText,
   GLS.Collision,
   GLS.VectorFileObjects,

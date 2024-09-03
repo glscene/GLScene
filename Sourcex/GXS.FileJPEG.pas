@@ -5,14 +5,14 @@ unit GXS.FileJPEG;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GXS.VectorGeometry,
-  GXS.Strings,
+  GLScene.VectorGeometry,
+  GLScene.Strings,
   GXS.Context,
   GXS.Graphics,
   GXS.TextureFormat,
@@ -36,8 +36,8 @@ type
     procedure LoadFromStream(stream: TStream); override;
     procedure SaveToStream(stream: TStream); override;
     // Assigns from any Texture.
-    procedure AssignFromTexture(textureContext: TgxContext; const textureHandle: Cardinal; textureTarget: TgxTextureTarget;
-      const CurrentFormat: boolean; const intFormat: TgxInternalFormat); reintroduce;
+    procedure AssignFromTexture(textureContext: TgxContext; const textureHandle: Cardinal; textureTarget: TglTextureTarget;
+      const CurrentFormat: boolean; const intFormat: TglInternalFormat); reintroduce;
     property DivScale: longword read FDivScale write FDivScale;
     property Dither: boolean read FDither write FDither;
     property Smoothing: boolean read FSmoothing write SetSmoothing;
@@ -102,7 +102,7 @@ begin
 end;
 
 procedure TgxJPEGImage.AssignFromTexture(textureContext: TgxContext; const textureHandle: Cardinal;
-  textureTarget: TgxTextureTarget; const CurrentFormat: boolean; const intFormat: TgxInternalFormat);
+  textureTarget: TglTextureTarget; const CurrentFormat: boolean; const intFormat: TglInternalFormat);
 begin
   //
 end;

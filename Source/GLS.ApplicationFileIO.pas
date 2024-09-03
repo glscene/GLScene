@@ -10,7 +10,7 @@ unit GLS.ApplicationFileIO;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -18,8 +18,8 @@ uses
   System.SysUtils,
 
   GLS.BaseClasses,
-  GLS.Strings,
-  GLS.Logger;
+  GLScene.Strings,
+  GLScene.Logger;
 
 const
   GLS_RC_DDS_Type = RT_RCDATA;

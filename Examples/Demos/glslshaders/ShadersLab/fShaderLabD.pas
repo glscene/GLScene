@@ -22,9 +22,9 @@ uses
   Vcl.Imaging.Jpeg,
   Vcl.Imaging.PngImage,
 
-  GLS.VectorTypes,
+  GLScene.VectorTypes,
   GLS.VectorLists,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.BaseClasses,
   GLS.PersistentClasses,
   GLS.Keyboard,

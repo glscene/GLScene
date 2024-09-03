@@ -7,7 +7,7 @@ unit GLS.FileVRML;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -17,8 +17,8 @@ uses
   GLS.VectorFileObjects,
   GLS.Material,
   GLS.ApplicationFileIO,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.VectorLists,
   Formats.VRML,
   GLS.MeshUtils;

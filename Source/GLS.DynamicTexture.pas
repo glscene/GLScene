@@ -10,7 +10,7 @@ unit GLS.DynamicTexture;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,7 +19,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.OpenGLTokens,
+  GLScene.OpenGLTokens,
   GLS.TextureFormat,
   GLS.Utils,
   GLS.Context,
@@ -79,7 +79,7 @@ implementation
 // ---------------------------------------------------------
 
 uses
-  GLS.VectorGeometry;
+  GLScene.VectorGeometry;
 
 // ----------------------------------
 // TGLDynamicTextureImage

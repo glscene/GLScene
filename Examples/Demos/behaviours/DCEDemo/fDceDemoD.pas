@@ -29,7 +29,7 @@ uses
   GLS.WindowsFont,
   GLS.HUDObjects,
   GLS.Coordinates,
-  GLS.VectorGeometry,
+  GLScene.VectorGeometry,
   GLS.FileMD2,
   GLS.File3DS,
   GLS.Context,
@@ -40,7 +40,7 @@ uses
   GLS.State,
   GLS.Utils,
   GLS.BaseClasses,
-  GLS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
   TFormDCE = class(TForm)

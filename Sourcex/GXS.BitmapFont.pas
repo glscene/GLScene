@@ -7,7 +7,7 @@ unit GXS.BitmapFont;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -22,7 +22,7 @@ uses
   GXS.XOpenGL,
   GXS.PersistentClasses,
   GXS.Scene,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Context,
   GXS.Texture,
   GXS.State,
@@ -32,7 +32,7 @@ uses
   GXS.BaseClasses,
   GXS.RenderContextInfo,
   GXS.TextureFormat,
-  GXS.VectorTypes;
+  GLScene.VectorTypes;
 
 type
 

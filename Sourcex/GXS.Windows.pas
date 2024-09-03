@@ -7,7 +7,7 @@ unit GXS.Windows;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -21,11 +21,11 @@ uses
   FMX.Graphics,
   FMX.Types,
 
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.PersistentClasses,
   GXS.BaseClasses,
-  GXS.Strings,
+  GLScene.Strings,
   GXS.Scene,
   GXS.Coordinates,
   GXS.HUDObjects,

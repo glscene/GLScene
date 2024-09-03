@@ -7,7 +7,7 @@ unit GXS.XCollection;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 {.$DEFINE DEBUG_XCOLLECTION }  // on define the most apps will not work
 
@@ -15,7 +15,7 @@ uses
   System.Classes,
   System.SysUtils,
   System.Types,
-  GXS.Strings,
+  GLScene.Strings,
   GXS.PersistentClasses
   {$IFDEF DEBUG_XCOLLECTION}, System.TypInfo {$ENDIF};
 

@@ -11,8 +11,8 @@ uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
 
-  GLS.OpenGLTokens,
-  GLS.Strings;
+  GLScene.OpenGLTokens,
+  GLScene.Strings;
 
 type
   // Texture addressing rules

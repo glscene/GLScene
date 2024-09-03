@@ -7,15 +7,15 @@ unit Formats.B3D;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 {$R-}
 
 uses
   System.Classes, 
   System.SysUtils,
    
-  GLS.VectorGeometry, 
-  GLS.VectorTypes, 
+  GLScene.VectorGeometry, 
+  GLScene.VectorTypes, 
   GLS.VectorLists;
 
 

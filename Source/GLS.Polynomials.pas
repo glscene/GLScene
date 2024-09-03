@@ -21,10 +21,10 @@ unit GLS.Polynomials;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
-  GLS.VectorGeometry;
+  GLScene.VectorGeometry;
 
 type
   TDoubleArray = array of Double;

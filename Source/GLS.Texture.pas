@@ -7,7 +7,7 @@ unit GLS.Texture;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,9 +18,9 @@ uses
   Vcl.Imaging.jpeg,
   Vcl.Imaging.pngimage,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.BaseClasses,
   GLS.Graphics,
   GLS.Context,
@@ -33,7 +33,7 @@ uses
   GLS.TextureFormat,
   GLS.ApplicationFileIO,
   GLS.Utils,
-  GLS.Strings;
+  GLScene.Strings;
 
 const
   cDefaultNormalMapScale = 0.125;

@@ -1,7 +1,7 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-unit GLS.VectorGeometry;
+unit GLScene.VectorGeometry;
 
 (*
   Base classes and structures.
@@ -25,14 +25,12 @@ unit GLS.VectorGeometry;
 
 interface
 
-{$I GLS.Scene.inc}
-
 uses
   System.SysUtils,
   System.Types,
   System.Math,
 
-  GLS.VectorTypes;
+  GLScene.VectorTypes;
 
 const
   cMaxArray = (MaxInt shr 4);

@@ -30,11 +30,11 @@ uses
   System.SysUtils,
   System.Math,
 
-  GXS.VectorTypes,
+  GLScene.VectorTypes,
   GXS.VectorLists,
   GXS.HeightData,
   GXS.Graphics,
-  GXS.VectorGeometry,
+  GLScene.VectorGeometry,
   GXS.Texture,
   GXS.Coordinates,
   GXS.Material;

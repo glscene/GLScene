@@ -7,7 +7,7 @@ unit GLS.Color;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   System.Types,
@@ -17,8 +17,8 @@ uses
   Vcl.Dialogs,
   Vcl.Graphics,
 
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.PersistentClasses,
   GLS.BaseClasses,
   GLS.Utils;

@@ -7,7 +7,7 @@ unit GLS.Blur;
 
 interface
 
-{$I GLS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,9 +16,9 @@ uses
   System.SysUtils,
   VCL.Graphics,
 
-  GLS.OpenGLTokens,
-  GLS.VectorTypes,
-  GLS.VectorGeometry,
+  GLScene.OpenGLTokens,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLS.TextureFormat,
 
   GLS.BaseClasses,
@@ -168,7 +168,7 @@ implementation
 uses
   GLS.Coordinates,
   GLS.PersistentClasses,
-  GLS.Strings,
+  GLScene.Strings,
   GLS.OpenGLAdapter;
 
 const

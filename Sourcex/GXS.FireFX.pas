@@ -7,7 +7,7 @@ unit GXS.FireFX;
 
 interface
 
-{$I GXS.Scene.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -17,8 +17,8 @@ uses
   GXS.XCollection,
   GXS.BaseClasses,
   GXS.VectorLists,
-  GXS.VectorTypes,
-  GXS.VectorGeometry,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GXS.Manager,
   GXS.Scene,
   GXS.Context,
