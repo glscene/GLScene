@@ -30,7 +30,7 @@ uses
   GLS.Color,
   GLS.RenderContextInfo, 
   GLS.Material,
-  GLS.Utils;
+  GLScene.Utils;
 
 const
   // Load input data in chunks of BufSize Bytes. 

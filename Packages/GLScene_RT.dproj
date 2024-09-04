@@ -312,7 +312,7 @@
         <DCCReference Include="..\Source\GLS.ProxyObjects.pas"/>
         <DCCReference Include="..\Source\GLS.Ragdoll.pas"/>
         <DCCReference Include="..\Source\GLS.RandomHDS.pas"/>
-        <DCCReference Include="..\Source\GLS.RGBE.pas"/>
+        <DCCReference Include="..\Source\GLScene.RGBE.pas"/>
         <DCCReference Include="..\Source\GLS.RenderContextInfo.pas"/>
         <DCCReference Include="..\Source\GLS.ROAMPatch.pas"/>
         <DCCReference Include="..\Source\GLSL.AsmShader.pas"/>
@@ -363,7 +363,6 @@
         <DCCReference Include="..\Source\GLS.Trail.pas"/>
         <DCCReference Include="..\Source\GLS.Tree.pas"/>
         <DCCReference Include="..\Source\GLS.Triangulation.pas"/>
-        <DCCReference Include="..\Source\GLS.Utils.pas"/>
         <DCCReference Include="..\Source\GLS.WaterPlane.pas"/>
         <DCCReference Include="..\Source\GLS.Windows.pas"/>
         <DCCReference Include="..\Source\GLS.WindowsContext.pas"/>
@@ -392,6 +391,7 @@
         <DCCReference Include="..\Source\PasDblStrUtils.pas"/>
         <DCCReference Include="..\Source\PasGLTF.pas"/>
         <DCCReference Include="..\Source\PasJSON.pas"/>
+        <DCCReference Include="..\Source\GLScene.Utils.pas"/>
         <None Include="..\Source\GLScene.Defines.inc"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

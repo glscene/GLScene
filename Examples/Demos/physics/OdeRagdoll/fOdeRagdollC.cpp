@@ -18,7 +18,7 @@
 #pragma link "GLS.VectorFileObjects"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.WindowsFont"
-#pragma link "GLS.Utils"
+#pragma link "GLScene.Utils"
 
 #pragma resource "*.dfm"
 

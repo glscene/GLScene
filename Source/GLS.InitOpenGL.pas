@@ -5,7 +5,6 @@ unit GLS.InitOpenGL;
 (*
   Initialisation of OpenGL for Vcl adapted from github.com/LUXOPHIA
 *)
-
 interface
 
 uses
@@ -156,9 +155,7 @@ type
 var
   GLOpenGL: TGLOpenGL;
 
-//=====================================================================
-implementation
-//=====================================================================
+implementation //-------------------------------------------------------------
 
 procedure TGLOpenGL.SetPFD(const PFD_: TPixelFormatDescriptor);
 begin
@@ -509,9 +506,8 @@ begin
   glBindVertexArray(0);
 end;
 
-// ====================================================================
-initialization
-// ====================================================================
+initialization //-------------------------------------------------------------
+
 
 GLOpenGL := TGLOpenGL.Create;
 GLOpenGL.BeginGL;

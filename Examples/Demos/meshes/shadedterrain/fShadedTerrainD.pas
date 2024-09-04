@@ -38,7 +38,7 @@ uses
   GLS.Coordinates,
 
   GLS.State,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormShadedTerrain = class(TForm)

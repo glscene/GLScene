@@ -31,7 +31,7 @@ uses
   GLS.BaseClasses,
   GLS.State,
   GLScene.VectorGeometry,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormCsg = class(TForm)

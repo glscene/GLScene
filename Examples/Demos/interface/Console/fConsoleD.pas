@@ -26,7 +26,7 @@ uses
   GLS.Console,
   GLS.Coordinates,
   GLS.SimpleNavigation,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormConsole = class(TForm)

@@ -20,7 +20,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.CgShader.hpp"
 #include "JPeg.hpp"
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

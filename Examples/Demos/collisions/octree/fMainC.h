@@ -17,7 +17,7 @@
 #include "GLS.BaseClasses.hpp"
 #include "GLS.Coordinates.hpp"
 
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 #include "GLS.Scene.hpp"
 
 //---------------------------------------------------------------------------

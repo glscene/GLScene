@@ -22,14 +22,14 @@ uses
   System.Types,
   System.Math,
 
-  GXS.XCollection,
   GLScene.VectorTypes,
-  GXS.PersistentClasses,
   GLScene.VectorGeometry,
+  GLScene.Utils,
+  GXS.PersistentClasses,
   GXS.VectorLists,
   GXS.Manager,
   GXS.Scene,
-  GXS.Utils,
+  GXS.ImageUtils,
   GXS.State,
   GXS.Material,
   GXS.Cadencer,
@@ -40,6 +40,7 @@ uses
   GXS.Coordinates,
   GXS.RenderContextInfo,
   GXS.PipelineTransformation,
+  GXS.XCollection,
   GXS.TextureFormat;
 
 const

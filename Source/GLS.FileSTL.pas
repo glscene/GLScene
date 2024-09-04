@@ -25,7 +25,7 @@ uses
   GLScene.VectorGeometry,
   GLS.VectorLists,
   GLS.VectorFileObjects,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TSTLHeader = packed record

@@ -14,7 +14,7 @@ uses
   Vcl.Dialogs,
   Vcl.StdCtrls,
 
-  GLS.Utils,
+  GLScene.Utils,
   GLS.FilePGM,
 
   CUDA.Context,

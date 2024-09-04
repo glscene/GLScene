@@ -30,7 +30,7 @@ uses
 
   GXS.Scene,
   GXS.Objects,
-  GXS.Utils;
+  GLScene.Utils;
 
 type
 

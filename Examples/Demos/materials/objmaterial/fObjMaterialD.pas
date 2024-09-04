@@ -26,7 +26,7 @@ uses
 
   GLScene.VectorTypes,
   GLS.SimpleNavigation,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.Mesh;
 
 type

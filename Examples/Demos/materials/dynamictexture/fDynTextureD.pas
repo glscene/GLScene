@@ -23,7 +23,7 @@ uses
   GLS.RenderContextInfo, 
   GLS.Context, 
   GLS.DynamicTexture, 
-  GLS.Utils,
+  GLScene.Utils,
   GLS.Navigator,
   GLS.SimpleNavigation;
 

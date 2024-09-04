@@ -20,6 +20,7 @@ uses
   GXS.XOpenGL,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
+  GLScene.Utils,
   GXS.PersistentClasses,
   GLScene.Strings,
   GXS.ApplicationFileIO,
@@ -33,7 +34,7 @@ uses
   GXS.State,
   GXS.TextureFormat,
   GXS.Graphics,
-  GXS.Utils;
+  GXS.ImageUtils;
 
 {$UNDEF USE_MULTITHREAD}
 

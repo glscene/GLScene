@@ -21,7 +21,7 @@ uses
   GLS.GeomObjects,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.SceneViewer;
 
 type

@@ -22,7 +22,7 @@ uses
   FMX.Graphics,
 
   GLScene.VectorGeometry,
-  GXS.Utils,
+  GXS.ImageUtils,
   GXS.HeightData;
 
 Type

@@ -38,7 +38,7 @@ uses
   GXS.Coordinates,
   GXS.TextureCombiners,
   GXS.RenderContextInfo,
-  GXS.Utils;
+  GXS.ImageUtils;
 
 type
   TgxShaderTextureSharing = class;

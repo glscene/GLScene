@@ -29,7 +29,7 @@ uses
   GLS.Scene,
   GLS.SceneViewer,
   GLS.Context,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
 

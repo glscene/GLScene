@@ -16,10 +16,11 @@ uses
   FMX.Memo,
 
   GLScene.VectorTypes,
+  GLScene.Utils,
   GXS.Texture,
   GXS.TextureFormat,
   GXS.Graphics,
-  GXS.Utils,
+  GXS.ImageUtils,
   GXS.Color,
   GXS.Coordinates,
   GXS.Material,
@@ -394,13 +395,13 @@ begin
    val := Extractvalue;
    if pos('(',val) > 0 then
    begin
-      tmpcolor.Alpha := GXS.Utils.StrToFloatDef(copy(val, pos('(',val) + 1, pos(';',val) - 2));
+      tmpcolor.Alpha := StrToFloatDef(copy(val, pos('(',val) + 1, pos(';',val) - 2));
       delete(val,1,pos(';',val));
-      tmpcolor.Red := GXS.Utils.StrToFloatDef(copy(val, 1, pos(';',val) - 1));
+      tmpcolor.Red := StrToFloatDef(copy(val, 1, pos(';',val) - 1));
       delete(val,1,pos(';',val));
-      tmpcolor.Green := GXS.Utils.StrToFloatDef(copy(val, 1, pos(';',val) - 1));
+      tmpcolor.Green := StrToFloatDef(copy(val, 1, pos(';',val) - 1));
       delete(val,1,pos(';',val));
-      tmpcolor.Blue := GXS.Utils.StrToFloatDef(copy(val, 1, pos(')',val) - 1));
+      tmpcolor.Blue := StrToFloatDef(copy(val, 1, pos(')',val) - 1));
    end;
 end;
 
@@ -410,11 +411,11 @@ begin
    val := Extractvalue;
    if pos('(',val) > 0 then
    begin
-      tmpcoords.X := GXS.Utils.StrToFloatDef(copy(val, pos('(',val) + 1, pos(';',val) - 2));
+      tmpcoords.X := StrToFloatDef(copy(val, pos('(',val) + 1, pos(';',val) - 2));
       delete(val,1,pos(';',val));
-      tmpcoords.Y := GXS.Utils.StrToFloatDef(copy(val, 1, pos(';',val) - 1));
+      tmpcoords.Y := StrToFloatDef(copy(val, 1, pos(';',val) - 1));
       delete(val,1,pos(';',val));
-      tmpcoords.Z := GXS.Utils.StrToFloatDef(copy(val, 1, pos(')',val) - 1));
+      tmpcoords.Z := StrToFloatDef(copy(val, 1, pos(')',val) - 1));
    end;
 end;
 
@@ -424,13 +425,13 @@ begin
    val := Extractvalue;
    if pos('(',val) > 0 then
    begin
-      tmpcoords4.W := GXS.Utils.StrToFloatDef(copy(val, pos('(',val) + 1, pos(';',val) - 2));
+      tmpcoords4.W := StrToFloatDef(copy(val, pos('(',val) + 1, pos(';',val) - 2));
       delete(val,1,pos(';',val));
-      tmpcoords4.X := GXS.Utils.StrToFloatDef(copy(val, 1, pos(';',val) - 1));
+      tmpcoords4.X := StrToFloatDef(copy(val, 1, pos(';',val) - 1));
       delete(val,1,pos(';',val));
-      tmpcoords4.Y := GXS.Utils.StrToFloatDef(copy(val, 1, pos(';',val) - 1));
+      tmpcoords4.Y := StrToFloatDef(copy(val, 1, pos(';',val) - 1));
       delete(val,1,pos(';',val));
-      tmpcoords4.Z := GXS.Utils.StrToFloatDef(copy(val, 1, pos(')',val) - 1));
+      tmpcoords4.Z := StrToFloatDef(copy(val, 1, pos(')',val) - 1));
    end;
 end;
 
@@ -803,7 +804,7 @@ procedure TgxMaterialScripter.XImageBrightness;
 begin
    if classexists('imagebrightness') then
    if extractvalue <> '' then
-      NewMat.Material.Texture.ImageBrightness := GXS.Utils.StrToFloatDef(extractvalue);
+      NewMat.Material.Texture.ImageBrightness := StrToFloatDef(extractvalue);
 end;
 
 
@@ -811,7 +812,7 @@ procedure TgxMaterialScripter.XImageGamma;
 begin
    if classexists('imagegamma') then
    if extractvalue <> '' then
-      NewMat.Material.Texture.ImageGamma := GXS.Utils.StrToFloatDef(extractvalue);
+      NewMat.Material.Texture.ImageGamma := StrToFloatDef(extractvalue);
 end;
 
 procedure TgxMaterialScripter.XLibMaterialName;
@@ -913,7 +914,7 @@ procedure TgxMaterialScripter.XNormalMapScale;
 begin
    if classexists('normalmapscale') then
    if extractvalue <> '' then
-      NewMat.Material.Texture.NormalMapScale := GXS.Utils.StrToFloatDef(extractvalue);
+      NewMat.Material.Texture.NormalMapScale := StrToFloatDef(extractvalue);
 end;
 
 

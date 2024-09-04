@@ -26,7 +26,7 @@
 #include "GLS.ODEManager.hpp"
 #include "ODE.Import.hpp"
 #include "GLS.ODERagdoll.hpp"
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 
 //---------------------------------------------------------------------------
 //Physic World ODE

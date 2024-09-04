@@ -25,6 +25,7 @@ uses
   Vcl.Grids,
   
   GLS.BaseClasses,
+  GLS.ImageUtils,
   GLS.Gui,
   GLScene.Strings;
 
@@ -108,7 +109,7 @@ implementation
 {$R *.dfm}
 
 uses
-  GLS.Utils;
+  GLScene.Utils;
 
 var
   vGUILayoutEditorForm: TGLLayoutEditorForm;

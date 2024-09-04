@@ -32,7 +32,7 @@ uses
   GLS.BaseClasses,
   GLS.Material,
   GLS.FileJPEG,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormFire2d_GR32 = class(TForm)

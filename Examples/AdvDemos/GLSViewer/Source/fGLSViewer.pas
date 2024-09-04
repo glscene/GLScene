@@ -61,7 +61,7 @@ uses
   GLS.Graph,
   GLS.MeshBuilder,
   GLS.Navigator,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.GeomObjects,
   GLS.SimpleNavigation,
   GLS.Extrusion,

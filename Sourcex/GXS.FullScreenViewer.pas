@@ -23,7 +23,7 @@ uses
   GXS.Context,
   GXS.SceneViewer,
   GXS.WinContext,
-  GXS.Utils,
+  GXS.ImageUtils,
   GXS.Screen;
 
 type

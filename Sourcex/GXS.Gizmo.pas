@@ -29,7 +29,7 @@ uses
   GXS.BitmapFont,
   GXS.SceneViewer,
   GXS.VectorFileObjects,
-  GXS.Utils,
+  GXS.ImageUtils,
   GXS.Coordinates,
   GXS.RenderContextInfo,
   GXS.State,

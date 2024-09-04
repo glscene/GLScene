@@ -17,7 +17,7 @@ uses
   System.Math,
 
   GLScene.VectorGeometry,
-  GXS.RGBE,
+  GLScene.RGBE,
   GLScene.Strings,
   GXS.ApplicationFileIO,
 

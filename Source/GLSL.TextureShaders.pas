@@ -37,7 +37,8 @@ uses
   GLS.PersistentClasses,
   GLS.Coordinates,
   GLS.RenderContextInfo,
-  GLS.Utils;
+  GLS.ImageUtils,
+  GLScene.Utils;
 
 type
   TGLTextureSharingShader = class;

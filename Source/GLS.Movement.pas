@@ -27,7 +27,7 @@ uses
   GLS.Objects,
   GLScene.Strings,
   GLS.BaseClasses,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
 

@@ -12,7 +12,7 @@ interface
 uses
   System.Classes, 
   FMX.Graphics,
-  GXS.Utils;
+  GXS.ImageUtils;
 
 {$DEFINE PRF_HACK_PASSES}
 

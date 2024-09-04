@@ -28,7 +28,7 @@ uses
   GLS.Texture,
   GLS.Graphics,
   GLS.State,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.Material,
   GLS.TextureFormat;
 

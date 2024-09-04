@@ -12,9 +12,11 @@ interface
 uses
   System.Classes,
   System.SysUtils,
+
+  GLScene.Utils,
   GXS.VectorFileObjects,
   GXS.ApplicationFileIO,
-  GXS.Utils;
+  GXS.ImageUtils;
 
 type
   (* The PLY vector file aka Stanford Triangle Format.

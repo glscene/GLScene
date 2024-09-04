@@ -39,7 +39,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.State,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormOdeTerrain = class(TForm)

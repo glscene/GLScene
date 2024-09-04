@@ -35,6 +35,7 @@ uses
 
   GXS.TextureFormat,
   GLScene.Strings,
+  GLScene.Utils,
 
   GXS.Context,
   GXS.Silhouette,
@@ -47,7 +48,7 @@ uses
   GXS.RenderContextInfo,
   GXS.Material,
   GXS.Selection,
-  GXS.Utils;
+  GXS.ImageUtils;
 
 type
   // Defines which features are taken from the master object.

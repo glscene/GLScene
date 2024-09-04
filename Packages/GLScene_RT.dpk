@@ -187,7 +187,7 @@ contains
   GLS.ProxyObjects in '..\Source\GLS.ProxyObjects.pas',
   GLS.Ragdoll in '..\Source\GLS.Ragdoll.pas',
   GLS.RandomHDS in '..\Source\GLS.RandomHDS.pas',
-  GLS.RGBE in '..\Source\GLS.RGBE.pas',
+  GLScene.RGBE in '..\Source\GLScene.RGBE.pas',
   GLS.RenderContextInfo in '..\Source\GLS.RenderContextInfo.pas',
   GLS.ROAMPatch in '..\Source\GLS.ROAMPatch.pas',
   GLSL.AsmShader in '..\Source\GLSL.AsmShader.pas',
@@ -238,7 +238,6 @@ contains
   GLS.Trail in '..\Source\GLS.Trail.pas',
   GLS.Tree in '..\Source\GLS.Tree.pas',
   GLS.Triangulation in '..\Source\GLS.Triangulation.pas',
-  GLS.Utils in '..\Source\GLS.Utils.pas',
   GLS.WaterPlane in '..\Source\GLS.WaterPlane.pas',
   GLS.Windows in '..\Source\GLS.Windows.pas',
   GLS.WindowsContext in '..\Source\GLS.WindowsContext.pas',
@@ -266,7 +265,8 @@ contains
   GLScene.VectorTypesExt in '..\Source\GLScene.VectorTypesExt.pas',
   PasDblStrUtils in '..\Source\PasDblStrUtils.pas',
   PasGLTF in '..\Source\PasGLTF.pas',
-  PasJSON in '..\Source\PasJSON.pas';
+  PasJSON in '..\Source\PasJSON.pas',
+  GLScene.Utils in '..\Source\GLScene.Utils.pas';
 
 end.
 

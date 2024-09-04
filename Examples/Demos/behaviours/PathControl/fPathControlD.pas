@@ -23,10 +23,11 @@ uses
   GLS.Movement,
   GLScene.VectorTypes,
   GLS.SceneViewer,
+  GLS.ImageUtils,
  
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.SimpleNavigation;
 
 type

@@ -34,7 +34,7 @@ uses
   GLS.RenderContextInfo,
   GLS.SimpleNavigation,
   GLS.Color,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.BaseClasses;
 
 type

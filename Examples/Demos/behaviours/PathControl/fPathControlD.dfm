@@ -1,25 +1,34 @@
 object FormPathControl: TFormPathControl
   Left = 0
   Top = 0
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Path Control'
-  ClientHeight = 480
-  ClientWidth = 705
+  ClientHeight = 840
+  ClientWidth = 1248
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'Tahoma'
   Font.Style = []
   OnActivate = FormActivate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 23
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 705
-    Height = 480
+    Width = 1248
+    Height = 840
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clAppWorkSpace
-    FieldOfView = 156.463424682617200000
+    FieldOfView = 166.422058105468800000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -27,8 +36,12 @@ object FormPathControl: TFormPathControl
   object MoveBtn: TBitBtn
     Left = 0
     Top = 0
-    Width = 129
-    Height = 25
+    Width = 226
+    Height = 44
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Start Movement'
     TabOrder = 1
     OnClick = MoveBtnClick

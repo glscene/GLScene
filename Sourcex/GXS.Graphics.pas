@@ -2,7 +2,6 @@
 // The graphics engine GXScene https://github.com/glscene
 //
 unit GXS.Graphics;
-
 (*
    Utility class and functions to manipulate a bitmap in OpenGL's default
    byte order (GL_RGBA vs TBitmap's GL_BGRA)
@@ -11,7 +10,6 @@ unit GXS.Graphics;
    (http://www.g32.org), just make sure the USE_GRAPHICS32 conditionnal
    is active in Scene.inc and recompile.
 *)
-
 interface
 
 {$I GLScene.Defines.inc}
@@ -22,10 +20,12 @@ uses
   System.SysUtils,
   System.SyncObjs,
   System.UITypes,
+
   System.Math,
   FMX.Graphics,
   FMX.Dialogs,
   FMX.Types,
+  FMX.Consts,
 
 {$IFDEF USE_GRAPHICS32}
   GR32,
@@ -38,7 +38,7 @@ uses
   GXS.ApplicationFileIO,
   GXS.Context,
   GXS.ImageUtils,
-  GXS.Utils,
+  GLScene.Utils,
   GXS.Color,
   GXS.TextureFormat,
   GLScene.Strings;
@@ -56,7 +56,6 @@ type
 
   TgxPixel32Array = array[0..MaxInt shr 3] of TgxPixel32;
   PgxPixel32Array = ^TgxPixel32Array;
-
 
   TgxLODStreamingState = (ssKeeping, ssLoading, ssLoaded, ssTransfered);
 

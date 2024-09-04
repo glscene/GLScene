@@ -38,7 +38,7 @@ uses
   GLS.Color,
   GLS.HUDObjects,
   GLS.Texture,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.NGDManager;
 
 type

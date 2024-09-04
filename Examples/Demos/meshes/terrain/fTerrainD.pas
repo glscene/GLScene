@@ -39,7 +39,7 @@ uses
   GLS.BaseClasses,
   GLS.State,
   GLS.FileMP3,
-  GLS.Utils,
+  GLScene.Utils,
  
   GLS.HUDObjects;
 

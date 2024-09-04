@@ -36,7 +36,7 @@ uses
   GLS.Coordinates,
   GLS.SimpleNavigation,
   GLS.BaseClasses,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormFPSMovement = class(TForm)

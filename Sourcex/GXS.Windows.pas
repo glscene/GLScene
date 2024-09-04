@@ -23,9 +23,11 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
+  GLScene.Strings,
+  GLScene.Utils,
+
   GXS.PersistentClasses,
   GXS.BaseClasses,
-  GLScene.Strings,
   GXS.Scene,
   GXS.Coordinates,
   GXS.HUDObjects,
@@ -38,7 +40,7 @@ uses
   GXS.RenderContextInfo,
   GXS.Objects,
   GXS.State,
-  GXS.Utils;
+  GXS.ImageUtils;
 
 type
 
@@ -1074,7 +1076,7 @@ begin
         FReBuildGui);
     except
       on E: Exception do
-        MessageBoxOK(E.Message,
+        GLOKMessageBox(E.Message,
           'Exception in GuiComponents InternalRender function');
     end;
   end;
@@ -1895,7 +1897,7 @@ begin
           FReBuildGui);
     except
       on E: Exception do
-        MessageBoxOK(E.Message,
+        GLOKMessageBox(E.Message,
           'Exception in TgxCustomControl InternalRender function');
     end;
     X1 := FRenderStatus[GLAlCenter].X1;
@@ -2094,7 +2096,7 @@ begin
           FReBuildGui);
     except
       on E: Exception do
-        MessageBoxOK(E.Message,
+        GLOKMessageBox(E.Message,
           'Exception in GuiComponents InternalRender function');
     end;
   end;
@@ -3352,7 +3354,7 @@ begin
         FReBuildGui);
     except
       on E: Exception do
-        MessageBoxOK(E.Message,
+        GLOKMessageBox(E.Message,
           'Exception in GuiComponents InternalRender function');
     end;
   end;
@@ -3389,7 +3391,7 @@ begin
       end;
     except
       on E: Exception do
-        MessageBoxOK(E.Message,
+        GLOKMessageBox(E.Message,
           'Exception in GuiComponents InternalRender function');
     end;
   end;
@@ -3746,7 +3748,7 @@ begin
       ClientRect.Height := Round(FRenderStatus[GLAlCenter].Y2);
     except
       on E: Exception do
-        MessageBoxOK(E.Message,
+        GLOKMessageBox(E.Message,
           'Exception in GuiComponents InternalRender function');
     end;
   end

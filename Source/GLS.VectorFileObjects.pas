@@ -1350,7 +1350,7 @@ uses
   GLS.XOpenGL,
   GLS.MeshUtils,
   GLS.State,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.BaseMeshSilhouette;
 
 var

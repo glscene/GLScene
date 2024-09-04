@@ -27,7 +27,7 @@ uses
   GLS.Context,
   GLS.Coordinates,
   GLS.HUDObjects,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormEiffie = class(TForm)

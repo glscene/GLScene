@@ -367,7 +367,6 @@
         <DCCReference Include="..\SourceX\GXS.Trail.pas"/>
         <DCCReference Include="..\SourceX\GXS.Tree.pas"/>
         <DCCReference Include="..\SourceX\GXS.Triangulation.pas"/>
-        <DCCReference Include="..\SourceX\GXS.Utils.pas"/>
         <DCCReference Include="..\SourceX\GXS.VectorFileObjects.pas"/>
         <DCCReference Include="..\SourceX\GXS.VerletClothify.pas"/>
         <DCCReference Include="..\SourceX\GXS.VerletTypes.pas"/>
@@ -389,7 +388,6 @@
         <DCCReference Include="..\SourceX\GXS.GeometryCoordinates.pas"/>
         <DCCReference Include="..\SourceX\GXS.PipelineTransformation.pas"/>
         <DCCReference Include="..\SourceX\GXS.Generics.pas"/>
-        <DCCReference Include="..\SourceX\GXS.RGBE.pas"/>
         <DCCReference Include="..\SourceX\GXS.OpenGL.pas"/>
         <DCCReference Include="..\SourceX\GXS.ViewerOpenGL.pas"/>
         <DCCReference Include="..\SourceX\GXSL.AsmShader.pas"/>
@@ -421,7 +419,10 @@
         <DCCReference Include="..\Source\GLScene.Logger.pas"/>
         <DCCReference Include="..\Source\GLScene.Spline.pas"/>
         <DCCReference Include="..\Source\GLScene.RandomLib.pas"/>
+        <DCCReference Include="..\Source\GLScene.RGBE.pas"/>
+        <DCCReference Include="..\Source\GLScene.Utils.pas"/>
         <None Include="..\Sourcex\GXS.Scene.inc"/>
+        <None Include="..\Source\GLScene.Defines.inc"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

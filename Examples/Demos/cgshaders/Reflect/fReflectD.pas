@@ -35,7 +35,7 @@ uses
   GLS.GeomObjects, 
   GLS.Material, 
   GLS.Coordinates,
-  GLS.Utils,
+  GLScene.Utils,
    
   GLS.BaseClasses;
 

@@ -26,7 +26,7 @@ uses
   GLScene.VectorTypes,
   GLS.Objects,
   GLS.State,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.Scene,
   GLS.HudObjects,
   GLS.Material,
@@ -36,6 +36,7 @@ uses
   GLScene.VectorGeometry,
   GLS.Gui,
   GLS.Color,
+  GLS.ImageUtils,
   GLS.Texture,
   GLS.RenderContextInfo,
   GLS.BaseClasses;

@@ -33,7 +33,7 @@ uses
   GLS.Context,
   GLS.Material,
   GLS.Texture,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TShadowPlaneOption = (spoUseStencil, spoScissor, spoTransparent, spoIgnoreZ);

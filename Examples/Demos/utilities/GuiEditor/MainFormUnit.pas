@@ -27,7 +27,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.Utils, Vcl.ExtCtrls;
+  GLScene.Utils, Vcl.ExtCtrls;
 
 type
   TForm1 = class(TForm)

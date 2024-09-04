@@ -64,7 +64,7 @@ implementation
 {$R *.DFM}
 
 uses
-  GLS.TextureFormat, GLS.Utils;
+  GLS.TextureFormat, GLScene.Utils;
 
 procedure TFormTexFormat.FormCreate(Sender: TObject);
 var

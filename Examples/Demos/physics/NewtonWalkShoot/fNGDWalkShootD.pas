@@ -31,7 +31,7 @@ uses
   GLScene.VectorGeometry,
   GLS.Material,
   GLS.Keyboard,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormNewtonWalkShoot = class(TForm)

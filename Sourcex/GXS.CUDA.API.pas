@@ -18,6 +18,8 @@ uses
   GLScene.VectorTypes,
   GXS.VectorLists,
   GLScene.Strings,
+  GLScene.Utils,
+
   GXS.Context,
   GXS.Graphics,
 
@@ -28,9 +30,7 @@ uses
   CUDA.Import,
 
   GXS.CUDA.Compiler,
-  GXS.CUDA.Context,
-
-  GXS.Utils;
+  GXS.CUDA.Context;
 
 type
 

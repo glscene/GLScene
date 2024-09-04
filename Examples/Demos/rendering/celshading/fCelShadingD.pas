@@ -30,7 +30,7 @@ uses
   GLS.BaseClasses,
   GLS.FileMD2,
   GLS.Keyboard,
-  GLS.Utils,
+  GLScene.Utils,
   GLSL.ShapeShaders;
 
 type

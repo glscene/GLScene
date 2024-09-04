@@ -2,12 +2,10 @@
 // The graphics engine GXScene https://github.com/glscene
 //
 unit GXS.AsyncTimer;
-
 (*
   Asynchronous timer component (actual 1 ms resolution).
   This component is based on ThreadedTimer by Carlos Barbosa.
 *)
-
 interface
 
 {$I GLScene.Defines.inc}
@@ -16,8 +14,7 @@ uses
   System.Classes,
   System.SysUtils,
   System.SyncObjs,
-
-  GXS.Utils;
+  GLScene.Utils;
 
 const
   cDEFAULT_TIMER_INTERVAL = 1000;

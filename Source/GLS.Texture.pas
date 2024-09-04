@@ -30,9 +30,10 @@ uses
   GLS.RenderContextInfo,
   GLS.PersistentClasses,
   GLS.PipelineTransformation,
+  GLS.ImageUtils,
   GLS.TextureFormat,
   GLS.ApplicationFileIO,
-  GLS.Utils,
+  GLScene.Utils,
   GLScene.Strings;
 
 const

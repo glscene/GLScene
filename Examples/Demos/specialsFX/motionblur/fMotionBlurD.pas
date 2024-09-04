@@ -20,7 +20,7 @@ uses
   GLS.Texture,
   GLS.HUDObjects,
   GLS.GeomObjects,
-  GLS.Utils,
+  GLScene.Utils,
  
   GLS.Coordinates,
   GLS.BaseClasses, GLS.VectorFileObjects;

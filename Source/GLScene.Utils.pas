@@ -1,9 +1,9 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-unit GLS.Utils;
+unit GLScene.Utils;
 
-(* Miscellaneous support utilities & classes for localization *)
+(* Miscellaneous support utilities & classes *)
 
 interface
 
@@ -15,10 +15,6 @@ uses
   System.Classes,
   System.SysUtils,
   System.UITypes,
-  Vcl.Forms,
-  Vcl.Graphics,
-  Vcl.Dialogs,
-  Vcl.ExtDlgs,
   GLScene.VectorGeometry,
   GLScene.Strings;
 
@@ -58,14 +54,7 @@ function StrToFloatDef(const strValue: string; defValue: Extended = 0)
   : Extended;
 // Trying to read string otherwise using '.' as Decimal Separator
 function Str2Float(const S: string): Single;
-// Converts a string into color
-function StringToColorAdvancedSafe(const Str: string;
-  const Default: TColor): TColor;
-// Converts a string into color
-function TryStringToColorAdvanced(const Str: string;
-  var OutColor: TColor): Boolean;
-// Converts a string into color
-function StringToColorAdvanced(const Str: string): TColor;
+
 (* Parses the next integer in the string.
   Initial non-numeric characters are skipper, p is altered, returns 0 if none
   found. '+' and '-' are acknowledged. *)
@@ -93,19 +82,6 @@ procedure LoadComponentFromFile(const Component: TComponent;
 function SizeOfFile(const fileName: string): Int64;
 // Returns a pointer to an array containing the results of "255*sqrt(i/255)".
 function GetSqrt255Array: PSqrt255Array;
-// Pops up a simple dialog with msg and an Ok button.
-procedure InformationDlg(const msg: string);
-(* Pops up a simple question dialog with msg and yes/no buttons.
-  Returns True if answer was "yes". *)
-function QuestionDlg(const msg: string): Boolean;
-// Posp a simple dialog with a string input.
-function InputDlg(const aCaption, aPrompt, aDefault: string): string;
-// Pops up a simple save picture dialog.
-function SavePictureDialog(var aFileName: string;
-  const aTitle: string = ''): Boolean;
-// Pops up a simple open picture dialog.
-function OpenPictureDialog(var aFileName: string;
-  const aTitle: string = ''): Boolean;
 // Rectangle as function
 function GetGLRect(const aLeft, aTop, aRight, aBottom: Integer): TRect;
 (* Increases or decreases the width and height of the specified rectangle.
@@ -114,13 +90,7 @@ function GetGLRect(const aLeft, aTop, aRight, aBottom: Integer): TRect;
 procedure InflateGLRect(var aRect: TRect; dx, dy: Integer);
 procedure IntersectGLRect(var aRect: TRect; const rect2: TRect);
 procedure RaiseLastOSError;
-(* Number of pixels per logical inch along the screen width for the device.
-  Under Win32 awaits a HDC and returns its LOGPIXELSX. *)
-function GetDeviceLogicalPixelsX(device: HDC): Integer;
-// Number of bits per pixel for the current desktop resolution.
-function GetCurrentColorDepth: Integer;
-// Returns the number of color bits associated to the given pixel format.
-function PixelFormatToColorBits(aPixelFormat: TPixelFormat): Integer;
+
 // Replace path delimiter to delimiter of the current platform.
 procedure FixPathDelimiter(var S: string);
 // Remove if possible part of path witch leads to project executable.
@@ -147,10 +117,6 @@ function PrecisionTimerLap(const precisionTimer: Int64): Double;
 function StopPrecisionTimer(const precisionTimer: Int64): Double;
 // Returns time in milisecond from application start.
 function AppTime: Double;
-// Returns the number of CPU cycles since startup. Use the similarly named CPU instruction.
-function GLOKMessageBox(const Text, Caption: string): Integer;
-procedure GLLoadBitmapFromInstance(Instance: LongInt; ABitmap: TBitmap;
-  const AName: string);
 procedure ShowHTMLUrl(const Url: string);
 procedure SetExeDirectory;
 // StrUtils.pas
@@ -178,10 +144,9 @@ function GLStrToFloatDef(const S: string; const Default: Extended)
   : Extended; overload;
 function GLStrToFloatDef(const S: string): Extended; overload;
 
-// ------------------------------------------------------
+//----------------------------------------------------------------------------
 implementation
-
-// ------------------------------------------------------
+//----------------------------------------------------------------------------
 
 var
   vSqrt255: TSqrt255Array;
@@ -189,7 +154,6 @@ var
   vInvPerformanceCounterFrequencyReady: Boolean = False;
   vLastProjectTargetName: string;
 
-  // ---------------from Utils -----------------------
 procedure WordToIntegerArray(Source: PWordArray; Dest: PIntegerArray;
   Count: Cardinal);
 var
@@ -273,45 +237,7 @@ begin
   end;
 end;
 
-function StringToColorAdvancedSafe(const Str: string;
-  const Default: TColor): TColor;
-begin
-  if not TryStringToColorAdvanced(Str, Result) then
-    Result := Default;
-end;
-
-function StringToColorAdvanced(const Str: string): TColor;
-begin
-  if not TryStringToColorAdvanced(Str, Result) then
-    raise EGLUtilsException.CreateResFmt(@strInvalidColor, [Str]);
-end;
-
-function TryStringToColorAdvanced(const Str: string;
-  var OutColor: TColor): Boolean;
-var
-  Code, i: Integer;
-  Temp: string;
-begin
-  Result := True;
-  Temp := Str;
-  val(Temp, i, Code); // to see if it is a number
-  if Code = 0 then
-    OutColor := TColor(i) // Str = $0000FF
-  else
-  begin
-    if not IdentToColor(Temp, LongInt(OutColor)) then // Str = clRed
-    begin
-      if AnsiStartsText('clr', Temp) then // Str = clrRed
-      begin
-        Delete(Temp, 3, 1);
-        if not IdentToColor(Temp, LongInt(OutColor)) then
-          Result := False;
-      end
-      else if not IdentToColor('cl' + Temp, LongInt(OutColor)) then // Str = Red
-        Result := False;
-    end;
-  end;
-end;
+//---------------------------------------------------------------------------
 
 function ParseInteger(var p: PChar): Integer;
 var
@@ -577,64 +503,6 @@ begin
   Result := @vSqrt255;
 end;
 
-procedure InformationDlg(const msg: string);
-begin
-  ShowMessage(msg);
-end;
-
-function QuestionDlg(const msg: string): Boolean;
-begin
-  Result := (MessageDlg(msg, mtConfirmation, [mbYes, mbNo], 0) = mrYes);
-end;
-
-function InputDlg(const aCaption, aPrompt, aDefault: string): string;
-begin
-  Result := InputBox(aCaption, aPrompt, aDefault);
-end;
-
-function SavePictureDialog(var aFileName: string;
-  const aTitle: string = ''): Boolean;
-var
-  saveDialog: TSavePictureDialog;
-begin
-  saveDialog := TSavePictureDialog.Create(nil);
-  try
-    with saveDialog do
-    begin
-      Options := [ofHideReadOnly, ofNoReadOnlyReturn];
-      if aTitle <> '' then
-        Title := aTitle;
-      fileName := aFileName;
-      Result := Execute;
-      if Result then
-        aFileName := fileName;
-    end;
-  finally
-    saveDialog.Free;
-  end;
-end;
-
-function OpenPictureDialog(var aFileName: string;
-  const aTitle: string = ''): Boolean;
-var
-  openDialog: TOpenPictureDialog;
-begin
-  openDialog := TOpenPictureDialog.Create(nil);
-  try
-    with openDialog do
-    begin
-      Options := [ofHideReadOnly, ofNoReadOnlyReturn];
-      if aTitle <> '' then
-        Title := aTitle;
-      fileName := aFileName;
-      Result := Execute;
-      if Result then
-        aFileName := fileName;
-    end;
-  finally
-    openDialog.Free;
-  end;
-end;
 
 function GetCurrentAssetPath(): TFileName;
 var
@@ -670,17 +538,6 @@ end;
 function AnsiStartsText(const ASubText, AText: string): Boolean;
 begin
   Result := AnsiStartsText(ASubText, AText);
-end;
-
-function GLOKMessageBox(const Text, Caption: string): Integer;
-begin
-  Result := Application.MessageBox(PChar(Text), PChar(Caption), MB_OK);
-end;
-
-procedure GLLoadBitmapFromInstance(Instance: LongInt; ABitmap: TBitmap;
-  const AName: string);
-begin
-  ABitmap.Handle := LoadBitmap(Instance, PChar(AName));
 end;
 
 procedure ShowHTMLUrl(const Url: string);
@@ -732,62 +589,6 @@ begin
       aRect.Top := rect2.Top;
     if aRect.Bottom > rect2.Bottom then
       aRect.Bottom := rect2.Bottom;
-  end;
-end;
-
-type
-  TDeviceCapabilities = record
-    Xdpi, Ydpi: Integer; // Number of pixels per logical inch.
-    Depth: Integer; // The bit depth.
-    NumColors: Integer; // Number of entries in the device's color table.
-  end;
-
-function GetDeviceCapabilities: TDeviceCapabilities;
-var
-  device: HDC;
-begin
-  device := GetDC(0);
-  try
-    Result.Xdpi := GetDeviceCaps(device, LOGPIXELSX);
-    Result.Ydpi := GetDeviceCaps(device, LOGPIXELSY);
-    Result.Depth := GetDeviceCaps(device, BITSPIXEL);
-    Result.NumColors := GetDeviceCaps(device, NumColors);
-  finally
-    ReleaseDC(0, device);
-  end;
-end;
-
-function GetDeviceLogicalPixelsX(device: HDC): Integer;
-begin
-  Result := GetDeviceCapabilities().Xdpi;
-end;
-
-function GetCurrentColorDepth: Integer;
-begin
-  Result := GetDeviceCapabilities().Depth;
-end;
-
-function PixelFormatToColorBits(aPixelFormat: TPixelFormat): Integer;
-begin
-  case aPixelFormat of
-    pfCustom{$IFDEF WIN32}, pfDevice{$ENDIF}: // use current color depth
-      Result := GetCurrentColorDepth;
-    pf1bit:
-      Result := 1;
-{$IFDEF WIN32}
-    pf4bit:
-      Result := 4;
-    pf15bit:
-      Result := 15;
-{$ENDIF}
-    pf8bit:
-      Result := 8;
-    pf16bit:
-      Result := 16;
-    pf32bit:
-      Result := 32;
-  else
-    Result := 24;
   end;
 end;
 
@@ -1122,9 +923,8 @@ begin
     Result := 0;
 end;
 
-// ----------------------------------------
-initialization
-// ----------------------------------------
+initialization  // -----------------------------------------------------------
+
 vSStartTime := AppTime;
 
 end.

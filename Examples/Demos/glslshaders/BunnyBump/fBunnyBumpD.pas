@@ -30,7 +30,7 @@ uses
   GLScene.VectorGeometry,
   GLS.Context,
   GLS.FileOBJ,
-  GLS.Utils,
+  GLScene.Utils,
   GLSL.BumpShaders;
 
 type

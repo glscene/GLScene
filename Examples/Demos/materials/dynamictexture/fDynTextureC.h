@@ -20,7 +20,7 @@
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 #include "GLS.Context.hpp"
 #include "GLS.DynamicTexture.hpp"
 

@@ -24,7 +24,7 @@ uses
  
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.Utils, GLS.SimpleNavigation;
+  GLScene.Utils, GLS.SimpleNavigation;
 
 type
   TFormParticles = class(TForm)

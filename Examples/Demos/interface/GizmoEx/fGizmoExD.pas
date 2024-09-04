@@ -24,7 +24,7 @@ uses
   GLS.SceneViewer,
   GLS.Keyboard,
 
-  GLS.Utils,
+  GLScene.Utils,
   GLS.GizmoEx,
 
   GLS.Coordinates,

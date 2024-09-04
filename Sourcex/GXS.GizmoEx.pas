@@ -43,7 +43,7 @@ uses
   GXS.State,
   GXS.PipelineTransformation,
   GXS.Selection,
-  GXS.Utils,
+  GXS.ImageUtils,
   GXS.Context;
 
 

@@ -24,7 +24,7 @@
 
 #include "GLS.Keyboard.hpp"
 #include "GLS.FileJPEG.hpp"
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

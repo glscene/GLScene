@@ -20,7 +20,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.File3DS,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormMeshHit = class(TForm)

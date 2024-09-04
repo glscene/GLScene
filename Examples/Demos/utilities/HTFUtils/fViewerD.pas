@@ -25,7 +25,7 @@ uses
 
   GLS.HeightTileFileHDS,
   GLScene.VectorGeometry,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TViewerForm = class(TForm)

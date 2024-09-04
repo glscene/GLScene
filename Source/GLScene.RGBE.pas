@@ -1,7 +1,7 @@
 //
-// The graphics engine GXScene https://github.com/glscene
+// The graphics engine GLScene https://github.com/glscene
 //
-unit GXS.RGBE;
+unit GLScene.RGBE;
 
 (* GLScene RGBE utils *)
 
@@ -21,9 +21,7 @@ procedure LoadRLEpixels(Stream: TStream; Dst: PSingle;
   Scanline_width, Num_scanlines: Integer);
 procedure LoadRGBEpixels(Stream: TStream; Dst: PSingle; Numpixels: Integer);
 
-//====================================================================
-implementation
-//====================================================================
+implementation //----------------------------------------------------------
 
 type
   ERGBEexception = class(Exception);

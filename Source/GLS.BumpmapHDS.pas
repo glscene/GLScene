@@ -31,7 +31,7 @@ uses
   GLS.VectorLists,
   GLS.Texture,
   GLS.Material,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
 

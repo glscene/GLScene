@@ -33,7 +33,7 @@ uses
   GLS.FileTGA,
   GLS.File3DS,
   GLS.PersistentClasses,
-  GLS.Utils,
+  GLScene.Utils,
 
   Cg.GL,
   GLS.CgShader;

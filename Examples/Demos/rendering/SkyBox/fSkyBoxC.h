@@ -22,7 +22,7 @@
 #include "GLS.Keyboard.hpp"
 #include "JPeg.hpp"
 #include "GLS.FileJPEG.hpp"
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 
 //---------------------------------------------------------------------------
 class TFormSkybox : public TForm

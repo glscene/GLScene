@@ -31,7 +31,7 @@ uses
   GLS.State,
   GLS.BaseClasses,
   GLS.FileNurbs,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormDucky = class(TForm)

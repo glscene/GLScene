@@ -32,7 +32,7 @@
 #include "GLS.FileMD2.hpp"
 #include "GLS.FileSMD.hpp"
 
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 #include "GLS.MeshUtils.hpp"
 
 

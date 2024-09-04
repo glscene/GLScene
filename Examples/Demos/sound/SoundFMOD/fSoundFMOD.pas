@@ -26,7 +26,7 @@ uses
   GLS.FileWAV,
   GLS.FileMP3,
   GLScene.VectorGeometry,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormSoundFMOD = class(TForm)

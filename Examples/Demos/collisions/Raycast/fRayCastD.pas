@@ -26,7 +26,7 @@ uses
   GLS.GeomObjects,
   GLS.Color,
   GLS.Coordinates,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormRayCast = class(TForm)

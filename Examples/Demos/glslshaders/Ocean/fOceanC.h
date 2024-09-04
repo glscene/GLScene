@@ -27,7 +27,7 @@
 #include "GLS.Context.hpp"
 #include "GLS.RenderContextInfo.hpp"
 #include "GLS.State.hpp"
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 #include "GLS.FileTGA.hpp"
 
 

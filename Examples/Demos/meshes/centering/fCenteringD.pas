@@ -21,7 +21,7 @@ uses
   GLS.File3DS,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormCentering = class(TForm)

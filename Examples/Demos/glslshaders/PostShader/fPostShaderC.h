@@ -23,7 +23,7 @@
 #include "GLS.SimpleNavigation.hpp"
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 
 // FileFormats
 #include "GLS.FileTGA.hpp"

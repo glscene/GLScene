@@ -31,7 +31,7 @@ uses
 
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.Utils,
+  GLScene.Utils,
   GLScene.VectorGeometry,
   GLS.Keyboard,
   GLS.PersistentClasses, GLS.DCE;

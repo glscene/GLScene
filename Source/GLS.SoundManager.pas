@@ -21,7 +21,8 @@ uses
   GLS.BaseClasses,
   GLS.FileMP3,
   GLS.FileWAV,
-  GLS.Utils;
+  GLS.ImageUtils,
+  GLScene.Utils;
 
 {$I GLScene.Defines.inc}
 

@@ -28,7 +28,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
 
-  GLS.Utils
+  GLScene.Utils
   ;
 
 type

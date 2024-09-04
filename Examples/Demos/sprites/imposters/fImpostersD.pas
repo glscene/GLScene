@@ -24,7 +24,7 @@ uses
   GLS.Keyboard,
   GLS.VectorFileObjects,
   GLS.RenderContextInfo,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.FileDDS,
   GLS.Context,
   GLScene.VectorGeometry,

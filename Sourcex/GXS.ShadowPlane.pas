@@ -25,11 +25,12 @@ uses
   GLScene.VectorTypes,
   GXS.PersistentClasses,
   GLScene.VectorGeometry,
+  GLScene.Utils,
+  GXS.ImageUtils,
   GXS.Scene,
   GXS.PipelineTransformation,
   GXS.Context,
   GXS.Objects,
-  GXS.Utils,
   GXS.Color,
   GXS.RenderContextInfo,
   GXS.State,
@@ -155,9 +156,9 @@ begin
           and (PointDistance(ARci.cameraPosition) > BoundingSphereRadius) then
         begin
           sr := ScreenRect(CurrentBuffer);
-          InflateRectangle(sr, 1, 1);
-          ds := GetRectangle(0, 0, ARci.viewPortSize.cx, ARci.viewPortSize.cy);
-          IntersectRectangle(sr, ds);
+          InflateGLRect(sr, 1, 1);
+          ds := GetGLRect(0, 0, ARci.viewPortSize.cx, ARci.viewPortSize.cy);
+          IntersectGLRect(sr, ds);
           glScissor(sr.Left, sr.Top, sr.Right - sr.Left, sr.Bottom - sr.Top);
           Enable(stScissorTest);
         end;

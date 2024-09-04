@@ -14,6 +14,7 @@ uses
   System.Classes,
   System.SysUtils,
 
+  GLS.ImageUtils,
   GLS.Texture,
   GLS.ProcTextures;
 
@@ -60,7 +61,7 @@ implementation
 // ------------------------------------------------------------------------------
 
 uses
-  GLS.Utils;
+  GLScene.Utils;
 
 var
   vTIEClass, vTIEEditor: TList;

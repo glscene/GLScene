@@ -32,7 +32,8 @@ uses
   GLS.XOpenGL,
   GLS.ApplicationFileIO,
   GLS.Graphics,
-  GLS.Utils,
+  GLS.ImageUtils,
+  GLScene.Utils,
   GLScene.Logger;
 
 {$UNDEF USE_MULTITHREAD}
@@ -1227,7 +1228,7 @@ begin
     if MaterialLoopFrom(TGLLibMaterial(newLibMaterial)) then
     begin
       if IsDesignTime then
-        InformationDlg(Format(strCyclicRefMat, [val]))
+        InformationDlg(Format(strCyclicRefMat, [val]))   
       else
         GLSLogger.LogErrorFmt(strCyclicRefMat, [val]);
       exit;

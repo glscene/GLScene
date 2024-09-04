@@ -43,7 +43,7 @@ uses
   GLS.State,
   GLS.TextureFormat,
   GLS.File3DS,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.Navigator;
 
 type

@@ -2,7 +2,6 @@
 // The graphics engine GXScene https://github.com/glscene
 //
 unit GXS.HeightData;
-
 (*
   Classes for height data access.
 
@@ -16,7 +15,6 @@ unit GXS.HeightData;
   is basicly a square, power of two dimensionned raster heightfield, and
   holds the data a renderer needs.
 *)
-
 interface
 
 {$I GLScene.Defines.inc}
@@ -29,9 +27,10 @@ uses
   FMX.Graphics,
 
   GLScene.VectorGeometry,
+  GLScene.Utils,
   GXS.BaseClasses,
   GXS.ApplicationFileIO,
-  GXS.Utils,
+  GXS.ImageUtils,
   GXS.Material;
 
 type

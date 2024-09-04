@@ -45,7 +45,7 @@ uses
   GLS.Color,
   GLS.Graphics,
   GLS.MeshUtils,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.GeomObjects,
   GLS.SimpleNavigation,
   GLS.HUDObjects,

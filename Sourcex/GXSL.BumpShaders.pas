@@ -47,7 +47,6 @@ uses
   GXS.RenderContextInfo,
   GXS.Material,
   GXS.Graphics,
-  GXS.Utils,
   GXS.State,
 
   GXSL.CustomShader,

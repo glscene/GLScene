@@ -18,7 +18,7 @@
 #pragma link "GLS.SimpleNavigation"
 #pragma link "GLS.SkyDome"
 #pragma link "GLS.SceneViewer"
-#pragma link "GLS.Utils"
+#pragma link "GLScene.Utils"
 #pragma resource "*.dfm"
 TFormSkybox *FormSkybox;
 

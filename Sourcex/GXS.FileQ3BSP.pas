@@ -27,7 +27,7 @@ uses
   GXS.Texture,
   GXS.Graphics,
   GXS.State,
-  GXS.Utils,
+  GXS.ImageUtils,
   GXS.Material,
   GXS.TextureFormat,
 

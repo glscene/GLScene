@@ -25,7 +25,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.FileMD2.hpp"
 #include "GLS.BaseClasses.hpp"
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 
 //---------------------------------------------------------------------------
 class TFormActor : public TForm

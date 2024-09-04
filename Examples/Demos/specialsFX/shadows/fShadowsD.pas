@@ -33,7 +33,7 @@ uses
   GLS.Material, 
   GLS.Coordinates, 
   GLS.Behaviours, 
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormShadows = class(TForm)

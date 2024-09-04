@@ -22,7 +22,7 @@ uses
   GXS.Material,
   GXS.Graphics,
   GXS.State,
-  GXS.Utils,
+  GXS.ImageUtils,
   GXS.TextureFormat,
 
   Formatx.OCT;

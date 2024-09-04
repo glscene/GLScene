@@ -18,16 +18,22 @@ interface
 {$I GLScene.Defines.inc}
 
 uses
+  Winapi.Windows,
   Winapi.OpenGL,
   Winapi.OpenGLext,
   System.SysUtils,
+  System.UITypes,
   System.Classes,
   System.Math,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtDlgs,
+  Vcl.Graphics,
   GLScene.OpenGLTokens,
   GLScene.Strings,
-  GLS.TextureFormat,
   GLScene.VectorGeometry,
-  GLS.Utils;
+  GLScene.Utils,
+  GLS.TextureFormat;
 
 var
   vImageScaleFilterWidth: Integer = 5; // Relative sample radius for filtering
@@ -41,7 +47,8 @@ type
   TPointerArray = array of Pointer;
 
   PRGBA32F = ^TIntermediateFormat;
-  TIntermediateFormatArray = array [0 .. MaxInt div (2 * SizeOf(TIntermediateFormat))] of TIntermediateFormat;
+  TIntermediateFormatArray = array
+    [0 .. MaxInt div (2 * SizeOf(TIntermediateFormat))] of TIntermediateFormat;
   PIntermediateFormatArray = ^TIntermediateFormatArray;
 
   TU48BitBlock = array [0 .. 3, 0 .. 3] of Byte;
@@ -65,25 +72,96 @@ procedure ImageAlphaSuperBlackTransparent(var AColor: TIntermediateFormat);
 procedure ImageAlphaLuminance(var AColor: TIntermediateFormat);
 procedure ImageAlphaLuminanceSqrt(var AColor: TIntermediateFormat);
 procedure ImageAlphaOpaque(var AColor: TIntermediateFormat);
-procedure ImageAlphaTopLeftPointColorTransparent(var AColor: TIntermediateFormat);
+procedure ImageAlphaTopLeftPointColorTransparent
+  (var AColor: TIntermediateFormat);
 procedure ImageAlphaInverseLuminance(var AColor: TIntermediateFormat);
 procedure ImageAlphaInverseLuminanceSqrt(var AColor: TIntermediateFormat);
-procedure ImageAlphaBottomRightPointColorTransparent(var AColor: TIntermediateFormat);
+procedure ImageAlphaBottomRightPointColorTransparent
+  (var AColor: TIntermediateFormat);
 
-procedure ConvertImage(const ASrc: Pointer; const ADst: Pointer; ASrcColorFormat, ADstColorFormat: Cardinal; ASrcDataType, ADstDataType: Cardinal; AWidth, AHeight: Integer);
-procedure RescaleImage(const ASrc: Pointer; const ADst: Pointer; AColorFormat: Cardinal; ADataType: Cardinal; AFilter: TImageFilterFunction; ASrcWidth, ASrcHeight, ADstWidth, ADstHeight: Integer);
-procedure Build2DMipmap(const ASrc: Pointer; const ADst: TPointerArray; AColorFormat: Cardinal; ADataType: Cardinal; AFilter: TImageFilterFunction; ASrcWidth, ASrcHeight: Integer);
-procedure AlphaGammaBrightCorrection(const ASrc: Pointer; AColorFormat: Cardinal; ADataType: Cardinal; ASrcWidth, ASrcHeight: Integer; anAlphaProc: TImageAlphaProc; ABrightness: Single; AGamma: Single);
+procedure ConvertImage(const ASrc: Pointer; const ADst: Pointer;
+  ASrcColorFormat, ADstColorFormat: Cardinal;
+  ASrcDataType, ADstDataType: Cardinal; AWidth, AHeight: Integer);
+procedure RescaleImage(const ASrc: Pointer; const ADst: Pointer;
+  AColorFormat: Cardinal; ADataType: Cardinal; AFilter: TImageFilterFunction;
+  ASrcWidth, ASrcHeight, ADstWidth, ADstHeight: Integer);
+procedure Build2DMipmap(const ASrc: Pointer; const ADst: TPointerArray;
+  AColorFormat: Cardinal; ADataType: Cardinal; AFilter: TImageFilterFunction;
+  ASrcWidth, ASrcHeight: Integer);
+procedure AlphaGammaBrightCorrection(const ASrc: Pointer;
+  AColorFormat: Cardinal; ADataType: Cardinal; ASrcWidth, ASrcHeight: Integer;
+  anAlphaProc: TImageAlphaProc; ABrightness: Single; AGamma: Single);
 
-//------------------------------------------------------------------------------
-implementation
-//------------------------------------------------------------------------------
+
+// Converts a string into color
+function StringToColorAdvancedSafe(const Str: string;
+  const Default: TColor): TColor;
+// Converts a string into color
+function TryStringToColorAdvanced(const Str: string;
+  var OutColor: TColor): Boolean;
+// Converts a string into color
+function StringToColorAdvanced(const Str: string): TColor;
+
+(* Number of pixels per logical inch along the screen width for the device.
+  Under Win32 awaits a HDC and returns its LOGPIXELSX. *)
+function GetDeviceLogicalPixelsX(device: HDC): Integer;
+// Number of bits per pixel for the current desktop resolution.
+function GetCurrentColorDepth: Integer;
+// Returns the number of color bits associated to the given pixel format.
+function PixelFormatToColorBits(aPixelFormat: TPixelFormat): Integer;
+
+// Returns the number of CPU cycles since startup. Use the similarly named CPU instruction.
+function GLOKMessageBox(const Text, Caption: string): Integer;
+procedure GLLoadBitmapFromInstance(Instance: LongInt; ABitmap: TBitmap;
+  const AName: string);
+
+
+// Pops up a simple dialog with msg and an Ok button.
+procedure InformationDlg(const msg: string);
+(* Pops up a simple question dialog with msg and yes/no buttons.
+  Returns True if answer was "yes". *)
+function QuestionDlg(const msg: string): Boolean;
+// Posp a simple dialog with a string input.
+function InputDlg(const aCaption, aPrompt, aDefault: string): string;
+
+// Pops up a simple save picture dialog.
+function SavePictureDialog(var aFileName: string;
+  const aTitle: string = ''): Boolean;
+// Pops up a simple open picture dialog.
+function OpenPictureDialog(var aFileName: string;
+  const aTitle: string = ''): Boolean;
+
+implementation // -------------------------------------------------------------
+
 const
   cSuperBlack: TIntermediateFormat = (R: 0.0; G: 0.0; B: 0.0; A: 0.0);
 
 type
-  TConvertToImfProc = procedure(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  TConvertFromInfProc = procedure(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFormat: Cardinal; AWidth, AHeight: Integer);
+  TConvertToImfProc = procedure(ASource: Pointer;
+    ADest: PIntermediateFormatArray; AColorFormat: Cardinal;
+    AWidth, AHeight: Integer);
+  TConvertFromInfProc = procedure(ASource: PIntermediateFormatArray;
+    ADest: Pointer; AColorFormat: Cardinal; AWidth, AHeight: Integer);
+
+  TDeviceCapabilities = record
+    Xdpi, Ydpi: Integer; // Number of pixels per logical inch.
+    Depth: Integer; // The bit depth.
+    NumColors: Integer; // Number of entries in the device's color table.
+  end;
+
+
+//----------------------------------------------------------------------------
+
+function GLOKMessageBox(const Text, Caption: string): Integer;
+begin
+  Result := Application.MessageBox(PChar(Text), PChar(Caption), MB_OK);
+end;
+
+procedure GLLoadBitmapFromInstance(Instance: LongInt; ABitmap: TBitmap;
+  const AName: string);
+begin
+  ABitmap.Handle := LoadBitmap(Instance, PChar(AName));
+end;
 
 procedure Swap(var A, B: Integer); inline;
 var
@@ -94,32 +172,34 @@ begin
   B := C;
 end;
 
-// ------------------------------ OpenGL format image to RGBA Float 
+// ------------------------------ OpenGL format image to RGBA Float
 
-procedure UnsupportedToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
+procedure UnsupportedToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+begin
+  raise EGLImageUtils.Create('Unimplemented type of conversion');
+end;
+
+procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PByte;
+  n: Integer;
+  c0: Single;
+
+  function GetChannel: Single;
   begin
-    raise EGLImageUtils.Create('Unimplemented type of conversion');
+    Result := pSource^;
+    Inc(pSource);
   end;
 
-procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PByte;
-    n: Integer;
-    c0: Single;
+begin
+  pSource := PByte(ASource);
 
-    function GetChannel: Single;
-      begin
-        Result := pSource^;
-        Inc(pSource);
-      end;
-
-  begin
-    pSource := PByte(ASource);
-
-    case AColorFormat of
-//{$I ImgUtilCaseGL2Imf.inc}
+  case AColorFormat of
+    // {$I ImgUtilCaseGL2Imf.inc}
     GL_RGB, GL_RGB_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -127,7 +207,7 @@ procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255.0;
       end;
     GL_BGR, GL_BGR_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -135,7 +215,7 @@ procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255.0;
       end;
     GL_RGBA, GL_RGBA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -143,7 +223,7 @@ procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := GetChannel;
       end;
     GL_BGRA, GL_BGRA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -151,7 +231,7 @@ procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := GetChannel;
       end;
     GL_ALPHA, GL_ALPHA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := 0;
@@ -159,7 +239,7 @@ procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := GetChannel;
       end;
     GL_LUMINANCE, GL_LUMINANCE_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -168,7 +248,7 @@ procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255.0;
       end;
     GL_LUMINANCE_ALPHA, GL_LUMINANCE_ALPHA_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -177,7 +257,7 @@ procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := GetChannel;
       end;
     GL_INTENSITY:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -186,7 +266,7 @@ procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := c0;
       end;
     GL_RED, GL_RED_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := 0;
@@ -194,7 +274,7 @@ procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255;
       end;
     GL_GREEN, GL_GREEN_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := GetChannel;
@@ -202,7 +282,7 @@ procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255;
       end;
     GL_BLUE, GL_BLUE_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := 0;
@@ -210,120 +290,123 @@ procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255;
       end;
     GL_RG, GL_RG_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
         ADest[n].B := 0;
         ADest[n].A := 255;
       end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure Ubyte332ToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PByte;
+  c0, c1, c2, c3: Byte;
+  n: Integer;
+
+  procedure GetChannel;
+  begin
+    c0 := pSource^;
+    c1 := $E0 and c0;
+    c2 := $E0 and (c0 shl 3);
+    c3 := $C0 and (c0 shl 6);
+    Inc(pSource);
   end;
 
-procedure Ubyte332ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PByte;
-    c0, c1, c2, c3: Byte;
-    n: Integer;
+begin
+  pSource := PByte(ASource);
 
-    procedure GetChannel;
+  case AColorFormat of
+
+    GL_RGB:
+      for n := 0 to AWidth * AHeight - 1 do
       begin
-        c0 := pSource^;
-        c1 := $E0 and c0;
-        c2 := $E0 and (c0 shl 3);
-        c3 := $C0 and (c0 shl 6);
-        Inc(pSource);
+        GetChannel;
+        ADest[n].R := c1;
+        ADest[n].G := c2;
+        ADest[n].B := c3;
       end;
 
+    GL_BGR:
+      for n := 0 to AWidth * AHeight - 1 do
+      begin
+        GetChannel;
+        ADest[n].B := c1;
+        ADest[n].G := c2;
+        ADest[n].R := c3;
+      end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure Ubyte233RToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PByte;
+  c0, c1, c2, c3: Byte;
+  n: Integer;
+
+  procedure GetChannel;
   begin
-    pSource := PByte(ASource);
-
-    case AColorFormat of
-
-      GL_RGB:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].R := c1;
-          ADest[n].G := c2;
-          ADest[n].B := c3;
-        end;
-
-      GL_BGR:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].B := c1;
-          ADest[n].G := c2;
-          ADest[n].R := c3;
-        end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+    c0 := pSource^;
+    c3 := $E0 and c0;
+    c2 := $E0 and (c0 shl 3);
+    c1 := $C0 and (c0 shl 6);
+    Inc(pSource);
   end;
 
-procedure Ubyte233RToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PByte;
-    c0, c1, c2, c3: Byte;
-    n: Integer;
+begin
+  pSource := PByte(ASource);
 
-    procedure GetChannel;
+  case AColorFormat of
+
+    GL_RGB:
+      for n := 0 to AWidth * AHeight - 1 do
       begin
-        c0 := pSource^;
-        c3 := $E0 and c0;
-        c2 := $E0 and (c0 shl 3);
-        c1 := $C0 and (c0 shl 6);
-        Inc(pSource);
+        GetChannel;
+        ADest[n].R := c1;
+        ADest[n].G := c2;
+        ADest[n].B := c3;
       end;
 
+    GL_BGR:
+      for n := 0 to AWidth * AHeight - 1 do
+      begin
+        GetChannel;
+        ADest[n].B := c1;
+        ADest[n].G := c2;
+        ADest[n].R := c3;
+      end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure ByteToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PShortInt;
+  n: Integer;
+  c0: Single;
+
+  function GetChannel: Single;
   begin
-    pSource := PByte(ASource);
-
-    case AColorFormat of
-
-      GL_RGB:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].R := c1;
-          ADest[n].G := c2;
-          ADest[n].B := c3;
-        end;
-
-      GL_BGR:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].B := c1;
-          ADest[n].G := c2;
-          ADest[n].R := c3;
-        end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+    Result := pSource^;
+    Inc(pSource);
   end;
 
-procedure ByteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PShortInt;
-    n: Integer;
-    c0: Single;
-
-    function GetChannel: Single;
-      begin
-        Result := pSource^;
-        Inc(pSource);
-      end;
-
-  begin
-    pSource := PShortInt(ASource);
-    case AColorFormat of
-//{$I ImgUtilCaseGL2Imf.inc}
+begin
+  pSource := PShortInt(ASource);
+  case AColorFormat of
+    // {$I ImgUtilCaseGL2Imf.inc}
     GL_RGB, GL_RGB_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -331,7 +414,7 @@ procedure ByteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := 255.0;
       end;
     GL_BGR, GL_BGR_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -339,7 +422,7 @@ procedure ByteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := 255.0;
       end;
     GL_RGBA, GL_RGBA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -347,7 +430,7 @@ procedure ByteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := GetChannel;
       end;
     GL_BGRA, GL_BGRA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -355,7 +438,7 @@ procedure ByteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := GetChannel;
       end;
     GL_ALPHA, GL_ALPHA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := 0;
@@ -363,7 +446,7 @@ procedure ByteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := GetChannel;
       end;
     GL_LUMINANCE, GL_LUMINANCE_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -372,7 +455,7 @@ procedure ByteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := 255.0;
       end;
     GL_LUMINANCE_ALPHA, GL_LUMINANCE_ALPHA_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -381,7 +464,7 @@ procedure ByteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := GetChannel;
       end;
     GL_INTENSITY:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -390,7 +473,7 @@ procedure ByteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := c0;
       end;
     GL_RED, GL_RED_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := 0;
@@ -398,7 +481,7 @@ procedure ByteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := 255;
       end;
     GL_GREEN, GL_GREEN_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := GetChannel;
@@ -406,7 +489,7 @@ procedure ByteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := 255;
       end;
     GL_BLUE, GL_BLUE_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := 0;
@@ -414,36 +497,37 @@ procedure ByteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := 255;
       end;
     GL_RG, GL_RG_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
         ADest[n].B := 0;
         ADest[n].A := 255;
       end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure UShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PWord;
+  n: Integer;
+  c0: Single;
+
+  function GetChannel: Single;
+  begin
+    Result := pSource^ / $100;
+    Inc(pSource);
   end;
 
-procedure UShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PWord;
-    n: Integer;
-    c0: Single;
+begin
+  pSource := PWord(ASource);
 
-    function GetChannel: Single;
-      begin
-        Result := pSource^ / $100;
-        Inc(pSource);
-      end;
-
-  begin
-    pSource := PWord(ASource);
-
-    case AColorFormat of
+  case AColorFormat of
     GL_RGB, GL_RGB_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -451,7 +535,7 @@ procedure UShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorF
         ADest[n].A := 255.0;
       end;
     GL_BGR, GL_BGR_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -459,7 +543,7 @@ procedure UShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorF
         ADest[n].A := 255.0;
       end;
     GL_RGBA, GL_RGBA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -467,7 +551,7 @@ procedure UShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorF
         ADest[n].A := GetChannel;
       end;
     GL_BGRA, GL_BGRA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -475,7 +559,7 @@ procedure UShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorF
         ADest[n].A := GetChannel;
       end;
     GL_ALPHA, GL_ALPHA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := 0;
@@ -483,7 +567,7 @@ procedure UShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorF
         ADest[n].A := GetChannel;
       end;
     GL_LUMINANCE, GL_LUMINANCE_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -492,7 +576,7 @@ procedure UShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorF
         ADest[n].A := 255.0;
       end;
     GL_LUMINANCE_ALPHA, GL_LUMINANCE_ALPHA_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -501,7 +585,7 @@ procedure UShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorF
         ADest[n].A := GetChannel;
       end;
     GL_INTENSITY:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -510,7 +594,7 @@ procedure UShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorF
         ADest[n].A := c0;
       end;
     GL_RED, GL_RED_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := 0;
@@ -518,7 +602,7 @@ procedure UShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorF
         ADest[n].A := 255;
       end;
     GL_GREEN, GL_GREEN_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := GetChannel;
@@ -526,7 +610,7 @@ procedure UShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorF
         ADest[n].A := 255;
       end;
     GL_BLUE, GL_BLUE_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := 0;
@@ -534,36 +618,37 @@ procedure UShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorF
         ADest[n].A := 255;
       end;
     GL_RG, GL_RG_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
         ADest[n].B := 0;
         ADest[n].A := 255;
       end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure ShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PSmallInt;
+  n: Integer;
+  c0: Single;
+
+  function GetChannel: Single;
+  begin
+    Result := pSource^ / $100;
+    Inc(pSource);
   end;
 
-procedure ShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PSmallInt;
-    n: Integer;
-    c0: Single;
+begin
+  pSource := PSmallInt(ASource);
 
-    function GetChannel: Single;
-      begin
-        Result := pSource^ / $100;
-        Inc(pSource);
-      end;
-
-  begin
-    pSource := PSmallInt(ASource);
-
-    case AColorFormat of
+  case AColorFormat of
     GL_RGB, GL_RGB_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -571,7 +656,7 @@ procedure ShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255.0;
       end;
     GL_BGR, GL_BGR_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -579,7 +664,7 @@ procedure ShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255.0;
       end;
     GL_RGBA, GL_RGBA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -587,7 +672,7 @@ procedure ShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := GetChannel;
       end;
     GL_BGRA, GL_BGRA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -595,7 +680,7 @@ procedure ShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := GetChannel;
       end;
     GL_ALPHA, GL_ALPHA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := 0;
@@ -603,7 +688,7 @@ procedure ShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := GetChannel;
       end;
     GL_LUMINANCE, GL_LUMINANCE_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -612,7 +697,7 @@ procedure ShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255.0;
       end;
     GL_LUMINANCE_ALPHA, GL_LUMINANCE_ALPHA_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -621,7 +706,7 @@ procedure ShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := GetChannel;
       end;
     GL_INTENSITY:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -630,7 +715,7 @@ procedure ShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := c0;
       end;
     GL_RED, GL_RED_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := 0;
@@ -638,7 +723,7 @@ procedure ShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255;
       end;
     GL_GREEN, GL_GREEN_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := GetChannel;
@@ -646,7 +731,7 @@ procedure ShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255;
       end;
     GL_BLUE, GL_BLUE_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := 0;
@@ -654,36 +739,37 @@ procedure ShortToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255;
       end;
     GL_RG, GL_RG_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
         ADest[n].B := 0;
         ADest[n].A := 255;
       end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure UIntToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PLongWord;
+  n: Integer;
+  c0: Single;
+
+  function GetChannel: Single;
+  begin
+    Result := pSource^ / $1000000;
+    Inc(pSource);
   end;
 
-procedure UIntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PLongWord;
-    n: Integer;
-    c0: Single;
+begin
+  pSource := PLongWord(ASource);
 
-    function GetChannel: Single;
-      begin
-        Result := pSource^ / $1000000;
-        Inc(pSource);
-      end;
-
-  begin
-    pSource := PLongWord(ASource);
-
-    case AColorFormat of
+  case AColorFormat of
     GL_RGB, GL_RGB_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -691,7 +777,7 @@ procedure UIntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := 255.0;
       end;
     GL_BGR, GL_BGR_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -699,7 +785,7 @@ procedure UIntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := 255.0;
       end;
     GL_RGBA, GL_RGBA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -707,7 +793,7 @@ procedure UIntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := GetChannel;
       end;
     GL_BGRA, GL_BGRA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -715,7 +801,7 @@ procedure UIntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := GetChannel;
       end;
     GL_ALPHA, GL_ALPHA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := 0;
@@ -723,7 +809,7 @@ procedure UIntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := GetChannel;
       end;
     GL_LUMINANCE, GL_LUMINANCE_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -732,7 +818,7 @@ procedure UIntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := 255.0;
       end;
     GL_LUMINANCE_ALPHA, GL_LUMINANCE_ALPHA_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -741,7 +827,7 @@ procedure UIntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := GetChannel;
       end;
     GL_INTENSITY:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -750,7 +836,7 @@ procedure UIntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := c0;
       end;
     GL_RED, GL_RED_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := 0;
@@ -758,7 +844,7 @@ procedure UIntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := 255;
       end;
     GL_GREEN, GL_GREEN_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := GetChannel;
@@ -766,7 +852,7 @@ procedure UIntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := 255;
       end;
     GL_BLUE, GL_BLUE_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := 0;
@@ -774,36 +860,37 @@ procedure UIntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFor
         ADest[n].A := 255;
       end;
     GL_RG, GL_RG_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
         ADest[n].B := 0;
         ADest[n].A := 255;
       end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure IntToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PLongInt;
+  n: Integer;
+  c0: Single;
+
+  function GetChannel: Single;
+  begin
+    Result := pSource^ / $1000000;
+    Inc(pSource);
   end;
 
-procedure IntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PLongInt;
-    n: Integer;
-    c0: Single;
+begin
+  pSource := PLongInt(ASource);
 
-    function GetChannel: Single;
-      begin
-        Result := pSource^ / $1000000;
-        Inc(pSource);
-      end;
-
-  begin
-    pSource := PLongInt(ASource);
-
-    case AColorFormat of
+  case AColorFormat of
     GL_RGB, GL_RGB_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -811,7 +898,7 @@ procedure IntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorForm
         ADest[n].A := 255.0;
       end;
     GL_BGR, GL_BGR_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -819,7 +906,7 @@ procedure IntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorForm
         ADest[n].A := 255.0;
       end;
     GL_RGBA, GL_RGBA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -827,7 +914,7 @@ procedure IntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorForm
         ADest[n].A := GetChannel;
       end;
     GL_BGRA, GL_BGRA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -835,7 +922,7 @@ procedure IntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorForm
         ADest[n].A := GetChannel;
       end;
     GL_ALPHA, GL_ALPHA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := 0;
@@ -843,7 +930,7 @@ procedure IntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorForm
         ADest[n].A := GetChannel;
       end;
     GL_LUMINANCE, GL_LUMINANCE_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -852,7 +939,7 @@ procedure IntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorForm
         ADest[n].A := 255.0;
       end;
     GL_LUMINANCE_ALPHA, GL_LUMINANCE_ALPHA_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -861,7 +948,7 @@ procedure IntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorForm
         ADest[n].A := GetChannel;
       end;
     GL_INTENSITY:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -870,7 +957,7 @@ procedure IntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorForm
         ADest[n].A := c0;
       end;
     GL_RED, GL_RED_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := 0;
@@ -878,7 +965,7 @@ procedure IntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorForm
         ADest[n].A := 255;
       end;
     GL_GREEN, GL_GREEN_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := GetChannel;
@@ -886,7 +973,7 @@ procedure IntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorForm
         ADest[n].A := 255;
       end;
     GL_BLUE, GL_BLUE_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := 0;
@@ -894,36 +981,37 @@ procedure IntToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorForm
         ADest[n].A := 255;
       end;
     GL_RG, GL_RG_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
         ADest[n].B := 0;
         ADest[n].A := 255;
       end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure FloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PSingle;
+  n: Integer;
+  c0: Single;
+
+  function GetChannel: Single;
+  begin
+    Result := pSource^ * 255.0;
+    Inc(pSource);
   end;
 
-procedure FloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PSingle;
-    n: Integer;
-    c0: Single;
+begin
+  pSource := PSingle(ASource);
 
-    function GetChannel: Single;
-      begin
-        Result := pSource^ * 255.0;
-        Inc(pSource);
-      end;
-
-  begin
-    pSource := PSingle(ASource);
-
-    case AColorFormat of
+  case AColorFormat of
     GL_RGB, GL_RGB_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -931,7 +1019,7 @@ procedure FloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255.0;
       end;
     GL_BGR, GL_BGR_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -939,7 +1027,7 @@ procedure FloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255.0;
       end;
     GL_RGBA, GL_RGBA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -947,7 +1035,7 @@ procedure FloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := GetChannel;
       end;
     GL_BGRA, GL_BGRA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -955,7 +1043,7 @@ procedure FloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := GetChannel;
       end;
     GL_ALPHA, GL_ALPHA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := 0;
@@ -963,7 +1051,7 @@ procedure FloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := GetChannel;
       end;
     GL_LUMINANCE, GL_LUMINANCE_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -972,7 +1060,7 @@ procedure FloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255.0;
       end;
     GL_LUMINANCE_ALPHA, GL_LUMINANCE_ALPHA_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -981,7 +1069,7 @@ procedure FloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := GetChannel;
       end;
     GL_INTENSITY:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -990,7 +1078,7 @@ procedure FloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := c0;
       end;
     GL_RED, GL_RED_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := 0;
@@ -998,7 +1086,7 @@ procedure FloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255;
       end;
     GL_GREEN, GL_GREEN_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := GetChannel;
@@ -1006,7 +1094,7 @@ procedure FloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255;
       end;
     GL_BLUE, GL_BLUE_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := 0;
@@ -1014,36 +1102,37 @@ procedure FloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255;
       end;
     GL_RG, GL_RG_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
         ADest[n].B := 0;
         ADest[n].A := 255;
       end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure HalfFloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PHalfFloat;
+  n: Integer;
+  c0: Single;
+
+  function GetChannel: Single;
+  begin
+    Result := HalfToFloat(pSource^) * 255.0;
+    Inc(pSource);
   end;
 
-procedure HalfFloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PHalfFloat;
-    n: Integer;
-    c0: Single;
+begin
+  pSource := PHalfFloat(ASource);
 
-    function GetChannel: Single;
-      begin
-        Result := HalfToFloat(pSource^) * 255.0;
-        Inc(pSource);
-      end;
-
-  begin
-    pSource := PHalfFloat(ASource);
-
-    case AColorFormat of
+  case AColorFormat of
     GL_RGB, GL_RGB_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -1051,7 +1140,7 @@ procedure HalfFloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; ACol
         ADest[n].A := 255.0;
       end;
     GL_BGR, GL_BGR_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -1059,7 +1148,7 @@ procedure HalfFloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; ACol
         ADest[n].A := 255.0;
       end;
     GL_RGBA, GL_RGBA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -1067,7 +1156,7 @@ procedure HalfFloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; ACol
         ADest[n].A := GetChannel;
       end;
     GL_BGRA, GL_BGRA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -1075,7 +1164,7 @@ procedure HalfFloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; ACol
         ADest[n].A := GetChannel;
       end;
     GL_ALPHA, GL_ALPHA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := 0;
@@ -1083,7 +1172,7 @@ procedure HalfFloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; ACol
         ADest[n].A := GetChannel;
       end;
     GL_LUMINANCE, GL_LUMINANCE_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -1092,7 +1181,7 @@ procedure HalfFloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; ACol
         ADest[n].A := 255.0;
       end;
     GL_LUMINANCE_ALPHA, GL_LUMINANCE_ALPHA_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -1101,7 +1190,7 @@ procedure HalfFloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; ACol
         ADest[n].A := GetChannel;
       end;
     GL_INTENSITY:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -1110,7 +1199,7 @@ procedure HalfFloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; ACol
         ADest[n].A := c0;
       end;
     GL_RED, GL_RED_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := 0;
@@ -1118,7 +1207,7 @@ procedure HalfFloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; ACol
         ADest[n].A := 255;
       end;
     GL_GREEN, GL_GREEN_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := GetChannel;
@@ -1126,7 +1215,7 @@ procedure HalfFloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; ACol
         ADest[n].A := 255;
       end;
     GL_BLUE, GL_BLUE_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := 0;
@@ -1134,606 +1223,535 @@ procedure HalfFloatToImf(ASource: Pointer; ADest: PIntermediateFormatArray; ACol
         ADest[n].A := 255;
       end;
     GL_RG, GL_RG_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
         ADest[n].B := 0;
         ADest[n].A := 255;
       end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure UInt8888ToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PByte;
+  n: Integer;
+  c0, c1, c2, c3: Byte;
+
+  procedure GetChannel;
+  begin
+    c0 := pSource^;
+    Inc(pSource);
+    c1 := pSource^;
+    Inc(pSource);
+    c2 := pSource^;
+    Inc(pSource);
+    c3 := pSource^;
+    Inc(pSource);
   end;
 
-procedure UInt8888ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PByte;
-    n: Integer;
-    c0, c1, c2, c3: Byte;
+begin
+  pSource := PByte(ASource);
 
-    procedure GetChannel;
+  case AColorFormat of
+
+    GL_RGBA, GL_RGBA_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
       begin
-        c0 := pSource^;
-        Inc(pSource);
-        c1 := pSource^;
-        Inc(pSource);
-        c2 := pSource^;
-        Inc(pSource);
-        c3 := pSource^;
-        Inc(pSource);
+        GetChannel;
+        ADest[n].R := c0;
+        ADest[n].G := c1;
+        ADest[n].B := c2;
+        ADest[n].A := c3;
       end;
 
+    GL_BGRA, GL_BGRA_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
+      begin
+        GetChannel;
+        ADest[n].B := c0;
+        ADest[n].G := c1;
+        ADest[n].R := c2;
+        ADest[n].A := c3;
+      end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure UInt8888RevToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PByte;
+  n: Integer;
+  c0, c1, c2, c3: Byte;
+
+  procedure GetChannel;
   begin
-    pSource := PByte(ASource);
-
-    case AColorFormat of
-
-      GL_RGBA, GL_RGBA_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].R := c0;
-          ADest[n].G := c1;
-          ADest[n].B := c2;
-          ADest[n].A := c3;
-        end;
-
-      GL_BGRA, GL_BGRA_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].B := c0;
-          ADest[n].G := c1;
-          ADest[n].R := c2;
-          ADest[n].A := c3;
-        end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+    c3 := pSource^;
+    Inc(pSource);
+    c2 := pSource^;
+    Inc(pSource);
+    c1 := pSource^;
+    Inc(pSource);
+    c0 := pSource^;
+    Inc(pSource);
   end;
 
-procedure UInt8888RevToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PByte;
-    n: Integer;
-    c0, c1, c2, c3: Byte;
+begin
+  pSource := PByte(ASource);
 
-    procedure GetChannel;
+  case AColorFormat of
+
+    GL_RGBA, GL_RGBA_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
       begin
-        c3 := pSource^;
-        Inc(pSource);
-        c2 := pSource^;
-        Inc(pSource);
-        c1 := pSource^;
-        Inc(pSource);
-        c0 := pSource^;
-        Inc(pSource);
+        GetChannel;
+        ADest[n].R := c0;
+        ADest[n].G := c1;
+        ADest[n].B := c2;
+        ADest[n].A := c3;
       end;
 
+    GL_BGRA, GL_BGRA_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
+      begin
+        GetChannel;
+        ADest[n].B := c0;
+        ADest[n].G := c1;
+        ADest[n].R := c2;
+        ADest[n].A := c3;
+      end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure UShort4444ToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PByte;
+  n: Integer;
+  c0, c1, c2, c3, c4: Byte;
+
+  procedure GetChannel;
   begin
-    pSource := PByte(ASource);
-
-    case AColorFormat of
-
-      GL_RGBA, GL_RGBA_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].R := c0;
-          ADest[n].G := c1;
-          ADest[n].B := c2;
-          ADest[n].A := c3;
-        end;
-
-      GL_BGRA, GL_BGRA_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].B := c0;
-          ADest[n].G := c1;
-          ADest[n].R := c2;
-          ADest[n].A := c3;
-        end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+    c0 := pSource^;
+    c3 := $F0 and (c0 shl 4);
+    c4 := $F0 and c0;
+    Inc(pSource);
+    c0 := pSource^;
+    c1 := $F0 and (c0 shl 4);
+    c2 := $F0 and c0;
+    Inc(pSource);
   end;
 
-procedure UShort4444ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PByte;
-    n: Integer;
-    c0, c1, c2, c3, c4: Byte;
+begin
+  pSource := PByte(ASource);
 
-    procedure GetChannel;
+  case AColorFormat of
+
+    GL_RGBA, GL_RGBA_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
       begin
-        c0 := pSource^;
-        c3 := $F0 and (c0 shl 4);
-        c4 := $F0 and c0;
-        Inc(pSource);
-        c0 := pSource^;
-        c1 := $F0 and (c0 shl 4);
-        c2 := $F0 and c0;
-        Inc(pSource);
+        GetChannel;
+        ADest[n].R := c1;
+        ADest[n].G := c2;
+        ADest[n].B := c3;
+        ADest[n].A := c4;
       end;
 
+    GL_BGRA, GL_BGRA_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
+      begin
+        GetChannel;
+        ADest[n].R := c1;
+        ADest[n].G := c2;
+        ADest[n].B := c3;
+        ADest[n].A := c4;
+      end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure UShort4444RevToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PByte;
+  n: Integer;
+  c0, c1, c2, c3, c4: Byte;
+
+  procedure GetChannel;
   begin
-    pSource := PByte(ASource);
-
-    case AColorFormat of
-
-      GL_RGBA, GL_RGBA_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].R := c1;
-          ADest[n].G := c2;
-          ADest[n].B := c3;
-          ADest[n].A := c4;
-        end;
-
-      GL_BGRA, GL_BGRA_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].R := c1;
-          ADest[n].G := c2;
-          ADest[n].B := c3;
-          ADest[n].A := c4;
-        end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+    c0 := pSource^;
+    c1 := $F0 and (c0 shl 4);
+    c2 := $F0 and c0;
+    Inc(pSource);
+    c0 := pSource^;
+    c3 := $F0 and (c0 shl 4);
+    c4 := $F0 and c0;
+    Inc(pSource);
   end;
 
-procedure UShort4444RevToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PByte;
-    n: Integer;
-    c0, c1, c2, c3, c4: Byte;
+begin
+  pSource := PByte(ASource);
 
-    procedure GetChannel;
+  case AColorFormat of
+
+    GL_RGBA, GL_RGBA_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
       begin
-        c0 := pSource^;
-        c1 := $F0 and (c0 shl 4);
-        c2 := $F0 and c0;
-        Inc(pSource);
-        c0 := pSource^;
-        c3 := $F0 and (c0 shl 4);
-        c4 := $F0 and c0;
-        Inc(pSource);
+        GetChannel;
+        ADest[n].R := c1;
+        ADest[n].G := c2;
+        ADest[n].B := c3;
+        ADest[n].A := c4;
       end;
 
+    GL_BGRA, GL_BGRA_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
+      begin
+        GetChannel;
+        ADest[n].B := c1;
+        ADest[n].G := c2;
+        ADest[n].R := c3;
+        ADest[n].A := c4;
+      end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure UShort565ToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PWord;
+  n: Integer;
+  c0: Word;
+  c1, c2, c3: Byte;
+
+  procedure GetChannel;
   begin
-    pSource := PByte(ASource);
-
-    case AColorFormat of
-
-      GL_RGBA, GL_RGBA_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].R := c1;
-          ADest[n].G := c2;
-          ADest[n].B := c3;
-          ADest[n].A := c4;
-        end;
-
-      GL_BGRA, GL_BGRA_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].B := c1;
-          ADest[n].G := c2;
-          ADest[n].R := c3;
-          ADest[n].A := c4;
-        end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+    c0 := pSource^;
+    c3 := (c0 and $001F) shl 3;
+    c2 := (c0 and $07E0) shr 3;
+    c1 := (c0 and $F800) shr 8;
+    Inc(pSource);
   end;
 
-procedure UShort565ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PWord;
-    n: Integer;
-    c0: Word;
-    c1, c2, c3: Byte;
+begin
+  pSource := PWord(ASource);
 
-    procedure GetChannel;
+  case AColorFormat of
+
+    GL_RGB, GL_RGB_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
       begin
-        c0 := pSource^;
-        c3 := (c0 and $001F) shl 3;
-        c2 := (c0 and $07E0) shr 3;
-        c1 := (c0 and $F800) shr 8;
-        Inc(pSource);
+        GetChannel;
+        ADest[n].R := c1;
+        ADest[n].G := c2;
+        ADest[n].B := c3;
       end;
 
+    GL_BGR, GL_BGR_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
+      begin
+        GetChannel;
+        ADest[n].B := c1;
+        ADest[n].G := c2;
+        ADest[n].R := c3;
+      end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure UShort565RevToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PWord;
+  n: Integer;
+  c0: Word;
+  c1, c2, c3: Byte;
+
+  procedure GetChannel;
   begin
-    pSource := PWord(ASource);
-
-    case AColorFormat of
-
-      GL_RGB, GL_RGB_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].R := c1;
-          ADest[n].G := c2;
-          ADest[n].B := c3;
-        end;
-
-      GL_BGR, GL_BGR_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].B := c1;
-          ADest[n].G := c2;
-          ADest[n].R := c3;
-        end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+    c0 := pSource^;
+    c1 := (c0 and $001F) shl 3;
+    c2 := (c0 and $07E0) shr 3;
+    c3 := (c0 and $F800) shr 8;
+    Inc(pSource);
   end;
 
-procedure UShort565RevToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PWord;
-    n: Integer;
-    c0: Word;
-    c1, c2, c3: Byte;
+begin
+  pSource := PWord(ASource);
 
-    procedure GetChannel;
+  case AColorFormat of
+
+    GL_RGB, GL_RGB_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
       begin
-        c0 := pSource^;
-        c1 := (c0 and $001F) shl 3;
-        c2 := (c0 and $07E0) shr 3;
-        c3 := (c0 and $F800) shr 8;
-        Inc(pSource);
+        GetChannel;
+        ADest[n].R := c1;
+        ADest[n].G := c2;
+        ADest[n].B := c3;
       end;
 
+    GL_BGR, GL_BGR_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
+      begin
+        GetChannel;
+        ADest[n].B := c1;
+        ADest[n].G := c2;
+        ADest[n].R := c3;
+      end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure UShort5551ToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PWord;
+  n: Integer;
+  c0: Word;
+  c1, c2, c3, c4: Byte;
+
+  procedure GetChannel;
   begin
-    pSource := PWord(ASource);
-
-    case AColorFormat of
-
-      GL_RGB, GL_RGB_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].R := c1;
-          ADest[n].G := c2;
-          ADest[n].B := c3;
-        end;
-
-      GL_BGR, GL_BGR_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].B := c1;
-          ADest[n].G := c2;
-          ADest[n].R := c3;
-        end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+    c0 := pSource^;
+    c4 := (c0 and $001F) shl 3;
+    c3 := (c0 and $03E0) shr 2;
+    c2 := (c0 and $7C00) shr 7;
+    c1 := (c0 and $8000) shr 8;
+    Inc(pSource);
   end;
 
-procedure UShort5551ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PWord;
-    n: Integer;
-    c0: Word;
-    c1, c2, c3, c4: Byte;
+begin
+  pSource := PWord(ASource);
 
-    procedure GetChannel;
+  case AColorFormat of
+
+    GL_RGBA, GL_RGBA_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
       begin
-        c0 := pSource^;
-        c4 := (c0 and $001F) shl 3;
-        c3 := (c0 and $03E0) shr 2;
-        c2 := (c0 and $7C00) shr 7;
-        c1 := (c0 and $8000) shr 8;
-        Inc(pSource);
+        GetChannel;
+        ADest[n].R := c1;
+        ADest[n].G := c2;
+        ADest[n].B := c3;
+        ADest[n].A := c4;
       end;
 
+    GL_BGRA, GL_BGRA_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
+      begin
+        GetChannel;
+        ADest[n].B := c1;
+        ADest[n].G := c2;
+        ADest[n].R := c3;
+        ADest[n].A := c4;
+      end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure UShort5551RevToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PWord;
+  n: Integer;
+  c0: Word;
+  c1, c2, c3, c4: Byte;
+
+  procedure GetChannel;
   begin
-    pSource := PWord(ASource);
-
-    case AColorFormat of
-
-      GL_RGBA, GL_RGBA_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].R := c1;
-          ADest[n].G := c2;
-          ADest[n].B := c3;
-          ADest[n].A := c4;
-        end;
-
-      GL_BGRA, GL_BGRA_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].B := c1;
-          ADest[n].G := c2;
-          ADest[n].R := c3;
-          ADest[n].A := c4;
-        end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+    c0 := pSource^;
+    c1 := (c0 and $001F) shl 3;
+    c2 := (c0 and $03E0) shr 2;
+    c3 := (c0 and $7C00) shr 7;
+    c4 := (c0 and $8000) shr 8;
+    Inc(pSource);
   end;
 
-procedure UShort5551RevToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PWord;
-    n: Integer;
-    c0: Word;
-    c1, c2, c3, c4: Byte;
+begin
+  pSource := PWord(ASource);
 
-    procedure GetChannel;
+  case AColorFormat of
+
+    GL_RGBA, GL_RGBA_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
       begin
-        c0 := pSource^;
-        c1 := (c0 and $001F) shl 3;
-        c2 := (c0 and $03E0) shr 2;
-        c3 := (c0 and $7C00) shr 7;
-        c4 := (c0 and $8000) shr 8;
-        Inc(pSource);
+        GetChannel;
+        ADest[n].R := c1;
+        ADest[n].G := c2;
+        ADest[n].B := c3;
+        ADest[n].A := c4;
       end;
 
+    GL_BGRA, GL_BGRA_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
+      begin
+        GetChannel;
+        ADest[n].B := c1;
+        ADest[n].G := c2;
+        ADest[n].R := c3;
+        ADest[n].A := c4;
+      end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure UInt_10_10_10_2_ToImf(ASource: Pointer;
+  ADest: PIntermediateFormatArray; AColorFormat: Cardinal;
+  AWidth, AHeight: Integer);
+var
+  pSource: PLongWord;
+  n: Integer;
+  c0: LongWord;
+  c1, c2, c3, c4: Word;
+
+  procedure GetChannel;
   begin
-    pSource := PWord(ASource);
-
-    case AColorFormat of
-
-      GL_RGBA, GL_RGBA_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].R := c1;
-          ADest[n].G := c2;
-          ADest[n].B := c3;
-          ADest[n].A := c4;
-        end;
-
-      GL_BGRA, GL_BGRA_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].B := c1;
-          ADest[n].G := c2;
-          ADest[n].R := c3;
-          ADest[n].A := c4;
-        end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+    c0 := pSource^;
+    c1 := (c0 and $000003FF) shl 6;
+    c2 := (c0 and $000FFC00) shr 4;
+    c3 := (c0 and $3FF00000) shr 14;
+    c4 := (c0 and $C0000000) shr 16;
+    Inc(pSource);
   end;
 
-procedure UInt_10_10_10_2_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PLongWord;
-    n: Integer;
-    c0: LongWord;
-    c1, c2, c3, c4: Word;
+begin
+  pSource := PLongWord(ASource);
 
-    procedure GetChannel;
+  case AColorFormat of
+
+    GL_RGBA, GL_RGBA_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
       begin
-        c0 := pSource^;
-        c1 := (c0 and $000003FF) shl 6;
-        c2 := (c0 and $000FFC00) shr 4;
-        c3 := (c0 and $3FF00000) shr 14;
-        c4 := (c0 and $C0000000) shr 16;
-        Inc(pSource);
+        GetChannel;
+        ADest[n].R := c1 / $100;
+        ADest[n].G := c2 / $100;
+        ADest[n].B := c3 / $100;
+        ADest[n].A := c4;
       end;
 
+    GL_BGRA, GL_BGRA_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
+      begin
+        GetChannel;
+        ADest[n].B := c1 / $100;
+        ADest[n].G := c2 / $100;
+        ADest[n].R := c3 / $100;
+        ADest[n].A := c4;
+      end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure UInt_10_10_10_2_Rev_ToImf(ASource: Pointer;
+  ADest: PIntermediateFormatArray; AColorFormat: Cardinal;
+  AWidth, AHeight: Integer);
+var
+  pSource: PLongWord;
+  n: Integer;
+  c0: LongWord;
+  c1, c2, c3, c4: Word;
+
+  procedure GetChannel;
   begin
-    pSource := PLongWord(ASource);
-
-    case AColorFormat of
-
-      GL_RGBA, GL_RGBA_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].R := c1 / $100;
-          ADest[n].G := c2 / $100;
-          ADest[n].B := c3 / $100;
-          ADest[n].A := c4;
-        end;
-
-      GL_BGRA, GL_BGRA_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].B := c1 / $100;
-          ADest[n].G := c2 / $100;
-          ADest[n].R := c3 / $100;
-          ADest[n].A := c4;
-        end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+    c0 := pSource^;
+    c1 := (c0 and $000003FF) shl 6;
+    c2 := (c0 and $000FFC00) shr 4;
+    c3 := (c0 and $3FF00000) shr 14;
+    c4 := (c0 and $C0000000) shr 16;
+    Inc(pSource);
   end;
 
-procedure UInt_10_10_10_2_Rev_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PLongWord;
-    n: Integer;
-    c0: LongWord;
-    c1, c2, c3, c4: Word;
+begin
+  pSource := PLongWord(ASource);
 
-    procedure GetChannel;
+  case AColorFormat of
+
+    GL_RGBA, GL_RGBA_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
       begin
-        c0 := pSource^;
-        c1 := (c0 and $000003FF) shl 6;
-        c2 := (c0 and $000FFC00) shr 4;
-        c3 := (c0 and $3FF00000) shr 14;
-        c4 := (c0 and $C0000000) shr 16;
-        Inc(pSource);
+        GetChannel;
+        ADest[n].R := c1 / $100;
+        ADest[n].G := c2 / $100;
+        ADest[n].B := c3 / $100;
+        ADest[n].A := c4;
       end;
 
-  begin
-    pSource := PLongWord(ASource);
-
-    case AColorFormat of
-
-      GL_RGBA, GL_RGBA_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].R := c1 / $100;
-          ADest[n].G := c2 / $100;
-          ADest[n].B := c3 / $100;
-          ADest[n].A := c4;
-        end;
-
-      GL_BGRA, GL_BGRA_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].B := c1 / $100;
-          ADest[n].G := c2 / $100;
-          ADest[n].R := c3 / $100;
-          ADest[n].A := c4;
-        end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+    GL_BGRA, GL_BGRA_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
+      begin
+        GetChannel;
+        ADest[n].B := c1 / $100;
+        ADest[n].G := c2 / $100;
+        ADest[n].R := c3 / $100;
+        ADest[n].A := c4;
+      end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
   end;
+end;
 
- 
-// ------------------------------ Decompression 
+
+// ------------------------------ Decompression
 
 procedure DecodeColor565(col: Word; out R, G, B: Byte);
-  begin
-    R := col and $1F;
-    G := (col shr 5) and $3F;
-    B := (col shr 11) and $1F;
-  end;
+begin
+  R := col and $1F;
+  G := (col shr 5) and $3F;
+  B := (col shr 11) and $1F;
+end;
 
-procedure DXT1_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    x, y, i, j, k, select, offset: Integer;
-    col0, col1: Word;
-    colors: TU48BitBlock;
-    bitmask: Cardinal;
-    temp: PGLubyte;
-    r0, g0, b0, r1, g1, b1: Byte;
-  begin
+procedure DXT1_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  x, y, i, j, k, select, offset: Integer;
+  col0, col1: Word;
+  colors: TU48BitBlock;
+  bitmask: Cardinal;
+  temp: PGLubyte;
+  r0, g0, b0, r1, g1, b1: Byte;
+begin
 
-    temp := PGLubyte(ASource);
-    for y := 0 to (AHeight div 4) - 1 do
+  temp := PGLubyte(ASource);
+  for y := 0 to (AHeight div 4) - 1 do
+  begin
+    for x := 0 to (AWidth div 4) - 1 do
     begin
-      for x := 0 to (AWidth div 4) - 1 do
+      col0 := PWord(temp)^;
+      Inc(temp, 2);
+      col1 := PWord(temp)^;
+      Inc(temp, 2);
+      bitmask := PCardinal(temp)^;
+      Inc(temp, 4);
+
+      DecodeColor565(col0, r0, g0, b0);
+      DecodeColor565(col1, r1, g1, b1);
+
+      colors[0][0] := r0 shl 3;
+      colors[0][1] := g0 shl 2;
+      colors[0][2] := b0 shl 3;
+      colors[0][3] := $FF;
+      colors[1][0] := r1 shl 3;
+      colors[1][1] := g1 shl 2;
+      colors[1][2] := b1 shl 3;
+      colors[1][3] := $FF;
+
+      if col0 > col1 then
       begin
-        col0 := PWord(temp)^;
-        Inc(temp, 2);
-        col1 := PWord(temp)^;
-        Inc(temp, 2);
-        bitmask := PCardinal(temp)^;
-        Inc(temp, 4);
-
-        DecodeColor565(col0, r0, g0, b0);
-        DecodeColor565(col1, r1, g1, b1);
-
-        colors[0][0] := r0 shl 3;
-        colors[0][1] := g0 shl 2;
-        colors[0][2] := b0 shl 3;
-        colors[0][3] := $FF;
-        colors[1][0] := r1 shl 3;
-        colors[1][1] := g1 shl 2;
-        colors[1][2] := b1 shl 3;
-        colors[1][3] := $FF;
-
-        if col0 > col1 then
-        begin
-          colors[2][0] := (2 * colors[0][0] + colors[1][0] + 1) div 3;
-          colors[2][1] := (2 * colors[0][1] + colors[1][1] + 1) div 3;
-          colors[2][2] := (2 * colors[0][2] + colors[1][2] + 1) div 3;
-          colors[2][3] := $FF;
-          colors[3][0] := (colors[0][0] + 2 * colors[1][0] + 1) div 3;
-          colors[3][1] := (colors[0][1] + 2 * colors[1][1] + 1) div 3;
-          colors[3][2] := (colors[0][2] + 2 * colors[1][2] + 1) div 3;
-          colors[3][3] := $FF;
-        end
-        else
-        begin
-          colors[2][0] := (colors[0][0] + colors[1][0]) div 2;
-          colors[2][1] := (colors[0][1] + colors[1][1]) div 2;
-          colors[2][2] := (colors[0][2] + colors[1][2]) div 2;
-          colors[2][3] := $FF;
-          colors[3][0] := (colors[0][0] + 2 * colors[1][0] + 1) div 3;
-          colors[3][1] := (colors[0][1] + 2 * colors[1][1] + 1) div 3;
-          colors[3][2] := (colors[0][2] + 2 * colors[1][2] + 1) div 3;
-          colors[3][3] := 0;
-        end;
-
-        k := 0;
-        for j := 0 to 3 do
-        begin
-          for i := 0 to 3 do
-          begin
-            select := (bitmask and (3 shl (k * 2))) shr (k * 2);
-            if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
-            begin
-              offset := ((4 * y + j) * AWidth + (4 * x + i));
-              ADest[offset].B := colors[select][0];
-              ADest[offset].G := colors[select][1];
-              ADest[offset].R := colors[select][2];
-              ADest[offset].A := colors[select][3];
-            end;
-            Inc(k);
-          end;
-        end;
-
-      end;
-    end;
-  end;
-
-procedure DXT3_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    x, y, i, j, k, select: Integer;
-    col0, col1, wrd: Word;
-    colors: TU48BitBlock;
-    bitmask, offset: Cardinal;
-    temp: PGLubyte;
-    r0, g0, b0, r1, g1, b1: Byte;
-    alpha: array [0 .. 3] of Word;
-  begin
-    temp := PGLubyte(ASource);
-    for y := 0 to (AHeight div 4) - 1 do
-    begin
-      for x := 0 to (AWidth div 4) - 1 do
-      begin
-        alpha[0] := PWord(temp)^;
-        Inc(temp, 2);
-        alpha[1] := PWord(temp)^;
-        Inc(temp, 2);
-        alpha[2] := PWord(temp)^;
-        Inc(temp, 2);
-        alpha[3] := PWord(temp)^;
-        Inc(temp, 2);
-        col0 := PWord(temp)^;
-        Inc(temp, 2);
-        col1 := PWord(temp)^;
-        Inc(temp, 2);
-        bitmask := PCardinal(temp)^;
-        Inc(temp, 4);
-
-        DecodeColor565(col0, r0, g0, b0);
-        DecodeColor565(col1, r1, g1, b1);
-
-        colors[0][0] := r0 shl 3;
-        colors[0][1] := g0 shl 2;
-        colors[0][2] := b0 shl 3;
-        colors[0][3] := $FF;
-        colors[1][0] := r1 shl 3;
-        colors[1][1] := g1 shl 2;
-        colors[1][2] := b1 shl 3;
-        colors[1][3] := $FF;
         colors[2][0] := (2 * colors[0][0] + colors[1][0] + 1) div 3;
         colors[2][1] := (2 * colors[0][1] + colors[1][1] + 1) div 3;
         colors[2][2] := (2 * colors[0][2] + colors[1][2] + 1) div 3;
@@ -1742,1111 +1760,1207 @@ procedure DXT3_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         colors[3][1] := (colors[0][1] + 2 * colors[1][1] + 1) div 3;
         colors[3][2] := (colors[0][2] + 2 * colors[1][2] + 1) div 3;
         colors[3][3] := $FF;
-
-        k := 0;
-        for j := 0 to 3 do
-        begin
-          for i := 0 to 3 do
-          begin
-            select := (bitmask and (3 shl (k * 2))) shr (k * 2);
-            if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
-            begin
-              offset := ((4 * y + j) * AWidth + (4 * x + i));
-              ADest[offset].B := colors[select][0];
-              ADest[offset].G := colors[select][1];
-              ADest[offset].R := colors[select][2];
-              ADest[offset].A := colors[select][3];
-            end;
-            Inc(k);
-          end;
-        end;
-
-        for j := 0 to 3 do
-        begin
-          wrd := alpha[j];
-          for i := 0 to 3 do
-          begin
-            if (((4 * x + i) < AWidth) and ((4 * y + j) < AHeight)) then
-            begin
-              offset := ((4 * y + j) * AWidth + (4 * x + i));
-              r0 := wrd and $0F;
-              ADest[offset].A := r0 or (r0 shl 4);
-            end;
-            wrd := wrd shr 4;
-          end;
-        end;
-
-      end;
-    end;
-  end;
-
-procedure DXT5_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    x, y, i, j, k, select, offset: Integer;
-    col0, col1: Word;
-    colors: TU48BitBlock;
-    bits, bitmask: Cardinal;
-    temp, alphamask: PGLubyte;
-    r0, g0, b0, r1, g1, b1: Byte;
-    alphas: array [0 .. 7] of Byte;
-  begin
-    temp := PGLubyte(ASource);
-    for y := 0 to (AHeight div 4) - 1 do
-    begin
-      for x := 0 to (AWidth div 4) - 1 do
+      end
+      else
       begin
-        alphas[0] := temp^;
-        Inc(temp);
-        alphas[1] := temp^;
-        Inc(temp);
-        alphamask := temp;
-        Inc(temp, 6);
-        col0 := PWord(temp)^;
-        Inc(temp, 2);
-        col1 := PWord(temp)^;
-        Inc(temp, 2);
-        bitmask := PCardinal(temp)^;
-        Inc(temp, 4);
-
-        DecodeColor565(col0, r0, g0, b0);
-        DecodeColor565(col1, r1, g1, b1);
-
-        colors[0][0] := r0 shl 3;
-        colors[0][1] := g0 shl 2;
-        colors[0][2] := b0 shl 3;
-        colors[0][3] := $FF;
-        colors[1][0] := r1 shl 3;
-        colors[1][1] := g1 shl 2;
-        colors[1][2] := b1 shl 3;
-        colors[1][3] := $FF;
-        colors[2][0] := (2 * colors[0][0] + colors[1][0] + 1) div 3;
-        colors[2][1] := (2 * colors[0][1] + colors[1][1] + 1) div 3;
-        colors[2][2] := (2 * colors[0][2] + colors[1][2] + 1) div 3;
+        colors[2][0] := (colors[0][0] + colors[1][0]) div 2;
+        colors[2][1] := (colors[0][1] + colors[1][1]) div 2;
+        colors[2][2] := (colors[0][2] + colors[1][2]) div 2;
         colors[2][3] := $FF;
         colors[3][0] := (colors[0][0] + 2 * colors[1][0] + 1) div 3;
         colors[3][1] := (colors[0][1] + 2 * colors[1][1] + 1) div 3;
         colors[3][2] := (colors[0][2] + 2 * colors[1][2] + 1) div 3;
-        colors[3][3] := $FF;
-
-        k := 0;
-        for j := 0 to 3 do
-        begin
-          for i := 0 to 3 do
-          begin
-            select := (bitmask and (3 shl (k * 2))) shr (k * 2);
-            if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
-            begin
-              offset := ((4 * y + j) * AWidth + (4 * x + i));
-              ADest[offset].B := colors[select][0];
-              ADest[offset].G := colors[select][1];
-              ADest[offset].R := colors[select][2];
-            end;
-            Inc(k);
-          end;
-        end;
-
-        if (alphas[0] > alphas[1]) then
-        begin
-          alphas[2] := (6 * alphas[0] + 1 * alphas[1] + 3) div 7;
-          alphas[3] := (5 * alphas[0] + 2 * alphas[1] + 3) div 7;
-          alphas[4] := (4 * alphas[0] + 3 * alphas[1] + 3) div 7;
-          alphas[5] := (3 * alphas[0] + 4 * alphas[1] + 3) div 7;
-          alphas[6] := (2 * alphas[0] + 5 * alphas[1] + 3) div 7;
-          alphas[7] := (1 * alphas[0] + 6 * alphas[1] + 3) div 7;
-        end
-        else
-        begin
-          alphas[2] := (4 * alphas[0] + 1 * alphas[1] + 2) div 5;
-          alphas[3] := (3 * alphas[0] + 2 * alphas[1] + 2) div 5;
-          alphas[4] := (2 * alphas[0] + 3 * alphas[1] + 2) div 5;
-          alphas[5] := (1 * alphas[0] + 4 * alphas[1] + 2) div 5;
-          alphas[6] := 0;
-          alphas[7] := $FF;
-        end;
-
-        bits := PCardinal(alphamask)^;
-        for j := 0 to 1 do
-        begin
-          for i := 0 to 3 do
-          begin
-            if (((4 * x + i) < AWidth) and ((4 * y + j) < AHeight)) then
-            begin
-              offset := ((4 * y + j) * AWidth + (4 * x + i));
-              ADest[offset].A := alphas[bits and 7];
-            end;
-            bits := bits shr 3;
-          end;
-        end;
-
-        Inc(alphamask, 3);
-        bits := PCardinal(alphamask)^;
-        for j := 2 to 3 do
-        begin
-          for i := 0 to 3 do
-          begin
-            if (((4 * x + i) < AWidth) and ((4 * y + j) < AHeight)) then
-            begin
-              offset := ((4 * y + j) * AWidth + (4 * x + i));
-              ADest[offset].A := alphas[bits and 7];
-            end;
-            bits := bits shr 3;
-          end;
-        end;
-
+        colors[3][3] := 0;
       end;
+
+      k := 0;
+      for j := 0 to 3 do
+      begin
+        for i := 0 to 3 do
+        begin
+          select := (bitmask and (3 shl (k * 2))) shr (k * 2);
+          if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
+          begin
+            offset := ((4 * y + j) * AWidth + (4 * x + i));
+            ADest[offset].B := colors[select][0];
+            ADest[offset].G := colors[select][1];
+            ADest[offset].R := colors[select][2];
+            ADest[offset].A := colors[select][3];
+          end;
+          Inc(k);
+        end;
+      end;
+
     end;
   end;
+end;
+
+procedure DXT3_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  x, y, i, j, k, select: Integer;
+  col0, col1, wrd: Word;
+  colors: TU48BitBlock;
+  bitmask, offset: Cardinal;
+  temp: PGLubyte;
+  r0, g0, b0, r1, g1, b1: Byte;
+  alpha: array [0 .. 3] of Word;
+begin
+  temp := PGLubyte(ASource);
+  for y := 0 to (AHeight div 4) - 1 do
+  begin
+    for x := 0 to (AWidth div 4) - 1 do
+    begin
+      alpha[0] := PWord(temp)^;
+      Inc(temp, 2);
+      alpha[1] := PWord(temp)^;
+      Inc(temp, 2);
+      alpha[2] := PWord(temp)^;
+      Inc(temp, 2);
+      alpha[3] := PWord(temp)^;
+      Inc(temp, 2);
+      col0 := PWord(temp)^;
+      Inc(temp, 2);
+      col1 := PWord(temp)^;
+      Inc(temp, 2);
+      bitmask := PCardinal(temp)^;
+      Inc(temp, 4);
+
+      DecodeColor565(col0, r0, g0, b0);
+      DecodeColor565(col1, r1, g1, b1);
+
+      colors[0][0] := r0 shl 3;
+      colors[0][1] := g0 shl 2;
+      colors[0][2] := b0 shl 3;
+      colors[0][3] := $FF;
+      colors[1][0] := r1 shl 3;
+      colors[1][1] := g1 shl 2;
+      colors[1][2] := b1 shl 3;
+      colors[1][3] := $FF;
+      colors[2][0] := (2 * colors[0][0] + colors[1][0] + 1) div 3;
+      colors[2][1] := (2 * colors[0][1] + colors[1][1] + 1) div 3;
+      colors[2][2] := (2 * colors[0][2] + colors[1][2] + 1) div 3;
+      colors[2][3] := $FF;
+      colors[3][0] := (colors[0][0] + 2 * colors[1][0] + 1) div 3;
+      colors[3][1] := (colors[0][1] + 2 * colors[1][1] + 1) div 3;
+      colors[3][2] := (colors[0][2] + 2 * colors[1][2] + 1) div 3;
+      colors[3][3] := $FF;
+
+      k := 0;
+      for j := 0 to 3 do
+      begin
+        for i := 0 to 3 do
+        begin
+          select := (bitmask and (3 shl (k * 2))) shr (k * 2);
+          if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
+          begin
+            offset := ((4 * y + j) * AWidth + (4 * x + i));
+            ADest[offset].B := colors[select][0];
+            ADest[offset].G := colors[select][1];
+            ADest[offset].R := colors[select][2];
+            ADest[offset].A := colors[select][3];
+          end;
+          Inc(k);
+        end;
+      end;
+
+      for j := 0 to 3 do
+      begin
+        wrd := alpha[j];
+        for i := 0 to 3 do
+        begin
+          if (((4 * x + i) < AWidth) and ((4 * y + j) < AHeight)) then
+          begin
+            offset := ((4 * y + j) * AWidth + (4 * x + i));
+            r0 := wrd and $0F;
+            ADest[offset].A := r0 or (r0 shl 4);
+          end;
+          wrd := wrd shr 4;
+        end;
+      end;
+
+    end;
+  end;
+end;
+
+procedure DXT5_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  x, y, i, j, k, select, offset: Integer;
+  col0, col1: Word;
+  colors: TU48BitBlock;
+  bits, bitmask: Cardinal;
+  temp, alphamask: PGLubyte;
+  r0, g0, b0, r1, g1, b1: Byte;
+  alphas: array [0 .. 7] of Byte;
+begin
+  temp := PGLubyte(ASource);
+  for y := 0 to (AHeight div 4) - 1 do
+  begin
+    for x := 0 to (AWidth div 4) - 1 do
+    begin
+      alphas[0] := temp^;
+      Inc(temp);
+      alphas[1] := temp^;
+      Inc(temp);
+      alphamask := temp;
+      Inc(temp, 6);
+      col0 := PWord(temp)^;
+      Inc(temp, 2);
+      col1 := PWord(temp)^;
+      Inc(temp, 2);
+      bitmask := PCardinal(temp)^;
+      Inc(temp, 4);
+
+      DecodeColor565(col0, r0, g0, b0);
+      DecodeColor565(col1, r1, g1, b1);
+
+      colors[0][0] := r0 shl 3;
+      colors[0][1] := g0 shl 2;
+      colors[0][2] := b0 shl 3;
+      colors[0][3] := $FF;
+      colors[1][0] := r1 shl 3;
+      colors[1][1] := g1 shl 2;
+      colors[1][2] := b1 shl 3;
+      colors[1][3] := $FF;
+      colors[2][0] := (2 * colors[0][0] + colors[1][0] + 1) div 3;
+      colors[2][1] := (2 * colors[0][1] + colors[1][1] + 1) div 3;
+      colors[2][2] := (2 * colors[0][2] + colors[1][2] + 1) div 3;
+      colors[2][3] := $FF;
+      colors[3][0] := (colors[0][0] + 2 * colors[1][0] + 1) div 3;
+      colors[3][1] := (colors[0][1] + 2 * colors[1][1] + 1) div 3;
+      colors[3][2] := (colors[0][2] + 2 * colors[1][2] + 1) div 3;
+      colors[3][3] := $FF;
+
+      k := 0;
+      for j := 0 to 3 do
+      begin
+        for i := 0 to 3 do
+        begin
+          select := (bitmask and (3 shl (k * 2))) shr (k * 2);
+          if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
+          begin
+            offset := ((4 * y + j) * AWidth + (4 * x + i));
+            ADest[offset].B := colors[select][0];
+            ADest[offset].G := colors[select][1];
+            ADest[offset].R := colors[select][2];
+          end;
+          Inc(k);
+        end;
+      end;
+
+      if (alphas[0] > alphas[1]) then
+      begin
+        alphas[2] := (6 * alphas[0] + 1 * alphas[1] + 3) div 7;
+        alphas[3] := (5 * alphas[0] + 2 * alphas[1] + 3) div 7;
+        alphas[4] := (4 * alphas[0] + 3 * alphas[1] + 3) div 7;
+        alphas[5] := (3 * alphas[0] + 4 * alphas[1] + 3) div 7;
+        alphas[6] := (2 * alphas[0] + 5 * alphas[1] + 3) div 7;
+        alphas[7] := (1 * alphas[0] + 6 * alphas[1] + 3) div 7;
+      end
+      else
+      begin
+        alphas[2] := (4 * alphas[0] + 1 * alphas[1] + 2) div 5;
+        alphas[3] := (3 * alphas[0] + 2 * alphas[1] + 2) div 5;
+        alphas[4] := (2 * alphas[0] + 3 * alphas[1] + 2) div 5;
+        alphas[5] := (1 * alphas[0] + 4 * alphas[1] + 2) div 5;
+        alphas[6] := 0;
+        alphas[7] := $FF;
+      end;
+
+      bits := PCardinal(alphamask)^;
+      for j := 0 to 1 do
+      begin
+        for i := 0 to 3 do
+        begin
+          if (((4 * x + i) < AWidth) and ((4 * y + j) < AHeight)) then
+          begin
+            offset := ((4 * y + j) * AWidth + (4 * x + i));
+            ADest[offset].A := alphas[bits and 7];
+          end;
+          bits := bits shr 3;
+        end;
+      end;
+
+      Inc(alphamask, 3);
+      bits := PCardinal(alphamask)^;
+      for j := 2 to 3 do
+      begin
+        for i := 0 to 3 do
+        begin
+          if (((4 * x + i) < AWidth) and ((4 * y + j) < AHeight)) then
+          begin
+            offset := ((4 * y + j) * AWidth + (4 * x + i));
+            ADest[offset].A := alphas[bits and 7];
+          end;
+          bits := bits shr 3;
+        end;
+      end;
+
+    end;
+  end;
+end;
 
 procedure Decode48BitBlock(ACode: Int64; out ABlock: TU48BitBlock); overload;
-  var
-    x, y: Byte;
-  begin
-    for y := 0 to 3 do
-      for x := 0 to 3 do
-      begin
-        ABlock[x][y] := Byte(ACode and $03);
-        ACode := ACode shr 2;
-      end;
-  end;
+var
+  x, y: Byte;
+begin
+  for y := 0 to 3 do
+    for x := 0 to 3 do
+    begin
+      ABlock[x][y] := Byte(ACode and $03);
+      ACode := ACode shr 2;
+    end;
+end;
 
 procedure Decode48BitBlock(ACode: Int64; out ABlock: T48BitBlock); overload;
-  var
-    x, y: Byte;
-  begin
-    for y := 0 to 3 do
-      for x := 0 to 3 do
-      begin
-        ABlock[x][y] := SmallInt(ACode and $03);
-        ACode := ACode shr 2;
-      end;
-  end;
-
-procedure LATC1_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    x, y, i, j, offset: Integer;
-    LUM0, LUM1: Byte;
-    lum: Single;
-    colors: TU48BitBlock;
-    bitmask: Int64;
-    temp: PGLubyte;
-  begin
-
-    temp := PGLubyte(ASource);
-    for y := 0 to (AHeight div 4) - 1 do
+var
+  x, y: Byte;
+begin
+  for y := 0 to 3 do
+    for x := 0 to 3 do
     begin
-      for x := 0 to (AWidth div 4) - 1 do
-      begin
-        LUM0 := temp^;
-        Inc(temp);
-        LUM1 := temp^;
-        Inc(temp);
-        bitmask := PInt64(temp)^;
-        Inc(temp, 6);
-        Decode48BitBlock(bitmask, colors);
-
-        for j := 0 to 3 do
-        begin
-          for i := 0 to 3 do
-          begin
-            if LUM0 > LUM1 then
-              case colors[j, i] of
-                0:
-                  colors[j, i] := LUM0;
-                1:
-                  colors[j, i] := LUM1;
-                2:
-                  colors[j, i] := (6 * LUM0 + LUM1) div 7;
-                3:
-                  colors[j, i] := (5 * LUM0 + 2 * LUM1) div 7;
-                4:
-                  colors[j, i] := (4 * LUM0 + 3 * LUM1) div 7;
-                5:
-                  colors[j, i] := (3 * LUM0 + 4 * LUM1) div 7;
-                6:
-                  colors[j, i] := (2 * LUM0 + 5 * LUM1) div 7;
-                7:
-                  colors[j, i] := (LUM0 + 6 * LUM1) div 7;
-              end
-            else
-              case colors[j, i] of
-                0:
-                  colors[j, i] := LUM0;
-                1:
-                  colors[j, i] := LUM1;
-                2:
-                  colors[j, i] := (4 * LUM0 + LUM1) div 5;
-                3:
-                  colors[j, i] := (3 * LUM0 + 2 * LUM1) div 5;
-                4:
-                  colors[j, i] := (2 * LUM0 + 3 * LUM1) div 5;
-                5:
-                  colors[j, i] := (LUM0 + 4 * LUM1) div 5;
-                6:
-                  colors[j, i] := 0;
-                7:
-                  colors[j, i] := 255;
-              end;
-            if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
-            begin
-              offset := ((4 * y + j) * AWidth + (4 * x + i));
-              lum := colors[j, i];
-              ADest[offset].R := lum;
-              ADest[offset].G := lum;
-              ADest[offset].B := lum;
-              ADest[offset].A := 255.0;
-            end;
-          end;
-
-        end;
-      end;
+      ABlock[x][y] := SmallInt(ACode and $03);
+      ACode := ACode shr 2;
     end;
-  end;
+end;
 
-procedure SLATC1_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    x, y, i, j, offset: Integer;
-    LUM0, LUM1: SmallInt;
-    lum: Single;
-    colors: T48BitBlock;
-    bitmask: Int64;
-    temp: PGLubyte;
+procedure LATC1_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  x, y, i, j, offset: Integer;
+  LUM0, LUM1: Byte;
+  lum: Single;
+  colors: TU48BitBlock;
+  bitmask: Int64;
+  temp: PGLubyte;
+begin
+
+  temp := PGLubyte(ASource);
+  for y := 0 to (AHeight div 4) - 1 do
   begin
-
-    temp := PGLubyte(ASource);
-    for y := 0 to (AHeight div 4) - 1 do
+    for x := 0 to (AWidth div 4) - 1 do
     begin
-      for x := 0 to (AWidth div 4) - 1 do
+      LUM0 := temp^;
+      Inc(temp);
+      LUM1 := temp^;
+      Inc(temp);
+      bitmask := PInt64(temp)^;
+      Inc(temp, 6);
+      Decode48BitBlock(bitmask, colors);
+
+      for j := 0 to 3 do
       begin
-        LUM0 := PSmallInt(temp)^;
-        Inc(temp);
-        LUM1 := PSmallInt(temp)^;
-        Inc(temp);
-        bitmask := PInt64(temp)^;
-        Inc(temp, 6);
-        Decode48BitBlock(bitmask, colors);
-
-        for j := 0 to 3 do
+        for i := 0 to 3 do
         begin
-          for i := 0 to 3 do
-          begin
-            if LUM0 > LUM1 then
-              case colors[j, i] of
-                0:
-                  colors[j, i] := LUM0;
-                1:
-                  colors[j, i] := LUM1;
-                2:
-                  colors[j, i] := (6 * LUM0 + LUM1) div 7;
-                3:
-                  colors[j, i] := (5 * LUM0 + 2 * LUM1) div 7;
-                4:
-                  colors[j, i] := (4 * LUM0 + 3 * LUM1) div 7;
-                5:
-                  colors[j, i] := (3 * LUM0 + 4 * LUM1) div 7;
-                6:
-                  colors[j, i] := (2 * LUM0 + 5 * LUM1) div 7;
-                7:
-                  colors[j, i] := (LUM0 + 6 * LUM1) div 7;
-              end
-            else
-              case colors[j, i] of
-                0:
-                  colors[j, i] := LUM0;
-                1:
-                  colors[j, i] := LUM1;
-                2:
-                  colors[j, i] := (4 * LUM0 + LUM1) div 5;
-                3:
-                  colors[j, i] := (3 * LUM0 + 2 * LUM1) div 5;
-                4:
-                  colors[j, i] := (2 * LUM0 + 3 * LUM1) div 5;
-                5:
-                  colors[j, i] := (LUM0 + 4 * LUM1) div 5;
-                6:
-                  colors[j, i] := -127;
-                7:
-                  colors[j, i] := 127;
-              end;
-            if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
-            begin
-              offset := ((4 * y + j) * AWidth + (4 * x + i));
-              lum := 2 * colors[j, i];
-              ADest[offset].R := lum;
-              ADest[offset].G := lum;
-              ADest[offset].B := lum;
-              ADest[offset].A := 127.0;
+          if LUM0 > LUM1 then
+            case colors[j, i] of
+              0:
+                colors[j, i] := LUM0;
+              1:
+                colors[j, i] := LUM1;
+              2:
+                colors[j, i] := (6 * LUM0 + LUM1) div 7;
+              3:
+                colors[j, i] := (5 * LUM0 + 2 * LUM1) div 7;
+              4:
+                colors[j, i] := (4 * LUM0 + 3 * LUM1) div 7;
+              5:
+                colors[j, i] := (3 * LUM0 + 4 * LUM1) div 7;
+              6:
+                colors[j, i] := (2 * LUM0 + 5 * LUM1) div 7;
+              7:
+                colors[j, i] := (LUM0 + 6 * LUM1) div 7;
+            end
+          else
+            case colors[j, i] of
+              0:
+                colors[j, i] := LUM0;
+              1:
+                colors[j, i] := LUM1;
+              2:
+                colors[j, i] := (4 * LUM0 + LUM1) div 5;
+              3:
+                colors[j, i] := (3 * LUM0 + 2 * LUM1) div 5;
+              4:
+                colors[j, i] := (2 * LUM0 + 3 * LUM1) div 5;
+              5:
+                colors[j, i] := (LUM0 + 4 * LUM1) div 5;
+              6:
+                colors[j, i] := 0;
+              7:
+                colors[j, i] := 255;
             end;
-          end;
-
-        end;
-      end;
-    end;
-  end;
-
-procedure LATC2_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    x, y, i, j, offset: Integer;
-    LUM0, LUM1: Byte;
-    lum: Single;
-    colors: TU48BitBlock;
-    bitmask: Int64;
-    temp: PGLubyte;
-  begin
-
-    temp := PGLubyte(ASource);
-    for y := 0 to (AHeight div 4) - 1 do
-    begin
-      for x := 0 to (AWidth div 4) - 1 do
-      begin
-        LUM0 := temp^;
-        Inc(temp);
-        LUM1 := temp^;
-        Inc(temp);
-        bitmask := PInt64(temp)^;
-        Inc(temp, 6);
-        Decode48BitBlock(bitmask, colors);
-
-        for j := 0 to 3 do
-        begin
-          for i := 0 to 3 do
+          if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
           begin
-            if LUM0 > LUM1 then
-              case colors[j, i] of
-                0:
-                  colors[j, i] := LUM0;
-                1:
-                  colors[j, i] := LUM1;
-                2:
-                  colors[j, i] := (6 * LUM0 + LUM1) div 7;
-                3:
-                  colors[j, i] := (5 * LUM0 + 2 * LUM1) div 7;
-                4:
-                  colors[j, i] := (4 * LUM0 + 3 * LUM1) div 7;
-                5:
-                  colors[j, i] := (3 * LUM0 + 4 * LUM1) div 7;
-                6:
-                  colors[j, i] := (2 * LUM0 + 5 * LUM1) div 7;
-                7:
-                  colors[j, i] := (LUM0 + 6 * LUM1) div 7;
-              end
-            else
-              case colors[j, i] of
-                0:
-                  colors[j, i] := LUM0;
-                1:
-                  colors[j, i] := LUM1;
-                2:
-                  colors[j, i] := (4 * LUM0 + LUM1) div 5;
-                3:
-                  colors[j, i] := (3 * LUM0 + 2 * LUM1) div 5;
-                4:
-                  colors[j, i] := (2 * LUM0 + 3 * LUM1) div 5;
-                5:
-                  colors[j, i] := (LUM0 + 4 * LUM1) div 5;
-                6:
-                  colors[j, i] := 0;
-                7:
-                  colors[j, i] := 255;
-              end;
-            if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
-            begin
-              offset := ((4 * y + j) * AWidth + (4 * x + i));
-              lum := colors[j][i];
-              ADest[offset].R := lum;
-              ADest[offset].G := lum;
-              ADest[offset].B := lum;
-            end;
-          end; // for i
-        end; // for j
-
-        LUM0 := temp^;
-        Inc(temp);
-        LUM1 := temp^;
-        Inc(temp);
-        bitmask := PInt64(temp)^;
-        Inc(temp, 6);
-        Decode48BitBlock(bitmask, colors);
-
-        for j := 0 to 3 do
-        begin
-          for i := 0 to 3 do
-          begin
-            if LUM0 > LUM1 then
-              case colors[j, i] of
-                0:
-                  colors[j, i] := LUM0;
-                1:
-                  colors[j, i] := LUM1;
-                2:
-                  colors[j, i] := (6 * LUM0 + LUM1) div 7;
-                3:
-                  colors[j, i] := (5 * LUM0 + 2 * LUM1) div 7;
-                4:
-                  colors[j, i] := (4 * LUM0 + 3 * LUM1) div 7;
-                5:
-                  colors[j, i] := (3 * LUM0 + 4 * LUM1) div 7;
-                6:
-                  colors[j, i] := (2 * LUM0 + 5 * LUM1) div 7;
-                7:
-                  colors[j, i] := (LUM0 + 6 * LUM1) div 7;
-              end
-            else
-              case colors[j, i] of
-                0:
-                  colors[j, i] := LUM0;
-                1:
-                  colors[j, i] := LUM1;
-                2:
-                  colors[j, i] := (4 * LUM0 + LUM1) div 5;
-                3:
-                  colors[j, i] := (3 * LUM0 + 2 * LUM1) div 5;
-                4:
-                  colors[j, i] := (2 * LUM0 + 3 * LUM1) div 5;
-                5:
-                  colors[j, i] := (LUM0 + 4 * LUM1) div 5;
-                6:
-                  colors[j, i] := 0;
-                7:
-                  colors[j, i] := 255;
-              end;
-            if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
-              ADest[((4 * y + j) * AWidth + (4 * x + i))].A := colors[j][i];
+            offset := ((4 * y + j) * AWidth + (4 * x + i));
+            lum := colors[j, i];
+            ADest[offset].R := lum;
+            ADest[offset].G := lum;
+            ADest[offset].B := lum;
+            ADest[offset].A := 255.0;
           end;
         end;
 
       end;
     end;
   end;
+end;
 
-procedure SLATC2_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    x, y, i, j, offset: Integer;
-    LUM0, LUM1: SmallInt;
-    lum: Single;
-    colors: T48BitBlock;
-    bitmask: Int64;
-    temp: PGLubyte;
+procedure SLATC1_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  x, y, i, j, offset: Integer;
+  LUM0, LUM1: SmallInt;
+  lum: Single;
+  colors: T48BitBlock;
+  bitmask: Int64;
+  temp: PGLubyte;
+begin
+
+  temp := PGLubyte(ASource);
+  for y := 0 to (AHeight div 4) - 1 do
   begin
-
-    temp := PGLubyte(ASource);
-    for y := 0 to (AHeight div 4) - 1 do
+    for x := 0 to (AWidth div 4) - 1 do
     begin
-      for x := 0 to (AWidth div 4) - 1 do
-      begin
-        LUM0 := PSmallInt(temp)^;
-        Inc(temp);
-        LUM1 := PSmallInt(temp)^;
-        Inc(temp);
-        bitmask := PInt64(temp)^;
-        Inc(temp, 6);
-        Decode48BitBlock(bitmask, colors);
+      LUM0 := PSmallInt(temp)^;
+      Inc(temp);
+      LUM1 := PSmallInt(temp)^;
+      Inc(temp);
+      bitmask := PInt64(temp)^;
+      Inc(temp, 6);
+      Decode48BitBlock(bitmask, colors);
 
-        for j := 0 to 3 do
+      for j := 0 to 3 do
+      begin
+        for i := 0 to 3 do
         begin
-          for i := 0 to 3 do
-          begin
-            if LUM0 > LUM1 then
-              case colors[j, i] of
-                0:
-                  colors[j, i] := LUM0;
-                1:
-                  colors[j, i] := LUM1;
-                2:
-                  colors[j, i] := (6 * LUM0 + LUM1) div 7;
-                3:
-                  colors[j, i] := (5 * LUM0 + 2 * LUM1) div 7;
-                4:
-                  colors[j, i] := (4 * LUM0 + 3 * LUM1) div 7;
-                5:
-                  colors[j, i] := (3 * LUM0 + 4 * LUM1) div 7;
-                6:
-                  colors[j, i] := (2 * LUM0 + 5 * LUM1) div 7;
-                7:
-                  colors[j, i] := (LUM0 + 6 * LUM1) div 7;
-              end
-            else
-              case colors[j, i] of
-                0:
-                  colors[j, i] := LUM0;
-                1:
-                  colors[j, i] := LUM1;
-                2:
-                  colors[j, i] := (4 * LUM0 + LUM1) div 5;
-                3:
-                  colors[j, i] := (3 * LUM0 + 2 * LUM1) div 5;
-                4:
-                  colors[j, i] := (2 * LUM0 + 3 * LUM1) div 5;
-                5:
-                  colors[j, i] := (LUM0 + 4 * LUM1) div 5;
-                6:
-                  colors[j, i] := -127;
-                7:
-                  colors[j, i] := 127;
-              end;
-            if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
-            begin
-              offset := ((4 * y + j) * AWidth + (4 * x + i));
-              lum := 2 * colors[j][i];
-              ADest[offset].R := lum;
-              ADest[offset].G := lum;
-              ADest[offset].B := lum;
+          if LUM0 > LUM1 then
+            case colors[j, i] of
+              0:
+                colors[j, i] := LUM0;
+              1:
+                colors[j, i] := LUM1;
+              2:
+                colors[j, i] := (6 * LUM0 + LUM1) div 7;
+              3:
+                colors[j, i] := (5 * LUM0 + 2 * LUM1) div 7;
+              4:
+                colors[j, i] := (4 * LUM0 + 3 * LUM1) div 7;
+              5:
+                colors[j, i] := (3 * LUM0 + 4 * LUM1) div 7;
+              6:
+                colors[j, i] := (2 * LUM0 + 5 * LUM1) div 7;
+              7:
+                colors[j, i] := (LUM0 + 6 * LUM1) div 7;
+            end
+          else
+            case colors[j, i] of
+              0:
+                colors[j, i] := LUM0;
+              1:
+                colors[j, i] := LUM1;
+              2:
+                colors[j, i] := (4 * LUM0 + LUM1) div 5;
+              3:
+                colors[j, i] := (3 * LUM0 + 2 * LUM1) div 5;
+              4:
+                colors[j, i] := (2 * LUM0 + 3 * LUM1) div 5;
+              5:
+                colors[j, i] := (LUM0 + 4 * LUM1) div 5;
+              6:
+                colors[j, i] := -127;
+              7:
+                colors[j, i] := 127;
             end;
+          if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
+          begin
+            offset := ((4 * y + j) * AWidth + (4 * x + i));
+            lum := 2 * colors[j, i];
+            ADest[offset].R := lum;
+            ADest[offset].G := lum;
+            ADest[offset].B := lum;
+            ADest[offset].A := 127.0;
           end;
         end;
 
-        LUM0 := PSmallInt(temp)^;
-        Inc(temp);
-        LUM1 := PSmallInt(temp)^;
-        Inc(temp);
-        bitmask := PInt64(temp)^;
-        Inc(temp, 6);
-        Decode48BitBlock(bitmask, colors);
+      end;
+    end;
+  end;
+end;
 
-        for j := 0 to 3 do
+procedure LATC2_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  x, y, i, j, offset: Integer;
+  LUM0, LUM1: Byte;
+  lum: Single;
+  colors: TU48BitBlock;
+  bitmask: Int64;
+  temp: PGLubyte;
+begin
+
+  temp := PGLubyte(ASource);
+  for y := 0 to (AHeight div 4) - 1 do
+  begin
+    for x := 0 to (AWidth div 4) - 1 do
+    begin
+      LUM0 := temp^;
+      Inc(temp);
+      LUM1 := temp^;
+      Inc(temp);
+      bitmask := PInt64(temp)^;
+      Inc(temp, 6);
+      Decode48BitBlock(bitmask, colors);
+
+      for j := 0 to 3 do
+      begin
+        for i := 0 to 3 do
         begin
-          for i := 0 to 3 do
-          begin
-            if LUM0 > LUM1 then
-              case colors[j, i] of
-                0:
-                  colors[j, i] := LUM0;
-                1:
-                  colors[j, i] := LUM1;
-                2:
-                  colors[j, i] := (6 * LUM0 + LUM1) div 7;
-                3:
-                  colors[j, i] := (5 * LUM0 + 2 * LUM1) div 7;
-                4:
-                  colors[j, i] := (4 * LUM0 + 3 * LUM1) div 7;
-                5:
-                  colors[j, i] := (3 * LUM0 + 4 * LUM1) div 7;
-                6:
-                  colors[j, i] := (2 * LUM0 + 5 * LUM1) div 7;
-                7:
-                  colors[j, i] := (LUM0 + 6 * LUM1) div 7;
-              end
-            else
-              case colors[j, i] of
-                0:
-                  colors[j, i] := LUM0;
-                1:
-                  colors[j, i] := LUM1;
-                2:
-                  colors[j, i] := (4 * LUM0 + LUM1) div 5;
-                3:
-                  colors[j, i] := (3 * LUM0 + 2 * LUM1) div 5;
-                4:
-                  colors[j, i] := (2 * LUM0 + 3 * LUM1) div 5;
-                5:
-                  colors[j, i] := (LUM0 + 4 * LUM1) div 5;
-                6:
-                  colors[j, i] := -127;
-                7:
-                  colors[j, i] := 127;
-              end;
-            if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
-            begin
-              ADest[((4 * y + j) * AWidth + (4 * x + i))].A := 2 * colors[j][i];
+          if LUM0 > LUM1 then
+            case colors[j, i] of
+              0:
+                colors[j, i] := LUM0;
+              1:
+                colors[j, i] := LUM1;
+              2:
+                colors[j, i] := (6 * LUM0 + LUM1) div 7;
+              3:
+                colors[j, i] := (5 * LUM0 + 2 * LUM1) div 7;
+              4:
+                colors[j, i] := (4 * LUM0 + 3 * LUM1) div 7;
+              5:
+                colors[j, i] := (3 * LUM0 + 4 * LUM1) div 7;
+              6:
+                colors[j, i] := (2 * LUM0 + 5 * LUM1) div 7;
+              7:
+                colors[j, i] := (LUM0 + 6 * LUM1) div 7;
+            end
+          else
+            case colors[j, i] of
+              0:
+                colors[j, i] := LUM0;
+              1:
+                colors[j, i] := LUM1;
+              2:
+                colors[j, i] := (4 * LUM0 + LUM1) div 5;
+              3:
+                colors[j, i] := (3 * LUM0 + 2 * LUM1) div 5;
+              4:
+                colors[j, i] := (2 * LUM0 + 3 * LUM1) div 5;
+              5:
+                colors[j, i] := (LUM0 + 4 * LUM1) div 5;
+              6:
+                colors[j, i] := 0;
+              7:
+                colors[j, i] := 255;
             end;
+          if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
+          begin
+            offset := ((4 * y + j) * AWidth + (4 * x + i));
+            lum := colors[j][i];
+            ADest[offset].R := lum;
+            ADest[offset].G := lum;
+            ADest[offset].B := lum;
+          end;
+        end; // for i
+      end; // for j
+
+      LUM0 := temp^;
+      Inc(temp);
+      LUM1 := temp^;
+      Inc(temp);
+      bitmask := PInt64(temp)^;
+      Inc(temp, 6);
+      Decode48BitBlock(bitmask, colors);
+
+      for j := 0 to 3 do
+      begin
+        for i := 0 to 3 do
+        begin
+          if LUM0 > LUM1 then
+            case colors[j, i] of
+              0:
+                colors[j, i] := LUM0;
+              1:
+                colors[j, i] := LUM1;
+              2:
+                colors[j, i] := (6 * LUM0 + LUM1) div 7;
+              3:
+                colors[j, i] := (5 * LUM0 + 2 * LUM1) div 7;
+              4:
+                colors[j, i] := (4 * LUM0 + 3 * LUM1) div 7;
+              5:
+                colors[j, i] := (3 * LUM0 + 4 * LUM1) div 7;
+              6:
+                colors[j, i] := (2 * LUM0 + 5 * LUM1) div 7;
+              7:
+                colors[j, i] := (LUM0 + 6 * LUM1) div 7;
+            end
+          else
+            case colors[j, i] of
+              0:
+                colors[j, i] := LUM0;
+              1:
+                colors[j, i] := LUM1;
+              2:
+                colors[j, i] := (4 * LUM0 + LUM1) div 5;
+              3:
+                colors[j, i] := (3 * LUM0 + 2 * LUM1) div 5;
+              4:
+                colors[j, i] := (2 * LUM0 + 3 * LUM1) div 5;
+              5:
+                colors[j, i] := (LUM0 + 4 * LUM1) div 5;
+              6:
+                colors[j, i] := 0;
+              7:
+                colors[j, i] := 255;
+            end;
+          if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
+            ADest[((4 * y + j) * AWidth + (4 * x + i))].A := colors[j][i];
+        end;
+      end;
+
+    end;
+  end;
+end;
+
+procedure SLATC2_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  x, y, i, j, offset: Integer;
+  LUM0, LUM1: SmallInt;
+  lum: Single;
+  colors: T48BitBlock;
+  bitmask: Int64;
+  temp: PGLubyte;
+begin
+
+  temp := PGLubyte(ASource);
+  for y := 0 to (AHeight div 4) - 1 do
+  begin
+    for x := 0 to (AWidth div 4) - 1 do
+    begin
+      LUM0 := PSmallInt(temp)^;
+      Inc(temp);
+      LUM1 := PSmallInt(temp)^;
+      Inc(temp);
+      bitmask := PInt64(temp)^;
+      Inc(temp, 6);
+      Decode48BitBlock(bitmask, colors);
+
+      for j := 0 to 3 do
+      begin
+        for i := 0 to 3 do
+        begin
+          if LUM0 > LUM1 then
+            case colors[j, i] of
+              0:
+                colors[j, i] := LUM0;
+              1:
+                colors[j, i] := LUM1;
+              2:
+                colors[j, i] := (6 * LUM0 + LUM1) div 7;
+              3:
+                colors[j, i] := (5 * LUM0 + 2 * LUM1) div 7;
+              4:
+                colors[j, i] := (4 * LUM0 + 3 * LUM1) div 7;
+              5:
+                colors[j, i] := (3 * LUM0 + 4 * LUM1) div 7;
+              6:
+                colors[j, i] := (2 * LUM0 + 5 * LUM1) div 7;
+              7:
+                colors[j, i] := (LUM0 + 6 * LUM1) div 7;
+            end
+          else
+            case colors[j, i] of
+              0:
+                colors[j, i] := LUM0;
+              1:
+                colors[j, i] := LUM1;
+              2:
+                colors[j, i] := (4 * LUM0 + LUM1) div 5;
+              3:
+                colors[j, i] := (3 * LUM0 + 2 * LUM1) div 5;
+              4:
+                colors[j, i] := (2 * LUM0 + 3 * LUM1) div 5;
+              5:
+                colors[j, i] := (LUM0 + 4 * LUM1) div 5;
+              6:
+                colors[j, i] := -127;
+              7:
+                colors[j, i] := 127;
+            end;
+          if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
+          begin
+            offset := ((4 * y + j) * AWidth + (4 * x + i));
+            lum := 2 * colors[j][i];
+            ADest[offset].R := lum;
+            ADest[offset].G := lum;
+            ADest[offset].B := lum;
+          end;
+        end;
+      end;
+
+      LUM0 := PSmallInt(temp)^;
+      Inc(temp);
+      LUM1 := PSmallInt(temp)^;
+      Inc(temp);
+      bitmask := PInt64(temp)^;
+      Inc(temp, 6);
+      Decode48BitBlock(bitmask, colors);
+
+      for j := 0 to 3 do
+      begin
+        for i := 0 to 3 do
+        begin
+          if LUM0 > LUM1 then
+            case colors[j, i] of
+              0:
+                colors[j, i] := LUM0;
+              1:
+                colors[j, i] := LUM1;
+              2:
+                colors[j, i] := (6 * LUM0 + LUM1) div 7;
+              3:
+                colors[j, i] := (5 * LUM0 + 2 * LUM1) div 7;
+              4:
+                colors[j, i] := (4 * LUM0 + 3 * LUM1) div 7;
+              5:
+                colors[j, i] := (3 * LUM0 + 4 * LUM1) div 7;
+              6:
+                colors[j, i] := (2 * LUM0 + 5 * LUM1) div 7;
+              7:
+                colors[j, i] := (LUM0 + 6 * LUM1) div 7;
+            end
+          else
+            case colors[j, i] of
+              0:
+                colors[j, i] := LUM0;
+              1:
+                colors[j, i] := LUM1;
+              2:
+                colors[j, i] := (4 * LUM0 + LUM1) div 5;
+              3:
+                colors[j, i] := (3 * LUM0 + 2 * LUM1) div 5;
+              4:
+                colors[j, i] := (2 * LUM0 + 3 * LUM1) div 5;
+              5:
+                colors[j, i] := (LUM0 + 4 * LUM1) div 5;
+              6:
+                colors[j, i] := -127;
+              7:
+                colors[j, i] := 127;
+            end;
+          if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
+          begin
+            ADest[((4 * y + j) * AWidth + (4 * x + i))].A := 2 * colors[j][i];
           end;
         end;
       end;
     end;
   end;
+end;
 
-procedure RGTC1_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    x, y, i, j, offset: Integer;
-    RED0, RED1: Byte;
-    lum: Single;
-    colors: TU48BitBlock;
-    bitmask: Int64;
-    temp: PGLubyte;
+procedure RGTC1_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  x, y, i, j, offset: Integer;
+  RED0, RED1: Byte;
+  lum: Single;
+  colors: TU48BitBlock;
+  bitmask: Int64;
+  temp: PGLubyte;
+begin
+
+  temp := PGLubyte(ASource);
+  for y := 0 to (AHeight div 4) - 1 do
   begin
-
-    temp := PGLubyte(ASource);
-    for y := 0 to (AHeight div 4) - 1 do
+    for x := 0 to (AWidth div 4) - 1 do
     begin
-      for x := 0 to (AWidth div 4) - 1 do
+      RED0 := temp^;
+      Inc(temp);
+      RED1 := temp^;
+      Inc(temp);
+      bitmask := PInt64(temp)^;
+      Inc(temp, 6);
+      Decode48BitBlock(bitmask, colors);
+
+      for j := 0 to 3 do
       begin
-        RED0 := temp^;
-        Inc(temp);
-        RED1 := temp^;
-        Inc(temp);
-        bitmask := PInt64(temp)^;
-        Inc(temp, 6);
-        Decode48BitBlock(bitmask, colors);
-
-        for j := 0 to 3 do
+        for i := 0 to 3 do
         begin
-          for i := 0 to 3 do
-          begin
-            if RED0 > RED1 then
-              case colors[j, i] of
-                0:
-                  colors[j, i] := RED0;
-                1:
-                  colors[j, i] := RED1;
-                2:
-                  colors[j, i] := (6 * RED0 + RED1) div 7;
-                3:
-                  colors[j, i] := (5 * RED0 + 2 * RED1) div 7;
-                4:
-                  colors[j, i] := (4 * RED0 + 3 * RED1) div 7;
-                5:
-                  colors[j, i] := (3 * RED0 + 4 * RED1) div 7;
-                6:
-                  colors[j, i] := (2 * RED0 + 5 * RED1) div 7;
-                7:
-                  colors[j, i] := (RED0 + 6 * RED1) div 7;
-              end
-            else
-              case colors[j, i] of
-                0:
-                  colors[j, i] := RED0;
-                1:
-                  colors[j, i] := RED1;
-                2:
-                  colors[j, i] := (4 * RED0 + RED1) div 5;
-                3:
-                  colors[j, i] := (3 * RED0 + 2 * RED1) div 5;
-                4:
-                  colors[j, i] := (2 * RED0 + 3 * RED1) div 5;
-                5:
-                  colors[j, i] := (RED0 + 4 * RED1) div 5;
-                6:
-                  colors[j, i] := 0;
-                7:
-                  colors[j, i] := 255;
-              end;
-            if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
-            begin
-              offset := ((4 * y + j) * AWidth + (4 * x + i)) * 4;
-              lum := colors[j][i];
-              ADest[offset].R := lum;
-              ADest[offset].G := 0.0;
-              ADest[offset].B := 0.0;
-              ADest[offset].A := 255.0;
+          if RED0 > RED1 then
+            case colors[j, i] of
+              0:
+                colors[j, i] := RED0;
+              1:
+                colors[j, i] := RED1;
+              2:
+                colors[j, i] := (6 * RED0 + RED1) div 7;
+              3:
+                colors[j, i] := (5 * RED0 + 2 * RED1) div 7;
+              4:
+                colors[j, i] := (4 * RED0 + 3 * RED1) div 7;
+              5:
+                colors[j, i] := (3 * RED0 + 4 * RED1) div 7;
+              6:
+                colors[j, i] := (2 * RED0 + 5 * RED1) div 7;
+              7:
+                colors[j, i] := (RED0 + 6 * RED1) div 7;
+            end
+          else
+            case colors[j, i] of
+              0:
+                colors[j, i] := RED0;
+              1:
+                colors[j, i] := RED1;
+              2:
+                colors[j, i] := (4 * RED0 + RED1) div 5;
+              3:
+                colors[j, i] := (3 * RED0 + 2 * RED1) div 5;
+              4:
+                colors[j, i] := (2 * RED0 + 3 * RED1) div 5;
+              5:
+                colors[j, i] := (RED0 + 4 * RED1) div 5;
+              6:
+                colors[j, i] := 0;
+              7:
+                colors[j, i] := 255;
             end;
+          if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
+          begin
+            offset := ((4 * y + j) * AWidth + (4 * x + i)) * 4;
+            lum := colors[j][i];
+            ADest[offset].R := lum;
+            ADest[offset].G := 0.0;
+            ADest[offset].B := 0.0;
+            ADest[offset].A := 255.0;
           end;
-
         end;
+
       end;
     end;
   end;
+end;
 
-procedure SRGTC1_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    x, y, i, j, offset: Integer;
-    RED0, RED1: SmallInt;
-    lum: Single;
-    colors: T48BitBlock;
-    bitmask: Int64;
-    temp: PGLubyte;
+procedure SRGTC1_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  x, y, i, j, offset: Integer;
+  RED0, RED1: SmallInt;
+  lum: Single;
+  colors: T48BitBlock;
+  bitmask: Int64;
+  temp: PGLubyte;
+begin
+
+  temp := PGLubyte(ASource);
+  for y := 0 to (AHeight div 4) - 1 do
   begin
-
-    temp := PGLubyte(ASource);
-    for y := 0 to (AHeight div 4) - 1 do
+    for x := 0 to (AWidth div 4) - 1 do
     begin
-      for x := 0 to (AWidth div 4) - 1 do
+      RED0 := PSmallInt(temp)^;
+      Inc(temp);
+      RED1 := PSmallInt(temp)^;
+      Inc(temp);
+      bitmask := PInt64(temp)^;
+      Inc(temp, 6);
+      Decode48BitBlock(bitmask, colors);
+
+      for j := 0 to 3 do
       begin
-        RED0 := PSmallInt(temp)^;
-        Inc(temp);
-        RED1 := PSmallInt(temp)^;
-        Inc(temp);
-        bitmask := PInt64(temp)^;
-        Inc(temp, 6);
-        Decode48BitBlock(bitmask, colors);
-
-        for j := 0 to 3 do
+        for i := 0 to 3 do
         begin
-          for i := 0 to 3 do
-          begin
-            if RED0 > RED1 then
-              case colors[j, i] of
-                0:
-                  colors[j, i] := RED0;
-                1:
-                  colors[j, i] := RED1;
-                2:
-                  colors[j, i] := (6 * RED0 + RED1) div 7;
-                3:
-                  colors[j, i] := (5 * RED0 + 2 * RED1) div 7;
-                4:
-                  colors[j, i] := (4 * RED0 + 3 * RED1) div 7;
-                5:
-                  colors[j, i] := (3 * RED0 + 4 * RED1) div 7;
-                6:
-                  colors[j, i] := (2 * RED0 + 5 * RED1) div 7;
-                7:
-                  colors[j, i] := (RED0 + 6 * RED1) div 7;
-              end
-            else
-              case colors[j, i] of
-                0:
-                  colors[j, i] := RED0;
-                1:
-                  colors[j, i] := RED1;
-                2:
-                  colors[j, i] := (4 * RED0 + RED1) div 5;
-                3:
-                  colors[j, i] := (3 * RED0 + 2 * RED1) div 5;
-                4:
-                  colors[j, i] := (2 * RED0 + 3 * RED1) div 5;
-                5:
-                  colors[j, i] := (RED0 + 4 * RED1) div 5;
-                6:
-                  colors[j, i] := -127;
-                7:
-                  colors[j, i] := 127;
-              end;
-            if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
-            begin
-              offset := ((4 * y + j) * AWidth + (4 * x + i));
-              lum := 2 * colors[j][i];
-              ADest[offset].R := lum;
-              ADest[offset].G := 0.0;
-              ADest[offset].B := 0.0;
-              ADest[offset].A := 127.0;
+          if RED0 > RED1 then
+            case colors[j, i] of
+              0:
+                colors[j, i] := RED0;
+              1:
+                colors[j, i] := RED1;
+              2:
+                colors[j, i] := (6 * RED0 + RED1) div 7;
+              3:
+                colors[j, i] := (5 * RED0 + 2 * RED1) div 7;
+              4:
+                colors[j, i] := (4 * RED0 + 3 * RED1) div 7;
+              5:
+                colors[j, i] := (3 * RED0 + 4 * RED1) div 7;
+              6:
+                colors[j, i] := (2 * RED0 + 5 * RED1) div 7;
+              7:
+                colors[j, i] := (RED0 + 6 * RED1) div 7;
+            end
+          else
+            case colors[j, i] of
+              0:
+                colors[j, i] := RED0;
+              1:
+                colors[j, i] := RED1;
+              2:
+                colors[j, i] := (4 * RED0 + RED1) div 5;
+              3:
+                colors[j, i] := (3 * RED0 + 2 * RED1) div 5;
+              4:
+                colors[j, i] := (2 * RED0 + 3 * RED1) div 5;
+              5:
+                colors[j, i] := (RED0 + 4 * RED1) div 5;
+              6:
+                colors[j, i] := -127;
+              7:
+                colors[j, i] := 127;
             end;
+          if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
+          begin
+            offset := ((4 * y + j) * AWidth + (4 * x + i));
+            lum := 2 * colors[j][i];
+            ADest[offset].R := lum;
+            ADest[offset].G := 0.0;
+            ADest[offset].B := 0.0;
+            ADest[offset].A := 127.0;
           end;
-
         end;
+
       end;
     end;
   end;
+end;
 
-procedure RGTC2_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    x, y, i, j, offset: Integer;
-    RED0, RED1: Byte;
-    colors: TU48BitBlock;
-    bitmask: Int64;
-    temp: PGLubyte;
+procedure RGTC2_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  x, y, i, j, offset: Integer;
+  RED0, RED1: Byte;
+  colors: TU48BitBlock;
+  bitmask: Int64;
+  temp: PGLubyte;
+begin
+
+  temp := PGLubyte(ASource);
+  for y := 0 to (AHeight div 4) - 1 do
   begin
-
-    temp := PGLubyte(ASource);
-    for y := 0 to (AHeight div 4) - 1 do
+    for x := 0 to (AWidth div 4) - 1 do
     begin
-      for x := 0 to (AWidth div 4) - 1 do
+      RED0 := temp^;
+      Inc(temp);
+      RED1 := temp^;
+      Inc(temp);
+      bitmask := PInt64(temp)^;
+      Inc(temp, 6);
+      Decode48BitBlock(bitmask, colors);
+
+      for j := 0 to 3 do
       begin
-        RED0 := temp^;
-        Inc(temp);
-        RED1 := temp^;
-        Inc(temp);
-        bitmask := PInt64(temp)^;
-        Inc(temp, 6);
-        Decode48BitBlock(bitmask, colors);
-
-        for j := 0 to 3 do
+        for i := 0 to 3 do
         begin
-          for i := 0 to 3 do
-          begin
-            if RED0 > RED1 then
-              case colors[j, i] of
-                0:
-                  colors[j, i] := RED0;
-                1:
-                  colors[j, i] := RED1;
-                2:
-                  colors[j, i] := (6 * RED0 + RED1) div 7;
-                3:
-                  colors[j, i] := (5 * RED0 + 2 * RED1) div 7;
-                4:
-                  colors[j, i] := (4 * RED0 + 3 * RED1) div 7;
-                5:
-                  colors[j, i] := (3 * RED0 + 4 * RED1) div 7;
-                6:
-                  colors[j, i] := (2 * RED0 + 5 * RED1) div 7;
-                7:
-                  colors[j, i] := (RED0 + 6 * RED1) div 7;
-              end
-            else
-              case colors[j, i] of
-                0:
-                  colors[j, i] := RED0;
-                1:
-                  colors[j, i] := RED1;
-                2:
-                  colors[j, i] := (4 * RED0 + RED1) div 5;
-                3:
-                  colors[j, i] := (3 * RED0 + 2 * RED1) div 5;
-                4:
-                  colors[j, i] := (2 * RED0 + 3 * RED1) div 5;
-                5:
-                  colors[j, i] := (RED0 + 4 * RED1) div 5;
-                6:
-                  colors[j, i] := 0;
-                7:
-                  colors[j, i] := 255;
-              end;
-            if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
-            begin
-              offset := ((4 * y + j) * AWidth + (4 * x + i));
-              ADest[offset].R := colors[j][i];
-              ADest[offset].B := 0.0;
+          if RED0 > RED1 then
+            case colors[j, i] of
+              0:
+                colors[j, i] := RED0;
+              1:
+                colors[j, i] := RED1;
+              2:
+                colors[j, i] := (6 * RED0 + RED1) div 7;
+              3:
+                colors[j, i] := (5 * RED0 + 2 * RED1) div 7;
+              4:
+                colors[j, i] := (4 * RED0 + 3 * RED1) div 7;
+              5:
+                colors[j, i] := (3 * RED0 + 4 * RED1) div 7;
+              6:
+                colors[j, i] := (2 * RED0 + 5 * RED1) div 7;
+              7:
+                colors[j, i] := (RED0 + 6 * RED1) div 7;
+            end
+          else
+            case colors[j, i] of
+              0:
+                colors[j, i] := RED0;
+              1:
+                colors[j, i] := RED1;
+              2:
+                colors[j, i] := (4 * RED0 + RED1) div 5;
+              3:
+                colors[j, i] := (3 * RED0 + 2 * RED1) div 5;
+              4:
+                colors[j, i] := (2 * RED0 + 3 * RED1) div 5;
+              5:
+                colors[j, i] := (RED0 + 4 * RED1) div 5;
+              6:
+                colors[j, i] := 0;
+              7:
+                colors[j, i] := 255;
             end;
-          end;
-        end;
-
-        RED0 := temp^;
-        Inc(temp);
-        RED1 := temp^;
-        Inc(temp);
-        bitmask := PInt64(temp)^;
-        Inc(temp, 6);
-        Decode48BitBlock(bitmask, colors);
-
-        for j := 0 to 3 do
-        begin
-          for i := 0 to 3 do
+          if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
           begin
-            if RED0 > RED1 then
-              case colors[j, i] of
-                0:
-                  colors[j, i] := RED0;
-                1:
-                  colors[j, i] := RED1;
-                2:
-                  colors[j, i] := (6 * RED0 + RED1) div 7;
-                3:
-                  colors[j, i] := (5 * RED0 + 2 * RED1) div 7;
-                4:
-                  colors[j, i] := (4 * RED0 + 3 * RED1) div 7;
-                5:
-                  colors[j, i] := (3 * RED0 + 4 * RED1) div 7;
-                6:
-                  colors[j, i] := (2 * RED0 + 5 * RED1) div 7;
-                7:
-                  colors[j, i] := (RED0 + 6 * RED1) div 7;
-              end
-            else
-              case colors[j, i] of
-                0:
-                  colors[j, i] := RED0;
-                1:
-                  colors[j, i] := RED1;
-                2:
-                  colors[j, i] := (4 * RED0 + RED1) div 5;
-                3:
-                  colors[j, i] := (3 * RED0 + 2 * RED1) div 5;
-                4:
-                  colors[j, i] := (2 * RED0 + 3 * RED1) div 5;
-                5:
-                  colors[j, i] := (RED0 + 4 * RED1) div 5;
-                6:
-                  colors[j, i] := 0;
-                7:
-                  colors[j, i] := 255;
-              end;
-            if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
-            begin
-              offset := ((4 * y + j) * AWidth + (4 * x + i));
-              ADest[offset].G := colors[j][i];
-              ADest[offset].A := 255.0;
-            end;
+            offset := ((4 * y + j) * AWidth + (4 * x + i));
+            ADest[offset].R := colors[j][i];
+            ADest[offset].B := 0.0;
           end;
         end;
       end;
-    end;
-  end;
 
-procedure SRGTC2_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    x, y, i, j, offset: Integer;
-    RED0, RED1: SmallInt;
-    lum: Single;
-    colors: T48BitBlock;
-    bitmask: Int64;
-    temp: PGLubyte;
-  begin
+      RED0 := temp^;
+      Inc(temp);
+      RED1 := temp^;
+      Inc(temp);
+      bitmask := PInt64(temp)^;
+      Inc(temp, 6);
+      Decode48BitBlock(bitmask, colors);
 
-    temp := PGLubyte(ASource);
-    for y := 0 to (AHeight div 4) - 1 do
-    begin
-      for x := 0 to (AWidth div 4) - 1 do
+      for j := 0 to 3 do
       begin
-        RED0 := PSmallInt(temp)^;
-        Inc(temp);
-        RED1 := PSmallInt(temp)^;
-        Inc(temp);
-        bitmask := PInt64(temp)^;
-        Inc(temp, 6);
-        Decode48BitBlock(bitmask, colors);
-
-        for j := 0 to 3 do
+        for i := 0 to 3 do
         begin
-          for i := 0 to 3 do
-          begin
-            if RED0 > RED1 then
-              case colors[j, i] of
-                0:
-                  colors[j, i] := RED0;
-                1:
-                  colors[j, i] := RED1;
-                2:
-                  colors[j, i] := (6 * RED0 + RED1) div 7;
-                3:
-                  colors[j, i] := (5 * RED0 + 2 * RED1) div 7;
-                4:
-                  colors[j, i] := (4 * RED0 + 3 * RED1) div 7;
-                5:
-                  colors[j, i] := (3 * RED0 + 4 * RED1) div 7;
-                6:
-                  colors[j, i] := (2 * RED0 + 5 * RED1) div 7;
-                7:
-                  colors[j, i] := (RED0 + 6 * RED1) div 7;
-              end
-            else
-              case colors[j, i] of
-                0:
-                  colors[j, i] := RED0;
-                1:
-                  colors[j, i] := RED1;
-                2:
-                  colors[j, i] := (4 * RED0 + RED1) div 5;
-                3:
-                  colors[j, i] := (3 * RED0 + 2 * RED1) div 5;
-                4:
-                  colors[j, i] := (2 * RED0 + 3 * RED1) div 5;
-                5:
-                  colors[j, i] := (RED0 + 4 * RED1) div 5;
-                6:
-                  colors[j, i] := -127;
-                7:
-                  colors[j, i] := 127;
-              end;
-            if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
-            begin
-              offset := ((4 * y + j) * AWidth + (4 * x + i));
-              lum := 2 * colors[j][i];
-              ADest[offset].R := lum;
-              ADest[offset].B := 0.0;
+          if RED0 > RED1 then
+            case colors[j, i] of
+              0:
+                colors[j, i] := RED0;
+              1:
+                colors[j, i] := RED1;
+              2:
+                colors[j, i] := (6 * RED0 + RED1) div 7;
+              3:
+                colors[j, i] := (5 * RED0 + 2 * RED1) div 7;
+              4:
+                colors[j, i] := (4 * RED0 + 3 * RED1) div 7;
+              5:
+                colors[j, i] := (3 * RED0 + 4 * RED1) div 7;
+              6:
+                colors[j, i] := (2 * RED0 + 5 * RED1) div 7;
+              7:
+                colors[j, i] := (RED0 + 6 * RED1) div 7;
+            end
+          else
+            case colors[j, i] of
+              0:
+                colors[j, i] := RED0;
+              1:
+                colors[j, i] := RED1;
+              2:
+                colors[j, i] := (4 * RED0 + RED1) div 5;
+              3:
+                colors[j, i] := (3 * RED0 + 2 * RED1) div 5;
+              4:
+                colors[j, i] := (2 * RED0 + 3 * RED1) div 5;
+              5:
+                colors[j, i] := (RED0 + 4 * RED1) div 5;
+              6:
+                colors[j, i] := 0;
+              7:
+                colors[j, i] := 255;
             end;
-          end;
-        end;
-
-        RED0 := PSmallInt(temp)^;
-        Inc(temp);
-        RED1 := PSmallInt(temp)^;
-        Inc(temp);
-        bitmask := PInt64(temp)^;
-        Inc(temp, 6);
-        Decode48BitBlock(bitmask, colors);
-
-        for j := 0 to 3 do
-        begin
-          for i := 0 to 3 do
+          if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
           begin
-            if RED0 > RED1 then
-              case colors[j, i] of
-                0:
-                  colors[j, i] := RED0;
-                1:
-                  colors[j, i] := RED1;
-                2:
-                  colors[j, i] := (6 * RED0 + RED1) div 7;
-                3:
-                  colors[j, i] := (5 * RED0 + 2 * RED1) div 7;
-                4:
-                  colors[j, i] := (4 * RED0 + 3 * RED1) div 7;
-                5:
-                  colors[j, i] := (3 * RED0 + 4 * RED1) div 7;
-                6:
-                  colors[j, i] := (2 * RED0 + 5 * RED1) div 7;
-                7:
-                  colors[j, i] := (RED0 + 6 * RED1) div 7;
-              end
-            else
-              case colors[j, i] of
-                0:
-                  colors[j, i] := RED0;
-                1:
-                  colors[j, i] := RED1;
-                2:
-                  colors[j, i] := (4 * RED0 + RED1) div 5;
-                3:
-                  colors[j, i] := (3 * RED0 + 2 * RED1) div 5;
-                4:
-                  colors[j, i] := (2 * RED0 + 3 * RED1) div 5;
-                5:
-                  colors[j, i] := (RED0 + 4 * RED1) div 5;
-                6:
-                  colors[j, i] := -127;
-                7:
-                  colors[j, i] := 127;
-              end;
-            if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
-            begin
-              offset := ((4 * y + j) * AWidth + (4 * x + i));
-              lum := 2 * colors[j][i];
-              ADest[offset].G := lum;
-              ADest[offset].A := 127.0;
-            end;
+            offset := ((4 * y + j) * AWidth + (4 * x + i));
+            ADest[offset].G := colors[j][i];
+            ADest[offset].A := 255.0;
           end;
         end;
       end;
     end;
   end;
+end;
 
-// ------------------------------ RGBA Float to OpenGL format image 
+procedure SRGTC2_ToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  x, y, i, j, offset: Integer;
+  RED0, RED1: SmallInt;
+  lum: Single;
+  colors: T48BitBlock;
+  bitmask: Int64;
+  temp: PGLubyte;
+begin
 
-procedure UnsupportedFromImf(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFormat: Cardinal; AWidth, AHeight: Integer);
+  temp := PGLubyte(ASource);
+  for y := 0 to (AHeight div 4) - 1 do
   begin
-    raise EGLImageUtils.Create('Unimplemented type of conversion');
+    for x := 0 to (AWidth div 4) - 1 do
+    begin
+      RED0 := PSmallInt(temp)^;
+      Inc(temp);
+      RED1 := PSmallInt(temp)^;
+      Inc(temp);
+      bitmask := PInt64(temp)^;
+      Inc(temp, 6);
+      Decode48BitBlock(bitmask, colors);
+
+      for j := 0 to 3 do
+      begin
+        for i := 0 to 3 do
+        begin
+          if RED0 > RED1 then
+            case colors[j, i] of
+              0:
+                colors[j, i] := RED0;
+              1:
+                colors[j, i] := RED1;
+              2:
+                colors[j, i] := (6 * RED0 + RED1) div 7;
+              3:
+                colors[j, i] := (5 * RED0 + 2 * RED1) div 7;
+              4:
+                colors[j, i] := (4 * RED0 + 3 * RED1) div 7;
+              5:
+                colors[j, i] := (3 * RED0 + 4 * RED1) div 7;
+              6:
+                colors[j, i] := (2 * RED0 + 5 * RED1) div 7;
+              7:
+                colors[j, i] := (RED0 + 6 * RED1) div 7;
+            end
+          else
+            case colors[j, i] of
+              0:
+                colors[j, i] := RED0;
+              1:
+                colors[j, i] := RED1;
+              2:
+                colors[j, i] := (4 * RED0 + RED1) div 5;
+              3:
+                colors[j, i] := (3 * RED0 + 2 * RED1) div 5;
+              4:
+                colors[j, i] := (2 * RED0 + 3 * RED1) div 5;
+              5:
+                colors[j, i] := (RED0 + 4 * RED1) div 5;
+              6:
+                colors[j, i] := -127;
+              7:
+                colors[j, i] := 127;
+            end;
+          if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
+          begin
+            offset := ((4 * y + j) * AWidth + (4 * x + i));
+            lum := 2 * colors[j][i];
+            ADest[offset].R := lum;
+            ADest[offset].B := 0.0;
+          end;
+        end;
+      end;
+
+      RED0 := PSmallInt(temp)^;
+      Inc(temp);
+      RED1 := PSmallInt(temp)^;
+      Inc(temp);
+      bitmask := PInt64(temp)^;
+      Inc(temp, 6);
+      Decode48BitBlock(bitmask, colors);
+
+      for j := 0 to 3 do
+      begin
+        for i := 0 to 3 do
+        begin
+          if RED0 > RED1 then
+            case colors[j, i] of
+              0:
+                colors[j, i] := RED0;
+              1:
+                colors[j, i] := RED1;
+              2:
+                colors[j, i] := (6 * RED0 + RED1) div 7;
+              3:
+                colors[j, i] := (5 * RED0 + 2 * RED1) div 7;
+              4:
+                colors[j, i] := (4 * RED0 + 3 * RED1) div 7;
+              5:
+                colors[j, i] := (3 * RED0 + 4 * RED1) div 7;
+              6:
+                colors[j, i] := (2 * RED0 + 5 * RED1) div 7;
+              7:
+                colors[j, i] := (RED0 + 6 * RED1) div 7;
+            end
+          else
+            case colors[j, i] of
+              0:
+                colors[j, i] := RED0;
+              1:
+                colors[j, i] := RED1;
+              2:
+                colors[j, i] := (4 * RED0 + RED1) div 5;
+              3:
+                colors[j, i] := (3 * RED0 + 2 * RED1) div 5;
+              4:
+                colors[j, i] := (2 * RED0 + 3 * RED1) div 5;
+              5:
+                colors[j, i] := (RED0 + 4 * RED1) div 5;
+              6:
+                colors[j, i] := -127;
+              7:
+                colors[j, i] := 127;
+            end;
+          if ((4 * x + i) < AWidth) and ((4 * y + j) < AHeight) then
+          begin
+            offset := ((4 * y + j) * AWidth + (4 * x + i));
+            lum := 2 * colors[j][i];
+            ADest[offset].G := lum;
+            ADest[offset].A := 127.0;
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
+
+// ------------------------------ RGBA Float to OpenGL format image
+
+procedure UnsupportedFromImf(ASource: PIntermediateFormatArray; ADest: Pointer;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+begin
+  raise EGLImageUtils.Create('Unimplemented type of conversion');
+end;
+
+procedure ImfToUbyte(ASource: PIntermediateFormatArray; ADest: Pointer;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pDest: PByte;
+  n: Integer;
+
+  procedure SetChannel(AValue: Single);
+  begin
+    pDest^ := Trunc(ClampValue(AValue, 0.0, 255.0));
+    Inc(pDest);
   end;
 
-procedure ImfToUbyte(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pDest: PByte;
-    n: Integer;
-
-    procedure SetChannel(AValue: Single);
-      begin
-        pDest^ := Trunc(ClampValue(AValue, 0.0, 255.0));
-        Inc(pDest);
-      end;
-
-    procedure SetChannelI(AValue: Single);
-      begin
-        pDest^ := Trunc(AValue);
-        Inc(pDest);
-      end;
-
+  procedure SetChannelI(AValue: Single);
   begin
-    pDest := PByte(ADest);
+    pDest^ := Trunc(AValue);
+    Inc(pDest);
+  end;
 
-    case AColorFormat of
+begin
+  pDest := PByte(ADest);
+
+  case AColorFormat of
     GL_RGB:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
         SetChannel(ASource[n].B);
       end;
     GL_RGB_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
         SetChannelI(ASource[n].B);
       end;
     GL_BGR:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
         SetChannel(ASource[n].G);
         SetChannel(ASource[n].R);
       end;
     GL_BGR_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
         SetChannelI(ASource[n].G);
         SetChannelI(ASource[n].R);
       end;
     GL_RGBA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
@@ -2854,7 +2968,7 @@ procedure ImfToUbyte(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFo
         SetChannel(ASource[n].A);
       end;
     GL_RGBA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
@@ -2862,7 +2976,7 @@ procedure ImfToUbyte(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFo
         SetChannelI(ASource[n].A);
       end;
     GL_BGRA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
         SetChannel(ASource[n].G);
@@ -2870,7 +2984,7 @@ procedure ImfToUbyte(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFo
         SetChannel(ASource[n].A);
       end;
     GL_BGRA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
         SetChannelI(ASource[n].G);
@@ -2878,140 +2992,141 @@ procedure ImfToUbyte(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFo
         SetChannelI(ASource[n].A);
       end;
     GL_ALPHA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].A);
       end;
     GL_ALPHA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].A);
       end;
     GL_LUMINANCE:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_LUMINANCE_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_LUMINANCE_ALPHA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
         SetChannel(ASource[n].A);
       end;
     GL_LUMINANCE_ALPHA_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
         SetChannelI(ASource[n].A);
       end;
     GL_INTENSITY:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_RED:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
       end;
     GL_RED_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
       end;
     GL_GREEN:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].G);
       end;
     GL_GREEN_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].G);
       end;
     GL_BLUE:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
       end;
     GL_BLUE_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
       end;
     GL_RG:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
       end;
     GL_RG_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
       end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure ImfToByte(ASource: PIntermediateFormatArray; ADest: Pointer;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pDest: PShortInt;
+  n: Integer;
+
+  procedure SetChannel(AValue: Single);
+  begin
+    pDest^ := Trunc(ClampValue(AValue, -127.0, 127.0));
+    Inc(pDest);
   end;
 
-procedure ImfToByte(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pDest: PShortInt;
-    n: Integer;
-
-    procedure SetChannel(AValue: Single);
-      begin
-        pDest^ := Trunc(ClampValue(AValue, -127.0, 127.0));
-        Inc(pDest);
-      end;
-
-    procedure SetChannelI(AValue: Single);
-      begin
-        pDest^ := Trunc(AValue);
-        Inc(pDest);
-      end;
-
+  procedure SetChannelI(AValue: Single);
   begin
-    pDest := PShortInt(ADest);
+    pDest^ := Trunc(AValue);
+    Inc(pDest);
+  end;
 
-    case AColorFormat of
+begin
+  pDest := PShortInt(ADest);
+
+  case AColorFormat of
     GL_RGB:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
         SetChannel(ASource[n].B);
       end;
     GL_RGB_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
         SetChannelI(ASource[n].B);
       end;
     GL_BGR:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
         SetChannel(ASource[n].G);
         SetChannel(ASource[n].R);
       end;
     GL_BGR_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
         SetChannelI(ASource[n].G);
         SetChannelI(ASource[n].R);
       end;
     GL_RGBA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
@@ -3019,7 +3134,7 @@ procedure ImfToByte(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFor
         SetChannel(ASource[n].A);
       end;
     GL_RGBA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
@@ -3027,7 +3142,7 @@ procedure ImfToByte(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFor
         SetChannelI(ASource[n].A);
       end;
     GL_BGRA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
         SetChannel(ASource[n].G);
@@ -3035,7 +3150,7 @@ procedure ImfToByte(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFor
         SetChannel(ASource[n].A);
       end;
     GL_BGRA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
         SetChannelI(ASource[n].G);
@@ -3043,140 +3158,141 @@ procedure ImfToByte(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFor
         SetChannelI(ASource[n].A);
       end;
     GL_ALPHA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].A);
       end;
     GL_ALPHA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].A);
       end;
     GL_LUMINANCE:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_LUMINANCE_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_LUMINANCE_ALPHA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
         SetChannel(ASource[n].A);
       end;
     GL_LUMINANCE_ALPHA_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
         SetChannelI(ASource[n].A);
       end;
     GL_INTENSITY:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_RED:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
       end;
     GL_RED_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
       end;
     GL_GREEN:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].G);
       end;
     GL_GREEN_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].G);
       end;
     GL_BLUE:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
       end;
     GL_BLUE_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
       end;
     GL_RG:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
       end;
     GL_RG_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
       end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure ImfToUShort(ASource: PIntermediateFormatArray; ADest: Pointer;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pDest: PWord;
+  n: Integer;
+
+  procedure SetChannel(AValue: Single);
+  begin
+    pDest^ := Trunc(ClampValue(AValue, 0.0, 65535.0));
+    Inc(pDest);
   end;
 
-procedure ImfToUShort(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pDest: PWord;
-    n: Integer;
-
-    procedure SetChannel(AValue: Single);
-      begin
-        pDest^ := Trunc(ClampValue(AValue, 0.0, 65535.0));
-        Inc(pDest);
-      end;
-
-    procedure SetChannelI(AValue: Single);
-      begin
-        pDest^ := Trunc(AValue);
-        Inc(pDest);
-      end;
-
+  procedure SetChannelI(AValue: Single);
   begin
-    pDest := PWord(ADest);
+    pDest^ := Trunc(AValue);
+    Inc(pDest);
+  end;
 
-    case AColorFormat of
+begin
+  pDest := PWord(ADest);
+
+  case AColorFormat of
     GL_RGB:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
         SetChannel(ASource[n].B);
       end;
     GL_RGB_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
         SetChannelI(ASource[n].B);
       end;
     GL_BGR:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
         SetChannel(ASource[n].G);
         SetChannel(ASource[n].R);
       end;
     GL_BGR_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
         SetChannelI(ASource[n].G);
         SetChannelI(ASource[n].R);
       end;
     GL_RGBA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
@@ -3184,7 +3300,7 @@ procedure ImfToUShort(ASource: PIntermediateFormatArray; ADest: Pointer; AColorF
         SetChannel(ASource[n].A);
       end;
     GL_RGBA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
@@ -3192,7 +3308,7 @@ procedure ImfToUShort(ASource: PIntermediateFormatArray; ADest: Pointer; AColorF
         SetChannelI(ASource[n].A);
       end;
     GL_BGRA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
         SetChannel(ASource[n].G);
@@ -3200,7 +3316,7 @@ procedure ImfToUShort(ASource: PIntermediateFormatArray; ADest: Pointer; AColorF
         SetChannel(ASource[n].A);
       end;
     GL_BGRA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
         SetChannelI(ASource[n].G);
@@ -3208,140 +3324,141 @@ procedure ImfToUShort(ASource: PIntermediateFormatArray; ADest: Pointer; AColorF
         SetChannelI(ASource[n].A);
       end;
     GL_ALPHA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].A);
       end;
     GL_ALPHA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].A);
       end;
     GL_LUMINANCE:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_LUMINANCE_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_LUMINANCE_ALPHA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
         SetChannel(ASource[n].A);
       end;
     GL_LUMINANCE_ALPHA_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
         SetChannelI(ASource[n].A);
       end;
     GL_INTENSITY:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_RED:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
       end;
     GL_RED_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
       end;
     GL_GREEN:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].G);
       end;
     GL_GREEN_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].G);
       end;
     GL_BLUE:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
       end;
     GL_BLUE_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
       end;
     GL_RG:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
       end;
     GL_RG_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
       end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure ImfToShort(ASource: PIntermediateFormatArray; ADest: Pointer;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pDest: PSmallInt;
+  n: Integer;
+
+  procedure SetChannel(AValue: Single);
+  begin
+    pDest^ := Trunc(ClampValue(AValue, -32767.0, 32767.0));
+    Inc(pDest);
   end;
 
-procedure ImfToShort(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pDest: PSmallInt;
-    n: Integer;
-
-    procedure SetChannel(AValue: Single);
-      begin
-        pDest^ := Trunc(ClampValue(AValue, -32767.0, 32767.0));
-        Inc(pDest);
-      end;
-
-    procedure SetChannelI(AValue: Single);
-      begin
-        pDest^ := Trunc(AValue);
-        Inc(pDest);
-      end;
-
+  procedure SetChannelI(AValue: Single);
   begin
-    pDest := PSmallInt(ADest);
+    pDest^ := Trunc(AValue);
+    Inc(pDest);
+  end;
 
-    case AColorFormat of
+begin
+  pDest := PSmallInt(ADest);
+
+  case AColorFormat of
     GL_RGB:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
         SetChannel(ASource[n].B);
       end;
     GL_RGB_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
         SetChannelI(ASource[n].B);
       end;
     GL_BGR:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
         SetChannel(ASource[n].G);
         SetChannel(ASource[n].R);
       end;
     GL_BGR_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
         SetChannelI(ASource[n].G);
         SetChannelI(ASource[n].R);
       end;
     GL_RGBA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
@@ -3349,7 +3466,7 @@ procedure ImfToShort(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFo
         SetChannel(ASource[n].A);
       end;
     GL_RGBA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
@@ -3357,7 +3474,7 @@ procedure ImfToShort(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFo
         SetChannelI(ASource[n].A);
       end;
     GL_BGRA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
         SetChannel(ASource[n].G);
@@ -3365,7 +3482,7 @@ procedure ImfToShort(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFo
         SetChannel(ASource[n].A);
       end;
     GL_BGRA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
         SetChannelI(ASource[n].G);
@@ -3373,140 +3490,141 @@ procedure ImfToShort(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFo
         SetChannelI(ASource[n].A);
       end;
     GL_ALPHA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].A);
       end;
     GL_ALPHA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].A);
       end;
     GL_LUMINANCE:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_LUMINANCE_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_LUMINANCE_ALPHA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
         SetChannel(ASource[n].A);
       end;
     GL_LUMINANCE_ALPHA_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
         SetChannelI(ASource[n].A);
       end;
     GL_INTENSITY:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_RED:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
       end;
     GL_RED_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
       end;
     GL_GREEN:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].G);
       end;
     GL_GREEN_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].G);
       end;
     GL_BLUE:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
       end;
     GL_BLUE_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
       end;
     GL_RG:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
       end;
     GL_RG_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
       end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure ImfToUInt(ASource: PIntermediateFormatArray; ADest: Pointer;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pDest: PLongWord;
+  n: Integer;
+
+  procedure SetChannel(AValue: Single);
+  begin
+    pDest^ := Trunc(ClampValue(AValue, 0.0, $FFFFFFFF));
+    Inc(pDest);
   end;
 
-procedure ImfToUInt(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pDest: PLongWord;
-    n: Integer;
-
-    procedure SetChannel(AValue: Single);
-      begin
-        pDest^ := Trunc(ClampValue(AValue, 0.0, $FFFFFFFF));
-        Inc(pDest);
-      end;
-
-    procedure SetChannelI(AValue: Single);
-      begin
-        pDest^ := Trunc(AValue);
-        Inc(pDest);
-      end;
-
+  procedure SetChannelI(AValue: Single);
   begin
-    pDest := PLongWord(ADest);
+    pDest^ := Trunc(AValue);
+    Inc(pDest);
+  end;
 
-    case AColorFormat of
+begin
+  pDest := PLongWord(ADest);
+
+  case AColorFormat of
     GL_RGB:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
         SetChannel(ASource[n].B);
       end;
     GL_RGB_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
         SetChannelI(ASource[n].B);
       end;
     GL_BGR:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
         SetChannel(ASource[n].G);
         SetChannel(ASource[n].R);
       end;
     GL_BGR_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
         SetChannelI(ASource[n].G);
         SetChannelI(ASource[n].R);
       end;
     GL_RGBA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
@@ -3514,7 +3632,7 @@ procedure ImfToUInt(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFor
         SetChannel(ASource[n].A);
       end;
     GL_RGBA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
@@ -3522,7 +3640,7 @@ procedure ImfToUInt(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFor
         SetChannelI(ASource[n].A);
       end;
     GL_BGRA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
         SetChannel(ASource[n].G);
@@ -3530,7 +3648,7 @@ procedure ImfToUInt(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFor
         SetChannel(ASource[n].A);
       end;
     GL_BGRA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
         SetChannelI(ASource[n].G);
@@ -3538,140 +3656,141 @@ procedure ImfToUInt(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFor
         SetChannelI(ASource[n].A);
       end;
     GL_ALPHA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].A);
       end;
     GL_ALPHA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].A);
       end;
     GL_LUMINANCE:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_LUMINANCE_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_LUMINANCE_ALPHA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
         SetChannel(ASource[n].A);
       end;
     GL_LUMINANCE_ALPHA_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
         SetChannelI(ASource[n].A);
       end;
     GL_INTENSITY:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_RED:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
       end;
     GL_RED_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
       end;
     GL_GREEN:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].G);
       end;
     GL_GREEN_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].G);
       end;
     GL_BLUE:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
       end;
     GL_BLUE_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
       end;
     GL_RG:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
       end;
     GL_RG_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
       end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure ImfToInt(ASource: PIntermediateFormatArray; ADest: Pointer;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pDest: PLongInt;
+  n: Integer;
+
+  procedure SetChannel(AValue: Single);
+  begin
+    pDest^ := Trunc(ClampValue(AValue, -$7FFFFFFF, $7FFFFFFF));
+    Inc(pDest);
   end;
 
-procedure ImfToInt(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pDest: PLongInt;
-    n: Integer;
-
-    procedure SetChannel(AValue: Single);
-      begin
-        pDest^ := Trunc(ClampValue(AValue, -$7FFFFFFF, $7FFFFFFF));
-        Inc(pDest);
-      end;
-
-    procedure SetChannelI(AValue: Single);
-      begin
-        pDest^ := Trunc(AValue);
-        Inc(pDest);
-      end;
-
+  procedure SetChannelI(AValue: Single);
   begin
-    pDest := PLongInt(ADest);
+    pDest^ := Trunc(AValue);
+    Inc(pDest);
+  end;
 
-    case AColorFormat of
+begin
+  pDest := PLongInt(ADest);
+
+  case AColorFormat of
     GL_RGB:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
         SetChannel(ASource[n].B);
       end;
     GL_RGB_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
         SetChannelI(ASource[n].B);
       end;
     GL_BGR:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
         SetChannel(ASource[n].G);
         SetChannel(ASource[n].R);
       end;
     GL_BGR_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
         SetChannelI(ASource[n].G);
         SetChannelI(ASource[n].R);
       end;
     GL_RGBA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
@@ -3679,7 +3798,7 @@ procedure ImfToInt(ASource: PIntermediateFormatArray; ADest: Pointer; AColorForm
         SetChannel(ASource[n].A);
       end;
     GL_RGBA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
@@ -3687,7 +3806,7 @@ procedure ImfToInt(ASource: PIntermediateFormatArray; ADest: Pointer; AColorForm
         SetChannelI(ASource[n].A);
       end;
     GL_BGRA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
         SetChannel(ASource[n].G);
@@ -3695,7 +3814,7 @@ procedure ImfToInt(ASource: PIntermediateFormatArray; ADest: Pointer; AColorForm
         SetChannel(ASource[n].A);
       end;
     GL_BGRA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
         SetChannelI(ASource[n].G);
@@ -3703,143 +3822,144 @@ procedure ImfToInt(ASource: PIntermediateFormatArray; ADest: Pointer; AColorForm
         SetChannelI(ASource[n].A);
       end;
     GL_ALPHA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].A);
       end;
     GL_ALPHA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].A);
       end;
     GL_LUMINANCE:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_LUMINANCE_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_LUMINANCE_ALPHA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
         SetChannel(ASource[n].A);
       end;
     GL_LUMINANCE_ALPHA_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
         SetChannelI(ASource[n].A);
       end;
     GL_INTENSITY:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_RED:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
       end;
     GL_RED_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
       end;
     GL_GREEN:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].G);
       end;
     GL_GREEN_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].G);
       end;
     GL_BLUE:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
       end;
     GL_BLUE_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
       end;
     GL_RG:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
       end;
     GL_RG_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
       end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure ImfToFloat(ASource: PIntermediateFormatArray; ADest: Pointer;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+const
+  cInv255 = 1.0 / 255.0;
+
+var
+  pDest: PSingle;
+  n: Integer;
+
+  procedure SetChannel(AValue: Single);
+  begin
+    pDest^ := AValue * cInv255;
+    Inc(pDest);
   end;
 
-procedure ImfToFloat(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  const
-    cInv255 = 1.0 / 255.0;
-
-  var
-    pDest: PSingle;
-    n: Integer;
-
-    procedure SetChannel(AValue: Single);
-      begin
-        pDest^ := AValue * cInv255;
-        Inc(pDest);
-      end;
-
-    procedure SetChannelI(AValue: Single);
-      begin
-        pDest^ := AValue * cInv255;
-        Inc(pDest);
-      end;
-
+  procedure SetChannelI(AValue: Single);
   begin
-    pDest := PSingle(ADest);
+    pDest^ := AValue * cInv255;
+    Inc(pDest);
+  end;
 
-    case AColorFormat of
+begin
+  pDest := PSingle(ADest);
+
+  case AColorFormat of
     GL_RGB:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
         SetChannel(ASource[n].B);
       end;
     GL_RGB_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
         SetChannelI(ASource[n].B);
       end;
     GL_BGR:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
         SetChannel(ASource[n].G);
         SetChannel(ASource[n].R);
       end;
     GL_BGR_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
         SetChannelI(ASource[n].G);
         SetChannelI(ASource[n].R);
       end;
     GL_RGBA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
@@ -3847,7 +3967,7 @@ procedure ImfToFloat(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFo
         SetChannel(ASource[n].A);
       end;
     GL_RGBA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
@@ -3855,7 +3975,7 @@ procedure ImfToFloat(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFo
         SetChannelI(ASource[n].A);
       end;
     GL_BGRA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
         SetChannel(ASource[n].G);
@@ -3863,7 +3983,7 @@ procedure ImfToFloat(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFo
         SetChannel(ASource[n].A);
       end;
     GL_BGRA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
         SetChannelI(ASource[n].G);
@@ -3871,143 +3991,144 @@ procedure ImfToFloat(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFo
         SetChannelI(ASource[n].A);
       end;
     GL_ALPHA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].A);
       end;
     GL_ALPHA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].A);
       end;
     GL_LUMINANCE:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_LUMINANCE_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_LUMINANCE_ALPHA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
         SetChannel(ASource[n].A);
       end;
     GL_LUMINANCE_ALPHA_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
         SetChannelI(ASource[n].A);
       end;
     GL_INTENSITY:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_RED:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
       end;
     GL_RED_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
       end;
     GL_GREEN:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].G);
       end;
     GL_GREEN_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].G);
       end;
     GL_BLUE:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
       end;
     GL_BLUE_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
       end;
     GL_RG:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
       end;
     GL_RG_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
       end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
+  end;
+end;
+
+procedure ImfToHalf(ASource: PIntermediateFormatArray; ADest: Pointer;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+const
+  cInv255 = 1.0 / 255.0;
+
+var
+  pDest: PHalfFloat;
+  n: Integer;
+
+  procedure SetChannel(AValue: Single);
+  begin
+    pDest^ := FloatToHalf(AValue * cInv255);
+    Inc(pDest);
   end;
 
-procedure ImfToHalf(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  const
-    cInv255 = 1.0 / 255.0;
-
-  var
-    pDest: PHalfFloat;
-    n: Integer;
-
-    procedure SetChannel(AValue: Single);
-      begin
-        pDest^ := FloatToHalf(AValue * cInv255);
-        Inc(pDest);
-      end;
-
-    procedure SetChannelI(AValue: Single);
-      begin
-        pDest^ := FloatToHalf(AValue * cInv255);
-        Inc(pDest);
-      end;
-
+  procedure SetChannelI(AValue: Single);
   begin
-    pDest := PHalfFloat(ADest);
+    pDest^ := FloatToHalf(AValue * cInv255);
+    Inc(pDest);
+  end;
 
-    case AColorFormat of
+begin
+  pDest := PHalfFloat(ADest);
+
+  case AColorFormat of
     GL_RGB:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
         SetChannel(ASource[n].B);
       end;
     GL_RGB_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
         SetChannelI(ASource[n].B);
       end;
     GL_BGR:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
         SetChannel(ASource[n].G);
         SetChannel(ASource[n].R);
       end;
     GL_BGR_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
         SetChannelI(ASource[n].G);
         SetChannelI(ASource[n].R);
       end;
     GL_RGBA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
@@ -4015,7 +4136,7 @@ procedure ImfToHalf(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFor
         SetChannel(ASource[n].A);
       end;
     GL_RGBA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
@@ -4023,7 +4144,7 @@ procedure ImfToHalf(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFor
         SetChannelI(ASource[n].A);
       end;
     GL_BGRA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
         SetChannel(ASource[n].G);
@@ -4031,7 +4152,7 @@ procedure ImfToHalf(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFor
         SetChannel(ASource[n].A);
       end;
     GL_BGRA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
         SetChannelI(ASource[n].G);
@@ -4039,90 +4160,90 @@ procedure ImfToHalf(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFor
         SetChannelI(ASource[n].A);
       end;
     GL_ALPHA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].A);
       end;
     GL_ALPHA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].A);
       end;
     GL_LUMINANCE:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_LUMINANCE_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_LUMINANCE_ALPHA:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
         SetChannel(ASource[n].A);
       end;
     GL_LUMINANCE_ALPHA_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
         SetChannelI(ASource[n].A);
       end;
     GL_INTENSITY:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R + ASource[n].G + ASource[n].B / 3.0);
       end;
     GL_RED:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
       end;
     GL_RED_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
       end;
     GL_GREEN:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].G);
       end;
     GL_GREEN_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].G);
       end;
     GL_BLUE:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].B);
       end;
     GL_BLUE_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].B);
       end;
     GL_RG:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannel(ASource[n].R);
         SetChannel(ASource[n].G);
       end;
     GL_RG_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         SetChannelI(ASource[n].R);
         SetChannelI(ASource[n].G);
       end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
   end;
+end;
 
-// ------------------------------ Compression 
+// ------------------------------ Compression
 { function FloatTo565(const AColor: TIntermediateFormat): Integer;
   var
   r, g, b: Integer;
@@ -4221,113 +4342,116 @@ procedure ImfToHalf(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFor
   WriteColourBlock( a, b, remapped, block );
   end; }
 
-// ------------------------------ Image filters 
+// ------------------------------ Image filters
 function ImageBoxFilter(Value: Single): Single;
-  begin
-    if (Value > -0.5) and (Value <= 0.5) then
-      Result := 1.0
-    else
-      Result := 0.0;
-  end;
+begin
+  if (Value > -0.5) and (Value <= 0.5) then
+    Result := 1.0
+  else
+    Result := 0.0;
+end;
 
 function ImageTriangleFilter(Value: Single): Single;
-  begin
-    if Value < 0.0 then
-      Value := -Value;
-    if Value < 1.0 then
-      Result := 1.0 - Value
-    else
-      Result := 0.0;
-  end;
+begin
+  if Value < 0.0 then
+    Value := -Value;
+  if Value < 1.0 then
+    Result := 1.0 - Value
+  else
+    Result := 0.0;
+end;
 
 function ImageHermiteFilter(Value: Single): Single;
-  begin
-    if Value < 0.0 then
-      Value := -Value;
-    if Value < 1 then
-      Result := (2 * Value - 3) * Sqr(Value) + 1
-    else
-      Result := 0;
-  end;
+begin
+  if Value < 0.0 then
+    Value := -Value;
+  if Value < 1 then
+    Result := (2 * Value - 3) * Sqr(Value) + 1
+  else
+    Result := 0;
+end;
 
 function ImageBellFilter(Value: Single): Single;
+begin
+  if Value < 0.0 then
+    Value := -Value;
+  if Value < 0.5 then
+    Result := 0.75 - Sqr(Value)
+  else if Value < 1.5 then
   begin
-    if Value < 0.0 then
-      Value := -Value;
-    if Value < 0.5 then
-      Result := 0.75 - Sqr(Value)
-    else if Value < 1.5 then
-    begin
-      Value := Value - 1.5;
-      Result := 0.5 * Sqr(Value);
-    end
-    else
-      Result := 0.0;
-  end;
+    Value := Value - 1.5;
+    Result := 0.5 * Sqr(Value);
+  end
+  else
+    Result := 0.0;
+end;
 
 function ImageSplineFilter(Value: Single): Single;
-  var
-    temp: Single;
+var
+  temp: Single;
+begin
+  if Value < 0.0 then
+    Value := -Value;
+  if Value < 1.0 then
   begin
-    if Value < 0.0 then
-      Value := -Value;
-    if Value < 1.0 then
-    begin
-      temp := Sqr(Value);
-      Result := 0.5 * temp * Value - temp + 2.0 / 3.0;
-    end
-    else if Value < 2.0 then
-    begin
-      Value := 2.0 - Value;
-      Result := Sqr(Value) * Value / 6.0;
-    end
-    else
-      Result := 0.0;
-  end;
+    temp := Sqr(Value);
+    Result := 0.5 * temp * Value - temp + 2.0 / 3.0;
+  end
+  else if Value < 2.0 then
+  begin
+    Value := 2.0 - Value;
+    Result := Sqr(Value) * Value / 6.0;
+  end
+  else
+    Result := 0.0;
+end;
 
 function ImageLanczos3Filter(Value: Single): Single;
-  const
-    Radius = 3.0;
+const
+  Radius = 3.0;
+begin
+  Result := 1;
+  if Value = 0 then
+    Exit;
+  if Value < 0.0 then
+    Value := -Value;
+  if Value < Radius then
   begin
-    Result := 1;
-    if Value = 0 then
-      Exit;
-    if Value < 0.0 then
-      Value := -Value;
-    if Value < Radius then
-    begin
-      Value := Value * pi;
-      Result := Radius * Sin(Value) * Sin(Value / Radius) / (Value * Value);
-    end
-    else
-      Result := 0.0;
-  end;
+    Value := Value * pi;
+    Result := Radius * Sin(Value) * Sin(Value / Radius) / (Value * Value);
+  end
+  else
+    Result := 0.0;
+end;
 
 function ImageMitchellFilter(Value: Single): Single;
-  const
-    B = 1.0 / 3.0;
-    C = 1.0 / 3.0;
-  var
-    temp: Single;
+const
+  B = 1.0 / 3.0;
+  C = 1.0 / 3.0;
+var
+  temp: Single;
+begin
+  if Value < 0.0 then
+    Value := -Value;
+  temp := Sqr(Value);
+  if Value < 1.0 then
   begin
-    if Value < 0.0 then
-      Value := -Value;
-    temp := Sqr(Value);
-    if Value < 1.0 then
-    begin
-      Value := (((12.0 - 9.0 * B - 6.0 * C) * (Value * temp)) + ((-18.0 + 12.0 * B + 6.0 * C) * temp) + (6.0 - 2.0 * B));
-      Result := Value / 6.0;
-    end
-    else if Value < 2.0 then
-    begin
-      Value := (((-B - 6.0 * C) * (Value * temp)) + ((6.0 * B + 30.0 * C) * temp) + ((-12.0 * B - 48.0 * C) * Value) + (8.0 * B + 24.0 * C));
-      Result := Value / 6.0;
-    end
-    else
-      Result := 0.0;
-  end;
+    Value := (((12.0 - 9.0 * B - 6.0 * C) * (Value * temp)) +
+      ((-18.0 + 12.0 * B + 6.0 * C) * temp) + (6.0 - 2.0 * B));
+    Result := Value / 6.0;
+  end
+  else if Value < 2.0 then
+  begin
+    Value := (((-B - 6.0 * C) * (Value * temp)) + ((6.0 * B + 30.0 * C) * temp)
+      + ((-12.0 * B - 48.0 * C) * Value) + (8.0 * B + 24.0 * C));
+    Result := Value / 6.0;
+  end
+  else
+    Result := 0.0;
+end;
 
-const cInvThree = 1.0/3.0;
+const
+  cInvThree = 1.0 / 3.0;
 
 procedure ImageAlphaFromIntensity(var AColor: TIntermediateFormat);
 begin
@@ -4363,9 +4487,10 @@ end;
 var
   vTopLeftColor: TIntermediateFormat;
 
-procedure ImageAlphaTopLeftPointColorTransparent(var AColor: TIntermediateFormat);
+procedure ImageAlphaTopLeftPointColorTransparent
+  (var AColor: TIntermediateFormat);
 begin
-  if CompareMem(@AColor, @vTopLeftColor, 3*SizeOf(Single)) then
+  if CompareMem(@AColor, @vTopLeftColor, 3 * SizeOf(Single)) then
     AColor.A := 0.0;
 end;
 
@@ -4385,12 +4510,12 @@ end;
 var
   vBottomRightColor: TIntermediateFormat;
 
-procedure ImageAlphaBottomRightPointColorTransparent(var AColor: TIntermediateFormat);
+procedure ImageAlphaBottomRightPointColorTransparent
+  (var AColor: TIntermediateFormat);
 begin
-  if CompareMem(@AColor, @vBottomRightColor, 3*SizeOf(Single)) then
+  if CompareMem(@AColor, @vBottomRightColor, 3 * SizeOf(Single)) then
     AColor.A := 0.0;
 end;
-
 
 type
   // Contributor for a pixel
@@ -4399,7 +4524,8 @@ type
     weight: Single; // Pixel weight
   end;
 
-  TContributorList = array [0 .. MaxInt div (2 * SizeOf(TContributor))] of TContributor;
+  TContributorList = array [0 .. MaxInt div (2 * SizeOf(TContributor))
+    ] of TContributor;
   PContributorList = ^TContributorList;
 
   // List of source pixels contributing to a destination pixel
@@ -4411,7 +4537,7 @@ type
   TCListList = array [0 .. MaxInt div (2 * SizeOf(TCList))] of TCList;
   PCListList = ^TCListList;
 
-// ------------------------------ Data type conversion table 
+  // ------------------------------ Data type conversion table
 
 type
   TConvertTableRec = record
@@ -4421,12 +4547,14 @@ type
   end;
 
 const
-  cConvertTable: array [0 .. 36] of TConvertTableRec = (
-    (type_: GL_UNSIGNED_BYTE; proc1: UbyteToImf; proc2: ImfToUbyte),
+  cConvertTable: array [0 .. 36] of TConvertTableRec =
+    ((type_: GL_UNSIGNED_BYTE; proc1: UbyteToImf; proc2: ImfToUbyte),
 
-    (type_: GL_UNSIGNED_BYTE_3_3_2; proc1: Ubyte332ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_BYTE_3_3_2; proc1: Ubyte332ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_BYTE_2_3_3_REV; proc1: Ubyte233RToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_BYTE_2_3_3_REV; proc1: Ubyte233RToImf;
+    proc2: UnsupportedFromImf),
 
     (type_: GL_BYTE; proc1: ByteToImf; proc2: ImfToByte),
 
@@ -4442,119 +4570,145 @@ const
 
     (type_: GL_HALF_FLOAT; proc1: HalfFloatToImf; proc2: ImfToHalf),
 
-    (type_: GL_UNSIGNED_INT_8_8_8_8; proc1: UInt8888ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_INT_8_8_8_8; proc1: UInt8888ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_INT_8_8_8_8_REV; proc1: UInt8888RevToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_INT_8_8_8_8_REV; proc1: UInt8888RevToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_SHORT_4_4_4_4; proc1: UShort4444ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_SHORT_4_4_4_4; proc1: UShort4444ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_SHORT_4_4_4_4_REV; proc1: UShort4444RevToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_SHORT_4_4_4_4_REV; proc1: UShort4444RevToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_SHORT_5_6_5; proc1: UShort565ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_SHORT_5_6_5; proc1: UShort565ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_SHORT_5_6_5_REV; proc1: UShort565RevToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_SHORT_5_6_5_REV; proc1: UShort565RevToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_SHORT_5_5_5_1; proc1: UShort5551ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_SHORT_5_5_5_1; proc1: UShort5551ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_SHORT_1_5_5_5_REV; proc1: UShort5551RevToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_SHORT_1_5_5_5_REV; proc1: UShort5551RevToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_INT_10_10_10_2; proc1: UInt_10_10_10_2_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_INT_10_10_10_2; proc1: UInt_10_10_10_2_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_INT_2_10_10_10_REV; proc1: UInt_10_10_10_2_Rev_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_INT_2_10_10_10_REV; proc1: UInt_10_10_10_2_Rev_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_RGB_S3TC_DXT1_EXT; proc1: DXT1_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_RGB_S3TC_DXT1_EXT; proc1: DXT1_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_RGBA_S3TC_DXT1_EXT; proc1: DXT1_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_RGBA_S3TC_DXT1_EXT; proc1: DXT1_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_RGBA_S3TC_DXT3_EXT; proc1: DXT3_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_RGBA_S3TC_DXT3_EXT; proc1: DXT3_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_RGBA_S3TC_DXT5_EXT; proc1: DXT5_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_RGBA_S3TC_DXT5_EXT; proc1: DXT5_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_SRGB_S3TC_DXT1_EXT; proc1: UnsupportedToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_SRGB_S3TC_DXT1_EXT; proc1: UnsupportedToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT; proc1: UnsupportedToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT; proc1: UnsupportedToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT3_EXT; proc1: UnsupportedToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT3_EXT; proc1: UnsupportedToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT; proc1: UnsupportedToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT; proc1: UnsupportedToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_LUMINANCE_LATC1_EXT; proc1: LATC1_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_LUMINANCE_LATC1_EXT; proc1: LATC1_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_SIGNED_LUMINANCE_LATC1_EXT; proc1: SLATC1_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_SIGNED_LUMINANCE_LATC1_EXT; proc1: SLATC1_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_LUMINANCE_ALPHA_LATC2_EXT; proc1: LATC2_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_LUMINANCE_ALPHA_LATC2_EXT; proc1: LATC2_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_SIGNED_LUMINANCE_ALPHA_LATC2_EXT; proc1: SLATC2_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_SIGNED_LUMINANCE_ALPHA_LATC2_EXT; proc1: SLATC2_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_LUMINANCE_ALPHA_3DC_ATI; proc1: UnsupportedToImf; proc2: UnsupportedFromImf),
-    (type_: GL_COMPRESSED_RED_RGTC1; proc1: RGTC1_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_LUMINANCE_ALPHA_3DC_ATI; proc1: UnsupportedToImf;
+    proc2: UnsupportedFromImf), (type_: GL_COMPRESSED_RED_RGTC1;
+    proc1: RGTC1_ToImf; proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_SIGNED_RED_RGTC1; proc1: SRGTC1_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_SIGNED_RED_RGTC1; proc1: SRGTC1_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_RG_RGTC2; proc1: RGTC2_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_RG_RGTC2; proc1: RGTC2_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_SIGNED_RG_RGTC2; proc1: SRGTC2_ToImf; proc2: UnsupportedFromImf));
+    (type_: GL_COMPRESSED_SIGNED_RG_RGTC2; proc1: SRGTC2_ToImf;
+    proc2: UnsupportedFromImf));
 
-procedure ConvertImage(const ASrc: Pointer; const ADst: Pointer; ASrcColorFormat, ADstColorFormat: Cardinal; ASrcDataType, ADstDataType: Cardinal; AWidth, AHeight: Integer);
-  var
-    ConvertToIntermediateFormat: TConvertToImfProc;
-    ConvertFromIntermediateFormat: TConvertFromInfProc;
-    i, size: Integer;
-    tempBuf: PIntermediateFormatArray;
+procedure ConvertImage(const ASrc: Pointer; const ADst: Pointer;
+  ASrcColorFormat, ADstColorFormat: Cardinal;
+  ASrcDataType, ADstDataType: Cardinal; AWidth, AHeight: Integer);
+var
+  ConvertToIntermediateFormat: TConvertToImfProc;
+  ConvertFromIntermediateFormat: TConvertFromInfProc;
+  i, size: Integer;
+  tempBuf: PIntermediateFormatArray;
+begin
+  if AWidth < 1 then
+    Exit;
+  AHeight := MaxInteger(1, AHeight);
+  // Allocate memory
+  size := AWidth * AHeight * SizeOf(TIntermediateFormat);
+  GetMem(tempBuf, size);
+  FillChar(tempBuf^, size, $00);
+
+  // Find function to convert external format to intermediate format
+  ConvertToIntermediateFormat := UnsupportedToImf;
+  for i := 0 to high(cConvertTable) do
   begin
-    if AWidth < 1 then
-      Exit;
-    AHeight := MaxInteger(1, AHeight);
-    // Allocate memory
-    size := AWidth * AHeight * SizeOf(TIntermediateFormat);
-    GetMem(tempBuf, size);
-    FillChar(tempBuf^, size, $00);
-
-    // Find function to convert external format to intermediate format
-    ConvertToIntermediateFormat := UnsupportedToImf;
-    for i := 0 to high(cConvertTable) do
+    if ASrcDataType = cConvertTable[i].type_ then
     begin
-      if ASrcDataType = cConvertTable[i].type_ then
-      begin
-        ConvertToIntermediateFormat := cConvertTable[i].proc1;
-        break;
-      end;
+      ConvertToIntermediateFormat := cConvertTable[i].proc1;
+      break;
     end;
-
-    try
-      ConvertToIntermediateFormat(ASrc, tempBuf, ASrcColorFormat, AWidth, AHeight);
-    except
-      FreeMem(tempBuf);
-      raise;
-    end;
-
-    // Find function to convert intermediate format to external format
-    ConvertFromIntermediateFormat := UnsupportedFromImf;
-    for i := 0 to high(cConvertTable) do
-    begin
-      if ADstDataType = cConvertTable[i].type_ then
-      begin
-        ConvertFromIntermediateFormat := cConvertTable[i].proc2;
-        break;
-      end;
-    end;
-
-    try
-      ConvertFromIntermediateFormat(tempBuf, ADst, ADstColorFormat, AWidth, AHeight);
-    except
-      FreeMem(tempBuf);
-      raise;
-    end;
-
-    FreeMem(tempBuf);
   end;
 
-procedure RescaleImage(
-  const ASrc: Pointer;
-  const ADst: Pointer;
-  AColorFormat: Cardinal;
-  ADataType: Cardinal;
-  AFilter: TImageFilterFunction;
+  try
+    ConvertToIntermediateFormat(ASrc, tempBuf, ASrcColorFormat, AWidth,
+      AHeight);
+  except
+    FreeMem(tempBuf);
+    raise;
+  end;
+
+  // Find function to convert intermediate format to external format
+  ConvertFromIntermediateFormat := UnsupportedFromImf;
+  for i := 0 to high(cConvertTable) do
+  begin
+    if ADstDataType = cConvertTable[i].type_ then
+    begin
+      ConvertFromIntermediateFormat := cConvertTable[i].proc2;
+      break;
+    end;
+  end;
+
+  try
+    ConvertFromIntermediateFormat(tempBuf, ADst, ADstColorFormat,
+      AWidth, AHeight);
+  except
+    FreeMem(tempBuf);
+    raise;
+  end;
+
+  FreeMem(tempBuf);
+end;
+
+procedure RescaleImage(const ASrc: Pointer; const ADst: Pointer;
+  AColorFormat: Cardinal; ADataType: Cardinal; AFilter: TImageFilterFunction;
   ASrcWidth, ASrcHeight, ADstWidth, ADstHeight: Integer);
 
 var
@@ -4592,7 +4746,8 @@ begin
   end;
 
   try
-    ConvertToIntermediateFormat(ASrc, tempBuf1, AColorFormat, ASrcWidth, ASrcHeight);
+    ConvertToIntermediateFormat(ASrc, tempBuf1, AColorFormat, ASrcWidth,
+      ASrcHeight);
   except
     FreeMem(tempBuf1);
     raise;
@@ -4648,7 +4803,8 @@ begin
     for i := 0 to ADstWidth - 1 do
     begin
       contrib^[i].n := 0;
-      GetMem(contrib^[i].p, Trunc(vImageScaleFilterWidth * 2.0 + 1) * SizeOf(TContributor));
+      GetMem(contrib^[i].p, Trunc(vImageScaleFilterWidth * 2.0 + 1) *
+        SizeOf(TContributor));
       center := i / xscale;
       left := floor(center - vImageScaleFilterWidth);
       right := ceil(center + vImageScaleFilterWidth);
@@ -4743,7 +4899,8 @@ begin
     for i := 0 to ADstHeight - 1 do
     begin
       contrib^[i].n := 0;
-      GetMem(contrib^[i].p, Trunc(vImageScaleFilterWidth * 2.0 + 1) * SizeOf(TContributor));
+      GetMem(contrib^[i].p, Trunc(vImageScaleFilterWidth * 2.0 + 1) *
+        SizeOf(TContributor));
       center := i / yscale;
       left := floor(center - vImageScaleFilterWidth);
       right := ceil(center + vImageScaleFilterWidth);
@@ -4799,7 +4956,8 @@ begin
   FreeMem(tempBuf2);
   // Back to native image format
   try
-    ConvertFromIntermediateFormat(tempBuf1, ADst, AColorFormat, ADstWidth, ADstHeight);
+    ConvertFromIntermediateFormat(tempBuf1, ADst, AColorFormat, ADstWidth,
+      ADstHeight);
   except
     FreeMem(tempBuf1);
     raise;
@@ -4814,12 +4972,8 @@ begin
     Value := 1;
 end;
 
-procedure Build2DMipmap(
-  const ASrc: Pointer;
-  const ADst: TPointerArray;
-  AColorFormat: Cardinal;
-  ADataType: Cardinal;
-  AFilter: TImageFilterFunction;
+procedure Build2DMipmap(const ASrc: Pointer; const ADst: TPointerArray;
+  AColorFormat: Cardinal; ADataType: Cardinal; AFilter: TImageFilterFunction;
   ASrcWidth, ASrcHeight: Integer);
 
 var
@@ -4870,7 +5024,8 @@ begin
   end;
 
   try
-    ConvertToIntermediateFormat(ASrc, tempBuf1, AColorFormat, ASrcWidth, ASrcHeight);
+    ConvertToIntermediateFormat(ASrc, tempBuf1, AColorFormat, ASrcWidth,
+      ASrcHeight);
   except
     FreeMem(tempBuf1);
     raise;
@@ -5015,8 +5170,8 @@ begin
       ASrcHeight := ADstHeight;
 
       // Back to native image format
-      ConvertFromIntermediateFormat(
-        tempBuf1, ADst[level], AColorFormat, ASrcWidth, ASrcHeight);
+      ConvertFromIntermediateFormat(tempBuf1, ADst[level], AColorFormat,
+        ASrcWidth, ASrcHeight);
     end;
   finally
     if Assigned(contrib) then
@@ -5026,15 +5181,9 @@ begin
   end;
 end;
 
-procedure AlphaGammaBrightCorrection(
-  const ASrc: Pointer;
-  AColorFormat: Cardinal;
-  ADataType: Cardinal;
-  ASrcWidth, ASrcHeight: Integer;
-  anAlphaProc: TImageAlphaProc;
-  ABrightness: Single;
-  AGamma: Single);
-
+procedure AlphaGammaBrightCorrection(const ASrc: Pointer;
+  AColorFormat: Cardinal; ADataType: Cardinal; ASrcWidth, ASrcHeight: Integer;
+  anAlphaProc: TImageAlphaProc; ABrightness: Single; AGamma: Single);
 var
   ConvertToIntermediateFormat: TConvertToImfProc;
   ConvertFromIntermediateFormat: TConvertFromInfProc;
@@ -5061,19 +5210,16 @@ begin
   end;
 
   try
-    ConvertToIntermediateFormat(
-      ASrc, tempBuf1, AColorFormat, ASrcWidth, ASrcHeight);
-
+    ConvertToIntermediateFormat(ASrc, tempBuf1, AColorFormat, ASrcWidth,
+      ASrcHeight);
     vTopLeftColor := tempBuf1[0];
-    vBottomRightColor := tempBuf1[Size-1];
-
+    vBottomRightColor := tempBuf1[size - 1];
     if Assigned(anAlphaProc) then
-      for I := Size - 1 downto 0 do
-          anAlphaProc(tempBuf1[I]);
-
+      for i := size - 1 downto 0 do
+        anAlphaProc(tempBuf1[i]);
     if ABrightness <> 1.0 then
-      for I := Size - 1 downto 0 do
-        with tempBuf1[I] do
+      for i := size - 1 downto 0 do
+        with tempBuf1[i] do
         begin
           R := R * ABrightness;
           G := G * ABrightness;
@@ -5081,23 +5227,179 @@ begin
         end;
 
     if AGamma <> 1.0 then
-      for I := Size - 1 downto 0 do
-        with tempBuf1[I] do
+      for i := size - 1 downto 0 do
+        with tempBuf1[i] do
         begin
           R := Power(R, AGamma);
           G := Power(G, AGamma);
           B := Power(B, AGamma);
         end;
-
     // Back to native image format
-    ConvertFromIntermediateFormat(
-      tempBuf1, ASrc, AColorFormat, ASrcWidth, ASrcHeight);
-
+    ConvertFromIntermediateFormat(tempBuf1, ASrc, AColorFormat, ASrcWidth,
+      ASrcHeight);
   except
     FreeMem(tempBuf1);
     raise;
   end;
   FreeMem(tempBuf1);
 end;
+
+
+function StringToColorAdvancedSafe(const Str: string;
+  const Default: TColor): TColor;
+begin
+  if not TryStringToColorAdvanced(Str, Result) then
+    Result := Default;
+end;
+
+function StringToColorAdvanced(const Str: string): TColor;
+begin
+  if not TryStringToColorAdvanced(Str, Result) then
+    raise EGLUtilsException.CreateResFmt(@strInvalidColor, [Str]);
+end;
+
+function TryStringToColorAdvanced(const Str: string;
+  var OutColor: TColor): Boolean;
+var
+  Code, i: Integer;
+  Temp: string;
+begin
+  Result := True;
+  Temp := Str;
+  val(Temp, i, Code); // to see if it is a number
+  if Code = 0 then
+    OutColor := TColor(i) // Str = $0000FF
+  else
+  begin
+    if not IdentToColor(Temp, LongInt(OutColor)) then // Str = clRed
+    begin
+      if AnsiStartsText('clr', Temp) then // Str = clrRed
+      begin
+        Delete(Temp, 3, 1);
+        if not IdentToColor(Temp, LongInt(OutColor)) then
+          Result := False;
+      end
+      else if not IdentToColor('cl' + Temp, LongInt(OutColor)) then // Str = Red
+        Result := False;
+    end;
+  end;
+end;
+
+//--------------------------------------------------------------------------
+
+function GetDeviceCapabilities: TDeviceCapabilities;
+var
+  device: HDC;
+begin
+  device := GetDC(0);
+  try
+    Result.Xdpi := GetDeviceCaps(device, LOGPIXELSX);
+    Result.Ydpi := GetDeviceCaps(device, LOGPIXELSY);
+    Result.Depth := GetDeviceCaps(device, BITSPIXEL);
+    Result.NumColors := GetDeviceCaps(device, NumColors);
+  finally
+    ReleaseDC(0, device);
+  end;
+end;
+
+
+// -------------------------------------------------------------------------
+
+function GetDeviceLogicalPixelsX(device: HDC): Integer;
+begin
+  Result := GetDeviceCapabilities().Xdpi;
+end;
+
+function GetCurrentColorDepth: Integer;
+begin
+  Result := GetDeviceCapabilities().Depth;
+end;
+
+function PixelFormatToColorBits(aPixelFormat: TPixelFormat): Integer;
+begin
+  case aPixelFormat of
+    pfCustom{$IFDEF WIN32}, pfDevice{$ENDIF}: // use current color depth
+      Result := GetCurrentColorDepth;
+    pf1bit:
+      Result := 1;
+{$IFDEF WIN32}
+    pf4bit:
+      Result := 4;
+    pf15bit:
+      Result := 15;
+{$ENDIF}
+    pf8bit:
+      Result := 8;
+    pf16bit:
+      Result := 16;
+    pf32bit:
+      Result := 32;
+  else
+    Result := 24;
+  end;
+end;
+
+//-------------------------------------------------------------------------
+
+procedure InformationDlg(const msg: string);
+begin
+  ShowMessage(msg);
+end;
+
+function QuestionDlg(const msg: string): Boolean;
+begin
+  Result := (MessageDlg(msg, mtConfirmation, [mbYes, mbNo], 0) = mrYes);
+end;
+
+function InputDlg(const aCaption, aPrompt, aDefault: string): string;
+begin
+  Result := InputBox(aCaption, aPrompt, aDefault);
+end;
+
+function SavePictureDialog(var aFileName: string;
+  const aTitle: string = ''): Boolean;
+var
+  saveDialog: TSavePictureDialog;
+begin
+  saveDialog := TSavePictureDialog.Create(nil);
+  try
+    with saveDialog do
+    begin
+      Options := [ofHideReadOnly, ofNoReadOnlyReturn];
+      if aTitle <> '' then
+        Title := aTitle;
+      fileName := aFileName;
+      Result := Execute;
+      if Result then
+        aFileName := fileName;
+    end;
+  finally
+    saveDialog.Free;
+  end;
+end;
+
+function OpenPictureDialog(var aFileName: string;
+  const aTitle: string = ''): Boolean;
+var
+  openDialog: TOpenPictureDialog;
+begin
+  openDialog := TOpenPictureDialog.Create(nil);
+  try
+    with openDialog do
+    begin
+      Options := [ofHideReadOnly, ofNoReadOnlyReturn];
+      if aTitle <> '' then
+        Title := aTitle;
+      fileName := aFileName;
+      Result := Execute;
+      if Result then
+        aFileName := fileName;
+    end;
+  finally
+    openDialog.Free;
+  end;
+end;
+
+// ----------------------------------------------------------------------------
 
 end.

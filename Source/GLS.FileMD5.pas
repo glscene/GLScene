@@ -15,7 +15,7 @@ uses
 
   GLS.VectorFileObjects,
   GLS.PersistentClasses,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.ApplicationFileIO,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,

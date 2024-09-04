@@ -29,7 +29,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLScene.VectorGeometry,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TForm1 = class(TForm)

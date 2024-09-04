@@ -35,7 +35,7 @@ uses
   GLS.SpacePartition,
   GLS.GeomObjects,
   GLS.ShadowVolume,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.Material,
   GLS.Coordinates,
   GLS.RenderContextInfo,

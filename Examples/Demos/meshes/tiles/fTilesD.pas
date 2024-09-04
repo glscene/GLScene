@@ -33,7 +33,7 @@ uses
   GLS.RenderContextInfo,
   GLS.TextureFormat,
   GLS.Keyboard,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.SimpleNavigation;
 
 type

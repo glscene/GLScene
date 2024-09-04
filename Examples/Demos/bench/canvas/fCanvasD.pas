@@ -26,7 +26,7 @@ uses
   GLS.Canvas,
   GLS.Texture,
   GLS.RenderContextInfo,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormCanvas = class(TForm)

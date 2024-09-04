@@ -31,7 +31,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.Keyboard,
-  GLS.Utils, GLS.SimpleNavigation;
+  GLScene.Utils, GLS.SimpleNavigation;
 
 type
   TFormPortal = class(TForm)

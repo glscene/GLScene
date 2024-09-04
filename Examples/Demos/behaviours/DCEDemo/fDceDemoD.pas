@@ -38,7 +38,7 @@ uses
   GLS.Keyboard,
   GLS.ProxyObjects,
   GLS.State,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.BaseClasses,
   GLScene.VectorTypes;
 

@@ -17,7 +17,7 @@ uses
   System.SysUtils,
 {$IFDEF MSWINDOWS}Winapi.MMSystem, {$ENDIF}
   GXS.ApplicationFileIO,
-  GXS.Utils;
+  GXS.ImageUtils;
 
 type
 

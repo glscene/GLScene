@@ -19,7 +19,7 @@ uses
   GLS.VectorLists,
   GLScene.VectorGeometry,
   GLS.Material,
-  GLS.Utils,
+  GLScene.Utils,
   PasGLTF;
 
 type

@@ -37,7 +37,7 @@ uses
   FmInfo,
   GLS.XCollection,
 
-  GLS.Utils,
+  GLScene.Utils,
   GLS.SceneRegister;
 
 const

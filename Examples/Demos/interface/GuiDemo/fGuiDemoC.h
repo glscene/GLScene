@@ -22,7 +22,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Windows.hpp"
 #include "GLS.WindowsFont.hpp"
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

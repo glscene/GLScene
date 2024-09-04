@@ -22,7 +22,7 @@ uses
   GLS.FileTGA,
   GLS.VectorLists,
   VectorTypes,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.Context,
   GLS.FileOBJ,
   GLScene.VectorGeometry,

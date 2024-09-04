@@ -25,7 +25,7 @@ uses
 
   GLS.Context,
   GLS.RenderContextInfo,
-  GLS.Utils,
+  GLScene.Utils,
 
   GLS.FileDDS;
 

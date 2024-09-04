@@ -28,7 +28,7 @@ uses
   GLS.Context,
   GLS.RenderContextInfo,
   GLScene.VectorTypes,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
    TGLWaterPlaneOption = (wpoTextured);

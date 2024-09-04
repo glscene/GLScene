@@ -22,7 +22,7 @@ uses
   VCL.Controls,
 
   GLScene.VectorGeometry,
-  GLS.Utils,
+  GLScene.Utils,
   GLScene.VectorTypes;
 
 type

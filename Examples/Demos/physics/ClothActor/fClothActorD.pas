@@ -35,7 +35,7 @@ uses
   GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.Context,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.Coordinates,
   GLS.PersistentClasses;
 

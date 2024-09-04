@@ -50,7 +50,7 @@ uses
   GLS.Screen,
   GLS.State,
   GLS.FileTGA,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TForm1 = class(TForm)

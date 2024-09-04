@@ -41,7 +41,7 @@ uses
   GLS.Keyboard,
   GLS.CompositeImage,
 
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormTransparAdv = class(TForm)

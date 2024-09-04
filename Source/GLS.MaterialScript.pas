@@ -19,7 +19,7 @@ uses
   GLS.Texture,
   GLS.TextureFormat,
   GLS.Graphics,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.Color,
   GLS.Coordinates,
   GLS.Material,

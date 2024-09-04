@@ -49,7 +49,7 @@ uses
   GLS.FilePNG,
   GLS.FileDDS,
 
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TForm1 = class(TForm)

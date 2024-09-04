@@ -23,7 +23,7 @@ uses
   GLScene.VectorGeometry,
   GXS.Objects,
   GXS.BitmapFont,
-  GXS.Utils,
+  GXS.ImageUtils,
   GXS.Color,
   GXS.RenderContextInfo,
   GXS.Context,

@@ -24,7 +24,7 @@ uses
   GLS.BitmapFont,
   GLS.RenderContextInfo,
   GLS.VectorLists,
-  GLS.Utils,
+  GLScene.Utils,
   GLScene.VectorGeometry,
   GLScene.OpenGLTokens,
   GLS.ApplicationFileIO,

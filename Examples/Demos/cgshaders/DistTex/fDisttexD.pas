@@ -27,7 +27,7 @@ uses
 
   GLS.BaseClasses,
   GLS.RenderContextInfo,
-  GLS.Utils,
+  GLScene.Utils,
 
   CG.Import,
   CG.GL;

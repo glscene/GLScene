@@ -3,9 +3,7 @@
 //
 unit GXS.ImageUtils;
 
-(*
-  Main purpose is as a fallback in cases where there is no other way to process images.
-*)
+(* Main purpose is as a fallback in cases where there is no other way to process images *)
 
 // TODO: Complite InfToXXX
 // TODO: BPTC decompression
@@ -20,23 +18,29 @@ interface
 {$I GLScene.Defines.inc}
 
 uses
+  Winapi.Windows,
   Winapi.OpenGL,
   Winapi.OpenGLext,
   System.SysUtils,
+  System.UiTypes,
+  System.UiConsts,
   System.Classes,
   System.Math,
+  FMX.Types,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.Graphics,
+  FMX.Consts,
 
   GLScene.Strings,
   GLScene.VectorGeometry,
-
-  GXS.Utils,
+  GLScene.Utils,
   GXS.TextureFormat;
 
 var
   vImageScaleFilterWidth: Integer = 5; // Relative sample radius for filtering
 
 type
-
   TIntermediateFormat = record
     R, G, B, A: Single;
   end;
@@ -44,7 +48,8 @@ type
   TPointerArray = array of Pointer;
 
   PRGBA32F = ^TIntermediateFormat;
-  TIntermediateFormatArray = array [0 .. MaxInt div (2 * SizeOf(TIntermediateFormat))] of TIntermediateFormat;
+  TIntermediateFormatArray = array
+    [0 .. MaxInt div (2 * SizeOf(TIntermediateFormat))] of TIntermediateFormat;
   PIntermediateFormatArray = ^TIntermediateFormatArray;
 
   TU48BitBlock = array [0 .. 3, 0 .. 3] of Byte;
@@ -54,6 +59,12 @@ type
 
   TImageFilterFunction = function(Value: Single): Single;
   TImageAlphaProc = procedure(var AColor: TIntermediateFormat);
+
+  TGraphicClass = class of TBitmap; // in vcl class of TGraphic
+  TgxTextLayout = (tlTop, tlCenter, tlBottom); // TglTextLayout
+
+const
+  sAllFilter: string = SMsgDlgAll; ///in VCL -> sAllFilter;
 
 function ImageBoxFilter(Value: Single): Single;
 function ImageTriangleFilter(Value: Single): Single;
@@ -68,26 +79,99 @@ procedure ImageAlphaSuperBlackTransparent(var AColor: TIntermediateFormat);
 procedure ImageAlphaLuminance(var AColor: TIntermediateFormat);
 procedure ImageAlphaLuminanceSqrt(var AColor: TIntermediateFormat);
 procedure ImageAlphaOpaque(var AColor: TIntermediateFormat);
-procedure ImageAlphaTopLeftPointColorTransparent(var AColor: TIntermediateFormat);
+procedure ImageAlphaTopLeftPointColorTransparent
+  (var AColor: TIntermediateFormat);
 procedure ImageAlphaInverseLuminance(var AColor: TIntermediateFormat);
 procedure ImageAlphaInverseLuminanceSqrt(var AColor: TIntermediateFormat);
-procedure ImageAlphaBottomRightPointColorTransparent(var AColor: TIntermediateFormat);
+procedure ImageAlphaBottomRightPointColorTransparent
+  (var AColor: TIntermediateFormat);
 
-procedure ConvertImage(const ASrc: Pointer; const ADst: Pointer; ASrcColorFormat, ADstColorFormat: Cardinal; ASrcDataType, ADstDataType: Cardinal; AWidth, AHeight: Integer);
-procedure RescaleImage(const ASrc: Pointer; const ADst: Pointer; AColorFormat: Cardinal; ADataType: Cardinal; AFilter: TImageFilterFunction; ASrcWidth, ASrcHeight, ADstWidth, ADstHeight: Integer);
-procedure Build2DMipmap(const ASrc: Pointer; const ADst: TPointerArray; AColorFormat: Cardinal; ADataType: Cardinal; AFilter: TImageFilterFunction; ASrcWidth, ASrcHeight: Integer);
-procedure AlphaGammaBrightCorrection(const ASrc: Pointer; AColorFormat: Cardinal; ADataType: Cardinal; ASrcWidth, ASrcHeight: Integer; anAlphaProc: TImageAlphaProc; ABrightness: Single; AGamma: Single);
+procedure ConvertImage(const ASrc: Pointer; const ADst: Pointer;
+  ASrcColorFormat, ADstColorFormat: Cardinal;
+  ASrcDataType, ADstDataType: Cardinal; AWidth, AHeight: Integer);
+procedure RescaleImage(const ASrc: Pointer; const ADst: Pointer;
+  AColorFormat: Cardinal; ADataType: Cardinal; AFilter: TImageFilterFunction;
+  ASrcWidth, ASrcHeight, ADstWidth, ADstHeight: Integer);
+procedure Build2DMipmap(const ASrc: Pointer; const ADst: TPointerArray;
+  AColorFormat: Cardinal; ADataType: Cardinal; AFilter: TImageFilterFunction;
+  ASrcWidth, ASrcHeight: Integer);
+procedure AlphaGammaBrightCorrection(const ASrc: Pointer;
+  AColorFormat: Cardinal; ADataType: Cardinal; ASrcWidth, ASrcHeight: Integer;
+  anAlphaProc: TImageAlphaProc; ABrightness: Single; AGamma: Single);
 
-//----------------------------------------------------------------------------------------
-implementation
-//----------------------------------------------------------------------------------------
+// Converts a string into color
+function StringToColorAdvancedSafe(const Str: string;
+  const Default: TColor): TColor;
+// Converts a string into color
+function TryStringToColorAdvanced(const Str: string;
+  var OutColor: TColor): Boolean;
+// Converts a string into color
+function StringToColorAdvanced(const Str: string): TColor;
+
+(* Number of pixels per logical inch along the screen width for the device.
+  Under Win32 awaits a HDC and returns its LOGPIXELSX. *)
+function GetDeviceLogicalPixelsX(device: HDC): Integer;
+// Number of bits per pixel for the current desktop resolution.
+function GetCurrentColorDepth: Integer;
+// Returns the number of color bits associated to the given pixel format.
+function PixelFormatToColorBits(aPixelFormat: TPixelFormat): Integer;
+// Returns the bitmap's scanline for the specified row.
+function BitmapScanLine(aBitmap: TBitmap; aRow: Integer): Pointer;
+
+// Returns the number of CPU cycles since startup. Use the similarly named CPU instruction.
+function GLOKMessageBox(const Text, Caption: string): Integer;
+procedure GLLoadBitmapFromInstance(Instance: LongInt; ABitmap: TBitmap;
+  const AName: string);
+
+// Pops up a simple dialog with msg and an Ok button.
+procedure InformationDlg(const msg: string);
+(* Pops up a simple question dialog with msg and yes/no buttons.
+  Returns True if answer was "yes". *)
+function QuestionDlg(const msg: string): Boolean;
+// Posp a simple dialog with a string input.
+function InputDlg(const aCaption, aPrompt, aDefault: string): string;
+
+// Pops up a simple save picture dialog.
+function SavePictureDialog(var aFileName: string;
+  const aTitle: string = ''): Boolean;
+// Pops up a simple open picture dialog.
+function OpenPictureDialog(var aFileName: string;
+  const aTitle: string = ''): Boolean;
+
+implementation // -------------------------------------------------------------
 
 const
   cSuperBlack: TIntermediateFormat = (R: 0.0; G: 0.0; B: 0.0; A: 0.0);
 
 type
-  TConvertToImfProc = procedure(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  TConvertFromInfProc = procedure(ASource: PIntermediateFormatArray; ADest: Pointer; AColorFormat: Cardinal; AWidth, AHeight: Integer);
+  TConvertToImfProc = procedure(ASource: Pointer;
+    ADest: PIntermediateFormatArray; AColorFormat: Cardinal;
+    AWidth, AHeight: Integer);
+  TConvertFromInfProc = procedure(ASource: PIntermediateFormatArray;
+    ADest: Pointer; AColorFormat: Cardinal; AWidth, AHeight: Integer);
+
+  TDeviceCapabilities = record
+    Xdpi, Ydpi: Integer; // Number of pixels per logical inch.
+    Depth: Integer; // The bit depth.
+    NumColors: Integer; // Number of entries in the device's color table.
+  end;
+
+
+//----------------------------------------------------------------------------
+
+function GLOKMessageBox(const Text, Caption: string): Integer;
+begin
+  Application.ProcessMessages;
+// in vcl was Result := Application.MessageBox(PChar(Text), PChar(Caption), MB_OK);
+  Result := MB_OK;
+end;
+
+procedure GLLoadBitmapFromInstance(Instance: LongInt; ABitmap: TBitmap;
+  const AName: string);
+begin
+  //in vcl was ABitmap.Handle := LoadBitmap(Instance, PChar(AName));
+  Instance := LoadBitmap(Instance, PChar(AName));
+end;
 
 procedure Swap(var A, B: Integer); inline;
 var
@@ -98,32 +182,34 @@ begin
   B := C;
 end;
 
-// ------------------------------ OpenGL format image to RGBA Float 
+// ------------------------------ OpenGL format image to RGBA Float
 
-procedure UnsupportedToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
+procedure UnsupportedToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+begin
+  raise EGLImageUtils.Create('Unimplemented type of conversion');
+end;
+
+procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PByte;
+  n: Integer;
+  c0: Single;
+
+  function GetChannel: Single;
   begin
-    raise EGLImageUtils.Create('Unimplemented type of conversion');
+    Result := pSource^;
+    Inc(pSource);
   end;
 
-procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PByte;
-    n: Integer;
-    c0: Single;
+begin
+  pSource := PByte(ASource);
 
-    function GetChannel: Single;
-      begin
-        Result := pSource^;
-        Inc(pSource);
-      end;
-
-  begin
-    pSource := PByte(ASource);
-
-    case AColorFormat of
-//{$I ImgUtilCaseGL2Imf.inc}
+  case AColorFormat of
+    // {$I ImgUtilCaseGL2Imf.inc}
     GL_RGB, GL_RGB_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -131,7 +217,7 @@ procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255.0;
       end;
     GL_BGR, GL_BGR_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -139,7 +225,7 @@ procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255.0;
       end;
     GL_RGBA, GL_RGBA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := GetChannel;
         ADest[n].G := GetChannel;
@@ -147,7 +233,7 @@ procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := GetChannel;
       end;
     GL_BGRA, GL_BGRA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].B := GetChannel;
         ADest[n].G := GetChannel;
@@ -155,7 +241,7 @@ procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := GetChannel;
       end;
     GL_ALPHA, GL_ALPHA_INTEGER:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         ADest[n].R := 0;
         ADest[n].G := 0;
@@ -163,7 +249,7 @@ procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := GetChannel;
       end;
     GL_LUMINANCE, GL_LUMINANCE_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -172,7 +258,7 @@ procedure UbyteToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFo
         ADest[n].A := 255.0;
       end;
     GL_LUMINANCE_ALPHA, GL_LUMINANCE_ALPHA_INTEGER_EXT:
-      for n := 0 to AWidth*AHeight-1 do
+      for n := 0 to AWidth * AHeight - 1 do
       begin
         c0 := GetChannel;
         ADest[n].R := c0;
@@ -1183,25 +1269,26 @@ procedure UInt8888ToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColo
           ADest[n].A := c3;
         end;
 
-      GL_BGRA, GL_BGRA_INTEGER:
-        for n := 0 to AWidth * AHeight - 1 do
-        begin
-          GetChannel;
-          ADest[n].B := c0;
-          ADest[n].G := c1;
-          ADest[n].R := c2;
-          ADest[n].A := c3;
-        end;
-    else
-      raise EGLImageUtils.Create(strInvalidType);
-    end;
+    GL_BGRA, GL_BGRA_INTEGER:
+      for n := 0 to AWidth * AHeight - 1 do
+      begin
+        GetChannel;
+        ADest[n].B := c0;
+        ADest[n].G := c1;
+        ADest[n].R := c2;
+        ADest[n].A := c3;
+      end;
+  else
+    raise EGLImageUtils.Create(strInvalidType);
   end;
+end;
 
-procedure UInt8888RevToImf(ASource: Pointer; ADest: PIntermediateFormatArray; AColorFormat: Cardinal; AWidth, AHeight: Integer);
-  var
-    pSource: PByte;
-    n: Integer;
-    c0, c1, c2, c3: Byte;
+procedure UInt8888RevToImf(ASource: Pointer; ADest: PIntermediateFormatArray;
+  AColorFormat: Cardinal; AWidth, AHeight: Integer);
+var
+  pSource: PByte;
+  n: Integer;
+  c0, c1, c2, c3: Byte;
 
     procedure GetChannel;
       begin
@@ -4450,27 +4537,38 @@ const
 
     (type_: GL_UNSIGNED_INT_8_8_8_8_REV; proc1: UInt8888RevToImf; proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_SHORT_4_4_4_4; proc1: UShort4444ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_SHORT_4_4_4_4; proc1: UShort4444ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_SHORT_4_4_4_4_REV; proc1: UShort4444RevToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_SHORT_4_4_4_4_REV; proc1: UShort4444RevToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_SHORT_5_6_5; proc1: UShort565ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_SHORT_5_6_5; proc1: UShort565ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_SHORT_5_6_5_REV; proc1: UShort565RevToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_SHORT_5_6_5_REV; proc1: UShort565RevToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_SHORT_5_5_5_1; proc1: UShort5551ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_SHORT_5_5_5_1; proc1: UShort5551ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_SHORT_1_5_5_5_REV; proc1: UShort5551RevToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_SHORT_1_5_5_5_REV; proc1: UShort5551RevToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_INT_10_10_10_2; proc1: UInt_10_10_10_2_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_INT_10_10_10_2; proc1: UInt_10_10_10_2_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_UNSIGNED_INT_2_10_10_10_REV; proc1: UInt_10_10_10_2_Rev_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_UNSIGNED_INT_2_10_10_10_REV; proc1: UInt_10_10_10_2_Rev_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_RGB_S3TC_DXT1_EXT; proc1: DXT1_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_RGB_S3TC_DXT1_EXT; proc1: DXT1_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_RGBA_S3TC_DXT1_EXT; proc1: DXT1_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_RGBA_S3TC_DXT1_EXT; proc1: DXT1_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_RGBA_S3TC_DXT3_EXT; proc1: DXT3_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_RGBA_S3TC_DXT3_EXT; proc1: DXT3_ToImf;
+    proc2: UnsupportedFromImf),
 
     (type_: GL_COMPRESSED_RGBA_S3TC_DXT5_EXT; proc1: DXT5_ToImf; proc2: UnsupportedFromImf),
 
@@ -4494,26 +4592,31 @@ const
 
     (type_: GL_COMPRESSED_RED_RGTC1; proc1: RGTC1_ToImf; proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_SIGNED_RED_RGTC1; proc1: SRGTC1_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_SIGNED_RED_RGTC1; proc1: SRGTC1_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_RG_RGTC2; proc1: RGTC2_ToImf; proc2: UnsupportedFromImf),
+    (type_: GL_COMPRESSED_RG_RGTC2; proc1: RGTC2_ToImf;
+    proc2: UnsupportedFromImf),
 
-    (type_: GL_COMPRESSED_SIGNED_RG_RGTC2; proc1: SRGTC2_ToImf; proc2: UnsupportedFromImf));
+    (type_: GL_COMPRESSED_SIGNED_RG_RGTC2; proc1: SRGTC2_ToImf;
+    proc2: UnsupportedFromImf));
 
-procedure ConvertImage(const ASrc: Pointer; const ADst: Pointer; ASrcColorFormat, ADstColorFormat: Cardinal; ASrcDataType, ADstDataType: Cardinal; AWidth, AHeight: Integer);
-  var
-    ConvertToIntermediateFormat: TConvertToImfProc;
-    ConvertFromIntermediateFormat: TConvertFromInfProc;
-    i, size: Integer;
-    tempBuf: PIntermediateFormatArray;
-  begin
-    if AWidth < 1 then
-      Exit;
-    AHeight := MaxInteger(1, AHeight);
-    // Allocate memory
-    size := AWidth * AHeight * SizeOf(TIntermediateFormat);
-    GetMem(tempBuf, size);
-    FillChar(tempBuf^, size, $00);
+procedure ConvertImage(const ASrc: Pointer; const ADst: Pointer;
+  ASrcColorFormat, ADstColorFormat: Cardinal;
+  ASrcDataType, ADstDataType: Cardinal; AWidth, AHeight: Integer);
+var
+  ConvertToIntermediateFormat: TConvertToImfProc;
+  ConvertFromIntermediateFormat: TConvertFromInfProc;
+  i, size: Integer;
+  tempBuf: PIntermediateFormatArray;
+begin
+  if AWidth < 1 then
+    Exit;
+  AHeight := MaxInteger(1, AHeight);
+  // Allocate memory
+  size := AWidth * AHeight * SizeOf(TIntermediateFormat);
+  GetMem(tempBuf, size);
+  FillChar(tempBuf^, size, $00);
 
     // Find function to convert external format to intermediate format
     ConvertToIntermediateFormat := UnsupportedToImf;
@@ -4526,12 +4629,13 @@ procedure ConvertImage(const ASrc: Pointer; const ADst: Pointer; ASrcColorFormat
       end;
     end;
 
-    try
-      ConvertToIntermediateFormat(ASrc, tempBuf, ASrcColorFormat, AWidth, AHeight);
-    except
-      FreeMem(tempBuf);
-      raise;
-    end;
+  try
+    ConvertToIntermediateFormat(ASrc, tempBuf, ASrcColorFormat, AWidth,
+      AHeight);
+  except
+    FreeMem(tempBuf);
+    raise;
+  end;
 
     // Find function to convert intermediate format to external format
     ConvertFromIntermediateFormat := UnsupportedFromImf;
@@ -4544,22 +4648,19 @@ procedure ConvertImage(const ASrc: Pointer; const ADst: Pointer; ASrcColorFormat
       end;
     end;
 
-    try
-      ConvertFromIntermediateFormat(tempBuf, ADst, ADstColorFormat, AWidth, AHeight);
-    except
-      FreeMem(tempBuf);
-      raise;
-    end;
-
+  try
+    ConvertFromIntermediateFormat(tempBuf, ADst, ADstColorFormat,
+      AWidth, AHeight);
+  except
     FreeMem(tempBuf);
+    raise;
   end;
 
-procedure RescaleImage(
-  const ASrc: Pointer;
-  const ADst: Pointer;
-  AColorFormat: Cardinal;
-  ADataType: Cardinal;
-  AFilter: TImageFilterFunction;
+  FreeMem(tempBuf);
+end;
+
+procedure RescaleImage(const ASrc: Pointer; const ADst: Pointer;
+  AColorFormat: Cardinal; ADataType: Cardinal; AFilter: TImageFilterFunction;
   ASrcWidth, ASrcHeight, ADstWidth, ADstHeight: Integer);
 
 var
@@ -4597,7 +4698,8 @@ begin
   end;
 
   try
-    ConvertToIntermediateFormat(ASrc, tempBuf1, AColorFormat, ASrcWidth, ASrcHeight);
+    ConvertToIntermediateFormat(ASrc, tempBuf1, AColorFormat, ASrcWidth,
+      ASrcHeight);
   except
     FreeMem(tempBuf1);
     raise;
@@ -4653,7 +4755,8 @@ begin
     for i := 0 to ADstWidth - 1 do
     begin
       contrib^[i].n := 0;
-      GetMem(contrib^[i].p, Trunc(vImageScaleFilterWidth * 2.0 + 1) * SizeOf(TContributor));
+      GetMem(contrib^[i].p, Trunc(vImageScaleFilterWidth * 2.0 + 1) *
+        SizeOf(TContributor));
       center := i / xscale;
       left := floor(center - vImageScaleFilterWidth);
       right := ceil(center + vImageScaleFilterWidth);
@@ -4748,7 +4851,8 @@ begin
     for i := 0 to ADstHeight - 1 do
     begin
       contrib^[i].n := 0;
-      GetMem(contrib^[i].p, Trunc(vImageScaleFilterWidth * 2.0 + 1) * SizeOf(TContributor));
+      GetMem(contrib^[i].p, Trunc(vImageScaleFilterWidth * 2.0 + 1) *
+        SizeOf(TContributor));
       center := i / yscale;
       left := floor(center - vImageScaleFilterWidth);
       right := ceil(center + vImageScaleFilterWidth);
@@ -4804,7 +4908,8 @@ begin
   FreeMem(tempBuf2);
   // Back to native image format
   try
-    ConvertFromIntermediateFormat(tempBuf1, ADst, AColorFormat, ADstWidth, ADstHeight);
+    ConvertFromIntermediateFormat(tempBuf1, ADst, AColorFormat, ADstWidth,
+      ADstHeight);
   except
     FreeMem(tempBuf1);
     raise;
@@ -4819,12 +4924,8 @@ begin
     Value := 1;
 end;
 
-procedure Build2DMipmap(
-  const ASrc: Pointer;
-  const ADst: TPointerArray;
-  AColorFormat: Cardinal;
-  ADataType: Cardinal;
-  AFilter: TImageFilterFunction;
+procedure Build2DMipmap(const ASrc: Pointer; const ADst: TPointerArray;
+  AColorFormat: Cardinal; ADataType: Cardinal; AFilter: TImageFilterFunction;
   ASrcWidth, ASrcHeight: Integer);
 
 var
@@ -4875,7 +4976,8 @@ begin
   end;
 
   try
-    ConvertToIntermediateFormat(ASrc, tempBuf1, AColorFormat, ASrcWidth, ASrcHeight);
+    ConvertToIntermediateFormat(ASrc, tempBuf1, AColorFormat, ASrcWidth,
+      ASrcHeight);
   except
     FreeMem(tempBuf1);
     raise;
@@ -5020,8 +5122,8 @@ begin
       ASrcHeight := ADstHeight;
 
       // Back to native image format
-      ConvertFromIntermediateFormat(
-        tempBuf1, ADst[level], AColorFormat, ASrcWidth, ASrcHeight);
+      ConvertFromIntermediateFormat(tempBuf1, ADst[level], AColorFormat,
+        ASrcWidth, ASrcHeight);
     end;
   finally
     if Assigned(contrib) then
@@ -5031,15 +5133,9 @@ begin
   end;
 end;
 
-procedure AlphaGammaBrightCorrection(
-  const ASrc: Pointer;
-  AColorFormat: Cardinal;
-  ADataType: Cardinal;
-  ASrcWidth, ASrcHeight: Integer;
-  anAlphaProc: TImageAlphaProc;
-  ABrightness: Single;
-  AGamma: Single);
-
+procedure AlphaGammaBrightCorrection(const ASrc: Pointer;
+  AColorFormat: Cardinal; ADataType: Cardinal; ASrcWidth, ASrcHeight: Integer;
+  anAlphaProc: TImageAlphaProc; ABrightness: Single; AGamma: Single);
 var
   ConvertToIntermediateFormat: TConvertToImfProc;
   ConvertFromIntermediateFormat: TConvertFromInfProc;
@@ -5066,9 +5162,8 @@ begin
   end;
 
   try
-    ConvertToIntermediateFormat(
-      ASrc, tempBuf1, AColorFormat, ASrcWidth, ASrcHeight);
-
+    ConvertToIntermediateFormat(ASrc, tempBuf1, AColorFormat, ASrcWidth,
+      ASrcHeight);
     vTopLeftColor := tempBuf1[0];
     vBottomRightColor := tempBuf1[Size-1];
 
@@ -5093,16 +5188,172 @@ begin
           G := Power(G, AGamma);
           B := Power(B, AGamma);
         end;
-
     // Back to native image format
-    ConvertFromIntermediateFormat(
-      tempBuf1, ASrc, AColorFormat, ASrcWidth, ASrcHeight);
-
+    ConvertFromIntermediateFormat(tempBuf1, ASrc, AColorFormat, ASrcWidth,
+      ASrcHeight);
   except
     FreeMem(tempBuf1);
     raise;
   end;
   FreeMem(tempBuf1);
 end;
+
+
+function StringToColorAdvancedSafe(const Str: string;
+  const Default: TColor): TColor;
+begin
+  if not TryStringToColorAdvanced(Str, Result) then
+    Result := Default;
+end;
+
+function StringToColorAdvanced(const Str: string): TColor;
+begin
+  if not TryStringToColorAdvanced(Str, Result) then
+    raise EGLUtilsException.CreateResFmt(@strInvalidColor, [Str]);
+end;
+
+function TryStringToColorAdvanced(const Str: string;
+  var OutColor: TColor): Boolean;
+var
+  Code, i: Integer;
+  Temp: string;
+begin
+  Result := True;
+  Temp := Str;
+  val(Temp, i, Code); // to see if it is a number
+  if Code = 0 then
+    OutColor := TColor(i) // Str = $0000FF
+  else
+  begin
+    if not IdentToColor(Temp, LongInt(OutColor)) then // Str = clRed
+    begin
+      if AnsiStartsText('clr', Temp) then // Str = clrRed
+      begin
+        Delete(Temp, 3, 1);
+        if not IdentToColor(Temp, LongInt(OutColor)) then
+          Result := False;
+      end
+      else if not IdentToColor('cl' + Temp, LongInt(OutColor)) then // Str = Red
+        Result := False;
+    end;
+  end;
+end;
+
+//--------------------------------------------------------------------------
+
+function GetDeviceCapabilities: TDeviceCapabilities;
+var
+  device: HDC;
+begin
+  device := GetDC(0);
+  try
+    Result.Xdpi := GetDeviceCaps(device, LOGPIXELSX);
+    Result.Ydpi := GetDeviceCaps(device, LOGPIXELSY);
+    Result.Depth := GetDeviceCaps(device, BITSPIXEL);
+    Result.NumColors := GetDeviceCaps(device, NumColors);
+  finally
+    ReleaseDC(0, device);
+  end;
+end;
+
+
+// -------------------------------------------------------------------------
+
+function GetDeviceLogicalPixelsX(device: HDC): Integer;
+begin
+  Result := GetDeviceCapabilities().Xdpi;
+end;
+
+function GetCurrentColorDepth: Integer;
+begin
+  Result := GetDeviceCapabilities().Depth;
+end;
+
+function PixelFormatToColorBits(aPixelFormat: TPixelFormat): Integer;
+begin
+  case aPixelFormat of
+    TPixelFormat.None: Result := GetCurrentColorDepth; // use current color depth
+    TPixelFormat.BGR5_A1: Result := 1;
+    TPixelFormat.BGRA4: Result := 4;
+    TPixelFormat.RGBA: Result := 8;
+    TPixelFormat.RGBA16: Result := 16;
+    TPixelFormat.RGBA32F: Result := 32;
+  else
+    Result := 24;
+  end;
+end;
+
+function BitmapScanLine(aBitmap: TBitmap; aRow: Integer): Pointer;
+var
+  BitmapData : TBitmapData;
+begin
+  aBitmap.Map(TMapAccess.ReadWrite, BitmapData);
+  Result := BitmapData.GetScanline(aRow); //in VCL the Result := aBitmap.ScanLine[aRow];
+end;
+
+//-------------------------------------------------------------------------
+
+procedure InformationDlg(const msg: string);
+begin
+  ShowMessage(msg);
+end;
+
+function QuestionDlg(const msg: string): Boolean;
+begin
+  // in vcl Result := (MessageDlg(msg, mtConfirmation, [mbYes, mbNo], 0) = mrYes);
+  Result := (MessageDlg(msg, TMsgDlgType.mtConfirmation,
+              [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) = mrYes);
+end;
+
+function InputDlg(const aCaption, aPrompt, aDefault: string): string;
+begin
+  Result := InputBox(aCaption, aPrompt, aDefault);
+end;
+
+function SavePictureDialog(var aFileName: string;
+  const aTitle: string = ''): Boolean;
+var
+  saveDialog: TSaveDialog; // in vcl TSavePictureDialog;
+begin
+  saveDialog := TSaveDialog.Create(nil);
+  try
+    with saveDialog do
+    begin
+      Options := [TOpenOption.ofHideReadOnly, TOpenOption.ofNoReadOnlyReturn];
+      if aTitle <> '' then
+        Title := aTitle;
+      fileName := aFileName;
+      Result := Execute;
+      if Result then
+        aFileName := fileName;
+    end;
+  finally
+    saveDialog.Free;
+  end;
+end;
+
+function OpenPictureDialog(var aFileName: string;
+  const aTitle: string = ''): Boolean;
+var
+  openDialog: TOpenDialog; // in vcl TOpenPictureDialog;
+begin
+  openDialog := TOpenDialog.Create(nil);
+  try
+    with openDialog do
+    begin
+      Options := [TOpenOption.ofHideReadOnly, TOpenOption.ofNoReadOnlyReturn];
+      if aTitle <> '' then
+        Title := aTitle;
+      fileName := aFileName;
+      Result := Execute;
+      if Result then
+        aFileName := fileName;
+    end;
+  finally
+    openDialog.Free;
+  end;
+end;
+
+// ----------------------------------------------------------------------------
 
 end.

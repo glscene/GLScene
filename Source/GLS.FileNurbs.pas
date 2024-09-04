@@ -17,7 +17,7 @@ uses
   GLS.VectorLists,
   GLS.ApplicationFileIO,
   GLS.ParametricSurfaces,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
 

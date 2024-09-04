@@ -19,8 +19,9 @@ uses
   VCL.Menus,
 
   GLScene.OpenGLTokens,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.Context,
+  GLS.ImageUtils,
   GLS.Scene,
   GLS.SceneViewer;
 

@@ -29,7 +29,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.FileTGA;
 
 type

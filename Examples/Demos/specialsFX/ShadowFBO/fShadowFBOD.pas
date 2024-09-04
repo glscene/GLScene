@@ -43,7 +43,7 @@ uses
   GLS.FileOBJ,
   GLS.Graphics,
   GLS.State,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormShadowFBO = class(TForm)

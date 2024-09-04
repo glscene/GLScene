@@ -22,6 +22,7 @@ uses
   GXS.XOpenGL,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
+  GLScene.Utils,
   GXS.VectorLists,
   GXS.Scene,
   GXS.HeightData,
@@ -30,7 +31,7 @@ uses
   GXS.Context,
   GXS.ROAMPatch,
   GXS.RenderContextInfo,
-  GXS.Utils;
+  GXS.ImageUtils;
 
 const
   cTilesHashSize = 255;

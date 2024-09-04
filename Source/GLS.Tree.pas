@@ -42,7 +42,7 @@ uses
   GLS.XOpenGL,
   GLS.Context,
   GLScene.VectorTypes,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TGLTree = class;

@@ -16,7 +16,7 @@ uses
   Vcl.StdCtrls,
   Vcl.ComCtrls,
 
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TForm1 = class(TForm)

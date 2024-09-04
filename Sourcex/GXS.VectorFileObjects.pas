@@ -27,9 +27,10 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.Strings,
+  GLScene.Utils,
+
   GXS.GeometryBB,
   GXS.ApplicationFileIO,
-
   GXS.Scene,
   GXS.Texture,
   GXS.Material,
@@ -42,7 +43,7 @@ uses
   GXS.Coordinates,
   GXS.TextureFormat,
   GXS.State,
-  GXS.Utils;
+  GXS.ImageUtils;
 
 type
 

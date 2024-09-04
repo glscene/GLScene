@@ -23,7 +23,7 @@ uses
   GLS.SceneViewer,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormWarping = class(TForm)

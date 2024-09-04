@@ -32,7 +32,7 @@ uses
 
   GLS.SimpleNavigation,
   GLS.BaseClasses,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormShadowVolumes = class(TForm)

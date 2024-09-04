@@ -34,7 +34,7 @@ uses
   GLS.RenderContextInfo,
   GLS.Color,
   GLS.State,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.Context,
   GLS.TextureFormat,
   GLSL.TextureShaders,

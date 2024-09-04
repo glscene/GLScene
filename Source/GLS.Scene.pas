@@ -47,7 +47,8 @@ uses
   GLS.Selection,
   GLScene.VectorTypes,
   GLS.ApplicationFileIO,
-  GLS.Utils,
+  GLScene.Utils,
+  GLS.ImageUtils,
   GLScene.Logger;
 
 type
@@ -60,7 +61,7 @@ type
 const
   cDefaultProxyOptions = [pooEffects, pooObjects, pooTransformation];
   GLSCENE_REVISION = '$Revision: 2024$';
-  GLSCENE_VERSION = 'v2.8 %s';
+  GLSCENE_VERSION = 'v2.5 %s';
 
 type
 

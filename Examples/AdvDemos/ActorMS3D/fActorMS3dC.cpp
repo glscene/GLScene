@@ -15,7 +15,7 @@
 #pragma link "GLS.Material"
 #pragma link "GLS.Objects"
 
-#pragma link "GLS.Utils"
+#pragma link "GLScene.Utils"
 #pragma link "GLS.GeomObjects"
 #pragma link "GLS.Graphics"
 #pragma link "GLScene.VectorTypes"

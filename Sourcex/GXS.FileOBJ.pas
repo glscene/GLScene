@@ -28,7 +28,7 @@ uses
   GLScene.Strings,
   GXS.Context,
   GXS.MeshUtils,
-  GXS.Utils,
+  GXS.ImageUtils,
   GXS.ApplicationFileIO,
   GXS.PersistentClasses,
   GLScene.VectorGeometry,
@@ -1328,7 +1328,7 @@ begin
       Result := NullHmgVector;
       for i := 0 to 3 do
         if sl.Count > i then
-          Result.V[i] := GXS.Utils.StrToFloatDef(sl[i], 0)
+          Result.V[i] := StrToFloatDef(sl[i], 0)
         else
           break;
     end

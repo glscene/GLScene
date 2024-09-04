@@ -28,6 +28,7 @@ uses
   GLS.Context,
   GLS.Scene,
   GLS.Color,
+  GLS.ImageUtils,
   GLS.ObjectManager,
   GLScene.Strings;
 
@@ -349,7 +350,7 @@ uses
   GLS.ArchiveManager,
   GLS.Memo,
   GLS.SmoothNavigator,
-  GLS.Utils,
+  GLScene.Utils,
   GLSL.AsmShader,
   GLSL.BumpShaders,
   GLSL.ShapeShaders,
@@ -1718,8 +1719,8 @@ initialization
 
   SplashScreenServices.AddPluginBitmap(GetGLSceneVersion, LoadBitmap(HInstance, 'TGLScene'),
     False, 'MPL 2.0 license', 'VCL version');
-  GLS.Utils.IsDesignTime := True;
-  GLS.Utils.vProjectTargetName := GetProjectTargetName;
+  GLScene.Utils.IsDesignTime := True;
+  GLScene.Utils.vProjectTargetName := GetProjectTargetName;
   GLS.Color.vUseDefaultColorSets := True;
   GLS.Coordinates.vUseDefaultCoordinateSets := True;
   ReadVideoModes;

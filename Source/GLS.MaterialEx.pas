@@ -49,7 +49,7 @@ uses
   GLS.ApplicationFileIO,
   GLScene.Strings,
   GLS.ImageUtils,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.XOpenGL,
   GLScene.Logger;
 

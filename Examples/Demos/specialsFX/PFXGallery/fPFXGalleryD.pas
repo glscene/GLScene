@@ -23,7 +23,7 @@ uses
   GLScene.VectorTypes,
   GLS.Objects,
   GLS.BitmapFont,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.Cadencer,
   GLS.Texture,
   GLS.Navigator,

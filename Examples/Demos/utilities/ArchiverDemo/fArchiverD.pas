@@ -24,7 +24,7 @@ uses
   GLS.FileZLIB,
   GLS.Coordinates,
   GLS.SceneViewer,
-  GLS.Utils, GLS.SimpleNavigation;
+  GLScene.Utils, GLS.SimpleNavigation;
 
 type
 

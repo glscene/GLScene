@@ -21,7 +21,7 @@ uses
   GLS.ExplosionFx,
   GLS.File3DS,
   GLS.Coordinates,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.BaseClasses;
 
 type

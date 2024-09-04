@@ -58,8 +58,9 @@ uses
   GLS.BitmapFont,
   GLS.PersistentClasses,
   GLS.Context,
+  GLS.ImageUtils,
   GLS.Texture,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.Material;
 
 const

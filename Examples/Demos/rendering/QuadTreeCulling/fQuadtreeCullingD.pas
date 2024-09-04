@@ -38,7 +38,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.RenderContextInfo,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TfrmQuadtreeVisCulling = class(TForm)

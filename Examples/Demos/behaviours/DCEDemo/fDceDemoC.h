@@ -38,7 +38,7 @@
 #include "GLScene.VectorGeometry.hpp"
 #include "GLS.Context.hpp"
 #include "GLS.EllipseCollision.hpp"
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 #include "GLS.DCE.hpp"
 #include "GLS.SimpleNavigation.hpp"
 

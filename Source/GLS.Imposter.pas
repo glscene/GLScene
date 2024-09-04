@@ -31,7 +31,7 @@ uses
   GLS.BaseClasses,
   GLS.State,
   GLS.TextureFormat,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   (* Imposter rendering options.

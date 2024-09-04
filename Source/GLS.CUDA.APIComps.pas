@@ -22,7 +22,7 @@ uses
   GLS.VectorLists,
   GLS.Graphics,
   GLScene.Strings,
-  GLS.Utils,
+  GLScene.Utils,
 
   GLS.CUDA.Compiler,
   GLS.CUDA.Context,

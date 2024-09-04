@@ -11,7 +11,7 @@ uses
   System.Classes,
   System.SysUtils,
   GXS.VectorFileObjects,
-  GXS.Utils,
+  GLScene.Utils,
   GXS.ApplicationFileIO,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
@@ -133,13 +133,13 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
     bonename := FTempString[0];
     ParentBoneID := StrToInt(FTempString[1]);
 
-    pos.X := GXS.Utils.StrToFloatDef(FTempString[2]);
-    pos.Y := GXS.Utils.StrToFloatDef(FTempString[4]);
-    pos.Z := GXS.Utils.StrToFloatDef(FTempString[3]);
+    pos.X := StrToFloatDef(FTempString[2]);
+    pos.Y := StrToFloatDef(FTempString[4]);
+    pos.Z := StrToFloatDef(FTempString[3]);
 
-    quat := QuaternionMakeFromImag(GXS.Utils.StrToFloatDef(FTempString[5]),
-      GXS.Utils.StrToFloatDef(FTempString[7]),
-      GXS.Utils.StrToFloatDef(FTempString[6]));
+    quat := QuaternionMakeFromImag(StrToFloatDef(FTempString[5]),
+      StrToFloatDef(FTempString[7]),
+      StrToFloatDef(FTempString[6]));
 
     FFramePositions.Add(pos);
     FFrameQuaternions.Add(quat);
@@ -244,8 +244,8 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
           begin
             vnum := StrToInt(FTempString[1]);
             mesh.TexCoords[vnum] :=
-              AffineVectorMake(GXS.Utils.StrToFloatDef(FTempString[2]),
-              1 - GXS.Utils.StrToFloatDef(FTempString[3]), 0);
+              AffineVectorMake(StrToFloatDef(FTempString[2]),
+              1 - StrToFloatDef(FTempString[3]), 0);
             VertexWeightID[vnum] := StrToInt(FTempString[4]);
             VertexWeightCount[vnum] := StrToInt(FTempString[5]);
             if VertexWeightCount[vnum] > mesh.BonesPerVertex then
@@ -278,11 +278,11 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
           begin
             wnum := StrToInt(FTempString[1]);
             VertexBoneRef[wnum] := StrToInt(FTempString[2]);
-            VertexWeight[wnum] := GXS.Utils.StrToFloatDef(FTempString[3]);
+            VertexWeight[wnum] := StrToFloatDef(FTempString[3]);
             VertexWeighted[wnum] :=
-              AffineVectorMake(GXS.Utils.StrToFloatDef(FTempString[4]),
-              GXS.Utils.StrToFloatDef(FTempString[6]),
-              GXS.Utils.StrToFloatDef(FTempString[5]));
+              AffineVectorMake(StrToFloatDef(FTempString[4]),
+              StrToFloatDef(FTempString[6]),
+              StrToFloatDef(FTempString[5]));
           end;
         end;
       end;
@@ -360,12 +360,12 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
       FTempString.CommaText := temp;
       if FTempString.Count >= 6 then
       begin
-        pos := AffineVectorMake(GXS.Utils.StrToFloatDef(FTempString[0]),
-          GXS.Utils.StrToFloatDef(FTempString[1]),
-          GXS.Utils.StrToFloatDef(FTempString[2]));
-        quat := QuaternionMakeFromImag(GXS.Utils.StrToFloatDef(FTempString[3]),
-          GXS.Utils.StrToFloatDef(FTempString[4]),
-          GXS.Utils.StrToFloatDef(FTempString[5]));
+        pos := AffineVectorMake(StrToFloatDef(FTempString[0]),
+          StrToFloatDef(FTempString[1]),
+          StrToFloatDef(FTempString[2]));
+        quat := QuaternionMakeFromImag(StrToFloatDef(FTempString[3]),
+          StrToFloatDef(FTempString[4]),
+          StrToFloatDef(FTempString[5]));
         FFramePositions.Add(pos);
         FFrameQuaternions.Add(quat);
       end;
@@ -397,32 +397,32 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
 
         if FJointFlags[i] and 1 > 0 then
         begin
-          pos.X := GXS.Utils.StrToFloatDef(FTempString[j]);
+          pos.X := StrToFloatDef(FTempString[j]);
           Inc(j);
         end;
         if FJointFlags[i] and 2 > 0 then
         begin
-          pos.Y := GXS.Utils.StrToFloatDef(FTempString[j]);
+          pos.Y := StrToFloatDef(FTempString[j]);
           Inc(j);
         end;
         if FJointFlags[i] and 4 > 0 then
         begin
-          pos.Z := GXS.Utils.StrToFloatDef(FTempString[j]);
+          pos.Z := StrToFloatDef(FTempString[j]);
           Inc(j);
         end;
 
         if FJointFlags[i] and 8 > 0 then
         begin
-          quat.ImagPart.X := GXS.Utils.StrToFloatDef(FTempString[j]);
+          quat.ImagPart.X := StrToFloatDef(FTempString[j]);
           Inc(j);
         end;
         if FJointFlags[i] and 16 > 0 then
         begin
-          quat.ImagPart.Y := GXS.Utils.StrToFloatDef(FTempString[j]);
+          quat.ImagPart.Y := StrToFloatDef(FTempString[j]);
           Inc(j);
         end;
         if FJointFlags[i] and 32 > 0 then
-          quat.ImagPart.Z := GXS.Utils.StrToFloatDef(FTempString[j]);
+          quat.ImagPart.Z := StrToFloatDef(FTempString[j]);
       end;
 
       pos := AffineVectorMake(pos.X, pos.Z, pos.Y);

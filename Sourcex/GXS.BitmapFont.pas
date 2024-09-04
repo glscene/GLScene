@@ -26,7 +26,10 @@ uses
   GXS.Context,
   GXS.Texture,
   GXS.State,
-  GXS.Utils,
+
+  GLScene.Utils,
+  GXS.ImageUtils,
+
   GXS.Graphics,
   GXS.Color,
   GXS.BaseClasses,

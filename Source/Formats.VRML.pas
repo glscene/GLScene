@@ -17,7 +17,7 @@ uses
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLS.VectorLists,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TVRMLNode = class

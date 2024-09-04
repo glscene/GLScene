@@ -23,7 +23,7 @@ uses
   GLS.GeomObjects,
   GLS.Cadencer,
   GLSL.UserShader,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.Graph,
   GLScene.VectorTypes,
   GLS.SkyDome,

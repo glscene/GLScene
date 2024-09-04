@@ -24,7 +24,7 @@ uses
   FMX.Graphics,
   FMX.Controls,
   FMX.Menus,
-  GXS.Utils,
+  GXS.ImageUtils,
   GXS.Scene;
 
 type

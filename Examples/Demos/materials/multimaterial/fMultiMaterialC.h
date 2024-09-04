@@ -21,7 +21,7 @@
 #include "GLS.Coordinates.hpp"
 
 #include "GLS.BaseClasses.hpp"
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 #include "GLSL.MultiMaterialShader.hpp"
 #include "GLSL.TextureShaders.hpp"
 

@@ -218,7 +218,6 @@ contains
   GXS.Trail in '..\SourceX\GXS.Trail.pas',
   GXS.Tree in '..\SourceX\GXS.Tree.pas',
   GXS.Triangulation in '..\SourceX\GXS.Triangulation.pas',
-  GXS.Utils in '..\SourceX\GXS.Utils.pas',
   GXS.VectorFileObjects in '..\SourceX\GXS.VectorFileObjects.pas',
   GXS.VerletClothify in '..\SourceX\GXS.VerletClothify.pas',
   GXS.VerletTypes in '..\SourceX\GXS.VerletTypes.pas',
@@ -240,7 +239,6 @@ contains
   GXS.GeometryCoordinates in '..\SourceX\GXS.GeometryCoordinates.pas',
   GXS.PipelineTransformation in '..\SourceX\GXS.PipelineTransformation.pas',
   GXS.Generics in '..\SourceX\GXS.Generics.pas',
-  GXS.RGBE in '..\SourceX\GXS.RGBE.pas',
   GXS.OpenGL in '..\SourceX\GXS.OpenGL.pas',
   GXS.ViewerOpenGL in '..\SourceX\GXS.ViewerOpenGL.pas',
   GXSL.AsmShader in '..\SourceX\GXSL.AsmShader.pas',
@@ -271,6 +269,8 @@ contains
   GXS.OpenGLAdapter in '..\Sourcex\GXS.OpenGLAdapter.pas',
   GLScene.Logger in '..\Source\GLScene.Logger.pas',
   GLScene.Spline in '..\Source\GLScene.Spline.pas',
-  GLScene.RandomLib in '..\Source\GLScene.RandomLib.pas';
+  GLScene.RandomLib in '..\Source\GLScene.RandomLib.pas',
+  GLScene.RGBE in '..\Source\GLScene.RGBE.pas',
+  GLScene.Utils in '..\Source\GLScene.Utils.pas';
 
 end.

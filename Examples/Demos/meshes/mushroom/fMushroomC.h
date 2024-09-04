@@ -21,7 +21,7 @@
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Texture.hpp"
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 #include "JPeg.hpp"
 
 //---------------------------------------------------------------------------

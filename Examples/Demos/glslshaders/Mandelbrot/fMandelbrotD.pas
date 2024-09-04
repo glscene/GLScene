@@ -24,7 +24,7 @@ uses
   GLS.Scene,
   GLS.Context,
   GLS.Keyboard,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.FileTGA,
   GLS.HUDObjects,
   GLS.BitmapFont,

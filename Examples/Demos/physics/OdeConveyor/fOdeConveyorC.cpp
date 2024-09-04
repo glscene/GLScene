@@ -15,7 +15,7 @@
 #pragma link "GLS.Objects"
 #pragma link "GLS.ODEManager"
 #pragma link "GLS.Scene"
-#pragma link "GLS.Utils"
+#pragma link "GLScene.Utils"
 #pragma link "GLS.SimpleNavigation"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"

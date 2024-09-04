@@ -22,7 +22,7 @@ uses
   GLS.VectorFileObjects,
   GLS.ShadowVolume,
   GLS.GeomObjects,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.FileLMTS,
   GLS.Context,
   GLScene.VectorGeometry,

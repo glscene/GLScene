@@ -14,7 +14,7 @@
 #include "GLS.Context.hpp"
 #include "GLS.State.hpp"
 
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 #include "JPeg.hpp"
 #include "GLS.BaseClasses.hpp"
 #include "GLS.Behaviours.hpp"

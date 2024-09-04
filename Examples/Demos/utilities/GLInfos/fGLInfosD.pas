@@ -35,7 +35,7 @@ uses
   GLSL.PostShaders,
   GLSL.CustomShader,
   GLSL.Shader,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.Keyboard,
   GLS.SoundManager,
   GLS.Sounds.BASS,

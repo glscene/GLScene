@@ -28,7 +28,7 @@ uses
   GLS.RenderContextInfo,
   GLS.State,
   GLScene.VectorTypes,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.TextureFormat;
 
 type

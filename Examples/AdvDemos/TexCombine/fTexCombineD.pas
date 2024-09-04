@@ -34,7 +34,7 @@ uses
   GLS.Graphics,
   GLScene.VectorGeometry,
   GLS.State,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TTTBMain = class(TForm)

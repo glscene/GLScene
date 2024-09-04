@@ -38,7 +38,7 @@ uses
   GLS.ODERagdoll,
   GLS.FileSMD,
   GLS.ODEUtils,
-  GLS.Utils;
+  GLScene.Utils;
 
 
 //Physic World ODE

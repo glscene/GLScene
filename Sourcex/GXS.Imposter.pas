@@ -20,6 +20,7 @@ uses
   GXS.Context,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
+  GLScene.Utils,
   GXS.PersistentClasses,
   GXS.Graphics,
   GXS.Color,
@@ -29,7 +30,7 @@ uses
   GXS.State,
   GXS.PipelineTransformation,
   GXS.TextureFormat,
-  GXS.Utils;
+  GXS.ImageUtils;
 
 type
   (* Imposter rendering options.

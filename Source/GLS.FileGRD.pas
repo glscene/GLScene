@@ -18,7 +18,7 @@ uses
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
   GLS.Graph,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   (* The GRD file represents ascii grid formats in 2D/3D.

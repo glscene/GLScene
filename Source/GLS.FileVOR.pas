@@ -17,7 +17,7 @@ uses
   GLScene.VectorGeometry,
   GLS.VectorLists,
   GLS.VectorFileObjects,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TVORHeader = packed record

@@ -53,7 +53,7 @@ uses
   GLScene.Strings,
   GLSL.Shader,
   GLSL.CustomShader,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TBumpMethod = (bmDot3TexCombiner, bmBasicARBFP);

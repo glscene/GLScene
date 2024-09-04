@@ -29,7 +29,7 @@ uses
   GLS.Objects,
   GLS.BitmapFont,
   GLS.WindowsFont,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,

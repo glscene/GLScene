@@ -28,7 +28,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLScene.VectorGeometry,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormSkeletal = class(TForm)

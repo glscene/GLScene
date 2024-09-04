@@ -30,7 +30,7 @@ uses
   GLS.VectorLists,
   GLS.RenderContextInfo,
   GLS.XOpenGL,
-  GLS.Utils,
+  GLScene.Utils,
   GLScene.VectorTypes,
   GLS.Texture;
 

@@ -34,7 +34,8 @@ uses
   GXS.Color,
   GXS.Coordinates,
   GXS.RenderContextInfo,
-  GXS.Utils;
+  GXS.ImageUtils,
+  GLScene.Utils;
 
 const
   cDefaultNormalMapScale = 0.125;
@@ -1464,7 +1465,7 @@ begin
         if not FAlreadyWarnedAboutMissingFile then
         begin
           FAlreadyWarnedAboutMissingFile := True;
-          MessageBoxOK(Format(strFailedOpenFileFromCurrentDir, [PictureFileName, GetCurrentDir]),strError);
+          GLOKMessageBox(Format(strFailedOpenFileFromCurrentDir, [PictureFileName, GetCurrentDir]),strError);
         end;
       end;
       Result := inherited GetBitmap32;

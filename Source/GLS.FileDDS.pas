@@ -23,7 +23,7 @@ uses
   GLS.TextureFormat,
   GLS.CompositeImage,
   GLS.MultiSampleImage,
-//  GLS.RGBE,
+//  GLScene.RGBE,
   GLS.ApplicationFileIO,
   GLS.Material,
   GLScene.Strings;

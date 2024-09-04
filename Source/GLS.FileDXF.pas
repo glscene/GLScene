@@ -26,7 +26,7 @@ uses
   GLS.Texture,
   GLS.VectorFileObjects,
   GLS.Material,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TGLDXFVectorFile = class(TGLVectorFile)

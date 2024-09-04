@@ -23,7 +23,7 @@
 #include "GLS.Material.hpp"          // Pascal unit
 #include "GLS.Keyboard.hpp"
 #include "GLS.FileMD2.hpp"
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 
 
 

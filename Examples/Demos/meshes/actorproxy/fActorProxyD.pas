@@ -30,7 +30,7 @@ uses
   GLS.Coordinates,
  
   GLS.BaseClasses,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.FileSMD;
 
 type

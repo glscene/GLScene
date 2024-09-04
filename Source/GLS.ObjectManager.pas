@@ -25,7 +25,8 @@ uses
   VCL.Menus,
 
   GLS.Scene,
-  GLS.Utils;
+  GLS.ImageUtils,
+  GLScene.Utils;
 
 type
   PSceneObjectEntry = ^TGLSceneObjectEntry;

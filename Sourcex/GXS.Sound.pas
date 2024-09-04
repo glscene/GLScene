@@ -19,7 +19,8 @@ uses
   GLScene.VectorGeometry,
   GXS.Cadencer,
   GXS.BaseClasses,
-  GXS.Utils;
+  GLScene.Utils,
+  GXS.ImageUtils;
 
 {$I GLScene.Defines.inc}
 

@@ -20,7 +20,7 @@ uses
   GLScene.VectorGeometry,
   GLS.Material,
   GLScene.Strings,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   (* The SMD vector file is Half-life's skeleton format.

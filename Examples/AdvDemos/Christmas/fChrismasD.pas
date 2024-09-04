@@ -44,7 +44,7 @@ uses
   BASS.Import,
   GLS.FireFX,
   GLS.FileWAV,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TMain = class(TForm)

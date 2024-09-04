@@ -2,7 +2,6 @@
 // The graphics engine GLScene https://github.com/glscene
 //
 unit GLS.Graphics;
-
 (*
    Utility class and functions to manipulate a bitmap in OpenGL's default
    byte order (GL_RGBA vs TBitmap's GL_BGRA)
@@ -11,7 +10,6 @@ unit GLS.Graphics;
    (http://www.g32.org), just make sure the USE_GRAPHICS32 conditionnal
    is active in GLScene.inc and recompile.
 *)
-
 interface
 
 {$I GLScene.Defines.inc}
@@ -42,7 +40,7 @@ uses
   GLS.Context,
   GLS.ImageUtils,
   GLS.Color,
-  GLS.Utils,
+  GLScene.Utils,
   GLScene.Logger;
 
 {$DEFINE PRF_HACK_PASSES}

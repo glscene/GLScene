@@ -20,11 +20,12 @@ uses
 
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
+  GLScene.Utils,
   GXS.VectorLists,
   GXS.PersistentClasses,
   GXS.BaseClasses,
   GXS.Scene,
-  GXS.Utils,
+  GXS.ImageUtils,
   GXS.Context,
   GXS.RenderContextInfo;
 

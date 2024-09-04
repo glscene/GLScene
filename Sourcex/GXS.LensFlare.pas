@@ -17,10 +17,11 @@ uses
   System.SysUtils,
   System.Math,
 
-  GXS.PersistentClasses,
-  GXS.BaseClasses,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
+  GLScene.Utils,
+  GXS.PersistentClasses,
+  GXS.BaseClasses,
   GXS.Scene,
   GXS.Objects,
   GXS.PipelineTransformation,
@@ -28,7 +29,7 @@ uses
   GXS.Color,
   GXS.RenderContextInfo,
   GXS.State,
-  GXS.Utils,
+  GXS.ImageUtils,
   GXS.TextureFormat;
 
 type

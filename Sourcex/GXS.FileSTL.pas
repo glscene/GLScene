@@ -20,7 +20,7 @@ uses
   GXS.VectorLists,
   GXS.VectorFileObjects,
   GXS.ApplicationFileIO,
-  GXS.Utils;
+  GXS.ImageUtils;
 
 type
   TSTLHeader = packed record

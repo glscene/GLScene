@@ -20,7 +20,7 @@ uses
 
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
-  GLS.Utils;
+  GLScene.Utils;
 
 
 type

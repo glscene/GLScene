@@ -2,7 +2,6 @@
 // The graphics engine GXScene https://github.com/glscene
 //
 unit GXS.Console;
-
 (*
    The console is a popdown window that appears on a game for text output/input.
    What is different compared to the original component?
@@ -32,7 +31,6 @@ unit GXS.Console;
       Allow long lines to continue on the next line
       May be SceneViewer should be a TControl to support the FullScreenViewer...
 *)
-
 interface
 
 {$I GLScene.Defines.inc}
@@ -49,6 +47,7 @@ uses
   GLScene.VectorTypes,
   GXS.PersistentClasses,
   GLScene.Strings,
+  GLScene.Utils,
 
   GXS.Coordinates,
   GXS.Scene,
@@ -58,8 +57,8 @@ uses
   GXS.BitmapFont,
   GXS.Context,
   GXS.Texture,
-  GXS.Utils,
-  GXS.Material;
+  GXS.Material,
+  GXS.ImageUtils;
 
 const
   CONSOLE_MAX_COMMANDS = 120;

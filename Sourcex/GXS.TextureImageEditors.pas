@@ -15,7 +15,7 @@ uses
 
   GXS.Texture,
   GXS.ProcTextures,
-  GXS.Utils;
+  GXS.ImageUtils;
 
 type
 
@@ -209,7 +209,7 @@ begin
       MinCut := StrToIntDef(buf, 0);
       buf := InputDlg(TgxProcTextureNoise.FriendlyName, 'Noise Sharpness',
         FloatToStr(NoiseSharpness));
-      NoiseSharpness := GXS.Utils.StrToFloatDef(buf, 0.9);
+      NoiseSharpness := StrToFloatDef(buf, 0.9);
       buf := InputDlg(TgxProcTextureNoise.FriendlyName, 'Random Seed',
         IntToStr(NoiseRandSeed));
       NoiseRandSeed := StrToIntDef(buf, 0);

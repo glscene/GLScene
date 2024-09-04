@@ -16,9 +16,9 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GXS.RGBE,
-  GXS.ApplicationFileIO,
+  GLScene.RGBE,
   GLScene.Strings,
+  GXS.ApplicationFileIO,
 
   GXS.Context,
   GXS.Graphics,

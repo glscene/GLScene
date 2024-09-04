@@ -23,7 +23,7 @@
 #include "GLS.MeshBSP.hpp"
 #include "GLS.MeshCSG.hpp"
 
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 
 
 

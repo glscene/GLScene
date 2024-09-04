@@ -25,7 +25,7 @@ uses
 
   GLS.Material,
   GLS.Coordinates,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.BaseClasses;
 
 type

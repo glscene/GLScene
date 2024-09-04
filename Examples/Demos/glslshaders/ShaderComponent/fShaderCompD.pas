@@ -28,7 +28,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.Utils,
+  GLScene.Utils,
 
   GLS.FileMD2,
   GLS.FileMS3D,

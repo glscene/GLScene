@@ -15,7 +15,7 @@ uses
   GXS.VectorLists,
   GXS.ApplicationFileIO,
   GXS.ParametricSurfaces,
-  GXS.Utils;
+  GXS.ImageUtils;
 
 type
 
@@ -68,7 +68,7 @@ procedure TgxNurbsVectorFile.LoadFromStream(stream: TStream);
         vals.CommaText := buf;
         for k := 0 to vals.Count - 1 do
           if vals[k] <> '' then
-            list.Add(GXS.Utils.StrToFloatDef(vals[k], 0));
+            list.Add(StrToFloatDef(vals[k], 0));
         Inc(idx);
       end;
       Result := idx;
@@ -92,9 +92,9 @@ procedure TgxNurbsVectorFile.LoadFromStream(stream: TStream);
           Break;
         vals.CommaText := buf;
         if vals.Count >= 3 then
-          list.Add(GXS.Utils.StrToFloatDef(vals[0], 0),
-            GXS.Utils.StrToFloatDef(vals[1], 0),
-            GXS.Utils.StrToFloatDef(vals[2], 0));
+          list.Add(StrToFloatDef(vals[0], 0),
+            StrToFloatDef(vals[1], 0),
+            StrToFloatDef(vals[2], 0));
         Inc(idx);
       end;
       Result := idx;

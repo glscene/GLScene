@@ -28,7 +28,7 @@
 #include "Formats.DDSImage.hpp"
 #include "GLS.FileMS3D.hpp"
 
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 #include "GLS.BaseClasses.hpp"
 #include "GLSL.Shader.hpp"
 #include "GLSL.BumpShaders.hpp"

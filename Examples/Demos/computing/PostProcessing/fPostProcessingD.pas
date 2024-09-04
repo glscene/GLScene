@@ -38,7 +38,7 @@ uses
   GLS.Context,
   GLSL.CustomShader,
   GLSL.Shader,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.Texture;
 
 type

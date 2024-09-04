@@ -34,7 +34,7 @@ uses
   GLS.BaseClasses,
   GLS.FireFX,
   GLS.GeomObjects,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TForm1 = class(TForm)

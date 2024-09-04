@@ -19,7 +19,7 @@ uses
   GLS.VectorLists,
   GLS.Texture,
   GLS.Material,
-  GLS.Utils;
+  GLScene.Utils;
 
 const
   GL_ASE_MAX_TEXURE_CHANNELS = 12; // maximum texture channels

@@ -25,7 +25,7 @@ uses
   GLS.PerlinPFX,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormBeer = class(TForm)

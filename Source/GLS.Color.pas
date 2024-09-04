@@ -21,7 +21,7 @@ uses
   GLScene.VectorGeometry,
   GLS.PersistentClasses,
   GLS.BaseClasses,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   PGLColorVector = ^TGLColorVector;

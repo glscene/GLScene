@@ -25,7 +25,7 @@ uses
   GLS.GeomObjects,
 
   GLS.Coordinates,
-  GLS.Utils,
+  GLScene.Utils,
   GLS.BaseClasses,
   GLS.File3DS;
 

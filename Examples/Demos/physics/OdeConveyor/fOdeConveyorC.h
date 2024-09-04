@@ -17,7 +17,7 @@
 #include "GLS.Objects.hpp"
 #include "GLS.ODEManager.hpp"
 #include "GLS.Scene.hpp"
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 #include "GLS.SimpleNavigation.hpp"
 #include "GLS.SceneViewer.hpp"
 //---------------------------------------------------------------------------

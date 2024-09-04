@@ -39,7 +39,7 @@ uses
 {$IFDEF Unicode}
   Sysutils,
 {$ENDIF}
-  GLS.Utils;
+  GLScene.Utils;
 
 // ------------------
 // ------------------ TGLGTSVectorFile ------------------

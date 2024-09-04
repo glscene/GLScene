@@ -15,7 +15,7 @@ uses
   System.SysUtils,
   System.SyncObjs,
    
-  GLS.Utils;
+  GLScene.Utils;
 
 
 const

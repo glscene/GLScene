@@ -30,7 +30,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.SimpleNavigation,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   TFormThor = class(TForm)

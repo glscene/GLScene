@@ -20,7 +20,7 @@ uses
   GLS.VectorLists,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
-  GLS.Utils;
+  GLScene.Utils;
 
 type
   (* The IDTF vector file (Intermediate Data Text File).

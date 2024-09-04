@@ -22,7 +22,7 @@
 #include "GLS.FileMD2.hpp"
 #include <Jpeg.hpp>
 #include "GLS.FileMD2.hpp"
-#include "GLS.Utils.hpp"
+#include "GLScene.Utils.hpp"
 #include "GLS.SimpleNavigation.hpp"
 
 //---------------------------------------------------------------------------

@@ -10,7 +10,7 @@
 #include <ComCtrls.hpp>
 #include <Vcl.Imaging.jpeg.hpp>
 
-#include <GLS.Utils.hpp>
+#include <GLScene.Utils.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
