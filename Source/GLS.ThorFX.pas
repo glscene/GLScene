@@ -29,7 +29,7 @@ uses
   GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.PipelineTransformation,
-  GLS.Manager,
+  GLScene.Manager,
   GLS.State,
   GLS.TextureFormat;
 

@@ -30,7 +30,7 @@ uses
   GLS.Navigator,
   GLS.RenderContextInfo,
   GLS.BaseClasses,
-  GLS.Manager,
+  GLScene.Manager,
   GLS.State;
 
 type

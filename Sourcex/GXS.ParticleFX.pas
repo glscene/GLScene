@@ -27,7 +27,7 @@ uses
   GLScene.Utils,
   GXS.PersistentClasses,
   GXS.VectorLists,
-  GXS.Manager,
+  GLScene.Manager,
   GXS.Scene,
   GXS.ImageUtils,
   GXS.State,

@@ -57,8 +57,8 @@ type
     constructor Create; override;
     destructor Destroy; override;
     procedure Assign(Src: TPersistent); override;
-    procedure WriteToFiler(writer: TGLVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGLVirtualReader); override;
+    procedure WriteToFiler(writer: TGVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGVirtualReader); override;
     procedure AddNulls(nbVals: Cardinal);
     procedure InsertNulls(Index: Integer; nbVals: Cardinal);
     procedure AdjustCapacityToAtLeast(const size: Integer);
@@ -98,8 +98,8 @@ type
   protected
     function GetItemAddress(Index: Integer): PFloatArray; inline;
   public
-    procedure WriteToFiler(writer: TGLVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGLVirtualReader); override;
+    procedure WriteToFiler(writer: TGVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGVirtualReader); override;
     procedure GetExtents(out min, max: TAffineVector); virtual;
     function Sum: TAffineVector;
     procedure Normalize; virtual;
@@ -750,7 +750,7 @@ begin
   AWriter.WriteString(lOutputText);
 end;
 
-procedure TGLBaseList.WriteToFiler(writer: TGLVirtualWriter);
+procedure TGLBaseList.WriteToFiler(writer: TGVirtualWriter);
 begin
   inherited;
   with writer do
@@ -763,7 +763,7 @@ begin
   end;
 end;
 
-procedure TGLBaseList.ReadFromFiler(reader: TGLVirtualReader);
+procedure TGLBaseList.ReadFromFiler(reader: TGVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -1011,7 +1011,7 @@ end;
 // ------------------ TGLBaseVectorList ------------------
 // ------------------
 
-procedure TGLBaseVectorList.WriteToFiler(writer: TGLVirtualWriter);
+procedure TGLBaseVectorList.WriteToFiler(writer: TGVirtualWriter);
 begin
   inherited;
   if Self is TGLTexPointList then
@@ -1023,7 +1023,7 @@ begin
   end;
 end;
 
-procedure TGLBaseVectorList.ReadFromFiler(reader: TGLVirtualReader);
+procedure TGLBaseVectorList.ReadFromFiler(reader: TGVirtualReader);
 var
   archiveVersion: Integer;
 begin

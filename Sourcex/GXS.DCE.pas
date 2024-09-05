@@ -34,7 +34,7 @@ uses
   GLScene.VectorGeometry,
   GXS.VectorLists,
   GXS.BaseClasses,
-  GXS.Manager,
+  GLScene.Manager,
   GLScene.VectorTypes,
   GLScene.Strings,
 

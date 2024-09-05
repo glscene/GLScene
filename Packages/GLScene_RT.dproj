@@ -277,7 +277,7 @@
         <DCCReference Include="..\Source\GLS.LensFlare.pas"/>
         <DCCReference Include="..\Source\GLS.LinePFX.pas"/>
         <DCCReference Include="..\Source\GLScene.Logger.pas"/>
-        <DCCReference Include="..\Source\GLS.Manager.pas"/>
+        <DCCReference Include="..\Source\GLScene.Manager.pas"/>
         <DCCReference Include="..\Source\GLS.Material.pas"/>
         <DCCReference Include="..\Source\GLS.MaterialEx.pas"/>
         <DCCReference Include="..\Source\GLS.MaterialMultiProxy.pas"/>

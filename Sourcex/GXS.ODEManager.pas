@@ -18,7 +18,7 @@ uses
   GXS.XOpenGL,
   GXS.XCollection,
   GLScene.VectorGeometry,
-  GXS.Manager,
+  GLScene.Manager,
 
   GXS.Scene,
   GXS.Texture,

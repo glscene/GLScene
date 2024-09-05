@@ -20,7 +20,7 @@ uses
   GLScene.VectorGeometry,
   GLS.PipelineTransformation,
   GLS.PersistentClasses,
-  GLS.Manager,
+  GLScene.Manager,
   GLS.XCollection,
   GLS.Scene,
   GLS.Context,

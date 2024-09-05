@@ -40,7 +40,7 @@ uses
   GLS.BaseClasses,
   GLS.Coordinates,
   GLS.RenderContextInfo,
-  GLS.Manager,
+  GLScene.Manager,
   GLS.TextureFormat;
 
 const
@@ -73,8 +73,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGLVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGLVirtualReader); override;
+    procedure WriteToFiler(writer: TGVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGVirtualReader); override;
     property Manager: TGLParticleFXManager read FManager write FManager;
     // Particle's ID, given at birth. ID is a value unique per manager.
     property ID: Integer read FID;
@@ -117,8 +117,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGLVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGLVirtualReader); override;
+    procedure WriteToFiler(writer: TGVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGVirtualReader); override;
     // Refers owner manager
     property Owner: TGLParticleFXManager read FOwner write FOwner;
     property Items[index: Integer]: TGLParticle read GetItems write SetItems; default;
@@ -816,7 +816,7 @@ begin
     FVelocity.V[Index] := aValue;
 end;
 
-procedure TGLParticle.WriteToFiler(writer: TGLVirtualWriter);
+procedure TGLParticle.WriteToFiler(writer: TGVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -829,7 +829,7 @@ begin
   end;
 end;
 
-procedure TGLParticle.ReadFromFiler(reader: TGLVirtualReader);
+procedure TGLParticle.ReadFromFiler(reader: TGVirtualReader);
 var
   archiveVersion: integer;
 begin
@@ -865,7 +865,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TGLParticleList.WriteToFiler(writer: TGLVirtualWriter);
+procedure TGLParticleList.WriteToFiler(writer: TGVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -875,7 +875,7 @@ begin
   end;
 end;
 
-procedure TGLParticleList.ReadFromFiler(reader: TGLVirtualReader);
+procedure TGLParticleList.ReadFromFiler(reader: TGVirtualReader);
 var
   archiveVersion: integer;
 begin

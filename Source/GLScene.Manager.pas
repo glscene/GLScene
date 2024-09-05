@@ -1,15 +1,15 @@
 //
-// The graphics engine GXScene https://github.com/glscene
+// The graphics engine GLScene https://github.com/glscene
 //
-unit GXS.Manager;
-
+unit GLScene.Manager;
 (*
-  Managers are used to manage many different kinds of clients in Scene.
+  Managers are used to manage many different kinds of clients in GLScene.
   They are registered so that when clients are loaded, the client can
   look up the manager + register themselves with it.
 *)
-
 interface
+
+{$I GLScene.Defines.inc}
 
 uses
   System.Classes,
@@ -20,10 +20,9 @@ procedure DeRegisterManager(aManager: TComponent);
 function FindManager(classType: TComponentClass; const managerName: String)
   : TComponent;
 
-// --------------------------------------------------------------------
+// ------------------------------------------------------
 implementation
-
-// --------------------------------------------------------------------
+// ------------------------------------------------------
 
 var
   vManagers: TList;
@@ -58,9 +57,9 @@ begin
         end;
 end;
 
-// ----------------------------------------
+// ============================================================
 initialization
-// ----------------------------------------
+// ============================================================
 
 finalization
 

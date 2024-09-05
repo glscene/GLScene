@@ -228,7 +228,6 @@ contains
   GXS.BaseClasses in '..\SourceX\GXS.BaseClasses.pas',
   GXS.CurvesAndSurfaces in '..\SourceX\GXS.CurvesAndSurfaces.pas',
   GXS.PAKArchive in '..\SourceX\GXS.PAKArchive.pas',
-  GXS.Manager in '..\SourceX\GXS.Manager.pas',
   GXS.PersistentClasses in '..\SourceX\GXS.PersistentClasses.pas',
   GXS.Polynomials in '..\SourceX\GXS.Polynomials.pas',
   GXS.SpacePartition in '..\SourceX\GXS.SpacePartition.pas',
@@ -271,6 +270,7 @@ contains
   GLScene.Spline in '..\Source\GLScene.Spline.pas',
   GLScene.RandomLib in '..\Source\GLScene.RandomLib.pas',
   GLScene.RGBE in '..\Source\GLScene.RGBE.pas',
-  GLScene.Utils in '..\Source\GLScene.Utils.pas';
+  GLScene.Utils in '..\Source\GLScene.Utils.pas',
+  GLScene.Manager in '..\Source\GLScene.Manager.pas';
 
 end.

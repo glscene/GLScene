@@ -27,7 +27,7 @@ uses
   GXS.BaseClasses,
   GXS.PersistentClasses,
   GXS.Scene,
-  GXS.Manager,
+  GLScene.Manager,
   GXS.Coordinates,
   GXS.Objects,
   GXS.GeomObjects,

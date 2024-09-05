@@ -164,8 +164,8 @@ type
     procedure Assign(Source: TPersistent); override;
     constructor CreateOwned(aOwner: TglFaceGroups); override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGLVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGLVirtualReader); override;
+    procedure WriteToFiler(writer: TGVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGVirtualReader); override;
     procedure Add(VertexIdx, NormalIdx, TexCoordIdx: Integer);
     procedure BuildList(var mrci: TGLRenderContextInfo); override;
     procedure AddToTriangles(aList: TGLAffineVectorList;
@@ -1397,7 +1397,7 @@ begin
 end;
 
 procedure TOBJFGVertexNormalTexIndexList.ReadFromFiler(
-  reader: TGLVirtualReader);
+  reader: TGVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -1421,7 +1421,7 @@ begin
 end;
 
 procedure TOBJFGVertexNormalTexIndexList.WriteToFiler(
-  writer: TGLVirtualWriter);
+  writer: TGVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do

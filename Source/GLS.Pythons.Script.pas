@@ -14,7 +14,7 @@ uses
 
   GLS.XCollection,
   GLS.ScriptBase,
-  GLS.Manager,
+  GLScene.Manager,
 
   Python.Engine;  // should be in ..\source dir!
 

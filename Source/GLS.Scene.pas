@@ -3250,7 +3250,7 @@ end;
 procedure TGLBaseSceneObject.RecTransformationChanged;
 var
   i: Integer;
-  list: PPointerObjectList;
+  list: PGPointerObjectList;
   matSet: TGLObjectChanges;
 begin
   matSet := [ocAbsoluteMatrix, ocInvAbsoluteMatrix];
@@ -3743,7 +3743,7 @@ procedure TGLBaseSceneObject.RenderChildren(firstChildIndex, lastChildIndex:
 var
   i: Integer;
 
-  plist: PPointerObjectList;
+  plist: PGPointerObjectList;
   obj: TGLBaseSceneObject;
   oldSorting: TGLObjectsSorting;
   oldCulling: TGLVisibilityCulling;

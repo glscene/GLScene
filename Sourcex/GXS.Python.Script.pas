@@ -14,7 +14,7 @@ uses
 
   GXS.XCollection,
   GXS.ScriptBase,
-  GXS.Manager,
+  GLScene.Manager,
 
   Python.Engine; // from ... current version of pyscript
 

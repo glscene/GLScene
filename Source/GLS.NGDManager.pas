@@ -30,7 +30,7 @@ uses
   GLS.BaseClasses,
   GLS.PersistentClasses,
   GLS.Scene,
-  GLS.Manager,
+  GLScene.Manager,
   GLS.Coordinates,
   GLS.Objects,
   GLS.GeomObjects,

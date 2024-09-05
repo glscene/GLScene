@@ -28,7 +28,7 @@ uses
   GXS.Navigator,
   GXS.RenderContextInfo,
   GXS.BaseClasses,
-  GXS.Manager,
+  GLScene.Manager,
   GXS.State;
 
 type

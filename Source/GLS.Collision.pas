@@ -22,7 +22,7 @@ uses
   GLS.VectorLists,
   GLS.VectorFileObjects,
   GLS.GeometryBB,
-  GLS.Manager;
+  GLScene.Manager;
 
 type
 

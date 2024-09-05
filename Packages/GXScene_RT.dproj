@@ -377,7 +377,6 @@
         <DCCReference Include="..\SourceX\GXS.BaseClasses.pas"/>
         <DCCReference Include="..\SourceX\GXS.CurvesAndSurfaces.pas"/>
         <DCCReference Include="..\SourceX\GXS.PAKArchive.pas"/>
-        <DCCReference Include="..\SourceX\GXS.Manager.pas"/>
         <DCCReference Include="..\SourceX\GXS.PersistentClasses.pas"/>
         <DCCReference Include="..\SourceX\GXS.Polynomials.pas"/>
         <DCCReference Include="..\SourceX\GXS.SpacePartition.pas"/>
@@ -421,6 +420,7 @@
         <DCCReference Include="..\Source\GLScene.RandomLib.pas"/>
         <DCCReference Include="..\Source\GLScene.RGBE.pas"/>
         <DCCReference Include="..\Source\GLScene.Utils.pas"/>
+        <DCCReference Include="..\Source\GLScene.Manager.pas"/>
         <None Include="..\Sourcex\GXS.Scene.inc"/>
         <None Include="..\Source\GLScene.Defines.inc"/>
         <BuildConfiguration Include="Base">

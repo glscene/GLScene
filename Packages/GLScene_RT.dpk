@@ -152,7 +152,7 @@ contains
   GLS.LensFlare in '..\Source\GLS.LensFlare.pas',
   GLS.LinePFX in '..\Source\GLS.LinePFX.pas',
   GLScene.Logger in '..\Source\GLScene.Logger.pas',
-  GLS.Manager in '..\Source\GLS.Manager.pas',
+  GLScene.Manager in '..\Source\GLScene.Manager.pas',
   GLS.Material in '..\Source\GLS.Material.pas',
   GLS.MaterialEx in '..\Source\GLS.MaterialEx.pas',
   GLS.MaterialMultiProxy in '..\Source\GLS.MaterialMultiProxy.pas',

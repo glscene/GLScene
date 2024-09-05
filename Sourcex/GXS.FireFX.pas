@@ -19,7 +19,7 @@ uses
   GXS.VectorLists,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GXS.Manager,
+  GLScene.Manager,
   GXS.Scene,
   GXS.Context,
   GXS.Cadencer,

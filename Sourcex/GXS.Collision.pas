@@ -19,7 +19,7 @@ uses
   GXS.VectorLists,
   GXS.VectorFileObjects,
   GXS.GeometryBB,
-  GXS.Manager,
+  GLScene.Manager,
   GLScene.VectorTypes;
 
 type

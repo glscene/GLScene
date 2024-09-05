@@ -45,7 +45,7 @@ uses
   GLS.BaseClasses,
   GLS.ProxyObjects,
   GLS.MultiProxy,
-  GLS.Manager,
+  GLScene.Manager,
   GLScene.Strings;
 
 type

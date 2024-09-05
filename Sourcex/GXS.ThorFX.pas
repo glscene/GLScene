@@ -28,7 +28,7 @@ uses
   GXS.BaseClasses,
   GXS.Coordinates,
   GXS.RenderContextInfo,
-  GXS.Manager,
+  GLScene.Manager,
   GXS.State,
   GXS.TextureFormat;
 
