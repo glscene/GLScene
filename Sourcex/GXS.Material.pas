@@ -21,7 +21,7 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.Utils,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.Strings,
   GXS.ApplicationFileIO,
 
@@ -573,8 +573,8 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure DestroyHandles;
-    procedure WriteToFiler(writer: TgxVirtualWriter);
-    procedure ReadFromFiler(reader: TgxVirtualReader);
+    procedure WriteToFiler(writer: TGVirtualWriter);
+    procedure ReadFromFiler(reader: TGVirtualReader);
     procedure SaveToStream(aStream: TStream); virtual;
     procedure LoadFromStream(aStream: TStream); virtual;
     procedure AddMaterialsFromStream(aStream: TStream);
@@ -2321,7 +2321,7 @@ begin
   Result := (FMaterials.Count > 0);
 end;
 
-procedure TgxMaterialLibrary.WriteToFiler(writer: TgxVirtualWriter);
+procedure TgxMaterialLibrary.WriteToFiler(writer: TGVirtualWriter);
 var
   i, j: Integer;
   libMat: TgxLibMaterial;
@@ -2489,7 +2489,7 @@ begin
   end;
 end;
 
-procedure TgxMaterialLibrary.ReadFromFiler(reader: TgxVirtualReader);
+procedure TgxMaterialLibrary.ReadFromFiler(reader: TGVirtualReader);
 var
   archiveVersion: Integer;
   libMat: TgxLibMaterial;
@@ -2662,9 +2662,9 @@ end;
 
 procedure TgxMaterialLibrary.SaveToStream(aStream: TStream);
 var
-  wr: TgxBinaryWriter;
+  wr: TGBinaryWriter;
 begin
-  wr := TgxBinaryWriter.Create(aStream);
+  wr := TGBinaryWriter.Create(aStream);
   try
     Self.WriteToFiler(wr);
   finally
@@ -2674,9 +2674,9 @@ end;
 
 procedure TgxMaterialLibrary.LoadFromStream(aStream: TStream);
 var
-  rd: TgxBinaryReader;
+  rd: TGBinaryReader;
 begin
-  rd := TgxBinaryReader.Create(aStream);
+  rd := TGBinaryReader.Create(aStream);
   try
     Self.ReadFromFiler(rd);
   finally

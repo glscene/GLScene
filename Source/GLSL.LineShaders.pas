@@ -22,13 +22,13 @@ uses
   GLS.Scene,
   GLS.Color,
   GLS.Material,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.RenderContextInfo, 
   GLS.State, 
   GLS.Context;
 
 type
-  TGLLineSettings = class(TGLUpdateAbleObject)
+  TGLLineSettings = class(TGUpdateAbleObject)
   private
     FColor: TGLColor;
     FWidth: Single;

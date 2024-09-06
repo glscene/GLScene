@@ -18,7 +18,7 @@ uses
   GLScene.VectorGeometry,
   GLS.GeomObjects,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.File3DS,
   GLScene.Utils;
 

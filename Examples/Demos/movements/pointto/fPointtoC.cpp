@@ -13,7 +13,7 @@
 #pragma link "GLScene.VectorGeometry"
 #pragma link "GLS.Scene"
 #pragma link "GLS.Objects"
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Coordinates"
 
 #pragma resource "*.dfm"

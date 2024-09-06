@@ -30,7 +30,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.Keyboard,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLS.TextureFormat,
   GLScene.Utils

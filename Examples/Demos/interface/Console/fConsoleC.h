@@ -13,7 +13,7 @@
 #include "GLS.Objects.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 
 #include "GLS.Texture.hpp"
 #include "GLS.BitmapFont.hpp"

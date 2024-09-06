@@ -23,7 +23,7 @@ uses
   FMX.Effects,
 
   GLScene.VectorTypes,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GLScene.Utils,
   GXS.ImageUtils,

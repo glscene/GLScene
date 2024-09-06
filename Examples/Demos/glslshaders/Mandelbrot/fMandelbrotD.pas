@@ -33,7 +33,7 @@ uses
   GLS.Coordinates,
 
   GLS.RenderContextInfo,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLSL.CustomShader,
   GLSL.Shader;
 

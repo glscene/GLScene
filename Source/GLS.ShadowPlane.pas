@@ -20,7 +20,7 @@ uses
   System.Types,
 
   GLScene.OpenGLTokens,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.PipelineTransformation,
   GLScene.VectorTypes,
   GLS.Scene,

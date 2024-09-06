@@ -24,12 +24,12 @@ uses
   GLS.Cadencer,
   GLS.Coordinates,
  
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.SceneViewer,
   GLScene.VectorGeometry,
   GLS.Keyboard,
   GLS.SimpleNavigation;
- , GLS.ODEManager
+
 type
   TFormOdeConveyor = class(TForm)
     GLSceneViewer1: TGLSceneViewer;

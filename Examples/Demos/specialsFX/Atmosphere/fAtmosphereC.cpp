@@ -10,7 +10,7 @@
 #pragma link "GLS.Objects"
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.SceneViewer"
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Coordinates"
 
 #pragma link "GLS.LensFlare"

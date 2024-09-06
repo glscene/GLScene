@@ -19,7 +19,7 @@ uses
   System.Classes,
 
   GXS.XCollection,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GXS.Scene,
   GXS.PipelineTransformation,
   GLScene.VectorGeometry,

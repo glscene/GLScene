@@ -19,7 +19,7 @@ uses
   GLS.Context,
   GLScene.Utils,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.GeomObjects;
 
 type

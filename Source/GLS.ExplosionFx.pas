@@ -31,7 +31,7 @@ uses
   GLScene.VectorTypes,
   GLS.Scene,
   GLS.VectorFileObjects,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.XCollection,
   GLS.Coordinates,
   GLS.RenderContextInfo,
@@ -41,27 +41,27 @@ uses
 type
   TGLBExplosionFX = class(TGLObjectPreEffect)
   private
-    FTriList: TGLAffineVectorList;
-    FRotList: TGLAffineVectorList;
-    FDirList: TGLAffineVectorList;
-    FPosList: TGLAffineVectorList;
+    FTriList: TGAffineVectorList;
+    FRotList: TGAffineVectorList;
+    FDirList: TGAffineVectorList;
+    FPosList: TGAffineVectorList;
     FEnabled: boolean;
     FFaceCount: integer;
     FSpeed: single;
-    FDirection: TGLCoordinates;
+    FDirection: TGCoordinates;
     FMaxSteps: integer;
     FStep: integer;
-    procedure SetTriList(Value: TGLAffineVectorList);
-    procedure SetRotList(Value: TGLAffineVectorList);
-    procedure SetDirList(Value: TGLAffineVectorList);
-    procedure SetPosList(Value: TGLAffineVectorList);
-    procedure SetDirection(value: TGLCoordinates);
+    procedure SetTriList(Value: TGAffineVectorList);
+    procedure SetRotList(Value: TGAffineVectorList);
+    procedure SetDirList(Value: TGAffineVectorList);
+    procedure SetPosList(Value: TGAffineVectorList);
+    procedure SetDirection(value: TGCoordinates);
     procedure SetEnabled(value: boolean);
   protected
-    property TriList: TGLAffineVectorList read FTriList write SetTriList;
-    property RotList: TGLAffineVectorList read FRotList write SetRotList;
-    property DirList: TGLAffineVectorList read FDirList write SetDirList;
-    property PosList: TGLAffineVectorList read FPosList write SetPosList;
+    property TriList: TGAffineVectorList read FTriList write SetTriList;
+    property RotList: TGAffineVectorList read FRotList write SetRotList;
+    property DirList: TGAffineVectorList read FDirList write SetDirList;
+    property PosList: TGAffineVectorList read FPosList write SetPosList;
     property FaceCount: integer read FFAceCount write FFaceCount;
     procedure CacheInfo;
   public
@@ -78,7 +78,7 @@ type
   published
     property MaxSteps: integer read FMaxSteps write FMaxSteps;
     property Speed: single read FSpeed write FSpeed;
-    property Direction: TGLCoordinates read FDirection write SetDirection;
+    property Direction: TGCoordinates read FDirection write SetDirection;
   end;
 
 //-------------------------------------------------------------------------
@@ -92,11 +92,11 @@ implementation
 constructor TGLBExplosionFx.Create(aOwner: TXCollection);
 begin
   inherited Create(AOwner);
-  FTriList := TGLAffineVectorList.Create;
-  FRotList := TGLAffineVectorList.Create;
-  FDirList := TGLAffineVectorList.Create;
-  FPosList := TGLAffineVectorList.Create;
-  FDirection := TGLCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
+  FTriList := TGAffineVectorList.Create;
+  FRotList := TGAffineVectorList.Create;
+  FDirList := TGAffineVectorList.Create;
+  FPosList := TGAffineVectorList.Create;
+  FDirection := TGCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
 end;
 
 destructor TGLBExplosionFX.Destroy;
@@ -120,27 +120,27 @@ begin
   Result := 'Explosion FX';
 end;
 
-procedure TGLBExplosionFx.SetTriList(Value: TGLAffineVectorList);
+procedure TGLBExplosionFx.SetTriList(Value: TGAffineVectorList);
 begin
   FTriList.Assign(Value);
 end;
 
-procedure TGLBExplosionFx.SetRotList(Value: TGLAffineVectorList);
+procedure TGLBExplosionFx.SetRotList(Value: TGAffineVectorList);
 begin
   FRotList.Assign(Value);
 end;
 
-procedure TGLBExplosionFx.SetDirList(Value: TGLAffineVectorList);
+procedure TGLBExplosionFx.SetDirList(Value: TGAffineVectorList);
 begin
   FDirList.Assign(Value);
 end;
 
-procedure TGLBExplosionFx.SetPosList(Value: TGLAffineVectorList);
+procedure TGLBExplosionFx.SetPosList(Value: TGAffineVectorList);
 begin
   FPosList.Assign(Value);
 end;
 
-procedure TGLBExplosionFx.SetDirection(Value: TGLCoordinates);
+procedure TGLBExplosionFx.SetDirection(Value: TGCoordinates);
 begin
   Value.Normalize;
   FDirection.Assign(Value);

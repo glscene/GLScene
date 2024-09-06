@@ -9,7 +9,7 @@
 // ---------------------------------------------------------------------------
 #pragma package(smart_init)
 
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "GLS.BitmapFont"
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Coordinates"
@@ -470,9 +470,9 @@ void __fastcall TForm1::DOWakeProgress(TObject *Sender, const double deltaTime,
 	TGLVector sbp, sbr;
 
 	if (WakeVertices == NULL) {
-		WakeVertices = new TGLAffineVectorList();
-		WakeStretch = new TGLAffineVectorList();
-		WakeTime = new TGLSingleList();
+		WakeVertices = new TGAffineVectorList();
+		WakeStretch = new TGAffineVectorList();
+		WakeTime = new TGSingleList();
 	}
 
 	// enlarge current vertices

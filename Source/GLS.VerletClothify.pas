@@ -18,12 +18,12 @@ uses
   GLS.VectorFileObjects,
   GLS.VerletTypes,
   GLScene.VectorTypes,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorGeometry,
   GLS.Texture,
   GLS.RenderContextInfo,
   GLS.State,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.Context;
 
 type
@@ -145,7 +145,7 @@ type
   TGLMeshObjectVerletNode = class(TGLVerletNode)
   private
     MeshObject: TGLMeshObject;
-    VertexIndices: TGLIntegerList;
+    VertexIndices: TGIntegerList;
   public
     procedure AfterProgress; override;
     constructor CreateOwned(const AOwner: TGLVerletWorld); override;
@@ -336,7 +336,7 @@ end;
 constructor TGLMeshObjectVerletNode.CreateOwned(const AOwner: TGLVerletWorld);
 begin
   inherited;
-  VertexIndices := TGLIntegerList.Create;
+  VertexIndices := TGIntegerList.Create;
 end;
 
 destructor TGLMeshObjectVerletNode.Destroy;

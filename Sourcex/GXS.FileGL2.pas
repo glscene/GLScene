@@ -17,7 +17,7 @@ uses
   GXS.Material,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
-  GXS.VectorLists,
+  GLScene.VectorLists,
 
   Formatx.FileGL2;
 
@@ -175,7 +175,7 @@ var
   quat     : TQuaternion;
   pos      : TAffineVector;
   basepose : TgxSkeletonFrame;
-  bonelist : TgxIntegerList;
+  bonelist : TGIntegerList;
   bone     : TgxSkeletonBone;
 
 begin
@@ -186,7 +186,7 @@ begin
 
     TgxActor(Owner).Reference:=aarSkeleton;
 
-    bonelist:=TgxIntegerList.Create;
+    bonelist:=TGIntegerList.Create;
     for i:=0 to GLAFile.AnimHeader.numBones-1 do
       bonelist.Add(i);
     while bonelist.count>0 do begin

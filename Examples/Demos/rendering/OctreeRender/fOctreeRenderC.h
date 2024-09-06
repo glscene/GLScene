@@ -3,7 +3,7 @@
 #define fOctreeRenderCH
 //---------------------------------------------------------------------------
 #include <vcl.h>
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.Coordinates.hpp"
 

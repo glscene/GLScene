@@ -40,7 +40,7 @@ uses
   GLScene.VectorGeometry,
   GLS.Material,
   GLS.Graphics,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.State,
@@ -316,7 +316,7 @@ type
   private
     FVertexProgramHandle: TGLARBVertexProgramHandle;
     FFragmentProgramHandle: TGLARBFragmentProgramHandle;
-    FLightIDs: TGLIntegerList;
+    FLightIDs: TGIntegerList;
     FLightsEnabled: Integer;
     FBumpMethod: TBumpMethod;
     FBumpSpace: TBumpSpace;
@@ -1189,7 +1189,7 @@ end;
 constructor TGLBumpShader.Create(AOwner: TComponent);
 begin
   inherited;
-  FLightIDs := TGLIntegerList.Create;
+  FLightIDs := TGIntegerList.Create;
   FBumpMethod := bmDot3TexCombiner;
   FBumpSpace := bsObject;
   FBumpOptions := [];

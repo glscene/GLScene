@@ -15,7 +15,7 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GXS.MeshUtils;
 
 type
@@ -76,8 +76,8 @@ type
     (* Saves content to stream in OCT format.
       The Header is automatically prepared before streaming. *)
     procedure SaveToStream(aStream: TStream);
-    procedure AddTriangles(vertexCoords: TgxAffineVectorList;
-      texMapCoords: TgxAffineVectorList; const textureName: String);
+    procedure AddTriangles(vertexCoords: TGAffineVectorList;
+      texMapCoords: TGAffineVectorList; const textureName: String);
     procedure AddLight(const lightPos: TAffineVector; const lightColor: TVector4f;
       lightIntensity: Integer);
   end;
@@ -136,8 +136,8 @@ begin
   end;
 end;
 
-procedure TOCTFile.AddTriangles(vertexCoords: TgxAffineVectorList;
-  texMapCoords: TgxAffineVectorList; const textureName: String);
+procedure TOCTFile.AddTriangles(vertexCoords: TGAffineVectorList;
+  texMapCoords: TGAffineVectorList; const textureName: String);
 var
   i: Integer;
   baseIdx, texIdx: Integer;

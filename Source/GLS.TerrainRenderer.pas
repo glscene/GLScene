@@ -27,7 +27,7 @@ uses
   GLScene.VectorGeometry,
   GLS.Context,
   GLS.ROAMPatch,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.RenderContextInfo,
   GLS.XOpenGL,
   GLScene.Utils,
@@ -67,9 +67,9 @@ type
     FLastTriangleCount: Integer;
     FTilesPerTexture: Single;
     FMaxCLODTriangles, FCLODPrecision: Integer;
-    FBufferVertices: TGLAffineVectorList;
-    FBufferTexPoints: TGLTexPointList;
-    FBufferVertexIndices: TGLIntegerList;
+    FBufferVertices: TGAffineVectorList;
+    FBufferTexPoints: TGTexPointList;
+    FBufferVertexIndices: TGIntegerList;
     FMaterialLibrary: TGLMaterialLibrary;
     FOnGetTerrainBounds: TGetTerrainBoundsEvent;
     FOnPatchPostRender: TPatchPostRenderEvent;
@@ -241,9 +241,9 @@ begin
   FMaxCLODTriangles := 65536;
   FCLODPrecision := 100;
   FOcclusionTesselate := totTesselateIfVisible;
-  FBufferVertices := TGLAffineVectorList.Create;
-  FBufferTexPoints := TGLTexPointList.Create;
-  FBufferVertexIndices := TGLIntegerList.Create;
+  FBufferVertices := TGAffineVectorList.Create;
+  FBufferTexPoints := TGTexPointList.Create;
+  FBufferVertexIndices := TGIntegerList.Create;
   TileManagement := [tmClearUsedFlags, tmMarkUsedTiles, tmReleaseUnusedTiles,
     tmAllocateNewTiles];
 end;

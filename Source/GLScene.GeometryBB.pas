@@ -1,7 +1,7 @@
 //
-// The graphics engine GXScene https://github.com/glscene
+// The graphics engine GLScene https://github.com/glscene
 //
-unit GXS.GeometryBB;
+unit GLScene.GeometryBB;
 
 (* Calculations and manipulations on Bounding Boxes *)
 
@@ -13,25 +13,25 @@ uses
   System.SysUtils,
 
   GLScene.VectorGeometry,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorTypes;
 
 type
-  // Structure for storing Bounding Boxes
+  //  Structure for storing Bounding Boxes 
   PHmgBoundingBox = ^THmgBoundingBox;
 
   THmgBoundingBox = record
-    BBox: array [0 .. 7] of TVector4f;
+    BBox: array [0 .. 7] of TGLVector;
   end;
 
-  //  Structure for storing Axis Aligned Bounding Boxes
+  //  Structure for storing Axis Aligned Bounding Boxes 
   TAABB = record
     Min, Max: TAffineVector;
   end;
 
   PAABB = ^TAABB;
 
-  // Structure for storing BoundingSpheres. Similar to TAABB
+  // Structure for storing BoundingSpheres. Similar to TAABB 
   TBSphere = record
     // Center of Bounding Sphere
     Center: TAffineVector;
@@ -39,14 +39,15 @@ type
     Radius: Single;
   end;
 
-  TClipRect = record
+  TGClipRect = record
     Left, Top: Single;
     Right, Bottom: Single;
   end;
 
-  // Types for space intersection tests, like AABBContainsAABB or BSphereContainsAABB
+  (* Result type for space intersection tests, like AABBContainsAABB or
+    BSphereContainsAABB *)
   TSpaceContains = (ScNoOverlap, ScContainsFully, ScContainsPartially);
-  // Structure for storing the corners of an AABB, used with ExtractAABBCorners
+  // Structure for storing the corners of an AABB, used with ExtractAABBCorners 
   TAABBCorners = array [0 .. 7] of TAffineVector;
 
   const
@@ -64,22 +65,19 @@ type
 // Bounding Box functions
 // ------------------------------------------------------------------------------
 
-function BoundingBoxesAreEqual(const ABoundingBox1, ABoundingBox2
-  : THmgBoundingBox): Boolean; overload;
-function BoundingBoxesAreEqual(const ABoundingBox1, ABoundingBox2
-  : PHmgBoundingBox): Boolean; overload;
+function BoundingBoxesAreEqual(const ABoundingBox1, ABoundingBox2: THmgBoundingBox): Boolean; overload;
+function BoundingBoxesAreEqual(const ABoundingBox1, ABoundingBox2: PHmgBoundingBox): Boolean; overload;
 
-{  Adds a BB into another BB. 
-  The original BB (c1) is extended if necessary to contain c2. }
-function AddBB(var C1: THmgBoundingBox; const C2: THmgBoundingBox)
-  : THmgBoundingBox;
+(*  Adds a BB into another BB. 
+  The original BB (c1) is extended if necessary to contain c2. *)
+function AddBB(var C1: THmgBoundingBox; const C2: THmgBoundingBox): THmgBoundingBox;
 procedure AddAABB(var Aabb: TAABB; const Aabb1: TAABB);
 
-procedure SetBB(var C: THmgBoundingBox; const V: TVector4f);
-procedure SetAABB(var Bb: TAABB; const V: TVector4f); inline;
+procedure SetBB(var C: THmgBoundingBox; const V: TGLVector);
+procedure SetAABB(var Bb: TAABB; const V: TGLVector); inline;
 
-procedure BBTransform(var C: THmgBoundingBox; const M: TMatrix4f);
-procedure AABBTransform(var Bb: TAABB; const M: TMatrix4f);
+procedure BBTransform(var C: THmgBoundingBox; const M: TGLMatrix);
+procedure AABBTransform(var Bb: TAABB; const M: TGLMatrix);
 procedure AABBScale(var Bb: TAABB; const V: TAffineVector);
 
 function BBMinX(const C: THmgBoundingBox): Single;
@@ -91,29 +89,28 @@ function BBMaxZ(const C: THmgBoundingBox): Single;
 
 // Resize the AABB if necessary to include p.
 procedure AABBInclude(var Bb: TAABB; const P: TAffineVector);
-// Make an AABB that is formed by sweeping a sphere (or AABB) from Start to Dest
-procedure AABBFromSweep(var SweepAABB: TAABB; const Start, Dest: TVector4f; const Radius: Single);
-(* Returns the intersection AABB of two AABBs.
+// Make an AABB that is formed by sweeping a sphere (or AABB) from Start to Dest 
+procedure AABBFromSweep(var SweepAABB: TAABB; const Start, Dest: TGLVector; const Radius: Single);
+(* Returns the intersection AABB of two AABBs. 
   If the AABBs don't intersect, will return a degenerated AABB (plane, line or point). *)
 function AABBIntersection(const Aabb1, Aabb2: TAABB): TAABB;
-//  Extract AABB information from a BB.
+//  Extract AABB information from a BB. 
 function BBToAABB(const ABB: THmgBoundingBox): TAABB;
-// Converts an AABB to its canonical BB.
+// Converts an AABB to its canonical BB. 
 function AABBToBB(const AnAABB: TAABB): THmgBoundingBox; overload;
-// Transforms an AABB to a BB.
-function AABBToBB(const AnAABB: TAABB; const M: TMatrix4f): THmgBoundingBox; overload;
+// Transforms an AABB to a BB. 
+function AABBToBB(const AnAABB: TAABB; const M: TGLMatrix): THmgBoundingBox; overload;
 //  Adds delta to min and max of the AABB.
 procedure OffsetAABB(var Aabb: TAABB; const Delta: TAffineVector); overload;
-procedure OffsetAABB(var Aabb: TAABB; const Delta: TVector4f); overload;
+procedure OffsetAABB(var Aabb: TAABB; const Delta: TGLVector); overload;
 //  Adds delta to min and max of the BB.
 procedure OffsetBB(var Bb: THmgBoundingBox; const Delta: TAffineVector); overload;
-procedure OffsetBB(var Bb: THmgBoundingBox; const Delta: TVector4f); overload;
+procedure OffsetBB(var Bb: THmgBoundingBox; const Delta: TGLVector); overload;
 // The same as above but uses AddPoint() instead of AddVector().
-procedure OffsetBBPoint(var Bb: THmgBoundingBox; const Delta: TVector4f); overload;
+procedure OffsetBBPoint(var Bb: THmgBoundingBox; const Delta: TGLVector); overload;
 (* Determines if two AxisAlignedBoundingBoxes intersect.
   The matrices are the ones that convert one point to the other's AABB system *)
-function IntersectAABBs(const Aabb1, Aabb2: TAABB; const M1To2, M2To1: TMatrix4f)
-  : Boolean; overload;
+function IntersectAABBs(const Aabb1, Aabb2: TAABB; const M1To2, M2To1: TGLMatrix): Boolean; overload;
 // Checks whether two Bounding boxes aligned with the world axes collide in the XY plane.
 function IntersectAABBsAbsoluteXY(const Aabb1, Aabb2: TAABB): Boolean;
 // Checks whether two Bounding boxes aligned with the world axes collide in the XZ plane.
@@ -121,62 +118,75 @@ function IntersectAABBsAbsoluteXZ(const Aabb1, Aabb2: TAABB): Boolean;
 // Checks whether two Bounding boxes aligned with the world axes collide.
 function IntersectAABBsAbsolute(const Aabb1, Aabb2: TAABB): Boolean;
 (* Checks whether one Bounding box aligned with the world axes fits within
-  another Bounding box.  *)
+  another Bounding box *)
 function AABBFitsInAABBAbsolute(const Aabb1, Aabb2: TAABB): Boolean;
 
 // Checks if a point "p" is inside an AABB
 function PointInAABB(const P: TAffineVector; const Aabb: TAABB): Boolean; overload;
-function PointInAABB(const P: TVector4f; const Aabb: TAABB): Boolean; overload;
+function PointInAABB(const P: TGLVector; const Aabb: TAABB): Boolean; overload;
 
 // Checks if a plane (given by the normal+d) intersects the AABB
 function PlaneIntersectAABB(const Normal: TAffineVector; D: Single; const Aabb: TAABB): Boolean;
 // Compute the intersection between a plane and the AABB
-function PlaneAABBIntersection(const plane : THmgPlane; const AABB : TAABB) : TgxAffineVectorList;
-// Checks if a triangle (given by vertices v1, v2 and v3) intersects an AABB
+function PlaneAABBIntersection(const plane : THmgPlane; const AABB : TAABB) : TGAffineVectorList;
+(*
+  Original source code by Tomas Akenine-Möller
+  Based on the paper "Fast 3D Triangle-Box Overlap Testing"
+  http://www.cs.lth.se/home/Tomas_Akenine_Moller/pubs/tribox.pdf
+  http://jgt.akpeters.com/papers/AkenineMoller01/ (code)
+  Use separating axis theorem to test overlap between triangle and box
+  need to test for overlap in these directions:
+  1) the (x,y,z)-directions (actually, since we use the AABB of the triangle
+  we do not even need to test these)
+  2) normal of the triangle
+  3) crossproduct(edge from tri, {x,y,z}-directin)
+  this gives 3x3=9 more tests
+  Checks if a triangle (given by vertices v1, v2 and v3) intersects an AABB
+*)
 function TriangleIntersectAABB(const Aabb: TAABB; const V1, V2, V3: TAffineVector): Boolean;
 
-// Extract the corners from an AABB
+// Extract the corners from an AABB 
 procedure ExtractAABBCorners(const AABB: TAABB; var AABBCorners: TAABBCorners);
 
-// Convert an AABB to a BSphere
+// Convert an AABB to a BSphere 
 procedure AABBToBSphere(const AABB: TAABB; var BSphere: TBSphere);
-// Convert a BSphere to an AABB
+// Convert a BSphere to an AABB 
 procedure BSphereToAABB(const BSphere: TBSphere; var AABB: TAABB); overload;
 function BSphereToAABB(const Center: TAffineVector; Radius: Single): TAABB; overload;
-function BSphereToAABB(const Center: TVector4f; Radius: Single): TAABB; overload;
+function BSphereToAABB(const Center: TGLVector; Radius: Single): TAABB; overload;
 
-// Determines to which extent one AABB contains another AABB
+// Determines to which extent one AABB contains another AABB 
 function AABBContainsAABB(const MainAABB, TestAABB: TAABB): TSpaceContains;
 // Determines to which extent a BSphere contains an AABB
 function BSphereContainsAABB(const MainBSphere: TBSphere; const TestAABB: TAABB): TSpaceContains;
-// Determines to which extent one BSphere contains another BSphere
+// Determines to which extent one BSphere contains another BSphere 
 function BSphereContainsBSphere(const MainBSphere, TestBSphere: TBSphere): TSpaceContains;
-// Determines to which extent an AABB contains a BSpher
+// Determines to which extent an AABB contains a BSpher 
 function AABBContainsBSphere(const MainAABB: TAABB; const TestBSphere: TBSphere): TSpaceContains;
-// Determines to which extent a plane contains a BSphere
+// Determines to which extent a plane contains a BSphere 
 function PlaneContainsBSphere(const Location, Normal: TAffineVector;
   const TestBSphere: TBSphere): TSpaceContains;
-// Determines to which extent a frustum contains a BSphere
+// Determines to which extent a frustum contains a BSphere 
 function FrustumContainsBSphere(const Frustum: TFrustum;
   const TestBSphere: TBSphere): TSpaceContains;
-// Determines to which extent a frustum contains an AABB
+// Determines to which extent a frustum contains an AABB 
 function FrustumContainsAABB(const Frustum: TFrustum; const TestAABB: TAABB): TSpaceContains;
-// Clips a position to an AABB
+// Clips a position to an AABB 
 function ClipToAABB(const V: TAffineVector; const AABB: TAABB): TAffineVector;
-// Determines if one BSphere intersects another BSphere
+// Determines if one BSphere intersects another BSphere 
 function BSphereIntersectsBSphere(const MainBSphere, TestBSphere: TBSphere): Boolean;
 
-// Extend the clip rect to include given coordinate
-procedure IncludeInClipRect(var ClipRect: TClipRect; X, Y: Single);
+// Extend the clip rect to include given coordinate. 
+procedure IncludeInClipRect(var ClipRect: TGClipRect; X, Y: Single);
 // Projects an AABB and determines the extent of its projection as a clip rect.
-function AABBToClipRect(const Aabb: TAABB; const ModelViewProjection: TMatrix4f;
-  ViewportSizeX, ViewportSizeY: Integer): TClipRect;
+function AABBToClipRect(const Aabb: TAABB; const ModelViewProjection: TGLMatrix;
+  ViewportSizeX, ViewportSizeY: Integer): TGClipRect;
 
-// Finds the intersection between a ray and an axis aligned bounding box.
-function RayCastAABBIntersect(const RayOrigin, RayDirection: TVector4f;
+// Finds the intersection between a ray and an axis aligned bounding box. 
+function RayCastAABBIntersect(const RayOrigin, RayDirection: TGLVector;
   const Aabb: TAABB; out TNear, TFar: Single): Boolean; overload;
-function RayCastAABBIntersect(const RayOrigin, RayDirection: TVector4f;
-  const Aabb: TAABB; IntersectPoint: PVector4f = nil): Boolean; overload;
+function RayCastAABBIntersect(const RayOrigin, RayDirection: TGLVector;
+  const Aabb: TAABB; IntersectPoint: PGLVector = nil): Boolean; overload;
 
 type
   TPlanIndices = array [0 .. 3] of Integer;
@@ -194,10 +204,8 @@ const
     (0, 1, 5, 4), (2, 3, 7, 6));
   CDirPlan: TDirPlan = (0, 0, 1, 1, 2, 2);
 
-// --------------------------------------------------------------
-implementation
-// --------------------------------------------------------------
-
+implementation // -------------------------------------------------------------
+ 
 // ------------------------------------------------------------------------------
 // ----------------- BB functions -------------------------------------------
 // ------------------------------------------------------------------------------
@@ -270,7 +278,7 @@ begin
     Aabb.Max.Z := Aabb1.Max.Z;
 end;
 
-procedure SetBB(var C: THmgBoundingBox; const V: TVector4f);
+procedure SetBB(var C: THmgBoundingBox; const V: TGLVector);
 begin
   SetPlanBB(C, 0, V.X);
   SetPlanBB(C, 1, -V.X);
@@ -280,7 +288,7 @@ begin
   SetPlanBB(C, 5, -V.Z);
 end;
 
-procedure SetAABB(var Bb: TAABB; const V: TVector4f);
+procedure SetAABB(var Bb: TAABB; const V: TGLVector);
 begin
   Bb.Max.X := Abs(V.X);
   Bb.Max.Y := Abs(V.Y);
@@ -290,7 +298,7 @@ begin
   Bb.Min.Z := -Bb.Max.Z;
 end;
 
-procedure BBTransform(var C: THmgBoundingBox; const M: TMatrix4f);
+procedure BBTransform(var C: THmgBoundingBox; const M: TGLMatrix);
 var
   I: Integer;
 begin
@@ -298,7 +306,7 @@ begin
     C.BBox[I] := VectorTransform(C.BBox[I], M);
 end;
 
-procedure AABBTransform(var Bb: TAABB; const M: TMatrix4f);
+procedure AABBTransform(var Bb: TAABB; const M: TGLMatrix);
 var
   OldMin, OldMax: TAffineVector;
 begin
@@ -397,7 +405,7 @@ begin
     Bb.Max.Z := P.Z;
 end;
 
-procedure AABBFromSweep(var SweepAABB: TAABB; const Start, Dest: TVector4f;
+procedure AABBFromSweep(var SweepAABB: TAABB; const Start, Dest: TGLVector;
   const Radius: Single);
 begin
   if Start.X < Dest.X then
@@ -481,7 +489,7 @@ begin
   end;
 end;
 
-function AABBToBB(const AnAABB: TAABB; const M: TMatrix4f): THmgBoundingBox;
+function AABBToBB(const AnAABB: TAABB; const M: TGLMatrix): THmgBoundingBox;
 begin
   Result := AABBToBB(AnAABB);
   BBTransform(Result, M);
@@ -493,7 +501,7 @@ begin
   AddVector(Aabb.Max, Delta);
 end;
 
-procedure OffsetAABB(var Aabb: TAABB; const Delta: TVector4f);
+procedure OffsetAABB(var Aabb: TAABB; const Delta: TGLVector);
 begin
   AddVector(Aabb.Min, Delta);
   AddVector(Aabb.Max, Delta);
@@ -502,14 +510,14 @@ end;
 procedure OffsetBB(var Bb: THmgBoundingBox; const Delta: TAffineVector);
 var
   I: Integer;
-  TempVector: TVector4f;
+  TempVector: TGLVector;
 begin
   TempVector := VectorMake(Delta, 0);
   for I := 0 to 7 do
     AddVector(Bb.BBox[I], TempVector);
 end;
 
-procedure OffsetBB(var Bb: THmgBoundingBox; const Delta: TVector4f);
+procedure OffsetBB(var Bb: THmgBoundingBox; const Delta: TGLVector);
 var
   I: Integer;
 begin
@@ -517,7 +525,7 @@ begin
     AddVector(Bb.BBox[I], Delta);
 end;
 
-procedure OffsetBBPoint(var Bb: THmgBoundingBox; const Delta: TVector4f);
+procedure OffsetBBPoint(var Bb: THmgBoundingBox; const Delta: TGLVector);
 var
   I: Integer;
 begin
@@ -526,7 +534,7 @@ begin
 end;
 
 function IntersectAABBs(const Aabb1, Aabb2: TAABB;
-  const M1To2, M2To1: TMatrix4f): Boolean;
+  const M1To2, M2To1: TGLMatrix): Boolean;
 const
   CWires: array [0 .. 11, 0 .. 1] of Integer // Points of the wire
     = ((0, 1), (1, 2), (2, 3), (3, 0), (4, 5), (5, 6), (6, 7), (7, 4), (0, 4),
@@ -566,7 +574,7 @@ var
   Planes2: array [0 .. 5] of THmgPlane;
   I, T: Integer;
   V: TVertex;
-  P: TVector4f;
+  P: TGLVector;
 begin
   Result := False;
 
@@ -695,7 +703,7 @@ begin
     (P.Z >= Aabb.Min.Z);
 end;
 
-function PointInAABB(const P: TVector4f; const Aabb: TAABB): Boolean;
+function PointInAABB(const P: TGLVector; const Aabb: TAABB): Boolean;
 begin
   Result := (P.X <= Aabb.Max.X) and
     (P.X >= Aabb.Min.X) and (P.Y <= Aabb.Max.Y) and
@@ -741,7 +749,7 @@ begin
     Max := X2;
 end;
 
-function PlaneAABBIntersection(const plane : THmgPlane;const AABB : TAABB) : TgxAffineVectorList;
+function PlaneAABBIntersection(const plane : THmgPlane;const AABB : TAABB) : TGAffineVectorList;
 var
   i, j, annexe : Integer;
   index : array[0..2] of Integer;
@@ -761,7 +769,7 @@ begin
   box[0] := AABB.min;
   box[1] := AABB.max;
 
-  Result := TgxAffineVectorList.Create;
+  Result := TGAffineVectorList.Create;
 
   // loop on vertices
   for i := 0 to 7 do
@@ -842,18 +850,6 @@ end;
 
 function TriangleIntersectAABB(const Aabb: TAABB;
   const V1, V2, V3: TAffineVector): Boolean;
-// Original source code by Tomas Akenine-Möller
-// Based on the paper "Fast 3D Triangle-Box Overlap Testing"
-// http://www.cs.lth.se/home/Tomas_Akenine_Moller/pubs/tribox.pdf
-// http://jgt.akpeters.com/papers/AkenineMoller01/ (code)
-
-// use separating axis theorem to test overlap between triangle and box
-// need to test for overlap in these directions:
-// 1) the (x,y,z)-directions (actually, since we use the AABB of the triangle
-// we do not even need to test these)
-// 2) normal of the triangle
-// 3) crossproduct(edge from tri, {x,y,z}-directin)
-// this gives 3x3=9 more tests
 var
   Boxcenter, Boxhalfsize: TAffineVector;
   Tv0, Tv1, Tv2: TAffineVector;
@@ -1041,7 +1037,7 @@ begin
   Result.Max := VectorAdd(Center, Radius);
 end;
 
-function BSphereToAABB(const Center: TVector4f; Radius: Single): TAABB;
+function BSphereToAABB(const Center: TGLVector; Radius: Single): TAABB;
 begin
   SetVector(Result.Min, VectorSubtract(Center, Radius));
   SetVector(Result.Max, VectorAdd(Center, Radius));
@@ -1274,7 +1270,7 @@ begin
     Result.Z := AABB.Max.Z;
 end;
 
-procedure IncludeInClipRect(var ClipRect: TClipRect; X, Y: Single);
+procedure IncludeInClipRect(var ClipRect: TGClipRect; X, Y: Single);
 begin
   with ClipRect do
   begin
@@ -1289,11 +1285,11 @@ begin
   end;
 end;
 
-function AABBToClipRect(const Aabb: TAABB; const ModelViewProjection: TMatrix4f;
-  ViewportSizeX, ViewportSizeY: Integer): TClipRect;
+function AABBToClipRect(const Aabb: TAABB; const ModelViewProjection: TGLMatrix;
+  ViewportSizeX, ViewportSizeY: Integer): TGClipRect;
 var
   I: Integer;
-  V, Vt: TVector4f;
+  V, Vt: TGLVector;
   Minmax: array [0 .. 1] of PAffineVector;
 begin
   Minmax[0] := @Aabb.Min;
@@ -1323,7 +1319,7 @@ begin
   end;
 end;
 
-function RayCastAABBIntersect(const RayOrigin, RayDirection: TVector4f;
+function RayCastAABBIntersect(const RayOrigin, RayDirection: TGLVector;
   const Aabb: TAABB; out TNear, TFar: Single): Boolean; overload;
 const
   Infinity = 1.0 / 0.0;
@@ -1371,8 +1367,8 @@ begin
   Result := True;
 end;
 
-function RayCastAABBIntersect(const RayOrigin, RayDirection: TVector4f;
-  const Aabb: TAABB; IntersectPoint: PVector4f = nil): Boolean; overload;
+function RayCastAABBIntersect(const RayOrigin, RayDirection: TGLVector;
+  const Aabb: TAABB; IntersectPoint: PGLVector = nil): Boolean; overload;
 var
   TNear, TFar: Single;
 begin

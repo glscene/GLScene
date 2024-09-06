@@ -13,7 +13,7 @@ uses
   System.Classes,
   System.SysUtils,
   GLScene.VectorTypes,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GLScene.Strings;
 
 type
@@ -40,20 +40,20 @@ type
 
   TVRMLSingleArray = class(TVRMLNode)
   private
-    FValues: TgxSingleList;
+    FValues: TGSingleList;
   public
     constructor Create; override;
     destructor Destroy; override;
-    property Values: TgxSingleList read FValues;
+    property Values: TGSingleList read FValues;
   end;
 
   TVRMLIntegerArray = class(TVRMLNode)
   private
-    FValues: TgxIntegerList;
+    FValues: TGIntegerList;
   public
     constructor Create; override;
     destructor Destroy; override;
-    property Values: TgxIntegerList read FValues;
+    property Values: TGIntegerList read FValues;
   end;
 
   TVRMLMaterial = class(TVRMLNode)
@@ -270,7 +270,7 @@ end;
 constructor TVRMLSingleArray.Create;
 begin
   inherited;
-  FValues := TgxSingleList.Create;
+  FValues := TGSingleList.Create;
 end;
 
 destructor TVRMLSingleArray.Destroy;
@@ -287,7 +287,7 @@ end;
 constructor TVRMLIntegerArray.Create;
 begin
   inherited;
-  FValues := TgxIntegerList.Create;
+  FValues := TGIntegerList.Create;
 end;
 
 destructor TVRMLIntegerArray.Destroy;

@@ -9,7 +9,7 @@
 #pragma link "Vcl.Dialogs"
 #pragma link "GLS.Texture"
 #pragma link "GLS.ProcTextures"
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Coordinates"
 #pragma link "GLS.Objects"

@@ -30,7 +30,7 @@ uses
   GLS.Scene,
   GLS.State,
   GLS.Color,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.RenderContextInfo;
 
 type
@@ -61,7 +61,7 @@ type
 
   (* Stores an interlaced vertex list for direct use in OpenGL.
     Locking (hardware passthrough) is supported, see "Locked" property for details. *)
-  TGLVertexList = class(TGLUpdateAbleObject)
+  TGLVertexList = class(TGUpdateAbleObject)
   private
     FValues: PGLVertexDataArray;
     FCount: Integer;

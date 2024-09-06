@@ -29,7 +29,7 @@ uses
   GLS.FileMP3,
 
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.Utils
   ;
 

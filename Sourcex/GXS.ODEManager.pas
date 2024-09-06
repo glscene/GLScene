@@ -23,8 +23,8 @@ uses
   GXS.Scene,
   GXS.Texture,
   GXS.Objects,
-  GXS.PersistentClasses,
-  GXS.VectorLists,
+  GLScene.PersistentClasses,
+  GLScene.VectorLists,
   GXS.Color,
   GXS.Coordinates,
   GXS.RenderContextInfo,
@@ -66,7 +66,7 @@ type
     FOnCollision: TgxODECollisionEvent;
     FOnCustomCollision: TgxODECustomCollisionEvent;
     FNumContactJoints, FMaxContacts: Integer;
-    FODEBehaviours: TgxPersistentObjectList;
+    FODEBehaviours: TGPersistentObjectList;
     FRFContactList: TList;
     FIterations: Integer;
     FSolver: TgxODESolverMethod;
@@ -447,16 +447,16 @@ type
   TgxODEElementTriMesh = class(TgxODEElementBase)
   private
     FTriMeshData: PdxTriMeshData;
-    FVertices: TgxAffineVectorList;
-    FIndices: TgxIntegerList;
+    FVertices: TGAffineVectorList;
+    FIndices: TGIntegerList;
   protected
     procedure Initialize; override;
     procedure Finalize; override;
     function CalculateMass: TdMass; override;
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
-    procedure SetVertices(const Value: TgxAffineVectorList);
-    procedure SetIndices(const Value: TgxIntegerList);
+    procedure SetVertices(const Value: TGAffineVectorList);
+    procedure SetIndices(const Value: TGIntegerList);
   public
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
@@ -464,8 +464,8 @@ type
     class function FriendlyDescription: String; override;
     class function ItemCategory: String; override;
     procedure RefreshTriMeshData;
-    property Vertices: TgxAffineVectorList read FVertices write SetVertices;
-    property Indices: TgxIntegerList read FIndices write SetIndices;
+    property Vertices: TGAffineVectorList read FVertices write SetVertices;
+    property Indices: TGIntegerList read FIndices write SetIndices;
   end;
 
   // ODE plane implementation. 
@@ -809,7 +809,7 @@ type
     FTransform: TMatrix4f;
     FContactResolution: Single;
     FRenderContacts: Boolean;
-    FContactRenderPoints: TgxAffineVectorList;
+    FContactRenderPoints: TGAffineVectorList;
     FPointSize: Single;
     FContactColor: TgxColor;
   protected
@@ -1292,7 +1292,7 @@ begin
 
   inherited;
 
-  FODEBehaviours := TgxPersistentObjectList.Create;
+  FODEBehaviours := TGPersistentObjectList.Create;
   FRFContactList := TList.Create;
 
   FGravity := TgxCoordinates.CreateInitialized(Self, NullHmgPoint, csVector);
@@ -3454,8 +3454,8 @@ end;
 constructor TgxODEElementTriMesh.Create(AOwner: TXCollection);
 begin
   inherited;
-  FVertices := TgxAffineVectorList.Create;
-  FIndices := TgxIntegerList.Create;
+  FVertices := TGAffineVectorList.Create;
+  FIndices := TGIntegerList.Create;
 end;
 
 destructor TgxODEElementTriMesh.Destroy;
@@ -3539,13 +3539,13 @@ begin
   Result := inherited CalculateMass;
 end;
 
-procedure TgxODEElementTriMesh.SetVertices(const Value: TgxAffineVectorList);
+procedure TgxODEElementTriMesh.SetVertices(const Value: TGAffineVectorList);
 begin
   FVertices.Assign(Value);
   RefreshTriMeshData;
 end;
 
-procedure TgxODEElementTriMesh.SetIndices(const Value: TgxIntegerList);
+procedure TgxODEElementTriMesh.SetIndices(const Value: TGIntegerList);
 begin
   FIndices.Assign(Value);
   RefreshTriMeshData;
@@ -5047,7 +5047,7 @@ begin
   FContactResolution := 1;
 
   FRenderContacts := False;
-  FContactRenderPoints := TgxAffineVectorList.Create;
+  FContactRenderPoints := TGAffineVectorList.Create;
   FContactColor := TgxColor.CreateInitialized(Self, clrRed, NotifyChange);
   FPointSize := 3;
 end;

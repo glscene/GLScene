@@ -27,7 +27,7 @@ uses
   GLS.HUDObjects,
   GLS.Coordinates,
 
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.RenderContextInfo,
 
   DWS.Sript,

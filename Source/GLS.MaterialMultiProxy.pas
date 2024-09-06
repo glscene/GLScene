@@ -37,9 +37,9 @@ uses
   GLS.Material,
   GLS.Silhouette,
   GLScene.Strings,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.RenderContextInfo,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Context,
   GLScene.VectorTypes,
   GLS.PipelineTransformation;
@@ -48,7 +48,7 @@ type
   TGLMaterialMultiProxy = class;
 
   {MasterObject description for a MultiProxy object. }
-  TGLMaterialMultiProxyMaster = class(TGLInterfacedCollectionItem, IGLMaterialLibrarySupported)
+  TGLMaterialMultiProxyMaster = class(TGInterfacedCollectionItem, IGLMaterialLibrarySupported)
   private
     FMasterObject: TGLBaseSceneObject;
     FMasterLibMaterial: TGLLibMaterial;
@@ -335,8 +335,8 @@ end;
 
 procedure TGLMaterialMultiProxyMasters.NotifyChange;
 begin
-  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TGLUpdateAbleComponent) then
-    TGLUpdateAbleComponent(GetOwner).NotifyChange(Self);
+  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TGUpdateAbleComponent) then
+    TGUpdateAbleComponent(GetOwner).NotifyChange(Self);
 end;
 
 procedure TGLMaterialMultiProxyMasters.EndUpdate;

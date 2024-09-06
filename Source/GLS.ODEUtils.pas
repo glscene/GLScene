@@ -24,8 +24,8 @@ uses
   GLScene.VectorGeometry,
   GLS.Scene,
   GLS.Context,
-  GLS.PersistentClasses,
-  GLS.VectorLists,
+  GLScene.PersistentClasses,
+  GLScene.VectorLists,
   GLS.Coordinates,
   GLS.Objects,
   GLS.VerletClothify,
@@ -490,7 +490,7 @@ var
   FaceExtractor: TGLFaceExtractor;
   VertexCount: integer;
   Vertex: TAffineVector;
-  OffsetList: TGLIntegerList;
+  OffsetList: TGIntegerList;
   Face: TGLFace;
   iMO: integer;
   TriMeshData: PdxTriMeshData;
@@ -499,7 +499,7 @@ begin
   FaceExtractor := TGLFaceExtractor.Create(GLBaseMesh);
 
   try
-    OffsetList := TGLIntegerList.Create;
+    OffsetList := TGIntegerList.Create;
 
     FaceExtractor.ProcessMesh;
 

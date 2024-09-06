@@ -12,7 +12,7 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLScene.VectorGeometry,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Scene,
   GLS.Objects,
   GLS.Cadencer,

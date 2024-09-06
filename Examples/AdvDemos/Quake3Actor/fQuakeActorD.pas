@@ -21,14 +21,14 @@ uses
   GLScene.VectorTypes,
   GLS.SceneViewer,
   GLS.VectorFileObjects,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.ShadowPlane,
   GLScene.VectorGeometry,
   GLS.Texture,
   GLS.ParticleFX,
   GLS.Material,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
 
   GLS.FileMD3, // MD3 loading into GLScene
   GLS.FileQ3MD3; // Quake3 helper structures and functions

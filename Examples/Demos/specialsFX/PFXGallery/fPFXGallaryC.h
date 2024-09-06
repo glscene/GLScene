@@ -9,7 +9,7 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Graphics.hpp>
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.Behaviours.hpp"
 #include "GLS.BitmapFont.hpp"
 #include "GLS.Blur.hpp"

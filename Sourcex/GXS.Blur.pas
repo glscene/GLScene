@@ -19,7 +19,7 @@ uses
   FMX.Graphics,
 
   GLScene.VectorTypes,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GXS.Scene,
   GXS.Coordinates,
   GLScene.VectorGeometry,

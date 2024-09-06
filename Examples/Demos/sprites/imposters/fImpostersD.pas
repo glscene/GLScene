@@ -30,10 +30,10 @@ uses
   GLScene.VectorGeometry,
   GLS.AsyncTimer,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Material,
   GLS.CompositeImage,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorTypes, GLS.SimpleNavigation;
 
 type

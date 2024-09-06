@@ -22,7 +22,7 @@
 #include "GLS.Objects.hpp"
 #include "GLS.TerrainRenderer.hpp"
 #include "GLS.Scene.hpp"
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.Coordinates.hpp"
 
 #include "GLS.Material.hpp"

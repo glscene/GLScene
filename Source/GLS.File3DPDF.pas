@@ -15,9 +15,9 @@ uses
   System.StrUtils,
 
   GLScene.VectorTypes,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
   GLScene.Utils;
@@ -260,7 +260,7 @@ var
   FaceCount, ModelPositionCount, NormalCount, I, J: Integer;
   FacePositionList, NormalList, ModelPositionList, ModelNormalList, FaceShadingList: String;
   Lines: TStringList;
-  Indicies: TGLIntegerList;
+  Indicies: TGIntegerList;
 
   function FormatVector(const AVector: TAffineVector): string;
   begin

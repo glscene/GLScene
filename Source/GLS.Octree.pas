@@ -18,8 +18,8 @@ uses
   System.Classes,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLS.VectorLists,
-  GLS.GeometryBB,
+  GLScene.VectorLists,
+  GLScene.GeometryBB,
   GLS.Context;
 
 type
@@ -94,14 +94,14 @@ type
     MeshCount: Integer; // number of meshes currently cut into the Octree
     ResultArray: array of PGLOctreeNode;
     // holds the result nodes of various calls
-    TriangleFiler: TGLAffineVectorList;
+    TriangleFiler: TGAffineVectorList;
     procedure WalkSphereToLeaf(Onode: PGLOctreeNode; const P: TGLVector;
       Radius: Single);
     (*  Initializes the tree from the triangle list.
       All triangles must be contained in the world extent to be properly
       taken into account. *)
     procedure InitializeTree(const AWorldMinExtent, AWorldMaxExtent
-      : TAffineVector; const ATriangles: TGLAffineVectorList;
+      : TAffineVector; const ATriangles: TGAffineVectorList;
       const ATreeDepth: Integer);
     procedure DisposeTree;
     destructor Destroy; override;
@@ -114,13 +114,13 @@ type
     function TriangleIntersect(const V1, V2, V3: TAffineVector): Boolean;
     //  Returns all triangles in the AABB.
     function GetTrianglesFromNodesIntersectingAABB(const ObjAABB: TAABB)
-      : TGLAffineVectorList;
+      : TGAffineVectorList;
     //  Returns all triangles in an arbitrarily placed cube
     function GetTrianglesFromNodesIntersectingCube(const ObjAABB: TAABB;
-      const ObjToSelf, SelfToObj: TGLMatrix): TGLAffineVectorList;
+      const ObjToSelf, SelfToObj: TGLMatrix): TGAffineVectorList;
     //  Checks if an AABB intersects a face on the octree
     function AABBIntersect(const AABB: TAABB; const M1to2, M2to1: TGLMatrix;
-      Triangles: TGLAffineVectorList = nil): Boolean;
+      Triangles: TGAffineVectorList = nil): Boolean;
     // function SphereIntersect(position:TAffineVector; radius:single);
   end;
 
@@ -876,7 +876,7 @@ begin
 end;
 
 procedure TGLOctree.InitializeTree(const AWorldMinExtent, AWorldMaxExtent
-  : TAffineVector; const ATriangles: TGLAffineVectorList;
+  : TAffineVector; const ATriangles: TGAffineVectorList;
   const ATreeDepth: Integer);
 var
   N: Integer;
@@ -887,7 +887,7 @@ begin
 
   // set up the filer data for this mesh
   if TriangleFiler = nil then
-    TriangleFiler := TGLAffineVectorList.Create;
+    TriangleFiler := TGAffineVectorList.Create;
   TriangleFiler.Assign(ATriangles);
 
   New(Newnode);
@@ -1410,9 +1410,9 @@ begin
 end;
 
 function TGLOctree.AABBIntersect(const AABB: TAABB; const M1to2, M2to1: TGLMatrix;
-  Triangles: TGLAffineVectorList = nil): Boolean;
+  Triangles: TGAffineVectorList = nil): Boolean;
 var
-  TriList: TGLAffineVectorList;
+  TriList: TGAffineVectorList;
   I: Integer;
 begin
   // get triangles in nodes intersected by the aabb
@@ -1447,7 +1447,7 @@ begin
 end;
 
 function TGLOctree.GetTrianglesFromNodesIntersectingAABB(const ObjAABB: TAABB)
-  : TGLAffineVectorList;
+  : TGAffineVectorList;
 var
   AABB1: TAABB;
 
@@ -1477,7 +1477,7 @@ var
 var
   I, K: Integer;
   P: PGLOctreeNode;
-  TriangleIndices: TGLIntegerList;
+  TriangleIndices: TGIntegerList;
 
 begin
   // Calc AABBs
@@ -1487,8 +1487,8 @@ begin
   if Assigned(RootNode) then
     HandleNode(RootNode);
 
-  Result := TGLAffineVectorList.Create;
-  TriangleIndices := TGLIntegerList.Create;
+  Result := TGAffineVectorList.Create;
+  TriangleIndices := TGIntegerList.Create;
   try
     // fill the triangles from all nodes in the resultarray to AL
     for I := 0 to High(ResultArray) do
@@ -1511,7 +1511,7 @@ begin
 end;
 
 function TGLOctree.GetTrianglesFromNodesIntersectingCube(const ObjAABB: TAABB;
-  const ObjToSelf, SelfToObj: TGLMatrix): TGLAffineVectorList;
+  const ObjToSelf, SelfToObj: TGLMatrix): TGAffineVectorList;
 var
   AABB1: TAABB;
   M1To2, M2To1: TGLMatrix;
@@ -1542,7 +1542,7 @@ var
 var
   I, K: Integer;
   P: PGLOctreeNode;
-  TriangleIndices: TGLIntegerList;
+  TriangleIndices: TGIntegerList;
 begin
   // Calc AABBs
   AABB1 := ObjAABB;
@@ -1554,8 +1554,8 @@ begin
   if Assigned(RootNode) then
     HandleNode(RootNode);
 
-  Result := TGLAffineVectorList.Create;
-  TriangleIndices := TGLIntegerList.Create;
+  Result := TGAffineVectorList.Create;
+  TriangleIndices := TGIntegerList.Create;
   try
     // fill the triangles from all nodes in the resultarray to AL
     for I := 0 to High(ResultArray) do

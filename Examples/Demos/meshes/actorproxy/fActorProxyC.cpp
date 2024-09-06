@@ -6,7 +6,7 @@
 #include "fActorProxyC.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Coordinates"
 
@@ -18,7 +18,7 @@
 #pragma link "GLS.VectorFileObjects"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.FileSMD"
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma resource "*.dfm"
 TFormActorProxy *FormActorProxy;
 //---------------------------------------------------------------------------

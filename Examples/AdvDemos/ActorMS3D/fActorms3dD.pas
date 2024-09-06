@@ -20,10 +20,10 @@ uses
   GLScene.Utils,
 
   GLS.PipelineTransformation,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.Cadencer,
   GLS.SceneViewer,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Scene,
   GLS.VectorFileObjects,
   GLS.Objects,

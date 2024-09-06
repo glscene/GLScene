@@ -23,7 +23,7 @@ uses
 
   GLS.Material,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLS.FileMD2,
   GLScene.Utils, GLS.SimpleNavigation;

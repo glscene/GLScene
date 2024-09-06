@@ -12,7 +12,7 @@ uses
   System.SysUtils,
   GXS.VectorFileObjects,
   GLScene.VectorGeometry,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GXS.ApplicationFileIO,
   GXS.ParametricSurfaces,
   GXS.ImageUtils;
@@ -52,7 +52,7 @@ procedure TgxNurbsVectorFile.LoadFromStream(stream: TStream);
   end;
 
   function ReadSingleArray(sl: TStrings; idx: Integer;
-    list: TgxSingleList): Integer;
+    list: TGSingleList): Integer;
   var
     k: Integer;
     buf: String;
@@ -78,7 +78,7 @@ procedure TgxNurbsVectorFile.LoadFromStream(stream: TStream);
   end;
 
   function ReadVectorArray(sl: TStrings; idx: Integer;
-    list: TgxAffineVectorList): Integer;
+    list: TGAffineVectorList): Integer;
   var
     buf: String;
     vals: TStringList;
@@ -109,7 +109,7 @@ var
   i, j: Integer;
   surface: TMOParametricSurface;
   invert: Boolean;
-  invControlPoints: TgxAffineVectorList;
+  invControlPoints: TGAffineVectorList;
 begin
   ss := TStringStream.Create('');
   sl := TStringList.Create;
@@ -160,7 +160,7 @@ begin
 
     if invert then
     begin
-      invControlPoints := TgxAffineVectorList.Create;
+      invControlPoints := TGAffineVectorList.Create;
       for i := surface.CountV - 1 downto 0 do
         for j := 0 to surface.CountU - 1 do
           invControlPoints.Add(surface.ControlPoints[i * surface.CountU + j]);

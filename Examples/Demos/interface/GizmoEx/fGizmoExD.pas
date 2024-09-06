@@ -17,7 +17,7 @@ uses
 
   
   GLS.Scene,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.Cadencer,
   GLS.Objects,
   GLScene.VectorTypes,
@@ -28,7 +28,7 @@ uses
   GLS.GizmoEx,
 
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.VectorGeometry,
   GLS.GeomObjects,
   GLS.BitmapFont,

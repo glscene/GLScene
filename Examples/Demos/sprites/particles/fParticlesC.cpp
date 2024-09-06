@@ -14,7 +14,7 @@
 #pragma link "GLS.Particles"
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Coordinates"
 
 #pragma link "GLS.SceneViewer"
@@ -79,7 +79,7 @@ void __fastcall TFormStars::Sprite1Progress(TObject * Sender,
 void __fastcall TFormStars::Timer1Timer(TObject * Sender)
 {
   // every timer, we create a particle at a random position
-  TGLCoordinates *c = ((TGLSprite *) GLParticles1->CreateParticle())->Position;
+  TGCoordinates *c = ((TGLSprite *) GLParticles1->CreateParticle())->Position;
   c->X = 3 * (random() - 0.5);
   c->Y = 3 * (random() - 0.5);
   c->Z = 3 * (random() - 0.5);

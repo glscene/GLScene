@@ -28,7 +28,7 @@ uses
   System.Math, 
   System.Contnrs,
   
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GXS.Scene,
   GLScene.VectorGeometry,
   GXS.Coordinates,

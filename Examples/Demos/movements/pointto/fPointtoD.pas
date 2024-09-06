@@ -22,7 +22,7 @@ uses
   GLS.GeomObjects,
  
   GLS.Coordinates,
-  GLS.BaseClasses, GLS.SimpleNavigation;
+  GLScene.BaseClasses, GLS.SimpleNavigation;
 
 type
   TFormPointto = class(TForm)

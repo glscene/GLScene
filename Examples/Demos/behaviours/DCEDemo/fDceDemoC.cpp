@@ -12,7 +12,7 @@
 #pragma link "GLS.FileMD2"
 #pragma link "GLS.ProxyObjects"
 
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "GLS.BitmapFont"
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Coordinates"

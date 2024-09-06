@@ -22,7 +22,7 @@
 #include "GLS.State.hpp"
 #include "GLS.Color.hpp"
 
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.Coordinates.hpp"
 
 

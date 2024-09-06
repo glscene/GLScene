@@ -19,7 +19,7 @@ uses
   GLS.ApplicationFileIO,
   GLS.Texture,
   GLS.Material,
-  GLS.VectorLists,
+  GLScene.VectorLists,
 
   Formats.B3D;
 

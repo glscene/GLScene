@@ -15,7 +15,7 @@
 #include "GLS.Cadencer.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Coordinates.hpp"
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 
 #include "GLS.ExplosionFx.hpp"
 #include "GLS.VectorFileObjects.hpp"

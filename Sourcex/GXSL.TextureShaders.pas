@@ -34,7 +34,7 @@ uses
   GLScene.Strings,
   GXS.VectorFileObjects,
   GXS.State,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GXS.Coordinates,
   GXS.TextureCombiners,
   GXS.RenderContextInfo,
@@ -43,7 +43,7 @@ uses
 type
   TgxShaderTextureSharing = class;
 
-  TgxShaderTextureSharingMaterial = class(TgxInterfacedCollectionItem, IgxMaterialLibrarySupported)
+  TgxShaderTextureSharingMaterial = class(TGInterfacedCollectionItem, IgxMaterialLibrarySupported)
   private
     FTextureMatrix: TMatrix4f;
     FNeedToUpdateTextureMatrix: Boolean;

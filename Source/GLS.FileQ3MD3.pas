@@ -14,9 +14,9 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLS.VectorFileObjects,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.Material,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   Formats.MD3;
 
 type

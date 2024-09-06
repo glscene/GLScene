@@ -12,7 +12,7 @@ uses
   GLS.Objects,
   GLS.GeomObjects,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Color,
   GLS.Context,
   GLS.Texture,

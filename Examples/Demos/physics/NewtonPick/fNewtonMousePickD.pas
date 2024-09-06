@@ -19,7 +19,7 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
  
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.VectorGeometry;
 
 type

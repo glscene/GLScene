@@ -26,15 +26,15 @@ uses
   GLS.XOpenGL,
   GLS.Material,
   GLS.Objects,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.Color,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLS.State;
 
 type
 
-  TGLSamplingScale = class(TGLUpdateAbleObject)
+  TGLSamplingScale = class(TGUpdateAbleObject)
   private
     FMin: Single;
     FMax: Single;

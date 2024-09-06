@@ -15,7 +15,7 @@ uses
   GLScene.VectorTypes,
   GLS.Cadencer,
   GLS.SceneViewer,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Coordinates,
   GLS.Context,
   GLS.Gui,

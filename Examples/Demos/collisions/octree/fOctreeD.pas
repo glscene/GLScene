@@ -22,9 +22,9 @@ uses
  
   GLS.Coordinates,
   GLScene.Utils,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.VectorGeometry,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.File3DS;
 
 type

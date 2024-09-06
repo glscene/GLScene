@@ -45,7 +45,7 @@ uses
   FMX.Graphics,
 
   GLScene.VectorTypes,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.Strings,
   GLScene.Utils,
 

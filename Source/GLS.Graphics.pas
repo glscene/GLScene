@@ -36,7 +36,7 @@ uses
 
   GLS.State,
   GLS.ApplicationFileIO,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.Context,
   GLS.ImageUtils,
   GLS.Color,
@@ -321,7 +321,7 @@ type
   end;
 
   // Stores registered raster file formats.
-  TGLRasterFileFormatsList = class(TGLPersistentObjectList)
+  TGLRasterFileFormatsList = class(TGPersistentObjectList)
   public
     destructor Destroy; override;
     procedure Add(const Ext, Desc: string; DescID: Integer; AClass:
@@ -372,9 +372,7 @@ procedure HackTPictureRegisteredFormats(destList: TStrings);
 var
   vVerticalFlipDDS: Boolean = True;
 
-// ------------------------------------------------------------------
-implementation
-// ------------------------------------------------------------------
+implementation // ------------------------------------------------------------
 
 var
   vRasterFileFormats: TGLRasterFileFormatsList;

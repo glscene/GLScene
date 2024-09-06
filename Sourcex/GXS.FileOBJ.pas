@@ -30,11 +30,11 @@ uses
   GXS.MeshUtils,
   GXS.ImageUtils,
   GXS.ApplicationFileIO,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GXS.Scene,
   GXS.VectorFileObjects,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GXS.Texture,
   GXS.Color,
   GXS.RenderContextInfo,
@@ -153,7 +153,7 @@ type
   private
     FMode: TOBJFGMode;
     FName: string;
-    FPolygonVertices: TgxIntegerList;
+    FPolygonVertices: TGIntegerList;
     FCurrentVertexCount: Integer;
     FShowNormals: Boolean;
     procedure PolygonComplete; (* Current polygon completed. Adds FCurrentVertexCount
@@ -163,16 +163,16 @@ type
     procedure Assign(Source: TPersistent); override;
     constructor CreateOwned(aOwner: TgxFaceGroups); override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TgxVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgxVirtualReader); override;
+    procedure WriteToFiler(writer: TGVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGVirtualReader); override;
     procedure Add(VertexIdx, NormalIdx, TexCoordIdx: Integer);
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
-    procedure AddToTriangles(aList: TgxAffineVectorList; aTexCoords: TgxAffineVectorList = nil;
-      aNormals: TgxAffineVectorList = nil); override;
+    procedure AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
+      aNormals: TGAffineVectorList = nil); override;
     function TriangleCount: Integer; override;
     property Mode: TOBJFGMode read FMode write SetMode;
     property Name: string read FName write FName;
-    property PolygonVertices: TgxIntegerList read FPolygonVertices;
+    property PolygonVertices: TGIntegerList read FPolygonVertices;
     property ShowNormals: Boolean read FShowNormals write FShowNormals;
   end;
 
@@ -209,7 +209,7 @@ begin
   Assert(VertexIndices.Count = 0, 'Decide on the mode before adding vertices.');
   FMode := aMode;
   if FMode = objfgmmPolygons then
-    FPolygonVertices := TgxIntegerList.Create
+    FPolygonVertices := TGIntegerList.Create
   else
   begin
     FPolygonVertices.Free;
@@ -351,11 +351,11 @@ begin
   end;
 end;
 
-procedure TOBJFGVertexNormalTexIndexList.AddToTriangles(aList: TgxAffineVectorList; aTexCoords: TgxAffineVectorList = nil;
-  aNormals: TgxAffineVectorList = nil);
+procedure TOBJFGVertexNormalTexIndexList.AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
+  aNormals: TGAffineVectorList = nil);
 var
   i, j, N, n0: Integer;
-  vertexList, texCoordList, normalsList: TgxAffineVectorList;
+  vertexList, texCoordList, normalsList: TGAffineVectorList;
 begin
   vertexList := Owner.Owner.Vertices;
   texCoordList := Owner.Owner.TexCoords;
@@ -1353,7 +1353,7 @@ begin
     else
     begin
       if FPolygonVertices = nil then
-        FPolygonVertices := TgxIntegerList.Create;
+        FPolygonVertices := TGIntegerList.Create;
       FPolygonVertices.Assign(TOBJFGVertexNormalTexIndexList(Source).FPolygonVertices);
     end;
   end
@@ -1361,7 +1361,7 @@ begin
     inherited;
 end;
 
-procedure TOBJFGVertexNormalTexIndexList.ReadFromFiler(reader: TgxVirtualReader);
+procedure TOBJFGVertexNormalTexIndexList.ReadFromFiler(reader: TGVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -1376,7 +1376,7 @@ begin
 
     if FMode = objfgmmPolygons then
     begin
-      FPolygonVertices := TgxIntegerList.Create;
+      FPolygonVertices := TGIntegerList.Create;
       FPolygonVertices.ReadFromFiler(reader);
     end;
   end
@@ -1384,7 +1384,7 @@ begin
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TOBJFGVertexNormalTexIndexList.WriteToFiler(writer: TgxVirtualWriter);
+procedure TOBJFGVertexNormalTexIndexList.WriteToFiler(writer: TGVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do

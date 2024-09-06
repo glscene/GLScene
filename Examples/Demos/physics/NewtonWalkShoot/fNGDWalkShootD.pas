@@ -14,8 +14,8 @@ uses
 
   GLS.Scene,
   GLScene.VectorTypes,
-  GLS.VectorLists,
-  GLS.PersistentClasses,
+  GLScene.VectorLists,
+  GLScene.PersistentClasses,
   GLS.Objects,
   GLS.Coordinates,
   GLS.Cadencer,
@@ -23,7 +23,7 @@ uses
   GLS.SimpleNavigation,
   GLS.SceneViewer,
  
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.VectorFileObjects,
   GLS.GeomObjects,
   GLS.HUDObjects,

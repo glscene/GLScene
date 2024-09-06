@@ -22,7 +22,7 @@ uses
   GLS.Context,
   GLS.Scene,
   GLS.VectorFileObjects,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.State;
@@ -30,32 +30,32 @@ uses
 type
   TGLFile3DSLight = class(TGLLightSource)
   private
-    FTargetPos: TGLCoordinates;
+    FTargetPos: TGCoordinates;
     FHotSpot: Single;
     FMultipler: Single;
   public
     constructor Create(AOwner: TComponent); override;
     procedure DoRender(var rci: TGLRenderContextInfo; renderSelf, renderChildren: Boolean); override;
-    procedure CoordinateChanged(Sender: TGLCustomCoordinates); override;
+    procedure CoordinateChanged(Sender: TGCustomCoordinates); override;
     destructor Destroy; override;
   published
-    property SpotTargetPos: TGLCoordinates read FTargetPos;
+    property SpotTargetPos: TGCoordinates read FTargetPos;
     property HotSpot: Single read FHotSpot write FHotSpot;
     property Multipler: Single read FMultipler write FMultipler;
   end;
 
   TGLFile3DSCamera = class(TGLCamera)
   private
-    FTargetPos: TGLCoordinates;
+    FTargetPos: TGCoordinates;
     FQuadCyl: array[0..1] of PGLUquadric;
     FQuadDisk: array[0..1] of PGLUquadric;
   public
     constructor Create(AOwner: TComponent); override;
     procedure DoRender(var rci: TGLRenderContextInfo; renderSelf, renderChildren: Boolean); override;
-    procedure CoordinateChanged(Sender: TGLCustomCoordinates); override;
+    procedure CoordinateChanged(Sender: TGCustomCoordinates); override;
     destructor Destroy; override;
   published
-    property CameraTargetPos: TGLCoordinates read FTargetPos;
+    property CameraTargetPos: TGCoordinates read FTargetPos;
     property RollAngle;
   end;
 
@@ -71,9 +71,9 @@ type
   private
     FTransfMat, FScaleMat, ParentMatrix: TGLMatrix;
 
-    FS_Rot3DS: TGLCoordinates4;
-    FRot3DS: TGLCoordinates4;
-    FScale3DS: TGLCoordinates4;
+    FS_Rot3DS: TGCoordinates4;
+    FRot3DS: TGCoordinates4;
+    FScale3DS: TGCoordinates4;
     procedure ReadMesh(Stream: TStream);
     procedure WriteMesh(Stream: TStream);
   protected
@@ -83,13 +83,13 @@ type
     constructor Create(AOWner: TComponent); override;
     destructor Destroy; override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
-    procedure CoordinateChanged(Sender: TGLCustomCoordinates); override;
+    procedure CoordinateChanged(Sender: TGCustomCoordinates); override;
     function AxisAlignedDimensionsUnscaled: TGLVector; override;
     function BarycenterAbsolutePosition: TGLVector; override;
   published
-    property S_Rot3DS: TGLCoordinates4 read FS_Rot3DS;
-    property Rot3DS: TGLCoordinates4 read FRot3DS;
-    property Scale3DS: TGLCoordinates4 read FScale3DS;
+    property S_Rot3DS: TGCoordinates4 read FS_Rot3DS;
+    property Rot3DS: TGCoordinates4 read FRot3DS;
+    property Scale3DS: TGCoordinates4 read FScale3DS;
   end;
 
 var
@@ -163,7 +163,7 @@ constructor TGLFile3DSLight.Create(AOwner: TComponent);
 begin
   inherited;
 
-  FTargetPos := TGLCoordinates.CreateInitialized(self, VectorMake(NullVector), csPoint);
+  FTargetPos := TGCoordinates.CreateInitialized(self, VectorMake(NullVector), csPoint);
   FHotSpot := 1;
   FMultipler := 1;
 end;
@@ -215,7 +215,7 @@ begin
   gl.PopMatrix;
 end;
 
-procedure TGLFile3DSLight.CoordinateChanged(Sender: TGLCustomCoordinates);
+procedure TGLFile3DSLight.CoordinateChanged(Sender: TGCustomCoordinates);
 begin
   inherited;
 
@@ -235,7 +235,7 @@ var
 begin
   inherited;
 
-  FTargetPos := TGLCoordinates.CreateInitialized(self, VectorMake(NullVector), csPoint);
+  FTargetPos := TGCoordinates.CreateInitialized(self, VectorMake(NullVector), csPoint);
 
   for I := 0 to 1 do
   begin
@@ -302,7 +302,7 @@ begin
   rci.GLStates.PolygonMode := pmFill;
 end;
 
-procedure TGLFile3DSCamera.CoordinateChanged(Sender: TGLCustomCoordinates);
+procedure TGLFile3DSCamera.CoordinateChanged(Sender: TGCustomCoordinates);
 begin
   inherited;
 
@@ -328,18 +328,18 @@ end;
 
 procedure TGLFile3DSActor.ReadMesh(Stream: TStream);
 var
-  virt: TGLBinaryReader;
+  virt: TGBinaryReader;
 begin
-  virt := TGLBinaryReader.Create(Stream);
+  virt := TGBinaryReader.Create(Stream);
   MeshOBjects.ReadFromFiler(virt);
   virt.Free;
 end;
 
 procedure TGLFile3DSActor.WriteMesh(Stream: TStream);
 var
-  virt: TGLBinaryWriter;
+  virt: TGBinaryWriter;
 begin
-  virt := TGLBinaryWriter.Create(Stream);
+  virt := TGBinaryWriter.Create(Stream);
   MeshOBjects.WriteToFiler(virt);
   virt.Free;
 end;
@@ -356,9 +356,9 @@ begin
   FRefMat := IdentityHmgMatrix;
   FTransfMat := IdentityHmgMatrix;
   FScaleMat := IdentityHmgMatrix;
-  FS_Rot3DS := TGLCoordinates4.CreateInitialized(self, VectorMake(1, 0, 0), csVector);
-  FRot3DS := TGLCoordinates4.CreateInitialized(self, VectorMake(1, 0, 0), csVector);
-  FScale3DS := TGLCoordinates4.CreateInitialized(self, VectorMake(1, 1, 1), csVector);
+  FS_Rot3DS := TGCoordinates4.CreateInitialized(self, VectorMake(1, 0, 0), csVector);
+  FRot3DS := TGCoordinates4.CreateInitialized(self, VectorMake(1, 0, 0), csVector);
+  FScale3DS := TGCoordinates4.CreateInitialized(self, VectorMake(1, 1, 1), csVector);
 
   ObjectStyle := [osDirectDraw];
 end;
@@ -375,9 +375,9 @@ end;
 procedure TGLFile3DSFreeForm.ReadMesh(Stream: TStream);
 var
   v: TGLVector;
-  virt: TGLBinaryReader;
+  virt: TGBinaryReader;
 begin
-  virt := TGLBinaryReader.Create(Stream);
+  virt := TGBinaryReader.Create(Stream);
 
   virt.read(FRefMat, sizeof(FRefMat));
   virt.read(v, sizeof(v));
@@ -393,10 +393,10 @@ end;
 
 procedure TGLFile3DSFreeForm.WriteMesh(Stream: TStream);
 var
-  virt: TGLBinaryWriter;
+  virt: TGBinaryWriter;
   v: TGLVector;
 begin
-  virt := TGLBinaryWriter.Create(Stream);
+  virt := TGBinaryWriter.Create(Stream);
 
   virt.write(FRefMat, sizeof(FRefMat));
   v := S_Rot3DS.AsVector;
@@ -434,7 +434,7 @@ begin
   ParentMatrix := MatrixMultiply(FTransfMat, ParentMatrix);
 end;
 
-procedure TGLFile3DSFreeForm.CoordinateChanged(Sender: TGLCustomCoordinates);
+procedure TGLFile3DSFreeForm.CoordinateChanged(Sender: TGCustomCoordinates);
 var
   quat, quat1, quat2: TQuaternion;
 begin

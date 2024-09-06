@@ -28,7 +28,7 @@ uses
   GLS.Keyboard,
   GLS.Material,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.Utils,
   GLS.SimpleNavigation,
 

@@ -13,10 +13,10 @@ uses
   System.Classes,
 
   GXS.Context,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorGeometry,
   GXS.BaseClasses,
-  GXS.PersistentClasses;
+  GLScene.PersistentClasses;
 
  const
   MAX_OBJECT_STACK_DEPTH = 512;
@@ -36,7 +36,7 @@ type
 
   (* List class for object picking.
      This list is used to store the results of a PickObjects call. *)
-  TgxPickList = class(TgxPersistentObjectList)
+  TgxPickList = class(TGPersistentObjectList)
   private
     function GetFar(aValue: Integer): Single;
     function GetHit(aValue: Integer): TObject;

@@ -11,7 +11,7 @@ uses
   Vcl.StdCtrls,
 
   GLS.Scene,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.Objects,
   GLS.Texture,
   GLScene.VectorTypes,
@@ -20,7 +20,7 @@ uses
   GLS.Color,
 
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.VectorGeometry,
   GLS.FPSMovement;
 

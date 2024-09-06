@@ -19,13 +19,13 @@ uses
   GLS.Objects,
   GLS.SceneViewer,
   GLScene.VectorGeometry,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.Cadencer,
   GLS.Texture,
   GLS.Color,
 
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormPoints = class(TForm)
@@ -84,7 +84,7 @@ procedure TFormPoints.GLCadencer1Progress(Sender: TObject;
 var
   i: Integer;
   f, a, ab, ca, sa: Single;
-  p: TGLAffineVectorList;
+  p: TGAffineVectorList;
   v: TAffineVector;
 begin
   if CBAnimate.Checked then

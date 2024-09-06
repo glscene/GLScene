@@ -22,12 +22,12 @@ uses
   GLScene.Strings,
 
   GLS.RenderContextInfo,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Context,
   GLS.Texture,
   GLS.Color,
   GLS.Coordinates,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.State,
   GLS.XOpenGL,
   GLS.ApplicationFileIO,
@@ -86,7 +86,7 @@ type
      tracking, as well as setup/application facilities.
      Subclasses are expected to provide implementation for DoInitialize,
      DoApply, DoUnApply and DoFinalize. *)
-  TGLShader = class(TGLUpdateAbleComponent)
+  TGLShader = class(TGUpdateAbleComponent)
   private
     FEnabled: Boolean;
     FLibMatUsers: TList;
@@ -171,7 +171,7 @@ type
      properties that behave like those of most rendering tools.
      You also have control over shininess (governs specular lighting) and
      polygon mode (lines / fill). *)
-  TGLFaceProperties = class(TGLUpdateAbleObject)
+  TGLFaceProperties = class(TGUpdateAbleObject)
   private
     FAmbient, FDiffuse, FSpecular, FEmission: TGLColor;
     FShininess: TGLShininess;
@@ -195,7 +195,7 @@ type
     property Specular: TGLColor read FSpecular write SetSpecular;
   end;
 
-  TGLDepthProperties = class(TGLUpdateAbleObject)
+  TGLDepthProperties = class(TGUpdateAbleObject)
   private
     FDepthTest: boolean;
     FDepthWrite: boolean;
@@ -245,7 +245,7 @@ type
 
   TGlAlphaFunc = TGLComparisonFunction;
 
-  TGLBlendingParameters = class(TGLUpdateAbleObject)
+  TGLBlendingParameters = class(TGUpdateAbleObject)
   private
     FUseAlphaFunc: Boolean;
     FUseBlendFunc: Boolean;
@@ -318,7 +318,7 @@ type
      TGLLibMaterial (taken for a material library).
      The TGLLibMaterial has more advanced properties (like texture transforms)
      and provides a standard way of sharing definitions and texture maps. *)
-  TGLMaterial = class(TGLUpdateAbleObject, IGLMaterialLibrarySupported, IGLTextureNotifyAble)
+  TGLMaterial = class(TGUpdateAbleObject, IGLMaterialLibrarySupported, IGLTextureNotifyAble)
   private
     FFrontProperties, FBackProperties: TGLFaceProperties;
     FDepthProperties: TGLDepthProperties;
@@ -406,7 +406,7 @@ type
   TGLAbstractLibMaterial = class(
     TCollectionItem,
 	IGLMaterialLibrarySupported,
-	IGLNotifyAble)
+	IGNotifyAble)
   protected
     FUserList: TList;
     FName: TGLLibMaterialName;
@@ -432,10 +432,10 @@ type
     procedure Apply(var ARci: TGLRenderContextInfo); virtual;
     // Restore non-standard material states that were altered
     function UnApply(var ARci: TGLRenderContextInfo): Boolean; virtual;
-    procedure RegisterUser(obj: TGLUpdateAbleObject); overload;
-    procedure UnregisterUser(obj: TGLUpdateAbleObject); overload;
-    procedure RegisterUser(comp: TGLUpdateAbleComponent); overload;
-    procedure UnregisterUser(comp: TGLUpdateAbleComponent); overload;
+    procedure RegisterUser(obj: TGUpdateAbleObject); overload;
+    procedure UnregisterUser(obj: TGUpdateAbleObject); overload;
+    procedure RegisterUser(comp: TGUpdateAbleComponent); overload;
+    procedure UnregisterUser(comp: TGUpdateAbleComponent); overload;
     procedure RegisterUser(libMaterial: TGLLibMaterial); overload;
     procedure UnregisterUser(libMaterial: TGLLibMaterial); overload;
     procedure NotifyUsers;
@@ -457,7 +457,7 @@ type
   TGLLibMaterial = class(TGLAbstractLibMaterial, IGLTextureNotifyAble)
   private
     FMaterial: TGLMaterial;
-    FTextureOffset, FTextureScale: TGLCoordinates;
+    FTextureOffset, FTextureScale: TGCoordinates;
     FTextureRotate: Single;
     FTextureMatrixIsIdentity: Boolean;
     FTextureOverride: Boolean;
@@ -468,8 +468,8 @@ type
   protected
     procedure Loaded; override;
     procedure SetMaterial(const val: TGLMaterial);
-    procedure SetTextureOffset(const val: TGLCoordinates);
-    procedure SetTextureScale(const val: TGLCoordinates);
+    procedure SetTextureOffset(const val: TGCoordinates);
+    procedure SetTextureScale(const val: TGCoordinates);
     procedure SetTextureMatrix(const Value: TGLMatrix);
     procedure SetTexture2Name(const val: TGLLibMaterialName);
     procedure SetShader(const val: TGLShader);
@@ -495,13 +495,13 @@ type
   published
     property Material: TGLMaterial read FMaterial write SetMaterial;
     // Texture offset in texture coordinates. The offset is applied after scaling
-    property TextureOffset: TGLCoordinates read FTextureOffset write
+    property TextureOffset: TGCoordinates read FTextureOffset write
       SetTextureOffset;
     (* Texture coordinates scaling.
        Scaling is applied <i>before</i> applying the offset, and is applied
        to the texture coordinates, meaning that a scale factor of (2, 2, 2)
        will make your texture look twice smaller *)
-    property TextureScale: TGLCoordinates read FTextureScale write
+    property TextureScale: TGCoordinates read FTextureScale write
       SetTextureScale;
     property TextureRotate: Single read FTextureRotate write
       SetTextureRotate stored StoreTextureRotate;
@@ -554,7 +554,7 @@ type
     procedure DeleteUnusedMaterials;
   end;
 
-  TGLAbstractMaterialLibrary = class(TGLCadenceAbleComponent)
+  TGLAbstractMaterialLibrary = class(TGCadenceAbleComponent)
   protected
     FMaterials: TGLAbstractLibMaterials;
     FLastAppliedMaterial: TGLAbstractLibMaterial;
@@ -1461,9 +1461,9 @@ end;
 
 procedure TGLMaterial.NotifyChange(Sender: TObject);
 var
-  intf: IGLNotifyAble;
+  intf: IGNotifyAble;
 begin
-  if Supports(Owner, IGLNotifyAble, intf) then
+  if Supports(Owner, IGNotifyAble, intf) then
     intf.NotifyChange(Self);
 end;
 
@@ -1610,24 +1610,24 @@ begin
   Result := -1; //ignore
 end;
 
-procedure TGLAbstractLibMaterial.RegisterUser(obj: TGLUpdateAbleObject);
+procedure TGLAbstractLibMaterial.RegisterUser(obj: TGUpdateAbleObject);
 begin
   Assert(FUserList.IndexOf(obj) < 0);
   FUserList.Add(obj);
 end;
 
-procedure TGLAbstractLibMaterial.UnRegisterUser(obj: TGLUpdateAbleObject);
+procedure TGLAbstractLibMaterial.UnRegisterUser(obj: TGUpdateAbleObject);
 begin
   FUserList.Remove(obj);
 end;
 
-procedure TGLAbstractLibMaterial.RegisterUser(comp: TGLUpdateAbleComponent);
+procedure TGLAbstractLibMaterial.RegisterUser(comp: TGUpdateAbleComponent);
 begin
   Assert(FUserList.IndexOf(comp) < 0);
   FUserList.Add(comp);
 end;
 
-procedure TGLAbstractLibMaterial.UnRegisterUser(comp: TGLUpdateAbleComponent);
+procedure TGLAbstractLibMaterial.UnRegisterUser(comp: TGUpdateAbleComponent);
 begin
   FUserList.Remove(comp);
 end;
@@ -1660,10 +1660,10 @@ begin
     for i := 0 to FUserList.Count - 1 do
     begin
       obj := TObject(FUserList[i]);
-      if obj is TGLUpdateAbleObject then
-        TGLUpdateAbleObject(FUserList[i]).NotifyChange(Self)
-      else if obj is TGLUpdateAbleComponent then
-        TGLUpdateAbleComponent(FUserList[i]).NotifyChange(Self)
+      if obj is TGUpdateAbleObject then
+        TGUpdateAbleObject(FUserList[i]).NotifyChange(Self)
+      else if obj is TGUpdateAbleComponent then
+        TGUpdateAbleComponent(FUserList[i]).NotifyChange(Self)
       else
       begin
         Assert(obj is TGLAbstractLibMaterial);
@@ -1741,9 +1741,9 @@ begin
   inherited Create(ACollection);
   FMaterial := TGLMaterial.Create(Self);
   FMaterial.Texture.OnTextureNeeded := DoOnTextureNeeded;
-  FTextureOffset := TGLCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
+  FTextureOffset := TGCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
   FTextureOffset.OnNotifyChange := OnNotifyChange;
-  FTextureScale := TGLCoordinates.CreateInitialized(Self, XYZHmgVector, csPoint);
+  FTextureScale := TGCoordinates.CreateInitialized(Self, XYZHmgVector, csPoint);
   FTextureScale.OnNotifyChange := OnNotifyChange;
   FTextureRotate := 0;
   FTextureOverride := False;
@@ -1936,10 +1936,10 @@ begin
         TGLMaterial(FUserList[i]).NotifyTexMapChange(Self)
       else if obj is TGLLibMaterial then
         TGLLibMaterial(FUserList[i]).NotifyUsersOfTexMapChange
-      else if obj is TGLUpdateAbleObject then
-        TGLUpdateAbleObject(FUserList[i]).NotifyChange(Self)
-      else if obj is TGLUpdateAbleComponent then
-        TGLUpdateAbleComponent(FUserList[i]).NotifyChange(Self);
+      else if obj is TGUpdateAbleObject then
+        TGUpdateAbleObject(FUserList[i]).NotifyChange(Self)
+      else if obj is TGUpdateAbleComponent then
+        TGUpdateAbleComponent(FUserList[i]).NotifyChange(Self);
     end;
   finally
     FNotifying := False;
@@ -1957,13 +1957,13 @@ begin
   FMaterial.Assign(val);
 end;
 
-procedure TGLLibMaterial.SetTextureOffset(const val: TGLCoordinates);
+procedure TGLLibMaterial.SetTextureOffset(const val: TGCoordinates);
 begin
   FTextureOffset.AsVector := val.AsVector;
   CalculateTextureMatrix;
 end;
 
-procedure TGLLibMaterial.SetTextureScale(const val: TGLCoordinates);
+procedure TGLLibMaterial.SetTextureScale(const val: TGCoordinates);
 begin
   FTextureScale.AsVector := val.AsVector;
   CalculateTextureMatrix;
@@ -2747,9 +2747,9 @@ end;
 
 procedure TGLMaterialLibrary.SaveToStream(aStream: TStream);
 var
-  wr: TGLBinaryWriter;
+  wr: TGBinaryWriter;
 begin
-  wr := TGLBinaryWriter.Create(aStream);
+  wr := TGBinaryWriter.Create(aStream);
   try
     Self.WriteToFiler(wr);
   finally
@@ -2759,9 +2759,9 @@ end;
 
 procedure TGLMaterialLibrary.LoadFromStream(aStream: TStream);
 var
-  rd: TGLBinaryReader;
+  rd: TGBinaryReader;
 begin
-  rd := TGLBinaryReader.Create(aStream);
+  rd := TGBinaryReader.Create(aStream);
   try
     Self.ReadFromFiler(rd);
   finally

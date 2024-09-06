@@ -20,7 +20,7 @@ uses
   Vcl.Graphics,
 
   GLScene.OpenGLTokens,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.Strings,
   GLS.Coordinates,
   GLScene.VectorTypes,
@@ -39,7 +39,7 @@ uses
   GLS.ImageUtils,
   GLS.Texture,
   GLS.RenderContextInfo,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
 
@@ -84,7 +84,7 @@ type
     procedure DoChanges; virtual;
     procedure MoveGUI(XRel, YRel: Single);
     procedure PlaceGUI(XPos, YPos: Single);
-    procedure DoProgress(const progressTime: TGLProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     procedure DoRender(var rci: TGLRenderContextInfo; renderSelf, renderChildren: Boolean); override;
     procedure InternalRender(var rci: TGLRenderContextInfo; renderSelf, renderChildren: Boolean); virtual;
     property GUIRedraw: Boolean read FGUIRedraw write SetGUIRedraw;
@@ -3610,7 +3610,7 @@ begin
   inherited;
 end;
 
-procedure TGLBaseComponent.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLBaseComponent.DoProgress(const progressTime: TGProgressTimes);
 begin
   inherited;
   if FDoChangesOnProgress then

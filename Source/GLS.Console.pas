@@ -56,7 +56,7 @@ uses
   GLS.HudObjects,
   GLS.SceneViewer,
   GLS.BitmapFont,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.Context,
   GLS.ImageUtils,
   GLS.Texture,

@@ -22,7 +22,7 @@ uses
   GLScene.VectorTypes,
   GLS.FileTGA,
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TForm1 = class(TForm)

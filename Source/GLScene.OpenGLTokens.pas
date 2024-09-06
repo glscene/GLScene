@@ -2371,8 +2371,6 @@ type
   PFNGLGETPATHLENGTHNVPROC = function (path: Cardinal; startSegment: TGLsizei; numSegments: TGLsizei): TGLfloat;stdcall;
   PFNGLPOINTALONGPATHNVPROC = function (path: Cardinal; startSegment: TGLsizei; numSegments: TGLsizei; distance: TGLfloat; x: PGLfloat; y: PGLfloat; tangentX: PGLfloat; tangentY: PGLfloat): TGLboolean;stdcall;
 
-//-----------------------------------------
-implementation
-//-----------------------------------------
+implementation //--------------------------------------------------------------
 
 end.

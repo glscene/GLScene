@@ -17,7 +17,7 @@ uses
   System.SysUtils,
   FMX.TextLayout,
 
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLScene.Strings,

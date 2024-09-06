@@ -27,7 +27,7 @@ uses
   GLS.Collision,
   GLS.VectorFileObjects,
   GLS.Navigator,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.Octree,
   GLS.File3DS,
   GLScene.VectorGeometry,
@@ -35,7 +35,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.SimpleNavigation,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.Utils;
 
 type

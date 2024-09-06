@@ -36,8 +36,8 @@ uses
 
   GLScene.VectorGeometry,
   GLS.Scene,
-  GLS.VectorLists,
-  GLS.PersistentClasses,
+  GLScene.VectorLists,
+  GLScene.PersistentClasses,
   GLS.Silhouette,
   GLScene.Strings,
   GLS.Texture,
@@ -45,7 +45,7 @@ uses
   GLS.Mesh,
   GLScene.Logger,
   GLS.Octree,
-  GLS.GeometryBB,
+  GLScene.GeometryBB,
   GLS.ApplicationFileIO,
   GLS.Context,
   GLS.Color,
@@ -53,7 +53,7 @@ uses
   GLS.Selection,
   GLS.RenderContextInfo,
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TGLMeshObjectList = class;
@@ -67,15 +67,15 @@ type
     A base class for mesh objects. The class introduces a set of vertices and
     normals for the object but does no rendering of its own
   *)
-  TGLBaseMeshObject = class(TGLPersistentObject)
+  TGLBaseMeshObject = class(TGPersistentObject)
   private
     FName: string;
-    FVertices: TGLAffineVectorList;
-    FNormals: TGLAffineVectorList;
+    FVertices: TGAffineVectorList;
+    FNormals: TGAffineVectorList;
     FVisible: Boolean;
   protected
-    procedure SetVertices(const val: TGLAffineVectorList); inline;
-    procedure SetNormals(const val: TGLAffineVectorList); inline;
+    procedure SetVertices(const val: TGAffineVectorList); inline;
+    procedure SetNormals(const val: TGAffineVectorList); inline;
     procedure ContributeToBarycenter(var currentSum: TAffineVector; var nb: Integer); virtual;
   public
     constructor Create; override;
@@ -99,8 +99,8 @@ type
       The only valid modes are currently momTriangles and momTriangleStrip
       (ie. momFaceGroups not supported).
     *)
-    procedure BuildNormals(vertexIndices: TGLIntegerList; mode: TGLMeshObjectMode;
-	  NormalIndices: TGLIntegerList = nil);
+    procedure BuildNormals(vertexIndices: TGIntegerList; mode: TGLMeshObjectMode;
+	  NormalIndices: TGIntegerList = nil);
     // Builds normals faster without index calculations for the stripe mode
     procedure GenericOrderedBuildNormals (mode: TGLMeshObjectMode);
     (*
@@ -112,12 +112,12 @@ type
       If texCoords is specified, per vertex texture coordinates will be
       placed there, when available.
     *)
-    function ExtractTriangles(texCoords: TGLAffineVectorList = nil;
-	  Normals: TGLAffineVectorList = nil): TGLAffineVectorList; virtual;
+    function ExtractTriangles(texCoords: TGAffineVectorList = nil;
+	  Normals: TGAffineVectorList = nil): TGAffineVectorList; virtual;
     property Name: string read FName write FName;
     property Visible: Boolean read FVisible write FVisible;
-    property Vertices: TGLAffineVectorList read FVertices write SetVertices;
-    property Normals: TGLAffineVectorList read FNormals write SetNormals;
+    property Vertices: TGAffineVectorList read FVertices write SetVertices;
+    property Normals: TGAffineVectorList read FNormals write SetNormals;
   end;
 
   TGLSkeletonFrameList = class;
@@ -129,19 +129,19 @@ type
     so that the local matrices will be recalculated (the call to Flush does
     not recalculate the matrices, but marks the current ones as dirty)
   *)
-  TGLSkeletonFrame = class(TGLPersistentObject)
+  TGLSkeletonFrame = class(TGPersistentObject)
   private
     FOwner: TGLSkeletonFrameList;
     FName: string;
-    FPosition: TGLAffineVectorList;
-    FRotation: TGLAffineVectorList;
-    FQuaternion: TGLQuaternionList;
+    FPosition: TGAffineVectorList;
+    FRotation: TGAffineVectorList;
+    FQuaternion: TGQuaternionList;
     FLocalMatrixList: PMatrixArray;
     FTransformMode: TGLSkeletonFrameTransform;
   protected
-    procedure SetPosition(const val: TGLAffineVectorList);
-    procedure SetRotation(const val: TGLAffineVectorList);
-    procedure SetQuaternion(const val: TGLQuaternionList);
+    procedure SetPosition(const val: TGAffineVectorList);
+    procedure SetRotation(const val: TGAffineVectorList);
+    procedure SetQuaternion(const val: TGQuaternionList);
   public
     constructor CreateOwned(aOwner: TGLSkeletonFrameList);
     constructor Create; override;
@@ -151,12 +151,12 @@ type
     property Owner: TGLSkeletonFrameList read FOwner;
     property Name: string read FName write FName;
     // Position values for the joints.
-    property Position: TGLAffineVectorList read FPosition write SetPosition;
+    property Position: TGAffineVectorList read FPosition write SetPosition;
     // Rotation values for the joints.
-    property Rotation: TGLAffineVectorList read FRotation write SetRotation;
+    property Rotation: TGAffineVectorList read FRotation write SetRotation;
     (* Quaternions are an alternative to Euler rotations to build the
       global matrices for the skeleton bones. *)
-    property Quaternion: TGLQuaternionList read FQuaternion write SetQuaternion;
+    property Quaternion: TGQuaternionList read FQuaternion write SetQuaternion;
     (* TransformMode indicates whether to use Rotation or Quaternion to build
       the local transform matrices. *)
     property TransformMode: TGLSkeletonFrameTransform read FTransformMode write FTransformMode;
@@ -174,7 +174,7 @@ type
   end;
 
   // A list of TGLSkeletonFrame objects
-  TGLSkeletonFrameList = class(TGLPersistentObjectList)
+  TGLSkeletonFrameList = class(TGPersistentObjectList)
   private
     FOwner: TPersistent;
   protected
@@ -195,7 +195,7 @@ type
   TGLSkeletonBone = class;
 
   // A list of skeleton bones
-  TGLSkeletonBoneList = class(TGLPersistentObjectList)
+  TGLSkeletonBoneList = class(TGPersistentObjectList)
   private
     FSkeleton: TGLSkeleton; // not persistent
   protected
@@ -289,7 +289,7 @@ type
     to create skeleton driven Verlet Constraints, ODE Geoms, etc.
     Overriden classes should be named as TSCxxxxx.
   *)
-  TGLSkeletonCollider = class(TGLPersistentObject)
+  TGLSkeletonCollider = class(TGPersistentObject)
   private
     FOwner: TGLSkeletonColliderList;
     FBone: TGLSkeletonBone;
@@ -320,7 +320,7 @@ type
   end;
 
   // List class for storing TGLSkeletonCollider objects
-  TGLSkeletonColliderList = class(TGLPersistentObjectList)
+  TGLSkeletonColliderList = class(TGPersistentObjectList)
   private
     FOwner: TPersistent;
   protected
@@ -343,15 +343,15 @@ type
     FrameIndex1, frameIndex2: Integer;
     LerpFactor: Single;
     Weight: Single;
-    ExternalPositions: TGLAffineVectorList;
-    ExternalRotations: TGLAffineVectorList;
-    ExternalQuaternions: TGLQuaternionList;
+    ExternalPositions: TGAffineVectorList;
+    ExternalRotations: TGAffineVectorList;
+    ExternalQuaternions: TGQuaternionList;
   end;
 
   (* Main skeleton object. This class stores the bones hierarchy and animation frames.
     It is also responsible for maintaining the "CurrentFrame" and allowing
     various frame blending operations. *)
-  TGLSkeleton = class(TGLPersistentObject)
+  TGLSkeleton = class(TGPersistentObject)
   private
     FOwner: TGLBaseMesh;
     FRootBones: TGLSkeletonRootBoneList;
@@ -440,9 +440,9 @@ type
   private
     FOwner: TGLMeshObjectList;
     FExtentCacheRevision: Cardinal;
-    FTexCoords: TGLAffineVectorList; // provision for 3D textures
-    FLightMapTexCoords: TGLAffineVectorList; // reserved for 2D surface needs
-    FColors: TGLVectorList;
+    FTexCoords: TGAffineVectorList; // provision for 3D textures
+    FLightMapTexCoords: TGAffineVectorList; // reserved for 2D surface needs
+    FColors: TGVectorList;
     FFaceGroups: TGLFaceGroups;
     FMode: TGLMeshObjectMode;
     FRenderingOptions: TGLMeshObjectRenderingOptions;
@@ -464,22 +464,22 @@ type
     procedure SetUseVBO(const Value: Boolean);
     procedure SetValidBuffers(Value: TGLVBOBuffers);
   protected
-    procedure SetTexCoords(const val: TGLAffineVectorList);
-    procedure SetLightmapTexCoords(const val: TGLAffineVectorList);
-    procedure SetColors(const val: TGLVectorList);
+    procedure SetTexCoords(const val: TGAffineVectorList);
+    procedure SetLightmapTexCoords(const val: TGAffineVectorList);
+    procedure SetColors(const val: TGVectorList);
     procedure BufferArrays;
     procedure DeclareArraysToOpenGL(var mrci: TGLRenderContextInfo;
    	  EvenIfAlreadyDeclared: Boolean = False);
     procedure DisableOpenGLArrays(var mrci: TGLRenderContextInfo);
     procedure EnableLightMapArray(var mrci: TGLRenderContextInfo);
     procedure DisableLightMapArray(var mrci: TGLRenderContextInfo);
-    procedure SetTexCoordsEx(Index: Integer; const val: TGLVectorList);
-    function GetTexCoordsEx(Index: Integer): TGLVectorList;
-    procedure SetBinormals(const val: TGLVectorList);
-    function GetBinormals: TGLVectorList;
+    procedure SetTexCoordsEx(Index: Integer; const val: TGVectorList);
+    function GetTexCoordsEx(Index: Integer): TGVectorList;
+    procedure SetBinormals(const val: TGVectorList);
+    function GetBinormals: TGVectorList;
     procedure SetBinormalsTexCoordIndex(const val: Integer);
-    procedure SetTangents(const val: TGLVectorList);
-    function GetTangents: TGLVectorList;
+    procedure SetTangents(const val: TGVectorList);
+    function GetTangents: TGVectorList;
     procedure SetTangentsTexCoordIndex(const val: Integer);
     property ValidBuffers: TGLVBOBuffers read FValidBuffers write SetValidBuffers;
   public
@@ -491,8 +491,8 @@ type
     procedure WriteToFiler(writer: TGVirtualWriter); override;
     procedure ReadFromFiler(reader: TGVirtualReader); override;
     procedure Clear; override;
-    function ExtractTriangles(texCoords: TGLAffineVectorList = nil;
-	    Normals: TGLAffineVectorList = nil): TGLAffineVectorList; override;
+    function ExtractTriangles(texCoords: TGAffineVectorList = nil;
+	    Normals: TGAffineVectorList = nil): TGAffineVectorList; override;
     // Returns number of triangles in the mesh object.
     function TriangleCount: Integer; virtual;
     procedure PrepareMaterialLibraryCache(matLib: TGLMaterialLibrary);
@@ -511,19 +511,19 @@ type
     procedure Prepare; virtual;
     function PointInObject(const aPoint: TAffineVector): Boolean; virtual;
     // Returns the triangle data for a given triangle
-    procedure GetTriangleData(tri: Integer; list: TGLAffineVectorList; var v0, v1, v2: TAffineVector); overload;
-    procedure GetTriangleData(tri: Integer; list: TGLVectorList; var v0, v1, v2: TGLVector); overload;
+    procedure GetTriangleData(tri: Integer; list: TGAffineVectorList; var v0, v1, v2: TAffineVector); overload;
+    procedure GetTriangleData(tri: Integer; list: TGVectorList; var v0, v1, v2: TGLVector); overload;
     // Sets the triangle data of a given triangle
-    procedure SetTriangleData(tri: Integer; list: TGLAffineVectorList; const v0, v1, v2: TAffineVector); overload;
-    procedure SetTriangleData(tri: Integer; list: TGLVectorList; const v0, v1, v2: TGLVector); overload;
+    procedure SetTriangleData(tri: Integer; list: TGAffineVectorList; const v0, v1, v2: TAffineVector); overload;
+    procedure SetTriangleData(tri: Integer; list: TGVectorList; const v0, v1, v2: TGLVector); overload;
     (* Build the tangent space from the mesh object's vertex, normal
       and texcoord data, filling the binormals and tangents where specified. *)
     procedure BuildTangentSpace(buildBinormals: Boolean = True; buildTangents: Boolean = True);
     property Owner: TGLMeshObjectList read FOwner;
     property Mode: TGLMeshObjectMode read FMode write FMode;
-    property TexCoords: TGLAffineVectorList read FTexCoords write SetTexCoords;
-    property LightMapTexCoords: TGLAffineVectorList read FLightMapTexCoords write SetLightmapTexCoords;
-    property Colors: TGLVectorList read FColors write SetColors;
+    property TexCoords: TGAffineVectorList read FTexCoords write SetTexCoords;
+    property LightMapTexCoords: TGAffineVectorList read FLightMapTexCoords write SetLightmapTexCoords;
+    property Colors: TGVectorList read FColors write SetColors;
     property FaceGroups: TGLFaceGroups read FFaceGroups;
     property RenderingOptions: TGLMeshObjectRenderingOptions read FRenderingOptions write FRenderingOptions;
     // If set, rendering will use VBO's instead of vertex arrays.
@@ -536,11 +536,11 @@ type
       Lists are created on demand, meaning that if you request
       TexCoordsEx[4] it will create the list up to and including 4.
       The extensions are only applied to the texture environment if they contain data. *)
-    property TexCoordsEx[index: Integer]: TGLVectorList read GetTexCoordsEx write SetTexCoordsEx;
+    property TexCoordsEx[index: Integer]: TGVectorList read GetTexCoordsEx write SetTexCoordsEx;
     // A TexCoordsEx list wrapper for binormals usage, returns TexCoordsEx[BinormalsTexCoordIndex].
-    property Binormals: TGLVectorList read GetBinormals write SetBinormals;
+    property Binormals: TGVectorList read GetBinormals write SetBinormals;
     // A TexCoordsEx list wrapper for tangents usage, returns TexCoordsEx[BinormalsTexCoordIndex].
-    property Tangents: TGLVectorList read GetTangents write SetTangents;
+    property Tangents: TGVectorList read GetTangents write SetTangents;
     // Specify the texcoord extension index for binormals (default = 2)
     property BinormalsTexCoordIndex: Integer read FBinormalsTexCoordIndex write SetBinormalsTexCoordIndex;
     // Specify the texcoord extension index for tangents (default = 3)
@@ -548,7 +548,7 @@ type
   end;
 
   // A list of TGLMeshObject objects.
-  TGLMeshObjectList = class(TGLPersistentObjectList)
+  TGLMeshObjectList = class(TGPersistentObjectList)
   private
     FOwner: TGLBaseMesh;
     // Returns True if all its MeshObjects use VBOs.
@@ -572,7 +572,7 @@ type
     function MorphTargetCount: Integer;
     procedure GetExtents(out min, max: TAffineVector);
     procedure Translate(const delta: TAffineVector);
-    function ExtractTriangles(texCoords: TGLAffineVectorList = nil; normals: TGLAffineVectorList = nil): TGLAffineVectorList;
+    function ExtractTriangles(texCoords: TGAffineVectorList = nil; normals: TGAffineVectorList = nil): TGAffineVectorList;
     // Returns number of triangles in the meshes of the list.
     function TriangleCount: Integer;
     // Returns the total Area of meshes in the list.
@@ -609,7 +609,7 @@ type
   end;
 
   // A list of TGLMeshMorphTarget objects. 
-  TGLMeshMorphTargetList = class(TGLPersistentObjectList)
+  TGLMeshMorphTargetList = class(TGPersistentObjectList)
   private
     FOwner: TPersistent;
   protected
@@ -698,7 +698,7 @@ type
     Subclasses implement the actual behaviours, and should have at least
     one "Add" method, taking in parameters all that is required to describe
     a single base facegroup element. *)
-  TGLFaceGroup = class(TGLPersistentObject)
+  TGLFaceGroup = class(TGPersistentObject)
   private
     FOwner: TGLFaceGroups;
     FMaterialName: string;
@@ -720,8 +720,8 @@ type
     (* Add to the list the triangles corresponding to the facegroup.
       This function is used by TGLMeshObjects ExtractTriangles to retrieve
       all the triangles in a mesh. *)
-    procedure AddToTriangles(aList: TGLAffineVectorList; aTexCoords: TGLAffineVectorList = nil;
-      aNormals: TGLAffineVectorList = nil); virtual;
+    procedure AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
+      aNormals: TGAffineVectorList = nil); virtual;
     // Returns number of triangles in the facegroup. 
     function TriangleCount: Integer; virtual; abstract;
     // Reverses the rendering order of faces. Default implementation does nothing 
@@ -750,22 +750,22 @@ type
     in the order given by the vertices. *)
   TFGVertexIndexList = class(TGLFaceGroup)
   private
-    FVertexIndices: TGLIntegerList;
+    FVertexIndices: TGIntegerList;
     FIndexVBO: TGLVBOElementArrayHandle;
     FMode: TGLFaceGroupMeshMode;
     procedure SetupVBO;
     procedure InvalidateVBO;
   protected
-    procedure SetVertexIndices(const val: TGLIntegerList);
-    procedure AddToList(Source, destination: TGLAffineVectorList; indices: TGLIntegerList);
+    procedure SetVertexIndices(const val: TGIntegerList);
+    procedure AddToList(Source, destination: TGAffineVectorList; indices: TGIntegerList);
   public
     constructor Create; override;
     destructor Destroy; override;
     procedure WriteToFiler(writer: TGVirtualWriter); override;
     procedure ReadFromFiler(reader: TGVirtualReader); override;
     procedure BuildList(var mrci: TGLRenderContextInfo); override;
-    procedure AddToTriangles(aList: TGLAffineVectorList; aTexCoords: TGLAffineVectorList = nil;
-      aNormals: TGLAffineVectorList = nil); override;
+    procedure AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
+      aNormals: TGAffineVectorList = nil); override;
     function TriangleCount: Integer; override;
     procedure Reverse; override;
     procedure Add(idx: Integer); inline;
@@ -775,7 +775,7 @@ type
     // Return the normal from the 1st three points in the facegroup
     function GetNormal: TAffineVector;
     property Mode: TGLFaceGroupMeshMode read FMode write FMode;
-    property VertexIndices: TGLIntegerList read FVertexIndices write SetVertexIndices;
+    property VertexIndices: TGIntegerList read FVertexIndices write SetVertexIndices;
   end;
 
   (* Adds normals and texcoords indices.
@@ -783,22 +783,22 @@ type
     indices are optionnal, if missing (empty), VertexIndices will be used. *)
   TFGVertexNormalTexIndexList = class(TFGVertexIndexList)
   private
-    FNormalIndices: TGLIntegerList;
-    FTexCoordIndices: TGLIntegerList;
+    FNormalIndices: TGIntegerList;
+    FTexCoordIndices: TGIntegerList;
   protected
-    procedure SetNormalIndices(const val: TGLIntegerList); inline;
-    procedure SetTexCoordIndices(const val: TGLIntegerList); inline;
+    procedure SetNormalIndices(const val: TGIntegerList); inline;
+    procedure SetTexCoordIndices(const val: TGIntegerList); inline;
   public
     constructor Create; override;
     destructor Destroy; override;
     procedure WriteToFiler(writer: TGVirtualWriter); override;
     procedure ReadFromFiler(reader: TGVirtualReader); override;
     procedure BuildList(var mrci: TGLRenderContextInfo); override;
-    procedure AddToTriangles(aList: TGLAffineVectorList; aTexCoords: TGLAffineVectorList = nil;
-      aNormals: TGLAffineVectorList = nil); override;
+    procedure AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
+      aNormals: TGAffineVectorList = nil); override;
     procedure Add(vertexIdx, normalIdx, texCoordIdx: Integer);
-    property NormalIndices: TGLIntegerList read FNormalIndices write  SetNormalIndices;
-    property TexCoordIndices: TGLIntegerList read FTexCoordIndices write  SetTexCoordIndices;
+    property NormalIndices: TGIntegerList read FNormalIndices write  SetNormalIndices;
+    property TexCoordIndices: TGIntegerList read FTexCoordIndices write  SetTexCoordIndices;
   end;
 
   (* Adds per index texture coordinates to its ancestor.
@@ -806,24 +806,24 @@ type
     per triangle, depending on the face it is used in. *)
   TFGIndexTexCoordList = class(TFGVertexIndexList)
   private
-    FTexCoords: TGLAffineVectorList;
+    FTexCoords: TGAffineVectorList;
   protected
-    procedure SetTexCoords(const val: TGLAffineVectorList);
+    procedure SetTexCoords(const val: TGAffineVectorList);
   public
     constructor Create; override;
     destructor Destroy; override;
     procedure WriteToFiler(writer: TGVirtualWriter); override;
     procedure ReadFromFiler(reader: TGVirtualReader); override;
     procedure BuildList(var mrci: TGLRenderContextInfo); override;
-    procedure AddToTriangles(aList: TGLAffineVectorList; aTexCoords: TGLAffineVectorList = nil;
-      aNormals: TGLAffineVectorList = nil); override;
+    procedure AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
+      aNormals: TGAffineVectorList = nil); override;
     procedure Add(idx: Integer; const texCoord: TAffineVector); overload;
     procedure Add(idx: Integer; const s, t: Single); overload;
-    property TexCoords: TGLAffineVectorList read FTexCoords write SetTexCoords;
+    property TexCoords: TGAffineVectorList read FTexCoords write SetTexCoords;
   end;
 
   // A list of TGLFaceGroup objects. 
-  TGLFaceGroups = class(TGLPersistentObjectList)
+  TGLFaceGroups = class(TGPersistentObjectList)
   private
     FOwner: TGLMeshObject;
   protected
@@ -837,7 +837,7 @@ type
     property Owner: TGLMeshObject read FOwner;
     procedure Clear; override;
     property Items[Index: Integer]: TGLFaceGroup read GetFaceGroup; default;
-    procedure AddToTriangles(aList: TGLAffineVectorList; aTexCoords: TGLAffineVectorList = nil; aNormals: TGLAffineVectorList = nil);
+    procedure AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil; aNormals: TGAffineVectorList = nil);
     // Material Library of the owner TGLBaseMesh. 
     function MaterialLibrary: TGLMaterialLibrary;
     // Sort faces by material. Those without material first in list, followed by opaque materials, then transparent materials. 
@@ -891,7 +891,7 @@ type
     FOverlaySkeleton: Boolean;
     FIgnoreMissingTextures: Boolean;
     FAutoCentering: TGLMeshAutoCenterings;
-    FAutoScaling: TGLCoordinates;
+    FAutoScaling: TGCoordinates;
     FMaterialLibraryCachesPrepared: Boolean;
     FConnectivity: TObject;
     FLastLoadedFilename: string;
@@ -903,7 +903,7 @@ type
     procedure SetLightmapLibrary(const val: TGLMaterialLibrary);
     procedure SetNormalsOrientation(const val: TGLMeshNormalsOrientation);
     procedure SetOverlaySkeleton(const val: Boolean);
-    procedure SetAutoScaling(const Value: TGLCoordinates);
+    procedure SetAutoScaling(const Value: TGCoordinates);
     procedure DestroyHandle; override;
     (* Invoked after creating a TGLVectorFile and before loading.
       Triggered by LoadFromFile/Stream and AddDataFromFile/Stream.
@@ -1001,7 +1001,7 @@ type
       no effect on already loaded mesh data or when adding from a file/stream.
       If you want to alter mesh data, use direct manipulation methods
       (on the TMeshObjects). *)
-    property AutoScaling: TGLCoordinates read FAutoScaling write FAutoScaling;
+    property AutoScaling: TGCoordinates read FAutoScaling write FAutoScaling;
     (* Material library where mesh materials will be stored/retrieved.
       If this property is not defined or if UseMeshMaterials is false,
       only the FreeForm's material will be used (and the mesh's materials
@@ -1046,7 +1046,7 @@ type
       properly on closed meshes. Requires that Octree has been prepared. *)
     function OctreePointInMesh(const Point: TGLVector): Boolean;
     function OctreeAABBIntersect(const AABB: TAABB; objMatrix, invObjMatrix: TGLMatrix;
-      triangles: TGLAffineVectorList = nil): Boolean;
+      triangles: TGAffineVectorList = nil): Boolean;
     // TODO:  function OctreeSphereIntersect
     // Octree support *experimental*. Use only if you understand what you're doing!
     property Octree: TGLOctree read FOctree;
@@ -1244,7 +1244,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
-    procedure DoProgress(const progressTime: TGLProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     procedure LoadFromStream(const filename: string; aStream: TStream); override;
     procedure SwitchToAnimation(anAnimation: TGLActorAnimation; smooth: Boolean = False); overload;
     procedure SwitchToAnimation(const AnimationName: string; smooth: Boolean = False); overload;
@@ -1306,7 +1306,7 @@ type
   end;
 
   // Stores registered vector file formats 
-  TGLVectorFileFormatsList = class(TGLPersistentObjectList)
+  TGLVectorFileFormatsList = class(TGPersistentObjectList)
   public
     destructor Destroy; override;
     procedure Add(const Ext, Desc: string; DescID: Integer; AClass: TGLVectorFileClass);
@@ -1535,8 +1535,8 @@ end;
 
 constructor TGLBaseMeshObject.Create;
 begin
-  FVertices := TGLAffineVectorList.Create;
-  FNormals := TGLAffineVectorList.Create;
+  FVertices := TGAffineVectorList.Create;
+  FNormals := TGAffineVectorList.Create;
   FVisible := True;
   inherited Create;
 end;
@@ -1611,12 +1611,12 @@ begin
   FVertices.Translate(delta);
 end;
 
-procedure TGLBaseMeshObject.BuildNormals(vertexIndices: TGLIntegerList; Mode: TGLMeshObjectMode;
-  normalIndices: TGLIntegerList = nil);
+procedure TGLBaseMeshObject.BuildNormals(vertexIndices: TGIntegerList; Mode: TGLMeshObjectMode;
+  normalIndices: TGIntegerList = nil);
 var
   i, base: Integer;
   n: TAffineVector;
-  newNormals: TGLIntegerList;
+  newNormals: TGIntegerList;
 
   function TranslateNewNormal(vertexIndex: Integer; const delta: TAffineVector): Integer;
   var
@@ -1695,7 +1695,7 @@ begin
   begin
     // add new normals
     base := Normals.Count;
-    newNormals := TGLIntegerList.Create;
+    newNormals := TGIntegerList.Create;
     newNormals.AddSerie(-1, 0, Vertices.Count);
     case Mode of
       momTriangles:
@@ -1801,10 +1801,10 @@ begin
   Normals.normalize;
 end;
 
-function TGLBaseMeshObject.ExtractTriangles(texCoords: TGLAffineVectorList = nil;
-  normals: TGLAffineVectorList = nil): TGLAffineVectorList;
+function TGLBaseMeshObject.ExtractTriangles(texCoords: TGAffineVectorList = nil;
+  normals: TGAffineVectorList = nil): TGAffineVectorList;
 begin
-  Result := TGLAffineVectorList.Create;
+  Result := TGAffineVectorList.Create;
   if (Vertices.Count mod 3) = 0 then
   begin
     Result.Assign(Vertices);
@@ -1813,12 +1813,12 @@ begin
   end;
 end;
 
-procedure TGLBaseMeshObject.SetVertices(const val: TGLAffineVectorList);
+procedure TGLBaseMeshObject.SetVertices(const val: TGAffineVectorList);
 begin
   FVertices.Assign(val);
 end;
 
-procedure TGLBaseMeshObject.SetNormals(const val: TGLAffineVectorList);
+procedure TGLBaseMeshObject.SetNormals(const val: TGAffineVectorList);
 begin
   FNormals.Assign(val);
 end;
@@ -1837,9 +1837,9 @@ end;
 constructor TGLSkeletonFrame.Create;
 begin
   inherited Create;
-  FPosition := TGLAffineVectorList.Create;
-  FRotation := TGLAffineVectorList.Create;
-  FQuaternion := TGLQuaternionList.Create;
+  FPosition := TGAffineVectorList.Create;
+  FRotation := TGAffineVectorList.Create;
+  FQuaternion := TGQuaternionList.Create;
   FTransformMode := sftRotation;
 end;
 
@@ -1889,17 +1889,17 @@ begin
   FlushLocalMatrixList;
 end;
 
-procedure TGLSkeletonFrame.SetPosition(const val: TGLAffineVectorList);
+procedure TGLSkeletonFrame.SetPosition(const val: TGAffineVectorList);
 begin
   FPosition.Assign(val);
 end;
 
-procedure TGLSkeletonFrame.SetRotation(const val: TGLAffineVectorList);
+procedure TGLSkeletonFrame.SetRotation(const val: TGAffineVectorList);
 begin
   FRotation.Assign(val);
 end;
 
-procedure TGLSkeletonFrame.SetQuaternion(const val: TGLQuaternionList);
+procedure TGLSkeletonFrame.SetQuaternion(const val: TGQuaternionList);
 begin
   FQuaternion.Assign(val);
 end;
@@ -2672,9 +2672,9 @@ end;
 procedure TGLSkeleton.BlendedLerps(const lerpInfos: array of TGLBlendedLerpInfo);
 var
   i, n: Integer;
-  blendPositions: TGLAffineVectorList;
-  blendRotations: TGLAffineVectorList;
-  blendQuaternions: TGLQuaternionList;
+  blendPositions: TGAffineVectorList;
+  blendRotations: TGAffineVectorList;
+  blendQuaternions: TGQuaternionList;
 begin
   n := High(lerpInfos) - Low(lerpInfos) + 1;
   Assert(n >= 1);
@@ -2694,7 +2694,7 @@ begin
       Frames[lerpInfos[i].frameIndex1].TransformMode;
     with FCurrentFrame do
     begin
-      blendPositions := TGLAffineVectorList.Create;
+      blendPositions := TGAffineVectorList.Create;
       // lerp first item separately
       Position.Lerp(Frames[lerpInfos[i].frameIndex1].Position,
         Frames[lerpInfos[i].frameIndex2].Position,
@@ -2723,7 +2723,7 @@ begin
       case TransformMode of
         sftRotation:
           begin
-            blendRotations := TGLAffineVectorList.Create;
+            blendRotations := TGAffineVectorList.Create;
             // lerp first item separately
             Rotation.AngleLerp(Frames[lerpInfos[i].frameIndex1].Rotation,
               Frames[lerpInfos[i].frameIndex2].Rotation,
@@ -2748,7 +2748,7 @@ begin
 
         sftQuaternion:
           begin
-            blendQuaternions := TGLQuaternionList.Create;
+            blendQuaternions := TGQuaternionList.Create;
             // Initial frame lerp
             Quaternion.Lerp(Frames[lerpInfos[i].frameIndex1].Quaternion,
               Frames[lerpInfos[i].frameIndex2].Quaternion,
@@ -2913,9 +2913,9 @@ end;
 constructor TGLMeshObject.Create;
 begin
   FMode := momTriangles;
-  FTexCoords := TGLAffineVectorList.Create;
-  FLightMapTexCoords := TGLAffineVectorList.Create;
-  FColors := TGLVectorList.Create;
+  FTexCoords := TGAffineVectorList.Create;
+  FLightMapTexCoords := TGAffineVectorList.Create;
+  FColors := TGVectorList.Create;
   FFaceGroups := TGLFaceGroups.CreateOwned(Self);
   FTexCoordsEx := TList.Create;
   FTangentsTexCoordIndex := 1;
@@ -2941,7 +2941,7 @@ begin
   FTexCoords.Free;
   FLightMapTexCoords.Free;
   for i := 0 to FTexCoordsEx.Count - 1 do
-    TGLVectorList(FTexCoordsEx[i]).Free;
+    TGVectorList(FTexCoordsEx[i]).Free;
   FTexCoordsEx.Free;
   if Assigned(FOwner) then
     FOwner.Remove(Self);
@@ -2967,15 +2967,15 @@ begin
 
     // Clear FTexCoordsEx.
     for I := 0 to FTexCoordsEx.Count - 1 do
-      TGLVectorList(FTexCoordsEx[I]).Free;
+      TGVectorList(FTexCoordsEx[I]).Free;
 
     FTexCoordsEx.Count := TGLMeshObject(Source).FTexCoordsEx.Count;
 
     // Fill FTexCoordsEx.
     for I := 0 to FTexCoordsEx.Count - 1 do
     begin
-      FTexCoordsEx[I] := TGLVectorList.Create;
-      TGLVectorList(FTexCoordsEx[I]).Assign(TGLMeshObject(Source).FTexCoordsEx[I]);
+      FTexCoordsEx[I] := TGVectorList.Create;
+      TGVectorList(FTexCoordsEx[I]).Assign(TGLMeshObject(Source).FTexCoordsEx[I]);
     end;
   end;
 end;
@@ -3006,7 +3006,7 @@ end;
 procedure TGLMeshObject.ReadFromFiler(reader: TGVirtualReader);
 var
   i, Count, archiveVersion: Integer;
-  lOldLightMapTexCoords: TGLTexPointList;
+  lOldLightMapTexCoords: TGTexPointList;
   tc: TTexPoint;
   size, ro: Integer;
 begin
@@ -3023,7 +3023,7 @@ begin
       end
       else if (archiveVersion = 1) or (archiveVersion = 2) then
       begin
-        lOldLightMapTexCoords := TGLTexPointList.CreateFromFiler(reader);
+        lOldLightMapTexCoords := TGTexPointList.CreateFromFiler(reader);
         for i := 0 to lOldLightMapTexCoords.Count - 1 do
         begin
           tc:=lOldLightMapTexCoords[i];
@@ -3070,8 +3070,8 @@ begin
     TexCoordsEx[i].Clear;
 end;
 
-function TGLMeshObject.ExtractTriangles(texCoords: TGLAffineVectorList = nil;
-  Normals: TGLAffineVectorList = nil): TGLAffineVectorList;
+function TGLMeshObject.ExtractTriangles(texCoords: TGAffineVectorList = nil;
+  Normals: TGAffineVectorList = nil): TGAffineVectorList;
 begin
   case Mode of
     momTriangles:
@@ -3084,7 +3084,7 @@ begin
       end;
     momTriangleStrip:
       begin
-        Result := TGLAffineVectorList.Create;
+        Result := TGAffineVectorList.Create;
         ConvertStripToList(Vertices, Result);
         if Assigned(texCoords) then
           ConvertStripToList(Self.TexCoords, texCoords);
@@ -3093,7 +3093,7 @@ begin
       end;
     momFaceGroups:
       begin
-        Result := TGLAffineVectorList.Create;
+        Result := TGAffineVectorList.Create;
         FaceGroups.AddToTriangles(Result, texCoords, normals);
       end;
   else
@@ -3192,42 +3192,42 @@ begin
             (aPoint.Z <= max.Z);
 end;
 
-procedure TGLMeshObject.SetTexCoords(const val: TGLAffineVectorList);
+procedure TGLMeshObject.SetTexCoords(const val: TGAffineVectorList);
 begin
   FTexCoords.Assign(val);
 end;
 
-procedure TGLMeshObject.SetLightmapTexCoords(const val: TGLAffineVectorList);
+procedure TGLMeshObject.SetLightmapTexCoords(const val: TGAffineVectorList);
 begin
   FLightMapTexCoords.Assign(val);
 end;
 
-procedure TGLMeshObject.SetColors(const val: TGLVectorList);
+procedure TGLMeshObject.SetColors(const val: TGVectorList);
 begin
   FColors.Assign(val);
 end;
 
-procedure TGLMeshObject.SetTexCoordsEx(Index: Integer; const val: TGLVectorList);
+procedure TGLMeshObject.SetTexCoordsEx(Index: Integer; const val: TGVectorList);
 begin
   TexCoordsEx[index].Assign(val);
 end;
 
-function TGLMeshObject.GetTexCoordsEx(Index: Integer): TGLVectorList;
+function TGLMeshObject.GetTexCoordsEx(Index: Integer): TGVectorList;
 var
   i: Integer;
 begin
   if index > FTexCoordsEx.Count - 1 then
     for i := FTexCoordsEx.Count - 1 to index do
-      FTexCoordsEx.Add(TGLVectorList.Create);
-  Result := TGLVectorList(FTexCoordsEx[index]);
+      FTexCoordsEx.Add(TGVectorList.Create);
+  Result := TGVectorList(FTexCoordsEx[index]);
 end;
 
-procedure TGLMeshObject.SetBinormals(const val: TGLVectorList);
+procedure TGLMeshObject.SetBinormals(const val: TGVectorList);
 begin
   Binormals.Assign(val);
 end;
 
-function TGLMeshObject.GetBinormals: TGLVectorList;
+function TGLMeshObject.GetBinormals: TGVectorList;
 begin
   Result := TexCoordsEx[BinormalsTexCoordIndex];
 end;
@@ -3241,12 +3241,12 @@ begin
   end;
 end;
 
-procedure TGLMeshObject.SetTangents(const val: TGLVectorList);
+procedure TGLMeshObject.SetTangents(const val: TGVectorList);
 begin
   Tangents.Assign(val);
 end;
 
-function TGLMeshObject.GetTangents: TGLVectorList;
+function TGLMeshObject.GetTangents: TGVectorList;
 begin
   Result := TexCoordsEx[TangentsTexCoordIndex];
 end;
@@ -3260,7 +3260,7 @@ begin
   end;
 end;
 
-procedure TGLMeshObject.GetTriangleData(tri: Integer; list: TGLAffineVectorList; var v0, v1, v2: TAffineVector);
+procedure TGLMeshObject.GetTriangleData(tri: Integer; list: TGAffineVectorList; var v0, v1, v2: TAffineVector);
 var
   i, LastCount, Count: Integer;
   fg: TFGVertexIndexList;
@@ -3336,7 +3336,7 @@ begin
   end;
 end;
 
-procedure TGLMeshObject.GetTriangleData(tri: Integer; list: TGLVectorList; var v0, v1, v2: TGLVector);
+procedure TGLMeshObject.GetTriangleData(tri: Integer; list: TGVectorList; var v0, v1, v2: TGLVector);
 var
   i, LastCount, Count: Integer;
   fg: TFGVertexIndexList;
@@ -3412,7 +3412,7 @@ begin
   end;
 end;
 
-procedure TGLMeshObject.SetTriangleData(tri: Integer; list: TGLAffineVectorList; const v0, v1, v2: TAffineVector);
+procedure TGLMeshObject.SetTriangleData(tri: Integer; list: TGAffineVectorList; const v0, v1, v2: TAffineVector);
 var
   i, LastCount, Count: Integer;
   fg: TFGVertexIndexList;
@@ -3488,7 +3488,7 @@ begin
   end;
 end;
 
-procedure TGLMeshObject.SetTriangleData(tri: Integer; list: TGLVectorList; const v0, v1, v2: TGLVector);
+procedure TGLMeshObject.SetTriangleData(tri: Integer; list: TGVectorList; const v0, v1, v2: TGLVector);
 var
   i, LastCount, Count: Integer;
   fg: TFGVertexIndexList;
@@ -4350,23 +4350,23 @@ begin
     GetMeshObject(i).Translate(delta);
 end;
 
-function TGLMeshObjectList.ExtractTriangles(texCoords: TGLAffineVectorList = nil;
-  normals: TGLAffineVectorList = nil): TGLAffineVectorList;
+function TGLMeshObjectList.ExtractTriangles(texCoords: TGAffineVectorList = nil;
+  normals: TGAffineVectorList = nil): TGAffineVectorList;
 var
   i: Integer;
   obj: TGLMeshObject;
-  objTris: TGLAffineVectorList;
-  objTexCoords: TGLAffineVectorList;
-  objNormals: TGLAffineVectorList;
+  objTris: TGAffineVectorList;
+  objTexCoords: TGAffineVectorList;
+  objNormals: TGAffineVectorList;
 begin
-  Result := TGLAffineVectorList.Create;
+  Result := TGAffineVectorList.Create;
   Result.AdjustCapacityToAtLeast(Self.TriangleCount * 3);
   if Assigned(texCoords) then
-    objTexCoords := TGLAffineVectorList.Create
+    objTexCoords := TGAffineVectorList.Create
   else
     objTexCoords := nil;
   if Assigned(normals) then
-    objNormals := TGLAffineVectorList.Create
+    objNormals := TGAffineVectorList.Create
   else
     objNormals := nil;
   try
@@ -4411,7 +4411,7 @@ function TGLMeshObjectList.Area: Single;
 var
   i: Integer;
   Tri: TFaceRec;
-  List: TGLAffineVectorList;
+  List: TGAffineVectorList;
 
 begin
   Result := 0;
@@ -4437,7 +4437,7 @@ function TGLMeshObjectList.Volume: Single;
 var
   i: Integer;
   Tri: TFaceRec;
-  List: TGLAffineVectorList;
+  List: TGAffineVectorList;
 
 begin
   Result := 0;
@@ -5027,7 +5027,7 @@ end;
 procedure TGLSkeletonMeshObject.ApplyCurrentSkeletonFrame(normalize: Boolean);
 var
   i, j, BoneID: Integer;
-  refVertices, refNormals: TGLAffineVectorList;
+  refVertices, refNormals: TGAffineVectorList;
   n, nt: TGLVector;
   Bone: TGLSkeletonBone;
   Skeleton: TGLSkeleton;
@@ -5201,8 +5201,8 @@ begin
   FMaterialCache := nil;
 end;
 
-procedure TGLFaceGroup.AddToTriangles(aList: TGLAffineVectorList; aTexCoords: TGLAffineVectorList = nil;
-  aNormals: TGLAffineVectorList = nil);
+procedure TGLFaceGroup.AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
+  aNormals: TGAffineVectorList = nil);
 begin
   // nothing
 end;
@@ -5224,7 +5224,7 @@ end;
 constructor TFGVertexIndexList.Create;
 begin
   inherited;
-  FVertexIndices := TGLIntegerList.Create;
+  FVertexIndices := TGIntegerList.Create;
   FMode := fgmmTriangles;
 end;
 
@@ -5279,7 +5279,7 @@ begin
   end;
 end;
 
-procedure TFGVertexIndexList.SetVertexIndices(const val: TGLIntegerList);
+procedure TFGVertexIndexList.SetVertexIndices(const val: TGIntegerList);
 begin
   FVertexIndices.Assign(val);
   InvalidateVBO;
@@ -5309,7 +5309,7 @@ begin
   end;
 end;
 
-procedure TFGVertexIndexList.AddToList(Source, destination: TGLAffineVectorList; indices: TGLIntegerList);
+procedure TFGVertexIndexList.AddToList(Source, destination: TGAffineVectorList; indices: TGIntegerList);
 var
   i, n: Integer;
 begin
@@ -5374,8 +5374,8 @@ begin
   end;
 end;
 
-procedure TFGVertexIndexList.AddToTriangles(aList: TGLAffineVectorList; aTexCoords: TGLAffineVectorList = nil;
-  aNormals: TGLAffineVectorList = nil);
+procedure TFGVertexIndexList.AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
+  aNormals: TGAffineVectorList = nil);
 var
   mo: TGLMeshObject;
 begin
@@ -5445,14 +5445,14 @@ end;
 procedure TFGVertexIndexList.ConvertToList;
 var
   i: Integer;
-  bufList: TGLIntegerList;
+  bufList: TGIntegerList;
 begin
   if VertexIndices.Count >= 3 then
   begin
     case Mode of
       fgmmTriangleStrip:
         begin
-          bufList := TGLIntegerList.Create;
+          bufList := TGIntegerList.Create;
           try
             ConvertStripToList(VertexIndices, bufList);
             VertexIndices := bufList;
@@ -5463,7 +5463,7 @@ begin
         end;
       fgmmTriangleFan:
         begin
-          bufList := TGLIntegerList.Create;
+          bufList := TGIntegerList.Create;
           try
             for i := 0 to VertexIndices.Count - 3 do
               bufList.Add(vertexIndices[0], vertexIndices[i], vertexIndices[i + 1]);
@@ -5501,8 +5501,8 @@ end;
 constructor TFGVertexNormalTexIndexList.Create;
 begin
   inherited;
-  FNormalIndices := TGLIntegerList.Create;
-  FTexCoordIndices := TGLIntegerList.Create;
+  FNormalIndices := TGIntegerList.Create;
+  FTexCoordIndices := TGIntegerList.Create;
 end;
 
 destructor TFGVertexNormalTexIndexList.Destroy;
@@ -5539,12 +5539,12 @@ begin
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TFGVertexNormalTexIndexList.SetNormalIndices(const val: TGLIntegerList);
+procedure TFGVertexNormalTexIndexList.SetNormalIndices(const val: TGIntegerList);
 begin
   FNormalIndices.Assign(val);
 end;
 
-procedure TFGVertexNormalTexIndexList.SetTexCoordIndices(const val: TGLIntegerList);
+procedure TFGVertexNormalTexIndexList.SetTexCoordIndices(const val: TGIntegerList);
 begin
   FTexCoordIndices.Assign(val);
 end;
@@ -5594,8 +5594,8 @@ begin
   gl.End_;
 end;
 
-procedure TFGVertexNormalTexIndexList.AddToTriangles(aList: TGLAffineVectorList; aTexCoords: TGLAffineVectorList = nil;
-  aNormals: TGLAffineVectorList = nil);
+procedure TFGVertexNormalTexIndexList.AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
+  aNormals: TGAffineVectorList = nil);
 begin
   AddToList(Owner.Owner.Vertices, aList, VertexIndices);
   AddToList(Owner.Owner.TexCoords, aTexCoords, TexCoordIndices);
@@ -5616,7 +5616,7 @@ end;
 constructor TFGIndexTexCoordList.Create;
 begin
   inherited;
-  FTexCoords := TGLAffineVectorList.Create;
+  FTexCoords := TGAffineVectorList.Create;
 end;
 
 destructor TFGIndexTexCoordList.Destroy;
@@ -5650,7 +5650,7 @@ begin
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TFGIndexTexCoordList.SetTexCoords(const val: TGLAffineVectorList);
+procedure TFGIndexTexCoordList.SetTexCoords(const val: TGAffineVectorList);
 begin
   FTexCoords.Assign(val);
 end;
@@ -5709,11 +5709,11 @@ begin
   gl.CheckError;
 end;
 
-procedure TFGIndexTexCoordList.AddToTriangles(aList: TGLAffineVectorList; aTexCoords: TGLAffineVectorList = nil;
-  aNormals: TGLAffineVectorList = nil);
+procedure TFGIndexTexCoordList.AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
+  aNormals: TGAffineVectorList = nil);
 var
   i, n: Integer;
-  texCoordList: TGLAffineVectorList;
+  texCoordList: TGAffineVectorList;
 begin
   AddToList(Owner.Owner.Vertices, aList, VertexIndices);
   AddToList(Owner.Owner.Normals, aNormals, VertexIndices);
@@ -5825,8 +5825,8 @@ begin
     TGLFaceGroup(List^[i]).DropMaterialLibraryCache;
 end;
 
-procedure TGLFaceGroups.AddToTriangles(aList: TGLAffineVectorList; aTexCoords: TGLAffineVectorList = nil;
-  aNormals: TGLAffineVectorList = nil);
+procedure TGLFaceGroups.AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
+  aNormals: TGAffineVectorList = nil);
 var
   i: Integer;
 begin
@@ -5945,7 +5945,7 @@ begin
   FAutoCentering := [];
   FAxisAlignedDimensionsCache.X := -1;
   FBaryCenterOffsetChanged := True;
-  FAutoScaling := TGLCoordinates.CreateInitialized(Self, XYZWHmgVector, csPoint);
+  FAutoScaling := TGCoordinates.CreateInitialized(Self, XYZWHmgVector, csPoint);
 end;
 
 destructor TGLBaseMesh.Destroy;
@@ -6195,7 +6195,7 @@ begin
   end;
 end;
 
-procedure TGLBaseMesh.SetAutoScaling(const Value: TGLCoordinates);
+procedure TGLBaseMesh.SetAutoScaling(const Value: TGCoordinates);
 begin
   FAutoScaling.SetPoint(Value.DirectX, Value.DirectY, Value.DirectZ);
 end;
@@ -6433,7 +6433,7 @@ function TGLBaseMesh.RayCastIntersect(const rayStart, rayVector: TGLVector; inte
 var
   i,j: Integer;
   Obj: TGLMeshObject;
-  Tris: TGLAffineVectorList;
+  Tris: TGAffineVectorList;
   locRayStart, locRayVector, iPoint, iNormal: TGLVector;
   d, minD: Single;
 
@@ -6548,7 +6548,7 @@ end;
 procedure TGLFreeForm.BuildOctree(TreeDepth: Integer = 3);
 var
   emin, emax: TAffineVector;
-  tl: TGLAffineVectorList;
+  tl: TGAffineVectorList;
 begin
   if not Assigned(FOctree) then // moved here from GetOctree
     FOctree := TGLOctree.Create;
@@ -6677,7 +6677,7 @@ begin
 end;
 
 function TGLFreeForm.OctreeAABBIntersect(const AABB: TAABB; objMatrix, invObjMatrix: TGLMatrix;
-  triangles: TGLAffineVectorList = nil): Boolean;
+  triangles: TGAffineVectorList = nil): Boolean;
 var
   m1to2, m2to1: TGLMatrix;
 begin
@@ -7425,7 +7425,7 @@ begin
   end;
 end;
 
-procedure TGLActor.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLActor.DoProgress(const progressTime: TGProgressTimes);
 var
   fDelta: Single;
 begin

@@ -23,7 +23,7 @@ uses
   GLS.Context,
  
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormDynCubeMap = class(TForm)

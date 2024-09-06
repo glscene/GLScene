@@ -15,12 +15,12 @@ uses
 
   GLS.Objects,
   GLS.Scene,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.Cadencer,
   GLS.SceneViewer,
 
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Behaviours,
   GLS.HUDObjects,
   GLS.Color,

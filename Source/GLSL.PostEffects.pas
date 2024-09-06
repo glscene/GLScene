@@ -19,7 +19,7 @@ uses
   GLS.Scene,
   GLS.State,
   GLS.Context,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.Texture,
   GLS.Graphics,
   GLScene.Strings,

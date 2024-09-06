@@ -22,8 +22,8 @@ uses
 
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
-  GXS.VectorLists,
-  GXS.PersistentClasses,
+  GLScene.VectorLists,
+  GLScene.PersistentClasses,
   GXS.Scene,
   GXS.Context,
   GXS.Coordinates,
@@ -427,7 +427,7 @@ var
   FaceExtractor: TFaceExtractor;
   VertexCount: integer;
   Vertex: TAffineVector;
-  OffsetList: TgxIntegerList;
+  OffsetList: TGIntegerList;
   Face: TFace;
   iMO: integer;
   TriMeshData: PdxTriMeshData;
@@ -436,7 +436,7 @@ begin
   FaceExtractor := TFaceExtractor.Create(BaseMesh);
 
   try
-    OffsetList := TgxIntegerList.Create;
+    OffsetList := TGIntegerList.Create;
     FaceExtractor.ProcessMesh;
     VertexCount := 0;
     for i := 0 to BaseMesh.MeshObjects.Count - 1 do

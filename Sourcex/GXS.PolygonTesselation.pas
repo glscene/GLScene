@@ -16,13 +16,13 @@ uses
   System.SysUtils,
 
   GXS.VectorFileObjects,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorGeometry,
   GLScene.VectorTypes;
 
 (* Tesselates the polygon outlined by the Vertexes.
   And addeds them to the first facegroup of the Mesh. *)
-procedure DoTesselate(Vertexes: TgxAffineVectorList;
+procedure DoTesselate(Vertexes: TGAffineVectorList;
   Mesh: TgxBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
 
 //------------------------------------------------
@@ -77,7 +77,7 @@ begin
   SetVector(PAffineVector(outData)^, coords[0], coords[1], coords[2]);
 end;
 
-procedure DoTesselate(Vertexes: TgxAffineVectorList; Mesh: TgxBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
+procedure DoTesselate(Vertexes: TGAffineVectorList; Mesh: TgxBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
 var
   Tess: GLUTesselator;
   i: Integer;

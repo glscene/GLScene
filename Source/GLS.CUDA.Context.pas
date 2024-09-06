@@ -13,15 +13,15 @@ uses
   System.Classes,
   System.SysUtils,
   GLScene.Strings,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Context,
-  GLS.Generics,
+  GLScene.Generics,
 
   CUDA.Import,
   CUDA.RunTime;
 
 type
-  TCUDADimensions = class(TGLUpdateAbleObject)
+  TCUDADimensions = class(TGUpdateAbleObject)
   private
     FXYZ: TDim3;
     FMaxXYZ: TDim3;

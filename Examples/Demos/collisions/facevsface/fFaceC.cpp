@@ -8,7 +8,7 @@
 #include "fFaceC.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Collision"
 #pragma link "GLS.Coordinates"
 

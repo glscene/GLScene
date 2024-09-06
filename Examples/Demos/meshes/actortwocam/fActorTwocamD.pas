@@ -30,11 +30,11 @@ uses
   GLS.GeomObjects,
 
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.Utils,
   GLScene.VectorGeometry,
   GLS.Keyboard,
-  GLS.PersistentClasses, GLS.DCE;
+  GLScene.PersistentClasses, GLS.DCE;
 
 type
   TFormActorTwocam = class(TForm)

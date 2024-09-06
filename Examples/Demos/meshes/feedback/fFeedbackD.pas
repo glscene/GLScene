@@ -19,7 +19,7 @@ uses
   GLS.GeomObjects,
   GLS.VectorFileObjects,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Objects;
 
 type

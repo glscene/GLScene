@@ -21,7 +21,7 @@ uses
   GLS.SceneViewer, 
   GLS.Coordinates, 
   GLS.SimpleNavigation, 
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormSmoking = class(TForm)

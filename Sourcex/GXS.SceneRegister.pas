@@ -37,12 +37,12 @@ uses
 *)
 
   GLScene.Strings,
+  GLScene.Utils,
 
   GXS.Scene,
   GXS.Context,
   GXS.Color,
   GXS.SceneViewer,
-  GXS.Utils,
   GXS.ObjectManager;
 
 type

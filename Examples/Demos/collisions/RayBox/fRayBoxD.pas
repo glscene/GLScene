@@ -27,7 +27,7 @@ uses
 
   GLS.Material,
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormRayBox = class(TForm)

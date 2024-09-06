@@ -7,10 +7,10 @@ unit GXS.MultiPolygon;
 
 (* TODO
 
-  And I reactivated the TgxVectorPool object. The GXS.VectorLists are not suitable for this job.
+  And I reactivated the TgxVectorPool object. The GLScene.VectorLists are not suitable for this job.
   When the tesselator finds an intersection of edges it wants us to give him some storage
   for this new vertex, and he wants a pointer (see tessCombine). The pointers taken from
-  TgxAffineVectorList become invalid after enlarging the capacity (makes a ReAllocMem), which
+  TGAffineVectorList become invalid after enlarging the capacity (makes a ReAllocMem), which
   can happen implicitly while adding. The TgxVectorPool keeps all pointers valid until the
   destruction itself.
 
@@ -33,8 +33,8 @@ uses
   GXS.Context,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GXS.VectorLists,
-  GXS.PersistentClasses,
+  GLScene.VectorLists,
+  GLScene.PersistentClasses,
   GXS.Scene,
   GXS.Objects,
   GXS.GeomObjects,
@@ -94,14 +94,14 @@ type
     procedure GetExtents(var min, max: TAffineVector);
   end;
 
-  TgxPolygonList = class(TgxPersistentObjectList)
+  TgxPolygonList = class(TGPersistentObjectList)
   private
-    FAktList: TgxAffineVectorList;
-    function GetList(I: Integer): TgxAffineVectorList;
+    FAktList: TGAffineVectorList;
+    function GetList(I: Integer): TGAffineVectorList;
   public
     procedure Add;
-    property AktList: TgxAffineVectorList read FAktList;
-    property List[I: Integer]: TgxAffineVectorList read GetList;
+    property AktList: TGAffineVectorList read FAktList;
+    property List[I: Integer]: TGAffineVectorList read GetList;
   end;
 
   (* Multipolygon is defined with multiple contours.
@@ -116,7 +116,7 @@ type
      TgxMultiPolygonBase will take the input contours and let the tesselator
      make an outline from it (this is done in RetreiveOutline). This outline is
      used for Rendering. Only when there are changes in the contours, the
-     outline will be recalculated. The ouline in fact is a list of GXS.VectorLists. *)
+     outline will be recalculated. The ouline in fact is a list of GLScene.VectorLists. *)
   TgxMultiPolygonBase = class(TgxSceneObject)
   private
     FContours: TgxContours;
@@ -173,7 +173,7 @@ implementation
 
 type
   (* page oriented pointer array, with persistent pointer target memory.
-    In TgxVectorList a pointer to a vector will not be valid any more after
+    In TGVectorList a pointer to a vector will not be valid any more after
     a call to SetCapacity, which might be done implicitely during Add.
     The TgxVectorPool keeps memory in its original position during its
     whole lifetime. *)
@@ -241,13 +241,13 @@ end;
 
 procedure TgxPolygonList.Add;
 begin
-  FAktList := TgxAffineVectorList.Create;
+  FAktList := TGAffineVectorList.Create;
   inherited Add(FAktList);
 end;
 
-function TgxPolygonList.GetList(i: Integer): TgxAffineVectorList;
+function TgxPolygonList.GetList(i: Integer): TGAffineVectorList;
 begin
-  Result := TgxAffineVectorList(Items[i]);
+  Result := TGAffineVectorList(Items[i]);
 end;
 
 // ------------------

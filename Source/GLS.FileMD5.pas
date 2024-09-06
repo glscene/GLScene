@@ -14,12 +14,12 @@ uses
   System.SysUtils,
 
   GLS.VectorFileObjects,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.Utils,
   GLS.ApplicationFileIO,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLS.VectorLists;
+  GLScene.VectorLists;
 
 type
 
@@ -28,9 +28,9 @@ type
     FMD5String, FTempString, FBoneNames: TStringList;
     FCurrentPos: Integer;
     FBasePose: TGLSkeletonFrame;
-    FFramePositions: TGLAffineVectorList;
-    FFrameQuaternions: TGLQuaternionList;
-    FJointFlags: TGLIntegerList;
+    FFramePositions: TGAffineVectorList;
+    FFrameQuaternions: TGQuaternionList;
+    FJointFlags: TGIntegerList;
     FNumFrames, FFirstFrame, FFrameRate, FNumJoints: Integer;
     function ReadLine: String;
   public
@@ -202,18 +202,18 @@ procedure TGLMD5VectorFile.LoadFromStream(aStream: TStream);
     mesh: TGLSkeletonMeshObject;
     fg: TFGVertexIndexList;
     vnum, wnum, numverts, numweights: Integer;
-    VertexWeightID, VertexWeightCount, VertexBoneRef: TGLIntegerList;
-    VertexWeight: TGLSingleList;
-    VertexWeighted: TGLAffineVectorList;
+    VertexWeightID, VertexWeightCount, VertexBoneRef: TGIntegerList;
+    VertexWeight: TGSingleList;
+    VertexWeighted: TGAffineVectorList;
     blendedVert, transformedVert: TAffineVector;
     i, j, k: Integer;
     mat: TGLMatrix;
   begin
-    VertexWeightID := TGLIntegerList.Create;
-    VertexWeightCount := TGLIntegerList.Create;
-    VertexBoneRef := TGLIntegerList.Create;
-    VertexWeight := TGLSingleList.Create;
-    VertexWeighted := TGLAffineVectorList.Create;
+    VertexWeightID := TGIntegerList.Create;
+    VertexWeightCount := TGIntegerList.Create;
+    VertexBoneRef := TGIntegerList.Create;
+    VertexWeight := TGSingleList.Create;
+    VertexWeighted := TGAffineVectorList.Create;
 
     numverts := 0;
 
@@ -332,7 +332,7 @@ procedure TGLMD5VectorFile.LoadFromStream(aStream: TStream);
   begin
     if not Assigned(FJointFlags) then
     begin
-      FJointFlags := TGLIntegerList.Create;
+      FJointFlags := TGIntegerList.Create;
       Assert(Owner.Skeleton.Frames.Count > 0,
         'The md5mesh file must be loaded before md5anim files!');
       FJointFlags.Count := Owner.Skeleton.Frames[0].Position.Count;
@@ -478,8 +478,8 @@ begin
         if (temp = 'numjoints') then
         begin
           FNumJoints := StrToInt(FTempString[1]);
-          FFramePositions := TGLAffineVectorList.Create;
-          FFrameQuaternions := TGLQuaternionList.Create;
+          FFramePositions := TGAffineVectorList.Create;
+          FFrameQuaternions := TGQuaternionList.Create;
           if Owner.Skeleton.Frames.Count = 0 then
           begin
             FBasePose := TGLSkeletonFrame.CreateOwned(Owner.Skeleton.Frames);

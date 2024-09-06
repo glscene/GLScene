@@ -14,13 +14,13 @@ uses
   System.SysUtils,
   System.Classes,
   System.UITypes,
-  Vcl.Dialogs,
-  Vcl.Graphics,
+
+  Vcl.Graphics,   // clWhite
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLS.PersistentClasses,
-  GLS.BaseClasses,
+  GLScene.PersistentClasses,
+  GLScene.BaseClasses,
   GLScene.Utils;
 
 type
@@ -31,7 +31,7 @@ type
   TRGBColor = TVector3b;
 
   // Wraps an OpenGL color.
-  TGLColor = class(TGLUpdateAbleObject)
+  TGLColor = class(TGUpdateAbleObject)
   private
     FColor: TGLColorVector;
     FPDefaultColor: PGLColorVector;
@@ -363,9 +363,7 @@ var
   // their default values (ie. design-time) or not (run-time)
   vUseDefaultColorSets: Boolean = False;
 
-//======================================================================
-implementation
-//======================================================================
+implementation //-------------------------------------------------------------
 
 var
   vColorManager: TGLColorManager;
@@ -580,11 +578,11 @@ end;
 
 procedure TGLColor.NotifyChange(Sender: TObject);
 var
-  intf: IGLNotifyable;
+  intf: IGNotifyAble;
 begin
   if Assigned(Owner) then
   begin
-    if Supports(Owner, IGLNotifyable, intf) then
+    if Supports(Owner, IGNotifyAble, intf) then
       intf.NotifyChange(Self);
     // if Owner is TGLBaseSceneObject then
     // TGLBaseSceneObject(Owner).StructureChanged;
@@ -781,7 +779,7 @@ begin
         else
           Result.X := GLStrToFloatDef(workCopy);
       except
-        ShowMessage('Wrong vector format. Use: ''<red green blue alpha>''!');
+        Write('Wrong vector format. Use: ''<red green blue alpha>''!');
         Abort;
       end;
   end;

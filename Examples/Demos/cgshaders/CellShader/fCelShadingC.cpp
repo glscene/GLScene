@@ -8,7 +8,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GLS.AsyncTimer"
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.CgShader"
 #pragma link "GLS.Coordinates"

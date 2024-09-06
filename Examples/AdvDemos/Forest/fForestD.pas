@@ -26,7 +26,7 @@ uses
   GLS.Objects,
   GLS.Tree,
   GLS.Keyboard,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.BitmapFont,
   GLS.Context,
   GLS.WindowsFont,
@@ -35,10 +35,10 @@ uses
   GLS.Imposter,
   GLS.ParticleFX,
   GLS.Graphics,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.PipelineTransformation,
   GLS.XOpenGL,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.TextureCombiners,
   GLS.TextureFormat,
   GLS.Material,
@@ -92,7 +92,7 @@ type
     function SIBTreeLoadingImposter(Sender: TObject; impostoredObject: TGLBaseSceneObject;
       destImposter: TImposter): TGLBitmap32;
     procedure Timer1Timer(Sender: TObject);
-    procedure PFXTreesProgress(Sender: TObject; const progressTime: TGLProgressTimes;
+    procedure PFXTreesProgress(Sender: TObject; const progressTime: TGProgressTimes;
       var defaultProgress: Boolean);
     function PFXTreesGetParticleCountEvent(Sender: TObject): Integer;
     procedure FormResize(Sender: TObject);
@@ -110,7 +110,7 @@ type
     Path: TFileName;
     TestTree: TGLTree;
     TreesShown: Integer;
-    nearTrees: TGLPersistentObjectList;
+    nearTrees: TGPersistentObjectList;
     Imposter: TImposter;
     densityBitmap: TBitmap;
     mirrorTexture: TGLTextureHandle;
@@ -216,7 +216,7 @@ begin
   SetCursorPos(lmp.X, lmp.Y);
   ShowCursor(False);
 
-  nearTrees := TGLPersistentObjectList.Create;
+  nearTrees := TGPersistentObjectList.Create;
 
   camTurn := -60;
   enableRectReflection := False;
@@ -489,7 +489,7 @@ begin
   Result := TreesShown;
 end;
 
-procedure TForm1.PFXTreesProgress(Sender: TObject; const progressTime: TGLProgressTimes;
+procedure TForm1.PFXTreesProgress(Sender: TObject; const progressTime: TGProgressTimes;
   var defaultProgress: Boolean);
 begin
   defaultProgress := False;

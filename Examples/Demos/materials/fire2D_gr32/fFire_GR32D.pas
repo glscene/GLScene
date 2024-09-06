@@ -29,7 +29,7 @@ uses
   GLS.Cadencer,
   GLS.Coordinates,
  
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Material,
   GLS.FileJPEG,
   GLScene.Utils;

@@ -25,11 +25,11 @@ uses
   GLS.Collision,
   GLS.VectorFileObjects,
 
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.File3DS,
   GLS.Coordinates,
   GLScene.Utils,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormFacevsFace = class(TForm)

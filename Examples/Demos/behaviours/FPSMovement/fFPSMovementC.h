@@ -9,7 +9,7 @@
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Forms.hpp>
 
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.Coordinates.hpp"
 #include "GLS.FileJPEG.hpp"
@@ -26,7 +26,7 @@
 #include "GLS.GeomObjects.hpp"
 #include "GLScene.VectorGeometry.hpp"
 #include "GLS.Octree.hpp"
-#include "GLS.VectorLists.hpp"
+#include "GLScene.VectorLists.hpp"
 #include "GLS.Collision.hpp"
 #include "GLS.Texture.hpp"
 #include <System.Classes.hpp>

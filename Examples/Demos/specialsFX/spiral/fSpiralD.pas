@@ -24,7 +24,7 @@ uses
 
   GLS.FullScreenViewer,
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormSpiral = class(TForm)

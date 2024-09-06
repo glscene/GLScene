@@ -23,7 +23,7 @@ uses
   GLS.Coordinates,
   GLS.Material,
   GLS.SimpleNavigation,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormMegaglasscube = class(TForm)

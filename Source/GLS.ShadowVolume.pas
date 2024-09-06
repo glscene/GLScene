@@ -24,14 +24,14 @@ uses
   GLScene.VectorGeometry,
   GLS.Context,
   GLS.Silhouette,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.Coordinates,
   GLS.PipelineTransformation,
-  GLS.GeometryBB,
+  GLScene.GeometryBB,
   GLS.Color,
   GLS.Selection,
   GLS.RenderContextInfo,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.State,
   GLScene.VectorTypes,
   GLScene.Logger;
@@ -119,7 +119,7 @@ type
   // Specifies an individual shadow casting light.
   TGLShadowVolumeLight = class(TGLShadowVolumeCaster)
   private
-    FSilhouettes: TGLPersistentObjectList;
+    FSilhouettes: TGPersistentObjectList;
   protected
     function GetLightSource: TGLLightSource;
     procedure SetLightSource(const ls: TGLLightSource);
@@ -326,7 +326,7 @@ end;
 constructor TGLShadowVolumeLight.Create(ACollection: TCollection);
 begin
   inherited Create(ACollection);
-  FSilhouettes := TGLPersistentObjectList.Create;
+  FSilhouettes := TGPersistentObjectList.Create;
 end;
 
 destructor TGLShadowVolumeLight.Destroy;
@@ -379,7 +379,7 @@ var
   mvp: TGLMatrix;
   ls: TGLLightSource;
   aabb: TAABB;
-  clipRect: TGLClipRect;
+  clipRect: TGClipRect;
 begin
   ls := LightSource;
   if (EffectiveRadius <= 0) or (not ls.Attenuated) then

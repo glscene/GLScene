@@ -31,7 +31,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLScene.Utils,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormCgTexture = class(TForm)

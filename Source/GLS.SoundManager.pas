@@ -18,7 +18,7 @@ uses
   GLS.XCollection,
   GLScene.VectorGeometry,
   GLS.Cadencer,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.FileMP3,
   GLS.FileWAV,
   GLS.ImageUtils,
@@ -215,7 +215,7 @@ type
    Subclass should override the DoActivate and DoDeActivate protected methods
    to "initialize/unitialize" their sound layer, actual data releases should
    occur in destructor however. *)
-  TGLSoundManager = class(TGLCadenceAbleComponent)
+  TGLSoundManager = class(TGCadenceAbleComponent)
   private
    FActive: Boolean;
     FMute: Boolean;
@@ -298,7 +298,7 @@ type
     (* Progress notification for time synchronization.
        This method will call UpdateSources depending on the last time
        it was performed and the value of the UpdateFrequency property. *)
-    procedure DoProgress(const progressTime: TGLProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     // Sound manager API reported CPU Usage. Returns -1 when unsupported.
     function CPUUsagePercent: Single; virtual;
     // True if EAX is supported.
@@ -383,7 +383,7 @@ type
     class function FriendlyName: String; override;
     class function FriendlyDescription: String; override;
     class function UniqueItem: Boolean; override;
-    procedure DoProgress(const progressTime: TGLProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     property PlayingSource: TGLSoundSource read FPlayingSource;
   published
     property Source: TGLBaseSoundSource read FSource write SetSource;
@@ -1435,7 +1435,7 @@ begin
     Sources.Delete(i);
 end;
 
-procedure TGLSoundManager.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLSoundManager.DoProgress(const progressTime: TGProgressTimes);
 begin
   if not Active then
     Exit;
@@ -1538,7 +1538,7 @@ begin
 end;
 
 
-procedure TGLBSoundEmitter.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLBSoundEmitter.DoProgress(const progressTime: TGProgressTimes);
 begin
   // nothing, yet
 end;

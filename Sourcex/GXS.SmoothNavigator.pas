@@ -33,7 +33,7 @@ uses
   GXS.Scene,
   GXS.Coordinates,
   GXS.Screen,
-  GXS.PersistentClasses;
+  GLScene.PersistentClasses;
 
 type
 

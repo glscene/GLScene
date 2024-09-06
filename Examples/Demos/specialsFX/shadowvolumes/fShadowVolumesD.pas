@@ -14,13 +14,13 @@ uses
   Vcl.StdCtrls,
 
   GLS.Scene,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.Objects,
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.ShadowVolume,
   GLS.VectorFileObjects,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.FileSMD,
   GLS.Texture,
   GLScene.VectorTypes,
@@ -31,7 +31,7 @@ uses
   GLS.Coordinates,
 
   GLS.SimpleNavigation,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.Utils;
 
 type

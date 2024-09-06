@@ -17,7 +17,7 @@ uses
   Vcl.Menus,
 
   GLS.Scene,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.VectorFileObjects,
   GLS.Objects,
   GLS.SceneViewer,

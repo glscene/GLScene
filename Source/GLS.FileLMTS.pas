@@ -17,10 +17,10 @@ uses
   GLScene.VectorTypes,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorGeometry,
   GLS.Texture,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.Graphics,
   GLS.Material;
 
@@ -131,7 +131,7 @@ var
   _4cc: Cardinal;
   C: Integer;
   fName: string;
-  vi: TGLIntegerList;
+  vi: TGIntegerList;
   libmat: TGLLibmaterial;
   lmnames, matnames: TStringlist;
   MatInfoHeader: array [0 .. 3] of AnsiChar;
@@ -144,7 +144,7 @@ begin
   MO := TGLMeshObject.CreateOwned(owner.MeshObjects);
   MO.Mode := momFaceGroups;
 
-  vi := TGLIntegerList.create;
+  vi := TGIntegerList.create;
 
   LL := owner.LightmapLibrary;
   ML := owner.MaterialLibrary;

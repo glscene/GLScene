@@ -18,7 +18,7 @@ uses
   GLS.Texture,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLScene.OpenGLTokens,
   GLS.Context,
   GLSL.AsmShader,
@@ -29,7 +29,7 @@ uses
 type
   TGLPhongShader = class(TGLCustomAsmShader)
   private
-    FLightIDs: TGLIntegerList;
+    FLightIDs: TGIntegerList;
     FDesignTimeEnabled: Boolean;
     FAmbientPass: Boolean;
     procedure SetDesignTimeEnabled(const Value: Boolean);
@@ -184,7 +184,7 @@ begin
 
     Add('END');
   end;
-  FLightIDs := TGLIntegerList.Create;
+  FLightIDs := TGIntegerList.Create;
 end;
 
 function TGLPhongShader.ShaderSupported: Boolean;

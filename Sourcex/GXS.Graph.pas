@@ -20,7 +20,7 @@ uses
   GLScene.VectorGeometry,
   GXS.Material,
   GXS.Objects,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GXS.Color,
   GXS.BaseClasses,
   GXS.RenderContextInfo,

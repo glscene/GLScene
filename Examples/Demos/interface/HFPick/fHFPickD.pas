@@ -22,7 +22,7 @@ uses
   GLS.Objects,
   GLS.Color,
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormHFPick = class(TForm)

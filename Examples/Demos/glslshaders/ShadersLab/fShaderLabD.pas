@@ -23,10 +23,10 @@ uses
   Vcl.Imaging.PngImage,
 
   GLScene.VectorTypes,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorGeometry,
-  GLS.BaseClasses,
-  GLS.PersistentClasses,
+  GLScene.BaseClasses,
+  GLScene.PersistentClasses,
   GLS.Keyboard,
 
   GLS.Material,

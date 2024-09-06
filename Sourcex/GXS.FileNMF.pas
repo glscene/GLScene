@@ -12,7 +12,7 @@ uses
 
   GXS.VectorFileObjects,
   GLScene.VectorGeometry,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GXS.ApplicationFileIO;
 
 const
@@ -133,12 +133,12 @@ procedure TgxNMFVectorFile.SaveToStream(aStream: TStream);
 var
   i, j: Integer;
   nmf: TFileNMF;
-  Vertices, TempVertices, Normals, TexCoords: TgxAffineVectorList;
+  Vertices, TempVertices, Normals, TexCoords: TGAffineVectorList;
 begin
   nmf := TFileNMF.Create;
-  Vertices := TgxAffineVectorList.Create;
-  Normals := TgxAffineVectorList.Create;
-  TexCoords := TgxAffineVectorList.Create;
+  Vertices := TGAffineVectorList.Create;
+  Normals := TGAffineVectorList.Create;
+  TexCoords := TGAffineVectorList.Create;
   try
     for i := 0 to Owner.MeshObjects.Count - 1 do
     begin

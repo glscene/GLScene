@@ -29,10 +29,10 @@ uses
 
   GLS.Scene,
   GLS.State,
-  GLS.PersistentClasses,
-  GLS.VectorLists,
+  GLScene.PersistentClasses,
+  GLScene.VectorLists,
   GLS.Silhouette,
-  GLS.GeometryBB,
+  GLScene.GeometryBB,
   GLS.VectorFileObjects,
   GLS.Material,
   GLS.Texture,

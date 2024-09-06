@@ -27,12 +27,12 @@ uses
   GLS.Graph,
   GLScene.VectorTypes,
   GLS.SkyDome,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.FileDDS,
  
   GLS.Material,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLS.SimpleNavigation,
   GLS.TextureFormat,
@@ -225,14 +225,14 @@ procedure TForm1.DOOceanPlaneRender(Sender: TObject;
   var rci: TGLRenderContextInfo);
 var
   x, y: Integer;
-  v: TGLTexPointList;
+  v: TGTexPointList;
   cont: Boolean;
 begin
   GLUserShader1DoApply(Self, rci);
   gl.EnableClientState(GL_VERTEX_ARRAY);
   if not Assigned(vbo) then
   begin
-    v := TGLTexPointList.Create;
+    v := TGTexPointList.Create;
     v.Capacity := Sqr(cExtent + 1);
     y := -cExtent;
     while y < cExtent do

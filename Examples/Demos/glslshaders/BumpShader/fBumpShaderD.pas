@@ -25,7 +25,7 @@ uses
   GLScene.VectorGeometry,
   GLS.Material,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.Utils,
   GLS.FileMS3D,
   GLS.File3DS,
@@ -156,6 +156,7 @@ begin
     TrinityMatlib.Materials[I].Shader := MyBumpShader;
 
   ShowNotGLSceneObjectsCheckBoxClick(Sender);
+  MultiLightShaderCheckBoxClick(Sender);
 end;
 
 

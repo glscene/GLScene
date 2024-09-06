@@ -16,7 +16,7 @@ uses
 
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLScene.Utils;
 
 type
@@ -43,20 +43,20 @@ type
 
   TVRMLSingleArray = class(TVRMLNode)
   private
-    FValues: TGLSingleList;
+    FValues: TGSingleList;
   public
     constructor Create; override;
     destructor Destroy; override;
-    property Values: TGLSingleList read FValues;
+    property Values: TGSingleList read FValues;
   end;
 
   TVRMLIntegerArray = class(TVRMLNode)
   private
-    FValues: TGLIntegerList;
+    FValues: TGIntegerList;
   public
     constructor Create; override;
     destructor Destroy; override;
-    property Values: TGLIntegerList read FValues;
+    property Values: TGIntegerList read FValues;
   end;
 
   TVRMLMaterial = class(TVRMLNode)
@@ -273,7 +273,7 @@ end;
 constructor TVRMLSingleArray.Create;
 begin
   inherited;
-  FValues := TGLSingleList.Create;
+  FValues := TGSingleList.Create;
 end;
 
 destructor TVRMLSingleArray.Destroy;
@@ -290,7 +290,7 @@ end;
 constructor TVRMLIntegerArray.Create;
 begin
   inherited;
-  FValues := TGLIntegerList.Create;
+  FValues := TGIntegerList.Create;
 end;
 
 destructor TVRMLIntegerArray.Destroy;

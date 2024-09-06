@@ -12,9 +12,9 @@ uses
   System.SysUtils,
 
   GLS.VectorFileObjects,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.Texture,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.ApplicationFileIO,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,

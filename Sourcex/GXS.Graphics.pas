@@ -34,7 +34,7 @@ uses
   GXS.OpenGL,
 
   GLScene.VectorGeometry,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GXS.ApplicationFileIO,
   GXS.Context,
   GXS.ImageUtils,
@@ -322,7 +322,7 @@ type
   end;
 
   // Stores registered raster file Formatx.
-  TRasterFileFormatsList = class(TgxPersistentObjectList)
+  TRasterFileFormatsList = class(TGPersistentObjectList)
   public
     destructor Destroy; override;
     procedure Add(const Ext, Desc: string; DescID: Integer; AClass: TgxBaseImageClass);

@@ -17,11 +17,11 @@ uses
 
   
   GLS.Scene,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.VectorFileObjects,
   GLS.Objects,
   GLS.Texture,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.SimpleNavigation,
@@ -31,7 +31,7 @@ uses
   GLScene.VectorGeometry,
   GLS.Material,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLScene.Utils,
   GLS.FileMD2,

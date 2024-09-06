@@ -23,7 +23,7 @@ uses
   GLS.Texture,
   GLS.BitmapFont,
   GLS.RenderContextInfo,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLScene.Utils,
   GLScene.VectorGeometry,
   GLScene.OpenGLTokens,
@@ -44,7 +44,7 @@ type
   TGLWindowsBitmapFont = class(TGLCustomBitmapFont)
   private
     FFont: TFont;
-    procedure SetList(const AList : TGLIntegerList);
+    procedure SetList(const AList : TGIntegerList);
   protected
     procedure SetFont(value: TFont);
     procedure LoadWindowsFont; virtual;
@@ -303,7 +303,7 @@ begin
   end;
 end;
 
-procedure TGLWindowsBitmapFont.SetList(const AList: TGLIntegerList);
+procedure TGLWindowsBitmapFont.SetList(const AList: TGIntegerList);
 var
   i : integer;
   f, n, s : integer;
@@ -342,9 +342,9 @@ end;
 procedure TGLWindowsBitmapFont.EnsureChars(const AStart, AEnd: widechar);
 var
   c : WideChar;
-  ACharList : TGLIntegerList;
+  ACharList : TGIntegerList;
 begin
-  ACharList := TGLIntegerList.Create;
+  ACharList := TGIntegerList.Create;
   for c := AStart to AEnd do
       ACharList.Add(integer(c));
   SetList(ACharList);
@@ -355,9 +355,9 @@ end;
 procedure TGLWindowsBitmapFont.EnsureString(const s: String);
 var
   i : Integer;
-  ACharList : TGLIntegerList;
+  ACharList : TGIntegerList;
 begin
-  ACharList := TGLIntegerList.Create;
+  ACharList := TGIntegerList.Create;
   for i := 1 to Length(s) do
       ACharList.Add(integer(s[i]));
   SetList(ACharList);

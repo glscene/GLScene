@@ -28,16 +28,16 @@ uses
   GLS.PipelineTransformation,
   GLS.State,
   GLScene.VectorTypes,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GLS.XCollection,
   GLS.Material,
   GLS.Cadencer,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.Graphics,
   GLS.Context,
   GLS.Color,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Coordinates,
   GLS.RenderContextInfo,
   GLScene.Manager,
@@ -57,7 +57,7 @@ type
      The class implements properties for position, velocity and time, whatever
      you need in excess of that will have to be placed in subclasses (this
      class should remain as compact as possible). *)
-  TGLParticle = class(TGLPersistentObject)
+  TGLParticle = class(TGPersistentObject)
   private
     FID, FTag: Integer;
     FManager: TGLParticleFXManager; // NOT persistent
@@ -105,10 +105,10 @@ type
   (* List of particles.
    This list is managed with particles and performance in mind, make sure to
    check methods doc. *)
-  TGLParticleList = class(TGLPersistentObject)
+  TGLParticleList = class(TGPersistentObject)
   private
     FOwner: TGLParticleFXManager; // NOT persistent
-    FItemList: TGLPersistentObjectList;
+    FItemList: TGPersistentObjectList;
     FDirectList: PGLParticleArray; // NOT persistent
   protected
     function GetItems(index: Integer): TGLParticle;
@@ -207,7 +207,7 @@ type
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
     procedure NotifyChange(Sender: TObject); override;
-    procedure DoProgress(const progressTime: TGLProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     // Class of particles created by this manager. }
     class function ParticlesClass: TGLParticleClass; virtual;
     // Creates a new particle controled by the manager.
@@ -353,9 +353,9 @@ type
   // Simple Particles Source.
   TGLSourcePFXEffect = class(TGLParticleFXEffect)
   private
-    FInitialVelocity: TGLCoordinates;
-    FInitialPosition: TGLCoordinates;
-    FPositionDispersionRange: TGLCoordinates;
+    FInitialVelocity: TGCoordinates;
+    FInitialPosition: TGCoordinates;
+    FPositionDispersionRange: TGCoordinates;
     FVelocityDispersion: Single;
     FPositionDispersion: Single;
     FParticleInterval: Single;
@@ -367,9 +367,9 @@ type
     FTimeRemainder: Double;
     FRotationDispersion: Single;
   protected
-    procedure SetInitialVelocity(const val: TGLCoordinates);
-    procedure SetInitialPosition(const val: TGLCoordinates);
-    procedure SetPositionDispersionRange(const val: TGLCoordinates);
+    procedure SetInitialVelocity(const val: TGCoordinates);
+    procedure SetInitialPosition(const val: TGCoordinates);
+    procedure SetPositionDispersionRange(const val: TGCoordinates);
     procedure SetParticleInterval(const val: Single);
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
@@ -379,18 +379,18 @@ type
     destructor Destroy; override;
     class function FriendlyName: string; override;
     class function FriendlyDescription: string; override;
-    procedure DoProgress(const progressTime: TGLProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     // Instantaneously creates nb particles
     procedure Burst(time: Double; nb: Integer);
     procedure RingExplosion(time: Double;
       minInitialSpeed, maxInitialSpeed: Single;
       nbParticles: Integer);
   published
-    property InitialVelocity: TGLCoordinates read FInitialVelocity write SetInitialVelocity;
+    property InitialVelocity: TGCoordinates read FInitialVelocity write SetInitialVelocity;
     property VelocityDispersion: Single read FVelocityDispersion write FVelocityDispersion;
-    property InitialPosition: TGLCoordinates read FInitialPosition write SetInitialPosition;
+    property InitialPosition: TGCoordinates read FInitialPosition write SetInitialPosition;
     property PositionDispersion: Single read FPositionDispersion write FPositionDispersion;
-    property PositionDispersionRange: TGLCoordinates read FPositionDispersionRange write SetPositionDispersionRange;
+    property PositionDispersionRange: TGCoordinates read FPositionDispersionRange write SetPositionDispersionRange;
     property ParticleInterval: Single read FParticleInterval write SetParticleInterval;
     property VelocityMode: TGLSourcePFXVelocityMode read FVelocityMode write FVelocityMode default svmAbsolute;
     property PositionMode: TGLSourcePFXPositionMode read FPositionMode write FPositionMode default spmAbsoluteOffset;
@@ -405,12 +405,12 @@ type
    (simple velocity and const acceleration integration). *)
   TGLDynamicPFXManager = class(TGLParticleFXManager)
   private
-    FAcceleration: TGLCoordinates;
+    FAcceleration: TGCoordinates;
     FFriction: Single;
     FCurrentTime: Double;
     //FRotationCenter: TAffineVector;
   protected
-    procedure SetAcceleration(const val: TGLCoordinates);
+    procedure SetAcceleration(const val: TGCoordinates);
     (* Returns the maximum age for a particle.
        Particles older than that will be killed by DoProgress. *)
     function MaxParticleAge: Single; virtual; abstract;
@@ -418,10 +418,10 @@ type
   public
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TGLProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
   published
     // Oriented acceleration applied to the particles.
-    property Acceleration: TGLCoordinates read FAcceleration write SetAcceleration;
+    property Acceleration: TGCoordinates read FAcceleration write SetAcceleration;
     (* Friction applied to the particles.
        Friction is applied as a speed scaling factor over 1 second, ie.
        a friction of 0.5 will half speed over 1 second, a friction of 3
@@ -501,7 +501,7 @@ type
     procedure ComputeOuterColor(var lifeTime: Single; var outer: TGLColorVector);
     function ComputeSizeScale(var lifeTime: Single; var sizeScale: Single): Boolean;
     function ComputeRotateAngle(var lifeTime, rotateAngle: Single): Boolean;
-    procedure RotateVertexBuf(buf: TGLAffineVectorList; lifeTime: Single;
+    procedure RotateVertexBuf(buf: TGAffineVectorList; lifeTime: Single;
       const axis: TAffineVector; offsetAngle: Single);
   public
     constructor Create(aOwner: TComponent); override;
@@ -515,9 +515,9 @@ type
   end;
   TPFXDirectRenderEvent = procedure(Sender: TObject; aParticle: TGLParticle;
     var rci: TGLRenderContextInfo) of object;
-  TPFXProgressEvent = procedure(Sender: TObject; const progressTime: TGLProgressTimes;
+  TPFXProgressEvent = procedure(Sender: TObject; const progressTime: TGProgressTimes;
     var defaultProgress: Boolean) of object;
-  TPFXParticleProgress = procedure(Sender: TObject; const progressTime: TGLProgressTimes;
+  TPFXParticleProgress = procedure(Sender: TObject; const progressTime: TGProgressTimes;
     aParticle: TGLParticle; var killParticle: Boolean) of object;
   TPFXGetParticleCountEvent = function(Sender: TObject): Integer of object;
 
@@ -545,7 +545,7 @@ type
     procedure EndParticles(var rci: TGLRenderContextInfo); override;
     procedure FinalizeRendering(var rci: TGLRenderContextInfo); override;
   public
-    procedure DoProgress(const progressTime: TGLProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     function ParticleCount: Integer; override;
   published
     property OnInitializeRendering: TGLDirectRenderEvent read FOnInitializeRendering write FOnInitializeRendering;
@@ -571,8 +571,8 @@ type
   private
     FNbSides: Integer;
     Fvx, Fvy: TAffineVector; // NOT persistent
-    FVertices: TGLAffineVectorList; // NOT persistent
-    FVertBuf: TGLAffineVectorList; // NOT persistent
+    FVertices: TGAffineVectorList; // NOT persistent
+    FVertBuf: TGAffineVectorList; // NOT persistent
   protected
     procedure SetNbSides(const val: Integer);
     function TexturingMode: Cardinal; override;
@@ -608,8 +608,8 @@ type
   private
     FTexHandle: TGLTextureHandle;
     Fvx, Fvy, Fvz: TAffineVector; // NOT persistent
-    FVertices: TGLAffineVectorList; // NOT persistent
-    FVertBuf: TGLAffineVectorList; // NOT persistent
+    FVertices: TGAffineVectorList; // NOT persistent
+    FVertBuf: TGAffineVectorList; // NOT persistent
     FAspectRatio: Single;
     FRotation: Single;
     FShareSprites: TGLBaseSpritePFXManager;
@@ -746,7 +746,7 @@ end;
 
 procedure RndVector(const dispersion: TGLSourcePFXDispersionMode;
   var v: TAffineVector; var f: Single;
-  dispersionRange: TGLCoordinates);
+  dispersionRange: TGCoordinates);
 
   function GetRandomVector(NotIsotropic : boolean) : TVector3f;
   // Isotropic gives constrainted vector within a radius
@@ -854,7 +854,7 @@ end;
 constructor TGLParticleList.Create;
 begin
   inherited Create;
-  FItemList := TGLPersistentObjectList.Create;
+  FItemList := TGPersistentObjectList.Create;
   FitemList.GrowthDelta := 64;
   FDirectList := nil;
 end;
@@ -976,7 +976,7 @@ begin
     Renderer.StructureChanged;
 end;
 
-procedure TGLParticleFXManager.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLParticleFXManager.DoProgress(const progressTime: TGProgressTimes);
 begin
   inherited;
   if FAutoFreeWhenEmpty and (FParticles.ItemCount = 0) then
@@ -1504,9 +1504,9 @@ end;
 constructor TGLSourcePFXEffect.Create(aOwner: TXCollection);
 begin
   inherited;
-  FInitialVelocity := TGLCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
-  FInitialPosition := TGLCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
-  FPositionDispersionRange := TGLCoordinates.CreateInitialized(Self, XYZHmgVector, csPoint);
+  FInitialVelocity := TGCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  FInitialPosition := TGCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
+  FPositionDispersionRange := TGCoordinates.CreateInitialized(Self, XYZHmgVector, csPoint);
   FVelocityDispersion := 0;
   FPositionDispersion := 0;
   FParticleInterval := 0.1;
@@ -1591,17 +1591,17 @@ begin
   end;
 end;
 
-procedure TGLSourcePFXEffect.SetInitialVelocity(const val: TGLCoordinates);
+procedure TGLSourcePFXEffect.SetInitialVelocity(const val: TGCoordinates);
 begin
   FInitialVelocity.Assign(val);
 end;
 
-procedure TGLSourcePFXEffect.SetInitialPosition(const val: TGLCoordinates);
+procedure TGLSourcePFXEffect.SetInitialPosition(const val: TGCoordinates);
 begin
   FInitialPosition.Assign(val);
 end;
 
-procedure TGLSourcePFXEffect.SetPositionDispersionRange(const val: TGLCoordinates);
+procedure TGLSourcePFXEffect.SetPositionDispersionRange(const val: TGCoordinates);
 begin
   FPositionDispersionRange.Assign(val);
 end;
@@ -1618,7 +1618,7 @@ begin
   end;
 end;
 
-procedure TGLSourcePFXEffect.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLSourcePFXEffect.DoProgress(const progressTime: TGProgressTimes);
 var
   n: Integer;
 begin
@@ -1896,7 +1896,7 @@ end;
 constructor TGLDynamicPFXManager.Create(aOwner: TComponent);
 begin
   inherited;
-  FAcceleration := TGLCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  FAcceleration := TGCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
   FFriction := 1;
 end;
 
@@ -1906,7 +1906,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TGLDynamicPFXManager.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLDynamicPFXManager.DoProgress(const progressTime: TGProgressTimes);
 var
   i: Integer;
   curParticle: TGLParticle;
@@ -1984,7 +1984,7 @@ begin
     Particles.Pack;
 end;
 
-procedure TGLDynamicPFXManager.SetAcceleration(const val: TGLCoordinates);
+procedure TGLDynamicPFXManager.SetAcceleration(const val: TGCoordinates);
 begin
   FAcceleration.Assign(val);
 end;
@@ -2281,7 +2281,7 @@ begin
   end;
 end;
 
-procedure TGLLifeColoredPFXManager.RotateVertexBuf(buf: TGLAffineVectorList;
+procedure TGLLifeColoredPFXManager.RotateVertexBuf(buf: TGAffineVectorList;
   lifeTime: Single; const axis: TAffineVector; offsetAngle: Single);
 var
   rotateAngle: Single;
@@ -2304,7 +2304,7 @@ end;
 // ------------------ TGLCustomPFXManager ------------------
 // ------------------
 
-procedure TGLCustomPFXManager.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLCustomPFXManager.DoProgress(const progressTime: TGProgressTimes);
 var
   i: Integer;
   list: PGLParticleArray;
@@ -2430,14 +2430,14 @@ begin
     Fvx.V[i] := matrix.V[i].X * FParticleSize;
     Fvy.V[i] := matrix.V[i].Y * FParticleSize;
   end;
-  FVertices := TGLAffineVectorList.Create;
+  FVertices := TGAffineVectorList.Create;
   FVertices.Capacity := FNbSides;
   for i := 0 to FNbSides - 1 do
   begin
     SinCosine(i * c2PI / FNbSides, s, c);
     FVertices.Add(VectorCombine(FVx, Fvy, c, s));
   end;
-  FVertBuf := TGLAffineVectorList.Create;
+  FVertBuf := TGAffineVectorList.Create;
   FVertBuf.Count := FVertices.Count;
 end;
 
@@ -2644,7 +2644,7 @@ begin
     Fvz.V[i] := matrix.V[i].Z;
   end;
 
-  FVertices := TGLAffineVectorList.Create;
+  FVertices := TGAffineVectorList.Create;
   for i := 0 to 3 do
   begin
     SinCosine(i * cPIdiv2 + cPIdiv4, s, c);
@@ -2656,7 +2656,7 @@ begin
     FVertices.TransformAsPoints(matrix);
   end;
 
-  FVertBuf := TGLAffineVectorList.Create;
+  FVertBuf := TGAffineVectorList.Create;
   FVertBuf.Count := FVertices.Count;
 end;
 

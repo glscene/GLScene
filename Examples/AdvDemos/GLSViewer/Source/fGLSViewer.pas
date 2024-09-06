@@ -44,17 +44,17 @@ uses
   GLScene.VectorGeometry,
   GLS.Texture,
   GLS.Context,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.Cadencer,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.State,
   GLS.RenderContextInfo,
   GLS.TextureFormat,
   GLS.Color,
   GLS.Keyboard,
   GLS.Graphics,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.MeshUtils,
   GLScene.VectorTypes,
   GLS.AsyncTimer,
@@ -872,8 +872,8 @@ end;
 
 procedure TFormGLSViewer.acConvertToIndexedTrianglesExecute(Sender: TObject);
 var
-  v: TGLAffineVectorList;
-  I: TGLIntegerList;
+  v: TGAffineVectorList;
+  I: TGIntegerList;
   m: TGLMeshObject;
   fg: TFGVertexIndexList;
 begin
@@ -908,7 +908,7 @@ var
   I: Integer;
   mo: TGLMeshObject;
   fg: TFGVertexIndexList;
-  strips: TGLPersistentObjectList;
+  strips: TGPersistentObjectList;
 begin
   acConvertToTriangles.Execute;
   mo := ffObject.MeshObjects[0];
@@ -919,7 +919,7 @@ begin
     for I := 0 to strips.Count - 1 do
     begin
       fg := TFGVertexIndexList.CreateOwned(mo.FaceGroups);
-      fg.VertexIndices := (strips[I] as TGLIntegerList);
+      fg.VertexIndices := (strips[I] as TGIntegerList);
       if I = 0 then
         fg.Mode := fgmmTriangles
       else

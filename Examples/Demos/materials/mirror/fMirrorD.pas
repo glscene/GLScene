@@ -12,7 +12,7 @@ uses
   Vcl.StdCtrls,
   
   
-  GLS.BaseClasses, 
+  GLScene.BaseClasses, 
   GLS.Scene, 
   GLS.Objects, 
   GLS.Extrusion, 

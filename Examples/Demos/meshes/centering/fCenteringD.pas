@@ -20,7 +20,7 @@ uses
   GLS.SceneViewer,
   GLS.File3DS,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.Utils;
 
 type

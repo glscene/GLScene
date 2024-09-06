@@ -21,7 +21,7 @@ uses
   GLS.Extrusion,
   GLS.SceneViewer,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.Utils;
 
 type

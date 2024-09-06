@@ -11,7 +11,7 @@
 #include <Vcl.Dialogs.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.ExtDlgs.hpp>
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.Coordinates.hpp"
 
 #include "GLS.Material.hpp"

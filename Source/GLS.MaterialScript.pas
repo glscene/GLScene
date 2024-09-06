@@ -95,9 +95,9 @@ type
     Infini: Longint;
     Done: Boolean;
     NewMat: TGLLibMaterial;
-    TmpCoords: TGLCoordinates;
+    TmpCoords: TGCoordinates;
     TmpColor: TGLColor;
-    TmpCoords4: TGLCoordinates4;
+    TmpCoords4: TGCoordinates4;
     TmpStr: string;
     procedure SeTGLShaderItems(const Value: TGLShaderItems);
     procedure SeTGLMaterialLibraryItems(const Value: TGLMaterialLibraryItems);

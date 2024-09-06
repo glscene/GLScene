@@ -22,9 +22,9 @@ uses
   GLScene.OpenGLTokens,
   GLScene.VectorGeometry,
   GLS.Scene,
-  GLS.VectorLists,
-  GLS.PersistentClasses,
-  GLS.BaseClasses,
+  GLScene.VectorLists,
+  GLScene.PersistentClasses,
+  GLScene.BaseClasses,
   GLS.Context,
   GLS.RenderContextInfo,
   GLScene.VectorTypes,
@@ -42,10 +42,10 @@ const
    private
      FLocks: packed array of ByteBool;
      FPositions, FVelocity: packed array of Single;
-     FPlaneQuadIndices: TGLPersistentObjectList;
-     FPlaneQuadTexCoords: TGLTexPointList;
-     FPlaneQuadVertices: TGLAffineVectorList;
-     FPlaneQuadNormals: TGLAffineVectorList;
+     FPlaneQuadIndices: TGPersistentObjectList;
+     FPlaneQuadTexCoords: TGTexPointList;
+     FPlaneQuadVertices: TGAffineVectorList;
+     FPlaneQuadNormals: TGAffineVectorList;
      FActive: Boolean;
      FRainTimeInterval: Integer;
      FRainForce: Single;
@@ -76,7 +76,7 @@ const
    public
      constructor Create(AOwner: TComponent); override;
      destructor Destroy; override;
-     procedure DoProgress(const progressTime: TGLProgressTimes); override;
+     procedure DoProgress(const progressTime: TGProgressTimes); override;
      procedure BuildList(var rci: TGLRenderContextInfo); override;
      procedure Assign(Source: TPersistent); override;
      function AxisAlignedDimensionsUnscaled: TGLVector; override;
@@ -132,10 +132,10 @@ begin
   FMaximumCatchupIterations := 1;
   FOptions := cDefaultWaterPlaneOptions;
 
-  FPlaneQuadIndices := TGLPersistentObjectList.Create;
-  FPlaneQuadTexCoords := TGLTexPointList.Create;
-  FPlaneQuadVertices := TGLAffineVectorList.Create;
-  FPlaneQuadNormals := TGLAffineVectorList.Create;
+  FPlaneQuadIndices := TGPersistentObjectList.Create;
+  FPlaneQuadTexCoords := TGTexPointList.Create;
+  FPlaneQuadVertices := TGAffineVectorList.Create;
+  FPlaneQuadNormals := TGAffineVectorList.Create;
   FMask := TPicture.Create;
   FMask.OnChange := DoMaskChanged;
   SetResolution(64);
@@ -151,7 +151,7 @@ begin
   inherited;
 end;
 
-procedure TGLWaterPlane.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLWaterPlane.DoProgress(const progressTime: TGProgressTimes);
 var
   i: Integer;
 begin
@@ -274,7 +274,7 @@ var
   i, j, ij, resSqr: Integer;
   maskBmp: TBitmap;
   scanLine: PIntegerArray;
-  il: TGLIntegerList;
+  il: TGIntegerList;
   locked: Boolean;
 begin
   resSqr := FResolution * FResolution;
@@ -307,7 +307,7 @@ begin
   FPlaneQuadIndices.Clean;
   for j := 0 to Resolution - 2 do
   begin
-    il := TGLIntegerList.Create;
+    il := TGIntegerList.Create;
     for i := 0 to Resolution - 1 do
     begin
       ij := i + j * Resolution;
@@ -324,7 +324,7 @@ begin
       else if il.Count > 0 then
       begin
         FPlaneQuadIndices.Add(il);
-        il := TGLIntegerList.Create;
+        il := TGIntegerList.Create;
       end;
     end;
     if il.Count > 0 then
@@ -434,7 +434,7 @@ end;
 procedure TGLWaterPlane.BuildList(var rci: TGLRenderContextInfo);
 var
   i: Integer;
-  il: TGLIntegerList;
+  il: TGIntegerList;
 begin
   gl.PushClientAttrib(GL_CLIENT_VERTEX_ARRAY_BIT);
 
@@ -455,7 +455,7 @@ begin
 
   for i := 0 to FPlaneQuadIndices.Count - 1 do
   begin
-    il := TGLIntegerList(FPlaneQuadIndices[i]);
+    il := TGIntegerList(FPlaneQuadIndices[i]);
     gl.DrawElements(GL_QUAD_STRIP, il.Count, GL_UNSIGNED_INT, il.List);
   end;
 

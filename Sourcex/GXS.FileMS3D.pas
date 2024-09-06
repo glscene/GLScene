@@ -20,7 +20,7 @@ uses
   GXS.Color,
   GXS.Texture,
   GLScene.VectorGeometry,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GXS.ApplicationFileIO;
 
 const

@@ -24,7 +24,7 @@
 #include "GLS.SimpleNavigation.hpp"
 #include "GLS.Behaviours.hpp"
 #include "GLS.Coordinates.hpp"
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.Color.hpp"
 
 //---------------------------------------------------------------------------

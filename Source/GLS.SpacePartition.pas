@@ -41,11 +41,11 @@ uses
   GLS.Coordinates,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLS.GeometryBB,
+  GLScene.GeometryBB,
   GLS.Context,
   GLS.RenderContextInfo,
   GLS.SceneViewer,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.State;
 
 const
@@ -76,7 +76,7 @@ type
   end;
 
   // Used to store the actual objects in the SpacePartition
-  TGLSpacePartitionLeaf = class(TGLPersistentObject)
+  TGLSpacePartitionLeaf = class(TGPersistentObject)
   private
     FSpacePartition: TGLBaseSpacePartition;
     procedure SetSpacePartition(const Value: TGLBaseSpacePartition);
@@ -109,7 +109,7 @@ type
   end;
 
   // List for storing space partition leaves
-  TGLSpacePartitionLeafList = class(TGLPersistentObjectList)
+  TGLSpacePartitionLeafList = class(TGPersistentObjectList)
   private
     function GetItems(I: Integer): TGLSpacePartitionLeaf;
     procedure SetItems(I: Integer; const Value: TGLSpacePartitionLeaf);
@@ -132,7 +132,7 @@ type
   TGLCullingMode = (CmFineCulling, CmGrossCulling);
 
   // Basic space partition, does not implement any actual space partitioning
-  TGLBaseSpacePartition = class(TGLPersistentObject)
+  TGLBaseSpacePartition = class(TGPersistentObject)
   private
     FCullingMode: TGLCullingMode;
     // Query space for Leaves that intersect a cone, result is returned through QueryResult

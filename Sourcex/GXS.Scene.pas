@@ -27,10 +27,10 @@ uses
   GXS.XCollection,
   GXS.BaseClasses,
   GLScene.VectorTypes,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorGeometry,
-  GXS.PersistentClasses,
-  GXS.GeometryBB,
+  GLScene.PersistentClasses,
+  GLScene.GeometryBB,
   GXS.ApplicationFileIO,
 
   GXS.TextureFormat,
@@ -177,7 +177,7 @@ type
     FBoundingBoxPersonalUnscaled: THmgBoundingBox;
     FBoundingBoxOfChildren: THmgBoundingBox;
     FBoundingBoxIncludingChildren: THmgBoundingBox;
-    FChildren: TgxPersistentObjectList; // created on 1st use
+    FChildren: TGPersistentObjectList; // created on 1st use
     FVisible: Boolean;
     FUpdateCount: Integer;
     FShowAxes: Boolean;
@@ -194,8 +194,8 @@ type
     FTagObject: TObject;
     FTagFloat: Single;
 
-    objList: TgxPersistentObjectList;
-    distList: TgxSingleList;
+    objList: TGPersistentObjectList;
+    distList: TGSingleList;
     /// FOriginalFiler: TFiler;   //used to allow persistent events in behaviours & effects
     (* If somebody could look at DefineProperties, ReadBehaviours, ReadEffects
       and verify code is safe to use then it could be uncommented *)
@@ -1127,7 +1127,7 @@ type
     FUpdateCount: Integer;
     FObjects: TgxSceneRootObject;
     FBaseContext: TgxContext; // reference, not owned!
-    FLights, FBuffers: TgxPersistentObjectList;
+    FLights, FBuffers: TGPersistentObjectList;
     FCurrentCamera: TgxCamera;
     FCurrentBuffer: TgxSceneBuffer;
     FObjectsSorting: TgxObjectsSorting;
@@ -1184,7 +1184,7 @@ type
       See LoadFromFile for details. *)
     procedure LoadFromTextFile(const fileName: string);
     property CurrentCamera: TgxCamera read FCurrentCamera;
-    property Lights: TgxPersistentObjectList read FLights;
+    property Lights: TGPersistentObjectList read FLights;
     property Objects: TgxSceneRootObject read FObjects;
     property CurrentBuffer: TgxSceneBuffer read FCurrentBuffer;
     (* List of objects that request to be initialized when rendering context is active.
@@ -1260,7 +1260,7 @@ type
     // Internal state
     FRendering: Boolean;
     FRenderingContext: TgxContext;
-    FAfterRenderEffects: TgxPersistentObjectList;
+    FAfterRenderEffects: TGPersistentObjectList;
     FViewMatrixStack: array of TMatrix4f;
     FProjectionMatrixStack: array of TMatrix4f;
     FBaseProjectionMatrix: TMatrix4f;
@@ -1839,15 +1839,15 @@ begin
   FPickable := True;
   FObjectsSorting := osInherited;
   FVisibilityCulling := vcInherited;
-  FChildren := TgxPersistentObjectList.Create;
+  FChildren := TGPersistentObjectList.Create;
 
   FBBChanges := [oBBcChild, oBBcStructure];
   FBoundingBoxPersonalUnscaled := NullBoundingBox;
   FBoundingBoxOfChildren := NullBoundingBox;
   FBoundingBoxIncludingChildren := NullBoundingBox;
 
-  distList := TgxSingleList.Create;
-  objList := TgxPersistentObjectList.Create;
+  distList := TGSingleList.Create;
+  objList := TGPersistentObjectList.Create;
 
 end;
 
@@ -3180,7 +3180,7 @@ end;
 procedure TgxBaseSceneObject.RecTransformationChanged;
 var
   i: Integer;
-  List: PgxPointerObjectList;
+  List: PGPointerObjectList;
   matSet: TObjectChanges;
 begin
   matSet := [ocAbsoluteMatrix, ocInvAbsoluteMatrix];
@@ -3668,7 +3668,7 @@ procedure TgxBaseSceneObject.RenderChildren(firstChildIndex, lastChildIndex: Int
 var
   i: Integer;
 
-  plist: PgxPointerObjectList;
+  plist: PGPointerObjectList;
   obj: TgxBaseSceneObject;
   oldSorting: TgxObjectsSorting;
   oldCulling: TgxVisibilityCulling;
@@ -5506,7 +5506,7 @@ begin
   FCurrentBuffer := nil;
   FObjects := TgxSceneRootObject.Create(Self);
   FObjects.Name := 'ObjectRoot';
-  FLights := TgxPersistentObjectList.Create;
+  FLights := TGPersistentObjectList.Create;
   FObjectsSorting := osRenderBlendedLast;
   FVisibilityCulling := vcNone;
   // actual maximum number of lights is stored in TgxSceneViewer
@@ -5586,7 +5586,7 @@ end;
 procedure TgxScene.AddBuffer(aBuffer: TgxSceneBuffer);
 begin
   if not Assigned(FBuffers) then
-    FBuffers := TgxPersistentObjectList.Create;
+    FBuffers := TGPersistentObjectList.Create;
   if FBuffers.IndexOf(aBuffer) < 0 then
   begin
     FBuffers.Add(aBuffer);
@@ -6116,7 +6116,7 @@ begin
   FShadeModel := smDefault;
   FFogEnable := False;
   FLayer := clMainPlane;
-  FAfterRenderEffects := TgxPersistentObjectList.Create;
+  FAfterRenderEffects := TGPersistentObjectList.Create;
   FContextOptions := [roDoubleBuffer, roRenderToWindow, roDebugContext];
   ResetPerformanceMonitor;
 end;

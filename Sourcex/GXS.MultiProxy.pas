@@ -12,7 +12,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GXS.Context,
   GXS.Scene,
   GLScene.VectorGeometry,

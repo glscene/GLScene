@@ -26,7 +26,7 @@ uses
   GLScene.Strings,
   GLScene.Utils,
 
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GXS.BaseClasses,
   GXS.Scene,
   GXS.Coordinates,

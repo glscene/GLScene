@@ -10,7 +10,7 @@
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Objects.hpp"
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.Coordinates.hpp"
 
 //---------------------------------------------------------------------------

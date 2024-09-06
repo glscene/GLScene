@@ -37,7 +37,7 @@ uses
   GXS.Context,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
-  GXS.VectorLists,
+  GLScene.VectorLists,
 
   GXS.Texture,
   GXS.Scene,
@@ -313,7 +313,7 @@ type
   private
     FVertexProgramHandle: TgxVertexProgramHandle;
     FFragmentProgramHandle: TgxFragmentProgramHandle;
-    FLightIDs: TgxIntegerList;
+    FLightIDs: TGIntegerList;
     FLightsEnabled: Integer;
     FBumpMethod: TBumpMethod;
     FBumpSpace: TBumpSpace;
@@ -1184,7 +1184,7 @@ end;
 constructor TgxBumpShader.Create(AOwner: TComponent);
 begin
   inherited;
-  FLightIDs := TgxIntegerList.Create;
+  FLightIDs := TGIntegerList.Create;
   FBumpMethod := bmDot3TexCombiner;
   FBumpSpace := bsObject;
   FBumpOptions := [];

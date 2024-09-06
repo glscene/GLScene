@@ -21,11 +21,11 @@ uses
   GLS.XCollection,
   GLScene.VectorGeometry,
   GLS.Context,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorTypes,
   GLS.Cadencer,
   GLS.Color,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.PipelineTransformation,
@@ -50,11 +50,11 @@ type
     var y: single; var z: single) of object;
 
   // Thor special effect manager.
-  TGLThorFXManager = class(TGLCadenceAbleComponent)
+  TGLThorFXManager = class(TGCadenceAbleComponent)
   private
     FClients: TList;
     FThorpoints: PThorpointArray;
-    FTarget: TGLCoordinates;
+    FTarget: TGCoordinates;
     FCadencer: TGLCadencer;
     FMaxpoints: integer;
     FGlowSize: single;
@@ -68,7 +68,7 @@ type
     procedure RegisterClient(aClient: TGLBThorFX);
     procedure DeRegisterClient(aClient: TGLBThorFX);
     procedure DeRegisterAllClients;
-    procedure SetTarget(const val: TGLCoordinates);
+    procedure SetTarget(const val: TGCoordinates);
     procedure SetCadencer(const val: TGLCadencer);
     procedure SetMaxpoints(const val: integer);
     function StoreGlowSize: boolean;
@@ -84,9 +84,9 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TGLProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
   published
-    property Target: TGLCoordinates read FTarget write SetTarget;
+    property Target: TGCoordinates read FTarget write SetTarget;
     property Cadencer: TGLCadencer read FCadencer write SetCadencer;
     property Maxpoints: integer read FMaxpoints write SetMaxpoints default 256;
     property GlowSize: single read FGlowSize write FGlowSize stored StoreGlowSize;
@@ -106,13 +106,13 @@ type
   private
     FManager: TGLThorFXManager;
     FManagerName: String; // NOT persistent, temporarily used for persistence
-    FTarget: TGLCoordinates;
+    FTarget: TGCoordinates;
   protected
     procedure SetManager(const val: TGLThorFXManager);
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
     procedure Loaded; override;
-    procedure SetTarget(const val: TGLCoordinates);
+    procedure SetTarget(const val: TGCoordinates);
   public
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
@@ -141,7 +141,7 @@ begin
   inherited Create(AOwner);
   FClients := TList.Create;
   RegisterManager(Self);
-  FTarget := TGLCoordinates.CreateInitialized(Self, VectorMake(0, 1, 0));
+  FTarget := TGCoordinates.CreateInitialized(Self, VectorMake(0, 1, 0));
   FTarget.Style := csPoint;
   FMaxpoints := 64;
   FGlowSize := 0.2;
@@ -201,7 +201,7 @@ begin
   FClients.Clear;
 end;
 
-procedure TGLThorFXManager.SetTarget(const val: TGLCoordinates);
+procedure TGLThorFXManager.SetTarget(const val: TGCoordinates);
 begin
   FTarget.Assign(val);
   ThorInit;
@@ -272,7 +272,7 @@ begin
   inherited;
 end;
 
-procedure TGLThorFXManager.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLThorFXManager.DoProgress(const progressTime: TGProgressTimes);
 var
   i: integer;
 
@@ -368,7 +368,7 @@ end;
 constructor TGLBThorFX.Create(AOwner: TXCollection);
 begin
   inherited Create(AOwner);
-  FTarget := TGLCoordinates.CreateInitialized(Self, VectorMake(0, 1, 0));
+  FTarget := TGCoordinates.CreateInitialized(Self, VectorMake(0, 1, 0));
   FTarget.Style := csPoint;
 end;
 
@@ -442,7 +442,7 @@ begin
   inherited Assign(Source);
 end;
 
-procedure TGLBThorFX.SetTarget(const val: TGLCoordinates);
+procedure TGLBThorFX.SetTarget(const val: TGCoordinates);
 begin
   FTarget.Assign(val);
 end;
@@ -464,7 +464,7 @@ var
   i: integer;
   // absPos :TGLVector;
   InnerColor: TGLVector;
-  distList: TGLSingleList;
+  distList: TGSingleList;
   objList: TList;
   fp: PThorpoint;
   mat: TGLMatrix;
@@ -493,7 +493,7 @@ begin
 
   if N > 1 then
   begin
-    distList := TGLSingleList.Create;
+    distList := TGSingleList.Create;
     objList := TList.Create;
     for i := 0 to N - 1 do
     begin

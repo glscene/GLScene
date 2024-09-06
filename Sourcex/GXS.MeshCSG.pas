@@ -27,7 +27,7 @@ uses
   GXS.VectorFileObjects,
   GLScene.VectorGeometry, 
   GXS.BSP, 
-  GXS.VectorLists;
+  GLScene.VectorLists;
 
 type
   TCSGOperation = (CSG_Union, CSG_Subtraction, CSG_Intersection);
@@ -511,8 +511,8 @@ procedure CSG_Operation(obj1, obj2: TgxMeshObject; Operation: TCSGOperation;
   Res: TgxMeshObject; const MaterialName1, MaterialName2: string);
 
 var
-  v1, t1, n1: TgxAffineVectorList;
-  v2, t2, n2: TgxAffineVectorList;
+  v1, t1, n1: TGAffineVectorList;
+  v2, t2, n2: TGAffineVectorList;
   BSP1, BSP2: TBSPMeshObject;
   FG1, FG2: TFGBSPNode;
   i: Integer;
@@ -529,8 +529,8 @@ begin
   FG1 := TFGBSPNode.CreateOwned(BSP1.FaceGroups);
   FG2 := TFGBSPNode.CreateOwned(BSP2.FaceGroups);
 
-  t1 := TgxAffineVectorList.create;
-  n1 := TgxAffineVectorList.create;
+  t1 := TGAffineVectorList.create;
+  n1 := TGAffineVectorList.create;
   v1 := obj1.ExtractTriangles(t1, n1);
 
   v1.TransformAsPoints(obj1.Owner.Owner.Matrix^);
@@ -541,8 +541,8 @@ begin
   BSP1.TexCoords := t1;
   FG1.VertexIndices.AddSerie(0, 1, BSP1.Vertices.Count);
 
-  t2 := TgxAffineVectorList.create;
-  n2 := TgxAffineVectorList.create;
+  t2 := TGAffineVectorList.create;
+  n2 := TGAffineVectorList.create;
   v2 := obj2.ExtractTriangles(t2, n2);
   v2.TransformAsPoints(obj2.Owner.Owner.Matrix^);
 

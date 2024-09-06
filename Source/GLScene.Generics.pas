@@ -1,7 +1,7 @@
 //
-// The graphics engine GXScene https://github.com/glscene
+// The graphics engine GLScene https://github.com/glscene
 //
-unit GXS.Generics;
+unit GLScene.Generics;
 
 (* Cross IDE generic classes collection. *)
 
@@ -124,7 +124,7 @@ type
     procedure PushItem(AItem: T); override;
   end;
 
-implementation
+implementation //--------------------------------------------------------------
 
 
 destructor GList{$IFNDEF USE_GENERIC_PREFIX}<T>{$ENDIF}.Destroy;
@@ -410,11 +410,11 @@ begin
   List.Add(AItem);
 end;
 
-
-
 procedure GQueue{$IFNDEF USE_GENERIC_PREFIX}<T>{$ENDIF}.PushItem(AItem: T);
 begin
   List.Insert(0, AItem);
 end;
+
+//----------------------------------------------------------------------------
 
 end.

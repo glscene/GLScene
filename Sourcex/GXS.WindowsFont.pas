@@ -24,7 +24,7 @@ uses
   GXS.Texture,
   GXS.BitmapFont,
   GXS.RenderContextInfo,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GLScene.Utils,
   GLScene.VectorGeometry,
   GXS.ApplicationFileIO,
@@ -44,7 +44,7 @@ type
   TgxWindowsBitmapFont = class(TgxCustomBitmapFont)
   private
     FFont: TFont;
-    procedure SetList(const AList : TgxIntegerList);
+    procedure SetList(const AList : TGIntegerList);
   protected
     procedure SetFont(value: TFont);
     procedure LoadWindowsFont; virtual;
@@ -312,7 +312,7 @@ begin
   end;
 end;
 
-procedure TgxWindowsBitmapFont.SetList(const AList: TgxIntegerList);
+procedure TgxWindowsBitmapFont.SetList(const AList: TGIntegerList);
 var
   i : integer;
   f, n, s : integer;
@@ -351,9 +351,9 @@ end;
 procedure TgxWindowsBitmapFont.EnsureChars(const AStart, AEnd: widechar);
 var
   c : WideChar;
-  ACharList : TgxIntegerList;
+  ACharList : TGIntegerList;
 begin
-  ACharList := TgxIntegerList.Create;
+  ACharList := TGIntegerList.Create;
   for c := AStart to AEnd do
       ACharList.Add(integer(c));
   SetList(ACharList);
@@ -364,9 +364,9 @@ end;
 procedure TgxWindowsBitmapFont.EnsureString(const s: String);
 var
   i : Integer;
-  ACharList : TgxIntegerList;
+  ACharList : TGIntegerList;
 begin
-  ACharList := TgxIntegerList.Create;
+  ACharList := TGIntegerList.Create;
   for i := Low(s) to High(s) do
       ACharList.Add(integer(s[i]));
   SetList(ACharList);

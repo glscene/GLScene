@@ -33,14 +33,15 @@ interface
 uses
   Winapi.OpenGL,
 
-  GLScene.OpenGLTokens,
   GLS.OpenGLAdapter,
+  GLScene.OpenGLTokens,
   GLScene.VectorTypes,
-  GLS.VectorFileObjects,
-  GLS.CurvesAndSurfaces,
+  GLScene.CurvesAndSurfaces,
   GLScene.VectorGeometry,
-  GLS.VectorLists,
-  GLS.PersistentClasses,
+  GLScene.VectorLists,
+  GLScene.PersistentClasses,
+
+  GLS.VectorFileObjects,
   GLS.Texture,
   GLS.State,
   GLS.Context,
@@ -63,10 +64,10 @@ type
   TMOParametricSurface = class(TGLMeshObject)
   private
     FControlPoints,
-    FWeightedControlPoints: TGLAffineVectorList;
+    FWeightedControlPoints: TGAffineVectorList;
     FKnotsU,
     FKnotsV,
-    FWeights: TGLSingleList;
+    FWeights: TGSingleList;
     FOrderU,
     FOrderV,
     FCountU,
@@ -76,10 +77,10 @@ type
     FContinuity: TBSplineContinuity;
     FRenderer: TParametricSurfaceRenderer;
     FBasis: TParametricSurfaceBasis;
-    procedure SetControlPoints(Value: TGLAffineVectorList);
-    procedure SetKnotsU(Value: TGLSingleList);
-    procedure SetKnotsV(Value: TGLSingleList);
-    procedure SetWeights(Value: TGLSingleList);
+    procedure SetControlPoints(Value: TGAffineVectorList);
+    procedure SetKnotsU(Value: TGSingleList);
+    procedure SetKnotsV(Value: TGSingleList);
+    procedure SetWeights(Value: TGSingleList);
     procedure SetRenderer(Value: TParametricSurfaceRenderer);
     procedure SetBasis(Value: TParametricSurfaceBasis);
   public
@@ -97,14 +98,14 @@ type
        generate the mesh data. Fills in Vertices, Normals, etc. *)
     procedure GenerateMesh;
     // Control points define the parametric surface.
-    property ControlPoints: TGLAffineVectorList read FControlPoints write SetControlPoints;
+    property ControlPoints: TGAffineVectorList read FControlPoints write SetControlPoints;
     (* KnotsU and KnotsV are the knot vectors in the U and V direction. Knots
        define the continuity of curves and how control points influence the
        parametric values to build the surface. *)
-    property KnotsU: TGLSingleList read FKnotsU write SetKnotsU;
-    property KnotsV: TGLSingleList read FKnotsV write SetKnotsV;
+    property KnotsU: TGSingleList read FKnotsU write SetKnotsU;
+    property KnotsV: TGSingleList read FKnotsV write SetKnotsV;
     // Weights define how much a control point effects the surface.
-    property Weights: TGLSingleList read FWeights write SetWeights;
+    property Weights: TGSingleList read FWeights write SetWeights;
     // OrderU and OrderV defines the curve order in the U and V direction
     property OrderU: Integer read FOrderU write FOrderU;
     property OrderV: Integer read FOrderV write FOrderV;
@@ -142,15 +143,15 @@ type
   private
     FCountU, FCountV: Integer;
     FControlPointIndices,
-    FTexCoordIndices: TGLIntegerList;
+    FTexCoordIndices: TGIntegerList;
     FResolution: Integer;
     FMinU, FMaxU,
     FMinV, FMaxV: Single;
     FTempControlPoints,
-    FTempTexCoords: TGLAffineVectorList;
+    FTempTexCoords: TGAffineVectorList;
   protected
-    procedure SetControlPointIndices(const Value: TGLIntegerList);
-    procedure SetTexCoordIndices(const Value: TGLIntegerList);
+    procedure SetControlPointIndices(const Value: TGIntegerList);
+    procedure SetTexCoordIndices(const Value: TGIntegerList);
   public
     constructor Create; override;
     destructor Destroy; override;
@@ -165,8 +166,8 @@ type
     property MaxU: Single read FMaxU write FMaxU;
     property MinV: Single read FMinV write FMinV;
     property MaxV: Single read FMaxV write FMaxV;
-    property ControlPointIndices: TGLIntegerList read FControlPointIndices write SetControlPointIndices;
-    property TexCoordIndices: TGLIntegerList read FTexCoordIndices write SetTexCoordIndices;
+    property ControlPointIndices: TGIntegerList read FControlPointIndices write SetControlPointIndices;
+    property TexCoordIndices: TGIntegerList read FTexCoordIndices write SetTexCoordIndices;
   end;
 
 // ----------------------------------------------------------------------
@@ -180,11 +181,11 @@ implementation
 constructor TMOParametricSurface.Create;
 begin
   inherited;
-  FControlPoints := TGLAffineVectorList.Create;
-  FWeightedControlPoints := TGLAffineVectorList.Create;
-  FKnotsU := TGLSingleList.Create;
-  FKnotsV := TGLSingleList.Create;
-  FWeights := TGLSingleList.Create;
+  FControlPoints := TGAffineVectorList.Create;
+  FWeightedControlPoints := TGAffineVectorList.Create;
+  FKnotsU := TGSingleList.Create;
+  FKnotsV := TGSingleList.Create;
+  FWeights := TGSingleList.Create;
   Resolution := 20;
 end;
 
@@ -390,22 +391,22 @@ begin
 
 end;
 
-procedure TMOParametricSurface.SetControlPoints(Value: TGLAffineVectorList);
+procedure TMOParametricSurface.SetControlPoints(Value: TGAffineVectorList);
 begin
   FControlPoints.Assign(Value);
 end;
 
-procedure TMOParametricSurface.SetKnotsU(Value: TGLSingleList);
+procedure TMOParametricSurface.SetKnotsU(Value: TGSingleList);
 begin
   FKnotsU.Assign(Value);
 end;
 
-procedure TMOParametricSurface.SetKnotsV(Value: TGLSingleList);
+procedure TMOParametricSurface.SetKnotsV(Value: TGSingleList);
 begin
   FKnotsV.Assign(Value);
 end;
 
-procedure TMOParametricSurface.SetWeights(Value: TGLSingleList);
+procedure TMOParametricSurface.SetWeights(Value: TGSingleList);
 begin
   FWeights.Assign(Value);
 end;
@@ -436,10 +437,10 @@ end;
 constructor TFGBezierSurface.Create;
 begin
   inherited;
-  FControlPointIndices := TGLIntegerList.Create;
-  FTexCoordIndices := TGLIntegerList.Create;
-  FTempControlPoints := TGLAffineVectorList.Create;
-  FTempTexCoords := TGLAffineVectorList.Create;
+  FControlPointIndices := TGIntegerList.Create;
+  FTexCoordIndices := TGIntegerList.Create;
+  FTempControlPoints := TGAffineVectorList.Create;
+  FTempTexCoords := TGAffineVectorList.Create;
 
   // Default values
   FCountU := 4;
@@ -535,12 +536,12 @@ begin
   mrci.GLStates.PopAttrib;
 end;
 
-procedure TFGBezierSurface.SetControlPointIndices(const Value: TGLIntegerList);
+procedure TFGBezierSurface.SetControlPointIndices(const Value: TGIntegerList);
 begin
   FControlPointIndices.Assign(Value);
 end;
 
-procedure TFGBezierSurface.SetTexCoordIndices(const Value: TGLIntegerList);
+procedure TFGBezierSurface.SetTexCoordIndices(const Value: TGIntegerList);
 begin
   FTexCoordIndices.Assign(Value);
 end;

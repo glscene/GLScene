@@ -22,7 +22,7 @@ uses
   GLS.SceneViewer,
   GLS.Color,
   GLS.Keyboard,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.VectorGeometry,
   GLS.GeomObjects,
   GLS.Gui,

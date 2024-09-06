@@ -19,7 +19,7 @@ uses
   
   GLS.Material, 
   GLS.Coordinates, 
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.RenderContextInfo, 
   GLS.Context, 
   GLS.DynamicTexture, 

@@ -13,30 +13,30 @@ uses
   System.Classes,
   System.SysUtils,
   System.Math,
-  GXS.PersistentClasses,
-  GXS.VectorLists,
+  GLScene.PersistentClasses,
+  GLScene.VectorLists,
   GLScene.VectorGeometry,
   GLScene.VectorTypes;
 
 (* Converts a triangle strips into a triangle list.
   Vertices are added to list, based on the content of strip. Both non-indexed
   and indexed variants are available, the output is *always* non indexed. *)
-procedure ConvertStripToList(const strip: TgxAffineVectorList;
-  list: TgxAffineVectorList); overload;
-procedure ConvertStripToList(const strip: TgxIntegerList;
-  list: TgxIntegerList); overload;
-procedure ConvertStripToList(const strip: TgxAffineVectorList;
-  const indices: TgxIntegerList; list: TgxAffineVectorList); overload;
+procedure ConvertStripToList(const strip: TGAffineVectorList;
+  list: TGAffineVectorList); overload;
+procedure ConvertStripToList(const strip: TGIntegerList;
+  list: TGIntegerList); overload;
+procedure ConvertStripToList(const strip: TGAffineVectorList;
+  const indices: TGIntegerList; list: TGAffineVectorList); overload;
 
 function ConvertStripToList(const AindicesList: PLongWordArray; Count: LongWord;
-  RestartIndex: LongWord): TgxLongWordList; overload;
+  RestartIndex: LongWord): TGLongWordList; overload;
 
 function ConvertFansToList(const AindicesList: PLongWordArray; Count: LongWord;
-  RestartIndex: LongWord): TgxLongWordList;
+  RestartIndex: LongWord): TGLongWordList;
 
 // Expands an indexed structure into a non-indexed structure.
-procedure ConvertIndexedListToList(const data: TgxAffineVectorList;
-  const indices: TgxIntegerList; list: TgxAffineVectorList);
+procedure ConvertIndexedListToList(const data: TGAffineVectorList;
+  const indices: TGIntegerList; list: TGAffineVectorList);
 
 (* Builds a vector-count optimized indices list.
   The returned list (to be freed by caller) contains an "optimized" indices
@@ -44,23 +44,23 @@ procedure ConvertIndexedListToList(const data: TgxAffineVectorList;
   only once (the first available duplicate in the list is used).
   The vertices list is left untouched, to remap/cleanup, you may use the
   RemapAndCleanupReferences function. *)
-function BuildVectorCountOptimizedIndices(const vertices: TgxAffineVectorList;
-  const normals: TgxAffineVectorList = nil;
-  const texCoords: TgxAffineVectorList = nil): TgxIntegerList;
+function BuildVectorCountOptimizedIndices(const vertices: TGAffineVectorList;
+  const normals: TGAffineVectorList = nil;
+  const texCoords: TGAffineVectorList = nil): TGIntegerList;
 
 { Alters a reference array and removes unused reference values.
   This functions scans the reference list and removes all values that aren't
   referred in the indices list, the indices list is *not* remapped. }
-procedure RemapReferences(reference: TgxAffineVectorList;
-  const indices: TgxIntegerList); overload;
-procedure RemapReferences(reference: TgxIntegerList;
-  const indices: TgxIntegerList); overload;
+procedure RemapReferences(reference: TGAffineVectorList;
+  const indices: TGIntegerList); overload;
+procedure RemapReferences(reference: TGIntegerList;
+  const indices: TGIntegerList); overload;
 { Alters a reference/indice pair and removes unused reference values.
   This functions scans the reference list and removes all values that aren't
   referred in the indices list, and the indices list is remapped so as to remain
   coherent. }
-procedure RemapAndCleanupReferences(reference: TgxAffineVectorList;
-  indices: TgxIntegerList);
+procedure RemapAndCleanupReferences(reference: TGAffineVectorList;
+  indices: TGIntegerList);
 (* Creates an indices map from a remap list.
   The remap list is what BuildVectorCountOptimizedIndices, a list of indices
   to distinct/unique items, the indices map contains the indices of these items
@@ -68,30 +68,30 @@ procedure RemapAndCleanupReferences(reference: TgxAffineVectorList;
   In short it takes the output of BuildVectorCountOptimizedIndices and can change
   it to something suitable for RemapTrianglesIndices.
   Any simpler documentation of this function welcome ;) *)
-function RemapIndicesToIndicesMap(remapIndices: TgxIntegerList): TgxIntegerList;
+function RemapIndicesToIndicesMap(remapIndices: TGIntegerList): TGIntegerList;
 
 { Remaps a list of triangles vertex indices and remove degenerate triangles.
   The indicesMap provides newVertexIndex:=indicesMap[oldVertexIndex] }
-procedure RemapTrianglesIndices(indices, indicesMap: TgxIntegerList);
+procedure RemapTrianglesIndices(indices, indicesMap: TGIntegerList);
 { Remaps a list of indices.
   The indicesMap provides newVertexIndex:=indicesMap[oldVertexIndex] }
-procedure remapIndices(indices, indicesMap: TgxIntegerList);
+procedure remapIndices(indices, indicesMap: TGIntegerList);
 
 { Attempts to unify triangle winding.
   Depending on topology, this may or may not be successful (some topologies
   can't be unified, f.i. those that have duplicate triangles, those that
   have edges shared by more than two triangles, those that have unconnected
   submeshes etc.) }
-procedure UnifyTrianglesWinding(indices: TgxIntegerList);
+procedure UnifyTrianglesWinding(indices: TGIntegerList);
 { Inverts the triangles winding (vertex order). }
-procedure InvertTrianglesWinding(indices: TgxIntegerList);
+procedure InvertTrianglesWinding(indices: TGIntegerList);
 
 { Builds normals for a triangles list.
   Builds one normal per reference vertex (may be NullVector is reference isn't
   used), which is the averaged for normals of all adjacent triangles.
   Returned list must be freed by caller. }
-function BuildNormals(reference: TgxAffineVectorList; indices: TgxIntegerList)
-  : TgxAffineVectorList;
+function BuildNormals(reference: TGAffineVectorList; indices: TGIntegerList)
+  : TGAffineVectorList;
 
 { Builds a list of non-oriented (non duplicated) edges list.
   Each edge is represented by the two integers of its vertices,
@@ -99,9 +99,9 @@ function BuildNormals(reference: TgxAffineVectorList; indices: TgxIntegerList)
   If not nil, triangleEdges is filled with the 3 indices of the 3 edges
   of the triangle, the edges ordering respecting the original triangle
   orientation. }
-function BuildNonOrientedEdgesList(triangleIndices: TgxIntegerList;
-  triangleEdges: TgxIntegerList = nil; edgesTriangles: TgxIntegerList = nil)
-  : TgxIntegerList;
+function BuildNonOrientedEdgesList(triangleIndices: TGIntegerList;
+  triangleEdges: TGIntegerList = nil; edgesTriangles: TGIntegerList = nil)
+  : TGIntegerList;
 
 (* Welds all vertices separated by a distance inferior to weldRadius.
   Any two vertices whose distance is inferior to weldRadius will be merged
@@ -114,19 +114,19 @@ function BuildNonOrientedEdgesList(triangleIndices: TgxIntegerList;
   for it is not optimized for speed. This is more a "fixing" utility for meshes
   exported from high-polycount CAD tools (to remove duplicate vertices,
   quantification errors, etc.) *)
-procedure WeldVertices(vertices: TgxAffineVectorList; indicesMap: TgxIntegerList;
+procedure WeldVertices(vertices: TGAffineVectorList; indicesMap: TGIntegerList;
   weldRadius: Single);
 
 (* Attempts to create as few as possible triangle strips to cover the mesh.
   The indices parameters define a set of triangles as a set of indices to
   vertices in a vertex pool, free of duplicate vertices (or resulting
   stripification will be of lower quality).
-  The function returns a list of TgxIntegerList, each of these lists hosting
+  The function returns a list of TGIntegerList, each of these lists hosting
   a triangle strip, returned objects must be freed by caller.
   If agglomerateLoneTriangles is True, the first of the lists actually contains
   the agglomerated list of the triangles that couldn't be stripified. *)
-function StripifyMesh(indices: TgxIntegerList; maxVertexIndex: Integer;
-  agglomerateLoneTriangles: Boolean = False): TgxPersistentObjectList;
+function StripifyMesh(indices: TGIntegerList; maxVertexIndex: Integer;
+  agglomerateLoneTriangles: Boolean = False): TGPersistentObjectList;
 (* Increases indices coherency wrt vertex caches.
   The indices parameters is understood as vertex indices of a triangles set,
   the triangles are reordered to maximize coherency (vertex reuse) over the
@@ -136,7 +136,7 @@ function StripifyMesh(indices: TgxIntegerList; maxVertexIndex: Integer;
   the normals issues of strips).
   This procedure performs a coherency optimization via a greedy hill-climber
   algorithm (ie. not optimal but fast). *)
-procedure IncreaseCoherency(indices: TgxIntegerList; cacheSize: Integer);
+procedure IncreaseCoherency(indices: TGIntegerList; cacheSize: Integer);
 
 type
   TSubdivideEdgeEvent = procedure(const idxA, idxB, newIdx: Integer); register;
@@ -148,13 +148,13 @@ type
     in a higher-res sphere), values outside of the [0..1] range are for, er,
     artistic purposes.
     The procedure is not intended for real-time use. *)
-procedure SubdivideTriangles(smoothFactor: Single; vertices: TgxAffineVectorList;
-  triangleIndices: TgxIntegerList; normals: TgxAffineVectorList = nil;
+procedure SubdivideTriangles(smoothFactor: Single; vertices: TGAffineVectorList;
+  triangleIndices: TGIntegerList; normals: TGAffineVectorList = nil;
   onSubdivideEdge: TSubdivideEdgeEvent = nil);
 
 // Create list of indices of triangles with adjacency from triangle list
 function MakeTriangleAdjacencyList(const AindicesList: PLongWordArray;
-  Count: LongWord; const AVerticesList: PAffineVectorArray): TgxLongWordList;
+  Count: LongWord; const AVerticesList: PAffineVectorArray): TGLongWordList;
 
 var
   vImprovedFixingOpenTriangleEdge: Boolean = False;
@@ -180,8 +180,8 @@ begin
   Result := @v0to255reciproquals[0];
 end;
 
-procedure ConvertStripToList(const strip: TgxAffineVectorList;
-  list: TgxAffineVectorList);
+procedure ConvertStripToList(const strip: TGAffineVectorList;
+  list: TGAffineVectorList);
 var
   i: Integer;
   stripList: PAffineVectorArray;
@@ -197,7 +197,7 @@ begin
   end;
 end;
 
-procedure ConvertStripToList(const strip: TgxIntegerList; list: TgxIntegerList);
+procedure ConvertStripToList(const strip: TGIntegerList; list: TGIntegerList);
 var
   i: Integer;
   stripList: PIntegerArray;
@@ -213,8 +213,8 @@ begin
   end;
 end;
 
-procedure ConvertStripToList(const strip: TgxAffineVectorList;
-  const indices: TgxIntegerList; list: TgxAffineVectorList);
+procedure ConvertStripToList(const strip: TGAffineVectorList;
+  const indices: TGIntegerList; list: TGAffineVectorList);
 var
   i: Integer;
   stripList: PAffineVectorArray;
@@ -232,8 +232,8 @@ begin
   end;
 end;
 
-procedure ConvertIndexedListToList(const data: TgxAffineVectorList;
-  const indices: TgxIntegerList; list: TgxAffineVectorList);
+procedure ConvertIndexedListToList(const data: TGAffineVectorList;
+  const indices: TGIntegerList; list: TGAffineVectorList);
 var
   i: Integer;
   indicesList: PIntegerArray;
@@ -257,15 +257,15 @@ begin
     listList[i] := dataList[indicesList[i]];
 end;
 
-function BuildVectorCountOptimizedIndices(const vertices: TgxAffineVectorList;
-  const normals: TgxAffineVectorList = nil;
-  const texCoords: TgxAffineVectorList = nil): TgxIntegerList;
+function BuildVectorCountOptimizedIndices(const vertices: TGAffineVectorList;
+  const normals: TGAffineVectorList = nil;
+  const texCoords: TGAffineVectorList = nil): TGIntegerList;
 var
   i, j, k: Integer;
   found: Boolean;
   hashSize: Integer;
-  hashTable: array of TgxIntegerList;
-  list: TgxIntegerList;
+  hashTable: array of TGIntegerList;
+  list: TGIntegerList;
   verticesList, normalsList, texCoordsList: PAffineVectorArray;
 const
   cVerticesPerHashKey = 48;
@@ -278,7 +278,7 @@ const
   end;
 
 begin
-  Result := TgxIntegerList.Create;
+  Result := TGIntegerList.Create;
   Result.Capacity := vertices.Count;
 
   if Assigned(normals) then
@@ -313,7 +313,7 @@ begin
   // allocate and fill our hashtable (will store "reference" vertex indices)
   for i := 0 to hashSize do
   begin
-    hashTable[i] := TgxIntegerList.Create;
+    hashTable[i] := TGIntegerList.Create;
     hashTable[i].GrowthDelta := cVerticesPerHashKey div 2;
   end;
   // here we go for all vertices
@@ -416,8 +416,8 @@ begin
   SetLength(hashTable, 0);
 end;
 
-procedure RemapReferences(reference: TgxAffineVectorList;
-  const indices: TgxIntegerList);
+procedure RemapReferences(reference: TGAffineVectorList;
+  const indices: TGIntegerList);
 var
   i: Integer;
   tag: array of Byte;
@@ -447,7 +447,7 @@ begin
     div SizeOf(TAffineVector);
 end;
 
-procedure RemapReferences(reference: TgxIntegerList; const indices: TgxIntegerList);
+procedure RemapReferences(reference: TGIntegerList; const indices: TGIntegerList);
 var
   i, n: Integer;
   tag: array of Byte;
@@ -475,8 +475,8 @@ begin
   reference.Count := n;
 end;
 
-procedure RemapAndCleanupReferences(reference: TgxAffineVectorList;
-  indices: TgxIntegerList);
+procedure RemapAndCleanupReferences(reference: TGAffineVectorList;
+  indices: TGIntegerList);
 var
   i, n: Integer;
   tag: array of Integer;
@@ -508,7 +508,7 @@ begin
     indicesList[i] := tag[indicesList[i]];
 end;
 
-function RemapIndicesToIndicesMap(remapIndices: TgxIntegerList): TgxIntegerList;
+function RemapIndicesToIndicesMap(remapIndices: TGIntegerList): TGIntegerList;
 var
   i, n: Integer;
   tag: array of Integer;
@@ -530,14 +530,14 @@ begin
     end;
   end;
   // 3rd step, fillup indices map
-  Result := TgxIntegerList.Create;
+  Result := TGIntegerList.Create;
   Result.Count := remapIndices.Count;
   indicesMap := Result.list;
   for i := 0 to Result.Count - 1 do
     indicesMap[i] := tag[remapList[i]];
 end;
 
-procedure RemapTrianglesIndices(indices, indicesMap: TgxIntegerList);
+procedure RemapTrianglesIndices(indices, indicesMap: TGIntegerList);
 var
   i, k, a, b, c, n: Integer;
 begin
@@ -562,7 +562,7 @@ begin
   indices.Count := k;
 end;
 
-procedure remapIndices(indices, indicesMap: TgxIntegerList);
+procedure remapIndices(indices, indicesMap: TGIntegerList);
 var
   i: Integer;
   map, ind: PIntegerArray;
@@ -573,11 +573,11 @@ begin
     ind[i] := map[ind[i]];
 end;
 
-procedure UnifyTrianglesWinding(indices: TgxIntegerList);
+procedure UnifyTrianglesWinding(indices: TGIntegerList);
 var
   nbTris: Integer;
   mark: array of ByteBool; // marks triangles that have been processed
-  triangleStack: TgxIntegerList; // marks triangles winded, that must be processed
+  triangleStack: TGIntegerList; // marks triangles winded, that must be processed
 
   procedure TestRewind(a, b: Integer);
   var
@@ -635,7 +635,7 @@ begin
   nbTris := indices.Count div 3;
   SetLength(mark, nbTris);
   // Build connectivity data
-  triangleStack := TgxIntegerList.Create;
+  triangleStack := TGIntegerList.Create;
   try
     triangleStack.Capacity := nbTris div 4;
     // Pick a triangle, adjust normals of neighboring triangles, recurse
@@ -651,7 +651,7 @@ begin
   end;
 end;
 
-procedure InvertTrianglesWinding(indices: TgxIntegerList);
+procedure InvertTrianglesWinding(indices: TGIntegerList);
 var
   i: Integer;
 begin
@@ -664,8 +664,8 @@ begin
   end;
 end;
 
-function BuildNormals(reference: TgxAffineVectorList; indices: TgxIntegerList)
-  : TgxAffineVectorList;
+function BuildNormals(reference: TGAffineVectorList; indices: TGIntegerList)
+  : TGAffineVectorList;
 var
   i, n, k: Integer;
   normalsCount: array of Byte;
@@ -674,7 +674,7 @@ var
   indicesList: PIntegerArray;
   reciproquals: PSingleArray;
 begin
-  Result := TgxAffineVectorList.Create;
+  Result := TGAffineVectorList.Create;
   Result.Count := reference.Count;
   SetLength(normalsCount, reference.Count);
   refList := reference.list;
@@ -712,22 +712,22 @@ end;
   of the Result (ie. non oriented edges list). }
 // BuildNonOrientedEdgesList
 //
-function BuildNonOrientedEdgesList(triangleIndices: TgxIntegerList;
-  triangleEdges: TgxIntegerList = nil; edgesTriangles: TgxIntegerList = nil)
-  : TgxIntegerList;
+function BuildNonOrientedEdgesList(triangleIndices: TGIntegerList;
+  triangleEdges: TGIntegerList = nil; edgesTriangles: TGIntegerList = nil)
+  : TGIntegerList;
 const
   cEdgesHashMax = 127; // must be a power of two minus 1
 var
-  edgesHash: array [0 .. cEdgesHashMax] of TgxIntegerList;
+  edgesHash: array [0 .. cEdgesHashMax] of TGIntegerList;
   curTri: Integer;
-  edges: TgxIntegerList;
+  edges: TGIntegerList;
 
   function ProcessEdge(a, b: Integer): Integer;
   var
     i, n: Integer;
     HashKey: Integer;
     edgesList, iList: PIntegerArray;
-    hashList: TgxIntegerList;
+    hashList: TGIntegerList;
   begin
     if a >= b then
     begin
@@ -759,7 +759,7 @@ var
     HashKey: Integer;
     edgesList: PIntegerArray;
     iList, iListEnd: PInteger;
-    hashList: TgxIntegerList;
+    hashList: TGIntegerList;
   begin
     if a >= b then
     begin
@@ -793,7 +793,7 @@ var
   j, k: Integer;
   triIndicesList: PIntegerArray;
 begin
-  Result := TgxIntegerList.Create;
+  Result := TGIntegerList.Create;
   Result.Capacity := 1024;
   Result.GrowthDelta := 1024;
   if Assigned(triangleEdges) then
@@ -804,7 +804,7 @@ begin
   k := (triangleIndices.Count div (cEdgesHashMax + 1)) + 128;
   for j := 0 to High(edgesHash) do
   begin
-    edgesHash[j] := TgxIntegerList.Create;
+    edgesHash[j] := TGIntegerList.Create;
     edgesHash[j].Capacity := k;
   end;
   // collect all edges
@@ -868,20 +868,20 @@ begin
     edgesHash[j].Free;
 end;
 
-procedure IncreaseCoherency(indices: TgxIntegerList; cacheSize: Integer);
+procedure IncreaseCoherency(indices: TGIntegerList; cacheSize: Integer);
 var
   i, n, maxVertex, bestCandidate, bestScore, candidateIdx,
     lastCandidate: Integer;
-  trisOfVertex: array of TgxIntegerList;
-  candidates: TgxIntegerList;
+  trisOfVertex: array of TGIntegerList;
+  candidates: TGIntegerList;
   indicesList: PIntegerArray;
 begin
   // Alloc lookup structure
   maxVertex := indices.MaxInteger;
   SetLength(trisOfVertex, maxVertex + 1);
   for i := 0 to High(trisOfVertex) do
-    trisOfVertex[i] := TgxIntegerList.Create;
-  candidates := TgxIntegerList.Create;
+    trisOfVertex[i] := TGIntegerList.Create;
+  candidates := TGIntegerList.Create;
   indicesList := PIntegerArray(indices.list);
   // Fillup lookup structure
   i := 0;
@@ -957,7 +957,7 @@ begin
     trisOfVertex[i].Free;
 end;
 
-procedure WeldVertices(vertices: TgxAffineVectorList; indicesMap: TgxIntegerList;
+procedure WeldVertices(vertices: TGAffineVectorList; indicesMap: TGIntegerList;
   weldRadius: Single);
 var
   i, j, n, k: Integer;
@@ -1021,21 +1021,21 @@ begin
   vertices.Count := k;
 end;
 
-function StripifyMesh(indices: TgxIntegerList; maxVertexIndex: Integer;
-  agglomerateLoneTriangles: Boolean = False): TgxPersistentObjectList;
+function StripifyMesh(indices: TGIntegerList; maxVertexIndex: Integer;
+  agglomerateLoneTriangles: Boolean = False): TGPersistentObjectList;
 var
   accountedTriangles: array of ByteBool;
-  vertexTris: array of TgxIntegerList;
+  vertexTris: array of TGIntegerList;
   indicesList: PIntegerArray;
   indicesCount: Integer;
-  currentStrip: TgxIntegerList;
+  currentStrip: TGIntegerList;
   nextTriangle, nextVertex: Integer;
 
   function FindTriangleWithEdge(vertA, vertB: Integer): Boolean;
   var
     i, n: Integer;
     p: PIntegerArray;
-    list: TgxIntegerList;
+    list: TGIntegerList;
   begin
     Result := False;
     list := vertexTris[vertA];
@@ -1091,17 +1091,17 @@ var
 
 var
   i, n, triangle: Integer;
-  loneTriangles: TgxIntegerList;
+  loneTriangles: TGIntegerList;
 begin
   Assert((indices.Count mod 3) = 0, 'indices count is not a multiple of 3!');
-  Result := TgxPersistentObjectList.Create;
+  Result := TGPersistentObjectList.Create;
   // direct access and cache vars
   indicesList := indices.list;
   indicesCount := indices.Count;
   // Build adjacency lookup table (vertex based, not triangle based)
   SetLength(vertexTris, maxVertexIndex + 1);
   for i := 0 to High(vertexTris) do
-    vertexTris[i] := TgxIntegerList.Create;
+    vertexTris[i] := TGIntegerList.Create;
   n := 0;
   triangle := 0;
   for i := 0 to indicesCount - 1 do
@@ -1119,7 +1119,7 @@ begin
   SetLength(accountedTriangles, indicesCount); // yeah, waste of memory
   if agglomerateLoneTriangles then
   begin
-    loneTriangles := TgxIntegerList.Create;
+    loneTriangles := TGIntegerList.Create;
     Result.Add(loneTriangles);
   end
   else
@@ -1132,19 +1132,19 @@ begin
       accountedTriangles[i] := True;
       if FindTriangleWithEdge(indicesList[i + 1], indicesList[i]) then
       begin
-        currentStrip := TgxIntegerList.Create;
+        currentStrip := TGIntegerList.Create;
         currentStrip.Add(indicesList[i + 2]);
         BuildStrip(indicesList[i], indicesList[i + 1]);
       end
       else if FindTriangleWithEdge(indicesList[i + 2], indicesList[i + 1]) then
       begin
-        currentStrip := TgxIntegerList.Create;
+        currentStrip := TGIntegerList.Create;
         currentStrip.Add(indicesList[i]);
         BuildStrip(indicesList[i + 1], indicesList[i + 2]);
       end
       else if FindTriangleWithEdge(indicesList[i], indicesList[i + 2]) then
       begin
-        currentStrip := TgxIntegerList.Create;
+        currentStrip := TGIntegerList.Create;
         currentStrip.Add(indicesList[i + 1]);
         BuildStrip(indicesList[i + 2], indicesList[i]);
       end
@@ -1153,7 +1153,7 @@ begin
         if agglomerateLoneTriangles then
           currentStrip := loneTriangles
         else
-          currentStrip := TgxIntegerList.Create;
+          currentStrip := TGIntegerList.Create;
         currentStrip.Add(indicesList[i], indicesList[i + 1],
           indicesList[i + 2]);
       end;
@@ -1167,18 +1167,18 @@ begin
     vertexTris[i].Free;
 end;
 
-procedure SubdivideTriangles(smoothFactor: Single; vertices: TgxAffineVectorList;
-  triangleIndices: TgxIntegerList; normals: TgxAffineVectorList = nil;
+procedure SubdivideTriangles(smoothFactor: Single; vertices: TGAffineVectorList;
+  triangleIndices: TGIntegerList; normals: TGAffineVectorList = nil;
   onSubdivideEdge: TSubdivideEdgeEvent = nil);
 var
   i, a, b, c, nv: Integer;
-  edges: TgxIntegerList;
-  triangleEdges: TgxIntegerList;
+  edges: TGIntegerList;
+  triangleEdges: TGIntegerList;
   p, n: TAffineVector;
   f: Single;
 begin
   // build edges list
-  triangleEdges := TgxIntegerList.Create;
+  triangleEdges := TGIntegerList.Create;
   try
     edges := BuildNonOrientedEdgesList(triangleIndices, triangleEdges);
     try
@@ -2062,7 +2062,7 @@ begin
 end;
 
 function MakeTriangleAdjacencyList(const AindicesList: PLongWordArray;
-  Count: LongWord; const AVerticesList: PAffineVectorArray): TgxLongWordList;
+  Count: LongWord; const AVerticesList: PAffineVectorArray): TGLongWordList;
 
   function AdjacentEdge(x, n: Integer): Integer;
   begin
@@ -2074,7 +2074,7 @@ var
   j: Byte;
   n, ii, jj: LongWord;
   tri, adjtri: TVector3dw;
-  NewIndices: TgxLongWordList;
+  NewIndices: TGLongWordList;
 begin
   Result := nil;
   Assert(Assigned(AindicesList));
@@ -2096,7 +2096,7 @@ begin
     EliminateAdjacentDegenerateTriangles;
   end;
 
-  NewIndices := TgxLongWordList.Create;
+  NewIndices := TGLongWordList.Create;
   NewIndices.SetCountResetsMemory := False;
   NewIndices.Capacity := 6 * PrimitiveNum;
 
@@ -2130,16 +2130,16 @@ begin
 end;
 
 function ConvertStripToList(const AindicesList: PLongWordArray; Count: LongWord;
-  RestartIndex: LongWord): TgxLongWordList;
+  RestartIndex: LongWord): TGLongWordList;
 var
   i: Integer;
   Index, prevIndex1, prevIndex2, stripCount: LongWord;
-  NewIndices: TgxLongWordList;
+  NewIndices: TGLongWordList;
 begin
   Result := nil;
   if not Assigned(AindicesList) or (Count < 3) then
     Exit;
-  NewIndices := TgxLongWordList.Create;
+  NewIndices := TGLongWordList.Create;
   stripCount := 0;
   prevIndex1 := 0;
   prevIndex2 := 0;
@@ -2194,17 +2194,17 @@ begin
 end;
 
 function ConvertFansToList(const AindicesList: PLongWordArray; Count: LongWord;
-  RestartIndex: LongWord): TgxLongWordList;
+  RestartIndex: LongWord): TGLongWordList;
 var
   i: Integer;
   Index, centerIndex, prevIndex, fansCount: LongWord;
-  NewIndices: TgxLongWordList;
+  NewIndices: TGLongWordList;
   degenerate: Boolean;
 begin
   Result := nil;
   if not Assigned(AindicesList) or (Count < 3) then
     Exit;
-  NewIndices := TgxLongWordList.Create;
+  NewIndices := TGLongWordList.Create;
   fansCount := 0;
   prevIndex := 0;
   degenerate := False;

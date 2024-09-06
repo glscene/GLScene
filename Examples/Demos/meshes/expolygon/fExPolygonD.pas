@@ -12,7 +12,7 @@ uses
   Vcl.Dialogs,
 
   GLScene.VectorTypes,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.VectorGeometry,
   GLS.Scene, GLS.Objects,
   GLS.GeomObjects,

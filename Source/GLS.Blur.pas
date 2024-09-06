@@ -21,7 +21,7 @@ uses
   GLScene.VectorGeometry,
   GLS.TextureFormat,
 
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Scene,
   GLS.Objects,
   GLS.BitmapFont,
@@ -98,7 +98,7 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TGLProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     procedure DoRender(var ARci: TGLRenderContextInfo;
       ARenderSelf, ARenderChildren: Boolean); override;
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
@@ -167,7 +167,7 @@ implementation
 
 uses
   GLS.Coordinates,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.Strings,
   GLS.OpenGLAdapter;
 
@@ -229,7 +229,7 @@ begin
   SetLength(Pixelbuffer, RenderWidth * RenderHeight);
 end;
 
-procedure TGLBlur.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLBlur.DoProgress(const progressTime: TGProgressTimes);
 begin
   inherited;
   if self.Visible and (progressTime.newTime - OldTime > FBlurDeltaTime) then

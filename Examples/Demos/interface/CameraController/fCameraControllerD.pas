@@ -30,7 +30,7 @@ uses
   GLS.Coordinates,
 
   GLScene.VectorTypes,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.VectorGeometry,
   GLS.Navigator,
   GLS.SmoothNavigator,

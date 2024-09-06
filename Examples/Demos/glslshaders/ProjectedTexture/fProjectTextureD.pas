@@ -32,7 +32,7 @@ uses
   GLS.Graphics,
   GLS.Material,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.FileTGA;
 
 type

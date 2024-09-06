@@ -17,7 +17,7 @@ uses
 
 
   GLS.Scene,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.VectorFileObjects,
   GLS.MeshBSP,
   GLS.MeshCSG,
@@ -28,7 +28,7 @@ uses
 
   GLS.Material,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.State,
   GLScene.VectorGeometry,
   GLScene.Utils;

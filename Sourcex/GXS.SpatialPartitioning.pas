@@ -11,7 +11,7 @@ uses
   Winapi.OpenGL,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GXS.GeometryBB,
+  GLScene.GeometryBB,
   GXS.SpacePartition,
 
   GXS.Scene,

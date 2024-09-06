@@ -21,7 +21,7 @@ uses
   GLScene.VectorTypes,
   GLS.Texture,
   GLS.VectorFileObjects,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.Objects,
   GLS.Cadencer,
   GLS.Portal,
@@ -29,7 +29,7 @@ uses
  
   GLS.Material,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Keyboard,
   GLScene.Utils, GLS.SimpleNavigation;
 

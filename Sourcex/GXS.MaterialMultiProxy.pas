@@ -31,7 +31,7 @@ uses
   System.SysUtils,
 
   GXS.BaseClasses,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.Strings,
@@ -48,7 +48,7 @@ type
   TgxMaterialMultiProxy = class;
 
   // MasterObject description for a MultiProxy object.
-  TgxMaterialMultiProxyMaster = class(TgxInterfacedCollectionItem, IgxMaterialLibrarySupported)
+  TgxMaterialMultiProxyMaster = class(TGInterfacedCollectionItem, IgxMaterialLibrarySupported)
   private
     FMasterObject: TgxBaseSceneObject;
     FMasterLibMaterial: TgxLibMaterial;

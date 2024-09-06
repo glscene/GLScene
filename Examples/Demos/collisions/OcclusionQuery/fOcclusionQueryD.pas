@@ -24,7 +24,7 @@ uses
   GLS.SceneViewer,
  
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLS.Context;
 

@@ -16,7 +16,7 @@ uses
 
   GXS.XCollection,
   GXS.BaseClasses,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLScene.Strings,

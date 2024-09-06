@@ -21,11 +21,11 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry, // PVector4f TVector4f TMatrix4f PMatrix4f NullHmgVector...
-  GXS.VectorLists, // TgxAffineVectorList for Tree
+  GLScene.VectorLists, // TGAffineVectorList for Tree
   GXS.XCollection, // TXCollection file function
-  GXS.GeometryBB,
+  GLScene.GeometryBB,
   GXS.BaseClasses,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GXS.Scene,
   GLScene.Manager,
   GXS.Coordinates,
@@ -1623,7 +1623,7 @@ end;
 function TgxNGDBehaviour.GetTreeCollision: PNewtonCollision;
 var
   meshIndex, triangleIndex: Integer;
-  triangleList: TgxAffineVectorList;
+  triangleList: TGAffineVectorList;
   v: array [0 .. 2] of TAffineVector;
 begin
 

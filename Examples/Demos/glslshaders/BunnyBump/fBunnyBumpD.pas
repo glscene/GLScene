@@ -26,7 +26,7 @@ uses
  
   GLS.Material,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.VectorGeometry,
   GLS.Context,
   GLS.FileOBJ,

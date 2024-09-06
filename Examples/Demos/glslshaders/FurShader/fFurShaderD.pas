@@ -20,7 +20,7 @@ uses
   Vcl.Imaging.jpeg,
   GLS.Texture,
   GLS.FileTGA,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   VectorTypes,
   GLScene.Utils,
   GLS.Context,
@@ -29,7 +29,7 @@ uses
   GLS.TextureFormat
   GLS.XOpenGL,
   GLS.Graphics,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLS.Material,
   GLS.Cadencer,

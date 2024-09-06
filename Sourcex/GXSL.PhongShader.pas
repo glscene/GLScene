@@ -18,7 +18,7 @@ uses
   GLScene.VectorTypes,
   GXS.Texture, 
   GLScene.VectorGeometry, 
-  GXS.VectorLists, 
+  GLScene.VectorLists, 
   GXS.Context,
   GXS.RenderContextInfo,
   GXSL.AsmShader,
@@ -28,7 +28,7 @@ uses
 type
   TgxPhongShader = class(TgxCustomAsmShader)
   private
-    FLightIDs: TgxIntegerList;
+    FLightIDs: TGIntegerList;
     FDesignTimeEnabled: Boolean;
     FAmbientPass: Boolean;
     procedure SetDesignTimeEnabled(const Value: Boolean);
@@ -183,7 +183,7 @@ begin
 
     Add('END');
   end;
-  FLightIDs := TgxIntegerList.Create;
+  FLightIDs := TGIntegerList.Create;
 end;
 
 function TgxPhongShader.ShaderSupported: Boolean;

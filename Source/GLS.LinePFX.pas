@@ -15,7 +15,7 @@ uses
   System.SysUtils,
 
   GLScene.OpenGLTokens,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GLS.ParticleFX,
   GLS.Texture,

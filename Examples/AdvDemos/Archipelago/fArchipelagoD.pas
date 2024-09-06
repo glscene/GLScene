@@ -34,8 +34,8 @@ uses
   GLS.RenderContextInfo,
   GLS.Color,
   GLS.VectorFileObjects,
-  GLS.BaseClasses,
-  GLS.VectorLists,
+  GLScene.BaseClasses,
+  GLScene.VectorLists,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLS.Keyboard,
@@ -93,9 +93,9 @@ type
     WaterPlane: Boolean;
     WasAboveWater: Boolean;
     HelpOpacity: Single;
-    WakeVertices: TGLAffineVectorList;
-    WakeStretch: TGLAffineVectorList;
-    WakeTime: TGLSingleList;
+    WakeVertices: TGAffineVectorList;
+    WakeStretch: TGAffineVectorList;
+    WakeTime: TGSingleList;
     procedure ResetMousePos;
     function WaterPhase(const px, py: Single): Single;
     function WaterHeight(const px, py: Single): Single;
@@ -545,9 +545,9 @@ var
 begin
   if WakeVertices = nil then
   begin
-    WakeVertices := TGLAffineVectorList.Create;
-    WakeStretch := TGLAffineVectorList.Create;
-    WakeTime := TGLSingleList.Create;
+    WakeVertices := TGAffineVectorList.Create;
+    WakeStretch := TGAffineVectorList.Create;
+    WakeTime := TGSingleList.Create;
   end;
 
   // enlarge current vertices

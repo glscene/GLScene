@@ -23,7 +23,7 @@ uses
   GXS.Scene,
   GXS.Coordinates,
   GXS.VectorFileObjects,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GXS.GeomObjects,
   GXS.Navigator,
   GXS.RenderContextInfo,

@@ -24,7 +24,7 @@
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.FileMD2.hpp"
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLScene.Utils.hpp"
 
 //---------------------------------------------------------------------------

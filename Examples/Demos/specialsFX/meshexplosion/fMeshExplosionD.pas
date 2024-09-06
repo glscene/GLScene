@@ -22,7 +22,7 @@ uses
   GLS.File3DS,
   GLS.Coordinates,
   GLScene.Utils,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormMeshExplosion = class(TForm)

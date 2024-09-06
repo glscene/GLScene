@@ -2,7 +2,7 @@
 
 #ifndef fFxyCH
 #define fFxyCH
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.Coordinates.hpp"
 
 #include "GLS.Graph.hpp"

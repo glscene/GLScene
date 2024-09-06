@@ -16,7 +16,7 @@ uses
 
   GLS.Scene,
   GLS.Objects,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.DCE,
@@ -39,7 +39,7 @@ uses
   GLS.ProxyObjects,
   GLS.State,
   GLScene.Utils,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.VectorTypes;
 
 type

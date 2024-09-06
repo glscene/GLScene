@@ -16,7 +16,7 @@ uses
   GXS.XOpenGL,
   GLScene.VectorTypes,
   GXS.Scene,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GXS.Texture,
   GLScene.VectorGeometry,
   GXS.RenderContextInfo,

@@ -106,6 +106,8 @@ object FormBumpShader: TFormBumpShader
       Margins.Right = 5
       Margins.Bottom = 5
       Caption = 'MultiLight Shader'
+      Checked = True
+      State = cbChecked
       TabOrder = 3
       OnClick = MultiLightShaderCheckBoxClick
     end

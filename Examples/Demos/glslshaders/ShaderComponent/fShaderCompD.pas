@@ -16,7 +16,7 @@ uses
   GLS.Scene,
   GLS.Objects,
   GLS.Graph,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLSL.Shader,
@@ -27,7 +27,7 @@ uses
  
   GLS.Material,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.Utils,
 
   GLS.FileMD2,

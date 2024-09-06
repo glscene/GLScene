@@ -7,7 +7,7 @@
 #include "fCgSimpleC.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "Cg.Shader"
 
 #pragma link "GLS.Material"

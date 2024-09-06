@@ -26,7 +26,7 @@ uses
   GLS.SkyDome,
 
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.RenderContextInfo;
 
 type

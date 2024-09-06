@@ -29,7 +29,7 @@ uses
   GLS.SceneViewer,
   GLS.FileTGA,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Texture,
   GLS.Graphics,
   GLScene.VectorGeometry,

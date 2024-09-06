@@ -21,7 +21,7 @@ uses
   GLS.AsyncTimer,
   GLS.Coordinates,
  
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
 
   DWS.Classes,
   DWS.VectorGeometry,

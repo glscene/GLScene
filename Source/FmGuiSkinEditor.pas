@@ -33,7 +33,7 @@ uses
   GLS.Graphics, 
   GLScene.Utils,
   GLS.Coordinates,
-  GLS.BaseClasses, 
+  GLScene.BaseClasses, 
   GLS.Material;
 
 type

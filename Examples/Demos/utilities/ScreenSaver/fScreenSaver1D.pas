@@ -20,7 +20,7 @@ uses
   GLS.SceneViewer,
   GLS.GeomObjects,
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TForm1 = class(TForm)

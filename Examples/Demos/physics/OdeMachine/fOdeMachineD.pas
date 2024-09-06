@@ -22,7 +22,7 @@ uses
   GLS.WindowsFont,
  
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   ODE.Import;
 
 type

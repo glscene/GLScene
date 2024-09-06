@@ -5,7 +5,7 @@
 //---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include "System.SysUtils.hpp"
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.Coordinates.hpp"
 
 #include "GLS.FullScreenViewer.hpp"

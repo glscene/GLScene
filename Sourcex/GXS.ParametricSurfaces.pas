@@ -33,10 +33,11 @@ interface
 uses
   Winapi.OpenGL,
   GLScene.VectorTypes,
-  GXS.CurvesAndSurfaces,
+  GLScene.CurvesAndSurfaces,
   GLScene.VectorGeometry,
-  GXS.VectorLists,
-  GXS.PersistentClasses,
+  GLScene.VectorLists,
+  GLScene.PersistentClasses,
+
   GXS.VectorFileObjects,
   GXS.Texture,
   GXS.State,
@@ -59,24 +60,24 @@ type
 
   TMOParametricSurface = class(TgxMeshObject)
   private
-    FControlPoints, FWeightedControlPoints: TgxAffineVectorList;
-    FKnotsU, FKnotsV, FWeights: TgxSingleList;
+    FControlPoints, FWeightedControlPoints: TGAffineVectorList;
+    FKnotsU, FKnotsV, FWeights: TGSingleList;
     FOrderU, FOrderV, FCountU, FCountV, FResolution: Integer;
     FAutoKnots: Boolean;
     FContinuity: TBSplineContinuity;
     FRenderer: TParametricSurfaceRenderer;
     FBasis: TParametricSurfaceBasis;
-    procedure SetControlPoints(Value: TgxAffineVectorList);
-    procedure SetKnotsU(Value: TgxSingleList);
-    procedure SetKnotsV(Value: TgxSingleList);
-    procedure SetWeights(Value: TgxSingleList);
+    procedure SetControlPoints(Value: TGAffineVectorList);
+    procedure SetKnotsU(Value: TGSingleList);
+    procedure SetKnotsV(Value: TGSingleList);
+    procedure SetWeights(Value: TGSingleList);
     procedure SetRenderer(Value: TParametricSurfaceRenderer);
     procedure SetBasis(Value: TParametricSurfaceBasis);
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TgxVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgxVirtualReader); override;
+    procedure WriteToFiler(writer: TGVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGVirtualReader); override;
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
     procedure Prepare; override;
     procedure Clear; override;
@@ -87,14 +88,14 @@ type
       generate the mesh data. Fills in Vertices, Normals, etc. *)
     procedure GenerateMesh;
     // Control points define the parametric surface.
-    property ControlPoints: TgxAffineVectorList read FControlPoints write SetControlPoints;
+    property ControlPoints: TGAffineVectorList read FControlPoints write SetControlPoints;
     { KnotsU and KnotsV are the knot vectors in the U and V direction. Knots
       define the continuity of curves and how control points influence the
       parametric values to build the surface. }
-    property KnotsU: TgxSingleList read FKnotsU write SetKnotsU;
-    property KnotsV: TgxSingleList read FKnotsV write SetKnotsV;
+    property KnotsU: TGSingleList read FKnotsU write SetKnotsU;
+    property KnotsV: TGSingleList read FKnotsV write SetKnotsV;
     { Weights define how much a control point effects the surface. }
-    property Weights: TgxSingleList read FWeights write SetWeights;
+    property Weights: TGSingleList read FWeights write SetWeights;
     // OrderU and OrderV defines the curve order in the U and V direction
     property OrderU: Integer read FOrderU write FOrderU;
     property OrderV: Integer read FOrderV write FOrderV;
@@ -131,18 +132,18 @@ type
   TFGBezierSurface = class(TgxFaceGroup)
   private
     FCountU, FCountV: Integer;
-    FControlPointIndices, FTexCoordIndices: TgxIntegerList;
+    FControlPointIndices, FTexCoordIndices: TGIntegerList;
     FResolution: Integer;
     FMinU, FMaxU, FMinV, FMaxV: Single;
-    FTempControlPoints, FTempTexCoords: TgxAffineVectorList;
+    FTempControlPoints, FTempTexCoords: TGAffineVectorList;
   protected
-    procedure SetControlPointIndices(const Value: TgxIntegerList);
-    procedure SetTexCoordIndices(const Value: TgxIntegerList);
+    procedure SetControlPointIndices(const Value: TGIntegerList);
+    procedure SetTexCoordIndices(const Value: TGIntegerList);
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TgxVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgxVirtualReader); override;
+    procedure WriteToFiler(writer: TGVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGVirtualReader); override;
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
     procedure Prepare; override;
     property CountU: Integer read FCountU write FCountU;
@@ -152,8 +153,8 @@ type
     property MaxU: Single read FMaxU write FMaxU;
     property MinV: Single read FMinV write FMinV;
     property MaxV: Single read FMaxV write FMaxV;
-    property ControlPointIndices: TgxIntegerList read FControlPointIndices write SetControlPointIndices;
-    property TexCoordIndices: TgxIntegerList read FTexCoordIndices write SetTexCoordIndices;
+    property ControlPointIndices: TGIntegerList read FControlPointIndices write SetControlPointIndices;
+    property TexCoordIndices: TGIntegerList read FTexCoordIndices write SetTexCoordIndices;
   end;
 
 // ----------------------------------------------------------------------
@@ -168,11 +169,11 @@ constructor TMOParametricSurface.Create;
 begin
   inherited;
 
-  FControlPoints := TgxAffineVectorList.Create;
-  FWeightedControlPoints := TgxAffineVectorList.Create;
-  FKnotsU := TgxSingleList.Create;
-  FKnotsV := TgxSingleList.Create;
-  FWeights := TgxSingleList.Create;
+  FControlPoints := TGAffineVectorList.Create;
+  FWeightedControlPoints := TGAffineVectorList.Create;
+  FKnotsU := TGSingleList.Create;
+  FKnotsV := TGSingleList.Create;
+  FWeights := TGSingleList.Create;
 
   Resolution := 20;
 end;
@@ -187,7 +188,7 @@ begin
   inherited;
 end;
 
-procedure TMOParametricSurface.WriteToFiler(writer: TgxVirtualWriter);
+procedure TMOParametricSurface.WriteToFiler(writer: TGVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -209,7 +210,7 @@ begin
   end;
 end;
 
-procedure TMOParametricSurface.ReadFromFiler(reader: TgxVirtualReader);
+procedure TMOParametricSurface.ReadFromFiler(reader: TGVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -367,22 +368,22 @@ begin
   BuildNormals(fg.VertexIndices, momTriangles);
 end;
 
-procedure TMOParametricSurface.SetControlPoints(Value: TgxAffineVectorList);
+procedure TMOParametricSurface.SetControlPoints(Value: TGAffineVectorList);
 begin
   FControlPoints.Assign(Value);
 end;
 
-procedure TMOParametricSurface.SetKnotsU(Value: TgxSingleList);
+procedure TMOParametricSurface.SetKnotsU(Value: TGSingleList);
 begin
   FKnotsU.Assign(Value);
 end;
 
-procedure TMOParametricSurface.SetKnotsV(Value: TgxSingleList);
+procedure TMOParametricSurface.SetKnotsV(Value: TGSingleList);
 begin
   FKnotsV.Assign(Value);
 end;
 
-procedure TMOParametricSurface.SetWeights(Value: TgxSingleList);
+procedure TMOParametricSurface.SetWeights(Value: TGSingleList);
 begin
   FWeights.Assign(Value);
 end;
@@ -412,10 +413,10 @@ end;
 constructor TFGBezierSurface.Create;
 begin
   inherited;
-  FControlPointIndices := TgxIntegerList.Create;
-  FTexCoordIndices := TgxIntegerList.Create;
-  FTempControlPoints := TgxAffineVectorList.Create;
-  FTempTexCoords := TgxAffineVectorList.Create;
+  FControlPointIndices := TGIntegerList.Create;
+  FTexCoordIndices := TGIntegerList.Create;
+  FTempControlPoints := TGAffineVectorList.Create;
+  FTempTexCoords := TGAffineVectorList.Create;
 
   // Default values
   FCountU := 4;
@@ -436,7 +437,7 @@ begin
   inherited;
 end;
 
-procedure TFGBezierSurface.WriteToFiler(writer: TgxVirtualWriter);
+procedure TFGBezierSurface.WriteToFiler(writer: TGVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -454,7 +455,7 @@ begin
   end;
 end;
 
-procedure TFGBezierSurface.ReadFromFiler(reader: TgxVirtualReader);
+procedure TFGBezierSurface.ReadFromFiler(reader: TGVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -504,12 +505,12 @@ begin
   mrci.gxStates.PopAttrib;
 end;
 
-procedure TFGBezierSurface.SetControlPointIndices(const Value: TgxIntegerList);
+procedure TFGBezierSurface.SetControlPointIndices(const Value: TGIntegerList);
 begin
   FControlPointIndices.Assign(Value);
 end;
 
-procedure TFGBezierSurface.SetTexCoordIndices(const Value: TgxIntegerList);
+procedure TFGBezierSurface.SetTexCoordIndices(const Value: TGIntegerList);
 begin
   FTexCoordIndices.Assign(Value);
 end;

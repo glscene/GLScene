@@ -17,8 +17,8 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GXS.VectorLists,
-  GXS.PersistentClasses;
+  GLScene.VectorLists,
+  GLScene.PersistentClasses;
 
 type
   TDXNode = class;
@@ -48,7 +48,7 @@ type
 
   TDXMaterialList = class;
 
-  TDXMaterial = class(TgxPersistentObject)
+  TDXMaterial = class(TGPersistentObject)
   private
     FDiffuse: TVector4f;
     FSpecPower: Single;
@@ -81,20 +81,20 @@ type
 
   TDXMesh = class(TDXNode)
   private
-    FVertices, FNormals, FTexCoords: TgxAffineVectorList;
+    FVertices, FNormals, FTexCoords: TGAffineVectorList;
     FVertexIndices, FNormalIndices, FMaterialIndices, FVertCountIndices
-      : TgxIntegerList;
+      : TGIntegerList;
     FMaterialList: TDXMaterialList;
   public
     constructor Create; override;
     destructor Destroy; override;
-    property Vertices: TgxAffineVectorList read FVertices;
-    property Normals: TgxAffineVectorList read FNormals;
-    property TexCoords: TgxAffineVectorList read FTexCoords;
-    property VertexIndices: TgxIntegerList read FVertexIndices;
-    property NormalIndices: TgxIntegerList read FNormalIndices;
-    property MaterialIndices: TgxIntegerList read FMaterialIndices;
-    property VertCountIndices: TgxIntegerList read FVertCountIndices;
+    property Vertices: TGAffineVectorList read FVertices;
+    property Normals: TGAffineVectorList read FNormals;
+    property TexCoords: TGAffineVectorList read FTexCoords;
+    property VertexIndices: TGIntegerList read FVertexIndices;
+    property NormalIndices: TGIntegerList read FNormalIndices;
+    property MaterialIndices: TGIntegerList read FMaterialIndices;
+    property VertCountIndices: TGIntegerList read FVertCountIndices;
     property MaterialList: TDXMaterialList read FMaterialList;
   end;
 
@@ -337,7 +337,7 @@ var
     Result.Z := 0;
   end;
 
-  procedure ReadMeshVectors(VectorList: TgxAffineVectorList);
+  procedure ReadMeshVectors(VectorList: TGAffineVectorList);
   var
     i, NumVectors: Integer;
   begin
@@ -346,8 +346,8 @@ var
       VectorList.Add(ReadVector3f);
   end;
 
-  procedure ReadMeshIndices(IndexList: TgxIntegerList;
-    VertCountIndices: TgxIntegerList = nil);
+  procedure ReadMeshIndices(IndexList: TGIntegerList;
+    VertCountIndices: TGIntegerList = nil);
   var
     str: String;
     i, j, NumFaces, NumIndices, jStart: Integer;
@@ -388,7 +388,7 @@ var
     end;
   end;
 
-  procedure ReadTexCoords(VectorList: TgxAffineVectorList);
+  procedure ReadTexCoords(VectorList: TGAffineVectorList);
   var
     i, NumVectors: Integer;
   begin
@@ -600,13 +600,13 @@ constructor TDXMesh.Create;
 begin
   inherited;
 
-  FVertices := TgxAffineVectorList.Create;
-  FNormals := TgxAffineVectorList.Create;
-  FTexCoords := TgxAffineVectorList.Create;
-  FVertexIndices := TgxIntegerList.Create;
-  FNormalIndices := TgxIntegerList.Create;
-  FMaterialIndices := TgxIntegerList.Create;
-  FVertCountIndices := TgxIntegerList.Create;
+  FVertices := TGAffineVectorList.Create;
+  FNormals := TGAffineVectorList.Create;
+  FTexCoords := TGAffineVectorList.Create;
+  FVertexIndices := TGIntegerList.Create;
+  FNormalIndices := TGIntegerList.Create;
+  FMaterialIndices := TGIntegerList.Create;
+  FVertCountIndices := TGIntegerList.Create;
   FMaterialList := TDXMaterialList.Create;
 end;
 

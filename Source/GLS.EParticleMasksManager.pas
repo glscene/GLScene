@@ -50,8 +50,8 @@ type
   TGLEParticleMask = class(TCollectionItem, IGLMaterialLibrarySupported)
   private
     FName: string;
-    FScale: TGLCoordinates;
-    FPosition: TGLCoordinates;
+    FScale: TGCoordinates;
+    FPosition: TGCoordinates;
     FYMask: TGLLibMaterialName;
     FZMask: TGLLibMaterialName;
     FXMask: TGLLibMaterialName;
@@ -97,8 +97,8 @@ type
       TGLEProjectedParticleMask; Depth: Integer);
   published
     // scales and positions
-    property Scale: TGLCoordinates read FScale write FScale;
-    property Position: TGLCoordinates read FPosition write FPosition;
+    property Scale: TGCoordinates read FScale write FScale;
+    property Position: TGCoordinates read FPosition write FPosition;
     // the reference name of the particle mask
     property Name: string read FName write SetName;
     property MaterialLibrary: TGLMaterialLibrary read FMaterialLibrary write SetMaterialLibrary;
@@ -210,8 +210,8 @@ begin
 
   FName := 'ParticleMask' + IntToStr(ID);
 
-  FScale := TGLCoordinates.CreateInitialized(Self, XYZHMGVector, csPoint);
-  FPosition := TGLCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
+  FScale := TGCoordinates.CreateInitialized(Self, XYZHMGVector, csPoint);
+  FPosition := TGCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
   FMaterialLibrary := nil;
 
   FMaskColor := clWhite;

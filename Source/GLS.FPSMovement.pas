@@ -24,12 +24,12 @@ uses
   GLScene.VectorGeometry,
   GLS.Scene,
   GLS.VectorFileObjects,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.XCollection,
   GLS.GeomObjects,
   GLS.Navigator,
   GLS.RenderContextInfo,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.Manager,
   GLS.State;
 
@@ -146,7 +146,7 @@ type
     Velocity: TGLVector;
     constructor Create(aOwner: TXCollection); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TGLProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     class function FriendlyName: string; override;
     procedure TurnHorizontal(Angle: single);
     procedure TurnVertical(Angle: single);
@@ -793,7 +793,7 @@ begin
   Manager.Navigator.MovingObject := prevObj;
 end;
 
-procedure TGLBFPSMovement.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLBFPSMovement.DoProgress(const progressTime: TGProgressTimes);
 var
   newPosition: TGLVector;
   CollisionState: TGLCollisionState;

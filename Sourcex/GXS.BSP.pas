@@ -19,7 +19,7 @@ uses
   GXS.VectorFileObjects,
   GXS.Material,
   GLScene.VectorGeometry,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GXS.Color,
   GXS.RenderContextInfo;
 
@@ -139,7 +139,7 @@ type
       const maxTrianglesPerLeaf: Integer = MaxInt);
     (* Goes through all triangle edges, looking for tjunctions.
       The candidates are indices of points to lookup a tjunction vertices. *)
-    procedure FixTJunctions(const tJunctionsCandidates: TgxIntegerList);
+    procedure FixTJunctions(const tJunctionsCandidates: TGIntegerList);
     (* BSP node split plane.
       Divides space between positive and negative half-space, positive
       half-space being the one were the evaluation of an homogeneous
@@ -383,14 +383,14 @@ var
   i, j, n: Integer;
   nodeParents: array of Integer;
   remapIndex: array of Integer;
-  indicesToCheck: TgxIntegerList;
+  indicesToCheck: TGIntegerList;
   node: TFGBSPNode;
 begin
   n := faceGroups.Count;
   if n = 0 then
     Exit;
   SetLength(nodeParents, n);
-  indicesToCheck := TgxIntegerList.Create;
+  indicesToCheck := TGIntegerList.Create;
   try
     // build nodes parent information
     FillChar(nodeParents[0], SizeOf(Integer) * n, 255);
@@ -642,7 +642,7 @@ var
   ns, np, nn: Integer;
   evalPlane: THmgPlane;
   bestEval, eval: Single;
-  vertices: TgxAffineVectorList;
+  vertices: TGAffineVectorList;
 begin
   Result := NullHmgVector;
   bestEval := 1E30;
@@ -687,7 +687,7 @@ procedure TFGBSPNode.EvaluateSplitPlane(const splitPlane: THmgPlane;
 var
   i, n, inci, lookupIdx: Integer;
   a, b, c: Boolean;
-  vertices: TgxAffineVectorList;
+  vertices: TGAffineVectorList;
 const
   // case resolution lookup tables (node's tris unaccounted for)
   cTriangleSplit: array [0 .. 7] of Integer = (0, 1, 1, 1, 1, 1, 1, 0);
@@ -824,8 +824,8 @@ procedure TFGBSPNode.PerformSplit(const splitPlane: THmgPlane;
   const maxTrianglesPerLeaf: Integer = MaxInt);
 var
   fgPos, fgNeg: TFGBSPNode;
-  fgPosIndices, fgNegIndices: TgxIntegerList;
-  indices: TgxIntegerList;
+  fgPosIndices, fgNegIndices: TGIntegerList;
+  indices: TGIntegerList;
 
   procedure SplitTriangleMid(strayID, strayNext, strayPrev: Integer;
     eNext, ePrev: Single);
@@ -877,7 +877,7 @@ var
 var
   i, i1, i2, i3, se1, se2, se3: Integer;
   e1, e2, e3: Single;
-  vertices: TgxAffineVectorList;
+  vertices: TGAffineVectorList;
   subSplitPlane: THmgPlane;
 begin
   Assert((PositiveSubNodeIndex = 0) and (NegativeSubNodeIndex = 0));
@@ -891,7 +891,7 @@ begin
   fgNegIndices := fgNeg.VertexIndices;
   // initiate split
   Self.FSplitPlane := splitPlane;
-  indices := TgxIntegerList.Create;
+  indices := TGIntegerList.Create;
   vertices := Owner.Owner.vertices;
   i := 0;
   while i < VertexIndices.Count do
@@ -1032,10 +1032,10 @@ begin
   end;
 end;
 
-procedure TFGBSPNode.FixTJunctions(const tJunctionsCandidates: TgxIntegerList);
+procedure TFGBSPNode.FixTJunctions(const tJunctionsCandidates: TGIntegerList);
 
   function FindTJunction(iA, iB, iC: Integer;
-    candidatesList: TgxIntegerList): Integer;
+    candidatesList: TGIntegerList): Integer;
   var
     i, k: Integer;
     vertices: PAffineVectorArray;
@@ -1090,10 +1090,10 @@ procedure TFGBSPNode.FixTJunctions(const tJunctionsCandidates: TgxIntegerList);
 var
   i, tj: Integer;
   indices: PIntegerArray;
-  mark: TgxIntegerList;
+  mark: TGIntegerList;
 begin
   Assert(Mode in [fgmmTriangles, fgmmFlatTriangles]);
-  mark := TgxIntegerList.Create;
+  mark := TGIntegerList.Create;
   mark.AddSerie(1, 0, VertexIndices.Count);
   indices := VertexIndices.List;
   i := 0;

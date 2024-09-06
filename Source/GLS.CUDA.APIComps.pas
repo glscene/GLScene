@@ -14,12 +14,12 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLS.PersistentClasses,
-  GLS.BaseClasses,
+  GLScene.PersistentClasses,
+  GLScene.BaseClasses,
   GLS.Context,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.Graphics,
   GLScene.Strings,
   GLScene.Utils,
@@ -53,7 +53,7 @@ type
   TCUDAComponent = class(TCUDAHandlesMaster)
   private
     FMaster: TCUDAComponent;
-    FItems: TGLPersistentObjectList;
+    FItems: TGPersistentObjectList;
     procedure SetMaster(AMaster: TCUDAComponent);
     function GetItem(const i: Integer): TCUDAComponent;
     function GetItemsCount: Integer;
@@ -1059,7 +1059,7 @@ end;
 procedure TCUDAComponent.AddItem(AItem: TCUDAComponent);
 begin
   if not Assigned(FItems) then
-    FItems := TGLPersistentObjectList.Create;
+    FItems := TGPersistentObjectList.Create;
   FItems.Add(AItem);
 end;
 

@@ -16,7 +16,7 @@ uses
   Vcl.Dialogs,
   Vcl.ExtCtrls,
 
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Scene,
   GLS.SceneViewer,
   GLS.TextureFormat,

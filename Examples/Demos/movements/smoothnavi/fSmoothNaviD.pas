@@ -23,7 +23,7 @@ uses
   
   GLS.SmoothNavigator,
   GLS.Coordinates, 
-  GLS.BaseClasses, 
+  GLScene.BaseClasses, 
   GLS.Screen;
 
 type

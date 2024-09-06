@@ -14,7 +14,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GLScene.Strings,
   GXS.Scene,

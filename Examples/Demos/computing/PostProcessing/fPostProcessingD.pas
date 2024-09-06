@@ -24,7 +24,7 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
  
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.FBORenderer,
   GLS.HUDObjects,
 

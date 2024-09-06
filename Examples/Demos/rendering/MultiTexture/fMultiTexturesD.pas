@@ -19,7 +19,7 @@ uses
   GLS.SceneViewer,
  
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLSL.Shader,

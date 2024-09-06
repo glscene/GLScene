@@ -33,7 +33,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
 
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   ODE.Import,
   GLS.ODERagdoll,
   GLS.FileSMD,

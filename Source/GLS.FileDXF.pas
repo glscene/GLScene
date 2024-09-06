@@ -18,10 +18,10 @@ uses
   System.SysUtils,
 
   GLScene.VectorTypes,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.ApplicationFileIO,
   GLScene.VectorGeometry,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.Scene,
   GLS.Texture,
   GLS.VectorFileObjects,

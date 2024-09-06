@@ -21,8 +21,8 @@ uses
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLScene.Utils,
-  GXS.VectorLists,
-  GXS.PersistentClasses,
+  GLScene.VectorLists,
+  GLScene.PersistentClasses,
   GXS.BaseClasses,
   GXS.Scene,
   GXS.ImageUtils,
@@ -43,10 +43,10 @@ type
   private
     FLocks: packed array of ByteBool;
     FPositions, FVelocity: packed array of Single;
-    FPlaneQuadIndices: TgxPersistentObjectList;
-    FPlaneQuadTexCoords: TgxTexPointList;
-    FPlaneQuadVertices: TgxAffineVectorList;
-    FPlaneQuadNormals: TgxAffineVectorList;
+    FPlaneQuadIndices: TGPersistentObjectList;
+    FPlaneQuadTexCoords: TGTexPointList;
+    FPlaneQuadVertices: TGAffineVectorList;
+    FPlaneQuadNormals: TGAffineVectorList;
     FActive: Boolean;
     FRainTimeInterval: Integer;
     FRainForce: Single;
@@ -134,10 +134,10 @@ begin
   FMaximumCatchupIterations := 1;
   FOptions := cDefaultWaterPlaneOptions;
 
-  FPlaneQuadIndices := TgxPersistentObjectList.Create;
-  FPlaneQuadTexCoords := TgxTexPointList.Create;
-  FPlaneQuadVertices := TgxAffineVectorList.Create;
-  FPlaneQuadNormals := TgxAffineVectorList.Create;
+  FPlaneQuadIndices := TGPersistentObjectList.Create;
+  FPlaneQuadTexCoords := TGTexPointList.Create;
+  FPlaneQuadVertices := TGAffineVectorList.Create;
+  FPlaneQuadNormals := TGAffineVectorList.Create;
   FMask := TImage.Create(AOwner);
   FMask.Bitmap.OnChange := DoMaskChanged;
 
@@ -277,7 +277,7 @@ var
   i, j, ij, resSqr: Integer;
   maskBmp: TBitmap;
   scanLine: PIntegerArray;
-  il: TgxIntegerList;
+  il: TGIntegerList;
   locked: Boolean;
 begin
   resSqr := FResolution * FResolution;
@@ -312,7 +312,7 @@ begin
   FPlaneQuadIndices.Clean;
   for j := 0 to Resolution - 2 do
   begin
-    il := TgxIntegerList.Create;
+    il := TGIntegerList.Create;
     for i := 0 to Resolution - 1 do
     begin
       ij := i + j * Resolution;
@@ -329,7 +329,7 @@ begin
       else if il.Count > 0 then
       begin
         FPlaneQuadIndices.Add(il);
-        il := TgxIntegerList.Create;
+        il := TGIntegerList.Create;
       end;
     end;
     if il.Count > 0 then
@@ -437,7 +437,7 @@ end;
 procedure TgxWaterPlane.BuildList(var rci: TgxRenderContextInfo);
 var
   i: Integer;
-  il: TgxIntegerList;
+  il: TGIntegerList;
 begin
   glPushClientAttribDefaultEXT(GL_CLIENT_VERTEX_ARRAY_BIT);
 
@@ -458,7 +458,7 @@ begin
 
   for i := 0 to FPlaneQuadIndices.Count - 1 do
   begin
-    il := TgxIntegerList(FPlaneQuadIndices[i]);
+    il := TGIntegerList(FPlaneQuadIndices[i]);
     glDrawElements(GL_QUAD_STRIP, il.Count, GL_UNSIGNED_INT, il.List);
   end;
 

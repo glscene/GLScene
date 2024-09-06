@@ -26,7 +26,7 @@
 #include "GLS.Material.hpp"
 #include "GLS.Coordinates.hpp"
 
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.FileQ3MD3.hpp"
 
 

@@ -27,7 +27,7 @@ uses
 
   GXS.XOpenGL,
   GLScene.VectorTypes,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorGeometry,
   GLScene.Spline,
 

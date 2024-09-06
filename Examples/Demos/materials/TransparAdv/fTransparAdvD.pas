@@ -26,7 +26,7 @@ uses
   GLS.SimpleNavigation,
   GLS.Material,
   GLS.Cadencer,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.SceneViewer,
   GLSL.Shader,
   GLSL.CustomShader,

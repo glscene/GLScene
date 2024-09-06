@@ -28,7 +28,7 @@ uses
   GLS.Texture,
   GLSL.Shader,
   GLSL.ShaderParameter,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.RenderContextInfo;
 
 

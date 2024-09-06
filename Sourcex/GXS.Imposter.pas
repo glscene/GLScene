@@ -21,7 +21,7 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.Utils,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GXS.Graphics,
   GXS.Color,
   GXS.RenderContextInfo,
@@ -116,7 +116,7 @@ type
   private
     FBackColor: TgxColor;
     FBuildOffset: TgxCoordinates;
-    FImposterRegister: TgxPersistentObjectList;
+    FImposterRegister: TGPersistentObjectList;
     FRenderPoint: TgxRenderPoint;
     FImposterOptions: TImposterOptions;
     FAlphaTreshold: Single;
@@ -130,7 +130,7 @@ type
     procedure SetBuildOffset(AValue: TgxCoordinates);
     procedure SetImposterReference(AValue: TImposterReference);
     procedure InitializeImpostorTexture(const TextureSize: TPoint);
-    property ImposterRegister: TgxPersistentObjectList read FImposterRegister;
+    property ImposterRegister: TGPersistentObjectList read FImposterRegister;
     procedure UnregisterImposter(imposter: TImposter);
     function CreateNewImposter: TImposter; virtual;
     procedure PrepareImposters(Sender: TObject; var rci: TgxRenderContextInfo);
@@ -550,7 +550,7 @@ end;
 constructor TgxImposterBuilder.Create(AOwner: TComponent);
 begin
   inherited;
-  FImposterRegister := TgxPersistentObjectList.Create;
+  FImposterRegister := TGPersistentObjectList.Create;
   FBackColor := TgxColor.CreateInitialized(Self, clrTransparent);
   FBuildOffset := TgxCoordinates.CreateInitialized(Self, NullHmgPoint, CsPoint);
   FImposterOptions := cDefaultImposterOptions;

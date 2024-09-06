@@ -292,7 +292,7 @@ uses
   GLS.AsyncTimer,
   GLS.Atmosphere,
   GLS.AVIRecorder,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.BitmapFont,
   GLS.Blur,
   GLS.BumpMapHDS,
@@ -819,10 +819,10 @@ end;
 
 procedure TGLCoordinatesProperty.Edit;
 var
-  glc: TGLCoordinates;
+  glc: TGCoordinates;
   x, y, z: Single;
 begin
-  glc := TGLCoordinates(GetOrdValue);
+  glc := TGCoordinates(GetOrdValue);
   x := glc.x;
   y := glc.y;
   z := glc.z;
@@ -1357,7 +1357,7 @@ begin
   RegisterPropertiesInCategory(strOpenGLCategoryName, TGLSceneViewer, ['*Render']);
   // GLScene
   RegisterPropertiesInCategory(strOpenGLCategoryName,
-    [TypeInfo(TGLObjectsSorting), TypeInfo(TGLProgressEvent),
+    [TypeInfo(TGLObjectsSorting), TypeInfo(TGProgressEvent),
     TypeInfo(TGLBehaviours), TypeInfo(TGLEffects),
     TypeInfo(TGLDirectRenderEvent), TypeInfo(TGLCameraStyle),
     TypeInfo(TOnCustomPerspective), TypeInfo(TGLScene)]);
@@ -1588,7 +1588,7 @@ begin
   RegisterPropertyEditor(TypeInfo(string), TGLTexture, 'ImageClassName', TGLImageClassProperty);
   RegisterPropertyEditor(TypeInfo(TGLSoundFile), TGLSoundSample, '', TGLSoundFileProperty);
   RegisterPropertyEditor(TypeInfo(string), TGLBaseSoundSource, 'SoundName', TGLSoundNameProperty);
-  RegisterPropertyEditor(TypeInfo(TGLCoordinates), nil, '', TGLCoordinatesProperty);
+  RegisterPropertyEditor(TypeInfo(TGCoordinates), nil, '', TGLCoordinatesProperty);
   RegisterPropertyEditor(TypeInfo(TGLColor), nil, '', TGLColorProperty);
   RegisterPropertyEditor(TypeInfo(TGLMaterial), nil, '', TGLMaterialProperty);
   RegisterComponentEditor(TGLGuiLayout, TGLGUILayoutEditor);

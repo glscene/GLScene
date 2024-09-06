@@ -15,7 +15,7 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.VectorFileObjects,
   GLScene.Utils;
 
@@ -198,7 +198,7 @@ var
   I: Integer;
   DataFace: TVORFace;
   Header: TVORHeader;
-  List: TGLAffineVectorList;
+  List: TGAffineVectorList;
 const
   cHeaderTag = 'VOR export';
 begin

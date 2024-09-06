@@ -31,7 +31,7 @@ uses
   System.Math,
 
   GLScene.VectorTypes,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GXS.HeightData,
   GXS.Graphics,
   GLScene.VectorGeometry,

@@ -33,7 +33,7 @@ uses
   GLS.Color,
  
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 const
   cMaxWindMag = 8;

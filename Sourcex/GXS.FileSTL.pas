@@ -17,7 +17,7 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GXS.VectorFileObjects,
   GXS.ApplicationFileIO,
   GXS.ImageUtils;
@@ -247,7 +247,7 @@ var
   i: Integer;
   header: TSTLHeader;
   dataFace: TSTLFace;
-  list: TgxAffineVectorList;
+  list: TGAffineVectorList;
 const
   cHeaderTag = 'GXScene STL export';
 begin

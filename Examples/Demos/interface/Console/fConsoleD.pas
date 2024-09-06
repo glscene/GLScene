@@ -17,7 +17,7 @@ uses
   GLS.Objects,
   GLS.Cadencer,
   GLS.SceneViewer,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
 
   GLS.Texture,
   GLS.BitmapFont,

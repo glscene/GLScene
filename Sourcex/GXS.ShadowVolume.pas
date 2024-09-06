@@ -22,16 +22,17 @@ uses
   System.SysUtils,
   System.Classes,
 
-  GXS.Scene,
-  GXS.PipelineTransformation,
-  GXS.VectorLists,
-  GXS.State, 
+  GLScene.VectorLists,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
+  GLScene.PersistentClasses,
+  GLScene.GeometryBB,
+
+  GXS.Scene,
   GXS.Context,
   GXS.Silhouette,
-  GXS.PersistentClasses,
-  GXS.GeometryBB,
+  GXS.State,
+  GXS.PipelineTransformation,
   GXS.Color,
   GXS.RenderContextInfo;
 
@@ -109,7 +110,7 @@ type
   // Specifies an individual shadow casting light.
   TgxShadowVolumeLight = class(TgxShadowVolumeCaster)
   private
-    FSilhouettes: TgxPersistentObjectList;
+    FSilhouettes: TGPersistentObjectList;
   protected
     function GetLightSource: TgxLightSource;
     procedure SetLightSource(const ls: TgxLightSource);
@@ -310,7 +311,7 @@ end;
 constructor TgxShadowVolumeLight.Create(ACollection: TCollection);
 begin
   inherited Create(ACollection);
-  FSilhouettes := TgxPersistentObjectList.Create;
+  FSilhouettes := TGPersistentObjectList.Create;
 end;
 
 destructor TgxShadowVolumeLight.Destroy;
@@ -363,7 +364,7 @@ var
   mvp: TMatrix4f;
   ls: TgxLightSource;
   aabb: TAABB;
-  clipRect: TClipRect;
+  clipRect: TGClipRect;
 begin
   ls := LightSource;
   if (EffectiveRadius <= 0) or (not ls.Attenuated) then

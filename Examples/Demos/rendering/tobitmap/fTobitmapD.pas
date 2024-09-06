@@ -24,7 +24,7 @@ uses
   GLS.Coordinates,
   GLS.Graphics,
   GLScene.Utils,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TForm1 = class(TForm)

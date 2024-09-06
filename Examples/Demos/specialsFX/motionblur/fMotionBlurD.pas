@@ -23,7 +23,7 @@ uses
   GLScene.Utils,
  
   GLS.Coordinates,
-  GLS.BaseClasses, GLS.VectorFileObjects;
+  GLScene.BaseClasses, GLS.VectorFileObjects;
 
 type
   TFormMotionBlur = class(TForm)

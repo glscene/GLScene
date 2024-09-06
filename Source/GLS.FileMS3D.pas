@@ -20,7 +20,7 @@ uses
   GLS.Color, 
   GLS.Texture,
   GLScene.VectorGeometry, 
-  GLS.VectorLists, 
+  GLScene.VectorLists, 
   GLS.ApplicationFileIO;
   
 

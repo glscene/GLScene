@@ -12,7 +12,7 @@ interface
 uses
   System.Classes,
   GLScene.VectorGeometry,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GXS.VectorFileObjects,
   GXS.Silhouette;
 

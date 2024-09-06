@@ -18,7 +18,7 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
  
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.SimpleNavigation,
   GLS.Objects,
   GLS.Coordinates,

@@ -23,7 +23,7 @@ uses
   GLS.SceneViewer,
   GLS.Coordinates,
  
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormTexFormat = class(TForm)

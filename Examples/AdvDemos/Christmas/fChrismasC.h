@@ -34,7 +34,7 @@
 #include "GLS.FileMP3.hpp"
 #include "GLS.ThorFX.hpp"
 #include "GLS.FireFX.hpp"
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLScene.Utils.hpp"
 #include "GLS.SoundManager.hpp"
 #include "GLS.Sounds.BASS.hpp"

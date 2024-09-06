@@ -89,7 +89,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject * Sender,
   else
 	speed = deltaTime;
 
-  TGLCoordinates *p = GLCamera1->Position;
+  TGCoordinates *p = GLCamera1->Position;
   if(IsKeyDown(VK_UP))
 	DummyCube1->Translate(-p->X * speed, 0, -p->Z * speed);
   if(IsKeyDown(VK_DOWN))

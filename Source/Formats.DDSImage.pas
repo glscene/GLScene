@@ -2,7 +2,6 @@
 // The graphics engine GLScene https://github.com/glscene
 //
 unit Formats.DDSImage;
-
 (*
     Alternative for DDS unit with more supported formats of flat image:
     Alpha8, Luminance8, R3G3B2, RGB5A1, RGBA4, Alpha8Luminance8, Luminance16, R5G6B5,
@@ -13,7 +12,6 @@ unit Formats.DDSImage;
     Good for preview picture in OpenDialog,
     so you may include both DDSImage (preview) and GLFileDDS (loading)
 *)
-
 interface
 
 {$I GLScene.Defines.inc}
@@ -33,7 +31,6 @@ uses
   GLS.TextureFormat;
 
 type
-
   TDDSImage = class(TBitmap)
   public
     procedure LoadFromStream(stream: TStream); override;
@@ -42,9 +39,7 @@ type
 
   EDDSException = class(Exception);
 
-//-------------------------------------------------
-implementation
-//-------------------------------------------------
+implementation //-------------------------------------------------------------
 
 uses
   Formats.DXTC;

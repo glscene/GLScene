@@ -18,7 +18,7 @@ uses
   
   GLScene.VectorTypes, 
   GLScene.VectorGeometry, 
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Scene, 
   GLS.Graph, 
   GLS.Objects, 

@@ -29,7 +29,7 @@ uses
   GLScene.VectorGeometry,
   GLS.GeomObjects,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
 
 
   uFountainD, GLS.Material;

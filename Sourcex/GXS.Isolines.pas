@@ -14,7 +14,7 @@ uses
   System.Generics.Collections,
 
   GLScene.VectorGeometry,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorTypes,
   GLScene.VectorTypesExt,
   GLScene.Spline,
@@ -101,7 +101,7 @@ function GetNextIsoline(var Isoline: TgxIsoline): Boolean;
 
 // Defines contouring segments inside a triangle using elevations 
 procedure TriangleElevationSegments(const p1, p2, p3: TAffineVector;
-  ElevationDelta: Single; Segments: TgxAffineVectorList);
+  ElevationDelta: Single; Segments: TGAffineVectorList);
 
 //----------------------------------------------------------------------
 implementation
@@ -389,7 +389,7 @@ begin
 end;
 
 procedure TriangleElevationSegments(const p1, p2, p3: TAffineVector;
-  ElevationDelta: Single; Segments: TgxAffineVectorList);
+  ElevationDelta: Single; Segments: TGAffineVectorList);
 
   function SegmentIntersect(const a, b: TAffineVector; e: Single): Integer;
   var

@@ -20,7 +20,7 @@ uses
   FMX.Types,
 
   GXS.XOpenGL,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GXS.Scene,
   GLScene.VectorGeometry,
   GXS.Context,

@@ -7,7 +7,7 @@
 #include "fOceanC.h"
 // ---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Coordinates"
 
@@ -163,7 +163,7 @@ void __fastcall TForm1::DOOceanPlaneRender(TObject *Sender,
 
 {
 	int x, y;
-	TGLTexPointList *v;
+	TGTexPointList *v;
 	bool cont;
 	TGLExtensionsAndEntryPoints *GL;
 
@@ -172,7 +172,7 @@ void __fastcall TForm1::DOOceanPlaneRender(TObject *Sender,
 	GL->EnableClientState(GL_VERTEX_ARRAY);
 
 	if (!vbo) {
-		v = new TGLTexPointList;
+		v = new TGTexPointList;
 
 		v->Capacity = (cExtent + 1) * (cExtent + 1);
 		y = -cExtent;

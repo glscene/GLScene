@@ -22,7 +22,7 @@ uses
   GLS.SceneViewer,
  
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Context,
   GLS.OpenGLAdapter;
 

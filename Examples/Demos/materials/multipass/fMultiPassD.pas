@@ -24,7 +24,7 @@ uses
   GLS.Coordinates,
  
   GLS.RenderContextInfo,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormMultiPass = class(TForm)

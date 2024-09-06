@@ -26,7 +26,7 @@ uses
   GLS.Color,
  
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormFormula = class(TForm)

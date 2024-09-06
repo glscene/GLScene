@@ -20,7 +20,7 @@ uses
   GLS.TimeEventsMgr,
 
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormEvents = class(TForm)

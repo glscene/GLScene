@@ -19,7 +19,7 @@ uses
   Vcl.StdCtrls,
 
   GLS.Scene,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Objects,
   GLS.Keyboard,
   GLS.TerrainRenderer,

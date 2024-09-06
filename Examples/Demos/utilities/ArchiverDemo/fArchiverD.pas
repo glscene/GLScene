@@ -18,7 +18,7 @@ uses
   GLS.VectorFileObjects,
   GLS.Material, GLS.Cadencer,
   GLS.ArchiveManager,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.FileMS3D,
   GLS.FileTGA,
   GLS.FileZLIB,

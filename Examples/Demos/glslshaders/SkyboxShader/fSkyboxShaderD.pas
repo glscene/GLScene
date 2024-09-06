@@ -21,7 +21,7 @@ uses
   GLS.CompositeImage,
   GLS.Material,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
 
   GLS.Context,
   GLS.RenderContextInfo,

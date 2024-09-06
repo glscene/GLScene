@@ -16,7 +16,7 @@ uses
   Vcl.StdCtrls,
 
   GLScene.VectorTypes,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.Scene,
   GLS.Objects,
   GLS.Cadencer,
@@ -30,7 +30,7 @@ uses
   GLS.GeomObjects,
  
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormTriangleBox = class(TForm)

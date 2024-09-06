@@ -31,15 +31,15 @@ uses
   GLS.Context,
   GLScene.VectorGeometry,
   GLS.Silhouette,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.PipelineTransformation,
   GLS.State,
   GLS.Graphics,
-  GLS.GeometryBB,
-  GLS.VectorLists,
+  GLScene.GeometryBB,
+  GLScene.VectorLists,
   GLS.Texture,
   GLS.Color,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.Material,
@@ -163,9 +163,9 @@ type
     FLocalMatrix: TGLMatrix;
     FObjectStyle: TGLObjectStyles;
     FListHandle: TGLListHandle; // created on 1st use
-    FPosition: TGLCoordinates;
-    FDirection, FUp: TGLCoordinates;
-    FScaling: TGLCoordinates;
+    FPosition: TGCoordinates;
+    FDirection, FUp: TGCoordinates;
+    FScaling: TGCoordinates;
     FChanges: TGLObjectChanges;
     FParent: TGLBaseSceneObject;
     FScene: TGLScene;
@@ -173,15 +173,15 @@ type
     FBoundingBoxPersonalUnscaled: THmgBoundingBox;
     FBoundingBoxOfChildren: THmgBoundingBox;
     FBoundingBoxIncludingChildren: THmgBoundingBox;
-    FChildren: TGLPersistentObjectList; // created on 1st use
+    FChildren: TGPersistentObjectList; // created on 1st use
     FVisible: Boolean;
     FUpdateCount: Integer;
     FShowAxes: Boolean;
-    FRotation: TGLCoordinates; // current rotation angles
+    FRotation: TGCoordinates; // current rotation angles
     FIsCalculating: Boolean;
     FObjectsSorting: TGLObjectsSorting;
     FVisibilityCulling: TGLVisibilityCulling;
-    FOnProgress: TGLProgressEvent;
+    FOnProgress: TGProgressEvent;
     FOnAddedToParent: TNotifyEvent;
     FBehaviours: TGLBehaviours;
     FEffects: TGLEffects;
@@ -190,8 +190,8 @@ type
     FTagObject: TObject;
     FTagFloat: Single;
 
-    objList: TGLPersistentObjectList;
-    distList: TGLSingleList;
+    objList: TGPersistentObjectList;
+    distList: TGSingleList;
     ///  FOriginalFiler: TFiler;   //used to allow persistent events in behaviours & effects
     (* If somebody could look at DefineProperties, ReadBehaviours, ReadEffects
      and verify code is safe to use then it could be uncommented *)
@@ -200,19 +200,19 @@ type
     function GetIndex: Integer; inline;
     procedure SetParent(const val: TGLBaseSceneObject); inline;
     procedure SetIndex(aValue: Integer);
-    procedure SetDirection(AVector: TGLCoordinates);
-    procedure SetUp(AVector: TGLCoordinates);
+    procedure SetDirection(AVector: TGCoordinates);
+    procedure SetUp(AVector: TGCoordinates);
     function GetMatrix: PGLMatrix; inline;
-    procedure SetPosition(APosition: TGLCoordinates);
+    procedure SetPosition(APosition: TGCoordinates);
     procedure SetPitchAngle(AValue: Single);
     procedure SetRollAngle(AValue: Single);
     procedure SetTurnAngle(AValue: Single);
-    procedure SetRotation(aRotation: TGLCoordinates);
+    procedure SetRotation(aRotation: TGCoordinates);
     function GetPitchAngle: Single; inline;
     function GetTurnAngle: Single; inline;
     function GetRollAngle: Single; inline;
     procedure SetShowAxes(AValue: Boolean);
-    procedure SetScaling(AValue: TGLCoordinates);
+    procedure SetScaling(AValue: TGCoordinates);
     procedure SetObjectsSorting(const val: TGLObjectsSorting);
     procedure SetVisibilityCulling(const val: TGLVisibilityCulling);
     procedure SetBehaviours(const val: TGLBehaviours);
@@ -467,7 +467,7 @@ type
     procedure MoveChildDown(anIndex: Integer);
     procedure MoveChildFirst(anIndex: Integer);
     procedure MoveChildLast(anIndex: Integer);
-    procedure DoProgress(const progressTime: TGLProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     procedure MoveTo(newParent: TGLBaseSceneObject); virtual;
     procedure MoveUp;
     procedure MoveDown;
@@ -519,10 +519,10 @@ type
     procedure StructureChanged; virtual;
     procedure ClearStructureChanged; inline;
     // Recalculate an orthonormal system
-    procedure CoordinateChanged(Sender: TGLCustomCoordinates); override;
+    procedure CoordinateChanged(Sender: TGCustomCoordinates); override;
     procedure TransformationChanged; inline;
     procedure NotifyChange(Sender: TObject); override;
-    property Rotation: TGLCoordinates read FRotation write SetRotation;
+    property Rotation: TGCoordinates read FRotation write SetRotation;
     property PitchAngle: Single read GetPitchAngle write SetPitchAngle;
     property RollAngle: Single read GetRollAngle write SetRollAngle;
     property TurnAngle: Single read GetTurnAngle write SetTurnAngle;
@@ -530,10 +530,10 @@ type
     property Changes: TGLObjectChanges read FChanges;
     property BBChanges: TGLObjectBBChanges read fBBChanges write SetBBChanges;
     property Parent: TGLBaseSceneObject read FParent write SetParent;
-    property Position: TGLCoordinates read FPosition write SetPosition;
-    property Direction: TGLCoordinates read FDirection write SetDirection;
-    property Up: TGLCoordinates read FUp write SetUp;
-    property Scale: TGLCoordinates read FScaling write SetScaling;
+    property Position: TGCoordinates read FPosition write SetPosition;
+    property Direction: TGCoordinates read FDirection write SetDirection;
+    property Up: TGCoordinates read FUp write SetUp;
+    property Scale: TGCoordinates read FScaling write SetScaling;
     property Scene: TGLScene read FScene;
     property Visible: Boolean read FVisible write SetVisible default True;
     property Pickable: Boolean read FPickable write SetPickable default True;
@@ -541,7 +541,7 @@ type
       SetObjectsSorting default osInherited;
     property VisibilityCulling: TGLVisibilityCulling read FVisibilityCulling
       write SetVisibilityCulling default vcInherited;
-    property OnProgress: TGLProgressEvent read FOnProgress write FOnProgress;
+    property OnProgress: TGProgressEvent read FOnProgress write FOnProgress;
     property OnPicked: TNotifyEvent read FOnPicked write FOnPicked;
     property OnAddedToParent: TNotifyEvent read FOnAddedToParent write FOnAddedToParent;
     property Behaviours: TGLBehaviours read GetBehaviours write SetBehaviours stored False;
@@ -581,7 +581,7 @@ type
   public
     constructor Create(aOwner: TXCollection); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TGLProgressTimes); virtual;
+    procedure DoProgress(const progressTime: TGProgressTimes); virtual;
   end;
 
   (* Ancestor for non-rendering behaviours.
@@ -606,7 +606,7 @@ type
     class function ItemsClass: TXCollectionItemClass; override;
     property Behaviour[index: Integer]: TGLBehaviour read GetBehaviour; default;
     function CanAdd(aClass: TXCollectionItemClass): Boolean; override;
-    procedure DoProgress(const progressTimes: TGLProgressTimes); inline;
+    procedure DoProgress(const progressTimes: TGProgressTimes); inline;
   end;
 
   (* A rendering effect that can be applied to SceneObjects.
@@ -657,7 +657,7 @@ type
     class function ItemsClass: TXCollectionItemClass; override;
     property ObjectEffect[index: Integer]: TGLEffect read GetEffect; default;
     function CanAdd(aClass: TXCollectionItemClass): Boolean; override;
-    procedure DoProgress(const progressTime: TGLProgressTimes);
+    procedure DoProgress(const progressTime: TGProgressTimes);
     procedure RenderPreEffects(var rci: TGLRenderContextInfo); inline;
     //Also take care of registering after effects with the GLSceneViewer.
     procedure RenderPostEffects(var rci: TGLRenderContextInfo); inline;
@@ -901,7 +901,7 @@ type
   TGLLightSource = class(TGLBaseSceneObject)
   private
     FLightID: Cardinal;
-    FSpotDirection: TGLCoordinates;
+    FSpotDirection: TGCoordinates;
     FSpotExponent, FSpotCutOff: Single;
     FConstAttenuation, FLinearAttenuation, FQuadraticAttenuation: Single;
     FShining: Boolean;
@@ -915,7 +915,7 @@ type
     procedure SetLinearAttenuation(AValue: Single);
     procedure SetQuadraticAttenuation(AValue: Single);
     procedure SetShining(AValue: Boolean);
-    procedure SetSpotDirection(AVector: TGLCoordinates);
+    procedure SetSpotDirection(AVector: TGCoordinates);
     procedure SetSpotExponent(AValue: Single);
     procedure SetSpotCutOff(const val: Single);
     procedure SetLightStyle(const val: TGLLightStyle);
@@ -928,7 +928,7 @@ type
     function RayCastIntersect(const rayStart, rayVector: TGLVector;
       intersectPoint: PGLVector = nil;
       intersectNormal: PGLVector = nil): Boolean; override;
-    procedure CoordinateChanged(Sender: TGLCustomCoordinates); override;
+    procedure CoordinateChanged(Sender: TGCustomCoordinates); override;
     function GenerateSilhouette(const silhouetteParameters:
       TGLSilhouetteParameters): TGLSilhouette; override;
     property LightID: Cardinal read FLightID;
@@ -947,7 +947,7 @@ type
     property Shining: Boolean read FShining write SetShining default True;
     property Specular: TGLColor read FSpecular write SetSpecular;
     property SpotCutOff: Single read FSpotCutOff write SetSpotCutOff;
-    property SpotDirection: TGLCoordinates read FSpotDirection write
+    property SpotDirection: TGCoordinates read FSpotDirection write
       SetSpotDirection;
     property SpotExponent: Single read FSpotExponent write SetSpotExponent;
     property OnProgress;
@@ -1135,18 +1135,18 @@ type
      components), but those are edited with a specific editor (double-click
      on the TGLScene component at design-time to invoke it). To add objects
      at runtime, use the AddNewChild method of TGLBaseSceneObject. *)
-  TGLScene = class(TGLUpdateAbleComponent)
+  TGLScene = class(TGUpdateAbleComponent)
   private
     FUpdateCount: Integer;
     FObjects: TGLSceneRootObject;
     FBaseContext: TGLContext; //reference, not owned!
-    FLights, FBuffers: TGLPersistentObjectList;
+    FLights, FBuffers: TGPersistentObjectList;
     FCurrentGLCamera: TGLCamera;
     FCurrentBuffer: TGLSceneBuffer;
     FObjectsSorting: TGLObjectsSorting;
     FVisibilityCulling: TGLVisibilityCulling;
-    FOnBeforeProgress: TGLProgressEvent;
-    FOnProgress: TGLProgressEvent;
+    FOnBeforeProgress: TGProgressEvent;
+    FOnProgress: TGProgressEvent;
     FCurrentDeltaTime: Double;
     FInitializableObjects: TGLInitializableObjectList;
   protected
@@ -1196,7 +1196,7 @@ type
     // Load the scene from a text files. See LoadFromFile for details.
     procedure LoadFromTextFile(const fileName: string);
     property CurrentGLCamera: TGLCamera read FCurrentGLCamera;
-    property Lights: TGLPersistentObjectList read FLights;
+    property Lights: TGPersistentObjectList read FLights;
     property Objects: TGLSceneRootObject read FObjects;
     property CurrentBuffer: TGLSceneBuffer read FCurrentBuffer;
     (* List of objects that request to be initialized when rendering context is active.
@@ -1211,8 +1211,8 @@ type
     // Defines default VisibilityCulling option for scene objects.
     property VisibilityCulling: TGLVisibilityCulling read FVisibilityCulling
       write SetVisibilityCulling default vcNone;
-    property OnBeforeProgress: TGLProgressEvent read FOnBeforeProgress write FOnBeforeProgress;
-    property OnProgress: TGLProgressEvent read FOnProgress write FOnProgress;
+    property OnBeforeProgress: TGProgressEvent read FOnBeforeProgress write FOnBeforeProgress;
+    property OnProgress: TGProgressEvent read FOnProgress write FOnProgress;
   end;
 
   TFogMode = (fmLinear, fmExp, fmExp2);
@@ -1227,7 +1227,7 @@ type
      The fog descibed by this object is a distance-based fog, ie. the "intensity"
      of the fog is given by a formula depending solely on the distance, this
      intensity is used for blending to a fixed color. *)
-  TGLFogEnvironment = class(TGLUpdateAbleObject)
+  TGLFogEnvironment = class(TGUpdateAbleObject)
   private
     FSceneBuffer: TGLSceneBuffer;
     FFogColor: TGLColor; // alpha value means the fog density
@@ -1270,12 +1270,12 @@ type
   TGLShadeModel = (smDefault, smSmooth, smFlat);
 
   // Encapsulates a frame/rendering buffer.
-  TGLSceneBuffer = class(TGLUpdateAbleObject)
+  TGLSceneBuffer = class(TGUpdateAbleObject)
   private
     // Internal state
     FRendering: Boolean;
     FRenderingContext: TGLContext;
-    FAfterRenderEffects: TGLPersistentObjectList;
+    FAfterRenderEffects: TGPersistentObjectList;
     FViewMatrixStack: array of TGLMatrix;
     FProjectionMatrixStack: array of TGLMatrix;
     FBaseProjectionMatrix: TGLMatrix;
@@ -1878,24 +1878,24 @@ begin
   FObjectStyle := [];
   FChanges := [ocTransformation, ocStructure,
     ocAbsoluteMatrix, ocInvAbsoluteMatrix];
-  FPosition := TGLCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
-  FRotation := TGLCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
-  FDirection := TGLCoordinates.CreateInitialized(Self, ZHmgVector, csVector);
-  FUp := TGLCoordinates.CreateInitialized(Self, YHmgVector, csVector);
-  FScaling := TGLCoordinates.CreateInitialized(Self, XYZHmgVector, csVector);
+  FPosition := TGCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
+  FRotation := TGCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  FDirection := TGCoordinates.CreateInitialized(Self, ZHmgVector, csVector);
+  FUp := TGCoordinates.CreateInitialized(Self, YHmgVector, csVector);
+  FScaling := TGCoordinates.CreateInitialized(Self, XYZHmgVector, csVector);
   FLocalMatrix := IdentityHmgMatrix;
   FVisible := True;
   FPickable := True;
   FObjectsSorting := osInherited;
   FVisibilityCulling := vcInherited;
-  FChildren := TGLPersistentObjectList.Create;
+  FChildren := TGPersistentObjectList.Create;
 
   fBBChanges := [oBBcChild, oBBcStructure];
   FBoundingBoxPersonalUnscaled := NullBoundingBox;
   FBoundingBoxOfChildren := NullBoundingBox;
   FBoundingBoxIncludingChildren := NullBoundingBox;
-  distList := TGLSingleList.Create;
-  objList := TGLPersistentObjectList.Create;
+  distList := TGSingleList.Create;
+  objList := TGPersistentObjectList.Create;
 end;
 
 constructor TGLBaseSceneObject.CreateAsChild(aParentOwner: TGLBaseSceneObject);
@@ -3098,7 +3098,7 @@ begin
   end;
 end;
 
-procedure TGLBaseSceneObject.SetRotation(aRotation: TGLCoordinates);
+procedure TGLBaseSceneObject.SetRotation(aRotation: TGCoordinates);
 begin
   FRotation.Assign(aRotation);
   TransformationChanged;
@@ -3157,7 +3157,7 @@ begin
   end;
 end;
 
-procedure TGLBaseSceneObject.SetScaling(AValue: TGLCoordinates);
+procedure TGLBaseSceneObject.SetScaling(AValue: TGCoordinates);
 begin
   FScaling.Assign(AValue);
   TransformationChanged;
@@ -3400,7 +3400,7 @@ begin
   end;
 end;
 
-procedure TGLBaseSceneObject.CoordinateChanged(Sender: TGLCustomCoordinates);
+procedure TGLBaseSceneObject.CoordinateChanged(Sender: TGCustomCoordinates);
 var
   rightVector: TGLVector;
 begin
@@ -3450,7 +3450,7 @@ begin
   end;
 end;
 
-procedure TGLBaseSceneObject.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLBaseSceneObject.DoProgress(const progressTime: TGProgressTimes);
 var
   i: Integer;
 begin
@@ -3866,18 +3866,18 @@ begin
   TransformationChanged;
 end;
 
-procedure TGLBaseSceneObject.SetPosition(APosition: TGLCoordinates);
+procedure TGLBaseSceneObject.SetPosition(APosition: TGCoordinates);
 begin
   FPosition.SetPoint(APosition.DirectX, APosition.DirectY, APosition.DirectZ);
 end;
 
-procedure TGLBaseSceneObject.SetDirection(AVector: TGLCoordinates);
+procedure TGLBaseSceneObject.SetDirection(AVector: TGCoordinates);
 begin
   if not VectorIsNull(AVector.DirectVector) then
     FDirection.SetVector(AVector.DirectX, AVector.DirectY, AVector.DirectZ);
 end;
 
-procedure TGLBaseSceneObject.SetUp(AVector: TGLCoordinates);
+procedure TGLBaseSceneObject.SetUp(AVector: TGCoordinates);
 begin
   if not VectorIsNull(AVector.DirectVector) then
     FUp.SetVector(AVector.DirectX, AVector.DirectY, AVector.DirectZ);
@@ -4104,7 +4104,7 @@ begin
   Result := TGLBaseSceneObject(Owner.Owner);
 end;
 
-procedure TGLBaseBehaviour.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLBaseBehaviour.DoProgress(const progressTime: TGProgressTimes);
 begin
   // does nothing
 end;
@@ -4147,7 +4147,7 @@ begin
     CanAdd(aClass));
 end;
 
-procedure TGLBehaviours.DoProgress(const progressTimes: TGLProgressTimes);
+procedure TGLBehaviours.DoProgress(const progressTimes: TGProgressTimes);
 var
   i: Integer;
 begin
@@ -4224,7 +4224,7 @@ begin
     CanAdd(aClass));
 end;
 
-procedure TGLEffects.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLEffects.DoProgress(const progressTime: TGProgressTimes);
 var
   i: Integer;
 begin
@@ -5430,7 +5430,7 @@ constructor TGLLightSource.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
   FShining := True;
-  FSpotDirection := TGLCoordinates.CreateInitialized(Self, VectorMake(0, 0, -1, 0), csVector);
+  FSpotDirection := TGCoordinates.CreateInitialized(Self, VectorMake(0, 0, -1, 0), csVector);
   FConstAttenuation := 1;
   FLinearAttenuation := 0;
   FQuadraticAttenuation := 0;
@@ -5466,7 +5466,7 @@ begin
   Result := False;
 end;
 
-procedure TGLLightSource.CoordinateChanged(Sender: TGLCustomCoordinates);
+procedure TGLLightSource.CoordinateChanged(Sender: TGCustomCoordinates);
 begin
   inherited;
   if Sender = FSpotDirection then
@@ -5488,7 +5488,7 @@ begin
   end;
 end;
 
-procedure TGLLightSource.SetSpotDirection(AVector: TGLCoordinates);
+procedure TGLLightSource.SetSpotDirection(AVector: TGCoordinates);
 begin
   FSpotDirection.DirectVector := AVector.AsVector;
   FSpotDirection.W := 0;
@@ -5587,7 +5587,7 @@ begin
   FCurrentBuffer := nil;
   FObjects := TGLSceneRootObject.Create(Self);
   FObjects.Name := 'ObjectRoot';
-  FLights := TGLPersistentObjectList.Create;
+  FLights := TGPersistentObjectList.Create;
   FObjectsSorting := osRenderBlendedLast;
   FVisibilityCulling := vcNone;
   // actual maximum number of lights is stored in TGLSceneViewer
@@ -5667,7 +5667,7 @@ end;
 procedure TGLScene.AddBuffer(aBuffer: TGLSceneBuffer);
 begin
   if not Assigned(FBuffers) then
-    FBuffers := TGLPersistentObjectList.Create;
+    FBuffers := TGPersistentObjectList.Create;
   if FBuffers.IndexOf(aBuffer) < 0 then
   begin
     FBuffers.Add(aBuffer);
@@ -5769,7 +5769,7 @@ end;
 
 procedure TGLScene.Progress(const deltaTime, newTime: Double);
 var
-  pt: TGLProgressTimes;
+  pt: TGProgressTimes;
 begin
   pt.deltaTime := deltaTime;
   pt.newTime := newTime;
@@ -6201,7 +6201,7 @@ begin
   FShadeModel := smDefault;
   FFogEnable := False;
   FLayer := clMainPlane;
-  FAfterRenderEffects := TGLPersistentObjectList.Create;
+  FAfterRenderEffects := TGPersistentObjectList.Create;
   FContextOptions := [roDoubleBuffer, roRenderToWindow, roDebugContext];
   ResetPerformanceMonitor;
 end;

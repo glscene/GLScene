@@ -20,7 +20,7 @@
 #include "GLS.Material.hpp"
 #include "GLS.Coordinates.hpp"
 
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLScene.Utils.hpp"
 #include "GLSL.MultiMaterialShader.hpp"
 #include "GLSL.TextureShaders.hpp"

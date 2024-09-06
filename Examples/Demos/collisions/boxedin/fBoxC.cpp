@@ -23,7 +23,7 @@
 #pragma link "GLS.Keyboard"
 #pragma link "GLS.Coordinates"
 
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Coordinates"
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.SceneViewer"

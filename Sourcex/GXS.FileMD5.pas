@@ -15,7 +15,7 @@ uses
   GXS.ApplicationFileIO,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GXS.VectorLists;
+  GLScene.VectorLists;
 
 type
 
@@ -24,9 +24,9 @@ type
     FMD5String, FTempString, FBoneNames: TStringList;
     FCurrentPos: Integer;
     FBasePose: TgxSkeletonFrame;
-    FFramePositions: TgxAffineVectorList;
-    FFrameQuaternions: TQuaternionList;
-    FJointFlags: TgxIntegerList;
+    FFramePositions: TGAffineVectorList;
+    FFrameQuaternions: TGQuaternionList;
+    FJointFlags: TGIntegerList;
     FNumFrames, FFirstFrame, FFrameRate, FNumJoints: Integer;
 
     function ReadLine: String;
@@ -200,18 +200,18 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
     mesh: TgxSkeletonMeshObject;
     fg: TfgxVertexIndexList;
     vnum, wnum, numverts, numweights: Integer;
-    VertexWeightID, VertexWeightCount, VertexBoneRef: TgxIntegerList;
-    VertexWeight: TgxSingleList;
-    VertexWeighted: TgxAffineVectorList;
+    VertexWeightID, VertexWeightCount, VertexBoneRef: TGIntegerList;
+    VertexWeight: TGSingleList;
+    VertexWeighted: TGAffineVectorList;
     blendedVert, transformedVert: TAffineVector;
     i, j, k: Integer;
     mat: TMatrix4f;
   begin
-    VertexWeightID := TgxIntegerList.Create;
-    VertexWeightCount := TgxIntegerList.Create;
-    VertexBoneRef := TgxIntegerList.Create;
-    VertexWeight := TgxSingleList.Create;
-    VertexWeighted := TgxAffineVectorList.Create;
+    VertexWeightID := TGIntegerList.Create;
+    VertexWeightCount := TGIntegerList.Create;
+    VertexBoneRef := TGIntegerList.Create;
+    VertexWeight := TGSingleList.Create;
+    VertexWeighted := TGAffineVectorList.Create;
 
     numverts := 0;
 
@@ -330,7 +330,7 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
   begin
     if not Assigned(FJointFlags) then
     begin
-      FJointFlags := TgxIntegerList.Create;
+      FJointFlags := TGIntegerList.Create;
       Assert(Owner.Skeleton.Frames.Count > 0,
         'The md5mesh file must be loaded before md5anim files!');
       FJointFlags.Count := Owner.Skeleton.Frames[0].Position.Count;
@@ -476,8 +476,8 @@ begin
         if (temp = 'numjoints') then
         begin
           FNumJoints := StrToInt(FTempString[1]);
-          FFramePositions := TgxAffineVectorList.Create;
-          FFrameQuaternions := TQuaternionList.Create;
+          FFramePositions := TGAffineVectorList.Create;
+          FFrameQuaternions := TGQuaternionList.Create;
           if Owner.Skeleton.Frames.Count = 0 then
           begin
             FBasePose := TgxSkeletonFrame.CreateOwned(Owner.Skeleton.Frames);

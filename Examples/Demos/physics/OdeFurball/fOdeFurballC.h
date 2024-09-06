@@ -22,7 +22,7 @@
 #include <GLS.Extrusion.hpp>
 #include "GLS.Texture.hpp"
 #include "GLS.Objects.hpp"
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.Keyboard.hpp"
 #include "GLS.Coordinates.hpp"
 

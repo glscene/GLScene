@@ -29,7 +29,7 @@ uses
 
   GLS.PipelineTransformation,
   GLS.Scene,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.Texture,
   GLScene.VectorGeometry,
   GLS.Context,

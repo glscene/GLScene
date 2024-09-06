@@ -14,7 +14,7 @@ uses
   GLScene.VectorTypes,
   GLS.VectorFileObjects,
   GLScene.VectorGeometry,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.ApplicationFileIO,
   GLS.ParametricSurfaces,
   GLScene.Utils;
@@ -53,7 +53,7 @@ procedure TGLNurbsVectorFile.LoadFromStream(stream: TStream);
   end;
 
   function ReadSingleArray(sl: TStrings; idx: Integer;
-    list: TGLSingleList): Integer;
+    list: TGSingleList): Integer;
   var
     k: Integer;
     buf: String;
@@ -79,7 +79,7 @@ procedure TGLNurbsVectorFile.LoadFromStream(stream: TStream);
   end;
 
   function ReadVectorArray(sl: TStrings; idx: Integer;
-    list: TGLAffineVectorList): Integer;
+    list: TGAffineVectorList): Integer;
   var
     buf: String;
     vals: TStringList;
@@ -110,7 +110,7 @@ var
   i, j: Integer;
   surface: TMOParametricSurface;
   invert: Boolean;
-  invControlPoints: TGLAffineVectorList;
+  invControlPoints: TGAffineVectorList;
 begin
   ss := TStringStream.Create('');
   sl := TStringList.Create;
@@ -161,7 +161,7 @@ begin
 
     if invert then
     begin
-      invControlPoints := TGLAffineVectorList.Create;
+      invControlPoints := TGAffineVectorList.Create;
       for i := surface.CountV - 1 downto 0 do
         for j := 0 to surface.CountU - 1 do
           invControlPoints.Add(surface.ControlPoints[i * surface.CountU + j]);

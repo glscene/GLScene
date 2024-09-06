@@ -12,7 +12,7 @@ uses
   System.SysUtils,
 
   GLScene.Strings,
-  GXS.PersistentClasses;
+  GLScene.PersistentClasses;
 
 type
 
@@ -37,7 +37,7 @@ type
   end;
 
   // An abstract class describing the "update" interface.
-  TgxUpdateAbleObject = class(TgxInterfacedPersistent, IgxNotifyAble)
+  TgxUpdateAbleObject = class(TGInterfacedPersistent, IgxNotifyAble)
   private
     FOwner: TPersistent;
     FUpdating: Integer;

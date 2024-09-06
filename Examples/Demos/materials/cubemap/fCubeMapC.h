@@ -14,7 +14,7 @@
 #include <Vcl.Forms.hpp>
 #include "Jpeg.hpp"
 
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.Coordinates.hpp"
 
 #include "GLS.Objects.hpp"

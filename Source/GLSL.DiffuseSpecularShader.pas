@@ -31,7 +31,7 @@ uses
   GLScene.OpenGLTokens,
   GLS.Texture,
   GLS.Scene,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GLScene.Strings,
   GLSL.Shader,

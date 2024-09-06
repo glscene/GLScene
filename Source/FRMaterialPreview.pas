@@ -27,7 +27,7 @@ uses
   GLS.GeomObjects,
   GLS.Color,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Material;
 
 type

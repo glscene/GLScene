@@ -12,7 +12,7 @@
 #include <Vcl.Imaging.jpeg.hpp>
 #include <Vcl.ComCtrls.hpp>
 
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.Coordinates.hpp"
 #include "GLS.GeomObjects.hpp"

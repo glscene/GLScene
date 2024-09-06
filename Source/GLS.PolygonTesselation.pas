@@ -18,12 +18,12 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLS.VectorFileObjects,
-  GLS.VectorLists,
-  GLS.PersistentClasses;
+  GLScene.VectorLists,
+  GLScene.PersistentClasses;
 
 (* Tesselates the polygon outlined by the Vertexes. And adds them to the first
    facegroup of the Mesh. *)
-procedure DoTesselate(Vertexes: TGLAffineVectorList; Mesh: TGLBaseMesh;
+procedure DoTesselate(Vertexes: TGAffineVectorList; Mesh: TGLBaseMesh;
   normal: PAffineVector = nil; invertNormals: Boolean = False);
 
 //---------------------------------------------------------------------------
@@ -89,7 +89,7 @@ begin
   SetVector(PAffineVector(outData)^, coords[0], coords[1], coords[2]);
 end;
 
-procedure DoTesselate(Vertexes: TGLAffineVectorList; Mesh: TGLBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
+procedure DoTesselate(Vertexes: TGAffineVectorList; Mesh: TGLBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
 var
   Tess: PGLUTesselator;
   i: Integer;

@@ -20,13 +20,13 @@ uses
   GLScene.VectorTypes,
   GLScene.OpenGLTokens,
   GLS.Scene,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GLS.XCollection,
   GLScene.Spline,
   GLS.Objects,
   GLScene.Strings,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.Utils;
 
 type
@@ -256,7 +256,7 @@ type
 
     procedure StartPathTravel;
     procedure StopPathTravel;
-    procedure DoProgress(const progressTime : TGLProgressTimes); override;
+    procedure DoProgress(const progressTime : TGProgressTimes); override;
     function NextPath: integer;
     function PrevPath: integer;
     function FirstPath: integer;
@@ -1516,7 +1516,7 @@ begin
 end;
 
 //Calculate functions add into this method
-procedure TGLMovement.DoProgress(const progressTime : TGLProgressTimes);
+procedure TGLMovement.DoProgress(const progressTime : TGProgressTimes);
 var
   Path: TGLMovementPath;
 begin

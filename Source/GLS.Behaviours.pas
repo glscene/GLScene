@@ -17,7 +17,7 @@ uses
   GLS.Scene,
   GLScene.VectorGeometry,
   GLS.XCollection,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Coordinates;
 
 type
@@ -33,7 +33,7 @@ type
     linear: linear friction damping.
     quadratic: expresses viscosity
   *)
-  TGLDamping = class(TGLUpdateAbleObject)
+  TGLDamping = class(TGUpdateAbleObject)
   private
     FConstant: single;
     FLinear: single;
@@ -69,12 +69,12 @@ type
   TGLBInertia = class(TGLBehaviour)
   private
     FMass: single;
-    FTranslationSpeed: TGLCoordinates;
+    FTranslationSpeed: TGCoordinates;
     FTurnSpeed, FRollSpeed, FPitchSpeed: single;
     FTranslationDamping, FRotationDamping: TGLDamping;
     FDampingEnabled: boolean;
   protected
-    procedure SetTranslationSpeed(const val: TGLCoordinates);
+    procedure SetTranslationSpeed(const val: TGCoordinates);
     procedure SetTranslationDamping(const val: TGLDamping);
     procedure SetRotationDamping(const val: TGLDamping);
     procedure WriteToFiler(writer: TWriter); override;
@@ -86,7 +86,7 @@ type
     class function FriendlyName: string; override;
     class function FriendlyDescription: string; override;
     class function UniqueItem: boolean; override;
-    procedure DoProgress(const progressTime: TGLProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     // Adds time-proportionned acceleration to the speed. 
     procedure ApplyTranslationAcceleration(const deltaTime: double;
       const accel: TGLVector);
@@ -104,7 +104,7 @@ type
     procedure SurfaceBounce(const surfaceNormal: TGLVector; restitution: single);
   published
     property Mass: single read FMass write FMass;
-    property TranslationSpeed: TGLCoordinates read FTranslationSpeed write SetTranslationSpeed;
+    property TranslationSpeed: TGCoordinates read FTranslationSpeed write SetTranslationSpeed;
     property TurnSpeed: single read FTurnSpeed write FTurnSpeed;
     property RollSpeed: single read FRollSpeed write FRollSpeed;
     property PitchSpeed: single read FPitchSpeed write FPitchSpeed;
@@ -128,9 +128,9 @@ type
   // Applies a constant acceleration to a TGLBInertia.  
   TGLBAcceleration = class(TGLBehaviour)
   private
-    FAcceleration: TGLCoordinates;
+    FAcceleration: TGCoordinates;
   protected
-    procedure SetAcceleration(const val: TGLCoordinates);
+    procedure SetAcceleration(const val: TGCoordinates);
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
   public
@@ -140,9 +140,9 @@ type
     class function FriendlyName: string; override;
     class function FriendlyDescription: string; override;
     class function UniqueItem: boolean; override;
-    procedure DoProgress(const progressTime: TGLProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
   published
-    property Acceleration: TGLCoordinates read FAcceleration write FAcceleration;
+    property Acceleration: TGCoordinates read FAcceleration write FAcceleration;
   end;
 
 (* Returns or creates the TGLBInertia within the given behaviours. 
@@ -308,7 +308,7 @@ end;
 constructor TGLBInertia.Create(aOwner: TXCollection);
 begin
   inherited Create(aOwner);
-  FTranslationSpeed := TGLCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  FTranslationSpeed := TGCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
   FMass := 1;
   FDampingEnabled := True;
   FTranslationDamping := TGLDamping.Create(Self);
@@ -373,7 +373,7 @@ begin
   end;
 end;
 
-procedure TGLBInertia.SetTranslationSpeed(const val: TGLCoordinates);
+procedure TGLBInertia.SetTranslationSpeed(const val: TGCoordinates);
 begin
   FTranslationSpeed.Assign(val);
 end;
@@ -403,7 +403,7 @@ begin
   Result := True;
 end;
 
-procedure TGLBInertia.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLBInertia.DoProgress(const progressTime: TGProgressTimes);
 var
   trnVector: TGLVector;
   speed, newSpeed: double;
@@ -521,7 +521,7 @@ begin
   if aOwner <> nil then
     if not (csReading in TComponent(aOwner.Owner).ComponentState) then
       GetOrCreateInertia(TGLBehaviours(aOwner));
-  FAcceleration := TGLCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  FAcceleration := TGCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
 end;
 
 destructor TGLBAcceleration.Destroy;
@@ -559,7 +559,7 @@ begin
   end;
 end;
 
-procedure TGLBAcceleration.SetAcceleration(const val: TGLCoordinates);
+procedure TGLBAcceleration.SetAcceleration(const val: TGCoordinates);
 begin
   FAcceleration.Assign(val);
 end;
@@ -581,7 +581,7 @@ begin
   Result := False;
 end;
 
-procedure TGLBAcceleration.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLBAcceleration.DoProgress(const progressTime: TGProgressTimes);
 var
   i: integer;
   Inertia: TGLBInertia;

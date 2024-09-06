@@ -20,7 +20,7 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
 
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.VectorGeometry,
   GLS.SimpleNavigation,
   GLS.Keyboard,

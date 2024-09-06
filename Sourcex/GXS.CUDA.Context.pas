@@ -14,7 +14,7 @@ uses
   CUDA.RunTime,
 
   GLScene.Strings,
-  GXS.Generics,
+  GLScene.Generics,
   GXS.BaseClasses,
   GXS.Context;
 

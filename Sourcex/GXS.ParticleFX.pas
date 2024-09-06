@@ -25,8 +25,8 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.Utils,
-  GXS.PersistentClasses,
-  GXS.VectorLists,
+  GLScene.PersistentClasses,
+  GLScene.VectorLists,
   GLScene.Manager,
   GXS.Scene,
   GXS.ImageUtils,
@@ -57,7 +57,7 @@ type
      The class implements properties for position, velocity and time, whatever
      you need in excess of that will have to be placed in subclasses (this
      class should remain as compact as possible). *)
-  TgxParticle = class(TgxPersistentObject)
+  TgxParticle = class(TGPersistentObject)
   private
     FID, FTag: Integer;
     FManager: TgxParticleFXManager; // NOT persistent
@@ -73,8 +73,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TgxVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgxVirtualReader); override;
+    procedure WriteToFiler(writer: TGVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGVirtualReader); override;
     property Manager: TgxParticleFXManager read FManager write FManager;
     (* Particle's ID, given at birth.
        ID is a value unique per manager. *)
@@ -107,10 +107,10 @@ type
   (* List of particles.
      This list is managed with particles and performance in mind, make sure to
      check methods doc. *)
-  TgxParticleList = class(TgxPersistentObject)
+  TgxParticleList = class(TGPersistentObject)
   private
     FOwner: TgxParticleFXManager; // NOT persistent
-    FItemList: TgxPersistentObjectList;
+    FItemList: TGPersistentObjectList;
     FDirectList: PGLParticleArray; // NOT persistent
   protected
     function GetItems(index: Integer): TgxParticle;
@@ -119,8 +119,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TgxVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgxVirtualReader); override;
+    procedure WriteToFiler(writer: TGVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGVirtualReader); override;
     // Refers owner manager
     property Owner: TgxParticleFXManager read FOwner write FOwner;
     property Items[index: Integer]: TgxParticle read GetItems write SetItems; default;
@@ -504,7 +504,7 @@ type
     procedure ComputeOuterColor(var lifeTime: Single; var outer: TgxColorVector);
     function ComputeSizeScale(var lifeTime: Single; var sizeScale: Single): Boolean;
     function ComputeRotateAngle(var lifeTime, rotateAngle: Single): Boolean;
-    procedure RotateVertexBuf(buf: TgxAffineVectorList; lifeTime: Single;
+    procedure RotateVertexBuf(buf: TGAffineVectorList; lifeTime: Single;
       const axis: TAffineVector; offsetAngle: Single);
   public
     constructor Create(aOwner: TComponent); override;
@@ -575,8 +575,8 @@ type
   private
     FNbSides: Integer;
     Fvx, Fvy: TAffineVector; // NOT persistent
-    FVertices: TgxAffineVectorList; // NOT persistent
-    FVertBuf: TgxAffineVectorList; // NOT persistent
+    FVertices: TGAffineVectorList; // NOT persistent
+    FVertBuf: TGAffineVectorList; // NOT persistent
   protected
     procedure SetNbSides(const val: Integer);
     function TexturingMode: Cardinal; override;
@@ -612,8 +612,8 @@ type
   private
     FTexHandle: TgxTextureHandle;
     Fvx, Fvy, Fvz: TAffineVector; // NOT persistent
-    FVertices: TgxAffineVectorList; // NOT persistent
-    FVertBuf: TgxAffineVectorList; // NOT persistent
+    FVertices: TGAffineVectorList; // NOT persistent
+    FVertBuf: TGAffineVectorList; // NOT persistent
     FAspectRatio: Single;
     FRotation: Single;
     FShareSprites: TgxBaseSpritePFXManager;
@@ -813,7 +813,7 @@ begin
     FVelocity.V[Index] := aValue;
 end;
 
-procedure TgxParticle.WriteToFiler(writer: TgxVirtualWriter);
+procedure TgxParticle.WriteToFiler(writer: TGVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -827,7 +827,7 @@ begin
 end;
 
 
-procedure TgxParticle.ReadFromFiler(reader: TgxVirtualReader);
+procedure TgxParticle.ReadFromFiler(reader: TGVirtualReader);
 var
   archiveVersion: integer;
 begin
@@ -852,7 +852,7 @@ end;
 constructor TgxParticleList.Create;
 begin
   inherited Create;
-  FItemList := TgxPersistentObjectList.Create;
+  FItemList := TGPersistentObjectList.Create;
   FitemList.GrowthDelta := 64;
   FDirectList := nil;
 end;
@@ -863,7 +863,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TgxParticleList.WriteToFiler(writer: TgxVirtualWriter);
+procedure TgxParticleList.WriteToFiler(writer: TGVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -873,7 +873,7 @@ begin
   end;
 end;
 
-procedure TgxParticleList.ReadFromFiler(reader: TgxVirtualReader);
+procedure TgxParticleList.ReadFromFiler(reader: TGVirtualReader);
 var
   archiveVersion: integer;
 begin
@@ -2300,7 +2300,7 @@ begin
   end;
 end;
 
-procedure TgxLifeColoredPFXManager.RotateVertexBuf(buf: TgxAffineVectorList;
+procedure TgxLifeColoredPFXManager.RotateVertexBuf(buf: TGAffineVectorList;
   lifeTime: Single; const axis: TAffineVector; offsetAngle: Single);
 var
   rotateAngle: Single;
@@ -2449,14 +2449,14 @@ begin
     Fvx.V[i] := matrix.V[i].X * FParticleSize;
     Fvy.V[i] := matrix.V[i].Y * FParticleSize;
   end;
-  FVertices := TgxAffineVectorList.Create;
+  FVertices := TGAffineVectorList.Create;
   FVertices.Capacity := FNbSides;
   for i := 0 to FNbSides - 1 do
   begin
     SinCos(i * c2PI / FNbSides, s, c);
     FVertices.Add(VectorCombine(FVx, Fvy, c, s));
   end;
-  FVertBuf := TgxAffineVectorList.Create;
+  FVertBuf := TGAffineVectorList.Create;
   FVertBuf.Count := FVertices.Count;
 end;
 
@@ -2665,7 +2665,7 @@ begin
     Fvz.V[i] := matrix.V[i].Z;
   end;
 
-  FVertices := TgxAffineVectorList.Create;
+  FVertices := TGAffineVectorList.Create;
   for i := 0 to 3 do
   begin
     SinCos(i * cPIdiv2 + cPIdiv4, s, c);
@@ -2677,7 +2677,7 @@ begin
     FVertices.TransformAsPoints(matrix);
   end;
 
-  FVertBuf := TgxAffineVectorList.Create;
+  FVertBuf := TGAffineVectorList.Create;
   FVertBuf.Count := FVertices.Count;
 end;
 

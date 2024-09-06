@@ -24,7 +24,7 @@ uses
 
   GLS.Coordinates,
   GLScene.Utils,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormFontColor = class(TForm)

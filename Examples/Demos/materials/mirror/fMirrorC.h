@@ -16,7 +16,7 @@
 #include "GLS.GeomObjects.hpp"
 #include "GLS.Extrusion.hpp"
 #include "GLS.MultiPolygon.hpp"
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.Coordinates.hpp"
 
 //---------------------------------------------------------------------------

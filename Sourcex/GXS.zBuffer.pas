@@ -34,7 +34,7 @@ uses
   GXS.OpenGL,
   GXS.XOpenGL,
   GLScene.VectorTypes,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GXS.Scene,
   GXS.Coordinates,

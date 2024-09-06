@@ -1,48 +1,39 @@
 //
-// The graphics engine GXScene https://github.com/glscene
+// The graphics engine GLScene https://github.com/glscene
 //
-unit GXS.CurvesAndSurfaces;
+unit GLScene.CurvesAndSurfaces;
 
 (* Bezier and B-Spline Curve and Surface Routines *)
 
 interface
 
-{$I GLScene.Defines.inc}
-
 uses
   System.SysUtils,
-  System.Math,
-  GLScene.Strings,
+  GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GXS.VectorLists;
+  GLScene.VectorLists;
 
 type
   TBSplineContinuity = (bscUniformNonPeriodic, bscUniformPeriodic);
 
-function BezierCurvePoint(t: single; n: integer; cp: PAffineVectorArray)
-  : TAffineVector;
-function BezierSurfacePoint(s, t: single; m, n: integer; cp: PAffineVectorArray)
-  : TAffineVector;
-procedure GenerateBezierCurve(Steps: integer;
-  ControlPoints, Vertices: TgxAffineVectorList);
-procedure GenerateBezierSurface(Steps, Width, Height: integer;
-  ControlPoints, Vertices: TgxAffineVectorList);
+function BezierCurvePoint(t: single; n: integer; cp: PAffineVectorArray): TAffineVector;
+function BezierSurfacePoint(s, t: single; m, n: integer; cp: PAffineVectorArray): TAffineVector;
+procedure GenerateBezierCurve(Steps: integer;  ControlPoints, Vertices: TGAffineVectorList);
+procedure GenerateBezierSurface(Steps, Width, Height: integer; ControlPoints, Vertices: TGAffineVectorList);
 
 function BSplinePoint(t: single; n, k: integer; knots: PSingleArray;
   cp: PAffineVectorArray): TAffineVector;
 function BSplineSurfacePoint(s, t: single; m, n, k1, k2: integer;
   uknots, vknots: PSingleArray; cp: PAffineVectorArray): TAffineVector;
-procedure GenerateBSpline(Steps, Order: integer; KnotVector: TgxSingleList;
-  ControlPoints, Vertices: TgxAffineVectorList);
+procedure GenerateBSpline(Steps, Order: integer; KnotVector: TGSingleList;
+  ControlPoints, Vertices: TGAffineVectorList);
 procedure GenerateBSplineSurface(Steps, UOrder, VOrder, Width, Height: integer;
-  UKnotVector, VKnotVector: TgxSingleList;
-  ControlPoints, Vertices: TgxAffineVectorList);
-procedure GenerateKnotVector(KnotVector: TgxSingleList;
+  UKnotVector, VKnotVector: TGSingleList;
+  ControlPoints, Vertices: TGAffineVectorList);
+procedure GenerateKnotVector(KnotVector: TGSingleList;
   NumberOfPoints, Order: integer; Continuity: TBSplineContinuity);
 
-// ----------------------------------------------------------------
-implementation
-// ----------------------------------------------------------------
+implementation // -----------------------------------------------------------
 
 function Factorial(n: integer): single;
 var
@@ -67,11 +58,11 @@ begin
   if (t = 0) and (i = 0) then
     ti := 1
   else
-    ti := Power(t, i);
+    ti := PowerInteger(t, i);
   if (n = i) and (t = 1) then
     tni := 1
   else
-    tni := Power(1 - t, integer(n - i));
+    tni := PowerInteger(1 - t, integer(n - i));
   Result := (Factorial(n) / (Factorial(i) * Factorial(n - i))) * ti * tni;
 end;
 
@@ -110,7 +101,7 @@ begin
 end;
 
 procedure GenerateBezierCurve(Steps: integer;
-  ControlPoints, Vertices: TgxAffineVectorList);
+  ControlPoints, Vertices: TGAffineVectorList);
 var
   i: integer;
 begin
@@ -121,7 +112,7 @@ begin
 end;
 
 procedure GenerateBezierSurface(Steps, Width, Height: integer;
-  ControlPoints, Vertices: TgxAffineVectorList);
+  ControlPoints, Vertices: TGAffineVectorList);
 var
   i, j: integer;
 begin
@@ -232,8 +223,8 @@ begin
   end;
 end;
 
-procedure GenerateBSpline(Steps, Order: integer; KnotVector: TgxSingleList;
-  ControlPoints, Vertices: TgxAffineVectorList);
+procedure GenerateBSpline(Steps, Order: integer; KnotVector: TGSingleList;
+  ControlPoints, Vertices: TGAffineVectorList);
 var
   i: integer;
 begin
@@ -245,8 +236,7 @@ begin
 end;
 
 procedure GenerateBSplineSurface(Steps, UOrder, VOrder, Width, Height: integer;
-  UKnotVector, VKnotVector: TgxSingleList;
-  ControlPoints, Vertices: TgxAffineVectorList);
+  UKnotVector, VKnotVector: TGSingleList; ControlPoints, Vertices: TGAffineVectorList);
 var
   i, j: integer;
 begin
@@ -259,7 +249,7 @@ begin
         @UKnotVector.List[0], @VKnotVector.List[0], ControlPoints.List);
 end;
 
-procedure GenerateKnotVector(KnotVector: TgxSingleList;
+procedure GenerateKnotVector(KnotVector: TGSingleList;
   NumberOfPoints, Order: integer; Continuity: TBSplineContinuity);
 var
   i, n, k: integer;
@@ -297,5 +287,7 @@ begin
 
   end;
 end;
+
+//----------------------------------------------------------------------------
 
 end.

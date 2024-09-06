@@ -19,7 +19,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Objects.hpp"
 #include "GLS.GeomObjects.hpp"
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.Coordinates.hpp"
 
 #include "GLS.Navigator.hpp"

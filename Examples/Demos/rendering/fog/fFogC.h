@@ -14,7 +14,7 @@
 #include "GLS.SceneViewer.hpp"
 #include <Dialogs.hpp>
 #include <ExtCtrls.hpp>
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.Coordinates.hpp"
 
 #include "GLS.Material.hpp"

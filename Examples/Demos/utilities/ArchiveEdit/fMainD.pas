@@ -21,7 +21,7 @@ uses
   GLS.ArchiveManager,
   GLS.SceneViewer,
 
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.VectorTypes,
   GLS.Scene,
   GLScene.VectorGeometry,

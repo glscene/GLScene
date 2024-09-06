@@ -32,7 +32,7 @@ uses
 
   GXS.XCollection,
   GLScene.VectorGeometry,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GXS.BaseClasses,
   GLScene.Manager,
   GLScene.VectorTypes,
@@ -291,7 +291,7 @@ function TgxDCEManager.MoveByDistance(var Body: TgxDCEDynamic;
 var
   // Friction and bounce
   TotalFriction, Bounce, f, m, restitution: single;
-  ContactList: TgxIntegerList;
+  ContactList: TGIntegerList;
   // Temporary properties (Static or Dynamic)
   tFriction, tBounceFactor: single;
   TObject: TgxBaseSceneObject;
@@ -418,7 +418,7 @@ begin
   // Generate events and calculate average friction
   lastobj := -1;
   TotalFriction := Body.Friction;
-  ContactList := TgxIntegerList.Create;
+  ContactList := TGIntegerList.Create;
 
   try
     for i := 0 to High(MP.Contacts) do

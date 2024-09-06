@@ -14,7 +14,7 @@ uses
   System.SysUtils,
   System.Math,
   GLS.VectorFileObjects,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   Formats.LWO;
 
 type

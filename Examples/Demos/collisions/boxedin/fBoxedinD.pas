@@ -26,7 +26,7 @@ uses
 
   GLS.Coordinates,
   GLScene.Utils,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.File3DS;
 
 type

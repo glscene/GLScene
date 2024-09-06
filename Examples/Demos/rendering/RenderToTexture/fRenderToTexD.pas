@@ -19,7 +19,7 @@ uses
   GLS.FBORenderer, 
   GLS.Objects, GLS.Coordinates, GLS.SimpleNavigation,
   GLS.Material, 
-  GLS.Cadencer,  GLS.BaseClasses,
+  GLS.Cadencer,  GLScene.BaseClasses,
   GLS.RenderContextInfo, 
   GLS.Context, GLS.AsyncTimer;
 

@@ -22,13 +22,13 @@ uses
   GLS.Context,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.PipelineTransformation,
   GLS.Graphics,
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.State,
   GLS.TextureFormat,
   GLScene.Utils;
@@ -111,11 +111,11 @@ type
   TImposterReference = (irCenter, irTop, irBottom);
 
   // Abstract ImposterBuilder class.
-  TGLImposterBuilder = class(TGLUpdateAbleComponent)
+  TGLImposterBuilder = class(TGUpdateAbleComponent)
   private
     FBackColor: TGLColor;
-    FBuildOffset: TGLCoordinates;
-    FImposterRegister: TGLPersistentObjectList;
+    FBuildOffset: TGCoordinates;
+    FImposterRegister: TGPersistentObjectList;
     FRenderPoint: TGLRenderPoint;
     FImposterOptions: TImposterOptions;
     FAlphaTreshold: Single;
@@ -126,10 +126,10 @@ type
     procedure SetRenderPoint(AValue: TGLRenderPoint);
     procedure RenderPointFreed(Sender: TObject);
     procedure SetBackColor(AValue: TGLColor);
-    procedure SetBuildOffset(AValue: TGLCoordinates);
+    procedure SetBuildOffset(AValue: TGCoordinates);
     procedure SetImposterReference(AValue: TImposterReference);
     procedure InitializeImpostorTexture(const TextureSize: TPoint);
-    property ImposterRegister: TGLPersistentObjectList read FImposterRegister;
+    property ImposterRegister: TGPersistentObjectList read FImposterRegister;
     procedure UnregisterImposter(imposter: TImposter);
     function CreateNewImposter: TImposter; virtual;
     procedure PrepareImposters(Sender: TObject; var rci: TGLRenderContextInfo);
@@ -166,7 +166,7 @@ type
     property BackColor: TGLColor read FBackColor write SetBackColor;
     (* Offset applied to the impostor'ed object during imposter construction.
        Can be used to manually tune the centering of objects. *)
-    property BuildOffset: TGLCoordinates read FBuildOffset write SetBuildOffset;
+    property BuildOffset: TGCoordinates read FBuildOffset write SetBuildOffset;
     // Imposter rendering options.
     property ImposterOptions: TImposterOptions read FImposterOptions write
       FImposterOptions default cDefaultImposterOptions;
@@ -547,9 +547,9 @@ end;
 constructor TGLImposterBuilder.Create(AOwner: TComponent);
 begin
   inherited;
-  FImposterRegister := TGLPersistentObjectList.Create;
+  FImposterRegister := TGPersistentObjectList.Create;
   FBackColor := TGLColor.CreateInitialized(Self, clrTransparent);
-  FBuildOffset := TGLCoordinates.CreateInitialized(Self, NullHmgPoint, CsPoint);
+  FBuildOffset := TGCoordinates.CreateInitialized(Self, NullHmgPoint, CsPoint);
   FImposterOptions := cDefaultImposterOptions;
   FAlphaTreshold := 0.5;
 end;
@@ -718,7 +718,7 @@ begin
   FBackColor.Assign(AValue);
 end;
 
-procedure TGLImposterBuilder.SetBuildOffset(AValue: TGLCoordinates);
+procedure TGLImposterBuilder.SetBuildOffset(AValue: TGCoordinates);
 begin
   FBuildOffset.Assign(AValue);
 end;
@@ -841,8 +841,8 @@ end;
 procedure TGLStaticImposterBuilderCoronas.NotifyChange;
 begin
   if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is
-    TGLUpdateAbleComponent) then
-    TGLUpdateAbleComponent(GetOwner).NotifyChange(Self);
+    TGUpdateAbleComponent) then
+    TGUpdateAbleComponent(GetOwner).NotifyChange(Self);
 end;
 
 procedure TGLStaticImposterBuilderCoronas.EndUpdate;

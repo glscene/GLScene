@@ -34,7 +34,7 @@ uses
   GLS.PerlinPFX,
   GLS.Blur,
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 const
   cRunBoost = 10;

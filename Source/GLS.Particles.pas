@@ -17,12 +17,12 @@ uses
   GLScene.VectorTypes,
   GLS.Scene,
   GLS.XCollection,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GLScene.OpenGLTokens,
   GLS.Context,
   GLS.Color,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLS.State;
 
@@ -75,7 +75,7 @@ type
     procedure BuildList(var ARci: TGLRenderContextInfo); override;
     procedure DoRender(var ARci: TGLRenderContextInfo;
       ARenderSelf, ARenderChildren: Boolean); override;
-    procedure DoProgress(const progressTime: TGLProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     (* Request creation of a new particle.
      Particle will be either created or retrieved from the particlePool. *)
     function CreateParticle: TGLBaseSceneObject;
@@ -244,7 +244,7 @@ begin
 end;
 
 
-procedure TGLParticles.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLParticles.DoProgress(const progressTime: TGProgressTimes);
 var
   i: Integer;
 begin

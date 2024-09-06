@@ -26,11 +26,12 @@ uses
 {$ENDIF}
 
   GLScene.OpenGLTokens,
-  GLS.OpenGLAdapter,
   GLScene.VectorGeometry,
   GLScene.Strings,
-  GLS.TextureFormat,
   GLScene.VectorTypes,
+
+  GLS.TextureFormat,
+  GLS.OpenGLAdapter,
   GLS.PipelineTransformation,
   GLS.State,
   GLS.XOpenGL,

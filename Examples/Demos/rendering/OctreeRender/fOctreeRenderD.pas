@@ -22,7 +22,7 @@ uses
   GLS.SceneViewer,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
-  GLS.GeometryBB,
+  GLScene.GeometryBB,
   GLS.Texture,
   GLS.SpacePartition,
 
@@ -32,7 +32,7 @@ uses
   GLS.SimpleNavigation,
   GLS.Material,
   GLS.Context,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 const
   cBOX_SIZE = 14.2;

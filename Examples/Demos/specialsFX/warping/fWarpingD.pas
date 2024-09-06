@@ -22,7 +22,7 @@ uses
   GLScene.VectorTypes,
   GLS.SceneViewer,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.Utils;
 
 type

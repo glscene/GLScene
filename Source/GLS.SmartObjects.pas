@@ -35,14 +35,14 @@ uses
   GLS.PipelineTransformation,
 
   GLS.Scene,
-  GLS.VectorLists,
-  GLS.PersistentClasses,
+  GLScene.VectorLists,
+  GLScene.PersistentClasses,
   GLS.Silhouette,
   GLS.Texture,
   GLS.Material,
   GLS.Mesh,
   GLS.Octree,
-  GLS.GeometryBB,
+  GLScene.GeometryBB,
   GLS.Objects,
   GLS.GeomObjects,
   GLS.ApplicationFileIO,
@@ -51,7 +51,7 @@ uses
   GLS.Selection,
   GLS.RenderContextInfo,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.VectorFileObjects,
   GLS.SoundManager,
   GLS.SoundFileObjects;
@@ -71,7 +71,7 @@ type
   TGLCyborgThinks = class(TCollection);
 
   // A list of thinking periods for TGLCyborgThinkMode
-  TGLCyborgThinksList = class(TGLPersistentObjectList);
+  TGLCyborgThinksList = class(TGPersistentObjectList);
 
 const
   cDefaultCyborgOptions = [coCollide];
@@ -101,7 +101,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
-    procedure DoProgress(const progressTime: TGLProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     procedure LoadFromStream(const Filename: string; aStream: TStream); override;
     procedure SwitchToThinking(anThinking: TGLCyborgThinks; smooth: Boolean = False);
     function CurrentThinking: string;
@@ -186,7 +186,7 @@ begin
   inherited;
 end;
 
-procedure TGLCyborg.DoProgress(const progressTime: TGLProgressTimes);
+procedure TGLCyborg.DoProgress(const progressTime: TGProgressTimes);
 begin
   inherited;
 //

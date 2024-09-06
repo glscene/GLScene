@@ -14,13 +14,13 @@ uses
 
   GLScene.OpenGLTokens,
   GLScene.VectorGeometry,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorTypes,
   GLS.Texture,
   GLScene.Strings,
   GLS.Cadencer,
   GLS.Context,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLS.Material,
   GLS.TextureFormat,
@@ -49,7 +49,7 @@ type
   TPrecisionSetting = (psFull, psFast);
 
   // Wrapper around a Cg program.
-  TCgProgram = class(TGLUpdateAbleObject)
+  TCgProgram = class(TGUpdateAbleObject)
   private
     FCgContext: PcgContext;
     FCode: TStrings; // the Cg program itself
@@ -185,8 +185,8 @@ type
     procedure EnableTexture;
     procedure DisableTexture;
     // Procedures for setting varying parameters with an array of values.
-    procedure SetParameterPointer(Values: TGLVectorList); overload;
-    procedure SetParameterPointer(Values: TGLAffineVectorList); overload;
+    procedure SetParameterPointer(Values: TGVectorList); overload;
+    procedure SetParameterPointer(Values: TGAffineVectorList); overload;
     procedure EnableClientState;
     procedure DisableClientState;
     // LongName retruns ShaderName.[program type].ProgramName.ParamName.
@@ -943,13 +943,13 @@ begin
   cgGLEnableClientState(FHandle);
 end;
 
-procedure TCgParameter.SetParameterPointer(Values: TGLAffineVectorList);
+procedure TCgParameter.SetParameterPointer(Values: TGAffineVectorList);
 begin
   Assert(FVariability = CG_VARYING);
   cgGLSetParameterPointer(FHandle, 3, GL_FLOAT, 0, Values.List);
 end;
 
-procedure TCgParameter.SetParameterPointer(Values: TGLVectorList);
+procedure TCgParameter.SetParameterPointer(Values: TGVectorList);
 begin
   Assert(FVariability = CG_VARYING);
   cgGLSetParameterPointer(FHandle, 4, GL_FLOAT, 0, Values.List);

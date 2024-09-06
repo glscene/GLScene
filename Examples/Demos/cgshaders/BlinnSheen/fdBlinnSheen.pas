@@ -27,12 +27,12 @@ uses
   GLS.Material,
   GLS.Coordinates,
 
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Behaviours,
   GLS.FileMD2,
   GLS.FileTGA,
   GLS.File3DS,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.Utils,
 
   Cg.GL,

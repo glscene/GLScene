@@ -14,7 +14,7 @@ uses
   System.SysUtils,
 
   GLS.ApplicationFileIO,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.Strings;
 
 type
@@ -72,7 +72,7 @@ type
   end;
 
   // The list of registered classes
-  TGLArchiveFileFormatsList = class(TGLPersistentObjectList)
+  TGLArchiveFileFormatsList = class(TGPersistentObjectList)
   public
     destructor Destroy; override;
     procedure Add(const Ext, Desc: string; DescID: integer;

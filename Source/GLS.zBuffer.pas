@@ -47,7 +47,7 @@ uses
   GLS.RenderContextInfo,
   GLS.State,
   GLS.Coordinates,
-  GLS.PersistentClasses;
+  GLScene.PersistentClasses;
 
 type
   EZBufferException = class(Exception);

@@ -20,7 +20,7 @@ uses
   GLS.SimpleNavigation,
  
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormSimpleNavigation = class(TForm)

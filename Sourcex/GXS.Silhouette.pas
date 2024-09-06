@@ -21,7 +21,7 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GXS.VectorLists;
+  GLScene.VectorLists;
 
 type
   TgxSilhouetteStyle = (ssOmni, ssParallel);
@@ -42,21 +42,21 @@ type
     need some helper methods for generating the indexed sets. *)
   TgxSilhouette = class
   private
-    FVertices: TgxVectorList;
-    FIndices: TgxIntegerList;
-    FCapIndices: TgxIntegerList;
+    FVertices: TGVectorList;
+    FIndices: TGIntegerList;
+    FCapIndices: TGIntegerList;
     FParameters: TgxSilhouetteParameters;
   protected
-    procedure SetIndices(const value: TgxIntegerList);
-    procedure SetCapIndices(const value: TgxIntegerList);
-    procedure SetVertices(const value: TgxVectorList);
+    procedure SetIndices(const value: TGIntegerList);
+    procedure SetCapIndices(const value: TGIntegerList);
+    procedure SetVertices(const value: TGVectorList);
   public
     constructor Create; virtual;
     destructor Destroy; override;
     property Parameters: TgxSilhouetteParameters read FParameters write FParameters;
-    property Vertices: TgxVectorList read FVertices write SetVertices;
-    property Indices: TgxIntegerList read FIndices write SetIndices;
-    property CapIndices: TgxIntegerList read FCapIndices write SetCapIndices;
+    property Vertices: TGVectorList read FVertices write SetVertices;
+    property Indices: TGIntegerList read FIndices write SetIndices;
+    property CapIndices: TGIntegerList read FCapIndices write SetCapIndices;
     procedure Flush;
     procedure Clear;
     procedure ExtrudeVerticesToInfinity(const origin: TAffineVector);
@@ -94,13 +94,13 @@ type
       it'd be nicer with Structs or classes, but it's actually faster this way.
       The reason it's faster is because of less cache overwrites when we only
       access a tiny bit of a triangle (for instance), not all data. *)
-    FEdgeVertices: TgxIntegerList;
-    FEdgeFaces: TgxIntegerList;
-    FFaceVisible: TByteList;
-    FFaceVertexIndex: TgxIntegerList;
-    FFaceNormal: TgxAffineVectorList;
-    FVertexMemory: TgxIntegerList;
-    FVertices: TgxAffineVectorList;
+    FEdgeVertices: TGIntegerList;
+    FEdgeFaces: TGIntegerList;
+    FFaceVisible: TGByteList;
+    FFaceVertexIndex: TGIntegerList;
+    FFaceNormal: TGAffineVectorList;
+    FVertexMemory: TGIntegerList;
+    FVertices: TGAffineVectorList;
     function GetEdgeCount: integer; override;
     function GetFaceCount: integer; override;
     function ReuseOrFindVertexID(const SeenFrom: TAffineVector; ASilhouette: TgxSilhouette; index: integer): integer;
@@ -130,9 +130,9 @@ implementation
 constructor TgxSilhouette.Create;
 begin
   inherited;
-  FVertices := TgxVectorList.Create;
-  FIndices := TgxIntegerList.Create;
-  FCapIndices := TgxIntegerList.Create;
+  FVertices := TGVectorList.Create;
+  FIndices := TGIntegerList.Create;
+  FCapIndices := TGIntegerList.Create;
 end;
 
 destructor TgxSilhouette.Destroy;
@@ -143,17 +143,17 @@ begin
   inherited;
 end;
 
-procedure TgxSilhouette.SetIndices(const value: TgxIntegerList);
+procedure TgxSilhouette.SetIndices(const value: TGIntegerList);
 begin
   FIndices.Assign(value);
 end;
 
-procedure TgxSilhouette.SetCapIndices(const value: TgxIntegerList);
+procedure TgxSilhouette.SetCapIndices(const value: TGIntegerList);
 begin
   FCapIndices.Assign(value);
 end;
 
-procedure TgxSilhouette.SetVertices(const value: TgxVectorList);
+procedure TgxSilhouette.SetVertices(const value: TGVectorList);
 begin
   FVertices.Assign(value);
 end;
@@ -278,14 +278,14 @@ end;
 
 constructor TConnectivity.Create(APrecomputeFaceNormal: Boolean);
 begin
-  FFaceVisible := TByteList.Create;
-  FFaceVertexIndex := TgxIntegerList.Create;
-  FFaceNormal := TgxAffineVectorList.Create;
-  FEdgeVertices := TgxIntegerList.Create;
-  FEdgeFaces := TgxIntegerList.Create;
+  FFaceVisible := TGByteList.Create;
+  FFaceVertexIndex := TGIntegerList.Create;
+  FFaceNormal := TGAffineVectorList.Create;
+  FEdgeVertices := TGIntegerList.Create;
+  FEdgeFaces := TGIntegerList.Create;
   FPrecomputeFaceNormal := APrecomputeFaceNormal;
-  FVertexMemory := TgxIntegerList.Create;
-  FVertices := TgxAffineVectorList.Create;
+  FVertexMemory := TGIntegerList.Create;
+  FVertices := TGAffineVectorList.Create;
 end;
 
 destructor TConnectivity.Destroy;

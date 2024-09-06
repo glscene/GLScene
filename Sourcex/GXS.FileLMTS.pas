@@ -14,9 +14,9 @@ uses
 
   GLScene.VectorTypes,
   GXS.ApplicationFileIO,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorGeometry,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GXS.VectorFileObjects,
   GXS.Graphics,
   GXS.Texture,
@@ -130,7 +130,7 @@ var
   _4cc: cardinal;
   C: integer;
   fName: string;
-  vi: TgxIntegerList;
+  vi: TGIntegerList;
   libmat: TgxLibmaterial;
   lmnames, matnames: TStringlist;
   MatInfoHeader: array [0 .. 3] of ansichar;
@@ -143,7 +143,7 @@ begin
   MO := TgxMeshObject.CreateOwned(owner.MeshObjects);
   MO.Mode := momFaceGroups;
 
-  vi := TgxIntegerList.create;
+  vi := TGIntegerList.create;
 
   LL := owner.LightmapLibrary;
   ML := owner.MaterialLibrary;

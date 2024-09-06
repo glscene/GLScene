@@ -250,7 +250,7 @@ implementation
 
 uses
   GLScene.Spline,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.XOpenGL;
 
 // ------------------

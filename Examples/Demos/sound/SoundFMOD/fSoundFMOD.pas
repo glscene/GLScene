@@ -22,7 +22,7 @@ uses
   GLS.GeomObjects,
 
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.FileWAV,
   GLS.FileMP3,
   GLScene.VectorGeometry,

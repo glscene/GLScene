@@ -22,7 +22,7 @@ uses
   GLS.ApplicationFileIO,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   Formats.Q3BSP,
   GLS.MeshBSP,
   GLS.Texture,

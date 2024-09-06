@@ -37,7 +37,7 @@ uses
   GLS.Coordinates,
   GLScene.Utils,
    
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TForm1 = class(TForm)

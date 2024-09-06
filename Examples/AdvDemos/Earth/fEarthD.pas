@@ -38,8 +38,8 @@ uses
   GLS.Context,
   GLS.TextureFormat,
   GLSL.TextureShaders,
-  GLS.BaseClasses,
-  GLS.PersistentClasses,
+  GLScene.BaseClasses,
+  GLScene.PersistentClasses,
 
   Vcl.BaseImageCollection,
   Vcl.ImageCollection,

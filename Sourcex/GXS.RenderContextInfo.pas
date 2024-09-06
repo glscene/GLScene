@@ -11,7 +11,7 @@ interface
 
 uses
   GLScene.VectorTypes,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GXS.State,
   GXS.PipelineTransformation,
@@ -88,8 +88,8 @@ type
     ignoreBlendingRequests: Boolean;
     ignoreDepthRequests: Boolean;
     amalgamating: Boolean;
-    lights: TgxPersistentObjectList;
-    afterRenderEffects: TgxPersistentObjectList;
+    lights: TGPersistentObjectList;
+    afterRenderEffects: TGPersistentObjectList;
     currentMaterialLevel: TgxMaterialLevel;
     primitiveMask: TgxMeshPrimitives;
     orderCounter: Integer;

@@ -22,11 +22,11 @@ uses
 
   GXS.Scene,
   GXS.State,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorTypes,
   GXS.Silhouette,
 
-  GXS.GeometryBB,
+  GLScene.GeometryBB,
   GLScene.VectorGeometry,
   GXS.Polynomials,
   GXS.VectorFileObjects,

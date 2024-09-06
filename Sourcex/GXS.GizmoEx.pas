@@ -23,10 +23,10 @@ uses
   System.Math,
   FMX.TextLayout,
 
-  GXS.GeometryBB,
+  GLScene.GeometryBB,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.Strings,
   GXS.Scene,
   GXS.Color,

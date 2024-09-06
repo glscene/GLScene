@@ -21,7 +21,7 @@ uses
   GXS.PipelineTransformation,
   GLScene.VectorGeometry,
   GXS.Context,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorTypes,
   GXS.Cadencer,
   GXS.Color,
@@ -473,7 +473,7 @@ var
   i: integer;
   // absPos :TVector4f;
   InnerColor: TVector4f;
-  distList: TgxSingleList;
+  distList: TGSingleList;
   objList: TList;
   fp: PThorpoint;
   mat: TMatrix4f;
@@ -502,7 +502,7 @@ begin
 
   if N > 1 then
   begin
-    distList := TgxSingleList.Create;
+    distList := TGSingleList.Create;
     objList := TList.Create;
     for i := 0 to N - 1 do
     begin

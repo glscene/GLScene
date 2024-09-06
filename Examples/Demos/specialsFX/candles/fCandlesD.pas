@@ -23,7 +23,7 @@ uses
   GLS.GeomObjects,
 
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormCandles = class(TForm)

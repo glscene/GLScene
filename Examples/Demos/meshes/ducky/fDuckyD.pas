@@ -17,19 +17,19 @@ uses
   
   GLS.Scene,
   GLScene.VectorTypes,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.VectorFileObjects,
   GLS.Objects,
   GLS.SceneViewer,
   GLS.ParametricSurfaces,
   GLScene.VectorGeometry,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   GLS.Texture,
  
   GLS.Coordinates,
   GLS.Material,
   GLS.State,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.FileNurbs,
   GLScene.Utils;
 
@@ -68,7 +68,7 @@ implementation
 
 procedure TFormDucky.FormCreate(Sender: TObject);
 var
-  cp: TGLAffineVectorList;
+  cp: TGAffineVectorList;
 begin
   var Path: TFileName := GetCurrentAssetPath();
   SetCurrentDir(Path  + '\model');

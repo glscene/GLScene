@@ -26,7 +26,7 @@ uses
   GLS.ProcTextures,
   GLS.TextureFormat,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
 
   GLScene.Utils
   ;

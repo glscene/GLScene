@@ -15,7 +15,7 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GLScene.Spline,
 
   GXS.Scene,
@@ -143,8 +143,8 @@ type
     function GetUpdating: Boolean;
     function PointNearLine(const LineItem: TLineItem; const X,Z: Single; Tolerance: single = 1): boolean;
     function PointNearSegment(const StartNode, EndNode: TLineNode; const X,Z: Single; LineWidth: single; Tolerance: single = 1): boolean;
-    procedure StitchStrips(idx: TgxIntegerList);
-    procedure AddStitchMarker(idx: TgxIntegerList);
+    procedure StitchStrips(idx: TGIntegerList);
+    procedure AddStitchMarker(idx: TGIntegerList);
     procedure SetShowNodes(const Value: Boolean);
     procedure SetNoZWrite(const Value: Boolean);
     procedure SetLightmapIndex(const value: Integer);
@@ -777,7 +777,7 @@ begin
   result:= sqrt(sqr(xt - X) + sqr(yt - Z)) <= lDist;
 end;
 
-procedure TgxMeshLines.StitchStrips(idx: TgxIntegerList);
+procedure TgxMeshLines.StitchStrips(idx: TGIntegerList);
 var
   i: integer;
   i0, i1, i2: integer;
@@ -797,7 +797,7 @@ begin
   end;
 end;
 
-procedure TgxMeshLines.AddStitchMarker(idx: TgxIntegerList);
+procedure TgxMeshLines.AddStitchMarker(idx: TGIntegerList);
 begin
   idx.Add(-1);
   idx.Add(-2);

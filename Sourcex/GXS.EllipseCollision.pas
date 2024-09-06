@@ -12,7 +12,7 @@ interface
 uses
   GLScene.VectorGeometry,
   GXS.Octree,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorTypes;
 
 type
@@ -48,7 +48,7 @@ type
 
   TECFreeForm = record
     OctreeNodes: array of POctreeNode;
-    triangleFiler: ^TgxAffineVectorList;
+    triangleFiler: ^TGAffineVectorList;
     InvertedNormals: Boolean;
     ObjectInfo: TECObjectInfo;
   end;

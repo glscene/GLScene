@@ -31,7 +31,7 @@
 #include "GLS.HUDObjects.hpp"
 #include "GLS.Coordinates.hpp"
 #include "GLS.FileMD2.hpp"
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.RenderContextInfo.hpp"
 #include "GLS.Keyboard.hpp"
 #include "GLS.State.hpp"

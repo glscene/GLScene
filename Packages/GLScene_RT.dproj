@@ -187,7 +187,7 @@
         <DCCReference Include="..\Source\GLS.Atmosphere.pas"/>
         <DCCReference Include="..\Source\GLS.ArchiveManager.pas"/>
         <DCCReference Include="..\Source\GLS.AnimationUtils.pas"/>
-        <DCCReference Include="..\Source\GLS.BaseClasses.pas"/>
+        <DCCReference Include="..\Source\GLScene.BaseClasses.pas"/>
         <DCCReference Include="..\Source\GLS.BaseMeshSilhouette.pas"/>
         <DCCReference Include="..\Source\GLS.Behaviours.pas"/>
         <DCCReference Include="..\Source\GLS.BitmapFont.pas"/>
@@ -203,7 +203,7 @@
         <DCCReference Include="..\Source\GLS.Context.pas"/>
         <DCCReference Include="..\Source\GLS.Coordinates.pas"/>
         <DCCReference Include="..\Source\GLS.CyborgManager.pas"/>
-        <DCCReference Include="..\Source\GLS.CurvesAndSurfaces.pas"/>
+        <DCCReference Include="..\Source\GLScene.CurvesAndSurfaces.pas"/>
         <DCCReference Include="..\Source\GLS.DCE.pas"/>
         <DCCReference Include="..\Source\GLS.DynamicTexture.pas"/>
         <DCCReference Include="..\Source\GLS.EParticleMasksManager.pas"/>
@@ -259,8 +259,8 @@
         <DCCReference Include="..\Source\GLS.Keyboard.pas"/>
         <DCCReference Include="..\Source\GLS.GameMenu.pas"/>
         <DCCReference Include="..\Source\GLS.GeomObjects.pas"/>
-        <DCCReference Include="..\Source\GLS.GeometryBB.pas"/>
-        <DCCReference Include="..\Source\GLS.Generics.pas"/>
+        <DCCReference Include="..\Source\GLScene.GeometryBB.pas"/>
+        <DCCReference Include="..\Source\GLScene.Generics.pas"/>
         <DCCReference Include="..\Source\GLS.Gizmo.pas"/>
         <DCCReference Include="..\Source\GLS.GizmoEx.pas"/>
         <DCCReference Include="..\Source\GLS.Graph.pas"/>
@@ -332,7 +332,7 @@
         <DCCReference Include="..\Source\GLSL.Shader.pas"/>
         <DCCReference Include="..\Source\GLS.PAKArchive.pas"/>
         <DCCReference Include="..\Source\GLS.ProjectedTextures.pas"/>
-        <DCCReference Include="..\Source\GLS.PersistentClasses.pas"/>
+        <DCCReference Include="..\Source\GLScene.PersistentClasses.pas"/>
         <DCCReference Include="..\Source\GLS.Scene.pas"/>
         <DCCReference Include="..\Source\GLS.SceneForm.pas"/>
         <DCCReference Include="..\Source\GLS.Screen.pas"/>
@@ -362,7 +362,7 @@
         <DCCReference Include="..\Source\GLS.TimeEventsMgr.pas"/>
         <DCCReference Include="..\Source\GLS.Trail.pas"/>
         <DCCReference Include="..\Source\GLS.Tree.pas"/>
-        <DCCReference Include="..\Source\GLS.Triangulation.pas"/>
+        <DCCReference Include="..\Source\GLScene.Triangulation.pas"/>
         <DCCReference Include="..\Source\GLS.WaterPlane.pas"/>
         <DCCReference Include="..\Source\GLS.Windows.pas"/>
         <DCCReference Include="..\Source\GLS.WindowsContext.pas"/>
@@ -373,7 +373,6 @@
         <DCCReference Include="..\Source\GLS.XCollection.pas"/>
         <DCCReference Include="..\Source\GLS.XOpenGL.pas"/>
         <DCCReference Include="..\Source\GLS.InitOpenGL.pas"/>
-        <DCCReference Include="..\Source\GLS.OpenGLAdapter.pas"/>
         <DCCReference Include="..\Source\GLScene.OpenGLTokens.pas"/>
         <DCCReference Include="..\Source\GLS.PipelineTransformation.pas"/>
         <DCCReference Include="..\Source\GLS.Polynomials.pas"/>
@@ -381,7 +380,7 @@
         <DCCReference Include="..\Source\GLScene.Strings.pas"/>
         <DCCReference Include="..\Source\GLScene.RandomLib.pas"/>
         <DCCReference Include="..\Source\GLS.TextureFormat.pas"/>
-        <DCCReference Include="..\Source\GLS.VectorLists.pas"/>
+        <DCCReference Include="..\Source\GLScene.VectorLists.pas"/>
         <DCCReference Include="..\Source\GLScene.VectorGeometry.pas"/>
         <DCCReference Include="..\Source\GLScene.VectorTypes.pas"/>
         <DCCReference Include="..\Source\GLS.VectorFileObjects.pas"/>
@@ -392,6 +391,7 @@
         <DCCReference Include="..\Source\PasGLTF.pas"/>
         <DCCReference Include="..\Source\PasJSON.pas"/>
         <DCCReference Include="..\Source\GLScene.Utils.pas"/>
+        <DCCReference Include="..\Source\GLS.OpenGLAdapter.pas"/>
         <None Include="..\Source\GLScene.Defines.inc"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

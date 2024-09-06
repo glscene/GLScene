@@ -17,7 +17,7 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLS.Scene,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.Material,
   GLS.Cadencer,
   GLS.SceneViewer,
@@ -26,7 +26,7 @@ uses
   GLS.Octree,
   GLScene.VectorGeometry,
   GLS.GeomObjects,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.Objects,

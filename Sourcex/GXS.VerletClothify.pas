@@ -16,7 +16,7 @@ uses
   System.SysUtils,
 
   GLScene.VectorTypes,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorGeometry,
   GXS.VectorFileObjects,
   GXS.VerletTypes,
@@ -136,7 +136,7 @@ type
   TgxMeshObjectVerletNode = class(TgxVerletNode)
   private
     MeshObject : TgxMeshObject;
-    VertexIndices : TgxIntegerList;
+    VertexIndices : TGIntegerList;
   public
     procedure AfterProgress; override;
 
@@ -337,7 +337,7 @@ end;
 constructor TgxMeshObjectVerletNode.CreateOwned(const aOwner: TgxVerletWorld);
 begin
   inherited;
-  VertexIndices := TgxIntegerList.Create;
+  VertexIndices := TGIntegerList.Create;
 end;
 
 destructor TgxMeshObjectVerletNode.Destroy;

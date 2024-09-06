@@ -21,7 +21,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
 
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormTexAnim = class(TForm)

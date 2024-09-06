@@ -16,9 +16,9 @@ uses
   Vcl.Dialogs,
   Vcl.ExtCtrls,
 
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Scene,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GLS.SceneViewer,
   GLS.Particles,

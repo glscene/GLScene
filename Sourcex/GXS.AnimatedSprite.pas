@@ -20,7 +20,7 @@ uses
   GXS.XCollection,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.Strings,
 
   GXS.Scene,

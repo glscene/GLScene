@@ -36,7 +36,7 @@ uses
   GLS.LensFlare,
   GLS.Material,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.State,
   GLS.FileMP3,
   GLScene.Utils,

@@ -16,7 +16,7 @@ uses
 
   GXS.XCollection,
   GXS.BaseClasses,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.Manager,
@@ -634,7 +634,7 @@ var
   i: Integer;
   innerColor: TVector4f;
   lastTr: TAffineVector;
-  distList: TgxSingleList;
+  distList: TGSingleList;
   objList: TList;
   fp: PFireParticle;
 begin
@@ -661,7 +661,7 @@ begin
 
   if n > 1 then
   begin
-    distList := TgxSingleList.Create;
+    distList := TGSingleList.Create;
     objList := TList.Create;
     for i := 0 to n - 1 do
     begin

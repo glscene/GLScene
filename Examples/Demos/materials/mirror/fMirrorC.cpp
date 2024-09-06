@@ -14,7 +14,7 @@
 #pragma link "GLS.GeomObjects"
 #pragma link "GLS.Extrusion"
 #pragma link "GLS.MultiPolygon"
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Coordinates"
 
 #pragma resource "*.dfm"

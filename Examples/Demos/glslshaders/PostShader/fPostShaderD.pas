@@ -29,7 +29,7 @@ uses
   GLS.SimpleNavigation,
 
   GLS.Material,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLSL.PostShaders,
   GLSL.PostEffects,
 

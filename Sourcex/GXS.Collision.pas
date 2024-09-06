@@ -16,9 +16,9 @@ uses
   GXS.XCollection,
   GXS.Scene,
   GLScene.VectorGeometry,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GXS.VectorFileObjects,
-  GXS.GeometryBB,
+  GLScene.GeometryBB,
   GLScene.Manager,
   GLScene.VectorTypes;
 
@@ -505,7 +505,7 @@ end;
   Octree.GetTrianglesInCube returns no points, why? }
 function FastCheckCubeVsFace(obj1, obj2: TgxBaseSceneObject): Boolean;
 // var
-// triList : TgxAffineVectorList;
+// triList : TGAffineVectorList;
 // m1to2, m2to1 : TMatrix4f;
 // i:integer;
 begin
@@ -541,7 +541,7 @@ type
 
 var
   i: Integer;
-  triList: TgxAffineVectorList;
+  triList: TGAffineVectorList;
   tri: PTriangle;
   m1to2, m2to1: TMatrix4f;
   AABB2: TAABB;

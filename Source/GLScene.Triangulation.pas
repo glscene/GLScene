@@ -1,7 +1,7 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-unit GLS.Triangulation;
+unit GLScene.Triangulation;
 (*
   Classes and methods for triangulation of scatter points.
 *)
@@ -10,8 +10,6 @@ interface
 uses
   System.Classes,
   System.Types,
-  Vcl.Dialogs,
-
   GLScene.VectorGeometry;
 
 // Set these as applicable
@@ -53,7 +51,7 @@ type
 
 type
 (*
-  TGLDelaunay2D is a class for Delaunay triangulation of arbitrary points
+  TGDelaunay2D is a class for Delaunay triangulation of arbitrary points
   Credit to Paul Bourke (http://paulbourke.net/) for the original Fortran 77 Program :))
   Conversion to Visual Basic by EluZioN (EluZioN@casesladder.com)
   Conversion from VB to Delphi6 by Dr Steve Evans (steve@lociuk.com)
@@ -66,7 +64,7 @@ type
   the triangles are now stored to improve calculation time.
   You can use this code however you like providing the above credits remain in tact
 *)
-  TGLDelaunay2D = class
+  TGDelaunay2D = class
   private
     function InCircle(Xp, Yp, X1, Y1, X2, Y2, X3, Y3: Single; out Xc,Yc, R:
       Single; j: Integer): Boolean;
@@ -89,11 +87,9 @@ type
     procedure QuickSort(var A: TDVertex; Low, High: Integer);
   end;
 
-//------------------------------------------------------------------------
-implementation
-//------------------------------------------------------------------------
+implementation //--------------------------------------------------------------
 
-constructor TGLDelaunay2D.Create;
+constructor TGDelaunay2D.Create;
 begin
   // Initiate total points to 1, using base 0 causes problems in the functions
   inherited;
@@ -104,14 +100,14 @@ begin
   OnProgress := nil;
 end;
 
-destructor TGLDelaunay2D.Destroy;
+destructor TGDelaunay2D.Destroy;
 begin
   SetLength(Vertex, 0);
   SetLength(Triangle, 0);
   inherited;
 end;
 
-function TGLDelaunay2D.InCircle(Xp, Yp, X1, Y1, X2, Y2, X3, Y3: Single;
+function TGDelaunay2D.InCircle(Xp, Yp, X1, Y1, X2, Y2, X3, Y3: Single;
   out Xc, Yc, R: Single; j: Integer): Boolean;
 // Return TRUE if the point (xp,yp) lies inside the circumcircle
 // made up by points (x1,y1) (x2,y2) (x3,y3)
@@ -147,7 +143,7 @@ begin
   begin
     if (Abs(Y1 - Y2) < eps) and (Abs(Y2 - Y3) < eps) then
     begin
-      ShowMessage('INCIRCUM - F - Points are coincident !!');
+      Write('INCIRCUM - F - Points are coincident !!');
       Exit;
     end;
     if Abs(Y2 - Y1) < eps then
@@ -204,7 +200,7 @@ begin
     InCircle := True;
 end;
 
-function TGLDelaunay2D.Triangulate(nvert: Integer): Integer;
+function TGDelaunay2D.Triangulate(nvert: Integer): Integer;
 var
   Complete: TDComplete;
   Edges: TDEdges;
@@ -390,7 +386,7 @@ begin
   SetLength(Edges, 2, 0);
 end;
 
-procedure TGLDelaunay2D.Mesh(sort: Boolean);
+procedure TGDelaunay2D.Mesh(sort: Boolean);
 begin
   if sort then
     QuickSort(Vertex, 1, tPoints - 1);
@@ -400,7 +396,7 @@ begin
   // 'Returns number of triangles created.
 end;
 
-procedure TGLDelaunay2D.AddPoint(X, Y, Z, U, V: Single; MatIndex: Integer);
+procedure TGDelaunay2D.AddPoint(X, Y, Z, U, V: Single; MatIndex: Integer);
 var
   i, AE: Integer;
 begin
@@ -428,7 +424,7 @@ begin
   end;
 end;
 
-procedure TGLDelaunay2D.AddPointNoCheck(X, Y, Z, U, V: Single; MatIndex: Integer);
+procedure TGDelaunay2D.AddPointNoCheck(X, Y, Z, U, V: Single; MatIndex: Integer);
 begin
   Vertex[tPoints].X := X;
   Vertex[tPoints].Y := Y;
@@ -439,12 +435,12 @@ begin
   tPoints := tPoints + 1;
 end;
 
-procedure TGLDelaunay2D.RemoveLastPoint;
+procedure TGDelaunay2D.RemoveLastPoint;
 begin
   tPoints := tPoints - 1;
 end;
 
-procedure TGLDelaunay2D.QuickSort(var A: TDVertex; Low, High: Integer);
+procedure TGDelaunay2D.QuickSort(var A: TDVertex; Low, High: Integer);
 // Sort all points by x
 {sub}procedure DoQuickSort(var A: TDVertex; iLo, iHi: Integer);
 var
@@ -478,5 +474,7 @@ end;
 begin
   DoQuickSort(A, Low, High);
 end;
+
+//---------------------------------------------------------------------------
 
 end.

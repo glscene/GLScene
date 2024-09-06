@@ -16,7 +16,7 @@ uses
   System.SysUtils,
   System.Types,
   GLScene.Strings,
-  GXS.PersistentClasses
+  GLScene.PersistentClasses
   {$IFDEF DEBUG_XCOLLECTION}, System.TypInfo {$ENDIF};
 
 type
@@ -31,7 +31,7 @@ type
     methods if you add data in a subclass !
      Subclasses must be registered using the RegisterXCollectionItemClass
     function for proper operation  *)
-  TXCollectionItem = class(TgxInterfacedPersistent)
+  TXCollectionItem = class(TGInterfacedPersistent)
   private
     FOwner: TXCollection;
     FName: string;

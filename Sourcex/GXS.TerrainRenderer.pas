@@ -23,7 +23,7 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.Utils,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GXS.Scene,
   GXS.HeightData,
   GXS.Material,
@@ -64,9 +64,9 @@ type
     FLastTriangleCount: Integer;
     FTilesPerTexture: single;
     FMaxCLODTriangles, FCLODPrecision: Integer;
-    FBufferVertices: TgxAffineVectorList;
-    FBufferTexPoints: TgxTexPointList;
-    FBufferVertexIndices: TgxIntegerList;
+    FBufferVertices: TGAffineVectorList;
+    FBufferTexPoints: TGTexPointList;
+    FBufferVertexIndices: TGIntegerList;
     FMaterialLibrary: TgxMaterialLibrary;
     FOnGetTerrainBounds: TGetTerrainBoundsEvent;
     FOnPatchPostRender: TPatchPostRenderEvent;
@@ -222,9 +222,9 @@ begin
   FMaxCLODTriangles := 65536;
   FCLODPrecision := 100;
   FOcclusionTesselate := totTesselateIfVisible;
-  FBufferVertices := TgxAffineVectorList.Create;
-  FBufferTexPoints := TgxTexPointList.Create;
-  FBufferVertexIndices := TgxIntegerList.Create;
+  FBufferVertices := TGAffineVectorList.Create;
+  FBufferTexPoints := TGTexPointList.Create;
+  FBufferVertexIndices := TGIntegerList.Create;
   TileManagement := [tmClearUsedFlags, tmMarkUsedTiles, tmReleaseUnusedTiles, tmAllocateNewTiles];
 end;
 

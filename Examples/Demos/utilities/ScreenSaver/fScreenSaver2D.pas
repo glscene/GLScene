@@ -32,7 +32,7 @@ uses
   GLS.SpaceText,
   GLS.GeomObjects,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Behaviours;
 
 type

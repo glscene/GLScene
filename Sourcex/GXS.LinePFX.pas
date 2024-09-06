@@ -16,7 +16,7 @@ uses
   System.SysUtils,
 
   GLScene.VectorTypes,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GXS.ParticleFX,
   GXS.Texture,
@@ -33,8 +33,8 @@ type
          FLength : Single;
       protected
       public
-         procedure WriteToFiler(writer : TgxVirtualWriter); override;
-         procedure ReadFromFiler(reader : TgxVirtualReader); override;
+         procedure WriteToFiler(writer : TGVirtualWriter); override;
+         procedure ReadFromFiler(reader : TGVirtualReader); override;
          { Direction of the line. }
          property Direction : TAffineVector read FDirection write FDirection;
          { Length of the line }
@@ -187,7 +187,7 @@ end;
 // ------------------ TgxLineParticle ------------------
 // ------------------
 
-procedure TgxLineParticle.WriteToFiler(writer : TgxVirtualWriter);
+procedure TgxLineParticle.WriteToFiler(writer : TGVirtualWriter);
 begin
    inherited WriteToFiler(writer);
    with writer do begin
@@ -197,7 +197,7 @@ begin
    end;
 end;
 
-procedure TgxLineParticle.ReadFromFiler(reader : TgxVirtualReader);
+procedure TgxLineParticle.ReadFromFiler(reader : TGVirtualReader);
 var
    archiveVersion : integer;
 begin

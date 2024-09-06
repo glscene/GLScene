@@ -17,7 +17,7 @@ uses
 
   GLS.Scene,
   GLScene.VectorTypes,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.SceneViewer,
   GLS.SkyDome,
   GLS.Objects,
@@ -30,13 +30,13 @@ uses
   GLS.SpacePartition,
   GLScene.VectorGeometry,
   GLS.BitmapFont,
-  GLS.GeometryBB,
+  GLScene.GeometryBB,
   GLS.WindowsFont,
   GLS.HUDObjects,
 
   GLS.Material,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLScene.Utils;
 

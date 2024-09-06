@@ -22,7 +22,7 @@ uses
   GLS.Sounds.OpenAL,
   GLScene.VectorGeometry,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.FileWAV,
   GLS.FileMP3,
   GLScene.Utils;

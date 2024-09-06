@@ -13,7 +13,7 @@
 #pragma link "GLS.Coordinates"
 
 #pragma link "GLS.FPSMovement"
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Cadencer"
 
 #pragma link "GLS.FPSMovement"

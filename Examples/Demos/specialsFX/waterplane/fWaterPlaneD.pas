@@ -35,7 +35,7 @@ uses
   GLS.SimpleNavigation,
   GLS.Color,
   GLScene.Utils,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormWaterPlane = class(TForm)

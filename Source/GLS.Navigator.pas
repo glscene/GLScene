@@ -24,8 +24,8 @@ uses
   GLS.Objects,
   GLS.GeomObjects,
   GLS.Context,
-  GLS.BaseClasses,
-  GLS.PersistentClasses,
+  GLScene.BaseClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLS.Keyboard,
@@ -57,7 +57,7 @@ type
   private
     FObject: TGLBaseSceneObject;
     FVirtualRight: TGLVector;
-    FVirtualUp: TGLCoordinates;
+    FVirtualUp: TGCoordinates;
     FUseVirtualUp: boolean;
     FAutoUpdateObject: boolean;
     FMaxAngle: single;
@@ -72,7 +72,7 @@ type
       Operation: TOperation); override;
     procedure SetObject(NewObject: TGLBaseSceneObject); virtual;
     procedure SetUseVirtualUp(UseIt: boolean);
-    procedure SetVirtualUp(Up: TGLCoordinates);
+    procedure SetVirtualUp(Up: TGCoordinates);
     function CalcRight: TGLVector;
   public
     constructor Create(AOwner: TComponent); override;
@@ -94,7 +94,7 @@ type
     property InvertHorizontalSteeringWhenUpsideDown: boolean
       read FInvertHorizontalSteeringWhenUpsideDown
       write FInvertHorizontalSteeringWhenUpsideDown default False;
-    property VirtualUp: TGLCoordinates read FVirtualUp write SetVirtualUp;
+    property VirtualUp: TGCoordinates read FVirtualUp write SetVirtualUp;
     property MovingObject: TGLBaseSceneObject read FObject write SetObject;
     property UseVirtualUp: boolean read FUseVirtualUp write SetUseVirtualUp
       default False;
@@ -171,7 +171,7 @@ type
     FPosAnimationEnd: TGLVector;
   public
     constructor CreateAsChild(aParentOwner: TGLBaseSceneObject); reintroduce;
-    procedure DoProgress(const pt: TGLProgressTimes); override;
+    procedure DoProgress(const pt: TGProgressTimes); override;
     procedure DoRender(var ARci: TGLRenderContextInfo;
       ARenderSelf, ARenderChildren: boolean); override;
     property SceneViewer: TGLSceneViewer read FViewer write FViewer;
@@ -191,7 +191,7 @@ implementation
 constructor TGLNavigator.Create(AOwner: TComponent);
 begin
   inherited;
-  FVirtualUp := TGLCoordinates.CreateInitialized(Self, ZHmgVector, csPoint);
+  FVirtualUp := TGCoordinates.CreateInitialized(Self, ZHmgVector, csPoint);
   FCurrentVAngle := 0;
   FCurrentHAngle := 0;
 end;
@@ -411,7 +411,7 @@ begin
     FVirtualRight := CalcRight;
 end;
 
-procedure TGLNavigator.SetVirtualUp(Up: TGLCoordinates);
+procedure TGLNavigator.SetVirtualUp(Up: TGCoordinates);
 begin
   FVirtualUp.Assign(Up);
   if csdesigning in componentstate then
@@ -775,7 +775,7 @@ begin
 
 end;
 
-procedure TGLNaviCube.DoProgress(const pt: TGLProgressTimes);
+procedure TGLNaviCube.DoProgress(const pt: TGProgressTimes);
 const
   tb: array [0 .. 1] of array [0 .. 3] of TGLVector = (((x: 0; Y: 20; z: 1;
     W: 0), (x: 1; Y: 20; z: 0; W: 0), (x: 0; Y: 20; z: - 1; W: 0), (x: - 1;

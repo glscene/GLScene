@@ -21,7 +21,7 @@ uses
   System.SysUtils,
 
   GXS.XCollection,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GXS.BaseClasses,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,

@@ -8,7 +8,7 @@
 #include "fBumpShaderC.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Coordinates"
 
@@ -26,7 +26,7 @@
 #pragma link "GLS.File3DS"
 #pragma link "Formats.DDSImage"
 #pragma link "GLS.FileMS3D"
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "GLSL.Shader"
 #pragma link "GLSL.BumpShaders"
 #pragma resource "*.dfm"

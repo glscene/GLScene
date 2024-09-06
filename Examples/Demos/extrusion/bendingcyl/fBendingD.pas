@@ -21,7 +21,7 @@ uses
   GLS.SceneViewer,
 
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormBendingCyl = class(TForm)

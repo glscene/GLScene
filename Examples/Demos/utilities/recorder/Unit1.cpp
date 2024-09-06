@@ -14,7 +14,7 @@
 #pragma link "GLS.Scene"
 #pragma link "GLAVIRecorder"
 #pragma link "GLS.Keyboard"
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Coordinates"
 
 

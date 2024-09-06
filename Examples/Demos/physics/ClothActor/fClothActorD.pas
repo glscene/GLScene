@@ -28,16 +28,16 @@ uses
   GLS.ShadowVolume,
   GLS.Keyboard,
   GLScene.VectorGeometry,
-  GLS.GeometryBB,
+  GLScene.GeometryBB,
   GLS.SpacePartition,
 
   GLS.Material,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLS.Context,
   GLScene.Utils,
   GLS.Coordinates,
-  GLS.PersistentClasses;
+  GLScene.PersistentClasses;
 
 type
   TFormClothActor = class(TForm)

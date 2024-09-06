@@ -14,7 +14,7 @@ uses
   GXS.VectorFileObjects,
   GXS.EllipseCollision,
   GLScene.VectorGeometry,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GXS.Scene,
   GXS.TerrainRenderer,
   GXS.ProxyObjects,

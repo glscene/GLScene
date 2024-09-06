@@ -31,7 +31,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
 
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.FireFX,
   GLS.GeomObjects,
   GLScene.Utils;

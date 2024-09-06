@@ -25,7 +25,7 @@
 #pragma link "GLS.TerrainRenderer"
 #pragma link "GLS.Scene"
 #pragma link "GLS.Keyboard"
-#pragma link "GLS.BaseClasses"
+#pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Coordinates"
 
 #pragma link "GLS.Material"
@@ -93,7 +93,7 @@ void __fastcall TForm1::GLCadencer1Progress(
         speed = 5 * deltaTime;
     else
         speed = deltaTime;
-    TGLCoordinates* c = GLCamera1->Position;
+    TGCoordinates* c = GLCamera1->Position;
     if (IsKeyDown(VK_UP))
         DummyCube1->Translate(c->Z * speed, 0, -c->X * speed);
     if (IsKeyDown(VK_DOWN))

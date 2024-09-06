@@ -18,7 +18,7 @@ uses
   GLS.Scene,
   GLScene.VectorTypes,
   GLS.Coordinates,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GLS.Objects,
   GLS.BitmapFont,

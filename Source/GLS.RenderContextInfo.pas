@@ -10,7 +10,7 @@ interface
 {$I GLScene.Defines.inc}
 
 uses
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLS.State,
@@ -86,16 +86,14 @@ type
     IgnoreBlendingRequests: Boolean;
     IgnoreDepthRequests: Boolean;
     Amalgamating: Boolean;
-    Lights: TGLPersistentObjectList;
-    AfterRenderEffects: TGLPersistentObjectList;
+    Lights: TGPersistentObjectList;
+    AfterRenderEffects: TGPersistentObjectList;
     CurrentMaterialLevel: TGLMaterialLevel;
     PrimitiveMask: TGLMeshPrimitives;
     OrderCounter: Integer;
   end;
   PGLRenderContextInfo = ^TGLRenderContextInfo;
 
-//====================================================================
-implementation
-//====================================================================
+implementation //-------------------------------------------------------------
 
 end.

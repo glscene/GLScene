@@ -27,9 +27,9 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
-  GXS.VectorLists,
+  GLScene.VectorLists,
   GLScene.VectorTypes,
   GLScene.Strings,
   GXS.Scene,
@@ -48,7 +48,7 @@ type
   TgxFeedback = class(TgxBaseSceneObject)
   private
     FActive: Boolean;
-    FBuffer: TgxSingleList;
+    FBuffer: TGSingleList;
     FMaxBufferSize: Cardinal;
     FBuffered: Boolean;
     FCorrectionScaling: Single;
@@ -64,15 +64,15 @@ type
     (* Parse the feedback buffer for polygon data and build
        a mesh into the assigned lists. *)
     procedure BuildMeshFromBuffer(
-      Vertices: TgxAffineVectorList = nil;
-      Normals: TgxAffineVectorList = nil;
-      Colors: TgxVectorList = nil;
-      TexCoords: TgxAffineVectorList = nil;
-      VertexIndices: TgxIntegerList = nil);
+      Vertices: TGAffineVectorList = nil;
+      Normals: TGAffineVectorList = nil;
+      Colors: TGVectorList = nil;
+      TexCoords: TGAffineVectorList = nil;
+      VertexIndices: TGIntegerList = nil);
     // True when there is data in the buffer ready for parsing
     property Buffered: Boolean read FBuffered;
     // The feedback buffer
-    property Buffer: TgxSingleList read FBuffer;
+    property Buffer: TGSingleList read FBuffer;
     (* Vertex positions in the buffer needs to be scaled by
        CorrectionScaling to get correct coordinates. *)
     property CorrectionScaling: Single read FCorrectionScaling;
@@ -98,7 +98,7 @@ constructor TgxFeedback.Create(AOwner: TComponent);
 begin
   inherited;
   FMaxBufferSize := $100000;
-  FBuffer := TgxSingleList.Create;
+  FBuffer := TGSingleList.Create;
   FBuffer.Capacity := FMaxBufferSize div SizeOf(Single);
   FBuffered := False;
   FActive := False;
@@ -188,25 +188,25 @@ begin
 end;
 
 procedure TgxFeedback.BuildMeshFromBuffer(
-  Vertices: TgxAffineVectorList = nil;
-  Normals: TgxAffineVectorList = nil;
-  Colors: TgxVectorList = nil;
-  TexCoords: TgxAffineVectorList = nil;
-  VertexIndices: TgxIntegerList = nil);
+  Vertices: TGAffineVectorList = nil;
+  Normals: TGAffineVectorList = nil;
+  Colors: TGVectorList = nil;
+  TexCoords: TGAffineVectorList = nil;
+  VertexIndices: TGIntegerList = nil);
 var
   value: Single;
   i, j, LCount, skip: Integer;
   vertex, color, texcoord: TVector4f;
-  tempVertices, tempNormals, tempTexCoords: TgxAffineVectorList;
-  tempColors: TgxVectorList;
-  tempIndices: TgxIntegerList;
+  tempVertices, tempNormals, tempTexCoords: TGAffineVectorList;
+  tempColors: TGVectorList;
+  tempIndices: TGIntegerList;
   ColorBuffered, TexCoordBuffered: Boolean;
 begin
   Assert(FMode <> fm2D, 'Cannot build mesh from fm2D feedback mode.');
 
-  tempVertices := TgxAffineVectorList.Create;
-  tempColors := TgxVectorList.Create;
-  tempTexCoords := TgxAffineVectorList.Create;
+  tempVertices := TGAffineVectorList.Create;
+  tempColors := TGVectorList.Create;
+  tempTexCoords := TGAffineVectorList.Create;
 
   ColorBuffered := (FMode = fm3DColor) or
     (FMode = fm3DColorTexture) or
@@ -295,7 +295,7 @@ begin
   end
   else
   begin
-    tempIndices := TgxIntegerList.Create;
+    tempIndices := TGIntegerList.Create;
     tempIndices.AddSerie(0, 1, tempVertices.Count);
   end;
 

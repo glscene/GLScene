@@ -33,10 +33,10 @@ uses
   GLS.VectorFileObjects,
   GLS.Coordinates,
   GLS.RenderContextInfo,
-  GLS.GeometryBB,
+  GLScene.GeometryBB,
   GLScene.VectorTypes,
   GLS.Canvas,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.Screen,
   GLS.State,
   GLS.Selection;

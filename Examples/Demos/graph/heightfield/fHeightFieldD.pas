@@ -25,7 +25,7 @@ uses
   GLS.SceneViewer,
   GLS.Color,
   GLS.Coordinates,
-  GLS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   TFormHeightField = class(TForm)

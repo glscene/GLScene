@@ -21,7 +21,7 @@ uses
   GXS.BitmapFont,
   GXS.Material,
   GXS.Context,
-  GXS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GXS.Coordinates,
   GXS.BaseClasses;
@@ -510,10 +510,10 @@ var
   TmpElement: TgxGuiElement;
   TmpAlignment: TGUIAlignments;
   Version: Integer;
-  Data: TgxBinaryReader;
+  Data: TGBinaryReader;
 
 begin
-  Data := TgxBinaryReader.Create(Stream);
+  Data := TGBinaryReader.Create(Stream);
   try
 
     Version := Data.ReadInteger;
@@ -561,10 +561,10 @@ var
   Alignments, XC, YC: Integer;
   TmpElement: TgxGuiElement;
   TmpAlignment: TGUIAlignments;
-  Data: TgxBinaryWriter;
+  Data: TGBinaryWriter;
 
 begin
-  Data := TgxBinaryWriter.Create(Stream);
+  Data := TGBinaryWriter.Create(Stream);
   try
     Data.WriteInteger(1);
     Data.WriteInteger(FGuiComponents.Count);

@@ -19,7 +19,7 @@ uses
   GLS.ApplicationFileIO,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLS.VectorLists,
+  GLScene.VectorLists,
   Formats.VRML,
   GLS.MeshUtils;
 
@@ -35,8 +35,8 @@ type
 implementation
 // ------------------------------------------------------------------
 
-procedure TessellatePolygon(PolyVerts: TGLAffineVectorList;
-  PolyIndices, TriIndices: TGLIntegerList);
+procedure TessellatePolygon(PolyVerts: TGAffineVectorList;
+  PolyIndices, TriIndices: TGIntegerList);
 
   function IsPolyClockWise: Boolean;
   var
@@ -79,10 +79,10 @@ var
   i, j, prev, next, min_vert, min_prev, min_next: Integer;
   PolyCW, NoPointsInTriangle: Boolean;
   V: TAffineMatrix;
-  temp: TGLIntegerList;
+  temp: TGIntegerList;
   min_dist, d, area: Single;
 begin
-  temp := TGLIntegerList.Create;
+  temp := TGIntegerList.Create;
   try
     PolyCW := IsPolyClockWise;
     temp.Assign(PolyIndices);
@@ -241,12 +241,12 @@ var
     newfg: TFGVertexIndexList;
     fg: TFGVertexNormalTexIndexList;
     vertices, normals, texcoords, triNormals, newVertices, newNormals,
-      newTexCoords: TGLAffineVectorList;
-    optimized: TGLIntegerList;
+      newTexCoords: TGAffineVectorList;
+    optimized: TGIntegerList;
     cosAngle: Single;
     normal: TAffineVector;
     s, t: array [0 .. 2] of Integer;
-    n: array [0 .. 2] of TGLIntegerList;
+    n: array [0 .. 2] of TGIntegerList;
     smooth, hasVertices, hasNormals, hasNormalIndices, hasTexCoords,
       hasTexCoordIndices: Boolean;
   begin
@@ -260,16 +260,16 @@ var
     if not hasVertices then
       Exit;
 
-    vertices := TGLAffineVectorList.Create;
-    normals := TGLAffineVectorList.Create;
-    texcoords := TGLAffineVectorList.Create;
-    newVertices := TGLAffineVectorList.Create;
-    newNormals := TGLAffineVectorList.Create;
-    newTexCoords := TGLAffineVectorList.Create;
-    triNormals := TGLAffineVectorList.Create;
-    n[0] := TGLIntegerList.Create;
-    n[1] := TGLIntegerList.Create;
-    n[2] := TGLIntegerList.Create;
+    vertices := TGAffineVectorList.Create;
+    normals := TGAffineVectorList.Create;
+    texcoords := TGAffineVectorList.Create;
+    newVertices := TGAffineVectorList.Create;
+    newNormals := TGAffineVectorList.Create;
+    newTexCoords := TGAffineVectorList.Create;
+    triNormals := TGAffineVectorList.Create;
+    n[0] := TGIntegerList.Create;
+    n[1] := TGIntegerList.Create;
+    n[2] := TGIntegerList.Create;
     for i := 0 to mesh.FaceGroups.Count - 1 do
     begin
       fg := TFGVertexNormalTexIndexList(mesh.FaceGroups[i]);
@@ -438,10 +438,10 @@ var
   procedure RecursNodes(node: TVRMLNode);
   var
     i, j, n: Integer;
-    points: TGLSingleList;
-    indices, fgindices: TGLIntegerList;
+    points: TGSingleList;
+    indices, fgindices: TGIntegerList;
     fg: TFGVertexNormalTexIndexList;
-    face: TGLIntegerList;
+    face: TGIntegerList;
     tempLibMat: TGLLibMaterial;
     saveTransform, mat: TGLMatrix;
     saveMaterial: TGLLibMaterial;
@@ -522,7 +522,7 @@ var
     begin
       fg := TFGVertexNormalTexIndexList.CreateOwned(mesh.FaceGroups);
       mesh.Mode := momFaceGroups;
-      face := TGLIntegerList.Create;
+      face := TGIntegerList.Create;
       if Assigned(currentMaterial) then
         fg.MaterialName := currentMaterial.Name;
       for n := 0 to node.Count - 1 do

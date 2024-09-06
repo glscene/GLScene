@@ -15,7 +15,6 @@ uses
   System.SysUtils,
   System.UITypes,
   System.Math,
-  Vcl.Graphics,
 
   GLScene.OpenGLTokens,
   GLScene.VectorTypes,

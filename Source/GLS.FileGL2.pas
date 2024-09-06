@@ -13,11 +13,11 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLS.PersistentClasses,
+  GLScene.PersistentClasses,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
   GLS.Material,
-  GLS.VectorLists,
+  GLScene.VectorLists,
 
   Formats.GL2;
 
@@ -181,7 +181,7 @@ var
   quat: TQuaternion;
   pos: TAffineVector;
   basepose: TGLSkeletonFrame;
-  bonelist: TGLIntegerList;
+  bonelist: TGIntegerList;
   bone: TGLSkeletonBone;
 
 begin
@@ -193,7 +193,7 @@ begin
 
     TGLActor(Owner).Reference := aarSkeleton;
 
-    bonelist := TGLIntegerList.Create;
+    bonelist := TGIntegerList.Create;
     for i := 0 to GLAFile.AnimHeader.numBones - 1 do
       bonelist.Add(i);
     while bonelist.Count > 0 do

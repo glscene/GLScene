@@ -11,7 +11,7 @@
 #include <ExtCtrls.hpp>
 #include "GLScene.VectorGeometry.hpp"
 #include "GLS.Scene.hpp"
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include <GLS.GeomObjects.hpp>
 #include <GLS.Navigator.hpp>
 #include <GLS.Cadencer.hpp>

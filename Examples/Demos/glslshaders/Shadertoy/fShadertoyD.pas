@@ -13,14 +13,14 @@ uses
 
   GLS.Scene,
   GLScene.VectorTypes,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLS.Objects,
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.Keyboard,
   GLS.RenderContextInfo,
   GLS.OpenGLAdapter,
-  GLS.TextureFormat
+  GLS.TextureFormat,
   GLScene.VectorGeometry,
 
   GLS.AsyncTimer,

@@ -7,7 +7,7 @@
 #include <Vcl.StdCtrls.hpp>
 
 #include "GLS.AVIRecorder.hpp"
-#include "GLS.BaseClasses.hpp"
+#include "GLScene.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.Coordinates.hpp"
 

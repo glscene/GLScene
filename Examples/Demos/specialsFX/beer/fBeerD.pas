@@ -24,7 +24,7 @@ uses
   GLS.ParticleFX,
   GLS.PerlinPFX,
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.Utils;
 
 type

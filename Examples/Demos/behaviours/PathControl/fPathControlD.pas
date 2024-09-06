@@ -26,7 +26,7 @@ uses
   GLS.ImageUtils,
  
   GLS.Coordinates,
-  GLS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.Utils,
   GLS.SimpleNavigation;
 
