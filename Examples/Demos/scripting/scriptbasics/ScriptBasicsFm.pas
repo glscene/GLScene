@@ -19,7 +19,7 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.AsyncTimer,
-  GLS.Coordinates,
+  GLScene.Coordinates,
  
   GLScene.BaseClasses,
 

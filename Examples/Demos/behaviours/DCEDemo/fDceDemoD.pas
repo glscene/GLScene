@@ -28,7 +28,7 @@ uses
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.HUDObjects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.VectorGeometry,
   GLS.FileMD2,
   GLS.File3DS,

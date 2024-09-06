@@ -20,7 +20,7 @@ uses
   GLS.Context,
   GLScene.BaseClasses,
   GLScene.Spline,
-  GLS.Coordinates;
+  GLScene.Coordinates;
 
 type
   TGLNode = class(TCollectionItem)

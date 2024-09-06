@@ -20,7 +20,7 @@ uses
   GLS.Texture,
   GLS.Extrusion,
   GLS.SceneViewer,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLScene.Utils;
 

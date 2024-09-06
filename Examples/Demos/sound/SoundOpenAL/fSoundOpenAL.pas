@@ -21,7 +21,7 @@ uses
   GLS.GeomObjects,
   GLS.Sounds.OpenAL,
   GLScene.VectorGeometry,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.FileWAV,
   GLS.FileMP3,

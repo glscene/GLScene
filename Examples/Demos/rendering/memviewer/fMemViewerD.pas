@@ -21,7 +21,7 @@ uses
   GLS.Texture,
   GLS.SceneViewer,
  
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.Context,
   GLS.OpenGLAdapter;

@@ -23,7 +23,7 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
  
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLS.Context;

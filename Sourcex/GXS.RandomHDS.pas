@@ -65,7 +65,7 @@ uses
   GXS.TerrainRenderer,
   GXS.Texture,
   GXS.Color,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.RenderContextInfo,
   GXS.Material,
   GXS.Context;
@@ -336,7 +336,7 @@ type
       vertical/horitontal ratio with any size. Therefore, Scale.X=Scale.Y=1 and
       only Scale.Z varies. If you want to increase the landscape scale, the best way
       would be to place the Terrain Renderer in a DummyCube and rescale it. *)
-    function Scale: TgxCoordinates;
+    function Scale: TGCoordinates;
     (* Size of the square height array. With the middle-point algorithm, it is always
       Size = 2^N+1. In a cyclic landscape, the last row and columns are identical
       to the first. *)
@@ -1852,7 +1852,7 @@ begin
   Result := (x >= 0) and (x <= FSize) and (y >= 0) and (y <= FSize);
 end;
 
-function TgxCustomRandomHDS.Scale: TgxCoordinates;
+function TgxCustomRandomHDS.Scale: TGCoordinates;
 begin
   try
     Result := FTerrainRenderer.Scale;

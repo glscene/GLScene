@@ -19,7 +19,7 @@
 #include "GLS.Texture.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLScene.BaseClasses.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 #include "GLS.Material.hpp"
 
 #include "GLS.Keyboard.hpp"

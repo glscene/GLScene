@@ -22,7 +22,7 @@ uses
   GLS.TimeEventsMgr,
   GLS.GeomObjects,
 
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.Utils,
   GLScene.BaseClasses;
 

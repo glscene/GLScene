@@ -28,7 +28,7 @@ uses
   GLS.GeomObjects,
   GLS.Color,
 
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.BitmapFont,
   GLS.WindowsFont,

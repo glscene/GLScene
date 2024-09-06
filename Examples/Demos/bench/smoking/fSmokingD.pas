@@ -19,7 +19,7 @@ uses
   GLS.Scene, 
   GLS.Objects,
   GLS.SceneViewer, 
-  GLS.Coordinates, 
+  GLScene.Coordinates, 
   GLS.SimpleNavigation, 
   GLScene.BaseClasses;
 

@@ -207,7 +207,6 @@
         <DCCReference Include="..\SourceX\Formatx.VRML.pas"/>
         <DCCReference Include="..\SourceX\Formatx.VfsPAK.pas"/>
         <DCCReference Include="..\SourceX\GXS.AnimatedSprite.pas"/>
-        <DCCReference Include="..\SourceX\GXS.AnimationUtils.pas"/>
         <DCCReference Include="..\SourceX\GXS.ApplicationFileIO.pas"/>
         <DCCReference Include="..\SourceX\GXS.ArchiveManager.pas"/>
         <DCCReference Include="..\SourceX\GXS.AsyncHDS.pas"/>
@@ -230,7 +229,6 @@
         <DCCReference Include="..\SourceX\GXS.CompositeImage.pas"/>
         <DCCReference Include="..\SourceX\GXS.Console.pas"/>
         <DCCReference Include="..\SourceX\GXS.Context.pas"/>
-        <DCCReference Include="..\SourceX\GXS.Coordinates.pas"/>
         <DCCReference Include="..\SourceX\GXS.DCE.pas"/>
         <DCCReference Include="..\SourceX\GXS.DCEMisc.pas"/>
         <DCCReference Include="..\SourceX\GXS.EParticleMasksManager.pas"/>
@@ -373,13 +371,11 @@
         <DCCReference Include="..\SourceX\GXS.Windows.pas"/>
         <DCCReference Include="..\SourceX\GXS.WindowsFont.pas"/>
         <DCCReference Include="..\SourceX\GXS.zBuffer.pas"/>
-        <DCCReference Include="..\SourceX\GXS.BaseClasses.pas"/>
         <DCCReference Include="..\SourceX\GXS.PAKArchive.pas"/>
         <DCCReference Include="..\SourceX\GXS.Polynomials.pas"/>
         <DCCReference Include="..\SourceX\GXS.SpacePartition.pas"/>
         <DCCReference Include="..\SourceX\GXS.XCollection.pas"/>
         <DCCReference Include="..\SourceX\GXS.XOpenGL.pas"/>
-        <DCCReference Include="..\SourceX\GXS.GeometryCoordinates.pas"/>
         <DCCReference Include="..\SourceX\GXS.PipelineTransformation.pas"/>
         <DCCReference Include="..\SourceX\GXS.OpenGL.pas"/>
         <DCCReference Include="..\SourceX\GXS.ViewerOpenGL.pas"/>
@@ -420,6 +416,9 @@
         <DCCReference Include="..\Source\GLScene.GeometryBB.pas"/>
         <DCCReference Include="..\Source\GLScene.VectorLists.pas"/>
         <DCCReference Include="..\Source\GLScene.CurvesAndSurfaces.pas"/>
+        <DCCReference Include="..\Source\GLScene.Coordinates.pas"/>
+        <DCCReference Include="..\Source\GLScene.BaseClasses.pas"/>
+        <DCCReference Include="..\Source\GLScene.AnimationUtils.pas"/>
         <None Include="..\Sourcex\GXS.Scene.inc"/>
         <None Include="..\Source\GLScene.Defines.inc"/>
         <BuildConfiguration Include="Base">

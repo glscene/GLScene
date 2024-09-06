@@ -20,7 +20,7 @@ uses
   GLScene.Strings,
   GXS.Cadencer,
   GXS.Context,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GXS.RenderContextInfo,
   GXS.Material,
   GXS.TextureFormat,
@@ -49,7 +49,7 @@ type
   TPrecisionSetting = (psFull, psFast);
 
   // Wrapper around a Cg program.
-  TCGxProgram = class(TgxUpdateAbleObject)
+  TCGxProgram = class(TGUpdateAbleObject)
   private
     FCgContext: PcgContext;
     FCode: TStrings; // the Cg program itself

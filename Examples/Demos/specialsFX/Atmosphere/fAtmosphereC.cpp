@@ -11,7 +11,7 @@
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLScene.BaseClasses"
-#pragma link "GLS.Coordinates"
+#pragma link "GLScene.Coordinates"
 
 #pragma link "GLS.LensFlare"
 #pragma link "GLS.SimpleNavigation"

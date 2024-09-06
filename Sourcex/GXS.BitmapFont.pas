@@ -32,7 +32,7 @@ uses
 
   GXS.Graphics,
   GXS.Color,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GXS.RenderContextInfo,
   GXS.TextureFormat,
   GLScene.VectorTypes;
@@ -110,7 +110,7 @@ type
     dimensions should be close to a power of two, and have at least 1 pixel
     spacing between characters (horizontally and vertically) to avoid artefacts
     when rendering with linear filtering. *)
-  TgxCustomBitmapFont = class(TgxUpdateAbleComponent)
+  TgxCustomBitmapFont = class(TGUpdateAbleComponent)
   private
     FRanges: TgxBitmapFontRanges;
     FGlyphs: TImage;

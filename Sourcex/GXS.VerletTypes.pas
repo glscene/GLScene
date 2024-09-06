@@ -23,10 +23,10 @@ uses
   GLScene.VectorTypes,
   GLScene.PersistentClasses,
 
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GXS.Objects,
   GXS.Scene,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GLScene.VectorGeometry,
   GLScene.VectorLists,
   GXS.VectorFileObjects,
@@ -73,7 +73,7 @@ type
     // Simple and less accurate method for friction
     procedure OldApplyFriction(const friction, penetrationDepth: Single);
     // Perform Verlet integration
-    procedure Verlet(const vpt: TgxProgressTimes); virtual;
+    procedure Verlet(const vpt: TGProgressTimes); virtual;
     (* Initlializes the node. For the base class, it just makes sure that
       FOldPosition = FPosition, so that speed is zero *)
     procedure Initialize; dynamic;
@@ -287,7 +287,7 @@ type
     constructor Create(const aOwner: TgxVerletWorld); virtual;
     destructor Destroy; override;
     // Implementation should add force to force resultant for all relevant nodes
-    procedure AddForce(const vpt: TgxProgressTimes); virtual; abstract;
+    procedure AddForce(const vpt: TGProgressTimes); virtual; abstract;
     // Notifies removal of a node
     procedure RemoveNode(const aNode: TgxBaseVerletNode); virtual; abstract;
     property Owner: TgxVerletWorld read FOwner;
@@ -321,7 +321,7 @@ type
   TgxVerletGlobalForce = class(TgxVerletForce)
   public
     procedure RemoveNode(const aNode: TgxBaseVerletNode); override;
-    procedure AddForce(const vpt: TgxProgressTimes); override;
+    procedure AddForce(const vpt: TGProgressTimes); override;
     procedure AddForceToNode(const aNode: TgxBaseVerletNode); virtual; abstract;
   end;
 
@@ -362,9 +362,9 @@ type
     FInertia: Boolean;
     FInertaPauseSteps: Integer;
   protected
-    procedure AccumulateForces(const vpt: TgxProgressTimes); virtual;
-    procedure Verlet(const vpt: TgxProgressTimes); virtual;
-    procedure SatisfyConstraints(const vpt: TgxProgressTimes); virtual;
+    procedure AccumulateForces(const vpt: TGProgressTimes); virtual;
+    procedure Verlet(const vpt: TGProgressTimes); virtual;
+    procedure SatisfyConstraints(const vpt: TGProgressTimes); virtual;
     procedure DoUpdateSpacePartition;
   public
     constructor Create; virtual;
@@ -449,7 +449,7 @@ type
   protected
     procedure SetSlack(const Value: Single);
   public
-    procedure AddForce(const vpt: TgxProgressTimes); override;
+    procedure AddForce(const vpt: TGProgressTimes); override;
     // Must be invoked after adjust node locations or strength
     procedure SetRestLengthToCurrent;
     property Strength: Single read FStrength write FStrength;
@@ -620,7 +620,7 @@ type
   protected
     procedure SetLocation(const Value: TAffineVector); override;
   public
-    procedure Verlet(const vpt: TgxProgressTimes); override;
+    procedure Verlet(const vpt: TGProgressTimes); override;
     property GXBaseSceneObject: TgxBaseSceneObject read FGXBaseSceneObject
       write SetBaseSceneObject;
     property RelativePosition: TAffineVector read FRelativePosition
@@ -756,7 +756,7 @@ begin
     FRelativePosition := GXBaseSceneObject.AbsoluteToLocal(Value);
 end;
 
-procedure TgxVerletNode.Verlet(const vpt: TgxProgressTimes);
+procedure TgxVerletNode.Verlet(const vpt: TGProgressTimes);
 begin
   if Assigned(GXBaseSceneObject) and NailedDown then
   begin
@@ -864,7 +864,7 @@ begin
     FInvWeight := 1;
 end;
 
-procedure TgxBaseVerletNode.Verlet(const vpt: TgxProgressTimes);
+procedure TgxBaseVerletNode.Verlet(const vpt: TGProgressTimes);
 var
   newLocation, temp, move, accel: TAffineVector;
 begin
@@ -1253,7 +1253,7 @@ begin
   inherited;
 end;
 
-procedure TgxVerletWorld.AccumulateForces(const vpt: TgxProgressTimes);
+procedure TgxVerletWorld.AccumulateForces(const vpt: TGProgressTimes);
 var
   i: Integer;
 begin
@@ -1401,7 +1401,7 @@ var
   i: Integer;
   ticks: Integer;
   myDeltaTime: Single;
-  vpt: TgxProgressTimes;
+  vpt: TGProgressTimes;
 begin
   ticks := 0;
   myDeltaTime := FMaxDeltaTime;
@@ -1452,7 +1452,7 @@ begin
   end;
 end;
 
-procedure TgxVerletWorld.SatisfyConstraints(const vpt: TgxProgressTimes);
+procedure TgxVerletWorld.SatisfyConstraints(const vpt: TGProgressTimes);
 var
   i, j: Integer;
   Constraint: TgxVerletConstraint;
@@ -1478,7 +1478,7 @@ begin
     DoUpdateSpacePartition; // }
 end;
 
-procedure TgxVerletWorld.Verlet(const vpt: TgxProgressTimes);
+procedure TgxVerletWorld.Verlet(const vpt: TGProgressTimes);
 var
   i: Integer;
 begin

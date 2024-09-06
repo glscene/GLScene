@@ -32,7 +32,7 @@ uses
   GLS.Keyboard,
   GLS.Color,
  
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses;
 
 const

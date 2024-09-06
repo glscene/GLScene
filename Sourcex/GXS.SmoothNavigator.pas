@@ -31,7 +31,7 @@ uses
   GXS.Navigator,
   GLScene.VectorGeometry,
   GXS.Scene,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.Screen,
   GLScene.PersistentClasses;
 
@@ -118,10 +118,10 @@ type
   { Smoothly change any Vector4f value, so it will become TargetValue in the end.  }
   TgxNavigatorSmoothChangeVector = class(TgxNavigatorSmoothChangeItem)
   private
-    FTargetValue: TgxCoordinates;
+    FTargetValue: TGCoordinates;
     FOnGetCurrentValue: TgxNavigatorSmoothChangeVectorGetEvent;
     FOnSetCurrentValue: TgxNavigatorSmoothChangeVectorSetEvent;
-    procedure SetTargetValue(const Value: TgxCoordinates);
+    procedure SetTargetValue(const Value: TGCoordinates);
   public
     class function FriendlyName: string; override;
     function Proceed(ADeltaTime: Double): Boolean; override;
@@ -130,7 +130,7 @@ type
     destructor Destroy; override;
     procedure ResetTargetValue(); override;
   published
-    property TargetValue: TgxCoordinates read FTargetValue write SetTargetValue;
+    property TargetValue: TGCoordinates read FTargetValue write SetTargetValue;
     property OnGetCurrentValue: TgxNavigatorSmoothChangeVectorGetEvent read FOnGetCurrentValue write FOnGetCurrentValue;
     property OnSetCurrentValue: TgxNavigatorSmoothChangeVectorSetEvent read FOnSetCurrentValue write FOnSetCurrentValue;
   end;
@@ -367,9 +367,9 @@ type
     FSmoothNavigator: TgxSmoothNavigator;
     FSmoothVertNavigator: TgxSmoothNavigator;
     FInvertMouse: Boolean;
-    FOriginalMousePos: TgxCoordinates2;
+    FOriginalMousePos: TGCoordinates2;
     procedure SetSmoothNavigator(const Value: TgxSmoothNavigator); virtual;
-    procedure SetOriginalMousePos(const Value: TgxCoordinates2); virtual;
+    procedure SetOriginalMousePos(const Value: TGCoordinates2); virtual;
     procedure SetSmoothVertNavigator(const Value: TgxSmoothNavigator); virtual;
     procedure SetMouseLookActive(const Value: Boolean); virtual;
   protected
@@ -391,7 +391,7 @@ type
     property SmoothVertNavigator: TgxSmoothNavigator read FSmoothVertNavigator write SetSmoothVertNavigator;
     property SmoothNavigator: TgxSmoothNavigator read FSmoothNavigator write SetSmoothNavigator;
     property InvertMouse: Boolean read FInvertMouse write FInvertMouse default False;
-    property OriginalMousePos: TgxCoordinates2 read FOriginalMousePos write SetOriginalMousePos;
+    property OriginalMousePos: TGCoordinates2 read FOriginalMousePos write SetOriginalMousePos;
   end;
 
 //-----------------------------------------------------------
@@ -911,7 +911,7 @@ begin
   inherited;
   FMouseLookActive := False;
   FAutoUpdateMouse := True;
-  FOriginalMousePos := TgxCoordinates2.CreateInitialized(Self,
+  FOriginalMousePos := TGCoordinates2.CreateInitialized(Self,
                              VectorMake(GLGetScreenWidth div 2,
                              GLGetScreenHeight div 2, 0, 0), csPoint2D);
 end;
@@ -948,7 +948,7 @@ begin
 end;
 
 procedure TgxSmoothUserInterface.SetOriginalMousePos(
-  const Value: TgxCoordinates2);
+  const Value: TGCoordinates2);
 begin
   FOriginalMousePos.Assign(Value);
 end;
@@ -1533,7 +1533,7 @@ end;
 constructor TgxNavigatorSmoothChangeVector.Create(aOwner: TXCollection);
 begin
   inherited;
-  FTargetValue := TgxCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  FTargetValue := TGCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
 end;
 
 destructor TgxNavigatorSmoothChangeVector.Destroy;
@@ -1602,7 +1602,7 @@ begin
 end;
 
 procedure TgxNavigatorSmoothChangeVector.SetTargetValue(
-  const Value: TgxCoordinates);
+  const Value: TGCoordinates);
 begin
   FTargetValue.Assign(Value);
 end;

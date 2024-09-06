@@ -5,7 +5,7 @@
 //---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include "GLScene.BaseClasses.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 #include "GLS.GeomObjects.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SDL.Context.hpp"

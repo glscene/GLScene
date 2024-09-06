@@ -23,7 +23,7 @@ uses
   GLS.Scene,
   GLS.VectorFileObjects,
   GLScene.PersistentClasses,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.RenderContextInfo,
   GLS.State;
 

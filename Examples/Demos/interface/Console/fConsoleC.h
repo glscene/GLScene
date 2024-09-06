@@ -20,7 +20,7 @@
 #include "GLS.WindowsFont.hpp"
 #include "GLS.Behaviours.hpp"
 #include "GLS.Console.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 #include "GLS.SimpleNavigation.hpp"
 #include "GLScene.Utils.hpp"
 

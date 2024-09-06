@@ -28,7 +28,7 @@ uses
   GLS.Context,
  
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLS.TextureFormat,

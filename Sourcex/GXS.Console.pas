@@ -49,7 +49,7 @@ uses
   GLScene.Strings,
   GLScene.Utils,
 
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.Scene,
   GXS.Objects,
   GXS.HUDObjects,

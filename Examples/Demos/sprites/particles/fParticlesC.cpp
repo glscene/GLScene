@@ -15,7 +15,7 @@
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
 #pragma link "GLScene.BaseClasses"
-#pragma link "GLS.Coordinates"
+#pragma link "GLScene.Coordinates"
 
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.SceneViewer"

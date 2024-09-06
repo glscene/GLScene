@@ -20,7 +20,7 @@ uses
   GLS.AVIRecorder, 
   GLS.SceneViewer,
   
-  GLS.Coordinates, 
+  GLScene.Coordinates, 
   GLScene.BaseClasses;
 
 type

@@ -21,7 +21,7 @@ uses
   GLS.Scene,
   GLS.Objects,
   GLS.Texture,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Context,
   GLS.Material,
   GLS.Color,

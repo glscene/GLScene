@@ -19,7 +19,7 @@ uses
   GLS.SceneViewer,
   GLS.Color,
 
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLScene.VectorGeometry,
   GLS.FPSMovement;

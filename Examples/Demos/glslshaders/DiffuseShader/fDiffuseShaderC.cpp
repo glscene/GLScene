@@ -9,7 +9,7 @@
 #pragma package(smart_init)
 #pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Cadencer"
-#pragma link "GLS.Coordinates"
+#pragma link "GLScene.Coordinates"
 
 #pragma link "GLSL.CustomShader"
 #pragma link "GLS.GeomObjects"

@@ -10,7 +10,7 @@
 #include "GLScene.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.CameraController.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 
 #include "GLS.GeomObjects.hpp"
 #include "GLS.Graph.hpp"

@@ -25,7 +25,7 @@ uses
   GLS.State,
   GLS.Color,
  
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses;
 
 type

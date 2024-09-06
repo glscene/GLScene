@@ -13,7 +13,7 @@ uses
 
   GLS.SimpleNavigation,
   GLS.Scene,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.NGDManager,
   GLS.BitmapFont,
   GLS.WindowsFont,

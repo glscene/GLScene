@@ -21,7 +21,7 @@ uses
   GXS.Texture,
   GXS.Context,
   GXS.RenderContextInfo,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GXS.State,
   GLScene.VectorTypes;
 
@@ -53,7 +53,7 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    procedure DoProgress(const progressTime: TgxProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
   published
     // MaxRadius of the flare.
     property Size: integer read FSize write SetSize default 50;
@@ -299,7 +299,7 @@ begin
     Self.RenderChildren(0, Count - 1, rci);
 end;
 
-procedure TgxTextureLensFlare.DoProgress(const progressTime: TgxProgressTimes);
+procedure TgxTextureLensFlare.DoProgress(const progressTime: TGProgressTimes);
 begin
   FDeltaTime := progressTime.deltaTime;
   inherited;

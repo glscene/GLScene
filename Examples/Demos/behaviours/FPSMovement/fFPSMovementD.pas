@@ -33,7 +33,7 @@ uses
   GLScene.VectorGeometry,
   GLS.GeomObjects,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.SimpleNavigation,
   GLScene.BaseClasses,
   GLScene.Utils;

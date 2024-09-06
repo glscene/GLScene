@@ -39,8 +39,8 @@ uses
   GXS.Objects,
   GXS.GeomObjects,
   GXS.Nodes,
-  GXS.BaseClasses,
-  GXS.Coordinates,
+  GLScene.BaseClasses,
+  GLScene.Coordinates,
   GXS.RenderContextInfo;
 
 type
@@ -81,7 +81,7 @@ type
 
   TgxContourClass = class of TgxContour;
 
-  TgxContours = class(TgxNotifyCollection)
+  TgxContours = class(TGNotifyCollection)
   private
     function GetItems(index: Integer): TgxContour;
     procedure SetItems(index: Integer; const Value: TgxContour);
@@ -138,7 +138,7 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
-    procedure AddNode(const i: Integer; const coords: TgxCoordinates); overload;
+    procedure AddNode(const i: Integer; const coords: TGCoordinates); overload;
     procedure AddNode(const i: Integer; const X, Y, Z: Single); overload;
     procedure AddNode(const i: Integer; const value: TVector4f); overload;
     procedure AddNode(const i: Integer; const value: TAffineVector); overload;
@@ -435,7 +435,7 @@ begin
   Path[i].AddNode(x, y, z);
 end;
 
-procedure TgxMultiPolygonBase.AddNode(const i: Integer; const coords: TgxCoordinates);
+procedure TgxMultiPolygonBase.AddNode(const i: Integer; const coords: TGCoordinates);
 begin
   Path[i].AddNode(coords);
 end;

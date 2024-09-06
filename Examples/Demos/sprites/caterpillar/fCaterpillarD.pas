@@ -20,7 +20,7 @@ uses
   GLScene.VectorGeometry,
 
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.ProcTextures,
   GLScene.Utils,

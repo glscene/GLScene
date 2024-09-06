@@ -20,7 +20,7 @@ uses
   GLSL.LineShaders,
  
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses;
 
 type

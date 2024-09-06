@@ -21,7 +21,7 @@ uses
   GLScene.VectorGeometry,
   GLScene.Utils,
   GLScene.PersistentClasses,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GXS.Scene,
   GXS.Objects,
   GXS.PipelineTransformation,
@@ -40,7 +40,7 @@ type
   { The actual gradients between two colors are, of course, calculated by OpenGL.
     The start and end colors of a gradient are stored to represent the color of
     lens flare elements. }
-  TgxFlareGradient = class(TgxUpdateAbleObject)
+  TgxFlareGradient = class(TGUpdateAbleObject)
   private
     FFromColor: TgxColor;
     FToColor: TgxColor;
@@ -122,7 +122,7 @@ type
     destructor Destroy; override;
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    procedure DoProgress(const progressTime: TgxProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     { Prepares pre-rendered texture to speed up actual rendering.
       Will use the currently active context as scratch space, and will
       automatically do nothing if things have already been prepared,
@@ -647,7 +647,7 @@ begin
     Self.RenderChildren(0, Count - 1, rci);
 end;
 
-procedure TgxLensFlare.DoProgress(const progressTime: TgxProgressTimes);
+procedure TgxLensFlare.DoProgress(const progressTime: TGProgressTimes);
 begin
   inherited;
   FDeltaTime := progressTime.deltaTime;

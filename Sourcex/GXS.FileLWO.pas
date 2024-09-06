@@ -15,6 +15,7 @@ uses
   System.Math,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
+  GLScene.VectorLists,
   GXS.Texture,
   GXS.Material,
   GXS.VectorFileObjects,

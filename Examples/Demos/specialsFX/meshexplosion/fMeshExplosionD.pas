@@ -20,7 +20,7 @@ uses
   GLS.Cadencer,
   GLS.ExplosionFx,
   GLS.File3DS,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.Utils,
   GLScene.BaseClasses;
 

@@ -24,7 +24,7 @@
 #include "GLS.Objects.hpp"
 #include "GLScene.BaseClasses.hpp"
 #include "GLS.Keyboard.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 
 #include "GLS.VerletTypes.hpp"
 

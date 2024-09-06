@@ -29,7 +29,7 @@ uses
   GLS.Material,
   GLS.VectorFileObjects,
   GLS.Objects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Graphics,
   GLS.State,
   GLS.CompositeImage,

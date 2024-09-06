@@ -37,7 +37,7 @@ uses
   GLS.FileOBJ,
   GLS.GeomObjects,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Color,
   GLS.SoundManager,
   GLS.Sounds.BASS,

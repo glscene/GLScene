@@ -14,7 +14,7 @@
 #include <GLS.Scene.hpp>
 #include <GLS.Objects.hpp>
 #include "GLScene.BaseClasses.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
         // Pascal unit
 //---------------------------------------------------------------------------
 class TFormPointto:public TForm

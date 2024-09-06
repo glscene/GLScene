@@ -51,7 +51,7 @@ uses
   GLScene.Strings,
 
   GLS.Scene,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Objects,
   GLS.HudObjects,
   GLS.SceneViewer,

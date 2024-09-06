@@ -31,7 +31,7 @@ uses
 
   GLS.Graphics,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.FileTGA;
 

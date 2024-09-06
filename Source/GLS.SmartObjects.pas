@@ -50,7 +50,7 @@ uses
   GLS.Color,
   GLS.Selection,
   GLS.RenderContextInfo,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.VectorFileObjects,
   GLS.SoundManager,

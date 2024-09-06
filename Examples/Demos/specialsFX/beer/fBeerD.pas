@@ -23,7 +23,7 @@ uses
   GLS.ShadowPlane,
   GLS.ParticleFX,
   GLS.PerlinPFX,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLScene.Utils;
 

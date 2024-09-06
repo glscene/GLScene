@@ -27,7 +27,7 @@ uses
   GLS.Texture,
   GLS.ParticleFX,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
 
   GLS.FileMD3, // MD3 loading into GLScene

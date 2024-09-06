@@ -37,7 +37,7 @@ uses
   GLScene.VectorGeometry,
   GLS.Texture,
   GLScene.VectorTypes,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Material;
 
 type

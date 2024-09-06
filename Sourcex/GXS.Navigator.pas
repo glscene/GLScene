@@ -17,7 +17,7 @@ uses
 
   GLScene.VectorGeometry,
   GXS.Scene,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.Screen,
   GLScene.VectorTypes;
 
@@ -46,7 +46,7 @@ type
   private
     FObject: TgxBaseSceneObject;
     FVirtualRight: TVector4f;
-    FVirtualUp: TgxCoordinates;
+    FVirtualUp: TGCoordinates;
     FUseVirtualUp: boolean;
     FAutoUpdateObject: boolean;
     FMaxAngle: single;
@@ -60,7 +60,7 @@ type
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
     procedure SetObject(NewObject: TgxBaseSceneObject); virtual;
     procedure SetUseVirtualUp(UseIt: boolean);
-    procedure SetVirtualUp(Up: TgxCoordinates);
+    procedure SetVirtualUp(Up: TGCoordinates);
     function CalcRight: TVector4f;
   public
     constructor Create(AOwner: TComponent); override;
@@ -79,7 +79,7 @@ type
   published
     property MoveUpWhenMovingForward: boolean read FMoveUpWhenMovingForward write FMoveUpWhenMovingForward default False;
     property InvertHorizontalSteeringWhenUpsideDown: boolean read FInvertHorizontalSteeringWhenUpsideDown write FInvertHorizontalSteeringWhenUpsideDown default False;
-    property VirtualUp: TgxCoordinates read FVirtualUp write SetVirtualUp;
+    property VirtualUp: TGCoordinates read FVirtualUp write SetVirtualUp;
     property MovingObject: TgxBaseSceneObject read FObject write SetObject;
     property UseVirtualUp: boolean read FUseVirtualUp write SetUseVirtualUp default False;
     property AutoUpdateObject: boolean read FAutoUpdateObject write FAutoUpdateObject default False;
@@ -140,7 +140,7 @@ implementation
 constructor TgxNavigator.Create(AOwner : TComponent);
 Begin
   inherited;
-  FVirtualUp := TgxCoordinates.CreateInitialized(Self, ZHmgVector, csPoint);
+  FVirtualUp := TGCoordinates.CreateInitialized(Self, ZHmgVector, csPoint);
   FCurrentVAngle := 0;
   FCurrentHAngle := 0;
 End;
@@ -333,7 +333,7 @@ Begin
 End;
 
 
-Procedure   TgxNavigator.SetVirtualUp(Up : TgxCoordinates);
+Procedure   TgxNavigator.SetVirtualUp(Up : TGCoordinates);
 begin
   FVirtualUp.Assign(Up);
   if csdesigning in componentstate then Exit;

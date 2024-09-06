@@ -21,7 +21,7 @@ uses
 
   GXS.Objects,
   GXS.MultiPolygon,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.Color,
   GXS.SpaceText,
   GXS.VectorFileObjects;

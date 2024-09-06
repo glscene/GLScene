@@ -25,7 +25,7 @@ uses
 
   GLS.AsyncTimer,
   GLS.Context,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.HUDObjects,
   GLScene.Utils;
 

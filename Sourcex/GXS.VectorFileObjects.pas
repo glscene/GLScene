@@ -21,7 +21,7 @@ uses
   System.Types,
 
   GXS.XOpenGL,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
 
   GLScene.VectorLists,
   GLScene.PersistentClasses,
@@ -41,7 +41,7 @@ uses
   GXS.Context,
   GXS.Color,
   GXS.RenderContextInfo,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.TextureFormat,
   GXS.State,
   GXS.ImageUtils;
@@ -864,7 +864,7 @@ type
     FOverlaySkeleton: Boolean;
     FIgnoreMissingTextures: Boolean;
     FAutoCentering: TgxMeshAutoCenterings;
-    FAutoScaling: TgxCoordinates;
+    FAutoScaling: TGCoordinates;
     FMaterialLibraryCachesPrepared: Boolean;
     FConnectivity: TObject;
     FLastLoadedFilename: string;
@@ -876,7 +876,7 @@ type
     procedure SetLightmapLibrary(const val: TgxMaterialLibrary);
     procedure SetNormalsOrientation(const val: TMeshNormalsOrientation);
     procedure SetOverlaySkeleton(const val: Boolean);
-    procedure SetAutoScaling(const Value: TgxCoordinates);
+    procedure SetAutoScaling(const Value: TGCoordinates);
     procedure DestroyHandle; override;
     (* Invoked after creating a TgxVectorFile and before loading.
       Triggered by LoadFromFile/Stream and AddDataFromFile/Stream.
@@ -974,7 +974,7 @@ type
       no effect on already loaded mesh data or when adding from a file/stream.
       If you want to alter mesh data, use direct manipulation methods
       (on the TgxMeshObjects). *)
-    property AutoScaling: TgxCoordinates read FAutoScaling write FAutoScaling;
+    property AutoScaling: TGCoordinates read FAutoScaling write FAutoScaling;
     (* Material library where mesh materials will be stored/retrieved.
       If this property is not defined or if UseMeshMaterials is false,
       only the FreeForm's material will be used (and the mesh's materials
@@ -1219,7 +1219,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    procedure DoProgress(const progressTime: TgxProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     procedure LoadFromStream(const filename: string; aStream: TStream); override;
     procedure SwitchToAnimation(anAnimation: TgxActorAnimation; smooth: Boolean = False); overload;
     procedure SwitchToAnimation(const AnimationName: string; smooth: Boolean = False); overload;
@@ -5776,7 +5776,7 @@ begin
   FAutoCentering := [];
   FAxisAlignedDimensionsCache.X := -1;
   FBaryCenterOffsetChanged := True;
-  FAutoScaling := TgxCoordinates.CreateInitialized(Self, XYZWHmgVector, csPoint);
+  FAutoScaling := TGCoordinates.CreateInitialized(Self, XYZWHmgVector, csPoint);
 end;
 
 destructor TgxBaseMesh.Destroy;
@@ -6026,7 +6026,7 @@ begin
   end;
 end;
 
-procedure TgxBaseMesh.SetAutoScaling(const Value: TgxCoordinates);
+procedure TgxBaseMesh.SetAutoScaling(const Value: TGCoordinates);
 begin
   FAutoScaling.SetPoint(Value.DirectX, Value.DirectY, Value.DirectZ);
 end;
@@ -7264,7 +7264,7 @@ begin
   end;
 end;
 
-procedure TgxActor.DoProgress(const progressTime: TgxProgressTimes);
+procedure TgxActor.DoProgress(const progressTime: TGProgressTimes);
 var
   fDelta: Single;
 begin

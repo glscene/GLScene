@@ -28,7 +28,7 @@ uses
   GLS.FileWAV,
   GLS.FileMP3,
 
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLScene.Utils
   ;

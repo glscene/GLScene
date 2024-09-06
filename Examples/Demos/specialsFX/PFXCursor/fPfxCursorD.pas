@@ -29,7 +29,7 @@ uses
   GLS.AsyncTimer,
   GLS.PerlinPFX,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
 
   GLScene.BaseClasses,
   GLS.FireFX,

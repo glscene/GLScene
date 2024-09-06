@@ -21,7 +21,7 @@ uses
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLS.FileTGA,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses;
 
 type

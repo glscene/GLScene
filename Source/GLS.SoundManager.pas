@@ -15,7 +15,7 @@ uses
   GLScene.VectorTypes,
   GLS.SoundFileObjects,
   GLS.Scene,
-  GLS.XCollection,
+  GLScene.XCollection,
   GLScene.VectorGeometry,
   GLS.Cadencer,
   GLScene.BaseClasses,

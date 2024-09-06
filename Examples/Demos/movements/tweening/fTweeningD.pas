@@ -20,12 +20,12 @@ uses
   GLS.Scene,
   GLScene.VectorTypes,
   GLS.Objects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.SceneViewer,
 
   GLScene.BaseClasses,
   GLS.Cadencer,
-  GLS.AnimationUtils,
+  GLScene.AnimationUtils,
   GLScene.VectorGeometry,
   GLS.BitmapFont,
   GLS.WindowsFont;

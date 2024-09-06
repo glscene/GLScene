@@ -18,7 +18,7 @@ uses
   GLScene.VectorGeometry,
   GXS.Silhouette,
   GXS.RenderContextInfo,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.VectorTypes;
 
 type
@@ -264,8 +264,8 @@ end;
 
 procedure TgxMultiProxyMasters.NotifyChange;
 begin
-  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TgxUpdateAbleComponent) then
-    TgxUpdateAbleComponent(GetOwner).NotifyChange(Self);
+  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TGUpdateAbleComponent) then
+    TGUpdateAbleComponent(GetOwner).NotifyChange(Self);
 end;
 
 procedure TgxMultiProxyMasters.EndUpdate;

@@ -17,7 +17,7 @@ uses
   GLS.Cadencer,
   GLS.AsyncTimer,
   GLS.SceneViewer,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses, GLS.SimpleNavigation, GLS.Material;
 
 type

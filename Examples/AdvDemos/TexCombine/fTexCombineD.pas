@@ -28,7 +28,7 @@ uses
   GLS.Scene,
   GLS.SceneViewer,
   GLS.FileTGA,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.Texture,
   GLS.Graphics,

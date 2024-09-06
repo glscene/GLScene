@@ -18,7 +18,7 @@ uses
   GLS.FileDDS,
   GLS.Context,
   GLScene.Utils,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.GeomObjects;
 

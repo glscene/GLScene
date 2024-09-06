@@ -30,7 +30,7 @@ uses
   GLS.MeshUtils,
   GLScene.VectorGeometry,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLScene.Utils,

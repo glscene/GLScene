@@ -27,9 +27,9 @@ uses
   GLScene.Utils,
 
   GLScene.PersistentClasses,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GXS.Scene,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.HUDObjects,
   GXS.Material,
   GXS.Context,
@@ -88,7 +88,7 @@ type
     procedure DoChanges; virtual;
     procedure MoveGUI(XRel, YRel: Single);
     procedure PlaceGUI(XPos, YPos: Single);
-    procedure DoProgress(const progressTime: TgxProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     procedure DoRender(var rci: TgxRenderContextInfo; renderSelf, renderChildren:
       Boolean); override;
     procedure InternalRender(var rci: TgxRenderContextInfo; renderSelf,
@@ -3865,7 +3865,7 @@ begin
   inherited;
 end;
 
-procedure TgxBaseComponent.DoProgress(const progressTime: TgxProgressTimes);
+procedure TgxBaseComponent.DoProgress(const progressTime: TGProgressTimes);
 begin
   inherited;
   if FDoChangesOnProgress then

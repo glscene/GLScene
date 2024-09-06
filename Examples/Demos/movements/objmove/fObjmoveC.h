@@ -24,7 +24,7 @@
 #include "GLS.GeomObjects.hpp"
 #include "GLS.Color.hpp"
 
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 #include "GLScene.BaseClasses.hpp"
 #include "GLS.BitmapFont.hpp"
 #include "GLS.WindowsFont.hpp"

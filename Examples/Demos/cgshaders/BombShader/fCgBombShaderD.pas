@@ -25,7 +25,7 @@ uses
   GLS.Graph,
   GLS.Material,
   GLScene.VectorGeometry,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLScene.Utils,
 

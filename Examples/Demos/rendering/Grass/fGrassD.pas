@@ -28,7 +28,7 @@ uses
   GLS.TerrainRenderer,
   GLS.AsyncTimer,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Keyboard,
   GLScene.BaseClasses,
   GLS.RenderContextInfo,

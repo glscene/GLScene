@@ -46,7 +46,7 @@ uses
   GLS.Context,
   GLScene.VectorLists,
   GLS.Cadencer,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.State,
   GLS.RenderContextInfo,

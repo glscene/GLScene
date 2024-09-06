@@ -24,7 +24,7 @@ uses
   GLS.Atmosphere,
   GLS.SimpleNavigation,
   GLS.Behaviours,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Color;
 
 type

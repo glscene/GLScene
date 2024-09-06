@@ -21,13 +21,13 @@ uses
   GXS.Context,
   GLScene.VectorGeometry,
   GXS.Scene,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.VectorFileObjects,
   GLScene.VectorLists,
   GXS.GeomObjects,
   GXS.Navigator,
   GXS.RenderContextInfo,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.Manager,
   GXS.State;
 
@@ -154,7 +154,7 @@ type
     Velocity: TVector4f;
     constructor Create(aOwner: TXCollection); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TgxProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     class function FriendlyName: string; override;
     Procedure TurnHorizontal(Angle: single);
     Procedure TurnVertical(Angle: single);
@@ -807,7 +807,7 @@ begin
   Manager.Navigator.MovingObject := prevObj;
 end;
 
-procedure TgxBFPSMovement.DoProgress(const progressTime: TgxProgressTimes);
+procedure TgxBFPSMovement.DoProgress(const progressTime: TGProgressTimes);
 var
   newPosition: TVector4f;
   CollisionState: TCollisionState;

@@ -25,7 +25,7 @@ uses
   GXS.Objects,
   GXS.Material,
   GLScene.Strings,
-  GXS.BaseClasses;
+  GLScene.BaseClasses;
 
 const
   cMaxVerts = 2000;
@@ -71,7 +71,7 @@ type
       Operation: TOperation); override;
   public
     // EnableUVmapping: boolean; // generate UV's or not
-    procedure DoProgress(const progressTime: TgxProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure CreateMark(obj: TgxBaseSceneObject; width: single;
@@ -137,7 +137,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TgxTrail.DoProgress(const progressTime: TgxProgressTimes);
+procedure TgxTrail.DoProgress(const progressTime: TGProgressTimes);
 begin
   inherited;
   if Enabled and Assigned(TrailObject) then

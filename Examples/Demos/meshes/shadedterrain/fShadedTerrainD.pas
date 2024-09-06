@@ -35,7 +35,7 @@ uses
   GLS.BumpMapHDS,
   GLSL.TextureShaders,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
 
   GLS.State,
   GLScene.Utils;

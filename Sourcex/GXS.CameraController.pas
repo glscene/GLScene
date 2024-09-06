@@ -31,7 +31,7 @@ uses
   GLScene.PersistentClasses,
   GXS.Scene,
   GLScene.VectorGeometry,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.SmoothNavigator, 
   GLScene.VectorTypes;
 

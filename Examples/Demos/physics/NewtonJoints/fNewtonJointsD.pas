@@ -16,7 +16,7 @@ uses
   GLScene.VectorTypes,
   GLS.NGDManager,
   GLS.Objects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Cadencer,
   GLS.SceneViewer,
 

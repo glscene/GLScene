@@ -15,7 +15,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.Strings;
 
 const
@@ -68,7 +68,7 @@ type
     file-based one just call these, and stream-based behaviours allow for more
     enhancement (such as other I/O abilities, compression, cacheing, etc.)
     to this class, without the need to rewrite subclasses. *)
-  TgxDataFile = class(TgxUpdateAbleObject)
+  TgxDataFile = class(TGUpdateAbleObject)
   private
     FOwner : TPersistent;
     FResourceName: string;

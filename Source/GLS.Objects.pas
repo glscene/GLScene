@@ -44,7 +44,7 @@ uses
   GLScene.PersistentClasses,
   GLScene.BaseClasses,
   GLS.Nodes,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.XOpenGL,
   GLS.State;
 

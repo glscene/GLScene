@@ -27,7 +27,7 @@ uses
   GLScene.VectorGeometry,
 
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.Keyboard, GLS.ShadowHDS;
 

@@ -10,7 +10,7 @@ interface
 {$I GLScene.Defines.inc}
 
 uses
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.VectorFileObjects,
   GXS.EllipseCollision,
   GLScene.VectorGeometry,

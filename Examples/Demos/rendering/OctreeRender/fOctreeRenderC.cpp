@@ -11,7 +11,7 @@
 #pragma package(smart_init)
 #pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Cadencer"
-#pragma link "GLS.Coordinates"
+#pragma link "GLScene.Coordinates"
 #pragma link "GLS.Material"
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"

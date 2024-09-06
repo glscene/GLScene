@@ -19,7 +19,7 @@ uses
   GLS.Cadencer,
   GLS.SimpleNavigation,
  
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses;
 
 type

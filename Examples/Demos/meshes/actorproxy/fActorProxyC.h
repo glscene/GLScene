@@ -23,7 +23,7 @@
 #include "GLS.Cadencer.hpp"
 #include "GLS.Texture.hpp"
 #include "GLS.Material.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 
 #include "GLScene.BaseClasses.hpp"
 #include "GLS.FileSMD.hpp"

@@ -186,7 +186,7 @@
         <DCCReference Include="..\Source\GLS.AsyncTimer.pas"/>
         <DCCReference Include="..\Source\GLS.Atmosphere.pas"/>
         <DCCReference Include="..\Source\GLS.ArchiveManager.pas"/>
-        <DCCReference Include="..\Source\GLS.AnimationUtils.pas"/>
+        <DCCReference Include="..\Source\GLScene.AnimationUtils.pas"/>
         <DCCReference Include="..\Source\GLScene.BaseClasses.pas"/>
         <DCCReference Include="..\Source\GLS.BaseMeshSilhouette.pas"/>
         <DCCReference Include="..\Source\GLS.Behaviours.pas"/>
@@ -201,7 +201,7 @@
         <DCCReference Include="..\Source\GLS.CompositeImage.pas"/>
         <DCCReference Include="..\Source\GLS.Console.pas"/>
         <DCCReference Include="..\Source\GLS.Context.pas"/>
-        <DCCReference Include="..\Source\GLS.Coordinates.pas"/>
+        <DCCReference Include="..\Source\GLScene.Coordinates.pas"/>
         <DCCReference Include="..\Source\GLS.CyborgManager.pas"/>
         <DCCReference Include="..\Source\GLScene.CurvesAndSurfaces.pas"/>
         <DCCReference Include="..\Source\GLS.DCE.pas"/>
@@ -370,7 +370,7 @@
         <DCCReference Include="..\Source\GLS.zBuffer.pas"/>
         <DCCReference Include="..\Source\GLS.Silhouette.pas"/>
         <DCCReference Include="..\Source\GLS.ScriptBase.pas"/>
-        <DCCReference Include="..\Source\GLS.XCollection.pas"/>
+        <DCCReference Include="..\Source\GLScene.XCollection.pas"/>
         <DCCReference Include="..\Source\GLS.XOpenGL.pas"/>
         <DCCReference Include="..\Source\GLS.InitOpenGL.pas"/>
         <DCCReference Include="..\Source\GLScene.OpenGLTokens.pas"/>

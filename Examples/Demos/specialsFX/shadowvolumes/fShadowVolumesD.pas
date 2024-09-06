@@ -28,7 +28,7 @@ uses
   GLS.Silhouette,
   GLScene.VectorGeometry,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
 
   GLS.SimpleNavigation,
   GLScene.BaseClasses,

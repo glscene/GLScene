@@ -23,7 +23,7 @@ uses
   GLScene.VectorLists,
   GLS.Objects,
   GLS.MultiPolygon,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Color,
   GLS.SpaceText,
   GLS.VectorFileObjects;

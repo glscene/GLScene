@@ -11,7 +11,7 @@
 
 #include "GLScene.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 #include "GLS.FileJPEG.hpp"
 #include "GLS.FPSMovement.hpp"
 #include "GLS.Material.hpp"

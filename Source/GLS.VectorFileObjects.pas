@@ -52,7 +52,7 @@ uses
   GLS.PipelineTransformation,
   GLS.Selection,
   GLS.RenderContextInfo,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses;
 
 type

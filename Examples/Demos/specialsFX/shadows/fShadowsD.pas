@@ -31,7 +31,7 @@ uses
   GLS.SceneViewer, 
   GLS.GeomObjects,
   GLS.Material, 
-  GLS.Coordinates, 
+  GLScene.Coordinates, 
   GLS.Behaviours, 
   GLScene.Utils;
 

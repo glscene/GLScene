@@ -18,7 +18,7 @@
 #include <GLS.SceneViewer.hpp>
 #include <GLS.Objects.hpp>
 #include <GLS.VectorFileObjects.hpp>
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 
 #include "GLScene.Utils.hpp"
 #include "GLS.Cadencer.hpp"

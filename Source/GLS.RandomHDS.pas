@@ -64,7 +64,7 @@ uses
   GLS.TerrainRenderer,
   GLS.Texture,
   GLS.Color,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.RenderContextInfo,
   GLS.Material,
   GLS.Context;

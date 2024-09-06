@@ -46,7 +46,7 @@ uses
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.State,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.PersistentClasses;
 
 type

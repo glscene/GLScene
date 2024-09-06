@@ -37,7 +37,7 @@ uses
   GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GXS.Scene,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.Graphics,
   GXS.Objects,
   GXS.Context,

@@ -28,7 +28,7 @@ uses
   GLS.Objects,
   GLScene.VectorGeometry,
   GLS.GeomObjects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
 
 

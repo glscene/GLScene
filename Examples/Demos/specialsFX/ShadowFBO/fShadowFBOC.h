@@ -10,7 +10,7 @@
 #include <Vcl.Imaging.Jpeg.hpp>
 #include "GLScene.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 
 #include "GLSL.CustomShader.hpp"
 #include "GLS.FBORenderer.hpp"

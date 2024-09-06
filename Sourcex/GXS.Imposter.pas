@@ -25,8 +25,8 @@ uses
   GXS.Graphics,
   GXS.Color,
   GXS.RenderContextInfo,
-  GXS.Coordinates,
-  GXS.BaseClasses,
+  GLScene.Coordinates,
+  GLScene.BaseClasses,
   GXS.State,
   GXS.PipelineTransformation,
   GXS.TextureFormat,
@@ -112,10 +112,10 @@ type
   TImposterReference = (irCenter, irTop, irBottom);
 
   // Abstract ImposterBuilder class.
-  TgxImposterBuilder = class(TgxUpdateAbleComponent)
+  TgxImposterBuilder = class(TGUpdateAbleComponent)
   private
     FBackColor: TgxColor;
-    FBuildOffset: TgxCoordinates;
+    FBuildOffset: TGCoordinates;
     FImposterRegister: TGPersistentObjectList;
     FRenderPoint: TgxRenderPoint;
     FImposterOptions: TImposterOptions;
@@ -127,7 +127,7 @@ type
     procedure SetRenderPoint(AValue: TgxRenderPoint);
     procedure RenderPointFreed(Sender: TObject);
     procedure SetBackColor(AValue: TgxColor);
-    procedure SetBuildOffset(AValue: TgxCoordinates);
+    procedure SetBuildOffset(AValue: TGCoordinates);
     procedure SetImposterReference(AValue: TImposterReference);
     procedure InitializeImpostorTexture(const TextureSize: TPoint);
     property ImposterRegister: TGPersistentObjectList read FImposterRegister;
@@ -167,7 +167,7 @@ type
     property BackColor: TgxColor read FBackColor write SetBackColor;
     (* Offset applied to the impostor'ed object during imposter construction.
        Can be used to manually tune the centering of objects. *)
-    property BuildOffset: TgxCoordinates read FBuildOffset write SetBuildOffset;
+    property BuildOffset: TGCoordinates read FBuildOffset write SetBuildOffset;
     // Imposter rendering options
     property ImposterOptions: TImposterOptions read FImposterOptions write
       FImposterOptions default cDefaultImposterOptions;
@@ -552,7 +552,7 @@ begin
   inherited;
   FImposterRegister := TGPersistentObjectList.Create;
   FBackColor := TgxColor.CreateInitialized(Self, clrTransparent);
-  FBuildOffset := TgxCoordinates.CreateInitialized(Self, NullHmgPoint, CsPoint);
+  FBuildOffset := TGCoordinates.CreateInitialized(Self, NullHmgPoint, CsPoint);
   FImposterOptions := cDefaultImposterOptions;
   FAlphaTreshold := 0.5;
 end;
@@ -721,7 +721,7 @@ begin
   FBackColor.Assign(AValue);
 end;
 
-procedure TgxImposterBuilder.SetBuildOffset(AValue: TgxCoordinates);
+procedure TgxImposterBuilder.SetBuildOffset(AValue: TGCoordinates);
 begin
   FBuildOffset.Assign(AValue);
 end;
@@ -844,8 +844,8 @@ end;
 procedure TgxStaticImposterBuilderCoronas.NotifyChange;
 begin
   if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is
-    TgxUpdateAbleComponent) then
-    TgxUpdateAbleComponent(GetOwner).NotifyChange(Self);
+    TGUpdateAbleComponent) then
+    TGUpdateAbleComponent(GetOwner).NotifyChange(Self);
 end;
 
 procedure TgxStaticImposterBuilderCoronas.EndUpdate;

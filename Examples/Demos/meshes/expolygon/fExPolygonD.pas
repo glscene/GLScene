@@ -20,7 +20,7 @@ uses
   GLS.MultiPolygon,
   GLS.SceneViewer,
   GLS.Material,
-  GLS.Coordinates;
+  GLScene.Coordinates;
 
 type
   TVektor = record

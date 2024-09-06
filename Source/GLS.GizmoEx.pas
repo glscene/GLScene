@@ -31,7 +31,7 @@ uses
   GLS.BitmapFont,
   GLS.SceneViewer,
   GLS.VectorFileObjects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.RenderContextInfo,
   GLScene.GeometryBB,
   GLScene.VectorTypes,

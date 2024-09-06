@@ -18,7 +18,7 @@
 #include <GLS.Cadencer.hpp>
 #include <GLS.ParticleFX.hpp>
 #include "GLScene.BaseClasses.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 #include "GLS.FullScreenViewer.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Keyboard.hpp"

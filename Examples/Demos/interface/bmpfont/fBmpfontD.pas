@@ -19,7 +19,7 @@ uses
   GLS.Cadencer,
   GLS.BitmapFont,
   GLS.GeomObjects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLScene.Utils,
   GLS.SceneViewer;

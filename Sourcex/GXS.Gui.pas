@@ -23,8 +23,8 @@ uses
   GXS.Context,
   GLScene.PersistentClasses,
   GLScene.VectorGeometry,
-  GXS.Coordinates,
-  GXS.BaseClasses;
+  GLScene.Coordinates,
+  GLScene.BaseClasses;
 
 type
 
@@ -75,9 +75,9 @@ type
   TgxGuiElementName = string;
   TgxGuiElement = class(TCollectionItem)
   private
-    FTopLeft: TgxCoordinates2;
-    FBottomRight: TgxCoordinates2;
-    FScale: TgxCoordinates2;
+    FTopLeft: TGCoordinates2;
+    FBottomRight: TGCoordinates2;
+    FScale: TGCoordinates2;
     FAlign: TGUIAlignments;
     FName: TgxGuiElementName;
   protected
@@ -88,9 +88,9 @@ type
     destructor Destroy; override;
     procedure AssignTo(Dest: TPersistent); override;
   published
-    property TopLeft: TgxCoordinates2 read FTopLeft write FTopLeft;
-    property BottomRight: TgxCoordinates2 read FBottomRight write FBottomRight;
-    property Scale: TgxCoordinates2 read FScale write FScale;
+    property TopLeft: TGCoordinates2 read FTopLeft write FTopLeft;
+    property BottomRight: TGCoordinates2 read FBottomRight write FBottomRight;
+    property Scale: TGCoordinates2 read FScale write FScale;
     property Align: TGUIAlignments read FAlign write FAlign;
     property Name: TgxGuiElementName read FName write SetName;
   end;
@@ -151,7 +151,7 @@ type
       SetItems; default;
   end;
 
-  TgxGuiLayout = class(TgxUpdateAbleComponent)
+  TgxGuiLayout = class(TGUpdateAbleComponent)
   private
     FBitmapFont: TgxCustomBitmapFont;
     FMaterial: TgxMaterial;
@@ -171,8 +171,8 @@ type
     procedure Clear;
     procedure SaveToStream(Stream: TStream);
     procedure SaveToFile(FN: string);
-    procedure AddGuiComponent(Component: TgxUpdateAbleComponent);
-    procedure RemoveGuiComponent(Component: TgxUpdateAbleComponent);
+    procedure AddGuiComponent(Component: TGUpdateAbleComponent);
+    procedure RemoveGuiComponent(Component: TGUpdateAbleComponent);
     procedure NotifyChange(Sender: TObject); override;
   published
     property BitmapFont: TgxCustomBitmapFont read FBitmapFont write FBitmapFont;
@@ -436,7 +436,7 @@ begin
   end;
 end;
 
-procedure TgxGuiLayout.AddGuiComponent(Component: TgxUpdateAbleComponent);
+procedure TgxGuiLayout.AddGuiComponent(Component: TGUpdateAbleComponent);
 begin
   if FGuiComponentList.IndexOf(Component) < 0 then
   begin
@@ -445,7 +445,7 @@ begin
   end;
 end;
 
-procedure TgxGuiLayout.RemoveGuiComponent(Component: TgxUpdateAbleComponent);
+procedure TgxGuiLayout.RemoveGuiComponent(Component: TGUpdateAbleComponent);
 begin
   FGuiComponentList.Remove(Component);
   RemoveFreeNotification(Component);
@@ -471,10 +471,10 @@ begin
       LComponent.Name := LLayout.FGuiComponents[I].Name;
     end;
     for I := 0 to FGuiComponentList.Count - 1 do
-      TgxUpdateAbleComponent(FGuiComponentList[I]).RemoveFreeNotification(Self);
+      TGUpdateAbleComponent(FGuiComponentList[I]).RemoveFreeNotification(Self);
     FGuiComponentList.Assign(LLayout.FGuiComponentList);
     for I := 0 to FGuiComponentList.Count - 1 do
-      TgxUpdateAbleComponent(FGuiComponentList[I]).FreeNotification(Self);
+      TGUpdateAbleComponent(FGuiComponentList[I]).FreeNotification(Self);
   end
   else
     inherited; // Assign Error
@@ -499,7 +499,7 @@ begin
   inherited;
 
   for XC := FGuiComponentList.Count - 1 downto 0 do
-    TgxUpdateAbleComponent(FGuiComponentList[XC]).NotifyChange(Self);
+    TGUpdateAbleComponent(FGuiComponentList[XC]).NotifyChange(Self);
 end;
 
 procedure TgxGuiLayout.LoadFromStream(Stream: TStream);
@@ -1170,10 +1170,10 @@ end;
 constructor TgxGuiElement.Create(Collection: TCollection);
 begin
   inherited;
-  FTopLeft := TgxCoordinates2.CreateInitialized(Self, NullHmgVector, csPoint2D);
-  FBottomRight := TgxCoordinates2.CreateInitialized(Self, NullHmgVector,
+  FTopLeft := TGCoordinates2.CreateInitialized(Self, NullHmgVector, csPoint2D);
+  FBottomRight := TGCoordinates2.CreateInitialized(Self, NullHmgVector,
     csPoint2D);
-  FScale := TgxCoordinates2.CreateInitialized(Self, XYHmgVector, csPoint2D);
+  FScale := TGCoordinates2.CreateInitialized(Self, XYHmgVector, csPoint2D);
 end;
 
 destructor TgxGuiElement.Destroy;

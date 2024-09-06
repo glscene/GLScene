@@ -19,7 +19,7 @@ uses
   GLS.SceneViewer,
   GLS.TimeEventsMgr,
 
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses;
 
 type

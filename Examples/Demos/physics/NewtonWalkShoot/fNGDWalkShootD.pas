@@ -17,7 +17,7 @@ uses
   GLScene.VectorLists,
   GLScene.PersistentClasses,
   GLS.Objects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Cadencer,
   GLS.NGDManager,
   GLS.SimpleNavigation,

@@ -22,7 +22,7 @@ uses
   GLS.Texture,
 
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLS.FileMD2,

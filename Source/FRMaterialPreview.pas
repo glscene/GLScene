@@ -26,7 +26,7 @@ uses
   GLS.SceneViewer,
   GLS.GeomObjects,
   GLS.Color,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.Material;
 

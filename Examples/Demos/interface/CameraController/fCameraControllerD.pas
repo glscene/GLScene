@@ -27,7 +27,7 @@ uses
   GLS.Texture,
   GLS.Cadencer,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
 
   GLScene.VectorTypes,
   GLScene.BaseClasses,

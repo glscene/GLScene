@@ -33,9 +33,9 @@ uses
   GLScene.VectorTypes, 
   GLS.Navigator,
   GLScene.VectorGeometry,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Screen, 
-  GLS.XCollection;
+  GLScene.XCollection;
 
 type
 

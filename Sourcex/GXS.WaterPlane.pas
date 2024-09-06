@@ -23,7 +23,7 @@ uses
   GLScene.Utils,
   GLScene.VectorLists,
   GLScene.PersistentClasses,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GXS.Scene,
   GXS.ImageUtils,
   GXS.Context,
@@ -77,7 +77,7 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TgxProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     procedure Assign(Source: TPersistent); override;
     function AxisAlignedDimensionsUnscaled: TVector4f; override;
@@ -154,7 +154,7 @@ begin
   inherited;
 end;
 
-procedure TgxWaterPlane.DoProgress(const progressTime: TgxProgressTimes);
+procedure TgxWaterPlane.DoProgress(const progressTime: TGProgressTimes);
 var
   i: Integer;
 begin

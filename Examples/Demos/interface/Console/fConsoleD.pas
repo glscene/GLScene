@@ -24,7 +24,7 @@ uses
   GLS.WindowsFont,
   GLS.Behaviours,
   GLS.Console,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.SimpleNavigation,
   GLScene.Utils;
 

@@ -15,7 +15,7 @@ interface
 
 uses
   System.Classes,
-  GLS.XCollection;
+  GLScene.XCollection;
 
 type
   TGLScriptState = (

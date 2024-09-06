@@ -22,7 +22,7 @@ uses
   GLS.FileMS3D,
   GLS.FileTGA,
   GLS.FileZLIB,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.SceneViewer,
   GLScene.Utils, GLS.SimpleNavigation;
 

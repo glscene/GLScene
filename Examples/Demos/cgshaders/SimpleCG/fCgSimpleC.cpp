@@ -14,7 +14,7 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.Cadencer"
-#pragma link "GLS.Coordinates"
+#pragma link "GLScene.Coordinates"
 #pragma link "GLS.Graph"
 #pragma link "GLS.Objects"
 #pragma link "GLS.VectorFileObjects"

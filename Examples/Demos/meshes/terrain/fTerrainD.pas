@@ -35,7 +35,7 @@ uses
   GLScene.VectorGeometry,
   GLS.LensFlare,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.State,
   GLS.FileMP3,

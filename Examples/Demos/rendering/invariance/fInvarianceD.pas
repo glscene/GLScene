@@ -18,7 +18,7 @@ uses
   GLS.Texture,
   GLS.GeomObjects,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLScene.Utils;
 

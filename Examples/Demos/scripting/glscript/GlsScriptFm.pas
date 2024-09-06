@@ -25,7 +25,7 @@ uses
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.HUDObjects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
 
   GLScene.BaseClasses,
   GLS.RenderContextInfo,

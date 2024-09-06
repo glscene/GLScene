@@ -26,7 +26,7 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLScene.VectorGeometry,
   GLScene.Utils;

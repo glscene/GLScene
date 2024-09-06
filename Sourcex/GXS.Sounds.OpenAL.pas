@@ -31,7 +31,7 @@ uses
   GLScene.VectorTypes,
   GXS.Scene,
   GLScene.VectorGeometry,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.Sound,
   GXS.SoundFileObjects;
 

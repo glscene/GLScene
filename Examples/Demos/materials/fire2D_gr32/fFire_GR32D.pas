@@ -27,7 +27,7 @@ uses
   GLS.HUDObjects,
   GLS.SceneViewer,
   GLS.Cadencer,
-  GLS.Coordinates,
+  GLScene.Coordinates,
  
   GLScene.BaseClasses,
   GLS.Material,

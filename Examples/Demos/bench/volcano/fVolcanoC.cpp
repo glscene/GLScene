@@ -10,7 +10,7 @@
 #pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Behaviours"
 #pragma link "GLS.Cadencer"
-#pragma link "GLS.Coordinates"
+#pragma link "GLScene.Coordinates"
 
 #pragma link "GLS.Objects"
 #pragma link "GLS.ParticleFX"

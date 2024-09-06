@@ -22,14 +22,14 @@ uses
   GXS.Objects,
   GLScene.VectorLists,
   GXS.Color,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GXS.RenderContextInfo,
   GXS.State,
   GLScene.VectorTypes;
 
 type
 
-  TgxSamplingScale = class(TgxUpdateAbleObject)
+  TgxSamplingScale = class(TGUpdateAbleObject)
   private
     FMin: Single;
     FMax: Single;

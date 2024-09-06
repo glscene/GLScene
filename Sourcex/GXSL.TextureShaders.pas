@@ -35,7 +35,7 @@ uses
   GXS.VectorFileObjects,
   GXS.State,
   GLScene.PersistentClasses,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.TextureCombiners,
   GXS.RenderContextInfo,
   GXS.ImageUtils;
@@ -49,8 +49,8 @@ type
     FNeedToUpdateTextureMatrix: Boolean;
     FTextureMatrixIsUnitary: Boolean;
     FLibMaterial: TgxLibMaterial;
-    FTexOffset: TgxCoordinates2;
-    FTexScale: TgxCoordinates2;
+    FTexOffset: TGCoordinates2;
+    FTexScale: TGCoordinates2;
     FBlendingMode: TgxBlendingMode;
     FSpecular: TgxColor;
     FAmbient: TgxColor;
@@ -68,8 +68,8 @@ type
     procedure SetLibMaterialName(const Value: TgxLibMaterialName);
     procedure SetBlendingMode(const Value: TgxBlendingMode);
     procedure SetLibMaterial(const Value: TgxLibMaterial);
-    procedure SetTexOffset(const Value: TgxCoordinates2);
-    procedure SetTexScale(const Value: TgxCoordinates2);
+    procedure SetTexOffset(const Value: TGCoordinates2);
+    procedure SetTexScale(const Value: TGCoordinates2);
     function GetTextureMatrix: TMatrix4f;
     function GetTextureMatrixIsUnitary: Boolean;
   protected
@@ -88,8 +88,8 @@ type
     property TextureMatrix: TMatrix4f read GetTextureMatrix;
     property TextureMatrixIsUnitary: Boolean read GetTextureMatrixIsUnitary;
   published
-    property TexOffset: TgxCoordinates2 read FTexOffset write SetTexOffset;
-    property TexScale: TgxCoordinates2 read FTexScale write SetTexScale;
+    property TexOffset: TGCoordinates2 read FTexOffset write SetTexOffset;
+    property TexScale: TGCoordinates2 read FTexScale write SetTexScale;
     property BlendingMode: TgxBlendingMode read FBlendingMode write SetBlendingMode;
     property Emission: TgxColor read FEmission write SetEmission;
     property Ambient: TgxColor read FAmbient write SetAmbient;
@@ -338,10 +338,10 @@ begin
   FEmission := TgxColor.Create(Self);
   FEmission.OnNotifyChange := OtherNotifychange;
 
-  FTexOffset := TgxCoordinates2.CreateInitialized(Self, NullHmgVector, csPoint2d);
+  FTexOffset := TGCoordinates2.CreateInitialized(Self, NullHmgVector, csPoint2d);
   FTexOffset.OnNotifyChange := coordNotifychange;
 
-  FTexScale := TgxCoordinates2.CreateInitialized(Self, XYZHmgVector, csPoint2d);
+  FTexScale := TGCoordinates2.CreateInitialized(Self, XYZHmgVector, csPoint2d);
   FTexScale.OnNotifyChange := coordNotifychange;
   FNeedToUpdateTextureMatrix := True;
 end;
@@ -480,13 +480,13 @@ begin
   FSpecular.Assign(Value);
 end;
 
-procedure TgxShaderTextureSharingMaterial.SetTexOffset(const Value: TgxCoordinates2);
+procedure TgxShaderTextureSharingMaterial.SetTexOffset(const Value: TGCoordinates2);
 begin
   FTexOffset.Assign(Value);
   FNeedToUpdateTextureMatrix := True;
 end;
 
-procedure TgxShaderTextureSharingMaterial.SetTexScale(const Value: TgxCoordinates2);
+procedure TgxShaderTextureSharingMaterial.SetTexScale(const Value: TGCoordinates2);
 begin
   FTexScale.Assign(Value);
   FNeedToUpdateTextureMatrix := True;

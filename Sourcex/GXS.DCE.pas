@@ -33,7 +33,7 @@ uses
   GXS.XCollection,
   GLScene.VectorGeometry,
   GLScene.VectorLists,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.Manager,
   GLScene.VectorTypes,
   GLScene.Strings,
@@ -43,7 +43,7 @@ uses
   GXS.DCEMisc,
   GXS.EllipseCollision,
   GXS.TerrainRenderer,
-  GXS.Coordinates;
+  GLScene.Coordinates;
 
 type
   // Only csEllipsoid can have dynamic behaviour 
@@ -84,13 +84,13 @@ type
     FStatics: TList;
     FDynamics: TList;
     FGravity: single;
-    FWorldDirection: TgxCoordinates; // Used to calculate jumps f.i.
+    FWorldDirection: TGCoordinates; // Used to calculate jumps f.i.
     FWorldScale: single;
     FMovimentScale: single;
     FStandardiseLayers: TgxDCECollisionSelection;
     FManualStep: Boolean;
     FOnCollision: TgxDCECollisionEvent;
-    procedure SetWorldDirection(const Value: TgxCoordinates);
+    procedure SetWorldDirection(const Value: TGCoordinates);
     procedure SetWorldScale(const Value: single);
     function GetDynamicCount: Integer;
     function GetStaticCount: Integer;
@@ -112,7 +112,7 @@ type
     property StaticCount: Integer read GetStaticCount;
   published
     property Gravity: single read FGravity write FGravity;
-    property WorldDirection: TgxCoordinates read FWorldDirection write SetWorldDirection;
+    property WorldDirection: TGCoordinates read FWorldDirection write SetWorldDirection;
     property WorldScale: single read FWorldScale write SetWorldScale;
     property MovimentScale: single read FMovimentScale write FMovimentScale;
     Property StandardiseLayers: TgxDCECollisionSelection read FStandardiseLayers write FStandardiseLayers;
@@ -132,13 +132,13 @@ type
     FSolid: Boolean;
     FFriction: single; // 0 (no friction); 100 (no movement)
     FBounceFactor: single; // 0 (don't bounce); 1 (bounce forever)
-    FSize: TgxCoordinates;
+    FSize: TGCoordinates;
     // Events
     FOnCollision: TgxDCEObjectCollisionEvent;
     procedure SetShape(const Value: TgxDCEShape);
     procedure SetFriction(const Value: single);
     procedure SetBounceFactor(const Value: single);
-    procedure SetSize(const Value: TgxCoordinates);
+    procedure SetSize(const Value: TGCoordinates);
   protected
     procedure SetManager(const val: TgxDCEManager);
     procedure WriteToFiler(writer: TWriter); override;
@@ -159,7 +159,7 @@ type
     property Solid: Boolean read FSolid write FSolid;
     property Friction: single read FFriction write SetFriction;
     property BounceFactor: single read FBounceFactor write SetBounceFactor;
-    property Size: TgxCoordinates read FSize write SetSize;
+    property Size: TGCoordinates read FSize write SetSize;
   end;
 
   TgxDCESlideOrBounce = (csbSlide, csbBounce);
@@ -175,7 +175,7 @@ type
     // Collide and slide if true, otherwise it "walk thru walls"
     FFriction: single; // 0 (no friction); 100 (no movement)
     FBounceFactor: single; // 0 (don't bounce); 1 (bounce forever)
-    FSize: TgxCoordinates;
+    FSize: TGCoordinates;
     //Number of iterations of the collision method
 	FMaxRecursionDepth: byte;
     FSlideOrBounce: TgxDCESlideOrBounce; // gak20041122
@@ -194,7 +194,7 @@ type
     FOnCollision: TgxDCEObjectCollisionEvent;
     procedure SetFriction(const Value: single);
     procedure SetBounceFactor(const Value: single);
-    procedure SetSize(const Value: TgxCoordinates);
+    procedure SetSize(const Value: TGCoordinates);
   protected
     procedure SetManager(const val: TgxDCEManager);
     procedure WriteToFiler(writer: TWriter); override;
@@ -216,7 +216,7 @@ type
     procedure Move(deltaS: TAffineVector; deltaTime: Double);
     procedure MoveTo(Position: TAffineVector; Amount: single);
     procedure DoMove(deltaTime: Double);
-    procedure DoProgress(const progressTime: TgxProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     // Runtime only
     property Speed: TAffineVector read FSpeed write FSpeed;
     property InGround: Boolean read FInGround;
@@ -230,7 +230,7 @@ type
     property Solid: Boolean read FSolid write FSolid;
     property Friction: single read FFriction write SetFriction;
     property BounceFactor: single read FBounceFactor write SetBounceFactor;
-    property Size: TgxCoordinates read FSize write SetSize;
+    property Size: TGCoordinates read FSize write SetSize;
     property SlideOrBounce: TgxDCESlideOrBounce read FSlideOrBounce write FSlideOrBounce;
   end;
 
@@ -257,7 +257,7 @@ begin
   FStatics := TList.Create;
   FDynamics := TList.Create;
   FGravity := 0;
-  FWorldDirection := TgxCoordinates.CreateInitialized(Self, YHmgVector, csVector);
+  FWorldDirection := TGCoordinates.CreateInitialized(Self, YHmgVector, csVector);
   FWorldScale := 1;
   FMovimentScale := 1;
   FStandardiseLayers := ccsDCEStandard;
@@ -527,7 +527,7 @@ begin
         DoMove(deltaTime);
 end;
 
-procedure TgxDCEManager.SetWorldDirection(const Value: TgxCoordinates);
+procedure TgxDCEManager.SetWorldDirection(const Value: TGCoordinates);
 begin
   FWorldDirection := Value;
   FWorldDirection.Normalize;
@@ -625,7 +625,7 @@ constructor TgxDCEStatic.Create(AOwner: TXCollection);
 begin
   inherited Create(AOwner);
   FActive := True;
-  FSize := TgxCoordinates.CreateInitialized(Self, XYZHmgVector, csVector);
+  FSize := TGCoordinates.CreateInitialized(Self, XYZHmgVector, csVector);
   FShape := csEllipsoid;
   FSolid := True;
   FFriction := 1;
@@ -740,7 +740,7 @@ begin
   FShape := Value;
 end;
 
-procedure TgxDCEStatic.SetSize(const Value: TgxCoordinates);
+procedure TgxDCEStatic.SetSize(const Value: TGCoordinates);
 begin
   FSize.Assign(Value);
   if FSize.x <= 0 then
@@ -808,7 +808,7 @@ begin
   inherited Create(AOwner);
   FActive := True;
   FUseGravity := True;
-  FSize := TgxCoordinates.CreateInitialized(Self, XYZHmgVector, csVector);
+  FSize := TGCoordinates.CreateInitialized(Self, XYZHmgVector, csVector);
   FSolid := True;
   FFriction := 1;
   FBounceFactor := 0;
@@ -928,7 +928,7 @@ begin
   FAbsAccel := NullVector;
 end;
 
-procedure TgxDCEDynamic.DoProgress(const progressTime: TgxProgressTimes);
+procedure TgxDCEDynamic.DoProgress(const progressTime: TGProgressTimes);
 begin
   inherited DoProgress(progressTime);
   Assert(Assigned(Manager), 'DCE Manager not assigned to behaviour.');
@@ -1070,7 +1070,7 @@ begin
   end;
 end;
 
-procedure TgxDCEDynamic.SetSize(const Value: TgxCoordinates);
+procedure TgxDCEDynamic.SetSize(const Value: TGCoordinates);
 begin
   FSize.Assign(Value);
   if FSize.x <= 0 then

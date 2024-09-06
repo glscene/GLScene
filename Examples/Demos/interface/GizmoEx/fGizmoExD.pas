@@ -27,7 +27,7 @@ uses
   GLScene.Utils,
   GLS.GizmoEx,
 
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLScene.VectorGeometry,
   GLS.GeomObjects,

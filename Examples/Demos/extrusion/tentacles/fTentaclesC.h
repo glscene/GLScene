@@ -18,7 +18,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Color.hpp"
 
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 #include "GLScene.BaseClasses.hpp"
 //---------------------------------------------------------------------------
 class TFormTentacles : public TForm

@@ -29,7 +29,7 @@ uses
   System.Classes,
 
   GLScene.VectorTypes,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.HeightData,
   GLS.Material;
 

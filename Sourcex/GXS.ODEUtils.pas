@@ -26,7 +26,7 @@ uses
   GLScene.PersistentClasses,
   GXS.Scene,
   GXS.Context,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.Objects,
   GXS.VerletClothify,
   GXS.VectorFileObjects;

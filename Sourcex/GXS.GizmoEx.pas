@@ -36,7 +36,7 @@ uses
   GXS.GeomObjects,
   GXS.BitmapFont,
   GXS.VectorFileObjects,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.RenderContextInfo,
   GXS.Canvas,
   GXS.Screen,

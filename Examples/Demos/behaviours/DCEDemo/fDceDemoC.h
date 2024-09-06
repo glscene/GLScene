@@ -29,7 +29,7 @@
 #include "GLS.BitmapFont.hpp"
 #include "GLS.WindowsFont.hpp"
 #include "GLS.HUDObjects.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 #include "GLS.FileMD2.hpp"
 #include "GLScene.BaseClasses.hpp"
 #include "GLS.RenderContextInfo.hpp"

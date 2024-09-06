@@ -23,14 +23,17 @@ uses
   FMX.Types,
   FMX.Dialogs,
 
+  GLScene.OpenGLTokens,
   GXS.XOpenGL,
   GXS.XCollection,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.VectorTypes,
   GLScene.VectorLists,
   GLScene.VectorGeometry,
   GLScene.PersistentClasses,
   GLScene.GeometryBB,
+  GLScene.Coordinates,
+
   GXS.ApplicationFileIO,
 
   GXS.TextureFormat,
@@ -44,7 +47,6 @@ uses
   GXS.Graphics,
   GXS.Texture,
   GXS.Color,
-  GXS.Coordinates,
   GXS.RenderContextInfo,
   GXS.Material,
   GXS.Selection,
@@ -161,15 +163,15 @@ type
     To add children at runtime, use the AddNewChild method of TgxBaseSceneObject;
     other children manipulations methods and properties are provided (to browse,
     move and delete them). Using the regular TComponent methods is not encouraged. *)
-  TgxBaseSceneObject = class(TgxCoordinatesUpdateAbleComponent)
+  TgxBaseSceneObject = class(TGCoordinatesUpdateAbleComponent)
   private
     FAbsoluteMatrix, FInvAbsoluteMatrix: TMatrix4f;
     FLocalMatrix: TMatrix4f;
     FObjectStyle: TgxObjectStyles;
     FListHandle: TgxListHandle; // created on 1st use
-    FPosition: TgxCoordinates;
-    FDirection, FUp: TgxCoordinates;
-    FScaling: TgxCoordinates;
+    FPosition: TGCoordinates;
+    FDirection, FUp: TGCoordinates;
+    FScaling: TGCoordinates;
     FChanges: TObjectChanges;
     FParent: TgxBaseSceneObject;
     FScene: TgxScene;
@@ -181,11 +183,11 @@ type
     FVisible: Boolean;
     FUpdateCount: Integer;
     FShowAxes: Boolean;
-    FRotation: TgxCoordinates; // current rotation angles
+    FRotation: TGCoordinates; // current rotation angles
     FIsCalculating: Boolean;
     FObjectsSorting: TgxObjectsSorting;
     FVisibilityCulling: TgxVisibilityCulling;
-    FOnProgress: TgxProgressEvent;
+    FOnProgress: TGProgressEvent;
     FOnAddedToParent: TNotifyEvent;
     FBehaviours: TgxBehaviours;
     FEffects: TgxEffects;
@@ -204,19 +206,19 @@ type
     function GetIndex: Integer; inline;
     procedure SetParent(const val: TgxBaseSceneObject); inline;
     procedure SetIndex(aValue: Integer);
-    procedure SetDirection(AVector: TgxCoordinates);
-    procedure SetUp(AVector: TgxCoordinates);
+    procedure SetDirection(AVector: TGCoordinates);
+    procedure SetUp(AVector: TGCoordinates);
     function GetMatrix: PMatrix4f; inline;
-    procedure SetPosition(APosition: TgxCoordinates);
+    procedure SetPosition(APosition: TGCoordinates);
     procedure SetPitchAngle(AValue: Single);
     procedure SetRollAngle(AValue: Single);
     procedure SetTurnAngle(AValue: Single);
-    procedure SetRotation(aRotation: TgxCoordinates);
+    procedure SetRotation(aRotation: TGCoordinates);
     function GetPitchAngle: Single; inline;
     function GetTurnAngle: Single; inline;
     function GetRollAngle: Single; inline;
     procedure SetShowAxes(AValue: Boolean);
-    procedure SetScaling(AValue: TgxCoordinates);
+    procedure SetScaling(AValue: TGCoordinates);
     procedure SetObjectsSorting(const val: TgxObjectsSorting);
     procedure SetVisibilityCulling(const val: TgxVisibilityCulling);
     procedure SetBehaviours(const val: TgxBehaviours);
@@ -472,7 +474,7 @@ type
     procedure MoveChildDown(anIndex: Integer);
     procedure MoveChildFirst(anIndex: Integer);
     procedure MoveChildLast(anIndex: Integer);
-    procedure DoProgress(const progressTime: TgxProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     procedure MoveTo(newParent: TgxBaseSceneObject); virtual;
     procedure MoveUp;
     procedure MoveDown;
@@ -524,10 +526,10 @@ type
     procedure StructureChanged; virtual;
     procedure ClearStructureChanged; inline;
     // Recalculate an orthonormal system
-    procedure CoordinateChanged(Sender: TgxCustomCoordinates); override;
+    procedure CoordinateChanged(Sender: TGCustomCoordinates); override;
     procedure TransformationChanged; inline;
     procedure NotifyChange(Sender: TObject); override;
-    property Rotation: TgxCoordinates read FRotation write SetRotation;
+    property Rotation: TGCoordinates read FRotation write SetRotation;
     property PitchAngle: Single read GetPitchAngle write SetPitchAngle;
     property RollAngle: Single read GetRollAngle write SetRollAngle;
     property TurnAngle: Single read GetTurnAngle write SetTurnAngle;
@@ -535,10 +537,10 @@ type
     property Changes: TObjectChanges read FChanges;
     property BBChanges: TObjectBBChanges read FBBChanges write SetBBChanges;
     property Parent: TgxBaseSceneObject read FParent write SetParent;
-    property Position: TgxCoordinates read FPosition write SetPosition;
-    property Direction: TgxCoordinates read FDirection write SetDirection;
-    property Up: TgxCoordinates read FUp write SetUp;
-    property Scale: TgxCoordinates read FScaling write SetScaling;
+    property Position: TGCoordinates read FPosition write SetPosition;
+    property Direction: TGCoordinates read FDirection write SetDirection;
+    property Up: TGCoordinates read FUp write SetUp;
+    property Scale: TGCoordinates read FScaling write SetScaling;
     property Scene: TgxScene read FScene;
     property Visible: Boolean read FVisible write SetVisible default True;
     property Pickable: Boolean read FPickable write SetPickable default True;
@@ -546,7 +548,7 @@ type
 	  SetObjectsSorting default osInherited;
     property VisibilityCulling: TgxVisibilityCulling read FVisibilityCulling 
 	  write SetVisibilityCulling default vcInherited;
-    property OnProgress: TgxProgressEvent read FOnProgress write FOnProgress;
+    property OnProgress: TGProgressEvent read FOnProgress write FOnProgress;
     property OnPicked: TNotifyEvent read FOnPicked write FOnPicked;
     property OnAddedToParent: TNotifyEvent read FOnAddedToParent write FOnAddedToParent;
     property Behaviours: TgxBehaviours read GetBehaviours write SetBehaviours stored False;
@@ -586,7 +588,7 @@ type
   public
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TgxProgressTimes); virtual;
+    procedure DoProgress(const progressTime: TGProgressTimes); virtual;
   end;
 
   (* Ancestor for non-rendering behaviours.
@@ -611,7 +613,7 @@ type
     class function ItemsClass: TXCollectionItemClass; override;
     property Behaviour[index: Integer]: TgxBehaviour read GetBehaviour; default;
     function CanAdd(aClass: TXCollectionItemClass): Boolean; override;
-    procedure DoProgress(const progressTimes: TgxProgressTimes); inline;
+    procedure DoProgress(const progressTimes: TGProgressTimes); inline;
   end;
 
   (* A rendering effect that can be applied to SceneObjects.
@@ -665,7 +667,7 @@ type
     class function ItemsClass: TXCollectionItemClass; override;
     property ObjectEffect[index: Integer]: TgxEffect read GetEffect; default;
     function CanAdd(aClass: TXCollectionItemClass): Boolean; override;
-    procedure DoProgress(const progressTime: TgxProgressTimes);
+    procedure DoProgress(const progressTime: TGProgressTimes);
     procedure RenderPreEffects(var rci: TgxRenderContextInfo); inline;
     // Also take care of registering after effects with the GLXceneViewer.
     procedure RenderPostEffects(var rci: TgxRenderContextInfo); inline;
@@ -902,7 +904,7 @@ type
   TgxLightSource = class(TgxBaseSceneObject)
   private
     FLightID: Cardinal;
-    FSpotDirection: TgxCoordinates;
+    FSpotDirection: TGCoordinates;
     FSpotExponent, FSpotCutOff: Single;
     FConstAttenuation, FLinearAttenuation, FQuadraticAttenuation: Single;
     FShining: Boolean;
@@ -916,7 +918,7 @@ type
     procedure SetLinearAttenuation(aValue: Single);
     procedure SetQuadraticAttenuation(aValue: Single);
     procedure SetShining(aValue: Boolean);
-    procedure SetSpotDirection(AVector: TgxCoordinates);
+    procedure SetSpotDirection(AVector: TGCoordinates);
     procedure SetSpotExponent(aValue: Single);
     procedure SetSpotCutOff(const val: Single);
     procedure SetLightStyle(const val: TgxLightStyle);
@@ -927,7 +929,7 @@ type
     // light sources have different handle types than normal scene objects
     function RayCastIntersect(const rayStart, rayVector: TVector4f; intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil)
       : Boolean; override;
-    procedure CoordinateChanged(Sender: TgxCustomCoordinates); override;
+    procedure CoordinateChanged(Sender: TGCustomCoordinates); override;
     function GenerateSilhouette(const silhouetteParameters: TgxSilhouetteParameters): TgxSilhouette; override;
     property LightID: Cardinal read FLightID;
     function Attenuated: Boolean;
@@ -942,7 +944,7 @@ type
     property Shining: Boolean read FShining write SetShining default True;
     property Specular: TgxColor read FSpecular write SetSpecular;
     property SpotCutOff: Single read FSpotCutOff write SetSpotCutOff;
-    property SpotDirection: TgxCoordinates read FSpotDirection write SetSpotDirection;
+    property SpotDirection: TGCoordinates read FSpotDirection write SetSpotDirection;
     property SpotExponent: Single read FSpotExponent write SetSpotExponent;
     property OnProgress;
   end;
@@ -1122,7 +1124,7 @@ type
     components), but those are edited with a specific editor (double-click
     on the TgxScene component at design-time to invoke it). To add objects
     at runtime, use the AddNewChild method of TgxBaseSceneObject. *)
-  TgxScene = class(TgxUpdateAbleComponent)
+  TgxScene = class(TGUpdateAbleComponent)
   private
     FUpdateCount: Integer;
     FObjects: TgxSceneRootObject;
@@ -1132,8 +1134,8 @@ type
     FCurrentBuffer: TgxSceneBuffer;
     FObjectsSorting: TgxObjectsSorting;
     FVisibilityCulling: TgxVisibilityCulling;
-    FOnBeforeProgress: TgxProgressEvent;
-    FOnProgress: TgxProgressEvent;
+    FOnBeforeProgress: TGProgressEvent;
+    FOnProgress: TGProgressEvent;
     FCurrentDeltaTime: Double;
     FInitializableObjects: TgxInitializableObjectList;
   protected
@@ -1196,8 +1198,8 @@ type
     property ObjectsSorting: TgxObjectsSorting read FObjectsSorting write SetObjectsSorting default osRenderBlendedLast;
     // Defines default VisibilityCulling option for scene objects.
     property VisibilityCulling: TgxVisibilityCulling read FVisibilityCulling write SetVisibilityCulling default vcNone;
-    property OnBeforeProgress: TgxProgressEvent read FOnBeforeProgress write FOnBeforeProgress;
-    property OnProgress: TgxProgressEvent read FOnProgress write FOnProgress;
+    property OnBeforeProgress: TGProgressEvent read FOnBeforeProgress write FOnBeforeProgress;
+    property OnProgress: TGProgressEvent read FOnProgress write FOnProgress;
   end;
 
   TgxFogMode = (fmLinear, fmExp, fmExp2);
@@ -1213,7 +1215,7 @@ type
     The fog descibed by this object is a distance-based fog, ie. the "intensity"
     of the fog is given by a formula depending solely on the distance, this
     intensity is used for blending to a fixed color. *)
-  TgxFogEnvironment = class(TgxUpdateAbleObject)
+  TgxFogEnvironment = class(TGUpdateAbleObject)
   private
     FSceneBuffer: TgxSceneBuffer;
     FFogColor: TgxColor; // alpha value means the fog density
@@ -1255,7 +1257,7 @@ type
   TgxShadeModel = (smDefault, smSmooth, smFlat);
 
   // Encapsulates an OpenGL frame/rendering buffer.
-  TgxSceneBuffer = class(TgxUpdateAbleObject)
+  TgxSceneBuffer = class(TGUpdateAbleObject)
   private
     // Internal state
     FRendering: Boolean;
@@ -1829,11 +1831,11 @@ begin
   FListHandle := TgxListHandle.Create;
   FObjectStyle := [];
   FChanges := [ocTransformation, ocStructure, ocAbsoluteMatrix, ocInvAbsoluteMatrix];
-  FPosition := TgxCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
-  FRotation := TgxCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
-  FDirection := TgxCoordinates.CreateInitialized(Self, ZHmgVector, csVector);
-  FUp := TgxCoordinates.CreateInitialized(Self, YHmgVector, csVector);
-  FScaling := TgxCoordinates.CreateInitialized(Self, XYZHmgVector, csVector);
+  FPosition := TGCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
+  FRotation := TGCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  FDirection := TGCoordinates.CreateInitialized(Self, ZHmgVector, csVector);
+  FUp := TGCoordinates.CreateInitialized(Self, YHmgVector, csVector);
+  FScaling := TGCoordinates.CreateInitialized(Self, XYZHmgVector, csVector);
   FLocalMatrix := IdentityHmgMatrix;
   FVisible := True;
   FPickable := True;
@@ -3028,7 +3030,7 @@ begin
   end;
 end;
 
-procedure TgxBaseSceneObject.SetRotation(aRotation: TgxCoordinates);
+procedure TgxBaseSceneObject.SetRotation(aRotation: TGCoordinates);
 begin
   FRotation.Assign(aRotation);
   TransformationChanged;
@@ -3087,7 +3089,7 @@ begin
   end;
 end;
 
-procedure TgxBaseSceneObject.SetScaling(aValue: TgxCoordinates);
+procedure TgxBaseSceneObject.SetScaling(aValue: TGCoordinates);
 begin
   FScaling.Assign(aValue);
   TransformationChanged;
@@ -3331,7 +3333,7 @@ begin
   end;
 end;
 
-procedure TgxBaseSceneObject.CoordinateChanged(Sender: TgxCustomCoordinates);
+procedure TgxBaseSceneObject.CoordinateChanged(Sender: TGCustomCoordinates);
 var
   rightVector: TVector4f;
 begin
@@ -3381,7 +3383,7 @@ begin
   end;
 end;
 
-procedure TgxBaseSceneObject.DoProgress(const progressTime: TgxProgressTimes);
+procedure TgxBaseSceneObject.DoProgress(const progressTime: TGProgressTimes);
 var
   i: Integer;
 begin
@@ -3787,18 +3789,18 @@ begin
   TransformationChanged;
 end;
 
-procedure TgxBaseSceneObject.SetPosition(APosition: TgxCoordinates);
+procedure TgxBaseSceneObject.SetPosition(APosition: TGCoordinates);
 begin
   FPosition.SetPoint(APosition.DirectX, APosition.DirectY, APosition.DirectZ);
 end;
 
-procedure TgxBaseSceneObject.SetDirection(AVector: TgxCoordinates);
+procedure TgxBaseSceneObject.SetDirection(AVector: TGCoordinates);
 begin
   if not VectorIsNull(AVector.DirectVector) then
     FDirection.SetVector(AVector.DirectX, AVector.DirectY, AVector.DirectZ);
 end;
 
-procedure TgxBaseSceneObject.SetUp(AVector: TgxCoordinates);
+procedure TgxBaseSceneObject.SetUp(AVector: TGCoordinates);
 begin
   if not VectorIsNull(AVector.DirectVector) then
     FUp.SetVector(AVector.DirectX, AVector.DirectY, AVector.DirectZ);
@@ -4023,7 +4025,7 @@ begin
   Result := TgxBaseSceneObject(Owner.Owner);
 end;
 
-procedure TgxBaseBehaviour.DoProgress(const progressTime: TgxProgressTimes);
+procedure TgxBaseBehaviour.DoProgress(const progressTime: TGProgressTimes);
 begin
   // does nothing
 end;
@@ -4069,7 +4071,7 @@ begin
   Result := (not aClass.InheritsFrom(TgxEffect)) and (inherited CanAdd(aClass));
 end;
 
-procedure TgxBehaviours.DoProgress(const progressTimes: TgxProgressTimes);
+procedure TgxBehaviours.DoProgress(const progressTimes: TGProgressTimes);
 var
   i: Integer;
 begin
@@ -4147,7 +4149,7 @@ begin
   Result := (aClass.InheritsFrom(TgxEffect)) and (inherited CanAdd(aClass));
 end;
 
-procedure TgxEffects.DoProgress(const progressTime: TgxProgressTimes);
+procedure TgxEffects.DoProgress(const progressTime: TGProgressTimes);
 var
   i: Integer;
 begin
@@ -5353,7 +5355,7 @@ begin
   inherited Create(AOwner);
   FListHandle := nil;
   FShining := True;
-  FSpotDirection := TgxCoordinates.CreateInitialized(Self, VectorMake(0, 0, -1, 0), csVector);
+  FSpotDirection := TGCoordinates.CreateInitialized(Self, VectorMake(0, 0, -1, 0), csVector);
   FConstAttenuation := 1;
   FLinearAttenuation := 0;
   FQuadraticAttenuation := 0;
@@ -5387,7 +5389,7 @@ begin
   Result := False;
 end;
 
-procedure TgxLightSource.CoordinateChanged(Sender: TgxCustomCoordinates);
+procedure TgxLightSource.CoordinateChanged(Sender: TGCustomCoordinates);
 begin
   inherited;
   if Sender = FSpotDirection then
@@ -5408,7 +5410,7 @@ begin
   end;
 end;
 
-procedure TgxLightSource.SetSpotDirection(AVector: TgxCoordinates);
+procedure TgxLightSource.SetSpotDirection(AVector: TGCoordinates);
 begin
   FSpotDirection.DirectVector := AVector.AsVector;
   FSpotDirection.W := 0;
@@ -5688,7 +5690,7 @@ end;
 
 procedure TgxScene.Progress(const deltaTime, newTime: Double);
 var
-  pt: TgxProgressTimes;
+  pt: TGProgressTimes;
 begin
   pt.deltaTime := deltaTime;
   pt.newTime := newTime;
@@ -5907,17 +5909,17 @@ begin
               if LightStyle in [lsParallel, lsParallelSpot] then
               begin
                 SetModelMatrix(AbsoluteMatrix);
-                glLightfv(GL_LIGHT0 + FLightID, GL_POSITION, SpotDirection.AsAddress);
+                glLightfv(GL_LIGHT0 + FLightID, GL_POSITION, @SpotDirection.AsAddress^);
               end
               else
               begin
                 SetModelMatrix(Parent.AbsoluteMatrix);
-                glLightfv(GL_LIGHT0 + FLightID, GL_POSITION, Position.AsAddress);
+                glLightfv(GL_LIGHT0 + FLightID, GL_POSITION, @Position.AsAddress^);
               end;
               if LightStyle in [lsSpot, lsParallelSpot] then
               begin
                 if FSpotCutOff <> 180 then
-                  glLightfv(GL_LIGHT0 + FLightID, GL_SPOT_DIRECTION, FSpotDirection.AsAddress);
+                  glLightfv(GL_LIGHT0 + FLightID, GL_SPOT_DIRECTION, @FSpotDirection.AsAddress^);
               end;
             end;
 

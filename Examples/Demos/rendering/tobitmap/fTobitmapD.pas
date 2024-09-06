@@ -21,7 +21,7 @@ uses
   GLS.HUDObjects,
   GLS.SpaceText,
  
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Graphics,
   GLScene.Utils,
   GLScene.BaseClasses;

@@ -27,7 +27,7 @@ uses
   System.Math,
 
   GXS.XOpenGL,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
@@ -41,7 +41,7 @@ uses
   GXS.RenderContextInfo,
   GXS.Nodes,
   GXS.PipelineTransformation,
-  GXS.Coordinates;
+  GLScene.Coordinates;
 
 const
   cDefaultPointSize: Single = 1.0;
@@ -222,18 +222,18 @@ type
   (* Point parameters as in ARB_point_parameters.
     Make sure to read the ARB_point_parameters spec if you want to understand
     what each parameter does. *)
-  TgxPointParameters = class(TgxUpdateAbleObject)
+  TgxPointParameters = class(TGUpdateAbleObject)
   private
     FEnabled: Boolean;
     FMinSize, FMaxSize: Single;
     FFadeTresholdSize: Single;
-    FDistanceAttenuation: TgxCoordinates;
+    FDistanceAttenuation: TGCoordinates;
   protected
     procedure SetEnabled(const val: Boolean);
     procedure SetMinSize(const val: Single);
     procedure SetMaxSize(const val: Single);
     procedure SetFadeTresholdSize(const val: Single);
-    procedure SetDistanceAttenuation(const val: TgxCoordinates);
+    procedure SetDistanceAttenuation(const val: TGCoordinates);
     procedure DefineProperties(Filer: TFiler); override;
     procedure ReadData(Stream: TStream);
     procedure WriteData(Stream: TStream);
@@ -249,7 +249,7 @@ type
     property MaxSize: Single read FMaxSize write SetMaxSize stored False;
     property FadeTresholdSize: Single read FFadeTresholdSize write SetFadeTresholdSize stored False;
     // Components XYZ are for constant, linear and quadratic attenuation.
-    property DistanceAttenuation: TgxCoordinates read FDistanceAttenuation write SetDistanceAttenuation;
+    property DistanceAttenuation: TGCoordinates read FDistanceAttenuation write SetDistanceAttenuation;
   end;
 
   (* Renders a set of non-transparent colored points.
@@ -394,7 +394,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     function AxisAlignedDimensionsUnscaled: TVector4f; override;
-    procedure AddNode(const coords: TgxCoordinates); overload;
+    procedure AddNode(const coords: TGCoordinates); overload;
     procedure AddNode(const X, Y, Z: Single); overload;
     procedure AddNode(const Value: TVector4f); overload;
     procedure AddNode(const Value: TAffineVector); overload;
@@ -583,7 +583,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure NotifyChange(Sender: TObject); override;
-    procedure AddNode(const coords: TgxCoordinates); overload;
+    procedure AddNode(const coords: TGCoordinates); overload;
     procedure AddNode(const X, Y, Z: Single); overload;
     procedure AddNode(const Value: TVector4f); overload;
     procedure AddNode(const Value: TAffineVector); overload;
@@ -1419,7 +1419,7 @@ begin
   FMinSize := 0;
   FMaxSize := 128;
   FFadeTresholdSize := 1;
-  FDistanceAttenuation := TgxCoordinates.CreateInitialized(Self, XHmgVector,
+  FDistanceAttenuation := TGCoordinates.CreateInitialized(Self, XHmgVector,
     csVector);
 end;
 
@@ -1478,7 +1478,7 @@ begin
     glPointParameterf(GL_POINT_SIZE_MIN_ARB, FMinSize);
     glPointParameterf(GL_POINT_SIZE_MAX_ARB, FMaxSize);
     glPointParameterf(GL_POINT_FADE_THRESHOLD_SIZE_ARB, FFadeTresholdSize);
-    glPointParameterfv(GL_DISTANCE_ATTENUATION_EXT, FDistanceAttenuation.AsAddress);
+    glPointParameterfv(GL_DISTANCE_ATTENUATION_EXT, @FDistanceAttenuation.AsAddress^);
   end;
 end;
 
@@ -1538,7 +1538,7 @@ begin
   end;
 end;
 
-procedure TgxPointParameters.SetDistanceAttenuation(const val: TgxCoordinates);
+procedure TgxPointParameters.SetDistanceAttenuation(const val: TGCoordinates);
 begin
   FDistanceAttenuation.Assign(val);
 end;
@@ -2009,7 +2009,7 @@ begin
   // DivideVector(Result, Scale.AsVector);     //DanB ?
 end;
 
-procedure TgxNodedLines.AddNode(const coords: TgxCoordinates);
+procedure TgxNodedLines.AddNode(const coords: TGCoordinates);
 var
   n: TgxNode;
 begin
@@ -3094,7 +3094,7 @@ begin
   end;
 end;
 
-procedure TgxPolygonBase.AddNode(const coords: TgxCoordinates);
+procedure TgxPolygonBase.AddNode(const coords: TGCoordinates);
 var
   n: TgxNode;
 begin

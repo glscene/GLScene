@@ -37,7 +37,7 @@ uses
   GLS.ShadowVolume,
   GLScene.Utils,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.RenderContextInfo,
   GLS.State,
   GLS.Context,

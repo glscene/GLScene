@@ -40,7 +40,7 @@ uses
   GLS.Material,
   GLS.Scene,
   GLS.ParticleFX,
-  GLS.Coordinates;
+  GLScene.Coordinates;
 
 type
   TGLEProjectedParticleMask = (pptXMask, pptYMask, pptZMask);

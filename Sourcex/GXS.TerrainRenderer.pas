@@ -27,7 +27,7 @@ uses
   GXS.Scene,
   GXS.HeightData,
   GXS.Material,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.Context,
   GXS.ROAMPatch,
   GXS.RenderContextInfo,

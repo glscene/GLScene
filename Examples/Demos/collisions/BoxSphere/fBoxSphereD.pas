@@ -29,7 +29,7 @@ uses
   GLS.Graph,
   GLS.GeomObjects,
  
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses;
 
 type

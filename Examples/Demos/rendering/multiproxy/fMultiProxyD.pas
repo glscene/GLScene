@@ -24,7 +24,7 @@ uses
   GLS.MultiProxy,
   GLS.Texture,
 
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLScene.VectorGeometry;
 

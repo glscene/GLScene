@@ -25,7 +25,7 @@ uses
   GLS.Context,
   GLS.Silhouette,
   GLScene.PersistentClasses,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.PipelineTransformation,
   GLScene.GeometryBB,
   GLS.Color,

@@ -29,14 +29,14 @@ uses
   FMX.MaterialSources,
   FMX.Layers3D,
 
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GXS.Scene,
 //  GXS.SceneViewer,
   GXS.Material,
   GXS.HUDObjects,
   GXS.GeomObjects,
   GXS.Color,
-  GXS.Coordinates;
+  GLScene.Coordinates;
 
 type
   TMaterialPreviewFrame = class(TFrame)

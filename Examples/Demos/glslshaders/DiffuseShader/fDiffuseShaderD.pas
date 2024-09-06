@@ -30,7 +30,7 @@ uses
   GLSL.UserShader,
   GLS.SimpleNavigation,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLScene.Utils,
   GLS.FileMD2,

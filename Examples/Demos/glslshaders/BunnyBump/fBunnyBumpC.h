@@ -15,7 +15,7 @@
 #include "GLScene.BaseClasses.hpp"
 #include "GLSL.BumpShaders.hpp"
 #include "GLS.Cadencer.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 
 #include "GLS.Material.hpp"
 #include "GLS.Objects.hpp"

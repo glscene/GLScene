@@ -21,7 +21,7 @@ uses
   GLS.Graph, GLScene.VectorTypes,
   GLScene.VectorGeometry,
  
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
 
   GLS.ODEManager;

@@ -24,7 +24,7 @@ uses
   System.SysUtils,
 
   GXS.XOpenGL,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.VectorTypes,
   GLScene.Strings,
   GXS.Context,
@@ -62,7 +62,7 @@ type
 
   (* Stores an interlaced vertex list for direct use in OpenGL.
     Locking (hardware passthrough) is supported, see "Locked" property for details. *)
-  TgxVertexList = class(TgxUpdateAbleObject)
+  TgxVertexList = class(TGUpdateAbleObject)
   private
     FValues: PVKVertexDataArray;
     FCount: Integer;

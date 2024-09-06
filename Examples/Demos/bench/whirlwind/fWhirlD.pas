@@ -24,7 +24,7 @@ uses
   GLS.Particles,
   GLS.Cadencer,
   GLS.Objects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Behaviours;
 
 type

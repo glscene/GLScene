@@ -21,7 +21,7 @@ uses
   GLS.Cadencer,
 
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLSL.AsmShader,
   GLSL.CustomShader,

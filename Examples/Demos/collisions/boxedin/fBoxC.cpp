@@ -21,10 +21,10 @@
 #pragma link "GLS.File3DS"
 #pragma link "GLScene.VectorGeometry"
 #pragma link "GLS.Keyboard"
-#pragma link "GLS.Coordinates"
+#pragma link "GLScene.Coordinates"
 
 #pragma link "GLScene.BaseClasses"
-#pragma link "GLS.Coordinates"
+#pragma link "GLScene.Coordinates"
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"

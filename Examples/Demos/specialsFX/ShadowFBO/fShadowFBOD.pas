@@ -31,7 +31,7 @@ uses
   GLSL.CustomShader,
   GLSL.Shader,
   GLScene.VectorGeometry,
-  GLS.Coordinates,
+  GLScene.Coordinates,
  
   GLScene.BaseClasses,
   GLS.RenderContextInfo,

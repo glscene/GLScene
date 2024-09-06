@@ -21,7 +21,7 @@ uses
   GLS.Color,
   GLS.Scene,
   GLS.Objects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.FileJPEG,
   GLS.SimpleNavigation,
   GLS.Material,

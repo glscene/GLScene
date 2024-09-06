@@ -10,11 +10,11 @@ uses
   Vcl.Dialogs,
 
   GLScene.VectorTypes,
-  GLS.XCollection,
+  GLScene.XCollection,
   GLS.Scene,
   GLScene.VectorGeometry,
   GLS.Behaviours,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.Strings;
 
 type

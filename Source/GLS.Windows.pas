@@ -22,7 +22,7 @@ uses
   GLScene.OpenGLTokens,
   GLScene.PersistentClasses,
   GLScene.Strings,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.VectorTypes,
   GLS.Objects,
   GLS.State,

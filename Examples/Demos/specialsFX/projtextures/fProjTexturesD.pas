@@ -27,7 +27,7 @@ uses
   GLS.HUDObjects,
  
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.SimpleNavigation,
   GLScene.Utils;

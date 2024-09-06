@@ -26,7 +26,7 @@ uses
   GLS.Context,
   GLScene.PersistentClasses,
   GLScene.VectorLists,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Objects,
   GLS.VerletClothify,
   GLS.VectorFileObjects;

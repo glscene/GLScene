@@ -20,7 +20,7 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.PersistentClasses,
-  GXS.BaseClasses;
+  GLScene.BaseClasses;
 
 type
   PgxColorVector = ^TgxColorVector;
@@ -30,7 +30,7 @@ type
   TRGBColor = TVector3b;
 
   // Wraps an OpenGL color.
-  TgxColor = class(TgxUpdateAbleObject)
+  TgxColor = class(TGUpdateAbleObject)
   private
     FColor: TgxColorVector;
     FPDefaultColor: PgxColorVector;
@@ -578,11 +578,11 @@ end;
 
 procedure TgxColor.NotifyChange(Sender: TObject);
 var
-  intf: IgxNotifyable;
+  intf: IGNotifyable;
 begin
   if Assigned(Owner) then
   begin
-    if Supports(Owner, IgxNotifyable, intf) then
+    if Supports(Owner, IGNotifyable, intf) then
       intf.NotifyChange(Self);
     //  if Owner is TgxBaseSceneObject then
     // TgxBaseSceneObject(Owner).StructureChanged;

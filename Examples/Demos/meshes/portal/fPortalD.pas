@@ -28,7 +28,7 @@ uses
   GLS.SceneViewer,
  
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.Keyboard,
   GLScene.Utils, GLS.SimpleNavigation;

@@ -16,7 +16,7 @@ uses
 
   GLS.TextureFormat
   GLS.Scene,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Objects,
   GLS.GeomObjects,
   GLS.Material,

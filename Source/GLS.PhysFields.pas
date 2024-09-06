@@ -8,9 +8,9 @@ interface
 uses
   System.Classes,
   GLScene.VectorGeometry,
-  GLS.XCollection,
+  GLScene.XCollection,
   GLS.Scene,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Behaviours,
   (* GLS.RigidBodyInertia *)
   GLS.PhysInertias,

@@ -1,8 +1,7 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-
-unit GLS.XCollection;
+unit GLScene.XCollection;
 
 (* A polymorphism-enabled TCollection-like set of classes *)
 
@@ -163,9 +162,7 @@ function GetXCollectionItemClassesList(baseClass: TXCollectionItemClass = nil): 
 procedure GetXCollectionClassesList(var ClassesList: TList;
   baseClass: TXCollectionItemClass = nil);
 
-// ------------------------------------------------------------------
-implementation
-// ------------------------------------------------------------------
+implementation // -------------------------------------------------------------
 
 const
   (* Magic is a workaround that will allow us to know
@@ -742,9 +739,7 @@ begin
     end;
 end;
 
-// ------------------------------------------------------------------
-initialization
-// ------------------------------------------------------------------
+initialization // ------------------------------------------------------------
 
 finalization
 

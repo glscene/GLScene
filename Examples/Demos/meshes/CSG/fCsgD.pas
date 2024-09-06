@@ -27,7 +27,7 @@ uses
   GLS.File3DS,
 
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.State,
   GLScene.VectorGeometry,

@@ -10,7 +10,7 @@
 #pragma link "GLScene.BaseClasses"
 #pragma link "GLS.BitmapFont"
 #pragma link "GLS.Cadencer"
-#pragma link "GLS.Coordinates"
+#pragma link "GLScene.Coordinates"
 
 #pragma link "GLS.HUDObjects"
 #pragma link "GLS.Scene"

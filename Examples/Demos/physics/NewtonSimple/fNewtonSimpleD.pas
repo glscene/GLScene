@@ -14,7 +14,7 @@ uses
   Vcl.ExtCtrls,
   GLS.Scene,
   GLS.Objects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.SimpleNavigation,
   GLS.Cadencer,
   GLS.SceneViewer,

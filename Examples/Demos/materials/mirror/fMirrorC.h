@@ -17,7 +17,7 @@
 #include "GLS.Extrusion.hpp"
 #include "GLS.MultiPolygon.hpp"
 #include "GLScene.BaseClasses.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1:public TForm

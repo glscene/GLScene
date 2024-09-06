@@ -29,7 +29,7 @@ uses
   GLS.File3DS,
   GLS.GeomObjects,
 
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLScene.Utils,
   GLScene.VectorGeometry,

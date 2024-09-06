@@ -14,7 +14,7 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.Objects"
 #pragma link "GLScene.BaseClasses"
-#pragma link "GLS.Coordinates"
+#pragma link "GLScene.Coordinates"
 
 #pragma resource "*.dfm"
 TFormPointto *FormPointto;

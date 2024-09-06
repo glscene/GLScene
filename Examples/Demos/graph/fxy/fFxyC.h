@@ -3,7 +3,7 @@
 #ifndef fFxyCH
 #define fFxyCH
 #include "GLScene.BaseClasses.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 
 #include "GLS.Graph.hpp"
 #include "GLS.Objects.hpp"

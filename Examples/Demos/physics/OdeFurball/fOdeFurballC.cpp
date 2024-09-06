@@ -25,7 +25,7 @@
 //---------------------------------------------------------------------------
 
 #pragma link "GLScene.BaseClasses"
-#pragma link "GLS.Coordinates"
+#pragma link "GLScene.Coordinates"
 
 #pragma resource "*.dfm"
 TForm1 *Form1;

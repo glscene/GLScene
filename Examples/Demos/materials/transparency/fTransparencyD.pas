@@ -23,7 +23,7 @@ uses
   GLScene.VectorGeometry,
   GLS.SceneViewer,
   GLS.GeomObjects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
  
   GLScene.BaseClasses,
   GLS.Material,

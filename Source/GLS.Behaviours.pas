@@ -16,9 +16,9 @@ uses
   GLScene.VectorTypes,
   GLS.Scene,
   GLScene.VectorGeometry,
-  GLS.XCollection,
+  GLScene.XCollection,
   GLScene.BaseClasses,
-  GLS.Coordinates;
+  GLScene.Coordinates;
 
 type
   (*

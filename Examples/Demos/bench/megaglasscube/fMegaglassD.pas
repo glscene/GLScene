@@ -20,7 +20,7 @@ uses
   GLS.SceneViewer,
   GLS.Color,
 
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Material,
   GLS.SimpleNavigation,
   GLScene.BaseClasses;

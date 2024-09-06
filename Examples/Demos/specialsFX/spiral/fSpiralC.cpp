@@ -16,7 +16,7 @@
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.ParticleFX"
 #pragma link "GLScene.BaseClasses"
-#pragma link "GLS.Coordinates"
+#pragma link "GLScene.Coordinates"
 #pragma link "GLS.FullScreenViewer"
 #pragma link "GLS.FullScreenViewer"
 #pragma resource "*.dfm"

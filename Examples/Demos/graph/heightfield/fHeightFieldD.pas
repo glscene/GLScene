@@ -24,7 +24,7 @@ uses
   GLScene.VectorTypes,
   GLS.SceneViewer,
   GLS.Color,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses;
 
 type

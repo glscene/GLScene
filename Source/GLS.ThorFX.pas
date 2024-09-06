@@ -18,7 +18,7 @@ uses
 
   GLScene.OpenGLTokens,
   GLS.Scene,
-  GLS.XCollection,
+  GLScene.XCollection,
   GLScene.VectorGeometry,
   GLS.Context,
   GLScene.VectorLists,
@@ -26,7 +26,7 @@ uses
   GLS.Cadencer,
   GLS.Color,
   GLScene.BaseClasses,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.RenderContextInfo,
   GLS.PipelineTransformation,
   GLScene.Manager,

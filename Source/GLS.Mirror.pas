@@ -27,7 +27,7 @@ uses
   GLScene.VectorTypes,
   GLScene.PersistentClasses,
   GLS.PipelineTransformation,
-  GLS.XCollection,
+  GLScene.XCollection,
   GLS.Texture;
 
 

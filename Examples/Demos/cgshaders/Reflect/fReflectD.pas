@@ -34,7 +34,7 @@ uses
   GLScene.VectorTypes, 
   GLS.GeomObjects, 
   GLS.Material, 
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.Utils,
    
   GLScene.BaseClasses;

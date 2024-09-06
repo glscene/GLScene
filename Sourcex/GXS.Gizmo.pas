@@ -30,7 +30,7 @@ uses
   GXS.SceneViewer,
   GXS.VectorFileObjects,
   GXS.ImageUtils,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.RenderContextInfo,
   GXS.State,
   GXS.Selection;
@@ -42,12 +42,12 @@ type
   TgxGizmoUndoItem = class(TCollectionItem)
   private
     FOldLibMaterialName: string;
-    FOldAutoScaling: TgxCoordinates;
+    FOldAutoScaling: TGCoordinates;
     FEffectedObject: TgxCustomSceneObject;
     FOldMatr: TMatrix4f;
     FOldMatrix: TMatrix4f;
     procedure SetEffectedObject(const Value: TgxCustomSceneObject);
-    procedure SetOldAutoScaling(const Value: TgxCoordinates);
+    procedure SetOldAutoScaling(const Value: TGCoordinates);
     procedure SetOldMatrix(const Value: TMatrix4f);
   protected
     procedure DoUndo; virtual;
@@ -64,7 +64,7 @@ type
   published
     property EffectedObject: TgxCustomSceneObject read FEffectedObject
       write SetEffectedObject;
-    property OldAutoScaling: TgxCoordinates read FOldAutoScaling
+    property OldAutoScaling: TGCoordinates read FOldAutoScaling
       write SetOldAutoScaling;
     property OldLibMaterialName: string read FOldLibMaterialName
       write FOldLibMaterialName;
@@ -1699,7 +1699,7 @@ end;
 constructor TgxGizmoUndoItem.Create(AOwner: TCollection);
 begin
   inherited;
-  FOldAutoScaling := TgxCoordinates.CreateInitialized(Self,
+  FOldAutoScaling := TGCoordinates.CreateInitialized(Self,
     NullHmgVector, CsPoint);
 end;
 
@@ -1750,7 +1750,7 @@ begin
     FEffectedObject.FreeNotification(GetGizmo);
 end;
 
-procedure TgxGizmoUndoItem.SetOldAutoScaling(const Value: TgxCoordinates);
+procedure TgxGizmoUndoItem.SetOldAutoScaling(const Value: TGCoordinates);
 begin
   FOldAutoScaling.Assign(Value);
 end;

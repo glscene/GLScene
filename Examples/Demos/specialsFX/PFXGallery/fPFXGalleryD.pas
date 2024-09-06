@@ -33,7 +33,7 @@ uses
   GLS.Behaviours,
   GLS.PerlinPFX,
   GLS.Blur,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses;
 
 const

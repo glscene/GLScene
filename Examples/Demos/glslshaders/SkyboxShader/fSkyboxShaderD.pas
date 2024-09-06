@@ -20,7 +20,7 @@ uses
   GLS.TextureFormat,
   GLS.CompositeImage,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
 
   GLS.Context,

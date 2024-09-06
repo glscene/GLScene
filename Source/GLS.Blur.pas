@@ -166,7 +166,7 @@ implementation
 //------------------------------------------------------------------------
 
 uses
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.PersistentClasses,
   GLScene.Strings,
   GLS.OpenGLAdapter;

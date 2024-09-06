@@ -24,7 +24,7 @@ uses
   GLS.Material,
   GLS.Context,
   GLScene.PersistentClasses,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses;
 
 type

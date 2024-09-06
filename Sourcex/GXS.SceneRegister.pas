@@ -306,7 +306,7 @@ uses
 //  FVectorEditor,
 //  FSceneEditor,
 
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.VectorTypesExt,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
@@ -329,7 +329,7 @@ uses
   GXS.Collision,
   GXS.CompositeImage,
   GXS.Console,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.DCE,
   GXS.DynamicTexture,
   GXS.EParticleMasksManager,
@@ -845,10 +845,10 @@ end;
 
 procedure TgxCoordinatesProperty.Edit;
 var
-  glc: TgxCoordinates;
+  glc: TGCoordinates;
   x, y, z: Single;
 begin
-  glc := TgxCoordinates(GetOrdValue);
+  glc := TGCoordinates(GetOrdValue);
   x := glc.x;
   y := glc.y;
   z := glc.z;
@@ -1342,7 +1342,7 @@ begin
   RegisterPropertiesInCategory(sOpenGLCategoryName, TgxSceneViewer, ['*Render']);
 
   // GXS.Scene
-  RegisterPropertiesInCategory(sOpenGLCategoryName, [TypeInfo(Tgxx.ObjectsSorting), TypeInfo(TgxProgressEvent),
+  RegisterPropertiesInCategory(sOpenGLCategoryName, [TypeInfo(Tgxx.ObjectsSorting), TypeInfo(TGProgressEvent),
     TypeInfo(TgxBehaviours), TypeInfo(TgxEffects), TypeInfo(TDirectRenderEvent), TypeInfo(TgxCameraStyle),
     TypeInfo(TOnCustomPerspective), TypeInfo(TgxScene)]);
   RegisterPropertiesInCategory(sLayoutCategoryName, [TypeInfo(Tgxx.ObjectsSorting), TypeInfo(TgxNormalDirection)]);
@@ -1513,7 +1513,7 @@ begin
   RegisterPropertyEditor(TypeInfo(string), TgxBaseSoundSource, 'SoundName',
     TgxSoundNameProperty);
 
-  RegisterPropertyEditor(TypeInfo(TgxCoordinates), nil, '',
+  RegisterPropertyEditor(TypeInfo(TGCoordinates), nil, '',
     TgxCoordinatesProperty);
 
   RegisterPropertyEditor(TypeInfo(TgxColor), nil, '', TgxColorProperty);
@@ -1611,7 +1611,7 @@ SplashScreenServices.AddPluginBitmap(GetGLXceneVersion,
 GXS.CrossPlatform.IsDesignTime := True;
 GXS.CrossPlatform.vProjectTargetName := GetProjectTargetName;
 GXS.Color.vUseDefaultColorSets := True;
-GXS.Coordinates.vUseDefaultCoordinateSets := True;
+GLScene.Coordinates.vUseDefaultCoordinateSets := True;
 ReadVideoModes;
 
 with ObjectManager do

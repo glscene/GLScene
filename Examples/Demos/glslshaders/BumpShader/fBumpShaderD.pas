@@ -24,7 +24,7 @@ uses
   GLS.GeomObjects,
   GLScene.VectorGeometry,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLScene.Utils,
   GLS.FileMS3D,

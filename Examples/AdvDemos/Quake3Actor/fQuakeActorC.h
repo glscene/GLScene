@@ -24,7 +24,7 @@
 #include "GLS.Texture.hpp"
 #include "GLS.ParticleFX.hpp"
 #include "GLS.Material.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 
 #include "GLScene.BaseClasses.hpp"
 #include "GLS.FileQ3MD3.hpp"

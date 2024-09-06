@@ -1,7 +1,7 @@
 //
-// The graphics engine GXScene https://github.com/glscene
+// The graphics engine GLScene https://github.com/glscene
 //
-unit GXS.AnimationUtils;
+unit GLScene.AnimationUtils;
 
 (* Main purpose is to give an easy way to create a linear interpolation *)
 
@@ -10,14 +10,13 @@ interface
 {$I GLScene.Defines.inc}
 
 uses
-  System.SysUtils, 
-  System.Classes, 
+  System.SysUtils,
+  System.Classes,
   System.Math,
   GLScene.VectorTypes,
   GLScene.VectorGeometry;
 
 type
-
   TEaseType=
   (
     etLinear,
@@ -59,21 +58,19 @@ type
     etBounceOutIn
   );
 
+function Tweener(Current, Target: TAffineVector; Time, Duration: Single;
+  EaseType: TEaseType): TAffineVector; overload;
+function Tweener(Current, Target: TGLVector; Time, Duration: Single;
+  EaseType: TEaseType): TGLVector; overload;
+function Tweener(Current, Target: TVector2f; Time, Duration: Single;
+  EaseType: TEaseType): TVector2f; overload;
+function Tweener(Current, Target: Single; Time, Duration: Single;
+  EaseType: TEaseType): Single; overload;
 
-  function Tweener(Current, Target: TAffineVector; Time, Duration: Single; EaseType: TEaseType): TAffineVector; overload;
-  function Tweener(Current, Target: TGLVector; Time, Duration: Single; EaseType: TEaseType): TGLVector; overload;
-  function Tweener(Current, Target: TVector2f; Time, Duration: Single; EaseType: TEaseType): TVector2f; overload;
-  function Tweener(Current, Target: Single; Time, Duration: Single; EaseType: TEaseType): Single; overload;
-
-//--------------------------------------------------------------------
-implementation
-//--------------------------------------------------------------------
+implementation //-------------------------------------------------------------
 
 type
-
   TEaseFunction = function(t:Single; b:Single; c:Single; d:Single):Single;
-
-
 (*
   Easing equation function for a simple linear tweening, with no easing.
 
@@ -105,7 +102,7 @@ end;
 
 (*
   Easing equation function for a quadratic (t^2) easing out: decelerating to zero velocity.
- 
+
   t		Current time (in frames or seconds).
   b		Starting value.
   c		Change needed in value.
@@ -120,7 +117,7 @@ end;
 
 (*
   Easing equation function for a quadratic (t^2) easing in/out: acceleration until halfway, then deceleration.
- 
+
   t		Current time (in frames or seconds).
   b		Starting value.
   c		Change needed in value.
@@ -141,7 +138,7 @@ end;
 
 (*
   Easing equation function for a quadratic (t^2) easing out/in: deceleration until halfway, then acceleration.
- 
+
   t		Current time (in frames or seconds).
   b		Starting value.
   c		Change needed in value.
@@ -158,7 +155,7 @@ end;
 
 (*
    Easing equation function for a cubic (t^3) easing in: accelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -173,7 +170,7 @@ end;
 
 (*
   Easing equation function for a cubic (t^3) easing out: decelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -188,7 +185,7 @@ end;
 
 (*
   Easing equation function for a cubic (t^3) easing in/out: acceleration until halfway, then deceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -209,7 +206,7 @@ end;
 
 (*
   Easing equation function for a cubic (t^3) easing out/in: deceleration until halfway, then acceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -226,7 +223,7 @@ end;
 
 (*
   Easing equation function for a quartic (t^4) easing in: accelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -241,7 +238,7 @@ end;
 
 (*
   Easing equation function for a quartic (t^4) easing out: decelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -256,7 +253,7 @@ end;
 
 (*
   Easing equation function for a quartic (t^4) easing in/out: acceleration until halfway, then deceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -277,7 +274,7 @@ end;
 
 (*
   Easing equation function for a quartic (t^4) easing out/in: deceleration until halfway, then acceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -294,7 +291,7 @@ end;
 
 (*
   Easing equation function for a quintic (t^5) easing in: accelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -309,7 +306,7 @@ end;
 
 (*
    Easing equation function for a quintic (t^5) easing out: decelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -324,7 +321,7 @@ end;
 
 (*
   Easing equation function for a quintic (t^5) easing in/out: acceleration until halfway, then deceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -345,7 +342,7 @@ end;
 
 (*
    Easing equation function for a quintic (t^5) easing out/in: deceleration until halfway, then acceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -362,7 +359,7 @@ end;
 
 (*
    Easing equation function for a sinusoidal (sin(t)) easing in: accelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -376,7 +373,7 @@ end;
 
 (*
    Easing equation function for a sinusoidal (sin(t)) easing out: decelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -390,7 +387,7 @@ end;
 
 (*
    Easing equation function for a sinusoidal (sin(t)) easing in/out: acceleration until halfway, then deceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -404,7 +401,7 @@ end;
 
 (*
    Easing equation function for a sinusoidal (sin(t)) easing out/in: deceleration until halfway, then acceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -421,7 +418,7 @@ end;
 
 (*
    Easing equation function for an exponential (2^t) easing in: accelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -438,7 +435,7 @@ end;
 
 (*
    Easing equation function for an exponential (2^t) easing out: decelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -455,7 +452,7 @@ end;
 
 (*
    Easing equation function for an exponential (2^t) easing in/out: acceleration until halfway, then deceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -484,7 +481,7 @@ end;
 
 (*
    Easing equation function for an exponential (2^t) easing out/in: deceleration until halfway, then acceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -500,7 +497,7 @@ end;
 
 (*
    Easing equation function for a circular (sqrt(1-t^2)) easing in: accelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -515,7 +512,7 @@ end;
 
 (*
    Easing equation function for a circular (sqrt(1-t^2)) easing out: decelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -530,7 +527,7 @@ end;
 
 (*
    Easing equation function for a circular (sqrt(1-t^2)) easing in/out: acceleration until halfway, then deceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -551,7 +548,7 @@ end;
 
 (*
    Easing equation function for a circular (sqrt(1-t^2)) easing out/in: deceleration until halfway, then acceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -568,7 +565,7 @@ end;
 
 (*
    Easing equation function for an elastic (exponentially decaying sine wave) easing in: accelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -601,7 +598,7 @@ end;
 
 (*
    Easing equation function for an elastic (exponentially decaying sine wave) easing out: decelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -633,7 +630,7 @@ end;
 
 (*
    Easing equation function for an elastic (exponentially decaying sine wave) easing in/out: acceleration until halfway, then deceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -670,7 +667,7 @@ end;
 
 (*
    Easing equation function for an elastic (exponentially decaying sine wave) easing out/in: deceleration until halfway, then acceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -689,7 +686,7 @@ end;
 
 (*
    Easing equation function for a back (overshooting cubic easing: (s+1)*t^3 - s*t^2) easing in: accelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -708,7 +705,7 @@ end;
 
 (*
    Easing equation function for a back (overshooting cubic easing: (s+1)*t^3 - s*t^2) easing out: decelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -727,7 +724,7 @@ end;
 
 (*
    Easing equation function for a back (overshooting cubic easing: (s+1)*t^3 - s*t^2) easing in/out: acceleration until halfway, then deceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -753,7 +750,7 @@ end;
 
 (*
    Easing equation function for a back (overshooting cubic easing: (s+1)*t^3 - s*t^2) easing out/in: deceleration until halfway, then acceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -771,7 +768,7 @@ end;
 
 (*
    Easing equation function for a bounce (exponentially decaying parabolic bounce) easing out: decelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -804,7 +801,7 @@ end;
 
 (*
    Easing equation function for a bounce (exponentially decaying parabolic bounce) easing in: accelerating from zero velocity.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -818,7 +815,7 @@ end;
 
 (*
    Easing equation function for a bounce (exponentially decaying parabolic bounce) easing in/out: acceleration until halfway, then deceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -835,7 +832,7 @@ end;
 
 (*
    Easing equation function for a bounce (exponentially decaying parabolic bounce) easing out/in: deceleration until halfway, then acceleration.
- 
+
    t		Current time (in frames or seconds).
    b		Starting value.
    c		Change needed in value.
@@ -955,5 +952,6 @@ begin
   Result := EaseFunction(Time, Current, Target-Current, Duration);
 end;
 
+//----------------------------------------------------------------------------
 
 end.

@@ -21,7 +21,7 @@ uses
 
   GLScene.OpenGLTokens,
   GLS.Scene,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.HeightData,
   GLS.Material,
   GLScene.VectorGeometry,

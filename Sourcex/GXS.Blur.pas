@@ -21,7 +21,7 @@ uses
   GLScene.VectorTypes,
   GLScene.PersistentClasses,
   GXS.Scene,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GLScene.VectorGeometry,
   GXS.Objects,
   GXS.BitmapFont,
@@ -34,7 +34,7 @@ uses
   GXS.State,
   GLScene.Strings,
   GXS.TextureFormat,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GXS.RenderContextInfo;
 
 type
@@ -103,7 +103,7 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TgxProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     procedure DoRender(var ARci: TgxRenderContextInfo;
       ARenderSelf, ARenderChildren: boolean); override;
     procedure Notification(AComponent: TComponent;
@@ -247,7 +247,7 @@ begin
   SetLength(Pixelbuffer, RenderWidth * RenderHeight);
 end;
 
-procedure TgxBlur.DoProgress(const progressTime: TgxProgressTimes);
+procedure TgxBlur.DoProgress(const progressTime: TGProgressTimes);
 begin
   inherited;
   if Self.Visible and (progressTime.newTime - OldTime > FBlurDeltaTime) then

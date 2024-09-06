@@ -21,7 +21,7 @@ uses
   GLS.Graphics,
   GLScene.Utils,
   GLS.Color,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Material,
   GLS.State;
 

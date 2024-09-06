@@ -41,7 +41,7 @@ uses
   GLS.GeomObjects,
   GLS.Nodes,
   GLScene.BaseClasses,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.RenderContextInfo;
 
 type

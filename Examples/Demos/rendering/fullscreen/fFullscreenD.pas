@@ -15,7 +15,7 @@ uses
   GLS.Objects,
   GLS.GeomObjects,
   GLS.Canvas,
-  GLS.Coordinates,
+  GLScene.Coordinates,
  
   GLScene.BaseClasses,
   GLS.FullScreenViewer;

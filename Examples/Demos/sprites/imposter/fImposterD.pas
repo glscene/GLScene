@@ -25,7 +25,7 @@ uses
   GLS.Imposter,
   GLS.SkyDome,
 
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.RenderContextInfo;
 

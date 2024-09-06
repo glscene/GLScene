@@ -301,7 +301,7 @@ uses
   GLS.Collision,
   GLS.CompositeImage,
   GLS.Console,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.DCE,
   GLS.DynamicTexture,
   GLS.EParticleMasksManager,
@@ -1722,7 +1722,7 @@ initialization
   GLScene.Utils.IsDesignTime := True;
   GLScene.Utils.vProjectTargetName := GetProjectTargetName;
   GLS.Color.vUseDefaultColorSets := True;
-  GLS.Coordinates.vUseDefaultCoordinateSets := True;
+  GLScene.Coordinates.vUseDefaultCoordinateSets := True;
   ReadVideoModes;
 
 with ObjectManager do

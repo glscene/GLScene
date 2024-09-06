@@ -22,13 +22,13 @@ uses
   GXS.Material,
   GXS.Scene,
   GXS.Color,
-  GXS.BaseClasses, 
+  GLScene.BaseClasses, 
   GXS.RenderContextInfo, 
   GXS.State, 
   GXS.Context;
 
 type
-  TgxLineSettings = class(TgxUpdateAbleObject)
+  TgxLineSettings = class(TGUpdateAbleObject)
   private
     FColor: TgxColor;
     FWidth: Single;

@@ -30,7 +30,7 @@ uses
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.Objects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.File3DS,
   GLS.Navigator,
   GLS.Keyboard,

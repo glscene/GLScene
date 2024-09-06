@@ -26,7 +26,7 @@ uses
   GLS.Objects,
 
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.FileMD2,
   GLS.Keyboard,

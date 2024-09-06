@@ -30,7 +30,7 @@ uses
   GLScene.VectorGeometry,
   GLS.Keyboard,
   GLS.HudObjects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Screen,
   GLS.Material,
   GLS.Texture,

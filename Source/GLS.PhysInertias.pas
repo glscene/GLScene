@@ -11,13 +11,13 @@ uses
   Vcl.Dialogs,
 
   GLScene.PersistentClasses,
-  GLS.XCollection,
+  GLScene.XCollection,
   GLS.Scene,
   GLScene.BaseClasses,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLS.PhysManager,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.Strings,
   GLS.Behaviours;
 

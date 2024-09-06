@@ -26,7 +26,7 @@ uses
   GLS.Context,
   GLS.Graphics,
   GLS.RenderContextInfo,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLS.TextureFormat,

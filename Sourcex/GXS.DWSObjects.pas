@@ -19,7 +19,7 @@ uses
   GXS.Scene, 
   GXS.GXS.XCollection, 
   GXS.ScriptDws, 
-  GXS.BaseClasses, 
+  GLScene.BaseClasses, 
   GLScene.Manager;
 
 type
@@ -49,7 +49,7 @@ type
       constructor Create(AOwner : TXCollection); override;
       destructor Destroy; override;
       class function FriendlyName : String; override;
-      procedure DoProgress(const ProgressTimes : TgxProgressTimes); override;
+      procedure DoProgress(const ProgressTimes : TGProgressTimes); override;
       procedure InvalidateScript;
       property DwsProgram : TProgram read FDwsProgram;
     published
@@ -96,7 +96,7 @@ begin
   Result:='DWS Active Script';
 end;
 
-procedure TgxDwsActiveBehaviour.DoProgress(const ProgressTimes: TgxProgressTimes);
+procedure TgxDwsActiveBehaviour.DoProgress(const ProgressTimes: TGProgressTimes);
 var
   Symbol : TSymbol;
 begin

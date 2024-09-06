@@ -11,7 +11,7 @@ uses
   GLS.Scene,
   GLS.Objects,
   GLS.GeomObjects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.Color,
   GLS.Context,

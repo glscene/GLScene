@@ -23,7 +23,7 @@
 #include "GLS.Color.hpp"
 
 #include "GLScene.BaseClasses.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 
 
 //---------------------------------------------------------------------------

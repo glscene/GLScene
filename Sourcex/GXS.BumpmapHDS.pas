@@ -20,7 +20,7 @@ uses
 
   GXS.HeightData,
   GXS.Graphics,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GLScene.VectorGeometry,
   GLScene.Utils,
   GXS.Texture,

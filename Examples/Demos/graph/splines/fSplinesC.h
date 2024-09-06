@@ -11,7 +11,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Objects.hpp"
 #include "GLScene.BaseClasses.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 
 //---------------------------------------------------------------------------
 class TFormSplines:public TForm

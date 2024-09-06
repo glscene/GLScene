@@ -30,7 +30,7 @@ uses
   GLScene.VectorTypes,
   GLScene.PersistentClasses,
   GLScene.VectorGeometry,
-  GLS.XCollection,
+  GLScene.XCollection,
   GLS.Material,
   GLS.Cadencer,
   GLScene.VectorLists,
@@ -38,7 +38,7 @@ uses
   GLS.Context,
   GLS.Color,
   GLScene.BaseClasses,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.RenderContextInfo,
   GLScene.Manager,
   GLS.TextureFormat;

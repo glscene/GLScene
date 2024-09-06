@@ -10,7 +10,7 @@
 #pragma link "GLS.File3DS"
 #pragma link "GLS.FileJPEG"
 #pragma link "GLS.SimpleNavigation"
-#pragma link "GLS.Coordinates"
+#pragma link "GLScene.Coordinates"
 
 #pragma link "GLS.FPSMovement"
 #pragma link "GLScene.BaseClasses"

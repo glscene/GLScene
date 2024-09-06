@@ -15,7 +15,7 @@ uses
   GXS.Context,
   GLScene.VectorLists,
   GLScene.VectorGeometry,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.PersistentClasses;
 
  const
@@ -27,7 +27,7 @@ type
 
   TPickRecord = class
   public
-    AObject: TgxUpdateAbleComponent;
+    AObject: TGUpdateAbleComponent;
     SubObjects: TPickSubObjects;
     ZMin, ZMax: Single;
   end;
@@ -179,7 +179,7 @@ var
   newRecord: TPickRecord;
 begin
   newRecord := TPickRecord.Create;
-  newRecord.AObject := TgxUpdateAbleComponent(obj);
+  newRecord.AObject := TGUpdateAbleComponent(obj);
   newRecord.SubObjects := subObj;
   newRecord.zMin := zMin;
   newRecord.zMax := zMax;

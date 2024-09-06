@@ -32,8 +32,8 @@ uses
   GLS.Scene,
   GLS.VectorFileObjects,
   GLScene.VectorLists,
-  GLS.XCollection,
-  GLS.Coordinates,
+  GLScene.XCollection,
+  GLScene.Coordinates,
   GLS.RenderContextInfo,
   GLS.Context,
   GLS.State;

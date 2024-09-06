@@ -36,7 +36,7 @@ uses
   GLS.Scene,
   GLS.VectorFileObjects,
   GLS.Objects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.SceneViewer;
 
 type

@@ -26,7 +26,7 @@ uses
   GLS.GeomObjects,
   GLS.Gizmo,
  
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses, GLS.VectorFileObjects;
 
 type

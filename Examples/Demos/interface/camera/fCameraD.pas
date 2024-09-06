@@ -17,7 +17,7 @@ uses
   GLScene.PersistentClasses,
   GLS.PipelineTransformation,
   GLS.GeomObjects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLScene.VectorGeometry,
   GLS.Cadencer,

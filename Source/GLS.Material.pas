@@ -26,7 +26,7 @@ uses
   GLS.Context,
   GLS.Texture,
   GLS.Color,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.PersistentClasses,
   GLS.State,
   GLS.XOpenGL,

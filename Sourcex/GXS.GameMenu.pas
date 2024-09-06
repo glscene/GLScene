@@ -18,7 +18,7 @@ uses
 
   GLScene.VectorTypes,
   GXS.Scene,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.Material,
   GXS.BitmapFont,
   GXS.Color,

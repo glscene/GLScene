@@ -970,9 +970,7 @@ var
   vMainThread: Boolean;
   GLwithoutContext: TGLExtensionsAndEntryPoints;
 
-// ------------------------------------------------------------------
-implementation
-// ------------------------------------------------------------------
+implementation // ------------------------------------------------------------
 
 {$IFDEF USE_SERVICE_CONTEXT}
 

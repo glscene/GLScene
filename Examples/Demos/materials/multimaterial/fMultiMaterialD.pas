@@ -23,7 +23,7 @@ uses
   GLSL.MultiMaterialShader,
   GLSL.TextureShaders,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
 
   GLScene.Utils,
   GLScene.BaseClasses,

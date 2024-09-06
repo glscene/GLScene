@@ -30,7 +30,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.PersistentClasses,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
@@ -335,8 +335,8 @@ end;
 
 procedure TgxMaterialMultiProxyMasters.NotifyChange;
 begin
-  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TgxUpdateAbleComponent) then
-    TgxUpdateAbleComponent(GetOwner).NotifyChange(Self);
+  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TGUpdateAbleComponent) then
+    TGUpdateAbleComponent(GetOwner).NotifyChange(Self);
 end;
 
 procedure TgxMaterialMultiProxyMasters.EndUpdate;

@@ -21,7 +21,7 @@ uses
   GLScene.BaseClasses,
   GLS.SimpleNavigation,
   GLS.Objects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Context,
 
   CUDA.APIComps,

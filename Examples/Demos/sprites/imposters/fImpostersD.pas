@@ -29,7 +29,7 @@ uses
   GLS.Context,
   GLScene.VectorGeometry,
   GLS.AsyncTimer,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.Material,
   GLS.CompositeImage,

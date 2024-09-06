@@ -23,7 +23,7 @@ uses
   GLS.HUDObjects,
   GLS.CgShader,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
 
   GLScene.BaseClasses,
   GLS.RenderContextInfo,

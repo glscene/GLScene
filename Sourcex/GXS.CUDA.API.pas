@@ -13,7 +13,7 @@ uses
   FMX.Dialogs,
 
   GLScene.PersistentClasses,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLScene.VectorLists,

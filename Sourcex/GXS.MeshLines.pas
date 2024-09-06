@@ -22,7 +22,7 @@ uses
   GXS.Objects,
   GXS.Texture,
   GXS.VectorFileObjects,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.Context,
   GXS.Material,
   GXS.Color,
@@ -104,7 +104,7 @@ type
   published
   end;
 
-  TLightmapBounds = class(TgxCustomCoordinates)
+  TLightmapBounds = class(TGCustomCoordinates)
   private
     function GetLeft: Single;
     function GetTop: Single;

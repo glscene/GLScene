@@ -27,7 +27,7 @@ uses
   GXS.Context,
   GXS.Material,
   GXS.RenderContextInfo,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GXS.State;
 
 type
@@ -220,7 +220,7 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    procedure DoProgress(const progressTime: TgxProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
     // Steps the current animation to the next frame
     procedure NextFrame;
   published
@@ -809,7 +809,7 @@ begin
 end;
 {$WARNINGS On}
 
-procedure TgxAnimatedSprite.DoProgress(const progressTime: TgxProgressTimes);
+procedure TgxAnimatedSprite.DoProgress(const progressTime: TGProgressTimes);
 var
   i, intr: Integer;
 begin

@@ -22,7 +22,7 @@ uses
   GLS.Scene,
   GLScene.PersistentClasses,
   GLScene.VectorGeometry,
-  GLS.XCollection,
+  GLScene.XCollection,
   GLScene.Spline,
   GLS.Objects,
   GLScene.Strings,

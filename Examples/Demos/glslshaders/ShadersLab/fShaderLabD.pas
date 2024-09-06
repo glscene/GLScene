@@ -37,7 +37,7 @@ uses
   GLS.Texture,
   GLS.Context,
   GLS.Cadencer,
-  GLS.Coordinates,
+  GLScene.Coordinates,
 
   GLS.State,
   GLS.RenderContextInfo,

@@ -12,7 +12,7 @@
 #pragma link "GLS.Texture"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLScene.BaseClasses"
-#pragma link "GLS.Coordinates"
+#pragma link "GLScene.Coordinates"
 
 #pragma link "GLS.Material"
 #pragma resource "*.dfm"

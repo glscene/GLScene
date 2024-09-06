@@ -27,7 +27,7 @@ uses
   GLScene.BaseClasses,
   GLS.Objects,
   GLS.Scene,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.VectorGeometry,
   GLScene.VectorLists,
   GLS.SpacePartition,

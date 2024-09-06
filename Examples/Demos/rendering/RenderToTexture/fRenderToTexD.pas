@@ -17,7 +17,7 @@ uses
   
   GLS.Scene, GLS.SceneViewer, 
   GLS.FBORenderer, 
-  GLS.Objects, GLS.Coordinates, GLS.SimpleNavigation,
+  GLS.Objects, GLScene.Coordinates, GLS.SimpleNavigation,
   GLS.Material, 
   GLS.Cadencer,  GLScene.BaseClasses,
   GLS.RenderContextInfo, 

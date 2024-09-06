@@ -7,7 +7,7 @@
 #pragma package(smart_init)
 #pragma classgroup "Vcl.Controls.TControl"
 #pragma link "GLScene.BaseClasses"
-#pragma link "GLS.Coordinates"
+#pragma link "GLScene.Coordinates"
 #pragma link "GLS.GeomObjects"
 #pragma link "GLS.Scene"
 #pragma link "GLS.SDL.Context"

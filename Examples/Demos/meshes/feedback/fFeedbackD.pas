@@ -18,7 +18,7 @@ uses
   GLS.Feedback,
   GLS.GeomObjects,
   GLS.VectorFileObjects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.Objects;
 

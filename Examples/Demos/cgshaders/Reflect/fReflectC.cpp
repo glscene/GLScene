@@ -9,7 +9,7 @@
 #pragma link "GLS.CgShader"
 #pragma link "GLScene.BaseClasses"
 #pragma link "GLS.Cadencer"
-#pragma link "GLS.Coordinates"
+#pragma link "GLScene.Coordinates"
 #pragma link "GLS.GeomObjects"
 #pragma link "GLS.Material"
 #pragma link "GLS.Objects"

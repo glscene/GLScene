@@ -9,7 +9,7 @@
 #pragma package(smart_init)
 
 #pragma link "GLS.BitmapFont"
-#pragma link "GLS.Coordinates"
+#pragma link "GLScene.Coordinates"
 
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"

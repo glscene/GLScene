@@ -15,7 +15,7 @@ uses
   System.SysUtils,
 
   GXS.XCollection,
-  GXS.BaseClasses,
+  GLScene.BaseClasses,
   GLScene.VectorLists,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
@@ -24,7 +24,7 @@ uses
   GXS.Context,
   GXS.Cadencer,
   GXS.Color,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.RenderContextInfo,
   GXS.State,
   GXS.PipelineTransformation,
@@ -47,11 +47,11 @@ type
   (* Fire special effect manager.
     Defines the looks and behaviour of a particle system that can be made
     to look fire-like. *)
-  TgxFireFXManager = class(TgxCadenceAbleComponent)
+  TgxFireFXManager = class(TGCadenceAbleComponent)
   private
     FClients: TList;
     FFireParticles: PFireParticleArray;
-    FFireDir, FInitialDir: TgxCoordinates;
+    FFireDir, FInitialDir: TGCoordinates;
     FCadencer: TgxCadencer;
     FMaxParticles, FParticleLife: Integer;
     FParticleSize, FFireDensity, FFireEvaporation: Single;
@@ -66,8 +66,8 @@ type
     procedure RegisterClient(aClient: TgxBFireFX);
     procedure DeRegisterClient(aClient: TgxBFireFX);
     procedure DeRegisterAllClients;
-    procedure SetFireDir(const val: TgxCoordinates);
-    procedure SetInitialDir(const val: TgxCoordinates);
+    procedure SetFireDir(const val: TGCoordinates);
+    procedure SetInitialDir(const val: TGCoordinates);
     procedure SetCadencer(const val: TgxCadencer);
     function StoreParticleSize: Boolean;
     procedure SetInnerColor(const val: Tgxcolor);
@@ -97,12 +97,12 @@ type
       nbParticles: Integer = -1);
     // Current Nb of particles.
     property ParticleCount: Integer read NP;
-    procedure DoProgress(const progressTime: TgxProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
   published
     // Adjusts the acceleration direction (abs coordinates).
-    property FireDir: TgxCoordinates read FFireDir write SetFireDir;
+    property FireDir: TGCoordinates read FFireDir write SetFireDir;
     // Adjusts the initial direction (abs coordinates).
-    property InitialDir: TgxCoordinates read FInitialDir write SetInitialDir;
+    property InitialDir: TGCoordinates read FInitialDir write SetInitialDir;
     // The cadencer that will "drive" the animation of the system.
     property Cadencer: TgxCadencer read FCadencer write SetCadencer;
     // Maximum number of simultaneous particles in the system.
@@ -208,8 +208,8 @@ begin
   inherited Create(AOwner);
   FClients := TList.Create;
   RegisterManager(Self);
-  FFireDir := TgxCoordinates.CreateInitialized(Self, VectorMake(0, 0.5, 0), csPoint);
-  FInitialDir := TgxCoordinates.CreateInitialized(Self, YHmgVector, csPoint);
+  FFireDir := TGCoordinates.CreateInitialized(Self, VectorMake(0, 0.5, 0), csPoint);
+  FInitialDir := TGCoordinates.CreateInitialized(Self, YHmgVector, csPoint);
   FMaxParticles := 256;
   FParticleSize := 1.0;
   FInnerColor := TgxColor.Create(Self);
@@ -273,12 +273,12 @@ begin
   FClients.Clear;
 end;
 
-procedure TgxFireFXManager.SetFireDir(const val: TgxCoordinates);
+procedure TgxFireFXManager.SetFireDir(const val: TGCoordinates);
 begin
   FFireDir.Assign(val);
 end;
 
-procedure TgxFireFXManager.SetInitialDir(const val: TgxCoordinates);
+procedure TgxFireFXManager.SetInitialDir(const val: TGCoordinates);
 begin
   FInitialDir.Assign(val);
 end;
@@ -350,7 +350,7 @@ begin
   inherited;
 end;
 
-procedure TgxFireFXManager.DoProgress(const progressTime: TgxProgressTimes);
+procedure TgxFireFXManager.DoProgress(const progressTime: TGProgressTimes);
 var
   i: Integer;
 begin

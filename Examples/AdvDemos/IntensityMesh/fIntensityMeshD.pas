@@ -31,7 +31,7 @@ uses
   GLS.WindowsFont,
   GLScene.Utils,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLS.Graphics,

@@ -9,7 +9,7 @@
 #include <Vcl.Forms.hpp>
 #include "GLScene.BaseClasses.hpp"
 #include "GLS.Collision.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"

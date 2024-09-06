@@ -29,7 +29,7 @@ uses
   GLScene.VectorTypes,
   GLS.Scene,
   GLScene.VectorGeometry,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.SoundManager,
   GLS.SoundFileObjects;
 

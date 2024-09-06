@@ -25,8 +25,8 @@ uses
   GLScene.VectorTypes,
   GXS.Cadencer,
   GXS.Color,
-  GXS.BaseClasses,
-  GXS.Coordinates,
+  GLScene.BaseClasses,
+  GLScene.Coordinates,
   GXS.RenderContextInfo,
   GLScene.Manager,
   GXS.State,
@@ -49,11 +49,11 @@ type
     var y: single; var z: single) of object;
 
   // Thor special effect manager.
-  TgxThorFXManager = class(TgxCadenceAbleComponent)
+  TgxThorFXManager = class(TGCadenceAbleComponent)
   private
     FClients: TList;
     FThorpoints: PThorpointArray;
-    FTarget: TgxCoordinates;
+    FTarget: TGCoordinates;
     FCadencer: TgxCadencer;
     FMaxpoints: integer;
     FGlowSize: single;
@@ -67,7 +67,7 @@ type
     procedure RegisterClient(aClient: TgxBThorFX);
     procedure DeRegisterClient(aClient: TgxBThorFX);
     procedure DeRegisterAllClients;
-    procedure SetTarget(const val: TgxCoordinates);
+    procedure SetTarget(const val: TGCoordinates);
     procedure SetCadencer(const val: TgxCadencer);
     procedure SetMaxpoints(const val: integer);
     function StoreGlowSize: boolean;
@@ -83,9 +83,9 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TgxProgressTimes); override;
+    procedure DoProgress(const progressTime: TGProgressTimes); override;
   published
-    property Target: TgxCoordinates read FTarget write SetTarget;
+    property Target: TGCoordinates read FTarget write SetTarget;
     property Cadencer: TgxCadencer read FCadencer write SetCadencer;
     property Maxpoints: integer read FMaxpoints write SetMaxpoints default 256;
     property GlowSize: single read FGlowSize write FGlowSize
@@ -108,13 +108,13 @@ type
   private
     FManager: TgxThorFXManager;
     FManagerName: String; // NOT persistent, temporarily used for persistence
-    FTarget: TgxCoordinates;
+    FTarget: TGCoordinates;
   protected
     procedure SetManager(const val: TgxThorFXManager);
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
     procedure Loaded; override;
-    procedure SetTarget(const val: TgxCoordinates);
+    procedure SetTarget(const val: TGCoordinates);
   public
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
@@ -144,7 +144,7 @@ begin
   inherited Create(AOwner);
   FClients := TList.Create;
   RegisterManager(Self);
-  FTarget := TgxCoordinates.CreateInitialized(Self, VectorMake(0, 1, 0));
+  FTarget := TGCoordinates.CreateInitialized(Self, VectorMake(0, 1, 0));
   FTarget.Style := csPoint;
   FMaxpoints := 64;
   FGlowSize := 0.2;
@@ -204,7 +204,7 @@ begin
   FClients.Clear;
 end;
 
-procedure TgxThorFXManager.SetTarget(const val: TgxCoordinates);
+procedure TgxThorFXManager.SetTarget(const val: TGCoordinates);
 begin
   FTarget.Assign(val);
   ThorInit;
@@ -276,7 +276,7 @@ begin
   inherited;
 end;
 
-procedure TgxThorFXManager.DoProgress(const progressTime: TgxProgressTimes);
+procedure TgxThorFXManager.DoProgress(const progressTime: TGProgressTimes);
 var
   i: integer;
 
@@ -375,7 +375,7 @@ end;
 constructor TgxBThorFX.Create(AOwner: TXCollection);
 begin
   inherited Create(AOwner);
-  FTarget := TgxCoordinates.CreateInitialized(Self, VectorMake(0, 1, 0));
+  FTarget := TGCoordinates.CreateInitialized(Self, VectorMake(0, 1, 0));
   FTarget.Style := csPoint;
 end;
 
@@ -451,7 +451,7 @@ begin
   inherited Assign(Source);
 end;
 
-procedure TgxBThorFX.SetTarget(const val: TgxCoordinates);
+procedure TgxBThorFX.SetTarget(const val: TGCoordinates);
 begin
   FTarget.Assign(val);
 end;

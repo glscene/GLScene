@@ -14,7 +14,7 @@
 #include "GLS.BitmapFont.hpp"
 #include "GLS.Blur.hpp"
 #include "GLS.Cadencer.hpp"
-#include "GLS.Coordinates.hpp"
+#include "GLScene.Coordinates.hpp"
 
 #include "GLS.HUDObjects.hpp"
 #include "GLS.Navigator.hpp"

@@ -26,7 +26,7 @@ uses
 
   GLScene.OpenGLTokens,
   GLS.XOpenGL,
-  GLS.XCollection,
+  GLScene.XCollection,
   GLScene.Strings,
   GLS.Context,
   GLScene.VectorGeometry,
@@ -40,7 +40,7 @@ uses
   GLS.Texture,
   GLS.Color,
   GLScene.BaseClasses,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.RenderContextInfo,
   GLS.Material,
   GLS.TextureFormat,
@@ -157,7 +157,7 @@ type
      To add children at runtime, use the AddNewChild method of TGLBaseSceneObject;
      other children manipulations methods and properties are provided (to browse,
      move and delete them). Using the regular TComponent methods is not encouraged *)
-  TGLBaseSceneObject = class(TGLCoordinatesUpdateAbleComponent)
+  TGLBaseSceneObject = class(TGCoordinatesUpdateAbleComponent)
   private
     FAbsoluteMatrix, FInvAbsoluteMatrix: TGLMatrix;
     FLocalMatrix: TGLMatrix;

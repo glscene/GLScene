@@ -26,7 +26,7 @@ uses
   GLS.Texture,
   GLS.SpacePartition,
 
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.RenderContextInfo,
   GLS.State,
   GLS.SimpleNavigation,

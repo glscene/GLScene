@@ -21,7 +21,7 @@ uses
   GLS.Texture,
   GLS.Objects,
   GLS.Color,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.BaseClasses;
 
 type

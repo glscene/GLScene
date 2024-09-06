@@ -27,7 +27,7 @@ uses
   GLS.LensFlare,
   GLS.Scene,
   GLS.Objects,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.SkyDome,
   GLS.SceneViewer,
   GLS.Texture,

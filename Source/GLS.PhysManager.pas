@@ -12,7 +12,7 @@ uses
   System.SysUtils,
   Vcl.Dialogs,
 
-  GLS.XCollection,
+  GLScene.XCollection,
   GLScene.VectorGeometry,
   GLS.Scene,
   GLS.PhysForces,

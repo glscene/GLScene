@@ -19,7 +19,7 @@ uses
   GLS.NGDManager,
   GLS.Objects,
   GLScene.PersistentClasses,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.SimpleNavigation,
   GLS.Cadencer,
   GLS.SceneViewer,

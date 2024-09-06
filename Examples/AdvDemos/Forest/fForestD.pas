@@ -42,7 +42,7 @@ uses
   GLS.TextureCombiners,
   GLS.TextureFormat,
   GLS.Material,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.TerrainRenderer,
   GLS.HeightData,
   GLS.HeightTileFileHDS,

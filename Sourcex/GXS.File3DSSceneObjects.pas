@@ -19,39 +19,39 @@ uses
   GXS.VectorFileObjects,
   GLScene.VectorTypes,
   GLScene.PersistentClasses,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.RenderContextInfo,
   GXS.State;
 
 type
   TgxFile3DSLight = class(TgxLightSource)
   private
-    FTargetPos: TgxCoordinates;
+    FTargetPos: TGCoordinates;
     FHotSpot: Single;
     FMultipler: Single;
   public
     constructor Create(AOwner: TComponent); override;
     procedure DoRender(var rci: TgxRenderContextInfo; renderSelf, renderChildren: Boolean); override;
-    procedure CoordinateChanged(Sender: TgxCustomCoordinates); override;
+    procedure CoordinateChanged(Sender: TGCustomCoordinates); override;
     destructor Destroy; override;
   published
-    property SpotTargetPos: TgxCoordinates read FTargetPos;
+    property SpotTargetPos: TGCoordinates read FTargetPos;
     property HotSpot: Single read FHotSpot write FHotSpot;
     property Multipler: Single read FMultipler write FMultipler;
   end;
 
   TgxFile3DSCamera = class(TgxCamera)
   private
-    FTargetPos: TgxCoordinates;
+    FTargetPos: TGCoordinates;
     FQuadCyl: array[0..1] of GLUquadricObj;
     FQuadDisk: array[0..1] of GLUquadricObj;
   public
     constructor Create(AOwner: TComponent); override;
     procedure DoRender(var rci: TgxRenderContextInfo; renderSelf, renderChildren: Boolean); override;
-    procedure CoordinateChanged(Sender: TgxCustomCoordinates); override;
+    procedure CoordinateChanged(Sender: TGCustomCoordinates); override;
     destructor Destroy; override;
   published
-    property CameraTargetPos: TgxCoordinates read FTargetPos;
+    property CameraTargetPos: TGCoordinates read FTargetPos;
     property RollAngle;
   end;
 
@@ -67,9 +67,9 @@ type
   private
     FTransfMat, FScaleMat, ParentMatrix: TMatrix4f;
 
-    FS_Rot3DS: TgxCoordinates4;
-    FRot3DS: TgxCoordinates4;
-    FScale3DS: TgxCoordinates4;
+    FS_Rot3DS: TGCoordinates4;
+    FRot3DS: TGCoordinates4;
+    FScale3DS: TGCoordinates4;
     procedure ReadMesh(Stream: TStream);
     procedure WriteMesh(Stream: TStream);
   protected
@@ -79,13 +79,13 @@ type
     constructor Create(AOWner: TComponent); override;
     destructor Destroy; override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    procedure CoordinateChanged(Sender: TgxCustomCoordinates); override;
+    procedure CoordinateChanged(Sender: TGCustomCoordinates); override;
     function AxisAlignedDimensionsUnscaled: TVector4f; override;
     function BarycenterAbsolutePosition: TVector4f; override;
   published
-    property S_Rot3DS: TgxCoordinates4 read FS_Rot3DS;
-    property Rot3DS: TgxCoordinates4 read FRot3DS;
-    property Scale3DS: TgxCoordinates4 read FScale3DS;
+    property S_Rot3DS: TGCoordinates4 read FS_Rot3DS;
+    property Rot3DS: TGCoordinates4 read FRot3DS;
+    property Scale3DS: TGCoordinates4 read FScale3DS;
   end;
 
 var
@@ -159,7 +159,7 @@ constructor TgxFile3DSLight.Create(AOwner: TComponent);
 begin
   inherited;
 
-  FTargetPos := TgxCoordinates.CreateInitialized(self, VectorMake(NullVector), csPoint);
+  FTargetPos := TGCoordinates.CreateInitialized(self, VectorMake(NullVector), csPoint);
   FHotSpot := 1;
   FMultipler := 1;
 end;
@@ -211,7 +211,7 @@ begin
   glPopMatrix;
 end;
 
-procedure TgxFile3DSLight.CoordinateChanged(Sender: TgxCustomCoordinates);
+procedure TgxFile3DSLight.CoordinateChanged(Sender: TGCustomCoordinates);
 begin
   inherited;
 
@@ -231,7 +231,7 @@ var
 begin
   inherited;
 
-  FTargetPos := TgxCoordinates.CreateInitialized(self, VectorMake(NullVector), csPoint);
+  FTargetPos := TGCoordinates.CreateInitialized(self, VectorMake(NullVector), csPoint);
 
   for I := 0 to 1 do
   begin
@@ -298,7 +298,7 @@ begin
   rci.gxStates.PolygonMode := pmFill;
 end;
 
-procedure TgxFile3DSCamera.CoordinateChanged(Sender: TgxCustomCoordinates);
+procedure TgxFile3DSCamera.CoordinateChanged(Sender: TGCustomCoordinates);
 begin
   inherited;
 
@@ -352,9 +352,9 @@ begin
   FRefMat := IdentityHmgMatrix;
   FTransfMat := IdentityHmgMatrix;
   FScaleMat := IdentityHmgMatrix;
-  FS_Rot3DS := TgxCoordinates4.CreateInitialized(self, VectorMake(1, 0, 0), csVector);
-  FRot3DS := TgxCoordinates4.CreateInitialized(self, VectorMake(1, 0, 0), csVector);
-  FScale3DS := TgxCoordinates4.CreateInitialized(self, VectorMake(1, 1, 1), csVector);
+  FS_Rot3DS := TGCoordinates4.CreateInitialized(self, VectorMake(1, 0, 0), csVector);
+  FRot3DS := TGCoordinates4.CreateInitialized(self, VectorMake(1, 0, 0), csVector);
+  FScale3DS := TGCoordinates4.CreateInitialized(self, VectorMake(1, 1, 1), csVector);
 
   ObjectStyle := [osDirectDraw];
 end;
@@ -430,7 +430,7 @@ begin
   ParentMatrix := MatrixMultiply(FTransfMat, ParentMatrix);
 end;
 
-procedure TgxFile3DSFreeForm.CoordinateChanged(Sender: TgxCustomCoordinates);
+procedure TgxFile3DSFreeForm.CoordinateChanged(Sender: TGCustomCoordinates);
 var
   quat, quat1, quat2: TQuaternion;
 begin

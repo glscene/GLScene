@@ -25,13 +25,13 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry, // PGLVector TGLVector TGLMatrix PGLMatrix NullHmgVector...
   GLScene.VectorLists, // TGAffineVectorList for Tree
-  GLS.XCollection, // TXCollection file function
+  GLScene.XCollection, // TXCollection file function
   GLScene.GeometryBB, // For show debug
   GLScene.BaseClasses,
   GLScene.PersistentClasses,
   GLS.Scene,
   GLScene.Manager,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLS.Objects,
   GLS.GeomObjects,
   GLS.VectorFileObjects, // cube cone freeform...

@@ -19,7 +19,7 @@ uses
   GLScene.VectorTypes,
   GLScene.PersistentClasses,
   GXS.Scene,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GLScene.VectorGeometry,
   GXS.Objects,
   GXS.BitmapFont,

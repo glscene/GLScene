@@ -22,7 +22,7 @@ uses
   GXS.Graphics,
   GXS.ImageUtils,
   GXS.Color,
-  GXS.Coordinates,
+  GLScene.Coordinates,
   GXS.Material,
   GXS.State;
 
@@ -93,9 +93,9 @@ type
     infini: Longint;
     done: Boolean;
     NewMat: TgxLibMaterial;
-    tmpcoords: TgxCoordinates;
+    tmpcoords: TGCoordinates;
     tmpcolor: TgxColor;
-    tmpcoords4: TgxCoordinates4;
+    tmpcoords4: TGCoordinates4;
     tmpstr: string;
     procedure SeTgxShaderItems(const Value: TgxShaderItems);
     procedure SeTgxMaterialLibraryItems(const Value: TgxMaterialLibraryItems);

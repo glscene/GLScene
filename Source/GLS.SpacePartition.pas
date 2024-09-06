@@ -38,7 +38,7 @@ uses
 
   GLScene.OpenGLTokens,
   GLS.Scene,
-  GLS.Coordinates,
+  GLScene.Coordinates,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.GeometryBB,
