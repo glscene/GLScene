@@ -22,7 +22,7 @@ uses
   FMX.Controls.Presentation,
 
   GXSL.Parameter,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.VectorGeometry,
   GLScene.Strings;
 

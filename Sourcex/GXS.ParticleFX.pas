@@ -41,7 +41,7 @@ uses
   GXS.RenderContextInfo,
   GXS.PipelineTransformation,
   GXS.XCollection,
-  GXS.TextureFormat;
+  GLScene.TextureFormat;
 
 const
   cPFXNbRegions = 128; // number of distance regions

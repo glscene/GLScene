@@ -30,7 +30,7 @@ uses
   GLScene.Strings,
   GLScene.VectorTypes,
 
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.OpenGLAdapter,
   GLS.PipelineTransformation,
   GLS.State,

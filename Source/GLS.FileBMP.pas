@@ -16,7 +16,7 @@ uses
   System.SysUtils,
 
   GLScene.OpenGLTokens,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
 
   GLS.Context,
   GLS.Graphics,
@@ -54,9 +54,7 @@ type
       const intFormat: TGLInternalFormat); reintroduce;
   end;
 
-//========================================================
-implementation
-//========================================================
+implementation //-------------------------------------------------------------
 
 const
 
@@ -553,9 +551,7 @@ begin
   Result := [dfcRead (*, dfcWrite*)];
 end;
 
-//=============================================================
-initialization
-//=============================================================
+initialization //-------------------------------------------------------------
 
   RegisterRasterFormat('bmp', 'Bitmap Image File', TGLBMPImage);
 

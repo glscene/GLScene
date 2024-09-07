@@ -15,7 +15,7 @@ uses
   Vcl.Imaging.Jpeg,
 
 
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
  
   GLS.Scene,
   GLS.Objects,

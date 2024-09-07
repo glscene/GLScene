@@ -16,7 +16,7 @@ uses
 
   GXS.Graphics,
   GXS.Texture,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GXS.Context;
 
 type

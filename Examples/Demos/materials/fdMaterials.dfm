@@ -7,7 +7,7 @@ object FormMaterials: TFormMaterials
   Margins.Bottom = 5
   Caption = 'Materials'
   ClientHeight = 776
-  ClientWidth = 1096
+  ClientWidth = 1309
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

@@ -33,7 +33,7 @@ uses
   GLScene.Strings,
   GLScene.VectorGeometry,
   GLScene.Utils,
-  GLS.TextureFormat;
+  GLScene.TextureFormat;
 
 var
   vImageScaleFilterWidth: Integer = 5; // Relative sample radius for filtering

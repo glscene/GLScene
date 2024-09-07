@@ -22,7 +22,7 @@ uses
 
   GXS.Context,
   GXS.Graphics,
-  GXS.TextureFormat;
+  GLScene.TextureFormat;
 
 type
 

@@ -19,7 +19,7 @@ uses
   GLScene.OpenGLTokens,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
 
   GLScene.BaseClasses,
   GLS.Scene,

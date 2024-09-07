@@ -94,7 +94,7 @@ type
     mathash: integer;
   end;
 
-  TgxLMTSVectorFile = class(TgxVectorFile)
+  TgxLMTSVectorFile = class(TGXVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -106,7 +106,7 @@ implementation
 //====================================================================
 
 uses
-  GXS.TextureFormat;
+  GLScene.TextureFormat;
 
 // ------------------
 // ------------------ TgxLMTSVectorFile ------------------
@@ -119,8 +119,8 @@ end;
 
 procedure TgxLMTSVectorFile.LoadFromStream(aStream: TStream);
 var
-  MO: TgxMeshObject;
-  FG: TfgxVertexIndexList;
+  MO: TGXMeshObject;
+  FG: TFGXVertexIndexList;
   LL: TgxMaterialLibrary;
   ML: TgxMaterialLibrary;
   LMTS: TLMTS;
@@ -140,7 +140,7 @@ var
 begin
   owner.MeshObjects.Clear;
 
-  MO := TgxMeshObject.CreateOwned(owner.MeshObjects);
+  MO := TGXMeshObject.CreateOwned(owner.MeshObjects);
   MO.Mode := momFaceGroups;
 
   vi := TGIntegerList.create;
@@ -353,7 +353,7 @@ begin
     for C := LMTS.header.nSubsets - 1 downto 0 do
     begin
       aStream.Read(S, LMTS.header.subSize);
-      FG := TfgxVertexIndexList.CreateOwned(MO.FaceGroups);
+      FG := TFGXVertexIndexList.CreateOwned(MO.FaceGroups);
       FG.Mode := fgmmTriangles;
       FG.vertexindices.AddSerie(S.Offset * 3, 1, S.Count * 3);
       vi.AddSerie(S.Offset * 3, 1, S.Count * 3);
@@ -416,8 +416,8 @@ end;
 
 procedure TgxLMTSVectorFile.SaveToStream(aStream: TStream);
 var
-  MO: TgxMeshObject;
-  FG: TfgxVertexIndexList;
+  MO: TGXMeshObject;
+  FG: TFGXVertexIndexList;
   i, j, k, l, lmstartindex, C, matindex: integer;
   h: TLMTS_Header;
   V: array [0 .. 2] of TLMTS_Vertex;
@@ -441,7 +441,7 @@ begin
     MO := owner.MeshObjects[i];
     for j := 0 to MO.FaceGroups.Count - 1 do
     begin
-      FG := TfgxVertexIndexList(MO.FaceGroups[j]);
+      FG := TFGXVertexIndexList(MO.FaceGroups[j]);
 
       matname := AnsiString(FG.MaterialName);
 
@@ -491,7 +491,7 @@ begin
     MO := owner.MeshObjects[i];
     for j := 0 to MO.FaceGroups.Count - 1 do
     begin
-      FG := TfgxVertexIndexList(MO.FaceGroups[j]);
+      FG := TFGXVertexIndexList(MO.FaceGroups[j]);
 
       // subset already created earlier, just finish filling the data.
       // we needed the "c" and "lmstartindex" to be able to do this
@@ -612,7 +612,7 @@ begin
       MO := owner.MeshObjects[i];
       for j := 0 to MO.FaceGroups.Count - 1 do
       begin
-        FG := TfgxVertexIndexList(MO.FaceGroups[j]);
+        FG := TFGXVertexIndexList(MO.FaceGroups[j]);
         if FG.lightmapindex > -1 then
         begin
           matname := AnsiString(owner.LightmapLibrary.Materials

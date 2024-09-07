@@ -16,7 +16,7 @@ uses
 
   GLS.Context,
   GLS.Graphics,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.Strings,
   GLS.ApplicationFileIO,
 

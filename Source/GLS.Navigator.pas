@@ -34,7 +34,7 @@ uses
   GLS.Screen,
   GLS.Material,
   GLS.Texture,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.RenderContextInfo;
 
 type

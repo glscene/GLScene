@@ -33,7 +33,7 @@ uses
   GXS.Context,
   GXS.State,
   GLScene.Strings,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.BaseClasses,
   GXS.RenderContextInfo;
 

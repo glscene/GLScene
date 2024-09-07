@@ -30,8 +30,8 @@ uses
   GXS.RenderContextInfo,
   GXS.Material,
 
-  Formatx.m3DS,
-  Formatx.m3DSTypes;
+  Formats.m3DS,
+  Formats.m3DSTypes;
 
 type
 
@@ -171,8 +171,8 @@ type
   // Used only for serialization. There probably is a more efficient way to do it.
   TgxFile3DSAnimKeysClassType = (ctScale, ctRot, ctPos, ctCol, ctTPos, ctFall, ctHot, ctRoll);
 
-  // A 3ds-specific TgxMorphableMeshObject.
-  TgxFile3DSDummyObject = class(TgxMorphableMeshObject)
+  // A 3ds-specific TGXMorphableMeshObject.
+  TgxFile3DSDummyObject = class(TGXMorphableMeshObject)
   private
     FAnimList: TgxFile3DSAnimationKeyList;
     FAnimData: Pointer;
@@ -213,7 +213,7 @@ type
     FLightSrcName: String64;
   public
     constructor Create; override;
-    procedure LoadData(const AOwner: TgxBaseMesh; const AData: PLight3DS); virtual;
+    procedure LoadData(const AOwner: TGXBaseMesh; const AData: PLight3DS); virtual;
     procedure LoadAnimation(const AData: Pointer); override;
     procedure SetFrame(const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
@@ -225,7 +225,7 @@ type
   //  A 3ds-specific spot light.
   TgxFile3DSSpotLightObject = class(TgxFile3DSOmniLightObject)
   public
-    procedure LoadData(const AOwner: TgxBaseMesh; const AData: PLight3DS); override;
+    procedure LoadData(const AOwner: TGXBaseMesh; const AData: PLight3DS); override;
     procedure LoadAnimation(const AData: Pointer); override;
     procedure SetFrame(const AFrame: real); override;
   end;
@@ -238,7 +238,7 @@ type
     FCameraSrcName: String64;
   public
     constructor Create; override;
-    procedure LoadData(Owner: TgxBaseMesh; AData: PCamera3DS);
+    procedure LoadData(Owner: TGXBaseMesh; AData: PCamera3DS);
     procedure LoadAnimation(const AData: Pointer); override;
     procedure SetFrame(const AFrame: real); override;
     procedure WriteToFiler(Writer: TGVirtualWriter); override;
@@ -249,7 +249,7 @@ type
   (* The 3DStudio vector file.
      A 3DS file may contain material
      information and require textures when loading. *)
-  Tgx3DSVectorFile = class(TgxVectorFile)
+  Tgx3DSVectorFile = class(TGXVectorFile)
   public
 
     class function Capabilities: TDataFileCapabilities; override;
@@ -267,9 +267,9 @@ var
 
   (* If enabled, allows 3ds animation and fixes loading of some 3ds models,
      but has a few bugs:
-     - TgxFreeForm.AutoCentering does now work correctly.
-     - TgxMeshObject.vertices return values different from
-        TgxMeshObject.ExtractTriangles() *)
+     - TGXFreeForm.AutoCentering does now work correctly.
+     - TGXMeshObject.vertices return values different from
+        TGXMeshObject.ExtractTriangles() *)
   vFile3DS_EnableAnimation: boolean = False;
 
   (* If enabled, a -90 degrees (-PI/2) rotation will occured on X Axis.
@@ -1074,7 +1074,7 @@ end;
 procedure TgxFile3DSDummyObject.Lerp(morphTargetIndex1, morphTargetIndex2: integer;
   lerpFactor: single);
 begin
-  if (Owner.Owner is TgxActor) and ((Owner.Owner as TgxActor).AnimationMode in
+  if (Owner.Owner is TGXActor) and ((Owner.Owner as TGXActor).AnimationMode in
     [aamBounceBackward, aamLoopBackward]) then
     SetFrame(morphTargetIndex1 - lerpFactor)
   else
@@ -1231,7 +1231,7 @@ begin
   FLightSrc := TgxFile3DSLight.Create(nil);
 end;
 
-procedure TgxFile3DSOmniLightObject.LoadData(const AOwner: TgxBaseMesh;
+procedure TgxFile3DSOmniLightObject.LoadData(const AOwner: TGXBaseMesh;
   const AData: PLight3DS);
 begin
   FLightSrc.Parent := AOwner;
@@ -1334,7 +1334,7 @@ begin
   inherited;
 end;
 
-procedure TgxFile3DSSpotLightObject.LoadData(const AOwner: TgxBaseMesh;
+procedure TgxFile3DSSpotLightObject.LoadData(const AOwner: TGXBaseMesh;
   const AData: PLight3DS);
 begin
   inherited;
@@ -1393,7 +1393,7 @@ begin
   FCameraSrc.TargetObject := FTargetObj;
 end;
 
-procedure TgxFile3DSCameraObject.LoadData(Owner: TgxBaseMesh; AData: PCamera3DS);
+procedure TgxFile3DSCameraObject.LoadData(Owner: TGXBaseMesh; AData: PCamera3DS);
 begin
   FCameraSrc.Parent := Owner;
   FTargetObj.Parent := Owner;
@@ -1520,9 +1520,9 @@ var
   begin
     material := Materials.MaterialByName[Name];
     Assert(Assigned(material));
-    if GetOwner is TgxBaseMesh then
+    if GetOwner is TGXBaseMesh then
     begin
-      matLib := TgxBaseMesh(GetOwner).MaterialLibrary;
+      matLib := TGXBaseMesh(GetOwner).MaterialLibrary;
       if Assigned(matLib) then
       begin
         Result := Name;
@@ -1679,9 +1679,9 @@ var
     Result := -1;
     material := Materials.MaterialByName[Name];
     Assert(Assigned(material));
-    if GetOwner is TgxBaseMesh then
+    if GetOwner is TGXBaseMesh then
     begin
-      matLib := TgxBaseMesh(GetOwner).LightmapLibrary;
+      matLib := TGXBaseMesh(GetOwner).LightmapLibrary;
       if Assigned(matLib) then
       begin
         if Trim(string(material.IllumMap.Map.NameStr)) <> '' then
@@ -1943,7 +1943,7 @@ var
 
 var
   CurrentMotionIndex, iMaterial, i, j, x: integer;
-  aFaceGroup: TfgxVertexIndexList;
+  aFaceGroup: TFGXVertexIndexList;
   Face, Vertex, TargetVertex: integer;
   SmoothingGroup: cardinal;
   CurrentIndex: word;
@@ -1951,7 +1951,7 @@ var
   standardNormalsOrientation: boolean;
   lights_mesh: TgxFile3DSOmniLightObject;
   camera_mesh: TgxFile3DSCameraObject;
-  basemesh: TgxBaseMesh;
+  basemesh: TGXBaseMesh;
 begin
 
   with TFile3DS.Create do
@@ -1969,7 +1969,7 @@ begin
           mesh.Name := string(PMesh3DS(Objects.Mesh[I])^.NameStr);
           //dummy targets
           for x := KeyFramer.Settings.Seg.SegBegin to KeyFramer.Settings.Seg.SegEnd do
-            TgxMeshMorphTarget.CreateOwned(mesh.MorphTargets);
+            TGXMeshMorphTarget.CreateOwned(mesh.MorphTargets);
 
           with mesh do
           begin
@@ -2135,10 +2135,10 @@ begin
           // face definitions and rely on the default texture of the scene object
           if (NMats = 0) or (not vVectorFileObjectsAllocateMaterials) then
           begin
-            aFaceGroup := TfgxVertexIndexList.CreateOwned(mesh.FaceGroups);
+            aFaceGroup := TFGXVertexIndexList.CreateOwned(mesh.FaceGroups);
             with aFaceGroup do
             begin
-              basemesh := TgxBaseMesh(Self.GetOwner);
+              basemesh := TGXBaseMesh(Self.GetOwner);
               if basemesh.MaterialLibrary <> nil then
                 MaterialName := basemesh.MaterialLibrary.Materials.Add.Name;
               // copy the face list
@@ -2154,7 +2154,7 @@ begin
           begin
             for iMaterial := 0 to NMats - 1 do
             begin
-              aFaceGroup := TfgxVertexIndexList.CreateOwned(mesh.FaceGroups);
+              aFaceGroup := TFGXVertexIndexList.CreateOwned(mesh.FaceGroups);
               with aFaceGroup do
               begin
                 MaterialName :=
@@ -2189,7 +2189,7 @@ begin
           mesh.Name := string(KeyFramer.MeshMotion[I].NameStr);
           //dummy targets
           for x := KeyFramer.Settings.Seg.SegBegin to KeyFramer.Settings.Seg.SegEnd do
-            TgxMeshMorphTarget.CreateOwned(mesh.MorphTargets);
+            TGXMeshMorphTarget.CreateOwned(mesh.MorphTargets);
 
           mesh.LoadAnimation(KeyFramer.MeshMotion[I]);
         end;
@@ -2214,7 +2214,7 @@ begin
         lights_mesh := TgxFile3DSOmniLightObject.CreateOwned(Owner.MeshObjects);
         // Dummy targets for it.
         for x := KeyFramer.Settings.Seg.SegBegin to KeyFramer.Settings.Seg.SegEnd do
-          TgxMeshMorphTarget.CreateOwned(lights_mesh.MorphTargets);
+          TGXMeshMorphTarget.CreateOwned(lights_mesh.MorphTargets);
         lights_mesh.LoadData(Owner, Objects.OmniLight[I]);
         lights_mesh.LoadAnimation(KeyFramer.OmniLightMotion[I]);
       end;
@@ -2225,7 +2225,7 @@ begin
         lights_mesh := TgxFile3DSSpotLightObject.CreateOwned(Owner.MeshObjects);
         // Dummy targets for it.
         for x := KeyFramer.Settings.Seg.SegBegin to KeyFramer.Settings.Seg.SegEnd do
-          TgxMeshMorphTarget.CreateOwned(lights_mesh.MorphTargets);
+          TGXMeshMorphTarget.CreateOwned(lights_mesh.MorphTargets);
         lights_mesh.LoadData(Owner, Objects.SpotLight[I]);
         lights_mesh.LoadAnimation(KeyFramer.SpotLightMotion[I]);
       end;
@@ -2236,7 +2236,7 @@ begin
         camera_mesh := TgxFile3DSCameraObject.CreateOwned(Owner.MeshObjects);
         // Dummy targets for it.
         for x := KeyFramer.Settings.Seg.SegBegin to KeyFramer.Settings.Seg.SegEnd do
-          TgxMeshMorphTarget.CreateOwned(camera_mesh.MorphTargets);
+          TGXMeshMorphTarget.CreateOwned(camera_mesh.MorphTargets);
         camera_mesh.LoadData(Owner, Objects.Camera[I]);
         camera_mesh.LoadAnimation(KeyFramer.CameraMotion[I]);
       end;

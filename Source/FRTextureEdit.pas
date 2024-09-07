@@ -19,7 +19,7 @@ uses
   VCL.Buttons, 
   VCL.Controls,
   GLS.Graphics, 
-  GLS.TextureFormat, 
+  GLScene.TextureFormat, 
   GLS.Texture, 
   GLS.State, 
   GLS.TextureImageEditors;

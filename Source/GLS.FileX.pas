@@ -14,11 +14,12 @@ uses
   System.SysUtils,
 
   GLScene.VectorTypes,
+  GLScene.VectorLists,
+  GLScene.VectorGeometry,
+
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
-  GLScene.VectorGeometry,
   GLS.Texture,
-  GLScene.VectorLists,
   GLS.Material,
 
   Formats.X;
@@ -30,9 +31,7 @@ type
     procedure LoadFromStream(aStream: TStream); override;
   end;
 
-// -------------------------------------------------------------
-implementation
-// -------------------------------------------------------------
+implementation // -------------------------------------------------------------
 
 class function TGLXVectorFile.Capabilities: TGLDataFileCapabilities;
 begin
@@ -151,10 +150,10 @@ begin
   end;
 end;
 
-//--------------------------------------------------------
-initialization
-//--------------------------------------------------------
+initialization //--------------------------------------------------------
 
 RegisterVectorFileFormat('x', 'DirectX Model files', TGLXVectorFile);
+
+finalization //----------------------------------------------------------
 
 end.

@@ -7,12 +7,12 @@ unit GXS.ParametricSurfaces;
   Parametric surface implementation (like Bezier and BSpline surfaces)
 
   Notes:
-  The MOParametricSurface is a TgxMeshObject descendant that can be used
+  The MOParametricSurface is a TGXMeshObject descendant that can be used
   to render parametric surfaces. The Renderer property defines if the
   surface should be rendered using mesh evaluators (through GLU
   Nurbs for BSplines) or through GLScene using the CurvesAndSurfaces.pas
   routines to generate the mesh vertices and then rendered through the
-  standard TgxMeshObject render routine. Please note that BSplines aren't
+  standard TGXMeshObject render routine. Please note that BSplines aren't
   correctly handled yet in the CurvesAndSurfaces unit so the output mesh
   in rendering mode is wrong. I'll have it fixed when I know
   what's going wrong. The GLU Nurbs and glMeshEval Beziers work well
@@ -58,7 +58,7 @@ type
     control point influences on the surface. *)
   TParametricSurfaceBasis = (psbBezier, psbBSpline);
 
-  TMOParametricSurface = class(TgxMeshObject)
+  TMOParametricSurface = class(TGXMeshObject)
   private
     FControlPoints, FWeightedControlPoints: TGAffineVectorList;
     FKnotsU, FKnotsV, FWeights: TGSingleList;
@@ -129,7 +129,7 @@ type
     Resolution sets the detail level of the mesh evaluation.
     MinU, MaxU, MinV and MaxV define the region of the surface to be rendered,
     this is especially useful for blending with neighbouring patches. *)
-  TFGBezierSurface = class(TgxFaceGroup)
+  TFGBezierSurface = class(TGXFaceGroup)
   private
     FCountU, FCountV: Integer;
     FControlPointIndices, FTexCoordIndices: TGIntegerList;
@@ -327,7 +327,7 @@ end;
 procedure TMOParametricSurface.GenerateMesh;
 var
   i, j: Integer;
-  fg: TfgxVertexIndexList;
+  fg: TFGXVertexIndexList;
 begin
   case FBasis of
     psbBezier:
@@ -351,7 +351,7 @@ begin
   end;
 
   Mode := momFaceGroups;
-  fg := TfgxVertexIndexList.CreateOwned(FaceGroups);
+  fg := TFGXVertexIndexList.CreateOwned(FaceGroups);
   fg.Mode := fgmmTriangles;
   for j := 0 to FResolution - 2 do
     with fg do

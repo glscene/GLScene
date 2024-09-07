@@ -27,13 +27,13 @@ uses
   GLScene.VectorGeometry,
   GXS.Graphics,
   GXS.Context,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GXS.FileDDS,
-  Formatx.DXTC;
+
+  Formats.DXTC;
 
 
 type
-
   TDDSImage = class(TBitmap)
   public
      procedure LoadFromStream(stream: TStream); //override; -> E2170 Cannot override a non-virtual method override;
@@ -42,9 +42,7 @@ type
 
   EDDSException = class(Exception);
 
-//-----------------------------------------------------------------------
-implementation
-//-----------------------------------------------------------------------
+implementation //-------------------------------------------------------------
 
 // ------------------
 // ------------------ TDDSImage ------------------
@@ -141,24 +139,20 @@ begin
     dwCaps := DDSCAPS_TEXTURE;
     stream.Write(header, SizeOf(TDDSHeader));
     for i := 0 to Height - 1 do
-      // TODO : E2003 Undeclared identifier: 'ScanLine' 
+      // TODO : E2003 Undeclared identifier: 'ScanLine'
       (* stream.Write(ScanLine[i]^, rowSize);*)
   end;
 end;
 
-// ------------------------------------------------------------------
-initialization
-// ------------------------------------------------------------------
+initialization // -------------------------------------------------------------
 
- // TODO : E2003 Undeclared identifier: 'RegisterFileFormat' 
+ // TODO : E2003 Undeclared identifier: 'RegisterFileFormat'
  (*
   TPicture.RegisterFileFormat(
     'dds', 'Microsoft DirectDraw Surface', TDDSImage);
   *)
 
-// ------------------------------------------------------------------
-finalization
-// ------------------------------------------------------------------
+finalization // --------------------------------------------------------------
 
   // TODO : E2003 Undeclared identifier: 'UnregisterGraphicClass' 
   (*

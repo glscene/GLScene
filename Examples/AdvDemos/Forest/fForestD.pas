@@ -40,7 +40,7 @@ uses
   GLS.XOpenGL,
   GLScene.BaseClasses,
   GLS.TextureCombiners,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.Material,
   GLScene.Coordinates,
   GLS.TerrainRenderer,

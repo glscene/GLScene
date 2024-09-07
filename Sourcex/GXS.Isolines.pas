@@ -84,7 +84,7 @@ type
     Z_Kfix -
     res3Dmin -
   *)
-   procedure Conrec(PlaneSFindex:Integer; PlaneSF: TgxFreeForm; 
+   procedure Conrec(PlaneSFindex:Integer; PlaneSF: TGXFreeForm; 
          Data: TMatrixArr; ilb, iub, jlb, jub: Integer;
          X: TVectorArr; Y: TVectorArr; NC: Integer; HgtL: TVectorArr; 
 		 Z_Kfix: Single; res3Dmax, res3Dmin: Single);

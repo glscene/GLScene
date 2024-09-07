@@ -33,7 +33,7 @@ uses
   GLScene.Strings,
   GXS.State,
   GXS.PipelineTransformation,
-  GXS.TextureFormat;
+  GLScene.TextureFormat;
 
 // Buffer ID's for Multiple-Render-Targets (using GL_ATI_draw_buffers)
 const

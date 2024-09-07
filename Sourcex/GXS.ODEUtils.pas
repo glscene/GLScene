@@ -67,7 +67,7 @@ function CreateBodyFromCube(var Geom: PdxGeom; Cube: TgxCube; World: PdxWorld;  
 
 (* This method requires you to manually deallocate vertices and
   indices when you're done with the trimesh *)
-function CreateTriMeshFromBaseMesh(BaseMesh: TgxBaseMesh; Space: PdxSpace;
+function CreateTriMeshFromBaseMesh(BaseMesh: TGXBaseMesh; Space: PdxSpace;
   var Vertices: PdVector3Array; var Indices: PdIntegerArray): PdxGeom;
 
 function SceneMatrixFromGeom(Geom: PdxGeom): TMatrix4f;
@@ -420,7 +420,7 @@ begin
   end;
 end;
 
-function CreateTriMeshFromBaseMesh(BaseMesh: TgxBaseMesh; Space: PdxSpace;
+function CreateTriMeshFromBaseMesh(BaseMesh: TGXBaseMesh; Space: PdxSpace;
   var Vertices: PdVector3Array; var Indices: PdIntegerArray): PdxGeom;
 var
   i, j, p: integer;

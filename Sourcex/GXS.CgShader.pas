@@ -23,7 +23,7 @@ uses
   GLScene.BaseClasses,
   GXS.RenderContextInfo,
   GXS.Material,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
 
   Cg.Import,
   Cg.GL;

@@ -29,7 +29,7 @@ uses
   GLS.State,
   GLScene.VectorGeometry,
   GLS.RenderContextInfo,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.Context,
   GLS.Material,
   GLSL.Shader,

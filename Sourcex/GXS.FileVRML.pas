@@ -12,19 +12,20 @@ uses
   System.SysUtils,
   System.Math,
 
-  GXS.ApplicationFileIO,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.VectorLists,
+
+  GXS.ApplicationFileIO,
   GXS.VectorFileObjects,
   GXS.Material,
   GXS.MeshUtils,
 
-  Formatx.VRML;
+  Formats.VRML;
 
 type
 
-  TgxVRMLVectorFile = class(TgxVectorFile)
+  TgxVRMLVectorFile = class(TGXVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -161,7 +162,7 @@ end;
 
 procedure TgxVRMLVectorFile.LoadFromStream(aStream: TStream);
 var
-  mesh: TgxMeshObject;
+  mesh: TGXMeshObject;
   uniqueMatID: Integer;
   currentMaterial: TgxLibMaterial;
   currentTransform: TMatrix4f;
@@ -238,7 +239,7 @@ var
   procedure RebuildMesh;
   var
     i, j, k, l: Integer;
-    newfg: TfgxVertexIndexList;
+    newfg: TFGXVertexIndexList;
     fg: TFGVertexNormalTexIndexList;
     vertices, normals, texcoords, triNormals, newVertices, newNormals,
       newTexCoords: TGAffineVectorList;
@@ -402,7 +403,7 @@ var
       optimized.Offset(newVertices.Count);
 
       // Replace the facegroup with a vertex-only index list
-      newfg := TfgxVertexIndexList.Create;
+      newfg := TFGXVertexIndexList.Create;
       newfg.Owner := mesh.FaceGroups;
       newfg.Mode := fg.Mode;
       newfg.MaterialName := fg.MaterialName;
@@ -495,7 +496,7 @@ var
     if (node.Name = 'Coordinate3') and (node.Count > 0) then
     begin
       RebuildMesh;
-      mesh := TgxMeshObject.CreateOwned(Owner.MeshObjects);
+      mesh := TGXMeshObject.CreateOwned(Owner.MeshObjects);
       points := TVRMLSingleArray(node[0]).Values;
       for i := 0 to (points.Count div 3) - 1 do
         mesh.vertices.Add(points[3 * i], points[3 * i + 1], points[3 * i + 2]);

@@ -18,7 +18,7 @@ uses
   GLScene.Strings,
   GLScene.OpenGLTokens,
   GLScene.VectorTypes, 
-  GLS.TextureFormat, 
+  GLScene.TextureFormat, 
   GLS.RenderContextInfo;
 
 type

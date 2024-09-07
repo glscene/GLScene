@@ -20,10 +20,10 @@ uses
   GLS.Graphics,
   GLS.Texture,
   GLScene.VectorGeometry,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.CompositeImage,
   GLS.MultiSampleImage,
-//  GLScene.RGBE,
+  GLScene.RGBE,
   GLS.ApplicationFileIO,
   GLS.Material,
   GLScene.Strings;
@@ -47,7 +47,6 @@ type
       const CurrentFormat: Boolean;
       const IntFormat: TGLInternalFormat); reintroduce;
   end;
-
 
 // get or create material in material library
 function GetOrCreateLibMaterial(aMaterialLibrary: TGLMaterialLibrary;
@@ -77,9 +76,7 @@ var
      low - skipped the first two levels. *)
   vDDSDetailLevel: TGLDDSDetailLevels = ddsHighDet;
 
-//----------------------------------------------------------------------
-implementation
-//----------------------------------------------------------------------
+implementation //------------------------------------------------------------
 
 uses
   Formats.DXTC;

@@ -2,8 +2,7 @@
 // The graphics engine GLScene https://github.com/glscene
 //
 unit Formats.LWO;
-
-(* =============================================================
+(*
 
 This unit provides functions, constants and now classes for use in
 working with Lightwave3D Object files.
@@ -811,9 +810,7 @@ procedure FindClipByClipIndex(AChunk: TLWChunk; AIndex: Pointer;
 
 function GetContentDir: TLWContentDir;
 
-// --------------------------------------------------------------------
-implementation
-// --------------------------------------------------------------------
+implementation // ------------------------------------------------------------
 
 type
   PWord = ^Word;

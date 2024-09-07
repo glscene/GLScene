@@ -18,7 +18,7 @@ uses
   Vcl.StdCtrls,
   
   GLScene.OpenGLTokens,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
 

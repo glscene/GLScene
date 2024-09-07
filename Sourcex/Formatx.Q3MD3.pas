@@ -20,7 +20,7 @@ uses
 
   GXS.VectorFileObjects,
   GXS.Material,
-  Formatx.MD3;
+  Formats.MD3;
 
 type
   (* This class is used to extract the tag transform information
@@ -44,22 +44,20 @@ type
     into an animation list. The NamePrefix parameter is used to determine
     which class of animation is extracted. eg NamePrefix='TORSO' will load
     all animations starting with 'TORSO_' like 'TORSO_STAND' *)
-procedure LoadQ3Anims(Animations: TgxActorAnimations; FileName: string;
+procedure LoadQ3Anims(Animations: TGXActorAnimations; FileName: string;
   NamePrefix: string); overload;
-procedure LoadQ3Anims(Animations: TgxActorAnimations; Strings: TStrings;
+procedure LoadQ3Anims(Animations: TGXActorAnimations; Strings: TStrings;
   NamePrefix: string); overload;
 
 (* Quake3 Skin loading procedure. Use this procedure to apply textures
   to a GLActor. This doens't use the actors original preloaded materials so
   it may be a good idea to clear the actors material library before
   running this to keep everything nice and clean. *)
-procedure LoadQ3Skin(FileName: string; Actor: TgxActor);
+procedure LoadQ3Skin(FileName: string; Actor: TGXActor);
 
-// ---------------------------------------------------------------------------
-implementation
-// ---------------------------------------------------------------------------
+implementation // -------------------------------------------------------------
 
-procedure LoadQ3Anims(Animations: TgxActorAnimations; FileName: string;
+procedure LoadQ3Anims(Animations: TGXActorAnimations; FileName: string;
   NamePrefix: string);
 var
   AnimStrings: TStrings;
@@ -70,7 +68,7 @@ begin
   AnimStrings.Free;
 end;
 
-procedure LoadQ3Anims(Animations: TgxActorAnimations; Strings: TStrings;
+procedure LoadQ3Anims(Animations: TGXActorAnimations; Strings: TStrings;
   NamePrefix: string);
 var
   anim: TStringList;
@@ -160,7 +158,7 @@ begin
         StartFrame := val[0];
         EndFrame := val[0] + val[1] - 1;
         Reference := aarMorph;
-        // Need a way in TgxActorAnimation to tell whether it is
+        // Need a way in TGXActorAnimation to tell whether it is
         // a looping type animation or a play once type and
         // the framerate (interval) it uses. Both of these can
         // be determined here and loaded.
@@ -170,7 +168,7 @@ begin
   anim.Free;
 end;
 
-procedure LoadQ3Skin(FileName: string; Actor: TgxActor);
+procedure LoadQ3Skin(FileName: string; Actor: TGXActor);
 const
   // This list can be expanded if necessary
   ExtList: array [0 .. 3] of string = ('.jpg', '.jpeg', '.tga', '.bmp');
@@ -178,12 +176,12 @@ var
   SkinStrings, temp: TStrings;
   i, j: Integer;
   libmat: TgxLibMaterial;
-  mesh: TgxMeshObject;
+  mesh: TGXMeshObject;
   texture, textureNoDir: string;
   textureFound, meshFound: Boolean;
 
-  function GetMeshObjectByName(MeshObjects: TgxMeshObjectList; Name: string;
-    var mesh: TgxMeshObject): Boolean;
+  function GetMeshObjectByName(MeshObjects: TGXMeshObjectList; Name: string;
+    var mesh: TGXMeshObject): Boolean;
   var
     i: Integer;
   begin
@@ -329,5 +327,7 @@ begin
   for i := 0 to 2 do
     result.W.V[i] := Tag.vPosition.V[i];
 end;
+
+//---------------------------------------------------------------------------
 
 end.

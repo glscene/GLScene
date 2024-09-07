@@ -20,7 +20,7 @@ uses
   GXS.Texture,
   GXS.Context,
   GXS.RenderContextInfo,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
 
   GXSL.CustomShader,
   GXSL.Parameter;

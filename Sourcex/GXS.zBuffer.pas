@@ -45,7 +45,7 @@ uses
   GXS.Color,
   GXS.RenderContextInfo,
   GXS.State,
-  GXS.TextureFormat;
+  GLScene.TextureFormat;
 
 
 type

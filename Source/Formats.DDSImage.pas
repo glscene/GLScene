@@ -28,7 +28,7 @@ uses
   GLS.Graphics,
   GLS.Context,
   GLS.FileDDS,
-  GLS.TextureFormat;
+  GLScene.TextureFormat;
 
 type
   TDDSImage = class(TBitmap)

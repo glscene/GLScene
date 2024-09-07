@@ -51,7 +51,7 @@ uses
 
   GXSL.CustomShader,
   GXSL.Shader,
-  GXS.TextureFormat;
+  GLScene.TextureFormat;
 
 type
   TBumpMethod = (bmDot3TexCombiner, bmBasicARBFP);

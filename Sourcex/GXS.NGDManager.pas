@@ -1450,9 +1450,9 @@ var
   I, J: Integer;
   vertexArray: array of TVertex;
 begin
-  if FOwnerBaseSceneObject is TgxBaseMesh then
+  if FOwnerBaseSceneObject is TGXBaseMesh then
   begin
-    with (FOwnerBaseSceneObject as TgxBaseMesh) do
+    with (FOwnerBaseSceneObject as TGXBaseMesh) do
     begin
       for I := 0 to MeshObjects.Count - 1 do
         for J := 0 to MeshObjects[I].Vertices.Count - 1 do
@@ -1493,9 +1493,9 @@ var
   I, J: Integer;
   vertexArray: array of TVertex;
 begin
-  if FOwnerBaseSceneObject is TgxBaseMesh then
+  if FOwnerBaseSceneObject is TGXBaseMesh then
   begin
-    with (FOwnerBaseSceneObject as TgxBaseMesh) do
+    with (FOwnerBaseSceneObject as TGXBaseMesh) do
     begin
 
       // Iterate trough mesh of GLobject
@@ -1623,9 +1623,9 @@ var
   v: array [0 .. 2] of TAffineVector;
 begin
 
-  if FOwnerBaseSceneObject is TgxBaseMesh then
+  if FOwnerBaseSceneObject is TGXBaseMesh then
   begin
-    with (FOwnerBaseSceneObject as TgxBaseMesh) do
+    with (FOwnerBaseSceneObject as TGXBaseMesh) do
     begin
       Result := NewtonCreateTreeCollision(FManager.FNewtonWorld, 0);
       NewtonTreeCollisionBeginBuild(Result);

@@ -23,14 +23,14 @@ uses
 (* Tesselates the polygon outlined by the Vertexes.
   And addeds them to the first facegroup of the Mesh. *)
 procedure DoTesselate(Vertexes: TGAffineVectorList;
-  Mesh: TgxBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
+  Mesh: TGXBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
 
 //------------------------------------------------
 implementation
 //------------------------------------------------
 
 var
-  TessMesh: TgxMeshObject;
+  TessMesh: TGXMeshObject;
   TessFace: TFGIndexTexCoordList;
   TessExtraVertices: Integer;
   TessVertices: PAffineVectorArray;
@@ -77,7 +77,7 @@ begin
   SetVector(PAffineVector(outData)^, coords[0], coords[1], coords[2]);
 end;
 
-procedure DoTesselate(Vertexes: TGAffineVectorList; Mesh: TgxBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
+procedure DoTesselate(Vertexes: TGAffineVectorList; Mesh: TGXBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
 var
   Tess: GLUTesselator;
   i: Integer;
@@ -86,7 +86,7 @@ begin
   // Select or Create FaceGroup
   if Mesh.MeshObjects.Count = 0 then
   begin
-    TessMesh := TgxMeshObject.CreateOwned(Mesh.MeshObjects);
+    TessMesh := TGXMeshObject.CreateOwned(Mesh.MeshObjects);
     Mesh.MeshObjects[0].Mode := momFaceGroups;
   end
   else

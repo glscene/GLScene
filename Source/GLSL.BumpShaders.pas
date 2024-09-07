@@ -44,7 +44,7 @@ uses
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.State,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
 
   GLS.Texture,
   GLS.Scene,

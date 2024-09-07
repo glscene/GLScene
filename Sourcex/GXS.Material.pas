@@ -33,7 +33,7 @@ uses
   GXS.Color,
   GLScene.Coordinates,
   GXS.State,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GXS.Graphics,
   GXS.ImageUtils;
 

@@ -3,7 +3,7 @@
 //
 unit GXS.FileOCT;
 (*
-    Support-code to load OCT Files into TgxFreeForm-Components in GLScene.
+    Support-code to load OCT Files into TGXFreeForm-Components in GLScene.
     (OCT being the format output from FSRad, http://www.fluidstudios.com/fsrad.html).
 *)
 interface
@@ -15,22 +15,23 @@ uses
   System.Classes,
   FMX.Graphics,
 
-  GXS.VectorFileObjects,
   GLScene.VectorGeometry,
+  GLScene.TextureFormat,
+
+  GXS.VectorFileObjects,
   GXS.ApplicationFileIO,
   GXS.Texture,
   GXS.Material,
   GXS.Graphics,
   GXS.State,
   GXS.ImageUtils,
-  GXS.TextureFormat,
 
-  Formatx.OCT;
+  Formats.OCT;
 
 type
 
   // The OCT vector file (FSRad output).
-  TgxOCTgxVectorFile = class(TgxVectorFile)
+  TgxOCTgxVectorFile = class(TGXVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -63,15 +64,15 @@ var
   oct: TOCTFile;
   octFace: POCTFace;
   octLightmap: POCTLightmap;
-  mo: TgxMeshObject;
-  fg: TfgxVertexIndexList;
+  mo: TGXMeshObject;
+  fg: TFGXVertexIndexList;
   lightmapLib: TgxMaterialLibrary;
   lightmapBmp: TBitmap;
   libMat: TgxLibMaterial;
 begin
   oct := TOCTFile.Create(aStream);
   try
-    mo := TgxMeshObject.CreateOwned(Owner.MeshObjects);
+    mo := TGXMeshObject.CreateOwned(Owner.MeshObjects);
     mo.Mode := momFaceGroups;
 
     lightmapLib := Owner.LightmapLibrary;
@@ -137,7 +138,7 @@ begin
     for i := 0 to n - 1 do
     begin
       octFace := @oct.Faces[i];
-      fg := TfgxVertexIndexList.CreateOwned(mo.FaceGroups);
+      fg := TFGXVertexIndexList.CreateOwned(mo.FaceGroups);
       fg.Mode := fgmmTriangleFan;
       fg.VertexIndices.AddSerie(octFace.start, 1, octFace.num);
       if (Assigned(lightmapLib)) and (vFileOCTAllocateMaterials) then

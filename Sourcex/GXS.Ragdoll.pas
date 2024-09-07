@@ -41,7 +41,7 @@ type
   private
     FOwner : TgxRagdolBoneList;
     FName : String;
-    FBoneID : Integer; //Refering to TgxActor Bone
+    FBoneID : Integer; //Refering to TGXActor Bone
     FBoundMax: TAffineVector;
     FBoundMin: TAffineVector;
     FBoundBoneDelta: TAffineVector; //Stores the diference from the bone.GlobalMatrix to the center of the bone's bounding box
@@ -86,12 +86,12 @@ type
 
   TgxRagdoll = class(TGPersistentObject)
 	private
-    FOwner : TgxBaseMesh;
+    FOwner : TGXBaseMesh;
     FRootBone : TgxRagdolBone;
     FEnabled: Boolean;
     FBuilt: Boolean;
   public
-    constructor Create(AOwner : TgxBaseMesh); reintroduce;
+    constructor Create(AOwner : TGXBaseMesh); reintroduce;
     destructor Destroy; override;
     procedure WriteToFiler(writer : TGVirtualWriter); override;
     procedure ReadFromFiler(reader : TGVirtualReader); override;
@@ -102,7 +102,7 @@ type
     procedure Start;
     procedure Update;
     procedure Stop;
-    property Owner : TgxBaseMesh read FOwner;
+    property Owner : TGXBaseMesh read FOwner;
     property RootBone : TgxRagdolBone read FRootBone;
     property Enabled : Boolean read FEnabled;
 	end;
@@ -154,7 +154,7 @@ end;
 
 procedure TgxRagdolBone.CreateBoundingBox;
 var
-  bone: TgxSkeletonBone;
+  bone: TGXSkeletonBone;
   i, j: integer;
   BoneVertices : TGAffineVectorList;
   BoneVertex, max,min: TAffineVector;
@@ -165,7 +165,7 @@ begin
   //Get all vertices weighted to this bone
   BoneVertices:=TGAffineVectorList.Create;
   for i:=0 to Ragdoll.Owner.MeshObjects.Count-1 do
-  with TgxSkeletonMeshObject(Ragdoll.Owner.MeshObjects[i]) do
+  with TGXSkeletonMeshObject(Ragdoll.Owner.MeshObjects[i]) do
     for j:=0 to Vertices.Count-1 do
       if bone.BoneID = VerticesBonesWeights[j][0].BoneID then
         BoneVertices.FindOrAdd(Vertices[j]);
@@ -223,7 +223,7 @@ end;
 procedure TgxRagdolBone.AlignToSkeleton;
 var
   o: TAffineVector;
-  bone: TgxSkeletonBone;
+  bone: TGXSkeletonBone;
   mat, posMat: TMatrix4f;
   noBounds: Boolean;
 begin
@@ -318,7 +318,7 @@ end;
 
 { TgxRagdoll }
 
-constructor TgxRagdoll.Create(AOwner : TgxBaseMesh);
+constructor TgxRagdoll.Create(AOwner : TGXBaseMesh);
 begin
   FOwner := AOwner;
   FEnabled := False;

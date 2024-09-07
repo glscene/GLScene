@@ -329,10 +329,10 @@ begin
       Extract(FContentList.IndexOf(ContentName), NewName);
 end;
 
-//-----------------------------
-initialization
-//-----------------------------
+initialization //--------------------------------------------------------
 
-  RegisterArchiveFormat('zlib', 'GLScene file uses the zlib compression algorithm', TZLibArchive);
+  RegisterArchiveFormat('zlib', 'Using the zlib compression algorithm', TZLibArchive);
+
+finalization //----------------------------------------------------------
 
 end.

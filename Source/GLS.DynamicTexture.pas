@@ -20,7 +20,7 @@ uses
   System.SysUtils,
 
   GLScene.OpenGLTokens,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.Utils,
   GLS.Context,
   GLS.Texture,

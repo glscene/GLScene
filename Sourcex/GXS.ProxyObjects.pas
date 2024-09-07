@@ -96,8 +96,8 @@ type
   // A proxy object specialized for FreeForms.
   TgxFreeFormProxy = class(TgxProxyObject)
   private
-    function GetMasterFreeFormObject: TgxFreeForm;
-    procedure SetMasterFreeFormObject(const Value: TgxFreeForm);
+    function GetMasterFreeFormObject: TGXFreeForm;
+    procedure SetMasterFreeFormObject(const Value: TGXFreeForm);
   public
     (* If the MasterObject is a FreeForm, you can raycast against the Octree,
        which is alot faster.  You must build the octree before using. *)
@@ -110,8 +110,8 @@ type
       intersectPoint: PVector4f = nil;
       intersectNormal: PVector4f = nil): Boolean;
   published
-   // Redeclare as TgxFreeForm.
-    property MasterObject: TgxFreeForm read GetMasterFreeFormObject write
+   // Redeclare as TGXFreeForm.
+    property MasterObject: TGXFreeForm read GetMasterFreeFormObject write
       SetMasterFreeFormObject;
   end;
 
@@ -136,7 +136,7 @@ type
     FLastFrame: Integer;
     FCurrentFrameDelta: Single;
     FCurrentTime: TGProgressTimes;
-    FAnimation: TgxActorAnimationName;
+    FAnimation: TGXActorAnimationName;
     FTempLibMaterialName: string;
     FMasterLibMaterial: TgxLibMaterial;
     FMaterialLibrary: TgxMaterialLibrary;
@@ -145,9 +145,9 @@ type
     FStoredBoneNames: TStrings;
     FOnBeforeRender: TGProgressEvent;
     FAnimationMode: TgxActorProxyAnimationMode;
-    procedure SetAnimation(const Value: TgxActorAnimationName);
-    procedure SetMasterActorObject(const Value: TgxActor);
-    function GetMasterActorObject: TgxActor;
+    procedure SetAnimation(const Value: TGXActorAnimationName);
+    procedure SetMasterActorObject(const Value: TGXActor);
+    function GetMasterActorObject: TGXActor;
     function GetLibMaterialName: TgxLibMaterialName;
     procedure SetLibMaterialName(const Value: TgxLibMaterialName);
     procedure SetMaterialLibrary(const Value: TgxMaterialLibrary);
@@ -187,16 +187,16 @@ type
        This allows to pass a low-low-low-poly Actor to raycast in the "RefActor" parameter,
        while using a high-poly Actor in the "MasterObject" property,
        of course we assume that the two Masterobject Actors have same animations. *)
-    function RayCastIntersectEx(RefActor: TgxActor; const rayStart, rayVector:
+    function RayCastIntersectEx(RefActor: TGXActor; const rayStart, rayVector:
       TVector4f;
       intersectPoint: PVector4f = nil;
       intersectNormal: PVector4f = nil): Boolean; overload;
   published
     property AnimationMode: TgxActorProxyAnimationMode read FAnimationMode write
       FAnimationMode default pamInherited;
-    property Animation: TgxActorAnimationName read FAnimation write SetAnimation;
-    // Redeclare as TgxActor.
-    property MasterObject: TgxActor read GetMasterActorObject write
+    property Animation: TGXActorAnimationName read FAnimation write SetAnimation;
+    // Redeclare as TGXActor.
+    property MasterObject: TGXActor read GetMasterActorObject write
       SetMasterActorObject;
     (* Redeclare without pooTransformation
       (Don't know why it causes the object to be oriented incorrecly.) *)
@@ -380,13 +380,13 @@ begin
   end;
 end;
 
-function TgxFreeFormProxy.GetMasterFreeFormObject: TgxFreeForm;
+function TgxFreeFormProxy.GetMasterFreeFormObject: TGXFreeForm;
 begin
-  Result := TgxFreeForm(inherited MasterObject);
+  Result := TGXFreeForm(inherited MasterObject);
 end;
 
 procedure TgxFreeFormProxy.SetMasterFreeFormObject(
-  const Value: TgxFreeForm);
+  const Value: TGXFreeForm);
 begin
   inherited SetMasterObject(Value);
 end;
@@ -454,7 +454,7 @@ var
   cfd: Single;
   // General proxy stuff.
   gotMaster, masterGotEffects, oldProxySubObject: Boolean;
-  MasterActor: TgxActor;
+  MasterActor: TGXActor;
 begin
   try
     MasterActor := GetMasterActorObject;
@@ -544,7 +544,7 @@ procedure TgxActorProxy.DoStoreBonesMatrices;
 var
   i, n: integer;
   Bmo: TBoneMatrixObj;
-  Bone: TgxSkeletonBone;
+  Bone: TGXSkeletonBone;
 begin
   if FStoredBoneNames.count > 0 then
   begin
@@ -597,9 +597,9 @@ begin
   end;
 end;
 
-function TgxActorProxy.GetMasterActorObject: TgxActor;
+function TgxActorProxy.GetMasterActorObject: TGXActor;
 begin
-  Result := TgxActor(inherited MasterObject);
+  Result := TGXActor(inherited MasterObject);
 end;
 
 function TgxActorProxy.GetLibMaterialName: TgxLibMaterialName;
@@ -638,9 +638,9 @@ end;
 
 // Gain access to TgxDummyActor.DoAnimate().
 type
-  TgxDummyActor = class(TgxActor);
+  TgxDummyActor = class(TGXActor);
 
-function TgxActorProxy.RayCastIntersectEx(RefActor: TgxActor; const rayStart,
+function TgxActorProxy.RayCastIntersectEx(RefActor: TGXActor; const rayStart,
   rayVector: TVector4f; intersectPoint, intersectNormal: PVector4f): Boolean;
 var
   localRayStart, localRayVector: TVector4f;
@@ -710,9 +710,9 @@ begin
   end;
 end;
 
-procedure TgxActorProxy.SetAnimation(const Value: TgxActorAnimationName);
+procedure TgxActorProxy.SetAnimation(const Value: TGXActorAnimationName);
 var
-  anAnimation: TgxActorAnimation;
+  anAnimation: TGXActorAnimation;
 begin
   // We first assign the value (for persistency support), then check it.
   FAnimation := Value;
@@ -736,7 +736,7 @@ begin
     FStoredBoneNames.Assign(Value);
 end;
 
-procedure TgxActorProxy.SetMasterActorObject(const Value: TgxActor);
+procedure TgxActorProxy.SetMasterActorObject(const Value: TGXActor);
 begin
   inherited SetMasterObject(Value);
   BoneMatricesClear;

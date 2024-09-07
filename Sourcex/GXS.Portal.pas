@@ -28,19 +28,19 @@ type
 
   (* A mesh object list that handles portal rendering.
     The items are treated as being sectors. *)
-  TgxPortalMeshObjectList = class(TgxMeshObjectList)
+  TgxPortalMeshObjectList = class(TGXMeshObjectList)
   public
-    constructor CreateOwned(AOwner: TgxBaseMesh);
+    constructor CreateOwned(AOwner: TGXBaseMesh);
     destructor Destroy; override;
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
   end;
 
   // A portal renderer sector.
-  TgxSectorMeshObject = class(TgxMorphableMeshObject)
+  TgxSectorMeshObject = class(TGXMorphableMeshObject)
   private
     FRenderDone: Boolean;
   public
-    constructor CreateOwned(AOwner: TgxMeshObjectList);
+    constructor CreateOwned(AOwner: TGXMeshObjectList);
     destructor Destroy; override;
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
     procedure Prepare; override;
@@ -52,7 +52,7 @@ type
     implements the portal. *)
   TFGPolygon = class(TFGVertexNormalTexIndexList)
   public
-    constructor CreateOwned(AOwner: TgxFaceGroups); override;
+    constructor CreateOwned(AOwner: TGXFaceGroups); override;
     destructor Destroy; override;
     procedure Prepare; override;
   end;
@@ -66,7 +66,7 @@ type
     FCenter, FNormal: TAffineVector;
     FRadius: Single;
   public
-    constructor CreateOwned(AOwner: TgxFaceGroups); override;
+    constructor CreateOwned(AOwner: TGXFaceGroups); override;
     destructor Destroy; override;
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
     procedure Prepare; override;
@@ -74,7 +74,7 @@ type
   end;
 
   // Portal Renderer class.
-  TgxPortal = class(TgxBaseMesh)
+  TgxPortal = class(TGXBaseMesh)
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -90,7 +90,7 @@ implementation
 // ------------------ TgxPortalMeshObjectList ------------------
 // ------------------
 
-constructor TgxPortalMeshObjectList.CreateOwned(AOwner: TgxBaseMesh);
+constructor TgxPortalMeshObjectList.CreateOwned(AOwner: TGXBaseMesh);
 begin
   inherited CreateOwned(AOwner);
 end;
@@ -103,7 +103,7 @@ end;
 procedure TgxPortalMeshObjectList.BuildList(var mrci: TgxRenderContextInfo);
 var
   i: Integer;
-  startSector: TgxMeshObject;
+  startSector: TGXMeshObject;
 begin
   for i := 0 to Count - 1 do
     with TgxSectorMeshObject(Items[i]) do
@@ -129,7 +129,7 @@ end;
 // ------------------ TgxSectorMeshObject ------------------
 // ------------------
 
-constructor TgxSectorMeshObject.CreateOwned(AOwner: TgxMeshObjectList);
+constructor TgxSectorMeshObject.CreateOwned(AOwner: TGXMeshObjectList);
 begin
   inherited;
   Mode := momFaceGroups;
@@ -190,7 +190,7 @@ end;
 // ------------------ TFGPolygon ------------------
 // ------------------
 
-constructor TFGPolygon.CreateOwned(AOwner: TgxFaceGroups);
+constructor TFGPolygon.CreateOwned(AOwner: TGXFaceGroups);
 begin
   inherited;
   Mode := fgmmTriangleFan;
@@ -210,7 +210,7 @@ end;
 // ------------------ TFGPortalPolygon ------------------
 // ------------------
 
-constructor TFGPortalPolygon.CreateOwned(AOwner: TgxFaceGroups);
+constructor TFGPortalPolygon.CreateOwned(AOwner: TGXFaceGroups);
 begin
   inherited;
 end;

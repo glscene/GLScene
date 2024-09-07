@@ -29,7 +29,7 @@ uses
   GLScene.BaseClasses,
   GXS.State,
   GXS.PipelineTransformation,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GXS.ImageUtils;
 
 type

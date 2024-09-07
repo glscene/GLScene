@@ -29,7 +29,7 @@ uses
   GLScene.Coordinates,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.Color,
   GLS.Texture,
   GLS.Material,

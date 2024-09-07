@@ -41,7 +41,7 @@ uses
   GLScene.Coordinates,
   GLS.RenderContextInfo,
   GLScene.Manager,
-  GLS.TextureFormat;
+  GLScene.TextureFormat;
 
 const
   cPFXNbRegions = 128; // number of distance regions

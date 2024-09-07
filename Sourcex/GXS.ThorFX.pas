@@ -30,7 +30,7 @@ uses
   GXS.RenderContextInfo,
   GLScene.Manager,
   GXS.State,
-  GXS.TextureFormat;
+  GLScene.TextureFormat;
 
 type
   PThorpoint = ^TThorpoint;

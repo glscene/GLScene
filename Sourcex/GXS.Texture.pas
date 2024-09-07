@@ -18,7 +18,7 @@ uses
   FMX.Graphics,
   FMX.Objects,
 
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.Strings,
 
   GXS.XOpenGL,

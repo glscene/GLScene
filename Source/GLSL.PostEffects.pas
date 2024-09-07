@@ -27,7 +27,7 @@ uses
   GLScene.VectorGeometry,
   GLS.RenderContextInfo,
   GLS.Material,
-  GLS.TextureFormat;
+  GLScene.TextureFormat;
 
 type
   EGLPostShaderHolderException = class(Exception);

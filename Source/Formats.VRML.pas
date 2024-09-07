@@ -148,9 +148,7 @@ type
       write FAllowUnknownNodes;
   end;
 
-// ---------------------------------------------------------------------------
-implementation
-// ---------------------------------------------------------------------------
+implementation // ------------------------------------------------------------
 
 function CreateVRMLTokenList(Text: String): TStringList;
 const

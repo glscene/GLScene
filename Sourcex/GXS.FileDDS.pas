@@ -23,8 +23,8 @@ uses
 
   GXS.Context,
   GXS.Graphics,
-  GXS.TextureFormat,
-  Formatx.DXTC;
+  GLScene.TextureFormat,
+  Formats.DXTC;
 
 type
 

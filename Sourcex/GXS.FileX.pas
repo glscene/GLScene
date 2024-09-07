@@ -21,10 +21,10 @@ uses
   GLScene.VectorLists,
   GXS.Material,
 
-  Formatx.X;
+  Formats.X;
 
 type
-  TgxXVectorFile = class(TgxVectorFile)
+  TgxXVectorFile = class(TGXVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -46,7 +46,7 @@ var
   procedure RecursDXFile(DXNode: TDXNode);
   var
     i, j, k, l, vertcount: integer;
-    mo: TgxMeshObject;
+    mo: TGXMeshObject;
     mat: TMatrix4f;
     libmat: TgxLibMaterial;
     fg: TFGVertexNormalTexIndexList;
@@ -62,7 +62,7 @@ var
 
     if DXNode is TDXMesh then
     begin
-      mo := TgxMeshObject.CreateOwned(Owner.MeshObjects);
+      mo := TGXMeshObject.CreateOwned(Owner.MeshObjects);
       mo.Mode := momFaceGroups;
       mo.Vertices.Assign(TDXMesh(DXNode).Vertices);
       mo.Vertices.TransformAsPoints(mat);

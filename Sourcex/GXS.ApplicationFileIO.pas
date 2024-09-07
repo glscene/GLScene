@@ -108,9 +108,7 @@ var
   vGXAFIOCreateFileStream: TgxAFIOCreateFileStream = nil;
   vGXAFIOFileStreamExists: TgxAFIOFileStreamExists = nil;
 
-// ---------------------------------------------------------------------
-implementation
-// ---------------------------------------------------------------------
+implementation // ------------------------------------------------------------
 
 var
   vAFIO: TgxApplicationFileIO = nil;

@@ -254,19 +254,21 @@ contains
   GLScene.Spline in '..\Source\GLScene.Spline.pas',
   GLScene.Strings in '..\Source\GLScene.Strings.pas',
   GLScene.RandomLib in '..\Source\GLScene.RandomLib.pas',
-  GLS.TextureFormat in '..\Source\GLS.TextureFormat.pas',
+  GLScene.TextureFormat in '..\Source\GLScene.TextureFormat.pas',
   GLScene.VectorLists in '..\Source\GLScene.VectorLists.pas',
   GLScene.VectorGeometry in '..\Source\GLScene.VectorGeometry.pas',
   GLScene.VectorTypes in '..\Source\GLScene.VectorTypes.pas',
+  GLScene.VectorTypesExt in '..\Source\GLScene.VectorTypesExt.pas',
+  GLScene.Utils in '..\Source\GLScene.Utils.pas',
   GLS.VectorFileObjects in '..\Source\GLS.VectorFileObjects.pas',
   GLS.VerletTypes in '..\Source\GLS.VerletTypes.pas',
   GLS.VerletClothify in '..\Source\GLS.VerletClothify.pas',
-  GLScene.VectorTypesExt in '..\Source\GLScene.VectorTypesExt.pas',
   PasDblStrUtils in '..\Source\PasDblStrUtils.pas',
   PasGLTF in '..\Source\PasGLTF.pas',
   PasJSON in '..\Source\PasJSON.pas',
-  GLScene.Utils in '..\Source\GLScene.Utils.pas',
-  GLS.OpenGLAdapter in '..\Source\GLS.OpenGLAdapter.pas';
+  GLS.OpenGLAdapter in '..\Source\GLS.OpenGLAdapter.pas',
+  gnuGettext in '..\Source\gnuGettext.pas',
+  gnuGettextInit in '..\Source\gnuGettextInit.pas';
 
 end.
 

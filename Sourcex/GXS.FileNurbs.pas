@@ -19,7 +19,7 @@ uses
 
 type
 
-  TgxNurbsVectorFile = class(TgxVectorFile)
+  TgxNurbsVectorFile = class(TGXVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(stream: TStream); override;

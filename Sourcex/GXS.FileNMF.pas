@@ -41,7 +41,7 @@ type
   end;
 
 type
-  TgxNMFVectorFile = class(TgxVectorFile)
+  TgxNMFVectorFile = class(TGXVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -105,13 +105,13 @@ end;
 procedure TgxNMFVectorFile.LoadFromStream(aStream: TStream);
 var
   i, j: Integer;
-  mesh: TgxMeshObject;
+  mesh: TGXMeshObject;
   nmf: TFileNMF;
 begin
   nmf := TFileNMF.Create;
   try
     nmf.LoadFromStream(aStream);
-    mesh := TgxMeshObject.CreateOwned(Owner.MeshObjects);
+    mesh := TGXMeshObject.CreateOwned(Owner.MeshObjects);
     mesh.Mode := momTriangles;
     for i := 0 to nmf.NumTris - 1 do
     begin

@@ -18,7 +18,7 @@ uses
   GLScene.VectorTypes,
   GLScene.Utils,
   GXS.Texture,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GXS.Graphics,
   GXS.ImageUtils,
   GXS.Color,

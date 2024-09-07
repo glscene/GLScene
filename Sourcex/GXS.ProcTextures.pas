@@ -18,7 +18,7 @@ uses
 
   GXS.Texture,
   GXS.Graphics,
-  GXS.TextureFormat;
+  GLScene.TextureFormat;
 
 const
   GRADIENT_TABLE_SIZE = 256;

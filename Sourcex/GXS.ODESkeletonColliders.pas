@@ -20,7 +20,7 @@ uses
 type
 
   // Base ODE skeleton collider class.
-  TSCODEBase = class(TgxSkeletonCollider)
+  TSCODEBase = class(TGXSkeletonCollider)
   private
     FGeom: PdxGeom;
   public
@@ -82,7 +82,7 @@ type
 
 (* After loading call this function to add all the geoms in a
    skeleton collider list to a given ODE space. *)
-procedure AddSCODEGeomsToODESpace(colliders: TgxSkeletonColliderList;
+procedure AddSCODEGeomsToODESpace(colliders: TGXSkeletonColliderList;
   Space: PdxSpace);
 
 // ------------------------------------------------------------------
@@ -94,7 +94,7 @@ implementation
 // ------------------ Global methods ------------------
 // ------------------
 
-procedure AddSCODEGeomsToODESpace(colliders: TgxSkeletonColliderList;
+procedure AddSCODEGeomsToODESpace(colliders: TGXSkeletonColliderList;
   Space: PdxSpace);
 var
   i: Integer;

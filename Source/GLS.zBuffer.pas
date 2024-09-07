@@ -34,7 +34,7 @@ uses
 
   GLScene.OpenGLTokens,
   GLScene.VectorGeometry,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.VectorTypes,
 
   GLS.XOpenGL,

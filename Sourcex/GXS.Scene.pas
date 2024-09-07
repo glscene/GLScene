@@ -36,7 +36,7 @@ uses
 
   GXS.ApplicationFileIO,
 
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.Strings,
   GLScene.Utils,
 

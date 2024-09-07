@@ -120,7 +120,7 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLS.TextureFormat;
+  GLScene.TextureFormat;
 
 // ------------------
 // ------------------ TGLLineSettings ------------------

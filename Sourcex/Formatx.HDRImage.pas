@@ -35,7 +35,7 @@ implementation
 
 uses
   GXS.FileHDR,
-  GXS.TextureFormat;
+  GLScene.TextureFormat;
 
 // ------------------
 // ------------------ THDRImage ------------------

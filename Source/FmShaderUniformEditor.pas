@@ -22,7 +22,7 @@ uses
   VCL.Buttons,
   GLScene.Strings,
   GLSL.ShaderParameter,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.VectorGeometry;
 
 type

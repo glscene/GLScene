@@ -509,13 +509,13 @@ function FastCheckCubeVsFace(obj1, obj2: TgxBaseSceneObject): Boolean;
 // m1to2, m2to1 : TMatrix4f;
 // i:integer;
 begin
-  if (obj2 is TgxFreeForm) then
+  if (obj2 is TGXFreeForm) then
   begin
     // check if we are initialized correctly
-    if not Assigned(TgxFreeForm(obj2).Octree) then
-      TgxFreeForm(obj2).BuildOctree;
+    if not Assigned(TGXFreeForm(obj2).Octree) then
+      TGXFreeForm(obj2).BuildOctree;
 
-    Result := TgxFreeForm(obj2).OctreeAABBIntersect
+    Result := TGXFreeForm(obj2).OctreeAABBIntersect
       (obj1.AxisAlignedBoundingBoxUnscaled, obj1.AbsoluteMatrix,
       obj1.InvAbsoluteMatrix)
     // could then analyse triangles and return contact points
@@ -547,13 +547,13 @@ var
   AABB2: TAABB;
 begin
   Result := false;
-  if (obj1 is TgxFreeForm) and (obj2 is TgxFreeForm) then
+  if (obj1 is TGXFreeForm) and (obj2 is TGXFreeForm) then
   begin
     // check if we are initialized correctly
-    if not Assigned(TgxFreeForm(obj1).Octree) then
-      TgxFreeForm(obj1).BuildOctree;
-    if not Assigned(TgxFreeForm(obj2).Octree) then
-      TgxFreeForm(obj2).BuildOctree;
+    if not Assigned(TGXFreeForm(obj1).Octree) then
+      TGXFreeForm(obj1).BuildOctree;
+    if not Assigned(TGXFreeForm(obj2).Octree) then
+      TGXFreeForm(obj2).BuildOctree;
 
     // Check triangles against the other object
     // check only the one that are near the destination object (using octree of obj1)
@@ -563,7 +563,7 @@ begin
     MatrixMultiply(obj1.AbsoluteMatrix, obj2.InvAbsoluteMatrix, m2to1);
 
     AABB2 := obj2.AxisAlignedBoundingBoxUnscaled;
-    triList := TgxFreeForm(obj1).Octree.GetTrianglesFromNodesIntersectingCube
+    triList := TGXFreeForm(obj1).Octree.GetTrianglesFromNodesIntersectingCube
       (AABB2, m1to2, m2to1);
 
     // in the list originally are the local coords, TransformAsPoints-> now we have obj1 absolute coords
@@ -576,7 +576,7 @@ begin
         // here we pass absolute coords, then these are transformed with Obj2's InvAbsoluteMatrix to match the local Obj2 System
         tri := @triList.List[i];
         // the next function will check the given Triangle against only these ones that are close (using the octree of obj2)
-        if TgxFreeForm(obj2).OctreeTriangleIntersect(tri[0], tri[1], tri[2])
+        if TGXFreeForm(obj2).OctreeTriangleIntersect(tri[0], tri[1], tri[2])
         then
         begin
           Result := true;

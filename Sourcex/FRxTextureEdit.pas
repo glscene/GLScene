@@ -25,7 +25,7 @@ uses
   FMX.ListBox,
   FMX.Controls.Presentation,
   GXS.Graphics,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GXS.Texture,
   GXS.TextureImageEditors;
 

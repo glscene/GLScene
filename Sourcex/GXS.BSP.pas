@@ -4,7 +4,7 @@
 unit GXS.BSP;
 (*
   Binary Space Partion mesh support for GXScene.
-  The classes of this unit are designed to operate within a TgxBaseMesh.
+  The classes of this unit are designed to operate within a TGXBaseMesh.
 *)
 interface
 
@@ -63,13 +63,13 @@ type
     Stores the geometry information, BSP rendering options and offers some
     basic BSP utility methods. Geometry information is indexed in the facegroups,
     the 1st facegroup (of index 0) being the root node of the BSP tree. *)
-  TBSPMeshObject = class(TgxMeshObject)
+  TBSPMeshObject = class(TGXMeshObject)
   private
     FRenderSort: TBSPRenderSort;
     FClusterVisibility: TBSPClusterVisibility;
     FUseClusterVisibility: Boolean;
   public
-    constructor CreateOwned(AOwner: TgxMeshObjectList);
+    constructor CreateOwned(AOwner: TGXMeshObjectList);
     destructor Destroy; override;
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
     (* Drops all unused nodes from the facegroups list.
@@ -102,7 +102,7 @@ type
   (* A node in the BSP tree.
     The description does not explicitly differentiates nodes and leafs,
     nodes are referred by their index. *)
-  TFGBSPNode = class(TfgxVertexIndexList)
+  TFGBSPNode = class(TFGXVertexIndexList)
   private
     FSplitPlane: THmgPlane;
     FPositiveSubNodeIndex: Integer;
@@ -112,7 +112,7 @@ type
     function AddLerp(iA, iB: Integer; fB, fA: Single): Integer;
     function AddLerpIfDistinct(iA, iB, iMid: Integer): Integer;
   public
-    constructor CreateOwned(AOwner: TgxFaceGroups); override;
+    constructor CreateOwned(AOwner: TGXFaceGroups); override;
     destructor Destroy; override;
     procedure IsCulled(const bsprci: TBSPRenderContextInfo;
       var positive, negative: Boolean);
@@ -250,7 +250,7 @@ end;
 // ------------------ TBSPMeshObject ------------------
 // ------------------
 
-constructor TBSPMeshObject.CreateOwned(AOwner: TgxMeshObjectList);
+constructor TBSPMeshObject.CreateOwned(AOwner: TGXMeshObjectList);
 begin
   inherited;
   Mode := momFaceGroups;
@@ -541,7 +541,7 @@ end;
 // ------------------ TFGBSPNode ------------------
 // ------------------
 
-constructor TFGBSPNode.CreateOwned(AOwner: TgxFaceGroups);
+constructor TFGBSPNode.CreateOwned(AOwner: TGXFaceGroups);
 begin
   inherited;
   FPositiveSubNodeIndex := 0;

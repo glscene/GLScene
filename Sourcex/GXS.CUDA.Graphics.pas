@@ -223,7 +223,7 @@ implementation
 
 uses
   GLScene.Strings,
-  GXS.TextureFormat;
+  GLScene.TextureFormat;
 
 
 // ------------------

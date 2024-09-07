@@ -30,7 +30,7 @@ uses
   GXS.RenderContextInfo,
   GXS.Material,
   GXS.State,
-  GXS.TextureFormat;
+  GLScene.TextureFormat;
 
 type
   { Cel shading options.

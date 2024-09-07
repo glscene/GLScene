@@ -45,7 +45,7 @@
 #include "GLS.Keyboard.hpp"
 #include "GLS.Context.hpp"
 #include "GLS.State.hpp"
-#include "GLS.TextureFormat.hpp"
+#include "GLScene.TextureFormat.hpp"
 #include "GLS.File3DS.hpp"
 
 //---------------------------------------------------------------------------

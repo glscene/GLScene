@@ -101,8 +101,8 @@ begin
   if Master is TgxMultiProxy then
     if TgxMultiProxy(Master).MasterObjects.Count > 0 then
       Master := TgxMultiProxy(Master).MasterObjects[0].MasterObject;
-  Assert((Master is TgxFreeForm), 'Object must be freeform, freeformproxy or freeformbased Multiproxy.');
-  Assert(Assigned(TgxFreeForm(Master).Octree), 'Octree must have been prepared and setup before use.');
+  Assert((Master is TGXFreeForm), 'Object must be freeform, freeformproxy or freeformbased Multiproxy.');
+  Assert(Assigned(TGXFreeForm(Master).Octree), 'Octree must have been prepared and setup before use.');
   SetVector(Pos,  FreeForm.AbsoluteToLocal(MovePack.Position));
 
   //Is in boundingsphere?
@@ -111,7 +111,7 @@ begin
   if d1 > d2 then exit;
 
   count := Length(MovePack.Freeforms);
-  with TgxFreeForm(Master).Octree do
+  with TGXFreeForm(Master).Octree do
   begin
     WalkSphereToLeaf(RootNode, Pos, MovePack.CollisionRange);
 
@@ -126,7 +126,7 @@ begin
     MovePack.Freeforms[count].ObjectInfo.AbsoluteMatrix := Freeform.AbsoluteMatrix;
     MovePack.Freeforms[count].ObjectInfo.Solid := Solid;
     MovePack.Freeforms[count].ObjectInfo.ObjectID := ObjectID;
-    MovePack.Freeforms[count].InvertedNormals := TgxFreeForm(Master).NormalsOrientation = mnoInvert;
+    MovePack.Freeforms[count].InvertedNormals := TGXFreeForm(Master).NormalsOrientation = mnoInvert;
   end;
 end;
 

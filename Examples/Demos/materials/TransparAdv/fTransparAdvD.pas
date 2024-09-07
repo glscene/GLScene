@@ -13,7 +13,7 @@ uses
   Vcl.Dialogs,
   Vcl.Imaging.Jpeg,
 
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLS.Context,

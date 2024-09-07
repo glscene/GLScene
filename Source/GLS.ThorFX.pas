@@ -31,7 +31,7 @@ uses
   GLS.PipelineTransformation,
   GLScene.Manager,
   GLS.State,
-  GLS.TextureFormat;
+  GLScene.TextureFormat;
 
 type
   PThorpoint = ^TThorpoint;

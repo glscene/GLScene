@@ -33,16 +33,17 @@ uses
   System.SysUtils,
 
   GLScene.Strings,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.Utils;
+  GLScene.Utils,
+
+  GXS.Color;
 
 const
   VERTEX_ATTR_NUM = 16;
 
 type
-
   TgxStateType = (sttCurrent, sttPoint, sttLine, sttPolygon, sttPolygonStipple,
     sttPixelMode, sttLighting, sttFog, sttDepthBuffer, sttAccumBuffer,
     sttStencilBuffer, sttViewport, sttTransform, sttEnable, sttColorBuffer,
@@ -54,7 +55,6 @@ const
   cAllAttribBits = [Low(TgxStateType)..High(TgxStateType)];
 
 type
-
   TgxMeshPrimitive = (
     mpNOPRIMITIVE,
     mpTRIANGLES,
@@ -1017,13 +1017,10 @@ const
   cGLBufferBindingTarget: array[TgxBufferBindingTarget] of GLEnum =
     (GL_UNIFORM_BUFFER, GL_TRANSFORM_FEEDBACK_BUFFER);
 
-//------------------------------------------------------
-implementation
-//------------------------------------------------------
+implementation //------------------------------------------------------
 
 uses
-  GXS.Context,
-  GXS.Color;
+  GXS.Context;
 
   // ------------------
   // ------------------ TgxStateCache ------------------

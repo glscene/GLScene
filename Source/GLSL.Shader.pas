@@ -22,7 +22,7 @@ uses
   GLS.Context,
   GLSL.CustomShader,
   GLS.RenderContextInfo,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLSL.ShaderParameter,
   GLS.Material,
   GLS.State;

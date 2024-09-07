@@ -20,7 +20,7 @@ uses
   GLS.Context, 
   GLS.Scene, 
   GLS.RenderContextInfo,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
 
   Cg.Import,
   Cg.GL,

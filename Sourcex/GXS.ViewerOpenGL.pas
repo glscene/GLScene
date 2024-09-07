@@ -27,7 +27,7 @@ uses
 
   GXS.Scene,
   GXS.Context,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GXS.WinContext;
 
 type

@@ -24,7 +24,7 @@ uses
   GLS.Graphics,
   GLS.Material,
   GLScene.Strings,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.Texture,
   GLSL.Shader,
   GLSL.ShaderParameter,

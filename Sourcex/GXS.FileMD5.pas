@@ -19,11 +19,11 @@ uses
 
 type
 
-  TgxMD5VectorFile = class(TgxVectorFile)
+  TgxMD5VectorFile = class(TGXVectorFile)
   private
     FMD5String, FTempString, FBoneNames: TStringList;
     FCurrentPos: Integer;
-    FBasePose: TgxSkeletonFrame;
+    FBasePose: TGXSkeletonFrame;
     FFramePositions: TGAffineVectorList;
     FFrameQuaternions: TGQuaternionList;
     FJointFlags: TGIntegerList;
@@ -126,7 +126,7 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
     quat: TQuaternion;
     mat, rmat: TMatrix4f;
     ParentBoneID: Integer;
-    bone, parentbone: TgxSkeletonBone;
+    bone, parentbone: TGXSkeletonBone;
   begin
     FTempString.CommaText := BoneString;
 
@@ -148,11 +148,11 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
     begin
       FBoneNames.Add(bonename);
       if ParentBoneID = -1 then
-        bone := TgxSkeletonBone.CreateOwned(Owner.Skeleton.RootBones)
+        bone := TGXSkeletonBone.CreateOwned(Owner.Skeleton.RootBones)
       else
       begin
         parentbone := Owner.Skeleton.RootBones.BoneByID(ParentBoneID);
-        bone := TgxSkeletonBone.CreateOwned(parentbone);
+        bone := TGXSkeletonBone.CreateOwned(parentbone);
 
         mat := QuaternionToMatrix(quat);
         mat.W := PointMake(pos);
@@ -197,8 +197,8 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
   procedure ReadMesh;
   var
     temp, shader: String;
-    mesh: TgxSkeletonMeshObject;
-    fg: TfgxVertexIndexList;
+    mesh: TGXSkeletonMeshObject;
+    fg: TFGXVertexIndexList;
     vnum, wnum, numverts, numweights: Integer;
     VertexWeightID, VertexWeightCount, VertexBoneRef: TGIntegerList;
     VertexWeight: TGSingleList;
@@ -215,8 +215,8 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
 
     numverts := 0;
 
-    mesh := TgxSkeletonMeshObject.CreateOwned(Owner.MeshObjects);
-    fg := TfgxVertexIndexList.CreateOwned(mesh.FaceGroups);
+    mesh := TGXSkeletonMeshObject.CreateOwned(Owner.MeshObjects);
+    fg := TFGXVertexIndexList.CreateOwned(mesh.FaceGroups);
     mesh.Mode := momFaceGroups;
     fg.Mode := fgmmTriangles;
     repeat
@@ -326,7 +326,7 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
   procedure ReadHierarchy;
   var
     temp: String;
-    bone: TgxSkeletonBone;
+    bone: TGXSkeletonBone;
   begin
     if not Assigned(FJointFlags) then
     begin
@@ -376,7 +376,7 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
   var
     temp: String;
     i, j: Integer;
-    frame: TgxSkeletonFrame;
+    frame: TGXSkeletonFrame;
     pos: TAffineVector;
     quat: TQuaternion;
   begin
@@ -439,7 +439,7 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
     i: Integer;
   begin
     for i := 0 to Owner.MeshObjects.Count - 1 do
-      TgxSkeletonMeshObject(Owner.MeshObjects[i])
+      TGXSkeletonMeshObject(Owner.MeshObjects[i])
         .PrepareBoneMatrixInvertedMeshes;
   end;
 
@@ -480,7 +480,7 @@ begin
           FFrameQuaternions := TGQuaternionList.Create;
           if Owner.Skeleton.Frames.Count = 0 then
           begin
-            FBasePose := TgxSkeletonFrame.CreateOwned(Owner.Skeleton.Frames);
+            FBasePose := TGXSkeletonFrame.CreateOwned(Owner.Skeleton.Frames);
             FBasePose.Position.Count := FNumJoints;
             FBasePose.TransformMode := sftQuaternion;
             FBasePose.Quaternion.Count := FNumJoints;
@@ -491,8 +491,8 @@ begin
         else if (temp = 'joints') then
         begin
           ReadJoints;
-          if Owner is TgxActor then
-            TgxActor(Owner).Reference := aarSkeleton;
+          if Owner is TGXActor then
+            TGXActor(Owner).Reference := aarSkeleton;
         end
         else if (temp = 'nummeshes') then
         begin
@@ -525,10 +525,10 @@ begin
           begin
             FFirstFrame := Owner.Skeleton.Frames.Count;
             for i := 1 to FNumFrames do
-              TgxSkeletonFrame.CreateOwned(Owner.Skeleton.Frames);
-            if Owner is TgxActor then
+              TGXSkeletonFrame.CreateOwned(Owner.Skeleton.Frames);
+            if Owner is TGXActor then
             begin
-              with TgxActor(Owner).Animations.Add do
+              with TGXActor(Owner).Animations.Add do
               begin
                 Name := ChangeFileExt(ExtractFileName(ResourceName), '');
                 Reference := aarSkeleton;

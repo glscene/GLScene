@@ -16,7 +16,7 @@ uses
   System.SysUtils,
   
   GLScene.OpenGLTokens,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.RGBE,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,

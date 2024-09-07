@@ -462,7 +462,7 @@ type
   (* A simple cube object.
     This cube use the same material for each of its faces, ie. all faces look
     the same. If you want a multi-material cube, use a mesh in conjunction
-    with a TgxFreeForm and a material library. *)
+    with a TGXFreeForm and a material library. *)
   TgxCube = class(TgxSceneObject)
   private
     FCubeSize: TAffineVector;

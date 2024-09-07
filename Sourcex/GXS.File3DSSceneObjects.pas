@@ -55,7 +55,7 @@ type
     property RollAngle;
   end;
 
-  TgxFile3DSActor = class(TgxActor)
+  TgxFile3DSActor = class(TGXActor)
   private
     procedure ReadMesh(Stream: TStream);
     procedure WriteMesh(Stream: TStream);
@@ -63,7 +63,7 @@ type
     procedure DefineProperties(Filer: TFiler); override;
   end;
 
-  TgxFile3DSFreeForm = class(TgxFreeForm)
+  TgxFile3DSFreeForm = class(TGXFreeForm)
   private
     FTransfMat, FScaleMat, ParentMatrix: TMatrix4f;
 

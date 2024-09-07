@@ -18,7 +18,7 @@ uses
   GLS.Context,
   GLS.Graphics,
   GLS.ApplicationFileIO,
-  GLS.TextureFormat;
+  GLScene.TextureFormat;
 
 type
 
@@ -35,9 +35,7 @@ type
       reintroduce;
   end;
 
-//===============================================================
-implementation
-//===============================================================
+implementation //--------------------------------------------------------------
 
 type
 
@@ -275,9 +273,7 @@ begin
   Result := [dfcRead {, dfcWrite}];
 end;
 
-//-------------------------------------------
-initialization
-//-------------------------------------------
+initialization //--------------------------------------------------------------
 
   RegisterRasterFormat('tga', 'TARGA Image File', TGLTGAImage);
 

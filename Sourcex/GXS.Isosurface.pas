@@ -130,7 +130,7 @@ type
     procedure FillVoxelData(AIsoValue: TScalarValue;
       AScalarField: TScalarFieldInt); overload; virtual;
     procedure CalcVertices(Vertices: TgxVertexList; Alpha: Single = 1);
-    procedure CalcMeshObject(AMeshObject: TgxMeshObject; Alpha: Single = 1);
+    procedure CalcMeshObject(AMeshObject: TGXMeshObject; Alpha: Single = 1);
     property IsoValue: TScalarValue read FIsoValue write FIsoValue; // TODO
   end;
 
@@ -1550,7 +1550,7 @@ begin
     end;
 end;
 
-procedure TgxMarchingCube.CalcMeshObject(AMeshObject: TgxMeshObject; Alpha: Single);
+procedure TgxMarchingCube.CalcMeshObject(AMeshObject: TGXMeshObject; Alpha: Single);
 var
   i: Integer;
 begin
@@ -1558,7 +1558,7 @@ begin
   AMeshObject.Vertices.Capacity := _Nverts;
   AMeshObject.Normals.Capacity := _Nverts;
   AMeshObject.Colors.Capacity := _Nverts;
-  with TfgxVertexIndexList.CreateOwned(AMeshObject.FaceGroups) do
+  with TFGXVertexIndexList.CreateOwned(AMeshObject.FaceGroups) do
   begin
     Mode := fgmmTriangles;
     for i := 0 to _Nverts - 1 do

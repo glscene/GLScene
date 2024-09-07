@@ -30,7 +30,7 @@ uses
   GLScene.Manager,
   GLS.RenderContextInfo,
   GLS.State,
-  GLS.TextureFormat;
+  GLScene.TextureFormat;
 
 type
   PGLFireParticle = ^TGLFireParticle;

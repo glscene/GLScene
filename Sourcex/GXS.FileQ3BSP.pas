@@ -4,7 +4,7 @@
 unit GXS.FileQ3BSP;
 
 (*
-    Support-code to load Q3BSP Files into TgxFreeForm-Components.
+    Support-code to load Q3BSP Files into TGXFreeForm-Components.
     Note that you must manually add this unit to one of your project's uses
     to enable support for OBJ & OBJF at run-time.
 *)
@@ -29,14 +29,14 @@ uses
   GXS.State,
   GXS.ImageUtils,
   GXS.Material,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
 
-  Formatx.Q3BSP;
+  Formats.Q3BSP;
 
 type
 
   // The Q3BSP vector file (Quake III BSP).
-  TgxQ3BSPVectorFile = class(TgxVectorFile)
+  TgxQ3BSPVectorFile = class(TGXVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -81,10 +81,10 @@ procedure TgxQ3BSPVectorFile.LoadFromStream(aStream: TStream);
     libMat: TgxLibMaterial;
     texName: string;
   begin
-    if GetOwner is TgxBaseMesh then
+    if GetOwner is TGXBaseMesh then
     begin
       // got a linked material library?
-      matLib := TgxBaseMesh(GetOwner).MaterialLibrary;
+      matLib := TGXBaseMesh(GetOwner).MaterialLibrary;
       if Assigned(matLib) then
       begin
         Result := matName;

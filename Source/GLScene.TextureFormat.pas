@@ -1,7 +1,7 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-unit GLS.TextureFormat;
+unit GLScene.TextureFormat;
 
 (* Texture formats and functions *)
 
@@ -253,15 +253,9 @@ function EncodeGLTextureTarget(const glTarget: Cardinal): TGLTextureTarget;
 function IsTargetSupportMipmap(const TextureTarget: TGLTextureTarget): Boolean; overload;
 function IsTargetSupportMipmap(const glTarget: Cardinal): Boolean; overload;
 
-//---------------------------------------------------------------------------
-implementation
-//---------------------------------------------------------------------------
-
-uses
-  GLS.Context;
+implementation //-------------------------------------------------------------
 
 type
-
   TFormatDesc = record
     IntFmt: Cardinal;
     ClrFmt: Cardinal;
@@ -576,6 +570,8 @@ end;
 
 function IsTargetSupported(glTarget: Cardinal): Boolean;
 begin
+  Result := True; // All OpenGL versions!
+(*
   case glTarget of
     GL_TEXTURE_1D: Result := GL.VERSION_1_1 or GL.EXT_texture_object;
     GL_TEXTURE_2D: Result := GL.VERSION_1_1 or GL.EXT_texture_object;
@@ -600,105 +596,108 @@ begin
       // Assert(False, strErrorEx + strUnknownType);
     end;
   end;
+*)
 end;
 
 function IsFormatSupported(intFormat: TGLInternalFormat): Boolean;
 begin
+  Result := True; // All OpenGL versions!
+(*
   Result := false;
 
   if ((intFormat >= tfALPHA4) and (intFormat <= tfALPHA16)) or
     ((intFormat >= tfLUMINANCE4) and (intFormat <= tfR16G16B16A16)) then
   begin
-    Result := GL.VERSION_1_1;
+    // Result := GL.VERSION_1_1;
     EXIT;
   end;
 
   if ((intFormat >= tfDEPTH_COMPONENT16) and (intFormat <= tfDEPTH_COMPONENT32)) then
   begin
-    Result := GL.ARB_depth_texture;
+    // Result := GL.ARB_depth_texture;
     EXIT;
   end;
 
   if ((intFormat >= tfCOMPRESSED_RGB_S3TC_DXT1) and (intFormat <=
     tfCOMPRESSED_RGBA_S3TC_DXT5)) then
   begin
-    Result := GL.EXT_texture_compression_s3tc;
+    // Result := GL.EXT_texture_compression_s3tc;
     EXIT;
   end;
 
   if ((intFormat >= tfSIGNED_LUMINANCE8) and (intFormat <=
     tfDSDT8_MAG8_INTENSITY8)) then
   begin
-    Result := GL.NV_texture_shader;
+    // Result := GL.NV_texture_shader;
     EXIT;
   end;
 
   if ((intFormat = tfHILO8) or (intFormat = tfSIGNED_HILO8)) then
   begin
-    Result := GL.NV_texture_shader3;
+    // Result := GL.NV_texture_shader3;
     EXIT;
   end;
 
   if ((intFormat >= tfFLOAT_R16) and (intFormat <= tfFLOAT_RGBA32)) then
   begin
-    Result := GL.NV_float_buffer;
+    // Result := GL.NV_float_buffer;
     EXIT;
   end;
 
   if ((intFormat >= tfRGBA_FLOAT32)
     and (intFormat <= tfLUMINANCE_ALPHA_FLOAT16)) then
   begin
-    Result := GL.ARB_texture_float or GL.ATI_texture_float;
+    // Result := GL.ARB_texture_float or GL.ATI_texture_float;
     EXIT;
   end;
 
   if intFormat = tfDEPTH24_STENCIL8 then
   begin
-    Result := GL.EXT_packed_depth_stencil;
+    // Result := GL.EXT_packed_depth_stencil;
     EXIT;
   end;
 
   if ((intFormat = tfDEPTH_COMPONENT32F) or (intFormat = tfDEPTH32F_STENCIL8)) then
   begin
-    Result := GL.NV_depth_buffer_float;
+    // Result := GL.NV_depth_buffer_float;
     EXIT;
   end;
 
   if ((intFormat >= tfSRGB8) and (intFormat <=
     tfCOMPRESSED_SRGB_ALPHA_S3TC_DXT5)) then
   begin
-    Result := GL.EXT_texture_sRGB;
+    // Result := GL.EXT_texture_sRGB;
     EXIT;
   end;
 
   if intFormat = tfRGB9_E5 then
   begin
-    Result := GL.EXT_texture_shared_exponent;
+    // Result := GL.EXT_texture_shared_exponent;
     EXIT;
   end;
 
   if intFormat = tfR11F_G11F_B10F then
   begin
-    Result := GL.EXT_packed_float;
+    // Result := GL.EXT_packed_float;
     EXIT;
   end;
 
   if ((intFormat >= tfCOMPRESSED_LUMINANCE_LATC1) and (intFormat <=
     tfCOMPRESSED_SIGNED_LUMINANCE_ALPHA_LATC2)) then
   begin
-    Result := GL.EXT_texture_compression_latc;
+    // Result := GL.EXT_texture_compression_latc;
     EXIT;
   end;
 
   if intFormat = tfCOMPRESSED_LUMINANCE_ALPHA_3DC then
   begin
-    Result := GL.ATI_texture_compression_3dc;
+    // Result := GL.ATI_texture_compression_3dc;
     EXIT;
   end;
 
   if ((intFormat >= tfRGBA32UI) and (intFormat <= tfLUMINANCE_ALPHA8I)) then
   begin
-    Result := GL.EXT_texture_integer;
+    // Result := GL.EXT_texture_integer;
     EXIT;
   end;
 
@@ -708,15 +707,16 @@ begin
   if ((intFormat >= tfCOMPRESSED_RED_RGTC1) and (intFormat <=
     tfCOMPRESSED_SIGNED_RG_RGTC2)) then
   begin
-    Result := GL.ARB_texture_compression_rgtc;
+    // Result := GL.ARB_texture_compression_rgtc;
     EXIT;
   end;
 
   if ((intFormat >= tfR8_SNORM) and (intFormat <= tfRGBA16_SNORM)) then
   begin
-    Result := GL.VERSION_3_1;
+    // Result := GL.VERSION_3_1;
     EXIT;
   end
+*)
 end;
 
 function IsFloatFormat(intFormat: TglInternalFormat): boolean;

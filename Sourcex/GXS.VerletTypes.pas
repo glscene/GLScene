@@ -668,7 +668,7 @@ type
   end;
 
   // Base Verlet Skeleton Collider class.
-  TgxVerletSkeletonCollider = class(TgxSkeletonCollider)
+  TgxVerletSkeletonCollider = class(TGXSkeletonCollider)
   private
     FVerletConstraint: TgxVerletConstraint;
   public
@@ -714,7 +714,7 @@ type
 (* After loading call this function to add all the constraints in a
    skeleton collider list to a given verlet world. *)
 procedure AddVerletConstriantsToVerletWorld
-  (Colliders: TgxSkeletonColliderList; World: TgxVerletWorld);
+  (Colliders: TGXSkeletonColliderList; World: TgxVerletWorld);
 
 function CreateVerletPlaneFromGLPlane(Plane: TgxPlane; VerletWorld: TgxVerletWorld;
   Offset: Single): TgxVerletFloor;
@@ -2598,7 +2598,7 @@ end;
 // ------------------
 
 procedure AddVerletConstriantsToVerletWorld
-  (Colliders: TgxSkeletonColliderList; World: TgxVerletWorld);
+  (Colliders: TGXSkeletonColliderList; World: TgxVerletWorld);
 var
   i: Integer;
 begin

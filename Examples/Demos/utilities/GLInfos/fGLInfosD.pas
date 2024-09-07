@@ -19,7 +19,7 @@ uses
   GLScene.BaseClasses,
   GLS.Scene,
   GLS.SceneViewer,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.OpenGLAdapter,
   GLS.Context,
   GLS.Material,

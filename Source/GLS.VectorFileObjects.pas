@@ -32,28 +32,31 @@ uses
   GLScene.OpenGLTokens,
   GLScene.VectorTypes,
   GLScene.VectorTypesExt,
-  GLS.TextureFormat,
-
+  GLScene.TextureFormat,
   GLScene.VectorGeometry,
-  GLS.Scene,
   GLScene.VectorLists,
   GLScene.PersistentClasses,
+  GLScene.Coordinates,
+  GLScene.BaseClasses,
+  GLScene.GeometryBB,
+  GLScene.Utils,
+
+  GLS.Scene,
   GLS.Silhouette,
   GLScene.Strings,
   GLS.Texture,
   GLS.Material,
   GLS.Mesh,
-  GLScene.Logger,
   GLS.Octree,
-  GLScene.GeometryBB,
   GLS.ApplicationFileIO,
   GLS.Context,
   GLS.Color,
   GLS.PipelineTransformation,
   GLS.Selection,
-  GLS.RenderContextInfo,
-  GLScene.Coordinates,
-  GLScene.BaseClasses;
+  GLS.XOpenGL,
+  GLS.MeshUtils,
+  GLS.State,
+  GLS.RenderContextInfo;
 
 type
   TGLMeshObjectList = class;
@@ -1342,15 +1345,9 @@ var
   // Flag to avoid loading materials (useful for IDE Extentions or scene editors)
   vGLVectorFileObjectsEnableVBOByDefault: Boolean = True;
 
-// ------------------------------------------------------------------
-implementation
-// ------------------------------------------------------------------
+implementation // ------------------------------------------------------------
 
 uses
-  GLS.XOpenGL,
-  GLS.MeshUtils,
-  GLS.State,
-  GLScene.Utils,
   GLS.BaseMeshSilhouette;
 
 var
@@ -7532,9 +7529,7 @@ begin
   result := FTargetSmoothAnimation <> nil;
 end;
 
-// ------------------------------------------------------------------
-initialization
-// ------------------------------------------------------------------
+initialization // ------------------------------------------------------------
 
 RegisterVectorFileFormat('glsm', 'GLScene Mesh', TGLSMVectorFile);
 
@@ -7545,7 +7540,7 @@ RegisterVectorFileFormat('glsm', 'GLScene Mesh', TGLSMVectorFile);
     TFGVertexNormalTexIndexList, TGLAnimationControler,
     TFGIndexTexCoordList, TGLSkeletonCollider, TGLSkeletonColliderList]);
 
-finalization
+finalization // --------------------------------------------------------------
 
 FreeAndNil(vVectorFileFormats);
 

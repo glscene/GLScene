@@ -25,7 +25,7 @@ uses
   GXS.RenderContextInfo,
   GXS.MultisampleImage,
   GXS.Graphics,
-  GXS.TextureFormat;
+  GLScene.TextureFormat;
 
 
 const

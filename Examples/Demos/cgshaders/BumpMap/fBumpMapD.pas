@@ -28,7 +28,7 @@ uses
   GLS.Material,
   GLScene.Coordinates,
   GLScene.BaseClasses,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.Utils,
   GLS.SimpleNavigation;
 

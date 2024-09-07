@@ -30,7 +30,7 @@ uses
   GXS.RenderContextInfo,
   GXS.State,
   GXS.ImageUtils,
-  GXS.TextureFormat;
+  GLScene.TextureFormat;
 
 type
 

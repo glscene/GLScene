@@ -21,7 +21,7 @@ uses
   GLS.Material,
   GLS.Graphics,
   GLS.State,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.VectorFileObjects,
   GLScene.VectorGeometry,
   GLS.ApplicationFileIO,

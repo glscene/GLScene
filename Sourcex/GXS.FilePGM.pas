@@ -12,7 +12,7 @@ uses
   System.Classes, System.SysUtils,
   Winapi.OpenGL, Winapi.OpenGLext,
 
-  GXS.Context, GXS.Graphics, GXS.TextureFormat,
+  GXS.Context, GXS.Graphics, GLScene.TextureFormat,
   GXS.ApplicationFileIO;
 
 type

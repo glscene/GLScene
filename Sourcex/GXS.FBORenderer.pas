@@ -28,7 +28,7 @@ uses
   GXS.RenderContextInfo,
   GXS.State,
   GXS.PipelineTransformation,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.VectorTypes,
   GXS.MultisampleImage;
 

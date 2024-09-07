@@ -107,7 +107,7 @@ implementation
 //---------------------------------------------------
 
 uses
-  GLS.TextureFormat;
+  GLScene.TextureFormat;
 
 // ------------------
 // ------------------ TGLLMTSVectorFile ------------------

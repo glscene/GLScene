@@ -21,7 +21,7 @@ uses
   GXSL.Shader,
   GXSL.CustomShader,
   GXS.RenderContextInfo,
-  GXS.TextureFormat;
+  GLScene.TextureFormat;
 
 // Custom class for GLSLxPostBlurShader. A shader that blurs the entire scene }
 type

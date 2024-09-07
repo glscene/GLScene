@@ -15,7 +15,7 @@ uses
   
   GLS.Texture,
   GLS.Graphics,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.VectorGeometry;
 
 const

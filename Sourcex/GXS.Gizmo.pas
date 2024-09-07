@@ -1689,9 +1689,9 @@ procedure TgxGizmoUndoItem.AssignFromObject(const AObject
 begin
   SetEffectedObject(AObject);
   SetOldMatrix(AObject.Matrix^);
-  if AObject is TgxFreeForm then
+  if AObject is TGXFreeForm then
   begin
-    FOldAutoScaling.Assign(TgxFreeForm(AObject).AutoScaling);
+    FOldAutoScaling.Assign(TGXFreeForm(AObject).AutoScaling);
   end;
   FOldLibMaterialName := AObject.Material.LibMaterialName;
 end;
@@ -1712,8 +1712,8 @@ end;
 procedure TgxGizmoUndoItem.DoUndo;
 begin
   FEffectedObject.SetMatrix(FOldMatr);
-  if FEffectedObject is TgxFreeForm then
-    TgxFreeForm(FEffectedObject).AutoScaling.Assign(FOldAutoScaling);
+  if FEffectedObject is TGXFreeForm then
+    TGXFreeForm(FEffectedObject).AutoScaling.Assign(FOldAutoScaling);
   FEffectedObject.Material.LibMaterialName := FOldLibMaterialName;
 end;
 

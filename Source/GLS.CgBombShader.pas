@@ -17,7 +17,7 @@ uses
   GLScene.Strings,
   GLS.Material,
   GLS.RenderContextInfo,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.State,
 
   Cg.GL,

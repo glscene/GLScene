@@ -40,7 +40,7 @@ uses
   GXS.ImageUtils,
   GLScene.Utils,
   GXS.Color,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.Strings;
 
 type

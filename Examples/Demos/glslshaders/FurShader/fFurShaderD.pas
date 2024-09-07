@@ -26,7 +26,7 @@ uses
   GLS.Context,
   GLS.FileOBJ,
   GLScene.VectorGeometry,
-  GLS.TextureFormat
+  GLScene.TextureFormat
   GLS.XOpenGL,
   GLS.Graphics,
   GLScene.BaseClasses,

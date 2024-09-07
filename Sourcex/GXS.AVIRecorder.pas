@@ -25,7 +25,7 @@ uses
   GXS.Scene,
   GXS.SceneViewer,
 
-  Formatx.VFW;
+  Formats.VFW;
 
 type
   TAVICompressor = (acDefault, acShowDialog, acDivX);

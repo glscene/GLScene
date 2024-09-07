@@ -20,7 +20,7 @@ uses
   GLS.Context,
   GLS.Graphics,
   GLS.ApplicationFileIO,
-  GLS.TextureFormat;
+  GLScene.TextureFormat;
 
 type
 

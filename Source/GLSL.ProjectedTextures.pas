@@ -35,7 +35,7 @@ uses
   GLS.Context,
   GLS.Color,
   GLS.RenderContextInfo,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.VectorTypes;
 
 type

@@ -2,12 +2,10 @@
 // The graphics engine GLScene https://github.com/glscene
 //
 unit Formats.GL2;
-
 (*
   Ghoul2 (GLM/GLA) file format loading structures
   Note: Also referred to as MDX (MDXM/MDXA) format in C source.
 *)
-
 interface
 
 uses
@@ -122,9 +120,8 @@ function G2_GetVertBoneWeight(const vert: TGLMVertex; iWeightNum: Cardinal;
 
 procedure MC_UnCompressQuat(var mat: TGLMatrix; const comp: TGLACompQuatBone);
 
-// ------------------------------------------------------------------
-implementation
-// ------------------------------------------------------------------
+
+implementation // -----------------------------------------------------------
 
 // ------------------
 // ------------------ Misc routines ------------------

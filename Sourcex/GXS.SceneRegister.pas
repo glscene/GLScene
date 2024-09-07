@@ -1022,10 +1022,10 @@ end;
 procedure TgxAnimationNameProperty.GetValues(Proc: TGetStrProc);
 var
   i: Integer;
-  animControler: TgxAnimationControler;
-  actor: TgxActor;
+  animControler: TGXAnimationControler;
+  actor: TGXActor;
 begin
-  animControler := (GetComponent(0) as TgxAnimationControler);
+  animControler := (GetComponent(0) as TGXAnimationControler);
   if Assigned(animControler) then
   begin
     actor := animControler.actor;
@@ -1396,18 +1396,18 @@ begin
   RegisterPropertiesInCategory(sVisualCategoryName, TgxExtrusionSolid, ['Stacks']);
   RegisterPropertiesInCategory(sVisualCategoryName, TgxPipeNode, ['RadiusFactor']);
   RegisterPropertiesInCategory(sVisualCategoryName, TgxPipe, ['Division', 'Radius', 'Slices']);
-  RegisterPropertiesInCategory(sOpenGLCategoryName, [TypeInfo(TgxActorAnimationMode), TypeInfo(TgxActorAnimations),
+  RegisterPropertiesInCategory(sOpenGLCategoryName, [TypeInfo(TgxActorAnimationMode), TypeInfo(TGXActorAnimations),
     TypeInfo(TMeshAutoCenterings), TypeInfo(TActorFrameInterpolation),
-	TypeInfo(TgxActorAnimationReference), TypeInfo(TgxActor)]);
+	TypeInfo(TGXActorAnimationReference), TypeInfo(TGXActor)]);
   RegisterPropertiesInCategory(sLayoutCategoryName, [TypeInfo(TMeshNormalsOrientation)]);
   RegisterPropertiesInCategory(sVisualCategoryName, [TypeInfo(TMeshAutoCenterings),
-    TypeInfo(TgxActorAnimationReference), TypeInfo(TMeshNormalsOrientation)]);
-  RegisterPropertiesInCategory(sOpenGLCategoryName, TgxFreeForm, ['UseMeshmaterials']);
-  RegisterPropertiesInCategory(sOpenGLCategoryName, TgxAnimationControler, ['AnimationName']);
-  RegisterPropertiesInCategory(sLinkageCategoryName, TgxAnimationControler, ['AnimationName']);
-  RegisterPropertiesInCategory(sOpenGLCategoryName, TgxActorAnimation, ['*Frame']);
-  RegisterPropertiesInCategory(sOpenGLCategoryName, TgxActor, ['*Frame*', 'Interval', 'OverlaySkeleton', 'UseMeshmaterials']);
-  RegisterPropertiesInCategory(sVisualCategoryName, TgxActor, ['OverlaySkeleton']);
+    TypeInfo(TGXActorAnimationReference), TypeInfo(TMeshNormalsOrientation)]);
+  RegisterPropertiesInCategory(sOpenGLCategoryName, TGXFreeForm, ['UseMeshmaterials']);
+  RegisterPropertiesInCategory(sOpenGLCategoryName, TGXAnimationControler, ['AnimationName']);
+  RegisterPropertiesInCategory(sLinkageCategoryName, TGXAnimationControler, ['AnimationName']);
+  RegisterPropertiesInCategory(sOpenGLCategoryName, TGXActorAnimation, ['*Frame']);
+  RegisterPropertiesInCategory(sOpenGLCategoryName, TGXActor, ['*Frame*', 'Interval', 'OverlaySkeleton', 'UseMeshmaterials']);
+  RegisterPropertiesInCategory(sVisualCategoryName, TGXActor, ['OverlaySkeleton']);
   RegisterPropertiesInCategory(sOpenGLCategoryName, [TypeInfo(TMeshMode), TypeInfo(TVertexMode)]);
   RegisterPropertiesInCategory(sOpenGLCategoryName, [TypeInfo(TgxHeightFieldOptions)]);
   RegisterPropertiesInCategory(sVisualCategoryName, [TypeInfo(TgxHeightFieldColorMode),
@@ -1475,7 +1475,7 @@ begin
     TgxEParticleMasksManager]);
 
   RegisterComponents('GXScene Utils', [TgxAsyncTimer, TgxStaticImposterBuilder,
-    TgxCollisionManager, TgxAnimationControler, TgxAVIRecorder, TgxDCEManager,
+    TgxCollisionManager, TGXAnimationControler, TgxAVIRecorder, TgxDCEManager,
     TgxFPSMovementManager, TgxMaterialScripter, TgxUserInterface, TgxNavigator,
     TgxSmoothNavigator, TgxSmoothUserInterface, TgxTimeEventsMGR,
     TgxApplicationFileIO, TgxVfsPAK, TgxSimpleNavigation, TgxGizmo,
@@ -1542,7 +1542,7 @@ begin
     TgxLibMaterialNameProperty);
   RegisterPropertyEditor(TypeInfo(TgxLibMaterialName), TgxFBORenderer, '',
     TgxLibMaterialNameProperty);
-  RegisterPropertyEditor(TypeInfo(TgxActorAnimationName), TgxAnimationControler,
+  RegisterPropertyEditor(TypeInfo(TGXActorAnimationName), TGXAnimationControler,
     '', TgxAnimationNameProperty);
   RegisterPropertyEditor(TypeInfo(TgxLibMaterialName),
     TgxTextureSharingShaderMaterial, 'LibMaterialName', TgxLibMaterialNameProperty);
@@ -1652,8 +1652,8 @@ begin
   RegisterSceneObject(TgxTorus, 'Torus', strOCAdvancedGeometry, HInstance);
 
   // Mesh objects
-  RegisterSceneObject(TgxActor, 'Actor', strOCMeshObjects, HInstance);
-  RegisterSceneObject(TgxFreeForm, 'FreeForm', strOCMeshObjects, HInstance);
+  RegisterSceneObject(TGXActor, 'Actor', strOCMeshObjects, HInstance);
+  RegisterSceneObject(TGXFreeForm, 'FreeForm', strOCMeshObjects, HInstance);
   RegisterSceneObject(TgxMesh, 'Mesh', strOCMeshObjects, HInstance);
   RegisterSceneObject(TgxTilePlane, 'TilePlane', strOCMeshObjects, HInstance);
   RegisterSceneObject(TgxPortal, 'Portal', strOCMeshObjects, HInstance);

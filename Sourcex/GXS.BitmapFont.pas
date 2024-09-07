@@ -34,7 +34,7 @@ uses
   GXS.Color,
   GLScene.BaseClasses,
   GXS.RenderContextInfo,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.VectorTypes;
 
 type

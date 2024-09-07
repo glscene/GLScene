@@ -36,7 +36,7 @@ uses
   GLS.RenderContextInfo,
   GLS.Graphics,
   GLS.State,
-  GLS.TextureFormat;
+  GLScene.TextureFormat;
 
 type
   TFormIntensutyMesh = class(TForm)

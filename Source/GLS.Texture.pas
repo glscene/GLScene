@@ -31,7 +31,7 @@ uses
   GLScene.PersistentClasses,
   GLS.PipelineTransformation,
   GLS.ImageUtils,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.ApplicationFileIO,
   GLScene.Utils,
   GLScene.Strings;

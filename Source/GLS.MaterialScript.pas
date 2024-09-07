@@ -17,7 +17,7 @@ uses
 
   GLScene.VectorTypes,
   GLS.Texture,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.Graphics,
   GLScene.Utils,
   GLS.Color,

@@ -18,7 +18,7 @@ uses
   GXS.Context,
   GXS.Scene,
   GXS.RenderContextInfo,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
 
   GXSL.CustomShader,
 

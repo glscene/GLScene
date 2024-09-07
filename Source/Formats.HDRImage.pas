@@ -22,23 +22,18 @@ uses
   GLScene.VectorTypes,
   GLScene.OpenGLTokens,
   GLScene.VectorGeometry,
-  GLS.TextureFormat,
-  GLS.Graphics;
+  GLScene.TextureFormat,
+
+  GLS.FileHDR;
 
 type
-
   THDRImage = class(TBitmap)
   public
     procedure LoadFromStream(stream: TStream); override;
     procedure SaveToStream(stream: TStream); override;
   end;
-  
-//--------------------------------------------------------------------  
-implementation
-//--------------------------------------------------------------------
 
-uses
-  GLS.FileHDR;
+implementation //------------------------------------------------------------
 
 // ------------------
 // ------------------ THDRImage ------------------
@@ -80,15 +75,11 @@ begin
   Assert(False, 'Not supported');
 end;
 
-// ------------------------------------------------------------------
-initialization
-// ------------------------------------------------------------------
+initialization // ------------------------------------------------------------
 
   TPicture.RegisterFileFormat('HDR', 'High Dynamic Range Image', THDRImage);
 
-// ------------------------------------------------------------------
-finalization
-// ------------------------------------------------------------------
+finalization // --------------------------------------------------------------
 
   TPicture.UnregisterGraphicClass(THDRImage);
 

@@ -32,7 +32,7 @@ uses
 type
   TCSGOperation = (CSG_Union, CSG_Subtraction, CSG_Intersection);
 
-procedure CSG_Operation(obj1, obj2: TgxMeshObject; Operation: TCSGOperation; Res: TgxMeshObject; const MaterialName1, MaterialName2: string);
+procedure CSG_Operation(obj1, obj2: TGXMeshObject; Operation: TCSGOperation; Res: TGXMeshObject; const MaterialName1, MaterialName2: string);
 
 //----------------------------------------------------------------------
 implementation
@@ -76,7 +76,7 @@ begin
 end;
 
 procedure CSG_Iterate_tri(const vec, nor: TCSGTri; BSP: TBSPMeshObject; 
-  Node: TFGBSPNode; ResMesh: TgxMeshObject; ResFG: TFGVertexNormalTexIndexList; keepinside, keepoutside, inverttriangle: Boolean);
+  Node: TFGBSPNode; ResMesh: TGXMeshObject; ResFG: TFGVertexNormalTexIndexList; keepinside, keepoutside, inverttriangle: Boolean);
 
 var
   vertex_offset: Integer;
@@ -507,8 +507,8 @@ begin
   end;
 end;
 
-procedure CSG_Operation(obj1, obj2: TgxMeshObject; Operation: TCSGOperation; 
-  Res: TgxMeshObject; const MaterialName1, MaterialName2: string);
+procedure CSG_Operation(obj1, obj2: TGXMeshObject; Operation: TCSGOperation; 
+  Res: TGXMeshObject; const MaterialName1, MaterialName2: string);
 
 var
   v1, t1, n1: TGAffineVectorList;

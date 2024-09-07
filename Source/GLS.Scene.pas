@@ -43,7 +43,7 @@ uses
   GLScene.Coordinates,
   GLS.RenderContextInfo,
   GLS.Material,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.Selection,
   GLScene.VectorTypes,
   GLS.ApplicationFileIO,

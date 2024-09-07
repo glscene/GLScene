@@ -18,7 +18,7 @@ uses
 
   GXS.Context,
   GXS.Graphics,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GXS.ApplicationFileIO;
 
 type

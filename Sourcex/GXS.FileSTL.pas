@@ -4,7 +4,7 @@
 unit GXS.FileSTL;
 
 (*
-  Support-code to load STL Files into TgxFreeForm-Components.
+  Support-code to load STL Files into TGXFreeForm-Components.
   Note that you must manually add this unit to one of your project's uses
   to enable support for STL files at run-time.
 *)
@@ -50,7 +50,7 @@ type
     There are two flavors of STL, the "text" and the "binary", this class
     reads both, but exports only the "binary" version.
     Original Binary importer code by Paul M. Bearne, Text importer by Adem. *)
-  TgxSTLVectorFile = class(TgxVectorFile)
+  TgxSTLVectorFile = class(TGXVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -117,7 +117,7 @@ var
   fileContent: TStringList;
   curLine: String;
   i: Integer;
-  mesh: TgxMeshObject;
+  mesh: TGXMeshObject;
   header: TSTLHeader;
   dataFace: TSTLFace;
   calcNormal: TAffineVector;
@@ -138,7 +138,7 @@ begin
     Inc(i);
   end;
 
-  mesh := TgxMeshObject.CreateOwned(Owner.MeshObjects);
+  mesh := TGXMeshObject.CreateOwned(Owner.MeshObjects);
   try
 
     mesh.Mode := momTriangles;

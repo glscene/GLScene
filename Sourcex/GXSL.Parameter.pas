@@ -14,7 +14,7 @@ uses
   System.Classes,
 
   GLScene.VectorTypes,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GXS.RenderContextInfo;
 
 type

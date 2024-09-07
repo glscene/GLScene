@@ -125,14 +125,14 @@ type
     property Height: Single read GetHeight;
   end;
 
-  TgxMeshLines = class(TgxFreeForm)
+  TgxMeshLines = class(TGXFreeForm)
   private
     FLines: TLineCollection;
-    FMesh: TgxMeshObject;
+    FMesh: TGXMeshObject;
     FLightmapBounds: TLightmapBounds;
     FLightmapIndex: Integer;
     FLightmapMaterialName: String;
-    FFaceGroup: TfgxVertexIndexList;
+    FFaceGroup: TFGXVertexIndexList;
     FIndex: Integer;
     FNoZWrite: boolean;
     FShowNodes: Boolean;
@@ -538,9 +538,9 @@ begin
 
   FMeshObjects.Clear;
   lFirstLineDone := False;
-  FMesh := TgxMeshObject.CreateOwned(FMeshObjects);
+  FMesh := TGXMeshObject.CreateOwned(FMeshObjects);
   FMesh.Mode := momFaceGroups;
-  FFaceGroup := TfgxVertexIndexList.CreateOwned(FMesh.FaceGroups);
+  FFaceGroup := TFGXVertexIndexList.CreateOwned(FMesh.FaceGroups);
   FFaceGroup.Mode := fgmmTriangleStrip;
   FFaceGroup.LightMapIndex := FLightmapIndex;
   FIndex := 0;

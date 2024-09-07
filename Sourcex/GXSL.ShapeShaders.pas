@@ -26,7 +26,7 @@ uses
   GLScene.Coordinates,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
-  GXS.TextureFormat,
+  GLScene.TextureFormat,
   GXS.Color,
   GXS.Texture,
   GXS.Material,

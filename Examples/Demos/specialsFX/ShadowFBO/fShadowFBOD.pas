@@ -16,7 +16,7 @@ uses
   Vcl.ExtCtrls,
   Vcl.Imaging.Jpeg,
 
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.Scene,
   GLScene.VectorTypes,
   GLS.Context,

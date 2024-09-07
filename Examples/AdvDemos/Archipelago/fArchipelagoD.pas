@@ -41,7 +41,7 @@ uses
   GLS.Keyboard,
   GLS.Context,
   GLS.State,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.File3DS,
   GLScene.Utils,
   GLS.Navigator;

@@ -86,7 +86,7 @@ type
    contains: vertices, faces, vertex indices, faces and vertices normals,
    channels of texture coordinates and indices, scaling and location info;
    this object used only to store ASE data temporary to copy supported
-   piece of it into TgxMeshObject *)
+   piece of it into TGXMeshObject *)
   TgxASEMeshObject = class(TObject)
   private
     FFaces: TgxASEFaceList;
@@ -214,7 +214,7 @@ type
 
 
   // ASE vector file parser
-  TgxASEVectorFile = class(TgxVectorFile)
+  TgxASEVectorFile = class(TGXVectorFile)
   private
     FStringData: TStringList;
     FHeader: string;
@@ -632,7 +632,7 @@ end;
 
 
 // here ASE geom object is converted to mesh
-procedure CopyASEToMesh(aASEMesh: TgxASEMeshObject; aMesh: TgxMeshObject; aASEMaterials: TgxASEMaterialList);
+procedure CopyASEToMesh(aASEMesh: TgxASEMeshObject; aMesh: TGXMeshObject; aASEMaterials: TgxASEMaterialList);
 
   const
     ASETextureMapKinds: array [TASETextureMap] of string = (
@@ -761,9 +761,9 @@ procedure CopyASEToMesh(aASEMesh: TgxASEMeshObject; aMesh: TgxMeshObject; aASEMa
    end;
 
    var
-    vLastFG: TfgxVertexIndexList;
+    vLastFG: TFGXVertexIndexList;
 
-   function GetFaceGroup(aMaterialID, aSubMaterialID: Integer): TfgxVertexIndexList;
+   function GetFaceGroup(aMaterialID, aSubMaterialID: Integer): TFGXVertexIndexList;
    var
      i: Integer;
      name: string;
@@ -781,12 +781,12 @@ procedure CopyASEToMesh(aASEMesh: TgxASEMeshObject; aMesh: TgxMeshObject; aASEMa
       vLastFG := nil;
       for i := 0 to aMesh.FaceGroups.Count - 1 do
         if aMesh.FaceGroups.Items[i].MaterialName = name then begin
-          Result := TfgxVertexIndexList(aMesh.FaceGroups.Items[i]);
+          Result := TFGXVertexIndexList(aMesh.FaceGroups.Items[i]);
           vLastFG := Result;
           Break;
         end;
       if not Assigned(Result) then begin
-        Result := TfgxVertexIndexList.CreateOwned(aMesh.FaceGroups);
+        Result := TFGXVertexIndexList.CreateOwned(aMesh.FaceGroups);
         if aMaterialID > -1 then begin
           Result.MaterialName := GetOrAllocateMaterial(aMaterialID, aSubMaterialID);
           Result.LightMapIndex := GetOrAllocateLightMap(aMaterialID, aSubMaterialID);
@@ -797,7 +797,7 @@ procedure CopyASEToMesh(aASEMesh: TgxASEMeshObject; aMesh: TgxMeshObject; aASEMa
    end;
 
 var
-  fg: TfgxVertexIndexList;
+  fg: TFGXVertexIndexList;
   aseFace: TgxASEFace;
   i: Integer;
   norm, tex, light: Boolean;
@@ -856,7 +856,7 @@ begin
       vi.Add(i*3 + 0, i*3 + 1, i*3 + 2);
     end;
   end else begin
-    fg := TfgxVertexIndexList.CreateOwned(aMesh.FaceGroups);
+    fg := TFGXVertexIndexList.CreateOwned(aMesh.FaceGroups);
     aMesh.Vertices.Assign(aASEMesh.Vertices);
     aMesh.Mode := momTriangles;
     fg.VertexIndices.Capacity := aASEMesh.Faces.Count*3;
@@ -1339,13 +1339,13 @@ end;
 procedure TgxASEVectorFile.ParseGeomObject(var aLineIndex: Integer);
 var
   aseMesh: TgxASEMeshObject;
-  obj: TgxMeshObject;
+  obj: TGXMeshObject;
   Data: string;
   b: Boolean;
 begin
   aseMesh := TgxASEMeshObject.Create;
   try
-    obj := TgxMeshObject.CreateOwned(Owner.MeshObjects);
+    obj := TGXMeshObject.CreateOwned(Owner.MeshObjects);
 
     Inc(aLineIndex);
     Data := FStringData[aLineIndex];

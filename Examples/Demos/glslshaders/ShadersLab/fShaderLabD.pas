@@ -41,7 +41,7 @@ uses
 
   GLS.State,
   GLS.RenderContextInfo,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.Color,
   GLS.Graphics,
   GLS.MeshUtils,

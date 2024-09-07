@@ -24,7 +24,7 @@ uses
   GXS.Context,
   GXS.RenderContextInfo,
   GXS.Material,
-  GXS.TextureFormat;
+  GLScene.TextureFormat;
 
 type
   EGLPostShaderHolderException = class(Exception);

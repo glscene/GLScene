@@ -30,7 +30,7 @@ uses
   GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.State,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.Utils;
 
 type

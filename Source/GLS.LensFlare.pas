@@ -29,7 +29,7 @@ uses
   GLS.State,
   GLScene.VectorTypes,
   GLScene.Utils,
-  GLS.TextureFormat;
+  GLScene.TextureFormat;
 
 type
 

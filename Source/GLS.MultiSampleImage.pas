@@ -21,7 +21,7 @@ uses
 
   GLScene.OpenGLTokens,
   GLScene.VectorTypes,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.Context,
   GLS.Texture,
   GLS.Graphics;

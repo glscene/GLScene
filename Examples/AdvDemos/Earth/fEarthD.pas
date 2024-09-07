@@ -36,7 +36,7 @@ uses
   GLS.State,
   GLScene.Utils,
   GLS.Context,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLSL.TextureShaders,
   GLScene.BaseClasses,
   GLScene.PersistentClasses,

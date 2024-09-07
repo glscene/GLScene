@@ -20,7 +20,7 @@ uses
   GLS.Keyboard,
   GLS.RenderContextInfo,
   GLS.OpenGLAdapter,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLScene.VectorGeometry,
 
   GLS.AsyncTimer,

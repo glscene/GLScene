@@ -15,7 +15,7 @@ unit GXS.ExplosionFx;
   Pretty neat :)
 
   Note: the owner of this behaviour should be any class that derives
-  from TgxBaseMesh class or any other class derived from TgxBaseMesh.
+  from TGXBaseMesh class or any other class derived from TGXBaseMesh.
   Also, the structure of the mesh is lost after the caching of information,
   so if you'll need the mesh after exploding it, you'll have to save the
   MeshObjects property of the mesh, OR load it again.
@@ -173,13 +173,13 @@ var
   Normal: TVector4f;
 begin
   // make sure we can explode this object
-  if not OwnerBaseSceneObject.InheritsFrom(TgxBaseMesh) then begin
+  if not OwnerBaseSceneObject.InheritsFrom(TGXBaseMesh) then begin
     FEnabled := False;
     Exit;
   end;
   FTriList.Free;
   // get all the triangles of all the meshObjects
-  FTriList := TgxBaseMesh(OwnerBaseSceneObject).MeshObjects.ExtractTriangles;
+  FTriList := TGXBaseMesh(OwnerBaseSceneObject).MeshObjects.ExtractTriangles;
   FaceCount := FTriList.Count div 3;
   // set initial direction, rotation and position
   for Face := 0 to Facecount - 1 do begin
@@ -215,8 +215,8 @@ begin
     FRotList.Add(DegToRadian(3.0*Random), DegToRadian(3.0*Random), DegToRadian(3.0*Random));
   end;
   // Dispose the struture of the mesh
-  TgxBaseMesh(OwnerBaseSceneObject).MeshObjects.Clear;
-  TgxBaseMesh(OwnerBaseSceneObject).StructureChanged;
+  TGXBaseMesh(OwnerBaseSceneObject).MeshObjects.Clear;
+  TGXBaseMesh(OwnerBaseSceneObject).StructureChanged;
 end;
 
 procedure TgxBExplosionFX.Render(var rci : TgxRenderContextInfo);

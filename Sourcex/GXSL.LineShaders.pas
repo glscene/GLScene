@@ -118,7 +118,7 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GXS.TextureFormat;
+  GLScene.TextureFormat;
 
 // ------------------
 // ------------------ TgxLineSettings ------------------

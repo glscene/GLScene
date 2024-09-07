@@ -25,7 +25,7 @@ type
     procedure SetEnabled(value: boolean);
     procedure Clean;
   public
-    Actor: TgxActor;
+    Actor: TGXActor;
     Bodies: TList;
     Joints: array of PNewtonJoint;
     Norm_matrices: array of TMatrix4f;
@@ -40,7 +40,7 @@ property SlideLimit: single read FSlideLimit write SetSlideLimit;
 property AngleLimit: single read FAngleLimit write SetAngleLimit;
 property ERP: single read FERP write SetERP;
 
-constructor Create(model: TgxActor; world: PNewtonWorld;
+constructor Create(model: TGXActor; world: PNewtonWorld;
   min_env_size: single = 0.8; slide_limit: single = 0.5; erp_: single = 0.8;
   angle_limit: single = 15; full: boolean = true);
 procedure Conform;
@@ -50,7 +50,7 @@ procedure SaveToFile(filename: string);
 function TranslatePos(n: integer; add: boolean): TVector4f;
 end;
 
-function GetBoneParent(actor: TgxActor; bone: integer): integer;
+function GetBoneParent(actor: TGXActor; bone: integer): integer;
 
 // =====================================
 implementation

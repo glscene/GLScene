@@ -4205,8 +4205,8 @@ begin
   begin
     EffectedObject := AObject;
     SetOldMatrix(AObject.Matrix^);
-    if AObject is TgxFreeForm then
-      FOldAutoScaling := TgxFreeForm(AObject).AutoScaling.AsVector;
+    if AObject is TGXFreeForm then
+      FOldAutoScaling := TGXFreeForm(AObject).AutoScaling.AsVector;
   end
   else
   begin
@@ -4254,8 +4254,8 @@ begin
   if not FReturnObject then
   begin
     FEffectedObject.SetMatrix(FOldMatrix);
-    if FEffectedObject is TgxFreeForm then
-      TgxFreeForm(FEffectedObject).AutoScaling.AsVector := FOldAutoScaling;
+    if FEffectedObject is TGXFreeForm then
+      TGXFreeForm(FEffectedObject).AutoScaling.AsVector := FOldAutoScaling;
   end
   else
   begin

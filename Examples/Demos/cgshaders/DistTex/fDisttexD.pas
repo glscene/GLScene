@@ -13,7 +13,7 @@ uses
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
 
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.Cadencer,
   GLS.Texture,
   GLS.SceneViewer,

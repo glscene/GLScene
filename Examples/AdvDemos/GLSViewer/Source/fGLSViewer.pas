@@ -50,7 +50,7 @@ uses
   GLScene.BaseClasses,
   GLS.State,
   GLS.RenderContextInfo,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.Color,
   GLS.Keyboard,
   GLS.Graphics,

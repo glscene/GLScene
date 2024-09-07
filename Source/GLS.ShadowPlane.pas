@@ -29,7 +29,7 @@ uses
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.State,
-  GLS.TextureFormat,
+  GLScene.TextureFormat,
   GLS.Context,
   GLS.Material,
   GLS.Texture,

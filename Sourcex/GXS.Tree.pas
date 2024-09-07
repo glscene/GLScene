@@ -195,7 +195,7 @@ type
       ARenderSelf, ARenderChildren: Boolean); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     procedure StructureChanged; override;
-    procedure BuildMesh(GLBaseMesh: TgxBaseMesh);
+    procedure BuildMesh(GLBaseMesh: TGXBaseMesh);
     procedure RebuildTree;
     procedure ForceTotalRebuild;
     procedure Clear;
@@ -828,10 +828,10 @@ begin
   inherited;
 end;
 
-procedure TgxTree.BuildMesh(GLBaseMesh: TgxBaseMesh);
+procedure TgxTree.BuildMesh(GLBaseMesh: TGXBaseMesh);
 
-  procedure RecursBranches(Branch: TgxTreeBranch; bone: TgxSkeletonBone;
-    Frame: TgxSkeletonFrame);
+  procedure RecursBranches(Branch: TgxTreeBranch; bone: TGXSkeletonBone;
+    Frame: TGXSkeletonFrame);
   var
     trans: TTransformations;
     mat: TMatrix4f;
@@ -862,18 +862,18 @@ procedure TgxTree.BuildMesh(GLBaseMesh: TgxBaseMesh);
 
     // Recurse with child branches
     if Assigned(Branch.Left) then
-      RecursBranches(Branch.Left, TgxSkeletonBone.CreateOwned(bone), Frame);
+      RecursBranches(Branch.Left, TGXSkeletonBone.CreateOwned(bone), Frame);
     if Assigned(Branch.Right) then
-      RecursBranches(Branch.Right, TgxSkeletonBone.CreateOwned(bone), Frame);
+      RecursBranches(Branch.Right, TGXSkeletonBone.CreateOwned(bone), Frame);
   end;
 
 var
-  // SkelMesh : TgxSkeletonMeshObject;
-  fg: TfgxVertexIndexList;
+  // SkelMesh : TGXSkeletonMeshObject;
+  fg: TFGXVertexIndexList;
   fg2: TFGVertexNormalTexIndexList;
   i, j, stride: Integer;
   // parent_id : integer;
-  // bone : TgxSkeletonBone;
+  // bone : TGXSkeletonBone;
 begin
   if not Assigned(GLBaseMesh) then
     exit;
@@ -887,22 +887,22 @@ begin
   GLBaseMesh.MeshObjects.Clear;
   GLBaseMesh.Skeleton.Clear;
 
-  // if GLBaseMesh is TgxActor then
-  // TgxSkeletonMeshObject.CreateOwned(GLBaseMesh.MeshObjects)
+  // if GLBaseMesh is TGXActor then
+  // TGXSkeletonMeshObject.CreateOwned(GLBaseMesh.MeshObjects)
   // else
-  TgxMeshObject.CreateOwned(GLBaseMesh.MeshObjects);
+  TGXMeshObject.CreateOwned(GLBaseMesh.MeshObjects);
   GLBaseMesh.MeshObjects[0].Mode := momFaceGroups;
 
   // Branches
   GLBaseMesh.MeshObjects[0].Vertices.Add(Branches.Vertices);
   GLBaseMesh.MeshObjects[0].Normals.Add(Branches.Normals);
   GLBaseMesh.MeshObjects[0].TexCoords.Add(Branches.TexCoords);
-  { if GLBaseMesh is TgxActor then begin
-    TgxActor(GLBaseMesh).Reference:=aarSkeleton;
+  { if GLBaseMesh is TGXActor then begin
+    TGXActor(GLBaseMesh).Reference:=aarSkeleton;
     RecursBranches(Branches.FRoot,
-    TgxSkeletonBone.CreateOwned(GLBaseMesh.Skeleton.RootBones),
-    TgxSkeletonFrame.CreateOwned(GLBaseMesh.Skeleton.Frames));
-    SkelMesh:=TgxSkeletonMeshObject(GLBaseMesh.MeshObjects[0]);
+    TGXSkeletonBone.CreateOwned(GLBaseMesh.Skeleton.RootBones),
+    TGXSkeletonFrame.CreateOwned(GLBaseMesh.Skeleton.Frames));
+    SkelMesh:=TGXSkeletonMeshObject(GLBaseMesh.MeshObjects[0]);
     SkelMesh.BonesPerVertex:=1;
     SkelMesh.VerticeBoneWeightCount:=Branches.FBranchIndices.Count;
     for i:=0 to Branches.FBranchIndices.Count-1 do
@@ -915,7 +915,7 @@ begin
   stride := (BranchFacets + 1) * 2;
   for i := 0 to (FBranches.FIndices.Count div stride) - 1 do
   begin
-    fg := TfgxVertexIndexList.CreateOwned(GLBaseMesh.MeshObjects[0].FaceGroups);
+    fg := TFGXVertexIndexList.CreateOwned(GLBaseMesh.MeshObjects[0].FaceGroups);
     fg.MaterialName := BranchMaterialName;
     fg.Mode := fgmmTriangleStrip;
     for j := 0 to stride - 1 do
@@ -923,10 +923,10 @@ begin
   end;
 
   // Leaves
-  // if GLBaseMesh is TgxActor then
-  // TgxSkeletonMeshObject.CreateOwned(GLBaseMesh.MeshObjects)
+  // if GLBaseMesh is TGXActor then
+  // TGXSkeletonMeshObject.CreateOwned(GLBaseMesh.MeshObjects)
   // else
-  TgxMeshObject.CreateOwned(GLBaseMesh.MeshObjects);
+  TGXMeshObject.CreateOwned(GLBaseMesh.MeshObjects);
   GLBaseMesh.MeshObjects[1].Mode := momFaceGroups;
 
   GLBaseMesh.MeshObjects[1].Vertices.Add(Leaves.Vertices);
