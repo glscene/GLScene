@@ -1,0 +1,271 @@
+object FormPathfinder: TFormPathfinder
+  Left = 0
+  Top = 0
+  Caption = 'Path Finding with A*'
+  ClientHeight = 524
+  ClientWidth = 876
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  object layIHM: TLayout
+    Align = Left
+    Size.Width = 250.000000000000000000
+    Size.Height = 524.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object btnTrouverChemin: TButton
+      Align = Bottom
+      ImageIndex = 1
+      Margins.Left = 10.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 457.000000000000000000
+      Size.Width = 230.000000000000000000
+      Size.Height = 62.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Finding the shortest path from D to A'
+      TextSettings.WordWrap = True
+      TextSettings.Trimming = None
+      OnClick = btnTrouverCheminClick
+    end
+    object lblInfos: TLabel
+      Align = Client
+      StyledSettings = [Family, FontColor]
+      Margins.Left = 5.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Size.Width = 240.000000000000000000
+      Size.Height = 240.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claCrimson
+      TextSettings.HorzAlign = Center
+      TabOrder = 1
+    end
+    object layOptions: TLayout
+      Align = Top
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 240.000000000000000000
+      Size.Height = 140.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      object gbOptions: TGroupBox
+        Align = Client
+        Size.Width = 240.000000000000000000
+        Size.Height = 140.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Options'
+        TabOrder = 3
+        object lblNbColonne: TLabel
+          Align = Top
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 20.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 20.000000000000000000
+          Size.Width = 220.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Columns :'
+          TabOrder = 3
+          object eNbColonne: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = Right
+            TabOrder = 4
+            Position.X = 60.000000000000000000
+            Margins.Right = 60.000000000000000000
+            Size.Width = 100.000000000000000000
+            Size.Height = 24.000000000000000000
+            Size.PlatformDefault = False
+            object SpinEditButton1: TSpinEditButton
+              AutoTranslate = False
+              CanFocus = False
+              Cursor = crArrow
+              Size.Width = 20.000000000000000000
+              Size.Height = 20.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              OnDownClick = SpinEditButton1DownClick
+              OnUpClick = SpinEditButton1UpClick
+            end
+          end
+        end
+        object lblLigne: TLabel
+          Align = Top
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 49.000000000000000000
+          Size.Width = 220.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Lines :'
+          TabOrder = 2
+          object eNbLigne: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = Right
+            TabOrder = 4
+            Position.X = 60.000000000000000000
+            Margins.Right = 60.000000000000000000
+            Size.Width = 100.000000000000000000
+            Size.Height = 24.000000000000000000
+            Size.PlatformDefault = False
+            object SpinEditButton2: TSpinEditButton
+              AutoTranslate = False
+              CanFocus = False
+              Cursor = crArrow
+              Size.Width = 20.000000000000000000
+              Size.Height = 20.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              OnDownClick = SpinEditButton2DownClick
+              OnUpClick = SpinEditButton2UpClick
+            end
+          end
+        end
+        object btnCreerGrille: TButton
+          Align = Top
+          ImageIndex = 0
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 5.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 78.000000000000000000
+          Size.Width = 220.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 4
+          Text = 'Generate the grid'
+          TextSettings.Trimming = None
+          OnClick = btnCreerGrilleClick
+        end
+      end
+    end
+    object cbPremiereEtape: TCheckBox
+      Align = Bottom
+      Margins.Left = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 414.000000000000000000
+      Size.Width = 230.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = 'Only do the 1st step'
+    end
+    object cbDiagonale: TCheckBox
+      Align = Bottom
+      IsChecked = True
+      Margins.Left = 10.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 395.000000000000000000
+      Size.Width = 230.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Allow diagonal movement'
+    end
+    object cbModeCout: TCheckBox
+      Align = Bottom
+      Margins.Left = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 433.000000000000000000
+      Size.Width = 230.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      Text = 'Minimum cost mode'
+    end
+  end
+  object ScrollBox: TScrollBox
+    Align = Client
+    Size.Width = 626.000000000000000000
+    Size.Height = 524.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    ShowSizeGrip = True
+    Viewport.Width = 626.000000000000000000
+    Viewport.Height = 524.000000000000000000
+    object layGrille: TLayout
+      Margins.Left = 10.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 605.000000000000000000
+      Size.Height = 503.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object rectangleModele: TRectangle
+        Fill.Kind = Gradient
+        Fill.Gradient.Points = <
+          item
+            Color = claWhite
+            Offset = 0.000000000000000000
+          end
+          item
+            Color = claWhite
+            Offset = 1.000000000000000000
+          end>
+        Fill.Gradient.StartPosition.Y = 1.000000000000000000
+        Fill.Gradient.StopPosition.X = 1.000000000000000000
+        Fill.Gradient.StopPosition.Y = 0.000000017114270889
+        Size.Width = 50.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        XRadius = 2.000000000000000000
+        YRadius = 2.000000000000000000
+        ParentShowHint = False
+        ShowHint = False
+        OnClick = rectangleModeleClick
+        object lblTotal: TLabel
+          Align = Center
+          StyledSettings = [Family]
+          Size.Width = 50.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.HorzAlign = Center
+          Text = '0'
+          TabOrder = 0
+        end
+        object tDistanceA: TText
+          Align = Bottom
+          Margins.Right = 5.000000000000000000
+          Position.Y = 35.000000000000000000
+          Size.Width = 45.000000000000000000
+          Size.Height = 15.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+        end
+        object tDistanceD: TText
+          Align = Top
+          Margins.Left = 5.000000000000000000
+          Position.X = 5.000000000000000000
+          Size.Width = 45.000000000000000000
+          Size.Height = 15.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Leading
+        end
+      end
+    end
+  end
+end

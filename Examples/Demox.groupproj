@@ -1,0 +1,324 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{06F2ACF5-1389-4241-BBE5-9D5D4E2831FD}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Demox\Clouds\Clouds.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Clouds\Clouds_c.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Cube\Cube.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Cube\Cube_c.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Cubemap\Cubemap.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Cubemap\Cubemap_c.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\CylinderExt\CylinderExt.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\CylinderExt\CylinderExt_c.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Genoise\Genoise.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Genoise\Genoise_c.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Grass\Grass.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Grass\Grass_c.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Heightmap\Heightmap.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Heightmap\Heightmap_c.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Island\Island.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Joystickplayer\Joystickplayer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Multitextures\Multitextures.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Pathfinder\Pathfinder.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Sailboat\Sailboat.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\SphereExt\SphereExt.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\StopCovid10\StopCovid10.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Terrain\Terrain.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Viewports\Viewports.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Waves\Waves.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Waves\Waves_c.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Clouds">
+        <MSBuild Projects="Demox\Clouds\Clouds.dproj"/>
+    </Target>
+    <Target Name="Clouds:Clean">
+        <MSBuild Projects="Demox\Clouds\Clouds.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Clouds:Make">
+        <MSBuild Projects="Demox\Clouds\Clouds.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Clouds_c">
+        <MSBuild Projects="Demox\Clouds\Clouds_c.cbproj"/>
+    </Target>
+    <Target Name="Clouds_c:Clean">
+        <MSBuild Projects="Demox\Clouds\Clouds_c.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Clouds_c:Make">
+        <MSBuild Projects="Demox\Clouds\Clouds_c.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Cube">
+        <MSBuild Projects="Demox\Cube\Cube.dproj"/>
+    </Target>
+    <Target Name="Cube:Clean">
+        <MSBuild Projects="Demox\Cube\Cube.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Cube:Make">
+        <MSBuild Projects="Demox\Cube\Cube.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Cube_c">
+        <MSBuild Projects="Demox\Cube\Cube_c.cbproj"/>
+    </Target>
+    <Target Name="Cube_c:Clean">
+        <MSBuild Projects="Demox\Cube\Cube_c.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Cube_c:Make">
+        <MSBuild Projects="Demox\Cube\Cube_c.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Cubemap">
+        <MSBuild Projects="Demox\Cubemap\Cubemap.dproj"/>
+    </Target>
+    <Target Name="Cubemap:Clean">
+        <MSBuild Projects="Demox\Cubemap\Cubemap.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Cubemap:Make">
+        <MSBuild Projects="Demox\Cubemap\Cubemap.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Cubemap_c">
+        <MSBuild Projects="Demox\Cubemap\Cubemap_c.cbproj"/>
+    </Target>
+    <Target Name="Cubemap_c:Clean">
+        <MSBuild Projects="Demox\Cubemap\Cubemap_c.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Cubemap_c:Make">
+        <MSBuild Projects="Demox\Cubemap\Cubemap_c.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="CylinderExt">
+        <MSBuild Projects="Demox\CylinderExt\CylinderExt.dproj"/>
+    </Target>
+    <Target Name="CylinderExt:Clean">
+        <MSBuild Projects="Demox\CylinderExt\CylinderExt.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CylinderExt:Make">
+        <MSBuild Projects="Demox\CylinderExt\CylinderExt.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CylinderExt_c">
+        <MSBuild Projects="Demox\CylinderExt\CylinderExt_c.cbproj"/>
+    </Target>
+    <Target Name="CylinderExt_c:Clean">
+        <MSBuild Projects="Demox\CylinderExt\CylinderExt_c.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CylinderExt_c:Make">
+        <MSBuild Projects="Demox\CylinderExt\CylinderExt_c.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Genoise">
+        <MSBuild Projects="Demox\Genoise\Genoise.dproj"/>
+    </Target>
+    <Target Name="Genoise:Clean">
+        <MSBuild Projects="Demox\Genoise\Genoise.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Genoise:Make">
+        <MSBuild Projects="Demox\Genoise\Genoise.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Genoise_c">
+        <MSBuild Projects="Demox\Genoise\Genoise_c.cbproj"/>
+    </Target>
+    <Target Name="Genoise_c:Clean">
+        <MSBuild Projects="Demox\Genoise\Genoise_c.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Genoise_c:Make">
+        <MSBuild Projects="Demox\Genoise\Genoise_c.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Grass">
+        <MSBuild Projects="Demox\Grass\Grass.dproj"/>
+    </Target>
+    <Target Name="Grass:Clean">
+        <MSBuild Projects="Demox\Grass\Grass.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Grass:Make">
+        <MSBuild Projects="Demox\Grass\Grass.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Grass_c">
+        <MSBuild Projects="Demox\Grass\Grass_c.cbproj"/>
+    </Target>
+    <Target Name="Grass_c:Clean">
+        <MSBuild Projects="Demox\Grass\Grass_c.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Grass_c:Make">
+        <MSBuild Projects="Demox\Grass\Grass_c.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Heightmap">
+        <MSBuild Projects="Demox\Heightmap\Heightmap.dproj"/>
+    </Target>
+    <Target Name="Heightmap:Clean">
+        <MSBuild Projects="Demox\Heightmap\Heightmap.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Heightmap:Make">
+        <MSBuild Projects="Demox\Heightmap\Heightmap.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Heightmap_c">
+        <MSBuild Projects="Demox\Heightmap\Heightmap_c.cbproj"/>
+    </Target>
+    <Target Name="Heightmap_c:Clean">
+        <MSBuild Projects="Demox\Heightmap\Heightmap_c.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Heightmap_c:Make">
+        <MSBuild Projects="Demox\Heightmap\Heightmap_c.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Island">
+        <MSBuild Projects="Demox\Island\Island.dproj"/>
+    </Target>
+    <Target Name="Island:Clean">
+        <MSBuild Projects="Demox\Island\Island.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Island:Make">
+        <MSBuild Projects="Demox\Island\Island.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Joystickplayer">
+        <MSBuild Projects="Demox\Joystickplayer\Joystickplayer.dproj"/>
+    </Target>
+    <Target Name="Joystickplayer:Clean">
+        <MSBuild Projects="Demox\Joystickplayer\Joystickplayer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Joystickplayer:Make">
+        <MSBuild Projects="Demox\Joystickplayer\Joystickplayer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Multitextures">
+        <MSBuild Projects="Demox\Multitextures\Multitextures.dproj"/>
+    </Target>
+    <Target Name="Multitextures:Clean">
+        <MSBuild Projects="Demox\Multitextures\Multitextures.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Multitextures:Make">
+        <MSBuild Projects="Demox\Multitextures\Multitextures.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Pathfinder">
+        <MSBuild Projects="Demox\Pathfinder\Pathfinder.dproj"/>
+    </Target>
+    <Target Name="Pathfinder:Clean">
+        <MSBuild Projects="Demox\Pathfinder\Pathfinder.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Pathfinder:Make">
+        <MSBuild Projects="Demox\Pathfinder\Pathfinder.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Sailboat">
+        <MSBuild Projects="Demox\Sailboat\Sailboat.dproj"/>
+    </Target>
+    <Target Name="Sailboat:Clean">
+        <MSBuild Projects="Demox\Sailboat\Sailboat.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Sailboat:Make">
+        <MSBuild Projects="Demox\Sailboat\Sailboat.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SphereExt">
+        <MSBuild Projects="Demox\SphereExt\SphereExt.dproj"/>
+    </Target>
+    <Target Name="SphereExt:Clean">
+        <MSBuild Projects="Demox\SphereExt\SphereExt.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SphereExt:Make">
+        <MSBuild Projects="Demox\SphereExt\SphereExt.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="StopCovid10">
+        <MSBuild Projects="Demox\StopCovid10\StopCovid10.dproj"/>
+    </Target>
+    <Target Name="StopCovid10:Clean">
+        <MSBuild Projects="Demox\StopCovid10\StopCovid10.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="StopCovid10:Make">
+        <MSBuild Projects="Demox\StopCovid10\StopCovid10.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Terrain">
+        <MSBuild Projects="Demox\Terrain\Terrain.dproj"/>
+    </Target>
+    <Target Name="Terrain:Clean">
+        <MSBuild Projects="Demox\Terrain\Terrain.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Terrain:Make">
+        <MSBuild Projects="Demox\Terrain\Terrain.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Viewports">
+        <MSBuild Projects="Demox\Viewports\Viewports.dproj"/>
+    </Target>
+    <Target Name="Viewports:Clean">
+        <MSBuild Projects="Demox\Viewports\Viewports.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Viewports:Make">
+        <MSBuild Projects="Demox\Viewports\Viewports.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Waves">
+        <MSBuild Projects="Demox\Waves\Waves.dproj"/>
+    </Target>
+    <Target Name="Waves:Clean">
+        <MSBuild Projects="Demox\Waves\Waves.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Waves:Make">
+        <MSBuild Projects="Demox\Waves\Waves.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Waves_c">
+        <MSBuild Projects="Demox\Waves\Waves_c.cbproj"/>
+    </Target>
+    <Target Name="Waves_c:Clean">
+        <MSBuild Projects="Demox\Waves\Waves_c.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Waves_c:Make">
+        <MSBuild Projects="Demox\Waves\Waves_c.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Clouds;Clouds_c;Cube;Cube_c;Cubemap;Cubemap_c;CylinderExt;CylinderExt_c;Genoise;Genoise_c;Grass;Grass_c;Heightmap;Heightmap_c;Island;Joystickplayer;Multitextures;Pathfinder;Sailboat;SphereExt;StopCovid10;Terrain;Viewports;Waves;Waves_c"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Clouds:Clean;Clouds_c:Clean;Cube:Clean;Cube_c:Clean;Cubemap:Clean;Cubemap_c:Clean;CylinderExt:Clean;CylinderExt_c:Clean;Genoise:Clean;Genoise_c:Clean;Grass:Clean;Grass_c:Clean;Heightmap:Clean;Heightmap_c:Clean;Island:Clean;Joystickplayer:Clean;Multitextures:Clean;Pathfinder:Clean;Sailboat:Clean;SphereExt:Clean;StopCovid10:Clean;Terrain:Clean;Viewports:Clean;Waves:Clean;Waves_c:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Clouds:Make;Clouds_c:Make;Cube:Make;Cube_c:Make;Cubemap:Make;Cubemap_c:Make;CylinderExt:Make;CylinderExt_c:Make;Genoise:Make;Genoise_c:Make;Grass:Make;Grass_c:Make;Heightmap:Make;Heightmap_c:Make;Island:Make;Joystickplayer:Make;Multitextures:Make;Pathfinder:Make;Sailboat:Make;SphereExt:Make;StopCovid10:Make;Terrain:Make;Viewports:Make;Waves:Make;Waves_c:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -17,7 +17,7 @@ object InfoForm: TInfoForm
     Size.Width = 540.000000000000000000
     Size.Height = 382.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 4
+    TabIndex = 3
     TabOrder = 0
     TabPosition = PlatformDefault
     Sizes = (
@@ -771,7 +771,7 @@ object InfoForm: TInfoForm
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = False
+      IsSelected = True
       Size.Width = 87.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
@@ -789,6 +789,7 @@ object InfoForm: TInfoForm
           'Alejandro Leon Escalera'
           'Alexandre Hirzel'
           'Arvydas Juskevicius'
+          'Benjamin Rosseaux'
           'Brian Johns'
           'Burkhard Carstens'
           'Da Stranger'
@@ -800,17 +801,20 @@ object InfoForm: TInfoForm
           'Eric Hardinge'
           'Eric Pascual'
           'Erick Schuitema'
-          'Ivan Lee Herring,'
+          'Gregory Bersegeay'
           'Jerome Delauney'
           'Joen A. Joensen'
           'Joen Joensen'
+          'Ivan Lee Herring,'
           'Kenneth Poulter'
+          'Leo Koptyaev'
           'Lionel Reynaud'
           'Lukasz Sokol'
           'Marcus Oblak'
           'Matheus Degiovani'
           'Mattias Fagerlund'
           'Mike Lischke'
+          'Nakayama Masanori'
           'Nelson Chu'
           'Pavel Vassiliev'
           'Paul van Dinther'
@@ -822,12 +826,13 @@ object InfoForm: TInfoForm
           'Roshal Sasha'
           'Rustam Asmandiarov'
           'Sandor Domokos'
-          'Leo Koptyaev'
+          'Sergio Feitosa'
           'Sternas Stefanos'
           'Stuart Gooding'
           'Uwe Raabe'
           'YarUnderoaker'
-          'Zsolt Laky')
+          'Zsolt Laky'
+          'Omar Reis')
         TextSettings.HorzAlign = Center
         Align = Client
         Size.Width = 540.000000000000000000
@@ -843,7 +848,7 @@ object InfoForm: TInfoForm
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = True
+      IsSelected = False
       Size.Width = 53.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False

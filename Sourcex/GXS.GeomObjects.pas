@@ -28,7 +28,7 @@ uses
 
   GLScene.GeometryBB,
   GLScene.VectorGeometry,
-  GXS.Polynomials,
+  GLScene.Polynomials,
   GXS.VectorFileObjects,
   GXS.PipelineTransformation,
   GXS.Material,

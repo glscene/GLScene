@@ -1,0 +1,146 @@
+object FormNoise: TFormNoise
+  Left = 0
+  Top = 0
+  Caption = 'Bruit Diamond Square'
+  ClientHeight = 404
+  ClientWidth = 540
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Image1: TImage
+    MultiResBitmap = <
+      item
+      end>
+    Align = Center
+    Size.Width = 316.000000000000000000
+    Size.Height = 274.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Layout1: TLayout
+    Align = Left
+    Size.Width = 97.000000000000000000
+    Size.Height = 404.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object Button1: TButton
+      Align = Top
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 144.000000000000000000
+      Size.Width = 92.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Generate noise'
+      TextSettings.Trimming = None
+      OnClick = Button1Click
+    end
+    object Label1: TLabel
+      Align = Top
+      Margins.Left = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Size.Width = 92.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Size'
+      TabOrder = 4
+    end
+    object ComboBox1: TComboBox
+      Align = Top
+      Items.Strings = (
+        '8'
+        '16'
+        '32'
+        '64'
+        '128'
+        '256'
+        '512')
+      ItemIndex = 5
+      Margins.Left = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 17.000000000000000000
+      Size.Width = 92.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+    end
+    object Label2: TLabel
+      Align = Top
+      Margins.Left = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 39.000000000000000000
+      Size.Width = 92.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Flow'
+      TabOrder = 2
+    end
+    object ComboBox2: TComboBox
+      Align = Top
+      Items.Strings = (
+        '0'
+        '1'
+        '2'
+        '3'
+        '4'
+        '5'
+        '6'
+        '7'
+        '8')
+      ItemIndex = 0
+      Margins.Left = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 56.000000000000000000
+      Size.Width = 92.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+    end
+    object Button2: TButton
+      Align = Top
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 187.000000000000000000
+      Size.Width = 92.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Save'
+      TextSettings.Trimming = None
+      OnClick = Button2Click
+    end
+    object ComboColorBox1: TComboColorBox
+      Align = Top
+      Color = claWhite
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 83.000000000000000000
+      Size.Width = 92.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+    end
+    object CheckBox1: TCheckBox
+      Align = Top
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 115.000000000000000000
+      Size.Width = 92.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 7
+      Text = 'Border'
+    end
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 40
+    Top = 288
+  end
+end

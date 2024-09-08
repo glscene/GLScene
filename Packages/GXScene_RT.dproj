@@ -354,7 +354,6 @@
         <DCCReference Include="..\SourceX\GXS.WindowsFont.pas"/>
         <DCCReference Include="..\SourceX\GXS.zBuffer.pas"/>
         <DCCReference Include="..\SourceX\GXS.PAKArchive.pas"/>
-        <DCCReference Include="..\SourceX\GXS.Polynomials.pas"/>
         <DCCReference Include="..\SourceX\GXS.SpacePartition.pas"/>
         <DCCReference Include="..\SourceX\GXS.XOpenGL.pas"/>
         <DCCReference Include="..\SourceX\GXS.PipelineTransformation.pas"/>
@@ -420,6 +419,7 @@
         <DCCReference Include="..\Source\gnuGettextInit.pas"/>
         <DCCReference Include="..\Source\GLScene.XCollection.pas"/>
         <DCCReference Include="..\Source\GLScene.Keyboard.pas"/>
+        <DCCReference Include="..\Source\GLScene.Polynomials.pas"/>
         <None Include="..\Sourcex\GXS.Scene.inc"/>
         <None Include="..\Source\GLScene.Defines.inc"/>
         <BuildConfiguration Include="Base">

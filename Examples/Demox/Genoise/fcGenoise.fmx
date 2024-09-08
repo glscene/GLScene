@@ -1,0 +1,144 @@
+object FormGenoise: TFormGenoise
+  Left = 0
+  Top = 0
+  Caption = #1043#1077#1085#1077#1088#1072#1090#1086#1088' '#1096#1091#1084#1072
+  ClientHeight = 480
+  ClientWidth = 640
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Image1: TImage
+    MultiResBitmap = <
+      item
+      end>
+    Align = Center
+    Size.Width = 316.000000000000000000
+    Size.Height = 274.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Layout1: TLayout
+    Align = Left
+    Size.Width = 97.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object Button1: TButton
+      Align = Top
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 144.000000000000000000
+      Size.Width = 92.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = #1057#1086#1079#1076#1072#1090#1100' '#1096#1091#1084
+      TextSettings.Trimming = None
+    end
+    object Label1: TLabel
+      Align = Top
+      Margins.Left = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Size.Width = 92.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = #1056#1072#1079#1084#1077#1088#1085#1086#1089#1090#1100
+      TabOrder = 4
+    end
+    object ComboBox1: TComboBox
+      Align = Top
+      Items.Strings = (
+        '8'
+        '16'
+        '32'
+        '64'
+        '128'
+        '256'
+        '512')
+      ItemIndex = 5
+      Margins.Left = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 17.000000000000000000
+      Size.Width = 92.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+    end
+    object Label2: TLabel
+      Align = Top
+      Margins.Left = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 39.000000000000000000
+      Size.Width = 92.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = #1056#1072#1079#1084#1099#1090#1086#1089#1090#1100
+      TabOrder = 2
+    end
+    object ComboBox2: TComboBox
+      Align = Top
+      Items.Strings = (
+        '0'
+        '1'
+        '2'
+        '3'
+        '4'
+        '5'
+        '6'
+        '7'
+        '8')
+      ItemIndex = 0
+      Margins.Left = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 56.000000000000000000
+      Size.Width = 92.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+    end
+    object Button2: TButton
+      Align = Top
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 187.000000000000000000
+      Size.Width = 92.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = #1057#1086#1093#1088#1072#1085#1080#1090#1100'...'
+      TextSettings.Trimming = None
+    end
+    object ComboColorBox1: TComboColorBox
+      Align = Top
+      Color = claWhite
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 83.000000000000000000
+      Size.Width = 92.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+    end
+    object CheckBox1: TCheckBox
+      Align = Top
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 115.000000000000000000
+      Size.Width = 92.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 7
+      Text = #1041#1086#1088#1076#1102#1088
+    end
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 40
+    Top = 288
+  end
+end
