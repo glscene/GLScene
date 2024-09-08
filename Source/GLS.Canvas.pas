@@ -164,9 +164,7 @@ type
     property ArcDirection: TGLArcDirection read FArcDirection write FArcDirection;
   end;
 
-//-------------------------------------------------------------
-implementation
-//-------------------------------------------------------------
+implementation //-------------------------------------------------------------
 
 const
   cNoPrimitive = MaxInt;
@@ -760,6 +758,8 @@ begin
   pX^ := pY^;
   pY^ := tmp;
 end;
+
+//---------------------------------------------------------------------------
 
 end.
 

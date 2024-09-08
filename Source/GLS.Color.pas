@@ -13,9 +13,7 @@ uses
   System.Types,
   System.SysUtils,
   System.Classes,
-  System.UITypes,
-
-  Vcl.Graphics,   // clWhite
+  System.UITypes,  // Colors
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
@@ -183,11 +181,12 @@ const
   clActiveBackground = TColor(clBackground - cloActive);
   clActiveShadow = TColor(clShadow - cloActive);
   clActiveHighlight = TColor(clHighlight - cloActive);
-  clActiveHighlightedText = TColor(clHighlightedText - cloActive);
 
+  clActiveHighlightedText = TColor(clHighlightedText - cloActive);
   clFirstSpecialColor = clActiveHighlightedText;
-  clMask = clWhite;
-  clDontMask = clBlack;
+
+  clMask = TColor($000000); //clWhite;
+  clDontMask = TColor($FFFFFF); // clBlack;
 
   // Window's colors (must be filled at program startup,
   // since they depend on the desktop scheme)
@@ -390,7 +389,7 @@ var
   winColor: Integer;
 begin
   // Delphi color to Windows color
-  winColor := ColorToRGB(aColor);
+  winColor := TColorRec.ColorToRGB(aColor);
   // convert 0..255 range into 0..1 range
   Result.X := (winColor and $FF) * (1 / 255);
   Result.Y := ((winColor shr 8) and $FF) * (1 / 255);
@@ -415,29 +414,29 @@ end;
 
 procedure InitGLSceneColors;
 begin
-  clrScrollBar := ConvertWinColor(clScrollBar);
-  clrActiveCaption := ConvertWinColor(clActiveCaption);
-  clrInactiveCaption := ConvertWinColor(clInactiveCaption);
-  clrMenu := ConvertWinColor(clMenu);
-  clrWindow := ConvertWinColor(clWindow);
-  clrWindowFrame := ConvertWinColor(clWindowFrame);
-  clrMenuText := ConvertWinColor(clMenuText);
-  clrWindowText := ConvertWinColor(clWindowText);
-  clrCaptionText := ConvertWinColor(clCaptionText);
-  clrActiveBorder := ConvertWinColor(clActiveBorder);
-  clrInactiveBorder := ConvertWinColor(clInactiveBorder);
-  clrAppWorkSpace := ConvertWinColor(clAppWorkSpace);
-  clrHighlightText := ConvertWinColor(clHighlightText);
-  clrBtnFace := ConvertWinColor(clBtnFace);
-  clrBtnShadow := ConvertWinColor(clBtnShadow);
-  clrGrayText := ConvertWinColor(clGrayText);
-  clrBtnText := ConvertWinColor(clBtnText);
-  clrInactiveCaptionText := ConvertWinColor(clInactiveCaptionText);
-  clrBtnHighlight := ConvertWinColor(clBtnHighlight);
-  clr3DDkShadow := ConvertWinColor(cl3DDkShadow);
-  clr3DLight := ConvertWinColor(cl3DLight);
-  clrInfoText := ConvertWinColor(clInfoText);
-  clrInfoBk := ConvertWinColor(clInfoBk);
+  clrScrollBar := ConvertWinColor(TColorRec.cSCROLLBAR);
+  clrActiveCaption := ConvertWinColor(TColorRec.cACTIVECAPTION);
+  clrInactiveCaption := ConvertWinColor(TColorRec.cINACTIVECAPTION);
+  clrMenu := ConvertWinColor(TColorRec.cMENU);
+  clrWindow := ConvertWinColor(TColorRec.cWINDOW);
+  clrWindowFrame := ConvertWinColor(TColorRec.cWINDOWFRAME);
+  clrMenuText := ConvertWinColor(TColorRec.cMENUTEXT);
+  clrWindowText := ConvertWinColor(TColorRec.cWINDOWTEXT);
+  clrCaptionText := ConvertWinColor(TColorRec.cCAPTIONTEXT);
+  clrActiveBorder := ConvertWinColor(TColorRec.cACTIVEBORDER);
+  clrInactiveBorder := ConvertWinColor(TColorRec.cINACTIVEBORDER);
+  clrAppWorkSpace := ConvertWinColor(TColorRec.cAPPWORKSPACE);
+  clrHighlightText := ConvertWinColor(TColorRec.cHIGHLIGHTTEXT);
+  clrBtnFace := ConvertWinColor(TColorRec.cBTNFACE);
+  clrBtnShadow := ConvertWinColor(TColorRec.cBTNSHADOW);
+  clrGrayText := ConvertWinColor(TColorRec.cGRAYTEXT);
+  clrBtnText := ConvertWinColor(TColorRec.cBTNTEXT);
+  clrInactiveCaptionText := ConvertWinColor(TColorRec.cINACTIVECAPTIONTEXT);
+  clrBtnHighlight := ConvertWinColor(TColorRec.cBTNHIGHLIGHT);
+  clr3DDkShadow := ConvertWinColor(TColorRec.c3DDKSHADOW);
+  clr3DLight := ConvertWinColor(TColorRec.c3DLIGHT);
+  clrInfoText := ConvertWinColor(TColorRec.cINFOTEXT);
+  clrInfoBk := ConvertWinColor(TColorRec.cINFOBK);
   clrHighlight := ConvertWinColor(clHighlight);
   clrBackground := ConvertWinColor(clBackground);
 end;
@@ -1037,13 +1036,11 @@ begin
   ColorManager.RemoveColor(aName);
 end;
 
-//-----------------------------------------------------------
-initialization
-//-----------------------------------------------------------
+initialization //-----------------------------------------------------------
 
 InitGLSceneColors;
 
-finalization
+finalization //-------------------------------------------------------------
 
 vColorManager.Free;
 

@@ -18,7 +18,7 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry, // PVector4f TVector4f TMatrix4f PMatrix4f NullHmgVector...
   GLScene.VectorLists, // TGAffineVectorList for Tree
-  GXS.XCollection, // TXCollection file function
+  GLScene.XCollection, // TXCollection file function
   GLScene.GeometryBB,
   GLScene.BaseClasses,
   GLScene.PersistentClasses,

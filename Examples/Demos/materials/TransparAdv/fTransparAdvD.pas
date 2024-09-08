@@ -38,7 +38,7 @@ uses
   GLS.HUDObjects,
   GLS.BitmapFont,
   GLS.WindowsFont,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLS.CompositeImage,
 
   GLScene.Utils;

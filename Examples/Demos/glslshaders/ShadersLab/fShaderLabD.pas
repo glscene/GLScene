@@ -27,7 +27,7 @@ uses
   GLScene.VectorGeometry,
   GLScene.BaseClasses,
   GLScene.PersistentClasses,
-  GLS.Keyboard,
+  GLScene.XCollection,
 
   GLS.Material,
   GLS.Scene,

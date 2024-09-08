@@ -51,9 +51,7 @@ type
     property Depth: Integer read GetDepth write SetDepth;
   end;
 
-//-----------------------------------------------------------------------
-implementation
-//-----------------------------------------------------------------------
+implementation //-------------------------------------------------------------
 
 constructor TGLCompositeImage.Create(AOwner: TPersistent);
 begin
@@ -266,9 +264,7 @@ begin
     Result := ttNoShape;
 end;
 
-//-------------------------------------------------
-initialization
-//-------------------------------------------------
+initialization //-------------------------------------------------
 
   RegisterGLTextureImageClass(TGLCompositeImage);
 

@@ -21,7 +21,7 @@ uses
   GLS.Scene,
   GLScene.BaseClasses,
   GLS.Objects,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLS.TerrainRenderer,
   GLS.ROAMPatch,
   GLS.HeightData,

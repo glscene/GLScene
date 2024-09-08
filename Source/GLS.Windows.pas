@@ -42,7 +42,6 @@ uses
   GLScene.BaseClasses;
 
 type
-
   TGLBaseComponent = class(TGLBaseGuiObject)
   private
     FGUIRedraw: Boolean;
@@ -3628,11 +3627,10 @@ begin
   ReGetRootControl;
 end;
 
-//--------------------------------------------
-initialization
-//--------------------------------------------
+initialization //------------------------------------------------------------
 
-  RegisterClasses([TGLBaseControl, TGLPopupMenu, TGLForm, TGLPanel, TGLButton,
-    TGLCheckBox, TGLEdit, TGLLabel, TGLAdvancedLabel, TGLScrollbar, TGLStringGrid,
-    TGLCustomControl]);
+RegisterClasses([TGLBaseControl, TGLPopupMenu, TGLForm, TGLPanel, TGLButton,
+  TGLCheckBox, TGLEdit, TGLLabel, TGLAdvancedLabel, TGLScrollbar, TGLStringGrid,
+  TGLCustomControl]);
+
 end.

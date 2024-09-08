@@ -20,7 +20,6 @@ const
   MAX_MATRIX_STACK_DEPTH = 128;
 
 type
-
   TGLPipelineTransformationState =
   (
     trsModelViewChanged,
@@ -30,7 +29,6 @@ type
     trsViewProjChanged,
     trsFrustum
   );
-
   TGLPipelineTransformationStates = set of TGLPipelineTransformationState;
 
 const
@@ -52,7 +50,6 @@ type
   end;
 
 type
-
   TOnMatricesPush = procedure() of object;
 
   TGLTransformation = class(TObject)
@@ -98,9 +95,7 @@ type
     property LoadMatricesEnabled: Boolean read FLoadMatricesEnabled write FLoadMatricesEnabled;
   end;
 
-//=====================================================================
-implementation
-//=====================================================================
+implementation //------------------------------------------------------------
 
 constructor TGLTransformation.Create;
 begin
@@ -335,5 +330,7 @@ begin
   end;
   Result := FStack[FStackPos].FFrustum;
 end;
+
+//-----------------------------------------------------------------------------
 
 end.

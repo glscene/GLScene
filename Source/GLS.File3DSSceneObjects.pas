@@ -15,15 +15,15 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLScene.OpenGLTokens,
   GLS.OpenGLAdapter,
+  GLScene.OpenGLTokens,
+  GLScene.PersistentClasses,
+  GLScene.Coordinates,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLS.Context,
   GLS.Scene,
   GLS.VectorFileObjects,
-  GLScene.PersistentClasses,
-  GLScene.Coordinates,
   GLS.RenderContextInfo,
   GLS.State;
 

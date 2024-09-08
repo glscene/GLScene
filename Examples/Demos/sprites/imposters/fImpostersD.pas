@@ -21,7 +21,7 @@ uses
   GLS.Objects,
   GLS.Cadencer,
   GLS.SceneViewer,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLS.VectorFileObjects,
   GLS.RenderContextInfo,
   GLScene.Utils,

@@ -17,17 +17,18 @@ uses
   System.Math,
 
   GLScene.OpenGLTokens,
-  GLS.Scene,
   GLScene.PersistentClasses,
-  GLS.PipelineTransformation,
   GLScene.VectorGeometry,
+  GLScene.BaseClasses,
+  GLScene.VectorTypes,
+
+  GLS.Scene,
+  GLS.PipelineTransformation,
   GLS.Objects,
   GLS.Context,
   GLS.Color,
-  GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLS.State,
-  GLScene.VectorTypes,
   GLScene.Utils,
   GLScene.TextureFormat;
 

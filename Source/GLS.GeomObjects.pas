@@ -20,12 +20,12 @@ uses
   System.Math,
   System.Classes,
 
-  GLScene.OpenGLTokens,
   GLS.OpenGLAdapter,
+  GLScene.OpenGLTokens,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLS.PipelineTransformation,
-  GLS.Polynomials,
+  GLScene.Polynomials,
 
   GLS.Scene,
   GLS.State,

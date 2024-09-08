@@ -15,9 +15,10 @@ uses
 
   GLScene.OpenGLTokens,
   GLScene.PersistentClasses,
+  GLScene.VectorGeometry,
+
   GLS.Context,
   GLS.Scene,
-  GLScene.VectorGeometry,
   GLS.Silhouette,
   GLS.RenderContextInfo,
   GLScene.BaseClasses,

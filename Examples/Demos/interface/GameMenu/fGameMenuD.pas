@@ -26,7 +26,7 @@ uses
   GLS.GameMenu,
   GLS.Cadencer,
   GLS.Texture,
-  GLS.Keyboard,
+  GLScene.XCollection,
  
   GLS.Material,
   GLScene.Coordinates,

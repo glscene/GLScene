@@ -16,11 +16,12 @@ uses
   System.SysUtils,
   System.Classes,
 
-  GLS.Scene,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.VectorLists,
   GLScene.PersistentClasses,
+
+  GLS.Scene,
   GLS.VectorFileObjects,
   GLS.MeshUtils;
 

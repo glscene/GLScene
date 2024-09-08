@@ -16,7 +16,7 @@ uses
   System.UITypes,
   FMX.Graphics,
 
-  GXS.XCollection,
+  GLScene.XCollection,
   GLScene.VectorTypes,
   GXS.Context,
   GLScene.VectorGeometry,

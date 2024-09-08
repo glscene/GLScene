@@ -2,7 +2,6 @@
 // The graphics engine GLScene https://github.com/glscene
 //
 unit GLS.Portal;
-
 (*
   Portal Rendering support for GLScene.
   The portal structures are subclasses of the Mesh structures, with a "sector"
@@ -11,7 +10,6 @@ unit GLS.Portal;
     [TGLPortal, TGLSectorMeshObject, TFGPolygon, TFGPortalPolygon]
 
 *)
-
 interface
 
 {$I GLScene.Defines.inc}

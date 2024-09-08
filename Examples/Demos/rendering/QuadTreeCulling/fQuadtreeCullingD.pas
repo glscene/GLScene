@@ -21,7 +21,7 @@ uses
   GLS.SceneViewer,
   GLS.SkyDome,
   GLS.Objects,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLS.HeightData,
   GLS.TerrainRenderer,
   GLS.Texture,

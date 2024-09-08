@@ -9,8 +9,9 @@ uses
   System.Classes,
   GLScene.VectorGeometry,
   GLScene.XCollection,
-  GLS.Scene,
   GLScene.Coordinates,
+
+  GLS.Scene,
   GLS.Behaviours,
   (* GLS.RigidBodyInertia *)
   GLS.PhysInertias,

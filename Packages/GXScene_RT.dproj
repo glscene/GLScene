@@ -271,7 +271,6 @@
         <DCCReference Include="..\SourceX\GXS.HeightTileFile.pas"/>
         <DCCReference Include="..\SourceX\GXS.HeightTileFileHDS.pas"/>
         <DCCReference Include="..\SourceX\GXS.HiddenLineShader.pas"/>
-        <DCCReference Include="..\SourceX\GXS.Keyboard.pas"/>
         <DCCReference Include="..\SourceX\GXS.ImageUtils.pas"/>
         <DCCReference Include="..\SourceX\GXS.Imposter.pas"/>
         <DCCReference Include="..\SourceX\GXS.Isolines.pas"/>
@@ -357,7 +356,6 @@
         <DCCReference Include="..\SourceX\GXS.PAKArchive.pas"/>
         <DCCReference Include="..\SourceX\GXS.Polynomials.pas"/>
         <DCCReference Include="..\SourceX\GXS.SpacePartition.pas"/>
-        <DCCReference Include="..\SourceX\GXS.XCollection.pas"/>
         <DCCReference Include="..\SourceX\GXS.XOpenGL.pas"/>
         <DCCReference Include="..\SourceX\GXS.PipelineTransformation.pas"/>
         <DCCReference Include="..\SourceX\GXS.OpenGL.pas"/>
@@ -420,6 +418,8 @@
         <DCCReference Include="..\Source\Formats.LWO.pas"/>
         <DCCReference Include="..\Source\gnuGettext.pas"/>
         <DCCReference Include="..\Source\gnuGettextInit.pas"/>
+        <DCCReference Include="..\Source\GLScene.XCollection.pas"/>
+        <DCCReference Include="..\Source\GLScene.Keyboard.pas"/>
         <None Include="..\Sourcex\GXS.Scene.inc"/>
         <None Include="..\Source\GLScene.Defines.inc"/>
         <BuildConfiguration Include="Base">

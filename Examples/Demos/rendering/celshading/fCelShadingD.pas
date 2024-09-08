@@ -29,7 +29,7 @@ uses
   GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.FileMD2,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLScene.Utils,
   GLSL.ShapeShaders;
 

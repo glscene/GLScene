@@ -20,7 +20,7 @@ uses
   GLS.Texture,
   GLS.Cadencer,
   GLS.FPSMovement,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLS.State,
   GLS.SceneViewer,
   GLS.Objects,

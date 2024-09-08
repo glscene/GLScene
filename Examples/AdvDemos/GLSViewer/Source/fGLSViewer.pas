@@ -52,7 +52,7 @@ uses
   GLS.RenderContextInfo,
   GLScene.TextureFormat,
   GLS.Color,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLS.Graphics,
   GLScene.PersistentClasses,
   GLS.MeshUtils,

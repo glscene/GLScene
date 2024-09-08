@@ -12,13 +12,14 @@ uses
 
   GLScene.PersistentClasses,
   GLScene.XCollection,
-  GLS.Scene,
   GLScene.BaseClasses,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLS.PhysManager,
   GLScene.Coordinates,
   GLScene.Strings,
+
+  GLS.Scene,
   GLS.Behaviours;
 
 type

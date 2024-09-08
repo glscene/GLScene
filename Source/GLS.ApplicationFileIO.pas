@@ -2,12 +2,10 @@
 // The graphics engine GLScene https://github.com/glscene
 //
 unit GLS.ApplicationFileIO;
-
 (*
   Components and functions that abstract file I/O access for an application.
   Allows re-routing file reads to reads from a single archive file f.i.
 *)
-
 interface
 
 {$I GLScene.Defines.inc}
@@ -28,7 +26,6 @@ const
   GLS_RC_String_Type = RT_RCDATA;
 
 type
-
   TGLApplicationResource = (aresNone, aresSplash, aresTexture, aresMaterial,
     aresSampler, aresFont, aresMesh);
 
@@ -256,5 +253,7 @@ begin
   else
     Result := aresNone;
 end;
+
+//----------------------------------------------------------------------------
 
 end.

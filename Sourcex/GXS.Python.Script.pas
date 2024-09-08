@@ -12,7 +12,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.XCollection,
+  GLScene.XCollection,
   GXS.ScriptBase,
   GLScene.Manager,
 

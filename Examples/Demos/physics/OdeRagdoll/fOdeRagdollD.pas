@@ -26,7 +26,7 @@ uses
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.HUDObjects,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLS.VectorFileObjects,
   GLS.Ragdoll,
   GLS.Texture,

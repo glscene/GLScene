@@ -15,7 +15,6 @@ uses
   GLScene.PersistentClasses;
 
 type
-
   TGProgressTimes = packed record
     DeltaTime, NewTime: Double;
     SqrDeltaTime, InvSqrDeltaTime: Single;

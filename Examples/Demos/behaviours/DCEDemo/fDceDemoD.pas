@@ -35,7 +35,7 @@ uses
   GLS.Context,
   GLS.EllipseCollision,
   GLS.RenderContextInfo,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLS.ProxyObjects,
   GLS.State,
   GLScene.Utils,

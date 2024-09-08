@@ -12,7 +12,7 @@ uses
   System.SysUtils,
   System.Types,
 
-  GXS.XCollection,
+  GLScene.XCollection,
   GLScene.VectorTypes,
   GXS.SoundFileObjects,
   GXS.Scene,

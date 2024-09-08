@@ -19,11 +19,11 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorTypesExt,
   GLScene.Spline,
-
   GLScene.VectorLists,
+  GLScene.Coordinates,
+
   GLS.Objects,
   GLS.MultiPolygon,
-  GLScene.Coordinates,
   GLS.Color,
   GLS.SpaceText,
   GLS.VectorFileObjects;

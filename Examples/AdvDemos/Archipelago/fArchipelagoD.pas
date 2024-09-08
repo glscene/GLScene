@@ -38,7 +38,7 @@ uses
   GLScene.VectorLists,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLS.Context,
   GLS.State,
   GLScene.TextureFormat,

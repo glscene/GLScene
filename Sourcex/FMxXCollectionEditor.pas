@@ -33,7 +33,7 @@ uses
   GXS.Scene,
   GLScene.Strings,
   GXS.Behaviours,
-  GXS.XCollection;
+  GLScene.XCollection;
 
 type
   IDesigner = interface //in designintf -> (IDesigner200)

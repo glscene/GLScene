@@ -17,7 +17,7 @@ uses
   DwsExprs, 
   DwsSymbols,
   GXS.Scene, 
-  GXS.GXS.XCollection, 
+  GXS.GLScene.XCollection, 
   GXS.ScriptDws, 
   GLScene.BaseClasses, 
   GLScene.Manager;

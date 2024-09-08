@@ -2,7 +2,6 @@
 // The graphics engine GLScene https://github.com/glscene
 //
 unit GLS.DCE;
-
 (*
   Dynamic Collision Engine
   How to use:
@@ -22,7 +21,6 @@ unit GLS.DCE;
   - SlideOrBounce: The object can bounce like a ball or slide like an FPS
   - BounceFactor: Restituition factor, 1 means that it will bounce forever
 *)
-
 interface
 
 {$I GLScene.Defines.inc}
@@ -34,18 +32,18 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-
-  GLS.Scene,
+  GLScene.BaseClasses,
+  GLScene.Coordinates,
+  GLScene.Manager,
   GLScene.XCollection,
   GLScene.VectorLists,
+
+  GLS.Scene,
   GLS.VectorFileObjects,
   GLS.EllipseCollision,
   GLS.TerrainRenderer,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
   GLS.ProxyObjects,
   GLS.MultiProxy,
-  GLScene.Manager,
   GLScene.Strings;
 
 type

@@ -2,7 +2,6 @@
 // The graphics engine GLScene https://github.com/glscene
 //
 unit GLS.Console;
-
 (*
    The console is a popdown window that appears on a game for text output/input.
 
@@ -48,15 +47,15 @@ uses
   Vcl.Graphics,
 
   GLScene.VectorTypes,
+  GLScene.PersistentClasses,
+  GLScene.Coordinates,
   GLScene.Strings,
 
   GLS.Scene,
-  GLScene.Coordinates,
   GLS.Objects,
   GLS.HudObjects,
   GLS.SceneViewer,
   GLS.BitmapFont,
-  GLScene.PersistentClasses,
   GLS.Context,
   GLS.ImageUtils,
   GLS.Texture,

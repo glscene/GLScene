@@ -19,14 +19,15 @@ uses
 
   GLScene.VectorTypes,
   GLScene.OpenGLTokens,
-  GLS.Scene,
   GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GLScene.XCollection,
   GLScene.Spline,
+  GLScene.BaseClasses,
+
+  GLS.Scene,
   GLS.Objects,
   GLScene.Strings,
-  GLScene.BaseClasses,
   GLScene.Utils;
 
 type

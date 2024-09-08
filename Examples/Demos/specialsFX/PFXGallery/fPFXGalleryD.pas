@@ -28,7 +28,7 @@ uses
   GLS.Texture,
   GLS.Navigator,
   GLS.GeomObjects,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLS.SpaceText,
   GLS.Behaviours,
   GLS.PerlinPFX,

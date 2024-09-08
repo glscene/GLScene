@@ -1,8 +1,7 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-unit GLS.Polynomials;
-
+unit GLScene.Polynomials;
 (*
   Utility functions for manipulationg and solving polynomials.
 
@@ -18,7 +17,6 @@ unit GLS.Polynomials;
   properly handled, these are marked by comments in the code.
   Note: in progress - limited precision.
 *)
-
 interface
 
 {$I GLScene.Defines.inc}

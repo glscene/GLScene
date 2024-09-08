@@ -25,7 +25,7 @@ uses
   GLS.Scene,
   GLS.Objects,
   GLS.Tree,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLScene.VectorLists,
   GLS.BitmapFont,
   GLS.Context,

@@ -23,7 +23,7 @@ uses
   GLScene.BaseClasses,
   GLScene.VectorGeometry,
   GLS.SimpleNavigation,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLS.GeomObjects,
   GLS.HUDObjects,
   GLS.BitmapFont,

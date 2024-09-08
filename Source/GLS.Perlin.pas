@@ -2,7 +2,6 @@
 // The graphics engine GLScene https://github.com/glscene
 //
 unit GLS.Perlin;
-
 (*
   Classes and functions for generating perlin noise.
 
@@ -10,7 +9,6 @@ unit GLS.Perlin;
   A Perlin Height Data Source have been included as an example.
   Use this combined with a terrain renderer for an infinite random landscape
 *)
-
 interface
 
 {$I GLScene.Defines.inc}
@@ -358,7 +356,8 @@ begin
 
   Result := (P * x * x * x + Q * x * x + R * x + S);
   // If (Abs(Result) > 1) then
-  // Raise exception.create('Cubic_Interpolate result to high, '+FloatToStr(Result)+' values ['+FloatToStr(v0)+';'+FloatToStr(v1)+';'+FloatToStr(v2)+';'+FloatToStr(v3)+']');{}
+  // Raise exception.create('Cubic_Interpolate result to high, 
+  //'+FloatToStr(Result)+' values ['+FloatToStr(v0)+';'+FloatToStr(v1)+';'+FloatToStr(v2)+';'+FloatToStr(v3)+']');{}
 end;
 
 //-----------------------------------

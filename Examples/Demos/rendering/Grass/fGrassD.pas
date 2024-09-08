@@ -29,7 +29,7 @@ uses
   GLS.AsyncTimer,
   GLS.Material,
   GLScene.Coordinates,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLScene.TextureFormat,

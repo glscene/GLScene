@@ -13,7 +13,7 @@ uses
   Vcl.StdCtrls,
   Vcl.ComCtrls,
 
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLScene.VectorGeometry,
   GLS.Scene,
   GLS.VectorFileObjects,

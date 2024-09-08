@@ -17,18 +17,18 @@ uses
   System.Classes,
   System.SysUtils,
   
-  GLS.Scene,
   GLScene.OpenGLTokens,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
+  GLScene.VectorLists,
+  GLScene.BaseClasses,
 
+  GLS.Scene,
   GLS.Context,
   GLS.XOpenGL,
   GLS.Material,
   GLS.Objects,
-  GLScene.VectorLists,
   GLS.Color,
-  GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLS.State;
 

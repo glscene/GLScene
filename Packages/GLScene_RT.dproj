@@ -256,7 +256,7 @@
         <DCCReference Include="..\Source\GLS.FileDEL.pas"/>
         <DCCReference Include="..\Source\GLS.FileVOR.pas"/>
         <DCCReference Include="..\Source\GLS.FullScreenViewer.pas"/>
-        <DCCReference Include="..\Source\GLS.Keyboard.pas"/>
+        <DCCReference Include="..\Source\GLScene.Keyboard.pas"/>
         <DCCReference Include="..\Source\GLS.GameMenu.pas"/>
         <DCCReference Include="..\Source\GLS.GeomObjects.pas"/>
         <DCCReference Include="..\Source\GLScene.GeometryBB.pas"/>
@@ -375,7 +375,7 @@
         <DCCReference Include="..\Source\GLS.InitOpenGL.pas"/>
         <DCCReference Include="..\Source\GLScene.OpenGLTokens.pas"/>
         <DCCReference Include="..\Source\GLS.PipelineTransformation.pas"/>
-        <DCCReference Include="..\Source\GLS.Polynomials.pas"/>
+        <DCCReference Include="..\Source\GLScene.Polynomials.pas"/>
         <DCCReference Include="..\Source\GLScene.Spline.pas"/>
         <DCCReference Include="..\Source\GLScene.Strings.pas"/>
         <DCCReference Include="..\Source\GLScene.RandomLib.pas"/>

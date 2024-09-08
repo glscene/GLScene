@@ -37,7 +37,7 @@ uses
   GXS.SceneViewer,
   GXS.SceneRegister,
   GLScene.Strings,
-  GXS.XCollection;
+  GLScene.XCollection;
 
 type
   TSceneEditorForm = class(TForm)

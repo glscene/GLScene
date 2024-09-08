@@ -2,7 +2,6 @@
 // The graphics engine GLScene https://github.com/glscene
 //
 unit GLS.ParticleFX;
-
 (*
    Base classes for scene-wide blended particles FX.
 
@@ -10,7 +9,6 @@ unit GLS.ParticleFX;
    particle depth-sorting (allowing correct rendering of interwoven separate
    fire and smoke particle systems for instance).
 *)
-
 interface
 
 {$I GLScene.Defines.inc}

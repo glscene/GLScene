@@ -30,7 +30,7 @@ uses
   GLS.File3DS,
   GLScene.VectorGeometry,
   GLS.Material,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLScene.Utils;
 
 type

@@ -1,8 +1,7 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-unit GLS.Keyboard;
-
+unit GLScene.Keyboard;
 (*
   Provides on demand state of any key on the keyboard as well as a set of
   utility functions for working with virtual key codes.
@@ -12,7 +11,6 @@ unit GLS.Keyboard;
   See "Virtual-Key Codes" in the Win32 programmers references for a list of
   key code constants (VK_* constants are declared in the "Windows" unit).
 *)
-
 interface
 
 {$I GLScene.Defines.inc}
@@ -66,9 +64,7 @@ procedure KeyboardNotifyWheelMoved(wheelDelta: Integer);
 var
   vLastWheelDelta: Integer;
 
-// ---------------------------------------------------------------------
-implementation
-// ---------------------------------------------------------------------
+implementation // ------------------------------------------------------------
 
 const
   cLBUTTON = 'Left Mouse Button';
@@ -259,5 +255,7 @@ procedure KeyboardNotifyWheelMoved(wheelDelta: Integer);
 begin
   vLastWheelDelta := wheelDelta;
 end;
+
+//----------------------------------------------------------------------------
 
 end.

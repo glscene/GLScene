@@ -25,7 +25,7 @@ uses
 
   GLScene.OpenGLTokens,
   GXS.XOpenGL,
-  GXS.XCollection,
+  GLScene.XCollection,
   GLScene.BaseClasses,
   GLScene.VectorTypes,
   GLScene.VectorLists,

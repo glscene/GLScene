@@ -29,7 +29,7 @@ uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
 
-  GXS.XCollection,
+  GLScene.XCollection,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLScene.VectorLists,

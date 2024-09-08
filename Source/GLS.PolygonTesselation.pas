@@ -16,9 +16,10 @@ uses
   GLS.OpenGLAdapter,
   GLScene.OpenGLTokens,
   GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLS.VectorFileObjects,
   GLScene.VectorLists,
+  GLScene.VectorGeometry,
+
+  GLS.VectorFileObjects,
   GLScene.PersistentClasses;
 
 (* Tesselates the polygon outlined by the Vertexes. And adds them to the first

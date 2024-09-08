@@ -14,7 +14,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.XCollection,
+  GLScene.XCollection,
   GLScene.BaseClasses,
   GLScene.VectorLists,
   GLScene.VectorTypes,

@@ -32,7 +32,7 @@ uses
   GLScene.BaseClasses,
   GLS.RenderContextInfo,
   GLScene.TextureFormat,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLScene.Utils,
   GLS.SimpleNavigation;
 

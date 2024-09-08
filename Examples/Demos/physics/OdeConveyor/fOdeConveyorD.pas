@@ -27,7 +27,7 @@ uses
   GLScene.BaseClasses,
   GLS.SceneViewer,
   GLScene.VectorGeometry,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLS.SimpleNavigation;
 
 type

@@ -2,7 +2,6 @@
 // The graphics engine GLScene https://github.com/glscene
 //
 unit GLS.TexturedHDS;
-
 (*
    Implements a HDS, which automatically maps textures onto a parent HDS .
    This HDS links to and extracts its height data from a parent HDS. (like TGLHeightTileFile)
@@ -19,7 +18,6 @@ unit GLS.TexturedHDS;
    sure your texture edges are alligned to height tile edges, or gaps will show.
    (Of course you can still multitexture in a detail texture too.)
 *)
-
 interface
 
 {$I GLScene.Defines.inc}

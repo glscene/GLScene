@@ -23,15 +23,15 @@ uses
 
   GLScene.VectorTypes,
   GLScene.PersistentClasses,
-
   GLScene.BaseClasses,
-  GLS.Objects,
-  GLS.Scene,
   GLScene.Coordinates,
   GLScene.VectorGeometry,
   GLScene.VectorLists,
-  GLS.SpacePartition,
   GLScene.GeometryBB,
+
+  GLS.Objects,
+  GLS.Scene,
+  GLS.SpacePartition,
   GLS.VectorFileObjects;
 
 const

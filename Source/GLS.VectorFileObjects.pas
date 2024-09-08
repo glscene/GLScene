@@ -2,7 +2,6 @@
 // The graphics engine GLScene https://github.com/glscene
 //
 unit GLS.VectorFileObjects;
-
 (*
   Vector File related objects.
   The registered classes are:
@@ -15,7 +14,6 @@ unit GLS.VectorFileObjects;
     TGLFaceGroup, TGLVectorFile, TGLSMVectorFile, TGLFreeForm;
     TGLActor, TGLVectorFileFormat, TGLVectorFileFormatsList]
 *)
-
 interface
 
 {$I GLScene.Defines.inc}

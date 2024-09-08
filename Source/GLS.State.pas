@@ -1,9 +1,7 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-
 unit GLS.State;
-
 (*  Tools for managing an application-side cache of OpenGL state. *)
 
 (*
@@ -42,7 +40,6 @@ const
   GLS_VERTEX_ATTR_NUM = 16;
 
 type
-
   TGLStateType = (sttCurrent, sttPoint, sttLine, sttPolygon, sttPolygonStipple,
     sttPixelMode, sttLighting, sttFog, sttDepthBuffer, sttAccumBuffer,
     sttStencilBuffer, sttViewport, sttTransform, sttEnable, sttColorBuffer,
@@ -3519,5 +3516,7 @@ begin
   ResetGLFrontFace;
  {$WARN SYMBOL_DEPRECATED ON}
 end;
+
+//--------------------------------------------------------------------------
 
 end.

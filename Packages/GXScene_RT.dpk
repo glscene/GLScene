@@ -122,7 +122,6 @@ contains
   GXS.HeightTileFile in '..\SourceX\GXS.HeightTileFile.pas',
   GXS.HeightTileFileHDS in '..\SourceX\GXS.HeightTileFileHDS.pas',
   GXS.HiddenLineShader in '..\SourceX\GXS.HiddenLineShader.pas',
-  GXS.Keyboard in '..\SourceX\GXS.Keyboard.pas',
   GXS.ImageUtils in '..\SourceX\GXS.ImageUtils.pas',
   GXS.Imposter in '..\SourceX\GXS.Imposter.pas',
   GXS.Isolines in '..\SourceX\GXS.Isolines.pas',
@@ -208,7 +207,6 @@ contains
   GXS.PAKArchive in '..\SourceX\GXS.PAKArchive.pas',
   GXS.Polynomials in '..\SourceX\GXS.Polynomials.pas',
   GXS.SpacePartition in '..\SourceX\GXS.SpacePartition.pas',
-  GXS.XCollection in '..\SourceX\GXS.XCollection.pas',
   GXS.XOpenGL in '..\SourceX\GXS.XOpenGL.pas',
   GXS.PipelineTransformation in '..\SourceX\GXS.PipelineTransformation.pas',
   GXS.OpenGL in '..\SourceX\GXS.OpenGL.pas',
@@ -270,6 +268,8 @@ contains
   Formats.B3D in '..\Source\Formats.B3D.pas',
   Formats.LWO in '..\Source\Formats.LWO.pas',
   gnuGettext in '..\Source\gnuGettext.pas',
-  gnuGettextInit in '..\Source\gnuGettextInit.pas';
+  gnuGettextInit in '..\Source\gnuGettextInit.pas',
+  GLScene.XCollection in '..\Source\GLScene.XCollection.pas',
+  GLScene.Keyboard in '..\Source\GLScene.Keyboard.pas';
 
 end.

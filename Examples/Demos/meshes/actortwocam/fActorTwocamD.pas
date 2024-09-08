@@ -33,7 +33,7 @@ uses
   GLScene.BaseClasses,
   GLScene.Utils,
   GLScene.VectorGeometry,
-  GLS.Keyboard,
+  GLScene.XCollection,
   GLScene.PersistentClasses, GLS.DCE;
 
 type
@@ -133,7 +133,7 @@ var
   moving: String;
   boost: Single;
 begin
-  // This function uses asynchronous keyboard check (see GLS.Keyboard.pas)
+  // This function uses asynchronous keyboard check (see GLScene.XCollection.pas)
   if IsKeyDown(VK_ESCAPE) then
     Close;
   if IsKeyDown('A') then
