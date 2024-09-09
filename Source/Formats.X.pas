@@ -84,7 +84,7 @@ type
   private
     FVertices, FNormals, FTexCoords: TGAffineVectorList;
     FVertexIndices, FNormalIndices, FMaterialIndices, FVertCountIndices
-      : TGIntegerList;
+      : TgIntegerList;
     FMaterialList: TDXMaterialList;
   public
     constructor Create; override;
@@ -92,10 +92,10 @@ type
     property Vertices: TGAffineVectorList read FVertices;
     property Normals: TGAffineVectorList read FNormals;
     property TexCoords: TGAffineVectorList read FTexCoords;
-    property VertexIndices: TGIntegerList read FVertexIndices;
-    property NormalIndices: TGIntegerList read FNormalIndices;
-    property MaterialIndices: TGIntegerList read FMaterialIndices;
-    property VertCountIndices: TGIntegerList read FVertCountIndices;
+    property VertexIndices: TgIntegerList read FVertexIndices;
+    property NormalIndices: TgIntegerList read FNormalIndices;
+    property MaterialIndices: TgIntegerList read FMaterialIndices;
+    property VertCountIndices: TgIntegerList read FVertCountIndices;
     property MaterialList: TDXMaterialList read FMaterialList;
   end;
 
@@ -347,8 +347,8 @@ var
       VectorList.Add(ReadVector3f);
   end;
 
-  procedure ReadMeshIndices(IndexList: TGIntegerList;
-    VertCountIndices: TGIntegerList = nil);
+  procedure ReadMeshIndices(IndexList: TgIntegerList;
+    VertCountIndices: TgIntegerList = nil);
   var
     str: String;
     i, j, NumFaces, NumIndices, jStart: Integer;
@@ -604,10 +604,10 @@ begin
   FVertices := TGAffineVectorList.Create;
   FNormals := TGAffineVectorList.Create;
   FTexCoords := TGAffineVectorList.Create;
-  FVertexIndices := TGIntegerList.Create;
-  FNormalIndices := TGIntegerList.Create;
-  FMaterialIndices := TGIntegerList.Create;
-  FVertCountIndices := TGIntegerList.Create;
+  FVertexIndices := TgIntegerList.Create;
+  FNormalIndices := TgIntegerList.Create;
+  FMaterialIndices := TgIntegerList.Create;
+  FVertCountIndices := TgIntegerList.Create;
   FMaterialList := TDXMaterialList.Create;
 end;
 

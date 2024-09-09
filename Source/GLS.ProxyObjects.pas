@@ -18,7 +18,7 @@ uses
   GLScene.OpenGLTokens,
   GLS.Scene,
   GLScene.XCollection,
-  GLS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLScene.VectorGeometry,
   GLS.Texture,
   GLS.VectorFileObjects,
@@ -143,7 +143,7 @@ type
     FBonesMatrices: TStringList;
     FStoreBonesMatrix: boolean;
     FStoredBoneNames: TStrings;
-    FOnBeforeRender: TGProgressEvent;
+    FOnBeforeRender: TgProgressEvent;
     FAnimationMode: TGLActorProxyAnimationMode;
     procedure SetAnimation(const Value: TGLActorAnimationName);
     procedure SetMasterActorObject(const Value: TGLActor);
@@ -155,7 +155,7 @@ type
     function GetMaterialLibrary: TGLAbstractMaterialLibrary;
     procedure SetStoreBonesMatrix(const Value: boolean);
     procedure SetStoredBoneNames(const Value: TStrings);
-    procedure SetOnBeforeRender(const Value: TGProgressEvent);
+    procedure SetOnBeforeRender(const Value: TgProgressEvent);
   protected
     procedure DoStoreBonesMatrices; // stores matrices of bones of the current frame rendered
   public
@@ -209,7 +209,7 @@ type
     property StoredBoneNames: TStrings read FStoredBoneNames write SetStoredBoneNames;
     (* Event allowing to apply extra transformations (f.ex: bone rotations) to the referenced
        Actor on order to have the proxy render these changes. *)
-    property OnBeforeRender: TGProgressEvent read FOnBeforeRender write SetOnBeforeRender;
+    property OnBeforeRender: TgProgressEvent read FOnBeforeRender write SetOnBeforeRender;
   end;
 
 //-------------------------------------------------------------
@@ -772,7 +772,7 @@ begin
   end;
 end;
 
-procedure TGLActorProxy.SetOnBeforeRender(const Value: TGProgressEvent);
+procedure TGLActorProxy.SetOnBeforeRender(const Value: TgProgressEvent);
 begin
   FOnBeforeRender := Value;
 end;

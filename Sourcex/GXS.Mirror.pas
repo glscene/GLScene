@@ -21,7 +21,7 @@ uses
   GLScene.XCollection,
   GLScene.PersistentClasses,
   GXS.Scene,
-  GXS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLScene.VectorGeometry,
   GXS.Context,
   GXS.Material,

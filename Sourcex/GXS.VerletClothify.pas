@@ -3,7 +3,7 @@
 //
 unit GXS.VerletClothify;
 
-(* Methods for turning a TGXBaseMesh into a Verlet cloth / jelly *)
+(* Methods for turning a TgxBaseMesh into a Verlet cloth / jelly *)
 
 interface
 
@@ -33,10 +33,10 @@ type
   public
     Vertices : array[0..2] of integer;
     Normal : TAffineVector;
-    MeshObject : TGXMeshObject;
+    MeshObject : TgxMeshObject;
     Active : boolean;
     procedure UpdateNormal;
-    constructor Create(aMeshObject : TGXMeshObject);
+    constructor Create(aMeshObject : TgxMeshObject);
   end;
 
   { List of faces }
@@ -52,25 +52,25 @@ type
   TFaceExtractor = class
   private
     FFaceList : TFaceList;
-    FGLBaseMesh : TGXBaseMesh;
+    FGLBaseMesh : TgxBaseMesh;
     FNodeList : TgxVerletNodeList;
     FWeldDistance: single;
     FEdgeDoublesSkipped : integer;
     procedure SetWeldDistance(const Value: single);
   protected
-    procedure ProcessMeshObject(const MeshObject : TGXMeshObject); virtual;
+    procedure ProcessMeshObject(const MeshObject : TgxMeshObject); virtual;
   public
     procedure ExtractFacesFromVertexIndexList(
-      const FaceGroup : TFGXVertexIndexList; const MeshObject : TGXMeshObject);
+      const FaceGroup : TgxFGVertexIndexList; const MeshObject : TgxMeshObject);
     property FaceList : TFaceList read FFaceList;
     procedure Clear; virtual;
     procedure ProcessMesh; virtual;
     property WeldDistance : single read FWeldDistance write SetWeldDistance;
     property EdgeDoublesSkipped : integer read FEdgeDoublesSkipped;
-    property GLBaseMesh : TGXBaseMesh read FGLBaseMesh;
+    property GLBaseMesh : TgxBaseMesh read FGLBaseMesh;
     property NodeList : TgxVerletNodeList read FNodeList;
-    function AddFace(const Vi0, Vi1, Vi2 : integer; const MeshObject : TGXMeshObject) : TFace; virtual;
-    constructor Create(const aGLBaseMesh : TGXBaseMesh); virtual;
+    function AddFace(const Vi0, Vi1, Vi2 : integer; const MeshObject : TgxMeshObject) : TFace; virtual;
+    constructor Create(const aGLBaseMesh : TgxBaseMesh); virtual;
     destructor Destroy; override;
   end;
 
@@ -80,19 +80,19 @@ type
   private
     FSolid: boolean;
     FLength: single;
-    FMeshObject: TGXMeshObject;
+    FMeshObject: TgxMeshObject;
     FOwner: TEdgeDetector;
   public
     Vertices : array[0..1] of integer;
     Faces : array[0..1] of TFace;
     procedure Contract;
     property Owner : TEdgeDetector read FOwner;
-    property MeshObject : TGXMeshObject read FMeshObject write FMeshObject;
+    property MeshObject : TgxMeshObject read FMeshObject write FMeshObject;
     property Length : single read FLength write FLength;
     property Solid : boolean read FSolid write FSolid;
     procedure UpdateEdgeLength;
     constructor Create(const AOwner: TEdgeDetector; AVi0, AVi1 : integer;
-      AFace0, AFace1 : TFace; AMeshObject : TGXMeshObject; ASolid : boolean);
+      AFace0, AFace1 : TFace; AMeshObject : TgxMeshObject; ASolid : boolean);
   end;
 
   TEdgeList = class(TList)
@@ -117,9 +117,9 @@ type
     property EdgeList : TEdgeList read FEdgeList;
     procedure Clear; override;
     procedure ProcessMesh; override;
-    function AddEdge(const Vi0, Vi1 : integer; const Face : TFace; const AMeshObject : TGXMeshObject) : TEdge;
-    function AddFace(const Vi0, Vi1, Vi2 : integer; const MeshObject : TGXMeshObject) : TFace; override;
-    function AddNode(const VerletWorld : TgxVerletWorld; const MeshObject : TGXMeshObject; const VertexIndex : integer) : TgxVerletNode; virtual;
+    function AddEdge(const Vi0, Vi1 : integer; const Face : TFace; const AMeshObject : TgxMeshObject) : TEdge;
+    function AddFace(const Vi0, Vi1, Vi2 : integer; const MeshObject : TgxMeshObject) : TFace; override;
+    function AddNode(const VerletWorld : TgxVerletWorld; const MeshObject : TgxMeshObject; const VertexIndex : integer) : TgxVerletNode; virtual;
     procedure AddNodes(const VerletWorld : TgxVerletWorld);
     procedure AddEdgesAsSticks(const VerletWorld : TgxVerletWorld; const Slack : single);
     procedure AddEdgesAsSprings(const VerletWorld : TgxVerletWorld; const Strength, Damping, Slack : single);
@@ -129,14 +129,14 @@ type
     property CurrentNodeOffset : integer read FCurrentNodeOffset;
     property NodesAdded : boolean read FNodesAdded;
     procedure ReplaceVertexIndex(const ViRemove, ViReplaceWith : integer);
-    constructor Create(const aGLBaseMesh : TGXBaseMesh); override;
+    constructor Create(const aGLBaseMesh : TgxBaseMesh); override;
     destructor Destroy; override;
   end;
 
   TgxMeshObjectVerletNode = class(TgxVerletNode)
   private
-    MeshObject : TGXMeshObject;
-    VertexIndices : TGIntegerList;
+    MeshObject : TgxMeshObject;
+    VertexIndices : TgIntegerList;
   public
     procedure AfterProgress; override;
 
@@ -163,7 +163,7 @@ begin
   FaceList.Clear;
 end;
 
-constructor TFaceExtractor.Create(const aGLBaseMesh : TGXBaseMesh);
+constructor TFaceExtractor.Create(const aGLBaseMesh : TgxBaseMesh);
 begin
   FFaceList := TFaceList.Create;
   FGLBaseMesh := aGLBaseMesh;
@@ -180,7 +180,7 @@ begin
 end;
 
 procedure TFaceExtractor.ExtractFacesFromVertexIndexList(
-  const FaceGroup : TFGXVertexIndexList; const MeshObject : TGXMeshObject);
+  const FaceGroup : TgxFGVertexIndexList; const MeshObject : TgxMeshObject);
 var
   List : PIntegerArray;
   iFace, iVertex  : integer;
@@ -223,7 +223,7 @@ end;
 procedure TFaceExtractor.ProcessMesh;
 var
   iMeshObject : integer;
-  MeshObject : TGXMeshObject;
+  MeshObject : TgxMeshObject;
 begin
   for iMeshObject := 0 to FGLBaseMesh.MeshObjects.Count - 1 do
   begin
@@ -233,7 +233,7 @@ begin
   end;
 end;
 
-procedure TFaceExtractor.ProcessMeshObject(const MeshObject : TGXMeshObject);
+procedure TFaceExtractor.ProcessMeshObject(const MeshObject : TgxMeshObject);
 var
  iFaceGroup : integer;
 begin
@@ -241,9 +241,9 @@ begin
   begin
     for iFaceGroup := 0 to MeshObject.FaceGroups.Count - 1 do
     begin
-      if MeshObject.FaceGroups[iFaceGroup] is TFGXVertexIndexList then
+      if MeshObject.FaceGroups[iFaceGroup] is TgxFGVertexIndexList then
       begin
-        ExtractFacesFromVertexIndexList(MeshObject.FaceGroups[iFaceGroup] as TFGXVertexIndexList, MeshObject);
+        ExtractFacesFromVertexIndexList(MeshObject.FaceGroups[iFaceGroup] as TgxFGVertexIndexList, MeshObject);
       end else
         Assert(false);
     end;
@@ -251,7 +251,7 @@ begin
     Assert(false);
 end;
 
-function TFaceExtractor.AddFace(const Vi0, Vi1, Vi2: integer; const MeshObject : TGXMeshObject) : TFace;
+function TFaceExtractor.AddFace(const Vi0, Vi1, Vi2: integer; const MeshObject : TgxMeshObject) : TFace;
 var
   Face : TFace;
 begin
@@ -337,7 +337,7 @@ end;
 constructor TgxMeshObjectVerletNode.CreateOwned(const aOwner: TgxVerletWorld);
 begin
   inherited;
-  VertexIndices := TGIntegerList.Create;
+  VertexIndices := TgIntegerList.Create;
 end;
 
 destructor TgxMeshObjectVerletNode.Destroy;
@@ -374,7 +374,7 @@ begin
   FNodesAdded := false;
 end;
 
-constructor TEdgeDetector.Create(const aGLBaseMesh: TGXBaseMesh);
+constructor TEdgeDetector.Create(const aGLBaseMesh: TgxBaseMesh);
 begin
   FEdgeList := TEdgeList.Create;
   FCurrentNodeOffset := 0;
@@ -389,7 +389,7 @@ begin
   FreeAndNil(FEdgeList);
 end;
 
-function TEdgeDetector.AddEdge(const Vi0, Vi1: integer; const Face: TFace; const AMeshObject : TGXMeshObject): TEdge;
+function TEdgeDetector.AddEdge(const Vi0, Vi1: integer; const Face: TFace; const AMeshObject : TgxMeshObject): TEdge;
 var
   i : integer;
   Edge : TEdge;
@@ -413,7 +413,7 @@ begin
 end;
 
 function TEdgeDetector.AddFace(const Vi0, Vi1, Vi2: integer;
-  const MeshObject: TGXMeshObject): TFace;
+  const MeshObject: TgxMeshObject): TFace;
 var
   Face : TFace;
 begin
@@ -431,7 +431,7 @@ end;
 procedure TEdgeDetector.AddNodes(const VerletWorld : TgxVerletWorld);
 var
   i : integer;
-  MO : TGXMeshObject;
+  MO : TgxMeshObject;
 begin
   FNodesAdded := true;
   FCurrentNodeOffset := FNodeList.Count;
@@ -612,7 +612,7 @@ begin
   end;
 end;
 
-function TEdgeDetector.AddNode(const VerletWorld : TgxVerletWorld; const MeshObject: TGXMeshObject;
+function TEdgeDetector.AddNode(const VerletWorld : TgxVerletWorld; const MeshObject: TgxMeshObject;
   const VertexIndex: integer): TgxVerletNode;
 var
   Location : TAffineVector;
@@ -704,7 +704,7 @@ end;
 // TFace
 //----------------------------------------
 
-constructor TFace.Create(aMeshObject: TGXMeshObject);
+constructor TFace.Create(aMeshObject: TgxMeshObject);
 begin
   MeshObject := aMeshObject;
   Active := true;
@@ -731,7 +731,7 @@ begin
 end;
 
 constructor TEdge.Create(const AOwner: TEdgeDetector; AVi0, AVi1 : integer;
-  AFace0, AFace1 : TFace; AMeshObject : TGXMeshObject; ASolid : boolean);
+  AFace0, AFace1 : TFace; AMeshObject : TgxMeshObject; ASolid : boolean);
 begin
   FOwner := AOwner;
   Vertices[0] := AVi0;

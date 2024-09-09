@@ -42,12 +42,12 @@ type
   TgxGizmoUndoItem = class(TCollectionItem)
   private
     FOldLibMaterialName: string;
-    FOldAutoScaling: TGCoordinates;
+    FOldAutoScaling: TgCoordinates;
     FEffectedObject: TgxCustomSceneObject;
     FOldMatr: TMatrix4f;
     FOldMatrix: TMatrix4f;
     procedure SetEffectedObject(const Value: TgxCustomSceneObject);
-    procedure SetOldAutoScaling(const Value: TGCoordinates);
+    procedure SetOldAutoScaling(const Value: TgCoordinates);
     procedure SetOldMatrix(const Value: TMatrix4f);
   protected
     procedure DoUndo; virtual;
@@ -64,7 +64,7 @@ type
   published
     property EffectedObject: TgxCustomSceneObject read FEffectedObject
       write SetEffectedObject;
-    property OldAutoScaling: TGCoordinates read FOldAutoScaling
+    property OldAutoScaling: TgCoordinates read FOldAutoScaling
       write SetOldAutoScaling;
     property OldLibMaterialName: string read FOldLibMaterialName
       write FOldLibMaterialName;
@@ -1689,9 +1689,9 @@ procedure TgxGizmoUndoItem.AssignFromObject(const AObject
 begin
   SetEffectedObject(AObject);
   SetOldMatrix(AObject.Matrix^);
-  if AObject is TGXFreeForm then
+  if AObject is TgxFreeForm then
   begin
-    FOldAutoScaling.Assign(TGXFreeForm(AObject).AutoScaling);
+    FOldAutoScaling.Assign(TgxFreeForm(AObject).AutoScaling);
   end;
   FOldLibMaterialName := AObject.Material.LibMaterialName;
 end;
@@ -1699,7 +1699,7 @@ end;
 constructor TgxGizmoUndoItem.Create(AOwner: TCollection);
 begin
   inherited;
-  FOldAutoScaling := TGCoordinates.CreateInitialized(Self,
+  FOldAutoScaling := TgCoordinates.CreateInitialized(Self,
     NullHmgVector, CsPoint);
 end;
 
@@ -1712,8 +1712,8 @@ end;
 procedure TgxGizmoUndoItem.DoUndo;
 begin
   FEffectedObject.SetMatrix(FOldMatr);
-  if FEffectedObject is TGXFreeForm then
-    TGXFreeForm(FEffectedObject).AutoScaling.Assign(FOldAutoScaling);
+  if FEffectedObject is TgxFreeForm then
+    TgxFreeForm(FEffectedObject).AutoScaling.Assign(FOldAutoScaling);
   FEffectedObject.Material.LibMaterialName := FOldLibMaterialName;
 end;
 
@@ -1750,7 +1750,7 @@ begin
     FEffectedObject.FreeNotification(GetGizmo);
 end;
 
-procedure TgxGizmoUndoItem.SetOldAutoScaling(const Value: TGCoordinates);
+procedure TgxGizmoUndoItem.SetOldAutoScaling(const Value: TgCoordinates);
 begin
   FOldAutoScaling.Assign(Value);
 end;

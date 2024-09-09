@@ -3,7 +3,10 @@
 //
 unit GLS.LensFlare;
 
-(* Lens flare object. *)
+(*
+  Lens flare object.
+  Registered components: [TGLLensFlare]
+*)
 
 interface
 
@@ -23,7 +26,7 @@ uses
   GLScene.VectorTypes,
 
   GLS.Scene,
-  GLS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLS.Objects,
   GLS.Context,
   GLScene.Color,

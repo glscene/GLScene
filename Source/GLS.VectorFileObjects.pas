@@ -49,7 +49,7 @@ uses
   GLS.ApplicationFileIO,
   GLS.Context,
   GLScene.Color,
-  GLS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLS.Selection,
   GLS.XOpenGL,
   GLS.MeshUtils,
@@ -100,8 +100,8 @@ type
       The only valid modes are currently momTriangles and momTriangleStrip
       (ie. momFaceGroups not supported).
     *)
-    procedure BuildNormals(vertexIndices: TGIntegerList; mode: TGLMeshObjectMode;
-	  NormalIndices: TGIntegerList = nil);
+    procedure BuildNormals(vertexIndices: TgIntegerList; mode: TGLMeshObjectMode;
+	  NormalIndices: TgIntegerList = nil);
     // Builds normals faster without index calculations for the stripe mode
     procedure GenericOrderedBuildNormals (mode: TGLMeshObjectMode);
     (*
@@ -175,7 +175,7 @@ type
   end;
 
   // A list of TGLSkeletonFrame objects
-  TGLSkeletonFrameList = class(TGPersistentObjectList)
+  TGLSkeletonFrameList = class(TgPersistentObjectList)
   private
     FOwner: TPersistent;
   protected
@@ -196,7 +196,7 @@ type
   TGLSkeletonBone = class;
 
   // A list of skeleton bones
-  TGLSkeletonBoneList = class(TGPersistentObjectList)
+  TGLSkeletonBoneList = class(TgPersistentObjectList)
   private
     FSkeleton: TGLSkeleton; // not persistent
   protected
@@ -321,7 +321,7 @@ type
   end;
 
   // List class for storing TGLSkeletonCollider objects
-  TGLSkeletonColliderList = class(TGPersistentObjectList)
+  TGLSkeletonColliderList = class(TgPersistentObjectList)
   private
     FOwner: TPersistent;
   protected
@@ -549,7 +549,7 @@ type
   end;
 
   // A list of TGLMeshObject objects.
-  TGLMeshObjectList = class(TGPersistentObjectList)
+  TGLMeshObjectList = class(TgPersistentObjectList)
   private
     FOwner: TGLBaseMesh;
     // Returns True if all its MeshObjects use VBOs.
@@ -610,7 +610,7 @@ type
   end;
 
   // A list of TGLMeshMorphTarget objects. 
-  TGLMeshMorphTargetList = class(TGPersistentObjectList)
+  TGLMeshMorphTargetList = class(TgPersistentObjectList)
   private
     FOwner: TPersistent;
   protected
@@ -751,14 +751,14 @@ type
     in the order given by the vertices. *)
   TFGVertexIndexList = class(TGLFaceGroup)
   private
-    FVertexIndices: TGIntegerList;
+    FVertexIndices: TgIntegerList;
     FIndexVBO: TGLVBOElementArrayHandle;
     FMode: TGLFaceGroupMeshMode;
     procedure SetupVBO;
     procedure InvalidateVBO;
   protected
-    procedure SetVertexIndices(const val: TGIntegerList);
-    procedure AddToList(Source, destination: TGAffineVectorList; indices: TGIntegerList);
+    procedure SetVertexIndices(const val: TgIntegerList);
+    procedure AddToList(Source, destination: TGAffineVectorList; indices: TgIntegerList);
   public
     constructor Create; override;
     destructor Destroy; override;
@@ -776,7 +776,7 @@ type
     // Return the normal from the 1st three points in the facegroup
     function GetNormal: TAffineVector;
     property Mode: TGLFaceGroupMeshMode read FMode write FMode;
-    property VertexIndices: TGIntegerList read FVertexIndices write SetVertexIndices;
+    property VertexIndices: TgIntegerList read FVertexIndices write SetVertexIndices;
   end;
 
   (* Adds normals and texcoords indices.
@@ -784,11 +784,11 @@ type
     indices are optionnal, if missing (empty), VertexIndices will be used. *)
   TFGVertexNormalTexIndexList = class(TFGVertexIndexList)
   private
-    FNormalIndices: TGIntegerList;
-    FTexCoordIndices: TGIntegerList;
+    FNormalIndices: TgIntegerList;
+    FTexCoordIndices: TgIntegerList;
   protected
-    procedure SetNormalIndices(const val: TGIntegerList); inline;
-    procedure SetTexCoordIndices(const val: TGIntegerList); inline;
+    procedure SetNormalIndices(const val: TgIntegerList); inline;
+    procedure SetTexCoordIndices(const val: TgIntegerList); inline;
   public
     constructor Create; override;
     destructor Destroy; override;
@@ -798,8 +798,8 @@ type
     procedure AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
       aNormals: TGAffineVectorList = nil); override;
     procedure Add(vertexIdx, normalIdx, texCoordIdx: Integer);
-    property NormalIndices: TGIntegerList read FNormalIndices write  SetNormalIndices;
-    property TexCoordIndices: TGIntegerList read FTexCoordIndices write  SetTexCoordIndices;
+    property NormalIndices: TgIntegerList read FNormalIndices write  SetNormalIndices;
+    property TexCoordIndices: TgIntegerList read FTexCoordIndices write  SetTexCoordIndices;
   end;
 
   (* Adds per index texture coordinates to its ancestor.
@@ -824,7 +824,7 @@ type
   end;
 
   // A list of TGLFaceGroup objects. 
-  TGLFaceGroups = class(TGPersistentObjectList)
+  TGLFaceGroups = class(TgPersistentObjectList)
   private
     FOwner: TGLMeshObject;
   protected
@@ -892,7 +892,7 @@ type
     FOverlaySkeleton: Boolean;
     FIgnoreMissingTextures: Boolean;
     FAutoCentering: TGLMeshAutoCenterings;
-    FAutoScaling: TGCoordinates;
+    FAutoScaling: TgCoordinates;
     FMaterialLibraryCachesPrepared: Boolean;
     FConnectivity: TObject;
     FLastLoadedFilename: string;
@@ -904,7 +904,7 @@ type
     procedure SetLightmapLibrary(const val: TGLMaterialLibrary);
     procedure SetNormalsOrientation(const val: TGLMeshNormalsOrientation);
     procedure SetOverlaySkeleton(const val: Boolean);
-    procedure SetAutoScaling(const Value: TGCoordinates);
+    procedure SetAutoScaling(const Value: TgCoordinates);
     procedure DestroyHandle; override;
     (* Invoked after creating a TGLVectorFile and before loading.
       Triggered by LoadFromFile/Stream and AddDataFromFile/Stream.
@@ -1002,7 +1002,7 @@ type
       no effect on already loaded mesh data or when adding from a file/stream.
       If you want to alter mesh data, use direct manipulation methods
       (on the TMeshObjects). *)
-    property AutoScaling: TGCoordinates read FAutoScaling write FAutoScaling;
+    property AutoScaling: TgCoordinates read FAutoScaling write FAutoScaling;
     (* Material library where mesh materials will be stored/retrieved.
       If this property is not defined or if UseMeshMaterials is false,
       only the FreeForm's material will be used (and the mesh's materials
@@ -1307,7 +1307,7 @@ type
   end;
 
   // Stores registered vector file formats 
-  TGLVectorFileFormatsList = class(TGPersistentObjectList)
+  TGLVectorFileFormatsList = class(TgPersistentObjectList)
   public
     destructor Destroy; override;
     procedure Add(const Ext, Desc: string; DescID: Integer; AClass: TGLVectorFileClass);
@@ -1606,12 +1606,12 @@ begin
   FVertices.Translate(delta);
 end;
 
-procedure TGLBaseMeshObject.BuildNormals(vertexIndices: TGIntegerList; Mode: TGLMeshObjectMode;
-  normalIndices: TGIntegerList = nil);
+procedure TGLBaseMeshObject.BuildNormals(vertexIndices: TgIntegerList; Mode: TGLMeshObjectMode;
+  normalIndices: TgIntegerList = nil);
 var
   i, base: Integer;
   n: TAffineVector;
-  newNormals: TGIntegerList;
+  newNormals: TgIntegerList;
 
   function TranslateNewNormal(vertexIndex: Integer; const delta: TAffineVector): Integer;
   var
@@ -1690,7 +1690,7 @@ begin
   begin
     // add new normals
     base := Normals.Count;
-    newNormals := TGIntegerList.Create;
+    newNormals := TgIntegerList.Create;
     newNormals.AddSerie(-1, 0, Vertices.Count);
     case Mode of
       momTriangles:
@@ -5219,7 +5219,7 @@ end;
 constructor TFGVertexIndexList.Create;
 begin
   inherited;
-  FVertexIndices := TGIntegerList.Create;
+  FVertexIndices := TgIntegerList.Create;
   FMode := fgmmTriangles;
 end;
 
@@ -5274,7 +5274,7 @@ begin
   end;
 end;
 
-procedure TFGVertexIndexList.SetVertexIndices(const val: TGIntegerList);
+procedure TFGVertexIndexList.SetVertexIndices(const val: TgIntegerList);
 begin
   FVertexIndices.Assign(val);
   InvalidateVBO;
@@ -5304,7 +5304,7 @@ begin
   end;
 end;
 
-procedure TFGVertexIndexList.AddToList(Source, destination: TGAffineVectorList; indices: TGIntegerList);
+procedure TFGVertexIndexList.AddToList(Source, destination: TGAffineVectorList; indices: TgIntegerList);
 var
   i, n: Integer;
 begin
@@ -5440,14 +5440,14 @@ end;
 procedure TFGVertexIndexList.ConvertToList;
 var
   i: Integer;
-  bufList: TGIntegerList;
+  bufList: TgIntegerList;
 begin
   if VertexIndices.Count >= 3 then
   begin
     case Mode of
       fgmmTriangleStrip:
         begin
-          bufList := TGIntegerList.Create;
+          bufList := TgIntegerList.Create;
           try
             ConvertStripToList(VertexIndices, bufList);
             VertexIndices := bufList;
@@ -5458,7 +5458,7 @@ begin
         end;
       fgmmTriangleFan:
         begin
-          bufList := TGIntegerList.Create;
+          bufList := TgIntegerList.Create;
           try
             for i := 0 to VertexIndices.Count - 3 do
               bufList.Add(vertexIndices[0], vertexIndices[i], vertexIndices[i + 1]);
@@ -5496,8 +5496,8 @@ end;
 constructor TFGVertexNormalTexIndexList.Create;
 begin
   inherited;
-  FNormalIndices := TGIntegerList.Create;
-  FTexCoordIndices := TGIntegerList.Create;
+  FNormalIndices := TgIntegerList.Create;
+  FTexCoordIndices := TgIntegerList.Create;
 end;
 
 destructor TFGVertexNormalTexIndexList.Destroy;
@@ -5534,12 +5534,12 @@ begin
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TFGVertexNormalTexIndexList.SetNormalIndices(const val: TGIntegerList);
+procedure TFGVertexNormalTexIndexList.SetNormalIndices(const val: TgIntegerList);
 begin
   FNormalIndices.Assign(val);
 end;
 
-procedure TFGVertexNormalTexIndexList.SetTexCoordIndices(const val: TGIntegerList);
+procedure TFGVertexNormalTexIndexList.SetTexCoordIndices(const val: TgIntegerList);
 begin
   FTexCoordIndices.Assign(val);
 end;
@@ -5940,7 +5940,7 @@ begin
   FAutoCentering := [];
   FAxisAlignedDimensionsCache.X := -1;
   FBaryCenterOffsetChanged := True;
-  FAutoScaling := TGCoordinates.CreateInitialized(Self, XYZWHmgVector, csPoint);
+  FAutoScaling := TgCoordinates.CreateInitialized(Self, XYZWHmgVector, csPoint);
 end;
 
 destructor TGLBaseMesh.Destroy;
@@ -6190,7 +6190,7 @@ begin
   end;
 end;
 
-procedure TGLBaseMesh.SetAutoScaling(const Value: TGCoordinates);
+procedure TGLBaseMesh.SetAutoScaling(const Value: TgCoordinates);
 begin
   FAutoScaling.SetPoint(Value.DirectX, Value.DirectY, Value.DirectZ);
 end;

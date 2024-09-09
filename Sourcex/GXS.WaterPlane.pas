@@ -12,7 +12,7 @@ interface
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
-  GXS.OpenGL,  // GL_EXT_compiled_vertex_array
+  GLScene.OpenGL4,  // GL_EXT_compiled_vertex_array
   System.Classes,
   FMX.Objects,
   FMX.Types,
@@ -43,10 +43,10 @@ type
   private
     FLocks: packed array of ByteBool;
     FPositions, FVelocity: packed array of Single;
-    FPlaneQuadIndices: TGPersistentObjectList;
+    FPlaneQuadIndices: TgPersistentObjectList;
     FPlaneQuadTexCoords: TGTexPointList;
-    FPlaneQuadVertices: TGAffineVectorList;
-    FPlaneQuadNormals: TGAffineVectorList;
+    FPlaneQuadVertices: TgAffineVectorList;
+    FPlaneQuadNormals: TgAffineVectorList;
     FActive: Boolean;
     FRainTimeInterval: Integer;
     FRainForce: Single;
@@ -134,10 +134,10 @@ begin
   FMaximumCatchupIterations := 1;
   FOptions := cDefaultWaterPlaneOptions;
 
-  FPlaneQuadIndices := TGPersistentObjectList.Create;
+  FPlaneQuadIndices := TgPersistentObjectList.Create;
   FPlaneQuadTexCoords := TGTexPointList.Create;
-  FPlaneQuadVertices := TGAffineVectorList.Create;
-  FPlaneQuadNormals := TGAffineVectorList.Create;
+  FPlaneQuadVertices := TgAffineVectorList.Create;
+  FPlaneQuadNormals := TgAffineVectorList.Create;
   FMask := TImage.Create(AOwner);
   FMask.Bitmap.OnChange := DoMaskChanged;
 
@@ -277,7 +277,7 @@ var
   i, j, ij, resSqr: Integer;
   maskBmp: TBitmap;
   scanLine: PIntegerArray;
-  il: TGIntegerList;
+  il: TgIntegerList;
   locked: Boolean;
 begin
   resSqr := FResolution * FResolution;
@@ -312,7 +312,7 @@ begin
   FPlaneQuadIndices.Clean;
   for j := 0 to Resolution - 2 do
   begin
-    il := TGIntegerList.Create;
+    il := TgIntegerList.Create;
     for i := 0 to Resolution - 1 do
     begin
       ij := i + j * Resolution;
@@ -329,7 +329,7 @@ begin
       else if il.Count > 0 then
       begin
         FPlaneQuadIndices.Add(il);
-        il := TGIntegerList.Create;
+        il := TgIntegerList.Create;
       end;
     end;
     if il.Count > 0 then
@@ -437,7 +437,7 @@ end;
 procedure TgxWaterPlane.BuildList(var rci: TgxRenderContextInfo);
 var
   i: Integer;
-  il: TGIntegerList;
+  il: TgIntegerList;
 begin
   glPushClientAttribDefaultEXT(GL_CLIENT_VERTEX_ARRAY_BIT);
 
@@ -458,7 +458,7 @@ begin
 
   for i := 0 to FPlaneQuadIndices.Count - 1 do
   begin
-    il := TGIntegerList(FPlaneQuadIndices[i]);
+    il := TgIntegerList(FPlaneQuadIndices[i]);
     glDrawElements(GL_QUAD_STRIP, il.Count, GL_UNSIGNED_INT, il.List);
   end;
 

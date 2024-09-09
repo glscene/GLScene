@@ -14,7 +14,7 @@ uses
   GLS.Scene,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLS.Cadencer,
   GLS.SceneViewer,
  

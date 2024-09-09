@@ -61,7 +61,7 @@ type
     FCurrentTime: Double;
     FOriginTime: Double;
     FMaxDeltaTime, FMinDeltaTime, FFixedDeltaTime: Double;
-  	FOnProgress, FOnTotalProgress : TGProgressEvent;
+  	FOnProgress, FOnTotalProgress : TgProgressEvent;
     FProgressing: Integer;
     procedure SetCurrentTime(const Value: Double);
   protected
@@ -148,9 +148,9 @@ type
      help for the "sleep" procedure in delphi for details). *)
     property SleepLength: Integer read FSleepLength write FSleepLength default -1;
     // Happens AFTER scene was progressed. 
-    property OnProgress: TGProgressEvent read FOnProgress write FOnProgress;
+    property OnProgress: TgProgressEvent read FOnProgress write FOnProgress;
     // Happens AFTER all iterations with fixed delta time. 
-    property OnTotalProgress : TGProgressEvent read FOnTotalProgress write FOnTotalProgress;
+    property OnTotalProgress : TgProgressEvent read FOnTotalProgress write FOnTotalProgress;
   end;
 
   // Adds a property to connect/subscribe to a cadencer.  

@@ -26,7 +26,7 @@ uses
   GLS.Silhouette,
   GLScene.PersistentClasses,
   GLScene.Coordinates,
-  GLS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLScene.GeometryBB,
   GLScene.Color,
   GLS.Selection,
@@ -119,7 +119,7 @@ type
   // Specifies an individual shadow casting light.
   TGLShadowVolumeLight = class(TGLShadowVolumeCaster)
   private
-    FSilhouettes: TGPersistentObjectList;
+    FSilhouettes: TgPersistentObjectList;
   protected
     function GetLightSource: TGLLightSource;
     procedure SetLightSource(const ls: TGLLightSource);
@@ -326,7 +326,7 @@ end;
 constructor TGLShadowVolumeLight.Create(ACollection: TCollection);
 begin
   inherited Create(ACollection);
-  FSilhouettes := TGPersistentObjectList.Create;
+  FSilhouettes := TgPersistentObjectList.Create;
 end;
 
 destructor TGLShadowVolumeLight.Destroy;

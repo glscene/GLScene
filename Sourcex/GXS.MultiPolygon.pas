@@ -10,7 +10,7 @@ unit GXS.MultiPolygon;
   And I reactivated the TgxVectorPool object. The GLScene.VectorLists are not suitable for this job.
   When the tesselator finds an intersection of edges it wants us to give him some storage
   for this new vertex, and he wants a pointer (see tessCombine). The pointers taken from
-  TGAffineVectorList become invalid after enlarging the capacity (makes a ReAllocMem), which
+  TgAffineVectorList become invalid after enlarging the capacity (makes a ReAllocMem), which
   can happen implicitly while adding. The TgxVectorPool keeps all pointers valid until the
   destruction itself.
 
@@ -94,14 +94,14 @@ type
     procedure GetExtents(var min, max: TAffineVector);
   end;
 
-  TgxPolygonList = class(TGPersistentObjectList)
+  TgxPolygonList = class(TgPersistentObjectList)
   private
-    FAktList: TGAffineVectorList;
-    function GetList(I: Integer): TGAffineVectorList;
+    FAktList: TgAffineVectorList;
+    function GetList(I: Integer): TgAffineVectorList;
   public
     procedure Add;
-    property AktList: TGAffineVectorList read FAktList;
-    property List[I: Integer]: TGAffineVectorList read GetList;
+    property AktList: TgAffineVectorList read FAktList;
+    property List[I: Integer]: TgAffineVectorList read GetList;
   end;
 
   (* Multipolygon is defined with multiple contours.
@@ -138,7 +138,7 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
-    procedure AddNode(const i: Integer; const coords: TGCoordinates); overload;
+    procedure AddNode(const i: Integer; const coords: TgCoordinates); overload;
     procedure AddNode(const i: Integer; const X, Y, Z: Single); overload;
     procedure AddNode(const i: Integer; const value: TVector4f); overload;
     procedure AddNode(const i: Integer; const value: TAffineVector); overload;
@@ -241,13 +241,13 @@ end;
 
 procedure TgxPolygonList.Add;
 begin
-  FAktList := TGAffineVectorList.Create;
+  FAktList := TgAffineVectorList.Create;
   inherited Add(FAktList);
 end;
 
-function TgxPolygonList.GetList(i: Integer): TGAffineVectorList;
+function TgxPolygonList.GetList(i: Integer): TgAffineVectorList;
 begin
-  Result := TGAffineVectorList(Items[i]);
+  Result := TgAffineVectorList(Items[i]);
 end;
 
 // ------------------
@@ -435,7 +435,7 @@ begin
   Path[i].AddNode(x, y, z);
 end;
 
-procedure TgxMultiPolygonBase.AddNode(const i: Integer; const coords: TGCoordinates);
+procedure TgxMultiPolygonBase.AddNode(const i: Integer; const coords: TgCoordinates);
 begin
   Path[i].AddNode(coords);
 end;

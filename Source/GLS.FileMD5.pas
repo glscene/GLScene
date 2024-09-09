@@ -30,7 +30,7 @@ type
     FBasePose: TGLSkeletonFrame;
     FFramePositions: TGAffineVectorList;
     FFrameQuaternions: TGQuaternionList;
-    FJointFlags: TGIntegerList;
+    FJointFlags: TgIntegerList;
     FNumFrames, FFirstFrame, FFrameRate, FNumJoints: Integer;
     function ReadLine: String;
   public
@@ -202,16 +202,16 @@ procedure TGLMD5VectorFile.LoadFromStream(aStream: TStream);
     mesh: TGLSkeletonMeshObject;
     fg: TFGVertexIndexList;
     vnum, wnum, numverts, numweights: Integer;
-    VertexWeightID, VertexWeightCount, VertexBoneRef: TGIntegerList;
+    VertexWeightID, VertexWeightCount, VertexBoneRef: TgIntegerList;
     VertexWeight: TGSingleList;
     VertexWeighted: TGAffineVectorList;
     blendedVert, transformedVert: TAffineVector;
     i, j, k: Integer;
     mat: TGLMatrix;
   begin
-    VertexWeightID := TGIntegerList.Create;
-    VertexWeightCount := TGIntegerList.Create;
-    VertexBoneRef := TGIntegerList.Create;
+    VertexWeightID := TgIntegerList.Create;
+    VertexWeightCount := TgIntegerList.Create;
+    VertexBoneRef := TgIntegerList.Create;
     VertexWeight := TGSingleList.Create;
     VertexWeighted := TGAffineVectorList.Create;
 
@@ -332,7 +332,7 @@ procedure TGLMD5VectorFile.LoadFromStream(aStream: TStream);
   begin
     if not Assigned(FJointFlags) then
     begin
-      FJointFlags := TGIntegerList.Create;
+      FJointFlags := TgIntegerList.Create;
       Assert(Owner.Skeleton.Frames.Count > 0,
         'The md5mesh file must be loaded before md5anim files!');
       FJointFlags.Count := Owner.Skeleton.Frames[0].Position.Count;

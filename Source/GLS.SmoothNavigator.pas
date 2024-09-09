@@ -123,10 +123,10 @@ type
   // Smoothly change any Vector4f value, so it will become TargetValue in the end.
   TGLNavigatorSmoothChangeVector = class(TGLNavigatorSmoothChangeItem)
   private
-    FTargetValue: TGCoordinates;
+    FTargetValue: TgCoordinates;
     FOnGetCurrentValue: TGLNavigatorSmoothChangeVectorGetEvent;
     FOnSetCurrentValue: TGLNavigatorSmoothChangeVectorSetEvent;
-    procedure SetTargetValue(const Value: TGCoordinates);
+    procedure SetTargetValue(const Value: TgCoordinates);
   public
     class function FriendlyName: string; override;
     function Proceed(ADeltaTime: Double): Boolean; override;
@@ -135,7 +135,7 @@ type
     destructor Destroy; override;
     procedure ResetTargetValue(); override;
   published
-    property TargetValue: TGCoordinates read FTargetValue write SetTargetValue;
+    property TargetValue: TgCoordinates read FTargetValue write SetTargetValue;
     property OnGetCurrentValue: TGLNavigatorSmoothChangeVectorGetEvent read FOnGetCurrentValue write FOnGetCurrentValue;
     property OnSetCurrentValue: TGLNavigatorSmoothChangeVectorSetEvent read FOnSetCurrentValue write FOnSetCurrentValue;
   end;
@@ -372,9 +372,9 @@ type
     FSmoothNavigator: TGLSmoothNavigator;
     FSmoothVertNavigator: TGLSmoothNavigator;
     FInvertMouse: Boolean;
-    FOriginalMousePos: TGCoordinates2;
+    FOriginalMousePos: TgCoordinates2;
     procedure SetSmoothNavigator(const Value: TGLSmoothNavigator); virtual;
-    procedure SetOriginalMousePos(const Value: TGCoordinates2); virtual;
+    procedure SetOriginalMousePos(const Value: TgCoordinates2); virtual;
     procedure SetSmoothVertNavigator(const Value: TGLSmoothNavigator); virtual;
     procedure SetMouseLookActive(const Value: Boolean); virtual;
   protected
@@ -394,7 +394,7 @@ type
     property SmoothVertNavigator: TGLSmoothNavigator read FSmoothVertNavigator write SetSmoothVertNavigator;
     property SmoothNavigator: TGLSmoothNavigator read FSmoothNavigator write SetSmoothNavigator;
     property InvertMouse: Boolean read FInvertMouse write FInvertMouse default False;
-    property OriginalMousePos: TGCoordinates2 read FOriginalMousePos write SetOriginalMousePos;
+    property OriginalMousePos: TgCoordinates2 read FOriginalMousePos write SetOriginalMousePos;
   end;
 
 //----------------------------------------------------
@@ -906,7 +906,7 @@ begin
   inherited;
   FMouseLookActive := False;
   FAutoUpdateMouse := True;
-  FOriginalMousePos := TGCoordinates2.CreateInitialized(Self,
+  FOriginalMousePos := TgCoordinates2.CreateInitialized(Self,
                              VectorMake(GLGetScreenWidth div 2,
                              GLGetScreenHeight div 2, 0, 0), csPoint2D);
 end;
@@ -943,7 +943,7 @@ begin
 end;
 
 procedure TGLSmoothUserInterface.SetOriginalMousePos(
-  const Value: TGCoordinates2);
+  const Value: TgCoordinates2);
 begin
   FOriginalMousePos.Assign(Value);
 end;
@@ -1548,7 +1548,7 @@ end;
 constructor TGLNavigatorSmoothChangeVector.Create(aOwner: TXCollection);
 begin
   inherited;
-  FTargetValue := TGCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  FTargetValue := TgCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
 end;
 
 destructor TGLNavigatorSmoothChangeVector.Destroy;
@@ -1617,7 +1617,7 @@ begin
 end;
 
 procedure TGLNavigatorSmoothChangeVector.SetTargetValue(
-  const Value: TGCoordinates);
+  const Value: TgCoordinates);
 begin
   FTargetValue.Assign(Value);
 end;

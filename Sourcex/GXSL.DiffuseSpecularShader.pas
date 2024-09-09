@@ -27,13 +27,15 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.Texture,
-  GXS.Scene,
+  GLScene.PersistentClasses,
   GLScene.VectorGeometry,
+  GLScene.Color,
   GLScene.Strings,
+
+  GXS.Scene,
   GXSL.CustomShader,
   GXSL.Shader,
-  GLScene.Color,
+  GXS.Texture,
   GXS.RenderContextInfo,
   GXS.Material;
 
@@ -88,7 +90,6 @@ type
     procedure DoApply(var rci : TgxRenderContextInfo; Sender : TObject); override;
   end;
 
-
   TgxCustomGLSLDiffuseSpecularShaderMT = class(TgxBaseGLSLDiffuseSpecularShaderMT)
   protected
     procedure DoInitialize(var rci: TgxRenderContextInfo; Sender: TObject); override;
@@ -123,7 +124,6 @@ type
     constructor Create(AOwner : TComponent); override;
   end;
 
-
                      {********  Published Stuff  ************}
 
   TgxSLDiffuseSpecularShaderMT = class(TgxCustomGLSLDiffuseSpecularShaderMT)
@@ -155,9 +155,7 @@ type
     property FogSupport;
   end;
 
-//---------------------------------------------------------------------------
-implementation
-//---------------------------------------------------------------------------
+implementation //--------------------------------------------------------------
 
 procedure GetVertexProgramCode(const Code: TStrings;
   AFogSupport: Boolean; var rci: TgxRenderContextInfo);

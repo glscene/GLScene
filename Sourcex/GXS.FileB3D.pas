@@ -24,7 +24,7 @@ uses
   Formats.B3D;
 
 type
-  TgxB3DVectorFile = class(TGXVectorFile)
+  TgxB3DVectorFile = class(TgxVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(AStream: TStream); override;
@@ -45,9 +45,9 @@ procedure TgxB3DVectorFile.LoadFromStream(AStream: TStream);
 var
   B3d: TFileB3D;
   S: string;
-  Mo: TGXMeshObject;
+  Mo: TgxMeshObject;
   I, J: Integer;
-  FaceGroup: TFGXVertexIndexList;
+  FaceGroup: TgxFGVertexIndexList;
   // lightmapBmp : TBitmap;
   Node: PNODEChunk;
   B3DMat: TB3DMaterial;
@@ -69,10 +69,10 @@ var
     TexName: string;
     LightName: string;
   begin
-    if GetOwner is TGXBaseMesh then
+    if GetOwner is TgxBaseMesh then
     begin
-      MatLib := TGXBaseMesh(GetOwner).MaterialLibrary;
-      LightLib := TGXBaseMesh(GetOwner).LightmapLibrary;
+      MatLib := TgxBaseMesh(GetOwner).MaterialLibrary;
+      LightLib := TgxBaseMesh(GetOwner).LightmapLibrary;
       // got a linked material library?
       if Assigned(MatLib) then
       begin
@@ -213,15 +213,15 @@ begin
       GetOrAllocateMaterial(I, B3DMat, B3DTex, B3DLightTex);
     end;
 
-    if GetOwner is TGXBaseMesh then
-      (GetOwner as TGXBaseMesh).NormalsOrientation := MnoDefault;
+    if GetOwner is TgxBaseMesh then
+      (GetOwner as TgxBaseMesh).NormalsOrientation := MnoDefault;
 
     Node := B3d.Nodes.NodeData;
     while Node <> nil do
     begin
       if Node^.Meshes <> nil then
       begin
-        Mo := TGXMeshObject.CreateOwned(Owner.MeshObjects);
+        Mo := TgxMeshObject.CreateOwned(Owner.MeshObjects);
 
         SetString(S, Node^.Name, Strlen(Node^.Name));
         // if Pos('16', s)>1 then
@@ -279,7 +279,7 @@ begin
         Triangles := Node^.Meshes^.Triangles;
         while Assigned(Triangles) do
         begin
-          FaceGroup := TFGXVertexIndexList.CreateOwned(Mo.FaceGroups);
+          FaceGroup := TgxFGVertexIndexList.CreateOwned(Mo.FaceGroups);
           if Triangles^.Brush_id >= 0 then
           begin
             FaceGroup.MaterialName := B3d.Materials[Triangles^.Brush_id] +

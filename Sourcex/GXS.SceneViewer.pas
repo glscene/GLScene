@@ -10,7 +10,7 @@ interface
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
-  GXS.OpenGL, // WGL_EXT_swap_control
+  GLScene.OpenGL4, // WGL_EXT_swap_control
 
   Winapi.Windows,
   WinApi.Messages,

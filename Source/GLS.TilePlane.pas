@@ -30,7 +30,7 @@ type
   TGLTiledAreaRow = class(TGPersistentObject)
   private
     FColMin, FColMax: Integer;
-    FData: TGIntegerList;
+    FData: TgIntegerList;
   protected
     procedure SetColMin(const val: Integer);
     procedure SetColMax(const val: Integer);
@@ -44,10 +44,10 @@ type
     property Cell[col: Integer]: Integer read GetCell write SetCell; default;
     property ColMin: Integer read FColMin write SetColMin;
     property ColMax: Integer read FColMax write SetColMax;
-    property Data: TGIntegerList read FData;
+    property Data: TgIntegerList read FData;
     procedure Pack;
     function Empty: Boolean;
-    procedure RemapTiles(remapList: TGIntegerList);
+    procedure RemapTiles(remapList: TgIntegerList);
   end;
 
   (* Stores tile information in a tiled area.
@@ -56,7 +56,7 @@ type
   TGLTiledArea = class(TGPersistentObject)
   private
     FRowMin, FRowMax: Integer;
-    FRows: TGPersistentObjectList;
+    FRows: TgPersistentObjectList;
   protected
     procedure SetRowMin(const val: Integer);
     procedure SetRowMax(const val: Integer);
@@ -75,7 +75,7 @@ type
     procedure Pack;
     procedure Clear;
     function Empty: Boolean;
-    procedure RemapTiles(remapList: TGIntegerList);
+    procedure RemapTiles(remapList: TgIntegerList);
   end;
 
   (* A tiled textured plane.
@@ -128,7 +128,7 @@ implementation
 constructor TGLTiledAreaRow.Create;
 begin
   inherited;
-  FData := TGIntegerList.Create;
+  FData := TgIntegerList.Create;
   FColMin := 0;
   FColMax := -1;
 end;
@@ -207,7 +207,7 @@ begin
   Result := (FData.Count = 0);
 end;
 
-procedure TGLTiledAreaRow.RemapTiles(remapList: TGIntegerList);
+procedure TGLTiledAreaRow.RemapTiles(remapList: TgIntegerList);
 var
   i, k: Integer;
 begin
@@ -284,7 +284,7 @@ end;
 constructor TGLTiledArea.Create;
 begin
   inherited;
-  FRows := TGPersistentObjectList.Create;
+  FRows := TgPersistentObjectList.Create;
   FRowMax := -1;
 end;
 
@@ -373,7 +373,7 @@ begin
   Result := (FRows.Count = 0);
 end;
 
-procedure TGLTiledArea.RemapTiles(remapList: TGIntegerList);
+procedure TGLTiledArea.RemapTiles(remapList: TgIntegerList);
 var
   i: Integer;
   r: TGLTiledAreaRow;
@@ -542,7 +542,7 @@ end;
 procedure TGLTilePlane.BuildList(var rci: TGLRenderContextInfo);
 type
   TQuadListInfo = packed record
-    x, y: TGIntegerList;
+    x, y: TgIntegerList;
   end;
 
   procedure IssueQuad(col, row: Integer);
@@ -574,8 +574,8 @@ begin
     SetLength(quadInfos, MaterialLibrary.Materials.Count);
     for i := 0 to High(quadInfos) do
     begin // correction in (i:=0) from (i:=1)
-      quadInfos[i].x := TGIntegerList.Create;
-      quadInfos[i].y := TGIntegerList.Create;
+      quadInfos[i].x := TgIntegerList.Create;
+      quadInfos[i].y := TgIntegerList.Create;
     end;
     // collect quads into quadInfos, sorted by material
     for row := Tiles.RowMin to Tiles.RowMax do

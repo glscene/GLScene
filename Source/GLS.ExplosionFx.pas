@@ -48,14 +48,14 @@ type
     FEnabled: boolean;
     FFaceCount: integer;
     FSpeed: single;
-    FDirection: TGCoordinates;
+    FDirection: TgCoordinates;
     FMaxSteps: integer;
     FStep: integer;
     procedure SetTriList(Value: TGAffineVectorList);
     procedure SetRotList(Value: TGAffineVectorList);
     procedure SetDirList(Value: TGAffineVectorList);
     procedure SetPosList(Value: TGAffineVectorList);
-    procedure SetDirection(value: TGCoordinates);
+    procedure SetDirection(value: TgCoordinates);
     procedure SetEnabled(value: boolean);
   protected
     property TriList: TGAffineVectorList read FTriList write SetTriList;
@@ -78,7 +78,7 @@ type
   published
     property MaxSteps: integer read FMaxSteps write FMaxSteps;
     property Speed: single read FSpeed write FSpeed;
-    property Direction: TGCoordinates read FDirection write SetDirection;
+    property Direction: TgCoordinates read FDirection write SetDirection;
   end;
 
 //-------------------------------------------------------------------------
@@ -96,7 +96,7 @@ begin
   FRotList := TGAffineVectorList.Create;
   FDirList := TGAffineVectorList.Create;
   FPosList := TGAffineVectorList.Create;
-  FDirection := TGCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
+  FDirection := TgCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
 end;
 
 destructor TGLBExplosionFX.Destroy;
@@ -140,7 +140,7 @@ begin
   FPosList.Assign(Value);
 end;
 
-procedure TGLBExplosionFx.SetDirection(Value: TGCoordinates);
+procedure TGLBExplosionFx.SetDirection(Value: TgCoordinates);
 begin
   Value.Normalize;
   FDirection.Assign(Value);

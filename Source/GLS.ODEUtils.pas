@@ -490,7 +490,7 @@ var
   FaceExtractor: TGLFaceExtractor;
   VertexCount: integer;
   Vertex: TAffineVector;
-  OffsetList: TGIntegerList;
+  OffsetList: TgIntegerList;
   Face: TGLFace;
   iMO: integer;
   TriMeshData: PdxTriMeshData;
@@ -499,7 +499,7 @@ begin
   FaceExtractor := TGLFaceExtractor.Create(GLBaseMesh);
 
   try
-    OffsetList := TGIntegerList.Create;
+    OffsetList := TgIntegerList.Create;
 
     FaceExtractor.ProcessMesh;
 

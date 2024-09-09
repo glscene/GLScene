@@ -67,7 +67,7 @@ function CreateBodyFromCube(var Geom: PdxGeom; Cube: TgxCube; World: PdxWorld;  
 
 (* This method requires you to manually deallocate vertices and
   indices when you're done with the trimesh *)
-function CreateTriMeshFromBaseMesh(BaseMesh: TGXBaseMesh; Space: PdxSpace;
+function CreateTriMeshFromBaseMesh(BaseMesh: TgxBaseMesh; Space: PdxSpace;
   var Vertices: PdVector3Array; var Indices: PdIntegerArray): PdxGeom;
 
 function SceneMatrixFromGeom(Geom: PdxGeom): TMatrix4f;
@@ -420,14 +420,14 @@ begin
   end;
 end;
 
-function CreateTriMeshFromBaseMesh(BaseMesh: TGXBaseMesh; Space: PdxSpace;
+function CreateTriMeshFromBaseMesh(BaseMesh: TgxBaseMesh; Space: PdxSpace;
   var Vertices: PdVector3Array; var Indices: PdIntegerArray): PdxGeom;
 var
   i, j, p: integer;
   FaceExtractor: TFaceExtractor;
   VertexCount: integer;
   Vertex: TAffineVector;
-  OffsetList: TGIntegerList;
+  OffsetList: TgIntegerList;
   Face: TFace;
   iMO: integer;
   TriMeshData: PdxTriMeshData;
@@ -436,7 +436,7 @@ begin
   FaceExtractor := TFaceExtractor.Create(BaseMesh);
 
   try
-    OffsetList := TGIntegerList.Create;
+    OffsetList := TgIntegerList.Create;
     FaceExtractor.ProcessMesh;
     VertexCount := 0;
     for i := 0 to BaseMesh.MeshObjects.Count - 1 do
@@ -530,7 +530,7 @@ var
 begin
   for i := 0 to GeomList.Count - 1 do
     if Assigned(GeomList[i].data) then
-      PositionSceneObject(TGXBaseSceneObject(GeomList[i].data), GeomList[i]);
+      PositionSceneObject(TgxBaseSceneObject(GeomList[i].data), GeomList[i]);
 end;
 
 function CreateODEPlaneFromScenePlane(Plane: TgxPlane; Space: PdxSpace): PdxGeom;

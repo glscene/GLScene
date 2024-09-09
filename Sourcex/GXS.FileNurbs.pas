@@ -19,7 +19,7 @@ uses
 
 type
 
-  TgxNurbsVectorFile = class(TGXVectorFile)
+  TgxNurbsVectorFile = class(TgxVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(stream: TStream); override;
@@ -78,7 +78,7 @@ procedure TgxNurbsVectorFile.LoadFromStream(stream: TStream);
   end;
 
   function ReadVectorArray(sl: TStrings; idx: Integer;
-    list: TGAffineVectorList): Integer;
+    list: TgAffineVectorList): Integer;
   var
     buf: String;
     vals: TStringList;
@@ -109,7 +109,7 @@ var
   i, j: Integer;
   surface: TMOParametricSurface;
   invert: Boolean;
-  invControlPoints: TGAffineVectorList;
+  invControlPoints: TgAffineVectorList;
 begin
   ss := TStringStream.Create('');
   sl := TStringList.Create;
@@ -160,7 +160,7 @@ begin
 
     if invert then
     begin
-      invControlPoints := TGAffineVectorList.Create;
+      invControlPoints := TgAffineVectorList.Create;
       for i := surface.CountV - 1 downto 0 do
         for j := 0 to surface.CountU - 1 do
           invControlPoints.Add(surface.ControlPoints[i * surface.CountU + j]);

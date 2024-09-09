@@ -34,7 +34,7 @@ uses
   GLScene.Color,
   GXS.RenderContextInfo,
   GLScene.TextureFormat,
-  GXS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLScene.VectorTypes;
 
 type

@@ -79,9 +79,9 @@ type
 
   TGLGuiElement = class(TCollectionItem)
   private
-    FTopLeft: TGCoordinates2;
-    FBottomRight: TGCoordinates2;
-    FScale: TGCoordinates2;
+    FTopLeft: TgCoordinates2;
+    FBottomRight: TgCoordinates2;
+    FScale: TgCoordinates2;
     FAlign: TGUIAlignments;
     FName: TGLGuiElementName;
   protected
@@ -92,9 +92,9 @@ type
     destructor Destroy; override;
     procedure AssignTo(Dest: TPersistent); override;
   published
-    property TopLeft: TGCoordinates2 read FTopLeft write FTopLeft;
-    property BottomRight: TGCoordinates2 read FBottomRight write FBottomRight;
-    property Scale: TGCoordinates2 read FScale write FScale;
+    property TopLeft: TgCoordinates2 read FTopLeft write FTopLeft;
+    property BottomRight: TgCoordinates2 read FBottomRight write FBottomRight;
+    property Scale: TgCoordinates2 read FScale write FScale;
     property Align: TGUIAlignments read FAlign write FAlign;
     property Name: TGLGuiElementName read FName write SetName;
   end;
@@ -1166,10 +1166,10 @@ end;
 constructor TGLGuiElement.Create(Collection: TCollection);
 begin
   inherited;
-  FTopLeft := TGCoordinates2.CreateInitialized(Self, NullHmgVector, csPoint2D);
-  FBottomRight := TGCoordinates2.CreateInitialized(Self, NullHmgVector,
+  FTopLeft := TgCoordinates2.CreateInitialized(Self, NullHmgVector, csPoint2D);
+  FBottomRight := TgCoordinates2.CreateInitialized(Self, NullHmgVector,
     csPoint2D);
-  FScale := TGCoordinates2.CreateInitialized(Self, XYHmgVector, csPoint2D);
+  FScale := TgCoordinates2.CreateInitialized(Self, XYHmgVector, csPoint2D);
 end;
 
 destructor TGLGuiElement.Destroy;

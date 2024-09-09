@@ -48,33 +48,33 @@ uses
 
 
 type
-  TGXMeshObjectList = class;
-  TGXFaceGroups = class;
+  TgxMeshObjectList = class;
+  TgxFaceGroups = class;
 
-  TGXMeshAutoCentering = (macCenterX, macCenterY, macCenterZ, macUseBarycenter, macRestorePosition);
-  TGXMeshAutoCenterings = set of TGXMeshAutoCentering;
+  TgxMeshAutoCentering = (macCenterX, macCenterY, macCenterZ, macUseBarycenter, macRestorePosition);
+  TgxMeshAutoCenterings = set of TgxMeshAutoCentering;
 
-  TGXMeshObjectMode = (momTriangles, momTriangleStrip, momFaceGroups);
+  TgxMeshObjectMode = (momTriangles, momTriangleStrip, momFaceGroups);
 
   (* A base class for mesh objects.
     The class introduces a set of vertices and normals for the object but
     does no rendering of its own. *)
-  TGXBaseMeshObject = class(TGPersistentObject)
+  TgxBaseMeshObject = class(TgPersistentObject)
   private
     FName: string;
-    FVertices: TGAffineVectorList;
-    FNormals: TGAffineVectorList;
+    FVertices: TgAffineVectorList;
+    FNormals: TgAffineVectorList;
     FVisible: Boolean;
   protected
-    procedure SetVertices(const val: TGAffineVectorList);
-    procedure SetNormals(const val: TGAffineVectorList);
+    procedure SetVertices(const val: TgAffineVectorList);
+    procedure SetNormals(const val: TgAffineVectorList);
     procedure ContributeToBarycenter(var currentSum: TAffineVector; var nb: Integer); virtual;
   public
     constructor Create; override;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     // Clears all mesh object data, submeshes, facegroups, etc.
     procedure Clear; virtual;
     // Translates all the vertices by the given delta.
@@ -89,7 +89,7 @@ type
       normals and indices are preserved.
       The only valid modes are currently momTriangles and momTriangleStrip
       (ie. momFaceGroups not supported). *)
-    procedure BuildNormals(vertexIndices: TGIntegerList; mode: TGXMeshObjectMode; normalIndices: TGIntegerList = nil);
+    procedure BuildNormals(vertexIndices: TgIntegerList; mode: TgxMeshObjectMode; normalIndices: TgIntegerList = nil);
     (* Extracts all mesh triangles as a triangles list.
       The resulting list size is a multiple of 3, each group of 3 vertices
       making up and independant triangle.
@@ -97,51 +97,51 @@ type
       (all data is duplicated) and should be freed by caller.
       If texCoords is specified, per vertex texture coordinates will be
       placed there, when available. *)
-    function ExtractTriangles(texCoords: TGAffineVectorList = nil; normals: TGAffineVectorList = nil): TGAffineVectorList; virtual;
+    function ExtractTriangles(texCoords: TgAffineVectorList = nil; normals: TgAffineVectorList = nil): TgAffineVectorList; virtual;
     property Name: string read FName write FName;
     property Visible: Boolean read FVisible write FVisible;
-    property Vertices: TGAffineVectorList read FVertices write SetVertices;
-    property normals: TGAffineVectorList read FNormals write SetNormals;
+    property Vertices: TgAffineVectorList read FVertices write SetVertices;
+    property normals: TgAffineVectorList read FNormals write SetNormals;
   end;
 
-  TGXSkeletonFrameList = class;
-  TGXSkeletonFrameTransform = (sftRotation, sftQuaternion);
+  TgxSkeletonFrameList = class;
+  TgxSkeletonFrameTransform = (sftRotation, sftQuaternion);
 
   (* Stores position and rotation for skeleton joints.
     If you directly alter some values, make sure to call FlushLocalMatrixList
     so that the local matrices will be recalculated (the call to Flush does
     not recalculate the matrices, but marks the current ones as dirty). *)
-  TGXSkeletonFrame = class(TGPersistentObject)
+  TgxSkeletonFrame = class(TgPersistentObject)
   private
-    FOwner: TGXSkeletonFrameList;
+    FOwner: TgxSkeletonFrameList;
     FName: string;
-    FPosition: TGAffineVectorList;
-    FRotation: TGAffineVectorList;
+    FPosition: TgAffineVectorList;
+    FRotation: TgAffineVectorList;
     FQuaternion: TGQuaternionList;
     FLocalMatrixList: PMatrixArray;
-    FTransformMode: TGXSkeletonFrameTransform;
+    FTransformMode: TgxSkeletonFrameTransform;
   protected
-    procedure SetPosition(const val: TGAffineVectorList);
-    procedure SetRotation(const val: TGAffineVectorList);
+    procedure SetPosition(const val: TgAffineVectorList);
+    procedure SetRotation(const val: TgAffineVectorList);
     procedure SetQuaternion(const val: TGQuaternionList);
   public
-    constructor CreateOwned(aOwner: TGXSkeletonFrameList);
+    constructor CreateOwned(aOwner: TgxSkeletonFrameList);
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
-    property Owner: TGXSkeletonFrameList read FOwner;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
+    property Owner: TgxSkeletonFrameList read FOwner;
     property Name: string read FName write FName;
     // Position values for the joints.
-    property Position: TGAffineVectorList read FPosition write SetPosition;
+    property Position: TgAffineVectorList read FPosition write SetPosition;
     // Rotation values for the joints.
-    property Rotation: TGAffineVectorList read FRotation write SetRotation;
+    property Rotation: TgAffineVectorList read FRotation write SetRotation;
     (* Quaternions are an alternative to Euler rotations to build the
       global matrices for the skeleton bones. *)
     property Quaternion: TGQuaternionList read FQuaternion write SetQuaternion;
     (* TransformMode indicates whether to use Rotation or Quaternion to build
       the local transform matrices. *)
-    property TransformMode: TGXSkeletonFrameTransform read FTransformMode write FTransformMode;
+    property TransformMode: TgxSkeletonFrameTransform read FTransformMode write FTransformMode;
     (* Calculate or retrieves an array of local bone matrices.
       This array is calculated on the first call after creation, and the
       first call following a FlushLocalMatrixList. Subsequent calls return
@@ -155,47 +155,47 @@ type
     procedure ConvertRotationsToQuaternions(KeepRotations: Boolean = True);
   end;
 
-  // A list of TGXSkeletonFrame objects.
-  TGXSkeletonFrameList = class(TGPersistentObjectList)
+  // A list of TgxSkeletonFrame objects.
+  TgxSkeletonFrameList = class(TgPersistentObjectList)
   private
     FOwner: TPersistent;
   protected
-    function GetSkeletonFrame(Index: Integer): TGXSkeletonFrame;
+    function GetSkeletonFrame(Index: Integer): TgxSkeletonFrame;
   public
     constructor CreateOwned(aOwner: TPersistent);
     destructor Destroy; override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     // As the name states; Convert Quaternions to Rotations or vice-versa.
     procedure ConvertQuaternionsToRotations(KeepQuaternions: Boolean = True; SetTransformMode: Boolean = True);
     procedure ConvertRotationsToQuaternions(KeepRotations: Boolean = True; SetTransformMode: Boolean = True);
     property Owner: TPersistent read FOwner;
     procedure Clear; override;
-    property Items[Index: Integer]: TGXSkeletonFrame read GetSkeletonFrame; default;
+    property Items[Index: Integer]: TgxSkeletonFrame read GetSkeletonFrame; default;
   end;
 
-  TGXSkeleton = class;
-  TGXSkeletonBone = class;
+  TgxSkeleton = class;
+  TgxSkeletonBone = class;
 
   // A list of skeleton bones.
-  TGXSkeletonBoneList = class(TGPersistentObjectList)
+  TgxSkeletonBoneList = class(TgPersistentObjectList)
   private
-    FSkeleton: TGXSkeleton; // not persistent
+    FSkeleton: TgxSkeleton; // not persistent
   protected
     FGlobalMatrix: TMatrix4f;
-    function GetSkeletonBone(Index: Integer): TGXSkeletonBone;
+    function GetSkeletonBone(Index: Integer): TgxSkeletonBone;
     procedure AfterObjectCreatedByReader(Sender: TObject); override;
   public
-    constructor CreateOwned(aOwner: TGXSkeleton);
+    constructor CreateOwned(aOwner: TgxSkeleton);
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
-    property Skeleton: TGXSkeleton read FSkeleton;
-    property Items[Index: Integer]: TGXSkeletonBone read GetSkeletonBone; default;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
+    property Skeleton: TgxSkeleton read FSkeleton;
+    property Items[Index: Integer]: TgxSkeletonBone read GetSkeletonBone; default;
     // Returns a bone by its BoneID, nil if not found.
-    function BoneByID(anID: Integer): TGXSkeletonBone; virtual;
+    function BoneByID(anID: Integer): TgxSkeletonBone; virtual;
     // Returns a bone by its Name, nil if not found.
-    function BoneByName(const aName: string): TGXSkeletonBone; virtual;
+    function BoneByName(const aName: string): TgxSkeletonBone; virtual;
     // Number of bones (including all children and self).
     function BoneCount: Integer;
     // Render skeleton wireframe
@@ -204,10 +204,10 @@ type
   end;
 
   // This list store skeleton root bones exclusively.
-  TGXSkeletonRootBoneList = class(TGXSkeletonBoneList)
+  TgxSkeletonRootBoneList = class(TgxSkeletonBoneList)
   public
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     // Render skeleton wireframe
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
     property GlobalMatrix: TMatrix4f read FGlobalMatrix write FGlobalMatrix;
@@ -215,33 +215,33 @@ type
 
   (* A skeleton bone or node and its children.
     This class is the base item of the bones hierarchy in a skeletal model.
-    The joint values are stored in a TGXSkeletonFrame, but the calculated bone
+    The joint values are stored in a TgxSkeletonFrame, but the calculated bone
     matrices are stored here. *)
-  TGXSkeletonBone = class(TGXSkeletonBoneList)
+  TgxSkeletonBone = class(TgxSkeletonBoneList)
   private
-    FOwner: TGXSkeletonBoneList; // indirectly persistent
+    FOwner: TgxSkeletonBoneList; // indirectly persistent
     FBoneID: Integer;
     FName: string;
     FColor: Cardinal;
   protected
-    function GetSkeletonBone(Index: Integer): TGXSkeletonBone;
+    function GetSkeletonBone(Index: Integer): TgxSkeletonBone;
     procedure SetColor(const val: Cardinal);
   public
-    constructor CreateOwned(aOwner: TGXSkeletonBoneList);
+    constructor CreateOwned(aOwner: TgxSkeletonBoneList);
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     // Render skeleton wireframe
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
-    property Owner: TGXSkeletonBoneList read FOwner;
+    property Owner: TgxSkeletonBoneList read FOwner;
     property Name: string read FName write FName;
     property BoneID: Integer read FBoneID write FBoneID;
     property Color: Cardinal read FColor write SetColor;
-    property Items[Index: Integer]: TGXSkeletonBone read GetSkeletonBone; default;
+    property Items[Index: Integer]: TgxSkeletonBone read GetSkeletonBone; default;
     // Returns a bone by its BoneID, nil if not found.
-    function BoneByID(anID: Integer): TGXSkeletonBone; override;
-    function BoneByName(const aName: string): TGXSkeletonBone; override;
+    function BoneByID(anID: Integer): TgxSkeletonBone; override;
+    function BoneByName(const aName: string): TgxSkeletonBone; override;
     // Set the bone's matrix. Becareful using this.
     procedure SetGlobalMatrix(Matrix: TMatrix4f); // Ragdoll
     // Set the bone's GlobalMatrix. Used for Ragdoll.
@@ -257,34 +257,34 @@ type
     procedure Clean; override;
   end;
 
-  TGXSkeletonColliderList = class;
+  TgxSkeletonColliderList = class;
 
   (* A general class storing the base level info required for skeleton
     based collision methods. This class is meant to be inherited from
     to create skeleton driven Verlet Constraints, ODE Geoms, etc.
     Overriden classes should be named as TSCxxxxx. *)
-  TGXSkeletonCollider = class(TGPersistentObject)
+  TgxSkeletonCollider = class(TgPersistentObject)
   private
-    FOwner: TGXSkeletonColliderList;
-    FBone: TGXSkeletonBone;
+    FOwner: TgxSkeletonColliderList;
+    FBone: TgxSkeletonBone;
     FBoneID: Integer;
     FLocalMatrix, FGlobalMatrix: TMatrix4f;
     FAutoUpdate: Boolean;
   protected
-    procedure SetBone(const val: TGXSkeletonBone);
+    procedure SetBone(const val: TgxSkeletonBone);
     procedure SetLocalMatrix(const val: TMatrix4f);
   public
     constructor Create; override;
-    constructor CreateOwned(aOwner: TGXSkeletonColliderList);
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    constructor CreateOwned(aOwner: TgxSkeletonColliderList);
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     (* This method is used to align the colliders and their
       derived objects to their associated skeleton bone.
       Override to set up descendant class alignment properties. *)
     procedure AlignCollider; virtual;
-    property Owner: TGXSkeletonColliderList read FOwner;
+    property Owner: TgxSkeletonColliderList read FOwner;
     // The bone that this collider associates with.
-    property Bone: TGXSkeletonBone read FBone write SetBone;
+    property Bone: TgxSkeletonBone read FBone write SetBone;
     (* Offset and orientation of the collider in the associated
       bone's space. *)
     property LocalMatrix: TMatrix4f read FLocalMatrix write SetLocalMatrix;
@@ -294,32 +294,32 @@ type
     property AutoUpdate: Boolean read FAutoUpdate write FAutoUpdate;
   end;
 
-  // List class for storing TGXSkeletonCollider objects.
-  TGXSkeletonColliderList = class(TGPersistentObjectList)
+  // List class for storing TgxSkeletonCollider objects.
+  TgxSkeletonColliderList = class(TgPersistentObjectList)
   private
     FOwner: TPersistent;
   protected
-    function GetSkeletonCollider(Index: Integer): TGXSkeletonCollider;
+    function GetSkeletonCollider(Index: Integer): TgxSkeletonCollider;
   public
     constructor CreateOwned(aOwner: TPersistent);
     destructor Destroy; override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure Clear; override;
     // Calls AlignCollider for each collider in the list.
     procedure AlignColliders;
     property Owner: TPersistent read FOwner;
-    property Items[Index: Integer]: TGXSkeletonCollider read GetSkeletonCollider; default;
+    property Items[Index: Integer]: TgxSkeletonCollider read GetSkeletonCollider; default;
   end;
 
-  TGXBaseMesh = class;
+  TgxBaseMesh = class;
 
   // Small structure to store a weighted lerp for use in blending.
   TGXBlendedLerpInfo = record
     frameIndex1, frameIndex2: Integer;
     lerpFactor: Single;
     weight: Single;
-    externalPositions: TGAffineVectorList;
-    externalRotations: TGAffineVectorList;
+    externalPositions: TgAffineVectorList;
+    externalRotations: TgAffineVectorList;
     externalQuaternions: TGQuaternionList;
   end;
 
@@ -327,39 +327,39 @@ type
     This class stores the bones hierarchy and animation frames.
     It is also responsible for maintaining the "CurrentFrame" and allowing
     various frame blending operations. *)
-  TGXSkeleton = class(TGPersistentObject)
+  TgxSkeleton = class(TgPersistentObject)
   private
-    FOwner: TGXBaseMesh;
-    FRootBones: TGXSkeletonRootBoneList;
-    FFrames: TGXSkeletonFrameList;
-    FCurrentFrame: TGXSkeletonFrame; // not persistent
+    FOwner: TgxBaseMesh;
+    FRootBones: TgxSkeletonRootBoneList;
+    FFrames: TgxSkeletonFrameList;
+    FCurrentFrame: TgxSkeletonFrame; // not persistent
     FBonesByIDCache: TList;
-    FColliders: TGXSkeletonColliderList;
+    FColliders: TgxSkeletonColliderList;
     FRagDollEnabled: Boolean; // ragdoll
     FMorphInvisibleParts: Boolean;
   protected
-    procedure SetRootBones(const val: TGXSkeletonRootBoneList);
-    procedure SetFrames(const val: TGXSkeletonFrameList);
-    function GetCurrentFrame: TGXSkeletonFrame;
-    procedure SetCurrentFrame(val: TGXSkeletonFrame);
-    procedure SetColliders(const val: TGXSkeletonColliderList);
+    procedure SetRootBones(const val: TgxSkeletonRootBoneList);
+    procedure SetFrames(const val: TgxSkeletonFrameList);
+    function GetCurrentFrame: TgxSkeletonFrame;
+    procedure SetCurrentFrame(val: TgxSkeletonFrame);
+    procedure SetColliders(const val: TgxSkeletonColliderList);
   public
-    constructor CreateOwned(aOwner: TGXBaseMesh);
+    constructor CreateOwned(aOwner: TgxBaseMesh);
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
-    property Owner: TGXBaseMesh read FOwner;
-    property RootBones: TGXSkeletonRootBoneList read FRootBones write SetRootBones;
-    property Frames: TGXSkeletonFrameList read FFrames write SetFrames;
-    property CurrentFrame: TGXSkeletonFrame read GetCurrentFrame write SetCurrentFrame;
-    property Colliders: TGXSkeletonColliderList read FColliders write SetColliders;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
+    property Owner: TgxBaseMesh read FOwner;
+    property RootBones: TgxSkeletonRootBoneList read FRootBones write SetRootBones;
+    property Frames: TgxSkeletonFrameList read FFrames write SetFrames;
+    property CurrentFrame: TgxSkeletonFrame read GetCurrentFrame write SetCurrentFrame;
+    property Colliders: TgxSkeletonColliderList read FColliders write SetColliders;
     procedure FlushBoneByIDCache;
-    function BoneByID(anID: Integer): TGXSkeletonBone;
-    function BoneByName(const aName: string): TGXSkeletonBone;
+    function BoneByID(anID: Integer): TgxSkeletonBone;
+    function BoneByName(const aName: string): TgxSkeletonBone;
     function BoneCount: Integer;
     procedure MorphTo(frameIndex: Integer); overload;
-    procedure MorphTo(frame: TGXSkeletonFrame); overload;
+    procedure MorphTo(frame: TgxSkeletonFrame); overload;
     procedure Lerp(frameIndex1, frameIndex2: Integer; lerpFactor: Single);
     procedure BlendedLerps(const lerpInfos: array of TGXBlendedLerpInfo);
     (* Linearly removes the translation component between skeletal frames.
@@ -377,7 +377,7 @@ type
     // Applies current frame to morph all mesh objects.
     procedure MorphMesh(normalize: Boolean);
     // Copy bone rotations from reference skeleton.
-    procedure Synchronize(reference: TGXSkeleton);
+    procedure Synchronize(reference: TgxSkeleton);
     // Release bones and frames info.
     procedure Clear;
     // Backup and prepare the BoneMatrixInvertedMeshes to use with ragdolls
@@ -390,13 +390,13 @@ type
     property MorphInvisibleParts: Boolean read FMorphInvisibleParts write FMorphInvisibleParts;
   end;
 
-  (* Rendering options per TGXMeshObject.
+  (* Rendering options per TgxMeshObject.
     moroGroupByMaterial : if set, the facegroups will be rendered by material
     in batchs, this will optimize rendering by reducing material switches, but
     also implies that facegroups will not be rendered in the order they are in
     the list. *)
-  TGXMeshObjectRenderingOption = (moroGroupByMaterial);
-  TGXMeshObjectRenderingOptions = set of TGXMeshObjectRenderingOption;
+  TgxMeshObjectRenderingOption = (moroGroupByMaterial);
+  TgxMeshObjectRenderingOptions = set of TgxMeshObjectRenderingOption;
 
   TVBOBuffer = (vbVertices, vbNormals, vbColors, vbTexCoords, vbLightMapTexCoords, vbTexCoordsEx);
   TVBOBuffers = set of TVBOBuffer;
@@ -404,16 +404,16 @@ type
   (* Base mesh class.
     Introduces base methods and properties for mesh objects.
     Subclasses are named "TMOxxx". *)
-  TGXMeshObject = class(TGXBaseMeshObject)
+  TgxMeshObject = class(TgxBaseMeshObject)
   private
-    FOwner: TGXMeshObjectList;
+    FOwner: TgxMeshObjectList;
     FExtentCacheRevision: Cardinal;
-    FTexCoords: TGAffineVectorList; // provision for 3D textures
-    FLightMapTexCoords: TGAffineVectorList; // reserved for 2D surface needs
+    FTexCoords: TgAffineVectorList; // provision for 3D textures
+    FLightMapTexCoords: TgAffineVectorList; // reserved for 2D surface needs
     FColors: TGVectorList;
-    FFaceGroups: TGXFaceGroups;
-    FMode: TGXMeshObjectMode;
-    FRenderingOptions: TGXMeshObjectRenderingOptions;
+    FFaceGroups: TgxFaceGroups;
+    FMode: TgxMeshObjectMode;
+    FRenderingOptions: TgxMeshObjectRenderingOptions;
     FArraysDeclared: Boolean; // not persistent
     FLightMapArrayEnabled: Boolean; // not persistent
     FLastLightMapIndex: Integer; // not persistent
@@ -432,8 +432,8 @@ type
     procedure SetUseVBO(const Value: Boolean);
     procedure SetValidBuffers(Value: TVBOBuffers);
   protected
-    procedure SetTexCoords(const val: TGAffineVectorList);
-    procedure SetLightmapTexCoords(const val: TGAffineVectorList);
+    procedure SetTexCoords(const val: TgAffineVectorList);
+    procedure SetLightmapTexCoords(const val: TgAffineVectorList);
     procedure SetColors(const val: TGVectorList);
     procedure BufferArrays;
     procedure DeclareArraysToOpenGL(var mrci: TgxRenderContextInfo; evenIfAlreadyDeclared: Boolean = False);
@@ -451,14 +451,14 @@ type
     property ValidBuffers: TVBOBuffers read FValidBuffers write SetValidBuffers;
   public
     // Creates, assigns Owner and adds to list.
-    constructor CreateOwned(aOwner: TGXMeshObjectList);
+    constructor CreateOwned(aOwner: TgxMeshObjectList);
     constructor Create; override;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure Clear; override;
-    function ExtractTriangles(texCoords: TGAffineVectorList = nil; normals: TGAffineVectorList = nil): TGAffineVectorList;
+    function ExtractTriangles(texCoords: TgAffineVectorList = nil; normals: TgAffineVectorList = nil): TgAffineVectorList;
       override;
     // Returns number of triangles in the mesh object.
     function TriangleCount: Integer; virtual;
@@ -478,22 +478,22 @@ type
     procedure Prepare; virtual;
     function PointInObject(const aPoint: TAffineVector): Boolean; virtual;
     // Returns the triangle data for a given triangle
-    procedure GetTriangleData(tri: Integer; list: TGAffineVectorList; var v0, v1, v2: TAffineVector); overload;
+    procedure GetTriangleData(tri: Integer; list: TgAffineVectorList; var v0, v1, v2: TAffineVector); overload;
     procedure GetTriangleData(tri: Integer; list: TGVectorList; var v0, v1, v2: TVector4f); overload;
     // Sets the triangle data of a given triangle
-    procedure SetTriangleData(tri: Integer; list: TGAffineVectorList; const v0, v1, v2: TAffineVector); overload;
+    procedure SetTriangleData(tri: Integer; list: TgAffineVectorList; const v0, v1, v2: TAffineVector); overload;
     procedure SetTriangleData(tri: Integer; list: TGVectorList; const v0, v1, v2: TVector4f); overload;
     (* Build the tangent space from the mesh object's vertex, normal
       and texcoord data, filling the binormals and tangents where
       specified. *)
     procedure BuildTangentSpace(buildBinormals: Boolean = True; buildTangents: Boolean = True);
-    property Owner: TGXMeshObjectList read FOwner;
-    property mode: TGXMeshObjectMode read FMode write FMode;
-    property texCoords: TGAffineVectorList read FTexCoords write SetTexCoords;
-    property LightMapTexCoords: TGAffineVectorList read FLightMapTexCoords write SetLightmapTexCoords;
+    property Owner: TgxMeshObjectList read FOwner;
+    property mode: TgxMeshObjectMode read FMode write FMode;
+    property texCoords: TgAffineVectorList read FTexCoords write SetTexCoords;
+    property LightMapTexCoords: TgAffineVectorList read FLightMapTexCoords write SetLightmapTexCoords;
     property Colors: TGVectorList read FColors write SetColors;
-    property FaceGroups: TGXFaceGroups read FFaceGroups;
-    property RenderingOptions: TGXMeshObjectRenderingOptions read FRenderingOptions write FRenderingOptions;
+    property FaceGroups: TgxFaceGroups read FFaceGroups;
+    property RenderingOptions: TgxMeshObjectRenderingOptions read FRenderingOptions write FRenderingOptions;
     // If set, rendering will use VBO's instead of vertex arrays.
     property UseVBO: Boolean read FUseVBO write SetUseVBO;
     (* The TexCoords Extension is a list of vector lists that are used
@@ -518,19 +518,19 @@ type
     property TangentsTexCoordIndex: Integer read FTangentsTexCoordIndex write SetTangentsTexCoordIndex;
   end;
 
-  // A list of TGXMeshObject objects.
-  TGXMeshObjectList = class(TGPersistentObjectList)
+  // A list of TgxMeshObject objects.
+  TgxMeshObjectList = class(TgPersistentObjectList)
   private
-    FOwner: TGXBaseMesh;
+    FOwner: TgxBaseMesh;
     // Resturns True if all its MeshObjects use VBOs.
     function GetUseVBO: Boolean;
     procedure SetUseVBO(const Value: Boolean);
   protected
-    function GetMeshObject(Index: Integer): TGXMeshObject;
+    function GetMeshObject(Index: Integer): TgxMeshObject;
   public
-    constructor CreateOwned(aOwner: TGXBaseMesh);
+    constructor CreateOwned(aOwner: TgxBaseMesh);
     destructor Destroy; override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure PrepareMaterialLibraryCache(matLib: TgxMaterialLibrary);
     procedure DropMaterialLibraryCache;
     (* Prepare the texture and materials before rendering.
@@ -543,7 +543,7 @@ type
     function MorphTargetCount: Integer;
     procedure GetExtents(out min, max: TAffineVector);
     procedure Translate(const delta: TAffineVector);
-    function ExtractTriangles(texCoords: TGAffineVectorList = nil; normals: TGAffineVectorList = nil): TGAffineVectorList;
+    function ExtractTriangles(texCoords: TgAffineVectorList = nil; normals: TgAffineVectorList = nil): TgAffineVectorList;
     // Returns number of triangles in the meshes of the list.
     function TriangleCount: Integer;
     (* Build the tangent space from the mesh object's vertex, normal
@@ -555,82 +555,82 @@ type
     property UseVBO: Boolean read GetUseVBO write SetUseVBO;
     // Precalculate whatever is needed for rendering, called once
     procedure Prepare; virtual;
-    function FindMeshByName(MeshName: string): TGXMeshObject;
-    property Owner: TGXBaseMesh read FOwner;
+    function FindMeshByName(MeshName: string): TgxMeshObject;
+    property Owner: TgxBaseMesh read FOwner;
     procedure Clear; override;
-    property Items[Index: Integer]: TGXMeshObject read GetMeshObject; default;
+    property Items[Index: Integer]: TgxMeshObject read GetMeshObject; default;
   end;
 
-  TGXMeshObjectListClass = class of TGXMeshObjectList;
-  TGXMeshMorphTargetList = class;
+  TgxMeshObjectListClass = class of TgxMeshObjectList;
+  TgxMeshMorphTargetList = class;
 
   // A morph target, stores alternate lists of vertices and normals.
-  TGXMeshMorphTarget = class(TGXBaseMeshObject)
+  TgxMeshMorphTarget = class(TgxBaseMeshObject)
   private
-    FOwner: TGXMeshMorphTargetList;
+    FOwner: TgxMeshMorphTargetList;
   public
-    constructor CreateOwned(aOwner: TGXMeshMorphTargetList);
+    constructor CreateOwned(aOwner: TgxMeshMorphTargetList);
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
-    property Owner: TGXMeshMorphTargetList read FOwner;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
+    property Owner: TgxMeshMorphTargetList read FOwner;
   end;
 
-  // A list of TGXMeshMorphTarget objects.
-  TGXMeshMorphTargetList = class(TGPersistentObjectList)
+  // A list of TgxMeshMorphTarget objects.
+  TgxMeshMorphTargetList = class(TgPersistentObjectList)
   private
     FOwner: TPersistent;
   protected
-    function GetMeshMorphTarget(Index: Integer): TGXMeshMorphTarget;
+    function GetMeshMorphTarget(Index: Integer): TgxMeshMorphTarget;
   public
     constructor CreateOwned(aOwner: TPersistent);
     destructor Destroy; override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure Translate(const delta: TAffineVector);
     property Owner: TPersistent read FOwner;
     procedure Clear; override;
-    property Items[Index: Integer]: TGXMeshMorphTarget read GetMeshMorphTarget; default;
+    property Items[Index: Integer]: TgxMeshMorphTarget read GetMeshMorphTarget; default;
   end;
 
   (* Mesh object with support for morph targets.
     The morph targets allow to change vertices and normals according to pre-
     existing "morph targets". *)
-  TGXMorphableMeshObject = class(TGXMeshObject)
+  TgxMorphableMeshObject = class(TgxMeshObject)
   private
-    FMorphTargets: TGXMeshMorphTargetList;
+    FMorphTargets: TgxMeshMorphTargetList;
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure Clear; override;
     procedure Translate(const delta: TAffineVector); override;
     procedure MorphTo(morphTargetIndex: Integer); virtual;
     procedure Lerp(morphTargetIndex1, morphTargetIndex2: Integer; lerpFactor: Single); virtual;
-    property MorphTargets: TGXMeshMorphTargetList read FMorphTargets;
+    property MorphTargets: TgxMeshMorphTargetList read FMorphTargets;
   end;
 
-  TGXVertexBoneWeight = packed record
+  TgxVertexBoneWeight = packed record
     BoneID: Integer;
     weight: Single;
   end;
 
-  TGXVertexBoneWeightArray = array [0 .. MaxInt div (2 * SizeOf(TGXVertexBoneWeight))] of TGXVertexBoneWeight;
-  PGXVertexBoneWeightArray = ^TGXVertexBoneWeightArray;
-  TGXVerticesBoneWeights = array [0 .. MaxInt div (2 * SizeOf(PGXVertexBoneWeightArray))] of PGXVertexBoneWeightArray;
-  PGXVerticesBoneWeights = ^TGXVerticesBoneWeights;
-  TGXVertexBoneWeightDynArray = array of TGXVertexBoneWeight;
+  TgxVertexBoneWeightArray = array [0 .. MaxInt div (2 * SizeOf(TgxVertexBoneWeight))] of TgxVertexBoneWeight;
+  PgxVertexBoneWeightArray = ^TgxVertexBoneWeightArray;
+  TgxVerticesBoneWeights = array [0 .. MaxInt div (2 * SizeOf(PgxVertexBoneWeightArray))] of PgxVertexBoneWeightArray;
+  PgxVerticesBoneWeights = ^TgxVerticesBoneWeights;
+  TgxVertexBoneWeightDynArray = array of TgxVertexBoneWeight;
 
   (* A mesh object with vertice bone attachments.
     The class adds per vertex bone weights to the standard morphable mesh.
-    The TGXVertexBoneWeight structures are accessed via VerticesBonesWeights,
+    The TgxVertexBoneWeight structures are accessed via VerticesBonesWeights,
     they must be initialized by adjusting the BonesPerVertex and
     VerticeBoneWeightCount properties, you can also add vertex by vertex
     by using the AddWeightedBone method.
     When BonesPerVertex is 1, the weight is ignored (set to 1.0). *)
-  TGXSkeletonMeshObject = class(TGXMorphableMeshObject)
+  TgxSkeletonMeshObject = class(TgxMorphableMeshObject)
   private
-    FVerticesBonesWeights: PGXVerticesBoneWeights;
+    FVerticesBonesWeights: PgxVerticesBoneWeights;
     FVerticeBoneWeightCount, FVerticeBoneWeightCapacity: Integer;
     FBonesPerVertex: Integer;
     FLastVerticeBoneWeightCount, FLastBonesPerVertex: Integer; // not persistent
@@ -646,30 +646,30 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure Clear; override;
-    property VerticesBonesWeights: PGXVerticesBoneWeights read FVerticesBonesWeights;
+    property VerticesBonesWeights: PgxVerticesBoneWeights read FVerticesBonesWeights;
     property VerticeBoneWeightCount: Integer read FVerticeBoneWeightCount write SetVerticeBoneWeightCount;
     property VerticeBoneWeightCapacity: Integer read FVerticeBoneWeightCapacity write SetVerticeBoneWeightCapacity;
     property BonesPerVertex: Integer read FBonesPerVertex write SetBonesPerVertex;
     function FindOrAdd(BoneID: Integer; const vertex, normal: TAffineVector): Integer; overload;
-    function FindOrAdd(const boneIDs: TGXVertexBoneWeightDynArray; const vertex, normal: TAffineVector): Integer; overload;
+    function FindOrAdd(const boneIDs: TgxVertexBoneWeightDynArray; const vertex, normal: TAffineVector): Integer; overload;
     procedure AddWeightedBone(aBoneID: Integer; aWeight: Single);
-    procedure AddWeightedBones(const boneIDs: TGXVertexBoneWeightDynArray);
+    procedure AddWeightedBones(const boneIDs: TgxVertexBoneWeightDynArray);
     procedure PrepareBoneMatrixInvertedMeshes;
     procedure ApplyCurrentSkeletonFrame(normalize: Boolean);
   end;
 
-  (* Describes a face group of a TGXMeshObject.
+  (* Describes a face group of a TgxMeshObject.
     Face groups should be understood as "a way to use mesh data to render
     a part or the whole mesh object".
     Subclasses implement the actual behaviours, and should have at least
     one "Add" method, taking in parameters all that is required to describe
     a single base facegroup element. *)
-  TGXFaceGroup = class(TGPersistentObject)
+  TgxFaceGroup = class(TgPersistentObject)
   private
-    FOwner: TGXFaceGroups;
+    FOwner: TgxFaceGroups;
     FMaterialName: string;
     FMaterialCache: TgxLibMaterial;
     FLightMapIndex: Integer;
@@ -679,18 +679,18 @@ type
     procedure AttachLightmap(lightMap: TgxTexture; var mrci: TgxRenderContextInfo);
     procedure AttachOrDetachLightmap(var mrci: TgxRenderContextInfo);
   public
-    constructor CreateOwned(aOwner: TGXFaceGroups); virtual;
+    constructor CreateOwned(aOwner: TgxFaceGroups); virtual;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure PrepareMaterialLibraryCache(matLib: TgxMaterialLibrary);
     procedure DropMaterialLibraryCache;
     procedure BuildList(var mrci: TgxRenderContextInfo); virtual; abstract;
     (* Add to the list the triangles corresponding to the facegroup.
       This function is used by TgxMeshObjects ExtractTriangles to retrieve
       all the triangles in a mesh. *)
-    procedure AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
-      aNormals: TGAffineVectorList = nil); virtual;
+    procedure AddToTriangles(aList: TgAffineVectorList; aTexCoords: TgAffineVectorList = nil;
+      aNormals: TgAffineVectorList = nil); virtual;
     // Returns number of triangles in the facegroup.
     function TriangleCount: Integer; virtual; abstract;
     (* Reverses the rendering order of faces.
@@ -698,7 +698,7 @@ type
     procedure Reverse; virtual;
     // Precalculate whatever is needed for rendering, called once
     procedure Prepare; virtual;
-    property Owner: TGXFaceGroups read FOwner write FOwner;
+    property Owner: TgxFaceGroups read FOwner write FOwner;
     property MaterialName: string read FMaterialName write FMaterialName;
     property MaterialCache: TgxLibMaterial read FMaterialCache;
     // Index of lightmap in the lightmap library.
@@ -712,30 +712,30 @@ type
     the same normal for all vertices of a triangle.
     - fgmmTriangleFan : issue all vertices with GL_TRIANGLE_FAN.
     - fgmmQuads : issue all vertices with GL_QUADS. *)
-  TGXFaceGroupMeshMode = (fgmmTriangles, fgmmTriangleStrip, fgmmFlatTriangles, fgmmTriangleFan, fgmmQuads);
+  TgxFaceGroupMeshMode = (fgmmTriangles, fgmmTriangleStrip, fgmmFlatTriangles, fgmmTriangleFan, fgmmQuads);
 
   (* A face group based on an indexlist.
     The index list refers to items in the mesh object (vertices, normals, etc.),
     that are all considered in sync, the render is obtained issueing the items
     in the order given by the vertices. *)
-  TFGXVertexIndexList = class(TGXFaceGroup)
+  TgxFGVertexIndexList = class(TgxFaceGroup)
   private
-    FVertexIndices: TGIntegerList;
+    FVertexIndices: TgIntegerList;
     FIndexVBO: TgxVBOElementArrayHandle;
-    FMode: TGXFaceGroupMeshMode;
+    FMode: TgxFaceGroupMeshMode;
     procedure SetupVBO;
     procedure InvalidateVBO;
   protected
-    procedure SetVertexIndices(const val: TGIntegerList);
-    procedure AddToList(Source, destination: TGAffineVectorList; indices: TGIntegerList);
+    procedure SetVertexIndices(const val: TgIntegerList);
+    procedure AddToList(Source, destination: TgAffineVectorList; indices: TgIntegerList);
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
-    procedure AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
-      aNormals: TGAffineVectorList = nil); override;
+    procedure AddToTriangles(aList: TgAffineVectorList; aTexCoords: TgAffineVectorList = nil;
+      aNormals: TgAffineVectorList = nil); override;
     function TriangleCount: Integer; override;
     procedure Reverse; override;
     procedure Add(idx: Integer);
@@ -744,71 +744,71 @@ type
     procedure ConvertToList;
     // Return the normal from the 1st three points in the facegroup
     function GetNormal: TAffineVector;
-    property mode: TGXFaceGroupMeshMode read FMode write FMode;
-    property vertexIndices: TGIntegerList read FVertexIndices write SetVertexIndices;
+    property mode: TgxFaceGroupMeshMode read FMode write FMode;
+    property vertexIndices: TgIntegerList read FVertexIndices write SetVertexIndices;
   end;
 
   (* Adds normals and texcoords indices.
     Allows very compact description of a mesh. The Normals ad TexCoords
     indices are optionnal, if missing (empty), VertexIndices will be used. *)
-  TFGVertexNormalTexIndexList = class(TFGXVertexIndexList)
+  TFGVertexNormalTexIndexList = class(TgxFGVertexIndexList)
   private
-    FNormalIndices: TGIntegerList;
-    FTexCoordIndices: TGIntegerList;
+    FNormalIndices: TgIntegerList;
+    FTexCoordIndices: TgIntegerList;
   protected
-    procedure SetNormalIndices(const val: TGIntegerList);
-    procedure SetTexCoordIndices(const val: TGIntegerList);
+    procedure SetNormalIndices(const val: TgIntegerList);
+    procedure SetTexCoordIndices(const val: TgIntegerList);
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
-    procedure AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
-      aNormals: TGAffineVectorList = nil); override;
+    procedure AddToTriangles(aList: TgAffineVectorList; aTexCoords: TgAffineVectorList = nil;
+      aNormals: TgAffineVectorList = nil); override;
     procedure Add(vertexIdx, normalIdx, texCoordIdx: Integer);
-    property normalIndices: TGIntegerList read FNormalIndices write SetNormalIndices;
-    property TexCoordIndices: TGIntegerList read FTexCoordIndices write SetTexCoordIndices;
+    property normalIndices: TgIntegerList read FNormalIndices write SetNormalIndices;
+    property TexCoordIndices: TgIntegerList read FTexCoordIndices write SetTexCoordIndices;
   end;
 
   (* Adds per index texture coordinates to its ancestor.
     Per index texture coordinates allows having different texture coordinates
     per triangle, depending on the face it is used in. *)
-  TFGIndexTexCoordList = class(TFGXVertexIndexList)
+  TgxFGIndexTexCoordList = class(TgxFGVertexIndexList)
   private
-    FTexCoords: TGAffineVectorList;
+    FTexCoords: TgAffineVectorList;
   protected
-    procedure SetTexCoords(const val: TGAffineVectorList);
+    procedure SetTexCoords(const val: TgAffineVectorList);
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
-    procedure AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
-      aNormals: TGAffineVectorList = nil); override;
+    procedure AddToTriangles(aList: TgAffineVectorList; aTexCoords: TgAffineVectorList = nil;
+      aNormals: TgAffineVectorList = nil); override;
     procedure Add(idx: Integer; const texCoord: TAffineVector); overload;
     procedure Add(idx: Integer; const s, t: Single); overload;
-    property texCoords: TGAffineVectorList read FTexCoords write SetTexCoords;
+    property texCoords: TgAffineVectorList read FTexCoords write SetTexCoords;
   end;
 
-  // A list of TGXFaceGroup objects.
-  TGXFaceGroups = class(TGPersistentObjectList)
+  // A list of TgxFaceGroup objects.
+  TgxFaceGroups = class(TgPersistentObjectList)
   private
-    FOwner: TGXMeshObject;
+    FOwner: TgxMeshObject;
   protected
-    function GetFaceGroup(Index: Integer): TGXFaceGroup;
+    function GetFaceGroup(Index: Integer): TgxFaceGroup;
   public
-    constructor CreateOwned(aOwner: TGXMeshObject);
+    constructor CreateOwned(aOwner: TgxMeshObject);
     destructor Destroy; override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure PrepareMaterialLibraryCache(matLib: TgxMaterialLibrary);
     procedure DropMaterialLibraryCache;
-    property Owner: TGXMeshObject read FOwner;
+    property Owner: TgxMeshObject read FOwner;
     procedure Clear; override;
-    property Items[Index: Integer]: TGXFaceGroup read GetFaceGroup; default;
-    procedure AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil; aNormals: TGAffineVectorList = nil);
-    // Material Library of the owner TGXBaseMesh.
+    property Items[Index: Integer]: TgxFaceGroup read GetFaceGroup; default;
+    procedure AddToTriangles(aList: TgAffineVectorList; aTexCoords: TgAffineVectorList = nil; aNormals: TgAffineVectorList = nil);
+    // Material Library of the owner TgxBaseMesh.
     function MaterialLibrary: TgxMaterialLibrary;
     (* Sort faces by material.
       Those without material first in list, followed by opaque materials,
@@ -821,30 +821,30 @@ type
     - mnoInvert : inverse of default orientation
     - mnoAutoSolid : autocalculate to make the mesh globally solid
     - mnoAutoHollow : autocalculate to make the mesh globally hollow *)
-  TMeshNormalsOrientation = (mnoDefault, mnoInvert); // , mnoAutoSolid, mnoAutoHollow);
+  TgxMeshNormalsOrientation = (mnoDefault, mnoInvert); // , mnoAutoSolid, mnoAutoHollow);
 
   (* Abstract base class for different vector file Formatx.
     The actual implementation for these files (3DS, DXF..) must be done
-    seperately. The concept for TGXVectorFile is very similar to TGraphic
+    seperately. The concept for TgxVectorFile is very similar to TGraphic
     (see Delphi Help). *)
-  TGXVectorFile = class(TgxDataFile)
+  TgxVectorFile = class(TgxDataFile)
   private
-    FNormalsOrientation: TMeshNormalsOrientation;
+    FNormalsOrientation: TgxMeshNormalsOrientation;
   protected
-    procedure SetNormalsOrientation(const val: TMeshNormalsOrientation); virtual;
+    procedure SetNormalsOrientation(const val: TgxMeshNormalsOrientation); virtual;
   public
     constructor Create(aOwner: TPersistent); override;
-    function Owner: TGXBaseMesh;
-    property NormalsOrientation: TMeshNormalsOrientation read FNormalsOrientation write SetNormalsOrientation;
+    function Owner: TgxBaseMesh;
+    property NormalsOrientation: TgxMeshNormalsOrientation read FNormalsOrientation write SetNormalsOrientation;
   end;
 
-  TGXVectorFileClass = class of TGXVectorFile;
+  TgxVectorFileClass = class of TgxVectorFile;
 
   (* GLSM ( GXScene Mesh) vector file.
     This corresponds to the 'native' Scene format, and object persistence
     stream, which should be the 'fastest' of all formats to load, and supports
     all of GXScene features. *)
-  TGXVectorFileGLSM = class(TGXVectorFile)
+  TgxVectorFileGLSM = class(TgxVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -852,9 +852,9 @@ type
   end;
 
   // Base class for mesh objects.
-  TGXBaseMesh = class(TgxSceneObject)
+  TgxBaseMesh = class(TgxSceneObject)
   private
-    FNormalsOrientation: TMeshNormalsOrientation;
+    FNormalsOrientation: TgxMeshNormalsOrientation;
     FMaterialLibrary: TgxMaterialLibrary;
     FLightmapLibrary: TgxMaterialLibrary;
     FAxisAlignedDimensionsCache: TVector4f;
@@ -863,25 +863,25 @@ type
     FUseMeshMaterials: Boolean;
     FOverlaySkeleton: Boolean;
     FIgnoreMissingTextures: Boolean;
-    FAutoCentering: TGXMeshAutoCenterings;
-    FAutoScaling: TGCoordinates;
+    FAutoCentering: TgxMeshAutoCenterings;
+    FAutoScaling: TgCoordinates;
     FMaterialLibraryCachesPrepared: Boolean;
     FConnectivity: TObject;
     FLastLoadedFilename: string;
   protected
-    FMeshObjects: TGXMeshObjectList; // a list of mesh objects
-    FSkeleton: TGXSkeleton; // skeleton data & frames
+    FMeshObjects: TgxMeshObjectList; // a list of mesh objects
+    FSkeleton: TgxSkeleton; // skeleton data & frames
     procedure SetUseMeshMaterials(const val: Boolean);
     procedure SetMaterialLibrary(const val: TgxMaterialLibrary);
     procedure SetLightmapLibrary(const val: TgxMaterialLibrary);
-    procedure SetNormalsOrientation(const val: TMeshNormalsOrientation);
+    procedure SetNormalsOrientation(const val: TgxMeshNormalsOrientation);
     procedure SetOverlaySkeleton(const val: Boolean);
-    procedure SetAutoScaling(const Value: TGCoordinates);
+    procedure SetAutoScaling(const Value: TgCoordinates);
     procedure DestroyHandle; override;
-    (* Invoked after creating a TGXVectorFile and before loading.
+    (* Invoked after creating a TgxVectorFile and before loading.
       Triggered by LoadFromFile/Stream and AddDataFromFile/Stream.
       Allows to adjust/transfer subclass-specific features. *)
-    procedure PrepareVectorFile(aFile: TGXVectorFile); virtual;
+    procedure PrepareVectorFile(aFile: TgxVectorFile); virtual;
     (* Invoked after a mesh has been loaded/added.
       Triggered by LoadFromFile/Stream and AddDataFromFile/Stream.
       Allows to adjust/transfer subclass-specific features. *)
@@ -923,8 +923,8 @@ type
       If your actor/mesh doesn't change, you don't need to call this.
       It basically caches the connectivity data. *)
     procedure BuildSilhouetteConnectivityData;
-    property MeshObjects: TGXMeshObjectList read FMeshObjects;
-    property Skeleton: TGXSkeleton read FSkeleton;
+    property MeshObjects: TgxMeshObjectList read FMeshObjects;
+    property Skeleton: TgxSkeleton read FSkeleton;
     // Computes the extents of the mesh.
     procedure GetExtents(out min, max: TAffineVector);
     // Computes the barycenter of the mesh.
@@ -968,13 +968,13 @@ type
       no effect on already loaded mesh data or when adding from a file/stream.
       If you want to alter mesh data, use direct manipulation methods
       (on the TgxMeshObjects). *)
-    property AutoCentering: TGXMeshAutoCenterings read FAutoCentering write FAutoCentering default [];
+    property AutoCentering: TgxMeshAutoCenterings read FAutoCentering write FAutoCentering default [];
     (* Scales vertices to a AutoScaling.
       AutoScaling is performed  only  after loading a mesh, it has
       no effect on already loaded mesh data or when adding from a file/stream.
       If you want to alter mesh data, use direct manipulation methods
       (on the TgxMeshObjects). *)
-    property AutoScaling: TGCoordinates read FAutoScaling write FAutoScaling;
+    property AutoScaling: TgCoordinates read FAutoScaling write FAutoScaling;
     (* Material library where mesh materials will be stored/retrieved.
       If this property is not defined or if UseMeshMaterials is false,
       only the FreeForm's material will be used (and the mesh's materials
@@ -993,7 +993,7 @@ type
       may be ignored by some loaders) *)
     property IgnoreMissingTextures: Boolean read FIgnoreMissingTextures write FIgnoreMissingTextures default False;
     // Normals orientation for owned mesh.
-    property NormalsOrientation: TMeshNormalsOrientation read FNormalsOrientation write SetNormalsOrientation
+    property NormalsOrientation: TgxMeshNormalsOrientation read FNormalsOrientation write SetNormalsOrientation
       default mnoDefault;
     // Request rendering of skeleton bones over the mesh.
     property OverlaySkeleton: Boolean read FOverlaySkeleton write SetOverlaySkeleton default False;
@@ -1005,7 +1005,7 @@ type
     method.
     A FreeForm may contain more than one mesh, but they will all be handled
     as a single object in a scene. *)
-  TGXFreeForm = class(TGXBaseMesh)
+  TgxFreeForm = class(TgxBaseMesh)
   private
     FOctree: TgxOctree;
   protected
@@ -1022,7 +1022,7 @@ type
       properly on closed meshes. Requires that Octree has been prepared. *)
     function OctreePointInMesh(const Point: TVector4f): Boolean;
     function OctreeAABBIntersect(const aabb: TAABB; objMatrix, invObjMatrix: TMatrix4f;
-      triangles: TGAffineVectorList = nil): Boolean;
+      triangles: TgAffineVectorList = nil): Boolean;
     // TODO:  function OctreeSphereIntersect
     (* Octree support *experimental*.
       Use only if you understand what you're doing! *)
@@ -1049,27 +1049,27 @@ const
 
 type
 
-  TGXActor = class;
-  TGXActorAnimationReference = (aarMorph, aarSkeleton, aarNone);
+  TgxActor = class;
+  TgxActorAnimationReference = (aarMorph, aarSkeleton, aarNone);
 
   (* An actor animation sequence.
     An animation sequence is a named set of contiguous frames that can be used
     for animating an actor. The referred frames can be either morph or skeletal
     frames (choose which via the Reference property).
     An animation can be directly "played" by the actor by selecting it with
-    SwitchAnimation, and can also be "blended" via a TGXAnimationControler. *)
-  TGXActorAnimation = class(TCollectionItem)
+    SwitchAnimation, and can also be "blended" via a TgxAnimationControler. *)
+  TgxActorAnimation = class(TCollectionItem)
   private
     FName: string;
     FStartFrame: Integer;
     FEndFrame: Integer;
-    FReference: TGXActorAnimationReference;
+    FReference: TgxActorAnimationReference;
   protected
     function GetDisplayName: string; override;
     function FrameCount: Integer;
     procedure SetStartFrame(const val: Integer);
     procedure SetEndFrame(const val: Integer);
-    procedure SetReference(val: TGXActorAnimationReference);
+    procedure SetReference(val: TgxActorAnimationReference);
     procedure SetAsString(const val: string);
     function GetAsString: string;
   public
@@ -1077,7 +1077,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     property AsString: string read GetAsString write SetAsString;
-    function OwnerActor: TGXActor;
+    function OwnerActor: TgxActor;
     (* Linearly removes the translation component between skeletal frames.
       This function will compute the translation of the first bone (index 0)
       and linearly subtract this translation in all frames between startFrame
@@ -1097,43 +1097,43 @@ type
     // Index of the final frame of the animation.
     property endFrame: Integer read FEndFrame write SetEndFrame;
     // Indicates if this is a skeletal or a morph-based animation.
-    property reference: TGXActorAnimationReference read FReference write SetReference default aarMorph;
+    property reference: TgxActorAnimationReference read FReference write SetReference default aarMorph;
   end;
 
-  TGXActorAnimationName = string;
+  TgxActorAnimationName = string;
 
   // Collection of actor animations sequences.
-  TGXActorAnimations = class(TCollection)
+  TgxActorAnimations = class(TCollection)
   private
-    FOwner: TGXActor;
+    FOwner: TgxActor;
   protected
     function GetOwner: TPersistent; override;
-    procedure SetItems(Index: Integer; const val: TGXActorAnimation);
-    function GetItems(Index: Integer): TGXActorAnimation;
+    procedure SetItems(Index: Integer; const val: TgxActorAnimation);
+    function GetItems(Index: Integer): TgxActorAnimation;
   public
-    constructor Create(aOwner: TGXActor);
-    function Add: TGXActorAnimation;
-    function FindItemID(ID: Integer): TGXActorAnimation;
-    function FindName(const aName: string): TGXActorAnimation;
-    function FindFrame(aFrame: Integer; aReference: TGXActorAnimationReference): TGXActorAnimation;
+    constructor Create(aOwner: TgxActor);
+    function Add: TgxActorAnimation;
+    function FindItemID(ID: Integer): TgxActorAnimation;
+    function FindName(const aName: string): TgxActorAnimation;
+    function FindFrame(aFrame: Integer; aReference: TgxActorAnimationReference): TgxActorAnimation;
     procedure SetToStrings(aStrings: TStrings);
     procedure SaveToStream(aStream: TStream);
     procedure LoadFromStream(aStream: TStream);
     procedure SaveToFile(const filename: string);
     procedure LoadFromFile(const filename: string);
-    property Items[index: Integer]: TGXActorAnimation read GetItems write SetItems; default;
-    function Last: TGXActorAnimation;
+    property Items[index: Integer]: TgxActorAnimation read GetItems write SetItems; default;
+    function Last: TgxActorAnimation;
   end;
 
   // Base class for skeletal animation control.
-  TGXBaseAnimationControler = class(TComponent)
+  TgxBaseAnimationControler = class(TComponent)
   private
     FEnabled: Boolean;
-    FActor: TGXActor;
+    FActor: TgxActor;
   protected
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
     procedure SetEnabled(const val: Boolean);
-    procedure SetActor(const val: TGXActor);
+    procedure SetActor(const val: TgxActor);
     procedure DoChange; virtual;
     function Apply(var lerpInfo: TGXBlendedLerpInfo): Boolean; virtual;
   public
@@ -1141,21 +1141,21 @@ type
     destructor Destroy; override;
   published
     property Enabled: Boolean read FEnabled write SetEnabled default True;
-    property Actor: TGXActor read FActor write SetActor;
+    property Actor: TgxActor read FActor write SetActor;
   end;
 
   (* Controls the blending of an additionnal skeletal animation into an actor.
     The animation controler allows animating an actor with several animations
     at a time, for instance, you could use a "run" animation as base animation
-    (in TGXActor), blend an animation that makes the arms move differently
+    (in TgxActor), blend an animation that makes the arms move differently
     depending on what the actor is carrying, along with an animation that will
     make the head turn toward a target. *)
-  TGXAnimationControler = class(TGXBaseAnimationControler)
+  TgxAnimationControler = class(TgxBaseAnimationControler)
   private
-    FAnimationName: TGXActorAnimationName;
+    FAnimationName: TgxActorAnimationName;
     FRatio: Single;
   protected
-    procedure SetAnimationName(const val: TGXActorAnimationName);
+    procedure SetAnimationName(const val: TgxActorAnimationName);
     procedure SetRatio(const val: Single);
     procedure DoChange; override;
     function Apply(var lerpInfo: TGXBlendedLerpInfo): Boolean; override;
@@ -1167,7 +1167,7 @@ type
   (* Actor frame-interpolation mode.
     - afpNone : no interpolation, display CurrentFrame only
     - afpLinear : perform linear interpolation between current and next frame *)
-  TActorFrameInterpolation = (afpNone, afpLinear);
+  TgxActorFrameInterpolation = (afpNone, afpLinear);
 
   (* Defines how an actor plays between its StartFrame and EndFrame.
     aamNone : no animation is performed
@@ -1183,37 +1183,37 @@ type
   TgxActorAnimationMode = (aamNone, aamPlayOnce, aamLoop, aamBounceForward, aamBounceBackward, aamLoopBackward, aamExternal);
 
   (* Mesh class specialized in animated meshes.
-    The TGXActor provides a quick interface to animated meshes based on morph
+    The TgxActor provides a quick interface to animated meshes based on morph
     or skeleton frames, it is capable of performing frame interpolation and
-    animation blending (via TGXAnimationControler components). *)
-  TGXActor = class(TGXBaseMesh)
+    animation blending (via TgxAnimationControler components). *)
+  TgxActor = class(TgxBaseMesh)
   private
     FStartFrame, FEndFrame: Integer;
-    FReference: TGXActorAnimationReference;
+    FReference: TgxActorAnimationReference;
     FCurrentFrame: Integer;
     FCurrentFrameDelta: Single;
-    FFrameInterpolation: TActorFrameInterpolation;
+    FFrameInterpolation: TgxActorFrameInterpolation;
     FInterval: Integer;
     FAnimationMode: TgxActorAnimationMode;
     FOnFrameChanged: TNotifyEvent;
     FOnEndFrameReached, FOnStartFrameReached: TNotifyEvent;
-    FAnimations: TGXActorAnimations;
-    FTargetSmoothAnimation: TGXActorAnimation;
+    FAnimations: TgxActorAnimations;
+    FTargetSmoothAnimation: TgxActorAnimation;
     FControlers: TList;
     FOptions: TgxActorOptions;
   protected
     procedure SetCurrentFrame(val: Integer);
     procedure SetStartFrame(val: Integer);
     procedure SetEndFrame(val: Integer);
-    procedure SetReference(val: TGXActorAnimationReference);
-    procedure SetAnimations(const val: TGXActorAnimations);
+    procedure SetReference(val: TgxActorAnimationReference);
+    procedure SetAnimations(const val: TgxActorAnimations);
     function StoreAnimations: Boolean;
     procedure SetOptions(const val: TgxActorOptions);
     procedure PrepareMesh; override;
     procedure PrepareBuildList(var mrci: TgxRenderContextInfo); override;
     procedure DoAnimate; virtual;
-    procedure RegisterControler(aControler: TGXBaseAnimationControler);
-    procedure UnRegisterControler(aControler: TGXBaseAnimationControler);
+    procedure RegisterControler(aControler: TgxBaseAnimationControler);
+    procedure UnRegisterControler(aControler: TgxBaseAnimationControler);
   public
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
@@ -1221,14 +1221,14 @@ type
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     procedure DoProgress(const progressTime: TGProgressTimes); override;
     procedure LoadFromStream(const filename: string; aStream: TStream); override;
-    procedure SwitchToAnimation(anAnimation: TGXActorAnimation; smooth: Boolean = False); overload;
+    procedure SwitchToAnimation(anAnimation: TgxActorAnimation; smooth: Boolean = False); overload;
     procedure SwitchToAnimation(const AnimationName: string; smooth: Boolean = False); overload;
     procedure SwitchToAnimation(animationIndex: Integer; smooth: Boolean = False); overload;
     function CurrentAnimation: string;
     (* Synchronize self animation with an other actor.
       Copies Start/Current/End Frame values, CurrentFrameDelta,
       AnimationMode and FrameInterpolation. *)
-    procedure Synchronize(referenceActor: TGXActor);
+    procedure Synchronize(referenceActor: TgxActor);
     (* Provides a direct access to FCurrentFrame without any checks.
       Used in TgxActorProxy. *)
     procedure SetCurrentFrameDirect(const Value: Integer);
@@ -1244,13 +1244,13 @@ type
     property endFrame: Integer read FEndFrame write SetEndFrame default 0;
     (* Reference Frame Animation mode.
       Allows specifying if the model is primarily morph or skeleton based. *)
-    property reference: TGXActorAnimationReference read FReference write FReference default aarMorph;
+    property reference: TgxActorAnimationReference read FReference write FReference default aarMorph;
     // Current animation frame.
     property CurrentFrame: Integer read FCurrentFrame write SetCurrentFrame default 0;
     // Value in the [0; 1] range expressing the delta to the next frame.
     property CurrentFrameDelta: Single read FCurrentFrameDelta write FCurrentFrameDelta;
     // Frame interpolation mode (afpNone/afpLinear).
-    property FrameInterpolation: TActorFrameInterpolation read FFrameInterpolation write FFrameInterpolation default afpLinear;
+    property FrameInterpolation: TgxActorFrameInterpolation read FFrameInterpolation write FFrameInterpolation default afpLinear;
     // See TgxActorAnimationMode.
     property AnimationMode: TgxActorAnimationMode read FAnimationMode write FAnimationMode default aamNone;
     // Interval between frames, in milliseconds.
@@ -1264,7 +1264,7 @@ type
     // Triggered after StartFrame has been reached by progression or "nextframe"
     property OnStartFrameReached: TNotifyEvent read FOnStartFrameReached write FOnStartFrameReached;
     // Collection of animations sequences.
-    property Animations: TGXActorAnimations read FAnimations write SetAnimations stored StoreAnimations;
+    property Animations: TgxActorAnimations read FAnimations write SetAnimations stored StoreAnimations;
     property AutoCentering;
     property MaterialLibrary;
     property LightmapLibrary;
@@ -1275,30 +1275,30 @@ type
 
   TgxVectorFileFormat = class
   public
-    VectorFileClass: TGXVectorFileClass;
+    VectorFileClass: TgxVectorFileClass;
     Extension: string;
     Description: string;
     DescResID: Integer;
   end;
 
   // Stores registered vector file Formatx.
-  TGXVectorFileFormatsList = class(TGPersistentObjectList)
+  TgxVectorFileFormatsList = class(TgPersistentObjectList)
   public
     destructor Destroy; override;
-    procedure Add(const Ext, Desc: string; DescID: Integer; AClass: TGXVectorFileClass);
-    function FindExt(Ext: string): TGXVectorFileClass;
-    function FindFromFileName(const filename: string): TGXVectorFileClass;
-    procedure Remove(AClass: TGXVectorFileClass);
-    procedure BuildFilterStrings(VectorFileClass: TGXVectorFileClass; out descriptions, filters: string;
+    procedure Add(const Ext, Desc: string; DescID: Integer; AClass: TgxVectorFileClass);
+    function FindExt(Ext: string): TgxVectorFileClass;
+    function FindFromFileName(const filename: string): TgxVectorFileClass;
+    procedure Remove(AClass: TgxVectorFileClass);
+    procedure BuildFilterStrings(VectorFileClass: TgxVectorFileClass; out descriptions, filters: string;
       formatsThatCanBeOpened: Boolean = True; formatsThatCanBeSaved: Boolean = False);
     function FindExtByIndex(Index: Integer; formatsThatCanBeOpened: Boolean = True;
       formatsThatCanBeSaved: Boolean = False): string;
   end;
 
-  EInvalidVectorFile = class(Exception);
+  EgxInvalidVectorFile = class(Exception);
 
 // Read access to the list of registered vector file formats
-function GetVectorFileFormats: TGXVectorFileFormatsList;
+function GetVectorFileFormats: TgxVectorFileFormatsList;
 // A file extension filter suitable for dialog's 'Filter' property
 function VectorFileFormatsFilter: string;
 // A file extension filter suitable for a savedialog's 'Filter' property
@@ -1307,8 +1307,8 @@ function VectorFileFormatsSaveFilter: string;
   Use VectorFileFormatsFilter to obtain the filter. *)
 function VectorFileFormatExtensionByIndex(Index: Integer): string;
 
-procedure RegisterVectorFileFormat(const aExtension, aDescription: string; AClass: TGXVectorFileClass);
-procedure UnregisterVectorFileClass(AClass: TGXVectorFileClass);
+procedure RegisterVectorFileFormat(const aExtension, aDescription: string; AClass: TgxVectorFileClass);
+procedure UnregisterVectorFileClass(AClass: TgxVectorFileClass);
 
 var
   vVectorFileObjectsAllocateMaterials: Boolean = True;
@@ -1321,16 +1321,16 @@ uses
   GXS.BaseMeshSilhouette;
 
 var
-  vVectorFileFormats: TGXVectorFileFormatsList;
+  vVectorFileFormats: TgxVectorFileFormatsList;
   vNextRenderGroupID: Integer = 1;
 
 const
   cAAFHeader: AnsiString = 'AAF';
 
-function GetVectorFileFormats: TGXVectorFileFormatsList;
+function GetVectorFileFormats: TgxVectorFileFormatsList;
 begin
   if not Assigned(vVectorFileFormats) then
-    vVectorFileFormats := TGXVectorFileFormatsList.Create;
+    vVectorFileFormats := TgxVectorFileFormatsList.Create;
   Result := vVectorFileFormats;
 end;
 
@@ -1338,23 +1338,23 @@ function VectorFileFormatsFilter: string;
 var
   f: string;
 begin
-  GetVectorFileFormats.BuildFilterStrings(TGXVectorFile, Result, f);
+  GetVectorFileFormats.BuildFilterStrings(TgxVectorFile, Result, f);
 end;
 
 function VectorFileFormatsSaveFilter: string;
 var
   f: string;
 begin
-  GetVectorFileFormats.BuildFilterStrings(TGXVectorFile, Result, f, False, True);
+  GetVectorFileFormats.BuildFilterStrings(TgxVectorFile, Result, f, False, True);
 end;
 
-procedure RegisterVectorFileFormat(const aExtension, aDescription: string; AClass: TGXVectorFileClass);
+procedure RegisterVectorFileFormat(const aExtension, aDescription: string; AClass: TgxVectorFileClass);
 begin
   RegisterClass(AClass);
   GetVectorFileFormats.Add(aExtension, aDescription, 0, AClass);
 end;
 
-procedure UnregisterVectorFileClass(AClass: TGXVectorFileClass);
+procedure UnregisterVectorFileClass(AClass: TgxVectorFileClass);
 begin
   if Assigned(vVectorFileFormats) then
     vVectorFileFormats.Remove(AClass);
@@ -1365,13 +1365,13 @@ begin
   Result := GetVectorFileFormats.FindExtByIndex(index);
 end;
 
-destructor TGXVectorFileFormatsList.Destroy;
+destructor TgxVectorFileFormatsList.Destroy;
 begin
   Clean;
   inherited;
 end;
 
-procedure TGXVectorFileFormatsList.Add(const Ext, Desc: string; DescID: Integer; AClass: TGXVectorFileClass);
+procedure TgxVectorFileFormatsList.Add(const Ext, Desc: string; DescID: Integer; AClass: TgxVectorFileClass);
 var
   newRec: TgxVectorFileFormat;
 begin
@@ -1386,7 +1386,7 @@ begin
   inherited Add(newRec);
 end;
 
-function TGXVectorFileFormatsList.FindExt(Ext: string): TGXVectorFileClass;
+function TgxVectorFileFormatsList.FindExt(Ext: string): TgxVectorFileClass;
 var
   i: Integer;
 begin
@@ -1403,7 +1403,7 @@ begin
   Result := nil;
 end;
 
-function TGXVectorFileFormatsList.FindFromFileName(const filename: string): TGXVectorFileClass;
+function TgxVectorFileFormatsList.FindFromFileName(const filename: string): TgxVectorFileClass;
 var
   Ext: string;
 begin
@@ -1411,10 +1411,10 @@ begin
   System.Delete(Ext, 1, 1);
   Result := FindExt(Ext);
   if not Assigned(Result) then
-    raise EInvalidVectorFile.CreateFmt(strUnknownExtension, [Ext, 'GLFile' + UpperCase(Ext)]);
+    raise EgxInvalidVectorFile.CreateFmt(strUnknownExtension, [Ext, 'GLFile' + UpperCase(Ext)]);
 end;
 
-procedure TGXVectorFileFormatsList.Remove(AClass: TGXVectorFileClass);
+procedure TgxVectorFileFormatsList.Remove(AClass: TgxVectorFileClass);
 var
   i: Integer;
 begin
@@ -1425,7 +1425,7 @@ begin
   end;
 end;
 
-procedure TGXVectorFileFormatsList.BuildFilterStrings(VectorFileClass: TGXVectorFileClass; out descriptions, filters: string;
+procedure TgxVectorFileFormatsList.BuildFilterStrings(VectorFileClass: TgxVectorFileClass; out descriptions, filters: string;
   formatsThatCanBeOpened: Boolean = True; formatsThatCanBeSaved: Boolean = False);
 var
   k, i: Integer;
@@ -1460,7 +1460,7 @@ begin
     FmtStr(descriptions, '%s (%s)|%1:s|%s', [sAllFilter, filters, descriptions]);
 end;
 
-function TGXVectorFileFormatsList.FindExtByIndex(Index: Integer; formatsThatCanBeOpened: Boolean = True;
+function TgxVectorFileFormatsList.FindExtByIndex(Index: Integer; formatsThatCanBeOpened: Boolean = True;
   formatsThatCanBeSaved: Boolean = False): string;
 var
   i: Integer;
@@ -1488,37 +1488,37 @@ begin
 end;
 
 // ------------------
-// ------------------ TGXBaseMeshObject ------------------
+// ------------------ TgxBaseMeshObject ------------------
 // ------------------
 
-constructor TGXBaseMeshObject.Create;
+constructor TgxBaseMeshObject.Create;
 begin
-  FVertices := TGAffineVectorList.Create;
-  FNormals := TGAffineVectorList.Create;
+  FVertices := TgAffineVectorList.Create;
+  FNormals := TgAffineVectorList.Create;
   FVisible := True;
   inherited Create;
 end;
 
-destructor TGXBaseMeshObject.Destroy;
+destructor TgxBaseMeshObject.Destroy;
 begin
   FNormals.Free;
   FVertices.Free;
   inherited;
 end;
 
-procedure TGXBaseMeshObject.Assign(Source: TPersistent);
+procedure TgxBaseMeshObject.Assign(Source: TPersistent);
 begin
-  if Source is TGXBaseMeshObject then
+  if Source is TgxBaseMeshObject then
   begin
-    FName := TGXBaseMeshObject(Source).Name;
-    FVertices.Assign(TGXBaseMeshObject(Source).FVertices);
-    FNormals.Assign(TGXBaseMeshObject(Source).FNormals);
+    FName := TgxBaseMeshObject(Source).Name;
+    FVertices.Assign(TgxBaseMeshObject(Source).FVertices);
+    FNormals.Assign(TgxBaseMeshObject(Source).FNormals);
   end
   else
     inherited; // Die!
 end;
 
-procedure TGXBaseMeshObject.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxBaseMeshObject.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -1531,7 +1531,7 @@ begin
   end;
 end;
 
-procedure TGXBaseMeshObject.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxBaseMeshObject.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -1552,29 +1552,29 @@ begin
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TGXBaseMeshObject.Clear;
+procedure TgxBaseMeshObject.Clear;
 begin
   FNormals.Clear;
   FVertices.Clear;
 end;
 
-procedure TGXBaseMeshObject.ContributeToBarycenter(var currentSum: TAffineVector; var nb: Integer);
+procedure TgxBaseMeshObject.ContributeToBarycenter(var currentSum: TAffineVector; var nb: Integer);
 begin
   AddVector(currentSum, FVertices.Sum);
   nb := nb + FVertices.Count;
 end;
 
-procedure TGXBaseMeshObject.Translate(const delta: TAffineVector);
+procedure TgxBaseMeshObject.Translate(const delta: TAffineVector);
 begin
   FVertices.Translate(delta);
 end;
 
-procedure TGXBaseMeshObject.BuildNormals(vertexIndices: TGIntegerList; mode: TGXMeshObjectMode;
-  normalIndices: TGIntegerList = nil);
+procedure TgxBaseMeshObject.BuildNormals(vertexIndices: TgIntegerList; mode: TgxMeshObjectMode;
+  normalIndices: TgIntegerList = nil);
 var
   i, base: Integer;
   n: TAffineVector;
-  newNormals: TGIntegerList;
+  newNormals: TgIntegerList;
 
   function TranslateNewNormal(vertexIndex: Integer; const delta: TAffineVector): Integer;
   var
@@ -1647,7 +1647,7 @@ begin
   begin
     // add new normals
     base := normals.Count;
-    newNormals := TGIntegerList.Create;
+    newNormals := TgIntegerList.Create;
     newNormals.AddSerie(-1, 0, Vertices.Count);
     case mode of
       momTriangles:
@@ -1692,10 +1692,10 @@ begin
   end;
 end;
 
-function TGXBaseMeshObject.ExtractTriangles(texCoords: TGAffineVectorList = nil; normals: TGAffineVectorList = nil)
-  : TGAffineVectorList;
+function TgxBaseMeshObject.ExtractTriangles(texCoords: TgAffineVectorList = nil; normals: TgAffineVectorList = nil)
+  : TgAffineVectorList;
 begin
-  Result := TGAffineVectorList.Create;
+  Result := TgAffineVectorList.Create;
   if (Vertices.Count mod 3) = 0 then
   begin
     Result.Assign(Vertices);
@@ -1704,37 +1704,37 @@ begin
   end;
 end;
 
-procedure TGXBaseMeshObject.SetVertices(const val: TGAffineVectorList);
+procedure TgxBaseMeshObject.SetVertices(const val: TgAffineVectorList);
 begin
   FVertices.Assign(val);
 end;
 
-procedure TGXBaseMeshObject.SetNormals(const val: TGAffineVectorList);
+procedure TgxBaseMeshObject.SetNormals(const val: TgAffineVectorList);
 begin
   FNormals.Assign(val);
 end;
 
 // ------------------
-// ------------------ TGXSkeletonFrame ------------------
+// ------------------ TgxSkeletonFrame ------------------
 // ------------------
 
-constructor TGXSkeletonFrame.CreateOwned(aOwner: TGXSkeletonFrameList);
+constructor TgxSkeletonFrame.CreateOwned(aOwner: TgxSkeletonFrameList);
 begin
   FOwner := aOwner;
   aOwner.Add(Self);
   Create;
 end;
 
-constructor TGXSkeletonFrame.Create;
+constructor TgxSkeletonFrame.Create;
 begin
   inherited Create;
-  FPosition := TGAffineVectorList.Create;
-  FRotation := TGAffineVectorList.Create;
+  FPosition := TgAffineVectorList.Create;
+  FRotation := TgAffineVectorList.Create;
   FQuaternion := TGQuaternionList.Create;
   FTransformMode := sftRotation;
 end;
 
-destructor TGXSkeletonFrame.Destroy;
+destructor TgxSkeletonFrame.Destroy;
 begin
   FlushLocalMatrixList;
   FRotation.Free;
@@ -1743,7 +1743,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TGXSkeletonFrame.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxSkeletonFrame.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -1757,7 +1757,7 @@ begin
   end;
 end;
 
-procedure TGXSkeletonFrame.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxSkeletonFrame.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -1772,7 +1772,7 @@ begin
       if (archiveVersion = 1) then
       begin
         FQuaternion.ReadFromFiler(reader);
-        FTransformMode := TGXSkeletonFrameTransform(ReadInteger);
+        FTransformMode := TgxSkeletonFrameTransform(ReadInteger);
       end;
     end
   else
@@ -1780,22 +1780,22 @@ begin
   FlushLocalMatrixList;
 end;
 
-procedure TGXSkeletonFrame.SetPosition(const val: TGAffineVectorList);
+procedure TgxSkeletonFrame.SetPosition(const val: TgAffineVectorList);
 begin
   FPosition.Assign(val);
 end;
 
-procedure TGXSkeletonFrame.SetRotation(const val: TGAffineVectorList);
+procedure TgxSkeletonFrame.SetRotation(const val: TgAffineVectorList);
 begin
   FRotation.Assign(val);
 end;
 
-procedure TGXSkeletonFrame.SetQuaternion(const val: TGQuaternionList);
+procedure TgxSkeletonFrame.SetQuaternion(const val: TGQuaternionList);
 begin
   FQuaternion.Assign(val);
 end;
 
-function TGXSkeletonFrame.LocalMatrixList: PMatrixArray;
+function TgxSkeletonFrame.LocalMatrixList: PMatrixArray;
 var
   i: Integer;
   s, c: Single;
@@ -1854,7 +1854,7 @@ begin
   Result := FLocalMatrixList;
 end;
 
-procedure TGXSkeletonFrame.FlushLocalMatrixList;
+procedure TgxSkeletonFrame.FlushLocalMatrixList;
 begin
   if Assigned(FLocalMatrixList) then
   begin
@@ -1863,7 +1863,7 @@ begin
   end;
 end;
 
-procedure TGXSkeletonFrame.ConvertQuaternionsToRotations(KeepQuaternions: Boolean = True);
+procedure TgxSkeletonFrame.ConvertQuaternionsToRotations(KeepQuaternions: Boolean = True);
 var
   i: Integer;
   t: TTransformations;
@@ -1882,7 +1882,7 @@ begin
     Quaternion.Clear;
 end;
 
-procedure TGXSkeletonFrame.ConvertRotationsToQuaternions(KeepRotations: Boolean = True);
+procedure TgxSkeletonFrame.ConvertRotationsToQuaternions(KeepRotations: Boolean = True);
 var
   i: Integer;
   mat, rmat: TMatrix4f;
@@ -1908,22 +1908,22 @@ begin
 end;
 
 // ------------------
-// ------------------ TGXSkeletonFrameList ------------------
+// ------------------ TgxSkeletonFrameList ------------------
 // ------------------
 
-constructor TGXSkeletonFrameList.CreateOwned(aOwner: TPersistent);
+constructor TgxSkeletonFrameList.CreateOwned(aOwner: TPersistent);
 begin
   FOwner := aOwner;
   Create;
 end;
 
-destructor TGXSkeletonFrameList.Destroy;
+destructor TgxSkeletonFrameList.Destroy;
 begin
   Clear;
   inherited;
 end;
 
-procedure TGXSkeletonFrameList.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxSkeletonFrameList.ReadFromFiler(reader: TgVirtualReader);
 var
   i: Integer;
 begin
@@ -1932,7 +1932,7 @@ begin
     Items[i].FOwner := Self;
 end;
 
-procedure TGXSkeletonFrameList.Clear;
+procedure TgxSkeletonFrameList.Clear;
 var
   i: Integer;
 begin
@@ -1945,12 +1945,12 @@ begin
   inherited;
 end;
 
-function TGXSkeletonFrameList.GetSkeletonFrame(Index: Integer): TGXSkeletonFrame;
+function TgxSkeletonFrameList.GetSkeletonFrame(Index: Integer): TgxSkeletonFrame;
 begin
-  Result := TGXSkeletonFrame(list^[Index]);
+  Result := TgxSkeletonFrame(list^[Index]);
 end;
 
-procedure TGXSkeletonFrameList.ConvertQuaternionsToRotations(KeepQuaternions: Boolean = True; SetTransformMode: Boolean = True);
+procedure TgxSkeletonFrameList.ConvertQuaternionsToRotations(KeepQuaternions: Boolean = True; SetTransformMode: Boolean = True);
 var
   i: Integer;
 begin
@@ -1962,7 +1962,7 @@ begin
   end;
 end;
 
-procedure TGXSkeletonFrameList.ConvertRotationsToQuaternions(KeepRotations: Boolean = True; SetTransformMode: Boolean = True);
+procedure TgxSkeletonFrameList.ConvertRotationsToQuaternions(KeepRotations: Boolean = True; SetTransformMode: Boolean = True);
 var
   i: Integer;
 begin
@@ -1975,28 +1975,28 @@ begin
 end;
 
 // ------------------
-// ------------------ TGXSkeletonBoneList ------------------
+// ------------------ TgxSkeletonBoneList ------------------
 // ------------------
 
-constructor TGXSkeletonBoneList.CreateOwned(aOwner: TGXSkeleton);
+constructor TgxSkeletonBoneList.CreateOwned(aOwner: TgxSkeleton);
 begin
   FSkeleton := aOwner;
   Create;
 end;
 
-constructor TGXSkeletonBoneList.Create;
+constructor TgxSkeletonBoneList.Create;
 begin
   inherited;
   FGlobalMatrix := IdentityHmgMatrix;
 end;
 
-destructor TGXSkeletonBoneList.Destroy;
+destructor TgxSkeletonBoneList.Destroy;
 begin
   Clean;
   inherited;
 end;
 
-procedure TGXSkeletonBoneList.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxSkeletonBoneList.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -2006,7 +2006,7 @@ begin
   end;
 end;
 
-procedure TGXSkeletonBoneList.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxSkeletonBoneList.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion, i: Integer;
 begin
@@ -2023,21 +2023,21 @@ begin
     Items[i].FOwner := Self;
 end;
 
-procedure TGXSkeletonBoneList.AfterObjectCreatedByReader(Sender: TObject);
+procedure TgxSkeletonBoneList.AfterObjectCreatedByReader(Sender: TObject);
 begin
-  with (Sender as TGXSkeletonBone) do
+  with (Sender as TgxSkeletonBone) do
   begin
     FOwner := Self;
     FSkeleton := Self.Skeleton;
   end;
 end;
 
-function TGXSkeletonBoneList.GetSkeletonBone(Index: Integer): TGXSkeletonBone;
+function TgxSkeletonBoneList.GetSkeletonBone(Index: Integer): TgxSkeletonBone;
 begin
-  Result := TGXSkeletonBone(list^[Index]);
+  Result := TgxSkeletonBone(list^[Index]);
 end;
 
-function TGXSkeletonBoneList.BoneByID(anID: Integer): TGXSkeletonBone;
+function TgxSkeletonBoneList.BoneByID(anID: Integer): TgxSkeletonBone;
 var
   i: Integer;
 begin
@@ -2050,7 +2050,7 @@ begin
   end;
 end;
 
-function TGXSkeletonBoneList.BoneByName(const aName: string): TGXSkeletonBone;
+function TgxSkeletonBoneList.BoneByName(const aName: string): TgxSkeletonBone;
 var
   i: Integer;
 begin
@@ -2063,7 +2063,7 @@ begin
   end;
 end;
 
-function TGXSkeletonBoneList.BoneCount: Integer;
+function TgxSkeletonBoneList.BoneCount: Integer;
 var
   i: Integer;
 begin
@@ -2072,7 +2072,7 @@ begin
     Inc(Result, Items[i].BoneCount);
 end;
 
-procedure TGXSkeletonBoneList.PrepareGlobalMatrices;
+procedure TgxSkeletonBoneList.PrepareGlobalMatrices;
 var
   i: Integer;
 begin
@@ -2081,10 +2081,10 @@ begin
 end;
 
 // ------------------
-// ------------------ TGXSkeletonRootBoneList ------------------
+// ------------------ TgxSkeletonRootBoneList ------------------
 // ------------------
 
-procedure TGXSkeletonRootBoneList.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxSkeletonRootBoneList.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -2094,7 +2094,7 @@ begin
   end;
 end;
 
-procedure TGXSkeletonRootBoneList.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxSkeletonRootBoneList.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion, i: Integer;
 begin
@@ -2111,7 +2111,7 @@ begin
     Items[i].FOwner := Self;
 end;
 
-procedure TGXSkeletonRootBoneList.BuildList(var mrci: TgxRenderContextInfo);
+procedure TgxSkeletonRootBoneList.BuildList(var mrci: TgxRenderContextInfo);
 var
   i: Integer;
 begin
@@ -2125,10 +2125,10 @@ begin
 end;
 
 // ------------------
-// ------------------ TGXSkeletonBone ------------------
+// ------------------ TgxSkeletonBone ------------------
 // ------------------
 
-constructor TGXSkeletonBone.CreateOwned(aOwner: TGXSkeletonBoneList);
+constructor TgxSkeletonBone.CreateOwned(aOwner: TgxSkeletonBoneList);
 begin
   FOwner := aOwner;
   aOwner.Add(Self);
@@ -2136,20 +2136,20 @@ begin
   Create;
 end;
 
-constructor TGXSkeletonBone.Create;
+constructor TgxSkeletonBone.Create;
 begin
   FColor := $FFFFFFFF; // opaque white
   inherited;
 end;
 
-destructor TGXSkeletonBone.Destroy;
+destructor TgxSkeletonBone.Destroy;
 begin
   if Assigned(Owner) then
     Owner.Remove(Self);
   inherited Destroy;
 end;
 
-procedure TGXSkeletonBone.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxSkeletonBone.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -2161,7 +2161,7 @@ begin
   end;
 end;
 
-procedure TGXSkeletonBone.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxSkeletonBone.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion, i: Integer;
 begin
@@ -2180,7 +2180,7 @@ begin
     Items[i].FOwner := Self;
 end;
 
-procedure TGXSkeletonBone.BuildList(var mrci: TgxRenderContextInfo);
+procedure TgxSkeletonBone.BuildList(var mrci: TgxRenderContextInfo);
 
   procedure IssueColor(Color: Cardinal);
   begin
@@ -2197,10 +2197,10 @@ begin
   glVertex3fv(@GlobalMatrix.W.X);
   glEnd;
   // parent-self bone line
-  if Owner is TGXSkeletonBone then
+  if Owner is TgxSkeletonBone then
   begin
     glBegin(GL_LINES);
-    glVertex3fv(@TGXSkeletonBone(Owner).GlobalMatrix.W.X);
+    glVertex3fv(@TgxSkeletonBone(Owner).GlobalMatrix.W.X);
     glVertex3fv(@GlobalMatrix.W.X);
     glEnd;
   end;
@@ -2209,17 +2209,17 @@ begin
     Items[i].BuildList(mrci);
 end;
 
-function TGXSkeletonBone.GetSkeletonBone(Index: Integer): TGXSkeletonBone;
+function TgxSkeletonBone.GetSkeletonBone(Index: Integer): TgxSkeletonBone;
 begin
-  Result := TGXSkeletonBone(list^[Index]);
+  Result := TgxSkeletonBone(list^[Index]);
 end;
 
-procedure TGXSkeletonBone.SetColor(const val: Cardinal);
+procedure TgxSkeletonBone.SetColor(const val: Cardinal);
 begin
   FColor := val;
 end;
 
-function TGXSkeletonBone.BoneByID(anID: Integer): TGXSkeletonBone;
+function TgxSkeletonBone.BoneByID(anID: Integer): TgxSkeletonBone;
 begin
   if BoneID = anID then
     Result := Self
@@ -2227,7 +2227,7 @@ begin
     Result := inherited BoneByID(anID);
 end;
 
-function TGXSkeletonBone.BoneByName(const aName: string): TGXSkeletonBone;
+function TgxSkeletonBone.BoneByName(const aName: string): TgxSkeletonBone;
 begin
   if Name = aName then
     Result := Self
@@ -2235,27 +2235,27 @@ begin
     Result := inherited BoneByName(aName);
 end;
 
-procedure TGXSkeletonBone.Clean;
+procedure TgxSkeletonBone.Clean;
 begin
   BoneID := 0;
   Name := '';
   inherited;
 end;
 
-procedure TGXSkeletonBone.PrepareGlobalMatrices;
+procedure TgxSkeletonBone.PrepareGlobalMatrices;
 begin
   if (Skeleton.FRagDollEnabled) then
     Exit; // ragdoll
-  FGlobalMatrix := MatrixMultiply(Skeleton.CurrentFrame.LocalMatrixList^[BoneID], TGXSkeletonBoneList(Owner).FGlobalMatrix);
+  FGlobalMatrix := MatrixMultiply(Skeleton.CurrentFrame.LocalMatrixList^[BoneID], TgxSkeletonBoneList(Owner).FGlobalMatrix);
   inherited;
 end;
 
-procedure TGXSkeletonBone.SetGlobalMatrix(Matrix: TMatrix4f); // ragdoll
+procedure TgxSkeletonBone.SetGlobalMatrix(Matrix: TMatrix4f); // ragdoll
 begin
   FGlobalMatrix := Matrix;
 end;
 
-procedure TGXSkeletonBone.SetGlobalMatrixForRagDoll(RagDollMatrix: TMatrix4f);
+procedure TgxSkeletonBone.SetGlobalMatrixForRagDoll(RagDollMatrix: TMatrix4f);
 // ragdoll
 begin
   FGlobalMatrix := MatrixMultiply(RagDollMatrix, Skeleton.Owner.InvAbsoluteMatrix);
@@ -2263,10 +2263,10 @@ begin
 end;
 
 // ------------------
-// ------------------ TGXSkeletonCollider ------------------
+// ------------------ TgxSkeletonCollider ------------------
 // ------------------
 
-constructor TGXSkeletonCollider.Create;
+constructor TgxSkeletonCollider.Create;
 begin
   inherited;
   FLocalMatrix := IdentityHmgMatrix;
@@ -2274,7 +2274,7 @@ begin
   FAutoUpdate := True;
 end;
 
-constructor TGXSkeletonCollider.CreateOwned(aOwner: TGXSkeletonColliderList);
+constructor TgxSkeletonCollider.CreateOwned(aOwner: TgxSkeletonColliderList);
 begin
   Create;
   FOwner := aOwner;
@@ -2282,7 +2282,7 @@ begin
     FOwner.Add(Self);
 end;
 
-procedure TGXSkeletonCollider.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxSkeletonCollider.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -2296,7 +2296,7 @@ begin
   end;
 end;
 
-procedure TGXSkeletonCollider.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxSkeletonCollider.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -2312,15 +2312,15 @@ begin
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TGXSkeletonCollider.AlignCollider;
+procedure TgxSkeletonCollider.AlignCollider;
 var
   mat: TMatrix4f;
 begin
   if Assigned(FBone) then
   begin
-    if Owner.Owner is TGXSkeleton then
-      if TGXSkeleton(Owner.Owner).Owner is TgxBaseSceneObject then
-        mat := MatrixMultiply(FBone.GlobalMatrix, TgxBaseSceneObject(TGXSkeleton(Owner.Owner).Owner).AbsoluteMatrix)
+    if Owner.Owner is TgxSkeleton then
+      if TgxSkeleton(Owner.Owner).Owner is TgxBaseSceneObject then
+        mat := MatrixMultiply(FBone.GlobalMatrix, TgxBaseSceneObject(TgxSkeleton(Owner.Owner).Owner).AbsoluteMatrix)
       else
         mat := FBone.GlobalMatrix;
     MatrixMultiply(FLocalMatrix, mat, FGlobalMatrix);
@@ -2329,39 +2329,39 @@ begin
     FGlobalMatrix := FLocalMatrix;
 end;
 
-procedure TGXSkeletonCollider.SetBone(const val: TGXSkeletonBone);
+procedure TgxSkeletonCollider.SetBone(const val: TgxSkeletonBone);
 begin
   if val <> FBone then
     FBone := val;
 end;
 
-procedure TGXSkeletonCollider.SetLocalMatrix(const val: TMatrix4f);
+procedure TgxSkeletonCollider.SetLocalMatrix(const val: TMatrix4f);
 begin
   FLocalMatrix := val;
 end;
 
 // ------------------
-// ------------------ TGXSkeletonColliderList ------------------
+// ------------------ TgxSkeletonColliderList ------------------
 // ------------------
 
-constructor TGXSkeletonColliderList.CreateOwned(aOwner: TPersistent);
+constructor TgxSkeletonColliderList.CreateOwned(aOwner: TPersistent);
 begin
   Create;
   FOwner := aOwner;
 end;
 
-destructor TGXSkeletonColliderList.Destroy;
+destructor TgxSkeletonColliderList.Destroy;
 begin
   Clear;
   inherited;
 end;
 
-function TGXSkeletonColliderList.GetSkeletonCollider(Index: Integer): TGXSkeletonCollider;
+function TgxSkeletonColliderList.GetSkeletonCollider(Index: Integer): TgxSkeletonCollider;
 begin
-  Result := TGXSkeletonCollider(inherited Get(index));
+  Result := TgxSkeletonCollider(inherited Get(index));
 end;
 
-procedure TGXSkeletonColliderList.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxSkeletonColliderList.ReadFromFiler(reader: TgVirtualReader);
 var
   i: Integer;
 begin
@@ -2369,12 +2369,12 @@ begin
   for i := 0 to Count - 1 do
   begin
     Items[i].FOwner := Self;
-    if (Owner is TGXSkeleton) and (Items[i].FBoneID <> -1) then
-      Items[i].Bone := TGXSkeleton(Owner).BoneByID(Items[i].FBoneID);
+    if (Owner is TgxSkeleton) and (Items[i].FBoneID <> -1) then
+      Items[i].Bone := TgxSkeleton(Owner).BoneByID(Items[i].FBoneID);
   end;
 end;
 
-procedure TGXSkeletonColliderList.Clear;
+procedure TgxSkeletonColliderList.Clear;
 var
   i: Integer;
 begin
@@ -2386,7 +2386,7 @@ begin
   inherited;
 end;
 
-procedure TGXSkeletonColliderList.AlignColliders;
+procedure TgxSkeletonColliderList.AlignColliders;
 var
   i: Integer;
 begin
@@ -2396,24 +2396,24 @@ begin
 end;
 
 // ------------------
-// ------------------ TGXSkeleton ------------------
+// ------------------ TgxSkeleton ------------------
 // ------------------
 
-constructor TGXSkeleton.CreateOwned(aOwner: TGXBaseMesh);
+constructor TgxSkeleton.CreateOwned(aOwner: TgxBaseMesh);
 begin
   FOwner := aOwner;
   Create;
 end;
 
-constructor TGXSkeleton.Create;
+constructor TgxSkeleton.Create;
 begin
   inherited Create;
-  FRootBones := TGXSkeletonRootBoneList.CreateOwned(Self);
-  FFrames := TGXSkeletonFrameList.CreateOwned(Self);
-  FColliders := TGXSkeletonColliderList.CreateOwned(Self);
+  FRootBones := TgxSkeletonRootBoneList.CreateOwned(Self);
+  FFrames := TgxSkeletonFrameList.CreateOwned(Self);
+  FColliders := TgxSkeletonColliderList.CreateOwned(Self);
 end;
 
-destructor TGXSkeleton.Destroy;
+destructor TgxSkeleton.Destroy;
 begin
   FlushBoneByIDCache;
   FCurrentFrame.Free;
@@ -2423,7 +2423,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TGXSkeleton.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxSkeleton.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -2439,7 +2439,7 @@ begin
   end;
 end;
 
-procedure TGXSkeleton.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxSkeleton.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -2457,44 +2457,44 @@ begin
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TGXSkeleton.SetRootBones(const val: TGXSkeletonRootBoneList);
+procedure TgxSkeleton.SetRootBones(const val: TgxSkeletonRootBoneList);
 begin
   FRootBones.Assign(val);
 end;
 
-procedure TGXSkeleton.SetFrames(const val: TGXSkeletonFrameList);
+procedure TgxSkeleton.SetFrames(const val: TgxSkeletonFrameList);
 begin
   FFrames.Assign(val);
 end;
 
-function TGXSkeleton.GetCurrentFrame: TGXSkeletonFrame;
+function TgxSkeleton.GetCurrentFrame: TgxSkeletonFrame;
 begin
   if not Assigned(FCurrentFrame) then
-    FCurrentFrame := TGXSkeletonFrame(FFrames.Items[0].CreateClone);
+    FCurrentFrame := TgxSkeletonFrame(FFrames.Items[0].CreateClone);
   Result := FCurrentFrame;
 end;
 
-procedure TGXSkeleton.SetCurrentFrame(val: TGXSkeletonFrame);
+procedure TgxSkeleton.SetCurrentFrame(val: TgxSkeletonFrame);
 begin
   if Assigned(FCurrentFrame) then
     FCurrentFrame.Free;
-  FCurrentFrame := TGXSkeletonFrame(val.CreateClone);
+  FCurrentFrame := TgxSkeletonFrame(val.CreateClone);
 end;
 
-procedure TGXSkeleton.SetColliders(const val: TGXSkeletonColliderList);
+procedure TgxSkeleton.SetColliders(const val: TgxSkeletonColliderList);
 begin
   FColliders.Assign(val);
 end;
 
-procedure TGXSkeleton.FlushBoneByIDCache;
+procedure TgxSkeleton.FlushBoneByIDCache;
 begin
   FBonesByIDCache.Free;
   FBonesByIDCache := nil;
 end;
 
-function TGXSkeleton.BoneByID(anID: Integer): TGXSkeletonBone;
+function TgxSkeleton.BoneByID(anID: Integer): TgxSkeletonBone;
 
-  procedure CollectBones(Bone: TGXSkeletonBone);
+  procedure CollectBones(Bone: TgxSkeletonBone);
   var
     i: Integer;
   begin
@@ -2514,34 +2514,34 @@ begin
     for i := 0 to RootBones.Count - 1 do
       CollectBones(RootBones[i]);
   end;
-  Result := TGXSkeletonBone(FBonesByIDCache[anID])
+  Result := TgxSkeletonBone(FBonesByIDCache[anID])
 end;
 
-function TGXSkeleton.BoneByName(const aName: string): TGXSkeletonBone;
+function TgxSkeleton.BoneByName(const aName: string): TgxSkeletonBone;
 begin
   Result := RootBones.BoneByName(aName);
 end;
 
-function TGXSkeleton.BoneCount: Integer;
+function TgxSkeleton.BoneCount: Integer;
 begin
   Result := RootBones.BoneCount;
 end;
 
-procedure TGXSkeleton.MorphTo(frameIndex: Integer);
+procedure TgxSkeleton.MorphTo(frameIndex: Integer);
 begin
   CurrentFrame := Frames[frameIndex];
 end;
 
-procedure TGXSkeleton.MorphTo(frame: TGXSkeletonFrame);
+procedure TgxSkeleton.MorphTo(frame: TgxSkeletonFrame);
 begin
   CurrentFrame := frame;
 end;
 
-procedure TGXSkeleton.Lerp(frameIndex1, frameIndex2: Integer; lerpFactor: Single);
+procedure TgxSkeleton.Lerp(frameIndex1, frameIndex2: Integer; lerpFactor: Single);
 begin
   if Assigned(FCurrentFrame) then
     FCurrentFrame.Free;
-  FCurrentFrame := TGXSkeletonFrame.Create;
+  FCurrentFrame := TgxSkeletonFrame.Create;
   FCurrentFrame.TransformMode := Frames[frameIndex1].TransformMode;
   with FCurrentFrame do
   begin
@@ -2555,11 +2555,11 @@ begin
   end;
 end;
 
-procedure TGXSkeleton.BlendedLerps(const lerpInfos: array of TGXBlendedLerpInfo);
+procedure TgxSkeleton.BlendedLerps(const lerpInfos: array of TGXBlendedLerpInfo);
 var
   i, n: Integer;
-  blendPositions: TGAffineVectorList;
-  blendRotations: TGAffineVectorList;
+  blendPositions: TgAffineVectorList;
+  blendRotations: TgAffineVectorList;
   blendQuaternions: TGQuaternionList;
 begin
   n := High(lerpInfos) - Low(lerpInfos) + 1;
@@ -2575,11 +2575,11 @@ begin
   begin
     if Assigned(FCurrentFrame) then
       FCurrentFrame.Free;
-    FCurrentFrame := TGXSkeletonFrame.Create;
+    FCurrentFrame := TgxSkeletonFrame.Create;
     FCurrentFrame.TransformMode := Frames[lerpInfos[i].frameIndex1].TransformMode;
     with FCurrentFrame do
     begin
-      blendPositions := TGAffineVectorList.Create;
+      blendPositions := TgAffineVectorList.Create;
       // lerp first item separately
       Position.Lerp(Frames[lerpInfos[i].frameIndex1].Position, Frames[lerpInfos[i].frameIndex2].Position,
         lerpInfos[i].lerpFactor);
@@ -2606,7 +2606,7 @@ begin
       case TransformMode of
         sftRotation:
           begin
-            blendRotations := TGAffineVectorList.Create;
+            blendRotations := TgAffineVectorList.Create;
             // lerp first item separately
             Rotation.AngleLerp(Frames[lerpInfos[i].frameIndex1].Rotation, Frames[lerpInfos[i].frameIndex2].Rotation,
               lerpInfos[i].lerpFactor);
@@ -2654,7 +2654,7 @@ begin
   end;
 end;
 
-procedure TGXSkeleton.MakeSkeletalTranslationStatic(startFrame, endFrame: Integer);
+procedure TgxSkeleton.MakeSkeletalTranslationStatic(startFrame, endFrame: Integer);
 var
   delta: TAffineVector;
   i: Integer;
@@ -2668,7 +2668,7 @@ begin
     Frames[i].Position[0] := VectorCombine(Frames[i].Position[0], delta, 1, (i - startFrame) * f);
 end;
 
-procedure TGXSkeleton.MakeSkeletalRotationDelta(startFrame, endFrame: Integer);
+procedure TgxSkeleton.MakeSkeletalRotationDelta(startFrame, endFrame: Integer);
 var
   i, j: Integer;
   v: TAffineVector;
@@ -2689,10 +2689,10 @@ begin
   end;
 end;
 
-procedure TGXSkeleton.MorphMesh(normalize: Boolean);
+procedure TgxSkeleton.MorphMesh(normalize: Boolean);
 var
   i: Integer;
-  Mesh: TGXBaseMeshObject;
+  Mesh: TgxBaseMeshObject;
 begin
   if Owner.MeshObjects.Count > 0 then
   begin
@@ -2704,26 +2704,26 @@ begin
       for i := 0 to Owner.MeshObjects.Count - 1 do
       begin
         Mesh := Owner.MeshObjects.Items[i];
-        if (Mesh is TGXSkeletonMeshObject) then
-          TGXSkeletonMeshObject(Mesh).ApplyCurrentSkeletonFrame(normalize);
+        if (Mesh is TgxSkeletonMeshObject) then
+          TgxSkeletonMeshObject(Mesh).ApplyCurrentSkeletonFrame(normalize);
       end
     else
       for i := 0 to Owner.MeshObjects.Count - 1 do
       begin
         Mesh := Owner.MeshObjects.Items[i];
-        if (Mesh is TGXSkeletonMeshObject) and Mesh.Visible then
-          TGXSkeletonMeshObject(Mesh).ApplyCurrentSkeletonFrame(normalize);
+        if (Mesh is TgxSkeletonMeshObject) and Mesh.Visible then
+          TgxSkeletonMeshObject(Mesh).ApplyCurrentSkeletonFrame(normalize);
       end
   end;
 end;
 
-procedure TGXSkeleton.Synchronize(reference: TGXSkeleton);
+procedure TgxSkeleton.Synchronize(reference: TgxSkeleton);
 begin
   CurrentFrame.Assign(reference.CurrentFrame);
   MorphMesh(True);
 end;
 
-procedure TGXSkeleton.Clear;
+procedure TgxSkeleton.Clear;
 begin
   FlushBoneByIDCache;
   RootBones.Clean;
@@ -2733,10 +2733,10 @@ begin
   FColliders.Clear;
 end;
 
-procedure TGXSkeleton.StartRagdoll; // ragdoll
+procedure TgxSkeleton.StartRagdoll; // ragdoll
 var
   i: Integer;
-  Mesh: TGXBaseMeshObject;
+  Mesh: TgxBaseMeshObject;
 begin
   if FRagDollEnabled then
     Exit
@@ -2748,19 +2748,19 @@ begin
     for i := 0 to Owner.MeshObjects.Count - 1 do
     begin
       Mesh := Owner.MeshObjects.Items[i];
-      if Mesh is TGXSkeletonMeshObject then
+      if Mesh is TgxSkeletonMeshObject then
       begin
-        TGXSkeletonMeshObject(Mesh).BackupBoneMatrixInvertedMeshes;
-        TGXSkeletonMeshObject(Mesh).PrepareBoneMatrixInvertedMeshes;
+        TgxSkeletonMeshObject(Mesh).BackupBoneMatrixInvertedMeshes;
+        TgxSkeletonMeshObject(Mesh).PrepareBoneMatrixInvertedMeshes;
       end;
     end;
   end;
 end;
 
-procedure TGXSkeleton.StopRagdoll; // ragdoll
+procedure TgxSkeleton.StopRagdoll; // ragdoll
 var
   i: Integer;
-  Mesh: TGXBaseMeshObject;
+  Mesh: TgxBaseMeshObject;
 begin
   FRagDollEnabled := False;
   if Owner.MeshObjects.Count > 0 then
@@ -2768,17 +2768,17 @@ begin
     for i := 0 to Owner.MeshObjects.Count - 1 do
     begin
       Mesh := Owner.MeshObjects.Items[i];
-      if Mesh is TGXSkeletonMeshObject then
-        TGXSkeletonMeshObject(Mesh).RestoreBoneMatrixInvertedMeshes;
+      if Mesh is TgxSkeletonMeshObject then
+        TgxSkeletonMeshObject(Mesh).RestoreBoneMatrixInvertedMeshes;
     end;
   end;
 end;
 
 // ------------------
-// ------------------ TGXMeshObject ------------------
+// ------------------ TgxMeshObject ------------------
 // ------------------
 
-constructor TGXMeshObject.CreateOwned(aOwner: TGXMeshObjectList);
+constructor TgxMeshObject.CreateOwned(aOwner: TgxMeshObjectList);
 begin
   FOwner := aOwner;
   Create;
@@ -2786,13 +2786,13 @@ begin
     FOwner.Add(Self);
 end;
 
-constructor TGXMeshObject.Create;
+constructor TgxMeshObject.Create;
 begin
   FMode := momTriangles;
-  FTexCoords := TGAffineVectorList.Create;
-  FLightMapTexCoords := TGAffineVectorList.Create;
+  FTexCoords := TgAffineVectorList.Create;
+  FLightMapTexCoords := TgAffineVectorList.Create;
   FColors := TGVectorList.Create;
-  FFaceGroups := TGXFaceGroups.CreateOwned(Self);
+  FFaceGroups := TgxFaceGroups.CreateOwned(Self);
   FTexCoordsEx := TList.Create;
   FTangentsTexCoordIndex := 1;
   FBinormalsTexCoordIndex := 2;
@@ -2801,7 +2801,7 @@ begin
   inherited;
 end;
 
-destructor TGXMeshObject.Destroy;
+destructor TgxMeshObject.Destroy;
 var
   i: Integer;
 begin
@@ -2824,39 +2824,39 @@ begin
   inherited;
 end;
 
-procedure TGXMeshObject.Assign(Source: TPersistent);
+procedure TgxMeshObject.Assign(Source: TPersistent);
 var
   i: Integer;
 begin
   inherited Assign(Source);
 
-  if Source is TGXMeshObject then
+  if Source is TgxMeshObject then
   begin
-    FTexCoords.Assign(TGXMeshObject(Source).FTexCoords);
-    FLightMapTexCoords.Assign(TGXMeshObject(Source).FLightMapTexCoords);
-    FColors.Assign(TGXMeshObject(Source).FColors);
-    FFaceGroups.Assign(TGXMeshObject(Source).FFaceGroups);
-    FMode := TGXMeshObject(Source).FMode;
-    FRenderingOptions := TGXMeshObject(Source).FRenderingOptions;
-    FBinormalsTexCoordIndex := TGXMeshObject(Source).FBinormalsTexCoordIndex;
-    FTangentsTexCoordIndex := TGXMeshObject(Source).FTangentsTexCoordIndex;
+    FTexCoords.Assign(TgxMeshObject(Source).FTexCoords);
+    FLightMapTexCoords.Assign(TgxMeshObject(Source).FLightMapTexCoords);
+    FColors.Assign(TgxMeshObject(Source).FColors);
+    FFaceGroups.Assign(TgxMeshObject(Source).FFaceGroups);
+    FMode := TgxMeshObject(Source).FMode;
+    FRenderingOptions := TgxMeshObject(Source).FRenderingOptions;
+    FBinormalsTexCoordIndex := TgxMeshObject(Source).FBinormalsTexCoordIndex;
+    FTangentsTexCoordIndex := TgxMeshObject(Source).FTangentsTexCoordIndex;
 
     // Clear FTexCoordsEx.
     for i := 0 to FTexCoordsEx.Count - 1 do
       TGVectorList(FTexCoordsEx[i]).Free;
 
-    FTexCoordsEx.Count := TGXMeshObject(Source).FTexCoordsEx.Count;
+    FTexCoordsEx.Count := TgxMeshObject(Source).FTexCoordsEx.Count;
 
     // Fill FTexCoordsEx.
     for i := 0 to FTexCoordsEx.Count - 1 do
     begin
       FTexCoordsEx[i] := TGVectorList.Create;
-      TGVectorList(FTexCoordsEx[i]).Assign(TGXMeshObject(Source).FTexCoordsEx[i]);
+      TGVectorList(FTexCoordsEx[i]).Assign(TgxMeshObject(Source).FTexCoordsEx[i]);
     end;
   end;
 end;
 
-procedure TGXMeshObject.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxMeshObject.WriteToFiler(writer: TgVirtualWriter);
 var
   i: Integer;
 begin
@@ -2879,7 +2879,7 @@ begin
   end;
 end;
 
-procedure TGXMeshObject.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxMeshObject.ReadFromFiler(reader: TgVirtualReader);
 var
   i, Count, archiveVersion: Integer;
   lOldLightMapTexCoords: TGTexPointList;
@@ -2916,11 +2916,11 @@ begin
 
       FColors.ReadFromFiler(reader);
       FFaceGroups.ReadFromFiler(reader);
-      FMode := TGXMeshObjectMode(ReadInteger);
+      FMode := TgxMeshObjectMode(ReadInteger);
       size := ReadInteger;
       ro := 0;
       Read(ro, size);
-      FRenderingOptions := TGXMeshObjectRenderingOptions(Byte(ro));
+      FRenderingOptions := TgxMeshObjectRenderingOptions(Byte(ro));
       if archiveVersion >= 2 then
       begin
         Count := ReadInteger;
@@ -2934,7 +2934,7 @@ begin
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TGXMeshObject.Clear;
+procedure TgxMeshObject.Clear;
 var
   i: Integer;
 begin
@@ -2947,8 +2947,8 @@ begin
     TexCoordsEx[i].Clear;
 end;
 
-function TGXMeshObject.ExtractTriangles(texCoords: TGAffineVectorList = nil; normals: TGAffineVectorList = nil)
-  : TGAffineVectorList;
+function TgxMeshObject.ExtractTriangles(texCoords: TgAffineVectorList = nil; normals: TgAffineVectorList = nil)
+  : TgAffineVectorList;
 begin
   case mode of
     momTriangles:
@@ -2961,7 +2961,7 @@ begin
       end;
     momTriangleStrip:
       begin
-        Result := TGAffineVectorList.Create;
+        Result := TgAffineVectorList.Create;
         ConvertStripToList(Vertices, Result);
         if Assigned(texCoords) then
           ConvertStripToList(Self.texCoords, texCoords);
@@ -2970,7 +2970,7 @@ begin
       end;
     momFaceGroups:
       begin
-        Result := TGAffineVectorList.Create;
+        Result := TgAffineVectorList.Create;
         FaceGroups.AddToTriangles(Result, texCoords, normals);
       end;
   else
@@ -2979,7 +2979,7 @@ begin
   end;
 end;
 
-function TGXMeshObject.TriangleCount: Integer;
+function TgxMeshObject.TriangleCount: Integer;
 var
   i: Integer;
 begin
@@ -3004,17 +3004,17 @@ begin
   end;
 end;
 
-procedure TGXMeshObject.PrepareMaterialLibraryCache(matLib: TgxMaterialLibrary);
+procedure TgxMeshObject.PrepareMaterialLibraryCache(matLib: TgxMaterialLibrary);
 begin
   FaceGroups.PrepareMaterialLibraryCache(matLib);
 end;
 
-procedure TGXMeshObject.DropMaterialLibraryCache;
+procedure TgxMeshObject.DropMaterialLibraryCache;
 begin
   FaceGroups.DropMaterialLibraryCache;
 end;
 
-procedure TGXMeshObject.GetExtents(out min, max: TAffineVector);
+procedure TgxMeshObject.GetExtents(out min, max: TAffineVector);
 begin
   if FVertices.Revision <> FExtentCacheRevision then
   begin
@@ -3025,7 +3025,7 @@ begin
   max := FExtentCache.max;
 end;
 
-procedure TGXMeshObject.GetExtents(out aabb: TAABB);
+procedure TgxMeshObject.GetExtents(out aabb: TAABB);
 begin
   if FVertices.Revision <> FExtentCacheRevision then
   begin
@@ -3035,7 +3035,7 @@ begin
   aabb := FExtentCache;
 end;
 
-function TGXMeshObject.GetBarycenter: TVector4f;
+function TgxMeshObject.GetBarycenter: TVector4f;
 var
   dMin, dMax: TAffineVector;
 begin
@@ -3047,7 +3047,7 @@ begin
   Result.W := 0;
 end;
 
-procedure TGXMeshObject.Prepare;
+procedure TgxMeshObject.Prepare;
 var
   i: Integer;
 begin
@@ -3056,7 +3056,7 @@ begin
     FaceGroups[i].Prepare;
 end;
 
-function TGXMeshObject.PointInObject(const aPoint: TAffineVector): Boolean;
+function TgxMeshObject.PointInObject(const aPoint: TAffineVector): Boolean;
 var
   min, max: TAffineVector;
 begin
@@ -3065,27 +3065,27 @@ begin
     and (aPoint.Z <= max.Z);
 end;
 
-procedure TGXMeshObject.SetTexCoords(const val: TGAffineVectorList);
+procedure TgxMeshObject.SetTexCoords(const val: TgAffineVectorList);
 begin
   FTexCoords.Assign(val);
 end;
 
-procedure TGXMeshObject.SetLightmapTexCoords(const val: TGAffineVectorList);
+procedure TgxMeshObject.SetLightmapTexCoords(const val: TgAffineVectorList);
 begin
   FLightMapTexCoords.Assign(val);
 end;
 
-procedure TGXMeshObject.SetColors(const val: TGVectorList);
+procedure TgxMeshObject.SetColors(const val: TGVectorList);
 begin
   FColors.Assign(val);
 end;
 
-procedure TGXMeshObject.SetTexCoordsEx(Index: Integer; const val: TGVectorList);
+procedure TgxMeshObject.SetTexCoordsEx(Index: Integer; const val: TGVectorList);
 begin
   TexCoordsEx[index].Assign(val);
 end;
 
-function TGXMeshObject.GetTexCoordsEx(Index: Integer): TGVectorList;
+function TgxMeshObject.GetTexCoordsEx(Index: Integer): TGVectorList;
 var
   i: Integer;
 begin
@@ -3095,17 +3095,17 @@ begin
   Result := TGVectorList(FTexCoordsEx[index]);
 end;
 
-procedure TGXMeshObject.SetBinormals(const val: TGVectorList);
+procedure TgxMeshObject.SetBinormals(const val: TGVectorList);
 begin
   Binormals.Assign(val);
 end;
 
-function TGXMeshObject.GetBinormals: TGVectorList;
+function TgxMeshObject.GetBinormals: TGVectorList;
 begin
   Result := TexCoordsEx[BinormalsTexCoordIndex];
 end;
 
-procedure TGXMeshObject.SetBinormalsTexCoordIndex(const val: Integer);
+procedure TgxMeshObject.SetBinormalsTexCoordIndex(const val: Integer);
 begin
   Assert(val >= 0);
   if val <> FBinormalsTexCoordIndex then
@@ -3114,17 +3114,17 @@ begin
   end;
 end;
 
-procedure TGXMeshObject.SetTangents(const val: TGVectorList);
+procedure TgxMeshObject.SetTangents(const val: TGVectorList);
 begin
   Tangents.Assign(val);
 end;
 
-function TGXMeshObject.GetTangents: TGVectorList;
+function TgxMeshObject.GetTangents: TGVectorList;
 begin
   Result := TexCoordsEx[TangentsTexCoordIndex];
 end;
 
-procedure TGXMeshObject.SetTangentsTexCoordIndex(const val: Integer);
+procedure TgxMeshObject.SetTangentsTexCoordIndex(const val: Integer);
 begin
   Assert(val >= 0);
   if val <> FTangentsTexCoordIndex then
@@ -3133,10 +3133,10 @@ begin
   end;
 end;
 
-procedure TGXMeshObject.GetTriangleData(tri: Integer; list: TGAffineVectorList; var v0, v1, v2: TAffineVector);
+procedure TgxMeshObject.GetTriangleData(tri: Integer; list: TgAffineVectorList; var v0, v1, v2: TAffineVector);
 var
   i, LastCount, Count: Integer;
-  fg: TFGXVertexIndexList;
+  fg: TgxFGVertexIndexList;
 begin
   case mode of
     momTriangles:
@@ -3157,7 +3157,7 @@ begin
         for i := 0 to FaceGroups.Count - 1 do
         begin
           LastCount := Count;
-          fg := TFGXVertexIndexList(FaceGroups[i]);
+          fg := TgxFGVertexIndexList(FaceGroups[i]);
           Count := Count + fg.TriangleCount;
           if Count > tri then
           begin
@@ -3209,10 +3209,10 @@ begin
   end;
 end;
 
-procedure TGXMeshObject.GetTriangleData(tri: Integer; list: TGVectorList; var v0, v1, v2: TVector4f);
+procedure TgxMeshObject.GetTriangleData(tri: Integer; list: TGVectorList; var v0, v1, v2: TVector4f);
 var
   i, LastCount, Count: Integer;
-  fg: TFGXVertexIndexList;
+  fg: TgxFGVertexIndexList;
 begin
   case mode of
     momTriangles:
@@ -3233,7 +3233,7 @@ begin
         for i := 0 to FaceGroups.Count - 1 do
         begin
           LastCount := Count;
-          fg := TFGXVertexIndexList(FaceGroups[i]);
+          fg := TgxFGVertexIndexList(FaceGroups[i]);
           Count := Count + fg.TriangleCount;
           if Count > tri then
           begin
@@ -3285,10 +3285,10 @@ begin
   end;
 end;
 
-procedure TGXMeshObject.SetTriangleData(tri: Integer; list: TGAffineVectorList; const v0, v1, v2: TAffineVector);
+procedure TgxMeshObject.SetTriangleData(tri: Integer; list: TgAffineVectorList; const v0, v1, v2: TAffineVector);
 var
   i, LastCount, Count: Integer;
-  fg: TFGXVertexIndexList;
+  fg: TgxFGVertexIndexList;
 begin
   case mode of
     momTriangles:
@@ -3309,7 +3309,7 @@ begin
         for i := 0 to FaceGroups.Count - 1 do
         begin
           LastCount := Count;
-          fg := TFGXVertexIndexList(FaceGroups[i]);
+          fg := TgxFGVertexIndexList(FaceGroups[i]);
           Count := Count + fg.TriangleCount;
           if Count > tri then
           begin
@@ -3361,10 +3361,10 @@ begin
   end;
 end;
 
-procedure TGXMeshObject.SetTriangleData(tri: Integer; list: TGVectorList; const v0, v1, v2: TVector4f);
+procedure TgxMeshObject.SetTriangleData(tri: Integer; list: TGVectorList; const v0, v1, v2: TVector4f);
 var
   i, LastCount, Count: Integer;
-  fg: TFGXVertexIndexList;
+  fg: TgxFGVertexIndexList;
 begin
   case mode of
     momTriangles:
@@ -3385,7 +3385,7 @@ begin
         for i := 0 to FaceGroups.Count - 1 do
         begin
           LastCount := Count;
-          fg := TFGXVertexIndexList(FaceGroups[i]);
+          fg := TgxFGVertexIndexList(FaceGroups[i]);
           Count := Count + fg.TriangleCount;
           if Count > tri then
           begin
@@ -3437,7 +3437,7 @@ begin
   end;
 end;
 
-procedure TGXMeshObject.SetUseVBO(const Value: Boolean);
+procedure TgxMeshObject.SetUseVBO(const Value: Boolean);
 var
   i: Integer;
 begin
@@ -3459,7 +3459,7 @@ begin
   FUseVBO := Value;
 end;
 
-procedure TGXMeshObject.SetValidBuffers(Value: TVBOBuffers);
+procedure TgxMeshObject.SetValidBuffers(Value: TVBOBuffers);
 var
   i: Integer;
 begin
@@ -3480,7 +3480,7 @@ begin
   end;
 end;
 
-procedure TGXMeshObject.BuildTangentSpace(buildBinormals: Boolean = True; buildTangents: Boolean = True);
+procedure TgxMeshObject.BuildTangentSpace(buildBinormals: Boolean = True; buildTangents: Boolean = True);
 var
   i, j: Integer;
   v, n, t: array [0 .. 2] of TAffineVector;
@@ -3587,7 +3587,7 @@ begin
   end;
 end;
 
-procedure TGXMeshObject.DeclareArraysToOpenGL(var mrci: TgxRenderContextInfo; evenIfAlreadyDeclared: Boolean = False);
+procedure TgxMeshObject.DeclareArraysToOpenGL(var mrci: TgxRenderContextInfo; evenIfAlreadyDeclared: Boolean = False);
 var
   i: Integer;
   currentMapping: Cardinal;
@@ -3715,7 +3715,7 @@ begin
   end;
 end;
 
-procedure TGXMeshObject.DisableOpenGLArrays(var mrci: TgxRenderContextInfo);
+procedure TgxMeshObject.DisableOpenGLArrays(var mrci: TgxRenderContextInfo);
 var
   i: Integer;
 begin
@@ -3780,7 +3780,7 @@ begin
   end;
 end;
 
-procedure TGXMeshObject.EnableLightMapArray(var mrci: TgxRenderContextInfo);
+procedure TgxMeshObject.EnableLightMapArray(var mrci: TgxRenderContextInfo);
 begin
   if (not mrci.ignoreMaterials) then
   /// and GL_ARB_multitexture
@@ -3796,7 +3796,7 @@ begin
   end;
 end;
 
-procedure TGXMeshObject.DisableLightMapArray(var mrci: TgxRenderContextInfo);
+procedure TgxMeshObject.DisableLightMapArray(var mrci: TgxRenderContextInfo);
 begin
   if FLightMapArrayEnabled then
   /// and GL_ARB_multitexture
@@ -3808,14 +3808,14 @@ begin
   end;
 end;
 
-procedure TGXMeshObject.PrepareBuildList(var mrci: TgxRenderContextInfo);
+procedure TgxMeshObject.PrepareBuildList(var mrci: TgxRenderContextInfo);
 var
   i: Integer;
 begin
   if (mode = momFaceGroups) and Assigned(mrci.MaterialLibrary) then
   begin
     for i := 0 to FaceGroups.Count - 1 do
-      with TGXFaceGroup(FaceGroups.list^[i]) do
+      with TgxFaceGroup(FaceGroups.list^[i]) do
       begin
         if MaterialCache <> nil then
           MaterialCache.PrepareBuildList;
@@ -3823,7 +3823,7 @@ begin
   end;
 end;
 
-procedure TGXMeshObject.BufferArrays;
+procedure TgxMeshObject.BufferArrays;
 const
   BufferUsage = GL_DYNAMIC_DRAW;
 var
@@ -3937,13 +3937,13 @@ begin
   /// CheckOpenGLError;
 end;
 
-procedure TGXMeshObject.BuildList(var mrci: TgxRenderContextInfo);
+procedure TgxMeshObject.BuildList(var mrci: TgxRenderContextInfo);
 var
   i, j, groupID, nbGroups: Integer;
   gotNormals, gotTexCoords, gotColor: Boolean;
   gotTexCoordsEx: array of Boolean;
   libMat: TgxLibMaterial;
-  fg: TGXFaceGroup;
+  fg: TgxFaceGroup;
 begin
   // Make sure no VBO is bound and states enabled
   FArraysDeclared := False;
@@ -4081,53 +4081,53 @@ begin
 end;
 
 // ------------------
-// ------------------ TGXMeshObjectList ------------------
+// ------------------ TgxMeshObjectList ------------------
 // ------------------
 
-constructor TGXMeshObjectList.CreateOwned(aOwner: TGXBaseMesh);
+constructor TgxMeshObjectList.CreateOwned(aOwner: TgxBaseMesh);
 begin
   FOwner := aOwner;
   Create;
 end;
 
-destructor TGXMeshObjectList.Destroy;
+destructor TgxMeshObjectList.Destroy;
 begin
   Clear;
   inherited;
 end;
 
-procedure TGXMeshObjectList.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxMeshObjectList.ReadFromFiler(reader: TgVirtualReader);
 var
   i: Integer;
-  Mesh: TGXMeshObject;
+  Mesh: TgxMeshObject;
 begin
   inherited;
   for i := 0 to Count - 1 do
   begin
     Mesh := Items[i];
     Mesh.FOwner := Self;
-    if Mesh is TGXSkeletonMeshObject then
-      TGXSkeletonMeshObject(Mesh).PrepareBoneMatrixInvertedMeshes;
+    if Mesh is TgxSkeletonMeshObject then
+      TgxSkeletonMeshObject(Mesh).PrepareBoneMatrixInvertedMeshes;
   end;
 end;
 
-procedure TGXMeshObjectList.PrepareMaterialLibraryCache(matLib: TgxMaterialLibrary);
+procedure TgxMeshObjectList.PrepareMaterialLibraryCache(matLib: TgxMaterialLibrary);
 var
   i: Integer;
 begin
   for i := 0 to Count - 1 do
-    TGXMeshObject(list^[i]).PrepareMaterialLibraryCache(matLib);
+    TgxMeshObject(list^[i]).PrepareMaterialLibraryCache(matLib);
 end;
 
-procedure TGXMeshObjectList.DropMaterialLibraryCache;
+procedure TgxMeshObjectList.DropMaterialLibraryCache;
 var
   i: Integer;
 begin
   for i := 0 to Count - 1 do
-    TGXMeshObject(list^[i]).DropMaterialLibraryCache;
+    TgxMeshObject(list^[i]).DropMaterialLibraryCache;
 end;
 
-procedure TGXMeshObjectList.PrepareBuildList(var mrci: TgxRenderContextInfo);
+procedure TgxMeshObjectList.PrepareBuildList(var mrci: TgxRenderContextInfo);
 var
   i: Integer;
 begin
@@ -4137,7 +4137,7 @@ begin
         PrepareBuildList(mrci);
 end;
 
-procedure TGXMeshObjectList.BuildList(var mrci: TgxRenderContextInfo);
+procedure TgxMeshObjectList.BuildList(var mrci: TgxRenderContextInfo);
 var
   i: Integer;
 begin
@@ -4147,39 +4147,39 @@ begin
         BuildList(mrci);
 end;
 
-procedure TGXMeshObjectList.MorphTo(morphTargetIndex: Integer);
+procedure TgxMeshObjectList.MorphTo(morphTargetIndex: Integer);
 var
   i: Integer;
 begin
   for i := 0 to Count - 1 do
-    if Items[i] is TGXMorphableMeshObject then
-      TGXMorphableMeshObject(Items[i]).MorphTo(morphTargetIndex);
+    if Items[i] is TgxMorphableMeshObject then
+      TgxMorphableMeshObject(Items[i]).MorphTo(morphTargetIndex);
 end;
 
-procedure TGXMeshObjectList.Lerp(morphTargetIndex1, morphTargetIndex2: Integer; lerpFactor: Single);
+procedure TgxMeshObjectList.Lerp(morphTargetIndex1, morphTargetIndex2: Integer; lerpFactor: Single);
 var
   i: Integer;
 begin
   for i := 0 to Count - 1 do
-    if Items[i] is TGXMorphableMeshObject then
-      TGXMorphableMeshObject(Items[i]).Lerp(morphTargetIndex1, morphTargetIndex2, lerpFactor);
+    if Items[i] is TgxMorphableMeshObject then
+      TgxMorphableMeshObject(Items[i]).Lerp(morphTargetIndex1, morphTargetIndex2, lerpFactor);
 end;
 
-function TGXMeshObjectList.MorphTargetCount: Integer;
+function TgxMeshObjectList.MorphTargetCount: Integer;
 var
   i: Integer;
 begin
   Result := MaxInt;
   for i := 0 to Count - 1 do
-    if Items[i] is TGXMorphableMeshObject then
-      with TGXMorphableMeshObject(Items[i]) do
+    if Items[i] is TgxMorphableMeshObject then
+      with TgxMorphableMeshObject(Items[i]) do
         if Result > MorphTargets.Count then
           Result := MorphTargets.Count;
   if Result = MaxInt then
     Result := 0;
 end;
 
-procedure TGXMeshObjectList.Clear;
+procedure TgxMeshObjectList.Clear;
 var
   i: Integer;
 begin
@@ -4193,12 +4193,12 @@ begin
   inherited;
 end;
 
-function TGXMeshObjectList.GetMeshObject(Index: Integer): TGXMeshObject;
+function TgxMeshObjectList.GetMeshObject(Index: Integer): TgxMeshObject;
 begin
-  Result := TGXMeshObject(list^[Index]);
+  Result := TgxMeshObject(list^[Index]);
 end;
 
-procedure TGXMeshObjectList.GetExtents(out min, max: TAffineVector);
+procedure TgxMeshObjectList.GetExtents(out min, max: TAffineVector);
 var
   i, k: Integer;
   lMin, lMax: TAffineVector;
@@ -4221,7 +4221,7 @@ begin
   end;
 end;
 
-procedure TGXMeshObjectList.Translate(const delta: TAffineVector);
+procedure TgxMeshObjectList.Translate(const delta: TAffineVector);
 var
   i: Integer;
 begin
@@ -4229,22 +4229,22 @@ begin
     GetMeshObject(i).Translate(delta);
 end;
 
-function TGXMeshObjectList.ExtractTriangles(texCoords: TGAffineVectorList = nil; normals: TGAffineVectorList = nil)
-  : TGAffineVectorList;
+function TgxMeshObjectList.ExtractTriangles(texCoords: TgAffineVectorList = nil; normals: TgAffineVectorList = nil)
+  : TgAffineVectorList;
 var
   i: Integer;
-  obj: TGXMeshObject;
-  objTris: TGAffineVectorList;
-  objTexCoords: TGAffineVectorList;
-  objNormals: TGAffineVectorList;
+  obj: TgxMeshObject;
+  objTris: TgAffineVectorList;
+  objTexCoords: TgAffineVectorList;
+  objNormals: TgAffineVectorList;
 begin
-  Result := TGAffineVectorList.Create;
+  Result := TgAffineVectorList.Create;
   if Assigned(texCoords) then
-    objTexCoords := TGAffineVectorList.Create
+    objTexCoords := TgAffineVectorList.Create
   else
     objTexCoords := nil;
   if Assigned(normals) then
-    objNormals := TGAffineVectorList.Create
+    objNormals := TgAffineVectorList.Create
   else
     objNormals := nil;
   try
@@ -4276,7 +4276,7 @@ begin
   end;
 end;
 
-function TGXMeshObjectList.TriangleCount: Integer;
+function TgxMeshObjectList.TriangleCount: Integer;
 var
   i: Integer;
 begin
@@ -4285,7 +4285,7 @@ begin
     Result := Result + Items[i].TriangleCount;
 end;
 
-procedure TGXMeshObjectList.Prepare;
+procedure TgxMeshObjectList.Prepare;
 var
   i: Integer;
 begin
@@ -4293,7 +4293,7 @@ begin
     Items[i].Prepare;
 end;
 
-function TGXMeshObjectList.FindMeshByName(MeshName: string): TGXMeshObject;
+function TgxMeshObjectList.FindMeshByName(MeshName: string): TgxMeshObject;
 var
   i: Integer;
 begin
@@ -4306,7 +4306,7 @@ begin
     end;
 end;
 
-procedure TGXMeshObjectList.BuildTangentSpace(buildBinormals, buildTangents: Boolean);
+procedure TgxMeshObjectList.BuildTangentSpace(buildBinormals, buildTangents: Boolean);
 var
   i: Integer;
 begin
@@ -4315,7 +4315,7 @@ begin
       GetMeshObject(i).BuildTangentSpace(buildBinormals, buildTangents);
 end;
 
-function TGXMeshObjectList.GetUseVBO: Boolean;
+function TgxMeshObjectList.GetUseVBO: Boolean;
 var
   i: Integer;
 begin
@@ -4325,7 +4325,7 @@ begin
       Result := Result and GetMeshObject(i).FUseVBO;
 end;
 
-procedure TGXMeshObjectList.SetUseVBO(const Value: Boolean);
+procedure TgxMeshObjectList.SetUseVBO(const Value: Boolean);
 var
   i: Integer;
 begin
@@ -4335,10 +4335,10 @@ begin
 end;
 
 // ------------------
-// ------------------ TGXMeshMorphTarget ------------------
+// ------------------ TgxMeshMorphTarget ------------------
 // ------------------
 
-constructor TGXMeshMorphTarget.CreateOwned(aOwner: TGXMeshMorphTargetList);
+constructor TgxMeshMorphTarget.CreateOwned(aOwner: TgxMeshMorphTargetList);
 begin
   FOwner := aOwner;
   Create;
@@ -4346,14 +4346,14 @@ begin
     FOwner.Add(Self);
 end;
 
-destructor TGXMeshMorphTarget.Destroy;
+destructor TgxMeshMorphTarget.Destroy;
 begin
   if Assigned(FOwner) then
     FOwner.Remove(Self);
   inherited;
 end;
 
-procedure TGXMeshMorphTarget.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxMeshMorphTarget.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -4363,7 +4363,7 @@ begin
   end;
 end;
 
-procedure TGXMeshMorphTarget.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxMeshMorphTarget.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -4379,22 +4379,22 @@ begin
 end;
 
 // ------------------
-// ------------------ TGXMeshMorphTargetList ------------------
+// ------------------ TgxMeshMorphTargetList ------------------
 // ------------------
 
-constructor TGXMeshMorphTargetList.CreateOwned(aOwner: TPersistent);
+constructor TgxMeshMorphTargetList.CreateOwned(aOwner: TPersistent);
 begin
   FOwner := aOwner;
   Create;
 end;
 
-destructor TGXMeshMorphTargetList.Destroy;
+destructor TgxMeshMorphTargetList.Destroy;
 begin
   Clear;
   inherited;
 end;
 
-procedure TGXMeshMorphTargetList.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxMeshMorphTargetList.ReadFromFiler(reader: TgVirtualReader);
 var
   i: Integer;
 begin
@@ -4403,7 +4403,7 @@ begin
     Items[i].FOwner := Self;
 end;
 
-procedure TGXMeshMorphTargetList.Translate(const delta: TAffineVector);
+procedure TgxMeshMorphTargetList.Translate(const delta: TAffineVector);
 var
   i: Integer;
 begin
@@ -4411,7 +4411,7 @@ begin
     Items[i].Translate(delta);
 end;
 
-procedure TGXMeshMorphTargetList.Clear;
+procedure TgxMeshMorphTargetList.Clear;
 var
   i: Integer;
 begin
@@ -4424,28 +4424,28 @@ begin
   inherited;
 end;
 
-function TGXMeshMorphTargetList.GetMeshMorphTarget(Index: Integer): TGXMeshMorphTarget;
+function TgxMeshMorphTargetList.GetMeshMorphTarget(Index: Integer): TgxMeshMorphTarget;
 begin
-  Result := TGXMeshMorphTarget(list^[Index]);
+  Result := TgxMeshMorphTarget(list^[Index]);
 end;
 
 // ------------------
-// ------------------ TGXMorphableMeshObject ------------------
+// ------------------ TgxMorphableMeshObject ------------------
 // ------------------
 
-constructor TGXMorphableMeshObject.Create;
+constructor TgxMorphableMeshObject.Create;
 begin
   inherited;
-  FMorphTargets := TGXMeshMorphTargetList.CreateOwned(Self);
+  FMorphTargets := TgxMeshMorphTargetList.CreateOwned(Self);
 end;
 
-destructor TGXMorphableMeshObject.Destroy;
+destructor TgxMorphableMeshObject.Destroy;
 begin
   FMorphTargets.Free;
   inherited;
 end;
 
-procedure TGXMorphableMeshObject.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxMorphableMeshObject.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -4455,7 +4455,7 @@ begin
   end;
 end;
 
-procedure TGXMorphableMeshObject.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxMorphableMeshObject.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -4470,20 +4470,20 @@ begin
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TGXMorphableMeshObject.Clear;
+procedure TgxMorphableMeshObject.Clear;
 begin
   inherited;
   FMorphTargets.Clear;
 end;
 
-procedure TGXMorphableMeshObject.Translate(const delta: TAffineVector);
+procedure TgxMorphableMeshObject.Translate(const delta: TAffineVector);
 begin
   inherited;
   MorphTargets.Translate(delta);
   ValidBuffers := ValidBuffers - [vbVertices];
 end;
 
-procedure TGXMorphableMeshObject.MorphTo(morphTargetIndex: Integer);
+procedure TgxMorphableMeshObject.MorphTo(morphTargetIndex: Integer);
 begin
   if (morphTargetIndex = 0) and (MorphTargets.Count = 0) then
     Exit;
@@ -4503,9 +4503,9 @@ begin
   end;
 end;
 
-procedure TGXMorphableMeshObject.Lerp(morphTargetIndex1, morphTargetIndex2: Integer; lerpFactor: Single);
+procedure TgxMorphableMeshObject.Lerp(morphTargetIndex1, morphTargetIndex2: Integer; lerpFactor: Single);
 var
-  mt1, mt2: TGXMeshMorphTarget;
+  mt1, mt2: TgxMeshMorphTarget;
 begin
   Assert((Cardinal(morphTargetIndex1) < Cardinal(MorphTargets.Count)) and
     (Cardinal(morphTargetIndex2) < Cardinal(MorphTargets.Count)));
@@ -4532,17 +4532,17 @@ begin
 end;
 
 // ------------------
-// ------------------ TGXSkeletonMeshObject ------------------
+// ------------------ TgxSkeletonMeshObject ------------------
 // ------------------
 
-constructor TGXSkeletonMeshObject.Create;
+constructor TgxSkeletonMeshObject.Create;
 begin
   FBoneMatrixInvertedMeshes := TList.Create;
   FBackupInvertedMeshes := TList.Create; // ragdoll
   inherited Create;
 end;
 
-destructor TGXSkeletonMeshObject.Destroy;
+destructor TgxSkeletonMeshObject.Destroy;
 begin
   Clear;
   FBoneMatrixInvertedMeshes.Free;
@@ -4550,7 +4550,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TGXSkeletonMeshObject.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxSkeletonMeshObject.WriteToFiler(writer: TgVirtualWriter);
 var
   i: Integer;
 begin
@@ -4562,11 +4562,11 @@ begin
     WriteInteger(FBonesPerVertex);
     WriteInteger(FVerticeBoneWeightCapacity);
     for i := 0 to FVerticeBoneWeightCount - 1 do
-      Write(FVerticesBonesWeights[i][0], FBonesPerVertex * SizeOf(TGXVertexBoneWeight));
+      Write(FVerticesBonesWeights[i][0], FBonesPerVertex * SizeOf(TgxVertexBoneWeight));
   end;
 end;
 
-procedure TGXSkeletonMeshObject.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxSkeletonMeshObject.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion, i: Integer;
 begin
@@ -4580,13 +4580,13 @@ begin
       FVerticeBoneWeightCapacity := ReadInteger;
       ResizeVerticesBonesWeights;
       for i := 0 to FVerticeBoneWeightCount - 1 do
-        Read(FVerticesBonesWeights[i][0], FBonesPerVertex * SizeOf(TGXVertexBoneWeight));
+        Read(FVerticesBonesWeights[i][0], FBonesPerVertex * SizeOf(TgxVertexBoneWeight));
     end
   else
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TGXSkeletonMeshObject.Clear;
+procedure TgxSkeletonMeshObject.Clear;
 var
   i: Integer;
 begin
@@ -4595,11 +4595,11 @@ begin
   FBonesPerVertex := 0;
   ResizeVerticesBonesWeights;
   for i := 0 to FBoneMatrixInvertedMeshes.Count - 1 do
-    TGXBaseMeshObject(FBoneMatrixInvertedMeshes[i]).Free;
+    TgxBaseMeshObject(FBoneMatrixInvertedMeshes[i]).Free;
   FBoneMatrixInvertedMeshes.Clear;
 end;
 
-procedure TGXSkeletonMeshObject.SetVerticeBoneWeightCount(const val: Integer);
+procedure TgxSkeletonMeshObject.SetVerticeBoneWeightCount(const val: Integer);
 begin
   if val <> FVerticeBoneWeightCount then
   begin
@@ -4610,7 +4610,7 @@ begin
   end;
 end;
 
-procedure TGXSkeletonMeshObject.SetVerticeBoneWeightCapacity(const val: Integer);
+procedure TgxSkeletonMeshObject.SetVerticeBoneWeightCapacity(const val: Integer);
 begin
   if val <> FVerticeBoneWeightCapacity then
   begin
@@ -4619,7 +4619,7 @@ begin
   end;
 end;
 
-procedure TGXSkeletonMeshObject.SetBonesPerVertex(const val: Integer);
+procedure TgxSkeletonMeshObject.SetBonesPerVertex(const val: Integer);
 begin
   if val <> FBonesPerVertex then
   begin
@@ -4628,10 +4628,10 @@ begin
   end;
 end;
 
-procedure TGXSkeletonMeshObject.ResizeVerticesBonesWeights;
+procedure TgxSkeletonMeshObject.ResizeVerticesBonesWeights;
 var
   n, m, i, j: Integer;
-  newArea: PGXVerticesBoneWeights;
+  newArea: PgxVerticesBoneWeights;
 begin
   n := BonesPerVertex * VerticeBoneWeightCapacity;
   if n = 0 then
@@ -4647,10 +4647,10 @@ begin
   else
   begin
     // allocate new area
-    GetMem(newArea, VerticeBoneWeightCapacity * SizeOf(PGXVertexBoneWeightArray));
-    newArea[0] := AllocMem(n * SizeOf(TGXVertexBoneWeight));
+    GetMem(newArea, VerticeBoneWeightCapacity * SizeOf(PgxVertexBoneWeightArray));
+    newArea[0] := AllocMem(n * SizeOf(TgxVertexBoneWeight));
     for i := 1 to VerticeBoneWeightCapacity - 1 do
-      newArea[i] := PGXVertexBoneWeightArray(Cardinal(newArea[0]) + Cardinal(i * SizeOf(TGXVertexBoneWeight) * BonesPerVertex));
+      newArea[i] := PgxVertexBoneWeightArray(Cardinal(newArea[0]) + Cardinal(i * SizeOf(TgxVertexBoneWeight) * BonesPerVertex));
     // transfer old data
     if FLastVerticeBoneWeightCount < VerticeBoneWeightCount then
       n := FLastVerticeBoneWeightCount
@@ -4674,7 +4674,7 @@ begin
   FLastBonesPerVertex := FBonesPerVertex;
 end;
 
-procedure TGXSkeletonMeshObject.AddWeightedBone(aBoneID: Integer; aWeight: Single);
+procedure TgxSkeletonMeshObject.AddWeightedBone(aBoneID: Integer; aWeight: Single);
 begin
   if BonesPerVertex < 1 then
     BonesPerVertex := 1;
@@ -4686,7 +4686,7 @@ begin
   end;
 end;
 
-procedure TGXSkeletonMeshObject.AddWeightedBones(const boneIDs: TGXVertexBoneWeightDynArray);
+procedure TgxSkeletonMeshObject.AddWeightedBones(const boneIDs: TgxVertexBoneWeightDynArray);
 var
   i: Integer;
   n: Integer;
@@ -4705,10 +4705,10 @@ begin
   end;
 end;
 
-function TGXSkeletonMeshObject.FindOrAdd(BoneID: Integer; const vertex, normal: TAffineVector): Integer;
+function TgxSkeletonMeshObject.FindOrAdd(BoneID: Integer; const vertex, normal: TAffineVector): Integer;
 var
   i: Integer;
-  dynArray: TGXVertexBoneWeightDynArray;
+  dynArray: TgxVertexBoneWeightDynArray;
 begin
   if BonesPerVertex > 1 then
   begin
@@ -4734,7 +4734,7 @@ begin
   end;
 end;
 
-function TGXSkeletonMeshObject.FindOrAdd(const boneIDs: TGXVertexBoneWeightDynArray; const vertex, normal: TAffineVector)
+function TgxSkeletonMeshObject.FindOrAdd(const boneIDs: TgxVertexBoneWeightDynArray; const vertex, normal: TAffineVector)
   : Integer;
 var
   i, j: Integer;
@@ -4767,22 +4767,22 @@ begin
   end;
 end;
 
-procedure TGXSkeletonMeshObject.PrepareBoneMatrixInvertedMeshes;
+procedure TgxSkeletonMeshObject.PrepareBoneMatrixInvertedMeshes;
 var
   i, k, boneIndex: Integer;
-  invMesh: TGXBaseMeshObject;
+  invMesh: TgxBaseMeshObject;
   invMat: TMatrix4f;
-  Bone: TGXSkeletonBone;
+  Bone: TgxSkeletonBone;
   p: TVector4f;
 begin
   // cleanup existing stuff
   for i := 0 to FBoneMatrixInvertedMeshes.Count - 1 do
-    TGXBaseMeshObject(FBoneMatrixInvertedMeshes[i]).Free;
+    TgxBaseMeshObject(FBoneMatrixInvertedMeshes[i]).Free;
   FBoneMatrixInvertedMeshes.Clear;
   // calculate
   for k := 0 to BonesPerVertex - 1 do
   begin
-    invMesh := TGXBaseMeshObject.Create;
+    invMesh := TgxBaseMeshObject.Create;
     FBoneMatrixInvertedMeshes.Add(invMesh);
     invMesh.Vertices := Vertices;
     invMesh.normals := normals;
@@ -4807,56 +4807,56 @@ begin
   end;
 end;
 
-procedure TGXSkeletonMeshObject.BackupBoneMatrixInvertedMeshes; // ragdoll
+procedure TgxSkeletonMeshObject.BackupBoneMatrixInvertedMeshes; // ragdoll
 var
   i: Integer;
-  bm: TGXBaseMeshObject;
+  bm: TgxBaseMeshObject;
 begin
   // cleanup existing stuff
   for i := 0 to FBackupInvertedMeshes.Count - 1 do
-    TGXBaseMeshObject(FBackupInvertedMeshes[i]).Free;
+    TgxBaseMeshObject(FBackupInvertedMeshes[i]).Free;
   FBackupInvertedMeshes.Clear;
   // copy current stuff
   for i := 0 to FBoneMatrixInvertedMeshes.Count - 1 do
   begin
-    bm := TGXBaseMeshObject.Create;
-    bm.Assign(TGXBaseMeshObject(FBoneMatrixInvertedMeshes[i]));
+    bm := TgxBaseMeshObject.Create;
+    bm.Assign(TgxBaseMeshObject(FBoneMatrixInvertedMeshes[i]));
     FBackupInvertedMeshes.Add(bm);
-    TGXBaseMeshObject(FBoneMatrixInvertedMeshes[i]).Free;
+    TgxBaseMeshObject(FBoneMatrixInvertedMeshes[i]).Free;
   end;
   FBoneMatrixInvertedMeshes.Clear;
 end;
 
-procedure TGXSkeletonMeshObject.RestoreBoneMatrixInvertedMeshes; // ragdoll
+procedure TgxSkeletonMeshObject.RestoreBoneMatrixInvertedMeshes; // ragdoll
 var
   i: Integer;
-  bm: TGXBaseMeshObject;
+  bm: TgxBaseMeshObject;
 begin
   // cleanup existing stuff
   for i := 0 to FBoneMatrixInvertedMeshes.Count - 1 do
-    TGXBaseMeshObject(FBoneMatrixInvertedMeshes[i]).Free;
+    TgxBaseMeshObject(FBoneMatrixInvertedMeshes[i]).Free;
   FBoneMatrixInvertedMeshes.Clear;
   // restore the backup
   for i := 0 to FBackupInvertedMeshes.Count - 1 do
   begin
-    bm := TGXBaseMeshObject.Create;
-    bm.Assign(TGXBaseMeshObject(FBackupInvertedMeshes[i]));
+    bm := TgxBaseMeshObject.Create;
+    bm.Assign(TgxBaseMeshObject(FBackupInvertedMeshes[i]));
     FBoneMatrixInvertedMeshes.Add(bm);
-    TGXBaseMeshObject(FBackupInvertedMeshes[i]).Free;
+    TgxBaseMeshObject(FBackupInvertedMeshes[i]).Free;
   end;
   FBackupInvertedMeshes.Clear;
 end;
 
-procedure TGXSkeletonMeshObject.ApplyCurrentSkeletonFrame(normalize: Boolean);
+procedure TgxSkeletonMeshObject.ApplyCurrentSkeletonFrame(normalize: Boolean);
 var
   i, j, BoneID: Integer;
-  refVertices, refNormals: TGAffineVectorList;
+  refVertices, refNormals: TgAffineVectorList;
   n, nt: TVector4f;
-  Bone: TGXSkeletonBone;
-  Skeleton: TGXSkeleton;
+  Bone: TgxSkeletonBone;
+  Skeleton: TgxSkeleton;
   tempvert, tempnorm: TAffineVector;
 begin
-  with TGXBaseMeshObject(FBoneMatrixInvertedMeshes[0]) do
+  with TgxBaseMeshObject(FBoneMatrixInvertedMeshes[0]) do
   begin
     refVertices := Vertices;
     refNormals := normals;
@@ -4885,7 +4885,7 @@ begin
       normals.list^[i] := NullVector;
       for j := 0 to BonesPerVertex - 1 do
       begin
-        with TGXBaseMeshObject(FBoneMatrixInvertedMeshes[j]) do
+        with TgxBaseMeshObject(FBoneMatrixInvertedMeshes[j]) do
         begin
           refVertices := Vertices;
           refNormals := normals;
@@ -4912,10 +4912,10 @@ begin
 end;
 
 // ------------------
-// ------------------ TGXFaceGroup ------------------
+// ------------------ TgxFaceGroup ------------------
 // ------------------
 
-constructor TGXFaceGroup.CreateOwned(aOwner: TGXFaceGroups);
+constructor TgxFaceGroup.CreateOwned(aOwner: TgxFaceGroups);
 begin
   FOwner := aOwner;
   FLightMapIndex := -1;
@@ -4924,14 +4924,14 @@ begin
     FOwner.Add(Self);
 end;
 
-destructor TGXFaceGroup.Destroy;
+destructor TgxFaceGroup.Destroy;
 begin
   if Assigned(FOwner) then
     FOwner.Remove(Self);
   inherited;
 end;
 
-procedure TGXFaceGroup.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxFaceGroup.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -4950,7 +4950,7 @@ begin
   end;
 end;
 
-procedure TGXFaceGroup.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxFaceGroup.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -4969,7 +4969,7 @@ begin
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TGXFaceGroup.AttachLightmap(lightMap: TgxTexture; var mrci: TgxRenderContextInfo);
+procedure TgxFaceGroup.AttachLightmap(lightMap: TgxTexture; var mrci: TgxRenderContextInfo);
 begin
   /// if GL_ARB_multitexture then
   with lightMap do
@@ -4982,7 +4982,7 @@ begin
   end;
 end;
 
-procedure TGXFaceGroup.AttachOrDetachLightmap(var mrci: TgxRenderContextInfo);
+procedure TgxFaceGroup.AttachOrDetachLightmap(var mrci: TgxRenderContextInfo);
 var
   libMat: TgxLibMaterial;
 begin
@@ -5009,7 +5009,7 @@ begin
     end;
 end;
 
-procedure TGXFaceGroup.PrepareMaterialLibraryCache(matLib: TgxMaterialLibrary);
+procedure TgxFaceGroup.PrepareMaterialLibraryCache(matLib: TgxMaterialLibrary);
 begin
   if (FMaterialName <> '') and (matLib <> nil) then
     FMaterialCache := matLib.Materials.GetLibMaterialByName(FMaterialName)
@@ -5017,46 +5017,46 @@ begin
     FMaterialCache := nil;
 end;
 
-procedure TGXFaceGroup.DropMaterialLibraryCache;
+procedure TgxFaceGroup.DropMaterialLibraryCache;
 begin
   FMaterialCache := nil;
 end;
 
-procedure TGXFaceGroup.AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
-  aNormals: TGAffineVectorList = nil);
+procedure TgxFaceGroup.AddToTriangles(aList: TgAffineVectorList; aTexCoords: TgAffineVectorList = nil;
+  aNormals: TgAffineVectorList = nil);
 begin
   // nothing
 end;
 
-procedure TGXFaceGroup.Reverse;
+procedure TgxFaceGroup.Reverse;
 begin
   // nothing
 end;
 
-procedure TGXFaceGroup.Prepare;
+procedure TgxFaceGroup.Prepare;
 begin
   // nothing
 end;
 
 // ------------------
-// ------------------ TFGXVertexIndexList ------------------
+// ------------------ TgxFGVertexIndexList ------------------
 // ------------------
 
-constructor TFGXVertexIndexList.Create;
+constructor TgxFGVertexIndexList.Create;
 begin
   inherited;
-  FVertexIndices := TGIntegerList.Create;
+  FVertexIndices := TgIntegerList.Create;
   FMode := fgmmTriangles;
 end;
 
-destructor TFGXVertexIndexList.Destroy;
+destructor TgxFGVertexIndexList.Destroy;
 begin
   FVertexIndices.Free;
   FIndexVBO.Free;
   inherited;
 end;
 
-procedure TFGXVertexIndexList.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxFGVertexIndexList.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -5067,7 +5067,7 @@ begin
   end;
 end;
 
-procedure TFGXVertexIndexList.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxFGVertexIndexList.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -5077,14 +5077,14 @@ begin
     with reader do
     begin
       FVertexIndices.ReadFromFiler(reader);
-      FMode := TGXFaceGroupMeshMode(ReadInteger);
+      FMode := TgxFaceGroupMeshMode(ReadInteger);
       InvalidateVBO;
     end
   else
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TFGXVertexIndexList.SetupVBO;
+procedure TgxFGVertexIndexList.SetupVBO;
 const
   BufferUsage = GL_STATIC_DRAW;
 begin
@@ -5100,15 +5100,15 @@ begin
   end;
 end;
 
-procedure TFGXVertexIndexList.SetVertexIndices(const val: TGIntegerList);
+procedure TgxFGVertexIndexList.SetVertexIndices(const val: TgIntegerList);
 begin
   FVertexIndices.Assign(val);
   InvalidateVBO;
 end;
 
-procedure TFGXVertexIndexList.BuildList(var mrci: TgxRenderContextInfo);
+procedure TgxFGVertexIndexList.BuildList(var mrci: TgxRenderContextInfo);
 const
-  cFaceGroupMeshModeToOpenGL: array [TGXFaceGroupMeshMode] of Integer = (GL_TRIANGLES, GL_TRIANGLE_STRIP, GL_TRIANGLES,
+  cFaceGroupMeshModeToOpenGL: array [TgxFaceGroupMeshMode] of Integer = (GL_TRIANGLES, GL_TRIANGLE_STRIP, GL_TRIANGLES,
     GL_TRIANGLE_FAN, GL_QUADS);
 begin
   if vertexIndices.Count = 0 then
@@ -5130,7 +5130,7 @@ begin
   end;
 end;
 
-procedure TFGXVertexIndexList.AddToList(Source, destination: TGAffineVectorList; indices: TGIntegerList);
+procedure TgxFGVertexIndexList.AddToList(Source, destination: TgAffineVectorList; indices: TgIntegerList);
 var
   i, n: Integer;
 begin
@@ -5195,10 +5195,10 @@ begin
   end;
 end;
 
-procedure TFGXVertexIndexList.AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
-  aNormals: TGAffineVectorList = nil);
+procedure TgxFGVertexIndexList.AddToTriangles(aList: TgAffineVectorList; aTexCoords: TgAffineVectorList = nil;
+  aNormals: TgAffineVectorList = nil);
 var
-  mo: TGXMeshObject;
+  mo: TgxMeshObject;
 begin
   mo := Owner.Owner;
   AddToList(mo.Vertices, aList, vertexIndices);
@@ -5207,7 +5207,7 @@ begin
   InvalidateVBO;
 end;
 
-function TFGXVertexIndexList.TriangleCount: Integer;
+function TgxFGVertexIndexList.TriangleCount: Integer;
 begin
   case mode of
     fgmmTriangles, fgmmFlatTriangles:
@@ -5226,19 +5226,19 @@ begin
   end;
 end;
 
-procedure TFGXVertexIndexList.Reverse;
+procedure TgxFGVertexIndexList.Reverse;
 begin
   vertexIndices.Reverse;
   InvalidateVBO;
 end;
 
-procedure TFGXVertexIndexList.Add(idx: Integer);
+procedure TgxFGVertexIndexList.Add(idx: Integer);
 begin
   FVertexIndices.Add(idx);
   InvalidateVBO;
 end;
 
-procedure TFGXVertexIndexList.GetExtents(var min, max: TAffineVector);
+procedure TgxFGVertexIndexList.GetExtents(var min, max: TAffineVector);
 var
   i, k: Integer;
   f: Single;
@@ -5263,17 +5263,17 @@ begin
   end;
 end;
 
-procedure TFGXVertexIndexList.ConvertToList;
+procedure TgxFGVertexIndexList.ConvertToList;
 var
   i: Integer;
-  bufList: TGIntegerList;
+  bufList: TgIntegerList;
 begin
   if vertexIndices.Count >= 3 then
   begin
     case mode of
       fgmmTriangleStrip:
         begin
-          bufList := TGIntegerList.Create;
+          bufList := TgIntegerList.Create;
           try
             ConvertStripToList(vertexIndices, bufList);
             vertexIndices := bufList;
@@ -5284,7 +5284,7 @@ begin
         end;
       fgmmTriangleFan:
         begin
-          bufList := TGIntegerList.Create;
+          bufList := TgIntegerList.Create;
           try
             for i := 0 to vertexIndices.Count - 3 do
               bufList.Add(vertexIndices[0], vertexIndices[i], vertexIndices[i + 1]);
@@ -5299,7 +5299,7 @@ begin
   end;
 end;
 
-function TFGXVertexIndexList.GetNormal: TAffineVector;
+function TgxFGVertexIndexList.GetNormal: TAffineVector;
 begin
   if vertexIndices.Count < 3 then
     Result := NullVector
@@ -5308,7 +5308,7 @@ begin
       CalcPlaneNormal(Items[vertexIndices[0]], Items[vertexIndices[1]], Items[vertexIndices[2]], Result);
 end;
 
-procedure TFGXVertexIndexList.InvalidateVBO;
+procedure TgxFGVertexIndexList.InvalidateVBO;
 begin
   if Assigned(FIndexVBO) then
     FIndexVBO.NotifyChangesOfData;
@@ -5321,8 +5321,8 @@ end;
 constructor TFGVertexNormalTexIndexList.Create;
 begin
   inherited;
-  FNormalIndices := TGIntegerList.Create;
-  FTexCoordIndices := TGIntegerList.Create;
+  FNormalIndices := TgIntegerList.Create;
+  FTexCoordIndices := TgIntegerList.Create;
 end;
 
 destructor TFGVertexNormalTexIndexList.Destroy;
@@ -5332,7 +5332,7 @@ begin
   inherited;
 end;
 
-procedure TFGVertexNormalTexIndexList.WriteToFiler(writer: TGVirtualWriter);
+procedure TFGVertexNormalTexIndexList.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -5343,7 +5343,7 @@ begin
   end;
 end;
 
-procedure TFGVertexNormalTexIndexList.ReadFromFiler(reader: TGVirtualReader);
+procedure TFGVertexNormalTexIndexList.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -5359,12 +5359,12 @@ begin
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TFGVertexNormalTexIndexList.SetNormalIndices(const val: TGIntegerList);
+procedure TFGVertexNormalTexIndexList.SetNormalIndices(const val: TgIntegerList);
 begin
   FNormalIndices.Assign(val);
 end;
 
-procedure TFGVertexNormalTexIndexList.SetTexCoordIndices(const val: TGIntegerList);
+procedure TFGVertexNormalTexIndexList.SetTexCoordIndices(const val: TgIntegerList);
 begin
   FTexCoordIndices.Assign(val);
 end;
@@ -5417,8 +5417,8 @@ begin
   glEnd;
 end;
 
-procedure TFGVertexNormalTexIndexList.AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
-  aNormals: TGAffineVectorList = nil);
+procedure TFGVertexNormalTexIndexList.AddToTriangles(aList: TgAffineVectorList; aTexCoords: TgAffineVectorList = nil;
+  aNormals: TgAffineVectorList = nil);
 begin
   AddToList(Owner.Owner.Vertices, aList, vertexIndices);
   AddToList(Owner.Owner.texCoords, aTexCoords, TexCoordIndices);
@@ -5433,22 +5433,22 @@ begin
 end;
 
 // ------------------
-// ------------------ TFGIndexTexCoordList ------------------
+// ------------------ TgxFGIndexTexCoordList ------------------
 // ------------------
 
-constructor TFGIndexTexCoordList.Create;
+constructor TgxFGIndexTexCoordList.Create;
 begin
   inherited;
-  FTexCoords := TGAffineVectorList.Create;
+  FTexCoords := TgAffineVectorList.Create;
 end;
 
-destructor TFGIndexTexCoordList.Destroy;
+destructor TgxFGIndexTexCoordList.Destroy;
 begin
   FTexCoords.Free;
   inherited;
 end;
 
-procedure TFGIndexTexCoordList.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxFGIndexTexCoordList.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -5458,7 +5458,7 @@ begin
   end;
 end;
 
-procedure TFGIndexTexCoordList.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxFGIndexTexCoordList.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -5473,12 +5473,12 @@ begin
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TFGIndexTexCoordList.SetTexCoords(const val: TGAffineVectorList);
+procedure TgxFGIndexTexCoordList.SetTexCoords(const val: TgAffineVectorList);
 begin
   FTexCoords.Assign(val);
 end;
 
-procedure TFGIndexTexCoordList.BuildList(var mrci: TgxRenderContextInfo);
+procedure TgxFGIndexTexCoordList.BuildList(var mrci: TgxRenderContextInfo);
 var
   i, k: Integer;
   texCoordPool: PAffineVectorArray;
@@ -5537,11 +5537,11 @@ begin
 ///  CheckOpenGLError;
 end;
 
-procedure TFGIndexTexCoordList.AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
-  aNormals: TGAffineVectorList = nil);
+procedure TgxFGIndexTexCoordList.AddToTriangles(aList: TgAffineVectorList; aTexCoords: TgAffineVectorList = nil;
+  aNormals: TgAffineVectorList = nil);
 var
   i, n: Integer;
-  texCoordList: TGAffineVectorList;
+  texCoordList: TgAffineVectorList;
 begin
   AddToList(Owner.Owner.Vertices, aList, vertexIndices);
   AddToList(Owner.Owner.normals, aNormals, vertexIndices);
@@ -5578,35 +5578,35 @@ begin
   end;
 end;
 
-procedure TFGIndexTexCoordList.Add(idx: Integer; const texCoord: TAffineVector);
+procedure TgxFGIndexTexCoordList.Add(idx: Integer; const texCoord: TAffineVector);
 begin
   texCoords.Add(texCoord);
   inherited Add(idx);
 end;
 
-procedure TFGIndexTexCoordList.Add(idx: Integer; const s, t: Single);
+procedure TgxFGIndexTexCoordList.Add(idx: Integer; const s, t: Single);
 begin
   texCoords.Add(s, t, 0);
   inherited Add(idx);
 end;
 
 // ------------------
-// ------------------ TGXFaceGroups ------------------
+// ------------------ TgxFaceGroups ------------------
 // ------------------
 
-constructor TGXFaceGroups.CreateOwned(aOwner: TGXMeshObject);
+constructor TgxFaceGroups.CreateOwned(aOwner: TgxMeshObject);
 begin
   FOwner := aOwner;
   Create;
 end;
 
-destructor TGXFaceGroups.Destroy;
+destructor TgxFaceGroups.Destroy;
 begin
   Clear;
   inherited;
 end;
 
-procedure TGXFaceGroups.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxFaceGroups.ReadFromFiler(reader: TgVirtualReader);
 var
   i: Integer;
 begin
@@ -5615,10 +5615,10 @@ begin
     Items[i].FOwner := Self;
 end;
 
-procedure TGXFaceGroups.Clear;
+procedure TgxFaceGroups.Clear;
 var
   i: Integer;
-  fg: TGXFaceGroup;
+  fg: TgxFaceGroup;
 begin
   for i := 0 to Count - 1 do
   begin
@@ -5632,29 +5632,29 @@ begin
   inherited;
 end;
 
-function TGXFaceGroups.GetFaceGroup(Index: Integer): TGXFaceGroup;
+function TgxFaceGroups.GetFaceGroup(Index: Integer): TgxFaceGroup;
 begin
-  Result := TGXFaceGroup(list^[Index]);
+  Result := TgxFaceGroup(list^[Index]);
 end;
 
-procedure TGXFaceGroups.PrepareMaterialLibraryCache(matLib: TgxMaterialLibrary);
+procedure TgxFaceGroups.PrepareMaterialLibraryCache(matLib: TgxMaterialLibrary);
 var
   i: Integer;
 begin
   for i := 0 to Count - 1 do
-    TGXFaceGroup(list^[i]).PrepareMaterialLibraryCache(matLib);
+    TgxFaceGroup(list^[i]).PrepareMaterialLibraryCache(matLib);
 end;
 
-procedure TGXFaceGroups.DropMaterialLibraryCache;
+procedure TgxFaceGroups.DropMaterialLibraryCache;
 var
   i: Integer;
 begin
   for i := 0 to Count - 1 do
-    TGXFaceGroup(list^[i]).DropMaterialLibraryCache;
+    TgxFaceGroup(list^[i]).DropMaterialLibraryCache;
 end;
 
-procedure TGXFaceGroups.AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
-  aNormals: TGAffineVectorList = nil);
+procedure TgxFaceGroups.AddToTriangles(aList: TgAffineVectorList; aTexCoords: TgAffineVectorList = nil;
+  aNormals: TgAffineVectorList = nil);
 var
   i: Integer;
 begin
@@ -5662,10 +5662,10 @@ begin
     Items[i].AddToTriangles(aList, aTexCoords, aNormals);
 end;
 
-function TGXFaceGroups.MaterialLibrary: TgxMaterialLibrary;
+function TgxFaceGroups.MaterialLibrary: TgxMaterialLibrary;
 var
-  mol: TGXMeshObjectList;
-  bm: TGXBaseMesh;
+  mol: TgxMeshObjectList;
+  bm: TgxBaseMesh;
 begin
   if Assigned(Owner) then
   begin
@@ -5685,7 +5685,7 @@ end;
 
 function CompareMaterials(item1, item2: TObject): Integer;
 
-  function MaterialIsOpaque(fg: TGXFaceGroup): Boolean;
+  function MaterialIsOpaque(fg: TgxFaceGroup): Boolean;
   var
     libMat: TgxLibMaterial;
   begin
@@ -5694,12 +5694,12 @@ function CompareMaterials(item1, item2: TObject): Integer;
   end;
 
 var
-  fg1, fg2: TGXFaceGroup;
+  fg1, fg2: TgxFaceGroup;
   opaque1, opaque2: Boolean;
 begin
-  fg1 := TGXFaceGroup(item1);
+  fg1 := TgxFaceGroup(item1);
   opaque1 := MaterialIsOpaque(fg1);
-  fg2 := TGXFaceGroup(item2);
+  fg2 := TgxFaceGroup(item2);
   opaque2 := MaterialIsOpaque(fg2);
   if opaque1 = opaque2 then
   begin
@@ -5713,70 +5713,70 @@ begin
     Result := 1;
 end;
 
-procedure TGXFaceGroups.SortByMaterial;
+procedure TgxFaceGroups.SortByMaterial;
 begin
   PrepareMaterialLibraryCache(Owner.Owner.Owner.MaterialLibrary);
   Sort(@CompareMaterials);
 end;
 
 // ------------------
-// ------------------ TGXVectorFile ------------------
+// ------------------ TgxVectorFile ------------------
 // ------------------
 
-constructor TGXVectorFile.Create(aOwner: TPersistent);
+constructor TgxVectorFile.Create(aOwner: TPersistent);
 begin
-  Assert(aOwner is TGXBaseMesh);
+  Assert(aOwner is TgxBaseMesh);
   inherited;
 end;
 
-function TGXVectorFile.Owner: TGXBaseMesh;
+function TgxVectorFile.Owner: TgxBaseMesh;
 begin
-  Result := TGXBaseMesh(GetOwner);
+  Result := TgxBaseMesh(GetOwner);
 end;
 
-procedure TGXVectorFile.SetNormalsOrientation(const val: TMeshNormalsOrientation);
+procedure TgxVectorFile.SetNormalsOrientation(const val: TgxMeshNormalsOrientation);
 begin
   FNormalsOrientation := val;
 end;
 
 // ------------------
-// ------------------ TGXVectorFileGLSM ------------------
+// ------------------ TgxVectorFileGLSM ------------------
 // ------------------
 
-class function TGXVectorFileGLSM.Capabilities: TDataFileCapabilities;
+class function TgxVectorFileGLSM.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead, dfcWrite];
 end;
 
-procedure TGXVectorFileGLSM.LoadFromStream(aStream: TStream);
+procedure TgxVectorFileGLSM.LoadFromStream(aStream: TStream);
 begin
   Owner.MeshObjects.LoadFromStream(aStream);
 end;
 
-procedure TGXVectorFileGLSM.SaveToStream(aStream: TStream);
+procedure TgxVectorFileGLSM.SaveToStream(aStream: TStream);
 begin
   Owner.MeshObjects.SaveToStream(aStream);
 end;
 
 // ------------------
-// ------------------ TGXBaseMesh ------------------
+// ------------------ TgxBaseMesh ------------------
 // ------------------
 
-constructor TGXBaseMesh.Create(aOwner: TComponent);
+constructor TgxBaseMesh.Create(aOwner: TComponent);
 begin
   inherited Create(aOwner);
   if FMeshObjects = nil then
-    FMeshObjects := TGXMeshObjectList.CreateOwned(Self);
+    FMeshObjects := TgxMeshObjectList.CreateOwned(Self);
   if FSkeleton = nil then
-    FSkeleton := TGXSkeleton.CreateOwned(Self);
+    FSkeleton := TgxSkeleton.CreateOwned(Self);
   FUseMeshMaterials := True;
   FAutoCentering := [];
   FAxisAlignedDimensionsCache.X := -1;
   FBaryCenterOffsetChanged := True;
-  FAutoScaling := TGCoordinates.CreateInitialized(Self, XYZWHmgVector, csPoint);
+  FAutoScaling := TgCoordinates.CreateInitialized(Self, XYZWHmgVector, csPoint);
 end;
 
-destructor TGXBaseMesh.Destroy;
+destructor TgxBaseMesh.Destroy;
 begin
   FConnectivity.Free;
   DropMaterialLibraryCache;
@@ -5786,29 +5786,29 @@ begin
   inherited Destroy;
 end;
 
-procedure TGXBaseMesh.Assign(Source: TPersistent);
+procedure TgxBaseMesh.Assign(Source: TPersistent);
 begin
-  if Source is TGXBaseMesh then
+  if Source is TgxBaseMesh then
   begin
     FSkeleton.Clear;
-    FNormalsOrientation := TGXBaseMesh(Source).FNormalsOrientation;
-    FMaterialLibrary := TGXBaseMesh(Source).FMaterialLibrary;
-    FLightmapLibrary := TGXBaseMesh(Source).FLightmapLibrary;
-    FAxisAlignedDimensionsCache := TGXBaseMesh(Source).FAxisAlignedDimensionsCache;
-    FBaryCenterOffset := TGXBaseMesh(Source).FBaryCenterOffset;
-    FUseMeshMaterials := TGXBaseMesh(Source).FUseMeshMaterials;
-    FOverlaySkeleton := TGXBaseMesh(Source).FOverlaySkeleton;
-    FIgnoreMissingTextures := TGXBaseMesh(Source).FIgnoreMissingTextures;
-    FAutoCentering := TGXBaseMesh(Source).FAutoCentering;
-    FAutoScaling.Assign(TGXBaseMesh(Source).FAutoScaling);
-    FSkeleton.Assign(TGXBaseMesh(Source).FSkeleton);
+    FNormalsOrientation := TgxBaseMesh(Source).FNormalsOrientation;
+    FMaterialLibrary := TgxBaseMesh(Source).FMaterialLibrary;
+    FLightmapLibrary := TgxBaseMesh(Source).FLightmapLibrary;
+    FAxisAlignedDimensionsCache := TgxBaseMesh(Source).FAxisAlignedDimensionsCache;
+    FBaryCenterOffset := TgxBaseMesh(Source).FBaryCenterOffset;
+    FUseMeshMaterials := TgxBaseMesh(Source).FUseMeshMaterials;
+    FOverlaySkeleton := TgxBaseMesh(Source).FOverlaySkeleton;
+    FIgnoreMissingTextures := TgxBaseMesh(Source).FIgnoreMissingTextures;
+    FAutoCentering := TgxBaseMesh(Source).FAutoCentering;
+    FAutoScaling.Assign(TgxBaseMesh(Source).FAutoScaling);
+    FSkeleton.Assign(TgxBaseMesh(Source).FSkeleton);
     FSkeleton.RootBones.PrepareGlobalMatrices;
-    FMeshObjects.Assign(TGXBaseMesh(Source).FMeshObjects);
+    FMeshObjects.Assign(TgxBaseMesh(Source).FMeshObjects);
   end;
   inherited Assign(Source);
 end;
 
-procedure TGXBaseMesh.LoadFromFile(const filename: string);
+procedure TgxBaseMesh.LoadFromFile(const filename: string);
 var
   fs: TStream;
 begin
@@ -5825,10 +5825,10 @@ begin
   end;
 end;
 
-procedure TGXBaseMesh.LoadFromStream(const filename: string; aStream: TStream);
+procedure TgxBaseMesh.LoadFromStream(const filename: string; aStream: TStream);
 var
-  newVectorFile: TGXVectorFile;
-  VectorFileClass: TGXVectorFileClass;
+  newVectorFile: TgxVectorFile;
+  VectorFileClass: TgxVectorFileClass;
 begin
   FLastLoadedFilename := '';
   if filename <> '' then
@@ -5858,7 +5858,7 @@ begin
   end;
 end;
 
-procedure TGXBaseMesh.SaveToFile(const filename: string);
+procedure TgxBaseMesh.SaveToFile(const filename: string);
 var
   fs: TStream;
 begin
@@ -5873,10 +5873,10 @@ begin
   end;
 end;
 
-procedure TGXBaseMesh.SaveToStream(const filename: string; aStream: TStream);
+procedure TgxBaseMesh.SaveToStream(const filename: string; aStream: TStream);
 var
-  newVectorFile: TGXVectorFile;
-  VectorFileClass: TGXVectorFileClass;
+  newVectorFile: TgxVectorFile;
+  VectorFileClass: TgxVectorFileClass;
 begin
   if filename <> '' then
   begin
@@ -5892,7 +5892,7 @@ begin
   end;
 end;
 
-procedure TGXBaseMesh.AddDataFromFile(const filename: string);
+procedure TgxBaseMesh.AddDataFromFile(const filename: string);
 var
   fs: TStream;
 begin
@@ -5907,10 +5907,10 @@ begin
   end;
 end;
 
-procedure TGXBaseMesh.AddDataFromStream(const filename: string; aStream: TStream);
+procedure TgxBaseMesh.AddDataFromStream(const filename: string; aStream: TStream);
 var
-  newVectorFile: TGXVectorFile;
-  VectorFileClass: TGXVectorFileClass;
+  newVectorFile: TgxVectorFile;
+  VectorFileClass: TgxVectorFileClass;
 begin
   if filename <> '' then
   begin
@@ -5931,7 +5931,7 @@ begin
   end;
 end;
 
-procedure TGXBaseMesh.GetExtents(out min, max: TAffineVector);
+procedure TgxBaseMesh.GetExtents(out min, max: TAffineVector);
 var
   i, k: Integer;
   lMin, lMax: TAffineVector;
@@ -5943,7 +5943,7 @@ begin
   SetVector(max, cSmallValue, cSmallValue, cSmallValue);
   for i := 0 to MeshObjects.Count - 1 do
   begin
-    TGXMeshObject(MeshObjects[i]).GetExtents(lMin, lMax);
+    TgxMeshObject(MeshObjects[i]).GetExtents(lMin, lMax);
     for k := 0 to 2 do
     begin
       if lMin.v[k] < min.v[k] then
@@ -5954,24 +5954,24 @@ begin
   end;
 end;
 
-function TGXBaseMesh.GetBarycenter: TAffineVector;
+function TgxBaseMesh.GetBarycenter: TAffineVector;
 var
   i, nb: Integer;
 begin
   Result := NullVector;
   nb := 0;
   for i := 0 to MeshObjects.Count - 1 do
-    TGXMeshObject(MeshObjects[i]).ContributeToBarycenter(Result, nb);
+    TgxMeshObject(MeshObjects[i]).ContributeToBarycenter(Result, nb);
   if nb > 0 then
     ScaleVector(Result, 1 / nb);
 end;
 
-function TGXBaseMesh.LastLoadedFilename: string;
+function TgxBaseMesh.LastLoadedFilename: string;
 begin
   Result := FLastLoadedFilename;
 end;
 
-procedure TGXBaseMesh.SetMaterialLibrary(const val: TgxMaterialLibrary);
+procedure TgxBaseMesh.SetMaterialLibrary(const val: TgxMaterialLibrary);
 begin
   if FMaterialLibrary <> val then
   begin
@@ -5989,7 +5989,7 @@ begin
   end;
 end;
 
-procedure TGXBaseMesh.SetLightmapLibrary(const val: TgxMaterialLibrary);
+procedure TgxBaseMesh.SetLightmapLibrary(const val: TgxMaterialLibrary);
 begin
   if FLightmapLibrary <> val then
   begin
@@ -6005,7 +6005,7 @@ begin
   end;
 end;
 
-procedure TGXBaseMesh.SetNormalsOrientation(const val: TMeshNormalsOrientation);
+procedure TgxBaseMesh.SetNormalsOrientation(const val: TgxMeshNormalsOrientation);
 begin
   if val <> FNormalsOrientation then
   begin
@@ -6014,7 +6014,7 @@ begin
   end;
 end;
 
-procedure TGXBaseMesh.SetOverlaySkeleton(const val: Boolean);
+procedure TgxBaseMesh.SetOverlaySkeleton(const val: Boolean);
 begin
   if FOverlaySkeleton <> val then
   begin
@@ -6023,12 +6023,12 @@ begin
   end;
 end;
 
-procedure TGXBaseMesh.SetAutoScaling(const Value: TGCoordinates);
+procedure TgxBaseMesh.SetAutoScaling(const Value: TgCoordinates);
 begin
   FAutoScaling.SetPoint(Value.DirectX, Value.DirectY, Value.DirectZ);
 end;
 
-procedure TGXBaseMesh.Notification(AComponent: TComponent; Operation: TOperation);
+procedure TgxBaseMesh.Notification(AComponent: TComponent; Operation: TOperation);
 begin
   if Operation = opRemove then
   begin
@@ -6040,7 +6040,7 @@ begin
   inherited;
 end;
 
-function TGXBaseMesh.AxisAlignedDimensionsUnscaled: TVector4f;
+function TgxBaseMesh.AxisAlignedDimensionsUnscaled: TVector4f;
 var
   dMin, dMax: TAffineVector;
 begin
@@ -6055,7 +6055,7 @@ begin
   SetVector(Result, FAxisAlignedDimensionsCache);
 end;
 
-function TGXBaseMesh.BarycenterOffset: TVector4f;
+function TgxBaseMesh.BarycenterOffset: TVector4f;
 var
   dMin, dMax: TAffineVector;
 begin
@@ -6072,17 +6072,17 @@ begin
   Result := FBaryCenterOffset;
 end;
 
-function TGXBaseMesh.BarycenterPosition: TVector4f;
+function TgxBaseMesh.BarycenterPosition: TVector4f;
 begin
   Result := VectorAdd(Position.DirectVector, BarycenterOffset);
 end;
 
-function TGXBaseMesh.BarycenterAbsolutePosition: TVector4f;
+function TgxBaseMesh.BarycenterAbsolutePosition: TVector4f;
 begin
   Result := LocalToAbsolute(BarycenterPosition);
 end;
 
-procedure TGXBaseMesh.DestroyHandle;
+procedure TgxBaseMesh.DestroyHandle;
 begin
   if Assigned(FMaterialLibrary) then
     MaterialLibrary.DestroyHandles;
@@ -6091,12 +6091,12 @@ begin
   inherited;
 end;
 
-procedure TGXBaseMesh.PrepareVectorFile(aFile: TGXVectorFile);
+procedure TgxBaseMesh.PrepareVectorFile(aFile: TgxVectorFile);
 begin
   aFile.NormalsOrientation := NormalsOrientation;
 end;
 
-procedure TGXBaseMesh.PerformAutoCentering;
+procedure TgxBaseMesh.PerformAutoCentering;
 var
   delta, min, max: TAffineVector;
 begin
@@ -6126,7 +6126,7 @@ begin
     Position.Translate(VectorNegate(delta));
 end;
 
-procedure TGXBaseMesh.PerformAutoScaling;
+procedure TgxBaseMesh.PerformAutoScaling;
 var
   i: Integer;
   vScal: TAffineFltVector;
@@ -6141,12 +6141,12 @@ begin
   end;
 end;
 
-procedure TGXBaseMesh.PrepareMesh;
+procedure TgxBaseMesh.PrepareMesh;
 begin
   StructureChanged;
 end;
 
-procedure TGXBaseMesh.PrepareMaterialLibraryCache;
+procedure TgxBaseMesh.PrepareMaterialLibraryCache;
 begin
   if FMaterialLibraryCachesPrepared then
     DropMaterialLibraryCache;
@@ -6154,7 +6154,7 @@ begin
   FMaterialLibraryCachesPrepared := True;
 end;
 
-procedure TGXBaseMesh.DropMaterialLibraryCache;
+procedure TgxBaseMesh.DropMaterialLibraryCache;
 begin
   if FMaterialLibraryCachesPrepared then
   begin
@@ -6163,14 +6163,14 @@ begin
   end;
 end;
 
-procedure TGXBaseMesh.PrepareBuildList(var mrci: TgxRenderContextInfo);
+procedure TgxBaseMesh.PrepareBuildList(var mrci: TgxRenderContextInfo);
 begin
   MeshObjects.PrepareBuildList(mrci);
   if LightmapLibrary <> nil then
     LightmapLibrary.Materials.PrepareBuildList
 end;
 
-procedure TGXBaseMesh.SetUseMeshMaterials(const val: Boolean);
+procedure TgxBaseMesh.SetUseMeshMaterials(const val: Boolean);
 begin
   if val <> FUseMeshMaterials then
   begin
@@ -6181,12 +6181,12 @@ begin
   end;
 end;
 
-procedure TGXBaseMesh.BuildList(var rci: TgxRenderContextInfo);
+procedure TgxBaseMesh.BuildList(var rci: TgxRenderContextInfo);
 begin
   MeshObjects.BuildList(rci);
 end;
 
-procedure TGXBaseMesh.DoRender(var rci: TgxRenderContextInfo; renderSelf, renderChildren: Boolean);
+procedure TgxBaseMesh.DoRender(var rci: TgxRenderContextInfo; renderSelf, renderChildren: Boolean);
 begin
   if Assigned(LightmapLibrary) then
     xglForbidSecondTextureUnit;
@@ -6242,7 +6242,7 @@ begin
     Self.renderChildren(0, Count - 1, rci);
 end;
 
-procedure TGXBaseMesh.StructureChanged;
+procedure TgxBaseMesh.StructureChanged;
 begin
   FAxisAlignedDimensionsCache.X := -1;
   FBaryCenterOffsetChanged := True;
@@ -6251,16 +6251,16 @@ begin
   inherited;
 end;
 
-procedure TGXBaseMesh.StructureChangedNoPrepare;
+procedure TgxBaseMesh.StructureChangedNoPrepare;
 begin
   inherited StructureChanged;
 end;
 
-function TGXBaseMesh.RayCastIntersect(const rayStart, rayVector: TVector4f; intersectPoint: PVector4f = nil;
+function TgxBaseMesh.RayCastIntersect(const rayStart, rayVector: TVector4f; intersectPoint: PVector4f = nil;
   intersectNormal: PVector4f = nil): Boolean;
 var
   i: Integer;
-  tris: TGAffineVectorList;
+  tris: TgAffineVectorList;
   locRayStart, locRayVector, iPoint, iNormal: TVector4f;
   d, minD: Single;
 begin
@@ -6305,7 +6305,7 @@ begin
   end;
 end;
 
-function TGXBaseMesh.GenerateSilhouette(const SilhouetteParameters: TgxSilhouetteParameters): TgxSilhouette;
+function TgxBaseMesh.GenerateSilhouette(const SilhouetteParameters: TgxSilhouetteParameters): TgxSilhouette;
 var
   mc: TgxBaseMeshConnectivity;
   sil: TgxSilhouette;
@@ -6328,53 +6328,53 @@ begin
   Result := sil;
 end;
 
-procedure TGXBaseMesh.BuildSilhouetteConnectivityData;
+procedure TgxBaseMesh.BuildSilhouetteConnectivityData;
 var
   i, j: Integer;
-  mo: TGXMeshObject;
+  mo: TgxMeshObject;
 begin
   FreeAndNil(FConnectivity);
-  // connectivity data works only on facegroups of TFGXVertexIndexList class
+  // connectivity data works only on facegroups of TgxFGVertexIndexList class
   for i := 0 to MeshObjects.Count - 1 do
   begin
-    mo := (MeshObjects[i] as TGXMeshObject);
+    mo := (MeshObjects[i] as TgxMeshObject);
     if mo.mode <> momFaceGroups then
       Exit;
     for j := 0 to mo.FaceGroups.Count - 1 do
-      if not mo.FaceGroups[j].InheritsFrom(TFGXVertexIndexList) then
+      if not mo.FaceGroups[j].InheritsFrom(TgxFGVertexIndexList) then
         Exit;
   end;
   FConnectivity := TgxBaseMeshConnectivity.CreateFromMesh(Self);
 end;
 
 // ------------------
-// ------------------ TGXFreeForm ------------------
+// ------------------ TgxFreeForm ------------------
 // ------------------
 
-constructor TGXFreeForm.Create(aOwner: TComponent);
+constructor TgxFreeForm.Create(aOwner: TComponent);
 begin
   inherited;
   // ObjectStyle := [osDirectDraw];
   FUseMeshMaterials := True;
 end;
 
-destructor TGXFreeForm.Destroy;
+destructor TgxFreeForm.Destroy;
 begin
   FOctree.Free;
   inherited Destroy;
 end;
 
-function TGXFreeForm.GetOctree: TgxOctree;
+function TgxFreeForm.GetOctree: TgxOctree;
 begin
   // if not Assigned(FOctree) then     //If auto-created, can never use "if Assigned(GLFreeform1.Octree)"
   // FOctree:=TOctree.Create;        //moved this code to BuildOctree
   Result := FOctree;
 end;
 
-procedure TGXFreeForm.BuildOctree(TreeDepth: Integer = 3);
+procedure TgxFreeForm.BuildOctree(TreeDepth: Integer = 3);
 var
   emin, emax: TAffineVector;
-  tl: TGAffineVectorList;
+  tl: TgAffineVectorList;
 begin
   if not Assigned(FOctree) then // moved here from GetOctree
     FOctree := TgxOctree.Create;
@@ -6392,7 +6392,7 @@ begin
   end;
 end;
 
-function TGXFreeForm.OctreeRayCastIntersect(const rayStart, rayVector: TVector4f; intersectPoint: PVector4f = nil;
+function TgxFreeForm.OctreeRayCastIntersect(const rayStart, rayVector: TVector4f; intersectPoint: PVector4f = nil;
   intersectNormal: PVector4f = nil): Boolean;
 var
   locRayStart, locRayVector: TVector4f;
@@ -6414,7 +6414,7 @@ begin
   end;
 end;
 
-function TGXFreeForm.OctreePointInMesh(const Point: TVector4f): Boolean;
+function TgxFreeForm.OctreePointInMesh(const Point: TVector4f): Boolean;
 const
   cPointRadiusStep = 10000;
 var
@@ -6469,7 +6469,7 @@ begin
   end;
 end;
 
-function TGXFreeForm.OctreeSphereSweepIntersect(const rayStart, rayVector: TVector4f; const velocity, radius: Single;
+function TgxFreeForm.OctreeSphereSweepIntersect(const rayStart, rayVector: TVector4f; const velocity, radius: Single;
   intersectPoint: PVector4f = nil; intersectNormal: PVector4f = nil): Boolean;
 var
   locRayStart, locRayVector: TVector4f;
@@ -6491,7 +6491,7 @@ begin
   end;
 end;
 
-function TGXFreeForm.OctreeTriangleIntersect(const v1, v2, v3: TAffineVector): Boolean;
+function TgxFreeForm.OctreeTriangleIntersect(const v1, v2, v3: TAffineVector): Boolean;
 var
   t1, t2, t3: TAffineVector;
 begin
@@ -6503,8 +6503,8 @@ begin
   Result := Octree.TriangleIntersect(t1, t2, t3);
 end;
 
-function TGXFreeForm.OctreeAABBIntersect(const aabb: TAABB; objMatrix, invObjMatrix: TMatrix4f;
-  triangles: TGAffineVectorList = nil): Boolean;
+function TgxFreeForm.OctreeAABBIntersect(const aabb: TAABB; objMatrix, invObjMatrix: TMatrix4f;
+  triangles: TgAffineVectorList = nil): Boolean;
 var
   m1to2, m2to1: TMatrix4f;
 begin
@@ -6520,54 +6520,54 @@ begin
 end;
 
 // ------------------
-// ------------------ TGXActorAnimation ------------------
+// ------------------ TgxActorAnimation ------------------
 // ------------------
 
-constructor TGXActorAnimation.Create(Collection: TCollection);
+constructor TgxActorAnimation.Create(Collection: TCollection);
 begin
   inherited Create(Collection);
 end;
 
-destructor TGXActorAnimation.Destroy;
+destructor TgxActorAnimation.Destroy;
 begin
-  with (Collection as TGXActorAnimations).FOwner do
+  with (Collection as TgxActorAnimations).FOwner do
     if FTargetSmoothAnimation = Self then
       FTargetSmoothAnimation := nil;
   inherited Destroy;
 end;
 
-procedure TGXActorAnimation.Assign(Source: TPersistent);
+procedure TgxActorAnimation.Assign(Source: TPersistent);
 begin
-  if Source is TGXActorAnimation then
+  if Source is TgxActorAnimation then
   begin
-    FName := TGXActorAnimation(Source).FName;
-    FStartFrame := TGXActorAnimation(Source).FStartFrame;
-    FEndFrame := TGXActorAnimation(Source).FEndFrame;
-    FReference := TGXActorAnimation(Source).FReference;
+    FName := TgxActorAnimation(Source).FName;
+    FStartFrame := TgxActorAnimation(Source).FStartFrame;
+    FEndFrame := TgxActorAnimation(Source).FEndFrame;
+    FReference := TgxActorAnimation(Source).FReference;
   end
   else
     inherited;
 end;
 
-function TGXActorAnimation.GetDisplayName: string;
+function TgxActorAnimation.GetDisplayName: string;
 begin
   Result := Format('%d - %s [%d - %d]', [Index, Name, startFrame, endFrame]);
 end;
 
-function TGXActorAnimation.FrameCount: Integer;
+function TgxActorAnimation.FrameCount: Integer;
 begin
   case reference of
     aarMorph:
-      Result := TGXActorAnimations(Collection).FOwner.MeshObjects.MorphTargetCount;
+      Result := TgxActorAnimations(Collection).FOwner.MeshObjects.MorphTargetCount;
     aarSkeleton:
-      Result := TGXActorAnimations(Collection).FOwner.Skeleton.Frames.Count;
+      Result := TgxActorAnimations(Collection).FOwner.Skeleton.Frames.Count;
   else
     Result := 0;
     Assert(False);
   end;
 end;
 
-procedure TGXActorAnimation.SetStartFrame(const val: Integer);
+procedure TgxActorAnimation.SetStartFrame(const val: Integer);
 var
   m: Integer;
 begin
@@ -6585,7 +6585,7 @@ begin
     FEndFrame := FStartFrame;
 end;
 
-procedure TGXActorAnimation.SetEndFrame(const val: Integer);
+procedure TgxActorAnimation.SetEndFrame(const val: Integer);
 var
   m: Integer;
 begin
@@ -6603,7 +6603,7 @@ begin
     FStartFrame := FEndFrame;
 end;
 
-procedure TGXActorAnimation.SetReference(val: TGXActorAnimationReference);
+procedure TgxActorAnimation.SetReference(val: TgxActorAnimationReference);
 begin
   if val <> FReference then
   begin
@@ -6613,7 +6613,7 @@ begin
   end;
 end;
 
-procedure TGXActorAnimation.SetAsString(const val: string);
+procedure TgxActorAnimation.SetAsString(const val: string);
 var
   sl: TStringList;
 begin
@@ -6640,72 +6640,72 @@ begin
   end;
 end;
 
-function TGXActorAnimation.GetAsString: string;
+function TgxActorAnimation.GetAsString: string;
 const
   cAARToString: array [aarMorph .. aarSkeleton] of string = ('morph', 'skeleton');
 begin
   Result := Format('"%s",%d,%d,%s', [FName, FStartFrame, FEndFrame, cAARToString[reference]]);
 end;
 
-function TGXActorAnimation.OwnerActor: TGXActor;
+function TgxActorAnimation.OwnerActor: TgxActor;
 begin
-  Result := ((Collection as TGXActorAnimations).GetOwner as TGXActor);
+  Result := ((Collection as TgxActorAnimations).GetOwner as TgxActor);
 end;
 
-procedure TGXActorAnimation.MakeSkeletalTranslationStatic;
+procedure TgxActorAnimation.MakeSkeletalTranslationStatic;
 begin
   OwnerActor.Skeleton.MakeSkeletalTranslationStatic(startFrame, endFrame);
 end;
 
-procedure TGXActorAnimation.MakeSkeletalRotationDelta;
+procedure TgxActorAnimation.MakeSkeletalRotationDelta;
 begin
   OwnerActor.Skeleton.MakeSkeletalRotationDelta(startFrame, endFrame);
 end;
 
 // ------------------
-// ------------------ TGXActorAnimations ------------------
+// ------------------ TgxActorAnimations ------------------
 // ------------------
 
-constructor TGXActorAnimations.Create(aOwner: TGXActor);
+constructor TgxActorAnimations.Create(aOwner: TgxActor);
 begin
   FOwner := aOwner;
-  inherited Create(TGXActorAnimation);
+  inherited Create(TgxActorAnimation);
 end;
 
-function TGXActorAnimations.GetOwner: TPersistent;
+function TgxActorAnimations.GetOwner: TPersistent;
 begin
   Result := FOwner;
 end;
 
-procedure TGXActorAnimations.SetItems(Index: Integer; const val: TGXActorAnimation);
+procedure TgxActorAnimations.SetItems(Index: Integer; const val: TgxActorAnimation);
 begin
   inherited Items[index] := val;
 end;
 
-function TGXActorAnimations.GetItems(Index: Integer): TGXActorAnimation;
+function TgxActorAnimations.GetItems(Index: Integer): TgxActorAnimation;
 begin
-  Result := TGXActorAnimation(inherited Items[index]);
+  Result := TgxActorAnimation(inherited Items[index]);
 end;
 
-function TGXActorAnimations.Last: TGXActorAnimation;
+function TgxActorAnimations.Last: TgxActorAnimation;
 begin
   if Count > 0 then
-    Result := TGXActorAnimation(inherited Items[Count - 1])
+    Result := TgxActorAnimation(inherited Items[Count - 1])
   else
     Result := nil;
 end;
 
-function TGXActorAnimations.Add: TGXActorAnimation;
+function TgxActorAnimations.Add: TgxActorAnimation;
 begin
-  Result := (inherited Add) as TGXActorAnimation;
+  Result := (inherited Add) as TgxActorAnimation;
 end;
 
-function TGXActorAnimations.FindItemID(ID: Integer): TGXActorAnimation;
+function TgxActorAnimations.FindItemID(ID: Integer): TgxActorAnimation;
 begin
-  Result := (inherited FindItemID(ID)) as TGXActorAnimation;
+  Result := (inherited FindItemID(ID)) as TgxActorAnimation;
 end;
 
-function TGXActorAnimations.FindName(const aName: string): TGXActorAnimation;
+function TgxActorAnimations.FindName(const aName: string): TgxActorAnimation;
 var
   i: Integer;
 begin
@@ -6718,7 +6718,7 @@ begin
     end;
 end;
 
-function TGXActorAnimations.FindFrame(aFrame: Integer; aReference: TGXActorAnimationReference): TGXActorAnimation;
+function TgxActorAnimations.FindFrame(aFrame: Integer; aReference: TgxActorAnimationReference): TgxActorAnimation;
 var
   i: Integer;
 begin
@@ -6732,7 +6732,7 @@ begin
       end;
 end;
 
-procedure TGXActorAnimations.SetToStrings(aStrings: TStrings);
+procedure TgxActorAnimations.SetToStrings(aStrings: TStrings);
 
 var
   i: Integer;
@@ -6747,7 +6747,7 @@ begin
   end;
 end;
 
-procedure TGXActorAnimations.SaveToStream(aStream: TStream);
+procedure TgxActorAnimations.SaveToStream(aStream: TStream);
 var
   i: Integer;
 begin
@@ -6757,7 +6757,7 @@ begin
     WriteCRLFString(aStream, AnsiString(Items[i].AsString));
 end;
 
-procedure TGXActorAnimations.LoadFromStream(aStream: TStream);
+procedure TgxActorAnimations.LoadFromStream(aStream: TStream);
 var
   i, n: Integer;
 begin
@@ -6769,7 +6769,7 @@ begin
     Add.AsString := string(ReadCRLFString(aStream));
 end;
 
-procedure TGXActorAnimations.SaveToFile(const filename: string);
+procedure TgxActorAnimations.SaveToFile(const filename: string);
 var
   fs: TStream;
 begin
@@ -6781,7 +6781,7 @@ begin
   end;
 end;
 
-procedure TGXActorAnimations.LoadFromFile(const filename: string);
+procedure TgxActorAnimations.LoadFromFile(const filename: string);
 var
   fs: TStream;
 begin
@@ -6794,35 +6794,35 @@ begin
 end;
 
 // ------------------
-// ------------------ TGXBaseAnimationControler ------------------
+// ------------------ TgxBaseAnimationControler ------------------
 // ------------------
 
-constructor TGXBaseAnimationControler.Create(aOwner: TComponent);
+constructor TgxBaseAnimationControler.Create(aOwner: TComponent);
 begin
   inherited Create(aOwner);
   FEnabled := True;
 end;
 
-destructor TGXBaseAnimationControler.Destroy;
+destructor TgxBaseAnimationControler.Destroy;
 begin
   SetActor(nil);
   inherited Destroy;
 end;
 
-procedure TGXBaseAnimationControler.Notification(AComponent: TComponent; Operation: TOperation);
+procedure TgxBaseAnimationControler.Notification(AComponent: TComponent; Operation: TOperation);
 begin
   if (AComponent = FActor) and (Operation = opRemove) then
     SetActor(nil);
   inherited;
 end;
 
-procedure TGXBaseAnimationControler.DoChange;
+procedure TgxBaseAnimationControler.DoChange;
 begin
   if Assigned(FActor) then
     FActor.NotifyChange(Self);
 end;
 
-procedure TGXBaseAnimationControler.SetEnabled(const val: Boolean);
+procedure TgxBaseAnimationControler.SetEnabled(const val: Boolean);
 begin
   if val <> FEnabled then
   begin
@@ -6832,7 +6832,7 @@ begin
   end;
 end;
 
-procedure TGXBaseAnimationControler.SetActor(const val: TGXActor);
+procedure TgxBaseAnimationControler.SetActor(const val: TgxActor);
 begin
   if FActor <> val then
   begin
@@ -6847,23 +6847,23 @@ begin
   end;
 end;
 
-function TGXBaseAnimationControler.Apply(var lerpInfo: TGXBlendedLerpInfo): Boolean;
+function TgxBaseAnimationControler.Apply(var lerpInfo: TGXBlendedLerpInfo): Boolean;
 begin
   // virtual
   Result := False;
 end;
 
 // ------------------
-// ------------------ TGXAnimationControler ------------------
+// ------------------ TgxAnimationControler ------------------
 // ------------------
 
-procedure TGXAnimationControler.DoChange;
+procedure TgxAnimationControler.DoChange;
 begin
   if AnimationName <> '' then
     inherited;
 end;
 
-procedure TGXAnimationControler.SetAnimationName(const val: TGXActorAnimationName);
+procedure TgxAnimationControler.SetAnimationName(const val: TgxActorAnimationName);
 begin
   if FAnimationName <> val then
   begin
@@ -6872,7 +6872,7 @@ begin
   end;
 end;
 
-procedure TGXAnimationControler.SetRatio(const val: Single);
+procedure TgxAnimationControler.SetRatio(const val: Single);
 begin
   if FRatio <> val then
   begin
@@ -6881,9 +6881,9 @@ begin
   end;
 end;
 
-function TGXAnimationControler.Apply(var lerpInfo: TGXBlendedLerpInfo): Boolean;
+function TgxAnimationControler.Apply(var lerpInfo: TGXBlendedLerpInfo): Boolean;
 var
-  anim: TGXActorAnimation;
+  anim: TgxActorAnimation;
   baseDelta: Integer;
 begin
   if not Enabled then
@@ -6926,40 +6926,40 @@ begin
 end;
 
 // ------------------
-// ------------------ TGXActor ------------------
+// ------------------ TgxActor ------------------
 // ------------------
 
-constructor TGXActor.Create(aOwner: TComponent);
+constructor TgxActor.Create(aOwner: TComponent);
 begin
   inherited Create(aOwner);
   ObjectStyle := ObjectStyle + [osDirectDraw];
   FFrameInterpolation := afpLinear;
   FAnimationMode := aamNone;
   FInterval := 100; // 10 animation frames per second
-  FAnimations := TGXActorAnimations.Create(Self);
+  FAnimations := TgxActorAnimations.Create(Self);
   FControlers := nil; // created on request
   FOptions := cDefaultActorOptions;
 end;
 
-destructor TGXActor.Destroy;
+destructor TgxActor.Destroy;
 begin
   inherited Destroy;
   FControlers.Free;
   FAnimations.Free;
 end;
 
-procedure TGXActor.Assign(Source: TPersistent);
+procedure TgxActor.Assign(Source: TPersistent);
 begin
   inherited Assign(Source);
-  if Source is TGXActor then
+  if Source is TgxActor then
   begin
-    FAnimations.Assign(TGXActor(Source).FAnimations);
-    FAnimationMode := TGXActor(Source).FAnimationMode;
-    Synchronize(TGXActor(Source));
+    FAnimations.Assign(TgxActor(Source).FAnimations);
+    FAnimationMode := TgxActor(Source).FAnimationMode;
+    Synchronize(TgxActor(Source));
   end;
 end;
 
-procedure TGXActor.RegisterControler(aControler: TGXBaseAnimationControler);
+procedure TgxActor.RegisterControler(aControler: TgxBaseAnimationControler);
 begin
   if not Assigned(FControlers) then
     FControlers := TList.Create;
@@ -6967,7 +6967,7 @@ begin
   FreeNotification(aControler);
 end;
 
-procedure TGXActor.UnRegisterControler(aControler: TGXBaseAnimationControler);
+procedure TgxActor.UnRegisterControler(aControler: TgxBaseAnimationControler);
 begin
   Assert(Assigned(FControlers));
   FControlers.Remove(aControler);
@@ -6976,7 +6976,7 @@ begin
     FreeAndNil(FControlers);
 end;
 
-procedure TGXActor.SetCurrentFrame(val: Integer);
+procedure TgxActor.SetCurrentFrame(val: Integer);
 begin
   if val <> CurrentFrame then
   begin
@@ -7004,12 +7004,12 @@ begin
   end;
 end;
 
-procedure TGXActor.SetCurrentFrameDirect(const Value: Integer);
+procedure TgxActor.SetCurrentFrameDirect(const Value: Integer);
 begin
   FCurrentFrame := Value;
 end;
 
-procedure TGXActor.SetStartFrame(val: Integer);
+procedure TgxActor.SetStartFrame(val: Integer);
 begin
   if (val >= 0) and (val < FrameCount) and (val <> startFrame) then
     FStartFrame := val;
@@ -7019,7 +7019,7 @@ begin
     CurrentFrame := FStartFrame;
 end;
 
-procedure TGXActor.SetEndFrame(val: Integer);
+procedure TgxActor.SetEndFrame(val: Integer);
 begin
   if (val >= 0) and (val < FrameCount) and (val <> endFrame) then
     FEndFrame := val;
@@ -7027,7 +7027,7 @@ begin
     CurrentFrame := FEndFrame;
 end;
 
-procedure TGXActor.SetReference(val: TGXActorAnimationReference);
+procedure TgxActor.SetReference(val: TgxActorAnimationReference);
 begin
   if val <> reference then
   begin
@@ -7039,17 +7039,17 @@ begin
   end;
 end;
 
-procedure TGXActor.SetAnimations(const val: TGXActorAnimations);
+procedure TgxActor.SetAnimations(const val: TgxActorAnimations);
 begin
   FAnimations.Assign(val);
 end;
 
-function TGXActor.StoreAnimations: Boolean;
+function TgxActor.StoreAnimations: Boolean;
 begin
   Result := (FAnimations.Count > 0);
 end;
 
-procedure TGXActor.SetOptions(const val: TgxActorOptions);
+procedure TgxActor.SetOptions(const val: TgxActorOptions);
 begin
   if val <> FOptions then
   begin
@@ -7058,7 +7058,7 @@ begin
   end;
 end;
 
-function TGXActor.NextFrameIndex: Integer;
+function TgxActor.NextFrameIndex: Integer;
 begin
   case AnimationMode of
     aamLoop, aamBounceForward:
@@ -7110,7 +7110,7 @@ begin
   end;
 end;
 
-procedure TGXActor.NextFrame(nbSteps: Integer = 1);
+procedure TgxActor.NextFrame(nbSteps: Integer = 1);
 var
   n: Integer;
 begin
@@ -7126,7 +7126,7 @@ begin
   end;
 end;
 
-procedure TGXActor.PrevFrame(nbSteps: Integer = 1);
+procedure TgxActor.PrevFrame(nbSteps: Integer = 1);
 var
   Value: Integer;
 begin
@@ -7140,7 +7140,7 @@ begin
   CurrentFrame := Value;
 end;
 
-procedure TGXActor.DoAnimate();
+procedure TgxActor.DoAnimate();
 var
   i, k: Integer;
   nextFrameIdx: Integer;
@@ -7198,7 +7198,7 @@ begin
           end;
           k := 1;
           for i := 0 to FControlers.Count - 1 do
-            if TGXBaseAnimationControler(FControlers[i]).Apply(lerpInfos[k]) then
+            if TgxBaseAnimationControler(FControlers[i]).Apply(lerpInfos[k]) then
               Inc(k);
           SetLength(lerpInfos, k);
           Skeleton.BlendedLerps(lerpInfos);
@@ -7220,7 +7220,7 @@ begin
   end;
 end;
 
-procedure TGXActor.BuildList(var rci: TgxRenderContextInfo);
+procedure TgxActor.BuildList(var rci: TgxRenderContextInfo);
 begin
   DoAnimate;
   inherited;
@@ -7231,7 +7231,7 @@ begin
   end;
 end;
 
-procedure TGXActor.PrepareMesh;
+procedure TgxActor.PrepareMesh;
 begin
   FStartFrame := 0;
   FEndFrame := FrameCount - 1;
@@ -7241,12 +7241,12 @@ begin
   inherited;
 end;
 
-procedure TGXActor.PrepareBuildList(var mrci: TgxRenderContextInfo);
+procedure TgxActor.PrepareBuildList(var mrci: TgxRenderContextInfo);
 begin
   // no preparation needed for actors, they don't use buildlists
 end;
 
-function TGXActor.FrameCount: Integer;
+function TgxActor.FrameCount: Integer;
 begin
   case reference of
     aarMorph:
@@ -7261,7 +7261,7 @@ begin
   end;
 end;
 
-procedure TGXActor.DoProgress(const progressTime: TGProgressTimes);
+procedure TgxActor.DoProgress(const progressTime: TGProgressTimes);
 var
   fDelta: Single;
 begin
@@ -7290,7 +7290,7 @@ begin
   end;
 end;
 
-procedure TGXActor.LoadFromStream(const filename: string; aStream: TStream);
+procedure TgxActor.LoadFromStream(const filename: string; aStream: TStream);
 begin
   if filename <> '' then
   begin
@@ -7299,18 +7299,18 @@ begin
   end;
 end;
 
-procedure TGXActor.SwitchToAnimation(const AnimationName: string; smooth: Boolean = False);
+procedure TgxActor.SwitchToAnimation(const AnimationName: string; smooth: Boolean = False);
 begin
   SwitchToAnimation(Animations.FindName(AnimationName), smooth);
 end;
 
-procedure TGXActor.SwitchToAnimation(animationIndex: Integer; smooth: Boolean = False);
+procedure TgxActor.SwitchToAnimation(animationIndex: Integer; smooth: Boolean = False);
 begin
   if (animationIndex >= 0) and (animationIndex < Animations.Count) then
     SwitchToAnimation(Animations[animationIndex], smooth);
 end;
 
-procedure TGXActor.SwitchToAnimation(anAnimation: TGXActorAnimation; smooth: Boolean = False);
+procedure TgxActor.SwitchToAnimation(anAnimation: TgxActorAnimation; smooth: Boolean = False);
 begin
   if Assigned(anAnimation) then
   begin
@@ -7329,9 +7329,9 @@ begin
   end;
 end;
 
-function TGXActor.CurrentAnimation: string;
+function TgxActor.CurrentAnimation: string;
 var
-  aa: TGXActorAnimation;
+  aa: TgxActorAnimation;
 begin
   aa := Animations.FindFrame(CurrentFrame, reference);
   if Assigned(aa) then
@@ -7340,7 +7340,7 @@ begin
     Result := '';
 end;
 
-procedure TGXActor.Synchronize(referenceActor: TGXActor);
+procedure TgxActor.Synchronize(referenceActor: TgxActor);
 begin
   if Assigned(referenceActor) then
   begin
@@ -7363,7 +7363,7 @@ begin
   end;
 end;
 
-function TGXActor.isSwitchingAnimation: Boolean;
+function TgxActor.isSwitchingAnimation: Boolean;
 begin
   Result := FTargetSmoothAnimation <> nil;
 end;
@@ -7373,11 +7373,11 @@ initialization
 
 // ------------------------------------------------------------------
 
-RegisterVectorFileFormat('glsm', 'GXScene Mesh', TGXVectorFileGLSM);
+RegisterVectorFileFormat('glsm', 'GXScene Mesh', TgxVectorFileGLSM);
 
-RegisterClasses([TGXFreeForm, TGXActor, TGXSkeleton, TGXSkeletonFrame, TGXSkeletonBone, TGXSkeletonMeshObject, TGXMeshObject,
-  TGXSkeletonFrameList, TGXMeshMorphTarget, TGXMorphableMeshObject, TGXFaceGroup, TFGXVertexIndexList,
-  TFGVertexNormalTexIndexList, TGXAnimationControler, TFGIndexTexCoordList, TGXSkeletonCollider, TGXSkeletonColliderList]);
+RegisterClasses([TgxFreeForm, TgxActor, TgxSkeleton, TgxSkeletonFrame, TgxSkeletonBone, TgxSkeletonMeshObject, TgxMeshObject,
+  TgxSkeletonFrameList, TgxMeshMorphTarget, TgxMorphableMeshObject, TgxFaceGroup, TgxFGVertexIndexList,
+  TFGVertexNormalTexIndexList, TgxAnimationControler, TgxFGIndexTexCoordList, TgxSkeletonCollider, TgxSkeletonColliderList]);
 
 finalization
 

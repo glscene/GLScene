@@ -20,7 +20,7 @@ uses
 
 type
 
-  TCUDADimensions = class(TGUpdateAbleObject)
+  TCUDADimensions = class(TgUpdateAbleObject)
   private
     FXYZ: TDim3;
     FMaxXYZ: TDim3;

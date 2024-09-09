@@ -38,7 +38,7 @@ uses
   GLScene.Coordinates,
   GLScene.Spline,
   GLScene.VectorLists,
-  GLS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLS.Scene,
   GLS.Context,
   GLS.Silhouette,
@@ -238,13 +238,13 @@ type
     FEnabled: Boolean;
     FMinSize, FMaxSize: Single;
     FFadeTresholdSize: Single;
-    FDistanceAttenuation: TGCoordinates;
+    FDistanceAttenuation: TgCoordinates;
   protected
     procedure SetEnabled(const val: Boolean);
     procedure SetMinSize(const val: Single);
     procedure SetMaxSize(const val: Single);
     procedure SetFadeTresholdSize(const val: Single);
-    procedure SetDistanceAttenuation(const val: TGCoordinates);
+    procedure SetDistanceAttenuation(const val: TgCoordinates);
     procedure DefineProperties(Filer: TFiler); override;
     procedure ReadData(Stream: TStream);
     procedure WriteData(Stream: TStream);
@@ -261,7 +261,7 @@ type
     property FadeTresholdSize: Single read FFadeTresholdSize
       write SetFadeTresholdSize stored False;
     // Components XYZ are for constant, linear and quadratic attenuation.
-    property DistanceAttenuation: TGCoordinates read FDistanceAttenuation
+    property DistanceAttenuation: TgCoordinates read FDistanceAttenuation
       write SetDistanceAttenuation;
   end;
 
@@ -412,7 +412,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     function AxisAlignedDimensionsUnscaled: TGLVector; override;
-    procedure AddNode(const coords: TGCoordinates); overload;
+    procedure AddNode(const coords: TgCoordinates); overload;
     procedure AddNode(const X, Y, Z: TGLFloat); overload;
     procedure AddNode(const Value: TGLVector); overload;
     procedure AddNode(const Value: TAffineVector); overload;
@@ -616,7 +616,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure NotifyChange(Sender: TObject); override;
-    procedure AddNode(const coords: TGCoordinates); overload;
+    procedure AddNode(const coords: TgCoordinates); overload;
     procedure AddNode(const X, Y, Z: TGLFloat); overload;
     procedure AddNode(const Value: TGLVector); overload;
     procedure AddNode(const Value: TAffineVector); overload;
@@ -1447,7 +1447,7 @@ begin
   FMinSize := 0;
   FMaxSize := 128;
   FFadeTresholdSize := 1;
-  FDistanceAttenuation := TGCoordinates.CreateInitialized(Self, XHmgVector,
+  FDistanceAttenuation := TgCoordinates.CreateInitialized(Self, XHmgVector,
     csVector);
 end;
 
@@ -1567,7 +1567,7 @@ begin
   end;
 end;
 
-procedure TGLPointParameters.SetDistanceAttenuation(const val: TGCoordinates);
+procedure TGLPointParameters.SetDistanceAttenuation(const val: TgCoordinates);
 begin
   FDistanceAttenuation.Assign(val);
 end;
@@ -2040,7 +2040,7 @@ begin
   // DivideVector(Result, Scale.AsVector);     //DanB ?
 end;
 
-procedure TGLNodedLines.AddNode(const coords: TGCoordinates);
+procedure TGLNodedLines.AddNode(const coords: TgCoordinates);
 var
   n: TGLNode;
 begin
@@ -3117,7 +3117,7 @@ begin
   end;
 end;
 
-procedure TGLPolygonBase.AddNode(const coords: TGCoordinates);
+procedure TGLPolygonBase.AddNode(const coords: TgCoordinates);
 var
   n: TGLNode;
 begin

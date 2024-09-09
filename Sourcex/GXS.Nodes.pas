@@ -73,7 +73,7 @@ type
     function Last: TgxNode;
     procedure NotifyChange; virtual;
     procedure EndUpdate; override;
-    procedure AddNode(const Coords: TGCustomCoordinates); overload;
+    procedure AddNode(const Coords: TgCustomCoordinates); overload;
     procedure AddNode(const X, Y, Z: Single); overload;
     procedure AddNode(const Value: TVector4f); overload;
     procedure AddNode(const Value: TAffineVector); overload;
@@ -254,8 +254,8 @@ end;
 
 procedure TgxNodes.NotifyChange;
 begin
-  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TGUpdateAbleComponent) then
-    TGUpdateAbleComponent(GetOwner).NotifyChange(Self);
+  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TgUpdateAbleComponent) then
+    TgUpdateAbleComponent(GetOwner).NotifyChange(Self);
 end;
 
 procedure TgxNodes.EndUpdate;
@@ -266,7 +266,7 @@ begin
     NotifyChange;
 end;
 
-procedure TgxNodes.AddNode(const Coords: TGCustomCoordinates);
+procedure TgxNodes.AddNode(const Coords: TgCustomCoordinates);
 begin
   Add.AsVector := Coords.AsVector;
 end;

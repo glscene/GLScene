@@ -23,15 +23,15 @@ uses
   Formats.LWO;
 
 type
-  TgxLWOVectorFile = class(TGXVectorFile)
+  TgxLWOVectorFile = class(TgxVectorFile)
   private
     FLWO: TLWObjectFile;
     FPnts: TLWPnts;
     procedure AddLayr(Layr: TLWLayr; LWO: TLWObjectFile);
     procedure AddSurf(Surf: TLWSurf; LWO: TLWObjectFile);
-    procedure AddPnts(Pnts: TLWPnts; Mesh: TGXMeshObject);
-    procedure AddPols(Pols: TLWPols; Mesh: TGXMeshObject);
-    procedure AddVMap(VMap: TLWVMap; Mesh: TGXMeshObject);
+    procedure AddPnts(Pnts: TLWPnts; Mesh: TgxMeshObject);
+    procedure AddPols(Pols: TLWPols; Mesh: TgxMeshObject);
+    procedure AddVMap(VMap: TLWVMap; Mesh: TgxMeshObject);
   public
     procedure LoadFromStream(aStream: TStream); override;
   end;
@@ -68,11 +68,11 @@ type
 procedure TgxLWOVectorFile.AddLayr(Layr: TLWLayr; LWO: TLWObjectFile);
 var
   Idx: Integer;
-  Mesh: TGXMeshObject;
+  Mesh: TgxMeshObject;
   Pnts: TLWPnts;
 begin
   // Add mesh
-  Mesh := TGXMeshObject.CreateOwned(Owner.MeshObjects);
+  Mesh := TgxMeshObject.CreateOwned(Owner.MeshObjects);
 
   with Mesh do
   begin
@@ -108,7 +108,7 @@ begin
   FPnts := nil;
 end;
 
-procedure TgxLWOVectorFile.AddPnts(Pnts: TLWPnts; Mesh: TGXMeshObject);
+procedure TgxLWOVectorFile.AddPnts(Pnts: TLWPnts; Mesh: TgxMeshObject);
 var
   i: Integer;
 begin
@@ -125,7 +125,7 @@ begin
   end;
 end;
 
-procedure TgxLWOVectorFile.AddPols(Pols: TLWPols; Mesh: TGXMeshObject);
+procedure TgxLWOVectorFile.AddPols(Pols: TLWPols; Mesh: TgxMeshObject);
 var
   Idx: Integer;
   i, j, k, PolyIdx, NormIdx: Integer;
@@ -265,9 +265,9 @@ var
   Idx: integer;
 begin
   // DONE: implement surface inheritance
-  if GetOwner is TGXBaseMesh then
+  if GetOwner is TgxBaseMesh then
   begin
-    matLib := TGXBaseMesh(GetOwner).MaterialLibrary;
+    matLib := TgxBaseMesh(GetOwner).MaterialLibrary;
     if Assigned(matLib) then
     begin
       libMat := matLib.Materials.GetLibMaterialByName(Surf.Name);
@@ -349,7 +349,7 @@ begin
   end;
 end;
 
-procedure TgxLWOVectorFile.AddVMap(VMap: TLWVMap; Mesh: TGXMeshObject);
+procedure TgxLWOVectorFile.AddVMap(VMap: TLWVMap; Mesh: TgxMeshObject);
 var
   i: integer;
 begin

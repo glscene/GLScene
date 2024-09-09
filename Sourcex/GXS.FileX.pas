@@ -24,7 +24,7 @@ uses
   Formats.X;
 
 type
-  TgxXVectorFile = class(TGXVectorFile)
+  TgxXVectorFile = class(TgxVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -46,7 +46,7 @@ var
   procedure RecursDXFile(DXNode: TDXNode);
   var
     i, j, k, l, vertcount: integer;
-    mo: TGXMeshObject;
+    mo: TgxMeshObject;
     mat: TMatrix4f;
     libmat: TgxLibMaterial;
     fg: TFGVertexNormalTexIndexList;
@@ -62,7 +62,7 @@ var
 
     if DXNode is TDXMesh then
     begin
-      mo := TGXMeshObject.CreateOwned(Owner.MeshObjects);
+      mo := TgxMeshObject.CreateOwned(Owner.MeshObjects);
       mo.Mode := momFaceGroups;
       mo.Vertices.Assign(TDXMesh(DXNode).Vertices);
       mo.Vertices.TransformAsPoints(mat);

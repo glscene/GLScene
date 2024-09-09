@@ -264,8 +264,8 @@ end;
 
 procedure TgxMultiProxyMasters.NotifyChange;
 begin
-  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TGUpdateAbleComponent) then
-    TGUpdateAbleComponent(GetOwner).NotifyChange(Self);
+  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TgUpdateAbleComponent) then
+    TgUpdateAbleComponent(GetOwner).NotifyChange(Self);
 end;
 
 procedure TgxMultiProxyMasters.EndUpdate;

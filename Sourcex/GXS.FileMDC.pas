@@ -117,7 +117,7 @@ type
   end;
 
 type
-  TgxMDCVectorFile = class(TGXVectorFile)
+  TgxMDCVectorFile = class(TgxVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(AStream: TStream); override;
@@ -144,9 +144,9 @@ type
 
 var
   I, J, K, NumVerts, Numtris: Integer;
-  Mesh: TGXMorphableMeshObject;
-  FaceGroup: TFGIndexTexCoordList;
-  MorphTarget: TGXMeshMorphTarget;
+  Mesh: TgxMorphableMeshObject;
+  FaceGroup: TgxFGIndexTexCoordList;
+  MorphTarget: TgxMeshMorphTarget;
 
   function UnpackNormal(Pn: TPackedNormal): TAffineVector;
   var
@@ -228,13 +228,13 @@ begin
       AStream.Position := FrameOffset + Surfheader.OffsetFrameCompFrames;
       AStream.Read(Compframetable[0], SizeOf(Word) * Fileheader.NumFrames);
 
-      Mesh := TGXMorphableMeshObject.CreateOwned(Owner.MeshObjects);
+      Mesh := TgxMorphableMeshObject.CreateOwned(Owner.MeshObjects);
       // easiest way to convert a char array to string ;)
       Mesh.Name := Trim(string(PChar(Surfheader.Name[0])));
       with Mesh do
       begin
         Mode := MomFaceGroups;
-        FaceGroup := TFGIndexTexCoordList.CreateOwned(FaceGroups);
+        FaceGroup := TgxFGIndexTexCoordList.CreateOwned(FaceGroups);
         with FaceGroup do
         begin
           AllocateMaterial(Mesh.Name);
@@ -257,7 +257,7 @@ begin
         // Get the mesh data for each morph frame
         for J := 0 to Fileheader.NumFrames - 1 do
         begin
-          MorphTarget := TGXMeshMorphTarget.CreateOwned(MorphTargets);
+          MorphTarget := TgxMeshMorphTarget.CreateOwned(MorphTargets);
           MorphTarget.Name := Trim(string(Pchar(Surfheader.Name[0]))) + '[' +
             IntToStr(J) + ']';
           NumVerts := Surfheader.NumVertices;

@@ -109,7 +109,7 @@ type
     FGLXceneRoot: TgxBaseSceneObject;
     FShowBoundingBoxes: Boolean;
   public
-    constructor Create(aOwner: TGXBaseMesh);
+    constructor Create(aOwner: TgxBaseMesh);
     property ODEWorld: TgxODERagdollWorld read FODEWorld write FODEWorld;
     property GLXceneRoot: TgxBaseSceneObject read FGLXceneRoot
       write FGLXceneRoot;
@@ -385,7 +385,7 @@ end;
 // TgxODERagdoll
 //------------------------------------
 
-constructor TgxODERagdoll.Create(aOwner: TGXBaseMesh);
+constructor TgxODERagdoll.Create(aOwner: TgxBaseMesh);
 begin
   inherited Create(aOwner);
   FShowBoundingBoxes := False;

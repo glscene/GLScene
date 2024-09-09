@@ -26,7 +26,7 @@ uses
   GXS.Context;
 
 type
-  TgxLineSettings = class(TGUpdateAbleObject)
+  TgxLineSettings = class(TgUpdateAbleObject)
   private
     FColor: TGColor;
     FWidth: Single;

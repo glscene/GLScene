@@ -457,7 +457,7 @@ type
   TGLLibMaterial = class(TGLAbstractLibMaterial, IGLTextureNotifyAble)
   private
     FMaterial: TGLMaterial;
-    FTextureOffset, FTextureScale: TGCoordinates;
+    FTextureOffset, FTextureScale: TgCoordinates;
     FTextureRotate: Single;
     FTextureMatrixIsIdentity: Boolean;
     FTextureOverride: Boolean;
@@ -468,8 +468,8 @@ type
   protected
     procedure Loaded; override;
     procedure SetMaterial(const val: TGLMaterial);
-    procedure SetTextureOffset(const val: TGCoordinates);
-    procedure SetTextureScale(const val: TGCoordinates);
+    procedure SetTextureOffset(const val: TgCoordinates);
+    procedure SetTextureScale(const val: TgCoordinates);
     procedure SetTextureMatrix(const Value: TGLMatrix);
     procedure SetTexture2Name(const val: TGLLibMaterialName);
     procedure SetShader(const val: TGLShader);
@@ -495,13 +495,13 @@ type
   published
     property Material: TGLMaterial read FMaterial write SetMaterial;
     // Texture offset in texture coordinates. The offset is applied after scaling
-    property TextureOffset: TGCoordinates read FTextureOffset write
+    property TextureOffset: TgCoordinates read FTextureOffset write
       SetTextureOffset;
     (* Texture coordinates scaling.
        Scaling is applied <i>before</i> applying the offset, and is applied
        to the texture coordinates, meaning that a scale factor of (2, 2, 2)
        will make your texture look twice smaller *)
-    property TextureScale: TGCoordinates read FTextureScale write
+    property TextureScale: TgCoordinates read FTextureScale write
       SetTextureScale;
     property TextureRotate: Single read FTextureRotate write
       SetTextureRotate stored StoreTextureRotate;
@@ -1741,9 +1741,9 @@ begin
   inherited Create(ACollection);
   FMaterial := TGLMaterial.Create(Self);
   FMaterial.Texture.OnTextureNeeded := DoOnTextureNeeded;
-  FTextureOffset := TGCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
+  FTextureOffset := TgCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
   FTextureOffset.OnNotifyChange := OnNotifyChange;
-  FTextureScale := TGCoordinates.CreateInitialized(Self, XYZHmgVector, csPoint);
+  FTextureScale := TgCoordinates.CreateInitialized(Self, XYZHmgVector, csPoint);
   FTextureScale.OnNotifyChange := OnNotifyChange;
   FTextureRotate := 0;
   FTextureOverride := False;
@@ -1957,13 +1957,13 @@ begin
   FMaterial.Assign(val);
 end;
 
-procedure TGLLibMaterial.SetTextureOffset(const val: TGCoordinates);
+procedure TGLLibMaterial.SetTextureOffset(const val: TgCoordinates);
 begin
   FTextureOffset.AsVector := val.AsVector;
   CalculateTextureMatrix;
 end;
 
-procedure TGLLibMaterial.SetTextureScale(const val: TGCoordinates);
+procedure TGLLibMaterial.SetTextureScale(const val: TgCoordinates);
 begin
   FTextureScale.AsVector := val.AsVector;
   CalculateTextureMatrix;

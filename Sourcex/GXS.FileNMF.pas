@@ -10,6 +10,7 @@ interface
 uses
   System.Classes,
 
+  GLScene.VectorTypes,
   GXS.VectorFileObjects,
   GLScene.VectorGeometry,
   GLScene.VectorLists,
@@ -41,7 +42,7 @@ type
   end;
 
 type
-  TgxNMFVectorFile = class(TGXVectorFile)
+  TgxNMFVectorFile = class(TgxVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -105,13 +106,13 @@ end;
 procedure TgxNMFVectorFile.LoadFromStream(aStream: TStream);
 var
   i, j: Integer;
-  mesh: TGXMeshObject;
+  mesh: TgxMeshObject;
   nmf: TFileNMF;
 begin
   nmf := TFileNMF.Create;
   try
     nmf.LoadFromStream(aStream);
-    mesh := TGXMeshObject.CreateOwned(Owner.MeshObjects);
+    mesh := TgxMeshObject.CreateOwned(Owner.MeshObjects);
     mesh.Mode := momTriangles;
     for i := 0 to nmf.NumTris - 1 do
     begin
@@ -133,12 +134,12 @@ procedure TgxNMFVectorFile.SaveToStream(aStream: TStream);
 var
   i, j: Integer;
   nmf: TFileNMF;
-  Vertices, TempVertices, Normals, TexCoords: TGAffineVectorList;
+  Vertices, TempVertices, Normals, TexCoords: TgAffineVectorList;
 begin
   nmf := TFileNMF.Create;
-  Vertices := TGAffineVectorList.Create;
-  Normals := TGAffineVectorList.Create;
-  TexCoords := TGAffineVectorList.Create;
+  Vertices := TgAffineVectorList.Create;
+  Normals := TgAffineVectorList.Create;
+  TexCoords := TgAffineVectorList.Create;
   try
     for i := 0 to Owner.MeshObjects.Count - 1 do
     begin

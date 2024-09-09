@@ -17,7 +17,7 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry, // PVector4f TVector4f TMatrix4f PMatrix4f NullHmgVector...
-  GLScene.VectorLists, // TGAffineVectorList for Tree
+  GLScene.VectorLists, // TgAffineVectorList for Tree
   GLScene.XCollection, // TXCollection file function
   GLScene.GeometryBB,
   GLScene.BaseClasses,
@@ -156,10 +156,10 @@ type
     FSolverModel: TgxNGDSolverModels; // Default=Exact
     FFrictionModel: TgxNGDFrictionModels; // Default=Exact
     FMinimumFrameRate: Integer; // Default=60
-    FWorldSizeMin: TGCoordinates; // Default=-100, -100, -100
-    FWorldSizeMax: TGCoordinates; // Default=100, 100, 100
+    FWorldSizeMin: TgCoordinates; // Default=-100, -100, -100
+    FWorldSizeMax: TgCoordinates; // Default=100, 100, 100
     FThreadCount: Integer; // Default=1
-    FGravity: TGCoordinates; // Default=(0,-9.81,0)
+    FGravity: TgCoordinates; // Default=(0,-9.81,0)
     FNewtonSurfaceItem: TCollection;
     FNewtonSurfacePair: TOwnedCollection;
     FNewtonJointGroup: TOwnedCollection;
@@ -180,7 +180,7 @@ type
     procedure SetGXLines(const Value: TgxLines);
     function GetBodyCount: Integer;
     function GetConstraintCount: Integer;
-    procedure AddNode(const coords: TGCustomCoordinates); overload;
+    procedure AddNode(const coords: TgCustomCoordinates); overload;
     procedure AddNode(const X, Y, Z: Single); overload;
     procedure AddNode(const Value: TVector4f); overload;
     procedure AddNode(const Value: TAffineVector); overload;
@@ -208,10 +208,10 @@ type
     property DllVersion: Integer read FDllVersion;
     property NewtonBodyCount: Integer read GetBodyCount;
     property NewtonConstraintCount: Integer read GetConstraintCount;
-    property Gravity: TGCoordinates read FGravity write FGravity;
-    property WorldSizeMin: TGCoordinates read FWorldSizeMin
+    property Gravity: TgCoordinates read FGravity write FGravity;
+    property WorldSizeMin: TgCoordinates read FWorldSizeMin
       write FWorldSizeMin;
-    property WorldSizeMax: TGCoordinates read FWorldSizeMax
+    property WorldSizeMax: TgCoordinates read FWorldSizeMax
       write FWorldSizeMax;
     property NewtonSurfaceItem: TCollection read FNewtonSurfaceItem
       write FNewtonSurfaceItem;
@@ -310,14 +310,14 @@ type
 
   TgxNGDDynamic = class(TgxNGDBehaviour)
   strict private
-    FAABBmin: TGCoordinates;
-    FAABBmax: TGCoordinates;
-    FForce: TGCoordinates;
-    FTorque: TGCoordinates;
-    FCenterOfMass: TGCoordinates;
+    FAABBmin: TgCoordinates;
+    FAABBmax: TgCoordinates;
+    FForce: TgCoordinates;
+    FTorque: TgCoordinates;
+    FCenterOfMass: TgCoordinates;
     FAutoSleep: Boolean; // Default=True
     FLinearDamping: Single; // default=0.1
-    FAngularDamping: TGCoordinates; // Default=0.1
+    FAngularDamping: TgCoordinates; // Default=0.1
     FDensity: Single; // Default=1
     FUseGravity: Boolean; // Default=True
     FNullCollisionVolume: Single; // Default=0
@@ -327,10 +327,10 @@ type
     // Read Only
     FVolume: Single;
     FMass: Single;
-    FAppliedForce: TGCoordinates;
-    FAppliedTorque: TGCoordinates;
-    FAppliedOmega: TGCoordinates;
-    FAppliedVelocity: TGCoordinates;
+    FAppliedForce: TgCoordinates;
+    FAppliedTorque: TgCoordinates;
+    FAppliedOmega: TgCoordinates;
+    FAppliedVelocity: TgCoordinates;
     function StoredDensity: Boolean;
     function StoredLinearDamping: Boolean;
     function StoredNullCollisionVolume: Boolean;
@@ -370,14 +370,14 @@ type
     property Velocity: TVector4f read GetVelocity write SetVelocity;
     property Omega: TVector4f read GetOmega write SetOmega;
   published
-    property Force: TGCoordinates read FForce write FForce;
-    property Torque: TGCoordinates read FTorque write FTorque;
-    property CenterOfMass: TGCoordinates read FCenterOfMass
+    property Force: TgCoordinates read FForce write FForce;
+    property Torque: TgCoordinates read FTorque write FTorque;
+    property CenterOfMass: TgCoordinates read FCenterOfMass
       write FCenterOfMass;
     property AutoSleep: Boolean read FAutoSleep write SetAutoSleep default True;
     property LinearDamping: Single read FLinearDamping write SetLinearDamping
       stored StoredLinearDamping;
-    property AngularDamping: TGCoordinates read FAngularDamping
+    property AngularDamping: TgCoordinates read FAngularDamping
       write FAngularDamping;
     property Density: Single read FDensity write SetDensity
       stored StoredDensity;
@@ -386,10 +386,10 @@ type
     property NullCollisionVolume: Single read FNullCollisionVolume
       write FNullCollisionVolume stored StoredNullCollisionVolume;
     // Read Only
-    property AppliedOmega: TGCoordinates read FAppliedOmega;
-    property AppliedVelocity: TGCoordinates read FAppliedVelocity;
-    property AppliedForce: TGCoordinates read FAppliedForce;
-    property AppliedTorque: TGCoordinates read FAppliedTorque;
+    property AppliedOmega: TgCoordinates read FAppliedOmega;
+    property AppliedVelocity: TgCoordinates read FAppliedVelocity;
+    property AppliedForce: TgCoordinates read FAppliedForce;
+    property AppliedTorque: TgCoordinates read FAppliedTorque;
     property Volume: Single read FVolume;
     property Mass: Single read FMass;
   end;
@@ -480,34 +480,34 @@ type
   TgxNGDJointPivot = class(TPersistent)
   private
     FManager: TgxNGDManager;
-    FPivotPoint: TGCoordinates;
+    FPivotPoint: TgCoordinates;
     FOuter: TgxNGDJoint;
   public
     constructor Create(AOwner: TComponent; aOuter: TgxNGDJoint); virtual;
     destructor Destroy; override;
   published
-    property PivotPoint: TGCoordinates read FPivotPoint write FPivotPoint;
+    property PivotPoint: TgCoordinates read FPivotPoint write FPivotPoint;
   end;
 
   TgxNGDJointPin = class(TgxNGDJointPivot)
   private
-    FPinDirection: TGCoordinates;
+    FPinDirection: TgCoordinates;
   public
     constructor Create(AOwner: TComponent; aOuter: TgxNGDJoint); override;
     destructor Destroy; override;
   published
-    property PinDirection: TGCoordinates read FPinDirection
+    property PinDirection: TgCoordinates read FPinDirection
       write FPinDirection;
   end;
 
   TgxNGDJointPin2 = class(TgxNGDJointPin)
   private
-    FPinDirection2: TGCoordinates;
+    FPinDirection2: TgCoordinates;
   public
     constructor Create(AOwner: TComponent; aOuter: TgxNGDJoint); override;
     destructor Destroy; override;
   published
-    property PinDirection2: TGCoordinates read FPinDirection2
+    property PinDirection2: TgCoordinates read FPinDirection2
       write FPinDirection2;
   end;
 
@@ -605,7 +605,7 @@ type
     // nj_KinematicController
     FNewtonUserJoint: Pointer;
     // nj_UpVector 
-    FUPVectorDirection: TGCoordinates;
+    FUPVectorDirection: TgCoordinates;
     FBallAndSocketOptions: TgxNGDJointPivot;
     FHingeOptions: TgxNGDJointPin;
     FSliderOptions: TgxNGDJointPin;
@@ -656,7 +656,7 @@ type
       write SetCollisionState default False;
     property Stiffness: Single read FStiffness write SetStiffness
       stored StoredStiffness;
-    property UPVectorDirection: TGCoordinates read FUPVectorDirection
+    property UPVectorDirection: TgCoordinates read FUPVectorDirection
       write FUPVectorDirection;
   end;
 
@@ -787,7 +787,7 @@ begin
   end;
 end;
 
-procedure TgxNGDManager.AddNode(const coords: TGCustomCoordinates);
+procedure TgxNGDManager.AddNode(const coords: TgCustomCoordinates);
 begin
   if Assigned(FGLLines) then
   begin
@@ -825,18 +825,18 @@ begin
   FSolverModel := smExact;
   FFrictionModel := fmExact;
   FMinimumFrameRate := 60;
-  FWorldSizeMin := TGCoordinates.CreateInitialized(self,
+  FWorldSizeMin := TgCoordinates.CreateInitialized(self,
     VectorMake(-100, -100, -100, 0), csPoint);
-  FWorldSizeMax := TGCoordinates.CreateInitialized(self,
+  FWorldSizeMax := TgCoordinates.CreateInitialized(self,
     VectorMake(100, 100, 100, 0), csPoint);
 
   // Using Events because we need to call API Function when
-  // theses TGCoordinates change.
+  // theses TgCoordinates change.
   FWorldSizeMin.OnNotifyChange := NotifyWorldSizeChange;
   FWorldSizeMax.OnNotifyChange := NotifyWorldSizeChange;
 
   FThreadCount := 1;
-  FGravity := TGCoordinates3.CreateInitialized(self,
+  FGravity := TgCoordinates3.CreateInitialized(self,
     VectorMake(0, -9.81, 0, 0), csVector);
 
   FNewtonWorld := NewtonCreate(nil, nil);
@@ -1288,8 +1288,8 @@ begin
     if (Sender is TgxNGDJoint) then
       BuildOneJoint((Sender as TgxNGDJoint));
 
-    if Sender is TGCoordinates then
-      BuildOneJoint(((Sender as TGCoordinates).Owner as TgxNGDJoint));
+    if Sender is TgCoordinates then
+      BuildOneJoint(((Sender as TgCoordinates).Owner as TgxNGDJoint));
 
     NotifyChange(self);
   end;
@@ -1450,9 +1450,9 @@ var
   I, J: Integer;
   vertexArray: array of TVertex;
 begin
-  if FOwnerBaseSceneObject is TGXBaseMesh then
+  if FOwnerBaseSceneObject is TgxBaseMesh then
   begin
-    with (FOwnerBaseSceneObject as TGXBaseMesh) do
+    with (FOwnerBaseSceneObject as TgxBaseMesh) do
     begin
       for I := 0 to MeshObjects.Count - 1 do
         for J := 0 to MeshObjects[I].Vertices.Count - 1 do
@@ -1493,9 +1493,9 @@ var
   I, J: Integer;
   vertexArray: array of TVertex;
 begin
-  if FOwnerBaseSceneObject is TGXBaseMesh then
+  if FOwnerBaseSceneObject is TgxBaseMesh then
   begin
-    with (FOwnerBaseSceneObject as TGXBaseMesh) do
+    with (FOwnerBaseSceneObject as TgxBaseMesh) do
     begin
 
       // Iterate trough mesh of GLobject
@@ -1619,13 +1619,13 @@ end;
 function TgxNGDBehaviour.GetTreeCollision: PNewtonCollision;
 var
   meshIndex, triangleIndex: Integer;
-  triangleList: TGAffineVectorList;
+  triangleList: TgAffineVectorList;
   v: array [0 .. 2] of TAffineVector;
 begin
 
-  if FOwnerBaseSceneObject is TGXBaseMesh then
+  if FOwnerBaseSceneObject is TgxBaseMesh then
   begin
-    with (FOwnerBaseSceneObject as TGXBaseMesh) do
+    with (FOwnerBaseSceneObject as TgxBaseMesh) do
     begin
       Result := NewtonCreateTreeCollision(FManager.FNewtonWorld, 0);
       NewtonTreeCollisionBeginBuild(Result);
@@ -1971,25 +1971,25 @@ begin
   inherited;
   FAutoSleep := True;
   FLinearDamping := 0.1;
-  FAngularDamping := TGCoordinates.CreateInitialized(self,
+  FAngularDamping := TgCoordinates.CreateInitialized(self,
     VectorMake(0.1, 0.1, 0.1, 0), csPoint);
   FAngularDamping.OnNotifyChange := NotifyAngularDampingChange;
   FDensity := 1;
   FVolume := 1;
-  FForce := TGCoordinates.CreateInitialized(self, NullHmgVector, csVector);
-  FTorque := TGCoordinates.CreateInitialized(self, NullHmgVector, csVector);
-  FCenterOfMass := TGCoordinates.CreateInitialized(self,
+  FForce := TgCoordinates.CreateInitialized(self, NullHmgVector, csVector);
+  FTorque := TgCoordinates.CreateInitialized(self, NullHmgVector, csVector);
+  FCenterOfMass := TgCoordinates.CreateInitialized(self,
     NullHmgVector, csPoint);
   FCenterOfMass.OnNotifyChange := NotifyCenterOfMassChange;
-  FAABBmin := TGCoordinates.CreateInitialized(self, NullHmgVector, csPoint);
-  FAABBmax := TGCoordinates.CreateInitialized(self, NullHmgVector, csPoint);
-  FAppliedOmega := TGCoordinates.CreateInitialized(self, NullHmgVector,
+  FAABBmin := TgCoordinates.CreateInitialized(self, NullHmgVector, csPoint);
+  FAABBmax := TgCoordinates.CreateInitialized(self, NullHmgVector, csPoint);
+  FAppliedOmega := TgCoordinates.CreateInitialized(self, NullHmgVector,
     csVector);
-  FAppliedVelocity := TGCoordinates.CreateInitialized(self, NullHmgVector,
+  FAppliedVelocity := TgCoordinates.CreateInitialized(self, NullHmgVector,
     csVector);
-  FAppliedForce := TGCoordinates.CreateInitialized(self, NullHmgVector,
+  FAppliedForce := TgCoordinates.CreateInitialized(self, NullHmgVector,
     csVector);
-  FAppliedTorque := TGCoordinates.CreateInitialized(self, NullHmgVector,
+  FAppliedTorque := TgCoordinates.CreateInitialized(self, NullHmgVector,
     csVector);
   FUseGravity := True;
   FNullCollisionVolume := 0;
@@ -2051,7 +2051,7 @@ end;
 
 procedure TgxNGDDynamic.Render;
 
-  procedure DrawAABB(min, max: TGCoordinates3);
+  procedure DrawAABB(min, max: TgCoordinates3);
   begin
 
     {
@@ -2636,7 +2636,7 @@ begin
   FCustomSliderOptions := TgxNGDJointSlider.Create(FManager, self);
   FKinematicOptions := TgxNGDJointKinematicController.Create;
 
-  FUPVectorDirection := TGCoordinates.CreateInitialized(self, YHmgVector,
+  FUPVectorDirection := TgCoordinates.CreateInitialized(self, YHmgVector,
     csVector);
   FUPVectorDirection.OnNotifyChange := FManager.RebuildAllJoint;
 end;
@@ -2906,7 +2906,7 @@ constructor TgxNGDJointPivot.Create(AOwner: TComponent; aOuter: TgxNGDJoint);
 begin
   FManager := AOwner as TgxNGDManager;
   FOuter := aOuter;
-  FPivotPoint := TGCoordinates.CreateInitialized(aOuter, NullHMGPoint,
+  FPivotPoint := TgCoordinates.CreateInitialized(aOuter, NullHMGPoint,
     csPoint);
   FPivotPoint.OnNotifyChange := FManager.RebuildAllJoint;
 end;
@@ -2923,7 +2923,7 @@ end;
 constructor TgxNGDJointPin.Create(AOwner: TComponent; aOuter: TgxNGDJoint);
 begin
   inherited;
-  FPinDirection := TGCoordinates.CreateInitialized(aOuter, NullHmgVector,
+  FPinDirection := TgCoordinates.CreateInitialized(aOuter, NullHmgVector,
     csVector);
   FPinDirection.OnNotifyChange := FManager.RebuildAllJoint;
 end;
@@ -2940,7 +2940,7 @@ end;
 constructor TgxNGDJointPin2.Create(AOwner: TComponent; aOuter: TgxNGDJoint);
 begin
   inherited;
-  FPinDirection2 := TGCoordinates.CreateInitialized(aOuter, NullHmgVector,
+  FPinDirection2 := TgCoordinates.CreateInitialized(aOuter, NullHmgVector,
     csVector);
   FPinDirection2.OnNotifyChange := FManager.RebuildAllJoint;
 end;

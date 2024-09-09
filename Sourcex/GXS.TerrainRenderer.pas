@@ -64,9 +64,9 @@ type
     FLastTriangleCount: Integer;
     FTilesPerTexture: single;
     FMaxCLODTriangles, FCLODPrecision: Integer;
-    FBufferVertices: TGAffineVectorList;
+    FBufferVertices: TgAffineVectorList;
     FBufferTexPoints: TGTexPointList;
-    FBufferVertexIndices: TGIntegerList;
+    FBufferVertexIndices: TgIntegerList;
     FMaterialLibrary: TgxMaterialLibrary;
     FOnGetTerrainBounds: TGetTerrainBoundsEvent;
     FOnPatchPostRender: TPatchPostRenderEvent;
@@ -222,9 +222,9 @@ begin
   FMaxCLODTriangles := 65536;
   FCLODPrecision := 100;
   FOcclusionTesselate := totTesselateIfVisible;
-  FBufferVertices := TGAffineVectorList.Create;
+  FBufferVertices := TgAffineVectorList.Create;
   FBufferTexPoints := TGTexPointList.Create;
-  FBufferVertexIndices := TGIntegerList.Create;
+  FBufferVertexIndices := TgIntegerList.Create;
   TileManagement := [tmClearUsedFlags, tmMarkUsedTiles, tmReleaseUnusedTiles, tmAllocateNewTiles];
 end;
 
@@ -412,7 +412,7 @@ var
   Patch, PrevPatch: TgxROAMPatch;
   PatchList, RowList, prevRow, buf: TList;
   PostRenderPatchList, postRenderHeightDataList: TList;
-  rcci: TgxRenderContextClippingInfo;
+  rcci: TGXRenderContextClippingInfo;
   CurrentMaterialName: String;
   MaxTilePosX, MaxTilePosY, MinTilePosX, MinTilePosY: single;
   t_l, t_t, t_r, t_b: single;

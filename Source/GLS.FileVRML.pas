@@ -36,7 +36,7 @@ implementation
 // ------------------------------------------------------------------
 
 procedure TessellatePolygon(PolyVerts: TGAffineVectorList;
-  PolyIndices, TriIndices: TGIntegerList);
+  PolyIndices, TriIndices: TgIntegerList);
 
   function IsPolyClockWise: Boolean;
   var
@@ -79,10 +79,10 @@ var
   i, j, prev, next, min_vert, min_prev, min_next: Integer;
   PolyCW, NoPointsInTriangle: Boolean;
   V: TAffineMatrix;
-  temp: TGIntegerList;
+  temp: TgIntegerList;
   min_dist, d, area: Single;
 begin
-  temp := TGIntegerList.Create;
+  temp := TgIntegerList.Create;
   try
     PolyCW := IsPolyClockWise;
     temp.Assign(PolyIndices);
@@ -242,11 +242,11 @@ var
     fg: TFGVertexNormalTexIndexList;
     vertices, normals, texcoords, triNormals, newVertices, newNormals,
       newTexCoords: TGAffineVectorList;
-    optimized: TGIntegerList;
+    optimized: TgIntegerList;
     cosAngle: Single;
     normal: TAffineVector;
     s, t: array [0 .. 2] of Integer;
-    n: array [0 .. 2] of TGIntegerList;
+    n: array [0 .. 2] of TgIntegerList;
     smooth, hasVertices, hasNormals, hasNormalIndices, hasTexCoords,
       hasTexCoordIndices: Boolean;
   begin
@@ -267,9 +267,9 @@ var
     newNormals := TGAffineVectorList.Create;
     newTexCoords := TGAffineVectorList.Create;
     triNormals := TGAffineVectorList.Create;
-    n[0] := TGIntegerList.Create;
-    n[1] := TGIntegerList.Create;
-    n[2] := TGIntegerList.Create;
+    n[0] := TgIntegerList.Create;
+    n[1] := TgIntegerList.Create;
+    n[2] := TgIntegerList.Create;
     for i := 0 to mesh.FaceGroups.Count - 1 do
     begin
       fg := TFGVertexNormalTexIndexList(mesh.FaceGroups[i]);
@@ -439,9 +439,9 @@ var
   var
     i, j, n: Integer;
     points: TGSingleList;
-    indices, fgindices: TGIntegerList;
+    indices, fgindices: TgIntegerList;
     fg: TFGVertexNormalTexIndexList;
-    face: TGIntegerList;
+    face: TgIntegerList;
     tempLibMat: TGLLibMaterial;
     saveTransform, mat: TGLMatrix;
     saveMaterial: TGLLibMaterial;
@@ -522,7 +522,7 @@ var
     begin
       fg := TFGVertexNormalTexIndexList.CreateOwned(mesh.FaceGroups);
       mesh.Mode := momFaceGroups;
-      face := TGIntegerList.Create;
+      face := TgIntegerList.Create;
       if Assigned(currentMaterial) then
         fg.MaterialName := currentMaterial.Name;
       for n := 0 to node.Count - 1 do

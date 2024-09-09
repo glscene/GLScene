@@ -27,7 +27,7 @@ uses
   GLScene.OpenGLTokens,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLS.PipelineTransformation,
+  GLScene.PipelineTransform,
 
   GLScene.PersistentClasses,
   GLScene.VectorLists,
@@ -66,7 +66,7 @@ type
       Normals: TGAffineVectorList = nil;
       Colors: TGVectorList = nil;
       TexCoords: TGAffineVectorList = nil;
-      VertexIndices: TGIntegerList = nil);
+      VertexIndices: TgIntegerList = nil);
     // True when there is data in the buffer ready for parsing
     property Buffered: Boolean read FBuffered;
     // The feedback buffer
@@ -189,14 +189,14 @@ procedure TGLFeedback.BuildMeshFromBuffer(
   Normals: TGAffineVectorList = nil;
   Colors: TGVectorList = nil;
   TexCoords: TGAffineVectorList = nil;
-  VertexIndices: TGIntegerList = nil);
+  VertexIndices: TgIntegerList = nil);
 var
   value: Single;
   i, j, LCount, skip: Integer;
   vertex, color, texcoord: TGLVector;
   tempVertices, tempNormals, tempTexCoords: TGAffineVectorList;
   tempColors: TGVectorList;
-  tempIndices: TGIntegerList;
+  tempIndices: TgIntegerList;
   ColorBuffered, TexCoordBuffered: Boolean;
 begin
   Assert(FMode <> fm2D, 'Cannot build mesh from fm2D feedback mode.');
@@ -292,7 +292,7 @@ begin
   end
   else
   begin
-    tempIndices := TGIntegerList.Create;
+    tempIndices := TgIntegerList.Create;
     tempIndices.AddSerie(0, 1, tempVertices.Count);
   end;
 

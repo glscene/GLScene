@@ -93,9 +93,9 @@ type
     infini: Longint;
     done: Boolean;
     NewMat: TgxLibMaterial;
-    tmpcoords: TGCoordinates;
+    tmpcoords: TgCoordinates;
     tmpcolor: TGColor;
-    tmpcoords4: TGCoordinates4;
+    tmpcoords4: TgCoordinates4;
     tmpstr: string;
     procedure SeTgxShaderItems(const Value: TgxShaderItems);
     procedure SeTgxMaterialLibraryItems(const Value: TgxMaterialLibraryItems);

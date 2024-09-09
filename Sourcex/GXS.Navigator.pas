@@ -46,7 +46,7 @@ type
   private
     FObject: TgxBaseSceneObject;
     FVirtualRight: TVector4f;
-    FVirtualUp: TGCoordinates;
+    FVirtualUp: TgCoordinates;
     FUseVirtualUp: boolean;
     FAutoUpdateObject: boolean;
     FMaxAngle: single;
@@ -60,7 +60,7 @@ type
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
     procedure SetObject(NewObject: TgxBaseSceneObject); virtual;
     procedure SetUseVirtualUp(UseIt: boolean);
-    procedure SetVirtualUp(Up: TGCoordinates);
+    procedure SetVirtualUp(Up: TgCoordinates);
     function CalcRight: TVector4f;
   public
     constructor Create(AOwner: TComponent); override;
@@ -79,7 +79,7 @@ type
   published
     property MoveUpWhenMovingForward: boolean read FMoveUpWhenMovingForward write FMoveUpWhenMovingForward default False;
     property InvertHorizontalSteeringWhenUpsideDown: boolean read FInvertHorizontalSteeringWhenUpsideDown write FInvertHorizontalSteeringWhenUpsideDown default False;
-    property VirtualUp: TGCoordinates read FVirtualUp write SetVirtualUp;
+    property VirtualUp: TgCoordinates read FVirtualUp write SetVirtualUp;
     property MovingObject: TgxBaseSceneObject read FObject write SetObject;
     property UseVirtualUp: boolean read FUseVirtualUp write SetUseVirtualUp default False;
     property AutoUpdateObject: boolean read FAutoUpdateObject write FAutoUpdateObject default False;
@@ -140,7 +140,7 @@ implementation
 constructor TgxNavigator.Create(AOwner : TComponent);
 Begin
   inherited;
-  FVirtualUp := TGCoordinates.CreateInitialized(Self, ZHmgVector, csPoint);
+  FVirtualUp := TgCoordinates.CreateInitialized(Self, ZHmgVector, csPoint);
   FCurrentVAngle := 0;
   FCurrentHAngle := 0;
 End;
@@ -333,7 +333,7 @@ Begin
 End;
 
 
-Procedure   TgxNavigator.SetVirtualUp(Up : TGCoordinates);
+Procedure   TgxNavigator.SetVirtualUp(Up : TgCoordinates);
 begin
   FVirtualUp.Assign(Up);
   if csdesigning in componentstate then Exit;

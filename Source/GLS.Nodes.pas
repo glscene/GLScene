@@ -72,8 +72,8 @@ type
     function Last: TGLNode;
     procedure NotifyChange; virtual;
     procedure EndUpdate; override;
-    // AddNode (TGCustomCoordinates)
-    procedure AddNode(const Coords: TGCustomCoordinates); overload;
+    // AddNode (TgCustomCoordinates)
+    procedure AddNode(const Coords: TgCustomCoordinates); overload;
     procedure AddNode(const X, Y, Z: TGLfloat); overload;
     procedure AddNode(const Value: TGLVector); overload;
     procedure AddNode(const Value: TAffineVector); overload;
@@ -267,7 +267,7 @@ begin
     NotifyChange;
 end;
 
-procedure TGLNodes.AddNode(const Coords: TGCustomCoordinates);
+procedure TGLNodes.AddNode(const Coords: TgCustomCoordinates);
 begin
   Add.AsVector := Coords.AsVector;
 end;

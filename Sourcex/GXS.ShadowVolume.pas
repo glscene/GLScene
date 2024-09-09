@@ -32,7 +32,7 @@ uses
   GXS.Context,
   GXS.Silhouette,
   GXS.State,
-  GXS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLScene.Color,
   GXS.RenderContextInfo;
 
@@ -110,7 +110,7 @@ type
   // Specifies an individual shadow casting light.
   TgxShadowVolumeLight = class(TgxShadowVolumeCaster)
   private
-    FSilhouettes: TGPersistentObjectList;
+    FSilhouettes: TgPersistentObjectList;
   protected
     function GetLightSource: TgxLightSource;
     procedure SetLightSource(const ls: TgxLightSource);
@@ -311,7 +311,7 @@ end;
 constructor TgxShadowVolumeLight.Create(ACollection: TCollection);
 begin
   inherited Create(ACollection);
-  FSilhouettes := TGPersistentObjectList.Create;
+  FSilhouettes := TgPersistentObjectList.Create;
 end;
 
 destructor TgxShadowVolumeLight.Destroy;

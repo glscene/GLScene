@@ -28,7 +28,7 @@ uses
   GLScene.Utils,
   GXS.ImageUtils,
   GXS.Scene,
-  GXS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GXS.Context,
   GXS.Objects,
   GLScene.Color,

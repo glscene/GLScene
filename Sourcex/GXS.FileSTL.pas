@@ -4,7 +4,7 @@
 unit GXS.FileSTL;
 
 (*
-  Support-code to load STL Files into TGXFreeForm-Components.
+  Support-code to load STL Files into TgxFreeForm-Components.
   Note that you must manually add this unit to one of your project's uses
   to enable support for STL files at run-time.
 *)
@@ -50,16 +50,14 @@ type
     There are two flavors of STL, the "text" and the "binary", this class
     reads both, but exports only the "binary" version.
     Original Binary importer code by Paul M. Bearne, Text importer by Adem. *)
-  TgxSTLVectorFile = class(TGXVectorFile)
+  TGXSTLVectorFile = class(TgxVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
     procedure SaveToStream(aStream: TStream); override;
   end;
 
-// ------------------------------------------------------------------
-implementation
-// ------------------------------------------------------------------
+implementation // ------------------------------------------------------------
 
 const
   cSOLID_LABEL = 'SOLID';
@@ -72,15 +70,15 @@ const
   cFULL_HEADER_LEN = 84;
 
 // ------------------
-// ------------------ TgxSTLVectorFile ------------------
+// ------------------ TGXSTLVectorFile ------------------
 // ------------------
 
-class function TgxSTLVectorFile.Capabilities: TDataFileCapabilities;
+class function TGXSTLVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [dfcRead, dfcWrite];
 end;
 
-procedure TgxSTLVectorFile.LoadFromStream(aStream: TStream);
+procedure TGXSTLVectorFile.LoadFromStream(aStream: TStream);
 var
   sl: TStringList;
 
@@ -117,7 +115,7 @@ var
   fileContent: TStringList;
   curLine: String;
   i: Integer;
-  mesh: TGXMeshObject;
+  mesh: TgxMeshObject;
   header: TSTLHeader;
   dataFace: TSTLFace;
   calcNormal: TAffineVector;
@@ -138,7 +136,7 @@ begin
     Inc(i);
   end;
 
-  mesh := TGXMeshObject.CreateOwned(Owner.MeshObjects);
+  mesh := TgxMeshObject.CreateOwned(Owner.MeshObjects);
   try
 
     mesh.Mode := momTriangles;
@@ -242,12 +240,12 @@ begin
   end;
 end;
 
-procedure TgxSTLVectorFile.SaveToStream(aStream: TStream);
+procedure TGXSTLVectorFile.SaveToStream(aStream: TStream);
 var
   i: Integer;
   header: TSTLHeader;
   dataFace: TSTLFace;
-  list: TGAffineVectorList;
+  list: TgAffineVectorList;
 const
   cHeaderTag = 'GXScene STL export';
 begin
@@ -276,6 +274,6 @@ end;
 initialization
 // ------------------------------------------------------------------
 
-RegisterVectorFileFormat('stl', 'Stereolithography files', TgxSTLVectorFile);
+RegisterVectorFileFormat('stl', 'Stereolithography files', TGXSTLVectorFile);
 
 end.

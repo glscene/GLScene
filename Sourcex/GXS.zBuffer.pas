@@ -31,18 +31,19 @@ uses
   System.SysUtils,
   System.Math,
 
-  GXS.OpenGL,
-  GXS.XOpenGL,
+  GLScene.OpenGL4,
   GLScene.VectorTypes,
   GLScene.PersistentClasses,
   GLScene.VectorGeometry,
-  GXS.Scene,
   GLScene.Coordinates,
+  GLScene.Color,
+
+  GXS.Scene,
+  GXS.XOpenGL,
   GXS.Graphics,
   GXS.Objects,
   GXS.Context,
   GXS.SceneViewer,
-  GLScene.Color,
   GXS.RenderContextInfo,
   GXS.State,
   GLScene.TextureFormat;

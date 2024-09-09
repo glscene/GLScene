@@ -32,7 +32,7 @@ uses
 type
   TCSGOperation = (CSG_Union, CSG_Subtraction, CSG_Intersection);
 
-procedure CSG_Operation(obj1, obj2: TGXMeshObject; Operation: TCSGOperation; Res: TGXMeshObject; const MaterialName1, MaterialName2: string);
+procedure CSG_Operation(obj1, obj2: TgxMeshObject; Operation: TCSGOperation; Res: TgxMeshObject; const MaterialName1, MaterialName2: string);
 
 //----------------------------------------------------------------------
 implementation
@@ -76,7 +76,7 @@ begin
 end;
 
 procedure CSG_Iterate_tri(const vec, nor: TCSGTri; BSP: TBSPMeshObject; 
-  Node: TFGBSPNode; ResMesh: TGXMeshObject; ResFG: TFGVertexNormalTexIndexList; keepinside, keepoutside, inverttriangle: Boolean);
+  Node: TFGBSPNode; ResMesh: TgxMeshObject; ResFG: TFGVertexNormalTexIndexList; keepinside, keepoutside, inverttriangle: Boolean);
 
 var
   vertex_offset: Integer;
@@ -507,12 +507,12 @@ begin
   end;
 end;
 
-procedure CSG_Operation(obj1, obj2: TGXMeshObject; Operation: TCSGOperation; 
-  Res: TGXMeshObject; const MaterialName1, MaterialName2: string);
+procedure CSG_Operation(obj1, obj2: TgxMeshObject; Operation: TCSGOperation; 
+  Res: TgxMeshObject; const MaterialName1, MaterialName2: string);
 
 var
-  v1, t1, n1: TGAffineVectorList;
-  v2, t2, n2: TGAffineVectorList;
+  v1, t1, n1: TgAffineVectorList;
+  v2, t2, n2: TgAffineVectorList;
   BSP1, BSP2: TBSPMeshObject;
   FG1, FG2: TFGBSPNode;
   i: Integer;
@@ -529,8 +529,8 @@ begin
   FG1 := TFGBSPNode.CreateOwned(BSP1.FaceGroups);
   FG2 := TFGBSPNode.CreateOwned(BSP2.FaceGroups);
 
-  t1 := TGAffineVectorList.create;
-  n1 := TGAffineVectorList.create;
+  t1 := TgAffineVectorList.create;
+  n1 := TgAffineVectorList.create;
   v1 := obj1.ExtractTriangles(t1, n1);
 
   v1.TransformAsPoints(obj1.Owner.Owner.Matrix^);
@@ -541,8 +541,8 @@ begin
   BSP1.TexCoords := t1;
   FG1.VertexIndices.AddSerie(0, 1, BSP1.Vertices.Count);
 
-  t2 := TGAffineVectorList.create;
-  n2 := TGAffineVectorList.create;
+  t2 := TgAffineVectorList.create;
+  n2 := TgAffineVectorList.create;
   v2 := obj2.ExtractTriangles(t2, n2);
   v2.TransformAsPoints(obj2.Owner.Owner.Matrix^);
 

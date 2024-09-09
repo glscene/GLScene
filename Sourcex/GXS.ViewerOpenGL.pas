@@ -12,7 +12,6 @@ interface
 uses
   Winapi.OpenGL,
   Winapi.Windows,
-  GXS.OpenGL, // GL_ARB_framebuffer_object or GL_EXT_framebuffer_blit
 
   System.Types,
   System.Classes,
@@ -25,9 +24,11 @@ uses
   FMX.Controls,
   FMX.Graphics,
 
+  GLScene.OpenGL4, // GL_ARB_framebuffer_object or GL_EXT_framebuffer_blit
+  GLScene.TextureFormat,
+
   GXS.Scene,
   GXS.Context,
-  GLScene.TextureFormat,
   GXS.WinContext;
 
 type

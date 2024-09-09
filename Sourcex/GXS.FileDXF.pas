@@ -4,8 +4,8 @@
 unit GXS.FileDXF;
 
 (*
-  Support-Code to load DXF (Drawing eXchange Files) TGXFreeForm or
-  TGXActor Components.
+  Support-Code to load DXF (Drawing eXchange Files) TgxFreeForm or
+  TgxActor Components.
 
   Note that you must manually add this unit to one of your project's uses
   to enable support for DXF at run-time.
@@ -29,7 +29,7 @@ uses
   GXS.Material;
 
 type
-  TgxDXFVectorFile = class(TGXVectorFile)
+  TgxDXFVectorFile = class(TgxVectorFile)
   private
     FSourceStream: TStream; // Load from this stream
     FBuffer: String; // Buffer and current line
@@ -47,12 +47,12 @@ type
     procedure SkipTable;
     procedure SkipSection;
     // procedure DoProgress (Stage: TgxProgressStage; PercentDone: single; RedrawNow: Boolean; const Msg: string);
-    function NeedMesh(basemesh: TGXBaseMesh; layer: STRING): TGXMeshObject;
-    function NeedFaceGroup(m: TGXMeshObject; fgmode: TGXFaceGroupMeshMode;
-      fgmat: STRING): TFGXVertexIndexList;
-    procedure NeedMeshAndFaceGroup(basemesh: TGXBaseMesh; layer: STRING;
-      fgmode: TGXFaceGroupMeshMode; fgmat: STRING; var m: TGXMeshObject;
-      var fg: TFGXVertexIndexList);
+    function NeedMesh(basemesh: TgxBaseMesh; layer: STRING): TgxMeshObject;
+    function NeedFaceGroup(m: TgxMeshObject; fgmode: TgxFaceGroupMeshMode;
+      fgmat: STRING): TgxFGVertexIndexList;
+    procedure NeedMeshAndFaceGroup(basemesh: TgxBaseMesh; layer: STRING;
+      fgmode: TgxFaceGroupMeshMode; fgmat: STRING; var m: TgxMeshObject;
+      var fg: TgxFGVertexIndexList);
     function ReadLine: STRING;
     // Read a single line of text from the source stream, set FEof to true when done.
     function ReadInt: Integer;
@@ -61,10 +61,10 @@ type
     procedure ReadLayer;
     procedure ReadLayerTable;
     procedure ReadBlocks;
-    procedure ReadInsert(basemesh: TGXBaseMesh);
-    procedure ReadEntity3Dface(basemesh: TGXBaseMesh);
-    procedure ReadEntityPolyLine(basemesh: TGXBaseMesh);
-    procedure ReadEntities(basemesh: TGXBaseMesh);
+    procedure ReadInsert(basemesh: TgxBaseMesh);
+    procedure ReadEntity3Dface(basemesh: TgxBaseMesh);
+    procedure ReadEntityPolyLine(basemesh: TgxBaseMesh);
+    procedure ReadEntities(basemesh: TgxBaseMesh);
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -74,7 +74,7 @@ type
 implementation
 //========================================================================
 
-procedure BuildNormals(m: TGXMeshObject); FORWARD;
+procedure BuildNormals(m: TgxMeshObject); FORWARD;
 
 const
   DXFcolorsRGB: ARRAY [1 .. 255] OF LONGINT = ($FF0000, $FFFF00, $00FF00,
@@ -343,7 +343,7 @@ const
       S: String;
       code: Integer;
       blockname: String;
-      blockmesh: TGXFreeForm;
+      blockmesh: TgxFreeForm;
 
     begin
       // This code reads blocks into orphaned TgxFreeForms.
@@ -354,7 +354,7 @@ const
         S := ReadLine;
         if (code = 0) and (S = 'BLOCK') then
         begin
-          blockmesh := TGXFreeForm.create(owner);
+          blockmesh := TgxFreeForm.create(owner);
           blockmesh.IgnoreMissingTextures := True;
           blockmesh.MaterialLibrary := owner.MaterialLibrary;
           blockmesh.OnProgress := NIL;
@@ -381,17 +381,17 @@ const
       until (code = 0) and (S = 'ENDSEC');
     end;
 
-    procedure TgxDXFVectorFile.ReadInsert(basemesh: TGXBaseMesh);
+    procedure TgxDXFVectorFile.ReadInsert(basemesh: TgxBaseMesh);
     var
       code, idx, indexoffset: Integer;
       i, j, k: Integer;
       blockname, S: STRING;
       pt, insertpoint, scale: TAffineVector;
-      blockmesh: TGXBaseMesh;
+      blockmesh: TgxBaseMesh;
       // blockproxy  :TgxProxyObject;
-      mo_block: TGXMeshObject;
-      mo_base: TGXMeshObject;
-      fg_block, fg_base: TFGXVertexIndexList;
+      mo_block: TgxMeshObject;
+      mo_base: TgxMeshObject;
+      fg_block, fg_base: TgxFGVertexIndexList;
     begin
       blockname := '';
       insertpoint := NullVector;
@@ -422,7 +422,7 @@ const
       idx := FBlocks.IndexOf(blockname);
       if idx >= 0 then
       begin
-        blockmesh := FBlocks.Objects[idx] as TGXBaseMesh;
+        blockmesh := FBlocks.Objects[idx] as TgxBaseMesh;
 
         // FLAT STRUCTURES
         // Insert a block into its parent by copying the contents.
@@ -441,7 +441,7 @@ const
           end;
           for j := 0 to mo_block.FaceGroups.count - 1 do
           begin
-            fg_block := mo_block.FaceGroups[j] as TFGXVertexIndexList;
+            fg_block := mo_block.FaceGroups[j] as TgxFGVertexIndexList;
             fg_base := NeedFaceGroup(mo_base, fg_block.mode,
               fg_block.MaterialName);
             for k := 0 to fg_block.VertexIndices.count - 1 do
@@ -477,8 +477,8 @@ const
       PushCode(0);
     end;
 
-    function TgxDXFVectorFile.NeedMesh(basemesh: TGXBaseMesh; layer: STRING)
-      : TGXMeshObject;
+    function TgxDXFVectorFile.NeedMesh(basemesh: TgxBaseMesh; layer: STRING)
+      : TgxMeshObject;
     var
       i: Integer;
     begin
@@ -490,31 +490,31 @@ const
         result := basemesh.MeshObjects[i]
       else
       begin
-        result := TGXMeshObject.CreateOwned(basemesh.MeshObjects);
+        result := TgxMeshObject.CreateOwned(basemesh.MeshObjects);
         result.mode := momFaceGroups;
         result.name := layer;
       end;
     end;
 
-    function TgxDXFVectorFile.NeedFaceGroup(m: TGXMeshObject;
-      fgmode: TGXFaceGroupMeshMode; fgmat: STRING): TFGXVertexIndexList;
+    function TgxDXFVectorFile.NeedFaceGroup(m: TgxMeshObject;
+      fgmode: TgxFaceGroupMeshMode; fgmat: STRING): TgxFGVertexIndexList;
     var
       i: Integer;
       acadcolor: LONGINT;
       libmat: TgxLibMaterial;
-      fg: TFGXVertexIndexList;
+      fg: TgxFGVertexIndexList;
     begin
       i := 0;
       while (i < m.FaceGroups.count) and
-        not((m.FaceGroups[i] is TFGXVertexIndexList) and
-        ((m.FaceGroups[i] as TFGXVertexIndexList).mode = fgmode) and
+        not((m.FaceGroups[i] is TgxFGVertexIndexList) and
+        ((m.FaceGroups[i] as TgxFGVertexIndexList).mode = fgmode) and
         (m.FaceGroups[i].MaterialName = fgmat)) do
         Inc(i);
       if i < m.FaceGroups.count then
-        fg := m.FaceGroups[i] as TFGXVertexIndexList
+        fg := m.FaceGroups[i] as TgxFGVertexIndexList
       else
       begin
-        fg := TFGXVertexIndexList.CreateOwned(m.FaceGroups);
+        fg := TgxFGVertexIndexList.CreateOwned(m.FaceGroups);
         fg.mode := fgmode;
         fg.MaterialName := fgmat;
         if owner.MaterialLibrary <> NIL then
@@ -539,22 +539,22 @@ const
       result := fg;
     end;
 
-    procedure TgxDXFVectorFile.NeedMeshAndFaceGroup(basemesh: TGXBaseMesh;
-      layer: STRING; fgmode: TGXFaceGroupMeshMode; fgmat: STRING;
-      var m: TGXMeshObject; var fg: TFGXVertexIndexList);
+    procedure TgxDXFVectorFile.NeedMeshAndFaceGroup(basemesh: TgxBaseMesh;
+      layer: STRING; fgmode: TgxFaceGroupMeshMode; fgmat: STRING;
+      var m: TgxMeshObject; var fg: TgxFGVertexIndexList);
     begin
       m := NeedMesh(basemesh, layer);
       fg := NeedFaceGroup(m, fgmode, fgmat);
     end;
 
-    procedure TgxDXFVectorFile.ReadEntity3Dface(basemesh: TGXBaseMesh);
+    procedure TgxDXFVectorFile.ReadEntity3Dface(basemesh: TgxBaseMesh);
     var
       code, i: Integer;
       pts: ARRAY [0 .. 3] of TAffineVector;
       isquad: Boolean;
-      fg: TFGXVertexIndexList;
+      fg: TgxFGVertexIndexList;
       color, layer: STRING;
-      m: TGXMeshObject;
+      m: TgxMeshObject;
     begin
       color := '';
       layer := '';
@@ -621,13 +621,13 @@ const
         fg.Add(m.vertices.FindOrAdd(pts[3]));
     end;
 
-    procedure TgxDXFVectorFile.ReadEntityPolyLine(basemesh: TGXBaseMesh);
+    procedure TgxDXFVectorFile.ReadEntityPolyLine(basemesh: TgxBaseMesh);
 
-      procedure ReadPolylineVertex(m: TGXMeshObject; vertexindexbase: Integer);
+      procedure ReadPolylineVertex(m: TgxMeshObject; vertexindexbase: Integer);
       var
         color: STRING;
         pt: TAffineVector;
-        fg: TFGXVertexIndexList;
+        fg: TgxFGVertexIndexList;
         code, idx, i70, i71, i72, i73, i74: Integer;
       begin
         color := '';
@@ -711,7 +711,7 @@ const
       end;
 
     var
-      m: TGXMeshObject;
+      m: TgxMeshObject;
       code, vertexindexbase: Integer;
       S, layer: STRING;
     begin
@@ -737,7 +737,7 @@ const
       PushCode(0);
     end;
 
-    procedure TgxDXFVectorFile.ReadEntities(basemesh: TGXBaseMesh);
+    procedure TgxDXFVectorFile.ReadEntities(basemesh: TgxBaseMesh);
     var
       code: Integer;
       S: STRING;
@@ -775,7 +775,7 @@ const
     end;
 
     // build normals
-    procedure BuildNormals(m: TGXMeshObject);
+    procedure BuildNormals(m: TgxMeshObject);
     var
       i, j: Integer;
       v1, v2, v3, v4, n: TAffineVector;
@@ -783,8 +783,8 @@ const
       for i := 0 to m.vertices.count - 1 do
         m.Normals.Add(0, 0, 0);
       for i := 0 to m.FaceGroups.count - 1 do
-        if m.FaceGroups[i] is TFGXVertexIndexList then
-          with m.FaceGroups[i] as TFGXVertexIndexList do
+        if m.FaceGroups[i] is TgxFGVertexIndexList then
+          with m.FaceGroups[i] as TgxFGVertexIndexList do
             case mode of
               fgmmTriangles:
                 begin
@@ -883,7 +883,7 @@ const
       // calc normals
       FLayers.free;
       for i := FBlocks.count - 1 downto 0 do
-        (FBlocks.Objects[i] as TGXFreeForm).free;
+        (FBlocks.Objects[i] as TgxFreeForm).free;
       FBlocks.free;
       for i := 0 to owner.MeshObjects.count - 1 do
         BuildNormals(owner.MeshObjects[i]);

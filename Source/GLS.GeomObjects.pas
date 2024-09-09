@@ -24,7 +24,7 @@ uses
   GLScene.OpenGLTokens,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLScene.Polynomials,
 
   GLS.Scene,

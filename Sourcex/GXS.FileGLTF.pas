@@ -28,7 +28,7 @@ uses
 type
   (* The glTF format is a runtime asset delivery format
     for GL APIs: WebGL, OpenGL ES OpenGL and Vulkan. *)
-  TglTFVectorFile = class(TGXVectorFile)
+  TglTFVectorFile = class(TgxVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -54,9 +54,9 @@ procedure TglTFVectorFile.LoadFromStream(aStream: TStream);
   var
     matLib: TgxMaterialLibrary;
   begin
-    if Owner is TGXBaseMesh then
+    if Owner is TgxBaseMesh then
     begin
-      matLib := TGXBaseMesh(GetOwner).MaterialLibrary;
+      matLib := TgxBaseMesh(GetOwner).MaterialLibrary;
       if Assigned(matLib) then
       begin
         if matLib.Materials.GetLibMaterialByName(name) = nil then
@@ -83,14 +83,14 @@ procedure TglTFVectorFile.LoadFromStream(aStream: TStream);
 var
   i, j, k, nVert, nTex, firstFrame: Integer;
   nbBones, boneID: Integer;
-  mesh: TGXSkeletonMeshObject;
+  mesh: TgxSkeletonMeshObject;
   sl, tl: TStringList;
-  bone: TGXSkeletonBone;
-  frame: TGXSkeletonFrame;
+  bone: TgxSkeletonBone;
+  frame: TgxSkeletonFrame;
   faceGroup: TFGVertexNormalTexIndexList;
   v: TAffineVector;
 
-  boneIDs: TGXVertexBoneWeightDynArray;
+  boneIDs: TgxVertexBoneWeightDynArray;
   weightCount: Integer;
 begin
   sl := TStringList.Create;
@@ -103,11 +103,11 @@ begin
       raise Exception.Create('nodes not found');
     if sl.IndexOf('triangles') >= 0 then
     begin
-      mesh := TGXSkeletonMeshObject.CreateOwned(Owner.MeshObjects);
+      mesh := TgxSkeletonMeshObject.CreateOwned(Owner.MeshObjects);
       mesh.Mode := momFaceGroups;
     end
     else if Owner.MeshObjects.Count > 0 then
-      mesh := (Owner.MeshObjects[0] as TGXSkeletonMeshObject)
+      mesh := (Owner.MeshObjects[0] as TgxSkeletonMeshObject)
     else
       raise Exception.Create('SMD is an animation, load model SMD first.');
     // read skeleton nodes
@@ -120,10 +120,10 @@ begin
         tl.CommaText := sl[i];
         with Owner.Skeleton do
           if (tl[2] <> '-1') then
-            bone := TGXSkeletonBone.CreateOwned
+            bone := TgxSkeletonBone.CreateOwned
               (RootBones.BoneByID(StrToInt(tl[2])))
           else
-            bone := TGXSkeletonBone.CreateOwned(RootBones);
+            bone := TgxSkeletonBone.CreateOwned(RootBones);
         if Assigned(bone) then
         begin
           bone.boneID := StrToInt(tl[0]);
@@ -149,7 +149,7 @@ begin
     begin
       if Copy(sl[i], 1, 5) <> 'time ' then
         raise Exception.Create('time not found, got: ' + sl[i]);
-      frame := TGXSkeletonFrame.CreateOwned(Owner.Skeleton.Frames);
+      frame := TgxSkeletonFrame.CreateOwned(Owner.Skeleton.Frames);
       frame.name := ResourceName + ' ' + sl[i];
       Inc(i);
       while Pos(Copy(sl[i], 1, 1), ' 1234567890') > 0 do
@@ -175,8 +175,8 @@ begin
       Assert(frame.Position.Count = nbBones, 'Invalid number of bones in frame '
         + IntToStr(Owner.Skeleton.Frames.Count));
     end;
-    if Owner is TGXActor then
-      with TGXActor(Owner).Animations.Add do
+    if Owner is TgxActor then
+      with TgxActor(Owner).Animations.Add do
       begin
         k := Pos('.', ResourceName);
         if k > 0 then
@@ -264,7 +264,7 @@ var
   i, j, k, l, b: Integer;
   p, r, v, n, t: TAffineVector;
 
-  procedure GetNodesFromBonesRecurs(bone: TGXSkeletonBone; ParentID: Integer;
+  procedure GetNodesFromBonesRecurs(bone: TgxSkeletonBone; ParentID: Integer;
     bl: TStrings);
   var
     i: Integer;
@@ -312,8 +312,8 @@ begin
     begin
       str.Add('triangles');
       for i := 0 to Owner.MeshObjects.Count - 1 do
-        if Owner.MeshObjects[i] is TGXSkeletonMeshObject then
-          with TGXSkeletonMeshObject(Owner.MeshObjects[i]) do
+        if Owner.MeshObjects[i] is TgxSkeletonMeshObject then
+          with TgxSkeletonMeshObject(Owner.MeshObjects[i]) do
           begin
             for j := 0 to FaceGroups.Count - 1 do
               with TFGVertexNormalTexIndexList(FaceGroups[j]) do

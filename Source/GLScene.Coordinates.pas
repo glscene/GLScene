@@ -5,7 +5,7 @@ unit GLScene.Coordinates;
 (*
   Coordinate related classes and functions.
   The registered classes are:
-    [TGCoordinates2, TGCoordinates3, TGCoordinates4]
+    [TgCoordinates2, TgCoordinates3, TgCoordinates4]
 *)
 interface
 
@@ -22,22 +22,22 @@ uses
 
 type
 
-  (* Identifies the type of data stored within a TGCustomCoordinates.
+  (* Identifies the type of data stored within a TgCustomCoordinates.
      csPoint2D : a simple 2D point (Z=0, W=0)
      csPoint : a point (W=1)
      csVector : a vector (W=0)
      csUnknown : no constraint *)
-  TGCoordinatesStyle = (csPoint2D, csPoint, csVector, csUnknown);
+  TgCoordinatesStyle = (csPoint2D, csPoint, csVector, csUnknown);
 
   (* Stores any homogeneous vector.
     This class is basicly a container for a TGLVector, allowing proper use of
     property editors and editing in the IDE. Vector/Coordinates
     manipulation methods are only minimal.
     Handles dynamic default values to save resource file space.  *)
-  TGCustomCoordinates = class(TGUpdateAbleObject)
+  TgCustomCoordinates = class(TGUpdateAbleObject)
   private
     FCoords: TGLVector;
-    FStyle: TGCoordinatesStyle; // NOT Persistent
+    FStyle: TgCoordinatesStyle; // NOT Persistent
     FPDefaultCoords: PGLVector;
     procedure SetAsPoint2D(const Value: TVector2f);
     procedure SetAsVector(const Value: TGLVector);
@@ -56,7 +56,7 @@ type
     procedure WriteData(Stream: TStream);
   public
     constructor CreateInitialized(AOwner: TPersistent; const AValue: TGLVector;
-      const AStyle: TGCoordinatesStyle = CsUnknown);
+      const AStyle: TgCoordinatesStyle = CsUnknown);
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure WriteToFiler(Writer: TWriter);
@@ -66,10 +66,10 @@ type
     (* Identifies the coordinates styles.
       The property is NOT persistent, csUnknown by default, and should be
       managed by owner object only (internally).
-      It is used by the TGCustomCoordinates for internal "assertion" checks
+      It is used by the TgCustomCoordinates for internal "assertion" checks
       to detect "misuses" or "misunderstandings" of what the homogeneous
       coordinates system implies. *)
-    property Style: TGCoordinatesStyle read FStyle write FStyle;
+    property Style: TgCoordinatesStyle read FStyle write FStyle;
     procedure Translate(const TranslationVector: TGLVector); overload;
     procedure Translate(const TranslationVector: TAffineVector); overload;
     procedure AddScaledVector(const Factor: Single; const TranslationVector: TGLVector); overload;
@@ -124,23 +124,23 @@ type
     property DirectW: Single index 3 read GetDirectCoordinate write SetDirectCoordinate;
   end;
 
-  // A TGCustomCoordinates that publishes X, Y properties.
-  TGCoordinates2 = class(TGCustomCoordinates)
+  // A TgCustomCoordinates that publishes X, Y properties.
+  TgCoordinates2 = class(TgCustomCoordinates)
   published
     property X stored False;
     property Y stored False;
   end;
 
-  // A TGCustomCoordinates that publishes X, Y, Z properties.
-  TGCoordinates3 = class(TGCustomCoordinates)
+  // A TgCustomCoordinates that publishes X, Y, Z properties.
+  TgCoordinates3 = class(TgCustomCoordinates)
   published
     property X stored False;
     property Y stored False;
     property Z stored False;
   end;
 
-  // A TGCustomCoordinates that publishes X, Y, Z, W properties.
-  TGCoordinates4 = class(TGCustomCoordinates)
+  // A TgCustomCoordinates that publishes X, Y, Z, W properties.
+  TgCoordinates4 = class(TgCustomCoordinates)
   published
     property X stored False;
     property Y stored False;
@@ -148,19 +148,19 @@ type
     property W stored False;
   end;
 
-  TGCoordinates = TGCoordinates3;
+  TgCoordinates = TgCoordinates3;
 
-  (* Actually Sender should be TGCustomCoordinates, but that would require
+  (* Actually Sender should be TgCustomCoordinates, but that would require
      changes in a some other GLScene units and some other projects that use
-     TGCoordinatesUpdateAbleComponent *)
+     TgCoordinatesUpdateAbleComponent *)
   IGCoordinatesUpdateAble = interface(IInterface)
     ['{ACB98D20-8905-43A7-AFA5-225CF5FA6FF5}']
-    procedure CoordinateChanged(Sender: TGCustomCoordinates);
+    procedure CoordinateChanged(Sender: TgCustomCoordinates);
   end;
 
-  TGCoordinatesUpdateAbleComponent = class(TGUpdateAbleComponent, IGCoordinatesUpdateAble)
+  TgCoordinatesUpdateAbleComponent = class(TGUpdateAbleComponent, IGCoordinatesUpdateAble)
   public
-    procedure CoordinateChanged(Sender: TGCustomCoordinates); virtual; abstract;
+    procedure CoordinateChanged(Sender: TgCustomCoordinates); virtual; abstract;
   end;
 
 (* Calculates the barycentric coordinates for the point p on the triangle
@@ -307,7 +307,7 @@ procedure BipolarCylindrical_Cartesian(const u, v, z1, a: double;
   var x, y, z: double; var ierr: integer); overload;
 
 var
-  (* Specifies if TGCustomCoordinates should allocate memory for
+  (* Specifies if TgCustomCoordinates should allocate memory for
     their default values (ie. design-time) or not (run-time) *)
   VUseDefaultCoordinateSets: Boolean = False;
 
@@ -319,25 +319,25 @@ const
   csPoint2DHelp = 'When getting assertions here use one of the SetVector or SetPoint procedures';
 
   // ------------------
-  // ------------------ TGCustomCoordinates ------------------
+  // ------------------ TgCustomCoordinates ------------------
   // ------------------
 
-constructor TGCustomCoordinates.CreateInitialized(AOwner: TPersistent;
-  const AValue: TGLVector; const AStyle: TGCoordinatesStyle = CsUnknown);
+constructor TgCustomCoordinates.CreateInitialized(AOwner: TPersistent;
+  const AValue: TGLVector; const AStyle: TgCoordinatesStyle = CsUnknown);
 begin
   Create(AOwner);
   Initialize(AValue);
   FStyle := AStyle;
 end;
 
-destructor TGCustomCoordinates.Destroy;
+destructor TgCustomCoordinates.Destroy;
 begin
   if Assigned(FPDefaultCoords) then
     Dispose(FPDefaultCoords);
   inherited;
 end;
 
-procedure TGCustomCoordinates.Initialize(const Value: TGLVector);
+procedure TgCustomCoordinates.Initialize(const Value: TGLVector);
 begin
   FCoords := Value;
   if VUseDefaultCoordinateSets then
@@ -348,15 +348,15 @@ begin
   end;
 end;
 
-procedure TGCustomCoordinates.Assign(Source: TPersistent);
+procedure TgCustomCoordinates.Assign(Source: TPersistent);
 begin
-  if Source is TGCustomCoordinates then
-    FCoords := TGCustomCoordinates(Source).FCoords
+  if Source is TgCustomCoordinates then
+    FCoords := TgCustomCoordinates(Source).FCoords
   else
     inherited;
 end;
 
-procedure TGCustomCoordinates.WriteToFiler(Writer: TWriter);
+procedure TgCustomCoordinates.WriteToFiler(Writer: TWriter);
 var
   WriteCoords: Boolean;
 begin
@@ -373,7 +373,7 @@ begin
   end;
 end;
 
-procedure TGCustomCoordinates.ReadFromFiler(Reader: TReader);
+procedure TgCustomCoordinates.ReadFromFiler(Reader: TReader);
 var
   N: Integer;
 begin
@@ -391,33 +391,33 @@ begin
   end;
 end;
 
-procedure TGCustomCoordinates.DefineProperties(Filer: TFiler);
+procedure TgCustomCoordinates.DefineProperties(Filer: TFiler);
 begin
   inherited;
   Filer.DefineBinaryProperty('Coordinates', ReadData, WriteData,
     not(Assigned(FPDefaultCoords) and VectorEquals(FPDefaultCoords^, FCoords)));
 end;
 
-procedure TGCustomCoordinates.ReadData(Stream: TStream);
+procedure TgCustomCoordinates.ReadData(Stream: TStream);
 begin
   Stream.Read(FCoords, SizeOf(FCoords));
 end;
 
-procedure TGCustomCoordinates.WriteData(Stream: TStream);
+procedure TgCustomCoordinates.WriteData(Stream: TStream);
 begin
   Stream.Write(FCoords, SizeOf(FCoords));
 end;
 
-procedure TGCustomCoordinates.NotifyChange(Sender: TObject);
+procedure TgCustomCoordinates.NotifyChange(Sender: TObject);
 var
   Int: IGCoordinatesUpdateAble;
 begin
   if Supports(Owner, IGCoordinatesUpdateAble, Int) then
-    Int.CoordinateChanged(TGCoordinates(Self));
+    Int.CoordinateChanged(TgCoordinates(Self));
   inherited NotifyChange(Sender);
 end;
 
-procedure TGCustomCoordinates.Translate(const TranslationVector: TGLVector);
+procedure TgCustomCoordinates.Translate(const TranslationVector: TGLVector);
 begin
   FCoords.X := FCoords.X + TranslationVector.X;
   FCoords.Y := FCoords.Y + TranslationVector.Y;
@@ -425,7 +425,7 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.Translate(const TranslationVector
+procedure TgCustomCoordinates.Translate(const TranslationVector
   : TAffineVector);
 begin
   FCoords.X := FCoords.X + TranslationVector.X;
@@ -434,7 +434,7 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.AddScaledVector(const Factor: Single;
+procedure TgCustomCoordinates.AddScaledVector(const Factor: Single;
   const TranslationVector: TGLVector);
 var
   F: Single;
@@ -444,7 +444,7 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.AddScaledVector(const Factor: Single;
+procedure TgCustomCoordinates.AddScaledVector(const Factor: Single;
   const TranslationVector: TAffineVector);
 var
   F: Single;
@@ -454,92 +454,92 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.Rotate(const AnAxis: TAffineVector;
+procedure TgCustomCoordinates.Rotate(const AnAxis: TAffineVector;
   AnAngle: Single);
 begin
   RotateVector(FCoords, AnAxis, AnAngle);
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.Rotate(const AnAxis: TGLVector; AnAngle: Single);
+procedure TgCustomCoordinates.Rotate(const AnAxis: TGLVector; AnAngle: Single);
 begin
   RotateVector(FCoords, AnAxis, AnAngle);
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.Normalize;
+procedure TgCustomCoordinates.Normalize;
 begin
   NormalizeVector(FCoords);
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.Invert;
+procedure TgCustomCoordinates.Invert;
 begin
   NegateVector(FCoords);
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.Scale(Factor: Single);
+procedure TgCustomCoordinates.Scale(Factor: Single);
 begin
   ScaleVector(PAffineVector(@FCoords)^, Factor);
   NotifyChange(Self);
 end;
 
-function TGCustomCoordinates.VectorLength: Single;
+function TgCustomCoordinates.VectorLength: Single;
 begin
   Result := GLScene.VectorGeometry.VectorLength(FCoords);
 end;
 
-function TGCustomCoordinates.VectorNorm: Single;
+function TgCustomCoordinates.VectorNorm: Single;
 begin
   Result := GLScene.VectorGeometry.VectorNorm(FCoords);
 end;
 
-function TGCustomCoordinates.MaxXYZ: Single;
+function TgCustomCoordinates.MaxXYZ: Single;
 begin
   Result := MaxXYZComponent(FCoords);
 end;
 
-function TGCustomCoordinates.Equals(const AVector: TGLVector): Boolean;
+function TgCustomCoordinates.Equals(const AVector: TGLVector): Boolean;
 begin
   Result := VectorEquals(FCoords, AVector);
 end;
 
-procedure TGCustomCoordinates.SetVector(const X, Y: Single; Z: Single = 0);
+procedure TgCustomCoordinates.SetVector(const X, Y: Single; Z: Single = 0);
 begin
   Assert(FStyle = csVector, csVectorHelp);
   GLScene.VectorGeometry.SetVector(FCoords, X, Y, Z);
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.SetVector(const V: TAffineVector);
+procedure TgCustomCoordinates.SetVector(const V: TAffineVector);
 begin
   Assert(FStyle = csVector, csVectorHelp);
   GLScene.VectorGeometry.SetVector(FCoords, V);
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.SetVector(const V: TGLVector);
+procedure TgCustomCoordinates.SetVector(const V: TGLVector);
 begin
   Assert(FStyle = csVector, csVectorHelp);
   GLScene.VectorGeometry.SetVector(FCoords, V);
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.SetVector(const X, Y, Z, W: Single);
+procedure TgCustomCoordinates.SetVector(const X, Y, Z, W: Single);
 begin
   Assert(FStyle = csVector, csVectorHelp);
   GLScene.VectorGeometry.SetVector(FCoords, X, Y, Z, W);
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.SetDirectCoordinate(const Index: Integer;
+procedure TgCustomCoordinates.SetDirectCoordinate(const Index: Integer;
   const AValue: Single);
 begin
   FCoords.V[index] := AValue;
 end;
 
-procedure TGCustomCoordinates.SetDirectVector(const V: TGLVector);
+procedure TgCustomCoordinates.SetDirectVector(const V: TGLVector);
 begin
   FCoords.X := V.X;
   FCoords.Y := V.Y;
@@ -547,7 +547,7 @@ begin
   FCoords.W := V.W;
 end;
 
-procedure TGCustomCoordinates.SetToZero;
+procedure TgCustomCoordinates.SetToZero;
 begin
   FCoords.X := 0;
   FCoords.Y := 0;
@@ -559,61 +559,61 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.SetPoint(const X, Y, Z: Single);
+procedure TgCustomCoordinates.SetPoint(const X, Y, Z: Single);
 begin
   Assert(FStyle = CsPoint, CsPointHelp);
   MakePoint(FCoords, X, Y, Z);
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.SetPoint(const V: TAffineVector);
+procedure TgCustomCoordinates.SetPoint(const V: TAffineVector);
 begin
   Assert(FStyle = CsPoint, CsPointHelp);
   MakePoint(FCoords, V);
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.SetPoint(const V: TGLVector);
+procedure TgCustomCoordinates.SetPoint(const V: TGLVector);
 begin
   Assert(FStyle = CsPoint, CsPointHelp);
   MakePoint(FCoords, V);
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.SetPoint2D(const X, Y: Single);
+procedure TgCustomCoordinates.SetPoint2D(const X, Y: Single);
 begin
   Assert(FStyle = CsPoint2D, CsPoint2DHelp);
   GLScene.VectorGeometry.MakeVector(FCoords, X, Y, 0);
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.SetPoint2D(const Vector: TAffineVector);
+procedure TgCustomCoordinates.SetPoint2D(const Vector: TAffineVector);
 begin
   Assert(FStyle = CsPoint2D, CsPoint2DHelp);
   MakeVector(FCoords, Vector);
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.SetPoint2D(const Vector: TGLVector);
+procedure TgCustomCoordinates.SetPoint2D(const Vector: TGLVector);
 begin
   Assert(FStyle = CsPoint2D, CsPoint2DHelp);
   MakeVector(FCoords, Vector);
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.SetPoint2D(const Vector: TVector2f);
+procedure TgCustomCoordinates.SetPoint2D(const Vector: TVector2f);
 begin
   Assert(FStyle = CsPoint2D, CsPoint2DHelp);
   MakeVector(FCoords, Vector.X, Vector.Y, 0);
   NotifyChange(Self);
 end;
 
-function TGCustomCoordinates.AsAddress: PSingle;
+function TgCustomCoordinates.AsAddress: PSingle;
 begin
   Result := @FCoords;
 end;
 
-procedure TGCustomCoordinates.SetAsVector(const Value: TGLVector);
+procedure TgCustomCoordinates.SetAsVector(const Value: TGLVector);
 begin
   FCoords := Value;
   case FStyle of
@@ -632,7 +632,7 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.SetAsAffineVector(const Value: TAffineVector);
+procedure TgCustomCoordinates.SetAsAffineVector(const Value: TAffineVector);
 begin
   case FStyle of
     CsPoint2D:
@@ -647,7 +647,7 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TGCustomCoordinates.SetAsPoint2D(const Value: TVector2f);
+procedure TgCustomCoordinates.SetAsPoint2D(const Value: TVector2f);
 begin
   case FStyle of
     CsPoint2D, CsPoint, CsVector:
@@ -663,36 +663,36 @@ begin
   NotifyChange(Self);
 end;
 
-function TGCustomCoordinates.GetAsAffineVector: TAffineVector;
+function TgCustomCoordinates.GetAsAffineVector: TAffineVector;
 begin
   GLScene.VectorGeometry.SetVector(Result, FCoords);
 end;
 
-function TGCustomCoordinates.GetAsPoint2D: TVector2f;
+function TgCustomCoordinates.GetAsPoint2D: TVector2f;
 begin
   Result.X := FCoords.X;
   Result.Y := FCoords.Y;
 end;
 
-procedure TGCustomCoordinates.SetCoordinate(const AIndex: Integer;
+procedure TgCustomCoordinates.SetCoordinate(const AIndex: Integer;
   const AValue: Single);
 begin
   FCoords.V[AIndex] := AValue;
   NotifyChange(Self);
 end;
 
-function TGCustomCoordinates.GetCoordinate(const AIndex: Integer): Single;
+function TgCustomCoordinates.GetCoordinate(const AIndex: Integer): Single;
 begin
   Result := FCoords.V[AIndex];
 end;
 
-function TGCustomCoordinates.GetDirectCoordinate(
+function TgCustomCoordinates.GetDirectCoordinate(
   const Index: Integer): Single;
 begin
   Result := FCoords.V[index]
 end;
 
-function TGCustomCoordinates.GetAsString: String;
+function TgCustomCoordinates.GetAsString: String;
 begin
   case Style of
     CsPoint2D:
@@ -1179,10 +1179,10 @@ end;
 
 initialization //------------------------------------------------------------
 
-RegisterClasses([TGCoordinates2, TGCoordinates3, TGCoordinates4]);
+RegisterClasses([TgCoordinates2, TgCoordinates3, TgCoordinates4]);
 
 finalization //--------------------------------------------------------------
 
-// UnRegisterClasses([TGCoordinates2, TGCoordinates3, TGCoordinates4]);
+// UnRegisterClasses([TgCoordinates2, TgCoordinates3, TgCoordinates4]);
 
 end.

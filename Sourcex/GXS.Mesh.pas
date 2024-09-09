@@ -18,20 +18,20 @@ interface
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
-  GXS.OpenGL, // wglAllocateMemoryNV
+  GLScene.OpenGL4, // wglAllocateMemoryNV
 
   System.Classes,
   System.SysUtils,
 
-  GXS.XOpenGL,
   GLScene.BaseClasses,
   GLScene.VectorTypes,
   GLScene.Strings,
+  GLScene.VectorGeometry,
+  GLScene.Color,
+
+  GXS.State,
   GXS.Context,
   GXS.Scene,
-  GLScene.VectorGeometry,
-  GXS.State,
-  GLScene.Color,
   GXS.RenderContextInfo;
 
 type
@@ -62,7 +62,7 @@ type
 
   (* Stores an interlaced vertex list for direct use in OpenGL.
     Locking (hardware passthrough) is supported, see "Locked" property for details. *)
-  TgxVertexList = class(TGUpdateAbleObject)
+  TgxVertexList = class(TgUpdateAbleObject)
   private
     FValues: PVKVertexDataArray;
     FCount: Integer;
@@ -93,22 +93,22 @@ type
     constructor Create(AOwner: TPersistent); override;
     destructor Destroy; override;
     function CreateInterpolatedCoords(list2: TgxVertexList; lerpFactor: Single): TgxVertexList;
-    { Adds a vertex to the list, fastest method. }
+    // Adds a vertex to the list, fastest method.
     procedure AddVertex(const vertexData: TgxVertexData); overload;
-    { Adds a vertex to the list, fastest method for adding a triangle. }
+    // Adds a vertex to the list, fastest method for adding a triangle.
     procedure AddVertex3(const vd1, vd2, vd3: TgxVertexData); overload;
-    { Adds a vertex to the list. 
+    { Adds a vertex to the list.
       Use the NullVector, NullHmgVector or NullTexPoint constants for
       params you don't want to set. }
     procedure AddVertex(const aVertex: TVertex; const aNormal: TAffineVector;
       const aColor: TGColorVector; const aTexPoint: TTexPoint); overload;
-    { Adds a vertex to the list, no texturing version.  }
+    // Adds a vertex to the list, no texturing version.
     procedure AddVertex(const vertex: TVertex; const normal: TAffineVector;
       const color: TGColorVector); overload;
-    { Adds a vertex to the list, no texturing, not color version.  }
+    // Adds a vertex to the list, no texturing, not color version.
     procedure AddVertex(const vertex: TVertex;
       const normal: TAffineVector); overload;
-    { Duplicates the vertex of given index and adds it at the end of the list. }
+    // Duplicates the vertex of given index and adds it at the end of the list.
     procedure DuplicateVertex(index: Integer);
     procedure Assign(Source: TPersistent); override;
     procedure Clear;

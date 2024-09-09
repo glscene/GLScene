@@ -355,8 +355,7 @@
         <DCCReference Include="..\SourceX\GXS.PAKArchive.pas"/>
         <DCCReference Include="..\SourceX\GXS.SpacePartition.pas"/>
         <DCCReference Include="..\SourceX\GXS.XOpenGL.pas"/>
-        <DCCReference Include="..\SourceX\GXS.PipelineTransformation.pas"/>
-        <DCCReference Include="..\SourceX\GXS.OpenGL.pas"/>
+        <DCCReference Include="..\Source\GLScene.OpenGL4.pas"/>
         <DCCReference Include="..\SourceX\GXS.ViewerOpenGL.pas"/>
         <DCCReference Include="..\SourceX\GXSL.AsmShader.pas"/>
         <DCCReference Include="..\SourceX\GXSL.BumpShaders.pas"/>
@@ -420,6 +419,7 @@
         <DCCReference Include="..\Source\GLScene.Keyboard.pas"/>
         <DCCReference Include="..\Source\GLScene.Polynomials.pas"/>
         <DCCReference Include="..\Source\GLScene.Color.pas"/>
+        <DCCReference Include="..\Source\GLScene.PipelineTransform.pas"/>
         <None Include="..\Sourcex\GXS.Scene.inc"/>
         <None Include="..\Source\GLScene.Defines.inc"/>
         <BuildConfiguration Include="Base">

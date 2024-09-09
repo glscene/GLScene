@@ -38,7 +38,7 @@ uses
   GXS.RenderContextInfo,
   GXS.Context,
   GXS.State,
-  GXS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GXS.MeshUtils;
 
 type
@@ -64,11 +64,11 @@ type
     (* Parse the feedback buffer for polygon data and build
        a mesh into the assigned lists. *)
     procedure BuildMeshFromBuffer(
-      Vertices: TGAffineVectorList = nil;
-      Normals: TGAffineVectorList = nil;
+      Vertices: TgAffineVectorList = nil;
+      Normals: TgAffineVectorList = nil;
       Colors: TGVectorList = nil;
-      TexCoords: TGAffineVectorList = nil;
-      VertexIndices: TGIntegerList = nil);
+      TexCoords: TgAffineVectorList = nil;
+      VertexIndices: TgIntegerList = nil);
     // True when there is data in the buffer ready for parsing
     property Buffered: Boolean read FBuffered;
     // The feedback buffer
@@ -188,25 +188,25 @@ begin
 end;
 
 procedure TgxFeedback.BuildMeshFromBuffer(
-  Vertices: TGAffineVectorList = nil;
-  Normals: TGAffineVectorList = nil;
+  Vertices: TgAffineVectorList = nil;
+  Normals: TgAffineVectorList = nil;
   Colors: TGVectorList = nil;
-  TexCoords: TGAffineVectorList = nil;
-  VertexIndices: TGIntegerList = nil);
+  TexCoords: TgAffineVectorList = nil;
+  VertexIndices: TgIntegerList = nil);
 var
   value: Single;
   i, j, LCount, skip: Integer;
   vertex, color, texcoord: TVector4f;
-  tempVertices, tempNormals, tempTexCoords: TGAffineVectorList;
+  tempVertices, tempNormals, tempTexCoords: TgAffineVectorList;
   tempColors: TGVectorList;
-  tempIndices: TGIntegerList;
+  tempIndices: TgIntegerList;
   ColorBuffered, TexCoordBuffered: Boolean;
 begin
   Assert(FMode <> fm2D, 'Cannot build mesh from fm2D feedback mode.');
 
-  tempVertices := TGAffineVectorList.Create;
+  tempVertices := TgAffineVectorList.Create;
   tempColors := TGVectorList.Create;
-  tempTexCoords := TGAffineVectorList.Create;
+  tempTexCoords := TgAffineVectorList.Create;
 
   ColorBuffered := (FMode = fm3DColor) or
     (FMode = fm3DColorTexture) or
@@ -295,7 +295,7 @@ begin
   end
   else
   begin
-    tempIndices := TGIntegerList.Create;
+    tempIndices := TgIntegerList.Create;
     tempIndices.AddSerie(0, 1, tempVertices.Count);
   end;
 

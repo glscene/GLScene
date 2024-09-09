@@ -26,28 +26,28 @@ type
 var
    vDefaultMeshOptimizerOptions : TMeshOptimizerOptions = [mooStandardize, mooVertexCache, mooSortByMaterials, mooMergeObjects];
 
-procedure OptimizeMesh(aList : TGXMeshObjectList; options : TMeshOptimizerOptions); overload;
-procedure OptimizeMesh(aList : TGXMeshObjectList); overload;
-procedure OptimizeMesh(aMeshObject : TGXMeshObject; options : TMeshOptimizerOptions); overload;
-procedure OptimizeMesh(aMeshObject : TGXMeshObject); overload;
-procedure FacesSmooth(aMeshObj: TGXMeshObject; aWeldDistance: Single=0.0000001; aThreshold: Single=35.0; InvertNormals:boolean=false);
+procedure OptimizeMesh(aList : TgxMeshObjectList; options : TMeshOptimizerOptions); overload;
+procedure OptimizeMesh(aList : TgxMeshObjectList); overload;
+procedure OptimizeMesh(aMeshObject : TgxMeshObject; options : TMeshOptimizerOptions); overload;
+procedure OptimizeMesh(aMeshObject : TgxMeshObject); overload;
+procedure FacesSmooth(aMeshObj: TgxMeshObject; aWeldDistance: Single=0.0000001; aThreshold: Single=35.0; InvertNormals:boolean=false);
 
 
 // ------------------------------------------------------------------
 implementation
 // ------------------------------------------------------------------
 
-procedure OptimizeMesh(aList : TGXMeshObjectList);
+procedure OptimizeMesh(aList : TgxMeshObjectList);
 begin
    OptimizeMesh(aList, vDefaultMeshOptimizerOptions);
 end;
 
-procedure OptimizeMesh(aList : TGXMeshObjectList; options : TMeshOptimizerOptions);
+procedure OptimizeMesh(aList : TgxMeshObjectList; options : TMeshOptimizerOptions);
 var
    i, k : Integer;
-   mob, mo : TGXMeshObject;
-   fg : TGXFaceGroup;
-   fgvi : TFGXVertexIndexList;
+   mob, mo : TgxMeshObject;
+   fg : TgxFaceGroup;
+   fgvi : TgxFGVertexIndexList;
 begin
    // optimize all mesh objects
    for i:=0 to aList.Count-1 do begin
@@ -72,7 +72,7 @@ begin
          mob.TexCoords.Add(mo.TexCoords);
          while mo.FaceGroups.Count>0 do begin
             fg:=mo.FaceGroups[0];
-            fgvi:=(fg as TFGXVertexIndexList);
+            fgvi:=(fg as TgxFGVertexIndexList);
             fgvi.Owner:=mob.FaceGroups;
             mob.FaceGroups.Add(fgvi);
             mo.FaceGroups.Delete(0);
@@ -84,17 +84,17 @@ begin
    end;
 end;
 
-procedure OptimizeMesh(aMeshObject : TGXMeshObject);
+procedure OptimizeMesh(aMeshObject : TgxMeshObject);
 begin
    OptimizeMesh(aMeshObject, vDefaultMeshOptimizerOptions);
 end;
 
-procedure OptimizeMesh(aMeshObject : TGXMeshObject; options : TMeshOptimizerOptions);
+procedure OptimizeMesh(aMeshObject : TgxMeshObject; options : TMeshOptimizerOptions);
 var
    i : Integer;
-   fg : TGXFaceGroup;
-   coords, texCoords, normals : TGAffineVectorList;
-   il : TGIntegerList;
+   fg : TgxFaceGroup;
+   coords, texCoords, normals : TgAffineVectorList;
+   il : TgIntegerList;
    materialName : String;
 begin
    if (mooMergeObjects in options) then begin
@@ -112,8 +112,8 @@ begin
       if (aMeshObject.Mode<>momFaceGroups) or (aMeshObject.FaceGroups.Count<=1) then begin
          if aMeshObject.FaceGroups.Count=1 then
             materialName:=aMeshObject.FaceGroups[0].MaterialName;
-         texCoords:=TGAffineVectorList.Create;
-         normals:=TGAffineVectorList.Create;
+         texCoords:=TgAffineVectorList.Create;
+         normals:=TgAffineVectorList.Create;
          coords:=aMeshObject.ExtractTriangles(texCoords, normals);
          try
             il:=BuildVectorCountOptimizedIndices(coords, normals, texCoords);
@@ -126,9 +126,9 @@ begin
                   aMeshObject.Vertices:=coords;
                   aMeshObject.Normals:=normals;
                   aMeshObject.TexCoords:=texCoords;
-                  fg:=TFGXVertexIndexList.CreateOwned(aMeshObject.FaceGroups);
+                  fg:=TgxFGVertexIndexList.CreateOwned(aMeshObject.FaceGroups);
                   fg.MaterialName:=materialName;
-                  TFGXVertexIndexList(fg).VertexIndices:=il;
+                  TgxFGVertexIndexList(fg).VertexIndices:=il;
                end;
             finally
                il.Free;
@@ -145,7 +145,7 @@ begin
    if (mooVertexCache in options) and (aMeshObject.Mode=momFaceGroups) then begin
        for i:=0 to aMeshObject.FaceGroups.Count-1 do begin
          fg:=aMeshObject.FaceGroups[i];
-         if fg.ClassType=TFGXVertexIndexList then with TFGXVertexIndexList(fg) do begin
+         if fg.ClassType=TgxFGVertexIndexList then with TgxFGVertexIndexList(fg) do begin
             if Mode in [fgmmTriangles, fgmmFlatTriangles] then
                IncreaseCoherency(VertexIndices, 12);
          end;
@@ -158,23 +158,23 @@ end;
 
 
 
-procedure FacesSmooth(aMeshObj: TGXMeshObject; aWeldDistance: Single=0.0000001; aThreshold: Single=35.0; InvertNormals:boolean=false);
+procedure FacesSmooth(aMeshObj: TgxMeshObject; aWeldDistance: Single=0.0000001; aThreshold: Single=35.0; InvertNormals:boolean=false);
 Var
   I, J, K, L: integer;
-  WeldedVertex: TGAffineVectorList;
-  TmpIntegerList: TGIntegerList;
+  WeldedVertex: TgAffineVectorList;
+  TmpIntegerList: TgIntegerList;
   IndexMap: TStringList;
   n: TAffineVector;
-  indicesMap : TGIntegerList;
+  indicesMap : TgIntegerList;
   Index: Integer;
-  FaceList: TGIntegerList;
-  NormalList: TGAffineVectorList;
-  FaceNormalList: TGAffineVectorList;
-  FaceGroup: TGXFaceGroup;
-  FG, FG1: TFGXVertexIndexList;
+  FaceList: TgIntegerList;
+  NormalList: TgAffineVectorList;
+  FaceNormalList: TgAffineVectorList;
+  FaceGroup: TgxFaceGroup;
+  FG, FG1: TgxFGVertexIndexList;
   Threshold: Single;
   Angle: Single;
-  ReferenceMap: TGIntegerList;
+  ReferenceMap: TgIntegerList;
   ID1, ID2: Integer;
   Index1, Index2, Index3: Integer;
 
@@ -199,10 +199,10 @@ Var
 begin
   Threshold := aThreshold * Pi/180.0;
   //build the vectices reference map
-  ReferenceMap := TGIntegerList.Create;
-  WeldedVertex := TGAffineVectorList.Create;
+  ReferenceMap := TgIntegerList.Create;
+  WeldedVertex := TgAffineVectorList.Create;
   WeldedVertex.Assign(aMeshObj.Vertices);
-  indicesMap := TGIntegerList.Create;
+  indicesMap := TgIntegerList.Create;
   //first of all, weld the very closed vertices
   WeldVertices(WeldedVertex, indicesMap, aWeldDistance);
   //then, rebuild the map list
@@ -210,7 +210,7 @@ begin
   for I:=0 to WeldedVertex.Count-1 do
   begin
     ReferenceMap.Assign(indicesMap);
-    TmpIntegerList := TGIntegerList.Create;
+    TmpIntegerList := TgIntegerList.Create;
     Index := ReferenceMap.IndexOf(I);
     while Index>=0 do
     begin
@@ -225,14 +225,14 @@ begin
   WeldedVertex.free;
   indicesMap.free;
   //create a TexPoint list for save face infomation, where s=facegroup index, t=face index
-  FaceList := TGIntegerList.Create;
-  NormalList := TGAffineVectorList.Create;
-  FaceNormalList := TGAffineVectorList.Create;
-  //NormalIndex := TGIntegerList.Create;
+  FaceList := TgIntegerList.Create;
+  NormalList := TgAffineVectorList.Create;
+  FaceNormalList := TgAffineVectorList.Create;
+  //NormalIndex := TgIntegerList.Create;
   for I:=0 to aMeshObj.FaceGroups.Count-1 do
   begin
     FaceGroup := aMeshObj.FaceGroups[I];
-    TmpIntegerList := TFGXVertexIndexList(FaceGroup).VertexIndices;
+    TmpIntegerList := TgxFGVertexIndexList(FaceGroup).VertexIndices;
     for J:=0 to (TmpIntegerList.Count div 3)-1 do
     begin
       FaceList.Add(I);
@@ -253,14 +253,14 @@ begin
   begin
     Index := FaceList[I*2+0];
     Index1 := FaceList[I*2+1];
-    FG := TFGXVertexIndexList(aMeshObj.FaceGroups[Index]);
+    FG := TgxFGVertexIndexList(aMeshObj.FaceGroups[Index]);
     for J:=0 to 2 do
     begin
       for K:=0 to (FaceList.Count div 2)-1 do
       begin
         Index2 := FaceList[K*2+0];
         Index3 := FaceList[K*2+1];
-        FG1 := TFGXVertexIndexList(aMeshObj.FaceGroups[Index2]);
+        FG1 := TgxFGVertexIndexList(aMeshObj.FaceGroups[Index2]);
         if I<>K then
         begin
           for L:=0 to 2 do
@@ -285,7 +285,7 @@ begin
   for I:=0 to (FaceList.Count div 2)-1 do
   begin
     Index := FaceList[I*2+0];
-    FG := TFGXVertexIndexList(aMeshObj.FaceGroups[Index]);
+    FG := TgxFGVertexIndexList(aMeshObj.FaceGroups[Index]);
     Index := FaceList[I*2+1];
     aMeshObj.Normals[FG.VertexIndices[(Index*3+0)]] := NormalList[(I*3+0)];
     aMeshObj.Normals[FG.VertexIndices[(Index*3+1)]] := NormalList[(I*3+1)];

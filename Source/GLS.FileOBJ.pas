@@ -154,7 +154,7 @@ type
   private
     FMode: TOBJFGMode;
     FName: string;
-    FPolygonVertices: TGIntegerList;
+    FPolygonVertices: TgIntegerList;
     FCurrentVertexCount: integer;
     FShowNormals: boolean;
     procedure PolygonComplete; (* Current polygon completed. Adds FCurrentVertexCount
@@ -174,7 +174,7 @@ type
     function TriangleCount: Integer; override;
     property Mode: TOBJFGMode read FMode write SetMode;
     property Name: string read FName write FName;
-    property PolygonVertices: TGIntegerList read FPolygonVertices;
+    property PolygonVertices: TgIntegerList read FPolygonVertices;
     property ShowNormals: boolean read FShowNormals write FShowNormals;
   end;
 
@@ -211,7 +211,7 @@ begin
   Assert(VertexIndices.Count = 0, 'Decide on the mode before adding vertices.');
   FMode := aMode;
   if FMode = objfgmmPolygons then
-    FPolygonVertices := TGIntegerList.Create
+    FPolygonVertices := TgIntegerList.Create
   else
   begin
     FPolygonVertices.Free;
@@ -1388,7 +1388,7 @@ begin
     else
     begin
       if FPolygonVertices = nil then
-        FPolygonVertices := TGIntegerList.Create;
+        FPolygonVertices := TgIntegerList.Create;
       FPolygonVertices.Assign(TOBJFGVertexNormalTexIndexList(Source).FPolygonVertices);
     end;
   end
@@ -1412,7 +1412,7 @@ begin
 
     if FMode = objfgmmPolygons then
     begin
-      FPolygonVertices := TGIntegerList.Create;
+      FPolygonVertices := TgIntegerList.Create;
       FPolygonVertices.ReadFromFiler(reader);
     end;  
   end

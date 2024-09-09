@@ -26,7 +26,7 @@ uses
   FMX.Objects,
   FMX.Memo.Types,
 
-  GXS.OpenGL,
+  GLScene.OpenGL4,
   GXS.Scene,
   GXS.Context,
   GLScene.Strings;
@@ -177,7 +177,7 @@ var
   i: Integer;
   ExtStr: String;
 
-  procedure IntLimitToLabel(const aLabel: TLabel; const aLimit: TLimitType);
+  procedure IntLimitToLabel(const aLabel: TLabel; const aLimit: TgxLimitType);
   begin
     aLabel.Text := IntToStr(aSceneBuffer.LimitOf[aLimit]);
   end;

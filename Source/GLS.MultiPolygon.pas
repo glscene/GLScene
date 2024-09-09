@@ -95,7 +95,7 @@ type
     procedure GetExtents(var min, max: TAffineVector);
   end;
 
-  TGLPolygonList = class(TGPersistentObjectList)
+  TGLPolygonList = class(TgPersistentObjectList)
   private
     FAktList: TGAffineVectorList;
     function GetList(I: Integer): TGAffineVectorList;
@@ -139,7 +139,7 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
-    procedure AddNode(const i: Integer; const coords: TGCoordinates); overload;
+    procedure AddNode(const i: Integer; const coords: TgCoordinates); overload;
     procedure AddNode(const i: Integer; const X, Y, Z: TGLfloat); overload;
     procedure AddNode(const i: Integer; const value: TGLVector); overload;
     procedure AddNode(const i: Integer; const value: TAffineVector); overload;
@@ -436,7 +436,7 @@ begin
 end;
 
 
-procedure TGLMultiPolygonBase.AddNode(const i: Integer; const coords: TGCoordinates);
+procedure TGLMultiPolygonBase.AddNode(const i: Integer; const coords: TgCoordinates);
 begin
   Path[i].AddNode(coords);
 end;

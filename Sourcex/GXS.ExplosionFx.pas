@@ -15,7 +15,7 @@ unit GXS.ExplosionFx;
   Pretty neat :)
 
   Note: the owner of this behaviour should be any class that derives
-  from TGXBaseMesh class or any other class derived from TGXBaseMesh.
+  from TgxBaseMesh class or any other class derived from TgxBaseMesh.
   Also, the structure of the mesh is lost after the caching of information,
   so if you'll need the mesh after exploding it, you'll have to save the
   MeshObjects property of the mesh, OR load it again.
@@ -44,27 +44,27 @@ uses
 type
   TgxBExplosionFX = class(TgxObjectPreEffect)
   private
-    FTriList: TGAffineVectorList;
-    FRotList: TGAffineVectorList;
-    FDirList: TGAffineVectorList;
-    FPosList: TGAffineVectorList;
+    FTriList: TgAffineVectorList;
+    FRotList: TgAffineVectorList;
+    FDirList: TgAffineVectorList;
+    FPosList: TgAffineVectorList;
     FEnabled: boolean;
     FFaceCount: integer;
     FSpeed: single;
-    FDirection: TGCoordinates;
+    FDirection: TgCoordinates;
     FMaxSteps: integer;
     FStep: integer;
-    procedure SetTriList(Value: TGAffineVectorList);
-    procedure SetRotList(Value: TGAffineVectorList);
-    procedure SetDirList(Value: TGAffineVectorList);
-    procedure SetPosList(Value: TGAffineVectorList);
-    procedure SetDirection(value: TGCoordinates);
+    procedure SetTriList(Value: TgAffineVectorList);
+    procedure SetRotList(Value: TgAffineVectorList);
+    procedure SetDirList(Value: TgAffineVectorList);
+    procedure SetPosList(Value: TgAffineVectorList);
+    procedure SetDirection(value: TgCoordinates);
     procedure SetEnabled(value: boolean);
   protected
-    property TriList: TGAffineVectorList read FTriList write SetTriList;
-    property RotList: TGAffineVectorList read FRotList write SetRotList;
-    property DirList: TGAffineVectorList read FDirList write SetDirList;
-    property PosList: TGAffineVectorList read FPosList write SetPosList;
+    property TriList: TgAffineVectorList read FTriList write SetTriList;
+    property RotList: TgAffineVectorList read FRotList write SetRotList;
+    property DirList: TgAffineVectorList read FDirList write SetDirList;
+    property PosList: TgAffineVectorList read FPosList write SetPosList;
     property FaceCount: integer read FFAceCount write FFaceCount;
     procedure CacheInfo;
   public
@@ -81,7 +81,7 @@ type
   published
     property MaxSteps: integer read FMaxSteps write FMaxSteps;
     property Speed: single read FSpeed write FSpeed;
-    property Direction: TGCoordinates read FDirection write SetDirection;
+    property Direction: TgCoordinates read FDirection write SetDirection;
   end;
 
 //--------------------------------------
@@ -96,11 +96,11 @@ implementation
 constructor TgxBExplosionFx.Create(aOwner: TXCollection);
 begin
   inherited Create(AOwner);
-  FTriList := TGAffineVectorList.Create;
-  FRotList := TGAffineVectorList.Create;
-  FDirList := TGAffineVectorList.Create;
-  FPosList := TGAffineVectorList.Create;
-  FDirection := TGCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
+  FTriList := TgAffineVectorList.Create;
+  FRotList := TgAffineVectorList.Create;
+  FDirList := TgAffineVectorList.Create;
+  FPosList := TgAffineVectorList.Create;
+  FDirection := TgCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
 end;
 
 destructor TgxBExplosionFX.Destroy;
@@ -124,27 +124,27 @@ begin
   Result := 'Explosion FX';
 end;
 
-procedure TgxBExplosionFx.SetTriList(Value: TGAffineVectorList);
+procedure TgxBExplosionFx.SetTriList(Value: TgAffineVectorList);
 begin
   FTriList.Assign(Value);
 end;
 
-procedure TgxBExplosionFx.SetRotList(Value: TGAffineVectorList);
+procedure TgxBExplosionFx.SetRotList(Value: TgAffineVectorList);
 begin
   FRotList.Assign(Value);
 end;
 
-procedure TgxBExplosionFx.SetDirList(Value: TGAffineVectorList);
+procedure TgxBExplosionFx.SetDirList(Value: TgAffineVectorList);
 begin
   FDirList.Assign(Value);
 end;
 
-procedure TgxBExplosionFx.SetPosList(Value: TGAffineVectorList);
+procedure TgxBExplosionFx.SetPosList(Value: TgAffineVectorList);
 begin
   FPosList.Assign(Value);
 end;
 
-procedure TgxBExplosionFx.SetDirection(Value: TGCoordinates);
+procedure TgxBExplosionFx.SetDirection(Value: TgCoordinates);
 begin
   Value.Normalize;
   FDirection.Assign(Value);
@@ -173,13 +173,13 @@ var
   Normal: TVector4f;
 begin
   // make sure we can explode this object
-  if not OwnerBaseSceneObject.InheritsFrom(TGXBaseMesh) then begin
+  if not OwnerBaseSceneObject.InheritsFrom(TgxBaseMesh) then begin
     FEnabled := False;
     Exit;
   end;
   FTriList.Free;
   // get all the triangles of all the meshObjects
-  FTriList := TGXBaseMesh(OwnerBaseSceneObject).MeshObjects.ExtractTriangles;
+  FTriList := TgxBaseMesh(OwnerBaseSceneObject).MeshObjects.ExtractTriangles;
   FaceCount := FTriList.Count div 3;
   // set initial direction, rotation and position
   for Face := 0 to Facecount - 1 do begin
@@ -215,8 +215,8 @@ begin
     FRotList.Add(DegToRadian(3.0*Random), DegToRadian(3.0*Random), DegToRadian(3.0*Random));
   end;
   // Dispose the struture of the mesh
-  TGXBaseMesh(OwnerBaseSceneObject).MeshObjects.Clear;
-  TGXBaseMesh(OwnerBaseSceneObject).StructureChanged;
+  TgxBaseMesh(OwnerBaseSceneObject).MeshObjects.Clear;
+  TgxBaseMesh(OwnerBaseSceneObject).StructureChanged;
 end;
 
 procedure TgxBExplosionFX.Render(var rci : TgxRenderContextInfo);

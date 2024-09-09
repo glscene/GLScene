@@ -41,7 +41,7 @@ uses
   GLS.ParticleFX,
   GLS.Graphics,
   GLS.XOpenGL,
-  GLS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLS.TextureCombiners,
   GLS.Material,
   GLScene.Coordinates,

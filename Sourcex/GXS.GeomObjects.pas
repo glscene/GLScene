@@ -30,7 +30,7 @@ uses
   GLScene.VectorGeometry,
   GLScene.Polynomials,
   GXS.VectorFileObjects,
-  GXS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GXS.Material,
   GXS.Texture,
 
@@ -41,38 +41,38 @@ uses
   GXS.RenderContextInfo;
 
 type
-//-------------------- TGXBaseMesh Objects -----------------------
+//-------------------- TgxBaseMesh Objects -----------------------
 (* The tetrahedron has no texture coordinates defined, ie. without using
     a texture generation mode, no texture will be mapped. *)
-  TgxTetrahedron = class(TGXBaseMesh)
+  TgxTetrahedron = class(TgxBaseMesh)
   public
     procedure BuildList(var rci: TgxRenderContextInfo); override;
   end;
 
   (* The octahedron has no texture coordinates defined, ie. without using
     a texture generation mode, no texture will be mapped. *)
-  TgxOctahedron = class(TGXBaseMesh)
+  TgxOctahedron = class(TgxBaseMesh)
   public
     procedure BuildList(var rci: TgxRenderContextInfo); override;
   end;
 
   (* The hexahedron has no texture coordinates defined, ie. without using
     a texture generation mode, no texture will be mapped. *)
-  TgxHexahedron = class(TGXBaseMesh)
+  TgxHexahedron = class(TgxBaseMesh)
   public
     procedure BuildList(var rci: TgxRenderContextInfo); override;
   end;
 
   (* The dodecahedron has no texture coordinates defined, ie. without using
     a texture generation mode, no texture will be mapped. *)
-  TgxDodecahedron = class(TGXBaseMesh)
+  TgxDodecahedron = class(TgxBaseMesh)
   public
     procedure BuildList(var rci: TgxRenderContextInfo); override;
   end;
 
   (* The icosahedron has no texture coordinates defined, ie. without using
     a texture generation mode, no texture will be mapped. *)
-  TgxIcosahedron = class(TGXBaseMesh)
+  TgxIcosahedron = class(TgxBaseMesh)
   public
     procedure BuildList(var rci: TgxRenderContextInfo); override;
   end;

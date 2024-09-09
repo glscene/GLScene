@@ -14,14 +14,13 @@ uses
   GLScene.PersistentClasses,
   GLScene.VectorGeometry,
   GXS.State,
-  GXS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLScene.Color;
 
 type
+  TGXDrawState = (dsRendering, dsPicking, dsPrinting);
 
-  TgxDrawState = (dsRendering, dsPicking, dsPrinting);
-
-  TgxSize = record
+  TGXSize = record
     cx: Longint;
     cy: Longint;
   end;
@@ -52,7 +51,7 @@ type
      board, it may be faster not to cull at all (ie. leave this to the hardware). *)
   TgxVisibilityCulling = (vcInherited, vcNone, vcObjectBased, vcHierarchical);
 
-  TgxRenderContextClippingInfo = record
+  TGXRenderContextClippingInfo = record
     origin: TVector4f;
     clippingDirection: TVector4f;
     viewPortRadius: Single; // viewport bounding radius per distance unit
@@ -67,17 +66,17 @@ type
     buffer: TObject; //usually TgxSceneBuffer
     cameraPosition: TVector4f;
     cameraDirection, cameraUp: TVector4f;
-    viewPortSize: TgxSize;
+    viewPortSize: TGXSize;
     renderDPI: Integer;
     materialLibrary: TObject; //usually TgxMaterialLibrary;
     lightmapLibrary: TObject; //usually TgxMaterialLibrary;
     fogDisabledCounter: Integer;
-    drawState: TgxDrawState;
+    drawState: TGXDrawState;
     objectsSorting: TgxObjectsSorting;
     visibilityCulling: TgxVisibilityCulling;
     gxStates: TgxStateCache;
-    PipelineTransformation: TGLTransformation;
-    rcci: TgxRenderContextClippingInfo;
+    PipelineTransformation: TgTransformation;
+    rcci: TGXRenderContextClippingInfo;
     sceneAmbientColor: TGColorVector;
     bufferFaceCull: Boolean;
     bufferLighting: Boolean;
@@ -88,17 +87,15 @@ type
     ignoreBlendingRequests: Boolean;
     ignoreDepthRequests: Boolean;
     amalgamating: Boolean;
-    lights: TGPersistentObjectList;
-    afterRenderEffects: TGPersistentObjectList;
+    lights: TgPersistentObjectList;
+    afterRenderEffects: TgPersistentObjectList;
     currentMaterialLevel: TgxMaterialLevel;
     primitiveMask: TgxMeshPrimitives;
     orderCounter: Integer;
   end;
-  PRenderContextInfo = ^TgxRenderContextInfo;
+  PGXRenderContextInfo = ^TgxRenderContextInfo;
 
-//------------------------------------------
-implementation
-//------------------------------------------
+implementation //-------------------------------------------------------------
 
 end.
 

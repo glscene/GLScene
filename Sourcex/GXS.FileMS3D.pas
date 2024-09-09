@@ -238,7 +238,7 @@ type
   { The MilkShape vector file.
      By Mattias Fagerlund, mattias@cambrianlabs.com. Yada yada. Eric rules! }
 
-  TgxMS3DVectorFile = class(TGXVectorFile)
+  TgxMS3DVectorFile = class(TgxVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -335,9 +335,9 @@ var
   itemp: Cardinal;
   wtemp: word;
   TexCoordID: integer;
-  MO: TGXMeshObject;
+  MO: TgxMeshObject;
   FaceGroup: TFGVertexNormalTexIndexList;
-  Sk_MO: TGXSkeletonMeshObject;
+  Sk_MO: TgxSkeletonMeshObject;
 
   GroupList: TList;
   GLLibMaterial: TgxLibMaterial;
@@ -366,8 +366,8 @@ var
   ms3d_joints: PMS3DJointArray;
 
   bonelist: TStringList;
-  bone: TGXSkeletonBone;
-  frame: TGXSkeletonFrame;
+  bone: TgxSkeletonBone;
+  frame: TgxSkeletonFrame;
   rot, pos: TVector3f;
 
   //Tod
@@ -466,13 +466,13 @@ begin
     aStream.ReadBuffer(nNumVertices, sizeof(nNumVertices));
 
     // Create the vertex list
-    if Owner is TGXActor then
+    if Owner is TgxActor then
     begin
-      MO := TGXSkeletonMeshObject.CreateOwned(Owner.MeshObjects);
-      TGXSkeletonMeshObject(MO).BonesPerVertex := 4;
+      MO := TgxSkeletonMeshObject.CreateOwned(Owner.MeshObjects);
+      TgxSkeletonMeshObject(MO).BonesPerVertex := 4;
     end
     else
-      MO := TGXMeshObject.CreateOwned(Owner.MeshObjects);
+      MO := TgxMeshObject.CreateOwned(Owner.MeshObjects);
     MO.Mode := momFaceGroups;
 
     // Then comes nNumVertices * sizeof (ms3d_vertex_t)
@@ -484,8 +484,8 @@ begin
       begin
         // Add the vertex to the vertexlist
         MO.Vertices.Add(vertex.v);
-        if Owner is TGXActor then
-          TGXSkeletonMeshObject(MO).AddWeightedBone(Byte(BoneID), 1);
+        if Owner is TgxActor then
+          TgxSkeletonMeshObject(MO).AddWeightedBone(Byte(BoneID), 1);
       end;
 
     // number of triangles
@@ -630,9 +630,9 @@ begin
     aStream.ReadBuffer(fCurrentTime, sizeof(fCurrentTime));
     aStream.ReadBuffer(iTotalFrames, sizeof(iTotalFrames));
 
-    if Owner is TGXActor then
+    if Owner is TgxActor then
     begin
-      TGXActor(Owner).Interval := trunc(1 / fAnimationFPS * 1000);
+      TgxActor(Owner).Interval := trunc(1 / fAnimationFPS * 1000);
     end;
 
     // number of joints
@@ -742,8 +742,8 @@ begin
     //Read in the vertex weights
     //
     aStream.ReadBuffer(subVersionVertexExtra, sizeof(subVersionVertexExtra));
-    Sk_MO := TGXSkeletonMeshObject(MO);
-    if Owner is TGXActor then
+    Sk_MO := TgxSkeletonMeshObject(MO);
+    if Owner is TgxActor then
     begin
       for i := 0 to nNumVertices - 1 do
       begin
@@ -808,7 +808,7 @@ begin
     // - Mete Ciragan
     // ***
 
-    if (Owner is TGXActor) and (nNumJoints > 0) then
+    if (Owner is TgxActor) and (nNumJoints > 0) then
     begin
       // Bone names are added to a list initally to sort out parents
       bonelist := TStringList.Create;
@@ -819,15 +819,15 @@ begin
       begin
         j := bonelist.IndexOf(string(ms3d_joints^[i].Base.ParentName));
         if j = -1 then
-          bone := TGXSkeletonBone.CreateOwned(Owner.Skeleton.RootBones)
+          bone := TgxSkeletonBone.CreateOwned(Owner.Skeleton.RootBones)
         else
-          bone := TGXSkeletonBone.CreateOwned(Owner.Skeleton.RootBones.BoneByID(j));
+          bone := TgxSkeletonBone.CreateOwned(Owner.Skeleton.RootBones.BoneByID(j));
         bone.Name := string(ms3d_joints^[i].Base.Name);
         bone.BoneID := i;
       end;
       bonelist.Free;
       // Set up the base pose
-      frame := TGXSkeletonFrame.CreateOwned(Owner.Skeleton.Frames);
+      frame := TgxSkeletonFrame.CreateOwned(Owner.Skeleton.Frames);
       for i := 0 to nNumJoints - 1 do
       begin
         pos := ms3d_joints^[i].Base.Position.V;
@@ -842,7 +842,7 @@ begin
         for j := 0 to ms3d_joints^[i].Base.NumKeyFramesRot - 1 do
         begin
           if (j + 1) = Owner.Skeleton.Frames.Count then
-            frame := TGXSkeletonFrame.CreateOwned(Owner.Skeleton.Frames)
+            frame := TgxSkeletonFrame.CreateOwned(Owner.Skeleton.Frames)
           else
             frame := Owner.Skeleton.Frames[j + 1];
           if ms3d_joints^[i].Base.ParentName = '' then
@@ -863,8 +863,8 @@ begin
         end;
       end;
       Owner.Skeleton.RootBones.PrepareGlobalMatrices;
-      TGXSkeletonMeshObject(MO).PrepareBoneMatrixInvertedMeshes;
-      with TGXActor(Owner).Animations.Add do
+      TgxSkeletonMeshObject(MO).PrepareBoneMatrixInvertedMeshes;
+      with TgxActor(Owner).Animations.Add do
       begin
         Reference := aarSkeleton;
         StartFrame := 0;

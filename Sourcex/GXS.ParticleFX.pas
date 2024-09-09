@@ -39,7 +39,7 @@ uses
   GLScene.BaseClasses,
   GLScene.Coordinates,
   GXS.RenderContextInfo,
-  GXS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLScene.XCollection,
   GLScene.TextureFormat;
 
@@ -57,7 +57,7 @@ type
      The class implements properties for position, velocity and time, whatever
      you need in excess of that will have to be placed in subclasses (this
      class should remain as compact as possible). *)
-  TgxParticle = class(TGPersistentObject)
+  TgxParticle = class(TgPersistentObject)
   private
     FID, FTag: Integer;
     FManager: TgxParticleFXManager; // NOT persistent
@@ -73,8 +73,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     property Manager: TgxParticleFXManager read FManager write FManager;
     (* Particle's ID, given at birth.
        ID is a value unique per manager. *)
@@ -107,10 +107,10 @@ type
   (* List of particles.
      This list is managed with particles and performance in mind, make sure to
      check methods doc. *)
-  TgxParticleList = class(TGPersistentObject)
+  TgxParticleList = class(TgPersistentObject)
   private
     FOwner: TgxParticleFXManager; // NOT persistent
-    FItemList: TGPersistentObjectList;
+    FItemList: TgPersistentObjectList;
     FDirectList: PGLParticleArray; // NOT persistent
   protected
     function GetItems(index: Integer): TgxParticle;
@@ -119,8 +119,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     // Refers owner manager
     property Owner: TgxParticleFXManager read FOwner write FOwner;
     property Items[index: Integer]: TgxParticle read GetItems write SetItems; default;
@@ -356,9 +356,9 @@ type
   // Simple Particles Source.
   TgxSourcePFXEffect = class(TgxParticleFXEffect)
   private
-    FInitialVelocity: TGCoordinates;
-    FInitialPosition: TGCoordinates;
-    FPositionDispersionRange: TGCoordinates;
+    FInitialVelocity: TgCoordinates;
+    FInitialPosition: TgCoordinates;
+    FPositionDispersionRange: TgCoordinates;
     FVelocityDispersion: Single;
     FPositionDispersion: Single;
     FParticleInterval: Single;
@@ -370,9 +370,9 @@ type
     FTimeRemainder: Double;
     FRotationDispersion: Single;
   protected
-    procedure SetInitialVelocity(const val: TGCoordinates);
-    procedure SetInitialPosition(const val: TGCoordinates);
-    procedure SetPositionDispersionRange(const val: TGCoordinates);
+    procedure SetInitialVelocity(const val: TgCoordinates);
+    procedure SetInitialPosition(const val: TgCoordinates);
+    procedure SetPositionDispersionRange(const val: TgCoordinates);
     procedure SetParticleInterval(const val: Single);
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
@@ -389,11 +389,11 @@ type
       minInitialSpeed, maxInitialSpeed: Single;
       nbParticles: Integer);
   published
-    property InitialVelocity: TGCoordinates read FInitialVelocity write SetInitialVelocity;
+    property InitialVelocity: TgCoordinates read FInitialVelocity write SetInitialVelocity;
     property VelocityDispersion: Single read FVelocityDispersion write FVelocityDispersion;
-    property InitialPosition: TGCoordinates read FInitialPosition write SetInitialPosition;
+    property InitialPosition: TgCoordinates read FInitialPosition write SetInitialPosition;
     property PositionDispersion: Single read FPositionDispersion write FPositionDispersion;
-    property PositionDispersionRange: TGCoordinates read FPositionDispersionRange write SetPositionDispersionRange;
+    property PositionDispersionRange: TgCoordinates read FPositionDispersionRange write SetPositionDispersionRange;
     property ParticleInterval: Single read FParticleInterval write SetParticleInterval;
     property VelocityMode: TgxSourcePFXVelocityMode read FVelocityMode write FVelocityMode default svmAbsolute;
     property PositionMode: TgxSourcePFXPositionMode read FPositionMode write FPositionMode default spmAbsoluteOffset;
@@ -408,12 +408,12 @@ type
      (simple velocity and const acceleration integration). *)
   TgxDynamicPFXManager = class(TgxParticleFXManager)
   private
-    FAcceleration: TGCoordinates;
+    FAcceleration: TgCoordinates;
     FFriction: Single;
     FCurrentTime: Double;
     //FRotationCenter: TAffineVector;
   protected
-    procedure SetAcceleration(const val: TGCoordinates);
+    procedure SetAcceleration(const val: TgCoordinates);
     (* Returns the maximum age for a particle.
        Particles older than that will be killed by DoProgress. *)
     function MaxParticleAge: Single; virtual; abstract;
@@ -424,7 +424,7 @@ type
     procedure DoProgress(const progressTime: TGProgressTimes); override;
   published
     // Oriented acceleration applied to the particles.
-    property Acceleration: TGCoordinates read FAcceleration write SetAcceleration;
+    property Acceleration: TgCoordinates read FAcceleration write SetAcceleration;
     (* Friction applied to the particles.
        Friction is applied as a speed scaling factor over 1 second, ie.
        a friction of 0.5 will half speed over 1 second, a friction of 3
@@ -504,7 +504,7 @@ type
     procedure ComputeOuterColor(var lifeTime: Single; var outer: TGColorVector);
     function ComputeSizeScale(var lifeTime: Single; var sizeScale: Single): Boolean;
     function ComputeRotateAngle(var lifeTime, rotateAngle: Single): Boolean;
-    procedure RotateVertexBuf(buf: TGAffineVectorList; lifeTime: Single;
+    procedure RotateVertexBuf(buf: TgAffineVectorList; lifeTime: Single;
       const axis: TAffineVector; offsetAngle: Single);
   public
     constructor Create(aOwner: TComponent); override;
@@ -575,8 +575,8 @@ type
   private
     FNbSides: Integer;
     Fvx, Fvy: TAffineVector; // NOT persistent
-    FVertices: TGAffineVectorList; // NOT persistent
-    FVertBuf: TGAffineVectorList; // NOT persistent
+    FVertices: TgAffineVectorList; // NOT persistent
+    FVertBuf: TgAffineVectorList; // NOT persistent
   protected
     procedure SetNbSides(const val: Integer);
     function TexturingMode: Cardinal; override;
@@ -612,8 +612,8 @@ type
   private
     FTexHandle: TgxTextureHandle;
     Fvx, Fvy, Fvz: TAffineVector; // NOT persistent
-    FVertices: TGAffineVectorList; // NOT persistent
-    FVertBuf: TGAffineVectorList; // NOT persistent
+    FVertices: TgAffineVectorList; // NOT persistent
+    FVertBuf: TgAffineVectorList; // NOT persistent
     FAspectRatio: Single;
     FRotation: Single;
     FShareSprites: TgxBaseSpritePFXManager;
@@ -746,7 +746,7 @@ end;
 
 procedure RndVector(const dispersion: TgxSourcePFXDispersionMode;
   var v: TAffineVector; var f: Single;
-  dispersionRange: TGCoordinates);
+  dispersionRange: TgCoordinates);
 var
   f2, fsq: Single;
   p: TVector4f;
@@ -813,7 +813,7 @@ begin
     FVelocity.V[Index] := aValue;
 end;
 
-procedure TgxParticle.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxParticle.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -827,7 +827,7 @@ begin
 end;
 
 
-procedure TgxParticle.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxParticle.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: integer;
 begin
@@ -852,7 +852,7 @@ end;
 constructor TgxParticleList.Create;
 begin
   inherited Create;
-  FItemList := TGPersistentObjectList.Create;
+  FItemList := TgPersistentObjectList.Create;
   FitemList.GrowthDelta := 64;
   FDirectList := nil;
 end;
@@ -863,7 +863,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TgxParticleList.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxParticleList.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -873,7 +873,7 @@ begin
   end;
 end;
 
-procedure TgxParticleList.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxParticleList.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: integer;
 begin
@@ -1523,9 +1523,9 @@ end;
 constructor TgxSourcePFXEffect.Create(aOwner: TXCollection);
 begin
   inherited;
-  FInitialVelocity := TGCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
-  FInitialPosition := TGCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
-  FPositionDispersionRange := TGCoordinates.CreateInitialized(Self, XYZHmgVector, csPoint);
+  FInitialVelocity := TgCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  FInitialPosition := TgCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
+  FPositionDispersionRange := TgCoordinates.CreateInitialized(Self, XYZHmgVector, csPoint);
   FVelocityDispersion := 0;
   FPositionDispersion := 0;
   FParticleInterval := 0.1;
@@ -1610,17 +1610,17 @@ begin
   end;
 end;
 
-procedure TgxSourcePFXEffect.SetInitialVelocity(const val: TGCoordinates);
+procedure TgxSourcePFXEffect.SetInitialVelocity(const val: TgCoordinates);
 begin
   FInitialVelocity.Assign(val);
 end;
 
-procedure TgxSourcePFXEffect.SetInitialPosition(const val: TGCoordinates);
+procedure TgxSourcePFXEffect.SetInitialPosition(const val: TgCoordinates);
 begin
   FInitialPosition.Assign(val);
 end;
 
-procedure TgxSourcePFXEffect.SetPositionDispersionRange(const val: TGCoordinates);
+procedure TgxSourcePFXEffect.SetPositionDispersionRange(const val: TgCoordinates);
 begin
   FPositionDispersionRange.Assign(val);
 end;
@@ -1915,7 +1915,7 @@ end;
 constructor TgxDynamicPFXManager.Create(aOwner: TComponent);
 begin
   inherited;
-  FAcceleration := TGCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  FAcceleration := TgCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
   FFriction := 1;
 end;
 
@@ -2003,7 +2003,7 @@ begin
     Particles.Pack;
 end;
 
-procedure TgxDynamicPFXManager.SetAcceleration(const val: TGCoordinates);
+procedure TgxDynamicPFXManager.SetAcceleration(const val: TgCoordinates);
 begin
   FAcceleration.Assign(val);
 end;
@@ -2300,7 +2300,7 @@ begin
   end;
 end;
 
-procedure TgxLifeColoredPFXManager.RotateVertexBuf(buf: TGAffineVectorList;
+procedure TgxLifeColoredPFXManager.RotateVertexBuf(buf: TgAffineVectorList;
   lifeTime: Single; const axis: TAffineVector; offsetAngle: Single);
 var
   rotateAngle: Single;
@@ -2449,14 +2449,14 @@ begin
     Fvx.V[i] := matrix.V[i].X * FParticleSize;
     Fvy.V[i] := matrix.V[i].Y * FParticleSize;
   end;
-  FVertices := TGAffineVectorList.Create;
+  FVertices := TgAffineVectorList.Create;
   FVertices.Capacity := FNbSides;
   for i := 0 to FNbSides - 1 do
   begin
     SinCos(i * c2PI / FNbSides, s, c);
     FVertices.Add(VectorCombine(FVx, Fvy, c, s));
   end;
-  FVertBuf := TGAffineVectorList.Create;
+  FVertBuf := TgAffineVectorList.Create;
   FVertBuf.Count := FVertices.Count;
 end;
 
@@ -2665,7 +2665,7 @@ begin
     Fvz.V[i] := matrix.V[i].Z;
   end;
 
-  FVertices := TGAffineVectorList.Create;
+  FVertices := TgAffineVectorList.Create;
   for i := 0 to 3 do
   begin
     SinCos(i * cPIdiv2 + cPIdiv4, s, c);
@@ -2677,7 +2677,7 @@ begin
     FVertices.TransformAsPoints(matrix);
   end;
 
-  FVertBuf := TGAffineVectorList.Create;
+  FVertBuf := TgAffineVectorList.Create;
   FVertBuf.Count := FVertices.Count;
 end;
 

@@ -145,7 +145,7 @@ type
   TGLMeshObjectVerletNode = class(TGLVerletNode)
   private
     MeshObject: TGLMeshObject;
-    VertexIndices: TGIntegerList;
+    VertexIndices: TgIntegerList;
   public
     procedure AfterProgress; override;
     constructor CreateOwned(const AOwner: TGLVerletWorld); override;
@@ -336,7 +336,7 @@ end;
 constructor TGLMeshObjectVerletNode.CreateOwned(const AOwner: TGLVerletWorld);
 begin
   inherited;
-  VertexIndices := TGIntegerList.Create;
+  VertexIndices := TgIntegerList.Create;
 end;
 
 destructor TGLMeshObjectVerletNode.Destroy;

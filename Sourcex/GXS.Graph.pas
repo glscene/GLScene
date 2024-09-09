@@ -13,7 +13,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.OpenGL,
+  GLScene.OpenGL4,
   GXS.XOpenGL,
   GXS.Scene,
   GXS.Context,
@@ -29,7 +29,7 @@ uses
 
 type
 
-  TgxSamplingScale = class(TGUpdateAbleObject)
+  TgxSamplingScale = class(TgUpdateAbleObject)
   private
     FMin: Single;
     FMax: Single;

@@ -25,7 +25,7 @@ type
     Following lines contain the x/y/z coordinates of vertices, then the edges
     (two indices) and the faces (three indices).
     http://gts.sourceforge.net/ *)
-  TgxGTSVectorFile = class(TGXVectorFile)
+  TgxGTSVectorFile = class(TgxVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -51,15 +51,15 @@ procedure TgxGTSVectorFile.LoadFromStream(aStream: TStream);
 var
   i, nv, ne, nf, k, ei: Integer;
   sl: TStringList;
-  mesh: TGXMeshObject;
-  fg: TFGXVertexIndexList;
+  mesh: TgxMeshObject;
+  fg: TgxFGVertexIndexList;
   vertIndices: array [0 .. 5] of Integer;
   pEdge, pTri, p: PChar;
 begin
   sl := TStringList.Create;
   try
     sl.LoadFromStream(aStream{$IFDEF Unicode}, TEncoding.ASCII{$ENDIF});
-    mesh := TGXMeshObject.CreateOwned(Owner.MeshObjects);
+    mesh := TgxMeshObject.CreateOwned(Owner.MeshObjects);
     mesh.Mode := momFaceGroups;
     if sl.Count > 0 then
     begin
@@ -74,7 +74,7 @@ begin
         p := PChar(sl[i]);
         mesh.Vertices.Add(ParseFloat(p), ParseFloat(p), ParseFloat(p));
       end;
-      fg := TFGXVertexIndexList.CreateOwned(mesh.FaceGroups);
+      fg := TgxFGVertexIndexList.CreateOwned(mesh.FaceGroups);
       for i := 1 + nv + ne to nv + ne + nf do
       begin
         pTri := PChar(sl[i]);

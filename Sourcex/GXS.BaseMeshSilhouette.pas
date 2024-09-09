@@ -19,46 +19,44 @@ uses
 type
   TgxFaceGroupConnectivity = class(TConnectivity)
   private
-    FMeshObject: TGXMeshObject;
+    FMeshObject: TgxMeshObject;
     FOwnsVertices: boolean;
-    procedure SetMeshObject(const Value: TGXMeshObject);
+    procedure SetMeshObject(const Value: TgxMeshObject);
   public
     procedure Clear; override;
     //  Builds the connectivity information. 
     procedure RebuildEdgeList;
-    property MeshObject: TGXMeshObject read FMeshObject write SetMeshObject;
+    property MeshObject: TgxMeshObject read FMeshObject write SetMeshObject;
     constructor Create(APrecomputeFaceNormal: boolean); override;
-    constructor CreateFromMesh(aMeshObject: TGXMeshObject; APrecomputeFaceNormal: boolean);
+    constructor CreateFromMesh(aMeshObject: TgxMeshObject; APrecomputeFaceNormal: boolean);
     destructor Destroy; override;
   end;
 
   TgxBaseMeshConnectivity = class(TBaseConnectivity)
   private
-    FBaseMesh: TGXBaseMesh;
+    FBaseMesh: TgxBaseMesh;
     FFaceGroupConnectivityList: TList;
     function GetFaceGroupConnectivity(i: integer): TgxFaceGroupConnectivity;
     function GetConnectivityCount: integer;
-    procedure SetBaseMesh(const Value: TGXBaseMesh);
+    procedure SetBaseMesh(const Value: TgxBaseMesh);
   protected
     function GetEdgeCount: integer; override;
     function GetFaceCount: integer; override;
   public
     property ConnectivityCount: integer read GetConnectivityCount;
     property FaceGroupConnectivity[i: integer]: TgxFaceGroupConnectivity read GetFaceGroupConnectivity;
-    property BaseMesh: TGXBaseMesh read FBaseMesh write SetBaseMesh;
+    property BaseMesh: TgxBaseMesh read FBaseMesh write SetBaseMesh;
     procedure Clear(SaveFaceGroupConnectivity: boolean);
     // Builds the connectivity information. 
     procedure RebuildEdgeList;
     procedure CreateSilhouette(const SilhouetteParameters: TgxSilhouetteParameters; var aSilhouette: TgxSilhouette;
 	  AddToSilhouette: boolean); 
     constructor Create(APrecomputeFaceNormal: boolean); override;
-    constructor CreateFromMesh(aBaseMesh: TGXBaseMesh);
+    constructor CreateFromMesh(aBaseMesh: TgxBaseMesh);
     destructor Destroy; override;
   end;
 
-//==================================================================
-implementation
-//==================================================================
+implementation //-------------------------------------------------------------
 
 // ------------------
 // ------------------ TgxFaceGroupConnectivity ------------------
@@ -88,7 +86,7 @@ constructor TgxFaceGroupConnectivity.Create(APrecomputeFaceNormal: boolean);
     FOwnsVertices := true;
   end;
 
-procedure TgxFaceGroupConnectivity.SetMeshObject(const Value: TGXMeshObject);
+procedure TgxFaceGroupConnectivity.SetMeshObject(const Value: TgxMeshObject);
   begin
     Clear;
     FMeshObject := Value;
@@ -99,7 +97,7 @@ procedure TgxFaceGroupConnectivity.SetMeshObject(const Value: TGXMeshObject);
     RebuildEdgeList;
   end;
 
-constructor TgxFaceGroupConnectivity.CreateFromMesh(aMeshObject: TGXMeshObject; APrecomputeFaceNormal: boolean);
+constructor TgxFaceGroupConnectivity.CreateFromMesh(aMeshObject: TgxMeshObject; APrecomputeFaceNormal: boolean);
   begin
     Create(APrecomputeFaceNormal);
     MeshObject := aMeshObject;
@@ -116,7 +114,7 @@ destructor TgxFaceGroupConnectivity.Destroy;
 procedure TgxFaceGroupConnectivity.RebuildEdgeList;
   var
     iFaceGroup, iFace, iVertex: integer;
-    FaceGroup: TFGXVertexIndexList;
+    FaceGroup: TgxFGVertexIndexList;
     List: PIntegerArray;
   begin
     // Make sure that the connectivity information is empty
@@ -124,8 +122,8 @@ procedure TgxFaceGroupConnectivity.RebuildEdgeList;
     // Create a list of edges for the meshobject
     for iFaceGroup := 0 to FMeshObject.FaceGroups.Count - 1 do
     begin
-      Assert(FMeshObject.FaceGroups[iFaceGroup] is TFGXVertexIndexList, 'Method only works for descendants of TFGXVertexIndexList.');
-      FaceGroup := TFGXVertexIndexList(FMeshObject.FaceGroups[iFaceGroup]);
+      Assert(FMeshObject.FaceGroups[iFaceGroup] is TgxFGVertexIndexList, 'Method only works for descendants of TgxFGVertexIndexList.');
+      FaceGroup := TgxFGVertexIndexList(FMeshObject.FaceGroups[iFaceGroup]);
       case FaceGroup.Mode of
         fgmmTriangles, fgmmFlatTriangles:
           begin
@@ -194,22 +192,22 @@ constructor TgxBaseMeshConnectivity.Create(APrecomputeFaceNormal: boolean);
     inherited;
   end;
 
-constructor TgxBaseMeshConnectivity.CreateFromMesh(aBaseMesh: TGXBaseMesh);
+constructor TgxBaseMeshConnectivity.CreateFromMesh(aBaseMesh: TgxBaseMesh);
   begin
-    Create(not(aBaseMesh is TGXActor));
+    Create(not(aBaseMesh is TgxActor));
     BaseMesh := aBaseMesh;
   end;
 
-procedure TgxBaseMeshConnectivity.SetBaseMesh(const Value: TGXBaseMesh);
+procedure TgxBaseMeshConnectivity.SetBaseMesh(const Value: TgxBaseMesh);
   var
     i: integer;
-    MO: TGXMeshObject;
+    MO: TgxMeshObject;
     Connectivity: TgxFaceGroupConnectivity;
   begin
     Clear(false);
     FBaseMesh := Value;
     // Only precompute normals if the basemesh isn't an actor (because they change)
-    FPrecomputeFaceNormal := not(Value is TGXActor);
+    FPrecomputeFaceNormal := not(Value is TgxActor);
     FBaseMesh := Value;
     for i := 0 to Value.MeshObjects.Count - 1 do
     begin

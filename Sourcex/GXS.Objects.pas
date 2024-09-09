@@ -6,6 +6,11 @@ unit GXS.Objects;
 (*
   Implementation of basic scene objects plus some management routines.
 
+  The registered classes are:
+  [TgxSphere, TgxCube, TgxPlane, TgxSprite, TgxPoints,
+  TgxDummyCube, TgxLines, TgxSuperellipsoid]
+
+
   All objects declared in this unit are part of the basic GLScene package,
   these are only simple objects and should be kept simple and lightweight.
 
@@ -40,7 +45,7 @@ uses
   GLScene.Color,
   GXS.RenderContextInfo,
   GXS.Nodes,
-  GXS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLScene.Coordinates;
 
 const
@@ -222,18 +227,18 @@ type
   (* Point parameters as in ARB_point_parameters.
     Make sure to read the ARB_point_parameters spec if you want to understand
     what each parameter does. *)
-  TgxPointParameters = class(TGUpdateAbleObject)
+  TgxPointParameters = class(TgUpdateAbleObject)
   private
     FEnabled: Boolean;
     FMinSize, FMaxSize: Single;
     FFadeTresholdSize: Single;
-    FDistanceAttenuation: TGCoordinates;
+    FDistanceAttenuation: TgCoordinates;
   protected
     procedure SetEnabled(const val: Boolean);
     procedure SetMinSize(const val: Single);
     procedure SetMaxSize(const val: Single);
     procedure SetFadeTresholdSize(const val: Single);
-    procedure SetDistanceAttenuation(const val: TGCoordinates);
+    procedure SetDistanceAttenuation(const val: TgCoordinates);
     procedure DefineProperties(Filer: TFiler); override;
     procedure ReadData(Stream: TStream);
     procedure WriteData(Stream: TStream);
@@ -249,7 +254,7 @@ type
     property MaxSize: Single read FMaxSize write SetMaxSize stored False;
     property FadeTresholdSize: Single read FFadeTresholdSize write SetFadeTresholdSize stored False;
     // Components XYZ are for constant, linear and quadratic attenuation.
-    property DistanceAttenuation: TGCoordinates read FDistanceAttenuation write SetDistanceAttenuation;
+    property DistanceAttenuation: TgCoordinates read FDistanceAttenuation write SetDistanceAttenuation;
   end;
 
   (* Renders a set of non-transparent colored points.
@@ -257,7 +262,7 @@ type
     and Colors properties. *)
   TgxPoints = class(TgxImmaterialSceneObject)
   private
-    FPositions: TGAffineVectorList;
+    FPositions: TgAffineVectorList;
     FColors: TGVectorList;
     FSize: Single;
     FStyle: TgxPointStyle;
@@ -268,7 +273,7 @@ type
     procedure SetNoZWrite(const val: Boolean);
     procedure SetStatic(const val: Boolean);
     procedure SetSize(const val: Single);
-    procedure SetPositions(const val: TGAffineVectorList);
+    procedure SetPositions(const val: TgAffineVectorList);
     procedure SetColors(const val: TGVectorList);
     procedure SetStyle(const val: TgxPointStyle);
     procedure SetPointParameters(const val: TgxPointParameters);
@@ -278,7 +283,7 @@ type
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     // Points positions. If empty, a single point is assumed at (0, 0, 0)
-    property Positions: TGAffineVectorList read FPositions write SetPositions;
+    property Positions: TgAffineVectorList read FPositions write SetPositions;
     (* Defines the points colors.
        if empty, point color will be opaque white
        if contains a single color, all points will use that color
@@ -394,7 +399,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     function AxisAlignedDimensionsUnscaled: TVector4f; override;
-    procedure AddNode(const coords: TGCoordinates); overload;
+    procedure AddNode(const coords: TgCoordinates); overload;
     procedure AddNode(const X, Y, Z: Single); overload;
     procedure AddNode(const Value: TVector4f); overload;
     procedure AddNode(const Value: TAffineVector); overload;
@@ -462,7 +467,7 @@ type
   (* A simple cube object.
     This cube use the same material for each of its faces, ie. all faces look
     the same. If you want a multi-material cube, use a mesh in conjunction
-    with a TGXFreeForm and a material library. *)
+    with a TgxFreeForm and a material library. *)
   TgxCube = class(TgxSceneObject)
   private
     FCubeSize: TAffineVector;
@@ -583,7 +588,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure NotifyChange(Sender: TObject); override;
-    procedure AddNode(const coords: TGCoordinates); overload;
+    procedure AddNode(const coords: TgCoordinates); overload;
     procedure AddNode(const X, Y, Z: Single); overload;
     procedure AddNode(const Value: TVector4f); overload;
     procedure AddNode(const Value: TAffineVector); overload;
@@ -1419,7 +1424,7 @@ begin
   FMinSize := 0;
   FMaxSize := 128;
   FFadeTresholdSize := 1;
-  FDistanceAttenuation := TGCoordinates.CreateInitialized(Self, XHmgVector,
+  FDistanceAttenuation := TgCoordinates.CreateInitialized(Self, XHmgVector,
     csVector);
 end;
 
@@ -1538,7 +1543,7 @@ begin
   end;
 end;
 
-procedure TgxPointParameters.SetDistanceAttenuation(const val: TGCoordinates);
+procedure TgxPointParameters.SetDistanceAttenuation(const val: TgCoordinates);
 begin
   FDistanceAttenuation.Assign(val);
 end;
@@ -1553,7 +1558,7 @@ begin
   ObjectStyle := ObjectStyle + [osDirectDraw, osNoVisibilityCulling];
   FStyle := psSquare;
   FSize := cDefaultPointSize;
-  FPositions := TGAffineVectorList.Create;
+  FPositions := TgAffineVectorList.Create;
   FPositions.Add(NullVector);
   FColors := TGVectorList.Create;
   FPointParameters := TgxPointParameters.Create(Self);
@@ -1700,7 +1705,7 @@ begin
   end;
 end;
 
-procedure TgxPoints.SetPositions(const val: TGAffineVectorList);
+procedure TgxPoints.SetPositions(const val: TgAffineVectorList);
 begin
   FPositions.Assign(val);
   StructureChanged;
@@ -2009,7 +2014,7 @@ begin
   // DivideVector(Result, Scale.AsVector);     //DanB ?
 end;
 
-procedure TgxNodedLines.AddNode(const coords: TGCoordinates);
+procedure TgxNodedLines.AddNode(const coords: TgCoordinates);
 var
   n: TgxNode;
 begin
@@ -3094,7 +3099,7 @@ begin
   end;
 end;
 
-procedure TgxPolygonBase.AddNode(const coords: TGCoordinates);
+procedure TgxPolygonBase.AddNode(const coords: TgCoordinates);
 var
   n: TgxNode;
 begin
@@ -3608,11 +3613,11 @@ begin
   Result.W := 0;
 end;
 
-// -------------------------------------------------------------
-initialization
-// -------------------------------------------------------------
+initialization // -------------------------------------------------------------
 
 RegisterClasses([TgxSphere, TgxCube, TgxPlane, TgxSprite, TgxPoints,
   TgxDummyCube, TgxLines, TgxSuperellipsoid]);
+
+// ----------------------------------------------------------------------------
 
 end.

@@ -7,12 +7,12 @@ unit GXS.ParametricSurfaces;
   Parametric surface implementation (like Bezier and BSpline surfaces)
 
   Notes:
-  The MOParametricSurface is a TGXMeshObject descendant that can be used
+  The MOParametricSurface is a TgxMeshObject descendant that can be used
   to render parametric surfaces. The Renderer property defines if the
   surface should be rendered using mesh evaluators (through GLU
   Nurbs for BSplines) or through GLScene using the CurvesAndSurfaces.pas
   routines to generate the mesh vertices and then rendered through the
-  standard TGXMeshObject render routine. Please note that BSplines aren't
+  standard TgxMeshObject render routine. Please note that BSplines aren't
   correctly handled yet in the CurvesAndSurfaces unit so the output mesh
   in rendering mode is wrong. I'll have it fixed when I know
   what's going wrong. The GLU Nurbs and glMeshEval Beziers work well
@@ -58,16 +58,16 @@ type
     control point influences on the surface. *)
   TParametricSurfaceBasis = (psbBezier, psbBSpline);
 
-  TMOParametricSurface = class(TGXMeshObject)
+  TMOParametricSurface = class(TgxMeshObject)
   private
-    FControlPoints, FWeightedControlPoints: TGAffineVectorList;
+    FControlPoints, FWeightedControlPoints: TgAffineVectorList;
     FKnotsU, FKnotsV, FWeights: TGSingleList;
     FOrderU, FOrderV, FCountU, FCountV, FResolution: Integer;
     FAutoKnots: Boolean;
     FContinuity: TBSplineContinuity;
     FRenderer: TParametricSurfaceRenderer;
     FBasis: TParametricSurfaceBasis;
-    procedure SetControlPoints(Value: TGAffineVectorList);
+    procedure SetControlPoints(Value: TgAffineVectorList);
     procedure SetKnotsU(Value: TGSingleList);
     procedure SetKnotsV(Value: TGSingleList);
     procedure SetWeights(Value: TGSingleList);
@@ -76,8 +76,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
     procedure Prepare; override;
     procedure Clear; override;
@@ -88,7 +88,7 @@ type
       generate the mesh data. Fills in Vertices, Normals, etc. *)
     procedure GenerateMesh;
     // Control points define the parametric surface.
-    property ControlPoints: TGAffineVectorList read FControlPoints write SetControlPoints;
+    property ControlPoints: TgAffineVectorList read FControlPoints write SetControlPoints;
     { KnotsU and KnotsV are the knot vectors in the U and V direction. Knots
       define the continuity of curves and how control points influence the
       parametric values to build the surface. }
@@ -129,21 +129,21 @@ type
     Resolution sets the detail level of the mesh evaluation.
     MinU, MaxU, MinV and MaxV define the region of the surface to be rendered,
     this is especially useful for blending with neighbouring patches. *)
-  TFGBezierSurface = class(TGXFaceGroup)
+  TFGBezierSurface = class(TgxFaceGroup)
   private
     FCountU, FCountV: Integer;
-    FControlPointIndices, FTexCoordIndices: TGIntegerList;
+    FControlPointIndices, FTexCoordIndices: TgIntegerList;
     FResolution: Integer;
     FMinU, FMaxU, FMinV, FMaxV: Single;
-    FTempControlPoints, FTempTexCoords: TGAffineVectorList;
+    FTempControlPoints, FTempTexCoords: TgAffineVectorList;
   protected
-    procedure SetControlPointIndices(const Value: TGIntegerList);
-    procedure SetTexCoordIndices(const Value: TGIntegerList);
+    procedure SetControlPointIndices(const Value: TgIntegerList);
+    procedure SetTexCoordIndices(const Value: TgIntegerList);
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
     procedure Prepare; override;
     property CountU: Integer read FCountU write FCountU;
@@ -153,8 +153,8 @@ type
     property MaxU: Single read FMaxU write FMaxU;
     property MinV: Single read FMinV write FMinV;
     property MaxV: Single read FMaxV write FMaxV;
-    property ControlPointIndices: TGIntegerList read FControlPointIndices write SetControlPointIndices;
-    property TexCoordIndices: TGIntegerList read FTexCoordIndices write SetTexCoordIndices;
+    property ControlPointIndices: TgIntegerList read FControlPointIndices write SetControlPointIndices;
+    property TexCoordIndices: TgIntegerList read FTexCoordIndices write SetTexCoordIndices;
   end;
 
 // ----------------------------------------------------------------------
@@ -169,8 +169,8 @@ constructor TMOParametricSurface.Create;
 begin
   inherited;
 
-  FControlPoints := TGAffineVectorList.Create;
-  FWeightedControlPoints := TGAffineVectorList.Create;
+  FControlPoints := TgAffineVectorList.Create;
+  FWeightedControlPoints := TgAffineVectorList.Create;
   FKnotsU := TGSingleList.Create;
   FKnotsV := TGSingleList.Create;
   FWeights := TGSingleList.Create;
@@ -188,7 +188,7 @@ begin
   inherited;
 end;
 
-procedure TMOParametricSurface.WriteToFiler(writer: TGVirtualWriter);
+procedure TMOParametricSurface.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -210,7 +210,7 @@ begin
   end;
 end;
 
-procedure TMOParametricSurface.ReadFromFiler(reader: TGVirtualReader);
+procedure TMOParametricSurface.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -327,7 +327,7 @@ end;
 procedure TMOParametricSurface.GenerateMesh;
 var
   i, j: Integer;
-  fg: TFGXVertexIndexList;
+  fg: TgxFGVertexIndexList;
 begin
   case FBasis of
     psbBezier:
@@ -351,7 +351,7 @@ begin
   end;
 
   Mode := momFaceGroups;
-  fg := TFGXVertexIndexList.CreateOwned(FaceGroups);
+  fg := TgxFGVertexIndexList.CreateOwned(FaceGroups);
   fg.Mode := fgmmTriangles;
   for j := 0 to FResolution - 2 do
     with fg do
@@ -368,7 +368,7 @@ begin
   BuildNormals(fg.VertexIndices, momTriangles);
 end;
 
-procedure TMOParametricSurface.SetControlPoints(Value: TGAffineVectorList);
+procedure TMOParametricSurface.SetControlPoints(Value: TgAffineVectorList);
 begin
   FControlPoints.Assign(Value);
 end;
@@ -413,10 +413,10 @@ end;
 constructor TFGBezierSurface.Create;
 begin
   inherited;
-  FControlPointIndices := TGIntegerList.Create;
-  FTexCoordIndices := TGIntegerList.Create;
-  FTempControlPoints := TGAffineVectorList.Create;
-  FTempTexCoords := TGAffineVectorList.Create;
+  FControlPointIndices := TgIntegerList.Create;
+  FTexCoordIndices := TgIntegerList.Create;
+  FTempControlPoints := TgAffineVectorList.Create;
+  FTempTexCoords := TgAffineVectorList.Create;
 
   // Default values
   FCountU := 4;
@@ -437,7 +437,7 @@ begin
   inherited;
 end;
 
-procedure TFGBezierSurface.WriteToFiler(writer: TGVirtualWriter);
+procedure TFGBezierSurface.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -455,7 +455,7 @@ begin
   end;
 end;
 
-procedure TFGBezierSurface.ReadFromFiler(reader: TGVirtualReader);
+procedure TFGBezierSurface.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -505,12 +505,12 @@ begin
   mrci.gxStates.PopAttrib;
 end;
 
-procedure TFGBezierSurface.SetControlPointIndices(const Value: TGIntegerList);
+procedure TFGBezierSurface.SetControlPointIndices(const Value: TgIntegerList);
 begin
   FControlPointIndices.Assign(Value);
 end;
 
-procedure TFGBezierSurface.SetTexCoordIndices(const Value: TGIntegerList);
+procedure TFGBezierSurface.SetTexCoordIndices(const Value: TgIntegerList);
 begin
   FTexCoordIndices.Assign(Value);
 end;

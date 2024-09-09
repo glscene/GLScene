@@ -84,7 +84,7 @@ type
     Z_Kfix -
     res3Dmin -
   *)
-   procedure Conrec(PlaneSFindex:Integer; PlaneSF: TGXFreeForm; 
+   procedure Conrec(PlaneSFindex:Integer; PlaneSF: TgxFreeForm; 
          Data: TMatrixArr; ilb, iub, jlb, jub: Integer;
          X: TVectorArr; Y: TVectorArr; NC: Integer; HgtL: TVectorArr; 
 		 Z_Kfix: Single; res3Dmax, res3Dmin: Single);
@@ -101,7 +101,7 @@ function GetNextIsoline(var Isoline: TgxIsoline): Boolean;
 
 // Defines contouring segments inside a triangle using elevations 
 procedure TriangleElevationSegments(const p1, p2, p3: TAffineVector;
-  ElevationDelta: Single; Segments: TGAffineVectorList);
+  ElevationDelta: Single; Segments: TgAffineVectorList);
 
 //----------------------------------------------------------------------
 implementation
@@ -389,7 +389,7 @@ begin
 end;
 
 procedure TriangleElevationSegments(const p1, p2, p3: TAffineVector;
-  ElevationDelta: Single; Segments: TGAffineVectorList);
+  ElevationDelta: Single; Segments: TgAffineVectorList);
 
   function SegmentIntersect(const a, b: TAffineVector; e: Single): Integer;
   var

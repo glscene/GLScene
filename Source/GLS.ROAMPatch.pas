@@ -66,9 +66,9 @@ type
     procedure SetHeightData(Val: TGLHeightData);
     procedure SetOcclusionSkip(Val: Integer);
     procedure RenderROAM(Vertices: TGAffineVectorList;
-      VertexIndices: TGIntegerList; TexCoords: TGTexPointList);
+      VertexIndices: TgIntegerList; TexCoords: TGTexPointList);
     procedure RenderAsStrips(Vertices: TGAffineVectorList;
-      VertexIndices: TGIntegerList; TexCoords: TGTexPointList);
+      VertexIndices: TgIntegerList; TexCoords: TGTexPointList);
   public
     constructor Create;
     destructor Destroy; override;
@@ -89,18 +89,18 @@ type
       (additions without capacity check). High-resolution renders use
       display lists, and are assumed to be made together. *)
     procedure RenderHighRes(Vertices: TGAffineVectorList;
-      VertexIndices: TGIntegerList; TexCoords: TGTexPointList; ForceROAM: Boolean);
+      VertexIndices: TgIntegerList; TexCoords: TGTexPointList; ForceROAM: Boolean);
     (*  Render the patch by accumulating triangles.
       The lists are assumed to have enough capacity to allow AddNC calls
       (additions without capacity check).
       Once at least autoFlushVertexCount vertices have been accumulated,
       perform a FlushAccum *)
     procedure RenderAccum(Vertices: TGAffineVectorList;
-      VertexIndices: TGIntegerList; TexCoords: TGTexPointList;
+      VertexIndices: TgIntegerList; TexCoords: TGTexPointList;
       AutoFlushVertexCount: Integer);
     // Render all vertices accumulated in the arrays and set their count back to zero.
     class procedure FlushAccum(Vertices: TGAffineVectorList;
-      VertexIndices: TGIntegerList; TexCoords: TGTexPointList);
+      VertexIndices: TgIntegerList; TexCoords: TGTexPointList);
     property HeightData: TGLHeightData read FHeightData write SetHeightData;
     property VertexScale: TAffineVector read FVertexScale write FVertexScale;
     property VertexOffset: TAffineVector read FVertexOffset write FVertexOffset;
@@ -129,7 +129,7 @@ type
 procedure SetROAMTrianglesCapacity(nb: Integer);
 function GetROAMTrianglesCapacity: Integer;
 //  Draw contours on rendering terrain patches
-procedure DrawContours(Vertices: TGAffineVectorList; VertexIndices: TGIntegerList;
+procedure DrawContours(Vertices: TGAffineVectorList; VertexIndices: TgIntegerList;
   ContourInterval: Integer; ContourWidth: Integer; DecVal: Integer);
 
 // ------------------------------------------------------------------
@@ -174,7 +174,7 @@ begin
   Result := vTriangleNodesCapacity;
 end;
 
-procedure DrawContours(Vertices: TGAffineVectorList; VertexIndices: TGIntegerList;
+procedure DrawContours(Vertices: TGAffineVectorList; VertexIndices: TgIntegerList;
   ContourInterval: Integer; ContourWidth: Integer; DecVal: Integer);
 var
   i: Integer;
@@ -679,7 +679,7 @@ begin
 end;
 
 procedure TGLROAMPatch.RenderHighRes(Vertices: TGAffineVectorList;
-  VertexIndices: TGIntegerList; TexCoords: TGTexPointList; ForceROAM: Boolean);
+  VertexIndices: TgIntegerList; TexCoords: TGTexPointList; ForceROAM: Boolean);
 
 var
   Primitive: Cardinal;
@@ -726,7 +726,7 @@ begin
 end;
 
 procedure TGLROAMPatch.RenderAccum(Vertices: TGAffineVectorList;
-  VertexIndices: TGIntegerList; TexCoords: TGTexPointList;
+  VertexIndices: TgIntegerList; TexCoords: TGTexPointList;
   AutoFlushVertexCount: Integer);
 var
   OcclusionPassed: Boolean;
@@ -777,7 +777,7 @@ begin
 end;
 
 class procedure TGLROAMPatch.FlushAccum(Vertices: TGAffineVectorList;
-  VertexIndices: TGIntegerList; TexCoords: TGTexPointList);
+  VertexIndices: TgIntegerList; TexCoords: TGTexPointList);
 begin
   if VertexIndices.Count = 0 then
     Exit;
@@ -841,7 +841,7 @@ begin
 end;
 
 procedure TGLROAMPatch.RenderROAM(Vertices: TGAffineVectorList;
-  VertexIndices: TGIntegerList; TexCoords: TGTexPointList);
+  VertexIndices: TgIntegerList; TexCoords: TGTexPointList);
 
   procedure ROAMRenderPoint(var p: TROAMRenderPoint; anX, anY: Integer);
   begin
@@ -875,7 +875,7 @@ begin
 end;
 
 procedure TGLROAMPatch.RenderAsStrips(Vertices: TGAffineVectorList;
-  VertexIndices: TGIntegerList; TexCoords: TGTexPointList);
+  VertexIndices: TgIntegerList; TexCoords: TGTexPointList);
 
 var
   X, Y, baseTop, rowLength: Integer;

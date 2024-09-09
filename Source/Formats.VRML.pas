@@ -52,11 +52,11 @@ type
 
   TVRMLIntegerArray = class(TVRMLNode)
   private
-    FValues: TGIntegerList;
+    FValues: TgIntegerList;
   public
     constructor Create; override;
     destructor Destroy; override;
-    property Values: TGIntegerList read FValues;
+    property Values: TgIntegerList read FValues;
   end;
 
   TVRMLMaterial = class(TVRMLNode)
@@ -288,7 +288,7 @@ end;
 constructor TVRMLIntegerArray.Create;
 begin
   inherited;
-  FValues := TGIntegerList.Create;
+  FValues := TgIntegerList.Create;
 end;
 
 destructor TVRMLIntegerArray.Destroy;

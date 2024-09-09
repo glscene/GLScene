@@ -18,7 +18,7 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorLists,
   GLScene.VectorGeometry,
-  GLS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLScene.PersistentClasses,
   GLScene.Manager,
   GLScene.XCollection,
@@ -59,12 +59,12 @@ type
     FWorld: PdxWorld;
     FSpace: PdxSpace;
     FContactGroup: TdJointGroupID;
-    FGravity: TGCoordinates;
+    FGravity: TgCoordinates;
     FOnCollision: TGLODECollisionEvent;
     FOnCustomCollision: TGLODECustomCollisionEvent;
     FNumContactJoints,
 	FMaxContacts: Integer;
-    FODEBehaviours: TGPersistentObjectList;
+    FODEBehaviours: TgPersistentObjectList;
     FRFContactList: TList;
     FIterations: Integer;
     FSolver: TGLODESolverMethod;
@@ -82,7 +82,7 @@ type
     procedure Collision(g1, g2: PdxGeom);
     procedure GravityChange(Sender: TObject);
     procedure SetMaxContacts(const Value: Integer);
-    procedure SetGravity(Value: TGCoordinates);
+    procedure SetGravity(Value: TgCoordinates);
     procedure SetIterations(const val: Integer);
     function GetODEBehaviour(index: Integer): TGLODEBehaviour;
     procedure RegisterODEBehaviour(ODEBehaviour: TGLODEBehaviour);
@@ -109,7 +109,7 @@ type
     property ContactGroup: TdJointGroupID read FContactGroup;
     property NumContactJoints: Integer read FNumContactJoints;
   published
-    property Gravity: TGCoordinates read FGravity write SetGravity;
+    property Gravity: TgCoordinates read FGravity write SetGravity;
     property OnCollision: TGLODECollisionEvent read FOnCollision write FOnCollision;
     property OnCustomCollision: TGLODECustomCollisionEvent read FOnCustomCollision write FOnCustomCollision;
     property Solver: TGLODESolverMethod read FSolver write FSolver;
@@ -293,7 +293,7 @@ type
 	FGeomElement: PdxGeom;
     FPosition, 
 	FDirection, 
-	FUp: TGCoordinates;
+	FUp: TgCoordinates;
     FLocalMatrix: TGLMatrix;
     FRealignODE,
 	FInitialized,
@@ -316,9 +316,9 @@ type
     procedure SetDensity(const Value: TdReal);
     procedure SetMatrix(const Value: TGLMatrix);
     function GetMatrix: TGLMatrix;
-    procedure SetPosition(const Value: TGCoordinates);
-    procedure SetDirection(const Value: TGCoordinates);
-    procedure SetUp(const Value: TGCoordinates);
+    procedure SetPosition(const Value: TgCoordinates);
+    procedure SetDirection(const Value: TgCoordinates);
+    procedure SetUp(const Value: TgCoordinates);
   public
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
@@ -331,9 +331,9 @@ type
     property Initialized: Boolean read FInitialized;
   published
     property Density: TdReal read FDensity write SetDensity;
-    property Position: TGCoordinates read FPosition write SetPosition;
-    property Direction: TGCoordinates read FDirection write SetDirection;
-    property Up: TGCoordinates read FUp write SetUp;
+    property Position: TgCoordinates read FPosition write SetPosition;
+    property Direction: TgCoordinates read FDirection write SetDirection;
+    property Up: TgCoordinates read FUp write SetUp;
   end;
 
   // ODE box implementation
@@ -445,7 +445,7 @@ type
   private
     FTriMeshData: PdxTriMeshData;
     FVertices: TGAffineVectorList;
-    FIndices: TGIntegerList;
+    FIndices: TgIntegerList;
   protected
     procedure Initialize; override;
     procedure Finalize; override;
@@ -453,7 +453,7 @@ type
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
     procedure SetVertices(const Value: TGAffineVectorList);
-    procedure SetIndices(const Value: TGIntegerList);
+    procedure SetIndices(const Value: TgIntegerList);
   public
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
@@ -462,7 +462,7 @@ type
     class function ItemCategory: String; override;
     procedure RefreshTriMeshData;
     property Vertices: TGAffineVectorList read FVertices write SetVertices;
-    property Indices: TGIntegerList read FIndices write SetIndices;
+    property Indices: TgIntegerList read FIndices write SetIndices;
   end;
 
   // ODE plane implementation
@@ -634,13 +634,13 @@ type
   TGLODEJointHinge = class(TGLODEJointBase)
   private
     FAnchor, 
-	FAxis: TGCoordinates;
+	FAxis: TgCoordinates;
     FAxisParams: TGLODEJointParams;
   protected
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
-    procedure SetAnchor(const Value: TGCoordinates);
-    procedure SetAxis(const Value: TGCoordinates);
+    procedure SetAnchor(const Value: TgCoordinates);
+    procedure SetAxis(const Value: TgCoordinates);
     procedure AnchorChange(Sender: TObject);
     procedure AxisChange(Sender: TObject);
     procedure SetAxisParams(const Value: TGLODEJointParams);
@@ -654,19 +654,19 @@ type
     class function FriendlyName: String; override;
     class function FriendlyDescription: String; override;
   published
-    property Anchor: TGCoordinates read FAnchor write SetAnchor;
-    property Axis: TGCoordinates read FAxis write SetAxis;
+    property Anchor: TgCoordinates read FAnchor write SetAnchor;
+    property Axis: TgCoordinates read FAxis write SetAxis;
     property AxisParams: TGLODEJointParams read FAxisParams write SetAxisParams;
   end;
 
   // ODE ball joint implementation
   TGLODEJointBall = class(TGLODEJointBase)
   private
-    FAnchor: TGCoordinates;
+    FAnchor: TgCoordinates;
   protected
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
-    procedure SetAnchor(const Value: TGCoordinates);
+    procedure SetAnchor(const Value: TgCoordinates);
     procedure AnchorChange(Sender: TObject);
   public
     constructor Create(AOwner: TXCollection); override;
@@ -676,18 +676,18 @@ type
     class function FriendlyName: String; override;
     class function FriendlyDescription: String; override;
   published
-    property Anchor: TGCoordinates read FAnchor write SetAnchor;
+    property Anchor: TgCoordinates read FAnchor write SetAnchor;
   end;
 
   // ODE slider joint implementation
   TGLODEJointSlider = class(TGLODEJointBase)
   private
-    FAxis: TGCoordinates;
+    FAxis: TgCoordinates;
     FAxisParams: TGLODEJointParams;
   protected
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
-    procedure SetAxis(const Value: TGCoordinates);
+    procedure SetAxis(const Value: TgCoordinates);
     procedure AxisChange(Sender: TObject);
     procedure SetAxisParams(const Value: TGLODEJointParams);
     function SetAxisParam(Param: Integer; const Value: TdReal): Boolean;
@@ -700,7 +700,7 @@ type
     class function FriendlyName: String; override;
     class function FriendlyDescription: String; override;
   published
-    property Axis: TGCoordinates read FAxis write SetAxis;
+    property Axis: TgCoordinates read FAxis write SetAxis;
     property AxisParams: TGLODEJointParams read FAxisParams write SetAxisParams;
   end;
 
@@ -720,15 +720,15 @@ type
   private
     FAnchor,
 	FAxis1,
-	FAxis2: TGCoordinates;
+	FAxis2: TgCoordinates;
     FAxis1Params,
 	FAxis2Params: TGLODEJointParams;
   protected
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
-    procedure SetAnchor(const Value: TGCoordinates);
-    procedure SetAxis1(const Value: TGCoordinates);
-    procedure SetAxis2(const Value: TGCoordinates);
+    procedure SetAnchor(const Value: TgCoordinates);
+    procedure SetAxis1(const Value: TgCoordinates);
+    procedure SetAxis2(const Value: TgCoordinates);
     procedure AnchorChange(Sender: TObject);
     procedure Axis1Change(Sender: TObject);
     procedure Axis2Change(Sender: TObject);
@@ -746,9 +746,9 @@ type
     class function FriendlyName: String; override;
     class function FriendlyDescription: String; override;
   published
-    property Anchor: TGCoordinates read FAnchor write SetAnchor;
-    property Axis1: TGCoordinates read FAxis1 write SetAxis1;
-    property Axis2: TGCoordinates read FAxis2 write SetAxis2;
+    property Anchor: TgCoordinates read FAnchor write SetAnchor;
+    property Axis1: TgCoordinates read FAxis1 write SetAxis1;
+    property Axis2: TgCoordinates read FAxis2 write SetAxis2;
     property Axis1Params: TGLODEJointParams read FAxis1Params write SetAxis1Params;
     property Axis2Params: TGLODEJointParams read FAxis2Params write SetAxis2Params;
   end;
@@ -758,15 +758,15 @@ type
   private
     FAnchor,
 	FAxis1,
-	FAxis2: TGCoordinates;
+	FAxis2: TgCoordinates;
     FAxis1Params,
 	FAxis2Params: TGLODEJointParams;
   protected
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
-    procedure SetAnchor(const Value: TGCoordinates);
-    procedure SetAxis1(const Value: TGCoordinates);
-    procedure SetAxis2(const Value: TGCoordinates);
+    procedure SetAnchor(const Value: TgCoordinates);
+    procedure SetAxis1(const Value: TgCoordinates);
+    procedure SetAxis2(const Value: TgCoordinates);
     procedure AnchorChange(Sender: TObject);
     procedure Axis1Change(Sender: TObject);
     procedure Axis2Change(Sender: TObject);
@@ -784,9 +784,9 @@ type
     class function FriendlyName: String; override;
     class function FriendlyDescription: String; override;
   published
-    property Anchor: TGCoordinates read FAnchor write SetAnchor;
-    property Axis1: TGCoordinates read FAxis1 write SetAxis1;
-    property Axis2: TGCoordinates read FAxis2 write SetAxis2;
+    property Anchor: TgCoordinates read FAnchor write SetAnchor;
+    property Axis1: TgCoordinates read FAxis1 write SetAxis1;
+    property Axis2: TgCoordinates read FAxis2 write SetAxis2;
     property Axis1Params: TGLODEJointParams read FAxis1Params write SetAxis1Params;
     property Axis2Params: TGLODEJointParams read FAxis2Params write SetAxis2Params;
   end;
@@ -1294,10 +1294,10 @@ begin
 
   inherited;
 
-  FODEBehaviours:= TGPersistentObjectList.Create;
+  FODEBehaviours:= TgPersistentObjectList.Create;
   FRFContactList:= TList.Create;
 
-  FGravity:= TGCoordinates.CreateInitialized(Self, NullHmgPoint, csVector);
+  FGravity:= TgCoordinates.CreateInitialized(Self, NullHmgPoint, csVector);
   FGravity.OnNotifyChange:= GravityChange;
 
   FSolver:= osmDefault;
@@ -1364,7 +1364,7 @@ begin
   GravityChange(Self);
 end;
 
-procedure TGLODEManager.SetGravity(Value: TGCoordinates);
+procedure TGLODEManager.SetGravity(Value: TgCoordinates);
 begin
   FGravity.SetPoint(Value.DirectX, Value.DirectY, Value.DirectZ);
 end;
@@ -2484,11 +2484,11 @@ end;
 constructor TGLODEElementBase.Create(AOwner: TXCollection);
 begin
   inherited;
-  FPosition := TGCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
+  FPosition := TgCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
   FPosition.OnNotifyChange := NotifyChange;
-  FDirection := TGCoordinates.CreateInitialized(Self, ZHmgVector, csVector);
+  FDirection := TgCoordinates.CreateInitialized(Self, ZHmgVector, csVector);
   FDirection.OnNotifyChange := CoordinateChanged;
-  FUp := TGCoordinates.CreateInitialized(Self, YHmgVector, csVector);
+  FUp := TgCoordinates.CreateInitialized(Self, YHmgVector, csVector);
   FUp.OnNotifyChange := CoordinateChanged;
   FDensity := 1;
   FInitialized := False;
@@ -2775,17 +2775,17 @@ begin
     TGLODEElements(Owner).NotifyChange(Self);
 end;
 
-procedure TGLODEElementBase.SetPosition(const Value: TGCoordinates);
+procedure TGLODEElementBase.SetPosition(const Value: TgCoordinates);
 begin
   FPosition.Assign(Value);
 end;
 
-procedure TGLODEElementBase.SetDirection(const Value: TGCoordinates);
+procedure TGLODEElementBase.SetDirection(const Value: TgCoordinates);
 begin
   FDirection.Assign(Value);
 end;
 
-procedure TGLODEElementBase.SetUp(const Value: TGCoordinates);
+procedure TGLODEElementBase.SetUp(const Value: TgCoordinates);
 begin
   FUp.Assign(Value);
 end;
@@ -3440,7 +3440,7 @@ constructor TGLODEElementTriMesh.Create(AOwner: TXCollection);
 begin
   inherited;
   FVertices := TGAffineVectorList.Create;
-  FIndices := TGIntegerList.Create;
+  FIndices := TgIntegerList.Create;
 end;
 
 destructor TGLODEElementTriMesh.Destroy;
@@ -3530,7 +3530,7 @@ begin
   RefreshTriMeshData;
 end;
 
-procedure TGLODEElementTriMesh.SetIndices(const Value: TGIntegerList);
+procedure TGLODEElementTriMesh.SetIndices(const Value: TgIntegerList);
 begin
   FIndices.Assign(Value);
   RefreshTriMeshData;
@@ -4300,9 +4300,9 @@ end;
 constructor TGLODEJointHinge.Create(AOwner: TXCollection);
 begin
   inherited;
-  FAnchor := TGCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
+  FAnchor := TgCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
   FAnchor.OnNotifyChange := AnchorChange;
-  FAxis := TGCoordinates.CreateInitialized(Self, ZHmgVector, csVector);
+  FAxis := TgCoordinates.CreateInitialized(Self, ZHmgVector, csVector);
   FAxis.OnNotifyChange := AxisChange;
   FAxisParams := TGLODEJointParams.Create(Self);
   FAxisParams.SetCallback := SetAxisParam;
@@ -4385,12 +4385,12 @@ begin
   Result := 'ODE Hinge joint';
 end;
 
-procedure TGLODEJointHinge.SetAnchor(const Value: TGCoordinates);
+procedure TGLODEJointHinge.SetAnchor(const Value: TgCoordinates);
 begin
   FAnchor.Assign(Value);
 end;
 
-procedure TGLODEJointHinge.SetAxis(const Value: TGCoordinates);
+procedure TGLODEJointHinge.SetAxis(const Value: TgCoordinates);
 begin
   FAxis.Assign(Value);
 end;
@@ -4430,7 +4430,7 @@ end;
 constructor TGLODEJointBall.Create(AOwner: TXCollection);
 begin
   inherited;
-  FAnchor := TGCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
+  FAnchor := TgCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
   FAnchor.OnNotifyChange := AnchorChange;
 end;
 
@@ -4489,7 +4489,7 @@ begin
   Result := 'ODE Ball joint implementation';
 end;
 
-procedure TGLODEJointBall.SetAnchor(const Value: TGCoordinates);
+procedure TGLODEJointBall.SetAnchor(const Value: TgCoordinates);
 begin
   FAnchor.Assign(Value);
 end;
@@ -4502,7 +4502,7 @@ end;
 constructor TGLODEJointSlider.Create(AOwner: TXCollection);
 begin
   inherited;
-  FAxis := TGCoordinates.CreateInitialized(Self, ZHmgVector, csVector);
+  FAxis := TgCoordinates.CreateInitialized(Self, ZHmgVector, csVector);
   FAxis.OnNotifyChange := AxisChange;
   FAxisParams := TGLODEJointParams.Create(Self);
   FAxisParams.SetCallback := SetAxisParam;
@@ -4574,7 +4574,7 @@ begin
   Result := 'ODE Slider joint implementation';
 end;
 
-procedure TGLODEJointSlider.SetAxis(const Value: TGCoordinates);
+procedure TGLODEJointSlider.SetAxis(const Value: TgCoordinates);
 begin
   FAxis.Assign(Value);
 end;
@@ -4656,11 +4656,11 @@ end;
 constructor TGLODEJointHinge2.Create(AOwner: TXCollection);
 begin
   inherited;
-  FAnchor := TGCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
+  FAnchor := TgCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
   FAnchor.OnNotifyChange := AnchorChange;
-  FAxis1 := TGCoordinates.CreateInitialized(Self, ZHmgVector, csVector);
+  FAxis1 := TgCoordinates.CreateInitialized(Self, ZHmgVector, csVector);
   FAxis1.OnNotifyChange := Axis1Change;
-  FAxis2 := TGCoordinates.CreateInitialized(Self, ZHmgVector, csVector);
+  FAxis2 := TgCoordinates.CreateInitialized(Self, ZHmgVector, csVector);
   FAxis2.OnNotifyChange := Axis2Change;
   FAxis1Params := TGLODEJointParams.Create(Self);
   FAxis1Params.SetCallback := SetAxis1Param;
@@ -4765,17 +4765,17 @@ begin
   Result := 'ODE Double Axis Hinge joint implementation';
 end;
 
-procedure TGLODEJointHinge2.SetAnchor(const Value: TGCoordinates);
+procedure TGLODEJointHinge2.SetAnchor(const Value: TgCoordinates);
 begin
   FAnchor.Assign(Value);
 end;
 
-procedure TGLODEJointHinge2.SetAxis1(const Value: TGCoordinates);
+procedure TGLODEJointHinge2.SetAxis1(const Value: TgCoordinates);
 begin
   FAxis1.Assign(Value);
 end;
 
-procedure TGLODEJointHinge2.SetAxis2(const Value: TGCoordinates);
+procedure TGLODEJointHinge2.SetAxis2(const Value: TgCoordinates);
 begin
   FAxis2.Assign(Value);
 end;
@@ -4841,11 +4841,11 @@ end;
 constructor TGLODEJointUniversal.Create(AOwner: TXCollection);
 begin
   inherited;
-  FAnchor := TGCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
+  FAnchor := TgCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
   FAnchor.OnNotifyChange := AnchorChange;
-  FAxis1 := TGCoordinates.CreateInitialized(Self, ZHmgVector, csVector);
+  FAxis1 := TgCoordinates.CreateInitialized(Self, ZHmgVector, csVector);
   FAxis1.OnNotifyChange := Axis1Change;
-  FAxis2 := TGCoordinates.CreateInitialized(Self, XHmgVector, csVector);
+  FAxis2 := TgCoordinates.CreateInitialized(Self, XHmgVector, csVector);
   FAxis2.OnNotifyChange := Axis2Change;
   FAxis1Params := TGLODEJointParams.Create(Self);
   FAxis1Params.SetCallback := SetAxis1Param;
@@ -4951,17 +4951,17 @@ begin
   Result := 'ODE Universal joint implementation';
 end;
 
-procedure TGLODEJointUniversal.SetAnchor(const Value: TGCoordinates);
+procedure TGLODEJointUniversal.SetAnchor(const Value: TgCoordinates);
 begin
   FAnchor.Assign(Value);
 end;
 
-procedure TGLODEJointUniversal.SetAxis1(const Value: TGCoordinates);
+procedure TGLODEJointUniversal.SetAxis1(const Value: TgCoordinates);
 begin
   FAxis1.Assign(Value);
 end;
 
-procedure TGLODEJointUniversal.SetAxis2(const Value: TGCoordinates);
+procedure TGLODEJointUniversal.SetAxis2(const Value: TgCoordinates);
 begin
   FAxis2.Assign(Value);
 end;

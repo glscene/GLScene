@@ -25,9 +25,9 @@ type
    //
    { The DAE vector file (COLLADA actor file). 
       Stores a set of "frames" describing the different postures of the actor,
-      it may be animated by TGXActor. The "Skin" must be loaded indepentendly
+      it may be animated by TgxActor. The "Skin" must be loaded indepentendly
       (the whole mesh uses a single texture bitmap). }
-   TgxFileDAE = class(TGXVectorFile)
+   TgxFileDAE = class(TgxVectorFile)
       public
          
          class function Capabilities : TDataFileCapabilities; override;
@@ -55,19 +55,19 @@ procedure TgxFileDAE.LoadFromStream(aStream : TStream);
 var
    i, j : Integer;
    DAEFile : TgxFileDAE;
-   mesh : TGXMorphableMeshObject;
-   faceGroup : TFGIndexTexCoordList;
-   morphTarget : TGXMeshMorphTarget;
+   mesh : TgxMorphableMeshObject;
+   faceGroup : TgxFGIndexTexCoordList;
+   morphTarget : TgxMeshMorphTarget;
 begin
    { TODO : E2035 Not enough actual parameters }
    (*DAEFile:=TgxFileDAE.Create();*)
    DAEFile.LoadFromStream(aStream);
    try
       // retrieve mesh data
-      mesh:=TGXMorphableMeshObject.CreateOwned(Owner.MeshObjects);
+      mesh:=TgxMorphableMeshObject.CreateOwned(Owner.MeshObjects);
       with mesh, DAEFile do begin
          Mode:=momFaceGroups;
-         faceGroup:=TFGIndexTexCoordList.CreateOwned(FaceGroups);
+         faceGroup:=TgxFGIndexTexCoordList.CreateOwned(FaceGroups);
          with faceGroup do begin
             MaterialName:='';
             { TODO : E2003 Undeclared identifier: 'iTriangles' }
@@ -86,7 +86,7 @@ begin
          { TODO : E2003 Undeclared identifier: 'iFrames' }
          (*
          for i:=0 to iFrames-1 do begin
-            morphTarget:=TGXMeshMorphTarget.CreateOwned(MorphTargets);
+            morphTarget:=TgxMeshMorphTarget.CreateOwned(MorphTargets);
             with morphTarget do begin
                Name:='Frame'+IntToStr(i);
                Vertices.Capacity:=iVertices;
@@ -97,7 +97,7 @@ begin
          end;
          *)
       end;
-      if GetOwner is TGXActor then with TGXActor(GetOwner).Animations do begin
+      if GetOwner is TgxActor then with TgxActor(GetOwner).Animations do begin
          Clear;
          { TODO : E2003 Undeclared identifier: 'frameNames' }
          (*

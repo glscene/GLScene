@@ -69,7 +69,7 @@ type
     FMaxCLODTriangles, FCLODPrecision: Integer;
     FBufferVertices: TGAffineVectorList;
     FBufferTexPoints: TGTexPointList;
-    FBufferVertexIndices: TGIntegerList;
+    FBufferVertexIndices: TgIntegerList;
     FMaterialLibrary: TGLMaterialLibrary;
     FOnGetTerrainBounds: TGetTerrainBoundsEvent;
     FOnPatchPostRender: TPatchPostRenderEvent;
@@ -243,7 +243,7 @@ begin
   FOcclusionTesselate := totTesselateIfVisible;
   FBufferVertices := TGAffineVectorList.Create;
   FBufferTexPoints := TGTexPointList.Create;
-  FBufferVertexIndices := TGIntegerList.Create;
+  FBufferVertexIndices := TgIntegerList.Create;
   TileManagement := [tmClearUsedFlags, tmMarkUsedTiles, tmReleaseUnusedTiles,
     tmAllocateNewTiles];
 end;

@@ -15,7 +15,7 @@ uses
   GLScene.VectorTypes,
   GLS.Objects,
   GLScene.PersistentClasses,
-  GLS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLS.GeomObjects,
   GLScene.Coordinates,
   GLScene.BaseClasses,

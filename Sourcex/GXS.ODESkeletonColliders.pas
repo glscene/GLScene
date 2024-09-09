@@ -20,12 +20,12 @@ uses
 type
 
   // Base ODE skeleton collider class.
-  TSCODEBase = class(TGXSkeletonCollider)
+  TSCODEBase = class(TgxSkeletonCollider)
   private
     FGeom: PdxGeom;
   public
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure AddToSpace(Space: PdxSpace); virtual;
     procedure AlignCollider; override;
     // The geoms are created through the AddToSpace procedure
@@ -40,8 +40,8 @@ type
     procedure SetRadius(const val: TdReal);
   public
     constructor Create; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure AddToSpace(Space: PdxSpace); override;
     property Radius: TdReal read FRadius write SetRadius;
   end;
@@ -55,8 +55,8 @@ type
     procedure SetLength(const val: Single);
   public
     constructor Create; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure AddToSpace(Space: PdxSpace); override;
     property Radius: Single read FRadius write SetRadius;
     property Length: Single read FLength write SetLength;
@@ -72,8 +72,8 @@ type
     procedure SetBoxDepth(const val: TdReal);
   public
     constructor Create; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure AddToSpace(Space: PdxSpace); override;
     property BoxWidth: TdReal read FBoxWidth write SetBoxWidth;
     property BoxHeight: TdReal read FBoxHeight write SetBoxHeight;
@@ -82,7 +82,7 @@ type
 
 (* After loading call this function to add all the geoms in a
    skeleton collider list to a given ODE space. *)
-procedure AddSCODEGeomsToODESpace(colliders: TGXSkeletonColliderList;
+procedure AddSCODEGeomsToODESpace(colliders: TgxSkeletonColliderList;
   Space: PdxSpace);
 
 // ------------------------------------------------------------------
@@ -94,7 +94,7 @@ implementation
 // ------------------ Global methods ------------------
 // ------------------
 
-procedure AddSCODEGeomsToODESpace(colliders: TGXSkeletonColliderList;
+procedure AddSCODEGeomsToODESpace(colliders: TgxSkeletonColliderList;
   Space: PdxSpace);
 var
   i: Integer;
@@ -108,7 +108,7 @@ end;
 // ------------------ TSCODEBase ------------------
 // ------------------
 
-procedure TSCODEBase.WriteToFiler(writer: TGVirtualWriter);
+procedure TSCODEBase.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -117,7 +117,7 @@ begin
   end;
 end;
 
-procedure TSCODEBase.ReadFromFiler(reader: TGVirtualReader);
+procedure TSCODEBase.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -173,7 +173,7 @@ begin
   AlignCollider;
 end;
 
-procedure TSCODESphere.WriteToFiler(writer: TGVirtualWriter);
+procedure TSCODESphere.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -183,7 +183,7 @@ begin
   end;
 end;
 
-procedure TSCODESphere.ReadFromFiler(reader: TGVirtualReader);
+procedure TSCODESphere.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -225,7 +225,7 @@ begin
   AlignCollider;
 end;
 
-procedure TSCODECCylinder.WriteToFiler(writer: TGVirtualWriter);
+procedure TSCODECCylinder.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -236,7 +236,7 @@ begin
   end;
 end;
 
-procedure TSCODECCylinder.ReadFromFiler(reader: TGVirtualReader);
+procedure TSCODECCylinder.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -291,7 +291,7 @@ begin
   AlignCollider;
 end;
 
-procedure TSCODEBox.WriteToFiler(writer: TGVirtualWriter);
+procedure TSCODEBox.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -303,7 +303,7 @@ begin
   end;
 end;
 
-procedure TSCODEBox.ReadFromFiler(reader: TGVirtualReader);
+procedure TSCODEBox.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin

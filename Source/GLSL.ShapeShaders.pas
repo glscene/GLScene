@@ -323,7 +323,7 @@ type
     FRandomFurLength : Boolean;
     FColorScale: TGColor;
     FAmbient: TGColor;
-    FGravity : TGCoordinates;
+    FGravity : TgCoordinates;
     FLightIntensity : Single;
     FMainTex  : TGLTexture;
     FNoiseTex : TGLTexture;
@@ -339,7 +339,7 @@ type
     procedure SetNoiseTexName(const Value: TGLLibMaterialName);
     function GetMainTexName: TGLLibMaterialName;
     procedure SetMainTexName(const Value: TGLLibMaterialName);
-    procedure SetGravity(APosition:TGCoordinates);
+    procedure SetGravity(APosition:TgCoordinates);
     procedure SetAmbient(AValue: TGColor);
     procedure SetColorScale(AValue: TGColor);
   protected
@@ -366,7 +366,7 @@ type
     //property BlendEquation : TBlendEquation read FBlendEquation write FBlendEquation default beMin;
     property BlendSrc  : TGLBlendFunction read FBlendSrc write FBlendSrc default bfSrcColor;
     property BlendDst  : TGLBlendFunction read FBlendDst write FBlendDst default bfOneMinusDstColor;
-    property Gravity : TGCoordinates Read FGravity write setGravity;
+    property Gravity : TgCoordinates Read FGravity write setGravity;
     property LightIntensity : Single read FLightIntensity Write FLightIntensity;
   end;
 
@@ -412,18 +412,18 @@ type
   (* Custom class for a shader that simulate Lattice *)
   TGLCustomGLSLSimpleLatticeShader = class(TGLCustomGLSLShader)
   private
-    FLatticeScale: TGCoordinates2;
-    FLatticeThreshold: TGCoordinates2;
-    procedure SetLatticeScale(const Value: TGCoordinates2);
-    procedure SetLatticeThreshold(const Value: TGCoordinates2);
+    FLatticeScale: TgCoordinates2;
+    FLatticeThreshold: TgCoordinates2;
+    procedure SetLatticeScale(const Value: TgCoordinates2);
+    procedure SetLatticeThreshold(const Value: TgCoordinates2);
   protected
     procedure DoApply(var rci : TGLRenderContextInfo; Sender : TObject); override;
     function DoUnApply(var rci: TGLRenderContextInfo): Boolean; override;
   public
     constructor Create(AOwner : TComponent); override;
     destructor Destroy; override;
-    property LatticeScale: TGCoordinates2 read FLatticeScale write SetLatticeScale;
-    property LatticeThreshold: TGCoordinates2 read FLatticeThreshold write SetLatticeThreshold;
+    property LatticeScale: TgCoordinates2 read FLatticeScale write SetLatticeScale;
+    property LatticeThreshold: TgCoordinates2 read FLatticeThreshold write SetLatticeThreshold;
   end;
 
 (* Custom class for GLSLLatticeShader.
@@ -1768,7 +1768,7 @@ begin
   // The Blend Funcs are very important for realistic fur rendering it can vary follow your textures
   FBlendSrc := bfOneMinusSrcColor;
   FBlendDst := bfOneMinusSrcAlpha;
-  FGravity := TGCoordinates.Create(self);
+  FGravity := TgCoordinates.Create(self);
   FGravity.AsAffineVector := AffinevectorMake(0.0,0.0,0.0);
   FLightIntensity := 2.5;
 end;
@@ -1937,7 +1937,7 @@ begin
         end;
   end;
 
-  procedure TGLCustomGLSLFurShader.SetGravity(APosition: TGCoordinates);
+  procedure TGLCustomGLSLFurShader.SetGravity(APosition: TgCoordinates);
   begin
     FGravity.SetPoint(APosition.DirectX, APosition.DirectY, APosition.DirectZ);
   end;
@@ -2043,8 +2043,8 @@ begin
       Add('} ');
     end;
     // Initial stuff.
-    FLatticeScale := TGCoordinates2.Create(self);
-    FLatticeThreshold := TGCoordinates2.Create(self);
+    FLatticeScale := TgCoordinates2.Create(self);
+    FLatticeThreshold := TgCoordinates2.Create(self);
 
     FLatticeScale.SetPoint2D(10, 40);
     FLatticeThreshold.SetPoint2D(0.15, 0.3);
@@ -2074,13 +2074,13 @@ begin
   end;
 
   procedure TGLCustomGLSLSimpleLatticeShader.SetLatticeScale
-    (const Value: TGCoordinates2);
+    (const Value: TgCoordinates2);
   begin
     FLatticeScale.Assign(Value);
   end;
 
   procedure TGLCustomGLSLSimpleLatticeShader.SetLatticeThreshold
-    (const Value: TGCoordinates2);
+    (const Value: TgCoordinates2);
   begin
     FLatticeThreshold.Assign(Value);
   end;

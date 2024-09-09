@@ -179,7 +179,7 @@ var
   quat: TQuaternion;
   pos: TAffineVector;
   basepose: TGLSkeletonFrame;
-  bonelist: TGIntegerList;
+  bonelist: TgIntegerList;
   bone: TGLSkeletonBone;
 
 begin
@@ -191,7 +191,7 @@ begin
 
     TGLActor(Owner).Reference := aarSkeleton;
 
-    bonelist := TGIntegerList.Create;
+    bonelist := TgIntegerList.Create;
     for i := 0 to GLAFile.AnimHeader.numBones - 1 do
       bonelist.Add(i);
     while bonelist.Count > 0 do

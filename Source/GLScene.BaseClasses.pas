@@ -23,7 +23,7 @@ type
   (* Progression event for time-base animations/simulations.
      deltaTime is the time delta since last progress and newTime is the new
      time after the progress event is completed. *)
-  TGProgressEvent = procedure(Sender: TObject; const DeltaTime, NewTime: Double) of object;
+  TgProgressEvent = procedure(Sender: TObject; const DeltaTime, NewTime: Double) of object;
 
   IGNotifyAble = interface(IInterface)
     ['{00079A6C-D46E-4126-86EE-F9E2951B4593}']

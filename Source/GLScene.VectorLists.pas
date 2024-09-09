@@ -239,7 +239,7 @@ type
 
   (*  A list of Integers. Similar to TList, but using TTexPoint as items.
      The list has stack-like push/pop methods. *)
-  TGIntegerList = class(TGBaseList)
+  TgIntegerList = class(TGBaseList)
   private
     FList: PIntegerArray;
   protected
@@ -253,7 +253,7 @@ type
     function AddNC(const item: Integer): Integer; overload; inline;
     procedure Add(const i1, i2: Integer); overload; inline;
     procedure Add(const i1, i2, i3: Integer); overload; inline;
-    procedure Add(const AList: TGIntegerList); overload; inline;
+    procedure Add(const AList: TgIntegerList); overload; inline;
     procedure Push(const Val: Integer); inline;
     function Pop: Integer; inline;
     procedure Insert(Index: Integer; const item: Integer); inline;
@@ -266,7 +266,7 @@ type
     // Add n integers at the address starting at (and including) first
     procedure AddIntegers(const First: PInteger; n: Integer); overload;
     // Add all integers from aList into the list
-    procedure AddIntegers(const aList: TGIntegerList); overload;
+    procedure AddIntegers(const aList: TgIntegerList); overload;
     // Add all integers from anArray into the list
     procedure AddIntegers(const anArray: array of Integer); overload;
     // Returns the minimum integer item, zero if list is empty
@@ -506,7 +506,7 @@ procedure QuickSortLists(startIndex, endIndex: Integer; refList: TGSingleList; o
 procedure QuickSortLists(startIndex, endIndex: Integer; refList: TGSingleList; objList: TGBaseList); overload;
 (* Sort the refList in ascending order, ordering objList on the way.
    Use if, and *ONLY* if refList contains only values superior or equal to 1 *)
-procedure FastQuickSortLists(startIndex, endIndex: Integer; const refList: TGSingleList; const objList: TGPersistentObjectList);
+procedure FastQuickSortLists(startIndex, endIndex: Integer; const refList: TGSingleList; const objList: TgPersistentObjectList);
 
 
 implementation // ------------------------------------------------------------
@@ -619,7 +619,7 @@ begin
   end;
 end;
 
-procedure FastQuickSortLists(startIndex, endIndex: Integer; const refList: TGSingleList; const objList: TGPersistentObjectList);
+procedure FastQuickSortLists(startIndex, endIndex: Integer; const refList: TGSingleList; const objList: TgPersistentObjectList);
 var
   ppl:      PIntegerArray;
   oTemp:    Pointer;
@@ -1906,29 +1906,29 @@ begin
 end;
 
 // ------------------
-// ------------------ TGIntegerList ------------------
+// ------------------ TgIntegerList ------------------
 // ------------------
 
-constructor TGIntegerList.Create;
+constructor TgIntegerList.Create;
 begin
   FItemSize := SizeOf(Integer);
   inherited Create;
   FGrowthDelta := cDefaultListGrowthDelta;
 end;
 
-procedure TGIntegerList.Assign(Src: TPersistent);
+procedure TgIntegerList.Assign(Src: TPersistent);
 begin
   if Assigned(Src) then
   begin
     inherited;
-    if (Src is TGIntegerList) then
-      System.Move(TGIntegerList(Src).FList^, FList^, FCount * SizeOf(Integer));
+    if (Src is TgIntegerList) then
+      System.Move(TgIntegerList(Src).FList^, FList^, FCount * SizeOf(Integer));
   end
   else
     Clear;
 end;
 
-function TGIntegerList.Add(const item: Integer): Integer;
+function TgIntegerList.Add(const item: Integer): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -1937,14 +1937,14 @@ begin
   Inc(FCount);
 end;
 
-function TGIntegerList.AddNC(const item: Integer): Integer;
+function TgIntegerList.AddNC(const item: Integer): Integer;
 begin
   Result := FCount;
   FList^[Result] := Item;
   Inc(FCount);
 end;
 
-procedure TGIntegerList.Add(const i1, i2: Integer);
+procedure TgIntegerList.Add(const i1, i2: Integer);
 var
   tmpList : PIntegerArray;
 begin
@@ -1956,7 +1956,7 @@ begin
   tmpList^[1] := i2;
 end;
 
-procedure TGIntegerList.Add(const i1, i2, i3: Integer);
+procedure TgIntegerList.Add(const i1, i2, i3: Integer);
 var
   tmpList : PIntegerArray;
 begin
@@ -1969,7 +1969,7 @@ begin
   tmpList^[2] := i3;
 end;
 
-procedure TGIntegerList.Add(const AList: TGIntegerList);
+procedure TgIntegerList.Add(const AList: TgIntegerList);
 begin
   if Assigned(AList) and (AList.Count > 0) then
   begin
@@ -1980,7 +1980,7 @@ begin
   end;
 end;
 
-function TGIntegerList.Get(Index: Integer): Integer;
+function TgIntegerList.Get(Index: Integer): Integer;
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1988,7 +1988,7 @@ begin
   Result := FList^[Index];
 end;
 
-procedure TGIntegerList.Insert(Index: Integer; const Item: Integer);
+procedure TgIntegerList.Insert(Index: Integer; const Item: Integer);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -2001,7 +2001,7 @@ begin
   Inc(FCount);
 end;
 
-procedure TGIntegerList.Remove(const item: Integer);
+procedure TgIntegerList.Remove(const item: Integer);
 var
   I: Integer;
 begin
@@ -2016,7 +2016,7 @@ begin
   end;
 end;
 
-procedure TGIntegerList.Put(Index: Integer; const Item: Integer);
+procedure TgIntegerList.Put(Index: Integer; const Item: Integer);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -2024,18 +2024,18 @@ begin
   FList^[Index] := Item;
 end;
 
-procedure TGIntegerList.SetCapacity(NewCapacity: Integer);
+procedure TgIntegerList.SetCapacity(NewCapacity: Integer);
 begin
   inherited;
   FList := PIntegerArray(FBaseList);
 end;
 
-procedure TGIntegerList.Push(const Val: Integer);
+procedure TgIntegerList.Push(const Val: Integer);
 begin
   Add(Val);
 end;
 
-function TGIntegerList.Pop: Integer;
+function TgIntegerList.Pop: Integer;
 begin
   if FCount > 0 then
   begin
@@ -2046,7 +2046,7 @@ begin
     Result := 0;
 end;
 
-procedure TGIntegerList.AddSerie(aBase, aDelta, aCount: Integer);
+procedure TgIntegerList.AddSerie(aBase, aDelta, aCount: Integer);
 var
   tmpList : PInteger;
   I:    Integer;
@@ -2064,7 +2064,7 @@ begin
   FCount := Count + aCount;
 end;
 
-procedure TGIntegerList.AddIntegers(const First: PInteger; n: Integer);
+procedure TgIntegerList.AddIntegers(const First: PInteger; n: Integer);
 begin
   if n < 1 then
     Exit;
@@ -2073,14 +2073,14 @@ begin
   FCount := FCount + n;
 end;
 
-procedure TGIntegerList.AddIntegers(const aList: TGIntegerList);
+procedure TgIntegerList.AddIntegers(const aList: TgIntegerList);
 begin
   if not Assigned(aList) then
     Exit;
   AddIntegers(@aList.List[0], aList.Count);
 end;
 
-procedure TGIntegerList.AddIntegers(const anArray: array of Integer);
+procedure TgIntegerList.AddIntegers(const anArray: array of Integer);
 var
   n: Integer;
 begin
@@ -2101,12 +2101,12 @@ begin
   end;
 end;
 
-function TGIntegerList.IndexOf(item: Integer): Integer; register;
+function TgIntegerList.IndexOf(item: Integer): Integer; register;
 begin
   Result := IntegerSearch(item, FList, FCount);
 end;
 
-function TGIntegerList.MinInteger: Integer;
+function TgIntegerList.MinInteger: Integer;
 var
   I: Integer;
   locList: PIntegerVector;
@@ -2123,7 +2123,7 @@ begin
     Result := 0;
 end;
 
-function TGIntegerList.MaxInteger: Integer;
+function TgIntegerList.MaxInteger: Integer;
 var
   I: Integer;
   locList: PIntegerVector;
@@ -2169,13 +2169,13 @@ begin
   until I >= right;
 end;
 
-procedure TGIntegerList.Sort;
+procedure TgIntegerList.Sort;
 begin
   if (FList <> nil) and (Count > 1) then
     IntegerQuickSort(FList, 0, Count - 1);
 end;
 
-procedure TGIntegerList.SortAndRemoveDuplicates;
+procedure TgIntegerList.SortAndRemoveDuplicates;
 var
   I, J, lastVal: Integer;
   localList:     PIntegerArray;
@@ -2199,14 +2199,14 @@ begin
   end;
 end;
 
-function TGIntegerList.BinarySearch(const Value: Integer): Integer;
+function TgIntegerList.BinarySearch(const Value: Integer): Integer;
 var
   found: Boolean;
 begin
   Result := BinarySearch(Value, False, found);
 end;
 
-function TGIntegerList.BinarySearch(const Value: Integer; returnBestFit: Boolean; var found: Boolean): Integer;
+function TgIntegerList.BinarySearch(const Value: Integer; returnBestFit: Boolean; var found: Boolean): Integer;
 var
   Index:   Integer;
   min, max, mid: Integer;
@@ -2258,7 +2258,7 @@ begin
     Result := Index;
 end;
 
-function TGIntegerList.AddSorted(const Value: Integer; const ignoreDuplicates: Boolean = False): Integer;
+function TgIntegerList.AddSorted(const Value: Integer; const ignoreDuplicates: Boolean = False): Integer;
 var
   Index: Integer;
   found: Boolean;
@@ -2273,7 +2273,7 @@ begin
   end;
 end;
 
-procedure TGIntegerList.RemoveSorted(const Value: Integer);
+procedure TgIntegerList.RemoveSorted(const Value: Integer);
 var
   Index: Integer;
 begin
@@ -2282,7 +2282,7 @@ begin
     Delete(Index);
 end;
 
-procedure TGIntegerList.Offset(delta: Integer);
+procedure TgIntegerList.Offset(delta: Integer);
 var
   I: Integer;
   locList: PIntegerArray;
@@ -2292,7 +2292,7 @@ begin
     locList^[I] := locList^[I] + delta;
 end;
 
-procedure TGIntegerList.Offset(delta: Integer; const base, nb: Integer);
+procedure TgIntegerList.Offset(delta: Integer; const base, nb: Integer);
 var
   I: Integer;
   locList: PIntegerArray;

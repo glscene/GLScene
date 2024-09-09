@@ -1477,7 +1477,7 @@ var
 var
   I, K: Integer;
   P: PGLOctreeNode;
-  TriangleIndices: TGIntegerList;
+  TriangleIndices: TgIntegerList;
 
 begin
   // Calc AABBs
@@ -1488,7 +1488,7 @@ begin
     HandleNode(RootNode);
 
   Result := TGAffineVectorList.Create;
-  TriangleIndices := TGIntegerList.Create;
+  TriangleIndices := TgIntegerList.Create;
   try
     // fill the triangles from all nodes in the resultarray to AL
     for I := 0 to High(ResultArray) do
@@ -1542,7 +1542,7 @@ var
 var
   I, K: Integer;
   P: PGLOctreeNode;
-  TriangleIndices: TGIntegerList;
+  TriangleIndices: TgIntegerList;
 begin
   // Calc AABBs
   AABB1 := ObjAABB;
@@ -1555,7 +1555,7 @@ begin
     HandleNode(RootNode);
 
   Result := TGAffineVectorList.Create;
-  TriangleIndices := TGIntegerList.Create;
+  TriangleIndices := TgIntegerList.Create;
   try
     // fill the triangles from all nodes in the resultarray to AL
     for I := 0 to High(ResultArray) do

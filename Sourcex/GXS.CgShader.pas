@@ -49,7 +49,7 @@ type
   TPrecisionSetting = (psFull, psFast);
 
   // Wrapper around a Cg program.
-  TCGxProgram = class(TGUpdateAbleObject)
+  TCGxProgram = class(TgUpdateAbleObject)
   private
     FCgContext: PcgContext;
     FCode: TStrings; // the Cg program itself
@@ -186,7 +186,7 @@ type
     procedure DisableTexture;
     // Procedures for setting varying parameters with an array of values.
     procedure SetParameterPointer(Values: TGVectorList); overload;
-    procedure SetParameterPointer(Values: TGAffineVectorList); overload;
+    procedure SetParameterPointer(Values: TgAffineVectorList); overload;
     procedure EnableClientState;
     procedure DisableClientState;
     // LongName retruns ShaderName.[program type].ProgramName.ParamName.
@@ -941,7 +941,7 @@ begin
   cgGLEnableClientState(FHandle);
 end;
 
-procedure TCGxParameter.SetParameterPointer(Values: TGAffineVectorList);
+procedure TCGxParameter.SetParameterPointer(Values: TgAffineVectorList);
 begin
   Assert(FVariability = CG_VARYING);
   cgGLSetParameterPointer(FHandle, 3, GL_FLOAT, 0, Values.List);

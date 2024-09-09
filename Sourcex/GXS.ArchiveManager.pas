@@ -74,7 +74,7 @@ Type
   end;
 
   // List of registered classes
-  TgxArchiveFileFormatsList = class(TGPersistentObjectList)
+  TgxArchiveFileFormatsList = class(TgPersistentObjectList)
   public
     destructor Destroy; override;
     procedure Add(const Ext, Desc: string; DescID: Integer; AClass:

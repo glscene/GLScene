@@ -24,7 +24,7 @@ type
     This is a format for storing regular grid values as a
     matrices of cell centers. The format supports variations and
     subformats. This importer works for Sutfer, ArcInfo and GMS formats *)
-  TgxGRDVectorFile = class(TGXVectorFile)
+  TgxGRDVectorFile = class(TgxVectorFile)
    public
     HeightField: TgxHeightField;
     Nodes: array of TSingleArray;

@@ -1,7 +1,7 @@
 //
 // The graphics engine GXScene https://github.com/glscene
 //
-unit GXS.OpenGL;
+unit GLScene.OpenGL4;
 
 (* -------------------------------------------------------------
  Copyright 1991-1993, Silicon Graphics, Inc.
@@ -237,18 +237,6 @@ type
   TGLUNurbsErrorProc = procedure(errorCode: Cardinal); {$IFDEF MSWINDOWS} stdcall; {$ELSE} cdecl; {$ENDIF}
 
 var
-  GL_VERSION_1_0,
-  GL_VERSION_1_1,
-  GL_VERSION_1_2,
-  GL_VERSION_1_3,
-  GL_VERSION_1_4,
-  GL_VERSION_1_5,
-  GL_VERSION_2_0,
-  GL_VERSION_2_1,
-  GL_VERSION_3_0,
-  GL_VERSION_3_1,
-  GL_VERSION_3_2,
-  GL_VERSION_3_3,
   GL_VERSION_4_0,
   GL_VERSION_4_1,
   GL_VERSION_4_2,
@@ -256,8 +244,6 @@ var
   GL_VERSION_4_4,
   GL_VERSION_4_5,
   GL_VERSION_4_6,
-  GLU_VERSION_1_1,
-  GLU_VERSION_1_2,
   GLU_VERSION_1_3,
   GL_3DFX_multisample,
   GL_3DFX_tbuffer,
@@ -804,7 +790,6 @@ var
   WIN_swap_hint,
 
   // GLX
-  GLX_VERSION_1_3,
   GLX_VERSION_1_4,
   GLX_ARB_multisample,
   GLX_ARB_fbconfig_float,
@@ -832,7 +817,7 @@ const
   GL_COLOR_BUFFER_BIT = $00004000;
   GL_TRUE = 1;
   GL_FALSE = 0;
-  // BeginMode 
+  // BeginMode
   GL_POINTS = $0000;
   GL_LINES = $0001;
   GL_LINE_LOOP = $0002;
@@ -10313,18 +10298,6 @@ begin
   // determine OpenGL versions supported
   Buffer := string(glGetString(GL_VERSION));
   TrimAndSplitVersionString(Buffer, MajorVersion, MinorVersion);
-  GL_VERSION_1_0 := True;
-  GL_VERSION_1_1 := IsVersionMet(1, 1, MajorVersion, MinorVersion);
-  GL_VERSION_1_2 := IsVersionMet(1, 2, MajorVersion, MinorVersion);
-  GL_VERSION_1_3 := IsVersionMet(1, 3, MajorVersion, MinorVersion);
-  GL_VERSION_1_4 := IsVersionMet(1, 4, MajorVersion, MinorVersion);
-  GL_VERSION_1_5 := IsVersionMet(1, 5, MajorVersion, MinorVersion);
-  GL_VERSION_2_0 := IsVersionMet(2, 0, MajorVersion, MinorVersion);
-  GL_VERSION_2_1 := IsVersionMet(2, 1, MajorVersion, MinorVersion);
-  GL_VERSION_3_0 := IsVersionMet(3, 0, MajorVersion, MinorVersion);
-  GL_VERSION_3_1 := IsVersionMet(3, 1, MajorVersion, MinorVersion);
-  GL_VERSION_3_2 := IsVersionMet(3, 2, MajorVersion, MinorVersion);
-  GL_VERSION_3_3 := IsVersionMet(3, 3, MajorVersion, MinorVersion);
   GL_VERSION_4_0 := IsVersionMet(4, 0, MajorVersion, MinorVersion);
   GL_VERSION_4_1 := IsVersionMet(4, 1, MajorVersion, MinorVersion);
   GL_VERSION_4_2 := IsVersionMet(4, 2, MajorVersion, MinorVersion);
@@ -10335,8 +10308,6 @@ begin
    // determine GLU versions met
    buffer:=String(gluGetString(GLU_VERSION));
    TrimAndSplitVersionString(buffer, majorversion, minorVersion);
-   GLU_VERSION_1_1:=True; // won't load without at least GLU 1.1
-   GLU_VERSION_1_2:=IsVersionMet(1,2,majorVersion,minorVersion);
    GLU_VERSION_1_3:=IsVersionMet(1,3,majorVersion,minorVersion);
    // check supported OpenGL extensions
    Buffer := String(glGetString(GL_EXTENSIONS));
@@ -10755,15 +10726,11 @@ begin
   Result:=IsVersionMet(MajorVersion,MinorVersion,GLMajorVersion,GLMinorVersion);
 end;
 
-//----------------------------------------------------
-initialization
-//----------------------------------------------------
+initialization //-------------------------------------------------------------
 
   Set8087CW($133F);
 
-//----------------------------------------------------
-finalization
-//----------------------------------------------------
+finalization //---------------------------------------------------------------
 
   CloseOpenGL;
 

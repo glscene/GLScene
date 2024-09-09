@@ -363,165 +363,165 @@ end;
 
 procedure TgxCoordinatesSetXMethod.Execute(var ExternalObject: TObject);
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
-  TGCoordinates(ExternalObject).X:=Info['Value'];
+  ValidateExternalObject(ExternalObject, TgCoordinates);
+  TgCoordinates(ExternalObject).X:=Info['Value'];
 end;
 
 procedure TgxCoordinatesGetXMethod.Execute(var ExternalObject: TObject);
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
-  Info.Result:=TGCoordinates(ExternalObject).X;
+  ValidateExternalObject(ExternalObject, TgCoordinates);
+  Info.Result:=TgCoordinates(ExternalObject).X;
 end;
 
-// TGCoordinates.Y write access
+// TgCoordinates.Y write access
 procedure TgxCoordinatesSetYMethod.Execute(var ExternalObject: TObject);
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
-  TGCoordinates(ExternalObject).Y:=Info['Value'];
+  ValidateExternalObject(ExternalObject, TgCoordinates);
+  TgCoordinates(ExternalObject).Y:=Info['Value'];
 end;
 
-// TGCoordinates.Y read access
+// TgCoordinates.Y read access
 procedure TgxCoordinatesGetYMethod.Execute(var ExternalObject: TObject);
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
-  Info.Result:=TGCoordinates(ExternalObject).Y;
+  ValidateExternalObject(ExternalObject, TgCoordinates);
+  Info.Result:=TgCoordinates(ExternalObject).Y;
 end;
 
-// TGCoordinates.Z write access
+// TgCoordinates.Z write access
 procedure TgxCoordinatesSetZMethod.Execute(var ExternalObject: TObject);
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
-  TGCoordinates(ExternalObject).Z:=Info['Value'];
+  ValidateExternalObject(ExternalObject, TgCoordinates);
+  TgCoordinates(ExternalObject).Z:=Info['Value'];
 end;
 
-// TGCoordinates.Z read access
+// TgCoordinates.Z read access
 procedure TgxCoordinatesGetZMethod.Execute(var ExternalObject: TObject);
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
-  Info.Result:=TGCoordinates(ExternalObject).Z;
+  ValidateExternalObject(ExternalObject, TgCoordinates);
+  Info.Result:=TgCoordinates(ExternalObject).Z;
 end;
 
-// TGCoordinates.W write access
+// TgCoordinates.W write access
 procedure TgxCoordinatesSetWMethod.Execute(var ExternalObject: TObject);
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
-  TGCoordinates(ExternalObject).W:=Info['Value'];
+  ValidateExternalObject(ExternalObject, TgCoordinates);
+  TgCoordinates(ExternalObject).W:=Info['Value'];
 end;
 
-// TGCoordinates.W read access
+// TgCoordinates.W read access
 procedure TgxCoordinatesGetWMethod.Execute(var ExternalObject: TObject);
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
-  Info.Result:=TGCoordinates(ExternalObject).W;
+  ValidateExternalObject(ExternalObject, TgCoordinates);
+  Info.Result:=TgCoordinates(ExternalObject).W;
 end;
 
-// TGCoordinates.SetVector
+// TgCoordinates.SetVector
 procedure TgxCoordinatesSetVectorMethod.Execute(var ExternalObject: TObject);
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
-  TGCoordinates(ExternalObject).SetVector(Info['x'],Info['y'],Info['z'],Info['w']);
+  ValidateExternalObject(ExternalObject, TgCoordinates);
+  TgCoordinates(ExternalObject).SetVector(Info['x'],Info['y'],Info['z'],Info['w']);
 end;
 
-// TGCoordinates.SetPoint
+// TgCoordinates.SetPoint
 procedure TgxCoordinatesSetPointMethod.Execute(var ExternalObject: TObject);
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
-  TGCoordinates(ExternalObject).SetPoint(Info['x'],Info['y'],Info['z']);
+  ValidateExternalObject(ExternalObject, TgCoordinates);
+  TgCoordinates(ExternalObject).SetPoint(Info['x'],Info['y'],Info['z']);
 end;
 
-// TGCoordinates.AsVector write access
+// TgCoordinates.AsVector write access
 procedure TgxCoordinatesSetAsVectorMethod.Execute(var ExternalObject: TObject);
 var
   v : TVector4f;
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
+  ValidateExternalObject(ExternalObject, TgCoordinates);
   v:=GetVectorFromInfo(Info.Vars['Value']);
-  TGCoordinates(ExternalObject).AsVector:=v;
+  TgCoordinates(ExternalObject).AsVector:=v;
 end;
 
-// TGCoordinates.AsVector read access
+// TgCoordinates.AsVector read access
 procedure TgxCoordinatesGetAsVectorMethod.Execute(var ExternalObject: TObject);
 var
   v : TVector4f;
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
-  v:=TGCoordinates(ExternalObject).AsVector;
+  ValidateExternalObject(ExternalObject, TgCoordinates);
+  v:=TgCoordinates(ExternalObject).AsVector;
   SetInfoFromVector(Info.Vars['Result'], v);
 end;
 
-// TGCoordinates.AsString read access
+// TgCoordinates.AsString read access
 procedure TgxCoordinatesGetAsStringMethod.Execute(var ExternalObject: TObject);
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
-  Info.Result:=TGCoordinates(ExternalObject).AsString;
+  ValidateExternalObject(ExternalObject, TgCoordinates);
+  Info.Result:=TgCoordinates(ExternalObject).AsString;
 end;
 
-// TGCoordinates.Translate
+// TgCoordinates.Translate
 procedure TgxCoordinatesTranslateMethod.Execute(var ExternalObject: TObject);
 var
   v : TVector4f;
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
+  ValidateExternalObject(ExternalObject, TgCoordinates);
   v:=GetVectorFromInfo(Info.Vars['translationVector']);
-  TGCoordinates(ExternalObject).Translate(v);
+  TgCoordinates(ExternalObject).Translate(v);
 end;
 
-// TGCoordinates.AddScaledVector
+// TgCoordinates.AddScaledVector
 procedure TgxCoordinatesAddScaledVectorMethod.Execute(var ExternalObject: TObject);
 var
   v : TVector4f;
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
+  ValidateExternalObject(ExternalObject, TgCoordinates);
   v:=GetVectorFromInfo(Info.Vars['translationVector']);
-  TGCoordinates(ExternalObject).AddScaledVector(Info['factor'],v);
+  TgCoordinates(ExternalObject).AddScaledVector(Info['factor'],v);
 end;
 
-// TGCoordinates.Rotate
+// TgCoordinates.Rotate
 procedure TgxCoordinatesRotateMethod.Execute(var ExternalObject: TObject);
 var
   v : TVector4f;
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
+  ValidateExternalObject(ExternalObject, TgCoordinates);
   v:=GetVectorFromInfo(Info.Vars['anAxis']);
-  TGCoordinates(ExternalObject).Rotate(v, Info['anAngle']);
+  TgCoordinates(ExternalObject).Rotate(v, Info['anAngle']);
 end;
 
-// TGCoordinates.Normalize
+// TgCoordinates.Normalize
 procedure TgxCoordinatesNormalizeMethod.Execute(var ExternalObject: TObject);
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
-  TGCoordinates(ExternalObject).Normalize;
+  ValidateExternalObject(ExternalObject, TgCoordinates);
+  TgCoordinates(ExternalObject).Normalize;
 end;
 
-// TGCoordinates.Invert
+// TgCoordinates.Invert
 procedure TgxCoordinatesInvertMethod.Execute(var ExternalObject: TObject);
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
-  TGCoordinates(ExternalObject).Invert;
+  ValidateExternalObject(ExternalObject, TgCoordinates);
+  TgCoordinates(ExternalObject).Invert;
 end;
 
-// TGCoordinates.Scale
+// TgCoordinates.Scale
 procedure TgxCoordinatesScaleMethod.Execute(var ExternalObject: TObject);
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
-  TGCoordinates(ExternalObject).Scale(Info['factor']);
+  ValidateExternalObject(ExternalObject, TgCoordinates);
+  TgCoordinates(ExternalObject).Scale(Info['factor']);
 end;
 
-// TGCoordinates.Equals
+// TgCoordinates.Equals
 procedure TgxCoordinatesEqualsMethod.Execute(var ExternalObject: TObject);
 var
   v : TVector4f;
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
+  ValidateExternalObject(ExternalObject, TgCoordinates);
   v:=GetVectorFromInfo(Info.Vars['aVector']);
-  Info.Result:=TGCoordinates(ExternalObject).Equals(v);
+  Info.Result:=TgCoordinates(ExternalObject).Equals(v);
 end;
 
-// TGCoordinates.SetToZero
+// TgCoordinates.SetToZero
 procedure TgxCoordinatesSetToZeroMethod.Execute(var ExternalObject: TObject);
 begin
-  ValidateExternalObject(ExternalObject, TGCoordinates);
-  TGCoordinates(ExternalObject).SetToZero;
+  ValidateExternalObject(ExternalObject, TgCoordinates);
+  TgCoordinates(ExternalObject).SetToZero;
 end;
 
 
@@ -613,10 +613,10 @@ end;
 // TgxBaseSceneObject.Position write access
 procedure TgxBaseSceneObjectSetPositionMethod.Execute(var ExternalObject: TObject);
 var
-  Value : TGCoordinates;
+  Value : TgCoordinates;
 begin
   ValidateExternalObject(ExternalObject, TgxBaseSceneObject);
-  Value:=TGCoordinates(Info.GetExternalObjForVar('Value'));
+  Value:=TgCoordinates(Info.GetExternalObjForVar('Value'));
   TgxBaseSceneObject(ExternalObject).Position:=Value;
 end;
 
@@ -630,10 +630,10 @@ end;
 // TgxBaseSceneObject.Direction write access
 procedure TgxBaseSceneObjectSetDirectionMethod.Execute(var ExternalObject: TObject);
 var
-  Value : TGCoordinates;
+  Value : TgCoordinates;
 begin
   ValidateExternalObject(ExternalObject, TgxBaseSceneObject);
-  Value:=TGCoordinates(Info.GetExternalObjForVar('Value'));
+  Value:=TgCoordinates(Info.GetExternalObjForVar('Value'));
   TgxBaseSceneObject(ExternalObject).Direction:=Value;
 end;
 
@@ -647,10 +647,10 @@ end;
 // TgxBaseSceneObject.Up write access
 procedure TgxBaseSceneObjectSetUpMethod.Execute(var ExternalObject: TObject);
 var
-  Value : TGCoordinates;
+  Value : TgCoordinates;
 begin
   ValidateExternalObject(ExternalObject, TgxBaseSceneObject);
-  Value:=TGCoordinates(Info.GetExternalObjForVar('Value'));
+  Value:=TgCoordinates(Info.GetExternalObjForVar('Value'));
   TgxBaseSceneObject(ExternalObject).Up:=Value;
 end;
 
@@ -664,10 +664,10 @@ end;
 // TgxBaseSceneObject.Scale write access
 procedure TgxBaseSceneObjectSetScaleMethod.Execute(var ExternalObject: TObject);
 var
-  Value : TGCoordinates;
+  Value : TgCoordinates;
 begin
   ValidateExternalObject(ExternalObject, TgxBaseSceneObject);
-  Value:=TGCoordinates(Info.GetExternalObjForVar('Value'));
+  Value:=TgCoordinates(Info.GetExternalObjForVar('Value'));
   TgxBaseSceneObject(ExternalObject).Scale:=Value;
 end;
 
@@ -790,7 +790,7 @@ procedure TDwsGLXceneUnit.AddClassTgxCoordinates(
 var
   ClassSym : TClassSymbol;
 begin
-  ClassSym:=TClassSymbol(AddClassSymbol(SymbolTable, 'TGCoordinates', 'TPersistent'));
+  ClassSym:=TClassSymbol(AddClassSymbol(SymbolTable, 'TgCoordinates', 'TPersistent'));
 
   // Methods
   if not Assigned(ClassSym.Members.FindLocal('SetX')) then
@@ -880,21 +880,21 @@ begin
     TgxBaseSceneObjectGetAbsoluteDirectionMethod.Create(mkFunction, [], 0, 'GetAbsoluteDirection', [], 'TVector4f', ClassSym, SymbolTable);
 
   if not Assigned(ClassSym.Members.FindLocal('SetPosition')) then
-    TgxBaseSceneObjectSetPositionMethod.Create(mkProcedure, [], 0, 'SetPosition', ['Value', 'TGCoordinates'], '', ClassSym, SymbolTable);
+    TgxBaseSceneObjectSetPositionMethod.Create(mkProcedure, [], 0, 'SetPosition', ['Value', 'TgCoordinates'], '', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('GetPosition')) then
-    TgxBaseSceneObjectGetPositionMethod.Create(mkFunction, [], 0, 'GetPosition', [], 'TGCoordinates', ClassSym, SymbolTable);
+    TgxBaseSceneObjectGetPositionMethod.Create(mkFunction, [], 0, 'GetPosition', [], 'TgCoordinates', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('SetDirection')) then
-    TgxBaseSceneObjectSetDirectionMethod.Create(mkProcedure, [], 0, 'SetDirection', ['Value', 'TGCoordinates'], '', ClassSym, SymbolTable);
+    TgxBaseSceneObjectSetDirectionMethod.Create(mkProcedure, [], 0, 'SetDirection', ['Value', 'TgCoordinates'], '', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('GetDirection')) then
-    TgxBaseSceneObjectGetDirectionMethod.Create(mkFunction, [], 0, 'GetDirection', [], 'TGCoordinates', ClassSym, SymbolTable);
+    TgxBaseSceneObjectGetDirectionMethod.Create(mkFunction, [], 0, 'GetDirection', [], 'TgCoordinates', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('SetUp')) then
-    TgxBaseSceneObjectSetUpMethod.Create(mkProcedure, [], 0, 'SetUp', ['Value', 'TGCoordinates'], '', ClassSym, SymbolTable);
+    TgxBaseSceneObjectSetUpMethod.Create(mkProcedure, [], 0, 'SetUp', ['Value', 'TgCoordinates'], '', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('GetUp')) then
-    TgxBaseSceneObjectGetUpMethod.Create(mkFunction, [], 0, 'GetUp', [], 'TGCoordinates', ClassSym, SymbolTable);
+    TgxBaseSceneObjectGetUpMethod.Create(mkFunction, [], 0, 'GetUp', [], 'TgCoordinates', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('SetScale')) then
-    TgxBaseSceneObjectSetScaleMethod.Create(mkProcedure, [], 0, 'SetScale', ['Value', 'TGCoordinates'], '', ClassSym, SymbolTable);
+    TgxBaseSceneObjectSetScaleMethod.Create(mkProcedure, [], 0, 'SetScale', ['Value', 'TgCoordinates'], '', ClassSym, SymbolTable);
   if not Assigned(ClassSym.Members.FindLocal('GetScale')) then
-    TgxBaseSceneObjectGetScaleMethod.Create(mkFunction, [], 0, 'GetScale', [], 'TGCoordinates', ClassSym, SymbolTable);
+    TgxBaseSceneObjectGetScaleMethod.Create(mkFunction, [], 0, 'GetScale', [], 'TgCoordinates', ClassSym, SymbolTable);
 
   if not Assigned(ClassSym.Members.FindLocal('SetPitchAngle')) then
     TgxBaseSceneObjectSetPitchAngleMethod.Create(mkProcedure, [], 0, 'SetPitchAngle', ['Value', 'Float'], '', ClassSym, SymbolTable);
@@ -939,7 +939,7 @@ end;
 procedure TDwsGLXceneUnit.AddUnitSymbols(SymbolTable: TSymbolTable);
 begin
   // Forward class declaration
-  AddForwardDeclaration('TGCoordinates', SymbolTable);
+  AddForwardDeclaration('TgCoordinates', SymbolTable);
   AddForwardDeclaration('TgxBaseSceneObject', SymbolTable);
 
   // Class types

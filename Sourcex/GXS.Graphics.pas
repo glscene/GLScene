@@ -31,7 +31,7 @@ uses
   GR32,
 {$ENDIF}
 
-  GXS.OpenGL,
+  GLScene.OpenGL4,
 
   GLScene.VectorGeometry,
   GLScene.PersistentClasses,
@@ -322,7 +322,7 @@ type
   end;
 
   // Stores registered raster file Formatx.
-  TRasterFileFormatsList = class(TGPersistentObjectList)
+  TRasterFileFormatsList = class(TgPersistentObjectList)
   public
     destructor Destroy; override;
     procedure Add(const Ext, Desc: string; DescID: Integer; AClass: TgxBaseImageClass);

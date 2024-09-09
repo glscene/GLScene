@@ -249,7 +249,7 @@ contains
   GLS.XOpenGL in '..\Source\GLS.XOpenGL.pas',
   GLS.InitOpenGL in '..\Source\GLS.InitOpenGL.pas',
   GLScene.OpenGLTokens in '..\Source\GLScene.OpenGLTokens.pas',
-  GLS.PipelineTransformation in '..\Source\GLS.PipelineTransformation.pas',
+  GLScene.PipelineTransform in '..\Source\GLScene.PipelineTransform.pas',
   GLScene.Polynomials in '..\Source\GLScene.Polynomials.pas',
   GLScene.Spline in '..\Source\GLScene.Spline.pas',
   GLScene.Strings in '..\Source\GLScene.Strings.pas',

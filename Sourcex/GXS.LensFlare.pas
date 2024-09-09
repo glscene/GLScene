@@ -24,7 +24,7 @@ uses
   GLScene.BaseClasses,
   GXS.Scene,
   GXS.Objects,
-  GXS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GXS.Context,
   GLScene.Color,
   GXS.RenderContextInfo,
@@ -40,7 +40,7 @@ type
   { The actual gradients between two colors are, of course, calculated by OpenGL.
     The start and end colors of a gradient are stored to represent the color of
     lens flare elements. }
-  TgxFlareGradient = class(TGUpdateAbleObject)
+  TgxFlareGradient = class(TgUpdateAbleObject)
   private
     FFromColor: TGColor;
     FToColor: TGColor;

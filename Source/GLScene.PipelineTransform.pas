@@ -1,13 +1,13 @@
 //
-// The graphics engine GXScene https://github.com/glscene
+// The graphics engine GLScene https://github.com/glscene
 //
-unit GXS.PipelineTransformation;
+unit GLScene.PipelineTransform;
 
 (* Pipeline transformations *)
 
 interface
 
-{.$I GLScene.Defines.inc}
+{$I GLScene.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -20,8 +20,7 @@ const
   MAX_MATRIX_STACK_DEPTH = 128;
 
 type
-
-  TGLPipelineTransformationState =
+  TgPipelineTransformationState =
   (
     trsModelViewChanged,
     trsInvModelViewChanged,
@@ -30,16 +29,15 @@ type
     trsViewProjChanged,
     trsFrustum
   );
-
-  TGLPipelineTransformationStates = set of TGLPipelineTransformationState;
+  TgPipelineTransformationStates = set of TgPipelineTransformationState;
 
 const
   cAllStatesChanged = [trsModelViewChanged, trsInvModelViewChanged, trsInvModelChanged, trsViewProjChanged, trsNormalModelChanged, trsFrustum];
 
 type
-  PTransformationRec = ^TTransformationRec;
-  TTransformationRec = record
-    FStates: TGLPipelineTransformationStates;
+  PgTransformationRec = ^TgTransformationRec;
+  TgTransformationRec = record
+    FStates: TgPipelineTransformationStates;
     FModelMatrix: TGLMatrix;
     FViewMatrix: TGLMatrix;
     FProjectionMatrix: TGLMatrix;
@@ -52,15 +50,14 @@ type
   end;
 
 type
+  TgOnMatricesPush = procedure() of object;
 
-  TOnMatricesPush = procedure() of object;
-
-  TGLTransformation = class(TObject)
+  TgTransformation = class(TObject)
   private
     FStackPos: Integer;
-    FStack: array of TTransformationRec;
+    FStack: array of TgTransformationRec;
     FLoadMatricesEnabled: Boolean;
-    FOnPush: TOnMatricesPush;
+    FOnPush: TGOnMatricesPush;
     function GetModelMatrix: PGLMatrix; inline;
     function GetViewMatrix: PGLMatrix; inline;
     function GetProjectionMatrix: PGLMatrix; inline;
@@ -74,18 +71,18 @@ type
     procedure LoadModelViewMatrix; inline;
     procedure LoadProjectionMatrix; inline;
     procedure DoMatricesLoaded; inline;
-    property OnPush: TOnMatricesPush read FOnPush write FOnPush;
+    property OnPush: TgOnMatricesPush read FOnPush write FOnPush;
   public
     constructor Create;
     procedure SetModelMatrix(const AMatrix: TGLMatrix); inline;
     procedure SetViewMatrix(const AMatrix: TGLMatrix); inline;
     procedure SetProjectionMatrix(const AMatrix: TGLMatrix); inline;
     procedure IdentityAll; inline;
-    procedure Push(AValue: PTransformationRec); overload;
+    procedure Push(AValue: PGTransformationRec); overload;
     procedure Push(); overload; inline;
     procedure Pop;
     procedure ReplaceFromStack;
-    function StackTop: TTransformationRec; inline;
+    function StackTop: TGTransformationRec; inline;
     property ModelMatrix: PGLMatrix read GetModelMatrix;
     property ViewMatrix: PGLMatrix read GetViewMatrix;
     property ProjectionMatrix: PGLMatrix read GetProjectionMatrix;
@@ -98,25 +95,23 @@ type
     property LoadMatricesEnabled: Boolean read FLoadMatricesEnabled write FLoadMatricesEnabled;
   end;
 
-//=====================================================================
-implementation
-//=====================================================================
+implementation //------------------------------------------------------------
 
-constructor TGLTransformation.Create;
+constructor TGTransformation.Create;
 begin
   FStackPos := 0;
   SetLength(FStack, MAX_MATRIX_STACK_DEPTH);
   IdentityAll;
 end;
 
-procedure TGLTransformation.LoadProjectionMatrix;
+procedure TGTransformation.LoadProjectionMatrix;
 begin
   glMatrixMode(GL_PROJECTION);
   glLoadMatrixf(@FStack[FStackPos].FProjectionMatrix);
   glMatrixMode(GL_MODELVIEW);
 end;
 
-function TGLTransformation.GetModelViewMatrix: PGLMatrix;
+function TGTransformation.GetModelViewMatrix: PGLMatrix;
 begin
   if trsModelViewChanged in FStack[FStackPos].FStates then
   begin
@@ -127,12 +122,12 @@ begin
   Result := @FStack[FStackPos].FModelViewMatrix;
 end;
 
-procedure TGLTransformation.LoadModelViewMatrix;
+procedure TGTransformation.LoadModelViewMatrix;
 begin
   glLoadMatrixf(PGLFloat(GetModelViewMatrix));
 end;
 
-procedure TGLTransformation.IdentityAll;
+procedure TGTransformation.IdentityAll;
 begin
   with FStack[FStackPos] do
   begin
@@ -148,13 +143,13 @@ begin
   end;
 end;
 
-procedure TGLTransformation.DoMatricesLoaded;
+procedure TGTransformation.DoMatricesLoaded;
 begin
   if Assigned(FOnPush) then
     FOnPush();
 end;
 
-procedure TGLTransformation.Push;
+procedure TGTransformation.Push;
 var
   prevPos: Integer;
 begin
@@ -163,7 +158,7 @@ begin
   FStack[FStackPos] := FStack[prevPos];
 end;
 
-procedure TGLTransformation.Push(AValue: PTransformationRec);
+procedure TGTransformation.Push(AValue: PGTransformationRec);
 var
   prevPos: Integer;
 begin
@@ -191,7 +186,7 @@ begin
     FStack[FStackPos] := FStack[prevPos];
 end;
 
-procedure TGLTransformation.Pop;
+procedure TGTransformation.Pop;
 begin
   {$IFDEF USE_LOGGING}
   if FStackPos = 0 then
@@ -209,7 +204,7 @@ begin
   end;
 end;
 
-procedure TGLTransformation.ReplaceFromStack;
+procedure TGTransformation.ReplaceFromStack;
 var
   prevPos: Integer;
 begin
@@ -232,22 +227,22 @@ begin
   end;
 end;
 
-function TGLTransformation.GetModelMatrix: PGLMatrix;
+function TGTransformation.GetModelMatrix: PGLMatrix;
 begin
   Result := @FStack[FStackPos].FModelMatrix;
 end;
 
-function TGLTransformation.GetViewMatrix: PGLMatrix;
+function TGTransformation.GetViewMatrix: PGLMatrix;
 begin
   Result := @FStack[FStackPos].FViewMatrix;
 end;
 
-function TGLTransformation.GetProjectionMatrix: PGLMatrix;
+function TGTransformation.GetProjectionMatrix: PGLMatrix;
 begin
   Result := @FStack[FStackPos].FProjectionMatrix;
 end;
 
-procedure TGLTransformation.SetModelMatrix(const AMatrix: TGLMatrix);
+procedure TGTransformation.SetModelMatrix(const AMatrix: TGLMatrix);
 begin
   FStack[FStackPos].FModelMatrix := AMatrix;
   FStack[FStackPos].FStates := FStack[FStackPos].FStates +
@@ -256,7 +251,7 @@ begin
     LoadModelViewMatrix;
 end;
 
-procedure TGLTransformation.SetViewMatrix(const AMatrix: TGLMatrix);
+procedure TGTransformation.SetViewMatrix(const AMatrix: TGLMatrix);
 begin
   FStack[FStackPos].FViewMatrix:= AMatrix;
   FStack[FStackPos].FStates := FStack[FStackPos].FStates +
@@ -265,12 +260,12 @@ begin
     LoadModelViewMatrix;
 end;
 
-function TGLTransformation.StackTop: TTransformationRec;
+function TGTransformation.StackTop: TGTransformationRec;
 begin
   Result := FStack[FStackPos];
 end;
 
-procedure TGLTransformation.SetProjectionMatrix(const AMatrix: TGLMatrix);
+procedure TGTransformation.SetProjectionMatrix(const AMatrix: TGLMatrix);
 begin
   FStack[FStackPos].FProjectionMatrix := AMatrix;
   FStack[FStackPos].FStates := FStack[FStackPos].FStates +
@@ -280,7 +275,7 @@ begin
 end;
 
 
-function TGLTransformation.GetInvModelViewMatrix: PGLMatrix;
+function TGTransformation.GetInvModelViewMatrix: PGLMatrix;
 begin
   if trsInvModelViewChanged in FStack[FStackPos].FStates then
   begin
@@ -291,7 +286,7 @@ begin
   Result := @FStack[FStackPos].FInvModelViewMatrix;
 end;
 
-function TGLTransformation.GetInvModelMatrix: PGLMatrix;
+function TGTransformation.GetInvModelMatrix: PGLMatrix;
 begin
   if trsInvModelChanged in FStack[FStackPos].FStates then
   begin
@@ -301,7 +296,7 @@ begin
   Result := @FStack[FStackPos].FInvModelMatrix;
 end;
 
-function TGLTransformation.GetNormalModelMatrix: PAffineMatrix;
+function TGTransformation.GetNormalModelMatrix: PAffineMatrix;
 var
   M: TGLMatrix;
 begin
@@ -315,7 +310,7 @@ begin
   Result := @FStack[FStackPos].FNormalModelMatrix;
 end;
 
-function TGLTransformation.GetViewProjectionMatrix: PGLMatrix;
+function TGTransformation.GetViewProjectionMatrix: PGLMatrix;
 begin
   if trsViewProjChanged in FStack[FStackPos].FStates then
   begin
@@ -326,7 +321,7 @@ begin
   Result := @FStack[FStackPos].FViewProjectionMatrix;
 end;
 
-function TGLTransformation.GetFrustum: TFrustum;
+function TGTransformation.GetFrustum: TFrustum;
 begin
   if trsFrustum in FStack[FStackPos].FStates then
   begin
@@ -335,5 +330,7 @@ begin
   end;
   Result := FStack[FStackPos].FFrustum;
 end;
+
+//-----------------------------------------------------------------------------
 
 end.

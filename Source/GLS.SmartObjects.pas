@@ -32,7 +32,7 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorTypesExt,
   GLScene.Strings,
-  GLS.PipelineTransformation,
+  GLScene.PipelineTransform,
 
   GLS.Scene,
   GLScene.VectorLists,
@@ -71,7 +71,7 @@ type
   TGLCyborgThinks = class(TCollection);
 
   // A list of thinking periods for TGLCyborgThinkMode
-  TGLCyborgThinksList = class(TGPersistentObjectList);
+  TGLCyborgThinksList = class(TgPersistentObjectList);
 
 const
   cDefaultCyborgOptions = [coCollide];

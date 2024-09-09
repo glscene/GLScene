@@ -104,7 +104,7 @@ type
   published
   end;
 
-  TLightmapBounds = class(TGCustomCoordinates)
+  TLightmapBounds = class(TgCustomCoordinates)
   private
     function GetLeft: Single;
     function GetTop: Single;
@@ -125,14 +125,14 @@ type
     property Height: Single read GetHeight;
   end;
 
-  TgxMeshLines = class(TGXFreeForm)
+  TgxMeshLines = class(TgxFreeForm)
   private
     FLines: TLineCollection;
-    FMesh: TGXMeshObject;
+    FMesh: TgxMeshObject;
     FLightmapBounds: TLightmapBounds;
     FLightmapIndex: Integer;
     FLightmapMaterialName: String;
-    FFaceGroup: TFGXVertexIndexList;
+    FFaceGroup: TgxFGVertexIndexList;
     FIndex: Integer;
     FNoZWrite: boolean;
     FShowNodes: Boolean;
@@ -143,8 +143,8 @@ type
     function GetUpdating: Boolean;
     function PointNearLine(const LineItem: TLineItem; const X,Z: Single; Tolerance: single = 1): boolean;
     function PointNearSegment(const StartNode, EndNode: TLineNode; const X,Z: Single; LineWidth: single; Tolerance: single = 1): boolean;
-    procedure StitchStrips(idx: TGIntegerList);
-    procedure AddStitchMarker(idx: TGIntegerList);
+    procedure StitchStrips(idx: TgIntegerList);
+    procedure AddStitchMarker(idx: TgIntegerList);
     procedure SetShowNodes(const Value: Boolean);
     procedure SetNoZWrite(const Value: Boolean);
     procedure SetLightmapIndex(const value: Integer);
@@ -538,9 +538,9 @@ begin
 
   FMeshObjects.Clear;
   lFirstLineDone := False;
-  FMesh := TGXMeshObject.CreateOwned(FMeshObjects);
+  FMesh := TgxMeshObject.CreateOwned(FMeshObjects);
   FMesh.Mode := momFaceGroups;
-  FFaceGroup := TFGXVertexIndexList.CreateOwned(FMesh.FaceGroups);
+  FFaceGroup := TgxFGVertexIndexList.CreateOwned(FMesh.FaceGroups);
   FFaceGroup.Mode := fgmmTriangleStrip;
   FFaceGroup.LightMapIndex := FLightmapIndex;
   FIndex := 0;
@@ -777,7 +777,7 @@ begin
   result:= sqrt(sqr(xt - X) + sqr(yt - Z)) <= lDist;
 end;
 
-procedure TgxMeshLines.StitchStrips(idx: TGIntegerList);
+procedure TgxMeshLines.StitchStrips(idx: TgIntegerList);
 var
   i: integer;
   i0, i1, i2: integer;
@@ -797,7 +797,7 @@ begin
   end;
 end;
 
-procedure TgxMeshLines.AddStitchMarker(idx: TGIntegerList);
+procedure TgxMeshLines.AddStitchMarker(idx: TgIntegerList);
 begin
   idx.Add(-1);
   idx.Add(-2);

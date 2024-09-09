@@ -21,7 +21,7 @@ uses
   GLScene.VectorTypes,
   GLScene.OpenGLTokens,
   GLS.OpenGLAdapter,
-  GLS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLS.Context,
   GLS.State,
   GLScene.Logger,

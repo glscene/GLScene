@@ -4,7 +4,7 @@
 unit GXS.FileOBJ;
 
 (*
-  Support-Code to load Wavefront OBJ Files into TGXFreeForm-Components
+  Support-Code to load Wavefront OBJ Files into TgxFreeForm-Components
   in GLScene.
   Note that you must manually add this unit to one of your project's uses
   to enable support for OBJ & OBJF at run-time.
@@ -46,7 +46,7 @@ const
 
 type
 
-  TgxOBJVectorFile = class(TGXVectorFile)
+  TgxOBJVectorFile = class(TgxVectorFile)
   private
     FSourceStream: TStream; // Load from this stream
     FBuffer: AnsiString; // Buffer
@@ -59,7 +59,7 @@ type
     procedure ReadLine;
     // Raise a class-specific exception
     procedure Error(const msg: string);
-    procedure CalcMissingOBJNormals(mesh: TGXMeshObject);
+    procedure CalcMissingOBJNormals(mesh: TgxMeshObject);
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -153,7 +153,7 @@ type
   private
     FMode: TOBJFGMode;
     FName: string;
-    FPolygonVertices: TGIntegerList;
+    FPolygonVertices: TgIntegerList;
     FCurrentVertexCount: Integer;
     FShowNormals: Boolean;
     procedure PolygonComplete; (* Current polygon completed. Adds FCurrentVertexCount
@@ -161,22 +161,22 @@ type
     procedure SetMode(aMode: TOBJFGMode);
   public
     procedure Assign(Source: TPersistent); override;
-    constructor CreateOwned(aOwner: TGXFaceGroups); override;
+    constructor CreateOwned(aOwner: TgxFaceGroups); override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgVirtualReader); override;
     procedure Add(VertexIdx, NormalIdx, TexCoordIdx: Integer);
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
-    procedure AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
-      aNormals: TGAffineVectorList = nil); override;
+    procedure AddToTriangles(aList: TgAffineVectorList; aTexCoords: TgAffineVectorList = nil;
+      aNormals: TgAffineVectorList = nil); override;
     function TriangleCount: Integer; override;
     property Mode: TOBJFGMode read FMode write SetMode;
     property Name: string read FName write FName;
-    property PolygonVertices: TGIntegerList read FPolygonVertices;
+    property PolygonVertices: TgIntegerList read FPolygonVertices;
     property ShowNormals: Boolean read FShowNormals write FShowNormals;
   end;
 
-constructor TOBJFGVertexNormalTexIndexList.CreateOwned(aOwner: TGXFaceGroups);
+constructor TOBJFGVertexNormalTexIndexList.CreateOwned(aOwner: TgxFaceGroups);
 begin
   inherited CreateOwned(aOwner);
   FMode := objfgmmTriangleStrip;
@@ -209,7 +209,7 @@ begin
   Assert(VertexIndices.Count = 0, 'Decide on the mode before adding vertices.');
   FMode := aMode;
   if FMode = objfgmmPolygons then
-    FPolygonVertices := TGIntegerList.Create
+    FPolygonVertices := TgIntegerList.Create
   else
   begin
     FPolygonVertices.Free;
@@ -351,11 +351,11 @@ begin
   end;
 end;
 
-procedure TOBJFGVertexNormalTexIndexList.AddToTriangles(aList: TGAffineVectorList; aTexCoords: TGAffineVectorList = nil;
-  aNormals: TGAffineVectorList = nil);
+procedure TOBJFGVertexNormalTexIndexList.AddToTriangles(aList: TgAffineVectorList; aTexCoords: TgAffineVectorList = nil;
+  aNormals: TgAffineVectorList = nil);
 var
   i, j, N, n0: Integer;
-  vertexList, texCoordList, normalsList: TGAffineVectorList;
+  vertexList, texCoordList, normalsList: TgAffineVectorList;
 begin
   vertexList := Owner.Owner.Vertices;
   texCoordList := Owner.Owner.TexCoords;
@@ -525,7 +525,7 @@ begin
   Result := [dfcRead, dfcWrite];
 end;
 
-procedure TgxOBJVectorFile.CalcMissingOBJNormals(mesh: TGXMeshObject);
+procedure TgxOBJVectorFile.CalcMissingOBJNormals(mesh: TgxMeshObject);
 var
   VertexPool: PAffineVectorArray;
   N: TAffineVector;
@@ -608,7 +608,7 @@ procedure TgxOBJVectorFile.LoadFromStream(aStream: TStream);
 var
   hv: THomogeneousVector;
   av: TAffineVector;
-  mesh: TGXMeshObject;
+  mesh: TgxMeshObject;
   faceGroup: TOBJFGVertexNormalTexIndexList;
   faceGroupNames: TStringList;
 
@@ -763,10 +763,10 @@ var
     texName: string;
     libFilename: string;
   begin
-    if GetOwner is TGXBaseMesh then
+    if GetOwner is TgxBaseMesh then
     begin
       // got a linked material library?
-      matLib := TGXBaseMesh(GetOwner).MaterialLibrary;
+      matLib := TgxBaseMesh(GetOwner).MaterialLibrary;
       if Assigned(matLib) then
       begin
         Result := matName;
@@ -884,7 +884,7 @@ var
   procedure SplitMesh;
   var
     i, j, Count: Integer;
-    newMesh: TGXMeshObject;
+    newMesh: TgxMeshObject;
     newfaceGroup: TOBJFGVertexNormalTexIndexList;
     VertexIdx, NormalIdx, TexCoordIdx: Integer;
     AffineVector: TAffineVector;
@@ -893,7 +893,7 @@ var
     begin
       faceGroup := mesh.FaceGroups[i] as TOBJFGVertexNormalTexIndexList;
 
-      newMesh := TGXMeshObject.CreateOwned(Owner.MeshObjects);
+      newMesh := TgxMeshObject.CreateOwned(Owner.MeshObjects);
       newMesh.Mode := momFaceGroups;
       newMesh.Name := faceGroup.Name;
 
@@ -945,7 +945,7 @@ begin
   objMtlFileName := '';
   curMtlName := '';
 
-  mesh := TGXMeshObject.CreateOwned(Owner.MeshObjects);
+  mesh := TgxMeshObject.CreateOwned(Owner.MeshObjects);
   mesh.Mode := momFaceGroups;
 
   faceGroupNames := TStringList.Create;
@@ -1173,7 +1173,7 @@ var
     WriteLn('');
   end;
 
-  procedure WriteVertexIndexList(fg: TFGXVertexIndexList; o: Integer = 0);
+  procedure WriteVertexIndexList(fg: TgxFGVertexIndexList; o: Integer = 0);
   var
     i, N: Integer;
   begin
@@ -1221,7 +1221,7 @@ var
   procedure WriteFaceGroups;
   var
     j, i, k: Integer;
-    fg: TGXFaceGroup;
+    fg: TgxFaceGroup;
     MoName: string;
   begin
     k := 0;
@@ -1237,8 +1237,8 @@ var
         fg := Owner.MeshObjects[j].FaceGroups[i];
         if fg is TOBJFGVertexNormalTexIndexList then
           WriteOBJFaceGroup(TOBJFGVertexNormalTexIndexList(fg), k)
-        else if fg is TFGXVertexIndexList then
-          WriteVertexIndexList(TFGXVertexIndexList(fg), k)
+        else if fg is TgxFGVertexIndexList then
+          WriteVertexIndexList(TgxFGVertexIndexList(fg), k)
         else
           Assert(False); // unsupported face group
       end;
@@ -1248,7 +1248,7 @@ var
   end;
 
 begin
-  Assert(Owner is TGXFreeForm, 'Can only save FreeForms.');
+  Assert(Owner is TgxFreeForm, 'Can only save FreeForms.');
 
   OldDecimalSeparator := FormatSettings.DecimalSeparator;
   FormatSettings.DecimalSeparator := '.';
@@ -1353,7 +1353,7 @@ begin
     else
     begin
       if FPolygonVertices = nil then
-        FPolygonVertices := TGIntegerList.Create;
+        FPolygonVertices := TgIntegerList.Create;
       FPolygonVertices.Assign(TOBJFGVertexNormalTexIndexList(Source).FPolygonVertices);
     end;
   end
@@ -1361,7 +1361,7 @@ begin
     inherited;
 end;
 
-procedure TOBJFGVertexNormalTexIndexList.ReadFromFiler(reader: TGVirtualReader);
+procedure TOBJFGVertexNormalTexIndexList.ReadFromFiler(reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -1376,7 +1376,7 @@ begin
 
     if FMode = objfgmmPolygons then
     begin
-      FPolygonVertices := TGIntegerList.Create;
+      FPolygonVertices := TgIntegerList.Create;
       FPolygonVertices.ReadFromFiler(reader);
     end;
   end
@@ -1384,7 +1384,7 @@ begin
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TOBJFGVertexNormalTexIndexList.WriteToFiler(writer: TGVirtualWriter);
+procedure TOBJFGVertexNormalTexIndexList.WriteToFiler(writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do

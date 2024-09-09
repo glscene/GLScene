@@ -3,7 +3,10 @@
 //
 unit GLS.Joystick;
 
-(* Component for handling joystick messages *)
+(*
+  Component for handling joystick messages
+  Registered components: [TGLJoystick];
+*)
 
 interface
 
@@ -80,17 +83,15 @@ type
       write FOnJoystickMove;
   end;
 
-// ---------------------------------------------------------------------
-implementation
-// ---------------------------------------------------------------------
+implementation // ------------------------------------------------------------
 
 const
   cJoystickIDToNative: array [jidNoJoystick .. jidJoystick2] of Byte = (9,
     JOYSTICKID1, JOYSTICKID2);
 
-// ------------------
-// ------------------ TJoystick ------------------
-// ------------------
+  // ------------------
+  // ------------------ TJoystick ------------------
+  // ------------------
 
 constructor TGLJoystick.Create(AOwner: TComponent);
 begin
@@ -402,10 +403,10 @@ begin
   MakeJoyButtons(Buttons);
 end;
 
-//------------------------------------
-initialization
-//------------------------------------
+initialization // ------------------------------------------------------------
 
 RegisterClasses([TGLJoystick]);
+
+finalization // --------------------------------------------------------------
 
 end.

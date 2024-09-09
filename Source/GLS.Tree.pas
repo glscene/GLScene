@@ -79,8 +79,8 @@ type
     FBranchID: Integer;
     FParentID: Integer;
     FMatrix: TGLMatrix;
-    FLower: TGIntegerList;
-    FUpper: TGIntegerList;
+    FLower: TgIntegerList;
+    FUpper: TgIntegerList;
     FCentralLeader: Boolean;
     procedure BuildBranch(branchNoise: TGLTreeBranchNoise;
       const matrix: TGLMatrix; TexCoordY, Twist: Single; Level: Integer);
@@ -93,8 +93,8 @@ type
     property Right: TGLTreeBranch read FRight;
     property Parent: TGLTreeBranch read FParent;
     property matrix: TGLMatrix read FMatrix;
-    property Lower: TGIntegerList read FLower;
-    property Upper: TGIntegerList read FUpper;
+    property Lower: TgIntegerList read FLower;
+    property Upper: TgIntegerList read FUpper;
   end;
 
   TGLTreeBranches = class
@@ -105,11 +105,11 @@ type
     FVertices: TGAffineVectorList;
     FNormals: TGAffineVectorList;
     FTexCoords: TGAffineVectorList;
-    FIndices: TGIntegerList;
+    FIndices: TgIntegerList;
     FRoot: TGLTreeBranch;
     FCount: Integer;
     FBranchCache: TList;
-    FBranchIndices: TGIntegerList;
+    FBranchIndices: TgIntegerList;
     procedure BuildBranches;
   public
     constructor Create(AOwner: TGLTree);
@@ -371,8 +371,8 @@ constructor TGLTreeBranch.Create(AOwner: TGLTreeBranches;
 begin
   FOwner := AOwner;
   FParent := AParent;
-  FUpper := TGIntegerList.Create;
-  FLower := TGIntegerList.Create;
+  FUpper := TgIntegerList.Create;
+  FLower := TgIntegerList.Create;
   FCentralLeader := False;
 
   // Skeletal construction helpers
@@ -618,9 +618,9 @@ begin
   FVertices := TGAffineVectorList.Create;
   FNormals := TGAffineVectorList.Create;
   FTexCoords := TGAffineVectorList.Create;
-  FIndices := TGIntegerList.Create;
+  FIndices := TgIntegerList.Create;
   FBranchCache := TList.Create;
-  FBranchIndices := TGIntegerList.Create;
+  FBranchIndices := TgIntegerList.Create;
   FCount := 0;
 end;
 

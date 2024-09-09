@@ -49,9 +49,9 @@ type
   private
     FOwner: TgxTree;
     FCount: Integer;
-    FVertices: TGAffineVectorList;
-    FNormals: TGAffineVectorList;
-    FTexCoords: TGAffineVectorList;
+    FVertices: TgAffineVectorList;
+    FNormals: TgAffineVectorList;
+    FTexCoords: TgAffineVectorList;
   public
     constructor Create(AOwner: TgxTree);
     destructor Destroy; override;
@@ -60,9 +60,9 @@ type
     procedure Clear;
     property Owner: TgxTree read FOwner;
     property Count: Integer read FCount;
-    property Vertices: TGAffineVectorList read FVertices;
-    property Normals: TGAffineVectorList read FNormals;
-    property TexCoords: TGAffineVectorList read FTexCoords;
+    property Vertices: TgAffineVectorList read FVertices;
+    property Normals: TgAffineVectorList read FNormals;
+    property TexCoords: TgAffineVectorList read FTexCoords;
   end;
 
   TgxTreeBranch = class
@@ -75,8 +75,8 @@ type
     FBranchID: Integer;
     FParentID: Integer;
     FMatrix: TMatrix4f;
-    FLower: TGIntegerList;
-    FUpper: TGIntegerList;
+    FLower: TgIntegerList;
+    FUpper: TgIntegerList;
     FCentralLeader: Boolean;
     procedure BuildBranch(branchNoise: TgxTreeBranchNoise;
       const matrix: TMatrix4f; TexCoordY, Twist: Single; Level: Integer);
@@ -89,8 +89,8 @@ type
     property Right: TgxTreeBranch read FRight;
     property Parent: TgxTreeBranch read FParent;
     property matrix: TMatrix4f read FMatrix;
-    property Lower: TGIntegerList read FLower;
-    property Upper: TGIntegerList read FUpper;
+    property Lower: TgIntegerList read FLower;
+    property Upper: TgIntegerList read FUpper;
   end;
 
   TgxTreeBranches = class
@@ -98,14 +98,14 @@ type
     FOwner: TgxTree;
     FSinList: TGSingleList;
     FCosList: TGSingleList;
-    FVertices: TGAffineVectorList;
-    FNormals: TGAffineVectorList;
-    FTexCoords: TGAffineVectorList;
-    FIndices: TGIntegerList;
+    FVertices: TgAffineVectorList;
+    FNormals: TgAffineVectorList;
+    FTexCoords: TgAffineVectorList;
+    FIndices: TgIntegerList;
     FRoot: TgxTreeBranch;
     FCount: Integer;
     FBranchCache: TList;
-    FBranchIndices: TGIntegerList;
+    FBranchIndices: TgIntegerList;
     procedure BuildBranches;
   public
     constructor Create(AOwner: TgxTree);
@@ -115,9 +115,9 @@ type
     property Owner: TgxTree read FOwner;
     property SinList: TGSingleList read FSinList;
     property CosList: TGSingleList read FCosList;
-    property Vertices: TGAffineVectorList read FVertices;
-    property Normals: TGAffineVectorList read FNormals;
-    property TexCoords: TGAffineVectorList read FTexCoords;
+    property Vertices: TgAffineVectorList read FVertices;
+    property Normals: TgAffineVectorList read FNormals;
+    property TexCoords: TgAffineVectorList read FTexCoords;
     property Count: Integer read FCount;
   end;
 
@@ -195,7 +195,7 @@ type
       ARenderSelf, ARenderChildren: Boolean); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     procedure StructureChanged; override;
-    procedure BuildMesh(GLBaseMesh: TGXBaseMesh);
+    procedure BuildMesh(GLBaseMesh: TgxBaseMesh);
     procedure RebuildTree;
     procedure ForceTotalRebuild;
     procedure Clear;
@@ -269,9 +269,9 @@ constructor TgxTreeLeaves.Create(AOwner: TgxTree);
 begin
   FOwner := AOwner;
   FCount := 0;
-  FVertices := TGAffineVectorList.Create;
-  FNormals := TGAffineVectorList.Create;
-  FTexCoords := TGAffineVectorList.Create;
+  FVertices := TgAffineVectorList.Create;
+  FNormals := TgAffineVectorList.Create;
+  FTexCoords := TgAffineVectorList.Create;
 end;
 
 destructor TgxTreeLeaves.Destroy;
@@ -370,8 +370,8 @@ constructor TgxTreeBranch.Create(AOwner: TgxTreeBranches;
 begin
   FOwner := AOwner;
   FParent := AParent;
-  FUpper := TGIntegerList.Create;
-  FLower := TGIntegerList.Create;
+  FUpper := TgIntegerList.Create;
+  FLower := TgIntegerList.Create;
   FCentralLeader := False;
 
   // Skeletal construction helpers
@@ -613,12 +613,12 @@ begin
   FOwner := AOwner;
   FSinList := TGSingleList.Create;
   FCosList := TGSingleList.Create;
-  FVertices := TGAffineVectorList.Create;
-  FNormals := TGAffineVectorList.Create;
-  FTexCoords := TGAffineVectorList.Create;
-  FIndices := TGIntegerList.Create;
+  FVertices := TgAffineVectorList.Create;
+  FNormals := TgAffineVectorList.Create;
+  FTexCoords := TgAffineVectorList.Create;
+  FIndices := TgIntegerList.Create;
   FBranchCache := TList.Create;
-  FBranchIndices := TGIntegerList.Create;
+  FBranchIndices := TgIntegerList.Create;
   FCount := 0;
 end;
 
@@ -828,10 +828,10 @@ begin
   inherited;
 end;
 
-procedure TgxTree.BuildMesh(GLBaseMesh: TGXBaseMesh);
+procedure TgxTree.BuildMesh(GLBaseMesh: TgxBaseMesh);
 
-  procedure RecursBranches(Branch: TgxTreeBranch; bone: TGXSkeletonBone;
-    Frame: TGXSkeletonFrame);
+  procedure RecursBranches(Branch: TgxTreeBranch; bone: TgxSkeletonBone;
+    Frame: TgxSkeletonFrame);
   var
     trans: TTransformations;
     mat: TMatrix4f;
@@ -862,18 +862,18 @@ procedure TgxTree.BuildMesh(GLBaseMesh: TGXBaseMesh);
 
     // Recurse with child branches
     if Assigned(Branch.Left) then
-      RecursBranches(Branch.Left, TGXSkeletonBone.CreateOwned(bone), Frame);
+      RecursBranches(Branch.Left, TgxSkeletonBone.CreateOwned(bone), Frame);
     if Assigned(Branch.Right) then
-      RecursBranches(Branch.Right, TGXSkeletonBone.CreateOwned(bone), Frame);
+      RecursBranches(Branch.Right, TgxSkeletonBone.CreateOwned(bone), Frame);
   end;
 
 var
-  // SkelMesh : TGXSkeletonMeshObject;
-  fg: TFGXVertexIndexList;
+  // SkelMesh : TgxSkeletonMeshObject;
+  fg: TgxFGVertexIndexList;
   fg2: TFGVertexNormalTexIndexList;
   i, j, stride: Integer;
   // parent_id : integer;
-  // bone : TGXSkeletonBone;
+  // bone : TgxSkeletonBone;
 begin
   if not Assigned(GLBaseMesh) then
     exit;
@@ -887,22 +887,22 @@ begin
   GLBaseMesh.MeshObjects.Clear;
   GLBaseMesh.Skeleton.Clear;
 
-  // if GLBaseMesh is TGXActor then
-  // TGXSkeletonMeshObject.CreateOwned(GLBaseMesh.MeshObjects)
+  // if GLBaseMesh is TgxActor then
+  // TgxSkeletonMeshObject.CreateOwned(GLBaseMesh.MeshObjects)
   // else
-  TGXMeshObject.CreateOwned(GLBaseMesh.MeshObjects);
+  TgxMeshObject.CreateOwned(GLBaseMesh.MeshObjects);
   GLBaseMesh.MeshObjects[0].Mode := momFaceGroups;
 
   // Branches
   GLBaseMesh.MeshObjects[0].Vertices.Add(Branches.Vertices);
   GLBaseMesh.MeshObjects[0].Normals.Add(Branches.Normals);
   GLBaseMesh.MeshObjects[0].TexCoords.Add(Branches.TexCoords);
-  { if GLBaseMesh is TGXActor then begin
-    TGXActor(GLBaseMesh).Reference:=aarSkeleton;
+  { if GLBaseMesh is TgxActor then begin
+    TgxActor(GLBaseMesh).Reference:=aarSkeleton;
     RecursBranches(Branches.FRoot,
-    TGXSkeletonBone.CreateOwned(GLBaseMesh.Skeleton.RootBones),
-    TGXSkeletonFrame.CreateOwned(GLBaseMesh.Skeleton.Frames));
-    SkelMesh:=TGXSkeletonMeshObject(GLBaseMesh.MeshObjects[0]);
+    TgxSkeletonBone.CreateOwned(GLBaseMesh.Skeleton.RootBones),
+    TgxSkeletonFrame.CreateOwned(GLBaseMesh.Skeleton.Frames));
+    SkelMesh:=TgxSkeletonMeshObject(GLBaseMesh.MeshObjects[0]);
     SkelMesh.BonesPerVertex:=1;
     SkelMesh.VerticeBoneWeightCount:=Branches.FBranchIndices.Count;
     for i:=0 to Branches.FBranchIndices.Count-1 do
@@ -915,7 +915,7 @@ begin
   stride := (BranchFacets + 1) * 2;
   for i := 0 to (FBranches.FIndices.Count div stride) - 1 do
   begin
-    fg := TFGXVertexIndexList.CreateOwned(GLBaseMesh.MeshObjects[0].FaceGroups);
+    fg := TgxFGVertexIndexList.CreateOwned(GLBaseMesh.MeshObjects[0].FaceGroups);
     fg.MaterialName := BranchMaterialName;
     fg.Mode := fgmmTriangleStrip;
     for j := 0 to stride - 1 do
@@ -923,10 +923,10 @@ begin
   end;
 
   // Leaves
-  // if GLBaseMesh is TGXActor then
-  // TGXSkeletonMeshObject.CreateOwned(GLBaseMesh.MeshObjects)
+  // if GLBaseMesh is TgxActor then
+  // TgxSkeletonMeshObject.CreateOwned(GLBaseMesh.MeshObjects)
   // else
-  TGXMeshObject.CreateOwned(GLBaseMesh.MeshObjects);
+  TgxMeshObject.CreateOwned(GLBaseMesh.MeshObjects);
   GLBaseMesh.MeshObjects[1].Mode := momFaceGroups;
 
   GLBaseMesh.MeshObjects[1].Vertices.Add(Leaves.Vertices);

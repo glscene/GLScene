@@ -27,7 +27,7 @@ type
 
   TPickRecord = class
   public
-    AObject: TGUpdateAbleComponent;
+    AObject: TgUpdateAbleComponent;
     SubObjects: TPickSubObjects;
     ZMin, ZMax: Single;
   end;
@@ -36,7 +36,7 @@ type
 
   (* List class for object picking.
      This list is used to store the results of a PickObjects call. *)
-  TgxPickList = class(TGPersistentObjectList)
+  TgxPickList = class(TgPersistentObjectList)
   private
     function GetFar(aValue: Integer): Single;
     function GetHit(aValue: Integer): TObject;
@@ -179,7 +179,7 @@ var
   newRecord: TPickRecord;
 begin
   newRecord := TPickRecord.Create;
-  newRecord.AObject := TGUpdateAbleComponent(obj);
+  newRecord.AObject := TgUpdateAbleComponent(obj);
   newRecord.SubObjects := subObj;
   newRecord.zMin := zMin;
   newRecord.zMax := zMax;

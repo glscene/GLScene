@@ -374,7 +374,7 @@
         <DCCReference Include="..\Source\GLS.XOpenGL.pas"/>
         <DCCReference Include="..\Source\GLS.InitOpenGL.pas"/>
         <DCCReference Include="..\Source\GLScene.OpenGLTokens.pas"/>
-        <DCCReference Include="..\Source\GLS.PipelineTransformation.pas"/>
+        <DCCReference Include="..\Source\GLScene.PipelineTransform.pas"/>
         <DCCReference Include="..\Source\GLScene.Polynomials.pas"/>
         <DCCReference Include="..\Source\GLScene.Spline.pas"/>
         <DCCReference Include="..\Source\GLScene.Strings.pas"/>

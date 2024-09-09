@@ -22,7 +22,7 @@ type
   TgxTimeEvent = class;
   TgxTimeEvents = class;
 
-  TgxTimeEventsMGR = class(TGUpdateAbleComponent)
+  TgxTimeEventsMGR = class(TgUpdateAbleComponent)
   private
     FCadencer: TgxCadencer;
     FEnabled: boolean;

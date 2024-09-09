@@ -22,23 +22,23 @@ uses
 
 (* Tesselates the polygon outlined by the Vertexes.
   And addeds them to the first facegroup of the Mesh. *)
-procedure DoTesselate(Vertexes: TGAffineVectorList;
-  Mesh: TGXBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
+procedure DoTesselate(Vertexes: TgAffineVectorList;
+  Mesh: TgxBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
 
 //------------------------------------------------
 implementation
 //------------------------------------------------
 
 var
-  TessMesh: TGXMeshObject;
-  TessFace: TFGIndexTexCoordList;
+  TessMesh: TgxMeshObject;
+  TessFace: TgxFGIndexTexCoordList;
   TessExtraVertices: Integer;
   TessVertices: PAffineVectorArray;
 
 procedure DoTessBegin(mode: GLEnum);
 {$IFDEF MSWIDOWS} stdcall;{$ELSE} cdecl;{$ENDIF}
 begin
-  TessFace := TFGIndexTexCoordList.CreateOwned(TessMesh.FaceGroups);
+  TessFace := TgxFGIndexTexCoordList.CreateOwned(TessMesh.FaceGroups);
   case mode of
     GL_TRIANGLES: TessFace.Mode := fgmmTriangles;
     GL_TRIANGLE_STRIP: TessFace.Mode := fgmmTriangleStrip;
@@ -77,7 +77,7 @@ begin
   SetVector(PAffineVector(outData)^, coords[0], coords[1], coords[2]);
 end;
 
-procedure DoTesselate(Vertexes: TGAffineVectorList; Mesh: TGXBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
+procedure DoTesselate(Vertexes: TgAffineVectorList; Mesh: TgxBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
 var
   Tess: GLUTesselator;
   i: Integer;
@@ -86,7 +86,7 @@ begin
   // Select or Create FaceGroup
   if Mesh.MeshObjects.Count = 0 then
   begin
-    TessMesh := TGXMeshObject.CreateOwned(Mesh.MeshObjects);
+    TessMesh := TgxMeshObject.CreateOwned(Mesh.MeshObjects);
     Mesh.MeshObjects[0].Mode := momFaceGroups;
   end
   else

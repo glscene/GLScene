@@ -42,7 +42,7 @@ const
    private
      FLocks: packed array of ByteBool;
      FPositions, FVelocity: packed array of Single;
-     FPlaneQuadIndices: TGPersistentObjectList;
+     FPlaneQuadIndices: TgPersistentObjectList;
      FPlaneQuadTexCoords: TGTexPointList;
      FPlaneQuadVertices: TGAffineVectorList;
      FPlaneQuadNormals: TGAffineVectorList;
@@ -132,7 +132,7 @@ begin
   FMaximumCatchupIterations := 1;
   FOptions := cDefaultWaterPlaneOptions;
 
-  FPlaneQuadIndices := TGPersistentObjectList.Create;
+  FPlaneQuadIndices := TgPersistentObjectList.Create;
   FPlaneQuadTexCoords := TGTexPointList.Create;
   FPlaneQuadVertices := TGAffineVectorList.Create;
   FPlaneQuadNormals := TGAffineVectorList.Create;
@@ -274,7 +274,7 @@ var
   i, j, ij, resSqr: Integer;
   maskBmp: TBitmap;
   scanLine: PIntegerArray;
-  il: TGIntegerList;
+  il: TgIntegerList;
   locked: Boolean;
 begin
   resSqr := FResolution * FResolution;
@@ -307,7 +307,7 @@ begin
   FPlaneQuadIndices.Clean;
   for j := 0 to Resolution - 2 do
   begin
-    il := TGIntegerList.Create;
+    il := TgIntegerList.Create;
     for i := 0 to Resolution - 1 do
     begin
       ij := i + j * Resolution;
@@ -324,7 +324,7 @@ begin
       else if il.Count > 0 then
       begin
         FPlaneQuadIndices.Add(il);
-        il := TGIntegerList.Create;
+        il := TgIntegerList.Create;
       end;
     end;
     if il.Count > 0 then
@@ -434,7 +434,7 @@ end;
 procedure TGLWaterPlane.BuildList(var rci: TGLRenderContextInfo);
 var
   i: Integer;
-  il: TGIntegerList;
+  il: TgIntegerList;
 begin
   gl.PushClientAttrib(GL_CLIENT_VERTEX_ARRAY_BIT);
 
@@ -455,7 +455,7 @@ begin
 
   for i := 0 to FPlaneQuadIndices.Count - 1 do
   begin
-    il := TGIntegerList(FPlaneQuadIndices[i]);
+    il := TgIntegerList(FPlaneQuadIndices[i]);
     gl.DrawElements(GL_QUAD_STRIP, il.Count, GL_UNSIGNED_INT, il.List);
   end;
 

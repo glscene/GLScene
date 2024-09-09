@@ -14,7 +14,7 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLS.State,
-  GLS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLScene.Color;
 
 type
@@ -74,7 +74,7 @@ type
     ObjectsSorting: TGLObjectsSorting;
     VisibilityCulling: TGLVisibilityCulling;
     GLStates: TGLStateCache;
-    PipelineTransformation: TGLTransformation;
+    PipelineTransformation: TGTransformation;
     Rcci: TGLRenderContextClippingInfo;
     SceneAmbientColor: TGColorVector;
     BufferFaceCull: Boolean;
@@ -86,8 +86,8 @@ type
     IgnoreBlendingRequests: Boolean;
     IgnoreDepthRequests: Boolean;
     Amalgamating: Boolean;
-    Lights: TGPersistentObjectList;
-    AfterRenderEffects: TGPersistentObjectList;
+    Lights: TgPersistentObjectList;
+    AfterRenderEffects: TgPersistentObjectList;
     CurrentMaterialLevel: TGLMaterialLevel;
     PrimitiveMask: TGLMeshPrimitives;
     OrderCounter: Integer;

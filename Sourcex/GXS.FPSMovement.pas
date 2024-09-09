@@ -50,11 +50,11 @@ type
 
   TgxMapCollectionItem = class(TXCollectionItem)
   private
-    FMap: TGXFreeForm;
+    FMap: TgxFreeForm;
     FMapName: string;
     FCollisionGroup: integer;
 
-    procedure setMap(value: TGXFreeForm);
+    procedure setMap(value: TgxFreeForm);
   protected
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
@@ -64,7 +64,7 @@ type
     class function FriendlyName: String; override;
   published
 
-    property Map: TGXFreeForm read FMap write setMap;
+    property Map: TgxFreeForm read FMap write setMap;
 
     (* Indicates the collision group of this map. A Collision Group
       is a set of logical maps and movers that can collide between
@@ -78,9 +78,9 @@ type
   TgxMapCollection = class(TXCollection)
   public
     class function ItemsClass: TXCollectionItemClass; override;
-    function addMap(Map: TGXFreeForm; CollisionGroup: integer = 0)
+    function addMap(Map: TgxFreeForm; CollisionGroup: integer = 0)
       : TgxMapCollectionItem;
-    function findMap(mapFreeForm: TGXFreeForm): TgxMapCollectionItem;
+    function findMap(mapFreeForm: TgxFreeForm): TgxMapCollectionItem;
   end;
 
   TgxFPSMovementManager = class(TComponent)
@@ -111,7 +111,7 @@ type
        Camera can collide with multiple planes (e.g. floor + multiple walls + ceiling)
        limit iterations to 4 or 5 for now, may need to be higher
       for more complex maps or fast motion *)
-    function SphereSweepAndSlide(freeform: TGXFreeForm;
+    function SphereSweepAndSlide(freeform: TgxFreeForm;
       behaviour: TgxBFPSMovement; SphereStart: TVector4f;
       var Velocity, newPosition: TVector4f; sphereRadius: single)
       : boolean; overload;
@@ -232,7 +232,7 @@ begin
   FCollisionGroup := 0;
 end;
 
-procedure TgxMapCollectionItem.setMap(value: TGXFreeForm);
+procedure TgxMapCollectionItem.setMap(value: TgxFreeForm);
 begin
   assert(owner.owner.InheritsFrom(TgxFPSMovementManager));
   if assigned(FMap) then
@@ -275,7 +275,7 @@ begin
   if FMapName <> '' then
   begin
     assert(owner.owner.InheritsFrom(TgxFPSMovementManager));
-    Map := TGXFreeForm(TgxFPSMovementManager(owner.owner)
+    Map := TgxFreeForm(TgxFPSMovementManager(owner.owner)
       .Scene.FindSceneObject(FMapName));
   end;
 end;
@@ -293,7 +293,7 @@ begin
   Result := TgxMapCollectionItem;
 end;
 
-function TgxMapCollection.addMap(Map: TGXFreeForm; CollisionGroup: integer = 0)
+function TgxMapCollection.addMap(Map: TgxFreeForm; CollisionGroup: integer = 0)
   : TgxMapCollectionItem;
 begin
   // no repeated maps (would only present delays...)
@@ -307,7 +307,7 @@ begin
   add(Result);
 end;
 
-function TgxMapCollection.findMap(mapFreeForm: TGXFreeForm)
+function TgxMapCollection.findMap(mapFreeForm: TgxFreeForm)
   : TgxMapCollectionItem;
 var
   i: integer;
@@ -424,9 +424,9 @@ begin
     Navigator := nil;
   if (AComponent = FScene) then
     FScene := nil;
-  if AComponent.InheritsFrom(TGXFreeForm) then
+  if AComponent.InheritsFrom(TgxFreeForm) then
   begin
-    Map := Maps.findMap(TGXFreeForm(AComponent));
+    Map := Maps.findMap(TgxFreeForm(AComponent));
     if assigned(Map) then
       Map.Map := nil;
   end;
@@ -462,7 +462,7 @@ begin
   end;
 end;
 
-function TgxFPSMovementManager.SphereSweepAndSlide(freeform: TGXFreeForm;
+function TgxFPSMovementManager.SphereSweepAndSlide(freeform: TgxFreeForm;
   behaviour: TgxBFPSMovement; SphereStart: TVector4f;
   var Velocity, newPosition: TVector4f; sphereRadius: single): boolean;
 var

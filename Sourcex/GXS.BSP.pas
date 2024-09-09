@@ -4,7 +4,7 @@
 unit GXS.BSP;
 (*
   Binary Space Partion mesh support for GXScene.
-  The classes of this unit are designed to operate within a TGXBaseMesh.
+  The classes of this unit are designed to operate within a TgxBaseMesh.
 *)
 interface
 
@@ -33,7 +33,7 @@ type
   TBSPRenderContextInfo = record
     // Local coordinates of the camera (can be a vector or point)
     cameraLocal: TVector4f;
-    rci: PRenderContextInfo;
+    rci: PGXRenderContextInfo;
     faceGroups: TList;
     cullingSpheres: array of TBSPCullingSphere;
   end;
@@ -63,13 +63,13 @@ type
     Stores the geometry information, BSP rendering options and offers some
     basic BSP utility methods. Geometry information is indexed in the facegroups,
     the 1st facegroup (of index 0) being the root node of the BSP tree. *)
-  TBSPMeshObject = class(TGXMeshObject)
+  TBSPMeshObject = class(TgxMeshObject)
   private
     FRenderSort: TBSPRenderSort;
     FClusterVisibility: TBSPClusterVisibility;
     FUseClusterVisibility: Boolean;
   public
-    constructor CreateOwned(AOwner: TGXMeshObjectList);
+    constructor CreateOwned(AOwner: TgxMeshObjectList);
     destructor Destroy; override;
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
     (* Drops all unused nodes from the facegroups list.
@@ -102,7 +102,7 @@ type
   (* A node in the BSP tree.
     The description does not explicitly differentiates nodes and leafs,
     nodes are referred by their index. *)
-  TFGBSPNode = class(TFGXVertexIndexList)
+  TFGBSPNode = class(TgxFGVertexIndexList)
   private
     FSplitPlane: THmgPlane;
     FPositiveSubNodeIndex: Integer;
@@ -112,7 +112,7 @@ type
     function AddLerp(iA, iB: Integer; fB, fA: Single): Integer;
     function AddLerpIfDistinct(iA, iB, iMid: Integer): Integer;
   public
-    constructor CreateOwned(AOwner: TGXFaceGroups); override;
+    constructor CreateOwned(AOwner: TgxFaceGroups); override;
     destructor Destroy; override;
     procedure IsCulled(const bsprci: TBSPRenderContextInfo;
       var positive, negative: Boolean);
@@ -139,7 +139,7 @@ type
       const maxTrianglesPerLeaf: Integer = MaxInt);
     (* Goes through all triangle edges, looking for tjunctions.
       The candidates are indices of points to lookup a tjunction vertices. *)
-    procedure FixTJunctions(const tJunctionsCandidates: TGIntegerList);
+    procedure FixTJunctions(const tJunctionsCandidates: TgIntegerList);
     (* BSP node split plane.
       Divides space between positive and negative half-space, positive
       half-space being the one were the evaluation of an homogeneous
@@ -250,7 +250,7 @@ end;
 // ------------------ TBSPMeshObject ------------------
 // ------------------
 
-constructor TBSPMeshObject.CreateOwned(AOwner: TGXMeshObjectList);
+constructor TBSPMeshObject.CreateOwned(AOwner: TgxMeshObjectList);
 begin
   inherited;
   Mode := momFaceGroups;
@@ -383,14 +383,14 @@ var
   i, j, n: Integer;
   nodeParents: array of Integer;
   remapIndex: array of Integer;
-  indicesToCheck: TGIntegerList;
+  indicesToCheck: TgIntegerList;
   node: TFGBSPNode;
 begin
   n := faceGroups.Count;
   if n = 0 then
     Exit;
   SetLength(nodeParents, n);
-  indicesToCheck := TGIntegerList.Create;
+  indicesToCheck := TgIntegerList.Create;
   try
     // build nodes parent information
     FillChar(nodeParents[0], SizeOf(Integer) * n, 255);
@@ -541,7 +541,7 @@ end;
 // ------------------ TFGBSPNode ------------------
 // ------------------
 
-constructor TFGBSPNode.CreateOwned(AOwner: TGXFaceGroups);
+constructor TFGBSPNode.CreateOwned(AOwner: TgxFaceGroups);
 begin
   inherited;
   FPositiveSubNodeIndex := 0;
@@ -642,7 +642,7 @@ var
   ns, np, nn: Integer;
   evalPlane: THmgPlane;
   bestEval, eval: Single;
-  vertices: TGAffineVectorList;
+  vertices: TgAffineVectorList;
 begin
   Result := NullHmgVector;
   bestEval := 1E30;
@@ -687,7 +687,7 @@ procedure TFGBSPNode.EvaluateSplitPlane(const splitPlane: THmgPlane;
 var
   i, n, inci, lookupIdx: Integer;
   a, b, c: Boolean;
-  vertices: TGAffineVectorList;
+  vertices: TgAffineVectorList;
 const
   // case resolution lookup tables (node's tris unaccounted for)
   cTriangleSplit: array [0 .. 7] of Integer = (0, 1, 1, 1, 1, 1, 1, 0);
@@ -824,8 +824,8 @@ procedure TFGBSPNode.PerformSplit(const splitPlane: THmgPlane;
   const maxTrianglesPerLeaf: Integer = MaxInt);
 var
   fgPos, fgNeg: TFGBSPNode;
-  fgPosIndices, fgNegIndices: TGIntegerList;
-  indices: TGIntegerList;
+  fgPosIndices, fgNegIndices: TgIntegerList;
+  indices: TgIntegerList;
 
   procedure SplitTriangleMid(strayID, strayNext, strayPrev: Integer;
     eNext, ePrev: Single);
@@ -877,7 +877,7 @@ var
 var
   i, i1, i2, i3, se1, se2, se3: Integer;
   e1, e2, e3: Single;
-  vertices: TGAffineVectorList;
+  vertices: TgAffineVectorList;
   subSplitPlane: THmgPlane;
 begin
   Assert((PositiveSubNodeIndex = 0) and (NegativeSubNodeIndex = 0));
@@ -891,7 +891,7 @@ begin
   fgNegIndices := fgNeg.VertexIndices;
   // initiate split
   Self.FSplitPlane := splitPlane;
-  indices := TGIntegerList.Create;
+  indices := TgIntegerList.Create;
   vertices := Owner.Owner.vertices;
   i := 0;
   while i < VertexIndices.Count do
@@ -1032,10 +1032,10 @@ begin
   end;
 end;
 
-procedure TFGBSPNode.FixTJunctions(const tJunctionsCandidates: TGIntegerList);
+procedure TFGBSPNode.FixTJunctions(const tJunctionsCandidates: TgIntegerList);
 
   function FindTJunction(iA, iB, iC: Integer;
-    candidatesList: TGIntegerList): Integer;
+    candidatesList: TgIntegerList): Integer;
   var
     i, k: Integer;
     vertices: PAffineVectorArray;
@@ -1090,10 +1090,10 @@ procedure TFGBSPNode.FixTJunctions(const tJunctionsCandidates: TGIntegerList);
 var
   i, tj: Integer;
   indices: PIntegerArray;
-  mark: TGIntegerList;
+  mark: TgIntegerList;
 begin
   Assert(Mode in [fgmmTriangles, fgmmFlatTriangles]);
-  mark := TGIntegerList.Create;
+  mark := TgIntegerList.Create;
   mark.AddSerie(1, 0, VertexIndices.Count);
   indices := VertexIndices.List;
   i := 0;

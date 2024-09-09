@@ -23,10 +23,10 @@ uses
 type
   (* The MD2 vector file (Quake2 actor file).
     Stores a set of "frames" describing the different postures of the actor,
-    it may be animated by TGXActor. The "Skin" must be loaded indepentendly
+    it may be animated by TgxActor. The "Skin" must be loaded indepentendly
     (the whole mesh uses a single texture bitmap).
     Based on code by Roger Cao. *)
-  TgxMD2VectorFile = class(TGXVectorFile)
+  TgxMD2VectorFile = class(TgxVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -49,19 +49,19 @@ procedure TgxMD2VectorFile.LoadFromStream(aStream: TStream);
 var
   i, j: Integer;
   MD2File: TFileMD2;
-  mesh: TGXMorphableMeshObject;
-  faceGroup: TFGIndexTexCoordList;
-  morphTarget: TGXMeshMorphTarget;
+  mesh: TgxMorphableMeshObject;
+  faceGroup: TgxFGIndexTexCoordList;
+  morphTarget: TgxMeshMorphTarget;
 begin
   MD2File := TFileMD2.Create;
   MD2File.LoadFromStream(aStream);
   try
     // retrieve mesh data
-    mesh := TGXMorphableMeshObject.CreateOwned(Owner.MeshObjects);
+    mesh := TgxMorphableMeshObject.CreateOwned(Owner.MeshObjects);
     with mesh, MD2File do
     begin
       Mode := momFaceGroups;
-      faceGroup := TFGIndexTexCoordList.CreateOwned(FaceGroups);
+      faceGroup := TgxFGIndexTexCoordList.CreateOwned(FaceGroups);
       with faceGroup do
       begin
         MaterialName := '';
@@ -79,7 +79,7 @@ begin
       // retrieve frames data (morph targets)
       for i := 0 to iFrames - 1 do
       begin
-        morphTarget := TGXMeshMorphTarget.CreateOwned(MorphTargets);
+        morphTarget := TgxMeshMorphTarget.CreateOwned(MorphTargets);
         with morphTarget do
         begin
           Name := 'Frame' + IntToStr(i);
@@ -90,8 +90,8 @@ begin
         end;
       end;
     end;
-    if GetOwner is TGXActor then
-      with TGXActor(GetOwner).Animations do
+    if GetOwner is TgxActor then
+      with TgxActor(GetOwner).Animations do
       begin
         Clear;
         with MD2File do

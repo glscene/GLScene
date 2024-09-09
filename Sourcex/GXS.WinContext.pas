@@ -18,7 +18,7 @@ uses
   FMX.Dialogs,
   FMX.Platform.Win,
 
-  GXS.OpenGL,
+  GLScene.OpenGL4,
 
   GXS.Context,
   GXS.State,
@@ -76,9 +76,7 @@ var
     destruction. *)
   vUseWindowTrackingHook: Boolean = True;
 
-// ------------------------------------------------------------------
-implementation
-// ------------------------------------------------------------------
+implementation // ------------------------------------------------------------
 
 var
   vTrackingCount: Integer;
@@ -163,8 +161,8 @@ end;
 
 var
   vUtilWindowClass: TWndClass = (style: 0; lpfnWndProc: @DefWindowProc;
-  cbClsExtra: 0; cbWndExtra: 0; hInstance: 0; hIcon: 0; 
-  hCursor: 0; hbrBackground: 0; lpszMenuName: nil; lpszClassName: 'GLSUtilWindow');
+  cbClsExtra: 0; cbWndExtra: 0; hInstance: 0; hIcon: 0;
+  hCursor: 0; hbrBackground: 0; lpszMenuName: nil; lpszClassName: 'GXSUtilWindow');
 
 function CreateTempWnd: HWND;
 var
@@ -304,7 +302,7 @@ begin
     DestroyContext;
 end;
 
-procedure TgxWinContext.ChooseWGLFormat(DC: HDC; nMaxFormats: Cardinal; piFormats: PInteger; var nNumFormats: Integer; 
+procedure TgxWinContext.ChooseWGLFormat(DC: HDC; nMaxFormats: Cardinal; piFormats: PInteger; var nNumFormats: Integer;
   BufferCount: Integer);
 const
   cAAToSamples: array [aaNone .. csa16xHQ] of Integer = (1, 2, 2, 4, 4, 6, 8, 16, 8, 8, 16, 16);
@@ -542,26 +540,6 @@ begin
       else if GL_VERSION_4_0 then
       begin
         AddIAttrib(WGL_CONTEXT_MAJOR_VERSION_ARB, 4);
-        AddIAttrib(WGL_CONTEXT_MINOR_VERSION_ARB, 0);
-      end
-      else if GL_VERSION_3_3 then
-      begin
-        AddIAttrib(WGL_CONTEXT_MAJOR_VERSION_ARB, 3);
-        AddIAttrib(WGL_CONTEXT_MINOR_VERSION_ARB, 3);
-      end
-      else if GL_VERSION_3_2 then
-      begin
-        AddIAttrib(WGL_CONTEXT_MAJOR_VERSION_ARB, 3);
-        AddIAttrib(WGL_CONTEXT_MINOR_VERSION_ARB, 2);
-      end
-      else if GL_VERSION_3_1 then
-      begin
-        AddIAttrib(WGL_CONTEXT_MAJOR_VERSION_ARB, 3);
-        AddIAttrib(WGL_CONTEXT_MINOR_VERSION_ARB, 1);
-      end
-      else if GL_VERSION_3_0 then
-      begin
-        AddIAttrib(WGL_CONTEXT_MAJOR_VERSION_ARB, 3);
         AddIAttrib(WGL_CONTEXT_MINOR_VERSION_ARB, 0);
       end
       else
@@ -970,26 +948,6 @@ begin
                     AddIAttrib(WGL_CONTEXT_MAJOR_VERSION_ARB, 4);
                     AddIAttrib(WGL_CONTEXT_MINOR_VERSION_ARB, 0);
                   end
-                  else if GL_VERSION_3_3 then
-                  begin
-                    AddIAttrib(WGL_CONTEXT_MAJOR_VERSION_ARB, 3);
-                    AddIAttrib(WGL_CONTEXT_MINOR_VERSION_ARB, 3);
-                  end
-                  else if GL_VERSION_3_2 then
-                  begin
-                    AddIAttrib(WGL_CONTEXT_MAJOR_VERSION_ARB, 3);
-                    AddIAttrib(WGL_CONTEXT_MINOR_VERSION_ARB, 2);
-                  end
-                  else if GL_VERSION_3_1 then
-                  begin
-                    AddIAttrib(WGL_CONTEXT_MAJOR_VERSION_ARB, 3);
-                    AddIAttrib(WGL_CONTEXT_MINOR_VERSION_ARB, 1);
-                  end
-                  else if GL_VERSION_3_0 then
-                  begin
-                    AddIAttrib(WGL_CONTEXT_MAJOR_VERSION_ARB, 3);
-                    AddIAttrib(WGL_CONTEXT_MINOR_VERSION_ARB, 0);
-                  end
                   else
                     Abort;
                   AddIAttrib(WGL_CONTEXT_FLAGS_ARB,
@@ -1227,9 +1185,7 @@ begin
   Result := Pointer(FDC);
 end;
 
-// ------------------------------------------------------------------
-initialization
-// ------------------------------------------------------------------
+initialization // ------------------------------------------------------------
 
 RegisterContextClass(TgxWinContext);
 

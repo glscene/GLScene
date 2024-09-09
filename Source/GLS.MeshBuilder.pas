@@ -560,7 +560,7 @@ var
   i: Integer;
   fg: TGLFaceGroup;
   coords, TexCoords, Normals: TGAffineVectorList;
-  il: TGIntegerList;
+  il: TgIntegerList;
   materialName: String;
 begin
   if (mooMergeObjects in options) then
@@ -641,19 +641,19 @@ procedure FacesSmooth(aMeshObj: TGLMeshObject;
 Var
   i, J, k, L: Integer;
   WeldedVertex: TGAffineVectorList;
-  TmpIntegerList: TGIntegerList;
+  TmpIntegerList: TgIntegerList;
   IndexMap: TStringList;
   n: TAffineVector;
-  indicesMap: TGIntegerList;
+  indicesMap: TgIntegerList;
   Index: Integer;
-  FaceList: TGIntegerList;
+  FaceList: TgIntegerList;
   NormalList: TGAffineVectorList;
   FaceNormalList: TGAffineVectorList;
   FaceGroup: TGLFaceGroup;
   fg, FG1: TFGVertexIndexList;
   Threshold: Single;
   Angle: Single;
-  ReferenceMap: TGIntegerList;
+  ReferenceMap: TgIntegerList;
   ID1, ID2: Integer;
   Index1, Index2, Index3: Integer;
 
@@ -679,10 +679,10 @@ Var
 begin
   Threshold := aThreshold * Pi / 180.0;
   // build the vectices reference map
-  ReferenceMap := TGIntegerList.Create;
+  ReferenceMap := TgIntegerList.Create;
   WeldedVertex := TGAffineVectorList.Create;
   WeldedVertex.Assign(aMeshObj.Vertices);
-  indicesMap := TGIntegerList.Create;
+  indicesMap := TgIntegerList.Create;
   // first of all, weld the very closed vertices
   WeldVertices(WeldedVertex, indicesMap, aWeldDistance);
   // then, rebuild the map list
@@ -690,7 +690,7 @@ begin
   for i := 0 to WeldedVertex.Count - 1 do
   begin
     ReferenceMap.Assign(indicesMap);
-    TmpIntegerList := TGIntegerList.Create;
+    TmpIntegerList := TgIntegerList.Create;
     Index := ReferenceMap.IndexOf(i);
     while Index >= 0 do
     begin
@@ -705,10 +705,10 @@ begin
   WeldedVertex.Free;
   indicesMap.Free;
   // creates a TexPoint list for save face infomation, where s=facegroup index, t=face index
-  FaceList := TGIntegerList.Create;
+  FaceList := TgIntegerList.Create;
   NormalList := TGAffineVectorList.Create;
   FaceNormalList := TGAffineVectorList.Create;
-  // NormalIndex := TGIntegerList.Create;
+  // NormalIndex := TgIntegerList.Create;
   for i := 0 to aMeshObj.FaceGroups.Count - 1 do
   begin
     FaceGroup := aMeshObj.FaceGroups[i];

@@ -9,7 +9,7 @@ unit GXS.OutlineShader;
    Limitations:
        1. Object can be transparent (color alpha < 1) if it doesn't
                    overlap itself. Texture transparency doesn't work.
-       2. Doesn't work with objects (e.g. TGXFreeForm) having it's own
+       2. Doesn't work with objects (e.g. TgxFreeForm) having it's own
                    color array.
        3. Doesn't Works with visible backfaces.
 *)

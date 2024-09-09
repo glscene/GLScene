@@ -294,21 +294,21 @@ procedure ApplyBlendingModeEx(const BlendingMode: TgxBlendingModeEx);
 procedure UnApplyBlendingModeEx;
 procedure InitTexture(
   const TextureHandle: Cardinal;
-  const TextureSize: TgxSize;
+  const TextureSize: TGXSize;
   const TextureTarget: TglTextureTarget = ttTexture2D);
 // Probably need to give them proper names, instead of numbers...
 procedure DrawTexturedScreenQuad;
-procedure DrawTexturedScreenQuad2(const ViewPortSize: TgxSize);
+procedure DrawTexturedScreenQuad2(const ViewPortSize: TGXSize);
 procedure DrawTexturedScreenQuad3;
-procedure DrawTexturedScreenQuad4(const ViewPortSize: TgxSize);
-procedure DrawTexturedScreenQuad5(const ViewPortSize: TgxSize);
-procedure DrawTexturedScreenQuad6(const ViewPortSize: TgxSize);
+procedure DrawTexturedScreenQuad4(const ViewPortSize: TGXSize);
+procedure DrawTexturedScreenQuad5(const ViewPortSize: TGXSize);
+procedure DrawTexturedScreenQuad6(const ViewPortSize: TGXSize);
 
-procedure CopyScreentoTexture(const ViewPortSize: TgxSize; const TextureTarget: Word = GL_TEXTURE_2D);
-procedure CopyScreentoTexture2(const ViewPortSize: TgxSize; const TextureTarget: Word = GL_TEXTURE_2D);
+procedure CopyScreentoTexture(const ViewPortSize: TGXSize; const TextureTarget: Word = GL_TEXTURE_2D);
+procedure CopyScreentoTexture2(const ViewPortSize: TGXSize; const TextureTarget: Word = GL_TEXTURE_2D);
 
 function IsFogEnabled(const AFogSupportMode: TgxShaderFogSupport; var rci: TgxRenderContextInfo): Boolean;
-procedure GetActiveLightsList(const ALightIDs: TGIntegerList);
+procedure GetActiveLightsList(const ALightIDs: TgIntegerList);
 
 //===========================================================
 implementation
@@ -317,7 +317,7 @@ implementation
 uses
   GXS.State;
 
-procedure GetActiveLightsList(const ALightIDs: TGIntegerList);
+procedure GetActiveLightsList(const ALightIDs: TgIntegerList);
 var
   I: Integer;
 begin
@@ -344,12 +344,12 @@ begin
   end;
 end;
 
-procedure CopyScreentoTexture(const ViewPortSize: TgxSize; const TextureTarget: Word = GL_TEXTURE_2D);
+procedure CopyScreentoTexture(const ViewPortSize: TGXSize; const TextureTarget: Word = GL_TEXTURE_2D);
 begin
   glCopyTexSubImage2D(TextureTarget, 0, 0, 0, 0, 0, ViewPortSize.cx, ViewPortSize.cy);
 end;
 
-procedure CopyScreentoTexture2(const ViewPortSize: TgxSize; const TextureTarget: Word = GL_TEXTURE_2D);
+procedure CopyScreentoTexture2(const ViewPortSize: TGXSize; const TextureTarget: Word = GL_TEXTURE_2D);
 begin
   glCopyTexImage2D(TextureTarget, 0, GL_RGB, 0, 0, ViewPortSize.cx, ViewPortSize.cy, 0);
 end;
@@ -398,7 +398,7 @@ begin
   glPopMatrix;
 end;
 
-procedure DrawTexturedScreenQuad2(const ViewPortSize: TgxSize);
+procedure DrawTexturedScreenQuad2(const ViewPortSize: TGXSize);
 begin
   glPushMatrix;
   glMatrixMode(GL_PROJECTION);
@@ -421,7 +421,7 @@ begin
   glPopMatrix;
 end;
 
-procedure DrawTexturedScreenQuad4(const ViewPortSize: TgxSize);
+procedure DrawTexturedScreenQuad4(const ViewPortSize: TGXSize);
 begin
   glBegin(GL_QUADS);
     glTexCoord2f(0, 0);                             glVertex2f(-1, -1);
@@ -431,7 +431,7 @@ begin
   glEnd;
 end;
 
-procedure DrawTexturedScreenQuad5(const ViewPortSize: TgxSize);
+procedure DrawTexturedScreenQuad5(const ViewPortSize: TGXSize);
 begin
   glMatrixMode( GL_PROJECTION );
   glPushMatrix;
@@ -451,7 +451,7 @@ begin
   glMatrixMode( GL_MODELVIEW );
 end;
 
-procedure DrawTexturedScreenQuad6(const ViewPortSize: TgxSize);
+procedure DrawTexturedScreenQuad6(const ViewPortSize: TGXSize);
 begin
   glMatrixMode( GL_PROJECTION );
   glPushMatrix;
@@ -483,7 +483,7 @@ end;
 
 procedure InitTexture(
   const TextureHandle: Cardinal;
-  const TextureSize: TgxSize;
+  const TextureSize: TGXSize;
   const TextureTarget: TglTextureTarget = ttTexture2D);
 var
   glTarget: GLEnum;

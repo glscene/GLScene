@@ -63,7 +63,7 @@ type
   private
     FShaders: TgxPostShaderCollection;
     FTempTexture: TgxTextureHandle;
-    FPreviousViewportSize: TgxSize;
+    FPreviousViewportSize: TGXSize;
     FTempTextureTarget: TglTextureTarget;
     procedure SetShaders(const Value: TgxPostShaderCollection);
   protected

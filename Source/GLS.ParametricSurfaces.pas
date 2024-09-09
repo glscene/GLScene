@@ -143,15 +143,15 @@ type
   private
     FCountU, FCountV: Integer;
     FControlPointIndices,
-    FTexCoordIndices: TGIntegerList;
+    FTexCoordIndices: TgIntegerList;
     FResolution: Integer;
     FMinU, FMaxU,
     FMinV, FMaxV: Single;
     FTempControlPoints,
     FTempTexCoords: TGAffineVectorList;
   protected
-    procedure SetControlPointIndices(const Value: TGIntegerList);
-    procedure SetTexCoordIndices(const Value: TGIntegerList);
+    procedure SetControlPointIndices(const Value: TgIntegerList);
+    procedure SetTexCoordIndices(const Value: TgIntegerList);
   public
     constructor Create; override;
     destructor Destroy; override;
@@ -166,8 +166,8 @@ type
     property MaxU: Single read FMaxU write FMaxU;
     property MinV: Single read FMinV write FMinV;
     property MaxV: Single read FMaxV write FMaxV;
-    property ControlPointIndices: TGIntegerList read FControlPointIndices write SetControlPointIndices;
-    property TexCoordIndices: TGIntegerList read FTexCoordIndices write SetTexCoordIndices;
+    property ControlPointIndices: TgIntegerList read FControlPointIndices write SetControlPointIndices;
+    property TexCoordIndices: TgIntegerList read FTexCoordIndices write SetTexCoordIndices;
   end;
 
 // ----------------------------------------------------------------------
@@ -437,8 +437,8 @@ end;
 constructor TFGBezierSurface.Create;
 begin
   inherited;
-  FControlPointIndices := TGIntegerList.Create;
-  FTexCoordIndices := TGIntegerList.Create;
+  FControlPointIndices := TgIntegerList.Create;
+  FTexCoordIndices := TgIntegerList.Create;
   FTempControlPoints := TGAffineVectorList.Create;
   FTempTexCoords := TGAffineVectorList.Create;
 
@@ -536,12 +536,12 @@ begin
   mrci.GLStates.PopAttrib;
 end;
 
-procedure TFGBezierSurface.SetControlPointIndices(const Value: TGIntegerList);
+procedure TFGBezierSurface.SetControlPointIndices(const Value: TgIntegerList);
 begin
   FControlPointIndices.Assign(Value);
 end;
 
-procedure TFGBezierSurface.SetTexCoordIndices(const Value: TGIntegerList);
+procedure TFGBezierSurface.SetTexCoordIndices(const Value: TgIntegerList);
 begin
   FTexCoordIndices.Assign(Value);
 end;

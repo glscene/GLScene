@@ -19,7 +19,7 @@ uses
   GLScene.VectorTypes,
   GLScene.Utils,
 
-  GLS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLScene.VectorLists,
   GLS.Cadencer,
   GLS.SceneViewer,

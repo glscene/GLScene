@@ -21,7 +21,7 @@ uses
   GLScene.VectorGeometry,
 
   GLScene.PersistentClasses,
-  GLS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLS.Scene,
   GLS.Texture,
   GLS.Context,

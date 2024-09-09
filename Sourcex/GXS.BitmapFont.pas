@@ -110,7 +110,7 @@ type
     dimensions should be close to a power of two, and have at least 1 pixel
     spacing between characters (horizontally and vertically) to avoid artefacts
     when rendering with linear filtering. *)
-  TgxCustomBitmapFont = class(TGUpdateAbleComponent)
+  TgxCustomBitmapFont = class(TgUpdateAbleComponent)
   private
     FRanges: TgxBitmapFontRanges;
     FGlyphs: TImage;

@@ -668,12 +668,12 @@ type
   end;
 
   // Base Verlet Skeleton Collider class.
-  TgxVerletSkeletonCollider = class(TGXSkeletonCollider)
+  TgxVerletSkeletonCollider = class(TgxSkeletonCollider)
   private
     FVerletConstraint: TgxVerletConstraint;
   public
-    procedure WriteToFiler(Writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TGVirtualReader); override;
+    procedure WriteToFiler(Writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TgVirtualReader); override;
     procedure AddToVerletWorld(VerletWorld: TgxVerletWorld); virtual;
     // The verlet constraint is created through the AddToVerletWorld procedure
     property VerletConstraint: TgxVerletConstraint read FVerletConstraint;
@@ -687,8 +687,8 @@ type
     procedure SetRadius(const Val: Single);
   public
     constructor Create; override;
-    procedure WriteToFiler(Writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TGVirtualReader); override;
+    procedure WriteToFiler(Writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TgVirtualReader); override;
     procedure AddToVerletWorld(VerletWorld: TgxVerletWorld); override;
     procedure AlignCollider; override;
     property Radius: Single read FRadius write SetRadius;
@@ -703,8 +703,8 @@ type
     procedure SetLength(const Val: Single);
   public
     constructor Create; override;
-    procedure WriteToFiler(Writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TGVirtualReader); override;
+    procedure WriteToFiler(Writer: TgVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TgVirtualReader); override;
     procedure AddToVerletWorld(VerletWorld: TgxVerletWorld); override;
     procedure AlignCollider; override;
     property Radius: Single read FRadius write SetRadius;
@@ -714,7 +714,7 @@ type
 (* After loading call this function to add all the constraints in a
    skeleton collider list to a given verlet world. *)
 procedure AddVerletConstriantsToVerletWorld
-  (Colliders: TGXSkeletonColliderList; World: TgxVerletWorld);
+  (Colliders: TgxSkeletonColliderList; World: TgxVerletWorld);
 
 function CreateVerletPlaneFromGLPlane(Plane: TgxPlane; VerletWorld: TgxVerletWorld;
   Offset: Single): TgxVerletFloor;
@@ -2598,7 +2598,7 @@ end;
 // ------------------
 
 procedure AddVerletConstriantsToVerletWorld
-  (Colliders: TGXSkeletonColliderList; World: TgxVerletWorld);
+  (Colliders: TgxSkeletonColliderList; World: TgxVerletWorld);
 var
   i: Integer;
 begin
@@ -2610,13 +2610,13 @@ end;
 // ------------------
 // ------------------ TgxVerletSkeletonCollider ------------------
 // ------------------
-procedure TgxVerletSkeletonCollider.WriteToFiler(Writer: TGVirtualWriter);
+procedure TgxVerletSkeletonCollider.WriteToFiler(Writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(Writer);
   Writer.WriteInteger(0); // Archive Version 0
 end;
 
-procedure TgxVerletSkeletonCollider.ReadFromFiler(Reader: TGVirtualReader);
+procedure TgxVerletSkeletonCollider.ReadFromFiler(Reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -2645,14 +2645,14 @@ begin
   AlignCollider;
 end;
 
-procedure TgxVerletSphere.WriteToFiler(Writer: TGVirtualWriter);
+procedure TgxVerletSphere.WriteToFiler(Writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(Writer);
   Writer.WriteInteger(0); // Archive Version 0
   Writer.WriteFloat(FRadius);
 end;
 
-procedure TgxVerletSphere.ReadFromFiler(Reader: TGVirtualReader);
+procedure TgxVerletSphere.ReadFromFiler(Reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -2701,7 +2701,7 @@ begin
   AlignCollider;
 end;
 
-procedure TgxVerletCapsule.WriteToFiler(Writer: TGVirtualWriter);
+procedure TgxVerletCapsule.WriteToFiler(Writer: TgVirtualWriter);
 begin
   inherited WriteToFiler(Writer);
   Writer.WriteInteger(0); // Archive Version 0
@@ -2709,7 +2709,7 @@ begin
   Writer.WriteFloat(FLength);
 end;
 
-procedure TgxVerletCapsule.ReadFromFiler(Reader: TGVirtualReader);
+procedure TgxVerletCapsule.ReadFromFiler(Reader: TgVirtualReader);
 var
   archiveVersion: Integer;
 begin

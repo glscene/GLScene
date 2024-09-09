@@ -23,13 +23,13 @@ uses
 
 type
 
-  TgxGLMVectorFile = class (TGXVectorFile)
+  TgxGLMVectorFile = class (TgxVectorFile)
     public
       class function Capabilities : TDataFileCapabilities; override;
       procedure LoadFromStream(aStream : TStream); override;
   end;
 
-  TgxGLAVectorFile = class (TGXVectorFile)
+  TgxGLAVectorFile = class (TgxVectorFile)
     public
       class function Capabilities : TDataFileCapabilities; override;
       procedure LoadFromStream(aStream : TStream); override;
@@ -58,8 +58,8 @@ procedure TgxGLMVectorFile.LoadFromStream(aStream : TStream);
 var
   GLMFile     : TFileGLM;
   i,j,k,s,c,d : integer;
-  mesh        : TGXSkeletonMeshObject;
-  fg          : TFGXVertexIndexList;
+  mesh        : TgxSkeletonMeshObject;
+  fg          : TgxFGVertexIndexList;
   VertOfs     : integer;
   shader      : string;
   vec2        : Tvector2f;
@@ -91,7 +91,7 @@ begin
     d:=vGhoul2LevelOfDetail;
     if d>=Length(GLMFile.LODs) then exit;
     for s:=0 to Length(GLMFile.SurfaceHeirachy)-1 do begin
-      mesh:=TGXSkeletonMeshObject.CreateOwned(Owner.MeshObjects);
+      mesh:=TgxSkeletonMeshObject.CreateOwned(Owner.MeshObjects);
       mesh.Mode:=momFaceGroups;
       mesh.Name:=trim(GLMFile.SurfaceHeirachy[s].name);
       shader:=trim(GLMFile.SurfaceHeirachy[s].shader);
@@ -134,7 +134,7 @@ begin
                 mesh.VerticesBonesWeights^[mesh.Vertices.Count-1]^[k].Weight:=0;
               end;
           end;
-          fg:=TFGXVertexIndexList.CreateOwned(mesh.FaceGroups);
+          fg:=TgxFGVertexIndexList.CreateOwned(mesh.FaceGroups);
           fg.Mode:=fgmmTriangles;
           fg.MaterialName:=mesh.Name;
           for j:=0 to Length(Triangles)-1 do begin
@@ -170,32 +170,32 @@ procedure TgxGLAVectorFile.LoadFromStream(aStream : TStream);
 var
   GLAFile  : TFileGLA;
   i,j      : Integer;
-  frame    : TGXSkeletonFrame;
+  frame    : TgxSkeletonFrame;
   CompBone : TgxACompQuatBone;
   quat     : TQuaternion;
   pos      : TAffineVector;
-  basepose : TGXSkeletonFrame;
-  bonelist : TGIntegerList;
-  bone     : TGXSkeletonBone;
+  basepose : TgxSkeletonFrame;
+  bonelist : TgIntegerList;
+  bone     : TgxSkeletonBone;
 
 begin
   GLAFile:=TFileGLA.Create;
   GLAFile.LoadFromStream(aStream);
   try
-    if not (Owner is TGXActor) then exit;
+    if not (Owner is TgxActor) then exit;
 
-    TGXActor(Owner).Reference:=aarSkeleton;
+    TgxActor(Owner).Reference:=aarSkeleton;
 
-    bonelist:=TGIntegerList.Create;
+    bonelist:=TgIntegerList.Create;
     for i:=0 to GLAFile.AnimHeader.numBones-1 do
       bonelist.Add(i);
     while bonelist.count>0 do begin
       if GLAFile.Skeleton[bonelist[0]].parent = -1 then
-        bone:=TGXSkeletonBone.CreateOwned(Owner.Skeleton.RootBones)
+        bone:=TgxSkeletonBone.CreateOwned(Owner.Skeleton.RootBones)
       else begin
         bone:=Owner.Skeleton.RootBones.BoneByID(GLAFile.Skeleton[bonelist[0]].parent);
         if Assigned(bone) then
-          bone:=TGXSkeletonBone.CreateOwned(bone)
+          bone:=TgxSkeletonBone.CreateOwned(bone)
       end;
       if Assigned(bone) then begin
         bone.Name:=GLAFile.Skeleton[bonelist[0]].Name;
@@ -207,7 +207,7 @@ begin
     bonelist.Free;
 
     // Build the base pose
-    basepose:=TGXSkeletonFrame.CreateOwned(TGXActor(Owner).Skeleton.Frames);
+    basepose:=TgxSkeletonFrame.CreateOwned(TgxActor(Owner).Skeleton.Frames);
     basepose.Name:='basepose';
     basepose.TransformMode:=sftQuaternion;
     basepose.Position.AddNulls(GLAFile.AnimHeader.numBones);
@@ -216,7 +216,7 @@ begin
     // Load animation data
     for i:=0 to GLAFile.AnimHeader.numFrames-1 do begin
       // Create the frame
-      frame:=TGXSkeletonFrame.CreateOwned(TGXActor(Owner).Skeleton.Frames);
+      frame:=TgxSkeletonFrame.CreateOwned(TgxActor(Owner).Skeleton.Frames);
       frame.Name:='Frame'+IntToStr(i);
       frame.TransformMode:=sftQuaternion;
 
@@ -233,7 +233,7 @@ begin
     Owner.Skeleton.RootBones.PrepareGlobalMatrices;
 
     for i:=0 to Owner.MeshObjects.Count-1 do
-      TGXSkeletonMeshObject(Owner.MeshObjects[i]).PrepareBoneMatrixInvertedMeshes;
+      TgxSkeletonMeshObject(Owner.MeshObjects[i]).PrepareBoneMatrixInvertedMeshes;
 
   finally
     GLAFile.Free;

@@ -32,7 +32,7 @@ uses
   GLScene.VectorGeometry,
   GLScene.Strings,
   GXS.State,
-  GXS.PipelineTransformation,
+  GLScene.PipelineTransform,
   GLScene.TextureFormat;
 
 // Buffer ID's for Multiple-Render-Targets (using GL_ATI_draw_buffers)
@@ -115,7 +115,7 @@ type
   protected
     FGXS: TgxAbstractMultitextureCoordinator;
     FgxStates: TgxStateCache;
-    FTransformation: TGLTransformation;
+    FTransformation: TgTransformation;
     FAcceleration: TgxContextAcceleration;
     FLayer: TgxContextLayer;
 {$IFDEF USE_MULTITHREAD}
@@ -141,7 +141,7 @@ type
     destructor Destroy; override;
     // An application-side cache of global per-context OpenGL states and parameters
     property GXStates: TgxStateCache read FgxStates;
-    property PipelineTransformation: TGLTransformation read FTransformation;
+    property PipelineTransformation: TgTransformation read FTransformation;
     // Context manager reference
     property Manager: TgxContextManager read FManager;
     // Color bits for the rendering context
@@ -1034,7 +1034,7 @@ begin
   FSharedContexts.Add(Self);
   FAcceleration := chaUnknown;
   FgxStates := TgxStateCache.Create;
-  FTransformation := TGLTransformation.Create;
+  FTransformation := TgTransformation.Create;
   FTransformation.LoadMatricesEnabled := True;
   GXContextManager.RegisterContext(Self);
   FIsPraparationNeed := True;

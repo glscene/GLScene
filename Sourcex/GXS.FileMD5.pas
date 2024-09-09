@@ -19,14 +19,14 @@ uses
 
 type
 
-  TgxMD5VectorFile = class(TGXVectorFile)
+  TgxMD5VectorFile = class(TgxVectorFile)
   private
     FMD5String, FTempString, FBoneNames: TStringList;
     FCurrentPos: Integer;
-    FBasePose: TGXSkeletonFrame;
-    FFramePositions: TGAffineVectorList;
+    FBasePose: TgxSkeletonFrame;
+    FFramePositions: TgAffineVectorList;
     FFrameQuaternions: TGQuaternionList;
-    FJointFlags: TGIntegerList;
+    FJointFlags: TgIntegerList;
     FNumFrames, FFirstFrame, FFrameRate, FNumJoints: Integer;
 
     function ReadLine: String;
@@ -126,7 +126,7 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
     quat: TQuaternion;
     mat, rmat: TMatrix4f;
     ParentBoneID: Integer;
-    bone, parentbone: TGXSkeletonBone;
+    bone, parentbone: TgxSkeletonBone;
   begin
     FTempString.CommaText := BoneString;
 
@@ -148,11 +148,11 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
     begin
       FBoneNames.Add(bonename);
       if ParentBoneID = -1 then
-        bone := TGXSkeletonBone.CreateOwned(Owner.Skeleton.RootBones)
+        bone := TgxSkeletonBone.CreateOwned(Owner.Skeleton.RootBones)
       else
       begin
         parentbone := Owner.Skeleton.RootBones.BoneByID(ParentBoneID);
-        bone := TGXSkeletonBone.CreateOwned(parentbone);
+        bone := TgxSkeletonBone.CreateOwned(parentbone);
 
         mat := QuaternionToMatrix(quat);
         mat.W := PointMake(pos);
@@ -197,26 +197,26 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
   procedure ReadMesh;
   var
     temp, shader: String;
-    mesh: TGXSkeletonMeshObject;
-    fg: TFGXVertexIndexList;
+    mesh: TgxSkeletonMeshObject;
+    fg: TgxFGVertexIndexList;
     vnum, wnum, numverts, numweights: Integer;
-    VertexWeightID, VertexWeightCount, VertexBoneRef: TGIntegerList;
+    VertexWeightID, VertexWeightCount, VertexBoneRef: TgIntegerList;
     VertexWeight: TGSingleList;
-    VertexWeighted: TGAffineVectorList;
+    VertexWeighted: TgAffineVectorList;
     blendedVert, transformedVert: TAffineVector;
     i, j, k: Integer;
     mat: TMatrix4f;
   begin
-    VertexWeightID := TGIntegerList.Create;
-    VertexWeightCount := TGIntegerList.Create;
-    VertexBoneRef := TGIntegerList.Create;
+    VertexWeightID := TgIntegerList.Create;
+    VertexWeightCount := TgIntegerList.Create;
+    VertexBoneRef := TgIntegerList.Create;
     VertexWeight := TGSingleList.Create;
-    VertexWeighted := TGAffineVectorList.Create;
+    VertexWeighted := TgAffineVectorList.Create;
 
     numverts := 0;
 
-    mesh := TGXSkeletonMeshObject.CreateOwned(Owner.MeshObjects);
-    fg := TFGXVertexIndexList.CreateOwned(mesh.FaceGroups);
+    mesh := TgxSkeletonMeshObject.CreateOwned(Owner.MeshObjects);
+    fg := TgxFGVertexIndexList.CreateOwned(mesh.FaceGroups);
     mesh.Mode := momFaceGroups;
     fg.Mode := fgmmTriangles;
     repeat
@@ -326,11 +326,11 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
   procedure ReadHierarchy;
   var
     temp: String;
-    bone: TGXSkeletonBone;
+    bone: TgxSkeletonBone;
   begin
     if not Assigned(FJointFlags) then
     begin
-      FJointFlags := TGIntegerList.Create;
+      FJointFlags := TgIntegerList.Create;
       Assert(Owner.Skeleton.Frames.Count > 0,
         'The md5mesh file must be loaded before md5anim files!');
       FJointFlags.Count := Owner.Skeleton.Frames[0].Position.Count;
@@ -376,7 +376,7 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
   var
     temp: String;
     i, j: Integer;
-    frame: TGXSkeletonFrame;
+    frame: TgxSkeletonFrame;
     pos: TAffineVector;
     quat: TQuaternion;
   begin
@@ -439,7 +439,7 @@ procedure TgxMD5VectorFile.LoadFromStream(aStream: TStream);
     i: Integer;
   begin
     for i := 0 to Owner.MeshObjects.Count - 1 do
-      TGXSkeletonMeshObject(Owner.MeshObjects[i])
+      TgxSkeletonMeshObject(Owner.MeshObjects[i])
         .PrepareBoneMatrixInvertedMeshes;
   end;
 
@@ -476,11 +476,11 @@ begin
         if (temp = 'numjoints') then
         begin
           FNumJoints := StrToInt(FTempString[1]);
-          FFramePositions := TGAffineVectorList.Create;
+          FFramePositions := TgAffineVectorList.Create;
           FFrameQuaternions := TGQuaternionList.Create;
           if Owner.Skeleton.Frames.Count = 0 then
           begin
-            FBasePose := TGXSkeletonFrame.CreateOwned(Owner.Skeleton.Frames);
+            FBasePose := TgxSkeletonFrame.CreateOwned(Owner.Skeleton.Frames);
             FBasePose.Position.Count := FNumJoints;
             FBasePose.TransformMode := sftQuaternion;
             FBasePose.Quaternion.Count := FNumJoints;
@@ -491,8 +491,8 @@ begin
         else if (temp = 'joints') then
         begin
           ReadJoints;
-          if Owner is TGXActor then
-            TGXActor(Owner).Reference := aarSkeleton;
+          if Owner is TgxActor then
+            TgxActor(Owner).Reference := aarSkeleton;
         end
         else if (temp = 'nummeshes') then
         begin
@@ -525,10 +525,10 @@ begin
           begin
             FFirstFrame := Owner.Skeleton.Frames.Count;
             for i := 1 to FNumFrames do
-              TGXSkeletonFrame.CreateOwned(Owner.Skeleton.Frames);
-            if Owner is TGXActor then
+              TgxSkeletonFrame.CreateOwned(Owner.Skeleton.Frames);
+            if Owner is TgxActor then
             begin
-              with TGXActor(Owner).Animations.Add do
+              with TgxActor(Owner).Animations.Add do
               begin
                 Name := ChangeFileExt(ExtractFileName(ResourceName), '');
                 Reference := aarSkeleton;

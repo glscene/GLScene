@@ -24,7 +24,7 @@ type
     collection of polygons. The format is extensible, supports variations and
     subformats. This importer only works for the simplest variant (triangles
     without specified normals, and will ignore most header specifications. *)
-  TgxPLYVectorFile = class(TGXVectorFile)
+  TgxPLYVectorFile = class(TgxVectorFile)
   public
     class function Capabilities: TDataFileCapabilities; override;
     procedure LoadFromStream(aStream: TStream); override;
@@ -47,14 +47,14 @@ procedure TgxPLYVectorFile.LoadFromStream(aStream: TStream);
 var
   i, nbVertices, nbFaces: Integer;
   sl: TStringList;
-  mesh: TGXMeshObject;
-  fg: TFGXVertexIndexList;
+  mesh: TgxMeshObject;
+  fg: TgxFGVertexIndexList;
   p: PChar;
 begin
   sl := TStringList.Create;
   try
     sl.LoadFromStream(aStream{$IFDEF Unicode}, TEncoding.ASCII{$ENDIF});
-    mesh := TGXMeshObject.CreateOwned(Owner.MeshObjects);
+    mesh := TgxMeshObject.CreateOwned(Owner.MeshObjects);
     mesh.Mode := momFaceGroups;
     if sl[0] <> 'ply' then
       raise Exception.Create('Not a valid ply file !');
@@ -83,7 +83,7 @@ begin
       Inc(i);
     end;
     // faces
-    fg := TFGXVertexIndexList.CreateOwned(mesh.FaceGroups);
+    fg := TgxFGVertexIndexList.CreateOwned(mesh.FaceGroups);
     fg.Mode := fgmmTriangles;
     fg.VertexIndices.Capacity := nbFaces * 3;
     while (i < sl.Count) and (nbFaces > 0) do

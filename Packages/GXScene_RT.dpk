@@ -206,8 +206,7 @@ contains
   GXS.PAKArchive in '..\SourceX\GXS.PAKArchive.pas',
   GXS.SpacePartition in '..\SourceX\GXS.SpacePartition.pas',
   GXS.XOpenGL in '..\SourceX\GXS.XOpenGL.pas',
-  GXS.PipelineTransformation in '..\SourceX\GXS.PipelineTransformation.pas',
-  GXS.OpenGL in '..\SourceX\GXS.OpenGL.pas',
+  GLScene.OpenGL4 in '..\Source\GLScene.OpenGL4.pas',
   GXS.ViewerOpenGL in '..\SourceX\GXS.ViewerOpenGL.pas',
   GXSL.AsmShader in '..\SourceX\GXSL.AsmShader.pas',
   GXSL.BumpShaders in '..\SourceX\GXSL.BumpShaders.pas',
@@ -270,6 +269,7 @@ contains
   GLScene.XCollection in '..\Source\GLScene.XCollection.pas',
   GLScene.Keyboard in '..\Source\GLScene.Keyboard.pas',
   GLScene.Polynomials in '..\Source\GLScene.Polynomials.pas',
-  GLScene.Color in '..\Source\GLScene.Color.pas';
+  GLScene.Color in '..\Source\GLScene.Color.pas',
+  GLScene.PipelineTransform in '..\Source\GLScene.PipelineTransform.pas';
 
 end.

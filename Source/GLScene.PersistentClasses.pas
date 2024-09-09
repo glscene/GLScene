@@ -5,7 +5,7 @@ unit GLScene.PersistentClasses;
 (*
    Base persistence classes.
    The registered class is:
-     [TGPersistentObjectList]
+     [TgPersistentObjectList]
 
    These classes are used in GLScene but are designed for generic purpose.
    They implement a slightly different persistence mechanism then that of the VCL,
@@ -123,7 +123,7 @@ type
     The list can be used in a stack-like fashion with Push & Pop, and can
     perform basic boolean set operations.
     Note: the IndexOf implementation is up to 3 times faster than that of TList *)
-  TGPersistentObjectList = class(TGPersistentObject)
+  TgPersistentObjectList = class(TGPersistentObject)
   private
     FList: PGPointerObjectList;
     FCount: Integer;
@@ -162,7 +162,7 @@ type
     procedure DeleteAndFreeItems(index: Integer; nbVals: Cardinal);
     function RemoveAndFree(item: TObject): Integer;
     property GrowthDelta: integer read FGrowthDelta write FGrowthDelta;
-    function Expand: TGPersistentObjectList;
+    function Expand: TgPersistentObjectList;
     property Items[Index: Integer]: TObject read Get write Put; default;
     property Count: Integer read FCount write SetCount;
     property List: PGPointerObjectList read FList;
@@ -186,8 +186,8 @@ type
     procedure Push(item: TObject);
     function Pop: TObject;
     procedure PopAndFree;
-    function AddObjects(const objectList: TGPersistentObjectList): Integer;
-    procedure RemoveObjects(const objectList: TGPersistentObjectList);
+    function AddObjects(const objectList: TgPersistentObjectList): Integer;
+    procedure RemoveObjects(const objectList: TgPersistentObjectList);
     procedure Sort(compareFunc: TGObjectListSortCompare);
   end;
 
@@ -654,22 +654,22 @@ begin
 end;
 
 // ------------------
-// ------------------ TGPersistentObjectList ------------------
+// ------------------ TgPersistentObjectList ------------------
 // ------------------
 
-constructor TGPersistentObjectList.Create;
+constructor TgPersistentObjectList.Create;
 begin
   inherited Create;
   FGrowthDelta := cDefaultListGrowthDelta;
 end;
 
-destructor TGPersistentObjectList.Destroy;
+destructor TgPersistentObjectList.Destroy;
 begin
   Clear;
   inherited Destroy;
 end;
 
-function TGPersistentObjectList.Add(const item: TObject): Integer;
+function TgPersistentObjectList.Add(const item: TObject): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -678,7 +678,7 @@ begin
   Inc(FCount);
 end;
 
-procedure TGPersistentObjectList.AddNils(nbVals: Cardinal);
+procedure TgPersistentObjectList.AddNils(nbVals: Cardinal);
 begin
   if Integer(nbVals) + Count > Capacity then
     SetCapacity(Integer(nbVals) + Count);
@@ -686,7 +686,7 @@ begin
   FCount := FCount + Integer(nbVals);
 end;
 
-function TGPersistentObjectList.AddObjects(const objectList: TGPersistentObjectList): Integer;
+function TgPersistentObjectList.AddObjects(const objectList: TgPersistentObjectList): Integer;
 begin
   if Assigned(objectList) then
   begin
@@ -699,7 +699,7 @@ begin
     Result := 0;
 end;
 
-procedure TGPersistentObjectList.RemoveObjects(const objectList: TGPersistentObjectList);
+procedure TgPersistentObjectList.RemoveObjects(const objectList: TgPersistentObjectList);
 var
   i: Integer;
 begin
@@ -707,7 +707,7 @@ begin
     Remove(objectList[i]);
 end;
 
-procedure TGPersistentObjectList.Clear;
+procedure TgPersistentObjectList.Clear;
 begin
   if Assigned(Self) and Assigned(FList) then
   begin
@@ -716,7 +716,7 @@ begin
   end;
 end;
 
-procedure TGPersistentObjectList.Delete(index: Integer);
+procedure TgPersistentObjectList.Delete(index: Integer);
 begin
 {$IFOPT R+}
   if Cardinal(Index) >= Cardinal(FCount) then
@@ -727,7 +727,7 @@ begin
     System.Move(FList[index + 1], FList[index], (FCount - index) * SizeOf(TObject));
 end;
 
-procedure TGPersistentObjectList.DeleteItems(index: Integer; nbVals: Cardinal);
+procedure TgPersistentObjectList.DeleteItems(index: Integer; nbVals: Cardinal);
 begin
 {$IFOPT R+}
   Assert(Cardinal(index) < Cardinal(FCount));
@@ -744,7 +744,7 @@ begin
   end;
 end;
 
-procedure TGPersistentObjectList.Exchange(index1, index2: Integer);
+procedure TgPersistentObjectList.Exchange(index1, index2: Integer);
 var
   item: TObject;
   locList: PGPointerObjectList;
@@ -760,14 +760,14 @@ begin
   locList^[index2] := item;
 end;
 
-function TGPersistentObjectList.Expand: TGPersistentObjectList;
+function TgPersistentObjectList.Expand: TgPersistentObjectList;
 begin
   if FCount = FCapacity then
     SetCapacity(FCapacity + FGrowthDelta);
   Result := Self;
 end;
 
-function TGPersistentObjectList.GetFirst: TObject;
+function TgPersistentObjectList.GetFirst: TObject;
 begin
 {$IFOPT R+}
   if Cardinal(FCount) = 0 then
@@ -776,7 +776,7 @@ begin
   Result := FList^[0];
 end;
 
-procedure TGPersistentObjectList.SetFirst(item: TObject);
+procedure TgPersistentObjectList.SetFirst(item: TObject);
 begin
 {$IFOPT R+}
   if Cardinal(FCount) = 0 then
@@ -785,12 +785,12 @@ begin
   FList^[0] := item;
 end;
 
-procedure TGPersistentObjectList.Error;
+procedure TgPersistentObjectList.Error;
 begin
   raise EListError.Create(strListIndexError);
 end;
 
-function TGPersistentObjectList.Get(Index: Integer): TObject;
+function TgPersistentObjectList.Get(Index: Integer): TObject;
 begin
 {$IFOPT R+}
   if Cardinal(Index) >= Cardinal(FCount) then
@@ -801,7 +801,7 @@ end;
 
 // IndexOf
 //
-function TGPersistentObjectList.IndexOf(Item: TObject): Integer;
+function TgPersistentObjectList.IndexOf(Item: TObject): Integer;
 var
   I: Integer;
 begin
@@ -819,7 +819,7 @@ begin
   end;
 end;
 
-procedure TGPersistentObjectList.Insert(index: Integer; item: TObject);
+procedure TgPersistentObjectList.Insert(index: Integer; item: TObject);
 begin
 {$IFOPT R+}
   if Cardinal(index) > Cardinal(FCount) then
@@ -834,7 +834,7 @@ begin
   Inc(FCount);
 end;
 
-procedure TGPersistentObjectList.InsertNils(index: Integer; nbVals: Cardinal);
+procedure TgPersistentObjectList.InsertNils(index: Integer; nbVals: Cardinal);
 var
   nc: Integer;
 begin
@@ -854,7 +854,7 @@ begin
   end;
 end;
 
-function TGPersistentObjectList.GetLast: TObject;
+function TgPersistentObjectList.GetLast: TObject;
 begin
 {$IFOPT R+}
   if Cardinal(FCount) = 0 then
@@ -863,7 +863,7 @@ begin
   Result := FList^[FCount - 1];
 end;
 
-procedure TGPersistentObjectList.SetLast(item: TObject);
+procedure TgPersistentObjectList.SetLast(item: TObject);
 begin
 {$IFOPT R+}
   if Cardinal(FCount) = 0 then
@@ -872,7 +872,7 @@ begin
   FList^[FCount - 1] := item;
 end;
 
-procedure TGPersistentObjectList.Move(CurIndex, NewIndex: Integer);
+procedure TgPersistentObjectList.Move(CurIndex, NewIndex: Integer);
 var
   item: Pointer;
 begin
@@ -899,7 +899,7 @@ begin
   end;
 end;
 
-procedure TGPersistentObjectList.Put(Index: Integer; Item: TObject);
+procedure TgPersistentObjectList.Put(Index: Integer; Item: TObject);
 begin
 {$IFOPT R+}
   if Cardinal(Index) >= Cardinal(FCount) then
@@ -908,14 +908,14 @@ begin
   FList^[Index] := Item;
 end;
 
-function TGPersistentObjectList.Remove(item: TObject): Integer;
+function TgPersistentObjectList.Remove(item: TObject): Integer;
 begin
   Result := IndexOf(item);
   if Result >= 0 then
     Delete(Result);
 end;
 
-procedure TGPersistentObjectList.Pack;
+procedure TgPersistentObjectList.Pack;
 var
   i, j, n: Integer;
   p: PGPointerObjectList;
@@ -945,7 +945,7 @@ begin
   SetCount(n + 1);
 end;
 
-procedure TGPersistentObjectList.SetCapacity(newCapacity: Integer);
+procedure TgPersistentObjectList.SetCapacity(newCapacity: Integer);
 begin
   if newCapacity <> FCapacity then
   begin
@@ -956,13 +956,13 @@ begin
   end;
 end;
 
-procedure TGPersistentObjectList.RequiredCapacity(aCapacity: Integer);
+procedure TgPersistentObjectList.RequiredCapacity(aCapacity: Integer);
 begin
   if FCapacity < aCapacity then
     SetCapacity(aCapacity);
 end;
 
-procedure TGPersistentObjectList.SetCount(newCount: Integer);
+procedure TgPersistentObjectList.SetCount(newCount: Integer);
 begin
   if newCount > FCapacity then
     SetCapacity(newCount);
@@ -971,7 +971,7 @@ begin
   FCount := NewCount;
 end;
 
-procedure TGPersistentObjectList.DeleteAndFree(index: Integer);
+procedure TgPersistentObjectList.DeleteAndFree(index: Integer);
 var
   obj: TObject;
 begin
@@ -980,7 +980,7 @@ begin
   obj.Free;
 end;
 
-procedure TGPersistentObjectList.DeleteAndFreeItems(index: Integer; nbVals: Cardinal);
+procedure TgPersistentObjectList.DeleteAndFreeItems(index: Integer; nbVals: Cardinal);
 var
   i, n: Integer;
 begin
@@ -995,7 +995,7 @@ begin
   DeleteItems(index, nbVals);
 end;
 
-function TGPersistentObjectList.RemoveAndFree(item: TObject): Integer;
+function TgPersistentObjectList.RemoveAndFree(item: TObject): Integer;
 begin
   Result := IndexOf(item);
   if Result >= 0 then
@@ -1005,7 +1005,7 @@ begin
   end;
 end;
 
-procedure TGPersistentObjectList.DoClean;
+procedure TgPersistentObjectList.DoClean;
 var
   i: Integer;
 begin
@@ -1019,13 +1019,13 @@ begin
   end;
 end;
 
-procedure TGPersistentObjectList.Clean;
+procedure TgPersistentObjectList.Clean;
 begin
   DoClean;
   Clear;
 end;
 
-procedure TGPersistentObjectList.CleanFree;
+procedure TgPersistentObjectList.CleanFree;
 begin
   if Self <> nil then
   begin
@@ -1034,7 +1034,7 @@ begin
   end;
 end;
 
-procedure TGPersistentObjectList.WriteToFiler(writer: TGVirtualWriter);
+procedure TgPersistentObjectList.WriteToFiler(writer: TGVirtualWriter);
 (*
    Object List Filer Format :
       Integer (Version)
@@ -1096,7 +1096,7 @@ begin
   end;
 end;
 
-procedure TGPersistentObjectList.ReadFromFilerWithEvent(reader: TGVirtualReader; afterSenderObjectCreated: TNotifyEvent);
+procedure TgPersistentObjectList.ReadFromFilerWithEvent(reader: TGVirtualReader; afterSenderObjectCreated: TNotifyEvent);
 var
   obj: TGPersistentObject;
   m: TGPersistentObjectClass;
@@ -1155,22 +1155,22 @@ begin
   end;
 end;
 
-procedure TGPersistentObjectList.ReadFromFiler(reader: TGVirtualReader);
+procedure TgPersistentObjectList.ReadFromFiler(reader: TGVirtualReader);
 begin
   ReadFromFilerWithEvent(reader, AfterObjectCreatedByReader);
 end;
 
-procedure TGPersistentObjectList.AfterObjectCreatedByReader(Sender: TObject);
+procedure TgPersistentObjectList.AfterObjectCreatedByReader(Sender: TObject);
 begin
   // nothing
 end;
 
-procedure TGPersistentObjectList.Push(item: TObject);
+procedure TgPersistentObjectList.Push(item: TObject);
 begin
   Add(item);
 end;
 
-function TGPersistentObjectList.Pop: TObject;
+function TgPersistentObjectList.Pop: TObject;
 begin
   if FCount > 0 then
   begin
@@ -1181,7 +1181,7 @@ begin
     Result := nil;
 end;
 
-procedure TGPersistentObjectList.PopAndFree;
+procedure TgPersistentObjectList.PopAndFree;
 begin
   Pop.Free;
 end;
@@ -1216,7 +1216,7 @@ begin
   until I >= R;
 end;
 
-procedure TGPersistentObjectList.Sort(compareFunc: TGObjectListSortCompare);
+procedure TgPersistentObjectList.Sort(compareFunc: TGObjectListSortCompare);
 begin
   if Count > 1 then
     POListQuickSort(FList, 0, Count - 1, compareFunc);
@@ -1805,6 +1805,6 @@ end;
 initialization // -------------------------------------------------------------
 
 	// class registrations
-  RegisterClass(TGPersistentObjectList);
+  RegisterClass(TgPersistentObjectList);
 
 end.

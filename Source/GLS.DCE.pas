@@ -86,13 +86,13 @@ type
     FStatics: TList;
     FDynamics: TList;
     FGravity: single;
-    FWorldDirection: TGCoordinates; // Used to calculate jumps f.i.
+    FWorldDirection: TgCoordinates; // Used to calculate jumps f.i.
     FWorldScale: single;
     FMovimentScale: single;
     FStandardiseLayers: TDCECollisionSelection;
     FManualStep: Boolean;
     FOnCollision: TDCECollisionEvent;
-    procedure SetWorldDirection(const Value: TGCoordinates);
+    procedure SetWorldDirection(const Value: TgCoordinates);
     procedure SetWorldScale(const Value: single);
     function GetDynamicCount: Integer;
     function GetStaticCount: Integer;
@@ -114,7 +114,7 @@ type
     property StaticCount: Integer read GetStaticCount;
   published
     property Gravity: single read FGravity write FGravity;
-    property WorldDirection: TGCoordinates read FWorldDirection
+    property WorldDirection: TgCoordinates read FWorldDirection
       write SetWorldDirection;
     property WorldScale: single read FWorldScale write SetWorldScale;
     property MovimentScale: single read FMovimentScale write FMovimentScale;
@@ -137,13 +137,13 @@ type
     FSolid: Boolean;
     FFriction: single; // 0 (no friction); 100 (no movement)
     FBounceFactor: single; // 0 (don't bounce); 1 (bounce forever)
-    FSize: TGCoordinates;
+    FSize: TgCoordinates;
     // Events
     FOnCollision: TDCEObjectCollisionEvent;
     procedure SetShape(const Value: TDCEShape);
     procedure SetFriction(const Value: single);
     procedure SetBounceFactor(const Value: single);
-    procedure SetSize(const Value: TGCoordinates);
+    procedure SetSize(const Value: TgCoordinates);
   protected
     procedure SetManager(const val: TGLDCEManager);
     procedure WriteToFiler(writer: TWriter); override;
@@ -165,7 +165,7 @@ type
     property Solid: Boolean read FSolid write FSolid;
     property Friction: single read FFriction write SetFriction;
     property BounceFactor: single read FBounceFactor write SetBounceFactor;
-    property Size: TGCoordinates read FSize write SetSize;
+    property Size: TgCoordinates read FSize write SetSize;
   end;
 
   TDCESlideOrBounce = (csbSlide, csbBounce);
@@ -181,7 +181,7 @@ type
     // Collide and slide if true, otherwise it "walk thru walls"
     FFriction: single; // 0 (no friction); 100 (no movement)
     FBounceFactor: single; // 0 (don't bounce); 1 (bounce forever)
-    FSize: TGCoordinates;
+    FSize: TgCoordinates;
     // Number of iterations of the collision method
     FMaxRecursionDepth: byte;
     FSlideOrBounce: TDCESlideOrBounce; // gak20041122
@@ -200,7 +200,7 @@ type
     FOnCollision: TDCEObjectCollisionEvent;
     procedure SetFriction(const Value: single);
     procedure SetBounceFactor(const Value: single);
-    procedure SetSize(const Value: TGCoordinates);
+    procedure SetSize(const Value: TgCoordinates);
   protected
     procedure SetManager(const val: TGLDCEManager);
     procedure WriteToFiler(writer: TWriter); override;
@@ -238,7 +238,7 @@ type
     property Solid: Boolean read FSolid write FSolid;
     property Friction: single read FFriction write SetFriction;
     property BounceFactor: single read FBounceFactor write SetBounceFactor;
-    property Size: TGCoordinates read FSize write SetSize;
+    property Size: TgCoordinates read FSize write SetSize;
     property SlideOrBounce: TDCESlideOrBounce read FSlideOrBounce
       write FSlideOrBounce;
   end;
@@ -512,7 +512,7 @@ begin
   FStatics := TList.Create;
   FDynamics := TList.Create;
   FGravity := 0;
-  FWorldDirection := TGCoordinates.CreateInitialized(Self, YHmgVector,
+  FWorldDirection := TgCoordinates.CreateInitialized(Self, YHmgVector,
     csVector);
   FWorldScale := 1;
   FMovimentScale := 1;
@@ -547,7 +547,7 @@ function TGLDCEManager.MoveByDistance(var Body: TGLDCEDynamic;
 var
   // Friction and bounce
   TotalFriction, Bounce, f, m, restitution: single;
-  ContactList: TGIntegerList;
+  ContactList: TgIntegerList;
   // Temporary properties (Static or Dynamic)
   tFriction, tBounceFactor: single;
   TObject: TGLBaseSceneObject;
@@ -667,7 +667,7 @@ begin
   // Generate events and calculate average friction
   lastobj := -1;
   TotalFriction := Body.Friction;
-  ContactList := TGIntegerList.Create;
+  ContactList := TgIntegerList.Create;
   try
     for i := 0 to High(MP.Contacts) do
       with MP do
@@ -768,7 +768,7 @@ begin
         DoMove(deltaTime);
 end;
 
-procedure TGLDCEManager.SetWorldDirection(const Value: TGCoordinates);
+procedure TGLDCEManager.SetWorldDirection(const Value: TgCoordinates);
 begin
   FWorldDirection := Value;
   FWorldDirection.Normalize;
@@ -866,7 +866,7 @@ constructor TGLDCEStatic.Create(AOwner: TXCollection);
 begin
   inherited Create(AOwner);
   FActive := True;
-  FSize := TGCoordinates.CreateInitialized(Self, XYZHmgVector, csVector);
+  FSize := TgCoordinates.CreateInitialized(Self, XYZHmgVector, csVector);
   FShape := csEllipsoid;
   FSolid := True;
   FFriction := 1;
@@ -981,7 +981,7 @@ begin
   FShape := Value;
 end;
 
-procedure TGLDCEStatic.SetSize(const Value: TGCoordinates);
+procedure TGLDCEStatic.SetSize(const Value: TgCoordinates);
 begin
   FSize.Assign(Value);
   if FSize.x <= 0 then
@@ -1049,7 +1049,7 @@ begin
   inherited Create(AOwner);
   FActive := True;
   FUseGravity := True;
-  FSize := TGCoordinates.CreateInitialized(Self, XYZHmgVector, csVector);
+  FSize := TgCoordinates.CreateInitialized(Self, XYZHmgVector, csVector);
   FSolid := True;
   FFriction := 1;
   FBounceFactor := 0;
@@ -1302,7 +1302,7 @@ begin
   end;
 end;
 
-procedure TGLDCEDynamic.SetSize(const Value: TGCoordinates);
+procedure TGLDCEDynamic.SetSize(const Value: TgCoordinates);
 begin
   FSize.Assign(Value);
   if FSize.x <= 0 then

@@ -24,7 +24,7 @@ type
   TGLRagdolJoint = class
   end;
 
-  TGLRagdolBoneList = class(TGPersistentObjectList)
+  TGLRagdolBoneList = class(TgPersistentObjectList)
   private
     FRagdoll: TGLRagdoll;
   protected
