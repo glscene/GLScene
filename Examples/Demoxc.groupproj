@@ -1,0 +1,132 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{06F2ACF5-1389-4241-BBE5-9D5D4E2831FD}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="..\Packages\GXScene_GBE.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Clouds\Clouds_c.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Cube\Cube_c.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Cubemap\Cubemap_c.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\CylinderExt\CylinderExt_c.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Genoise\Genoise_c.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Grass\Grass_c.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Heightmap\Heightmap_c.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demox\Waves\Waves_c.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="GXScene_GBE">
+        <MSBuild Projects="..\Packages\GXScene_GBE.dproj"/>
+    </Target>
+    <Target Name="GXScene_GBE:Clean">
+        <MSBuild Projects="..\Packages\GXScene_GBE.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GXScene_GBE:Make">
+        <MSBuild Projects="..\Packages\GXScene_GBE.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Clouds_c">
+        <MSBuild Projects="Demox\Clouds\Clouds_c.cbproj"/>
+    </Target>
+    <Target Name="Clouds_c:Clean">
+        <MSBuild Projects="Demox\Clouds\Clouds_c.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Clouds_c:Make">
+        <MSBuild Projects="Demox\Clouds\Clouds_c.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Cube_c">
+        <MSBuild Projects="Demox\Cube\Cube_c.cbproj"/>
+    </Target>
+    <Target Name="Cube_c:Clean">
+        <MSBuild Projects="Demox\Cube\Cube_c.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Cube_c:Make">
+        <MSBuild Projects="Demox\Cube\Cube_c.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Cubemap_c">
+        <MSBuild Projects="Demox\Cubemap\Cubemap_c.cbproj"/>
+    </Target>
+    <Target Name="Cubemap_c:Clean">
+        <MSBuild Projects="Demox\Cubemap\Cubemap_c.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Cubemap_c:Make">
+        <MSBuild Projects="Demox\Cubemap\Cubemap_c.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="CylinderExt_c">
+        <MSBuild Projects="Demox\CylinderExt\CylinderExt_c.cbproj"/>
+    </Target>
+    <Target Name="CylinderExt_c:Clean">
+        <MSBuild Projects="Demox\CylinderExt\CylinderExt_c.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CylinderExt_c:Make">
+        <MSBuild Projects="Demox\CylinderExt\CylinderExt_c.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Genoise_c">
+        <MSBuild Projects="Demox\Genoise\Genoise_c.cbproj"/>
+    </Target>
+    <Target Name="Genoise_c:Clean">
+        <MSBuild Projects="Demox\Genoise\Genoise_c.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Genoise_c:Make">
+        <MSBuild Projects="Demox\Genoise\Genoise_c.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Grass_c">
+        <MSBuild Projects="Demox\Grass\Grass_c.cbproj"/>
+    </Target>
+    <Target Name="Grass_c:Clean">
+        <MSBuild Projects="Demox\Grass\Grass_c.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Grass_c:Make">
+        <MSBuild Projects="Demox\Grass\Grass_c.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Heightmap_c">
+        <MSBuild Projects="Demox\Heightmap\Heightmap_c.cbproj"/>
+    </Target>
+    <Target Name="Heightmap_c:Clean">
+        <MSBuild Projects="Demox\Heightmap\Heightmap_c.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Heightmap_c:Make">
+        <MSBuild Projects="Demox\Heightmap\Heightmap_c.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Waves_c">
+        <MSBuild Projects="Demox\Waves\Waves_c.cbproj"/>
+    </Target>
+    <Target Name="Waves_c:Clean">
+        <MSBuild Projects="Demox\Waves\Waves_c.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Waves_c:Make">
+        <MSBuild Projects="Demox\Waves\Waves_c.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="GXScene_GBE;Clouds_c;Cube_c;Cubemap_c;CylinderExt_c;Genoise_c;Grass_c;Heightmap_c;Waves_c"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="GXScene_GBE:Clean;Clouds_c:Clean;Cube_c:Clean;Cubemap_c:Clean;CylinderExt_c:Clean;Genoise_c:Clean;Grass_c:Clean;Heightmap_c:Clean;Waves_c:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="GXScene_GBE:Make;Clouds_c:Make;Cube_c:Make;Cubemap_c:Make;CylinderExt_c:Make;Genoise_c:Make;Grass_c:Make;Heightmap_c:Make;Waves_c:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
