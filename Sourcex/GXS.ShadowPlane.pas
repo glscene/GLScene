@@ -31,7 +31,7 @@ uses
   GXS.PipelineTransformation,
   GXS.Context,
   GXS.Objects,
-  GXS.Color,
+  GLScene.Color,
   GXS.RenderContextInfo,
   GXS.State,
   GLScene.TextureFormat;
@@ -64,14 +64,14 @@ type
     FRendering: Boolean;
     FShadowingObject: TgxBaseSceneObject;
     FShadowedLight: TgxLightSource;
-    FShadowColor: TgxColor;
+    FShadowColor: TGColor;
     FShadowOptions: TShadowPlaneOptions;
     FOnBeginRenderingShadows, FOnEndRenderingShadows: TNotifyEvent;
   protected
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
     procedure SetShadowingObject(const val: TgxBaseSceneObject);
     procedure SetShadowedLight(const val: TgxLightSource);
-    procedure SetShadowColor(const val: TgxColor);
+    procedure SetShadowColor(const val: TGColor);
     procedure SetShadowOptions(const val: TShadowPlaneOptions);
   public
     constructor Create(AOwner: TComponent); override;
@@ -87,7 +87,7 @@ type
     property ShadowedLight: TgxLightSource read FShadowedLight write SetShadowedLight;
     (* The shadow's color.
        This color is transparently blended to make shadowed area darker. *)
-    property ShadowColor: TgxColor read FShadowColor write SetShadowColor;
+    property ShadowColor: TGColor read FShadowColor write SetShadowColor;
     (* Controls rendering options.
        spoUseStencil: plane area is stenciled, prevents shadowing
           objects to be visible on the sides of the mirror (stencil buffer
@@ -116,12 +116,12 @@ implementation
 
 constructor TgxShadowPlane.Create(AOwner: Tcomponent);
 const
-  cDefaultShadowColor: TgxColorVector = (X:0; Y:0; Z:0; W:0.5);
+  cDefaultShadowColor: TGColorVector = (X:0; Y:0; Z:0; W:0.5);
 begin
   inherited Create(AOwner);
   FShadowOptions := cDefaultShadowPlaneOptions;
   ObjectStyle := ObjectStyle + [osDirectDraw];
-  FShadowColor := TgxColor.CreateInitialized(Self, cDefaultShadowColor);
+  FShadowColor := TGColor.CreateInitialized(Self, cDefaultShadowColor);
 end;
 
 destructor TgxShadowPlane.Destroy;
@@ -227,7 +227,7 @@ begin
           Disable(stLighting);
           Disable(stFog);
 
-          glColor4fv(ShadowColor.AsAddress);
+          glColor4fv(@ShadowColor.AsAddress^);
 
           if (spoUseStencil in ShadowOptions) then
           begin
@@ -319,7 +319,7 @@ begin
 end;
 
 
-procedure TgxShadowPlane.SetShadowColor(const val: TgxColor);
+procedure TgxShadowPlane.SetShadowColor(const val: TGColor);
 begin
   FShadowColor.Assign(val);
 end;

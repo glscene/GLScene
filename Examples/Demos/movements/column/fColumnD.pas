@@ -17,7 +17,7 @@ uses
   GLScene.VectorTypes,
   GLS.Cadencer,
   GLS.SceneViewer,
-  GLS.Color,
+  GLScene.Color,
 
   GLScene.Coordinates,
   GLScene.BaseClasses,

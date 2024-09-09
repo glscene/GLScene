@@ -24,7 +24,7 @@ uses
   GLScene.VectorLists,
   GLScene.VectorTypes,
   GLS.Cadencer,
-  GLS.Color,
+  GLScene.Color,
   GLScene.BaseClasses,
   GLScene.Coordinates,
   GLScene.Manager,
@@ -58,7 +58,7 @@ type
     FParticleSize, FFireDensity, FFireEvaporation: Single;
     FFireCrown, FParticleInterval, IntervalDelta: Single;
     NP: Integer;
-    FInnerColor, FOuterColor: TGLColor;
+    FInnerColor, FOuterColor: TGColor;
     FFireBurst, FFireRadius: Single;
     FDisabled, FPaused, FUseInterval: Boolean;
     FReference: TGLBaseSceneObject;
@@ -71,14 +71,14 @@ type
     procedure SetInitialDir(const val: TGCoordinates);
     procedure SetCadencer(const val: TGLCadencer);
     function StoreParticleSize: Boolean;
-    procedure SetInnerColor(const val: TGLcolor);
-    procedure SetOuterColor(const val: TGLcolor);
+    procedure SetInnerColor(const val: TGColor);
+    procedure SetOuterColor(const val: TGColor);
     procedure SetReference(const val: TGLBaseSceneObject);
     procedure SetMaxParticles(const val: Integer);
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
     procedure CalcFire(deltaTime: Double; ParticleInterval, ParticleLife: Single;
       FireAlpha: Single);
-    procedure AffParticle3d(Color2: TGLColorVector; const mat: TGLMatrix);
+    procedure AffParticle3d(Color2: TGColorVector; const mat: TGLMatrix);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -110,9 +110,9 @@ type
     // Size of the particle, in absolute units.
     property ParticleSize: Single read FParticleSize write FParticleSize stored StoreParticleSize;
     // Inner color of a particle.
-    property InnerColor: TGLcolor read FInnerColor write SetInnerColor;
+    property InnerColor: TGColor read FInnerColor write SetInnerColor;
     // Outer color of a particle.
-    property OuterColor: TGLcolor read FOuterColor write SetOuterColor; // default clrWhite;
+    property OuterColor: TGColor read FOuterColor write SetOuterColor; // default clrWhite;
     property FireDensity: Single read FFireDensity write FFireDensity;
     property FireEvaporation: Single read FFireEvaporation write FFireEvaporation;
     (* Adjust a crown (circular) radius on which particles are spawned.
@@ -214,9 +214,9 @@ begin
   FInitialDir := TGCoordinates.CreateInitialized(Self, YHmgVector, csPoint);
   FMaxParticles := 256;
   FParticleSize := 1.0;
-  FInnerColor := TGLColor.Create(Self);
+  FInnerColor := TGColor.Create(Self);
   FInnerColor.Initialize(clrYellow);
-  FOuterColor := TGLColor.Create(Self);
+  FOuterColor := TGColor.Create(Self);
   FOuterColor.Initialize(clrOrange);
   FFireDensity := 1;
   FFireEvaporation := 0.86;
@@ -311,7 +311,7 @@ begin
 end;
 
 
-procedure TGLFireFXManager.SetInnerColor(const val: TGLcolor);
+procedure TGLFireFXManager.SetInnerColor(const val: TGColor);
 begin
   if FInnerColor <> val then
   begin
@@ -321,7 +321,7 @@ begin
 end;
 
 
-procedure TGLFireFXManager.SetOuterColor(const val: TGLcolor);
+procedure TGLFireFXManager.SetOuterColor(const val: TGColor);
 begin
   if FOuterColor <> val then
   begin
@@ -524,7 +524,7 @@ begin
   end;
 end;
 
-procedure TGLFireFXManager.AffParticle3d(Color2: TGLColorVector; const mat: TGLMatrix);
+procedure TGLFireFXManager.AffParticle3d(Color2: TGColorVector; const mat: TGLMatrix);
 var
   vx, vy: TGLVector;
   i: Integer;

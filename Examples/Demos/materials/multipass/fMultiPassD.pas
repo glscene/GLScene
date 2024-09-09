@@ -19,7 +19,7 @@ uses
   GLS.Context,
   GLS.GeomObjects,
   GLS.State,
-  GLS.Color,
+  GLScene.Color,
   GLS.Material,
   GLScene.Coordinates,
  
@@ -63,7 +63,7 @@ type
 
   THiddenLineShader = class(TGLShader)
   private
-    BackgroundColor, LineColor: TGLColorVector;
+    BackgroundColor, LineColor: TGColorVector;
     PassCount: Integer;
   public
     procedure DoApply(var rci: TGLRenderContextInfo; Sender: TObject); override;
@@ -72,7 +72,7 @@ type
 
   TOutLineShader = class(TGLShader)
   private
-    BackgroundColor, LineColor: TGLColorVector;
+    BackgroundColor, LineColor: TGColorVector;
     OutlineSmooth, Lighting: Boolean;
     OutlineWidth, Oldlinewidth: Single;
     PassCount: Integer;

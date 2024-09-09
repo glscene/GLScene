@@ -21,7 +21,7 @@ uses
   GLS.Material,
   GLScene.VectorGeometry,
   GLScene.VectorLists,
-  GLS.Color,
+  GLScene.Color,
   GLS.RenderContextInfo,
   GLScene.VectorTypes;
 
@@ -761,7 +761,7 @@ end;
 function TFGBSPNode.AddLerpIfDistinct(iA, iB, iMid: Integer): Integer;
 var
   midNormal: TAffineVector;
-  midColor: TGLColorVector;
+  midColor: TGColorVector;
   midTexCoord: TAffineVector;
   midLightmapTexCoord: TAffineVector;
   f: Single;

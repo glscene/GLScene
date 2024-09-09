@@ -28,7 +28,7 @@ uses
   GLS.Texture,
   GLS.Material,
   GLS.HudObjects,
-  GLS.Color,
+  GLScene.Color,
   GLS.Graphics,
   GLS.Context,
   GLS.XOpenGL,

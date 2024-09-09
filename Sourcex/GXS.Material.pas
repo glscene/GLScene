@@ -21,19 +21,20 @@ uses
   GXS.XOpenGL,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.Utils,
+  GLScene.BaseClasses,
   GLScene.PersistentClasses,
   GLScene.Strings,
+  GLScene.TextureFormat,
+  GLScene.Color,
+  GLScene.Coordinates,
+  GLScene.Utils,
+
   GXS.ApplicationFileIO,
 
   GXS.RenderContextInfo,
-  GLScene.BaseClasses,
   GXS.Context,
   GXS.Texture,
-  GXS.Color,
-  GLScene.Coordinates,
   GXS.State,
-  GLScene.TextureFormat,
   GXS.Graphics,
   GXS.ImageUtils;
 
@@ -172,13 +173,13 @@ type
     polygon mode (lines / fill). *)
   TgxFaceProperties = class(TGUpdateAbleObject)
   private
-    FAmbient, FDiffuse, FSpecular, FEmission: TgxColor;
+    FAmbient, FDiffuse, FSpecular, FEmission: TGColor;
     FShininess: TgxShininess;
   protected
-    procedure SetAmbient(AValue: TgxColor);
-    procedure SetDiffuse(AValue: TgxColor);
-    procedure SetEmission(AValue: TgxColor);
-    procedure SetSpecular(AValue: TgxColor);
+    procedure SetAmbient(AValue: TGColor);
+    procedure SetDiffuse(AValue: TGColor);
+    procedure SetEmission(AValue: TGColor);
+    procedure SetSpecular(AValue: TGColor);
     procedure SetShininess(AValue: TgxShininess);
   public
     constructor Create(AOwner: TPersistent); override;
@@ -187,11 +188,11 @@ type
     procedure ApplyNoLighting(var rci: TgxRenderContextInfo; AFace: TgxCullFaceMode);
     procedure Assign(Source: TPersistent); override;
   published
-    property Ambient: TgxColor read FAmbient write SetAmbient;
-    property Diffuse: TgxColor read FDiffuse write SetDiffuse;
-    property Emission: TgxColor read FEmission write SetEmission;
+    property Ambient: TGColor read FAmbient write SetAmbient;
+    property Diffuse: TGColor read FDiffuse write SetDiffuse;
+    property Emission: TGColor read FEmission write SetEmission;
     property Shininess: TgxShininess read FShininess write SetShininess default 0;
-    property Specular: TgxColor read FSpecular write SetSpecular;
+    property Specular: TGColor read FSpecular write SetSpecular;
   end;
 
   TgxDepthProperties = class(TGUpdateAbleObject)
@@ -632,10 +633,10 @@ constructor TgxFaceProperties.Create(AOwner: TPersistent);
 begin
   inherited;
   // default colors
-  FAmbient := TgxColor.CreateInitialized(Self, clrGray20);
-  FDiffuse := TgxColor.CreateInitialized(Self, clrGray80);
-  FEmission := TgxColor.Create(Self);
-  FSpecular := TgxColor.Create(Self);
+  FAmbient := TGColor.CreateInitialized(Self, clrGray20);
+  FDiffuse := TGColor.CreateInitialized(Self, clrGray80);
+  FEmission := TGColor.Create(Self);
+  FSpecular := TGColor.Create(Self);
   FShininess := 0;
 end;
 
@@ -658,7 +659,7 @@ end;
 
 procedure TgxFaceProperties.ApplyNoLighting(var rci: TgxRenderContextInfo; aFace: TgxCullFaceMode);
 begin
-  glColor4fv(Diffuse.AsAddress);
+  glColor4fv(@Diffuse.AsAddress^);
 end;
 
 procedure TgxFaceProperties.Assign(Source: TPersistent);
@@ -674,25 +675,25 @@ begin
   end;
 end;
 
-procedure TgxFaceProperties.SetAmbient(AValue: TgxColor);
+procedure TgxFaceProperties.SetAmbient(AValue: TGColor);
 begin
   FAmbient.DirectColor := AValue.Color;
   NotifyChange(Self);
 end;
 
-procedure TgxFaceProperties.SetDiffuse(AValue: TgxColor);
+procedure TgxFaceProperties.SetDiffuse(AValue: TGColor);
 begin
   FDiffuse.DirectColor := AValue.Color;
   NotifyChange(Self);
 end;
 
-procedure TgxFaceProperties.SetEmission(AValue: TgxColor);
+procedure TgxFaceProperties.SetEmission(AValue: TGColor);
 begin
   FEmission.DirectColor := AValue.Color;
   NotifyChange(Self);
 end;
 
-procedure TgxFaceProperties.SetSpecular(AValue: TgxColor);
+procedure TgxFaceProperties.SetSpecular(AValue: TGColor);
 begin
   FSpecular.DirectColor := AValue.Color;
   NotifyChange(Self);

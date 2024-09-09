@@ -12,18 +12,20 @@ uses
   Vcl.ExtCtrls, 
   Vcl.StdCtrls,
 
-  GLS.Cadencer, 
-  GLS.SceneViewer, 
-  GLScene.XCollection, 
-  GLScene.VectorGeometry, 
+  GLScene.Keyboard,
+  GLScene.Coordinates,
+  GLScene.BaseClasses,
+  GLScene.XCollection,
+  GLScene.VectorGeometry,
+
+  GLS.Cadencer,
+  GLS.SceneViewer,
   GLS.GeomObjects,
-  GLS.Scene, 
-  GLS.Objects, 
-  GLS.Graph, 
-  
+  GLS.Scene,
+  GLS.Objects,
+  GLS.Graph,
+
   GLS.SmoothNavigator,
-  GLScene.Coordinates, 
-  GLScene.BaseClasses, 
   GLS.Screen;
 
 type

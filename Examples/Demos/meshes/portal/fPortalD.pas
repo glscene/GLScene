@@ -18,20 +18,24 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLS.Scene,
+
   GLScene.VectorTypes,
+  GLScene.PersistentClasses,
+  GLScene.Keyboard,
+  GLScene.Coordinates,
+  GLScene.BaseClasses,
+  GLScene.XCollection,
+  GLScene.Utils,
+
   GLS.Texture,
   GLS.VectorFileObjects,
-  GLScene.PersistentClasses,
   GLS.Objects,
   GLS.Cadencer,
   GLS.Portal,
   GLS.SceneViewer,
- 
+
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
-  GLScene.XCollection,
-  GLScene.Utils, GLS.SimpleNavigation;
+  GLS.SimpleNavigation;
 
 type
   TFormPortal = class(TForm)

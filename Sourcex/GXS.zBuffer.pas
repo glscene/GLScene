@@ -42,7 +42,7 @@ uses
   GXS.Objects,
   GXS.Context,
   GXS.SceneViewer,
-  GXS.Color,
+  GLScene.Color,
   GXS.RenderContextInfo,
   GXS.State,
   GLScene.TextureFormat;
@@ -131,7 +131,7 @@ type
     FYRes: integer;
     Fsoft: boolean;
     FTolerance: single;
-    FColor: TgxColor;
+    FColor: TGColor;
     SCol: TgxPixel32;
     //stepX, stepY :single;
     FTexturePrepared: Boolean;
@@ -166,7 +166,7 @@ type
     property Optimise: TOptimise read FOptimise write FOptimise;
     property Width: integer read FWidth write SetWidth;
     property Height: integer read FHeight write SetHeight;
-    property Color: TgxColor read FColor write FColor;
+    property Color: TGColor read FColor write FColor;
     //          property Xres        :integer read FXRes write SetXRes;// default 64;
     //          property Yres        :integer read FYRes write SetYRes;// default 64;
     property Soft: Boolean read Fsoft write SetSoft;
@@ -642,7 +642,7 @@ constructor TgxZShadows.Create(AOwner: TComponent);
 begin
   inherited;
   ObjectStyle := ObjectStyle + [osDirectDraw, osNoVisibilityCulling];
-  FColor := TgxColor.Create(Self);
+  FColor := TGColor.Create(Self);
   self.FDataSize := 0;
   self.FXRes := 64;
   self.FYRes := 64;

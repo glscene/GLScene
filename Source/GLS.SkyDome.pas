@@ -21,7 +21,7 @@ uses
   GLScene.VectorGeometry,
   GLS.Scene,
   GLS.Graphics,
-  GLS.Color,
+  GLScene.Color,
   GLS.Material,
   GLS.RenderContextInfo;
 
@@ -92,16 +92,16 @@ type
   private
     FStartAngle: Single;
     FStopAngle: Single;
-    FStartColor: TGLColor;
-    FStopColor: TGLColor;
+    FStartColor: TGColor;
+    FStopColor: TGColor;
     FSlices: Integer;
     FStacks: Integer;
   protected
     function GetDisplayName: string; override;
     procedure SetStartAngle(const val: Single);
-    procedure SetStartColor(const val: TGLColor);
+    procedure SetStartColor(const val: TGColor);
     procedure SetStopAngle(const val: Single);
-    procedure SetStopColor(const val: TGLColor);
+    procedure SetStopColor(const val: TGColor);
     procedure SetSlices(const val: Integer);
     procedure SetStacks(const val: Integer);
     procedure OnColorChange(sender: TObject);
@@ -112,9 +112,9 @@ type
     procedure BuildList(var rci: TGLRenderContextInfo);
   published
     property StartAngle: Single read FStartAngle write SetStartAngle;
-    property StartColor: TGLColor read FStartColor write SetStartColor;
+    property StartColor: TGColor read FStartColor write SetStartColor;
     property StopAngle: Single read FStopAngle write SetStopAngle;
-    property StopColor: TGLColor read FStopColor write SetStopColor;
+    property StopColor: TGColor read FStopColor write SetStopColor;
     property Slices: Integer read FSlices write SetSlices default 12;
     property Stacks: Integer read FStacks write SetStacks default 1;
   end;
@@ -224,14 +224,14 @@ type
   private
     FSunElevation: Single;
     FTurbidity: Single;
-    FCurSunColor, FCurSkyColor, FCurHazeColor: TGLColorVector;
+    FCurSunColor, FCurSkyColor, FCurHazeColor: TGColorVector;
     FCurHazeTurbid, FCurSunSkyTurbid: Single;
-    FSunZenithColor: TGLColor;
-    FSunDawnColor: TGLColor;
-    FHazeColor: TGLColor;
-    FSkyColor: TGLColor;
-    FNightColor: TGLColor;
-    FDeepColor: TGLColor;
+    FSunZenithColor: TGColor;
+    FSunDawnColor: TGColor;
+    FHazeColor: TGColor;
+    FSkyColor: TGColor;
+    FNightColor: TGColor;
+    FDeepColor: TGColor;
     FSlices, FStacks: Integer;
     FExtendedOptions: TGLEarthSkydomeOptions;
     FMorning: Boolean;
@@ -239,12 +239,12 @@ type
     procedure Loaded; override;
     procedure SetSunElevation(const val: Single);
     procedure SetTurbidity(const val: Single);
-    procedure SetSunZenithColor(const val: TGLColor);
-    procedure SetSunDawnColor(const val: TGLColor);
-    procedure SetHazeColor(const val: TGLColor);
-    procedure SetSkyColor(const val: TGLColor);
-    procedure SetNightColor(const val: TGLColor);
-    procedure SetDeepColor(const val: TGLColor);
+    procedure SetSunZenithColor(const val: TGColor);
+    procedure SetSunDawnColor(const val: TGColor);
+    procedure SetHazeColor(const val: TGColor);
+    procedure SetSkyColor(const val: TGColor);
+    procedure SetNightColor(const val: TGColor);
+    procedure SetDeepColor(const val: TGColor);
     procedure SetSlices(const val: Integer);
     procedure SetStacks(const val: Integer);
     procedure OnColorChanged(Sender: TObject);
@@ -252,7 +252,7 @@ type
     (* Coordinates system note: X is forward, Y is left and Z is up
        always rendered as sphere of radius 1 *)
     procedure RenderDome;
-    function CalculateColor(const theta, cosGamma: Single): TGLColorVector;
+    function CalculateColor(const theta, cosGamma: Single): TGColorVector;
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -264,12 +264,12 @@ type
     property SunElevation: Single read FSunElevation write SetSunElevation;
     // Expresses the purity of air. Value range is from 1 (pure atmosphere) to 120 (very nebulous)
     property Turbidity: Single read FTurbidity write SetTurbidity;
-    property SunZenithColor: TGLColor read FSunZenithColor write SetSunZenithColor;
-    property SunDawnColor: TGLColor read FSunDawnColor write SetSunDawnColor;
-    property HazeColor: TGLColor read FHazeColor write SetHazeColor;
-    property SkyColor: TGLColor read FSkyColor write SetSkyColor;
-    property NightColor: TGLColor read FNightColor write SetNightColor;
-    property DeepColor: TGLColor read FDeepColor write SetDeepColor;
+    property SunZenithColor: TGColor read FSunZenithColor write SetSunZenithColor;
+    property SunDawnColor: TGColor read FSunDawnColor write SetSunDawnColor;
+    property HazeColor: TGColor read FHazeColor write SetHazeColor;
+    property SkyColor: TGColor read FSkyColor write SetSkyColor;
+    property NightColor: TGColor read FNightColor write SetNightColor;
+    property DeepColor: TGColor read FDeepColor write SetDeepColor;
     property ExtendedOptions: TGLEarthSkydomeOptions read FExtendedOptions write FExtendedOptions;
     property Slices: Integer read FSlices write SetSlices default 24;
     property Stacks: Integer read FStacks write SetStacks default 48;
@@ -972,10 +972,10 @@ end;
 constructor TGLSkyDomeBand.Create(Collection: TCollection);
 begin
   inherited Create(Collection);
-  FStartColor := TGLColor.Create(Self);
+  FStartColor := TGColor.Create(Self);
   FStartColor.Initialize(clrBlue);
   FStartColor.OnNotifyChange := OnColorChange;
-  FStopColor := TGLColor.Create(Self);
+  FStopColor := TGColor.Create(Self);
   FStopColor.Initialize(clrBlue);
   FStopColor.OnNotifyChange := OnColorChange;
   FSlices := 12;
@@ -1018,7 +1018,7 @@ begin
   TGLSkyDomeBands(Collection).NotifyChange;
 end;
 
-procedure TGLSkyDomeBand.SetStartColor(const val: TGLColor);
+procedure TGLSkyDomeBand.SetStartColor(const val: TGColor);
 begin
   FStartColor.Assign(val);
 end;
@@ -1033,7 +1033,7 @@ begin
   TGLSkyDomeBands(Collection).NotifyChange;
 end;
 
-procedure TGLSkyDomeBand.SetStopColor(const val: TGLColor);
+procedure TGLSkyDomeBand.SetStopColor(const val: TGColor);
 begin
   FStopColor.Assign(val);
 end;
@@ -1068,7 +1068,7 @@ procedure TGLSkyDomeBand.BuildList(var rci: TGLRenderContextInfo);
 // always rendered as sphere of radius 1
 
   procedure RenderBand(start, stop: Single;
-    const colStart, colStop: TGLColorVector);
+    const colStart, colStop: TGColorVector);
   var
     i: Integer;
     f, r, r2: Single;
@@ -1290,7 +1290,7 @@ var
   star: TGLSkyDomeStar;
   lastColor: TColor;
   lastPointSize10, pointSize10: Integer;
-  Color, twinkleColor: TGLColorVector;
+  Color, twinkleColor: TGColorVector;
 
   (*sub*)procedure DoTwinkle;
   begin
@@ -1432,7 +1432,7 @@ procedure TGLSkyDomeStars.LoadStarsFile(const starsFileName: string);
 var
   fs: TFileStream;
   sr: TGLStarRecord;
-  colorVector: TGLColorVector;
+  colorVector: TGColorVector;
 begin
   fs := TFileStream.Create(starsFileName, fmOpenRead + fmShareDenyWrite);
   try
@@ -1568,16 +1568,16 @@ begin
   Bands.Clear;
   FSunElevation := 75;
   FTurbidity := 15;
-  FSunZenithColor := TGLColor.CreateInitialized(Self, clrWhite, OnColorChanged);
-  FSunDawnColor := TGLColor.CreateInitialized(Self, Vectormake(1, 0.5, 0, 0),
+  FSunZenithColor := TGColor.CreateInitialized(Self, clrWhite, OnColorChanged);
+  FSunDawnColor := TGColor.CreateInitialized(Self, Vectormake(1, 0.5, 0, 0),
     OnColorChanged);
-  FHazeColor := TGLColor.CreateInitialized(Self, Vectormake(0.9, 0.95, 1, 0),
+  FHazeColor := TGColor.CreateInitialized(Self, Vectormake(0.9, 0.95, 1, 0),
     OnColorChanged);
-  FSkyColor := TGLColor.CreateInitialized(Self, Vectormake(0.45, 0.6, 0.9, 0),
+  FSkyColor := TGColor.CreateInitialized(Self, Vectormake(0.45, 0.6, 0.9, 0),
     OnColorChanged);
-  FNightColor := TGLColor.CreateInitialized(Self, clrTransparent,
+  FNightColor := TGColor.CreateInitialized(Self, clrTransparent,
     OnColorChanged);
-  FDeepColor := TGLColor.CreateInitialized(Self, Vectormake(0, 0.2, 0.4, 0));
+  FDeepColor := TGColor.CreateInitialized(Self, Vectormake(0, 0.2, 0.4, 0));
   FStacks := 24;
   FSlices := 48;
   PreCalculate;
@@ -1642,37 +1642,37 @@ begin
   PreCalculate;
 end;
 
-procedure TGLEarthSkyDome.SetSunZenithColor(const val: TGLColor);
+procedure TGLEarthSkyDome.SetSunZenithColor(const val: TGColor);
 begin
   FSunZenithColor.Assign(val);
   PreCalculate;
 end;
 
-procedure TGLEarthSkyDome.SetSunDawnColor(const val: TGLColor);
+procedure TGLEarthSkyDome.SetSunDawnColor(const val: TGColor);
 begin
   FSunDawnColor.Assign(val);
   PreCalculate;
 end;
 
-procedure TGLEarthSkyDome.SetHazeColor(const val: TGLColor);
+procedure TGLEarthSkyDome.SetHazeColor(const val: TGColor);
 begin
   FHazeColor.Assign(val);
   PreCalculate;
 end;
 
-procedure TGLEarthSkyDome.SetSkyColor(const val: TGLColor);
+procedure TGLEarthSkyDome.SetSkyColor(const val: TGColor);
 begin
   FSkyColor.Assign(val);
   PreCalculate;
 end;
 
-procedure TGLEarthSkyDome.SetNightColor(const val: TGLColor);
+procedure TGLEarthSkyDome.SetNightColor(const val: TGColor);
 begin
   FNightColor.Assign(val);
   PreCalculate;
 end;
 
-procedure TGLEarthSkyDome.SetDeepColor(const val: TGLColor);
+procedure TGLEarthSkyDome.SetDeepColor(const val: TGColor);
 begin
   FDeepColor.Assign(val);
   PreCalculate;
@@ -1865,7 +1865,7 @@ end;
 //----------------------------------------------------------------------
 
 function TGLEarthSkyDome.CalculateColor(const theta, cosGamma: Single)
-  : TGLColorVector;
+  : TGColorVector;
 var
   t: Single;
 begin
@@ -1897,7 +1897,7 @@ var
     i: Integer;
     r, thetaStart: Single;
     vertex1: TGLVector;
-    Color: TGLColorVector;
+    Color: TGColorVector;
   begin
     r := 0;
     vertex1.W := 1;
@@ -1924,7 +1924,7 @@ var
     i: Integer;
     r, r2, thetaStart, thetaStop: Single;
     vertex1, vertex2: TGLVector;
-    Color: TGLColorVector;
+    Color: TGColorVector;
   begin
     vertex1.W := 1;
     if stop = 90 then

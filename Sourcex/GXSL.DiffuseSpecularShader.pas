@@ -33,7 +33,7 @@ uses
   GLScene.Strings,
   GXSL.CustomShader,
   GXSL.Shader,
-  GXS.Color,
+  GLScene.Color,
   GXS.RenderContextInfo,
   GXS.Material;
 

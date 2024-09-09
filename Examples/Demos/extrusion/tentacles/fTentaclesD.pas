@@ -20,7 +20,7 @@ uses
   GLScene.VectorTypes,
   GLS.Texture,
   GLS.SceneViewer,
-  GLS.Color,
+  GLScene.Color,
 
   GLScene.Coordinates,
   GLScene.BaseClasses;

@@ -21,7 +21,7 @@ uses
 
   GXS.Material,
   GXS.Scene,
-  GXS.Color,
+  GLScene.Color,
   GLScene.BaseClasses, 
   GXS.RenderContextInfo, 
   GXS.State, 
@@ -30,12 +30,12 @@ uses
 type
   TgxLineSettings = class(TGUpdateAbleObject)
   private
-    FColor: TgxColor;
+    FColor: TGColor;
     FWidth: Single;
     FPattern: GLushort;
     FForceMaterial: Boolean;
     procedure SetPattern(const value: GLushort);
-    procedure SetColor(const v: TgxColor);
+    procedure SetColor(const v: TGColor);
     procedure SetWidth(const Value: Single);
     procedure SetForceMaterial(v: boolean);
   public
@@ -45,7 +45,7 @@ type
     procedure UnApply(var rci: TgxRenderContextInfo);
   published
     property Width: Single read FWidth write SetWidth;
-    property Color: TgxColor read FColor write SetColor;
+    property Color: TGColor read FColor write SetColor;
     property Pattern: GLushort read FPattern write SetPattern default $FFFF;
     (* Set ForceMaterial to true to enforce the application of the line settings
        for objects that sets their own color, line width and pattern. *)
@@ -58,14 +58,14 @@ type
     FPassCount: integer;
     FLineSmooth: Boolean;
     FSolid: Boolean;
-    FBackGroundColor: TgxColor;
+    FBackGroundColor: TGColor;
     FFrontLine: TgxLineSettings;
     FBackLine: TgxLineSettings;
     FLighting: Boolean;
     FShadeModel: TgxShadeModel;
     procedure SetlineSmooth(v: boolean);
     procedure SetSolid(v: boolean);
-    procedure SetBackgroundColor(AColor: TgxColor);
+    procedure SetBackgroundColor(AColor: TGColor);
     procedure SetLighting(v: boolean);
     procedure SetShadeModel(const val: TgxShadeModel);
   protected
@@ -83,7 +83,7 @@ type
     // Solid controls if you can see through the front-line wireframe.
     property Solid: Boolean read FSolid write SetSolid default false;
     // Color used for solid fill.
-    property BackgroundColor: TgxColor read FBackgroundColor write
+    property BackgroundColor: TGColor read FBackgroundColor write
       SetBackgroundColor;
     // When Solid is True, determines if lighting or background color is used.
     property SurfaceLit: Boolean read FLighting write SetLighting default true;
@@ -102,7 +102,7 @@ implementation
 constructor TgxLineSettings.Create(AOwner: TPersistent);
 begin
   inherited;
-  FColor := TgxColor.Create(Self);
+  FColor := TGColor.Create(Self);
   FColor.Initialize(clrGray20);
   FWidth := 2;
   Pattern := $FFFF;
@@ -124,7 +124,7 @@ begin
   end;
 end;
 
-procedure TgxLineSettings.SetColor(const v: TgxColor);
+procedure TgxLineSettings.SetColor(const v: TGColor);
 begin
   FColor.Color := v.Color;
   NotifyChange(Self);
@@ -142,7 +142,7 @@ var
 procedure TgxLineSettings.Apply(var rci: TgxRenderContextInfo);
 begin
   rci.gxStates.LineWidth := Width;
-  glColor4fv(Color.AsAddress);
+  glColor4fv(@Color.AsAddress^);
   if Pattern <> $FFFF then
   begin
     rci.gxStates.Enable(stLineStipple);
@@ -185,7 +185,7 @@ begin
   FBackLine := TgxLineSettings.Create(self);
   FSolid := false;
 
-  FBackgroundColor := TgxColor.Create(Self);
+  FBackgroundColor := TGColor.Create(Self);
   FBackgroundColor.Initialize(clrBtnFace);
 
   FLineSmooth := False;
@@ -223,7 +223,7 @@ begin
       else
       begin
         Disable(stLighting);
-        glColor4fv(FBackgroundColor.AsAddress); // use background color
+        glColor4fv(@FBackgroundColor.AsAddress^); // use background color
       end;
       // enable and adjust polygon offset
       Enable(stPolygonOffsetFill);
@@ -307,7 +307,7 @@ begin
   end;
 end;
 
-procedure TgxHiddenLineShader.SetBackgroundColor(AColor: TgxColor);
+procedure TgxHiddenLineShader.SetBackgroundColor(AColor: TGColor);
 begin
   FBackgroundColor.Color := AColor.Color;
   NotifyChange(Self);

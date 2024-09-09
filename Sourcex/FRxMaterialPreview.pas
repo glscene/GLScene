@@ -35,7 +35,7 @@ uses
   GXS.Material,
   GXS.HUDObjects,
   GXS.GeomObjects,
-  GXS.Color,
+  GLScene.Color,
   GLScene.Coordinates;
 
 type

@@ -23,7 +23,7 @@ uses
   GLScene.Utils,
   GLScene.PersistentClasses,
   GXS.Graphics,
-  GXS.Color,
+  GLScene.Color,
   GXS.RenderContextInfo,
   GLScene.Coordinates,
   GLScene.BaseClasses,
@@ -114,7 +114,7 @@ type
   // Abstract ImposterBuilder class.
   TgxImposterBuilder = class(TGUpdateAbleComponent)
   private
-    FBackColor: TgxColor;
+    FBackColor: TGColor;
     FBuildOffset: TGCoordinates;
     FImposterRegister: TGPersistentObjectList;
     FRenderPoint: TgxRenderPoint;
@@ -126,7 +126,7 @@ type
   protected
     procedure SetRenderPoint(AValue: TgxRenderPoint);
     procedure RenderPointFreed(Sender: TObject);
-    procedure SetBackColor(AValue: TgxColor);
+    procedure SetBackColor(AValue: TGColor);
     procedure SetBuildOffset(AValue: TGCoordinates);
     procedure SetImposterReference(AValue: TImposterReference);
     procedure InitializeImpostorTexture(const TextureSize: TPoint);
@@ -164,7 +164,7 @@ type
     (* Background color for impostor rendering.
        Typically, you'll want to leave the alpha channel to zero, and pick
        as RGB as color that matches the impostor'ed objects edge colors most.*)
-    property BackColor: TgxColor read FBackColor write SetBackColor;
+    property BackColor: TGColor read FBackColor write SetBackColor;
     (* Offset applied to the impostor'ed object during imposter construction.
        Can be used to manually tune the centering of objects. *)
     property BuildOffset: TGCoordinates read FBuildOffset write SetBuildOffset;
@@ -551,7 +551,7 @@ constructor TgxImposterBuilder.Create(AOwner: TComponent);
 begin
   inherited;
   FImposterRegister := TGPersistentObjectList.Create;
-  FBackColor := TgxColor.CreateInitialized(Self, clrTransparent);
+  FBackColor := TGColor.CreateInitialized(Self, clrTransparent);
   FBuildOffset := TGCoordinates.CreateInitialized(Self, NullHmgPoint, CsPoint);
   FImposterOptions := cDefaultImposterOptions;
   FAlphaTreshold := 0.5;
@@ -716,7 +716,7 @@ begin
   FRenderPoint := nil;
 end;
 
-procedure TgxImposterBuilder.SetBackColor(AValue: TgxColor);
+procedure TgxImposterBuilder.SetBackColor(AValue: TGColor);
 begin
   FBackColor.Assign(AValue);
 end;

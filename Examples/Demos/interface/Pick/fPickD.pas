@@ -15,7 +15,7 @@ uses
   GLS.Texture,
   GLS.SceneViewer,
   GLS.GeomObjects,
-  GLS.Color,
+  GLScene.Color,
 
   GLScene.Coordinates,
   GLScene.BaseClasses,

@@ -48,7 +48,7 @@ uses
   GLS.Octree,
   GLS.ApplicationFileIO,
   GLS.Context,
-  GLS.Color,
+  GLScene.Color,
   GLS.PipelineTransformation,
   GLS.Selection,
   GLS.XOpenGL,

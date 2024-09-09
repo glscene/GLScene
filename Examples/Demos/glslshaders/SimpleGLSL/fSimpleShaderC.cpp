@@ -7,7 +7,7 @@
 
 #include "fSimpleShaderC.h"
 
-#include "GLS.Keyboard.hpp"
+#include "GLScene.Keyboard.hpp"
 #include "GLS.Context.hpp"
 #include "GLS.File3DS.hpp"
 
@@ -26,7 +26,7 @@
 #pragma link "GLS.VectorFileObjects"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.WindowsFont"
-#pragma link "GLS.Keyboard"
+#pragma link "GLScene.Keyboard"
 #pragma link "GLS.Context"
 #pragma link "GLS.File3DS"
 
@@ -177,7 +177,7 @@ void __fastcall TForm1::Timer1Timer(TObject* Sender)
     Caption = Format("Simple GLSL Shader [%.2f FPS]",
         ARRAYOFCONST((GLSceneViewer1->FramesPerSecond())));
     GLHUDText1->Text =
-        "GLS.Keyboard [1,2,3,4,5,6,7,8,9,0 ] Current Shader: " + CurrShaderName;
+        "GLScene.Keyboard [1,2,3,4,5,6,7,8,9,0 ] Current Shader: " + CurrShaderName;
     GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------

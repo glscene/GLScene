@@ -22,7 +22,7 @@
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.SmoothNavigator.hpp"
-#include "GLS.Keyboard.hpp"
+#include "GLScene.Keyboard.hpp"
 #include "GLScene.Utils.hpp"
 
 

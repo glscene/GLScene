@@ -31,7 +31,7 @@ uses
   GXS.Scene,
   GLScene.VectorGeometry,
   GXS.State,
-  GXS.Color,
+  GLScene.Color,
   GXS.RenderContextInfo;
 
 type
@@ -101,10 +101,10 @@ type
       Use the NullVector, NullHmgVector or NullTexPoint constants for
       params you don't want to set. }
     procedure AddVertex(const aVertex: TVertex; const aNormal: TAffineVector;
-      const aColor: TgxColorVector; const aTexPoint: TTexPoint); overload;
+      const aColor: TGColorVector; const aTexPoint: TTexPoint); overload;
     { Adds a vertex to the list, no texturing version.  }
     procedure AddVertex(const vertex: TVertex; const normal: TAffineVector;
-      const color: TgxColorVector); overload;
+      const color: TGColorVector); overload;
     { Adds a vertex to the list, no texturing, not color version.  }
     procedure AddVertex(const vertex: TVertex;
       const normal: TAffineVector); overload;
@@ -430,7 +430,7 @@ begin
 end;
 
 procedure TgxVertexList.AddVertex(const aVertex: TVertex;
-  const aNormal: TAffineVector; const aColor: TgxColorVector;
+  const aNormal: TAffineVector; const aColor: TGColorVector;
   const aTexPoint: TTexPoint);
 begin
   if FCount = FCapacity then
@@ -448,7 +448,7 @@ begin
 end;
 
 procedure TgxVertexList.AddVertex(const vertex: TVertex;
-  const normal: TAffineVector; const color: TgxColorVector);
+  const normal: TAffineVector; const color: TGColorVector);
 begin
   AddVertex(vertex, normal, color, NullTexPoint);
 end;

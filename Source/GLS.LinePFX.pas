@@ -19,7 +19,7 @@ uses
   GLScene.VectorGeometry,
   GLS.ParticleFX,
   GLS.Texture,
-  GLS.Color,
+  GLScene.Color,
   GLS.RenderContextInfo,
   GLS.Context,
   GLScene.VectorTypes;
@@ -134,7 +134,7 @@ procedure TGLLinePFXManager.RenderParticle(var rci: TGLRenderContextInfo;
   aParticle: TGLParticle);
 var
   lifeTime, sizeScale, fx, fy, f: Single;
-  inner, outer: TGLColorVector;
+  inner, outer: TGColorVector;
   pos, dir, start, stop, dv: TAffineVector;
 begin
   lifeTime := CurrentTime - aParticle.CreationTime;

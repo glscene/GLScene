@@ -20,7 +20,7 @@ uses
   GLS.Objects,
   GLS.Particles,
   GLS.SceneViewer,
-  GLS.Color,
+  GLScene.Color,
   GLS.MultiProxy,
   GLS.Texture,
 

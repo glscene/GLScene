@@ -29,7 +29,7 @@ uses
   GLS.Context,
   GLS.Scene,
   GLS.State,
-  GLS.Color,
+  GLScene.Color,
   GLScene.BaseClasses,
   GLS.RenderContextInfo;
 
@@ -100,10 +100,10 @@ type
       Use the NullVector, NullHmgVector or NullTexPoint constants for
       params you don't want to set. *)
     procedure AddVertex(const aVertex: TVertex; const aNormal: TAffineVector;
-      const aColor: TGLColorVector; const aTexPoint: TTexPoint); overload;
+      const aColor: TGColorVector; const aTexPoint: TTexPoint); overload;
     //  Adds a vertex to the list, no texturing version.  
     procedure AddVertex(const vertex: TVertex; const normal: TAffineVector;
-      const color: TGLColorVector); overload;
+      const color: TGColorVector); overload;
     //  Adds a vertex to the list, no texturing, not color version.  
     procedure AddVertex(const vertex: TVertex; const normal: TAffineVector); overload;
     //  Duplicates the vertex of given index and adds it at the end of the list. 
@@ -417,7 +417,7 @@ begin
 end;
 
 procedure TGLVertexList.AddVertex(const aVertex: TVertex;
-  const aNormal: TAffineVector; const aColor: TGLColorVector;
+  const aNormal: TAffineVector; const aColor: TGColorVector;
   const aTexPoint: TTexPoint);
 begin
   if FCount = FCapacity then
@@ -435,7 +435,7 @@ begin
 end;
 
 procedure TGLVertexList.AddVertex(const vertex: TVertex;
-  const normal: TAffineVector; const color: TGLColorVector);
+  const normal: TAffineVector; const color: TGColorVector);
 begin
   AddVertex(vertex, normal, color, NullTexPoint);
 end;

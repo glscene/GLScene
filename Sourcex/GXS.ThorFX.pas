@@ -24,7 +24,7 @@ uses
   GLScene.VectorLists,
   GLScene.VectorTypes,
   GXS.Cadencer,
-  GXS.Color,
+  GLScene.Color,
   GLScene.BaseClasses,
   GLScene.Coordinates,
   GXS.RenderContextInfo,
@@ -60,7 +60,7 @@ type
     FVibrate: single;
     FWildness: single;
     NP: integer;
-    FInnerColor, FOuterColor, FCoreColor: TgxColor;
+    FInnerColor, FOuterColor, FCoreColor: TGColor;
     FDisabled, FCore, FGlow: boolean;
     FOnCalcPoint: TCalcPointEvent;
   protected
@@ -72,9 +72,9 @@ type
     procedure SetMaxpoints(const val: integer);
     function StoreGlowSize: boolean;
     function StoreVibrate: boolean;
-    procedure SetInnerColor(const val: TgxColor);
-    procedure SetOuterColor(const val: TgxColor);
-    procedure SetCoreColor(const val: TgxColor);
+    procedure SetInnerColor(const val: TGColor);
+    procedure SetOuterColor(const val: TGColor);
+    procedure SetCoreColor(const val: TGColor);
     procedure Notification(AComponent: TComponent;
       Operation: TOperation); override;
     procedure ThorInit;
@@ -91,10 +91,10 @@ type
     property GlowSize: single read FGlowSize write FGlowSize
       stored StoreGlowSize;
     property Vibrate: single read FVibrate write FVibrate stored StoreVibrate;
-    property InnerColor: TgxColor read FInnerColor write SetInnerColor;
-    property OuterColor: TgxColor read FOuterColor write SetOuterColor;
+    property InnerColor: TGColor read FInnerColor write SetInnerColor;
+    property OuterColor: TGColor read FOuterColor write SetOuterColor;
     // default clrWhite;
-    property CoreColor: TgxColor read FCoreColor write SetCoreColor;
+    property CoreColor: TGColor read FCoreColor write SetCoreColor;
     // default clrWhite;
     property Disabled: boolean read FDisabled write FDisabled;
     property Core: boolean read FCore write FCore;
@@ -150,12 +150,12 @@ begin
   FGlowSize := 0.2;
   FVibrate := 0;
   FWildness := 1;
-  FInnerColor := TgxColor.Create(Self);
+  FInnerColor := TGColor.Create(Self);
   FInnerColor.Initialize(clrWhite);
-  FOuterColor := TgxColor.Create(Self);
+  FOuterColor := TGColor.Create(Self);
   FOuterColor.Initialize(clrBlue);
   FOuterColor.Alpha := 0;
-  FCoreColor := TgxColor.Create(Self);
+  FCoreColor := TGColor.Create(Self);
   FCoreColor.Initialize(clrWhite);
   FCore := True;
   FGlow := True;
@@ -241,7 +241,7 @@ begin
   Result := (FVibrate <> 1);
 end;
 
-procedure TgxThorFXManager.SetInnerColor(const val: TgxColor);
+procedure TgxThorFXManager.SetInnerColor(const val: TGColor);
 begin
   if FInnerColor <> val then
   begin
@@ -250,7 +250,7 @@ begin
   end;
 end;
 
-procedure TgxThorFXManager.SetOuterColor(const val: TgxColor);
+procedure TgxThorFXManager.SetOuterColor(const val: TGColor);
 begin
   if FOuterColor <> val then
   begin
@@ -259,7 +259,7 @@ begin
   end;
 end;
 
-procedure TgxThorFXManager.SetCoreColor(const val: TgxColor);
+procedure TgxThorFXManager.SetCoreColor(const val: TGColor);
 begin
   if FCoreColor <> val then
   begin
@@ -480,7 +480,7 @@ var
 
   vx, vy: TVector4f;
   m: integer;
-  Icol, Ocol, Ccol: TgxColorVector;
+  Icol, Ocol, Ccol: TGColorVector;
   Ppos, Ppos2: TAffineVector;
 begin
   if Manager = nil then

@@ -27,7 +27,7 @@
 
 #include "GLS.Material.hpp"
 
-#include "GLS.Keyboard.hpp"
+#include "GLScene.Keyboard.hpp"
 #include <jpeg.hpp>
 #include "GLSL.TextureShaders.hpp"             // Pascal unit
 

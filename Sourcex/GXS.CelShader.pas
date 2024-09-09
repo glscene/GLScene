@@ -26,7 +26,7 @@ uses
   GXS.Context,
   GXS.Graphics,
   GXS.ImageUtils,
-  GXS.Color,
+  GLScene.Color,
   GXS.RenderContextInfo,
   GXS.Material,
   GXS.State,
@@ -55,11 +55,11 @@ type
     FOnGetIntensity: TgxCelShaderGetIntensity;
     FOutlinePass,
       FUnApplyShadeTexture: Boolean;
-    FOutlineColor: TgxColor;
+    FOutlineColor: TGColor;
   protected
     procedure SetCelShaderOptions(const val: TgxCelShaderOptions);
     procedure SetOutlineWidth(const val: Single);
-    procedure SetOutlineColor(const val: TgxColor);
+    procedure SetOutlineColor(const val: TGColor);
     procedure BuildShadeTexture;
     procedure Loaded; override;
     function GenerateVertexProgram: string;
@@ -76,7 +76,7 @@ type
   published
     property CelShaderOptions: TgxCelShaderOptions read FCelShaderOptions write
       SetCelShaderOptions;
-    property OutlineColor: TgxColor read FOutlineColor write SetOutlineColor;
+    property OutlineColor: TGColor read FOutlineColor write SetOutlineColor;
     property OutlineWidth: Single read FOutlineWidth write SetOutlineWidth;
     property OnGetIntensity: TgxCelShaderGetIntensity read FOnGetIntensity write
       FOnGetIntensity;
@@ -106,7 +106,7 @@ begin
     TextureMode := tmModulate;
   end;
 
-  FOutlineColor := TgxColor.Create(Self);
+  FOutlineColor := TGColor.Create(Self);
   FOutlineColor.OnNotifyChange := NotifyChange;
   FOutlineColor.Initialize(clrBlack);
 
@@ -281,7 +281,7 @@ begin
       LineSmoothHint := hintNicest;
       SetBlendFunc(bfSrcAlpha, bfOneMinusSrcAlpha);
       DepthFunc := cfLEqual;
-      glColor4fv(FOutlineColor.AsAddress);
+      glColor4fv(@FOutlineColor.AsAddress^);
 
       Result := True;
       FOutlinePass := False;
@@ -317,7 +317,7 @@ begin
   end;
 end;
 
-procedure TgxCelShader.SetOutlineColor(const val: TgxColor);
+procedure TgxCelShader.SetOutlineColor(const val: TGColor);
 begin
   if val <> FOutlineColor then
   begin

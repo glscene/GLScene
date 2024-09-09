@@ -24,7 +24,7 @@
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.WindowsFont.hpp"
-#include "GLS.Keyboard.hpp"
+#include "GLScene.Keyboard.hpp"
 #include "GLS.GizmoEx.hpp"
 
 //---------------------------------------------------------------------------

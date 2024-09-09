@@ -197,7 +197,7 @@
         <DCCReference Include="..\Source\GLS.CameraController.pas"/>
         <DCCReference Include="..\Source\GLS.Canvas.pas"/>
         <DCCReference Include="..\Source\GLS.Collision.pas"/>
-        <DCCReference Include="..\Source\GLS.Color.pas"/>
+        <DCCReference Include="..\Source\GLScene.Color.pas"/>
         <DCCReference Include="..\Source\GLS.CompositeImage.pas"/>
         <DCCReference Include="..\Source\GLS.Console.pas"/>
         <DCCReference Include="..\Source\GLS.Context.pas"/>

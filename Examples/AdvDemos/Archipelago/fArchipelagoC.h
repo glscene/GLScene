@@ -42,7 +42,7 @@
 #include "GLS.RoamPatch.hpp"
 #include "GLS.RenderContextInfo.hpp"
 
-#include "GLS.Keyboard.hpp"
+#include "GLScene.Keyboard.hpp"
 #include "GLS.Context.hpp"
 #include "GLS.State.hpp"
 #include "GLScene.TextureFormat.hpp"

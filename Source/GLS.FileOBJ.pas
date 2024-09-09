@@ -27,7 +27,7 @@ uses
   GLS.VectorFileObjects,
   GLScene.VectorLists,  
   GLS.Texture,  
-  GLS.Color,
+  GLScene.Color,
   GLS.RenderContextInfo, 
   GLS.Material,
   GLScene.Utils;

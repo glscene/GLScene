@@ -42,7 +42,7 @@ uses
   GLS.State,
   GLS.RenderContextInfo,
   GLScene.TextureFormat,
-  GLS.Color,
+  GLScene.Color,
   GLS.Graphics,
   GLS.MeshUtils,
   GLScene.Utils,

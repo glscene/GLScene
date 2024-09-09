@@ -33,7 +33,7 @@ uses
   GLS.ODEManager,
   GLS.Navigator,
   GLS.GeomObjects,
-  GLS.Color,
+  GLScene.Color,
  
   GLS.Material,
   GLScene.Coordinates,

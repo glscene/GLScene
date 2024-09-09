@@ -24,7 +24,7 @@ uses
   System.Classes,
 
   GXS.Material,
-  GXS.Color,
+  GLScene.Color,
   GXS.RenderContextInfo,
   GXS.Context,
   GXS.State,
@@ -35,7 +35,7 @@ type
   TgxOutlineShader = class(TgxShader)
   private
     FPassCount: integer;
-    FLineColor: TgxColor;
+    FLineColor: TGColor;
     FOutlineSmooth: Boolean;
     FOutlineWidth: Single;
     procedure SetOutlineWidth(v: single);
@@ -47,7 +47,7 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
   published
-    property LineColor: TgxColor read FLineColor write FLineColor;
+    property LineColor: TGColor read FLineColor write FLineColor;
     // Line smoothing control
     property LineSmooth: Boolean read FOutlineSmooth write SetOutlineSmooth
       default false;
@@ -67,7 +67,7 @@ begin
   inherited;
   FOutlineSmooth := False;
   FOutLineWidth := 2;
-  FLineColor := TgxColor.CreateInitialized(Self, clrBlack);
+  FLineColor := TGColor.CreateInitialized(Self, clrBlack);
   ShaderStyle := ssLowLevel;
 end;
 
@@ -116,7 +116,7 @@ begin
         else
           Disable(stBlend);
 
-        glColor4fv(FlineColor.AsAddress);
+        glColor4fv(@FlineColor.AsAddress^);
         LineWidth := FOutlineWidth;
         Disable(stLineStipple);
         PolygonMode := pmLines;

@@ -30,7 +30,7 @@ uses
   GLS.Navigator,
   GLS.VerletTypes,
   GLScene.XCollection,
-  GLS.Color,
+  GLScene.Color,
  
   GLScene.Coordinates,
   GLScene.BaseClasses;

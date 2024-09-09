@@ -25,7 +25,7 @@ uses
   GLScene.PersistentClasses,
   GLS.PipelineTransformation,
   GLS.Graphics,
-  GLS.Color,
+  GLScene.Color,
   GLS.RenderContextInfo,
   GLScene.Coordinates,
   GLScene.BaseClasses,
@@ -113,7 +113,7 @@ type
   // Abstract ImposterBuilder class.
   TGLImposterBuilder = class(TGUpdateAbleComponent)
   private
-    FBackColor: TGLColor;
+    FBackColor: TGColor;
     FBuildOffset: TGCoordinates;
     FImposterRegister: TGPersistentObjectList;
     FRenderPoint: TGLRenderPoint;
@@ -125,7 +125,7 @@ type
   protected
     procedure SetRenderPoint(AValue: TGLRenderPoint);
     procedure RenderPointFreed(Sender: TObject);
-    procedure SetBackColor(AValue: TGLColor);
+    procedure SetBackColor(AValue: TGColor);
     procedure SetBuildOffset(AValue: TGCoordinates);
     procedure SetImposterReference(AValue: TImposterReference);
     procedure InitializeImpostorTexture(const TextureSize: TPoint);
@@ -163,7 +163,7 @@ type
     (* Background color for impostor rendering.
        Typically, you'll want to leave the alpha channel to zero, and pick
        as RGB as color that matches the impostor'ed objects edge colors most.*)
-    property BackColor: TGLColor read FBackColor write SetBackColor;
+    property BackColor: TGColor read FBackColor write SetBackColor;
     (* Offset applied to the impostor'ed object during imposter construction.
        Can be used to manually tune the centering of objects. *)
     property BuildOffset: TGCoordinates read FBuildOffset write SetBuildOffset;
@@ -548,7 +548,7 @@ constructor TGLImposterBuilder.Create(AOwner: TComponent);
 begin
   inherited;
   FImposterRegister := TGPersistentObjectList.Create;
-  FBackColor := TGLColor.CreateInitialized(Self, clrTransparent);
+  FBackColor := TGColor.CreateInitialized(Self, clrTransparent);
   FBuildOffset := TGCoordinates.CreateInitialized(Self, NullHmgPoint, CsPoint);
   FImposterOptions := cDefaultImposterOptions;
   FAlphaTreshold := 0.5;
@@ -713,7 +713,7 @@ begin
   FRenderPoint := nil;
 end;
 
-procedure TGLImposterBuilder.SetBackColor(AValue: TGLColor);
+procedure TGLImposterBuilder.SetBackColor(AValue: TGColor);
 begin
   FBackColor.Assign(AValue);
 end;

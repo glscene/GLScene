@@ -25,7 +25,7 @@ uses
   GLScene.BaseClasses,
   GLS.Context,
   GLS.Texture,
-  GLS.Color,
+  GLScene.Color,
   GLScene.Coordinates,
   GLScene.PersistentClasses,
   GLS.State,
@@ -173,13 +173,13 @@ type
      polygon mode (lines / fill). *)
   TGLFaceProperties = class(TGUpdateAbleObject)
   private
-    FAmbient, FDiffuse, FSpecular, FEmission: TGLColor;
+    FAmbient, FDiffuse, FSpecular, FEmission: TGColor;
     FShininess: TGLShininess;
   protected
-    procedure SetAmbient(AValue: TGLColor);
-    procedure SetDiffuse(AValue: TGLColor);
-    procedure SetEmission(AValue: TGLColor);
-    procedure SetSpecular(AValue: TGLColor);
+    procedure SetAmbient(AValue: TGColor);
+    procedure SetDiffuse(AValue: TGColor);
+    procedure SetEmission(AValue: TGColor);
+    procedure SetSpecular(AValue: TGColor);
     procedure SetShininess(AValue: TGLShininess);
   public
     constructor Create(AOwner: TPersistent); override;
@@ -188,11 +188,11 @@ type
     procedure ApplyNoLighting(var rci: TGLRenderContextInfo; aFace: TGLCullFaceMode); inline;
     procedure Assign(Source: TPersistent); override;
   published
-    property Ambient: TGLColor read FAmbient write SetAmbient;
-    property Diffuse: TGLColor read FDiffuse write SetDiffuse;
-    property Emission: TGLColor read FEmission write SetEmission;
+    property Ambient: TGColor read FAmbient write SetAmbient;
+    property Diffuse: TGColor read FDiffuse write SetDiffuse;
+    property Emission: TGColor read FEmission write SetEmission;
     property Shininess: TGLShininess read FShininess write SetShininess default 0;
-    property Specular: TGLColor read FSpecular write SetSpecular;
+    property Specular: TGColor read FSpecular write SetSpecular;
   end;
 
   TGLDepthProperties = class(TGUpdateAbleObject)
@@ -681,10 +681,10 @@ constructor TGLFaceProperties.Create(aOwner: TPersistent);
 begin
   inherited;
   // OpenGL default colors
-  FAmbient := TGLColor.CreateInitialized(Self, clrGray20);
-  FDiffuse := TGLColor.CreateInitialized(Self, clrGray80);
-  FEmission := TGLColor.Create(Self);
-  FSpecular := TGLColor.Create(Self);
+  FAmbient := TGColor.CreateInitialized(Self, clrGray20);
+  FDiffuse := TGColor.CreateInitialized(Self, clrGray80);
+  FEmission := TGColor.Create(Self);
+  FSpecular := TGColor.Create(Self);
   FShininess := 0;
 end;
 
@@ -726,25 +726,25 @@ begin
   end;
 end;
 
-procedure TGLFaceProperties.SetAmbient(AValue: TGLColor);
+procedure TGLFaceProperties.SetAmbient(AValue: TGColor);
 begin
   FAmbient.DirectColor := AValue.Color;
   NotifyChange(Self);
 end;
 
-procedure TGLFaceProperties.SetDiffuse(AValue: TGLColor);
+procedure TGLFaceProperties.SetDiffuse(AValue: TGColor);
 begin
   FDiffuse.DirectColor := AValue.Color;
   NotifyChange(Self);
 end;
 
-procedure TGLFaceProperties.SetEmission(AValue: TGLColor);
+procedure TGLFaceProperties.SetEmission(AValue: TGColor);
 begin
   FEmission.DirectColor := AValue.Color;
   NotifyChange(Self);
 end;
 
-procedure TGLFaceProperties.SetSpecular(AValue: TGLColor);
+procedure TGLFaceProperties.SetSpecular(AValue: TGColor);
 begin
   FSpecular.DirectColor := AValue.Color;
   NotifyChange(Self);

@@ -23,7 +23,7 @@ uses
   GLScene.BaseClasses,
   GLS.Behaviours,
   GLS.HUDObjects,
-  GLS.Color,
+  GLScene.Color,
   GLS.BitmapFont,
   GLS.GeomObjects,
   GLS.RenderContextInfo,
@@ -107,7 +107,7 @@ procedure TFormTorque.GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseBut
   Shift: TShiftState; X, Y: Integer);
 var
   pickedObject: TGLCustomSceneObject;
-  oldColor: TGLColorVector;
+  oldColor: TGColorVector;
   rci: TGLRenderContextInfo;
 begin
   // if an object is picked...

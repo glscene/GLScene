@@ -26,7 +26,7 @@ uses
   GLScene.VectorGeometry,
   GLS.Context,
   GLScene.Strings,
-  GLS.Color,
+  GLScene.Color,
   GLS.RenderContextInfo,
   GLS.State;
 
@@ -53,8 +53,8 @@ type
     FPlanetRadius: Single;
     FAtmosphereRadius: Single;
     FOpacity: Single;
-    FLowAtmColor: TGLColor;
-    FHighAtmColor: TGLColor;
+    FLowAtmColor: TGColor;
+    FHighAtmColor: TGColor;
     FSun: TGLBaseSceneObject;
     procedure SetSun(const Value: TGLBaseSceneObject);
     procedure SetAtmosphereRadius(const Value: Single);
@@ -64,8 +64,8 @@ type
     function StoreOpacity: Boolean;
     function StorePlanetRadius: Boolean;
     procedure SetSlices(const Value: Integer);
-    procedure SetLowAtmColor(const AValue: TGLColor);
-    procedure SetHighAtmColor(const AValue: TGLColor);
+    procedure SetLowAtmColor(const AValue: TGColor);
+    procedure SetHighAtmColor(const AValue: TGColor);
     function StoreLowAtmColor: Boolean;
     function StoreHighAtmColor: Boolean;
   protected
@@ -81,9 +81,9 @@ type
     property PlanetRadius: Single read FPlanetRadius write SetPlanetRadius
       stored StorePlanetRadius;
     // Use value slightly lower than actual radius, for antialiasing effect
-    property LowAtmColor: TGLColor read FLowAtmColor write SetLowAtmColor
+    property LowAtmColor: TGColor read FLowAtmColor write SetLowAtmColor
       stored StoreLowAtmColor;
-    property HighAtmColor: TGLColor read FHighAtmColor write SetHighAtmColor
+    property HighAtmColor: TGColor read FHighAtmColor write SetHighAtmColor
       stored StoreHighAtmColor;
     property BlendingMode: TGLAtmosphereBlendingMode read FBlendingMode
       write FBlendingMode default abmOneMinusSrcAlpha;
@@ -145,8 +145,8 @@ end;
 constructor TGLCustomAtmosphere.Create(AOwner: TComponent);
 begin
   inherited;
-  FLowAtmColor := TGLColor.Create(Self);
-  FHighAtmColor := TGLColor.Create(Self);
+  FLowAtmColor := TGColor.Create(Self);
+  FHighAtmColor := TGColor.Create(Self);
   FOpacity := 2.1;
   SetSlices(60);
   FAtmosphereRadius := 3.55;
@@ -172,11 +172,11 @@ var
   sunPos, eyePos, lightingVector: TGLVector;
   diskNormal, diskRight, diskUp: TGLVector;
 
-  function AtmosphereColor(const rayStart, rayEnd: TGLVector): TGLColorVector;
+  function AtmosphereColor(const rayStart, rayEnd: TGLVector): TGColorVector;
   var
     I, n: Integer;
     atmPoint, normal: TGLVector;
-    altColor: TGLColorVector;
+    altColor: TGColorVector;
     alt, rayLength, contrib, decay, intensity, invN: Single;
   begin
     Result := clrTransparent;
@@ -217,7 +217,7 @@ var
   end;
 
   function ComputeColor(var rayDest: TGLVector; mayHitGround: Boolean)
-    : TGLColorVector;
+    : TGColorVector;
   var
     ai1, ai2, pi1, pi2: TGLVector;
     rayVector: TGLVector;
@@ -442,12 +442,12 @@ begin
     raise EGLAtmosphereException.Create('Slices must be more than0!');
 end;
 
-procedure TGLCustomAtmosphere.SetHighAtmColor(const AValue: TGLColor);
+procedure TGLCustomAtmosphere.SetHighAtmColor(const AValue: TGColor);
 begin
   FHighAtmColor.Assign(AValue);
 end;
 
-procedure TGLCustomAtmosphere.SetLowAtmColor(const AValue: TGLColor);
+procedure TGLCustomAtmosphere.SetLowAtmColor(const AValue: TGColor);
 begin
   FLowAtmColor.Assign(AValue);
 end;

@@ -17,30 +17,31 @@ uses
   Vcl.Imaging.GIFImg,
   Vcl.Imaging.Jpeg,
 
-  
   GLS.Scene,
   GLScene.VectorTypes,
+  GLScene.Keyboard,
+  GLScene.XCollection,
+  GLScene.VectorGeometry,
+  GLScene.Coordinates,
+  GLScene.BaseClasses,
+
   GLS.Objects,
   GLS.TerrainRenderer,
   GLS.HeightData,
-  GLS.Color,
+  GLScene.Color,
   GLS.Cadencer,
   GLS.Texture,
   GLS.BitmapFont,
-  GLScene.XCollection,
   GLS.SkyDome,
   GLS.SceneViewer,
   GLS.SoundManager,
   GLS.Sounds.BASS,
-  GLScene.VectorGeometry,
   GLS.LensFlare,
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
   GLS.State,
   GLS.FileMP3,
   GLScene.Utils,
- 
+
   GLS.HUDObjects;
 
 type

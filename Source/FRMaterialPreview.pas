@@ -25,7 +25,7 @@ uses
   GLS.HUDObjects,
   GLS.SceneViewer,
   GLS.GeomObjects,
-  GLS.Color,
+  GLScene.Color,
   GLScene.Coordinates,
   GLScene.BaseClasses,
   GLS.Material;

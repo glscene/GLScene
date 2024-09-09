@@ -18,17 +18,18 @@ uses
   Vcl.ExtDlgs,
   Vcl.Imaging.Jpeg,
 
+  GLScene.Coordinates,
+  GLScene.BaseClasses,
+  GLScene.VectorGeometry,
+  GLScene.Keyboard,
+  GLScene.XCollection,
 
   GLS.Scene,
   GLS.Objects,
   GLS.Texture,
-  GLScene.XCollection,
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
-  GLScene.VectorGeometry,
   GLScene.Utils;
 
 type
@@ -71,7 +72,7 @@ type
 var
   Form1: TForm1;
 
-implementation
+implementation  //------------------------------------------------------------
 
 {$R *.DFM}
 

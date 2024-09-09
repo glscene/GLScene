@@ -21,7 +21,7 @@ uses
   GLScene.TextureFormat,
   GXS.Graphics,
   GXS.ImageUtils,
-  GXS.Color,
+  GLScene.Color,
   GLScene.Coordinates,
   GXS.Material,
   GXS.State;
@@ -94,7 +94,7 @@ type
     done: Boolean;
     NewMat: TgxLibMaterial;
     tmpcoords: TGCoordinates;
-    tmpcolor: TgxColor;
+    tmpcolor: TGColor;
     tmpcoords4: TGCoordinates4;
     tmpstr: string;
     procedure SeTgxShaderItems(const Value: TgxShaderItems);

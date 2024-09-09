@@ -24,12 +24,15 @@ uses
   GLScene.VectorTypes,
   GLS.Texture,
   GLS.SceneViewer,
-  GLScene.VectorGeometry,
-
   GLS.Material,
+
+  GLScene.Keyboard,
+  GLScene.VectorGeometry,
   GLScene.Coordinates,
   GLScene.BaseClasses,
-  GLScene.XCollection, GLS.ShadowHDS;
+  GLScene.XCollection,
+
+  GLS.ShadowHDS;
 
 type
   TFormSynthTerrain = class(TForm)

@@ -36,7 +36,7 @@ uses
   GLS.RenderContextInfo,
   GLS.SimpleNavigation,
   GLScene.TextureFormat,
-  GLS.Color;
+  GLScene.Color;
 
 type
   TForm1 = class(TForm)

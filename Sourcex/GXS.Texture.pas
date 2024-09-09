@@ -32,7 +32,7 @@ uses
   GXS.Context,
   GXS.State,
   GXS.PipelineTransformation,
-  GXS.Color,
+  GLScene.Color,
   GLScene.Coordinates,
   GXS.RenderContextInfo,
   GXS.ImageUtils,
@@ -399,8 +399,8 @@ type
     FTexWidth: Integer;
     FTexHeight: Integer;
     FTexDepth: Integer;
-    FEnvColor: TgxColor;
-    FBorderColor: TgxColor;
+    FEnvColor: TGColor;
+    FBorderColor: TGColor;
     FNormalMapScale: Single;
     FTextureWrapS: TglSeparateTextureWrap;
     FTextureWrapT: TglSeparateTextureWrap;
@@ -445,8 +445,8 @@ type
     procedure SetDisabled(AValue: Boolean);
     procedure SetEnabled(const val: Boolean);
     function GetEnabled: Boolean;
-    procedure SetEnvColor(const val: TgxColor);
-    procedure SetBorderColor(const val: TgxColor);
+    procedure SetEnvColor(const val: TGColor);
+    procedure SetBorderColor(const val: TGColor);
     procedure SetNormalMapScale(const val: Single);
     procedure SetTextureCompareMode(const val: TglTextureCompareMode);
     procedure SetTextureCompareFunc(const val: TgxDepthCompareFunc);
@@ -591,9 +591,9 @@ type
     property MappingQCoordinates: TGCoordinates4 read GetMappingQCoordinates
       write SetMappingQCoordinates stored StoreMappingQCoordinates;
     // Texture Environment color.
-    property EnvColor: TgxColor read FEnvColor write SetEnvColor;
+    property EnvColor: TGColor read FEnvColor write SetEnvColor;
     // Texture Border color.
-    property BorderColor: TgxColor read FBorderColor write SetBorderColor;
+    property BorderColor: TGColor read FBorderColor write SetBorderColor;
     // If true, the texture is disabled (not used).
     property Disabled: Boolean read FDisabled write SetDisabled default True;
     (* Normal Map scaling.
@@ -1758,8 +1758,8 @@ begin
   FSamplerHandle.OnAllocate := OnSamplerAllocate;
   FSamplerHandle.OnDestroy := OnSamplerDestroy;
   FMappingMode := tmmUser;
-  FEnvColor := TgxColor.CreateInitialized(Self, clrTransparent);
-  FBorderColor := TgxColor.CreateInitialized(Self, clrTransparent);
+  FEnvColor := TGColor.CreateInitialized(Self, clrTransparent);
+  FBorderColor := TGColor.CreateInitialized(Self, clrTransparent);
   FNormalMapScale := cDefaultNormalMapScale;
   FTextureCompareMode := tcmNone;
   FTextureCompareFunc := cfLequal;
@@ -2032,13 +2032,13 @@ begin
   Result := not Disabled;
 end;
 
-procedure TgxTexture.SetEnvColor(const val: TgxColor);
+procedure TgxTexture.SetEnvColor(const val: TGColor);
 begin
   FEnvColor.Assign(val);
   NotifyParamsChange;
 end;
 
-procedure TgxTexture.SetBorderColor(const val: TgxColor);
+procedure TgxTexture.SetBorderColor(const val: TGColor);
 begin
   FBorderColor.Assign(val);
   NotifyParamsChange;
@@ -2458,7 +2458,7 @@ begin
         SetCubeMapTextureMatrix;
       glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE,
         cTextureMode[FTextureMode]);
-      glTexEnvfv(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, FEnvColor.AsAddress);
+      glTexEnvfv(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, @FEnvColor.AsAddress^);
       ApplyMappingMode;
       xglMapTexCoordToMain;
     end;
@@ -2529,7 +2529,7 @@ begin
       if not ForwardContext then
       begin
         glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, cTextureMode[FTextureMode]);
-        glTexEnvfv(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, FEnvColor.AsAddress);
+        glTexEnvfv(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, @FEnvColor.AsAddress^);
         ApplyMappingMode;
         ActiveTexture := 0;
       end;
@@ -2869,7 +2869,7 @@ begin
     UnpackSkipPixels := 0;
   end;
 
-  glTexParameterfv(target, GL_TEXTURE_BORDER_COLOR, FBorderColor.AsAddress);
+  glTexParameterfv(target, GL_TEXTURE_BORDER_COLOR, @FBorderColor.AsAddress^);
 
   /// if (GL_VERSION_1_2 or GL_texture_edge_clamp) then
   begin

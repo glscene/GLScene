@@ -17,7 +17,7 @@ uses
   GLS.VectorFileObjects,
   GLScene.VectorTypes, 
   GLS.Material, 
-  GLS.Color, 
+  GLScene.Color, 
   GLS.Texture,
   GLScene.VectorGeometry, 
   GLScene.VectorLists, 
@@ -122,10 +122,10 @@ type
   // *) ms3d_material_t;
   TMS3DMaterial = record
     Name: array[0..31] of AnsiChar;
-    Ambient: TGLColorVector;
-    Diffuse: TGLColorVector;
-    Specular: TGLColorVector;
-    Emissive: TGLColorVector;
+    Ambient: TGColorVector;
+    Diffuse: TGColorVector;
+    Specular: TGColorVector;
+    Emissive: TGColorVector;
     Shininess: single;
     Transparency: single;
     Mode: AnsiChar;

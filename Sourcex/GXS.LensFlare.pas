@@ -26,7 +26,7 @@ uses
   GXS.Objects,
   GXS.PipelineTransformation,
   GXS.Context,
-  GXS.Color,
+  GLScene.Color,
   GXS.RenderContextInfo,
   GXS.State,
   GXS.ImageUtils,
@@ -42,19 +42,19 @@ type
     lens flare elements. }
   TgxFlareGradient = class(TGUpdateAbleObject)
   private
-    FFromColor: TgxColor;
-    FToColor: TgxColor;
+    FFromColor: TGColor;
+    FToColor: TGColor;
   protected
-    procedure SetFromColor(const val: TgxColor);
-    procedure SetToColor(const val: TgxColor);
+    procedure SetFromColor(const val: TGColor);
+    procedure SetToColor(const val: TGColor);
   public
     constructor Create(AOwner: TPersistent); override;
-    constructor CreateInitialized(AOwner: TPersistent; const fromColor, toColor: TgxColorVector);
+    constructor CreateInitialized(AOwner: TPersistent; const fromColor, toColor: TGColorVector);
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
   published
-    property fromColor: TgxColor read FFromColor write SetFromColor;
-    property toColor: TgxColor read FToColor write SetToColor;
+    property fromColor: TGColor read FFromColor write SetFromColor;
+    property toColor: TGColor read FToColor write SetToColor;
   end;
 
 const
@@ -196,11 +196,11 @@ implementation
 constructor TgxFlareGradient.Create(AOwner: TPersistent);
 begin
   inherited;
-  FFromColor := TgxColor.Create(Self);
-  FToColor := TgxColor.Create(Self);
+  FFromColor := TGColor.Create(Self);
+  FToColor := TGColor.Create(Self);
 end;
 
-constructor TgxFlareGradient.CreateInitialized(AOwner: TPersistent; const fromColor, toColor: TgxColorVector);
+constructor TgxFlareGradient.CreateInitialized(AOwner: TPersistent; const fromColor, toColor: TGColorVector);
 begin
   Create(AOwner);
   FFromColor.Initialize(fromColor);
@@ -224,12 +224,12 @@ begin
   inherited;
 end;
 
-procedure TgxFlareGradient.SetFromColor(const val: TgxColor);
+procedure TgxFlareGradient.SetFromColor(const val: TGColor);
 begin
   FFromColor.Assign(val);
 end;
 
-procedure TgxFlareGradient.SetToColor(const val: TgxColor);
+procedure TgxFlareGradient.SetToColor(const val: TGColor);
 begin
   FToColor.Assign(val);
 end;
@@ -325,9 +325,9 @@ begin
       rnd := 1.5 * Random * size
     else
       rnd := Random * size;
-    glColor4fv(RaysGradient.fromColor.AsAddress);
+    glColor4fv(@RaysGradient.fromColor.AsAddress^);
     glVertex2f(0, 0);
-    glColor4fv(RaysGradient.toColor.AsAddress);
+    glColor4fv(@RaysGradient.toColor.AsAddress^);
     glVertex2f(rnd * FCos20Res[i], rnd * FSin20Res[i] * Squeeze);
   end;
   glEnd;
@@ -350,9 +350,9 @@ begin
   for i := 0 to NumStreaks - 1 do
   begin
     SinCosine(StreakAngle * cPIdiv180 + a * i, f, s, c);
-    glColor4fv(StreaksGradient.fromColor.AsAddress);
+    glColor4fv(@StreaksGradient.fromColor.AsAddress^);
     glVertex3fv(@NullVector);
-    glColor4fv(StreaksGradient.toColor.AsAddress);
+    glColor4fv(@StreaksGradient.toColor.AsAddress^);
     glVertex2f(c, Squeeze * s);
   end;
   glEnd;
@@ -379,20 +379,20 @@ begin
     s0 := FSinRes[i] * 0.6 * Squeeze;
     c0 := FCosRes[i] * 0.6;
 
-    glColor4fv(GlowGradient.toColor.AsAddress);
+    glColor4fv(@GlowGradient.toColor.AsAddress^);
     glVertex2f((FCurrSize - rW) * c, (FCurrSize - rW) * s);
-    glColor4fv(RingGradient.fromColor.AsAddress);
+    glColor4fv(@RingGradient.fromColor.AsAddress^);
     glVertex2f(FCurrSize * c, Squeeze * FCurrSize * s);
 
     glVertex2f(FCurrSize * c0, FCurrSize * s0);
-    glColor4fv(GlowGradient.toColor.AsAddress);
+    glColor4fv(@GlowGradient.toColor.AsAddress^);
     glVertex2f((FCurrSize - rW) * c0, (FCurrSize - rW) * s0);
 
-    glColor4fv(RingGradient.fromColor.AsAddress);
+    glColor4fv(@RingGradient.fromColor.AsAddress^);
     glVertex2f(FCurrSize * c, FCurrSize * s);
     glVertex2f(FCurrSize * c0, FCurrSize * s0);
 
-    glColor4fv(GlowGradient.toColor.AsAddress);
+    glColor4fv(@GlowGradient.toColor.AsAddress^);
     glVertex2f((FCurrSize + rW) * c0, (FCurrSize + rW) * s0);
     glVertex2f((FCurrSize + rW) * c, (FCurrSize + rW) * s);
   end;
@@ -430,9 +430,9 @@ begin
     rnd := (Random + 0.1) * FCurrSize * 0.25;
 
     glBegin(GL_TRIANGLE_FAN);
-    glColor4fv(grad.fromColor.AsAddress);
+    glColor4fv(@Grad.fromColor.AsAddress^);
     glVertex2f(v.X, v.Y);
-    glColor4fv(grad.toColor.AsAddress);
+    glColor4fv(@Grad.toColor.AsAddress^);
     for i := 0 to Resolution - 1 do
       glVertex2f(FCosRes[i] * rnd + v.X, FSinRes[i] * rnd + v.Y);
     glEnd;
@@ -586,9 +586,9 @@ begin
       if feGlow in Elements then
       begin
         glBegin(GL_TRIANGLE_FAN);
-        glColor4fv(GlowGradient.fromColor.AsAddress);
+        glColor4fv(@GlowGradient.fromColor.AsAddress^);
         glVertex2f(0, 0);
-        glColor4fv(GlowGradient.toColor.AsAddress);
+        glColor4fv(@GlowGradient.toColor.AsAddress^);
         for i := 0 to Resolution - 1 do
           glVertex2f(FCurrSize * FCosRes[i], Squeeze * FCurrSize * FSinRes[i]);
         glEnd;

@@ -22,7 +22,7 @@
 #include "GLS.SimpleNavigation.hpp"
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLS.Keyboard.hpp"
+#include "GLScene.Keyboard.hpp"
 #include "GLS.GeomObjects.hpp"
 #include "GLScene.VectorGeometry.hpp"
 #include "GLS.Octree.hpp"

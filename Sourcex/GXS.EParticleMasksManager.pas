@@ -36,7 +36,7 @@ uses
   System.UITypes,
   FMX.Graphics,
 
-  GXS.Color,
+  GLScene.Color,
   GXS.Texture,
   GXS.Material,
   GXS.Scene,

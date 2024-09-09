@@ -15,7 +15,7 @@ uses
   GLScene.VectorGeometry,
   GLS.State,
   GLS.PipelineTransformation,
-  GLS.Color;
+  GLScene.Color;
 
 type
 
@@ -76,7 +76,7 @@ type
     GLStates: TGLStateCache;
     PipelineTransformation: TGLTransformation;
     Rcci: TGLRenderContextClippingInfo;
-    SceneAmbientColor: TGLColorVector;
+    SceneAmbientColor: TGColorVector;
     BufferFaceCull: Boolean;
     BufferLighting: Boolean;
     BufferFog: Boolean;

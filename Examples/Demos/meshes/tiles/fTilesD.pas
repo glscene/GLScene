@@ -17,23 +17,24 @@ uses
   Vcl.StdCtrls,
 
   GLScene.VectorTypes,
+  GLScene.Coordinates,
+  GLScene.BaseClasses,
+  GLScene.Keyboard,
+  GLScene.VectorGeometry,
+  GLScene.TextureFormat,
+  GLScene.XCollection,
+  GLScene.Utils,
+
   GLS.Objects,
   GLS.Graph,
   GLS.Scene,
   GLS.SceneViewer,
-  GLScene.VectorGeometry,
   GLS.TilePlane,
   GLS.Texture,
   GLS.Cadencer,
   GLS.Context,
- 
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
   GLS.RenderContextInfo,
-  GLScene.TextureFormat,
-  GLScene.XCollection,
-  GLScene.Utils,
   GLS.SimpleNavigation;
 
 type

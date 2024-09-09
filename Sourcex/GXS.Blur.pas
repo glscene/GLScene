@@ -28,7 +28,7 @@ uses
   GXS.Texture,
   GXS.Material,
   GXS.HudObjects,
-  GXS.Color,
+  GLScene.Color,
   GXS.Graphics,
   GXS.Context,
   GXS.State,

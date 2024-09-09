@@ -35,7 +35,7 @@ uses
   GXS.Cadencer,
   GXS.Graphics,
   GXS.Context,
-  GXS.Color,
+  GLScene.Color,
   GLScene.BaseClasses,
   GLScene.Coordinates,
   GXS.RenderContextInfo,
@@ -435,8 +435,8 @@ type
 
   TPFXLifeColor = class(TCollectionItem)
   private
-    FColorInner: TgxColor;
-    FColorOuter: TgxColor;
+    FColorInner: TGColor;
+    FColorOuter: TGColor;
     FLifeTime, FInvLifeTime: Single;
     FIntervalRatio: Single;
     FSizeScale: Single;
@@ -445,8 +445,8 @@ type
     FRotateAngle: Single;
   protected
     function GetDisplayName: string; override;
-    procedure SetColorInner(const val: TgxColor);
-    procedure SetColorOuter(const val: TgxColor);
+    procedure SetColorInner(const val: TGColor);
+    procedure SetColorOuter(const val: TGColor);
     procedure SetLifeTime(const val: Single);
     procedure SetSizeScale(const val: Single);
     procedure SetRotateAngle(const Value: Single); // indirectly persistent
@@ -459,8 +459,8 @@ type
     // Stores 1/(LifeTime[Next]-LifeTime[Self])
     property InvIntervalRatio: Single read FIntervalRatio;
   published
-    property ColorInner: TgxColor read FColorInner write SetColorInner;
-    property ColorOuter: TgxColor read FColorOuter write SetColorOuter;
+    property ColorInner: TGColor read FColorInner write SetColorInner;
+    property ColorOuter: TGColor read FColorOuter write SetColorOuter;
     property LifeTime: Single read FLifeTime write SetLifeTime;
     property SizeScale: Single read FSizeScale write SetSizeScale;
     property RotateAngle: Single read FRotateAngle write SetRotateAngle;
@@ -489,19 +489,19 @@ type
     FLifeColorsLookup: TList;
     FLifeRotations: Boolean;
     FLifeScaling: Boolean;
-    FColorInner: TgxColor;
-    FColorOuter: TgxColor;
+    FColorInner: TGColor;
+    FColorOuter: TGColor;
     FParticleSize: Single;
   protected
     procedure SetLifeColors(const val: TPFXLifeColors);
-    procedure SetColorInner(const val: TgxColor);
-    procedure SetColorOuter(const val: TgxColor);
+    procedure SetColorInner(const val: TGColor);
+    procedure SetColorOuter(const val: TGColor);
     procedure InitializeRendering(var rci: TgxRenderContextInfo); override;
     procedure FinalizeRendering(var rci: TgxRenderContextInfo); override;
     function MaxParticleAge: Single; override;
-    procedure ComputeColors(var lifeTime: Single; var inner, outer: TgxColorVector);
-    procedure ComputeInnerColor(var lifeTime: Single; var inner: TgxColorVector);
-    procedure ComputeOuterColor(var lifeTime: Single; var outer: TgxColorVector);
+    procedure ComputeColors(var lifeTime: Single; var inner, outer: TGColorVector);
+    procedure ComputeInnerColor(var lifeTime: Single; var inner: TGColorVector);
+    procedure ComputeOuterColor(var lifeTime: Single; var outer: TGColorVector);
     function ComputeSizeScale(var lifeTime: Single; var sizeScale: Single): Boolean;
     function ComputeRotateAngle(var lifeTime, rotateAngle: Single): Boolean;
     procedure RotateVertexBuf(buf: TGAffineVectorList; lifeTime: Single;
@@ -510,8 +510,8 @@ type
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
     property ParticleSize: Single read FParticleSize write FParticleSize;
-    property ColorInner: TgxColor read FColorInner write SetColorInner;
-    property ColorOuter: TgxColor read FColorOuter write SetColorOuter;
+    property ColorInner: TGColor read FColorInner write SetColorInner;
+    property ColorOuter: TGColor read FColorOuter write SetColorOuter;
     property LifeColors: TPFXLifeColors read FLifeColors write SetLifeColors;
   published
     property BlendingMode default bmAdditive;
@@ -1758,8 +1758,8 @@ end;
 constructor TPFXLifeColor.Create(Collection: TCollection);
 begin
   inherited Create(Collection);
-  FColorInner := TgxColor.CreateInitialized(Self, NullHmgVector);
-  FColorOuter := TgxColor.CreateInitialized(Self, NullHmgVector);
+  FColorInner := TGColor.CreateInitialized(Self, NullHmgVector);
+  FColorOuter := TGColor.CreateInitialized(Self, NullHmgVector);
   FLifeTime := 1;
   FInvLifeTime := 1;
   FSizeScale := 1;
@@ -1794,12 +1794,12 @@ begin
       ColorOuter.Red, ColorOuter.Green, ColorOuter.Blue, ColorOuter.Alpha]);
 end;
 
-procedure TPFXLifeColor.SetColorInner(const val: TgxColor);
+procedure TPFXLifeColor.SetColorInner(const val: TGColor);
 begin
   FColorInner.Assign(val);
 end;
 
-procedure TPFXLifeColor.SetColorOuter(const val: TgxColor);
+procedure TPFXLifeColor.SetColorOuter(const val: TGColor);
 begin
   FColorOuter.Assign(val);
 end;
@@ -2016,8 +2016,8 @@ constructor TgxLifeColoredPFXManager.Create(aOwner: TComponent);
 begin
   inherited;
   FLifeColors := TPFXLifeColors.Create(Self);
-  FColorInner := TgxColor.CreateInitialized(Self, clrYellow);
-  FColorOuter := TgxColor.CreateInitialized(Self, NullHmgVector);
+  FColorInner := TGColor.CreateInitialized(Self, clrYellow);
+  FColorOuter := TGColor.CreateInitialized(Self, NullHmgVector);
   with FLifeColors.Add do
   begin
     LifeTime := 3;
@@ -2033,12 +2033,12 @@ begin
   inherited Destroy;
 end;
 
-procedure TgxLifeColoredPFXManager.SetColorInner(const val: TgxColor);
+procedure TgxLifeColoredPFXManager.SetColorInner(const val: TGColor);
 begin
   FColorInner.Assign(val);
 end;
 
-procedure TgxLifeColoredPFXManager.SetColorOuter(const val: TgxColor);
+procedure TgxLifeColoredPFXManager.SetColorOuter(const val: TGColor);
 begin
   FColorOuter.Assign(val);
 end;
@@ -2072,7 +2072,7 @@ begin
   Result := LifeColors.MaxLifeTime;
 end;
 
-procedure TgxLifeColoredPFXManager.ComputeColors(var lifeTime: Single; var inner, outer: TgxColorVector);
+procedure TgxLifeColoredPFXManager.ComputeColors(var lifeTime: Single; var inner, outer: TGColorVector);
 var
   i, k, n: Integer;
   f: Single;
@@ -2118,7 +2118,7 @@ begin
   end;
 end;
 
-procedure TgxLifeColoredPFXManager.ComputeInnerColor(var lifeTime: Single; var inner: TgxColorVector);
+procedure TgxLifeColoredPFXManager.ComputeInnerColor(var lifeTime: Single; var inner: TGColorVector);
 var
   i, k, n: Integer;
   f: Single;
@@ -2161,7 +2161,7 @@ begin
   end;
 end;
 
-procedure TgxLifeColoredPFXManager.ComputeOuterColor(var lifeTime: Single; var outer: TgxColorVector);
+procedure TgxLifeColoredPFXManager.ComputeOuterColor(var lifeTime: Single; var outer: TGColorVector);
 var
   i, k, n: Integer;
   f: Single;
@@ -2469,7 +2469,7 @@ procedure TgxPolygonPFXManager.RenderParticle(var rci: TgxRenderContextInfo; aPa
 var
   i: Integer;
   lifeTime, sizeScale: Single;
-  inner, outer: TgxColorVector;
+  inner, outer: TGColorVector;
   pos: TAffineVector;
   vertexList: PAffineVectorArray;
 begin
@@ -2706,7 +2706,7 @@ const
     ((S: 0.5; T: 0.5), (S: 0.0; T: 0.5), (S: 0.0; T: 0.0), (S: 0.5; T: 0.0)));
 var
   lifeTime, sizeScale: Single;
-  inner, outer: TgxColorVector;
+  inner, outer: TGColorVector;
   pos: TAffineVector;
   vertexList: PAffineVectorArray;
   i: Integer;

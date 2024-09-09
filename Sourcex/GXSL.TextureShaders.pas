@@ -29,7 +29,7 @@ uses
   GXS.XOpenGL,
 
   GLScene.VectorGeometry,
-  GXS.Color,
+  GLScene.Color,
   GXS.Material,
   GLScene.Strings,
   GXS.VectorFileObjects,
@@ -52,18 +52,18 @@ type
     FTexOffset: TGCoordinates2;
     FTexScale: TGCoordinates2;
     FBlendingMode: TgxBlendingMode;
-    FSpecular: TgxColor;
-    FAmbient: TgxColor;
-    FDiffuse: TgxColor;
-    FEmission: TgxColor;
+    FSpecular: TGColor;
+    FAmbient: TGColor;
+    FDiffuse: TGColor;
+    FEmission: TGColor;
     FShininess: TgxShininess;
     FMaterialLibrary: TgxMaterialLibrary;
     FLibMaterialName: TgxLibMaterialName;
-    procedure SetAmbient(const Value: TgxColor);
-    procedure SetDiffuse(const Value: TgxColor);
-    procedure SetEmission(const Value: TgxColor);
+    procedure SetAmbient(const Value: TGColor);
+    procedure SetDiffuse(const Value: TGColor);
+    procedure SetEmission(const Value: TGColor);
     procedure SetShininess(const Value: TgxShininess);
-    procedure SetSpecular(const Value: TgxColor);
+    procedure SetSpecular(const Value: TGColor);
     procedure SetMaterialLibrary(const Value: TgxMaterialLibrary);
     procedure SetLibMaterialName(const Value: TgxLibMaterialName);
     procedure SetBlendingMode(const Value: TgxBlendingMode);
@@ -91,10 +91,10 @@ type
     property TexOffset: TGCoordinates2 read FTexOffset write SetTexOffset;
     property TexScale: TGCoordinates2 read FTexScale write SetTexScale;
     property BlendingMode: TgxBlendingMode read FBlendingMode write SetBlendingMode;
-    property Emission: TgxColor read FEmission write SetEmission;
-    property Ambient: TgxColor read FAmbient write SetAmbient;
-    property Diffuse: TgxColor read FDiffuse write SetDiffuse;
-    property Specular: TgxColor read FSpecular write SetSpecular;
+    property Emission: TGColor read FEmission write SetEmission;
+    property Ambient: TGColor read FAmbient write SetAmbient;
+    property Diffuse: TGColor read FDiffuse write SetDiffuse;
+    property Specular: TGColor read FSpecular write SetSpecular;
     property Shininess: TgxShininess read FShininess write SetShininess;
     property MaterialLibrary: TgxMaterialLibrary read FMaterialLibrary write SetMaterialLibrary;
     property LibMaterialName: TgxLibMaterialName read FLibMaterialName write SetLibMaterialName;
@@ -329,13 +329,13 @@ end;
 constructor TgxShaderTextureSharingMaterial.Create(Collection: TCollection);
 begin
   inherited;
-  FSpecular := TgxColor.Create(Self);
+  FSpecular := TGColor.Create(Self);
   FSpecular.OnNotifyChange := OtherNotifychange;
-  FAmbient := TgxColor.Create(Self);
+  FAmbient := TGColor.Create(Self);
   FAmbient.OnNotifyChange := OtherNotifychange;
-  FDiffuse := TgxColor.Create(Self);
+  FDiffuse := TGColor.Create(Self);
   FDiffuse.OnNotifyChange := OtherNotifychange;
-  FEmission := TgxColor.Create(Self);
+  FEmission := TGColor.Create(Self);
   FEmission.OnNotifyChange := OtherNotifychange;
 
   FTexOffset := TGCoordinates2.CreateInitialized(Self, NullHmgVector, csPoint2d);
@@ -410,7 +410,7 @@ begin
   GetTextureSharingShader.NotifyChange(Self);
 end;
 
-procedure TgxShaderTextureSharingMaterial.SetAmbient(const Value: TgxColor);
+procedure TgxShaderTextureSharingMaterial.SetAmbient(const Value: TGColor);
 begin
   FAmbient.Assign(Value);
 end;
@@ -420,12 +420,12 @@ begin
   FBlendingMode := Value;
 end;
 
-procedure TgxShaderTextureSharingMaterial.SetDiffuse(const Value: TgxColor);
+procedure TgxShaderTextureSharingMaterial.SetDiffuse(const Value: TGColor);
 begin
   FDiffuse.Assign(Value);
 end;
 
-procedure TgxShaderTextureSharingMaterial.SetEmission(const Value: TgxColor);
+procedure TgxShaderTextureSharingMaterial.SetEmission(const Value: TGColor);
 begin
   FEmission.Assign(Value);
 end;
@@ -475,7 +475,7 @@ begin
   FShininess := Value;
 end;
 
-procedure TgxShaderTextureSharingMaterial.SetSpecular(const Value: TgxColor);
+procedure TgxShaderTextureSharingMaterial.SetSpecular(const Value: TGColor);
 begin
   FSpecular.Assign(Value);
 end;

@@ -46,7 +46,7 @@ uses
   GXS.State,
   GXS.Graphics,
   GXS.Texture,
-  GXS.Color,
+  GLScene.Color,
   GXS.RenderContextInfo,
   GXS.Material,
   GXS.Selection,
@@ -908,12 +908,12 @@ type
     FSpotExponent, FSpotCutOff: Single;
     FConstAttenuation, FLinearAttenuation, FQuadraticAttenuation: Single;
     FShining: Boolean;
-    FAmbient, FDiffuse, FSpecular: TgxColor;
+    FAmbient, FDiffuse, FSpecular: TGColor;
     FLightStyle: TgxLightStyle;
   protected
-    procedure SetAmbient(aValue: TgxColor);
-    procedure SetDiffuse(aValue: TgxColor);
-    procedure SetSpecular(aValue: TgxColor);
+    procedure SetAmbient(aValue: TGColor);
+    procedure SetDiffuse(aValue: TGColor);
+    procedure SetSpecular(aValue: TGColor);
     procedure SetConstAttenuation(aValue: Single);
     procedure SetLinearAttenuation(aValue: Single);
     procedure SetQuadraticAttenuation(aValue: Single);
@@ -934,15 +934,15 @@ type
     property LightID: Cardinal read FLightID;
     function Attenuated: Boolean;
   published
-    property Ambient: TgxColor read FAmbient write SetAmbient;
+    property Ambient: TGColor read FAmbient write SetAmbient;
     property ConstAttenuation: Single read FConstAttenuation write SetConstAttenuation;
-    property Diffuse: TgxColor read FDiffuse write SetDiffuse;
+    property Diffuse: TGColor read FDiffuse write SetDiffuse;
     property LinearAttenuation: Single read FLinearAttenuation write SetLinearAttenuation;
     property QuadraticAttenuation: Single read FQuadraticAttenuation write SetQuadraticAttenuation;
     property Position;
     property LightStyle: TgxLightStyle read FLightStyle write SetLightStyle default lsSpot;
     property Shining: Boolean read FShining write SetShining default True;
-    property Specular: TgxColor read FSpecular write SetSpecular;
+    property Specular: TGColor read FSpecular write SetSpecular;
     property SpotCutOff: Single read FSpotCutOff write SetSpotCutOff;
     property SpotDirection: TGCoordinates read FSpotDirection write SetSpotDirection;
     property SpotExponent: Single read FSpotExponent write SetSpotExponent;
@@ -1218,12 +1218,12 @@ type
   TgxFogEnvironment = class(TGUpdateAbleObject)
   private
     FSceneBuffer: TgxSceneBuffer;
-    FFogColor: TgxColor; // alpha value means the fog density
+    FFogColor: TGColor; // alpha value means the fog density
     FFogStart, FFogEnd: Single;
     FFogMode: TgxFogMode;
     FFogDistance: TgxFogDistance;
   protected
-    procedure SetFogColor(Value: TgxColor);
+    procedure SetFogColor(Value: TGColor);
     procedure SetFogStart(Value: Single);
     procedure SetFogEnd(Value: Single);
     procedure SetFogMode(Value: TgxFogMode);
@@ -1236,7 +1236,7 @@ type
     function IsAtDefaultValues: Boolean;
   published
     // Color of the fog when it is at 100% intensity.
-    property FogColor: TgxColor read FFogColor write SetFogColor;
+    property FogColor: TGColor read FFogColor write SetFogColor;
     // Minimum distance for fog, what is closer is not affected.
     property FogStart: Single read FFogStart write SetFogStart;
     // Maximum distance for fog, what is farther is at 100% fog intensity.
@@ -1274,7 +1274,7 @@ type
     FDepthTest: Boolean;
     FBackgroundColor: TColor;
     FBackgroundAlpha: Single;
-    FAmbientColor: TgxColor;
+    FAmbientColor: TGColor;
     FAntiAliasing: TgxAntiAliasing;
     FDepthPrecision: TgxDepthPrecision;
     FColorDepth: TgxColorDepth;
@@ -1309,7 +1309,7 @@ type
   protected
     procedure SetBackgroundColor(AColor: TColor);
     procedure SetBackgroundAlpha(alpha: Single);
-    procedure SetAmbientColor(AColor: TgxColor);
+    procedure SetAmbientColor(AColor: TGColor);
     function GetLimit(Which: TLimitType): Integer;
     procedure SetCamera(ACamera: TgxCamera);
     procedure SetContextOptions(Options: TContextOptions);
@@ -1534,7 +1534,7 @@ type
     (* Scene ambient color vector.
       This ambient color is defined independantly from all lightsources,
       which can have their own ambient components. *)
-    property AmbientColor: TgxColor read FAmbientColor write SetAmbientColor;
+    property AmbientColor: TGColor read FAmbientColor write SetAmbientColor;
     (* Context options allows to setup specifics of the rendering context.
       Not all contexts support all options. *)
     property ContextOptions: TContextOptions read FContextOptions write SetContextOptions
@@ -5362,10 +5362,10 @@ begin
   FSpotCutOff := 180;
   FSpotExponent := 0;
   FLightStyle := lsSpot;
-  FAmbient := TgxColor.Create(Self);
-  FDiffuse := TgxColor.Create(Self);
+  FAmbient := TGColor.Create(Self);
+  FDiffuse := TGColor.Create(Self);
   FDiffuse.Initialize(clrWhite);
-  FSpecular := TgxColor.Create(Self);
+  FSpecular := TGColor.Create(Self);
 end;
 
 destructor TgxLightSource.Destroy;
@@ -5447,19 +5447,19 @@ begin
   end;
 end;
 
-procedure TgxLightSource.SetAmbient(aValue: TgxColor);
+procedure TgxLightSource.SetAmbient(aValue: TGColor);
 begin
   FAmbient.Color := aValue.Color;
   NotifyChange(Self);
 end;
 
-procedure TgxLightSource.SetDiffuse(aValue: TgxColor);
+procedure TgxLightSource.SetDiffuse(aValue: TGColor);
 begin
   FDiffuse.Color := aValue.Color;
   NotifyChange(Self);
 end;
 
-procedure TgxLightSource.SetSpecular(aValue: TgxColor);
+procedure TgxLightSource.SetSpecular(aValue: TGColor);
 begin
   FSpecular.Color := aValue.Color;
   NotifyChange(Self);
@@ -5964,7 +5964,7 @@ constructor TgxFogEnvironment.Create(AOwner: TPersistent);
 begin
   inherited;
   FSceneBuffer := (AOwner as TgxSceneBuffer);
-  FFogColor := TgxColor.CreateInitialized(Self, clrBlack);
+  FFogColor := TGColor.CreateInitialized(Self, clrBlack);
   FFogMode := fmLinear;
   FFogStart := 10;
   FFogEnd := 1000;
@@ -5977,7 +5977,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TgxFogEnvironment.SetFogColor(Value: TgxColor);
+procedure TgxFogEnvironment.SetFogColor(Value: TGColor);
 begin
   if Assigned(Value) then
   begin
@@ -6072,7 +6072,7 @@ begin
         glFogf(GL_FOG_DENSITY, FFogColor.alpha);
       end;
   end;
-  glFogfv(GL_FOG_COLOR, FFogColor.AsAddress);
+  glFogfv(GL_FOG_COLOR, @FFogColor.AsAddress^);
   glFogf(GL_FOG_START, FFogStart);
   glFogf(GL_FOG_END, FFogEnd);
   case FogDistance of
@@ -6108,7 +6108,7 @@ begin
   FFogEnvironment := TgxFogEnvironment.Create(Self);
   FBackgroundColor := TColors.SysBtnFace;
   FBackgroundAlpha := 1;
-  FAmbientColor := TgxColor.CreateInitialized(Self, clrGray20);
+  FAmbientColor := TGColor.CreateInitialized(Self, clrGray20);
   FDepthTest := True;
   FFaceCulling := True;
   FLighting := True;
@@ -6306,7 +6306,7 @@ begin
 
   if not(roForwardContext in ContextOptions) then
   begin
-    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, FAmbientColor.AsAddress);
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, @FAmbientColor.AsAddress^);
     if roTwoSideLighting in FContextOptions then
       glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE)
     else
@@ -7342,7 +7342,7 @@ begin
   end;
 end;
 
-procedure TgxSceneBuffer.SetAmbientColor(AColor: TgxColor);
+procedure TgxSceneBuffer.SetAmbientColor(AColor: TGColor);
 begin
   FAmbientColor.Assign(AColor);
 end;

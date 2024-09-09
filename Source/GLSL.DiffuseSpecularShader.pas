@@ -36,7 +36,7 @@ uses
   GLScene.Strings,
   GLSL.Shader,
   GLSL.CustomShader,
-  GLS.Color,
+  GLScene.Color,
   GLS.RenderContextInfo,
   GLS.Material;
 

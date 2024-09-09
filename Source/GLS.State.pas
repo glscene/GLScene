@@ -34,7 +34,8 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.TextureFormat,
-  GLScene.Utils;
+  GLScene.Utils,
+  GLScene.Color;
 
 const
   GLS_VERTEX_ATTR_NUM = 16;
@@ -51,7 +52,6 @@ const
   cAllAttribBits = [low(TGLStateType) .. High(TGLStateType)];
 
 type
-
   TGLMeshPrimitive = (
     mpNOPRIMITIVE,
     mpTRIANGLES,
@@ -86,7 +86,6 @@ const
     mpPATCHES];
 
 type
-
   // Reflects all relevant (binary) states of OpenGL subsystem
   TGLState = (stAlphaTest, stAutoNormal,
     stBlend, stColorMaterial, stCullFace, stDepthTest, stDither,
@@ -145,7 +144,6 @@ const
   MAX_HARDWARE_UNIFORM_BUFFER_BINDING = 75;
 
 type
-
   TGLHintType = (hintDontCare, hintFastest, hintNicest);
 
   TGLLightSourceState = packed record
@@ -996,13 +994,10 @@ const
   cGLBufferBindingTarget: array[TGLBufferBindingTarget] of Cardinal =
     (GL_UNIFORM_BUFFER, GL_TRANSFORM_FEEDBACK_BUFFER);
 
-//------------------------------------------------------
-implementation
-// ------------------------------------------------------
+implementation //------------------------------------------------------
 
 uses
-  GLS.Context,
-  GLS.Color;
+  GLS.Context;
 
 
 // ------------------

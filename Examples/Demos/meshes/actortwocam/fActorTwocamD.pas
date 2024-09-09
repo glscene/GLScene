@@ -14,27 +14,29 @@ uses
   Vcl.ExtCtrls,
   Vcl.ComCtrls,
   Vcl.Forms,
+  Vcl.StdCtrls,
+  Vcl.Graphics,
+
+  GLScene.Keyboard,
+  GLScene.VectorTypes,
+  GLScene.Coordinates,
+  GLScene.BaseClasses,
+  GLScene.Utils,
+  GLScene.VectorGeometry,
+  GLScene.XCollection,
+  GLScene.PersistentClasses,
 
   GLS.Scene,
-  GLScene.VectorTypes,
   GLS.Objects,
   GLS.Cadencer,
   GLS.VectorFileObjects,
-  StdCtrls,
-  Graphics,
   GLS.SkyDome,
   GLS.SceneViewer,
   GLS.Navigator,
   GLS.FileMD2,
   GLS.File3DS,
   GLS.GeomObjects,
-
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
-  GLScene.Utils,
-  GLScene.VectorGeometry,
-  GLScene.XCollection,
-  GLScene.PersistentClasses, GLS.DCE;
+  GLS.DCE;
 
 type
   TFormActorTwocam = class(TForm)

@@ -22,7 +22,7 @@ uses
   GXS.Objects,
   GXS.MultiPolygon,
   GLScene.Coordinates,
-  GXS.Color,
+  GLScene.Color,
   GXS.SpaceText,
   GXS.VectorFileObjects;
 

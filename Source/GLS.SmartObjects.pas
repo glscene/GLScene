@@ -47,7 +47,7 @@ uses
   GLS.GeomObjects,
   GLS.ApplicationFileIO,
   GLS.Context,
-  GLS.Color,
+  GLScene.Color,
   GLS.Selection,
   GLS.RenderContextInfo,
   GLScene.Coordinates,

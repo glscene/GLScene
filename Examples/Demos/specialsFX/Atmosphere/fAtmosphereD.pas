@@ -25,7 +25,7 @@ uses
   GLS.SimpleNavigation,
   GLS.Behaviours,
   GLScene.Coordinates,
-  GLS.Color;
+  GLScene.Color;
 
 type
   TFormAtmosphere = class(TForm)

@@ -1,44 +1,61 @@
 object Form1: TForm1
   Left = 403
   Top = 221
-  ClientHeight = 516
-  ClientWidth = 761
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
+  ClientHeight = 903
+  ClientWidth = 1346
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnShow = FormShow
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object vp: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 600
-    Height = 516
+    Width = 1064
+    Height = 903
     Cursor = -1
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.BackgroundColor = clNavy
     Buffer.ContextOptions = [roDoubleBuffer, roRenderToWindow]
-    FieldOfView = 158.064254760742200000
+    FieldOfView = 167.361404418945300000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 600
+    Left = 1064
     Top = 0
-    Width = 161
-    Height = 516
+    Width = 282
+    Height = 903
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alRight
     TabOrder = 1
     object RadioGroup1: TRadioGroup
-      Left = 18
-      Top = 232
-      Width = 137
-      Height = 105
+      Left = 32
+      Top = 406
+      Width = 239
+      Height = 184
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Fire'
       ItemIndex = 0
       Items.Strings = (
@@ -48,10 +65,14 @@ object Form1: TForm1
       OnClick = RadioGroup1Click
     end
     object RadioGroup2: TRadioGroup
-      Left = 18
-      Top = 64
-      Width = 137
-      Height = 105
+      Left = 32
+      Top = 112
+      Width = 239
+      Height = 184
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Perlin'
       ItemIndex = 0
       Items.Strings = (
@@ -61,19 +82,27 @@ object Form1: TForm1
       OnClick = RadioGroup2Click
     end
     object stPerlin: TStaticText
-      Left = 16
-      Top = 32
-      Width = 132
-      Height = 17
+      Left = 28
+      Top = 56
+      Width = 231
+      Height = 28
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Left mouse button for perlin'
       TabOrder = 2
       OnClick = stPerlinClick
     end
     object stFire: TStaticText
-      Left = 16
-      Top = 200
-      Width = 128
-      Height = 17
+      Left = 28
+      Top = 350
+      Width = 223
+      Height = 28
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Right mouse button for fire'
       TabOrder = 3
     end
@@ -268,7 +297,6 @@ object Form1: TForm1
     Cadencer = GLCadencer1
     Renderer = rend
     Friction = 1.000000000000000000
-    OnPrepareTextureImage = pfx2PrepareTextureImage
     ColorMode = scmFade
     ParticleSize = 0.750000000000000000
     ColorInner.Color = {0000803F1283C03E000000000000803F}

@@ -25,7 +25,7 @@ uses
   GLScene.VectorGeometry,
   GXS.Context,
   GXS.Material,
-  GXS.Color,
+  GLScene.Color,
   GXS.RenderContextInfo,
   GXS.State,
   GLScene.VectorTypes;
@@ -142,7 +142,7 @@ var
   oldProxySubObject: Boolean;
   refMat, curMat, ModelMat: TMatrix4f;
   clipPlane: TDoubleHmgPlane;
-  bgColor: TgxColorVector;
+  bgColor: TGColorVector;
   cameraPosBackup, cameraDirectionBackup: TVector4f;
   CurrentBuffer: TgxSceneBuffer;
 begin

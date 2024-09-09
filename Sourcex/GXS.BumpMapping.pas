@@ -11,7 +11,7 @@ uses
   System.UITypes,
   FMX.Graphics,
 
-  GXS.Color,
+  GLScene.Color,
   GLScene.VectorGeometry,
   GLScene.VectorLists,
   GLScene.VectorTypes;

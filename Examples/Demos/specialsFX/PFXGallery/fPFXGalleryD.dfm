@@ -1,29 +1,38 @@
 object FormPFXGallery: TFormPFXGallery
   Left = 199
   Top = 114
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'PFXGallery'
-  ClientHeight = 508
-  ClientWidth = 680
+  ClientHeight = 889
+  ClientWidth = 1204
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -19
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OnCreate = FormCreate
-  TextHeight = 13
+  PixelsPerInch = 168
+  TextHeight = 24
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 25
-    Width = 680
-    Height = 483
+    Top = 44
+    Width = 1204
+    Height = 845
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Camera = GLCamera1
     Buffer.FogEnvironment.FogColor.Color = {D7A3703ED7A3703ED7A3703E0000803F}
     Buffer.FogEnvironment.FogStart = 30.000000000000000000
     Buffer.FogEnvironment.FogEnd = 200.000000000000000000
     Buffer.BackgroundColor = clBlack
     Buffer.AmbientColor.Color = {0000803F0000803F0000803F0000803F}
-    FieldOfView = 147.671005249023400000
+    FieldOfView = 161.185333251953100000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -31,32 +40,48 @@ object FormPFXGallery: TFormPFXGallery
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 680
-    Height = 25
+    Width = 1204
+    Height = 44
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alTop
     Caption = ' '
     TabOrder = 1
     object Label1: TLabel
-      Left = 376
-      Top = 6
-      Width = 91
-      Height = 13
+      Left = 658
+      Top = 11
+      Width = 157
+      Height = 24
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'WASD - navigation'
     end
     object chkMouseLook: TCheckBox
-      Left = 244
-      Top = 4
-      Width = 97
-      Height = 17
+      Left = 427
+      Top = 7
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'MouseLook'
       TabOrder = 0
       OnClick = chkMouseLookClick
     end
     object chkFloor: TCheckBox
-      Left = 8
-      Top = 4
-      Width = 97
-      Height = 17
+      Left = 14
+      Top = 7
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Show floor'
       Checked = True
       State = cbChecked
@@ -64,10 +89,14 @@ object FormPFXGallery: TFormPFXGallery
       OnClick = chkFloorClick
     end
     object chkBlur: TCheckBox
-      Left = 116
-      Top = 4
-      Width = 97
-      Height = 17
+      Left = 203
+      Top = 7
+      Width = 170
+      Height = 30
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Blur effects'
       TabOrder = 2
       OnClick = chkBlurClick

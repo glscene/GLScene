@@ -72,7 +72,7 @@ contains
   GLS.CameraController in '..\Source\GLS.CameraController.pas',
   GLS.Canvas in '..\Source\GLS.Canvas.pas',
   GLS.Collision in '..\Source\GLS.Collision.pas',
-  GLS.Color in '..\Source\GLS.Color.pas',
+  GLScene.Color in '..\Source\GLScene.Color.pas',
   GLS.CompositeImage in '..\Source\GLS.CompositeImage.pas',
   GLS.Console in '..\Source\GLS.Console.pas',
   GLS.Context in '..\Source\GLS.Context.pas',

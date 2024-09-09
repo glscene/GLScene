@@ -59,7 +59,6 @@ contains
   GXS.Canvas in '..\SourceX\GXS.Canvas.pas',
   GXS.CelShader in '..\SourceX\GXS.CelShader.pas',
   GXS.Collision in '..\SourceX\GXS.Collision.pas',
-  GXS.Color in '..\SourceX\GXS.Color.pas',
   GXS.CompositeImage in '..\SourceX\GXS.CompositeImage.pas',
   GXS.Console in '..\SourceX\GXS.Console.pas',
   GXS.Context in '..\SourceX\GXS.Context.pas',
@@ -270,6 +269,7 @@ contains
   gnuGettextInit in '..\Source\gnuGettextInit.pas',
   GLScene.XCollection in '..\Source\GLScene.XCollection.pas',
   GLScene.Keyboard in '..\Source\GLScene.Keyboard.pas',
-  GLScene.Polynomials in '..\Source\GLScene.Polynomials.pas';
+  GLScene.Polynomials in '..\Source\GLScene.Polynomials.pas',
+  GLScene.Color in '..\Source\GLScene.Color.pas';
 
 end.

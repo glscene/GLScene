@@ -31,7 +31,7 @@ uses
   GXS.Texture,
   GLScene.VectorGeometry,
   GXS.Context,
-  GXS.Color,
+  GLScene.Color,
   GXS.RenderContextInfo,
   GLScene.TextureFormat,
   GXS.PipelineTransformation,
@@ -50,7 +50,7 @@ type
     FFOV: single;
     FAspect, FBrightness, FAttenuation: single;
     FStyle: TgxslProjectedTexturesStyle;
-    FColor: TgxColor;
+    FColor: TGColor;
     FUseAttenuation, FAllowReverseProjection: boolean;
     FUseQuadraticAttenuation: boolean;
   protected
@@ -76,7 +76,7 @@ type
     // Fall off/ attenuation of the projected texture
     property Attenuation: single read FAttenuation write FAttenuation;
     property Brightness: single read FBrightness write FBrightness;
-    property Color: TgxColor read FColor write FColor;
+    property Color: TGColor read FColor write FColor;
     property UseAttenuation: boolean read FUseAttenuation write SetUseAttenuation;
     property UseQuadraticAttenuation: Boolean read FUseQuadraticAttenuation write SetUseQuadraticAttenuation;
     property AllowReverseProjection: boolean read FAllowReverseProjection write SetAllowReverseProjection;
@@ -132,7 +132,7 @@ type
     FEmitters: TgxslTextureEmitters;
     FUseLightmaps: boolean;
     Shader: TgxProgramHandle;
-    FAmbient: TgxColor;
+    FAmbient: TGColor;
     procedure SetupShader;
   protected
     ShaderChanged: boolean;
@@ -148,7 +148,7 @@ type
     property Emitters: TgxslTextureEmitters read FEmitters write FEmitters;
 
     //Ambient is use if no lightmap..
-    property Ambient: TgxColor read fAmbient write fAmbient;
+    property Ambient: TGColor read fAmbient write fAmbient;
     property UseLightmaps: boolean read FUseLightmaps write SetUseLightmaps;
   end;
 
@@ -170,7 +170,7 @@ begin
   FUseAttenuation := false;
   FAttenuation := 100;
   FBrightness := 1;
-  FColor := TgxColor.create(self);
+  FColor := TGColor.create(self);
   FColor.SetColor(1, 1, 1);
 end;
 
@@ -319,7 +319,7 @@ begin
   FEmitters.FOwner := self;
   FUseLightmaps := false;
   ShaderChanged := true;
-  Ambient := TgxColor.Create(self);
+  Ambient := TGColor.Create(self);
   ambient.SetColor(0.5, 0.5, 0.5, 0.5);
 end;
 

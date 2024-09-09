@@ -24,7 +24,7 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.GeomObjects,
-  GLS.Color,
+  GLScene.Color,
   GLScene.Coordinates,
   GLScene.Utils;
 

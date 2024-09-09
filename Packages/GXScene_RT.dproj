@@ -208,7 +208,6 @@
         <DCCReference Include="..\SourceX\GXS.Canvas.pas"/>
         <DCCReference Include="..\SourceX\GXS.CelShader.pas"/>
         <DCCReference Include="..\SourceX\GXS.Collision.pas"/>
-        <DCCReference Include="..\SourceX\GXS.Color.pas"/>
         <DCCReference Include="..\SourceX\GXS.CompositeImage.pas"/>
         <DCCReference Include="..\SourceX\GXS.Console.pas"/>
         <DCCReference Include="..\SourceX\GXS.Context.pas"/>
@@ -420,6 +419,7 @@
         <DCCReference Include="..\Source\GLScene.XCollection.pas"/>
         <DCCReference Include="..\Source\GLScene.Keyboard.pas"/>
         <DCCReference Include="..\Source\GLScene.Polynomials.pas"/>
+        <DCCReference Include="..\Source\GLScene.Color.pas"/>
         <None Include="..\Sourcex\GXS.Scene.inc"/>
         <None Include="..\Source\GLScene.Defines.inc"/>
         <BuildConfiguration Include="Base">

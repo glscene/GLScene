@@ -20,7 +20,7 @@ uses
   GLScene.TextureFormat,
   GLS.Graphics,
   GLScene.Utils,
-  GLS.Color,
+  GLScene.Color,
   GLScene.Coordinates,
   GLS.Material,
   GLS.State;
@@ -96,7 +96,7 @@ type
     Done: Boolean;
     NewMat: TGLLibMaterial;
     TmpCoords: TGCoordinates;
-    TmpColor: TGLColor;
+    TmpColor: TGColor;
     TmpCoords4: TGCoordinates4;
     TmpStr: string;
     procedure SeTGLShaderItems(const Value: TGLShaderItems);

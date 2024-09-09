@@ -31,7 +31,7 @@ uses
   GXS.ImageUtils,
 
   GXS.Graphics,
-  GXS.Color,
+  GLScene.Color,
   GLScene.BaseClasses,
   GXS.RenderContextInfo,
   GLScene.TextureFormat,
@@ -193,13 +193,13 @@ type
       Enable states are also possibly altered. *)
     procedure RenderString(var ARci: TgxRenderContextInfo;
       const aText: UnicodeString; aAlignment: TAlignment;
-      aLayout: TgxTextLayout; const aColor: TgxColorVector;
+      aLayout: TgxTextLayout; const aColor: TGColorVector;
       aPosition: PVector4f = nil; aReverseY: boolean = False); overload; virtual;
     (* A simpler canvas-style TextOut helper for RenderString.
       The rendering is reversed along Y by default, to allow direct use
       with TgxCanvas *)
     procedure TextOut(var rci: TgxRenderContextInfo; X, Y: Single;
-      const Text: UnicodeString; const Color: TgxColorVector); overload;
+      const Text: UnicodeString; const Color: TGColorVector); overload;
     procedure TextOut(var rci: TgxRenderContextInfo; X, Y: Single;
       const Text: UnicodeString; const Color: TColor); overload;
     function TextWidth(const Text: UnicodeString): Integer;
@@ -249,14 +249,14 @@ type
     FText: UnicodeString;
     FAlignment: TAlignment;
     FLayout: TgxTextLayout;
-    FModulateColor: TgxColor;
+    FModulateColor: TGColor;
     FOptions: TgxFlatTextOptions;
   protected
     procedure SetBitmapFont(const val: TgxCustomBitmapFont);
     procedure SetText(const val: UnicodeString);
     procedure SetAlignment(const val: TAlignment);
     procedure SetLayout(const val: TgxTextLayout);
-    procedure SetModulateColor(const val: TgxColor);
+    procedure SetModulateColor(const val: TGColor);
     procedure SetOptions(const val: TgxFlatTextOptions);
     procedure Notification(AComponent: TComponent;
       Operation: TOperation); override;
@@ -283,7 +283,7 @@ type
       Possible values : tlTop, tlCenter, tlBottom *)
     property Layout: TgxTextLayout read FLayout write SetLayout;
     // Color modulation, can be used for fade in/out too.
-    property ModulateColor: TgxColor read FModulateColor write SetModulateColor;
+    property ModulateColor: TGColor read FModulateColor write SetModulateColor;
     (* Flat text options.
       ftoTwoSided : when set the text will be visible from its two
       sides even if faceculling is on (at the scene-level).  *)
@@ -838,7 +838,7 @@ end;
 
 procedure TgxCustomBitmapFont.RenderString(var ARci: TgxRenderContextInfo;
   const aText: UnicodeString; aAlignment: TAlignment; aLayout: TgxTextLayout;
-  const aColor: TgxColorVector; aPosition: PVector4f = nil;
+  const aColor: TGColorVector; aPosition: PVector4f = nil;
   aReverseY: boolean = False);
 
   function AlignmentAdjustement(p: Integer): Single;
@@ -970,7 +970,7 @@ begin
 end;
 
 procedure TgxCustomBitmapFont.TextOut(var rci: TgxRenderContextInfo; X, Y: Single;
-  const Text: UnicodeString; const Color: TgxColorVector);
+  const Text: UnicodeString; const Color: TGColorVector);
 var
   V: TVector4f;
 begin
@@ -1154,7 +1154,7 @@ constructor TgxFlatText.Create(AOwner: TComponent);
 begin
   inherited;
   ObjectStyle := ObjectStyle + [osDirectDraw, osNoVisibilityCulling];
-  FModulateColor := TgxColor.CreateInitialized(Self, clrWhite);
+  FModulateColor := TGColor.CreateInitialized(Self, clrWhite);
 end;
 
 destructor TgxFlatText.Destroy;
@@ -1206,7 +1206,7 @@ begin
   StructureChanged;
 end;
 
-procedure TgxFlatText.SetModulateColor(const val: TgxColor);
+procedure TgxFlatText.SetModulateColor(const val: TGColor);
 begin
   FModulateColor.Assign(val);
 end;

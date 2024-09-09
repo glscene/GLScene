@@ -14,27 +14,29 @@ uses
   Vcl.StdCtrls,
   Vcl.Imaging.Jpeg,
 
+  GLScene.VectorTypes,
+  GLScene.Keyboard,
   GLScene.VectorGeometry,
+  GLScene.Coordinates,
+  GLScene.BaseClasses,
+  GLScene.XCollection,
+  GLScene.Utils,
+
   GLS.SceneViewer,
   GLS.Scene,
   GLS.HUDObjects,
   GLS.ParticleFX,
   GLS.VectorFileObjects,
-  GLScene.VectorTypes,
   GLS.Objects,
   GLS.BitmapFont,
-  GLScene.Utils,
   GLS.Cadencer,
   GLS.Texture,
   GLS.Navigator,
   GLS.GeomObjects,
-  GLScene.XCollection,
   GLS.SpaceText,
   GLS.Behaviours,
   GLS.PerlinPFX,
-  GLS.Blur,
-  GLScene.Coordinates,
-  GLScene.BaseClasses;
+  GLS.Blur;
 
 const
   cRunBoost = 10;

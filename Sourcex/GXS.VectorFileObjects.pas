@@ -40,7 +40,7 @@ uses
   GXS.Octree,
   GXS.Silhouette,
   GXS.Context,
-  GXS.Color,
+  GLScene.Color,
   GXS.RenderContextInfo,
   GXS.State,
   GXS.ImageUtils,

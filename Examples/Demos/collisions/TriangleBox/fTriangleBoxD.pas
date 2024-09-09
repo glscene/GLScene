@@ -22,7 +22,7 @@ uses
   GLS.Cadencer,
   GLS.VectorFileObjects,
   GLS.Material,
-  GLS.Color,
+  GLScene.Color,
   GLS.State,
   GLS.SceneViewer,
   GLScene.VectorGeometry,

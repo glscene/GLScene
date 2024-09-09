@@ -22,7 +22,7 @@ uses
   GLScene.VectorLists,
   GLS.Cadencer,
   GLS.Texture,
-  GLS.Color,
+  GLScene.Color,
 
   GLScene.Coordinates,
   GLScene.BaseClasses;

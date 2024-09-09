@@ -36,27 +36,29 @@ uses
   Vcl.BaseImageCollection,
   Vcl.ImageCollection,
 
+  GLScene.VectorTypes,
+  GLScene.VectorLists,
+  GLScene.Keyboard,
+  GLScene.VectorGeometry,
+  GLScene.Coordinates,
+  GLScene.BaseClasses,
+  GLScene.PersistentClasses,
+  GLScene.TextureFormat,
+  GLScene.XCollection,
+
   GLS.Material,
   GLS.Scene,
   GLS.SceneViewer,
   GLS.VectorFileObjects,
   GLS.Objects,
-  GLScene.VectorGeometry,
   GLS.Texture,
   GLS.Context,
-  GLScene.VectorLists,
   GLS.Cadencer,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
   GLS.State,
   GLS.RenderContextInfo,
-  GLScene.TextureFormat,
-  GLS.Color,
-  GLScene.XCollection,
+  GLScene.Color,
   GLS.Graphics,
-  GLScene.PersistentClasses,
   GLS.MeshUtils,
-  GLScene.VectorTypes,
   GLS.AsyncTimer,
   GLS.Graph,
   GLS.MeshBuilder,
@@ -311,8 +313,8 @@ type
   // Hidden line shader (specific implem for the viewer, *not* generic)
   THiddenLineShader = class(TGLShader)
   private
-    LinesColor: TGLColorVector;
-    BackgroundColor: TGLColorVector;
+    LinesColor: TGColorVector;
+    BackgroundColor: TGColorVector;
     PassCount: Integer;
   public
     procedure DoApply(var rci: TGLRenderContextInfo; Sender: TObject); override;

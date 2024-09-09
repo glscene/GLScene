@@ -33,7 +33,7 @@
 #include "GLS.FileMD2.hpp"
 #include "GLScene.BaseClasses.hpp"
 #include "GLS.RenderContextInfo.hpp"
-#include "GLS.Keyboard.hpp"
+#include "GLScene.Keyboard.hpp"
 #include "GLS.State.hpp"
 #include "GLScene.VectorGeometry.hpp"
 #include "GLS.Context.hpp"

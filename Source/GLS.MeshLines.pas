@@ -24,7 +24,7 @@ uses
   GLScene.Coordinates,
   GLS.Context,
   GLS.Material,
-  GLS.Color,
+  GLScene.Color,
   GLS.State,
   GLS.Nodes,
   GLS.VectorFileObjects,

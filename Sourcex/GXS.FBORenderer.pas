@@ -23,7 +23,7 @@ uses
   GXS.Texture,
   GXS.Context,
   GXS.FBO,
-  GXS.Color,
+  GLScene.Color,
   GXS.Material,
   GXS.RenderContextInfo,
   GXS.State,
@@ -71,7 +71,7 @@ type
     FPostInitialize: TNotifyEvent;
     FAfterRender: TDirectRenderEvent;
     FPreInitialize: TNotifyEvent;
-    FBackgroundColor: TgxColor;
+    FBackgroundColor: TGColor;
     FClearOptions: TgxFBOClearOptions;
     FAspect: Single;
     FSceneScaleFactor: Single;
@@ -99,7 +99,7 @@ type
     procedure SetCamera(const Value: TgxCamera);
     procedure SetEnabledRenderBuffers(const Value: TgxEnabledRenderBuffers);
     procedure SetTargetVisibility(const Value: TgxFBOTargetVisibility);
-    procedure SetBackgroundColor(const Value: TgxColor);
+    procedure SetBackgroundColor(const Value: TGColor);
     function StoreSceneScaleFactor: Boolean;
     function StoreAspect: Boolean;
     procedure SetUseLibraryAsMultiTarget(Value: Boolean);
@@ -141,7 +141,7 @@ type
     property ColorTextureName: TgxLibMaterialName read FColorTextureName write SetColorTextureName;
     property DepthTextureName: TgxLibMaterialName read FDepthTextureName write SetDepthTextureName;
     property MaterialLibrary: TgxAbstractMaterialLibrary read GetMaterialLibrary write SetMaterialLibrary;
-    property BackgroundColor: TgxColor read FBackgroundColor write SetBackgroundColor;
+    property BackgroundColor: TGColor read FBackgroundColor write SetBackgroundColor;
     property ClearOptions: TgxFBOClearOptions read FClearOptions write FClearOptions;
     { camera used for rendering to the FBO
       if not assigned, use the active view's camera }
@@ -234,7 +234,7 @@ begin
   inherited;
   ObjectStyle := [osDirectDraw, osNoVisibilityCulling];
   FFbo := TgxFrameBuffer.Create;
-  FBackgroundColor := TgxColor.Create(Self);
+  FBackgroundColor := TGColor.Create(Self);
   FUseLibraryAsMultiTarget := False;
   FForceTextureDimensions := True;
   FWidth := 256;
@@ -517,7 +517,7 @@ procedure TgxFBORenderer.RenderToFBO(var ARci: TgxRenderContextInfo);
 
 type
   TgxStoredStates = record
-    ColorClearValue: TgxColorVector;
+    ColorClearValue: TGColorVector;
     ColorWriteMask: TgxColorMask;
     Tests: TgxStates;
   end;
@@ -545,7 +545,7 @@ type
   end;
 
 var
-  backColor: TgxColorVector;
+  backColor: TGColorVector;
   buffer: TgxSceneBuffer;
   savedStates: TgxStoredStates;
   w, h: Integer;
@@ -658,7 +658,7 @@ begin
   end;
 end;
 
-procedure TgxFBORenderer.SetBackgroundColor(const Value: TgxColor);
+procedure TgxFBORenderer.SetBackgroundColor(const Value: TGColor);
 begin
   FBackgroundColor.Assign(Value);
 end;

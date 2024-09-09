@@ -36,7 +36,7 @@ uses
   GXS.VectorFileObjects,
   GLScene.VectorLists,
   GXS.Texture,
-  GXS.Color,
+  GLScene.Color,
   GXS.RenderContextInfo,
   GXS.Material;
 

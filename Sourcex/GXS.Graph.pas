@@ -21,7 +21,7 @@ uses
   GXS.Material,
   GXS.Objects,
   GLScene.VectorLists,
-  GXS.Color,
+  GLScene.Color,
   GLScene.BaseClasses,
   GXS.RenderContextInfo,
   GXS.State,
@@ -61,9 +61,9 @@ type
   end;
 
   TgxHeightFieldGetHeightEvent = procedure(const x, y: Single; var z: Single;
-    var Color: TgxColorVector; var TexPoint: TTexPoint) of object;
+    var Color: TGColorVector; var TexPoint: TTexPoint) of object;
   TgxHeightFieldGetHeight2Event = procedure(Sender: TObject; const x, y: Single;
-    var z: Single; var Color: TgxColorVector; var TexPoint: TTexPoint) of object;
+    var z: Single; var Color: TGColorVector; var TexPoint: TTexPoint) of object;
 
   TgxHeightFieldOption = (hfoTextureCoordinates, hfoTwoSided);
   TgxHeightFieldOptions = set of TgxHeightFieldOption;
@@ -96,9 +96,9 @@ type
     procedure SetOnGetHeight2(const val: TgxHeightFieldGetHeight2Event);
     procedure SetColorMode(const val: TgxHeightFieldColorMode);
     procedure DefaultHeightField(const x, y: Single; var z: Single;
-      var Color: TgxColorVector; var TexPoint: TTexPoint);
+      var Color: TGColorVector; var TexPoint: TTexPoint);
     procedure Height2Field(const x, y: Single; var z: Single;
-      var Color: TgxColorVector; var texPoint: TTexPoint);
+      var Color: TGColorVector; var texPoint: TTexPoint);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -336,7 +336,7 @@ end;
 procedure TgxHeightField.BuildList(var rci: TgxRenderContextInfo);
 type
   TRowData = packed record
-    Color: TgxColorVector;
+    Color: TGColorVector;
     Z: Single;
     TexPoint: TTexPoint;
     Normal: TAffineVector;
@@ -572,7 +572,7 @@ end;
 //
 
 procedure TgxHeightField.DefaultHeightField(const x, y: Single; var z: Single;
-  var color: TgxColorVector; var texPoint: TTexPoint);
+  var color: TGColorVector; var texPoint: TTexPoint);
 begin
   z := VectorNorm(x, y);
   z := cos(z * 12) / (2 * (z * 6.28 + 1));
@@ -583,7 +583,7 @@ end;
 //
 
 procedure TgxHeightField.Height2Field(const x, y: Single; var z: Single;
-  var color: TgxColorVector; var texPoint: TTexPoint);
+  var color: TGColorVector; var texPoint: TTexPoint);
 begin
   FOnGetHeight2(Self, x, y, z, color, texPoint);
 end;

@@ -38,7 +38,7 @@ uses
   GLS.GeomObjects,
   GLS.Material,
   GLScene.Coordinates,
-  GLS.Color,
+  GLScene.Color,
   GLS.SoundManager,
   GLS.Sounds.BASS,
   BASS.Import,

@@ -18,7 +18,7 @@ uses
   GLS.SimpleNavigation,
   GLS.Cadencer,
   GLS.SceneViewer,
-  GLS.Color,
+  GLScene.Color,
  
   GLScene.BaseClasses,
   GLS.NGDManager,

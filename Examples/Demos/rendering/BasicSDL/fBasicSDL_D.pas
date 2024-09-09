@@ -13,7 +13,7 @@ uses
   GLS.GeomObjects,
   GLScene.Coordinates,
   GLScene.BaseClasses,
-  GLS.Color,
+  GLScene.Color,
   GLS.Context,
   GLS.Texture,
   GLScene.Utils,

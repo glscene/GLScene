@@ -39,7 +39,7 @@ uses
   GXS.Context,
   GXS.ImageUtils,
   GLScene.Utils,
-  GXS.Color,
+  GLScene.Color,
   GLScene.TextureFormat,
   GLScene.Strings;
 

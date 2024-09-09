@@ -41,7 +41,7 @@ uses
 
   GXS.Scene,
   GXS.Context,
-  GXS.Color,
+  GLScene.Color,
   GXS.SceneViewer,
   GXS.ObjectManager;
 
@@ -99,8 +99,8 @@ type
 //    ICustomPropertyListDrawing
     )
   protected
-    function ColorToBorderColor(aColor: TgxColorVector;
-      selected: Boolean): TgxColor;
+    function ColorToBorderColor(aColor: TGColorVector;
+      selected: Boolean): TGColor;
   public
     function GetAttributes: TPropertyAttributes; override;
     procedure GetValues(Proc: TGetStrProc); override;
@@ -670,18 +670,18 @@ end;
 procedure TgxColorProperty.Edit;
 var
   colorDialog: TColorDialog;
-  GXS.Color: TgxColor;
+  GLScene.Color: TGColor;
 begin
   colorDialog := TColorDialog.Create(nil);
   try
-    GXS.Color := TgxColor(GetOrdValue);
+    GLScene.Color := TGColor(GetOrdValue);
 {$IFDEF WIN32}
     colorDialog.Options := [cdFullOpen];
 {$ENDIF}
-    colorDialog.Color := ConvertColorVector(GXS.Color.Color);
+    colorDialog.Color := ConvertColorVector(GLScene.Color.Color);
     if colorDialog.Execute then
     begin
-      GXS.Color.Color := ConvertWinColor(colorDialog.Color);
+      GLScene.Color.Color := ConvertWinColor(colorDialog.Color);
       Modified;
     end;
   finally
@@ -701,16 +701,16 @@ end;
 
 function TgxColorProperty.GetValue: string;
 begin
-  Result := ColorManager.GetColorName(TgxColor(GetOrdValue).Color);
+  Result := ColorManager.GetColorName(TGColor(GetOrdValue).Color);
 end;
 
 procedure TgxColorProperty.SetValue(const Value: string);
 begin
-  TgxColor(GetOrdValue).Color := ColorManager.GetColor(Value);
+  TGColor(GetOrdValue).Color := ColorManager.GetColor(Value);
   Modified;
 end;
 
-function TgxColorProperty.ColorToBorderColor(aColor: TgxColorVector;
+function TgxColorProperty.ColorToBorderColor(aColor: TGColorVector;
   selected: Boolean): TColor;
 begin
   if (aColor.X > 0.75) or (aColor.Y > 0.75) or (aColor.Z > 0.75) then
@@ -735,7 +735,7 @@ procedure TgxColorProperty.ListDrawValue(const Value: string; ACanvas: TCanvas;
 var
   vRight: Integer;
   vOldPenColor, vOldBrushColor: TColor;
-  Color: TgxColorVector;
+  Color: TGColorVector;
 begin
   vRight := (ARect.Bottom - ARect.Top) + ARect.Left;
   with ACanvas do
@@ -1347,7 +1347,7 @@ begin
     TypeInfo(TOnCustomPerspective), TypeInfo(TgxScene)]);
   RegisterPropertiesInCategory(sLayoutCategoryName, [TypeInfo(Tgxx.ObjectsSorting), TypeInfo(TgxNormalDirection)]);
   RegisterPropertiesInCategory(sVisualCategoryName, [TypeInfo(TgxVisibilityCulling), TypeInfo(TLightStyle),
-    TypeInfo(TgxColor), TypeInfo(TgxNormalDirection), TypeInfo(TgxCameraStyle)]);
+    TypeInfo(TGColor), TypeInfo(TgxNormalDirection), TypeInfo(TgxCameraStyle)]);
   RegisterPropertiesInCategory(sVisualCategoryName, TgxBaseSceneObject,
     ['Rotation', 'Direction', 'Position', 'Up', 'Scale', '*Angle', 'ShowAxes', 'FocalLength']);
   RegisterPropertiesInCategory(sVisualCategoryName, TgxSceneObject, ['Parts']);
@@ -1516,7 +1516,7 @@ begin
   RegisterPropertyEditor(TypeInfo(TGCoordinates), nil, '',
     TgxCoordinatesProperty);
 
-  RegisterPropertyEditor(TypeInfo(TgxColor), nil, '', TgxColorProperty);
+  RegisterPropertyEditor(TypeInfo(TGColor), nil, '', TgxColorProperty);
   RegisterPropertyEditor(TypeInfo(TgxMaterial), nil, '', TgxMaterialProperty);
   RegisterComponentEditor(TgxGuiLayout, TgxGUILayoutEditor);
 
@@ -1610,7 +1610,7 @@ SplashScreenServices.AddPluginBitmap(GetGLXceneVersion,
 
 GXS.CrossPlatform.IsDesignTime := True;
 GXS.CrossPlatform.vProjectTargetName := GetProjectTargetName;
-GXS.Color.vUseDefaultColorSets := True;
+GLScene.Color.vUseDefaultColorSets := True;
 GLScene.Coordinates.vUseDefaultCoordinateSets := True;
 ReadVideoModes;
 

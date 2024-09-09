@@ -36,7 +36,7 @@ uses
   GLScene.VectorTypes,
   GLS.Material,
   GLS.Texture,
-  GLS.Color,
+  GLScene.Color,
   GLScene.Coordinates,
   GLScene.VectorGeometry,
   GLS.Graphics,
@@ -132,7 +132,7 @@ type
     FLODBias: Integer;
     FLODBiasFract: Single;
     FWrap: array[0..2] of TGLSeparateTextureWrap;
-    FBorderColor: TGLColor;
+    FBorderColor: TGColor;
     FCompareMode: TGLTextureCompareMode;
     FCompareFunc: TGLDepthFunction;
     FDecodeSRGB: Boolean;
@@ -142,7 +142,7 @@ type
     procedure SetFilteringQuality(AValue: TGLTextureFilteringQuality);
     function GetWrap(Index: Integer): TGLSeparateTextureWrap;
     procedure SetWrap(Index: Integer; AValue: TGLSeparateTextureWrap);
-    procedure SetBorderColor(const AValue: TGLColor);
+    procedure SetBorderColor(const AValue: TGColor);
     procedure SetCompareMode(AValue: TGLTextureCompareMode);
     procedure SetCompareFunc(AValue: TGLDepthFunction);
     procedure SetDecodeSRGB(AValue: Boolean);
@@ -175,7 +175,7 @@ type
     property WrapZ: TGLSeparateTextureWrap index 2 read GetWrap write SetWrap
       default twRepeat;
     // Texture border color.
-    property BorderColor: TGLColor read FBorderColor
+    property BorderColor: TGColor read FBorderColor
       write SetBorderColor;
     // Compare mode and function for depth texture
     property CompareMode: TGLTextureCompareMode read FCompareMode
@@ -409,7 +409,7 @@ type
     FTextureOverride: Boolean;
     FTextureMatrix: TGLMatrix;
     FMappingMode: TGLTextureMappingMode;
-    FEnvColor: TGLColor;
+    FEnvColor: TGColor;
     FMapSCoordinates: TGCoordinates4;
     FMapTCoordinates: TGCoordinates4;
     FMapRCoordinates: TGCoordinates4;
@@ -443,7 +443,7 @@ type
     function StoreMappingQCoordinates: Boolean;
     procedure SetSwizzling(const AValue: TGLTextureSwizzling);
     function StoreSwizzling: Boolean;
-    procedure SetEnvColor(const AValue: TGLColor);
+    procedure SetEnvColor(const AValue: TGColor);
     procedure CalculateTextureMatrix;
     procedure ApplyMappingMode;
     procedure UnApplyMappingMode;
@@ -478,7 +478,7 @@ type
     property TextureRotate: Single read FTextureRotate write
       SetTextureRotate stored StoreTextureRotate;
     // Texture Environment color.
-    property EnvColor: TGLColor read FEnvColor write SetEnvColor;
+    property EnvColor: TGColor read FEnvColor write SetEnvColor;
     (* Texture coordinates mapping mode.
     This property controls automatic texture coordinates generation. *)
     property MappingMode: TGLTextureMappingMode read FMappingMode write
@@ -2479,7 +2479,7 @@ begin
   FWrap[0] := twRepeat;
   FWrap[1] := twRepeat;
   FWrap[2] := twRepeat;
-  FBorderColor := TGLColor.CreateInitialized(Self, clrTransparent);
+  FBorderColor := TGColor.CreateInitialized(Self, clrTransparent);
   FCompareMode := tcmNone;
   FCompareFunc := cfLequal;
   FDecodeSRGB := True;
@@ -2589,7 +2589,7 @@ begin
       FWrap[0] := TGLSeparateTextureWrap(ReadInteger);
       FWrap[1] := TGLSeparateTextureWrap(ReadInteger);
       FWrap[2] := TGLSeparateTextureWrap(ReadInteger);
-      Read(FBorderColor.AsAddress^, SizeOf(TGLColorVector));
+      Read(FBorderColor.AsAddress^, SizeOf(TGColorVector));
       FCompareMode := TGLTextureCompareMode(ReadInteger);
       FCompareFunc := TGLDepthFunction(ReadInteger);
       FDecodeSRGB := ReadBoolean;
@@ -2599,7 +2599,7 @@ begin
   end;
 end;
 
-procedure TGLTextureSampler.SetBorderColor(const AValue: TGLColor);
+procedure TGLTextureSampler.SetBorderColor(const AValue: TGColor);
 begin
   FBorderColor.Assign(AValue);
   NotifyChange(Self);
@@ -2700,7 +2700,7 @@ begin
     WriteInteger(Integer(FWrap[0]));
     WriteInteger(Integer(FWrap[1]));
     WriteInteger(Integer(FWrap[2]));
-    Write(FBorderColor.AsAddress^, SizeOf(TGLColorVector));
+    Write(FBorderColor.AsAddress^, SizeOf(TGColorVector));
     WriteInteger(Integer(FCompareMode));
     WriteInteger(Integer(FCompareFunc));
     WriteBoolean(FDecodeSRGB);
@@ -3674,7 +3674,7 @@ begin
   FTextureMatrix := IdentityHmgMatrix;
   FEnabled := False;
   FSwizzling := TGLTextureSwizzling.Create(Self);
-  FEnvColor := TGLColor.CreateInitialized(Self, clrTransparent);
+  FEnvColor := TGColor.CreateInitialized(Self, clrTransparent);
 end;
 
 destructor TGLTextureProperties.Destroy;
@@ -3986,7 +3986,7 @@ begin
 end;
 
 procedure TGLTextureProperties.SetEnvColor(const AValue:
-  TGLColor);
+  TGColor);
 begin
   FEnvColor.Assign(AValue);
   NotifyChange(Self);

@@ -46,7 +46,7 @@ uses
   GLScene.GeometryBB,
   GLS.ApplicationFileIO,
   GLS.Context,
-  GLS.Color;
+  GLScene.Color;
 
 
 type

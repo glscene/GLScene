@@ -25,7 +25,7 @@ uses
   GXS.Objects,
   GLScene.PersistentClasses,
   GLScene.VectorLists,
-  GXS.Color,
+  GLScene.Color,
   GLScene.Coordinates,
   GXS.RenderContextInfo,
   GXS.State,
@@ -77,7 +77,7 @@ type
 	FVisibleAtRunTime: Boolean;
     FGeomColorDynD, 
 	FGeomColorDynE, 
-	FGeomColorStat: TgxColor;
+	FGeomColorStat: TGColor;
   protected
     procedure Loaded; override;
     procedure CalcContact(Object1, Object2: TObject; var Contact: TdContact);
@@ -94,11 +94,11 @@ type
     procedure RenderPointFreed(Sender: TObject);
     procedure SetVisible(const Value: Boolean);
     procedure SetVisibleAtRunTime(const Value: Boolean);
-    procedure SetGeomColorDynE(const Value: TgxColor);
+    procedure SetGeomColorDynE(const Value: TGColor);
     procedure GeomColorChangeDynE(Sender: TObject);
-    procedure SetGeomColorDynD(const Value: TgxColor);
+    procedure SetGeomColorDynD(const Value: TGColor);
     procedure GeomColorChangeDynD(Sender: TObject);
-    procedure SetGeomColorStat(const Value: TgxColor);
+    procedure SetGeomColorStat(const Value: TGColor);
     procedure GeomColorChangeStat(Sender: TObject);
     property ODEBehaviours[index: Integer]: TgxODEBehaviour read GetODEBehaviour;
   public
@@ -120,9 +120,9 @@ type
     property RenderPoint: TgxRenderPoint read FRenderPoint write SetRenderPoint;
     property Visible: Boolean read FVisible write SetVisible;
     property VisibleAtRunTime: Boolean read FVisibleAtRunTime write SetVisibleAtRunTime;
-    property GeomColorDynD: TgxColor read FGeomColorDynD write SetGeomColorDynD;
-    property GeomColorDynE: TgxColor read FGeomColorDynE write SetGeomColorDynE;
-    property GeomColorStat: TgxColor read FGeomColorStat write SetGeomColorStat;
+    property GeomColorDynD: TGColor read FGeomColorDynD write SetGeomColorDynD;
+    property GeomColorDynE: TGColor read FGeomColorDynE write SetGeomColorDynE;
+    property GeomColorStat: TGColor read FGeomColorStat write SetGeomColorStat;
   end;
 
   TgxODECollisionSurface = class(TPersistent)
@@ -811,7 +811,7 @@ type
     FRenderContacts: Boolean;
     FContactRenderPoints: TGAffineVectorList;
     FPointSize: Single;
-    FContactColor: TgxColor;
+    FContactColor: TGColor;
   protected
     procedure Initialize; override;
     procedure Finalize; override;
@@ -833,7 +833,7 @@ type
     procedure SetContactResolution(const Value: Single);
     procedure SetRenderContacts(const Value: Boolean);
     procedure SetPointSize(const Value: Single);
-    procedure SetContactColor(const Value: TgxColor);
+    procedure SetContactColor(const Value: TGColor);
   public
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
@@ -851,7 +851,7 @@ type
     //  Contact point rendering size (in pixels).
     property PointSize: Single read FPointSize write SetPointSize;
     //  Contact point rendering color.
-    property ContactColor: TgxColor read FContactColor write SetContactColor;
+    property ContactColor: TGColor read FContactColor write SetContactColor;
   end;
 
   (* Add this behaviour to a TgxHeightField or TgxTerrainRenderer to enable
@@ -1311,9 +1311,9 @@ begin
     FContactGroup := dJointGroupCreate(100);
   end;
 
-  FGeomColorDynD := TgxColor.CreateInitialized(Self, clrRed, GeomColorChangeDynD);
-  FGeomColorDynE := TgxColor.CreateInitialized(Self, clrLime, GeomColorChangeDynE);
-  FGeomColorStat := TgxColor.CreateInitialized(Self, clrBlue, GeomColorChangeStat);
+  FGeomColorDynD := TGColor.CreateInitialized(Self, clrRed, GeomColorChangeDynD);
+  FGeomColorDynE := TGColor.CreateInitialized(Self, clrLime, GeomColorChangeDynE);
+  FGeomColorStat := TGColor.CreateInitialized(Self, clrBlue, GeomColorChangeStat);
 
   RegisterManager(Self);
 end;
@@ -1631,7 +1631,7 @@ begin
   end;
 end;
 
-procedure TgxODEManager.SetGeomColorDynD(const Value: TgxColor);
+procedure TgxODEManager.SetGeomColorDynD(const Value: TGColor);
 begin
   FGeomColorDynD.Assign(Value);
   NotifyChange(Self);
@@ -1642,7 +1642,7 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TgxODEManager.SetGeomColorDynE(const Value: TgxColor);
+procedure TgxODEManager.SetGeomColorDynE(const Value: TGColor);
 begin
   FGeomColorDynE.Assign(Value);
   NotifyChange(Self);
@@ -1653,7 +1653,7 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TgxODEManager.SetGeomColorStat(const Value: TgxColor);
+procedure TgxODEManager.SetGeomColorStat(const Value: TGColor);
 begin
   FGeomColorStat.Assign(Value);
   NotifyChange(Self);
@@ -5048,7 +5048,7 @@ begin
 
   FRenderContacts := False;
   FContactRenderPoints := TGAffineVectorList.Create;
-  FContactColor := TgxColor.CreateInitialized(Self, clrRed, NotifyChange);
+  FContactColor := TGColor.CreateInitialized(Self, clrRed, NotifyChange);
   FPointSize := 3;
 end;
 
@@ -5239,7 +5239,7 @@ begin
   end;
 end;
 
-procedure TgxODECustomCollider.SetContactColor(const Value: TgxColor);
+procedure TgxODECustomCollider.SetContactColor(const Value: TGColor);
 begin
   FContactColor.Assign(Value);
 end;

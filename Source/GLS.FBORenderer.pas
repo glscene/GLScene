@@ -25,7 +25,7 @@ uses
   GLS.Scene,
   GLS.Texture,
   GLS.Context,
-  GLS.Color,
+  GLScene.Color,
   GLS.Material,
   GLS.RenderContextInfo,
   GLS.State,
@@ -188,7 +188,7 @@ type
     FPostInitialize: TNotifyEvent;
     FAfterRender: TGLDirectRenderEvent;
     FPreInitialize: TNotifyEvent;
-    FBackgroundColor: TGLColor;
+    FBackgroundColor: TGColor;
     FClearOptions: TGLFBOClearOptions;
     FAspect: Single;
     FSceneScaleFactor: Single;
@@ -216,7 +216,7 @@ type
     procedure SetCamera(const Value: TGLCamera);
     procedure SetEnabledRenderBuffers(const Value: TGLEnabledRenderBuffers);
     procedure SetTargetVisibility(const Value: TGLFBOTargetVisibility);
-    procedure SetBackgroundColor(const Value: TGLColor);
+    procedure SetBackgroundColor(const Value: TGColor);
     function StoreSceneScaleFactor: Boolean;
     function StoreAspect: Boolean;
     procedure SetUseLibraryAsMultiTarget(Value: Boolean);
@@ -264,7 +264,7 @@ type
       write SetDepthTextureName;
     property MaterialLibrary: TGLAbstractMaterialLibrary read GetMaterialLibrary
       write SetMaterialLibrary;
-    property BackgroundColor: TGLColor read FBackgroundColor write SetBackgroundColor;
+    property BackgroundColor: TGColor read FBackgroundColor write SetBackgroundColor;
     property ClearOptions: TGLFBOClearOptions read FClearOptions
       write FClearOptions;
     (* Camera used for rendering to the FBO
@@ -808,7 +808,7 @@ end;
 procedure TGLFrameBuffer.Render(var rci: TGLRenderContextInfo; baseObject:
   TGLBaseSceneObject);
 var
-  backColor: TGLColorVector;
+  backColor: TGColorVector;
   buffer: TGLSceneBuffer;
 begin
   Bind;
@@ -979,7 +979,7 @@ begin
   inherited;
   ObjectStyle := [osDirectDraw, osNoVisibilityCulling];
   FFbo := TGLFrameBuffer.Create;
-  FBackgroundColor := TGLColor.Create(Self);
+  FBackgroundColor := TGColor.Create(Self);
   FUseLibraryAsMultiTarget := False;
   FForceTextureDimensions := True;
   FWidth := 256;
@@ -1278,7 +1278,7 @@ procedure TGLFBORenderer.RenderToFBO(var ARci: TGLRenderContextInfo);
 
 type
   TGLStoredStates = record
-    ColorClearValue: TGLColorVector;
+    ColorClearValue: TGColorVector;
     ColorWriteMask: TGLColorMask;
     Tests: TGLStates;
   end;
@@ -1306,7 +1306,7 @@ type
   end;
 
 var
-  backColor: TGLColorVector;
+  backColor: TGColorVector;
   buffer: TGLSceneBuffer;
   savedStates: TGLStoredStates;
   w, h: Integer;
@@ -1420,7 +1420,7 @@ begin
   end;
 end;
 
-procedure TGLFBORenderer.SetBackgroundColor(const Value: TGLColor);
+procedure TGLFBORenderer.SetBackgroundColor(const Value: TGColor);
 begin
   FBackgroundColor.Assign(Value);
 end;

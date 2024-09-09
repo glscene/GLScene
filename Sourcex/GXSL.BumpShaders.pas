@@ -43,7 +43,7 @@ uses
   GXS.Scene,
   GXS.Cadencer,
   GLScene.Strings,
-  GXS.Color,
+  GLScene.Color,
   GXS.RenderContextInfo,
   GXS.Material,
   GXS.Graphics,
@@ -126,9 +126,9 @@ type
   // One Light shaders.
   TgxslCustomBumpShaderAM = class(TgxslBaseCustomBumpShaderMT)
   private
-    FAmbientColor: TgxColor;
-    FDiffuseColor: TgxColor;
-    FSpecularColor: TgxColor;
+    FAmbientColor: TGColor;
+    FDiffuseColor: TGColor;
+    FSpecularColor: TGColor;
 
     function GetAlpha: Single;
     procedure SetAlpha(const Value: Single);
@@ -138,9 +138,9 @@ type
   public
     constructor Create(AOwner : TComponent); override;
     destructor Destroy; override;
-    property AmbientColor: TgxColor read FAmbientColor;
-    property DiffuseColor: TgxColor read FDiffuseColor;
-    property SpecularColor: TgxColor read FSpecularColor;
+    property AmbientColor: TGColor read FAmbientColor;
+    property DiffuseColor: TGColor read FDiffuseColor;
+    property SpecularColor: TGColor read FSpecularColor;
     property Alpha: Single read GetAlpha write SetAlpha;
   end;
 
@@ -847,9 +847,9 @@ constructor TgxslCustomBumpShaderAM.Create(AOwner: TComponent);
 begin
   inherited;
 
-  FAmbientColor := TgxColor.Create(Self);
-  FDiffuseColor := TgxColor.Create(Self);
-  FSpecularColor := TgxColor.Create(Self);
+  FAmbientColor := TGColor.Create(Self);
+  FDiffuseColor := TGColor.Create(Self);
+  FSpecularColor := TGColor.Create(Self);
 
   // Setup initial parameters.
   FAmbientColor.SetColor(0.15, 0.15, 0.15, 1);
@@ -1655,7 +1655,7 @@ end;
 procedure TgxBumpShader.DoApply(var rci: TgxRenderContextInfo; Sender: TObject);
 var
   maxTextures, i: Integer;
-  ambient, LMaterialAmbient: TgxColorVector;
+  ambient, LMaterialAmbient: TGColorVector;
   success: Boolean;
 begin
   if (csDesigning in ComponentState) and not DesignTimeEnabled then

@@ -20,7 +20,7 @@ uses
   GLScene.VectorGeometry,
   GXS.ParticleFX,
   GXS.Texture,
-  GXS.Color,
+  GLScene.Color,
   GXS.RenderContextInfo,
   GXS.Context;
 
@@ -130,7 +130,7 @@ end;
 procedure TgxLinePFXManager.RenderParticle(var rci: TgxRenderContextInfo; aParticle : TgxParticle);
 var
    lifeTime, sizeScale, fx, fy, f : Single;
-   inner, outer : TgxColorVector;
+   inner, outer : TGColorVector;
    pos, dir, start, stop, dv : TAffineVector;
 begin
    lifeTime:=CurrentTime-aParticle.CreationTime;

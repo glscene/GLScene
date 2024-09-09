@@ -21,7 +21,7 @@ uses
   GLScene.VectorGeometry,
   GLS.Context,
   GLS.Material,
-  GLS.Color,
+  GLScene.Color,
   GLS.RenderContextInfo,
   GLS.State,
   GLScene.VectorTypes,
@@ -141,7 +141,7 @@ var
   oldProxySubObject: Boolean;
   refMat, curMat, ModelMat: TGLMatrix;
   clipPlane: TDoubleHmgPlane;
-  bgColor: TGLColorVector;
+  bgColor: TGColorVector;
   cameraPosBackup, cameraDirectionBackup: TGLVector;
   CurrentBuffer: TGLSceneBuffer;
 begin

@@ -24,7 +24,7 @@ uses
 
   GLS.Objects,
   GLS.MultiPolygon,
-  GLS.Color,
+  GLScene.Color,
   GLS.SpaceText,
   GLS.VectorFileObjects;
 

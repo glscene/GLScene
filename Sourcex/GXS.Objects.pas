@@ -37,7 +37,7 @@ uses
   GXS.Scene,
   GXS.Context,
   GXS.Silhouette,
-  GXS.Color,
+  GLScene.Color,
   GXS.RenderContextInfo,
   GXS.Nodes,
   GXS.PipelineTransformation,
@@ -70,13 +70,13 @@ type
   TgxDummyCube = class(TgxCameraInvariantObject)
   private
     FCubeSize: Single;
-    FEdgeColor: TgxColor;
+    FEdgeColor: TGColor;
     FVisibleAtRunTime, FAmalgamate: Boolean;
     FGroupList: TgxListHandle;
     FOnVisibilityDetermination: TgxVisibilityDeterminationEvent;
   protected
     procedure SetCubeSize(const val: Single); inline;
-    procedure SetEdgeColor(const val: TgxColor); inline;
+    procedure SetEdgeColor(const val: TGColor); inline;
     procedure SetVisibleAtRunTime(const val: Boolean); inline;
     procedure SetAmalgamate(const val: Boolean); inline;
   public
@@ -93,7 +93,7 @@ type
     function BarycenterAbsolutePosition: TVector4f; override;
   published
     property CubeSize: Single read FCubeSize write SetCubeSize;
-    property EdgeColor: TgxColor read FEdgeColor write SetEdgeColor;
+    property EdgeColor: TGColor read FEdgeColor write SetEdgeColor;
     (* If true the dummycube's edges will be visible at runtime.
       The default behaviour of the dummycube is to be visible at design-time
       only, and invisible at runtime. *)
@@ -309,12 +309,12 @@ type
   // Available spline modes for a TLine.
   TgxLineSplineMode = (lsmLines, lsmCubicSpline, lsmBezierSpline, lsmNURBSCurve, lsmSegments, lsmLoop);
 
-  // Specialized Node for use in a TgxLines objects. Adds a Color property (TgxColor).
+  // Specialized Node for use in a TgxLines objects. Adds a Color property (TGColor).
   TgxLinesNode = class(TgxNode)
   private
-    FColor: TgxColor;
+    FColor: TGColor;
   protected
-    procedure SetColor(const val: TgxColor);
+    procedure SetColor(const val: TGColor);
     procedure OnColorChange(Sender: TObject);
     function StoreColor: Boolean;
   public
@@ -325,7 +325,7 @@ type
     (* The node color.
       Can also defined the line color (interpolated between nodes) if
       loUseNodeColorForLines is set (in TgxLines). *)
-    property Color: TgxColor read FColor write SetColor stored StoreColor;
+    property Color: TGColor read FColor write SetColor stored StoreColor;
   end;
 
   // Specialized collection for Nodes in a TgxLines objects. Stores TgxLinesNode items.
@@ -338,12 +338,12 @@ type
   // Base class for line objects. Introduces line style properties (width, color...)
   TgxLineBase = class(TgxImmaterialSceneObject)
   private
-    FLineColor: TgxColor;
+    FLineColor: TGColor;
     FLinePattern: GLushort;
     FLineWidth: Single;
     FAntiAliased: Boolean;
   protected
-    procedure SetLineColor(const Value: TgxColor);
+    procedure SetLineColor(const Value: TGColor);
     procedure SetLinePattern(const Value: GLushort);
     procedure SetLineWidth(const val: Single);
     function StoreLineWidth: Boolean; inline;
@@ -363,7 +363,7 @@ type
       drivers and take *lots* of rendering time. *)
     property AntiAliased: Boolean read FAntiAliased write SetAntiAliased default False;
     // Default color of the lines.
-    property LineColor: TgxColor read FLineColor write SetLineColor;
+    property LineColor: TGColor read FLineColor write SetLineColor;
     (* Bitwise line pattern.
       For instance $FFFF (65535) is a white line (stipple disabled), $0000
       is a black line, $CCCC is the stipple used in axes and dummycube, etc. *)
@@ -378,17 +378,17 @@ type
   private
     FNodes: TgxLinesNodes;
     FNodesAspect: TLineNodesAspect;
-    FNodeColor: TgxColor;
+    FNodeColor: TGColor;
     FNodeSize: Single;
-    FOldNodeColor: TgxColorVector;
+    FOldNodeColor: TGColorVector;
   protected
     procedure SetNodesAspect(const Value: TLineNodesAspect);
-    procedure SetNodeColor(const Value: TgxColor);
+    procedure SetNodeColor(const Value: TGColor);
     procedure OnNodeColorChanged(Sender: TObject);
     procedure SetNodes(const aNodes: TgxLinesNodes);
     procedure SetNodeSize(const val: Single);
     function StoreNodeSize: Boolean;
-    procedure DrawNode(var rci: TgxRenderContextInfo; X, Y, Z: Single; Color: TgxColor);
+    procedure DrawNode(var rci: TgxRenderContextInfo; X, Y, Z: Single; Color: TGColor);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -400,7 +400,7 @@ type
     procedure AddNode(const Value: TAffineVector); overload;
   published
     // Default color for nodes. lnaInvisible and lnaAxes ignore this setting.
-    property NodeColor: TgxColor read FNodeColor write SetNodeColor;
+    property NodeColor: TGColor read FNodeColor write SetNodeColor;
     // The nodes list.
     property Nodes: TgxLinesNodes read FNodes write SetNodes;
     (* Default aspect of line nodes.
@@ -648,7 +648,7 @@ type
 
 // Issues for a unit-size cube stippled wireframe.
 procedure CubeWireframeBuildList(var rci: TgxRenderContextInfo; Size: Single;
-  Stipple: Boolean; const Color: TgxColorVector);
+  Stipple: Boolean; const Color: TGColorVector);
 
 var
   TangentAttributeName: AnsiString = 'Tangent';
@@ -663,7 +663,7 @@ uses
   GXS.State;
 
 procedure CubeWireframeBuildList(var rci: TgxRenderContextInfo; Size: Single;
-  Stipple: Boolean; const Color: TgxColorVector);
+  Stipple: Boolean; const Color: TGColorVector);
 var
   mi, ma: Single;
 begin
@@ -723,7 +723,7 @@ begin
   inherited;
   ObjectStyle := ObjectStyle + [osDirectDraw];
   FCubeSize := 1;
-  FEdgeColor := TgxColor.Create(Self);
+  FEdgeColor := TGColor.Create(Self);
   FEdgeColor.Initialize(clrWhite);
   FGroupList := TgxListHandle.Create;
   CamInvarianceMode := cimNone;
@@ -829,7 +829,7 @@ begin
   end;
 end;
 
-procedure TgxDummyCube.SetEdgeColor(const val: TgxColor);
+procedure TgxDummyCube.SetEdgeColor(const val: TGColor);
 begin
   if val <> FEdgeColor then
   begin
@@ -1733,7 +1733,7 @@ end;
 constructor TgxLineBase.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
-  FLineColor := TgxColor.Create(Self);
+  FLineColor := TGColor.Create(Self);
   FLineColor.Initialize(clrWhite);
   FLinePattern := $FFFF;
   FAntiAliased := False;
@@ -1753,7 +1753,7 @@ begin
   inherited;
 end;
 
-procedure TgxLineBase.SetLineColor(const Value: TgxColor);
+procedure TgxLineBase.SetLineColor(const Value: TGColor);
 begin
   FLineColor.Color := Value.Color;
   StructureChanged;
@@ -1835,10 +1835,10 @@ begin
         Enable(stBlend);
         SetBlendFunc(bfSrcAlpha, bfOneMinusSrcAlpha);
       end;
-      glColor4fv(FLineColor.AsAddress);
+      glColor4fv(@FLineColor.AsAddress^);
     end
     else
-      glColor3fv(FLineColor.AsAddress);
+      glColor3fv(@FLineColor.AsAddress^);
 
   end;
 end;
@@ -1850,7 +1850,7 @@ end;
 constructor TgxLinesNode.Create(Collection: TCollection);
 begin
   inherited Create(Collection);
-  FColor := TgxColor.Create(Self);
+  FColor := TGColor.Create(Self);
   FColor.Initialize((TgxLinesNodes(Collection).GetOwner as TgxLines)
     .NodeColor.Color);
   FColor.OnNotifyChange := OnColorChange;
@@ -1869,7 +1869,7 @@ begin
   inherited;
 end;
 
-procedure TgxLinesNode.SetColor(const val: TgxColor);
+procedure TgxLinesNode.SetColor(const val: TGColor);
 begin
   FColor.Assign(val);
 end;
@@ -1908,7 +1908,7 @@ constructor TgxNodedLines.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
   FNodes := TgxLinesNodes.Create(Self);
-  FNodeColor := TgxColor.Create(Self);
+  FNodeColor := TGColor.Create(Self);
   FNodeColor.Initialize(clrBlue);
   FNodeColor.OnNotifyChange := OnNodeColorChanged;
   FOldNodeColor := clrBlue;
@@ -1932,7 +1932,7 @@ begin
   end;
 end;
 
-procedure TgxNodedLines.SetNodeColor(const Value: TgxColor);
+procedure TgxNodedLines.SetNodeColor(const Value: TGColor);
 begin
   FNodeColor.Color := Value.Color;
   StructureChanged;
@@ -1982,7 +1982,7 @@ begin
 end;
 
 procedure TgxNodedLines.DrawNode(var rci: TgxRenderContextInfo; X, Y, Z: Single;
-  Color: TgxColor);
+  Color: TGColor);
 begin
   glPushMatrix;
   glTranslatef(X, Y, Z);
@@ -2207,7 +2207,7 @@ begin
           for i := 0 to Nodes.Count - 1 do
             with TgxLinesNode(Nodes[i]) do
             begin
-              glColor4fv(Color.AsAddress);
+              glColor4fv(@Color.AsAddress^);
               glVertex3f(X, Y, Z);
             end;
         end

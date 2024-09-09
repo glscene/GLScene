@@ -26,7 +26,7 @@ uses
   GLS.PipelineTransformation,
   GLS.Objects,
   GLS.Context,
-  GLS.Color,
+  GLScene.Color,
   GLS.RenderContextInfo,
   GLS.State,
   GLScene.Utils,
@@ -42,20 +42,20 @@ type
      lens flare elements. *)
   TGLFlareGradient = class(TGUpdateAbleObject)
   private
-    FFromColor: TGLColor;
-    FToColor: TGLColor;
+    FFromColor: TGColor;
+    FToColor: TGColor;
   protected
-    procedure SetFromColor(const val: TGLColor);
-    procedure SetToColor(const val: TGLColor);
+    procedure SetFromColor(const val: TGColor);
+    procedure SetToColor(const val: TGColor);
   public
     constructor Create(AOwner: TPersistent); override;
     constructor CreateInitialized(AOwner: TPersistent;
-      const fromColor, toColor: TGLColorVector);
+      const fromColor, toColor: TGColorVector);
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
   published
-    property FromColor: TGLColor read FFromColor write SetFromColor;
-    property ToColor: TGLColor read FToColor write SetToColor;
+    property FromColor: TGColor read FFromColor write SetFromColor;
+    property ToColor: TGColor read FToColor write SetToColor;
   end;
 
 const
@@ -200,12 +200,12 @@ implementation
 constructor TGLFlareGradient.Create(AOwner: TPersistent);
 begin
   inherited;
-  FFromColor := TGLColor.Create(Self);
-  FToColor := TGLColor.Create(Self);
+  FFromColor := TGColor.Create(Self);
+  FToColor := TGColor.Create(Self);
 end;
 
 constructor TGLFlareGradient.CreateInitialized(AOwner: TPersistent;
-  const fromColor, toColor: TGLColorVector);
+  const fromColor, toColor: TGColorVector);
 begin
   Create(AOwner);
   FFromColor.Initialize(fromColor);
@@ -229,12 +229,12 @@ begin
   inherited;
 end;
 
-procedure TGLFlareGradient.SetFromColor(const val: TGLColor);
+procedure TGLFlareGradient.SetFromColor(const val: TGColor);
 begin
   FFromColor.Assign(val);
 end;
 
-procedure TGLFlareGradient.SetToColor(const val: TGLColor);
+procedure TGLFlareGradient.SetToColor(const val: TGColor);
 begin
   FToColor.Assign(val);
 end;

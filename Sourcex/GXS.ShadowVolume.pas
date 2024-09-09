@@ -33,7 +33,7 @@ uses
   GXS.Silhouette,
   GXS.State,
   GXS.PipelineTransformation,
-  GXS.Color,
+  GLScene.Color,
   GXS.RenderContextInfo;
 
 type
@@ -183,7 +183,7 @@ type
     FCapping: TgxShadowVolumeCapping;
     FOptions: TgxShadowVolumeOptions;
     FMode: TgxShadowVolumeMode;
-    FDarkeningColor: TgxColor;
+    FDarkeningColor: TGColor;
   protected
     procedure Notification(AComponent: TComponent; Operation: TOperation);  override;
     procedure SetActive(const val: Boolean);
@@ -191,7 +191,7 @@ type
     procedure SetOccluders(const val: TgxShadowVolumeCasters);
     procedure SetOptions(const val: TgxShadowVolumeOptions);
     procedure SetMode(const val: TgxShadowVolumeMode);
-    procedure SetDarkeningColor(const val: TgxColor);
+    procedure SetDarkeningColor(const val: TGColor);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -218,7 +218,7 @@ type
     // Shadow rendering mode.
     property Mode: TgxShadowVolumeMode read FMode write SetMode default svmAccurate;
     // Darkening color used in svmDarkening mode.
-    property DarkeningColor: TgxColor read FDarkeningColor write SetDarkeningColor;
+    property DarkeningColor: TGColor read FDarkeningColor write SetDarkeningColor;
   end;
 
 //-------------------------------------------------------------
@@ -481,7 +481,7 @@ begin
   FCapping := svcAlways;
   FMode := svmAccurate;
   FOptions := [svoCacheSilhouettes, svoScissorClips];
-  FDarkeningColor := TgxColor.CreateInitialized(Self, VectorMake(0, 0, 0, 0.5));
+  FDarkeningColor := TGColor.CreateInitialized(Self, VectorMake(0, 0, 0, 0.5));
 end;
 
 destructor TgxShadowVolume.Destroy;
@@ -566,7 +566,7 @@ begin
   end;
 end;
 
-procedure TgxShadowVolume.SetDarkeningColor(const val: TgxColor);
+procedure TgxShadowVolume.SetDarkeningColor(const val: TGColor);
 begin
   FDarkeningColor.Assign(val);
 end;
@@ -910,7 +910,7 @@ begin
           PM := CreateOrthoMatrix(0, 1, 1, 0, -1, 1);
           glLoadMatrixf(PGLFloat(@PM));
 
-          glColor4fv(FDarkeningColor.AsAddress);
+          glColor4fv(@FDarkeningColor.AsAddress^);
           glBegin(GL_QUADS);
           glVertex2f(0, 0);
           glVertex2f(0, 1);

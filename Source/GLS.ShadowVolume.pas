@@ -28,7 +28,7 @@ uses
   GLScene.Coordinates,
   GLS.PipelineTransformation,
   GLScene.GeometryBB,
-  GLS.Color,
+  GLScene.Color,
   GLS.Selection,
   GLS.RenderContextInfo,
   GLScene.VectorLists,
@@ -198,7 +198,7 @@ type
     FCapping: TGLShadowVolumeCapping;
     FOptions: TGLShadowVolumeOptions;
     FMode: TGLShadowVolumeMode;
-    FDarkeningColor: TGLColor;
+    FDarkeningColor: TGColor;
   protected
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
     procedure SetActive(const val: Boolean);
@@ -206,7 +206,7 @@ type
     procedure SetOccluders(const val: TGLShadowVolumeCasters);
     procedure SetOptions(const val: TGLShadowVolumeOptions);
     procedure SetMode(const val: TGLShadowVolumeMode);
-    procedure SetDarkeningColor(const val: TGLColor);
+    procedure SetDarkeningColor(const val: TGColor);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -233,7 +233,7 @@ type
     // Shadow rendering mode.
     property Mode: TGLShadowVolumeMode read FMode write SetMode default svmAccurate;
     // Darkening color used in svmDarkening mode.
-    property DarkeningColor: TGLColor read FDarkeningColor write SetDarkeningColor;
+    property DarkeningColor: TGColor read FDarkeningColor write SetDarkeningColor;
   end;
 
 //-------------------------------------------------------------
@@ -496,7 +496,7 @@ begin
   FCapping := svcAlways;
   FMode := svmAccurate;
   FOptions := [svoCacheSilhouettes, svoScissorClips];
-  FDarkeningColor := TGLColor.CreateInitialized(Self, VectorMake(0, 0, 0, 0.5));
+  FDarkeningColor := TGColor.CreateInitialized(Self, VectorMake(0, 0, 0, 0.5));
 end;
 
 destructor TGLShadowVolume.Destroy;
@@ -581,7 +581,7 @@ begin
   end;
 end;
 
-procedure TGLShadowVolume.SetDarkeningColor(const val: TGLColor);
+procedure TGLShadowVolume.SetDarkeningColor(const val: TGColor);
 begin
   FDarkeningColor.Assign(val);
 end;

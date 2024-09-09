@@ -20,8 +20,13 @@ uses
 
   GLS.Scene,
   GLScene.BaseClasses,
-  GLS.Objects,
+  GLScene.VectorTypes,
+  GLScene.VectorGeometry,
+  GLScene.Keyboard,
   GLScene.XCollection,
+  GLScene.Coordinates,
+
+  GLS.Objects,
   GLS.TerrainRenderer,
   GLS.ROAMPatch,
   GLS.HeightData,
@@ -29,13 +34,10 @@ uses
   GLS.Texture,
   GLS.SkyDome,
   GLS.SceneViewer,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
   GLS.LensFlare,
   GLS.BumpMapHDS,
   GLSL.TextureShaders,
   GLS.Material,
-  GLScene.Coordinates,
 
   GLS.State,
   GLScene.Utils;

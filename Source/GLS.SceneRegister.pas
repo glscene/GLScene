@@ -27,7 +27,7 @@ uses
 
   GLS.Context,
   GLS.Scene,
-  GLS.Color,
+  GLScene.Color,
   GLS.ImageUtils,
   GLS.ObjectManager,
   GLScene.Strings;
@@ -84,7 +84,7 @@ type
   TGLColorProperty = class(TClassProperty, ICustomPropertyDrawing,
     ICustomPropertyListDrawing)
   protected
-    function ColorToBorderColor(aColor: TGLColorVector; selected: Boolean): TColor;
+    function ColorToBorderColor(aColor: TGColorVector; selected: Boolean): TColor;
   public
     function GetAttributes: TPropertyAttributes; override;
     procedure GetValues(Proc: TGetStrProc); override;
@@ -647,11 +647,11 @@ end;
 procedure TGLColorProperty.Edit;
 var
   colorDialog: TColorDialog;
-  GLColor: TGLColor;
+  GLColor: TGColor;
 begin
   colorDialog := TColorDialog.Create(nil);
   try
-    GLColor := TGLColor(GetOrdValue);
+    GLColor := TGColor(GetOrdValue);
     colorDialog.Options := [cdFullOpen];
     colorDialog.Color := ConvertColorVector(GLColor.Color);
     if colorDialog.Execute then
@@ -676,16 +676,16 @@ end;
 
 function TGLColorProperty.GetValue: string;
 begin
-  Result := ColorManager.GetColorName(TGLColor(GetOrdValue).Color);
+  Result := ColorManager.GetColorName(TGColor(GetOrdValue).Color);
 end;
 
 procedure TGLColorProperty.SetValue(const Value: string);
 begin
-  TGLColor(GetOrdValue).Color := ColorManager.GetColor(Value);
+  TGColor(GetOrdValue).Color := ColorManager.GetColor(Value);
   Modified;
 end;
 
-function TGLColorProperty.ColorToBorderColor(aColor: TGLColorVector; selected: Boolean): TColor;
+function TGLColorProperty.ColorToBorderColor(aColor: TGColorVector; selected: Boolean): TColor;
 begin
   if (aColor.X > 0.75) or (aColor.Y > 0.75) or (aColor.Z > 0.75) then
     Result := clBlack
@@ -709,7 +709,7 @@ procedure TGLColorProperty.ListDrawValue(const Value: string; ACanvas: TCanvas;
 var
   vRight: Integer;
   vOldPenColor, vOldBrushColor: TColor;
-  Color: TGLColorVector;
+  Color: TGColorVector;
 begin
   vRight := (ARect.Bottom - ARect.Top) + ARect.Left;
   with ACanvas do
@@ -1364,7 +1364,7 @@ begin
   RegisterPropertiesInCategory(strLayoutCategoryName,
     [TypeInfo(TGLObjectsSorting), TypeInfo(TGLNormalDirection)]);
   RegisterPropertiesInCategory(strVisualCategoryName,
-    [TypeInfo(TGLVisibilityCulling), TypeInfo(TGLLightStyle), TypeInfo(TGLColor),
+    [TypeInfo(TGLVisibilityCulling), TypeInfo(TGLLightStyle), TypeInfo(TGColor),
     TypeInfo(TGLNormalDirection), TypeInfo(TGLCameraStyle)]);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLBaseSceneObject,
     ['Rotation', 'Direction', 'Position', 'Up', 'Scale', '*Angle', 'ShowAxes', 'FocalLength']);
@@ -1589,7 +1589,7 @@ begin
   RegisterPropertyEditor(TypeInfo(TGLSoundFile), TGLSoundSample, '', TGLSoundFileProperty);
   RegisterPropertyEditor(TypeInfo(string), TGLBaseSoundSource, 'SoundName', TGLSoundNameProperty);
   RegisterPropertyEditor(TypeInfo(TGCoordinates), nil, '', TGLCoordinatesProperty);
-  RegisterPropertyEditor(TypeInfo(TGLColor), nil, '', TGLColorProperty);
+  RegisterPropertyEditor(TypeInfo(TGColor), nil, '', TGLColorProperty);
   RegisterPropertyEditor(TypeInfo(TGLMaterial), nil, '', TGLMaterialProperty);
   RegisterComponentEditor(TGLGuiLayout, TGLGUILayoutEditor);
 
@@ -1721,7 +1721,7 @@ initialization
     False, 'MPL 2.0 license', 'VCL version');
   GLScene.Utils.IsDesignTime := True;
   GLScene.Utils.vProjectTargetName := GetProjectTargetName;
-  GLS.Color.vUseDefaultColorSets := True;
+  GLScene.Color.vUseDefaultColorSets := True;
   GLScene.Coordinates.vUseDefaultCoordinateSets := True;
   ReadVideoModes;
 

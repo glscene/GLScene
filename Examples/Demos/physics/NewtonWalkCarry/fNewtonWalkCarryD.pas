@@ -35,7 +35,7 @@ uses
   GLS.Navigator,
   GLScene.XCollection,
   GLScene.VectorTypes,
-  GLS.Color,
+  GLScene.Color,
   GLS.HUDObjects,
   GLS.Texture,
   GLScene.Utils,
@@ -138,7 +138,7 @@ var
   cp: TPoint;
   visible_cursor: boolean;
   ScObj, FScObj: TGLBaseSceneObject;
-  targetColor: TGLColorVector;
+  targetColor: TGColorVector;
   picked: TGLCustomSceneObject;
   mm: TMatrix4f;
 

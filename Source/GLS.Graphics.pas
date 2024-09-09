@@ -39,7 +39,7 @@ uses
   GLScene.PersistentClasses,
   GLS.Context,
   GLS.ImageUtils,
-  GLS.Color,
+  GLScene.Color,
   GLScene.Utils,
   GLScene.Logger;
 

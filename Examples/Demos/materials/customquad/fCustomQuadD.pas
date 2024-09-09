@@ -19,7 +19,7 @@ uses
   GLS.Behaviours,
   GLS.SceneViewer,
   GLS.GeomObjects,
-  GLS.Color,
+  GLScene.Color,
 
   GLS.Material,
   GLScene.Coordinates,

@@ -28,7 +28,7 @@ uses
   GXS.Objects,
   GXS.GeomObjects,
   GXS.VectorFileObjects, // cube cone freeform...
-  GXS.Color // For show debug
+  GLScene.Color // For show debug
 
 ;
 
@@ -103,18 +103,18 @@ type
   TgxNGDDebugOption = class(TPersistent)
   strict private
     FManager: TgxNGDManager;
-    FGeomColorDyn: TgxColor; // Green
-    FGeomColorStat: TgxColor; // Red
-    FAABBColor: TgxColor; // Yellow
-    FAABBColorSleep: TgxColor; // Orange
-    FCenterOfMassColor: TgxColor; // Purple dot
-    FContactColor: TgxColor; // White
-    FJointAxisColor: TgxColor; // Blue
-    FJointPivotColor: TgxColor; // Aquamarine
-    FForceColor: TgxColor; // Black
-    FAppliedForceColor: TgxColor; // Silver
-    FAppliedVelocityColor: TgxColor; // Lime
-    FCustomColor: TgxColor; // Aqua
+    FGeomColorDyn: TGColor; // Green
+    FGeomColorStat: TGColor; // Red
+    FAABBColor: TGColor; // Yellow
+    FAABBColorSleep: TGColor; // Orange
+    FCenterOfMassColor: TGColor; // Purple dot
+    FContactColor: TGColor; // White
+    FJointAxisColor: TGColor; // Blue
+    FJointPivotColor: TGColor; // Aquamarine
+    FForceColor: TGColor; // Black
+    FAppliedForceColor: TGColor; // Silver
+    FAppliedVelocityColor: TGColor; // Lime
+    FCustomColor: TGColor; // Aqua
     FDotAxisSize: Single; // 1
     FManagerDebugs: TgxNGDManagerDebugs; // Default All false
     procedure SetManagerDebugs(const Value: TgxNGDManagerDebugs);
@@ -124,24 +124,24 @@ type
     constructor Create(AOwner: TComponent);
     destructor Destroy; override;
   published
-    property GeomColorDyn: TgxColor read FGeomColorDyn write FGeomColorDyn;
-    property GeomColorStat: TgxColor read FGeomColorStat write FGeomColorStat;
-    property AABBColor: TgxColor read FAABBColor write FAABBColor;
-    property AABBColorSleep: TgxColor read FAABBColorSleep
+    property GeomColorDyn: TGColor read FGeomColorDyn write FGeomColorDyn;
+    property GeomColorStat: TGColor read FGeomColorStat write FGeomColorStat;
+    property AABBColor: TGColor read FAABBColor write FAABBColor;
+    property AABBColorSleep: TGColor read FAABBColorSleep
       write FAABBColorSleep;
-    property CenterOfMassColor: TgxColor read FCenterOfMassColor
+    property CenterOfMassColor: TGColor read FCenterOfMassColor
       write FCenterOfMassColor;
-    property ContactColor: TgxColor read FContactColor write FContactColor;
-    property JointAxisColor: TgxColor read FJointAxisColor
+    property ContactColor: TGColor read FContactColor write FContactColor;
+    property JointAxisColor: TGColor read FJointAxisColor
       write FJointAxisColor;
-    property JointPivotColor: TgxColor read FJointPivotColor
+    property JointPivotColor: TGColor read FJointPivotColor
       write FJointPivotColor;
-    property ForceColor: TgxColor read FForceColor write FForceColor;
-    property AppliedForceColor: TgxColor read FAppliedForceColor
+    property ForceColor: TGColor read FForceColor write FForceColor;
+    property AppliedForceColor: TGColor read FAppliedForceColor
       write FAppliedForceColor;
-    property AppliedVelocityColor: TgxColor read FAppliedVelocityColor
+    property AppliedVelocityColor: TGColor read FAppliedVelocityColor
       write FAppliedVelocityColor;
-    property CustomColor: TgxColor read FCustomColor write FCustomColor;
+    property CustomColor: TGColor read FCustomColor write FCustomColor;
     property NGDManagerDebugs: TgxNGDManagerDebugs read FManagerDebugs
       write SetManagerDebugs default [];
     property DotAxisSize: Single read FDotAxisSize write SetDotAxisSize
@@ -168,7 +168,7 @@ type
   private
     FNewtonWorld: PNewtonWorld;
     FNGDBehaviours: TgxNGDBehaviourList;
-    FCurrentColor: TgxColor;
+    FCurrentColor: TGColor;
   protected
     procedure Loaded; override;
     procedure SetVisible(const Value: Boolean);
@@ -712,25 +712,25 @@ begin
   FManager := AOwner as TgxNGDManager;
   with FManager do
   begin
-    FGeomColorDyn := TgxColor.CreateInitialized(self, clrGreen, NotifyChange);
-    FGeomColorStat := TgxColor.CreateInitialized(self, clrRed, NotifyChange);
-    FAABBColor := TgxColor.CreateInitialized(self, clrYellow, NotifyChange);
-    FAABBColorSleep := TgxColor.CreateInitialized(self, clrOrange,
+    FGeomColorDyn := TGColor.CreateInitialized(self, clrGreen, NotifyChange);
+    FGeomColorStat := TGColor.CreateInitialized(self, clrRed, NotifyChange);
+    FAABBColor := TGColor.CreateInitialized(self, clrYellow, NotifyChange);
+    FAABBColorSleep := TGColor.CreateInitialized(self, clrOrange,
       NotifyChange);
-    FCenterOfMassColor := TgxColor.CreateInitialized(self, clrPurple,
+    FCenterOfMassColor := TGColor.CreateInitialized(self, clrPurple,
       NotifyChange);
-    FContactColor := TgxColor.CreateInitialized(self, clrWhite, NotifyChange);
-    FJointAxisColor := TgxColor.CreateInitialized(self, clrBlue, NotifyChange);
-    FJointPivotColor := TgxColor.CreateInitialized(self, clrAquamarine,
-      NotifyChange);
-
-    FForceColor := TgxColor.CreateInitialized(self, clrBlack, NotifyChange);
-    FAppliedForceColor := TgxColor.CreateInitialized(self, clrSilver,
-      NotifyChange);
-    FAppliedVelocityColor := TgxColor.CreateInitialized(self, clrLime,
+    FContactColor := TGColor.CreateInitialized(self, clrWhite, NotifyChange);
+    FJointAxisColor := TGColor.CreateInitialized(self, clrBlue, NotifyChange);
+    FJointPivotColor := TGColor.CreateInitialized(self, clrAquamarine,
       NotifyChange);
 
-    FCustomColor := TgxColor.CreateInitialized(self, clrAqua, NotifyChange);
+    FForceColor := TGColor.CreateInitialized(self, clrBlack, NotifyChange);
+    FAppliedForceColor := TGColor.CreateInitialized(self, clrSilver,
+      NotifyChange);
+    FAppliedVelocityColor := TGColor.CreateInitialized(self, clrLime,
+      NotifyChange);
+
+    FCustomColor := TGColor.CreateInitialized(self, clrAqua, NotifyChange);
   end;
   FDotAxisSize := 1;
   FManagerDebugs := [];

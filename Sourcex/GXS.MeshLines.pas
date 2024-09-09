@@ -25,7 +25,7 @@ uses
   GLScene.Coordinates,
   GXS.Context,
   GXS.Material,
-  GXS.Color,
+  GLScene.Color,
   GXS.State,
   GXS.Nodes,
   GXS.RenderContextInfo;
