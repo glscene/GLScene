@@ -21,7 +21,7 @@
 #include "GLSL.UserShader.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLScene.TextureFormat.hpp"
-#include "GLS.Color.hpp"
+#include "GLScene.Color.hpp"
 #include "GLScene.OpenGLTokens.hpp"
 #include "GLS.OpenGLAdapter.hpp"
 #include "GLS.Context.hpp"

@@ -22,7 +22,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.SpaceText.hpp"
 #include "GLS.GeomObjects.hpp"
-#include "GLS.Color.hpp"
+#include "GLScene.Color.hpp"
 
 #include "GLScene.Coordinates.hpp"
 #include "GLScene.BaseClasses.hpp"

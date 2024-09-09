@@ -21,7 +21,7 @@
 #include "GLS.Scene.hpp"
 #include "GLS.GeomObjects.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLS.Color.hpp"
+#include "GLScene.Color.hpp"
 #include "GLS.Context.hpp"
 #include "GLS.Texture.hpp"
 #include "GLS.FileDDS.hpp"

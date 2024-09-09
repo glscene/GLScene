@@ -16,7 +16,7 @@
 #include "GLScene.VectorGeometry.hpp"
 #include "GLS.Texture.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLS.Color.hpp"
+#include "GLScene.Color.hpp"
 
 #include "GLScene.Coordinates.hpp"
 #include "GLScene.BaseClasses.hpp"

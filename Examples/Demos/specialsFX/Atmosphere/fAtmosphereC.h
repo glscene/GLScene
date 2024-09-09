@@ -25,7 +25,7 @@
 #include "GLS.Behaviours.hpp"
 #include "GLScene.Coordinates.hpp"
 #include "GLScene.BaseClasses.hpp"
-#include "GLS.Color.hpp"
+#include "GLScene.Color.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
