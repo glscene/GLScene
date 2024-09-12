@@ -207,7 +207,6 @@ type
       1: (X, Y, Z, W: Single);
   end;
 
-
   PQuaternionArray = ^TQuaternionArray;
   TQuaternionArray = array [0 .. MaxInt shr 5] of TQuaternion;
 
@@ -220,21 +219,18 @@ type
     pLeft, pTop, pRight, pBottom, pNear, pFar: THmgPlane;
   end;
 
-   TTransType = (ttScaleX, ttScaleY, ttScaleZ,
-                 ttShearXY, ttShearXZ, ttShearYZ,
-                 ttRotateX, ttRotateY, ttRotateZ,
-                 ttTranslateX, ttTranslateY, ttTranslateZ,
-                 ttPerspectiveX, ttPerspectiveY, ttPerspectiveZ, ttPerspectiveW);
-
+  TTransType = (ttScaleX, ttScaleY, ttScaleZ,
+                ttShearXY, ttShearXZ, ttShearYZ,
+                ttRotateX, ttRotateY, ttRotateZ,
+                ttTranslateX, ttTranslateY, ttTranslateZ,
+                ttPerspectiveX, ttPerspectiveY, ttPerspectiveZ, ttPerspectiveW);
   (*
     Used to describe a sequence of transformations in following order:
     [Sx][Sy][Sz][ShearXY][ShearXZ][ShearZY][Rx][Ry][Rz][Tx][Ty][Tz][P(x,y,z,w)]
     constants are declared for easier access (see MatrixDecompose below)
   *)
   TTransformations = array [TTransType] of Single;
-
   TPackedRotationMatrix = array [0 .. 2] of SmallInt;
-
   TGLInterpolationType = (itLinear, itPower, itSin, itSinAlt, itTan, itLn, itExp);
 
 const
@@ -288,7 +284,6 @@ const
     Z: 0), (X: 0; Y: 0; Z: 0)));
   EmptyHmgMatrix: TGLMatrix = (V: ((X: 0; Y: 0; Z: 0; W: 0), (X: 0; Y: 0; Z: 0;
     W: 0), (X: 0; Y: 0; Z: 0; W: 0), (X: 0; Y: 0; Z: 0; W: 0)));
-
 
   // Quaternions
   IdentityQuaternion: TQuaternion = (ImagPart: (X: 0; Y: 0; Z: 0); RealPart: 1);

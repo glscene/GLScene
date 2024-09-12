@@ -164,7 +164,7 @@
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <DCC_ImageBase>00400000</DCC_ImageBase>
         <SanitizedProjectName>GLScene_RunTime_FMX</SanitizedProjectName>
-        <DCC_UnitSearchPath>..\Unipas;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\sourcex;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -179,10 +179,15 @@
         <DCCReference Include="..\Sourcex\GXS.ODERagdoll.pas"/>
         <DCCReference Include="..\Sourcex\GXS.ODESkeletonColliders.pas"/>
         <DCCReference Include="..\Sourcex\GXS.ODEUtils.pas"/>
-        <DCCReference Include="..\Unipas\Newton.Import.pas"/>
-        <DCCReference Include="..\Unipas\NGD.Import.pas"/>
-        <DCCReference Include="..\Unipas\ODE.Import.pas"/>
-        <DCCReference Include="..\Unipas\PhysX.Import.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.PhysFields.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.PhysForces.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.PhysInertias.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.PhysJoints.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.PhysManager.pas"/>
+        <DCCReference Include="..\Source\NGD.Import.pas"/>
+        <DCCReference Include="..\Source\Newton.Import.pas"/>
+        <DCCReference Include="..\Source\ODE.Import.pas"/>
+        <DCCReference Include="..\Source\PhysX.Import.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -32,7 +32,7 @@ uses
   GXS.Scene,
   GLScene.VectorGeometry,
   GLScene.Coordinates,
-  GXS.Sound,
+  GXS.SoundManager,
   GXS.SoundFileObjects;
 
 type

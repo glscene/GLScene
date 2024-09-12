@@ -155,7 +155,7 @@
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <DCC_ImageBase>00400000</DCC_ImageBase>
         <SanitizedProjectName>GLScene_RunTime_FMX</SanitizedProjectName>
-        <DCC_UnitSearchPath>..\Unipas;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\sourcex;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>

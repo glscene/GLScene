@@ -54,9 +54,8 @@ interface
 {$ENDIF}
 
 uses
-  System.Classes
-  ,ModuleLoader
-  ;
+  System.Classes,
+  ModuleLoader;
 
 const
 

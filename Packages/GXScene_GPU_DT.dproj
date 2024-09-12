@@ -146,7 +146,7 @@
         <DCC_HppOutput>..\include\$(Platform)</DCC_HppOutput>
         <DCC_ObjOutput>..\lib\$(Platform)</DCC_ObjOutput>
         <DCC_Description>GLXcene GPU Computing</DCC_Description>
-        <DCC_UnitSearchPath>..\Unipas;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\sourcex;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <Import Project="CBoutput_FMX.optset" Condition="'$(Base)'!='' And Exists('CBoutput_FMX.optset')"/>
     <ItemGroup>

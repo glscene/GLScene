@@ -1666,6 +1666,6 @@ procedure NewtonMeshGetFacePointIndices(const Mesh: PNewtonMesh; const face: Poi
   Indices: PInteger); cdecl;
   external{$IFDEF __GPC__}name 'NewtonMeshGetFacePointIndices'{$ELSE}NewtonDLL{$ENDIF __GPC__};
 
-implementation
+implementation //-------------------------------------------------------------
 
 end.

@@ -13,7 +13,7 @@ uses
 
   System.Classes,
   System.SysUtils,
-  GXS.Sound,
+  GXS.SoundManager,
   GXS.SoundFileObjects;
 
 type

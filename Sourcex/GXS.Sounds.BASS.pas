@@ -21,7 +21,7 @@ uses
   FMX.Forms,
 
   GLScene.VectorTypes,
-  GXS.Sound,
+  GXS.SoundManager,
   GXS.Scene,
   GLScene.VectorGeometry,
   BASS.Import;
